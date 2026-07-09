@@ -1,123 +1,123 @@
 # Bao la Kiswahili
 
-Bao la Kiswahili is a static browser implementation of Bao with local two-player play and computer opponents. It runs from plain files, has no build step, and keeps all game logic in the browser.
+Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に対応した、Bao の静的ブラウザー実装です。通常の静的ファイルだけで動作し、ビルド手順は不要です。ゲームロジックはすべてブラウザー内で実行されます。
 
-The computer player has four levels:
+コンピューターには 4 つのレベルがあります。
 
-| Level | Method |
+| レベル | 方式 |
 | --- | --- |
-| やさしい | Random legal move |
-| ふつう | Random choice from the top evaluated one-ply moves |
-| むずかしい | Iterative deepening with Minimax and Alpha-Beta pruning |
-| ムタアラム | Longer search budget tuned by device tier |
+| やさしい | 合法手からランダムに選択 |
+| ふつう | 1 手読みで評価上位の手からランダムに選択 |
+| むずかしい | ミニマックス法とアルファベータ枝刈りによる反復深化探索 |
+| ムタアラム | デバイス性能に応じて調整した、より長い探索時間 |
 
-All computer moves are generated and validated through the same rule engine used for human play.
+コンピューターの手はすべて、人間の対局と同じルールエンジンで生成・検証されます。
 
-## Features
+## 機能
 
-- Static browser game under `public/`
-- Local two-player mode
-- South/North selection for computer games
-- Bao rule engine with namua, mtaji, relay sowing, nyumba, captures, and win/loss checks
-- Web Worker based AI search so the UI remains responsive during longer thinking
-- PWA files for offline-capable deployment
-- Node.js test suite for rules, AI, search, workers, tuning, and benchmark tools
-- Reproducible AI benchmarks with seeds, paired openings, tactical regression tests, and saved artifacts
+- `public/` 以下に配置された静的ブラウザーゲーム
+- ローカル 2 人対戦モード
+- コンピューター対戦時の South/North 選択
+- namua、mtaji、連続種まき、nyumba、捕獲、勝敗判定に対応した Bao ルールエンジン
+- 長めの思考中でも UI の応答性を保つ、Web Worker ベースの AI 探索
+- オフライン対応デプロイのための PWA ファイル
+- ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
+- シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
 
-## Rule Basis
+## ルールの基準
 
-This implementation follows the `bao-la-kiswahili-ja` v0.1.0-draft R-002 rule basis. It implements capture obligations, namua, mtaji, relay sowing, nyumba, and win/loss detection.
+この実装は `bao-la-kiswahili-ja` v0.1.0-draft R-002 のルール基準に従っています。捕獲義務、namua、mtaji、連続種まき、nyumba、勝敗判定を実装しています。
 
-`takasia` is not applied because complete source positions for validation are not yet confirmed. Relay sowing has a safety limit to prevent non-terminating play.
+検証に使える完全な出典局面がまだ確認できていないため、`takasia` は適用していません。終わらない対局を防ぐため、連続種まきには安全上の上限を設けています。
 
-## Running Locally
+## ローカルでの実行
 
-Serve the `public/` directory with any static HTTP server and open `index.html`.
+任意の静的 HTTP サーバーで `public/` ディレクトリを配信し、`index.html` を開きます。
 
-Example:
+例:
 
 ```sh
 cd public
 python3 -m http.server 8000
 ```
 
-Then open:
+続いて、以下を開きます。
 
 ```text
 http://localhost:8000/
 ```
 
-Opening `public/index.html` through `file://` also works for most gameplay, but Service Worker features require HTTP(S).
+`file://` 経由で `public/index.html` を開いても大半のゲームプレイは動作しますが、Service Worker 機能には HTTP(S) が必要です。
 
-## Deployment
+## デプロイ
 
-For Cloudflare Pages or another static host, set the publish directory to:
+Cloudflare Pages などの静的ホスティングでは、公開ディレクトリを以下に設定します。
 
 ```text
 public/
 ```
 
-## Tests
+## テスト
 
-Run an individual test:
+個別のテストを実行します。
 
 ```sh
 node test/engine.test.js
 ```
 
-Run the full test suite:
+テストスイート全体を実行します。
 
 ```sh
 for f in test/*.test.js; do node "$f" || exit 1; done
 ```
 
-## AI Benchmarking
+## AI ベンチマーク
 
-Run a reproducible fixed-depth benchmark:
+再現可能な固定深さベンチマークを実行します。
 
 ```sh
 node tools/benchmark.js --games 100 --seed 20260706 \
   --first hard --second normal --time-limit 0 --max-depth 2
 ```
 
-Run tactical regression tests:
+戦術回帰テストを実行します。
 
 ```sh
 node test/tactical.test.js
 ```
 
-Diagnostic tactical output:
+戦術テストの診断出力:
 
 ```sh
 BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 ```
 
-Detailed benchmark conditions and baseline results are documented in [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md).
+詳しいベンチマーク条件とベースライン結果は [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md) に記録しています。
 
-## Project Layout
+## プロジェクト構成
 
-| Path | Purpose |
+| パス | 役割 |
 | --- | --- |
-| `public/` | Static game files for deployment |
-| `public/engine.js` | Board state, legal move generation, and move application |
-| `public/ai.js` | Computer move selection, evaluation, and search |
-| `public/ai-weights.js` | Default evaluation weights |
-| `public/ai-worker.js` | Background AI search worker |
-| `public/ai-config.js` | Device-tier search settings |
-| `tools/` | Benchmarks, tuning scripts, and experiment runners |
-| `test/` | Regression tests |
-| `artifacts/` | Saved benchmark and tuning outputs |
-| `doc/` | Roadmaps, benchmark notes, development logs, and technical report |
+| `public/` | デプロイ用の静的ゲームファイル |
+| `public/engine.js` | 盤面状態、合法手生成、着手適用 |
+| `public/ai.js` | コンピューターの手の選択、評価、探索 |
+| `public/ai-weights.js` | デフォルトの評価重み |
+| `public/ai-worker.js` | バックグラウンド AI 探索 Worker |
+| `public/ai-config.js` | デバイス性能別の探索設定 |
+| `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
+| `test/` | 回帰テスト |
+| `artifacts/` | 保存済みのベンチマーク・チューニング出力 |
+| `doc/` | ロードマップ、ベンチマークメモ、開発ログ、技術レポート |
 
-## Documentation
+## ドキュメント
 
-- [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): public-facing Bao AI technical report
-- [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md): benchmark commands and baseline results
-- [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): design decisions, failed trials, and limitations
-- [`doc/AI_ROADMAP.md`](doc/AI_ROADMAP.md): completed Phase 0-5 AI roadmap
-- [`doc/AI_ADVANCED_ROADMAP.md`](doc/AI_ADVANCED_ROADMAP.md): Phase 6+ roadmap and future improvement notes
-- [`doc/SYSTEM_DESIGN.md`](doc/SYSTEM_DESIGN.md): system structure and responsibilities
+- [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 公開向け Bao AI 技術レポート
+- [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md): ベンチマークコマンドとベースライン結果
+- [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): 設計判断、失敗した試行、制限事項
+- [`doc/AI_ROADMAP.md`](doc/AI_ROADMAP.md): 完了済みの Phase 0-5 AI ロードマップ
+- [`doc/AI_ADVANCED_ROADMAP.md`](doc/AI_ADVANCED_ROADMAP.md): Phase 6 以降のロードマップと今後の改善メモ
+- [`doc/SYSTEM_DESIGN.md`](doc/SYSTEM_DESIGN.md): システム構成と責務
 
-## License
+## ライセンス
 
-This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for details.
+このプロジェクトは MIT License のもとでライセンスされています。詳しくは [`LICENSE`](LICENSE) を参照してください。
