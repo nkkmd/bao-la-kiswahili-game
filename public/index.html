@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTMWEF1XC4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HTMWEF1XC4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#172c2b">
+    <meta name="description" content="コンピュータ対戦と2人対戦を選べるドット絵風Bao la Kiswahili">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="stylesheet" href="./style.css">
+    <title>Bao la Kiswahili</title>
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="titlebar">
+        <div>
+          <span class="kicker">ZANZIBAR BOARD GAME</span>
+          <h1>BAO LA KISWAHILI</h1>
+          <span class="prototype-badge">試作版</span>
+        </div>
+        <div class="toolbar">
+          <button id="sound" type="button" aria-pressed="true">SOUND ON</button>
+          <button id="speed" type="button" aria-pressed="false">FAST OFF</button>
+          <button id="new-game" type="button">NEW GAME</button>
+        </div>
+      </header>
+      <div class="screen-frame">
+        <section id="start-screen" class="start-screen" aria-labelledby="start-title">
+          <div class="start-panel">
+            <span class="kicker">GAME SETUP</span>
+            <h2 id="start-title">対局設定</h2>
+            <label class="setup-field">
+              <span>MODE</span>
+              <select id="game-mode" aria-label="対戦モード">
+                <option value="computer" selected>コンピュータ対戦</option>
+                <option value="local">2人対戦</option>
+              </select>
+            </label>
+            <label id="difficulty-field" class="setup-field">
+              <span>COM</span>
+              <select id="difficulty" aria-label="コンピュータの強さ">
+                <option value="easy">やさしい</option>
+                <option value="normal" selected>ふつう</option>
+                <option value="hard">むずかしい</option>
+                <option value="expert">ムタアラム</option>
+              </select>
+            </label>
+            <label id="side-field" class="setup-field">
+              <span>手番</span>
+              <select id="player-side" aria-label="先手または後手">
+                <option value="first" selected>先手（SOUTH）</option>
+                <option value="second">後手（NORTH）</option>
+              </select>
+            </label>
+            <button id="start-game" class="start-button" type="button">START GAME</button>
+          </div>
+        </section>
+        <canvas id="game" width="640" height="430" tabindex="0" role="application"
+          aria-label="Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。"></canvas>
+      </div>
+      <p id="visible-help" class="controls">光っている穴を選んでください</p>
+      <p id="status" class="visually-hidden" aria-live="polite"></p>
+      <details>
+        <summary>遊び方・採用ルール</summary>
+        <div class="rules">
+          <p>コンピュータ対戦では先手（SOUTH）または後手（NORTH）を選べます。2人対戦では同じ端末でSOUTHとNORTHを交互に操作します。光っている穴を選び、次に蒔く方向を選んでください。</p>
+          <p>前半のnamuaでは手元から1個を加え、両者の手元がなくなるとmtajiへ移ります。相手の前列を空にするか、相手が合法手を失うと勝利です。</p>
+          <p>用語: keteは石、KICHWAは左右端の入口、NYUMBAは中央寄りの家です。CAPTUREでは向かい合う前列の相手のketeを取り、左右どちらかのKICHWA側から入れて蒔きます。</p>
+          <p>選択肢: LEFT/RIGHTは選んだ穴から蒔く向きです。LEFT CAPTURE/RIGHT CAPTUREは、捕獲したketeを左/右のKICHWA側から入れる意味です。NYUMBA STOPは家で止まり、NYUMBA USEは家のketeを使ってrelay sowingを続けます。</p>
+          <p><strong>このゲームは試作版です。</strong>ルールや画面、動作は今後変更される可能性があります。</p>
+          <p><a href="https://github.com/nkkmd/bao-la-kiswahili-ja" target="_blank" rel="noopener noreferrer">https://github.com/nkkmd/bao-la-kiswahili-ja</a> v0.1.0-draft のR-002基準に準拠。未検証のtakasiaは初版では適用していません。終わらないrelay sowingには安全上限を設けています。</p>
+        </div>
+      </details>
+      <footer>
+        Computer or local two-player · Works offline
+        <br>
+        Created by
+        <a href="https://bsky.app/profile/cultivationdata.net" target="_blank" rel="noopener noreferrer">@cultivationdata.net</a>
+        <br>
+        <a href="./privacy">Privacy Policy</a>
+      </footer>
+    </main>
+    <script src="./engine.js"></script>
+    <script src="./ai-weights.js"></script>
+    <script src="./ai.js"></script>
+    <script src="./ai-config.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="48" fill="#172c2b"/>
+  <rect x="52" y="82" width="408" height="348" fill="#e2c36b" stroke="#78998a" stroke-width="16"/>
+  <g fill="#071011" stroke="#d3e4a5" stroke-width="7">
+    <circle cx="112" cy="160" r="35"/><circle cx="208" cy="160" r="35"/><circle cx="304" cy="160" r="35"/><circle cx="400" cy="160" r="35"/>
+    <circle cx="112" cy="256" r="35"/><circle cx="208" cy="256" r="35"/><circle cx="304" cy="256" r="35"/><circle cx="400" cy="256" r="35"/>
+    <circle cx="112" cy="352" r="35"/><circle cx="208" cy="352" r="35"/><circle cx="304" cy="352" r="35"/><circle cx="400" cy="352" r="35"/>
+  </g>
+  <text x="256" y="274" text-anchor="middle" fill="#d3e4a5" font-size="52" font-family="monospace" font-weight="bold">BAO</text>
+</svg>

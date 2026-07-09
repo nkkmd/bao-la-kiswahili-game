@@ -1,0 +1,34 @@
+{
+  "namua": {
+    "boardSeeds": 1,
+    "frontSeeds": 1,
+    "frontOccupied": 5,
+    "frontConnections": 3,
+    "reusablePits": 3,
+    "mobility": 2,
+    "captureMoves": 3,
+    "maxCapture": 8,
+    "relayShape": 1,
+    "frontSafety": 8,
+    "houseValue": -7,
+    "reserveEfficiency": 1,
+    "transitionShape": 2,
+    "tempo": 2
+  },
+  "mtaji": {
+    "boardSeeds": 2,
+    "frontSeeds": 2,
+    "frontOccupied": 7,
+    "frontConnections": 4,
+    "reusablePits": 5,
+    "mobility": 3,
+    "captureMoves": 5,
+    "maxCapture": 8,
+    "relayShape": 1,
+    "frontSafety": 12,
+    "houseValue": 0,
+    "reserveEfficiency": 0,
+    "transitionShape": 0,
+    "tempo": 3
+  }
+}

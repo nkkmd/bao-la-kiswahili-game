@@ -1,0 +1,724 @@
+{
+  "config": {
+    "candidates": 12,
+    "roundGames": [
+      2,
+      6,
+      12
+    ],
+    "roundRepeats": [
+      2,
+      1,
+      1
+    ],
+    "keep": 0.5,
+    "validationGames": 24,
+    "finalGames": 500,
+    "trainingSeed": 20260901,
+    "validationSeed": 20261001,
+    "finalSeed": 20261101,
+    "seedStep": 100,
+    "step": 4,
+    "maxDepth": 1,
+    "openingPlies": [
+      4,
+      8,
+      12
+    ],
+    "openingPhases": [
+      "namua",
+      "mtaji"
+    ],
+    "mutatePhases": [
+      "namua",
+      "mtaji"
+    ],
+    "baselines": [
+      "default",
+      "bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+    ],
+    "minScore": 0.5,
+    "maxTacticalFailures": 0,
+    "tacticalPenalty": 0.08,
+    "promoteTop": 2,
+    "promoteDir": "bao-la-kiswahili/artifacts/phase9-promoted-medium",
+    "output": "bao-la-kiswahili/artifacts/phase9-tune-medium.json",
+    "json": false
+  },
+  "baselines": [
+    {
+      "name": "default",
+      "source": "default"
+    },
+    {
+      "name": "ai-weights-phase3",
+      "source": "bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "gamesPerBucket": 2,
+      "candidates": 12,
+      "survivors": 6,
+      "candidatesSummary": [
+        {
+          "name": "candidate-01",
+          "score": 0.625,
+          "rawScore": 0.625,
+          "games": 16,
+          "wins": 10,
+          "losses": 6,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-02",
+          "score": 0.625,
+          "rawScore": 0.625,
+          "games": 16,
+          "wins": 10,
+          "losses": 6,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-03",
+          "score": 0.4375,
+          "rawScore": 0.4375,
+          "games": 16,
+          "wins": 7,
+          "losses": 9,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-04",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 16,
+          "wins": 8,
+          "losses": 8,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-05",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 16,
+          "wins": 8,
+          "losses": 8,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-06",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 16,
+          "wins": 8,
+          "losses": 8,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-07",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 16,
+          "wins": 8,
+          "losses": 8,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-08",
+          "score": 0.375,
+          "rawScore": 0.375,
+          "games": 16,
+          "wins": 6,
+          "losses": 10,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-09",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 16,
+          "wins": 8,
+          "losses": 8,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-10",
+          "score": 0.375,
+          "rawScore": 0.375,
+          "games": 16,
+          "wins": 6,
+          "losses": 10,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-11",
+          "score": 0.625,
+          "rawScore": 0.625,
+          "games": 16,
+          "wins": 10,
+          "losses": 6,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-12",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 16,
+          "wins": 8,
+          "losses": 8,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "gamesPerBucket": 6,
+      "candidates": 6,
+      "survivors": 3,
+      "candidatesSummary": [
+        {
+          "name": "candidate-01",
+          "score": 0.5833333333333334,
+          "rawScore": 0.5833333333333334,
+          "games": 24,
+          "wins": 14,
+          "losses": 10,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-02",
+          "score": 0.5833333333333334,
+          "rawScore": 0.5833333333333334,
+          "games": 24,
+          "wins": 14,
+          "losses": 10,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-11",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-04",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-05",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-06",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "gamesPerBucket": 12,
+      "candidates": 3,
+      "survivors": 2,
+      "candidatesSummary": [
+        {
+          "name": "candidate-01",
+          "score": 0.5208333333333334,
+          "rawScore": 0.5208333333333334,
+          "games": 48,
+          "wins": 25,
+          "losses": 23,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-02",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-11",
+          "score": 0.5625,
+          "rawScore": 0.5625,
+          "games": 48,
+          "wins": 27,
+          "losses": 21,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        }
+      ]
+    }
+  ],
+  "finalists": [
+    {
+      "name": "candidate-11",
+      "weights": {
+        "namua": {
+          "boardSeeds": -3,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 2
+        },
+        "mtaji": {
+          "boardSeeds": 2,
+          "frontSeeds": 2,
+          "frontOccupied": 7,
+          "frontConnections": 4,
+          "reusablePits": 5,
+          "mobility": 3,
+          "captureMoves": 5,
+          "maxCapture": 8,
+          "relayShape": 5,
+          "frontSafety": 12,
+          "houseValue": 0,
+          "reserveEfficiency": 0,
+          "transitionShape": 0,
+          "tempo": 3
+        }
+      },
+      "changes": [
+        {
+          "phase": "namua",
+          "name": "boardSeeds",
+          "before": 1,
+          "after": -3
+        },
+        {
+          "phase": "mtaji",
+          "name": "relayShape",
+          "before": 1,
+          "after": 5
+        }
+      ],
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "categories": [
+        {
+          "baseline": "default",
+          "openingPhase": "namua",
+          "openingPlies": 12,
+          "games": 12,
+          "wins": 7,
+          "losses": 5,
+          "draws": 0,
+          "score": 0.5833333333333334,
+          "wilsonLower95": 0.3195113125495498,
+          "averageMoveMs": 33.37668471227915,
+          "maxMoveMs": 361.1023559999885,
+          "averageNodes": 22.568421052631578,
+          "timeouts": 0
+        },
+        {
+          "baseline": "default",
+          "openingPhase": "mtaji",
+          "openingPlies": 4,
+          "games": 12,
+          "wins": 5,
+          "losses": 7,
+          "draws": 0,
+          "score": 0.4166666666666667,
+          "wilsonLower95": 0.19326031365875665,
+          "averageMoveMs": 15.24832031944162,
+          "maxMoveMs": 61.76475199998822,
+          "averageNodes": 16.65277777777778,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "games": 12,
+          "wins": 8,
+          "losses": 4,
+          "draws": 0,
+          "score": 0.6666666666666666,
+          "wilsonLower95": 0.39062208887279953,
+          "averageMoveMs": 29.373081333336184,
+          "maxMoveMs": 297.37270599999465,
+          "averageNodes": 21.650793650793652,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "games": 12,
+          "wins": 7,
+          "losses": 5,
+          "draws": 0,
+          "score": 0.5833333333333334,
+          "wilsonLower95": 0.3195113125495498,
+          "averageMoveMs": 10.461508208333624,
+          "maxMoveMs": 51.814440999994986,
+          "averageNodes": 13.430555555555555,
+          "timeouts": 0
+        }
+      ],
+      "validation": {
+        "details": [
+          {
+            "baseline": "default",
+            "seed": 20261001,
+            "openingPhase": "namua",
+            "openingPlies": 12,
+            "wins": 4,
+            "losses": 2,
+            "draws": 0,
+            "score": 0.6666666666666666,
+            "timeouts": 0
+          },
+          {
+            "baseline": "default",
+            "seed": 20261002,
+            "openingPhase": "mtaji",
+            "openingPlies": 8,
+            "wins": 3,
+            "losses": 3,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261101,
+            "openingPhase": "namua",
+            "openingPlies": 4,
+            "wins": 3,
+            "losses": 3,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261102,
+            "openingPhase": "mtaji",
+            "openingPlies": 12,
+            "wins": 3,
+            "losses": 3,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          }
+        ],
+        "games": 24,
+        "wins": 13,
+        "losses": 11,
+        "draws": 0,
+        "score": 0.5416666666666666,
+        "wilsonLower95": 0.3507486535891948,
+        "averageMoveMs": 28.716367508950785,
+        "maxMoveMs": 280.19988099997863,
+        "averageNodes": 21.132992327365727,
+        "timeouts": 0
+      },
+      "eligible": true,
+      "candidatePath": "bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json",
+      "finalVerificationCommands": [
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261101 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 12 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261102 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 8 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261201 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 4 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261202 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 12 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+      ]
+    },
+    {
+      "name": "candidate-02",
+      "weights": {
+        "namua": {
+          "boardSeeds": -3,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 6
+        },
+        "mtaji": {
+          "boardSeeds": 2,
+          "frontSeeds": 2,
+          "frontOccupied": 7,
+          "frontConnections": 4,
+          "reusablePits": 5,
+          "mobility": 3,
+          "captureMoves": 5,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 12,
+          "houseValue": 0,
+          "reserveEfficiency": 0,
+          "transitionShape": 0,
+          "tempo": 3
+        }
+      },
+      "changes": [
+        {
+          "phase": "namua",
+          "name": "boardSeeds",
+          "before": 1,
+          "after": -3
+        },
+        {
+          "phase": "namua",
+          "name": "tempo",
+          "before": 2,
+          "after": 6
+        }
+      ],
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "categories": [
+        {
+          "baseline": "default",
+          "openingPhase": "namua",
+          "openingPlies": 12,
+          "games": 12,
+          "wins": 6,
+          "losses": 6,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.2537815976337061,
+          "averageMoveMs": 34.98150952189696,
+          "maxMoveMs": 345.95969699998386,
+          "averageNodes": 22.934306569343065,
+          "timeouts": 0
+        },
+        {
+          "baseline": "default",
+          "openingPhase": "mtaji",
+          "openingPlies": 4,
+          "games": 12,
+          "wins": 6,
+          "losses": 6,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.2537815976337061,
+          "averageMoveMs": 14.712855311691936,
+          "maxMoveMs": 48.594831999973394,
+          "averageNodes": 16.350649350649352,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "games": 12,
+          "wins": 8,
+          "losses": 4,
+          "draws": 0,
+          "score": 0.6666666666666666,
+          "wilsonLower95": 0.39062208887279953,
+          "averageMoveMs": 28.372415313097914,
+          "maxMoveMs": 278.76591199997347,
+          "averageNodes": 21.80511182108626,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "games": 12,
+          "wins": 6,
+          "losses": 6,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.2537815976337061,
+          "averageMoveMs": 9.14782925397213,
+          "maxMoveMs": 50.1183660000097,
+          "averageNodes": 12.380952380952381,
+          "timeouts": 0
+        }
+      ],
+      "validation": {
+        "details": [
+          {
+            "baseline": "default",
+            "seed": 20261001,
+            "openingPhase": "namua",
+            "openingPlies": 12,
+            "wins": 4,
+            "losses": 2,
+            "draws": 0,
+            "score": 0.6666666666666666,
+            "timeouts": 0
+          },
+          {
+            "baseline": "default",
+            "seed": 20261002,
+            "openingPhase": "mtaji",
+            "openingPlies": 8,
+            "wins": 3,
+            "losses": 3,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261101,
+            "openingPhase": "namua",
+            "openingPlies": 4,
+            "wins": 3,
+            "losses": 3,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261102,
+            "openingPhase": "mtaji",
+            "openingPlies": 12,
+            "wins": 3,
+            "losses": 3,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          }
+        ],
+        "games": 24,
+        "wins": 13,
+        "losses": 11,
+        "draws": 0,
+        "score": 0.5416666666666666,
+        "wilsonLower95": 0.3507486535891948,
+        "averageMoveMs": 28.892613990826575,
+        "maxMoveMs": 446.56036299996777,
+        "averageNodes": 20.626146788990827,
+        "timeouts": 0
+      },
+      "eligible": true,
+      "candidatePath": "bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json",
+      "finalVerificationCommands": [
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261101 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 12 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261102 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 8 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261201 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 4 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261202 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 12 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+      ]
+    }
+  ],
+  "promoted": [
+    {
+      "name": "candidate-11",
+      "candidatePath": "bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json",
+      "finalVerificationCommands": [
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261101 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 12 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261102 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 8 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261201 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 4 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261202 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-11.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 12 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+      ]
+    },
+    {
+      "name": "candidate-02",
+      "candidatePath": "bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json",
+      "finalVerificationCommands": [
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261101 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 12 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261102 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 8 --max-turns 300 --json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261201 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase namua --opening-plies 4 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json",
+        "node bao-la-kiswahili/tools/benchmark.js --games 125 --seed 20261202 --first hard --second hard --first-profile bao --second-profile bao --first-search phase2 --second-search phase2 --first-weights bao-la-kiswahili/artifacts/phase9-promoted-medium/candidate-02.json --time-limit 0 --max-depth 1 --opening-phase mtaji --opening-plies 12 --max-turns 300 --json --second-weights bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+      ]
+    }
+  ]
+}

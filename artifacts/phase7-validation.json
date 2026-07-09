@@ -1,0 +1,240 @@
+{
+  "config": {
+    "input": "bao-la-kiswahili/artifacts/phase7-grid.json",
+    "candidates": [],
+    "games": 4,
+    "seed": 20260760,
+    "repeats": 1,
+    "seedStep": 100,
+    "openingPlies": [
+      4,
+      8
+    ],
+    "openingPhases": [
+      "namua",
+      "mtaji"
+    ],
+    "timeLimitMs": 120,
+    "maxDepth": 3,
+    "maxTurns": 80,
+    "minScore": 0.5,
+    "maxTacticalFailures": 0,
+    "output": "bao-la-kiswahili/artifacts/phase7-validation.json",
+    "json": false
+  },
+  "candidates": [
+    {
+      "name": "endurance-light",
+      "adjustments": {
+        "namua-opening": {
+          "frontOccupied": 1,
+          "reserveEfficiency": 1
+        },
+        "namua-midgame": {},
+        "namua-endgame": {
+          "transitionShape": 3,
+          "frontConnections": 1,
+          "houseValue": 3
+        },
+        "mtaji-attack": {
+          "maxCapture": 2,
+          "captureMoves": 1,
+          "tempo": 1
+        },
+        "mtaji-endurance": {
+          "mobility": 1,
+          "frontOccupied": 1,
+          "frontSafety": 2,
+          "maxCapture": -1
+        },
+        "mtaji-closing": {
+          "boardSeeds": 1,
+          "frontOccupied": 1,
+          "frontSafety": 2
+        },
+        "mtaji-balanced": {}
+      },
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "eligible": true,
+      "details": [
+        {
+          "repeat": 1,
+          "seed": 20260760,
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "score": 0.5,
+          "averageMoveMs": 90.3977136555557,
+          "timeouts": 46
+        },
+        {
+          "repeat": 1,
+          "seed": 20260761,
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "score": 0.5,
+          "averageMoveMs": 71.24084319999966,
+          "timeouts": 6
+        }
+      ],
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "draws": 0,
+      "score": 0.5,
+      "averageMoveMs": 86.91464630000006,
+      "maxMoveMs": 145.77012200000172,
+      "averageNodes": 101.2,
+      "timeouts": 52
+    },
+    {
+      "name": "namua-transition-heavy",
+      "adjustments": {
+        "namua-opening": {
+          "frontOccupied": 1,
+          "reserveEfficiency": 1
+        },
+        "namua-midgame": {},
+        "namua-endgame": {
+          "transitionShape": 4,
+          "frontConnections": 2,
+          "houseValue": 4
+        },
+        "mtaji-attack": {
+          "maxCapture": 2,
+          "captureMoves": 1,
+          "tempo": 1
+        },
+        "mtaji-endurance": {
+          "mobility": 2,
+          "frontOccupied": 2,
+          "frontSafety": 3,
+          "maxCapture": -2
+        },
+        "mtaji-closing": {
+          "boardSeeds": 1,
+          "frontOccupied": 1,
+          "frontSafety": 2
+        },
+        "mtaji-balanced": {}
+      },
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "eligible": false,
+      "details": [
+        {
+          "repeat": 1,
+          "seed": 20260760,
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "score": 0.25,
+          "averageMoveMs": 80.8304742948716,
+          "timeouts": 34
+        },
+        {
+          "repeat": 1,
+          "seed": 20260761,
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "score": 0.5,
+          "averageMoveMs": 74.41289115000018,
+          "timeouts": 6
+        }
+      ],
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "draws": 0,
+      "score": 0.375,
+      "averageMoveMs": 79.52076344897948,
+      "maxMoveMs": 142.7838100000008,
+      "averageNodes": 98.0204081632653,
+      "timeouts": 40
+    },
+    {
+      "name": "endurance-heavy",
+      "adjustments": {
+        "namua-opening": {
+          "frontOccupied": 1,
+          "reserveEfficiency": 1
+        },
+        "namua-midgame": {},
+        "namua-endgame": {
+          "transitionShape": 3,
+          "frontConnections": 1,
+          "houseValue": 3
+        },
+        "mtaji-attack": {
+          "maxCapture": 2,
+          "captureMoves": 1,
+          "tempo": 1
+        },
+        "mtaji-endurance": {
+          "mobility": 3,
+          "frontOccupied": 3,
+          "frontSafety": 4,
+          "maxCapture": -3
+        },
+        "mtaji-closing": {
+          "boardSeeds": 1,
+          "frontOccupied": 1,
+          "frontSafety": 2
+        },
+        "mtaji-balanced": {}
+      },
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "eligible": false,
+      "details": [
+        {
+          "repeat": 1,
+          "seed": 20260760,
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "wins": 1,
+          "losses": 3,
+          "draws": 0,
+          "score": 0.25,
+          "averageMoveMs": 83.24801282500002,
+          "timeouts": 35
+        },
+        {
+          "repeat": 1,
+          "seed": 20260761,
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "wins": 2,
+          "losses": 2,
+          "draws": 0,
+          "score": 0.5,
+          "averageMoveMs": 73.70362419230766,
+          "timeouts": 6
+        }
+      ],
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "draws": 0,
+      "score": 0.375,
+      "averageMoveMs": 80.90693636792454,
+      "maxMoveMs": 160.07673400000022,
+      "averageNodes": 95.40566037735849,
+      "timeouts": 41
+    }
+  ]
+}

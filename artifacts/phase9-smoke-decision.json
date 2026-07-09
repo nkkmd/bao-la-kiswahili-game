@@ -1,0 +1,42 @@
+{
+  "config": {
+    "input": "bao-la-kiswahili/artifacts/phase9-tune-smoke.json",
+    "candidate": "candidate-01",
+    "finalReports": [],
+    "minScore": 0.5,
+    "minGames": 500,
+    "minWilson": 0.5,
+    "maxTacticalFailures": 0,
+    "output": "bao-la-kiswahili/artifacts/phase9-smoke-decision.json",
+    "json": false
+  },
+  "candidates": [
+    {
+      "name": "candidate-01",
+      "source": "validation",
+      "games": 8,
+      "wins": 5,
+      "losses": 3,
+      "draws": 0,
+      "score": 0.625,
+      "wilsonLower95": 0.3057423946026273,
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": 0,
+      "tacticalOk": true,
+      "scoreOk": true,
+      "enoughGames": false,
+      "wilsonOk": false,
+      "targetGames": 500,
+      "additionalGamesNeeded": 492,
+      "minimumSuccessesForWilson": 272,
+      "minimumScoreForWilson": 0.544,
+      "averageMoveMs": 33.474172846625954,
+      "maxMoveMs": 431.161798000001,
+      "averageNodes": 19.098159509202453,
+      "timeouts": 0,
+      "finalDetails": [],
+      "decision": "long-run-candidate"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "namua-opening": {
+    "frontOccupied": 1,
+    "reserveEfficiency": 1
+  },
+  "namua-midgame": {},
+  "namua-endgame": {
+    "transitionShape": 3,
+    "frontConnections": 1,
+    "houseValue": 3
+  },
+  "mtaji-attack": {
+    "maxCapture": 2,
+    "captureMoves": 1,
+    "tempo": 1
+  },
+  "mtaji-endurance": {
+    "mobility": 3,
+    "frontOccupied": 3,
+    "frontSafety": 4,
+    "maxCapture": -3
+  },
+  "mtaji-closing": {
+    "boardSeeds": 1,
+    "frontOccupied": 1,
+    "frontSafety": 2
+  },
+  "mtaji-balanced": {}
+}

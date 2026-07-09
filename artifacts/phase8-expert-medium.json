@@ -1,0 +1,133 @@
+{
+  "config": {
+    "games": 4,
+    "seed": 20260940,
+    "repeats": 1,
+    "levels": [
+      "expert"
+    ],
+    "openingPlies": [
+      4
+    ],
+    "openingPhases": [
+      "namua",
+      "mtaji"
+    ],
+    "timeLimitMs": 1500,
+    "maxDepth": 10,
+    "maxTurns": 24,
+    "output": "bao-la-kiswahili/artifacts/phase8-expert-medium.json",
+    "json": false
+  },
+  "summary": {
+    "adaptive": {
+      "wins": 2,
+      "losses": 2,
+      "draws": 4,
+      "winRate": 0.25,
+      "averageMoveMs": 809.6026154706419,
+      "maxMoveMs": 1892.699775000001,
+      "averageAllocatedMs": 1556.4176136363635,
+      "maxAllocatedMs": 1939,
+      "averageDepth": 5.049242424242424,
+      "timeouts": 29,
+      "earlyStops": 41,
+      "averageAdaptiveComplexity": 0.08347537878787882
+    },
+    "fixed": {
+      "wins": 2,
+      "losses": 2,
+      "draws": 4,
+      "winRate": 0.25,
+      "averageMoveMs": 1437.1253459147736,
+      "maxMoveMs": 1516.0759249999974,
+      "averageAllocatedMs": 1500,
+      "maxAllocatedMs": 1500,
+      "averageDepth": 6.362689393939394,
+      "timeouts": 68,
+      "earlyStops": 0,
+      "averageAdaptiveComplexity": 0
+    },
+    "deltas": {
+      "winRate": 0,
+      "averageMoveMs": -627.5227304441316,
+      "maxMoveMs": 376.6238500000036,
+      "timeouts": -39,
+      "earlyStops": 41
+    }
+  },
+  "scenarios": [
+    {
+      "repeat": 0,
+      "level": "expert",
+      "openingPhase": "namua",
+      "openingPlies": 4,
+      "seed": 20260940,
+      "adaptive": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 4,
+        "winRate": 0,
+        "averageMoveMs": 1004.4426193958328,
+        "maxMoveMs": 1892.699775000001,
+        "averageAllocatedMs": 1517.5625,
+        "maxAllocatedMs": 1871,
+        "averageDepth": 4.916666666666667,
+        "maxDepth": 7,
+        "timeouts": 25,
+        "earlyStops": 23,
+        "averageAdaptiveComplexity": 0.026041666666666685
+      },
+      "fixed": {
+        "wins": 0,
+        "losses": 0,
+        "draws": 4,
+        "winRate": 0,
+        "averageMoveMs": 1504.3152293750002,
+        "maxMoveMs": 1512.580797,
+        "averageAllocatedMs": 1500,
+        "maxAllocatedMs": 1500,
+        "averageDepth": 5.770833333333333,
+        "maxDepth": 9,
+        "timeouts": 48,
+        "earlyStops": 0
+      }
+    },
+    {
+      "repeat": 0,
+      "level": "expert",
+      "openingPhase": "mtaji",
+      "openingPlies": 4,
+      "seed": 20260941,
+      "adaptive": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0,
+        "winRate": 0.5,
+        "averageMoveMs": 614.762611545451,
+        "maxMoveMs": 1813.5724380000029,
+        "averageAllocatedMs": 1595.2727272727273,
+        "maxAllocatedMs": 1939,
+        "averageDepth": 5.181818181818182,
+        "maxDepth": 7,
+        "timeouts": 4,
+        "earlyStops": 18,
+        "averageAdaptiveComplexity": 0.14090909090909096
+      },
+      "fixed": {
+        "wins": 2,
+        "losses": 2,
+        "draws": 0,
+        "winRate": 0.5,
+        "averageMoveMs": 1369.935462454547,
+        "maxMoveMs": 1516.0759249999974,
+        "averageAllocatedMs": 1500,
+        "maxAllocatedMs": 1500,
+        "averageDepth": 6.954545454545454,
+        "maxDepth": 10,
+        "timeouts": 20,
+        "earlyStops": 0
+      }
+    }
+  ]
+}

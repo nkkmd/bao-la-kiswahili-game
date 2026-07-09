@@ -1,0 +1,1128 @@
+{
+  "config": {
+    "candidates": 24,
+    "roundGames": [
+      2,
+      6,
+      20
+    ],
+    "roundRepeats": [
+      3,
+      2,
+      1
+    ],
+    "keep": 0.5,
+    "validationGames": 48,
+    "finalGames": 500,
+    "trainingSeed": 20260901,
+    "validationSeed": 20261001,
+    "finalSeed": 20261101,
+    "seedStep": 100,
+    "step": 4,
+    "maxDepth": 1,
+    "openingPlies": [
+      4,
+      8,
+      12
+    ],
+    "openingPhases": [
+      "namua",
+      "mtaji"
+    ],
+    "mutatePhases": [
+      "namua",
+      "mtaji"
+    ],
+    "baselines": [
+      "default",
+      "bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+    ],
+    "minScore": 0.5,
+    "maxTacticalFailures": 0,
+    "tacticalPenalty": 0.08,
+    "promoteTop": 2,
+    "promoteDir": "bao-la-kiswahili/artifacts/phase9-promoted-full",
+    "output": "bao-la-kiswahili/artifacts/phase9-tune-full.json",
+    "json": false
+  },
+  "baselines": [
+    {
+      "name": "default",
+      "source": "default"
+    },
+    {
+      "name": "ai-weights-phase3",
+      "source": "bao-la-kiswahili/artifacts/ai-weights-phase3.json"
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "gamesPerBucket": 2,
+      "candidates": 24,
+      "survivors": 12,
+      "candidatesSummary": [
+        {
+          "name": "candidate-01",
+          "score": 0.625,
+          "rawScore": 0.625,
+          "games": 24,
+          "wins": 15,
+          "losses": 9,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-02",
+          "score": 0.625,
+          "rawScore": 0.625,
+          "games": 24,
+          "wins": 15,
+          "losses": 9,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-03",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-04",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-05",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-06",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-07",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-08",
+          "score": 0.375,
+          "rawScore": 0.375,
+          "games": 24,
+          "wins": 9,
+          "losses": 15,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-09",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-10",
+          "score": 0.375,
+          "rawScore": 0.375,
+          "games": 24,
+          "wins": 9,
+          "losses": 15,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-11",
+          "score": 0.625,
+          "rawScore": 0.625,
+          "games": 24,
+          "wins": 15,
+          "losses": 9,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-12",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-13",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-14",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-15",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-16",
+          "score": 0.4583333333333333,
+          "rawScore": 0.4583333333333333,
+          "games": 24,
+          "wins": 11,
+          "losses": 13,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-17",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-18",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-19",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-20",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-21",
+          "score": 0.4583333333333333,
+          "rawScore": 0.4583333333333333,
+          "games": 24,
+          "wins": 11,
+          "losses": 13,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-22",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-23",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 24,
+          "wins": 12,
+          "losses": 12,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-24",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 24,
+          "wins": 13,
+          "losses": 11,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "gamesPerBucket": 6,
+      "candidates": 12,
+      "survivors": 6,
+      "candidatesSummary": [
+        {
+          "name": "candidate-01",
+          "score": 0.5208333333333334,
+          "rawScore": 0.5208333333333334,
+          "games": 48,
+          "wins": 25,
+          "losses": 23,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-02",
+          "score": 0.5,
+          "rawScore": 0.5,
+          "games": 48,
+          "wins": 24,
+          "losses": 24,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-11",
+          "score": 0.4791666666666667,
+          "rawScore": 0.4791666666666667,
+          "games": 48,
+          "wins": 23,
+          "losses": 25,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-04",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-05",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-06",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-12",
+          "score": 0.5208333333333334,
+          "rawScore": 0.5208333333333334,
+          "games": 48,
+          "wins": 25,
+          "losses": 23,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-14",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-15",
+          "score": 0.5208333333333334,
+          "rawScore": 0.5208333333333334,
+          "games": 48,
+          "wins": 25,
+          "losses": 23,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-17",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-18",
+          "score": 0.5208333333333334,
+          "rawScore": 0.5208333333333334,
+          "games": 48,
+          "wins": 25,
+          "losses": 23,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-22",
+          "score": 0.5416666666666666,
+          "rawScore": 0.5416666666666666,
+          "games": 48,
+          "wins": 26,
+          "losses": 22,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "gamesPerBucket": 20,
+      "candidates": 6,
+      "survivors": 3,
+      "candidatesSummary": [
+        {
+          "name": "candidate-04",
+          "score": 0.5375,
+          "rawScore": 0.5375,
+          "games": 80,
+          "wins": 43,
+          "losses": 37,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-05",
+          "score": 0.5375,
+          "rawScore": 0.5375,
+          "games": 80,
+          "wins": 43,
+          "losses": 37,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-06",
+          "score": 0.5125,
+          "rawScore": 0.5125,
+          "games": 80,
+          "wins": 41,
+          "losses": 39,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-14",
+          "score": 0.5125,
+          "rawScore": 0.5125,
+          "games": 80,
+          "wins": 41,
+          "losses": 39,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-17",
+          "score": 0.5125,
+          "rawScore": 0.5125,
+          "games": 80,
+          "wins": 41,
+          "losses": 39,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        },
+        {
+          "name": "candidate-22",
+          "score": 0.5375,
+          "rawScore": 0.5375,
+          "games": 80,
+          "wins": 43,
+          "losses": 37,
+          "draws": 0,
+          "tacticalPassed": 7,
+          "tacticalTotal": 7,
+          "tacticalFailures": []
+        }
+      ]
+    }
+  ],
+  "finalists": [
+    {
+      "name": "candidate-05",
+      "weights": {
+        "namua": {
+          "boardSeeds": 1,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 2
+        },
+        "mtaji": {
+          "boardSeeds": 2,
+          "frontSeeds": 2,
+          "frontOccupied": 3,
+          "frontConnections": 4,
+          "reusablePits": 5,
+          "mobility": -1,
+          "captureMoves": 5,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": 0,
+          "reserveEfficiency": 0,
+          "transitionShape": 0,
+          "tempo": 3
+        }
+      },
+      "changes": [
+        {
+          "phase": "mtaji",
+          "name": "frontOccupied",
+          "before": 7,
+          "after": 3
+        },
+        {
+          "phase": "mtaji",
+          "name": "mobility",
+          "before": 3,
+          "after": -1
+        },
+        {
+          "phase": "mtaji",
+          "name": "frontSafety",
+          "before": 12,
+          "after": 8
+        }
+      ],
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "categories": [
+        {
+          "baseline": "default",
+          "openingPhase": "namua",
+          "openingPlies": 12,
+          "games": 20,
+          "wins": 10,
+          "losses": 10,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.29929800819821234,
+          "averageMoveMs": 17.518601147367583,
+          "maxMoveMs": 143.77623300009873,
+          "averageNodes": 20.707894736842107,
+          "timeouts": 0
+        },
+        {
+          "baseline": "default",
+          "openingPhase": "mtaji",
+          "openingPlies": 4,
+          "games": 20,
+          "wins": 10,
+          "losses": 10,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.29929800819821234,
+          "averageMoveMs": 7.6224734838704595,
+          "maxMoveMs": 40.8823379999958,
+          "averageNodes": 15.016129032258064,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "games": 20,
+          "wins": 12,
+          "losses": 8,
+          "draws": 0,
+          "score": 0.6,
+          "wilsonLower95": 0.38658150076225317,
+          "averageMoveMs": 19.382130867856695,
+          "maxMoveMs": 149.55328500003088,
+          "averageNodes": 21.8875,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "games": 20,
+          "wins": 11,
+          "losses": 9,
+          "draws": 0,
+          "score": 0.55,
+          "wilsonLower95": 0.3420853424503424,
+          "averageMoveMs": 7.679558566664734,
+          "maxMoveMs": 43.24712700000964,
+          "averageNodes": 14.308333333333334,
+          "timeouts": 0
+        }
+      ],
+      "validation": {
+        "details": [
+          {
+            "baseline": "default",
+            "seed": 20261001,
+            "openingPhase": "namua",
+            "openingPlies": 12,
+            "wins": 7,
+            "losses": 5,
+            "draws": 0,
+            "score": 0.5833333333333334,
+            "timeouts": 0
+          },
+          {
+            "baseline": "default",
+            "seed": 20261002,
+            "openingPhase": "mtaji",
+            "openingPlies": 8,
+            "wins": 5,
+            "losses": 7,
+            "draws": 0,
+            "score": 0.4166666666666667,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261101,
+            "openingPhase": "namua",
+            "openingPlies": 4,
+            "wins": 5,
+            "losses": 7,
+            "draws": 0,
+            "score": 0.4166666666666667,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261102,
+            "openingPhase": "mtaji",
+            "openingPlies": 12,
+            "wins": 6,
+            "losses": 6,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          }
+        ],
+        "games": 48,
+        "wins": 23,
+        "losses": 25,
+        "draws": 0,
+        "score": 0.4791666666666667,
+        "wilsonLower95": 0.34471316176951616,
+        "averageMoveMs": 17.473887381302383,
+        "maxMoveMs": 166.74579900002573,
+        "averageNodes": 21.02829028290283,
+        "timeouts": 0
+      },
+      "eligible": false
+    },
+    {
+      "name": "candidate-04",
+      "weights": {
+        "namua": {
+          "boardSeeds": 1,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 2
+        },
+        "mtaji": {
+          "boardSeeds": 2,
+          "frontSeeds": 2,
+          "frontOccupied": 7,
+          "frontConnections": 4,
+          "reusablePits": 5,
+          "mobility": 3,
+          "captureMoves": 9,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 12,
+          "houseValue": 0,
+          "reserveEfficiency": 4,
+          "transitionShape": 0,
+          "tempo": 3
+        }
+      },
+      "changes": [
+        {
+          "phase": "mtaji",
+          "name": "captureMoves",
+          "before": 5,
+          "after": 9
+        },
+        {
+          "phase": "mtaji",
+          "name": "reserveEfficiency",
+          "before": 0,
+          "after": 4
+        }
+      ],
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "categories": [
+        {
+          "baseline": "default",
+          "openingPhase": "namua",
+          "openingPlies": 12,
+          "games": 20,
+          "wins": 10,
+          "losses": 10,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.29929800819821234,
+          "averageMoveMs": 17.069086949371062,
+          "maxMoveMs": 131.71090200007893,
+          "averageNodes": 20.51645569620253,
+          "timeouts": 0
+        },
+        {
+          "baseline": "default",
+          "openingPhase": "mtaji",
+          "openingPlies": 4,
+          "games": 20,
+          "wins": 10,
+          "losses": 10,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.29929800819821234,
+          "averageMoveMs": 7.4119613628980945,
+          "maxMoveMs": 29.817070999997668,
+          "averageNodes": 14.991935483870968,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "games": 20,
+          "wins": 11,
+          "losses": 9,
+          "draws": 0,
+          "score": 0.55,
+          "wilsonLower95": 0.3420853424503424,
+          "averageMoveMs": 20.15359229462942,
+          "maxMoveMs": 181.54320800001733,
+          "averageNodes": 21.897746967071058,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "games": 20,
+          "wins": 12,
+          "losses": 8,
+          "draws": 0,
+          "score": 0.6,
+          "wilsonLower95": 0.38658150076225317,
+          "averageMoveMs": 8.491645534246146,
+          "maxMoveMs": 52.12653899996076,
+          "averageNodes": 15.595890410958905,
+          "timeouts": 0
+        }
+      ],
+      "validation": {
+        "details": [
+          {
+            "baseline": "default",
+            "seed": 20261001,
+            "openingPhase": "namua",
+            "openingPlies": 12,
+            "wins": 6,
+            "losses": 6,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          },
+          {
+            "baseline": "default",
+            "seed": 20261002,
+            "openingPhase": "mtaji",
+            "openingPlies": 8,
+            "wins": 5,
+            "losses": 7,
+            "draws": 0,
+            "score": 0.4166666666666667,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261101,
+            "openingPhase": "namua",
+            "openingPlies": 4,
+            "wins": 5,
+            "losses": 7,
+            "draws": 0,
+            "score": 0.4166666666666667,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261102,
+            "openingPhase": "mtaji",
+            "openingPlies": 12,
+            "wins": 6,
+            "losses": 6,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          }
+        ],
+        "games": 48,
+        "wins": 22,
+        "losses": 26,
+        "draws": 0,
+        "score": 0.4583333333333333,
+        "wilsonLower95": 0.32575242292867446,
+        "averageMoveMs": 17.077268952551858,
+        "maxMoveMs": 166.7657350000227,
+        "averageNodes": 20.912218268090154,
+        "timeouts": 0
+      },
+      "eligible": false
+    },
+    {
+      "name": "candidate-22",
+      "weights": {
+        "namua": {
+          "boardSeeds": 1,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 2
+        },
+        "mtaji": {
+          "boardSeeds": 2,
+          "frontSeeds": 2,
+          "frontOccupied": 11,
+          "frontConnections": 4,
+          "reusablePits": 5,
+          "mobility": 3,
+          "captureMoves": 9,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 12,
+          "houseValue": 0,
+          "reserveEfficiency": 4,
+          "transitionShape": 0,
+          "tempo": 3
+        }
+      },
+      "changes": [
+        {
+          "phase": "mtaji",
+          "name": "frontOccupied",
+          "before": 7,
+          "after": 11
+        },
+        {
+          "phase": "mtaji",
+          "name": "captureMoves",
+          "before": 5,
+          "after": 9
+        },
+        {
+          "phase": "mtaji",
+          "name": "reserveEfficiency",
+          "before": 0,
+          "after": 4
+        }
+      ],
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": [],
+      "categories": [
+        {
+          "baseline": "default",
+          "openingPhase": "namua",
+          "openingPlies": 12,
+          "games": 20,
+          "wins": 10,
+          "losses": 10,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.29929800819821234,
+          "averageMoveMs": 16.91581933924168,
+          "maxMoveMs": 132.069719000021,
+          "averageNodes": 20.51645569620253,
+          "timeouts": 0
+        },
+        {
+          "baseline": "default",
+          "openingPhase": "mtaji",
+          "openingPlies": 4,
+          "games": 20,
+          "wins": 10,
+          "losses": 10,
+          "draws": 0,
+          "score": 0.5,
+          "wilsonLower95": 0.29929800819821234,
+          "averageMoveMs": 7.313999467745288,
+          "maxMoveMs": 28.91856000002008,
+          "averageNodes": 14.975806451612904,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "namua",
+          "openingPlies": 4,
+          "games": 20,
+          "wins": 11,
+          "losses": 9,
+          "draws": 0,
+          "score": 0.55,
+          "wilsonLower95": 0.3420853424503424,
+          "averageMoveMs": 21.328245795990867,
+          "maxMoveMs": 364.55247400002554,
+          "averageNodes": 21.423076923076923,
+          "timeouts": 0
+        },
+        {
+          "baseline": "ai-weights-phase3",
+          "openingPhase": "mtaji",
+          "openingPlies": 8,
+          "games": 20,
+          "wins": 12,
+          "losses": 8,
+          "draws": 0,
+          "score": 0.6,
+          "wilsonLower95": 0.38658150076225317,
+          "averageMoveMs": 8.395368239729926,
+          "maxMoveMs": 52.60693700006232,
+          "averageNodes": 15.582191780821917,
+          "timeouts": 0
+        }
+      ],
+      "validation": {
+        "details": [
+          {
+            "baseline": "default",
+            "seed": 20261001,
+            "openingPhase": "namua",
+            "openingPlies": 12,
+            "wins": 6,
+            "losses": 6,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          },
+          {
+            "baseline": "default",
+            "seed": 20261002,
+            "openingPhase": "mtaji",
+            "openingPlies": 8,
+            "wins": 5,
+            "losses": 7,
+            "draws": 0,
+            "score": 0.4166666666666667,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261101,
+            "openingPhase": "namua",
+            "openingPlies": 4,
+            "wins": 5,
+            "losses": 7,
+            "draws": 0,
+            "score": 0.4166666666666667,
+            "timeouts": 0
+          },
+          {
+            "baseline": "ai-weights-phase3",
+            "seed": 20261102,
+            "openingPhase": "mtaji",
+            "openingPlies": 12,
+            "wins": 6,
+            "losses": 6,
+            "draws": 0,
+            "score": 0.5,
+            "timeouts": 0
+          }
+        ],
+        "games": 48,
+        "wins": 22,
+        "losses": 26,
+        "draws": 0,
+        "score": 0.4583333333333333,
+        "wilsonLower95": 0.32575242292867446,
+        "averageMoveMs": 17.650000499404914,
+        "maxMoveMs": 170.65072200004943,
+        "averageNodes": 20.68176400476758,
+        "timeouts": 0
+      },
+      "eligible": false
+    }
+  ],
+  "promoted": []
+}

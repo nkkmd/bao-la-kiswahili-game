@@ -1,0 +1,13 @@
+{
+  "name": "Bao la Kiswahili / コンピュータ・2人対戦",
+  "short_name": "Bao",
+  "description": "コンピュータ対戦と2人対戦を選べるドット絵風Bao la Kiswahili",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#071011",
+  "theme_color": "#172c2b",
+  "icons": [{ "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

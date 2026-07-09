@@ -1,0 +1,35 @@
+{
+  "config": {
+    "input": "bao-la-kiswahili/artifacts/phase7-base-longrun.json",
+    "candidate": null,
+    "minScore": 0.5,
+    "minGames": 500,
+    "minWilson": 0.5,
+    "maxTacticalFailures": 0,
+    "output": null,
+    "json": false
+  },
+  "candidates": [
+    {
+      "name": "02-base",
+      "games": 500,
+      "wins": 259,
+      "losses": 241,
+      "draws": 0,
+      "score": 0.518,
+      "wilsonLower95": 0.47423211136791915,
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": 0,
+      "tacticalOk": true,
+      "scoreOk": true,
+      "enoughGames": true,
+      "wilsonOk": false,
+      "targetGames": 500,
+      "additionalGamesNeeded": 0,
+      "minimumSuccessesForWilson": 272,
+      "minimumScoreForWilson": 0.544,
+      "decision": "hold"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "config": {
+    "input": "bao-la-kiswahili/artifacts/phase7-base-validation.json",
+    "candidate": "base",
+    "minScore": 0.5,
+    "minGames": 500,
+    "minWilson": 0.5,
+    "maxTacticalFailures": 0,
+    "output": "bao-la-kiswahili/artifacts/phase7-base-decision.json",
+    "json": false
+  },
+  "candidates": [
+    {
+      "name": "02-base",
+      "games": 24,
+      "wins": 12,
+      "losses": 12,
+      "draws": 0,
+      "score": 0.5,
+      "wilsonLower95": 0.31427425819573357,
+      "tacticalPassed": 7,
+      "tacticalTotal": 7,
+      "tacticalFailures": 0,
+      "tacticalOk": true,
+      "scoreOk": true,
+      "enoughGames": false,
+      "wilsonOk": false,
+      "targetGames": 500,
+      "additionalGamesNeeded": 476,
+      "minimumSuccessesForWilson": 272,
+      "minimumScoreForWilson": 0.544,
+      "decision": "long-run-candidate"
+    }
+  ]
+}
