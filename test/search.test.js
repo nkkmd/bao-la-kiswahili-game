@@ -142,6 +142,33 @@ const AI = require("../public/ai.js");
 }
 
 {
+  const forcedWin = {
+    pits: [
+      [[1, 0, 0, 0, 0, 0, 0, 0], Array(8).fill(0)],
+      [[1, 1, 0, 0, 0, 0, 0, 2], Array(8).fill(0)],
+    ],
+    reserve: [0, 0],
+    houseOwned: [false, false],
+    player: 1,
+    phase: "mtaji",
+    winner: null,
+    reason: "",
+    turn: 50,
+    pending: [0, 0],
+  };
+  const baseline = AI.analyzeMove(forcedWin, "hard", () => 0, {
+    maxDepth: 4, timeLimitMs: Infinity, normalizeTtMateScores: false,
+  });
+  const normalized = AI.analyzeMove(forcedWin, "hard", () => 0, {
+    maxDepth: 4, timeLimitMs: Infinity, normalizeTtMateScores: true,
+  });
+  assert.equal(AI.moveKey(normalized.move), AI.moveKey(baseline.move),
+    "normalized TT mate scores preserve the immediate winning move");
+  assert.equal(E.applyMove(forcedWin, normalized.move).state.winner, 1,
+    "normalized TT mate scores preserve terminal priority");
+}
+
+{
   const position = E.initialState();
   position.pits = [
     [[1, 1, 1, 1, 0, 1, 1, 0], [1, 1, 1, 1, 0, 1, 1, 2]],

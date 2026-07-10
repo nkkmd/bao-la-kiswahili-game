@@ -53,5 +53,7 @@ Phase別の測定出力:
 - `phase11-eval-cache-capacity-256.json`: Phase 11の評価キャッシュ・256 entries確認
 - `phase11-eval-cache-500ms-namua.json`: Phase 11の評価キャッシュ・namua 500ms確認
 - `phase11-eval-cache-500ms-mtaji.json`: Phase 11の評価キャッシュ・mtaji 500ms確認
+- `phase11-tt-normalized.json`: Phase 11のTT終局距離正規化・固定深度比較
+- `phase11-tt-normalized-holdout.json`: Phase 11のTT終局距離正規化・未使用seed確認
 
 採用済みの評価重みの正本は`../public/ai-weights.js`です。このディレクトリ内のJSONは検証候補として扱います。

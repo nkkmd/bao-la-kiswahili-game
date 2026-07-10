@@ -53,4 +53,8 @@ assert.equal(evalCache.summary.moveMatches, 4,
 assert.ok(evalCache.summary.candidateEvaluations <= evalCache.summary.baselineEvaluations,
   "evaluation caching does not perform more full evaluations");
 
+const normalizedTt = runComparison({ ...options, candidate: "tt-normalized" });
+assert.equal(normalizedTt.summary.moveMatches, 4,
+  "normalized TT mate scores preserve shallow fixed-depth choices");
+
 console.log("Bao Phase 11 comparison tests passed");

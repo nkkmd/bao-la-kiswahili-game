@@ -58,6 +58,8 @@ function parseArgs(argv) {
     secondEvaluationCache: false,
     firstEvaluationCacheEntries: 50_000,
     secondEvaluationCacheEntries: 50_000,
+    firstNormalizeTtMateScores: false,
+    secondNormalizeTtMateScores: false,
     maxTurns: 300,
     openingPlies: 0,
     openingPhase: "any",
@@ -91,6 +93,12 @@ function parseArgs(argv) {
     if (arg === "--second-history-heuristic") { options.secondHistoryHeuristic = true; continue; }
     if (arg === "--first-evaluation-cache") { options.firstEvaluationCache = true; continue; }
     if (arg === "--second-evaluation-cache") { options.secondEvaluationCache = true; continue; }
+    if (arg === "--first-normalize-tt-mate-scores") {
+      options.firstNormalizeTtMateScores = true; continue;
+    }
+    if (arg === "--second-normalize-tt-mate-scores") {
+      options.secondNormalizeTtMateScores = true; continue;
+    }
     if (arg === "--games") options.games = integerArg(value, arg, 1);
     else if (arg === "--first-aspiration-window") {
       options.firstAspirationWindow = integerArg(value, arg, 1);
@@ -275,6 +283,9 @@ function runBenchmark(options) {
   const evaluationCacheEntries = [
     options.firstEvaluationCacheEntries, options.secondEvaluationCacheEntries,
   ];
+  const normalizeTtMateScoreFlags = [
+    options.firstNormalizeTtMateScores, options.secondNormalizeTtMateScores,
+  ];
   let pairedOpening = null;
 
   for (let game = 0; game < options.games; game += 1) {
@@ -302,6 +313,7 @@ function runBenchmark(options) {
         aspirationWindow: aspirationWindows[competitor],
         evaluationCache: evaluationCacheFlags[competitor],
         maxEvaluationCacheEntries: evaluationCacheEntries[competitor],
+        normalizeTtMateScores: normalizeTtMateScoreFlags[competitor],
         evaluationWeights: competitors[competitor].weights,
         evaluationAdjustments: competitors[competitor].adjustments,
       });

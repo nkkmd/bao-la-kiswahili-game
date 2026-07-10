@@ -30,6 +30,7 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
     "--first-evaluation-cache", "--second-evaluation-cache",
     "--first-evaluation-cache-entries", "1000",
     "--second-evaluation-cache-entries", "2000",
+    "--first-normalize-tt-mate-scores", "--second-normalize-tt-mate-scores",
     "--first-adjustments", adjustmentsPath,
     "--opening-phase", "namua",
     "--mcts-iterations", "16", "--mcts-playout-turns", "12", "--mcts-exploration", "1.1",
@@ -59,6 +60,8 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
   assert.equal(options.secondEvaluationCache, true);
   assert.equal(options.firstEvaluationCacheEntries, 1000);
   assert.equal(options.secondEvaluationCacheEntries, 2000);
+  assert.equal(options.firstNormalizeTtMateScores, true);
+  assert.equal(options.secondNormalizeTtMateScores, true);
   assert.equal(options.openingPhase, "namua");
   assert.equal(options.mctsIterations, 16);
   assert.equal(options.mctsPlayoutTurns, 12);

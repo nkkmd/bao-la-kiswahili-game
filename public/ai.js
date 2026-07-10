@@ -354,6 +354,23 @@
     return state.winner === player ? WIN - ply : -WIN + ply;
   }
 
+  function ttScore(value, ply) {
+    if (value > WIN / 2) return value + ply;
+    if (value < -WIN / 2) return value - ply;
+    return value;
+  }
+
+  function scoreFromTt(value, ply) {
+    if (value > WIN / 2) return value - ply;
+    if (value < -WIN / 2) return value + ply;
+    return value;
+  }
+
+  function transpositionKey(state, ply, normalizeMateScores) {
+    const key = stateKey(state);
+    return normalizeMateScores ? key : `${key}@${ply}`;
+  }
+
   function captureCount(events) {
     return events.filter((event) => event.kind === "capture")
       .reduce((total, event) => total + event.count, 0);
@@ -444,16 +461,18 @@
       context.evaluator, ply, context.quiescenceDepth, context.orderQuiescenceCaptures,
     );
 
-    const key = `${stateKey(state)}@${ply}`;
+    const key = transpositionKey(state, ply, context.normalizeTtMateScores);
     const originalAlpha = alpha;
     const originalBeta = beta;
     const cached = context.table.get(key);
     if (cached && cached.depth >= depth) {
       context.stats.cacheHits += 1;
-      if (cached.flag === "exact") return cached.value;
-      if (cached.flag === "lower") alpha = Math.max(alpha, cached.value);
-      else if (cached.flag === "upper") beta = Math.min(beta, cached.value);
-      if (alpha >= beta) return cached.value;
+      const cachedValue = context.normalizeTtMateScores
+        ? scoreFromTt(cached.value, ply) : cached.value;
+      if (cached.flag === "exact") return cachedValue;
+      if (cached.flag === "lower") alpha = Math.max(alpha, cachedValue);
+      else if (cached.flag === "upper") beta = Math.min(beta, cachedValue);
+      if (alpha >= beta) return cachedValue;
     }
 
     const choices = enhancedOrdered(
@@ -501,7 +520,8 @@
     }
 
     const flag = best <= originalAlpha ? "upper" : best >= originalBeta ? "lower" : "exact";
-    storeTable(context, key, { depth, value: best, flag, bestMove: moveKey(bestMove) });
+    const storedValue = context.normalizeTtMateScores ? ttScore(best, ply) : best;
+    storeTable(context, key, { depth, value: storedValue, flag, bestMove: moveKey(bestMove) });
     return best;
   }
 
@@ -843,6 +863,7 @@
         maxTableEntries: options.maxTableEntries ?? 50_000,
         ttMoveFirst: options.ttMoveFirst ?? false,
         orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
+        normalizeTtMateScores: options.normalizeTtMateScores ?? false,
       };
       let previousBestKey = moveKey(bestMove);
       let previousScore = null;
@@ -864,7 +885,9 @@
             score = enhancedSearch(state, depth, -Infinity, Infinity, player, context, 0);
           }
           previousScore = score;
-          const completed = context.table.get(`${stateKey(state)}@0`);
+          const completed = context.table.get(transpositionKey(
+            state, 0, context.normalizeTtMateScores,
+          ));
           if (completed?.bestMove) {
             bestMove = movesFor(state).find((move) => moveKey(move) === completed.bestMove) || bestMove;
           }

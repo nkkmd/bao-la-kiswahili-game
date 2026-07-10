@@ -52,7 +52,8 @@ function parseArgs(argv) {
   for (const phase of options.openingPhases) {
     if (!["namua", "mtaji"].includes(phase)) throw new Error(`Invalid opening phase: ${phase}`);
   }
-  if (!["tt-first", "q-capture", "history", "aspiration", "eval-cache"].includes(options.candidate)) {
+  if (!["tt-first", "q-capture", "history", "aspiration", "eval-cache", "tt-normalized"]
+    .includes(options.candidate)) {
     throw new Error(`Invalid candidate: ${options.candidate}`);
   }
   return options;
@@ -68,6 +69,7 @@ function search(position, maxDepth, candidate, aspirationWindow, evaluationCache
     aspirationWindow: candidate === "aspiration" ? aspirationWindow : 0,
     evaluationCache: candidate === "eval-cache",
     maxEvaluationCacheEntries: evaluationCacheEntries,
+    normalizeTtMateScores: candidate === "tt-normalized",
   });
 }
 
