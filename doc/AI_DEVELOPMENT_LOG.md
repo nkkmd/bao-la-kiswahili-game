@@ -1863,3 +1863,25 @@ cache容量:
 
 - export JSONを戦術fixture雛形へ変換する開発ツールを追加する
 - 期待手と理由は自動採用せず、人間の確認を必須にする
+
+### 2026-07-11: Phase 10 診断JSONからfixtureへの変換
+
+実装:
+
+- `tools/diagnostic-to-fixture.js`を追加した
+- 単一snapshot、snapshot配列、`--index`による1件選択へ対応した
+- エンジン互換state、観測AI手、観測探索深度を戦術ケース雛形へ出力する
+- `--output`指定時はファイル保存し、省略時は標準出力する
+
+安全策:
+
+- 期待手や避ける手を自動推定しない
+- 生成ケースのcategoryを`human-review`とする
+- 生成assertionは必ず失敗し、人間が根拠を確認するまで回帰テストとして通過しない
+- 元snapshotのversionと局面形式を`diagnostics.js`で検証する
+
+判断:
+
+- Phase 10の収集、export、fixture化の実装基盤は完了した
+- 実対局由来の反例はまだないため、Phase 10自体は進行中とする
+- 最低3件を探索不足、評価不足、期待手の誤認へ分類してからPhase 12の開始可否を判断する

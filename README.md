@@ -95,6 +95,16 @@ node test/tactical.test.js
 BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 ```
 
+ゲーム画面の「AI改善用診断」でコピーしたJSONから、レビュー用戦術ケースの雛形を生成できます。
+
+```sh
+node tools/diagnostic-to-fixture.js \
+  --input /path/to/diagnostic.json \
+  --output /tmp/bao-tactical-fixtures.js
+```
+
+生成される雛形は意図的に失敗するTODOを含みます。期待手とBao上の理由を人間が確認してから`test/tactical.test.js`へ移します。
+
 詳しいベンチマーク条件とベースライン結果は [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md) に記録しています。
 
 ## プロジェクト構成
