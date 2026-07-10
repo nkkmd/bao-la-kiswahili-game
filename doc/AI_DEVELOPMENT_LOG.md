@@ -1827,3 +1827,39 @@ cache容量:
 - 既定TTキーは探索plyを含む現在方式を維持する
 - Phase 11では評価キャッシュだけを採用し、探索順序候補は既定化しない
 - Phase 11を完了し、次はPhase 10の対人反例収集へ進む
+
+### 2026-07-11: Phase 10 ローカルAI診断ループ
+
+目的:
+
+人間が違和感を持ったAI着手を、個人情報や自動操作ログを収集せず、再現可能な局面JSONとして端末内に残す。
+
+実装:
+
+- `diagnostics.js`へ`bao-ai-diagnostic` version 1形式を追加した
+- 盤面、reserve、nyumba所有、手番、phase、勝者、turn、pendingを局面として保存する
+- AI情報はlevel、profile、着手、許可リスト化した探索統計だけを保存する
+- UIへ現在局面コピー、直前AI着手記録、記録コピー、記録削除を追加した
+- localStorage keyを`bao_ai_feedback_v1`とし、最大50件に制限した
+- Service Worker cacheをv20へ更新し、`diagnostics.js`をオフライン対象へ追加した
+- プライバシーポリシーへ保存内容、明示操作、上限、削除方法、外部へ自動送信しないことを追記した
+
+保存しない情報:
+
+- 自由記述
+- 氏名や対局者名
+- 端末・ブラウザ識別子
+- 保存時刻
+- AI着手以外の連続操作ログ
+
+検証:
+
+- snapshotからルールエンジン互換stateを復元できる
+- moveとstatsの未許可fieldを除外する
+- 最大件数、削除、JSON exportを単体テストで確認した
+- HTML操作、script順序、Service Worker cache、プライバシー文言を静的回帰で確認した
+
+次:
+
+- export JSONを戦術fixture雛形へ変換する開発ツールを追加する
+- 期待手と理由は自動採用せず、人間の確認を必須にする

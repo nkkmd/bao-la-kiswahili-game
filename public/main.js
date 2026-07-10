@@ -3,6 +3,7 @@
 const E = window.BaoEngine;
 const AI = window.BaoAI;
 const AIConfig = window.BaoAIConfig;
+const Diagnostics = window.BaoDiagnostics;
 const canvas = document.querySelector("#game");
 const ctx = canvas.getContext("2d");
 const statusNode = document.querySelector("#status");
@@ -16,6 +17,11 @@ const startScreen = document.querySelector("#start-screen");
 const startButton = document.querySelector("#start-game");
 const sideField = document.querySelector("#side-field");
 const playerSideSelect = document.querySelector("#player-side");
+const copyPositionButton = document.querySelector("#copy-position");
+const markAIMoveButton = document.querySelector("#mark-ai-move");
+const copyMarkedButton = document.querySelector("#copy-marked");
+const clearMarkedButton = document.querySelector("#clear-marked");
+const diagnosticStatus = document.querySelector("#diagnostic-status");
 ctx.imageSmoothingEnabled = false;
 
 const C = { night: "#071011", ink: "#172c2b", mid: "#34544a", soft: "#78998a", sky: "#a8c98b", pale: "#d3e4a5", gold: "#e2c36b", red: "#b95f5f" };
@@ -38,6 +44,7 @@ let aiGeneration = 0;
 let aiThinking = false;
 let started = false;
 let humanPlayer = 0;
+let lastAIDiagnostic = null;
 
 function isComputerGame() { return gameModeSelect.value === "computer"; }
 function isHumanTurn() { return !isComputerGame() || state.player === humanPlayer; }
@@ -55,6 +62,37 @@ function playerName(player) {
 function load(key, fallback) { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } }
 function save(key, value) { try { localStorage.setItem(key, value); } catch { /* optional */ } }
 function announce(message) { statusNode.textContent = ""; setTimeout(() => { statusNode.textContent = message; }, 20); }
+function diagnosticRecords() { return Diagnostics.readMarked(localStorage); }
+function updateDiagnosticStatus(message = "") {
+  const count = diagnosticRecords().length;
+  diagnosticStatus.textContent = message || `端末内の記録: ${count}件`;
+}
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const field = document.createElement("textarea");
+  field.value = text;
+  field.setAttribute("readonly", "");
+  field.style.position = "fixed";
+  field.style.opacity = "0";
+  document.body.append(field);
+  field.select();
+  const copied = document.execCommand("copy");
+  field.remove();
+  if (!copied) throw new Error("Clipboard unavailable");
+}
+async function copyDiagnostic(value, successMessage) {
+  try {
+    await copyText(Diagnostics.stringify(value));
+    updateDiagnosticStatus(successMessage);
+    announce(successMessage);
+  } catch {
+    updateDiagnosticStatus("コピーできませんでした");
+    announce("診断JSONをコピーできませんでした");
+  }
+}
 function tone(freq = 300, duration = .05) {
   if (!sound) return;
   audio ||= new (window.AudioContext || window.webkitAudioContext)();
@@ -150,6 +188,15 @@ function acceptAIMove(request, result) {
   if (!result.move) return;
   try {
     E.applyMove(state, result.move);
+    lastAIDiagnostic = Diagnostics.createSnapshot(request.state, {
+      mode: gameModeSelect.value,
+      ai: {
+        level: request.level,
+        profile: request.options.evaluationProfile || "bao",
+        move: result.move,
+        stats: result.stats,
+      },
+    });
     playMove(result.move);
   } catch {
     helpNode.textContent = "COMの着手を検証できませんでした";
@@ -467,6 +514,7 @@ canvas.addEventListener("keydown", (event) => {
 
 function resetGame() {
   cancelAI();
+  lastAIDiagnostic = null;
   state = E.initialState(); displayState = E.clone(state); moves = E.legalMoves(state);
   selected = null; choices = []; choiceBoxes = []; animation = null; afterMove();
 }
@@ -502,9 +550,42 @@ startButton.addEventListener("click", () => {
 });
 soundButton.addEventListener("click", () => { sound = !sound; save("bao_sound", sound ? "on" : "off"); soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`; soundButton.setAttribute("aria-pressed", String(sound)); if (sound) tone(); });
 speedButton.addEventListener("click", () => { fast = !fast; speedButton.textContent = `FAST ${fast ? "ON" : "OFF"}`; speedButton.setAttribute("aria-pressed", String(fast)); });
+copyPositionButton.addEventListener("click", () => {
+  const snapshot = Diagnostics.createSnapshot(state, { mode: gameModeSelect.value });
+  copyDiagnostic(snapshot, "現在局面をコピーしました");
+});
+markAIMoveButton.addEventListener("click", () => {
+  if (!lastAIDiagnostic) {
+    updateDiagnosticStatus("記録できるAI着手がまだありません");
+    announce("直前のAI着手がありません");
+    return;
+  }
+  const marked = { ...lastAIDiagnostic, reason: "unexpected-ai-move" };
+  const records = Diagnostics.markSnapshot(localStorage, marked);
+  updateDiagnosticStatus(`AI着手を保存しました（端末内: ${records.length}件）`);
+  announce("直前のAI着手をこの端末に保存しました");
+});
+copyMarkedButton.addEventListener("click", () => {
+  const records = diagnosticRecords();
+  if (!records.length) {
+    updateDiagnosticStatus("コピーする記録がありません");
+    announce("端末内のAI診断記録はありません");
+    return;
+  }
+  copyDiagnostic(records, `${records.length}件の記録をコピーしました`);
+});
+clearMarkedButton.addEventListener("click", () => {
+  const count = diagnosticRecords().length;
+  if (!count) { updateDiagnosticStatus(); return; }
+  if (!confirm(`${count}件の端末内AI診断記録を削除しますか？`)) return;
+  Diagnostics.clearMarked(localStorage);
+  updateDiagnosticStatus("端末内の記録を削除しました");
+  announce("端末内のAI診断記録を削除しました");
+});
 soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`;
 soundButton.setAttribute("aria-pressed", String(sound));
 if ("serviceWorker" in navigator && location.protocol !== "file:") window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
 helpNode.textContent = "対局設定を選んでSTART GAMEを押してください";
 setAIThinking(false);
+updateDiagnosticStatus();
 requestAnimationFrame(loop);
