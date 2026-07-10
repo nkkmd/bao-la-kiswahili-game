@@ -348,7 +348,9 @@
       || (maximizing ? b.staticScore - a.staticScore : a.staticScore - b.staticScore));
   }
 
-  function quiescence(state, alpha, beta, player, deadline, stats, evaluator, ply, remaining) {
+  function quiescence(
+    state, alpha, beta, player, deadline, stats, evaluator, ply, remaining, orderCaptures = false,
+  ) {
     if (performanceNow() >= deadline) throw new Error("timeout");
     stats.nodes += 1;
     stats.quiescenceNodes += 1;
@@ -358,10 +360,21 @@
     if (!captures.length || remaining === 0) return evaluator(state, player);
     const maximizing = state.player === player;
     let best = maximizing ? -Infinity : Infinity;
-    for (const move of captures) {
-      const next = E.applyMove(state, move).state;
+    const choices = orderCaptures ? captures.map((move) => {
+      const result = E.applyMove(state, move);
+      return {
+        move,
+        next: result.state,
+        immediateWin: result.state.winner === state.player ? 1 : 0,
+        captured: captureCount(result.events),
+      };
+    }).sort((a, b) => b.immediateWin - a.immediateWin || b.captured - a.captured)
+      : captures.map((move) => ({ move, next: null }));
+    for (const choice of choices) {
+      const next = choice.next || E.applyMove(state, choice.move).state;
       const value = quiescence(
         next, alpha, beta, player, deadline, stats, evaluator, ply + 1, remaining - 1,
+        orderCaptures,
       );
       if (maximizing) {
         best = Math.max(best, value);
@@ -390,7 +403,7 @@
     if (terminal !== null) return terminal;
     if (depth === 0) return quiescence(
       state, alpha, beta, player, context.deadline, context.stats,
-      context.evaluator, ply, context.quiescenceDepth,
+      context.evaluator, ply, context.quiescenceDepth, context.orderQuiescenceCaptures,
     );
 
     const key = `${stateKey(state)}@${ply}`;
@@ -777,6 +790,7 @@
         quiescenceDepth: options.quiescenceDepth ?? 1,
         maxTableEntries: options.maxTableEntries ?? 50_000,
         ttMoveFirst: options.ttMoveFirst ?? false,
+        orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
       };
       let previousBestKey = moveKey(bestMove);
       let stableIterations = 0;

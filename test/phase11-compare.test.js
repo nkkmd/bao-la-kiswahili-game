@@ -29,4 +29,8 @@ assert.equal(report.results.length, 4, "comparison keeps per-position diagnostic
 assert.throws(() => parseArgs(["--candidate", "unknown"]), /Invalid candidate/);
 assert.throws(() => parseArgs(["--opening-phases", "any"]), /Invalid opening phase/);
 
+const qCapture = runComparison({ ...options, candidate: "q-capture" });
+assert.equal(qCapture.summary.moveMatches, 4,
+  "quiescence capture ordering preserves shallow fixed-depth choices");
+
 console.log("Bao Phase 11 comparison tests passed");

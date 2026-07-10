@@ -55,6 +55,28 @@ const AI = require("../public/ai.js");
 }
 
 {
+  const position = E.initialState();
+  position.pits = [
+    [[1, 1, 1, 1, 0, 1, 1, 0], [1, 1, 1, 1, 0, 1, 1, 2]],
+    [[0, 0, 1, 0, 7, 1, 0, 1], [0, 0, 0, 0, 0, 0, 0, 1]],
+  ];
+  position.reserve = [19, 20];
+  position.houseOwned = [false, true];
+  position.player = 1;
+  const baseline = AI.analyzeMove(position, "hard", () => 0, {
+    maxDepth: 3,
+    timeLimitMs: Infinity,
+  });
+  const orderedCaptures = AI.analyzeMove(position, "hard", () => 0, {
+    maxDepth: 3,
+    timeLimitMs: Infinity,
+    orderQuiescenceCaptures: true,
+  });
+  assert.equal(AI.moveKey(orderedCaptures.move), AI.moveKey(baseline.move),
+    "quiescence capture ordering preserves the fixed-depth root choice");
+}
+
+{
   const forced = {
     pits: [
       [[0, 0, 0, 0, 0, 4, 5, 1], [0, 0, 0, 0, 0, 0, 1, 1]],

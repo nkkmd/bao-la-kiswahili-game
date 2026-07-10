@@ -45,7 +45,9 @@ function parseArgs(argv) {
   for (const phase of options.openingPhases) {
     if (!["namua", "mtaji"].includes(phase)) throw new Error(`Invalid opening phase: ${phase}`);
   }
-  if (options.candidate !== "tt-first") throw new Error(`Invalid candidate: ${options.candidate}`);
+  if (!["tt-first", "q-capture"].includes(options.candidate)) {
+    throw new Error(`Invalid candidate: ${options.candidate}`);
+  }
   return options;
 }
 
@@ -54,6 +56,7 @@ function search(position, maxDepth, candidate) {
     maxDepth,
     timeLimitMs: Infinity,
     ttMoveFirst: candidate === "tt-first",
+    orderQuiescenceCaptures: candidate === "q-capture",
   });
 }
 

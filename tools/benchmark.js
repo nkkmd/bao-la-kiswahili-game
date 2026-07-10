@@ -48,6 +48,8 @@ function parseArgs(argv) {
     secondAdaptive: false,
     firstTtMoveFirst: false,
     secondTtMoveFirst: false,
+    firstQCaptureOrdering: false,
+    secondQCaptureOrdering: false,
     maxTurns: 300,
     openingPlies: 0,
     openingPhase: "any",
@@ -74,6 +76,8 @@ function parseArgs(argv) {
     if (arg === "--second-adaptive") { options.secondAdaptive = true; continue; }
     if (arg === "--first-tt-move-first") { options.firstTtMoveFirst = true; continue; }
     if (arg === "--second-tt-move-first") { options.secondTtMoveFirst = true; continue; }
+    if (arg === "--first-q-capture-ordering") { options.firstQCaptureOrdering = true; continue; }
+    if (arg === "--second-q-capture-ordering") { options.secondQCaptureOrdering = true; continue; }
     if (arg === "--games") options.games = integerArg(value, arg, 1);
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--first") options.first = value;
@@ -227,6 +231,7 @@ function runBenchmark(options) {
   };
   const adaptiveFlags = [options.firstAdaptive, options.secondAdaptive];
   const ttMoveFirstFlags = [options.firstTtMoveFirst, options.secondTtMoveFirst];
+  const qCaptureOrderingFlags = [options.firstQCaptureOrdering, options.secondQCaptureOrdering];
   let pairedOpening = null;
 
   for (let game = 0; game < options.games; game += 1) {
@@ -249,6 +254,7 @@ function runBenchmark(options) {
         evaluationProfile: competitors[competitor].profile,
         searchProfile: competitors[competitor].search,
         ttMoveFirst: ttMoveFirstFlags[competitor],
+        orderQuiescenceCaptures: qCaptureOrderingFlags[competitor],
         evaluationWeights: competitors[competitor].weights,
         evaluationAdjustments: competitors[competitor].adjustments,
       });

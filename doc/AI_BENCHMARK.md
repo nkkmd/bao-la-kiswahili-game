@@ -649,3 +649,39 @@ node bao-la-kiswahili/tools/phase11-compare.js \
 | node削減率 | - | 0.7% |
 
 初回とholdoutを合わせた32局面の合計は11,562から10,461 nodesへの9.5%削減だった。ただし半数以上の局面でnode数が同じため局面別削減率の中央値は0%であり、未使用seedでは効果がほぼ消えた。採用条件を満たさないため、時間制限自己対戦へ進めず保留とする。`ttMoveFirst`の既定値は`false`を維持する。
+
+## Phase 11：Quiescence捕獲順序
+
+Quiescence Search内の捕獲手を、即時勝利、relay完了までの実捕獲量の順に並べる。通常探索の順序と評価関数は変更しない。
+
+固定深度比較:
+
+```sh
+node bao-la-kiswahili/tools/phase11-compare.js \
+  --seed 20261000 --positions-per-phase 8 \
+  --opening-plies 8 --opening-phases namua,mtaji \
+  --max-depth 4 --candidate q-capture \
+  --output bao-la-kiswahili/artifacts/phase11-q-capture-ordering.json
+node bao-la-kiswahili/tools/phase11-compare.js \
+  --seed 20262000 --positions-per-phase 8 \
+  --opening-plies 8 --opening-phases namua,mtaji \
+  --max-depth 4 --candidate q-capture \
+  --output bao-la-kiswahili/artifacts/phase11-q-capture-ordering-holdout.json
+```
+
+| 条件 | 着手一致 | 既定nodes | 候補nodes | 削減率 | 改善／悪化／同数 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 初回seed | 16/16 | 6,465 | 5,803 | 10.2% | 13／0／3 |
+| holdout | 16/16 | 5,097 | 4,777 | 6.3% | 12／0／4 |
+| 合計 | 32/32 | 11,562 | 10,580 | 8.5% | 25／0／7 |
+
+局面別削減率の中央値は初回5.6%、holdout 3.0%である。多くの局面で小さく改善したが、採用条件の中央値10%削減には届かなかった。
+
+100ms時間制限スモーク:
+
+| 開始phase | 勝敗 | 候補平均深度 | 既定平均深度 | 候補／既定timeout |
+| --- | ---: | ---: | ---: | ---: |
+| namua | 両者1勝1敗2分 | 2.20 | 2.08 | 78／78 |
+| mtaji | 両者2勝2敗 | 3.26 | 3.29 | 26／26 |
+
+勝敗とtimeoutは同等だが、到達深度の改善はphase間で一貫しない。`orderQuiescenceCaptures`の既定値は`false`を維持し、候補は保留とする。

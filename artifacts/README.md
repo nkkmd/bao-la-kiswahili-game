@@ -35,5 +35,9 @@ Phase別の測定出力:
 - `phase8-expert-final.json`: Phase 8のexpert 1.5秒級最終確認
 - `phase11-tt-ordering.json`: Phase 11のTT最善手優先・固定深度局面比較
 - `phase11-tt-ordering-holdout.json`: Phase 11のTT最善手優先・未使用seed確認
+- `phase11-q-capture-ordering.json`: Phase 11のQuiescence捕獲順序・固定深度比較
+- `phase11-q-capture-ordering-holdout.json`: Phase 11のQuiescence捕獲順序・未使用seed確認
+- `phase11-q-capture-time-namua.json`: Phase 11のQuiescence捕獲順序・namua時間制限スモーク
+- `phase11-q-capture-time-mtaji.json`: Phase 11のQuiescence捕獲順序・mtaji時間制限スモーク
 
 採用済みの評価重みの正本は`../public/ai-weights.js`です。このディレクトリ内のJSONは検証候補として扱います。
