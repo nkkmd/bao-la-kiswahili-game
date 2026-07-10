@@ -52,6 +52,8 @@ function parseArgs(argv) {
     secondQCaptureOrdering: false,
     firstHistoryHeuristic: false,
     secondHistoryHeuristic: false,
+    firstAspirationWindow: 0,
+    secondAspirationWindow: 0,
     maxTurns: 300,
     openingPlies: 0,
     openingPhase: "any",
@@ -83,6 +85,11 @@ function parseArgs(argv) {
     if (arg === "--first-history-heuristic") { options.firstHistoryHeuristic = true; continue; }
     if (arg === "--second-history-heuristic") { options.secondHistoryHeuristic = true; continue; }
     if (arg === "--games") options.games = integerArg(value, arg, 1);
+    else if (arg === "--first-aspiration-window") {
+      options.firstAspirationWindow = integerArg(value, arg, 1);
+    } else if (arg === "--second-aspiration-window") {
+      options.secondAspirationWindow = integerArg(value, arg, 1);
+    }
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--first") options.first = value;
     else if (arg === "--second") options.second = value;
@@ -177,6 +184,7 @@ function newSummary(level, profile, search, weights, adjustments) {
     elapsedMs: 0, maxElapsedMs: 0, nodes: 0, quiescenceNodes: 0,
     cacheHits: 0, cacheStores: 0, totalDepth: 0, maxDepth: 0, timeouts: 0,
     historyUpdates: 0,
+    aspirationResearches: 0,
     earlyStops: 0, allocatedTimeMs: 0, maxAllocatedTimeMs: 0,
     baseTimeLimitMs: 0, adaptiveComplexity: 0,
     simulations: 0, playoutTurns: 0, maxPlayoutTurns: 0,
@@ -194,6 +202,7 @@ function recordMove(summary, stats) {
   summary.cacheHits += stats.cacheHits;
   summary.cacheStores += stats.cacheStores;
   summary.historyUpdates += stats.historyUpdates || 0;
+  summary.aspirationResearches += stats.aspirationResearches || 0;
   summary.totalDepth += stats.completedDepth;
   summary.maxDepth = Math.max(summary.maxDepth, stats.completedDepth);
   summary.simulations += stats.simulations || 0;
@@ -239,6 +248,7 @@ function runBenchmark(options) {
   const ttMoveFirstFlags = [options.firstTtMoveFirst, options.secondTtMoveFirst];
   const qCaptureOrderingFlags = [options.firstQCaptureOrdering, options.secondQCaptureOrdering];
   const historyHeuristicFlags = [options.firstHistoryHeuristic, options.secondHistoryHeuristic];
+  const aspirationWindows = [options.firstAspirationWindow, options.secondAspirationWindow];
   let pairedOpening = null;
 
   for (let game = 0; game < options.games; game += 1) {
@@ -263,6 +273,7 @@ function runBenchmark(options) {
         ttMoveFirst: ttMoveFirstFlags[competitor],
         orderQuiescenceCaptures: qCaptureOrderingFlags[competitor],
         historyHeuristic: historyHeuristicFlags[competitor],
+        aspirationWindow: aspirationWindows[competitor],
         evaluationWeights: competitors[competitor].weights,
         evaluationAdjustments: competitors[competitor].adjustments,
       });
@@ -314,6 +325,7 @@ function runBenchmark(options) {
       cacheHits: item.cacheHits,
       cacheStores: item.cacheStores,
       historyUpdates: item.historyUpdates,
+      aspirationResearches: item.aspirationResearches,
       cacheHitRate: item.cacheHits + item.cacheStores
         ? item.cacheHits / (item.cacheHits + item.cacheStores) : 0,
       averageDepth: item.moves ? item.totalDepth / item.moves : 0,

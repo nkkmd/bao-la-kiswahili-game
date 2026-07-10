@@ -10,11 +10,13 @@ const options = parseArgs([
   "--opening-phases", "namua,mtaji",
   "--max-depth", "2",
   "--candidate", "tt-first",
+  "--aspiration-window", "75",
 ]);
 
 assert.deepEqual(options.openingPhases, ["namua", "mtaji"]);
 assert.equal(options.positionsPerPhase, 2);
 assert.equal(options.maxDepth, 2);
+assert.equal(options.aspirationWindow, 75);
 
 const report = runComparison(options);
 assert.equal(report.summary.positions, 4, "comparison covers every requested position");
@@ -38,5 +40,9 @@ assert.equal(history.summary.moveMatches, 4,
   "history ordering preserves shallow fixed-depth choices");
 assert.ok(history.results.some((item) => item.candidate.historyUpdates > 0),
   "history comparison records quiet cutoff updates");
+
+const aspiration = runComparison({ ...options, candidate: "aspiration" });
+assert.equal(aspiration.summary.moveMatches, 4,
+  "aspiration windows preserve shallow fixed-depth choices");
 
 console.log("Bao Phase 11 comparison tests passed");

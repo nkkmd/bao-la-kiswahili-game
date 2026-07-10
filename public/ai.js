@@ -17,6 +17,7 @@
       cacheHits: 0,
       cacheStores: 0,
       historyUpdates: 0,
+      aspirationResearches: 0,
       completedDepth: 0,
       timedOut: false,
       earlyStopped: false,
@@ -806,12 +807,25 @@
         orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
       };
       let previousBestKey = moveKey(bestMove);
+      let previousScore = null;
       let stableIterations = 0;
       const stableBestDepths = options.stableBestDepths ?? 0;
       const stableBestMinDepth = options.stableBestMinDepth ?? 3;
       for (let depth = 1; depth <= maxDepth; depth += 1) {
         try {
-          enhancedSearch(state, depth, -Infinity, Infinity, player, context, 0);
+          const aspirationWindow = options.aspirationWindow ?? 0;
+          let alpha = -Infinity;
+          let beta = Infinity;
+          if (aspirationWindow > 0 && previousScore !== null) {
+            alpha = previousScore - aspirationWindow;
+            beta = previousScore + aspirationWindow;
+          }
+          let score = enhancedSearch(state, depth, alpha, beta, player, context, 0);
+          if (score <= alpha || score >= beta) {
+            context.stats.aspirationResearches += 1;
+            score = enhancedSearch(state, depth, -Infinity, Infinity, player, context, 0);
+          }
+          previousScore = score;
           const completed = context.table.get(`${stateKey(state)}@0`);
           if (completed?.bestMove) {
             bestMove = movesFor(state).find((move) => moveKey(move) === completed.bestMove) || bestMove;

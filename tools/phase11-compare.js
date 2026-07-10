@@ -25,6 +25,7 @@ function parseArgs(argv) {
     openingPhases: ["namua", "mtaji"],
     maxDepth: 4,
     candidate: "tt-first",
+    aspirationWindow: 50,
     output: null,
     json: false,
   };
@@ -38,6 +39,9 @@ function parseArgs(argv) {
     else if (arg === "--opening-phases") options.openingPhases = listArg(value, arg);
     else if (arg === "--max-depth") options.maxDepth = integerArg(value, arg, 1);
     else if (arg === "--candidate") options.candidate = value;
+    else if (arg === "--aspiration-window") {
+      options.aspirationWindow = integerArg(value, arg, 1);
+    }
     else if (arg === "--output") options.output = value;
     else throw new Error(`Unknown argument: ${arg}`);
     index += 1;
@@ -45,19 +49,20 @@ function parseArgs(argv) {
   for (const phase of options.openingPhases) {
     if (!["namua", "mtaji"].includes(phase)) throw new Error(`Invalid opening phase: ${phase}`);
   }
-  if (!["tt-first", "q-capture", "history"].includes(options.candidate)) {
+  if (!["tt-first", "q-capture", "history", "aspiration"].includes(options.candidate)) {
     throw new Error(`Invalid candidate: ${options.candidate}`);
   }
   return options;
 }
 
-function search(position, maxDepth, candidate) {
+function search(position, maxDepth, candidate, aspirationWindow) {
   return AI.analyzeMove(position, "hard", () => 0, {
     maxDepth,
     timeLimitMs: Infinity,
     ttMoveFirst: candidate === "tt-first",
     orderQuiescenceCaptures: candidate === "q-capture",
     historyHeuristic: candidate === "history",
+    aspirationWindow: candidate === "aspiration" ? aspirationWindow : 0,
   });
 }
 
@@ -70,6 +75,7 @@ function compactAnalysis(analysis) {
     cacheHits: analysis.stats.cacheHits,
     cacheStores: analysis.stats.cacheStores,
     historyUpdates: analysis.stats.historyUpdates,
+    aspirationResearches: analysis.stats.aspirationResearches,
     completedDepth: analysis.stats.completedDepth,
     elapsedMs: analysis.stats.elapsedMs,
   };
@@ -102,8 +108,12 @@ function runComparison(options) {
     for (let index = 0; index < options.positionsPerPhase; index += 1) {
       const seed = options.seed + phaseIndex * 100 + index;
       const position = createOpening(seededRandom(seed), options.openingPlies, openingPhase);
-      const baseline = compactAnalysis(search(position, options.maxDepth, "baseline"));
-      const candidate = compactAnalysis(search(position, options.maxDepth, options.candidate));
+      const baseline = compactAnalysis(search(
+        position, options.maxDepth, "baseline", options.aspirationWindow,
+      ));
+      const candidate = compactAnalysis(search(
+        position, options.maxDepth, options.candidate, options.aspirationWindow,
+      ));
       results.push({
         openingPhase,
         seed,
