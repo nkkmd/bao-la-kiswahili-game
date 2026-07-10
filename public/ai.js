@@ -325,7 +325,7 @@
       .reduce((total, event) => total + event.count, 0);
   }
 
-  function enhancedOrdered(state, player, evaluator, preferredMove, killerMove) {
+  function enhancedOrdered(state, player, evaluator, preferredMove, killerMove, ttMoveFirst = false) {
     const maximizing = state.player === player;
     return movesFor(state).map((move) => {
       const result = E.applyMove(state, move);
@@ -341,8 +341,9 @@
         staticScore: immediateWin || captured ? 0 : evaluator(result.state, player),
       };
     }).sort((a, b) => b.immediateWin - a.immediateWin
+      || (ttMoveFirst ? b.preferred - a.preferred : 0)
       || b.captured - a.captured
-      || b.preferred - a.preferred
+      || (ttMoveFirst ? 0 : b.preferred - a.preferred)
       || b.killer - a.killer
       || (maximizing ? b.staticScore - a.staticScore : a.staticScore - b.staticScore));
   }
@@ -406,6 +407,7 @@
 
     const choices = enhancedOrdered(
       state, player, context.evaluator, cached?.bestMove || "", context.killers.get(ply) || "",
+      context.ttMoveFirst,
     );
     if (!choices.length) return state.player === player ? -WIN + ply : WIN - ply;
     const maximizing = state.player === player;
@@ -774,6 +776,7 @@
         deadline,
         quiescenceDepth: options.quiescenceDepth ?? 1,
         maxTableEntries: options.maxTableEntries ?? 50_000,
+        ttMoveFirst: options.ttMoveFirst ?? false,
       };
       let previousBestKey = moveKey(bestMove);
       let stableIterations = 0;

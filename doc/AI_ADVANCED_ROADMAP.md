@@ -601,7 +601,7 @@ node bao-la-kiswahili/tools/phase9-longrun.js \
 
 目安: 1〜2週間
 
-実施状況: 未着手
+実施状況: 進行中（2026-07-10）
 
 ### 狙い
 
@@ -624,6 +624,17 @@ node bao-la-kiswahili/tools/phase9-longrun.js \
 6. 終局距離値をTT保存時に正規化し、探索plyをTTキーから外せるか独立候補として検証する
 
 TT最善手優先、Quiescence着手順序、history heuristic、aspiration windowは、それぞれ別の探索プロファイルまたはオプションで比較する。複数項目をまとめて採用せず、寄与が確認できた項目だけを積み上げる。
+
+### 途中結果
+
+2026-07-10に、安全柵と最初の比較候補を実装した。
+
+- Phase 8 hard `mtaji/8`のseedから、深度2〜5と深度6〜7で着手が分かれる`mtaji-depth-trap`局面を追加した
+- `ttMoveFirst`オプションを追加し、既定探索は従来順序のまま維持した
+- `benchmark.js`へ`--first-tt-move-first`／`--second-tt-move-first`を追加した
+- `phase11-compare.js`で、同じ生成局面を固定深度探索し、着手と探索統計を比較できるようにした
+
+固定深度4、namua/mtaji各8局面の初回比較では、16/16局面で着手が一致した。TT最善手優先は7局面でノード数を削減し、悪化0局面、合計6465から5401 nodesへの16.5%削減だった。これは次段検証へ進める根拠であり、既定探索への採用判断ではない。次は未使用seedとブラウザ相当時間で、到達深度、timeout、勝敗を確認する。
 
 ### 測定方法
 

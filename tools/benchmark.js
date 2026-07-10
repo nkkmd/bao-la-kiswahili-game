@@ -46,6 +46,8 @@ function parseArgs(argv) {
     secondAdjustments: null,
     firstAdaptive: false,
     secondAdaptive: false,
+    firstTtMoveFirst: false,
+    secondTtMoveFirst: false,
     maxTurns: 300,
     openingPlies: 0,
     openingPhase: "any",
@@ -70,6 +72,8 @@ function parseArgs(argv) {
     if (arg === "--json") { options.json = true; continue; }
     if (arg === "--first-adaptive") { options.firstAdaptive = true; continue; }
     if (arg === "--second-adaptive") { options.secondAdaptive = true; continue; }
+    if (arg === "--first-tt-move-first") { options.firstTtMoveFirst = true; continue; }
+    if (arg === "--second-tt-move-first") { options.secondTtMoveFirst = true; continue; }
     if (arg === "--games") options.games = integerArg(value, arg, 1);
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--first") options.first = value;
@@ -222,6 +226,7 @@ function runBenchmark(options) {
     mctsCandidateDepth: options.mctsCandidateDepth,
   };
   const adaptiveFlags = [options.firstAdaptive, options.secondAdaptive];
+  const ttMoveFirstFlags = [options.firstTtMoveFirst, options.secondTtMoveFirst];
   let pairedOpening = null;
 
   for (let game = 0; game < options.games; game += 1) {
@@ -243,6 +248,7 @@ function runBenchmark(options) {
         ...activeSearchOptions,
         evaluationProfile: competitors[competitor].profile,
         searchProfile: competitors[competitor].search,
+        ttMoveFirst: ttMoveFirstFlags[competitor],
         evaluationWeights: competitors[competitor].weights,
         evaluationAdjustments: competitors[competitor].adjustments,
       });

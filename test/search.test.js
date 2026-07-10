@@ -36,6 +36,25 @@ const AI = require("../public/ai.js");
 }
 
 {
+  const position = E.initialState();
+  const baseline = AI.analyzeMove(position, "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+    quiescenceDepth: 0,
+  });
+  const ttFirst = AI.analyzeMove(position, "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+    quiescenceDepth: 0,
+    ttMoveFirst: true,
+  });
+  assert.equal(AI.moveKey(ttFirst.move), AI.moveKey(baseline.move),
+    "TT-first ordering preserves the fixed-depth root choice");
+  assert.ok(ttFirst.stats.nodes <= baseline.stats.nodes,
+    "TT-first ordering does not expand more nodes in the baseline position");
+}
+
+{
   const forced = {
     pits: [
       [[0, 0, 0, 0, 0, 4, 5, 1], [0, 0, 0, 0, 0, 0, 1, 1]],

@@ -23,6 +23,7 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
     "--first-profile", "bao-v2", "--second-profile", "legacy", "--opening-plies", "4",
     "--first-search", "mcts", "--second-search", "legacy",
     "--first-adaptive", "--second-adaptive",
+    "--first-tt-move-first", "--second-tt-move-first",
     "--first-adjustments", adjustmentsPath,
     "--opening-phase", "namua",
     "--mcts-iterations", "16", "--mcts-playout-turns", "12", "--mcts-exploration", "1.1",
@@ -39,6 +40,8 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
   assert.equal(options.secondSearch, "legacy");
   assert.equal(options.firstAdaptive, true);
   assert.equal(options.secondAdaptive, true);
+  assert.equal(options.firstTtMoveFirst, true);
+  assert.equal(options.secondTtMoveFirst, true);
   assert.equal(options.openingPhase, "namua");
   assert.equal(options.mctsIterations, 16);
   assert.equal(options.mctsPlayoutTurns, 12);

@@ -603,3 +603,32 @@ env BAO_AI_WEIGHTS=bao-la-kiswahili/artifacts/ai-weights-successive.json \
 ```
 
 深度2の予備検証では100局で52勝48敗、勝率52.0%だった。悪化は確認されなかったが、この条件では統計的優位ではない。
+
+## Phase 11：TT最善手優先の固定深度比較
+
+Phase 2探索の既定着手順序を基準に、即時勝利の次にTTまたは前回反復深化の最善手を探索する`tt-first`候補を比較する。評価関数、探索深度、Quiescence深度は変更しない。
+
+再実行コマンド:
+
+```sh
+node bao-la-kiswahili/tools/phase11-compare.js \
+  --seed 20261000 --positions-per-phase 8 \
+  --opening-plies 8 --opening-phases namua,mtaji \
+  --max-depth 4 --candidate tt-first \
+  --output bao-la-kiswahili/artifacts/phase11-tt-ordering.json
+```
+
+結果:
+
+| 指標 | 既定順序 | TT最善手優先 |
+| --- | ---: | ---: |
+| 対象局面 | 16 | 16 |
+| 最終着手一致 | - | 16/16 |
+| 合計nodes | 6,465 | 5,401 |
+| 合計quiescence nodes | 4,222 | 3,499 |
+| node改善／悪化／同数 | - | 7／0／9 |
+| node削減率 | - | 16.5% |
+
+固定深度のため、elapsed timeではなくnodesと着手一致を主指標にする。実行順、JIT、CPU状態の影響を受けるelapsed timeはartifactへ診断値として残すが、採用根拠には使わない。
+
+初回候補は探索木を変えずに合計nodesを削減したため、未使用seedの固定深度比較と時間制限自己対戦へ進める。現時点では`ttMoveFirst`の既定値を`false`に保つ。
