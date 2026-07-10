@@ -57,6 +57,8 @@ Cloudflare Pages などの静的ホスティングでは、公開ディレクト
 public/
 ```
 
+Privacy Policy へのリンクは Cloudflare Pages の clean URL に合わせて `./privacy` を使用します。PWA のオフラインキャッシュでは `privacy.html` にフォールバックします。
+
 ## テスト
 
 個別のテストを実行します。
