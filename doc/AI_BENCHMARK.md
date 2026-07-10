@@ -631,4 +631,21 @@ node bao-la-kiswahili/tools/phase11-compare.js \
 
 固定深度のため、elapsed timeではなくnodesと着手一致を主指標にする。実行順、JIT、CPU状態の影響を受けるelapsed timeはartifactへ診断値として残すが、採用根拠には使わない。
 
-初回候補は探索木を変えずに合計nodesを削減したため、未使用seedの固定深度比較と時間制限自己対戦へ進める。現時点では`ttMoveFirst`の既定値を`false`に保つ。
+未使用seed確認:
+
+```sh
+node bao-la-kiswahili/tools/phase11-compare.js \
+  --seed 20262000 --positions-per-phase 8 \
+  --opening-plies 8 --opening-phases namua,mtaji \
+  --max-depth 4 --candidate tt-first \
+  --output bao-la-kiswahili/artifacts/phase11-tt-ordering-holdout.json
+```
+
+| 指標 | 既定順序 | TT最善手優先 |
+| --- | ---: | ---: |
+| 最終着手一致 | - | 16/16 |
+| 合計nodes | 5,097 | 5,060 |
+| node改善／悪化／同数 | - | 6／1／9 |
+| node削減率 | - | 0.7% |
+
+初回とholdoutを合わせた32局面の合計は11,562から10,461 nodesへの9.5%削減だった。ただし半数以上の局面でnode数が同じため局面別削減率の中央値は0%であり、未使用seedでは効果がほぼ消えた。採用条件を満たさないため、時間制限自己対戦へ進めず保留とする。`ttMoveFirst`の既定値は`false`を維持する。
