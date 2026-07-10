@@ -125,6 +125,20 @@ const mtajiEndurancePosition = state({
   ],
 });
 
+// Recreated from the Phase 8 hard mtaji/8 scenario (seed 20260923).
+// Depths 2-5 prefer sowing right, while depths 6-7 find the safer left route.
+const phase8MtajiDepthPosition = state({
+  phase: "mtaji",
+  reserve: [0, 0],
+  houseOwned: [false, false],
+  player: 0,
+  turn: 55,
+  pits: [
+    [[0, 0, 0, 0, 0, 0, 1, 3], [2, 1, 4, 2, 2, 1, 0, 9]],
+    [[1, 8, 2, 2, 9, 0, 6, 0], [1, 0, 3, 0, 2, 0, 2, 3]],
+  ],
+});
+
 const tacticalCases = [
   {
     category: "forced-win",
@@ -216,6 +230,17 @@ const tacticalCases = [
       assert.equal(result.winner, null, "the endurance move does not collapse immediately");
       assert.ok(frontOccupied(result, 0) >= 4, "the endurance move keeps the front row broad");
       assert.ok(E.moveVariants(result).length >= 2, "the endurance move preserves mobility");
+    },
+  },
+  {
+    category: "mtaji-depth-trap",
+    name: "hard AI reads beyond the shallow Phase 8 mtaji choice",
+    depth: 6,
+    position: phase8MtajiDepthPosition,
+    assert(analysis) {
+      assertMoveMatches(analysis.move, {
+        type: "takata", phase: "mtaji", row: E.FRONT, index: 7, direction: "left",
+      }, "hard AI chooses the depth-six mtaji route");
     },
   },
 ];
