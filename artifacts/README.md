@@ -39,5 +39,7 @@ Phase別の測定出力:
 - `phase11-q-capture-ordering-holdout.json`: Phase 11のQuiescence捕獲順序・未使用seed確認
 - `phase11-q-capture-time-namua.json`: Phase 11のQuiescence捕獲順序・namua時間制限スモーク
 - `phase11-q-capture-time-mtaji.json`: Phase 11のQuiescence捕獲順序・mtaji時間制限スモーク
+- `phase11-history-ordering.json`: Phase 11のhistory heuristic・固定深度比較
+- `phase11-history-ordering-holdout.json`: Phase 11のhistory heuristic・未使用seed確認
 
 採用済みの評価重みの正本は`../public/ai-weights.js`です。このディレクトリ内のJSONは検証候補として扱います。

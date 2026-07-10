@@ -1687,3 +1687,22 @@ Quiescence Searchは合法な捕獲手をエンジン順に探索している。
 - 固定深度では一貫して悪化を避けたが、事前の中央値10%削減条件を満たさない
 - 時間制限条件でもphaseをまたいだ安定改善を示さないため、既定化せず保留とする
 - 実験オプションは残し、次はquiet move用history heuristicを独立候補として比較する
+
+### 2026-07-10: Phase 11 history heuristic
+
+変更内容:
+
+- 非捕獲手によるcutoffへ`depth²`を加点する探索内history tableを追加した
+- 手番とmove keyを組み合わせ、killer moveの後、静的評価の前にhistory scoreを使う
+- `historyHeuristic`は実験オプションとし、既定値を`false`にした
+- 探索統計へ`historyUpdates`を追加した
+
+結果:
+
+- 初回16局面は全着手一致、6465から6460 nodes、改善1、悪化0、同数15だった
+- holdout 16局面は全着手一致、両者5097 nodesですべて同数だった
+
+判断:
+
+- 既存のkiller moveと静的評価順序に対する追加効果がほぼなく、不採用とする
+- 時間制限自己対戦へ進めず、次はaspiration windowを独立比較する

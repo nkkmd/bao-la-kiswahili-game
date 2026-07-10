@@ -33,4 +33,10 @@ const qCapture = runComparison({ ...options, candidate: "q-capture" });
 assert.equal(qCapture.summary.moveMatches, 4,
   "quiescence capture ordering preserves shallow fixed-depth choices");
 
+const history = runComparison({ ...options, candidate: "history" });
+assert.equal(history.summary.moveMatches, 4,
+  "history ordering preserves shallow fixed-depth choices");
+assert.ok(history.results.some((item) => item.candidate.historyUpdates > 0),
+  "history comparison records quiet cutoff updates");
+
 console.log("Bao Phase 11 comparison tests passed");

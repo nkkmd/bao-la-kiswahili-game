@@ -25,6 +25,7 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
     "--first-adaptive", "--second-adaptive",
     "--first-tt-move-first", "--second-tt-move-first",
     "--first-q-capture-ordering", "--second-q-capture-ordering",
+    "--first-history-heuristic", "--second-history-heuristic",
     "--first-adjustments", adjustmentsPath,
     "--opening-phase", "namua",
     "--mcts-iterations", "16", "--mcts-playout-turns", "12", "--mcts-exploration", "1.1",
@@ -45,6 +46,8 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
   assert.equal(options.secondTtMoveFirst, true);
   assert.equal(options.firstQCaptureOrdering, true);
   assert.equal(options.secondQCaptureOrdering, true);
+  assert.equal(options.firstHistoryHeuristic, true);
+  assert.equal(options.secondHistoryHeuristic, true);
   assert.equal(options.openingPhase, "namua");
   assert.equal(options.mctsIterations, 16);
   assert.equal(options.mctsPlayoutTurns, 12);

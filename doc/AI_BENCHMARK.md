@@ -685,3 +685,14 @@ node bao-la-kiswahili/tools/phase11-compare.js \
 | mtaji | 両者2勝2敗 | 3.26 | 3.29 | 26／26 |
 
 勝敗とtimeoutは同等だが、到達深度の改善はphase間で一貫しない。`orderQuiescenceCaptures`の既定値は`false`を維持し、候補は保留とする。
+
+## Phase 11：history heuristic
+
+quiet moveがalpha-beta cutoffを起こしたときに`depth²`を加点し、同じ手番の同種着手をkiller moveの後、静的評価の前へ並べる。
+
+| 条件 | 着手一致 | 既定nodes | 候補nodes | 削減率 | 改善／悪化／同数 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 初回seed | 16/16 | 6,465 | 6,460 | 0.1% | 1／0／15 |
+| holdout | 16/16 | 5,097 | 5,097 | 0.0% | 0／0／16 |
+
+再実行時は`phase11-compare.js --candidate history`を使う。既存のkiller moveと静的順序へ追加しても探索木がほぼ変わらず、採用根拠がない。`historyHeuristic`の既定値は`false`を維持し、時間制限試験へ進めない。

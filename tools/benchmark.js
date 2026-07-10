@@ -50,6 +50,8 @@ function parseArgs(argv) {
     secondTtMoveFirst: false,
     firstQCaptureOrdering: false,
     secondQCaptureOrdering: false,
+    firstHistoryHeuristic: false,
+    secondHistoryHeuristic: false,
     maxTurns: 300,
     openingPlies: 0,
     openingPhase: "any",
@@ -78,6 +80,8 @@ function parseArgs(argv) {
     if (arg === "--second-tt-move-first") { options.secondTtMoveFirst = true; continue; }
     if (arg === "--first-q-capture-ordering") { options.firstQCaptureOrdering = true; continue; }
     if (arg === "--second-q-capture-ordering") { options.secondQCaptureOrdering = true; continue; }
+    if (arg === "--first-history-heuristic") { options.firstHistoryHeuristic = true; continue; }
+    if (arg === "--second-history-heuristic") { options.secondHistoryHeuristic = true; continue; }
     if (arg === "--games") options.games = integerArg(value, arg, 1);
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--first") options.first = value;
@@ -172,6 +176,7 @@ function newSummary(level, profile, search, weights, adjustments) {
     level, profile, search, weights, adjustments, wins: 0, losses: 0, draws: 0, moves: 0,
     elapsedMs: 0, maxElapsedMs: 0, nodes: 0, quiescenceNodes: 0,
     cacheHits: 0, cacheStores: 0, totalDepth: 0, maxDepth: 0, timeouts: 0,
+    historyUpdates: 0,
     earlyStops: 0, allocatedTimeMs: 0, maxAllocatedTimeMs: 0,
     baseTimeLimitMs: 0, adaptiveComplexity: 0,
     simulations: 0, playoutTurns: 0, maxPlayoutTurns: 0,
@@ -188,6 +193,7 @@ function recordMove(summary, stats) {
   summary.quiescenceNodes += stats.quiescenceNodes;
   summary.cacheHits += stats.cacheHits;
   summary.cacheStores += stats.cacheStores;
+  summary.historyUpdates += stats.historyUpdates || 0;
   summary.totalDepth += stats.completedDepth;
   summary.maxDepth = Math.max(summary.maxDepth, stats.completedDepth);
   summary.simulations += stats.simulations || 0;
@@ -232,6 +238,7 @@ function runBenchmark(options) {
   const adaptiveFlags = [options.firstAdaptive, options.secondAdaptive];
   const ttMoveFirstFlags = [options.firstTtMoveFirst, options.secondTtMoveFirst];
   const qCaptureOrderingFlags = [options.firstQCaptureOrdering, options.secondQCaptureOrdering];
+  const historyHeuristicFlags = [options.firstHistoryHeuristic, options.secondHistoryHeuristic];
   let pairedOpening = null;
 
   for (let game = 0; game < options.games; game += 1) {
@@ -255,6 +262,7 @@ function runBenchmark(options) {
         searchProfile: competitors[competitor].search,
         ttMoveFirst: ttMoveFirstFlags[competitor],
         orderQuiescenceCaptures: qCaptureOrderingFlags[competitor],
+        historyHeuristic: historyHeuristicFlags[competitor],
         evaluationWeights: competitors[competitor].weights,
         evaluationAdjustments: competitors[competitor].adjustments,
       });
@@ -305,6 +313,7 @@ function runBenchmark(options) {
       averageQuiescenceNodes: item.moves ? item.quiescenceNodes / item.moves : 0,
       cacheHits: item.cacheHits,
       cacheStores: item.cacheStores,
+      historyUpdates: item.historyUpdates,
       cacheHitRate: item.cacheHits + item.cacheStores
         ? item.cacheHits / (item.cacheHits + item.cacheStores) : 0,
       averageDepth: item.moves ? item.totalDepth / item.moves : 0,

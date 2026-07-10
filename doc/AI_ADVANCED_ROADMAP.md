@@ -640,6 +640,8 @@ TT最善手優先、Quiescence着手順序、history heuristic、aspiration wind
 
 Quiescence捕獲順序は、即時勝利とrelay完了までの実捕獲量で捕獲手を並べる候補として比較した。初回16局面は10.2%、holdout 16局面は6.3%の合計node削減となり、32/32で着手一致、改善25、悪化0だった。一方、局面別削減率の中央値は初回5.6%、holdout 3.0%で、10%条件に届かなかった。100msの短い自己対戦でも勝敗とtimeoutは同等だったが、到達深度はnamuaで小さく改善、mtajiで小さく悪化した。安定した実時間改善を示さないため既定化せず、次はhistory heuristicを独立比較する。
 
+quiet move用history heuristicは、非捕獲手によるcutoffへ`depth²`を加点し、killer moveの後、静的評価の前に並べる候補として比較した。初回16局面は6465から6460 nodes、holdout 16局面は5097の同数で、全着手が一致した。既存のkiller moveと静的順序に対する追加効果がほぼないため、時間制限試験へ進めず不採用とする。次はaspiration windowを独立比較する。
+
 ### 測定方法
 
 固定深度試験では、同一局面・同一深度で次を比較する。

@@ -16,6 +16,7 @@
       cutoffs: 0,
       cacheHits: 0,
       cacheStores: 0,
+      historyUpdates: 0,
       completedDepth: 0,
       timedOut: false,
       earlyStopped: false,
@@ -325,7 +326,9 @@
       .reduce((total, event) => total + event.count, 0);
   }
 
-  function enhancedOrdered(state, player, evaluator, preferredMove, killerMove, ttMoveFirst = false) {
+  function enhancedOrdered(
+    state, player, evaluator, preferredMove, killerMove, ttMoveFirst = false, history = null,
+  ) {
     const maximizing = state.player === player;
     return movesFor(state).map((move) => {
       const result = E.applyMove(state, move);
@@ -338,6 +341,7 @@
         captured,
         preferred: moveKey(move) === preferredMove ? 1 : 0,
         killer: moveKey(move) === killerMove ? 1 : 0,
+        historyScore: history?.get(`${state.player}:${moveKey(move)}`) || 0,
         staticScore: immediateWin || captured ? 0 : evaluator(result.state, player),
       };
     }).sort((a, b) => b.immediateWin - a.immediateWin
@@ -345,6 +349,7 @@
       || b.captured - a.captured
       || (ttMoveFirst ? 0 : b.preferred - a.preferred)
       || b.killer - a.killer
+      || b.historyScore - a.historyScore
       || (maximizing ? b.staticScore - a.staticScore : a.staticScore - b.staticScore));
   }
 
@@ -420,7 +425,7 @@
 
     const choices = enhancedOrdered(
       state, player, context.evaluator, cached?.bestMove || "", context.killers.get(ply) || "",
-      context.ttMoveFirst,
+      context.ttMoveFirst, context.history,
     );
     if (!choices.length) return state.player === player ? -WIN + ply : WIN - ply;
     const maximizing = state.player === player;
@@ -450,7 +455,14 @@
       else beta = Math.min(beta, best);
       if (beta <= alpha) {
         context.stats.cutoffs += 1;
-        if (choice.move.type !== "capture") context.killers.set(ply, moveKey(choice.move));
+        if (choice.move.type !== "capture") {
+          context.killers.set(ply, moveKey(choice.move));
+          if (context.history) {
+            const historyKey = `${state.player}:${moveKey(choice.move)}`;
+            context.history.set(historyKey, (context.history.get(historyKey) || 0) + depth * depth);
+            context.stats.historyUpdates += 1;
+          }
+        }
         break;
       }
     }
@@ -784,6 +796,7 @@
       const context = {
         table: new Map(),
         killers: new Map(),
+        history: options.historyHeuristic ? new Map() : null,
         evaluator,
         stats,
         deadline,

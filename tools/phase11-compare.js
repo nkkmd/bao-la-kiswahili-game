@@ -45,7 +45,7 @@ function parseArgs(argv) {
   for (const phase of options.openingPhases) {
     if (!["namua", "mtaji"].includes(phase)) throw new Error(`Invalid opening phase: ${phase}`);
   }
-  if (!["tt-first", "q-capture"].includes(options.candidate)) {
+  if (!["tt-first", "q-capture", "history"].includes(options.candidate)) {
     throw new Error(`Invalid candidate: ${options.candidate}`);
   }
   return options;
@@ -57,6 +57,7 @@ function search(position, maxDepth, candidate) {
     timeLimitMs: Infinity,
     ttMoveFirst: candidate === "tt-first",
     orderQuiescenceCaptures: candidate === "q-capture",
+    historyHeuristic: candidate === "history",
   });
 }
 
@@ -68,6 +69,7 @@ function compactAnalysis(analysis) {
     cutoffs: analysis.stats.cutoffs,
     cacheHits: analysis.stats.cacheHits,
     cacheStores: analysis.stats.cacheStores,
+    historyUpdates: analysis.stats.historyUpdates,
     completedDepth: analysis.stats.completedDepth,
     elapsedMs: analysis.stats.elapsedMs,
   };
