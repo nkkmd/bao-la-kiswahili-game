@@ -18,6 +18,10 @@
       cacheStores: 0,
       historyUpdates: 0,
       aspirationResearches: 0,
+      evaluationRequests: 0,
+      evaluations: 0,
+      evaluationCacheHits: 0,
+      evaluationCacheStores: 0,
       completedDepth: 0,
       timedOut: false,
       earlyStopped: false,
@@ -261,6 +265,28 @@
     return (state, player) => evaluateWithProfile(
       state, player, selectedProfile, selected, selectedAdjustments,
     );
+  }
+
+  function evaluationAccessor(evaluator, stats, enabled, maxEntries = 50_000) {
+    const cache = enabled ? new Map() : null;
+    return (state, player) => {
+      stats.evaluationRequests += 1;
+      if (cache) {
+        const key = `${player}|${stateKey(state)}`;
+        if (cache.has(key)) {
+          stats.evaluationCacheHits += 1;
+          return cache.get(key);
+        }
+        const value = evaluator(state, player);
+        stats.evaluations += 1;
+        if (cache.size >= maxEntries) cache.delete(cache.keys().next().value);
+        cache.set(key, value);
+        stats.evaluationCacheStores += 1;
+        return value;
+      }
+      stats.evaluations += 1;
+      return evaluator(state, player);
+    };
   }
 
   function immediateScore(state, move, player, evaluator) {
@@ -757,8 +783,12 @@
     const startedAt = performanceNow();
     const stats = emptyStats(level);
     const choices = movesFor(state);
-    const evaluator = evaluatorFor(
+    const rawEvaluator = evaluatorFor(
       options.evaluationProfile, options.evaluationWeights, options.evaluationAdjustments,
+    );
+    const evaluator = evaluationAccessor(
+      rawEvaluator, stats, options.evaluationCache ?? false,
+      options.maxEvaluationCacheEntries ?? 50_000,
     );
     if (!choices.length) return { move: null, stats };
     if (level === "easy") {

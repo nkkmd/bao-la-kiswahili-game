@@ -49,7 +49,7 @@ function parseArgs(argv) {
   for (const phase of options.openingPhases) {
     if (!["namua", "mtaji"].includes(phase)) throw new Error(`Invalid opening phase: ${phase}`);
   }
-  if (!["tt-first", "q-capture", "history", "aspiration"].includes(options.candidate)) {
+  if (!["tt-first", "q-capture", "history", "aspiration", "eval-cache"].includes(options.candidate)) {
     throw new Error(`Invalid candidate: ${options.candidate}`);
   }
   return options;
@@ -63,6 +63,7 @@ function search(position, maxDepth, candidate, aspirationWindow) {
     orderQuiescenceCaptures: candidate === "q-capture",
     historyHeuristic: candidate === "history",
     aspirationWindow: candidate === "aspiration" ? aspirationWindow : 0,
+    evaluationCache: candidate === "eval-cache",
   });
 }
 
@@ -76,6 +77,10 @@ function compactAnalysis(analysis) {
     cacheStores: analysis.stats.cacheStores,
     historyUpdates: analysis.stats.historyUpdates,
     aspirationResearches: analysis.stats.aspirationResearches,
+    evaluationRequests: analysis.stats.evaluationRequests,
+    evaluations: analysis.stats.evaluations,
+    evaluationCacheHits: analysis.stats.evaluationCacheHits,
+    evaluationCacheStores: analysis.stats.evaluationCacheStores,
     completedDepth: analysis.stats.completedDepth,
     elapsedMs: analysis.stats.elapsedMs,
   };
@@ -98,6 +103,9 @@ function summarize(results) {
     candidateQuiescenceNodes: total("candidate", "quiescenceNodes"),
     baselineElapsedMs: total("baseline", "elapsedMs"),
     candidateElapsedMs: total("candidate", "elapsedMs"),
+    baselineEvaluations: total("baseline", "evaluations"),
+    candidateEvaluations: total("candidate", "evaluations"),
+    candidateEvaluationCacheHits: total("candidate", "evaluationCacheHits"),
   };
 }
 
@@ -108,15 +116,28 @@ function runComparison(options) {
     for (let index = 0; index < options.positionsPerPhase; index += 1) {
       const seed = options.seed + phaseIndex * 100 + index;
       const position = createOpening(seededRandom(seed), options.openingPlies, openingPhase);
-      const baseline = compactAnalysis(search(
-        position, options.maxDepth, "baseline", options.aspirationWindow,
-      ));
-      const candidate = compactAnalysis(search(
-        position, options.maxDepth, options.candidate, options.aspirationWindow,
-      ));
+      const candidateFirst = results.length % 2 === 1;
+      let baseline;
+      let candidate;
+      if (candidateFirst) {
+        candidate = compactAnalysis(search(
+          position, options.maxDepth, options.candidate, options.aspirationWindow,
+        ));
+        baseline = compactAnalysis(search(
+          position, options.maxDepth, "baseline", options.aspirationWindow,
+        ));
+      } else {
+        baseline = compactAnalysis(search(
+          position, options.maxDepth, "baseline", options.aspirationWindow,
+        ));
+        candidate = compactAnalysis(search(
+          position, options.maxDepth, options.candidate, options.aspirationWindow,
+        ));
+      }
       results.push({
         openingPhase,
         seed,
+        candidateFirst,
         positionKey: AI.stateKey(position),
         moveMatches: baseline.move === candidate.move,
         baseline,

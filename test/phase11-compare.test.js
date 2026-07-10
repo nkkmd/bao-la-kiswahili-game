@@ -45,4 +45,10 @@ const aspiration = runComparison({ ...options, candidate: "aspiration" });
 assert.equal(aspiration.summary.moveMatches, 4,
   "aspiration windows preserve shallow fixed-depth choices");
 
+const evalCache = runComparison({ ...options, candidate: "eval-cache" });
+assert.equal(evalCache.summary.moveMatches, 4,
+  "evaluation caching preserves shallow fixed-depth choices");
+assert.ok(evalCache.summary.candidateEvaluations <= evalCache.summary.baselineEvaluations,
+  "evaluation caching does not perform more full evaluations");
+
 console.log("Bao Phase 11 comparison tests passed");

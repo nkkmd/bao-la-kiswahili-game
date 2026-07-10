@@ -93,6 +93,24 @@ const AI = require("../public/ai.js");
 
 {
   const position = E.initialState();
+  const baseline = AI.analyzeMove(position, "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+  });
+  const cached = AI.analyzeMove(position, "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+    evaluationCache: true,
+  });
+  assert.equal(AI.moveKey(cached.move), AI.moveKey(baseline.move),
+    "evaluation caching preserves the fixed-depth root choice");
+  assert.ok(cached.stats.evaluationCacheHits > 0, "evaluation caching reuses position scores");
+  assert.ok(cached.stats.evaluations < baseline.stats.evaluations,
+    "evaluation caching reduces full evaluation calculations");
+}
+
+{
+  const position = E.initialState();
   position.pits = [
     [[1, 1, 1, 1, 0, 1, 1, 0], [1, 1, 1, 1, 0, 1, 1, 2]],
     [[0, 0, 1, 0, 7, 1, 0, 1], [0, 0, 0, 0, 0, 0, 0, 1]],
