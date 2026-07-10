@@ -72,6 +72,7 @@ function parseArgs(argv) {
     mctsCandidateLimit: 0,
     mctsCandidateSource: "static",
     mctsCandidateDepth: 1,
+    output: null,
     json: false,
   };
   for (let index = 0; index < argv.length; index += 1) {
@@ -126,6 +127,7 @@ function parseArgs(argv) {
     else if (arg === "--mcts-candidate-limit") options.mctsCandidateLimit = integerArg(value, arg, 0);
     else if (arg === "--mcts-candidate-source") options.mctsCandidateSource = value;
     else if (arg === "--mcts-candidate-depth") options.mctsCandidateDepth = integerArg(value, arg, 1);
+    else if (arg === "--output") options.output = value;
     else throw new Error(`Unknown argument: ${arg}`);
     index += 1;
   }
@@ -383,6 +385,7 @@ if (require.main === module) {
   try {
     const options = parseArgs(process.argv.slice(2));
     const report = runBenchmark(options);
+    if (options.output) fs.writeFileSync(options.output, `${JSON.stringify(report, null, 2)}\n`);
     if (options.json) console.log(JSON.stringify(report, null, 2));
     else printReport(report);
   } catch (error) {

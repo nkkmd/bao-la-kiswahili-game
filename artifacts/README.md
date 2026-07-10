@@ -47,5 +47,7 @@ Phase別の測定出力:
 - `phase11-eval-cache-holdout.json`: Phase 11の評価キャッシュ・未使用seed確認
 - `phase11-eval-cache-time-namua.json`: Phase 11の評価キャッシュ・namua時間制限スモーク
 - `phase11-eval-cache-time-mtaji.json`: Phase 11の評価キャッシュ・mtaji時間制限スモーク
+- `phase11-eval-cache-medium-namua-1.json`／`-2.json`: Phase 11の評価キャッシュ・namua中規模chunk
+- `phase11-eval-cache-medium-mtaji-1.json`／`-2.json`: Phase 11の評価キャッシュ・mtaji中規模chunk
 
 採用済みの評価重みの正本は`../public/ai-weights.js`です。このディレクトリ内のJSONは検証候補として扱います。

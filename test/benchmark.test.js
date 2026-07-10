@@ -35,6 +35,7 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
     "--mcts-prior", "static", "--mcts-prior-weight", "2",
     "--mcts-candidate-limit", "3", "--mcts-candidate-source", "phase2",
     "--mcts-candidate-depth", "2",
+    "--output", "/tmp/bao-benchmark.json",
   ]);
   assert.equal(options.firstProfile, "bao-v2");
   assert.equal(options.secondProfile, "legacy");
@@ -66,6 +67,7 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
   assert.equal(options.mctsCandidateLimit, 3);
   assert.equal(options.mctsCandidateSource, "phase2");
   assert.equal(options.mctsCandidateDepth, 2);
+  assert.equal(options.output, "/tmp/bao-benchmark.json");
   const summarize = (report) => ({
     southWins: report.southWins,
     northWins: report.northWins,
