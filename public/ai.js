@@ -22,6 +22,8 @@
       evaluations: 0,
       evaluationCacheHits: 0,
       evaluationCacheStores: 0,
+      evaluationCachePeak: 0,
+      evaluationCacheEvictions: 0,
       completedDepth: 0,
       timedOut: false,
       earlyStopped: false,
@@ -267,7 +269,7 @@
     );
   }
 
-  function evaluationAccessor(evaluator, stats, enabled, maxEntries = 50_000) {
+  function evaluationAccessor(evaluator, stats, enabled, maxEntries = 2_048) {
     const cache = enabled ? new Map() : null;
     return (state, player) => {
       stats.evaluationRequests += 1;
@@ -279,9 +281,13 @@
         }
         const value = evaluator(state, player);
         stats.evaluations += 1;
-        if (cache.size >= maxEntries) cache.delete(cache.keys().next().value);
+        if (cache.size >= maxEntries) {
+          cache.delete(cache.keys().next().value);
+          stats.evaluationCacheEvictions += 1;
+        }
         cache.set(key, value);
         stats.evaluationCacheStores += 1;
+        stats.evaluationCachePeak = Math.max(stats.evaluationCachePeak, cache.size);
         return value;
       }
       stats.evaluations += 1;
@@ -786,9 +792,11 @@
     const rawEvaluator = evaluatorFor(
       options.evaluationProfile, options.evaluationWeights, options.evaluationAdjustments,
     );
+    const useEvaluationCache = options.evaluationCache
+      ?? (level === "hard" || level === "expert");
     const evaluator = evaluationAccessor(
-      rawEvaluator, stats, options.evaluationCache ?? false,
-      options.maxEvaluationCacheEntries ?? 50_000,
+      rawEvaluator, stats, useEvaluationCache,
+      options.maxEvaluationCacheEntries ?? 2_048,
     );
     if (!choices.length) return { move: null, stats };
     if (level === "easy") {

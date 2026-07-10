@@ -11,12 +11,14 @@ const options = parseArgs([
   "--max-depth", "2",
   "--candidate", "tt-first",
   "--aspiration-window", "75",
+  "--evaluation-cache-entries", "1000",
 ]);
 
 assert.deepEqual(options.openingPhases, ["namua", "mtaji"]);
 assert.equal(options.positionsPerPhase, 2);
 assert.equal(options.maxDepth, 2);
 assert.equal(options.aspirationWindow, 75);
+assert.equal(options.evaluationCacheEntries, 1000);
 
 const report = runComparison(options);
 assert.equal(report.summary.positions, 4, "comparison covers every requested position");

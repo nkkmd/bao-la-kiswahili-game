@@ -26,6 +26,7 @@ function parseArgs(argv) {
     maxDepth: 4,
     candidate: "tt-first",
     aspirationWindow: 50,
+    evaluationCacheEntries: 50_000,
     output: null,
     json: false,
   };
@@ -41,6 +42,8 @@ function parseArgs(argv) {
     else if (arg === "--candidate") options.candidate = value;
     else if (arg === "--aspiration-window") {
       options.aspirationWindow = integerArg(value, arg, 1);
+    } else if (arg === "--evaluation-cache-entries") {
+      options.evaluationCacheEntries = integerArg(value, arg, 1);
     }
     else if (arg === "--output") options.output = value;
     else throw new Error(`Unknown argument: ${arg}`);
@@ -55,7 +58,7 @@ function parseArgs(argv) {
   return options;
 }
 
-function search(position, maxDepth, candidate, aspirationWindow) {
+function search(position, maxDepth, candidate, aspirationWindow, evaluationCacheEntries) {
   return AI.analyzeMove(position, "hard", () => 0, {
     maxDepth,
     timeLimitMs: Infinity,
@@ -64,6 +67,7 @@ function search(position, maxDepth, candidate, aspirationWindow) {
     historyHeuristic: candidate === "history",
     aspirationWindow: candidate === "aspiration" ? aspirationWindow : 0,
     evaluationCache: candidate === "eval-cache",
+    maxEvaluationCacheEntries: evaluationCacheEntries,
   });
 }
 
@@ -81,6 +85,8 @@ function compactAnalysis(analysis) {
     evaluations: analysis.stats.evaluations,
     evaluationCacheHits: analysis.stats.evaluationCacheHits,
     evaluationCacheStores: analysis.stats.evaluationCacheStores,
+    evaluationCachePeak: analysis.stats.evaluationCachePeak,
+    evaluationCacheEvictions: analysis.stats.evaluationCacheEvictions,
     completedDepth: analysis.stats.completedDepth,
     elapsedMs: analysis.stats.elapsedMs,
   };
@@ -106,6 +112,10 @@ function summarize(results) {
     baselineEvaluations: total("baseline", "evaluations"),
     candidateEvaluations: total("candidate", "evaluations"),
     candidateEvaluationCacheHits: total("candidate", "evaluationCacheHits"),
+    candidateEvaluationCachePeak: Math.max(
+      0, ...results.map((item) => item.candidate.evaluationCachePeak),
+    ),
+    candidateEvaluationCacheEvictions: total("candidate", "evaluationCacheEvictions"),
   };
 }
 
@@ -122,16 +132,20 @@ function runComparison(options) {
       if (candidateFirst) {
         candidate = compactAnalysis(search(
           position, options.maxDepth, options.candidate, options.aspirationWindow,
+          options.evaluationCacheEntries,
         ));
         baseline = compactAnalysis(search(
           position, options.maxDepth, "baseline", options.aspirationWindow,
+          options.evaluationCacheEntries,
         ));
       } else {
         baseline = compactAnalysis(search(
           position, options.maxDepth, "baseline", options.aspirationWindow,
+          options.evaluationCacheEntries,
         ));
         candidate = compactAnalysis(search(
           position, options.maxDepth, options.candidate, options.aspirationWindow,
+          options.evaluationCacheEntries,
         ));
       }
       results.push({

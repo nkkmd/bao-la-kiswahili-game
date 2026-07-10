@@ -96,6 +96,7 @@ const AI = require("../public/ai.js");
   const baseline = AI.analyzeMove(position, "hard", () => 0, {
     maxDepth: 4,
     timeLimitMs: Infinity,
+    evaluationCache: false,
   });
   const cached = AI.analyzeMove(position, "hard", () => 0, {
     maxDepth: 4,
@@ -107,6 +108,37 @@ const AI = require("../public/ai.js");
   assert.ok(cached.stats.evaluationCacheHits > 0, "evaluation caching reuses position scores");
   assert.ok(cached.stats.evaluations < baseline.stats.evaluations,
     "evaluation caching reduces full evaluation calculations");
+  assert.ok(cached.stats.evaluationCachePeak > 0, "evaluation caching records peak entries");
+}
+
+{
+  const defaultHard = AI.analyzeMove(E.initialState(), "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+  });
+  const disabled = AI.analyzeMove(E.initialState(), "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+    evaluationCache: false,
+  });
+  assert.ok(defaultHard.stats.evaluationCacheHits > 0,
+    "hard search enables evaluation caching by default");
+  assert.equal(disabled.stats.evaluationCacheHits, 0,
+    "evaluation caching can be disabled for baseline comparisons");
+  const normal = AI.analyzeMove(E.initialState(), "normal", () => 0);
+  assert.equal(normal.stats.evaluationCacheStores, 0,
+    "normal search avoids evaluation cache overhead");
+}
+
+{
+  const limited = AI.analyzeMove(E.initialState(), "hard", () => 0, {
+    maxDepth: 4,
+    timeLimitMs: Infinity,
+    evaluationCache: true,
+    maxEvaluationCacheEntries: 4,
+  });
+  assert.equal(limited.stats.evaluationCachePeak, 4, "evaluation cache respects its entry limit");
+  assert.ok(limited.stats.evaluationCacheEvictions > 0, "bounded evaluation caches report evictions");
 }
 
 {

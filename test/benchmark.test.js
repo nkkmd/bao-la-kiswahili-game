@@ -28,6 +28,8 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
     "--first-history-heuristic", "--second-history-heuristic",
     "--first-aspiration-window", "40", "--second-aspiration-window", "60",
     "--first-evaluation-cache", "--second-evaluation-cache",
+    "--first-evaluation-cache-entries", "1000",
+    "--second-evaluation-cache-entries", "2000",
     "--first-adjustments", adjustmentsPath,
     "--opening-phase", "namua",
     "--mcts-iterations", "16", "--mcts-playout-turns", "12", "--mcts-exploration", "1.1",
@@ -55,6 +57,8 @@ const { seededRandom, parseArgs, createOpening, runBenchmark } = require("../too
   assert.equal(options.secondAspirationWindow, 60);
   assert.equal(options.firstEvaluationCache, true);
   assert.equal(options.secondEvaluationCache, true);
+  assert.equal(options.firstEvaluationCacheEntries, 1000);
+  assert.equal(options.secondEvaluationCacheEntries, 2000);
   assert.equal(options.openingPhase, "namua");
   assert.equal(options.mctsIterations, 16);
   assert.equal(options.mctsPlayoutTurns, 12);

@@ -1782,3 +1782,26 @@ Quiescence Searchは合法な捕獲手をエンジン順に探索している。
 - namuaの深度差は小さく、最大時間も約1ms大きいため、全phaseでの採用根拠にはまだ不足する
 - 次はhard相当450〜500ms、cache entry数、最大思考時間、GC影響を確認する
 - `benchmark.js`へ`--output`を追加し、shell redirectに依存せずchunk JSONを保存できるようにした
+
+### 2026-07-10: Phase 11 評価キャッシュ採用判断
+
+cache容量:
+
+- 固定深度4 holdoutの最大peakは357 entriesだった
+- 上限256では101 evictionsが発生したが、hit数479と実評価計算2120回は上限50000と同じだった
+- hard/expertへ余裕を持たせ、採用上限を2048 entriesとした
+
+500ms確認:
+
+- namua 2局は両者引き分け。候補平均深度3.88、既定3.81、timeoutは両者16だった
+- mtaji 2局は両者1勝1敗。候補は深度10完了・timeout 0、既定は深度9・timeout 1だった
+- cache peakはnamua 287、mtaji 152で、2048上限のevictionはなかった
+
+採用判断:
+
+- 固定深度32局面でroot着手、nodes、Quiescence nodesが完全一致した
+- 実評価計算は初回23.9%、holdout 18.4%削減した
+- 150ms中規模と500ms確認で平均深度を悪化させず、mtajiでは改善した
+- hard/expertで評価キャッシュを既定有効とし、easy/normalでは無効のままにする
+- cacheは探索単位で破棄し、上限2048 entriesとする
+- Phase 11の次候補は、終局距離値のTT正規化を独立して検証する
