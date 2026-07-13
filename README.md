@@ -95,7 +95,7 @@ node test/tactical.test.js
 BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 ```
 
-ゲーム画面の「AI改善用診断」でコピーしたJSONから、レビュー用戦術ケースの雛形を生成できます。
+ゲーム画面の「AI改善用診断」でコピーしたJSONから、局面監査・レビュー用の戦術ケース雛形を生成できます。
 
 ```sh
 node tools/diagnostic-to-fixture.js \
@@ -103,9 +103,9 @@ node tools/diagnostic-to-fixture.js \
   --output /tmp/bao-tactical-fixtures.js
 ```
 
-生成される雛形は意図的に失敗するTODOを含みます。期待手とBao上の理由を人間が確認してから`test/tactical.test.js`へ移します。
+生成される雛形は意図的に失敗するTODOを含みます。Baoの習熟度が十分でない場合は、期待手を無理に決めず、深度比較、評価値、node数、timeout、自己対局結果などの客観情報だけを記録して`unreviewed`のまま保持できます。期待手または避ける手とBao上の理由を確認した局面だけを`test/tactical.test.js`へ正式追加します。
 
-詳しいベンチマーク条件とベースライン結果は [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md) に記録しています。
+詳しい手順は [`doc/AI_HUMAN_REVIEW_GUIDE.md`](doc/AI_HUMAN_REVIEW_GUIDE.md)、ベンチマーク条件とベースライン結果は [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md) に記録しています。
 
 ## プロジェクト構成
 
@@ -130,7 +130,7 @@ node tools/diagnostic-to-fixture.js \
 - [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): 設計判断、失敗した試行、制限事項
 - [`doc/AI_ROADMAP.md`](doc/AI_ROADMAP.md): 完了済みの Phase 0-5 AI ロードマップ
 - [`doc/AI_ADVANCED_ROADMAP.md`](doc/AI_ADVANCED_ROADMAP.md): Phase 6 以降のロードマップと今後の改善メモ
-- [`doc/AI_HUMAN_REVIEW_GUIDE.md`](doc/AI_HUMAN_REVIEW_GUIDE.md): 違和感のあるAI着手を収集・診断・回帰化する手順
+- [`doc/AI_HUMAN_REVIEW_GUIDE.md`](doc/AI_HUMAN_REVIEW_GUIDE.md): 初心者でも進められる機械的局面監査と、根拠確認後の棋力レビュー手順
 - [`doc/SYSTEM_DESIGN.md`](doc/SYSTEM_DESIGN.md): システム構成と責務
 
 ## ライセンス
