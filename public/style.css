@@ -44,6 +44,15 @@ summary { display: inline-block; list-style: none; }
 .rules { padding: 3px 10px; border-left: 2px solid #34544a; }
 .diagnostic-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .diagnostic-panel p { margin: 8px 0; }
+.ai-review-suggestion { margin: 10px 0; padding: 10px; border: 1px solid #78998a; background: #101e1f; }
+.ai-review-suggestion[hidden] { display: none; }
+.ai-review-suggestion[data-recommendation="save"] { border-color: #e2c36b; box-shadow: inset 4px 0 0 #e2c36b; }
+.ai-review-heading { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+.ai-review-heading strong { color: #d3e4a5; }
+.ai-review-heading button { flex: 0 0 auto; padding: 4px 7px; }
+#ai-review-stats { color: #a8c98b; font-size: 11px; }
+#ai-review-reasons { margin: 6px 0; padding-left: 20px; color: #e2c36b; }
+.ai-review-note { color: #78998a; font-size: 10px; }
 #diagnostic-status { color: #78998a; font-size: 11px; }
 footer { margin-top: 12px; color: #78998a; text-align: center; font-size: 11px; }
 a { color: #d3e4a5; }
@@ -57,5 +66,7 @@ a { color: #d3e4a5; }
   .setup-field { margin: 5px 0; }
   .setup-field select { min-height: 34px; padding-block: 5px; }
   .start-button { margin-top: 6px; padding: 8px; }
+  .ai-review-heading { align-items: stretch; flex-direction: column; }
+  .ai-review-heading button { align-self: start; }
 }
 @media (prefers-reduced-motion: reduce) { .screen-frame { box-shadow: 0 0 0 2px #080d0d; } }
