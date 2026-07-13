@@ -83,11 +83,11 @@
       <details class="diagnostic-panel">
         <summary>AI改善用診断</summary>
         <div class="rules">
-          <p>局面を開発用JSONとしてコピーできます。「AIの手を記録」は直前のAI着手と探索統計をこの端末だけに保存します。自動保存や外部送信は行いません。</p>
+          <p>現在局面や端末内に蓄積したAI診断記録をJSONファイルとして保存できます。「AIの手を記録」は直前のAI着手と探索統計をこの端末だけに保存します。自動保存や外部送信は行いません。</p>
           <div class="diagnostic-actions">
-            <button id="copy-position" type="button">現在局面をコピー</button>
+            <button id="copy-position" type="button">現在局面を保存</button>
             <button id="mark-ai-move" type="button">AIの手を記録</button>
-            <button id="copy-marked" type="button">記録をコピー</button>
+            <button id="copy-marked" type="button">記録を保存</button>
             <button id="clear-marked" type="button">記録を削除</button>
           </div>
           <p id="diagnostic-status" aria-live="polite">端末内の記録: 0件</p>
@@ -107,6 +107,7 @@
     <script src="./ai.js"></script>
     <script src="./ai-config.js"></script>
     <script src="./diagnostics.js"></script>
+    <script src="./diagnostic-download.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>
