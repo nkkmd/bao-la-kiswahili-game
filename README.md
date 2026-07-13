@@ -23,7 +23,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - オフライン対応デプロイのための PWA ファイル
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
-- 外部送信なしで局面JSONをコピーし、直前のAI着手を端末内に記録する診断機能
+- 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
 
 ## ルールの基準
 
@@ -95,7 +95,14 @@ node test/tactical.test.js
 BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 ```
 
-ゲーム画面の「AI改善用診断」でコピーしたJSONから、局面監査・レビュー用の戦術ケース雛形を生成できます。
+ゲーム画面の「AI改善用診断」では、次のJSONファイルを端末へ保存できます。
+
+- `現在局面を保存`: `bao-position-YYYYMMDD-HHMMSS.json`
+- `記録を保存`: `bao-ai-review-YYYYMMDD-HHMMSS.json`
+
+日時は利用者の端末のローカル日時をファイル名にだけ使用します。診断JSON本文には保存時刻を追加しません。「記録を保存」を実行しても、localStorage内の記録は削除されません。
+
+保存したJSONから、局面監査・レビュー用の戦術ケース雛形を生成できます。
 
 ```sh
 node tools/diagnostic-to-fixture.js \
@@ -118,6 +125,7 @@ node tools/diagnostic-to-fixture.js \
 | `public/ai-worker.js` | バックグラウンド AI 探索 Worker |
 | `public/ai-config.js` | デバイス性能別の探索設定 |
 | `public/diagnostics.js` | AI診断局面の許可リスト形式、復元、端末内記録 |
+| `public/diagnostic-download.js` | 診断JSONの日時付きファイル保存 |
 | `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
 | `test/` | 回帰テスト |
 | `artifacts/` | 保存済みのベンチマーク・チューニング出力 |
