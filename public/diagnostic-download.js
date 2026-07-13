@@ -41,23 +41,56 @@
     downloadJsonText(text);
   }
 
+  let installed = false;
   try {
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: { writeText: saveInsteadOfClipboard },
     });
+    installed = navigator.clipboard?.writeText === saveInsteadOfClipboard;
   } catch {
-    if (navigator.clipboard) navigator.clipboard.writeText = saveInsteadOfClipboard;
+    // Continue with narrower fallbacks below.
   }
 
-  const status = document.querySelector("#diagnostic-status");
-  if (status) {
+  if (!installed && navigator.clipboard) {
+    try {
+      Object.defineProperty(navigator.clipboard, "writeText", {
+        configurable: true,
+        value: saveInsteadOfClipboard,
+      });
+      installed = navigator.clipboard.writeText === saveInsteadOfClipboard;
+    } catch {
+      // Continue with the execCommand fallback below.
+    }
+  }
+
+  if (!installed) {
+    const originalExecCommand = document.execCommand?.bind(document);
+    document.execCommand = (command, ...args) => {
+      if (String(command).toLowerCase() === "copy") {
+        const field = document.activeElement;
+        if (field instanceof HTMLTextAreaElement) {
+          downloadJsonText(field.value);
+          return true;
+        }
+      }
+      return originalExecCommand ? originalExecCommand(command, ...args) : false;
+    };
+  }
+
+  function rewriteStatus(node) {
+    if (!node) return;
     const rewrite = () => {
-      status.textContent = status.textContent
+      const next = node.textContent
         .replaceAll("コピーしました", "保存しました")
         .replaceAll("コピーできませんでした", "保存できませんでした")
-        .replaceAll("コピーする記録", "保存する記録");
+        .replaceAll("コピーする記録", "保存する記録")
+        .replaceAll("診断JSONをコピー", "診断JSONを保存");
+      if (next !== node.textContent) node.textContent = next;
     };
-    new MutationObserver(rewrite).observe(status, { childList: true, subtree: true });
+    new MutationObserver(rewrite).observe(node, { childList: true, subtree: true });
   }
+
+  rewriteStatus(document.querySelector("#diagnostic-status"));
+  rewriteStatus(document.querySelector("#status"));
 })();
