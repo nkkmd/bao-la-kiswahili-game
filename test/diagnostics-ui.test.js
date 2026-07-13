@@ -12,8 +12,18 @@ for (const id of ["copy-position", "mark-ai-move", "copy-marked", "clear-marked"
 }
 assert.ok(html.indexOf("./diagnostics.js") < html.indexOf("./main.js"),
   "diagnostics load before the main UI module");
+assert.ok(html.indexOf("./engine.js") < html.indexOf("./review-suggestion.js"),
+  "the engine loads before review suggestions");
+assert.ok(html.indexOf("./diagnostics.js") < html.indexOf("./review-suggestion.js"),
+  "diagnostics load before review suggestions");
+assert.ok(html.indexOf("./review-suggestion.js") < html.indexOf("./main.js"),
+  "review suggestions load before the main UI module");
 assert.match(serviceWorker, /\.\/diagnostics\.js/,
   "diagnostics remain available in the offline cache");
+assert.match(serviceWorker, /\.\/review-suggestion\.js/,
+  "review suggestions remain available in the offline cache");
+assert.match(serviceWorker, /\.\/diagnostic-download\.js/,
+  "diagnostic downloads remain available in the offline cache");
 assert.match(privacy, /AI診断記録を外部へ自動送信する機能はありません/,
   "privacy policy states that diagnostic records are not uploaded automatically");
 assert.match(privacy, /最大50件/, "privacy policy documents the local record limit");

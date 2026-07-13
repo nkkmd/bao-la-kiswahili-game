@@ -11,6 +11,7 @@
     "completedDepth", "timedOut", "evaluationRequests", "evaluations",
     "evaluationCacheHits", "evaluationCachePeak", "evaluationCacheEvictions",
   ];
+  const NUMERIC_STAT_FIELDS = STAT_FIELDS.filter((field) => field !== "timedOut");
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
@@ -60,7 +61,7 @@
         level: String(context.ai.level || "unknown"),
         profile: String(context.ai.profile || "bao"),
         move: selectedFields(context.ai.move, MOVE_FIELDS),
-        stats: selectedFields(context.ai.stats, STAT_FIELDS, STAT_FIELDS),
+        stats: selectedFields(context.ai.stats, STAT_FIELDS, NUMERIC_STAT_FIELDS),
       };
     }
     if (context.reason === "unexpected-ai-move") snapshot.reason = context.reason;
