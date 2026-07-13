@@ -84,6 +84,15 @@
         <summary>AI改善用診断</summary>
         <div class="rules">
           <p>現在局面や端末内に蓄積したAI診断記録をJSONファイルとして保存できます。「AIの手を記録」は直前のAI着手と探索統計をこの端末だけに保存します。自動保存や外部送信は行いません。</p>
+          <section id="ai-review-suggestion" class="ai-review-suggestion" aria-live="polite" hidden>
+            <div class="ai-review-heading">
+              <strong id="ai-review-message">直前のAI探索結果です。</strong>
+              <button id="dismiss-ai-review" type="button" aria-label="探索結果を閉じる">閉じる</button>
+            </div>
+            <p id="ai-review-stats"></p>
+            <ul id="ai-review-reasons"></ul>
+            <p class="ai-review-note">これは悪手の断定ではなく、Phase 10Aの機械的な調査候補判定です。</p>
+          </section>
           <div class="diagnostic-actions">
             <button id="copy-position" type="button">現在局面を保存</button>
             <button id="mark-ai-move" type="button">AIの手を記録</button>
@@ -107,6 +116,7 @@
     <script src="./ai.js"></script>
     <script src="./ai-config.js"></script>
     <script src="./diagnostics.js"></script>
+    <script src="./review-suggestion.js"></script>
     <script src="./diagnostic-download.js"></script>
     <script src="./main.js"></script>
   </body>
