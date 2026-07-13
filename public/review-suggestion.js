@@ -175,11 +175,21 @@
         reasonsNode.append(item);
       }
       panel.dataset.recommendation = "save";
+      const details = panel.closest("details");
+      if (details) details.open = true;
     } else {
       messageNode.textContent = "直前のAI探索結果です。保存推奨条件には該当しませんでした。";
       panel.dataset.recommendation = "none";
     }
     panel.hidden = false;
+  }
+
+  function storageOrNull() {
+    try {
+      return root.localStorage;
+    } catch {
+      return null;
+    }
   }
 
   function installBrowserHook() {
@@ -189,7 +199,8 @@
 
     const originalCreateSnapshot = diagnostics.createSnapshot.bind(diagnostics);
     diagnostics.createSnapshot = (state, context = {}) => {
-      const history = readHistory(root.localStorage, context?.ai?.level);
+      const storage = storageOrNull();
+      const history = readHistory(storage, context?.ai?.level);
       const analysis = analyze(engine, state, context, history);
       const snapshot = originalCreateSnapshot(state, context);
       if (analysis.enabled) {
@@ -200,7 +211,7 @@
           recentMedianDepth: analysis.recentMedianDepth,
           signals: analysis.signals,
         };
-        writeHistory(root.localStorage, analysis.level, analysis.stats.completedDepth);
+        writeHistory(storage, analysis.level, analysis.stats.completedDepth);
         render(analysis);
       }
       return snapshot;
