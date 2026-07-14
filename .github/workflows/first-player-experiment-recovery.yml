@@ -18,29 +18,30 @@ jobs:
     timeout-minutes: 30
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 8
       matrix:
-        batch: [1, 2, 3, 4]
+        batch: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Run 50 MCTS games
+      - name: Run 5 MCTS games
         shell: bash
         run: |
           set -euo pipefail
           seed=$((20260714 + ${{ matrix.batch }} * 1009 + 900000))
           mkdir -p artifacts/first-player-suite
           node tools/first-player-experiment-suite.js \
-            --games 50 \
+            --games 5 \
             --seed "$seed" \
             --random-plies 8 \
             --max-depth 2 \
             --opening-policy uniform \
             --evaluation-profile bao \
             --search-profile mcts \
-            --mcts-iterations 100 \
+            --mcts-iterations 50 \
+            --mcts-playout-turns 40 \
             --output "artifacts/first-player-suite/eval-mcts-batch-${{ matrix.batch }}.json"
       - uses: actions/upload-artifact@v4
         with:
@@ -84,14 +85,14 @@ jobs:
           const dir = 'artifacts/first-player-suite';
           const files = fs.readdirSync(dir)
             .filter((name) => name.endsWith('.json') && name !== 'symmetry.json' && name !== 'summary.json');
-          if (files.length !== 44) {
-            throw new Error(`Expected 44 batch reports, found ${files.length}: ${files.join(', ')}`);
+          if (files.length !== 80) {
+            throw new Error(`Expected 80 batch reports, found ${files.length}: ${files.join(', ')}`);
           }
           const reports = files.map((name) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')));
           const groups = new Map();
           for (const report of reports) {
             const c = report.config;
-            const key = `${c.maxDepth}|${c.openingPolicy}|${c.evaluationProfile}|${c.searchProfile}|${c.mctsIterations}`;
+            const key = `${c.maxDepth}|${c.openingPolicy}|${c.evaluationProfile}|${c.searchProfile}|${c.mctsIterations}|${c.mctsPlayoutTurns}`;
             if (!groups.has(key)) {
               groups.set(key, {
                 config: c, games: 0, southWins: 0, northWins: 0, draws: 0,
@@ -122,6 +123,7 @@ jobs:
                 searchProfile: group.config.searchProfile,
                 randomPlies: group.config.randomPlies,
                 mctsIterations: group.config.mctsIterations,
+                mctsPlayoutTurns: group.config.mctsPlayoutTurns,
               },
               batches: group.batches,
               games: group.games,
