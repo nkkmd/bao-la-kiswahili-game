@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-07-14T08:11:37.829Z",
+  "workflowRunId": 29316563116,
+  "artifactId": 8304389577,
+  "methodology": {
+    "batches": 20,
+    "gamesPerBatch": 50,
+    "totalGames": 1000,
+    "seeds": [
+      20260714,
+      20260764,
+      20260814,
+      20260864,
+      20260914,
+      20260964,
+      20261014,
+      20261064,
+      20261114,
+      20261164,
+      20261214,
+      20261264,
+      20261314,
+      20261364,
+      20261414,
+      20261464,
+      20261514,
+      20261564,
+      20261614,
+      20261664
+    ],
+    "first": "hard",
+    "second": "hard",
+    "profile": "bao",
+    "search": "phase2",
+    "timeLimitMs": 0,
+    "maxDepth": 2,
+    "maxTurns": 300,
+    "openingPlies": 0,
+    "pairedSeatSwap": true
+  },
+  "totals": {
+    "games": 1000,
+    "southWins": 0,
+    "northWins": 1000,
+    "draws": 0,
+    "averageTurns": 48,
+    "southWinRateAllGames": 0,
+    "southWinRateDecisive": 0,
+    "southWinRateWilson95": [
+      0,
+      0.0038267584855551234
+    ]
+  },
+  "interpretation": {
+    "observed": "Under the exact deterministic initial-position depth-2 configuration, North won every game in every batch.",
+    "independenceWarning": "All games began from the same standard initial position with openingPlies=0. Identical aggregate results and exactly 48 average turns in every batch indicate repeated deterministic trajectories rather than 1000 independent opening samples.",
+    "claimLimit": "This result is evidence of a reproducible North-side outcome for this implementation and AI configuration, not proof that Bao la Kiswahili is theoretically a second-player win."
+  }
+}
