@@ -144,10 +144,11 @@ node tools/diagnostic-to-fixture.js \
 | `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
 | `test/` | 回帰テスト |
 | `artifacts/` | 保存済みのベンチマーク・チューニング出力 |
-| `doc/` | ロードマップ、ベンチマークメモ、開発ログ、技術レポート |
+| `doc/` | ルール学習、ロードマップ、ベンチマーク、開発ログ、技術レポート |
 
 ## ドキュメント
 
+- [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
 - [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 公開向け Bao AI 技術レポート
 - [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md): ベンチマークコマンドとベースライン結果
 - [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): 設計判断、失敗した試行、制限事項
