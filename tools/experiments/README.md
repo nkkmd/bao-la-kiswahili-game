@@ -61,10 +61,14 @@ node tools/experiments/aggregate-first-player-research.js suite
 
 ## 出力先
 
+今後のローカル実行では次の構成を使用します。`first-player-study`直下の既存集計は、過去のGitHub Actions実験を保存した履歴成果物です。
+
 ```text
 artifacts/
 ├── first-player-study/
-│   └── diagnostics.json
+│   ├── diagnostics.json
+│   ├── summary.json
+│   └── random-opening-summary.json
 ├── first-player-random-openings/
 │   ├── *.json
 │   └── summary.json
@@ -76,6 +80,8 @@ artifacts/
     ├── symmetry.json
     └── summary.json
 ```
+
+`summary.json`と`random-opening-summary.json`は既存研究の保存集計です。新しい`random-openings`追試は`first-player-random-openings/`へ、ゲーム開始時の追試は`game-start-first-player/`へ保存します。`first-player-suite/summary.json`は11条件すべてが完了するまで作成されません。
 
 ## 運用方針
 

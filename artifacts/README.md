@@ -56,4 +56,15 @@ Phase別の測定出力:
 - `phase11-tt-normalized.json`: Phase 11のTT終局距離正規化・固定深度比較
 - `phase11-tt-normalized-holdout.json`: Phase 11のTT終局距離正規化・未使用seed確認
 
+先攻・後攻差研究の保存出力:
+
+- `first-player-study/summary.json`: 標準初期局面、同一hard AI、深度2の1,000局集計
+- `first-player-study/diagnostics.json`: 標準初期局面の深度別勝者と着手系列ハッシュ診断
+- `first-player-study/random-opening-summary.json`: namua／mtajiランダム局面1,200局の集計
+- `first-player-random-openings/`: ローカルランナーによるランダム局面追試の出力先（未実行時は存在しない）
+- `game-start-first-player/`: ゲーム開始時からのランダム序盤追試の出力先（元の1,000局JSONは未保存）
+- `first-player-suite/`: 次期11条件と鏡像対称性監査の出力先（全条件完了後に`summary.json`を作成）
+
+研究の統合記録は`../doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`、現在のローカル実行手順は`../tools/experiments/README.md`を参照してください。重い自己対局はGitHub Actionsでは実行しません。
+
 採用済みの評価重みの正本は`../public/ai-weights.js`です。このディレクトリ内のJSONは検証候補として扱います。

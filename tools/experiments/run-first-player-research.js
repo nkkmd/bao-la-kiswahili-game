@@ -106,7 +106,7 @@ function runSuite() {
       const seed = 20260714 + batch * 1009 + jobIndex * 7919;
       const output = `artifacts/first-player-suite/${condition.name}-batch-${batch}.json`;
       runNode('tools/first-player-experiment-suite.js', [
-        '--games', '50', '--seed', String(seed), '--random-plies', '8',
+        '--condition-name', condition.name, '--games', '50', '--seed', String(seed), '--random-plies', '8',
         '--max-depth', String(condition.depth), '--opening-policy', condition.policy,
         '--evaluation-profile', condition.profile, '--search-profile', condition.search,
         '--mcts-iterations', '400', '--mcts-playout-turns', '80', '--max-turns', '300',

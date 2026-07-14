@@ -144,11 +144,16 @@ function aggregateSuite() {
   if (files.length !== 44) throw new Error(`Expected 44 suite reports, found ${files.length}`);
   const groups = new Map();
   for (const name of files) {
+    const nameMatch = name.match(/^(.*)-batch-(\d+)\.json$/);
+    if (!nameMatch) throw new Error(`Unexpected suite report name: ${name}`);
+    const conditionName = nameMatch[1];
     const report = readJson(path.join(dir, name));
     const c = report.config;
-    const key = `${c.maxDepth}|${c.openingPolicy}|${c.evaluationProfile}|${c.searchProfile}|${c.mctsIterations}|${c.mctsPlayoutTurns}`;
-    const group = groups.get(key) || {
-      config: c, games: 0, southWins: 0, northWins: 0, draws: 0, turns: 0, firstMoves: {}, batches: 0,
+    if (c.conditionName !== conditionName) {
+      throw new Error(`Suite condition mismatch in ${name}: ${c.conditionName || '(missing)'}`);
+    }
+    const group = groups.get(conditionName) || {
+      name: conditionName, config: c, games: 0, southWins: 0, northWins: 0, draws: 0, turns: 0, firstMoves: {}, batches: 0,
     };
     group.batches += 1;
     group.games += report.totals.games;
@@ -160,13 +165,14 @@ function aggregateSuite() {
       group.firstMoves[item.move] ||= { games: 0, southWins: 0, northWins: 0, draws: 0 };
       for (const field of ['games', 'southWins', 'northWins', 'draws']) group.firstMoves[item.move][field] += item[field];
     }
-    groups.set(key, group);
+    groups.set(conditionName, group);
   }
   const symmetryFile = path.join(dir, 'symmetry.json');
   if (!fs.existsSync(symmetryFile)) throw new Error('Missing symmetry.json');
   const conditions = [...groups.values()].map((group) => {
     const decisive = group.southWins + group.northWins;
     return {
+      name: group.name,
       config: {
         maxDepth: group.config.maxDepth, openingPolicy: group.config.openingPolicy,
         evaluationProfile: group.config.evaluationProfile, searchProfile: group.config.searchProfile,
@@ -189,6 +195,10 @@ function aggregateSuite() {
     conditions,
     symmetry: readJson(symmetryFile).summary,
   };
+  if (conditions.length !== 11) throw new Error(`Expected 11 suite conditions, found ${conditions.length}`);
+  if (conditions.some((item) => item.batches !== 4 || item.games !== 200)) {
+    throw new Error('Each suite condition must contain 4 batches and 200 games');
+  }
   if (summary.totalGames !== 2200) throw new Error(`Expected 2200 suite games, found ${summary.totalGames}`);
   writeJson(path.join(dir, 'summary.json'), summary);
 }

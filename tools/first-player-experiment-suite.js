@@ -9,6 +9,7 @@ const { seededRandom } = require("./benchmark.js");
 
 function parseArgs(argv) {
   const options = {
+    conditionName: "",
     games: 50,
     seed: 20260714,
     randomPlies: 8,
@@ -24,7 +25,8 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length; i += 1) {
     const key = argv[i];
     const value = argv[i + 1];
-    if (key === "--games") options.games = Number(value);
+    if (key === "--condition-name") options.conditionName = value;
+    else if (key === "--games") options.games = Number(value);
     else if (key === "--seed") options.seed = Number(value);
     else if (key === "--random-plies") options.randomPlies = Number(value);
     else if (key === "--max-depth") options.maxDepth = Number(value);

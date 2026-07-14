@@ -1,7 +1,7 @@
 # Bao la Kiswahili 先攻・後攻差研究
 
-Version: 0.1.0  
-更新日: 2026-07-14
+Version: 0.2.0
+更新日: 2026-07-15
 
 ## 1. 研究目的
 
@@ -57,6 +57,18 @@ namuaとmtajiのランダム局面を用いた1,200局では、namua全体の手
 
 一方、序盤手数によって優位方向が反転している。したがって、固定的な後攻ハンディというより、序盤の分岐と局面構造が勝率へ強く影響している可能性が高い。
 
+### 2.6 結果記録の所在
+
+| 節 | 根拠となる記録 | 状態 |
+| --- | --- | --- |
+| 2.1 | `doc/AI_BENCHMARK.md` のPhase 0基準成績 | 文書記録あり |
+| 2.2 | `artifacts/first-player-study/summary.json` | 保存済み |
+| 2.3 | `artifacts/first-player-study/diagnostics.json` | 保存済み |
+| 2.4 | `artifacts/first-player-study/random-opening-summary.json` | 保存済み |
+| 2.5 | `tools/experiments/run-first-player-research.js` の `game-start` 条件 | 再実行条件は保存済み、元のバッチJSONと集計JSONはリポジトリに未保存 |
+
+2.5の表は2026-07-14に得た集計記録だが、現在のリポジトリだけでは元JSONとの再照合ができない。正式な追試では同じseedと条件で再実行し、`artifacts/game-start-first-player/`の20バッチと`summary.json`を保存する。
+
 ## 3. 現時点の結論
 
 > 一様ランダムな序盤分岐と深度2 AIを用いた1,000局では、ゲーム開始時の後攻が53.9%勝利した。ただし、結果は探索深度と序盤生成条件に敏感であり、Bao一般に固定的な後攻優位があると断定する段階ではない。
@@ -69,9 +81,11 @@ namuaとmtajiのランダム局面を用いた1,200局では、namua全体の手
 4. 特定の初手または応手が総合勝率を左右している。
 5. South/Northの座標変換や評価処理に非対称性がある。
 
-## 4. 次期実験1〜5
+## 4. 次期実験1〜5（未完了）
 
 各条件はまず200局のスクリーニングを行う。50局×4バッチで異なるseedを使用し、安定した結果だけを後続で1,000局へ拡張する。
+
+2026-07-15現在、`artifacts/first-player-suite/summary.json`は作成されておらず、この節の2,200局は完了済み結果ではなく実験計画である。特にMCTS完全条件は計算量が大きく、試行を停止しており、完了バッチはない。
 
 ### 実験1: 探索深度別の再現性
 
@@ -118,13 +132,19 @@ namuaとmtajiのランダム局面を用いた1,200局では、namua全体の手
 
 ## 5. 実行構成
 
-ワークフロー:
+ローカル実験の運用手順:
 
 ```text
-.github/workflows/first-player-experiment-suite.yml
+tools/experiments/README.md
 ```
 
-実験ランナー:
+再開可能なローカルランナー:
+
+```text
+tools/experiments/run-first-player-research.js
+```
+
+条件別の対局ランナー:
 
 ```text
 tools/first-player-experiment-suite.js
@@ -135,6 +155,10 @@ tools/first-player-experiment-suite.js
 ```text
 tools/first-player-symmetry-audit.js
 ```
+
+重い自己対局はGitHub Actionsでは実行しない。バッチJSONが存在する場合はローカルランナーがそのバッチをスキップするため、中断後も未完了分から再開できる。集計は`tools/experiments/aggregate-first-player-research.js`で行い、必要なバッチ数と総対局数が揃わない場合は失敗させる。
+
+予定成果物は`artifacts/first-player-suite/`に条件別バッチ、`symmetry.json`、`summary.json`として保存する。
 
 予定対局数は11条件×200局＝2,200局である。実験3の初手別集計はこれらの対局から同時に取得する。
 

@@ -1,7 +1,9 @@
 # Bao la Kiswahili 先攻・後攻差の調査
 
-Version: 0.2.0  
-更新日: 2026-07-14
+Version: 0.2.1
+更新日: 2026-07-15
+
+位置づけ: 標準初期局面の1,000局調査を記録した履歴文書。後続調査と現在の計画は`FIRST_PLAYER_ADVANTAGE_RESEARCH.md`を参照する。
 
 ## 1. 目的
 
@@ -177,6 +179,8 @@ GitHub Actionsの`First-player advantage study`を使用した。最初の構成
 この結果は「先後差がない」という予備的な見方を修正する重要な観測である。同時に、ゲーム固有の先後差と実装・AI固有の偏りを分離する追加調査が必要である。
 
 ## 8. 次の調査
+
+この節は本調査を記録した時点の課題一覧である。8.1と8.3の診断結果は`artifacts/first-player-study/diagnostics.json`、8.2の後続結果は`FIRST_PLAYER_RANDOM_OPENING_STUDY.md`、現在の未完了実験は`FIRST_PLAYER_ADVANTAGE_RESEARCH.md`に記録している。
 
 ### 8.1 対局系列の同一性確認
 
