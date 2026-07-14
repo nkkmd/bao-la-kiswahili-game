@@ -1,0 +1,36 @@
+name: First-player diagnostics
+
+on:
+  push:
+    paths:
+      - ".github/workflows/first-player-diagnostics.yml"
+      - "tools/first-player-diagnostics.js"
+      - "tools/benchmark.js"
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+  pull_request:
+    paths:
+      - ".github/workflows/first-player-diagnostics.yml"
+      - "tools/first-player-diagnostics.js"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run transcript and random-opening diagnostics
+        run: node tools/first-player-diagnostics.js artifacts/first-player-study/diagnostics.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-diagnostics
+          path: artifacts/first-player-study/diagnostics.json
+          if-no-files-found: error
