@@ -21,32 +21,58 @@ permissions:
 
 jobs:
   games:
-    name: ${{ matrix.experiment }} / ${{ matrix.condition }} / batch ${{ matrix.batch }}
+    name: ${{ matrix.condition }} / batch ${{ matrix.batch }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
       max-parallel: 8
       matrix:
-        experiment: [depth, opening-policy, evaluation]
-        include:
-          - { experiment: depth, condition: depth-1, depth: 1, policy: uniform, profile: bao, search: phase2 }
-          - { experiment: depth, condition: depth-2, depth: 2, policy: uniform, profile: bao, search: phase2 }
-          - { experiment: depth, condition: depth-3, depth: 3, policy: uniform, profile: bao, search: phase2 }
-          - { experiment: depth, condition: depth-4, depth: 4, policy: uniform, profile: bao, search: phase2 }
-          - { experiment: opening-policy, condition: uniform, depth: 2, policy: uniform, profile: bao, search: phase2 }
-          - { experiment: opening-policy, condition: top3, depth: 2, policy: top3, profile: bao, search: phase2 }
-          - { experiment: opening-policy, condition: softmax, depth: 2, policy: softmax, profile: bao, search: phase2 }
-          - { experiment: evaluation, condition: legacy, depth: 2, policy: uniform, profile: legacy, search: phase2 }
-          - { experiment: evaluation, condition: bao, depth: 2, policy: uniform, profile: bao, search: phase2 }
-          - { experiment: evaluation, condition: bao-v2, depth: 2, policy: uniform, profile: bao-v2, search: phase2 }
-          - { experiment: evaluation, condition: mcts, depth: 2, policy: uniform, profile: bao, search: mcts }
+        condition:
+          - depth-1
+          - depth-2
+          - depth-3
+          - depth-4
+          - policy-uniform
+          - policy-top3
+          - policy-softmax
+          - eval-legacy
+          - eval-bao
+          - eval-bao-v2
+          - eval-mcts
         batch: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Resolve condition
+        id: condition
+        shell: bash
+        run: |
+          set -euo pipefail
+          depth=2
+          policy=uniform
+          profile=bao
+          search=phase2
+          case "${{ matrix.condition }}" in
+            depth-1) depth=1 ;;
+            depth-2) depth=2 ;;
+            depth-3) depth=3 ;;
+            depth-4) depth=4 ;;
+            policy-uniform) policy=uniform ;;
+            policy-top3) policy=top3 ;;
+            policy-softmax) policy=softmax ;;
+            eval-legacy) profile=legacy ;;
+            eval-bao) profile=bao ;;
+            eval-bao-v2) profile=bao-v2 ;;
+            eval-mcts) profile=bao; search=mcts ;;
+            *) echo "Unknown condition" >&2; exit 1 ;;
+          esac
+          echo "depth=$depth" >> "$GITHUB_OUTPUT"
+          echo "policy=$policy" >> "$GITHUB_OUTPUT"
+          echo "profile=$profile" >> "$GITHUB_OUTPUT"
+          echo "search=$search" >> "$GITHUB_OUTPUT"
       - name: Run 50 games
         shell: bash
         run: |
@@ -57,15 +83,15 @@ jobs:
             --games 50 \
             --seed "$seed" \
             --random-plies 8 \
-            --max-depth "${{ matrix.depth }}" \
-            --opening-policy "${{ matrix.policy }}" \
-            --evaluation-profile "${{ matrix.profile }}" \
-            --search-profile "${{ matrix.search }}" \
+            --max-depth "${{ steps.condition.outputs.depth }}" \
+            --opening-policy "${{ steps.condition.outputs.policy }}" \
+            --evaluation-profile "${{ steps.condition.outputs.profile }}" \
+            --search-profile "${{ steps.condition.outputs.search }}" \
             --mcts-iterations 400 \
-            --output "artifacts/first-player-suite/${{ matrix.experiment }}-${{ matrix.condition }}-batch-${{ matrix.batch }}.json"
+            --output "artifacts/first-player-suite/${{ matrix.condition }}-batch-${{ matrix.batch }}.json"
       - uses: actions/upload-artifact@v4
         with:
-          name: first-player-suite-${{ matrix.experiment }}-${{ matrix.condition }}-${{ matrix.batch }}
+          name: first-player-suite-${{ matrix.condition }}-${{ matrix.batch }}
           path: artifacts/first-player-suite/*.json
           if-no-files-found: error
 
@@ -110,6 +136,7 @@ jobs:
           const path = require('node:path');
           const dir = 'artifacts/first-player-suite';
           const files = fs.readdirSync(dir).filter((name) => name.endsWith('.json') && name !== 'symmetry.json');
+          if (files.length !== 44) throw new Error(`Expected 44 game reports, found ${files.length}`);
           const reports = files.map((name) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')));
           const groups = new Map();
           for (const report of reports) {
@@ -139,7 +166,7 @@ jobs:
             southWins: group.southWins,
             northWins: group.northWins,
             draws: group.draws,
-            southWinRate: group.southWins / (group.southWins + group.northWins),
+            southWinRate: group.southWins / Math.max(1, group.southWins + group.northWins),
             averageTurns: group.turns / group.games,
             firstMoves: Object.entries(group.firstMoves).map(([move, value]) => ({ move, ...value, southWinRate: value.southWins / Math.max(1, value.southWins + value.northWins) })).sort((a, b) => b.games - a.games),
           }));
