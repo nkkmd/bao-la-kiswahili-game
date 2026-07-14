@@ -9,6 +9,9 @@ on:
       - "public/ai.js"
       - "public/ai-config.js"
       - "public/ai-weights.js"
+  pull_request:
+    paths:
+      - ".github/workflows/first-player-study.yml"
   workflow_dispatch:
 
 permissions:
