@@ -1,0 +1,154 @@
+name: First-player random-opening study
+
+on:
+  push:
+    paths:
+      - ".github/workflows/first-player-random-openings.yml"
+      - "tools/benchmark.js"
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+  pull_request:
+    paths:
+      - ".github/workflows/first-player-random-openings.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    name: ${{ matrix.phase }}-${{ matrix.plies }} batch ${{ matrix.batch }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        phase: [namua, mtaji]
+        plies: [4, 8, 12]
+        batch: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run 50 paired-opening games
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/first-player-random-openings
+          phase_offset=0
+          if [ "${{ matrix.phase }}" = "mtaji" ]; then phase_offset=500000; fi
+          seed=$((20270000 + phase_offset + ${{ matrix.plies }} * 1000 + ${{ matrix.batch }} * 50))
+          node tools/benchmark.js \
+            --games 50 \
+            --seed "$seed" \
+            --first hard \
+            --second hard \
+            --first-profile bao \
+            --second-profile bao \
+            --first-search phase2 \
+            --second-search phase2 \
+            --time-limit 0 \
+            --max-depth 2 \
+            --max-turns 300 \
+            --opening-plies "${{ matrix.plies }}" \
+            --opening-phase "${{ matrix.phase }}" \
+            --output "artifacts/first-player-random-openings/${{ matrix.phase }}-${{ matrix.plies }}-batch-${{ matrix.batch }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-random-${{ matrix.phase }}-${{ matrix.plies }}-${{ matrix.batch }}
+          path: artifacts/first-player-random-openings/*.json
+          if-no-files-found: error
+
+  aggregate:
+    name: aggregate random-opening study
+    needs: benchmark
+    if: ${{ always() && needs.benchmark.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: first-player-random-*
+          path: artifacts/first-player-random-openings
+          merge-multiple: true
+      - name: Aggregate conditions
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const dir = 'artifacts/first-player-random-openings';
+          const files = fs.readdirSync(dir).filter((name) => name.endsWith('.json')).sort();
+          if (files.length !== 24) throw new Error(`Expected 24 reports, found ${files.length}`);
+          const reports = files.map((name) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')));
+          const groups = new Map();
+          for (const report of reports) {
+            const key = `${report.config.openingPhase}-${report.config.openingPlies}`;
+            const group = groups.get(key) || {
+              phase: report.config.openingPhase,
+              openingPlies: report.config.openingPlies,
+              games: 0, southWins: 0, northWins: 0, draws: 0, totalTurns: 0,
+            };
+            group.games += report.games;
+            group.southWins += report.southWins;
+            group.northWins += report.northWins;
+            group.draws += report.draws;
+            group.totalTurns += report.averageTurns * report.games;
+            groups.set(key, group);
+          }
+          const z = 1.959963984540054;
+          const conditions = [...groups.values()].map((group) => {
+            const decisive = group.southWins + group.northWins;
+            const p = decisive ? group.southWins / decisive : 0;
+            const denom = decisive ? 1 + z * z / decisive : 1;
+            const center = decisive ? (p + z * z / (2 * decisive)) / denom : 0;
+            const margin = decisive
+              ? z * Math.sqrt((p * (1 - p) + z * z / (4 * decisive)) / decisive) / denom
+              : 0;
+            return {
+              phase: group.phase,
+              openingPlies: group.openingPlies,
+              games: group.games,
+              southWins: group.southWins,
+              northWins: group.northWins,
+              draws: group.draws,
+              southWinRate: group.southWins / group.games,
+              southWinRateWilson95: [center - margin, center + margin],
+              averageTurns: group.totalTurns / group.games,
+            };
+          }).sort((a, b) => a.phase.localeCompare(b.phase) || a.openingPlies - b.openingPlies);
+          if (conditions.some((item) => item.games !== 200)) {
+            throw new Error('Each condition must contain 200 games');
+          }
+          const summary = {
+            generatedAt: new Date().toISOString(),
+            methodology: {
+              phases: ['namua', 'mtaji'],
+              openingPlies: [4, 8, 12],
+              gamesPerCondition: 200,
+              totalGames: 1200,
+              pairedOpenings: true,
+              ai: 'hard vs hard',
+              profile: 'bao',
+              search: 'phase2',
+              maxDepth: 2,
+              timeLimitMs: 0,
+            },
+            conditions,
+          };
+          fs.writeFileSync(path.join(dir, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
+          console.log(JSON.stringify(summary, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-random-opening-study
+          path: artifacts/first-player-random-openings/
+          if-no-files-found: error
