@@ -1,0 +1,166 @@
+name: Game-start first-player study
+
+on:
+  push:
+    paths:
+      - ".github/workflows/game-start-first-player-study.yml"
+      - "tools/game-start-first-player-study.js"
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+  pull_request:
+    paths:
+      - ".github/workflows/game-start-first-player-study.yml"
+      - "tools/game-start-first-player-study.js"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    name: random opening ${{ matrix.random_plies }} plies batch ${{ matrix.batch }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        include:
+          - { random_plies: 2, batch: 1, seed: 20262001 }
+          - { random_plies: 2, batch: 2, seed: 20262002 }
+          - { random_plies: 2, batch: 3, seed: 20262003 }
+          - { random_plies: 2, batch: 4, seed: 20262004 }
+          - { random_plies: 4, batch: 1, seed: 20264001 }
+          - { random_plies: 4, batch: 2, seed: 20264002 }
+          - { random_plies: 4, batch: 3, seed: 20264003 }
+          - { random_plies: 4, batch: 4, seed: 20264004 }
+          - { random_plies: 6, batch: 1, seed: 20266001 }
+          - { random_plies: 6, batch: 2, seed: 20266002 }
+          - { random_plies: 6, batch: 3, seed: 20266003 }
+          - { random_plies: 6, batch: 4, seed: 20266004 }
+          - { random_plies: 8, batch: 1, seed: 20268001 }
+          - { random_plies: 8, batch: 2, seed: 20268002 }
+          - { random_plies: 8, batch: 3, seed: 20268003 }
+          - { random_plies: 8, batch: 4, seed: 20268004 }
+          - { random_plies: 12, batch: 1, seed: 20261201 }
+          - { random_plies: 12, batch: 2, seed: 20261202 }
+          - { random_plies: 12, batch: 3, seed: 20261203 }
+          - { random_plies: 12, batch: 4, seed: 20261204 }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run 50 games from the standard initial position
+        run: |
+          node tools/game-start-first-player-study.js \
+            --games 50 \
+            --seed "${{ matrix.seed }}" \
+            --random-plies "${{ matrix.random_plies }}" \
+            --max-depth 2 \
+            --max-turns 300 \
+            --output "artifacts/game-start-first-player/random-${{ matrix.random_plies }}-batch-${{ matrix.batch }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: game-start-first-player-${{ matrix.random_plies }}-${{ matrix.batch }}
+          path: artifacts/game-start-first-player/*.json
+          if-no-files-found: error
+
+  aggregate:
+    name: aggregate 1,000 games
+    needs: benchmark
+    if: ${{ always() && needs.benchmark.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: game-start-first-player-*
+          path: artifacts/game-start-first-player
+          merge-multiple: true
+      - name: Aggregate results
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const dir = 'artifacts/game-start-first-player';
+          const files = fs.readdirSync(dir).filter((name) => name.endsWith('.json')).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+          if (files.length !== 20) throw new Error(`Expected 20 reports, found ${files.length}`);
+          const reports = files.map((name) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')));
+          const groups = new Map();
+          for (const report of reports) {
+            const plies = report.methodology.randomPlies;
+            if (!groups.has(plies)) groups.set(plies, { randomPlies: plies, games: 0, southWins: 0, northWins: 0, draws: 0, totalTurns: 0, handoffSouth: 0, handoffNorth: 0, handoffPhases: {} });
+            const group = groups.get(plies);
+            group.games += report.totals.games;
+            group.southWins += report.totals.southWins;
+            group.northWins += report.totals.northWins;
+            group.draws += report.totals.draws;
+            group.totalTurns += report.totals.averageTurns * report.totals.games;
+            group.handoffSouth += report.totals.handoffPlayers.south;
+            group.handoffNorth += report.totals.handoffPlayers.north;
+            for (const [phase, count] of Object.entries(report.totals.handoffPhases)) group.handoffPhases[phase] = (group.handoffPhases[phase] || 0) + count;
+          }
+          function wilson(successes, total) {
+            if (!total) return [0, 0];
+            const z = 1.959963984540054;
+            const p = successes / total;
+            const denom = 1 + z * z / total;
+            const center = (p + z * z / (2 * total)) / denom;
+            const margin = z * Math.sqrt((p * (1 - p) + z * z / (4 * total)) / total) / denom;
+            return [center - margin, center + margin];
+          }
+          const conditions = [...groups.values()].sort((a, b) => a.randomPlies - b.randomPlies).map((group) => {
+            const decisive = group.southWins + group.northWins;
+            return {
+              randomPlies: group.randomPlies,
+              games: group.games,
+              southWins: group.southWins,
+              northWins: group.northWins,
+              draws: group.draws,
+              southWinRateDecisive: decisive ? group.southWins / decisive : 0,
+              southWinRateWilson95: wilson(group.southWins, decisive),
+              averageTurns: group.totalTurns / group.games,
+              handoffPlayers: { south: group.handoffSouth, north: group.handoffNorth },
+              handoffPhases: group.handoffPhases,
+            };
+          });
+          const totals = conditions.reduce((acc, condition) => {
+            acc.games += condition.games;
+            acc.southWins += condition.southWins;
+            acc.northWins += condition.northWins;
+            acc.draws += condition.draws;
+            return acc;
+          }, { games: 0, southWins: 0, northWins: 0, draws: 0 });
+          const decisive = totals.southWins + totals.northWins;
+          const summary = {
+            generatedAt: new Date().toISOString(),
+            methodology: {
+              totalGames: totals.games,
+              conditions: [2, 4, 6, 8, 12],
+              gamesPerCondition: 200,
+              firstPlayer: 'South (player 0)',
+              secondPlayer: 'North (player 1)',
+              randomOpeningPolicy: 'uniform over legal move variants from the standard initial position',
+              continuationAI: 'hard / bao / phase2 / depth 2',
+            },
+            totals: {
+              ...totals,
+              southWinRateDecisive: decisive ? totals.southWins / decisive : 0,
+              southWinRateWilson95: wilson(totals.southWins, decisive),
+            },
+            conditions,
+          };
+          fs.writeFileSync(path.join(dir, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
+          console.log(JSON.stringify(summary, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: game-start-first-player-study
+          path: artifacts/game-start-first-player/
+          if-no-files-found: error
