@@ -62,8 +62,8 @@ function main() {
     const expectedMoves = E.moveVariants(state).map(mirrorMove).map((move) => AI.moveKey(move)).sort();
     const actualMoves = canonicalMoves(mirrored);
     const legalMoveSymmetric = JSON.stringify(expectedMoves) === JSON.stringify(actualMoves);
-    const legacyA = AI.evaluationBreakdown(state, state.player, { evaluationProfile: "legacy" }).total;
-    const legacyB = AI.evaluationBreakdown(mirrored, mirrored.player, { evaluationProfile: "legacy" }).total;
+    const legacyA = AI.legacyEvaluate(state, state.player);
+    const legacyB = AI.legacyEvaluate(mirrored, mirrored.player);
     const baoA = AI.evaluationBreakdown(state, state.player, { evaluationProfile: "bao" }).total;
     const baoB = AI.evaluationBreakdown(mirrored, mirrored.player, { evaluationProfile: "bao" }).total;
     return {
