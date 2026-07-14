@@ -24,22 +24,55 @@ node tools/experiments/run-first-player-research.js --study <name>
 
 出力済みのJSONは自動的にスキップされるため、中断後に同じコマンドで再開できます。最初から再実行する場合は`--force`を付けます。実行予定の確認だけを行う場合は`--dry-run`を付けます。
 
-## MCTS完全条件だけを実行
+## 1〜3時間スクリーニング
+
+未完了の実験1〜5は、既定で`screening-2026-07`プロファイルを使用します。
 
 ```bash
-node tools/experiments/run-first-player-research.js \
-  --study suite \
-  --only eval-mcts
+node tools/experiments/run-first-player-research.js --study suite
 ```
 
 条件は次のとおりです。
 
-- 200局（50局×4バッチ）
-- MCTS iterations: 400
-- プレイアウト上限: 80手
-- 最大対局長: 300手
+- 11条件、合計440局
+- 1条件40局（10局×4バッチ）
+- MCTS iterations: 12
+- MCTSプレイアウト上限: 16手
+- 最大対局長: 120手
 - 標準初期局面から一様ランダム8手
-- 評価プロファイル: `bao`
+- 実測に基づく想定時間: 約80〜150分
+
+これは条件間の大きな差と実行上の問題を探すスクリーニングであり、従来計画の200局・MCTS 400 iterationsと同じ探索強度や統計精度ではありません。有望な条件だけを200局以上へ拡張します。
+
+MCTS条件だけを先に実行する場合:
+
+```bash
+node tools/experiments/run-first-player-research.js \
+  --study suite --only eval-mcts
+```
+
+従来の完全条件は明示した場合だけ使用できます。約50〜120時間を要する可能性があるため、通常は実行しません。
+
+```bash
+node tools/experiments/run-first-player-research.js \
+  --study suite --suite-profile full
+```
+
+## 進捗・チェックポイント
+
+- 1局終了ごとにコンソールへ完了数、経過時間、同一バッチ内のETAを表示する。
+- 1局終了ごとに`*.partial.json`を原子的に更新する。
+- 中断後は同じコマンドで、未完了バッチの次の局から再開する。
+- 10局のバッチ完了時に正式なバッチJSONを保存し、対応するpartialを削除する。
+- `progress.json`に現在の条件、完了バッチ、完了局数、バッチ別結果を記録する。
+- 全44バッチ完了後に鏡像監査と`summary.json`の集計を自動実行する。
+
+別ターミナルから現在の状態を確認できます。
+
+```bash
+node tools/experiments/run-first-player-research.js \
+  --study suite --status
+```
 
 ## 集計
 
@@ -54,7 +87,7 @@ node tools/experiments/aggregate-first-player-research.js all
 ```bash
 node tools/experiments/aggregate-first-player-research.js random-openings
 node tools/experiments/aggregate-first-player-research.js game-start
-node tools/experiments/aggregate-first-player-research.js suite
+node tools/experiments/aggregate-first-player-research.js suite --profile screening-2026-07
 ```
 
 集計処理は必要なバッチ数と総対局数を検証し、不足がある場合は失敗します。
@@ -76,12 +109,17 @@ artifacts/
 │   ├── *.json
 │   └── summary.json
 └── first-player-suite/
-    ├── *.json
-    ├── symmetry.json
-    └── summary.json
+    ├── screening-2026-07/
+    │   ├── *-batch-*.json
+    │   ├── *.partial.json
+    │   ├── progress.json
+    │   ├── symmetry.json
+    │   └── summary.json
+    ├── full-2026-07/
+    └── mcts-full/
 ```
 
-`summary.json`と`random-opening-summary.json`は既存研究の保存集計です。新しい`random-openings`追試は`first-player-random-openings/`へ、ゲーム開始時の追試は`game-start-first-player/`へ保存します。`first-player-suite/summary.json`は11条件すべてが完了するまで作成されません。
+`summary.json`と`random-opening-summary.json`は既存研究の保存集計です。新しい`random-openings`追試は`first-player-random-openings/`へ、ゲーム開始時の追試は`game-start-first-player/`へ保存します。suiteの`summary.json`はプロファイル内の11条件すべてが完了するまで作成されません。
 
 ## 運用方針
 

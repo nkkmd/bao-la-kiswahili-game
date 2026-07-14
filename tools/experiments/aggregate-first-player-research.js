@@ -4,10 +4,16 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const target = process.argv[2] || 'all';
+const args = process.argv.slice(2);
+const target = args[0] || 'all';
+const valueOf = (name, fallback) => {
+  const index = args.indexOf(`--${name}`);
+  return index >= 0 ? args[index + 1] : fallback;
+};
+const suiteProfile = valueOf('profile', 'screening-2026-07');
 const valid = new Set(['all', 'random-openings', 'game-start', 'suite']);
 if (!valid.has(target)) {
-  console.error('Usage: node tools/experiments/aggregate-first-player-research.js [all|random-openings|game-start|suite]');
+  console.error('Usage: node tools/experiments/aggregate-first-player-research.js [all|random-openings|game-start|suite] [--profile screening-2026-07|full-2026-07]');
   process.exit(2);
 }
 
@@ -139,22 +145,55 @@ function aggregateGameStart() {
 }
 
 function aggregateSuite() {
-  const dir = 'artifacts/first-player-suite';
-  const files = jsonFiles(dir, new Set(['symmetry.json', 'summary.json']));
+  const profiles = {
+    'screening-2026-07': { gamesPerCondition: 40, totalGames: 440 },
+    'full-2026-07': { gamesPerCondition: 200, totalGames: 2200 },
+  };
+  const expected = profiles[suiteProfile];
+  if (!expected) throw new Error(`Unknown suite profile: ${suiteProfile}`);
+  const expectedConditionNames = new Set([
+    'depth-1', 'depth-2', 'depth-3', 'depth-4',
+    'policy-uniform', 'policy-top3', 'policy-softmax',
+    'eval-legacy', 'eval-bao', 'eval-bao-v2', 'eval-mcts',
+  ]);
+  const dir = `artifacts/first-player-suite/${suiteProfile}`;
+  const files = jsonFiles(dir, new Set(['progress.json', 'symmetry.json', 'summary.json']));
   if (files.length !== 44) throw new Error(`Expected 44 suite reports, found ${files.length}`);
   const groups = new Map();
   for (const name of files) {
     const nameMatch = name.match(/^(.*)-batch-(\d+)\.json$/);
     if (!nameMatch) throw new Error(`Unexpected suite report name: ${name}`);
     const conditionName = nameMatch[1];
+    const batch = Number(nameMatch[2]);
+    if (!expectedConditionNames.has(conditionName) || batch < 1 || batch > 4) {
+      throw new Error(`Unexpected suite report name: ${name}`);
+    }
     const report = readJson(path.join(dir, name));
     const c = report.config;
+    const expectedGamesPerBatch = expected.gamesPerCondition / 4;
+    if (report.status !== 'complete' || report.totals.games !== expectedGamesPerBatch || report.games?.length !== expectedGamesPerBatch) {
+      throw new Error(`Incomplete or invalid suite report: ${name}`);
+    }
     if (c.conditionName !== conditionName) {
       throw new Error(`Suite condition mismatch in ${name}: ${c.conditionName || '(missing)'}`);
     }
+    if (c.experimentProfile !== suiteProfile) {
+      throw new Error(`Suite profile mismatch in ${name}: ${c.experimentProfile || '(missing)'}`);
+    }
+    const configSignature = JSON.stringify({
+      maxDepth: c.maxDepth,
+      maxTurns: c.maxTurns,
+      openingPolicy: c.openingPolicy,
+      evaluationProfile: c.evaluationProfile,
+      searchProfile: c.searchProfile,
+      randomPlies: c.randomPlies,
+      mctsIterations: c.mctsIterations,
+      mctsPlayoutTurns: c.mctsPlayoutTurns,
+    });
     const group = groups.get(conditionName) || {
-      name: conditionName, config: c, games: 0, southWins: 0, northWins: 0, draws: 0, turns: 0, firstMoves: {}, batches: 0,
+      name: conditionName, config: c, configSignature, games: 0, southWins: 0, northWins: 0, draws: 0, turns: 0, firstMoves: {}, batches: 0,
     };
+    if (group.configSignature !== configSignature) throw new Error(`Suite config mismatch within ${conditionName}`);
     group.batches += 1;
     group.games += report.totals.games;
     group.southWins += report.totals.southWins;
@@ -174,7 +213,7 @@ function aggregateSuite() {
     return {
       name: group.name,
       config: {
-        maxDepth: group.config.maxDepth, openingPolicy: group.config.openingPolicy,
+        maxDepth: group.config.maxDepth, maxTurns: group.config.maxTurns, openingPolicy: group.config.openingPolicy,
         evaluationProfile: group.config.evaluationProfile, searchProfile: group.config.searchProfile,
         randomPlies: group.config.randomPlies, mctsIterations: group.config.mctsIterations,
         mctsPlayoutTurns: group.config.mctsPlayoutTurns,
@@ -190,16 +229,17 @@ function aggregateSuite() {
   });
   const summary = {
     generatedAt: new Date().toISOString(),
+    profile: suiteProfile,
     totalBatchReports: files.length,
     totalGames: conditions.reduce((sum, item) => sum + item.games, 0),
     conditions,
     symmetry: readJson(symmetryFile).summary,
   };
   if (conditions.length !== 11) throw new Error(`Expected 11 suite conditions, found ${conditions.length}`);
-  if (conditions.some((item) => item.batches !== 4 || item.games !== 200)) {
-    throw new Error('Each suite condition must contain 4 batches and 200 games');
+  if (conditions.some((item) => item.batches !== 4 || item.games !== expected.gamesPerCondition)) {
+    throw new Error(`Each suite condition must contain 4 batches and ${expected.gamesPerCondition} games`);
   }
-  if (summary.totalGames !== 2200) throw new Error(`Expected 2200 suite games, found ${summary.totalGames}`);
+  if (summary.totalGames !== expected.totalGames) throw new Error(`Expected ${expected.totalGames} suite games, found ${summary.totalGames}`);
   writeJson(path.join(dir, 'summary.json'), summary);
 }
 

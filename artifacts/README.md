@@ -63,7 +63,9 @@ Phase別の測定出力:
 - `first-player-study/random-opening-summary.json`: namua／mtajiランダム局面1,200局の集計
 - `first-player-random-openings/`: ローカルランナーによるランダム局面追試の出力先（未実行時は存在しない）
 - `game-start-first-player/`: ゲーム開始時からのランダム序盤追試の出力先（元の1,000局JSONは未保存）
-- `first-player-suite/`: 次期11条件と鏡像対称性監査の出力先（全条件完了後に`summary.json`を作成）
+- `first-player-suite/screening-2026-07/`: 1〜3時間版11条件の出力先。局単位partial、進捗、10局単位バッチ、最終集計を保存
+- `first-player-suite/full-2026-07/`: 従来の200局・高強度MCTS条件の出力先（長時間のため通常は実行しない）
+- `first-player-suite/mcts-full/`: 2026-07-15に停止したMCTS完全条件の試行先（完了バッチなし）
 
 研究の統合記録は`../doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`、現在のローカル実行手順は`../tools/experiments/README.md`を参照してください。重い自己対局はGitHub Actionsでは実行しません。
 
