@@ -1,0 +1,155 @@
+name: First-player experiment suite
+
+on:
+  push:
+    paths:
+      - ".github/workflows/first-player-experiment-suite.yml"
+      - "tools/first-player-experiment-suite.js"
+      - "tools/first-player-symmetry-audit.js"
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+  pull_request:
+    paths:
+      - ".github/workflows/first-player-experiment-suite.yml"
+      - "tools/first-player-experiment-suite.js"
+      - "tools/first-player-symmetry-audit.js"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  games:
+    name: ${{ matrix.experiment }} / ${{ matrix.condition }} / batch ${{ matrix.batch }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        experiment: [depth, opening-policy, evaluation]
+        include:
+          - { experiment: depth, condition: depth-1, depth: 1, policy: uniform, profile: bao, search: phase2 }
+          - { experiment: depth, condition: depth-2, depth: 2, policy: uniform, profile: bao, search: phase2 }
+          - { experiment: depth, condition: depth-3, depth: 3, policy: uniform, profile: bao, search: phase2 }
+          - { experiment: depth, condition: depth-4, depth: 4, policy: uniform, profile: bao, search: phase2 }
+          - { experiment: opening-policy, condition: uniform, depth: 2, policy: uniform, profile: bao, search: phase2 }
+          - { experiment: opening-policy, condition: top3, depth: 2, policy: top3, profile: bao, search: phase2 }
+          - { experiment: opening-policy, condition: softmax, depth: 2, policy: softmax, profile: bao, search: phase2 }
+          - { experiment: evaluation, condition: legacy, depth: 2, policy: uniform, profile: legacy, search: phase2 }
+          - { experiment: evaluation, condition: bao, depth: 2, policy: uniform, profile: bao, search: phase2 }
+          - { experiment: evaluation, condition: bao-v2, depth: 2, policy: uniform, profile: bao-v2, search: phase2 }
+          - { experiment: evaluation, condition: mcts, depth: 2, policy: uniform, profile: bao, search: mcts }
+        batch: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run 50 games
+        shell: bash
+        run: |
+          set -euo pipefail
+          seed=$((20260714 + ${{ matrix.batch }} * 1009 + ${{ strategy.job-index }} * 7919))
+          mkdir -p artifacts/first-player-suite
+          node tools/first-player-experiment-suite.js \
+            --games 50 \
+            --seed "$seed" \
+            --random-plies 8 \
+            --max-depth "${{ matrix.depth }}" \
+            --opening-policy "${{ matrix.policy }}" \
+            --evaluation-profile "${{ matrix.profile }}" \
+            --search-profile "${{ matrix.search }}" \
+            --mcts-iterations 400 \
+            --output "artifacts/first-player-suite/${{ matrix.experiment }}-${{ matrix.condition }}-batch-${{ matrix.batch }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-suite-${{ matrix.experiment }}-${{ matrix.condition }}-${{ matrix.batch }}
+          path: artifacts/first-player-suite/*.json
+          if-no-files-found: error
+
+  symmetry:
+    name: South-North symmetry audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node tools/first-player-symmetry-audit.js artifacts/first-player-suite/symmetry.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-suite-symmetry
+          path: artifacts/first-player-suite/symmetry.json
+          if-no-files-found: error
+
+  aggregate:
+    name: aggregate experiments 1-5
+    needs: [games, symmetry]
+    if: ${{ always() && needs.games.result == 'success' && needs.symmetry.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: first-player-suite-*
+          path: artifacts/first-player-suite
+          merge-multiple: true
+      - name: Aggregate condition results
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const dir = 'artifacts/first-player-suite';
+          const files = fs.readdirSync(dir).filter((name) => name.endsWith('.json') && name !== 'symmetry.json');
+          const reports = files.map((name) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')));
+          const groups = new Map();
+          for (const report of reports) {
+            const c = report.config;
+            const key = `${c.maxDepth}|${c.openingPolicy}|${c.evaluationProfile}|${c.searchProfile}`;
+            if (!groups.has(key)) groups.set(key, { config: c, games: 0, southWins: 0, northWins: 0, draws: 0, turns: 0, firstMoves: {} });
+            const group = groups.get(key);
+            group.games += report.totals.games;
+            group.southWins += report.totals.southWins;
+            group.northWins += report.totals.northWins;
+            group.draws += report.totals.draws;
+            group.turns += report.totals.averageTurns * report.totals.games;
+            for (const item of report.firstMoves) {
+              group.firstMoves[item.move] ||= { games: 0, southWins: 0, northWins: 0, draws: 0 };
+              for (const field of ['games', 'southWins', 'northWins', 'draws']) group.firstMoves[item.move][field] += item[field];
+            }
+          }
+          const conditions = [...groups.values()].map((group) => ({
+            config: {
+              maxDepth: group.config.maxDepth,
+              openingPolicy: group.config.openingPolicy,
+              evaluationProfile: group.config.evaluationProfile,
+              searchProfile: group.config.searchProfile,
+              randomPlies: group.config.randomPlies,
+            },
+            games: group.games,
+            southWins: group.southWins,
+            northWins: group.northWins,
+            draws: group.draws,
+            southWinRate: group.southWins / (group.southWins + group.northWins),
+            averageTurns: group.turns / group.games,
+            firstMoves: Object.entries(group.firstMoves).map(([move, value]) => ({ move, ...value, southWinRate: value.southWins / Math.max(1, value.southWins + value.northWins) })).sort((a, b) => b.games - a.games),
+          }));
+          const symmetry = JSON.parse(fs.readFileSync(path.join(dir, 'symmetry.json'), 'utf8'));
+          const summary = { generatedAt: new Date().toISOString(), totalGames: conditions.reduce((n, c) => n + c.games, 0), conditions, symmetry: symmetry.summary };
+          fs.writeFileSync(path.join(dir, 'summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
+          console.log(JSON.stringify(summary, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-experiment-suite
+          path: artifacts/first-player-suite/
+          if-no-files-found: error
