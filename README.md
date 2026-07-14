@@ -149,6 +149,7 @@ node tools/diagnostic-to-fixture.js \
 ## ドキュメント
 
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
+- [`doc/FIRST_PLAYER_ADVANTAGE_STUDY.md`](doc/FIRST_PLAYER_ADVANTAGE_STUDY.md): AI対AI対局による先攻・後攻差の予備調査
 - [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 公開向け Bao AI 技術レポート
 - [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md): ベンチマークコマンドとベースライン結果
 - [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): 設計判断、失敗した試行、制限事項
