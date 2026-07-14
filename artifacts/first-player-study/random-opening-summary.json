@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-07-14T08:44:53.723Z",
+  "workflowRunId": 29318527472,
+  "artifactId": 8305137406,
+  "methodology": {
+    "phases": ["namua", "mtaji"],
+    "openingPlies": [4, 8, 12],
+    "gamesPerCondition": 200,
+    "totalGames": 1200,
+    "pairedOpenings": true,
+    "ai": "hard vs hard",
+    "profile": "bao",
+    "search": "phase2",
+    "maxDepth": 2,
+    "timeLimitMs": 0
+  },
+  "phaseTotals": [
+    {
+      "phase": "namua",
+      "games": 600,
+      "southWins": 292,
+      "northWins": 308,
+      "draws": 0,
+      "southWinRate": 0.4866666666666667,
+      "southWinRateWilson95": [0.44688544515830286, 0.526617533535396]
+    },
+    {
+      "phase": "mtaji",
+      "games": 600,
+      "southWins": 344,
+      "northWins": 256,
+      "draws": 0,
+      "southWinRate": 0.5733333333333334,
+      "southWinRateWilson95": [0.5334151789121899, 0.6123184382724673]
+    }
+  ],
+  "overall": {
+    "games": 1200,
+    "southWins": 636,
+    "northWins": 564,
+    "draws": 0,
+    "southWinRate": 0.53,
+    "southWinRateWilson95": [0.5017105221931327, 0.5580980177707032]
+  },
+  "conditions": [
+    {"phase":"mtaji","openingPlies":4,"games":200,"southWins":112,"northWins":88,"draws":0,"southWinRate":0.56,"southWinRateWilson95":[0.4907167533465867,0.6270218074881414],"averageTurns":10.18},
+    {"phase":"mtaji","openingPlies":8,"games":200,"southWins":112,"northWins":88,"draws":0,"southWinRate":0.56,"southWinRateWilson95":[0.4907167533465867,0.6270218074881414],"averageTurns":10.28},
+    {"phase":"mtaji","openingPlies":12,"games":200,"southWins":120,"northWins":80,"draws":0,"southWinRate":0.6,"southWinRateWilson95":[0.53083672039262,0.6653942143319266],"averageTurns":11},
+    {"phase":"namua","openingPlies":4,"games":200,"southWins":104,"northWins":96,"draws":0,"southWinRate":0.52,"southWinRateWilson95":[0.4510378507281424,0.588208336216767],"averageTurns":51.96},
+    {"phase":"namua","openingPlies":8,"games":200,"southWins":86,"northWins":114,"draws":0,"southWinRate":0.43,"southWinRateWilson95":[0.36334322333434416,0.4992951223584731],"averageTurns":46.69},
+    {"phase":"namua","openingPlies":12,"games":200,"southWins":102,"northWins":98,"draws":0,"southWinRate":0.51,"southWinRateWilson95":[0.44118587678458643,0.5784372166878682],"averageTurns":42.13}
+  ],
+  "interpretation": {
+    "namua": "Across 600 randomized namua positions, South scored 48.7%; the 95% Wilson interval includes 50%, so no clear first-player advantage was detected.",
+    "mtaji": "Across 600 randomized mtaji positions, South scored 57.3%; the 95% Wilson interval excludes 50%, indicating a measurable advantage for the side to move in this experimental condition.",
+    "overall": "Pooling phases gives South 53.0%, but this aggregate should not be treated as a single game-wide first-player estimate because namua and mtaji samples represent different phases and position distributions."
+  }
+}
