@@ -41,9 +41,7 @@ function runNode(script, scriptArgs, output) {
     env: process.env,
   });
   if (result.error) throw result.error;
-  if (result.status !== 0) {
-    throw new Error(`${script} exited with status ${result.status}`);
-  }
+  if (result.status !== 0) throw new Error(`${script} exited with status ${result.status}`);
 }
 
 function runDiagnostics() {
@@ -59,20 +57,11 @@ function runRandomOpenings() {
         const seed = 20270000 + phaseOffset + plies * 1000 + batch * 50;
         const output = `artifacts/first-player-random-openings/${phase}-${plies}-batch-${batch}.json`;
         runNode('tools/benchmark.js', [
-          '--games', '50',
-          '--seed', String(seed),
-          '--first', 'hard',
-          '--second', 'hard',
-          '--first-profile', 'bao',
-          '--second-profile', 'bao',
-          '--first-search', 'phase2',
-          '--second-search', 'phase2',
-          '--time-limit', '0',
-          '--max-depth', '2',
-          '--max-turns', '300',
-          '--opening-plies', String(plies),
-          '--opening-phase', phase,
-          '--output', output,
+          '--games', '50', '--seed', String(seed), '--first', 'hard', '--second', 'hard',
+          '--first-profile', 'bao', '--second-profile', 'bao',
+          '--first-search', 'phase2', '--second-search', 'phase2', '--time-limit', '0',
+          '--max-depth', '2', '--max-turns', '300', '--opening-plies', String(plies),
+          '--opening-phase', phase, '--output', output,
         ], output);
       }
     }
@@ -80,17 +69,16 @@ function runRandomOpenings() {
 }
 
 function runGameStart() {
+  const seedBases = new Map([
+    [2, 20262000], [4, 20264000], [6, 20266000], [8, 20268000], [12, 20261200],
+  ]);
   for (const plies of [2, 4, 6, 8, 12]) {
     for (const batch of [1, 2, 3, 4]) {
-      const seed = Number(`2026${String(plies).padStart(2, '0')}0${batch}`);
+      const seed = seedBases.get(plies) + batch;
       const output = `artifacts/game-start-first-player/random-${plies}-batch-${batch}.json`;
       runNode('tools/game-start-first-player-study.js', [
-        '--games', '50',
-        '--seed', String(seed),
-        '--random-plies', String(plies),
-        '--max-depth', '2',
-        '--max-turns', '300',
-        '--output', output,
+        '--games', '50', '--seed', String(seed), '--random-plies', String(plies),
+        '--max-depth', '2', '--max-turns', '300', '--output', output,
       ], output);
     }
   }
@@ -118,21 +106,14 @@ function runSuite() {
       const seed = 20260714 + batch * 1009 + jobIndex * 7919;
       const output = `artifacts/first-player-suite/${condition.name}-batch-${batch}.json`;
       runNode('tools/first-player-experiment-suite.js', [
-        '--games', '50',
-        '--seed', String(seed),
-        '--random-plies', '8',
-        '--max-depth', String(condition.depth),
-        '--opening-policy', condition.policy,
-        '--evaluation-profile', condition.profile,
-        '--search-profile', condition.search,
-        '--mcts-iterations', '400',
-        '--mcts-playout-turns', '80',
-        '--max-turns', '300',
+        '--games', '50', '--seed', String(seed), '--random-plies', '8',
+        '--max-depth', String(condition.depth), '--opening-policy', condition.policy,
+        '--evaluation-profile', condition.profile, '--search-profile', condition.search,
+        '--mcts-iterations', '400', '--mcts-playout-turns', '80', '--max-turns', '300',
         '--output', output,
       ], output);
     }
   });
-
   if (!only) {
     const symmetryOutput = 'artifacts/first-player-suite/symmetry.json';
     runNode('tools/first-player-symmetry-audit.js', [symmetryOutput], symmetryOutput);
