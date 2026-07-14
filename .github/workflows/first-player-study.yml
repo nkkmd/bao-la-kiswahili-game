@@ -1,0 +1,109 @@
+name: First-player advantage study
+
+on:
+  push:
+    paths:
+      - ".github/workflows/first-player-study.yml"
+      - "tools/benchmark.js"
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-config.js"
+      - "public/ai-weights.js"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run 1,000 paired-seat games
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/first-player-study
+          for seed in 20260714 20260814 20260914 20261014 20261114; do
+            node tools/benchmark.js \
+              --games 200 \
+              --seed "$seed" \
+              --first hard \
+              --second hard \
+              --first-profile bao \
+              --second-profile bao \
+              --first-search phase2 \
+              --second-search phase2 \
+              --time-limit 0 \
+              --max-depth 2 \
+              --max-turns 300 \
+              --opening-plies 0 \
+              --opening-phase any \
+              --output "artifacts/first-player-study/seed-${seed}.json"
+          done
+      - name: Aggregate results
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const dir = 'artifacts/first-player-study';
+          const files = fs.readdirSync(dir).filter((name) => name.endsWith('.json')).sort();
+          const reports = files.map((name) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8')));
+          const totals = reports.reduce((acc, r) => {
+            acc.games += r.games;
+            acc.southWins += r.southWins;
+            acc.northWins += r.northWins;
+            acc.draws += r.draws;
+            acc.totalTurns += r.averageTurns * r.games;
+            return acc;
+          }, { games: 0, southWins: 0, northWins: 0, draws: 0, totalTurns: 0 });
+          const decisive = totals.southWins + totals.northWins;
+          const p = decisive ? totals.southWins / decisive : 0;
+          const z = 1.959963984540054;
+          const denom = 1 + z * z / decisive;
+          const center = (p + z * z / (2 * decisive)) / denom;
+          const margin = z * Math.sqrt((p * (1 - p) + z * z / (4 * decisive)) / decisive) / denom;
+          const summary = {
+            generatedAt: new Date().toISOString(),
+            methodology: {
+              gamesPerSeed: 200,
+              seeds: reports.map((r) => r.config.seed),
+              first: 'hard',
+              second: 'hard',
+              profile: 'bao',
+              search: 'phase2',
+              timeLimitMs: 0,
+              maxDepth: 2,
+              maxTurns: 300,
+              openingPlies: 0,
+              pairedSeatSwap: true
+            },
+            totals: {
+              ...totals,
+              averageTurns: totals.totalTurns / totals.games,
+              southWinRateAllGames: totals.southWins / totals.games,
+              southWinRateDecisive: p,
+              southWinRateWilson95: [center - margin, center + margin]
+            },
+            runs: reports.map((r) => ({
+              seed: r.config.seed,
+              games: r.games,
+              southWins: r.southWins,
+              northWins: r.northWins,
+              draws: r.draws,
+              averageTurns: r.averageTurns
+            }))
+          };
+          fs.writeFileSync(path.join(dir, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
+          console.log(JSON.stringify(summary, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: first-player-study
+          path: artifacts/first-player-study/
+          if-no-files-found: error
