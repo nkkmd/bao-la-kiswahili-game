@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-07-14T08:32:31.653Z",
+  "workflowRunId": 29317956049,
+  "artifactId": 8304851361,
+  "standard": [
+    {
+      "depth": 1,
+      "winner": 0,
+      "winnerLabel": "South (first player)",
+      "turns": 67,
+      "transcriptHash": "fb84048c24f05e8ab1597d553d5cc0a2f34a9f479fc49c4e7cfae9ba36729c88"
+    },
+    {
+      "depth": 2,
+      "winner": 1,
+      "winnerLabel": "North (second player)",
+      "turns": 48,
+      "transcriptHash": "55686dbc8b091a7fb0e68c2030b5a6c12f51b26f14395ad8c404705b8432065d"
+    },
+    {
+      "depth": 3,
+      "winner": 1,
+      "winnerLabel": "North (second player)",
+      "turns": 56,
+      "transcriptHash": "631ea03d3cc7737344062d401f79aa880819e798115b6416457e7f1758413904"
+    },
+    {
+      "depth": 4,
+      "winner": 1,
+      "winnerLabel": "North (second player)",
+      "turns": 58,
+      "transcriptHash": "6d8dd73fc7abcb6a52c62363abf293ce01271dfdb5e17abe4d125d1054f62301"
+    }
+  ],
+  "repeatedDepth2": {
+    "testedSeeds": [20260714, 20260764, 20260814, 20260864],
+    "uniqueTranscriptHashes": 1,
+    "winner": 1,
+    "turns": 48,
+    "transcriptHash": "55686dbc8b091a7fb0e68c2030b5a6c12f51b26f14395ad8c404705b8432065d"
+  },
+  "randomOpeningConditions": [
+    {
+      "phase": "namua",
+      "openingPlies": 8,
+      "games": 100,
+      "southWins": 40,
+      "northWins": 60,
+      "draws": 0,
+      "averageTurns": 47.24
+    },
+    {
+      "phase": "mtaji",
+      "openingPlies": 8,
+      "games": 100,
+      "southWins": 64,
+      "northWins": 36,
+      "draws": 0,
+      "averageTurns": 8.76
+    }
+  ],
+  "interpretation": {
+    "standardPosition": "The observed winner changes with search depth: first player at depth 1, second player at depths 2 through 4.",
+    "determinism": "Depth-2 games from the standard initial state produced one identical transcript across all tested seeds.",
+    "phaseDependence": "Random namua openings favored the second player, while random mtaji openings favored the first player in these 100-game samples.",
+    "claimLimit": "These results do not establish a universal first- or second-player advantage for Bao; they show that measured advantage depends strongly on search depth and game phase."
+  }
+}
