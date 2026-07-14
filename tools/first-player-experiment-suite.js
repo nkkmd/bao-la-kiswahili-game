@@ -18,6 +18,7 @@ function parseArgs(argv) {
     evaluationProfile: "bao",
     searchProfile: "phase2",
     mctsIterations: 400,
+    mctsPlayoutTurns: 80,
     output: "artifacts/first-player-suite/result.json",
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -32,12 +33,15 @@ function parseArgs(argv) {
     else if (key === "--evaluation-profile") options.evaluationProfile = value;
     else if (key === "--search-profile") options.searchProfile = value;
     else if (key === "--mcts-iterations") options.mctsIterations = Number(value);
+    else if (key === "--mcts-playout-turns") options.mctsPlayoutTurns = Number(value);
     else if (key === "--output") options.output = value;
     else continue;
     i += 1;
   }
   if (!Number.isInteger(options.games) || options.games < 1) throw new Error("games must be positive");
   if (!Number.isInteger(options.randomPlies) || options.randomPlies < 0) throw new Error("random-plies must be non-negative");
+  if (!Number.isInteger(options.mctsIterations) || options.mctsIterations < 1) throw new Error("mcts-iterations must be positive");
+  if (!Number.isInteger(options.mctsPlayoutTurns) || options.mctsPlayoutTurns < 1) throw new Error("mcts-playout-turns must be positive");
   if (!["uniform", "top3", "softmax"].includes(options.openingPolicy)) throw new Error("unsupported opening policy");
   return options;
 }
@@ -93,7 +97,7 @@ function playGame(random, options) {
       evaluationProfile: options.evaluationProfile,
       searchProfile: options.searchProfile,
       mctsIterations: options.mctsIterations,
-      mctsPlayoutTurns: 80,
+      mctsPlayoutTurns: options.mctsPlayoutTurns,
       mctsExploration: Math.SQRT2,
       mctsPolicy: "evaluation",
       mctsRoot: "visits",
