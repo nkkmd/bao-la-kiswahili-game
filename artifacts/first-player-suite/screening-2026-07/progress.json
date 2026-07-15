@@ -1,0 +1,464 @@
+{
+  "profile": "screening-2026-07",
+  "status": "complete",
+  "startedAt": "2026-07-14T23:33:25.158Z",
+  "updatedAt": "2026-07-15T00:28:21.243Z",
+  "expected": {
+    "conditions": 11,
+    "batchesPerCondition": 4,
+    "gamesPerBatch": 10,
+    "totalBatches": 44,
+    "totalGames": 440,
+    "estimatedMinutes": [
+      80,
+      150
+    ]
+  },
+  "completedBatches": 44,
+  "completedGames": 440,
+  "checkpointedGames": 0,
+  "recordedGames": 440,
+  "completedReports": [
+    {
+      "condition": "depth-1",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-1-batch-1.json",
+      "generatedAt": "2026-07-14T23:33:34.108Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "depth-1",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-1-batch-2.json",
+      "generatedAt": "2026-07-14T23:33:47.334Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 3,
+      "draws": 1
+    },
+    {
+      "condition": "depth-1",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-1-batch-3.json",
+      "generatedAt": "2026-07-14T23:33:54.315Z",
+      "games": 10,
+      "southWins": 3,
+      "northWins": 7,
+      "draws": 0
+    },
+    {
+      "condition": "depth-1",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-1-batch-4.json",
+      "generatedAt": "2026-07-14T23:34:02.491Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "depth-2",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-2-batch-1.json",
+      "generatedAt": "2026-07-14T23:34:53.985Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "depth-2",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-2-batch-2.json",
+      "generatedAt": "2026-07-14T23:35:39.893Z",
+      "games": 10,
+      "southWins": 2,
+      "northWins": 8,
+      "draws": 0
+    },
+    {
+      "condition": "depth-2",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-2-batch-3.json",
+      "generatedAt": "2026-07-14T23:36:26.062Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "depth-2",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-2-batch-4.json",
+      "generatedAt": "2026-07-14T23:37:10.280Z",
+      "games": 10,
+      "southWins": 7,
+      "northWins": 3,
+      "draws": 0
+    },
+    {
+      "condition": "depth-3",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-3-batch-1.json",
+      "generatedAt": "2026-07-14T23:38:13.736Z",
+      "games": 10,
+      "southWins": 7,
+      "northWins": 3,
+      "draws": 0
+    },
+    {
+      "condition": "depth-3",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-3-batch-2.json",
+      "generatedAt": "2026-07-14T23:39:09.449Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "depth-3",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-3-batch-3.json",
+      "generatedAt": "2026-07-14T23:39:55.824Z",
+      "games": 10,
+      "southWins": 8,
+      "northWins": 2,
+      "draws": 0
+    },
+    {
+      "condition": "depth-3",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-3-batch-4.json",
+      "generatedAt": "2026-07-14T23:41:00.883Z",
+      "games": 10,
+      "southWins": 3,
+      "northWins": 7,
+      "draws": 0
+    },
+    {
+      "condition": "depth-4",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-4-batch-1.json",
+      "generatedAt": "2026-07-14T23:44:42.939Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "depth-4",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-4-batch-2.json",
+      "generatedAt": "2026-07-14T23:50:37.080Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "depth-4",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-4-batch-3.json",
+      "generatedAt": "2026-07-14T23:53:49.039Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "depth-4",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/depth-4-batch-4.json",
+      "generatedAt": "2026-07-14T23:58:46.231Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "policy-uniform",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-uniform-batch-1.json",
+      "generatedAt": "2026-07-14T23:59:28.823Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "policy-uniform",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-uniform-batch-2.json",
+      "generatedAt": "2026-07-15T00:00:13.559Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "policy-uniform",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-uniform-batch-3.json",
+      "generatedAt": "2026-07-15T00:00:54.333Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "policy-uniform",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-uniform-batch-4.json",
+      "generatedAt": "2026-07-15T00:01:27.638Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "policy-top3",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-top3-batch-1.json",
+      "generatedAt": "2026-07-15T00:02:15.274Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "policy-top3",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-top3-batch-2.json",
+      "generatedAt": "2026-07-15T00:03:04.037Z",
+      "games": 10,
+      "southWins": 3,
+      "northWins": 7,
+      "draws": 0
+    },
+    {
+      "condition": "policy-top3",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-top3-batch-3.json",
+      "generatedAt": "2026-07-15T00:03:42.213Z",
+      "games": 10,
+      "southWins": 7,
+      "northWins": 3,
+      "draws": 0
+    },
+    {
+      "condition": "policy-top3",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-top3-batch-4.json",
+      "generatedAt": "2026-07-15T00:04:22.396Z",
+      "games": 10,
+      "southWins": 2,
+      "northWins": 8,
+      "draws": 0
+    },
+    {
+      "condition": "policy-softmax",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-softmax-batch-1.json",
+      "generatedAt": "2026-07-15T00:05:10.055Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "policy-softmax",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-softmax-batch-2.json",
+      "generatedAt": "2026-07-15T00:05:50.978Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "policy-softmax",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-softmax-batch-3.json",
+      "generatedAt": "2026-07-15T00:06:37.752Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "policy-softmax",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/policy-softmax-batch-4.json",
+      "generatedAt": "2026-07-15T00:07:28.534Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "eval-legacy",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-legacy-batch-1.json",
+      "generatedAt": "2026-07-15T00:07:53.561Z",
+      "games": 10,
+      "southWins": 9,
+      "northWins": 1,
+      "draws": 0
+    },
+    {
+      "condition": "eval-legacy",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-legacy-batch-2.json",
+      "generatedAt": "2026-07-15T00:08:22.221Z",
+      "games": 10,
+      "southWins": 7,
+      "northWins": 3,
+      "draws": 0
+    },
+    {
+      "condition": "eval-legacy",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-legacy-batch-3.json",
+      "generatedAt": "2026-07-15T00:08:50.904Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "eval-legacy",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-legacy-batch-4.json",
+      "generatedAt": "2026-07-15T00:09:14.709Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-batch-1.json",
+      "generatedAt": "2026-07-15T00:10:06.478Z",
+      "games": 10,
+      "southWins": 3,
+      "northWins": 7,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-batch-2.json",
+      "generatedAt": "2026-07-15T00:10:46.982Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-batch-3.json",
+      "generatedAt": "2026-07-15T00:11:31.757Z",
+      "games": 10,
+      "southWins": 6,
+      "northWins": 4,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-batch-4.json",
+      "generatedAt": "2026-07-15T00:12:07.265Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao-v2",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-v2-batch-1.json",
+      "generatedAt": "2026-07-15T00:12:56.154Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao-v2",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-v2-batch-2.json",
+      "generatedAt": "2026-07-15T00:13:45.278Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao-v2",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-v2-batch-3.json",
+      "generatedAt": "2026-07-15T00:14:34.926Z",
+      "games": 10,
+      "southWins": 5,
+      "northWins": 5,
+      "draws": 0
+    },
+    {
+      "condition": "eval-bao-v2",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-bao-v2-batch-4.json",
+      "generatedAt": "2026-07-15T00:15:07.947Z",
+      "games": 10,
+      "southWins": 3,
+      "northWins": 7,
+      "draws": 0
+    },
+    {
+      "condition": "eval-mcts",
+      "batch": 1,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-mcts-batch-1.json",
+      "generatedAt": "2026-07-15T00:18:06.304Z",
+      "games": 10,
+      "southWins": 7,
+      "northWins": 3,
+      "draws": 0
+    },
+    {
+      "condition": "eval-mcts",
+      "batch": 2,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-mcts-batch-2.json",
+      "generatedAt": "2026-07-15T00:21:21.718Z",
+      "games": 10,
+      "southWins": 3,
+      "northWins": 7,
+      "draws": 0
+    },
+    {
+      "condition": "eval-mcts",
+      "batch": 3,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-mcts-batch-3.json",
+      "generatedAt": "2026-07-15T00:25:03.616Z",
+      "games": 10,
+      "southWins": 4,
+      "northWins": 6,
+      "draws": 0
+    },
+    {
+      "condition": "eval-mcts",
+      "batch": 4,
+      "file": "artifacts/first-player-suite/screening-2026-07/eval-mcts-batch-4.json",
+      "generatedAt": "2026-07-15T00:28:20.505Z",
+      "games": 10,
+      "southWins": 7,
+      "northWins": 3,
+      "draws": 0
+    }
+  ],
+  "current": null
+}

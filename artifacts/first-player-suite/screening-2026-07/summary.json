@@ -1,0 +1,600 @@
+{
+  "generatedAt": "2026-07-15T00:28:21.227Z",
+  "profile": "screening-2026-07",
+  "totalBatchReports": 44,
+  "totalGames": 440,
+  "conditions": [
+    {
+      "name": "depth-1",
+      "config": {
+        "maxDepth": 1,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 21,
+      "northWins": 18,
+      "draws": 1,
+      "southWinRate": 0.5384615384615384,
+      "averageTurns": 60.975,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 11,
+          "southWins": 6,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5454545454545454
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 10,
+          "southWins": 5,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 10,
+          "southWins": 5,
+          "northWins": 4,
+          "draws": 1,
+          "southWinRate": 0.5555555555555556
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 9,
+          "southWins": 5,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.5555555555555556
+        }
+      ]
+    },
+    {
+      "name": "depth-2",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 19,
+      "northWins": 21,
+      "draws": 0,
+      "southWinRate": 0.475,
+      "averageTurns": 56.325,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 13,
+          "southWins": 8,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.6153846153846154
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 11,
+          "southWins": 6,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5454545454545454
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 11,
+          "southWins": 4,
+          "northWins": 7,
+          "draws": 0,
+          "southWinRate": 0.36363636363636365
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 5,
+          "southWins": 1,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.2
+        }
+      ]
+    },
+    {
+      "name": "depth-3",
+      "config": {
+        "maxDepth": 3,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 24,
+      "northWins": 16,
+      "draws": 0,
+      "southWinRate": 0.6,
+      "averageTurns": 57.4,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 12,
+          "southWins": 10,
+          "northWins": 2,
+          "draws": 0,
+          "southWinRate": 0.8333333333333334
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 12,
+          "southWins": 6,
+          "northWins": 6,
+          "draws": 0,
+          "southWinRate": 0.5
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 9,
+          "southWins": 4,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.4444444444444444
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 7,
+          "southWins": 4,
+          "northWins": 3,
+          "draws": 0,
+          "southWinRate": 0.5714285714285714
+        }
+      ]
+    },
+    {
+      "name": "depth-4",
+      "config": {
+        "maxDepth": 4,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 21,
+      "northWins": 19,
+      "draws": 0,
+      "southWinRate": 0.525,
+      "averageTurns": 53.375,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 12,
+          "southWins": 7,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5833333333333334
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 11,
+          "southWins": 6,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5454545454545454
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 10,
+          "southWins": 5,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 7,
+          "southWins": 3,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.42857142857142855
+        }
+      ]
+    },
+    {
+      "name": "eval-bao",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 18,
+      "northWins": 22,
+      "draws": 0,
+      "southWinRate": 0.45,
+      "averageTurns": 53.05,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 13,
+          "southWins": 5,
+          "northWins": 8,
+          "draws": 0,
+          "southWinRate": 0.38461538461538464
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 9,
+          "southWins": 3,
+          "northWins": 6,
+          "draws": 0,
+          "southWinRate": 0.3333333333333333
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 9,
+          "southWins": 5,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.5555555555555556
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 9,
+          "southWins": 5,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.5555555555555556
+        }
+      ]
+    },
+    {
+      "name": "eval-bao-v2",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao-v2",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 17,
+      "northWins": 23,
+      "draws": 0,
+      "southWinRate": 0.425,
+      "averageTurns": 54.375,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 13,
+          "southWins": 6,
+          "northWins": 7,
+          "draws": 0,
+          "southWinRate": 0.46153846153846156
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 10,
+          "southWins": 5,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 9,
+          "southWins": 2,
+          "northWins": 7,
+          "draws": 0,
+          "southWinRate": 0.2222222222222222
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 8,
+          "southWins": 4,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.5
+        }
+      ]
+    },
+    {
+      "name": "eval-legacy",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "legacy",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 26,
+      "northWins": 14,
+      "draws": 0,
+      "southWinRate": 0.65,
+      "averageTurns": 53.65,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 13,
+          "southWins": 6,
+          "northWins": 7,
+          "draws": 0,
+          "southWinRate": 0.46153846153846156
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 9,
+          "southWins": 8,
+          "northWins": 1,
+          "draws": 0,
+          "southWinRate": 0.8888888888888888
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 9,
+          "southWins": 7,
+          "northWins": 2,
+          "draws": 0,
+          "southWinRate": 0.7777777777777778
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 9,
+          "southWins": 5,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.5555555555555556
+        }
+      ]
+    },
+    {
+      "name": "eval-mcts",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "mcts",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 21,
+      "northWins": 19,
+      "draws": 0,
+      "southWinRate": 0.525,
+      "averageTurns": 44.275,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 12,
+          "southWins": 6,
+          "northWins": 6,
+          "draws": 0,
+          "southWinRate": 0.5
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 11,
+          "southWins": 4,
+          "northWins": 7,
+          "draws": 0,
+          "southWinRate": 0.36363636363636365
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 9,
+          "southWins": 5,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.5555555555555556
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 8,
+          "southWins": 6,
+          "northWins": 2,
+          "draws": 0,
+          "southWinRate": 0.75
+        }
+      ]
+    },
+    {
+      "name": "policy-softmax",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "softmax",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 19,
+      "northWins": 21,
+      "draws": 0,
+      "southWinRate": 0.475,
+      "averageTurns": 56.575,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 18,
+          "southWins": 9,
+          "northWins": 9,
+          "draws": 0,
+          "southWinRate": 0.5
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 10,
+          "southWins": 6,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.6
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 7,
+          "southWins": 4,
+          "northWins": 3,
+          "draws": 0,
+          "southWinRate": 0.5714285714285714
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 5,
+          "southWins": 0,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0
+        }
+      ]
+    },
+    {
+      "name": "policy-top3",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "top3",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 16,
+      "northWins": 24,
+      "draws": 0,
+      "southWinRate": 0.4,
+      "averageTurns": 53.4,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 15,
+          "southWins": 6,
+          "northWins": 9,
+          "draws": 0,
+          "southWinRate": 0.4
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 13,
+          "southWins": 5,
+          "northWins": 8,
+          "draws": 0,
+          "southWinRate": 0.38461538461538464
+        },
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 12,
+          "southWins": 5,
+          "northWins": 7,
+          "draws": 0,
+          "southWinRate": 0.4166666666666667
+        }
+      ]
+    },
+    {
+      "name": "policy-uniform",
+      "config": {
+        "maxDepth": 2,
+        "maxTurns": 120,
+        "openingPolicy": "uniform",
+        "evaluationProfile": "bao",
+        "searchProfile": "phase2",
+        "randomPlies": 8,
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16
+      },
+      "batches": 4,
+      "games": 40,
+      "southWins": 17,
+      "northWins": 23,
+      "draws": 0,
+      "southWinRate": 0.425,
+      "averageTurns": 54.925,
+      "firstMoves": [
+        {
+          "move": "takata:namua:0:5:right:::false",
+          "games": 11,
+          "southWins": 6,
+          "northWins": 5,
+          "draws": 0,
+          "southWinRate": 0.5454545454545454
+        },
+        {
+          "move": "takata:namua:0:6:left:::false",
+          "games": 11,
+          "southWins": 7,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.6363636363636364
+        },
+        {
+          "move": "takata:namua:0:5:left:::false",
+          "games": 11,
+          "southWins": 1,
+          "northWins": 10,
+          "draws": 0,
+          "southWinRate": 0.09090909090909091
+        },
+        {
+          "move": "takata:namua:0:6:right:::false",
+          "games": 7,
+          "southWins": 3,
+          "northWins": 4,
+          "draws": 0,
+          "southWinRate": 0.42857142857142855
+        }
+      ]
+    }
+  ],
+  "symmetry": {
+    "states": 200,
+    "legalMoveSymmetryPasses": 170,
+    "legacyEvaluationSymmetryPasses": 200,
+    "baoEvaluationSymmetryPasses": 135
+  }
+}

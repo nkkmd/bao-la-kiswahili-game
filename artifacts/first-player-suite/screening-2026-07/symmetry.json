@@ -1,0 +1,3611 @@
+{
+  "generatedAt": "2026-07-15T00:28:21.140Z",
+  "summary": {
+    "states": 200,
+    "legalMoveSymmetryPasses": 170,
+    "legacyEvaluationSymmetryPasses": 200,
+    "baoEvaluationSymmetryPasses": 135
+  },
+  "details": [
+    {
+      "index": 0,
+      "phase": "namua",
+      "turn": 1,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        2,
+        2
+      ]
+    },
+    {
+      "index": 1,
+      "phase": "namua",
+      "turn": 2,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -44,
+        -44
+      ],
+      "baoScores": [
+        -98,
+        -98
+      ]
+    },
+    {
+      "index": 2,
+      "phase": "namua",
+      "turn": 3,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -53,
+        -53
+      ],
+      "baoScores": [
+        -40,
+        -40
+      ]
+    },
+    {
+      "index": 3,
+      "phase": "namua",
+      "turn": 4,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -222,
+        -222
+      ],
+      "baoScores": [
+        -219,
+        -254
+      ]
+    },
+    {
+      "index": 4,
+      "phase": "namua",
+      "turn": 5,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 9,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        55,
+        55
+      ],
+      "baoScores": [
+        -53,
+        -18
+      ]
+    },
+    {
+      "index": 5,
+      "phase": "namua",
+      "turn": 6,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -223,
+        -223
+      ],
+      "baoScores": [
+        -187,
+        -229
+      ]
+    },
+    {
+      "index": 6,
+      "phase": "namua",
+      "turn": 7,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        55,
+        55
+      ],
+      "baoScores": [
+        -28,
+        35
+      ]
+    },
+    {
+      "index": 7,
+      "phase": "namua",
+      "turn": 8,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -152,
+        -152
+      ],
+      "baoScores": [
+        -127,
+        -190
+      ]
+    },
+    {
+      "index": 8,
+      "phase": "namua",
+      "turn": 9,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        55,
+        55
+      ],
+      "baoScores": [
+        -9,
+        61
+      ]
+    },
+    {
+      "index": 9,
+      "phase": "namua",
+      "turn": 10,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -152,
+        -152
+      ],
+      "baoScores": [
+        -125,
+        -196
+      ]
+    },
+    {
+      "index": 10,
+      "phase": "namua",
+      "turn": 11,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        90,
+        90
+      ],
+      "baoScores": [
+        26,
+        97
+      ]
+    },
+    {
+      "index": 11,
+      "phase": "namua",
+      "turn": 12,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -152,
+        -152
+      ],
+      "baoScores": [
+        -82,
+        -159
+      ]
+    },
+    {
+      "index": 12,
+      "phase": "namua",
+      "turn": 13,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        2,
+        2
+      ],
+      "baoScores": [
+        -142,
+        -65
+      ]
+    },
+    {
+      "index": 13,
+      "phase": "namua",
+      "turn": 14,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -99,
+        -99
+      ],
+      "baoScores": [
+        -23,
+        -101
+      ]
+    },
+    {
+      "index": 14,
+      "phase": "namua",
+      "turn": 15,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -33,
+        -33
+      ],
+      "baoScores": [
+        -220,
+        -143
+      ]
+    },
+    {
+      "index": 15,
+      "phase": "namua",
+      "turn": 16,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -64,
+        -64
+      ],
+      "baoScores": [
+        93,
+        16
+      ]
+    },
+    {
+      "index": 16,
+      "phase": "namua",
+      "turn": 17,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -289,
+        -289
+      ],
+      "baoScores": [
+        -420,
+        -420
+      ]
+    },
+    {
+      "index": 17,
+      "phase": "namua",
+      "turn": 18,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        68,
+        68
+      ],
+      "baoScores": [
+        30,
+        30
+      ]
+    },
+    {
+      "index": 18,
+      "phase": "namua",
+      "turn": 19,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -165,
+        -165
+      ],
+      "baoScores": [
+        -193,
+        -193
+      ]
+    },
+    {
+      "index": 19,
+      "phase": "namua",
+      "turn": 20,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -38,
+        -38
+      ],
+      "baoScores": [
+        -145,
+        -145
+      ]
+    },
+    {
+      "index": 20,
+      "phase": "namua",
+      "turn": 21,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -201,
+        -201
+      ],
+      "baoScores": [
+        -200,
+        -200
+      ]
+    },
+    {
+      "index": 21,
+      "phase": "namua",
+      "turn": 22,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -383,
+        -383
+      ],
+      "baoScores": [
+        -301,
+        -301
+      ]
+    },
+    {
+      "index": 22,
+      "phase": "namua",
+      "turn": 23,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        215,
+        215
+      ],
+      "baoScores": [
+        173,
+        173
+      ]
+    },
+    {
+      "index": 23,
+      "phase": "namua",
+      "turn": 24,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -397,
+        -397
+      ],
+      "baoScores": [
+        -527,
+        -527
+      ]
+    },
+    {
+      "index": 24,
+      "phase": "namua",
+      "turn": 25,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        282,
+        282
+      ],
+      "baoScores": [
+        209,
+        209
+      ]
+    },
+    {
+      "index": 25,
+      "phase": "namua",
+      "turn": 26,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -350,
+        -350
+      ],
+      "baoScores": [
+        -307,
+        -307
+      ]
+    },
+    {
+      "index": 26,
+      "phase": "namua",
+      "turn": 27,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -219,
+        -219
+      ],
+      "baoScores": [
+        -201,
+        -201
+      ]
+    },
+    {
+      "index": 27,
+      "phase": "namua",
+      "turn": 28,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 10,
+      "mirroredMoveCount": 10,
+      "legacyScores": [
+        -91,
+        -91
+      ],
+      "baoScores": [
+        -125,
+        -125
+      ]
+    },
+    {
+      "index": 28,
+      "phase": "namua",
+      "turn": 29,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -131,
+        -131
+      ],
+      "baoScores": [
+        -128,
+        -128
+      ]
+    },
+    {
+      "index": 29,
+      "phase": "namua",
+      "turn": 30,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 8,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        -55,
+        -55
+      ],
+      "baoScores": [
+        -65,
+        -65
+      ]
+    },
+    {
+      "index": 30,
+      "phase": "namua",
+      "turn": 31,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -113,
+        -113
+      ],
+      "baoScores": [
+        -27,
+        -27
+      ]
+    },
+    {
+      "index": 31,
+      "phase": "namua",
+      "turn": 32,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -179,
+        -179
+      ],
+      "baoScores": [
+        -318,
+        -318
+      ]
+    },
+    {
+      "index": 32,
+      "phase": "namua",
+      "turn": 33,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -24,
+        -24
+      ],
+      "baoScores": [
+        -93,
+        -93
+      ]
+    },
+    {
+      "index": 33,
+      "phase": "namua",
+      "turn": 34,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -84,
+        -84
+      ],
+      "baoScores": [
+        -209,
+        -209
+      ]
+    },
+    {
+      "index": 34,
+      "phase": "namua",
+      "turn": 35,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -66,
+        -66
+      ],
+      "baoScores": [
+        37,
+        37
+      ]
+    },
+    {
+      "index": 35,
+      "phase": "namua",
+      "turn": 36,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -434,
+        -434
+      ],
+      "baoScores": [
+        -608,
+        -608
+      ]
+    },
+    {
+      "index": 36,
+      "phase": "namua",
+      "turn": 37,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 8,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        231,
+        231
+      ],
+      "baoScores": [
+        271,
+        271
+      ]
+    },
+    {
+      "index": 37,
+      "phase": "namua",
+      "turn": 38,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -466,
+        -466
+      ],
+      "baoScores": [
+        -637,
+        -637
+      ]
+    },
+    {
+      "index": 38,
+      "phase": "namua",
+      "turn": 39,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        192,
+        192
+      ],
+      "baoScores": [
+        194,
+        194
+      ]
+    },
+    {
+      "index": 39,
+      "phase": "namua",
+      "turn": 40,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -289,
+        -289
+      ],
+      "baoScores": [
+        -349,
+        -349
+      ]
+    },
+    {
+      "index": 40,
+      "phase": "namua",
+      "turn": 41,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 8,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        -95,
+        -95
+      ],
+      "baoScores": [
+        -117,
+        -117
+      ]
+    },
+    {
+      "index": 41,
+      "phase": "namua",
+      "turn": 42,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -73,
+        -73
+      ],
+      "baoScores": [
+        -99,
+        -99
+      ]
+    },
+    {
+      "index": 42,
+      "phase": "namua",
+      "turn": 43,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -235,
+        -235
+      ],
+      "baoScores": [
+        -354,
+        -354
+      ]
+    },
+    {
+      "index": 43,
+      "phase": "namua",
+      "turn": 44,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        120,
+        120
+      ],
+      "baoScores": [
+        317,
+        317
+      ]
+    },
+    {
+      "index": 44,
+      "phase": "mtaji",
+      "turn": 45,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -306,
+        -306
+      ],
+      "baoScores": [
+        -445,
+        -445
+      ]
+    },
+    {
+      "index": 45,
+      "phase": "mtaji",
+      "turn": 46,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        15,
+        15
+      ],
+      "baoScores": [
+        -60,
+        -60
+      ]
+    },
+    {
+      "index": 46,
+      "phase": "mtaji",
+      "turn": 47,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -251,
+        -251
+      ],
+      "baoScores": [
+        -449,
+        -449
+      ]
+    },
+    {
+      "index": 47,
+      "phase": "mtaji",
+      "turn": 48,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        294,
+        294
+      ],
+      "baoScores": [
+        524,
+        524
+      ]
+    },
+    {
+      "index": 48,
+      "phase": "mtaji",
+      "turn": 49,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 10,
+      "mirroredMoveCount": 10,
+      "legacyScores": [
+        -472,
+        -472
+      ],
+      "baoScores": [
+        -726,
+        -726
+      ]
+    },
+    {
+      "index": 49,
+      "phase": "mtaji",
+      "turn": 50,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        433,
+        433
+      ],
+      "baoScores": [
+        614,
+        614
+      ]
+    },
+    {
+      "index": 50,
+      "phase": "namua",
+      "turn": 1,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        2,
+        2
+      ]
+    },
+    {
+      "index": 51,
+      "phase": "namua",
+      "turn": 2,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -5,
+        -5
+      ],
+      "baoScores": [
+        3,
+        3
+      ]
+    },
+    {
+      "index": 52,
+      "phase": "namua",
+      "turn": 3,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        4,
+        4
+      ],
+      "baoScores": [
+        7,
+        7
+      ]
+    },
+    {
+      "index": 53,
+      "phase": "namua",
+      "turn": 4,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        34,
+        34
+      ],
+      "baoScores": [
+        60,
+        60
+      ]
+    },
+    {
+      "index": 54,
+      "phase": "namua",
+      "turn": 5,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -78,
+        -78
+      ],
+      "baoScores": [
+        -136,
+        -135
+      ]
+    },
+    {
+      "index": 55,
+      "phase": "namua",
+      "turn": 6,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -19,
+        -19
+      ],
+      "baoScores": [
+        -29,
+        -29
+      ]
+    },
+    {
+      "index": 56,
+      "phase": "namua",
+      "turn": 7,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -25,
+        -25
+      ],
+      "baoScores": [
+        -29,
+        -29
+      ]
+    },
+    {
+      "index": 57,
+      "phase": "namua",
+      "turn": 8,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -107,
+        -107
+      ],
+      "baoScores": [
+        -187,
+        -187
+      ]
+    },
+    {
+      "index": 58,
+      "phase": "namua",
+      "turn": 9,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        10,
+        10
+      ],
+      "baoScores": [
+        57,
+        57
+      ]
+    },
+    {
+      "index": 59,
+      "phase": "namua",
+      "turn": 10,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -303,
+        -303
+      ],
+      "baoScores": [
+        -317,
+        -359
+      ]
+    },
+    {
+      "index": 60,
+      "phase": "namua",
+      "turn": 11,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        206,
+        206
+      ],
+      "baoScores": [
+        187,
+        229
+      ]
+    },
+    {
+      "index": 61,
+      "phase": "namua",
+      "turn": 12,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -282,
+        -282
+      ],
+      "baoScores": [
+        -255,
+        -325
+      ]
+    },
+    {
+      "index": 62,
+      "phase": "namua",
+      "turn": 13,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        149,
+        149
+      ],
+      "baoScores": [
+        134,
+        205
+      ]
+    },
+    {
+      "index": 63,
+      "phase": "namua",
+      "turn": 14,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -239,
+        -239
+      ],
+      "baoScores": [
+        -347,
+        -347
+      ]
+    },
+    {
+      "index": 64,
+      "phase": "namua",
+      "turn": 15,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        36,
+        36
+      ],
+      "baoScores": [
+        1,
+        1
+      ]
+    },
+    {
+      "index": 65,
+      "phase": "namua",
+      "turn": 16,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -151,
+        -151
+      ],
+      "baoScores": [
+        -165,
+        -165
+      ]
+    },
+    {
+      "index": 66,
+      "phase": "namua",
+      "turn": 17,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 8,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        1,
+        1
+      ],
+      "baoScores": [
+        -34,
+        -34
+      ]
+    },
+    {
+      "index": 67,
+      "phase": "namua",
+      "turn": 18,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        -98,
+        -98
+      ],
+      "baoScores": [
+        -148,
+        -148
+      ]
+    },
+    {
+      "index": 68,
+      "phase": "namua",
+      "turn": 19,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -212,
+        -212
+      ],
+      "baoScores": [
+        -277,
+        -277
+      ]
+    },
+    {
+      "index": 69,
+      "phase": "namua",
+      "turn": 20,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        115,
+        115
+      ],
+      "baoScores": [
+        75,
+        75
+      ]
+    },
+    {
+      "index": 70,
+      "phase": "namua",
+      "turn": 21,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -212,
+        -212
+      ],
+      "baoScores": [
+        -249,
+        -249
+      ]
+    },
+    {
+      "index": 71,
+      "phase": "namua",
+      "turn": 22,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -98,
+        -98
+      ],
+      "baoScores": [
+        -144,
+        -144
+      ]
+    },
+    {
+      "index": 72,
+      "phase": "namua",
+      "turn": 23,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        1,
+        1
+      ],
+      "baoScores": [
+        52,
+        52
+      ]
+    },
+    {
+      "index": 73,
+      "phase": "namua",
+      "turn": 24,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -379,
+        -379
+      ],
+      "baoScores": [
+        -443,
+        -443
+      ]
+    },
+    {
+      "index": 74,
+      "phase": "namua",
+      "turn": 25,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        246,
+        246
+      ],
+      "baoScores": [
+        238,
+        238
+      ]
+    },
+    {
+      "index": 75,
+      "phase": "namua",
+      "turn": 26,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -261,
+        -261
+      ],
+      "baoScores": [
+        -345,
+        -345
+      ]
+    },
+    {
+      "index": 76,
+      "phase": "namua",
+      "turn": 27,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        40,
+        40
+      ],
+      "baoScores": [
+        67,
+        67
+      ]
+    },
+    {
+      "index": 77,
+      "phase": "namua",
+      "turn": 28,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -137,
+        -137
+      ],
+      "baoScores": [
+        -216,
+        -216
+      ]
+    },
+    {
+      "index": 78,
+      "phase": "namua",
+      "turn": 29,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        40,
+        40
+      ],
+      "baoScores": [
+        61,
+        61
+      ]
+    },
+    {
+      "index": 79,
+      "phase": "namua",
+      "turn": 30,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -166,
+        -166
+      ],
+      "baoScores": [
+        -244,
+        -244
+      ]
+    },
+    {
+      "index": 80,
+      "phase": "namua",
+      "turn": 31,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        16,
+        16
+      ],
+      "baoScores": [
+        -60,
+        -60
+      ]
+    },
+    {
+      "index": 81,
+      "phase": "namua",
+      "turn": 32,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -131,
+        -131
+      ],
+      "baoScores": [
+        -168,
+        -168
+      ]
+    },
+    {
+      "index": 82,
+      "phase": "namua",
+      "turn": 33,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -11,
+        -11
+      ],
+      "baoScores": [
+        -121,
+        -121
+      ]
+    },
+    {
+      "index": 83,
+      "phase": "namua",
+      "turn": 34,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -86,
+        -86
+      ],
+      "baoScores": [
+        -29,
+        -29
+      ]
+    },
+    {
+      "index": 84,
+      "phase": "namua",
+      "turn": 35,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -245,
+        -245
+      ],
+      "baoScores": [
+        -226,
+        -226
+      ]
+    },
+    {
+      "index": 85,
+      "phase": "namua",
+      "turn": 36,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -381,
+        -381
+      ],
+      "baoScores": [
+        -397,
+        -397
+      ]
+    },
+    {
+      "index": 86,
+      "phase": "namua",
+      "turn": 1,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        2,
+        2
+      ]
+    },
+    {
+      "index": 87,
+      "phase": "namua",
+      "turn": 2,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -44,
+        -44
+      ],
+      "baoScores": [
+        -98,
+        -98
+      ]
+    },
+    {
+      "index": 88,
+      "phase": "namua",
+      "turn": 3,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -53,
+        -53
+      ],
+      "baoScores": [
+        -67,
+        -67
+      ]
+    },
+    {
+      "index": 89,
+      "phase": "namua",
+      "turn": 4,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -97,
+        -97
+      ],
+      "baoScores": [
+        -159,
+        -159
+      ]
+    },
+    {
+      "index": 90,
+      "phase": "namua",
+      "turn": 5,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        35,
+        35
+      ],
+      "baoScores": [
+        32,
+        32
+      ]
+    },
+    {
+      "index": 91,
+      "phase": "namua",
+      "turn": 6,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -97,
+        -97
+      ],
+      "baoScores": [
+        -183,
+        -183
+      ]
+    },
+    {
+      "index": 92,
+      "phase": "namua",
+      "turn": 7,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        2,
+        2
+      ]
+    },
+    {
+      "index": 93,
+      "phase": "namua",
+      "turn": 8,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -5,
+        -5
+      ],
+      "baoScores": [
+        -4,
+        -5
+      ]
+    },
+    {
+      "index": 94,
+      "phase": "namua",
+      "turn": 9,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -127,
+        -127
+      ],
+      "baoScores": [
+        -236,
+        -229
+      ]
+    },
+    {
+      "index": 95,
+      "phase": "namua",
+      "turn": 10,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        30,
+        30
+      ],
+      "baoScores": [
+        50,
+        43
+      ]
+    },
+    {
+      "index": 96,
+      "phase": "namua",
+      "turn": 11,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -39,
+        -39
+      ],
+      "baoScores": [
+        -61,
+        -54
+      ]
+    },
+    {
+      "index": 97,
+      "phase": "namua",
+      "turn": 12,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        73,
+        73
+      ],
+      "baoScores": [
+        125,
+        118
+      ]
+    },
+    {
+      "index": 98,
+      "phase": "namua",
+      "turn": 13,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -117,
+        -117
+      ],
+      "baoScores": [
+        -229,
+        -222
+      ]
+    },
+    {
+      "index": 99,
+      "phase": "namua",
+      "turn": 14,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        20,
+        20
+      ],
+      "baoScores": [
+        32,
+        22
+      ]
+    },
+    {
+      "index": 100,
+      "phase": "namua",
+      "turn": 15,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -117,
+        -117
+      ],
+      "baoScores": [
+        -251,
+        -237
+      ]
+    },
+    {
+      "index": 101,
+      "phase": "namua",
+      "turn": 16,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        20,
+        20
+      ],
+      "baoScores": [
+        50,
+        36
+      ]
+    },
+    {
+      "index": 102,
+      "phase": "namua",
+      "turn": 17,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -25,
+        -25
+      ],
+      "baoScores": [
+        -49,
+        -35
+      ]
+    },
+    {
+      "index": 103,
+      "phase": "namua",
+      "turn": 18,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -54,
+        -54
+      ],
+      "baoScores": [
+        -111,
+        -119
+      ]
+    },
+    {
+      "index": 104,
+      "phase": "namua",
+      "turn": 19,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -43,
+        -43
+      ],
+      "baoScores": [
+        0,
+        7
+      ]
+    },
+    {
+      "index": 105,
+      "phase": "namua",
+      "turn": 20,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -331,
+        -331
+      ],
+      "baoScores": [
+        -323,
+        -417
+      ]
+    },
+    {
+      "index": 106,
+      "phase": "namua",
+      "turn": 21,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        181,
+        181
+      ],
+      "baoScores": [
+        35,
+        98
+      ]
+    },
+    {
+      "index": 107,
+      "phase": "namua",
+      "turn": 22,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -261,
+        -261
+      ],
+      "baoScores": [
+        -34,
+        -90
+      ]
+    },
+    {
+      "index": 108,
+      "phase": "namua",
+      "turn": 23,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        111,
+        111
+      ],
+      "baoScores": [
+        -113,
+        -57
+      ]
+    },
+    {
+      "index": 109,
+      "phase": "namua",
+      "turn": 24,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -244,
+        -244
+      ],
+      "baoScores": [
+        -29,
+        -78
+      ]
+    },
+    {
+      "index": 110,
+      "phase": "namua",
+      "turn": 25,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -478,
+        -478
+      ],
+      "baoScores": [
+        -585,
+        -585
+      ]
+    },
+    {
+      "index": 111,
+      "phase": "namua",
+      "turn": 26,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 8,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        31,
+        31
+      ],
+      "baoScores": [
+        -18,
+        -18
+      ]
+    },
+    {
+      "index": 112,
+      "phase": "namua",
+      "turn": 27,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -340,
+        -340
+      ],
+      "baoScores": [
+        -430,
+        -430
+      ]
+    },
+    {
+      "index": 113,
+      "phase": "namua",
+      "turn": 28,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        83,
+        83
+      ],
+      "baoScores": [
+        149,
+        149
+      ]
+    },
+    {
+      "index": 114,
+      "phase": "namua",
+      "turn": 29,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -234,
+        -234
+      ],
+      "baoScores": [
+        -277,
+        -277
+      ]
+    },
+    {
+      "index": 115,
+      "phase": "namua",
+      "turn": 30,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        101,
+        101
+      ],
+      "baoScores": [
+        135,
+        135
+      ]
+    },
+    {
+      "index": 116,
+      "phase": "namua",
+      "turn": 31,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -198,
+        -198
+      ],
+      "baoScores": [
+        -304,
+        -304
+      ]
+    },
+    {
+      "index": 117,
+      "phase": "namua",
+      "turn": 32,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        48,
+        48
+      ],
+      "baoScores": [
+        -20,
+        -20
+      ]
+    },
+    {
+      "index": 118,
+      "phase": "namua",
+      "turn": 33,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -145,
+        -145
+      ],
+      "baoScores": [
+        -164,
+        -164
+      ]
+    },
+    {
+      "index": 119,
+      "phase": "namua",
+      "turn": 34,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -58,
+        -58
+      ],
+      "baoScores": [
+        -143,
+        -143
+      ]
+    },
+    {
+      "index": 120,
+      "phase": "namua",
+      "turn": 35,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        -39,
+        -39
+      ],
+      "baoScores": [
+        -72,
+        -72
+      ]
+    },
+    {
+      "index": 121,
+      "phase": "namua",
+      "turn": 36,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -247,
+        -247
+      ],
+      "baoScores": [
+        -364,
+        -364
+      ]
+    },
+    {
+      "index": 122,
+      "phase": "namua",
+      "turn": 37,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        -152,
+        -152
+      ],
+      "baoScores": [
+        -212,
+        -212
+      ]
+    },
+    {
+      "index": 123,
+      "phase": "namua",
+      "turn": 38,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -75,
+        -75
+      ],
+      "baoScores": [
+        -114,
+        -114
+      ]
+    },
+    {
+      "index": 124,
+      "phase": "namua",
+      "turn": 39,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -75,
+        -75
+      ],
+      "baoScores": [
+        -58,
+        -58
+      ]
+    },
+    {
+      "index": 125,
+      "phase": "namua",
+      "turn": 40,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -331,
+        -331
+      ],
+      "baoScores": [
+        -480,
+        -480
+      ]
+    },
+    {
+      "index": 126,
+      "phase": "namua",
+      "turn": 41,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        181,
+        181
+      ],
+      "baoScores": [
+        75,
+        75
+      ]
+    },
+    {
+      "index": 127,
+      "phase": "namua",
+      "turn": 42,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -345,
+        -345
+      ],
+      "baoScores": [
+        -518,
+        -518
+      ]
+    },
+    {
+      "index": 128,
+      "phase": "namua",
+      "turn": 43,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        248,
+        248
+      ],
+      "baoScores": [
+        345,
+        345
+      ]
+    },
+    {
+      "index": 129,
+      "phase": "namua",
+      "turn": 44,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -366,
+        -366
+      ],
+      "baoScores": [
+        -490,
+        -490
+      ]
+    },
+    {
+      "index": 130,
+      "phase": "mtaji",
+      "turn": 45,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        163,
+        163
+      ],
+      "baoScores": [
+        356,
+        356
+      ]
+    },
+    {
+      "index": 131,
+      "phase": "mtaji",
+      "turn": 46,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -316,
+        -316
+      ],
+      "baoScores": [
+        -552,
+        -552
+      ]
+    },
+    {
+      "index": 132,
+      "phase": "mtaji",
+      "turn": 47,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        262,
+        262
+      ],
+      "baoScores": [
+        409,
+        409
+      ]
+    },
+    {
+      "index": 133,
+      "phase": "mtaji",
+      "turn": 48,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -360,
+        -360
+      ],
+      "baoScores": [
+        -519,
+        -519
+      ]
+    },
+    {
+      "index": 134,
+      "phase": "mtaji",
+      "turn": 49,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        34,
+        34
+      ],
+      "baoScores": [
+        66,
+        66
+      ]
+    },
+    {
+      "index": 135,
+      "phase": "mtaji",
+      "turn": 50,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -234,
+        -234
+      ],
+      "baoScores": [
+        -402,
+        -402
+      ]
+    },
+    {
+      "index": 136,
+      "phase": "mtaji",
+      "turn": 51,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 8,
+      "mirroredMoveCount": 8,
+      "legacyScores": [
+        93,
+        93
+      ],
+      "baoScores": [
+        175,
+        175
+      ]
+    },
+    {
+      "index": 137,
+      "phase": "mtaji",
+      "turn": 52,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        -334,
+        -334
+      ],
+      "baoScores": [
+        -586,
+        -586
+      ]
+    },
+    {
+      "index": 138,
+      "phase": "mtaji",
+      "turn": 53,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        299,
+        299
+      ],
+      "baoScores": [
+        518,
+        518
+      ]
+    },
+    {
+      "index": 139,
+      "phase": "mtaji",
+      "turn": 54,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -388,
+        -388
+      ],
+      "baoScores": [
+        -607,
+        -607
+      ]
+    },
+    {
+      "index": 140,
+      "phase": "mtaji",
+      "turn": 55,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        349,
+        349
+      ],
+      "baoScores": [
+        541,
+        541
+      ]
+    },
+    {
+      "index": 141,
+      "phase": "mtaji",
+      "turn": 56,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -455,
+        -455
+      ],
+      "baoScores": [
+        -726,
+        -726
+      ]
+    },
+    {
+      "index": 142,
+      "phase": "mtaji",
+      "turn": 57,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 10,
+      "mirroredMoveCount": 10,
+      "legacyScores": [
+        455,
+        455
+      ],
+      "baoScores": [
+        732,
+        732
+      ]
+    },
+    {
+      "index": 143,
+      "phase": "mtaji",
+      "turn": 58,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -455,
+        -455
+      ],
+      "baoScores": [
+        -715,
+        -715
+      ]
+    },
+    {
+      "index": 144,
+      "phase": "mtaji",
+      "turn": 59,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        412,
+        412
+      ],
+      "baoScores": [
+        642,
+        642
+      ]
+    },
+    {
+      "index": 145,
+      "phase": "mtaji",
+      "turn": 60,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -500,
+        -500
+      ],
+      "baoScores": [
+        -793,
+        -793
+      ]
+    },
+    {
+      "index": 146,
+      "phase": "mtaji",
+      "turn": 61,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        465,
+        465
+      ],
+      "baoScores": [
+        712,
+        712
+      ]
+    },
+    {
+      "index": 147,
+      "phase": "namua",
+      "turn": 1,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        2,
+        2
+      ]
+    },
+    {
+      "index": 148,
+      "phase": "namua",
+      "turn": 2,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -5,
+        -5
+      ],
+      "baoScores": [
+        3,
+        3
+      ]
+    },
+    {
+      "index": 149,
+      "phase": "namua",
+      "turn": 3,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        4,
+        4
+      ],
+      "baoScores": [
+        7,
+        7
+      ]
+    },
+    {
+      "index": 150,
+      "phase": "namua",
+      "turn": 4,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -83,
+        -83
+      ],
+      "baoScores": [
+        -139,
+        -140
+      ]
+    },
+    {
+      "index": 151,
+      "phase": "namua",
+      "turn": 5,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -14,
+        -14
+      ],
+      "baoScores": [
+        18,
+        19
+      ]
+    },
+    {
+      "index": 152,
+      "phase": "namua",
+      "turn": 6,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -226,
+        -226
+      ],
+      "baoScores": [
+        -165,
+        -200
+      ]
+    },
+    {
+      "index": 153,
+      "phase": "namua",
+      "turn": 7,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        58,
+        58
+      ],
+      "baoScores": [
+        8,
+        43
+      ]
+    },
+    {
+      "index": 154,
+      "phase": "namua",
+      "turn": 8,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -155,
+        -155
+      ],
+      "baoScores": [
+        -144,
+        -179
+      ]
+    },
+    {
+      "index": 155,
+      "phase": "namua",
+      "turn": 9,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        -184,
+        -149
+      ]
+    },
+    {
+      "index": 156,
+      "phase": "namua",
+      "turn": 10,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -97,
+        -97
+      ],
+      "baoScores": [
+        5,
+        -30
+      ]
+    },
+    {
+      "index": 157,
+      "phase": "namua",
+      "turn": 11,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -36,
+        -36
+      ],
+      "baoScores": [
+        -179,
+        -123
+      ]
+    },
+    {
+      "index": 158,
+      "phase": "namua",
+      "turn": 12,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -61,
+        -61
+      ],
+      "baoScores": [
+        17,
+        -47
+      ]
+    },
+    {
+      "index": 159,
+      "phase": "namua",
+      "turn": 13,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        -1,
+        -1
+      ],
+      "baoScores": [
+        -95,
+        -32
+      ]
+    },
+    {
+      "index": 160,
+      "phase": "namua",
+      "turn": 14,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -167,
+        -167
+      ],
+      "baoScores": [
+        -60,
+        -123
+      ]
+    },
+    {
+      "index": 161,
+      "phase": "namua",
+      "turn": 15,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        70,
+        70
+      ],
+      "baoScores": [
+        -77,
+        -7
+      ]
+    },
+    {
+      "index": 162,
+      "phase": "namua",
+      "turn": 16,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -167,
+        -167
+      ],
+      "baoScores": [
+        -102,
+        -179
+      ]
+    },
+    {
+      "index": 163,
+      "phase": "namua",
+      "turn": 17,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        4,
+        4
+      ],
+      "baoScores": [
+        -175,
+        -98
+      ]
+    },
+    {
+      "index": 164,
+      "phase": "namua",
+      "turn": 18,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -101,
+        -101
+      ],
+      "baoScores": [
+        34,
+        -50
+      ]
+    },
+    {
+      "index": 165,
+      "phase": "namua",
+      "turn": 19,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -103,
+        -103
+      ],
+      "baoScores": [
+        -337,
+        -253
+      ]
+    },
+    {
+      "index": 166,
+      "phase": "namua",
+      "turn": 20,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -12,
+        -12
+      ],
+      "baoScores": [
+        143,
+        42
+      ]
+    },
+    {
+      "index": 167,
+      "phase": "namua",
+      "turn": 21,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -320,
+        -320
+      ],
+      "baoScores": [
+        -375,
+        -375
+      ]
+    },
+    {
+      "index": 168,
+      "phase": "namua",
+      "turn": 22,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        170,
+        170
+      ],
+      "baoScores": [
+        161,
+        161
+      ]
+    },
+    {
+      "index": 169,
+      "phase": "namua",
+      "turn": 23,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -320,
+        -320
+      ],
+      "baoScores": [
+        -363,
+        -363
+      ]
+    },
+    {
+      "index": 170,
+      "phase": "namua",
+      "turn": 24,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -96,
+        -96
+      ],
+      "baoScores": [
+        -94,
+        -94
+      ]
+    },
+    {
+      "index": 171,
+      "phase": "namua",
+      "turn": 25,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 7,
+      "mirroredMoveCount": 7,
+      "legacyScores": [
+        -152,
+        -152
+      ],
+      "baoScores": [
+        -250,
+        -250
+      ]
+    },
+    {
+      "index": 172,
+      "phase": "namua",
+      "turn": 26,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        55,
+        55
+      ],
+      "baoScores": [
+        73,
+        73
+      ]
+    },
+    {
+      "index": 173,
+      "phase": "namua",
+      "turn": 27,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -365,
+        -365
+      ],
+      "baoScores": [
+        -518,
+        -518
+      ]
+    },
+    {
+      "index": 174,
+      "phase": "namua",
+      "turn": 28,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 6,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        179,
+        179
+      ],
+      "baoScores": [
+        312,
+        312
+      ]
+    },
+    {
+      "index": 175,
+      "phase": "namua",
+      "turn": 29,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -455,
+        -455
+      ],
+      "baoScores": [
+        -486,
+        -486
+      ]
+    },
+    {
+      "index": 176,
+      "phase": "namua",
+      "turn": 30,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -171,
+        -171
+      ],
+      "baoScores": [
+        -106,
+        -106
+      ]
+    },
+    {
+      "index": 177,
+      "phase": "namua",
+      "turn": 1,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        0,
+        0
+      ],
+      "baoScores": [
+        2,
+        2
+      ]
+    },
+    {
+      "index": 178,
+      "phase": "namua",
+      "turn": 2,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -5,
+        -5
+      ],
+      "baoScores": [
+        3,
+        3
+      ]
+    },
+    {
+      "index": 179,
+      "phase": "namua",
+      "turn": 3,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        4,
+        4
+      ],
+      "baoScores": [
+        7,
+        7
+      ]
+    },
+    {
+      "index": 180,
+      "phase": "namua",
+      "turn": 4,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        -13,
+        -13
+      ],
+      "baoScores": [
+        -18,
+        -18
+      ]
+    },
+    {
+      "index": 181,
+      "phase": "namua",
+      "turn": 5,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 6,
+      "legacyScores": [
+        47,
+        47
+      ],
+      "baoScores": [
+        77,
+        77
+      ]
+    },
+    {
+      "index": 182,
+      "phase": "namua",
+      "turn": 6,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -126,
+        -126
+      ],
+      "baoScores": [
+        -218,
+        -218
+      ]
+    },
+    {
+      "index": 183,
+      "phase": "namua",
+      "turn": 7,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        29,
+        29
+      ],
+      "baoScores": [
+        68,
+        68
+      ]
+    },
+    {
+      "index": 184,
+      "phase": "namua",
+      "turn": 8,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -300,
+        -300
+      ],
+      "baoScores": [
+        -322,
+        -358
+      ]
+    },
+    {
+      "index": 185,
+      "phase": "namua",
+      "turn": 9,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        115,
+        115
+      ],
+      "baoScores": [
+        16,
+        51
+      ]
+    },
+    {
+      "index": 186,
+      "phase": "namua",
+      "turn": 10,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 1,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        -212,
+        -212
+      ],
+      "baoScores": [
+        -181,
+        -223
+      ]
+    },
+    {
+      "index": 187,
+      "phase": "namua",
+      "turn": 11,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 1,
+      "legacyScores": [
+        115,
+        115
+      ],
+      "baoScores": [
+        60,
+        104
+      ]
+    },
+    {
+      "index": 188,
+      "phase": "namua",
+      "turn": 12,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -212,
+        -212
+      ],
+      "baoScores": [
+        -182,
+        -231
+      ]
+    },
+    {
+      "index": 189,
+      "phase": "namua",
+      "turn": 13,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 2,
+      "mirroredMoveCount": 2,
+      "legacyScores": [
+        115,
+        115
+      ],
+      "baoScores": [
+        60,
+        109
+      ]
+    },
+    {
+      "index": 190,
+      "phase": "namua",
+      "turn": 14,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -212,
+        -212
+      ],
+      "baoScores": [
+        -102,
+        -185
+      ]
+    },
+    {
+      "index": 191,
+      "phase": "namua",
+      "turn": 15,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        115,
+        115
+      ],
+      "baoScores": [
+        62,
+        139
+      ]
+    },
+    {
+      "index": 192,
+      "phase": "namua",
+      "turn": 16,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -230,
+        -230
+      ],
+      "baoScores": [
+        -212,
+        -293
+      ]
+    },
+    {
+      "index": 193,
+      "phase": "namua",
+      "turn": 17,
+      "legalMoveSymmetric": false,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        80,
+        80
+      ],
+      "baoScores": [
+        18,
+        118
+      ]
+    },
+    {
+      "index": 194,
+      "phase": "namua",
+      "turn": 18,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -237,
+        -237
+      ],
+      "baoScores": [
+        -188,
+        -272
+      ]
+    },
+    {
+      "index": 195,
+      "phase": "namua",
+      "turn": 19,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -37,
+        -37
+      ],
+      "baoScores": [
+        -242,
+        -158
+      ]
+    },
+    {
+      "index": 196,
+      "phase": "namua",
+      "turn": 20,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": false,
+      "legalMoveCount": 4,
+      "mirroredMoveCount": 4,
+      "legacyScores": [
+        -113,
+        -113
+      ],
+      "baoScores": [
+        51,
+        -49
+      ]
+    },
+    {
+      "index": 197,
+      "phase": "namua",
+      "turn": 21,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        -268,
+        -268
+      ],
+      "baoScores": [
+        -357,
+        -357
+      ]
+    },
+    {
+      "index": 198,
+      "phase": "namua",
+      "turn": 22,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 5,
+      "mirroredMoveCount": 5,
+      "legacyScores": [
+        29,
+        29
+      ],
+      "baoScores": [
+        18,
+        18
+      ]
+    },
+    {
+      "index": 199,
+      "phase": "namua",
+      "turn": 23,
+      "legalMoveSymmetric": true,
+      "legacyEvaluationSymmetric": true,
+      "baoEvaluationSymmetric": true,
+      "legalMoveCount": 3,
+      "mirroredMoveCount": 3,
+      "legacyScores": [
+        -126,
+        -126
+      ],
+      "baoScores": [
+        -152,
+        -152
+      ]
+    }
+  ]
+}
