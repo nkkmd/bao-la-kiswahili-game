@@ -8,6 +8,63 @@
 - リポジトリのルートディレクトリで実行
 - 長時間実験ではスリープを無効化
 
+## 共有開局によるペア追試
+
+`PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md`の追試は、開局生成、継続対局、集計を分離して実行します。主コーパスは結果を見る前のコミットで固定してください。
+
+```bash
+node tools/experiments/generate-opening-corpus.js \
+  --count 200 \
+  --plies 8 \
+  --policy uniform \
+  --unique \
+  --stratify first-move \
+  --seed 20260716 \
+  --output artifacts/paired-first-player/2026-07/corpus/uniform-8ply-unique-v1.jsonl
+```
+
+生成器は200件の非終局・ユニーク開局を作り、4初手を各50件に層化します。同じディレクトリへ`manifest.json`と`rejected.jsonl`も保存し、コーパス本体のSHA-256、採否件数、主要ソースのSHA-256をmanifestへ記録します。
+
+Phase 0の12開局fixture、Phase 1の40開局、Phase 2の200開局は次のプロファイルで実行します。
+
+```bash
+node tools/experiments/run-paired-first-player-research.js \
+  --profile fixture \
+  --corpus artifacts/paired-first-player/2026-07/corpus/uniform-8ply-unique-v1.jsonl
+
+node tools/experiments/run-paired-first-player-research.js \
+  --profile screening \
+  --corpus artifacts/paired-first-player/2026-07/corpus/uniform-8ply-unique-v1.jsonl
+
+node tools/experiments/run-paired-first-player-research.js \
+  --profile confirmatory \
+  --corpus artifacts/paired-first-player/2026-07/corpus/uniform-8ply-unique-v1.jsonl
+```
+
+各開局では`C0`、`D1`、`D3`、`D4`、`EL`、`EV2`、`SM`を決定的にシャッフルした順で実行します。1条件終了ごとに`partials/`を原子的に更新し、7条件が揃うと`blocks/`の完全ブロックへ昇格します。同じコマンドで再開でき、ソース、Node.js、コーパス、条件設定のいずれかが変わっていれば再開を拒否します。
+
+進捗確認と診断用の単一条件実行:
+
+```bash
+node tools/experiments/run-paired-first-player-research.js \
+  --profile screening --status
+
+node tools/experiments/run-paired-first-player-research.js \
+  --profile screening --only-condition SM
+```
+
+`--only-condition`の結果はpartialに留まり、7条件の完全ブロックが揃うまでは完了数に含めません。
+
+完全ブロックだけを検証・集計します。
+
+```bash
+node tools/experiments/aggregate-paired-first-player-research.js \
+  --input artifacts/paired-first-player/2026-07/confirmatory \
+  --output artifacts/paired-first-player/2026-07/summary.json
+```
+
+集計器は欠損、重複、partial残存、開局hash、条件hash、source hash、ブロック内再集計を検証します。条件別勝率とWilson区間に加え、C0との差、開局単位paired bootstrap、勝者反転、exact McNemar検定、4主比較のHolm補正を保存します。
+
 ## ローカル実験ランナー
 
 ```bash

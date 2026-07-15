@@ -1,7 +1,15 @@
 # 共有開局系列による先攻・後攻差追試計画
 
-Version: 0.1.0
+Version: 0.2.0
 作成日: 2026-07-16
+
+## 0. 実装状況
+
+2026-07-16にPhase 0の実験基盤を実装した。開局生成器、共有開局からの再開可能な7条件runner、完全性検証付きペア集計器を`tools/experiments/`へ追加し、対応する3テストを`test/`へ追加した。
+
+12開局×7条件の実エンジンfixtureでは84結果が欠損なく揃い、各開局で全7条件の`openingStateHash`がコーパスと一致した。同じコマンドの再実行で完了済みブロックを再利用できること、partialが残る場合に集計を拒否すること、コーパス破損をhash検証で検出することも確認した。
+
+主コーパスとPhase 1以降の成果物は、実装と解析仕様をコミットしてから生成・実行する。
 
 ## 1. 目的
 
@@ -230,6 +238,7 @@ doc/
 └── PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md
 
 tools/experiments/
+├── paired-first-player-common.js
 ├── generate-opening-corpus.js
 ├── run-paired-first-player-research.js
 ├── aggregate-paired-first-player-research.js
