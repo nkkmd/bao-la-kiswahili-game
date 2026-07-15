@@ -3,9 +3,33 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const crypto = require("node:crypto");
 const E = require("../public/engine.js");
 const AI = require("../public/ai.js");
 const { seededRandom } = require("./benchmark.js");
+
+function sha256(value) {
+  return crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+function moveKey(move) {
+  return AI.moveKey ? AI.moveKey(move) : JSON.stringify(move);
+}
+
+function sourceFileHashes() {
+  const files = [
+    "tools/game-start-first-player-study.js",
+    "tools/experiments/run-first-player-research.js",
+    "public/engine.js",
+    "public/ai.js",
+    "public/ai-config.js",
+    "public/ai-weights.js",
+  ];
+  return Object.fromEntries(files.map((file) => [
+    file,
+    crypto.createHash("sha256").update(fs.readFileSync(path.resolve(__dirname, "..", file))).digest("hex"),
+  ]));
+}
 
 function parseArgs(argv) {
   const options = {
@@ -37,11 +61,16 @@ function playGame(random, options) {
   let state = E.initialState();
   let randomPlayed = 0;
   let aiPlayed = 0;
+  const openingMoves = [];
+  const transcript = [];
 
   while (state.winner === null && randomPlayed < options.randomPlies) {
     const moves = E.moveVariants(state);
     if (moves.length === 0) break;
     const move = moves[Math.floor(random() * moves.length)];
+    const key = moveKey(move);
+    openingMoves.push(key);
+    transcript.push(key);
     state = E.applyMove(state, move).state;
     randomPlayed += 1;
   }
@@ -52,6 +81,7 @@ function playGame(random, options) {
     turn: state.turn,
     randomPlayed,
   };
+  const openingStateHash = sha256(state);
 
   while (state.winner === null && randomPlayed + aiPlayed < options.maxTurns) {
     const analysis = AI.analyzeMove(state, "hard", random, {
@@ -61,6 +91,7 @@ function playGame(random, options) {
       searchProfile: "phase2",
     });
     if (!analysis.move) break;
+    transcript.push(moveKey(analysis.move));
     state = E.applyMove(state, analysis.move).state;
     aiPlayed += 1;
   }
@@ -72,6 +103,11 @@ function playGame(random, options) {
     aiPlayed,
     handoff,
     reason: state.reason || "",
+    openingMoves,
+    openingMovesHash: sha256(openingMoves),
+    openingStateHash,
+    transcriptHash: sha256(transcript),
+    finalStateHash: sha256(state),
   };
 }
 
@@ -88,6 +124,7 @@ function wilson(successes, total) {
 function main() {
   const options = parseArgs(process.argv.slice(2));
   const random = seededRandom(options.seed);
+  const startedAt = new Date();
   const games = [];
   let southWins = 0;
   let northWins = 0;
@@ -110,6 +147,16 @@ function main() {
   const decisive = southWins + northWins;
   const report = {
     generatedAt: new Date().toISOString(),
+    startedAt: startedAt.toISOString(),
+    durationMs: Date.now() - startedAt.getTime(),
+    provenance: {
+      sourceCommit: process.env.BAO_RESEARCH_SOURCE_COMMIT || null,
+      sourceTreeDirty: process.env.BAO_RESEARCH_SOURCE_DIRTY === "true",
+      node: process.version,
+      platform: process.platform,
+      arch: process.arch,
+      sourceFileSha256: sourceFileHashes(),
+    },
     methodology: {
       games: options.games,
       seed: options.seed,
