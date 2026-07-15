@@ -26,7 +26,7 @@ node tools/experiments/run-first-player-research.js --study <name>
 
 ## 1〜3時間スクリーニング
 
-未完了の実験1〜5は、既定で`screening-2026-07`プロファイルを使用します。
+実験1〜5の短時間実行は、既定で`screening-2026-07`プロファイルを使用します。
 
 ```bash
 node tools/experiments/run-first-player-research.js --study suite
@@ -43,6 +43,8 @@ node tools/experiments/run-first-player-research.js --study suite
 - 実測に基づく想定時間: 約80〜150分
 
 これは条件間の大きな差と実行上の問題を探すスクリーニングであり、従来計画の200局・MCTS 400 iterationsと同じ探索強度や統計精度ではありません。有望な条件だけを200局以上へ拡張します。
+
+2026-07-15の初回実行は約55分で完了し、44バッチ、440局、鏡像監査、`summary.json`を`artifacts/first-player-suite/screening-2026-07/`へ保存しました。結果と解釈は`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`を参照してください。
 
 MCTS条件だけを先に実行する場合:
 
@@ -119,7 +121,7 @@ artifacts/
     └── mcts-full/
 ```
 
-`summary.json`と`random-opening-summary.json`は既存研究の保存集計です。新しい`random-openings`追試は`first-player-random-openings/`へ、ゲーム開始時の追試は`game-start-first-player/`へ保存します。suiteの`summary.json`はプロファイル内の11条件すべてが完了するまで作成されません。
+`summary.json`と`random-opening-summary.json`は既存研究の保存集計です。新しい`random-openings`追試は`first-player-random-openings/`へ、ゲーム開始時の追試は`game-start-first-player/`へ保存します。`screening-2026-07/summary.json`は11条件完了後に作成済みです。
 
 ## 運用方針
 
