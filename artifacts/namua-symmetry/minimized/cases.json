@@ -1,0 +1,14 @@
+{
+  "cause": "mirror-state/local-column-coordinate",
+  "cases": [
+    {
+      "fixture": "initialNyumba",
+      "demonstrates": "Candidate A reverses the fixed nyumba coordinate from index 4 to index 3 and creates two unexpected takata moves."
+    },
+    {
+      "fixture": "oneEntryCapture",
+      "demonstrates": "Candidate A changes capture-dependent bao features even when the canonical legal move set happens to match."
+    }
+  ],
+  "fixtureModule": "test/fixtures/namua-symmetry-cases.js"
+}

@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-07-15T14:21:20.154Z",
+  "seed": null,
+  "input": "artifacts/namua-symmetry/baseline/states.jsonl",
+  "candidate": "A",
+  "transform": {
+    "playerSwap": true,
+    "reverseColumns": true,
+    "reverseDirections": true
+  },
+  "summary": {
+    "states": 200,
+    "legalMoveSymmetryPasses": 170,
+    "legacyEvaluationSymmetryPasses": 200,
+    "baoEvaluationSymmetryPasses": 135
+  }
+}

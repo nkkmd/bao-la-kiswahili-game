@@ -5,90 +5,186 @@ const fs = require("node:fs");
 const path = require("node:path");
 const E = require("../public/engine.js");
 const AI = require("../public/ai.js");
-const { seededRandom } = require("./benchmark.js");
+const { reachableStates } = require("./symmetry/generate-states.js");
+const {
+  CANDIDATES,
+  mirrorMove,
+  mirrorState,
+  moveFor,
+  stateFor,
+} = require("./symmetry/transform-candidates.js");
 
-function swapPlayer(value) {
-  return value === null ? null : 1 - value;
+function parseArgs(argv) {
+  const options = {
+    candidate: "D", count: 200, seed: 20260714, input: null, output: null,
+    summaryOutput: null, summaryOnly: false,
+  };
+  if (argv[0] && !argv[0].startsWith("--")) options.output = argv[0];
+  for (let index = 0; index < argv.length; index += 1) {
+    const value = argv[index + 1];
+    if (argv[index] === "--candidate") options.candidate = value.toUpperCase();
+    if (argv[index] === "--count") options.count = Number(value);
+    if (argv[index] === "--seed") options.seed = Number(value);
+    if (argv[index] === "--input") options.input = value;
+    if (argv[index] === "--output") options.output = value;
+    if (argv[index] === "--summary-output") options.summaryOutput = value;
+    if (argv[index] === "--summary-only") options.summaryOnly = true;
+  }
+  if (!CANDIDATES[options.candidate]) throw new Error("Invalid --candidate (expected A, B, C, or D)");
+  if (!Number.isInteger(options.count) || options.count < 1) throw new Error("Invalid --count");
+  if (!Number.isInteger(options.seed)) throw new Error("Invalid --seed");
+  return options;
 }
 
-function mirrorState(state) {
+function readStates(input) {
+  return fs.readFileSync(input, "utf8").trim().split("\n")
+    .filter(Boolean).map((line) => JSON.parse(line));
+}
+
+function moveKeys(moves) {
+  return moves.map((move) => AI.moveKey(move)).sort();
+}
+
+function difference(left, right) {
+  const remaining = [...right];
+  return left.filter((value) => {
+    const index = remaining.indexOf(value);
+    if (index < 0) return true;
+    remaining.splice(index, 1);
+    return false;
+  });
+}
+
+function deltaObject(original = {}, mirrored = {}) {
+  return Object.fromEntries([...new Set([...Object.keys(original), ...Object.keys(mirrored)])]
+    .map((name) => [name, (original[name] || 0) - (mirrored[name] || 0)]));
+}
+
+function metadataFor(state) {
+  const moves = E.moveVariants(state);
   return {
-    ...JSON.parse(JSON.stringify(state)),
-    pits: [
-      [state.pits[1][0].slice().reverse(), state.pits[1][1].slice().reverse()],
-      [state.pits[0][0].slice().reverse(), state.pits[0][1].slice().reverse()],
-    ],
-    reserve: [state.reserve[1], state.reserve[0]],
-    houseOwned: [state.houseOwned[1], state.houseOwned[0]],
-    player: 1 - state.player,
-    winner: swapPlayer(state.winner),
-    pending: [state.pending[1], state.pending[0]],
+    phase: state.phase,
+    player: state.player,
+    turn: state.turn,
+    reserve: state.reserve.slice(),
+    houseOwned: state.houseOwned.slice(),
+    nyumbaSeeds: state.pits.map((rows) => rows[E.FRONT][E.HOUSE]),
+    captureAvailable: moves.some((move) => move.type === "capture"),
+    takataAvailable: moves.some((move) => move.type === "takata"),
+    legalMoveCount: moves.length,
+    pending: state.pending?.slice() || [0, 0],
   };
 }
 
-function mirrorMove(move) {
-  const mirrored = JSON.parse(JSON.stringify(move));
-  if (typeof mirrored.player === "number") mirrored.player = 1 - mirrored.player;
-  if (typeof mirrored.index === "number") mirrored.index = 7 - mirrored.index;
-  if (typeof mirrored.start === "number") mirrored.start = 7 - mirrored.start;
-  if (typeof mirrored.side === "string") mirrored.side = mirrored.side === "left" ? "right" : "left";
-  if (typeof mirrored.direction === "string") mirrored.direction = mirrored.direction === "left" ? "right" : "left";
-  return mirrored;
+function auditState(state, index, candidate) {
+  const mirroredState = stateFor(candidate, state);
+  const expectedMoves = moveKeys(E.moveVariants(state).map((move) => moveFor(candidate, move)));
+  const actualMoves = moveKeys(E.moveVariants(mirroredState));
+  const originalEvaluation = {
+    legacy: AI.legacyEvaluate(state, state.player),
+    bao: AI.evaluationBreakdown(state, state.player, { evaluationProfile: "bao" }),
+  };
+  const mirroredEvaluation = {
+    legacy: AI.legacyEvaluate(mirroredState, mirroredState.player),
+    bao: AI.evaluationBreakdown(mirroredState, mirroredState.player, { evaluationProfile: "bao" }),
+  };
+  return {
+    index,
+    state,
+    mirroredState,
+    expectedMoves,
+    actualMoves,
+    missingMoves: difference(expectedMoves, actualMoves),
+    unexpectedMoves: difference(actualMoves, expectedMoves),
+    originalEvaluation,
+    mirroredEvaluation,
+    evaluationDelta: {
+      legacy: originalEvaluation.legacy - mirroredEvaluation.legacy,
+      total: originalEvaluation.bao.total - mirroredEvaluation.bao.total,
+      features: deltaObject(originalEvaluation.bao.features, mirroredEvaluation.bao.features),
+      contributions: deltaObject(
+        originalEvaluation.bao.contributions,
+        mirroredEvaluation.bao.contributions,
+      ),
+    },
+    metadata: metadataFor(state),
+    legalMoveSymmetric: JSON.stringify(expectedMoves) === JSON.stringify(actualMoves),
+    legacyEvaluationSymmetric: originalEvaluation.legacy === mirroredEvaluation.legacy,
+    baoEvaluationSymmetric: originalEvaluation.bao.total === mirroredEvaluation.bao.total,
+  };
 }
 
-function canonicalMoves(state) {
-  return E.moveVariants(state).map((move) => AI.moveKey(move)).sort();
-}
-
-function reachableStates(count, seed) {
-  const random = seededRandom(seed);
-  const states = [];
-  let state = E.initialState();
-  while (states.length < count) {
-    if (state.winner !== null || E.moveVariants(state).length === 0) state = E.initialState();
-    states.push(E.clone(state));
-    const moves = E.moveVariants(state);
-    const move = moves[Math.floor(random() * moves.length)];
-    state = E.applyMove(state, move).state;
-  }
-  return states;
-}
-
-function main() {
-  const output = process.argv[2] || "artifacts/first-player-suite/symmetry.json";
-  const states = reachableStates(200, 20260714);
-  const details = states.map((state, index) => {
-    const mirrored = mirrorState(state);
-    const expectedMoves = E.moveVariants(state).map(mirrorMove).map((move) => AI.moveKey(move)).sort();
-    const actualMoves = canonicalMoves(mirrored);
-    const legalMoveSymmetric = JSON.stringify(expectedMoves) === JSON.stringify(actualMoves);
-    const legacyA = AI.legacyEvaluate(state, state.player);
-    const legacyB = AI.legacyEvaluate(mirrored, mirrored.player);
-    const baoA = AI.evaluationBreakdown(state, state.player, { evaluationProfile: "bao" }).total;
-    const baoB = AI.evaluationBreakdown(mirrored, mirrored.player, { evaluationProfile: "bao" }).total;
-    return {
-      index,
-      phase: state.phase,
-      turn: state.turn,
-      legalMoveSymmetric,
-      legacyEvaluationSymmetric: legacyA === legacyB,
-      baoEvaluationSymmetric: baoA === baoB,
-      legalMoveCount: expectedMoves.length,
-      mirroredMoveCount: actualMoves.length,
-      legacyScores: [legacyA, legacyB],
-      baoScores: [baoA, baoB],
-    };
-  });
-  const summary = {
+function summarize(details) {
+  return {
     states: details.length,
     legalMoveSymmetryPasses: details.filter((item) => item.legalMoveSymmetric).length,
     legacyEvaluationSymmetryPasses: details.filter((item) => item.legacyEvaluationSymmetric).length,
     baoEvaluationSymmetryPasses: details.filter((item) => item.baoEvaluationSymmetric).length,
   };
+}
+
+function writeJson(output, value) {
   fs.mkdirSync(path.dirname(output), { recursive: true });
-  fs.writeFileSync(output, `${JSON.stringify({ generatedAt: new Date().toISOString(), summary, details }, null, 2)}\n`);
-  console.log(JSON.stringify(summary, null, 2));
+  fs.writeFileSync(output, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+function auditStates(states, candidate = "D") {
+  const details = states.map((state, index) => auditState(state, index, candidate));
+  return { candidate, transform: CANDIDATES[candidate], summary: summarize(details), details };
+}
+
+function auditSummary(states, candidate = "D") {
+  const counts = {
+    states: 0,
+    legalMoveSymmetryPasses: 0,
+    legacyEvaluationSymmetryPasses: 0,
+    baoEvaluationSymmetryPasses: 0,
+  };
+  const mismatches = [];
+  states.forEach((state, index) => {
+    const detail = auditState(state, index, candidate);
+    counts.states += 1;
+    if (detail.legalMoveSymmetric) counts.legalMoveSymmetryPasses += 1;
+    if (detail.legacyEvaluationSymmetric) counts.legacyEvaluationSymmetryPasses += 1;
+    if (detail.baoEvaluationSymmetric) counts.baoEvaluationSymmetryPasses += 1;
+    if (!detail.legalMoveSymmetric || !detail.legacyEvaluationSymmetric
+      || !detail.baoEvaluationSymmetric) mismatches.push(detail);
+  });
+  return { candidate, transform: CANDIDATES[candidate], summary: counts, details: mismatches };
+}
+
+function main() {
+  const options = parseArgs(process.argv.slice(2));
+  const states = options.input ? readStates(options.input) : reachableStates(options.count, options.seed);
+  const result = {
+    generatedAt: new Date().toISOString(),
+    seed: options.input ? null : options.seed,
+    input: options.input,
+    ...(options.summaryOnly
+      ? auditSummary(states, options.candidate)
+      : auditStates(states, options.candidate)),
+  };
+  if (options.output) {
+    writeJson(options.output, result);
+  }
+  if (options.summaryOutput) writeJson(options.summaryOutput, {
+    generatedAt: result.generatedAt,
+    seed: result.seed,
+    input: result.input,
+    candidate: result.candidate,
+    transform: result.transform,
+    summary: result.summary,
+  });
+  process.stdout.write(`${JSON.stringify({ candidate: result.candidate, ...result.summary }, null, 2)}\n`);
 }
 
 if (require.main === module) main();
-module.exports = { mirrorState, mirrorMove, reachableStates };
+module.exports = {
+  auditState,
+  auditStates,
+  auditSummary,
+  mirrorMove,
+  mirrorState,
+  parseArgs,
+  reachableStates,
+};
