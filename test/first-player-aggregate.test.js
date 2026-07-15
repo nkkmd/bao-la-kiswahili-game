@@ -66,4 +66,48 @@ assert.equal(summary.totalGames, 440);
 assert.equal(summary.conditions.length, 11);
 assert.ok(summary.conditions.every((condition) => condition.batches === 4 && condition.games === 40));
 
+const gameStartDir = path.join(temp, "artifacts", "game-start-first-player");
+fs.mkdirSync(gameStartDir, { recursive: true });
+const seedBases = new Map([[2, 20262000], [4, 20264000], [6, 20266000], [8, 20268000], [12, 20261200]]);
+for (const [plies, seedBase] of seedBases) {
+  for (let batch = 1; batch <= 4; batch += 1) {
+    const games = Array.from({ length: 50 }, (_, index) => ({
+      game: index + 1,
+      winner: index % 2,
+      totalTurns: 20,
+      randomPlayed: plies,
+      aiPlayed: 20 - plies,
+      reason: "",
+      openingMoves: Array.from({ length: plies }, () => "move-a"),
+      openingMovesHash: String(index).padStart(64, "0"),
+      openingStateHash: String(index + 50).padStart(64, "0"),
+      transcriptHash: String(index + 100).padStart(64, "0"),
+      finalStateHash: String(index + 500).padStart(64, "0"),
+    }));
+    fs.writeFileSync(path.join(gameStartDir, `random-${plies}-batch-${batch}.json`), `${JSON.stringify({
+      provenance: {
+        sourceCommit: "abc123",
+        sourceTreeDirty: false,
+        node: process.version,
+        sourceFileSha256: { "public/engine.js": "digest" },
+      },
+      methodology: { games: 50, seed: seedBase + batch, randomPlies: plies },
+      totals: {
+        games: 50, southWins: 25, northWins: 25, draws: 0, averageTurns: 20,
+        handoffPlayers: { south: 50, north: 0 }, handoffPhases: { namua: 50 },
+      },
+      games,
+    })}\n`);
+  }
+}
+const gameStartResult = spawnSync(process.execPath, [script, "game-start"], { cwd: temp, encoding: "utf8" });
+assert.equal(gameStartResult.status, 0, gameStartResult.stderr);
+const gameStartSummary = JSON.parse(fs.readFileSync(path.join(gameStartDir, "summary.json"), "utf8"));
+assert.equal(gameStartSummary.totals.games, 1000);
+assert.equal(gameStartSummary.conditions.length, 5);
+assert.equal(gameStartSummary.provenance.sourceCommits[0], "abc123");
+assert.equal(gameStartSummary.historicalComparison.matchesHistoricalTotals, false);
+assert.equal(gameStartSummary.totals.aiContinuation.games, 1000);
+assert.equal(gameStartSummary.totals.uniqueOpeningAnalysis.openings, 250);
+
 console.log("First-player aggregate tests passed");

@@ -1,0 +1,1353 @@
+{
+  "generatedAt": "2026-07-15T07:49:44.654Z",
+  "startedAt": "2026-07-15T07:43:20.759Z",
+  "durationMs": 383896,
+  "provenance": {
+    "sourceCommit": "64c0437e2c728d3b0e664ea464f195b363eb802d",
+    "sourceTreeDirty": false,
+    "node": "v24.6.0",
+    "platform": "linux",
+    "arch": "x64",
+    "sourceFileSha256": {
+      "tools/game-start-first-player-study.js": "f8233a02ab9373fa14cfa27ce3cfcfcf6f2720f94952b8a8a921338f66442a0e",
+      "tools/experiments/run-first-player-research.js": "5ec00faa1ba9dd48c74ff082d648a74d0539dbecf3a0089808fec2693f5c3a91",
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "90950e1347d1962667c34808fc36c7941410594b750e72c6faa617df92987499",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8"
+    }
+  },
+  "methodology": {
+    "games": 50,
+    "seed": 20266003,
+    "randomPlies": 6,
+    "firstPlayer": "South (player 0)",
+    "secondPlayer": "North (player 1)",
+    "randomOpeningPolicy": "uniform over legal move variants",
+    "continuationAI": "hard / bao / phase2",
+    "maxDepth": 2,
+    "maxTurns": 300
+  },
+  "totals": {
+    "games": 50,
+    "southWins": 20,
+    "northWins": 30,
+    "draws": 0,
+    "averageTurns": 54.92,
+    "southWinRateAllGames": 0.4,
+    "southWinRateDecisive": 0.4,
+    "southWinRateWilson95": [
+      0.27608389730256544,
+      0.5381856225241064
+    ],
+    "handoffPlayers": {
+      "south": 50,
+      "north": 0
+    },
+    "handoffPhases": {
+      "namua": 50
+    }
+  },
+  "games": [
+    {
+      "game": 1,
+      "winner": 1,
+      "totalTurns": 54,
+      "randomPlayed": 6,
+      "aiPlayed": 48,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:left:right::false"
+      ],
+      "openingMovesHash": "4557765d654434d18dbcd1b716e329792ee02faef20dd8a7c6a4c1c3ef62105a",
+      "openingStateHash": "201b4ce27059bdcbbb81465392544a298a37d18758d93fb3084c2a25e3092c6e",
+      "transcriptHash": "84b3331694389d4d284e47d19e6b9eb09d7553909d7ee703442ff20c8bdd4634",
+      "finalStateHash": "65d3cf25de83204f120c3bf5f5b0867dd367455f7db6a850e9d02cf8838f21c3"
+    },
+    {
+      "game": 2,
+      "winner": 0,
+      "totalTurns": 49,
+      "randomPlayed": 6,
+      "aiPlayed": 43,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false"
+      ],
+      "openingMovesHash": "b07a99e22756d2e93046f5a99f49a51856a8fc7577e55f44ab4cd09d3f205807",
+      "openingStateHash": "c1546c3698987bc16961ff1902a55ade96a55aa30911be853a60eb73ec6a6967",
+      "transcriptHash": "005162faabe31467e454d1eebda5eb6449a0d336de75b96b46376f55ecea08ec",
+      "finalStateHash": "e135cd8759f3aa272db579a9b17804b73c6c3184ab27e5cc0d9e0a658529e573"
+    },
+    {
+      "game": 3,
+      "winner": 1,
+      "totalTurns": 56,
+      "randomPlayed": 6,
+      "aiPlayed": 50,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:2:left:::false",
+        "capture:namua:0:6:left:right:stop:false",
+        "takata:namua:0:6:right:::false"
+      ],
+      "openingMovesHash": "bb370f48a05a0e6701bb940b4b49609584dfcc2967ecfd32f9e0971776ec05b7",
+      "openingStateHash": "b4de7577f8651a5f5ebf298c5b7633d80e72708718a631e6a04c4fb30d51b8b1",
+      "transcriptHash": "d6846bbfdd6fe2b26a76d6e417b4ac5fb09d97f9b5e24c638ef092d301175839",
+      "finalStateHash": "1e2ddc310818aafe7934c0be0d520bc411bdd7da61663e26514859831a5781ad"
+    },
+    {
+      "game": 4,
+      "winner": 1,
+      "totalTurns": 56,
+      "randomPlayed": 6,
+      "aiPlayed": 50,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right:use:false",
+        "capture:namua:0:5:left:right::false"
+      ],
+      "openingMovesHash": "794721c8ce3eb19c2583665bdc4e46ab714da180d82e31ffc7210a6ecd209315",
+      "openingStateHash": "e8d4323792c6ef7680df38b844ef27ce4f55480adccf7bceb2ea471f2bc10cc9",
+      "transcriptHash": "2c48413b4a104c3307684a9ad32c2bac7a690d7e00034eec77cdf61915ce9d13",
+      "finalStateHash": "1ad32ea4005ae03d4cafe201b441b37444ae79fa1813467f4f947a6127751f31"
+    },
+    {
+      "game": 5,
+      "winner": 0,
+      "totalTurns": 51,
+      "randomPlayed": 6,
+      "aiPlayed": 45,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "takata:namua:0:6:right:::false",
+        "capture:namua:0:0:right:left::false"
+      ],
+      "openingMovesHash": "3c413cc9f6e6da3a3ccd509cce24d4d177226566bd7f38b498778519305d8024",
+      "openingStateHash": "11094edcf564e3af3f57ed168e99d29c2dec6dc5d58f48c28e53ef4a63c76216",
+      "transcriptHash": "a25f1c214c9265739f9a93075b05700abdb833baa2fb650360f8b5795b3154d2",
+      "finalStateHash": "abfbeab24ab4c426528db4f32f5322c10f6f7f664ecafe84364d47c0ad886b18"
+    },
+    {
+      "game": 6,
+      "winner": 1,
+      "totalTurns": 50,
+      "randomPlayed": 6,
+      "aiPlayed": 44,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false"
+      ],
+      "openingMovesHash": "2db9928756bc45f3c4d9379070beb88379020da13e4a616417beea0b3c719a33",
+      "openingStateHash": "0b02d3b3931f54cdb7c53f23e54b845661f4384cb40cabd2d5f1c8e7e1168287",
+      "transcriptHash": "643bb2e4b9b3fcfbcbb344d7ae0f52d4e72bb75921e1dbdada37b2c013125d9c",
+      "finalStateHash": "4b857bb6f0d05bc1141342a602e14b0062543b9ee2177f22e916a64eef7eb3a9"
+    },
+    {
+      "game": 7,
+      "winner": 1,
+      "totalTurns": 64,
+      "randomPlayed": 6,
+      "aiPlayed": 58,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false"
+      ],
+      "openingMovesHash": "fa4111d87fa966956f8506d8b3e0752212ae35a27e6799f79a3cdbc69ef4ba9e",
+      "openingStateHash": "139c0eda71d5d5fcd2405b909eb77c059e8ceac329eaf3b54cb380ec984583c8",
+      "transcriptHash": "b124ecfa242e3478b2ce58acf72b15e2441926fc3df0c380663e695f131af366",
+      "finalStateHash": "936c91a9471b2e4e0960124c73be6c6d2e22adb6b7643a1b30c29dbb1b221ec3"
+    },
+    {
+      "game": 8,
+      "winner": 1,
+      "totalTurns": 86,
+      "randomPlayed": 6,
+      "aiPlayed": 80,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:0:right:left::false"
+      ],
+      "openingMovesHash": "80d01a6f67277cf4c32851c160e4a3ec10d9d017c0a1cf824d7927c13e362e69",
+      "openingStateHash": "bf42fb386d7d028d292f88e8a3c4c78e473e3f65064e1e7158fff98bda16f2b8",
+      "transcriptHash": "d539a765ad061859d34c9911e27aceda0234be6c9c9f6f70485422967fc89266",
+      "finalStateHash": "bcb68751458db60532a668bde0d490611e4b8dce2239e93911b09f451c3baa29"
+    },
+    {
+      "game": 9,
+      "winner": 1,
+      "totalTurns": 48,
+      "randomPlayed": 6,
+      "aiPlayed": 42,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "openingMovesHash": "28e2700c5c575f58b3a6e55d27b505f8df82ccf4aa2c272428c285ee23643d96",
+      "openingStateHash": "14023a1cd3c272a95bd5fa37f4d4ead6672767e8cdac2f2ed770efe611a23b40",
+      "transcriptHash": "928b49c21c9f8780114713b17a71cb03b6bb2a6a14045f69672ae4805fb4e621",
+      "finalStateHash": "27df9e4934d80f116ffa55dcd8a5fb63acbaebcb0622c014ed2ddbf1a27143ad"
+    },
+    {
+      "game": 10,
+      "winner": 0,
+      "totalTurns": 67,
+      "randomPlayed": 6,
+      "aiPlayed": 61,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:right:left::false"
+      ],
+      "openingMovesHash": "c8dd8703635599e0ca500557d88bbd29ff8049667b1a4c7f756761468ebe1561",
+      "openingStateHash": "abeb304343066330e65afc937c7ddab5f772b2887ab76e570cbba29282764310",
+      "transcriptHash": "2f59ba440f2c71a4aa88bd0c96acc576b629d940e60c78bbecca441de2e015fc",
+      "finalStateHash": "1c04b6895a318772a1cd5a3452a2f860b59c0f421ba0bf68f68ec6535ff58799"
+    },
+    {
+      "game": 11,
+      "winner": 1,
+      "totalTurns": 46,
+      "randomPlayed": 6,
+      "aiPlayed": 40,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:right:left::false"
+      ],
+      "openingMovesHash": "2f0316874803f457f411461d4cf8b760b2e0e413c248feaf3b476504288d8085",
+      "openingStateHash": "67fceaab29b384989d9c2e57fc0619d4f626d5f82241394ef1d0eb223f3f18a9",
+      "transcriptHash": "f08415cc17a511cf22b9a38f41ab41328897058b97a1e942a4edde58e65f08a8",
+      "finalStateHash": "e1d222b7f36749fcb62a6bbd0ea13553ff24fac839b77dc0dbd2447e8cba0bbb"
+    },
+    {
+      "game": 12,
+      "winner": 0,
+      "totalTurns": 61,
+      "randomPlayed": 6,
+      "aiPlayed": 55,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:2:left:::false"
+      ],
+      "openingMovesHash": "47a3c8125a7f92a6459365e20b8efc00456ea567dbc0f8dfb6be0734512b5325",
+      "openingStateHash": "73971af89ff4062290e23298a95394efd73bd3580887d08b763c529a5b762546",
+      "transcriptHash": "34bf96e5afe28a11df957cfc91edbb4afe310af329046c203d6429ff65afb163",
+      "finalStateHash": "29fe956b23f27ea1f0c10c537cf629470638380af027c63be84e8f72f8e5a581"
+    },
+    {
+      "game": 13,
+      "winner": 1,
+      "totalTurns": 54,
+      "randomPlayed": 6,
+      "aiPlayed": 48,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right:stop:false"
+      ],
+      "openingMovesHash": "4f460326f64d217ed090d46361b11f7176413ccf5745292ae0d90db78497f385",
+      "openingStateHash": "e2467fd79857e5b9745ca96c701f3dc63997ce656cdcbf6ffdc4f6d504069acb",
+      "transcriptHash": "74e8809ef073730da35fe03a8edfb907c1b349ab30624d1c1d1a2d62aaceb74f",
+      "finalStateHash": "2118507e853833bc09f288782454bb0aeda2d2d6c02274fc143f72b10e566f4e"
+    },
+    {
+      "game": 14,
+      "winner": 1,
+      "totalTurns": 56,
+      "randomPlayed": 6,
+      "aiPlayed": 50,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:1:right:left:stop:false",
+        "capture:namua:0:1:right:left::false"
+      ],
+      "openingMovesHash": "ef490dbc25a40c1384e84aa79dda163f6f436797853a0d717ccd7a009151eac6",
+      "openingStateHash": "9b75777b1f04c5a7b76462d75d1b7281a779ba2a3deddd74a1a63bb5c4908f91",
+      "transcriptHash": "1b0faac5b986a2eff3070aee7e13def6c3c4979e733f571fa9aa23395a42eb4f",
+      "finalStateHash": "b97f09e1afa7c2ba67b876c5e069c2eebcb8da2068021c51dde5f7df4d989945"
+    },
+    {
+      "game": 15,
+      "winner": 0,
+      "totalTurns": 49,
+      "randomPlayed": 6,
+      "aiPlayed": 43,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false"
+      ],
+      "openingMovesHash": "b07a99e22756d2e93046f5a99f49a51856a8fc7577e55f44ab4cd09d3f205807",
+      "openingStateHash": "c1546c3698987bc16961ff1902a55ade96a55aa30911be853a60eb73ec6a6967",
+      "transcriptHash": "005162faabe31467e454d1eebda5eb6449a0d336de75b96b46376f55ecea08ec",
+      "finalStateHash": "e135cd8759f3aa272db579a9b17804b73c6c3184ab27e5cc0d9e0a658529e573"
+    },
+    {
+      "game": 16,
+      "winner": 0,
+      "totalTurns": 57,
+      "randomPlayed": 6,
+      "aiPlayed": 51,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:left:::false"
+      ],
+      "openingMovesHash": "0258e3f051034024bba54465bdc1b3593b6f8e9f76a04dbf4c60c5de29d6cb80",
+      "openingStateHash": "d4347335a77da05cd85083a62d2803039e2b85d56ec6a0d8d7306c769cc80cae",
+      "transcriptHash": "eae254e837934d7608ccba4fe75440b2db8876cb9531fe7bd3913532e6c70029",
+      "finalStateHash": "0d5b775e62d52ab9a19dedaccc867b5c5e92f7322c75cb9373d1504c625aa3ef"
+    },
+    {
+      "game": 17,
+      "winner": 0,
+      "totalTurns": 55,
+      "randomPlayed": 6,
+      "aiPlayed": 49,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:right:left::false"
+      ],
+      "openingMovesHash": "afdd2ea89ca92da57cff9341c573c57fda01d0f0f3bf4b628b8d124d19e5448d",
+      "openingStateHash": "2a0a7cd0408dd84763fa26171db808a6f24a00d77f231f33d5bca2765c73edef",
+      "transcriptHash": "9cca76b0e0523d00d07349f45206c6a51c8b47ca2b41e082f29f3a99ef0f25ee",
+      "finalStateHash": "746044d455c40dd57134a356843098381888b7cd1dc5b3f2438575c40ed04564"
+    },
+    {
+      "game": 18,
+      "winner": 1,
+      "totalTurns": 80,
+      "randomPlayed": 6,
+      "aiPlayed": 74,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right:stop:false"
+      ],
+      "openingMovesHash": "ccce434c012b994ca658c3533923181c78094732468d2316cf4e72d3a3b78c16",
+      "openingStateHash": "4f22b8dc1bca15d66bc5f875026d13f11d72285051fc18b8772e524c1d8bac19",
+      "transcriptHash": "d75176bbf7d8ad76e79abb2bb6ab5c8deb8ddcae63412d6a2ba915eb483c44f0",
+      "finalStateHash": "eecf292dc95c4cc680c56d9aacb4c1500d0b32b7235e2f6deb6eb9aac549075f"
+    },
+    {
+      "game": 19,
+      "winner": 1,
+      "totalTurns": 56,
+      "randomPlayed": 6,
+      "aiPlayed": 50,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:0:right:left::false"
+      ],
+      "openingMovesHash": "102c3f4a2261db2a46e04f031052f32b23e1ce6714d045469e05d41b263fcafe",
+      "openingStateHash": "00c3f1b579565e03c7c44c8a200c080f106e28ed50946e14f76b447d0339a7d7",
+      "transcriptHash": "3b593c56a126715f6edd17c72733e17d4477ed352ccb415f63910d2e0e9c76c7",
+      "finalStateHash": "f8ae7032ce84fd0b8bb06c8e319e329d79cf171aadb28cb8d830c4a411aeb739"
+    },
+    {
+      "game": 20,
+      "winner": 1,
+      "totalTurns": 54,
+      "randomPlayed": 6,
+      "aiPlayed": 48,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:1:right:left:use:false",
+        "capture:namua:0:7:left:right::false"
+      ],
+      "openingMovesHash": "02dda783c676fc41ddbed97b52b05b337243f93b30e3218622ccc4a0cb11c676",
+      "openingStateHash": "711334a23acdb2f0daabbb81847cec06a0924a7941145d5c529ab7e9d68aa11c",
+      "transcriptHash": "f4e519e21cc022db3fc2165e389985def13a5d241555cc7f65c8ebf542af3b22",
+      "finalStateHash": "4cfbce3aa114db4968a78e612dc4429355a337431cf6436a408fe309a73e2665"
+    },
+    {
+      "game": 21,
+      "winner": 0,
+      "totalTurns": 51,
+      "randomPlayed": 6,
+      "aiPlayed": 45,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "no-move",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right:use:false",
+        "capture:namua:0:2:left:right::false"
+      ],
+      "openingMovesHash": "e861a4d16c9d2995a83226c5c7b4a51322d07edae716989f4f0f749fbfc44d50",
+      "openingStateHash": "e1fa1960a1fab843c8c3739d0378c32a380571f68f101d513ec03f823a3215a0",
+      "transcriptHash": "e6089ad82c8dab44bc146d928e51f4eb7b2fa0acb2f67800d544d3810e2cbbb7",
+      "finalStateHash": "32f4bdd99888cc5fb9c34ce8343c271a4e46cf475627811a326236697ba22a2e"
+    },
+    {
+      "game": 22,
+      "winner": 0,
+      "totalTurns": 55,
+      "randomPlayed": 6,
+      "aiPlayed": 49,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:5:right:left::false"
+      ],
+      "openingMovesHash": "189ddf273013da861a7446411f7508d69e11f66a4c5c6522dd4bf83d87d2fd7e",
+      "openingStateHash": "e0e45018780640b6f361d5d18f27bed7681b6d6d0679ac615de3f6888167453f",
+      "transcriptHash": "b2526796776fa4527f7ac346cbac3ac53119b7552c5da1af310a9a61430a21f9",
+      "finalStateHash": "82fd70128ae6a7166b4a8b90d34941d9bfb81875c58333deb3f367f45d60e039"
+    },
+    {
+      "game": 23,
+      "winner": 0,
+      "totalTurns": 73,
+      "randomPlayed": 6,
+      "aiPlayed": 67,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:left:right::false"
+      ],
+      "openingMovesHash": "9be5198c6ea8fa4f9aff723516b5eb5cdb0101c469762a2dacc91a4db87adebd",
+      "openingStateHash": "15bf91d56145f9c30987274186729752cb5fedb5265bea4154722259ce29d0b5",
+      "transcriptHash": "81732f40178602787b798300214a70e10f05deea3f980d41fc7b695eb66bc13a",
+      "finalStateHash": "8fbdfe18f45a1699ff1d13148fd510077e1a710ce7774c1ee243f94e55b3ee95"
+    },
+    {
+      "game": 24,
+      "winner": 1,
+      "totalTurns": 52,
+      "randomPlayed": 6,
+      "aiPlayed": 46,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:left:right::false"
+      ],
+      "openingMovesHash": "83939eb933451ed5f1e3a7694f760f7fc14260c7e922696df0d87006414fe509",
+      "openingStateHash": "d01ec629148a6a9194b789aa5839714a0bb182cb8b7d876fa7c2eb2fed2507a5",
+      "transcriptHash": "d1c717c42be5f04f4aeeb842921efac07393d5ba4641eeb950a8cd2f449a7cb0",
+      "finalStateHash": "b252ca44d4bdd33132d8d9f7ace107b70aa3b81db740e96d89261f8ad56d0835"
+    },
+    {
+      "game": 25,
+      "winner": 1,
+      "totalTurns": 54,
+      "randomPlayed": 6,
+      "aiPlayed": 48,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:2:left:right::false"
+      ],
+      "openingMovesHash": "a111d473feac99ee93bd46f3b80caab1d2df80ac120e3421e35f5ab118a7c3ec",
+      "openingStateHash": "33c5653f0a45a18c06ecd4657aa226e0b809bdfba22ec355313c849f0339cc5a",
+      "transcriptHash": "6059464464e7eab79b3b88f05f4a87f1efa727e5d871bd9116fc533c8016359f",
+      "finalStateHash": "9f884bd7e8b8f722a7f45d34697f865092b1e7a1ea484134e876da586e7d9a52"
+    },
+    {
+      "game": 26,
+      "winner": 1,
+      "totalTurns": 48,
+      "randomPlayed": 6,
+      "aiPlayed": 42,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "no-move",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:right:left::false"
+      ],
+      "openingMovesHash": "7a777a48b5bbb4a038dbfdcc7ec76f82bcfc207d944ab6b9a0b0537364a20297",
+      "openingStateHash": "230e9627cd1b877b1130b2df33b3fdb67d2c276508c938deba3d0a09bb3abc84",
+      "transcriptHash": "6535ee8b0bb629c6861ee67a8b01fb7cf99ed55c7d0a5fb50cb21717980273b8",
+      "finalStateHash": "89196860110805aacf318d587015363ed6131c6bbe325a3c75d44f808a6b63bb"
+    },
+    {
+      "game": 27,
+      "winner": 0,
+      "totalTurns": 63,
+      "randomPlayed": 6,
+      "aiPlayed": 57,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:2:left:right::false"
+      ],
+      "openingMovesHash": "33c2027bd133c0c350957dba8bc88c09284be0f2180dd9ad5e1401cc41f621e1",
+      "openingStateHash": "521a3c0bef220939ed503d6d364cb3dbcfb5976c67ed5d78aab39e95fb0fffe4",
+      "transcriptHash": "b6785984c299f8f9302d8a62584800b1022a52410e20860e3302e02f8b3c5ac6",
+      "finalStateHash": "acd8f9564f05896a53a16f7e7672f5ca5e34152a80b4d46ed2ed3ba0d73685e7"
+    },
+    {
+      "game": 28,
+      "winner": 1,
+      "totalTurns": 48,
+      "randomPlayed": 6,
+      "aiPlayed": 42,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:7:left:::false",
+        "capture:namua:0:4:left:right:use:false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "openingMovesHash": "fb6e493a84f9aade99dd253118064b7333efaf79d57ca5c92065b0fd2112edc2",
+      "openingStateHash": "c5ad846a3a4ddeac96bbe0eac83846ef63ad31a41d74bb7e19ca47be101b37c8",
+      "transcriptHash": "271056b1563ccca40f21838b78567cf717fa2d8d8be92292f7b546af904aa29f",
+      "finalStateHash": "8afda6844ea8ccdce6520791ecc0459bdb5342c817ff69c1dfd6238dca6fe88e"
+    },
+    {
+      "game": 29,
+      "winner": 1,
+      "totalTurns": 54,
+      "randomPlayed": 6,
+      "aiPlayed": 48,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:left:::false"
+      ],
+      "openingMovesHash": "01a1b4df73483ce3a5b870163f89272cd4ed5ff192e4f44a20ad4be454901eb6",
+      "openingStateHash": "4c3aff7779d90e83735558fc652e0b2640a3dd4ff931d35806e222e7ec99dd0d",
+      "transcriptHash": "977bf1a1bad629321951e8410faf6bcc555db45eda90849a4e58fee38630f626",
+      "finalStateHash": "602c20df5db54df7144d5ade50272bb6f386d4751d701b2bca1f6c378669933b"
+    },
+    {
+      "game": 30,
+      "winner": 0,
+      "totalTurns": 7,
+      "randomPlayed": 6,
+      "aiPlayed": 1,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:6:left:right::false"
+      ],
+      "openingMovesHash": "5c6c713ee522521a6d308003dcbaad3b3abf23a4b866544200ed5063ea5060e2",
+      "openingStateHash": "cd4c791896f8b2cf8cb7fefeb6c734e5e31e689708ae85940339e0dd6c61c2cf",
+      "transcriptHash": "1b711690665882c510f749e4f95728eb39ee1bf8f6f5929f4f5a4b1ff43ac0f1",
+      "finalStateHash": "c021813db618f8cc765750d9452822c5cc1bfb6d82ff2ce5abc4b0f5658ea37f"
+    },
+    {
+      "game": 31,
+      "winner": 1,
+      "totalTurns": 46,
+      "randomPlayed": 6,
+      "aiPlayed": 40,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "takata:namua:0:5:left:::false"
+      ],
+      "openingMovesHash": "83d4ce9d2610e4673d64a9667331f9b9cd1e53279efc959a7b8a1deffe0508be",
+      "openingStateHash": "39ee2e9a6983d88aa3a87325584808ee7423cf94a9434bee942b3451009302b4",
+      "transcriptHash": "33e2031e6dec659f62c1ef895e867b83434418eac5d2961629b63aa525357343",
+      "finalStateHash": "59ac9bed873ad4e2acb0d6868cd7db58cdba55e45efdfa8feb31c6bcf7782d79"
+    },
+    {
+      "game": 32,
+      "winner": 1,
+      "totalTurns": 50,
+      "randomPlayed": 6,
+      "aiPlayed": 44,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "openingMovesHash": "6750839f4e26f491c0d9c6ba4ac19b8649370d629d8a4ebda7d8fb47b33df873",
+      "openingStateHash": "1802cc6b3d3920c565bf0a6c22063b281cdad08bbb37a0a48da890de7a978a47",
+      "transcriptHash": "15c5db90a564c8fc14724d0133525182f9fb2a1119af8859c03de0ca0aa64177",
+      "finalStateHash": "c5e4b7fadaad505fa17ecbd7c826b10a8d388ab9c65e35b9782e1f4d5e87140d"
+    },
+    {
+      "game": 33,
+      "winner": 0,
+      "totalTurns": 51,
+      "randomPlayed": 6,
+      "aiPlayed": 45,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:5:left:::false"
+      ],
+      "openingMovesHash": "0b2f66357f6706657ab58927437f5332bc062801a6eff13797068878014b8711",
+      "openingStateHash": "49013b583d18d8a1a3d3a1b419e77fb3a12dfc8feb6237956066bf32807fadd1",
+      "transcriptHash": "4ad667b4666b71e96a64fd156976f7652ff622a63378959df8ed758692e7d6a5",
+      "finalStateHash": "183a3edbcfdf9ad9b7e75a1188e333a5d7504339e782254b9650ca9a1c66a66a"
+    },
+    {
+      "game": 34,
+      "winner": 1,
+      "totalTurns": 58,
+      "randomPlayed": 6,
+      "aiPlayed": 52,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "openingMovesHash": "909fbebe6c01be1ca2bca4d3b7c83a9ab205fe0c58b284331d113a5d9891fb33",
+      "openingStateHash": "bdd12ed62b2475ab254d6ef5955ef66f108b67752e8bce9f8fc1b9c0194a5857",
+      "transcriptHash": "ad8a8ac37aba2c365790d07fa6ddf00d0592bb06160b87532bc8d800b198002f",
+      "finalStateHash": "15cb1064069b1c0b8b7722e69d9c152d699f07ca8a6c3573c4aa907c73af04a5"
+    },
+    {
+      "game": 35,
+      "winner": 1,
+      "totalTurns": 78,
+      "randomPlayed": 6,
+      "aiPlayed": 72,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "takata:namua:0:6:right:::false"
+      ],
+      "openingMovesHash": "be982755fa519640c243a2c8517996db89ac48b2fe8bfa3a8dc406c7685c5206",
+      "openingStateHash": "4ebae8caa01dfb340ae3d2be058a5521f3e8c6ab3c5b1e306f826699b6703faf",
+      "transcriptHash": "3b869f7166444c33f38b18e7ba8e88e840499a99e8c93953eb4d8b03104e5406",
+      "finalStateHash": "e05efca67d8f46ecd90afb6053762bbfe29a3d8efda15442eed3a0cf03fe82a1"
+    },
+    {
+      "game": 36,
+      "winner": 0,
+      "totalTurns": 53,
+      "randomPlayed": 6,
+      "aiPlayed": 47,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:2:left:right::false"
+      ],
+      "openingMovesHash": "e0aff769f5c279cc059a06dd15b5bd3ca3351a4e3d849eb7cdbcee8da6c2c041",
+      "openingStateHash": "6e2e392be818d8245e19dcc72776b8b0316572e8981ae187d2602cb5243f46d3",
+      "transcriptHash": "66af04b9da3295d4dbf398896c32c4404d389f4428d7c6492a58c6c4702e0afe",
+      "finalStateHash": "fabd7b78e1724d3a542ec61af6f7c95401063769fb72e4728e206dc25c9332a2"
+    },
+    {
+      "game": 37,
+      "winner": 0,
+      "totalTurns": 45,
+      "randomPlayed": 6,
+      "aiPlayed": 39,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "no-move",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:right:left::false"
+      ],
+      "openingMovesHash": "79453b0aaba972cf87315769f7167dc40cf4227dced0b8bc292d85e2270d9d05",
+      "openingStateHash": "71f0fc200fb4e1653e08be1bdd73c03828e8ce9603ca5f87a1419a3e03e142cd",
+      "transcriptHash": "6a8d0e1d0b07bef6632a8e0e4ea637de2f7aa8cf4cfc4443185e3293dd3ec133",
+      "finalStateHash": "31e079e9127fe2b606847664350ca3b519ca2c34f4b1f93de3c334ae46fb0c03"
+    },
+    {
+      "game": 38,
+      "winner": 0,
+      "totalTurns": 59,
+      "randomPlayed": 6,
+      "aiPlayed": 53,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "openingMovesHash": "43f6b4fdf7049454d64725dc5da89abccb6fcafad389c350831b157e40da7b19",
+      "openingStateHash": "01d3e28e9202cf62ebf8d4aa3a36725f53957a7ccc4f5d0d11b5840f6419bd54",
+      "transcriptHash": "81496ca912d20309aa8815808a2da93fa47947e9e77838bd3cfce786f46a9561",
+      "finalStateHash": "1f9be39ff3bf7c463a82ae4493238a27e974b425029e290ee2c4fb8eba71b19a"
+    },
+    {
+      "game": 39,
+      "winner": 0,
+      "totalTurns": 51,
+      "randomPlayed": 6,
+      "aiPlayed": 45,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:right:left:stop:false",
+        "capture:namua:0:7:left:right::false"
+      ],
+      "openingMovesHash": "34c559136f25e558646c06d6608e1c43ef063d23f1e084dfe414ea28b6f5e555",
+      "openingStateHash": "2614b2e1dd0f787b007ac156d2cbd1eba7dcdd58fed9c8798f51754b35f6e0b5",
+      "transcriptHash": "9db78e6b0b8c4625b61f104f06b824bf06365160ccc87f1af706f97fac0de1dd",
+      "finalStateHash": "4139ab03e6c48d8d0bea021d92bb16f2dd95ad200c98b589abec1f2f63c29757"
+    },
+    {
+      "game": 40,
+      "winner": 0,
+      "totalTurns": 55,
+      "randomPlayed": 6,
+      "aiPlayed": 49,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false"
+      ],
+      "openingMovesHash": "7e3db577e59e4d628848401bff21a4b4151bb6525d744a8f5a4137381815ab5a",
+      "openingStateHash": "5fe8402356eed092a4989a643447e87089294076c6f752c34d6d157374444d3f",
+      "transcriptHash": "b2db8a04b4ef4e1783d5787587111abc5b95ed0058e3a38930a559a8eb775ecc",
+      "finalStateHash": "467ce1de4fc5c4c4b6fb0f51aeb577fb86f5405515b4d3063258fcb44f4eb11d"
+    },
+    {
+      "game": 41,
+      "winner": 1,
+      "totalTurns": 16,
+      "randomPlayed": 6,
+      "aiPlayed": 10,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "openingMovesHash": "ee3db3a63e1d642c6afe35f71763ab0d87ac1554ddb9da5ad92602b18c194dcd",
+      "openingStateHash": "845dac3e60c358cd537431fd2a4fdb83e4f19f4a374b7645013e58e8aa0ffb89",
+      "transcriptHash": "b8a6fbfae0c4814182bbc6b8b233c683b56e943e1024faa15292865effb39c97",
+      "finalStateHash": "74b6455e001b8482a27cb811a09a35af15f790c4133b9d43546aba62485590e2"
+    },
+    {
+      "game": 42,
+      "winner": 1,
+      "totalTurns": 58,
+      "randomPlayed": 6,
+      "aiPlayed": 52,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "no-move",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false"
+      ],
+      "openingMovesHash": "56db7a94cd5e5a71df834eb07bfd143316697abe97b93bffc36cbbcfa0792e5f",
+      "openingStateHash": "8f1e60e08ea2e937bf734518141cb4b8c323ccae781a1fe5cf768fe8cefa0db0",
+      "transcriptHash": "104feaf0cd8171a4947c7636aa9c7997249ec23f67cf6ceff3e34d8128d68b31",
+      "finalStateHash": "4bb5b63e72309dddce3b78cb12888223c9313e924e47fb9549f23afdfcf85bea"
+    },
+    {
+      "game": 43,
+      "winner": 1,
+      "totalTurns": 72,
+      "randomPlayed": 6,
+      "aiPlayed": 66,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:use:false"
+      ],
+      "openingMovesHash": "e8ea4ba548b03edc253851fcf1ac9c36bd69ecc802d67f9d41feb3df0a70817b",
+      "openingStateHash": "5a118526c798331b6d824bf7a9991670438612fbd71cbbe51eb5f19a1e76286a",
+      "transcriptHash": "8cfe814ea08433afae7048a1cbd1e45b68d82142fff14b3388127979d71390c5",
+      "finalStateHash": "58fa6dcb8e97c63eb5a06dc7f1223dbb70d7319fcd73a556c287ed3e24f41cef"
+    },
+    {
+      "game": 44,
+      "winner": 1,
+      "totalTurns": 44,
+      "randomPlayed": 6,
+      "aiPlayed": 38,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "no-move",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:7:left:right:use:false",
+        "capture:namua:0:6:left:right::false"
+      ],
+      "openingMovesHash": "a84ac20456322fb4262510ada790573e59ea7716ced9667db5fce8cae43d546a",
+      "openingStateHash": "665345a6deb758ad90701874265c4bffaf2b10d2cf039e6b1c76d3c155abd81f",
+      "transcriptHash": "22a8f779c33b846879a7afba6a8a36a6011abacad21c6cb83289daefbf9a4785",
+      "finalStateHash": "2c92b394944f83ee7edb939a8a2d354477e64426243897c1ee8defd5814b7f83"
+    },
+    {
+      "game": 45,
+      "winner": 1,
+      "totalTurns": 64,
+      "randomPlayed": 6,
+      "aiPlayed": 58,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:1:right:left::false"
+      ],
+      "openingMovesHash": "c65299eebebea371355cc7d29049da9d891ae5a21d859cbbcd3e4a3a90eed9a3",
+      "openingStateHash": "d81d742b2d5dd4d664bf9f3e19dfe2156edd968580337f8cebc7bef7f075f23b",
+      "transcriptHash": "864e21df94c12304ac20618553bc37b499cfa529fe6612478bc37f457cc55ad8",
+      "finalStateHash": "62bf8d1f194a575d0a42fa886728993df3fa8dec12f10338704423460c417d75"
+    },
+    {
+      "game": 46,
+      "winner": 1,
+      "totalTurns": 66,
+      "randomPlayed": 6,
+      "aiPlayed": 60,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "no-move",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:7:right:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "openingMovesHash": "07103a46c149c1de4ccdf1bc93b578b59bbc4fef4ee3880609c5074370c7f0a0",
+      "openingStateHash": "d4a7da36ae8a52073ff78ee5ebee5981abb4f8412e2b42efea37f3565b20f92f",
+      "transcriptHash": "54742e45125439fce4926bff2a669689d0cee263d6978f16c09fdadde011dbe6",
+      "finalStateHash": "6b272f8e695639d437f2a25d9d531b0667284b889fb54bd3ea6707d55cc625ef"
+    },
+    {
+      "game": 47,
+      "winner": 1,
+      "totalTurns": 48,
+      "randomPlayed": 6,
+      "aiPlayed": 42,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "openingMovesHash": "28e2700c5c575f58b3a6e55d27b505f8df82ccf4aa2c272428c285ee23643d96",
+      "openingStateHash": "14023a1cd3c272a95bd5fa37f4d4ead6672767e8cdac2f2ed770efe611a23b40",
+      "transcriptHash": "928b49c21c9f8780114713b17a71cb03b6bb2a6a14045f69672ae4805fb4e621",
+      "finalStateHash": "27df9e4934d80f116ffa55dcd8a5fb63acbaebcb0622c014ed2ddbf1a27143ad"
+    },
+    {
+      "game": 48,
+      "winner": 1,
+      "totalTurns": 58,
+      "randomPlayed": 6,
+      "aiPlayed": 52,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "openingMovesHash": "51b14257be74ef5b5ac060d9bdf456a3333b136df77dea3d866993b095f0dd7e",
+      "openingStateHash": "fcd453c7b4519d5da6f995c58121b4432129f73f2312446837aaa6cebe7d9191",
+      "transcriptHash": "2d5cbc26b2f761eaba8b83a60f8c581bf15842446ed1c18c60e3e7bf05a5c948",
+      "finalStateHash": "44fd2f12c0bad4fd7fb76899b188907ee2e226c1a694d800783593e785fd85e6"
+    },
+    {
+      "game": 49,
+      "winner": 0,
+      "totalTurns": 55,
+      "randomPlayed": 6,
+      "aiPlayed": 49,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left:use:false",
+        "capture:namua:0:7:left:right::false"
+      ],
+      "openingMovesHash": "b3c3a1e8d43ca26c0bd46010ffe8ce04b8f29047265f48401bf6e4f243f6bd8d",
+      "openingStateHash": "c896f98dddb738c8f63af6f810a3a710fb69d1bae76c11c47796be8907ed2daa",
+      "transcriptHash": "5b34f0de63ca27f299c9cf07702c94dbdcc09b832666f4ad703c94ca4a263c0a",
+      "finalStateHash": "9bb7a066525e96b88eebbd657e03584cf9198d825fcbaef307e63db916663a1e"
+    },
+    {
+      "game": 50,
+      "winner": 0,
+      "totalTurns": 65,
+      "randomPlayed": 6,
+      "aiPlayed": 59,
+      "handoff": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "randomPlayed": 6
+      },
+      "reason": "front-empty",
+      "openingMoves": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "openingMovesHash": "ee879f15afd02d2422f498474a560d39ddb285ddaeca7e1e99e0389c691767b9",
+      "openingStateHash": "71eb371fa09b0312943e844378d03ea7a5d89e62665ad6dc1cbda4ecceb8c224",
+      "transcriptHash": "3fa0605ad38be6c91ffb72f66f6e8fc37ea3346c3794c4bb88c9a634bd9c0c1c",
+      "finalStateHash": "7e6c273387808a2dea4f737179f56ef918e53aa326b5c8169f5095d221490531"
+    }
+  ]
+}

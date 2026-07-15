@@ -3,7 +3,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { spawnSync } = require('node:child_process');
+const { execFileSync, spawnSync } = require('node:child_process');
 
 const args = process.argv.slice(2);
 const valueOf = (name, fallback = null) => {
@@ -18,6 +18,19 @@ const suiteProfile = valueOf('suite-profile', 'screening');
 const force = has('force');
 const dryRun = has('dry-run');
 const statusOnly = has('status');
+
+function gitValue(args, fallback = null) {
+  try {
+    return execFileSync('git', args, { encoding: 'utf8' }).trim();
+  } catch {
+    return fallback;
+  }
+}
+
+const researchSource = {
+  commit: gitValue(['rev-parse', 'HEAD']),
+  dirty: Boolean(gitValue(['status', '--porcelain'], '')),
+};
 
 const validStudies = new Set(['all', 'diagnostics', 'random-openings', 'game-start', 'suite']);
 if (!validStudies.has(study)) {
@@ -60,7 +73,11 @@ function runNode(script, scriptArgs, output) {
   if (dryRun) return 'dry-run';
   const result = spawnSync(process.execPath, [script, ...scriptArgs], {
     stdio: 'inherit',
-    env: process.env,
+    env: {
+      ...process.env,
+      BAO_RESEARCH_SOURCE_COMMIT: researchSource.commit || '',
+      BAO_RESEARCH_SOURCE_DIRTY: String(researchSource.dirty),
+    },
   });
   if (result.error) throw result.error;
   if (result.status !== 0) throw new Error(`${script} exited with status ${result.status}`);

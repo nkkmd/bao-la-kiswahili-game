@@ -37,6 +37,18 @@ function wilson(successes, total) {
   return [center - margin, center + margin];
 }
 
+function exactTwoSidedBinomialHalf(successes, total) {
+  if (!total) return 1;
+  const tail = Math.min(successes, total - successes);
+  let probability = 2 ** (-total);
+  let cumulative = probability;
+  for (let k = 0; k < tail; k += 1) {
+    probability *= (total - k) / (k + 1);
+    cumulative += probability;
+  }
+  return Math.min(1, 2 * cumulative);
+}
+
 function jsonFiles(dir, excluded = new Set()) {
   if (!fs.existsSync(dir)) throw new Error(`Missing directory: ${dir}`);
   return fs.readdirSync(dir)
@@ -94,13 +106,52 @@ function aggregateGameStart() {
   const dir = 'artifacts/game-start-first-player';
   const files = jsonFiles(dir, new Set(['summary.json']));
   if (files.length !== 20) throw new Error(`Expected 20 game-start reports, found ${files.length}`);
+  const seedBases = new Map([[2, 20262000], [4, 20264000], [6, 20266000], [8, 20268000], [12, 20261200]]);
+  const expectedNames = new Set();
+  for (const plies of seedBases.keys()) {
+    for (let batch = 1; batch <= 4; batch += 1) expectedNames.add(`random-${plies}-batch-${batch}.json`);
+  }
+  for (const name of files) {
+    if (!expectedNames.has(name)) throw new Error(`Unexpected game-start report: ${name}`);
+  }
   const groups = new Map();
   for (const name of files) {
     const report = readJson(path.join(dir, name));
+    const match = name.match(/^random-(2|4|6|8|12)-batch-([1-4])\.json$/);
+    const filePlies = Number(match[1]);
+    const batch = Number(match[2]);
+    const expectedSeed = seedBases.get(filePlies) + batch;
+    if (report.methodology.games !== 50 || report.methodology.seed !== expectedSeed || report.methodology.randomPlies !== filePlies) {
+      throw new Error(`Game-start methodology mismatch: ${name}`);
+    }
+    if (!Array.isArray(report.games) || report.games.length !== 50) throw new Error(`Expected 50 games in ${name}`);
+    const digest = /^[0-9a-f]{64}$/;
+    for (const [index, game] of report.games.entries()) {
+      if (game.game !== index + 1 || !Number.isInteger(game.randomPlayed) || game.randomPlayed < 0 || game.randomPlayed > filePlies ||
+          game.openingMoves?.length !== game.randomPlayed || game.totalTurns !== game.randomPlayed + game.aiPlayed ||
+          (game.randomPlayed < filePlies && game.winner === null)) {
+        throw new Error(`Invalid game ${index + 1} in ${name}`);
+      }
+      for (const field of ['openingMovesHash', 'openingStateHash', 'transcriptHash', 'finalStateHash']) {
+        if (!digest.test(game[field] || '')) throw new Error(`Missing ${field} in ${name} game ${index + 1}`);
+      }
+    }
+    const recalculated = report.games.reduce((acc, game) => {
+      if (game.winner === 0) acc.southWins += 1;
+      else if (game.winner === 1) acc.northWins += 1;
+      else acc.draws += 1;
+      acc.turns += game.totalTurns;
+      return acc;
+    }, { southWins: 0, northWins: 0, draws: 0, turns: 0 });
+    if (recalculated.southWins !== report.totals.southWins || recalculated.northWins !== report.totals.northWins ||
+        recalculated.draws !== report.totals.draws || recalculated.turns / 50 !== report.totals.averageTurns) {
+      throw new Error(`Totals do not match games in ${name}`);
+    }
     const plies = report.methodology.randomPlies;
     const group = groups.get(plies) || {
       randomPlies: plies, games: 0, southWins: 0, northWins: 0, draws: 0,
-      totalTurns: 0, handoffSouth: 0, handoffNorth: 0, handoffPhases: {},
+      totalTurns: 0, handoffSouth: 0, handoffNorth: 0, handoffPhases: {}, openingOutcomes: new Map(), transcriptHashes: new Set(),
+      openingTerminalGames: 0, openingTerminalSouthWins: 0, openingTerminalNorthWins: 0, openingTerminalReasons: {},
     };
     group.games += report.totals.games;
     group.southWins += report.totals.southWins;
@@ -112,18 +163,64 @@ function aggregateGameStart() {
     for (const [phase, count] of Object.entries(report.totals.handoffPhases)) {
       group.handoffPhases[phase] = (group.handoffPhases[phase] || 0) + count;
     }
+    for (const game of report.games) {
+      const previous = group.openingOutcomes.get(game.openingMovesHash);
+      if (previous && (previous.winner !== game.winner || previous.transcriptHash !== game.transcriptHash)) {
+        throw new Error(`Non-deterministic result for opening ${game.openingMovesHash} in ${name}`);
+      }
+      group.openingOutcomes.set(game.openingMovesHash, { winner: game.winner, transcriptHash: game.transcriptHash });
+      group.transcriptHashes.add(game.transcriptHash);
+      if (game.winner !== null && game.aiPlayed === 0) {
+        group.openingTerminalGames += 1;
+        if (game.winner === 0) group.openingTerminalSouthWins += 1;
+        else if (game.winner === 1) group.openingTerminalNorthWins += 1;
+        group.openingTerminalReasons[game.reason || 'unspecified'] = (group.openingTerminalReasons[game.reason || 'unspecified'] || 0) + 1;
+      }
+    }
     groups.set(plies, group);
   }
   const conditions = [...groups.values()].sort((a, b) => a.randomPlies - b.randomPlies).map((group) => {
     const decisive = group.southWins + group.northWins;
+    const continuationSouthWins = group.southWins - group.openingTerminalSouthWins;
+    const continuationNorthWins = group.northWins - group.openingTerminalNorthWins;
+    const continuationDecisive = continuationSouthWins + continuationNorthWins;
+    const uniqueWinners = [...group.openingOutcomes.values()].map((item) => item.winner);
+    const uniqueSouthWins = uniqueWinners.filter((winner) => winner === 0).length;
+    const uniqueNorthWins = uniqueWinners.filter((winner) => winner === 1).length;
+    const uniqueDraws = uniqueWinners.length - uniqueSouthWins - uniqueNorthWins;
+    const uniqueDecisive = uniqueSouthWins + uniqueNorthWins;
     return {
       randomPlies: group.randomPlies, games: group.games, southWins: group.southWins,
       northWins: group.northWins, draws: group.draws,
       southWinRateDecisive: decisive ? group.southWins / decisive : 0,
       southWinRateWilson95: wilson(group.southWins, decisive),
+      twoSidedBinomialP: exactTwoSidedBinomialHalf(group.southWins, decisive),
       averageTurns: group.totalTurns / group.games,
       handoffPlayers: { south: group.handoffSouth, north: group.handoffNorth },
       handoffPhases: group.handoffPhases,
+      uniqueOpeningSequences: group.openingOutcomes.size,
+      uniqueTranscripts: group.transcriptHashes.size,
+      uniqueOpeningAnalysis: {
+        openings: group.openingOutcomes.size,
+        southWins: uniqueSouthWins,
+        northWins: uniqueNorthWins,
+        draws: uniqueDraws,
+        southWinRateDecisive: uniqueDecisive ? uniqueSouthWins / uniqueDecisive : 0,
+      },
+      openingTerminal: {
+        games: group.openingTerminalGames,
+        southWins: group.openingTerminalSouthWins,
+        northWins: group.openingTerminalNorthWins,
+        reasons: group.openingTerminalReasons,
+      },
+      aiContinuation: {
+        games: group.games - group.openingTerminalGames,
+        southWins: continuationSouthWins,
+        northWins: continuationNorthWins,
+        southWinRateDecisive: continuationDecisive ? continuationSouthWins / continuationDecisive : 0,
+        southWinRateWilson95: wilson(continuationSouthWins, continuationDecisive),
+        twoSidedBinomialP: exactTwoSidedBinomialHalf(continuationSouthWins, continuationDecisive),
+      },
     };
   });
   const totals = conditions.reduce((acc, item) => {
@@ -131,6 +228,26 @@ function aggregateGameStart() {
     return acc;
   }, { games: 0, southWins: 0, northWins: 0, draws: 0 });
   const decisive = totals.southWins + totals.northWins;
+  const continuationTotals = conditions.reduce((acc, item) => {
+    acc.games += item.aiContinuation.games;
+    acc.southWins += item.aiContinuation.southWins;
+    acc.northWins += item.aiContinuation.northWins;
+    return acc;
+  }, { games: 0, southWins: 0, northWins: 0 });
+  const continuationDecisive = continuationTotals.southWins + continuationTotals.northWins;
+  const uniqueOpeningTotals = conditions.reduce((acc, item) => {
+    acc.openings += item.uniqueOpeningAnalysis.openings;
+    acc.southWins += item.uniqueOpeningAnalysis.southWins;
+    acc.northWins += item.uniqueOpeningAnalysis.northWins;
+    acc.draws += item.uniqueOpeningAnalysis.draws;
+    return acc;
+  }, { openings: 0, southWins: 0, northWins: 0, draws: 0 });
+  const uniqueOpeningDecisive = uniqueOpeningTotals.southWins + uniqueOpeningTotals.northWins;
+  const reports = files.map((name) => readJson(path.join(dir, name)));
+  const historical = {
+    games: 1000, southWins: 461, northWins: 539, draws: 0,
+    conditions: { 2: [62, 138], 4: [87, 113], 6: [103, 97], 8: [118, 82], 12: [91, 109] },
+  };
   writeJson(path.join(dir, 'summary.json'), {
     generatedAt: new Date().toISOString(),
     methodology: {
@@ -138,9 +255,47 @@ function aggregateGameStart() {
       firstPlayer: 'South (player 0)', secondPlayer: 'North (player 1)',
       randomOpeningPolicy: 'uniform over legal move variants from the standard initial position',
       continuationAI: 'hard / bao / phase2 / depth 2',
+      batchReports: 20,
+      seeds: files.map((name) => readJson(path.join(dir, name)).methodology.seed),
     },
-    totals: { ...totals, southWinRateDecisive: decisive ? totals.southWins / decisive : 0, southWinRateWilson95: wilson(totals.southWins, decisive) },
+    provenance: {
+      sourceCommits: [...new Set(reports.map((report) => report.provenance?.sourceCommit))],
+      sourceTreesDirty: [...new Set(reports.map((report) => report.provenance?.sourceTreeDirty))],
+      nodeVersions: [...new Set(reports.map((report) => report.provenance?.node))],
+      sourceFileSha256Sets: [...new Set(reports.map((report) => JSON.stringify(report.provenance?.sourceFileSha256)))].length,
+    },
+    totals: {
+      ...totals,
+      southWinRateDecisive: decisive ? totals.southWins / decisive : 0,
+      southWinRateWilson95: wilson(totals.southWins, decisive),
+      twoSidedBinomialP: exactTwoSidedBinomialHalf(totals.southWins, decisive),
+      uniqueOpeningSequences: conditions.reduce((sum, item) => sum + item.uniqueOpeningSequences, 0),
+      uniqueTranscripts: conditions.reduce((sum, item) => sum + item.uniqueTranscripts, 0),
+      openingTerminalGames: conditions.reduce((sum, item) => sum + item.openingTerminal.games, 0),
+      aiContinuation: {
+        ...continuationTotals,
+        southWinRateDecisive: continuationDecisive ? continuationTotals.southWins / continuationDecisive : 0,
+        southWinRateWilson95: wilson(continuationTotals.southWins, continuationDecisive),
+        twoSidedBinomialP: exactTwoSidedBinomialHalf(continuationTotals.southWins, continuationDecisive),
+      },
+      uniqueOpeningAnalysis: {
+        ...uniqueOpeningTotals,
+        southWinRateDecisive: uniqueOpeningDecisive ? uniqueOpeningTotals.southWins / uniqueOpeningDecisive : 0,
+        conditionBalancedSouthWinRate: conditions.reduce((sum, item) => sum + item.uniqueOpeningAnalysis.southWinRateDecisive, 0) / conditions.length,
+        interpretation: 'Descriptive sensitivity analysis that counts each observed opening sequence once; it does not preserve the random-opening policy probabilities.',
+      },
+    },
     conditions,
+    historicalComparison: {
+      reference: 'doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md section 2.5, recorded 2026-07-14',
+      historical,
+      southWinDifference: totals.southWins - historical.southWins,
+      matchesHistoricalTotals: totals.southWins === historical.southWins && totals.northWins === historical.northWins && totals.draws === historical.draws,
+      matchesHistoricalConditions: conditions.every((item) => {
+        const expected = historical.conditions[item.randomPlies];
+        return item.southWins === expected[0] && item.northWins === expected[1];
+      }),
+    },
   });
 }
 
