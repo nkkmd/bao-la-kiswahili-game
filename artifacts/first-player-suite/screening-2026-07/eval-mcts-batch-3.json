@@ -1,0 +1,150 @@
+{
+  "generatedAt": "2026-07-15T00:25:03.616Z",
+  "status": "complete",
+  "config": {
+    "conditionName": "eval-mcts",
+    "experimentProfile": "screening-2026-07",
+    "games": 10,
+    "seed": 20596339,
+    "randomPlies": 8,
+    "maxDepth": 2,
+    "maxTurns": 120,
+    "openingPolicy": "uniform",
+    "evaluationProfile": "bao",
+    "searchProfile": "mcts",
+    "mctsIterations": 12,
+    "mctsPlayoutTurns": 16,
+    "checkpointEvery": 1,
+    "progressEvery": 1,
+    "output": "artifacts/first-player-suite/screening-2026-07/eval-mcts-batch-3.json"
+  },
+  "gameSeedStrategy": "batch seed + zero-based game index * 1000003",
+  "totals": {
+    "games": 10,
+    "southWins": 4,
+    "northWins": 6,
+    "draws": 0,
+    "averageTurns": 50.2,
+    "southWinRate": 0.4,
+    "southWinRateWilson95": [
+      0.16818032970623614,
+      0.6873262302663417
+    ]
+  },
+  "firstMoves": [
+    {
+      "move": "takata:namua:0:6:left:::false",
+      "games": 3,
+      "southWins": 3,
+      "northWins": 0,
+      "draws": 0,
+      "southWinRate": 1
+    },
+    {
+      "move": "takata:namua:0:5:left:::false",
+      "games": 3,
+      "southWins": 0,
+      "northWins": 3,
+      "draws": 0,
+      "southWinRate": 0
+    },
+    {
+      "move": "takata:namua:0:6:right:::false",
+      "games": 2,
+      "southWins": 1,
+      "northWins": 1,
+      "draws": 0,
+      "southWinRate": 0.5
+    },
+    {
+      "move": "takata:namua:0:5:right:::false",
+      "games": 2,
+      "southWins": 0,
+      "northWins": 2,
+      "draws": 0,
+      "southWinRate": 0
+    }
+  ],
+  "games": [
+    {
+      "game": 1,
+      "seed": 20596339,
+      "winner": 1,
+      "turns": 60,
+      "firstMove": "takata:namua:0:6:right:::false",
+      "reason": "front-empty"
+    },
+    {
+      "game": 2,
+      "seed": 21596342,
+      "winner": 0,
+      "turns": 57,
+      "firstMove": "takata:namua:0:6:left:::false",
+      "reason": "no-move"
+    },
+    {
+      "game": 3,
+      "seed": 22596345,
+      "winner": 1,
+      "turns": 48,
+      "firstMove": "takata:namua:0:5:right:::false",
+      "reason": "front-empty"
+    },
+    {
+      "game": 4,
+      "seed": 23596348,
+      "winner": 1,
+      "turns": 54,
+      "firstMove": "takata:namua:0:5:left:::false",
+      "reason": "no-move"
+    },
+    {
+      "game": 5,
+      "seed": 24596351,
+      "winner": 1,
+      "turns": 30,
+      "firstMove": "takata:namua:0:5:right:::false",
+      "reason": "front-empty"
+    },
+    {
+      "game": 6,
+      "seed": 25596354,
+      "winner": 0,
+      "turns": 47,
+      "firstMove": "takata:namua:0:6:left:::false",
+      "reason": "front-empty"
+    },
+    {
+      "game": 7,
+      "seed": 26596357,
+      "winner": 0,
+      "turns": 63,
+      "firstMove": "takata:namua:0:6:right:::false",
+      "reason": "front-empty"
+    },
+    {
+      "game": 8,
+      "seed": 27596360,
+      "winner": 0,
+      "turns": 41,
+      "firstMove": "takata:namua:0:6:left:::false",
+      "reason": "front-empty"
+    },
+    {
+      "game": 9,
+      "seed": 28596363,
+      "winner": 1,
+      "turns": 56,
+      "firstMove": "takata:namua:0:5:left:::false",
+      "reason": "no-move"
+    },
+    {
+      "game": 10,
+      "seed": 29596366,
+      "winner": 1,
+      "turns": 46,
+      "firstMove": "takata:namua:0:5:left:::false",
+      "reason": "front-empty"
+    }
+  ]
+}
