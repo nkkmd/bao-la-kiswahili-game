@@ -1,0 +1,882 @@
+{
+  "candidate": "A",
+  "mismatches": 81,
+  "classCounts": {
+    "move-count": 30,
+    "unexpected-moves": 30,
+    "evaluation-only": 51,
+    "feature:houseValue": 61,
+    "missing-moves": 9,
+    "with-legal-mismatch": 14,
+    "feature:relayShape": 19,
+    "feature:maxCapture": 4
+  },
+  "items": [
+    {
+      "index": 0,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 3,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 4,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 5,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 6,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 7,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 8,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 9,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 10,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 11,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 12,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 13,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 14,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 15,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 50,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 51,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 52,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 53,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 54,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:relayShape"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 55,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 59,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 60,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 61,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 62,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 86,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 92,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 93,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 94,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 95,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 96,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 97,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 98,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 99,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 100,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 101,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 102,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 103,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 104,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 105,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:maxCapture",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 106,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 107,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 108,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 109,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 147,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 148,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 149,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 150,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 151,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:relayShape"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 152,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 153,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 154,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 155,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 156,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 157,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 158,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 159,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 160,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 161,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 162,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 163,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 164,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 165,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 166,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:maxCapture",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 177,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 178,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 179,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 180,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 181,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "unexpected-moves"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and directions even though both are already expressed from each player's own viewpoint."
+    },
+    {
+      "index": 184,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 185,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 186,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 187,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 188,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 189,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 190,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 191,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 192,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 193,
+      "phase": "namua",
+      "classes": [
+        "move-count",
+        "missing-moves",
+        "unexpected-moves",
+        "with-legal-mismatch",
+        "feature:maxCapture",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 194,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 195,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    },
+    {
+      "index": 196,
+      "phase": "namua",
+      "classes": [
+        "evaluation-only",
+        "feature:maxCapture",
+        "feature:relayShape",
+        "feature:houseValue"
+      ],
+      "firstDivergence": "mirror-state/local-column-coordinate",
+      "explanation": "Candidate A reverses player-local pit indices and moves nyumba seeds away from the fixed HOUSE index 4 before move generation."
+    }
+  ]
+}

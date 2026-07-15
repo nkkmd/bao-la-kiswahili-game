@@ -1,0 +1,62 @@
+{
+  "count": 200,
+  "seed": 20260714,
+  "candidates": [
+    {
+      "candidate": "A",
+      "transform": {
+        "playerSwap": true,
+        "reverseColumns": true,
+        "reverseDirections": true
+      },
+      "states": 200,
+      "legalMoveSymmetryPasses": 170,
+      "legacyEvaluationSymmetryPasses": 200,
+      "baoEvaluationSymmetryPasses": 135,
+      "transitionSymmetryPasses": 738,
+      "transitions": 830
+    },
+    {
+      "candidate": "B",
+      "transform": {
+        "playerSwap": true,
+        "reverseColumns": true,
+        "reverseDirections": false
+      },
+      "states": 200,
+      "legalMoveSymmetryPasses": 43,
+      "legacyEvaluationSymmetryPasses": 200,
+      "baoEvaluationSymmetryPasses": 135,
+      "transitionSymmetryPasses": 0,
+      "transitions": 830
+    },
+    {
+      "candidate": "C",
+      "transform": {
+        "playerSwap": true,
+        "reverseColumns": false,
+        "reverseDirections": true
+      },
+      "states": 200,
+      "legalMoveSymmetryPasses": 64,
+      "legacyEvaluationSymmetryPasses": 200,
+      "baoEvaluationSymmetryPasses": 200,
+      "transitionSymmetryPasses": 0,
+      "transitions": 830
+    },
+    {
+      "candidate": "D",
+      "transform": {
+        "playerSwap": true,
+        "reverseColumns": false,
+        "reverseDirections": false
+      },
+      "states": 200,
+      "legalMoveSymmetryPasses": 200,
+      "legacyEvaluationSymmetryPasses": 200,
+      "baoEvaluationSymmetryPasses": 200,
+      "transitionSymmetryPasses": 830,
+      "transitions": 830
+    }
+  ]
+}
