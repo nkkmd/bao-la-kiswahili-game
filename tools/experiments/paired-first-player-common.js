@@ -72,7 +72,7 @@ function provenance(root = path.resolve(__dirname, "../..")) {
     sourceCommit: process.env.BAO_RESEARCH_SOURCE_COMMIT || gitValue(["rev-parse", "HEAD"]),
     sourceTreeDirty: process.env.BAO_RESEARCH_SOURCE_DIRTY
       ? process.env.BAO_RESEARCH_SOURCE_DIRTY === "true"
-      : Boolean(gitValue(["status", "--porcelain"], "")),
+      : Boolean(gitValue(["status", "--porcelain", "--", ...SOURCE_FILES], "")),
     node: process.version,
     platform: process.platform,
     arch: process.arch,

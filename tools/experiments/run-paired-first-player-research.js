@@ -194,7 +194,21 @@ function run(options) {
   const requested = PROFILE_COUNTS[options.profile];
   if (corpus.entries.length < requested) throw new Error(`Profile requires ${requested} openings; corpus has ${corpus.entries.length}`);
   const openings = corpus.entries.slice(0, requested);
-  const source = provenance();
+  const currentSource = provenance();
+  const corpusSource = corpus.manifest.provenance;
+  if (!corpusSource || stableStringify(currentSource.sourceFileSha256) !== stableStringify(corpusSource.sourceFileSha256)) {
+    throw new Error("Current research source does not match the source that generated the corpus");
+  }
+  if (currentSource.node !== corpusSource.node) {
+    throw new Error(`Node.js mismatch: corpus=${corpusSource.node} current=${currentSource.node}`);
+  }
+  // A later commit may add the immutable corpus without changing research source files.
+  // Attribute every result to the source commit recorded by that corpus.
+  const source = {
+    ...currentSource,
+    sourceCommit: corpusSource.sourceCommit,
+    sourceTreeDirty: corpusSource.sourceTreeDirty,
+  };
   const identity = experimentIdentity(options, corpus, source);
   fs.mkdirSync(options.output, { recursive: true });
   const progressFile = path.join(options.output, "progress.json");
