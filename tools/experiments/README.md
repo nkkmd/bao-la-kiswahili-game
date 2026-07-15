@@ -123,6 +123,8 @@ artifacts/
 
 `summary.json`と`random-opening-summary.json`は既存研究の保存集計です。新しい`random-openings`追試は`first-player-random-openings/`へ、ゲーム開始時の追試は`game-start-first-player/`へ保存します。`screening-2026-07/summary.json`は11条件完了後に作成済みです。
 
+`game-start-first-player/`の各局にはランダム開局着手列と、開局着手列・開局局面・全着手系列・終局局面のSHA-256を保存する。各バッチにはソースコミット、Node.jsバージョン、主要ソースファイルのSHA-256も記録し、集計時に20バッチの条件、seed、局数、ハッシュ、勝敗集計を検証する。
+
 ## 運用方針
 
 - 大量対局、深い探索、MCTS、パラメータ比較はローカルで実施する。

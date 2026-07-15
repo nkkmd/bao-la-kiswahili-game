@@ -76,10 +76,12 @@ for (const [plies, seedBase] of seedBases) {
       winner: index % 2,
       totalTurns: 20,
       randomPlayed: plies,
+      aiPlayed: 20 - plies,
+      reason: "",
       openingMoves: Array.from({ length: plies }, () => "move-a"),
       openingMovesHash: String(index).padStart(64, "0"),
       openingStateHash: String(index + 50).padStart(64, "0"),
-      transcriptHash: String(index + batch * 100).padStart(64, "0"),
+      transcriptHash: String(index + 100).padStart(64, "0"),
       finalStateHash: String(index + 500).padStart(64, "0"),
     }));
     fs.writeFileSync(path.join(gameStartDir, `random-${plies}-batch-${batch}.json`), `${JSON.stringify({
@@ -105,5 +107,7 @@ assert.equal(gameStartSummary.totals.games, 1000);
 assert.equal(gameStartSummary.conditions.length, 5);
 assert.equal(gameStartSummary.provenance.sourceCommits[0], "abc123");
 assert.equal(gameStartSummary.historicalComparison.matchesHistoricalTotals, false);
+assert.equal(gameStartSummary.totals.aiContinuation.games, 1000);
+assert.equal(gameStartSummary.totals.uniqueOpeningAnalysis.openings, 250);
 
 console.log("First-player aggregate tests passed");
