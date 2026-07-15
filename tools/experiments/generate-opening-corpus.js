@@ -98,6 +98,8 @@ function outputPaths(output) {
 }
 
 function writeCorpus(options, built) {
+  // Capture the tree state before the output itself appears as an untracked artifact.
+  const source = provenance();
   fs.mkdirSync(path.dirname(options.output), { recursive: true });
   const corpusText = `${built.accepted.map((entry) => JSON.stringify(entry)).join("\n")}\n`;
   const rejectedText = built.rejected.length
@@ -131,7 +133,7 @@ function writeCorpus(options, built) {
     corpusFile: path.basename(options.output),
     corpusFileSha256: sha256Text(corpusText),
     entriesHash: hashValue(built.accepted),
-    provenance: provenance(),
+    provenance: source,
   };
   atomicWriteJson(paths.manifest, manifest);
   validateCorpus(built.accepted, manifest, corpusText);

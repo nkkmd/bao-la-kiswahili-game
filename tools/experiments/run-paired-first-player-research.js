@@ -98,6 +98,7 @@ function experimentIdentity(options, corpus, source) {
     mctsPlayoutTurns: options.mctsPlayoutTurns,
     conditionHashes,
     sourceCommit: source.sourceCommit,
+    sourceTreeDirty: source.sourceTreeDirty,
     node: source.node,
     sourceFileSha256: source.sourceFileSha256,
   };

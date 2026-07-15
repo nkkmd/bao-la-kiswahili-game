@@ -245,6 +245,7 @@ function aggregate(options) {
     },
     provenance: {
       sourceCommit: verified.progress.identity.sourceCommit,
+      sourceTreeDirty: verified.progress.identity.sourceTreeDirty,
       node: verified.progress.identity.node,
       sourceFileSha256: verified.progress.identity.sourceFileSha256,
     },
