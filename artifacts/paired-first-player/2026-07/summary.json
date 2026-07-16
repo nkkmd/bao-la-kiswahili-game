@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-16T05:00:13.829Z",
+  "profile": "confirmatory",
+  "status": "complete",
+  "methodology": {
+    "experimentalUnit": "openingId",
+    "openings": 200,
+    "conditions": [
+      "C0",
+      "D1",
+      "D3",
+      "D4",
+      "EL",
+      "EV2",
+      "SM"
+    ],
+    "games": 1400,
+    "score": {
+      "southWin": 1,
+      "draw": 0.5,
+      "northWin": 0
+    },
+    "bootstrapSamples": 10000,
+    "primaryComparisons": [
+      "C0 vs D3",
+      "C0 vs EL",
+      "C0 vs EV2",
+      "C0 vs SM"
+    ],
+    "multiplicityAdjustment": "Holm"
+  },
+  "integrity": {
+    "corpusId": "uniform-8ply-unique-v1",
+    "corpusFileSha256": "be6637b1b1fbd9cb486e3063d4f4b3ddcf1e6c644bd34e6a0ddfa68799103a9c",
+    "entriesHash": "3a0673e4d1a66e24f91c48ba4b6ce9b35252e18299d461978405f278f0f0b6db",
+    "completeBlocks": 200,
+    "results": 1400,
+    "missingBlocks": 0,
+    "duplicateResults": 0,
+    "partialResults": 0,
+    "openingStateHashesMatch": true,
+    "conditionHashesMatch": true,
+    "sourceHashesMatch": true
+  },
+  "provenance": {
+    "sourceCommit": "7f3bf906afeef971ef38c6a50c83883aa9e95ab6",
+    "sourceTreeDirty": false,
+    "node": "v24.6.0",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "90950e1347d1962667c34808fc36c7941410594b750e72c6faa617df92987499",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+      "tools/experiments/paired-first-player-common.js": "33ebd2cbea8929ba927ce824f0c0e44cd2f0fa308164e32199a25701fcfce5b2",
+      "tools/experiments/generate-opening-corpus.js": "a057963867fe882d7e0df5bc6eae35f664d6abd4ee27004abf5082de153fe37a",
+      "tools/experiments/run-paired-first-player-research.js": "124179879e6a301cd49ea586369904dd6b18a58cfcc2da74ef78f58e3edf88ab",
+      "tools/experiments/aggregate-paired-first-player-research.js": "edef395a692c4fd1bc93b3d24aa0678e52be077febaabdda15f85cbc7841cf4d"
+    }
+  },
+  "conditions": [
+    {
+      "conditionId": "C0",
+      "games": 200,
+      "southWins": 103,
+      "northWins": 97,
+      "draws": 0,
+      "southWinRateDecisive": 0.515,
+      "southWinRateWilson95": [
+        0.4461084919274572,
+        0.5833261482812249
+      ],
+      "averagePlies": 54.815,
+      "medianPlies": 55
+    },
+    {
+      "conditionId": "D1",
+      "games": 200,
+      "southWins": 108,
+      "northWins": 92,
+      "draws": 0,
+      "southWinRateDecisive": 0.54,
+      "southWinRateWilson95": [
+        0.4708228918895333,
+        0.6076694820002854
+      ],
+      "averagePlies": 57.87,
+      "medianPlies": 57
+    },
+    {
+      "conditionId": "D3",
+      "games": 200,
+      "southWins": 113,
+      "northWins": 87,
+      "draws": 0,
+      "southWinRateDecisive": 0.565,
+      "southWinRateWilson95": [
+        0.49570736259794607,
+        0.6318427449730093
+      ],
+      "averagePlies": 60.255,
+      "medianPlies": 60
+    },
+    {
+      "conditionId": "D4",
+      "games": 200,
+      "southWins": 100,
+      "northWins": 100,
+      "draws": 0,
+      "southWinRateDecisive": 0.5,
+      "southWinRateWilson95": [
+        0.43136085960389187,
+        0.5686391403961082
+      ],
+      "averagePlies": 55.01,
+      "medianPlies": 55
+    },
+    {
+      "conditionId": "EL",
+      "games": 200,
+      "southWins": 100,
+      "northWins": 100,
+      "draws": 0,
+      "southWinRateDecisive": 0.5,
+      "southWinRateWilson95": [
+        0.43136085960389187,
+        0.5686391403961082
+      ],
+      "averagePlies": 54.45,
+      "medianPlies": 54
+    },
+    {
+      "conditionId": "EV2",
+      "games": 200,
+      "southWins": 96,
+      "northWins": 104,
+      "draws": 0,
+      "southWinRateDecisive": 0.48,
+      "southWinRateWilson95": [
+        0.411791663783233,
+        0.5489621492718576
+      ],
+      "averagePlies": 54.26,
+      "medianPlies": 54.5
+    },
+    {
+      "conditionId": "SM",
+      "games": 200,
+      "southWins": 99,
+      "northWins": 101,
+      "draws": 0,
+      "southWinRateDecisive": 0.495,
+      "southWinRateWilson95": [
+        0.4264584535990475,
+        0.5637299996647251
+      ],
+      "averagePlies": 39.915,
+      "medianPlies": 36.5
+    }
+  ],
+  "primaryComparisons": [
+    {
+      "baseline": "C0",
+      "comparison": "D3",
+      "openings": 200,
+      "meanPairedDifference": 0.05,
+      "pairedBootstrap95": [
+        -0.05,
+        0.145
+      ],
+      "differentOutcome": 100,
+      "towardSouth": 55,
+      "towardNorth": 45,
+      "outcomeTable": {
+        "south": {
+          "south": 58,
+          "north": 45,
+          "draw": 0
+        },
+        "north": {
+          "south": 55,
+          "north": 42,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 55,
+        "baselineSouthComparisonNorth": 45,
+        "total": 100
+      },
+      "mcnemarP": 0.3682016173266962,
+      "holmAdjustedP": 1
+    },
+    {
+      "baseline": "C0",
+      "comparison": "EL",
+      "openings": 200,
+      "meanPairedDifference": -0.015,
+      "pairedBootstrap95": [
+        -0.11,
+        0.075
+      ],
+      "differentOutcome": 91,
+      "towardSouth": 44,
+      "towardNorth": 47,
+      "outcomeTable": {
+        "south": {
+          "south": 56,
+          "north": 47,
+          "draw": 0
+        },
+        "north": {
+          "south": 44,
+          "north": 53,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 44,
+        "baselineSouthComparisonNorth": 47,
+        "total": 91
+      },
+      "mcnemarP": 0.834081039304942,
+      "holmAdjustedP": 1
+    },
+    {
+      "baseline": "C0",
+      "comparison": "EV2",
+      "openings": 200,
+      "meanPairedDifference": -0.035,
+      "pairedBootstrap95": [
+        -0.09,
+        0.02
+      ],
+      "differentOutcome": 31,
+      "towardSouth": 12,
+      "towardNorth": 19,
+      "outcomeTable": {
+        "south": {
+          "south": 84,
+          "north": 19,
+          "draw": 0
+        },
+        "north": {
+          "south": 12,
+          "north": 85,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 12,
+        "baselineSouthComparisonNorth": 19,
+        "total": 31
+      },
+      "mcnemarP": 0.28104151505976915,
+      "holmAdjustedP": 1
+    },
+    {
+      "baseline": "C0",
+      "comparison": "SM",
+      "openings": 200,
+      "meanPairedDifference": -0.02,
+      "pairedBootstrap95": [
+        -0.115,
+        0.075
+      ],
+      "differentOutcome": 96,
+      "towardSouth": 46,
+      "towardNorth": 50,
+      "outcomeTable": {
+        "south": {
+          "south": 53,
+          "north": 50,
+          "draw": 0
+        },
+        "north": {
+          "south": 46,
+          "north": 51,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 46,
+        "baselineSouthComparisonNorth": 50,
+        "total": 96
+      },
+      "mcnemarP": 0.7596492883236297,
+      "holmAdjustedP": 1
+    }
+  ],
+  "secondaryComparisons": [
+    {
+      "baseline": "C0",
+      "comparison": "D1",
+      "openings": 200,
+      "meanPairedDifference": 0.025,
+      "pairedBootstrap95": [
+        -0.065,
+        0.12
+      ],
+      "differentOutcome": 89,
+      "towardSouth": 47,
+      "towardNorth": 42,
+      "outcomeTable": {
+        "south": {
+          "south": 61,
+          "north": 42,
+          "draw": 0
+        },
+        "north": {
+          "south": 47,
+          "north": 50,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 47,
+        "baselineSouthComparisonNorth": 42,
+        "total": 89
+      },
+      "mcnemarP": 0.6718086491746107
+    },
+    {
+      "baseline": "C0",
+      "comparison": "D4",
+      "openings": 200,
+      "meanPairedDifference": -0.015,
+      "pairedBootstrap95": [
+        -0.11,
+        0.08
+      ],
+      "differentOutcome": 97,
+      "towardSouth": 47,
+      "towardNorth": 50,
+      "outcomeTable": {
+        "south": {
+          "south": 53,
+          "north": 50,
+          "draw": 0
+        },
+        "north": {
+          "south": 47,
+          "north": 50,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 47,
+        "baselineSouthComparisonNorth": 50,
+        "total": 97
+      },
+      "mcnemarP": 0.8392136618440833
+    }
+  ]
+}
