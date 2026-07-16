@@ -46,4 +46,25 @@ fs.mkdirSync(path.join(input, "partials"), { recursive: true });
 fs.writeFileSync(path.join(input, "partials", "orphan.partial.json"), "{}\n");
 assert.throws(() => aggregate({ input, output, bootstrapSamples: 200 }), /Partial results remain/);
 
+const weightedCorpusOptions = parseCorpusArgs([
+  "--count", "12", "--plies", "1", "--policy", "uniform", "--seed", "20260716",
+  "--corpus-id", "weighted-fixture", "--output", path.join(temp, "weighted-corpus", "corpus.jsonl"),
+]);
+writeCorpus(weightedCorpusOptions, buildCorpus(weightedCorpusOptions));
+const weightedInput = path.join(temp, "weighted-results");
+run(parseRunnerArgs([
+  "--profile", "sensitivity", "--count", "12", "--conditions", "C0,D3,EL,EV2",
+  "--corpus", weightedCorpusOptions.output, "--output", weightedInput,
+  "--max-turns", "10", "--mcts-iterations", "2", "--mcts-playout-turns", "2",
+]));
+const weightedSummary = aggregate({
+  input: weightedInput, output: path.join(temp, "weighted-summary.json"), bootstrapSamples: 200,
+});
+assert.equal(weightedSummary.methodology.experimentalUnit, "openingId slot, clustered by openingMovesHash");
+assert.equal(weightedSummary.methodology.conditions.length, 4);
+assert.ok(weightedSummary.integrity.duplicateOpeningSlots > 0);
+assert.ok(weightedSummary.primaryComparisons.every(({ mcnemarP, pairedBootstrapMethod }) => (
+  mcnemarP === null && pairedBootstrapMethod === "openingMovesHash cluster bootstrap"
+)));
+
 console.log("Paired first-player aggregate tests passed");

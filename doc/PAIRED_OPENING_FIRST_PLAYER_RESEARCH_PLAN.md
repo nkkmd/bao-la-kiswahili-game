@@ -1,6 +1,6 @@
 # 共有開局系列による先攻・後攻差追試計画
 
-Version: 1.0.0
+Version: 1.1.0
 作成日: 2026-07-16
 
 ## 0. 実装状況
@@ -47,7 +47,26 @@ Phase 2は2026-07-16に1,400/1,400結果、200/200完全ブロック、partial 0
 
 一方、C0と異なる勝敗はD3 100件、EL 91件、EV2 31件、SM 96件に存在した。平均差が小さくても個々の開局ではAI設定が勝者を頻繁に変えるため、H1とH4の現象面は支持された。これはBao一般の先攻差ではなく、この固定開局集合における条件付きAI差である。
 
-以上によりPhase 2までの主研究は完了した。Phase 3の感度分析と高強度MCTSは探索的な拡張として分離し、主結果を置換しない。
+Phase 3は方針を4手・12手・frequency-weighted 8手に限定して実行した。4手は到達可能な非終局系列が全124通りであることを全列挙で確認し、124開局のcensusを使用した。12手は200ユニーク開局、frequency-weighted 8手は重複を許す200スロット（189ユニーク系列、重複11スロット）を使用した。比較条件はいずれもC0、D3、EL、EV2である。計2,096局、524/524完全ブロック、partial 0で完走し、全完全性検証を通過した。
+
+| コーパス | 条件 | South | North | 引分 | South勝率 | C0との平均ペア差 | bootstrap 95% CI |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 4手census | C0 | 60 | 64 | 0 | 48.4% | — | — |
+| 4手census | D3 | 63 | 60 | 1 | 51.2% | +2.8pt | -9.3〜+15.3pt |
+| 4手census | EL | 53 | 71 | 0 | 42.7% | -5.6pt | -17.8〜+6.5pt |
+| 4手census | EV2 | 67 | 57 | 0 | 54.0% | +5.6pt | +0.8〜+10.5pt |
+| 12手ユニーク | C0 | 97 | 103 | 0 | 48.5% | — | — |
+| 12手ユニーク | D3 | 95 | 105 | 0 | 47.5% | -1.0pt | -10.0〜+8.0pt |
+| 12手ユニーク | EL | 115 | 85 | 0 | 57.5% | +9.0pt | 0.0〜+18.0pt |
+| 12手ユニーク | EV2 | 95 | 105 | 0 | 47.5% | -1.0pt | -5.5〜+3.5pt |
+| 頻度加重8手 | C0 | 100 | 100 | 0 | 50.0% | — | — |
+| 頻度加重8手 | D3 | 99 | 100 | 1 | 49.7% | -0.3pt | -10.7〜+10.4pt |
+| 頻度加重8手 | EL | 104 | 96 | 0 | 52.0% | +2.0pt | -6.5〜+10.4pt |
+| 頻度加重8手 | EV2 | 104 | 96 | 0 | 52.0% | +2.0pt | -2.5〜+6.5pt |
+
+4手・12手の3比較に対するexact McNemar検定のHolm補正後p値は、4手がD3 0.900、EL 0.900、EV2 0.196、12手がD3 1.000、EL 0.179、EV2 1.000で、いずれも確証的な差を示さなかった。frequency-weighted 8手は同一系列の反復を独立とみなさず、`openingMovesHash`単位のcluster bootstrapを使用した。3比較の区間はいずれも0を含んだためMcNemar検定とHolm補正は適用していない。
+
+ELの平均差は4手-5.6pt、8手+2.0pt、12手+9.0pt、EV2は4手+5.6pt、8手+2.0pt、12手-1.0ptとなり、効果方向は開局長で安定しなかった。したがって、Phase 2の「固定200開局では大きく安定した条件差を確認できない」という主結論は維持する。一方、結果が開局長に依存し得るという感度は確認された。方策副試験と高強度MCTSは今回の実行範囲外とし、Phase 3の完了条件には含めない。
 
 ## 1. 目的
 
@@ -207,14 +226,14 @@ Phase 1完了後、実測時間から200開局のETAを更新する。高強度M
 
 ### Phase 3: 感度分析
 
-優先順位は次のとおりとする。
+2026-07-16に次の1、2を完了した。3、4は今回の実行範囲外とする。
 
 1. frequency-weighted 8手コーパスでC0と主要差分条件を再評価
 2. 4手、12手コーパスでC0、D3、EL、EV2を比較
 3. uniform、top3、softmaxの方策副試験
 4. 実行可能な場合のみ高強度MCTS
 
-Phase 3はPhase 2の主結果と区別して探索的に報告する。
+Phase 3はPhase 2の主結果と区別して探索的に報告する。実施した全コーパスでC0、D3、EL、EV2を比較した。
 
 ## 8. 統計解析計画
 
@@ -237,6 +256,8 @@ Phase 3はPhase 2の主結果と区別して探索的に報告する。
 - C0からSouth勝方向へ反転した件数
 - C0からNorth勝方向へ反転した件数
 - 引き分けを除くdiscordant pairに対するexact McNemar検定
+
+frequency-weightedコーパスでは`openingMovesHash`単位でクラスタを復元抽出し、スロット頻度を保持したcluster bootstrap区間を報告する。独立開局を仮定するMcNemar検定とHolm補正p値は、このコーパスには適用しない。
 
 引き分け除外結果だけで結論せず、0.5点を用いた全開局解析と引き分け数を併記する。
 
@@ -295,6 +316,8 @@ artifacts/paired-first-player/2026-07/
 ├── screening/
 ├── confirmatory/
 ├── sensitivity/
+│   ├── corpora/{uniform-4ply-unique-census-v1,uniform-12ply-unique-v1,uniform-8ply-frequency-weighted-v1}/
+│   └── {uniform-4ply-unique-census-v1,uniform-12ply-unique-v1,uniform-8ply-frequency-weighted-v1}/
 ├── progress.json
 └── summary.json
 ```
@@ -322,6 +345,14 @@ node tools/experiments/run-paired-first-player-research.js \
 node tools/experiments/aggregate-paired-first-player-research.js \
   --input artifacts/paired-first-player/2026-07/confirmatory \
   --output artifacts/paired-first-player/2026-07/summary.json
+
+# Phase 3は各コーパスについて次の条件部分集合で実行する。
+node tools/experiments/run-paired-first-player-research.js \
+  --profile sensitivity \
+  --count 200 \
+  --conditions C0,D3,EL,EV2 \
+  --corpus artifacts/paired-first-player/2026-07/sensitivity/corpora/uniform-12ply-unique-v1/corpus.jsonl \
+  --output artifacts/paired-first-player/2026-07/sensitivity/uniform-12ply-unique-v1
 ```
 
 実際のCLIは実装時に確定し、`tools/experiments/README.md`へ反映する。
@@ -342,9 +373,9 @@ node tools/experiments/aggregate-paired-first-player-research.js \
 集計前に次を自動検証する。
 
 1. コーパスmanifestのSHA-256と入力JSONLが一致する。
-2. 200件の`openingId`が一意である。
+2. 期待件数の`openingId`が一意である。
 3. 主コーパスに終局局面や重複`openingMovesHash`がない。
-4. 各開局に全7条件が一つずつ存在する。
+4. 各開局に実験identityで指定した全条件が一つずつ存在する。
 5. 全条件で`openingStateHash`がコーパスと一致する。
 6. 条件設定hashが予定表と一致する。
 7. 同一条件・開局・反復の重複結果がない。

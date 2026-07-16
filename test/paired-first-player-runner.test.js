@@ -50,4 +50,17 @@ run(options);
 const resumed = JSON.parse(fs.readFileSync(path.join(output, "progress.json"), "utf8"));
 assert.equal(resumed.completedGames, 84);
 
+const subsetOutput = path.join(temp, "subset-results");
+run(parseArgs([
+  "--profile", "sensitivity", "--count", "4", "--conditions", "C0,D3,EL,EV2",
+  "--corpus", corpusOptions.output, "--output", subsetOutput,
+  "--max-turns", "10", "--mcts-iterations", "2", "--mcts-playout-turns", "2",
+]));
+const subsetProgress = JSON.parse(fs.readFileSync(path.join(subsetOutput, "progress.json"), "utf8"));
+assert.deepEqual(subsetProgress.expected, {
+  openings: 4, conditions: 4, conditionIds: ["C0", "D3", "EL", "EV2"], games: 16,
+});
+assert.equal(subsetProgress.completedGames, 16);
+assert.throws(() => parseArgs(["--conditions", "D3,EL"]), /include C0/);
+
 console.log("Paired first-player runner tests passed");

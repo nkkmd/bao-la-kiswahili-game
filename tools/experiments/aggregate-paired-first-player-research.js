@@ -89,6 +89,29 @@ function pairedBootstrap(differences, samples, seed) {
   return [quantile(means, 0.025), quantile(means, 0.975)];
 }
 
+function clusterBootstrap(observations, samples, seed) {
+  const grouped = new Map();
+  for (const observation of observations) {
+    if (!grouped.has(observation.cluster)) grouped.set(observation.cluster, []);
+    grouped.get(observation.cluster).push(observation.value);
+  }
+  const clusters = [...grouped.values()];
+  const random = seededRandom(seed);
+  const means = [];
+  for (let iteration = 0; iteration < samples; iteration += 1) {
+    let total = 0;
+    let count = 0;
+    for (let draw = 0; draw < clusters.length; draw += 1) {
+      const values = clusters[Math.floor(random() * clusters.length)];
+      total += values.reduce((sum, value) => sum + value, 0);
+      count += values.length;
+    }
+    means.push(total / count);
+  }
+  means.sort((a, b) => a - b);
+  return [quantile(means, 0.025), quantile(means, 0.975)];
+}
+
 function holmAdjust(comparisons) {
   const sorted = comparisons.map((comparison, index) => ({ comparison, index }))
     .sort((a, b) => a.comparison.mcnemarP - b.comparison.mcnemarP);
@@ -105,13 +128,13 @@ function outcomeLabel(result) {
   return result.winner === 0 ? "south" : result.winner === 1 ? "north" : "draw";
 }
 
-function aggregateCondition(conditionId, results) {
+function aggregateCondition(conditionId, results, openingsById = null, bootstrapSamples = 10_000, corpusHash = "") {
   const selected = results.map((block) => block.results.find((result) => result.conditionId === conditionId));
   const southWins = selected.filter(({ winner }) => winner === 0).length;
   const northWins = selected.filter(({ winner }) => winner === 1).length;
   const draws = selected.length - southWins - northWins;
   const turns = selected.map(({ totalPlies }) => totalPlies).sort((a, b) => a - b);
-  return {
+  const summary = {
     conditionId,
     games: selected.length,
     southWins,
@@ -122,15 +145,29 @@ function aggregateCondition(conditionId, results) {
     averagePlies: turns.reduce((sum, value) => sum + value, 0) / turns.length,
     medianPlies: quantile(turns, 0.5),
   };
+  if (openingsById) {
+    const observations = results.map((block) => {
+      const result = block.results.find(({ conditionId: id }) => id === conditionId);
+      return { cluster: openingsById.get(block.openingId).openingMovesHash, value: result.score };
+    });
+    summary.openingMoveClusters = new Set(observations.map(({ cluster }) => cluster)).size;
+    if (summary.openingMoveClusters < observations.length) {
+      summary.southScoreClusterBootstrap95 = clusterBootstrap(observations, bootstrapSamples,
+        seedFrom(corpusHash, conditionId, "cluster-bootstrap"));
+    }
+  }
+  return summary;
 }
 
-function compareToBaseline(conditionId, blocks, bootstrapSamples, corpusHash) {
+function compareToBaseline(conditionId, blocks, bootstrapSamples, corpusHash, openingsById = null) {
   const pairs = blocks.map((block) => ({
     openingId: block.openingId,
     baseline: block.results.find(({ conditionId: id }) => id === "C0"),
     comparison: block.results.find(({ conditionId: id }) => id === conditionId),
   }));
   const differences = pairs.map(({ baseline, comparison }) => comparison.score - baseline.score);
+  const clustered = openingsById
+    && new Set(pairs.map(({ openingId }) => openingsById.get(openingId).openingMovesHash)).size < pairs.length;
   const meanPairedDifference = differences.reduce((sum, value) => sum + value, 0) / differences.length;
   let towardSouth = 0;
   let towardNorth = 0;
@@ -149,14 +186,23 @@ function compareToBaseline(conditionId, blocks, bootstrapSamples, corpusHash) {
     comparison: conditionId,
     openings: pairs.length,
     meanPairedDifference,
-    pairedBootstrap95: pairedBootstrap(differences, bootstrapSamples,
-      seedFrom(corpusHash, "C0", conditionId, "paired-bootstrap")),
+    pairedBootstrap95: clustered
+      ? clusterBootstrap(pairs.map(({ openingId, baseline, comparison }) => ({
+        cluster: openingsById.get(openingId).openingMovesHash,
+        value: comparison.score - baseline.score,
+      })), bootstrapSamples, seedFrom(corpusHash, "C0", conditionId, "cluster-bootstrap"))
+      : pairedBootstrap(differences, bootstrapSamples,
+        seedFrom(corpusHash, "C0", conditionId, "paired-bootstrap")),
+    pairedBootstrapMethod: clustered ? "openingMovesHash cluster bootstrap" : "openingId paired bootstrap",
+    openingMoveClusters: clustered
+      ? new Set(pairs.map(({ openingId }) => openingsById.get(openingId).openingMovesHash)).size
+      : pairs.length,
     differentOutcome: pairs.filter(({ baseline, comparison }) => baseline.winner !== comparison.winner).length,
     towardSouth,
     towardNorth,
     outcomeTable,
     decisiveDiscordant: { baselineNorthComparisonSouth: n01, baselineSouthComparisonNorth: n10, total: n01 + n10 },
-    mcnemarP: exactMcNemar(n01, n10),
+    mcnemarP: clustered ? null : exactMcNemar(n01, n10),
   };
 }
 
@@ -186,9 +232,10 @@ function verifyAndLoad(input) {
     if (block.status !== "complete" || block.openingId !== opening.openingId) throw new Error(`Invalid block: ${opening.openingId}`);
     if (block.openingStateHash !== opening.openingStateHash) throw new Error(`Opening state mismatch: ${opening.openingId}`);
     if (stableStringify(block.identity) !== stableStringify(progress.identity)) throw new Error(`Identity mismatch: ${opening.openingId}`);
+    const conditionIds = progress.identity.conditionIds || CONDITIONS.map(({ id }) => id);
     const ids = block.results.map(({ conditionId }) => conditionId);
-    if (ids.length !== CONDITIONS.length || new Set(ids).size !== CONDITIONS.length
-      || CONDITIONS.some(({ id }) => !ids.includes(id))) throw new Error(`Incomplete block: ${opening.openingId}`);
+    if (ids.length !== conditionIds.length || new Set(ids).size !== conditionIds.length
+      || conditionIds.some((id) => !ids.includes(id))) throw new Error(`Incomplete block: ${opening.openingId}`);
     for (const result of block.results) {
       if (result.openingId !== opening.openingId || result.openingStateHash !== opening.openingStateHash) {
         throw new Error(`Result opening mismatch: ${opening.openingId}/${result.conditionId}`);
@@ -210,31 +257,41 @@ function verifyAndLoad(input) {
 
 function aggregate(options) {
   const verified = verifyAndLoad(options.input);
-  const conditions = CONDITIONS.map(({ id }) => aggregateCondition(id, verified.blocks));
-  const allComparisons = CONDITIONS.filter(({ id }) => id !== "C0").map(({ id }) => compareToBaseline(
-    id, verified.blocks, options.bootstrapSamples, verified.progress.identity.corpusFileSha256,
+  const conditionIds = verified.progress.identity.conditionIds || CONDITIONS.map(({ id }) => id);
+  const openingsById = new Map(verified.openings.map((opening) => [opening.openingId, opening]));
+  const openingMoveClusters = new Set(verified.openings.map(({ openingMovesHash }) => openingMovesHash)).size;
+  const clustered = openingMoveClusters < verified.openings.length;
+  const conditions = conditionIds.map((id) => aggregateCondition(id, verified.blocks, openingsById,
+    options.bootstrapSamples, verified.progress.identity.corpusFileSha256));
+  const allComparisons = conditionIds.filter((id) => id !== "C0").map((id) => compareToBaseline(
+    id, verified.blocks, options.bootstrapSamples, verified.progress.identity.corpusFileSha256, openingsById,
   ));
-  const primaryComparisons = holmAdjust(PRIMARY_COMPARISONS.map((id) => allComparisons.find(({ comparison }) => comparison === id)));
+  const primaryIds = PRIMARY_COMPARISONS.filter((id) => conditionIds.includes(id));
+  const primaryComparisons = primaryIds.map((id) => allComparisons.find(({ comparison }) => comparison === id));
+  if (!clustered) holmAdjust(primaryComparisons);
   const summary = {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
     profile: verified.progress.profile,
     status: "complete",
     methodology: {
-      experimentalUnit: "openingId",
+      experimentalUnit: clustered ? "openingId slot, clustered by openingMovesHash" : "openingId",
+      openingMoveClusters,
       openings: verified.openings.length,
-      conditions: CONDITIONS.map(({ id }) => id),
-      games: verified.openings.length * CONDITIONS.length,
+      conditions: conditionIds,
+      games: verified.openings.length * conditionIds.length,
       score: { southWin: 1, draw: 0.5, northWin: 0 },
       bootstrapSamples: options.bootstrapSamples,
-      primaryComparisons: PRIMARY_COMPARISONS.map((id) => `C0 vs ${id}`),
-      multiplicityAdjustment: "Holm",
+      primaryComparisons: primaryIds.map((id) => `C0 vs ${id}`),
+      multiplicityAdjustment: clustered ? "not applied; cluster bootstrap intervals reported" : "Holm",
     },
     integrity: {
       corpusId: verified.manifest.corpusId,
       corpusFileSha256: verified.progress.identity.corpusFileSha256,
       entriesHash: verified.manifest.entriesHash,
       completeBlocks: verified.blocks.length,
+      uniqueOpeningMoves: openingMoveClusters,
+      duplicateOpeningSlots: verified.openings.length - openingMoveClusters,
       results: verified.blocks.reduce((sum, block) => sum + block.results.length, 0),
       missingBlocks: 0,
       duplicateResults: 0,
@@ -251,7 +308,7 @@ function aggregate(options) {
     },
     conditions,
     primaryComparisons,
-    secondaryComparisons: allComparisons.filter(({ comparison }) => !PRIMARY_COMPARISONS.includes(comparison)),
+    secondaryComparisons: allComparisons.filter(({ comparison }) => !primaryIds.includes(comparison)),
   };
   atomicWriteJson(options.output, summary);
   return summary;
@@ -275,6 +332,7 @@ module.exports = {
   PRIMARY_COMPARISONS,
   aggregate,
   aggregateCondition,
+  clusterBootstrap,
   compareToBaseline,
   exactMcNemar,
   holmAdjust,

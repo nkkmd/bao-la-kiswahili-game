@@ -40,10 +40,26 @@ assert.deepEqual(validateCorpus(entries, manifest, text), {
   openings: 12,
   openingIds: 12,
   uniqueOpeningMoves: 12,
+  duplicateOpeningSlots: 0,
 });
 const damaged = structuredClone(entries);
 damaged[0].openingState.reserve[0] -= 1;
 assert.throws(() => validateCorpus(damaged), /Opening state hash mismatch/);
 assert.throws(() => parseArgs(["--count", "10", "--unique", "--stratify", "first-move"]), /divisible by four/);
+
+const weightedOptions = parseArgs([
+  "--count", "20", "--plies", "1", "--policy", "uniform",
+  "--seed", "20260716", "--corpus-id", "weighted-20",
+  "--output", path.join(temp, "weighted", "corpus.jsonl"),
+]);
+const weighted = buildCorpus(weightedOptions);
+assert.equal(weighted.accepted.length, 20);
+assert.ok(new Set(weighted.accepted.map(({ openingMovesHash }) => openingMovesHash)).size < 20);
+const { manifest: weightedManifest } = writeCorpus(weightedOptions, weighted);
+assert.equal(weightedManifest.generator.unique, false);
+assert.ok(weightedManifest.duplicateOpeningSlots > 0);
+const weightedText = fs.readFileSync(weightedOptions.output, "utf8");
+assert.equal(validateCorpus(parseJsonLines(weightedText), weightedManifest, weightedText).openings, 20);
+assert.throws(() => validateCorpus(parseJsonLines(weightedText)), /Duplicate openingMovesHash/);
 
 console.log("Opening corpus tests passed");

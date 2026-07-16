@@ -18,7 +18,7 @@ const {
   validateCorpus,
 } = require("./paired-first-player-common.js");
 
-const PROFILE_COUNTS = Object.freeze({ fixture: 12, screening: 40, confirmatory: 200 });
+const PROFILE_COUNTS = Object.freeze({ fixture: 12, screening: 40, confirmatory: 200, sensitivity: 200 });
 
 function parseArgs(argv) {
   const options = {
@@ -28,6 +28,8 @@ function parseArgs(argv) {
     maxTurns: 120,
     mctsIterations: 12,
     mctsPlayoutTurns: 16,
+    count: null,
+    conditionIds: CONDITIONS.map(({ id }) => id),
     onlyCondition: null,
     status: false,
     force: false,
@@ -44,17 +46,30 @@ function parseArgs(argv) {
       else if (key === "--max-turns") options.maxTurns = Number(value);
       else if (key === "--mcts-iterations") options.mctsIterations = Number(value);
       else if (key === "--mcts-playout-turns") options.mctsPlayoutTurns = Number(value);
+      else if (key === "--count") options.count = Number(value);
+      else if (key === "--conditions") options.conditionIds = value.split(",").filter(Boolean);
       else if (key === "--only-condition") options.onlyCondition = value;
       else throw new Error(`Unknown argument: ${key}`);
       index += 1;
     }
   }
   if (!(options.profile in PROFILE_COUNTS)) throw new Error(`Unknown profile: ${options.profile}`);
+  if (options.count !== null && (!Number.isInteger(options.count) || options.count < 1)) {
+    throw new Error("count must be a positive integer");
+  }
   if (!Number.isInteger(options.maxTurns) || options.maxTurns < 1) throw new Error("max-turns must be positive");
   if (!Number.isInteger(options.mctsIterations) || options.mctsIterations < 1) throw new Error("mcts-iterations must be positive");
   if (!Number.isInteger(options.mctsPlayoutTurns) || options.mctsPlayoutTurns < 1) throw new Error("mcts-playout-turns must be positive");
   if (options.onlyCondition && !CONDITIONS.some(({ id }) => id === options.onlyCondition)) {
     throw new Error(`Unknown condition: ${options.onlyCondition}`);
+  }
+  if (!options.conditionIds.length || new Set(options.conditionIds).size !== options.conditionIds.length
+    || options.conditionIds.some((id) => !CONDITIONS.some((condition) => condition.id === id))) {
+    throw new Error("conditions must be a unique comma-separated list of known condition IDs");
+  }
+  if (!options.conditionIds.includes("C0")) throw new Error("conditions must include C0");
+  if (options.onlyCondition && !options.conditionIds.includes(options.onlyCondition)) {
+    throw new Error("only-condition must be included in conditions");
   }
   options.output ||= `artifacts/paired-first-player/2026-07/${options.profile}`;
   return options;
@@ -70,8 +85,12 @@ function loadCorpus(file) {
   return { entries, manifest, text, sha256: sha256Text(text), manifestFile };
 }
 
-function shuffleConditions(openingId, corpusSha256) {
-  const values = [...CONDITIONS];
+function selectedConditions(conditionIds) {
+  return conditionIds.map((id) => CONDITIONS.find((condition) => condition.id === id));
+}
+
+function shuffleConditions(openingId, corpusSha256, conditions = CONDITIONS) {
+  const values = [...conditions];
   const random = seededRandom(seedFrom(corpusSha256, openingId, "condition-order"));
   for (let index = values.length - 1; index > 0; index -= 1) {
     const target = Math.floor(random() * (index + 1));
@@ -81,18 +100,20 @@ function shuffleConditions(openingId, corpusSha256) {
 }
 
 function experimentIdentity(options, corpus, source) {
-  const conditionHashes = Object.fromEntries(CONDITIONS.map((condition) => [
+  const conditions = selectedConditions(options.conditionIds);
+  const conditionHashes = Object.fromEntries(conditions.map((condition) => [
     condition.id,
     hashValue(conditionConfig(condition, options)),
   ]));
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     profile: options.profile,
     corpusId: corpus.manifest.corpusId,
     corpusFile: options.corpus,
     corpusManifestFile: corpus.manifestFile,
     corpusFileSha256: corpus.sha256,
-    requestedOpenings: PROFILE_COUNTS[options.profile],
+    requestedOpenings: options.count ?? PROFILE_COUNTS[options.profile],
+    conditionIds: options.conditionIds,
     maxTurns: options.maxTurns,
     mctsIterations: options.mctsIterations,
     mctsPlayoutTurns: options.mctsPlayoutTurns,
@@ -138,7 +159,7 @@ function existingCounts(options, openings) {
 function writeProgress(options, openings, identity, startedAt, current = null, status = "running") {
   const counts = existingCounts(options, openings);
   const elapsedSeconds = (Date.now() - Date.parse(startedAt)) / 1000;
-  const gamesRemaining = openings.length * CONDITIONS.length - counts.recordedGames;
+  const gamesRemaining = openings.length * options.conditionIds.length - counts.recordedGames;
   const secondsPerGame = counts.recordedGames ? elapsedSeconds / counts.recordedGames : null;
   atomicWriteJson(path.join(options.output, "progress.json"), {
     schemaVersion: 1,
@@ -147,7 +168,12 @@ function writeProgress(options, openings, identity, startedAt, current = null, s
     startedAt,
     updatedAt: new Date().toISOString(),
     identity,
-    expected: { openings: openings.length, conditions: CONDITIONS.length, games: openings.length * CONDITIONS.length },
+    expected: {
+      openings: openings.length,
+      conditions: options.conditionIds.length,
+      conditionIds: options.conditionIds,
+      games: openings.length * options.conditionIds.length,
+    },
     ...counts,
     current,
     elapsedSeconds,
@@ -182,8 +208,9 @@ function validateCompleteBlock(block, opening, identity) {
     throw new Error(`Invalid complete block: ${opening.openingId}`);
   }
   const ids = block.results.map(({ conditionId }) => conditionId);
-  if (ids.length !== CONDITIONS.length || new Set(ids).size !== CONDITIONS.length
-    || CONDITIONS.some(({ id }) => !ids.includes(id))) throw new Error(`Incomplete condition block: ${opening.openingId}`);
+  const conditionIds = identity.conditionIds || CONDITIONS.map(({ id }) => id);
+  if (ids.length !== conditionIds.length || new Set(ids).size !== conditionIds.length
+    || conditionIds.some((id) => !ids.includes(id))) throw new Error(`Incomplete condition block: ${opening.openingId}`);
   if (block.results.some((result) => result.openingStateHash !== opening.openingStateHash)) {
     throw new Error(`Result opening hash mismatch: ${opening.openingId}`);
   }
@@ -191,7 +218,7 @@ function validateCompleteBlock(block, opening, identity) {
 
 function run(options) {
   const corpus = loadCorpus(options.corpus);
-  const requested = PROFILE_COUNTS[options.profile];
+  const requested = options.count ?? PROFILE_COUNTS[options.profile];
   if (corpus.entries.length < requested) throw new Error(`Profile requires ${requested} openings; corpus has ${corpus.entries.length}`);
   const openings = corpus.entries.slice(0, requested);
   const currentSource = provenance();
@@ -210,6 +237,7 @@ function run(options) {
     sourceTreeDirty: corpusSource.sourceTreeDirty,
   };
   const identity = experimentIdentity(options, corpus, source);
+  const conditions = selectedConditions(options.conditionIds);
   fs.mkdirSync(options.output, { recursive: true });
   const progressFile = path.join(options.output, "progress.json");
   if (options.status) {
@@ -239,7 +267,7 @@ function run(options) {
       validateCompleteBlock(JSON.parse(fs.readFileSync(files.block, "utf8")), opening, identity);
       continue;
     }
-    const order = shuffleConditions(opening.openingId, corpus.sha256);
+    const order = shuffleConditions(opening.openingId, corpus.sha256, conditions);
     const partial = loadOrCreatePartial(files, opening, order, identity);
     const completed = new Set(partial.results.map(({ conditionId }) => conditionId));
     for (const condition of order) {
@@ -253,9 +281,9 @@ function run(options) {
       const counts = existingCounts(options, openings);
       const elapsed = (Date.now() - Date.parse(startedAt)) / 1000;
       const secondsPerGame = elapsed / Math.max(1, counts.recordedGames);
-      console.log(`[progress] ${counts.recordedGames}/${openings.length * CONDITIONS.length} ${opening.openingId}/${condition.id} elapsed=${elapsed.toFixed(1)}s eta=${(secondsPerGame * (openings.length * CONDITIONS.length - counts.recordedGames)).toFixed(1)}s`);
+      console.log(`[progress] ${counts.recordedGames}/${openings.length * conditions.length} ${opening.openingId}/${condition.id} elapsed=${elapsed.toFixed(1)}s eta=${(secondsPerGame * (openings.length * conditions.length - counts.recordedGames)).toFixed(1)}s`);
     }
-    if (partial.results.length === CONDITIONS.length) {
+    if (partial.results.length === conditions.length) {
       const block = {
         ...partial,
         status: "complete",
@@ -294,6 +322,7 @@ module.exports = {
   parseArgs,
   resultPaths,
   run,
+  selectedConditions,
   shuffleConditions,
   validateCompleteBlock,
 };

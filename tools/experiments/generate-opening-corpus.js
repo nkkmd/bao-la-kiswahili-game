@@ -44,7 +44,6 @@ function parseArgs(argv) {
   if (!Number.isSafeInteger(options.seed)) throw new Error("seed must be a safe integer");
   if (!["uniform", "top3", "softmax"].includes(options.policy)) throw new Error("unsupported policy");
   if (options.stratify && options.stratify !== "first-move") throw new Error("only first-move stratification is supported");
-  if (!options.unique) throw new Error("the confirmatory corpus requires --unique");
   if (options.stratify === "first-move" && options.count % 4 !== 0) {
     throw new Error("first-move stratified count must be divisible by four");
   }
@@ -64,7 +63,7 @@ function buildCorpus(options) {
     let reason = null;
     if (candidate.terminal) reason = "terminal-before-handoff";
     else if (candidate.playedPlies !== options.plies) reason = "short-opening";
-    else if (seen.has(candidate.openingMovesHash)) reason = "duplicate-opening";
+    else if (options.unique && seen.has(candidate.openingMovesHash)) reason = "duplicate-opening";
     else if (options.stratify === "first-move"
       && (firstMoves.get(candidate.firstMove) || 0) >= targetPerFirstMove) reason = "first-move-stratum-full";
     if (reason) {
@@ -86,7 +85,7 @@ function buildCorpus(options) {
   if (options.stratify === "first-move" && firstMoves.size !== 4) {
     throw new Error(`Expected four first-move strata, found ${firstMoves.size}`);
   }
-  validateCorpus(accepted);
+  validateCorpus(accepted, null, null, { allowDuplicateOpeningMoves: !options.unique });
   return { accepted, rejected, firstMoves: Object.fromEntries([...firstMoves].sort()) };
 }
 
@@ -124,6 +123,9 @@ function writeCorpus(options, built) {
       adoptionRule: "deterministic generation order; no outcome-based selection",
     },
     openings: built.accepted.length,
+    uniqueOpeningMoves: new Set(built.accepted.map(({ openingMovesHash }) => openingMovesHash)).size,
+    duplicateOpeningSlots: built.accepted.length
+      - new Set(built.accepted.map(({ openingMovesHash }) => openingMovesHash)).size,
     rejected: built.rejected.length,
     rejectionReasons: Object.fromEntries(Object.entries(built.rejected.reduce((counts, entry) => {
       counts[entry.reason] = (counts[entry.reason] || 0) + 1;
@@ -149,6 +151,8 @@ function main() {
     manifest: paths.manifest,
     rejected: paths.rejected,
     openings: manifest.openings,
+    uniqueOpeningMoves: manifest.uniqueOpeningMoves,
+    duplicateOpeningSlots: manifest.duplicateOpeningSlots,
     rejectedCandidates: manifest.rejected,
     firstMoveStrata: manifest.firstMoveStrata,
     corpusFileSha256: manifest.corpusFileSha256,

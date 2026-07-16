@@ -167,8 +167,10 @@ function parseJsonLines(text, label = "JSONL") {
   });
 }
 
-function validateCorpus(entries, manifest = null, corpusText = null) {
+function validateCorpus(entries, manifest = null, corpusText = null, options = {}) {
   if (!Array.isArray(entries) || !entries.length) throw new Error("Corpus must contain at least one opening");
+  const allowDuplicateOpeningMoves = options.allowDuplicateOpeningMoves
+    ?? manifest?.generator?.unique === false;
   const ids = new Set();
   const moves = new Set();
   for (const entry of entries) {
@@ -176,7 +178,9 @@ function validateCorpus(entries, manifest = null, corpusText = null) {
     ids.add(entry.openingId);
     if (entry.terminal) throw new Error(`Terminal opening in corpus: ${entry.openingId}`);
     if (entry.playedPlies !== entry.requestedPlies) throw new Error(`Incomplete opening: ${entry.openingId}`);
-    if (moves.has(entry.openingMovesHash)) throw new Error(`Duplicate openingMovesHash: ${entry.openingMovesHash}`);
+    if (!allowDuplicateOpeningMoves && moves.has(entry.openingMovesHash)) {
+      throw new Error(`Duplicate openingMovesHash: ${entry.openingMovesHash}`);
+    }
     moves.add(entry.openingMovesHash);
     if (hashValue(entry.openingMoveKeys) !== entry.openingMovesHash) throw new Error(`Opening moves hash mismatch: ${entry.openingId}`);
     if (hashValue(entry.openingState) !== entry.openingStateHash) throw new Error(`Opening state hash mismatch: ${entry.openingId}`);
@@ -186,7 +190,12 @@ function validateCorpus(entries, manifest = null, corpusText = null) {
     if (corpusText !== null && manifest.corpusFileSha256 !== sha256Text(corpusText)) throw new Error("Manifest corpus SHA-256 mismatch");
     if (manifest.entriesHash !== hashValue(entries)) throw new Error("Manifest entries hash mismatch");
   }
-  return { openings: entries.length, openingIds: ids.size, uniqueOpeningMoves: moves.size };
+  return {
+    openings: entries.length,
+    openingIds: ids.size,
+    uniqueOpeningMoves: moves.size,
+    duplicateOpeningSlots: entries.length - moves.size,
+  };
 }
 
 function conditionConfig(condition, options = {}) {

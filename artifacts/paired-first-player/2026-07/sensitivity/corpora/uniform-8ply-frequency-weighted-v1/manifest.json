@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "uniform-8ply-frequency-weighted-v1",
+  "generatedAt": "2026-07-16T05:49:36.946Z",
+  "generator": {
+    "seed": 202607168,
+    "count": 200,
+    "plies": 8,
+    "policy": "uniform",
+    "unique": false,
+    "stratify": null,
+    "adoptionRule": "deterministic generation order; no outcome-based selection"
+  },
+  "openings": 200,
+  "uniqueOpeningMoves": 189,
+  "duplicateOpeningSlots": 11,
+  "rejected": 1,
+  "rejectionReasons": {
+    "terminal-before-handoff": 1
+  },
+  "firstMoveStrata": {
+    "takata:namua:0:5:left:::false": 36,
+    "takata:namua:0:5:right:::false": 53,
+    "takata:namua:0:6:left:::false": 60,
+    "takata:namua:0:6:right:::false": 51
+  },
+  "corpusFile": "corpus.jsonl",
+  "corpusFileSha256": "e43eb46c5c6a5968d1a9a1cda920a1b53d40812039078a441042c1673d986df3",
+  "entriesHash": "4e0d2000d77b3089da6951da94f7fc4dce555a74866be89357ed45e16dd9c1ae",
+  "provenance": {
+    "sourceCommit": "5465ababd9dee32e35ecac83d3810089731a4282",
+    "sourceTreeDirty": true,
+    "node": "v24.6.0",
+    "platform": "linux",
+    "arch": "x64",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "90950e1347d1962667c34808fc36c7941410594b750e72c6faa617df92987499",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+      "tools/experiments/paired-first-player-common.js": "4dc0a11ea414eb1c094198f6b08d5e0c9cc19909e32110bd30d81b75af7671ab",
+      "tools/experiments/generate-opening-corpus.js": "92ee41096c645456a9f6528a8d7817544c748bc3f479e4831e3973459f54f84a",
+      "tools/experiments/run-paired-first-player-research.js": "6bde46cfcd6a904f8a42aacd2a06c3935b3e42d31eb5dfbcba1ab3e9d753ab1c",
+      "tools/experiments/aggregate-paired-first-player-research.js": "1e02e8340a6c45cd278f8697cc8fb567d2c45d66e90a6b32b450804d5c249e0e"
+    }
+  }
+}
