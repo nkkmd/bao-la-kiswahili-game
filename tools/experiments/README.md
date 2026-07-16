@@ -65,6 +65,8 @@ node tools/experiments/aggregate-paired-first-player-research.js \
 
 集計器は欠損、重複、partial残存、開局hash、条件hash、source hash、ブロック内再集計を検証します。条件別勝率とWilson区間に加え、C0との差、開局単位paired bootstrap、勝者反転、exact McNemar検定、4主比較のHolm補正を保存します。
 
+2026-07-16の実測では、正式な12開局fixtureは857.8秒、40開局スクリーニングは2665.3秒（44分25秒）で完了し、いずれも欠損・partial・hash不一致なしでした。この実測の単純5倍による200開局主試験のETAは約3時間42分です。
+
 ## ローカル実験ランナー
 
 ```bash
