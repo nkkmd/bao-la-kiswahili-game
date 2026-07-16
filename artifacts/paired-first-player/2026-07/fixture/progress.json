@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "profile": "fixture",
+  "status": "complete",
+  "startedAt": "2026-07-15T23:53:55.799Z",
+  "updatedAt": "2026-07-16T00:08:13.563Z",
+  "identity": {
+    "schemaVersion": 1,
+    "profile": "fixture",
+    "corpusId": "uniform-8ply-unique-v1",
+    "corpusFile": "artifacts/paired-first-player/2026-07/corpus/uniform-8ply-unique-v1.jsonl",
+    "corpusManifestFile": "artifacts/paired-first-player/2026-07/corpus/manifest.json",
+    "corpusFileSha256": "be6637b1b1fbd9cb486e3063d4f4b3ddcf1e6c644bd34e6a0ddfa68799103a9c",
+    "requestedOpenings": 12,
+    "maxTurns": 120,
+    "mctsIterations": 12,
+    "mctsPlayoutTurns": 16,
+    "conditionHashes": {
+      "C0": "d047fd26da5ad66c519a0fced92359718e6dbd1decf4bae9bb81f7fe1fbf17dd",
+      "D1": "7520690800d97f1b44aeeb36b60ab236c49fcbbda310769e34ba66ba51035b36",
+      "D3": "3fd8a70980ad106a2395eb7481894e32b1d5d48abbed93d810952b7454291172",
+      "D4": "52b71474756762f52178107e15c1ef86fed93f521e8d1a261562741bc74541a9",
+      "EL": "b002e3fa35711ce50bb30cff736e87c4b8b4e5817d1c74be93bb035ef1b3b4be",
+      "EV2": "fd4b5af5478470a23340652d242a338ba21e83cab5fea25585d9bf246aaa5f1f",
+      "SM": "ae304e734620a45f48ec84d6992cc88d2c6ba8f729cb6edd040e71024aec3e8c"
+    },
+    "sourceCommit": "7f3bf906afeef971ef38c6a50c83883aa9e95ab6",
+    "sourceTreeDirty": false,
+    "node": "v24.6.0",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "90950e1347d1962667c34808fc36c7941410594b750e72c6faa617df92987499",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+      "tools/experiments/paired-first-player-common.js": "33ebd2cbea8929ba927ce824f0c0e44cd2f0fa308164e32199a25701fcfce5b2",
+      "tools/experiments/generate-opening-corpus.js": "a057963867fe882d7e0df5bc6eae35f664d6abd4ee27004abf5082de153fe37a",
+      "tools/experiments/run-paired-first-player-research.js": "124179879e6a301cd49ea586369904dd6b18a58cfcc2da74ef78f58e3edf88ab",
+      "tools/experiments/aggregate-paired-first-player-research.js": "edef395a692c4fd1bc93b3d24aa0678e52be077febaabdda15f85cbc7841cf4d"
+    }
+  },
+  "expected": {
+    "openings": 12,
+    "conditions": 7,
+    "games": 84
+  },
+  "completedBlocks": 12,
+  "completedGames": 84,
+  "partialGames": 0,
+  "recordedGames": 84,
+  "current": null,
+  "elapsedSeconds": 857.764,
+  "etaSeconds": 0
+}
