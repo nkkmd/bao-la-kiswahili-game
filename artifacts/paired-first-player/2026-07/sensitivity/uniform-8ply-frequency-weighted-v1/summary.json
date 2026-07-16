@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-16T11:36:28.389Z",
+  "profile": "sensitivity",
+  "status": "complete",
+  "methodology": {
+    "experimentalUnit": "openingId slot, clustered by openingMovesHash",
+    "openingMoveClusters": 189,
+    "openings": 200,
+    "conditions": [
+      "C0",
+      "D3",
+      "EL",
+      "EV2"
+    ],
+    "games": 800,
+    "score": {
+      "southWin": 1,
+      "draw": 0.5,
+      "northWin": 0
+    },
+    "bootstrapSamples": 10000,
+    "primaryComparisons": [
+      "C0 vs D3",
+      "C0 vs EL",
+      "C0 vs EV2"
+    ],
+    "multiplicityAdjustment": "not applied; cluster bootstrap intervals reported"
+  },
+  "integrity": {
+    "corpusId": "uniform-8ply-frequency-weighted-v1",
+    "corpusFileSha256": "e43eb46c5c6a5968d1a9a1cda920a1b53d40812039078a441042c1673d986df3",
+    "entriesHash": "4e0d2000d77b3089da6951da94f7fc4dce555a74866be89357ed45e16dd9c1ae",
+    "completeBlocks": 200,
+    "uniqueOpeningMoves": 189,
+    "duplicateOpeningSlots": 11,
+    "results": 800,
+    "missingBlocks": 0,
+    "duplicateResults": 0,
+    "partialResults": 0,
+    "openingStateHashesMatch": true,
+    "conditionHashesMatch": true,
+    "sourceHashesMatch": true
+  },
+  "provenance": {
+    "sourceCommit": "5465ababd9dee32e35ecac83d3810089731a4282",
+    "sourceTreeDirty": true,
+    "node": "v24.6.0",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "90950e1347d1962667c34808fc36c7941410594b750e72c6faa617df92987499",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+      "tools/experiments/paired-first-player-common.js": "4dc0a11ea414eb1c094198f6b08d5e0c9cc19909e32110bd30d81b75af7671ab",
+      "tools/experiments/generate-opening-corpus.js": "92ee41096c645456a9f6528a8d7817544c748bc3f479e4831e3973459f54f84a",
+      "tools/experiments/run-paired-first-player-research.js": "6bde46cfcd6a904f8a42aacd2a06c3935b3e42d31eb5dfbcba1ab3e9d753ab1c",
+      "tools/experiments/aggregate-paired-first-player-research.js": "1e02e8340a6c45cd278f8697cc8fb567d2c45d66e90a6b32b450804d5c249e0e"
+    }
+  },
+  "conditions": [
+    {
+      "conditionId": "C0",
+      "games": 200,
+      "southWins": 100,
+      "northWins": 100,
+      "draws": 0,
+      "southWinRateDecisive": 0.5,
+      "southWinRateWilson95": [
+        0.43136085960389187,
+        0.5686391403961082
+      ],
+      "averagePlies": 53.45,
+      "medianPlies": 54,
+      "openingMoveClusters": 189,
+      "southScoreClusterBootstrap95": [
+        0.42574257425742573,
+        0.5736040609137056
+      ]
+    },
+    {
+      "conditionId": "D3",
+      "games": 200,
+      "southWins": 99,
+      "northWins": 100,
+      "draws": 1,
+      "southWinRateDecisive": 0.49748743718592964,
+      "southWinRateWilson95": [
+        0.42872774656614177,
+        0.566342294806002
+      ],
+      "averagePlies": 59.845,
+      "medianPlies": 58,
+      "openingMoveClusters": 189,
+      "southScoreClusterBootstrap95": [
+        0.4256410256410256,
+        0.5707070707070707
+      ]
+    },
+    {
+      "conditionId": "EL",
+      "games": 200,
+      "southWins": 104,
+      "northWins": 96,
+      "draws": 0,
+      "southWinRateDecisive": 0.52,
+      "southWinRateWilson95": [
+        0.4510378507281424,
+        0.588208336216767
+      ],
+      "averagePlies": 52.96,
+      "medianPlies": 53,
+      "openingMoveClusters": 189,
+      "southScoreClusterBootstrap95": [
+        0.44660194174757284,
+        0.595
+      ]
+    },
+    {
+      "conditionId": "EV2",
+      "games": 200,
+      "southWins": 104,
+      "northWins": 96,
+      "draws": 0,
+      "southWinRateDecisive": 0.52,
+      "southWinRateWilson95": [
+        0.4510378507281424,
+        0.588208336216767
+      ],
+      "averagePlies": 53.7,
+      "medianPlies": 54,
+      "openingMoveClusters": 189,
+      "southScoreClusterBootstrap95": [
+        0.4472361809045226,
+        0.595
+      ]
+    }
+  ],
+  "primaryComparisons": [
+    {
+      "baseline": "C0",
+      "comparison": "D3",
+      "openings": 200,
+      "meanPairedDifference": -0.0025,
+      "pairedBootstrap95": [
+        -0.107147212543554,
+        0.1044776119402985
+      ],
+      "pairedBootstrapMethod": "openingMovesHash cluster bootstrap",
+      "openingMoveClusters": 189,
+      "differentOutcome": 109,
+      "towardSouth": 54,
+      "towardNorth": 55,
+      "outcomeTable": {
+        "south": {
+          "south": 45,
+          "north": 54,
+          "draw": 1
+        },
+        "north": {
+          "south": 54,
+          "north": 46,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 54,
+        "baselineSouthComparisonNorth": 54,
+        "total": 108
+      },
+      "mcnemarP": null
+    },
+    {
+      "baseline": "C0",
+      "comparison": "EL",
+      "openings": 200,
+      "meanPairedDifference": 0.02,
+      "pairedBootstrap95": [
+        -0.06467661691542288,
+        0.10396555280528044
+      ],
+      "pairedBootstrapMethod": "openingMovesHash cluster bootstrap",
+      "openingMoveClusters": 189,
+      "differentOutcome": 72,
+      "towardSouth": 38,
+      "towardNorth": 34,
+      "outcomeTable": {
+        "south": {
+          "south": 66,
+          "north": 34,
+          "draw": 0
+        },
+        "north": {
+          "south": 38,
+          "north": 62,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 38,
+        "baselineSouthComparisonNorth": 34,
+        "total": 72
+      },
+      "mcnemarP": null
+    },
+    {
+      "baseline": "C0",
+      "comparison": "EV2",
+      "openings": 200,
+      "meanPairedDifference": 0.02,
+      "pairedBootstrap95": [
+        -0.024752475247524754,
+        0.06467661691542288
+      ],
+      "pairedBootstrapMethod": "openingMovesHash cluster bootstrap",
+      "openingMoveClusters": 189,
+      "differentOutcome": 18,
+      "towardSouth": 11,
+      "towardNorth": 7,
+      "outcomeTable": {
+        "south": {
+          "south": 93,
+          "north": 7,
+          "draw": 0
+        },
+        "north": {
+          "south": 11,
+          "north": 89,
+          "draw": 0
+        },
+        "draw": {
+          "south": 0,
+          "north": 0,
+          "draw": 0
+        }
+      },
+      "decisiveDiscordant": {
+        "baselineNorthComparisonSouth": 11,
+        "baselineSouthComparisonNorth": 7,
+        "total": 18
+      },
+      "mcnemarP": null
+    }
+  ],
+  "secondaryComparisons": []
+}

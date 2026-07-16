@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "uniform-4ply-unique-census-v1",
+  "generatedAt": "2026-07-16T05:49:15.024Z",
+  "generator": {
+    "seed": 202607164,
+    "count": 124,
+    "plies": 4,
+    "policy": "uniform",
+    "unique": true,
+    "stratify": null,
+    "adoptionRule": "deterministic generation order; no outcome-based selection"
+  },
+  "openings": 124,
+  "uniqueOpeningMoves": 124,
+  "duplicateOpeningSlots": 0,
+  "rejected": 1184,
+  "rejectionReasons": {
+    "duplicate-opening": 1184
+  },
+  "firstMoveStrata": {
+    "takata:namua:0:5:left:::false": 22,
+    "takata:namua:0:5:right:::false": 40,
+    "takata:namua:0:6:left:::false": 17,
+    "takata:namua:0:6:right:::false": 45
+  },
+  "corpusFile": "corpus.jsonl",
+  "corpusFileSha256": "b63c8265602aaadf609b928648aa6d65b6fc1858f79964febc3b9f67b530252f",
+  "entriesHash": "39d894f8389fd0daad63123e16d42c9fc97c45698fb285d53a153bda57306d47",
+  "provenance": {
+    "sourceCommit": "5465ababd9dee32e35ecac83d3810089731a4282",
+    "sourceTreeDirty": true,
+    "node": "v24.6.0",
+    "platform": "linux",
+    "arch": "x64",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "90950e1347d1962667c34808fc36c7941410594b750e72c6faa617df92987499",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+      "tools/experiments/paired-first-player-common.js": "4dc0a11ea414eb1c094198f6b08d5e0c9cc19909e32110bd30d81b75af7671ab",
+      "tools/experiments/generate-opening-corpus.js": "92ee41096c645456a9f6528a8d7817544c748bc3f479e4831e3973459f54f84a",
+      "tools/experiments/run-paired-first-player-research.js": "6bde46cfcd6a904f8a42aacd2a06c3935b3e42d31eb5dfbcba1ab3e9d753ab1c",
+      "tools/experiments/aggregate-paired-first-player-research.js": "1e02e8340a6c45cd278f8697cc8fb567d2c45d66e90a6b32b450804d5c249e0e"
+    }
+  }
+}
