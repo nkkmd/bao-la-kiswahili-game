@@ -50,6 +50,14 @@ node tools/experiments/analyze-joseki-mcts-sensitivity.js
 
 固定コーパスは`artifacts/joseki-study/corpus/mcts-sensitivity-sample.json`、結果は`artifacts/joseki-study/robustness/mcts-sensitivity/`、人間向け集計は`doc/joseki/MCTS_SENSITIVITY.md`へ保存する。
 
+保存済みのPhase 4と短時間MCTS成果物を局面特徴別に横断集計する。
+
+```bash
+node tools/experiments/analyze-joseki-position-patterns.js
+```
+
+合法手数、強制捕獲、nyumba所有、盤上・前列・nyumba石差ごとのC0評価と探索安定性を集計し、反例候補を`doc/joseki/POSITION_PATTERNS.md`へ出力する。
+
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 
 ## 実行環境

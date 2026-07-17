@@ -6,7 +6,8 @@
 - [8 ply候補系列](CANDIDATE_LINES.md)
 - [8 ply葉 MCTS頑健性試験](MCTS_ROBUSTNESS.md)
 - [MCTS iteration感度試験](MCTS_SENSITIVITY.md)
+- [8 ply局面パターン](POSITION_PATTERNS.md)
 - [着手表記](JOSEKI_NOTATION.md)
 - 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
 
-現在は4 ply全数調査、最有力候補の8 ply重点検証、短時間MCTSスクリーニング、層化iteration感度試験を完了した。候補初手は`screened`、MCTSの次手選択は低分岐の強制捕獲層を除いて`unstable`であり、暫定定石はまだ認定していない。
+現在は4 ply全数調査、最有力候補の8 ply重点検証、短時間MCTSスクリーニング、層化iteration感度試験、8 ply局面パターン横断集計を完了した。候補初手は`screened`、MCTSの次手選択は低分岐の強制捕獲層を除いて`unstable`、局面原則は`descriptive-patterns`であり、暫定定石はまだ認定していない。
