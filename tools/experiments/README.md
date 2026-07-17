@@ -39,6 +39,17 @@ node tools/experiments/analyze-joseki-mcts.js
 
 MCTSランナーもノード単位で再開できる。正式条件は12 iteration、playout上限16手、bao評価、3 seedで、結果は`artifacts/joseki-study/robustness/mcts-8ply/`、集計は`doc/joseki/MCTS_ROBUSTNESS.md`へ保存する。
 
+iteration不足と局面型の影響を分離する感度試験は、6層から各4局面を固定抽出し、12、48、192 iterationを比較する。
+
+```bash
+node tools/experiments/generate-joseki-mcts-sample.js
+node tools/experiments/run-joseki-mcts-sensitivity.js
+node tools/experiments/verify-joseki-mcts-sensitivity.js
+node tools/experiments/analyze-joseki-mcts-sensitivity.js
+```
+
+固定コーパスは`artifacts/joseki-study/corpus/mcts-sensitivity-sample.json`、結果は`artifacts/joseki-study/robustness/mcts-sensitivity/`、人間向け集計は`doc/joseki/MCTS_SENSITIVITY.md`へ保存する。
+
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 
 ## 実行環境

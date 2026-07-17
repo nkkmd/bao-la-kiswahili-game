@@ -50,7 +50,7 @@ Version: 0.2.0
 ## 5. 次の研究課題
 
 1. 8 ply主要系列から基準AIの継続自己対局を行い、探索評価と勝敗の整合性を確認する。
-2. 層化した少数局面へMCTS iterationを増やして適用し、短時間MCTSの不安定性が探索不足か方式差かを分離する。
+2. 低分岐の強制捕獲局面と高分岐局面を分離し、MCTSを定石検証へ使える適用範囲を限定する。
 3. 捕獲、nyumba維持、強制系列のどれが評価差へ寄与するか局面特徴とPVで説明する。
 4. 最大手数120／180と複数seedで結果の反転率を測る。
 
@@ -122,3 +122,30 @@ seed別phase2一致率は26.6%、26.8%、26.7%であり、seedによる平均値
 - tree hash: `ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa`
 - verification hash: `8c2507cacfcf0cd85e0132c0b26f444ce3eb7c10fc465c78be1e47fd6f27952e`
 - 詳細は`doc/joseki/MCTS_ROBUSTNESS.md`を参照
+
+## 8. MCTS iteration感度試験
+
+短時間MCTSの不安定性がiteration不足だけで説明できるかを調べるため、8 ply葉を合法手数2〜4、5〜7、8以上と、強制捕獲／混合の組合せで6層に分けた。各層からtree hashと固定saltによるhash順で4局面を抽出し、計24局面を結果確認前に固定した。同じ3 seedで12、48、192 iterationを比較した。
+
+事前判定は、192 iterationのseed完全一致率50%以上、12から192 iterationの改善20ポイント以上、timeout 0とした。
+
+| iteration | seed完全一致率 | phase2一致率 | 選択手平均visit |
+| ---: | ---: | ---: | ---: |
+| 12 | 8.3% | 29.2% | 3.32 |
+| 48 | 12.5% | 31.9% | 15.47 |
+| 192 | 25.0% | 31.9% | 58.19 |
+
+iteration増加でseed一致は改善したが、192 iterationでも25.0%、改善幅16.7ポイントに留まり、両事前閾値へ届かなかった。phase2一致率も31.9%で頭打ちになったため、全体の差を短時間MCTSの探索不足だけで説明できない。
+
+ただし層別には明瞭な差があった。192 iterationで合法手2〜4の強制捕獲層は4/4局面が3 seed完全一致となった。一方、合法手5〜7の両層と合法手8以上の強制捕獲層は0/4だった。MCTSの頑健性は捕獲の有無だけでなくroot分岐数へ強く依存する。
+
+この結果から、現在のMCTSを全8 ply葉へ一律に適用する方法は`unstable`を維持する。低分岐の強制捕獲局面については局面パターン検証の補助証拠として使用できる可能性があるが、高分岐局面ではさらにiterationを増やす前にcandidate制限、prior、探索方式の設計を見直す。候補初手`index 5 / left`の状態は引き続き`screened`とする。
+
+完全性監査:
+
+- 6層、24局面、216評価、18,144 simulation
+- 欠損0、partial 0、timeout 0
+- source hash、tree hash、sample hash、condition hashが一致
+- sample hash: `a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6`
+- verification hash: `f4532f85981284b35faa695bec9c88cebb41dca43e799bc465ddc0811c5b9c3d`
+- 詳細は`doc/joseki/MCTS_SENSITIVITY.md`を参照
