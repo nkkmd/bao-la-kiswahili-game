@@ -5,7 +5,7 @@ Version: 0.1.0
 
 ## 1. 現在の到達点
 
-第一段階のうち、標準初期局面から4 plyまでの全数開局木、depth 1〜4、legacy／bao／bao-v2評価、完全性検証、初手・応手表の生成を完了した。
+第一段階のうち、標準初期局面から4 plyまでの全数開局木、depth 1〜4、legacy／bao／bao-v2評価、完全性検証、初手・応手表の生成を完了した。さらに最有力初手を複数条件の推奨手で8 plyまで延長した。
 
 標準初期局面にはSouthの合法初手が4通りあり、その後のNorthの合法応手は合計14通りだった。rootを含む19局面、18辺を生成し、転置はなかった。12 AI条件で全19局面を評価したため、評価結果は228件である。
 
@@ -49,10 +49,51 @@ Version: 0.1.0
 
 ## 5. 次の研究課題
 
-1. 各2 ply局面から基準AIの継続自己対局を行い、最悪応手評価と勝敗の整合性を確認する。
-2. 初手4通りを共有開始局面としてdepth、評価方式、MCTS条件で比較する。
-3. `index 5 / left`の主要応手4通りを4〜8 plyへ延長する。
-4. 捕獲、nyumba維持、強制系列のどれが評価差へ寄与するか局面特徴とPVで説明する。
-5. 最大手数120／180と複数seedで結果の反転率を測る。
+1. 8 ply主要系列から基準AIの継続自己対局を行い、探索評価と勝敗の整合性を確認する。
+2. MCTSを同じ8 ply葉へ適用し、phase2探索との本線一致率を測る。
+3. 捕獲、nyumba維持、強制系列のどれが評価差へ寄与するか局面特徴とPVで説明する。
+4. 最大手数120／180と複数seedで結果の反転率を測る。
 
 現時点の状態ラベルは、全4初手とも`screened`である。`provisional-joseki`、`validated`、`refuted`はいずれも未認定とする。
+
+## 6. 8 ply候補系列の重点検証
+
+`index 5 / left`を固定し、C0上位3手とbao depth 1〜4、legacy depth 2、bao-v2 depth 2の推奨手の和集合を各分岐点で保持した。生成木は1,932ノード、8 ply葉1,252件、ユニーク局面1,497件で、転置435件を検出した。
+
+全8 ply葉を6条件で評価し、7,512評価を完走した。内部ノードは枝選択時に評価済みのため正式比較から除外し、葉だけを共有局面として比較した。
+
+C0の保守的本線は次のとおりだった。
+
+```text
+1. takata  index 5 / left
+2. capture index 4 / side left
+3. capture index 2 / side right
+4. capture index 4 / side left
+5. capture index 4 / side left
+6. capture index 2 / side right
+7. capture index 0 / side left
+8. capture index 4 / side right
+```
+
+内部着手キーを含む完全な系列は`doc/joseki/CANDIDATE_LINES.md`を参照する。
+
+| 条件 | 保守的評価 | C0本線との一致 |
+| --- | ---: | ---: |
+| bao depth 1 | -162 | 2/8 |
+| bao depth 2 | 38 | 8/8 |
+| bao depth 3 | -229 | 8/8 |
+| bao depth 4 | 65 | 4/8 |
+| legacy depth 2 | 79 | 2/8 |
+| bao-v2 depth 2 | 35 | 8/8 |
+
+初手とNorthの第1応手は全6条件で一致した。3〜4 plyは4条件、5〜8 plyはbao depth 2、depth 3、bao-v2 depth 2の3条件が一致した。固定系列としての安定性は4 ply以降で低下するが、短い強制系列と局面条件の組として扱う仮説H6と整合する。
+
+評価値の符号が深度間で反転し、depth 1とlegacyでは3 ply目から別系列となるため、現時点では`screened`を維持する。継続自己対局、MCTS、最大手数感度、戦術的説明を通過するまで`provisional-joseki`へ昇格させない。
+
+Phase 4完全性監査:
+
+- tree hash: `ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa`
+- 8 ply葉1,252件、6条件、7,512評価
+- 欠損0、partial 0
+- tree、state、sequence、condition、source hashが一致
+- 1,932局面、8,726合法手、8,726遷移の座席交換監査に合格

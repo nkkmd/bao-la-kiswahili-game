@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-17T13:30:00.259Z",
+  "passed": true,
+  "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+  "nodes": 1252,
+  "edges": 1931,
+  "results": 7512,
+  "conditionCounts": {
+    "bao-d1": 1252,
+    "bao-d2": 1252,
+    "bao-d3": 1252,
+    "bao-d4": 1252,
+    "legacy-d2": 1252,
+    "bao-v2-d2": 1252
+  },
+  "partialResults": 0,
+  "stateHashesMatch": true,
+  "sequenceHashesMatch": true,
+  "conditionHashesMatch": true,
+  "sourceHashesMatch": true,
+  "symmetryPassed": true,
+  "verificationHash": "d962e21c278aca860f9c0ebf35c8370613395ba2205a3f138302307d24693d68"
+}

@@ -19,6 +19,7 @@ function parseArgs(argv) {
     tree: "artifacts/joseki-study/corpus/tree.json",
     output: "artifacts/joseki-study/phase-1",
     conditions: CONDITIONS.map(({ id }) => id),
+    minPly: 0,
     maxNodes: null,
     status: false,
   };
@@ -30,6 +31,7 @@ function parseArgs(argv) {
       if (key === "--tree") options.tree = value;
       else if (key === "--output") options.output = value;
       else if (key === "--conditions") options.conditions = value.split(",").filter(Boolean);
+      else if (key === "--min-ply") options.minPly = Number(value);
       else if (key === "--max-nodes") options.maxNodes = Number(value);
       else throw new Error(`Unknown argument: ${key}`);
     }
@@ -40,6 +42,9 @@ function parseArgs(argv) {
   }
   if (options.maxNodes !== null && (!Number.isInteger(options.maxNodes) || options.maxNodes < 1)) {
     throw new Error("max-nodes must be a positive integer");
+  }
+  if (!Number.isInteger(options.minPly) || options.minPly < 0 || options.minPly > 8) {
+    throw new Error("min-ply must be an integer from 0 through 8");
   }
   return options;
 }
@@ -60,6 +65,7 @@ function identity(options, tree) {
     treeFile: options.tree,
     treeHash: tree.treeHash,
     conditionIds: options.conditions,
+    minPly: options.minPly,
     conditionHashes: Object.fromEntries(conditions.map((condition) => [condition.id,
       hashValue(conditionConfig(condition))])),
     sourceCommit: source.sourceCommit,
@@ -127,7 +133,8 @@ function run(options) {
   }
   const tree = JSON.parse(fs.readFileSync(options.tree, "utf8"));
   validateTree(tree);
-  const nodes = (options.maxNodes === null ? tree.nodes : tree.nodes.slice(0, options.maxNodes));
+  const eligibleNodes = tree.nodes.filter(({ ply }) => ply >= options.minPly);
+  const nodes = options.maxNodes === null ? eligibleNodes : eligibleNodes.slice(0, options.maxNodes);
   const experimentIdentity = identity(options, tree);
   fs.mkdirSync(options.output, { recursive: true });
   const progressFile = path.join(options.output, "progress.json");

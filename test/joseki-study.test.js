@@ -58,4 +58,12 @@ assert.equal(summary.integrity.passed, true);
 assert.ok(summary.candidates.every(({ bestReplyForNorth }) => bestReplyForNorth));
 assert.match(fs.readFileSync(markdownFile, "utf8"), /初手・応手スクリーニング/);
 
+const leafOutput = path.join(temp, "leaf-results");
+run(parseEvaluationArgs([
+  "--tree", treeFile, "--output", leafOutput, "--conditions", "bao-d1", "--min-ply", "2",
+]));
+const leafVerified = verify({ tree: treeFile, input: leafOutput });
+assert.equal(leafVerified.verification.nodes, 14);
+assert.equal(leafVerified.verification.results, 14);
+
 console.log("Joseki study tests passed");

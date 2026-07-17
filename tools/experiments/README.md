@@ -13,6 +13,22 @@ node tools/experiments/analyze-joseki-results.js
 
 評価ランナーは1条件ごとにpartialを原子的に保存し、同じコマンドで未完了条件から再開する。集計器は全ノード・全条件が揃い、partial、hash不一致、source不一致がない場合だけJSON集計と`doc/joseki/OPENING_INDEX.md`を生成する。
 
+最有力候補を複数条件の推奨手で8 plyまで延長し、葉局面だけを正式評価する。
+
+```bash
+node tools/experiments/generate-joseki-candidate-tree.js --max-ply 8 --top 3
+node tools/experiments/evaluate-joseki-nodes.js \
+  --tree artifacts/joseki-study/corpus/candidate-tree-8ply.json \
+  --output artifacts/joseki-study/phase-4 \
+  --conditions bao-d1,bao-d2,bao-d3,bao-d4,legacy-d2,bao-v2-d2 \
+  --min-ply 8
+node tools/experiments/verify-joseki-artifacts.js \
+  --tree artifacts/joseki-study/corpus/candidate-tree-8ply.json \
+  --input artifacts/joseki-study/phase-4 \
+  --output artifacts/joseki-study/verified/phase-4-verification.json
+node tools/experiments/analyze-joseki-candidate-results.js
+```
+
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 
 ## 実行環境

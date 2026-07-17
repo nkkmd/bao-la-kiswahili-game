@@ -32,7 +32,9 @@ function verify(options) {
   const progress = JSON.parse(fs.readFileSync(progressFile, "utf8"));
   if (progress.status !== "complete") throw new Error(`Evaluation is not complete: ${progress.status}`);
   if (progress.identity.treeHash !== tree.treeHash) throw new Error("Tree hash mismatch");
-  if (progress.expected.nodes !== tree.nodes.length) throw new Error("Node count mismatch");
+  const eligibleNodes = tree.nodes.filter(({ ply }) => ply >= (progress.identity.minPly ?? 0));
+  const selectedNodes = eligibleNodes.slice(0, progress.expected.nodes);
+  if (progress.expected.nodes > eligibleNodes.length) throw new Error("Node count mismatch");
   const partialDir = path.join(options.input, "partials");
   if (fs.existsSync(partialDir) && fs.readdirSync(partialDir).some((file) => file.endsWith(".json"))) {
     throw new Error("Partial results remain; refusing to verify");
@@ -43,7 +45,7 @@ function verify(options) {
   }
   let results = 0;
   const conditionCounts = Object.fromEntries(progress.identity.conditionIds.map((id) => [id, 0]));
-  for (const node of tree.nodes) {
+  for (const node of selectedNodes) {
     const file = path.join(options.input, "nodes", `${node.nodeId}.json`);
     if (!fs.existsSync(file)) throw new Error(`Missing node result: ${node.nodeId}`);
     const block = JSON.parse(fs.readFileSync(file, "utf8"));
@@ -51,8 +53,8 @@ function verify(options) {
     results += block.results.length;
     for (const result of block.results) conditionCounts[result.conditionId] += 1;
   }
-  const expectedResults = tree.nodes.length * progress.identity.conditionIds.length;
-  if (results !== expectedResults || Object.values(conditionCounts).some((count) => count !== tree.nodes.length)) {
+  const expectedResults = selectedNodes.length * progress.identity.conditionIds.length;
+  if (results !== expectedResults || Object.values(conditionCounts).some((count) => count !== selectedNodes.length)) {
     throw new Error("Evaluation count mismatch");
   }
   const verification = {
@@ -60,7 +62,7 @@ function verify(options) {
     verifiedAt: new Date().toISOString(),
     passed: true,
     treeHash: tree.treeHash,
-    nodes: tree.nodes.length,
+    nodes: selectedNodes.length,
     edges: tree.edges.length,
     results,
     conditionCounts,
