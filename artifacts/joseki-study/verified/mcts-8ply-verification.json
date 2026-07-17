@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-17T14:44:52.803Z",
+  "passed": true,
+  "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+  "nodes": 1252,
+  "results": 3756,
+  "simulations": 45000,
+  "timeouts": 0,
+  "conditionCounts": {
+    "mcts-s1": 1252,
+    "mcts-s2": 1252,
+    "mcts-s3": 1252
+  },
+  "partialResults": 0,
+  "sourceHashesMatch": true,
+  "symmetryPassed": true,
+  "verificationHash": "8c2507cacfcf0cd85e0132c0b26f444ce3eb7c10fc465c78be1e47fd6f27952e"
+}

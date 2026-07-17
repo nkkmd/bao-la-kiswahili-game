@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T14:42:56.975Z",
+  "status": "unstable",
+  "scope": "seeded MCTS recommendation robustness on the shared 8-ply leaf corpus",
+  "config": {
+    "level": "hard",
+    "searchProfile": "mcts",
+    "evaluationProfile": "bao",
+    "timeLimitMs": "Infinity",
+    "mctsIterations": 12,
+    "mctsPlayoutTurns": 16,
+    "mctsExploration": 1.4142135623730951,
+    "mctsPolicy": "evaluation",
+    "mctsRoot": "visits",
+    "mctsReward": "evaluation",
+    "mctsPrior": "none",
+    "mctsPriorWeight": 1,
+    "mctsCandidateLimit": 0,
+    "mctsCandidateSource": "all",
+    "mctsCandidateDepth": 1
+  },
+  "thresholds": {
+    "choiceNodePhase2AgreementMinimum": 0.6,
+    "choiceNodeUnanimousSeedConsensusMinimum": 0.7,
+    "maximumTimeouts": 0
+  },
+  "checks": {
+    "phase2Agreement": false,
+    "unanimousSeedConsensus": false,
+    "timeouts": true
+  },
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-17T14:42:55.705Z",
+    "passed": true,
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "nodes": 1252,
+    "results": 3756,
+    "simulations": 45000,
+    "timeouts": 0,
+    "conditionCounts": {
+      "mcts-s1": 1252,
+      "mcts-s2": 1252,
+      "mcts-s3": 1252
+    },
+    "partialResults": 0,
+    "sourceHashesMatch": true,
+    "symmetryPassed": true,
+    "verificationHash": "8c2507cacfcf0cd85e0132c0b26f444ce3eb7c10fc465c78be1e47fd6f27952e"
+  },
+  "nodes": {
+    "total": 1252,
+    "forced": 67,
+    "choice": 1185
+  },
+  "phase2Agreement": 0.26666666666666666,
+  "unanimousSeedConsensus": 0.08438818565400844,
+  "perSeed": [
+    {
+      "conditionId": "mcts-s1",
+      "choiceNodes": 1185,
+      "agreements": 315,
+      "simulations": 14220,
+      "playoutTurns": 220030,
+      "agreementRate": 0.26582278481012656,
+      "averagePlayoutTurnsPerSimulation": 15.473277074542898
+    },
+    {
+      "conditionId": "mcts-s2",
+      "choiceNodes": 1185,
+      "agreements": 317,
+      "simulations": 14220,
+      "playoutTurns": 219617,
+      "agreementRate": 0.26751054852320677,
+      "averagePlayoutTurnsPerSimulation": 15.44423347398031
+    },
+    {
+      "conditionId": "mcts-s3",
+      "choiceNodes": 1185,
+      "agreements": 316,
+      "simulations": 14220,
+      "playoutTurns": 219635,
+      "agreementRate": 0.26666666666666666,
+      "averagePlayoutTurnsPerSimulation": 15.445499296765119
+    }
+  ],
+  "mcts": {
+    "averageSelectedMoveVisits": 3.792686357243319,
+    "averageSelectedMoveValue": 0.4062402188745791
+  }
+}

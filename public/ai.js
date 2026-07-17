@@ -802,6 +802,13 @@
       return b.visits - a.visits || score(b) - score(a);
     })[0];
     if (completed?.move) bestMove = completed.move;
+    stats.mctsRoot = root.children.map((child) => ({
+      moveKey: moveKey(child.move),
+      visits: child.visits,
+      averageValue: child.visits ? child.value / child.visits : null,
+    })).sort((a, b) => b.visits - a.visits
+      || (b.averageValue ?? -Infinity) - (a.averageValue ?? -Infinity)
+      || a.moveKey.localeCompare(b.moveKey));
     stats.completedDepth = 0;
     return bestMove;
   }

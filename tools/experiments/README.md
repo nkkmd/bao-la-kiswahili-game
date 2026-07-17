@@ -29,6 +29,16 @@ node tools/experiments/verify-joseki-artifacts.js \
 node tools/experiments/analyze-joseki-candidate-results.js
 ```
 
+同じ8 ply葉へ事前固定した3 seedの短時間MCTSを適用し、phase2推奨手との一致とseed安定性を検証する。
+
+```bash
+node tools/experiments/run-joseki-mcts.js
+node tools/experiments/verify-joseki-mcts.js
+node tools/experiments/analyze-joseki-mcts.js
+```
+
+MCTSランナーもノード単位で再開できる。正式条件は12 iteration、playout上限16手、bao評価、3 seedで、結果は`artifacts/joseki-study/robustness/mcts-8ply/`、集計は`doc/joseki/MCTS_ROBUSTNESS.md`へ保存する。
+
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 
 ## 実行環境

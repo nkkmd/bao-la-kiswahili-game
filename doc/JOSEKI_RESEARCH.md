@@ -1,11 +1,11 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.1.0
+Version: 0.2.0
 更新日: 2026-07-17
 
 ## 1. 現在の到達点
 
-第一段階のうち、標準初期局面から4 plyまでの全数開局木、depth 1〜4、legacy／bao／bao-v2評価、完全性検証、初手・応手表の生成を完了した。さらに最有力初手を複数条件の推奨手で8 plyまで延長した。
+第一段階のうち、標準初期局面から4 plyまでの全数開局木、depth 1〜4、legacy／bao／bao-v2評価、完全性検証、初手・応手表の生成を完了した。さらに最有力初手を複数条件の推奨手で8 plyまで延長し、同じ8 ply葉で短時間MCTSのseed頑健性を検証した。
 
 標準初期局面にはSouthの合法初手が4通りあり、その後のNorthの合法応手は合計14通りだった。rootを含む19局面、18辺を生成し、転置はなかった。12 AI条件で全19局面を評価したため、評価結果は228件である。
 
@@ -50,7 +50,7 @@ Version: 0.1.0
 ## 5. 次の研究課題
 
 1. 8 ply主要系列から基準AIの継続自己対局を行い、探索評価と勝敗の整合性を確認する。
-2. MCTSを同じ8 ply葉へ適用し、phase2探索との本線一致率を測る。
+2. 層化した少数局面へMCTS iterationを増やして適用し、短時間MCTSの不安定性が探索不足か方式差かを分離する。
 3. 捕獲、nyumba維持、強制系列のどれが評価差へ寄与するか局面特徴とPVで説明する。
 4. 最大手数120／180と複数seedで結果の反転率を測る。
 
@@ -97,3 +97,28 @@ Phase 4完全性監査:
 - 欠損0、partial 0
 - tree、state、sequence、condition、source hashが一致
 - 1,932局面、8,726合法手、8,726遷移の座席交換監査に合格
+
+## 7. Phase 5 短時間MCTSスクリーニング
+
+結果を見る前に、既存のscreeningプロファイルと同じMCTS強度を固定した。bao評価、evaluation playout方策、visitsによるroot選択、12 iteration、playout上限16手、3 seedを使用した。選択可能局面におけるphase2 bao depth 2との推奨手一致率60%以上、3 seed完全一致率70%以上、timeout 0を通過条件とした。
+
+8 ply葉1,252件を各3 seedで評価し、3,756結果、45,000 simulationを完了した。合法手0の終局2局面は0 simulation、合法手1の65局面と合わせた67局面を一致率から除外した。
+
+| 指標 | 結果 | 事前閾値 | 判定 |
+| --- | ---: | ---: | --- |
+| phase2推奨手一致率 | 26.7% | 60.0%以上 | 未達 |
+| 3 seed完全一致率 | 8.4% | 70.0%以上 | 未達 |
+| timeout | 0 | 0 | 合格 |
+
+seed別phase2一致率は26.6%、26.8%、26.7%であり、seedによる平均値の偏りよりも、個々の局面で推奨手が分散する問題が大きかった。平均playout長は約15.45手で上限16手に近く、12 iterationでは各候補へ十分なvisitを配分できていない。選択された手の平均visit数も3.79に留まった。
+
+したがって、この条件のMCTS結果は`unstable`とする。これは8 ply候補系列や初手`index 5 / left`の反証ではない。比較対象は候補木の8手そのものではなく、各8 ply葉からの次の推奨手であり、かつ短時間MCTSのseed内安定性が低いためである。候補初手は`screened`を維持し、次は合法手数と局面特徴で層化した少数局面に限定してiteration感度を調べる。
+
+完全性監査:
+
+- 1,252ノード、3,756評価、45,000 simulation
+- 欠損0、partial 0、timeout 0
+- source hash、tree hash、condition hashが一致
+- tree hash: `ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa`
+- verification hash: `8c2507cacfcf0cd85e0132c0b26f444ce3eb7c10fc465c78be1e47fd6f27952e`
+- 詳細は`doc/joseki/MCTS_ROBUSTNESS.md`を参照
