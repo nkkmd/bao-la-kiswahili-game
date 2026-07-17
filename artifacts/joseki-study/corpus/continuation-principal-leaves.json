@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T23:09:43.634Z",
+  "treeFile": "artifacts/joseki-study/corpus/candidate-tree-8ply.json",
+  "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+  "phase4VerificationHash": "d962e21c278aca860f9c0ebf35c8370613395ba2205a3f138302307d24693d68",
+  "selectionPolicy": {
+    "kind": "unique-final-nodes-of-six-phase4-principal-lines",
+    "conditionIds": [
+      "bao-d1",
+      "bao-d2",
+      "bao-d3",
+      "bao-d4",
+      "legacy-d2",
+      "bao-v2-d2"
+    ]
+  },
+  "counts": {
+    "entries": 3,
+    "sourceConditions": 6
+  },
+  "entries": [
+    {
+      "openingId": "principal-01-p8-0a893f802bff",
+      "nodeId": "p8-0a893f802bff",
+      "stateHash": "f98b9292a97c69c85b6b9a66f2619d4503f7bf8fb3828581fc74b5f6b4e350a9",
+      "sequenceHash": "0a893f802bff2880dc2b92496f0f08f1c32c6c87aad5a1f5d7b80ba38bf3d926",
+      "sourceConditions": [
+        "bao-d2",
+        "bao-d3",
+        "bao-v2-d2"
+      ],
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              1,
+              3,
+              0,
+              9,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              2,
+              0,
+              9,
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 9,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 9,
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          9,
+          9
+        ],
+        "legalMoves": [
+          2,
+          1
+        ],
+        "captureMoves": [
+          2,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          13,
+          15
+        ],
+        "frontSeeds": [
+          13,
+          15
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "phase2SouthScores": {
+        "bao-d1": -169,
+        "bao-d2": 38,
+        "bao-d3": -229,
+        "bao-d4": 18,
+        "legacy-d2": -61,
+        "bao-v2-d2": 35
+      }
+    },
+    {
+      "openingId": "principal-02-p8-2ac6d518ad40",
+      "nodeId": "p8-2ac6d518ad40",
+      "stateHash": "be0741b775b182df50198859ad7e6a74e3794d450a331006721a5c4489c0a676",
+      "sequenceHash": "2ac6d518ad408aab54b8edbbb836df78e5a7bf323e2b0a148664530d4f118548",
+      "sourceConditions": [
+        "bao-d4"
+      ],
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              1,
+              3,
+              0,
+              0,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              3,
+              1,
+              3,
+              10,
+              1,
+              3,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          false,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 9,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 9,
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          false,
+          true
+        ],
+        "nyumbaSeeds": [
+          0,
+          10
+        ],
+        "legalMoves": [
+          5,
+          5
+        ],
+        "captureMoves": [
+          5,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          7,
+          21
+        ],
+        "frontSeeds": [
+          7,
+          21
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "phase2SouthScores": {
+        "bao-d1": -268,
+        "bao-d2": 80,
+        "bao-d3": -286,
+        "bao-d4": 65,
+        "legacy-d2": -108,
+        "bao-v2-d2": 82
+      }
+    },
+    {
+      "openingId": "principal-03-p8-6d3a4bd270b2",
+      "nodeId": "p8-6d3a4bd270b2",
+      "stateHash": "c78a26bf2c81363f4c64ae5ccd196747f5cc25f574c228d2983a088375bd852b",
+      "sequenceHash": "6d3a4bd270b254ec69daf97dcabd2e6021454b7b630368bacda708ff369e8524",
+      "sourceConditions": [
+        "bao-d1",
+        "legacy-d2"
+      ],
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:left:right:use:false"
+      ],
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              3,
+              0,
+              0,
+              8,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              1,
+              1,
+              0,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 9,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 9,
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          8,
+          0
+        ],
+        "legalMoves": [
+          6,
+          6
+        ],
+        "captureMoves": [
+          6,
+          6
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          15,
+          13
+        ],
+        "frontSeeds": [
+          13,
+          7
+        ],
+        "backSeeds": [
+          2,
+          6
+        ]
+      },
+      "phase2SouthScores": {
+        "bao-d1": -162,
+        "bao-d2": 9,
+        "bao-d3": -249,
+        "bao-d4": 24,
+        "legacy-d2": 79,
+        "bao-v2-d2": 9
+      }
+    }
+  ],
+  "corpusHash": "37b68473e265c735f0cc41e97a219dc63db36f4d4f8367df266288f440f8259c"
+}

@@ -3,7 +3,7 @@
 Version: 0.2.0
 作成日: 2026-07-17
 
-実施状況: Phase 0、2 ply全数スクリーニング、4 ply全数評価、最有力候補の8 ply重点検証、Phase 5の短時間MCTSスクリーニングと層化iteration感度試験、Phase 6の8 ply局面パターン横断集計を完了。MCTSは低分岐の強制捕獲層のみ収束し、全体では事前閾値未達のため`unstable`。結果は`doc/JOSEKI_RESEARCH.md`を参照。
+実施状況: Phase 0、2 ply全数スクリーニング、4 ply全数評価、最有力候補の8 ply重点検証、Phase 5の短時間MCTS・iteration感度・主要系列継続自己対局、Phase 6の8 ply局面パターン横断集計を完了。MCTSは低分岐の強制捕獲層のみ収束し、8 ply評価符号と継続勝者の一致は44.4%で事前閾値未達。結果は`doc/JOSEKI_RESEARCH.md`を参照。
 
 ## 0. 概要
 

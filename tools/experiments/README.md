@@ -58,6 +58,17 @@ node tools/experiments/analyze-joseki-position-patterns.js
 
 合法手数、強制捕獲、nyumba所有、盤上・前列・nyumba石差ごとのC0評価と探索安定性を集計し、反例候補を`doc/joseki/POSITION_PATTERNS.md`へ出力する。
 
+Phase 4の6条件が選んだprincipal leafを固定コーパス化し、同じ条件で最大120手・180手まで自己対局を継続する。
+
+```bash
+node tools/experiments/generate-joseki-continuation-corpus.js
+node tools/experiments/run-joseki-continuations.js
+node tools/experiments/verify-joseki-continuations.js
+node tools/experiments/analyze-joseki-continuations.js
+```
+
+結果は`artifacts/joseki-study/robustness/continuations/`へ原子的に保存する。検証器は全着手を開始局面から再適用し、合法性、最終state hash、勝者、手数を照合する。集計は`doc/joseki/CONTINUATION_RESULTS.md`へ出力する。
+
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 
 ## 実行環境

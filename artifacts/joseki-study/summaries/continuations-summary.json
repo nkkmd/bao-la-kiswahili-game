@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T23:18:15.174Z",
+  "status": "inconsistent",
+  "scope": "deterministic phase2 self-play continuations from unique Phase 4 principal leaves",
+  "thresholds": {
+    "horizon180TerminalRateMinimum": 0.75,
+    "scoreWinnerAgreementMinimum": 0.6,
+    "horizonWinnerFlipRateMaximum": 0.1
+  },
+  "checks": {
+    "terminalRate": true,
+    "scoreWinnerAgreement": false,
+    "winnerFlipRate": true
+  },
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-17T23:18:15.172Z",
+    "passed": true,
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "corpusHash": "37b68473e265c735f0cc41e97a219dc63db36f4d4f8367df266288f440f8259c",
+    "openings": 3,
+    "games": 36,
+    "replayedMoves": 1960,
+    "timeouts": 0,
+    "conditionCounts": {
+      "bao-d1-t120": 3,
+      "bao-d2-t120": 3,
+      "bao-d3-t120": 3,
+      "bao-d4-t120": 3,
+      "legacy-d2-t120": 3,
+      "bao-v2-d2-t120": 3,
+      "bao-d1-t180": 3,
+      "bao-d2-t180": 3,
+      "bao-d3-t180": 3,
+      "bao-d4-t180": 3,
+      "legacy-d2-t180": 3,
+      "bao-v2-d2-t180": 3
+    },
+    "partialResults": 0,
+    "sourceHashesMatch": true,
+    "replayHashesMatch": true,
+    "verificationHash": "49a646e263e3aa6ca3eeebe76fc4b3e87f73f1ab304c00c6139ec1b2eb46e15a"
+  },
+  "corpus": {
+    "hash": "37b68473e265c735f0cc41e97a219dc63db36f4d4f8367df266288f440f8259c",
+    "counts": {
+      "entries": 3,
+      "sourceConditions": 6
+    },
+    "selectionPolicy": {
+      "kind": "unique-final-nodes-of-six-phase4-principal-lines",
+      "conditionIds": [
+        "bao-d1",
+        "bao-d2",
+        "bao-d3",
+        "bao-d4",
+        "legacy-d2",
+        "bao-v2-d2"
+      ]
+    }
+  },
+  "horizons": [
+    {
+      "key": "horizon",
+      "value": "120",
+      "games": 18,
+      "southWins": 8,
+      "northWins": 10,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 8,
+      "scoreWinnerComparisons": 18,
+      "scoreWinnerAgreementRate": 0.4444444444444444,
+      "averageContinuationPlies": 54.44444444444444
+    },
+    {
+      "key": "horizon",
+      "value": "180",
+      "games": 18,
+      "southWins": 8,
+      "northWins": 10,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 8,
+      "scoreWinnerComparisons": 18,
+      "scoreWinnerAgreementRate": 0.4444444444444444,
+      "averageContinuationPlies": 54.44444444444444
+    }
+  ],
+  "conditions180": [
+    {
+      "key": "condition",
+      "value": "bao-d1",
+      "games": 3,
+      "southWins": 2,
+      "northWins": 1,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 1,
+      "scoreWinnerComparisons": 3,
+      "scoreWinnerAgreementRate": 0.3333333333333333,
+      "averageContinuationPlies": 64
+    },
+    {
+      "key": "condition",
+      "value": "bao-d2",
+      "games": 3,
+      "southWins": 1,
+      "northWins": 2,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 1,
+      "scoreWinnerComparisons": 3,
+      "scoreWinnerAgreementRate": 0.3333333333333333,
+      "averageContinuationPlies": 53
+    },
+    {
+      "key": "condition",
+      "value": "bao-d3",
+      "games": 3,
+      "southWins": 2,
+      "northWins": 1,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 1,
+      "scoreWinnerComparisons": 3,
+      "scoreWinnerAgreementRate": 0.3333333333333333,
+      "averageContinuationPlies": 45.333333333333336
+    },
+    {
+      "key": "condition",
+      "value": "bao-d4",
+      "games": 3,
+      "southWins": 1,
+      "northWins": 2,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 1,
+      "scoreWinnerComparisons": 3,
+      "scoreWinnerAgreementRate": 0.3333333333333333,
+      "averageContinuationPlies": 57.666666666666664
+    },
+    {
+      "key": "condition",
+      "value": "bao-v2-d2",
+      "games": 3,
+      "southWins": 1,
+      "northWins": 2,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 1,
+      "scoreWinnerComparisons": 3,
+      "scoreWinnerAgreementRate": 0.3333333333333333,
+      "averageContinuationPlies": 59
+    },
+    {
+      "key": "condition",
+      "value": "legacy-d2",
+      "games": 3,
+      "southWins": 1,
+      "northWins": 2,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 3,
+      "scoreWinnerComparisons": 3,
+      "scoreWinnerAgreementRate": 1,
+      "averageContinuationPlies": 47.666666666666664
+    }
+  ],
+  "openings180": [
+    {
+      "key": "opening",
+      "value": "principal-01-p8-0a893f802bff",
+      "games": 6,
+      "southWins": 2,
+      "northWins": 4,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 1,
+      "scoreWinnerComparisons": 6,
+      "scoreWinnerAgreementRate": 0.16666666666666666,
+      "averageContinuationPlies": 47.333333333333336
+    },
+    {
+      "key": "opening",
+      "value": "principal-02-p8-2ac6d518ad40",
+      "games": 6,
+      "southWins": 2,
+      "northWins": 4,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 3,
+      "scoreWinnerComparisons": 6,
+      "scoreWinnerAgreementRate": 0.5,
+      "averageContinuationPlies": 51.666666666666664
+    },
+    {
+      "key": "opening",
+      "value": "principal-03-p8-6d3a4bd270b2",
+      "games": 6,
+      "southWins": 4,
+      "northWins": 2,
+      "draws": 0,
+      "terminalRate": 1,
+      "scoreWinnerAgreements": 4,
+      "scoreWinnerComparisons": 6,
+      "scoreWinnerAgreementRate": 0.6666666666666666,
+      "averageContinuationPlies": 64.33333333333333
+    }
+  ],
+  "horizonComparison": {
+    "pairs": 18,
+    "terminalPairs": 18,
+    "winnerFlips": 0,
+    "winnerFlipRate": 0,
+    "drawResolutions": 0
+  },
+  "baseline": {
+    "openingId": "principal-01-p8-0a893f802bff",
+    "predictedSouthScore": 38,
+    "predictedWinner": 0,
+    "winner": 1,
+    "reason": "front-empty",
+    "totalPlies": 62,
+    "agrees": false
+  }
+}
