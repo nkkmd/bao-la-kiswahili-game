@@ -1,7 +1,7 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.2.0
-更新日: 2026-07-17
+Version: 0.3.0
+更新日: 2026-07-18
 
 ## 1. 現在の到達点
 
@@ -49,12 +49,12 @@ Version: 0.2.0
 
 ## 5. 次の研究課題
 
-1. 4初手を同じ継続方策で対にして比較し、候補初手の相対的な最終勝敗を測る。
-2. 低分岐の強制捕獲局面と高分岐局面を分離し、MCTSを定石検証へ使える適用範囲を限定する。
-3. 主要系列の着手イベントとPVを追跡し、捕獲、nyumba維持、強制系列の戦術的説明を作る。
-4. 人間向け候補ページを作成し、適用条件・反例・未解決点を明示する。
+1. 新候補`index 5 / right`についてNorthの全合法第2手を固定し、応手別の最悪終局結果を測る。
+2. bao depth 3・4で新候補が敗れる系列を追跡し、深度差と評価ホライズンを分離する。
+3. 最悪応手評価と自己対局方策が選ぶ応手の不一致を、全応手固定継続で解消する。
+4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
 
-現時点の状態ラベルは、全4初手とも`screened`である。`provisional-joseki`、`validated`、`refuted`はいずれも未認定とする。
+現時点では旧候補`index 5 / left`を現行主要候補として`refuted`、新首位`index 5 / right`を`unresolved`とする。これは現在のAI比較内の判定で、理論的な劣等手・最善手の証明ではない。`provisional-joseki`と`validated`はいずれも未認定である。
 
 ## 6. 8 ply候補系列の重点検証
 
@@ -201,3 +201,31 @@ C0本線の8 ply葉はSouth視点+38だったが、C0自己対局ではNorthが6
 - corpus hash: `37b68473e265c735f0cc41e97a219dc63db36f4d4f8367df266288f440f8259c`
 - verification hash: `49a646e263e3aa6ca3eeebe76fc4b3e87f73f1ab304c00c6139ec1b2eb46e15a`
 - 詳細は`doc/joseki/CONTINUATION_RESULTS.md`を参照
+
+## 11. 全4初手の継続比較とPhase 7
+
+旧C0候補の相対順位を最終勝敗で検証するため、標準初期局面の合法4初手をそれぞれ指した直後から、bao depth 1〜4、legacy depth 2、bao-v2 depth 2を両側へ同一適用した。前試験の全局が120 ply以内に終局したため上限を120 plyに固定し、計24局を実行した。
+
+結果確認前に、旧C0候補のSouth勝数が他の全初手以上なら相対支持、6条件中4勝以上なら絶対支持と定義した。
+
+| 順位 | 初手 | South勝 | North勝 | 打切り |
+| ---: | --- | ---: | ---: | ---: |
+| 1 | `index 5 / right` | 3 | 3 | 0 |
+| 2 | `index 6 / left` | 1 | 5 | 0 |
+| 3 | `index 6 / right` | 1 | 5 | 0 |
+| 4 | `index 5 / left`（旧C0） | 0 | 6 | 0 |
+
+旧C0候補は相対支持・絶対支持の両方に失敗した。短期探索では2・4 plyの基準順位第1位だったが、終局までの共通条件比較では全条件でNorth勝となったため、現行の主要候補としては`refuted`へ変更する。ただし、人間対局や完全探索に対する理論的反証ではない。
+
+bao depth 2のC0対局を全48局面で再評価すると、South視点の深さ2探索値は符号を13回、静的評価は19回反転した。探索値の最初の正→負反転は5 plyだが回復を繰り返し、25 ply到達後に負のままとなった。単独の早期敗着というより、浅い評価の振動と長期脅威の取り逃しが主要な診断結果である。
+
+新しい比較首位`index 5 / right`も3勝3敗に留まり、事前の絶対支持基準4/6を満たさない。このためPhase 7では[J001](joseki/openings/J001.md)を`unresolved`候補として記録し、[未解決系列](joseki/UNRESOLVED_LINES.md)に全応手固定継続、深度3・4の敗因、応手定義の不一致を登録した。暫定定石は認定しない。
+
+完全性監査:
+
+- 4初手、6条件、24局、全局120 ply以内に終局
+- 1,399継続着手を合法手から再適用し、最終state hashと勝者を照合
+- 欠損0、partial 0、timeout 0
+- verification hash: `7cb5632e7afd4afb759d3e0f3cd1fe9ad4bde5457daae6e3cc022d1c675a2173`
+- C0 trace: 48局面、trace hash `3fde4f65cab0f616935e3e29b76b0c416d54a9df4ba218625f817d1a4073167d`
+- 詳細は`doc/joseki/FIRST_MOVE_CONTINUATIONS.md`と`doc/joseki/C0_LOSS_ANALYSIS.md`を参照

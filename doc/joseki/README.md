@@ -8,7 +8,11 @@
 - [MCTS iteration感度試験](MCTS_SENSITIVITY.md)
 - [8 ply局面パターン](POSITION_PATTERNS.md)
 - [8 ply主要系列 継続自己対局](CONTINUATION_RESULTS.md)
+- [全4初手 継続自己対局比較](FIRST_MOVE_CONTINUATIONS.md)
+- [C0敗着系列の評価反転分析](C0_LOSS_ANALYSIS.md)
+- [J001 — 6番穴・右（未解決候補）](openings/J001.md)
+- [未解決系列](UNRESOLVED_LINES.md)
 - [着手表記](JOSEKI_NOTATION.md)
 - 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
 
-現在は4 ply全数調査、最有力候補の8 ply重点検証、MCTS頑健性試験、主要系列継続自己対局、8 ply局面パターン横断集計を完了した。候補初手は`screened`、MCTSの次手選択は低分岐の強制捕獲層を除いて`unstable`、評価符号と継続勝者は`inconsistent`、局面原則は`descriptive-patterns`であり、暫定定石はまだ認定していない。
+現在は4 ply全数調査、旧候補の8 ply重点検証、MCTS頑健性試験、主要系列および全4初手の継続自己対局、C0評価反転分析、8 ply局面パターン横断集計を完了した。旧候補の6番穴・左は全4初手比較で0/6勝となり、現行の主要候補としては`refuted`とした。6番穴・右が3/6勝で新しい首位だが絶対支持基準に未達のため`unresolved`である。暫定定石はまだ認定していない。

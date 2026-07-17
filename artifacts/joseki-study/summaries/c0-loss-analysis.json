@@ -1,0 +1,5931 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T23:45:42.485Z",
+  "scope": "C0 followed by deterministic bao-d2 self-play from ply 1 to terminal",
+  "caveat": "Score changes identify engine-evaluation turning points; they do not prove a unique causal blunder.",
+  "nodeId": "p1-601242bbb060",
+  "openingMoveKey": "takata:namua:0:5:left:::false",
+  "conditionId": "bao-d2",
+  "outcome": {
+    "winner": 1,
+    "reason": "front-empty",
+    "totalPlies": 48,
+    "finalStateHash": "7d8d33769c370f794f2ba2a2981562bb707c96d442e1a906b287535db8688c0f"
+  },
+  "searchReversal": {
+    "ply": 5,
+    "before": 139,
+    "after": -43,
+    "delta": -182,
+    "incoming": {
+      "moveKey": "capture:namua:0:7:left:right:stop:false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    "stateHash": "1836ddea3d017cb3ccf9f4d9b4cca4b85e4032016dcab7bc621f49316942a278"
+  },
+  "staticReversal": {
+    "ply": 2,
+    "before": 98,
+    "after": -67,
+    "delta": -165,
+    "incoming": {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    "stateHash": "8aa04c172a163f5d5a895752ce77745ca00791dfe229e85c871e5368a7048b97"
+  },
+  "permanentSearchReversal": {
+    "ply": 25,
+    "before": 37,
+    "after": -325,
+    "delta": -362,
+    "incoming": {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 3,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    "stateHash": "4ddcee07bf850888f535a8a5783c81f4336fc5a1bf50f40a2e9b555220db26c9"
+  },
+  "permanentStaticReversal": {
+    "ply": 36,
+    "before": 30,
+    "after": -457,
+    "delta": -487,
+    "incoming": {
+      "moveKey": "capture:namua:0:5:right:left::false",
+      "player": 1,
+      "captures": 4,
+      "capturedSeeds": 4,
+      "relays": 5,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    "stateHash": "ee39c230f915a49ab88149edb37571948553cd26796b72861c6c1acf1e0b3740"
+  },
+  "signFlips": {
+    "search": 13,
+    "static": 19
+  },
+  "largestSearchDrops": [
+    {
+      "ply": 45,
+      "before": -881,
+      "after": -999997,
+      "delta": -999116,
+      "incoming": {
+        "moveKey": "capture:mtaji:1:0:right:::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 2,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "capture",
+          "relay",
+          "turn"
+        ]
+      },
+      "stateHash": "32b75fb2ba63345add7b64babd6a48c09b372b3a8178da35a8e30194ec29a7ee"
+    },
+    {
+      "ply": 39,
+      "before": -50,
+      "after": -565,
+      "delta": -515,
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 3,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "stateHash": "f968deb8464107df485f4f9d93bd80b9fd6eeb549edfd2ecfc51620da5b78d61"
+    },
+    {
+      "ply": 21,
+      "before": 200,
+      "after": -267,
+      "delta": -467,
+      "incoming": {
+        "moveKey": "capture:namua:0:6:left:right::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "stateHash": "b2051d9f655e2ee4fc3b1133ac25d39664d33e3866ac97e5f73bc004557d8a59"
+    },
+    {
+      "ply": 23,
+      "before": 127,
+      "after": -288,
+      "delta": -415,
+      "incoming": {
+        "moveKey": "capture:namua:0:3:right:left::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 6,
+        "relays": 2,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "stateHash": "307720ceabac500178b6d6c933bc27b16dc54c0d6eda5900275c529d4fff3982"
+    },
+    {
+      "ply": 43,
+      "before": -479,
+      "after": -881,
+      "delta": -402,
+      "incoming": {
+        "moveKey": "capture:namua:0:2:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 5,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "stateHash": "79fb6fac686e54cd19d376d484f0aa06f55395ce63df2277daa73606d5dd1ee5"
+    }
+  ],
+  "largestStaticDrops": [
+    {
+      "ply": 48,
+      "before": -770,
+      "after": -1000000,
+      "delta": -999230,
+      "incoming": {
+        "moveKey": "capture:mtaji:0:4:left:::false",
+        "player": 1,
+        "captures": 3,
+        "capturedSeeds": 3,
+        "relays": 7,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "capture",
+          "relay",
+          "win"
+        ]
+      },
+      "stateHash": "7d8d33769c370f794f2ba2a2981562bb707c96d442e1a906b287535db8688c0f"
+    },
+    {
+      "ply": 46,
+      "before": -315,
+      "after": -881,
+      "delta": -566,
+      "incoming": {
+        "moveKey": "capture:mtaji:0:4:right:::false",
+        "player": 1,
+        "captures": 4,
+        "capturedSeeds": 10,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "capture",
+          "relay",
+          "turn"
+        ]
+      },
+      "stateHash": "d76d970898fa0650421839b95e9a578af98a02c3d617ae6d90dc50ffdf40967c"
+    },
+    {
+      "ply": 42,
+      "before": -64,
+      "after": -565,
+      "delta": -501,
+      "incoming": {
+        "moveKey": "capture:namua:0:3:left:right::false",
+        "player": 1,
+        "captures": 2,
+        "capturedSeeds": 5,
+        "relays": 3,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "stateHash": "87daba000935d8cba1e1db83c5bbb729e2212524a0f27971b90c80684255db0f"
+    },
+    {
+      "ply": 36,
+      "before": 30,
+      "after": -457,
+      "delta": -487,
+      "incoming": {
+        "moveKey": "capture:namua:0:5:right:left::false",
+        "player": 1,
+        "captures": 4,
+        "capturedSeeds": 4,
+        "relays": 5,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "stateHash": "ee39c230f915a49ab88149edb37571948553cd26796b72861c6c1acf1e0b3740"
+    },
+    {
+      "ply": 22,
+      "before": 355,
+      "after": -123,
+      "delta": -478,
+      "incoming": {
+        "moveKey": "capture:namua:0:3:right:left::false",
+        "player": 1,
+        "captures": 2,
+        "capturedSeeds": 10,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "stateHash": "4a77f2391f945682f6b72322dc85b2955a453ecf7ebed7f324f81df36b39d150"
+    }
+  ],
+  "adverseContributionsAtSearchReversal": [
+    {
+      "feature": "frontSeeds",
+      "contribution": -5,
+      "value": -5
+    },
+    {
+      "feature": "relayShape",
+      "contribution": -2,
+      "value": -2
+    },
+    {
+      "feature": "tempo",
+      "contribution": -2,
+      "value": -1
+    },
+    {
+      "feature": "boardSeeds",
+      "contribution": -1,
+      "value": -1
+    },
+    {
+      "feature": "mobility",
+      "contribution": 0,
+      "value": 0
+    },
+    {
+      "feature": "captureMoves",
+      "contribution": 0,
+      "value": 0
+    }
+  ],
+  "transitions": [
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 2,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:7:left:right:stop:false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "takata:namua:0:6:left:::false",
+      "player": 1,
+      "captures": 0,
+      "capturedSeeds": 0,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "lift",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:7:left:right:use:false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 2,
+      "houseUsed": true,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "player": 0,
+      "captures": 4,
+      "capturedSeeds": 5,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 3,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "player": 0,
+      "captures": 3,
+      "capturedSeeds": 3,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 4,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:5:left:right::false",
+      "player": 0,
+      "captures": 3,
+      "capturedSeeds": 3,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:7:left:right:use:false",
+      "player": 0,
+      "captures": 2,
+      "capturedSeeds": 5,
+      "relays": 2,
+      "houseUsed": true,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:7:left:right::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 6,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:0:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:6:left:right::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:3:right:left::false",
+      "player": 1,
+      "captures": 2,
+      "capturedSeeds": 10,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:3:right:left::false",
+      "player": 0,
+      "captures": 2,
+      "capturedSeeds": 6,
+      "relays": 2,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:6:left:right::false",
+      "player": 1,
+      "captures": 3,
+      "capturedSeeds": 9,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 3,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 1,
+      "captures": 5,
+      "capturedSeeds": 10,
+      "relays": 5,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 7,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "player": 1,
+      "captures": 4,
+      "capturedSeeds": 5,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 4,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:0:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:3:left:right::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 3,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:5:left:right::false",
+      "player": 1,
+      "captures": 2,
+      "capturedSeeds": 4,
+      "relays": 7,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 2,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:5:right:left::false",
+      "player": 1,
+      "captures": 4,
+      "capturedSeeds": 4,
+      "relays": 5,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 2,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "player": 0,
+      "captures": 2,
+      "capturedSeeds": 3,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:7:left:right::false",
+      "player": 1,
+      "captures": 1,
+      "capturedSeeds": 1,
+      "relays": 3,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:6:left:right::false",
+      "player": 0,
+      "captures": 2,
+      "capturedSeeds": 2,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:3:left:right::false",
+      "player": 1,
+      "captures": 2,
+      "capturedSeeds": 5,
+      "relays": 3,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "player": 0,
+      "captures": 1,
+      "capturedSeeds": 5,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "player": 1,
+      "captures": 3,
+      "capturedSeeds": 3,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "reserve",
+        "capture",
+        "sow",
+        "relay",
+        "phase",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:mtaji:1:0:right:::false",
+      "player": 0,
+      "captures": 2,
+      "capturedSeeds": 2,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "lift",
+        "sow",
+        "capture",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:mtaji:0:4:right:::false",
+      "player": 1,
+      "captures": 4,
+      "capturedSeeds": 10,
+      "relays": 1,
+      "houseUsed": false,
+      "eventKinds": [
+        "lift",
+        "sow",
+        "capture",
+        "relay",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "takata:mtaji:0:6:left:::false",
+      "player": 0,
+      "captures": 0,
+      "capturedSeeds": 0,
+      "relays": 0,
+      "houseUsed": false,
+      "eventKinds": [
+        "lift",
+        "sow",
+        "turn"
+      ]
+    },
+    {
+      "moveKey": "capture:mtaji:0:4:left:::false",
+      "player": 1,
+      "captures": 3,
+      "capturedSeeds": 3,
+      "relays": 7,
+      "houseUsed": false,
+      "eventKinds": [
+        "lift",
+        "sow",
+        "capture",
+        "relay",
+        "win"
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "ply": 1,
+      "stateHash": "04543036ce1f0d23017dceb0c1cb807835ccd49f993ca39424515ce754e57a0d",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": null,
+      "southStaticScore": 98,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 1,
+        "frontSeeds": 1,
+        "frontOccupied": 1,
+        "frontConnections": 0,
+        "reusablePits": -1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 7,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 1,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 1,
+        "frontSeeds": 1,
+        "frontOccupied": 5,
+        "frontConnections": 0,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 56,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": -7,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 2,
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          10
+        ],
+        "frontSeeds": [
+          11,
+          10
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": 2,
+        "recommendedMoveKey": "capture:namua:0:4:left:right::false",
+        "nodes": 48
+      }
+    },
+    {
+      "ply": 2,
+      "stateHash": "8aa04c172a163f5d5a895752ce77745ca00791dfe229e85c871e5368a7048b97",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -67,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": -2,
+        "frontSeeds": -2,
+        "frontOccupied": -1,
+        "frontConnections": -3,
+        "reusablePits": -1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 1,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -2,
+        "frontSeeds": -2,
+        "frontOccupied": -5,
+        "frontConnections": -9,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 8,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": 184,
+        "recommendedMoveKey": "capture:namua:0:2:left:right::false",
+        "nodes": 34
+      }
+    },
+    {
+      "ply": 3,
+      "stateHash": "cb0644b28b9ae82e022b03d0d1feb84748d9bea6e19d4263fef36153452508e2",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:left:right::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 2,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 159,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 3,
+        "frontSeeds": 3,
+        "frontOccupied": 2,
+        "frontConnections": 2,
+        "reusablePits": 0,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 6,
+        "relayShape": -1,
+        "frontSafety": 0,
+        "houseValue": 1,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 3,
+        "frontSeeds": 3,
+        "frontOccupied": 10,
+        "frontConnections": 6,
+        "reusablePits": 0,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 48,
+        "relayShape": -1,
+        "frontSafety": 0,
+        "houseValue": -7,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 4,
+        "reserve": [
+          20,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          8,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          13,
+          10
+        ],
+        "frontSeeds": [
+          13,
+          10
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": 75,
+        "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+        "nodes": 38
+      }
+    },
+    {
+      "ply": 4,
+      "stateHash": "2f0905091486e6cdc087c2e42258c4af6588b0e347e749a9188b287c96fe1992",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 2,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 0,
+        "frontSeeds": 0,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": 0,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 0,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 0,
+        "frontSeeds": 0,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": 0,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 0,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 5,
+        "reserve": [
+          20,
+          20
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          8,
+          8
+        ],
+        "legalMoves": [
+          2,
+          1
+        ],
+        "captureMoves": [
+          2,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          12,
+          12
+        ],
+        "frontSeeds": [
+          12,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": 139,
+        "recommendedMoveKey": "capture:namua:0:7:left:right:stop:false",
+        "nodes": 27
+      }
+    },
+    {
+      "ply": 5,
+      "stateHash": "1836ddea3d017cb3ccf9f4d9b4cca4b85e4032016dcab7bc621f49316942a278",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:7:left:right:stop:false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 75,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 3,
+        "frontSeeds": 3,
+        "frontOccupied": 1,
+        "frontConnections": 1,
+        "reusablePits": 1,
+        "mobility": 2,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 1,
+        "frontSafety": 0,
+        "houseValue": 1,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 3,
+        "frontSeeds": 3,
+        "frontOccupied": 5,
+        "frontConnections": 3,
+        "reusablePits": 3,
+        "mobility": 4,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 1,
+        "frontSafety": 0,
+        "houseValue": -7,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 6,
+        "reserve": [
+          19,
+          20
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          9,
+          8
+        ],
+        "legalMoves": [
+          6,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          14,
+          11
+        ],
+        "frontSeeds": [
+          14,
+          11
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": -43,
+        "recommendedMoveKey": "takata:namua:0:6:left:::false",
+        "nodes": 66
+      }
+    },
+    {
+      "ply": 6,
+      "stateHash": "4b9d2ab8bcdd086f2d52631926e1938cb59922aea66d197cfba2754f7baa0561",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "takata:namua:0:6:left:::false",
+        "player": 1,
+        "captures": 0,
+        "capturedSeeds": 0,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "lift",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -32,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 2,
+        "frontSeeds": 2,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": 2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -8,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 2,
+        "frontSeeds": 2,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": 6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -64,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 7,
+        "reserve": [
+          19,
+          19
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          9,
+          9
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          14,
+          12
+        ],
+        "frontSeeds": [
+          14,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": 135,
+        "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+        "nodes": 91
+      }
+    },
+    {
+      "ply": 7,
+      "stateHash": "264171f4b597106dde51b944d1b3e3ace9aa990966d2506006ff78aa2b4d130f",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 139,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 5,
+        "frontSeeds": 5,
+        "frontOccupied": 2,
+        "frontConnections": 1,
+        "reusablePits": 2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 3,
+        "frontSafety": 0,
+        "houseValue": 1,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 5,
+        "frontSeeds": 5,
+        "frontOccupied": 10,
+        "frontConnections": 3,
+        "reusablePits": 6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 3,
+        "frontSafety": 0,
+        "houseValue": -7,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 8,
+        "reserve": [
+          18,
+          19
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          10,
+          9
+        ],
+        "legalMoves": [
+          3,
+          4
+        ],
+        "captureMoves": [
+          3,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          16,
+          11
+        ],
+        "frontSeeds": [
+          16,
+          11
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      },
+      "search": {
+        "southScore": -156,
+        "recommendedMoveKey": "capture:namua:0:7:left:right:use:false",
+        "nodes": 82
+      }
+    },
+    {
+      "ply": 8,
+      "stateHash": "8ef05dbd69e025fa309cb54f51bf85d2607f8cda5e5c6a6ce1dd7c63cbc115cf",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:7:left:right:use:false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 2,
+        "houseUsed": true,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -155,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 2,
+        "frontSeeds": 8,
+        "frontOccupied": -2,
+        "frontConnections": -2,
+        "reusablePits": 2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -8,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 12,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 2,
+        "frontSeeds": 8,
+        "frontOccupied": -10,
+        "frontConnections": -6,
+        "reusablePits": 6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -64,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": -84,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 9,
+        "reserve": [
+          18,
+          18
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          10,
+          0
+        ],
+        "legalMoves": [
+          7,
+          7
+        ],
+        "captureMoves": [
+          7,
+          7
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          15,
+          13
+        ],
+        "frontSeeds": [
+          15,
+          7
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 139,
+        "recommendedMoveKey": "capture:namua:0:2:left:right::false",
+        "nodes": 84
+      }
+    },
+    {
+      "ply": 9,
+      "stateHash": "2401a7377e0585a7800e7c919b7261b254e204f1c3427b65e1e10911f2a63fad",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:left:right::false",
+        "player": 0,
+        "captures": 4,
+        "capturedSeeds": 5,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 246,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 13,
+        "frontSeeds": 19,
+        "frontOccupied": 3,
+        "frontConnections": 3,
+        "reusablePits": 4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -2,
+        "relayShape": 5,
+        "frontSafety": 2,
+        "houseValue": 13,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 13,
+        "frontSeeds": 19,
+        "frontOccupied": 15,
+        "frontConnections": 9,
+        "reusablePits": 12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -16,
+        "relayShape": 5,
+        "frontSafety": 16,
+        "houseValue": -91,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 10,
+        "reserve": [
+          17,
+          18
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          11,
+          0
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          21,
+          8
+        ],
+        "frontSeeds": [
+          21,
+          2
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": -147,
+        "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+        "nodes": 79
+      }
+    },
+    {
+      "ply": 10,
+      "stateHash": "b0b707601cc812219ad4d7c913de2cb45d0f796198d5ef618a785db46925c56d",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 3,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -156,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 6,
+        "frontSeeds": 12,
+        "frontOccupied": -2,
+        "frontConnections": -3,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -12,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 13,
+        "reserveEfficiency": -2,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 6,
+        "frontSeeds": 12,
+        "frontOccupied": -10,
+        "frontConnections": -9,
+        "reusablePits": 9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -96,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": -91,
+        "reserveEfficiency": -2,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 11,
+        "reserve": [
+          17,
+          17
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          11,
+          1
+        ],
+        "legalMoves": [
+          7,
+          6
+        ],
+        "captureMoves": [
+          7,
+          6
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          18,
+          12
+        ],
+        "frontSeeds": [
+          18,
+          6
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 431,
+        "recommendedMoveKey": "capture:namua:0:2:left:right::false",
+        "nodes": 106
+      }
+    },
+    {
+      "ply": 11,
+      "stateHash": "3f783edcd3add3101a96e75812364f5214a707f19ee44e51509359d427ce9250",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:left:right::false",
+        "player": 0,
+        "captures": 3,
+        "capturedSeeds": 3,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 171,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 13,
+        "frontSeeds": 19,
+        "frontOccupied": 2,
+        "frontConnections": 3,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -3,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 14,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 13,
+        "frontSeeds": 19,
+        "frontOccupied": 10,
+        "frontConnections": 9,
+        "reusablePits": 9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -24,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": -98,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 12,
+        "reserve": [
+          16,
+          17
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          12,
+          1
+        ],
+        "legalMoves": [
+          1,
+          1
+        ],
+        "captureMoves": [
+          1,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          22,
+          9
+        ],
+        "frontSeeds": [
+          22,
+          3
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 284,
+        "recommendedMoveKey": "capture:namua:0:1:right:left::false",
+        "nodes": 31
+      }
+    },
+    {
+      "ply": 12,
+      "stateHash": "811192b89224faaac4b5d854ee00d913c7eeff335a370ae91654b9036b6f6be7",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:1:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 4,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -184,
+      "evaluationCategory": "namua-opening",
+      "evaluationFeatures": {
+        "boardSeeds": 4,
+        "frontSeeds": 10,
+        "frontOccupied": -2,
+        "frontConnections": -3,
+        "reusablePits": 1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -11,
+        "relayShape": -5,
+        "frontSafety": 0,
+        "houseValue": 14,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 4,
+        "frontSeeds": 10,
+        "frontOccupied": -10,
+        "frontConnections": -9,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -88,
+        "relayShape": -5,
+        "frontSafety": 0,
+        "houseValue": -98,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 13,
+        "reserve": [
+          16,
+          16
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          12,
+          1
+        ],
+        "legalMoves": [
+          6,
+          5
+        ],
+        "captureMoves": [
+          6,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          18,
+          14
+        ],
+        "frontSeeds": [
+          18,
+          8
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 511,
+        "recommendedMoveKey": "capture:namua:0:5:left:right::false",
+        "nodes": 67
+      }
+    },
+    {
+      "ply": 13,
+      "stateHash": "d58e14c0506bb04cded6ad64eef4b0593c51303799af7aa4252cdf28912572d2",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:5:left:right::false",
+        "player": 0,
+        "captures": 3,
+        "capturedSeeds": 3,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 184,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 11,
+        "frontSeeds": 17,
+        "frontOccupied": 2,
+        "frontConnections": 3,
+        "reusablePits": 2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 2,
+        "relayShape": 3,
+        "frontSafety": 0,
+        "houseValue": 14,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 11,
+        "frontSeeds": 17,
+        "frontOccupied": 10,
+        "frontConnections": 9,
+        "reusablePits": 6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 16,
+        "relayShape": 3,
+        "frontSafety": 0,
+        "houseValue": -98,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 14,
+        "reserve": [
+          15,
+          16
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          13,
+          1
+        ],
+        "legalMoves": [
+          1,
+          1
+        ],
+        "captureMoves": [
+          1,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          22,
+          11
+        ],
+        "frontSeeds": [
+          22,
+          5
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 354,
+        "recommendedMoveKey": "capture:namua:0:1:right:left::false",
+        "nodes": 15
+      }
+    },
+    {
+      "ply": 14,
+      "stateHash": "5a4b985ea7d845e7bbff6a1c06e3bb6a041c5a39f607aec6def8984fff1e74b2",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:1:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 48,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 8,
+        "frontSeeds": 14,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": 2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 14,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 8,
+        "frontSeeds": 14,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": 6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": -98,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 15,
+        "reserve": [
+          15,
+          15
+        ],
+        "houseOwned": [
+          true,
+          false
+        ],
+        "nyumbaSeeds": [
+          13,
+          1
+        ],
+        "legalMoves": [
+          2,
+          1
+        ],
+        "captureMoves": [
+          2,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          21,
+          13
+        ],
+        "frontSeeds": [
+          21,
+          7
+        ],
+        "backSeeds": [
+          0,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 469,
+        "recommendedMoveKey": "capture:namua:0:7:left:right:use:false",
+        "nodes": 25
+      }
+    },
+    {
+      "ply": 15,
+      "stateHash": "70629c8542d1075e545d31d7bc508183c4a0f531225dbc432a2e4200281f8f0d",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:7:left:right:use:false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 5,
+        "relays": 2,
+        "houseUsed": true,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 511,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 6,
+        "frontConnections": 7,
+        "reusablePits": 4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 1,
+        "relayShape": 12,
+        "frontSafety": 2,
+        "houseValue": 0,
+        "reserveEfficiency": 5,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 30,
+        "frontConnections": 21,
+        "reusablePits": 12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 8,
+        "relayShape": 12,
+        "frontSafety": 16,
+        "houseValue": 0,
+        "reserveEfficiency": 5,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 16,
+        "reserve": [
+          14,
+          15
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          1
+        ],
+        "legalMoves": [
+          3,
+          3
+        ],
+        "captureMoves": [
+          3,
+          3
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          27,
+          8
+        ],
+        "frontSeeds": [
+          19,
+          2
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 311,
+        "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+        "nodes": 41
+      }
+    },
+    {
+      "ply": 16,
+      "stateHash": "328bf9a229d6c020477cab7d110887e2b16a6965ee81bda3faea9022df6fc50a",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 356,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 16,
+        "frontSeeds": 14,
+        "frontOccupied": 4,
+        "frontConnections": 5,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -1,
+        "relayShape": 9,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 16,
+        "frontSeeds": 14,
+        "frontOccupied": 20,
+        "frontConnections": 15,
+        "reusablePits": 9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -8,
+        "relayShape": 9,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 17,
+        "reserve": [
+          14,
+          14
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          2
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          26,
+          10
+        ],
+        "frontSeeds": [
+          18,
+          4
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 465,
+        "recommendedMoveKey": "capture:namua:0:7:left:right::false",
+        "nodes": 34
+      }
+    },
+    {
+      "ply": 17,
+      "stateHash": "4bdc4d9b82840d78dffbbd9a0833b71b6554581e1c809364df8d96f3614674d5",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:7:left:right::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 469,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 5,
+        "frontConnections": 6,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 2,
+        "relayShape": 9,
+        "frontSafety": 2,
+        "houseValue": 0,
+        "reserveEfficiency": 4,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 25,
+        "frontConnections": 18,
+        "reusablePits": 9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 16,
+        "relayShape": 9,
+        "frontSafety": 16,
+        "houseValue": 0,
+        "reserveEfficiency": 4,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 18,
+        "reserve": [
+          13,
+          14
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          2,
+          2
+        ],
+        "legalMoves": [
+          3,
+          3
+        ],
+        "captureMoves": [
+          3,
+          3
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          28,
+          9
+        ],
+        "frontSeeds": [
+          20,
+          3
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 81,
+        "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+        "nodes": 25
+      }
+    },
+    {
+      "ply": 18,
+      "stateHash": "f281b85d657277f046656135bbd33bb98f81e93d431a9f29f4662a1b7345ab54",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 321,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 16,
+        "frontSeeds": 14,
+        "frontOccupied": 3,
+        "frontConnections": 4,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 9,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 16,
+        "frontSeeds": 14,
+        "frontOccupied": 15,
+        "frontConnections": 12,
+        "reusablePits": 9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": 9,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 19,
+        "reserve": [
+          13,
+          13
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          2,
+          3
+        ],
+        "legalMoves": [
+          1,
+          1
+        ],
+        "captureMoves": [
+          1,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          27,
+          11
+        ],
+        "frontSeeds": [
+          19,
+          5
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 299,
+        "recommendedMoveKey": "capture:namua:0:1:right:left::false",
+        "nodes": 21
+      }
+    },
+    {
+      "ply": 19,
+      "stateHash": "7f3158eaaa1057b49d6c3fce5fa54db3fd0da9ecc18ebff31ba2b2589a4ab71d",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:1:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 6,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 465,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 5,
+        "frontConnections": 5,
+        "reusablePits": 7,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 1,
+        "relayShape": 4,
+        "frontSafety": 2,
+        "houseValue": 0,
+        "reserveEfficiency": 4,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 25,
+        "frontConnections": 15,
+        "reusablePits": 21,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 8,
+        "relayShape": 4,
+        "frontSafety": 16,
+        "houseValue": 0,
+        "reserveEfficiency": 4,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 20,
+        "reserve": [
+          12,
+          13
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          3
+        ],
+        "legalMoves": [
+          3,
+          3
+        ],
+        "captureMoves": [
+          3,
+          3
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          29,
+          10
+        ],
+        "frontSeeds": [
+          21,
+          4
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": -77,
+        "recommendedMoveKey": "capture:namua:0:0:right:left::false",
+        "nodes": 84
+      }
+    },
+    {
+      "ply": 20,
+      "stateHash": "73e5781f7e5dca165b6e46a06bb1585107fbdc03115017a9e9b58f1d83c87f00",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:0:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 191,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 16,
+        "frontSeeds": 14,
+        "frontOccupied": 2,
+        "frontConnections": 1,
+        "reusablePits": 7,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -10,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 16,
+        "frontSeeds": 14,
+        "frontOccupied": 10,
+        "frontConnections": 3,
+        "reusablePits": 21,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -80,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 21,
+        "reserve": [
+          12,
+          12
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          3
+        ],
+        "legalMoves": [
+          7,
+          7
+        ],
+        "captureMoves": [
+          7,
+          7
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          28,
+          12
+        ],
+        "frontSeeds": [
+          20,
+          6
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 200,
+        "recommendedMoveKey": "capture:namua:0:6:left:right::false",
+        "nodes": 119
+      }
+    },
+    {
+      "ply": 21,
+      "stateHash": "b2051d9f655e2ee4fc3b1133ac25d39664d33e3866ac97e5f73bc004557d8a59",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:6:left:right::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 355,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 4,
+        "frontConnections": 3,
+        "reusablePits": 7,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -5,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 19,
+        "frontSeeds": 17,
+        "frontOccupied": 20,
+        "frontConnections": 9,
+        "reusablePits": 21,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -40,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 22,
+        "reserve": [
+          11,
+          12
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          3
+        ],
+        "legalMoves": [
+          6,
+          6
+        ],
+        "captureMoves": [
+          6,
+          6
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          30,
+          11
+        ],
+        "frontSeeds": [
+          22,
+          5
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": -267,
+        "recommendedMoveKey": "capture:namua:0:3:right:left::false",
+        "nodes": 110
+      }
+    },
+    {
+      "ply": 22,
+      "stateHash": "4a77f2391f945682f6b72322dc85b2955a453ecf7ebed7f324f81df36b39d150",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:3:right:left::false",
+        "player": 1,
+        "captures": 2,
+        "capturedSeeds": 10,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -123,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -2,
+        "frontSeeds": -4,
+        "frontOccupied": -2,
+        "frontConnections": -4,
+        "reusablePits": 1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -2,
+        "frontSeeds": -4,
+        "frontOccupied": -10,
+        "frontConnections": -12,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -1,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 23,
+        "reserve": [
+          11,
+          11
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          4
+        ],
+        "legalMoves": [
+          5,
+          5
+        ],
+        "captureMoves": [
+          5,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          20,
+          22
+        ],
+        "frontSeeds": [
+          12,
+          16
+        ],
+        "backSeeds": [
+          8,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 127,
+        "recommendedMoveKey": "capture:namua:0:3:right:left::false",
+        "nodes": 134
+      }
+    },
+    {
+      "ply": 23,
+      "stateHash": "307720ceabac500178b6d6c933bc27b16dc54c0d6eda5900275c529d4fff3982",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:3:right:left::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 6,
+        "relays": 2,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 200,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": 11,
+        "frontSeeds": 7,
+        "frontOccupied": 2,
+        "frontConnections": 3,
+        "reusablePits": 7,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -2,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": 11,
+        "frontSeeds": 7,
+        "frontOccupied": 10,
+        "frontConnections": 9,
+        "reusablePits": 21,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -16,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 24,
+        "reserve": [
+          10,
+          11
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          2,
+          0
+        ],
+        "legalMoves": [
+          8,
+          8
+        ],
+        "captureMoves": [
+          8,
+          8
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          27,
+          16
+        ],
+        "frontSeeds": [
+          17,
+          10
+        ],
+        "backSeeds": [
+          10,
+          6
+        ]
+      },
+      "search": {
+        "southScore": -288,
+        "recommendedMoveKey": "capture:namua:0:6:left:right::false",
+        "nodes": 176
+      }
+    },
+    {
+      "ply": 24,
+      "stateHash": "a5a598fe64cf5b343d4ca88fbf4bd7f44c374c439eedca587d8818bf60e7a294",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:6:left:right::false",
+        "player": 1,
+        "captures": 3,
+        "capturedSeeds": 9,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -243,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -8,
+        "frontSeeds": -12,
+        "frontOccupied": -3,
+        "frontConnections": -4,
+        "reusablePits": 1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -3,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -8,
+        "frontSeeds": -12,
+        "frontOccupied": -15,
+        "frontConnections": -12,
+        "reusablePits": 3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -3,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 25,
+        "reserve": [
+          10,
+          10
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          2
+        ],
+        "legalMoves": [
+          6,
+          6
+        ],
+        "captureMoves": [
+          6,
+          6
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          18,
+          26
+        ],
+        "frontSeeds": [
+          8,
+          20
+        ],
+        "backSeeds": [
+          10,
+          6
+        ]
+      },
+      "search": {
+        "southScore": 37,
+        "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+        "nodes": 193
+      }
+    },
+    {
+      "ply": 25,
+      "stateHash": "4ddcee07bf850888f535a8a5783c81f4336fc5a1bf50f40a2e9b555220db26c9",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 3,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 67,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -1,
+        "frontSeeds": -5,
+        "frontOccupied": 1,
+        "frontConnections": 2,
+        "reusablePits": 2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 6,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -1,
+        "frontSeeds": -5,
+        "frontOccupied": 5,
+        "frontConnections": 6,
+        "reusablePits": 6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 48,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 2,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 26,
+        "reserve": [
+          9,
+          10
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          2
+        ],
+        "legalMoves": [
+          9,
+          9
+        ],
+        "captureMoves": [
+          9,
+          9
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          22,
+          23
+        ],
+        "frontSeeds": [
+          12,
+          17
+        ],
+        "backSeeds": [
+          10,
+          6
+        ]
+      },
+      "search": {
+        "southScore": -325,
+        "recommendedMoveKey": "capture:namua:0:4:left:right::false",
+        "nodes": 185
+      }
+    },
+    {
+      "ply": 26,
+      "stateHash": "97bcf365ec4f94649ad79dbcf2c950a6afffeb5ed15f2ed0a9f9c60ab2feacc8",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 1,
+        "captures": 5,
+        "capturedSeeds": 10,
+        "relays": 5,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -398,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -22,
+        "frontSeeds": -20,
+        "frontOccupied": -4,
+        "frontConnections": -3,
+        "reusablePits": -5,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 5,
+        "relayShape": -3,
+        "frontSafety": -2,
+        "houseValue": 0,
+        "reserveEfficiency": -5,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -22,
+        "frontSeeds": -20,
+        "frontOccupied": -20,
+        "frontConnections": -9,
+        "reusablePits": -15,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 40,
+        "relayShape": -3,
+        "frontSafety": -16,
+        "houseValue": 0,
+        "reserveEfficiency": -5,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 27,
+        "reserve": [
+          9,
+          9
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          1
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          12,
+          34
+        ],
+        "frontSeeds": [
+          2,
+          22
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -102,
+        "recommendedMoveKey": "capture:namua:0:4:left:right::false",
+        "nodes": 75
+      }
+    },
+    {
+      "ply": 27,
+      "stateHash": "a070560dac8eb7c96354064fee3d4f098d65e6210dc854c9d2b31c96dd08ebe8",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 7,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": 70,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -7,
+        "frontSeeds": -5,
+        "frontOccupied": 2,
+        "frontConnections": 4,
+        "reusablePits": -2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 6,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -7,
+        "frontSeeds": -5,
+        "frontOccupied": 10,
+        "frontConnections": 12,
+        "reusablePits": -6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 48,
+        "relayShape": 2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 28,
+        "reserve": [
+          8,
+          9
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          1
+        ],
+        "legalMoves": [
+          7,
+          7
+        ],
+        "captureMoves": [
+          7,
+          7
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          20,
+          27
+        ],
+        "frontSeeds": [
+          10,
+          15
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -329,
+        "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+        "nodes": 104
+      }
+    },
+    {
+      "ply": 28,
+      "stateHash": "68c9e535ecd3e65075a27190390db67f28480e47684b15b33273cb9867a9f729",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:right:left::false",
+        "player": 1,
+        "captures": 4,
+        "capturedSeeds": 5,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -325,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -18,
+        "frontSeeds": -16,
+        "frontOccupied": -3,
+        "frontConnections": -3,
+        "reusablePits": -4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 1,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -4,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -18,
+        "frontSeeds": -16,
+        "frontOccupied": -15,
+        "frontConnections": -9,
+        "reusablePits": -12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 8,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -4,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 29,
+        "reserve": [
+          8,
+          8
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          2
+        ],
+        "legalMoves": [
+          3,
+          3
+        ],
+        "captureMoves": [
+          3,
+          3
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          15,
+          33
+        ],
+        "frontSeeds": [
+          5,
+          21
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -54,
+        "recommendedMoveKey": "capture:namua:0:1:right:left::false",
+        "nodes": 74
+      }
+    },
+    {
+      "ply": 29,
+      "stateHash": "f9104ac34888ca9ba98d2c7b6028d5e5de914180362ec79bb5329026e972e51d",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:1:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 4,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -102,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -9,
+        "frontSeeds": -7,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": -1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -1,
+        "relayShape": -1,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -9,
+        "frontSeeds": -7,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -8,
+        "relayShape": -1,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 1,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 30,
+        "reserve": [
+          7,
+          8
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          2
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          20,
+          29
+        ],
+        "frontSeeds": [
+          10,
+          17
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -280,
+        "recommendedMoveKey": "capture:namua:0:4:left:right::false",
+        "nodes": 132
+      }
+    },
+    {
+      "ply": 30,
+      "stateHash": "1028bacedc4118d56832ddc43d2f4b79dc5619844aa6484ae3fb62297f9b80f9",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -221,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -12,
+        "frontSeeds": -10,
+        "frontOccupied": -2,
+        "frontConnections": -2,
+        "reusablePits": -1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -1,
+        "relayShape": -1,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -3,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -12,
+        "frontSeeds": -10,
+        "frontOccupied": -10,
+        "frontConnections": -6,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -8,
+        "relayShape": -1,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -3,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 31,
+        "reserve": [
+          7,
+          7
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          3
+        ],
+        "legalMoves": [
+          3,
+          3
+        ],
+        "captureMoves": [
+          3,
+          3
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          19,
+          31
+        ],
+        "frontSeeds": [
+          9,
+          19
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -134,
+        "recommendedMoveKey": "capture:namua:0:0:right:left::false",
+        "nodes": 82
+      }
+    },
+    {
+      "ply": 31,
+      "stateHash": "9bd018b7a981b0aa31af3f90232390a319982de99d139454d8945ece50df4f3e",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:0:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -139,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -9,
+        "frontSeeds": -7,
+        "frontOccupied": -1,
+        "frontConnections": -1,
+        "reusablePits": -1,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -9,
+        "frontSeeds": -7,
+        "frontOccupied": -5,
+        "frontConnections": -3,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 32,
+        "reserve": [
+          6,
+          7
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          3
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          21,
+          30
+        ],
+        "frontSeeds": [
+          11,
+          18
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -518,
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "nodes": 155
+      }
+    },
+    {
+      "ply": 32,
+      "stateHash": "8da40d6b6adb3dce5951982cc6970be7bf15f135c6638b55f64a0c00017ca2a5",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:3:left:right::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 3,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -398,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -16,
+        "frontSeeds": -14,
+        "frontOccupied": -5,
+        "frontConnections": -5,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -8,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -16,
+        "frontSeeds": -14,
+        "frontOccupied": -25,
+        "frontConnections": -15,
+        "reusablePits": -9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -8,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 33,
+        "reserve": [
+          6,
+          6
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          3
+        ],
+        "legalMoves": [
+          5,
+          5
+        ],
+        "captureMoves": [
+          5,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          18,
+          34
+        ],
+        "frontSeeds": [
+          8,
+          22
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -144,
+        "recommendedMoveKey": "capture:namua:0:1:right:left::false",
+        "nodes": 116
+      }
+    },
+    {
+      "ply": 33,
+      "stateHash": "57e5b063d5c2ed71a5992786d31bcbf15911ab9cefb60798e89343089002a78a",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:1:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -269,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -13,
+        "frontSeeds": -11,
+        "frontOccupied": -3,
+        "frontConnections": -2,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 1,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -4,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -13,
+        "frontSeeds": -11,
+        "frontOccupied": -15,
+        "frontConnections": -6,
+        "reusablePits": -9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 8,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -4,
+        "transitionShape": 0,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 34,
+        "reserve": [
+          5,
+          6
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          3
+        ],
+        "legalMoves": [
+          5,
+          5
+        ],
+        "captureMoves": [
+          5,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          20,
+          33
+        ],
+        "frontSeeds": [
+          10,
+          21
+        ],
+        "backSeeds": [
+          10,
+          12
+        ]
+      },
+      "search": {
+        "southScore": -457,
+        "recommendedMoveKey": "capture:namua:0:5:left:right::false",
+        "nodes": 102
+      }
+    },
+    {
+      "ply": 34,
+      "stateHash": "5cbc5317ccc903816535cefafe1864fd65e0605136acb32bd903e186caa4b7d0",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:5:left:right::false",
+        "player": 1,
+        "captures": 2,
+        "capturedSeeds": 4,
+        "relays": 7,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -454,
+      "evaluationCategory": "namua-midgame",
+      "evaluationFeatures": {
+        "boardSeeds": -22,
+        "frontSeeds": -14,
+        "frontOccupied": -5,
+        "frontConnections": -5,
+        "reusablePits": -4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -1,
+        "frontSafety": -2,
+        "houseValue": 0,
+        "reserveEfficiency": -10,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -22,
+        "frontSeeds": -14,
+        "frontOccupied": -25,
+        "frontConnections": -15,
+        "reusablePits": -12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -1,
+        "frontSafety": -16,
+        "houseValue": 0,
+        "reserveEfficiency": -10,
+        "transitionShape": 0,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 35,
+        "reserve": [
+          5,
+          5
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          5
+        ],
+        "legalMoves": [
+          3,
+          3
+        ],
+        "captureMoves": [
+          3,
+          3
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          16,
+          38
+        ],
+        "frontSeeds": [
+          6,
+          20
+        ],
+        "backSeeds": [
+          10,
+          18
+        ]
+      },
+      "search": {
+        "southScore": -103,
+        "recommendedMoveKey": "capture:namua:0:1:right:left::false",
+        "nodes": 200
+      }
+    },
+    {
+      "ply": 35,
+      "stateHash": "77a16ab324dcdce9da265f47cb337186383b956c9f1b632c46f06659b5c1368e",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:1:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 2,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": 30,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -17,
+        "frontSeeds": -10,
+        "frontOccupied": 1,
+        "frontConnections": 2,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 13,
+        "relayShape": 3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 6,
+        "transitionShape": 17,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -17,
+        "frontSeeds": -10,
+        "frontOccupied": 5,
+        "frontConnections": 6,
+        "reusablePits": -9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 104,
+        "relayShape": 3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 6,
+        "transitionShape": 34,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 36,
+        "reserve": [
+          4,
+          5
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          5
+        ],
+        "legalMoves": [
+          9,
+          9
+        ],
+        "captureMoves": [
+          9,
+          9
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          19,
+          36
+        ],
+        "frontSeeds": [
+          8,
+          18
+        ],
+        "backSeeds": [
+          11,
+          18
+        ]
+      },
+      "search": {
+        "southScore": -481,
+        "recommendedMoveKey": "capture:namua:0:5:right:left::false",
+        "nodes": 284
+      }
+    },
+    {
+      "ply": 36,
+      "stateHash": "ee39c230f915a49ab88149edb37571948553cd26796b72861c6c1acf1e0b3740",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:5:right:left::false",
+        "player": 1,
+        "captures": 4,
+        "capturedSeeds": 4,
+        "relays": 5,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -457,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -26,
+        "frontSeeds": -20,
+        "frontOccupied": -4,
+        "frontConnections": -4,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 2,
+        "relayShape": -6,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -10,
+        "transitionShape": -11,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -26,
+        "frontSeeds": -20,
+        "frontOccupied": -20,
+        "frontConnections": -12,
+        "reusablePits": -9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 16,
+        "relayShape": -6,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -10,
+        "transitionShape": -22,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 37,
+        "reserve": [
+          4,
+          4
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          6
+        ],
+        "legalMoves": [
+          5,
+          5
+        ],
+        "captureMoves": [
+          5,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          15,
+          41
+        ],
+        "frontSeeds": [
+          4,
+          24
+        ],
+        "backSeeds": [
+          11,
+          17
+        ]
+      },
+      "search": {
+        "southScore": -224,
+        "recommendedMoveKey": "capture:namua:0:4:left:right::false",
+        "nodes": 137
+      }
+    },
+    {
+      "ply": 37,
+      "stateHash": "17c90c17e47319145d261440e6694bb6debe23aa01205d0c95d2ceedc4bd2a7f",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -299,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -23,
+        "frontSeeds": -17,
+        "frontOccupied": -2,
+        "frontConnections": -2,
+        "reusablePits": -2,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 4,
+        "relayShape": 0,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -2,
+        "transitionShape": -6,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -23,
+        "frontSeeds": -17,
+        "frontOccupied": -10,
+        "frontConnections": -6,
+        "reusablePits": -6,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 32,
+        "relayShape": 0,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -2,
+        "transitionShape": -12,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 38,
+        "reserve": [
+          3,
+          4
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          2,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          17,
+          40
+        ],
+        "frontSeeds": [
+          6,
+          23
+        ],
+        "backSeeds": [
+          11,
+          17
+        ]
+      },
+      "search": {
+        "southScore": -440,
+        "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+        "nodes": 74
+      }
+    },
+    {
+      "ply": 38,
+      "stateHash": "fab109a69e9ed9e83d2f0d20921237ddf846b41880d845a735870e8d1bc41949",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:right:left::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 2,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -481,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -28,
+        "frontSeeds": -17,
+        "frontOccupied": -4,
+        "frontConnections": -5,
+        "reusablePits": -5,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 1,
+        "relayShape": -7,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -13,
+        "transitionShape": -14,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -28,
+        "frontSeeds": -17,
+        "frontOccupied": -20,
+        "frontConnections": -15,
+        "reusablePits": -15,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 8,
+        "relayShape": -7,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -13,
+        "transitionShape": -28,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 39,
+        "reserve": [
+          3,
+          3
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          2,
+          8
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          15,
+          43
+        ],
+        "frontSeeds": [
+          4,
+          21
+        ],
+        "backSeeds": [
+          11,
+          22
+        ]
+      },
+      "search": {
+        "southScore": -50,
+        "recommendedMoveKey": "capture:namua:0:4:left:right::false",
+        "nodes": 52
+      }
+    },
+    {
+      "ply": 39,
+      "stateHash": "f968deb8464107df485f4f9d93bd80b9fd6eeb549edfd2ecfc51620da5b78d61",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 3,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -229,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -21,
+        "frontSeeds": -10,
+        "frontOccupied": -1,
+        "frontConnections": -2,
+        "reusablePits": -3,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 2,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": -6,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -21,
+        "frontSeeds": -10,
+        "frontOccupied": -5,
+        "frontConnections": -6,
+        "reusablePits": -9,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 16,
+        "relayShape": -3,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 3,
+        "transitionShape": -12,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 40,
+        "reserve": [
+          2,
+          3
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          8
+        ],
+        "legalMoves": [
+          1,
+          1
+        ],
+        "captureMoves": [
+          1,
+          1
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          19,
+          40
+        ],
+        "frontSeeds": [
+          8,
+          18
+        ],
+        "backSeeds": [
+          11,
+          22
+        ]
+      },
+      "search": {
+        "southScore": -565,
+        "recommendedMoveKey": "capture:namua:0:7:left:right::false",
+        "nodes": 39
+      }
+    },
+    {
+      "ply": 40,
+      "stateHash": "ce7a1c5ad9826c82191429bfec3d98fe087d10ac8fc6062d3d928540079136ca",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:7:left:right::false",
+        "player": 1,
+        "captures": 1,
+        "capturedSeeds": 1,
+        "relays": 3,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -440,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -24,
+        "frontSeeds": -11,
+        "frontOccupied": -4,
+        "frontConnections": -4,
+        "reusablePits": -4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -2,
+        "relayShape": 1,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -20,
+        "transitionShape": -12,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -24,
+        "frontSeeds": -11,
+        "frontOccupied": -20,
+        "frontConnections": -12,
+        "reusablePits": -12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": -16,
+        "relayShape": 1,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -20,
+        "transitionShape": -24,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 41,
+        "reserve": [
+          2,
+          2
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          3,
+          9
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          18,
+          42
+        ],
+        "frontSeeds": [
+          7,
+          18
+        ],
+        "backSeeds": [
+          11,
+          24
+        ]
+      },
+      "search": {
+        "southScore": -315,
+        "recommendedMoveKey": "capture:namua:0:6:left:right::false",
+        "nodes": 92
+      }
+    },
+    {
+      "ply": 41,
+      "stateHash": "18b3b5e108d7d8c9ee13914c1647942d33a5f3e119586e30494fbc056f37a06f",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:6:left:right::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 2,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -64,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -19,
+        "frontSeeds": -6,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": -4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 9,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 25,
+        "transitionShape": -4,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -19,
+        "frontSeeds": -6,
+        "frontOccupied": 0,
+        "frontConnections": 0,
+        "reusablePits": -12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 72,
+        "relayShape": 5,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 25,
+        "transitionShape": -8,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 42,
+        "reserve": [
+          1,
+          2
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          4,
+          9
+        ],
+        "legalMoves": [
+          6,
+          6
+        ],
+        "captureMoves": [
+          6,
+          6
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          21,
+          40
+        ],
+        "frontSeeds": [
+          10,
+          16
+        ],
+        "backSeeds": [
+          11,
+          24
+        ]
+      },
+      "search": {
+        "southScore": -625,
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "nodes": 119
+      }
+    },
+    {
+      "ply": 42,
+      "stateHash": "87daba000935d8cba1e1db83c5bbb729e2212524a0f27971b90c80684255db0f",
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:3:left:right::false",
+        "player": 1,
+        "captures": 2,
+        "capturedSeeds": 5,
+        "relays": 3,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -565,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -30,
+        "frontSeeds": -14,
+        "frontOccupied": -5,
+        "frontConnections": -6,
+        "reusablePits": -4,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -7,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -50,
+        "transitionShape": -15,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -30,
+        "frontSeeds": -14,
+        "frontOccupied": -25,
+        "frontConnections": -18,
+        "reusablePits": -12,
+        "mobility": 0,
+        "captureMoves": 0,
+        "maxCapture": 0,
+        "relayShape": -7,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -50,
+        "transitionShape": -30,
+        "tempo": 2
+      },
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 43,
+        "reserve": [
+          1,
+          1
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          1
+        ],
+        "legalMoves": [
+          5,
+          5
+        ],
+        "captureMoves": [
+          5,
+          5
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          16,
+          46
+        ],
+        "frontSeeds": [
+          5,
+          19
+        ],
+        "backSeeds": [
+          11,
+          27
+        ]
+      },
+      "search": {
+        "southScore": -479,
+        "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+        "nodes": 90
+      }
+    },
+    {
+      "ply": 43,
+      "stateHash": "79fb6fac686e54cd19d376d484f0aa06f55395ce63df2277daa73606d5dd1ee5",
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:right:left::false",
+        "player": 0,
+        "captures": 1,
+        "capturedSeeds": 5,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -315,
+      "evaluationCategory": "namua-endgame",
+      "evaluationFeatures": {
+        "boardSeeds": -19,
+        "frontSeeds": -3,
+        "frontOccupied": 0,
+        "frontConnections": 1,
+        "reusablePits": -2,
+        "mobility": -9,
+        "captureMoves": -9,
+        "maxCapture": -7,
+        "relayShape": -8,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -70,
+        "transitionShape": -1,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -19,
+        "frontSeeds": -3,
+        "frontOccupied": 0,
+        "frontConnections": 3,
+        "reusablePits": -6,
+        "mobility": -18,
+        "captureMoves": -27,
+        "maxCapture": -56,
+        "relayShape": -8,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": -70,
+        "transitionShape": -2,
+        "tempo": -2
+      },
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 44,
+        "reserve": [
+          0,
+          1
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          1
+        ],
+        "legalMoves": [
+          1,
+          9
+        ],
+        "captureMoves": [
+          0,
+          9
+        ],
+        "forcedCapture": [
+          false,
+          true
+        ],
+        "boardSeeds": [
+          22,
+          41
+        ],
+        "frontSeeds": [
+          11,
+          14
+        ],
+        "backSeeds": [
+          11,
+          27
+        ]
+      },
+      "search": {
+        "southScore": -881,
+        "recommendedMoveKey": "capture:namua:0:2:left:right::false",
+        "nodes": 149
+      }
+    },
+    {
+      "ply": 44,
+      "stateHash": "aa5aa01ec88f686d77e132d21251ef2ac4b773c78c440cd2c1dc132f47e3ad70",
+      "player": 0,
+      "phase": "mtaji",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:namua:0:2:left:right::false",
+        "player": 1,
+        "captures": 3,
+        "capturedSeeds": 3,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "phase",
+          "turn"
+        ]
+      },
+      "southStaticScore": -530,
+      "evaluationCategory": "mtaji-endurance",
+      "evaluationFeatures": {
+        "boardSeeds": -26,
+        "frontSeeds": -10,
+        "frontOccupied": -4,
+        "frontConnections": -6,
+        "reusablePits": -4,
+        "mobility": -3,
+        "captureMoves": -3,
+        "maxCapture": -5,
+        "relayShape": -15,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -52,
+        "frontSeeds": -20,
+        "frontOccupied": -28,
+        "frontConnections": -24,
+        "reusablePits": -20,
+        "mobility": -9,
+        "captureMoves": -15,
+        "maxCapture": -40,
+        "relayShape": -15,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 3
+      },
+      "features": {
+        "player": 0,
+        "phase": "mtaji",
+        "turn": 45,
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          2
+        ],
+        "legalMoves": [
+          1,
+          4
+        ],
+        "captureMoves": [
+          1,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          19,
+          45
+        ],
+        "frontSeeds": [
+          8,
+          18
+        ],
+        "backSeeds": [
+          11,
+          27
+        ]
+      },
+      "search": {
+        "southScore": -881,
+        "recommendedMoveKey": "capture:mtaji:1:0:right:::false",
+        "nodes": 20
+      }
+    },
+    {
+      "ply": 45,
+      "stateHash": "32b75fb2ba63345add7b64babd6a48c09b372b3a8178da35a8e30194ec29a7ee",
+      "player": 1,
+      "phase": "mtaji",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:mtaji:1:0:right:::false",
+        "player": 0,
+        "captures": 2,
+        "capturedSeeds": 2,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "capture",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -315,
+      "evaluationCategory": "mtaji-endurance",
+      "evaluationFeatures": {
+        "boardSeeds": -22,
+        "frontSeeds": -3,
+        "frontOccupied": -1,
+        "frontConnections": -1,
+        "reusablePits": -4,
+        "mobility": -2,
+        "captureMoves": -2,
+        "maxCapture": -7,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -44,
+        "frontSeeds": -6,
+        "frontOccupied": -7,
+        "frontConnections": -4,
+        "reusablePits": -20,
+        "mobility": -6,
+        "captureMoves": -10,
+        "maxCapture": -56,
+        "relayShape": -2,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -3
+      },
+      "features": {
+        "player": 1,
+        "phase": "mtaji",
+        "turn": 46,
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          2
+        ],
+        "legalMoves": [
+          2,
+          4
+        ],
+        "captureMoves": [
+          2,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          21,
+          43
+        ],
+        "frontSeeds": [
+          13,
+          16
+        ],
+        "backSeeds": [
+          8,
+          27
+        ]
+      },
+      "search": {
+        "southScore": -999997,
+        "recommendedMoveKey": "capture:mtaji:0:4:right:::false",
+        "nodes": 46
+      }
+    },
+    {
+      "ply": 46,
+      "stateHash": "d76d970898fa0650421839b95e9a578af98a02c3d617ae6d90dc50ffdf40967c",
+      "player": 0,
+      "phase": "mtaji",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "capture:mtaji:0:4:right:::false",
+        "player": 1,
+        "captures": 4,
+        "capturedSeeds": 10,
+        "relays": 1,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "capture",
+          "relay",
+          "turn"
+        ]
+      },
+      "southStaticScore": -881,
+      "evaluationCategory": "mtaji-endurance",
+      "evaluationFeatures": {
+        "boardSeeds": -42,
+        "frontSeeds": -23,
+        "frontOccupied": -7,
+        "frontConnections": -7,
+        "reusablePits": -7,
+        "mobility": 0,
+        "captureMoves": -2,
+        "maxCapture": -3,
+        "relayShape": -1,
+        "frontSafety": -5,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -84,
+        "frontSeeds": -46,
+        "frontOccupied": -49,
+        "frontConnections": -28,
+        "reusablePits": -35,
+        "mobility": 0,
+        "captureMoves": -10,
+        "maxCapture": -24,
+        "relayShape": -1,
+        "frontSafety": -60,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": 3
+      },
+      "features": {
+        "player": 0,
+        "phase": "mtaji",
+        "turn": 47,
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          2
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          0,
+          2
+        ],
+        "forcedCapture": [
+          false,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          53
+        ],
+        "frontSeeds": [
+          3,
+          26
+        ],
+        "backSeeds": [
+          8,
+          27
+        ]
+      },
+      "search": {
+        "southScore": -999998,
+        "recommendedMoveKey": "takata:mtaji:0:6:left:::false",
+        "nodes": 27
+      }
+    },
+    {
+      "ply": 47,
+      "stateHash": "e0dab89191a425aa90a9c35f962af012396df3cae7b12611ee038366dd213be2",
+      "player": 1,
+      "phase": "mtaji",
+      "winner": null,
+      "reason": "",
+      "incoming": {
+        "moveKey": "takata:mtaji:0:6:left:::false",
+        "player": 0,
+        "captures": 0,
+        "capturedSeeds": 0,
+        "relays": 0,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "turn"
+        ]
+      },
+      "southStaticScore": -770,
+      "evaluationCategory": "mtaji-endurance",
+      "evaluationFeatures": {
+        "boardSeeds": -42,
+        "frontSeeds": -23,
+        "frontOccupied": -5,
+        "frontConnections": -5,
+        "reusablePits": -8,
+        "mobility": 0,
+        "captureMoves": -6,
+        "maxCapture": -3,
+        "relayShape": -11,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -1
+      },
+      "evaluationContributions": {
+        "boardSeeds": -84,
+        "frontSeeds": -46,
+        "frontOccupied": -35,
+        "frontConnections": -20,
+        "reusablePits": -40,
+        "mobility": 0,
+        "captureMoves": -30,
+        "maxCapture": -24,
+        "relayShape": -11,
+        "frontSafety": 0,
+        "houseValue": 0,
+        "reserveEfficiency": 0,
+        "transitionShape": 0,
+        "tempo": -3
+      },
+      "features": {
+        "player": 1,
+        "phase": "mtaji",
+        "turn": 48,
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          1,
+          2
+        ],
+        "legalMoves": [
+          6,
+          6
+        ],
+        "captureMoves": [
+          0,
+          6
+        ],
+        "forcedCapture": [
+          false,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          53
+        ],
+        "frontSeeds": [
+          3,
+          26
+        ],
+        "backSeeds": [
+          8,
+          27
+        ]
+      },
+      "search": {
+        "southScore": -999999,
+        "recommendedMoveKey": "capture:mtaji:0:4:left:::false",
+        "nodes": 50
+      }
+    },
+    {
+      "ply": 48,
+      "stateHash": "7d8d33769c370f794f2ba2a2981562bb707c96d442e1a906b287535db8688c0f",
+      "player": 1,
+      "phase": "mtaji",
+      "winner": 1,
+      "reason": "front-empty",
+      "incoming": {
+        "moveKey": "capture:mtaji:0:4:left:::false",
+        "player": 1,
+        "captures": 3,
+        "capturedSeeds": 3,
+        "relays": 7,
+        "houseUsed": false,
+        "eventKinds": [
+          "lift",
+          "sow",
+          "capture",
+          "relay",
+          "win"
+        ]
+      },
+      "southStaticScore": -1000000,
+      "evaluationCategory": "terminal",
+      "evaluationFeatures": {},
+      "evaluationContributions": {},
+      "features": {
+        "player": 1,
+        "phase": "mtaji",
+        "turn": 48,
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "nyumbaSeeds": [
+          0,
+          3
+        ],
+        "legalMoves": [
+          0,
+          0
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          8,
+          55
+        ],
+        "frontSeeds": [
+          0,
+          30
+        ],
+        "backSeeds": [
+          8,
+          25
+        ]
+      },
+      "search": null
+    }
+  ],
+  "integrity": {
+    "replayPassed": true,
+    "positions": 48,
+    "traceHash": "3fde4f65cab0f616935e3e29b76b0c416d54a9df4ba218625f817d1a4073167d",
+    "finalStateHashMatches": true
+  }
+}
