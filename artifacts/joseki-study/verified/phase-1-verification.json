@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-17T11:57:41.519Z",
+  "passed": true,
+  "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+  "nodes": 19,
+  "edges": 18,
+  "results": 228,
+  "conditionCounts": {
+    "bao-d1": 19,
+    "bao-d2": 19,
+    "bao-d3": 19,
+    "bao-d4": 19,
+    "legacy-d1": 19,
+    "legacy-d2": 19,
+    "legacy-d3": 19,
+    "legacy-d4": 19,
+    "bao-v2-d1": 19,
+    "bao-v2-d2": 19,
+    "bao-v2-d3": 19,
+    "bao-v2-d4": 19
+  },
+  "partialResults": 0,
+  "stateHashesMatch": true,
+  "sequenceHashesMatch": true,
+  "conditionHashesMatch": true,
+  "sourceHashesMatch": true,
+  "symmetryPassed": true,
+  "verificationHash": "a8847d698b9e1c296ac9e795abff0382ddf81ca5a11ddba6e46a5d99d13d4bdf"
+}

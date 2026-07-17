@@ -1,0 +1,2112 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T11:57:01.551Z",
+  "status": "screened",
+  "scope": "standard initial position, exhaustive 2-ply tree",
+  "methodology": {
+    "baseline": "bao-d2",
+    "robustValue": "minimum South-perspective search score over every legal North reply",
+    "caveat": "Search scores are engine heuristic minimax values, not win probabilities."
+  },
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-17T11:57:01.526Z",
+    "passed": true,
+    "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+    "nodes": 19,
+    "edges": 18,
+    "results": 228,
+    "conditionCounts": {
+      "bao-d1": 19,
+      "bao-d2": 19,
+      "bao-d3": 19,
+      "bao-d4": 19,
+      "legacy-d1": 19,
+      "legacy-d2": 19,
+      "legacy-d3": 19,
+      "legacy-d4": 19,
+      "bao-v2-d1": 19,
+      "bao-v2-d2": 19,
+      "bao-v2-d3": 19,
+      "bao-v2-d4": 19
+    },
+    "partialResults": 0,
+    "stateHashesMatch": true,
+    "sequenceHashesMatch": true,
+    "conditionHashesMatch": true,
+    "sourceHashesMatch": true,
+    "symmetryPassed": true,
+    "verificationHash": "a8847d698b9e1c296ac9e795abff0382ddf81ca5a11ddba6e46a5d99d13d4bdf"
+  },
+  "tree": {
+    "counts": {
+      "nodes": 19,
+      "edges": 18,
+      "byPly": {
+        "0": 1,
+        "1": 4,
+        "2": 14
+      },
+      "uniqueStates": 19,
+      "transpositionNodes": 0,
+      "uniqueCanonicalStates": 19
+    },
+    "symmetry": {
+      "passed": true,
+      "nodes": 19,
+      "legalMovesChecked": 56,
+      "transitionsChecked": 56,
+      "failures": []
+    }
+  },
+  "candidates": [
+    {
+      "nodeId": "p1-601242bbb060",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false",
+      "directValue": 2,
+      "worstReplyValue": 184,
+      "averageReplyValue": 224,
+      "bestReplyForNorth": {
+        "nodeId": "p2-3387f82a131d",
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "value": 184
+      },
+      "replies": [
+        {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 184
+        },
+        {
+          "nodeId": "p2-5b0a78ca579f",
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "value": 207
+        },
+        {
+          "nodeId": "p2-16acc188c7b0",
+          "moveKey": "capture:namua:0:5:right:left::false",
+          "value": 242
+        },
+        {
+          "nodeId": "p2-01c2a0ae92bf",
+          "moveKey": "capture:namua:0:5:left:right::false",
+          "value": 263
+        }
+      ],
+      "baselineRank": 1,
+      "depthTop3Count": 4,
+      "depthConditions": 4,
+      "evaluatorTop3Count": 3,
+      "evaluatorConditions": 3
+    },
+    {
+      "nodeId": "p1-9d641a842f1b",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false",
+      "directValue": -121,
+      "worstReplyValue": 59,
+      "averageReplyValue": 132.5,
+      "bestReplyForNorth": {
+        "nodeId": "p2-925ebc20976a",
+        "moveKey": "capture:namua:0:4:left:right::false",
+        "value": 59
+      },
+      "replies": [
+        {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 59
+        },
+        {
+          "nodeId": "p2-064f73f42fd5",
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "value": 206
+        }
+      ],
+      "baselineRank": 2,
+      "depthTop3Count": 2,
+      "depthConditions": 4,
+      "evaluatorTop3Count": 3,
+      "evaluatorConditions": 3
+    },
+    {
+      "nodeId": "p1-f710cf3e10d4",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false",
+      "directValue": 13,
+      "worstReplyValue": 11,
+      "averageReplyValue": 107.5,
+      "bestReplyForNorth": {
+        "nodeId": "p2-92d3eca28742",
+        "moveKey": "takata:namua:0:6:right:::false",
+        "value": 11
+      },
+      "replies": [
+        {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 11
+        },
+        {
+          "nodeId": "p2-7f1d01deacc6",
+          "moveKey": "takata:namua:0:6:left:::false",
+          "value": 120
+        },
+        {
+          "nodeId": "p2-3ece7a3e09e5",
+          "moveKey": "takata:namua:0:5:left:::false",
+          "value": 137
+        },
+        {
+          "nodeId": "p2-9a1319e7d3be",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 162
+        }
+      ],
+      "baselineRank": 3,
+      "depthTop3Count": 3,
+      "depthConditions": 4,
+      "evaluatorTop3Count": 3,
+      "evaluatorConditions": 3
+    },
+    {
+      "nodeId": "p1-b3e1279167e3",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false",
+      "directValue": 4,
+      "worstReplyValue": 2,
+      "averageReplyValue": 146.25,
+      "bestReplyForNorth": {
+        "nodeId": "p2-c2e726054ea1",
+        "moveKey": "takata:namua:0:6:right:::false",
+        "value": 2
+      },
+      "replies": [
+        {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 2
+        },
+        {
+          "nodeId": "p2-1b8b4e200ebc",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 115
+        },
+        {
+          "nodeId": "p2-896e8c25fbfb",
+          "moveKey": "takata:namua:0:5:left:::false",
+          "value": 164
+        },
+        {
+          "nodeId": "p2-6ce4dc5dc11d",
+          "moveKey": "takata:namua:0:6:left:::false",
+          "value": 304
+        }
+      ],
+      "baselineRank": 4,
+      "depthTop3Count": 3,
+      "depthConditions": 4,
+      "evaluatorTop3Count": 0,
+      "evaluatorConditions": 3
+    }
+  ],
+  "rankings": {
+    "bao-d1": [
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 2,
+        "worstReplyValue": 13,
+        "averageReplyValue": 59,
+        "bestReplyForNorth": {
+          "nodeId": "p2-9a1319e7d3be",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 13
+        },
+        "replies": [
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 13
+          },
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 18
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 74
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 131
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": -3,
+        "worstReplyValue": 4,
+        "averageReplyValue": 74,
+        "bestReplyForNorth": {
+          "nodeId": "p2-1b8b4e200ebc",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 4
+        },
+        "replies": [
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 4
+          },
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 9
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 126
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 157
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 154,
+        "worstReplyValue": 2,
+        "averageReplyValue": 59.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 2
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 2
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 3
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 103
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 129
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -135,
+        "worstReplyValue": -121,
+        "averageReplyValue": -101,
+        "bestReplyForNorth": {
+          "nodeId": "p2-064f73f42fd5",
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "value": -121
+        },
+        "replies": [
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": -121
+          },
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -81
+          }
+        ]
+      }
+    ],
+    "bao-d2": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 2,
+        "worstReplyValue": 184,
+        "averageReplyValue": 224,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 184
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 184
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 207
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 242
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 263
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -121,
+        "worstReplyValue": 59,
+        "averageReplyValue": 132.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 59
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 59
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 206
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 13,
+        "worstReplyValue": 11,
+        "averageReplyValue": 107.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 11
+        },
+        "replies": [
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 11
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 120
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 137
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 162
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": 4,
+        "worstReplyValue": 2,
+        "averageReplyValue": 146.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 2
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 2
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 115
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 164
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 304
+          }
+        ]
+      }
+    ],
+    "bao-d3": [
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": 2,
+        "worstReplyValue": -99,
+        "averageReplyValue": 35.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -99
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -99
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 40
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 76
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 124
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 184,
+        "worstReplyValue": -182,
+        "averageReplyValue": -14.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-16acc188c7b0",
+          "moveKey": "capture:namua:0:5:right:left::false",
+          "value": -182
+        },
+        "replies": [
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": -182
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 20
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 30
+          },
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 75
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": 59,
+        "worstReplyValue": -187,
+        "averageReplyValue": -164.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": -187
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -187
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": -142
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 11,
+        "worstReplyValue": -194,
+        "averageReplyValue": -41.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-7f1d01deacc6",
+          "moveKey": "takata:namua:0:6:left:::false",
+          "value": -194
+        },
+        "replies": [
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": -194
+          },
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -40
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 19
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 49
+          }
+        ]
+      }
+    ],
+    "bao-d4": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": -182,
+        "worstReplyValue": 139,
+        "averageReplyValue": 200.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 139
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 139
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 150
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 248
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 265
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": -99,
+        "worstReplyValue": 2,
+        "averageReplyValue": 142.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 2
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 2
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 66
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 246
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 255
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": -194,
+        "worstReplyValue": -7,
+        "averageReplyValue": 99.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -7
+        },
+        "replies": [
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -7
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 72
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 165
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 169
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -187,
+        "worstReplyValue": -74,
+        "averageReplyValue": 28,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": -74
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -74
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 130
+          }
+        ]
+      }
+    ],
+    "legacy-d1": [
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 0,
+        "worstReplyValue": 9,
+        "averageReplyValue": 43.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-9a1319e7d3be",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 9
+        },
+        "replies": [
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 9
+          },
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 13
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 58
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 93
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": -4,
+        "worstReplyValue": 1,
+        "averageReplyValue": 50.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-1b8b4e200ebc",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 1
+        },
+        "replies": [
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 1
+          },
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 5
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 89
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 107
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 97,
+        "worstReplyValue": 0,
+        "averageReplyValue": 75.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 0
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 0
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 0
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 142
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 160
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -88,
+        "worstReplyValue": -106,
+        "averageReplyValue": -79,
+        "bestReplyForNorth": {
+          "nodeId": "p2-064f73f42fd5",
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "value": -106
+        },
+        "replies": [
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": -106
+          },
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -52
+          }
+        ]
+      }
+    ],
+    "legacy-d2": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 0,
+        "worstReplyValue": 94,
+        "averageReplyValue": 167.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 94
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 94
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 97
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 240
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 240
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -106,
+        "worstReplyValue": 44,
+        "averageReplyValue": 76,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 44
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 44
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 108
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 9,
+        "worstReplyValue": 8,
+        "averageReplyValue": 77.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 8
+        },
+        "replies": [
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 8
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 80
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 111
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 111
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": 1,
+        "worstReplyValue": 0,
+        "averageReplyValue": 94,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 0
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 0
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 75
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 106
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 195
+          }
+        ]
+      }
+    ],
+    "legacy-d3": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 94,
+        "worstReplyValue": -15,
+        "averageReplyValue": 29.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-16acc188c7b0",
+          "moveKey": "capture:namua:0:5:right:left::false",
+          "value": -15
+        },
+        "replies": [
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": -15
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 0
+          },
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 62
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 72
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 8,
+        "worstReplyValue": -50,
+        "averageReplyValue": -5.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-7f1d01deacc6",
+          "moveKey": "takata:namua:0:6:left:::false",
+          "value": -50
+        },
+        "replies": [
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": -50
+          },
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -31
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 14
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 44
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": 0,
+        "worstReplyValue": -71,
+        "averageReplyValue": 38.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -71
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -71
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 40
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 88
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 98
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": 44,
+        "worstReplyValue": -93,
+        "averageReplyValue": -85,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": -93
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -93
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": -77
+          }
+        ]
+      }
+    ],
+    "legacy-d4": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": -15,
+        "worstReplyValue": 96,
+        "averageReplyValue": 170,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 96
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 96
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 160
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 188
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 236
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": -50,
+        "worstReplyValue": -31,
+        "averageReplyValue": 56.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -31
+        },
+        "replies": [
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -31
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 33
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 62
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 163
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": -71,
+        "worstReplyValue": -39,
+        "averageReplyValue": 90.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -39
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -39
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 58
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 150
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 194
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -93,
+        "worstReplyValue": -41,
+        "averageReplyValue": 28.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": -41
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -41
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 98
+          }
+        ]
+      }
+    ],
+    "bao-v2-d1": [
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 2,
+        "worstReplyValue": 14,
+        "averageReplyValue": 60.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-9a1319e7d3be",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 14
+        },
+        "replies": [
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 14
+          },
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 19
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 76
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 134
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": -3,
+        "worstReplyValue": 5,
+        "averageReplyValue": 76,
+        "bestReplyForNorth": {
+          "nodeId": "p2-1b8b4e200ebc",
+          "moveKey": "takata:namua:0:5:right:::false",
+          "value": 5
+        },
+        "replies": [
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 5
+          },
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 10
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 129
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 160
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 158,
+        "worstReplyValue": 2,
+        "averageReplyValue": 60.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 2
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 2
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 3
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 106
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 132
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -138,
+        "worstReplyValue": -124,
+        "averageReplyValue": -103,
+        "bestReplyForNorth": {
+          "nodeId": "p2-064f73f42fd5",
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "value": -124
+        },
+        "replies": [
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": -124
+          },
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -82
+          }
+        ]
+      }
+    ],
+    "bao-v2-d2": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 2,
+        "worstReplyValue": 189,
+        "averageReplyValue": 228,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 189
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 189
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 210
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 246
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 267
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -124,
+        "worstReplyValue": 60,
+        "averageReplyValue": 135.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 60
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 60
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 211
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 14,
+        "worstReplyValue": 11,
+        "averageReplyValue": 110.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 11
+        },
+        "replies": [
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 11
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 123
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 140
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 167
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": 5,
+        "worstReplyValue": 2,
+        "averageReplyValue": 149.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 2
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 2
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 118
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 167
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 310
+          }
+        ]
+      }
+    ],
+    "bao-v2-d3": [
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": 2,
+        "worstReplyValue": -102,
+        "averageReplyValue": 35.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -102
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -102
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 41
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 77
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 126
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": 189,
+        "worstReplyValue": -187,
+        "averageReplyValue": -15.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-16acc188c7b0",
+          "moveKey": "capture:namua:0:5:right:left::false",
+          "value": -187
+        },
+        "replies": [
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": -187
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 20
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 30
+          },
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 76
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": 60,
+        "worstReplyValue": -192,
+        "averageReplyValue": -168,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": -192
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -192
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": -144
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": 11,
+        "worstReplyValue": -197,
+        "averageReplyValue": -42.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-7f1d01deacc6",
+          "moveKey": "takata:namua:0:6:left:::false",
+          "value": -197
+        },
+        "replies": [
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": -197
+          },
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -41
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 19
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 50
+          }
+        ]
+      }
+    ],
+    "bao-v2-d4": [
+      {
+        "nodeId": "p1-601242bbb060",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:5:left:::false",
+        "directValue": -187,
+        "worstReplyValue": 142,
+        "averageReplyValue": 203.5,
+        "bestReplyForNorth": {
+          "nodeId": "p2-3387f82a131d",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": 142
+        },
+        "replies": [
+          {
+            "nodeId": "p2-3387f82a131d",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": 142
+          },
+          {
+            "nodeId": "p2-16acc188c7b0",
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "value": 151
+          },
+          {
+            "nodeId": "p2-01c2a0ae92bf",
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "value": 252
+          },
+          {
+            "nodeId": "p2-5b0a78ca579f",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 269
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-b3e1279167e3",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:6:right:::false",
+        "directValue": -102,
+        "worstReplyValue": 2,
+        "averageReplyValue": 145.75,
+        "bestReplyForNorth": {
+          "nodeId": "p2-c2e726054ea1",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": 2
+        },
+        "replies": [
+          {
+            "nodeId": "p2-c2e726054ea1",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": 2
+          },
+          {
+            "nodeId": "p2-1b8b4e200ebc",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 68
+          },
+          {
+            "nodeId": "p2-896e8c25fbfb",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 252
+          },
+          {
+            "nodeId": "p2-6ce4dc5dc11d",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 261
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-f710cf3e10d4",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 5,
+          "direction": "right"
+        },
+        "moveKey": "takata:namua:0:5:right:::false",
+        "directValue": -197,
+        "worstReplyValue": -7,
+        "averageReplyValue": 102.25,
+        "bestReplyForNorth": {
+          "nodeId": "p2-92d3eca28742",
+          "moveKey": "takata:namua:0:6:right:::false",
+          "value": -7
+        },
+        "replies": [
+          {
+            "nodeId": "p2-92d3eca28742",
+            "moveKey": "takata:namua:0:6:right:::false",
+            "value": -7
+          },
+          {
+            "nodeId": "p2-9a1319e7d3be",
+            "moveKey": "takata:namua:0:5:right:::false",
+            "value": 74
+          },
+          {
+            "nodeId": "p2-3ece7a3e09e5",
+            "moveKey": "takata:namua:0:5:left:::false",
+            "value": 169
+          },
+          {
+            "nodeId": "p2-7f1d01deacc6",
+            "moveKey": "takata:namua:0:6:left:::false",
+            "value": 173
+          }
+        ]
+      },
+      {
+        "nodeId": "p1-9d641a842f1b",
+        "move": {
+          "type": "takata",
+          "phase": "namua",
+          "row": 0,
+          "index": 6,
+          "direction": "left"
+        },
+        "moveKey": "takata:namua:0:6:left:::false",
+        "directValue": -192,
+        "worstReplyValue": -75,
+        "averageReplyValue": 28,
+        "bestReplyForNorth": {
+          "nodeId": "p2-925ebc20976a",
+          "moveKey": "capture:namua:0:4:left:right::false",
+          "value": -75
+        },
+        "replies": [
+          {
+            "nodeId": "p2-925ebc20976a",
+            "moveKey": "capture:namua:0:4:left:right::false",
+            "value": -75
+          },
+          {
+            "nodeId": "p2-064f73f42fd5",
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "value": 131
+          }
+        ]
+      }
+    ]
+  }
+}

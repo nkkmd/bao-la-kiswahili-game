@@ -1,0 +1,2682 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T11:56:42.518Z",
+  "maxPly": 2,
+  "rootNodeId": "p0-4f53cda18c2b",
+  "initialStateHash": "f9375bb605c18c7bf0ef4a1f5f5bcce3981380c026b2d7026a184c0302fb856a",
+  "nodes": [
+    {
+      "nodeId": "p0-4f53cda18c2b",
+      "ply": 0,
+      "parentId": null,
+      "move": null,
+      "moveKey": null,
+      "moveKeys": [],
+      "sequenceHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          22,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 1,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "f9375bb605c18c7bf0ef4a1f5f5bcce3981380c026b2d7026a184c0302fb856a",
+      "canonicalStateHash": "4624761438498846a4043376a39523606309738904efa71856d1f71ce4ea26b2",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 1,
+        "reserve": [
+          22,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          10,
+          10
+        ],
+        "frontSeeds": [
+          10,
+          10
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p1-601242bbb060",
+      "ply": 1,
+      "parentId": "p0-4f53cda18c2b",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false",
+      "moveKeys": [
+        "takata:namua:0:5:left:::false"
+      ],
+      "sequenceHash": "601242bbb0609f28b5c0e9dcc751544c99b6676ba829b7435e3121ad66c01413",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              1,
+              1,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 1,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "04543036ce1f0d23017dceb0c1cb807835ccd49f993ca39424515ce754e57a0d",
+      "canonicalStateHash": "04543036ce1f0d23017dceb0c1cb807835ccd49f993ca39424515ce754e57a0d",
+      "terminal": false,
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 2,
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          10
+        ],
+        "frontSeeds": [
+          11,
+          10
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p1-f710cf3e10d4",
+      "ply": 1,
+      "parentId": "p0-4f53cda18c2b",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false",
+      "moveKeys": [
+        "takata:namua:0:5:right:::false"
+      ],
+      "sequenceHash": "f710cf3e10d4b6982a588203e8acf79867bfc444fbd5ac824d19b51fe0d737fe",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 1,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "564b3103b57a8e101266a8a6af3b5d5f92b2148ab0354deb076f06f95f35dbb2",
+      "canonicalStateHash": "564b3103b57a8e101266a8a6af3b5d5f92b2148ab0354deb076f06f95f35dbb2",
+      "terminal": false,
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 2,
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          11,
+          10
+        ],
+        "frontSeeds": [
+          10,
+          10
+        ],
+        "backSeeds": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p1-9d641a842f1b",
+      "ply": 1,
+      "parentId": "p0-4f53cda18c2b",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false",
+      "moveKeys": [
+        "takata:namua:0:6:left:::false"
+      ],
+      "sequenceHash": "9d641a842f1b3d020b3fd0bf46e2e9b330b6d45342ce92a82b3d44c3ad230c81",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              1,
+              7,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 1,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "492c9c5fb13db33b64cd0ec47cce04e6ce5c8076b0a8f6d9f85ab52571884bcd",
+      "canonicalStateHash": "0c45034f93fc41c23ca7c5f152b1cb2a4442a4688a2849fc5ff3a26743187a46",
+      "terminal": false,
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 2,
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          6
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          10
+        ],
+        "frontSeeds": [
+          11,
+          10
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p1-b3e1279167e3",
+      "ply": 1,
+      "parentId": "p0-4f53cda18c2b",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false",
+      "moveKeys": [
+        "takata:namua:0:6:right:::false"
+      ],
+      "sequenceHash": "b3e1279167e39f12ac16bff3269f775e10f393452d2243d51eebe5bb4760e899",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 1,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "d91ca15e04e1c4932183725b4502c8868376e6d9a7d29d84ef21f6449bac5250",
+      "canonicalStateHash": "715020f2c5f51147f56b49a3883b38818ccf7b268d5e058f78eaa5fe1b52261e",
+      "terminal": false,
+      "features": {
+        "player": 1,
+        "phase": "namua",
+        "turn": 2,
+        "reserve": [
+          21,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          11,
+          10
+        ],
+        "frontSeeds": [
+          9,
+          10
+        ],
+        "backSeeds": [
+          2,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-3387f82a131d",
+      "ply": 2,
+      "parentId": "p1-601242bbb060",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "sequenceHash": "3387f82a131d684e22d7409b71104dd87fbfc52138f63f50a9b1109851d46e54",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              1,
+              0,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              7,
+              2,
+              2,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "8aa04c172a163f5d5a895752ce77745ca00791dfe229e85c871e5368a7048b97",
+      "canonicalStateHash": "8aa04c172a163f5d5a895752ce77745ca00791dfe229e85c871e5368a7048b97",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-5b0a78ca579f",
+      "ply": 2,
+      "parentId": "p1-601242bbb060",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "sequenceHash": "5b0a78ca579fdca0910c16c610f29cb30af7fc0738562d41923a4abc4dda99e0",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              1,
+              0,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              0,
+              7,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "b8c72751d848a782173a777a0d8410389059819ca1888abf0d3a292b1cd24b95",
+      "canonicalStateHash": "b8c72751d848a782173a777a0d8410389059819ca1888abf0d3a292b1cd24b95",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-01c2a0ae92bf",
+      "ply": 2,
+      "parentId": "p1-601242bbb060",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:5:left:right::false",
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:left:right::false"
+      ],
+      "sequenceHash": "01c2a0ae92bfc72df28bfa22e55d0cf2db3cbb71e8fb5aa8fa31db91b62844f5",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              1,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              3,
+              2,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "090b05522bc7123ee2e70c031aea9dcbf2e0e7286f2e3bc8910011e6447da056",
+      "canonicalStateHash": "090b05522bc7123ee2e70c031aea9dcbf2e0e7286f2e3bc8910011e6447da056",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          6
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-16acc188c7b0",
+      "ply": 2,
+      "parentId": "p1-601242bbb060",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:5:right:left::false",
+      "moveKeys": [
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:5:right:left::false"
+      ],
+      "sequenceHash": "16acc188c7b083767b0b0b46558680f7f4366875ea63f8edf5d6203b9cb40c46",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              1,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              0,
+              6,
+              3,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "163fcfa046e3b7923716bbb4eebd076c5a376cf792889eca2e066dd334459676",
+      "canonicalStateHash": "163fcfa046e3b7923716bbb4eebd076c5a376cf792889eca2e066dd334459676",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          6
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-3ece7a3e09e5",
+      "ply": 2,
+      "parentId": "p1-f710cf3e10d4",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false",
+      "moveKeys": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:left:::false"
+      ],
+      "sequenceHash": "3ece7a3e09e56182f1a4d2fe269b2779a3341f0c64250ea904e31592f6d0167b",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              1,
+              1,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "c0d54870c84b4f2690321d6b1a0f380d37297ced08a8ff77b9c5d75988e1d336",
+      "canonicalStateHash": "a2a230d97dbe54d831cc4f61e708918c0f690f33be89da057fdebc0d24e6d23b",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          10,
+          11
+        ],
+        "backSeeds": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-9a1319e7d3be",
+      "ply": 2,
+      "parentId": "p1-f710cf3e10d4",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false",
+      "moveKeys": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:5:right:::false"
+      ],
+      "sequenceHash": "9a1319e7d3bee1bfa9acd9a30046a494048740c86c7cceaaa865a4665c724ccc",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "canonicalStateHash": "fc0d56038e24e177dcd32df104452e10c1271792ab5bfaaf8da867e74828249a",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          10,
+          10
+        ],
+        "backSeeds": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-7f1d01deacc6",
+      "ply": 2,
+      "parentId": "p1-f710cf3e10d4",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false",
+      "moveKeys": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false"
+      ],
+      "sequenceHash": "7f1d01deacc6fb237a287368c78d2b10b16e9e4bab81b6326ada24a1271dc3d0",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              1,
+              7,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "022f2d0e6d2d5dee564fe904df6bd59e64ea78421c73c967d50d7a44750fc580",
+      "canonicalStateHash": "022f2d0e6d2d5dee564fe904df6bd59e64ea78421c73c967d50d7a44750fc580",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          10,
+          11
+        ],
+        "backSeeds": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-92d3eca28742",
+      "ply": 2,
+      "parentId": "p1-f710cf3e10d4",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false",
+      "moveKeys": [
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:right:::false"
+      ],
+      "sequenceHash": "92d3eca28742e424b1173932186d9e545d123d92fce2d9e6b5c3f9a815a1df32",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "a5d596a702e61af992c5cb153e65329f670ee41b83ee5708f971b8eca3672eeb",
+      "canonicalStateHash": "5a5dd6050deef473b22ac463d671b158eebdbb320a5bc62e4007b5c050b3a830",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          10,
+          9
+        ],
+        "backSeeds": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-925ebc20976a",
+      "ply": 2,
+      "parentId": "p1-9d641a842f1b",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "moveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:left:right::false"
+      ],
+      "sequenceHash": "925ebc20976a96c2e5c9b6764fd25fb60268778d76fa9fdfa2da48bef721c4b0",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              7,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              7,
+              2,
+              2,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "0805d75fb484311c325224dd0ec71c23352f516903558842ccf3143791239a32",
+      "canonicalStateHash": "0805d75fb484311c325224dd0ec71c23352f516903558842ccf3143791239a32",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          7
+        ],
+        "legalMoves": [
+          2,
+          6
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-064f73f42fd5",
+      "ply": 2,
+      "parentId": "p1-9d641a842f1b",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "moveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false"
+      ],
+      "sequenceHash": "064f73f42fd5cc8b4d86a19c34af384f556655521c94b120a56a894e3a21427d",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              7,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              0,
+              7,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "8b9bf8782149d347816a11a16d93024cd8ac55090eeb7e56519be56eead362b1",
+      "canonicalStateHash": "70d9f44305d52dfd939ff29ece3c30e5e3492a9d4f5121dcb0c166bebbdca026",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          7,
+          7
+        ],
+        "legalMoves": [
+          2,
+          6
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          10,
+          12
+        ],
+        "frontSeeds": [
+          10,
+          12
+        ],
+        "backSeeds": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-896e8c25fbfb",
+      "ply": 2,
+      "parentId": "p1-b3e1279167e3",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false",
+      "moveKeys": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:left:::false"
+      ],
+      "sequenceHash": "896e8c25fbfb43302195bc771ba79e2e0aa14ff772460593bd69a907c0847c60",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              1,
+              1,
+              7,
+              0,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "9b2939bee1776b25b14d1b36f757ae29b7d37698e51b4abe983328f1df3e21dc",
+      "canonicalStateHash": "0fab26ba797c9e6f738ef68adc8c340fcf0a13dfb3d10f223c21a93dc498db6d",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          7
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          4,
+          4
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          9,
+          11
+        ],
+        "backSeeds": [
+          2,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-1b8b4e200ebc",
+      "ply": 2,
+      "parentId": "p1-b3e1279167e3",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false",
+      "moveKeys": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:5:right:::false"
+      ],
+      "sequenceHash": "1b8b4e200ebc751d025c48e0d489ad239d369cb4fd7f93a2527befb7b8ee1863",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              3,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "10316a873e4d70c19cf34afc0f3736c4971e772772dae4aa2caa5f97df4d67a5",
+      "canonicalStateHash": "10316a873e4d70c19cf34afc0f3736c4971e772772dae4aa2caa5f97df4d67a5",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          9,
+          10
+        ],
+        "backSeeds": [
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-6ce4dc5dc11d",
+      "ply": 2,
+      "parentId": "p1-b3e1279167e3",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false",
+      "moveKeys": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:left:::false"
+      ],
+      "sequenceHash": "6ce4dc5dc11d8eb453fbd5b3e8c9cd60389fd722fc2b144dae1df072d60d208a",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              1,
+              7,
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "1a42d790908c86a7c48e0cbc251b4d2b9bf7b93061cce465393e0f7dc9effa5d",
+      "canonicalStateHash": "12f5eb584dbc265a282d26b7b0e04cd625c19ab720181b7de131f724d2b9d7d0",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          7
+        ],
+        "legalMoves": [
+          2,
+          2
+        ],
+        "captureMoves": [
+          2,
+          2
+        ],
+        "forcedCapture": [
+          true,
+          true
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          9,
+          11
+        ],
+        "backSeeds": [
+          2,
+          0
+        ]
+      }
+    },
+    {
+      "nodeId": "p2-c2e726054ea1",
+      "ply": 2,
+      "parentId": "p1-b3e1279167e3",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false",
+      "moveKeys": [
+        "takata:namua:0:6:right:::false",
+        "takata:namua:0:6:right:::false"
+      ],
+      "sequenceHash": "c2e726054ea13b811849cb6c9b07689fb30dd58460a3e77b8cb039f0924f4969",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 3,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "stateHash": "f2274c5f0a5c219f755fe1ab4bcf1de3e3388acaec23337db0bf1f7af1a265e9",
+      "canonicalStateHash": "0cca9ddd13c6b3dc44735aba1cdd72a8622a5e281ecc9407c49acd2886d93d4d",
+      "terminal": false,
+      "features": {
+        "player": 0,
+        "phase": "namua",
+        "turn": 3,
+        "reserve": [
+          21,
+          21
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "nyumbaSeeds": [
+          6,
+          6
+        ],
+        "legalMoves": [
+          4,
+          4
+        ],
+        "captureMoves": [
+          0,
+          0
+        ],
+        "forcedCapture": [
+          false,
+          false
+        ],
+        "boardSeeds": [
+          11,
+          11
+        ],
+        "frontSeeds": [
+          9,
+          9
+        ],
+        "backSeeds": [
+          2,
+          2
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "parentId": "p0-4f53cda18c2b",
+      "childId": "p1-601242bbb060",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false"
+    },
+    {
+      "parentId": "p0-4f53cda18c2b",
+      "childId": "p1-f710cf3e10d4",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false"
+    },
+    {
+      "parentId": "p0-4f53cda18c2b",
+      "childId": "p1-9d641a842f1b",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false"
+    },
+    {
+      "parentId": "p0-4f53cda18c2b",
+      "childId": "p1-b3e1279167e3",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false"
+    },
+    {
+      "parentId": "p1-601242bbb060",
+      "childId": "p2-3387f82a131d",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:4:left:right::false"
+    },
+    {
+      "parentId": "p1-601242bbb060",
+      "childId": "p2-5b0a78ca579f",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:4:right:left::false"
+    },
+    {
+      "parentId": "p1-601242bbb060",
+      "childId": "p2-01c2a0ae92bf",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:5:left:right::false"
+    },
+    {
+      "parentId": "p1-601242bbb060",
+      "childId": "p2-16acc188c7b0",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:5:right:left::false"
+    },
+    {
+      "parentId": "p1-f710cf3e10d4",
+      "childId": "p2-3ece7a3e09e5",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false"
+    },
+    {
+      "parentId": "p1-f710cf3e10d4",
+      "childId": "p2-9a1319e7d3be",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false"
+    },
+    {
+      "parentId": "p1-f710cf3e10d4",
+      "childId": "p2-7f1d01deacc6",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false"
+    },
+    {
+      "parentId": "p1-f710cf3e10d4",
+      "childId": "p2-92d3eca28742",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false"
+    },
+    {
+      "parentId": "p1-9d641a842f1b",
+      "childId": "p2-925ebc20976a",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:4:left:right::false"
+    },
+    {
+      "parentId": "p1-9d641a842f1b",
+      "childId": "p2-064f73f42fd5",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:4:right:left::false"
+    },
+    {
+      "parentId": "p1-b3e1279167e3",
+      "childId": "p2-896e8c25fbfb",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:5:left:::false"
+    },
+    {
+      "parentId": "p1-b3e1279167e3",
+      "childId": "p2-1b8b4e200ebc",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:5:right:::false"
+    },
+    {
+      "parentId": "p1-b3e1279167e3",
+      "childId": "p2-6ce4dc5dc11d",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "moveKey": "takata:namua:0:6:left:::false"
+    },
+    {
+      "parentId": "p1-b3e1279167e3",
+      "childId": "p2-c2e726054ea1",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "moveKey": "takata:namua:0:6:right:::false"
+    }
+  ],
+  "counts": {
+    "nodes": 19,
+    "edges": 18,
+    "byPly": {
+      "0": 1,
+      "1": 4,
+      "2": 14
+    },
+    "uniqueStates": 19,
+    "transpositionNodes": 0,
+    "uniqueCanonicalStates": 19
+  },
+  "provenance": {
+    "sourceCommit": "f465ad39ec85b92655b53702b4de0fb8d156ee9e",
+    "sourceTreeDirty": true,
+    "node": "v24.6.0",
+    "platform": "linux",
+    "arch": "x64",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "a6148cf81af77da93482cc861bea6c9750b3cd269e9bb5650100de0cb130d892",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/experiments/lib/joseki-common.js": "d56b0aa8af67564247852fd7eabf36d3471dd6f1f5e1d6f9a34365ef59d6537c",
+      "tools/experiments/generate-joseki-tree.js": "14fa0267c1b01e0f35b5415a349c657e9b4247a3c6dd4005432884d15ba1f8a8",
+      "tools/experiments/evaluate-joseki-nodes.js": "95c9591a8bfb744feb5e81863da60e1f0436d6e11ee7b53e60a6d530a6f477a3",
+      "tools/experiments/analyze-joseki-results.js": "4775e8d3f4adbf2d52da4499ae8dd7d7f0763b86a0f0b640d100f59c83839ad0",
+      "tools/experiments/verify-joseki-artifacts.js": "15f7fccfa52247b6199a7f2ad05919dca1db16cf52d34af227cdbeab5dca44f2"
+    },
+    "cpu": {
+      "model": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+      "logicalCores": 8
+    },
+    "osRelease": "6.18.33.2-microsoft-standard-WSL2"
+  },
+  "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+  "symmetry": {
+    "passed": true,
+    "nodes": 19,
+    "legalMovesChecked": 56,
+    "transitionsChecked": 56,
+    "failures": []
+  }
+}

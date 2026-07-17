@@ -1,5 +1,18 @@
 # Local first-player research
 
+## 定石研究 Phase 0〜2 ply
+
+標準初期局面の全初手・全応手を生成し、depth 1〜4と3評価方式で評価する。
+
+```bash
+node tools/experiments/generate-joseki-tree.js --max-ply 2
+node tools/experiments/evaluate-joseki-nodes.js
+node tools/experiments/verify-joseki-artifacts.js
+node tools/experiments/analyze-joseki-results.js
+```
+
+評価ランナーは1条件ごとにpartialを原子的に保存し、同じコマンドで未完了条件から再開する。集計器は全ノード・全条件が揃い、partial、hash不一致、source不一致がない場合だけJSON集計と`doc/joseki/OPENING_INDEX.md`を生成する。
+
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 
 ## 実行環境

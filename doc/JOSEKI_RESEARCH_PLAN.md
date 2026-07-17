@@ -1,7 +1,9 @@
 # Bao la Kiswahili 定石研究計画
 
-Version: 0.1.0  
+Version: 0.2.0
 作成日: 2026-07-17
+
+実施状況: Phase 0、2 ply全数スクリーニング、4 ply全数評価を完了。結果は`doc/JOSEKI_RESEARCH.md`を参照。
 
 ## 0. 概要
 

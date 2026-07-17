@@ -25,6 +25,7 @@
       evaluationCachePeak: 0,
       evaluationCacheEvictions: 0,
       completedDepth: 0,
+      rootScore: null,
       timedOut: false,
       earlyStopped: false,
       stableIterations: 0,
@@ -885,6 +886,7 @@
             score = enhancedSearch(state, depth, -Infinity, Infinity, player, context, 0);
           }
           previousScore = score;
+          stats.rootScore = score;
           const completed = context.table.get(transpositionKey(
             state, 0, context.normalizeTtMateScores,
           ));
@@ -927,6 +929,7 @@
           if (score > iterationScore) { iterationScore = score; iterationBest = choice.move; }
         }
         bestMove = iterationBest;
+        stats.rootScore = iterationScore;
         stats.completedDepth = depth;
       } catch (error) {
         if (error.message !== "timeout") throw error;
