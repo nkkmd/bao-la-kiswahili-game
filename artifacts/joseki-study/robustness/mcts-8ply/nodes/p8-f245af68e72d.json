@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "nodeId": "p8-f245af68e72d",
+  "stateHash": "8370ee8cc6f6ff2acde67f2b321f5dbeac8344fb228dc3c76458b62fa26ce933",
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-mcts-8ply-screening",
+    "treeFile": "artifacts/joseki-study/corpus/candidate-tree-8ply.json",
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "conditionIds": [
+      "mcts-s1",
+      "mcts-s2",
+      "mcts-s3"
+    ],
+    "conditionHashes": {
+      "mcts-s1": "6ae6d49e35184999717502ca30d788ac9ec3a10e34ab26928044ad5f82b1b76b",
+      "mcts-s2": "9cfcf7e3f57c4f2e1890c80efeed1b6a0e64da2f3fabe224c33b6db4f98782ed",
+      "mcts-s3": "49756a9a58faf9ff4cc0976fd52fd287720710e84135ebb756fc6a2c6c26facf"
+    },
+    "seedIndices": [
+      1,
+      2,
+      3
+    ],
+    "minPly": 8,
+    "fixedConfig": {
+      "level": "hard",
+      "searchProfile": "mcts",
+      "evaluationProfile": "bao",
+      "timeLimitMs": "Infinity",
+      "mctsIterations": 12,
+      "mctsPlayoutTurns": 16,
+      "mctsExploration": 1.4142135623730951,
+      "mctsPolicy": "evaluation",
+      "mctsRoot": "visits",
+      "mctsReward": "evaluation",
+      "mctsPrior": "none",
+      "mctsPriorWeight": 1,
+      "mctsCandidateLimit": 0,
+      "mctsCandidateSource": "all",
+      "mctsCandidateDepth": 1
+    },
+    "fixedThresholds": {
+      "choiceNodePhase2AgreementMinimum": 0.6,
+      "choiceNodeUnanimousSeedConsensusMinimum": 0.7,
+      "maximumTimeouts": 0
+    },
+    "sourceCommit": "1522405f47cd513804675bf2c99daacfa046c0c9",
+    "node": "v24.6.0",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/experiments/lib/joseki-common.js": "d56b0aa8af67564247852fd7eabf36d3471dd6f1f5e1d6f9a34365ef59d6537c",
+      "tools/experiments/generate-joseki-tree.js": "14fa0267c1b01e0f35b5415a349c657e9b4247a3c6dd4005432884d15ba1f8a8",
+      "tools/experiments/evaluate-joseki-nodes.js": "3a61cd12dcd4136d14d1a3c7ba25398b1b4418e0cc35ab7183c2b44d51195d23",
+      "tools/experiments/analyze-joseki-results.js": "4775e8d3f4adbf2d52da4499ae8dd7d7f0763b86a0f0b640d100f59c83839ad0",
+      "tools/experiments/verify-joseki-artifacts.js": "3488c28fdddd9b7e86d18c1749edaf45e71b695a7eaf812b4bda74ac985f4936",
+      "tools/experiments/run-joseki-mcts.js": "65d1431281f592073584d7bdee10c4ac8a08235ba22b7fa8dd5d9b5dc74916e7",
+      "tools/experiments/verify-joseki-mcts.js": "d71cde35d1492690e0af4b31ac00717b6733b40553cd82d37963fa0f23a58b20",
+      "tools/experiments/analyze-joseki-mcts.js": "4f6f60dac92983fdd77c5f36bb94700aa67769acdcf7bc890a54a1d732fd047a"
+    }
+  },
+  "results": [
+    {
+      "nodeId": "p8-f245af68e72d",
+      "stateHash": "8370ee8cc6f6ff2acde67f2b321f5dbeac8344fb228dc3c76458b62fa26ce933",
+      "conditionId": "mcts-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-s1",
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "6ae6d49e35184999717502ca30d788ac9ec3a10e34ab26928044ad5f82b1b76b",
+      "seed": 30787295,
+      "seedIndex": 1,
+      "perspective": 0,
+      "legalMoveCount": 6,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "recommendedMoveKey": "takata:namua:0:6:left:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 347.538794,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 701,
+        "evaluations": 653,
+        "evaluationCacheHits": 48,
+        "evaluationCacheStores": 653,
+        "evaluationCachePeak": 653,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 187,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 2,
+            "averageValue": 0.8889440332885925
+          },
+          {
+            "moveKey": "takata:namua:0:1:left:::false",
+            "visits": 2,
+            "averageValue": 0.7740258694694258
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 2,
+            "averageValue": 0.5424131467967048
+          },
+          {
+            "moveKey": "takata:namua:0:1:right:::false",
+            "visits": 2,
+            "averageValue": 0.12589382336794927
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 2,
+            "averageValue": 0.11546254604626716
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 2,
+            "averageValue": -0.01084514449531282
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f245af68e72d",
+      "stateHash": "8370ee8cc6f6ff2acde67f2b321f5dbeac8344fb228dc3c76458b62fa26ce933",
+      "conditionId": "mcts-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-s2",
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "9cfcf7e3f57c4f2e1890c80efeed1b6a0e64da2f3fabe224c33b6db4f98782ed",
+      "seed": 109766221,
+      "seedIndex": 2,
+      "perspective": 0,
+      "legalMoveCount": 6,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:2:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 322.085852,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 693,
+        "evaluations": 635,
+        "evaluationCacheHits": 58,
+        "evaluationCacheStores": 635,
+        "evaluationCachePeak": 635,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 192,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 2,
+            "averageValue": 0.35069393201853466
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 2,
+            "averageValue": 0.08235163710120721
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 2,
+            "averageValue": 0.050654969803794636
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 2,
+            "averageValue": -0.04434488014206649
+          },
+          {
+            "moveKey": "takata:namua:0:1:right:::false",
+            "visits": 2,
+            "averageValue": -0.10601127128236801
+          },
+          {
+            "moveKey": "takata:namua:0:1:left:::false",
+            "visits": 2,
+            "averageValue": -0.1857519247931455
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f245af68e72d",
+      "stateHash": "8370ee8cc6f6ff2acde67f2b321f5dbeac8344fb228dc3c76458b62fa26ce933",
+      "conditionId": "mcts-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsIterations": 12,
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-s3",
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "49756a9a58faf9ff4cc0976fd52fd287720710e84135ebb756fc6a2c6c26facf",
+      "seed": 1703610159,
+      "seedIndex": 3,
+      "perspective": 0,
+      "legalMoveCount": 6,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:6:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 402.513704,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 754,
+        "evaluations": 711,
+        "evaluationCacheHits": 43,
+        "evaluationCacheStores": 711,
+        "evaluationCachePeak": 711,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 192,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 3,
+            "averageValue": 0.6341664007969636
+          },
+          {
+            "moveKey": "takata:namua:0:1:left:::false",
+            "visits": 2,
+            "averageValue": 0.4709747806833381
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 2,
+            "averageValue": 0.4030353472290944
+          },
+          {
+            "moveKey": "takata:namua:0:1:right:::false",
+            "visits": 2,
+            "averageValue": -0.12098334038223418
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 2,
+            "averageValue": -0.21830422946284503
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 1,
+            "averageValue": -0.23785570960038063
+          }
+        ]
+      }
+    }
+  ],
+  "updatedAt": "2026-07-17T13:45:29.624Z",
+  "completedAt": "2026-07-17T13:45:29.625Z"
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T02:13:13.599Z",
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-p003-depth11-timeout-retry",
+    "nodeId": "p8-701bf2f6430d",
+    "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+    "rootDepth": 11,
+    "childDepth": 10,
+    "moveKey": "capture:namua:0:2:right:left::false",
+    "childStateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+    "seed": 3762746251,
+    "priorCompletedDepth": 9,
+    "priorTimedOut": true,
+    "priorDepth11VerificationHash": "0900eff032d7dc018db21d00a80db0b9453a2f4ce21e26227ad4d3852527e0f6",
+    "searchConfig": {
+      "level": "hard",
+      "searchProfile": "phase2",
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1,
+      "timeLimitMs": 120000
+    },
+    "sourceFileSha256": "e1d7780c2a1f5451cfa19f3864c806cc0bf916c778c3ba0d4bed8f1be66fc780"
+  },
+  "status": "complete",
+  "moveKey": "capture:namua:0:2:right:left::false",
+  "childStateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+  "southScore": -295,
+  "analysis": {
+    "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+    "rootScore": 295,
+    "completedDepth": 10,
+    "timedOut": false,
+    "nodes": 95786,
+    "evaluations": 40205,
+    "cutoffs": 22783,
+    "cacheHits": 2406,
+    "elapsedMs": 72025.76459199999
+  }
+}

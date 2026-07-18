@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T01:44:34.375Z",
+  "passed": true,
+  "expectedRows": 2,
+  "recordedRows": 2,
+  "completeRows": 2,
+  "timedOutRows": 0,
+  "sourceHashMatches": true,
+  "baseVerificationHash": "1ec406f452a9b3972f27d999ad85fc2341ad04cf4c146ece72cd1a9d7ccfb1a3",
+  "verificationHash": "f38735dfe924ff0f2467dc552df8e23d6c16cf9094d3e9bd10fdfd9176dce94d"
+}

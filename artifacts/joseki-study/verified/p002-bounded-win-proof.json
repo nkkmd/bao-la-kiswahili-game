@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T01:56:56.442Z",
+  "passed": true,
+  "studyId": "P002",
+  "nodeId": "p8-c1f65bf10696",
+  "startStateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+  "rulesEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "horizonPlies": 9,
+  "semantics": {
+    "southNodes": "OR: at least one legal move must retain a South win",
+    "northNodes": "AND: every legal reply must retain a South win",
+    "leaf": "South must be terminal winner on or before the horizon"
+  },
+  "implementationScope": "public/engine.js legal move generation, transitions, and terminal result only",
+  "excludedFromProof": [
+    "public/ai.js",
+    "static evaluation",
+    "alpha-beta search",
+    "quiescence search"
+  ],
+  "caveat": "This is independent of the AI evaluator and search, but it still relies on the same rules engine rather than an independent Bao implementation.",
+  "consensusMoveKey": "capture:namua:0:2:right:left::false",
+  "consensusSouthCanForceWin": true,
+  "candidateResults": [
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "southCanForceWin": true,
+      "visitedNodes": 46,
+      "cacheHits": 0
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "southCanForceWin": false,
+      "visitedNodes": 1542,
+      "cacheHits": 2
+    }
+  ],
+  "solverStats": {
+    "visitedNodes": 1590,
+    "cacheHits": 3,
+    "terminalNodes": 11,
+    "horizonNodes": 1075,
+    "maxBranching": 10,
+    "uniqueMemoizedStates": 501
+  },
+  "verification": {
+    "certificateNodes": 10,
+    "terminalLeaves": 1,
+    "southOrNodes": 5,
+    "northAndNodes": 4,
+    "northRepliesCovered": 4,
+    "maxBranching": 8,
+    "maxPly": 9
+  },
+  "certificate": {
+    "kind": "south-or",
+    "stateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+    "remaining": 9,
+    "legalMoveCount": 2,
+    "moveKey": "capture:namua:0:2:right:left::false",
+    "child": {
+      "kind": "north-and",
+      "stateHash": "7458a8af1fed8e937f3cda0c64fadd9e06cb5523db4a30fdb72c1dd6d7162ec5",
+      "remaining": 8,
+      "legalMoveCount": 1,
+      "children": [
+        {
+          "moveKey": "capture:namua:0:0:right:left::false",
+          "child": {
+            "kind": "south-or",
+            "stateHash": "eb76f6eaa6b2a78b4bbae44857a71c12e90b46cbcf94b88295a08a376acb55ab",
+            "remaining": 7,
+            "legalMoveCount": 5,
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "child": {
+              "kind": "north-and",
+              "stateHash": "07a0294223c3bfa94ef7e914f94d44f982de46b427c8b4e4c2f19694538b89b1",
+              "remaining": 6,
+              "legalMoveCount": 1,
+              "children": [
+                {
+                  "moveKey": "capture:namua:0:1:right:left::false",
+                  "child": {
+                    "kind": "south-or",
+                    "stateHash": "67e2f40d329b50713a3df3a5f497178359c17accab6ccec1c49567f96cd43448",
+                    "remaining": 5,
+                    "legalMoveCount": 8,
+                    "moveKey": "takata:namua:0:1:right:::false",
+                    "child": {
+                      "kind": "north-and",
+                      "stateHash": "a327d584c0b90aa3e0d8b5b7a62677dd12493052f4d495fbe9de77d7c3b5bab2",
+                      "remaining": 4,
+                      "legalMoveCount": 1,
+                      "children": [
+                        {
+                          "moveKey": "capture:namua:0:1:right:left::false",
+                          "child": {
+                            "kind": "south-or",
+                            "stateHash": "1f16d05e87c8a21af455029e05fdae546e78e792a78d06fc3c5f3b6ecae9d996",
+                            "remaining": 3,
+                            "legalMoveCount": 2,
+                            "moveKey": "capture:namua:0:5:right:left::false",
+                            "child": {
+                              "kind": "north-and",
+                              "stateHash": "377782b622ffc7aeba74f9f6d0967b352aeb0e96c852db78ce287252d724ae68",
+                              "remaining": 2,
+                              "legalMoveCount": 1,
+                              "children": [
+                                {
+                                  "moveKey": "capture:namua:0:1:right:left::false",
+                                  "child": {
+                                    "kind": "south-or",
+                                    "stateHash": "6ad463c380a53b620c12521a5e4239c588a237684a3cc370feeb6bd8119ce608",
+                                    "remaining": 1,
+                                    "legalMoveCount": 1,
+                                    "moveKey": "capture:namua:0:7:left:right::false",
+                                    "child": {
+                                      "kind": "terminal",
+                                      "stateHash": "55c1218fdb22abb6e7e1ac2a5c69a229ba6fbab82f419da28dc7f4f5925dfbe9",
+                                      "remaining": 0,
+                                      "winner": 0,
+                                      "reason": "front-empty"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "certificateHash": "6f137936fabc3282809f711b603eade69f47e8f1ffdfc1a8653c771ad33878fb",
+  "resultHash": "20c7db44a94fe63cfda36259e5adbeb34ec957e988168649d8fc7057aa1424cd"
+}

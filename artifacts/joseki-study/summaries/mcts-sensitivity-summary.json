@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T15:09:45.200Z",
+  "status": "unstable",
+  "scope": "MCTS iteration sensitivity on a deterministic stratified sample of 8-ply leaves",
+  "selectionPolicy": {
+    "salt": "joseki-mcts-sensitivity-v1",
+    "perStratum": 4,
+    "ply": 8,
+    "legalMoveBuckets": [
+      "2-4",
+      "5-7",
+      "8+"
+    ],
+    "captureClasses": [
+      "forced-capture",
+      "mixed"
+    ]
+  },
+  "thresholds": {
+    "highIterationUnanimousConsensusMinimum": 0.5,
+    "unanimousConsensusImprovementMinimum": 0.2,
+    "maximumTimeouts": 0
+  },
+  "checks": {
+    "highIterationConsensus": false,
+    "consensusImprovement": false,
+    "timeouts": true
+  },
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-17T15:09:45.177Z",
+    "passed": true,
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6",
+    "nodes": 24,
+    "strata": 6,
+    "results": 216,
+    "simulations": 18144,
+    "timeouts": 0,
+    "conditionCounts": {
+      "mcts-i012-s1": 24,
+      "mcts-i012-s2": 24,
+      "mcts-i012-s3": 24,
+      "mcts-i048-s1": 24,
+      "mcts-i048-s2": 24,
+      "mcts-i048-s3": 24,
+      "mcts-i192-s1": 24,
+      "mcts-i192-s2": 24,
+      "mcts-i192-s3": 24
+    },
+    "partialResults": 0,
+    "sourceHashesMatch": true,
+    "symmetryPassed": true,
+    "verificationHash": "f4532f85981284b35faa695bec9c88cebb41dca43e799bc465ddc0811c5b9c3d"
+  },
+  "nodes": {
+    "nodes": 24,
+    "strata": 6,
+    "availableByStratum": {
+      "2-4/forced-capture": 517,
+      "2-4/mixed": 23,
+      "5-7/forced-capture": 505,
+      "5-7/mixed": 36,
+      "8+/forced-capture": 96,
+      "8+/mixed": 8
+    },
+    "selectedByStratum": {
+      "2-4/forced-capture": 4,
+      "2-4/mixed": 4,
+      "5-7/forced-capture": 4,
+      "5-7/mixed": 4,
+      "8+/forced-capture": 4,
+      "8+/mixed": 4
+    }
+  },
+  "unanimousConsensusImprovement": 0.16666666666666669,
+  "iterations": [
+    {
+      "iterations": 12,
+      "nodes": 24,
+      "evaluations": 72,
+      "unanimousNodes": 2,
+      "unanimousConsensusRate": 0.08333333333333333,
+      "phase2Agreements": 21,
+      "phase2AgreementRate": 0.2916666666666667,
+      "averageSelectedMoveVisits": 3.3194444444444446,
+      "strata": [
+        {
+          "stratum": "2-4/forced-capture",
+          "nodes": 4,
+          "unanimous": 2,
+          "phase2Agreements": 5,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0.5,
+          "phase2AgreementRate": 0.4166666666666667
+        },
+        {
+          "stratum": "2-4/mixed",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 5,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.4166666666666667
+        },
+        {
+          "stratum": "5-7/forced-capture",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 3,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.25
+        },
+        {
+          "stratum": "5-7/mixed",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 3,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.25
+        },
+        {
+          "stratum": "8+/forced-capture",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 0,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0
+        },
+        {
+          "stratum": "8+/mixed",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 5,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.4166666666666667
+        }
+      ]
+    },
+    {
+      "iterations": 48,
+      "nodes": 24,
+      "evaluations": 72,
+      "unanimousNodes": 3,
+      "unanimousConsensusRate": 0.125,
+      "phase2Agreements": 23,
+      "phase2AgreementRate": 0.3194444444444444,
+      "averageSelectedMoveVisits": 15.472222222222221,
+      "strata": [
+        {
+          "stratum": "2-4/forced-capture",
+          "nodes": 4,
+          "unanimous": 2,
+          "phase2Agreements": 4,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0.5,
+          "phase2AgreementRate": 0.3333333333333333
+        },
+        {
+          "stratum": "2-4/mixed",
+          "nodes": 4,
+          "unanimous": 1,
+          "phase2Agreements": 9,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0.25,
+          "phase2AgreementRate": 0.75
+        },
+        {
+          "stratum": "5-7/forced-capture",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 3,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.25
+        },
+        {
+          "stratum": "5-7/mixed",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 2,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.16666666666666666
+        },
+        {
+          "stratum": "8+/forced-capture",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 1,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.08333333333333333
+        },
+        {
+          "stratum": "8+/mixed",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 4,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.3333333333333333
+        }
+      ]
+    },
+    {
+      "iterations": 192,
+      "nodes": 24,
+      "evaluations": 72,
+      "unanimousNodes": 6,
+      "unanimousConsensusRate": 0.25,
+      "phase2Agreements": 23,
+      "phase2AgreementRate": 0.3194444444444444,
+      "averageSelectedMoveVisits": 58.19444444444444,
+      "strata": [
+        {
+          "stratum": "2-4/forced-capture",
+          "nodes": 4,
+          "unanimous": 4,
+          "phase2Agreements": 6,
+          "evaluations": 12,
+          "unanimousConsensusRate": 1,
+          "phase2AgreementRate": 0.5
+        },
+        {
+          "stratum": "2-4/mixed",
+          "nodes": 4,
+          "unanimous": 1,
+          "phase2Agreements": 7,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0.25,
+          "phase2AgreementRate": 0.5833333333333334
+        },
+        {
+          "stratum": "5-7/forced-capture",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 2,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.16666666666666666
+        },
+        {
+          "stratum": "5-7/mixed",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 3,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.25
+        },
+        {
+          "stratum": "8+/forced-capture",
+          "nodes": 4,
+          "unanimous": 0,
+          "phase2Agreements": 3,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0,
+          "phase2AgreementRate": 0.25
+        },
+        {
+          "stratum": "8+/mixed",
+          "nodes": 4,
+          "unanimous": 1,
+          "phase2Agreements": 2,
+          "evaluations": 12,
+          "unanimousConsensusRate": 0.25,
+          "phase2AgreementRate": 0.16666666666666666
+        }
+      ]
+    }
+  ]
+}

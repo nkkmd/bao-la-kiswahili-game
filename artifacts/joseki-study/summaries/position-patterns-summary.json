@@ -1,0 +1,927 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T23:00:00.920Z",
+  "status": "descriptive-patterns",
+  "scope": "cross-artifact position patterns on all focused 8-ply leaves",
+  "integrity": {
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "nodes": 1252,
+    "scoredNodes": 1250,
+    "phase2VerificationHash": "d962e21c278aca860f9c0ebf35c8370613395ba2205a3f138302307d24693d68",
+    "mctsVerificationHash": "8c2507cacfcf0cd85e0132c0b26f444ce3eb7c10fc465c78be1e47fd6f27952e",
+    "sourceCommit": "1feae57b21fd38d886d46595f6fe71816a04a387",
+    "sourceFileSha256": {
+      "tools/experiments/analyze-joseki-position-patterns.js": "73e409cfe502137a25968a512f134830af76126035d3dd4355a850a7384db863"
+    },
+    "analysisHash": "5f3e6ab8c84ae5f124ed73fdf0cb0d852ae33bb9ef93d9bf69dbe0856abd677b"
+  },
+  "groups": {
+    "legalBucket": [
+      {
+        "key": "legalBucket",
+        "value": "2-4",
+        "nodes": 540,
+        "scoredNodes": 540,
+        "score": {
+          "mean": 2036.7592592592594,
+          "median": 195,
+          "minimum": -302,
+          "maximum": 999999,
+          "positiveRate": 0.8870370370370371
+        },
+        "phase2ConditionUnanimousRate": 0.3351851851851852,
+        "averagePhase2BaselineAgreement": 0.7799382716049376,
+        "mctsUnanimousRate": 0.1574074074074074,
+        "averageMctsPhase2Agreement": 0.3543209876543213
+      },
+      {
+        "key": "legalBucket",
+        "value": "5-7",
+        "nodes": 541,
+        "scoredNodes": 541,
+        "score": {
+          "mean": 5739.855822550831,
+          "median": 200,
+          "minimum": -122,
+          "maximum": 999999,
+          "positiveRate": 0.9630314232902033
+        },
+        "phase2ConditionUnanimousRate": 0.22920517560073936,
+        "averagePhase2BaselineAgreement": 0.7187307455329627,
+        "mctsUnanimousRate": 0.024029574861367836,
+        "averageMctsPhase2Agreement": 0.20702402957486096
+      },
+      {
+        "key": "legalBucket",
+        "value": "8+",
+        "nodes": 104,
+        "scoredNodes": 104,
+        "score": {
+          "mean": 241.64423076923077,
+          "median": 250,
+          "minimum": 27,
+          "maximum": 548,
+          "positiveRate": 1
+        },
+        "phase2ConditionUnanimousRate": 0.15384615384615385,
+        "averagePhase2BaselineAgreement": 0.6746794871794872,
+        "mctsUnanimousRate": 0.019230769230769232,
+        "averageMctsPhase2Agreement": 0.12179487179487182
+      },
+      {
+        "key": "legalBucket",
+        "value": "forced-move",
+        "nodes": 65,
+        "scoredNodes": 65,
+        "score": {
+          "mean": 147.23076923076923,
+          "median": 170,
+          "minimum": -259,
+          "maximum": 468,
+          "positiveRate": 0.8307692307692308
+        },
+        "phase2ConditionUnanimousRate": 1,
+        "averagePhase2BaselineAgreement": 1,
+        "mctsUnanimousRate": 1,
+        "averageMctsPhase2Agreement": 1
+      },
+      {
+        "key": "legalBucket",
+        "value": "terminal",
+        "nodes": 2,
+        "scoredNodes": 0,
+        "score": {
+          "mean": null,
+          "median": null,
+          "minimum": null,
+          "maximum": null,
+          "positiveRate": null
+        },
+        "phase2ConditionUnanimousRate": 1,
+        "averagePhase2BaselineAgreement": 1,
+        "mctsUnanimousRate": 1,
+        "averageMctsPhase2Agreement": 1
+      }
+    ],
+    "forcedCapture": [
+      {
+        "key": "forcedCapture",
+        "value": "false",
+        "nodes": 69,
+        "scoredNodes": 67,
+        "score": {
+          "mean": 213.02985074626866,
+          "median": 221,
+          "minimum": -302,
+          "maximum": 548,
+          "positiveRate": 0.8955223880597015
+        },
+        "phase2ConditionUnanimousRate": 0.2028985507246377,
+        "averagePhase2BaselineAgreement": 0.7222222222222222,
+        "mctsUnanimousRate": 0.10144927536231885,
+        "averageMctsPhase2Agreement": 0.27536231884057977
+      },
+      {
+        "key": "forcedCapture",
+        "value": "true",
+        "nodes": 1183,
+        "scoredNodes": 1183,
+        "score": {
+          "mean": 3571.885038038884,
+          "median": 198,
+          "minimum": -297,
+          "maximum": 999999,
+          "positiveRate": 0.9281487743026204
+        },
+        "phase2ConditionUnanimousRate": 0.31614539306847,
+        "averagePhase2BaselineAgreement": 0.758523527754299,
+        "mctsUnanimousRate": 0.1352493660185968,
+        "averageMctsPhase2Agreement": 0.30769230769230715
+      }
+    ],
+    "houseClass": [
+      {
+        "key": "houseClass",
+        "value": "both-owned",
+        "nodes": 128,
+        "scoredNodes": 128,
+        "score": {
+          "mean": 195.109375,
+          "median": 221,
+          "minimum": -302,
+          "maximum": 459,
+          "positiveRate": 0.8515625
+        },
+        "phase2ConditionUnanimousRate": 0.28125,
+        "averagePhase2BaselineAgreement": 0.7578124999999999,
+        "mctsUnanimousRate": 0.2578125,
+        "averageMctsPhase2Agreement": 0.4088541666666668
+      },
+      {
+        "key": "houseClass",
+        "value": "neither-owned",
+        "nodes": 589,
+        "scoredNodes": 587,
+        "score": {
+          "mean": 1877.9267461669506,
+          "median": 180,
+          "minimum": -297,
+          "maximum": 999999,
+          "positiveRate": 0.9114139693356048
+        },
+        "phase2ConditionUnanimousRate": 0.34295415959252973,
+        "averagePhase2BaselineAgreement": 0.7775891341256363,
+        "mctsUnanimousRate": 0.12224108658743633,
+        "averageMctsPhase2Agreement": 0.29598189020939464
+      },
+      {
+        "key": "houseClass",
+        "value": "north-only",
+        "nodes": 84,
+        "scoredNodes": 84,
+        "score": {
+          "mean": 126.08333333333333,
+          "median": 98.5,
+          "minimum": -59,
+          "maximum": 396,
+          "positiveRate": 0.8928571428571429
+        },
+        "phase2ConditionUnanimousRate": 0.2857142857142857,
+        "averagePhase2BaselineAgreement": 0.7460317460317457,
+        "mctsUnanimousRate": 0.10714285714285714,
+        "averageMctsPhase2Agreement": 0.32936507936507925
+      },
+      {
+        "key": "houseClass",
+        "value": "south-only",
+        "nodes": 451,
+        "scoredNodes": 451,
+        "score": {
+          "mean": 6877.838137472284,
+          "median": 234,
+          "minimum": -292,
+          "maximum": 999999,
+          "positiveRate": 0.9733924611973392
+        },
+        "phase2ConditionUnanimousRate": 0.2793791574279379,
+        "averagePhase2BaselineAgreement": 0.7305986696230596,
+        "mctsUnanimousRate": 0.11751662971175167,
+        "averageMctsPhase2Agreement": 0.28529194382852885
+      }
+    ],
+    "branchingCapture": [
+      {
+        "key": "branchingCapture",
+        "value": "2-4/forced-capture",
+        "nodes": 517,
+        "scoredNodes": 517,
+        "score": {
+          "mean": 2121.8394584139264,
+          "median": 198,
+          "minimum": -297,
+          "maximum": 999999,
+          "positiveRate": 0.8916827852998066
+        },
+        "phase2ConditionUnanimousRate": 0.3404255319148936,
+        "averagePhase2BaselineAgreement": 0.7798194713088324,
+        "mctsUnanimousRate": 0.15473887814313347,
+        "averageMctsPhase2Agreement": 0.35396518375241803
+      },
+      {
+        "key": "branchingCapture",
+        "value": "2-4/mixed",
+        "nodes": 23,
+        "scoredNodes": 23,
+        "score": {
+          "mean": 124.30434782608695,
+          "median": 188,
+          "minimum": -302,
+          "maximum": 396,
+          "positiveRate": 0.782608695652174
+        },
+        "phase2ConditionUnanimousRate": 0.21739130434782608,
+        "averagePhase2BaselineAgreement": 0.782608695652174,
+        "mctsUnanimousRate": 0.21739130434782608,
+        "averageMctsPhase2Agreement": 0.3623188405797101
+      },
+      {
+        "key": "branchingCapture",
+        "value": "5-7/forced-capture",
+        "nodes": 505,
+        "scoredNodes": 505,
+        "score": {
+          "mean": 6131.942574257426,
+          "median": 190,
+          "minimum": -122,
+          "maximum": 999999,
+          "positiveRate": 0.9643564356435643
+        },
+        "phase2ConditionUnanimousRate": 0.2316831683168317,
+        "averagePhase2BaselineAgreement": 0.7194719471947185,
+        "mctsUnanimousRate": 0.02574257425742574,
+        "averageMctsPhase2Agreement": 0.20792079207920758
+      },
+      {
+        "key": "branchingCapture",
+        "value": "5-7/mixed",
+        "nodes": 36,
+        "scoredNodes": 36,
+        "score": {
+          "mean": 239.75,
+          "median": 223,
+          "minimum": -6,
+          "maximum": 358,
+          "positiveRate": 0.9444444444444444
+        },
+        "phase2ConditionUnanimousRate": 0.19444444444444445,
+        "averagePhase2BaselineAgreement": 0.7083333333333335,
+        "mctsUnanimousRate": 0,
+        "averageMctsPhase2Agreement": 0.19444444444444442
+      },
+      {
+        "key": "branchingCapture",
+        "value": "8+/forced-capture",
+        "nodes": 96,
+        "scoredNodes": 96,
+        "score": {
+          "mean": 232.79166666666666,
+          "median": 242.5,
+          "minimum": 27,
+          "maximum": 541,
+          "positiveRate": 1
+        },
+        "phase2ConditionUnanimousRate": 0.16666666666666666,
+        "averagePhase2BaselineAgreement": 0.6857638888888892,
+        "mctsUnanimousRate": 0.020833333333333332,
+        "averageMctsPhase2Agreement": 0.11458333333333336
+      },
+      {
+        "key": "branchingCapture",
+        "value": "8+/mixed",
+        "nodes": 8,
+        "scoredNodes": 8,
+        "score": {
+          "mean": 347.875,
+          "median": 306,
+          "minimum": 154,
+          "maximum": 548,
+          "positiveRate": 1
+        },
+        "phase2ConditionUnanimousRate": 0,
+        "averagePhase2BaselineAgreement": 0.5416666666666666,
+        "mctsUnanimousRate": 0,
+        "averageMctsPhase2Agreement": 0.20833333333333331
+      },
+      {
+        "key": "branchingCapture",
+        "value": "forced-move/forced-capture",
+        "nodes": 65,
+        "scoredNodes": 65,
+        "score": {
+          "mean": 147.23076923076923,
+          "median": 170,
+          "minimum": -259,
+          "maximum": 468,
+          "positiveRate": 0.8307692307692308
+        },
+        "phase2ConditionUnanimousRate": 1,
+        "averagePhase2BaselineAgreement": 1,
+        "mctsUnanimousRate": 1,
+        "averageMctsPhase2Agreement": 1
+      },
+      {
+        "key": "branchingCapture",
+        "value": "terminal/mixed",
+        "nodes": 2,
+        "scoredNodes": 0,
+        "score": {
+          "mean": null,
+          "median": null,
+          "minimum": null,
+          "maximum": null,
+          "positiveRate": null
+        },
+        "phase2ConditionUnanimousRate": 1,
+        "averagePhase2BaselineAgreement": 1,
+        "mctsUnanimousRate": 1,
+        "averageMctsPhase2Agreement": 1
+      }
+    ]
+  },
+  "correlations": [
+    {
+      "metric": "legalMoveCount",
+      "pearson": -0.005628668175777293,
+      "spearman": 0.06981765984572838
+    },
+    {
+      "metric": "boardSeedDifference",
+      "pearson": 0.08946152864494865,
+      "spearman": 0.526006984295611
+    },
+    {
+      "metric": "frontSeedDifference",
+      "pearson": 0.09591297129660575,
+      "spearman": 0.4500454845386884
+    },
+    {
+      "metric": "nyumbaSeedDifference",
+      "pearson": 0.04850244957454765,
+      "spearman": 0.26684821302119743
+    }
+  ],
+  "counterexamples": {
+    "highestScores": [
+      {
+        "nodeId": "p8-57aeef53f0ca",
+        "score": 999999,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:7:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:3:right:left::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:2:left:right:use:false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:4:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-97dc942212af",
+        "score": 999999,
+        "legalMoveCount": 6,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:1:right:left::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:3:right:left::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:0:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-4c0f8cd34927",
+        "score": 999997,
+        "legalMoveCount": 5,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:5:right:left::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:3:right:left::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:0:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-bfa6799caaa4",
+        "score": 999997,
+        "legalMoveCount": 5,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:5:right:left::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:3:right:left::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:0:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-17176e5b24a1",
+        "score": 605,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:2:right:left::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:7:left:right::false"
+        ]
+      }
+    ],
+    "lowestScores": [
+      {
+        "nodeId": "p8-dda61072c13d",
+        "score": -302,
+        "legalMoveCount": 2,
+        "forcedCapture": false,
+        "houseClass": "both-owned",
+        "phase2MoveKey": "takata:namua:0:2:left:::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:left:right::false",
+          "takata:namua:0:7:right:::false",
+          "takata:namua:0:1:left:::false"
+        ]
+      },
+      {
+        "nodeId": "p8-fafd589bb9df",
+        "score": -297,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:2:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 0,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-79d29d74d887",
+        "score": -292,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:4:left:right::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:6:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-8c1260ca0b64",
+        "score": -259,
+        "legalMoveCount": 1,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:7:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:3:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-61cc62e81d3c",
+        "score": -252,
+        "legalMoveCount": 1,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:6:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:6:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:7:left:right::false"
+        ]
+      }
+    ],
+    "lowBranchForcedMctsDisagreement": [
+      {
+        "nodeId": "p8-79d29d74d887",
+        "score": -292,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:4:left:right::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:6:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-0badb5a5d715",
+        "score": -229,
+        "legalMoveCount": 3,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:3:right:left::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:1:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-68335396cf38",
+        "score": -213,
+        "legalMoveCount": 3,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:5:right:left::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.6666666666666666,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:0:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-53f765db8822",
+        "score": -199,
+        "legalMoveCount": 4,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:2:right:left::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.6666666666666666,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:6:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:1:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-be7028396a99",
+        "score": -190,
+        "legalMoveCount": 3,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:5:right:left::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:3:right:left::false"
+        ]
+      }
+    ],
+    "highBranchMctsUnanimity": [
+      {
+        "nodeId": "p8-bd5b15ec5fb2",
+        "score": 353,
+        "legalMoveCount": 9,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:3:right:left::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 0,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:3:right:left::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:3:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-32fcce6381fc",
+        "score": 204,
+        "legalMoveCount": 8,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:3:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 0,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false"
+        ]
+      }
+    ],
+    "southNyumbaOwnedNegative": [
+      {
+        "nodeId": "p8-dda61072c13d",
+        "score": -302,
+        "legalMoveCount": 2,
+        "forcedCapture": false,
+        "houseClass": "both-owned",
+        "phase2MoveKey": "takata:namua:0:2:left:::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:left:right::false",
+          "takata:namua:0:7:right:::false",
+          "takata:namua:0:1:left:::false"
+        ]
+      },
+      {
+        "nodeId": "p8-79d29d74d887",
+        "score": -292,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:4:left:right::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:0:right:left::false",
+          "capture:namua:0:6:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-91667505a398",
+        "score": -218,
+        "legalMoveCount": 2,
+        "forcedCapture": false,
+        "houseClass": "both-owned",
+        "phase2MoveKey": "takata:namua:0:2:right:::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.6666666666666666,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:left:right::false",
+          "takata:namua:0:7:right:::false",
+          "takata:namua:0:2:left:::false"
+        ]
+      },
+      {
+        "nodeId": "p8-90bf3495da55",
+        "score": -191,
+        "legalMoveCount": 1,
+        "forcedCapture": true,
+        "houseClass": "south-only",
+        "phase2MoveKey": "capture:namua:0:6:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:2:right:left::false",
+          "capture:namua:0:6:left:right:use:false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:4:left:right::false",
+          "capture:namua:0:0:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-b33cdef1a518",
+        "score": -146,
+        "legalMoveCount": 2,
+        "forcedCapture": false,
+        "houseClass": "both-owned",
+        "phase2MoveKey": "takata:namua:0:2:left:::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0.3333333333333333,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:2:right:left::false",
+          "takata:namua:0:0:left:::false",
+          "takata:namua:0:6:right:::false"
+        ]
+      }
+    ],
+    "southNyumbaLostPositive": [
+      {
+        "nodeId": "p8-57aeef53f0ca",
+        "score": 999999,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:7:left:right::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:3:right:left::false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:2:left:right:use:false",
+          "capture:namua:0:4:right:left::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:4:right:left::false"
+        ]
+      },
+      {
+        "nodeId": "p8-17176e5b24a1",
+        "score": 605,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:2:right:left::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:7:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-c1f65bf10696",
+        "score": 605,
+        "legalMoveCount": 2,
+        "forcedCapture": true,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "capture:namua:0:2:right:left::false",
+        "mctsUnanimous": true,
+        "mctsPhase2AgreementRate": 1,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:1:right:left::false",
+          "capture:namua:0:7:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-bc84ac6a8a62",
+        "score": 548,
+        "legalMoveCount": 8,
+        "forcedCapture": false,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "takata:namua:0:2:right:::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:6:left:right::false"
+        ]
+      },
+      {
+        "nodeId": "p8-f0f42663f63e",
+        "score": 548,
+        "legalMoveCount": 8,
+        "forcedCapture": false,
+        "houseClass": "neither-owned",
+        "phase2MoveKey": "takata:namua:0:2:right:::false",
+        "mctsUnanimous": false,
+        "mctsPhase2AgreementRate": 0,
+        "moveKeys": [
+          "takata:namua:0:5:left:::false",
+          "capture:namua:0:5:right:left::false",
+          "capture:namua:0:3:left:right::false",
+          "capture:namua:0:5:left:right::false",
+          "capture:namua:0:7:left:right:use:false",
+          "capture:namua:0:6:left:right::false",
+          "capture:namua:0:2:left:right::false",
+          "capture:namua:0:6:left:right::false"
+        ]
+      }
+    ]
+  }
+}

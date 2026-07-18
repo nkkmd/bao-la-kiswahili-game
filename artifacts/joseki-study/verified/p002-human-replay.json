@@ -1,0 +1,1799 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T05:48:17.322Z",
+  "purpose": "P002の認証済み9手系列を盤面単位で確認する人間向け照合票",
+  "dependencyCaveat": "盤面はpublic/engine.jsから生成しており、独立検証ではない。チェック欄は人間または別ルール実装による確認のため意図的に未記入としている。",
+  "nodeId": "p8-c1f65bf10696",
+  "startStateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+  "initialTotalSeeds": 64,
+  "proofCertificateHash": "6f137936fabc3282809f711b603eade69f47e8f1ffdfc1a8653c771ad33878fb",
+  "plies": [
+    {
+      "ply": 1,
+      "player": 0,
+      "playerName": "South",
+      "turn": 9,
+      "phase": "namua",
+      "legalMoveCount": 2,
+      "uniqueLegalMove": false,
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 2,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            5,
+            1,
+            3
+          ],
+          "southFront": [
+            0,
+            0,
+            1,
+            5,
+            1,
+            2,
+            4,
+            0
+          ],
+          "southBack": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "ledger": {
+          "board": [
+            18,
+            10
+          ],
+          "reserve": [
+            18,
+            18
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 1,
+            "index": 5,
+            "count": 5
+          },
+          {
+            "fromPlayer": 1,
+            "index": 6,
+            "count": 1
+          },
+          {
+            "fromPlayer": 1,
+            "index": 7,
+            "count": 3
+          }
+        ],
+        "capturedSeeds": 9,
+        "lifts": [],
+        "relays": [
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 4
+            },
+            "count": 2
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 6
+            },
+            "count": 5
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 1,
+              "index": 4
+            },
+            "count": 2
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 1,
+              "index": 2
+            },
+            "count": 2
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 1,
+              "index": 0
+            },
+            "count": 2
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 2
+            },
+            "count": 4
+          }
+        ],
+        "sowEvents": 26,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "c9fa6b1812e4a5c9f8a88aca30ce7df53b07160c8814212df2571009664d50ca",
+      "after": {
+        "stateHash": "7458a8af1fed8e937f3cda0c64fadd9e06cb5523db4a30fdb72c1dd6d7162ec5",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            4,
+            3,
+            0,
+            7,
+            1,
+            4,
+            1,
+            1
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            28,
+            1
+          ],
+          "reserve": [
+            17,
+            18
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 2,
+      "player": 1,
+      "playerName": "North",
+      "turn": 10,
+      "phase": "namua",
+      "legalMoveCount": 1,
+      "uniqueLegalMove": true,
+      "moveKey": "capture:namua:0:0:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 0,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "7458a8af1fed8e937f3cda0c64fadd9e06cb5523db4a30fdb72c1dd6d7162ec5",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            4,
+            3,
+            0,
+            7,
+            1,
+            4,
+            1,
+            1
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            28,
+            1
+          ],
+          "reserve": [
+            17,
+            18
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 0,
+            "index": 7,
+            "count": 1
+          }
+        ],
+        "capturedSeeds": 1,
+        "lifts": [],
+        "relays": [
+          {
+            "position": {
+              "player": 1,
+              "row": 0,
+              "index": 0
+            },
+            "count": 3
+          }
+        ],
+        "sowEvents": 4,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "30fe0b62c49d7cbe61160f7def54211f5d390a807d7ad90f25d591f61e1012cc",
+      "after": {
+        "stateHash": "eb76f6eaa6b2a78b4bbae44857a71c12e90b46cbcf94b88295a08a376acb55ab",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            4,
+            3,
+            0,
+            7,
+            1,
+            4,
+            1,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            27,
+            3
+          ],
+          "reserve": [
+            17,
+            17
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 3,
+      "player": 0,
+      "playerName": "South",
+      "turn": 11,
+      "phase": "namua",
+      "legalMoveCount": 5,
+      "uniqueLegalMove": false,
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 4,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "eb76f6eaa6b2a78b4bbae44857a71c12e90b46cbcf94b88295a08a376acb55ab",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            4,
+            3,
+            0,
+            7,
+            1,
+            4,
+            1,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            27,
+            3
+          ],
+          "reserve": [
+            17,
+            17
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 1,
+            "index": 3,
+            "count": 1
+          },
+          {
+            "fromPlayer": 1,
+            "index": 2,
+            "count": 1
+          }
+        ],
+        "capturedSeeds": 2,
+        "lifts": [],
+        "relays": [
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 0
+            },
+            "count": 5
+          }
+        ],
+        "sowEvents": 7,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "72a8ed64bd284d47927065da5e9657500b4988b431d7ade2026e7efe68edaeca",
+      "after": {
+        "stateHash": "07a0294223c3bfa94ef7e914f94d44f982de46b427c8b4e4c2f19694538b89b1",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            4,
+            1,
+            8,
+            3,
+            5,
+            1,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            30,
+            1
+          ],
+          "reserve": [
+            16,
+            17
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 4,
+      "player": 1,
+      "playerName": "North",
+      "turn": 12,
+      "phase": "namua",
+      "legalMoveCount": 1,
+      "uniqueLegalMove": true,
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 1,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "07a0294223c3bfa94ef7e914f94d44f982de46b427c8b4e4c2f19694538b89b1",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            4,
+            1,
+            8,
+            3,
+            5,
+            1,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            30,
+            1
+          ],
+          "reserve": [
+            16,
+            17
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 0,
+            "index": 6,
+            "count": 1
+          }
+        ],
+        "capturedSeeds": 1,
+        "lifts": [],
+        "relays": [],
+        "sowEvents": 1,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "23e6f01b1b003858fa5549bbfc77cd730e99bdf709d26da0b27df416efcdd013",
+      "after": {
+        "stateHash": "67e2f40d329b50713a3df3a5f497178359c17accab6ccec1c49567f96cd43448",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            4,
+            1,
+            8,
+            3,
+            5,
+            0,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            29,
+            3
+          ],
+          "reserve": [
+            16,
+            16
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 5,
+      "player": 0,
+      "playerName": "South",
+      "turn": 13,
+      "phase": "namua",
+      "legalMoveCount": 8,
+      "uniqueLegalMove": false,
+      "moveKey": "takata:namua:0:1:right:::false",
+      "move": {
+        "type": "takata",
+        "row": 0,
+        "index": 1,
+        "direction": "right",
+        "side": null,
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "67e2f40d329b50713a3df3a5f497178359c17accab6ccec1c49567f96cd43448",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            4,
+            1,
+            8,
+            3,
+            5,
+            0,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            29,
+            3
+          ],
+          "reserve": [
+            16,
+            16
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "lift",
+          "sow",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [],
+        "capturedSeeds": 0,
+        "lifts": [
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 1
+            },
+            "count": 5
+          }
+        ],
+        "relays": [],
+        "sowEvents": 5,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "0640467e833778340f7dc1ffa5a96563a08614b9183604ab366e83a727d497c8",
+      "after": {
+        "stateHash": "a327d584c0b90aa3e0d8b5b7a62677dd12493052f4d495fbe9de77d7c3b5bab2",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            0,
+            2,
+            9,
+            4,
+            6,
+            1,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            30,
+            3
+          ],
+          "reserve": [
+            15,
+            16
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 6,
+      "player": 1,
+      "playerName": "North",
+      "turn": 14,
+      "phase": "namua",
+      "legalMoveCount": 1,
+      "uniqueLegalMove": true,
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 1,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "a327d584c0b90aa3e0d8b5b7a62677dd12493052f4d495fbe9de77d7c3b5bab2",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            0,
+            2,
+            9,
+            4,
+            6,
+            1,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            30,
+            3
+          ],
+          "reserve": [
+            15,
+            16
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 0,
+            "index": 6,
+            "count": 1
+          }
+        ],
+        "capturedSeeds": 1,
+        "lifts": [],
+        "relays": [
+          {
+            "position": {
+              "player": 1,
+              "row": 0,
+              "index": 0
+            },
+            "count": 2
+          }
+        ],
+        "sowEvents": 3,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "239e1aaf4f8077c8511f80ef7dea4544dbda2fc2b6d4b77bfd7fb5cfbf796da4",
+      "after": {
+        "stateHash": "1f16d05e87c8a21af455029e05fdae546e78e792a78d06fc3c5f3b6ecae9d996",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            4,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            0,
+            2,
+            9,
+            4,
+            6,
+            0,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            29,
+            5
+          ],
+          "reserve": [
+            15,
+            15
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 7,
+      "player": 0,
+      "playerName": "South",
+      "turn": 15,
+      "phase": "namua",
+      "legalMoveCount": 2,
+      "uniqueLegalMove": false,
+      "moveKey": "capture:namua:0:5:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 5,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "1f16d05e87c8a21af455029e05fdae546e78e792a78d06fc3c5f3b6ecae9d996",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            4,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            0,
+            2,
+            9,
+            4,
+            6,
+            0,
+            0
+          ],
+          "southBack": [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        "ledger": {
+          "board": [
+            29,
+            5
+          ],
+          "reserve": [
+            15,
+            15
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 1,
+            "index": 2,
+            "count": 1
+          }
+        ],
+        "capturedSeeds": 1,
+        "lifts": [],
+        "relays": [
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 0
+            },
+            "count": 2
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 2
+            },
+            "count": 3
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 5
+            },
+            "count": 8
+          }
+        ],
+        "sowEvents": 14,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "efef12cd1fd0c4b1098a8799babe9b0e5c2d6231c261036d174fb7918a2d7a85",
+      "after": {
+        "stateHash": "377782b622ffc7aeba74f9f6d0967b352aeb0e96c852db78ce287252d724ae68",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            0,
+            1,
+            0,
+            10,
+            5,
+            0,
+            1,
+            1
+          ],
+          "southBack": [
+            0,
+            2,
+            1,
+            3,
+            1,
+            2,
+            2,
+            2
+          ]
+        },
+        "ledger": {
+          "board": [
+            31,
+            4
+          ],
+          "reserve": [
+            14,
+            15
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 8,
+      "player": 1,
+      "playerName": "North",
+      "turn": 16,
+      "phase": "namua",
+      "legalMoveCount": 1,
+      "uniqueLegalMove": true,
+      "moveKey": "capture:namua:0:1:right:left::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 1,
+        "direction": "right",
+        "side": "left",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "377782b622ffc7aeba74f9f6d0967b352aeb0e96c852db78ce287252d724ae68",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            0,
+            1,
+            0,
+            10,
+            5,
+            0,
+            1,
+            1
+          ],
+          "southBack": [
+            0,
+            2,
+            1,
+            3,
+            1,
+            2,
+            2,
+            2
+          ]
+        },
+        "ledger": {
+          "board": [
+            31,
+            4
+          ],
+          "reserve": [
+            14,
+            15
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "turn"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 0,
+            "index": 6,
+            "count": 1
+          }
+        ],
+        "capturedSeeds": 1,
+        "lifts": [],
+        "relays": [],
+        "sowEvents": 1,
+        "endedTurn": true,
+        "endedGame": false
+      },
+      "eventsHash": "5acb5f50f978d19c39c18dd9032043e8b9f060d59531ff88e3ebe8671607cced",
+      "after": {
+        "stateHash": "6ad463c380a53b620c12521a5e4239c588a237684a3cc370feeb6bd8119ce608",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            0,
+            1,
+            0,
+            10,
+            5,
+            0,
+            0,
+            1
+          ],
+          "southBack": [
+            0,
+            2,
+            1,
+            3,
+            1,
+            2,
+            2,
+            2
+          ]
+        },
+        "ledger": {
+          "board": [
+            30,
+            6
+          ],
+          "reserve": [
+            14,
+            14
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": null,
+        "reason": ""
+      }
+    },
+    {
+      "ply": 9,
+      "player": 0,
+      "playerName": "South",
+      "turn": 17,
+      "phase": "namua",
+      "legalMoveCount": 1,
+      "uniqueLegalMove": true,
+      "moveKey": "capture:namua:0:7:left:right::false",
+      "move": {
+        "type": "capture",
+        "row": 0,
+        "index": 7,
+        "direction": "left",
+        "side": "right",
+        "useHouse": false
+      },
+      "before": {
+        "stateHash": "6ad463c380a53b620c12521a5e4239c588a237684a3cc370feeb6bd8119ce608",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            1,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            0,
+            1,
+            0,
+            10,
+            5,
+            0,
+            0,
+            1
+          ],
+          "southBack": [
+            0,
+            2,
+            1,
+            3,
+            1,
+            2,
+            2,
+            2
+          ]
+        },
+        "ledger": {
+          "board": [
+            30,
+            6
+          ],
+          "reserve": [
+            14,
+            14
+          ],
+          "pending": [
+            0,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ]
+      },
+      "events": {
+        "eventKinds": [
+          "reserve",
+          "capture",
+          "sow",
+          "relay",
+          "win"
+        ],
+        "reserveDrops": 1,
+        "captures": [
+          {
+            "fromPlayer": 1,
+            "index": 0,
+            "count": 1
+          },
+          {
+            "fromPlayer": 1,
+            "index": 1,
+            "count": 5
+          }
+        ],
+        "capturedSeeds": 6,
+        "lifts": [],
+        "relays": [
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 7
+            },
+            "count": 3
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 0,
+              "index": 4
+            },
+            "count": 6
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 1,
+              "index": 1
+            },
+            "count": 3
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 1,
+              "index": 4
+            },
+            "count": 2
+          },
+          {
+            "position": {
+              "player": 0,
+              "row": 1,
+              "index": 6
+            },
+            "count": 3
+          }
+        ],
+        "sowEvents": 18,
+        "endedTurn": false,
+        "endedGame": true
+      },
+      "eventsHash": "80f2e2529e11b0861527c21e2474f0f1f60c1d3ee2fb9f67cf6e767f65ef0b6d",
+      "after": {
+        "stateHash": "55c1218fdb22abb6e7e1ac2a5c69a229ba6fbab82f419da28dc7f4f5925dfbe9",
+        "board": {
+          "northBack": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "northFront": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "southFront": [
+            1,
+            2,
+            1,
+            11,
+            0,
+            1,
+            2,
+            1
+          ],
+          "southBack": [
+            1,
+            0,
+            2,
+            4,
+            0,
+            3,
+            0,
+            3
+          ]
+        },
+        "ledger": {
+          "board": [
+            32,
+            0
+          ],
+          "reserve": [
+            13,
+            14
+          ],
+          "pending": [
+            5,
+            0
+          ],
+          "total": 64
+        },
+        "houseOwned": [
+          false,
+          false
+        ],
+        "winner": 0,
+        "reason": "front-empty"
+      }
+    }
+  ],
+  "terminal": {
+    "winner": 0,
+    "reason": "front-empty",
+    "stateHash": "55c1218fdb22abb6e7e1ac2a5c69a229ba6fbab82f419da28dc7f4f5925dfbe9",
+    "board": {
+      "northBack": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "northFront": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "southFront": [
+        1,
+        2,
+        1,
+        11,
+        0,
+        1,
+        2,
+        1
+      ],
+      "southBack": [
+        1,
+        0,
+        2,
+        4,
+        0,
+        3,
+        0,
+        3
+      ]
+    },
+    "ledger": {
+      "board": [
+        32,
+        0
+      ],
+      "reserve": [
+        13,
+        14
+      ],
+      "pending": [
+        5,
+        0
+      ],
+      "total": 64
+    }
+  },
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T05:48:17.334Z",
+    "passed": true,
+    "plies": 9,
+    "legalMovesChecked": 9,
+    "uniqueNorthReplies": 4,
+    "seedLedgerChecks": 18,
+    "seedTotal": 64,
+    "terminalWinner": 0,
+    "terminalReason": "front-empty",
+    "sourceFileSha256": "6c7ca8c6cde1a35d9b9fccfcb197ab3cda65b9d9320292246b120cbf94d3fa2b",
+    "rulesEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "replayHash": "795d16195e598c03a3e418587a8a05390dd59a4a3f902992383679ded2fd5bcd"
+  }
+}

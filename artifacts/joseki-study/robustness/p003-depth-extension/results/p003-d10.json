@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "studyId": "p003",
+  "nodeId": "p8-701bf2f6430d",
+  "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+  "depth": 10,
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-p003-depth-extension",
+    "studyId": "p003",
+    "nodeId": "p8-701bf2f6430d",
+    "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+    "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+    "consensusMoveKey": "capture:namua:0:4:right:left::false",
+    "depths": [
+      9,
+      10
+    ],
+    "searchConfig": {
+      "level": "hard",
+      "searchProfile": "phase2",
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1,
+      "timeLimitMs": 60000
+    },
+    "fixedRules": {
+      "scope": "extend only unresolved P003 after P002 found a depth-8 terminal win",
+      "timeout": "60 seconds per root or fixed-child analysis; stop after a timed-out depth",
+      "interpretation": "absence of a switch proves only no switch through the deepest completed depth"
+    },
+    "baseVerificationHash": "1ec406f452a9b3972f27d999ad85fc2341ad04cf4c146ece72cd1a9d7ccfb1a3",
+    "sourceFileSha256": "dd7cfc06f6e0c0a7d486066a08e7c21dde1759371c6f9fc658c2e35f0751dd27"
+  },
+  "root": {
+    "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+    "rootScore": 237,
+    "completedDepth": 10,
+    "timedOut": false,
+    "nodes": 16037,
+    "evaluations": 6576,
+    "cutoffs": 4076,
+    "cacheHits": 363,
+    "elapsedMs": 10385.165415000003
+  },
+  "candidates": [
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "stateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+      "southScore": -4,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "rootScore": 4,
+        "completedDepth": 9,
+        "timedOut": false,
+        "nodes": 49213,
+        "evaluations": 18654,
+        "cutoffs": 12849,
+        "cacheHits": 1524,
+        "elapsedMs": 34350.932875000006
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "stateHash": "30aee5e97d2c5148a6abe358c5589eac29f081db3ce4825ccbe830834144ff7f",
+      "southScore": 39,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "rootScore": -39,
+        "completedDepth": 9,
+        "timedOut": false,
+        "nodes": 26442,
+        "evaluations": 10043,
+        "cutoffs": 7171,
+        "cacheHits": 469,
+        "elapsedMs": 18119.057199999996
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "stateHash": "185bdbe15e1b78ddc3881de2ad7467d33140b63594b40cd561852b8c01c32b34",
+      "southScore": 237,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:5:left:right::false",
+        "rootScore": -237,
+        "completedDepth": 9,
+        "timedOut": false,
+        "nodes": 9395,
+        "evaluations": 3611,
+        "cutoffs": 2384,
+        "cacheHits": 362,
+        "elapsedMs": 5383.031304999997
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "stateHash": "4c9ab5f96b428e1e4706bfbe6b34aa3e21236618ec5246ea6359db3570be4a4f",
+      "southScore": 91,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:5:left:right::false",
+        "rootScore": -91,
+        "completedDepth": 9,
+        "timedOut": false,
+        "nodes": 9873,
+        "evaluations": 4539,
+        "cutoffs": 2686,
+        "cacheHits": 405,
+        "elapsedMs": 4460.43199099999
+      }
+    }
+  ],
+  "comparison": {
+    "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+    "consensusMoveKey": "capture:namua:0:4:right:left::false",
+    "recommendedIsTerminalBest": false,
+    "recommendedIsConsensus": true,
+    "terminalBestMinusConsensus": -198
+  },
+  "elapsedMs": 72699.807688
+}

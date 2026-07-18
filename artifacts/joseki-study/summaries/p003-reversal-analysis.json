@@ -1,0 +1,5216 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T01:21:06.010Z",
+  "scope": "P003 terminal-best and cross-method-consensus captures across all six saved continuations, re-evaluated with common bao depth 2",
+  "caveat": "Turning points diagnose evaluator behavior and do not prove a unique causal move or general playing strength.",
+  "selectedNodeId": "p8-701bf2f6430d",
+  "selectedStateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+  "consensusMoveKey": "capture:namua:0:4:right:left::false",
+  "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+  "standardizedAnalysis": {
+    "searchProfile": "phase2",
+    "evaluationProfile": "bao",
+    "maxDepth": 2
+  },
+  "immediateComparison": {
+    "convention": "delta is terminal-best minus consensus",
+    "staticScore": {
+      "terminalBest": 101,
+      "consensus": 192,
+      "delta": -91
+    },
+    "legacyScore": {
+      "terminalBest": 119,
+      "consensus": 154,
+      "delta": -35
+    },
+    "contributionDeltas": [
+      {
+        "feature": "maxCapture",
+        "terminalBestValue": -8,
+        "consensusValue": -1,
+        "delta": -56
+      },
+      {
+        "feature": "houseValue",
+        "terminalBestValue": 0,
+        "consensusValue": 1,
+        "delta": 7
+      },
+      {
+        "feature": "frontOccupied",
+        "terminalBestValue": 2,
+        "consensusValue": 3,
+        "delta": -5
+      },
+      {
+        "feature": "relayShape",
+        "terminalBestValue": 1,
+        "consensusValue": 5,
+        "delta": -4
+      },
+      {
+        "feature": "frontConnections",
+        "terminalBestValue": 1,
+        "consensusValue": 0,
+        "delta": 3
+      },
+      {
+        "feature": "reserveEfficiency",
+        "terminalBestValue": 1,
+        "consensusValue": 2,
+        "delta": -1
+      }
+    ]
+  },
+  "pairs": [
+    {
+      "conditionId": "bao-d1",
+      "traces": [
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "isConsensusMove": false,
+          "conditionId": "bao-d1",
+          "winner": 0,
+          "totalPlies": 97,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 13,
+            "before": 34,
+            "after": -267,
+            "delta": -301,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:right:left::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "a42da7f9915d903c019859eb1ce75f9222e40536e17102f1240bd49737fa6cd5"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 31,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 89,
+              "before": 999997,
+              "after": 834,
+              "delta": -999163,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:1:right:::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "8e032d4ed432b83f6425065f6dda40a75751bfe1e0b0b82a6598faffe2e232ed"
+            },
+            {
+              "ply": 93,
+              "before": 999997,
+              "after": 975,
+              "delta": -999022,
+              "incoming": {
+                "moveKey": "takata:mtaji:0:6:left:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 13,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4d3b9c69c52f6cc9531f543be2adb9b9361d7b5e60647f46542d8306784acdd3"
+            },
+            {
+              "ply": 49,
+              "before": 773,
+              "after": -214,
+              "delta": -987,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:0:right:::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "a142c0d2746567dd32114a5984a7dab993520774b7adc4e0683c06ccd8670bec"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 64,
+              "before": 576,
+              "after": -111,
+              "delta": -687,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:5:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 9,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "90a71894611eef1891ae188470589a1db6633fc6e9ce88ce981eaf224f579c37"
+            },
+            {
+              "ply": 34,
+              "before": 334,
+              "after": -276,
+              "delta": -610,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 11,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "13bc48eafec80b8ba350aaaf5bec818f63f631deff1b5b9b74d67df8ab3a30a2"
+            },
+            {
+              "ply": 42,
+              "before": 202,
+              "after": -385,
+              "delta": -587,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "54515fc6b26ec3fce1b054415c27056591d945c79cf105ab83f954311c5ef9ab"
+            }
+          ],
+          "positions": 89,
+          "traceHash": "a8ec43a331b705959a50a15d83a6f0b2212396659098e03dc8cbabba611b6760"
+        },
+        {
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "isConsensusMove": true,
+          "conditionId": "bao-d1",
+          "winner": 0,
+          "totalPlies": 49,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 19,
+            "before": 211,
+            "after": -110,
+            "delta": -321,
+            "incoming": {
+              "moveKey": "capture:namua:0:7:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 2,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "38a5b682e3c911961d15fd5ec595a527af18cb653ac7fe83e8db6e787347f3e8"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 20,
+            "static": 14
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 37,
+              "before": 471,
+              "after": -190,
+              "delta": -661,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 3,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "2960bed4d352cdac3f03a86b0f08f5f3fda29ba8561117b43769cb9573aaf678"
+            },
+            {
+              "ply": 39,
+              "before": 366,
+              "after": -273,
+              "delta": -639,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 3,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e4d0cf024484b97f8e4ad3a175543709905ac27891032cb8dfb2c9f9cba2890c"
+            },
+            {
+              "ply": 33,
+              "before": 668,
+              "after": 123,
+              "delta": -545,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 3,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e2def27d0c290fc79b6b09d42903034233831c1f6c21dbd4c7007e0e82b71b4f"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 36,
+              "before": 668,
+              "after": 123,
+              "delta": -545,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 3,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "c11a94a8f710891c9b23d1e83b54d6cb57a31b1e132d9338ff8b84764e496a1d"
+            },
+            {
+              "ply": 38,
+              "before": 424,
+              "after": -32,
+              "delta": -456,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "9a4fccbac0652f6ef1496f3b255325877abee41766585da7ba31d3d4313768af"
+            },
+            {
+              "ply": 40,
+              "before": 229,
+              "after": -119,
+              "delta": -348,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:right:left::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 6,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "b0dff204bfe5d7ca40e20cae8435ae7d97ee1aca4af0554921128abaa379cc77"
+            }
+          ],
+          "positions": 41,
+          "traceHash": "494272b733815b21f9e2c12c3367a84f2b06affa319f018e05d7436340659e6f"
+        }
+      ]
+    },
+    {
+      "conditionId": "bao-d2",
+      "traces": [
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "isConsensusMove": false,
+          "conditionId": "bao-d2",
+          "winner": 0,
+          "totalPlies": 61,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 33,
+            "before": 71,
+            "after": -130,
+            "delta": -201,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "98fc36bc78dccf1519a33455617fa31b1210d02fcd9bb497897f5fcb8faa2b0a"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 19,
+            "static": 20
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 47,
+              "before": 421,
+              "after": -282,
+              "delta": -703,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:4:right:::false",
+                "player": 0,
+                "captures": 6,
+                "capturedSeeds": 12,
+                "relays": 4,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "be06bdbd9284fec2e82bdf5ad66f4ea028e1687dab4616cb13839b630e36d1cf"
+            },
+            {
+              "ply": 45,
+              "before": 655,
+              "after": 4,
+              "delta": -651,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 4,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "b0f741e392249d0d8a929d81945561df0f590b3ce4997fc1fbdcb537dcdce332"
+            },
+            {
+              "ply": 35,
+              "before": 261,
+              "after": -379,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4467dbc7234d789047f7ab454a30a4d131fdc8150631c5c6acb94e36dac9f120"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 215,
+              "after": -425,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 9,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "635379d9c7440bea1beefd4a49a49e43c6bce420993ebe0bd10e83ef8bf17cac"
+            },
+            {
+              "ply": 40,
+              "before": 561,
+              "after": -40,
+              "delta": -601,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "9b5129ed0661e410b187930a33ba66a6efada46373eff4291b18787d191b3bbc"
+            },
+            {
+              "ply": 58,
+              "before": 340,
+              "after": -259,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 10,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "0b33397f856022b4ed2490b6c11db33742534c48a88db23a6ff456577d0b71f9"
+            }
+          ],
+          "positions": 53,
+          "traceHash": "f041c3970890b9f270d7e98900bed85edfdca7e6cb57511eb8c512cdc3736f48"
+        },
+        {
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "isConsensusMove": true,
+          "conditionId": "bao-d2",
+          "winner": 0,
+          "totalPlies": 55,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 287,
+            "after": -54,
+            "delta": -341,
+            "incoming": {
+              "moveKey": "capture:namua:0:2:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 6,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 28,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 35,
+              "before": 365,
+              "after": -290,
+              "delta": -655,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 8,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "99e2505c68b96e0d3a9a11d2e8e2cfc2e1cd027203d850582827b7f3e0a2f9eb"
+            },
+            {
+              "ply": 43,
+              "before": 320,
+              "after": -230,
+              "delta": -550,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "8dd5d8e2f595aefee3c1823f1790fa75875aeb1867c22551050605d418ae8b9a"
+            },
+            {
+              "ply": 27,
+              "before": 213,
+              "after": -314,
+              "delta": -527,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "dbeec104ef98721c148b10162827971a07a8edac628db7911577f33d2647ca71"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 212,
+              "after": -472,
+              "delta": -684,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 19,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "f2d6707d9205d12619986b420b3cf577e381bbc6764b64ed32725d68fb770813"
+            },
+            {
+              "ply": 24,
+              "before": 298,
+              "after": -367,
+              "delta": -665,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 13,
+                "relays": 7,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "453610df2d954f0e08cc229c1b034689df3ed993d460f0cf2fc62e7244e30a70"
+            },
+            {
+              "ply": 46,
+              "before": 291,
+              "after": -371,
+              "delta": -662,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 14,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "aba1538ef57a6e8e39ca630cf33d9d5501e11eed1d48fc8fab0fdb3c1189f1ab"
+            }
+          ],
+          "positions": 47,
+          "traceHash": "5b80906c58a34bc90199cd370e3a685f9fe97ac7488a104c7773fc7ef27fe066"
+        }
+      ]
+    },
+    {
+      "conditionId": "bao-d3",
+      "traces": [
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "isConsensusMove": false,
+          "conditionId": "bao-d3",
+          "winner": 0,
+          "totalPlies": 57,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 175,
+            "after": -167,
+            "delta": -342,
+            "incoming": {
+              "moveKey": "takata:namua:0:6:right:::false",
+              "player": 0,
+              "captures": 0,
+              "capturedSeeds": 0,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "lift",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "dd3a2788b7e67d7b7c1c14eb9746c67bdef6f6ba6e919369551046cd0f88f85f"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 21,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 39,
+              "before": 361,
+              "after": -196,
+              "delta": -557,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "9abcf5abcf5651c626319e1d098fe6fd1dfac0a1e19c464d5a474caa884c4f31"
+            },
+            {
+              "ply": 37,
+              "before": 345,
+              "after": -181,
+              "delta": -526,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "c46ffdc8eaf8e107c818cf940b2d08c2f70b82e2975f1031505619c2c5b5c1cf"
+            },
+            {
+              "ply": 33,
+              "before": 495,
+              "after": -28,
+              "delta": -523,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 0,
+                "captures": 4,
+                "capturedSeeds": 6,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "facb50bd6dab2b75bbf9e5e33d99c75004016a0d6d35734a75cec3bb89fdfbc4"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 286,
+              "after": -347,
+              "delta": -633,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 18,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "610a4ad8f83e761854ff8283be83553059a2ada564999b7e7155f72ac56b6a2e"
+            },
+            {
+              "ply": 28,
+              "before": 514,
+              "after": -33,
+              "delta": -547,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "0f86b9b082973a83f0d5b4c99cee6524aaa3a17d9c8e41381ac7d463e3abb11e"
+            },
+            {
+              "ply": 54,
+              "before": 709,
+              "after": 225,
+              "delta": -484,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:0:right:::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "e25d1c30adffe1dc5e5bb93dc08e53777bbdc11a9a5e2f55a15dba89e7b5ba38"
+            }
+          ],
+          "positions": 49,
+          "traceHash": "4fe6d0bf652646af76841a1938377d0371e729b5f23d0d08051c96506a75d917"
+        },
+        {
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "isConsensusMove": true,
+          "conditionId": "bao-d3",
+          "winner": 0,
+          "totalPlies": 53,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 33,
+            "before": 353,
+            "after": -15,
+            "delta": -368,
+            "incoming": {
+              "moveKey": "takata:namua:0:6:left:::false",
+              "player": 0,
+              "captures": 0,
+              "capturedSeeds": 0,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "lift",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "e542dcc8f5ec618f3f6b6c0ebd78ba0220f5dfe033dc0dec1366402341198ee4"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 10,
+            "static": 12
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 33,
+              "before": 353,
+              "after": -15,
+              "delta": -368,
+              "incoming": {
+                "moveKey": "takata:namua:0:6:left:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "lift",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "e542dcc8f5ec618f3f6b6c0ebd78ba0220f5dfe033dc0dec1366402341198ee4"
+            },
+            {
+              "ply": 39,
+              "before": 212,
+              "after": -114,
+              "delta": -326,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 9,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "f65a3b48cec5f3e39372285d26afd81dbe44d094af8960bf93ccf4bf65d6597d"
+            },
+            {
+              "ply": 31,
+              "before": 311,
+              "after": 34,
+              "delta": -277,
+              "incoming": {
+                "moveKey": "takata:namua:0:1:right:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "lift",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4a438d11d60bd3017bf38f6ee0679c41971feecb736f40f5e18f97cfccf16491"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 52,
+              "before": 526,
+              "after": 30,
+              "delta": -496,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "376ebf289d648dd671b09cd46bb995639fa03307d30036c3ba6af1c4caaee923"
+            },
+            {
+              "ply": 38,
+              "before": 77,
+              "after": -375,
+              "delta": -452,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right:use:false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 11,
+                "houseUsed": true,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e33c7ca58c92703d4c1c794c71255a82b0db47e641768cb1cfc309e823c4d24c"
+            },
+            {
+              "ply": 36,
+              "before": 340,
+              "after": -15,
+              "delta": -355,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "3597643af94973c294713dc536e786895d593a36e91564d1d350333d56bfcf89"
+            }
+          ],
+          "positions": 45,
+          "traceHash": "ee98cf6d35f134278678f47d832a16d8493a144217aa9bea1b02321877440592"
+        }
+      ]
+    },
+    {
+      "conditionId": "bao-d4",
+      "traces": [
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "isConsensusMove": false,
+          "conditionId": "bao-d4",
+          "winner": 0,
+          "totalPlies": 55,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 13,
+            "before": 111,
+            "after": -367,
+            "delta": -478,
+            "incoming": {
+              "moveKey": "capture:namua:0:7:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 1,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2e091240625af2100055c5f38111a827fcb6309bf708bacec7b5ab4f49702a99"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 31,
+            "static": 20
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 45,
+              "before": 773,
+              "after": 12,
+              "delta": -761,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:6:left:::false",
+                "player": 0,
+                "captures": 4,
+                "capturedSeeds": 15,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "eed7b9114413946ca294f9d44812d5f24eae2906748b8ef83a07f299130f2e51"
+            },
+            {
+              "ply": 37,
+              "before": 296,
+              "after": -448,
+              "delta": -744,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "56c3be8c15777ba8363564449f99861c1610539995405a459d8efddb26f02b07"
+            },
+            {
+              "ply": 29,
+              "before": 397,
+              "after": -288,
+              "delta": -685,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 4,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "1dfb29dda17ebccecff427a03c74c61e4515c2fd0c7e1c3c5e154f424e5e2f39"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 40,
+              "before": 151,
+              "after": -448,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 16,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "7fd548e5f1e5db15baec21c18e7c70801228ad8d51b00a62adc59c8ea33997e9"
+            },
+            {
+              "ply": 42,
+              "before": 403,
+              "after": -196,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 8,
+                "relays": 4,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "111096ff901ea76a98faf26e54b831ffcefab83576692abbae90824cb598cefb"
+            },
+            {
+              "ply": 46,
+              "before": 595,
+              "after": 15,
+              "delta": -580,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:0:right:::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "915bfc187d81a0ad66f763c0771df9f1c669f14327e58693bf7385e0f5d524d6"
+            }
+          ],
+          "positions": 47,
+          "traceHash": "e8fdf6aa2e22b1fa7c665099e017ce18405a7651baca40824da9dadca54e1ab3"
+        },
+        {
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "isConsensusMove": true,
+          "conditionId": "bao-d4",
+          "winner": 1,
+          "totalPlies": 56,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 13,
+            "before": 304,
+            "after": -8,
+            "delta": -312,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "f30928c1d439a29f92f33acf8bb1646414f8e46202c0a822497c7687c348eaa8"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": {
+            "ply": 43,
+            "before": 71,
+            "after": -760,
+            "delta": -831,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:right:left::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "29e44863703b4e1c0549c21216a243e2b4dd09073bcd1e3251b79755ed215059"
+          },
+          "permanentStaticReversal": {
+            "ply": 46,
+            "before": 71,
+            "after": -760,
+            "delta": -831,
+            "incoming": {
+              "moveKey": "capture:mtaji:0:5:left:::false",
+              "player": 1,
+              "captures": 5,
+              "capturedSeeds": 17,
+              "relays": 1,
+              "houseUsed": false,
+              "eventKinds": [
+                "lift",
+                "sow",
+                "capture",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "51fa9a14e2f30bbc65c06e31c553095705ad67c878bb3b1179c568f0e37507e4"
+          },
+          "signFlips": {
+            "search": 29,
+            "static": 21
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 53,
+              "before": -949,
+              "after": -999997,
+              "delta": -999048,
+              "incoming": {
+                "moveKey": "takata:mtaji:1:1:right:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "839f3d6fa9828d8c2f9e6ec7818b3dfbb367d2b9b5fc3b39d386cb7f21b70a67"
+            },
+            {
+              "ply": 35,
+              "before": 300,
+              "after": -582,
+              "delta": -882,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 3,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "f9d7d91cf3a36fdb18a50270c4900580462043380c5a9dd88121ff73668c6ab2"
+            },
+            {
+              "ply": 43,
+              "before": 71,
+              "after": -760,
+              "delta": -831,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 9,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "29e44863703b4e1c0549c21216a243e2b4dd09073bcd1e3251b79755ed215059"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 56,
+              "before": -735,
+              "after": -1000000,
+              "delta": -999265,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:right:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "win"
+                ]
+              },
+              "stateHash": "600730d4a622f02a523ce942022d63050127ae6e33a6933b5c7afe0c41000c08"
+            },
+            {
+              "ply": 46,
+              "before": 71,
+              "after": -760,
+              "delta": -831,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:5:left:::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 17,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "51fa9a14e2f30bbc65c06e31c553095705ad67c878bb3b1179c568f0e37507e4"
+            },
+            {
+              "ply": 40,
+              "before": 95,
+              "after": -499,
+              "delta": -594,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 13,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "250ceef94e34ea8959ffcabb965243d3ac0db207dc81f93860edf76374ce671a"
+            }
+          ],
+          "positions": 48,
+          "traceHash": "5b7b57c3446375352c54b1f5d44636813fff1030256bc466af2aa705edbe3136"
+        }
+      ]
+    },
+    {
+      "conditionId": "legacy-d2",
+      "traces": [
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "isConsensusMove": false,
+          "conditionId": "legacy-d2",
+          "winner": 1,
+          "totalPlies": 52,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 23,
+            "before": 73,
+            "after": -427,
+            "delta": -500,
+            "incoming": {
+              "moveKey": "capture:namua:0:4:left:right::false",
+              "player": 0,
+              "captures": 3,
+              "capturedSeeds": 5,
+              "relays": 2,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "04bf305a1aeaedef0ba4a84fde47b5cdf0f031c56a0ca8d17907a38bdf3e874a"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": {
+            "ply": 45,
+            "before": 91,
+            "after": -388,
+            "delta": -479,
+            "incoming": {
+              "moveKey": "capture:mtaji:1:0:right:::false",
+              "player": 0,
+              "captures": 2,
+              "capturedSeeds": 2,
+              "relays": 3,
+              "houseUsed": false,
+              "eventKinds": [
+                "lift",
+                "sow",
+                "capture",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "578eb908635fb8acec15e32f0b6fc0150a94326331b646e44802312799927f29"
+          },
+          "permanentStaticReversal": {
+            "ply": 48,
+            "before": 91,
+            "after": -388,
+            "delta": -479,
+            "incoming": {
+              "moveKey": "capture:mtaji:0:3:right:::false",
+              "player": 1,
+              "captures": 3,
+              "capturedSeeds": 7,
+              "relays": 1,
+              "houseUsed": false,
+              "eventKinds": [
+                "lift",
+                "sow",
+                "capture",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "8c35783954b7898801a1c6fc45251e826039b2e467e337a2b64f0de58742c554"
+          },
+          "signFlips": {
+            "search": 18,
+            "static": 13
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 49,
+              "before": -538,
+              "after": -999997,
+              "delta": -999459,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "194055a5429da427a7fda1927beb1d0274d746d3dce14e544d4b099d03a35049"
+            },
+            {
+              "ply": 47,
+              "before": -154,
+              "after": -774,
+              "delta": -620,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "f3848bfa5149c5a6658f0baf6efb2b2a55b3ae904232771dd40b83e47db0f3e5"
+            },
+            {
+              "ply": 43,
+              "before": 237,
+              "after": -316,
+              "delta": -553,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 11,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e43db4bfc27d921e5a4d696263a76b78f9d3a039d2b8fc14426a2139d138b252"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 52,
+              "before": -262,
+              "after": -1000000,
+              "delta": -999738,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 14,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "win"
+                ]
+              },
+              "stateHash": "a3af5b794b2b21fac0053ef3a55f92e0969c566e58768c24ae41507a9c709c25"
+            },
+            {
+              "ply": 30,
+              "before": 220,
+              "after": -359,
+              "delta": -579,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 11,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "b7c01cf8fb3537c37a818ba246bac4e536db1c7751a6f1c07c0c9876af3ed7d2"
+            },
+            {
+              "ply": 46,
+              "before": 237,
+              "after": -316,
+              "delta": -553,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:6:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 12,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e2509f7593907f1b8babc17762110f91a5813a46d1bac81f85111fc103163f4c"
+            }
+          ],
+          "positions": 44,
+          "traceHash": "f5199ea007eb741f0346cf75e7a18f8026060b5202b3bfc826c4923e433d4693"
+        },
+        {
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "isConsensusMove": true,
+          "conditionId": "legacy-d2",
+          "winner": 1,
+          "totalPlies": 22,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 287,
+            "after": -54,
+            "delta": -341,
+            "incoming": {
+              "moveKey": "capture:namua:0:2:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 6,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": {
+            "ply": 17,
+            "before": 125,
+            "after": -238,
+            "delta": -363,
+            "incoming": {
+              "moveKey": "capture:namua:0:1:right:left::false",
+              "player": 0,
+              "captures": 2,
+              "capturedSeeds": 2,
+              "relays": 3,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "bc57767679ea42853df0a16ef7d1c5e540f8692739a450abd6154617d3f48b0e"
+          },
+          "permanentStaticReversal": {
+            "ply": 22,
+            "before": 204,
+            "after": -1000000,
+            "delta": -1000204,
+            "incoming": {
+              "moveKey": "capture:namua:0:7:left:right:use:false",
+              "player": 1,
+              "captures": 5,
+              "capturedSeeds": 14,
+              "relays": 10,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "win"
+              ]
+            },
+            "stateHash": "24bf6aed0643446096748058643acd456827bc114788a5390187a8fc6f8649c9"
+          },
+          "signFlips": {
+            "search": 3,
+            "static": 3
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 19,
+              "before": -41,
+              "after": -999997,
+              "delta": -999956,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "86d81960a8ae6014ae37dba1a0c30be4b534e3e2f58b0cb6e92e0facb241ebe7"
+            },
+            {
+              "ply": 17,
+              "before": 125,
+              "after": -238,
+              "delta": -363,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "bc57767679ea42853df0a16ef7d1c5e540f8692739a450abd6154617d3f48b0e"
+            },
+            {
+              "ply": 15,
+              "before": 287,
+              "after": -54,
+              "delta": -341,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 2,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 22,
+              "before": 204,
+              "after": -1000000,
+              "delta": -1000204,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right:use:false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 14,
+                "relays": 10,
+                "houseUsed": true,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "win"
+                ]
+              },
+              "stateHash": "24bf6aed0643446096748058643acd456827bc114788a5390187a8fc6f8649c9"
+            },
+            {
+              "ply": 20,
+              "before": 428,
+              "after": 44,
+              "delta": -384,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "08475c84231fafeee5019fef980edcfa7c4ece4ef09a3392af0fd9e8b5fae15c"
+            },
+            {
+              "ply": 18,
+              "before": 351,
+              "after": 142,
+              "delta": -209,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "14be124967bf1632feeccf1bb07831626b4e83e24bb51259c5ee616aa883716f"
+            }
+          ],
+          "positions": 14,
+          "traceHash": "e0148a6c578b106ba496fcd47530de6a36e6e5d8612db98b3e617bd4b27f70bb"
+        }
+      ]
+    },
+    {
+      "conditionId": "bao-v2-d2",
+      "traces": [
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "isConsensusMove": false,
+          "conditionId": "bao-v2-d2",
+          "winner": 0,
+          "totalPlies": 61,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 33,
+            "before": 71,
+            "after": -130,
+            "delta": -201,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "98fc36bc78dccf1519a33455617fa31b1210d02fcd9bb497897f5fcb8faa2b0a"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 19,
+            "static": 20
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 47,
+              "before": 421,
+              "after": -282,
+              "delta": -703,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:4:right:::false",
+                "player": 0,
+                "captures": 6,
+                "capturedSeeds": 12,
+                "relays": 4,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "be06bdbd9284fec2e82bdf5ad66f4ea028e1687dab4616cb13839b630e36d1cf"
+            },
+            {
+              "ply": 45,
+              "before": 655,
+              "after": 4,
+              "delta": -651,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 4,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "b0f741e392249d0d8a929d81945561df0f590b3ce4997fc1fbdcb537dcdce332"
+            },
+            {
+              "ply": 35,
+              "before": 261,
+              "after": -379,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4467dbc7234d789047f7ab454a30a4d131fdc8150631c5c6acb94e36dac9f120"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 215,
+              "after": -425,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 9,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "635379d9c7440bea1beefd4a49a49e43c6bce420993ebe0bd10e83ef8bf17cac"
+            },
+            {
+              "ply": 40,
+              "before": 561,
+              "after": -40,
+              "delta": -601,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "9b5129ed0661e410b187930a33ba66a6efada46373eff4291b18787d191b3bbc"
+            },
+            {
+              "ply": 58,
+              "before": 340,
+              "after": -259,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 10,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "0b33397f856022b4ed2490b6c11db33742534c48a88db23a6ff456577d0b71f9"
+            }
+          ],
+          "positions": 53,
+          "traceHash": "f041c3970890b9f270d7e98900bed85edfdca7e6cb57511eb8c512cdc3736f48"
+        },
+        {
+          "moveKey": "capture:namua:0:4:right:left::false",
+          "isConsensusMove": true,
+          "conditionId": "bao-v2-d2",
+          "winner": 0,
+          "totalPlies": 55,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 287,
+            "after": -54,
+            "delta": -341,
+            "incoming": {
+              "moveKey": "capture:namua:0:2:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 6,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 28,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 35,
+              "before": 365,
+              "after": -290,
+              "delta": -655,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 8,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "99e2505c68b96e0d3a9a11d2e8e2cfc2e1cd027203d850582827b7f3e0a2f9eb"
+            },
+            {
+              "ply": 43,
+              "before": 320,
+              "after": -230,
+              "delta": -550,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "8dd5d8e2f595aefee3c1823f1790fa75875aeb1867c22551050605d418ae8b9a"
+            },
+            {
+              "ply": 27,
+              "before": 213,
+              "after": -314,
+              "delta": -527,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "dbeec104ef98721c148b10162827971a07a8edac628db7911577f33d2647ca71"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 212,
+              "after": -472,
+              "delta": -684,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 19,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "f2d6707d9205d12619986b420b3cf577e381bbc6764b64ed32725d68fb770813"
+            },
+            {
+              "ply": 24,
+              "before": 298,
+              "after": -367,
+              "delta": -665,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 13,
+                "relays": 7,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "453610df2d954f0e08cc229c1b034689df3ed993d460f0cf2fc62e7244e30a70"
+            },
+            {
+              "ply": 46,
+              "before": 291,
+              "after": -371,
+              "delta": -662,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 14,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "aba1538ef57a6e8e39ca630cf33d9d5501e11eed1d48fc8fab0fdb3c1189f1ab"
+            }
+          ],
+          "positions": 47,
+          "traceHash": "5b80906c58a34bc90199cd370e3a685f9fe97ac7488a104c7773fc7ef27fe066"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidateId": "move-02-60e48cc43385",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "isConsensusMove": false,
+      "southWins": 5,
+      "immediateBreakdown": {
+        "profile": "bao",
+        "category": "namua-opening",
+        "phase": "namua",
+        "legacy": 119,
+        "features": {
+          "boardSeeds": 5,
+          "frontSeeds": 6,
+          "frontOccupied": 2,
+          "frontConnections": 1,
+          "reusablePits": 2,
+          "mobility": 0,
+          "captureMoves": 0,
+          "maxCapture": -8,
+          "relayShape": 1,
+          "frontSafety": 2,
+          "houseValue": 0,
+          "reserveEfficiency": 1,
+          "transitionShape": 0,
+          "tempo": -1
+        },
+        "weights": {
+          "boardSeeds": 1,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 2
+        },
+        "contributions": {
+          "boardSeeds": 5,
+          "frontSeeds": 6,
+          "frontOccupied": 10,
+          "frontConnections": 3,
+          "reusablePits": 6,
+          "mobility": 0,
+          "captureMoves": 0,
+          "maxCapture": -64,
+          "relayShape": 1,
+          "frontSafety": 16,
+          "houseValue": 0,
+          "reserveEfficiency": 1,
+          "transitionShape": 0,
+          "tempo": -2
+        },
+        "total": 101
+      },
+      "traces": [
+        {
+          "conditionId": "bao-d1",
+          "winner": 0,
+          "totalPlies": 97,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 13,
+            "before": 34,
+            "after": -267,
+            "delta": -301,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:right:left::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "a42da7f9915d903c019859eb1ce75f9222e40536e17102f1240bd49737fa6cd5"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 31,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 89,
+              "before": 999997,
+              "after": 834,
+              "delta": -999163,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:1:right:::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "8e032d4ed432b83f6425065f6dda40a75751bfe1e0b0b82a6598faffe2e232ed"
+            },
+            {
+              "ply": 93,
+              "before": 999997,
+              "after": 975,
+              "delta": -999022,
+              "incoming": {
+                "moveKey": "takata:mtaji:0:6:left:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 13,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4d3b9c69c52f6cc9531f543be2adb9b9361d7b5e60647f46542d8306784acdd3"
+            },
+            {
+              "ply": 49,
+              "before": 773,
+              "after": -214,
+              "delta": -987,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:0:right:::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "a142c0d2746567dd32114a5984a7dab993520774b7adc4e0683c06ccd8670bec"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 64,
+              "before": 576,
+              "after": -111,
+              "delta": -687,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:5:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 9,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "90a71894611eef1891ae188470589a1db6633fc6e9ce88ce981eaf224f579c37"
+            },
+            {
+              "ply": 34,
+              "before": 334,
+              "after": -276,
+              "delta": -610,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 11,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "13bc48eafec80b8ba350aaaf5bec818f63f631deff1b5b9b74d67df8ab3a30a2"
+            },
+            {
+              "ply": 42,
+              "before": 202,
+              "after": -385,
+              "delta": -587,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "54515fc6b26ec3fce1b054415c27056591d945c79cf105ab83f954311c5ef9ab"
+            }
+          ],
+          "positions": 89,
+          "traceHash": "a8ec43a331b705959a50a15d83a6f0b2212396659098e03dc8cbabba611b6760"
+        },
+        {
+          "conditionId": "bao-d2",
+          "winner": 0,
+          "totalPlies": 61,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 33,
+            "before": 71,
+            "after": -130,
+            "delta": -201,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "98fc36bc78dccf1519a33455617fa31b1210d02fcd9bb497897f5fcb8faa2b0a"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 19,
+            "static": 20
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 47,
+              "before": 421,
+              "after": -282,
+              "delta": -703,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:4:right:::false",
+                "player": 0,
+                "captures": 6,
+                "capturedSeeds": 12,
+                "relays": 4,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "be06bdbd9284fec2e82bdf5ad66f4ea028e1687dab4616cb13839b630e36d1cf"
+            },
+            {
+              "ply": 45,
+              "before": 655,
+              "after": 4,
+              "delta": -651,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 4,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "b0f741e392249d0d8a929d81945561df0f590b3ce4997fc1fbdcb537dcdce332"
+            },
+            {
+              "ply": 35,
+              "before": 261,
+              "after": -379,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4467dbc7234d789047f7ab454a30a4d131fdc8150631c5c6acb94e36dac9f120"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 215,
+              "after": -425,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 9,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "635379d9c7440bea1beefd4a49a49e43c6bce420993ebe0bd10e83ef8bf17cac"
+            },
+            {
+              "ply": 40,
+              "before": 561,
+              "after": -40,
+              "delta": -601,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "9b5129ed0661e410b187930a33ba66a6efada46373eff4291b18787d191b3bbc"
+            },
+            {
+              "ply": 58,
+              "before": 340,
+              "after": -259,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 10,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "0b33397f856022b4ed2490b6c11db33742534c48a88db23a6ff456577d0b71f9"
+            }
+          ],
+          "positions": 53,
+          "traceHash": "f041c3970890b9f270d7e98900bed85edfdca7e6cb57511eb8c512cdc3736f48"
+        },
+        {
+          "conditionId": "bao-d3",
+          "winner": 0,
+          "totalPlies": 57,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 175,
+            "after": -167,
+            "delta": -342,
+            "incoming": {
+              "moveKey": "takata:namua:0:6:right:::false",
+              "player": 0,
+              "captures": 0,
+              "capturedSeeds": 0,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "lift",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "dd3a2788b7e67d7b7c1c14eb9746c67bdef6f6ba6e919369551046cd0f88f85f"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 21,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 39,
+              "before": 361,
+              "after": -196,
+              "delta": -557,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "9abcf5abcf5651c626319e1d098fe6fd1dfac0a1e19c464d5a474caa884c4f31"
+            },
+            {
+              "ply": 37,
+              "before": 345,
+              "after": -181,
+              "delta": -526,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "c46ffdc8eaf8e107c818cf940b2d08c2f70b82e2975f1031505619c2c5b5c1cf"
+            },
+            {
+              "ply": 33,
+              "before": 495,
+              "after": -28,
+              "delta": -523,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 0,
+                "captures": 4,
+                "capturedSeeds": 6,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "facb50bd6dab2b75bbf9e5e33d99c75004016a0d6d35734a75cec3bb89fdfbc4"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 286,
+              "after": -347,
+              "delta": -633,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 18,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "610a4ad8f83e761854ff8283be83553059a2ada564999b7e7155f72ac56b6a2e"
+            },
+            {
+              "ply": 28,
+              "before": 514,
+              "after": -33,
+              "delta": -547,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "0f86b9b082973a83f0d5b4c99cee6524aaa3a17d9c8e41381ac7d463e3abb11e"
+            },
+            {
+              "ply": 54,
+              "before": 709,
+              "after": 225,
+              "delta": -484,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:0:right:::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "e25d1c30adffe1dc5e5bb93dc08e53777bbdc11a9a5e2f55a15dba89e7b5ba38"
+            }
+          ],
+          "positions": 49,
+          "traceHash": "4fe6d0bf652646af76841a1938377d0371e729b5f23d0d08051c96506a75d917"
+        },
+        {
+          "conditionId": "bao-d4",
+          "winner": 0,
+          "totalPlies": 55,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 13,
+            "before": 111,
+            "after": -367,
+            "delta": -478,
+            "incoming": {
+              "moveKey": "capture:namua:0:7:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 1,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2e091240625af2100055c5f38111a827fcb6309bf708bacec7b5ab4f49702a99"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 31,
+            "static": 20
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 45,
+              "before": 773,
+              "after": 12,
+              "delta": -761,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:6:left:::false",
+                "player": 0,
+                "captures": 4,
+                "capturedSeeds": 15,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "eed7b9114413946ca294f9d44812d5f24eae2906748b8ef83a07f299130f2e51"
+            },
+            {
+              "ply": 37,
+              "before": 296,
+              "after": -448,
+              "delta": -744,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "56c3be8c15777ba8363564449f99861c1610539995405a459d8efddb26f02b07"
+            },
+            {
+              "ply": 29,
+              "before": 397,
+              "after": -288,
+              "delta": -685,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 4,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "1dfb29dda17ebccecff427a03c74c61e4515c2fd0c7e1c3c5e154f424e5e2f39"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 40,
+              "before": 151,
+              "after": -448,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 16,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "7fd548e5f1e5db15baec21c18e7c70801228ad8d51b00a62adc59c8ea33997e9"
+            },
+            {
+              "ply": 42,
+              "before": 403,
+              "after": -196,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 8,
+                "relays": 4,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "111096ff901ea76a98faf26e54b831ffcefab83576692abbae90824cb598cefb"
+            },
+            {
+              "ply": 46,
+              "before": 595,
+              "after": 15,
+              "delta": -580,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:0:right:::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "915bfc187d81a0ad66f763c0771df9f1c669f14327e58693bf7385e0f5d524d6"
+            }
+          ],
+          "positions": 47,
+          "traceHash": "e8fdf6aa2e22b1fa7c665099e017ce18405a7651baca40824da9dadca54e1ab3"
+        },
+        {
+          "conditionId": "legacy-d2",
+          "winner": 1,
+          "totalPlies": 52,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 23,
+            "before": 73,
+            "after": -427,
+            "delta": -500,
+            "incoming": {
+              "moveKey": "capture:namua:0:4:left:right::false",
+              "player": 0,
+              "captures": 3,
+              "capturedSeeds": 5,
+              "relays": 2,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "04bf305a1aeaedef0ba4a84fde47b5cdf0f031c56a0ca8d17907a38bdf3e874a"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": {
+            "ply": 45,
+            "before": 91,
+            "after": -388,
+            "delta": -479,
+            "incoming": {
+              "moveKey": "capture:mtaji:1:0:right:::false",
+              "player": 0,
+              "captures": 2,
+              "capturedSeeds": 2,
+              "relays": 3,
+              "houseUsed": false,
+              "eventKinds": [
+                "lift",
+                "sow",
+                "capture",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "578eb908635fb8acec15e32f0b6fc0150a94326331b646e44802312799927f29"
+          },
+          "permanentStaticReversal": {
+            "ply": 48,
+            "before": 91,
+            "after": -388,
+            "delta": -479,
+            "incoming": {
+              "moveKey": "capture:mtaji:0:3:right:::false",
+              "player": 1,
+              "captures": 3,
+              "capturedSeeds": 7,
+              "relays": 1,
+              "houseUsed": false,
+              "eventKinds": [
+                "lift",
+                "sow",
+                "capture",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "8c35783954b7898801a1c6fc45251e826039b2e467e337a2b64f0de58742c554"
+          },
+          "signFlips": {
+            "search": 18,
+            "static": 13
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 49,
+              "before": -538,
+              "after": -999997,
+              "delta": -999459,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "194055a5429da427a7fda1927beb1d0274d746d3dce14e544d4b099d03a35049"
+            },
+            {
+              "ply": 47,
+              "before": -154,
+              "after": -774,
+              "delta": -620,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "f3848bfa5149c5a6658f0baf6efb2b2a55b3ae904232771dd40b83e47db0f3e5"
+            },
+            {
+              "ply": 43,
+              "before": 237,
+              "after": -316,
+              "delta": -553,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 11,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e43db4bfc27d921e5a4d696263a76b78f9d3a039d2b8fc14426a2139d138b252"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 52,
+              "before": -262,
+              "after": -1000000,
+              "delta": -999738,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 14,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "win"
+                ]
+              },
+              "stateHash": "a3af5b794b2b21fac0053ef3a55f92e0969c566e58768c24ae41507a9c709c25"
+            },
+            {
+              "ply": 30,
+              "before": 220,
+              "after": -359,
+              "delta": -579,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 11,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "b7c01cf8fb3537c37a818ba246bac4e536db1c7751a6f1c07c0c9876af3ed7d2"
+            },
+            {
+              "ply": 46,
+              "before": 237,
+              "after": -316,
+              "delta": -553,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:6:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 12,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e2509f7593907f1b8babc17762110f91a5813a46d1bac81f85111fc103163f4c"
+            }
+          ],
+          "positions": 44,
+          "traceHash": "f5199ea007eb741f0346cf75e7a18f8026060b5202b3bfc826c4923e433d4693"
+        },
+        {
+          "conditionId": "bao-v2-d2",
+          "winner": 0,
+          "totalPlies": 61,
+          "firstReplyMoveKey": "capture:namua:0:3:right:left::false",
+          "initial": {
+            "search": -374,
+            "static": 101,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 33,
+            "before": 71,
+            "after": -130,
+            "delta": -201,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "98fc36bc78dccf1519a33455617fa31b1210d02fcd9bb497897f5fcb8faa2b0a"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 101,
+            "after": -330,
+            "delta": -431,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "2358cf22ed8833ecd80c6712e0b06fb0d86931aa82d6381bb080f39ce04cbf9d"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 19,
+            "static": 20
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 47,
+              "before": 421,
+              "after": -282,
+              "delta": -703,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:4:right:::false",
+                "player": 0,
+                "captures": 6,
+                "capturedSeeds": 12,
+                "relays": 4,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "be06bdbd9284fec2e82bdf5ad66f4ea028e1687dab4616cb13839b630e36d1cf"
+            },
+            {
+              "ply": 45,
+              "before": 655,
+              "after": 4,
+              "delta": -651,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 4,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "b0f741e392249d0d8a929d81945561df0f590b3ce4997fc1fbdcb537dcdce332"
+            },
+            {
+              "ply": 35,
+              "before": 261,
+              "after": -379,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4467dbc7234d789047f7ab454a30a4d131fdc8150631c5c6acb94e36dac9f120"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 215,
+              "after": -425,
+              "delta": -640,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 9,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "635379d9c7440bea1beefd4a49a49e43c6bce420993ebe0bd10e83ef8bf17cac"
+            },
+            {
+              "ply": 40,
+              "before": 561,
+              "after": -40,
+              "delta": -601,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "9b5129ed0661e410b187930a33ba66a6efada46373eff4291b18787d191b3bbc"
+            },
+            {
+              "ply": 58,
+              "before": 340,
+              "after": -259,
+              "delta": -599,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:left:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 10,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "0b33397f856022b4ed2490b6c11db33742534c48a88db23a6ff456577d0b71f9"
+            }
+          ],
+          "positions": 53,
+          "traceHash": "f041c3970890b9f270d7e98900bed85edfdca7e6cb57511eb8c512cdc3736f48"
+        }
+      ]
+    },
+    {
+      "candidateId": "move-03-d023129b2166",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "isConsensusMove": true,
+      "southWins": 4,
+      "immediateBreakdown": {
+        "profile": "bao",
+        "category": "namua-opening",
+        "phase": "namua",
+        "legacy": 154,
+        "features": {
+          "boardSeeds": 5,
+          "frontSeeds": 6,
+          "frontOccupied": 3,
+          "frontConnections": 0,
+          "reusablePits": 2,
+          "mobility": 0,
+          "captureMoves": 0,
+          "maxCapture": -1,
+          "relayShape": 5,
+          "frontSafety": 2,
+          "houseValue": 1,
+          "reserveEfficiency": 2,
+          "transitionShape": 0,
+          "tempo": -1
+        },
+        "weights": {
+          "boardSeeds": 1,
+          "frontSeeds": 1,
+          "frontOccupied": 5,
+          "frontConnections": 3,
+          "reusablePits": 3,
+          "mobility": 2,
+          "captureMoves": 3,
+          "maxCapture": 8,
+          "relayShape": 1,
+          "frontSafety": 8,
+          "houseValue": -7,
+          "reserveEfficiency": 1,
+          "transitionShape": 2,
+          "tempo": 2
+        },
+        "contributions": {
+          "boardSeeds": 5,
+          "frontSeeds": 6,
+          "frontOccupied": 15,
+          "frontConnections": 0,
+          "reusablePits": 6,
+          "mobility": 0,
+          "captureMoves": 0,
+          "maxCapture": -8,
+          "relayShape": 5,
+          "frontSafety": 16,
+          "houseValue": -7,
+          "reserveEfficiency": 2,
+          "transitionShape": 0,
+          "tempo": -2
+        },
+        "total": 192
+      },
+      "traces": [
+        {
+          "conditionId": "bao-d1",
+          "winner": 0,
+          "totalPlies": 49,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 19,
+            "before": 211,
+            "after": -110,
+            "delta": -321,
+            "incoming": {
+              "moveKey": "capture:namua:0:7:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 1,
+              "relays": 2,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "38a5b682e3c911961d15fd5ec595a527af18cb653ac7fe83e8db6e787347f3e8"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 20,
+            "static": 14
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 37,
+              "before": 471,
+              "after": -190,
+              "delta": -661,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 3,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "2960bed4d352cdac3f03a86b0f08f5f3fda29ba8561117b43769cb9573aaf678"
+            },
+            {
+              "ply": 39,
+              "before": 366,
+              "after": -273,
+              "delta": -639,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 3,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e4d0cf024484b97f8e4ad3a175543709905ac27891032cb8dfb2c9f9cba2890c"
+            },
+            {
+              "ply": 33,
+              "before": 668,
+              "after": 123,
+              "delta": -545,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 3,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e2def27d0c290fc79b6b09d42903034233831c1f6c21dbd4c7007e0e82b71b4f"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 36,
+              "before": 668,
+              "after": 123,
+              "delta": -545,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 3,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "c11a94a8f710891c9b23d1e83b54d6cb57a31b1e132d9338ff8b84764e496a1d"
+            },
+            {
+              "ply": 38,
+              "before": 424,
+              "after": -32,
+              "delta": -456,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "9a4fccbac0652f6ef1496f3b255325877abee41766585da7ba31d3d4313768af"
+            },
+            {
+              "ply": 40,
+              "before": 229,
+              "after": -119,
+              "delta": -348,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:right:left::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 6,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "b0dff204bfe5d7ca40e20cae8435ae7d97ee1aca4af0554921128abaa379cc77"
+            }
+          ],
+          "positions": 41,
+          "traceHash": "494272b733815b21f9e2c12c3367a84f2b06affa319f018e05d7436340659e6f"
+        },
+        {
+          "conditionId": "bao-d2",
+          "winner": 0,
+          "totalPlies": 55,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 287,
+            "after": -54,
+            "delta": -341,
+            "incoming": {
+              "moveKey": "capture:namua:0:2:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 6,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 28,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 35,
+              "before": 365,
+              "after": -290,
+              "delta": -655,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 8,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "99e2505c68b96e0d3a9a11d2e8e2cfc2e1cd027203d850582827b7f3e0a2f9eb"
+            },
+            {
+              "ply": 43,
+              "before": 320,
+              "after": -230,
+              "delta": -550,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "8dd5d8e2f595aefee3c1823f1790fa75875aeb1867c22551050605d418ae8b9a"
+            },
+            {
+              "ply": 27,
+              "before": 213,
+              "after": -314,
+              "delta": -527,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "dbeec104ef98721c148b10162827971a07a8edac628db7911577f33d2647ca71"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 212,
+              "after": -472,
+              "delta": -684,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 19,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "f2d6707d9205d12619986b420b3cf577e381bbc6764b64ed32725d68fb770813"
+            },
+            {
+              "ply": 24,
+              "before": 298,
+              "after": -367,
+              "delta": -665,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 13,
+                "relays": 7,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "453610df2d954f0e08cc229c1b034689df3ed993d460f0cf2fc62e7244e30a70"
+            },
+            {
+              "ply": 46,
+              "before": 291,
+              "after": -371,
+              "delta": -662,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 14,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "aba1538ef57a6e8e39ca630cf33d9d5501e11eed1d48fc8fab0fdb3c1189f1ab"
+            }
+          ],
+          "positions": 47,
+          "traceHash": "5b80906c58a34bc90199cd370e3a685f9fe97ac7488a104c7773fc7ef27fe066"
+        },
+        {
+          "conditionId": "bao-d3",
+          "winner": 0,
+          "totalPlies": 53,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 33,
+            "before": 353,
+            "after": -15,
+            "delta": -368,
+            "incoming": {
+              "moveKey": "takata:namua:0:6:left:::false",
+              "player": 0,
+              "captures": 0,
+              "capturedSeeds": 0,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "lift",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "e542dcc8f5ec618f3f6b6c0ebd78ba0220f5dfe033dc0dec1366402341198ee4"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 10,
+            "static": 12
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 33,
+              "before": 353,
+              "after": -15,
+              "delta": -368,
+              "incoming": {
+                "moveKey": "takata:namua:0:6:left:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "lift",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "e542dcc8f5ec618f3f6b6c0ebd78ba0220f5dfe033dc0dec1366402341198ee4"
+            },
+            {
+              "ply": 39,
+              "before": 212,
+              "after": -114,
+              "delta": -326,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 9,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "f65a3b48cec5f3e39372285d26afd81dbe44d094af8960bf93ccf4bf65d6597d"
+            },
+            {
+              "ply": 31,
+              "before": 311,
+              "after": 34,
+              "delta": -277,
+              "incoming": {
+                "moveKey": "takata:namua:0:1:right:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "lift",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "4a438d11d60bd3017bf38f6ee0679c41971feecb736f40f5e18f97cfccf16491"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 52,
+              "before": 526,
+              "after": 30,
+              "delta": -496,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 8,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "turn"
+                ]
+              },
+              "stateHash": "376ebf289d648dd671b09cd46bb995639fa03307d30036c3ba6af1c4caaee923"
+            },
+            {
+              "ply": 38,
+              "before": 77,
+              "after": -375,
+              "delta": -452,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right:use:false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 11,
+                "houseUsed": true,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e33c7ca58c92703d4c1c794c71255a82b0db47e641768cb1cfc309e823c4d24c"
+            },
+            {
+              "ply": 36,
+              "before": 340,
+              "after": -15,
+              "delta": -355,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "3597643af94973c294713dc536e786895d593a36e91564d1d350333d56bfcf89"
+            }
+          ],
+          "positions": 45,
+          "traceHash": "ee98cf6d35f134278678f47d832a16d8493a144217aa9bea1b02321877440592"
+        },
+        {
+          "conditionId": "bao-d4",
+          "winner": 1,
+          "totalPlies": 56,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 13,
+            "before": 304,
+            "after": -8,
+            "delta": -312,
+            "incoming": {
+              "moveKey": "capture:namua:0:3:right:left::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 1,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "f30928c1d439a29f92f33acf8bb1646414f8e46202c0a822497c7687c348eaa8"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": {
+            "ply": 43,
+            "before": 71,
+            "after": -760,
+            "delta": -831,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:right:left::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 9,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "29e44863703b4e1c0549c21216a243e2b4dd09073bcd1e3251b79755ed215059"
+          },
+          "permanentStaticReversal": {
+            "ply": 46,
+            "before": 71,
+            "after": -760,
+            "delta": -831,
+            "incoming": {
+              "moveKey": "capture:mtaji:0:5:left:::false",
+              "player": 1,
+              "captures": 5,
+              "capturedSeeds": 17,
+              "relays": 1,
+              "houseUsed": false,
+              "eventKinds": [
+                "lift",
+                "sow",
+                "capture",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "51fa9a14e2f30bbc65c06e31c553095705ad67c878bb3b1179c568f0e37507e4"
+          },
+          "signFlips": {
+            "search": 29,
+            "static": 21
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 53,
+              "before": -949,
+              "after": -999997,
+              "delta": -999048,
+              "incoming": {
+                "moveKey": "takata:mtaji:1:1:right:::false",
+                "player": 0,
+                "captures": 0,
+                "capturedSeeds": 0,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "839f3d6fa9828d8c2f9e6ec7818b3dfbb367d2b9b5fc3b39d386cb7f21b70a67"
+            },
+            {
+              "ply": 35,
+              "before": 300,
+              "after": -582,
+              "delta": -882,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 3,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "f9d7d91cf3a36fdb18a50270c4900580462043380c5a9dd88121ff73668c6ab2"
+            },
+            {
+              "ply": 43,
+              "before": 71,
+              "after": -760,
+              "delta": -831,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 9,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "29e44863703b4e1c0549c21216a243e2b4dd09073bcd1e3251b79755ed215059"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 56,
+              "before": -735,
+              "after": -1000000,
+              "delta": -999265,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:7:right:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "win"
+                ]
+              },
+              "stateHash": "600730d4a622f02a523ce942022d63050127ae6e33a6933b5c7afe0c41000c08"
+            },
+            {
+              "ply": 46,
+              "before": 71,
+              "after": -760,
+              "delta": -831,
+              "incoming": {
+                "moveKey": "capture:mtaji:0:5:left:::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 17,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "51fa9a14e2f30bbc65c06e31c553095705ad67c878bb3b1179c568f0e37507e4"
+            },
+            {
+              "ply": 40,
+              "before": 95,
+              "after": -499,
+              "delta": -594,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 13,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "250ceef94e34ea8959ffcabb965243d3ac0db207dc81f93860edf76374ce671a"
+            }
+          ],
+          "positions": 48,
+          "traceHash": "5b7b57c3446375352c54b1f5d44636813fff1030256bc466af2aa705edbe3136"
+        },
+        {
+          "conditionId": "legacy-d2",
+          "winner": 1,
+          "totalPlies": 22,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 287,
+            "after": -54,
+            "delta": -341,
+            "incoming": {
+              "moveKey": "capture:namua:0:2:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 6,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": {
+            "ply": 17,
+            "before": 125,
+            "after": -238,
+            "delta": -363,
+            "incoming": {
+              "moveKey": "capture:namua:0:1:right:left::false",
+              "player": 0,
+              "captures": 2,
+              "capturedSeeds": 2,
+              "relays": 3,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "bc57767679ea42853df0a16ef7d1c5e540f8692739a450abd6154617d3f48b0e"
+          },
+          "permanentStaticReversal": {
+            "ply": 22,
+            "before": 204,
+            "after": -1000000,
+            "delta": -1000204,
+            "incoming": {
+              "moveKey": "capture:namua:0:7:left:right:use:false",
+              "player": 1,
+              "captures": 5,
+              "capturedSeeds": 14,
+              "relays": 10,
+              "houseUsed": true,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "win"
+              ]
+            },
+            "stateHash": "24bf6aed0643446096748058643acd456827bc114788a5390187a8fc6f8649c9"
+          },
+          "signFlips": {
+            "search": 3,
+            "static": 3
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 19,
+              "before": -41,
+              "after": -999997,
+              "delta": -999956,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "86d81960a8ae6014ae37dba1a0c30be4b534e3e2f58b0cb6e92e0facb241ebe7"
+            },
+            {
+              "ply": 17,
+              "before": 125,
+              "after": -238,
+              "delta": -363,
+              "incoming": {
+                "moveKey": "capture:namua:0:1:right:left::false",
+                "player": 0,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 3,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "bc57767679ea42853df0a16ef7d1c5e540f8692739a450abd6154617d3f48b0e"
+            },
+            {
+              "ply": 15,
+              "before": 287,
+              "after": -54,
+              "delta": -341,
+              "incoming": {
+                "moveKey": "capture:namua:0:2:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 2,
+                "relays": 6,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 22,
+              "before": 204,
+              "after": -1000000,
+              "delta": -1000204,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right:use:false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 14,
+                "relays": 10,
+                "houseUsed": true,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "win"
+                ]
+              },
+              "stateHash": "24bf6aed0643446096748058643acd456827bc114788a5390187a8fc6f8649c9"
+            },
+            {
+              "ply": 20,
+              "before": 428,
+              "after": 44,
+              "delta": -384,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 1,
+                "captures": 2,
+                "capturedSeeds": 2,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "08475c84231fafeee5019fef980edcfa7c4ece4ef09a3392af0fd9e8b5fae15c"
+            },
+            {
+              "ply": 18,
+              "before": 351,
+              "after": 142,
+              "delta": -209,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 1,
+                "captures": 1,
+                "capturedSeeds": 1,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "14be124967bf1632feeccf1bb07831626b4e83e24bb51259c5ee616aa883716f"
+            }
+          ],
+          "positions": 14,
+          "traceHash": "e0148a6c578b106ba496fcd47530de6a36e6e5d8612db98b3e617bd4b27f70bb"
+        },
+        {
+          "conditionId": "bao-v2-d2",
+          "winner": 0,
+          "totalPlies": 55,
+          "firstReplyMoveKey": "capture:namua:0:5:left:right::false",
+          "initial": {
+            "search": 56,
+            "static": 192,
+            "northLegalMoves": 2
+          },
+          "searchReversal": {
+            "ply": 15,
+            "before": 287,
+            "after": -54,
+            "delta": -341,
+            "incoming": {
+              "moveKey": "capture:namua:0:2:left:right::false",
+              "player": 0,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 6,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "relay",
+                "turn"
+              ]
+            },
+            "stateHash": "e716743dc62a392bb6750e2fa63b9327534df161c1d90edf3964278240dfeebd"
+          },
+          "staticReversal": {
+            "ply": 10,
+            "before": 192,
+            "after": -6,
+            "delta": -198,
+            "incoming": {
+              "moveKey": "capture:namua:0:5:left:right::false",
+              "player": 1,
+              "captures": 1,
+              "capturedSeeds": 2,
+              "relays": 0,
+              "houseUsed": false,
+              "eventKinds": [
+                "reserve",
+                "capture",
+                "sow",
+                "turn"
+              ]
+            },
+            "stateHash": "60c3eeba90daf5ca6c5127fc04e833c0803d99ead2dc12538ffc1ebc9a3ebc4f"
+          },
+          "permanentSearchReversal": null,
+          "permanentStaticReversal": null,
+          "signFlips": {
+            "search": 28,
+            "static": 24
+          },
+          "largestSearchDrops": [
+            {
+              "ply": 35,
+              "before": 365,
+              "after": -290,
+              "delta": -655,
+              "incoming": {
+                "moveKey": "capture:namua:0:7:left:right::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 8,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "99e2505c68b96e0d3a9a11d2e8e2cfc2e1cd027203d850582827b7f3e0a2f9eb"
+            },
+            {
+              "ply": 43,
+              "before": 320,
+              "after": -230,
+              "delta": -550,
+              "incoming": {
+                "moveKey": "capture:namua:0:3:right:left::false",
+                "player": 0,
+                "captures": 3,
+                "capturedSeeds": 4,
+                "relays": 1,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "8dd5d8e2f595aefee3c1823f1790fa75875aeb1867c22551050605d418ae8b9a"
+            },
+            {
+              "ply": 27,
+              "before": 213,
+              "after": -314,
+              "delta": -527,
+              "incoming": {
+                "moveKey": "capture:namua:0:4:left:right::false",
+                "player": 0,
+                "captures": 1,
+                "capturedSeeds": 5,
+                "relays": 0,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "turn"
+                ]
+              },
+              "stateHash": "dbeec104ef98721c148b10162827971a07a8edac628db7911577f33d2647ca71"
+            }
+          ],
+          "largestStaticDrops": [
+            {
+              "ply": 38,
+              "before": 212,
+              "after": -472,
+              "delta": -684,
+              "incoming": {
+                "moveKey": "capture:namua:0:5:right:left::false",
+                "player": 1,
+                "captures": 5,
+                "capturedSeeds": 19,
+                "relays": 5,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "f2d6707d9205d12619986b420b3cf577e381bbc6764b64ed32725d68fb770813"
+            },
+            {
+              "ply": 24,
+              "before": 298,
+              "after": -367,
+              "delta": -665,
+              "incoming": {
+                "moveKey": "capture:namua:0:6:left:right::false",
+                "player": 1,
+                "captures": 4,
+                "capturedSeeds": 13,
+                "relays": 7,
+                "houseUsed": false,
+                "eventKinds": [
+                  "reserve",
+                  "capture",
+                  "sow",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "453610df2d954f0e08cc229c1b034689df3ed993d460f0cf2fc62e7244e30a70"
+            },
+            {
+              "ply": 46,
+              "before": 291,
+              "after": -371,
+              "delta": -662,
+              "incoming": {
+                "moveKey": "capture:mtaji:1:1:right:::false",
+                "player": 1,
+                "captures": 3,
+                "capturedSeeds": 14,
+                "relays": 2,
+                "houseUsed": false,
+                "eventKinds": [
+                  "lift",
+                  "sow",
+                  "capture",
+                  "relay",
+                  "turn"
+                ]
+              },
+              "stateHash": "aba1538ef57a6e8e39ca630cf33d9d5501e11eed1d48fc8fab0fdb3c1189f1ab"
+            }
+          ],
+          "positions": 47,
+          "traceHash": "5b80906c58a34bc90199cd370e3a685f9fe97ac7488a104c7773fc7ef27fe066"
+        }
+      ]
+    }
+  ],
+  "integrity": {
+    "games": 12,
+    "replayedPositions": 577,
+    "allFinalStatesMatch": true,
+    "summaryHash": "7651f88c94b60cc2fcaeceaeab84b9f474c945cffe3bacd8c5e906fcdf54a628"
+  }
+}

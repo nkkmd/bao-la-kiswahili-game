@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "studyId": "p003",
+  "nodeId": "p8-701bf2f6430d",
+  "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+  "depth": 8,
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-forced-depth-sweep",
+    "studies": [
+      {
+        "studyId": "p002",
+        "nodeId": "p8-c1f65bf10696",
+        "stateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+        "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+        "consensusMoveKey": "capture:namua:0:2:right:left::false",
+        "continuationVerificationHash": "e8cb32bc6c724ca39d6b6b2868b498cc3ab09e8d247136bcf29e086c0eb32097",
+        "reversalSummaryHash": "76d1e8eff74a7c669e1043d1db79be81fe15d965055298509af6939beeadf7e0"
+      },
+      {
+        "studyId": "p003",
+        "nodeId": "p8-701bf2f6430d",
+        "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+        "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+        "consensusMoveKey": "capture:namua:0:4:right:left::false",
+        "continuationVerificationHash": "7853f5b641f612356bdd6b9a68ea74175597ec8540d32ce000e39341d4307c8d",
+        "reversalSummaryHash": "7651f88c94b60cc2fcaeceaeab84b9f474c945cffe3bacd8c5e906fcdf54a628"
+      }
+    ],
+    "depths": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "timeLimitMs": 60000,
+    "searchConfig": {
+      "level": "hard",
+      "searchProfile": "phase2",
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1
+    },
+    "fixedRules": {
+      "scope": "P002 and P003 exact states, phase2 search, bao evaluation, depths 1 through 8",
+      "timeout": "60 seconds per root or fixed-child analysis; stop deeper depths for that position after a timeout",
+      "switch": "report the first depth recommending the pre-existing terminal-best move",
+      "confirmation": "if a switch occurs before depth 8, continue through at least the next depth within the fixed range",
+      "interpretation": "absence of a switch proves only that no switch was observed through the deepest completed depth"
+    },
+    "sourceCommit": "7823074425ee24fc4852c479497417ce74b159aa",
+    "node": "v24.6.0",
+    "sourceFileSha256": "9b2b47541ae4afdc118dee41ca89a8af9217c8899007c8aaf37ce1fb7971cc74"
+  },
+  "root": {
+    "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+    "rootScore": 255,
+    "completedDepth": 8,
+    "timedOut": false,
+    "nodes": 3295,
+    "evaluations": 1265,
+    "cutoffs": 809,
+    "cacheHits": 62,
+    "elapsedMs": 1841.063134
+  },
+  "candidates": [
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "stateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+      "southScore": 20,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "rootScore": -20,
+        "completedDepth": 7,
+        "timedOut": false,
+        "nodes": 13691,
+        "evaluations": 4930,
+        "cutoffs": 3377,
+        "cacheHits": 631,
+        "elapsedMs": 10436.182654
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "stateHash": "30aee5e97d2c5148a6abe358c5589eac29f081db3ce4825ccbe830834144ff7f",
+      "southScore": 35,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:3:right:left::false",
+        "rootScore": -35,
+        "completedDepth": 7,
+        "timedOut": false,
+        "nodes": 5667,
+        "evaluations": 2093,
+        "cutoffs": 1446,
+        "cacheHits": 143,
+        "elapsedMs": 4020.542405
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "stateHash": "185bdbe15e1b78ddc3881de2ad7467d33140b63594b40cd561852b8c01c32b34",
+      "southScore": 255,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:5:right:left::false",
+        "rootScore": -255,
+        "completedDepth": 7,
+        "timedOut": false,
+        "nodes": 1759,
+        "evaluations": 650,
+        "cutoffs": 398,
+        "cacheHits": 62,
+        "elapsedMs": 882.9245670000018
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "stateHash": "4c9ab5f96b428e1e4706bfbe6b34aa3e21236618ec5246ea6359db3570be4a4f",
+      "southScore": -11,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:5:left:right::false",
+        "rootScore": 11,
+        "completedDepth": 7,
+        "timedOut": false,
+        "nodes": 2542,
+        "evaluations": 1037,
+        "cutoffs": 638,
+        "cacheHits": 146,
+        "elapsedMs": 893.2748180000053
+      }
+    }
+  ],
+  "comparison": {
+    "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+    "consensusMoveKey": "capture:namua:0:4:right:left::false",
+    "recommendedIsTerminalBest": false,
+    "recommendedIsConsensus": true,
+    "terminalBestMinusConsensus": -220
+  },
+  "elapsedMs": 18074.814873
+}

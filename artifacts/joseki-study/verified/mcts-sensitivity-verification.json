@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-17T15:10:45.723Z",
+  "passed": true,
+  "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+  "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6",
+  "nodes": 24,
+  "strata": 6,
+  "results": 216,
+  "simulations": 18144,
+  "timeouts": 0,
+  "conditionCounts": {
+    "mcts-i012-s1": 24,
+    "mcts-i012-s2": 24,
+    "mcts-i012-s3": 24,
+    "mcts-i048-s1": 24,
+    "mcts-i048-s2": 24,
+    "mcts-i048-s3": 24,
+    "mcts-i192-s1": 24,
+    "mcts-i192-s2": 24,
+    "mcts-i192-s3": 24
+  },
+  "partialResults": 0,
+  "sourceHashesMatch": true,
+  "symmetryPassed": true,
+  "verificationHash": "f4532f85981284b35faa695bec9c88cebb41dca43e799bc465ddc0811c5b9c3d"
+}

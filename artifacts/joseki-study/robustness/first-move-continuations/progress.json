@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "startedAt": "2026-07-17T23:33:58.550Z",
+  "updatedAt": "2026-07-17T23:45:35.745Z",
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-all-first-move-continuation-selfplay",
+    "treeFile": "artifacts/joseki-study/corpus/tree.json",
+    "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+    "openingStateHashes": {
+      "p1-601242bbb060": "04543036ce1f0d23017dceb0c1cb807835ccd49f993ca39424515ce754e57a0d",
+      "p1-9d641a842f1b": "492c9c5fb13db33b64cd0ec47cce04e6ce5c8076b0a8f6d9f85ab52571884bcd",
+      "p1-f710cf3e10d4": "564b3103b57a8e101266a8a6af3b5d5f92b2148ab0354deb076f06f95f35dbb2",
+      "p1-b3e1279167e3": "d91ca15e04e1c4932183725b4502c8868376e6d9a7d29d84ef21f6449bac5250"
+    },
+    "conditionConfigs": {
+      "bao-d1": {
+        "conditionId": "bao-d1",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 1,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-d2": {
+        "conditionId": "bao-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-d3": {
+        "conditionId": "bao-d3",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 3,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-d4": {
+        "conditionId": "bao-d4",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 4,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "legacy-d2": {
+        "conditionId": "legacy-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "legacy",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-v2-d2": {
+        "conditionId": "bao-v2-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao-v2",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      }
+    },
+    "conditionHashes": {
+      "bao-d1": "90ccda91bfcc43c57f140ae9f16d0b58890311067f20a7faf732e705e4f0b25b",
+      "bao-d2": "cc3050b28b9dc28380e325e4104c025f7e7e5a078d3a1eacdf90b08aa5b5b2b7",
+      "bao-d3": "16a7fdb42b9bc88d48f55800aad56fab18149d0ebed46594a70e58c2e54f60c3",
+      "bao-d4": "aafde6447abe38b6a528128fbf487cf101d025e9cee3ec154fc0ab9786908d8e",
+      "legacy-d2": "176e5bfb93d73dedcd78054f54f16b9068f9a1c5a8881633fb4ac2dfa9867720",
+      "bao-v2-d2": "61c31c8ac2a7ae6735a4cb8dc008d0037f464e6ec8d48440a6daefe933c74659"
+    },
+    "maxTotalPlies": 120,
+    "fixedCriteria": {
+      "relativeSupport": "candidate South-win count is tied for or above every alternative",
+      "absoluteSupport": "candidate wins at least 4 of 6 conditions"
+    },
+    "candidateMoveKey": "takata:namua:0:5:left:::false",
+    "sourceCommit": "2a4e3fc3b25ac246baaba67fc0d7c87c412fc44f",
+    "node": "v24.6.0",
+    "sourceFileSha256": "648a96f4c959e0b28bc2b1d18f16b1b893f3e8a14eb28617a1d0c12a24d97d61"
+  },
+  "expected": {
+    "openings": 4,
+    "conditions": 6,
+    "games": 24
+  },
+  "completedOpenings": 4,
+  "completedGames": 24,
+  "partialGames": 0,
+  "recordedGames": 24,
+  "elapsedSeconds": 697.195,
+  "etaSeconds": 0,
+  "current": null
+}

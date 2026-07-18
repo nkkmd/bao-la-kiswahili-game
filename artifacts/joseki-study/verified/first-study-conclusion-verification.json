@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T05:48:17.390Z",
+  "passed": true,
+  "sourceFileSha256": "0d6efc9b73ae9699a36f49416af00d283765ea5e3aa136075de8f60328bc5084",
+  "prerequisiteVerifications": 16,
+  "prerequisiteFailures": 0,
+  "successCriteriaMet": 8,
+  "successCriteriaExpected": 8,
+  "promotionEligibleCandidates": 0,
+  "verificationInputHashes": {
+    "phase1": "b49cc862aaff9be410113edc67125e810b35242f4bacac7759f7f632fd83dc9c",
+    "phase3": "d312953c573eb69c126c0ab4a946eccc0100e515a3e49b9209474123ebacb0ba",
+    "phase4": "24b391e32ce8004a4548b60de327d771d61223fcc7db1252c0da8f134730e57f",
+    "mcts": "1d2c07a5a6102ce1c5ab63be8e7737fa19663684323a0890a67e3b937e960577",
+    "mctsSensitivity": "f911427b85fc45ec88264a976b3c5901e9d6d3def287431a57e4a3fe3d2315c8",
+    "continuations": "717397325486d23d695f3663c9b60682a41f99755ca1960b6b2f51b08890f0f8",
+    "firstMoves": "c22c2d510e8a7b06e40320cbc480b268b166992ba5642f6d83a4c67106ed0876",
+    "j001Replies": "ae1a9feec3235c50e7852ee374d203c7eccd6591534ecfcdbf8a7d759c5c107b",
+    "allReplies": "ca6924dfbd84e84df59e559c7faed981626abe4c3ff2e57b657734193e36b518",
+    "p001": "1ab295aaf6f59b4c85546991b93f2fe726fcfd132d2be20cc7f9ecef10b1bcd7",
+    "p002": "2d69f9cb757980376430a30f59b97f5b287c514c1277f699c7d0c19528b3756c",
+    "p003": "1f47d2b11dbc7bf3449f6d39f2a45cb997b975d09fa05a9dbf986597c86676d9",
+    "depthSweep": "1388b69eb016be18f0a7380921661dd374e70045da48559f93b46481e6acf72d",
+    "p002HumanReplay": "8374d20a7f305c372a34adce7385d0270e4602bfe72179636f2bbbba6eb1fc9c",
+    "p003Bounded": "ec7bc16c75f30075a1603b3bf4f96c63a97f8488bbecc0e38182b093ebb2d25b",
+    "evidenceAxes": "d95d2b9b9ec5e20077e823b994722603c595512312f90804fdc7263f6243f717"
+  },
+  "conclusionHash": "a1947ef2af2c32b1115154bacfcf4497ee8c2aaf243abd0f63a6a8c2ffc1311e",
+  "verificationHash": "3e02bedcac294666947d971342834339769cee3bf26e8d812698205ebd4595d9"
+}

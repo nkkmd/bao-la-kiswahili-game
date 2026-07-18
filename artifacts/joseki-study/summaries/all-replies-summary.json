@@ -1,0 +1,827 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T00:24:52.088Z",
+  "status": "no-response-robust-candidate",
+  "scope": "all 14 legal North reply states after all four legal South initial moves under six fixed AI conditions",
+  "caveat": "Deterministic engine screening; not proof of optimal play or a human win-rate estimate.",
+  "fixedCriteria": {
+    "ranking": "descending worst-reply South wins, then pooled South wins, then Phase 1 rank",
+    "perReplySouthWinsMinimum": 3,
+    "pooledSouthWinRateMinimum": 0.5,
+    "interpretation": "reply-robust screening, not proof of optimal play or human win rate"
+  },
+  "rankings": [
+    {
+      "openingNodeId": "p1-b3e1279167e3",
+      "openingMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "right"
+      },
+      "openingMoveKey": "takata:namua:0:6:right:::false",
+      "phase1Rank": 4,
+      "replies": 4,
+      "games": 24,
+      "southWins": 14,
+      "northWins": 10,
+      "draws": 0,
+      "southWinRate": 0.5833333333333334,
+      "worstReplySouthWins": 2,
+      "worstReplies": [
+        "takata:namua:0:5:right:::false"
+      ],
+      "checks": {
+        "perReplySouthWins": false,
+        "pooledSouthWinRate": true
+      },
+      "status": "response-sensitive",
+      "replyResults": [
+        {
+          "entryId": "p1-b3e1279167e3--reply-02-e444b2fcdbdb",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          },
+          "replyMoveKey": "takata:namua:0:5:right:::false",
+          "stateHash": "10316a873e4d70c19cf34afc0f3736c4971e772772dae4aa2caa5f97df4d67a5",
+          "games": 6,
+          "southWins": 2,
+          "northWins": 4,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 52,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 50,
+              "reason": "no-move"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 57,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 50,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 0,
+              "totalPlies": 71,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 50,
+              "reason": "no-move"
+            }
+          }
+        },
+        {
+          "entryId": "p1-b3e1279167e3--reply-01-7fbb95947798",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          },
+          "replyMoveKey": "takata:namua:0:5:left:::false",
+          "stateHash": "9b2939bee1776b25b14d1b36f757ae29b7d37698e51b4abe983328f1df3e21dc",
+          "games": 6,
+          "southWins": 3,
+          "northWins": 3,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 70,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 0,
+              "totalPlies": 59,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 77,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 60,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 59,
+              "reason": "no-move"
+            }
+          }
+        },
+        {
+          "entryId": "p1-b3e1279167e3--reply-04-77fac4332fa5",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "right"
+          },
+          "replyMoveKey": "takata:namua:0:6:right:::false",
+          "stateHash": "f2274c5f0a5c219f755fe1ab4bcf1de3e3388acaec23337db0bf1f7af1a265e9",
+          "games": 6,
+          "southWins": 4,
+          "northWins": 2,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 59,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 0,
+              "totalPlies": 55,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 1,
+              "totalPlies": 58,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 52,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 0,
+              "totalPlies": 65,
+              "reason": "no-move"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 57,
+              "reason": "front-empty"
+            }
+          }
+        },
+        {
+          "entryId": "p1-b3e1279167e3--reply-03-3eab7e307f7b",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          },
+          "replyMoveKey": "takata:namua:0:6:left:::false",
+          "stateHash": "1a42d790908c86a7c48e0cbc251b4d2b9bf7b93061cce465393e0f7dc9effa5d",
+          "games": 6,
+          "southWins": 5,
+          "northWins": 1,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 64,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 0,
+              "totalPlies": 55,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 57,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 0,
+              "totalPlies": 49,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 0,
+              "totalPlies": 49,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 65,
+              "reason": "front-empty"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "openingNodeId": "p1-601242bbb060",
+      "openingMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "openingMoveKey": "takata:namua:0:5:left:::false",
+      "phase1Rank": 1,
+      "replies": 4,
+      "games": 24,
+      "southWins": 11,
+      "northWins": 13,
+      "draws": 0,
+      "southWinRate": 0.4583333333333333,
+      "worstReplySouthWins": 1,
+      "worstReplies": [
+        "capture:namua:0:5:left:right::false"
+      ],
+      "checks": {
+        "perReplySouthWins": false,
+        "pooledSouthWinRate": false
+      },
+      "status": "response-sensitive",
+      "replyResults": [
+        {
+          "entryId": "p1-601242bbb060--reply-04-368995e9638b",
+          "reply": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left",
+            "side": "right"
+          },
+          "replyMoveKey": "capture:namua:0:5:left:right::false",
+          "stateHash": "090b05522bc7123ee2e70c031aea9dcbf2e0e7286f2e3bc8910011e6447da056",
+          "games": 6,
+          "southWins": 1,
+          "northWins": 5,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 74,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 56,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 103,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 62,
+              "reason": "no-move"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 46,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 56,
+              "reason": "front-empty"
+            }
+          }
+        },
+        {
+          "entryId": "p1-601242bbb060--reply-02-ea7e4e76ccf8",
+          "reply": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "left",
+            "side": "right"
+          },
+          "replyMoveKey": "capture:namua:0:4:left:right::false",
+          "stateHash": "8aa04c172a163f5d5a895752ce77745ca00791dfe229e85c871e5368a7048b97",
+          "games": 6,
+          "southWins": 3,
+          "northWins": 3,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 69,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 48,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 1,
+              "totalPlies": 62,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 0,
+              "totalPlies": 61,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 0,
+              "totalPlies": 57,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 48,
+              "reason": "front-empty"
+            }
+          }
+        },
+        {
+          "entryId": "p1-601242bbb060--reply-01-d023129b2166",
+          "reply": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          },
+          "replyMoveKey": "capture:namua:0:4:right:left::false",
+          "stateHash": "b8c72751d848a782173a777a0d8410389059819ca1888abf0d3a292b1cd24b95",
+          "games": 6,
+          "southWins": 3,
+          "northWins": 3,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 98,
+              "reason": "no-move"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 66,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 61,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 0,
+              "totalPlies": 73,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 48,
+              "reason": "no-move"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 73,
+              "reason": "front-empty"
+            }
+          }
+        },
+        {
+          "entryId": "p1-601242bbb060--reply-03-74bd0fb8663c",
+          "reply": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right",
+            "side": "left"
+          },
+          "replyMoveKey": "capture:namua:0:5:right:left::false",
+          "stateHash": "163fcfa046e3b7923716bbb4eebd076c5a376cf792889eca2e066dd334459676",
+          "games": 6,
+          "southWins": 4,
+          "northWins": 2,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 48,
+              "reason": "no-move"
+            },
+            "bao-d2": {
+              "winner": 0,
+              "totalPlies": 49,
+              "reason": "no-move"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 67,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 58,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 0,
+              "totalPlies": 49,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 49,
+              "reason": "no-move"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "openingNodeId": "p1-9d641a842f1b",
+      "openingMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 6,
+        "direction": "left"
+      },
+      "openingMoveKey": "takata:namua:0:6:left:::false",
+      "phase1Rank": 2,
+      "replies": 2,
+      "games": 12,
+      "southWins": 3,
+      "northWins": 9,
+      "draws": 0,
+      "southWinRate": 0.25,
+      "worstReplySouthWins": 1,
+      "worstReplies": [
+        "capture:namua:0:4:right:left::false"
+      ],
+      "checks": {
+        "perReplySouthWins": false,
+        "pooledSouthWinRate": false
+      },
+      "status": "response-sensitive",
+      "replyResults": [
+        {
+          "entryId": "p1-9d641a842f1b--reply-01-d023129b2166",
+          "reply": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          },
+          "replyMoveKey": "capture:namua:0:4:right:left::false",
+          "stateHash": "8b9bf8782149d347816a11a16d93024cd8ac55090eeb7e56519be56eead362b1",
+          "games": 6,
+          "southWins": 1,
+          "northWins": 5,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 61,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 64,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 1,
+              "totalPlies": 66,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 52,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 46,
+              "reason": "no-move"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 68,
+              "reason": "front-empty"
+            }
+          }
+        },
+        {
+          "entryId": "p1-9d641a842f1b--reply-02-ea7e4e76ccf8",
+          "reply": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "left",
+            "side": "right"
+          },
+          "replyMoveKey": "capture:namua:0:4:left:right::false",
+          "stateHash": "0805d75fb484311c325224dd0ec71c23352f516903558842ccf3143791239a32",
+          "games": 6,
+          "southWins": 2,
+          "northWins": 4,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 75,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 52,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "no-move"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 60,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 50,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 55,
+              "reason": "front-empty"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "openingNodeId": "p1-f710cf3e10d4",
+      "openingMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "openingMoveKey": "takata:namua:0:5:right:::false",
+      "phase1Rank": 3,
+      "replies": 4,
+      "games": 24,
+      "southWins": 7,
+      "northWins": 17,
+      "draws": 0,
+      "southWinRate": 0.2916666666666667,
+      "worstReplySouthWins": 0,
+      "worstReplies": [
+        "takata:namua:0:5:left:::false"
+      ],
+      "checks": {
+        "perReplySouthWins": false,
+        "pooledSouthWinRate": false
+      },
+      "status": "response-sensitive",
+      "replyResults": [
+        {
+          "entryId": "p1-f710cf3e10d4--reply-01-7fbb95947798",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          },
+          "replyMoveKey": "takata:namua:0:5:left:::false",
+          "stateHash": "c0d54870c84b4f2690321d6b1a0f380d37297ced08a8ff77b9c5d75988e1d336",
+          "games": 6,
+          "southWins": 0,
+          "northWins": 6,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 1,
+              "totalPlies": 66,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 48,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 1,
+              "totalPlies": 50,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 60,
+              "reason": "no-move"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 46,
+              "reason": "no-move"
+            }
+          }
+        },
+        {
+          "entryId": "p1-f710cf3e10d4--reply-04-77fac4332fa5",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "right"
+          },
+          "replyMoveKey": "takata:namua:0:6:right:::false",
+          "stateHash": "a5d596a702e61af992c5cb153e65329f670ee41b83ee5708f971b8eca3672eeb",
+          "games": 6,
+          "southWins": 1,
+          "northWins": 5,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 67,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 58,
+              "reason": "no-move"
+            },
+            "bao-d3": {
+              "winner": 1,
+              "totalPlies": 56,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 68,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 52,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 58,
+              "reason": "no-move"
+            }
+          }
+        },
+        {
+          "entryId": "p1-f710cf3e10d4--reply-03-3eab7e307f7b",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          },
+          "replyMoveKey": "takata:namua:0:6:left:::false",
+          "stateHash": "022f2d0e6d2d5dee564fe904df6bd59e64ea78421c73c967d50d7a44750fc580",
+          "games": 6,
+          "southWins": 2,
+          "northWins": 4,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 69,
+              "reason": "front-empty"
+            },
+            "bao-d2": {
+              "winner": 1,
+              "totalPlies": 84,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 73,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 1,
+              "totalPlies": 62,
+              "reason": "front-empty"
+            }
+          }
+        },
+        {
+          "entryId": "p1-f710cf3e10d4--reply-02-e444b2fcdbdb",
+          "reply": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          },
+          "replyMoveKey": "takata:namua:0:5:right:::false",
+          "stateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+          "games": 6,
+          "southWins": 4,
+          "northWins": 2,
+          "draws": 0,
+          "outcomes": {
+            "bao-d1": {
+              "winner": 0,
+              "totalPlies": 67,
+              "reason": "no-move"
+            },
+            "bao-d2": {
+              "winner": 0,
+              "totalPlies": 65,
+              "reason": "front-empty"
+            },
+            "bao-d3": {
+              "winner": 0,
+              "totalPlies": 53,
+              "reason": "front-empty"
+            },
+            "bao-d4": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "front-empty"
+            },
+            "legacy-d2": {
+              "winner": 1,
+              "totalPlies": 54,
+              "reason": "front-empty"
+            },
+            "bao-v2-d2": {
+              "winner": 0,
+              "totalPlies": 65,
+              "reason": "front-empty"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T00:24:52.070Z",
+    "passed": true,
+    "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+    "replyStates": 14,
+    "games": 84,
+    "newGames": 60,
+    "reusedGames": 24,
+    "terminalGames": 84,
+    "replayedMoves": 4931,
+    "timeouts": 0,
+    "partialResults": 0,
+    "sourceHashesMatch": true,
+    "replayHashesMatch": true,
+    "reusedJ001VerificationHash": "ac7a963a3dc95b98f2cab301beaccee7594c693334ada49d28619be68ae5326f",
+    "verificationHash": "ab72da9337d3bf255522772931af9c057819127cc0b94d32a9cec483be0160f0"
+  }
+}

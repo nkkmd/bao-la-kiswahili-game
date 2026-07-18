@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-17T23:45:36.614Z",
+  "passed": true,
+  "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+  "openings": 4,
+  "games": 24,
+  "replayedMoves": 1399,
+  "timeouts": 0,
+  "conditionCounts": {
+    "bao-d1": 4,
+    "bao-d2": 4,
+    "bao-d3": 4,
+    "bao-d4": 4,
+    "legacy-d2": 4,
+    "bao-v2-d2": 4
+  },
+  "partialResults": 0,
+  "sourceHashesMatch": true,
+  "replayHashesMatch": true,
+  "verificationHash": "7cb5632e7afd4afb759d3e0f3cd1fe9ad4bde5457daae6e3cc022d1c675a2173"
+}

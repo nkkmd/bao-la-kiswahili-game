@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T00:37:26.550Z",
+  "status": "no-conditional-candidate",
+  "scope": "all legal South third moves after South index 6/right and North index 5/right under six fixed AI conditions",
+  "caveat": "A candidate remains only for this exact two-ply state and requires all legal North fourth-reply testing.",
+  "fixedCriteria": {
+    "relativeSupport": "South win count is tied for or above every legal third move",
+    "absoluteSupport": "South wins at least 4 of 6 conditions",
+    "interpretation": "conditional third-move screening; promotion requires all legal North fourth replies"
+  },
+  "position": {
+    "openingMoveKey": "takata:namua:0:6:right:::false",
+    "northReplyKey": "takata:namua:0:5:right:::false",
+    "startStateHash": "10316a873e4d70c19cf34afc0f3736c4971e772772dae4aa2caa5f97df4d67a5",
+    "features": {
+      "player": 0,
+      "phase": "namua",
+      "turn": 3,
+      "reserve": [
+        21,
+        21
+      ],
+      "houseOwned": [
+        true,
+        true
+      ],
+      "nyumbaSeeds": [
+        6,
+        6
+      ],
+      "legalMoves": [
+        4,
+        4
+      ],
+      "captureMoves": [
+        0,
+        0
+      ],
+      "forcedCapture": [
+        false,
+        false
+      ],
+      "boardSeeds": [
+        11,
+        11
+      ],
+      "frontSeeds": [
+        9,
+        10
+      ],
+      "backSeeds": [
+        2,
+        1
+      ]
+    },
+    "southStaticBaoScore": -3
+  },
+  "naturalRecommendations": {
+    "bao-d1": "takata:namua:0:5:right:::false",
+    "bao-d2": "takata:namua:0:5:left:::false",
+    "bao-d3": "takata:namua:0:5:left:::false",
+    "bao-d4": "takata:namua:0:5:left:::false",
+    "legacy-d2": "takata:namua:0:5:left:::false",
+    "bao-v2-d2": "takata:namua:0:5:left:::false"
+  },
+  "rankings": [
+    {
+      "candidateId": "third-04-34ac8e8a678e",
+      "thirdMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 7,
+        "direction": "right"
+      },
+      "thirdMoveKey": "takata:namua:0:7:right:::false",
+      "stateHash": "3555c8c8140c33bc2ca96fc12bdc6f89a0994d8f3c820546638e11c29296d47f",
+      "games": 6,
+      "southWins": 3,
+      "northWins": 3,
+      "draws": 0,
+      "naturalRecommendationCount": 0,
+      "outcomes": {
+        "bao-d1": {
+          "winner": 1,
+          "totalPlies": 68,
+          "reason": "no-move"
+        },
+        "bao-d2": {
+          "winner": 0,
+          "totalPlies": 65,
+          "reason": "front-empty"
+        },
+        "bao-d3": {
+          "winner": 0,
+          "totalPlies": 71,
+          "reason": "no-move"
+        },
+        "bao-d4": {
+          "winner": 1,
+          "totalPlies": 58,
+          "reason": "no-move"
+        },
+        "legacy-d2": {
+          "winner": 1,
+          "totalPlies": 60,
+          "reason": "front-empty"
+        },
+        "bao-v2-d2": {
+          "winner": 0,
+          "totalPlies": 65,
+          "reason": "front-empty"
+        }
+      },
+      "checks": {
+        "relativeSupport": true,
+        "absoluteSupport": false
+      },
+      "status": "screened-out"
+    },
+    {
+      "candidateId": "third-01-7fbb95947798",
+      "thirdMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "thirdMoveKey": "takata:namua:0:5:left:::false",
+      "stateHash": "fde3d6063afe6e7aa76c033eca3eff5d1e455938c7b4d88f2dae47fb3344d0ca",
+      "games": 6,
+      "southWins": 2,
+      "northWins": 4,
+      "draws": 0,
+      "naturalRecommendationCount": 5,
+      "outcomes": {
+        "bao-d1": {
+          "winner": 1,
+          "totalPlies": 60,
+          "reason": "no-move"
+        },
+        "bao-d2": {
+          "winner": 1,
+          "totalPlies": 50,
+          "reason": "no-move"
+        },
+        "bao-d3": {
+          "winner": 0,
+          "totalPlies": 57,
+          "reason": "front-empty"
+        },
+        "bao-d4": {
+          "winner": 1,
+          "totalPlies": 50,
+          "reason": "front-empty"
+        },
+        "legacy-d2": {
+          "winner": 0,
+          "totalPlies": 71,
+          "reason": "front-empty"
+        },
+        "bao-v2-d2": {
+          "winner": 1,
+          "totalPlies": 50,
+          "reason": "no-move"
+        }
+      },
+      "checks": {
+        "relativeSupport": false,
+        "absoluteSupport": false
+      },
+      "status": "screened-out"
+    },
+    {
+      "candidateId": "third-02-e444b2fcdbdb",
+      "thirdMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right"
+      },
+      "thirdMoveKey": "takata:namua:0:5:right:::false",
+      "stateHash": "3276a10d97da21a5709a130b6ee8b01fff9687f4ce5ffec21d6033185c66c082",
+      "games": 6,
+      "southWins": 1,
+      "northWins": 5,
+      "draws": 0,
+      "naturalRecommendationCount": 1,
+      "outcomes": {
+        "bao-d1": {
+          "winner": 1,
+          "totalPlies": 52,
+          "reason": "front-empty"
+        },
+        "bao-d2": {
+          "winner": 1,
+          "totalPlies": 56,
+          "reason": "front-empty"
+        },
+        "bao-d3": {
+          "winner": 0,
+          "totalPlies": 71,
+          "reason": "front-empty"
+        },
+        "bao-d4": {
+          "winner": 1,
+          "totalPlies": 52,
+          "reason": "no-move"
+        },
+        "legacy-d2": {
+          "winner": 1,
+          "totalPlies": 58,
+          "reason": "front-empty"
+        },
+        "bao-v2-d2": {
+          "winner": 1,
+          "totalPlies": 56,
+          "reason": "front-empty"
+        }
+      },
+      "checks": {
+        "relativeSupport": false,
+        "absoluteSupport": false
+      },
+      "status": "screened-out"
+    },
+    {
+      "candidateId": "third-03-7583059ed273",
+      "thirdMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 7,
+        "direction": "left"
+      },
+      "thirdMoveKey": "takata:namua:0:7:left:::false",
+      "stateHash": "313d500b647810af1feaadfddec1e0590075036b1256251dbd40367ce359c7a9",
+      "games": 6,
+      "southWins": 1,
+      "northWins": 5,
+      "draws": 0,
+      "naturalRecommendationCount": 0,
+      "outcomes": {
+        "bao-d1": {
+          "winner": 1,
+          "totalPlies": 56,
+          "reason": "front-empty"
+        },
+        "bao-d2": {
+          "winner": 1,
+          "totalPlies": 16,
+          "reason": "front-empty"
+        },
+        "bao-d3": {
+          "winner": 0,
+          "totalPlies": 59,
+          "reason": "no-move"
+        },
+        "bao-d4": {
+          "winner": 1,
+          "totalPlies": 50,
+          "reason": "front-empty"
+        },
+        "legacy-d2": {
+          "winner": 1,
+          "totalPlies": 50,
+          "reason": "front-empty"
+        },
+        "bao-v2-d2": {
+          "winner": 1,
+          "totalPlies": 16,
+          "reason": "front-empty"
+        }
+      },
+      "checks": {
+        "relativeSupport": false,
+        "absoluteSupport": false
+      },
+      "status": "screened-out"
+    }
+  ],
+  "candidates": [],
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T00:37:26.544Z",
+    "passed": true,
+    "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+    "startStateHash": "10316a873e4d70c19cf34afc0f3736c4971e772772dae4aa2caa5f97df4d67a5",
+    "candidates": 4,
+    "games": 24,
+    "terminalGames": 24,
+    "replayedMoves": 1269,
+    "timeouts": 0,
+    "partialResults": 0,
+    "sourceHashesMatch": true,
+    "replayHashesMatch": true,
+    "allRepliesVerificationHash": "ab72da9337d3bf255522772931af9c057819127cc0b94d32a9cec483be0160f0",
+    "verificationHash": "7ce6ab2ddd1f7b6cd005fc0ed5143175983a951a169d440b56ecc3338958c341"
+  }
+}

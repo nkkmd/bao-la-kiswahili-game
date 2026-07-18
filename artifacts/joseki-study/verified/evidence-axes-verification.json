@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T05:32:29.457Z",
+  "passed": true,
+  "sourceFileSha256": "33f0e3f2b16e87759580f320a0007247218c667c50727b60931edd30209355e5",
+  "inputHashes": {
+    "p002Study": "12c01b6f4ece02891a18d9a54f49a24f0d7cffd41302a5aa941ed5fea8eaa52e",
+    "p002Deep": "dd007b4e782ce092101fc857929833e49221e0c3c6cc4c0c7b8890c72d121acb",
+    "p002Bounded": "9e0c992ed940a0440751a5fb99b8bc83bc9cb95969eef7f6500fbad956aaae99",
+    "p003Study": "88d33c42bd108b060809ca9719e68e8a65ba04518b4494125bdd73b14bfd0554",
+    "p003Deep": "d9d2544d6bf433f90a82fc1070eab2a404972b7db27f71d9864573d0d57b3461",
+    "p003Bounded": "87c5acb73b3973f95989fcfceb760c8e21aac422180fa11324347aef14f378fa"
+  },
+  "studies": 2,
+  "candidates": 6,
+  "promotionEligibleRows": 0,
+  "fixedSelfPlayDeepRankDisagreements": 4,
+  "verificationHash": "02590595d67b54b6e8d468d1a0e865af93432d89bfe51e85e95d5d8269d6fd39"
+}

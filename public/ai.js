@@ -25,6 +25,7 @@
       evaluationCachePeak: 0,
       evaluationCacheEvictions: 0,
       completedDepth: 0,
+      rootScore: null,
       timedOut: false,
       earlyStopped: false,
       stableIterations: 0,
@@ -801,6 +802,13 @@
       return b.visits - a.visits || score(b) - score(a);
     })[0];
     if (completed?.move) bestMove = completed.move;
+    stats.mctsRoot = root.children.map((child) => ({
+      moveKey: moveKey(child.move),
+      visits: child.visits,
+      averageValue: child.visits ? child.value / child.visits : null,
+    })).sort((a, b) => b.visits - a.visits
+      || (b.averageValue ?? -Infinity) - (a.averageValue ?? -Infinity)
+      || a.moveKey.localeCompare(b.moveKey));
     stats.completedDepth = 0;
     return bestMove;
   }
@@ -885,6 +893,7 @@
             score = enhancedSearch(state, depth, -Infinity, Infinity, player, context, 0);
           }
           previousScore = score;
+          stats.rootScore = score;
           const completed = context.table.get(transpositionKey(
             state, 0, context.normalizeTtMateScores,
           ));
@@ -927,6 +936,7 @@
           if (score > iterationScore) { iterationScore = score; iterationBest = choice.move; }
         }
         bestMove = iterationBest;
+        stats.rootScore = iterationScore;
         stats.completedDepth = depth;
       } catch (error) {
         if (error.message !== "timeout") throw error;

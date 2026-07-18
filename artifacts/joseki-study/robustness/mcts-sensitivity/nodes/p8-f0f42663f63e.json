@@ -1,0 +1,1069 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "nodeId": "p8-f0f42663f63e",
+  "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-mcts-iteration-sensitivity",
+    "treeFile": "artifacts/joseki-study/corpus/candidate-tree-8ply.json",
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "sampleFile": "artifacts/joseki-study/corpus/mcts-sensitivity-sample.json",
+    "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6",
+    "conditionIds": [
+      "mcts-i012-s1",
+      "mcts-i012-s2",
+      "mcts-i012-s3",
+      "mcts-i048-s1",
+      "mcts-i048-s2",
+      "mcts-i048-s3",
+      "mcts-i192-s1",
+      "mcts-i192-s2",
+      "mcts-i192-s3"
+    ],
+    "conditionHashes": {
+      "mcts-i012-s1": "363be59caa83d681578254fca88ae3dd1c132952c698b40df24bd4df067e2822",
+      "mcts-i012-s2": "8d1bb861b8a4fb9dea1b39f3bb944a6beea4aa69347a1c1f5618ae4cd830b636",
+      "mcts-i012-s3": "3fa6609bdee45861a0e5152ea4f7d5f7e00e19b3951ce8499342f19ad9b0d67e",
+      "mcts-i048-s1": "976e88752057a37801fb981cb4d773814647cd1516d2adaa7ecc7ecf39f714d9",
+      "mcts-i048-s2": "8bab9c56a0c4075ae0e8088d7baa2e27e1a98fffd2fd833dd078ccb031f76d04",
+      "mcts-i048-s3": "0f73c6a3b7a88bfb2a5c06aa96cb2871d2bbe10e46ddcc390bc5c666359e1cef",
+      "mcts-i192-s1": "bccde2ae73a581e288858708cf955b9d679e2e3afca0bee81f194cd45d4ee993",
+      "mcts-i192-s2": "086f14dbbe5235b10f7cef7333ed739ae881cd454103ffdf1d39eb881b93f390",
+      "mcts-i192-s3": "f60c29b565abf9ed7a1965330f104be9f8a5981e38f9d34b91fc891590f5011f"
+    },
+    "iterations": [
+      12,
+      48,
+      192
+    ],
+    "seedIndices": [
+      1,
+      2,
+      3
+    ],
+    "fixedConfig": {
+      "level": "hard",
+      "searchProfile": "mcts",
+      "evaluationProfile": "bao",
+      "timeLimitMs": "Infinity",
+      "mctsPlayoutTurns": 16,
+      "mctsExploration": 1.4142135623730951,
+      "mctsPolicy": "evaluation",
+      "mctsRoot": "visits",
+      "mctsReward": "evaluation",
+      "mctsPrior": "none",
+      "mctsPriorWeight": 1,
+      "mctsCandidateLimit": 0,
+      "mctsCandidateSource": "all",
+      "mctsCandidateDepth": 1
+    },
+    "fixedThresholds": {
+      "highIterationUnanimousConsensusMinimum": 0.5,
+      "unanimousConsensusImprovementMinimum": 0.2,
+      "maximumTimeouts": 0
+    },
+    "sourceCommit": "a32409f78f34870cc66373286f61081a4c8cbd2f",
+    "node": "v24.6.0",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/experiments/lib/joseki-common.js": "d56b0aa8af67564247852fd7eabf36d3471dd6f1f5e1d6f9a34365ef59d6537c",
+      "tools/experiments/generate-joseki-tree.js": "14fa0267c1b01e0f35b5415a349c657e9b4247a3c6dd4005432884d15ba1f8a8",
+      "tools/experiments/evaluate-joseki-nodes.js": "3a61cd12dcd4136d14d1a3c7ba25398b1b4418e0cc35ab7183c2b44d51195d23",
+      "tools/experiments/analyze-joseki-results.js": "4775e8d3f4adbf2d52da4499ae8dd7d7f0763b86a0f0b640d100f59c83839ad0",
+      "tools/experiments/verify-joseki-artifacts.js": "3488c28fdddd9b7e86d18c1749edaf45e71b695a7eaf812b4bda74ac985f4936",
+      "tools/experiments/generate-joseki-mcts-sample.js": "f9722db018139bc0ef0b165e583ebb502c9166c246d212238acdc06b5e364f66",
+      "tools/experiments/run-joseki-mcts-sensitivity.js": "84bdeecbc3bfc9fdffaa2b82fed1b6fdcbe01975c8d44b5dd0ecacbca2a5824b",
+      "tools/experiments/verify-joseki-mcts-sensitivity.js": "43e60aba2152b68dd202b66019ffe42298752145e30b65f16077a8fa948cd4dc",
+      "tools/experiments/analyze-joseki-mcts-sensitivity.js": "e31b0df2fd8907b383ebc877e01be370f69f7c3bda8fdba05f556ce082b3e321"
+    }
+  },
+  "results": [
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i012-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i012-s1",
+        "mctsIterations": 12,
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "363be59caa83d681578254fca88ae3dd1c132952c698b40df24bd4df067e2822",
+      "iterations": 12,
+      "seedIndex": 1,
+      "seed": 3283321223,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:2:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 428.787647,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 680,
+        "evaluations": 646,
+        "evaluationCacheHits": 34,
+        "evaluationCacheStores": 646,
+        "evaluationCachePeak": 646,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 174,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 2,
+            "averageValue": 0.5434385224447384
+          },
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 2,
+            "averageValue": 0.5149955016194101
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 2,
+            "averageValue": 0.3810721451998097
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 2,
+            "averageValue": 0.2862456078419982
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 1,
+            "averageValue": 0.5733505443682791
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 1,
+            "averageValue": 0.5665993699780817
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 1,
+            "averageValue": 0.5388261224574971
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 1,
+            "averageValue": -0.36704178747263133
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i012-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i012-s2",
+        "mctsIterations": 12,
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "8d1bb861b8a4fb9dea1b39f3bb944a6beea4aa69347a1c1f5618ae4cd830b636",
+      "iterations": 12,
+      "seedIndex": 2,
+      "seed": 1471532434,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:2:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 638.207937,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 866,
+        "evaluations": 823,
+        "evaluationCacheHits": 43,
+        "evaluationCacheStores": 823,
+        "evaluationCachePeak": 823,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 192,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 2,
+            "averageValue": 0.6814540101659108
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 2,
+            "averageValue": 0.5383444090389143
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 2,
+            "averageValue": 0.4258175168568078
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 2,
+            "averageValue": 0.17581269512655906
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 1,
+            "averageValue": 0.42600032550456335
+          },
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 1,
+            "averageValue": 0.3778078359539094
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 1,
+            "averageValue": 0.21413397614340712
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 1,
+            "averageValue": -0.15132870208509885
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i012-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i012-s3",
+        "mctsIterations": 12,
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "3fa6609bdee45861a0e5152ea4f7d5f7e00e19b3951ce8499342f19ad9b0d67e",
+      "iterations": 12,
+      "seedIndex": 3,
+      "seed": 255232983,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left"
+      },
+      "recommendedMoveKey": "takata:namua:0:4:left:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 496.676151,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 717,
+        "evaluations": 669,
+        "evaluationCacheHits": 48,
+        "evaluationCacheStores": 669,
+        "evaluationCachePeak": 669,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 179,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 2,
+            "averageValue": 1
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 2,
+            "averageValue": 0.58845114524095
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 2,
+            "averageValue": 0.5017118825733823
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 2,
+            "averageValue": 0.47962076988199076
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 1,
+            "averageValue": 0.5334821284570855
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 1,
+            "averageValue": 0.5098299737352566
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 1,
+            "averageValue": 0.4218990052500079
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 1,
+            "averageValue": 0.3518030554518814
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i048-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i048-s1",
+        "mctsIterations": 48,
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "976e88752057a37801fb981cb4d773814647cd1516d2adaa7ecc7ecf39f714d9",
+      "iterations": 48,
+      "seedIndex": 1,
+      "seed": 1395145710,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "left"
+      },
+      "recommendedMoveKey": "takata:namua:0:2:left:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 1871.607652,
+        "nodes": 48,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 2879,
+        "evaluations": 2697,
+        "evaluationCacheHits": 182,
+        "evaluationCacheStores": 2697,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 649,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 48,
+        "playoutTurns": 701,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 8,
+            "averageValue": 0.4336323763316683
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 8,
+            "averageValue": 0.358474507053385
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 7,
+            "averageValue": 0.40886797818761483
+          },
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 7,
+            "averageValue": 0.37603061255867753
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 6,
+            "averageValue": 0.3715518315456759
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 4,
+            "averageValue": 0.19373982841781298
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 4,
+            "averageValue": 0.11273284819123303
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 4,
+            "averageValue": 0.08410179485577102
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i048-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i048-s2",
+        "mctsIterations": 48,
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "8bab9c56a0c4075ae0e8088d7baa2e27e1a98fffd2fd833dd078ccb031f76d04",
+      "iterations": 48,
+      "seedIndex": 2,
+      "seed": 925254360,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left"
+      },
+      "recommendedMoveKey": "takata:namua:0:4:left:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 1838.201946,
+        "nodes": 48,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 2801,
+        "evaluations": 2645,
+        "evaluationCacheHits": 156,
+        "evaluationCacheStores": 2645,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 597,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 48,
+        "playoutTurns": 702,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 9,
+            "averageValue": 0.6105592854577542
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 9,
+            "averageValue": 0.5531273083693206
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 8,
+            "averageValue": 0.5303398246073731
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 7,
+            "averageValue": 0.40576980014850644
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 4,
+            "averageValue": 0.09990067519396512
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 4,
+            "averageValue": 0.0814365949948406
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 4,
+            "averageValue": 0.07109263202176375
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 3,
+            "averageValue": -0.12326283830672917
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i048-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i048-s3",
+        "mctsIterations": 48,
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "0f73c6a3b7a88bfb2a5c06aa96cb2871d2bbe10e46ddcc390bc5c666359e1cef",
+      "iterations": 48,
+      "seedIndex": 3,
+      "seed": 1508769366,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:2:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 2629.653544,
+        "nodes": 48,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 3356,
+        "evaluations": 3170,
+        "evaluationCacheHits": 186,
+        "evaluationCacheStores": 3170,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 1122,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 48,
+        "playoutTurns": 739,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 9,
+            "averageValue": 0.6110379182954931
+          },
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 8,
+            "averageValue": 0.5694661177111552
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 8,
+            "averageValue": 0.5237968097469329
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 6,
+            "averageValue": 0.444530031597776
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 5,
+            "averageValue": 0.3373942593872134
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 5,
+            "averageValue": 0.30504202008952674
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 4,
+            "averageValue": 0.1642309125982073
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 3,
+            "averageValue": -0.06992799149712885
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i192-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i192-s1",
+        "mctsIterations": 192,
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "bccde2ae73a581e288858708cf955b9d679e2e3afca0bee81f194cd45d4ee993",
+      "iterations": 192,
+      "seedIndex": 1,
+      "seed": 24715895,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 3,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:3:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 9416.74224,
+        "nodes": 191,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 12034,
+        "evaluations": 11502,
+        "evaluationCacheHits": 532,
+        "evaluationCacheStores": 11502,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 9454,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 192,
+        "playoutTurns": 2897,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 34,
+            "averageValue": 0.4663531203452863
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 32,
+            "averageValue": 0.45997362474740006
+          },
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 28,
+            "averageValue": 0.4110347971846431
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 24,
+            "averageValue": 0.39177233907901693
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 23,
+            "averageValue": 0.3546952245231812
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 21,
+            "averageValue": 0.3232188163668843
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 16,
+            "averageValue": 0.21158765120583223
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 14,
+            "averageValue": 0.16064518730669772
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i192-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i192-s2",
+        "mctsIterations": 192,
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "086f14dbbe5235b10f7cef7333ed739ae881cd454103ffdf1d39eb881b93f390",
+      "iterations": 192,
+      "seedIndex": 2,
+      "seed": 1570798572,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left"
+      },
+      "recommendedMoveKey": "takata:namua:0:4:left:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 9309.362523,
+        "nodes": 191,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 12682,
+        "evaluations": 12307,
+        "evaluationCacheHits": 375,
+        "evaluationCacheStores": 12307,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 10259,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 192,
+        "playoutTurns": 2942,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 35,
+            "averageValue": 0.41858129592416154
+          },
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 35,
+            "averageValue": 0.4109498328332961
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 24,
+            "averageValue": 0.30813518332788187
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 24,
+            "averageValue": 0.2640991840170542
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 21,
+            "averageValue": 0.2420177419432654
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 19,
+            "averageValue": 0.2029544002341617
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 18,
+            "averageValue": 0.18875298962547749
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 16,
+            "averageValue": 0.12138541147581355
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "conditionId": "mcts-i192-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i192-s3",
+        "mctsIterations": 192,
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "f60c29b565abf9ed7a1965330f104be9f8a5981e38f9d34b91fc891590f5011f",
+      "iterations": 192,
+      "seedIndex": 3,
+      "seed": 1325286199,
+      "perspective": 0,
+      "legalMoveCount": 8,
+      "recommendedMove": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "right"
+      },
+      "recommendedMoveKey": "takata:namua:0:2:right:::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 9481.925294,
+        "nodes": 190,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 12707,
+        "evaluations": 12295,
+        "evaluationCacheHits": 412,
+        "evaluationCacheStores": 12295,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 10247,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 192,
+        "playoutTurns": 2903,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "takata:namua:0:2:right:::false",
+            "visits": 40,
+            "averageValue": 0.5345941885724915
+          },
+          {
+            "moveKey": "takata:namua:0:4:left:::false",
+            "visits": 33,
+            "averageValue": 0.4900054841364534
+          },
+          {
+            "moveKey": "takata:namua:0:6:left:::false",
+            "visits": 29,
+            "averageValue": 0.439988556719298
+          },
+          {
+            "moveKey": "takata:namua:0:3:left:::false",
+            "visits": 25,
+            "averageValue": 0.4094368140713207
+          },
+          {
+            "moveKey": "takata:namua:0:3:right:::false",
+            "visits": 20,
+            "averageValue": 0.3336436492205256
+          },
+          {
+            "moveKey": "takata:namua:0:4:right:::false",
+            "visits": 17,
+            "averageValue": 0.2704860964128328
+          },
+          {
+            "moveKey": "takata:namua:0:2:left:::false",
+            "visits": 16,
+            "averageValue": 0.1616685196294104
+          },
+          {
+            "moveKey": "takata:namua:0:6:right:::false",
+            "visits": 12,
+            "averageValue": 0.11947203610529167
+          }
+        ]
+      }
+    }
+  ],
+  "updatedAt": "2026-07-17T15:09:37.908Z",
+  "completedAt": "2026-07-17T15:09:37.909Z"
+}

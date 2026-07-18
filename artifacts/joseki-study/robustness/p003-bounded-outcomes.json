@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T05:25:30.227Z",
+  "nodeId": "p8-701bf2f6430d",
+  "startStateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+  "horizons": [
+    11,
+    13
+  ],
+  "results": [
+    {
+      "horizonPlies": 11,
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "childStateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": false,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 6084,
+        "cacheHits": 23,
+        "terminalNodes": 37,
+        "horizonNodes": 4225,
+        "maxBranching": 13,
+        "memoizedStates": 1799
+      },
+      "northProofSearch": {
+        "visitedNodes": 8300,
+        "cacheHits": 195,
+        "terminalNodes": 69,
+        "horizonNodes": 3255,
+        "maxBranching": 12,
+        "memoizedStates": 4781
+      },
+      "elapsedMs": 4929.651771
+    },
+    {
+      "horizonPlies": 11,
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "childStateHash": "30aee5e97d2c5148a6abe358c5589eac29f081db3ce4825ccbe830834144ff7f",
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": true,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 2588,
+        "cacheHits": 5,
+        "terminalNodes": 5,
+        "horizonNodes": 1715,
+        "maxBranching": 12,
+        "memoizedStates": 863
+      },
+      "northProofSearch": {
+        "visitedNodes": 2765,
+        "cacheHits": 26,
+        "terminalNodes": 10,
+        "horizonNodes": 1085,
+        "maxBranching": 11,
+        "memoizedStates": 1644
+      },
+      "elapsedMs": 1588.004521
+    },
+    {
+      "horizonPlies": 11,
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "childStateHash": "185bdbe15e1b78ddc3881de2ad7467d33140b63594b40cd561852b8c01c32b34",
+      "isConsensus": true,
+      "isSelfPlayWinCountLeader": false,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 2024,
+        "cacheHits": 8,
+        "terminalNodes": 13,
+        "horizonNodes": 1318,
+        "maxBranching": 12,
+        "memoizedStates": 685
+      },
+      "northProofSearch": {
+        "visitedNodes": 760,
+        "cacheHits": 11,
+        "terminalNodes": 1,
+        "horizonNodes": 284,
+        "maxBranching": 11,
+        "memoizedStates": 464
+      },
+      "elapsedMs": 689.335977
+    },
+    {
+      "horizonPlies": 11,
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "childStateHash": "4c9ab5f96b428e1e4706bfbe6b34aa3e21236618ec5246ea6359db3570be4a4f",
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": false,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 489,
+        "cacheHits": 1,
+        "terminalNodes": 0,
+        "horizonNodes": 300,
+        "maxBranching": 11,
+        "memoizedStates": 188
+      },
+      "northProofSearch": {
+        "visitedNodes": 479,
+        "cacheHits": 4,
+        "terminalNodes": 1,
+        "horizonNodes": 181,
+        "maxBranching": 13,
+        "memoizedStates": 293
+      },
+      "elapsedMs": 267.259872
+    },
+    {
+      "horizonPlies": 13,
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "childStateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": false,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 33149,
+        "cacheHits": 149,
+        "terminalNodes": 181,
+        "horizonNodes": 22719,
+        "maxBranching": 13,
+        "memoizedStates": 10100
+      },
+      "northProofSearch": {
+        "visitedNodes": 43910,
+        "cacheHits": 931,
+        "terminalNodes": 374,
+        "horizonNodes": 17132,
+        "maxBranching": 13,
+        "memoizedStates": 25473
+      },
+      "elapsedMs": 26617.402191
+    },
+    {
+      "horizonPlies": 13,
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "childStateHash": "30aee5e97d2c5148a6abe358c5589eac29f081db3ce4825ccbe830834144ff7f",
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": true,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 13686,
+        "cacheHits": 45,
+        "terminalNodes": 78,
+        "horizonNodes": 9285,
+        "maxBranching": 12,
+        "memoizedStates": 4278
+      },
+      "northProofSearch": {
+        "visitedNodes": 13966,
+        "cacheHits": 271,
+        "terminalNodes": 105,
+        "horizonNodes": 5384,
+        "maxBranching": 12,
+        "memoizedStates": 8206
+      },
+      "elapsedMs": 8825.896542
+    },
+    {
+      "horizonPlies": 13,
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "childStateHash": "185bdbe15e1b78ddc3881de2ad7467d33140b63594b40cd561852b8c01c32b34",
+      "isConsensus": true,
+      "isSelfPlayWinCountLeader": false,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 10265,
+        "cacheHits": 32,
+        "terminalNodes": 71,
+        "horizonNodes": 6835,
+        "maxBranching": 15,
+        "memoizedStates": 3327
+      },
+      "northProofSearch": {
+        "visitedNodes": 3768,
+        "cacheHits": 43,
+        "terminalNodes": 29,
+        "horizonNodes": 1460,
+        "maxBranching": 12,
+        "memoizedStates": 2236
+      },
+      "elapsedMs": 4017.711302
+    },
+    {
+      "horizonPlies": 13,
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "childStateHash": "4c9ab5f96b428e1e4706bfbe6b34aa3e21236618ec5246ea6359db3570be4a4f",
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": false,
+      "southCanForceWin": false,
+      "northCanForceWin": false,
+      "outcome": "unresolved",
+      "southProofSearch": {
+        "visitedNodes": 2409,
+        "cacheHits": 4,
+        "terminalNodes": 12,
+        "horizonNodes": 1601,
+        "maxBranching": 12,
+        "memoizedStates": 792
+      },
+      "northProofSearch": {
+        "visitedNodes": 2271,
+        "cacheHits": 16,
+        "terminalNodes": 14,
+        "horizonNodes": 877,
+        "maxBranching": 15,
+        "memoizedStates": 1364
+      },
+      "elapsedMs": 1406.547273
+    }
+  ]
+}

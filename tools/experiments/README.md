@@ -1,4 +1,85 @@
-# Local first-player research
+# ローカル研究ランナー
+
+## 定石研究
+
+第一次研究は成功条件8/8を満たし、`completed-without-provisional-joseki`として完了しています。標準初期局面から認定・暫定定石は得られませんでした。以下のコマンドは保存済み研究を再現・監査・拡張するためのものであり、第一次研究の未完了工程ではありません。
+
+- 最終結論: [`doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md`](../../doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md)
+- 全成果の索引: [`doc/joseki/README.md`](../../doc/joseki/README.md)
+- 研究計画: [`doc/JOSEKI_RESEARCH_PLAN.md`](../../doc/JOSEKI_RESEARCH_PLAN.md)
+- 統合研究記録: [`doc/JOSEKI_RESEARCH.md`](../../doc/JOSEKI_RESEARCH.md)
+- P002人間向け照合票: [`doc/joseki/P002_HUMAN_REPLAY.md`](../../doc/joseki/P002_HUMAN_REPLAY.md)
+- 将来研究: [`doc/joseki/JOSEKI_FUTURE_RESEARCH.md`](../../doc/joseki/JOSEKI_FUTURE_RESEARCH.md)
+- 保存済み成果物: `artifacts/joseki-study/`
+
+### Phase 0〜2 ply
+
+標準初期局面の全初手・全応手を生成し、depth 1〜4と3評価方式で評価する。
+
+```bash
+node tools/experiments/generate-joseki-tree.js --max-ply 2
+node tools/experiments/evaluate-joseki-nodes.js
+node tools/experiments/verify-joseki-artifacts.js
+node tools/experiments/analyze-joseki-results.js
+```
+
+評価ランナーは1条件ごとにpartialを原子的に保存し、同じコマンドで未完了条件から再開する。集計器は全ノード・全条件が揃い、partial、hash不一致、source不一致がない場合だけJSON集計と`doc/joseki/OPENING_INDEX.md`を生成する。
+
+最有力候補を複数条件の推奨手で8 plyまで延長し、葉局面だけを正式評価する。
+
+```bash
+node tools/experiments/generate-joseki-candidate-tree.js --max-ply 8 --top 3
+node tools/experiments/evaluate-joseki-nodes.js \
+  --tree artifacts/joseki-study/corpus/candidate-tree-8ply.json \
+  --output artifacts/joseki-study/phase-4 \
+  --conditions bao-d1,bao-d2,bao-d3,bao-d4,legacy-d2,bao-v2-d2 \
+  --min-ply 8
+node tools/experiments/verify-joseki-artifacts.js \
+  --tree artifacts/joseki-study/corpus/candidate-tree-8ply.json \
+  --input artifacts/joseki-study/phase-4 \
+  --output artifacts/joseki-study/verified/phase-4-verification.json
+node tools/experiments/analyze-joseki-candidate-results.js
+```
+
+同じ8 ply葉へ事前固定した3 seedの短時間MCTSを適用し、phase2推奨手との一致とseed安定性を検証する。
+
+```bash
+node tools/experiments/run-joseki-mcts.js
+node tools/experiments/verify-joseki-mcts.js
+node tools/experiments/analyze-joseki-mcts.js
+```
+
+MCTSランナーもノード単位で再開できる。正式条件は12 iteration、playout上限16手、bao評価、3 seedで、結果は`artifacts/joseki-study/robustness/mcts-8ply/`、集計は`doc/joseki/MCTS_ROBUSTNESS.md`へ保存する。
+
+iteration不足と局面型の影響を分離する感度試験は、6層から各4局面を固定抽出し、12、48、192 iterationを比較する。
+
+```bash
+node tools/experiments/generate-joseki-mcts-sample.js
+node tools/experiments/run-joseki-mcts-sensitivity.js
+node tools/experiments/verify-joseki-mcts-sensitivity.js
+node tools/experiments/analyze-joseki-mcts-sensitivity.js
+```
+
+固定コーパスは`artifacts/joseki-study/corpus/mcts-sensitivity-sample.json`、結果は`artifacts/joseki-study/robustness/mcts-sensitivity/`、人間向け集計は`doc/joseki/MCTS_SENSITIVITY.md`へ保存する。
+
+保存済みのPhase 4と短時間MCTS成果物を局面特徴別に横断集計する。
+
+```bash
+node tools/experiments/analyze-joseki-position-patterns.js
+```
+
+合法手数、強制捕獲、nyumba所有、盤上・前列・nyumba石差ごとのC0評価と探索安定性を集計し、反例候補を`doc/joseki/POSITION_PATTERNS.md`へ出力する。
+
+Phase 4の6条件が選んだprincipal leafを固定コーパス化し、同じ条件で最大120手・180手まで自己対局を継続する。
+
+```bash
+node tools/experiments/generate-joseki-continuation-corpus.js
+node tools/experiments/run-joseki-continuations.js
+node tools/experiments/verify-joseki-continuations.js
+node tools/experiments/analyze-joseki-continuations.js
+```
+
+結果は`artifacts/joseki-study/robustness/continuations/`へ原子的に保存する。検証器は全着手を開始局面から再適用し、合法性、最終state hash、勝者、手数を照合する。集計は`doc/joseki/CONTINUATION_RESULTS.md`へ出力する。
 
 重いAI対戦実験はGitHub Actionsではなく、ローカル環境で実行します。GitHub Actionsは通常のlint・test・buildなど、短時間で終わるCIだけに使用します。
 

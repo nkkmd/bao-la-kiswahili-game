@@ -18,6 +18,7 @@ for (const level of ["easy", "normal", "hard"]) {
   });
   assert.ok(analysis.move, "analysis returns a move");
   assert.equal(analysis.stats.completedDepth, 2, "analysis reports the completed depth");
+  assert.equal(typeof analysis.stats.rootScore, "number", "analysis reports the completed root score");
   assert.ok(analysis.stats.nodes > 0, "analysis reports searched nodes");
   assert.ok(analysis.stats.elapsedMs >= 0, "analysis reports elapsed time");
   assert.doesNotThrow(() => AI.analyzeMove(E.initialState(), "hard", () => 0, {

@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-17T14:53:23.425Z",
+  "treeFile": "artifacts/joseki-study/corpus/candidate-tree-8ply.json",
+  "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+  "selectionPolicy": {
+    "salt": "joseki-mcts-sensitivity-v1",
+    "perStratum": 4,
+    "ply": 8,
+    "legalMoveBuckets": [
+      "2-4",
+      "5-7",
+      "8+"
+    ],
+    "captureClasses": [
+      "forced-capture",
+      "mixed"
+    ]
+  },
+  "counts": {
+    "nodes": 24,
+    "strata": 6,
+    "availableByStratum": {
+      "2-4/forced-capture": 517,
+      "2-4/mixed": 23,
+      "5-7/forced-capture": 505,
+      "5-7/mixed": 36,
+      "8+/forced-capture": 96,
+      "8+/mixed": 8
+    },
+    "selectedByStratum": {
+      "2-4/forced-capture": 4,
+      "2-4/mixed": 4,
+      "5-7/forced-capture": 4,
+      "5-7/mixed": 4,
+      "8+/forced-capture": 4,
+      "8+/mixed": 4
+    }
+  },
+  "nodes": [
+    {
+      "nodeId": "p8-1e1ca1a32df3",
+      "stateHash": "df547698997401e07eca7f1d46f687e41c1ee4e64936e9775dd8d5848f46c0fb",
+      "stratum": "2-4/forced-capture",
+      "legalMoveCount": 3,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-701bf2f6430d",
+      "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+      "stratum": "2-4/forced-capture",
+      "legalMoveCount": 4,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-c1f65bf10696",
+      "stateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+      "stratum": "2-4/forced-capture",
+      "legalMoveCount": 2,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-fe07fdd74006",
+      "stateHash": "b7ccae5c6b2da46c7e9bea065c6d4a565a48b7e121ceb710bc6e348e62093ff2",
+      "stratum": "2-4/forced-capture",
+      "legalMoveCount": 2,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-56d70f36c4ac",
+      "stateHash": "885456a568557f14f48a274b732bda43f4feadad3d44d01703ebd7ee2dc7cd86",
+      "stratum": "2-4/mixed",
+      "legalMoveCount": 4,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-c95e4c431743",
+      "stateHash": "1d7a4b742cdf7309f9619e974384310e5485bdbddabd14b32ae973c3ed207461",
+      "stratum": "2-4/mixed",
+      "legalMoveCount": 4,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-e26ba732eb84",
+      "stateHash": "0678711dd7772b80a591a2e117645d2f571cf2547efd9c1dddcb67d446e6e745",
+      "stratum": "2-4/mixed",
+      "legalMoveCount": 4,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-f17b390540cf",
+      "stateHash": "866297dc854c4c0ce630dce93737208125b2bcb2c6df3bb50860c7c79757bc8e",
+      "stratum": "2-4/mixed",
+      "legalMoveCount": 4,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-220054504e48",
+      "stateHash": "dda0c9e9558eabb3dae601b4a018f68b5ee4363cff6fb2206540abac0c084e51",
+      "stratum": "5-7/forced-capture",
+      "legalMoveCount": 5,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-26daeeeae690",
+      "stateHash": "47db56e13246977a98c76c8e4186ca7d042c6b4aefac04d87e28fa05e22f97d7",
+      "stratum": "5-7/forced-capture",
+      "legalMoveCount": 5,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-987208bd5378",
+      "stateHash": "5005b373cd9625e8cd5080d3105ccdac07d67b7effe86f9019c18610563ff013",
+      "stratum": "5-7/forced-capture",
+      "legalMoveCount": 5,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-f9aff96ef038",
+      "stateHash": "1afe4748e49edc7d18bb794aef3d32bba5d9357ed10fb5c66fc0bbc4e6384418",
+      "stratum": "5-7/forced-capture",
+      "legalMoveCount": 6,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-442c1e825c45",
+      "stateHash": "fb2d887dbca63ff8c1b35aa266fb0cdcc209685e76cefb0c3d737f18c0a279fb",
+      "stratum": "5-7/mixed",
+      "legalMoveCount": 6,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-4a29ede8e9b7",
+      "stateHash": "f20cfbb1b249f09474e5da2f8476cff4c28cd715f572599aa120dd43a63c2b46",
+      "stratum": "5-7/mixed",
+      "legalMoveCount": 6,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-a02e578f455b",
+      "stateHash": "fd253ad7b1b0803bd5cb5ab87b9b8ea61cac4b9291de2437020cb405f475e1c7",
+      "stratum": "5-7/mixed",
+      "legalMoveCount": 6,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-b8bfc388db71",
+      "stateHash": "50052012e3624c299333ce1d4f1545dd0bd81a01542f3477a16dd8287c0d669e",
+      "stratum": "5-7/mixed",
+      "legalMoveCount": 6,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-0280b4509668",
+      "stateHash": "c32599efcaf0789b5c1a5975a335b249b92c7d2c4bc35d1499df906138b6905a",
+      "stratum": "8+/forced-capture",
+      "legalMoveCount": 8,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-4a15cec6b2d0",
+      "stateHash": "2beb13eeb75faf27d0286830a7a054ae63178770662e5fdb6bab9aabd6230dbe",
+      "stratum": "8+/forced-capture",
+      "legalMoveCount": 8,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "stratum": "8+/forced-capture",
+      "legalMoveCount": 9,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-98f861ae2ee0",
+      "stateHash": "b08f47c50dc2bf0a54b51d227772e172fc4fef4ceead3a79a114f70bc97569a8",
+      "stratum": "8+/forced-capture",
+      "legalMoveCount": 8,
+      "forcedCapture": true
+    },
+    {
+      "nodeId": "p8-1e4bf40869ca",
+      "stateHash": "e62bf49a9b4591cd31e79fc83af22ec3105888b3de9893b6be6523417a7e8bf4",
+      "stratum": "8+/mixed",
+      "legalMoveCount": 8,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-9b02781a5bad",
+      "stateHash": "bdfdd02fc1b3b5b80087acd4071d117490c85e7a2ab3fe163cc8921e1d3ae0e0",
+      "stratum": "8+/mixed",
+      "legalMoveCount": 8,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-bc84ac6a8a62",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "stratum": "8+/mixed",
+      "legalMoveCount": 8,
+      "forcedCapture": false
+    },
+    {
+      "nodeId": "p8-f0f42663f63e",
+      "stateHash": "08daa1f6e7349a328314500795a1b32262b1b68f95a1c6605f1057ce853ca330",
+      "stratum": "8+/mixed",
+      "legalMoveCount": 8,
+      "forcedCapture": false
+    }
+  ],
+  "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6"
+}

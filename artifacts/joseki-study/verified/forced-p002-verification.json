@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T00:54:54.580Z",
+  "passed": true,
+  "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+  "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6",
+  "selectedNodeId": "p8-c1f65bf10696",
+  "selectedStateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+  "candidates": 2,
+  "games": 12,
+  "terminalGames": 12,
+  "replayedMoves": 502,
+  "timeouts": 0,
+  "partialResults": 0,
+  "sourceHashesMatch": true,
+  "replayHashesMatch": true,
+  "phase2VerificationHash": "d962e21c278aca860f9c0ebf35c8370613395ba2205a3f138302307d24693d68",
+  "mctsVerificationHash": "f4532f85981284b35faa695bec9c88cebb41dca43e799bc465ddc0811c5b9c3d",
+  "verificationHash": "e8cb32bc6c724ca39d6b6b2868b498cc3ab09e8d247136bcf29e086c0eb32097"
+}

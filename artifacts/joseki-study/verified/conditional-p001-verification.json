@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T00:37:26.544Z",
+  "passed": true,
+  "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+  "startStateHash": "10316a873e4d70c19cf34afc0f3736c4971e772772dae4aa2caa5f97df4d67a5",
+  "candidates": 4,
+  "games": 24,
+  "terminalGames": 24,
+  "replayedMoves": 1269,
+  "timeouts": 0,
+  "partialResults": 0,
+  "sourceHashesMatch": true,
+  "replayHashesMatch": true,
+  "allRepliesVerificationHash": "ab72da9337d3bf255522772931af9c057819127cc0b94d32a9cec483be0160f0",
+  "verificationHash": "7ce6ab2ddd1f7b6cd005fc0ed5143175983a951a169d440b56ecc3338958c341"
+}

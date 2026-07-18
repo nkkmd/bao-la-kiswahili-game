@@ -1,0 +1,1127 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "nodeId": "p8-726f3cd5b402",
+  "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-mcts-iteration-sensitivity",
+    "treeFile": "artifacts/joseki-study/corpus/candidate-tree-8ply.json",
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "sampleFile": "artifacts/joseki-study/corpus/mcts-sensitivity-sample.json",
+    "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6",
+    "conditionIds": [
+      "mcts-i012-s1",
+      "mcts-i012-s2",
+      "mcts-i012-s3",
+      "mcts-i048-s1",
+      "mcts-i048-s2",
+      "mcts-i048-s3",
+      "mcts-i192-s1",
+      "mcts-i192-s2",
+      "mcts-i192-s3"
+    ],
+    "conditionHashes": {
+      "mcts-i012-s1": "363be59caa83d681578254fca88ae3dd1c132952c698b40df24bd4df067e2822",
+      "mcts-i012-s2": "8d1bb861b8a4fb9dea1b39f3bb944a6beea4aa69347a1c1f5618ae4cd830b636",
+      "mcts-i012-s3": "3fa6609bdee45861a0e5152ea4f7d5f7e00e19b3951ce8499342f19ad9b0d67e",
+      "mcts-i048-s1": "976e88752057a37801fb981cb4d773814647cd1516d2adaa7ecc7ecf39f714d9",
+      "mcts-i048-s2": "8bab9c56a0c4075ae0e8088d7baa2e27e1a98fffd2fd833dd078ccb031f76d04",
+      "mcts-i048-s3": "0f73c6a3b7a88bfb2a5c06aa96cb2871d2bbe10e46ddcc390bc5c666359e1cef",
+      "mcts-i192-s1": "bccde2ae73a581e288858708cf955b9d679e2e3afca0bee81f194cd45d4ee993",
+      "mcts-i192-s2": "086f14dbbe5235b10f7cef7333ed739ae881cd454103ffdf1d39eb881b93f390",
+      "mcts-i192-s3": "f60c29b565abf9ed7a1965330f104be9f8a5981e38f9d34b91fc891590f5011f"
+    },
+    "iterations": [
+      12,
+      48,
+      192
+    ],
+    "seedIndices": [
+      1,
+      2,
+      3
+    ],
+    "fixedConfig": {
+      "level": "hard",
+      "searchProfile": "mcts",
+      "evaluationProfile": "bao",
+      "timeLimitMs": "Infinity",
+      "mctsPlayoutTurns": 16,
+      "mctsExploration": 1.4142135623730951,
+      "mctsPolicy": "evaluation",
+      "mctsRoot": "visits",
+      "mctsReward": "evaluation",
+      "mctsPrior": "none",
+      "mctsPriorWeight": 1,
+      "mctsCandidateLimit": 0,
+      "mctsCandidateSource": "all",
+      "mctsCandidateDepth": 1
+    },
+    "fixedThresholds": {
+      "highIterationUnanimousConsensusMinimum": 0.5,
+      "unanimousConsensusImprovementMinimum": 0.2,
+      "maximumTimeouts": 0
+    },
+    "sourceCommit": "a32409f78f34870cc66373286f61081a4c8cbd2f",
+    "node": "v24.6.0",
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+      "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/experiments/lib/joseki-common.js": "d56b0aa8af67564247852fd7eabf36d3471dd6f1f5e1d6f9a34365ef59d6537c",
+      "tools/experiments/generate-joseki-tree.js": "14fa0267c1b01e0f35b5415a349c657e9b4247a3c6dd4005432884d15ba1f8a8",
+      "tools/experiments/evaluate-joseki-nodes.js": "3a61cd12dcd4136d14d1a3c7ba25398b1b4418e0cc35ab7183c2b44d51195d23",
+      "tools/experiments/analyze-joseki-results.js": "4775e8d3f4adbf2d52da4499ae8dd7d7f0763b86a0f0b640d100f59c83839ad0",
+      "tools/experiments/verify-joseki-artifacts.js": "3488c28fdddd9b7e86d18c1749edaf45e71b695a7eaf812b4bda74ac985f4936",
+      "tools/experiments/generate-joseki-mcts-sample.js": "f9722db018139bc0ef0b165e583ebb502c9166c246d212238acdc06b5e364f66",
+      "tools/experiments/run-joseki-mcts-sensitivity.js": "84bdeecbc3bfc9fdffaa2b82fed1b6fdcbe01975c8d44b5dd0ecacbca2a5824b",
+      "tools/experiments/verify-joseki-mcts-sensitivity.js": "43e60aba2152b68dd202b66019ffe42298752145e30b65f16077a8fa948cd4dc",
+      "tools/experiments/analyze-joseki-mcts-sensitivity.js": "e31b0df2fd8907b383ebc877e01be370f69f7c3bda8fdba05f556ce082b3e321"
+    }
+  },
+  "results": [
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i012-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i012-s1",
+        "mctsIterations": 12,
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "363be59caa83d681578254fca88ae3dd1c132952c698b40df24bd4df067e2822",
+      "iterations": 12,
+      "seedIndex": 1,
+      "seed": 3435375839,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right",
+        "houseChoice": "use"
+      },
+      "recommendedMoveKey": "capture:namua:0:4:left:right:use:false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 664.699465,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 849,
+        "evaluations": 815,
+        "evaluationCacheHits": 34,
+        "evaluationCacheStores": 815,
+        "evaluationCachePeak": 815,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 187,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 2,
+            "averageValue": 1
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 2,
+            "averageValue": 0.23637843463189998
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 2,
+            "averageValue": 0.22685586558137566
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 1,
+            "averageValue": 0.7051646778923849
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 1,
+            "averageValue": 0.6844826259620601
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 1,
+            "averageValue": 0.576697268016198
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 1,
+            "averageValue": 0.36704178747263133
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 1,
+            "averageValue": 0.09471523628617855
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 1,
+            "averageValue": -0.5023915644617227
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i012-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i012-s2",
+        "mctsIterations": 12,
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "8d1bb861b8a4fb9dea1b39f3bb944a6beea4aa69347a1c1f5618ae4cd830b636",
+      "iterations": 12,
+      "seedIndex": 2,
+      "seed": 3993325497,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right",
+        "houseChoice": "stop"
+      },
+      "recommendedMoveKey": "capture:namua:0:4:left:right:stop:false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 780.770479,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 953,
+        "evaluations": 933,
+        "evaluationCacheHits": 20,
+        "evaluationCacheStores": 933,
+        "evaluationCachePeak": 933,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 176,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 2,
+            "averageValue": 0.13407494643368087
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 2,
+            "averageValue": 0.002630283376743592
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 2,
+            "averageValue": -0.050931470252943534
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 1,
+            "averageValue": 0.6858090622290947
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 1,
+            "averageValue": 0.642547152682299
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 1,
+            "averageValue": 0.638122413695716
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 1,
+            "averageValue": 0.6138026315335671
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 1,
+            "averageValue": 0.40949139599618206
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 1,
+            "averageValue": -0.17565907696502286
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i012-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i012-s3",
+        "mctsIterations": 12,
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "3fa6609bdee45861a0e5152ea4f7d5f7e00e19b3951ce8499342f19ad9b0d67e",
+      "iterations": 12,
+      "seedIndex": 3,
+      "seed": 3789379643,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right",
+        "houseChoice": "stop"
+      },
+      "recommendedMoveKey": "capture:namua:0:4:left:right:stop:false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 713.364401,
+        "nodes": 12,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 895,
+        "evaluations": 874,
+        "evaluationCacheHits": 21,
+        "evaluationCacheStores": 874,
+        "evaluationCachePeak": 874,
+        "evaluationCacheEvictions": 0,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 12,
+        "playoutTurns": 180,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 2,
+            "averageValue": 0.8984390721023634
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 2,
+            "averageValue": 0.09616587289618828
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 2,
+            "averageValue": 0.051930922275260416
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 1,
+            "averageValue": 0.642547152682299
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 1,
+            "averageValue": 0.6059522288123077
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 1,
+            "averageValue": 0.30043709714765415
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 1,
+            "averageValue": 0.2331330090426386
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 1,
+            "averageValue": -0.10955847021442953
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 1,
+            "averageValue": -1
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i048-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i048-s1",
+        "mctsIterations": 48,
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "976e88752057a37801fb981cb4d773814647cd1516d2adaa7ecc7ecf39f714d9",
+      "iterations": 48,
+      "seedIndex": 1,
+      "seed": 3060911931,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 3,
+        "direction": "left",
+        "side": "right"
+      },
+      "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 3051.955032,
+        "nodes": 48,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 3749,
+        "evaluations": 3626,
+        "evaluationCacheHits": 123,
+        "evaluationCacheStores": 3626,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 1578,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 48,
+        "playoutTurns": 752,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 12,
+            "averageValue": 0.33504324383077716
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 6,
+            "averageValue": -0.13185263647637388
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 5,
+            "averageValue": -0.09801474727279733
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 5,
+            "averageValue": -0.1581165056095316
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 5,
+            "averageValue": -0.15959887303419248
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 4,
+            "averageValue": -0.1922899320411267
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 4,
+            "averageValue": -0.24844152408804263
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 4,
+            "averageValue": -0.27717068401926703
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 3,
+            "averageValue": -0.6145796575414022
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i048-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i048-s2",
+        "mctsIterations": 48,
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "8bab9c56a0c4075ae0e8088d7baa2e27e1a98fffd2fd833dd078ccb031f76d04",
+      "iterations": 48,
+      "seedIndex": 2,
+      "seed": 892676504,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 3,
+        "direction": "left",
+        "side": "right"
+      },
+      "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 2901.815517,
+        "nodes": 48,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 3585,
+        "evaluations": 3495,
+        "evaluationCacheHits": 90,
+        "evaluationCacheStores": 3495,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 1447,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 48,
+        "playoutTurns": 743,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 10,
+            "averageValue": 0.493712251578609
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 6,
+            "averageValue": 0.2302013829568007
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 6,
+            "averageValue": 0.16326160081364102
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 5,
+            "averageValue": 0.14976505205698726
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 5,
+            "averageValue": 0.10626025982088158
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 5,
+            "averageValue": 0.10563068457787632
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 4,
+            "averageValue": -0.07694965297995363
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 4,
+            "averageValue": -0.07993691639405594
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 3,
+            "averageValue": -0.2840356730438845
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i048-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i048-s3",
+        "mctsIterations": 48,
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "0f73c6a3b7a88bfb2a5c06aa96cb2871d2bbe10e46ddcc390bc5c666359e1cef",
+      "iterations": 48,
+      "seedIndex": 3,
+      "seed": 2683289139,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "left",
+        "side": "right",
+        "houseChoice": "stop"
+      },
+      "recommendedMoveKey": "capture:namua:0:4:left:right:stop:false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 2791.978166,
+        "nodes": 48,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 3548,
+        "evaluations": 3415,
+        "evaluationCacheHits": 133,
+        "evaluationCacheStores": 3415,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 1367,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 48,
+        "playoutTurns": 749,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 8,
+            "averageValue": 0.24865957671775807
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 7,
+            "averageValue": 0.19946985933535968
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 6,
+            "averageValue": 0.10645515002125293
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 6,
+            "averageValue": -0.00043239147405557676
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 5,
+            "averageValue": -0.011265789201966964
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 5,
+            "averageValue": -0.2013861496715271
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 4,
+            "averageValue": -0.19016798965200804
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 4,
+            "averageValue": -0.2632635174688738
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 3,
+            "averageValue": -0.35013986005627135
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i192-s1",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i192-s1",
+        "mctsIterations": 192,
+        "seedIndex": 1
+      },
+      "conditionConfigHash": "bccde2ae73a581e288858708cf955b9d679e2e3afca0bee81f194cd45d4ee993",
+      "iterations": 192,
+      "seedIndex": 1,
+      "seed": 1483023780,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "right",
+        "side": "left"
+      },
+      "recommendedMoveKey": "capture:namua:0:5:right:left::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 11509.091319,
+        "nodes": 190,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 14240,
+        "evaluations": 13936,
+        "evaluationCacheHits": 304,
+        "evaluationCacheStores": 13936,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 11888,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 192,
+        "playoutTurns": 2926,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 31,
+            "averageValue": 0.3713619801150827
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 27,
+            "averageValue": 0.3481191340827358
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 24,
+            "averageValue": 0.3154234228382403
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 24,
+            "averageValue": 0.3102516731413573
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 21,
+            "averageValue": 0.26582635078675076
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 20,
+            "averageValue": 0.24380383874186004
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 20,
+            "averageValue": 0.22554455503465382
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 15,
+            "averageValue": 0.09963307639526119
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 10,
+            "averageValue": -0.09062296136733108
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i192-s2",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i192-s2",
+        "mctsIterations": 192,
+        "seedIndex": 2
+      },
+      "conditionConfigHash": "086f14dbbe5235b10f7cef7333ed739ae881cd454103ffdf1d39eb881b93f390",
+      "iterations": 192,
+      "seedIndex": 2,
+      "seed": 3584567533,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 4,
+        "direction": "right",
+        "side": "left"
+      },
+      "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 11970.365946,
+        "nodes": 191,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 14247,
+        "evaluations": 13942,
+        "evaluationCacheHits": 305,
+        "evaluationCacheStores": 13942,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 11894,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 192,
+        "playoutTurns": 2929,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 36,
+            "averageValue": 0.46979981415703137
+          },
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 35,
+            "averageValue": 0.4784835700225498
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 26,
+            "averageValue": 0.3884338063592875
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 24,
+            "averageValue": 0.3492625240105904
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 22,
+            "averageValue": 0.3444972665756532
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 16,
+            "averageValue": 0.2176927808442533
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 14,
+            "averageValue": 0.16192518501319317
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 10,
+            "averageValue": -0.0003691042089708607
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 9,
+            "averageValue": -0.18366212534442
+          }
+        ]
+      }
+    },
+    {
+      "nodeId": "p8-726f3cd5b402",
+      "stateHash": "afc42ba9a2a6a6911c94e1f0733dcbeba7864d7e926ff26c1951fc248656e5c5",
+      "conditionId": "mcts-i192-s3",
+      "conditionConfig": {
+        "level": "hard",
+        "searchProfile": "mcts",
+        "evaluationProfile": "bao",
+        "timeLimitMs": "Infinity",
+        "mctsPlayoutTurns": 16,
+        "mctsExploration": 1.4142135623730951,
+        "mctsPolicy": "evaluation",
+        "mctsRoot": "visits",
+        "mctsReward": "evaluation",
+        "mctsPrior": "none",
+        "mctsPriorWeight": 1,
+        "mctsCandidateLimit": 0,
+        "mctsCandidateSource": "all",
+        "mctsCandidateDepth": 1,
+        "conditionId": "mcts-i192-s3",
+        "mctsIterations": 192,
+        "seedIndex": 3
+      },
+      "conditionConfigHash": "f60c29b565abf9ed7a1965330f104be9f8a5981e38f9d34b91fc891590f5011f",
+      "iterations": 192,
+      "seedIndex": 3,
+      "seed": 1580021240,
+      "perspective": 0,
+      "legalMoveCount": 9,
+      "recommendedMove": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 3,
+        "direction": "right",
+        "side": "left"
+      },
+      "recommendedMoveKey": "capture:namua:0:3:right:left::false",
+      "stats": {
+        "level": "hard",
+        "elapsedMs": 11543.601627,
+        "nodes": 192,
+        "quiescenceNodes": 0,
+        "cutoffs": 0,
+        "cacheHits": 0,
+        "cacheStores": 0,
+        "historyUpdates": 0,
+        "aspirationResearches": 0,
+        "evaluationRequests": 14132,
+        "evaluations": 13776,
+        "evaluationCacheHits": 356,
+        "evaluationCacheStores": 13776,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 11728,
+        "completedDepth": 0,
+        "rootScore": null,
+        "timedOut": false,
+        "earlyStopped": false,
+        "stableIterations": 0,
+        "rootBestChanges": 0,
+        "allocatedTimeMs": null,
+        "baseTimeLimitMs": null,
+        "adaptiveComplexity": 0,
+        "simulations": 192,
+        "playoutTurns": 2899,
+        "maxPlayoutTurns": 16,
+        "mctsRoot": [
+          {
+            "moveKey": "capture:namua:0:3:right:left::false",
+            "visits": 32,
+            "averageValue": 0.509051151414493
+          },
+          {
+            "moveKey": "capture:namua:0:4:right:left::false",
+            "visits": 32,
+            "averageValue": 0.5049485659230085
+          },
+          {
+            "moveKey": "capture:namua:0:6:left:right::false",
+            "visits": 25,
+            "averageValue": 0.43941520948597057
+          },
+          {
+            "moveKey": "capture:namua:0:3:left:right::false",
+            "visits": 25,
+            "averageValue": 0.42102873586172973
+          },
+          {
+            "moveKey": "capture:namua:0:5:right:left::false",
+            "visits": 22,
+            "averageValue": 0.4050173967048437
+          },
+          {
+            "moveKey": "capture:namua:0:7:left:right::false",
+            "visits": 21,
+            "averageValue": 0.3531189901198784
+          },
+          {
+            "moveKey": "capture:namua:0:5:left:right::false",
+            "visits": 17,
+            "averageValue": 0.2849257969476395
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:stop:false",
+            "visits": 10,
+            "averageValue": -0.0032526673574751475
+          },
+          {
+            "moveKey": "capture:namua:0:4:left:right:use:false",
+            "visits": 8,
+            "averageValue": -0.19505539403298583
+          }
+        ]
+      }
+    }
+  ],
+  "updatedAt": "2026-07-17T15:06:47.106Z",
+  "completedAt": "2026-07-17T15:06:47.107Z"
+}

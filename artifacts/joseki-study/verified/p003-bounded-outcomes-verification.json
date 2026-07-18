@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T05:25:30.226Z",
+  "passed": true,
+  "sourceFileSha256": "b85b3472755b00cda84f4e5b2b2f58d3e5f723e9d8af557e1e38c271520aac16",
+  "rulesEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "startStateHashMatches": true,
+  "expectedRows": 8,
+  "recordedRows": 8,
+  "contradictoryRows": 0,
+  "verificationHash": "b269577e154d86b93ac1f3abcc8b72a1418f623a3b3f6f5605d55d2fafb4707c"
+}
