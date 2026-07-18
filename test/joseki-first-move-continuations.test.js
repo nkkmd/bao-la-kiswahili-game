@@ -14,6 +14,11 @@ const {
   parseArgs: parseJ001Args,
   replay: replayJ001,
 } = require("../tools/experiments/run-joseki-j001-replies.js");
+const {
+  loadInputs: loadAllReplyInputs,
+  parseArgs: parseAllReplyArgs,
+  replay: replayAllReply,
+} = require("../tools/experiments/run-joseki-all-replies.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -91,4 +96,39 @@ test("J001 is response-sensitive with a universal losing reply", () => {
   assert.equal(summary.totals.southWins, 7);
   assert.equal(summary.replies[0].replyMoveKey, "takata:namua:0:5:left:::false");
   assert.equal(summary.replies[0].southWins, 0);
+});
+
+test("all 60 newly evaluated fixed-reply games replay", () => {
+  const options = parseAllReplyArgs([]);
+  const { openings, runEntries } = loadAllReplyInputs(options);
+  const openingById = new Map(openings.map(({ node }) => [node.nodeId, node]));
+  assert.equal(runEntries.length, 10);
+  let games = 0;
+  let replayedMoves = 0;
+  for (const entry of runEntries) {
+    const block = JSON.parse(fs.readFileSync(
+      `${options.output}/blocks/${entry.entryId}.json`, "utf8",
+    ));
+    assert.equal(block.results.length, 6);
+    for (const result of block.results) {
+      replayedMoves += replayAllReply(openingById.get(entry.openingNodeId), entry, result);
+      games += 1;
+    }
+  }
+  assert.equal(games, 60);
+  assert.equal(replayedMoves, 3518);
+});
+
+test("all-reply comparison leaves no response-robust first move", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/all-replies-summary.json", "utf8",
+  ));
+  assert.equal(summary.integrity.passed, true);
+  assert.equal(summary.integrity.games, 84);
+  assert.equal(summary.integrity.replayedMoves, 4931);
+  assert.equal(summary.status, "no-response-robust-candidate");
+  assert.equal(summary.rankings.every(({ status }) => status === "response-sensitive"), true);
+  assert.equal(summary.rankings[0].openingMoveKey, "takata:namua:0:6:right:::false");
+  assert.equal(summary.rankings[0].southWins, 14);
+  assert.equal(summary.rankings[0].worstReplySouthWins, 2);
 });

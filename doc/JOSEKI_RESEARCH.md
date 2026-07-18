@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.4.0
+Version: 0.5.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -49,12 +49,12 @@ Version: 0.4.0
 
 ## 5. 次の研究課題
 
-1. 残る3初手についてもNorthの全合法第2手を固定し、全14応手後局面を最終勝敗で比較する。
-2. 全応手比較で残る候補がなければ、初手単体の定石化を打ち切り、条件付き局面パターンへ研究単位を移す。
+1. 最上位だった`index 6 / right`と最悪応手`index 5 / right`の2 ply局面を、条件付き局面パターンの最初の対象とする。
+2. 初手単体の定石化を打ち切り、応手込みの低分岐強制系列と適用条件・反例を記録する。
 3. 短期最悪応手と最終勝敗基準の最悪応手がずれる原因を、評価反転traceで調べる。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
 
-現時点では旧候補`index 5 / left`とJ001 `index 5 / right`を現行主要候補として`refuted`とする。後者は全4初手比較では首位だったが、North `index 5 / left`固定後に6条件すべてで敗れた。これは現在のAI比較内の判定で、理論的な劣等手の証明ではない。`provisional-joseki`と`validated`はいずれも未認定である。
+現時点では全4初手が応手頑健性基準に未達で、標準初期局面の一般定石候補はない。これは現在のAI比較内の判定で、理論的な劣等手・最善手の証明ではない。`provisional-joseki`と`validated`はいずれも未認定である。
 
 ## 6. 8 ply候補系列の重点検証
 
@@ -254,3 +254,30 @@ Phase 1の短期評価がNorth `index 5 / left`を最悪応手としたのはbao
 - 欠損0、partial 0、timeout 0
 - verification hash: `ac7a963a3dc95b98f2cab301beaccee7594c693334ada49d28619be68ae5326f`
 - 詳細は`doc/joseki/J001_REPLY_RESULTS.md`を参照
+
+## 13. 全4初手・全14 North応手の固定継続
+
+J001以外の3初手について残る10個の合法North応手後局面を、同じ6条件で60局追加評価した。J001の既検証24局は同一の条件設定・seed規則・source hashを確認して再利用し、全14応手後局面・84局へ統合した。
+
+結果確認前に、初手順位を「最悪応手でのSouth勝数、全応手合計South勝数、Phase 1順位」の順で定義した。各応手でSouth 3/6勝以上、かつ全応手合計50%以上を`response-robust-screening`条件とした。
+
+| 順位 | South初手 | 最悪応手South勝 | 合計South勝 | South率 | 判定 |
+| ---: | --- | ---: | ---: | ---: | --- |
+| 1 | `index 6 / right` | 2/6 | 14/24 | 58.3% | response-sensitive |
+| 2 | `index 5 / left` | 1/6 | 11/24 | 45.8% | response-sensitive |
+| 3 | `index 6 / left` | 1/6 | 3/12 | 25.0% | response-sensitive |
+| 4 | `index 5 / right` | 0/6 | 7/24 | 29.2% | response-sensitive |
+
+4初手すべてが応手別最低勝数の基準に未達し、判定は`no-response-robust-candidate`となった。最上位の`index 6 / right`は合計では過半数を超えたが、North `index 5 / right`固定時に2/6勝で、一般推奨に必要な応手耐性を満たさなかった。
+
+これにより、標準初期局面の単一初手を一般定石として選ぶ第一次路線を終了する。負の結果は「どの初手も理論的に悪い」という意味ではなく、現在の決定論的AI条件では相手応手を無視した単一推奨を支持できないという意味である。次は最上位初手と最悪応手を組にした2 ply局面、および低分岐強制捕獲局面を条件付きパターンとして研究する。
+
+完全性監査:
+
+- 4初手、全14合法North応手、6条件、84局
+- 新規60局、検証済みJ001 24局を統合
+- 全84局が120 ply以内に終局
+- 固定North応手を含む4,931着手を再適用し、最終state hashと勝者を照合
+- 欠損0、partial 0、timeout 0
+- verification hash: `ab72da9337d3bf255522772931af9c057819127cc0b94d32a9cec483be0160f0`
+- 詳細は`doc/joseki/ALL_REPLY_RESULTS.md`を参照
