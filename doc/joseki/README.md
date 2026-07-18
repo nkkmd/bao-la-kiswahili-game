@@ -17,9 +17,13 @@
 - [強制捕獲局面P002 固定継続比較](FORCED_P002_RESULTS.md)
 - [P002 評価反転trace比較](P002_REVERSAL_ANALYSIS.md)
 - [P002 — 低分岐強制捕獲の収束先反例](patterns/P002.md)
+- [強制捕獲局面P003 固定継続比較](FORCED_P003_RESULTS.md)
+- [P003 評価反転trace比較](P003_REVERSAL_ANALYSIS.md)
+- [P003 — frontSafety同値でも残る探索収束反例](patterns/P003.md)
+- [P002・P003 探索収束反例の横断比較](FORCED_CONVERGENCE_COMPARISON.md)
 - [J001 — 6番穴・右（応手頑健性で反証）](openings/J001.md)
 - [未解決系列](UNRESOLVED_LINES.md)
 - [着手表記](JOSEKI_NOTATION.md)
 - 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
 
-現在は4 ply全数調査、旧候補の8 ply重点検証、MCTS頑健性試験、全初手・全応手継続、条件付きP001、強制捕獲P002、C0・P002評価反転分析、局面パターン横断集計を完了した。P002では探索合意手が直後評価で大幅に先行しても3/6勝、非consensus手が5/6勝となり、短期形状評価の高さと長期勝敗が分離した。一般・条件付きとも暫定定石は認定していない。
+現在は4 ply全数調査、MCTS頑健性試験、全初手・全応手継続、条件付きP001、強制捕獲P002・P003、C0・P002・P003評価反転分析を完了した。P002とP003の両方で探索合意手より非合意手が終局首位となり、P003ではfrontSafetyと相手応手数を同値にしても不一致が再現した。一般・条件付きとも暫定定石は認定していない。

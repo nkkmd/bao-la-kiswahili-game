@@ -1,0 +1,626 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T01:27:43.619Z",
+  "scope": "P002 and P003 terminal-best versus cross-method-consensus continuations",
+  "caveat": "Two selected positions are enough to refute simple necessary-condition explanations, not to estimate general predictive accuracy.",
+  "studies": [
+    {
+      "studyId": "P002",
+      "selectedNodeId": "p8-c1f65bf10696",
+      "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+      "consensusMoveKey": "capture:namua:0:2:right:left::false",
+      "southWins": {
+        "terminalBest": 5,
+        "consensus": 3,
+        "delta": 2
+      },
+      "immediate": {
+        "staticConsensusAdvantage": 190,
+        "searchConsensusAdvantage": 459,
+        "frontSafety": {
+          "terminalBest": 0,
+          "consensus": 5
+        },
+        "northLegalMoves": {
+          "terminalBest": 3,
+          "consensus": 1
+        }
+      }
+    },
+    {
+      "studyId": "P003",
+      "selectedNodeId": "p8-701bf2f6430d",
+      "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+      "consensusMoveKey": "capture:namua:0:4:right:left::false",
+      "southWins": {
+        "terminalBest": 5,
+        "consensus": 4,
+        "delta": 1
+      },
+      "immediate": {
+        "staticConsensusAdvantage": 91,
+        "searchConsensusAdvantage": 430,
+        "frontSafety": {
+          "terminalBest": 2,
+          "consensus": 2
+        },
+        "northLegalMoves": {
+          "terminalBest": 2,
+          "consensus": 2
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d1",
+      "winner": 0,
+      "totalPlies": 55,
+      "forcedCapturePrefix": 4,
+      "totalForcedCapturePositions": 40,
+      "maximumForcedCaptureRun": 26,
+      "replayedPositions": 46,
+      "permanentSearchReversalPly": null,
+      "traceHash": "9e6eedb42e67a3e058e707ef52bc009c8241a5f2b63d3daf6037f20405cafbb8"
+    },
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d2",
+      "winner": 0,
+      "totalPlies": 53,
+      "forcedCapturePrefix": 38,
+      "totalForcedCapturePositions": 42,
+      "maximumForcedCaptureRun": 38,
+      "replayedPositions": 44,
+      "permanentSearchReversalPly": null,
+      "traceHash": "8d4c0ac47651aec1d6208512c3ba23cde776bd62f695c5c4ffdb621188ab66f1"
+    },
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d3",
+      "winner": 1,
+      "totalPlies": 68,
+      "forcedCapturePrefix": 24,
+      "totalForcedCapturePositions": 50,
+      "maximumForcedCaptureRun": 24,
+      "replayedPositions": 59,
+      "permanentSearchReversalPly": 47,
+      "traceHash": "c5c4e70160133a6293846ff2cb2c027f0d2b44cbf97416a4dca2f97e2df011b1"
+    },
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d4",
+      "winner": 0,
+      "totalPlies": 47,
+      "forcedCapturePrefix": 36,
+      "totalForcedCapturePositions": 37,
+      "maximumForcedCaptureRun": 36,
+      "replayedPositions": 38,
+      "permanentSearchReversalPly": null,
+      "traceHash": "40b7b6bdf1672f0c0c395ece1f4b875dd10379f628fc3515f84ba6cf52a9d4ed"
+    },
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "legacy-d2",
+      "winner": 0,
+      "totalPlies": 51,
+      "forcedCapturePrefix": 38,
+      "totalForcedCapturePositions": 41,
+      "maximumForcedCaptureRun": 38,
+      "replayedPositions": 42,
+      "permanentSearchReversalPly": null,
+      "traceHash": "128c620c47e6b20c15054be9a1c86c01b02b7f75bcee693e37fcfe89c02304a7"
+    },
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-v2-d2",
+      "winner": 0,
+      "totalPlies": 63,
+      "forcedCapturePrefix": 40,
+      "totalForcedCapturePositions": 53,
+      "maximumForcedCaptureRun": 40,
+      "replayedPositions": 54,
+      "permanentSearchReversalPly": null,
+      "traceHash": "bf61b384c88ce47ecbc8e1fc84931cde30a121c043805a443259cd4d58290a29"
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "conditionId": "bao-d1",
+      "winner": 1,
+      "totalPlies": 52,
+      "forcedCapturePrefix": 3,
+      "totalForcedCapturePositions": 35,
+      "maximumForcedCaptureRun": 17,
+      "replayedPositions": 43,
+      "permanentSearchReversalPly": 43,
+      "traceHash": "3e42b7f3ccbed45992298b1e36cc239c8c0632500fc774fa9b94efe5edeedf2c"
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "conditionId": "bao-d2",
+      "winner": 1,
+      "totalPlies": 60,
+      "forcedCapturePrefix": 43,
+      "totalForcedCapturePositions": 48,
+      "maximumForcedCaptureRun": 43,
+      "replayedPositions": 51,
+      "permanentSearchReversalPly": 49,
+      "traceHash": "805a0d3c4a1c347752fbe0556b23600b09d49be1677b98e81b97825ca9783409"
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "conditionId": "bao-d3",
+      "winner": 0,
+      "totalPlies": 17,
+      "forcedCapturePrefix": 3,
+      "totalForcedCapturePositions": 7,
+      "maximumForcedCaptureRun": 4,
+      "replayedPositions": 8,
+      "permanentSearchReversalPly": null,
+      "traceHash": "0f500f906c79a8fb65cd0ae00019667a7bae6bbd96f044ef33d4387f18b4a1f6"
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "conditionId": "bao-d4",
+      "winner": 0,
+      "totalPlies": 17,
+      "forcedCapturePrefix": 3,
+      "totalForcedCapturePositions": 7,
+      "maximumForcedCaptureRun": 4,
+      "replayedPositions": 8,
+      "permanentSearchReversalPly": null,
+      "traceHash": "0f500f906c79a8fb65cd0ae00019667a7bae6bbd96f044ef33d4387f18b4a1f6"
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "conditionId": "legacy-d2",
+      "winner": 0,
+      "totalPlies": 55,
+      "forcedCapturePrefix": 38,
+      "totalForcedCapturePositions": 43,
+      "maximumForcedCaptureRun": 38,
+      "replayedPositions": 46,
+      "permanentSearchReversalPly": null,
+      "traceHash": "da78164f41685f62d42824539f1f1866b77e05d85076b945ffd4be276a86c891"
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "conditionId": "bao-v2-d2",
+      "winner": 1,
+      "totalPlies": 60,
+      "forcedCapturePrefix": 43,
+      "totalForcedCapturePositions": 48,
+      "maximumForcedCaptureRun": 43,
+      "replayedPositions": 51,
+      "permanentSearchReversalPly": 49,
+      "traceHash": "805a0d3c4a1c347752fbe0556b23600b09d49be1677b98e81b97825ca9783409"
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d1",
+      "winner": 0,
+      "totalPlies": 97,
+      "forcedCapturePrefix": 11,
+      "totalForcedCapturePositions": 58,
+      "maximumForcedCaptureRun": 11,
+      "replayedPositions": 88,
+      "permanentSearchReversalPly": null,
+      "traceHash": "a8ec43a331b705959a50a15d83a6f0b2212396659098e03dc8cbabba611b6760"
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d2",
+      "winner": 0,
+      "totalPlies": 61,
+      "forcedCapturePrefix": 52,
+      "totalForcedCapturePositions": 52,
+      "maximumForcedCaptureRun": 52,
+      "replayedPositions": 52,
+      "permanentSearchReversalPly": null,
+      "traceHash": "f041c3970890b9f270d7e98900bed85edfdca7e6cb57511eb8c512cdc3736f48"
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d3",
+      "winner": 0,
+      "totalPlies": 57,
+      "forcedCapturePrefix": 5,
+      "totalForcedCapturePositions": 42,
+      "maximumForcedCaptureRun": 22,
+      "replayedPositions": 48,
+      "permanentSearchReversalPly": null,
+      "traceHash": "4fe6d0bf652646af76841a1938377d0371e729b5f23d0d08051c96506a75d917"
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-d4",
+      "winner": 0,
+      "totalPlies": 55,
+      "forcedCapturePrefix": 40,
+      "totalForcedCapturePositions": 43,
+      "maximumForcedCaptureRun": 40,
+      "replayedPositions": 46,
+      "permanentSearchReversalPly": null,
+      "traceHash": "e8fdf6aa2e22b1fa7c665099e017ce18405a7651baca40824da9dadca54e1ab3"
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "legacy-d2",
+      "winner": 1,
+      "totalPlies": 52,
+      "forcedCapturePrefix": 43,
+      "totalForcedCapturePositions": 43,
+      "maximumForcedCaptureRun": 43,
+      "replayedPositions": 43,
+      "permanentSearchReversalPly": 45,
+      "traceHash": "f5199ea007eb741f0346cf75e7a18f8026060b5202b3bfc826c4923e433d4693"
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "conditionId": "bao-v2-d2",
+      "winner": 0,
+      "totalPlies": 61,
+      "forcedCapturePrefix": 52,
+      "totalForcedCapturePositions": 52,
+      "maximumForcedCaptureRun": 52,
+      "replayedPositions": 52,
+      "permanentSearchReversalPly": null,
+      "traceHash": "f041c3970890b9f270d7e98900bed85edfdca7e6cb57511eb8c512cdc3736f48"
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "conditionId": "bao-d1",
+      "winner": 0,
+      "totalPlies": 49,
+      "forcedCapturePrefix": 7,
+      "totalForcedCapturePositions": 36,
+      "maximumForcedCaptureRun": 16,
+      "replayedPositions": 40,
+      "permanentSearchReversalPly": null,
+      "traceHash": "494272b733815b21f9e2c12c3367a84f2b06affa319f018e05d7436340659e6f"
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "conditionId": "bao-d2",
+      "winner": 0,
+      "totalPlies": 55,
+      "forcedCapturePrefix": 42,
+      "totalForcedCapturePositions": 44,
+      "maximumForcedCaptureRun": 42,
+      "replayedPositions": 46,
+      "permanentSearchReversalPly": null,
+      "traceHash": "5b80906c58a34bc90199cd370e3a685f9fe97ac7488a104c7773fc7ef27fe066"
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "conditionId": "bao-d3",
+      "winner": 0,
+      "totalPlies": 53,
+      "forcedCapturePrefix": 9,
+      "totalForcedCapturePositions": 34,
+      "maximumForcedCaptureRun": 9,
+      "replayedPositions": 44,
+      "permanentSearchReversalPly": null,
+      "traceHash": "ee98cf6d35f134278678f47d832a16d8493a144217aa9bea1b02321877440592"
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "conditionId": "bao-d4",
+      "winner": 1,
+      "totalPlies": 56,
+      "forcedCapturePrefix": 37,
+      "totalForcedCapturePositions": 41,
+      "maximumForcedCaptureRun": 37,
+      "replayedPositions": 47,
+      "permanentSearchReversalPly": 43,
+      "traceHash": "5b7b57c3446375352c54b1f5d44636813fff1030256bc466af2aa705edbe3136"
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "conditionId": "legacy-d2",
+      "winner": 1,
+      "totalPlies": 22,
+      "forcedCapturePrefix": 13,
+      "totalForcedCapturePositions": 13,
+      "maximumForcedCaptureRun": 13,
+      "replayedPositions": 13,
+      "permanentSearchReversalPly": 17,
+      "traceHash": "e0148a6c578b106ba496fcd47530de6a36e6e5d8612db98b3e617bd4b27f70bb"
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "conditionId": "bao-v2-d2",
+      "winner": 0,
+      "totalPlies": 55,
+      "forcedCapturePrefix": 42,
+      "totalForcedCapturePositions": 44,
+      "maximumForcedCaptureRun": 42,
+      "replayedPositions": 46,
+      "permanentSearchReversalPly": null,
+      "traceHash": "5b80906c58a34bc90199cd370e3a685f9fe97ac7488a104c7773fc7ef27fe066"
+    }
+  ],
+  "groups": [
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "outcome": "South-win",
+      "games": 5,
+      "forcedCapturePrefix": {
+        "mean": 31.2,
+        "range": {
+          "min": 4,
+          "max": 40
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 42.6,
+        "range": {
+          "min": 37,
+          "max": 53
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 0,
+        "mean": null,
+        "range": null
+      }
+    },
+    {
+      "studyId": "P002",
+      "role": "terminal-best",
+      "outcome": "North-win",
+      "games": 1,
+      "forcedCapturePrefix": {
+        "mean": 24,
+        "range": {
+          "min": 24,
+          "max": 24
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 50,
+        "range": {
+          "min": 50,
+          "max": 50
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 1,
+        "mean": 47,
+        "range": {
+          "min": 47,
+          "max": 47
+        }
+      }
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "outcome": "South-win",
+      "games": 3,
+      "forcedCapturePrefix": {
+        "mean": 14.666666666666666,
+        "range": {
+          "min": 3,
+          "max": 38
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 19,
+        "range": {
+          "min": 7,
+          "max": 43
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 0,
+        "mean": null,
+        "range": null
+      }
+    },
+    {
+      "studyId": "P002",
+      "role": "consensus",
+      "outcome": "North-win",
+      "games": 3,
+      "forcedCapturePrefix": {
+        "mean": 29.666666666666668,
+        "range": {
+          "min": 3,
+          "max": 43
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 43.666666666666664,
+        "range": {
+          "min": 35,
+          "max": 48
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 3,
+        "mean": 47,
+        "range": {
+          "min": 43,
+          "max": 49
+        }
+      }
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "outcome": "South-win",
+      "games": 5,
+      "forcedCapturePrefix": {
+        "mean": 32,
+        "range": {
+          "min": 5,
+          "max": 52
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 49.4,
+        "range": {
+          "min": 42,
+          "max": 58
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 0,
+        "mean": null,
+        "range": null
+      }
+    },
+    {
+      "studyId": "P003",
+      "role": "terminal-best",
+      "outcome": "North-win",
+      "games": 1,
+      "forcedCapturePrefix": {
+        "mean": 43,
+        "range": {
+          "min": 43,
+          "max": 43
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 43,
+        "range": {
+          "min": 43,
+          "max": 43
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 1,
+        "mean": 45,
+        "range": {
+          "min": 45,
+          "max": 45
+        }
+      }
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "outcome": "South-win",
+      "games": 4,
+      "forcedCapturePrefix": {
+        "mean": 25,
+        "range": {
+          "min": 7,
+          "max": 42
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 39.5,
+        "range": {
+          "min": 34,
+          "max": 44
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 0,
+        "mean": null,
+        "range": null
+      }
+    },
+    {
+      "studyId": "P003",
+      "role": "consensus",
+      "outcome": "North-win",
+      "games": 2,
+      "forcedCapturePrefix": {
+        "mean": 25,
+        "range": {
+          "min": 13,
+          "max": 37
+        }
+      },
+      "totalForcedCapturePositions": {
+        "mean": 27,
+        "range": {
+          "min": 13,
+          "max": 41
+        }
+      },
+      "permanentSearchReversal": {
+        "observed": 2,
+        "mean": 30,
+        "range": {
+          "min": 17,
+          "max": 43
+        }
+      }
+    }
+  ],
+  "crossStudy": {
+    "positions": 2,
+    "games": 24,
+    "consensusRankInversions": 2,
+    "losingPermanentReversalPlies": [
+      17,
+      43,
+      43,
+      45,
+      47,
+      49,
+      49
+    ],
+    "medianLosingPermanentReversalPly": 45
+  },
+  "integrity": {
+    "rows": 24,
+    "allTraceHashesPresent": true,
+    "summaryHash": "e0df259c4e058095cadcc055a19f19fdd30f7277a6250687f3428fee6ab70151"
+  }
+}

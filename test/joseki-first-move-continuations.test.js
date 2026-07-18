@@ -29,6 +29,11 @@ const {
   parseArgs: parseP002Args,
   replay: replayP002,
 } = require("../tools/experiments/run-joseki-forced-p002.js");
+const {
+  loadInputs: loadP003Inputs,
+  parseArgs: parseP003Args,
+  replay: replayP003,
+} = require("../tools/experiments/run-joseki-forced-p003.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -231,4 +236,77 @@ test("P002 reversal traces expose a large immediate consensus advantage", () => 
     .traces.filter(({ winner }) => winner === 1);
   assert.deepEqual(consensusLosses.map(({ permanentSearchReversal }) => permanentSearchReversal.ply),
     [43, 49, 49]);
+});
+
+test("P003 selection and all four fixed captures replay", () => {
+  const options = parseP003Args([]);
+  const inputs = loadP003Inputs(options);
+  assert.equal(inputs.node.nodeId, "p8-701bf2f6430d");
+  assert.equal(inputs.entries.length, 4);
+  let games = 0;
+  let replayedMoves = 0;
+  for (const entry of inputs.entries) {
+    const block = JSON.parse(fs.readFileSync(
+      `${options.output}/blocks/${entry.candidateId}.json`, "utf8",
+    ));
+    assert.equal(block.results.length, 6);
+    for (const result of block.results) {
+      replayedMoves += replayP003(inputs.node.state, entry, result);
+      games += 1;
+    }
+  }
+  assert.equal(games, 24);
+  assert.equal(replayedMoves, 1169);
+});
+
+test("P003 reproduces the terminal ranking inversion without a front-safety gap", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-p003-summary.json", "utf8",
+  ));
+  assert.equal(summary.status, "no-conditional-candidate");
+  assert.deepEqual(summary.candidates, []);
+  assert.equal(summary.rankings[0].southWins, 5);
+  assert.equal(summary.rankings[0].isConsensusMove, false);
+  assert.equal(summary.rankings[1].southWins, 4);
+  assert.equal(summary.rankings[1].isConsensusMove, true);
+  assert.deepEqual(summary.rankings.map(({ immediate }) => immediate.evaluationFeatures.frontSafety),
+    [2, 2, 2, 2]);
+  assert.deepEqual(summary.rankings.map(({ immediate }) => immediate.northLegalMoves), [2, 2, 2, 2]);
+});
+
+test("P003 traces retain the inversion under a common depth-two analysis", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/p003-reversal-analysis.json", "utf8",
+  ));
+  assert.equal(summary.integrity.games, 12);
+  assert.equal(summary.integrity.replayedPositions, 577);
+  assert.equal(summary.integrity.allFinalStatesMatch, true);
+  assert.deepEqual(summary.immediateComparison.staticScore,
+    { terminalBest: 101, consensus: 192, delta: -91 });
+  const pair = summary.pairs.find(({ conditionId }) => conditionId === "bao-d4");
+  const consensus = pair.traces.find(({ isConsensusMove }) => isConsensusMove);
+  assert.equal(consensus.initial.search, 56);
+  assert.equal(consensus.permanentSearchReversal.ply, 43);
+  const terminalBest = pair.traces.find(({ isConsensusMove }) => !isConsensusMove);
+  assert.equal(terminalBest.initial.search, -374);
+  assert.equal(terminalBest.winner, 0);
+});
+
+test("P002 and P003 convergence comparison rejects simple forcing thresholds", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-convergence-comparison.json", "utf8",
+  ));
+  assert.equal(summary.crossStudy.positions, 2);
+  assert.equal(summary.crossStudy.games, 24);
+  assert.equal(summary.crossStudy.consensusRankInversions, 2);
+  assert.equal(summary.crossStudy.medianLosingPermanentReversalPly, 45);
+  assert.deepEqual(summary.studies.map(({ immediate }) => immediate.searchConsensusAdvantage),
+    [459, 430]);
+  assert.deepEqual(summary.studies[1].immediate.frontSafety,
+    { terminalBest: 2, consensus: 2 });
+  const p002Consensus = summary.groups.filter(({ studyId, role }) =>
+    studyId === "P002" && role === "consensus");
+  assert.equal(p002Consensus[0].forcedCapturePrefix.range.min, 3);
+  assert.equal(p002Consensus[1].forcedCapturePrefix.range.min, 3);
+  assert.equal(summary.integrity.allTraceHashesPresent, true);
 });
