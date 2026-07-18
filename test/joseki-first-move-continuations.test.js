@@ -438,3 +438,22 @@ test("P003 depth-eleven retry completes all four candidate values", () => {
   assert.equal(summary.integrity.verificationHash,
     "43492bf42b101987a36ca8e2439dbd86a5412c132660567113248a293ddd1947");
 });
+
+test("P003 terminal-only audit leaves every candidate unresolved through thirteen plies", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/p003-bounded-outcomes-summary.json", "utf8",
+  ));
+  assert.equal(summary.status, "all-candidates-unresolved-through-13-ply");
+  assert.deepEqual(summary.horizons, [11, 13]);
+  assert.equal(summary.results.length, 8);
+  assert.equal(summary.results.every(({ outcome, southCanForceWin, northCanForceWin }) =>
+    outcome === "unresolved" && !southCanForceWin && !northCanForceWin), true);
+  assert.deepEqual(summary.byHorizon.map(({ visitedNodes }) => visitedNodes), [23489, 123424]);
+  assert.deepEqual(summary.byHorizon.map(({ unresolved }) => unresolved), [4, 4]);
+  assert.equal(summary.results.filter(({ isConsensus }) => isConsensus).length, 2);
+  assert.equal(summary.results.filter(({ isSelfPlayWinCountLeader }) =>
+    isSelfPlayWinCountLeader).length, 2);
+  assert.equal(summary.integrity.contradictoryRows, 0);
+  assert.equal(summary.integrity.verificationHash,
+    "b269577e154d86b93ac1f3abcc8b72a1418f623a3b3f6f5605d55d2fafb4707c");
+});

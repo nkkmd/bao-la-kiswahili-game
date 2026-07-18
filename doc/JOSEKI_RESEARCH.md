@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.14.0
+Version: 0.15.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -49,7 +49,7 @@ Version: 0.14.0
 
 ## 5. 次の研究課題
 
-1. P003を評価器に依存しない独立方式で検証する。depth 12全面探索は費用増のため優先しない。
+1. P003の独立監査結果を踏まえ、固定自己対局勝数・深い探索値・有界強制終局を別軸にした候補判定表を定義する。
 2. P002の有界強制勝ちを別ルール実装または人間による棋譜確認で再検証する。
 3. 候補判定を「固定自己対局勝数」と「深いminimax・終局証明」に分離する。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
@@ -494,3 +494,21 @@ depth 11で唯一timeoutした非注目候補`capture:namua:0:2:right:left::fals
 - retry verification hash: `f1c5c2254a428a2ac2b081009a3545a34bd871d6e7c17d5c3ec4327a0bb02637`
 - consolidated verification hash: `43492bf42b101987a36ca8e2439dbd86a5412c132660567113248a293ddd1947`
 - 詳細は`doc/joseki/P003_DEPTH11_TIMEOUT_RETRY.md`と`doc/joseki/P003_DEPTH11_COMPLETE.md`を参照
+
+## 24. P003 11/13 ply有界終局の評価器非依存監査
+
+P003の4候補について、AI評価器、alpha-beta、quiescenceを使わず、ルールエンジンの合法手生成・遷移・終局判定だけで三値AND/OR探索を行った。SouthとNorthのそれぞれについて範囲内の終局勝ちを強制できるかを別々に判定し、どちらも強制できない場合を`unresolved`とした。
+
+11 plyと13 plyの全8行は全て`unresolved`だった。13 ply監査は合計123,424節点、55,776 memo化状態を調べたが、South・Northとも強制勝ち候補は0だった。したがってdepth 11で得た候補値`-45, -173, -295, -302`の順位は、13 ply以内の短い強制終局の有無では説明できない。
+
+`unresolved`は引き分け、互角、長期的な非必勝を意味しない。この監査は評価関数から独立しているが、P002のような短期終局証明をP003では与えなかった。P003を定石へ昇格する根拠にはせず、深い探索値・固定自己対局・有界終局を別々の測定軸として保持する。
+
+完全性監査:
+
+- 4候補×2 horizon、8/8完了
+- 11 ply: 23,489 nodes、4/4 unresolved
+- 13 ply: 123,424 nodes、4/4 unresolved
+- 矛盾行0、開始局面hash一致
+- rules engine hash: `e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c`
+- verification hash: `b269577e154d86b93ac1f3abcc8b72a1418f623a3b3f6f5605d55d2fafb4707c`
+- 詳細は`doc/joseki/P003_BOUNDED_OUTCOMES.md`を参照
