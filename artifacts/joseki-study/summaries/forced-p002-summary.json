@@ -1,0 +1,354 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T00:54:54.581Z",
+  "status": "no-conditional-candidate",
+  "scope": "two forced capture choices at the deterministically selected low-branching 8-ply position",
+  "caveat": "P002 applies only to this exact state; a candidate still requires fixed testing of every legal opponent reply.",
+  "fixedCriteria": {
+    "selection": "among sampled 2-4/forced-capture nodes where all six phase2 and three 192-iteration MCTS runs agree on one move, choose fewest legal moves then node ID",
+    "relativeSupport": "South win count is tied for or above every legal move",
+    "absoluteSupport": "South wins at least 4 of 6 continuation conditions",
+    "crossMethodSupport": "winning candidate equals the pre-existing phase2 and MCTS consensus move"
+  },
+  "selection": {
+    "stratum": "2-4/forced-capture",
+    "eligibleNodeIds": [
+      "p8-c1f65bf10696",
+      "p8-701bf2f6430d"
+    ],
+    "selectedNodeId": "p8-c1f65bf10696",
+    "selectedStateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+    "legalMoveCount": 2,
+    "consensusMoveKey": "capture:namua:0:2:right:left::false"
+  },
+  "position": {
+    "moveKeys": [
+      "takata:namua:0:5:left:::false",
+      "capture:namua:0:5:left:right::false",
+      "capture:namua:0:3:left:right::false",
+      "capture:namua:0:5:right:left::false",
+      "capture:namua:0:7:left:right:use:false",
+      "capture:namua:0:5:right:left::false",
+      "capture:namua:0:1:right:left::false",
+      "capture:namua:0:7:left:right::false"
+    ],
+    "state": {
+      "pits": [
+        [
+          [
+            0,
+            0,
+            1,
+            5,
+            1,
+            2,
+            4,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            5,
+            1,
+            3
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "reserve": [
+        18,
+        18
+      ],
+      "houseOwned": [
+        false,
+        false
+      ],
+      "player": 0,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "turn": 9,
+      "pending": [
+        0,
+        0
+      ]
+    },
+    "features": {
+      "player": 0,
+      "phase": "namua",
+      "turn": 9,
+      "reserve": [
+        18,
+        18
+      ],
+      "houseOwned": [
+        false,
+        false
+      ],
+      "nyumbaSeeds": [
+        1,
+        0
+      ],
+      "legalMoves": [
+        2,
+        2
+      ],
+      "captureMoves": [
+        2,
+        2
+      ],
+      "forcedCapture": [
+        true,
+        true
+      ],
+      "boardSeeds": [
+        18,
+        10
+      ],
+      "frontSeeds": [
+        13,
+        10
+      ],
+      "backSeeds": [
+        5,
+        0
+      ]
+    },
+    "southStaticBaoScore": 187
+  },
+  "phase2Scores": {
+    "bao-d1": {
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "southSearchScore": 356
+    },
+    "bao-d2": {
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "southSearchScore": 605
+    },
+    "bao-d3": {
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "southSearchScore": 474
+    },
+    "bao-d4": {
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "southSearchScore": 545
+    },
+    "bao-v2-d2": {
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "southSearchScore": 614
+    },
+    "legacy-d2": {
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "southSearchScore": 443
+    }
+  },
+  "mcts192": [
+    {
+      "conditionId": "mcts-i192-s1",
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "root": [
+        {
+          "moveKey": "capture:namua:0:2:right:left::false",
+          "visits": 128,
+          "averageValue": 0.4225640400193368
+        },
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "visits": 64,
+          "averageValue": 0.28001373476769437
+        }
+      ]
+    },
+    {
+      "conditionId": "mcts-i192-s2",
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "root": [
+        {
+          "moveKey": "capture:namua:0:2:right:left::false",
+          "visits": 142,
+          "averageValue": 0.49215111214170476
+        },
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "visits": 50,
+          "averageValue": 0.29777590882837623
+        }
+      ]
+    },
+    {
+      "conditionId": "mcts-i192-s3",
+      "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+      "root": [
+        {
+          "moveKey": "capture:namua:0:2:right:left::false",
+          "visits": 144,
+          "averageValue": 0.5032553568247772
+        },
+        {
+          "moveKey": "capture:namua:0:2:left:right::false",
+          "visits": 48,
+          "averageValue": 0.289382554506525
+        }
+      ]
+    }
+  ],
+  "rankings": [
+    {
+      "candidateId": "move-02-60e48cc43385",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "left",
+        "side": "right"
+      },
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "stateHash": "624e28c9f0810bbe6f9959cab6932f61dbbb258f497f20be6264f5178995c5f2",
+      "games": 6,
+      "southWins": 5,
+      "northWins": 1,
+      "draws": 0,
+      "isConsensusMove": false,
+      "outcomes": {
+        "bao-d1": {
+          "winner": 0,
+          "totalPlies": 55,
+          "reason": "front-empty"
+        },
+        "bao-d2": {
+          "winner": 0,
+          "totalPlies": 53,
+          "reason": "front-empty"
+        },
+        "bao-d3": {
+          "winner": 1,
+          "totalPlies": 68,
+          "reason": "front-empty"
+        },
+        "bao-d4": {
+          "winner": 0,
+          "totalPlies": 47,
+          "reason": "no-move"
+        },
+        "legacy-d2": {
+          "winner": 0,
+          "totalPlies": 51,
+          "reason": "front-empty"
+        },
+        "bao-v2-d2": {
+          "winner": 0,
+          "totalPlies": 63,
+          "reason": "front-empty"
+        }
+      },
+      "checks": {
+        "relativeSupport": true,
+        "absoluteSupport": true,
+        "crossMethodSupport": false
+      },
+      "status": "screened-out"
+    },
+    {
+      "candidateId": "move-01-9edfe4fcf521",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 2,
+        "direction": "right",
+        "side": "left"
+      },
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "stateHash": "7458a8af1fed8e937f3cda0c64fadd9e06cb5523db4a30fdb72c1dd6d7162ec5",
+      "games": 6,
+      "southWins": 3,
+      "northWins": 3,
+      "draws": 0,
+      "isConsensusMove": true,
+      "outcomes": {
+        "bao-d1": {
+          "winner": 1,
+          "totalPlies": 52,
+          "reason": "front-empty"
+        },
+        "bao-d2": {
+          "winner": 1,
+          "totalPlies": 60,
+          "reason": "front-empty"
+        },
+        "bao-d3": {
+          "winner": 0,
+          "totalPlies": 17,
+          "reason": "front-empty"
+        },
+        "bao-d4": {
+          "winner": 0,
+          "totalPlies": 17,
+          "reason": "front-empty"
+        },
+        "legacy-d2": {
+          "winner": 0,
+          "totalPlies": 55,
+          "reason": "front-empty"
+        },
+        "bao-v2-d2": {
+          "winner": 1,
+          "totalPlies": 60,
+          "reason": "front-empty"
+        }
+      },
+      "checks": {
+        "relativeSupport": false,
+        "absoluteSupport": false,
+        "crossMethodSupport": true
+      },
+      "status": "screened-out"
+    }
+  ],
+  "candidates": [],
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T00:54:54.580Z",
+    "passed": true,
+    "treeHash": "ab4d564df61213cdcc97a37d969bc2d3f33aa9dae9f3cc0a78848f303b8074fa",
+    "sampleHash": "a91c13a9493364e2690be7c2e794978de6de1df48fed1ebfc92d9117279d56b6",
+    "selectedNodeId": "p8-c1f65bf10696",
+    "selectedStateHash": "5a8aac4659368e29d2788d9375a48a08694b15e42f14dd357d5eb3f389eb6eaf",
+    "candidates": 2,
+    "games": 12,
+    "terminalGames": 12,
+    "replayedMoves": 502,
+    "timeouts": 0,
+    "partialResults": 0,
+    "sourceHashesMatch": true,
+    "replayHashesMatch": true,
+    "phase2VerificationHash": "d962e21c278aca860f9c0ebf35c8370613395ba2205a3f138302307d24693d68",
+    "mctsVerificationHash": "f4532f85981284b35faa695bec9c88cebb41dca43e799bc465ddc0811c5b9c3d",
+    "verificationHash": "e8cb32bc6c724ca39d6b6b2868b498cc3ab09e8d247136bcf29e086c0eb32097"
+  }
+}

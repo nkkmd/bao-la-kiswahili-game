@@ -24,6 +24,11 @@ const {
   parseArgs: parseP001Args,
   replay: replayP001,
 } = require("../tools/experiments/run-joseki-conditional-p001.js");
+const {
+  loadInputs: loadP002Inputs,
+  parseArgs: parseP002Args,
+  replay: replayP002,
+} = require("../tools/experiments/run-joseki-forced-p002.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -169,4 +174,39 @@ test("P001 has no conditional third-move candidate", () => {
   assert.equal(summary.rankings[0].southWins, 3);
   assert.equal(summary.rankings[0].naturalRecommendationCount, 0);
   assert.equal(summary.rankings[1].naturalRecommendationCount, 5);
+});
+
+test("P002 selection and all fixed captures replay", () => {
+  const options = parseP002Args([]);
+  const inputs = loadP002Inputs(options);
+  assert.equal(inputs.selection.selected.node.nodeId, "p8-c1f65bf10696");
+  assert.equal(inputs.selection.eligible.length, 2);
+  assert.equal(inputs.entries.length, 2);
+  let games = 0;
+  let replayedMoves = 0;
+  for (const entry of inputs.entries) {
+    const block = JSON.parse(fs.readFileSync(
+      `${options.output}/blocks/${entry.candidateId}.json`, "utf8",
+    ));
+    assert.equal(block.results.length, 6);
+    for (const result of block.results) {
+      replayedMoves += replayP002(inputs.selection.selected.node.state, entry, result);
+      games += 1;
+    }
+  }
+  assert.equal(games, 12);
+  assert.equal(replayedMoves, 502);
+});
+
+test("P002 search consensus loses the terminal-outcome ranking", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-p002-summary.json", "utf8",
+  ));
+  assert.equal(summary.integrity.passed, true);
+  assert.equal(summary.status, "no-conditional-candidate");
+  assert.deepEqual(summary.candidates, []);
+  assert.equal(summary.rankings[0].southWins, 5);
+  assert.equal(summary.rankings[0].isConsensusMove, false);
+  assert.equal(summary.rankings[1].southWins, 3);
+  assert.equal(summary.rankings[1].isConsensusMove, true);
 });
