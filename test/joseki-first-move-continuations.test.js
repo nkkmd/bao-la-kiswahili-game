@@ -34,6 +34,9 @@ const {
   parseArgs: parseP003Args,
   replay: replayP003,
 } = require("../tools/experiments/run-joseki-forced-p003.js");
+const {
+  replay: replayP002Depth8Win,
+} = require("../tools/experiments/verify-joseki-p002-depth8-win.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -309,4 +312,52 @@ test("P002 and P003 convergence comparison rejects simple forcing thresholds", (
   assert.equal(p002Consensus[0].forcedCapturePrefix.range.min, 3);
   assert.equal(p002Consensus[1].forcedCapturePrefix.range.min, 3);
   assert.equal(summary.integrity.allTraceHashesPresent, true);
+});
+
+test("forced-capture depth sweep preserves consensus through depth eight", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-depth-sweep-summary.json", "utf8",
+  ));
+  assert.equal(summary.integrity.recordedRows, 16);
+  assert.equal(summary.integrity.baselineRowsMatched, 8);
+  assert.equal(summary.integrity.timedOutRows, 0);
+  const p002 = summary.studies.find(({ studyId }) => studyId === "P002");
+  const p002Depth8 = p002.results.find(({ depth }) => depth === 8);
+  assert.equal(p002Depth8.recommendedMoveKey, p002.consensusMoveKey);
+  assert.equal(p002Depth8.rootScore, 999991);
+  assert.equal(p002Depth8.terminalBestMinusConsensus, -999716);
+  const p003 = summary.studies.find(({ studyId }) => studyId === "P003");
+  assert.equal(p003.results.find(({ depth }) => depth === 8).terminalBestMinusConsensus, -220);
+});
+
+test("P002 depth-eight winning line replays to a forced North-front loss", () => {
+  const study = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-p002-summary.json", "utf8",
+  ));
+  const verification = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/verified/p002-depth8-win-verification.json", "utf8",
+  ));
+  const finalState = replayP002Depth8Win(study.position.state, verification);
+  assert.equal(verification.passed, true);
+  assert.equal(verification.rootScore, 999991);
+  assert.equal(verification.totalPlies, 9);
+  assert.equal(verification.northPrincipalVariationMovesAllForced, true);
+  assert.equal(finalState.winner, 0);
+  assert.equal(finalState.reason, "front-empty");
+  assert.deepEqual(verification.continuationComparison
+    .filter(({ followsFullWinningLine }) => followsFullWinningLine)
+    .map(({ conditionId }) => conditionId), ["bao-d3", "bao-d4"]);
+});
+
+test("P003 keeps the consensus move through depth ten", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/p003-depth-extension-summary.json", "utf8",
+  ));
+  assert.equal(summary.deepestCompletedDepth, 10);
+  assert.equal(summary.firstTerminalBestDepth, null);
+  assert.equal(summary.integrity.timedOutRows, 0);
+  assert.deepEqual(summary.results.map(({ depth }) => depth), [9, 10]);
+  assert.deepEqual(summary.results.map(({ terminalBestMinusConsensus }) => terminalBestMinusConsensus),
+    [-260, -198]);
+  assert.equal(summary.results.every(({ recommendedIsTerminalBest }) => !recommendedIsTerminalBest), true);
 });

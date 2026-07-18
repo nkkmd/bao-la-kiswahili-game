@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T01:44:34.376Z",
+  "status": "no-terminal-best-switch-through-completed-depth",
+  "scope": "P003 phase2 bao extension at depths 9 and 10",
+  "caveat": "No switch through depth 10 does not exclude a deeper switch; timeout limits are part of the result.",
+  "nodeId": "p8-701bf2f6430d",
+  "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+  "consensusMoveKey": "capture:namua:0:4:right:left::false",
+  "firstTerminalBestDepth": null,
+  "deepestCompletedDepth": 10,
+  "results": [
+    {
+      "depth": 9,
+      "status": "complete",
+      "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+      "rootScore": 0,
+      "completedDepth": 9,
+      "nodes": 7899,
+      "elapsedMs": 33588.630181,
+      "terminalBestMinusConsensus": -260,
+      "recommendedIsTerminalBest": false
+    },
+    {
+      "depth": 10,
+      "status": "complete",
+      "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+      "rootScore": 237,
+      "completedDepth": 10,
+      "nodes": 16037,
+      "elapsedMs": 72699.807688,
+      "terminalBestMinusConsensus": -198,
+      "recommendedIsTerminalBest": false
+    }
+  ],
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T01:44:34.375Z",
+    "passed": true,
+    "expectedRows": 2,
+    "recordedRows": 2,
+    "completeRows": 2,
+    "timedOutRows": 0,
+    "sourceHashMatches": true,
+    "baseVerificationHash": "1ec406f452a9b3972f27d999ad85fc2341ad04cf4c146ece72cd1a9d7ccfb1a3",
+    "verificationHash": "f38735dfe924ff0f2467dc552df8e23d6c16cf9094d3e9bd10fdfd9176dce94d"
+  }
+}

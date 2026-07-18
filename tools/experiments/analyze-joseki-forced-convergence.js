@@ -136,17 +136,17 @@ function markdown(summary) {
   const studyRows = summary.studies.map((study) => `| ${study.studyId} | ${study.southWins.terminalBest}/6 | ${study.southWins.consensus}/6 | ${study.immediate.searchConsensusAdvantage} | ${study.immediate.staticConsensusAdvantage} | ${study.immediate.frontSafety.terminalBest}/${study.immediate.frontSafety.consensus} | ${study.immediate.northLegalMoves.terminalBest}/${study.immediate.northLegalMoves.consensus} |`);
   const groupRows = summary.groups.map((group) => `| ${group.studyId} | ${group.role} | ${group.outcome} | ${group.games} | ${format(group.forcedCapturePrefix.mean)} (${group.forcedCapturePrefix.range.min}–${group.forcedCapturePrefix.range.max}) | ${format(group.totalForcedCapturePositions.mean)} (${group.totalForcedCapturePositions.range.min}–${group.totalForcedCapturePositions.range.max}) |`);
   return ["# P002・P003 探索収束反例の横断比較", "", `生成日時: ${summary.generatedAt}`, "",
-    "P002・P003の終局首位手とcross-method合意手を横断し、直後評価差、強制捕獲系列長、恒久負転を同じ定義で集約した。2局面は単純な必要条件を反証できるが、一般的な予測精度の推定には不足する。", "",
-    "## 局面別", "", "| 局面 | 終局首位手勝 | 合意手勝 | 合意手の探索値差 | 合意手の静的値差 | frontSafety 首位/合意 | North応手 首位/合意 |",
+    "P002・P003の自己対局勝数首位手とcross-method合意手を横断し、直後評価差、強制捕獲系列長、恒久負転を同じ定義で集約した。ここでの首位は近似自己対局6条件の勝数であり、ゲーム理論的な手の優劣を意味しない。", "",
+    "## 局面別", "", "| 局面 | 自己対局首位手勝 | 合意手勝 | 合意手の探索値差 | 合意手の静的値差 | frontSafety 首位/合意 | North応手 首位/合意 |",
     "| --- | ---: | ---: | ---: | ---: | --- | --- |", ...studyRows, "",
-    "両局面とも探索は合意手を大差で支持したが、終局首位は非合意手だった。P003ではfrontSafetyとNorth応手数が同値なので、どちらも不一致の必要条件ではない。", "",
+    "両局面とも浅い探索は合意手を大差で支持したが、近似自己対局の勝数首位は非合意手だった。P003ではfrontSafetyとNorth応手数が同値なので、どちらもこの測定不一致の必要条件ではない。", "",
     "## 強制捕獲系列", "", "| 局面 | 手 | 結果 | 局数 | 冒頭連続capture平均 (範囲) | 全capture局面平均 (範囲) |",
     "| --- | --- | --- | ---: | --- | --- |", ...groupRows, "",
     "勝敗双方に短い系列と長い系列があり、単純な系列長の閾値でも終局を分類できない。South敗戦traceで観測した恒久負転plyは"
       + `${summary.crossStudy.losingPermanentReversalPlies.join("、")}、中央値${summary.crossStudy.medianLosingPermanentReversalPly}だった。`, "",
     "## 結論", "",
     "- frontSafety差、相手応手数差、強制捕獲系列長のいずれも単独の必要条件・十分条件として支持されない。",
-    "- 2局面とも探索値は非合意の終局首位手を大幅に低く評価した。問題は小さな重み誤差ではなく、直後評価の優位が長期に維持されるという仮定にある。",
+    "- 2局面とも探索値は非合意の自己対局勝数首位手を大幅に低く評価した。ただし、P002では後続depth 8探索が合意手の9 ply勝ちを検出したため、この差だけから評価関数の誤りを結論できない。",
     "- 次の検証では単一特徴を追加する前に、同一局面をdepth 1〜より深い探索で追い、合意が終局首位へ切り替わるhorizonの有無を測る。", "",
     "## 完全性", "", `- 局面: ${summary.crossStudy.positions}`,
     `- trace: ${summary.crossStudy.games}`, `- trace hash欠損: ${summary.integrity.allTraceHashesPresent ? 0 : "あり"}`,

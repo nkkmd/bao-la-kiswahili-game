@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T01:44:34.426Z",
+  "status": "no-terminal-best-switch-through-completed-depth",
+  "scope": "phase2 bao iterative-deepening horizon sweep on exact P002 and P003 states",
+  "caveat": "absence of a switch proves only that no switch was observed through the deepest completed depth",
+  "fixedRules": {
+    "scope": "P002 and P003 exact states, phase2 search, bao evaluation, depths 1 through 8",
+    "timeout": "60 seconds per root or fixed-child analysis; stop deeper depths for that position after a timeout",
+    "switch": "report the first depth recommending the pre-existing terminal-best move",
+    "confirmation": "if a switch occurs before depth 8, continue through at least the next depth within the fixed range",
+    "interpretation": "absence of a switch proves only that no switch was observed through the deepest completed depth"
+  },
+  "depths": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "studies": [
+    {
+      "studyId": "P002",
+      "nodeId": "p8-c1f65bf10696",
+      "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+      "consensusMoveKey": "capture:namua:0:2:right:left::false",
+      "firstTerminalBestDepth": null,
+      "deepestCompletedDepth": 8,
+      "timedOutAtDepth": null,
+      "results": [
+        {
+          "depth": 1,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 356,
+          "completedDepth": 1,
+          "nodes": 7,
+          "elapsedMs": 19.661055,
+          "terminalBestMinusConsensus": null,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 2,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 605,
+          "completedDepth": 2,
+          "nodes": 26,
+          "elapsedMs": 61.542787,
+          "terminalBestMinusConsensus": -323,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 3,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 474,
+          "completedDepth": 3,
+          "nodes": 67,
+          "elapsedMs": 110.347247,
+          "terminalBestMinusConsensus": -459,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 4,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 545,
+          "completedDepth": 4,
+          "nodes": 177,
+          "elapsedMs": 283.228774,
+          "terminalBestMinusConsensus": -291,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 5,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 439,
+          "completedDepth": 5,
+          "nodes": 363,
+          "elapsedMs": 588.344316,
+          "terminalBestMinusConsensus": -520,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 6,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 542,
+          "completedDepth": 6,
+          "nodes": 790,
+          "elapsedMs": 1693.335904,
+          "terminalBestMinusConsensus": -296,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 7,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 542,
+          "completedDepth": 7,
+          "nodes": 1568,
+          "elapsedMs": 4078.72522,
+          "terminalBestMinusConsensus": -588,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 8,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:2:right:left::false",
+          "rootScore": 999991,
+          "completedDepth": 8,
+          "nodes": 3223,
+          "elapsedMs": 8431.50374,
+          "terminalBestMinusConsensus": -999716,
+          "recommendedIsTerminalBest": false
+        }
+      ]
+    },
+    {
+      "studyId": "P003",
+      "nodeId": "p8-701bf2f6430d",
+      "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+      "consensusMoveKey": "capture:namua:0:4:right:left::false",
+      "firstTerminalBestDepth": null,
+      "deepestCompletedDepth": 8,
+      "timedOutAtDepth": null,
+      "results": [
+        {
+          "depth": 1,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": -6,
+          "completedDepth": 1,
+          "nodes": 19,
+          "elapsedMs": 11.654021,
+          "terminalBestMinusConsensus": null,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 2,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 240,
+          "completedDepth": 2,
+          "nodes": 53,
+          "elapsedMs": 58.834801,
+          "terminalBestMinusConsensus": -427,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 3,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 56,
+          "completedDepth": 3,
+          "nodes": 105,
+          "elapsedMs": 155.519043,
+          "terminalBestMinusConsensus": -430,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 4,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 335,
+          "completedDepth": 4,
+          "nodes": 215,
+          "elapsedMs": 384.874184,
+          "terminalBestMinusConsensus": -448,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 5,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 88,
+          "completedDepth": 5,
+          "nodes": 418,
+          "elapsedMs": 1258.307886,
+          "terminalBestMinusConsensus": -416,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 6,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 272,
+          "completedDepth": 6,
+          "nodes": 831,
+          "elapsedMs": 2474.087763,
+          "terminalBestMinusConsensus": -312,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 7,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 7,
+          "completedDepth": 7,
+          "nodes": 1587,
+          "elapsedMs": 6140.016326,
+          "terminalBestMinusConsensus": -274,
+          "recommendedIsTerminalBest": false
+        },
+        {
+          "depth": 8,
+          "status": "complete",
+          "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+          "rootScore": 255,
+          "completedDepth": 8,
+          "nodes": 3295,
+          "elapsedMs": 18074.814873,
+          "terminalBestMinusConsensus": -220,
+          "recommendedIsTerminalBest": false
+        }
+      ]
+    }
+  ],
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T01:44:34.425Z",
+    "passed": true,
+    "studies": 2,
+    "expectedRows": 16,
+    "recordedRows": 16,
+    "completeRows": 16,
+    "timedOutRows": 0,
+    "baselineRowsMatched": 8,
+    "sourceHashMatches": true,
+    "verificationHash": "1ec406f452a9b3972f27d999ad85fc2341ad04cf4c146ece72cd1a9d7ccfb1a3"
+  }
+}

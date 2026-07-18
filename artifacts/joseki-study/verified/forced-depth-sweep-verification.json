@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T01:44:34.425Z",
+  "passed": true,
+  "studies": 2,
+  "expectedRows": 16,
+  "recordedRows": 16,
+  "completeRows": 16,
+  "timedOutRows": 0,
+  "baselineRowsMatched": 8,
+  "sourceHashMatches": true,
+  "verificationHash": "1ec406f452a9b3972f27d999ad85fc2341ad04cf4c146ece72cd1a9d7ccfb1a3"
+}
