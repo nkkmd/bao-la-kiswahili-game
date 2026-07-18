@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.7.0
+Version: 0.8.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -49,9 +49,9 @@ Version: 0.7.0
 
 ## 5. 次の研究課題
 
-1. P002のconsensus手と5/6勝の非consensus手について、同一条件の評価反転traceを比較する。
-2. 捕獲方向による前列石、relay shape、nyumba解放後の脅威差を着手イベントから説明する。
-3. 短期探索と最終勝敗の不一致を減らせる評価特徴または探索horizonを仮説化する。
+1. P002で抽出したfrontSafety差と長い強制応手列を、同じ低分岐層の別局面で照合する。
+2. 捕獲方向による前列石、relay shape、nyumba解放後の脅威差が何ply維持されるかを比較する。
+3. 短期探索と最終勝敗の不一致を減らせる評価持続性特徴または探索horizonを仮説化する。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
 
 現時点では全4初手が応手頑健性基準に未達で、標準初期局面の一般定石候補はない。これは現在のAI比較内の判定で、理論的な劣等手・最善手の証明ではない。`provisional-joseki`と`validated`はいずれも未認定である。
@@ -325,7 +325,7 @@ P002はnamua、South手番、両者reserve 18、nyumba解放済み、South盤上
 
 事前条件は首位、4/6勝以上、phase2・MCTS consensusとの一致をすべて要求した。非consensus手は勝敗条件を満たしたがcross-method一致がなく、consensus手はcross-method一致を満たしたが勝敗条件に届かなかった。したがって判定は`no-conditional-candidate`である。
 
-低分岐強制捕獲層で探索がseed間収束するという以前の観測は再現したが、その収束先が終局勝敗でも優れるという仮説は反証された。結果確認後に5/6勝手だけを候補へ格上げせず、次は両方向の評価反転traceと着手イベントを比較して不一致原因を調べる。
+低分岐強制捕獲層で探索がseed間収束するという以前の観測は再現したが、その収束先が終局勝敗でも優れるという仮説は反証された。結果確認後に5/6勝手だけを候補へ格上げしない。両方向の評価反転trace比較は次節で行う。
 
 完全性監査:
 
@@ -336,3 +336,21 @@ P002はnamua、South手番、両者reserve 18、nyumba解放済み、South盤上
 - 欠損0、partial 0、timeout 0
 - verification hash: `e8cb32bc6c724ca39d6b6b2868b498cc3ab09e8d247136bcf29e086c0eb32097`
 - 詳細は`doc/joseki/FORCED_P002_RESULTS.md`と`doc/joseki/patterns/P002.md`を参照
+
+## 16. P002両捕獲手の評価反転trace比較
+
+P002の12局について、固定捕獲直後から終局までの全502保存局面を、条件差を除いた共通のphase2・bao depth 2で再評価した。固定手直後のSouth探索値はconsensus手+474、非consensus手+15、静的bao評価は579対389だった。phase2・MCTSがconsensus手へ収束したことは、直後の評価器出力とは整合する。
+
+静的評価の190点差では、consensus手のfrontSafetyが40点、frontOccupiedが10点、frontSeedsが9点、boardSeedsが8点だけ優位だった。非consensus手はmaxCaptureで24点、relayShapeで3点を取り返したが及ばなかった。Northの合法応手はconsensus手後が1手、非consensus手後が3手だった。ただし6条件の保存継続が実際に選んだ初回応手は各側とも同一で、初回応手の選択分散だけでは勝敗差を説明できない。
+
+consensus手が敗れたbao-d1、bao-d2、bao-v2-d2の恒久的な探索値負転は43、49、49 plyだった。対して非consensus手のSouth勝5局は11 plyで一度負になっても後に回復した。非consensus手が唯一敗れたbao-d3だけは47 plyで恒久的に負となった。直後評価、最初の負転、短い探索窓のいずれも終局勝敗を安定分類できない。
+
+したがって今回の不一致は「探索が直後の形を評価できない」のではなく、「前列安全性などの直後優位が長い強制系列で維持されるかを評価できない」と整理する。これは相関的診断であり、frontSafetyを単独原因とは断定しない。次は同じ選定層の別局面で、直後frontSafety差、相手応手数、恒久負転時期の再現性を確認する。
+
+完全性監査:
+
+- 2固定手、6条件、12 trace、502局面
+- 全着手を再適用し、12終局state hashが保存成果物と一致
+- 共通再評価: phase2、bao、depth 2、時間制限なし
+- summary hash: `76d1e8eff74a7c669e1043d1db79be81fe15d965055298509af6939beeadf7e0`
+- 詳細は`doc/joseki/P002_REVERSAL_ANALYSIS.md`を参照

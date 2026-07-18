@@ -210,3 +210,25 @@ test("P002 search consensus loses the terminal-outcome ranking", () => {
   assert.equal(summary.rankings[1].southWins, 3);
   assert.equal(summary.rankings[1].isConsensusMove, true);
 });
+
+test("P002 reversal traces expose a large immediate consensus advantage", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/p002-reversal-analysis.json", "utf8",
+  ));
+  assert.deepEqual(summary.standardizedAnalysis, {
+    searchProfile: "phase2", evaluationProfile: "bao", maxDepth: 2,
+  });
+  assert.equal(summary.integrity.games, 12);
+  assert.equal(summary.integrity.replayedPositions, 502);
+  assert.equal(summary.integrity.allFinalStatesMatch, true);
+  assert.deepEqual(summary.immediateComparison.staticScore, {
+    alternative: 389, consensus: 579, delta: -190,
+  });
+  const frontSafety = summary.immediateComparison.contributionDeltas
+    .find(({ feature }) => feature === "frontSafety");
+  assert.equal(frontSafety.delta, -40);
+  const consensusLosses = summary.candidates.find(({ isConsensusMove }) => isConsensusMove)
+    .traces.filter(({ winner }) => winner === 1);
+  assert.deepEqual(consensusLosses.map(({ permanentSearchReversal }) => permanentSearchReversal.ply),
+    [43, 49, 49]);
+});
