@@ -19,6 +19,11 @@ const {
   parseArgs: parseAllReplyArgs,
   replay: replayAllReply,
 } = require("../tools/experiments/run-joseki-all-replies.js");
+const {
+  loadInputs: loadP001Inputs,
+  parseArgs: parseP001Args,
+  replay: replayP001,
+} = require("../tools/experiments/run-joseki-conditional-p001.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -131,4 +136,37 @@ test("all-reply comparison leaves no response-robust first move", () => {
   assert.equal(summary.rankings[0].openingMoveKey, "takata:namua:0:6:right:::false");
   assert.equal(summary.rankings[0].southWins, 14);
   assert.equal(summary.rankings[0].worstReplySouthWins, 2);
+});
+
+test("all P001 fixed third moves and continuations replay", () => {
+  const options = parseP001Args([]);
+  const { startState, entries } = loadP001Inputs(options);
+  assert.equal(entries.length, 4);
+  let games = 0;
+  let replayedMoves = 0;
+  for (const entry of entries) {
+    const block = JSON.parse(fs.readFileSync(
+      `${options.output}/blocks/${entry.candidateId}.json`, "utf8",
+    ));
+    assert.equal(block.results.length, 6);
+    for (const result of block.results) {
+      replayedMoves += replayP001(startState, entry, result);
+      games += 1;
+    }
+  }
+  assert.equal(games, 24);
+  assert.equal(replayedMoves, 1269);
+});
+
+test("P001 has no conditional third-move candidate", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/conditional-p001-summary.json", "utf8",
+  ));
+  assert.equal(summary.integrity.passed, true);
+  assert.equal(summary.status, "no-conditional-candidate");
+  assert.deepEqual(summary.candidates, []);
+  assert.equal(summary.rankings[0].thirdMoveKey, "takata:namua:0:7:right:::false");
+  assert.equal(summary.rankings[0].southWins, 3);
+  assert.equal(summary.rankings[0].naturalRecommendationCount, 0);
+  assert.equal(summary.rankings[1].naturalRecommendationCount, 5);
 });
