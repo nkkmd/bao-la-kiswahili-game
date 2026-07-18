@@ -23,10 +23,11 @@
 - [P002・P003 探索収束反例の横断比較](FORCED_CONVERGENCE_COMPARISON.md)
 - [P002・P003 探索depth sweep](FORCED_DEPTH_SWEEP.md)
 - [P002 depth 8 強制勝ち系列](P002_DEPTH8_WIN.md)
+- [P002 9 ply 有界強制勝ちAND/OR証明](P002_BOUNDED_WIN_PROOF.md)
 - [P003 depth 9〜10 延長](P003_DEPTH_EXTENSION.md)
 - [J001 — 6番穴・右（応手頑健性で反証）](openings/J001.md)
 - [未解決系列](UNRESOLVED_LINES.md)
 - [着手表記](JOSEKI_NOTATION.md)
 - 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
 
-現在は4 ply全数調査、MCTS頑健性試験、全初手・全応手継続、P001〜P003、評価反転・depth sweepを完了した。近似自己対局ではP002・P003とも非合意手が勝数首位だったが、P002の合意手はdepth 8で9 ply South勝ちを検出・再生した。P003はdepth 10まで合意手を維持している。自己対局勝数を真の手ランキングとは扱わず、暫定定石はまだ認定しない。
+現在は4 ply全数調査、MCTS頑健性試験、全初手・全応手継続、P001〜P003、評価反転・depth sweepを完了した。近似自己対局ではP002・P003とも非合意手が勝数首位だったが、P002の合意手はAI評価器を使わないAND/OR検証でも9 ply以内のSouth強制勝ちとなった。P003はdepth 10まで合意手を維持している。自己対局勝数を真の手ランキングとは扱わず、別ルール実装による再現がないため暫定定石はまだ認定しない。

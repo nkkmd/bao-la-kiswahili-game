@@ -37,6 +37,10 @@ const {
 const {
   replay: replayP002Depth8Win,
 } = require("../tools/experiments/verify-joseki-p002-depth8-win.js");
+const {
+  verifyCertificate: verifyP002BoundedWinCertificate,
+  verifyProof: verifyP002BoundedWinProof,
+} = require("../tools/experiments/solve-joseki-p002-bounded-win.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -347,6 +351,34 @@ test("P002 depth-eight winning line replays to a forced North-front loss", () =>
   assert.deepEqual(verification.continuationComparison
     .filter(({ followsFullWinningLine }) => followsFullWinningLine)
     .map(({ conditionId }) => conditionId), ["bao-d3", "bao-d4"]);
+});
+
+test("P002 bounded proof covers every North reply without the AI evaluator", () => {
+  const study = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-p002-summary.json", "utf8",
+  ));
+  const proof = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/verified/p002-bounded-win-proof.json", "utf8",
+  ));
+  const verification = verifyP002BoundedWinProof(study, proof);
+  assert.equal(proof.passed, true);
+  assert.equal(proof.consensusSouthCanForceWin, true);
+  assert.equal(proof.certificate.moveKey, study.selection.consensusMoveKey);
+  assert.deepEqual(proof.excludedFromProof,
+    ["public/ai.js", "static evaluation", "alpha-beta search", "quiescence search"]);
+  assert.deepEqual(proof.candidateResults.map(({ southCanForceWin }) => southCanForceWin),
+    [true, false]);
+  assert.deepEqual(verification, proof.verification);
+  assert.equal(verification.maxPly, 9);
+  assert.equal(verification.northAndNodes, 4);
+  assert.equal(verification.northRepliesCovered, 4);
+  assert.equal(verification.terminalLeaves, 1);
+
+  const damaged = structuredClone(proof.certificate);
+  damaged.legalMoveCount += 1;
+  assert.throws(() => verifyP002BoundedWinCertificate(
+    study.position.state, damaged, proof.horizonPlies,
+  ), /Legal-count mismatch/);
 });
 
 test("P003 keeps the consensus move through depth ten", () => {

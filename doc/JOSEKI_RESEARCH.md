@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.11.0
+Version: 0.12.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -50,7 +50,7 @@ Version: 0.11.0
 ## 5. 次の研究課題
 
 1. P003をdepth 11以降または独立探索で検証し、合意手の優位・自己対局勝数首位手への切替・timeoutのいずれが先に現れるか測る。
-2. P002のdepth 8勝ち系列を独立実装または全枝証明形式で再検証する。
+2. P002の有界強制勝ちを別ルール実装または人間による棋譜確認で再検証する。
 3. 候補判定を「固定自己対局勝数」と「深いminimax・終局証明」に分離する。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
 
@@ -443,3 +443,20 @@ P002 depth 8の主変化を各plyで再探索し、8探索ply後にquiescence de
 - final state hash: `55c1218fdb22abb6e7e1ac2a5c69a229ba6fbab82f419da28dc7f4f5925dfbe9`
 - line hash: `5605a0fca5edee794d601ffc5235fa3368e4cefbbccf99dd539e84e523335f38`
 - 詳細は`doc/joseki/P002_DEPTH8_WIN.md`を参照
+
+## 21. P002 9 ply有界強制勝ちのAND/OR検証
+
+depth 8主変化の再生から独立して、`public/ai.js`、静的評価、alpha-beta、quiescenceを一切使わない有界探索を実装した。現在のルールエンジンから合法手と遷移と終局だけを取得し、South節点をOR、North節点をANDとして9 ply以内のSouth終局勝ちを判定した。
+
+P002のconsensus手は強制勝ち、alternative手は9 ply以内の強制勝ちなしとなった。consensus手の証明書はSouthが勝てる子を1つ、Northが全合法応手を保持し、9手目の`front-empty` South勝ちまで再検証できた。Northの4節点はいずれも合法手1で、全4応手を証明書が被覆する。
+
+これによりroot score 999991はAI評価器固有の高評価ではなく、現行ルール実装上の有界強制勝ちと確認できた。alternative手の`no`は9 plyという範囲内の判定であり、その手が最終的に必敗であることは意味しない。また、合法手生成と終局判定は同じエンジンを利用しているため、別ルール実装から独立したゲーム理論的証明ではない。
+
+完全性監査:
+
+- horizon 9 ply、訪問1,590節点、memo化501状態
+- 証明書10節点: South OR 5、North AND 4、South終局leaf 1
+- North合法応手4/4を証明書で照合
+- certificate hash: `6f137936fabc3282809f711b603eade69f47e8f1ffdfc1a8653c771ad33878fb`
+- result hash: `20c7db44a94fe63cfda36259e5adbeb34ec957e988168649d8fc7057aa1424cd`
+- 詳細は`doc/joseki/P002_BOUNDED_WIN_PROOF.md`を参照
