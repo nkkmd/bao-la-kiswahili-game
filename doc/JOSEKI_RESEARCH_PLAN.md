@@ -1,9 +1,10 @@
 # Bao la Kiswahili 定石研究計画
 
-Version: 0.2.0
+Version: 1.0.0
 作成日: 2026-07-17
+完了日: 2026-07-18
 
-実施状況: Phase 0〜7、P001〜P003、横断trace、depth sweepを完了。P002は9 ply有界強制勝ちを確認し、P003はdepth 11でconsensus首位、13 ply有界終局は全候補`unresolved`だった。固定自己対局勝数・深い探索値・有界強制終局・cross-method一致を分離した判定表を整備し、P002を`bounded-forced-win-supported`、P003を`deep-search-supported-bounded-unresolved`とした。別ルール実装または人間対局検証がないため両方とも昇格不可、暫定定石は未認定。結果は`doc/JOSEKI_RESEARCH.md`を参照。
+実施状況: `completed-without-provisional-joseki`。第一次研究の成功条件8/8を満たし、暫定定石0件という再現可能な否定的結果で完了した。P002は現ルール実装内の9 ply有界強制勝ちと人間向け盤面照合票を取得したが外部未検証、P003はdepth 11でconsensus首位だが13 ply有界終局は全候補`unresolved`である。結果は`doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md`、将来課題は`doc/joseki/JOSEKI_FUTURE_RESEARCH.md`を参照。
 
 ## 0. 概要
 
@@ -95,7 +96,7 @@ Version: 0.2.0
 
 ### 5.2 第二次対象
 
-第一次研究完了後、次へ拡張する。
+第一次研究の完了条件には含めず、独立した将来研究F005として次へ拡張できる。
 
 - nyumba維持中の代表局面
 - nyumba解放直前・直後
@@ -530,7 +531,7 @@ node tools/experiments/verify-joseki-artifacts.mjs \
 5. 4 plyを全数または準全数解析する。
 6. 6〜8 plyは候補枝に限定する。
 7. 深度、評価関数、探索方式、seed、最大手数、対称性を検証する。
-8. 暫定定石を選定し、人間向け定石集へ記録する。
+8. 暫定定石0件を確定し、条件付き候補・反例・盤面照合票を人間向け定石集へ記録する。
 
 ---
 
@@ -564,6 +565,8 @@ node tools/experiments/verify-joseki-artifacts.mjs \
 ---
 
 ## 15. 将来拡張
+
+以下は第一次研究の未完了作業ではない。優先度、再開条件、完了条件は`doc/joseki/JOSEKI_FUTURE_RESEARCH.md`で管理する。
 
 ### 熟練者レビュー
 
@@ -624,3 +627,13 @@ node tools/experiments/verify-joseki-artifacts.mjs \
 - 結論の適用範囲と限界を明記できる。
 
 定石候補が一件も認定されなかった場合でも、AI条件に対する不安定性や定型化の困難さを再現可能に示せれば、研究成果として扱う。
+
+### 最終判定
+
+- 成功条件: 8/8達成
+- 状態: `completed-without-provisional-joseki`
+- 認定定石: 0
+- 暫定定石: 0
+- 条件付き証拠: P002 `bounded-forced-win-supported`、P003 `deep-search-supported-bounded-unresolved`
+- P002外部検証: 未実施。第一次研究の終了は妨げないが、候補昇格を妨げる。
+- 将来研究: 本計画の未完了工程ではなく、別バックログへ移管済み。

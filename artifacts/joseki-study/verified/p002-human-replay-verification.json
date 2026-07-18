@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T05:48:17.334Z",
+  "passed": true,
+  "plies": 9,
+  "legalMovesChecked": 9,
+  "uniqueNorthReplies": 4,
+  "seedLedgerChecks": 18,
+  "seedTotal": 64,
+  "terminalWinner": 0,
+  "terminalReason": "front-empty",
+  "sourceFileSha256": "6c7ca8c6cde1a35d9b9fccfcb197ab3cda65b9d9320292246b120cbf94d3fa2b",
+  "rulesEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "replayHash": "795d16195e598c03a3e418587a8a05390dd59a4a3f902992383679ded2fd5bcd"
+}

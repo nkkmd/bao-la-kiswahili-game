@@ -2,6 +2,11 @@
 
 このディレクトリは、AI実験で検証した定石候補を人間向けに整理する。伝統的・実戦的な定石を記録したものではなく、現在のルール実装とAI条件に依存する研究成果である。
 
+第一次研究の状態: `completed-without-provisional-joseki`
+
+- [第一次研究の最終結論](JOSEKI_FIRST_STUDY_CONCLUSION.md)
+- [将来研究バックログ](JOSEKI_FUTURE_RESEARCH.md)
+
 - [初手・応手スクリーニング](OPENING_INDEX.md)
 - [8 ply候補系列](CANDIDATE_LINES.md)
 - [8 ply葉 MCTS頑健性試験](MCTS_ROBUSTNESS.md)
@@ -24,6 +29,7 @@
 - [P002・P003 探索depth sweep](FORCED_DEPTH_SWEEP.md)
 - [P002 depth 8 強制勝ち系列](P002_DEPTH8_WIN.md)
 - [P002 9 ply 有界強制勝ちAND/OR証明](P002_BOUNDED_WIN_PROOF.md)
+- [P002 9手 人間向け盤面照合票](P002_HUMAN_REPLAY.md)
 - [P003 depth 9〜10 延長](P003_DEPTH_EXTENSION.md)
 - [P003 depth 11 追試](P003_DEPTH11.md)
 - [P003 depth 11 全候補統合](P003_DEPTH11_COMPLETE.md)
@@ -34,4 +40,4 @@
 - [着手表記](JOSEKI_NOTATION.md)
 - 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
 
-現在は4 ply全数調査、MCTS頑健性試験、全初手・全応手継続、P001〜P003、評価反転・depth sweepを完了した。P002は`bounded-forced-win-supported`、P003は`deep-search-supported-bounded-unresolved`である。固定自己対局勝数・探索値・有界終局・cross-method一致を別軸として扱い、別ルール実装または人間対局検証がないため暫定定石はまだ認定しない。
+第一次研究は成功条件8/8を満たして完了した。標準初期局面の一般定石候補はなく、暫定定石0件、validated 0件である。P002は`bounded-forced-win-supported`だが外部未検証、P003は`deep-search-supported-bounded-unresolved`である。将来課題は第一次研究の未完了作業ではなく、独立バックログとして管理する。

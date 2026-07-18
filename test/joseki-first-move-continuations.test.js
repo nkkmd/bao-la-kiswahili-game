@@ -41,6 +41,9 @@ const {
   verifyCertificate: verifyP002BoundedWinCertificate,
   verifyProof: verifyP002BoundedWinProof,
 } = require("../tools/experiments/solve-joseki-p002-bounded-win.js");
+const {
+  verifyReplay: verifyP002HumanReplay,
+} = require("../tools/experiments/generate-joseki-p002-human-replay.js");
 
 test("all four first moves and every saved continuation replay", () => {
   const options = parseArgs([]);
@@ -476,4 +479,53 @@ test("evidence axes separate policy outcomes from search and bounded proofs", ()
   assert.equal(summary.integrity.fixedSelfPlayDeepRankDisagreements, 4);
   assert.equal(summary.integrity.verificationHash,
     "02590595d67b54b6e8d468d1a0e865af93432d89bfe51e85e95d5d8269d6fd39");
+});
+
+test("P002 human worksheet replays nine plies with a conserved seed ledger", () => {
+  const study = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/forced-p002-summary.json", "utf8",
+  ));
+  const proof = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/verified/p002-bounded-win-proof.json", "utf8",
+  ));
+  const replay = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/verified/p002-human-replay.json", "utf8",
+  ));
+  const verified = verifyP002HumanReplay(study, proof, replay);
+  assert.equal(verified.passed, true);
+  assert.equal(verified.plies, 9);
+  assert.equal(verified.uniqueNorthReplies, 4);
+  assert.equal(verified.seedLedgerChecks, 18);
+  assert.equal(verified.seedTotal, 64);
+  assert.equal(verified.terminalWinner, 0);
+  assert.equal(verified.terminalReason, "front-empty");
+  assert.equal(replay.plies.every(({ before, after }) =>
+    before.ledger.total === 64 && after.ledger.total === 64), true);
+});
+
+test("first joseki study closes with every success criterion met", () => {
+  const conclusion = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/first-study-conclusion.json", "utf8",
+  ));
+  const verification = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/verified/first-study-conclusion-verification.json", "utf8",
+  ));
+  assert.equal(conclusion.status, "completed-without-provisional-joseki");
+  assert.equal(conclusion.recognizedJoseki, 0);
+  assert.equal(conclusion.provisionalJoseki, 0);
+  assert.equal(conclusion.validatedJoseki, 0);
+  assert.equal(conclusion.researchQuestions.length, 6);
+  assert.equal(conclusion.successCriteria.length, 8);
+  assert.equal(conclusion.successCriteria.every(({ met }) => met), true);
+  assert.equal(conclusion.p002ExternalValidation.status, "externally-unvalidated");
+  assert.equal(conclusion.p002ExternalValidation.humanWorksheetGenerated, true);
+  assert.equal(conclusion.p002ExternalValidation.humanWorksheetChecked, false);
+  assert.equal(conclusion.nonBlockingFutureResearch.length, 6);
+  assert.equal(verification.passed, true);
+  assert.equal(verification.prerequisiteVerifications, 16);
+  assert.equal(verification.prerequisiteFailures, 0);
+  assert.equal(verification.successCriteriaMet, 8);
+  assert.equal(verification.promotionEligibleCandidates, 0);
+  assert.equal(verification.verificationHash,
+    "3e02bedcac294666947d971342834339769cee3bf26e8d812698205ebd4595d9");
 });
