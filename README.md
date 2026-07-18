@@ -23,6 +23,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - オフライン対応デプロイのための PWA ファイル
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
+- 標準初期局面の全初手・全応手、深度・評価方式、MCTS、継続自己対局、有界終局を比較する再現可能な定石研究
 - 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
 - 「むずかしい」「ムタアラム」の直前探索統計と、Phase 10A向け保存推奨判定
 
@@ -128,6 +129,21 @@ node tools/diagnostic-to-fixture.js \
 
 詳しい手順は [`doc/AI_HUMAN_REVIEW_GUIDE.md`](doc/AI_HUMAN_REVIEW_GUIDE.md)、ベンチマーク条件とベースライン結果は [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md) に記録しています。
 
+## 定石研究
+
+第一次定石研究は、成功条件8/8を満たし、`completed-without-provisional-joseki`として完了しています。標準初期局面の4初手はいずれも全応手頑健性基準に達せず、認定定石・暫定定石・validatedはいずれも0件でした。これは、AI条件間の不安定性、全応手に対する脆弱性、固定自己対局と深い探索の不一致を再現可能に確認した否定的研究成果です。
+
+条件付き局面P002では、現在のルール実装内で9 plyのSouth強制勝ちを確認しました。ただし、人間または別実装による外部検証は未実施であり、定石には昇格していません。
+
+- [第一次研究の最終結論](doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md)
+- [研究成果の索引](doc/joseki/README.md)
+- [P002 9手 人間向け盤面照合票](doc/joseki/P002_HUMAN_REPLAY.md)
+- [将来研究バックログ](doc/joseki/JOSEKI_FUTURE_RESEARCH.md)
+- [研究計画と完了基準](doc/JOSEKI_RESEARCH_PLAN.md)
+- [研究方法・実験結果の統合記録](doc/JOSEKI_RESEARCH.md)
+
+実験コマンドは [`tools/experiments/README.md`](tools/experiments/README.md)、保存済み成果物は `artifacts/joseki-study/` を参照してください。
+
 ## プロジェクト構成
 
 | パス | 役割 |
@@ -143,13 +159,17 @@ node tools/diagnostic-to-fixture.js \
 | `public/diagnostic-download.js` | 診断JSONの日時付きファイル保存 |
 | `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
 | `test/` | 回帰テスト |
-| `artifacts/` | 保存済みのベンチマーク・チューニング出力 |
+| `artifacts/` | 保存済みのベンチマーク・チューニング・研究出力 |
+| `artifacts/joseki-study/` | 定石研究の固定コーパス、実験結果、集計、検証記録 |
 | `doc/` | ルール学習、ロードマップ、ベンチマーク、開発ログ、技術レポート |
 
 ## ドキュメント
 
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
 - [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録、統計比較、現在の結論
+- [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
+- [`doc/JOSEKI_RESEARCH.md`](doc/JOSEKI_RESEARCH.md): 定石研究の方法、全フェーズの実験結果、最終判断をまとめた統合記録
+- [`doc/JOSEKI_RESEARCH_PLAN.md`](doc/JOSEKI_RESEARCH_PLAN.md): 定石研究の研究課題、判定基準、完了条件、実施記録
 - [`doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md`](doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md): 全継続AI条件で固定開局系列を共有するペア追試計画
 - [`doc/NAMUA_SYMMETRY_RESEARCH_PLAN.md`](doc/NAMUA_SYMMETRY_RESEARCH_PLAN.md): namua鏡像変換、合法手、bao評価の不一致原因を調査するローカル研究計画
 - [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 公開向け Bao AI 技術レポート

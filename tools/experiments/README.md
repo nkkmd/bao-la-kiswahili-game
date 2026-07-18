@@ -1,6 +1,18 @@
-# Local first-player research
+# ローカル研究ランナー
 
-## 定石研究 Phase 0〜2 ply
+## 定石研究
+
+第一次研究は成功条件8/8を満たし、`completed-without-provisional-joseki`として完了しています。標準初期局面から認定・暫定定石は得られませんでした。以下のコマンドは保存済み研究を再現・監査・拡張するためのものであり、第一次研究の未完了工程ではありません。
+
+- 最終結論: [`doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md`](../../doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md)
+- 全成果の索引: [`doc/joseki/README.md`](../../doc/joseki/README.md)
+- 研究計画: [`doc/JOSEKI_RESEARCH_PLAN.md`](../../doc/JOSEKI_RESEARCH_PLAN.md)
+- 統合研究記録: [`doc/JOSEKI_RESEARCH.md`](../../doc/JOSEKI_RESEARCH.md)
+- P002人間向け照合票: [`doc/joseki/P002_HUMAN_REPLAY.md`](../../doc/joseki/P002_HUMAN_REPLAY.md)
+- 将来研究: [`doc/joseki/JOSEKI_FUTURE_RESEARCH.md`](../../doc/joseki/JOSEKI_FUTURE_RESEARCH.md)
+- 保存済み成果物: `artifacts/joseki-study/`
+
+### Phase 0〜2 ply
 
 標準初期局面の全初手・全応手を生成し、depth 1〜4と3評価方式で評価する。
 
