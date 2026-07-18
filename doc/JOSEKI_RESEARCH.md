@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.3.0
+Version: 0.4.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -49,12 +49,12 @@ Version: 0.3.0
 
 ## 5. 次の研究課題
 
-1. 新候補`index 5 / right`についてNorthの全合法第2手を固定し、応手別の最悪終局結果を測る。
-2. bao depth 3・4で新候補が敗れる系列を追跡し、深度差と評価ホライズンを分離する。
-3. 最悪応手評価と自己対局方策が選ぶ応手の不一致を、全応手固定継続で解消する。
+1. 残る3初手についてもNorthの全合法第2手を固定し、全14応手後局面を最終勝敗で比較する。
+2. 全応手比較で残る候補がなければ、初手単体の定石化を打ち切り、条件付き局面パターンへ研究単位を移す。
+3. 短期最悪応手と最終勝敗基準の最悪応手がずれる原因を、評価反転traceで調べる。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
 
-現時点では旧候補`index 5 / left`を現行主要候補として`refuted`、新首位`index 5 / right`を`unresolved`とする。これは現在のAI比較内の判定で、理論的な劣等手・最善手の証明ではない。`provisional-joseki`と`validated`はいずれも未認定である。
+現時点では旧候補`index 5 / left`とJ001 `index 5 / right`を現行主要候補として`refuted`とする。後者は全4初手比較では首位だったが、North `index 5 / left`固定後に6条件すべてで敗れた。これは現在のAI比較内の判定で、理論的な劣等手の証明ではない。`provisional-joseki`と`validated`はいずれも未認定である。
 
 ## 6. 8 ply候補系列の重点検証
 
@@ -229,3 +229,28 @@ bao depth 2のC0対局を全48局面で再評価すると、South視点の深さ
 - verification hash: `7cb5632e7afd4afb759d3e0f3cd1fe9ad4bde5457daae6e3cc022d1c675a2173`
 - C0 trace: 48局面、trace hash `3fde4f65cab0f616935e3e29b76b0c416d54a9df4ba218625f817d1a4073167d`
 - 詳細は`doc/joseki/FIRST_MOVE_CONTINUATIONS.md`と`doc/joseki/C0_LOSS_ANALYSIS.md`を参照
+
+## 12. J001の全North応手固定継続
+
+全4初手比較で首位だったJ001 `index 5 / right`について、直後のNorth合法応手4通りを一つずつ固定し、bao depth 1〜4、legacy depth 2、bao-v2 depth 2を両側へ適用した。4応手×6条件の24局である。
+
+結果確認前に、全24局の終局・再生一致、各応手でSouth 3/6勝以上、全体でSouth 12/24勝以上を`response-robust-screening`条件とした。この試験単独では定石への昇格を行わない。
+
+| North応手 | South勝 | North勝 | 打切り |
+| --- | ---: | ---: | ---: |
+| `index 5 / left` | 0 | 6 | 0 |
+| `index 6 / right` | 1 | 5 | 0 |
+| `index 6 / left` | 2 | 4 | 0 |
+| `index 5 / right` | 4 | 2 | 0 |
+
+全体はSouth 7勝、North 17勝で、各応手最低は0/6勝だった。完全性条件には合格したが、二つの勝敗条件に失敗したため`response-sensitive`と判定する。North `index 5 / left`は6条件すべてでNorth勝となり、J001を一般的な初手候補として扱うための明確な反例になった。このためJ001を`unresolved`から現行候補として`refuted`へ変更する。
+
+Phase 1の短期評価がNorth `index 5 / left`を最悪応手としたのはbao depth 3だけだった。他5条件は別の応手を短期最悪としたため、人間向け定石ページの「主要応手」は全応手固定継続の最終勝敗を優先し、短期探索値を補助指標とする。
+
+完全性監査:
+
+- 4応手、6条件、24局、全局120 ply以内に終局
+- 固定したNorth応手を含む1,413着手を再適用し、最終state hashと勝者を照合
+- 欠損0、partial 0、timeout 0
+- verification hash: `ac7a963a3dc95b98f2cab301beaccee7594c693334ada49d28619be68ae5326f`
+- 詳細は`doc/joseki/J001_REPLY_RESULTS.md`を参照

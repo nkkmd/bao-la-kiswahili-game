@@ -10,9 +10,10 @@
 - [8 ply主要系列 継続自己対局](CONTINUATION_RESULTS.md)
 - [全4初手 継続自己対局比較](FIRST_MOVE_CONTINUATIONS.md)
 - [C0敗着系列の評価反転分析](C0_LOSS_ANALYSIS.md)
-- [J001 — 6番穴・右（未解決候補）](openings/J001.md)
+- [J001 全North応手固定継続](J001_REPLY_RESULTS.md)
+- [J001 — 6番穴・右（応手頑健性で反証）](openings/J001.md)
 - [未解決系列](UNRESOLVED_LINES.md)
 - [着手表記](JOSEKI_NOTATION.md)
 - 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
 
-現在は4 ply全数調査、旧候補の8 ply重点検証、MCTS頑健性試験、主要系列および全4初手の継続自己対局、C0評価反転分析、8 ply局面パターン横断集計を完了した。旧候補の6番穴・左は全4初手比較で0/6勝となり、現行の主要候補としては`refuted`とした。6番穴・右が3/6勝で新しい首位だが絶対支持基準に未達のため`unresolved`である。暫定定石はまだ認定していない。
+現在は4 ply全数調査、旧候補の8 ply重点検証、MCTS頑健性試験、主要系列・全4初手・J001全応手の継続自己対局、C0評価反転分析、8 ply局面パターン横断集計を完了した。旧C0の6番穴・左は全4初手比較で0/6勝、J001の6番穴・右はNorth 6番穴・左への固定で0/6勝となり、両方を現行候補として`refuted`とした。暫定定石は認定していない。

@@ -1,0 +1,1039 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "replyId": "reply-02-e444b2fcdbdb",
+  "replyMoveKey": "takata:namua:0:5:right:::false",
+  "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-j001-fixed-north-reply-continuations",
+    "treeFile": "artifacts/joseki-study/corpus/tree.json",
+    "treeHash": "290189b74fbde08b3560f8f1f03df2cfc41916545d0df0d5530de305f77eb5b0",
+    "openingNodeId": "p1-f710cf3e10d4",
+    "openingStateHash": "564b3103b57a8e101266a8a6af3b5d5f92b2148ab0354deb076f06f95f35dbb2",
+    "openingMoveKey": "takata:namua:0:5:right:::false",
+    "replyStateHashes": {
+      "reply-01-7fbb95947798": "c0d54870c84b4f2690321d6b1a0f380d37297ced08a8ff77b9c5d75988e1d336",
+      "reply-02-e444b2fcdbdb": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "reply-03-3eab7e307f7b": "022f2d0e6d2d5dee564fe904df6bd59e64ea78421c73c967d50d7a44750fc580",
+      "reply-04-77fac4332fa5": "a5d596a702e61af992c5cb153e65329f670ee41b83ee5708f971b8eca3672eeb"
+    },
+    "conditionConfigs": {
+      "bao-d1": {
+        "conditionId": "bao-d1",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 1,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-d2": {
+        "conditionId": "bao-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-d3": {
+        "conditionId": "bao-d3",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 3,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-d4": {
+        "conditionId": "bao-d4",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 4,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "legacy-d2": {
+        "conditionId": "legacy-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "legacy",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "bao-v2-d2": {
+        "conditionId": "bao-v2-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao-v2",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      }
+    },
+    "conditionHashes": {
+      "bao-d1": "90ccda91bfcc43c57f140ae9f16d0b58890311067f20a7faf732e705e4f0b25b",
+      "bao-d2": "cc3050b28b9dc28380e325e4104c025f7e7e5a078d3a1eacdf90b08aa5b5b2b7",
+      "bao-d3": "16a7fdb42b9bc88d48f55800aad56fab18149d0ebed46594a70e58c2e54f60c3",
+      "bao-d4": "aafde6447abe38b6a528128fbf487cf101d025e9cee3ec154fc0ab9786908d8e",
+      "legacy-d2": "176e5bfb93d73dedcd78054f54f16b9068f9a1c5a8881633fb4ac2dfa9867720",
+      "bao-v2-d2": "61c31c8ac2a7ae6735a4cb8dc008d0037f464e6ec8d48440a6daefe933c74659"
+    },
+    "maxTotalPlies": 120,
+    "fixedCriteria": {
+      "terminalAndReplay": "all 24 games terminate and replay to the saved final state",
+      "perReplySouthWinsMinimum": 3,
+      "pooledSouthWinsMinimum": 12,
+      "interpretation": "screening for reply sensitivity, not promotion to joseki"
+    },
+    "sourceCommit": "009e410696f226190551bf2ad0168bf0c5849873",
+    "node": "v24.6.0",
+    "sourceFileSha256": "aca6d69941163b346b973ecce6a4142420f2a2a9638c87c11314782ab02f051d"
+  },
+  "results": [
+    {
+      "conditionId": "bao-d1",
+      "conditionConfig": {
+        "conditionId": "bao-d1",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 1,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "conditionConfigHash": "90ccda91bfcc43c57f140ae9f16d0b58890311067f20a7faf732e705e4f0b25b",
+      "seed": 3793152790,
+      "replyId": "reply-02-e444b2fcdbdb",
+      "replyMoveKey": "takata:namua:0:5:right:::false",
+      "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "winner": 0,
+      "reason": "no-move",
+      "openingPlies": 2,
+      "continuationPlies": 65,
+      "totalPlies": 67,
+      "continuationMoveKeys": [
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:7:left:::false",
+        "takata:namua:0:5:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "takata:namua:0:3:right:::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:left:right:use:false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "takata:namua:0:5:right:::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "takata:namua:0:3:left:::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:1:5:left:::false",
+        "capture:mtaji:1:0:right:::false",
+        "takata:mtaji:0:7:left:::false",
+        "capture:mtaji:0:4:right:::false",
+        "capture:mtaji:0:4:right:::false",
+        "capture:mtaji:0:0:right:::false",
+        "takata:mtaji:0:6:left:::false",
+        "capture:mtaji:1:5:left:::false",
+        "takata:mtaji:1:7:right:::false",
+        "capture:mtaji:1:7:left:::false",
+        "takata:mtaji:1:1:right:::false",
+        "capture:mtaji:1:6:left:::false",
+        "capture:mtaji:1:3:right:::false",
+        "capture:mtaji:1:3:left:::false",
+        "takata:mtaji:0:5:left:::false",
+        "capture:mtaji:1:2:right:::false",
+        "takata:mtaji:1:6:right:::false",
+        "capture:mtaji:1:6:left:::false",
+        "takata:mtaji:1:1:right:::false",
+        "capture:mtaji:0:0:right:::false",
+        "takata:mtaji:1:5:left:::false",
+        "capture:mtaji:0:1:left:::false"
+      ],
+      "continuationHash": "0d06f8b4a47cc2a891ce6265cc15bdc3353777a89995762b204a788c41a10fdf",
+      "finalState": {
+        "pits": [
+          [
+            [
+              4,
+              2,
+              6,
+              7,
+              1,
+              1,
+              6,
+              2
+            ],
+            [
+              0,
+              4,
+              6,
+              3,
+              7,
+              0,
+              4,
+              6
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": 0,
+        "reason": "no-move",
+        "turn": 68,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "finalStateHash": "d4c39d874b9041c5a0ae77437737af39f5d113a9946e2b542cc53b94a0213d8e",
+      "stats": {
+        "moves": 65,
+        "nodes": 1326,
+        "evaluations": 763,
+        "timeouts": 0,
+        "elapsedMoveMs": 1303.229127999948,
+        "elapsedMs": 1309.968741
+      }
+    },
+    {
+      "conditionId": "bao-d2",
+      "conditionConfig": {
+        "conditionId": "bao-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "conditionConfigHash": "cc3050b28b9dc28380e325e4104c025f7e7e5a078d3a1eacdf90b08aa5b5b2b7",
+      "seed": 1653116184,
+      "replyId": "reply-02-e444b2fcdbdb",
+      "replyMoveKey": "takata:namua:0:5:right:::false",
+      "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "winner": 0,
+      "reason": "front-empty",
+      "openingPlies": 2,
+      "continuationPlies": 63,
+      "totalPlies": 65,
+      "continuationMoveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "capture:namua:0:2:left:right:use:false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:mtaji:0:7:left:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:1:0:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:0:5:left:::false",
+        "capture:mtaji:0:1:right:::false",
+        "capture:mtaji:0:1:right:::false",
+        "capture:mtaji:1:1:right:::false",
+        "capture:mtaji:1:1:right:::false",
+        "takata:mtaji:0:2:right:::false",
+        "capture:mtaji:1:0:right:::false",
+        "takata:mtaji:1:6:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:1:4:left:::false",
+        "capture:mtaji:1:3:right:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:1:6:left:::false",
+        "takata:mtaji:0:5:left:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:0:1:right:::false"
+      ],
+      "continuationHash": "0244a52bbdbfc12fbc897c54f130638cec1ba3e765c41f697ed89a0cb53f2565",
+      "finalState": {
+        "pits": [
+          [
+            [
+              0,
+              3,
+              6,
+              2,
+              11,
+              5,
+              5,
+              1
+            ],
+            [
+              3,
+              4,
+              2,
+              0,
+              5,
+              3,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              3,
+              2,
+              1,
+              0,
+              2,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": 0,
+        "reason": "front-empty",
+        "turn": 65,
+        "pending": [
+          1,
+          0
+        ]
+      },
+      "finalStateHash": "216bf55fc7ae282118338c6f3233e66ecc43fccc7e9edff4ea29f6d9747f005b",
+      "stats": {
+        "moves": 63,
+        "nodes": 6407,
+        "evaluations": 2984,
+        "timeouts": 0,
+        "elapsedMoveMs": 8157.800102999856,
+        "elapsedMs": 8166.155701
+      }
+    },
+    {
+      "conditionId": "bao-d3",
+      "conditionConfig": {
+        "conditionId": "bao-d3",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 3,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "conditionConfigHash": "16a7fdb42b9bc88d48f55800aad56fab18149d0ebed46594a70e58c2e54f60c3",
+      "seed": 3490980523,
+      "replyId": "reply-02-e444b2fcdbdb",
+      "replyMoveKey": "takata:namua:0:5:right:::false",
+      "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "winner": 0,
+      "reason": "front-empty",
+      "openingPlies": 2,
+      "continuationPlies": 51,
+      "totalPlies": 53,
+      "continuationMoveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:5:left:right:stop:false",
+        "capture:namua:0:5:right:left::false",
+        "takata:namua:0:5:left:::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left:use:false",
+        "capture:namua:0:4:left:right:stop:false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:1:3:left:::false",
+        "takata:mtaji:0:6:right:::false",
+        "takata:mtaji:0:1:right:::false",
+        "takata:mtaji:1:4:left:::false",
+        "capture:mtaji:1:7:left:::false",
+        "takata:mtaji:1:7:left:::false",
+        "capture:mtaji:0:7:left:::false"
+      ],
+      "continuationHash": "d26a775e48c6e6d4f403a86a4489c0ec4839afcc5f01430c34a3d4c44658b5fa",
+      "finalState": {
+        "pits": [
+          [
+            [
+              0,
+              11,
+              9,
+              9,
+              3,
+              4,
+              0,
+              1
+            ],
+            [
+              0,
+              3,
+              0,
+              7,
+              2,
+              8,
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": 0,
+        "reason": "front-empty",
+        "turn": 53,
+        "pending": [
+          1,
+          0
+        ]
+      },
+      "finalStateHash": "aa18630adad1e91160f649d661bdd3172c55c591aaf100d7fd32b83bcedb6ba5",
+      "stats": {
+        "moves": 51,
+        "nodes": 9522,
+        "evaluations": 4016,
+        "timeouts": 0,
+        "elapsedMoveMs": 8862.676847999945,
+        "elapsedMs": 8870.02355
+      }
+    },
+    {
+      "conditionId": "bao-d4",
+      "conditionConfig": {
+        "conditionId": "bao-d4",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao",
+        "maxDepth": 4,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "conditionConfigHash": "aafde6447abe38b6a528128fbf487cf101d025e9cee3ec154fc0ab9786908d8e",
+      "seed": 3633198750,
+      "replyId": "reply-02-e444b2fcdbdb",
+      "replyMoveKey": "takata:namua:0:5:right:::false",
+      "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "winner": 1,
+      "reason": "front-empty",
+      "openingPlies": 2,
+      "continuationPlies": 52,
+      "totalPlies": 54,
+      "continuationMoveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "takata:namua:0:7:left:::false",
+        "capture:namua:0:2:left:right::false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:mtaji:0:2:right:::false",
+        "capture:mtaji:0:5:left:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:0:4:right:::false",
+        "capture:mtaji:0:3:right:::false",
+        "capture:mtaji:1:4:left:::false",
+        "takata:mtaji:1:5:right:::false",
+        "capture:mtaji:1:2:right:::false",
+        "takata:mtaji:1:4:right:::false",
+        "capture:mtaji:0:3:right:::false"
+      ],
+      "continuationHash": "f155e23028b78c0c89ad153b5f3a0acba7b236288bfefdbbf1bf81613faf6696",
+      "finalState": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              1,
+              2,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              5,
+              1,
+              0,
+              5,
+              13,
+              12,
+              0
+            ],
+            [
+              3,
+              9,
+              2,
+              0,
+              4,
+              1,
+              0,
+              4
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": 1,
+        "reason": "front-empty",
+        "turn": 54,
+        "pending": [
+          0,
+          1
+        ]
+      },
+      "finalStateHash": "f81b7bf3b02993eae9ca5a7329c0d9f37a31b74803b5fe030d0ef8fd99a195c3",
+      "stats": {
+        "moves": 52,
+        "nodes": 42244,
+        "evaluations": 17280,
+        "timeouts": 0,
+        "elapsedMoveMs": 50243.30328499999,
+        "elapsedMs": 50250.065469
+      }
+    },
+    {
+      "conditionId": "legacy-d2",
+      "conditionConfig": {
+        "conditionId": "legacy-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "legacy",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "conditionConfigHash": "176e5bfb93d73dedcd78054f54f16b9068f9a1c5a8881633fb4ac2dfa9867720",
+      "seed": 1223643334,
+      "replyId": "reply-02-e444b2fcdbdb",
+      "replyMoveKey": "takata:namua:0:5:right:::false",
+      "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "winner": 1,
+      "reason": "front-empty",
+      "openingPlies": 2,
+      "continuationPlies": 52,
+      "totalPlies": 54,
+      "continuationMoveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:0:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:mtaji:1:6:left:::false",
+        "capture:mtaji:0:1:right:::false",
+        "capture:mtaji:1:2:right:::false",
+        "capture:mtaji:1:5:left:::false",
+        "takata:mtaji:0:4:right:::false",
+        "capture:mtaji:0:7:left:::false",
+        "takata:mtaji:1:1:left:::false",
+        "takata:mtaji:0:0:right:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:1:6:left:::false"
+      ],
+      "continuationHash": "d7f9a1270eb471372f6065a59ee0c98f97f35d44934bdbe84cd707668c046864",
+      "finalState": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              4,
+              10,
+              2,
+              19,
+              0,
+              1,
+              0
+            ],
+            [
+              4,
+              2,
+              4,
+              1,
+              3,
+              0,
+              2,
+              3
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": 1,
+        "reason": "front-empty",
+        "turn": 54,
+        "pending": [
+          0,
+          1
+        ]
+      },
+      "finalStateHash": "ee1fd53f942a712bc37f8d12b3c72abab671bf351573c289a87da1b531c5402d",
+      "stats": {
+        "moves": 52,
+        "nodes": 7470,
+        "evaluations": 3520,
+        "timeouts": 0,
+        "elapsedMoveMs": 6805.005040999968,
+        "elapsedMs": 6810.996024
+      }
+    },
+    {
+      "conditionId": "bao-v2-d2",
+      "conditionConfig": {
+        "conditionId": "bao-v2-d2",
+        "level": "hard",
+        "searchProfile": "phase2",
+        "evaluationProfile": "bao-v2",
+        "maxDepth": 2,
+        "timeLimitMs": "Infinity",
+        "maxTotalPlies": 120
+      },
+      "conditionConfigHash": "61c31c8ac2a7ae6735a4cb8dc008d0037f464e6ec8d48440a6daefe933c74659",
+      "seed": 1655178065,
+      "replyId": "reply-02-e444b2fcdbdb",
+      "replyMoveKey": "takata:namua:0:5:right:::false",
+      "replyStateHash": "ffc957df3d0daf6d51e35318aa5e0fb3764a2eba1de7289268beb4d2d962ba9d",
+      "winner": 0,
+      "reason": "front-empty",
+      "openingPlies": 2,
+      "continuationPlies": 63,
+      "totalPlies": 65,
+      "continuationMoveKeys": [
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "takata:namua:0:6:left:::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:7:left:right:stop:false",
+        "capture:namua:0:2:left:right:use:false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:3:left:right::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:4:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:3:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:5:right:left::false",
+        "capture:namua:0:5:left:right::false",
+        "capture:namua:0:4:right:left::false",
+        "capture:namua:0:7:left:right::false",
+        "capture:namua:0:2:left:right::false",
+        "capture:namua:0:1:right:left::false",
+        "capture:namua:0:2:right:left::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:namua:0:6:left:right::false",
+        "capture:mtaji:0:7:left:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:1:0:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:0:5:left:::false",
+        "capture:mtaji:0:1:right:::false",
+        "capture:mtaji:0:1:right:::false",
+        "capture:mtaji:1:1:right:::false",
+        "capture:mtaji:1:1:right:::false",
+        "takata:mtaji:0:2:right:::false",
+        "capture:mtaji:1:0:right:::false",
+        "takata:mtaji:1:6:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:1:4:left:::false",
+        "capture:mtaji:1:3:right:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:1:6:left:::false",
+        "takata:mtaji:0:5:left:::false",
+        "capture:mtaji:1:7:left:::false",
+        "capture:mtaji:0:6:left:::false",
+        "capture:mtaji:0:1:right:::false"
+      ],
+      "continuationHash": "0244a52bbdbfc12fbc897c54f130638cec1ba3e765c41f697ed89a0cb53f2565",
+      "finalState": {
+        "pits": [
+          [
+            [
+              0,
+              3,
+              6,
+              2,
+              11,
+              5,
+              5,
+              1
+            ],
+            [
+              3,
+              4,
+              2,
+              0,
+              5,
+              3,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              1,
+              3,
+              2,
+              1,
+              0,
+              2,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": 0,
+        "reason": "front-empty",
+        "turn": 65,
+        "pending": [
+          1,
+          0
+        ]
+      },
+      "finalStateHash": "216bf55fc7ae282118338c6f3233e66ecc43fccc7e9edff4ea29f6d9747f005b",
+      "stats": {
+        "moves": 63,
+        "nodes": 6371,
+        "evaluations": 2978,
+        "timeouts": 0,
+        "elapsedMoveMs": 7991.138495999883,
+        "elapsedMs": 7999.348902
+      }
+    }
+  ],
+  "completedAt": "2026-07-17T23:53:09.146Z"
+}
