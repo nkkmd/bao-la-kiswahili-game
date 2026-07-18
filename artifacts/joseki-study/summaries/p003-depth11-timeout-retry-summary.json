@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T02:13:13.600Z",
+  "status": "depth-11-all-candidate-values-complete",
+  "caveat": "This retry changes only the timed-out child limit from 60 to 120 seconds; the root and other child results remain the saved depth-11 results.",
+  "moveKey": "capture:namua:0:2:right:left::false",
+  "priorCompletedDepth": 9,
+  "completedDepth": 10,
+  "timedOut": false,
+  "southScore": -295,
+  "elapsedMs": 72025.76459199999,
+  "nodes": 95786,
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T02:13:13.600Z",
+    "passed": true,
+    "sourceHashMatches": true,
+    "moveStillLegal": true,
+    "childStateHashMatches": true,
+    "completedTargetDepth": true,
+    "verificationHash": "f1c5c2254a428a2ac2b081009a3545a34bd871d6e7c17d5c3ec4327a0bb02637"
+  }
+}

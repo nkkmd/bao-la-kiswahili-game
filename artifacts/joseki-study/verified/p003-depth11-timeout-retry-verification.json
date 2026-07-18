@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T02:13:13.600Z",
+  "passed": true,
+  "sourceHashMatches": true,
+  "moveStillLegal": true,
+  "childStateHashMatches": true,
+  "completedTargetDepth": true,
+  "verificationHash": "f1c5c2254a428a2ac2b081009a3545a34bd871d6e7c17d5c3ec4327a0bb02637"
+}

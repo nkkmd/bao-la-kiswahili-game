@@ -4,6 +4,8 @@
 
 判定: `root-complete-with-candidate-timeout`
 
+追記: timeoutした1候補は120秒の限定再計測でdepth 10を完了した。最終的な4候補統合結果は[P003 depth 11 全候補値の統合結果](P003_DEPTH11_COMPLETE.md)を参照。
+
 P003のdepth 9〜10完了後、同じphase2・bao・quiescence depth 1でdepth 11を追試した。rootおよび各固定子局面は個別に60秒上限とした。
 
 | depth | 状態 | 推奨 | root値 | 自己対局勝数首位−合意 | nodes | 合計ms |

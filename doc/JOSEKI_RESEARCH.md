@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.13.0
+Version: 0.14.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -49,7 +49,7 @@ Version: 0.13.0
 
 ## 5. 次の研究課題
 
-1. P003 depth 11でtimeoutした非注目候補だけを上限延長して再計測するか、評価器を使わない独立方式で注目2手を検証する。
+1. P003を評価器に依存しない独立方式で検証する。depth 12全面探索は費用増のため優先しない。
 2. P002の有界強制勝ちを別ルール実装または人間による棋譜確認で再検証する。
 3. 候補判定を「固定自己対局勝数」と「深いminimax・終局証明」に分離する。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
@@ -477,3 +477,20 @@ depth 11でも「深くすれば自己対局勝数首位手へ切り替わる」
 - 合計162.7秒、個別解析上限60秒
 - verification hash: `0900eff032d7dc018db21d00a80db0b9453a2f4ce21e26227ad4d3852527e0f6`
 - 詳細は`doc/joseki/P003_DEPTH11.md`を参照
+
+## 23. P003 depth 11 timeout枝の限定再計測と全候補統合
+
+depth 11で唯一timeoutした非注目候補`capture:namua:0:2:right:left::false`だけを、同じseed・phase2・bao・quiescence depth 1のまま個別上限120秒で再計測した。72.0秒、95,786 nodesで必要なchild depth 10を完了し、South値-295となった。
+
+初回に完了したrootと3候補へこの1件を統合すると、4候補の順位はconsensus手-45、別の非合意手-173、再計測手-295、自己対局勝数首位手-302となった。rootのdepth 11推奨・値と候補別首位が一致し、自己対局勝数首位手はconsensus手より257点低い。
+
+これによりdepth 11の4候補比較は完了した。「深くすれば自己対局勝数首位手へ切り替わる」という仮説はdepth 11まで支持されない。1候補だけ上限が異なるため計算時間の横比較には使わないが、全候補が同じ目標depthを完了しており、値順位の統合は可能である。
+
+完全性監査:
+
+- root completed depth 11、候補4/4 completed depth 10
+- retry 1件、上限120秒、timeoutなし、child state hash一致
+- root推奨と候補別首位が一致
+- retry verification hash: `f1c5c2254a428a2ac2b081009a3545a34bd871d6e7c17d5c3ec4327a0bb02637`
+- consolidated verification hash: `43492bf42b101987a36ca8e2439dbd86a5412c132660567113248a293ddd1947`
+- 詳細は`doc/joseki/P003_DEPTH11_TIMEOUT_RETRY.md`と`doc/joseki/P003_DEPTH11_COMPLETE.md`を参照

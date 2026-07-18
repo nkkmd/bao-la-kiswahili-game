@@ -417,3 +417,24 @@ test("P003 depth-eleven root completes while one non-focal child times out", () 
   assert.equal(summary.integrity.verificationHash,
     "0900eff032d7dc018db21d00a80db0b9453a2f4ce21e26227ad4d3852527e0f6");
 });
+
+test("P003 depth-eleven retry completes all four candidate values", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/p003-depth11-complete-summary.json", "utf8",
+  ));
+  assert.equal(summary.status, "depth-11-all-candidate-values-complete");
+  assert.equal(summary.root.completedDepth, 11);
+  assert.equal(summary.root.timedOut, false);
+  assert.equal(summary.integrity.candidatesComplete, 4);
+  assert.equal(summary.integrity.retriedCandidates, 1);
+  assert.equal(summary.integrity.rootMatchesTopCandidate, true);
+  assert.equal(summary.ranking.every(({ completedDepth, timedOut }) =>
+    completedDepth === 10 && !timedOut), true);
+  assert.deepEqual(summary.ranking.map(({ southScore }) => southScore),
+    [-45, -173, -295, -302]);
+  assert.equal(summary.ranking[0].isConsensus, true);
+  assert.equal(summary.ranking[3].isSelfPlayWinCountLeader, true);
+  assert.equal(summary.selfPlayWinCountLeaderMinusConsensus, -257);
+  assert.equal(summary.integrity.verificationHash,
+    "43492bf42b101987a36ca8e2439dbd86a5412c132660567113248a293ddd1947");
+});

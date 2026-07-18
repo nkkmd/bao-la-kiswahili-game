@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T02:15:47.895Z",
+  "status": "depth-11-all-candidate-values-complete",
+  "scope": "P003 depth-11 root plus four depth-10 fixed-child analyses; one child retried at 120 seconds",
+  "caveat": "The retry changes the time limit for one child only. All searches otherwise use the same phase2, bao, quiescence-depth-1 configuration and deterministic seed scheme.",
+  "root": {
+    "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+    "rootScore": -45,
+    "completedDepth": 11,
+    "timedOut": false,
+    "nodes": 33286,
+    "elapsedMs": 24148.761401
+  },
+  "consensusMoveKey": "capture:namua:0:4:right:left::false",
+  "selfPlayWinCountLeaderMoveKey": "capture:namua:0:2:left:right::false",
+  "selfPlayWinCountLeaderMinusConsensus": -257,
+  "ranking": [
+    {
+      "rank": 1,
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "stateHash": "185bdbe15e1b78ddc3881de2ad7467d33140b63594b40cd561852b8c01c32b34",
+      "southScore": -45,
+      "completedDepth": 10,
+      "timedOut": false,
+      "nodes": 22861,
+      "elapsedMs": 16197.210522000008,
+      "timeLimitMs": 60000,
+      "retried": false,
+      "isConsensus": true,
+      "isSelfPlayWinCountLeader": false
+    },
+    {
+      "rank": 2,
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "stateHash": "4c9ab5f96b428e1e4706bfbe6b34aa3e21236618ec5246ea6359db3570be4a4f",
+      "southScore": -173,
+      "completedDepth": 10,
+      "timedOut": false,
+      "nodes": 19963,
+      "elapsedMs": 12812.870354999992,
+      "timeLimitMs": 60000,
+      "retried": false,
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": false
+    },
+    {
+      "rank": 3,
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "stateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+      "southScore": -295,
+      "completedDepth": 10,
+      "timedOut": false,
+      "nodes": 95786,
+      "elapsedMs": 72025.76459199999,
+      "timeLimitMs": 120000,
+      "retried": true,
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": false
+    },
+    {
+      "rank": 4,
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "stateHash": "30aee5e97d2c5148a6abe358c5589eac29f081db3ce4825ccbe830834144ff7f",
+      "southScore": -302,
+      "completedDepth": 10,
+      "timedOut": false,
+      "nodes": 58380,
+      "elapsedMs": 49541.625559999986,
+      "timeLimitMs": 60000,
+      "retried": false,
+      "isConsensus": false,
+      "isSelfPlayWinCountLeader": true
+    }
+  ],
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T02:15:47.894Z",
+    "passed": true,
+    "sourceFileSha256": "4ac83c5e9160b0705b04f384225a178e700c135130e193e9ba474ab3ba408499",
+    "sourceHashMatches": true,
+    "rootComplete": true,
+    "candidatesComplete": 4,
+    "retriedCandidates": 1,
+    "rootMatchesTopCandidate": true,
+    "inputHash": "c47221c82389eaa3845974c6779f8b4c7391f29ced0f724f2f04cae292cfb1fc",
+    "verificationHash": "43492bf42b101987a36ca8e2439dbd86a5412c132660567113248a293ddd1947"
+  }
+}

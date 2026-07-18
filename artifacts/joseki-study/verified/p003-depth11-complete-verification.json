@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-18T02:15:47.894Z",
+  "passed": true,
+  "sourceFileSha256": "4ac83c5e9160b0705b04f384225a178e700c135130e193e9ba474ab3ba408499",
+  "sourceHashMatches": true,
+  "rootComplete": true,
+  "candidatesComplete": 4,
+  "retriedCandidates": 1,
+  "rootMatchesTopCandidate": true,
+  "inputHash": "c47221c82389eaa3845974c6779f8b4c7391f29ced0f724f2f04cae292cfb1fc",
+  "verificationHash": "43492bf42b101987a36ca8e2439dbd86a5412c132660567113248a293ddd1947"
+}
