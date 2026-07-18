@@ -393,3 +393,27 @@ test("P003 keeps the consensus move through depth ten", () => {
     [-260, -198]);
   assert.equal(summary.results.every(({ recommendedIsTerminalBest }) => !recommendedIsTerminalBest), true);
 });
+
+test("P003 depth-eleven root completes while one non-focal child times out", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/p003-depth11-summary.json", "utf8",
+  ));
+  const row = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/robustness/p003-depth11/p003-d11.json", "utf8",
+  ));
+  assert.equal(summary.status, "root-complete-with-candidate-timeout");
+  assert.equal(summary.result.completedDepth, 11);
+  assert.equal(summary.result.rootTimedOut, false);
+  assert.equal(summary.result.recommendedMoveKey, summary.consensusMoveKey);
+  assert.equal(summary.result.focalComparisonComplete, true);
+  assert.equal(summary.result.terminalBestMinusConsensus, -257);
+  assert.deepEqual(summary.result.timedOutCandidateMoveKeys,
+    ["capture:namua:0:2:right:left::false"]);
+  const focal = row.candidates.filter(({ moveKey }) =>
+    [summary.consensusMoveKey, summary.terminalBestMoveKey].includes(moveKey));
+  assert.equal(focal.every(({ analysis }) =>
+    !analysis.timedOut && analysis.completedDepth === 10), true);
+  assert.equal(row.candidates.filter(({ analysis }) => analysis.timedOut).length, 1);
+  assert.equal(summary.integrity.verificationHash,
+    "0900eff032d7dc018db21d00a80db0b9453a2f4ce21e26227ad4d3852527e0f6");
+});

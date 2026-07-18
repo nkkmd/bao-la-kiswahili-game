@@ -1,6 +1,6 @@
 # Bao la Kiswahili 定石研究
 
-Version: 0.12.0
+Version: 0.13.0
 更新日: 2026-07-18
 
 ## 1. 現在の到達点
@@ -49,7 +49,7 @@ Version: 0.12.0
 
 ## 5. 次の研究課題
 
-1. P003をdepth 11以降または独立探索で検証し、合意手の優位・自己対局勝数首位手への切替・timeoutのいずれが先に現れるか測る。
+1. P003 depth 11でtimeoutした非注目候補だけを上限延長して再計測するか、評価器を使わない独立方式で注目2手を検証する。
 2. P002の有界強制勝ちを別ルール実装または人間による棋譜確認で再検証する。
 3. 候補判定を「固定自己対局勝数」と「深いminimax・終局証明」に分離する。
 4. 低分岐以外のMCTSではcandidate制限・priorを再設計してから再評価する。
@@ -460,3 +460,20 @@ P002のconsensus手は強制勝ち、alternative手は9 ply以内の強制勝ち
 - certificate hash: `6f137936fabc3282809f711b603eade69f47e8f1ffdfc1a8653c771ad33878fb`
 - result hash: `20c7db44a94fe63cfda36259e5adbeb34ec957e988168649d8fc7057aa1424cd`
 - 詳細は`doc/joseki/P002_BOUNDED_WIN_PROOF.md`を参照
+
+## 22. P003 depth 11追試
+
+P003を同じphase2・bao・quiescence depth 1でdepth 11へ延長した。root探索は24.1秒でdepth 11を完了し、consensus手を維持してroot値-45となった。自己対局勝数首位手とconsensus手の固定子解析も必要なdepth 10まで完了し、South値差（自己対局勝数首位−consensus）は-257だった。
+
+ただし、4候補のうち別の非合意手`capture:namua:0:2:right:left::false`の固定子解析はdepth 9完了後、60秒上限でtimeoutした。そのため、root推奨と注目2手の比較は完了したが、4候補全ての固定子値比較は未完了である。timeoutした手は自己対局勝数首位手ではなく、timeoutを注目2手の順位反転と解釈しない。
+
+depth 11でも「深くすれば自己対局勝数首位手へ切り替わる」という仮説は支持されなかった。一方、探索費用が急増して全候補比較に上限が現れたため、同一設定のdepth 12全面実行は行わず、次はtimeout枝だけの限定再計測か独立方式を優先する。
+
+完全性監査:
+
+- root: completed depth 11、timeoutなし、33,286 nodes、root値-45
+- 注目2手の固定子解析: 両方completed depth 10、値差-257
+- 非注目候補timeout: 1件、completed depth 9、76,376 nodes
+- 合計162.7秒、個別解析上限60秒
+- verification hash: `0900eff032d7dc018db21d00a80db0b9453a2f4ce21e26227ad4d3852527e0f6`
+- 詳細は`doc/joseki/P003_DEPTH11.md`を参照

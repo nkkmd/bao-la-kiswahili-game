@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-18T02:06:40.853Z",
+  "status": "root-complete-with-candidate-timeout",
+  "scope": "P003 phase2 bao depth 11, quiescence depth 1",
+  "caveat": "The depth-11 root and the focal consensus-versus-self-play-leader comparison completed, but one other fixed-child analysis timed out; the all-candidate comparison is incomplete.",
+  "nodeId": "p8-701bf2f6430d",
+  "consensusMoveKey": "capture:namua:0:4:right:left::false",
+  "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+  "result": {
+    "depth": 11,
+    "status": "timed-out",
+    "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+    "rootScore": -45,
+    "completedDepth": 11,
+    "nodes": 33286,
+    "elapsedMs": 162706.223856,
+    "rootTimedOut": false,
+    "timedOutCandidateMoveKeys": [
+      "capture:namua:0:2:right:left::false"
+    ],
+    "focalComparisonComplete": true,
+    "terminalBestMinusConsensus": -257,
+    "recommendedIsTerminalBest": false
+  },
+  "integrity": {
+    "schemaVersion": 1,
+    "verifiedAt": "2026-07-18T02:06:40.852Z",
+    "passed": true,
+    "expectedRows": 1,
+    "recordedRows": 1,
+    "completeRows": 0,
+    "timedOutRows": 1,
+    "sourceHashMatches": true,
+    "priorVerificationHash": "f38735dfe924ff0f2467dc552df8e23d6c16cf9094d3e9bd10fdfd9176dce94d",
+    "verificationHash": "0900eff032d7dc018db21d00a80db0b9453a2f4ce21e26227ad4d3852527e0f6"
+  }
+}

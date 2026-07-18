@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "timed-out",
+  "studyId": "p003",
+  "nodeId": "p8-701bf2f6430d",
+  "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+  "depth": 11,
+  "identity": {
+    "schemaVersion": 1,
+    "experiment": "joseki-p003-depth11",
+    "studyId": "p003",
+    "nodeId": "p8-701bf2f6430d",
+    "stateHash": "19248f08cc4ec61b00e7e8e780cbca24f9a866b14a0298b5a8ba5ec59a1218b9",
+    "depth": 11,
+    "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+    "consensusMoveKey": "capture:namua:0:4:right:left::false",
+    "searchConfig": {
+      "level": "hard",
+      "searchProfile": "phase2",
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1,
+      "timeLimitMsPerAnalysis": 60000
+    },
+    "fixedRules": {
+      "scope": "one-depth continuation after P003 completed depth 10",
+      "timeout": "record a timed-out result if root or any fixed child reaches 60 seconds",
+      "interpretation": "a completed result applies only through depth 11; a timeout is not a move ranking"
+    },
+    "priorVerificationHash": "f38735dfe924ff0f2467dc552df8e23d6c16cf9094d3e9bd10fdfd9176dce94d",
+    "sourceFileSha256": "f64de8ad47665d458e5a116fffcd781d0e14924722ad4111ebd421045561bdc1"
+  },
+  "root": {
+    "recommendedMoveKey": "capture:namua:0:4:right:left::false",
+    "rootScore": -45,
+    "completedDepth": 11,
+    "timedOut": false,
+    "nodes": 33286,
+    "evaluations": 12982,
+    "cutoffs": 8940,
+    "cacheHits": 825,
+    "elapsedMs": 24148.761401
+  },
+  "candidates": [
+    {
+      "moveKey": "capture:namua:0:2:right:left::false",
+      "stateHash": "accd584a1b4cc3f7c7c3a62bf1914675632936834f94a6f7cc5c10f723489753",
+      "southScore": -4,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "rootScore": 4,
+        "completedDepth": 9,
+        "timedOut": true,
+        "nodes": 76376,
+        "evaluations": 30595,
+        "cutoffs": 18697,
+        "cacheHits": 2393,
+        "elapsedMs": 60002.281328
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:2:left:right::false",
+      "stateHash": "30aee5e97d2c5148a6abe358c5589eac29f081db3ce4825ccbe830834144ff7f",
+      "southScore": -302,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:3:left:right::false",
+        "rootScore": 302,
+        "completedDepth": 10,
+        "timedOut": false,
+        "nodes": 58380,
+        "evaluations": 25530,
+        "cutoffs": 13957,
+        "cacheHits": 753,
+        "elapsedMs": 49541.625559999986
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:4:right:left::false",
+      "stateHash": "185bdbe15e1b78ddc3881de2ad7467d33140b63594b40cd561852b8c01c32b34",
+      "southScore": -45,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:5:left:right::false",
+        "rootScore": 45,
+        "completedDepth": 10,
+        "timedOut": false,
+        "nodes": 22861,
+        "evaluations": 8626,
+        "cutoffs": 6004,
+        "cacheHits": 822,
+        "elapsedMs": 16197.210522000008
+      }
+    },
+    {
+      "moveKey": "capture:namua:0:4:left:right::false",
+      "stateHash": "4c9ab5f96b428e1e4706bfbe6b34aa3e21236618ec5246ea6359db3570be4a4f",
+      "southScore": -173,
+      "analysis": {
+        "recommendedMoveKey": "capture:namua:0:5:right:left::false",
+        "rootScore": 173,
+        "completedDepth": 10,
+        "timedOut": false,
+        "nodes": 19963,
+        "evaluations": 9219,
+        "cutoffs": 5203,
+        "cacheHits": 749,
+        "elapsedMs": 12812.870354999992
+      }
+    }
+  ],
+  "comparison": {
+    "terminalBestMoveKey": "capture:namua:0:2:left:right::false",
+    "consensusMoveKey": "capture:namua:0:4:right:left::false",
+    "recommendedIsTerminalBest": false,
+    "recommendedIsConsensus": true,
+    "terminalBestMinusConsensus": -257
+  },
+  "elapsedMs": 162706.223856
+}
