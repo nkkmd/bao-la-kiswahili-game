@@ -457,3 +457,23 @@ test("P003 terminal-only audit leaves every candidate unresolved through thirtee
   assert.equal(summary.integrity.verificationHash,
     "b269577e154d86b93ac1f3abcc8b72a1418f623a3b3f6f5605d55d2fafb4707c");
 });
+
+test("evidence axes separate policy outcomes from search and bounded proofs", () => {
+  const summary = JSON.parse(fs.readFileSync(
+    "artifacts/joseki-study/summaries/evidence-axes-summary.json", "utf8",
+  ));
+  assert.equal(summary.status, "evidence-axes-separated-no-promotion");
+  assert.equal(summary.rows.length, 6);
+  const p002 = summary.studies.find(({ studyId }) => studyId === "P002");
+  const p003 = summary.studies.find(({ studyId }) => studyId === "P003");
+  assert.equal(p002.consensusEvidenceState, "bounded-forced-win-supported");
+  assert.equal(p002.axesAgreeOnConsensus, false);
+  assert.equal(p003.consensusEvidenceState, "deep-search-supported-bounded-unresolved");
+  assert.equal(p003.axesAgreeOnConsensus, false);
+  assert.equal(summary.rows.every(({ promotionEligible }) => !promotionEligible), true);
+  assert.equal(summary.rows.every(({ fixedSelfPlay }) =>
+    fixedSelfPlay.interpretation.includes("not a minimax move rank")), true);
+  assert.equal(summary.integrity.fixedSelfPlayDeepRankDisagreements, 4);
+  assert.equal(summary.integrity.verificationHash,
+    "02590595d67b54b6e8d468d1a0e865af93432d89bfe51e85e95d5d8269d6fd39");
+});

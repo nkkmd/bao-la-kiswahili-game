@@ -3,7 +3,7 @@
 Version: 0.2.0
 作成日: 2026-07-17
 
-実施状況: Phase 0〜7、P001〜P003、横断trace、depth sweepを完了。P002はAI評価器・alpha-betaを使わない9 ply AND/OR検証でも合意手のSouth強制勝ちを確認した。P003はdepth 11の4候補値を完備してconsensus手が首位、自己対局勝数首位手との差は-257。さらに評価器非依存の11/13 ply三値AND/OR監査では全4候補が`unresolved`となり、短い強制終局では値順位を説明できなかった。次は自己対局勝数・探索値・有界終局を分離した判定体系を整備する。暫定定石は未認定。結果は`doc/JOSEKI_RESEARCH.md`を参照。
+実施状況: Phase 0〜7、P001〜P003、横断trace、depth sweepを完了。P002は9 ply有界強制勝ちを確認し、P003はdepth 11でconsensus首位、13 ply有界終局は全候補`unresolved`だった。固定自己対局勝数・深い探索値・有界強制終局・cross-method一致を分離した判定表を整備し、P002を`bounded-forced-win-supported`、P003を`deep-search-supported-bounded-unresolved`とした。別ルール実装または人間対局検証がないため両方とも昇格不可、暫定定石は未認定。結果は`doc/JOSEKI_RESEARCH.md`を参照。
 
 ## 0. 概要
 
