@@ -23,7 +23,6 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - オフライン対応デプロイのための PWA ファイル
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
-- 標準初期局面の全初手・全応手、深度・評価方式、MCTS、継続自己対局、有界終局を比較する再現可能な定石研究
 - 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
 - 「むずかしい」「ムタアラム」の直前探索統計と、Phase 10A向け保存推奨判定
 
@@ -129,21 +128,6 @@ node tools/diagnostic-to-fixture.js \
 
 詳しい手順は [`doc/AI_HUMAN_REVIEW_GUIDE.md`](doc/AI_HUMAN_REVIEW_GUIDE.md)、ベンチマーク条件とベースライン結果は [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md) に記録しています。
 
-## 定石研究
-
-第一次定石研究は、成功条件8/8を満たし、`completed-without-provisional-joseki`として完了しています。標準初期局面の4初手はいずれも全応手頑健性基準に達せず、認定定石・暫定定石・validatedはいずれも0件でした。これは、AI条件間の不安定性、全応手に対する脆弱性、固定自己対局と深い探索の不一致を再現可能に確認した否定的研究成果です。
-
-条件付き局面P002では、現在のルール実装内で9 plyのSouth強制勝ちを確認しました。ただし、人間または別実装による外部検証は未実施であり、定石には昇格していません。
-
-- [第一次研究の最終結論](doc/joseki/JOSEKI_FIRST_STUDY_CONCLUSION.md)
-- [研究成果の索引](doc/joseki/README.md)
-- [P002 9手 人間向け盤面照合票](doc/joseki/P002_HUMAN_REPLAY.md)
-- [将来研究バックログ](doc/joseki/JOSEKI_FUTURE_RESEARCH.md)
-- [研究計画と完了基準](doc/JOSEKI_RESEARCH_PLAN.md)
-- [研究方法・実験結果の統合記録](doc/JOSEKI_RESEARCH.md)
-
-実験コマンドは [`tools/experiments/README.md`](tools/experiments/README.md)、保存済み成果物は `artifacts/joseki-study/` を参照してください。
-
 ## プロジェクト構成
 
 | パス | 役割 |
@@ -160,7 +144,6 @@ node tools/diagnostic-to-fixture.js \
 | `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
 | `test/` | 回帰テスト |
 | `artifacts/` | 保存済みのベンチマーク・チューニング・研究出力 |
-| `artifacts/joseki-study/` | 定石研究の固定コーパス、実験結果、集計、検証記録 |
 | `doc/` | ルール学習、ロードマップ、ベンチマーク、開発ログ、技術レポート |
 
 ## ドキュメント
