@@ -24,6 +24,10 @@ assert.match(serviceWorker, /\.\/review-suggestion\.js/,
   "review suggestions remain available in the offline cache");
 assert.match(serviceWorker, /\.\/diagnostic-download\.js/,
   "diagnostic downloads remain available in the offline cache");
+assert.match(serviceWorker, /["']\.\/privacy["']/,
+  "the Privacy Policy clean URL remains available in the offline cache");
+assert.doesNotMatch(serviceWorker, /["']\.\/privacy\.html["']/,
+  "the offline cache does not store the redirected Privacy Policy URL");
 assert.match(privacy, /AI診断記録を外部へ自動送信する機能はありません/,
   "privacy policy states that diagnostic records are not uploaded automatically");
 assert.match(privacy, /最大50件/, "privacy policy documents the local record limit");
