@@ -4,7 +4,7 @@
 
 ## 現在の段階
 
-Phase 1へ進む前に、smoke runの実行基盤と標本多様性を確認している。
+10局diversity smokeが多様性ゲートを通過したため、同じ条件を固定した100局パイロットへ進む。
 
 - 固定seed
 - C0相当の固定条件
@@ -66,6 +66,52 @@ artifacts/phase-transition/diversity-smoke/
 └── manifest.json
 ```
 
+## 100局パイロット
+
+パイロットは明示的に`pilot`プロファイルを選択して実行する。
+
+```bash
+node tools/experiments/run-phase-transition-research.js --profile pilot
+```
+
+既定条件はdiversity smokeと同じで、対局数と出力先だけをパイロット用に変更する。
+
+```text
+profile: pilot
+games: 100
+base seed: 20260721
+max ply: 180
+baseline games: 1
+seeded opening plies: 6
+condition: C0
+level: hard
+evaluator: bao
+search: phase2
+max depth: 2
+time limit: fixed time limitなし
+```
+
+出力:
+
+```text
+artifacts/phase-transition/pilot/
+├── games/
+│   ├── game-0000.json
+│   └── ...
+├── observations.jsonl
+├── games.json
+└── manifest.json
+```
+
+ゲームIDは`pt-pilot-0000`形式となる。対局数や出力先を試験目的で変更する場合は、プロファイル指定後に引数で上書きできる。
+
+```bash
+node tools/experiments/run-phase-transition-research.js \
+  --profile pilot \
+  --games 5 \
+  --output artifacts/phase-transition/pilot-test
+```
+
 各ゲーム要約には次を記録する。
 
 - `baseline`
@@ -99,8 +145,10 @@ smoke runから100局パイロットへ進む最低条件は次とする。
 
 ## 進捗確認
 
+実行中のプロファイルと同じ引数を指定する。
+
 ```bash
-node tools/experiments/run-phase-transition-research.js --status
+node tools/experiments/run-phase-transition-research.js --profile pilot --status
 ```
 
 ## 中断後の再開
@@ -108,15 +156,15 @@ node tools/experiments/run-phase-transition-research.js --status
 同じコマンドを再実行する。完了済みのゲームファイルは検証後にスキップされる。
 
 ```bash
-node tools/experiments/run-phase-transition-research.js
+node tools/experiments/run-phase-transition-research.js --profile pilot
 ```
 
-source、条件、seed、対局数、最大ply、開局ply数などから作られる設定hashが異なる場合、既存成果物からの再開を拒否する。
+profile、source、条件、seed、対局数、最大ply、開局ply数などから作られる設定hashが異なる場合、既存成果物からの再開を拒否する。
 
 ## 最初から再実行
 
 ```bash
-node tools/experiments/run-phase-transition-research.js --force
+node tools/experiments/run-phase-transition-research.js --profile pilot --force
 ```
 
 `--force`は指定した出力ディレクトリを削除して再生成するため、必要な成果物を退避してから使用する。
@@ -125,7 +173,7 @@ node tools/experiments/run-phase-transition-research.js --force
 
 ```bash
 node tools/experiments/verify-phase-transition-artifacts.js \
-  --input artifacts/phase-transition/diversity-smoke
+  --input artifacts/phase-transition/pilot
 ```
 
 検証器は次を確認する。
@@ -158,4 +206,4 @@ Notebookの既定入力先:
 /content/observations.jsonl
 ```
 
-diversity smoke runは統計的結論を得るための正式研究ではない。開局分散が機能すること、軌跡重複率、終局率、namua/mtaji到達状況、対局長、データ量を確認し、100局パイロットの条件を固定するために使用する。
+100局パイロットでは統計的な最終結論を出さず、相転移候補の可視化方法、局面特徴量の分布、namuaからmtajiへの遷移、対局長、勝者分布、重複軌跡率を確認し、正式実験の条件と分析手順を固定する。

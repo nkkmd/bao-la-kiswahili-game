@@ -12,6 +12,19 @@ const {
   stateHash,
 } = require("./lib/phase-transition-features.js");
 
+const PROFILES = {
+  "diversity-smoke": {
+    games: 10,
+    output: "artifacts/phase-transition/diversity-smoke",
+    gameIdPrefix: "pt-diversity",
+  },
+  pilot: {
+    games: 100,
+    output: "artifacts/phase-transition/pilot",
+    gameIdPrefix: "pt-pilot",
+  },
+};
+
 function seededRandom(seed) {
   let value = seed >>> 0;
   return () => {
@@ -43,7 +56,8 @@ function integerArg(value, name, minimum = 0) {
 
 function parseArgs(argv) {
   const options = {
-    games: 10,
+    profile: "diversity-smoke",
+    games: null,
     seed: 20260721,
     maxPly: 180,
     openingPlies: 6,
@@ -52,7 +66,7 @@ function parseArgs(argv) {
     evaluationProfile: "bao",
     searchProfile: "phase2",
     maxDepth: 2,
-    output: "artifacts/phase-transition/diversity-smoke",
+    output: null,
     force: false,
     status: false,
   };
@@ -61,7 +75,8 @@ function parseArgs(argv) {
     const value = argv[index + 1];
     if (arg === "--force") { options.force = true; continue; }
     if (arg === "--status") { options.status = true; continue; }
-    if (arg === "--games") options.games = integerArg(value, arg, 1);
+    if (arg === "--profile") options.profile = value;
+    else if (arg === "--games") options.games = integerArg(value, arg, 1);
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--max-ply") options.maxPly = integerArg(value, arg, 1);
     else if (arg === "--opening-plies") options.openingPlies = integerArg(value, arg, 0);
@@ -74,6 +89,12 @@ function parseArgs(argv) {
     else throw new Error(`Unknown argument: ${arg}`);
     index += 1;
   }
+  if (!Object.hasOwn(PROFILES, options.profile)) {
+    throw new Error(`Invalid profile: ${options.profile}`);
+  }
+  const defaults = PROFILES[options.profile];
+  options.games ??= defaults.games;
+  options.output ??= defaults.output;
   if (!["easy", "normal", "hard", "expert"].includes(options.level)) {
     throw new Error(`Invalid level: ${options.level}`);
   }
@@ -95,9 +116,9 @@ function sourceCommit() {
 function experimentConfig(options) {
   return {
     study: "phase-transition",
-    studyVersion: "0.2.0",
+    studyVersion: "0.3.0",
     schemaVersion: "1.0.0",
-    profile: "diversity-smoke",
+    profile: options.profile,
     games: options.games,
     baseSeed: options.seed,
     maxPly: options.maxPly,
@@ -146,7 +167,8 @@ function analyzeAiMove(state, config, random) {
 function runGame(config, gameIndex) {
   const seed = config.baseSeed + gameIndex;
   const random = seededRandom(seed);
-  const gameId = `pt-diversity-${String(gameIndex).padStart(4, "0")}`;
+  const prefix = PROFILES[config.profile].gameIdPrefix;
+  const gameId = `${prefix}-${String(gameIndex).padStart(4, "0")}`;
   const isBaseline = gameIndex < config.opening.baselineGames;
   let state = E.initialState();
   let previousStateHash = null;
@@ -336,6 +358,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  PROFILES,
   aggregate,
   canonicalJson,
   diversitySummary,
