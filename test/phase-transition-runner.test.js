@@ -5,6 +5,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const {
+  createOpeningPlan,
   experimentConfig,
   parseArgs,
   runGame,
@@ -31,14 +32,33 @@ try {
   const pilotConfig = experimentConfig(pilot);
   assert.equal(pilotConfig.profile, "pilot");
   assert.equal(pilotConfig.games, 100);
+  assert.equal(pilotConfig.opening.validation, undefined);
   assert.match(runGame({ ...pilotConfig, maxPly: 1 }, 0).gameId, /^pt-pilot-0000$/);
 
+  const pilotV2 = parseArgs(["--profile", "pilot-v2"]);
+  assert.equal(pilotV2.profile, "pilot-v2");
+  assert.equal(pilotV2.games, 100);
+  assert.equal(pilotV2.output, "artifacts/phase-transition/pilot-v2");
+  assert.equal(pilotV2.openingMaxAttempts, 100);
+  const pilotV2Config = experimentConfig(pilotV2);
+  assert.equal(pilotV2Config.studyVersion, "0.4.0");
+  assert.equal(pilotV2Config.opening.validation.policy, "non-terminal-front-occupied");
+  assert.equal(pilotV2Config.opening.validation.maxAttempts, 100);
+  assert.match(runGame({ ...pilotV2Config, maxPly: 1 }, 0).gameId, /^pt-pilot-v2-0000$/);
+
+  const openingPlan = createOpeningPlan(pilotV2Config, 46, pilotV2Config.baseSeed + 46);
+  assert.equal(openingPlan.moves.length, 6);
+  assert.ok(openingPlan.attempt >= 1 && openingPlan.attempt <= 100);
+  assert.equal(openingPlan.rejectedCount, openingPlan.attempt - 1);
+
   const overriddenPilot = parseArgs([
-    "--profile", "pilot",
+    "--profile", "pilot-v2",
     "--games", "3",
+    "--opening-max-attempts", "12",
     "--output", path.join(root, "pilot-test"),
   ]);
   assert.equal(overriddenPilot.games, 3);
+  assert.equal(overriddenPilot.openingMaxAttempts, 12);
   assert.equal(overriddenPilot.output, path.join(root, "pilot-test"));
   assert.throws(() => parseArgs(["--profile", "unknown"]), /Invalid profile/);
 
@@ -73,6 +93,8 @@ try {
     "seeded openings should produce more than one trajectory");
   assert.ok(firstManifest.diversity.uniqueFinalStateCount >= 2,
     "seeded openings should produce more than one final state");
+  assert.equal(firstManifest.openingQuality.rejectedOpenings, 0,
+    "legacy diversity smoke must preserve its single-attempt opening policy");
 
   const second = runResearch(options);
   assert.equal(second.completed, 4);
