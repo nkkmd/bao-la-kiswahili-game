@@ -5,7 +5,9 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 const {
+  experimentConfig,
   parseArgs,
+  runGame,
   runResearch,
   sha256,
 } = require("../tools/experiments/run-phase-transition-research.js");
@@ -17,6 +19,29 @@ const root = fs.mkdtempSync(path.join(os.tmpdir(), "bao-phase-transition-"));
 const output = path.join(root, "diversity-smoke");
 
 try {
+  const defaultSmoke = parseArgs([]);
+  assert.equal(defaultSmoke.profile, "diversity-smoke");
+  assert.equal(defaultSmoke.games, 10);
+  assert.equal(defaultSmoke.output, "artifacts/phase-transition/diversity-smoke");
+
+  const pilot = parseArgs(["--profile", "pilot"]);
+  assert.equal(pilot.profile, "pilot");
+  assert.equal(pilot.games, 100);
+  assert.equal(pilot.output, "artifacts/phase-transition/pilot");
+  const pilotConfig = experimentConfig(pilot);
+  assert.equal(pilotConfig.profile, "pilot");
+  assert.equal(pilotConfig.games, 100);
+  assert.match(runGame({ ...pilotConfig, maxPly: 1 }, 0).gameId, /^pt-pilot-0000$/);
+
+  const overriddenPilot = parseArgs([
+    "--profile", "pilot",
+    "--games", "3",
+    "--output", path.join(root, "pilot-test"),
+  ]);
+  assert.equal(overriddenPilot.games, 3);
+  assert.equal(overriddenPilot.output, path.join(root, "pilot-test"));
+  assert.throws(() => parseArgs(["--profile", "unknown"]), /Invalid profile/);
+
   const options = parseArgs([
     "--games", "4",
     "--seed", "20260721",
@@ -35,6 +60,7 @@ try {
   const firstManifest = JSON.parse(fs.readFileSync(path.join(output, "manifest.json"), "utf8"));
   const games = JSON.parse(firstGames);
 
+  assert.equal(firstManifest.profile, "diversity-smoke");
   assert.equal(firstManifest.completedGames, 4);
   assert.equal(firstManifest.observationCount, 44);
   assert.deepEqual(verifyArtifacts(output), { observations: 44, games: 4 });
