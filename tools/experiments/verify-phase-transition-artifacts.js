@@ -5,13 +5,20 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 
-const DIR = path.resolve("artifacts/phase-transition/fixture");
-const OBSERVATIONS = path.join(DIR, "observations.jsonl");
-const GAMES = path.join(DIR, "games.json");
-const MANIFEST = path.join(DIR, "manifest.json");
-
 function sha256(value) {
   return crypto.createHash("sha256").update(value).digest("hex");
+}
+
+function parseArgs(argv) {
+  let input = "artifacts/phase-transition/fixture";
+  for (let index = 0; index < argv.length; index += 1) {
+    if (argv[index] !== "--input" || !argv[index + 1]) {
+      throw new Error(`Unknown or incomplete argument: ${argv[index]}`);
+    }
+    input = argv[index + 1];
+    index += 1;
+  }
+  return { input: path.resolve(input) };
 }
 
 function readJsonl(file) {
@@ -40,21 +47,28 @@ function validateObservation(row) {
   assert.equal(row.frontRow.seedCount.length, 2);
 }
 
-function main() {
-  for (const file of [OBSERVATIONS, GAMES, MANIFEST]) {
+function fileDigest(entry) {
+  return typeof entry === "string" ? entry : entry.sha256;
+}
+
+function verifyArtifacts(input) {
+  const observationsFile = path.join(input, "observations.jsonl");
+  const gamesFile = path.join(input, "games.json");
+  const manifestFile = path.join(input, "manifest.json");
+  for (const file of [observationsFile, gamesFile, manifestFile]) {
     assert.ok(fs.existsSync(file), `missing artifact: ${file}`);
   }
 
-  const observationsText = fs.readFileSync(OBSERVATIONS, "utf8");
-  const gamesText = fs.readFileSync(GAMES, "utf8");
-  const observations = readJsonl(OBSERVATIONS);
+  const observationsText = fs.readFileSync(observationsFile, "utf8");
+  const gamesText = fs.readFileSync(gamesFile, "utf8");
+  const observations = readJsonl(observationsFile);
   const games = JSON.parse(gamesText);
-  const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8"));
+  const manifest = JSON.parse(fs.readFileSync(manifestFile, "utf8"));
 
-  assert.equal(manifest.gameCount, games.length);
+  assert.equal(manifest.gameCount ?? manifest.completedGames, games.length);
   assert.equal(manifest.observationCount, observations.length);
-  assert.equal(manifest.files["observations.jsonl"], sha256(observationsText));
-  assert.equal(manifest.files["games.json"], sha256(gamesText));
+  assert.equal(fileDigest(manifest.files["observations.jsonl"]), sha256(observationsText));
+  assert.equal(fileDigest(manifest.files["games.json"]), sha256(gamesText));
 
   const byGame = new Map();
   const keys = new Set();
@@ -77,12 +91,17 @@ function main() {
         `${game.gameId}:${row.ply}: previousStateHash mismatch`);
     });
     assert.equal(rows.at(-1).stateHash, game.finalStateHash);
-    assert.equal(rows.at(-1).ply, game.observedMaxPly);
+    assert.equal(rows.at(-1).ply, game.observedMaxPly ?? game.plies);
   }
 
   assert.equal(byGame.size, games.length);
-  console.log(`Verified ${observations.length} observations across ${games.length} games.`);
+  return { observations: observations.length, games: games.length };
+}
+
+function main() {
+  const result = verifyArtifacts(parseArgs(process.argv.slice(2)).input);
+  console.log(`Verified ${result.observations} observations across ${result.games} games.`);
 }
 
 if (require.main === module) main();
-module.exports = { readJsonl, validateObservation };
+module.exports = { parseArgs, readJsonl, validateObservation, verifyArtifacts };
