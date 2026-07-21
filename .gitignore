@@ -35,3 +35,9 @@ artifacts/tmp/
 artifacts/local/
 artifacts/*.local.json
 artifacts/*-local.json
+
+# Local phase-transition research outputs.
+# The deterministic fixture remains available for CI and reproducibility.
+/artifacts/phase-transition/smoke/
+/artifacts/phase-transition/diversity-smoke/
+/artifacts/phase-transition/pilot/
