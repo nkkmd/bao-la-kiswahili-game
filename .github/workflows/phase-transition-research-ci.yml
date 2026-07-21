@@ -4,8 +4,10 @@ on:
   pull_request:
     paths:
       - "doc/PHASE_TRANSITION_RESEARCH_PLAN.md"
+      - "doc/phase-transition/**"
       - "schemas/phase-transition-observation.schema.json"
       - "tools/experiments/generate-phase-transition-fixture.js"
+      - "tools/experiments/run-phase-transition-research.js"
       - "tools/experiments/verify-phase-transition-artifacts.js"
       - "tools/experiments/lib/phase-transition-features.js"
       - "test/phase-transition-*.test.js"
@@ -29,17 +31,31 @@ jobs:
         run: |
           node test/phase-transition-features.test.js
           node test/phase-transition-fixture.test.js
+          node test/phase-transition-runner.test.js
       - name: Generate fixture artifacts
         run: node tools/experiments/generate-phase-transition-fixture.js
       - name: Verify fixture artifacts
         run: node tools/experiments/verify-phase-transition-artifacts.js
+      - name: Run shortened smoke research
+        run: |
+          node tools/experiments/run-phase-transition-research.js \
+            --games 2 \
+            --seed 20260721 \
+            --max-ply 8 \
+            --level easy \
+            --max-depth 1 \
+            --output artifacts/phase-transition/ci-smoke
+          node tools/experiments/verify-phase-transition-artifacts.js \
+            --input artifacts/phase-transition/ci-smoke
       - name: Validate schema and notebook JSON
         run: |
           node -e 'JSON.parse(require("node:fs").readFileSync("schemas/phase-transition-observation.schema.json", "utf8"))'
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/01-data-audit.ipynb", "utf8"))'
-      - name: Upload fixture artifacts
+      - name: Upload phase-transition artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: phase-transition-fixture
-          path: artifacts/phase-transition/fixture/
+          name: phase-transition-ci-artifacts
+          path: |
+            artifacts/phase-transition/fixture/
+            artifacts/phase-transition/ci-smoke/
           if-no-files-found: error
