@@ -8,306 +8,206 @@ Status: Draft
 
 本研究では、Bao la Kiswahili の対局中に局面の価値基準、優先戦略、候補手構造が持続的に変化する地点を「局面の相転移点」として抽出・分類する。
 
-単なる評価値の一時的な上下ではなく、phase、reserve、nyumba、前列支配、捕獲可能性、可動性、強制性、候補手順位の複数指標に現れる再現可能な変化を対象とする。
+研究環境は次のように分担する。
 
-実験環境は次のように使い分ける。
-
-- **ローカル**: 正式コーパス生成、長時間探索、基準計測、最終追試
+- **ローカル環境**: 正式コーパス生成、長時間探索、基準計測、最終追試
 - **Google Colab**: 探索的解析、変化点検出、統計解析、可視化、仮説形成
-- **GitHub Actions**: unit test、fixture、Schema、hash、成果物完全性の検証
+- **GitHub Actions**: テスト、固定 fixture、Schema・hash・成果物検証
 
-Colab だけで得られた結果は正式結論とせず、固定したローカル環境で再現できることを正式認定の条件とする。
+Colab 上だけで得られた結果は正式結論とせず、固定ローカル環境で再現する。
 
 ## 1. 研究目的
 
-1. namua から mtaji への移行前後の局面構造を定量化する。
-2. nyumba の消失または機能変化に伴う戦略転換を識別する。
-3. reserve の臨界域と候補手の変化を調べる。
-4. 前列支配の崩壊・固定化を検出する。
-5. 捕獲重視から可動性重視への転換を識別する。
-6. 強制系列中心から自由選択中心への転換を識別する。
-7. 手数に依存しない Bao 固有の phase 語彙を構築する。
+1. 対局中に繰り返し現れる相転移候補を抽出する。
+2. ルール上の形式的転移と、戦略上の転移を区別する。
+3. reserve、nyumba、前列、捕獲可能性、可動性、強制性、候補手安定性の変化を測定する。
+4. 一時的変動と持続的転換を区別する。
+5. AI 条件、探索深度、seed が変わっても再現する転移を特定する。
+6. 検出結果を人間と機械が共有できる Bao 固有語彙へ変換する。
 
 ## 2. 研究上の問い
 
-- **RQ1:** 形式的な namua → mtaji 移行より前または後に戦略的転移が発生するか。
-- **RQ2:** reserve に共通の戦略転換閾値が存在するか。
-- **RQ3:** nyumba 消失の影響は前列構造や reserve 差によって変化するか。
-- **RQ4:** 強制系列から自由選択への境界を合法手構造から検出できるか。
-- **RQ5:** 評価値単独より複合特徴量の方が相転移を安定して識別できるか。
-- **RQ6:** 相転移候補は探索深度、評価関数、探索方式、seed を変えても再現するか。
-- **RQ7:** 一つの対局に異なる種類の相転移が複数存在するか。
+- **RQ1:** namua から mtaji への形式的移行前後で、局面特徴と候補手構造はどう変化するか。
+- **RQ2:** 形式的 phase 移行の前後に、独立した戦略的転移が存在するか。
+- **RQ3:** reserve に戦略転換と対応する共通閾値があるか。
+- **RQ4:** nyumba 消失の効果は局面条件によって変化するか。
+- **RQ5:** 前列支配の崩壊・固定化を特徴量から検出できるか。
+- **RQ6:** 捕獲重視から可動性重視への転換を識別できるか。
+- **RQ7:** 強制系列から自由選択への移行を合法手構造から識別できるか。
+- **RQ8:** 転移候補は探索条件を変えても再現するか。
+- **RQ9:** 一対局に複数種類の相転移が存在するか。
+- **RQ10:** 相転移を手数ではなく局面状態で分類できるか。
 
 ## 3. 操作的定義
 
-### 3.1 形式的転移
+### 3.1 相転移候補
 
-ルールエンジンの状態から直接識別できる変化。
+次のいずれかが観測された ply または局面区間を候補とする。
 
-- `phase: namua -> mtaji`
-- nyumba 所有状態の変化
-- reserve の枯渇
+- phase、nyumba、reserve などの明示状態が変化した。
+- 一つ以上の主要特徴量が急変した。
+- 上位候補手の戦略分類が変化した。
+- 強制手中心から自由選択中心へ移行した。
+- 変化後の状態が一定 ply 以上持続した。
+
+### 3.2 形式的相転移
+
+ルール状態から直接識別できる変化。
+
+- `namua → mtaji`
+- nyumba の有効状態変化
+- reserve 枯渇
 - 合法手生成規則の変化
 
-### 3.2 戦略的転移
+### 3.3 戦略的相転移
 
-ルール上の phase 変化とは独立して、候補手の戦略分類または局面価値基準が持続的に変わる地点。
+ルール状態の変更とは独立して、優先戦略が持続的に変わる地点。
 
-### 3.3 相転移候補
+- 捕獲優先から可動性優先
+- nyumba 維持から解放・放棄
+- 前列占有から再配置
+- 強制系列から自由選択
+- reserve 温存から投入促進
 
-次のうち複数を満たす ply または短い区間。
+## 4. 仮説
 
-- 主要特徴量の急変
-- 最善手または上位候補手の戦略分類変化
-- 強制性または選択自由度の持続的変化
-- 複数探索条件で近接した変化点が検出される
-- 変化後の状態が原則 4 ply 以上継続する
+- **H1:** 戦略的転移は namua から mtaji への形式的移行より数 ply 前に発生する場合がある。
+- **H2:** reserve が特定範囲を下回ると、即時捕獲より可動性を重視する候補手が増える。
+- **H3:** nyumba 消失の効果は前列構造、reserve 差、捕獲可能性との組合せに依存する。
+- **H4:** 強制系列と自由選択系列の境界には再現可能な転移がある。
+- **H5:** 評価値単独では転移を安定識別できない。
+- **H6:** 一対局には複数の相転移がある。
+- **H7:** 主要転移は複数探索条件で近接した ply に検出される。
+- **H8:** 局面特徴による分類は手数分類より安定する。
 
-### 3.4 正式認定
+## 5. 実験環境
 
-少なくとも次を満たす候補を正式な相転移語彙候補とする。
+### 5.1 ローカル
 
-1. 異なる複数対局で再発する。
-2. 二つ以上の独立した特徴群が変化する。
-3. 変化が事前指定期間持続する。
-4. 新規 seed の確認研究で再現する。
-5. 代表局面と反例を保存できる。
-6. 盤面構造と着手原理で説明できる。
+正式データ生成と追試に使用する。OS、CPU、メモリ、Node.js、commit SHA、ルール・AI・特徴量抽出器・コーパスの hash を記録する。時間制限型比較は同一ローカル環境だけで行う。
 
-## 4. 事前仮説
+### 5.2 Google Colab
 
-- **H1:** 戦略的 mtaji 化は形式的移行より数 ply 前に起こる場合がある。
-- **H2:** reserve が臨界域へ入ると、即時捕獲より可動性を重視する候補手が増える。
-- **H3:** nyumba 消失は単独ではなく、前列構造や reserve 差との組合せで転移を起こす。
-- **H4:** 強制系列の終了と自由選択の回復には再現可能な境界がある。
-- **H5:** 評価値だけでは相転移を十分に識別できない。
-- **H6:** 発生 ply より局面特徴の方が安定した分類基準になる。
+JSONL/Parquet の監査、時系列可視化、変化点検出、統計解析、仮説形成に使用する。固定 depth、固定 node、固定 MCTS iteration を優先し、Colab の実行速度を正式比較に使わない。
 
-## 5. 収集する特徴量
+### 5.3 GitHub Actions
 
-### 5.1 識別・再現性
+短時間の品質保証だけに使用する。
 
-- studyVersion、schemaVersion
-- gameId、conditionId、seed、ply
-- sourceCommit、rulesHash、engineHash、featureExtractorHash
-- stateHash、previousStateHash
+- feature extractor の回帰テスト
+- 固定 fixture 生成
+- JSONL・manifest・hash 検証
+- Schema と Notebook の JSON 構文確認
+- fixture artifact の保存
 
-### 5.2 局面状態
+大規模自己対局、速度測定、正式統計実験は実行しない。
 
-- player、phase、winner、reason
-- reserve、houseOwned、pending
-- 各穴の石数
-- 盤上総石数、前列・後列石数
-- 前列占有穴数・占有率
-- 非空穴数
+## 6. Phase 0: 研究基盤
 
-### 5.3 合法手構造
-
-- legalMoveCount
-- captureMoveCount、nonCaptureMoveCount
-- forcedCapture
-- 最大・平均即時捕獲量（実装可能後に追加）
-- relay 長（実装可能後に追加）
-
-### 5.4 探索・安定性
-
-後続 Phase で次を追加する。
-
-- 評価値、候補手別評価値
-- 最善手と次善手の評価差
-- principal variation
-- node 数、pruning 数
-- MCTS visit 数、平均報酬
-- 深度・seed・評価関数間の最善手一致率
-
-## 6. データ形式
-
-一次成果物は JSONL とし、1 行を 1 ply の観測値とする。分析用 Parquet は JSONL から再生成可能な派生物とする。
-
-保存先:
+### 実装物
 
 ```text
-artifacts/phase-transition/
-├── corpus/
-├── pilot/
-├── screening/
-├── confirmatory/
-├── derived/
-├── figures/
-├── manifests/
-└── verified/
+doc/PHASE_TRANSITION_RESEARCH_PLAN.md
+schemas/phase-transition-observation.schema.json
+tools/experiments/lib/phase-transition-features.js
+tools/experiments/generate-phase-transition-fixture.js
+tools/experiments/verify-phase-transition-artifacts.js
+test/phase-transition-features.test.js
+test/phase-transition-fixture.test.js
+notebooks/phase-transition/01-data-audit.ipynb
+.github/workflows/phase-transition-research-ci.yml
 ```
 
-人間向け成果物:
+### fixture 出力
 
 ```text
-doc/phase-transition/
-├── README.md
-├── PILOT_RESULTS.md
-├── TRANSITION_CANDIDATES.md
-├── CONFIRMATORY_PROTOCOL.md
-├── CONFIRMATORY_RESULTS.md
-├── PHASE_VOCABULARY.md
-├── HUMAN_REVIEW.md
-└── FINAL_CONCLUSION.md
+artifacts/phase-transition/fixture/
+├── observations.jsonl
+├── games.json
+└── manifest.json
 ```
 
-## 7. 実験環境の役割分担
+`observations.jsonl` を一次正本とし、分析用形式は再生成可能な派生物とする。
 
-### 7.1 ローカル
+### 完了条件
 
-- 正式コーパス生成
-- 長時間自己対局と高深度探索
-- node/sec、時間、メモリ等の基準計測
-- Colab で得た仮説の追試
-- 主要集計値の独立再計算
+- 固定入力から同じ成果物を再生成できる。
+- 元 state を変更せず特徴量を抽出できる。
+- `gameId + ply` が一意である。
+- ply が連続し、`previousStateHash` が直前行と一致する。
+- manifest の件数と SHA-256 が実ファイルと一致する。
+- Colab で JSONL を読込み、欠損・重複・phase・reserve・合法手数を確認できる。
 
-固定する情報:
+## 7. Phase 1: パイロット
 
-- OS、CPU、メモリ
-- Node.js バージョン
-- Git commit SHA
-- ルール、AI条件、特徴量抽出器、コーパスの hash
+Phase 0 完了後、C0 条件を中心に 10 局の smoke run、続いて 100 局を実行する。
 
-### 7.2 Google Colab
-
-- JSONL/Parquet の監査と整形
-- 特徴量の時系列可視化
-- PELT、Binary Segmentation、CUSUM 等の変化点検出
-- bootstrap、クラスタリング、代表局面抽出
-- 研究 Notebook の共有
-
-制約:
-
-- Colab の CPU 時間を正式な速度比較に使わない。
-- 固定時間ではなく固定 depth、node、iteration、seed を使う。
-- 小バッチ単位で永続保存する。
-- Colab だけで正式認定しない。
-
-### 7.3 GitHub Actions
-
-- lint、unit test、integration test
-- 2〜5局程度の固定 fixture
-- JSON Schema 検証
-- state hash、manifest、partial、重複、欠損検証
-- Notebook の静的確認
-
-大規模自己対局、長時間探索、速度ベンチマークは実行しない。
-
-## 8. 実験フェーズ
-
-### Phase 0: 基盤整備
-
-- 本計画書
-- ply 観測 Schema
-- 既存エンジンを読み取る特徴量抽出器
-- 固定 fixture と回帰テスト
-- 最小 Colab Notebook
-
-完了条件:
-
-- 初期局面と固定局面から同じ特徴量・hash が再生成される。
-- エンジン状態を変更せず抽出できる。
-- JSON 出力が Schema に対応する。
-- 全テストが短時間で完了する。
-
-### Phase 1: パイロット
-
-- 100局程度
-- C0 中心
-- 10局単位のバッチ
+- 固定 seed
 - 最大 180 ply
-- 主生成はローカル、解析は Colab
+- 10 局単位の原子的保存
+- 中断・再開対応
+- 主生成はローカル
+- 解析は Colab
 
-完了条件:
+パイロットでは検出法と閾値を確定せず、欠測、容量、計算時間、変化点候補数を評価する。
 
-- 95%以上の対局で必須特徴量が欠損しない。
-- 1局当たりの実行時間とデータ量を測定できる。
-- 形式的転移を可視化できる。
-- 2種類以上の変化点検出法を比較できる。
+## 8. 主要特徴量
 
-### Phase 2: スクリーニング
+- phase、手番、winner、終局理由
+- reserve、houseOwned、pending
+- 合法手数、捕獲手数、非捕獲手数、強制捕獲
+- 盤上石数、非空穴数
+- 前列占有穴数、占有率、石数
+- 将来追加: 最大捕獲量、relay 長、評価値、候補手順位、最善手安定性
 
-- 300〜500局を目安
-- 複数 depth、評価関数、MCTS 条件
-- 同一または対応する seed 集合
-- 10〜20局単位の shard
+## 9. 認定基準
 
-同一対局内の ply は独立標本として扱わず、対局または seed 単位で相関を処理する。
+正式な相転移認定では、少なくとも次を要求する。
 
-### Phase 3: 事前登録
+1. 異なる対局で再発する。
+2. 二つ以上の独立特徴群に変化がある。
+3. 変化が事前指定期間持続する。
+4. 新規 seed で再現する。
+5. 局面構造として説明できる。
+6. 反例と適用範囲を記録できる。
 
-探索結果を見た後、確認研究前に次を固定する。
+## 10. 成功・否定・停止条件
 
-- 対象転移、主要特徴量、検出法、閾値
-- 持続性条件、許容 ply 幅
-- AI条件、seed生成法、対局数
-- 除外・成功・否定・停止基準
-- 多重比較補正
+### 成功
 
-### Phase 4: 確認研究
+- 再現可能な ply 観測データを生成できる。
+- 形式的転移を機械的に検出できる。
+- 戦略的転移候補を複数抽出できる。
+- 少なくとも一種類が新規 seed で再現する。
+- 代表局面と反例を保存できる。
+- 機械定義と人間向け語彙を対応付けられる。
 
-- 新規 seed を使用
-- 正式データ生成はローカル
-- 統計解析は Colab
-- 主要集計はローカルで独立再計算
-- GitHub Actions は形式検証のみ
+### 否定
 
-### Phase 5: 人間レビューと語彙化
+- 特定 AI 条件だけに現れる。
+- 新規 seed で再現しない。
+- 一時的評価変動だけで持続しない。
+- 手数だけで同程度に説明できる。
+- 実装不具合で説明される。
 
-代表局面、前後の着手、特徴量、principal variation、反例を確認し、次の形式で語彙化する。
+### 即時停止
 
-```text
-名称:
-機械識別子:
-定義:
-発生条件:
-主要特徴量:
-典型的な前状態:
-典型的な後状態:
-戦略上の意味:
-形式的転移との関係:
-代表局面:
-既知の反例:
-適用範囲:
-確信度:
-```
-
-## 9. 停止条件
-
-次の場合は実験を停止し、成果物を正式集計へ進めない。
-
-- 違法手または state hash 不一致
-- 同一条件で意図しない非決定性
-- 特徴量再計算の不一致
-- source、rules、condition、corpus、schema の異なる成果物の混在
+- 違法手
+- state hash 不一致
+- 特徴量再計算不一致
+- source 条件の混在
 - partial と complete の区別不能
-- 必須特徴量欠損率が 5% を超える
-- 変化点を元局面へ逆参照できない
 
-重大な実装変更後は studyVersion を更新し、変更前後の成果物を混在させない。
+## 11. 再現性原則
 
-## 10. 成功基準
+各正式成果物には study/schema version、commit SHA、ルール・AI・特徴量抽出器・コーパス hash、runtime、seed、開始・終了 state hash、実行環境を記録する。
 
-1. 再現可能な ply 単位データを生成できる。
-2. 形式的転移を正しく抽出できる。
-3. 戦略的転移候補を複数抽出できる。
-4. 少なくとも一種類が新規 seed で再現する。
-5. 手数分類より局面特徴分類が有用であることを示せる。
-6. 代表局面、反例、適用範囲を保存できる。
-7. Colab 解析をローカル成果物から再実行できる。
-8. 機械的定義と人間向け説明を対応付けられる。
+source、rules、engine、feature extractor、condition、corpus、schema のいずれかが異なる場合は partial からの再開を拒否する。
 
-仮説が支持されない場合も、再現可能な否定的結果として正式成果に含める。
+## 12. 次段階
 
-## 11. 初回 PR の範囲
+Phase 0 の CI と Colab 監査が完了した後、`run-phase-transition-research.js` を追加し、10 局 smoke run と 100 局パイロットへ進む。
 
-初回 PR は Phase 0 の最小基盤に限定する。
+本研究の中心方針は次のとおりである。
 
-1. 本研究計画書
-2. `schemas/phase-transition-observation.schema.json`
-3. `tools/experiments/lib/phase-transition-features.js`
-4. 固定局面を使う回帰テスト
-5. `notebooks/phase-transition/01-data-audit.ipynb`
-
-大規模自己対局、探索評価、変化点認定、語彙確定は後続 PR に分離する。
+> Bao の局面に現れる持続的な戦略変化を測定し、再現可能な相転移として分類し、人間と機械が共有できる Bao 固有の語彙へ変換する。
