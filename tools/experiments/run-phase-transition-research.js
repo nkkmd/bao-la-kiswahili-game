@@ -46,11 +46,13 @@ function parseArgs(argv) {
     games: 10,
     seed: 20260721,
     maxPly: 180,
+    openingPlies: 6,
+    baselineGames: 1,
     level: "hard",
     evaluationProfile: "bao",
     searchProfile: "phase2",
     maxDepth: 2,
-    output: "artifacts/phase-transition/smoke",
+    output: "artifacts/phase-transition/diversity-smoke",
     force: false,
     status: false,
   };
@@ -62,6 +64,8 @@ function parseArgs(argv) {
     if (arg === "--games") options.games = integerArg(value, arg, 1);
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--max-ply") options.maxPly = integerArg(value, arg, 1);
+    else if (arg === "--opening-plies") options.openingPlies = integerArg(value, arg, 0);
+    else if (arg === "--baseline-games") options.baselineGames = integerArg(value, arg, 0);
     else if (arg === "--max-depth") options.maxDepth = integerArg(value, arg, 1);
     else if (arg === "--level") options.level = value;
     else if (arg === "--evaluation-profile") options.evaluationProfile = value;
@@ -70,8 +74,11 @@ function parseArgs(argv) {
     else throw new Error(`Unknown argument: ${arg}`);
     index += 1;
   }
-  if (!['easy', 'normal', 'hard', 'expert'].includes(options.level)) {
+  if (!["easy", "normal", "hard", "expert"].includes(options.level)) {
     throw new Error(`Invalid level: ${options.level}`);
+  }
+  if (options.baselineGames > options.games) {
+    throw new Error("--baseline-games cannot exceed --games");
   }
   return options;
 }
@@ -88,12 +95,17 @@ function sourceCommit() {
 function experimentConfig(options) {
   return {
     study: "phase-transition",
-    studyVersion: "0.1.0",
+    studyVersion: "0.2.0",
     schemaVersion: "1.0.0",
-    profile: "smoke",
+    profile: "diversity-smoke",
     games: options.games,
     baseSeed: options.seed,
     maxPly: options.maxPly,
+    opening: {
+      policy: "seeded-legal-random",
+      plies: options.openingPlies,
+      baselineGames: options.baselineGames,
+    },
     condition: {
       id: "C0",
       level: options.level,
@@ -116,14 +128,33 @@ function gamePath(output, gameIndex) {
   return path.join(output, "games", `game-${String(gameIndex).padStart(4, "0")}.json`);
 }
 
+function chooseOpeningMove(state, random) {
+  const moves = E.moveVariants(state);
+  if (!moves.length) return null;
+  return moves[Math.floor(random() * moves.length)];
+}
+
+function analyzeAiMove(state, config, random) {
+  return AI.analyzeMove(state, config.condition.level, random, {
+    timeLimitMs: Infinity,
+    maxDepth: config.condition.maxDepth,
+    evaluationProfile: config.condition.evaluator,
+    searchProfile: config.condition.search,
+  });
+}
+
 function runGame(config, gameIndex) {
   const seed = config.baseSeed + gameIndex;
   const random = seededRandom(seed);
-  const gameId = `pt-smoke-${String(gameIndex).padStart(4, "0")}`;
+  const gameId = `pt-diversity-${String(gameIndex).padStart(4, "0")}`;
+  const isBaseline = gameIndex < config.opening.baselineGames;
   let state = E.initialState();
   let previousStateHash = null;
   const observations = [];
   const moves = [];
+  const trajectory = [];
+  let openingPliesApplied = 0;
+  let openingStateHash = stateHash(state);
 
   for (let ply = 0; ply <= config.maxPly; ply += 1) {
     const observation = extractPhaseTransitionFeatures(state, {
@@ -134,40 +165,57 @@ function runGame(config, gameIndex) {
       previousStateHash,
     });
     observations.push(observation);
+    trajectory.push(observation.stateHash);
     if (state.winner !== null || ply === config.maxPly) break;
 
-    const analysis = AI.analyzeMove(state, config.condition.level, random, {
-      timeLimitMs: Infinity,
-      maxDepth: config.condition.maxDepth,
-      evaluationProfile: config.condition.evaluator,
-      searchProfile: config.condition.search,
-    });
-    if (!analysis.move) break;
-    const beforeHash = observation.stateHash;
-    const result = E.applyMove(state, analysis.move);
-    moves.push({
-      ply,
-      player: state.player,
-      move: analysis.move,
-      beforeStateHash: beforeHash,
-      afterStateHash: stateHash(result.state),
-      search: {
+    const useOpening = !isBaseline && ply < config.opening.plies;
+    let move;
+    let search = null;
+    let source;
+    if (useOpening) {
+      move = chooseOpeningMove(state, random);
+      source = "opening-random";
+      openingPliesApplied += move ? 1 : 0;
+    } else {
+      const analysis = analyzeAiMove(state, config, random);
+      move = analysis.move;
+      source = "ai-c0";
+      search = {
         completedDepth: analysis.stats?.completedDepth ?? null,
         nodes: analysis.stats?.nodes ?? null,
         timedOut: Boolean(analysis.stats?.timedOut),
-      },
+      };
+    }
+    if (!move) break;
+
+    const beforeHash = observation.stateHash;
+    const result = E.applyMove(state, move);
+    moves.push({
+      ply,
+      player: state.player,
+      source,
+      move,
+      beforeStateHash: beforeHash,
+      afterStateHash: stateHash(result.state),
+      search,
     });
     previousStateHash = beforeHash;
     state = result.state;
+    if (openingPliesApplied === config.opening.plies) openingStateHash = stateHash(state);
   }
 
+  if (isBaseline || openingPliesApplied === 0) openingStateHash = observations[0].stateHash;
   return {
     gameId,
     gameIndex,
     seed,
     conditionId: config.condition.id,
+    baseline: isBaseline,
+    openingPliesApplied,
+    openingStateHash,
     initialStateHash: observations[0].stateHash,
     finalStateHash: observations.at(-1).stateHash,
+    trajectoryHash: sha256(trajectory.join("\n")),
     winner: state.winner,
     reason: state.reason || (moves.length >= config.maxPly ? "max-ply" : "no-move"),
     plies: moves.length,
@@ -183,6 +231,39 @@ function readCompletedGame(filePath, configHash) {
     throw new Error(`Existing game has a different config hash: ${filePath}`);
   }
   return value;
+}
+
+function diversitySummary(games) {
+  const trajectoryCounts = new Map();
+  const finalStateCounts = new Map();
+  const winnerCounts = { south: 0, north: 0, draw: 0 };
+  const plyCounts = new Map();
+  for (const game of games) {
+    trajectoryCounts.set(game.trajectoryHash, (trajectoryCounts.get(game.trajectoryHash) || 0) + 1);
+    finalStateCounts.set(game.finalStateHash, (finalStateCounts.get(game.finalStateHash) || 0) + 1);
+    if (game.winner === 0) winnerCounts.south += 1;
+    else if (game.winner === 1) winnerCounts.north += 1;
+    else winnerCounts.draw += 1;
+    plyCounts.set(game.plies, (plyCounts.get(game.plies) || 0) + 1);
+  }
+  const largestTrajectoryGroup = Math.max(0, ...trajectoryCounts.values());
+  const uniqueTrajectoryCount = trajectoryCounts.size;
+  const uniqueFinalStateCount = finalStateCounts.size;
+  const uniquePlyCount = plyCounts.size;
+  const dominantTrajectoryRate = games.length ? largestTrajectoryGroup / games.length : 0;
+  return {
+    uniqueTrajectoryCount,
+    uniqueFinalStateCount,
+    uniquePlyCount,
+    duplicateTrajectoryCount: games.length - uniqueTrajectoryCount,
+    largestTrajectoryGroup,
+    dominantTrajectoryRate,
+    winnerCounts,
+    plyDistribution: Object.fromEntries([...plyCounts.entries()].sort((a, b) => a[0] - b[0])),
+    passesPilotGate: uniqueTrajectoryCount >= 2
+      && dominantTrajectoryRate <= 0.5
+      && (uniquePlyCount >= 2 || uniqueFinalStateCount >= 2),
+  };
 }
 
 function aggregate(output, config, configHash, games, commit) {
@@ -203,6 +284,7 @@ function aggregate(output, config, configHash, games, commit) {
     nodeVersion: process.version,
     completedGames: games.length,
     observationCount: observations.length,
+    diversity: diversitySummary(games),
     files: {
       "observations.jsonl": { sha256: sha256(jsonl), bytes: Buffer.byteLength(jsonl) },
       "games.json": { sha256: sha256(gamesJson), bytes: Buffer.byteLength(gamesJson) },
@@ -233,7 +315,7 @@ function runResearch(options) {
     if (!game) {
       game = { configHash, sourceCommit: commit, ...runGame(config, gameIndex) };
       atomicWrite(filePath, `${JSON.stringify(game, null, 2)}\n`);
-      console.log(`completed ${game.gameId}: ${game.plies} ply, winner=${game.winner}`);
+      console.log(`completed ${game.gameId}: ${game.plies} ply, winner=${game.winner}, trajectory=${game.trajectoryHash.slice(0, 12)}`);
     } else {
       console.log(`skipped ${game.gameId}: already complete`);
     }
@@ -256,6 +338,7 @@ if (require.main === module) {
 module.exports = {
   aggregate,
   canonicalJson,
+  diversitySummary,
   experimentConfig,
   parseArgs,
   runGame,

@@ -36,17 +36,20 @@ jobs:
         run: node tools/experiments/generate-phase-transition-fixture.js
       - name: Verify fixture artifacts
         run: node tools/experiments/verify-phase-transition-artifacts.js
-      - name: Run shortened smoke research
+      - name: Run shortened diversity smoke research
         run: |
           node tools/experiments/run-phase-transition-research.js \
-            --games 2 \
+            --games 4 \
             --seed 20260721 \
-            --max-ply 8 \
+            --max-ply 10 \
+            --opening-plies 4 \
+            --baseline-games 1 \
             --level easy \
             --max-depth 1 \
-            --output artifacts/phase-transition/ci-smoke
+            --output artifacts/phase-transition/ci-diversity-smoke
           node tools/experiments/verify-phase-transition-artifacts.js \
-            --input artifacts/phase-transition/ci-smoke
+            --input artifacts/phase-transition/ci-diversity-smoke
+          node -e 'const m=require("./artifacts/phase-transition/ci-diversity-smoke/manifest.json"); if(!m.diversity.passesPilotGate) throw new Error(JSON.stringify(m.diversity))'
       - name: Validate schema and notebook JSON
         run: |
           node -e 'JSON.parse(require("node:fs").readFileSync("schemas/phase-transition-observation.schema.json", "utf8"))'
@@ -57,5 +60,5 @@ jobs:
           name: phase-transition-ci-artifacts
           path: |
             artifacts/phase-transition/fixture/
-            artifacts/phase-transition/ci-smoke/
+            artifacts/phase-transition/ci-diversity-smoke/
           if-no-files-found: error

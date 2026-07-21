@@ -51,6 +51,26 @@ function fileDigest(entry) {
   return typeof entry === "string" ? entry : entry.sha256;
 }
 
+function diversityFromGames(games) {
+  const trajectories = new Map();
+  const finalStates = new Set();
+  const plies = new Set();
+  for (const game of games) {
+    trajectories.set(game.trajectoryHash, (trajectories.get(game.trajectoryHash) || 0) + 1);
+    finalStates.add(game.finalStateHash);
+    plies.add(game.plies);
+  }
+  const largestTrajectoryGroup = Math.max(0, ...trajectories.values());
+  return {
+    uniqueTrajectoryCount: trajectories.size,
+    uniqueFinalStateCount: finalStates.size,
+    uniquePlyCount: plies.size,
+    duplicateTrajectoryCount: games.length - trajectories.size,
+    largestTrajectoryGroup,
+    dominantTrajectoryRate: games.length ? largestTrajectoryGroup / games.length : 0,
+  };
+}
+
 function verifyArtifacts(input) {
   const observationsFile = path.join(input, "observations.jsonl");
   const gamesFile = path.join(input, "games.json");
@@ -92,9 +112,21 @@ function verifyArtifacts(input) {
     });
     assert.equal(rows.at(-1).stateHash, game.finalStateHash);
     assert.equal(rows.at(-1).ply, game.observedMaxPly ?? game.plies);
+    if (game.trajectoryHash) {
+      assert.equal(game.trajectoryHash, sha256(rows.map((row) => row.stateHash).join("\n")),
+        `${game.gameId}: trajectoryHash mismatch`);
+      assert.ok(Number.isInteger(game.openingPliesApplied) && game.openingPliesApplied >= 0);
+      assert.match(game.openingStateHash, /^[a-f0-9]{64}$/);
+    }
   }
 
   assert.equal(byGame.size, games.length);
+  if (manifest.diversity) {
+    const actual = diversityFromGames(games);
+    for (const [key, value] of Object.entries(actual)) {
+      assert.equal(manifest.diversity[key], value, `manifest diversity mismatch: ${key}`);
+    }
+  }
   return { observations: observations.length, games: games.length };
 }
 
@@ -104,4 +136,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { parseArgs, readJsonl, validateObservation, verifyArtifacts };
+module.exports = { diversityFromGames, parseArgs, readJsonl, validateObservation, verifyArtifacts };
