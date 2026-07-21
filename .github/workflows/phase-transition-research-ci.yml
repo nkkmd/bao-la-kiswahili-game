@@ -1,0 +1,45 @@
+name: Phase Transition Research CI
+
+on:
+  pull_request:
+    paths:
+      - "doc/PHASE_TRANSITION_RESEARCH_PLAN.md"
+      - "schemas/phase-transition-observation.schema.json"
+      - "tools/experiments/generate-phase-transition-fixture.js"
+      - "tools/experiments/verify-phase-transition-artifacts.js"
+      - "tools/experiments/lib/phase-transition-features.js"
+      - "test/phase-transition-*.test.js"
+      - "notebooks/phase-transition/**"
+      - ".github/workflows/phase-transition-research-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Run phase-transition tests
+        run: |
+          node test/phase-transition-features.test.js
+          node test/phase-transition-fixture.test.js
+      - name: Generate fixture artifacts
+        run: node tools/experiments/generate-phase-transition-fixture.js
+      - name: Verify fixture artifacts
+        run: node tools/experiments/verify-phase-transition-artifacts.js
+      - name: Validate schema and notebook JSON
+        run: |
+          node -e 'JSON.parse(require("node:fs").readFileSync("schemas/phase-transition-observation.schema.json", "utf8"))'
+          node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/01-data-audit.ipynb", "utf8"))'
+      - name: Upload fixture artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase-transition-fixture
+          path: artifacts/phase-transition/fixture/
+          if-no-files-found: error
