@@ -31,7 +31,7 @@ const PROFILES = {
     games: 100,
     output: "artifacts/phase-transition/pilot-v2",
     gameIdPrefix: "pt-pilot-v2",
-    studyVersion: "0.4.0",
+    studyVersion: "0.4.1",
     validateOpening: true,
   },
 };
@@ -189,7 +189,7 @@ function analyzeAiMove(state, config, random) {
 }
 
 function openingAttemptSeed(seed, attempt) {
-  return (seed + Math.imul(attempt, 0x9E3779B1)) >>> 0;
+  return (seed + Math.imul(attempt - 1, 0x9E3779B1)) >>> 0;
 }
 
 function inspectOpening(state) {
@@ -253,11 +253,12 @@ function createOpeningPlan(config, gameIndex, seed) {
 
 function runGame(config, gameIndex) {
   const seed = config.baseSeed + gameIndex;
-  const random = seededRandom(seed);
   const prefix = PROFILES[config.profile].gameIdPrefix;
   const gameId = `${prefix}-${String(gameIndex).padStart(4, "0")}`;
   const isBaseline = gameIndex < config.opening.baselineGames;
   const openingPlan = createOpeningPlan(config, gameIndex, seed);
+  const random = seededRandom(openingPlan.seed);
+  for (let index = 0; index < openingPlan.moves.length; index += 1) random();
   let state = E.initialState();
   let previousStateHash = null;
   const observations = [];
@@ -480,6 +481,7 @@ module.exports = {
   diversitySummary,
   experimentConfig,
   inspectOpening,
+  openingAttemptSeed,
   openingQualitySummary,
   parseArgs,
   runGame,
