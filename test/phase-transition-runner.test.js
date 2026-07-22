@@ -7,6 +7,7 @@ const path = require("node:path");
 const {
   createOpeningPlan,
   experimentConfig,
+  openingAttemptSeed,
   parseArgs,
   runGame,
   runResearch,
@@ -46,10 +47,28 @@ try {
   assert.equal(pilotV2Config.opening.validation.maxAttempts, 100);
   assert.match(runGame({ ...pilotV2Config, maxPly: 1 }, 0).gameId, /^pt-pilot-v2-0000$/);
 
-  const openingPlan = createOpeningPlan(pilotV2Config, 46, pilotV2Config.baseSeed + 46);
-  assert.equal(openingPlan.moves.length, 6);
-  assert.ok(openingPlan.attempt >= 1 && openingPlan.attempt <= 100);
-  assert.equal(openingPlan.rejectedCount, openingPlan.attempt - 1);
+  assert.equal(openingAttemptSeed(20260767, 1), 20260767,
+    "attempt 1 must preserve the pilot-v1 game seed");
+  assert.notEqual(openingAttemptSeed(20260767, 2), 20260767,
+    "attempt 2 must use a deterministic alternate seed");
+
+  for (const seed of [20260767, 20260786, 20260799]) {
+    const gameIndex = seed - pilotV2Config.baseSeed;
+    const openingPlan = createOpeningPlan(pilotV2Config, gameIndex, seed);
+    assert.equal(openingPlan.moves.length, 6);
+    assert.ok(openingPlan.attempt >= 2 && openingPlan.attempt <= 100,
+      `known invalid pilot-v1 opening ${seed} must be retried`);
+    assert.equal(openingPlan.rejectedCount, openingPlan.attempt - 1);
+    assert.ok((openingPlan.rejectionReasons["terminal:front-empty"] || 0) >= 1);
+  }
+
+  const comparableGameIndex = 1;
+  const pilotGame = runGame(pilotConfig, comparableGameIndex);
+  const pilotV2Game = runGame(pilotV2Config, comparableGameIndex);
+  assert.equal(pilotV2Game.openingAttempt, 1);
+  assert.equal(pilotV2Game.openingSeed, pilotV2Game.seed);
+  assert.equal(pilotV2Game.trajectoryHash, pilotGame.trajectoryHash,
+    "valid attempt-1 openings must remain comparable with pilot-v1");
 
   const overriddenPilot = parseArgs([
     "--profile", "pilot-v2",
