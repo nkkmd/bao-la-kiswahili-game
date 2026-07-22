@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Explore phase-transition candidates in pilot-v2 artifacts.
 
-The thresholds in this module are exploratory pilot settings, not final
-recognition criteria. The JSONL observations remain the primary source.
+Thresholds are exploratory pilot settings, not final recognition criteria.
+The JSONL observations remain the primary source.
 """
 
 from __future__ import annotations
@@ -19,18 +19,12 @@ STUDY_VERSION = "0.4.1"
 SIGNAL_THRESHOLD = 1.5
 PERSISTENCE_THRESHOLD = 0.5
 EARLY_TERMINAL_MAX_PLY = 7
-SIGNAL_COLUMNS = [
-    "reserve_signal",
-    "mobility_signal",
-    "capture_signal",
-    "front_signal",
-    "forcing_signal",
+SIGNALS = [
+    "reserve_signal", "mobility_signal", "capture_signal",
+    "front_signal", "forcing_signal",
 ]
-FORMAL_COLUMNS = [
-    "phase_event",
-    "reserve_event",
-    "house_event",
-    "forcing_event",
+FORMAL_EVENTS = [
+    "phase_event", "reserve_event", "house_event", "forcing_event",
 ]
 
 
@@ -66,15 +60,12 @@ def load_artifacts(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     games = json.loads(games_path.read_text(encoding="utf-8"))
     observations = read_jsonl(observations_path)
-
-    expected_identity = ("phase-transition", STUDY_VERSION, "pilot-v2")
-    actual_identity = (
-        manifest.get("study"),
-        manifest.get("studyVersion"),
+    identity = (
+        manifest.get("study"), manifest.get("studyVersion"),
         manifest.get("profile"),
     )
-    if actual_identity != expected_identity:
-        raise ValueError(f"Unexpected artifact identity: {actual_identity}")
+    if identity != ("phase-transition", STUDY_VERSION, "pilot-v2"):
+        raise ValueError(f"Unexpected artifact identity: {identity}")
     if manifest["completedGames"] != len(games):
         raise ValueError("Game count does not match manifest")
     if manifest["observationCount"] != len(observations):
@@ -91,30 +82,25 @@ def load_artifacts(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
 
     frame = pd.json_normalize(observations).sort_values(["gameId", "ply"])
     frame = frame.reset_index(drop=True)
-    games_frame = pd.json_normalize(games)
     if frame.duplicated(["gameId", "ply"]).any():
         raise ValueError("Duplicate gameId + ply observations")
-    return frame, games_frame, manifest
+    return frame, pd.json_normalize(games), manifest
 
 
 def prepare_features(frame: pd.DataFrame) -> pd.DataFrame:
-    frame = frame.rename(
-        columns={
-            "reserve.0": "reserve_0",
-            "reserve.1": "reserve_1",
-            "houseOwned.0": "house_0",
-            "houseOwned.1": "house_1",
-            "frontRow.occupiedPits.0": "front_occupied_0",
-            "frontRow.occupiedPits.1": "front_occupied_1",
-            "frontRow.occupancyRate.0": "front_rate_0",
-            "frontRow.occupancyRate.1": "front_rate_1",
-            "frontRow.seedCount.0": "front_seeds_0",
-            "frontRow.seedCount.1": "front_seeds_1",
-        }
-    ).copy()
+    frame = frame.rename(columns={
+        "reserve.0": "reserve_0", "reserve.1": "reserve_1",
+        "houseOwned.0": "house_0", "houseOwned.1": "house_1",
+        "frontRow.occupiedPits.0": "front_occupied_0",
+        "frontRow.occupiedPits.1": "front_occupied_1",
+        "frontRow.occupancyRate.0": "front_rate_0",
+        "frontRow.occupancyRate.1": "front_rate_1",
+        "frontRow.seedCount.0": "front_seeds_0",
+        "frontRow.seedCount.1": "front_seeds_1",
+    }).copy()
     required = {
-        "gameId", "ply", "phase", "reserve_0", "reserve_1", "house_0",
-        "house_1", "front_occupied_0", "front_occupied_1",
+        "gameId", "ply", "phase", "reserve_0", "reserve_1",
+        "house_0", "house_1", "front_occupied_0", "front_occupied_1",
         "front_rate_0", "front_rate_1", "front_seeds_0", "front_seeds_1",
         "legalMoveCount", "captureMoveCount", "nonCaptureMoveCount",
         "forcedCapture",
@@ -155,6 +141,11 @@ def prepare_features(frame: pd.DataFrame) -> pd.DataFrame:
     return frame
 
 
+def changed_after_first(values: pd.Series) -> pd.Series:
+    previous = values.shift()
+    return previous.notna() & values.ne(previous)
+
+
 def add_formal_events(frame: pd.DataFrame) -> pd.DataFrame:
     frame = frame.copy()
     grouped = frame.groupby("gameId", group_keys=False)
@@ -164,12 +155,13 @@ def add_formal_events(frame: pd.DataFrame) -> pd.DataFrame:
     frame["reserve_event"] = grouped["reserve_total"].transform(
         lambda values: values.eq(0) & values.shift().gt(0)
     )
-    changed = lambda values: values.ne(values.shift()).fillna(False)
     frame["house_event"] = (
-        grouped["house_0"].transform(changed)
-        | grouped["house_1"].transform(changed)
+        grouped["house_0"].transform(changed_after_first)
+        | grouped["house_1"].transform(changed_after_first)
     )
-    frame["forcing_event"] = grouped["forcedCapture"].transform(changed)
+    frame["forcing_event"] = grouped["forcedCapture"].transform(
+        changed_after_first
+    )
     return frame
 
 
@@ -187,9 +179,13 @@ def add_candidate_scores(frame: pd.DataFrame) -> pd.DataFrame:
     frame = frame.copy()
     groups = {
         "reserve_signal": ["reserve_total_delta", "reserve_diff_delta"],
-        "mobility_signal": ["legalMoveCount_delta", "nonCaptureMoveCount_delta"],
+        "mobility_signal": [
+            "legalMoveCount_delta", "nonCaptureMoveCount_delta",
+        ],
         "capture_signal": ["captureMoveCount_delta", "capture_ratio_delta"],
-        "front_signal": ["front_total_delta", "front_rate_delta", "front_seeds_delta"],
+        "front_signal": [
+            "front_total_delta", "front_rate_delta", "front_seeds_delta",
+        ],
     }
     for name, columns in groups.items():
         standardized = [
@@ -199,9 +195,9 @@ def add_candidate_scores(frame: pd.DataFrame) -> pd.DataFrame:
         frame[name] = pd.concat(standardized, axis=1).mean(axis=1)
     frame["forcing_signal"] = frame["forcing_event"].astype(float) * 3.0
     frame["active_signal_groups"] = (
-        frame[SIGNAL_COLUMNS] >= SIGNAL_THRESHOLD
+        frame[SIGNALS] >= SIGNAL_THRESHOLD
     ).sum(axis=1)
-    frame["transition_score"] = frame[SIGNAL_COLUMNS].clip(upper=5).sum(axis=1)
+    frame["transition_score"] = frame[SIGNALS].clip(upper=5).sum(axis=1)
     frame["candidate_raw"] = frame["active_signal_groups"] >= 2
     return frame
 
@@ -219,7 +215,9 @@ def persistence_distance(game: pd.DataFrame, index: int, window: int) -> float:
     ]:
         scale = game[feature].std(ddof=0)
         if scale and not np.isnan(scale):
-            distances.append(abs(after[feature].mean() - before[feature].mean()) / scale)
+            distances.append(
+                abs(after[feature].mean() - before[feature].mean()) / scale
+            )
     return float(np.mean(distances)) if distances else 0.0
 
 
@@ -229,19 +227,25 @@ def add_persistence(frame: pd.DataFrame) -> pd.DataFrame:
     frame["persistence_5"] = 0.0
     for _, game in frame.groupby("gameId"):
         for index in game.index[game["candidate_raw"]]:
-            frame.loc[index, "persistence_3"] = persistence_distance(game, index, 3)
-            frame.loc[index, "persistence_5"] = persistence_distance(game, index, 5)
+            frame.loc[index, "persistence_3"] = persistence_distance(
+                game, index, 3
+            )
+            frame.loc[index, "persistence_5"] = persistence_distance(
+                game, index, 5
+            )
     frame["candidate_persistent"] = (
-        frame["candidate_raw"] & (frame["persistence_3"] >= PERSISTENCE_THRESHOLD)
+        frame["candidate_raw"]
+        & (frame["persistence_3"] >= PERSISTENCE_THRESHOLD)
     )
 
     formal_plies = {
-        game_id: game.loc[game[FORMAL_COLUMNS].any(axis=1), "ply"].to_numpy()
+        game_id: game.loc[game[FORMAL_EVENTS].any(axis=1), "ply"].to_numpy()
         for game_id, game in frame.groupby("gameId")
     }
     frame["nearest_formal_distance"] = frame.apply(
-        lambda row: float(np.min(np.abs(formal_plies[row["gameId"]] - row["ply"])))
-        if len(formal_plies[row["gameId"]]) else np.nan,
+        lambda row: float(
+            np.min(np.abs(formal_plies[row["gameId"]] - row["ply"]))
+        ) if len(formal_plies[row["gameId"]]) else np.nan,
         axis=1,
     )
     return frame
@@ -264,7 +268,10 @@ def metrics(frame: pd.DataFrame, label: str) -> dict:
 
 def analyze(input_dir: Path, output_dir: Path) -> dict:
     frame, games, manifest = load_artifacts(input_dir)
-    frame = add_persistence(add_candidate_scores(add_formal_events(prepare_features(frame))))
+    frame = prepare_features(frame)
+    frame = add_formal_events(frame)
+    frame = add_candidate_scores(frame)
+    frame = add_persistence(frame)
     candidates = frame[frame["candidate_persistent"]].copy()
 
     early_game_ids = set(
@@ -273,7 +280,8 @@ def analyze(input_dir: Path, output_dir: Path) -> dict:
     expected_early = manifest["openingQuality"]["acceptedEarlyTerminalCount"]
     if len(early_game_ids) != expected_early:
         raise ValueError(
-            f"Early-terminal count mismatch: {len(early_game_ids)} != {expected_early}"
+            f"Early-terminal count mismatch: {len(early_game_ids)} "
+            f"!= {expected_early}"
         )
 
     summary = {
@@ -285,22 +293,25 @@ def analyze(input_dir: Path, output_dir: Path) -> dict:
             "earlyTerminalMaxPly": EARLY_TERMINAL_MAX_PLY,
         },
         "formalEventCounts": {
-            column: int(frame[column].sum()) for column in FORMAL_COLUMNS
+            column: int(frame[column].sum()) for column in FORMAL_EVENTS
         },
         "earlyTerminalGameIds": sorted(early_game_ids),
         "samples": [
             metrics(frame, "all_100"),
-            metrics(frame[~frame["gameId"].isin(early_game_ids)], "exclude_early_terminal"),
+            metrics(
+                frame[~frame["gameId"].isin(early_game_ids)],
+                "exclude_early_terminal",
+            ),
         ],
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    candidate_columns = [
+    columns = [
         "gameId", "ply", "normalized_ply", "phase", "transition_score",
         "active_signal_groups", "persistence_3", "persistence_5",
-        "nearest_formal_distance", *SIGNAL_COLUMNS,
+        "nearest_formal_distance", *SIGNALS,
     ]
-    candidates[candidate_columns].to_csv(
+    candidates[columns].to_csv(
         output_dir / "transition-candidates.csv", index=False
     )
     (output_dir / "analysis-summary.json").write_text(
@@ -321,8 +332,7 @@ def main() -> None:
         default=Path("artifacts/local/phase-transition-analysis"),
     )
     args = parser.parse_args()
-    summary = analyze(args.input, args.output)
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    print(json.dumps(analyze(args.input, args.output), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
