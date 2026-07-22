@@ -189,7 +189,7 @@ function analyzeAiMove(state, config, random) {
 }
 
 function openingAttemptSeed(seed, attempt) {
-  return (seed + Math.imul(attempt, 0x9E3779B1)) >>> 0;
+  return (seed + Math.imul(attempt - 1, 0x9E3779B1)) >>> 0;
 }
 
 function inspectOpening(state) {
@@ -480,6 +480,7 @@ module.exports = {
   diversitySummary,
   experimentConfig,
   inspectOpening,
+  openingAttemptSeed,
   openingQualitySummary,
   parseArgs,
   runGame,
