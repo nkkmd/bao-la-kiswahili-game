@@ -17,11 +17,22 @@ const PROFILES = {
     games: 10,
     output: "artifacts/phase-transition/diversity-smoke",
     gameIdPrefix: "pt-diversity",
+    studyVersion: "0.3.0",
+    validateOpening: false,
   },
   pilot: {
     games: 100,
     output: "artifacts/phase-transition/pilot",
     gameIdPrefix: "pt-pilot",
+    studyVersion: "0.3.0",
+    validateOpening: false,
+  },
+  "pilot-v2": {
+    games: 100,
+    output: "artifacts/phase-transition/pilot-v2",
+    gameIdPrefix: "pt-pilot-v2",
+    studyVersion: "0.4.0",
+    validateOpening: true,
   },
 };
 
@@ -61,6 +72,7 @@ function parseArgs(argv) {
     seed: 20260721,
     maxPly: 180,
     openingPlies: 6,
+    openingMaxAttempts: 100,
     baselineGames: 1,
     level: "hard",
     evaluationProfile: "bao",
@@ -80,6 +92,7 @@ function parseArgs(argv) {
     else if (arg === "--seed") options.seed = integerArg(value, arg, 0);
     else if (arg === "--max-ply") options.maxPly = integerArg(value, arg, 1);
     else if (arg === "--opening-plies") options.openingPlies = integerArg(value, arg, 0);
+    else if (arg === "--opening-max-attempts") options.openingMaxAttempts = integerArg(value, arg, 1);
     else if (arg === "--baseline-games") options.baselineGames = integerArg(value, arg, 0);
     else if (arg === "--max-depth") options.maxDepth = integerArg(value, arg, 1);
     else if (arg === "--level") options.level = value;
@@ -114,19 +127,30 @@ function sourceCommit() {
 }
 
 function experimentConfig(options) {
+  const profile = PROFILES[options.profile];
+  const opening = {
+    policy: "seeded-legal-random",
+    plies: options.openingPlies,
+    baselineGames: options.baselineGames,
+  };
+  if (profile.validateOpening) {
+    opening.validation = {
+      policy: "non-terminal-front-occupied",
+      maxAttempts: options.openingMaxAttempts,
+      requireWinnerNull: true,
+      requireLegalMove: true,
+      minimumOccupiedFrontPitsPerPlayer: 1,
+    };
+  }
   return {
     study: "phase-transition",
-    studyVersion: "0.3.0",
+    studyVersion: profile.studyVersion,
     schemaVersion: "1.0.0",
     profile: options.profile,
     games: options.games,
     baseSeed: options.seed,
     maxPly: options.maxPly,
-    opening: {
-      policy: "seeded-legal-random",
-      plies: options.openingPlies,
-      baselineGames: options.baselineGames,
-    },
+    opening,
     condition: {
       id: "C0",
       level: options.level,
@@ -164,12 +188,76 @@ function analyzeAiMove(state, config, random) {
   });
 }
 
+function openingAttemptSeed(seed, attempt) {
+  return (seed + Math.imul(attempt, 0x9E3779B1)) >>> 0;
+}
+
+function inspectOpening(state) {
+  if (state.winner !== null) return { valid: false, reason: `terminal:${state.reason || "winner"}` };
+  if (!E.moveVariants(state).length) return { valid: false, reason: "no-legal-move" };
+  const features = extractPhaseTransitionFeatures(state, {
+    gameId: "opening-validation",
+    conditionId: "opening-validation",
+    seed: 0,
+    ply: 0,
+    previousStateHash: null,
+  });
+  if (features.frontRow.occupiedPits.some((count) => count < 1)) {
+    return { valid: false, reason: "front-empty" };
+  }
+  return { valid: true, reason: null };
+}
+
+function createOpeningPlan(config, gameIndex, seed) {
+  const isBaseline = gameIndex < config.opening.baselineGames;
+  if (isBaseline || config.opening.plies === 0) {
+    return {
+      moves: [],
+      attempt: 0,
+      seed,
+      rejectedCount: 0,
+      rejectionReasons: {},
+    };
+  }
+  const validation = config.opening.validation;
+  const maxAttempts = validation?.maxAttempts ?? 1;
+  const rejectionReasons = {};
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const candidateSeed = validation ? openingAttemptSeed(seed, attempt) : seed;
+    const random = seededRandom(candidateSeed);
+    let state = E.initialState();
+    const moves = [];
+    let failure = null;
+    for (let ply = 0; ply < config.opening.plies; ply += 1) {
+      if (state.winner !== null) { failure = `terminal:${state.reason || "winner"}`; break; }
+      const move = chooseOpeningMove(state, random);
+      if (!move) { failure = "no-legal-move"; break; }
+      moves.push(move);
+      state = E.applyMove(state, move).state;
+    }
+    const inspection = failure ? { valid: false, reason: failure }
+      : (validation ? inspectOpening(state) : { valid: true, reason: null });
+    if (inspection.valid) {
+      return {
+        moves,
+        attempt,
+        seed: candidateSeed,
+        rejectedCount: attempt - 1,
+        rejectionReasons,
+      };
+    }
+    rejectionReasons[inspection.reason] = (rejectionReasons[inspection.reason] || 0) + 1;
+  }
+  throw new Error(`Unable to create valid opening for game ${gameIndex} after ${maxAttempts} attempts`);
+}
+
 function runGame(config, gameIndex) {
   const seed = config.baseSeed + gameIndex;
   const random = seededRandom(seed);
   const prefix = PROFILES[config.profile].gameIdPrefix;
   const gameId = `${prefix}-${String(gameIndex).padStart(4, "0")}`;
   const isBaseline = gameIndex < config.opening.baselineGames;
+  const openingPlan = createOpeningPlan(config, gameIndex, seed);
   let state = E.initialState();
   let previousStateHash = null;
   const observations = [];
@@ -190,14 +278,14 @@ function runGame(config, gameIndex) {
     trajectory.push(observation.stateHash);
     if (state.winner !== null || ply === config.maxPly) break;
 
-    const useOpening = !isBaseline && ply < config.opening.plies;
+    const useOpening = !isBaseline && ply < openingPlan.moves.length;
     let move;
     let search = null;
     let source;
     if (useOpening) {
-      move = chooseOpeningMove(state, random);
+      move = openingPlan.moves[ply];
       source = "opening-random";
-      openingPliesApplied += move ? 1 : 0;
+      openingPliesApplied += 1;
     } else {
       const analysis = analyzeAiMove(state, config, random);
       move = analysis.move;
@@ -223,7 +311,7 @@ function runGame(config, gameIndex) {
     });
     previousStateHash = beforeHash;
     state = result.state;
-    if (openingPliesApplied === config.opening.plies) openingStateHash = stateHash(state);
+    if (openingPliesApplied === openingPlan.moves.length) openingStateHash = stateHash(state);
   }
 
   if (isBaseline || openingPliesApplied === 0) openingStateHash = observations[0].stateHash;
@@ -235,6 +323,10 @@ function runGame(config, gameIndex) {
     baseline: isBaseline,
     openingPliesApplied,
     openingStateHash,
+    openingAttempt: openingPlan.attempt,
+    openingSeed: openingPlan.seed,
+    openingRejectedCount: openingPlan.rejectedCount,
+    openingRejectionReasons: openingPlan.rejectionReasons,
     initialStateHash: observations[0].stateHash,
     finalStateHash: observations.at(-1).stateHash,
     trajectoryHash: sha256(trajectory.join("\n")),
@@ -288,6 +380,28 @@ function diversitySummary(games) {
   };
 }
 
+function openingQualitySummary(games) {
+  const rejectionReasons = {};
+  let rejectedOpenings = 0;
+  let gamesWithRetries = 0;
+  let maximumAttempt = 0;
+  for (const game of games) {
+    rejectedOpenings += game.openingRejectedCount || 0;
+    if ((game.openingRejectedCount || 0) > 0) gamesWithRetries += 1;
+    maximumAttempt = Math.max(maximumAttempt, game.openingAttempt || 0);
+    for (const [reason, count] of Object.entries(game.openingRejectionReasons || {})) {
+      rejectionReasons[reason] = (rejectionReasons[reason] || 0) + count;
+    }
+  }
+  return {
+    rejectedOpenings,
+    gamesWithRetries,
+    maximumAttempt,
+    rejectionReasons,
+    acceptedEarlyTerminalCount: games.filter((game) => !game.baseline && game.plies <= game.openingPliesApplied + 1).length,
+  };
+}
+
 function aggregate(output, config, configHash, games, commit) {
   const observations = games.flatMap((game) => game.observations);
   const jsonl = `${observations.map((value) => JSON.stringify(value)).join("\n")}\n`;
@@ -307,6 +421,7 @@ function aggregate(output, config, configHash, games, commit) {
     completedGames: games.length,
     observationCount: observations.length,
     diversity: diversitySummary(games),
+    openingQuality: openingQualitySummary(games),
     files: {
       "observations.jsonl": { sha256: sha256(jsonl), bytes: Buffer.byteLength(jsonl) },
       "games.json": { sha256: sha256(gamesJson), bytes: Buffer.byteLength(gamesJson) },
@@ -337,7 +452,7 @@ function runResearch(options) {
     if (!game) {
       game = { configHash, sourceCommit: commit, ...runGame(config, gameIndex) };
       atomicWrite(filePath, `${JSON.stringify(game, null, 2)}\n`);
-      console.log(`completed ${game.gameId}: ${game.plies} ply, winner=${game.winner}, trajectory=${game.trajectoryHash.slice(0, 12)}`);
+      console.log(`completed ${game.gameId}: ${game.plies} ply, winner=${game.winner}, openingAttempt=${game.openingAttempt}, trajectory=${game.trajectoryHash.slice(0, 12)}`);
     } else {
       console.log(`skipped ${game.gameId}: already complete`);
     }
@@ -361,8 +476,11 @@ module.exports = {
   PROFILES,
   aggregate,
   canonicalJson,
+  createOpeningPlan,
   diversitySummary,
   experimentConfig,
+  inspectOpening,
+  openingQualitySummary,
   parseArgs,
   runGame,
   runResearch,
