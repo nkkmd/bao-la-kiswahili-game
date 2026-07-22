@@ -42,7 +42,7 @@ try {
   assert.equal(pilotV2.output, "artifacts/phase-transition/pilot-v2");
   assert.equal(pilotV2.openingMaxAttempts, 100);
   const pilotV2Config = experimentConfig(pilotV2);
-  assert.equal(pilotV2Config.studyVersion, "0.4.0");
+  assert.equal(pilotV2Config.studyVersion, "0.4.1");
   assert.equal(pilotV2Config.opening.validation.policy, "non-terminal-front-occupied");
   assert.equal(pilotV2Config.opening.validation.maxAttempts, 100);
   assert.match(runGame({ ...pilotV2Config, maxPly: 1 }, 0).gameId, /^pt-pilot-v2-0000$/);
