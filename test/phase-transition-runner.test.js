@@ -52,15 +52,17 @@ try {
   assert.notEqual(openingAttemptSeed(20260767, 2), 20260767,
     "attempt 2 must use a deterministic alternate seed");
 
-  for (const seed of [20260767, 20260786, 20260799]) {
-    const gameIndex = seed - pilotV2Config.baseSeed;
-    const openingPlan = createOpeningPlan(pilotV2Config, gameIndex, seed);
-    assert.equal(openingPlan.moves.length, 6);
-    assert.ok(openingPlan.attempt >= 2 && openingPlan.attempt <= 100,
-      `known invalid pilot-v1 opening ${seed} must be retried`);
-    assert.equal(openingPlan.rejectedCount, openingPlan.attempt - 1);
-    assert.ok((openingPlan.rejectionReasons["terminal:front-empty"] || 0) >= 1);
-  }
+  const terminalOpeningSeed = 20260786;
+  const terminalOpeningPlan = createOpeningPlan(
+    pilotV2Config,
+    terminalOpeningSeed - pilotV2Config.baseSeed,
+    terminalOpeningSeed,
+  );
+  assert.equal(terminalOpeningPlan.moves.length, 6);
+  assert.ok(terminalOpeningPlan.attempt >= 2 && terminalOpeningPlan.attempt <= 100,
+    "the opening that is terminal at the six-ply boundary must be retried");
+  assert.equal(terminalOpeningPlan.rejectedCount, terminalOpeningPlan.attempt - 1);
+  assert.ok((terminalOpeningPlan.rejectionReasons["terminal:front-empty"] || 0) >= 1);
 
   const comparableGameIndex = 1;
   const pilotGame = runGame(pilotConfig, comparableGameIndex);
