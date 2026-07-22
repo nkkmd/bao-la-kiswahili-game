@@ -42,3 +42,4 @@ artifacts/*-local.json
 /artifacts/phase-transition/diversity-smoke/
 /artifacts/phase-transition/pilot/
 /artifacts/phase-transition/pilot-v2/
+/artifacts/phase-transition/archive/
