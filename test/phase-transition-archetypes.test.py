@@ -15,6 +15,8 @@ assert module.phase_band(0.1) == "opening"
 assert module.phase_band(0.5) == "middle"
 assert module.phase_band(0.8) == "late"
 assert module.phase_band(0.95) == "terminal_near"
+assert module.calculate_plies_remaining(71, 70) == 1
+assert module.calculate_plies_remaining(48.0, 46) == 2
 
 row = pd.Series({
     "phase": "namua", "normalized_ply": 0.5,
