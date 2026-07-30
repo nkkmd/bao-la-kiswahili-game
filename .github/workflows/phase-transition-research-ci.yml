@@ -12,6 +12,7 @@ on:
       - "tools/experiments/analyze-phase-transition-pilot.py"
       - "tools/experiments/lib/phase-transition-features.js"
       - "test/phase-transition-*.test.js"
+      - "test/phase-transition-analysis.test.py"
       - "notebooks/phase-transition/**"
       - ".github/workflows/phase-transition-research-ci.yml"
   workflow_dispatch:
@@ -31,11 +32,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas
       - name: Run phase-transition tests
         run: |
           node test/phase-transition-features.test.js
           node test/phase-transition-fixture.test.js
           node test/phase-transition-runner.test.js
+          python test/phase-transition-analysis.test.py
       - name: Generate fixture artifacts
         run: node tools/experiments/generate-phase-transition-fixture.js
       - name: Verify fixture artifacts
