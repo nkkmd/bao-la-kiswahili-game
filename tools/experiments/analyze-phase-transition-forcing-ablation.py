@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""Compare forcing-signal roles in pilot-v2 transition detection.
+"""Compare forcing-signal roles and classify pilot-v2 transition candidates.
 
-This analysis imports the v2 feature preparation and boundary logic without
-changing the archived v2 outputs. The three modes are:
+The analysis preserves the v2 feature and boundary logic and compares:
 
-- inclusive: forcing is one of the signal groups required for candidacy.
+- inclusive: forcing counts toward the two-group candidacy rule.
 - excluded: forcing is omitted from candidacy and score.
-- auxiliary: at least two non-forcing groups are required; forcing only adds
-  to the reported score.
+- auxiliary: two non-forcing groups are required; forcing only adds score.
+
+Primary candidates are classified as:
+
+- A: survives without forcing and is not coincident with a forcing event.
+- B: survives without forcing and is coincident with a forcing event.
+- C: appears only when forcing counts toward candidacy.
 """
 
 from __future__ import annotations
@@ -17,6 +21,7 @@ import importlib.util
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 SCRIPT = Path(__file__).with_name("analyze-phase-transition-pilot.py")
@@ -26,7 +31,7 @@ if spec is None or spec.loader is None:
 v2 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(v2)
 
-ANALYSIS_VERSION = "3-forcing-ablation"
+ANALYSIS_VERSION = "3.1-forcing-classification"
 PRIMARY_SIGNAL_THRESHOLD = 2.0
 PRIMARY_PERSISTENCE_THRESHOLD = 0.75
 STRICT_SIGNAL_THRESHOLD = 2.5
@@ -38,6 +43,18 @@ NON_FORCING_SIGNALS = [
     "front_signal",
 ]
 MODES = ("inclusive", "excluded", "auxiliary")
+AUDIT_FEATURES = [
+    "reserve_total",
+    "reserve_diff",
+    "legalMoveCount",
+    "captureMoveCount",
+    "nonCaptureMoveCount",
+    "capture_ratio",
+    "front_total",
+    "front_diff",
+    "front_rate",
+    "front_seeds",
+]
 
 
 def mode_points(
@@ -143,21 +160,188 @@ def mode_metrics(
     return result, points, clusters
 
 
-def overlap_summary(clusters_by_mode: dict[str, pd.DataFrame]) -> dict:
-    identities = {
-        mode: set(zip(clusters["gameId"], clusters["representativePly"]))
-        if not clusters.empty else set()
-        for mode, clusters in clusters_by_mode.items()
+def intervals_overlap(left: pd.Series, right: pd.Series) -> bool:
+    return (
+        left["gameId"] == right["gameId"]
+        and int(left["startPly"]) <= int(right["endPly"])
+        and int(right["startPly"]) <= int(left["endPly"])
+    )
+
+
+def overlapping_indices(
+    source: pd.DataFrame,
+    target: pd.DataFrame,
+) -> dict[int, list[int]]:
+    matches: dict[int, list[int]] = {}
+    if source.empty or target.empty:
+        return matches
+    target_by_game = {
+        game_id: game
+        for game_id, game in target.groupby("gameId")
     }
-    inclusive = identities["inclusive"]
-    excluded = identities["excluded"]
-    auxiliary = identities["auxiliary"]
+    for source_index, source_row in source.iterrows():
+        candidates = target_by_game.get(source_row["gameId"])
+        if candidates is None:
+            continue
+        matched = [
+            int(target_index)
+            for target_index, target_row in candidates.iterrows()
+            if intervals_overlap(source_row, target_row)
+        ]
+        if matched:
+            matches[int(source_index)] = matched
+    return matches
+
+
+def overlap_summary(clusters_by_mode: dict[str, pd.DataFrame]) -> dict:
+    inclusive = clusters_by_mode["inclusive"].reset_index(drop=True)
+    excluded = clusters_by_mode["excluded"].reset_index(drop=True)
+    auxiliary = clusters_by_mode["auxiliary"].reset_index(drop=True)
+
+    inclusive_excluded = overlapping_indices(inclusive, excluded)
+    inclusive_auxiliary = overlapping_indices(inclusive, auxiliary)
+    excluded_inclusive = overlapping_indices(excluded, inclusive)
+    excluded_auxiliary = overlapping_indices(excluded, auxiliary)
+
+    inclusive_survivors = set(inclusive_excluded)
+    inclusive_aux = set(inclusive_auxiliary)
+    excluded_survivors = set(excluded_inclusive)
+    excluded_aux = set(excluded_auxiliary)
+
     return {
-        "inclusiveOnly": len(inclusive - auxiliary),
-        "survivesWithoutForcing": len(inclusive & excluded),
-        "inclusiveAndAuxiliary": len(inclusive & auxiliary),
-        "allThree": len(inclusive & excluded & auxiliary),
-        "excludedOnly": len(excluded - inclusive),
+        "matchingRule": "same gameId and overlapping [startPly, endPly]",
+        "inclusiveOnly": int(len(inclusive) - len(inclusive_survivors)),
+        "survivesWithoutForcing": int(len(inclusive_survivors)),
+        "inclusiveAndAuxiliary": int(len(inclusive_aux)),
+        "allThreeInclusiveClusters": int(
+            len(inclusive_survivors & inclusive_aux)
+        ),
+        "excludedOnly": int(len(excluded) - len(excluded_survivors)),
+        "excludedAndAuxiliary": int(len(excluded_survivors & excluded_aux)),
+    }
+
+
+def active_signal_names(row: pd.Series, threshold: float) -> str:
+    return "|".join(
+        name.removesuffix("_signal")
+        for name in NON_FORCING_SIGNALS
+        if float(row[name]) >= threshold
+    )
+
+
+def representative_row(
+    frame: pd.DataFrame,
+    cluster: pd.Series,
+) -> pd.Series:
+    rows = frame[
+        (frame["gameId"] == cluster["gameId"])
+        & (frame["ply"] == int(cluster["representativePly"]))
+    ]
+    if len(rows) != 1:
+        raise ValueError(
+            "Expected one representative observation for "
+            f"{cluster['gameId']} ply {cluster['representativePly']}"
+        )
+    return rows.iloc[0]
+
+
+def audit_record(
+    frame: pd.DataFrame,
+    cluster: pd.Series,
+    category: str,
+    rationale: str,
+) -> dict:
+    observation = representative_row(frame, cluster)
+    record = {
+        "category": category,
+        "categoryRationale": rationale,
+        "gameId": cluster["gameId"],
+        "clusterId": cluster["clusterId"],
+        "startPly": int(cluster["startPly"]),
+        "endPly": int(cluster["endPly"]),
+        "representativePly": int(cluster["representativePly"]),
+        "normalizedPly": float(cluster["normalizedPly"]),
+        "phase": cluster["phase"],
+        "peakScore": float(cluster["peakScore"]),
+        "activeNonForcingGroups": int(
+            sum(
+                float(observation[name]) >= PRIMARY_SIGNAL_THRESHOLD
+                for name in NON_FORCING_SIGNALS
+            )
+        ),
+        "activeNonForcingSignals": active_signal_names(
+            observation,
+            PRIMARY_SIGNAL_THRESHOLD,
+        ),
+        "forcingActive": bool(
+            observation["forcing_signal"] >= PRIMARY_SIGNAL_THRESHOLD
+        ),
+        "persistence3": float(observation["persistence_3"]),
+        "persistence5": float(observation["persistence_5"]),
+        "nearestStructuralDistance": (
+            float(cluster["nearestStructuralDistance"])
+            if pd.notna(cluster["nearestStructuralDistance"])
+            else np.nan
+        ),
+        "nearestForcingDistance": (
+            float(cluster["nearestForcingDistance"])
+            if pd.notna(cluster["nearestForcingDistance"])
+            else np.nan
+        ),
+    }
+    for signal in [*NON_FORCING_SIGNALS, "forcing_signal"]:
+        record[signal] = float(observation[signal])
+    for feature in AUDIT_FEATURES:
+        record[f"{feature}Delta"] = float(observation[f"{feature}_delta"])
+    return record
+
+
+def classify_primary_clusters(
+    frame: pd.DataFrame,
+    clusters_by_mode: dict[str, pd.DataFrame],
+) -> pd.DataFrame:
+    inclusive = clusters_by_mode["inclusive"].reset_index(drop=True)
+    excluded = clusters_by_mode["excluded"].reset_index(drop=True)
+    inclusive_to_excluded = overlapping_indices(inclusive, excluded)
+
+    records: list[dict] = []
+
+    for _, cluster in excluded.iterrows():
+        forcing_distance = cluster["nearestForcingDistance"]
+        if pd.isna(forcing_distance) or float(forcing_distance) > 0:
+            category = "A"
+            rationale = "survives_without_forcing_and_not_forcing_coincident"
+        else:
+            category = "B"
+            rationale = "survives_without_forcing_but_forcing_coincident"
+        records.append(audit_record(frame, cluster, category, rationale))
+
+    for inclusive_index, cluster in inclusive.iterrows():
+        if int(inclusive_index) in inclusive_to_excluded:
+            continue
+        records.append(audit_record(
+            frame,
+            cluster,
+            "C",
+            "requires_forcing_to_satisfy_candidate_rule",
+        ))
+
+    audit = pd.DataFrame(records)
+    if not audit.empty:
+        audit = audit.sort_values(
+            ["category", "peakScore", "gameId", "representativePly"],
+            ascending=[True, False, True, True],
+        ).reset_index(drop=True)
+    return audit
+
+
+def classification_summary(audit: pd.DataFrame) -> dict:
+    counts = audit["category"].value_counts().to_dict() if not audit.empty else {}
+    return {
+        "A_forcingIndependent": int(counts.get("A", 0)),
+        "B_forcingCoincidentNonForcingSupported": int(counts.get("B", 0)),
+        "C_forcingDependent": int(counts.get("C", 0)),
+        "totalClassified": int(len(audit)),
     }
 
 
@@ -215,6 +399,7 @@ def analyze(input_dir: Path, output_dir: Path) -> dict:
     metrics_frame = pd.DataFrame(metric_rows)
     points_frame = pd.concat(primary_points, ignore_index=True)
     clusters_frame = pd.concat(primary_clusters, ignore_index=True)
+    audit = classify_primary_clusters(frame, primary_all_clusters)
 
     summary = {
         "studyVersion": v2.STUDY_VERSION,
@@ -225,6 +410,11 @@ def analyze(input_dir: Path, output_dir: Path) -> dict:
             "excluded": "forcing is omitted from candidacy and score",
             "auxiliary": "two non-forcing groups are required; forcing only adds score",
         },
+        "categories": {
+            "A": "survives without forcing and is not forcing-coincident",
+            "B": "survives without forcing and is forcing-coincident",
+            "C": "requires forcing to satisfy the candidacy rule",
+        },
         "settings": {
             name: {
                 "signalThreshold": values[0],
@@ -233,13 +423,27 @@ def analyze(input_dir: Path, output_dir: Path) -> dict:
             for name, values in settings.items()
         },
         "overlapAtPrimaryAll100": overlap_summary(primary_all_clusters),
+        "classificationAtPrimaryAll100": classification_summary(audit),
         "metrics": metric_rows,
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    metrics_frame.to_csv(output_dir / "forcing-ablation-summary.csv", index=False)
-    points_frame.to_csv(output_dir / "forcing-ablation-points.csv", index=False)
-    clusters_frame.to_csv(output_dir / "forcing-ablation-clusters.csv", index=False)
+    metrics_frame.to_csv(
+        output_dir / "forcing-ablation-summary.csv",
+        index=False,
+    )
+    points_frame.to_csv(
+        output_dir / "forcing-ablation-points.csv",
+        index=False,
+    )
+    clusters_frame.to_csv(
+        output_dir / "forcing-ablation-clusters.csv",
+        index=False,
+    )
+    audit.to_csv(
+        output_dir / "candidate-audit-table.csv",
+        index=False,
+    )
     (output_dir / "forcing-ablation-summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
