@@ -9,6 +9,7 @@ on:
       - "tools/experiments/generate-phase-transition-fixture.js"
       - "tools/experiments/run-phase-transition-research.js"
       - "tools/experiments/verify-phase-transition-artifacts.js"
+      - "tools/experiments/analyze-phase-transition-pilot.py"
       - "tools/experiments/lib/phase-transition-features.js"
       - "test/phase-transition-*.test.js"
       - "notebooks/phase-transition/**"
@@ -27,6 +28,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Run phase-transition tests
         run: |
           node test/phase-transition-features.test.js
@@ -50,10 +54,12 @@ jobs:
           node tools/experiments/verify-phase-transition-artifacts.js \
             --input artifacts/phase-transition/ci-diversity-smoke
           node -e 'const m=require("./artifacts/phase-transition/ci-diversity-smoke/manifest.json"); if(!m.diversity.passesPilotGate) throw new Error(JSON.stringify(m.diversity))'
-      - name: Validate schema and notebook JSON
+      - name: Validate schema, notebooks, and analysis syntax
         run: |
           node -e 'JSON.parse(require("node:fs").readFileSync("schemas/phase-transition-observation.schema.json", "utf8"))'
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/01-data-audit.ipynb", "utf8"))'
+          node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/02-transition-candidate-analysis.ipynb", "utf8"))'
+          python -m py_compile tools/experiments/analyze-phase-transition-pilot.py
       - name: Upload phase-transition artifacts
         uses: actions/upload-artifact@v4
         with:
