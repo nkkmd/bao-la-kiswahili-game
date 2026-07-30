@@ -12,6 +12,7 @@ on:
       - "tools/experiments/analyze-phase-transition-pilot.py"
       - "tools/experiments/analyze-phase-transition-forcing-ablation.py"
       - "tools/experiments/analyze-phase-transition-archetypes.py"
+      - "tools/experiments/extract-phase-transition-candidate-audit.js"
       - "tools/experiments/lib/phase-transition-features.js"
       - "test/phase-transition-*.test.js"
       - "test/phase-transition-analysis.test.py"
@@ -43,6 +44,7 @@ jobs:
           node test/phase-transition-features.test.js
           node test/phase-transition-fixture.test.js
           node test/phase-transition-runner.test.js
+          node test/phase-transition-candidate-audit.test.js
           python test/phase-transition-analysis.test.py
           python test/phase-transition-forcing-ablation.test.py
           python test/phase-transition-archetypes.test.py
@@ -71,6 +73,8 @@ jobs:
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/02-transition-candidate-analysis.ipynb", "utf8"))'
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/03-forcing-ablation.ipynb", "utf8"))'
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/04-candidate-archetypes.ipynb", "utf8"))'
+          node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/05-candidate-board-audit.ipynb", "utf8"))'
+          node --check tools/experiments/extract-phase-transition-candidate-audit.js
           python -m py_compile tools/experiments/analyze-phase-transition-pilot.py
           python -m py_compile tools/experiments/analyze-phase-transition-forcing-ablation.py
           python -m py_compile tools/experiments/analyze-phase-transition-archetypes.py
