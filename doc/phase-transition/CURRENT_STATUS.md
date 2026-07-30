@@ -4,6 +4,34 @@
 Status: Active  
 研究計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`
 
+## 恒久運用ルール
+
+本研究に対して、次のような再開指示が与えられた場合、特に明示的な除外指示がない限り、**研究の続行だけでなく、各工程完了時の研究台帳更新まで含む指示**として扱う。
+
+```text
+CURRENT_STATUS.mdを読んで再開して
+```
+
+再開後は、各工程について実装・実験・結果監査まで進め、完了時に必要な研究台帳を更新してから次工程へ進む。
+
+必須更新対象:
+
+- `doc/phase-transition/CURRENT_STATUS.md`
+- `doc/phase-transition/RESEARCH_LOG.md`
+- `doc/phase-transition/DECISION_REGISTER.md`
+- `doc/phase-transition/EXPERIMENT_INDEX.md`
+- `doc/phase-transition/HYPOTHESES.md`
+- 必要に応じて `doc/phase-transition/checkpoints/`
+
+運用原則:
+
+- 過去の判断・結果・数値を黙って上書きしない。
+- 解釈を変更した場合は、旧解釈、変更理由、根拠、影響範囲を記録する。
+- 実験ごとに入力識別情報、analysisVersion、configHash、commit SHA、Notebook、出力先を残す。
+- 工程途中で停止する場合も、再開地点、未完了事項、次に実行する操作を `CURRENT_STATUS.md` に記録する。
+- 新しい判断は `DECISION_REGISTER.md`、仮説の支持状況は `HYPOTHESES.md`、時系列経過は `RESEARCH_LOG.md` に反映する。
+- 節目となる結果、重要な解釈変更、正式検証開始前にはチェックポイント文書を作成する。
+
 ## 現在の研究段階
 
 100局 `pilot-v2` を用いた探索的パイロットの後半。候補抽出・forcingアブレーション・アーキタイプ化・代表局面監査まで完了した。
@@ -74,17 +102,18 @@ Status: Active
 
 ## 最新の実装
 
-- 最新マージコミット: `b0845486b958c5e2da91405b708af9e8544efd5f`
-- PR: `#22 Add priority candidate board audit workflow`
+- 最新マージコミット: `c1810f45c582c8147725d67a737b44ec368b8514`
+- PR: `#23 Add resumable phase-transition research ledger`
 
 ## 再開手順
 
 1. 本ファイルを読む。
-2. `doc/phase-transition/DECISION_REGISTER.md` で採用・撤回判断を確認する。
-3. `doc/phase-transition/EXPERIMENT_INDEX.md` で入力、Notebook、成果物を確認する。
-4. `doc/phase-transition/checkpoints/2026-07-30-board-audit.md` を読む。
-5. `pilot-v2-analysis-input.zip` を用意する。
-6. 強制捕獲レジーム分析の実装から再開する。
+2. 本ファイルの「恒久運用ルール」を適用する。
+3. `doc/phase-transition/DECISION_REGISTER.md` で採用・撤回判断を確認する。
+4. `doc/phase-transition/EXPERIMENT_INDEX.md` で入力、Notebook、成果物を確認する。
+5. `doc/phase-transition/checkpoints/2026-07-30-board-audit.md` を読む。
+6. `pilot-v2-analysis-input.zip` を用意する。
+7. 強制捕獲レジーム分析の実装から再開する。
 
 ## 完了済みNotebook
 
