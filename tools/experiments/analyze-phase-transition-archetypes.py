@@ -106,9 +106,10 @@ def classify_four_way(frame: pd.DataFrame) -> pd.DataFrame:
     plies_remaining = []
     signatures = []
     for _, row in audit.iterrows():
-        observation = representatives.loc[(row["gameId"], int(row["representativePly"]))]
+        representative_ply = int(row["representativePly"])
+        observation = representatives.loc[(row["gameId"], representative_ply)]
         state_hashes.append(str(observation.get("stateHash", "")))
-        plies_remaining.append(int(observation["max_ply"] - observation["ply"]))
+        plies_remaining.append(int(observation["max_ply"] - representative_ply))
         signatures.append(rounded_signature(observation))
 
     audit["stateHash"] = state_hashes
