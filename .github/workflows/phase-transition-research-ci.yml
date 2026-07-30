@@ -10,9 +10,11 @@ on:
       - "tools/experiments/run-phase-transition-research.js"
       - "tools/experiments/verify-phase-transition-artifacts.js"
       - "tools/experiments/analyze-phase-transition-pilot.py"
+      - "tools/experiments/analyze-phase-transition-forcing-ablation.py"
       - "tools/experiments/lib/phase-transition-features.js"
       - "test/phase-transition-*.test.js"
       - "test/phase-transition-analysis.test.py"
+      - "test/phase-transition-forcing-ablation.test.py"
       - "notebooks/phase-transition/**"
       - ".github/workflows/phase-transition-research-ci.yml"
   workflow_dispatch:
@@ -40,6 +42,7 @@ jobs:
           node test/phase-transition-fixture.test.js
           node test/phase-transition-runner.test.js
           python test/phase-transition-analysis.test.py
+          python test/phase-transition-forcing-ablation.test.py
       - name: Generate fixture artifacts
         run: node tools/experiments/generate-phase-transition-fixture.js
       - name: Verify fixture artifacts
@@ -63,7 +66,9 @@ jobs:
           node -e 'JSON.parse(require("node:fs").readFileSync("schemas/phase-transition-observation.schema.json", "utf8"))'
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/01-data-audit.ipynb", "utf8"))'
           node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/02-transition-candidate-analysis.ipynb", "utf8"))'
+          node -e 'JSON.parse(require("node:fs").readFileSync("notebooks/phase-transition/03-forcing-ablation.ipynb", "utf8"))'
           python -m py_compile tools/experiments/analyze-phase-transition-pilot.py
+          python -m py_compile tools/experiments/analyze-phase-transition-forcing-ablation.py
       - name: Upload phase-transition artifacts
         uses: actions/upload-artifact@v4
         with:
