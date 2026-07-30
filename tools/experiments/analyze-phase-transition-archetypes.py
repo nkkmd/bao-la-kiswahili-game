@@ -48,6 +48,11 @@ def signature_id(signature: str) -> str:
     return hashlib.sha256(signature.encode("utf-8")).hexdigest()[:12]
 
 
+def calculate_plies_remaining(max_ply: int | float, representative_ply: int | float) -> int:
+    """Return remaining plies after a representative observation."""
+    return int(max_ply) - int(representative_ply)
+
+
 def build_frame(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     frame, games, manifest = v2.load_artifacts(input_dir)
     frame = v2.prepare_features(frame)
@@ -109,7 +114,10 @@ def classify_four_way(frame: pd.DataFrame) -> pd.DataFrame:
         representative_ply = int(row["representativePly"])
         observation = representatives.loc[(row["gameId"], representative_ply)]
         state_hashes.append(str(observation.get("stateHash", "")))
-        plies_remaining.append(int(observation["max_ply"] - representative_ply))
+        plies_remaining.append(calculate_plies_remaining(
+            observation["max_ply"],
+            representative_ply,
+        ))
         signatures.append(rounded_signature(observation))
 
     audit["stateHash"] = state_hashes
