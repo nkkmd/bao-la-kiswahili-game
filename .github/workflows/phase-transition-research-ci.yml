@@ -32,6 +32,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas
       - name: Run phase-transition tests
         run: |
           node test/phase-transition-features.test.js
