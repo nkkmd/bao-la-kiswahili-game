@@ -87,6 +87,27 @@ def load_artifacts(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     return frame, pd.json_normalize(games), manifest
 
 
+def expand_pair_column(
+    frame: pd.DataFrame,
+    source: str,
+    target_0: str,
+    target_1: str,
+) -> None:
+    """Expand a two-element JSON array retained by pandas.json_normalize."""
+    if target_0 in frame.columns and target_1 in frame.columns:
+        return
+    if source not in frame.columns:
+        return
+    valid = frame[source].map(
+        lambda value: isinstance(value, (list, tuple)) and len(value) == 2
+    )
+    if not valid.all():
+        bad_rows = frame.index[~valid].tolist()[:5]
+        raise ValueError(f"Invalid pair column {source} at rows {bad_rows}")
+    frame[target_0] = frame[source].str[0]
+    frame[target_1] = frame[source].str[1]
+
+
 def prepare_features(frame: pd.DataFrame) -> pd.DataFrame:
     frame = frame.rename(columns={
         "reserve.0": "reserve_0", "reserve.1": "reserve_1",
@@ -98,6 +119,21 @@ def prepare_features(frame: pd.DataFrame) -> pd.DataFrame:
         "frontRow.seedCount.0": "front_seeds_0",
         "frontRow.seedCount.1": "front_seeds_1",
     }).copy()
+
+    # pandas.json_normalize flattens nested objects but normally retains arrays
+    # as list-valued columns. Support both list-valued and already-expanded data.
+    expand_pair_column(frame, "reserve", "reserve_0", "reserve_1")
+    expand_pair_column(frame, "houseOwned", "house_0", "house_1")
+    expand_pair_column(
+        frame, "frontRow.occupiedPits", "front_occupied_0", "front_occupied_1"
+    )
+    expand_pair_column(
+        frame, "frontRow.occupancyRate", "front_rate_0", "front_rate_1"
+    )
+    expand_pair_column(
+        frame, "frontRow.seedCount", "front_seeds_0", "front_seeds_1"
+    )
+
     required = {
         "gameId", "ply", "phase", "reserve_0", "reserve_1",
         "house_0", "house_1", "front_occupied_0", "front_occupied_1",
