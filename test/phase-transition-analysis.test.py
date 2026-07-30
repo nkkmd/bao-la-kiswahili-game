@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression test for pandas.json_normalize array handling."""
+"""Regression tests for phase-transition pilot analysis."""
 
 from __future__ import annotations
 
@@ -15,49 +15,69 @@ assert spec and spec.loader
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
-records = [
-    {
-        "gameId": "test-game",
-        "ply": 0,
-        "phase": "namua",
-        "reserve": [22, 22],
-        "houseOwned": [True, True],
-        "legalMoveCount": 4,
-        "captureMoveCount": 1,
-        "nonCaptureMoveCount": 3,
-        "forcedCapture": False,
-        "frontRow": {
-            "occupiedPits": [8, 8],
-            "occupancyRate": [1.0, 1.0],
-            "seedCount": [16, 16],
-        },
-    },
-    {
-        "gameId": "test-game",
-        "ply": 1,
-        "phase": "namua",
-        "reserve": [21, 22],
-        "houseOwned": [True, True],
-        "legalMoveCount": 3,
-        "captureMoveCount": 1,
-        "nonCaptureMoveCount": 2,
-        "forcedCapture": False,
-        "frontRow": {
-            "occupiedPits": [8, 7],
-            "occupancyRate": [1.0, 0.875],
-            "seedCount": [17, 15],
-        },
-    },
-]
 
-frame = pd.json_normalize(records)
+def observation(ply: int) -> dict:
+    return {
+        "gameId": "test-game",
+        "ply": ply,
+        "phase": "namua" if ply < 7 else "mtaji",
+        "reserve": [22 - min(ply, 22), 22],
+        "houseOwned": [True, True],
+        "legalMoveCount": 4 + (ply % 3),
+        "captureMoveCount": 1 + (ply % 2),
+        "nonCaptureMoveCount": 3,
+        "forcedCapture": bool(ply % 2),
+        "frontRow": {
+            "occupiedPits": [8, max(1, 8 - ply // 3)],
+            "occupancyRate": [1.0, max(0.125, 1.0 - ply / 24)],
+            "seedCount": [16 + ply, max(1, 16 - ply)],
+        },
+    }
+
+
+frame = pd.json_normalize([observation(ply) for ply in range(11)])
 prepared = module.prepare_features(frame)
 
 assert prepared.loc[0, "reserve_0"] == 22
 assert prepared.loc[1, "reserve_1"] == 22
 assert bool(prepared.loc[0, "house_0"]) is True
-assert prepared.loc[1, "front_occupied_1"] == 7
-assert prepared.loc[1, "front_rate_1"] == 0.875
-assert prepared.loc[1, "front_seeds_0"] == 17
+assert prepared.loc[3, "front_occupied_1"] == 7
 assert prepared.loc[1, "reserve_total_delta"] == -1
-print("phase-transition analysis array-column regression passed")
+
+metadata = pd.DataFrame([{
+    "gameId": "test-game",
+    "plies": 10,
+    "openingPliesApplied": 6,
+    "baseline": False,
+}])
+bounded = module.attach_game_boundaries(prepared, metadata)
+
+assert bounded.loc[0:6, "in_random_opening"].all()
+assert not bounded.loc[7, "in_random_opening"]
+assert bounded.loc[10, "in_terminal_guard"]
+assert bounded.loc[7:9, "analysis_eligible"].all()
+
+cluster_input = pd.DataFrame([
+    {
+        "gameId": "test-game",
+        "ply": ply,
+        "normalized_ply": ply / 10,
+        "phase": "mtaji",
+        "transition_score": score,
+        "active_signal_groups": 3,
+        "persistence_3": 0.8,
+        "persistence_5": 0.9,
+        "nearest_structural_distance": float(abs(8 - ply)),
+        "nearest_forcing_distance": 0.0,
+    }
+    for ply, score in [(7, 8.0), (8, 10.0), (10, 9.0)]
+])
+clusters = module.cluster_candidates(cluster_input)
+
+assert len(clusters) == 2
+assert clusters.loc[0, "startPly"] == 7
+assert clusters.loc[0, "endPly"] == 8
+assert clusters.loc[0, "representativePly"] == 8
+assert clusters.loc[1, "startPly"] == 10
+
+print("phase-transition analysis regression tests passed")
