@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for forcing ablation candidate rules."""
+"""Regression tests for forcing ablation and candidate classification."""
 
 from __future__ import annotations
 
@@ -48,6 +48,32 @@ assert inclusive.loc[0, "activeNonForcingGroups"] == 1
 assert excluded.loc[1, "activeNonForcingGroups"] == 2
 assert auxiliary.loc[1, "ablation_score"] == inclusive.loc[1, "ablation_score"]
 
+left = pd.Series({"gameId": "g1", "startPly": 10, "endPly": 12})
+overlap = pd.Series({"gameId": "g1", "startPly": 12, "endPly": 14})
+disjoint = pd.Series({"gameId": "g1", "startPly": 13, "endPly": 14})
+other_game = pd.Series({"gameId": "g2", "startPly": 10, "endPly": 12})
+assert module.intervals_overlap(left, overlap)
+assert not module.intervals_overlap(left, disjoint)
+assert not module.intervals_overlap(left, other_game)
+
+clusters = {
+    "inclusive": pd.DataFrame([
+        {"gameId": "g1", "startPly": 10, "endPly": 12},
+        {"gameId": "g1", "startPly": 20, "endPly": 20},
+    ]),
+    "excluded": pd.DataFrame([
+        {"gameId": "g1", "startPly": 11, "endPly": 11},
+    ]),
+    "auxiliary": pd.DataFrame([
+        {"gameId": "g1", "startPly": 11, "endPly": 11},
+    ]),
+}
+overlap_result = module.overlap_summary(clusters)
+assert overlap_result["inclusiveOnly"] == 1
+assert overlap_result["survivesWithoutForcing"] == 1
+assert overlap_result["excludedOnly"] == 0
+assert overlap_result["allThreeInclusiveClusters"] == 1
+
 try:
     module.mode_points(frame, "invalid", 2.0, 0.75)
 except ValueError:
@@ -55,4 +81,4 @@ except ValueError:
 else:
     raise AssertionError("invalid forcing mode should fail")
 
-print("phase-transition forcing ablation regression passed")
+print("phase-transition forcing classification regression passed")
