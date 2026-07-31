@@ -71,7 +71,7 @@
 | D-061 | 確認群でも最大捕獲可能量非対称化の方向が再現したと記録する | 暫定採用 | 生の7件で手番側+2.57／相手側-0.86、重複除去後+1.5／-0.5 |
 | D-062 | 確認群7件を7つの独立した形成例として扱う | 撤回 | 6件が同一trajectory-ply、独立構造は2件 |
 | D-063 | H14を確認済み仮説へ昇格する | 保留 | 2構造中、明確な非対称化は1構造のみ |
-| D-064 | E-011正式実行はrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 誤開始防止、現時点では`formalExecutionAllowed=false` |
+| D-064 | E-011正式実行はrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 2026-08-01 06:09 JSTに明示承認。専用commit `a0378010607aebad76420e0d377ee1b88166d861`で許可フラグを有効化 |
 | D-065 | E-011固定環境の既知条件をrepository pathとNode.js v24.6.0として固定する | 採用 | pilot-v2正式実行実績。CPU・memory・OS release・source commitはexecution lock生成時に記録 |
 | D-066 | E-011正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial出力でclean-worktreeガードが自己停止しないようにする。lock生成時にignore状態も検証 |
 | D-067 | E-011の各formal phaseで事前登録とexecution policyのパス・SHA-256をexecution lockと再照合する | 採用 | 代替設定ファイルやlock後の条件差し替えを拒否 |
@@ -86,6 +86,8 @@
 | D-076 | E-017全体判定はformal corpus integrity成功後にだけ実行する | 採用 | artifact hash、seed列、trajectory、source、configを未確認のまま判定しない |
 | D-077 | E-017のcandidate/control欠損・trajectory結合失敗・必要出力構築失敗は`inconclusive`成果物として残す | 採用 | 事前登録済みの運用失敗契約を実装し、効果不通過の`not-confirmed`と区別 |
 | D-078 | E-017正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial再開時にclean-worktreeガードが自己停止しないようignore状態をlock生成時に検証 |
+| D-079 | E-011の明示的開始承認後も、固定ローカルexecution lock生成前にはC0を開始しない | 採用 | 現在の操作環境に固定repository pathが存在しない。別環境へ置換せず、承認済み・local lock待ちとして停止 |
+| D-080 | E-011開始承認を事前登録条件・分析条件・判定条件の変更として扱わない | 採用 | 変更はexecution policyの状態と許可フラグのみ。5条件、局数、seed、順序、閾値を維持 |
 
 ## 今後固定が必要な判断
 
