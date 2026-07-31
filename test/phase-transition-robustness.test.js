@@ -30,14 +30,27 @@ const normalized = Runner.normalizeGameIdentity({
   gameIndex: 4,
   gameId: "old",
   conditionId: "C0",
+  initialStateHash: "initial",
+  openingStateHash: "incorrect-late-state",
+  openingPliesApplied: 2,
   observations: [{ gameId: "old", conditionId: "C0" }],
-  moves: [{ source: "opening-random" }, { source: "ai-c0" }],
+  moves: [
+    { source: "opening-random", afterStateHash: "opening-1" },
+    { source: "opening-random", afterStateHash: "opening-2" },
+    { source: "ai-c0", afterStateHash: "ai-1" },
+  ],
 }, Robustness.conditionById(loaded.config, "C4"));
 assert.equal(normalized.gameId, "pt-e011-c4-0004");
 assert.equal(normalized.conditionId, "C4");
+assert.equal(normalized.openingStateHash, "opening-2");
 assert.equal(normalized.observations[0].conditionId, "C4");
 assert.equal(normalized.moves[0].source, "opening-random");
-assert.equal(normalized.moves[1].source, "ai-c4");
+assert.equal(normalized.moves[2].source, "ai-c4");
+assert.equal(Runner.openingBoundaryHash({
+  initialStateHash: "initial",
+  openingPliesApplied: 0,
+  moves: [],
+}), "initial");
 
 function result({
   candidates = 12,
