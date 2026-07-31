@@ -65,6 +65,12 @@ function metricRow(state, focalPlayer, gameId, candidatePly, relativePly) {
   };
 }
 
+function candidatePlyValue(candidate) {
+  const value = Number(candidate.candidatePly ?? candidate.ply);
+  if (!Number.isInteger(value) || value < 0) throw new Error(`Invalid candidate ply: ${JSON.stringify(candidate)}`);
+  return value;
+}
+
 function deltaRecord(candidate, rows) {
   const start = rows[0];
   const peak = rows.slice().sort((a, b) => b.captureMoveCount - a.captureMoveCount || a.relativePly - b.relativePly)[0];
@@ -76,7 +82,7 @@ function deltaRecord(candidate, rows) {
   const result = {
     archetypeId: candidate.archetypeId,
     gameId: candidate.gameId,
-    candidatePly: Number(candidate.ply),
+    candidatePly: candidatePlyValue(candidate),
     peakRelativePly: peak.relativePly,
     peakCaptureMoveCount: peak.captureMoveCount,
     phaseChanged: start.phase !== peak.phase,
@@ -102,7 +108,8 @@ function main() {
     const gamePath = path.resolve(options.games, `game-${String(gameIndex).padStart(4, "0")}.json`);
     const game = JSON.parse(fs.readFileSync(gamePath, "utf8"));
     const states = replayStates(game);
-    const candidatePly = Number(candidate.ply);
+    const candidatePly = candidatePlyValue(candidate);
+    if (!states[candidatePly]) throw new Error(`Candidate ply ${candidatePly} outside ${candidate.gameId} trajectory`);
     const focalPlayer = states[candidatePly].player;
     const rows = [];
     for (let offset = 0; offset <= options.window && candidatePly + offset < states.length; offset += 1) {
@@ -135,4 +142,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { deltaRecord, replayStates };
+module.exports = { candidatePlyValue, deltaRecord, replayStates };
