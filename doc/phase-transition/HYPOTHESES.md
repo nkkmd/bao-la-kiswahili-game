@@ -36,7 +36,7 @@ forcing解除前兆は終局近傍効果として再解釈した。
 
 ## H7 — 主要転移は複数探索条件で近接して検出される
 
-状態: 事前登録済み・実験基盤検証済み・正式未実施
+状態: 事前登録済み・実験基盤検証済み・正式開始承認済み・execution lock待ち
 
 E-011として次の5条件を固定した。
 
@@ -48,7 +48,11 @@ E-011として次の5条件を固定した。
 
 各条件400局、seed範囲`20262001–20262400`。同一seedの開局を条件間で共有し、候補検出・終局除外・急拡大分類閾値はE-010から変更しない。
 
-5条件×2局fixtureでcondition ID、config hash、source commit、開局境界hashの整合性を確認した。正式2000局は未実施である。
+5条件×2局fixtureでcondition ID、config hash、source commit、開局境界hashの整合性を確認した。
+
+2026-08-01 06:09 JSTに正式自己対局の明示的開始承認を受領し、専用コミット`a0378010607aebad76420e0d377ee1b88166d861`でrepository許可フラグを有効化した。事前登録条件は変更していない。
+
+固定ローカルexecution lockとC0 corpusは未生成である。固定repository pathへ到達できない環境を代替使用せず、固定ローカル機でlockを生成してからC0を開始する。
 
 主検証は条件ごとの捕獲分岐急拡大濃縮。trajectory-ply重複除去後の濃縮、固有trajectory数、固有アーキタイプ数を必須副次分析として事前追加したが、元の主判定条件は変更していない。
 
@@ -136,7 +140,7 @@ trajectory-ply重複除去後も候補40.0%、対照3.09%、リスク比12.96で
 
 次の検証:
 
-- E-011でAI条件・探索深度横断の頑健性とtrajectory重複感度を確認する。
+- E-011は正式開始承認済み。固定ローカルexecution lock生成後、C0からAI条件・探索深度横断の頑健性とtrajectory重複感度を確認する。
 - E-011で最大捕獲可能量非対称化を、生の単位とtrajectory-ply重複除去単位で比較する。
 - E-017を1000局、seed`20263001–20264000`として事前登録した。
 - E-017では`trajectoryHash + eventPly`を主解析単位とし、最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する。
