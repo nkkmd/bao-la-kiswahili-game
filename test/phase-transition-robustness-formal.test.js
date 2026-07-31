@@ -44,6 +44,7 @@ const environment = {
   platform: process.platform,
   worktreeStatus: "",
   githubActions: false,
+  corpusRootIgnored: true,
 };
 const executionPolicy = {
   repositoryPath: "/repo",
@@ -69,6 +70,14 @@ assert.deepEqual(
     preregistration,
   ),
   ["Formal execution lock cannot be prepared in GitHub Actions."],
+);
+assert.deepEqual(
+  Prepare.validateEnvironment(
+    executionPolicy,
+    { ...environment, corpusRootIgnored: false },
+    preregistration,
+  ),
+  ["Formal corpus root is not ignored by git."],
 );
 
 console.log("phase transition robustness formal execution tests passed");
