@@ -71,26 +71,27 @@ function classifyCandidate(metrics, options = {}) {
     eventWindow: 8,
     ...options,
   };
-
-  if (metrics.distanceToMtaji !== null && metrics.distanceToMtaji <= settings.eventWindow) {
-    return "namua-to-mtaji-precursor";
-  }
-  if (metrics.distanceToForcingRelease !== null && metrics.distanceToForcingRelease <= settings.eventWindow) {
-    return "forcing-release-precursor";
-  }
+  if (metrics.distanceToMtaji !== null && metrics.distanceToMtaji <= settings.eventWindow) return "namua-to-mtaji-precursor";
+  if (metrics.distanceToForcingRelease !== null && metrics.distanceToForcingRelease <= settings.eventWindow) return "forcing-release-precursor";
   if (metrics.captureDelta !== null && metrics.captureDelta >= settings.expansionDelta) {
     return metrics.postPersistenceFraction !== null && metrics.postPersistenceFraction >= settings.persistenceFraction
       ? "capture-branch-expansion"
       : "temporary-spike";
   }
-  if (metrics.captureDelta !== null && metrics.captureDelta <= settings.convergenceDelta) {
-    return "capture-branch-convergence";
-  }
+  if (metrics.captureDelta !== null && metrics.captureDelta <= settings.convergenceDelta) return "capture-branch-convergence";
   return "temporary-spike";
 }
 
 function analyzeCandidate(candidate, gameRows, regimes, options = {}) {
-  const settings = { before: 3, after: 8, ...options };
+  const settings = {
+    before: 3,
+    after: 8,
+    expansionDelta: 3,
+    convergenceDelta: -2,
+    persistenceFraction: 0.5,
+    eventWindow: 8,
+    ...options,
+  };
   const gameId = candidate.gameId || candidate.representativeGameId;
   const candidatePly = Number(candidate.ply ?? candidate.representativePly);
   if (!gameId || !Number.isInteger(candidatePly)) throw new Error("Candidate requires gameId and ply");
@@ -99,7 +100,6 @@ function analyzeCandidate(candidate, gameRows, regimes, options = {}) {
   const target = rows.find((row) => row.ply === candidatePly);
   if (!target) throw new Error(`Observation not found for ${gameId} ply ${candidatePly}`);
   const regime = findContainingRegime(regimes, gameId, candidatePly);
-
   const beforeRows = rows.filter((row) => row.ply >= candidatePly - settings.before && row.ply < candidatePly);
   const afterRows = rows.filter((row) => row.ply > candidatePly && row.ply <= candidatePly + settings.after);
   const baseline = mean(beforeRows.map((row) => Number(row.captureMoveCount)));
@@ -107,8 +107,7 @@ function analyzeCandidate(candidate, gameRows, regimes, options = {}) {
   const postMean = mean(afterRows.map((row) => Number(row.captureMoveCount)));
   const elevatedRows = baseline === null
     ? []
-    : afterRows.filter((row) => Number(row.captureMoveCount) >= baseline + options.expansionDelta);
-
+    : afterRows.filter((row) => Number(row.captureMoveCount) >= baseline + settings.expansionDelta);
   const distanceToForcingRelease = firstDistance(rows, candidatePly, (row) => row.forcedCapture !== true);
   const distanceToMtaji = target.phase === "mtaji" ? 0 : firstDistance(rows, candidatePly, (row) => row.phase === "mtaji");
   const terminal = rows.at(-1);
@@ -130,9 +129,7 @@ function analyzeCandidate(candidate, gameRows, regimes, options = {}) {
     regimeEndPly: regime?.endPly ?? null,
     regimeLength: regime?.length ?? null,
     positionInRegime: regime ? candidatePly - regime.startPly : null,
-    normalizedPositionInRegime: regime && regime.length > 1
-      ? (candidatePly - regime.startPly) / (regime.length - 1)
-      : regime ? 0 : null,
+    normalizedPositionInRegime: regime && regime.length > 1 ? (candidatePly - regime.startPly) / (regime.length - 1) : regime ? 0 : null,
     preCaptureMean: baseline,
     candidateCaptureMoveCount: Number.isFinite(targetCapture) ? targetCapture : null,
     postCaptureMean: postMean,
