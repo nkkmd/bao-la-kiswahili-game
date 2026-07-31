@@ -71,12 +71,13 @@ function collectEnvironment(repositoryRoot) {
     cpuModels: normalizedCpuModels(),
     logicalCpuCount: os.cpus().length,
     totalMemoryBytes: os.totalmem(),
+    githubActions: process.env.GITHUB_ACTIONS === "true",
   };
 }
 
 function validateEnvironment(policy, environment, preregistration) {
   const errors = [];
-  if (process.env.GITHUB_ACTIONS === "true") {
+  if (environment.githubActions === true) {
     errors.push("Formal execution lock cannot be prepared in GitHub Actions.");
   }
   if (environment.repositoryRoot !== policy.repositoryPath) {
