@@ -14,7 +14,7 @@
 | E-008 | 強制捕獲レジーム分析 | pilot-v2 / A候補 | `analyze-forced-capture-regimes.js` | レジーム分類 | 完了 |
 | E-009 | 候補手質的特徴量 | pilot-v2対局 / A候補 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
 | E-010 | 未使用seed確認実験 | 200局、base seed 20261001 | `evaluate-phase-transition-confirmation.js` | 事前登録判定、候補・対照率 | 完了・not-confirmed |
-| E-011 | AI・depth頑健性 | 複数条件 | 未実装 | 条件横断再現性 | 次工程 |
+| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001 | 未実装 | 条件別濃縮、全体頑健性判定 | 事前登録済み・未実施 |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
 | E-013 | 終局近傍効果分離 | E-012候補・対照 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
 | E-014 | 捕獲分岐形成過程 | 急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
@@ -46,6 +46,39 @@
   - `control-point-metrics.csv`
   - `classification-sensitivity.csv`
 
+## E-011 AI条件・探索深度横断頑健性実験
+
+- analysisVersion: `12-ai-depth-robustness`
+- status: `preregistered / not-run`
+- preregistration config: `config/experiments/phase-transition-robustness-v1.json`
+- checkpoint: `doc/phase-transition/checkpoints/2026-07-31-ai-depth-robustness-preregistration.md`
+- games per condition: 400
+- conditions: 5
+- total planned games: 2000
+- shared base seed: `20262001`
+- shared seed range: `20262001–20262400`
+- run environment: fixed local environment
+- run order: `C0 → C1 → C2 → C3 → C4`
+- condition grid:
+  - C0: `bao / phase2 / depth 2`
+  - C1: `bao / phase2 / depth 1`
+  - C2: `bao / phase2 / depth 3`
+  - C3: `bao-v2 / phase2 / depth 2`
+  - C4: `bao / legacy / depth 2`
+- fixed primary population: `pliesRemaining >= 9`
+- fixed expansion rule: `expansionDelta=3 / persistenceFraction=0.5`
+- condition minimums:
+  - primary candidates: 12
+  - expansion candidates: 5
+  - controls: 10000
+  - risk ratio: 3
+  - candidate rate > control rate
+- implementation status:
+  - multi-condition runner: 未実装
+  - condition integrity validator: 未実装
+  - combined evaluator: 未実装
+  - regression fixture: 未実装
+
 ## 共通データ識別情報
 
 ### 探索群
@@ -59,3 +92,10 @@
 - studyVersion: `0.4.1`
 - configHash: `5476e77676800c40b90953ea07359d31f2bc47decd0fadd1105070d4367cbce7`
 - games: 200
+
+### E-011頑健性群
+
+- studyVersion: `0.4.1`
+- configHash: 未生成
+- games: 400/condition
+- conditions: C0–C4
