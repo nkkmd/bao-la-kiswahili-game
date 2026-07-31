@@ -97,3 +97,32 @@
 - Notebook: `05-candidate-board-audit.ipynb`
 - studyVersion: `0.4.1`
 - configHash: `3567b34b3289bda4903c6df98238f12a50d025d3b487871372d3dd5d7869d9c5`
+
+## 2026-07-31 — 強制捕獲レジーム分析の実装
+
+### 実施内容
+- 連続する `forcedCapture=true` 区間を抽出する純粋関数を実装。
+- 候補を所属レジームへ対応付け、レジーム内位置と前後の捕獲手数を計測する処理を実装。
+- forcing解除、mtaji移行、終局、基準水準回復までの距離を追加。
+- 5分類の探索的ルールとCLI出力を追加。
+- 固定小規模データによる回帰テストとColab Notebookを追加。
+
+### 実装物
+- `tools/experiments/lib/forced-capture-regimes.js`
+- `tools/experiments/analyze-forced-capture-regimes.js`
+- `test/forced-capture-regimes.test.js`
+- `notebooks/phase-transition/06-forced-capture-regimes.ipynb`
+
+### 状態
+- 実装完了。
+- `pilot-v2-analysis-input.zip` はリポジトリに含まれず、この工程では実データ実行と結果監査は未完了。
+- 分類閾値は探索用であり、判断台帳にはまだ採用判断を追加しない。
+
+### 次工程
+- 固定入力をNotebookまたはCLIへ投入し、候補対応漏れ、距離、持続率、分類結果を盤面監査と照合する。
+
+### 再現情報
+- analysisVersion: `6-forced-capture-regimes`
+- branch: `research/forced-capture-regime-analysis`
+- studyVersion: `0.4.1`
+- configHash: `3567b34b3289bda4903c6df98238f12a50d025d3b487871372d3dd5d7869d9c5`
