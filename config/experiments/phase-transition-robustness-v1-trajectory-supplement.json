@@ -3,7 +3,7 @@
   "experimentId": "E-011",
   "analysisVersion": "12a-ai-depth-robustness-trajectory-sensitivity",
   "status": "preregistered-supplement",
-  "registeredAt": "2026-07-31T23:59:00+09:00",
+  "registeredAt": "2026-08-01T00:21:00+09:00",
   "basePreregistration": {
     "path": "config/experiments/phase-transition-robustness-v1.json",
     "sha256": "65253e719463b4e60527bdb96cb4ce234aae76df39d5d2727bd9d09849c7eb69"
