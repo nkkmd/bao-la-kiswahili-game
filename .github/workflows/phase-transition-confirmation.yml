@@ -1,0 +1,61 @@
+name: Phase Transition Confirmation
+
+on:
+  pull_request:
+    paths:
+      - "config/experiments/phase-transition-confirmation-v1.json"
+      - "tools/experiments/evaluate-phase-transition-confirmation.js"
+      - "test/phase-transition-confirmation.test.js"
+      - ".github/workflows/phase-transition-confirmation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  confirmation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - run: node test/phase-transition-confirmation.test.js
+      - name: Generate preregistered unused-seed corpus
+        run: |
+          node tools/experiments/run-phase-transition-research.js \
+            --profile pilot-v2 \
+            --games 200 \
+            --seed 20261001 \
+            --output artifacts/phase-transition/confirmation-v1
+      - name: Detect candidates and build controls
+        run: |
+          python tools/experiments/analyze-phase-transition-archetypes.py \
+            --input artifacts/phase-transition/confirmation-v1 \
+            --output artifacts/local/phase-transition-confirmation-archetypes
+          node tools/experiments/analyze-forced-capture-regime-controls.js \
+            --observations artifacts/phase-transition/confirmation-v1/observations.jsonl \
+            --candidates artifacts/local/phase-transition-confirmation-archetypes/archetype-members.csv \
+            --output artifacts/local/phase-transition-confirmation-controls
+      - name: Apply preregistered decision rule
+        run: |
+          node tools/experiments/evaluate-phase-transition-confirmation.js \
+            --config config/experiments/phase-transition-confirmation-v1.json \
+            --metrics artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv \
+            --output artifacts/local/phase-transition-confirmation
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-transition-confirmation-v1
+          path: |
+            config/experiments/phase-transition-confirmation-v1.json
+            artifacts/phase-transition/confirmation-v1/manifest.json
+            artifacts/phase-transition/confirmation-v1/games.json
+            artifacts/local/phase-transition-confirmation-archetypes/
+            artifacts/local/phase-transition-confirmation-controls/
+            artifacts/local/phase-transition-confirmation/
+          if-no-files-found: error
