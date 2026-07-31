@@ -20,7 +20,7 @@
 | E-014 | 捕獲分岐形成過程 | 探索群急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
 | E-015 | E-010 trajectory重複感度 | E-010候補・対照・games.json | `analyze-confirmation-trajectory-duplication.js` | 重複除去率、アーキタイプ、重複群 | 完了・事後感度分析 |
 | E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
-| E-017 | 独立構造確認 | 1000局、base seed 20263001 | `evaluate-phase-transition-independent-confirmation.js` | 固有trajectory-ply濃縮、構造availability | 事前登録・evaluator実装済み・正式未承認 |
+| E-017 | 独立構造確認 | 1000局、base seed 20263001 | `evaluate-phase-transition-independent-confirmation.js` | 固有trajectory-ply濃縮、構造availability | 事前登録・evaluator検証済み・正式未承認 |
 
 ## E-010 未使用seed確認実験
 
@@ -165,9 +165,10 @@
 ## E-017 独立構造確認
 
 - analysisVersion: `15-independent-structural-confirmation`
-- status: `preregistered / evaluator-implemented / formal-not-approved`
+- status: `preregistered / evaluator-validated / formal-not-approved`
 - preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
-- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
+- preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
+- evaluator checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-evaluator-validation.md`
 - games: 1000
 - base seed: `20263001`
 - seed range: `20263001–20264000`
@@ -195,7 +196,11 @@
   - evaluator: `evaluate-phase-transition-independent-confirmation.js`
   - regression test: `phase-transition-independent-confirmation.test.js`
   - CI: `.github/workflows/phase-transition-independent-confirmation.yml`
-  - GitHub Actions validation: pending
+- validation:
+  - validated commit: `9190998507e144d239adb55cadc3f61860a005be`
+  - Actions run: `30646973255`
+  - job: `evaluator`
+  - result: `success`
 - execution:
   - formal 1000-game run allowed in GitHub Actions: no
   - separate explicit approval required: yes
