@@ -281,3 +281,83 @@ analysisVersion: `14-confirmation-capture-branch-formation-trajectory-sensitivit
 3. E-011を`C0 → C1 → C2 → C3 → C4`の順で各400局実行する。
 4. 条件別候補・対照分析、trajectory重複感度、事前登録判定を適用する。
 5. 独立追加seed確認実験は、候補行発生率と固有trajectory発生率の両方を用いて別登録する。
+
+## 2026-08-01 — E-010確認群捕獲分岐形成結果
+
+### 実行
+
+E-010の固定seed 200局を再生成し、主解析急拡大候補7件へ8ply形成過程解析を適用した。さらに`trajectoryHash + candidatePly`で重複除去し、2つの独立構造による感度集計を行った。
+
+- source workflow commit: `174ff668d7ada3d91041fcbb8db656233e558122`
+- Actions run: `30642671291`
+- artifact digest: `sha256:71b10449821604677ab94a713c580a30cf2d8c3890c7d77ccc03c66f4287edf6`
+
+### 結果
+
+| 指標 | 生の7件平均 | 2 trajectory-ply平均 |
+|---|---:|---:|
+| 捕獲手数ピークまで | 1.71ply | 1.00ply |
+| ピーク捕獲手数 | 9.29 | 10.00 |
+| 捕獲手数変化 | +0.86 | +0.50 |
+| 手番側最大捕獲可能量 | +2.57粒 | +1.50粒 |
+| 相手側最大捕獲可能量 | -0.86粒 | -0.50粒 |
+| 手番側再利用可能穴数 | -0.86 | -0.50 |
+| 相手側再利用可能穴数 | +0.86 | +0.50 |
+| phase変化 | 0/7 | 0/2 |
+
+全7件で捕獲手数ピーク時の手番は候補時点のプレイヤーと一致した。最大重複群6件では手番側最大捕獲可能量`+3`、相手側`-1`。もう1つの独立構造では`0 / 0`だった。
+
+### 解釈
+
+探索群E-014の`+3.0 / -1.2`と平均方向は一致し、trajectory-ply重複除去後も`+1.5 / -0.5`で維持された。ただし明確な非対称化は2構造中1構造だけであり、確認群で広く一般化したとは判断しない。
+
+H14は「確認群でも方向一致・限定的再現・未認定」へ更新した。E-010の正式判定`not-confirmed`は変更しない。
+
+チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-01-e010-confirmation-capture-formation.md`
+
+## 2026-08-01 — E-011固定ローカル正式実行ガード
+
+### 固定policy
+
+過去の正式pilot-v2実行記録に基づき、次を既知の固定条件とした。
+
+- repository: `/home/oruorane/github/bao-la-kiswahili-game`
+- branch: `research/forced-capture-regime-analysis`
+- Node.js: `v24.6.0`
+- platform: Linux
+- corpus output: `artifacts/phase-transition/robustness-v1/`
+- analysis output: `artifacts/local/phase-transition-robustness/`
+- run order: `C0 → C1 → C2 → C3 → C4`
+
+CPU、memory、OS release、hostname、exact source commitは固定ローカル環境でexecution lockを生成する時点に記録する。
+
+### 実装
+
+- `config/experiments/phase-transition-robustness-execution-policy-v1.json`
+- `tools/experiments/prepare-phase-transition-robustness-execution.js`
+- `tools/experiments/run-phase-transition-robustness-formal.js`
+- `test/phase-transition-robustness-formal.test.js`
+- `doc/phase-transition/E011_FORMAL_EXECUTION.md`
+
+execution lock generatorはrepository path、branch、clean worktree、Node.js version、platform、run order、preregistration IDを検査し、source commitとhardware/runtime識別情報を記録する。
+
+formal runnerは次を強制する。
+
+- GitHub Actionsでは実行拒否
+- execution lock後のsource commit変更を拒否
+- branch変更、dirty worktree、Node.js変更を拒否
+- C0–C4の順序違反を拒否
+- repositoryの`formalExecutionAllowed`と完全一致の承認トークンを二重要求
+
+現時点では`formalExecutionAllowed: false`であり、正式2000局は開始できない。過去の「明示的な開始承認まで正式実験を実行しない」という条件を維持した。
+
+## 2026-08-01 — 更新後の次工程
+
+1. E-011 formal execution guardのCI結果を確定する。
+2. 明示的な正式実験開始承認後に、repository許可フラグを別コミットで有効化する。
+3. 固定ローカル環境でexecution lockを生成し、runtime・hardware・source commitを固定する。
+4. `C0 → C1 → C2 → C3 → C4`の順で各400局を実行する。
+5. 条件別候補・対照分析、trajectory重複感度、最大捕獲可能量非対称化、事前登録判定を適用する。
+6. 独立追加seed確認実験は候補行数と最低固有trajectory数を併用して別登録する。
