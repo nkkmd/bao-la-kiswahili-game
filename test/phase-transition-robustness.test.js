@@ -1,9 +1,11 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
 const path = require("node:path");
 const Robustness = require("../tools/experiments/lib/phase-transition-robustness.js");
 const Runner = require("../tools/experiments/run-phase-transition-robustness.js");
+const Evaluator = require("../tools/experiments/evaluate-phase-transition-robustness.js");
 
 const loaded = Robustness.loadPreregistration(
   path.join(__dirname, "../config/experiments/phase-transition-robustness-v1.json"),
@@ -12,6 +14,15 @@ assert.equal(loaded.config.experimentId, "E-011");
 assert.equal(loaded.config.conditions.length, 5);
 assert.equal(loaded.config.corpus.gamesPerCondition, 400);
 assert.equal(Robustness.conditionById(loaded.config, "C3").evaluationProfile, "bao-v2");
+
+const supplement = JSON.parse(fs.readFileSync(path.join(
+  __dirname,
+  "../config/experiments/phase-transition-robustness-v1-trajectory-supplement.json",
+), "utf8"));
+assert.equal(supplement.status, "preregistered-supplement");
+assert.equal(supplement.basePreregistration.sha256, loaded.sha256);
+assert.equal(supplement.decisionPolicy.changesOriginalConditionSuccessCriteria, false);
+assert.equal(supplement.decisionPolicy.changesOriginalGlobalDecisionRule, false);
 
 const built = Runner.buildConditionConfig(
   loaded.config,
@@ -82,6 +93,35 @@ assert.equal(Robustness.conditionStatus(result()), "pass");
 assert.equal(Robustness.conditionStatus(result({ candidates: 11 })), "insufficient");
 assert.equal(Robustness.conditionStatus(result({ riskRatio: 2 })), "fail");
 assert.equal(Robustness.conditionStatus(result({ decision: "inconclusive" })), "inconclusive");
+
+const csvRows = Evaluator.conditionCsvRows([{
+  conditionId: "C0",
+  role: "reference",
+  status: "pass",
+  parameters: {
+    level: "hard",
+    evaluationProfile: "bao",
+    searchProfile: "phase2",
+    maxDepth: 2,
+  },
+  result: result(),
+  trajectorySensitivity: {
+    trajectoryPlyDeduplicatedEndpoint: {
+      counts: { candidates: 5, candidateExpansion: 2, controls: 7000, controlExpansion: 210 },
+      rates: { riskRatio: 13 },
+    },
+    candidateStructure: {
+      uniqueTrajectoryCount: 4,
+      uniqueExpansionTrajectoryCount: 2,
+      uniqueArchetypeCount: 5,
+      uniqueExpansionArchetypeCount: 2,
+      largestTrajectoryPlyMultiplicity: 6,
+    },
+  },
+}]);
+assert.equal(csvRows[0].uniqueTrajectoryPlyCandidates, 5);
+assert.equal(csvRows[0].trajectoryPlyDeduplicatedRiskRatio, 13);
+assert.equal(csvRows[0].largestTrajectoryPlyMultiplicity, 6);
 
 function conditionResult(conditionId, status, riskRatio = 3) {
   return {
