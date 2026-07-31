@@ -96,3 +96,68 @@ forcing解除前兆6件は全て終局まで0–4ply。独立した戦略転移�
 - E-011 AI条件・探索深度横断実験を事前登録する。
 - 確認群急拡大7件の形成過程と最大捕獲可能量非対称化を副次分析する。
 - E-010の候補発生率を用いて独立追加確認実験のサンプル数を設計する。
+
+## 2026-07-31 — E-011 AI条件・探索深度横断実験の事前登録
+
+### 目的
+
+捕獲分岐急拡大の候補群への濃縮が、評価器、探索実装、固定探索depthを変更しても再現するかを確認する。E-010の判定や条件は変更せず、独立した実験として登録した。
+
+### 条件
+
+各条件400局、shared seed範囲 `20262001–20262400`。
+
+- C0: `bao / phase2 / depth 2`
+- C1: `bao / phase2 / depth 1`
+- C2: `bao / phase2 / depth 3`
+- C3: `bao-v2 / phase2 / depth 2`
+- C4: `bao / legacy / depth 2`
+
+一度に一要因だけを変更する。全条件で同一seedのランダム開局を共有するが、探索群およびE-010確認群とはseedを重複させない。
+
+### 固定分析条件
+
+E-010から次を維持する。
+
+- category `A`
+- `signalThreshold=2.0`
+- `persistenceThreshold=0.75`
+- `pliesRemaining >= 9`
+- `expansionDelta=3`
+- `persistenceFraction=0.5`
+- `eventWindow=8`
+- `controlExclusionBuffer=8`
+
+### サンプル数
+
+E-010の主解析候補発生率11/200局を用いた。400局では期待22候補、Poisson近似で12候補以上の確率は約99.24%。5条件すべてで12候補以上となる確率は単純独立近似で約96.2%。
+
+この設計計算はE-011の局数固定にだけ使用し、E-010の最低候補数や判定は変更していない。
+
+### 判定
+
+条件別成功条件を次に固定した。
+
+- 主解析A候補12件以上
+- 急拡大候補5件以上
+- 主解析対照10000件以上
+- リスク比3以上
+- 候補率が対照率を上回る
+
+全体判定は `robust / partially-robust / not-robust / inconclusive` の4分類として事前固定した。
+
+### 実行方針
+
+正式な2000局は固定ローカル環境で `C0 → C1 → C2 → C3 → C4` の順に逐次実行する。GitHub Actionsは回帰テスト、短いfixture、schema・hash・成果物検証に限定する。
+
+### 記録
+
+- analysisVersion: `12-ai-depth-robustness`
+- config: `config/experiments/phase-transition-robustness-v1.json`
+- checkpoint: `doc/phase-transition/checkpoints/2026-07-31-ai-depth-robustness-preregistration.md`
+
+### 次工程
+
+- multi-condition runner、condition integrity validator、combined evaluatorを実装する。
+- 短いfixtureでcondition ID、seed共有、config hash分離を監査する。
+- 固定ローカル環境で正式実験を実行する。
