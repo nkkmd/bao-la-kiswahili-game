@@ -4,11 +4,15 @@ on:
   pull_request:
     paths:
       - "config/experiments/phase-transition-robustness-v1.json"
+      - "config/experiments/phase-transition-robustness-execution-policy-v1.json"
       - "tools/experiments/run-phase-transition-robustness.js"
+      - "tools/experiments/prepare-phase-transition-robustness-execution.js"
+      - "tools/experiments/run-phase-transition-robustness-formal.js"
       - "tools/experiments/verify-phase-transition-robustness.js"
       - "tools/experiments/evaluate-phase-transition-robustness.js"
       - "tools/experiments/lib/phase-transition-robustness.js"
       - "test/phase-transition-robustness.test.js"
+      - "test/phase-transition-robustness-formal.test.js"
       - ".github/workflows/phase-transition-robustness.yml"
   workflow_dispatch:
 
@@ -24,7 +28,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - run: node test/phase-transition-robustness.test.js
+      - run: |
+          node test/phase-transition-robustness.test.js
+          node test/phase-transition-robustness-formal.test.js
       - name: Generate paired-condition fixture
         run: |
           node tools/experiments/run-phase-transition-robustness.js \
@@ -46,6 +52,7 @@ jobs:
           name: phase-transition-robustness-fixture
           path: |
             config/experiments/phase-transition-robustness-v1.json
+            config/experiments/phase-transition-robustness-execution-policy-v1.json
             artifacts/phase-transition/robustness-fixture/
             artifacts/local/phase-transition-robustness-integrity/
           if-no-files-found: error
