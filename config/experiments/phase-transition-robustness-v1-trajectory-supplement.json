@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "E-011",
+  "analysisVersion": "12a-ai-depth-robustness-trajectory-sensitivity",
+  "status": "preregistered-supplement",
+  "registeredAt": "2026-07-31T23:59:00+09:00",
+  "basePreregistration": {
+    "path": "config/experiments/phase-transition-robustness-v1.json",
+    "sha256": "65253e719463b4e60527bdb96cb4ce234aae76df39d5d2727bd9d09849c7eb69"
+  },
+  "trigger": {
+    "sourceExperiment": "E-010",
+    "finding": "The 11 primary candidates collapse to 5 unique trajectoryHash-plus-ply events, and the 7 expansion candidates collapse to 2 such events. Six expansion rows share one identical candidate state and trajectory.",
+    "timing": "Registered before any formal E-011 corpus generation."
+  },
+  "scope": {
+    "conditions": [
+      "C0",
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+    ],
+    "primaryPopulation": {
+      "minimumPliesRemaining": 9
+    },
+    "deduplicationKey": [
+      "trajectoryHash",
+      "candidatePly"
+    ],
+    "applySeparatelyWithinCondition": true,
+    "mixConditions": false
+  },
+  "requiredSecondaryOutputs": [
+    "raw candidate and control counts",
+    "unique trajectoryHash-plus-ply candidate and control counts",
+    "raw capture-branch-expansion rates and risk ratio",
+    "trajectoryHash-plus-ply deduplicated capture-branch-expansion rates and risk ratio",
+    "unique trajectory counts among all primary candidates and expansion candidates",
+    "unique archetype counts among all primary candidates and expansion candidates",
+    "largest trajectoryHash-plus-ply multiplicity",
+    "condition-level duplicate-group table"
+  ],
+  "decisionPolicy": {
+    "changesOriginalConditionSuccessCriteria": false,
+    "changesOriginalGlobalDecisionRule": false,
+    "formalRole": "mandatory secondary sensitivity analysis",
+    "interpretation": "The original E-011 event-level decision remains the preregistered primary decision. Any divergence between raw and deduplicated endpoints must be reported and constrains claims of structural generality."
+  },
+  "changePolicy": "This supplement is additive. It may not be used to retroactively relax the base preregistration or to replace an unfavorable primary decision."
+}
