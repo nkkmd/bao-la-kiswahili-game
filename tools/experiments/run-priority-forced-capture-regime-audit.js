@@ -8,7 +8,7 @@ const R = require("./lib/forced-capture-regimes.js");
 
 const PRIORITY_CANDIDATES = [
   { archetypeId: "9f778d512ae1", category: "A", representativeGameId: "pt-pilot-v2-0006", representativePly: 7, expectedCaptureMoveCount: 8 },
-  { archetypeId: "22807aff1baf", category: "A", representativeGameId: "pt-pilot-v2-0019", representativePly: 47, expectedCaptureMoveCount: 9 },
+  { archetypeId: "22807aff1baf", category: "A", representativeGameId: "pt-pilot-v2-0091", representativePly: 30, expectedCaptureMoveCount: 9 },
   { archetypeId: "0eb352745c9b", category: "A", representativeGameId: "pt-pilot-v2-0027", representativePly: 32, expectedCaptureMoveCount: 8 },
   { archetypeId: "2e79188a987a", category: "A", representativeGameId: "pt-pilot-v2-0063", representativePly: 39, expectedCaptureMoveCount: 9 },
   { archetypeId: "7360876ad5c7", category: "A", representativeGameId: "pt-pilot-v2-0013", representativePly: 37, expectedCaptureMoveCount: 9 },
