@@ -489,3 +489,34 @@ E-017の構造主解析evaluatorと回帰fixtureをGitHub Actionsで検証した
 3. 明示的承認なしにE-011またはE-017の正式corpusを生成しない。
 4. E-011開始承認後は固定ローカル環境でexecution lockを生成し、C0から順に実行する。
 5. E-017は別の開始承認まで正式1000局corpusを生成しない。
+
+## 2026-08-01 — E-011正式自己対局開始承認
+
+2026-08-01 06:09 JST、ユーザーから「E-011の正式自己対局を開始してください」と明示的な開始指示を受領した。
+
+### Repository許可
+
+execution policyの実験条件・分析条件・判定条件を変更せず、状態と許可フラグだけを専用コミットで有効化した。
+
+- authorization commit: `a0378010607aebad76420e0d377ee1b88166d861`
+- policy status: `approved-awaiting-local-lock`
+- `formalExecutionAllowed: true`
+- approval token: `E-011-FORMAL-APPROVED`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
+
+### 起動状況
+
+現在の操作環境には固定repository `/home/oruorane/github/bao-la-kiswahili-game` が存在しない。このため、別環境を代替使用せず、execution lock生成前に停止した。
+
+この時点の状態:
+
+- execution lock: 未生成
+- C0 corpus: `0 / 400`
+- total formal corpus: `0 / 2000`
+- PR #26: draft維持
+
+### 次工程
+
+固定ローカル機で最新branch headへ更新し、Node.js `v24.6.0`、branch、clean worktreeを確認した上でexecution lockを生成する。lock成功後、承認トークンを用いてC0 400局を開始する。
+
+開始承認は、5条件、各400局、seed範囲、実行順、候補検出、急拡大分類、成功条件、trajectory副次分析のいずれも変更しない。
