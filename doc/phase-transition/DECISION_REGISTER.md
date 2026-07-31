@@ -81,10 +81,15 @@
 | D-071 | E-017で最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する | 採用 | 行数だけでなく構造的一般性を成功条件へ含める |
 | D-072 | E-017の主効果条件を重複除去後RR 3以上かつ候補率>対照率とする | 採用 | 生の候補行endpointは副次報告に限定 |
 | D-073 | E-017正式1000局の開始にはE-011とは別の明示的承認を要求する | 採用 | 事前登録と実行を分離。現時点では未承認・未実施 |
+| D-074 | E-017正式実行もrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 現時点では`formalExecutionAllowed=false`、E-011の承認とは独立 |
+| D-075 | E-017 execution lockへsource、runtime、hardware、事前登録・policy hash、固定corpus条件を記録する | 採用 | lock後の条件差し替えと異環境再開を拒否 |
+| D-076 | E-017全体判定はformal corpus integrity成功後にだけ実行する | 採用 | artifact hash、seed列、trajectory、source、configを未確認のまま判定しない |
+| D-077 | E-017のcandidate/control欠損・trajectory結合失敗・必要出力構築失敗は`inconclusive`成果物として残す | 採用 | 事前登録済みの運用失敗契約を実装し、効果不通過の`not-confirmed`と区別 |
+| D-078 | E-017正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial再開時にclean-worktreeガードが自己停止しないようignore状態をlock生成時に検証 |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
 - E-011 execution lockに記録されるruntime・hardware・source commit
-- E-017固定ローカル実行policyとexecution lockの具体化
+- E-017 execution lockに記録されるruntime・hardware・source commit
