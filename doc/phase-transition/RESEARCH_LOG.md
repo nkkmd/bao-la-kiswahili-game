@@ -361,3 +361,98 @@ formal runnerは次を強制する。
 4. `C0 → C1 → C2 → C3 → C4`の順で各400局を実行する。
 5. 条件別候補・対照分析、trajectory重複感度、最大捕獲可能量非対称化、事前登録判定を適用する。
 6. 独立追加seed確認実験は候補行数と最低固有trajectory数を併用して別登録する。
+
+## 2026-08-01 — E-011正式実行ガードの追加監査
+
+静的監査と隔離Gitリポジトリ試験により、正式実行開始前の追加失敗経路を検出し修正した。
+
+### formal出力とclean worktree
+
+execution lockおよびpartial corpusが未追跡ファイルとして現れると、clean-worktreeガードがC0開始前またはC1再開前に自己停止する。このため正式corpus rootを`.gitignore`へ固定し、lock生成時にGitのignore規則をprobeパスで実照合するようにした。
+
+未作成ディレクトリ名そのものを`git check-ignore`へ渡す初期実装は、末尾スラッシュ規則を正しく検証できなかった。配下の`.e011-ignore-probe`を照合する方式へ修正した。分析条件・seed・出力内容は変更していない。
+
+### lock後の入力不変性
+
+各formal phaseの開始前に次をexecution lockと再照合する。
+
+- execution policyのrepository相対パス
+- execution policyのSHA-256
+- 事前登録ファイルのrepository相対パス
+- 事前登録ファイルのSHA-256
+
+代替policyや代替事前登録をCLIで渡す経路、lock後に設定を差し替える経路を拒否する。
+
+### 評価前integrity gate
+
+全体評価は`robustness-integrity.json`が存在し、`mode=formal`かつ`valid=true`の場合だけ実行する。5条件のsource、seed、paired opening、condition分離が未確認のまま統計判定へ進む経路を閉じた。
+
+### 検証
+
+隔離Gitリポジトリで次のテストが成功した。
+
+- repository許可フラグと承認トークン
+- C0–C4順序制約
+- formal corpus rootの実ignore照合
+- GitHub Actionsでのlock生成拒否
+- 事前登録・policy hash差し替え拒否
+- formal integrity未通過時の評価拒否
+
+GitHub Actionsの最新fixture検証はキュー待機中である。正式自己対局は実行していない。
+
+## 2026-08-01 — E-017独立構造確認実験の事前登録
+
+### 目的
+
+E-010で観測した捕獲分岐急拡大濃縮を独立seedで再確認し、同一決定論的trajectoryの反復を主効果から除外する。
+
+### コーパス
+
+- 1000局
+- base seed `20263001`
+- seed範囲 `20263001–20264000`
+- `hard / bao / phase2 / depth 2`
+- 既存の探索群、E-010、E-011 seedと非重複
+
+### 主解析単位
+
+`trajectoryHash + eventPly`を主キーとする。eventPlyは`candidatePly → representativePly → ply`の優先順で解決する。生の候補行endpointは副次解析として保持する。
+
+### サンプル数
+
+E-010 200局では、生候補11、固有candidate trajectory-ply 5、固有candidate trajectory 4、固有expansion trajectory-ply 2、固有control trajectory-ply 7061だった。
+
+1000局での期待値は、生候補55、固有candidate trajectory-ply 25、固有candidate trajectory 20、固有expansion trajectory-ply 10、固有control trajectory-ply 35305。
+
+成功条件として次を固定した。
+
+- 生の主解析候補行30件以上
+- 固有candidate trajectory-ply 15件以上
+- 固有candidate trajectory 12件以上
+- 固有expansion trajectory-ply 5件以上
+- 固有expansion trajectory 5件以上
+- 固有control trajectory-ply 30000件以上
+- 重複除去後RR 3以上
+- 重複除去後候補率が対照率を上回る
+
+構造availability 4条件のPoisson点推定単純積は約93.8121%。相関を無視した計画値であり、正式な同時達成確率や統計的証拠として使用しない。
+
+### 登録・実装
+
+- `config/experiments/phase-transition-independent-confirmation-v2.json`
+- `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
+- `tools/experiments/evaluate-phase-transition-independent-confirmation.js`
+- `test/phase-transition-independent-confirmation.test.js`
+- `.github/workflows/phase-transition-independent-confirmation.yml`
+
+corpus条件不一致は`inconclusive`、構造availabilityまたは効果基準不通過は`not-confirmed`、全条件通過のみ`confirmed`とする。
+
+E-017正式1000局は未承認・未実施であり、別の明示的開始指示を要求する。E-010およびE-011の既存判定・条件は変更していない。
+
+## 2026-08-01 — 最新の次工程
+
+1. E-011 formal execution guard CIを完了する。
+2. E-017 evaluator CIを完了する。
+3. 明示的承認なしにE-011またはE-017の正式corpusを生成しない。
+4. E-011承認後は固定ローカル環境でexecution lockを生成し、C0から順に実行する。
+5. E-017の正式実行policyとcorpus integrity validatorは、正式開始承認前に別工程として実装する。
