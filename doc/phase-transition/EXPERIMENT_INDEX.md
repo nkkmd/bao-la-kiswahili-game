@@ -17,6 +17,7 @@
 | E-011 | AI・depth頑健性 | 複数条件 | 未実装 | 条件横断再現性 | 未着手 |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
 | E-013 | 終局近傍効果分離 | E-012候補・対照指標 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
+| E-014 | 捕獲分岐形成過程 | 捕獲分岐急拡大5区間 | `analyze-capture-branch-formation.js`, `run-capture-branch-formation-audit.js` | 1–8ply時系列、ピーク差分 | 完了 |
 
 ## E-009 候補手質的特徴量
 
@@ -24,18 +25,31 @@
 - implementation commit: `816e0254fc79411b37a3cb30aabc648bd502735c`
 - workflow commit: `d338f4cd635de7728c5af11e9e3238c259b3bd5d`
 - Actions run: `30622069887`
-- artifact: `phase-transition-move-quality`
 - artifact digest: `sha256:69fee2bf5bd8fa7fab3beece392a04dd8ff6e56fbae78d8b10ce129be1d7c09d`
-- candidate members: 15
+
+## E-014 捕獲分岐形成過程
+
+- analysisVersion: `10-capture-branch-formation`
+- executionMode: `targeted-deterministic-audit`
+- metricPerspective: `player-to-move`
+- implementation commits: `9678d92ec0e91bdf66a2a3cad8e7eeb328cc66a1`, `9fed1624f31d87715c35097e9b696376ad27fac9`
+- targeted audit commit: `0acd7e011a1be1d9cdd4dd82e5b38641a629b305`
+- validated commit: `c86592a21c98298bf92e75bfbb39fb1067400773`
+- Actions run: `30626126538`
+- artifact: `phase-transition-capture-branch-formation`
+- artifact digest: `sha256:5567db5deef0341b4463c79769a619d86da962b6667669e16398535273b5d65f`
+- candidate intervals: 5
+- unique archetypes: 3
+- mean peak relative ply: 1.8
+- peak on candidate player: 4/5
+- mean capture move increase: 0.8
+- mean actor max-capture change: +3.0 seeds
+- mean opponent max-capture change: -1.2 seeds
+- phase changes before peak: 0
 - outputs:
-  - `candidate-move-quality.csv`
-  - `move-quality-summary.json`
-- expansion 5区間:
-  - mean chosen captured seeds: 1.6
-  - mean chosen capture+relay length: 2.2
-  - immediate best rate: 80.0%
-  - mean immediate evaluation gap: 12.6
-  - mean capture opportunity gap: 0
+  - `capture-branch-formation-timeline.csv`
+  - `capture-branch-formation-deltas.csv`
+  - `summary.json`
 
 ## 共通データ識別情報
 
