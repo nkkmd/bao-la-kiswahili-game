@@ -28,9 +28,11 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 
 ## ルールの基準
 
-この実装は `bao-la-kiswahili-ja` v0.1.0-draft R-002 のルール基準に従っています。捕獲義務、namua、mtaji、連続種まき、nyumba、勝敗判定を実装しています。
+この実装は、[`bao-la-kiswahili-ja`](https://github.com/nkkmd/bao-la-kiswahili-ja) の公開ドラフト `v0.1.0-draft` におけるルール基準 `R-002` を実装上の基準としています。捕獲義務、namua、mtaji、連続種まき、nyumba、勝敗判定を実装しています。
 
 検証に使える完全な出典局面がまだ確認できていないため、`takasia` は適用していません。終わらない対局を防ぐため、連続種まきには安全上の上限を設けています。
+
+固定参照コミット、実装範囲、既知の差異、ルール更新時の同期手順は [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md) に記録しています。
 
 ## ローカルでの実行
 
@@ -148,6 +150,7 @@ node tools/diagnostic-to-fixture.js \
 
 ## ドキュメント
 
+- [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md): 採用ルールの参照元、固定コミット、実装差分、更新方針
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
 - [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録、統計比較、現在の結論
 - [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
