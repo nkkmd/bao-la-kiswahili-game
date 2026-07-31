@@ -37,7 +37,15 @@ fs.mkdirSync(path.join(root, "C1"));
 fs.writeFileSync(path.join(root, "C1", "manifest.json"), "{}\n");
 assert.equal(Formal.nextCondition(policy.runOrder, root), null);
 
-const errors = Prepare.validateEnvironment({
+const environment = {
+  repositoryRoot: "/repo",
+  branch: "research/forced-capture-regime-analysis",
+  nodeVersion: process.version,
+  platform: process.platform,
+  worktreeStatus: "",
+  githubActions: false,
+};
+const executionPolicy = {
   repositoryPath: "/repo",
   branch: "research/forced-capture-regime-analysis",
   expectedNodeVersion: process.version,
@@ -45,16 +53,22 @@ const errors = Prepare.validateEnvironment({
   requireCleanWorktree: true,
   experimentId: "E-011",
   runOrder: ["C0", "C1"],
-}, {
-  repositoryRoot: "/repo",
-  branch: "research/forced-capture-regime-analysis",
-  nodeVersion: process.version,
-  platform: process.platform,
-  worktreeStatus: "",
-}, {
+};
+const preregistration = {
   experimentId: "E-011",
   executionPolicy: { runOrder: ["C0", "C1"] },
-});
-assert.deepEqual(errors, []);
+};
+assert.deepEqual(
+  Prepare.validateEnvironment(executionPolicy, environment, preregistration),
+  [],
+);
+assert.deepEqual(
+  Prepare.validateEnvironment(
+    executionPolicy,
+    { ...environment, githubActions: true },
+    preregistration,
+  ),
+  ["Formal execution lock cannot be prepared in GitHub Actions."],
+);
 
 console.log("phase transition robustness formal execution tests passed");
