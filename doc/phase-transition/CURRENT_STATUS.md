@@ -23,7 +23,7 @@ Status: Active
 
 100局 `pilot-v2` を用いた探索的パイロット後半。
 
-候補抽出、forcingアブレーション、アーキタイプ化、代表局面監査は完了した。強制捕獲レジーム分析（E-008）は実装済みで、固定入力による実行と結果監査が次の再開地点である。
+候補抽出、forcingアブレーション、アーキタイプ化、代表局面監査、主要6候補の強制捕獲レジーム監査まで完了した。E-008の実装は完了し、主要6候補について決定論的再生成による結果監査も完了した。全A候補15区間の一括実行と閾値感度分析は未完了である。
 
 ## 現時点で確定したこと
 
@@ -34,57 +34,57 @@ Status: Active
 - 45区間はA 15、B 30。forcing込みでのみ成立するCは51区間。
 - A 15候補は13固有局面・13アーキタイプに集約された。
 - A主要6候補はすべて候補plyで `forcedCapture=true` かつ `legalMoveCount=captureMoveCount`。
-- 中心現象は、forcingから独立した転移ではなく、強制捕獲レジーム内部の捕獲選択肢構造の急変である。
-- `2e79188a987a` と `7360876ad5c7` は `namua → mtaji` 前兆候補。
-- 残る4件は暫定的に捕獲分岐爆発候補。
+- 主要6候補はすべて連続する強制捕獲レジーム内に位置する。
+- 主要6候補の探索的分類は、捕獲分岐急拡大3、`namua → mtaji` 前兆2、一時的スパイク1。
+- `2e79188a987a` はmtajiまで5ply、forcing解除まで8ply。
+- `7360876ad5c7` はmtajiまで7ply、forcing解除まで7ply。
+- `0eb352745c9b` は候補plyの捕獲手数が8まで増えるが、後続8plyの持続率が0.25で一時的スパイクに分類された。
+- `9f778d512ae1`、`22807aff1baf`、`6b364e603366` は捕獲分岐急拡大に分類された。
+- 正式な「戦略的相転移」の認定は引き続き保留する。
 
-## E-008 実装済み内容
-
-- 連続する `forcedCapture=true` 区間の抽出
-- レジーム開始・終了ply、長さ、phase、捕獲手数統計
-- 候補と所属レジームの対応付け
-- 候補のレジーム内絶対位置・正規化位置
-- 候補前平均、候補ply、候補後平均・最大
-- 捕獲分岐上昇の持続率と基準水準への回復距離
-- forcing解除、`namua → mtaji`、終局までの距離
-- 暫定5分類
+## E-008 実装・監査
 
 実装:
 
 - `tools/experiments/lib/forced-capture-regimes.js`
 - `tools/experiments/analyze-forced-capture-regimes.js`
+- `tools/experiments/run-priority-forced-capture-regime-audit.js`
 - `test/forced-capture-regimes.test.js`
 - `notebooks/phase-transition/06-forced-capture-regimes.ipynb`
 
-analysisVersion: `6-forced-capture-regimes`
+主要6候補監査:
 
-## 暫定分類
+- analysisVersion: `6-priority-forced-capture-regime-audit`
+- commit: `fd0bfd02c7ba65b6efd53bd11ced1ba73f74e017`
+- GitHub Actions run: `30614184554`
+- artifact: `phase-transition-ci-artifacts`
+- artifact digest: `sha256:4a8c5aebec05f766687508cba80dc422d682bdd8a40455bb30411a884d55e9a5`
+- games: 6
+- observations: 332
+- forced-capture regimes: 26
+- candidates outside regimes: 0
 
-1. `capture-branch-expansion`
-2. `capture-branch-convergence`
-3. `forcing-release-precursor`
-4. `namua-to-mtaji-precursor`
-5. `temporary-spike`
+## 暫定分類結果
 
-分類閾値は探索用であり未固定。実データ監査前に正式採用しない。
+| archetypeId | 分類 | レジーム位置 | 捕獲手数変化 | mtajiまで | forcing解除まで |
+|---|---|---:|---:|---:|---:|
+| `9f778d512ae1` | 捕獲分岐急拡大 | 4 / 46 | 2.00 → 8 | 37 | 42 |
+| `22807aff1baf` | 捕獲分岐急拡大 | 22 / 39 | 2.00 → 9 | 14 | 17 |
+| `0eb352745c9b` | 一時的スパイク | 23 / 46 | 3.67 → 8 | 12 | 23 |
+| `2e79188a987a` | `namua → mtaji` 前兆 | 13 / 21 | 3.33 → 9 | 5 | 8 |
+| `7360876ad5c7` | `namua → mtaji` 前兆 | 33 / 40 | 4.33 → 9 | 7 | 7 |
+| `6b364e603366` | 捕獲分岐急拡大 | 5 / 44 | 1.67 → 7 | 35 | 39 |
 
-## 未完了事項
+分類閾値は探索用であり、全A候補・対照群・新規seedでの検証前には固定しない。
 
-- `pilot-v2-analysis-input.zip` と `candidate-archetypes.csv` を用いたE-008実行
-- 出力件数、候補対応漏れ、距離計算、分類結果の監査
-- 主要6候補と全A候補の分類照合
-- 閾値感度分析
-- 結果に基づく `DECISION_REGISTER.md` と `HYPOTHESES.md` の更新
-- E-008完了チェックポイント作成
+## 次工程
 
-## 次に実行する操作
-
-1. `pilot-v2-analysis-input.zip` を展開する。
-2. `candidate-archetypes.csv` を用意する。
-3. `06-forced-capture-regimes.ipynb` またはCLIを実行する。
-4. `forced-capture-regimes.csv`、`candidate-regime-metrics.csv`、summary JSONを監査する。
-5. 盤面監査結果と分類を照合する。
-6. 研究台帳を更新してE-008を完了扱いにする。
+1. 全A候補15区間を固定入力で一括実行する。
+2. 分類閾値の感度分析を行う。
+3. 候補外の強制捕獲レジームを対照群として分岐急増の基準率を測定する。
+4. 候補手の質的特徴量（最大捕獲量、relay長、評価差）を追加する。
+5. 検出定義・閾値・持続期間を事前固定する。
+6. 未使用seedによる確認用コーパスを生成する。
 
 ## 研究データ識別情報
 
@@ -102,6 +102,6 @@ analysisVersion: `6-forced-capture-regimes`
 - `04-candidate-archetypes.ipynb`
 - `05-candidate-board-audit.ipynb`
 
-## 実装済み・未実行Notebook
+## 実装済みNotebook
 
 - `06-forced-capture-regimes.ipynb`
