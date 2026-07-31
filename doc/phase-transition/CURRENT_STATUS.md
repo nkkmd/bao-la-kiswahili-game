@@ -28,32 +28,30 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-010 trajectory重複の事後感度分析
 - E-010確認群7急拡大候補の形成過程・最大捕獲可能量非対称化分析
 - E-011 AI条件・探索深度横断頑健性実験の事前登録
-- E-011 multi-condition runner、integrity validator、combined evaluator、回帰テスト
-- E-011 5条件×2局fixture監査
+- E-011 multi-condition runner、integrity validator、combined evaluator、回帰fixture
 - E-011 trajectory重複感度の補足事前登録
 - E-011固定ローカル実行policy、execution lock generator、guarded formal runner
 - E-017独立構造確認実験の1000局事前登録
-- E-017 trajectory-ply主解析evaluatorと回帰テスト
+- E-017 trajectory-ply主解析evaluatorの実装とGitHub Actions検証
 
-E-011正式400局×5条件とE-017正式1000局は未実施である。両実験とも正式実行未承認であり、GitHub Actionsでは正式corpusを生成しない。
+未実施:
 
-## 現時点で確定したこと
+- E-011正式400局×5条件
+- E-017正式1000局
 
-- 探索用100局ではA 15区間、13アーキタイプ、5650観測、421レジーム。
-- 捕獲分岐急拡大は探索群で候補33.3%、対照2.9%、約11.46倍。
-- forcing解除前兆は終局近傍効果であり、独立した戦略転移分類としては撤回した。
-- 捕獲分岐急拡大は即時大量捕獲ではなく、後続局面の捕獲選択肢形成として扱う。
-- E-010では効果方向と大きさは再現したが、最低主解析候補12件に対して11件で、正式判定は`not-confirmed`。
-- E-010主解析11候補は5 trajectory-ply、4 trajectory、5アーキタイプへ集約される。
-- E-010急拡大7候補は2 trajectory-ply、2 trajectory、2アーキタイプへ集約され、6件は完全に同一の候補局面・trajectoryだった。
-- trajectory-ply重複除去後も候補急拡大率40.0%、対照3.09%、RR 12.96であり、濃縮方向は残る。
-- 確認群形成過程は、生の7件で手番側最大捕獲可能量+2.57粒、相手側-0.86粒、重複除去後の2構造で+1.50粒／-0.50粒だった。
-- 最大捕獲可能量非対称化は探索群と同方向だが、2構造中、非ゼロ変化を示したのは1構造であり、一般性は未確定。
-- 主要候補の正式な戦略的相転移認定は引き続き保留する。
+両実験とも正式実行未承認であり、GitHub Actionsでは正式corpusを生成しない。
 
-## E-010 未使用seed確認実験
+## 主要な確定事項
 
-### 事前登録判定
+### 探索群
+
+- 100局、5650観測、421強制捕獲レジーム
+- A候補15区間、13アーキタイプ
+- 捕獲分岐急拡大は候補33.3%、対照2.9%、RR約11.46
+- forcing解除前兆は終局近傍効果として再分類
+- 捕獲分岐急拡大は即時大量捕獲ではなく、後続局面の捕獲選択肢形成として扱う
+
+### E-010事前登録判定
 
 | 指標 | 結果 | 条件 |
 |---|---:|---:|
@@ -64,11 +62,11 @@ E-011正式400局×5条件とE-017正式1000局は未実施である。両実験
 | 対照急拡大率 | 2.96% | — |
 | リスク比 | 21.53 | 3以上 |
 
-判定: `not-confirmed`
+正式判定: `not-confirmed`
 
-失敗した条件は主解析A候補数のみ。結果後に条件を緩和せず、正式判定を維持する。
+最低主解析候補12件に対して11件だった。結果後に条件を緩和せず、正式判定を維持する。
 
-### trajectory重複感度
+### E-010 trajectory重複感度
 
 重複除去キー: `trajectoryHash + candidatePly`
 
@@ -82,9 +80,9 @@ E-011正式400局×5条件とE-017正式1000局は未実施である。両実験
 | 対照急拡大率 | 2.96% | 3.09% |
 | リスク比 | 21.53 | 12.96 |
 
-最大重複群はアーキタイプ`9f778d512ae1`の6件。感度分析は事後監査であり、E-010の正式判定を置き換えない。
+急拡大7件中6件は同一candidate ply・局面・trajectoryだった。濃縮方向は重複除去後にも残るが、独立した急拡大構造例は2件に限られる。事後感度分析はE-010の正式判定を置き換えない。
 
-### 捕獲分岐形成確認
+### E-010捕獲分岐形成確認
 
 | 指標 | 生の7件平均 | 2 trajectory-ply平均 |
 |---|---:|---:|
@@ -94,131 +92,103 @@ E-011正式400局×5条件とE-017正式1000局は未実施である。両実験
 | 相手側最大捕獲可能量 | -0.86粒 | -0.50粒 |
 | phase変化 | 0/7 | 0/2 |
 
-全7件でピーク時の手番は候補時点のプレイヤーと一致した。最大重複群6件は`+3 / -1`、もう1つの独立構造は`0 / 0`だった。
-
-解釈は「確認群でも平均方向は一致したが、独立構造上の再現は限定的」とする。
+探索群と平均方向は一致した。しかし、2独立構造のうち非ゼロの非対称化を示したのは1構造だけであり、H14は「方向一致・限定的再現・未認定」とする。
 
 ## E-011 AI条件・探索深度横断頑健性実験
 
-### 事前登録
+### 固定条件
 
-- 5条件
-- 各条件400局、合計2000局
-- shared base seed: `20262001`
-- shared seed範囲: `20262001–20262400`
-- 同一seedのランダム開局を条件間で共有
-- 正式実行は固定ローカル環境で逐次実行
-- GitHub Actionsで正式2000局は実行しない
+- 5条件×各400局、合計2000局
+- shared seed: `20262001–20262400`
+- `C0 → C1 → C2 → C3 → C4`の順で固定ローカル逐次実行
 
-| 条件 | 変更要因 | evaluator | search | maxDepth |
-|---|---|---|---|---:|
-| C0 | 基準 | bao | phase2 | 2 |
-| C1 | depth低下 | bao | phase2 | 1 |
-| C2 | depth増加 | bao | phase2 | 3 |
-| C3 | 評価器変更 | bao-v2 | phase2 | 2 |
-| C4 | 探索実装変更 | bao | legacy | 2 |
+| 条件 | evaluator | search | maxDepth |
+|---|---|---|---:|
+| C0 | bao | phase2 | 2 |
+| C1 | bao | phase2 | 1 |
+| C2 | bao | phase2 | 3 |
+| C3 | bao-v2 | phase2 | 2 |
+| C4 | bao | legacy | 2 |
 
-元の条件別成功条件は変更していない。
+条件別成功条件は変更していない。
 
 - 主解析A候補12件以上
 - 急拡大候補5件以上
 - 主解析対照10000件以上
-- リスク比3以上
-- 候補率が対照率を上回る
+- RR 3以上
+- 候補率 > 対照率
 
-### 実験基盤
+### 基盤検証
 
-実装済み:
-
-- multi-condition corpus runner
-- condition integrity validator
-- combined robustness evaluator
-- trajectory重複感度の副次出力
-- 5条件×2局fixture CI
-- execution lock generator
-- guarded formal runner
-- formal execution runbook
-
-fixture監査:
+5条件×2局fixtureは成功済み。
 
 - validated commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
 - Actions run: `30641768496`
 - artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
-- result: success
 
-### 固定ローカル実行policy
+### 正式実行ガード
 
-既知条件:
+既知の固定環境:
 
 - repository: `/home/oruorane/github/bao-la-kiswahili-game`
 - branch: `research/forced-capture-regime-analysis`
 - Node.js: `v24.6.0`
 - platform: Linux
-- corpus output: `artifacts/phase-transition/robustness-v1/`
-- analysis output: `artifacts/local/phase-transition-robustness/`
 
-正式実行ガード:
+ガード:
 
-1. `formalExecutionAllowed: true`を要求する。
-2. 完全一致の承認トークンを要求する。
-3. repository path、branch、clean worktree、Node.js、source commitをexecution lockへ固定する。
-4. 正式corpus rootがgit-ignoreされていることを実照合する。
-5. 各phaseで事前登録とexecution policyのパス・SHA-256を再照合する。
-6. `C0 → C1 → C2 → C3 → C4`以外の実行順序を拒否する。
-7. formal integrity監査が成功するまで全体評価を拒否する。
-8. GitHub Actions環境では正式実行を拒否する。
+1. repositoryの`formalExecutionAllowed: true`
+2. 完全一致の承認トークン
+3. repository path、branch、clean worktree、Node.js、source commitのexecution lock
+4. formal corpus rootのgit-ignore実照合
+5. 事前登録・execution policyのパスとSHA-256再照合
+6. C0–C4順序強制
+7. formal integrity成功前の全体評価拒否
+8. GitHub Actions環境での正式実行拒否
 
-現時点では`formalExecutionAllowed: false`であり、正式自己対局は開始できない。最新ガード単体テストは隔離Gitリポジトリで成功し、GitHub Actions検証は待機中である。
+現時点では`formalExecutionAllowed: false`。隔離Gitリポジトリのガードテストは成功し、最新GitHub Actions検証はキュー待機中である。
 
 ## E-017 独立構造確認実験
 
 ### 事前登録
 
-- games: 1000
-- base seed: `20263001`
-- seed範囲: `20263001–20264000`
+- 1000局
+- seed: `20263001–20264000`
 - AI: `hard / bao / phase2 / depth 2`
 - 主解析: `pliesRemaining >= 9`
 - 主解析単位: 固有`trajectoryHash + eventPly`
-- 生の候補行endpoint: 副次解析
-- 正式1000局: 未承認・未実施
+- 生の候補行endpointは副次解析
 
-既存の探索群、E-010、E-011 seedとは重複しない。
+成功条件:
 
-### サンプル数設計
-
-E-010 200局の構造発生率から1000局で次を期待する。
-
-- 生の主解析候補行: 55
-- 固有candidate trajectory-ply: 25
-- 固有candidate trajectory: 20
-- 固有expansion trajectory-ply: 10
-- 固有expansion trajectory: 10
-- 固有control trajectory-ply: 35305
-
-構造availability 4条件のPoisson点推定による単純独立積は約93.8121%。相関を無視した計画値であり、統計的証拠としては使用しない。
-
-### 成功条件
-
-- 生の主解析A候補行30件以上
+- 生の主解析候補行30件以上
 - 固有candidate trajectory-ply 15件以上
 - 固有candidate trajectory 12件以上
 - 固有expansion trajectory-ply 5件以上
 - 固有expansion trajectory 5件以上
 - 固有control trajectory-ply 30000件以上
 - 重複除去後RR 3以上
-- 重複除去後候補率が対照率を上回る
+- 重複除去後候補率 > 対照率
 
-全条件通過のみ`confirmed`。corpus・hash・trajectory結合・必要出力に失敗した場合は`inconclusive`、それ以外の条件不通過は`not-confirmed`。
+全条件通過のみ`confirmed`。Corpus・hash・trajectory結合・必要出力の失敗は`inconclusive`、その他の条件不通過は`not-confirmed`。
 
-### 実装
+### Evaluator検証
 
-- preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
-- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
-- evaluator: `tools/experiments/evaluate-phase-transition-independent-confirmation.js`
-- regression test: `test/phase-transition-independent-confirmation.test.js`
-- CI: `.github/workflows/phase-transition-independent-confirmation.yml`
-- GitHub Actions validation: 待機中
+- validated commit: `9190998507e144d239adb55cadc3f61860a005be`
+- workflow: `Phase Transition Independent Confirmation`
+- Actions run: `30646973255`
+- job: `evaluator`
+- result: `success`
+
+確認済み:
+
+- 固有trajectory-ply重複除去
+- 固有trajectory数の計数
+- 重複除去後RR
+- `confirmed / not-confirmed / inconclusive`の分岐
+- manifest、condition、局数、seed列、trajectory hash、config hashのcorpus検査
+
+正式1000局は生成していない。別の明示的開始承認を要求する。
 
 ## 再現情報
 
@@ -226,10 +196,9 @@ E-010 200局の構造発生率から1000局で次を期待する。
 
 - analysisVersion: `11-unused-seed-confirmation`
 - configHash: `5476e77676800c40b90953ea07359d31f2bc47decd0fadd1105070d4367cbce7`
-- validated commit: `92c0ffa2354130cb43cdffc309587035be89939f`
+- original validated commit: `92c0ffa2354130cb43cdffc309587035be89939f`
 - original Actions run: `30630007008`
 - original artifact digest: `sha256:c1938edabbfd0a4ac39e3a5b8395bdc049dd795c52c38ea568dce0ae9c4160e3`
-- formation source workflow commit: `174ff668d7ada3d91041fcbb8db656233e558122`
 - formation Actions run: `30642671291`
 - formation artifact digest: `sha256:71b10449821604677ab94a713c580a30cf2d8c3890c7d77ccc03c66f4287edf6`
 
@@ -237,8 +206,6 @@ E-010 200局の構造発生率から1000局で次を期待する。
 
 - analysisVersion: `12-ai-depth-robustness`
 - status: `preregistered / infrastructure-validated / formal-not-approved`
-- games: `400 × 5 conditions`
-- seed range: `20262001–20262400`
 - preregistration: `config/experiments/phase-transition-robustness-v1.json`
 - trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
 - execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
@@ -247,20 +214,18 @@ E-010 200局の構造発生率から1000局で次を期待する。
 ### E-017
 
 - analysisVersion: `15-independent-structural-confirmation`
-- status: `preregistered / evaluator-implemented / formal-not-approved`
-- games: 1000
-- seed range: `20263001–20264000`
+- status: `preregistered / evaluator-validated / formal-not-approved`
 - preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
+- preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
+- evaluator checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-evaluator-validation.md`
 
 ## 次工程
 
-1. E-011 formal execution guard CIを完了させる。
-2. E-017 evaluator CIを完了させる。
-3. 明示的なE-011正式実験開始承認後に、repository許可フラグを別コミットで有効化する。
-4. 固定ローカル環境でE-011 execution lockを生成し、runtime・hardware・source commitを固定する。
-5. E-011を`C0 → C1 → C2 → C3 → C4`の順で各400局実行する。
-6. 条件別候補・対照分析、trajectory重複感度、最大捕獲可能量非対称化、事前登録判定を適用する。
-7. E-017は別の明示的開始承認まで1000局corpusを生成しない。
+1. E-011 formal execution guardのGitHub Actions検証を完了する。
+2. E-017固定ローカル実行policy、execution lock、corpus integrity runnerを実装する。
+3. 明示的なE-011開始承認後にのみrepository許可フラグを別コミットで有効化し、execution lockを生成する。
+4. E-011をC0から順に実行し、条件別分析・trajectory重複感度・形成過程・事前登録判定を適用する。
+5. E-017は別の明示的開始承認まで正式1000局corpusを生成しない。
 
 ## 研究データ識別情報
 
