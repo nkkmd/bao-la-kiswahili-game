@@ -121,4 +121,14 @@ const inconclusive = Evaluator.evaluate(
 assert.equal(inconclusive.decision, "inconclusive");
 assert.equal(inconclusive.corpusChecks.manifestCompletedGames, false);
 
+const operationalFailure = Evaluator.inconclusiveResult(
+  config,
+  new Error("candidate-control-metrics.csv is missing"),
+);
+assert.equal(operationalFailure.decision, "inconclusive");
+assert.match(operationalFailure.error, /candidate-control-metrics/);
+const operationalCsv = Evaluator.csvRows(operationalFailure);
+assert.equal(operationalCsv[0].decision, "inconclusive");
+assert.equal(operationalCsv[0].corpusValid, false);
+
 console.log("phase transition independent confirmation evaluator tests passed");
