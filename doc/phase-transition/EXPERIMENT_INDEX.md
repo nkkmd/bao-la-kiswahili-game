@@ -20,6 +20,7 @@
 | E-014 | 捕獲分岐形成過程 | 探索群急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
 | E-015 | E-010 trajectory重複感度 | E-010候補・対照・games.json | `analyze-confirmation-trajectory-duplication.js` | 重複除去率、アーキタイプ、重複群 | 完了・事後感度分析 |
 | E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
+| E-017 | 独立構造確認 | 1000局、base seed 20263001 | `evaluate-phase-transition-independent-confirmation.js` | 固有trajectory-ply濃縮、構造availability | 事前登録・evaluator実装済み・正式未承認 |
 
 ## E-010 未使用seed確認実験
 
@@ -120,13 +121,19 @@
   - clean worktree必須
   - Node.js version固定
   - source commitをexecution lockへ固定
+  - formal corpus rootのgit-ignore実照合
+  - preregistrationとexecution policyのパス・SHA-256再照合
   - C0–C4順序強制
   - repository許可フラグと完全一致トークンの二重承認
+  - formal integrity成功前の全体評価拒否
 - fixture validation:
   - commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
   - run: `30641768496`
   - artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
   - result: success
+- formal guard validation:
+  - isolated Git repository test: success
+  - GitHub Actions: pending
 
 ## E-016 E-010捕獲分岐形成確認
 
@@ -155,6 +162,45 @@
   - `trajectory-ply-deduplicated-deltas.csv`
   - `formation-duplicate-groups.csv`
 
+## E-017 独立構造確認
+
+- analysisVersion: `15-independent-structural-confirmation`
+- status: `preregistered / evaluator-implemented / formal-not-approved`
+- preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
+- games: 1000
+- base seed: `20263001`
+- seed range: `20263001–20264000`
+- condition: `hard / bao / phase2 / depth 2`
+- primary population: `pliesRemaining >= 9`
+- primary unit: unique `trajectoryHash + eventPly`
+- raw candidate rows: secondary endpoint
+- minimum structural availability:
+  - raw primary candidate rows: 30
+  - unique candidate trajectory-ply: 15
+  - unique candidate trajectories: 12
+  - unique expansion trajectory-ply: 5
+  - unique expansion trajectories: 5
+  - unique control trajectory-ply: 30000
+- primary effect criteria:
+  - deduplicated risk ratio: 3以上
+  - deduplicated candidate rate > control rate
+- sample-size basis:
+  - E-010 unique candidate trajectory-ply: 5/200
+  - E-010 unique candidate trajectories: 4/200
+  - E-010 unique expansion trajectory-ply: 2/200
+  - selected 1000 games availability four-criterion simple independent product: 93.8121%
+  - planning approximation only; counts are correlated
+- implementation:
+  - evaluator: `evaluate-phase-transition-independent-confirmation.js`
+  - regression test: `phase-transition-independent-confirmation.test.js`
+  - CI: `.github/workflows/phase-transition-independent-confirmation.yml`
+  - GitHub Actions validation: pending
+- execution:
+  - formal 1000-game run allowed in GitHub Actions: no
+  - separate explicit approval required: yes
+  - formal corpus: not generated
+
 ## 共通データ識別情報
 
 ### 探索群
@@ -176,3 +222,10 @@
 - configHash: 未生成
 - games: 400/condition
 - conditions: C0–C4
+
+### E-017独立構造確認群
+
+- studyVersion: `0.4.1`
+- configHash: 未生成
+- games: 1000
+- seed range: `20263001–20264000`
