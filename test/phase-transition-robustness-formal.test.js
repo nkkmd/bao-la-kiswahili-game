@@ -8,6 +8,10 @@ const Formal = require("../tools/experiments/run-phase-transition-robustness-for
 const Prepare = require("../tools/experiments/prepare-phase-transition-robustness-execution.js");
 
 assert.equal(Prepare.sha256("abc").length, 64);
+assert.equal(Prepare.gitIgnored(
+  "artifacts/phase-transition/robustness-v1",
+  path.resolve(__dirname, ".."),
+), true);
 
 const policy = {
   experimentId: "E-011",
