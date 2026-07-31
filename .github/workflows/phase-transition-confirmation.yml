@@ -6,6 +6,7 @@ on:
       - "config/experiments/phase-transition-confirmation-v1.json"
       - "tools/experiments/evaluate-phase-transition-confirmation.js"
       - "tools/experiments/analyze-confirmation-trajectory-duplication.js"
+      - "tools/experiments/analyze-capture-branch-formation.js"
       - "test/phase-transition-confirmation.test.js"
       - "test/phase-transition-confirmation-trajectory-duplication.test.js"
       - ".github/workflows/phase-transition-confirmation.yml"
@@ -61,6 +62,13 @@ jobs:
             --controls artifacts/local/phase-transition-confirmation-controls/control-point-metrics.csv \
             --minimum-plies-remaining 9 \
             --output artifacts/local/phase-transition-confirmation-trajectory-audit
+      - name: Analyze capture-branch formation in confirmation candidates
+        run: |
+          node tools/experiments/analyze-capture-branch-formation.js \
+            --games artifacts/phase-transition/confirmation-v1/games \
+            --candidates artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv \
+            --window 8 \
+            --output artifacts/local/phase-transition-confirmation-capture-branch-formation
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -73,4 +81,5 @@ jobs:
             artifacts/local/phase-transition-confirmation-controls/
             artifacts/local/phase-transition-confirmation/
             artifacts/local/phase-transition-confirmation-trajectory-audit/
+            artifacts/local/phase-transition-confirmation-capture-branch-formation/
           if-no-files-found: error
