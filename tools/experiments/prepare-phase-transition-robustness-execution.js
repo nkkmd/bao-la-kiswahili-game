@@ -5,7 +5,7 @@ const crypto = require("node:crypto");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
-const { execFileSync } = require("node:child_process");
+const { execFileSync, spawnSync } = require("node:child_process");
 
 function parseArgs(argv) {
   const options = {
@@ -41,6 +41,15 @@ function git(args, cwd) {
   return execFileSync("git", args, { cwd, encoding: "utf8" }).trim();
 }
 
+function gitIgnored(relativePath, cwd) {
+  const result = spawnSync(
+    "git",
+    ["check-ignore", "--quiet", "--no-index", relativePath],
+    { cwd },
+  );
+  return result.status === 0;
+}
+
 function loadJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
@@ -72,6 +81,7 @@ function collectEnvironment(repositoryRoot) {
     logicalCpuCount: os.cpus().length,
     totalMemoryBytes: os.totalmem(),
     githubActions: process.env.GITHUB_ACTIONS === "true",
+    corpusRootIgnored: null,
   };
 }
 
@@ -95,6 +105,9 @@ function validateEnvironment(policy, environment, preregistration) {
   if (policy.requireCleanWorktree && environment.worktreeStatus !== "") {
     errors.push("Worktree is not clean.");
   }
+  if (environment.corpusRootIgnored !== true) {
+    errors.push("Formal corpus root is not ignored by git.");
+  }
   if (preregistration.experimentId !== policy.experimentId) {
     errors.push("Experiment ID mismatch between preregistration and execution policy.");
   }
@@ -113,6 +126,7 @@ function prepare(options) {
   const preregistration = JSON.parse(preregistrationRaw);
   const repositoryRoot = fs.realpathSync(process.cwd());
   const environment = collectEnvironment(repositoryRoot);
+  environment.corpusRootIgnored = gitIgnored(policy.paths.corpusRoot, repositoryRoot);
   const errors = validateEnvironment(policy, environment, preregistration);
   const lock = {
     schemaVersion: "1.0.0",
@@ -158,6 +172,7 @@ if (require.main === module) {
 module.exports = {
   canonicalJson,
   collectEnvironment,
+  gitIgnored,
   parseArgs,
   prepare,
   sha256,
