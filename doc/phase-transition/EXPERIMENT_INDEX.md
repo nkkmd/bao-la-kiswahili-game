@@ -14,12 +14,12 @@
 | E-008 | 強制捕獲レジーム分析 | pilot-v2 / A候補 | `analyze-forced-capture-regimes.js` | レジーム分類 | 完了 |
 | E-009 | 候補手質的特徴量 | pilot-v2対局 / A候補 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
 | E-010 | 未使用seed確認実験 | 200局、base seed 20261001 | `evaluate-phase-transition-confirmation.js` | 事前登録判定、候補・対照率 | 完了・not-confirmed |
-| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001 | `run-phase-transition-robustness.js` | 条件別濃縮、全体頑健性判定 | 事前登録・基盤検証済み・正式未実施 |
+| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001 | `run-phase-transition-robustness.js` | 条件別濃縮、全体頑健性判定 | 事前登録・基盤検証済み・正式未承認 |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
 | E-013 | 終局近傍効果分離 | E-012候補・対照 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
 | E-014 | 捕獲分岐形成過程 | 探索群急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
 | E-015 | E-010 trajectory重複感度 | E-010候補・対照・games.json | `analyze-confirmation-trajectory-duplication.js` | 重複除去率、アーキタイプ、重複群 | 完了・事後感度分析 |
-| E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 実装済み・結果未確定 |
+| E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
 
 ## E-010 未使用seed確認実験
 
@@ -72,9 +72,11 @@
 ## E-011 AI条件・探索深度横断頑健性実験
 
 - analysisVersion: `12-ai-depth-robustness`
-- status: `preregistered / infrastructure-validated / formal-not-run`
+- status: `preregistered / infrastructure-validated / formal-not-approved`
 - preregistration config: `config/experiments/phase-transition-robustness-v1.json`
 - trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
+- execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
+- execution runbook: `doc/phase-transition/E011_FORMAL_EXECUTION.md`
 - checkpoint: `doc/phase-transition/checkpoints/2026-07-31-ai-depth-robustness-preregistration.md`
 - infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-infrastructure-and-e010-trajectory-audit.md`
 - games per condition: 400
@@ -82,8 +84,11 @@
 - total planned games: 2000
 - shared base seed: `20262001`
 - shared seed range: `20262001–20262400`
-- run environment: fixed local environment
+- fixed repository path: `/home/oruorane/github/bao-la-kiswahili-game`
+- expected Node.js: `v24.6.0`
+- run environment: fixed local Linux environment
 - run order: `C0 → C1 → C2 → C3 → C4`
+- formal execution allowed: `false`
 - condition grid:
   - C0: `bao / phase2 / depth 2`
   - C1: `bao / phase2 / depth 1`
@@ -104,7 +109,19 @@
   - combined evaluator: 完了
   - trajectory sensitivity output: 完了
   - regression fixture: 完了
+  - execution lock generator: 完了
+  - guarded formal runner: 完了
+  - repository approval flag: disabled
   - formal 400×5 corpus: 未実施
+- execution guards:
+  - GitHub Actions拒否
+  - repository path固定
+  - branch固定
+  - clean worktree必須
+  - Node.js version固定
+  - source commitをexecution lockへ固定
+  - C0–C4順序強制
+  - repository許可フラグと完全一致トークンの二重承認
 - fixture validation:
   - commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
   - run: `30641768496`
@@ -113,17 +130,30 @@
 
 ## E-016 E-010捕獲分岐形成確認
 
-- analysisVersion: `14-confirmation-capture-branch-formation-trajectory-sensitivity`
+- raw analysisVersion: `10-capture-branch-formation`
+- trajectory analysisVersion: `14-confirmation-capture-branch-formation-trajectory-sensitivity`
 - input: E-010 capture-branch-expansion 7 candidates
 - window: 8 ply
 - raw unit: 7 candidate rows
 - sensitivity unit: unique `trajectoryHash + candidatePly`
-- expected unique sensitivity rows: 2
-- implementation:
-  - `analyze-capture-branch-formation.js`
-  - `summarize-confirmation-capture-branch-formation.js`
-  - `test/phase-transition-confirmation-capture-formation-sensitivity.test.js`
-- status: CI再生成結果待ち
+- unique sensitivity rows: 2
+- raw mean peak distance: 1.71 ply
+- deduplicated mean peak distance: 1.00 ply
+- raw maximum-capture asymmetry: actor +2.57 / opponent -0.86
+- deduplicated maximum-capture asymmetry: actor +1.50 / opponent -0.50
+- phase changes: raw 0/7, deduplicated 0/2
+- interpretation: direction reproduced, but six rows are one repeated trajectory-ply and only one of two structures has non-zero asymmetry
+- source workflow commit: `174ff668d7ada3d91041fcbb8db656233e558122`
+- Actions run: `30642671291`
+- artifact digest: `sha256:71b10449821604677ab94a713c580a30cf2d8c3890c7d77ccc03c66f4287edf6`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e010-confirmation-capture-formation.md`
+- outputs:
+  - `capture-branch-formation-timeline.csv`
+  - `capture-branch-formation-deltas.csv`
+  - `summary.json`
+  - `trajectory-sensitive-summary.json`
+  - `trajectory-ply-deduplicated-deltas.csv`
+  - `formation-duplicate-groups.csv`
 
 ## 共通データ識別情報
 
