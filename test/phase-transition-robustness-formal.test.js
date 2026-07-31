@@ -11,6 +11,7 @@ assert.equal(Prepare.sha256("abc").length, 64);
 
 const policy = {
   experimentId: "E-011",
+  formalExecutionAllowed: true,
   approvalToken: "E-011-FORMAL-APPROVED",
   runOrder: ["C0", "C1"],
 };
@@ -21,6 +22,11 @@ const lock = {
 };
 assert.doesNotThrow(() => Formal.approve(lock, policy, policy.approvalToken));
 assert.throws(() => Formal.approve(lock, policy, "wrong"));
+assert.throws(() => Formal.approve(
+  lock,
+  { ...policy, formalExecutionAllowed: false },
+  policy.approvalToken,
+));
 
 const root = fs.mkdtempSync(path.join(os.tmpdir(), "e011-formal-"));
 assert.equal(Formal.nextCondition(policy.runOrder, root), "C0");
