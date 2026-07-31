@@ -1,7 +1,7 @@
 # E-011 固定ローカル正式実行手順
 
 更新日: 2026-08-01  
-Status: Prepared / Formal execution disabled
+Status: Approved / Awaiting fixed-local execution lock
 
 ## 1. 固定事項
 
@@ -17,15 +17,18 @@ Status: Prepared / Formal execution disabled
 
 正式実験は、リポジトリ上の`formalExecutionAllowed`と完全一致の承認トークンの両方が有効でなければ開始できない。
 
-現時点では次の設定のため、正式自己対局は実行不能である。
+2026-08-01 06:09 JSTに明示的な正式開始承認を受領した。専用コミット`a0378010607aebad76420e0d377ee1b88166d861`で次を有効化した。
 
 ```json
-"formalExecutionAllowed": false
+"status": "approved-awaiting-local-lock",
+"formalExecutionAllowed": true
 ```
+
+開始承認は実験条件、seed、局数、実行順、分析条件、判定条件を変更しない。
 
 ## 2. 実行前環境ロック
 
-正式実験の開始承認後、対象コミットへ更新し、clean worktreeで環境ロックを生成する。
+対象コミットへ更新し、clean worktreeで環境ロックを生成する。
 
 ```bash
 cd /home/oruorane/github/bao-la-kiswahili-game
@@ -66,6 +69,8 @@ artifacts/phase-transition/robustness-v1/execution-lock.json
 - E-011 run order
 - preregistration experiment ID
 
+この文書更新時点では、現在の操作環境に固定repository pathが存在しないためexecution lockは未生成である。別のrepository pathや別環境を代替使用してはならない。
+
 ## 3. 状態確認
 
 環境ロック生成後、自己対局を開始せず状態だけ確認できる。
@@ -77,7 +82,7 @@ node tools/experiments/run-phase-transition-robustness-formal.js \
 
 ## 4. 正式条件実行
 
-以下は、明示的な正式実験開始承認後にのみ使用する。
+開始承認済みであるため、execution lockと状態監査が成功した後、C0を開始する。
 
 ```bash
 node tools/experiments/run-phase-transition-robustness-formal.js \
