@@ -12,48 +12,50 @@
 | E-006 | アーキタイプ分析 | 同上 | `04-candidate-archetypes.ipynb` | 13 Aアーキタイプ | 完了 |
 | E-007 | 優先候補盤面監査 | 同上 | `05-candidate-board-audit.ipynb` | 主要6候補前後局面 | 完了 |
 | E-008 | 強制捕獲レジーム分析 | pilot-v2 / A候補 | `analyze-forced-capture-regimes.js` | レジーム分類 | 完了 |
-| E-009 | 候補手質的特徴量 | pilot-v2対局ファイル / A候補15区間 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
-| E-010 | 新規seed確認実験 | 未使用seed | 未実装 | 再現率・偽陽性率 | 次工程 |
-| E-011 | AI・depth頑健性 | 複数条件 | 未実装 | 条件横断再現性 | 未着手 |
+| E-009 | 候補手質的特徴量 | pilot-v2対局 / A候補 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
+| E-010 | 未使用seed確認実験 | 200局、base seed 20261001 | `evaluate-phase-transition-confirmation.js` | 事前登録判定、候補・対照率 | 完了・not-confirmed |
+| E-011 | AI・depth頑健性 | 複数条件 | 未実装 | 条件横断再現性 | 次工程 |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
-| E-013 | 終局近傍効果分離 | E-012候補・対照指標 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
-| E-014 | 捕獲分岐形成過程 | 捕獲分岐急拡大5区間 | `analyze-capture-branch-formation.js`, `run-capture-branch-formation-audit.js` | 1–8ply時系列、ピーク差分 | 完了 |
+| E-013 | 終局近傍効果分離 | E-012候補・対照 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
+| E-014 | 捕獲分岐形成過程 | 急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
 
-## E-009 候補手質的特徴量
+## E-010 未使用seed確認実験
 
-- analysisVersion: `9-candidate-move-quality`
-- implementation commit: `816e0254fc79411b37a3cb30aabc648bd502735c`
-- workflow commit: `d338f4cd635de7728c5af11e9e3238c259b3bd5d`
-- Actions run: `30622069887`
-- artifact digest: `sha256:69fee2bf5bd8fa7fab3beece392a04dd8ff6e56fbae78d8b10ce129be1d7c09d`
-
-## E-014 捕獲分岐形成過程
-
-- analysisVersion: `10-capture-branch-formation`
-- executionMode: `targeted-deterministic-audit`
-- metricPerspective: `player-to-move`
-- implementation commits: `9678d92ec0e91bdf66a2a3cad8e7eeb328cc66a1`, `9fed1624f31d87715c35097e9b696376ad27fac9`
-- targeted audit commit: `0acd7e011a1be1d9cdd4dd82e5b38641a629b305`
-- validated commit: `c86592a21c98298bf92e75bfbb39fb1067400773`
-- Actions run: `30626126538`
-- artifact: `phase-transition-capture-branch-formation`
-- artifact digest: `sha256:5567db5deef0341b4463c79769a619d86da962b6667669e16398535273b5d65f`
-- candidate intervals: 5
-- unique archetypes: 3
-- mean peak relative ply: 1.8
-- peak on candidate player: 4/5
-- mean capture move increase: 0.8
-- mean actor max-capture change: +3.0 seeds
-- mean opponent max-capture change: -1.2 seeds
-- phase changes before peak: 0
+- analysisVersion: `11-unused-seed-confirmation`
+- preregistration commit: `a3c07b14f4b01459f790d0eec38c4a341594f47e`
+- validated commit: `92c0ffa2354130cb43cdffc309587035be89939f`
+- Actions run: `30630007008`
+- artifact: `phase-transition-confirmation-v1`
+- artifact digest: `sha256:c1938edabbfd0a4ac39e3a5b8395bdc049dd795c52c38ea568dce0ae9c4160e3`
+- games: 200
+- base seed: `20261001`
+- observation count: 11439
+- regime count: 845
+- A candidates before terminal filter: 22
+- primary candidates, 9ply以上: 11
+- primary controls: 8424
+- candidate expansion: 7/11 = 63.64%
+- control expansion: 249/8424 = 2.96%
+- risk ratio: 21.53
+- decision: `not-confirmed`
+- failed criterion: minimum primary candidate count 12; observed 11
 - outputs:
-  - `capture-branch-formation-timeline.csv`
-  - `capture-branch-formation-deltas.csv`
-  - `summary.json`
+  - `confirmation-result.json`
+  - `confirmation-summary.csv`
+  - `candidate-control-metrics.csv`
+  - `control-point-metrics.csv`
+  - `classification-sensitivity.csv`
 
 ## 共通データ識別情報
 
+### 探索群
+
 - studyVersion: `0.4.1`
 - configHash: `3567b34b3289bda4903c6df98238f12a50d025d3b487871372d3dd5d7869d9c5`
-- profile: `pilot-v2`
 - games: 100
+
+### E-010確認群
+
+- studyVersion: `0.4.1`
+- configHash: `5476e77676800c40b90953ea07359d31f2bc47decd0fadd1105070d4367cbce7`
+- games: 200
