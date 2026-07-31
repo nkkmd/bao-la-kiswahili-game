@@ -19,7 +19,9 @@ Status: Active
 
 ## 現在の研究段階
 
-100局 `pilot-v2` の探索工程と、未使用seed 200局によるE-010事前登録確認実験まで完了した。
+100局 `pilot-v2` の探索工程、未使用seed 200局によるE-010事前登録確認実験、およびE-011 AI条件・探索深度横断頑健性実験の事前登録まで完了した。
+
+E-011は未実施であり、次工程はmulti-condition runnerと検証器の実装である。
 
 ## 現時点で確定したこと
 
@@ -28,6 +30,8 @@ Status: Active
 - forcing解除前兆は終局近傍効果であり、独立した戦略転移分類としては撤回した。
 - 捕獲分岐急拡大は即時大量捕獲ではなく、後続局面の捕獲選択肢形成として扱う。
 - E-010未使用seed確認実験では効果方向と大きさは再現したが、事前登録した最低主解析候補数に1件届かず、正式判定は `not-confirmed`。
+- E-010の成功条件は結果後に変更しない。
+- E-011ではE-010の検出・分類閾値と終局除外条件を固定し、評価器、探索実装、maxDepthだけを一要因ずつ変更する。
 - 主要候補の正式な戦略的相転移認定は引き続き保留する。
 
 ## E-010 未使用seed確認実験
@@ -65,12 +69,58 @@ Status: Active
 
 失敗した条件は主解析A候補数のみで、11件と事前固定した12件を1件下回った。急拡大件数、対照数、効果方向、リスク比はすべて基準を通過した。
 
+## E-011 AI条件・探索深度横断頑健性実験
+
+### 事前登録
+
+- 5条件
+- 各条件400局、合計2000局
+- shared base seed: `20262001`
+- shared seed範囲: `20262001–20262400`
+- 同一seedのランダム開局を条件間で共有
+- 正式実行は固定ローカル環境で逐次実行
+- GitHub Actionsで正式2000局は実行しない
+
+| 条件 | 変更要因 | evaluator | search | maxDepth |
+|---|---|---|---|---:|
+| C0 | 基準 | bao | phase2 | 2 |
+| C1 | depth低下 | bao | phase2 | 1 |
+| C2 | depth増加 | bao | phase2 | 3 |
+| C3 | 評価器変更 | bao-v2 | phase2 | 2 |
+| C4 | 探索実装変更 | bao | legacy | 2 |
+
+固定条件:
+
+- category `A`
+- `signalThreshold=2.0`
+- `persistenceThreshold=0.75`
+- `pliesRemaining >= 9`
+- `expansionDelta=3`
+- `persistenceFraction=0.5`
+- `eventWindow=8`
+- `controlExclusionBuffer=8`
+
+条件別成功条件:
+
+- 主解析A候補12件以上
+- 急拡大候補5件以上
+- 主解析対照10000件以上
+- リスク比3以上
+- 候補率が対照率を上回る
+
+E-010の11候補/200局を用いたPoisson近似では、400局で12候補以上を得る確率は約99.24%。これはE-011のサンプル数設計だけに使用し、E-010の判定は変更しない。
+
+事前登録ファイル:
+
+- `config/experiments/phase-transition-robustness-v1.json`
+- `doc/phase-transition/checkpoints/2026-07-31-ai-depth-robustness-preregistration.md`
+
 ## 解釈
 
 - 捕獲分岐急拡大の効果方向は未使用seedでも強く再現した。
 - ただし事前登録判定を結果後に緩和しないため、E-010は確認成功とは扱わない。
 - 結果は「実質的再現だが、事前登録上は未確認」と記録する。
-- 次工程では、候補数不足を理由に同一データで条件を変更せず、独立した追加確認またはAI・depth頑健性実験を別登録する。
+- E-011はAI・探索条件への頑健性を検証する独立実験であり、E-010の再判定には使わない。
 
 ## 再現情報
 
@@ -82,12 +132,22 @@ Status: Active
 - Actions run: `30630007008`
 - artifact digest: `sha256:c1938edabbfd0a4ac39e3a5b8395bdc049dd795c52c38ea568dce0ae9c4160e3`
 
+### E-011
+
+- analysisVersion: `12-ai-depth-robustness`
+- status: `preregistered / not-run`
+- games: `400 × 5 conditions`
+- seed range: `20262001–20262400`
+- preregistration config: `config/experiments/phase-transition-robustness-v1.json`
+
 ## 次工程
 
-1. E-011 AI条件・探索深度横断の頑健性実験を事前登録する。
-2. E-010の候補11件と急拡大7件をアーキタイプ単位でも要約する。
-3. 最大捕獲可能量の非対称化が未使用seed急拡大候補でも再現するか副次分析する。
-4. 独立追加seed確認実験の必要サンプル数を、今回の候補発生率から設計する。
+1. E-011のmulti-condition runner、検証器、回帰テストを実装する。
+2. 短いfixtureで条件ID、seed共有、config hash分離を監査する。
+3. 固定ローカル環境でE-011の400局×5条件を逐次実行する。
+4. E-010の候補11件と急拡大7件をアーキタイプ単位でも要約する。
+5. 最大捕獲可能量の非対称化が未使用seed急拡大候補でも再現するか副次分析する。
+6. 独立追加seed確認実験の必要サンプル数を別登録する。
 
 ## 研究データ識別情報
 
@@ -97,8 +157,15 @@ Status: Active
 - configHash: `3567b34b3289bda4903c6df98238f12a50d025d3b487871372d3dd5d7869d9c5`
 - games: 100
 
-### 確認群
+### E-010確認群
 
 - studyVersion: `0.4.1`
 - configHash: `5476e77676800c40b90953ea07359d31f2bc47decd0fadd1105070d4367cbce7`
 - games: 200
+
+### E-011頑健性群
+
+- studyVersion: `0.4.1`
+- configHash: 未生成
+- games: 400/condition
+- conditions: C0–C4
