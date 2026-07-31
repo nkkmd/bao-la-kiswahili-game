@@ -46,6 +46,37 @@ assert.throws(() => Formal.assertIntegrity(integrityPath));
 fs.writeFileSync(integrityPath, JSON.stringify({ valid: true, mode: "formal" }));
 assert.equal(Formal.assertIntegrity(integrityPath).valid, true);
 
+const policyPath = path.join(root, "execution-policy.json");
+const preregistrationPath = path.join(root, "preregistration.json");
+const lockedPolicy = { paths: { preregistration: "preregistration.json" } };
+const policyBytes = `${JSON.stringify(lockedPolicy)}\n`;
+const preregistrationBytes = "{\"experimentId\":\"E-011\"}\n";
+fs.writeFileSync(policyPath, policyBytes);
+fs.writeFileSync(preregistrationPath, preregistrationBytes);
+const inputLock = {
+  executionPolicy: {
+    path: "execution-policy.json",
+    sha256: Formal.sha256(policyBytes),
+  },
+  preregistration: {
+    path: "preregistration.json",
+    sha256: Formal.sha256(preregistrationBytes),
+  },
+};
+assert.doesNotThrow(() => Formal.assertLockedInputs(
+  inputLock,
+  policyPath,
+  lockedPolicy,
+  root,
+));
+fs.writeFileSync(preregistrationPath, "{\"experimentId\":\"changed\"}\n");
+assert.throws(() => Formal.assertLockedInputs(
+  inputLock,
+  policyPath,
+  lockedPolicy,
+  root,
+));
+
 const environment = {
   repositoryRoot: "/repo",
   branch: "research/forced-capture-regime-analysis",
