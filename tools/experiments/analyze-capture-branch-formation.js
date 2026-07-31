@@ -36,9 +36,10 @@ function replayStates(game) {
   return states;
 }
 
-function metricRow(state, focalPlayer, gameId, candidatePly, relativePly) {
-  const own = AI.playerMetrics(state, focalPlayer);
-  const enemy = AI.playerMetrics(state, 1 - focalPlayer);
+function metricRow(state, candidatePlayer, gameId, candidatePly, relativePly) {
+  const actor = state.player;
+  const actorMetrics = AI.playerMetrics(state, actor);
+  const opponentMetrics = AI.playerMetrics(state, 1 - actor);
   const moves = E.moveVariants(state);
   return {
     gameId,
@@ -46,22 +47,22 @@ function metricRow(state, focalPlayer, gameId, candidatePly, relativePly) {
     relativePly,
     actualPly: candidatePly + relativePly,
     phase: state.phase,
-    playerToMove: state.player,
-    focalPlayer,
+    playerToMove: actor,
+    samePlayerAsCandidate: actor === candidatePlayer,
     captureMoveCount: moves.filter((move) => move.type === "capture").length,
     legalMoveCount: moves.length,
-    ownFrontOccupied: own.frontOccupied,
-    enemyFrontOccupied: enemy.frontOccupied,
-    ownReusablePits: own.reusablePits,
-    enemyReusablePits: enemy.reusablePits,
-    ownMaxCapture: own.maxCapture,
-    enemyMaxCapture: enemy.maxCapture,
-    ownFrontSeeds: own.frontSeeds,
-    enemyFrontSeeds: enemy.frontSeeds,
-    ownReserve: state.reserve[focalPlayer],
-    enemyReserve: state.reserve[1 - focalPlayer],
-    ownHouseOwned: state.houseOwned[focalPlayer],
-    enemyHouseOwned: state.houseOwned[1 - focalPlayer],
+    actorFrontOccupied: actorMetrics.frontOccupied,
+    opponentFrontOccupied: opponentMetrics.frontOccupied,
+    actorReusablePits: actorMetrics.reusablePits,
+    opponentReusablePits: opponentMetrics.reusablePits,
+    actorMaxCapture: actorMetrics.maxCapture,
+    opponentMaxCapture: opponentMetrics.maxCapture,
+    actorFrontSeeds: actorMetrics.frontSeeds,
+    opponentFrontSeeds: opponentMetrics.frontSeeds,
+    actorReserve: state.reserve[actor],
+    opponentReserve: state.reserve[1 - actor],
+    actorHouseOwned: state.houseOwned[actor],
+    opponentHouseOwned: state.houseOwned[1 - actor],
   };
 }
 
@@ -75,9 +76,9 @@ function deltaRecord(candidate, rows) {
   const start = rows[0];
   const peak = rows.slice().sort((a, b) => b.captureMoveCount - a.captureMoveCount || a.relativePly - b.relativePly)[0];
   const fields = [
-    "captureMoveCount", "legalMoveCount", "ownFrontOccupied", "enemyFrontOccupied",
-    "ownReusablePits", "enemyReusablePits", "ownMaxCapture", "enemyMaxCapture",
-    "ownFrontSeeds", "enemyFrontSeeds", "ownReserve", "enemyReserve",
+    "captureMoveCount", "legalMoveCount", "actorFrontOccupied", "opponentFrontOccupied",
+    "actorReusablePits", "opponentReusablePits", "actorMaxCapture", "opponentMaxCapture",
+    "actorFrontSeeds", "opponentFrontSeeds", "actorReserve", "opponentReserve",
   ];
   const result = {
     archetypeId: candidate.archetypeId,
@@ -85,9 +86,10 @@ function deltaRecord(candidate, rows) {
     candidatePly: candidatePlyValue(candidate),
     peakRelativePly: peak.relativePly,
     peakCaptureMoveCount: peak.captureMoveCount,
+    peakSamePlayerAsCandidate: peak.samePlayerAsCandidate,
     phaseChanged: start.phase !== peak.phase,
-    ownHouseLost: start.ownHouseOwned && !peak.ownHouseOwned,
-    enemyHouseLost: start.enemyHouseOwned && !peak.enemyHouseOwned,
+    actorHouseLost: start.actorHouseOwned && !peak.actorHouseOwned,
+    opponentHouseLost: start.opponentHouseOwned && !peak.opponentHouseOwned,
   };
   for (const field of fields) result[`delta_${field}`] = peak[field] - start[field];
   return result;
@@ -110,29 +112,31 @@ function main() {
     const states = replayStates(game);
     const candidatePly = candidatePlyValue(candidate);
     if (!states[candidatePly]) throw new Error(`Candidate ply ${candidatePly} outside ${candidate.gameId} trajectory`);
-    const focalPlayer = states[candidatePly].player;
+    const candidatePlayer = states[candidatePly].player;
     const rows = [];
     for (let offset = 0; offset <= options.window && candidatePly + offset < states.length; offset += 1) {
-      const row = metricRow(states[candidatePly + offset], focalPlayer, candidate.gameId, candidatePly, offset);
+      const row = metricRow(states[candidatePly + offset], candidatePlayer, candidate.gameId, candidatePly, offset);
       rows.push(row); timeline.push({ archetypeId: candidate.archetypeId, ...row });
     }
     deltas.push(deltaRecord(candidate, rows));
   }
   const summary = {
     analysisVersion: "10-capture-branch-formation",
+    metricPerspective: "player-to-move",
     candidateCount: candidates.length,
     window: options.window,
     meanPeakRelativePly: average(deltas, "peakRelativePly"),
+    peakOnCandidatePlayerCount: deltas.filter((row) => row.peakSamePlayerAsCandidate).length,
     meanCaptureMoveIncrease: average(deltas, "delta_captureMoveCount"),
-    meanOwnFrontOccupiedChange: average(deltas, "delta_ownFrontOccupied"),
-    meanEnemyFrontOccupiedChange: average(deltas, "delta_enemyFrontOccupied"),
-    meanOwnReusablePitsChange: average(deltas, "delta_ownReusablePits"),
-    meanEnemyReusablePitsChange: average(deltas, "delta_enemyReusablePits"),
-    meanOwnMaxCaptureChange: average(deltas, "delta_ownMaxCapture"),
-    meanEnemyMaxCaptureChange: average(deltas, "delta_enemyMaxCapture"),
+    meanActorFrontOccupiedChange: average(deltas, "delta_actorFrontOccupied"),
+    meanOpponentFrontOccupiedChange: average(deltas, "delta_opponentFrontOccupied"),
+    meanActorReusablePitsChange: average(deltas, "delta_actorReusablePits"),
+    meanOpponentReusablePitsChange: average(deltas, "delta_opponentReusablePits"),
+    meanActorMaxCaptureChange: average(deltas, "delta_actorMaxCapture"),
+    meanOpponentMaxCaptureChange: average(deltas, "delta_opponentMaxCapture"),
     phaseChangeCount: deltas.filter((row) => row.phaseChanged).length,
-    ownHouseLossCount: deltas.filter((row) => row.ownHouseLost).length,
-    enemyHouseLossCount: deltas.filter((row) => row.enemyHouseLost).length,
+    actorHouseLossCount: deltas.filter((row) => row.actorHouseLost).length,
+    opponentHouseLossCount: deltas.filter((row) => row.opponentHouseLost).length,
   };
   const output = path.resolve(options.output); fs.mkdirSync(output, { recursive: true });
   IO.writeCsv(path.join(output, "capture-branch-formation-timeline.csv"), timeline);
@@ -142,4 +146,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { candidatePlyValue, deltaRecord, replayStates };
+module.exports = { candidatePlyValue, deltaRecord, metricRow, replayStates };
