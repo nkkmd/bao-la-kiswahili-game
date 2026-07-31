@@ -7,8 +7,10 @@ on:
       - "tools/experiments/evaluate-phase-transition-confirmation.js"
       - "tools/experiments/analyze-confirmation-trajectory-duplication.js"
       - "tools/experiments/analyze-capture-branch-formation.js"
+      - "tools/experiments/summarize-confirmation-capture-branch-formation.js"
       - "test/phase-transition-confirmation.test.js"
       - "test/phase-transition-confirmation-trajectory-duplication.test.js"
+      - "test/phase-transition-confirmation-capture-formation-sensitivity.test.js"
       - ".github/workflows/phase-transition-confirmation.yml"
   workflow_dispatch:
 
@@ -31,6 +33,7 @@ jobs:
       - run: |
           node test/phase-transition-confirmation.test.js
           node test/phase-transition-confirmation-trajectory-duplication.test.js
+          node test/phase-transition-confirmation-capture-formation-sensitivity.test.js
       - name: Generate preregistered unused-seed corpus
         run: |
           node tools/experiments/run-phase-transition-research.js \
@@ -68,6 +71,10 @@ jobs:
             --games artifacts/phase-transition/confirmation-v1/games \
             --candidates artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv \
             --window 8 \
+            --output artifacts/local/phase-transition-confirmation-capture-branch-formation
+          node tools/experiments/summarize-confirmation-capture-branch-formation.js \
+            --games artifacts/phase-transition/confirmation-v1/games.json \
+            --deltas artifacts/local/phase-transition-confirmation-capture-branch-formation/capture-branch-formation-deltas.csv \
             --output artifacts/local/phase-transition-confirmation-capture-branch-formation
       - uses: actions/upload-artifact@v4
         if: always()
