@@ -14,7 +14,7 @@
 | E-008 | 強制捕獲レジーム分析 | pilot-v2 / A候補 | `analyze-forced-capture-regimes.js` | レジーム分類 | 完了 |
 | E-009 | 候補手質的特徴量 | pilot-v2対局 / A候補 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
 | E-010 | 未使用seed確認実験 | 200局、base seed 20261001 | `evaluate-phase-transition-confirmation.js` | 事前登録判定、候補・対照率 | 完了・not-confirmed |
-| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001 | `run-phase-transition-robustness.js` | 条件別濃縮、全体頑健性判定 | 事前登録・基盤検証済み・正式未承認 |
+| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001 | `run-phase-transition-robustness-formal.js` | 条件別濃縮、全体頑健性判定 | 正式開始承認済み・execution lock待ち |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
 | E-013 | 終局近傍効果分離 | E-012候補・対照 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
 | E-014 | 捕獲分岐形成過程 | 探索群急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
@@ -73,7 +73,10 @@
 ## E-011 AI条件・探索深度横断頑健性実験
 
 - analysisVersion: `12-ai-depth-robustness`
-- status: `preregistered / infrastructure-validated / formal-not-approved`
+- status: `preregistered / infrastructure-validated / formal-approved / awaiting-local-lock`
+- authorization time: `2026-08-01 06:09 JST`
+- authorization commit: `a0378010607aebad76420e0d377ee1b88166d861`
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
 - preregistration config: `config/experiments/phase-transition-robustness-v1.json`
 - trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
 - execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
@@ -89,7 +92,10 @@
 - expected Node.js: `v24.6.0`
 - run environment: fixed local Linux environment
 - run order: `C0 → C1 → C2 → C3 → C4`
-- formal execution allowed: `false`
+- formal execution allowed: `true`
+- execution lock: 未生成
+- C0 corpus: `0 / 400`
+- total formal corpus: `0 / 2000`
 - condition grid:
   - C0: `bao / phase2 / depth 2`
   - C1: `bao / phase2 / depth 1`
@@ -112,7 +118,8 @@
   - regression fixture: 完了
   - execution lock generator: 完了
   - guarded formal runner: 完了
-  - repository approval flag: disabled
+  - repository approval flag: enabled
+  - fixed-local execution lock: 未生成
   - formal 400×5 corpus: 未実施
 - execution guards:
   - GitHub Actions拒否
@@ -133,7 +140,11 @@
   - result: success
 - formal guard validation:
   - isolated Git repository test: success
-  - GitHub Actions: pending
+  - pre-authorization branch-head GitHub Actions: success
+- launch constraint:
+  - current assistant execution environment does not contain `/home/oruorane/github/bao-la-kiswahili-game`
+  - no substitute environment is permitted
+  - fixed-local machine must pull latest head and generate execution lock before C0 starts
 
 ## E-016 E-010捕獲分岐形成確認
 
@@ -227,6 +238,9 @@
 - configHash: 未生成
 - games: 400/condition
 - conditions: C0–C4
+- formal authorization: approved
+- execution lock: 未生成
+- generated games: 0
 
 ### E-017独立構造確認群
 
