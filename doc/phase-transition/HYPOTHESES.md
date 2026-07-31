@@ -138,4 +138,6 @@ trajectory-ply重複除去後も候補40.0%、対照3.09%、リスク比12.96で
 
 - E-011でAI条件・探索深度横断の頑健性とtrajectory重複感度を確認する。
 - E-011で最大捕獲可能量非対称化を、生の単位とtrajectory-ply重複除去単位で比較する。
-- 独立追加seed確認実験は、候補行数に加えて最低固有trajectory数を別登録する。
+- E-017を1000局、seed`20263001–20264000`として事前登録した。
+- E-017では`trajectoryHash + eventPly`を主解析単位とし、最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する。
+- E-017の主効果条件は重複除去後RR 3以上かつ候補率が対照率を上回ること。正式1000局は未承認・未実施である。
