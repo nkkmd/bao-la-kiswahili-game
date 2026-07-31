@@ -40,6 +40,32 @@ function git(args, cwd) {
   return execFileSync("git", args, { cwd, encoding: "utf8" }).trim();
 }
 
+function assertLockedInputs(lock, policyPath, policy, repositoryRoot) {
+  const errors = [];
+  const resolvedPolicyPath = fs.realpathSync(policyPath);
+  const relativePolicyPath = path.relative(repositoryRoot, resolvedPolicyPath);
+  if (relativePolicyPath !== lock.executionPolicy.path) {
+    errors.push("Execution policy path differs from the execution lock.");
+  }
+  if (sha256(fs.readFileSync(resolvedPolicyPath)) !== lock.executionPolicy.sha256) {
+    errors.push("Execution policy hash differs from the execution lock.");
+  }
+
+  const preregistrationPath = path.resolve(repositoryRoot, policy.paths.preregistration);
+  if (!fs.existsSync(preregistrationPath)) {
+    errors.push("Preregistration file is missing.");
+  } else {
+    const relativePreregistrationPath = path.relative(repositoryRoot, preregistrationPath);
+    if (relativePreregistrationPath !== lock.preregistration.path) {
+      errors.push("Preregistration path differs from the execution lock.");
+    }
+    if (sha256(fs.readFileSync(preregistrationPath)) !== lock.preregistration.sha256) {
+      errors.push("Preregistration hash differs from the execution lock.");
+    }
+  }
+  if (errors.length) throw new Error(errors.join("\n"));
+}
+
 function assertLockedEnvironment(lock, policy, repositoryRoot) {
   const errors = [];
   if (process.env.GITHUB_ACTIONS === "true") errors.push("Formal run is forbidden in GitHub Actions.");
@@ -166,9 +192,12 @@ function evaluateAll(lock, policy) {
 }
 
 function main(options) {
-  const lock = readJson(path.resolve(options.lock));
-  const policy = readJson(path.resolve(options.policy));
+  const lockPath = path.resolve(options.lock);
+  const policyPath = path.resolve(options.policy);
+  const lock = readJson(lockPath);
+  const policy = readJson(policyPath);
   const repositoryRoot = lock.environment.repositoryRoot;
+  assertLockedInputs(lock, policyPath, policy, repositoryRoot);
   assertLockedEnvironment(lock, policy, repositoryRoot);
   if (options.phase === "status") {
     const result = status(lock, policy);
@@ -195,8 +224,10 @@ module.exports = {
   approve,
   assertIntegrity,
   assertLockedEnvironment,
+  assertLockedInputs,
   conditionComplete,
   nextCondition,
   parseArgs,
+  sha256,
   status,
 };
