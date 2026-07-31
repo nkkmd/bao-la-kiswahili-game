@@ -1,0 +1,25 @@
+name: Phase Transition Independent Confirmation
+
+on:
+  pull_request:
+    paths:
+      - "config/experiments/phase-transition-independent-confirmation-v2.json"
+      - "tools/experiments/evaluate-phase-transition-independent-confirmation.js"
+      - "tools/experiments/analyze-confirmation-trajectory-duplication.js"
+      - "test/phase-transition-independent-confirmation.test.js"
+      - ".github/workflows/phase-transition-independent-confirmation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evaluator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: node test/phase-transition-independent-confirmation.test.js
