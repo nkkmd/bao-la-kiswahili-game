@@ -36,6 +36,7 @@ const observations = [
     { before: 1, after: 3, expansionDelta: 3, persistenceFraction: 0.25, eventWindow: 8 },
   );
   assert.equal(result.regimeId, "g-1:1-3");
+  assert.equal(result.phaseAtCandidate, "namua");
   assert.equal(result.positionInRegime, 1);
   assert.equal(result.normalizedPositionInRegime, 0.5);
   assert.equal(result.captureDelta, 6);
@@ -46,9 +47,24 @@ const observations = [
 }
 
 {
-  assert.equal(R.classifyCandidate({ distanceToMtaji: null, distanceToForcingRelease: null, captureDelta: 5, postPersistenceFraction: 0.75 }), "capture-branch-expansion");
-  assert.equal(R.classifyCandidate({ distanceToMtaji: null, distanceToForcingRelease: null, captureDelta: 5, postPersistenceFraction: 0.1 }), "temporary-spike");
-  assert.equal(R.classifyCandidate({ distanceToMtaji: null, distanceToForcingRelease: null, captureDelta: -3, postPersistenceFraction: 0 }), "capture-branch-convergence");
+  const regimes = R.extractForcedCaptureRegimes(observations);
+  const gameRows = R.groupByGame(observations);
+  const result = R.analyzeCandidate(
+    { archetypeId: "already-mtaji", category: "A", representativeGameId: "g-2", representativePly: 0 },
+    gameRows,
+    regimes,
+    { before: 1, after: 1, eventWindow: 8 },
+  );
+  assert.equal(result.phaseAtCandidate, "mtaji");
+  assert.equal(result.distanceToMtaji, null);
+  assert.notEqual(result.classification, "namua-to-mtaji-precursor");
+}
+
+{
+  assert.equal(R.classifyCandidate({ phaseAtCandidate: "namua", distanceToMtaji: null, distanceToForcingRelease: null, captureDelta: 5, postPersistenceFraction: 0.75 }), "capture-branch-expansion");
+  assert.equal(R.classifyCandidate({ phaseAtCandidate: "namua", distanceToMtaji: null, distanceToForcingRelease: null, captureDelta: 5, postPersistenceFraction: 0.1 }), "temporary-spike");
+  assert.equal(R.classifyCandidate({ phaseAtCandidate: "namua", distanceToMtaji: null, distanceToForcingRelease: null, captureDelta: -3, postPersistenceFraction: 0 }), "capture-branch-convergence");
+  assert.equal(R.classifyCandidate({ phaseAtCandidate: "mtaji", distanceToMtaji: 0, distanceToForcingRelease: null, captureDelta: 0, postPersistenceFraction: 0 }), "temporary-spike");
 }
 
 console.log("forced-capture regime tests passed");
