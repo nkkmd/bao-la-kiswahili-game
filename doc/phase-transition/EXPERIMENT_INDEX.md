@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 実験索引
 
-更新日: 2026-07-30
+更新日: 2026-07-31
 
 | ID | 実験 | 入力 | 実行コード / Notebook | 主出力 | 状態 |
 |---|---|---|---|---|---|
@@ -11,11 +11,21 @@
 | E-005 | A/B/C/X分類 | 同上 | `analyze-phase-transition-forcing-ablation.py` | `candidate-audit-table.csv` | 完了 |
 | E-006 | アーキタイプ分析 | 同上 | `04-candidate-archetypes.ipynb` | `archetype-summary.json`, `candidate-archetypes.csv` | 完了 |
 | E-007 | 優先候補盤面監査 | 同上 | `05-candidate-board-audit.ipynb` | 主要6候補の前後局面 | 完了 |
-| E-008 | 強制捕獲レジーム分析 | 同上 | 未実装 | レジーム分類・候補位置・持続性 | 次工程 |
+| E-008 | 強制捕獲レジーム分析 | 同上 | `analyze-forced-capture-regimes.js` / `06-forced-capture-regimes.ipynb` | `forced-capture-regimes.csv`, `candidate-regime-metrics.csv`, summary JSON | 実装完了・データ実行待ち |
 | E-009 | 候補手質的特徴量 | 未定 | 未実装 | 最大捕獲量、relay長、評価差等 | 未着手 |
 | E-010 | 新規seed確認実験 | 未使用seedコーパス | 未実装 | 再現率・偽陽性率 | 未着手 |
 | E-011 | AI・depth頑健性実験 | 複数条件コーパス | 未実装 | 条件横断再現性 | 未着手 |
 | E-012 | 対照群・反例分析 | 候補外局面 | 未実装 | 反例集・適用範囲 | 未着手 |
+
+## E-008 実装識別情報
+
+- analysisVersion: `6-forced-capture-regimes`
+- input corpus: `pilot-v2-analysis-input.zip`
+- candidate input: `candidate-archetypes.csv`（category A）
+- implementation branch: `research/forced-capture-regime-analysis`
+- test: `test/forced-capture-regimes.test.js`
+- output directory: `artifacts/local/phase-transition-forced-capture-regimes/`
+- 未完了: 入力アーカイブを用いた実行、結果監査、分類閾値の判断台帳反映
 
 ## 共通データ識別情報
 
@@ -31,6 +41,7 @@
 - `pilot-v2-forcing-ablation/`
 - `pilot-v2-archetypes/`
 - `pilot-v2-candidate-board-audit/`
+- `pilot-v2-forced-capture-regimes/`（予定）
 
 ## 主要コミット
 
