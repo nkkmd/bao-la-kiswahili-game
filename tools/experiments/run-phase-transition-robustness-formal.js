@@ -73,6 +73,17 @@ function nextCondition(runOrder, corpusRoot) {
   return runOrder.find((conditionId) => !conditionComplete(corpusRoot, conditionId)) || null;
 }
 
+function assertIntegrity(filePath) {
+  if (!fs.existsSync(filePath)) {
+    throw new Error("Formal integrity result is missing; run the verify phase first.");
+  }
+  const result = readJson(filePath);
+  if (result.valid !== true || result.mode !== "formal") {
+    throw new Error("Formal integrity verification has not passed.");
+  }
+  return result;
+}
+
 function execute(command, args, cwd) {
   execFileSync(command, args, { cwd, stdio: "inherit" });
 }
@@ -140,12 +151,18 @@ function verifyAll(lock, policy) {
 }
 
 function evaluateAll(lock, policy) {
+  const repositoryRoot = lock.environment.repositoryRoot;
+  assertIntegrity(path.resolve(
+    repositoryRoot,
+    policy.paths.integrityRoot,
+    "robustness-integrity.json",
+  ));
   execute(process.execPath, [
     "tools/experiments/evaluate-phase-transition-robustness.js",
     "--config", policy.paths.preregistration,
     "--input", policy.paths.analysisRoot,
     "--output", policy.paths.evaluationRoot,
-  ], lock.environment.repositoryRoot);
+  ], repositoryRoot);
 }
 
 function main(options) {
@@ -176,6 +193,7 @@ if (require.main === module) {
 
 module.exports = {
   approve,
+  assertIntegrity,
   assertLockedEnvironment,
   conditionComplete,
   nextCondition,
