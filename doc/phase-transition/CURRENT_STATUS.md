@@ -31,15 +31,18 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-011 multi-condition runner、integrity validator、combined evaluator、回帰fixture
 - E-011 trajectory重複感度の補足事前登録
 - E-011固定ローカル実行policy、execution lock generator、guarded formal runner
+- E-011正式自己対局の明示的開始承認
+- E-011 repository許可フラグの専用コミットによる有効化
 - E-017独立構造確認実験の1000局事前登録
 - E-017 trajectory-ply主解析evaluatorの実装とGitHub Actions検証
 
 未実施:
 
+- E-011固定ローカルexecution lock生成
 - E-011正式400局×5条件
 - E-017正式1000局
 
-両実験とも正式実行未承認であり、GitHub Actionsでは正式corpusを生成しない。
+E-011は正式開始承認済みで、固定ローカルexecution lock生成とC0開始を待っている。E-017は正式実行未承認である。GitHub Actionsではいずれの正式corpusも生成しない。
 
 ## 主要な確定事項
 
@@ -126,6 +129,8 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - Actions run: `30641768496`
 - artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
 
+開始承認直前のbranch headでは、E-011 robustness、E-017 independent confirmationを含む全8 Actions workflowが成功した。
+
 ### 正式実行ガード
 
 既知の固定環境:
@@ -146,7 +151,13 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 7. formal integrity成功前の全体評価拒否
 8. GitHub Actions環境での正式実行拒否
 
-現時点では`formalExecutionAllowed: false`。隔離Gitリポジトリのガードテストは成功し、最新GitHub Actions検証はキュー待機中である。
+2026-08-01 06:09 JSTに明示的な開始承認を受領した。専用コミット`a0378010607aebad76420e0d377ee1b88166d861`でexecution policyを`approved-awaiting-local-lock`、`formalExecutionAllowed: true`へ変更した。実験条件・分析条件・判定条件は変更していない。
+
+現在の実行環境から固定ローカルrepositoryへ直接アクセスできないため、execution lockとC0 corpusは未生成である。別環境へ代替せず、固定ローカル機で最新headへ更新した後にlockを生成する。
+
+開始承認チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
 
 ## E-017 独立構造確認実験
 
@@ -205,11 +216,17 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 ### E-011
 
 - analysisVersion: `12-ai-depth-robustness`
-- status: `preregistered / infrastructure-validated / formal-not-approved`
+- status: `preregistered / infrastructure-validated / formal-approved / awaiting-local-lock`
+- authorization time: `2026-08-01 06:09 JST`
+- authorization commit: `a0378010607aebad76420e0d377ee1b88166d861`
 - preregistration: `config/experiments/phase-transition-robustness-v1.json`
 - trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
 - execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
 - runbook: `doc/phase-transition/E011_FORMAL_EXECUTION.md`
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
+- execution lock: 未生成
+- C0 corpus: `0 / 400`
+- total formal corpus: `0 / 2000`
 
 ### E-017
 
@@ -221,11 +238,13 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 
 ## 次工程
 
-1. E-011 formal execution guardのGitHub Actions検証を完了する。
-2. E-017固定ローカル実行policy、execution lock、corpus integrity runnerを実装する。
-3. 明示的なE-011開始承認後にのみrepository許可フラグを別コミットで有効化し、execution lockを生成する。
-4. E-011をC0から順に実行し、条件別分析・trajectory重複感度・形成過程・事前登録判定を適用する。
-5. E-017は別の明示的開始承認まで正式1000局corpusを生成しない。
+1. 固定ローカルrepositoryを最新branch headへ`git pull --ff-only`する。
+2. Node.js `v24.6.0`、branch、clean worktreeを確認する。
+3. E-011 execution lockを生成し、runtime・hardware・source commit・preregistration/policy hashを固定する。
+4. 状態監査後、承認トークンを用いてC0 400局を開始する。
+5. C0完了後に条件別分析を適用し、順序どおりC1以降へ進む。
+6. 全条件完了後にformal integrity、trajectory重複感度、形成過程、事前登録判定を適用する。
+7. E-017は別の明示的開始承認まで正式1000局corpusを生成しない。
 
 ## 研究データ識別情報
 
@@ -250,6 +269,9 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - configHash: 未生成
 - games: 400/condition
 - conditions: C0–C4
+- formal authorization: approved
+- execution lock: 未生成
+- generated games: 0
 
 ### E-017独立構造確認群
 
