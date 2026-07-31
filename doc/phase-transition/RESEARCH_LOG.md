@@ -161,3 +161,123 @@ E-010の主解析候補発生率11/200局を用いた。400局では期待22候�
 - multi-condition runner、condition integrity validator、combined evaluatorを実装する。
 - 短いfixtureでcondition ID、seed共有、config hash分離を監査する。
 - 固定ローカル環境で正式実験を実行する。
+
+## 2026-08-01 — E-011実験基盤とfixture監査
+
+### 実装
+
+次を追加した。
+
+- `tools/experiments/run-phase-transition-robustness.js`
+- `tools/experiments/verify-phase-transition-robustness.js`
+- `tools/experiments/evaluate-phase-transition-robustness.js`
+- `tools/experiments/lib/phase-transition-robustness.js`
+- `test/phase-transition-robustness.test.js`
+- `.github/workflows/phase-transition-robustness.yml`
+
+runnerはC0–C4を同一seed列から条件別に生成し、game ID、AI source、config hash、出力先を分離する。validatorはcondition混在、seed、source commit、config hash、開局境界hashを検査する。combined evaluatorは事前登録した条件別判定と全体判定を適用する。
+
+### 初回fixtureで判明した問題
+
+既存generatorの`openingStateHash`は開局終了後もAI手ごとに上書きされるため、同一seedの開局でもAI条件が異なると不一致になることを検出した。
+
+E-011 runnerでは、最後のランダム開局手直後の`afterStateHash`を開局境界hashとして明示的に再計算するよう修正した。これは監査メタデータの修正であり、seed、実際の開局手、AI条件、候補検出、成功条件は変更していない。
+
+### fixture結果
+
+5条件×2局のfixtureで次がすべて通過した。
+
+- 全5条件の存在
+- condition config hashの一意性
+- source commitの一致
+- 同一game indexの開局境界hash一致
+- game、observation、AI sourceのcondition分離
+
+再現情報:
+
+- validated commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
+- Actions run: `30641768496`
+- artifact: `phase-transition-robustness-fixture`
+- artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
+
+正式な400局×5条件は事前登録どおり固定ローカル環境に限定し、この工程では実行していない。
+
+## 2026-08-01 — E-010 trajectory重複の事後感度分析
+
+### 目的と方法
+
+E-010候補行の構造的独立性を確認するため、確認成果物の`trajectoryHash`を候補・対照へ結合し、`trajectoryHash + candidatePly`を重複除去キーとする事後感度分析を実施した。
+
+この分析はE-010の事前登録判定を置き換えない。
+
+### 結果
+
+| 指標 | 生の事前登録単位 | trajectory+ply重複除去後 |
+|---|---:|---:|
+| 主解析候補 | 11 | 5 |
+| 急拡大候補 | 7 | 2 |
+| 主解析対照 | 8424 | 7061 |
+| 急拡大対照 | 249 | 218 |
+| 候補急拡大率 | 63.64% | 40.00% |
+| 対照急拡大率 | 2.96% | 3.09% |
+| リスク比 | 21.53 | 12.96 |
+
+主解析11候補は5つのtrajectory-ply、4つのtrajectory、5アーキタイプへ集約された。急拡大7候補は2つのtrajectory-ply、2つのtrajectory、2アーキタイプへ集約された。
+
+最大の重複群は6件で、アーキタイプ`9f778d512ae1`、candidate ply 7、stateHash`4328ee11314e976186821b06a296994f0a702b9cf5f6953ce76863aba2f98521`、trajectoryHash`fe3c176c6580e109a7bed260161b3189ea76aad51acd176992ab17f8fde387dd`が完全に一致した。もう1つの急拡大アーキタイプは`cfdb2c4de1a2`で1件だった。
+
+### 解釈
+
+trajectory-ply重複除去後も候補側濃縮は残るが、独立した急拡大構造例は2件に限られる。したがって、生のRR 21.53を7つの独立構造例の再現と解釈しない。
+
+E-010の正式判定は引き続き`not-confirmed`であり、変更しない。
+
+### 再現実装
+
+- `tools/experiments/analyze-confirmation-trajectory-duplication.js`
+- `test/phase-transition-confirmation-trajectory-duplication.test.js`
+- analysisVersion: `13-confirmation-trajectory-duplication-audit`
+- source Actions run: `30630007008`
+- source artifact digest: `sha256:c1938edabbfd0a4ac39e3a5b8395bdc049dd795c52c38ea568dce0ae9c4160e3`
+
+## 2026-08-01 — E-011 trajectory重複感度の補足事前登録
+
+E-010で候補のtrajectory反復を検出したため、E-011正式実行前に次を必須副次分析として追加登録した。
+
+- 条件ごとの`trajectoryHash + candidatePly`重複除去後の候補・対照数
+- 重複除去後の急拡大率とリスク比
+- 候補および急拡大候補の固有trajectory数
+- 候補および急拡大候補の固有アーキタイプ数
+- 最大trajectory-ply重複数と重複群表
+
+補足事前登録:
+
+- `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
+- analysisVersion: `12a-ai-depth-robustness-trajectory-sensitivity`
+
+これは加算的な副次感度分析であり、E-011の元の条件別成功条件、全体判定、400局×5条件、seed範囲を変更しない。不利な主判定を置き換えるためにも使用しない。
+
+## 2026-08-01 — E-010捕獲分岐形成確認の実装
+
+確認群の急拡大7候補について、既存の8ply形成過程解析を再利用し、最大捕獲可能量の非対称化を確認する工程を実装した。
+
+同一trajectory反復の影響を分離するため、生の7候補行による平均に加え、`trajectoryHash + candidatePly`で重複除去した形成差分平均も出力する。
+
+実装:
+
+- `tools/experiments/analyze-capture-branch-formation.js`
+- `tools/experiments/summarize-confirmation-capture-branch-formation.js`
+- `test/phase-transition-confirmation-capture-formation-sensitivity.test.js`
+- `.github/workflows/phase-transition-confirmation.yml`
+
+analysisVersion: `14-confirmation-capture-branch-formation-trajectory-sensitivity`
+
+この時点では再生成CIの数値結果は未確定であり、最大捕獲可能量の非対称化が確認群で再現したとは記録しない。E-010の正式判定およびE-011の主判定条件にも使用しない。
+
+## 2026-08-01 — 現在の次工程
+
+1. 確認群7急拡大候補の形成過程再解析を完了し、生の7件平均と2 trajectory-ply平均を確定する。
+2. E-011固定ローカル環境のruntime、hardware、source commit、出力先を固定する。
+3. E-011を`C0 → C1 → C2 → C3 → C4`の順で各400局実行する。
+4. 条件別候補・対照分析、trajectory重複感度、事前登録判定を適用する。
+5. 独立追加seed確認実験は、候補行発生率と固有trajectory発生率の両方を用いて別登録する。
