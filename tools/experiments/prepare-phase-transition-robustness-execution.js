@@ -42,9 +42,11 @@ function git(args, cwd) {
 }
 
 function gitIgnored(relativePath, cwd) {
+  const normalized = relativePath.replace(/[\\/]+$/, "");
+  const probe = `${normalized}/.e011-ignore-probe`;
   const result = spawnSync(
     "git",
-    ["check-ignore", "--quiet", "--no-index", relativePath],
+    ["check-ignore", "--quiet", "--no-index", probe],
     { cwd },
   );
   return result.status === 0;
