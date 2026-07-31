@@ -32,8 +32,10 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-011 5条件×2局fixture監査
 - E-011 trajectory重複感度の補足事前登録
 - E-011固定ローカル実行policy、execution lock generator、guarded formal runner
+- E-017独立構造確認実験の1000局事前登録
+- E-017 trajectory-ply主解析evaluatorと回帰テスト
 
-E-011正式400局×5条件は未実施であり、正式実行許可は`false`のままである。
+E-011正式400局×5条件とE-017正式1000局は未実施である。両実験とも正式実行未承認であり、GitHub Actionsでは正式corpusを生成しない。
 
 ## 現時点で確定したこと
 
@@ -155,22 +157,68 @@ fixture監査:
 - corpus output: `artifacts/phase-transition/robustness-v1/`
 - analysis output: `artifacts/local/phase-transition-robustness/`
 
-実行開始時にexecution lockへ記録する未確定情報:
+正式実行ガード:
 
-- exact source commit
-- OS release
-- CPU model / logical CPU count
-- total memory
-- hostname
-- preregistration hash
-- execution-policy hash
+1. `formalExecutionAllowed: true`を要求する。
+2. 完全一致の承認トークンを要求する。
+3. repository path、branch、clean worktree、Node.js、source commitをexecution lockへ固定する。
+4. 正式corpus rootがgit-ignoreされていることを実照合する。
+5. 各phaseで事前登録とexecution policyのパス・SHA-256を再照合する。
+6. `C0 → C1 → C2 → C3 → C4`以外の実行順序を拒否する。
+7. formal integrity監査が成功するまで全体評価を拒否する。
+8. GitHub Actions環境では正式実行を拒否する。
 
-正式実行には次の両方を要求する。
+現時点では`formalExecutionAllowed: false`であり、正式自己対局は開始できない。最新ガード単体テストは隔離Gitリポジトリで成功し、GitHub Actions検証は待機中である。
 
-1. `formalExecutionAllowed: true`
-2. 完全一致の承認トークン
+## E-017 独立構造確認実験
 
-現時点では`formalExecutionAllowed: false`であり、正式自己対局は開始できない。
+### 事前登録
+
+- games: 1000
+- base seed: `20263001`
+- seed範囲: `20263001–20264000`
+- AI: `hard / bao / phase2 / depth 2`
+- 主解析: `pliesRemaining >= 9`
+- 主解析単位: 固有`trajectoryHash + eventPly`
+- 生の候補行endpoint: 副次解析
+- 正式1000局: 未承認・未実施
+
+既存の探索群、E-010、E-011 seedとは重複しない。
+
+### サンプル数設計
+
+E-010 200局の構造発生率から1000局で次を期待する。
+
+- 生の主解析候補行: 55
+- 固有candidate trajectory-ply: 25
+- 固有candidate trajectory: 20
+- 固有expansion trajectory-ply: 10
+- 固有expansion trajectory: 10
+- 固有control trajectory-ply: 35305
+
+構造availability 4条件のPoisson点推定による単純独立積は約93.8121%。相関を無視した計画値であり、統計的証拠としては使用しない。
+
+### 成功条件
+
+- 生の主解析A候補行30件以上
+- 固有candidate trajectory-ply 15件以上
+- 固有candidate trajectory 12件以上
+- 固有expansion trajectory-ply 5件以上
+- 固有expansion trajectory 5件以上
+- 固有control trajectory-ply 30000件以上
+- 重複除去後RR 3以上
+- 重複除去後候補率が対照率を上回る
+
+全条件通過のみ`confirmed`。corpus・hash・trajectory結合・必要出力に失敗した場合は`inconclusive`、それ以外の条件不通過は`not-confirmed`。
+
+### 実装
+
+- preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
+- evaluator: `tools/experiments/evaluate-phase-transition-independent-confirmation.js`
+- regression test: `test/phase-transition-independent-confirmation.test.js`
+- CI: `.github/workflows/phase-transition-independent-confirmation.yml`
+- GitHub Actions validation: 待機中
 
 ## 再現情報
 
@@ -196,14 +244,23 @@ fixture監査:
 - execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
 - runbook: `doc/phase-transition/E011_FORMAL_EXECUTION.md`
 
+### E-017
+
+- analysisVersion: `15-independent-structural-confirmation`
+- status: `preregistered / evaluator-implemented / formal-not-approved`
+- games: 1000
+- seed range: `20263001–20264000`
+- preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
+
 ## 次工程
 
-1. E-011 formal execution guardのCIを完了させる。
-2. 明示的な正式実験開始承認後に、repository許可フラグを別コミットで有効化する。
-3. 固定ローカル環境でexecution lockを生成し、runtime・hardware・source commitを固定する。
-4. E-011を`C0 → C1 → C2 → C3 → C4`の順で各400局実行する。
-5. 条件別候補・対照分析、trajectory重複感度、最大捕獲可能量非対称化、事前登録判定を適用する。
-6. 独立追加seed確認実験は、候補行発生率と固有trajectory発生率の両方を用いて別登録する。
+1. E-011 formal execution guard CIを完了させる。
+2. E-017 evaluator CIを完了させる。
+3. 明示的なE-011正式実験開始承認後に、repository許可フラグを別コミットで有効化する。
+4. 固定ローカル環境でE-011 execution lockを生成し、runtime・hardware・source commitを固定する。
+5. E-011を`C0 → C1 → C2 → C3 → C4`の順で各400局実行する。
+6. 条件別候補・対照分析、trajectory重複感度、最大捕獲可能量非対称化、事前登録判定を適用する。
+7. E-017は別の明示的開始承認まで1000局corpusを生成しない。
 
 ## 研究データ識別情報
 
@@ -228,3 +285,10 @@ fixture監査:
 - configHash: 未生成
 - games: 400/condition
 - conditions: C0–C4
+
+### E-017独立構造確認群
+
+- studyVersion: `0.4.1`
+- configHash: 未生成
+- games: 1000
+- seed range: `20263001–20264000`
