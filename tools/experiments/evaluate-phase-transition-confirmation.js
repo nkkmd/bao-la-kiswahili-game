@@ -8,7 +8,8 @@ const IO = require("./analyze-forced-capture-regimes.js");
 function parseArgs(argv) {
   const options = {
     config: "config/experiments/phase-transition-confirmation-v1.json",
-    metrics: "artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv",
+    candidates: "artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv",
+    controls: "artifacts/local/phase-transition-confirmation-controls/control-point-metrics.csv",
     output: "artifacts/local/phase-transition-confirmation",
   };
   for (let index = 0; index < argv.length; index += 2) {
@@ -16,7 +17,8 @@ function parseArgs(argv) {
     const value = argv[index + 1];
     if (!value) throw new Error(`Missing value for ${key}`);
     if (key === "--config") options.config = value;
-    else if (key === "--metrics") options.metrics = value;
+    else if (key === "--candidates") options.candidates = value;
+    else if (key === "--controls") options.controls = value;
     else if (key === "--output") options.output = value;
     else throw new Error(`Unknown argument: ${key}`);
   }
@@ -109,8 +111,9 @@ function csvSummary(result) {
 function main() {
   const options = parseArgs(process.argv.slice(2));
   const config = JSON.parse(fs.readFileSync(path.resolve(options.config), "utf8"));
-  const rows = IO.readCsv(path.resolve(options.metrics));
-  const result = evaluate(config, rows);
+  const candidates = IO.readCsv(path.resolve(options.candidates)).map((row) => ({ ...row, group: "candidate" }));
+  const controls = IO.readCsv(path.resolve(options.controls)).map((row) => ({ ...row, group: "control" }));
+  const result = evaluate(config, [...candidates, ...controls]);
   const output = path.resolve(options.output);
   fs.mkdirSync(output, { recursive: true });
   fs.writeFileSync(path.join(output, "confirmation-result.json"), `${JSON.stringify(result, null, 2)}\n`);
