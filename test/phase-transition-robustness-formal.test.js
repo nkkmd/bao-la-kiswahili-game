@@ -37,6 +37,15 @@ fs.mkdirSync(path.join(root, "C1"));
 fs.writeFileSync(path.join(root, "C1", "manifest.json"), "{}\n");
 assert.equal(Formal.nextCondition(policy.runOrder, root), null);
 
+const integrityPath = path.join(root, "robustness-integrity.json");
+assert.throws(() => Formal.assertIntegrity(integrityPath));
+fs.writeFileSync(integrityPath, JSON.stringify({ valid: false, mode: "formal" }));
+assert.throws(() => Formal.assertIntegrity(integrityPath));
+fs.writeFileSync(integrityPath, JSON.stringify({ valid: true, mode: "fixture" }));
+assert.throws(() => Formal.assertIntegrity(integrityPath));
+fs.writeFileSync(integrityPath, JSON.stringify({ valid: true, mode: "formal" }));
+assert.equal(Formal.assertIntegrity(integrityPath).valid, true);
+
 const environment = {
   repositoryRoot: "/repo",
   branch: "research/forced-capture-regime-analysis",
