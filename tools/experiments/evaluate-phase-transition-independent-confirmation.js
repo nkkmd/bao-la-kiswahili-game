@@ -113,6 +113,15 @@ function endpointChecks(config, audit) {
 }
 
 function csvRows(result) {
+  if (result.decision === "inconclusive" && !result.endpoints) {
+    return [{
+      experimentId: result.experimentId,
+      decision: result.decision,
+      error: result.error,
+      corpusValid: false,
+      allEndpointCriteriaPass: false,
+    }];
+  }
   const raw = result.endpoints.raw;
   const deduplicated = result.endpoints.trajectoryPlyDeduplicated;
   const structure = result.candidateStructure;
@@ -171,15 +180,21 @@ function evaluate(config, manifest, games, candidateRows, controlRows) {
   };
 }
 
-function main() {
-  const options = parseArgs(process.argv.slice(2));
-  const config = JSON.parse(fs.readFileSync(path.resolve(options.config), "utf8"));
-  const manifest = JSON.parse(fs.readFileSync(path.resolve(options.manifest), "utf8"));
-  const games = JSON.parse(fs.readFileSync(path.resolve(options.games), "utf8"));
-  const candidates = IO.readCsv(path.resolve(options.candidates));
-  const controls = IO.readCsv(path.resolve(options.controls));
-  const result = evaluate(config, manifest, games, candidates, controls);
-  const output = path.resolve(options.output);
+function inconclusiveResult(config, error) {
+  return {
+    experimentId: config.experimentId,
+    analysisVersion: config.analysisVersion,
+    preregistrationStatus: config.status,
+    decision: "inconclusive",
+    error: error instanceof Error ? error.message : String(error),
+    corpusChecks: {},
+    endpointChecks: {},
+    duplicateGroups: [],
+    archetypes: [],
+  };
+}
+
+function writeResult(output, result) {
   fs.mkdirSync(output, { recursive: true });
   fs.writeFileSync(
     path.join(output, "independent-confirmation-result.json"),
@@ -191,12 +206,28 @@ function main() {
   );
   IO.writeCsv(
     path.join(output, "candidate-duplicate-groups.csv"),
-    result.duplicateGroups,
+    result.duplicateGroups || [],
   );
   IO.writeCsv(
     path.join(output, "candidate-archetypes.csv"),
-    result.archetypes,
+    result.archetypes || [],
   );
+}
+
+function run(options) {
+  const config = JSON.parse(fs.readFileSync(path.resolve(options.config), "utf8"));
+  const output = path.resolve(options.output);
+  let result;
+  try {
+    const manifest = JSON.parse(fs.readFileSync(path.resolve(options.manifest), "utf8"));
+    const games = JSON.parse(fs.readFileSync(path.resolve(options.games), "utf8"));
+    const candidates = IO.readCsv(path.resolve(options.candidates));
+    const controls = IO.readCsv(path.resolve(options.controls));
+    result = evaluate(config, manifest, games, candidates, controls);
+  } catch (error) {
+    result = inconclusiveResult(config, error);
+  }
+  writeResult(output, result);
   console.log(JSON.stringify(result, null, 2));
   if (result.decision === "inconclusive") process.exitCode = 2;
   return result;
@@ -204,7 +235,7 @@ function main() {
 
 if (require.main === module) {
   try {
-    main();
+    run(parseArgs(process.argv.slice(2)));
   } catch (error) {
     console.error(error.stack || error.message);
     process.exitCode = 1;
@@ -217,5 +248,8 @@ module.exports = {
   endpointChecks,
   evaluate,
   expectedSeeds,
+  inconclusiveResult,
   parseArgs,
+  run,
+  writeResult,
 };
