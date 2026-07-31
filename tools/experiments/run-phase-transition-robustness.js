@@ -75,10 +75,18 @@ function readCompletedGame(filePath, configHash) {
   return value;
 }
 
+function openingBoundaryHash(game) {
+  const openingPlies = Number.isInteger(game.openingPliesApplied)
+    ? game.openingPliesApplied : 0;
+  if (openingPlies <= 0) return game.initialStateHash;
+  return game.moves?.[openingPlies - 1]?.afterStateHash || game.initialStateHash;
+}
+
 function normalizeGameIdentity(game, condition) {
   const gameId = `pt-e011-${condition.id.toLowerCase()}-${String(game.gameIndex).padStart(4, "0")}`;
   game.gameId = gameId;
   game.conditionId = condition.id;
+  game.openingStateHash = openingBoundaryHash(game);
   for (const observation of game.observations) {
     observation.gameId = gameId;
     observation.conditionId = condition.id;
@@ -232,6 +240,7 @@ module.exports = {
   buildConditionConfig,
   conditionOptions,
   normalizeGameIdentity,
+  openingBoundaryHash,
   parseArgs,
   run,
   runCondition,
