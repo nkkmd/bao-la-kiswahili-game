@@ -12,49 +12,30 @@
 | E-006 | アーキタイプ分析 | 同上 | `04-candidate-archetypes.ipynb` | 13 Aアーキタイプ | 完了 |
 | E-007 | 優先候補盤面監査 | 同上 | `05-candidate-board-audit.ipynb` | 主要6候補前後局面 | 完了 |
 | E-008 | 強制捕獲レジーム分析 | pilot-v2 / A候補 | `analyze-forced-capture-regimes.js` | レジーム分類 | 完了 |
-| E-009 | 候補手質的特徴量 | 未定 | 未実装 | 最大捕獲量、relay長、評価差 | 次工程 |
-| E-010 | 新規seed確認実験 | 未使用seed | 未実装 | 再現率・偽陽性率 | 未着手 |
+| E-009 | 候補手質的特徴量 | pilot-v2対局ファイル / A候補15区間 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
+| E-010 | 新規seed確認実験 | 未使用seed | 未実装 | 再現率・偽陽性率 | 次工程 |
 | E-011 | AI・depth頑健性 | 複数条件 | 未実装 | 条件横断再現性 | 未着手 |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
 | E-013 | 終局近傍効果分離 | E-012候補・対照指標 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
 
-## E-008 全A分析
+## E-009 候補手質的特徴量
 
-- analysisVersion: `6-forced-capture-regimes`
-- commit: `1a6fed9b98410f0bd3ee9c4cfdad0cb3ea8756f0`
-- Actions run: `30615605472`
-- artifact digest: `sha256:1a6d937dd22908841aae3b211505fb601a8304817c376ffc7fefee655e2cda26`
-- observations: 5650
-- regimes: 421
-- A candidate members: 15
-- A archetypes: 13
-
-## E-012 対照・感度分析
-
-- analysisVersion: `7-forced-capture-regime-controls`
-- commit: `463f8059ce41fe0a828ae77541acf284ecb6b79f`
-- Actions run: `30616999870`
-- artifact digest: `sha256:8d64b6d923a5bf1f44c883e4465a8147c990acba7e6071389ef18ffb778a2b7a`
+- analysisVersion: `9-candidate-move-quality`
+- implementation commit: `816e0254fc79411b37a3cb30aabc648bd502735c`
+- workflow commit: `d338f4cd635de7728c5af11e9e3238c259b3bd5d`
+- Actions run: `30622069887`
+- artifact: `phase-transition-move-quality`
+- artifact digest: `sha256:69fee2bf5bd8fa7fab3beece392a04dd8ff6e56fbae78d8b10ce129be1d7c09d`
 - candidate members: 15
-- control points: 4127
-- exclusion buffer: 8ply
-- sensitivity settings: 27
-
-## E-013 終局距離層別分析
-
-- analysisVersion: `8-terminal-distance-summary`
-- implementation commit: `2a3b13420ef403b49d66c15b307510b33843669f`
-- workflow commit: `652c73289379b4387c84f51d63de6107cf52ed1f`
-- Actions run: `30617983989`
-- artifact: `phase-transition-terminal-strata`
-- artifact digest: `sha256:af2f30d495a84c20b97c856dffa428197a2366532d9630f77122264271ce8ec3`
-- terminal bands: `0-4`, `5-8`, `9-16`, `17+`
-- comparable non-terminal band: 9ply以上
-- A candidates at 9ply以上: 8、forcing解除前兆0
-- controls at 9ply以上: 4062、forcing解除前兆576（14.2%）
 - outputs:
-  - `terminal-distance-strata.csv`
-  - `terminal-distance-summary.json`
+  - `candidate-move-quality.csv`
+  - `move-quality-summary.json`
+- expansion 5区間:
+  - mean chosen captured seeds: 1.6
+  - mean chosen capture+relay length: 2.2
+  - immediate best rate: 80.0%
+  - mean immediate evaluation gap: 12.6
+  - mean capture opportunity gap: 0
 
 ## 共通データ識別情報
 
