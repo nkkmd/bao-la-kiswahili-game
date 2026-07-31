@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 現在地
 
-更新日: 2026-07-31  
+更新日: 2026-08-01  
 Status: Active  
 研究計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`
 
@@ -19,9 +19,17 @@ Status: Active
 
 ## 現在の研究段階
 
-100局 `pilot-v2` の探索工程、未使用seed 200局によるE-010事前登録確認実験、およびE-011 AI条件・探索深度横断頑健性実験の事前登録まで完了した。
+次まで完了した。
 
-E-011は未実施であり、次工程はmulti-condition runnerと検証器の実装である。
+- 100局`pilot-v2`探索工程
+- E-010未使用seed 200局確認実験
+- E-011 AI条件・探索深度横断頑健性実験の事前登録
+- E-011 multi-condition runner、integrity validator、combined evaluator、回帰テストの実装
+- E-011 5条件×2局fixture監査
+- E-010 trajectory重複の事後感度分析
+- E-011 trajectory重複感度分析の補足事前登録
+
+E-011正式400局×5条件は未実施である。確認群7急拡大候補の形成過程再解析はコード・CI工程まで実装済みだが、数値結果は未確定である。
 
 ## 現時点で確定したこと
 
@@ -29,32 +37,17 @@ E-011は未実施であり、次工程はmulti-condition runnerと検証器の�
 - 捕獲分岐急拡大は探索群で候補33.3%、対照2.9%、約11.46倍。
 - forcing解除前兆は終局近傍効果であり、独立した戦略転移分類としては撤回した。
 - 捕獲分岐急拡大は即時大量捕獲ではなく、後続局面の捕獲選択肢形成として扱う。
-- E-010未使用seed確認実験では効果方向と大きさは再現したが、事前登録した最低主解析候補数に1件届かず、正式判定は `not-confirmed`。
-- E-010の成功条件は結果後に変更しない。
-- E-011ではE-010の検出・分類閾値と終局除外条件を固定し、評価器、探索実装、maxDepthだけを一要因ずつ変更する。
+- E-010では効果方向と大きさは再現したが、事前登録した最低主解析候補数に1件届かず、正式判定は`not-confirmed`。
+- E-010の成功条件と正式判定は結果後に変更しない。
+- E-010主解析11候補は5 trajectory-ply、4 trajectory、5アーキタイプへ集約される。
+- E-010急拡大7候補は2 trajectory-ply、2 trajectory、2アーキタイプへ集約され、6件は完全に同一の候補局面・trajectoryだった。
+- trajectory-ply重複除去後も候補急拡大率40.0%、対照3.09%、RR 12.96だが、独立した構造例は少ない。
+- E-011の元の主判定条件は変更せず、trajectory重複感度を必須副次分析として追加登録した。
 - 主要候補の正式な戦略的相転移認定は引き続き保留する。
 
 ## E-010 未使用seed確認実験
 
-### 事前登録
-
-- 200局
-- base seed: `20261001`
-- seed範囲: `20261001–20261200`
-- 主解析: 終局まで9ply以上
-- `expansionDelta=3`
-- `persistenceFraction=0.5`
-- 後続窓8ply
-
-成功条件:
-
-- 主解析A候補12件以上
-- 急拡大候補5件以上
-- 対照点5000件以上
-- 候補／対照リスク比3以上
-- 候補率が対照率を上回る
-
-### 結果
+### 事前登録判定
 
 | 指標 | 結果 | 条件 |
 |---|---:|---:|
@@ -67,7 +60,25 @@ E-011は未実施であり、次工程はmulti-condition runnerと検証器の�
 
 判定: `not-confirmed`
 
-失敗した条件は主解析A候補数のみで、11件と事前固定した12件を1件下回った。急拡大件数、対照数、効果方向、リスク比はすべて基準を通過した。
+失敗した条件は主解析A候補数のみで、最低12件に対して11件だった。
+
+### trajectory重複感度
+
+重複除去キー: `trajectoryHash + candidatePly`
+
+| 指標 | 生の単位 | 重複除去後 |
+|---|---:|---:|
+| 主解析A候補 | 11 | 5 |
+| 急拡大候補 | 7 | 2 |
+| 主解析対照 | 8424 | 7061 |
+| 急拡大対照 | 249 | 218 |
+| 候補急拡大率 | 63.64% | 40.00% |
+| 対照急拡大率 | 2.96% | 3.09% |
+| リスク比 | 21.53 | 12.96 |
+
+最大重複群はアーキタイプ`9f778d512ae1`の6件。重複除去後も濃縮は残るが、構造的一般性の根拠は2つの急拡大trajectory-plyに限られる。
+
+この感度分析は事後監査であり、E-010の事前登録判定を置き換えない。
 
 ## E-011 AI条件・探索深度横断頑健性実験
 
@@ -89,18 +100,7 @@ E-011は未実施であり、次工程はmulti-condition runnerと検証器の�
 | C3 | 評価器変更 | bao-v2 | phase2 | 2 |
 | C4 | 探索実装変更 | bao | legacy | 2 |
 
-固定条件:
-
-- category `A`
-- `signalThreshold=2.0`
-- `persistenceThreshold=0.75`
-- `pliesRemaining >= 9`
-- `expansionDelta=3`
-- `persistenceFraction=0.5`
-- `eventWindow=8`
-- `controlExclusionBuffer=8`
-
-条件別成功条件:
+元の条件別成功条件は変更していない。
 
 - 主解析A候補12件以上
 - 急拡大候補5件以上
@@ -108,18 +108,37 @@ E-011は未実施であり、次工程はmulti-condition runnerと検証器の�
 - リスク比3以上
 - 候補率が対照率を上回る
 
-E-010の11候補/200局を用いたPoisson近似では、400局で12候補以上を得る確率は約99.24%。これはE-011のサンプル数設計だけに使用し、E-010の判定は変更しない。
+### 実験基盤
 
-事前登録ファイル:
+実装済み:
 
-- `config/experiments/phase-transition-robustness-v1.json`
-- `doc/phase-transition/checkpoints/2026-07-31-ai-depth-robustness-preregistration.md`
+- multi-condition corpus runner
+- condition integrity validator
+- combined robustness evaluator
+- trajectory重複感度の副次出力
+- 回帰テスト
+- 5条件×2局fixture CI
+
+fixture監査:
+
+- validated commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
+- Actions run: `30641768496`
+- artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
+- result: success
+
+初回監査で既存generatorの`openingStateHash`上書きを検出した。E-011 runnerでは最後のランダム開局手直後の`afterStateHash`を開局境界hashとして再計算し、全条件の開局一致を確認した。分析条件は変更していない。
+
+### trajectory感度補足事前登録
+
+- `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
+- 元の条件別・全体判定を変更しない
+- 各条件内で`trajectoryHash + candidatePly`重複除去後の候補・対照率、RR、固有trajectory数、固有アーキタイプ数、最大重複数を必須報告する
 
 ## 解釈
 
-- 捕獲分岐急拡大の効果方向は未使用seedでも強く再現した。
-- ただし事前登録判定を結果後に緩和しないため、E-010は確認成功とは扱わない。
-- 結果は「実質的再現だが、事前登録上は未確認」と記録する。
+- 捕獲分岐急拡大の候補側濃縮は、E-010のtrajectory重複除去後にも残った。
+- ただしE-010の7急拡大行のうち6件が同一trajectoryであり、未使用seedによる構造的一般化の証拠は当初評価より弱い。
+- E-010は「効果方向は再現したが事前登録上は未確認、かつ独立構造例が少ない」と記録する。
 - E-011はAI・探索条件への頑健性を検証する独立実験であり、E-010の再判定には使わない。
 
 ## 再現情報
@@ -131,23 +150,24 @@ E-010の11候補/200局を用いたPoisson近似では、400局で12候補以上
 - validated commit: `92c0ffa2354130cb43cdffc309587035be89939f`
 - Actions run: `30630007008`
 - artifact digest: `sha256:c1938edabbfd0a4ac39e3a5b8395bdc049dd795c52c38ea568dce0ae9c4160e3`
+- trajectory audit analysisVersion: `13-confirmation-trajectory-duplication-audit`
 
 ### E-011
 
 - analysisVersion: `12-ai-depth-robustness`
-- status: `preregistered / not-run`
+- status: `preregistered / infrastructure-validated / formal-not-run`
 - games: `400 × 5 conditions`
 - seed range: `20262001–20262400`
-- preregistration config: `config/experiments/phase-transition-robustness-v1.json`
+- preregistration: `config/experiments/phase-transition-robustness-v1.json`
+- trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
 
 ## 次工程
 
-1. E-011のmulti-condition runner、検証器、回帰テストを実装する。
-2. 短いfixtureで条件ID、seed共有、config hash分離を監査する。
-3. 固定ローカル環境でE-011の400局×5条件を逐次実行する。
-4. E-010の候補11件と急拡大7件をアーキタイプ単位でも要約する。
-5. 最大捕獲可能量の非対称化が未使用seed急拡大候補でも再現するか副次分析する。
-6. 独立追加seed確認実験の必要サンプル数を別登録する。
+1. 確認群7急拡大候補の形成過程再解析を完了し、生の7件平均と2 trajectory-ply平均を確定する。
+2. E-011固定ローカル環境のruntime、hardware、source commit、出力先を固定する。
+3. E-011を`C0 → C1 → C2 → C3 → C4`の順で各400局実行する。
+4. 条件別候補・対照分析、trajectory重複感度、事前登録判定を適用する。
+5. 独立追加seed確認実験は、候補行発生率と固有trajectory発生率の両方を用いて別登録する。
 
 ## 研究データ識別情報
 
@@ -162,6 +182,9 @@ E-010の11候補/200局を用いたPoisson近似では、400局で12候補以上
 - studyVersion: `0.4.1`
 - configHash: `5476e77676800c40b90953ea07359d31f2bc47decd0fadd1105070d4367cbce7`
 - games: 200
+- unique trajectories: 167
+- primary candidate trajectory-ply: 5
+- expansion trajectory-ply: 2
 
 ### E-011頑健性群
 
