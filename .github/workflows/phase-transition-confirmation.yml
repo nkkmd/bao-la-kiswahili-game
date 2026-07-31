@@ -46,9 +46,11 @@ jobs:
         run: |
           node tools/experiments/evaluate-phase-transition-confirmation.js \
             --config config/experiments/phase-transition-confirmation-v1.json \
-            --metrics artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv \
+            --candidates artifacts/local/phase-transition-confirmation-controls/candidate-control-metrics.csv \
+            --controls artifacts/local/phase-transition-confirmation-controls/control-point-metrics.csv \
             --output artifacts/local/phase-transition-confirmation
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: phase-transition-confirmation-v1
           path: |
