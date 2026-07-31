@@ -76,11 +76,15 @@
 | D-066 | E-011正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial出力でclean-worktreeガードが自己停止しないようにする。lock生成時にignore状態も検証 |
 | D-067 | E-011の各formal phaseで事前登録とexecution policyのパス・SHA-256をexecution lockと再照合する | 採用 | 代替設定ファイルやlock後の条件差し替えを拒否 |
 | D-068 | E-011全体判定はformal integrity監査成功後にだけ実行する | 採用 | 5条件のsource、seed、開局、condition分離未確認のまま評価しない |
+| D-069 | 独立追加seed確認実験E-017を1000局、seed `20263001–20264000`とする | 採用 | E-010構造発生率では1000局のavailability 4条件単純積が約93.8%、固有control期待35305 |
+| D-070 | E-017の主解析単位を`trajectoryHash + eventPly`とする | 採用 | 同一決定論的trajectory・同一候補plyの反復を一次効果量から除外 |
+| D-071 | E-017で最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する | 採用 | 行数だけでなく構造的一般性を成功条件へ含める |
+| D-072 | E-017の主効果条件を重複除去後RR 3以上かつ候補率>対照率とする | 採用 | 生の候補行endpointは副次報告に限定 |
+| D-073 | E-017正式1000局の開始にはE-011とは別の明示的承認を要求する | 採用 | 事前登録と実行を分離。現時点では未承認・未実施 |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
-- 独立追加確認実験のサンプル数
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
 - E-011 execution lockに記録されるruntime・hardware・source commit
-- 独立追加確認実験で要求する最低固有trajectory数
+- E-017固定ローカル実行policyとexecution lockの具体化
