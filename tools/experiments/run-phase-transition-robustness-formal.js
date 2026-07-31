@@ -54,6 +54,9 @@ function assertLockedEnvironment(lock, policy, repositoryRoot) {
 }
 
 function approve(lock, policy, suppliedToken) {
+  if (policy.formalExecutionAllowed !== true) {
+    throw new Error("Formal execution is disabled by the repository execution policy.");
+  }
   if (!suppliedToken || suppliedToken !== policy.approvalToken) {
     throw new Error("Exact formal-run approval token is required.");
   }
@@ -79,6 +82,7 @@ function status(lock, policy) {
   return {
     experimentId: lock.experimentId,
     sourceCommit: lock.environment.sourceCommit,
+    formalExecutionAllowed: policy.formalExecutionAllowed === true,
     nextCondition: nextCondition(policy.runOrder, corpusRoot),
     conditions: policy.runOrder.map((conditionId) => ({
       conditionId,
