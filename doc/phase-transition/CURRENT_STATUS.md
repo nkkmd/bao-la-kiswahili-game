@@ -6,69 +6,82 @@ Status: Active
 
 ## 恒久運用ルール
 
-再開指示は、特に明示的な除外がない限り、研究の続行だけでなく各工程完了時の研究台帳更新まで含む。
+再開指示は研究続行と工程完了時の研究台帳更新を含む。過去結果は黙って上書きせず、解釈変更の理由・根拠・影響を記録する。
 
 必須更新対象:
 
-- `doc/phase-transition/CURRENT_STATUS.md`
-- `doc/phase-transition/RESEARCH_LOG.md`
-- `doc/phase-transition/DECISION_REGISTER.md`
-- `doc/phase-transition/EXPERIMENT_INDEX.md`
-- `doc/phase-transition/HYPOTHESES.md`
-- 必要に応じて `doc/phase-transition/checkpoints/`
-
-過去の判断・結果・数値は黙って上書きしない。解釈変更時は旧解釈、変更理由、根拠、影響範囲を残す。
+- `CURRENT_STATUS.md`
+- `RESEARCH_LOG.md`
+- `DECISION_REGISTER.md`
+- `EXPERIMENT_INDEX.md`
+- `HYPOTHESES.md`
+- 必要に応じて `checkpoints/`
 
 ## 現在の研究段階
 
-100局 `pilot-v2` を用いた探索的パイロット後半。
+100局 `pilot-v2` の探索的パイロット後半。
 
-候補抽出、forcingアブレーション、アーキタイプ化、主要6候補監査、全Aアーキタイプ13件の強制捕獲レジーム分析まで完了した。次工程は候補外レジームを用いた対照分析と分類閾値感度分析である。
+候補抽出、forcingアブレーション、アーキタイプ化、盤面監査、全A候補の強制捕獲レジーム分析、候補外対照・分類感度分析まで完了した。
 
 ## 現時点で確定したこと
 
-- 主閾値ではA 15区間、13固有局面・13アーキタイプ。
-- 全13アーキタイプが連続する強制捕獲レジーム内に所属し、対応漏れは0。
-- 100局再生成では5650観測、421強制捕獲レジームを得た。
-- 修正後の探索的分類は、捕獲分岐急拡大3、`namua → mtaji` 前兆3、forcing解除前兆6、一時的スパイク1。
-- 捕獲分岐急拡大は `9f778d512ae1`、`22807aff1baf`、`6b364e603366`。
-- `namua → mtaji` 前兆は `0a11b2c44bc5`、`7360876ad5c7`、`2e79188a987a`。
-- 一時的スパイクは `0eb352745c9b`。
-- 終局近傍のmtaji候補6件は、mtaji前兆ではなくforcing解除前兆に分類された。
-- 正式な戦略的相転移認定と分類閾値固定は引き続き保留する。
+- 主設定でA 15区間、13アーキタイプ。
+- 全Aアーキタイプが強制捕獲レジーム内に所属する。
+- 100局再生成は5650観測、421レジーム。
+- 全A分類は捕獲分岐急拡大3アーキタイプ、mtaji前兆3、forcing解除前兆6、一時的スパイク1。
+- mtaji前兆は候補時点がnamuaで、将来の初回mtajiがevent window内にある場合だけ成立する。
+- 主要候補の正式な戦略的相転移認定は保留する。
 
-## 重要な修正
+## E-012 対照・感度分析
 
-初回の全A分析では、候補時点ですでに `mtaji` の候補に `distanceToMtaji=0` を与え、mtaji前兆と誤分類していた。
+A候補15区間の代表plyを候補群とし、候補区間前後8plyを除いた強制捕獲中の適格4127plyを対照群とした。
 
-修正後は次を要件とする。
+主設定結果:
 
-- 候補時点のphaseが `namua`
-- 候補より後に初回の `mtaji` が存在する
-- その距離がevent window以内
+| 分類 | 候補率 | 対照率 | 倍率 |
+|---|---:|---:|---:|
+| 捕獲分岐急拡大 | 33.3% | 2.9% | 11.46 |
+| forcing解除前兆 | 40.0% | 14.9% | 2.68 |
+| mtaji前兆 | 20.0% | 16.8% | 1.19 |
+| 一時的スパイク | 6.7% | 54.0% | 0.12 |
+| 捕獲分岐収束 | 0% | 11.3% | 0 |
 
-これにより、初回結果の「mtaji前兆9件」は撤回し、修正後の3件を採用する。
+感度設定:
 
-## E-008 全A分析
+- `expansionDelta`: 2 / 3 / 4
+- `persistenceFraction`: 0.25 / 0.5 / 0.75
+- `eventWindow`: 5 / 8 / 12
+- 合計27設定
+
+主要解釈:
+
+- 捕獲分岐急拡大は全27設定で候補側に濃縮し、A候補の最も強い識別分類である。
+- forcing解除前兆も候補側に濃縮するが、終局近傍効果の分離が必要。
+- mtaji前兆は対照群との差が小さく、現在の定義単独では候補固有性が弱い。
+- 対照群では一時的スパイクが54.0%を占め、候補検出器の持続性要件が一過性変動を除外している。
+
+## 再現情報
+
+### 全Aレジーム分析
 
 - analysisVersion: `6-forced-capture-regimes`
-- source replication commit: `1a6fed9b98410f0bd3ee9c4cfdad0cb3ea8756f0`
-- GitHub Actions run: `30615605472`
-- artifact digest: `sha256:1a6d937dd22908841aae3b211505fb601a8304817c376ffc7fefee655e2cda26`
-- games: 100
-- observations: 5650
-- regimes: 421
-- candidates: 13 archetypes
-- candidates outside regimes: 0
+- commit: `1a6fed9b98410f0bd3ee9c4cfdad0cb3ea8756f0`
+- Actions run: `30615605472`
+
+### 対照・感度分析
+
+- analysisVersion: `7-forced-capture-regime-controls`
+- commit: `463f8059ce41fe0a828ae77541acf284ecb6b79f`
+- Actions run: `30616999870`
+- artifact digest: `sha256:8d64b6d923a5bf1f44c883e4465a8147c990acba7e6071389ef18ffb778a2b7a`
 
 ## 次工程
 
-1. 421レジームから候補外対照群を構成する。
-2. 捕獲分岐急増、forcing解除前兆、mtaji前兆の基準率を測定する。
-3. `expansionDelta`、`persistenceFraction`、`eventWindow` の感度分析を行う。
-4. 終局近傍除外幅と強制捕獲レジーム最低長を検討する。
-5. 候補手の質的特徴量を追加する。
-6. 未使用seedによる確認用コーパスを生成する。
+1. forcing解除前兆から終局近傍効果を分離する。
+2. 候補手の質的特徴量として最大捕獲量、relay長、評価差を追加する。
+3. 捕獲分岐急拡大の閾値候補を事前固定する。
+4. 未使用seed確認用コーパスを生成する。
+5. AI条件・探索深度横断の頑健性を検証する。
 
 ## 研究データ識別情報
 
@@ -76,12 +89,3 @@ Status: Active
 - configHash: `3567b34b3289bda4903c6df98238f12a50d025d3b487871372d3dd5d7869d9c5`
 - profile: `pilot-v2`
 - games: 100
-
-## 完了済みNotebook
-
-- `01-data-audit.ipynb`
-- `02-transition-candidate-analysis.ipynb`
-- `03-forcing-ablation.ipynb`
-- `04-candidate-archetypes.ipynb`
-- `05-candidate-board-audit.ipynb`
-- `06-forced-capture-regimes.ipynb`
