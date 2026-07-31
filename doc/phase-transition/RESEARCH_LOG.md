@@ -456,3 +456,36 @@ E-017正式1000局は未承認・未実施であり、別の明示的開始指�
 3. 明示的承認なしにE-011またはE-017の正式corpusを生成しない。
 4. E-011承認後は固定ローカル環境でexecution lockを生成し、C0から順に実行する。
 5. E-017の正式実行policyとcorpus integrity validatorは、正式開始承認前に別工程として実装する。
+
+## 2026-08-01 — E-017 evaluator GitHub Actions検証
+
+E-017の構造主解析evaluatorと回帰fixtureをGitHub Actionsで検証した。
+
+- validated commit: `9190998507e144d239adb55cadc3f61860a005be`
+- workflow: `Phase Transition Independent Confirmation`
+- Actions run: `30646973255`
+- job: `evaluator`
+- result: `success`
+
+成功した回帰項目:
+
+- 固有`trajectoryHash + eventPly`への重複除去
+- 固有candidate trajectory数と固有expansion trajectory数の計数
+- 重複除去後候補率・対照率・RRの算出
+- 全条件通過時の`confirmed`
+- 構造availability不足時の`not-confirmed`
+- manifest完了局数不一致時の`inconclusive`
+
+この検証はevaluator契約の回帰テストであり、正式1000局の結果ではない。E-017 corpusは生成しておらず、正式開始には別の明示的承認を要求する。E-010およびE-011の既存判定・事前登録条件も変更していない。
+
+チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-01-e017-evaluator-validation.md`
+
+## 2026-08-01 — 更新後の次工程
+
+1. E-011 formal execution guardのGitHub Actions検証を完了する。
+2. E-017固定ローカル実行policy、execution lock、corpus integrity runnerを実装する。
+3. 明示的承認なしにE-011またはE-017の正式corpusを生成しない。
+4. E-011開始承認後は固定ローカル環境でexecution lockを生成し、C0から順に実行する。
+5. E-017は別の開始承認まで正式1000局corpusを生成しない。
