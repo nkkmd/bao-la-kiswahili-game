@@ -71,7 +71,11 @@ function classifyCandidate(metrics, options = {}) {
     eventWindow: 8,
     ...options,
   };
-  if (metrics.distanceToMtaji !== null && metrics.distanceToMtaji <= settings.eventWindow) return "namua-to-mtaji-precursor";
+  if (
+    metrics.phaseAtCandidate === "namua"
+    && metrics.distanceToMtaji !== null
+    && metrics.distanceToMtaji <= settings.eventWindow
+  ) return "namua-to-mtaji-precursor";
   if (metrics.distanceToForcingRelease !== null && metrics.distanceToForcingRelease <= settings.eventWindow) return "forcing-release-precursor";
   if (metrics.captureDelta !== null && metrics.captureDelta >= settings.expansionDelta) {
     return metrics.postPersistenceFraction !== null && metrics.postPersistenceFraction >= settings.persistenceFraction
@@ -109,7 +113,9 @@ function analyzeCandidate(candidate, gameRows, regimes, options = {}) {
     ? []
     : afterRows.filter((row) => Number(row.captureMoveCount) >= baseline + settings.expansionDelta);
   const distanceToForcingRelease = firstDistance(rows, candidatePly, (row) => row.forcedCapture !== true);
-  const distanceToMtaji = target.phase === "mtaji" ? 0 : firstDistance(rows, candidatePly, (row) => row.phase === "mtaji");
+  const distanceToMtaji = target.phase === "namua"
+    ? firstDistance(rows, candidatePly, (row) => row.phase === "mtaji")
+    : null;
   const terminal = rows.at(-1);
   const distanceToTerminal = terminal ? terminal.ply - candidatePly : null;
   const recoveryDistance = baseline === null ? null : firstDistance(
@@ -123,6 +129,7 @@ function analyzeCandidate(candidate, gameRows, regimes, options = {}) {
     category: candidate.category || null,
     gameId,
     candidatePly,
+    phaseAtCandidate: target.phase || null,
     forcedCaptureAtCandidate: target.forcedCapture === true,
     regimeId: regime?.regimeId || null,
     regimeStartPly: regime?.startPly ?? null,
