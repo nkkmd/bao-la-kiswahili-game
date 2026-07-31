@@ -73,6 +73,9 @@
 | D-063 | H14を確認済み仮説へ昇格する | 保留 | 2構造中、明確な非対称化は1構造のみ |
 | D-064 | E-011正式実行はrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 誤開始防止、現時点では`formalExecutionAllowed=false` |
 | D-065 | E-011固定環境の既知条件をrepository pathとNode.js v24.6.0として固定する | 採用 | pilot-v2正式実行実績。CPU・memory・OS release・source commitはexecution lock生成時に記録 |
+| D-066 | E-011正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial出力でclean-worktreeガードが自己停止しないようにする。lock生成時にignore状態も検証 |
+| D-067 | E-011の各formal phaseで事前登録とexecution policyのパス・SHA-256をexecution lockと再照合する | 採用 | 代替設定ファイルやlock後の条件差し替えを拒否 |
+| D-068 | E-011全体判定はformal integrity監査成功後にだけ実行する | 採用 | 5条件のsource、seed、開局、condition分離未確認のまま評価しない |
 
 ## 今後固定が必要な判断
 
