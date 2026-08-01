@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "E-018",
+  "analysisVersion": "16-search-profile-dependence",
+  "status": "preregistered-not-run",
+  "preregisteredDate": "2026-08-02",
+  "hypothesisId": "H16",
+  "purpose": "Directly test whether eligible capture-branch-expansion candidates are more likely to manifest under phase2 search than legacy search when evaluator, depth, seeds, and random openings are held fixed.",
+  "corpus": {
+    "profile": "pilot-v2",
+    "gamesPerCondition": 2000,
+    "totalGames": 4000,
+    "sharedBaseSeed": 20265001,
+    "sharedSeedRange": [20265001, 20267000],
+    "maxPly": 180,
+    "openingPlies": 6,
+    "baselineGames": 1,
+    "level": "hard",
+    "evaluationProfile": "bao",
+    "maxDepth": 2,
+    "conditions": [
+      {
+        "conditionId": "P2",
+        "searchProfile": "phase2"
+      },
+      {
+        "conditionId": "LG",
+        "searchProfile": "legacy"
+      }
+    ],
+    "pairedOpeningRequired": true
+  },
+  "independence": {
+    "excludedSeedRanges": [
+      [20260721, 20260820],
+      [20261001, 20261200],
+      [20262001, 20262400],
+      [20263001, 20264000]
+    ],
+    "overlapAllowed": false,
+    "designSources": [
+      "E-011 formal results and trajectory-ply sensitivity",
+      "E-017 formal not-confirmed result and structural counts"
+    ],
+    "designUseOnly": "E-011 and E-017 are used only to motivate H16, choose the paired primary endpoint, and choose a conservative corpus size before E-018 data generation.",
+    "postStartThresholdRelaxationAllowed": false
+  },
+  "candidateDetection": {
+    "signalThreshold": 2.0,
+    "persistenceThreshold": 0.75,
+    "excludeOpeningPlies": true,
+    "excludeFinalObservation": true,
+    "mergeAdjacentCandidatePlies": true,
+    "category": "A"
+  },
+  "regimeClassification": {
+    "beforeWindow": 3,
+    "afterWindow": 8,
+    "expansionDelta": 3,
+    "convergenceDelta": -2,
+    "persistenceFraction": 0.5,
+    "eventWindow": 8,
+    "controlExclusionBuffer": 8
+  },
+  "primaryPopulation": {
+    "minimumPliesRemaining": 9
+  },
+  "primaryUnit": {
+    "name": "paired shared-seed game",
+    "pairKey": "seed/gameIndex",
+    "pairingRequirement": "P2 and LG must use the same seed and identical random-opening boundary state for each game index.",
+    "binaryEndpointPerCondition": "1 if the game contains at least one category-A candidate in the primary population classified as capture-branch-expansion; otherwise 0."
+  },
+  "primaryEndpoint": {
+    "name": "paired search-profile difference in capture-branch-expansion manifestation",
+    "comparison": "P2 versus LG on the paired game-level binary endpoint",
+    "test": "two-sided exact McNemar test on discordant pairs",
+    "alpha": 0.05,
+    "directionRequirement": "P2-only discordant pairs must exceed LG-only discordant pairs",
+    "minimumDiscordantPairs": 20,
+    "reportedEffectMeasures": [
+      "P2 event-game rate",
+      "LG event-game rate",
+      "paired risk difference",
+      "discordant-pair odds ratio n10/n01 with infinity reported when n01=0",
+      "exact McNemar p-value"
+    ]
+  },
+  "structuralSecondaryEndpoint": {
+    "eventPlyResolution": [
+      "candidatePly",
+      "representativePly",
+      "ply"
+    ],
+    "candidateAndControlKey": "trajectoryHash + eventPly",
+    "trajectoryKey": "trajectoryHash",
+    "candidateComparison": "Compare capture-branch-expansion rates among unique candidate trajectory-ply units between P2 and LG; report Fisher exact two-sided p-value, risk ratio, and risk difference.",
+    "withinConditionEnrichment": "For each condition separately, report trajectory-ply-deduplicated candidate versus control expansion rates and risk ratio.",
+    "legacyExpansionMinimumRequired": false,
+    "rationale": "A zero or very low LG expansion count is a potentially H16-consistent observation and must not be converted into automatic insufficiency by requiring a minimum LG expansion count."
+  },
+  "sampleSizeDesign": {
+    "selectedGamesPerCondition": 2000,
+    "pairedSeeds": 2000,
+    "totalGames": 4000,
+    "legacyReference": {
+      "source": "E-011 C4 trajectory-ply sensitivity",
+      "uniqueCandidateTrajectoryPlyPer400Games": 6,
+      "projectedUniqueCandidateTrajectoryPlyAt2000": 30,
+      "poissonPointEstimateProbabilityAtLeast20": 0.978127
+    },
+    "phase2Reference": {
+      "source": "E-017 formal result",
+      "uniqueCandidateTrajectoryPlyPer1000Games": 21,
+      "projectedUniqueCandidateTrajectoryPlyAt2000": 42,
+      "poissonPointEstimateProbabilityAtLeast20": 0.999942
+    },
+    "controlReference": {
+      "phase2UniqueControlTrajectoryPlyPer1000Games": 23306,
+      "projectedPhase2At2000": 46612,
+      "legacyUniqueControlTrajectoryPlyPer400Games": 11412,
+      "projectedLegacyAt2000": 57060
+    },
+    "caveat": "These projections are planning approximations from prior experiments, not inferential evidence or a formal McNemar power calculation. The primary confirmation rule depends on paired discordant games, not on achieving projected structural counts."
+  },
+  "secondaryEndpoints": [
+    "Unique candidate trajectory-ply count by search profile",
+    "Unique candidate trajectory count by search profile",
+    "Unique expansion trajectory-ply and trajectory counts by search profile",
+    "Candidate archetype and expansion archetype counts by search profile",
+    "Largest trajectory-ply duplicate multiplicity by search profile",
+    "Trajectory-ply-deduplicated candidate/control enrichment within each profile",
+    "Direct candidate-level P2 versus LG Fisher exact comparison",
+    "Terminal-distance strata",
+    "Winner and game-length distributions"
+  ],
+  "decisionRule": {
+    "confirmed": "Formal corpus integrity and pairing pass, at least 20 discordant paired games are available, the two-sided exact McNemar p-value is <= 0.05, and P2-only discordant pairs exceed LG-only discordant pairs.",
+    "notConfirmed": "Formal corpus integrity and pairing pass and at least 20 discordant paired games are available, but the preregistered McNemar significance or direction criterion fails.",
+    "inconclusive": "Corpus generation, schema/hash/source validation, paired-opening validation, seed pairing, candidate-event construction, required output construction, or minimum 20 discordant-pair availability fails."
+  },
+  "executionPolicy": {
+    "environment": "fixed local environment",
+    "githubActionsFormalRunAllowed": false,
+    "formalExecutionApproved": false,
+    "approvalRequirement": "A separate explicit user instruction is required before generating the E-018 formal 4000-game corpus.",
+    "formalCorpusGenerated": false
+  },
+  "changePolicy": "Any post-preregistration change to corpus size, seed range, conditions, candidate/regime thresholds, primary unit, McNemar test, alpha, direction rule, minimum discordant pairs, or decision contract requires a new preregistration version. E-018 results may not be used to relax this file after data generation starts."
+}
