@@ -1,0 +1,39 @@
+name: Phase Transition Search Profile Dependence
+
+on:
+  pull_request:
+    paths:
+      - "config/experiments/phase-transition-search-profile-dependence-v1.json"
+      - "tools/experiments/lib/phase-transition-search-profile-dependence.js"
+      - "tools/experiments/run-phase-transition-search-profile-dependence.js"
+      - "tools/experiments/verify-phase-transition-search-profile-dependence.js"
+      - "tools/experiments/evaluate-phase-transition-search-profile-dependence.js"
+      - "test/phase-transition-search-profile-dependence.test.js"
+      - ".github/workflows/phase-transition-search-profile-dependence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Run evaluator and preregistration tests
+        run: node test/phase-transition-search-profile-dependence.test.js
+      - name: Generate paired two-game fixture
+        run: |
+          node tools/experiments/run-phase-transition-search-profile-dependence.js \
+            --fixture-games 2 \
+            --force \
+            --output artifacts/phase-transition/search-profile-dependence-v1-fixture
+      - name: Verify paired fixture integrity
+        run: |
+          node tools/experiments/verify-phase-transition-search-profile-dependence.js \
+            --fixture-games 2 \
+            --input artifacts/phase-transition/search-profile-dependence-v1-fixture
