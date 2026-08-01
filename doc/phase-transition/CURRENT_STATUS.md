@@ -32,9 +32,11 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - H16 search profile依存性直接比較E-018の事前登録
 - E-018 paired-condition fixture runner / pairing integrity / paired endpoint / exact McNemar evaluator / structural secondary / execution policy / execution-lock preparation / guarded formal runner / formal integrity mode
 - E-018専用GitHub Actions fixtureおよびformal-guard回帰検証
+- E-018固有formal開始承認とrepository execution policy有効化
 
 未実施:
 
+- E-018 fixed-local execution lock生成
 - E-018 formal 4000局
 
 現在の正式判定:
@@ -42,7 +44,7 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-010: **`not-confirmed`**
 - E-011: **`inconclusive`**
 - E-017: **`not-confirmed`**
-- E-018: **preregistered / infrastructure-validated / formal-not-approved / not-run**
+- E-018: **preregistered / infrastructure-validated / formal-approved / awaiting-local-lock / not-run**
 
 E-010/E-011/E-017の判定は固定し、結果後に閾値やdecision ruleを緩和しない。
 
@@ -302,25 +304,28 @@ E-017で発生したPython `__pycache__/`によるclean-worktree停止をE-018�
 ### 実行状態
 
 - preregistration: `config/experiments/phase-transition-search-profile-dependence-v1.json`
-- checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
+- preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
+- infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-infrastructure.md`
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-start-authorization.md`
+- authorization commit: `9c5a902f3fbe0df02975050f2648a2a08cefb109`
 - execution policy: `config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json`
-- policy status: **`prepared-not-approved`**
-- `formalExecutionAllowed`: **false**
-- formal execution approved: **false**
+- policy status: **`approved-awaiting-local-lock`**
+- `formalExecutionAllowed`: **true**
+- formal execution approved: **true**
 - execution lock: **not generated for formal run**
 - formal corpus generated: **false**
 - GitHub Actions formal run: prohibited
 
-E-017の開始承認はE-018へ継承しない。
+E-018は実験固有の開始承認を受領済み。E-017承認の継承ではない。
 
 ## 次工程
 
 1. E-011 formal `inconclusive`、E-017 formal `not-confirmed`を固定し、結果後に判定条件を緩和しない。
 2. E-018 formal infrastructureはCI検証済みとして固定する。
-3. **ここで停止し、E-018 formal 4000局の実験固有の明示的開始承認を待つ。**
-4. 承認後にのみ、事前登録条件を変えずexecution policyを`approved-awaiting-local-lock / formalExecutionAllowed=true`へ専用コミットで有効化する。
-5. 固定ローカル環境 `/home/oruorane/github/bao-la-kiswahili-game`、Node.js `v24.6.0`、Linux、clean worktreeを確認し、最新source commit・runtime・hardware・preregistration/policy hashをexecution lockへ固定する。
-6. lock成功後にのみformal 4000局を開始し、`run → analyze → verify → evaluate`を実行する。
+3. 固定ローカル環境 `/home/oruorane/github/bao-la-kiswahili-game` をこのcheckpointを含む最新branch headへfast-forwardする。
+4. Node.js `v24.6.0`、Linux、clean worktreeを確認し、最新source commit・runtime・hardware・preregistration/policy hashをexecution lockへ固定する。
+5. execution lockを監査し、成功後にのみ完全一致トークン `E-018-FORMAL-APPROVED` でformal 4000局を開始する。
+6. corpus生成完了後、`analyze → verify → evaluate`を実行する。
 
 ## 研究データ識別情報
 
@@ -358,4 +363,4 @@ E-017の開始承認はE-018へ継承しない。
 - games: 4000 planned
 - seed: `20265001–20267000`
 - infrastructure: validated
-- formal execution: not approved / not run
+- formal execution: approved / awaiting fixed-local lock / not run
