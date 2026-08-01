@@ -4,6 +4,7 @@ const assert = require("node:assert/strict");
 const E018 = require("../tools/experiments/lib/phase-transition-search-profile-dependence.js");
 const Evaluator = require("../tools/experiments/evaluate-phase-transition-search-profile-dependence.js");
 const Runner = require("../tools/experiments/run-phase-transition-search-profile-dependence.js");
+const PairBuilder = require("../tools/experiments/build-phase-transition-search-profile-pairs.js");
 
 const loaded = E018.loadPreregistration(
   "config/experiments/phase-transition-search-profile-dependence-v1.json",
@@ -88,5 +89,41 @@ const openingGame = {
   ],
 };
 assert.equal(Runner.openingBoundaryHash(openingGame), "opening-2");
+
+const p2Games = [
+  { gameId: "p2-0", gameIndex: 0, seed: 5000 },
+  { gameId: "p2-1", gameIndex: 1, seed: 5001 },
+  { gameId: "p2-2", gameIndex: 2, seed: 5002 },
+];
+const lgGames = [
+  { gameId: "lg-0", gameIndex: 0, seed: 5000 },
+  { gameId: "lg-1", gameIndex: 1, seed: 5001 },
+  { gameId: "lg-2", gameIndex: 2, seed: 5002 },
+];
+const p2Candidates = [
+  { gameId: "p2-0", distanceToTerminal: "20", classification: "capture-branch-expansion" },
+  { gameId: "p2-0", distanceToTerminal: "19", classification: "forcing-release-precursor" },
+  { gameId: "p2-1", distanceToTerminal: "8", classification: "capture-branch-expansion" },
+];
+const lgCandidates = [
+  { gameId: "lg-1", distanceToTerminal: "12", classification: "capture-branch-expansion" },
+];
+const builtPairs = PairBuilder.buildPairs(p2Games, p2Candidates, lgGames, lgCandidates, 9);
+assert.equal(builtPairs.length, 3);
+assert.deepEqual(
+  builtPairs.map((row) => [row.seed, row.P2, row.LG]),
+  [
+    [5000, true, false],
+    [5001, false, true],
+    [5002, false, false],
+  ],
+);
+assert.equal(builtPairs[0].P2EligibleCandidateCount, 2);
+assert.equal(builtPairs[1].P2EligibleCandidateCount, 0);
+assert.equal(builtPairs[1].LGExpansionCandidateCount, 1);
+assert.throws(
+  () => PairBuilder.buildPairs(p2Games, p2Candidates, lgGames.slice(0, 2), lgCandidates, 9),
+  /seed sets differ/,
+);
 
 console.log("phase transition search profile dependence tests passed");
