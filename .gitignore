@@ -44,4 +44,5 @@ artifacts/*-local.json
 /artifacts/phase-transition/pilot-v2/
 /artifacts/phase-transition/robustness-v1/
 /artifacts/phase-transition/independent-confirmation-v2/
+/artifacts/phase-transition/search-profile-dependence-v1/
 /artifacts/phase-transition/archive/
