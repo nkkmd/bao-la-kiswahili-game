@@ -80,8 +80,8 @@
 | D-070 | E-017の主解析単位を`trajectoryHash + eventPly`とする | 採用 | 同一決定論的trajectory・同一候補plyの反復を一次効果量から除外 |
 | D-071 | E-017で最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する | 採用 | 行数だけでなく構造的一般性を成功条件へ含める |
 | D-072 | E-017の主効果条件を重複除去後RR 3以上かつ候補率>対照率とする | 採用 | 生の候補行endpointは副次報告に限定 |
-| D-073 | E-017正式1000局の開始にはE-011とは別の明示的承認を要求する | 採用 | 事前登録と実行を分離。現時点では未承認・未実施 |
-| D-074 | E-017正式実行もrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 現時点では`formalExecutionAllowed=false`、E-011の承認とは独立 |
+| D-073 | E-017正式1000局の開始にはE-011とは別の明示的承認を要求する | 採用 | 2026-08-01 22:47 JSTにE-017固有の開始承認を受領。formal corpusは未実施 |
+| D-074 | E-017正式実行もrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 専用commit `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`で`formalExecutionAllowed=true`。execution lock未生成 |
 | D-075 | E-017 execution lockへsource、runtime、hardware、事前登録・policy hash、固定corpus条件を記録する | 採用 | lock後の条件差し替えと異環境再開を拒否 |
 | D-076 | E-017全体判定はformal corpus integrity成功後にだけ実行する | 採用 | artifact hash、seed列、trajectory、source、configを未確認のまま判定しない |
 | D-077 | E-017のcandidate/control欠損・trajectory結合失敗・必要出力構築失敗は`inconclusive`成果物として残す | 採用 | 効果不通過の`not-confirmed`と区別 |
@@ -92,6 +92,7 @@
 | D-082 | E-011を結果後に`partially-robust`または`not-robust`へ読み替えない | 採用 | C1/C2/C4の最低件数不足を含む登録statusとglobal decision contractを維持 |
 | D-083 | C4の急拡大0件を「legacy search依存性の確定証明」とはせず、別事前登録実験の対象仮説とする | 採用 | C4は主解析A候補8件・expansion 0件で`insufficient`。探索方式依存性を示唆するが単条件で因果確定しない |
 | D-084 | E-011 evaluatorの`inconclusive`時exit code 2を科学結果の失敗と扱わない | 採用 | 結果ファイル生成・完全出力後の終了コードをformal runnerが例外表示したinterface問題。正式判定は`inconclusive`のまま |
+| D-085 | E-017開始承認を事前登録条件・分析条件・判定条件の変更として扱わない | 採用 | 変更はexecution policyの状態と許可フラグのみ。1000局、seed、AI条件、構造availability、RR基準を維持 |
 
 ## 今後固定が必要な判断
 
