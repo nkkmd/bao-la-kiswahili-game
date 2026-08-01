@@ -620,3 +620,38 @@ combined evaluatorは`robustness-result.json`、`condition-summary.csv`、`robus
 - evaluator exit-code interface問題はformal結果と分離した実装修正候補とする。
 - `phase2`対`legacy`探索方式依存性を追う場合は別実験として事前登録する。
 - E-017は別の明示的開始承認まで正式1000局を開始しない。
+
+## 2026-08-01 — E-017正式1000局開始承認
+
+2026-08-01 22:47 JST、ユーザーから研究再開時に提示した推奨順序「E-017 → H16直接比較実験」に対して「推奨順序で進めてください」と明示的な進行指示を受領した。
+
+この指示をD-073およびE-017 execution policyが要求するE-017固有のformal experiment開始承認として扱う。E-011の過去承認は流用していない。
+
+### Repository許可
+
+E-017の1000局、seed、AI条件、候補検出、主解析単位、構造availability、RR基準、判定contractを変更せず、execution policyの状態と許可フラグだけを専用コミットで有効化した。
+
+- authorization commit: `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`
+- policy status: `approved-awaiting-local-lock`
+- `formalExecutionAllowed: true`
+- approval token: `E-017-FORMAL-APPROVED`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md`
+
+### 起動状況
+
+現在の操作環境には固定repository `/home/oruorane/github/bao-la-kiswahili-game` が存在しないことを確認した。E-011開始時と同様に、別環境を代替使用せずexecution lock生成前に停止した。
+
+この時点の状態:
+
+- execution lock: 未生成
+- formal corpus: `0 / 1000`
+- GitHub Actions formal run: 禁止を維持
+- PR #26: draft維持
+
+この停止は科学的結果ではなく、固定ローカル実行境界を守るための運用停止である。E-017の結果はまだ存在しない。
+
+### 次工程
+
+固定ローカル機で最新branch headへ更新し、Node.js `v24.6.0`、branch、clean worktreeを確認した上で`prepare-phase-transition-independent-confirmation-execution.js`によりexecution lockを生成する。lock成功後にのみ、完全一致トークンを用いてformal 1000局を開始する。
+
+E-017を`run → analyze → verify → evaluate`まで完了した後、次の推奨工程としてH16の`phase2`対`legacy`直接比較を別事前登録する。
