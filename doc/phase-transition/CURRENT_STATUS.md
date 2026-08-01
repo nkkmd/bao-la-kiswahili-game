@@ -21,7 +21,7 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 
 ## 現在の研究段階
 
-次まで完了した。
+完了済み:
 
 - 100局`pilot-v2`探索工程
 - E-010未使用seed 200局確認実験
@@ -32,17 +32,20 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-011 trajectory重複感度の補足事前登録
 - E-011固定ローカル実行policy、execution lock generator、guarded formal runner
 - E-011正式自己対局の明示的開始承認
-- E-011 repository許可フラグの専用コミットによる有効化
+- E-011固定ローカルexecution lock生成
+- E-011正式400局×5条件、合計2000局
+- E-011全条件formal integrity監査
+- E-011全条件trajectory-ply感度分析
+- E-011 combined evaluatorによる正式全体判定
 - E-017独立構造確認実験の1000局事前登録
 - E-017 trajectory-ply主解析evaluatorの実装とGitHub Actions検証
 
 未実施:
 
-- E-011固定ローカルexecution lock生成
-- E-011正式400局×5条件
 - E-017正式1000局
+- E-011で浮上した`phase2`対`legacy`探索方式依存性の追加確認実験
 
-E-011は正式開始承認済みで、固定ローカルexecution lock生成とC0開始を待っている。E-017は正式実行未承認である。GitHub Actionsではいずれの正式corpusも生成しない。
+E-011は正式実験まで完了し、正式全体判定は`inconclusive`である。E-017は正式実行未承認であり、E-011の承認はE-017へ継承しない。GitHub Actionsでは正式corpusを生成しない。
 
 ## 主要な確定事項
 
@@ -104,6 +107,7 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 - 5条件×各400局、合計2000局
 - shared seed: `20262001–20262400`
 - `C0 → C1 → C2 → C3 → C4`の順で固定ローカル逐次実行
+- primary population: `pliesRemaining >= 9`
 
 | 条件 | evaluator | search | maxDepth |
 |---|---|---|---:|
@@ -113,7 +117,7 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 | C3 | bao-v2 | phase2 | 2 |
 | C4 | bao | legacy | 2 |
 
-条件別成功条件は変更していない。
+条件別成功条件は結果後も変更していない。
 
 - 主解析A候補12件以上
 - 急拡大候補5件以上
@@ -121,43 +125,70 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 - RR 3以上
 - 候補率 > 対照率
 
-### 基盤検証
-
-5条件×2局fixtureは成功済み。
-
-- validated commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
-- Actions run: `30641768496`
-- artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
-
-開始承認直前のbranch headでは、E-011 robustness、E-017 independent confirmationを含む全8 Actions workflowが成功した。
-
-### 正式実行ガード
-
-既知の固定環境:
+### 固定ローカル実行情報
 
 - repository: `/home/oruorane/github/bao-la-kiswahili-game`
 - branch: `research/forced-capture-regime-analysis`
+- source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
 - Node.js: `v24.6.0`
 - platform: Linux
+- formal corpus: 2000局
+- preregistration SHA-256: `65253e719463b4e60527bdb96cb4ce234aae76df39d5d2727bd9d09849c7eb69`
+- execution-policy SHA-256: `97fa235e340b527919f9414c6859ce63b74cc5a930ce7e9893c66c2ddb02698b`
 
-ガード:
+formal integrity:
 
-1. repositoryの`formalExecutionAllowed: true`
-2. 完全一致の承認トークン
-3. repository path、branch、clean worktree、Node.js、source commitのexecution lock
-4. formal corpus rootのgit-ignore実照合
-5. 事前登録・execution policyのパスとSHA-256再照合
-6. C0–C4順序強制
-7. formal integrity成功前の全体評価拒否
-8. GitHub Actions環境での正式実行拒否
+- `allConditionsPresent: true`
+- `uniqueConditionConfigHashes: true`
+- `commonSourceCommit: true`
+- `pairedOpeningHashes: true`
+- `conditionIdentityClean: true`
+- `errors: []`
+- `valid: true`
 
-2026-08-01 06:09 JSTに明示的な開始承認を受領した。専用コミット`a0378010607aebad76420e0d377ee1b88166d861`でexecution policyを`approved-awaiting-local-lock`、`formalExecutionAllowed: true`へ変更した。実験条件・分析条件・判定条件は変更していない。
+### E-011条件別正式結果
 
-現在の実行環境から固定ローカルrepositoryへ直接アクセスできないため、execution lockとC0 corpusは未生成である。別環境へ代替せず、固定ローカル機で最新headへ更新した後にlockを生成する。
+| 条件 | A候補 | expansion | 対照 | 候補率 | 対照率 | RR | status |
+|---|---:|---:|---:|---:|---:|---:|---|
+| C0 | 16 | 9 | 16395 | 56.25% | 2.95% | 19.09 | `pass` |
+| C1 | 15 | 2 | 15679 | 13.33% | 2.05% | 6.49 | `insufficient` |
+| C2 | 12 | 3 | 15801 | 25.00% | 1.75% | 14.26 | `insufficient` |
+| C3 | 19 | 11 | 16437 | 57.89% | 2.88% | 20.08 | `pass` |
+| C4 | 8 | 0 | 15412 | 0.00% | 1.68% | 0.00 | `insufficient` |
 
-開始承認チェックポイント:
+正式全体判定: **`inconclusive`**
 
-- `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
+- C0 referenceは`pass`。
+- C3 (`bao-v2 / phase2 / depth2`)も`pass`。
+- C1とC2はRRと方向条件を満たすが、急拡大候補5件以上に未達のため`insufficient`。
+- C4は候補8件・急拡大0件で最低件数に未達し、RR 0でも事前登録ロジック上は`insufficient`。
+- `robust`、`partially-robust`、`not-robust`のいずれの登録条件にも入らないため`inconclusive`。
+
+### E-011 trajectory-ply感度
+
+重複除去キー: `trajectoryHash + candidatePly`
+
+| 条件 | 固有候補 | 固有expansion | 固有対照 | 固有対照expansion | dedup RR |
+|---|---:|---:|---:|---:|---:|
+| C0 | 8 | 2 | 12185 | 387 | 7.87 |
+| C1 | 13 | 2 | 11407 | 240 | 7.31 |
+| C2 | 10 | 2 | 11695 | 213 | 10.98 |
+| C3 | 11 | 4 | 12160 | 378 | 11.70 |
+| C4 | 6 | 0 | 11412 | 180 | 0.00 |
+
+`phase2`を使うC0–C3では重複除去後も候補側濃縮方向が維持された。C4 (`legacy`)では生・重複除去後とも急拡大候補が0である。
+
+科学的解釈は、**phase2 family内では方向的一貫性が見える一方、E-011はAI/search条件全般のglobal robustnessを確認せず、legacy searchが探索方式依存性の具体的な未解決要因として浮上した**、とする。これはE-011の正式`inconclusive`判定を置き換えない。
+
+### Evaluator exit-code異常
+
+combined evaluatorは`robustness-result.json`等を正常生成し、`decision: inconclusive`を出力した後、`inconclusive`時にexit code 2を設定する。formal runnerはこれを`execFileSync`の例外として表示した。
+
+これは実行基盤のinterface問題であり、formal integrityや正式科学判定を無効化しない。修正する場合もlocked-run結果保存後の別変更として扱い、E-011判定を遡及変更しない。
+
+完了チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-01-e011-formal-completion.md`
 
 ## E-017 独立構造確認実験
 
@@ -188,16 +219,7 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 - validated commit: `9190998507e144d239adb55cadc3f61860a005be`
 - workflow: `Phase Transition Independent Confirmation`
 - Actions run: `30646973255`
-- job: `evaluator`
 - result: `success`
-
-確認済み:
-
-- 固有trajectory-ply重複除去
-- 固有trajectory数の計数
-- 重複除去後RR
-- `confirmed / not-confirmed / inconclusive`の分岐
-- manifest、condition、局数、seed列、trajectory hash、config hashのcorpus検査
 
 正式1000局は生成していない。別の明示的開始承認を要求する。
 
@@ -216,17 +238,20 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 ### E-011
 
 - analysisVersion: `12-ai-depth-robustness`
-- status: `preregistered / infrastructure-validated / formal-approved / awaiting-local-lock`
+- status: `preregistered / infrastructure-validated / formal-complete / inconclusive`
 - authorization time: `2026-08-01 06:09 JST`
 - authorization commit: `a0378010607aebad76420e0d377ee1b88166d861`
+- locked source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
 - preregistration: `config/experiments/phase-transition-robustness-v1.json`
 - trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
 - execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
 - runbook: `doc/phase-transition/E011_FORMAL_EXECUTION.md`
-- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
-- execution lock: 未生成
-- C0 corpus: `0 / 400`
-- total formal corpus: `0 / 2000`
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-completion.md`
+- total formal corpus: `2000 / 2000`
+- formal integrity: `valid: true`
+- trajectory sensitivity complete: `true`
+- formal decision: `inconclusive`
+- final bundle SHA-256: `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
 
 ### E-017
 
@@ -238,13 +263,10 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 
 ## 次工程
 
-1. 固定ローカルrepositoryを最新branch headへ`git pull --ff-only`する。
-2. Node.js `v24.6.0`、branch、clean worktreeを確認する。
-3. E-011 execution lockを生成し、runtime・hardware・source commit・preregistration/policy hashを固定する。
-4. 状態監査後、承認トークンを用いてC0 400局を開始する。
-5. C0完了後に条件別分析を適用し、順序どおりC1以降へ進む。
-6. 全条件完了後にformal integrity、trajectory重複感度、形成過程、事前登録判定を適用する。
-7. E-017は別の明示的開始承認まで正式1000局corpusを生成しない。
+1. E-011の`inconclusive`判定を固定し、結果後に閾値やglobal decision ruleを変更しない。
+2. evaluatorの`inconclusive` exit code 2とformal runnerの例外表示のinterface問題を、formal結果と分離した実装修正候補として扱う。
+3. `phase2`対`legacy`探索方式依存性を追う場合は、E-011を再解釈せず別実験として事前登録する。
+4. E-017は別の明示的開始承認まで正式1000局corpusを生成しない。
 
 ## 研究データ識別情報
 
@@ -266,16 +288,16 @@ E-011は正式開始承認済みで、固定ローカルexecution lock生成とC
 ### E-011頑健性群
 
 - studyVersion: `0.4.1`
-- configHash: 未生成
-- games: 400/condition
+- games: 400/condition, 2000 total
 - conditions: C0–C4
-- formal authorization: approved
-- execution lock: 未生成
-- generated games: 0
+- seed range: `20262001–20262400`
+- locked source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
+- formal integrity: valid
+- formal decision: `inconclusive`
 
 ### E-017独立構造確認群
 
 - studyVersion: `0.4.1`
-- configHash: 未生成
-- games: 1000
+- games: 1000 planned
 - seed range: `20263001–20264000`
+- formal execution: not approved
