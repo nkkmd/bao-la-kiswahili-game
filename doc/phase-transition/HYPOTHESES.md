@@ -156,4 +156,4 @@ E-011ではphase2を使用したC0–C3の全条件で候補側濃縮方向が�
 - H16を追う場合は、`phase2`対`legacy`探索方式依存性を別実験として事前登録する。
 - E-017を1000局、seed`20263001–20264000`として事前登録済み。
 - E-017では`trajectoryHash + eventPly`を主解析単位とし、最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する。
-- E-017の主効果条件は重複除去後RR 3以上かつ候補率が対照率を上回ること。正式1000局は未承認・未実施である。
+- E-017の主効果条件は重複除去後RR 3以上かつ候補率が対照率を上回ること。2026-08-01 22:47 JSTに正式開始承認済みだが、固定ローカルexecution lock未生成のためformal 1000局は未実施である。
