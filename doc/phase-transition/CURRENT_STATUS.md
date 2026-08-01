@@ -30,10 +30,11 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-011 AI条件・探索深度横断頑健性実験の事前登録・実装・formal 2000局・integrity・評価
 - E-017独立構造確認実験の事前登録・実装・formal 1000局・integrity・評価
 - H16 search profile依存性直接比較E-018の事前登録
+- E-018 paired-condition fixture runner / pairing integrity / paired endpoint / exact McNemar evaluator / structural secondary / execution policy / execution-lock preparation / guarded formal runner / formal integrity mode
+- E-018専用GitHub Actions fixtureおよびformal-guard回帰検証
 
 未実施:
 
-- E-018 paired-condition runner / integrity validator / McNemar evaluator / fixture実装
 - E-018 formal 4000局
 
 現在の正式判定:
@@ -41,7 +42,7 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-010: **`not-confirmed`**
 - E-011: **`inconclusive`**
 - E-017: **`not-confirmed`**
-- E-018: **preregistered / formal-not-approved / not-run**
+- E-018: **preregistered / infrastructure-validated / formal-not-approved / not-run**
 
 E-010/E-011/E-017の判定は固定し、結果後に閾値やdecision ruleを緩和しない。
 
@@ -269,11 +270,44 @@ legacy側に最低expansion件数を要求しない。legacyで0件または極�
 
 `trajectoryHash + eventPly`によるprofile別構造比較、candidate/control RR、P2/LG候補率Fisher exactは副次解析とし、primary McNemar判定を置き換えない。
 
+### 実装・実行基盤
+
+実装済み:
+
+- fixture-only public runner
+- paired same-seed / random-opening boundary / common-source / condition identity integrity verification
+- paired game-level endpoint builder
+- two-sided exact McNemar evaluator
+- `trajectoryHash + eventPly` structural secondaryとFisher exact
+- fixed-local execution policyとexecution-lock preparation
+- guarded formal runner (`run → analyze → verify → evaluate`)
+- formal integrity mode（artifact/hash/source/seed/opening/pairing/condition separation/lock監査）
+- regression tests
+- E-018専用GitHub Actions fixture workflow
+
+最新の実装監査:
+
+- infrastructure head: `c37b0e3d00b11d0d9563a815dbb653297503a90d`
+- workflow: `Phase Transition Search Profile Dependence`
+- Actions run: `30723040531`
+- result: `success`
+- formal-guard regression tests: success
+- paired 2-game fixture generation: success
+- fixture integrity: success
+- paired endpoint construction: success
+- structural secondary: success
+
+E-017で発生したPython `__pycache__/`によるclean-worktree停止をE-018で再発させないため、Python bytecode cacheをgit ignore対象とした。これは実行環境上の予防措置であり、科学条件・事前登録・判定条件を変更しない。
+
 ### 実行状態
 
 - preregistration: `config/experiments/phase-transition-search-profile-dependence-v1.json`
 - checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
+- execution policy: `config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json`
+- policy status: **`prepared-not-approved`**
+- `formalExecutionAllowed`: **false**
 - formal execution approved: **false**
+- execution lock: **not generated for formal run**
 - formal corpus generated: **false**
 - GitHub Actions formal run: prohibited
 
@@ -281,12 +315,12 @@ E-017の開始承認はE-018へ継承しない。
 
 ## 次工程
 
-1. E-017 formal `not-confirmed`を固定し、最低control数を結果後に緩和しない。
-2. E-018 paired-condition runnerを実装する。
-3. same-seed / paired-opening / common-source / condition-separation integrity validatorを実装する。
-4. exact McNemar evaluatorと構造副次解析を実装する。
-5. fixture / GitHub Actionsで実装契約だけを検証する。
-6. **E-018 formal 4000局は別の明示的開始承認まで生成しない。**
+1. E-011 formal `inconclusive`、E-017 formal `not-confirmed`を固定し、結果後に判定条件を緩和しない。
+2. E-018 formal infrastructureはCI検証済みとして固定する。
+3. **ここで停止し、E-018 formal 4000局の実験固有の明示的開始承認を待つ。**
+4. 承認後にのみ、事前登録条件を変えずexecution policyを`approved-awaiting-local-lock / formalExecutionAllowed=true`へ専用コミットで有効化する。
+5. 固定ローカル環境 `/home/oruorane/github/bao-la-kiswahili-game`、Node.js `v24.6.0`、Linux、clean worktreeを確認し、最新source commit・runtime・hardware・preregistration/policy hashをexecution lockへ固定する。
+6. lock成功後にのみformal 4000局を開始し、`run → analyze → verify → evaluate`を実行する。
 
 ## 研究データ識別情報
 
@@ -323,4 +357,5 @@ E-017の開始承認はE-018へ継承しない。
 - studyVersion: `0.4.1`
 - games: 4000 planned
 - seed: `20265001–20267000`
+- infrastructure: validated
 - formal execution: not approved / not run
