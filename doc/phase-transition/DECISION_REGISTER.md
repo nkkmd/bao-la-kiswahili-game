@@ -40,12 +40,12 @@
 | D-030 | 全A分類を expansion 3 / mtaji 3 / release 6 / spike 1 とする | 暫定採用 | run 30615605472 |
 | D-031 | 終局近傍mtaji候補6件をforcing解除前兆とする | 撤回 | 独立分類ではなく終局近傍効果 |
 | D-032 | 対照群は候補区間前後8plyを除いた強制捕獲中の適格plyとする | 暫定採用 | 探索4127点、確認8557点 |
-| D-033 | 捕獲分岐急拡大をA候補の主要識別分類とする | 暫定採用 | 探索11.46倍、確認21.53倍、重複除去後12.96倍 |
+| D-033 | 捕獲分岐急拡大をA候補の主要識別分類とする | 暫定採用 | 探索11.46倍、確認21.53倍、E-011 phase2群でも方向的一貫性 |
 | D-034 | mtaji前兆をA候補固有の識別分類とみなす | 保留 | 探索群で差が小さい |
 | D-035 | forcing解除前兆の濃縮を戦略転移の証拠とする | 撤回 | 終局近傍に限定 |
 | D-036 | `expansionDelta=3 / persistenceFraction=0.5` をE-010確認値とする | 採用 | 事前登録後に変更せず実行 |
 | D-037 | forcing解除前兆6件を終局近傍サブタイプとして扱う | 暫定採用 | 全件が終局まで0–4ply |
-| D-038 | 主たる相転移候補の比較では終局まで9ply以上を別集計する | 採用 | E-010主解析にも事前登録 |
+| D-038 | 主たる相転移候補の比較では終局まで9ply以上を別集計する | 採用 | E-010/E-011主解析に事前登録 |
 | D-039 | 捕獲分岐急拡大を当該手の即時大量捕獲と解釈する | 撤回 | 即時捕獲量は小さい |
 | D-040 | 捕獲分岐急拡大は選択手後に形成される捕獲選択肢構造の拡大として扱う | 暫定採用 | E-009/E-014 |
 | D-041 | 1-ply静的評価差を探索判断の正式評価差とみなす | 撤回 | depth 2探索とは異なる |
@@ -63,7 +63,7 @@
 | D-053 | E-011でもE-010の候補検出、終局除外、急拡大分類閾値を変更しない | 採用 | 条件変更の影響だけを測る |
 | D-054 | E-011の条件別・全体判定規則を実行前に固定する | 採用 | robust / partially-robust / not-robust / inconclusive |
 | D-055 | E-011正式2000局は固定ローカル環境で逐次実行する | 採用 | GitHub Actionsはテスト・fixture・成果物検証に限定 |
-| D-056 | E-011の開局一致は最後のランダム開局手直後のhashで監査する | 採用 | 既存`openingStateHash`はAI手で上書きされるため |
+| D-056 | E-011の開局一致は最後のランダム開局手直後のhashで監査する | 採用 | paired openingを条件間で固定 |
 | D-057 | E-010の候補独立性を`trajectoryHash + candidatePly`で事後監査する | 採用 | 11候補が5 trajectory-plyへ集約 |
 | D-058 | E-010の事前登録判定をtrajectory重複感度で置き換える | 撤回 | 事後分析であり、元のnot-confirmedを維持 |
 | D-059 | E-011でtrajectory重複感度を必須副次分析として事前追加する | 採用 | 主判定条件は変更せず、構造的一般性を監査 |
@@ -72,8 +72,8 @@
 | D-062 | 確認群7件を7つの独立した形成例として扱う | 撤回 | 6件が同一trajectory-ply、独立構造は2件 |
 | D-063 | H14を確認済み仮説へ昇格する | 保留 | 2構造中、明確な非対称化は1構造のみ |
 | D-064 | E-011正式実行はrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 2026-08-01 06:09 JSTに明示承認。専用commit `a0378010607aebad76420e0d377ee1b88166d861`で許可フラグを有効化 |
-| D-065 | E-011固定環境の既知条件をrepository pathとNode.js v24.6.0として固定する | 採用 | pilot-v2正式実行実績。CPU・memory・OS release・source commitはexecution lock生成時に記録 |
-| D-066 | E-011正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial出力でclean-worktreeガードが自己停止しないようにする。lock生成時にignore状態も検証 |
+| D-065 | E-011固定環境の既知条件をrepository pathとNode.js v24.6.0として固定する | 採用 | execution lockでsource commit、CPU、memory、OS releaseも記録 |
+| D-066 | E-011正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial出力でclean-worktreeガードが自己停止しないようにする |
 | D-067 | E-011の各formal phaseで事前登録とexecution policyのパス・SHA-256をexecution lockと再照合する | 採用 | 代替設定ファイルやlock後の条件差し替えを拒否 |
 | D-068 | E-011全体判定はformal integrity監査成功後にだけ実行する | 採用 | 5条件のsource、seed、開局、condition分離未確認のまま評価しない |
 | D-069 | 独立追加seed確認実験E-017を1000局、seed `20263001–20264000`とする | 採用 | E-010構造発生率では1000局のavailability 4条件単純積が約93.8%、固有control期待35305 |
@@ -84,14 +84,18 @@
 | D-074 | E-017正式実行もrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 現時点では`formalExecutionAllowed=false`、E-011の承認とは独立 |
 | D-075 | E-017 execution lockへsource、runtime、hardware、事前登録・policy hash、固定corpus条件を記録する | 採用 | lock後の条件差し替えと異環境再開を拒否 |
 | D-076 | E-017全体判定はformal corpus integrity成功後にだけ実行する | 採用 | artifact hash、seed列、trajectory、source、configを未確認のまま判定しない |
-| D-077 | E-017のcandidate/control欠損・trajectory結合失敗・必要出力構築失敗は`inconclusive`成果物として残す | 採用 | 事前登録済みの運用失敗契約を実装し、効果不通過の`not-confirmed`と区別 |
+| D-077 | E-017のcandidate/control欠損・trajectory結合失敗・必要出力構築失敗は`inconclusive`成果物として残す | 採用 | 効果不通過の`not-confirmed`と区別 |
 | D-078 | E-017正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial再開時にclean-worktreeガードが自己停止しないようignore状態をlock生成時に検証 |
-| D-079 | E-011の明示的開始承認後も、固定ローカルexecution lock生成前にはC0を開始しない | 採用 | 現在の操作環境に固定repository pathが存在しない。別環境へ置換せず、承認済み・local lock待ちとして停止 |
+| D-079 | E-011の明示的開始承認後も、固定ローカルexecution lock生成前にはC0を開始しない | 採用 | 別環境へ置換せず、承認済み・local lock待ちとして停止した |
 | D-080 | E-011開始承認を事前登録条件・分析条件・判定条件の変更として扱わない | 採用 | 変更はexecution policyの状態と許可フラグのみ。5条件、局数、seed、順序、閾値を維持 |
+| D-081 | E-011正式2000局の全体判定を`inconclusive`として固定する | 採用 | formal integrity `valid: true`、C0/C3 pass、C1/C2/C4 insufficient。事前登録済みglobal ruleを変更せず適用 |
+| D-082 | E-011を結果後に`partially-robust`または`not-robust`へ読み替えない | 採用 | C1/C2/C4の最低件数不足を含む登録statusとglobal decision contractを維持 |
+| D-083 | C4の急拡大0件を「legacy search依存性の確定証明」とはせず、別事前登録実験の対象仮説とする | 採用 | C4は主解析A候補8件・expansion 0件で`insufficient`。探索方式依存性を示唆するが単条件で因果確定しない |
+| D-084 | E-011 evaluatorの`inconclusive`時exit code 2を科学結果の失敗と扱わない | 採用 | 結果ファイル生成・完全出力後の終了コードをformal runnerが例外表示したinterface問題。正式判定は`inconclusive`のまま |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
-- E-011 execution lockに記録されるruntime・hardware・source commit
+- `phase2`対`legacy`探索方式依存性をどの独立実験設計で確認するか
 - E-017 execution lockに記録されるruntime・hardware・source commit
