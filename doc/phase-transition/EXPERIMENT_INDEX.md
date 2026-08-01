@@ -7,7 +7,7 @@
 | E-001 | Phase 0 fixture監査 | 固定fixture | `01-data-audit.ipynb` | 欠損・重複・hash監査 | 完了 |
 | E-002 | pilot-v2生成 | 固定seed 100局 | `run-phase-transition-research.js` | `observations.jsonl`, `games.json`, `manifest.json` | 完了 |
 | E-003 | 候補分析v2 | `pilot-v2-analysis-input.zip` | `02-transition-candidate-analysis.ipynb` | 候補区間・感度分析 | 完了 |
-| E-004 | forcingアブレーション | 同上 | `03-forcing-ablation.ipynb` | inclusive / excluded / auxiliary | 完了 |
+| E-004 | forcingアブレーション | 同上 | `03-forcing_ablation.ipynb` | inclusive / excluded / auxiliary | 完了 |
 | E-005 | A/B/C/X分類 | 同上 | `analyze-phase-transition-forcing-ablation.py` | 監査表 | 完了 |
 | E-006 | アーキタイプ分析 | 同上 | `04-candidate-archetypes.ipynb` | 13 Aアーキタイプ | 完了 |
 | E-007 | 優先候補盤面監査 | 同上 | `05-candidate-board-audit.ipynb` | 主要6候補前後局面 | 完了 |
@@ -21,7 +21,7 @@
 | E-015 | E-010 trajectory重複感度 | E-010候補・対照・games.json | `analyze-confirmation-trajectory-duplication.js` | 重複除去率、アーキタイプ、重複群 | 完了・事後感度分析 |
 | E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
 | E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
-| E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **事前登録済み・infrastructure validated・formal未承認・未実施** |
+| E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **事前登録済み・infrastructure validated・formal承認済み・local lock待ち・未実施** |
 
 ## E-010 未使用seed確認実験
 
@@ -209,9 +209,13 @@ Formal decision: **`not-confirmed`**
 
 - hypothesis: H16
 - analysisVersion: `16-search-profile-dependence`
-- status: **preregistered / infrastructure-validated / formal-not-approved / not-run**
+- status: **preregistered / infrastructure-validated / formal-approved / awaiting-local-lock / not-run**
 - preregistration: `config/experiments/phase-transition-search-profile-dependence-v1.json`
 - preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
+- infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-infrastructure.md`
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-start-authorization.md`
+- authorization time: `2026-08-02 08:39 JST`
+- authorization commit: `9c5a902f3fbe0df02975050f2648a2a08cefb109`
 - execution policy: `config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json`
 - fixture runner: `tools/experiments/run-phase-transition-search-profile-dependence.js`
 - guarded formal runner: `tools/experiments/run-phase-transition-search-profile-dependence-formal.js`
@@ -235,9 +239,9 @@ Formal decision: **`not-confirmed`**
 - legacy minimum expansion count: none
 - structural `trajectoryHash + eventPly` comparison: secondary
 - formal GitHub Actions run: prohibited
-- separate explicit E-018 approval required: yes
-- execution policy status: `prepared-not-approved`
-- `formalExecutionAllowed`: false
+- separate explicit E-018 approval: granted
+- execution policy status: `approved-awaiting-local-lock`
+- `formalExecutionAllowed`: true
 - formal execution lock: not generated for formal run
 - formal corpus: not generated
 
@@ -294,4 +298,4 @@ E-017で発生したPython `__pycache__/`由来のclean-worktree停止を予防�
 - games: 2000/condition planned, 4000 total planned
 - seed range: `20265001–20267000`
 - infrastructure: validated
-- formal execution: not approved / not run
+- formal execution: approved / awaiting fixed-local lock / not run
