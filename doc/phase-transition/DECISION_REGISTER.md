@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 判断台帳
 
-更新日: 2026-08-01
+更新日: 2026-08-02
 
 ## 状態
 
@@ -29,7 +29,7 @@
 | D-016 | `pliesRemaining < 5` を終局近傍として分離 | 暫定採用 | 終局効果の可能性 |
 | D-017 | stateHashと変化シグネチャを分ける | 採用 | 局面と変化型を区別 |
 | D-018 | 同一変化シグネチャをアーキタイプ化 | 暫定採用 | A 13アーキタイプ |
-| D-019 | 主要候補を正式な戦略的相転移と認定 | 保留 | E-010はnot-confirmed、独立構造例も少ない |
+| D-019 | 主要候補を正式な戦略的相転移と認定 | 保留 | E-010はnot-confirmed、E-011はinconclusive、E-017はnot-confirmed |
 | D-021 | 主要4件を全て捕獲分岐爆発とする | 撤回 | 一時的スパイクを確認 |
 | D-022 | 分析単位を強制捕獲レジームとする | 採用 | 系列内部構造を表現 |
 | D-023 | Colab結果だけで正式結論を出さない | 採用 | 固定環境再現が必要 |
@@ -40,12 +40,12 @@
 | D-030 | 全A分類を expansion 3 / mtaji 3 / release 6 / spike 1 とする | 暫定採用 | run 30615605472 |
 | D-031 | 終局近傍mtaji候補6件をforcing解除前兆とする | 撤回 | 独立分類ではなく終局近傍効果 |
 | D-032 | 対照群は候補区間前後8plyを除いた強制捕獲中の適格plyとする | 暫定採用 | 探索4127点、確認8557点 |
-| D-033 | 捕獲分岐急拡大をA候補の主要識別分類とする | 暫定採用 | 探索11.46倍、確認21.53倍、E-011 phase2群でも方向的一貫性 |
+| D-033 | 捕獲分岐急拡大をA候補の主要識別分類とする | 暫定採用 | 探索11.46倍、E-010 21.53倍、E-011 phase2群で方向的一貫性、E-017 dedup RR 13.74 |
 | D-034 | mtaji前兆をA候補固有の識別分類とみなす | 保留 | 探索群で差が小さい |
 | D-035 | forcing解除前兆の濃縮を戦略転移の証拠とする | 撤回 | 終局近傍に限定 |
 | D-036 | `expansionDelta=3 / persistenceFraction=0.5` をE-010確認値とする | 採用 | 事前登録後に変更せず実行 |
 | D-037 | forcing解除前兆6件を終局近傍サブタイプとして扱う | 暫定採用 | 全件が終局まで0–4ply |
-| D-038 | 主たる相転移候補の比較では終局まで9ply以上を別集計する | 採用 | E-010/E-011主解析に事前登録 |
+| D-038 | 主たる相転移候補の比較では終局まで9ply以上を別集計する | 採用 | E-010/E-011/E-017/E-018主解析に使用 |
 | D-039 | 捕獲分岐急拡大を当該手の即時大量捕獲と解釈する | 撤回 | 即時捕獲量は小さい |
 | D-040 | 捕獲分岐急拡大は選択手後に形成される捕獲選択肢構造の拡大として扱う | 暫定採用 | E-009/E-014 |
 | D-041 | 1-ply静的評価差を探索判断の正式評価差とみなす | 撤回 | depth 2探索とは異なる |
@@ -80,10 +80,10 @@
 | D-070 | E-017の主解析単位を`trajectoryHash + eventPly`とする | 採用 | 同一決定論的trajectory・同一候補plyの反復を一次効果量から除外 |
 | D-071 | E-017で最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する | 採用 | 行数だけでなく構造的一般性を成功条件へ含める |
 | D-072 | E-017の主効果条件を重複除去後RR 3以上かつ候補率>対照率とする | 採用 | 生の候補行endpointは副次報告に限定 |
-| D-073 | E-017正式1000局の開始にはE-011とは別の明示的承認を要求する | 採用 | 2026-08-01 22:47 JSTにE-017固有の開始承認を受領。formal corpusは未実施 |
-| D-074 | E-017正式実行もrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 専用commit `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`で`formalExecutionAllowed=true`。execution lock未生成 |
-| D-075 | E-017 execution lockへsource、runtime、hardware、事前登録・policy hash、固定corpus条件を記録する | 採用 | lock後の条件差し替えと異環境再開を拒否 |
-| D-076 | E-017全体判定はformal corpus integrity成功後にだけ実行する | 採用 | artifact hash、seed列、trajectory、source、configを未確認のまま判定しない |
+| D-073 | E-017正式1000局の開始にはE-011とは別の明示的承認を要求する | 採用 | 2026-08-01 22:47 JSTにE-017固有の開始承認を受領し、固定ローカルで正式実行完了 |
+| D-074 | E-017正式実行もrepository許可フラグと完全一致トークンの二重承認を要求する | 採用 | 専用commit `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`で`formalExecutionAllowed=true`。formal runnerはexecution lockを使用して完了 |
+| D-075 | E-017 execution lockへsource、runtime、hardware、事前登録・policy hash、固定corpus条件を記録する | 採用 | formal verifyでsourceCommitMatchesLock、lock preregistration/policy hash presenceを確認 |
+| D-076 | E-017全体判定はformal corpus integrity成功後にだけ実行する | 採用 | 1000局・56294 observations、formal `valid: true` 後にのみ評価した |
 | D-077 | E-017のcandidate/control欠損・trajectory結合失敗・必要出力構築失敗は`inconclusive`成果物として残す | 採用 | 効果不通過の`not-confirmed`と区別 |
 | D-078 | E-017正式corpusとexecution lockをgit管理外の固定出力先へ保存する | 採用 | partial再開時にclean-worktreeガードが自己停止しないようignore状態をlock生成時に検証 |
 | D-079 | E-011の明示的開始承認後も、固定ローカルexecution lock生成前にはC0を開始しない | 採用 | 別環境へ置換せず、承認済み・local lock待ちとして停止した |
@@ -93,10 +93,17 @@
 | D-083 | C4の急拡大0件を「legacy search依存性の確定証明」とはせず、別事前登録実験の対象仮説とする | 採用 | C4は主解析A候補8件・expansion 0件で`insufficient`。探索方式依存性を示唆するが単条件で因果確定しない |
 | D-084 | E-011 evaluatorの`inconclusive`時exit code 2を科学結果の失敗と扱わない | 採用 | 結果ファイル生成・完全出力後の終了コードをformal runnerが例外表示したinterface問題。正式判定は`inconclusive`のまま |
 | D-085 | E-017開始承認を事前登録条件・分析条件・判定条件の変更として扱わない | 採用 | 変更はexecution policyの状態と許可フラグのみ。1000局、seed、AI条件、構造availability、RR基準を維持 |
+| D-086 | E-017正式1000局の判定を`not-confirmed`として固定する | 採用 | formal integrity `valid: true`。8 endpoint criteria中、固有control trajectory-plyのみ30000未満（23306） |
+| D-087 | E-017の最低固有control trajectory-plyを結果後に23306以下へ緩和しない | 採用 | 事前登録30000を維持し、dedup RR 13.74等を理由にconfirmedへ読み替えない |
+| D-088 | E-017を「正式未確認だが構造的一般性を伴う濃縮方向の追加観測」と記録する | 採用 | unique candidate 21、unique expansion trajectory-ply 9、unique expansion trajectory 9、dedup RR 13.74 |
+| D-089 | E-017 evaluatorの`preregistrationStatus: preregistered-not-run`をformal execution状態の正本と扱わない | 採用 | config由来の状態文字列であり、execution lockとformal integrity `mode=formal / valid=true`が実行状態を確定する |
+| D-090 | H16直接比較をE-018として各profile 2000局、shared seed `20265001–20267000`で事前登録する | 採用 | P2=`bao/phase2/depth2`、LG=`bao/legacy/depth2`、計4000局 |
+| D-091 | E-018主解析単位をpaired shared-seed gameとし、eligible expansion候補の有無をexact McNemarで比較する | 採用 | same seed/openingでsearch profile差を直接検定。two-sided alpha 0.05、discordant pair最低20、P2-only > LG-only |
+| D-092 | E-018ではlegacy側expansion最低件数を成功条件に置かない | 採用 | legacyで0件/低件数はH16整合観測となり得るため、最低expansion数要求で自動insufficient化しない |
+| D-093 | E-018 formal 4000局は別の明示的ユーザー承認まで開始しない | 採用 | E-017開始承認はE-018へ継承しない。GitHub Actions formal runも禁止 |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
-- `phase2`対`legacy`探索方式依存性をどの独立実験設計で確認するか
-- E-017 execution lockに記録されるruntime・hardware・source commit
+- E-018 fixed-local execution policy、runtime・hardware・source commit
