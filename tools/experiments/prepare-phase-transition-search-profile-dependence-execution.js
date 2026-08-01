@@ -89,8 +89,13 @@ function validateEnvironment(policy, environment, preregistration) {
   if (JSON.stringify(preregistration.corpus?.sharedSeedRange) !== JSON.stringify([20265001, 20267000])) {
     errors.push("Preregistered shared seed range differs from 20265001–20267000.");
   }
-  if (policy.formalExecutionAllowed !== false || policy.status !== "prepared-not-approved") {
-    errors.push("Execution policy must remain prepared-not-approved with formalExecutionAllowed=false when preparing the pre-approval lock.");
+  const policyStateValid = (
+    policy.formalExecutionAllowed === false && policy.status === "prepared-not-approved"
+  ) || (
+    policy.formalExecutionAllowed === true && policy.status === "approved-awaiting-local-lock"
+  );
+  if (!policyStateValid) {
+    errors.push("Execution policy state is inconsistent with the E-018 approval flow.");
   }
   return errors;
 }
