@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "experimentId": "E-017",
-  "status": "prepared-not-approved",
+  "status": "approved-awaiting-local-lock",
   "repositoryPath": "/home/oruorane/github/bao-la-kiswahili-game",
   "branch": "research/forced-capture-regime-analysis",
   "expectedNodeVersion": "v24.6.0",
@@ -19,7 +19,7 @@
     "evaluationRoot": "artifacts/local/phase-transition-independent-confirmation-v2/evaluation",
     "executionLock": "artifacts/phase-transition/independent-confirmation-v2/execution-lock.json"
   },
-  "formalExecutionAllowed": false,
+  "formalExecutionAllowed": true,
   "activationRule": "Set only by an explicit user instruction to start the E-017 formal experiment; repository preparation alone is not approval.",
   "changePolicy": "Changing runtime, repository path, output paths, approval semantics, or formal corpus parameters requires a new execution-policy version."
 }
