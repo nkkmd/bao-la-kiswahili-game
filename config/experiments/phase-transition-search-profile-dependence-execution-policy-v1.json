@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "E-018",
+  "status": "prepared-not-approved",
+  "repositoryPath": "/home/oruorane/github/bao-la-kiswahili-game",
+  "branch": "research/forced-capture-regime-analysis",
+  "expectedNodeVersion": "v24.6.0",
+  "expectedPlatform": "linux",
+  "requireCleanWorktree": true,
+  "pythonCommand": "python3",
+  "approvalToken": "E-018-FORMAL-APPROVED",
+  "paths": {
+    "preregistration": "config/experiments/phase-transition-search-profile-dependence-v1.json",
+    "corpusRoot": "artifacts/phase-transition/search-profile-dependence-v1",
+    "analysisRoot": "artifacts/local/phase-transition-search-profile-dependence-v1",
+    "integrityRoot": "artifacts/local/phase-transition-search-profile-dependence-v1/integrity",
+    "evaluationRoot": "artifacts/local/phase-transition-search-profile-dependence-v1/evaluation",
+    "executionLock": "artifacts/phase-transition/search-profile-dependence-v1/execution-lock.json"
+  },
+  "formalExecutionAllowed": false,
+  "activationRule": "Set true only after a separate explicit user instruction to start the E-018 formal experiment. E-017 authorization does not carry over.",
+  "changePolicy": "Changing runtime, repository path, approval semantics, corpus size, seed range, search-profile conditions, primary endpoint, McNemar rule, or output contract requires a new policy/preregistration version as applicable."
+}
