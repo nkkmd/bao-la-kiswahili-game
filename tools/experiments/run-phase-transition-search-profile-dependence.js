@@ -42,7 +42,7 @@ function parseArgs(argv) {
     index += 1;
   }
   if (options.fixtureGames === null) {
-    throw new Error("E-018 runner is fixture-only until a separately approved formal execution policy exists; --fixture-games is required.");
+    throw new Error("E-018 runner is fixture-only from the public CLI; --fixture-games is required. Formal execution is available only through the separately guarded formal runner.");
   }
   return options;
 }
@@ -114,7 +114,8 @@ function conditionOptions(preregistration, condition, output, games) {
   };
 }
 
-function buildConditionConfig(preregistration, condition, games, preregistrationHash) {
+function buildConditionConfig(preregistration, condition, games, preregistrationHash, mode = "fixture") {
+  if (!new Set(["fixture", "formal"]).has(mode)) throw new Error(`Invalid E-018 execution mode: ${mode}`);
   const base = Research.experimentConfig(conditionOptions(preregistration, condition, "", games));
   base.condition.id = condition.id;
   base.experiment = {
@@ -124,11 +125,11 @@ function buildConditionConfig(preregistration, condition, games, preregistration
     preregistrationConfigSha256: preregistrationHash,
   };
   base.execution = {
-    mode: "fixture",
+    mode,
     plannedGamesPerCondition: preregistration.corpus.gamesPerCondition,
     actualGames: games,
     pairedOpeningRequired: preregistration.corpus.pairedOpeningRequired,
-    formalExecutionApproved: false,
+    formalExecutionApproved: mode === "formal",
   };
   return base;
 }
@@ -137,14 +138,18 @@ function gamePath(output, gameIndex) {
   return path.join(output, "games", `game-${String(gameIndex).padStart(4, "0")}.json`);
 }
 
-function runCondition(loaded, rawCondition, options) {
+function runCondition(loaded, rawCondition, options, mode = "fixture") {
+  if (!new Set(["fixture", "formal"]).has(mode)) throw new Error(`Invalid E-018 execution mode: ${mode}`);
   const condition = normalizeCondition(rawCondition, loaded.config.corpus);
-  const games = options.fixtureGames;
+  const games = mode === "formal" ? loaded.config.corpus.gamesPerCondition : options.fixtureGames;
+  if (mode === "fixture" && (!Number.isInteger(games) || games < 1)) {
+    throw new Error("fixture mode requires fixtureGames >= 1");
+  }
   if (games > loaded.config.corpus.gamesPerCondition) {
-    throw new Error("--fixture-games cannot exceed preregistered gamesPerCondition");
+    throw new Error("Requested games cannot exceed preregistered gamesPerCondition");
   }
   const output = path.resolve(options.output, condition.id);
-  const config = buildConditionConfig(loaded.config, condition, games, loaded.sha256);
+  const config = buildConditionConfig(loaded.config, condition, games, loaded.sha256, mode);
   const configHash = Research.sha256(Research.canonicalJson(config));
   const commit = sourceCommit();
 
@@ -154,7 +159,7 @@ function runCondition(loaded, rawCondition, options) {
   if (options.status) {
     const completed = Array.from({ length: games }, (_, index) => gamePath(output, index))
       .filter((filePath) => fs.existsSync(filePath)).length;
-    return { conditionId: condition.id, mode: "fixture", completed, total: games, configHash };
+    return { conditionId: condition.id, mode, completed, total: games, configHash };
   }
 
   const completedGames = [];
@@ -164,6 +169,7 @@ function runCondition(loaded, rawCondition, options) {
     if (fs.existsSync(filePath)) {
       game = JSON.parse(fs.readFileSync(filePath, "utf8"));
       if (game.configHash !== configHash) throw new Error(`Existing game has different config hash: ${filePath}`);
+      if (game.sourceCommit !== commit) throw new Error(`Existing game has different source commit: ${filePath}`);
     } else {
       game = normalizeGameIdentity(Research.runGame(config, gameIndex), condition);
       game = { configHash, sourceCommit: commit, ...game };
@@ -175,7 +181,7 @@ function runCondition(loaded, rawCondition, options) {
   const manifest = Research.aggregate(output, config, configHash, completedGames, commit);
   return {
     conditionId: condition.id,
-    mode: "fixture",
+    mode,
     output,
     completed: completedGames.length,
     total: games,
@@ -192,7 +198,7 @@ function selectedConditions(config, value) {
 function run(options) {
   const loaded = E018.loadPreregistration(options.config);
   const conditions = selectedConditions(loaded.config, options.condition);
-  const results = conditions.map((condition) => runCondition(loaded, condition, options));
+  const results = conditions.map((condition) => runCondition(loaded, condition, options, "fixture"));
   const summary = {
     experimentId: loaded.config.experimentId,
     analysisVersion: loaded.config.analysisVersion,
@@ -216,8 +222,10 @@ if (require.main === module) {
 }
 
 module.exports = {
+  atomicWrite,
   buildConditionConfig,
   conditionOptions,
+  gamePath,
   normalizeCondition,
   normalizeGameIdentity,
   openingBoundaryHash,
@@ -225,4 +233,5 @@ module.exports = {
   run,
   runCondition,
   selectedConditions,
+  sourceCommit,
 };
