@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 仮説台帳
 
-更新日: 2026-08-01
+更新日: 2026-08-02
 
 ## H1 — 戦略的転移は形式的phase移行より前に現れる
 
@@ -66,11 +66,11 @@ formal global decisionは**`inconclusive`**。C1/C2はRRと方向条件を満た
 
 状態: 探索的支持・重複構造に注意
 
-探索群A 15候補は13アーキタイプ、確認群A 22候補は15アーキタイプへ整理された。ただしE-010主解析11候補は5アーキタイプ、4trajectory、5 trajectory-plyへ集約された。E-011でも条件ごとにtrajectory-ply重複が残るため、生の候補行数と構造的一般性を分けて扱う。
+探索群A 15候補は13アーキタイプ、確認群A 22候補は15アーキタイプへ整理された。ただしE-010主解析11候補は5アーキタイプ、4trajectory、5 trajectory-plyへ集約された。E-011でも条件ごとにtrajectory-ply重複が残り、E-017でも最大trajectory-ply multiplicityは24だったため、生の候補行数と構造的一般性を分けて扱う。
 
 ## H9 — 強制捕獲レジーム内部に捕獲分岐の相転換が存在する
 
-状態: 濃縮方向は複数データで支持・global robustness未確認・正式認定保留
+状態: **濃縮方向と構造的一般性は複数独立データで支持・formal confirmation未達・正式認定保留**
 
 探索群:
 
@@ -83,6 +83,7 @@ E-010未使用seed確認群の事前登録単位:
 - 候補7/11（63.6%）
 - 対照249/8424（3.0%）
 - リスク比21.53
+- formal `not-confirmed`（最低主解析候補12に対し11）
 
 E-010 trajectory-ply重複除去後:
 
@@ -90,9 +91,21 @@ E-010 trajectory-ply重複除去後:
 - 対照218/7061（3.09%）
 - リスク比12.96
 
-E-011ではC0とC3が正式`pass`、C1/C2は最低expansion件数不足だがRR 6.49/14.26、trajectory-ply重複除去後もRR 7.31/10.98だった。C4 (`legacy`)では生・重複除去後ともexpansion候補0であった。
+E-011ではC0とC3が正式`pass`、C1/C2は最低expansion件数不足だがRR 6.49/14.26、trajectory-ply重複除去後もRR 7.31/10.98だった。C4 (`legacy`)では生・重複除去後ともexpansion候補0。formal global decisionは`inconclusive`。
 
-このため、捕獲分岐急拡大の濃縮はphase2 family内で複数条件に再現するが、探索方式を跨いだ一般性は未確認。E-010は`not-confirmed`、E-011は`inconclusive`であり、正式認定はE-017または別の独立確認まで保留する。
+E-017独立seed 1000局ではformal integrity `valid: true`。主解析のtrajectory-ply重複除去後は:
+
+- unique candidates: 21
+- unique expansion trajectory-ply: 9
+- unique expansion trajectories: 9
+- unique controls: 23306
+- candidate expansion rate: 42.86%
+- control expansion rate: 3.12%
+- deduplicated RR: 13.74
+
+E-017では効果方向、RR、候補・expansion構造availabilityは通過したが、事前登録最低unique control trajectory-ply 30000に対し23306だったためformal **`not-confirmed`**。
+
+したがって捕獲分岐急拡大の濃縮方向は複数の独立seed・複数phase2条件・複数固有構造で繰り返し観測されている。一方、E-010/E-017は`not-confirmed`、E-011は`inconclusive`であり、事前登録済み確認実験としての正式認定にはまだ達していない。
 
 ## H10 — 捕獲分岐爆発の一部はmtaji移行の前兆である
 
@@ -118,7 +131,7 @@ E-011ではC0とC3が正式`pass`、C1/C2は最低expansion件数不足だがRR 
 
 探索群の急拡大5件は平均捕獲1.6粒、平均capture+relay長2.2。捕獲手数ピークは平均1.8ply後で、phase移行なし。
 
-確認群の急拡大7件では捕獲手数ピークが平均1.71ply後、trajectory-ply重複除去後の2構造では平均1.0ply後だった。全7件・全2構造でピーク時の手番は候補時点のプレイヤーと一致し、phase変化はなかった。
+E-010確認群の急拡大7件では捕獲手数ピークが平均1.71ply後、trajectory-ply重複除去後の2構造では平均1.0ply後だった。全7件・全2構造でピーク時の手番は候補時点のプレイヤーと一致し、phase変化はなかった。
 
 候補直後に捕獲選択肢構造が形成されるという時間順序は確認群でも一致した。ただし7件中6件が同一trajectory-plyであり、独立した形成例は2構造に限られる。
 
@@ -128,32 +141,56 @@ E-011ではC0とC3が正式`pass`、C1/C2は最低expansion件数不足だがRR 
 
 探索群では候補からピークまで手番側最大捕獲可能量が平均+3.0粒、相手側が平均-1.2粒。
 
-確認群の生の7件平均では手番側+2.57粒、相手側-0.86粒だった。`trajectoryHash + candidatePly`重複除去後の2構造平均でも手番側+1.5粒、相手側-0.5粒となり、平均方向は維持された。
+E-010確認群の生の7件平均では手番側+2.57粒、相手側-0.86粒だった。`trajectoryHash + candidatePly`重複除去後の2構造平均でも手番側+1.5粒、相手側-0.5粒となり、平均方向は維持された。
 
 ただし最大重複群6件は同一構造で`+3 / -1`を示し、もう1つの独立構造は`0 / 0`だった。したがって確認群で方向一致は観測されたが、2つの独立構造すべてに共通する現象とはまだ言えない。
 
 ## H15 — 捕獲分岐急拡大は未使用seedでも候補群に濃縮する
 
-状態: 効果方向は支持・事前登録上は未確認・独立性制約あり
+状態: **効果方向は複数未使用seed blockで支持・formal confirmationは未達**
 
-E-010の生の単位では候補急拡大率63.6%、対照3.0%、リスク比21.53。効果方向、最低急拡大件数、対照数、最低リスク比は通過したが、主解析候補数が11件で最低12件に1件届かなかった。
+E-010の生の単位では候補急拡大率63.6%、対照3.0%、リスク比21.53。効果方向、最低急拡大件数、対照数、最低リスク比は通過したが、主解析候補数が11件で最低12件に1件届かずformal `not-confirmed`。
 
-trajectory-ply重複除去後も候補40.0%、対照3.09%、リスク比12.96で濃縮は残った。ただし急拡大は2つの固有trajectory-plyのみで、6/7件が同一trajectoryだった。
+trajectory-ply重複除去後も候補40.0%、対照3.09%、リスク比12.96で濃縮は残ったが、急拡大は2つの固有trajectory-plyのみだった。
 
-したがって、未使用seedで同じ効果方向を観測したことは支持されるが、独立した構造例の広い再現とはまだ言えず、確認実験成功とも記録しない。
+E-017はさらに独立したseed `20263001–20264000` を使用し、trajectory-ply重複除去後候補42.86%、対照3.12%、RR 13.74、9固有expansion trajectoryを観測した。効果基準と候補構造availabilityは通過したが、unique control trajectory-ply 23306が最低30000に届かずformal `not-confirmed`。
+
+したがって「未使用seedでも濃縮方向が再観測される」はE-010とE-017の2独立blockで支持されるが、事前登録上の確認成功とは記録しない。
 
 ## H16 — 捕獲分岐急拡大の顕在化はsearch profileに依存する
 
-状態: **新規仮説・E-011から示唆・未検証**
+状態: **E-011から示唆・E-018事前登録済み・未検証**
 
 E-011ではphase2を使用したC0–C3の全条件で候補側濃縮方向が維持され、trajectory-ply重複除去後RRも7.31–11.70だった。一方、`bao / legacy / depth2`のC4では主解析A候補8件、expansion 0件、RR 0.00で、重複除去後もexpansion 0件だった。
 
-ただしC4は最低候補数・最低expansion数に未達の`insufficient`であり、この1条件だけからsearch profile依存性を確定しない。`phase2`対`legacy`を同一条件・十分なavailabilityで直接比較する別の事前登録実験が必要。
+ただしC4は最低候補数・最低expansion数に未達の`insufficient`であり、この1条件だけからsearch profile依存性を確定しない。
+
+E-017はphase2のみの独立確認でありH16の直接検定ではないが、9固有expansion trajectory-plyとdedup RR 13.74を観測した。E-017のformal判定はcontrol availability不足により`not-confirmed`であり、H16の証拠へ読み替えない。
+
+### E-018直接比較
+
+H16を直接検証するためE-018を事前登録した。
+
+- P2: `hard / bao / phase2 / depth 2`
+- LG: `hard / bao / legacy / depth 2`
+- 各2000局、合計4000局
+- shared seed: `20265001–20267000`
+- same seed / same random-opening boundaryをpaired
+- primary population: `pliesRemaining >= 9`
+- primary unit: paired shared-seed game
+- endpoint: eligible category-A `capture-branch-expansion`候補がゲーム内に1件以上あるか
+- primary test: two-sided exact McNemar
+- minimum discordant pairs: 20
+- alpha: 0.05
+- direction: P2-only > LG-only
+
+legacy expansion最低件数は要求しない。legacyで0件/低件数となること自体がH16と整合し得るためであり、この設計判断はE-018 data generation前に固定した。
+
+E-018 formal corpusは未承認・未生成。E-017の開始承認はE-018へ継承しない。
 
 ## 次の検証
 
-- E-011の正式`inconclusive`判定は固定し、結果後に閾値やglobal decision ruleを変更しない。
-- H16を追う場合は、`phase2`対`legacy`探索方式依存性を別実験として事前登録する。
-- E-017を1000局、seed`20263001–20264000`として事前登録済み。
-- E-017では`trajectoryHash + eventPly`を主解析単位とし、最低15固有candidate trajectory-ply、12固有candidate trajectory、5固有expansion trajectoryを要求する。
-- E-017の主効果条件は重複除去後RR 3以上かつ候補率が対照率を上回ること。2026-08-01 22:47 JSTに正式開始承認済みだが、固定ローカルexecution lock未生成のためformal 1000局は未実施である。
+- E-011正式`inconclusive`、E-017正式`not-confirmed`を固定し、結果後に閾値やdecision ruleを変更しない。
+- E-017の最低unique control trajectory-ply 30000を23306へ緩和しない。
+- E-018のpaired-condition runner、paired-opening/source integrity validator、exact McNemar evaluator、fixtureをformal data生成前に実装・検証する。
+- E-018正式4000局はE-018固有の別の明示的開始承認まで生成しない。
