@@ -100,10 +100,12 @@
 | D-090 | H16直接比較をE-018として各profile 2000局、shared seed `20265001–20267000`で事前登録する | 採用 | P2=`bao/phase2/depth2`、LG=`bao/legacy/depth2`、計4000局 |
 | D-091 | E-018主解析単位をpaired shared-seed gameとし、eligible expansion候補の有無をexact McNemarで比較する | 採用 | same seed/openingでsearch profile差を直接検定。two-sided alpha 0.05、discordant pair最低20、P2-only > LG-only |
 | D-092 | E-018ではlegacy側expansion最低件数を成功条件に置かない | 採用 | legacyで0件/低件数はH16整合観測となり得るため、最低expansion数要求で自動insufficient化しない |
-| D-093 | E-018 formal 4000局は別の明示的ユーザー承認まで開始しない | 採用 | E-017開始承認はE-018へ継承しない。GitHub Actions formal runも禁止 |
+| D-093 | E-018 formal 4000局は別の明示的ユーザー承認まで開始しない | 採用 | 2026-08-02 08:39 JSTにE-018固有の開始承認を受領。E-017開始承認は継承していない |
+| D-094 | E-018開始承認を事前登録条件・分析条件・判定条件の変更として扱わない | 採用 | 変更はexecution policyの状態と許可フラグのみ。局数、seed、search profile、primary unit、McNemar、alpha、direction、minimum discordant pairsを維持 |
+| D-095 | E-018 formal実行はrepository許可フラグ、完全一致トークン、fixed-local execution lockをすべて要求する | 採用 | 専用authorization commit `9c5a902f3fbe0df02975050f2648a2a08cefb109`で`formalExecutionAllowed=true`。GitHub Actions formal runは禁止のまま |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
-- E-018 fixed-local execution policy、runtime・hardware・source commit
+- E-018 execution lockのsource commit、runtime・hardware、preregistration/policy hash
