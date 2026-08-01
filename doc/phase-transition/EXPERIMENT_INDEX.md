@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 実験索引
 
-更新日: 2026-08-01
+更新日: 2026-08-02
 
 | ID | 実験 | 入力 | 実行コード / Notebook | 主出力 | 状態 |
 |---|---|---|---|---|---|
@@ -20,7 +20,8 @@
 | E-014 | 捕獲分岐形成過程 | 探索群急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
 | E-015 | E-010 trajectory重複感度 | E-010候補・対照・games.json | `analyze-confirmation-trajectory-duplication.js` | 重複除去率、アーキタイプ、重複群 | 完了・事後感度分析 |
 | E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
-| E-017 | 独立構造確認 | 1000局、base seed 20263001 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 事前登録・evaluator検証済み・正式承認済み・lock待ち |
+| E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
+| E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | 未実装 | paired game-level McNemar、構造副次比較 | **事前登録済み・formal未承認・未実施** |
 
 ## E-010 未使用seed確認実験
 
@@ -79,36 +80,11 @@
 - games per condition: 400
 - conditions: 5
 - total formal games: 2000
-- shared base seed: `20262001`
 - shared seed range: `20262001–20262400`
-- fixed repository path: `/home/oruorane/github/bao-la-kiswahili-game`
 - locked source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
 - Node.js: `v24.6.0`
 - platform: Linux
-- run order: `C0 → C1 → C2 → C3 → C4`
 - primary population: `pliesRemaining >= 9`
-- fixed expansion rule: `expansionDelta=3 / persistenceFraction=0.5`
-- condition minimums:
-  - primary candidates: 12
-  - expansion candidates: 5
-  - controls: 10000
-  - risk ratio: 3
-  - candidate rate > control rate
-
-### E-011 formal integrity
-
-`run-phase-transition-robustness-formal.js --phase verify`:
-
-- mode: `formal`
-- expected games per condition: 400
-- condition count: 5
-- all conditions present: true
-- unique condition config hashes: true
-- common source commit: true
-- paired opening hashes: true
-- condition identity clean: true
-- errors: none
-- valid: true
 
 ### E-011 condition results
 
@@ -122,12 +98,6 @@
 
 Formal global decision: **`inconclusive`**
 
-- `trajectorySensitivityComplete: true`
-- pass: 2
-- insufficient: 3
-- fail: 0
-- evaluator outputs were generated successfully before the known `inconclusive` exit-code-2 wrapper anomaly.
-
 ### E-011 trajectory-ply sensitivity
 
 | Condition | unique candidates | unique expansion | unique controls | unique control expansion | dedup RR |
@@ -138,26 +108,18 @@ Formal global decision: **`inconclusive`**
 | C3 | 11 | 4 | 12160 | 378 | 11.70 |
 | C4 | 6 | 0 | 11412 | 180 | 0.00 |
 
-Interpretation:
-
-- all four `phase2` conditions retain candidate-side enrichment after trajectory-ply deduplication;
-- C1/C2 fail only minimum expansion availability, not RR/direction;
-- C4 (`legacy`) has no expansion candidate in raw or deduplicated endpoints;
-- this suggests search-profile dependence but does not change the preregistered E-011 `inconclusive` decision.
+Interpretation: phase2条件C0–C3では重複除去後も候補側濃縮方向が残り、legacy C4ではexpansion候補0。ただしC4はavailability不足のためsearch依存性を確定せず、H16として別実験へ分離した。
 
 Final bundle:
 
 - archive: `e011-final-formal-evaluation.tar.gz`
 - SHA-256: `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
-- archive audit: SHA matches, no unsafe tar members, formal integrity present, evaluation outputs present, all five trajectory sensitivity summaries present.
 
 ## E-016 E-010捕獲分岐形成確認
 
 - raw analysisVersion: `10-capture-branch-formation`
 - trajectory analysisVersion: `14-confirmation-capture-branch-formation-trajectory-sensitivity`
 - input: E-010 capture-branch-expansion 7 candidates
-- window: 8 ply
-- raw unit: 7 candidate rows
 - sensitivity unit: unique `trajectoryHash + candidatePly`
 - unique sensitivity rows: 2
 - raw mean peak distance: 1.71 ply
@@ -166,54 +128,108 @@ Final bundle:
 - deduplicated maximum-capture asymmetry: actor +1.50 / opponent -0.50
 - phase changes: raw 0/7, deduplicated 0/2
 - interpretation: direction reproduced, but six rows are one repeated trajectory-ply and only one of two structures has non-zero asymmetry
-- source workflow commit: `174ff668d7ada3d91041fcbb8db656233e558122`
 - Actions run: `30642671291`
 - artifact digest: `sha256:71b10449821604677ab94a713c580a30cf2d8c3890c7d77ccc03c66f4287edf6`
-- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e010-confirmation-capture-formation.md`
 
 ## E-017 独立構造確認
 
 - analysisVersion: `15-independent-structural-confirmation`
-- status: `preregistered / evaluator-validated / infrastructure-validated / formal-approved / awaiting-local-lock`
+- status: `preregistered / evaluator-validated / infrastructure-validated / formal-complete / not-confirmed`
 - preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
 - preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
 - evaluator checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-evaluator-validation.md`
 - infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-formal-infrastructure.md`
 - authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md`
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e017-formal-completion.md`
 - authorization time: `2026-08-01 22:47 JST`
 - authorization commit: `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`
 - games: 1000
-- base seed: `20263001`
 - seed range: `20263001–20264000`
 - condition: `hard / bao / phase2 / depth 2`
 - primary population: `pliesRemaining >= 9`
 - primary unit: unique `trajectoryHash + eventPly`
-- raw candidate rows: secondary endpoint
-- minimum structural availability:
-  - raw primary candidate rows: 30
-  - unique candidate trajectory-ply: 15
-  - unique candidate trajectories: 12
-  - unique expansion trajectory-ply: 5
-  - unique expansion trajectories: 5
-  - unique control trajectory-ply: 30000
-- primary effect criteria:
-  - deduplicated risk ratio: 3以上
-  - deduplicated candidate rate > control rate
-- implementation:
-  - evaluator: `evaluate-phase-transition-independent-confirmation.js`
-  - regression test: `phase-transition-independent-confirmation.test.js`
-  - formal runner: `run-phase-transition-independent-confirmation-formal.js`
-  - CI: `.github/workflows/phase-transition-independent-confirmation.yml`
-- validation:
-  - validated commit: `9190998507e144d239adb55cadc3f61860a005be`
-  - Actions run: `30646973255`
-  - result: `success`
-- execution:
-  - formal 1000-game run allowed in GitHub Actions: no
-  - separate explicit approval required: satisfied on `2026-08-01 22:47 JST`
-  - repository `formalExecutionAllowed`: true
-  - fixed-local execution lock: not generated
-  - formal corpus: `0 / 1000`
+
+### E-017 formal integrity
+
+- observations: 56294
+- games: 1000
+- exact seed sequence: true
+- unique game IDs: true
+- all trajectory hashes present: true
+- source commit matches execution lock: true
+- preregistration/policy hash present in lock: true
+- errors: none
+- mode: `formal`
+- valid: `true`
+
+### E-017 formal result
+
+| criterion / metric | threshold | observed | result |
+|---|---:|---:|---|
+| raw primary candidates | >=30 | 53 | pass |
+| unique candidate trajectory-ply | >=15 | 21 | pass |
+| unique candidate trajectories | >=12 | 19 | pass |
+| unique expansion trajectory-ply | >=5 | 9 | pass |
+| unique expansion trajectories | >=5 | 9 | pass |
+| unique control trajectory-ply | >=30000 | 23306 | **fail** |
+| deduplicated RR | >=3 | 13.74 | pass |
+| dedup candidate rate > control rate | required | 42.86% > 3.12% | pass |
+
+Raw endpoint:
+
+- candidates: 53
+- expansion: 37
+- controls: 40956
+- control expansion: 1235
+- candidate rate: 69.81%
+- control rate: 3.02%
+- RR: 23.15
+
+Trajectory-ply deduplicated endpoint:
+
+- candidates: 21
+- expansion: 9
+- controls: 23306
+- control expansion: 727
+- candidate rate: 42.86%
+- control rate: 3.12%
+- RR: 13.74
+- unique candidate trajectories: 19
+- unique expansion trajectories: 9
+- unique expansion archetypes: 9
+- largest trajectory-ply multiplicity: 24
+
+Formal decision: **`not-confirmed`**
+
+唯一の不通過はminimum unique control trajectory-ply 30000に対する23306。結果後に閾値を緩和せず、強いRRや構造的再現を理由に`confirmed`へ読み替えない。
+
+`preregistrationStatus: preregistered-not-run`というevaluator出力はconfig由来の状態ラベルであり、formal execution状態の正本ではない。execution lockとformal integrity `mode=formal / valid=true`で実行成立を確認する。
+
+## E-018 search profile依存性直接比較
+
+- hypothesis: H16
+- analysisVersion: `16-search-profile-dependence`
+- status: **preregistered / formal-not-approved / not-run**
+- preregistration: `config/experiments/phase-transition-search-profile-dependence-v1.json`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
+- conditions:
+  - P2: `hard / bao / phase2 / depth 2`
+  - LG: `hard / bao / legacy / depth 2`
+- games: 2000 / condition, 4000 total
+- shared seed: `20265001–20267000`
+- paired random-opening boundary required: yes
+- primary population: `pliesRemaining >= 9`
+- primary unit: paired shared-seed game
+- game endpoint: eligible A `capture-branch-expansion` candidateが1件以上あるか
+- primary test: two-sided exact McNemar
+- alpha: 0.05
+- minimum discordant pairs: 20
+- direction: P2-only > LG-only
+- legacy minimum expansion count: none
+- structural `trajectoryHash + eventPly` comparison: secondary
+- formal GitHub Actions run: prohibited
+- separate explicit E-018 approval required: yes
+- formal corpus: not generated
 
 ## 共通データ識別情報
 
@@ -234,18 +250,21 @@ Final bundle:
 
 - studyVersion: `0.4.1`
 - games: 400/condition, 2000 total
-- conditions: C0–C4
-- formal authorization: approved
-- locked source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
+- seed range: `20262001–20262400`
 - formal integrity: valid
 - formal decision: `inconclusive`
-- final bundle SHA-256: `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
 
 ### E-017独立構造確認群
 
 - studyVersion: `0.4.1`
-- games: 1000 planned
+- games: 1000
 - seed range: `20263001–20264000`
-- formal authorization: approved
-- formal execution: awaiting fixed-local execution lock
-- formal corpus: `0 / 1000`
+- formal integrity: valid
+- formal decision: `not-confirmed`
+
+### E-018 search profile比較群
+
+- studyVersion: `0.4.1`
+- games: 2000/condition planned, 4000 total planned
+- seed range: `20265001–20267000`
+- formal execution: not approved / not run
