@@ -3,6 +3,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const Artifacts = require("./verify-phase-transition-artifacts.js");
 const E018 = require("./lib/phase-transition-search-profile-dependence.js");
 
 function integerArg(value, name, minimum = 0) {
@@ -16,6 +17,7 @@ function parseArgs(argv) {
     config: "config/experiments/phase-transition-search-profile-dependence-v1.json",
     input: "artifacts/phase-transition/search-profile-dependence-v1-fixture",
     fixtureGames: null,
+    lock: null,
     output: null,
   };
   for (let index = 0; index < argv.length; index += 2) {
@@ -25,13 +27,19 @@ function parseArgs(argv) {
     if (key === "--config") options.config = value;
     else if (key === "--input") options.input = value;
     else if (key === "--output") options.output = value;
+    else if (key === "--lock") options.lock = value;
     else if (key === "--fixture-games") options.fixtureGames = integerArg(value, key, 1);
     else throw new Error(`Unknown argument: ${key}`);
   }
-  if (options.fixtureGames === null) {
-    throw new Error("E-018 verifier is fixture-only until formal infrastructure is separately added; --fixture-games is required.");
+  if (options.fixtureGames === null && !options.lock) {
+    throw new Error("Formal E-018 verification requires --lock; fixture verification requires --fixture-games.");
   }
-  options.output ||= path.join(options.input, "integrity");
+  if (options.fixtureGames !== null && options.lock) {
+    throw new Error("Use either fixture verification or formal lock verification, not both.");
+  }
+  options.output ||= options.fixtureGames === null
+    ? "artifacts/local/phase-transition-search-profile-dependence-v1/integrity"
+    : path.join(options.input, "integrity");
   return options;
 }
 
@@ -61,22 +69,48 @@ function verifyGameFile(filePath, condition, expectedSeed) {
   if (typeof game.openingStateHash !== "string" || game.openingStateHash.length === 0) {
     fail(errors, `${filePath}: openingStateHash missing`);
   }
+  if (typeof game.trajectoryHash !== "string" || game.trajectoryHash.length === 0) {
+    fail(errors, `${filePath}: trajectoryHash missing`);
+  }
   return { game, errors };
 }
 
 function verify(options) {
   const loaded = E018.loadPreregistration(options.config);
-  const expectedGames = options.fixtureGames;
+  const mode = options.fixtureGames === null ? "formal" : "fixture";
+  const expectedGames = mode === "formal"
+    ? loaded.config.corpus.gamesPerCondition
+    : options.fixtureGames;
   if (expectedGames > loaded.config.corpus.gamesPerCondition) {
     throw new Error("fixtureGames exceeds preregistered gamesPerCondition");
   }
   const input = path.resolve(options.input);
+  const lock = mode === "formal" ? readJson(path.resolve(options.lock)) : null;
   const errors = [];
   const conditions = [];
   const configHashes = new Set();
   const sourceCommits = new Set();
   const openingHashesByIndex = new Map();
   const seedsByCondition = new Map();
+  const artifactResults = {};
+
+  if (mode === "formal") {
+    if (lock.experimentId !== loaded.config.experimentId) fail(errors, "Execution lock experimentId mismatch");
+    if (lock.analysisVersion !== loaded.config.analysisVersion) fail(errors, "Execution lock analysisVersion mismatch");
+    if (lock.preregistration?.sha256 !== loaded.sha256) fail(errors, "Execution lock preregistration hash mismatch");
+    if (typeof lock.executionPolicy?.sha256 !== "string" || lock.executionPolicy.sha256.length !== 64) {
+      fail(errors, "Execution lock policy hash missing");
+    }
+    if (E018.canonicalJson(lock.corpus) !== E018.canonicalJson(loaded.config.corpus)) {
+      fail(errors, "Execution lock corpus differs from preregistration");
+    }
+    if (E018.canonicalJson(lock.primaryEndpoint) !== E018.canonicalJson(loaded.config.primaryEndpoint)) {
+      fail(errors, "Execution lock primary endpoint differs from preregistration");
+    }
+    if (E018.canonicalJson(lock.decisionRule) !== E018.canonicalJson(loaded.config.decisionRule)) {
+      fail(errors, "Execution lock decision rule differs from preregistration");
+    }
+  }
 
   for (const rawCondition of loaded.config.corpus.conditions) {
     const condition = {
@@ -90,6 +124,14 @@ function verify(options) {
       fail(errors, `${condition.id}: missing manifest.json or games.json`);
       continue;
     }
+    if (mode === "formal") {
+      try {
+        artifactResults[condition.id] = Artifacts.verifyArtifacts(conditionRoot);
+      } catch (error) {
+        artifactResults[condition.id] = { error: error.message };
+        fail(errors, `${condition.id}: artifact verification failed: ${error.message}`);
+      }
+    }
     const manifest = readJson(manifestPath);
     const games = readJson(gamesPath);
     if (manifest.completedGames !== expectedGames || games.length !== expectedGames) {
@@ -98,11 +140,14 @@ function verify(options) {
     if (manifest.config?.experiment?.experimentId !== "E-018") {
       fail(errors, `${condition.id}: experimentId mismatch`);
     }
-    if (manifest.config?.execution?.mode !== "fixture") {
-      fail(errors, `${condition.id}: non-fixture execution detected`);
+    if (manifest.config?.execution?.mode !== mode) {
+      fail(errors, `${condition.id}: execution mode mismatch`);
     }
-    if (manifest.config?.execution?.formalExecutionApproved !== false) {
-      fail(errors, `${condition.id}: formal approval must remain false`);
+    if (manifest.config?.execution?.formalExecutionApproved !== (mode === "formal")) {
+      fail(errors, `${condition.id}: formal approval metadata mismatch`);
+    }
+    if (manifest.config?.execution?.plannedGamesPerCondition !== loaded.config.corpus.gamesPerCondition) {
+      fail(errors, `${condition.id}: planned game count mismatch`);
     }
     if (manifest.config?.condition?.id !== condition.id) {
       fail(errors, `${condition.id}: manifest condition id mismatch`);
@@ -124,6 +169,9 @@ function verify(options) {
     }
     configHashes.add(manifest.configHash);
     sourceCommits.add(manifest.sourceCommit);
+    if (mode === "formal" && manifest.sourceCommit !== lock.environment?.sourceCommit) {
+      fail(errors, `${condition.id}: source commit differs from execution lock`);
+    }
     const seeds = [];
 
     for (let index = 0; index < expectedGames; index += 1) {
@@ -155,29 +203,37 @@ function verify(options) {
 
   const p2Seeds = seedsByCondition.get("P2") || [];
   const lgSeeds = seedsByCondition.get("LG") || [];
-  if (E018.canonicalJson(p2Seeds) !== E018.canonicalJson(lgSeeds)) {
-    fail(errors, "P2 and LG seed sequences differ");
-  }
+  const exactPairedSeedSequence = E018.canonicalJson(p2Seeds) === E018.canonicalJson(lgSeeds);
+  if (!exactPairedSeedSequence) fail(errors, "P2 and LG seed sequences differ");
   if (conditions.length !== 2) fail(errors, "Both E-018 conditions must be present");
   if (configHashes.size !== 2) fail(errors, "Condition config hashes must be unique");
-  if (sourceCommits.size > 1) fail(errors, "Source commit differs across conditions");
+  if (sourceCommits.size !== 1) fail(errors, "Source commit must be common across both conditions");
 
   const result = {
     experimentId: "E-018",
     analysisVersion: loaded.config.analysisVersion,
     preregistrationConfigSha256: loaded.sha256,
-    mode: "fixture",
+    mode,
     expectedGamesPerCondition: expectedGames,
     conditions,
+    artifactResults: mode === "formal" ? artifactResults : null,
     checks: {
       bothConditionsPresent: conditions.length === 2,
       uniqueConditionConfigHashes: configHashes.size === 2,
-      commonSourceCommit: sourceCommits.size <= 1,
-      exactPairedSeedSequence: E018.canonicalJson(p2Seeds) === E018.canonicalJson(lgSeeds),
+      commonSourceCommit: sourceCommits.size === 1,
+      sourceCommitMatchesLock: mode === "fixture" || !errors.some((message) => message.includes("source commit differs")),
+      exactPairedSeedSequence,
       pairedOpeningHashes: !errors.some((message) => message.includes("paired opening hash")),
       conditionIdentityClean: !errors.some((message) => message.includes("identity mismatch")
         || message.includes("source condition mismatch")),
-      formalExecutionDisabled: !errors.some((message) => message.includes("formal approval")),
+      trajectoryHashesPresent: !errors.some((message) => message.includes("trajectoryHash missing")),
+      executionModeCorrect: !errors.some((message) => message.includes("execution mode mismatch")
+        || message.includes("formal approval metadata mismatch")),
+      lockPreregistrationHash: mode === "fixture" || lock.preregistration?.sha256 === loaded.sha256,
+      lockPolicyHashPresent: mode === "fixture"
+        || (typeof lock.executionPolicy?.sha256 === "string" && lock.executionPolicy.sha256.length === 64),
+      artifactVerification: mode === "fixture"
+        || loaded.config.corpus.conditions.every((condition) => !artifactResults[condition.conditionId]?.error),
     },
     errors,
     valid: errors.length === 0,
