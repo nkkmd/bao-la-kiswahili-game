@@ -39,13 +39,16 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-011 combined evaluatorによる正式全体判定
 - E-017独立構造確認実験の1000局事前登録
 - E-017 trajectory-ply主解析evaluatorの実装とGitHub Actions検証
+- E-017固定ローカル実行policy、execution lock generator、guarded formal runner
+- E-017正式1000局の明示的開始承認
 
 未実施:
 
+- E-017固定ローカルexecution lock生成
 - E-017正式1000局
 - E-011で浮上した`phase2`対`legacy`探索方式依存性の追加確認実験
 
-E-011は正式実験まで完了し、正式全体判定は`inconclusive`である。E-017は正式実行未承認であり、E-011の承認はE-017へ継承しない。GitHub Actionsでは正式corpusを生成しない。
+E-011は正式実験まで完了し、正式全体判定は`inconclusive`である。E-017は2026-08-01 22:47 JSTに正式開始承認済みだが、固定ローカルexecution lock未生成でありformal corpusはまだ生成していない。E-011の承認をE-017へ継承したものではない。GitHub Actionsでは正式corpusを生成しない。
 
 ## 主要な確定事項
 
@@ -221,7 +224,15 @@ combined evaluatorは`robustness-result.json`等を正常生成し、`decision: 
 - Actions run: `30646973255`
 - result: `success`
 
-正式1000局は生成していない。別の明示的開始承認を要求する。
+### 正式開始承認
+
+- authorization time: `2026-08-01 22:47 JST`
+- authorization commit: `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`
+- policy status: `approved-awaiting-local-lock`
+- `formalExecutionAllowed: true`
+- checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md`
+
+正式1000局はまだ生成していない。固定ローカルexecution lock生成成功後にのみ開始する。
 
 ## 再現情報
 
@@ -256,17 +267,23 @@ combined evaluatorは`robustness-result.json`等を正常生成し、`decision: 
 ### E-017
 
 - analysisVersion: `15-independent-structural-confirmation`
-- status: `preregistered / evaluator-validated / formal-not-approved`
+- status: `preregistered / evaluator-validated / formal-approved / awaiting-local-lock`
 - preregistration: `config/experiments/phase-transition-independent-confirmation-v2.json`
 - preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-independent-confirmation-preregistration.md`
 - evaluator checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-evaluator-validation.md`
+- execution policy: `config/experiments/phase-transition-independent-confirmation-execution-policy-v1.json`
+- authorization time: `2026-08-01 22:47 JST`
+- authorization commit: `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md`
+- formal corpus: `0 / 1000`
 
 ## 次工程
 
 1. E-011の`inconclusive`判定を固定し、結果後に閾値やglobal decision ruleを変更しない。
-2. evaluatorの`inconclusive` exit code 2とformal runnerの例外表示のinterface問題を、formal結果と分離した実装修正候補として扱う。
-3. `phase2`対`legacy`探索方式依存性を追う場合は、E-011を再解釈せず別実験として事前登録する。
-4. E-017は別の明示的開始承認まで正式1000局corpusを生成しない。
+2. 固定ローカル機でE-017 execution lockを生成し、source commit、runtime、hardware、事前登録・policy hashを固定する。
+3. lock成功後にのみE-017正式1000局を実行し、`analyze → verify → evaluate`まで完了する。
+4. E-017完了後、`phase2`対`legacy`探索方式依存性をH16の別事前登録実験として設計する。
+5. evaluatorの`inconclusive` exit code 2とformal runnerの例外表示のinterface問題は、formal結果と分離した実装修正候補として扱う。
 
 ## 研究データ識別情報
 
@@ -300,4 +317,5 @@ combined evaluatorは`robustness-result.json`等を正常生成し、`decision: 
 - studyVersion: `0.4.1`
 - games: 1000 planned
 - seed range: `20263001–20264000`
-- formal execution: not approved
+- formal execution: approved / awaiting local execution lock
+- formal corpus: `0 / 1000`
