@@ -13,8 +13,8 @@
 | E-007 | 優先候補盤面監査 | 同上 | `05-candidate-board-audit.ipynb` | 主要6候補前後局面 | 完了 |
 | E-008 | 強制捕獲レジーム分析 | pilot-v2 / A候補 | `analyze-forced-capture-regimes.js` | レジーム分類 | 完了 |
 | E-009 | 候補手質的特徴量 | pilot-v2対局 / A候補 | `analyze-phase-transition-move-quality.js` | 捕獲量、relay長、静的評価差 | 完了 |
-| E-010 | 未使用seed確認実験 | 200局、base seed 20261001 | `evaluate-phase-transition-confirmation.js` | 事前登録判定、候補・対照率 | 完了・not-confirmed |
-| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001 | `run-phase-transition-robustness-formal.js` | 条件別濃縮、全体頑健性判定 | 正式開始承認済み・execution lock待ち |
+| E-010 | 未使用seed確認実験 | 200局、base seed 20261001 | `evaluate-phase-transition-confirmation.js` | 事前登録判定、候補・対照率 | 完了・`not-confirmed` |
+| E-011 | AI・depth頑健性 | 5条件×400局、shared seed 20262001–20262400 | `run-phase-transition-robustness-formal.js` | 条件別濃縮、trajectory感度、全体頑健性判定 | 完了・formal `inconclusive` |
 | E-012 | 対照群・反例分析 | 4127候補外ply | `analyze-forced-capture-regime-controls.js` | 基準率・27設定感度表 | 完了 |
 | E-013 | 終局近傍効果分離 | E-012候補・対照 | `terminal-distance-summary.js` | 終局距離層別表 | 完了 |
 | E-014 | 捕獲分岐形成過程 | 探索群急拡大5区間 | `analyze-capture-branch-formation.js` | 1–8ply時系列、ピーク差分 | 完了 |
@@ -62,47 +62,31 @@
 - deduplicated control expansion: 218/7061 = 3.09%
 - deduplicated risk ratio: 12.96
 - preregistered E-010 decision changed: no
-- outputs:
-  - `trajectory-duplication-summary.json`
-  - `primary-candidate-events.csv`
-  - `trajectory-ply-deduplicated-candidates.csv`
-  - `trajectory-ply-deduplicated-controls.csv`
-  - `primary-candidate-archetypes.csv`
-  - `candidate-duplicate-groups.csv`
 
 ## E-011 AI条件・探索深度横断頑健性実験
 
 - analysisVersion: `12-ai-depth-robustness`
-- status: `preregistered / infrastructure-validated / formal-approved / awaiting-local-lock`
+- status: `preregistered / infrastructure-validated / formal-complete / inconclusive`
 - authorization time: `2026-08-01 06:09 JST`
 - authorization commit: `a0378010607aebad76420e0d377ee1b88166d861`
-- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md`
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-formal-completion.md`
 - preregistration config: `config/experiments/phase-transition-robustness-v1.json`
+- preregistration SHA-256: `65253e719463b4e60527bdb96cb4ce234aae76df39d5d2727bd9d09849c7eb69`
 - trajectory supplement: `config/experiments/phase-transition-robustness-v1-trajectory-supplement.json`
 - execution policy: `config/experiments/phase-transition-robustness-execution-policy-v1.json`
+- execution-policy SHA-256: `97fa235e340b527919f9414c6859ce63b74cc5a930ce7e9893c66c2ddb02698b`
 - execution runbook: `doc/phase-transition/E011_FORMAL_EXECUTION.md`
-- checkpoint: `doc/phase-transition/checkpoints/2026-07-31-ai-depth-robustness-preregistration.md`
-- infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e011-infrastructure-and-e010-trajectory-audit.md`
 - games per condition: 400
 - conditions: 5
-- total planned games: 2000
+- total formal games: 2000
 - shared base seed: `20262001`
 - shared seed range: `20262001–20262400`
 - fixed repository path: `/home/oruorane/github/bao-la-kiswahili-game`
-- expected Node.js: `v24.6.0`
-- run environment: fixed local Linux environment
+- locked source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
+- Node.js: `v24.6.0`
+- platform: Linux
 - run order: `C0 → C1 → C2 → C3 → C4`
-- formal execution allowed: `true`
-- execution lock: 未生成
-- C0 corpus: `0 / 400`
-- total formal corpus: `0 / 2000`
-- condition grid:
-  - C0: `bao / phase2 / depth 2`
-  - C1: `bao / phase2 / depth 1`
-  - C2: `bao / phase2 / depth 3`
-  - C3: `bao-v2 / phase2 / depth 2`
-  - C4: `bao / legacy / depth 2`
-- fixed primary population: `pliesRemaining >= 9`
+- primary population: `pliesRemaining >= 9`
 - fixed expansion rule: `expansionDelta=3 / persistenceFraction=0.5`
 - condition minimums:
   - primary candidates: 12
@@ -110,41 +94,62 @@
   - controls: 10000
   - risk ratio: 3
   - candidate rate > control rate
-- implementation status:
-  - multi-condition runner: 完了
-  - condition integrity validator: 完了
-  - combined evaluator: 完了
-  - trajectory sensitivity output: 完了
-  - regression fixture: 完了
-  - execution lock generator: 完了
-  - guarded formal runner: 完了
-  - repository approval flag: enabled
-  - fixed-local execution lock: 未生成
-  - formal 400×5 corpus: 未実施
-- execution guards:
-  - GitHub Actions拒否
-  - repository path固定
-  - branch固定
-  - clean worktree必須
-  - Node.js version固定
-  - source commitをexecution lockへ固定
-  - formal corpus rootのgit-ignore実照合
-  - preregistrationとexecution policyのパス・SHA-256再照合
-  - C0–C4順序強制
-  - repository許可フラグと完全一致トークンの二重承認
-  - formal integrity成功前の全体評価拒否
-- fixture validation:
-  - commit: `5ebc7800d1721179214d896f9587345fe55ebe08`
-  - run: `30641768496`
-  - artifact digest: `sha256:3b909d26b5f404b55318f157319fb108d4c03ee7d542695ba156ad400cc9ac26`
-  - result: success
-- formal guard validation:
-  - isolated Git repository test: success
-  - pre-authorization branch-head GitHub Actions: success
-- launch constraint:
-  - current assistant execution environment does not contain `/home/oruorane/github/bao-la-kiswahili-game`
-  - no substitute environment is permitted
-  - fixed-local machine must pull latest head and generate execution lock before C0 starts
+
+### E-011 formal integrity
+
+`run-phase-transition-robustness-formal.js --phase verify`:
+
+- mode: `formal`
+- expected games per condition: 400
+- condition count: 5
+- all conditions present: true
+- unique condition config hashes: true
+- common source commit: true
+- paired opening hashes: true
+- condition identity clean: true
+- errors: none
+- valid: true
+
+### E-011 condition results
+
+| Condition | evaluator | search | depth | A candidates | expansion | controls | candidate rate | control rate | RR | status |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| C0 | bao | phase2 | 2 | 16 | 9 | 16395 | 56.25% | 2.95% | 19.09 | `pass` |
+| C1 | bao | phase2 | 1 | 15 | 2 | 15679 | 13.33% | 2.05% | 6.49 | `insufficient` |
+| C2 | bao | phase2 | 3 | 12 | 3 | 15801 | 25.00% | 1.75% | 14.26 | `insufficient` |
+| C3 | bao-v2 | phase2 | 2 | 19 | 11 | 16437 | 57.89% | 2.88% | 20.08 | `pass` |
+| C4 | bao | legacy | 2 | 8 | 0 | 15412 | 0.00% | 1.68% | 0.00 | `insufficient` |
+
+Formal global decision: **`inconclusive`**
+
+- `trajectorySensitivityComplete: true`
+- pass: 2
+- insufficient: 3
+- fail: 0
+- evaluator outputs were generated successfully before the known `inconclusive` exit-code-2 wrapper anomaly.
+
+### E-011 trajectory-ply sensitivity
+
+| Condition | unique candidates | unique expansion | unique controls | unique control expansion | dedup RR |
+|---|---:|---:|---:|---:|---:|
+| C0 | 8 | 2 | 12185 | 387 | 7.87 |
+| C1 | 13 | 2 | 11407 | 240 | 7.31 |
+| C2 | 10 | 2 | 11695 | 213 | 10.98 |
+| C3 | 11 | 4 | 12160 | 378 | 11.70 |
+| C4 | 6 | 0 | 11412 | 180 | 0.00 |
+
+Interpretation:
+
+- all four `phase2` conditions retain candidate-side enrichment after trajectory-ply deduplication;
+- C1/C2 fail only minimum expansion availability, not RR/direction;
+- C4 (`legacy`) has no expansion candidate in raw or deduplicated endpoints;
+- this suggests search-profile dependence but does not change the preregistered E-011 `inconclusive` decision.
+
+Final bundle:
+
+- archive: `e011-final-formal-evaluation.tar.gz`
+- SHA-256: `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
+- archive audit: SHA matches, no unsafe tar members, formal integrity present, evaluation outputs present, all five trajectory sensitivity summaries present.
 
 ## E-016 E-010捕獲分岐形成確認
 
@@ -165,13 +170,6 @@
 - Actions run: `30642671291`
 - artifact digest: `sha256:71b10449821604677ab94a713c580a30cf2d8c3890c7d77ccc03c66f4287edf6`
 - checkpoint: `doc/phase-transition/checkpoints/2026-08-01-e010-confirmation-capture-formation.md`
-- outputs:
-  - `capture-branch-formation-timeline.csv`
-  - `capture-branch-formation-deltas.csv`
-  - `summary.json`
-  - `trajectory-sensitive-summary.json`
-  - `trajectory-ply-deduplicated-deltas.csv`
-  - `formation-duplicate-groups.csv`
 
 ## E-017 独立構造確認
 
@@ -197,12 +195,6 @@
 - primary effect criteria:
   - deduplicated risk ratio: 3以上
   - deduplicated candidate rate > control rate
-- sample-size basis:
-  - E-010 unique candidate trajectory-ply: 5/200
-  - E-010 unique candidate trajectories: 4/200
-  - E-010 unique expansion trajectory-ply: 2/200
-  - selected 1000 games availability four-criterion simple independent product: 93.8121%
-  - planning approximation only; counts are correlated
 - implementation:
   - evaluator: `evaluate-phase-transition-independent-confirmation.js`
   - regression test: `phase-transition-independent-confirmation.test.js`
@@ -210,7 +202,6 @@
 - validation:
   - validated commit: `9190998507e144d239adb55cadc3f61860a005be`
   - Actions run: `30646973255`
-  - job: `evaluator`
   - result: `success`
 - execution:
   - formal 1000-game run allowed in GitHub Actions: no
@@ -235,16 +226,17 @@
 ### E-011頑健性群
 
 - studyVersion: `0.4.1`
-- configHash: 未生成
-- games: 400/condition
+- games: 400/condition, 2000 total
 - conditions: C0–C4
 - formal authorization: approved
-- execution lock: 未生成
-- generated games: 0
+- locked source commit: `ed61d7214967b95535d9f30f8fa47480e2ea5ecb`
+- formal integrity: valid
+- formal decision: `inconclusive`
+- final bundle SHA-256: `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
 
 ### E-017独立構造確認群
 
 - studyVersion: `0.4.1`
-- configHash: 未生成
-- games: 1000
+- games: 1000 planned
 - seed range: `20263001–20264000`
+- formal execution: not approved
