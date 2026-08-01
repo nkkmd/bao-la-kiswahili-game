@@ -882,3 +882,75 @@ H16ではlegacyで0件または極低率となること自体が仮説整合的�
 - exact McNemar evaluatorと構造副次解析を実装する。
 - fixtureとGitHub Actionsで実装契約のみ検証する。
 - **E-018 formal 4000局は別の明示的開始承認まで生成しない。**
+
+## 2026-08-02 — E-018 formal infrastructure監査完了
+
+E-018の事前登録条件を変更せず、formal 4000局を開始する直前までの実行基盤を実装・監査した。
+
+### 実装
+
+既存fixture runner、pair builder、McNemar evaluator、structural secondaryに加えて次を整備した。
+
+- `tools/experiments/run-phase-transition-search-profile-dependence-formal.js`
+- `tools/experiments/verify-phase-transition-search-profile-dependence.js` formal mode
+- `test/phase-transition-search-profile-dependence-formal.test.js`
+- `.github/workflows/phase-transition-search-profile-dependence.yml` formal-guard regression coverage
+
+formal runnerは`status / run / analyze / verify / evaluate`を分離し、GitHub Actionsでのformal runを拒否する。execution lock後のsource commit、branch、clean worktree、Node.js、preregistration hash、execution-policy hash、locked corpus、primary endpoint、decision ruleの差し替えを拒否する。
+
+formal verifierはP2/LG各2000局についてartifact hash、exact seed sequence、common source、source-lock一致、paired opening hash、condition identity、trajectory hash、config hash分離、lockのpreregistration/policy hashを監査する。
+
+formal evaluationはintegrity `mode=formal / valid=true`通過後にのみ実行できる。paired endpointまたはrequired output構築失敗は事前登録どおり`inconclusive`として扱う。structural secondaryはprimary McNemar判定を置き換えない。
+
+### 実行環境予防措置
+
+E-017でPython `__pycache__/`がclean-worktree guardを停止させたため、E-018 formal分析時の同種の非科学的停止を防ぐ目的で`.gitignore`に`__pycache__/`と`*.py[cod]`を追加した。
+
+これはPython bytecode cacheのみを対象とする運用上の変更であり、E-018の局数、seed、search profile、候補検出、分類閾値、primary unit、検定、alpha、direction、minimum discordant pairs、decision ruleを変更していない。
+
+### GitHub Actions検証
+
+- validated implementation head: `c37b0e3d00b11d0d9563a815dbb653297503a90d`
+- workflow: `Phase Transition Search Profile Dependence`
+- Actions run: `30723040531`
+- job: `fixture`
+- result: **success**
+
+成功した工程:
+
+- evaluator / pair-builder / preregistration / formal-guard regression tests
+- paired two-game fixture generation
+- paired fixture integrity verification
+- P2/LG candidate/control construction
+- paired game-level endpoint construction
+- preregistered structural secondary
+- artifact upload
+
+GitHub Actionsでは2局fixtureのみを生成し、formal corpusは生成していない。
+
+### Formal state
+
+- execution policy status: `prepared-not-approved`
+- `formalExecutionAllowed: false`
+- E-018 formal approval: **not granted**
+- execution lock: formal run用には未生成
+- P2 corpus: `0 / 2000`
+- LG corpus: `0 / 2000`
+- total formal corpus: `0 / 4000`
+- H16 formal result: none
+
+E-017承認は継承していない。
+
+E-011 formal global decisionは**`inconclusive`**、E-017 formal decisionは**`not-confirmed`**のまま固定する。E-011 C4のlegacy 0 expansionやE-017 phase2 enrichmentをE-018の正式結果へ読み替えない。
+
+checkpoint:
+
+- `doc/phase-transition/checkpoints/2026-08-02-e018-formal-infrastructure.md`
+
+### 停止点
+
+E-018 formal infrastructureは正式4000局開始直前まで検証済み。
+
+**ここで停止し、E-018固有の明示的formal開始承認を待つ。**
+
+承認後にのみexecution policyの状態・許可フラグを専用コミットで有効化し、固定ローカル環境でexecution lockを生成する。lock成功後にのみformal 4000局を開始する。
