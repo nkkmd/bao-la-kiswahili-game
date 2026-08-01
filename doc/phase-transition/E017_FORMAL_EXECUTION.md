@@ -1,7 +1,7 @@
 # E-017 固定ローカル正式実行手順
 
 更新日: 2026-08-01  
-Status: Prepared / Formal execution disabled
+Status: Approved / Awaiting fixed-local execution lock
 
 ## 1. 固定事項
 
@@ -19,21 +19,25 @@ Status: Prepared / Formal execution disabled
 
 正式1000局は、repository上の許可フラグと完全一致の承認トークンの両方が有効でなければ開始できない。
 
+2026-08-01 22:47 JSTにE-017固有の明示的開始承認を受領し、専用commit `f0f9e90be0d77dac395e9ec53d951a011ad1f1fd`でpolicyを有効化した。
+
 現時点のpolicy:
-
-```json
-"formalExecutionAllowed": false
-```
-
-## 2. 正式開始承認時のpolicy変更
-
-明示的なE-017開始指示を受けた場合だけ、次を別コミットで変更する。
 
 ```json
 "formalExecutionAllowed": true
 ```
 
-次は変更しない。
+ただし固定ローカルexecution lockはまだ生成しておらず、formal corpusは`0 / 1000`である。
+
+## 2. 正式開始承認時のpolicy変更
+
+実施済み。明示的なE-017開始指示を受けた後、次だけを別コミットで変更した。
+
+```json
+"formalExecutionAllowed": true
+```
+
+次は変更していない。
 
 - 1000局
 - seed範囲
@@ -42,6 +46,10 @@ Status: Prepared / Formal execution disabled
 - trajectory-ply主解析単位
 - 構造availability基準
 - RR基準
+
+承認チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md`
 
 ## 3. 実行前環境lock
 
@@ -109,7 +117,7 @@ node tools/experiments/run-phase-transition-independent-confirmation-formal.js \
 
 ## 5. 正式1000局実行
 
-明示的な開始承認後のみ使用する。
+明示的な開始承認後のみ使用する。承認は2026-08-01 22:47 JSTに取得済みだが、execution lock生成成功前には実行しない。
 
 ```bash
 node tools/experiments/run-phase-transition-independent-confirmation-formal.js \
