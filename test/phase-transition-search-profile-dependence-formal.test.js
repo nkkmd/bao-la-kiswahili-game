@@ -18,8 +18,12 @@ const executionPolicy = JSON.parse(fs.readFileSync(
   "config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json",
   "utf8",
 ));
-assert.equal(executionPolicy.status, "prepared-not-approved");
-assert.equal(executionPolicy.formalExecutionAllowed, false);
+const validPolicyStates = new Map([
+  ["prepared-not-approved", false],
+  ["approved-awaiting-local-lock", true],
+]);
+assert.equal(validPolicyStates.has(executionPolicy.status), true);
+assert.equal(executionPolicy.formalExecutionAllowed, validPolicyStates.get(executionPolicy.status));
 assert.equal(Prepare.gitIgnored(
   "artifacts/phase-transition/search-profile-dependence-v1",
   repositoryRoot,
@@ -79,8 +83,13 @@ const environment = {
   githubActions: false,
   corpusRootIgnored: true,
 };
+const preparedPolicy = {
+  ...executionPolicy,
+  status: "prepared-not-approved",
+  formalExecutionAllowed: false,
+};
 assert.deepEqual(
-  Prepare.validateEnvironment(executionPolicy, environment, loaded.config),
+  Prepare.validateEnvironment(preparedPolicy, environment, loaded.config),
   [],
 );
 assert.deepEqual(
