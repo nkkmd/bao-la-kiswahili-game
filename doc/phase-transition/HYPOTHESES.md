@@ -213,8 +213,30 @@ H16の`confirmed`を次へ自動一般化しない。
 
 E-011 formal `inconclusive`、E-017 formal `not-confirmed`はそのまま維持する。
 
+## H17 — 捕獲分岐急拡大のsearch-profile依存性は指定depth/evaluator変更下でも維持される
+
+状態: **E-019 preregistered / infrastructure-validated / formal not authorized**
+
+E-018で確認されたH16の範囲は`hard / bao / depth 2`のphase2対legacyに限定される。H17はそのformal confirmationを遡及的に拡張せず、新規独立実験E-019で次の3 strataへ一般化可能かを検定する。
+
+- D1: `hard / bao / depth 1`, phase2 vs legacy, 6500 paired seeds
+- D3: `hard / bao / depth 3`, phase2 vs legacy, 4500 paired seeds
+- V2: `hard / bao-v2 / depth 2`, phase2 vs legacy, 2000 paired seeds
+
+合計13000 paired comparisons / 26000 games。formal master seed blockは`20268001–20274500`で、各stratum内same seed / same random-opening boundaryを要求する。
+
+Primary endpointはE-018から継承し、`pliesRemaining >= 9`のeligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上存在するかをpaired game-level binary endpointとする。各stratumでtwo-sided exact McNemar、alpha 0.05、minimum discordant pairs 20、`phase2-only > legacy-only`を要求する。
+
+Global H17 confirmationはintersection-union testとしてD1/D3/V2の3条件すべて`pass`を要求する。standalone stratum claimにはHolm-Bonferroni family alpha 0.05を別途適用する。
+
+`trajectoryHash + eventPly` structural comparisonはpreregistered secondaryのみであり、paired game-level McNemar condition decisionまたはglobal IUT decisionを変更しない。
+
+E-019 infrastructureはformal block外seed `20267101–20267102`の12-game fixtureで検証済み。formal seedは未使用、formal corpusは未生成、execution policyは`formalExecutionAllowed=false`のまま。E-019固有開始承認と専用fixed-local execution lockはまだ存在しない。
+
+H17の結果が将来得られても、E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`を遡及変更しない。
+
 ## 次の検証
 
 - E-018 `confirmed`を固定し、primary endpoint、McNemar rule、解釈境界を結果後に変更しない。
 - E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`を維持する。
-- H16をより広いevaluator/depth/search implementationへ一般化する場合は、E-018と分離した新規事前登録実験として設計する。
+- E-019はfixed-local pre-authorization preflight後、別の明示的formal開始承認を受けるまでformal corpusを生成しない。
