@@ -21,7 +21,7 @@
 | E-015 | E-010 trajectory重複感度 | E-010候補・対照・games.json | `analyze-confirmation-trajectory-duplication.js` | 重複除去率、アーキタイプ、重複群 | 完了・事後感度分析 |
 | E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
 | E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
-| E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **事前登録済み・infrastructure validated・formal承認済み・local lock待ち・未実施** |
+| E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **完了・formal `confirmed`** |
 
 ## E-010 未使用seed確認実験
 
@@ -209,14 +209,21 @@ Formal decision: **`not-confirmed`**
 
 - hypothesis: H16
 - analysisVersion: `16-search-profile-dependence`
-- status: **preregistered / infrastructure-validated / formal-approved / awaiting-local-lock / not-run**
+- status: **preregistered / infrastructure-validated / formal-complete / confirmed**
 - preregistration: `config/experiments/phase-transition-search-profile-dependence-v1.json`
+- preregistration SHA-256: `17fb28bf250d2218b91d5d6196ec58ac7ba0c8b8d2ced93d498135ea669e4298`
 - preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
 - infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-infrastructure.md`
 - authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-start-authorization.md`
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-completion.md`
 - authorization time: `2026-08-02 08:39 JST`
 - authorization commit: `9c5a902f3fbe0df02975050f2648a2a08cefb109`
 - execution policy: `config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json`
+- execution-policy SHA-256: `b1bd2769877989a236f24576ea8e11070fbe573f4f7a92b9c56d3f998b1b9653`
+- locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
+- fixed Python environment: `/home/oruorane/.venvs/bao-phase-transition-e011`
+- Python: `3.12.3`; numpy: `2.5.1`; pandas: `3.0.5`
+- Node.js: `v24.6.0`
 - fixture runner: `tools/experiments/run-phase-transition-search-profile-dependence.js`
 - guarded formal runner: `tools/experiments/run-phase-transition-search-profile-dependence-formal.js`
 - verifier: `tools/experiments/verify-phase-transition-search-profile-dependence.js`
@@ -239,11 +246,84 @@ Formal decision: **`not-confirmed`**
 - legacy minimum expansion count: none
 - structural `trajectoryHash + eventPly` comparison: secondary
 - formal GitHub Actions run: prohibited
-- separate explicit E-018 approval: granted
-- execution policy status: `approved-awaiting-local-lock`
-- `formalExecutionAllowed`: true
-- formal execution lock: not generated for formal run
-- formal corpus: not generated
+
+### E-018 formal integrity
+
+- P2 games: 2000; observations: 110985
+- LG games: 2000; observations: 115785
+- both conditions present: true
+- unique condition config hashes: true
+- common source commit: true
+- source commit matches lock: true
+- exact paired seed sequence: true
+- paired opening hashes: true
+- condition identity clean: true
+- trajectory hashes present: true
+- execution mode correct: true
+- lock preregistration/policy hash checks: pass
+- artifact verification: true
+- `errors: []`
+- `mode: formal`
+- `valid: true`
+
+### E-018 primary formal result
+
+| endpoint | count |
+|---|---:|
+| n00 | 1928 |
+| n01 LG-only | 9 |
+| n10 P2-only | 63 |
+| n11 | 0 |
+| discordant pairs | 72 |
+
+- P2 event-game rate: 63/2000 = 3.15%
+- LG event-game rate: 9/2000 = 0.45%
+- paired risk difference: +2.70 percentage points
+- discordant odds ratio: 7.0
+- two-sided exact McNemar p: `4.1812279092751445e-11`
+- minimum discordant pairs >=20: pass
+- direction P2-only > LG-only: pass
+- alpha p<=0.05: pass
+
+Formal decision: **`confirmed`**
+
+### E-018 structural secondary
+
+P2:
+
+- raw eligible candidates / expansion: 107 / 63
+- raw controls / expansion: 80579 / 2449
+- raw RR: 19.37
+- unique candidate trajectory-ply / expansion: 34 / 11
+- unique candidate / expansion trajectories: 32 / 11
+- deduplicated RR: 10.12
+- largest trajectory-ply multiplicity: 37
+
+LG:
+
+- raw eligible candidates / expansion: 54 / 9
+- raw controls / expansion: 77567 / 1283
+- raw RR: 10.08
+- unique candidate trajectory-ply / expansion: 31 / 7
+- unique candidate / expansion trajectories: 30 / 7
+- deduplicated RR: 13.43
+- largest trajectory-ply multiplicity: 5
+
+Direct candidate trajectory-ply comparison:
+
+- P2: 11/34 = 32.35%
+- LG: 7/31 = 22.58%
+- risk difference: +9.77 percentage points
+- RR: 1.43
+- two-sided Fisher exact p: `0.41837226457118804`
+
+このFisher比較はpreregistered secondaryで、paired game-level exact McNemar primary decisionを置き換えない。
+
+### E-018 interpretation
+
+H16「捕獲分岐急拡大の顕在化はsearch profileに依存する」は、固定`hard / bao / depth 2`条件の`phase2`対`legacy`、paired same-opening designにおいてformal confirmed。
+
+E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`は変更しない。全evaluator、全depth、別search implementationへ自動一般化しない。
 
 ### E-018 infrastructure validation
 
@@ -256,10 +336,6 @@ Formal decision: **`not-confirmed`**
 - paired seed/opening/source/condition integrity: pass
 - paired endpoint builder: pass
 - structural secondary: pass
-
-formal runnerはGitHub Actionsを拒否し、fixed-local execution lock後のsource commit、branch、clean worktree、Node.js、preregistration hash、execution-policy hash、primary endpoint、decision ruleの差し替えを拒否する。正式評価はformal integrity `mode=formal / valid=true`通過後にのみ進む。
-
-E-017で発生したPython `__pycache__/`由来のclean-worktree停止を予防するためPython bytecode cacheをignore対象とした。この変更は科学条件・事前登録・判定条件へ影響しない。
 
 ## 共通データ識別情報
 
@@ -295,7 +371,8 @@ E-017で発生したPython `__pycache__/`由来のclean-worktree停止を予防�
 ### E-018 search profile比較群
 
 - studyVersion: `0.4.1`
-- games: 2000/condition planned, 4000 total planned
+- games: 2000/condition, 4000 total
 - seed range: `20265001–20267000`
-- infrastructure: validated
-- formal execution: approved / awaiting fixed-local lock / not run
+- formal integrity: valid
+- formal decision: `confirmed`
+- locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
