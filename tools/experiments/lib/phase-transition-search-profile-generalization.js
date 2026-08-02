@@ -48,7 +48,14 @@ function stratumById(config, id) {
 function conditionById(config, id) {
   for (const stratum of config.corpus.strata) {
     const condition = stratum.conditions.find((item) => item.conditionId === id);
-    if (condition) return { ...condition, stratumId: stratum.stratumId, evaluationProfile: stratum.evaluationProfile, maxDepth: stratum.maxDepth };
+    if (condition) return {
+      ...condition,
+      stratumId: stratum.stratumId,
+      evaluationProfile: stratum.evaluationProfile,
+      maxDepth: stratum.maxDepth,
+      pairedSeeds: stratum.pairedSeeds,
+      seedRange: stratum.seedRange,
+    };
   }
   throw new Error(`Unknown E-019 condition: ${id}`);
 }
