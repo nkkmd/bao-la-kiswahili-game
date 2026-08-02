@@ -29,24 +29,18 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-010確認群7急拡大候補の形成過程・最大捕獲可能量非対称化分析
 - E-011 AI条件・探索深度横断頑健性実験の事前登録・実装・formal 2000局・integrity・評価
 - E-017独立構造確認実験の事前登録・実装・formal 1000局・integrity・評価
-- H16 search profile依存性直接比較E-018の事前登録
-- E-018 paired-condition fixture runner / pairing integrity / paired endpoint / exact McNemar evaluator / structural secondary / execution policy / execution-lock preparation / guarded formal runner / formal integrity mode
-- E-018専用GitHub Actions fixtureおよびformal-guard回帰検証
-- E-018固有formal開始承認とrepository execution policy有効化
-
-未実施:
-
-- E-018 fixed-local execution lock生成
-- E-018 formal 4000局
+- H16 search profile依存性直接比較E-018の事前登録・実装・fixture/infrastructure検証
+- E-018固有formal開始承認、fixed-local execution lock、formal 4000局、analyze、integrity、evaluate
+- E-018 H16 formal confirmation
 
 現在の正式判定:
 
 - E-010: **`not-confirmed`**
 - E-011: **`inconclusive`**
 - E-017: **`not-confirmed`**
-- E-018: **preregistered / infrastructure-validated / formal-approved / awaiting-local-lock / not-run**
+- E-018: **`confirmed`**
 
-E-010/E-011/E-017の判定は固定し、結果後に閾値やdecision ruleを緩和しない。
+E-010/E-011/E-017/E-018の判定は固定し、結果後に閾値、primary endpoint、decision ruleを変更しない。
 
 ## 主要な確定事項
 
@@ -126,7 +120,7 @@ trajectory-ply感度:
 | C3 | 11 | 4 | 12160 | 11.70 |
 | C4 | 6 | 0 | 11412 | 0.00 |
 
-phase2 C0–C3では重複除去後も候補側濃縮方向が維持された。legacy C4では生・重複除去後ともexpansion候補0。ただしC4はavailability不足であり、search profile依存性の確定証明とはしない。
+phase2 C0–C3では重複除去後も候補側濃縮方向が維持された。legacy C4では生・重複除去後ともexpansion候補0。ただしC4はavailability不足であり、E-011自体をsearch profile依存性の確定証明へ読み替えない。
 
 完了チェックポイント:
 
@@ -237,95 +231,123 @@ E-011 C4のlegacy 0 expansionは示唆的だがavailability不足だったため
 - shared seed `20265001–20267000`
 - same seed / same random-opening boundaryをpair
 - primary population: `pliesRemaining >= 9`
-
-### Primary endpoint
-
-一次単位は**paired shared-seed game**。
-
-各conditionで、そのゲーム内にeligible category-A `capture-branch-expansion` candidateが1件以上あれば1、なければ0。
-
-- `n10`: P2=1 / LG=0
-- `n01`: P2=0 / LG=1
+- primary unit: paired shared-seed game
+- endpoint: eligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上あるか
 - test: two-sided exact McNemar
 - alpha: 0.05
 - minimum discordant pairs: 20
 - direction requirement: `n10 > n01`
 
-confirmed:
+legacy側に最低expansion件数を要求しない。legacyで0件または極低率になること自体がH16と整合し得るため、E-011と同じavailability trapを持ち込まない。
 
-- formal integrity / pairing成功
-- discordant pairs >=20
-- McNemar p <=0.05
-- P2-only > LG-only
+`trajectoryHash + eventPly`によるprofile別構造比較、candidate/control RR、P2/LG候補率Fisher exactは副次解析で、primary McNemar判定を置き換えない。
 
-not-confirmed:
+### Fixed-local execution
 
-- integrity / pairing成功、discordant >=20だがeffect criterion不通過
+- locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
+- preregistration SHA-256: `17fb28bf250d2218b91d5d6196ec58ac7ba0c8b8d2ced93d498135ea669e4298`
+- execution-policy SHA-256: `b1bd2769877989a236f24576ea8e11070fbe573f4f7a92b9c56d3f998b1b9653`
+- Node.js: `v24.6.0`
+- platform: Linux / WSL2
+- Python venv: `/home/oruorane/.venvs/bao-phase-transition-e011`
+- activation: `source ~/.venvs/bao-phase-transition-e011/bin/activate`
+- Python: `3.12.3`
+- numpy: `2.5.1`
+- pandas: `3.0.5`
 
-inconclusive:
+formal run中、runnerの進捗表示仕様を確認するためP2 60局完了時点で一度`Ctrl+C`中断した。同一execution lock、source、config、seedのまま、atomic-write済みgameを検証再利用するresume contractで再開し、4000局を完了した。科学条件は変更していない。
 
-- corpus / hash / source / paired opening / seed pairing / event construction / output failure、またはdiscordant <20
+### Formal integrity
 
-### 設計上の重要点
+- P2: 2000 games / 110985 observations
+- LG: 2000 games / 115785 observations
+- both conditions present: true
+- unique condition config hashes: true
+- common source commit: true
+- source commit matches lock: true
+- exact paired seed sequence: true
+- paired opening hashes: true
+- condition identity clean: true
+- trajectory hashes present: true
+- execution mode correct: true
+- lock preregistration/policy hash checks: pass
+- artifact verification: true
+- errors: `[]`
+- mode: `formal`
+- **valid: true**
 
-legacy側に最低expansion件数を要求しない。legacyで0件または極低率になること自体がH16と整合し得るため、E-011と同じ「最低expansion未達→insufficient」の構造をH16直接検定へ持ち込まない。
+### Primary formal result
 
-`trajectoryHash + eventPly`によるprofile別構造比較、candidate/control RR、P2/LG候補率Fisher exactは副次解析とし、primary McNemar判定を置き換えない。
+| endpoint | count |
+|---|---:|
+| `n00` | 1928 |
+| `n01` LG-only | 9 |
+| `n10` P2-only | 63 |
+| `n11` | 0 |
+| discordant pairs | 72 |
 
-### 実装・実行基盤
+- P2 event-game rate: 63/2000 = **3.15%**
+- LG event-game rate: 9/2000 = **0.45%**
+- paired risk difference: **+2.70 percentage points**
+- discordant odds ratio: **7.0**
+- exact McNemar two-sided p: **`4.1812279092751445e-11`**
 
-実装済み:
+criteria:
 
-- fixture-only public runner
-- paired same-seed / random-opening boundary / common-source / condition identity integrity verification
-- paired game-level endpoint builder
-- two-sided exact McNemar evaluator
-- `trajectoryHash + eventPly` structural secondaryとFisher exact
-- fixed-local execution policyとexecution-lock preparation
-- guarded formal runner (`run → analyze → verify → evaluate`)
-- formal integrity mode（artifact/hash/source/seed/opening/pairing/condition separation/lock監査）
-- regression tests
-- E-018専用GitHub Actions fixture workflow
+- exact pair count: pass
+- minimum discordant pairs >=20: pass (72)
+- p <=0.05: pass
+- P2-only > LG-only: pass (63 > 9)
 
-最新の実装監査:
+formal decision: **`confirmed`**
 
-- infrastructure head: `c37b0e3d00b11d0d9563a815dbb653297503a90d`
-- workflow: `Phase Transition Search Profile Dependence`
-- Actions run: `30723040531`
-- result: `success`
-- formal-guard regression tests: success
-- paired 2-game fixture generation: success
-- fixture integrity: success
-- paired endpoint construction: success
-- structural secondary: success
+H16は、E-018の固定`hard / bao / depth 2`、paired same-opening designにおける`phase2`対`legacy`の範囲で正式確認された。
 
-E-017で発生したPython `__pycache__/`によるclean-worktree停止をE-018で再発させないため、Python bytecode cacheをgit ignore対象とした。これは実行環境上の予防措置であり、科学条件・事前登録・判定条件を変更しない。
+### Structural secondary
 
-### 実行状態
+P2:
 
-- preregistration: `config/experiments/phase-transition-search-profile-dependence-v1.json`
-- preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-search-profile-dependence-preregistration.md`
-- infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-infrastructure.md`
-- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-02-e018-formal-start-authorization.md`
-- authorization commit: `9c5a902f3fbe0df02975050f2648a2a08cefb109`
-- execution policy: `config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json`
-- policy status: **`approved-awaiting-local-lock`**
-- `formalExecutionAllowed`: **true**
-- formal execution approved: **true**
-- execution lock: **not generated for formal run**
-- formal corpus generated: **false**
-- GitHub Actions formal run: prohibited
+- raw eligible candidates / expansion: 107 / 63
+- controls / expansion: 80579 / 2449
+- raw RR: 19.37
+- unique candidate trajectory-ply / expansion: 34 / 11
+- unique candidate / expansion trajectories: 32 / 11
+- dedup RR: 10.12
+- largest multiplicity: 37
 
-E-018は実験固有の開始承認を受領済み。E-017承認の継承ではない。
+LG:
+
+- raw eligible candidates / expansion: 54 / 9
+- controls / expansion: 77567 / 1283
+- raw RR: 10.08
+- unique candidate trajectory-ply / expansion: 31 / 7
+- unique candidate / expansion trajectories: 30 / 7
+- dedup RR: 13.43
+- largest multiplicity: 5
+
+P2対LG candidate trajectory-ply direct comparison:
+
+- 11/34 vs 7/31
+- risk difference: +9.77 percentage points
+- RR: 1.43
+- Fisher exact two-sided p: `0.41837226457118804`
+
+Fisher比較はsecondaryであり、p>0.05を理由にprimary `confirmed`を変更しない。
+
+### 解釈境界
+
+確認されたのは固定`hard / bao / depth 2`条件でのsearch profile差である。全evaluation profile、全depth、別search implementation、trajectory-ply副次比較自体の有意差へ自動一般化しない。
+
+完了チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-02-e018-formal-completion.md`
 
 ## 次工程
 
-1. E-011 formal `inconclusive`、E-017 formal `not-confirmed`を固定し、結果後に判定条件を緩和しない。
-2. E-018 formal infrastructureはCI検証済みとして固定する。
-3. 固定ローカル環境 `/home/oruorane/github/bao-la-kiswahili-game` をこのcheckpointを含む最新branch headへfast-forwardする。
-4. Node.js `v24.6.0`、Linux、clean worktreeを確認し、最新source commit・runtime・hardware・preregistration/policy hashをexecution lockへ固定する。
-5. execution lockを監査し、成功後にのみ完全一致トークン `E-018-FORMAL-APPROVED` でformal 4000局を開始する。
-6. corpus生成完了後、`analyze → verify → evaluate`を実行する。
+1. E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`を固定する。
+2. E-018 primary endpoint、McNemar rule、解釈境界を結果後に変更しない。
+3. H16を他のevaluation profile/depth/search implementationへ一般化する場合は、E-018と分離した新規事前登録実験として設計する。
+4. PR #26は明示的な指示があるまでopen / draftを維持する。
 
 ## 研究データ識別情報
 
@@ -360,7 +382,8 @@ E-018は実験固有の開始承認を受領済み。E-017承認の継承では�
 ### E-018
 
 - studyVersion: `0.4.1`
-- games: 4000 planned
+- games: 4000
 - seed: `20265001–20267000`
-- infrastructure: validated
-- formal execution: approved / awaiting fixed-local lock / not run
+- formal integrity: valid
+- formal decision: `confirmed`
+- locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
