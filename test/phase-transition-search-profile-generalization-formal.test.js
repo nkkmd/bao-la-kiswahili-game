@@ -67,7 +67,7 @@ assert.deepEqual(Prepare.validateEnvironment(approvedPolicy, environment, loaded
 assert.ok(Prepare.validateEnvironment(approvedPolicy, { ...environment, githubActions: true }, loaded.config).includes("Formal E-019 execution lock cannot be prepared in GitHub Actions."));
 
 const approvalToken = "E-019-FORMAL-APPROVED";
-const approvalLock = { approval: { approved: true, approvalTokenSha256: Formal.sha256(approvalToken) } };
+const approvalLock = { approval: { approved: true, approvalTokenSha256: Prepare.sha256(approvalToken) } };
 assert.doesNotThrow(() => Formal.approve(approvalLock, approvedPolicy, approvalToken));
 assert.throws(() => Formal.approve(approvalLock, approvedPolicy, "wrong"));
 assert.throws(() => Formal.approve(approvalLock, executionPolicy, approvalToken));
@@ -89,8 +89,8 @@ const preregistrationBytes = `${JSON.stringify(lockedPreregistration)}\n`;
 fs.writeFileSync(policyPath, policyBytes);
 fs.writeFileSync(preregistrationPath, preregistrationBytes);
 const inputLock = {
-  executionPolicy: { path: "execution-policy.json", sha256: Formal.sha256(policyBytes) },
-  preregistration: { path: "preregistration.json", sha256: Formal.sha256(preregistrationBytes) },
+  executionPolicy: { path: "execution-policy.json", sha256: Prepare.sha256(policyBytes) },
+  preregistration: { path: "preregistration.json", sha256: Prepare.sha256(preregistrationBytes) },
   corpus: lockedPreregistration.corpus,
   primaryEndpoint: lockedPreregistration.primaryEndpoint,
   conditionDecisionRule: lockedPreregistration.conditionDecisionRule,
