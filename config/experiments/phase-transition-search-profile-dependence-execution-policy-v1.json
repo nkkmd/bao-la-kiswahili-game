@@ -8,6 +8,18 @@
   "expectedPlatform": "linux",
   "requireCleanWorktree": true,
   "pythonCommand": "python3",
+  "pythonEnvironment": {
+    "type": "venv",
+    "path": "/home/oruorane/.venvs/bao-phase-transition-e011",
+    "activationCommand": "source ~/.venvs/bao-phase-transition-e011/bin/activate",
+    "verifiedPythonVersion": "Python 3.12.3",
+    "verifiedPackages": {
+      "numpy": "2.5.1",
+      "pandas": "3.0.5"
+    },
+    "requireActivationBeforeLocalPreflight": true,
+    "note": "Activate this existing fixed-local virtual environment before E-018 execution-lock preparation and all formal local phases so policy.pythonCommand resolves to the verified Python environment. Do not install or upgrade packages after the execution lock is generated."
+  },
   "approvalToken": "E-018-FORMAL-APPROVED",
   "paths": {
     "preregistration": "config/experiments/phase-transition-search-profile-dependence-v1.json",
@@ -19,5 +31,5 @@
   },
   "formalExecutionAllowed": true,
   "activationRule": "Set true only after a separate explicit user instruction to start the E-018 formal experiment. E-017 authorization does not carry over.",
-  "changePolicy": "Changing runtime, repository path, approval semantics, corpus size, seed range, search-profile conditions, primary endpoint, McNemar rule, or output contract requires a new policy/preregistration version as applicable."
+  "changePolicy": "Changing runtime, repository path, approval semantics, corpus size, seed range, search-profile conditions, primary endpoint, McNemar rule, or output contract requires a new policy/preregistration version as applicable. Recording the already verified fixed-local Python venv and package versions before lock generation is an execution-environment documentation update and does not change scientific conditions."
 }
