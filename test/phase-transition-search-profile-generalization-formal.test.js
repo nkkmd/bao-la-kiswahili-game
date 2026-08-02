@@ -17,7 +17,9 @@ const executionPolicy = JSON.parse(fs.readFileSync(
   "utf8",
 ));
 assert.equal(executionPolicy.formalExecutionAllowed, false);
-assert.equal(executionPolicy.status, "preregistered-awaiting-infrastructure-validation");
+assert.equal(executionPolicy.status, "infrastructure-validated-awaiting-authorization");
+assert.equal(executionPolicy.infrastructureValidation.validated, true);
+assert.equal(executionPolicy.infrastructureValidation.workflowRunId, 30747182554);
 assert.equal(Prepare.gitIgnored("artifacts/phase-transition/search-profile-generalization-v2", repositoryRoot), true);
 
 const d1 = Runner.normalizeCondition(loaded.config, "D1-P2");
