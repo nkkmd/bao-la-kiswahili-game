@@ -63,15 +63,39 @@ E-011 formal global decision `inconclusive`、E-017 formal decision `not-confirm
 - このcheckpointを含む最新branch headへfast-forward済み
 - GitHub Actions環境ではない
 
+### 固定Python環境
+
+2026-08-02のlocal preflightでsystem Pythonにはnumpy/pandasが存在せず、既存venv `/home/oruorane/.venvs/bao-phase-transition-e011` では次を確認した。
+
+- Python `3.12.3`
+- numpy `2.5.1`
+- pandas `3.0.5`
+
+したがってE-018 local formal工程では、execution lock生成前および新しいshell/sessionからの再開時に必ず次を実行する。
+
+```bash
+source ~/.venvs/bao-phase-transition-e011/bin/activate
+```
+
+その後、`which python3`が`/home/oruorane/.venvs/bao-phase-transition-e011/bin/python3`を指すこと、numpy/pandasのimportとversion、Node.js、HEAD、clean worktreeを確認する。
+
+このvenvの利用はE-011の科学条件や承認をE-018へ流用するものではなく、E-018のPython解析工程に必要な既に検証済み固定ローカル実行環境を使用するための運用要件である。
+
+専用runbook:
+
+- `doc/phase-transition/E018_FORMAL_EXECUTION.md`
+
 execution lock生成成功前に4000局を開始してはならない。
 
 ## 5. 次工程
 
-1. 固定ローカル環境で最新branch headへ更新する。
-2. `prepare-phase-transition-search-profile-dependence-execution.js`でexecution lockを生成する。
-3. lockのsource commit、runtime、hardware、preregistration hash、policy hash、corpus条件、primary endpoint、decision ruleを監査する。
-4. lock成功後にのみ、完全一致トークン `E-018-FORMAL-APPROVED` を用いてformal `run`を開始する。
-5. corpus生成完了後、`analyze → verify → evaluate`を順に実行する。
-6. formal integrityと事前登録判定を保存した後、研究台帳を同期する。
+1. `source ~/.venvs/bao-phase-transition-e011/bin/activate`で固定Python環境を有効化する。
+2. 固定ローカルrepositoryで最新branch headへ更新する。
+3. Python/numpy/pandas、Node.js、HEAD、clean worktreeをpreflight確認する。
+4. `prepare-phase-transition-search-profile-dependence-execution.js`でexecution lockを生成する。
+5. lockのsource commit、runtime、hardware、preregistration hash、policy hash、corpus条件、primary endpoint、decision ruleを監査する。
+6. lock成功後にのみ、完全一致トークン `E-018-FORMAL-APPROVED` を用いてformal `run`を開始する。
+7. corpus生成完了後、`analyze → verify → evaluate`を順に実行する。
+8. formal integrityと事前登録判定を保存した後、研究台帳を同期する。
 
 PR #26は引き続きopen / draftのまま維持する。
