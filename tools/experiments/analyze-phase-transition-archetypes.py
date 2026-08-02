@@ -166,18 +166,24 @@ def analyze(input_dir: Path, output_dir: Path) -> dict:
     archetypes = archetype_table(audit)
     category_counts = audit["category"].value_counts().to_dict() if not audit.empty else {}
     archetype_counts = archetypes["category"].value_counts().to_dict() if not archetypes.empty else {}
+    unique_state_counts = (
+        {key: int(audit.loc[audit["category"] == key, "stateHash"].nunique()) for key in "ABCX"}
+        if not audit.empty
+        else {key: 0 for key in "ABCX"}
+    )
+    phase_bands_a = (
+        audit.loc[audit["category"] == "A", "phaseBand"].value_counts().sort_index().astype(int).to_dict()
+        if not audit.empty
+        else {}
+    )
     summary = {
         "studyVersion": v2.STUDY_VERSION,
         "analysisVersion": ANALYSIS_VERSION,
         "configHash": manifest["configHash"],
         "candidateCounts": {key: int(category_counts.get(key, 0)) for key in "ABCX"},
         "archetypeCounts": {key: int(archetype_counts.get(key, 0)) for key in "ABCX"},
-        "uniqueStateCounts": {
-            key: int(audit.loc[audit["category"] == key, "stateHash"].nunique()) for key in "ABCX"
-        },
-        "phaseBandsA": (
-            audit.loc[audit["category"] == "A", "phaseBand"].value_counts().sort_index().astype(int).to_dict()
-        ),
+        "uniqueStateCounts": unique_state_counts,
+        "phaseBandsA": phase_bands_a,
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     audit.to_csv(output_dir / "archetype-members.csv", index=False)
