@@ -1,0 +1,105 @@
+name: Phase Transition Search Profile Generalization
+
+on:
+  pull_request:
+    paths:
+      - "config/experiments/phase-transition-search-profile-generalization-v2.json"
+      - "config/experiments/phase-transition-search-profile-generalization-execution-policy-v2.json"
+      - "tools/experiments/lib/phase-transition-search-profile-generalization.js"
+      - "tools/experiments/run-phase-transition-search-profile-generalization.js"
+      - "tools/experiments/run-phase-transition-search-profile-generalization-formal.js"
+      - "tools/experiments/prepare-phase-transition-search-profile-generalization-execution.js"
+      - "tools/experiments/verify-phase-transition-search-profile-generalization.js"
+      - "tools/experiments/build-phase-transition-search-profile-generalization-pairs.js"
+      - "tools/experiments/evaluate-phase-transition-search-profile-generalization.js"
+      - "tools/experiments/summarize-phase-transition-search-profile-generalization-structure.js"
+      - "test/phase-transition-search-profile-generalization.test.js"
+      - "test/phase-transition-search-profile-generalization-formal.test.js"
+      - ".gitignore"
+      - ".github/workflows/phase-transition-search-profile-generalization.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - name: Run preregistration, evaluator, IUT/Holm, and formal-guard tests
+        run: |
+          node test/phase-transition-search-profile-generalization.test.js
+          node test/phase-transition-search-profile-generalization-formal.test.js
+      - name: Generate six-condition non-formal fixture
+        run: |
+          node tools/experiments/run-phase-transition-search-profile-generalization.js \
+            --fixture-games 2 \
+            --fixture-base-seed 20267101 \
+            --force \
+            --output artifacts/phase-transition/search-profile-generalization-v2-fixture
+      - name: Verify three-stratum paired fixture integrity
+        run: |
+          node tools/experiments/verify-phase-transition-search-profile-generalization.js \
+            --fixture-games 2 \
+            --fixture-base-seed 20267101 \
+            --input artifacts/phase-transition/search-profile-generalization-v2-fixture
+      - name: Detect candidates and build controls for all six conditions
+        run: |
+          for condition in D1-P2 D1-LG D3-P2 D3-LG V2-P2 V2-LG; do
+            python tools/experiments/analyze-phase-transition-archetypes.py \
+              --input artifacts/phase-transition/search-profile-generalization-v2-fixture/${condition} \
+              --output artifacts/local/search-profile-generalization-v2-fixture/${condition}/archetypes
+            node tools/experiments/analyze-forced-capture-regime-controls.js \
+              --observations artifacts/phase-transition/search-profile-generalization-v2-fixture/${condition}/observations.jsonl \
+              --candidates artifacts/local/search-profile-generalization-v2-fixture/${condition}/archetypes/archetype-members.csv \
+              --output artifacts/local/search-profile-generalization-v2-fixture/${condition}/controls
+          done
+      - name: Build paired game-level endpoints for all strata
+        run: |
+          node tools/experiments/build-phase-transition-search-profile-generalization-pairs.js \
+            --corpus-root artifacts/phase-transition/search-profile-generalization-v2-fixture \
+            --analysis-root artifacts/local/search-profile-generalization-v2-fixture \
+            --output artifacts/local/search-profile-generalization-v2-fixture/paired-game-endpoints.json
+          node - <<'NODE'
+          const value = require('./artifacts/local/search-profile-generalization-v2-fixture/paired-game-endpoints.json');
+          for (const id of ['D1','D3','V2']) {
+            if (value.strata[id].length !== 2) throw new Error(`${id}: expected 2 fixture pairs`);
+          }
+          NODE
+      - name: Exercise E-019 IUT and Holm output contract on fixture
+        run: |
+          node tools/experiments/evaluate-phase-transition-search-profile-generalization.js \
+            --pairs artifacts/local/search-profile-generalization-v2-fixture/paired-game-endpoints.json \
+            --output artifacts/local/search-profile-generalization-v2-fixture/evaluation
+          node - <<'NODE'
+          const value = require('./artifacts/local/search-profile-generalization-v2-fixture/evaluation/search-profile-generalization-result.json');
+          if (value.globalDecision !== 'inconclusive') throw new Error('Two-game fixture must be globally inconclusive by minimum-discordance contract');
+          if (!['D1','D3','V2'].every((id) => value.strata[id].decision === 'inconclusive')) {
+            throw new Error('Fixture pair counts intentionally differ from formal preregistered N');
+          }
+          NODE
+      - name: Summarize preregistered structural secondary
+        run: |
+          node tools/experiments/summarize-phase-transition-search-profile-generalization-structure.js \
+            --corpus-root artifacts/phase-transition/search-profile-generalization-v2-fixture \
+            --analysis-root artifacts/local/search-profile-generalization-v2-fixture \
+            --output artifacts/local/search-profile-generalization-v2-fixture/structure
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase-transition-search-profile-generalization-fixture
+          path: |
+            config/experiments/phase-transition-search-profile-generalization-v2.json
+            config/experiments/phase-transition-search-profile-generalization-execution-policy-v2.json
+            artifacts/phase-transition/search-profile-generalization-v2-fixture/
+            artifacts/local/search-profile-generalization-v2-fixture/
+          if-no-files-found: error
