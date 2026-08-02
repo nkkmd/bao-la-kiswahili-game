@@ -103,9 +103,13 @@
 | D-093 | E-018 formal 4000局は別の明示的ユーザー承認まで開始しない | 採用 | 2026-08-02 08:39 JSTにE-018固有の開始承認を受領。E-017開始承認は継承していない |
 | D-094 | E-018開始承認を事前登録条件・分析条件・判定条件の変更として扱わない | 採用 | 変更はexecution policyの状態と許可フラグのみ。局数、seed、search profile、primary unit、McNemar、alpha、direction、minimum discordant pairsを維持 |
 | D-095 | E-018 formal実行はrepository許可フラグ、完全一致トークン、fixed-local execution lockをすべて要求する | 採用 | 専用authorization commit `9c5a902f3fbe0df02975050f2648a2a08cefb109`で`formalExecutionAllowed=true`。GitHub Actions formal runは禁止のまま |
+| D-096 | E-018 execution lockの固定sourceを`1f6b129b9b3cb11580244b1d4c337c067289cfdb`とし、固定local runtimeで実行する | 採用 | Node v24.6.0、Python 3.12.3、numpy 2.5.1、pandas 3.0.5、preregistration/policy hashをlockへ固定 |
+| D-097 | E-018 formal runの中断後は同一lock・source・configでatomic-write済みgameを検証再利用して再開できる | 採用 | 進捗表示確認のためP2 60局時点で一度中断。source/seed/config/lockを変更せずresumeし4000局完了 |
+| D-098 | E-018正式4000局の判定を`confirmed`として固定する | 採用 | formal integrity `valid:true`、discordant 72、n10=63、n01=9、exact McNemar p=4.1812279092751445e-11、方向条件通過 |
+| D-099 | E-018 structural secondaryのFisher p=0.418をprimary判定の反証として扱わない | 採用 | trajectory-ply比較は事前登録上secondary。paired game-level exact McNemar primaryを置き換えない |
+| D-100 | H16のformal confirmation範囲を`hard / bao / depth 2`での`phase2`対`legacy`に限定する | 採用 | 全evaluator、全depth、将来の別search implementationへ自動一般化しない |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
-- E-018 execution lockのsource commit、runtime・hardware、preregistration/policy hash
