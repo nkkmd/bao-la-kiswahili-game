@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "experimentId": "E-019",
-  "status": "preregistered-awaiting-infrastructure-validation",
+  "status": "infrastructure-validated-awaiting-authorization",
   "supersedes": "config/experiments/phase-transition-search-profile-generalization-execution-policy-v1.json",
   "repositoryPath": "/home/oruorane/github/bao-la-kiswahili-game",
   "branch": "research/forced-capture-regime-analysis",
@@ -35,6 +35,19 @@
   "formalExecutionAllowed": false,
   "formalCorpusGenerated": false,
   "githubActionsFormalRunAllowed": false,
+  "infrastructureValidation": {
+    "validated": true,
+    "validatedBranchHead": "ea7f87c2df1bfa1a5997ab63aa59b21db97f3955",
+    "workflow": "Phase Transition Search Profile Generalization",
+    "workflowRunId": 30747182554,
+    "fixtureBaseSeed": 20267101,
+    "fixtureGamesPerCondition": 2,
+    "fixtureConditionCount": 6,
+    "fixtureTotalGames": 12,
+    "artifactId": 8833345386,
+    "artifactDigest": "sha256:b4224224f27f9d4403be62698abefd77acd130729ce2eb5171cce0017f0dbe52",
+    "note": "This is non-formal infrastructure validation only. E-019 formal seeds were not used and no formal scientific result was generated."
+  },
   "allowedBeforeFormalAuthorization": [
     "implementation",
     "unit tests",
