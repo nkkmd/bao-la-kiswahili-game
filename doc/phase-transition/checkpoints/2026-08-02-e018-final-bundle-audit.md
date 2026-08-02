@@ -86,4 +86,39 @@ E-018最終formal archiveの識別値を次として固定する。
 
 E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`は変更しない。E-018のprimary endpoint、McNemar rule、解釈境界も結果後に変更しない。
 
+## 6. ローカル長期保管先
+
+formal final exportの統一保管規則 `doc/phase-transition/FORMAL_EXPORT_STORAGE.md` に従い、E-018の最終bundleはrepository外の次を保管先とする。
+
+WSL:
+
+```text
+/home/oruorane/bao-e018-exports/
+```
+
+Windows:
+
+```text
+\\wsl.localhost\Ubuntu\home\oruorane\bao-e018-exports
+```
+
+最低保管構成:
+
+```text
+bao-e018-exports/
+├── e018-final-formal-evaluation.tar.gz
+└── e018-final-formal-evaluation.tar.gz.sha256
+```
+
+`.sha256`は保管先ディレクトリ内でbasenameから生成し、絶対パスを記録しない。
+
+```bash
+cd ~/bao-e018-exports
+sha256sum e018-final-formal-evaluation.tar.gz \
+  > e018-final-formal-evaluation.tar.gz.sha256
+sha256sum -c e018-final-formal-evaluation.tar.gz.sha256
+```
+
+期待する検証結果は`e018-final-formal-evaluation.tar.gz: OK`。保管場所の変更・統一は科学結果の変更ではなく、archive bytesの同一性は上記SHA-256で固定する。
+
 PR #26は引き続きopen / draftのまま維持する。
