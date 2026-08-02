@@ -108,6 +108,8 @@
 | D-098 | E-018正式4000局の判定を`confirmed`として固定する | 採用 | formal integrity `valid:true`、discordant 72、n10=63、n01=9、exact McNemar p=4.1812279092751445e-11、方向条件通過 |
 | D-099 | E-018 structural secondaryのFisher p=0.418をprimary判定の反証として扱わない | 採用 | trajectory-ply比較は事前登録上secondary。paired game-level exact McNemar primaryを置き換えない |
 | D-100 | H16のformal confirmation範囲を`hard / bao / depth 2`での`phase2`対`legacy`に限定する | 採用 | 全evaluator、全depth、将来の別search implementationへ自動一般化しない |
+| D-101 | formal experimentの最終export保管をrepository外の`/home/oruorane/bao-eNNN-exports/`へ統一し、archiveとbasename形式の`.sha256`を対で保存する | 採用 | `doc/phase-transition/FORMAL_EXPORT_STORAGE.md`。移動後も`sha256sum -c`で検証できるようchecksum内に移動前の絶対パスを残さない |
+| D-102 | E-018最終formal bundleの保管先を`/home/oruorane/bao-e018-exports/`として固定し、archive SHA-256を`bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5`とする | 採用 | E-011既存保管先`/home/oruorane/bao-e011-exports/`と同じ規則へ統一。保管台帳`FORMAL_EXPORT_INDEX.md`とE-018 final bundle auditに記録 |
 
 ## 今後固定が必要な判断
 
