@@ -2,6 +2,8 @@
 
 更新日: 2026-08-02
 
+保管台帳: `doc/phase-transition/FORMAL_EXPORT_INDEX.md`
+
 ## 目的
 
 固定ローカル環境で完了したformal experimentの最終成果物を、Git repositoryとは分離して長期保管し、archiveとSHA-256の対応を再検証できる状態にする。
@@ -69,7 +71,7 @@ eNNN-final-formal-evaluation.tar.gz: OK
 
 ## 4. 研究台帳への記録
 
-final bundleを固定したexperimentでは、少なくとも次を台帳またはcompletion/final-bundle checkpointへ記録する。
+final bundleを固定したexperimentでは、少なくとも次を`FORMAL_EXPORT_INDEX.md`およびcompletion/final-bundle checkpointへ記録する。
 
 - archive filename
 - archive SHA-256
