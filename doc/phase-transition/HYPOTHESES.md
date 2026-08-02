@@ -159,17 +159,15 @@ E-017はさらに独立したseed `20263001–20264000` を使用し、trajector
 
 ## H16 — 捕獲分岐急拡大の顕在化はsearch profileに依存する
 
-状態: **E-011から示唆・E-018事前登録済み・未検証**
+状態: **E-018 formal `confirmed`**
 
-E-011ではphase2を使用したC0–C3の全条件で候補側濃縮方向が維持され、trajectory-ply重複除去後RRも7.31–11.70だった。一方、`bao / legacy / depth2`のC4では主解析A候補8件、expansion 0件、RR 0.00で、重複除去後もexpansion 0件だった。
+E-011ではphase2を使用したC0–C3の全条件で候補側濃縮方向が維持され、trajectory-ply重複除去後RRも7.31–11.70だった。一方、`bao / legacy / depth2`のC4では主解析A候補8件、expansion 0件、RR 0.00で、重複除去後もexpansion 0件だった。ただしC4は`insufficient`だったため、E-011をsearch profile依存性の確認成功へ読み替えなかった。
 
-ただしC4は最低候補数・最低expansion数に未達の`insufficient`であり、この1条件だけからsearch profile依存性を確定しない。
-
-E-017はphase2のみの独立確認でありH16の直接検定ではないが、9固有expansion trajectory-plyとdedup RR 13.74を観測した。E-017のformal判定はcontrol availability不足により`not-confirmed`であり、H16の証拠へ読み替えない。
+E-017はphase2のみの独立確認で、H16の直接検定としては扱わない。E-017 formal decision `not-confirmed`も変更しない。
 
 ### E-018直接比較
 
-H16を直接検証するためE-018を事前登録した。
+E-018は次をdata generation前に固定した。
 
 - P2: `hard / bao / phase2 / depth 2`
 - LG: `hard / bao / legacy / depth 2`
@@ -184,13 +182,39 @@ H16を直接検証するためE-018を事前登録した。
 - alpha: 0.05
 - direction: P2-only > LG-only
 
-legacy expansion最低件数は要求しない。legacyで0件/低件数となること自体がH16と整合し得るためであり、この設計判断はE-018 data generation前に固定した。
+formal integrityは`mode=formal / valid=true`。2000 paired gamesで:
 
-E-018 formal corpusは未承認・未生成。E-017の開始承認はE-018へ継承しない。
+- `n00`: 1928
+- `n01` LG-only: 9
+- `n10` P2-only: 63
+- `n11`: 0
+- discordant pairs: 72
+- P2 event-game rate: 3.15%
+- LG event-game rate: 0.45%
+- paired risk difference: +2.70 percentage points
+- discordant odds ratio: 7.0
+- two-sided exact McNemar p: `4.1812279092751445e-11`
+
+exact pair count、minimum discordant pairs、alpha、方向条件をすべて通過したため、事前登録decision contractに従いE-018は**`confirmed`**。
+
+したがってH16は、固定 `hard / bao / depth 2` 条件における`phase2`対`legacy`、paired same-opening designの範囲で正式確認された。
+
+structural secondaryではcandidate trajectory-ply expansion率がP2 11/34 (32.35%)、LG 7/31 (22.58%)、Fisher exact p=0.418だった。これは副次解析であり、事前登録primary McNemar判定を置き換えない。
+
+### 解釈境界
+
+H16の`confirmed`を次へ自動一般化しない。
+
+- 全evaluation profile
+- 全search depth
+- 将来の別search implementation
+- trajectory-ply副次比較自体の有意差
+- E-011のglobal robustness判定
+
+E-011 formal `inconclusive`、E-017 formal `not-confirmed`はそのまま維持する。
 
 ## 次の検証
 
-- E-011正式`inconclusive`、E-017正式`not-confirmed`を固定し、結果後に閾値やdecision ruleを変更しない。
-- E-017の最低unique control trajectory-ply 30000を23306へ緩和しない。
-- E-018のpaired-condition runner、paired-opening/source integrity validator、exact McNemar evaluator、fixtureをformal data生成前に実装・検証する。
-- E-018正式4000局はE-018固有の別の明示的開始承認まで生成しない。
+- E-018 `confirmed`を固定し、primary endpoint、McNemar rule、解釈境界を結果後に変更しない。
+- E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`を維持する。
+- H16をより広いevaluator/depth/search implementationへ一般化する場合は、E-018と分離した新規事前登録実験として設計する。
