@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "experimentId": "E-019",
-  "status": "infrastructure-validated-awaiting-authorization",
+  "status": "approved-awaiting-local-lock",
   "supersedes": "config/experiments/phase-transition-search-profile-generalization-execution-policy-v1.json",
   "repositoryPath": "/home/oruorane/github/bao-la-kiswahili-game",
   "branch": "research/forced-capture-regime-analysis",
@@ -32,7 +32,7 @@
     "executionLock": "artifacts/phase-transition/search-profile-generalization-v2/execution-lock.json",
     "finalExportDirectory": "/home/oruorane/bao-e019-exports/"
   },
-  "formalExecutionAllowed": false,
+  "formalExecutionAllowed": true,
   "formalCorpusGenerated": false,
   "githubActionsFormalRunAllowed": false,
   "infrastructureValidation": {
@@ -48,6 +48,12 @@
     "artifactDigest": "sha256:b4224224f27f9d4403be62698abefd77acd130729ce2eb5171cce0017f0dbe52",
     "note": "This is non-formal infrastructure validation only. E-019 formal seeds were not used and no formal scientific result was generated."
   },
+  "formalAuthorization": {
+    "granted": true,
+    "date": "2026-08-03",
+    "instruction": "E-019のformal実行開始を承認します。",
+    "scope": "Authorize E-019 fixed-local formal execution only after a new E-019-specific execution lock is generated and validated. This does not authorize GitHub Actions formal generation and does not reuse any prior experiment lock."
+  },
   "allowedBeforeFormalAuthorization": [
     "implementation",
     "unit tests",
@@ -61,7 +67,7 @@
     "generation of an E-019 formal execution lock authorizing data generation",
     "relaxation of preregistered sample sizes or decision rules"
   ],
-  "activationRule": "Set formalExecutionAllowed=true only after a separate explicit user instruction specific to E-019, after preregistration and infrastructure validation are complete. Prior experiment approvals do not carry over.",
+  "activationRule": "formalExecutionAllowed may be true only after a separate explicit user instruction specific to E-019, after preregistration and infrastructure validation are complete. Prior experiment approvals do not carry over.",
   "formalLockRule": "After E-019-specific approval, create a new fixed-local execution lock that records the then-current source commit, preregistration SHA-256, execution-policy SHA-256, runtime, hardware, repository state, and fixed corpus conditions. No prior lock may be reused.",
   "changePolicy": "Changing runtime requirements, repository path, approval semantics, corpus sizes, seed ranges, strata, search-profile conditions, primary endpoint, McNemar rule, IUT global rule, Holm standalone inference, or output contract requires a new policy/preregistration version as applicable. Infrastructure-only implementation changes are allowed before formal lock but must be frozen into the E-019 source commit before formal authorization is executed."
 }
