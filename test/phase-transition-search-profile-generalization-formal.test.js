@@ -16,8 +16,9 @@ const executionPolicy = JSON.parse(fs.readFileSync(
   "config/experiments/phase-transition-search-profile-generalization-execution-policy-v2.json",
   "utf8",
 ));
-assert.equal(executionPolicy.formalExecutionAllowed, false);
-assert.equal(executionPolicy.status, "infrastructure-validated-awaiting-authorization");
+assert.equal(executionPolicy.formalExecutionAllowed, true);
+assert.equal(executionPolicy.status, "approved-awaiting-local-lock");
+assert.equal(executionPolicy.formalAuthorization.granted, true);
 assert.equal(executionPolicy.infrastructureValidation.validated, true);
 assert.equal(executionPolicy.infrastructureValidation.workflowRunId, 30747182554);
 assert.equal(Prepare.gitIgnored("artifacts/phase-transition/search-profile-generalization-v2", repositoryRoot), true);
@@ -62,17 +63,22 @@ const environment = {
     error: null,
   },
 };
-const preAuthorizationErrors = Prepare.validateEnvironment(executionPolicy, environment, loaded.config);
+assert.deepEqual(Prepare.validateEnvironment(executionPolicy, environment, loaded.config), []);
+const preAuthorizationPolicy = {
+  ...executionPolicy,
+  status: "infrastructure-validated-awaiting-authorization",
+  formalExecutionAllowed: false,
+  formalAuthorization: { ...executionPolicy.formalAuthorization, granted: false },
+};
+const preAuthorizationErrors = Prepare.validateEnvironment(preAuthorizationPolicy, environment, loaded.config);
 assert.ok(preAuthorizationErrors.includes("E-019-specific formal authorization is required before preparing an execution lock."));
-const approvedPolicy = { ...executionPolicy, status: "approved-awaiting-local-lock", formalExecutionAllowed: true };
-assert.deepEqual(Prepare.validateEnvironment(approvedPolicy, environment, loaded.config), []);
-assert.ok(Prepare.validateEnvironment(approvedPolicy, { ...environment, githubActions: true }, loaded.config).includes("Formal E-019 execution lock cannot be prepared in GitHub Actions."));
+assert.ok(Prepare.validateEnvironment(executionPolicy, { ...environment, githubActions: true }, loaded.config).includes("Formal E-019 execution lock cannot be prepared in GitHub Actions."));
 
 const approvalToken = "E-019-FORMAL-APPROVED";
 const approvalLock = { approval: { approved: true, approvalTokenSha256: Prepare.sha256(approvalToken) } };
-assert.doesNotThrow(() => Formal.approve(approvalLock, approvedPolicy, approvalToken));
-assert.throws(() => Formal.approve(approvalLock, approvedPolicy, "wrong"));
-assert.throws(() => Formal.approve(approvalLock, executionPolicy, approvalToken));
+assert.doesNotThrow(() => Formal.approve(approvalLock, executionPolicy, approvalToken));
+assert.throws(() => Formal.approve(approvalLock, executionPolicy, "wrong"));
+assert.throws(() => Formal.approve(approvalLock, preAuthorizationPolicy, approvalToken));
 
 const root = fs.mkdtempSync(path.join(os.tmpdir(), "e019-formal-"));
 const policyPath = path.join(root, "execution-policy.json");
