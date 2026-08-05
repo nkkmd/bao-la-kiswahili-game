@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 仮説台帳
 
-更新日: 2026-08-02
+更新日: 2026-08-05
 
 ## H1 — 戦略的転移は形式的phase移行より前に現れる
 
@@ -211,32 +211,64 @@ H16の`confirmed`を次へ自動一般化しない。
 - trajectory-ply副次比較自体の有意差
 - E-011のglobal robustness判定
 
+E-019でD3に逆方向の結果が得られた後も、E-018が直接確認した固定`hard / bao / depth2`のformal `confirmed`は遡及変更しない。E-019はH16の全depth一般化ではなく、別仮説H17の検定として扱う。
+
 E-011 formal `inconclusive`、E-017 formal `not-confirmed`はそのまま維持する。
 
 ## H17 — 捕獲分岐急拡大のsearch-profile依存性は指定depth/evaluator変更下でも維持される
 
-状態: **E-019 preregistered / infrastructure-validated / formal not authorized**
+状態: **E-019 formal `not-confirmed`**
 
-E-018で確認されたH16の範囲は`hard / bao / depth 2`のphase2対legacyに限定される。H17はそのformal confirmationを遡及的に拡張せず、新規独立実験E-019で次の3 strataへ一般化可能かを検定する。
+E-018で確認されたH16の範囲は`hard / bao / depth 2`のphase2対legacyに限定される。H17はそのformal confirmationを遡及的に拡張せず、新規独立実験E-019で次の3 strataへ一般化可能かを検定した。
 
 - D1: `hard / bao / depth 1`, phase2 vs legacy, 6500 paired seeds
 - D3: `hard / bao / depth 3`, phase2 vs legacy, 4500 paired seeds
 - V2: `hard / bao-v2 / depth 2`, phase2 vs legacy, 2000 paired seeds
 
-合計13000 paired comparisons / 26000 games。formal master seed blockは`20268001–20274500`で、各stratum内same seed / same random-opening boundaryを要求する。
+合計13000 paired comparisons / 26000 games。formal master seed blockは`20268001–20274500`で、各stratum内same seed / same random-opening boundaryを要求した。
 
-Primary endpointはE-018から継承し、`pliesRemaining >= 9`のeligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上存在するかをpaired game-level binary endpointとする。各stratumでtwo-sided exact McNemar、alpha 0.05、minimum discordant pairs 20、`phase2-only > legacy-only`を要求する。
+Primary endpointはE-018から継承し、`pliesRemaining >= 9`のeligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上存在するかをpaired game-level binary endpointとした。各stratumでtwo-sided exact McNemar、alpha 0.05、minimum discordant pairs 20、`phase2-only > legacy-only`を要求した。
 
-Global H17 confirmationはintersection-union testとしてD1/D3/V2の3条件すべて`pass`を要求する。standalone stratum claimにはHolm-Bonferroni family alpha 0.05を別途適用する。
+Global H17 confirmationはintersection-union testとしてD1/D3/V2の3条件すべて`pass`を要求した。standalone stratum claimにはHolm-Bonferroni family alpha 0.05を別途適用した。
 
-`trajectoryHash + eventPly` structural comparisonはpreregistered secondaryのみであり、paired game-level McNemar condition decisionまたはglobal IUT decisionを変更しない。
+Formal integrityは`mode=formal / valid=true / errors=[]`。
 
-E-019 infrastructureはformal block外seed `20267101–20267102`の12-game fixtureで検証済み。formal seedは未使用、formal corpusは未生成、execution policyは`formalExecutionAllowed=false`のまま。E-019固有開始承認と専用fixed-local execution lockはまだ存在しない。
+Primary results:
 
-H17の結果が将来得られても、E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`を遡及変更しない。
+| stratum | P2 event | LG event | n10 | n01 | discordants | McNemar p | decision | Holm standalone |
+|---|---:|---:|---:|---:|---:|---:|---|---|
+| D1 | 67/6500 | 4/6500 | 67 | 4 | 71 | `8.735848890518809e-16` | `pass` | confirmed |
+| D3 | 13/4500 | 140/4500 | 13 | 140 | 153 | `4.614222568073049e-28` | `fail` | not confirmed for P2>LG |
+| V2 | 63/2000 | 18/2000 | 63 | 18 | 81 | `5.204403564731451e-7` | `pass` | confirmed |
+
+D1ではpaired risk difference +0.9692pp、discordant OR 16.75。V2では+2.25pp、OR 3.5で、いずれも事前登録方向`phase2 > legacy`を満たした。
+
+D3ではpaired risk difference -2.8222pp、discordant OR 0.09286で、`phase2-only=13`に対し`legacy-only=140`となった。discordant availabilityおよびp値基準は十分だが、事前登録方向と明確に逆であるためcondition decisionは`fail`。結果後に方向条件を反転してH17を救済しない。
+
+Global IUTは1 stratum以上の`fail`で`not-confirmed`と事前固定されているため、E-019 / H17 formal global decisionは**`not-confirmed`**。
+
+`trajectoryHash + eventPly` structural comparisonはpreregistered secondaryのみ。D3 secondaryでもP2 6/49 (12.24%)、LG 17/36 (47.22%)、Fisher p=`0.0004792331642727793`と逆方向だったが、secondaryをprimary/global判定の根拠へ置換しない。
+
+### 解釈境界
+
+E-019から直接言えるのは、事前指定した3 strataでsearch-profile effectの方向が一様ではないことである。
+
+- D1: phase2 > legacy component `pass`、Holm standalone confirmed
+- D3: preregistered phase2 > legacy方向は`fail`、legacy > phase2の強い逆方向観測
+- V2: phase2 > legacy component `pass`、Holm standalone confirmed
+- global H17 conjunction: `not-confirmed`
+
+D3逆転を結果後に新しいconfirmatory hypothesisとして認定しない。任意のdepthでの単調効果、全evaluator、将来のsearch implementationへ一般化しない。
+
+E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`を遡及変更しない。
+
+完了チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-05-e019-formal-completion.md`
+- `doc/phase-transition/checkpoints/2026-08-05-e019-final-bundle-audit.md`
 
 ## 次の検証
 
-- E-018 `confirmed`を固定し、primary endpoint、McNemar rule、解釈境界を結果後に変更しない。
-- E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`を維持する。
-- E-019はfixed-local pre-authorization preflight後、別の明示的formal開始承認を受けるまでformal corpusを生成しない。
+- E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`を固定する。
+- E-019 D3の逆転は新しい研究対象になり得るが、E-019結果を使って方向・threshold・decision ruleを事後変更しない。
+- depth依存の非単調性またはphase2/legacy逆転機構を検証する場合は、新規仮説・新規事前登録・新規seed blockとして分離する。
