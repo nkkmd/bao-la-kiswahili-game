@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 現在地
 
-更新日: 2026-08-02  
+更新日: 2026-08-05  
 Status: Active  
 研究計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`
 
@@ -17,7 +17,7 @@ Status: Active
 - `HYPOTHESES.md`
 - 必要に応じて `checkpoints/`
 
-PR #26は明示的な指示があるまでドラフトのまま維持する。
+PR #26は明示的な指示があるまでopen / draftのまま維持する。
 
 ## 現在の研究段階
 
@@ -27,11 +27,11 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-010未使用seed 200局確認実験
 - E-010 trajectory重複の事後感度分析
 - E-010確認群7急拡大候補の形成過程・最大捕獲可能量非対称化分析
-- E-011 AI条件・探索深度横断頑健性実験の事前登録・実装・formal 2000局・integrity・評価
-- E-017独立構造確認実験の事前登録・実装・formal 1000局・integrity・評価
-- H16 search profile依存性直接比較E-018の事前登録・実装・fixture/infrastructure検証
-- E-018固有formal開始承認、fixed-local execution lock、formal 4000局、analyze、integrity、evaluate
-- E-018 H16 formal confirmation
+- E-011 AI条件・探索深度横断頑健性 formal 2000局
+- E-017独立構造確認 formal 1000局
+- E-018 H16 search-profile依存性直接比較 formal 4000局
+- E-019 H17 search-profile一般化 formal 26000局
+- E-019 final formal bundle監査・repository外保管
 
 現在の正式判定:
 
@@ -39,8 +39,9 @@ PR #26は明示的な指示があるまでドラフトのまま維持する。
 - E-011: **`inconclusive`**
 - E-017: **`not-confirmed`**
 - E-018: **`confirmed`**
+- E-019: **`not-confirmed`**
 
-E-010/E-011/E-017/E-018の判定は固定し、結果後に閾値、primary endpoint、decision ruleを変更しない。
+これらの判定は固定し、結果後にthreshold、sample size、seed、primary endpoint、direction rule、decision ruleを変更しない。
 
 ## 主要な確定事項
 
@@ -54,14 +55,14 @@ E-010/E-011/E-017/E-018の判定は固定し、結果後に閾値、primary endp
 
 ## E-010 未使用seed確認
 
-事前登録条件:
+固定条件:
 
 - 200局、seed `20261001–20261200`
 - primary population: `pliesRemaining >= 9`
-- 主解析A候補12件以上
-- 急拡大候補5件以上
-- 主解析対照5000件以上
-- RR 3以上
+- 最低主解析A候補12
+- 最低急拡大候補5
+- 最低主解析対照5000
+- RR >=3
 - 候補率 > 対照率
 
 結果:
@@ -77,15 +78,13 @@ E-010/E-011/E-017/E-018の判定は固定し、結果後に閾値、primary endp
 
 正式判定: **`not-confirmed`**
 
-最低主解析候補12件に対して11件。結果後に11へ緩和しない。
+最低主解析候補12に対し11。結果後に11へ緩和しない。
 
 trajectory-ply事後感度:
 
 - unique candidates: 5
 - unique expansion: 2
 - unique controls: 7061
-- dedup candidate rate: 40.00%
-- dedup control rate: 3.09%
 - dedup RR: 12.96
 - largest duplicate group: 6
 
@@ -110,17 +109,15 @@ trajectory-ply事後感度:
 formal integrity: `valid: true`  
 formal global decision: **`inconclusive`**
 
-trajectory-ply感度:
+trajectory-ply重複除去後RR:
 
-| 条件 | unique candidates | unique expansion | unique controls | dedup RR |
-|---|---:|---:|---:|---:|
-| C0 | 8 | 2 | 12185 | 7.87 |
-| C1 | 13 | 2 | 11407 | 7.31 |
-| C2 | 10 | 2 | 11695 | 10.98 |
-| C3 | 11 | 4 | 12160 | 11.70 |
-| C4 | 6 | 0 | 11412 | 0.00 |
+- C0 7.87
+- C1 7.31
+- C2 10.98
+- C3 11.70
+- C4 0.00
 
-phase2 C0–C3では重複除去後も候補側濃縮方向が維持された。legacy C4では生・重複除去後ともexpansion候補0。ただしC4はavailability不足であり、E-011自体をsearch profile依存性の確定証明へ読み替えない。
+E-011を結果後に`partially-robust`や`not-robust`へ読み替えない。
 
 完了チェックポイント:
 
@@ -128,55 +125,25 @@ phase2 C0–C3では重複除去後も候補側濃縮方向が維持された。
 
 ## E-017 独立構造確認
 
-### 固定条件
+固定条件:
 
 - 1000局
 - seed `20263001–20264000`
 - `hard / bao / phase2 / depth 2`
 - primary population: `pliesRemaining >= 9`
 - primary unit: unique `trajectoryHash + eventPly`
+- minimum unique control trajectory-ply: 30000
 
-成功条件:
+formal integrity:
 
-- raw primary candidates >= 30
-- unique candidate trajectory-ply >= 15
-- unique candidate trajectories >= 12
-- unique expansion trajectory-ply >= 5
-- unique expansion trajectories >= 5
-- unique control trajectory-ply >= 30000
-- dedup RR >= 3
-- dedup candidate rate > control rate
-
-### Formal integrity
-
-固定ローカルでformal 1000局を完了し、`verify`は次を確認した。
-
-- observations: 56294
 - games: 1000
-- exact seed sequence: true
-- unique game IDs: true
-- all trajectory hashes present: true
-- source commit matches execution lock: true
-- lock preregistration/policy hash present: true
+- observations: 56294
+- source commit matches lock: true
 - errors: `[]`
 - mode: `formal`
 - valid: `true`
 
-### Formal result
-
-Raw endpoint:
-
-| 指標 | 結果 |
-|---|---:|
-| candidates | 53 |
-| expansion | 37 |
-| controls | 40956 |
-| control expansion | 1235 |
-| candidate rate | 69.81% |
-| control rate | 3.02% |
-| RR | 23.15 |
-
-Trajectory-ply deduplicated:
+主結果:
 
 | 指標 | 結果 |
 |---|---:|
@@ -185,169 +152,188 @@ Trajectory-ply deduplicated:
 | unique candidate trajectories | 19 |
 | unique expansion trajectories | 9 |
 | unique controls | 23306 |
-| control expansion | 727 |
 | candidate rate | 42.86% |
 | control rate | 3.12% |
-| RR | 13.74 |
-| largest duplicate multiplicity | 24 |
+| dedup RR | 13.74 |
 
-criteria照合:
+正式判定: **`not-confirmed`**
 
-- raw candidates >=30: pass
-- unique candidate trajectory-ply >=15: pass
-- unique candidate trajectories >=12: pass
-- unique expansion trajectory-ply >=5: pass
-- unique expansion trajectories >=5: pass
-- unique control trajectory-ply >=30000: **fail (23306)**
-- dedup RR >=3: pass
-- candidate rate > control rate: pass
-
-formal decision: **`not-confirmed`**
-
-唯一の不通過はunique control trajectory-ply。`30000`を結果後に`23306`へ緩和しない。強い効果方向、dedup RR 13.74、9固有expansion trajectoryを理由に`confirmed`へ読み替えない。
-
-一方、独立seed blockでも構造的一般性を伴う候補側濃縮方向が再観測されたことは、formal判定と分けて記録する。
-
-formal evaluation出力の`preregistrationStatus: preregistered-not-run`はconfig由来の古い状態文字列であり、formal実行状態の正本ではない。execution lockとformal integrity `mode=formal / valid=true`を正本とする。
+唯一の不通過はunique control trajectory-ply `23306 < 30000`。結果後に30000を緩和しない。
 
 完了チェックポイント:
 
 - `doc/phase-transition/checkpoints/2026-08-02-e017-formal-completion.md`
 
-## E-018 H16 search profile依存性直接比較
+## E-018 H16 search-profile依存性直接比較
 
 H16:
 
 > 捕獲分岐急拡大の顕在化はsearch profileに依存する。
 
-E-011 C4のlegacy 0 expansionは示唆的だがavailability不足だったため、E-011を再解釈せず新規独立実験E-018として事前登録した。
-
-### 固定設計
+固定設計:
 
 - P2: `hard / bao / phase2 / depth 2`
 - LG: `hard / bao / legacy / depth 2`
-- 2000局 / condition
-- total 4000局
+- 2000 paired seeds / 4000 games
 - shared seed `20265001–20267000`
-- same seed / same random-opening boundaryをpair
-- primary population: `pliesRemaining >= 9`
-- primary unit: paired shared-seed game
-- endpoint: eligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上あるか
-- test: two-sided exact McNemar
-- alpha: 0.05
-- minimum discordant pairs: 20
-- direction requirement: `n10 > n01`
+- same seed / same random-opening boundary
+- primary population `pliesRemaining >= 9`
+- paired game-level binary endpoint
+- exact two-sided McNemar
+- alpha 0.05
+- minimum discordants 20
+- direction `P2-only > LG-only`
 
-legacy側に最低expansion件数を要求しない。legacyで0件または極低率になること自体がH16と整合し得るため、E-011と同じavailability trapを持ち込まない。
+formal integrity: `mode=formal / valid=true / errors=[]`
 
-`trajectoryHash + eventPly`によるprofile別構造比較、candidate/control RR、P2/LG候補率Fisher exactは副次解析で、primary McNemar判定を置き換えない。
+Primary:
 
-### Fixed-local execution
+- n00 = 1928
+- n01 LG-only = 9
+- n10 P2-only = 63
+- n11 = 0
+- discordants = 72
+- P2 event rate = 3.15%
+- LG event rate = 0.45%
+- RD = +2.70pp
+- discordant OR = 7.0
+- exact McNemar p = `4.1812279092751445e-11`
 
-- locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
-- preregistration SHA-256: `17fb28bf250d2218b91d5d6196ec58ac7ba0c8b8d2ced93d498135ea669e4298`
-- execution-policy SHA-256: `b1bd2769877989a236f24576ea8e11070fbe573f4f7a92b9c56d3f998b1b9653`
-- Node.js: `v24.6.0`
-- platform: Linux / WSL2
-- Python venv: `/home/oruorane/.venvs/bao-phase-transition-e011`
-- activation: `source ~/.venvs/bao-phase-transition-e011/bin/activate`
-- Python: `3.12.3`
-- numpy: `2.5.1`
-- pandas: `3.0.5`
+正式判定: **`confirmed`**
 
-formal run中、runnerの進捗表示仕様を確認するためP2 60局完了時点で一度`Ctrl+C`中断した。同一execution lock、source、config、seedのまま、atomic-write済みgameを検証再利用するresume contractで再開し、4000局を完了した。科学条件は変更していない。
+H16は固定`hard / bao / depth2`のphase2対legacyに限って正式確認された。全depth・全evaluatorへ一般化しない。
+
+Structural secondaryのtrajectory-ply直接比較は11/34対7/31、Fisher p=`0.41837226457118804`。secondaryはprimaryを変更しない。
+
+完了チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-02-e018-formal-completion.md`
+
+## E-019 H17 search-profile一般化
+
+H17:
+
+> 捕獲分岐急拡大のsearch-profile依存性は、事前指定したsearch depthおよびevaluator変更下でもphase2優位として維持される。
+
+E-018のdepth2 confirmationを遡及拡張せず、3つの事前指定strataで新規formal experimentとして検定した。
+
+### 固定設計
+
+| stratum | evaluator | depth | paired seeds | games | seed range |
+|---|---|---:|---:|---:|---|
+| D1 | bao | 1 | 6500 | 13000 | `20268001–20274500` |
+| D3 | bao | 3 | 4500 | 9000 | `20268001–20272500` |
+| V2 | bao-v2 | 2 | 2000 | 4000 | `20268001–20270000` |
+| total |  |  | 13000 | 26000 | nested-prefix design |
+
+PrimaryはE-018を継承:
+
+- `pliesRemaining >= 9`
+- paired game-level eligible expansion event
+- exact two-sided McNemar per stratum
+- component alpha 0.05
+- minimum discordants 20
+- direction `phase2-only > legacy-only`
+- global IUT: D1/D3/V2全て`pass`でのみ`confirmed`
+- standalone stratum: Holm-Bonferroni family alpha 0.05
+
+Locked execution:
+
+- source commit: `73ccd513218d7afa96fa637b366c3af2abca6323`
+- preregistration SHA-256: `046e38edc1baba276fe2444715e09da3280e6438b036ad3ebb89e323e3fe0ec8`
+- execution-policy SHA-256: `47d8b0df17eaa7fb9e878117d973bba91aba6963bbd65cecb8e0bcb0a939495c`
+- Node `v24.6.0`
+- Python `3.12.3`
+- numpy `2.5.1`
+- pandas `3.0.5`
 
 ### Formal integrity
 
-- P2: 2000 games / 110985 observations
-- LG: 2000 games / 115785 observations
-- both conditions present: true
-- unique condition config hashes: true
-- common source commit: true
-- source commit matches lock: true
-- exact paired seed sequence: true
-- paired opening hashes: true
-- condition identity clean: true
-- trajectory hashes present: true
-- execution mode correct: true
-- lock preregistration/policy hash checks: pass
-- artifact verification: true
+全26000局完了。
+
+- D1-P2: 6500 / 393710 observations
+- D1-LG: 6500 / 310951
+- D3-P2: 4500 / 277876
+- D3-LG: 4500 / 251160
+- V2-P2: 2000 / 112412
+- V2-LG: 2000 / 117587
+- allConditionsPresent: true
+- uniqueConditionConfigHashes: true
+- commonSourceCommit: true
+- sourceCommitMatchesLock: true
+- withinStratumSeedSequences: true
+- pairedOpeningHashesWithinStratum: true
+- nestedFormalSeedPrefixes: true
+- conditionIdentityClean: true
+- trajectoryHashesPresent: true
+- executionModeCorrect: true
+- lockPreregistrationHash: true
+- lockPolicyHashPresent: true
+- artifactVerification: true
 - errors: `[]`
 - mode: `formal`
 - **valid: true**
 
 ### Primary formal result
 
-| endpoint | count |
-|---|---:|
-| `n00` | 1928 |
-| `n01` LG-only | 9 |
-| `n10` P2-only | 63 |
-| `n11` | 0 |
-| discordant pairs | 72 |
+| stratum | n01 LG-only | n10 P2-only | discordants | P2 rate | LG rate | RD | OR | exact p | decision |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| D1 | 4 | 67 | 71 | 1.0308% | 0.0615% | +0.9692pp | 16.75 | `8.735848890518809e-16` | `pass` |
+| D3 | 140 | 13 | 153 | 0.2889% | 3.1111% | -2.8222pp | 0.09286 | `4.614222568073049e-28` | **`fail`** |
+| V2 | 18 | 63 | 81 | 3.15% | 0.90% | +2.25pp | 3.5 | `5.204403564731451e-7` | `pass` |
 
-- P2 event-game rate: 63/2000 = **3.15%**
-- LG event-game rate: 9/2000 = **0.45%**
-- paired risk difference: **+2.70 percentage points**
-- discordant odds ratio: **7.0**
-- exact McNemar two-sided p: **`4.1812279092751445e-11`**
+Holm standalone:
 
-criteria:
+- D1: confirmed, adjusted p `1.7471697781037618e-15`
+- D3: not confirmed for preregistered P2>LG direction
+- V2: confirmed, adjusted p `5.204403564731451e-7`
 
-- exact pair count: pass
-- minimum discordant pairs >=20: pass (72)
-- p <=0.05: pass
-- P2-only > LG-only: pass (63 > 9)
+D3はavailability不足ではない。153 discordant pairsを持ち、差は強いが、`P2-only=13 < LG-only=140`で事前登録方向と逆転したため`fail`。
 
-formal decision: **`confirmed`**
+Global formal decision: **`not-confirmed`**
 
-H16は、E-018の固定`hard / bao / depth 2`、paired same-opening designにおける`phase2`対`legacy`の範囲で正式確認された。
+IUTは全3 strataのpassを要求しているため、D3 `fail`によってH17 conjunctionは確認されなかった。D1/V2のpassやHolm standalone confirmationでglobal判定を救済しない。
 
 ### Structural secondary
 
-P2:
+Trajectory-ply direct comparison:
 
-- raw eligible candidates / expansion: 107 / 63
-- controls / expansion: 80579 / 2449
-- raw RR: 19.37
-- unique candidate trajectory-ply / expansion: 34 / 11
-- unique candidate / expansion trajectories: 32 / 11
-- dedup RR: 10.12
-- largest multiplicity: 37
+- D1: P2 12/64 vs LG 4/33, RD +6.63pp, RR 1.5469, Fisher p `0.565927217884321`
+- D3: P2 6/49 vs LG 17/36, RD -34.98pp, RR 0.2593, Fisher p `0.0004792331642727793`
+- V2: P2 17/34 vs LG 11/41, RD +23.17pp, RR 1.8636, Fisher p `0.05523184537701421`
 
-LG:
-
-- raw eligible candidates / expansion: 54 / 9
-- controls / expansion: 77567 / 1283
-- raw RR: 10.08
-- unique candidate trajectory-ply / expansion: 31 / 7
-- unique candidate / expansion trajectories: 30 / 7
-- dedup RR: 13.43
-- largest multiplicity: 5
-
-P2対LG candidate trajectory-ply direct comparison:
-
-- 11/34 vs 7/31
-- risk difference: +9.77 percentage points
-- RR: 1.43
-- Fisher exact two-sided p: `0.41837226457118804`
-
-Fisher比較はsecondaryであり、p>0.05を理由にprimary `confirmed`を変更しない。
+D3 secondaryも逆方向だが、secondaryはprimary/global decisionを置き換えない。
 
 ### 解釈境界
 
-確認されたのは固定`hard / bao / depth 2`条件でのsearch profile差である。全evaluation profile、全depth、別search implementation、trajectory-ply副次比較自体の有意差へ自動一般化しない。
+現在の最も重要な整理:
+
+1. **H16は維持** — `hard / bao / depth2`ではE-018によりphase2 > legacyがformal confirmed。
+2. **H17はnot-confirmed** — 指定depth/evaluator全体への同方向一般化は成立しない。
+3. D1 (`depth1`)とV2 (`bao-v2/depth2`)ではphase2 > legacyがstandalone Holmでも確認された。
+4. D3 (`bao/depth3`)ではlegacy > phase2方向へ強く反転した。
+5. D3逆転をE-019内で新しいconfirmatory仮説へ読み替えない。機構検証は新規仮説・新規事前登録・新規seed blockで行う。
 
 完了チェックポイント:
 
-- `doc/phase-transition/checkpoints/2026-08-02-e018-formal-completion.md`
+- `doc/phase-transition/checkpoints/2026-08-05-e019-formal-completion.md`
+- `doc/phase-transition/checkpoints/2026-08-05-e019-final-bundle-audit.md`
+
+Final bundle:
+
+- `/home/oruorane/bao-e019-exports/e019-final-formal-evaluation.tar.gz`
+- SHA-256: `6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`
+- member count: 26120
+- unsafe path members: 0
+- reported size: 321M
 
 ## 次工程
 
-1. E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`を固定する。
-2. E-018 primary endpoint、McNemar rule、解釈境界を結果後に変更しない。
-3. H16を他のevaluation profile/depth/search implementationへ一般化する場合は、E-018と分離した新規事前登録実験として設計する。
-4. PR #26は明示的な指示があるまでopen / draftを維持する。
+1. E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`を固定する。
+2. H16の確認範囲を`hard / bao / depth2`から結果後に拡張しない。
+3. H17をD1/V2結果だけで`partially confirmed`等へ読み替えず、事前登録global `not-confirmed`を維持する。
+4. D3の逆転を研究する場合、depth依存の非単調性・探索方式相互作用などを新規仮説として定義し、E-019 formal seedを再利用しない独立設計とする。
+5. PR #26は明示的な指示があるまでopen / draftを維持する。
 
 ## 研究データ識別情報
 
@@ -387,3 +373,14 @@ Fisher比較はsecondaryであり、p>0.05を理由にprimary `confirmed`を変�
 - formal integrity: valid
 - formal decision: `confirmed`
 - locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
+
+### E-019
+
+- studyVersion: `0.4.1`
+- games: 26000
+- paired comparisons: 13000
+- master seed block: `20268001–20274500`
+- formal integrity: valid
+- formal decision: `not-confirmed`
+- component decisions: D1 `pass`, D3 `fail`, V2 `pass`
+- locked source commit: `73ccd513218d7afa96fa637b366c3af2abca6323`
