@@ -1,7 +1,7 @@
 # 局面相転移点研究 — 現在地
 
 更新日: 2026-08-05  
-Status: Active / Study 1 completion phase  
+Status: Active / Study 1 completion phase / Stage A E-020 preregistered  
 原始マスター計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`  
 第1研究完了計画: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`
 
@@ -26,7 +26,7 @@ PR #26は明示的な指示があるまでopen / draftのまま維持する。
 
 研究開始時の `PHASE_TRANSITION_RESEARCH_PLAN.md` はRQ1–RQ10を広く設定した探索的マスター計画として保持する。
 
-研究進行により、強制捕獲レジーム内部の `capture-branch-expansion` が最も明瞭な再現可能候補として浮上し、E-010–E-019の確認研究がこの現象へ集中した。
+研究進行により、強制捕獲レジーム内部の `capture-branch-expansion` が最も明瞭な再現可能候補として浮上し、E-010以降の確認研究がこの現象へ集中した。
 
 現在の第1研究は次として整理する。
 
@@ -54,8 +54,12 @@ PR #26は明示的な指示があるまでopen / draftのまま維持する。
 - E-018 search-profile依存性直接比較
 - E-019 search-profile一般化
 - E-019 final formal bundle監査・repository外保管
+- Stage A D3独立replication設計選定
+- E-020 / H18 preregistration・execution policy・専用基盤実装
 
-現在は、**探索・主要現象同定・基本的confirmatory検証を終え、第1研究の境界条件確認と最終統合へ入る段階**。
+現在は、**Study 1 Stage AとしてE-020/H18の非formal infrastructure validationを行い、formal開始承認前のゲートを閉じる段階**。
+
+E-020 formal corpusはまだ生成していない。E-020のformal開始には、infrastructure validation完了後も別途E-020固有の明示的ユーザー承認と新規execution lockを要求する。
 
 ## 固定済みformal decisions
 
@@ -66,6 +70,8 @@ PR #26は明示的な指示があるまでopen / draftのまま維持する。
 - E-019: **`not-confirmed`**
 
 これらを結果後に変更しない。threshold、sample size、seed、primary endpoint、direction rule、decision ruleも事後変更しない。
+
+E-020はpreregisteredだがformal未実行であり、formal decisionはまだ存在しない。
 
 ## 主要な研究結果
 
@@ -161,19 +167,67 @@ Final bundle:
 - member count: 26120
 - unsafe path members: 0
 
+### E-020 — H18 D3 reversal replication
+
+Stage Aでは、広いsearch-profile × depth interactionを最初からformal検定するのではなく、E-019 D3で新規観測された逆転そのものを狭く独立replicateする設計を選択した。
+
+H18:
+
+> 固定 `hard / bao / depth 3` において、eligible category-A `capture-branch-expansion` のゲーム単位manifestationはphase2よりlegacyで高い。
+
+Data generation前に固定済み:
+
+- 4500 paired seeds / 9000 games
+- formal seed `20275001–20279500`
+- P2=`phase2`, LG=`legacy`
+- same-seed / same random-opening paired design
+- primary population `pliesRemaining >= 9`
+- paired game-level binary endpoint
+- two-sided exact McNemar
+- alpha 0.05
+- minimum discordants 20
+- prospective direction **LG-only > P2-only**
+
+Decision contract:
+
+- exact N・availability・p値・LG>P2方向を全て満たす場合のみ`confirmed`
+- evaluableだがsignificanceまたは方向不通過なら`not-confirmed`
+- integrity / exact N / availabilityが成立しなければ`inconclusive`
+
+E-020でP2>LGへ戻っても方向を結果後に反転しない。H18の範囲は`hard / bao / depth3`のみで、一般的なdepth interactionや非単調性を直接確認する実験ではない。
+
+Preregistration:
+
+- `config/experiments/phase-transition-d3-reversal-replication-v1.json`
+- `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
+- `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
+
+現在は非formal fixtureによるinfrastructure validation中。GitHub Actionsではformal seedを使用しない。
+
 ## 第1研究に残る工程
 
 正本: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`
 
 ### Stage A — D3逆転の独立確認
 
-E-019で新しく観測されたD3 legacy > phase2逆転を、新規仮説・新規seed blockで独立確認する。
+**進行中。** E-020 / H18を新規preregisterした。formal data generationはまだ開始していない。
 
-現時点ではE-020 / H18は**未登録**。番号、仮説、N、seed、endpoint、decision ruleは新しい事前登録時にdata generation前固定する。
+現在のゲート:
+
+1. E-020専用non-formal fixture / formal guard / integrity基盤のCI監査
+2. infrastructure validation結果の固定
+3. **E-020固有の明示的formal開始承認**
+4. fixed-local environmentの再確認
+5. E-020専用execution lock生成
+6. 同一lock下でformal 9000局 → analyze → verify → evaluate
+
+過去experimentのapproval token / execution lockを流用しない。
 
 ### Stage B — depth/search-profile依存の機構解析
 
-D3逆転の再現結果を踏まえ、candidate発生・manifestation、trajectory分岐、forced-capture regime、branching、最大捕獲可能量などから方向変化を説明する。
+E-020の独立再現結果を踏まえ、candidate発生・manifestation、trajectory分岐、forced-capture regime、branching、最大捕獲可能量などから方向変化を説明する。
+
+E-020にはStage Bへの橋渡しとしてcandidate occurrence、candidate→expansion manifestation率、regime length / position等のdescriptive secondaryを事前指定したが、primary判定を変更しない。
 
 新しいformal claimが必要な場合だけ別experimentとして事前登録する。
 
@@ -263,3 +317,14 @@ RQ8の探索条件再現性は第1研究内で重点的に扱い、D3境界条�
 - formal decision: `not-confirmed`
 - components: D1 `pass`, D3 `fail`, V2 `pass`
 - locked source: `73ccd513218d7afa96fa637b366c3af2abca6323`
+
+### E-020
+
+- planned games: 9000
+- paired comparisons: 4500
+- formal seed block: `20275001–20279500`
+- condition: `hard / bao / depth3`, phase2 vs legacy
+- formal execution authorization: not granted
+- formal corpus generated: no
+- formal integrity: not yet available
+- formal decision: not yet available
