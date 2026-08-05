@@ -269,6 +269,45 @@ E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-co
 - `doc/phase-transition/checkpoints/2026-08-05-e019-formal-completion.md`
 - `doc/phase-transition/checkpoints/2026-08-05-e019-final-bundle-audit.md`
 
+## H18 — depth 3におけるlegacy > phase2逆転は独立seedで再現する
+
+状態: **E-020 preregistered / formal未実行**
+
+E-019 D3で観測された`legacy > phase2`はH17の事前登録方向とは逆であり、E-019内ではconfirmatory resultにしない。H18はこの逆方向現象を、E-019とは独立した新規seed blockでprospectiveに検定する新規仮説である。
+
+固定対象:
+
+- condition: `hard / bao / depth 3`
+- P2: `phase2`
+- LG: `legacy`
+- 4500 paired seeds / 9000 total games
+- formal seed: `20275001–20279500`
+- primary population: `pliesRemaining >= 9`
+- primary unit: paired shared-seed game
+- endpoint: eligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上あるか
+- test: two-sided exact McNemar
+- alpha: `0.05`
+- minimum discordant pairs: `20`
+- prospective direction: **legacy-only > phase2-only**
+
+Decision contract:
+
+- `confirmed`: exact 4500 pairs、discordants >=20、p <=0.05、legacy-only > phase2-only
+- `not-confirmed`: valid/evaluableだがsignificanceまたはprospective direction不通過
+- `inconclusive`: integrity/pairing/output/exact pair count不成立、またはdiscordants <20
+
+E-020でphase2 > legacyへ有意に戻っても、H18を結果後に反転せず`not-confirmed`とする。
+
+H18の解釈範囲は`hard / bao / depth3`に限定し、depth全体の単調性・非単調性、一般的search-profile × depth interaction、他evaluatorへの一般化は主張しない。
+
+Preregistration:
+
+- `config/experiments/phase-transition-d3-reversal-replication-v1.json`
+- `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
+- `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
+
+Formal executionは未承認であり、GitHub Actionsではformal corpusを生成しない。E-020固有の明示的開始承認と新規execution lockを要求する。
+
 ## 第1研究スコープ上の仮説分類
 
 第1研究は「Baoにおける局面相転移点の発見と、capture-branch-expansionの確認」として完結させる。
@@ -281,8 +320,9 @@ E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-co
 - H15: 新規seedでの濃縮方向
 - H16: search-profile dependence — E-018 formal `confirmed`
 - H17: 指定depth/evaluatorへの同方向一般化 — E-019 formal `not-confirmed`
+- H18: D3 legacy > phase2逆転の独立再現 — E-020 preregistered / formal未実行
 
-D3逆転はこの中心系列の**境界条件候補**であり、第1研究内で独立確認して適用範囲を閉じる。
+H18はD3境界条件を独立確認し、第1研究の適用範囲を閉じるStage Aの仮説である。
 
 ### Future Workへ繰り越す系列
 
@@ -292,23 +332,10 @@ H1/H2/H3/H4/H6/H10等のうち、第1研究で中心confirmatory対象にしな�
 
 H5/H8/H11/H12等の探索的方法論・分類上の知見は第1研究の最終報告へ統合できるが、個別に新しいformal confirmationを必須とはしない。
 
-## 次の仮説候補 — 未登録
-
-E-019 D3で観測されたlegacy > phase2逆転から、depth依存の非単調性またはsearch-profile × depth interactionが次のconfirmatory hypothesis候補となる。
-
-ただし現時点では:
-
-- **H18は未登録**
-- **E-020は未登録**
-- sample size未固定
-- seed block未固定
-- endpoint / direction / decision rule未固定
-
-新しい仮説番号とexperiment IDは、E-019結果の再確認と設計検討後、data generation前の正式事前登録時にのみ付与する。
-
 ## 次の検証
 
 - E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`を固定する。
-- E-019 D3の逆転は新しい研究対象になり得るが、E-019結果を使って方向・threshold・decision ruleを事後変更しない。
-- 第1研究の残工程は `STUDY_1_COMPLETION_PLAN.md` に従い、D3独立確認 → 必要な機構解析 → 認定範囲・語彙固定 → 最終統合の順で進める。
+- E-020/H18のinfrastructure validationをformal seed非使用fixtureで完了する。
+- infrastructure validation後も、E-020固有の明示的formal開始承認まではformal data generationを行わない。
+- E-020結果後、必要なStage B機構解析 → 認定範囲 → 語彙固定 → 最終統合の順で進める。
 - reserve、nyumba等の残RQは第1研究完了後の追加研究として独立設計する。
