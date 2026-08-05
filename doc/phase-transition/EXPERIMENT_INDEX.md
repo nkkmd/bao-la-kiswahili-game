@@ -23,6 +23,7 @@
 | E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
 | E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **完了・formal `confirmed`** |
 | E-019 | search profile一般化 | D1 6500 pairs / D3 4500 pairs / V2 2000 pairs | `run-phase-transition-search-profile-generalization-formal.js` | stratum別McNemar、global IUT、Holm、構造副次比較 | **完了・formal `not-confirmed`** |
+| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **preregistered / infrastructure-validated / formal未承認** |
 
 ## E-010 未使用seed確認実験
 
@@ -439,6 +440,48 @@ Secondaryはprimary/global decisionを変更しない。D3 secondaryの逆方向
 - unsafe path members: 0
 - reported size: 321M
 
+## E-020 D3逆転独立確認
+
+- hypothesis: H18
+- analysisVersion: `18-d3-reversal-replication`
+- status: **preregistered / infrastructure-validated / formal未承認 / formal corpus未生成**
+- preregistration: `config/experiments/phase-transition-d3-reversal-replication-v1.json`
+- execution policy: `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
+- design checkpoint: `doc/phase-transition/checkpoints/2026-08-05-stage-a-d3-independent-replication-design.md`
+- preregistration checkpoint: `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
+- infrastructure checkpoint: `doc/phase-transition/checkpoints/2026-08-05-e020-formal-infrastructure.md`
+- validated infrastructure head: `124ca132900487c66b44c37df3de99b59849ad0c`
+- workflow: `Phase Transition D3 Reversal Replication`
+- Actions run: `30972650445`
+- fixture artifact: `8917220737`
+- artifact digest: `sha256:332e093b061fd2c065e21a09d6263c992dc3352ef65d5157acf97be672d3a617`
+- condition: `hard / bao / depth 3`
+- P2 search: `phase2`
+- LG search: `legacy`
+- pairs: 4500
+- games: 4500 / condition, 9000 total
+- formal seed: `20275001–20279500`
+- primary population: `pliesRemaining >= 9`
+- primary unit: paired shared-seed game
+- endpoint: eligible A `capture-branch-expansion` candidateが1件以上あるか
+- test: two-sided exact McNemar
+- alpha: 0.05
+- minimum discordant pairs: 20
+- prospective direction: **LG-only > P2-only**
+- GitHub Actions formal run: prohibited
+- `formalExecutionAllowed: false`
+- formal authorization: not granted
+
+Decision contract:
+
+- `confirmed`: formal integrity / exact pairing pass、exact 4500 pairs、discordants >=20、p<=0.05、LG-only > P2-only
+- `not-confirmed`: evaluableだがsignificanceまたはprospective directionが不通過
+- `inconclusive`: integrity/pairing/output/exact pair count不成立、またはdiscordants <20
+
+Structural secondaryとmechanism-bridge secondaryはprimary decisionを置換・救済・反転しない。P2 > LGへ結果が戻ってもH18のprospective directionを結果後に反転しない。
+
+Infrastructure validationはformal seedと分離した2-pair fixture（seed `90902001–90902002`）で全step success。formal seedは未使用。
+
 ## 共通データ識別情報
 
 ### 探索群
@@ -489,3 +532,12 @@ Secondaryはprimary/global decisionを変更しない。D3 secondaryの逆方向
 - formal decision: `not-confirmed`
 - component decisions: D1 `pass`, D3 `fail`, V2 `pass`
 - locked source commit: `73ccd513218d7afa96fa637b366c3af2abca6323`
+### E-020 D3逆転独立確認群
+
+- studyVersion: `0.4.1`
+- planned games: 9000 total
+- planned paired comparisons: 4500
+- seed range: `20275001–20279500`
+- formal integrity: not yet available
+- formal decision: not yet available
+- formal execution authorization: not granted

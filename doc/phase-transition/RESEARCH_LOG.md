@@ -1071,3 +1071,96 @@ RQ8の探索条件依存性はE-011/E-018/E-019で重点的に扱われており
 - E-019: `not-confirmed`
 
 PR #26は科学的完了条件とは分離し、明示的指示までopen / draftを維持する。
+
+## 2026-08-05 — E-020 H18 D3逆転独立確認の事前登録・infrastructure validation
+
+### Stage A設計選定
+
+E-019 D3の`legacy > phase2`逆転を独立確認するStage Aについて、最初からdepth全体のinteractionをformal検定するのではなく、固定`hard / bao / depth3`の逆転そのものを新規seedで直接replicateする設計を選択した。
+
+これはE-019/H17の方向条件を結果後に変更するものではない。E-019 D3は引き続きH17 component `fail`、E-019 global `not-confirmed`のまま維持する。
+
+Design checkpoint:
+
+- `doc/phase-transition/checkpoints/2026-08-05-stage-a-d3-independent-replication-design.md`
+
+### E-020 / H18 preregistration
+
+新規hypothesis H18 / experiment E-020をdata generation前に登録した。
+
+H18:
+
+> 固定 `hard / bao / depth 3` において、eligible category-A `capture-branch-expansion` のゲーム単位manifestationはphase2 searchよりlegacy searchで高い。
+
+固定条件:
+
+- 4500 paired seeds / 9000 games
+- formal seed `20275001–20279500`
+- P2=`phase2`, LG=`legacy`
+- same seed / same random-opening paired design
+- primary population `pliesRemaining >= 9`
+- primary unit paired shared-seed game
+- two-sided exact McNemar
+- alpha 0.05
+- minimum discordants 20
+- prospective direction **LG-only > P2-only**
+
+Decision contractはexact N、availability、p値、prospective directionをdata generation前に固定した。P2 > LGへ戻った場合も結果後に方向を反転しない。
+
+Preregistration:
+
+- `config/experiments/phase-transition-d3-reversal-replication-v1.json`
+- `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
+- `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
+
+### Infrastructure validation
+
+E-020専用runner、verifier、paired endpoint builder、reversed-direction evaluator、structural/mechanism-bridge secondary、guarded formal runner、execution-lock preparer、tests、GitHub Actions fixtureを実装した。
+
+GitHub Actionsではformal seedを使わず、fixture seed `90902001–90902002`、P2/LG各2局のみを生成した。
+
+- validated infrastructure head: `124ca132900487c66b44c37df3de99b59849ad0c`
+- workflow: `Phase Transition D3 Reversal Replication`
+- Actions run: `30972650445`
+- result: `success`
+- artifact: `phase-transition-d3-reversal-replication-fixture`
+- artifact ID: `8917220737`
+- artifact digest: `sha256:332e093b061fd2c065e21a09d6263c992dc3352ef65d5157acf97be672d3a617`
+
+成功した監査:
+
+- preregistration / direction contract / formal guard tests
+- P2/LG paired fixture generation
+- paired seed/opening/source/condition integrity
+- candidate/control construction
+- paired game endpoint construction
+- primary decision contract exercise
+- structural secondary construction
+- artifact upload
+
+2-pair fixtureはformal N/minimum discordantsを満たさないため`inconclusive`になることを明示確認した。fixture結果をH18の科学結果として使用しない。
+
+Infrastructure checkpoint:
+
+- `doc/phase-transition/checkpoints/2026-08-05-e020-formal-infrastructure.md`
+
+### 現在のformal gate
+
+Execution policyは`infrastructure-validated-awaiting-formal-authorization`へ遷移したが、次は維持している。
+
+- `formalExecutionAllowed: false`
+- formal authorization: `granted: false`
+- formal corpus generated: false
+- GitHub Actions formal execution: prohibited
+
+一般的な研究続行指示をE-020固有formal開始承認とは扱わない。E-020 formal開始には、別途E-020固有の明示承認と新規fixed-local execution lockを要求する。
+
+既存formal decisionsは変更しない。
+
+- E-010: `not-confirmed`
+- E-011: `inconclusive`
+- E-017: `not-confirmed`
+- E-018: `confirmed`
+- E-019: `not-confirmed`
+
+PR #26はopen / draftを維持する。
