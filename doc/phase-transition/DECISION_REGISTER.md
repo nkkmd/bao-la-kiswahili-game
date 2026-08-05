@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 判断台帳
 
-更新日: 2026-08-02
+更新日: 2026-08-05
 
 ## 状態
 
@@ -29,7 +29,7 @@
 | D-016 | `pliesRemaining < 5` を終局近傍として分離 | 暫定採用 | 終局効果の可能性 |
 | D-017 | stateHashと変化シグネチャを分ける | 採用 | 局面と変化型を区別 |
 | D-018 | 同一変化シグネチャをアーキタイプ化 | 暫定採用 | A 13アーキタイプ |
-| D-019 | 主要候補を正式な戦略的相転移と認定 | 保留 | E-010はnot-confirmed、E-011はinconclusive、E-017はnot-confirmed |
+| D-019 | 主要候補を正式な戦略的相転移と認定 | 保留 | E-010はnot-confirmed、E-011はinconclusive、E-017はnot-confirmed。E-018/E-019はsearch-profile manifestationの比較でありH9自体のconfirmatory認定ではない |
 | D-021 | 主要4件を全て捕獲分岐爆発とする | 撤回 | 一時的スパイクを確認 |
 | D-022 | 分析単位を強制捕獲レジームとする | 採用 | 系列内部構造を表現 |
 | D-023 | Colab結果だけで正式結論を出さない | 採用 | 固定環境再現が必要 |
@@ -45,7 +45,7 @@
 | D-035 | forcing解除前兆の濃縮を戦略転移の証拠とする | 撤回 | 終局近傍に限定 |
 | D-036 | `expansionDelta=3 / persistenceFraction=0.5` をE-010確認値とする | 採用 | 事前登録後に変更せず実行 |
 | D-037 | forcing解除前兆6件を終局近傍サブタイプとして扱う | 暫定採用 | 全件が終局まで0–4ply |
-| D-038 | 主たる相転移候補の比較では終局まで9ply以上を別集計する | 採用 | E-010/E-011/E-017/E-018主解析に使用 |
+| D-038 | 主たる相転移候補の比較では終局まで9ply以上を別集計する | 採用 | E-010/E-011/E-017/E-018/E-019主解析に使用 |
 | D-039 | 捕獲分岐急拡大を当該手の即時大量捕獲と解釈する | 撤回 | 即時捕獲量は小さい |
 | D-040 | 捕獲分岐急拡大は選択手後に形成される捕獲選択肢構造の拡大として扱う | 暫定採用 | E-009/E-014 |
 | D-041 | 1-ply静的評価差を探索判断の正式評価差とみなす | 撤回 | depth 2探索とは異なる |
@@ -110,8 +110,18 @@
 | D-100 | H16のformal confirmation範囲を`hard / bao / depth 2`での`phase2`対`legacy`に限定する | 採用 | 全evaluator、全depth、将来の別search implementationへ自動一般化しない |
 | D-101 | formal experimentの最終export保管をrepository外の`/home/oruorane/bao-eNNN-exports/`へ統一し、archiveとbasename形式の`.sha256`を対で保存する | 採用 | `doc/phase-transition/FORMAL_EXPORT_STORAGE.md`。移動後も`sha256sum -c`で検証できるようchecksum内に移動前の絶対パスを残さない |
 | D-102 | E-018最終formal bundleの保管先を`/home/oruorane/bao-e018-exports/`として固定し、archive SHA-256を`bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5`とする | 採用 | E-011既存保管先`/home/oruorane/bao-e011-exports/`と同じ規則へ統一。保管台帳`FORMAL_EXPORT_INDEX.md`とE-018 final bundle auditに記録 |
+| D-103 | H17一般化検定E-019をD1/D3/V2の3 strata、合計13000 paired comparisons / 26000 gamesとして固定する | 採用 | D1=`bao/depth1` 6500 pairs、D3=`bao/depth3` 4500 pairs、V2=`bao-v2/depth2` 2000 pairs。各stratum内phase2 vs legacyをpaired same-openingで比較 |
+| D-104 | E-019 global判定はD1/D3/V2全てのcomponent passを要求するIUTとし、standalone stratum claimにはHolm-Bonferroniを別適用する | 採用 | component alpha 0.05、minimum discordants 20、direction `phase2-only > legacy-only`。global IUTではBonferroniでcomponent alphaを縮小しない |
+| D-105 | E-019開始にはE-019固有明示承認と専用fixed-local execution lockを要求し、過去experimentの承認・lockを流用しない | 採用 | formal開始承認後、policyを`approved-awaiting-local-lock / formalExecutionAllowed=true`へ遷移し、locked source `73ccd513218d7afa96fa637b366c3af2abca6323`で26000局完了 |
+| D-106 | E-019正式26000局のglobal判定を`not-confirmed`として固定する | 採用 | formal integrity `valid:true`。D1 pass、D3 fail、V2 pass。IUTで1 stratum以上failのためglobal `not-confirmed` |
+| D-107 | E-019 D3の逆方向結果を結果後に方向条件変更でH17 confirmationへ救済しない | 採用 | D3 n10=13、n01=140、discordant 153、McNemar p=`4.614222568073049e-28`。有意だが事前登録方向`phase2 > legacy`に反するため`fail` |
+| D-108 | E-019 D1/V2のHolm standalone confirmationを記録してもglobal H17 `not-confirmed`を変更しない | 採用 | D1 Holm-adjusted p=`1.7471697781037618e-15`、V2=`5.204403564731451e-7`。IUT conjunctionはD3 failで不成立 |
+| D-109 | E-019 structural secondaryはprimary/global decisionを変更しない | 採用 | D3 trajectory-ply比較も逆方向（6/49 vs 17/36、Fisher p=`0.0004792331642727793`）だがsecondaryをconfirmatory方向変更へ使用しない |
+| D-110 | E-019結果はE-018 `confirmed`を遡及変更しない | 採用 | E-018は固定`hard / bao / depth2`のphase2 vs legacyを直接確認。E-019は指定depth/evaluator一般化H17の別実験 |
+| D-111 | E-019最終formal bundleを`/home/oruorane/bao-e019-exports/`へ固定し、SHA-256を`6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`とする | 採用 | `sha256sum -c`成功、archive member 26120、unsafe path 0、reported size 321M。final bundle auditに記録 |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
+- E-019 D3で観測されたdepth3逆転を、新規仮説としてどの機構・seed blockで検証するか
