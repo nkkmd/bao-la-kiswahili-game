@@ -865,3 +865,161 @@ E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`は変更し
 完了チェックポイント:
 
 - `doc/phase-transition/checkpoints/2026-08-02-e018-formal-completion.md`
+
+## 2026-08-02 — E-019事前登録v2訂正・formal infrastructure確立
+
+E-019/H17として、E-018の固定`hard / bao / depth2` confirmationをD1=`bao/depth1`、D3=`bao/depth3`、V2=`bao-v2/depth2`へ一般化できるかを、新規独立実験として事前登録した。
+
+v1のsample-size planning参考Nに数pairの算術誤差を検出したため、formal data生成前にv2へ訂正した。訂正対象は参考planning Nのみであり、採用sample size、seed、strata、endpoint、McNemar、IUT、Holm、direction ruleは変更していない。
+
+Current preregistration:
+
+- `config/experiments/phase-transition-search-profile-generalization-v2.json`
+- SHA-256: `046e38edc1baba276fe2444715e09da3280e6438b036ad3ebb89e323e3fe0ec8`
+- analysisVersion: `17-search-profile-generalization`
+
+Formal design:
+
+- D1: 6500 pairs / 13000 games / seed `20268001–20274500`
+- D3: 4500 pairs / 9000 games / seed `20268001–20272500`
+- V2: 2000 pairs / 4000 games / seed `20268001–20270000`
+- total: 13000 paired comparisons / 26000 games
+- paired same-opening within stratum
+- exact two-sided McNemar
+- component alpha 0.05
+- minimum discordants 20
+- direction `phase2-only > legacy-only`
+- global IUT requires all three strata pass
+- standalone claims use Holm-Bonferroni
+- structural trajectory-ply analysis is secondary only
+
+Non-formal infrastructure validation completed successfully. E-019 formal seeds were not used by GitHub Actions and GitHub Actions formal execution remained prohibited。
+
+## 2026-08-03 — E-019 formal開始承認・fixed-local execution lock
+
+E-019固有のformal開始承認を受領し、過去experimentの承認を流用せずexecution policyを`approved-awaiting-local-lock / formalExecutionAllowed=true`へ遷移した。
+
+承認済み状態のE-019 fixture CIも全工程success。
+
+- workflow: `Phase Transition Search Profile Generalization`
+- Actions run: `30779314186`
+- fixture artifact: `8843108847`
+- artifact digest: `sha256:d3d32c5a4a5b857dd6da86a99cf50cdbcdd1f569a6c2cf085e6dd9fb7c2d1f4c`
+- formal GitHub Actions run: prohibited
+
+固定ローカルpreflight後、E-019専用execution lockを生成した。
+
+- status: `prepared-approved`
+- errors: `[]`
+- locked source commit: `73ccd513218d7afa96fa637b366c3af2abca6323`
+- branch: `research/forced-capture-regime-analysis`
+- Node.js: `v24.6.0`
+- platform: Linux / WSL2
+- Python venv: `/home/oruorane/.venvs/bao-phase-transition-e011`
+- Python: `3.12.3`
+- numpy: `2.5.1`
+- pandas: `3.0.5`
+- preregistration SHA-256: `046e38edc1baba276fe2444715e09da3280e6438b036ad3ebb89e323e3fe0ec8`
+- execution-policy SHA-256: `47d8b0df17eaa7fb9e878117d973bba91aba6963bbd65cecb8e0bcb0a939495c`
+
+lock後はsource、branch、runtime、preregistration、policyを変更せずformal corpusを生成した。
+
+## 2026-08-05 — E-019 fixed-local formal 26000局・最終評価完了
+
+### Corpus / integrity
+
+全6 conditionsを完了した。
+
+- D1-P2: 6500 games / 393710 observations
+- D1-LG: 6500 / 310951
+- D3-P2: 4500 / 277876
+- D3-LG: 4500 / 251160
+- V2-P2: 2000 / 112412
+- V2-LG: 2000 / 117587
+
+Formal verify:
+
+- all conditions present: true
+- unique condition config hashes: true
+- common source commit: true
+- source commit matches lock: true
+- within-stratum seed sequences: true
+- paired opening hashes within stratum: true
+- nested formal seed prefixes: true
+- condition identity clean: true
+- trajectory hashes present: true
+- execution mode correct: true
+- lock preregistration hash: true
+- lock policy hash present: true
+- artifact verification: true
+- errors: `[]`
+- mode: `formal`
+- **valid: true**
+
+### Primary formal result
+
+| stratum | n01 LG-only | n10 P2-only | discordants | P2 rate | LG rate | RD | OR | exact McNemar p | decision |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| D1 | 4 | 67 | 71 | 1.0308% | 0.0615% | +0.9692pp | 16.75 | `8.735848890518809e-16` | `pass` |
+| D3 | 140 | 13 | 153 | 0.2889% | 3.1111% | -2.8222pp | 0.09286 | `4.614222568073049e-28` | `fail` |
+| V2 | 18 | 63 | 81 | 3.15% | 0.90% | +2.25pp | 3.5 | `5.204403564731451e-7` | `pass` |
+
+Holm standalone:
+
+- D1: confirmed, adjusted p `1.7471697781037618e-15`
+- D3: preregistered P2>LG directionはnot confirmed
+- V2: confirmed, adjusted p `5.204403564731451e-7`
+
+D3ではminimum discordantsを十分満たし、p値も小さいが、`P2-only=13 < LG-only=140`となって事前登録方向が逆転した。このため`fail`。結果後にdirection ruleを反転しない。
+
+Global IUTはD1/D3/V2全てpassを要求するため、formal global decisionは**`not-confirmed`**。
+
+D1/V2のpass・Holm standalone confirmationでglobal判定を救済しない。
+
+### Structural secondary
+
+Trajectory-ply direct comparison:
+
+- D1: P2 12/64 vs LG 4/33, RD +6.63pp, RR 1.5469, Fisher p `0.565927217884321`
+- D3: P2 6/49 vs LG 17/36, RD -34.98pp, RR 0.2593, Fisher p `0.0004792331642727793`
+- V2: P2 17/34 vs LG 11/41, RD +23.17pp, RR 1.8636, Fisher p `0.05523184537701421`
+
+D3 secondaryでも逆方向だが、structural secondaryはprimary/global decisionを変更しない。
+
+### 解釈
+
+E-018 H16の`confirmed`は固定`hard / bao / depth2`に限定して維持する。E-019はその結果を取り消すものではない。
+
+一方、H17「指定depth/evaluator変更下でもphase2優位として維持される」というconjunctionはD3逆転により`not-confirmed`。
+
+D3の`legacy > phase2`を新しいconfirmatory hypothesisとして結果後に認定しない。depth依存の非単調性や探索方式相互作用を検証する場合は、新規仮説・新規事前登録・新規seed blockへ分離する。
+
+完了チェックポイント:
+
+- `doc/phase-transition/checkpoints/2026-08-05-e019-formal-completion.md`
+
+## 2026-08-05 — E-019 final formal bundle固定
+
+E-019 final成果物をrepository外の統一保管先へ固定した。
+
+- directory: `/home/oruorane/bao-e019-exports/`
+- archive: `e019-final-formal-evaluation.tar.gz`
+- SHA-256: `6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`
+- `sha256sum -c`: `OK`
+- archive member count: 26120
+- unsafe path member: 0
+- reported size: 321M
+
+Final bundle audit:
+
+- `doc/phase-transition/checkpoints/2026-08-05-e019-final-bundle-audit.md`
+
+既存formal decisionsは変更しない。
+
+- E-010: `not-confirmed`
+- E-011: `inconclusive`
+- E-017: `not-confirmed`
+- E-018: `confirmed`
+- E-019: `not-confirmed`
+
+PR #26は引き続きopen / draftのまま維持する。
