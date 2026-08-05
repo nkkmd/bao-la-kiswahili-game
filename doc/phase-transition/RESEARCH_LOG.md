@@ -668,7 +668,7 @@ formal evaluation出力の`preregistrationStatus: preregistered-not-run`はconfi
 
 - `doc/phase-transition/checkpoints/2026-08-02-e017-formal-completion.md`
 
-## E-018 H16 search profile依存性直接比較
+## 2026-08-02 — E-018 H16 search profile依存性直接比較
 
 H16:
 
@@ -1023,3 +1023,51 @@ Final bundle audit:
 - E-019: `not-confirmed`
 
 PR #26は引き続きopen / draftのまま維持する。
+
+## 2026-08-05 — 第1研究スコープ整理・完了計画
+
+### 背景
+
+研究開始時の`doc/PHASE_TRANSITION_RESEARCH_PLAN.md`はRQ1–RQ10を広く設定した探索的マスター計画だった。
+
+その後、探索・確認研究を進める中で、強制捕獲レジーム内部の`capture-branch-expansion`が最も明瞭な再現可能候補として浮上し、E-010–E-019の確認研究がこの現象へ集中した。
+
+初期RQを全て同一研究内でformalに消化することを完了条件にすると、探索で中心化した現象の確認と、未着手の別テーマが混在する。このため研究プログラムを次のように整理した。
+
+- 第1研究: **「Baoにおける局面相転移点の発見と、capture-branch-expansionの確認」**
+- 第1研究で主対象としなかった初期RQ: 将来の追加研究課題 / Future Work
+
+この整理はformal結果や事前登録条件の変更ではない。
+
+### 第1研究に残す工程
+
+1. E-019 D3で観測されたlegacy > phase2逆転の独立確認
+2. depth/search-profile依存性の必要な機構解析
+3. 初期の相転移認定基準6項目に対するcapture-branch-expansionの最終評価
+4. 機械定義と人間向けBao語彙の対応付け
+5. 最終研究報告・再現情報・Future Workの統合
+
+D3逆転はE-019の事前登録方向とは逆の観測なので、E-019内でconfirmatory resultへ読み替えない。独立検証を行う場合は新規仮説・新規seed・新規preregistration・新規execution lockを要求する。
+
+現時点で**E-020 / H18は未登録**。
+
+### Future Work
+
+reserve、nyumba、前列支配、capture→mobility、forcing→free-choice、namua→mtajiとの一般的時間関係、複数相転移の一般化等は、第1研究で否定されたのではなく独立した追加研究課題として残す。
+
+RQ8の探索条件依存性はE-011/E-018/E-019で重点的に扱われており、D3境界条件まで第1研究内で閉じる。
+
+### 文書
+
+- completion plan: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`
+- scope checkpoint: `doc/phase-transition/checkpoints/2026-08-05-study-1-scope-and-completion-plan.md`
+
+既存formal decisionsは固定する。
+
+- E-010: `not-confirmed`
+- E-011: `inconclusive`
+- E-017: `not-confirmed`
+- E-018: `confirmed`
+- E-019: `not-confirmed`
+
+PR #26は科学的完了条件とは分離し、明示的指示までopen / draftを維持する。
