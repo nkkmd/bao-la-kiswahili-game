@@ -124,10 +124,16 @@
 | D-114 | E-019 D3逆転の独立確認を第1研究の境界条件確定工程として残す | 採用 | capture-branch-expansionのsearch/depth適用範囲を閉じるために必要。新規仮説・新規seed・新規preregistrationでのみconfirmatory検証する |
 | D-115 | 現時点でE-020 / H18を登録済みとは扱わない | 採用 | D3逆転は次仮説候補だが、番号・N・seed・endpoint・decision ruleはdata generation前の正式事前登録時に固定する |
 | D-116 | 第1研究の科学的完了をPR #26のmerge/draft状態と分離する | 採用 | 第1研究は境界条件確認、機構解析、認定基準照合、語彙固定、最終統合で完了する。PR #26は明示指示までopen / draft維持 |
+| D-117 | Stage Aの第一検定を広いdepth interactionではなくD3逆転の直接独立replicationとする | 採用 | E-019で新規観測された境界条件そのものを最小範囲で確認し、Study 1完了条件を超える主張拡張を避ける |
+| D-118 | H18 / E-020を正式事前登録し、`hard / bao / depth3`のlegacy > phase2だけをprospectiveに検定する | 採用 | E-019/H17を変更せず、新規hypothesis・experiment・seed blockとして分離。D-115時点の未登録状態からdata generation前に正式登録へ進んだ |
+| D-119 | E-020を4500 paired seeds / 9000 games、formal seed `20275001–20279500`で固定する | 採用 | E-019 D3と同じpaired Nで比較可能性を維持し、過去探索/formal seed `20260721–20274500`と非重複 |
+| D-120 | E-020 primaryをpaired game-level exact McNemar、two-sided alpha 0.05、minimum discordants 20、direction `legacy-only > phase2-only`とする | 採用 | E-018/E-019のendpoint/test frameworkを維持しつつ、D3逆転を新しいprospective directionとしてdata generation前に固定。one-sided化しない |
+| D-121 | E-020 structural/mechanism-bridge secondaryはprimary判定を置換・救済・反転しない | 採用 | trajectory-ply構造、candidate→expansion率、regime位置等はStage Bへの橋渡し。新しいconfirmatory claimへ結果後昇格しない |
+| D-122 | 一般的な研究続行指示をE-020 formal開始承認とは扱わない | 採用 | infrastructure validation完了後もE-020固有の明示的開始承認、専用approval token、fixed-local execution lockを別途要求する。GitHub Actions formal generationは禁止 |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
-- E-019 D3で観測されたdepth3逆転を、新規仮説としてどの機構・seed blockで検証するか
+- E-020結果を踏まえたStage Bの機構解析範囲と、interactionを新たにformal claimへする必要があるか
 - 第1研究最終認定時にcapture-branch-expansionをどのBao固有語彙で固定するか
