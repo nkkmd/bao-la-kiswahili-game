@@ -119,9 +119,15 @@
 | D-109 | E-019 structural secondaryはprimary/global decisionを変更しない | 採用 | D3 trajectory-ply比較も逆方向（6/49 vs 17/36、Fisher p=`0.0004792331642727793`）だがsecondaryをconfirmatory方向変更へ使用しない |
 | D-110 | E-019結果はE-018 `confirmed`を遡及変更しない | 採用 | E-018は固定`hard / bao / depth2`のphase2 vs legacyを直接確認。E-019は指定depth/evaluator一般化H17の別実験 |
 | D-111 | E-019最終formal bundleを`/home/oruorane/bao-e019-exports/`へ固定し、SHA-256を`6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`とする | 採用 | `sha256sum -c`成功、archive member 26120、unsafe path 0、reported size 321M。final bundle auditに記録 |
+| D-112 | 研究プログラムを「第1研究: Baoにおける局面相転移点の発見と、capture-branch-expansionの確認」と、その後の追加研究へ整理する | 採用 | 初期RQ1–RQ10は探索開始時のマスター課題として保持し、研究進行で中心化したcapture-branch-expansionを第1研究として完結させる |
+| D-113 | 第1研究で主対象としなかった初期RQをformal failureとは扱わずFuture Workへ繰り越す | 採用 | reserve、nyumba、前列、capture→mobility、forcing→free-choice、formal phaseとの一般的関係等は未検証/探索的であり、否定結果ではない |
+| D-114 | E-019 D3逆転の独立確認を第1研究の境界条件確定工程として残す | 採用 | capture-branch-expansionのsearch/depth適用範囲を閉じるために必要。新規仮説・新規seed・新規preregistrationでのみconfirmatory検証する |
+| D-115 | 現時点でE-020 / H18を登録済みとは扱わない | 採用 | D3逆転は次仮説候補だが、番号・N・seed・endpoint・decision ruleはdata generation前の正式事前登録時に固定する |
+| D-116 | 第1研究の科学的完了をPR #26のmerge/draft状態と分離する | 採用 | 第1研究は境界条件確認、機構解析、認定基準照合、語彙固定、最終統合で完了する。PR #26は明示指示までopen / draft維持 |
 
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長
 - 最大捕獲可能量の非対称化を副次確認項目から主確認項目へ昇格するか
 - E-019 D3で観測されたdepth3逆転を、新規仮説としてどの機構・seed blockで検証するか
+- 第1研究最終認定時にcapture-branch-expansionをどのBao固有語彙で固定するか
