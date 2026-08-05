@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 実験索引
 
-更新日: 2026-08-02
+更新日: 2026-08-05
 
 | ID | 実験 | 入力 | 実行コード / Notebook | 主出力 | 状態 |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@
 | E-016 | E-010捕獲分岐形成確認 | 確認群急拡大7区間 | `summarize-confirmation-capture-branch-formation.js` | 生の7件平均、trajectory-ply平均 | 完了・限定的再現 |
 | E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
 | E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **完了・formal `confirmed`** |
+| E-019 | search profile一般化 | D1 6500 pairs / D3 4500 pairs / V2 2000 pairs | `run-phase-transition-search-profile-generalization-formal.js` | stratum別McNemar、global IUT、Holm、構造副次比較 | **完了・formal `not-confirmed`** |
 
 ## E-010 未使用seed確認実験
 
@@ -337,6 +338,107 @@ E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`は変更し
 - paired endpoint builder: pass
 - structural secondary: pass
 
+## E-019 search profile一般化
+
+- hypothesis: H17
+- analysisVersion: `17-search-profile-generalization`
+- status: **preregistered-v2 / infrastructure-validated / formal-complete / not-confirmed**
+- preregistration: `config/experiments/phase-transition-search-profile-generalization-v2.json`
+- preregistration SHA-256: `046e38edc1baba276fe2444715e09da3280e6438b036ad3ebb89e323e3fe0ec8`
+- execution policy: `config/experiments/phase-transition-search-profile-generalization-execution-policy-v2.json`
+- locked execution-policy SHA-256: `47d8b0df17eaa7fb9e878117d973bba91aba6963bbd65cecb8e0bcb0a939495c`
+- execution runbook: `doc/phase-transition/E019_FORMAL_EXECUTION.md`
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-05-e019-formal-completion.md`
+- final bundle audit: `doc/phase-transition/checkpoints/2026-08-05-e019-final-bundle-audit.md`
+- locked source commit: `73ccd513218d7afa96fa637b366c3af2abca6323`
+- fixed Python environment: `/home/oruorane/.venvs/bao-phase-transition-e011`
+- Python: `3.12.3`; numpy: `2.5.1`; pandas: `3.0.5`
+- Node.js: `v24.6.0`
+- formal GitHub Actions run: prohibited
+- primary population: `pliesRemaining >= 9`
+- primary unit: paired shared-seed game within stratum
+- endpoint: eligible A `capture-branch-expansion` candidateが1件以上あるか
+- primary test: two-sided exact McNemar per stratum
+- component alpha: 0.05
+- minimum discordant pairs: 20 / stratum
+- direction: phase2-only > legacy-only
+- global: D1/D3/V2全passを要求するIUT
+- standalone claims: Holm-Bonferroni family alpha 0.05
+- structural `trajectoryHash + eventPly` comparison: preregistered secondary
+
+Formal strata:
+
+| stratum | evaluator | depth | paired seeds | games | seed range |
+|---|---|---:|---:|---:|---|
+| D1 | bao | 1 | 6500 | 13000 | `20268001–20274500` |
+| D3 | bao | 3 | 4500 | 9000 | `20268001–20272500` |
+| V2 | bao-v2 | 2 | 2000 | 4000 | `20268001–20270000` |
+| total |  |  | 13000 | 26000 | nested prefix |
+
+### E-019 formal integrity
+
+- D1-P2: 6500 games / 393710 observations
+- D1-LG: 6500 / 310951
+- D3-P2: 4500 / 277876
+- D3-LG: 4500 / 251160
+- V2-P2: 2000 / 112412
+- V2-LG: 2000 / 117587
+- all conditions present: true
+- unique condition config hashes: true
+- common source commit: true
+- source commit matches lock: true
+- within-stratum seed sequences: true
+- paired opening hashes within stratum: true
+- nested formal seed prefixes: true
+- condition identity clean: true
+- trajectory hashes present: true
+- execution mode correct: true
+- lock preregistration hash: true
+- lock policy hash present: true
+- artifact verification: true
+- `errors: []`
+- `mode: formal`
+- `valid: true`
+
+### E-019 primary formal result
+
+| stratum | n00 | n01 LG-only | n10 P2-only | n11 | discordants | P2 rate | LG rate | RD | OR | exact McNemar p | decision |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| D1 | 6429 | 4 | 67 | 0 | 71 | 1.0308% | 0.0615% | +0.9692pp | 16.75 | `8.735848890518809e-16` | `pass` |
+| D3 | 4347 | 140 | 13 | 0 | 153 | 0.2889% | 3.1111% | -2.8222pp | 0.09286 | `4.614222568073049e-28` | `fail` |
+| V2 | 1919 | 18 | 63 | 0 | 81 | 3.15% | 0.90% | +2.25pp | 3.5 | `5.204403564731451e-7` | `pass` |
+
+Holm standalone:
+
+- D1 adjusted p: `1.7471697781037618e-15`, confirmed
+- D3 adjusted p: `1.3842667704219146e-27`, not confirmed for preregistered P2>LG direction
+- V2 adjusted p: `5.204403564731451e-7`, confirmed
+
+D3はdiscordant 153と十分なavailabilityがあるが、`P2-only=13 < LG-only=140`で事前登録方向が逆。したがって`fail`であり、結果後にdirection ruleを反転しない。
+
+Formal global decision: **`not-confirmed`**
+
+IUTは全3 strataのpassを要求するため、D3 `fail`によりH17 global conjunctionは不成立。
+
+### E-019 structural secondary
+
+Trajectory-ply direct candidate comparison:
+
+- D1: P2 12/64 vs LG 4/33, RD +6.63pp, RR 1.5469, Fisher p `0.565927217884321`
+- D3: P2 6/49 vs LG 17/36, RD -34.98pp, RR 0.2593, Fisher p `0.0004792331642727793`
+- V2: P2 17/34 vs LG 11/41, RD +23.17pp, RR 1.8636, Fisher p `0.05523184537701421`
+
+Secondaryはprimary/global decisionを変更しない。D3 secondaryの逆方向も、新規confirmatory方向へ結果後に読み替えない。
+
+### E-019 final bundle
+
+- archive: `e019-final-formal-evaluation.tar.gz`
+- SHA-256: `6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`
+- local export: `/home/oruorane/bao-e019-exports/`
+- archive member count: 26120
+- unsafe path members: 0
+- reported size: 321M
+
 ## 共通データ識別情報
 
 ### 探索群
@@ -376,3 +478,14 @@ E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-confirmed`は変更し
 - formal integrity: valid
 - formal decision: `confirmed`
 - locked source commit: `1f6b129b9b3cb11580244b1d4c337c067289cfdb`
+
+### E-019 search profile一般化群
+
+- studyVersion: `0.4.1`
+- games: 26000 total
+- paired comparisons: 13000 total across strata
+- master seed block: `20268001–20274500`
+- formal integrity: valid
+- formal decision: `not-confirmed`
+- component decisions: D1 `pass`, D3 `fail`, V2 `pass`
+- locked source commit: `73ccd513218d7afa96fa637b366c3af2abca6323`
