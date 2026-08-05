@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "experimentId": "E-020",
-  "status": "infrastructure-validated-awaiting-formal-authorization",
+  "status": "approved-awaiting-local-lock",
   "repositoryPath": "/home/oruorane/github/bao-la-kiswahili-game",
   "branch": "research/forced-capture-regime-analysis",
   "expectedNodeVersion": "v24.6.0",
@@ -31,7 +31,7 @@
     "executionLock": "artifacts/phase-transition/d3-reversal-replication-v1/execution-lock.json",
     "finalExportDirectory": "/home/oruorane/bao-e020-exports/"
   },
-  "formalExecutionAllowed": false,
+  "formalExecutionAllowed": true,
   "formalCorpusGenerated": false,
   "githubActionsFormalRunAllowed": false,
   "infrastructureValidation": {
@@ -47,10 +47,11 @@
     "note": "Non-formal infrastructure validation succeeded. The workflow used only the two-condition fixture seed range 90902001-90902002, outside the E-020 formal seed block. Unit/formal-guard tests, paired fixture generation, paired seed/opening/source/condition integrity verification, candidate/control construction, paired endpoint construction, the primary decision contract, structural secondary construction, and artifact upload all completed successfully. No E-020 formal corpus was generated."
   },
   "formalAuthorization": {
-    "granted": false,
-    "date": null,
-    "instruction": null,
-    "scope": null
+    "granted": true,
+    "date": "2026-08-05T18:41:30+09:00",
+    "instruction": "E-020の正式実験を開始してください",
+    "scope": "Authorize only E-020/H18 fixed-local formal execution under the existing preregistration and decision contract. This authorization does not alter sample size, seed range, endpoint, evaluator/search/depth, alpha, minimum discordants, prospective direction, decision rules, secondary-analysis boundary, or any prior experiment decision.",
+    "authorizationBranchHeadBeforePolicyUpdate": "6a21f10f147453b4a3c70226d849327502bded6b"
   },
   "allowedBeforeFormalAuthorization": [
     "implementation",
