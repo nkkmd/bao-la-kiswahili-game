@@ -131,6 +131,8 @@
 | D-121 | E-020 structural/mechanism-bridge secondaryはprimary判定を置換・救済・反転しない | 採用 | trajectory-ply構造、candidate→expansion率、regime位置等はStage Bへの橋渡し。新しいconfirmatory claimへ結果後昇格しない |
 | D-122 | 一般的な研究続行指示をE-020 formal開始承認とは扱わない | 採用 | infrastructure validation完了後もE-020固有の明示的開始承認、専用approval token、fixed-local execution lockを別途要求する。GitHub Actions formal generationは禁止 |
 
+| D-123 | E-020固有formal開始承認を受領し、execution policyをapproved-awaiting-local-lockへ遷移する | 採用 | 2026-08-05 18:41 JST。承認はexecution stateだけを変更し、H18/E-020のN、seed、endpoint、direction、alpha、decision rule、secondary boundaryを変更しない。formal corpus開始前にE-020専用fixed-local execution lockを必須とする |
+
 ## 今後固定が必要な判断
 
 - 強制捕獲レジーム最低長

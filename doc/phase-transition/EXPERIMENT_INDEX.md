@@ -23,7 +23,7 @@
 | E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
 | E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **完了・formal `confirmed`** |
 | E-019 | search profile一般化 | D1 6500 pairs / D3 4500 pairs / V2 2000 pairs | `run-phase-transition-search-profile-generalization-formal.js` | stratum別McNemar、global IUT、Holm、構造副次比較 | **完了・formal `not-confirmed`** |
-| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **preregistered / infrastructure-validated / formal未承認** |
+| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **preregistered / infrastructure-validated / formal開始承認済み / local lock待ち** |
 
 ## E-010 未使用seed確認実験
 
@@ -444,7 +444,7 @@ Secondaryはprimary/global decisionを変更しない。D3 secondaryの逆方向
 
 - hypothesis: H18
 - analysisVersion: `18-d3-reversal-replication`
-- status: **preregistered / infrastructure-validated / formal未承認 / formal corpus未生成**
+- status: **preregistered / infrastructure-validated / formal開始承認済み / local lock待ち / formal corpus未生成**
 - preregistration: `config/experiments/phase-transition-d3-reversal-replication-v1.json`
 - execution policy: `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
 - design checkpoint: `doc/phase-transition/checkpoints/2026-08-05-stage-a-d3-independent-replication-design.md`
@@ -469,8 +469,10 @@ Secondaryはprimary/global decisionを変更しない。D3 secondaryの逆方向
 - minimum discordant pairs: 20
 - prospective direction: **LG-only > P2-only**
 - GitHub Actions formal run: prohibited
-- `formalExecutionAllowed: false`
-- formal authorization: not granted
+- `formalExecutionAllowed: true`
+- formal authorization: granted 2026-08-05 18:41 JST
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-05-e020-formal-start-authorization.md`
+- execution lock: not yet generated
 
 Decision contract:
 
@@ -540,4 +542,4 @@ Infrastructure validationはformal seedと分離した2-pair fixture（seed `909
 - seed range: `20275001–20279500`
 - formal integrity: not yet available
 - formal decision: not yet available
-- formal execution authorization: not granted
+- formal execution authorization: granted / awaiting E-020 fixed-local execution lock

@@ -1,8 +1,8 @@
 # 局面相転移点研究 — 現在地
 
-更新日: 2026-08-05  
-Status: Active / Study 1 completion phase / Stage A E-020 preregistered  
-原始マスター計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`  
+更新日: 2026-08-05
+Status: Active / Study 1 completion phase / Stage A E-020 formal authorized / awaiting local lock
+原始マスター計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`
 第1研究完了計画: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`
 
 ## 恒久運用ルール
@@ -57,9 +57,9 @@ PR #26は明示的な指示があるまでopen / draftのまま維持する。
 - Stage A D3独立replication設計選定
 - E-020 / H18 preregistration・execution policy・専用基盤実装
 
-現在は、**Study 1 Stage AとしてE-020/H18の非formal infrastructure validationを行い、formal開始承認前のゲートを閉じる段階**。
+現在は、**Study 1 Stage AとしてE-020/H18のformal開始承認を完了し、fixed-local execution lock生成前のゲートにある**。
 
-E-020 formal corpusはまだ生成していない。E-020のformal開始には、infrastructure validation完了後も別途E-020固有の明示的ユーザー承認と新規execution lockを要求する。
+E-020 formal corpusはまだ生成していない。E-020固有の明示的開始承認は2026-08-05 18:41 JSTに受領済みであり、次にE-020専用fixed-local execution lockを要求する。
 
 ## 固定済みformal decisions
 
@@ -71,7 +71,7 @@ E-020 formal corpusはまだ生成していない。E-020のformal開始には�
 
 これらを結果後に変更しない。threshold、sample size、seed、primary endpoint、direction rule、decision ruleも事後変更しない。
 
-E-020はpreregisteredだがformal未実行であり、formal decisionはまだ存在しない。
+E-020はpreregistered / infrastructure-validated / formal開始承認済みだが、execution lock未生成・formal未実行であり、formal decisionはまだ存在しない。
 
 ## 主要な研究結果
 
@@ -202,7 +202,7 @@ Preregistration:
 - `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
 - `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
 
-現在は非formal fixtureによるinfrastructure validation中。GitHub Actionsではformal seedを使用しない。
+non-formal fixtureによるinfrastructure validationは完了済み。E-020固有formal開始承認も受領済みで、現在はfixed-local execution lock待ち。GitHub Actionsではformal seedを使用しない。
 
 ## 第1研究に残る工程
 
@@ -214,12 +214,12 @@ Preregistration:
 
 現在のゲート:
 
-1. E-020専用non-formal fixture / formal guard / integrity基盤のCI監査
-2. infrastructure validation結果の固定
-3. **E-020固有の明示的formal開始承認**
+1. E-020専用non-formal fixture / formal guard / integrity基盤のCI監査 — 完了
+2. infrastructure validation結果の固定 — 完了
+3. **E-020固有の明示的formal開始承認 — 完了**
 4. fixed-local environmentの再確認
 5. E-020専用execution lock生成
-6. 同一lock下でformal 9000局 → analyze → verify → evaluate
+6. lock監査成功後、同一lock下でformal 9000局 → analyze → verify → evaluate
 
 過去experimentのapproval token / execution lockを流用しない。
 

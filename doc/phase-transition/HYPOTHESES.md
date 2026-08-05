@@ -271,7 +271,7 @@ E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-co
 
 ## H18 — depth 3におけるlegacy > phase2逆転は独立seedで再現する
 
-状態: **E-020 preregistered / formal未実行**
+状態: **E-020 preregistered / infrastructure-validated / formal開始承認済み / execution lock待ち**
 
 E-019 D3で観測された`legacy > phase2`はH17の事前登録方向とは逆であり、E-019内ではconfirmatory resultにしない。H18はこの逆方向現象を、E-019とは独立した新規seed blockでprospectiveに検定する新規仮説である。
 
@@ -306,7 +306,7 @@ Preregistration:
 - `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
 - `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
 
-Formal executionは未承認であり、GitHub Actionsではformal corpusを生成しない。E-020固有の明示的開始承認と新規execution lockを要求する。
+Formal executionは2026-08-05 18:41 JSTにE-020固有の明示的開始承認を受領済み。GitHub Actionsではformal corpusを生成せず、新規fixed-local execution lockを生成・監査した後にのみformal seedを使用する。
 
 ## 第1研究スコープ上の仮説分類
 
@@ -320,7 +320,7 @@ Formal executionは未承認であり、GitHub Actionsではformal corpusを生�
 - H15: 新規seedでの濃縮方向
 - H16: search-profile dependence — E-018 formal `confirmed`
 - H17: 指定depth/evaluatorへの同方向一般化 — E-019 formal `not-confirmed`
-- H18: D3 legacy > phase2逆転の独立再現 — E-020 preregistered / formal未実行
+- H18: D3 legacy > phase2逆転の独立再現 — E-020 preregistered / formal開始承認済み / local lock待ち
 
 H18はD3境界条件を独立確認し、第1研究の適用範囲を閉じるStage Aの仮説である。
 
@@ -335,7 +335,7 @@ H5/H8/H11/H12等の探索的方法論・分類上の知見は第1研究の最終
 ## 次の検証
 
 - E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`を固定する。
-- E-020/H18のinfrastructure validationをformal seed非使用fixtureで完了する。
-- infrastructure validation後も、E-020固有の明示的formal開始承認まではformal data generationを行わない。
+- E-020/H18のinfrastructure validationはformal seed非使用fixtureで完了済み。
+- E-020固有の明示的formal開始承認は受領済み。次にfixed-local execution lockを生成し、lock監査成功後にのみformal data generationを開始する。
 - E-020結果後、必要なStage B機構解析 → 認定範囲 → 語彙固定 → 最終統合の順で進める。
 - reserve、nyumba等の残RQは第1研究完了後の追加研究として独立設計する。

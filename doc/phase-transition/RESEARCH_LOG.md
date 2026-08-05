@@ -1164,3 +1164,25 @@ Execution policyは`infrastructure-validated-awaiting-formal-authorization`へ�
 - E-019: `not-confirmed`
 
 PR #26はopen / draftを維持する。
+
+## 2026-08-05 — E-020 formal開始承認
+
+2026-08-05 18:41 JST、ユーザーからE-020固有の明示的開始指示「E-020の正式実験を開始してください」を受領した。
+
+Execution policyは科学条件を変更せず、execution stateだけを次へ遷移した。
+
+- status: `approved-awaiting-local-lock`
+- `formalExecutionAllowed: true`
+- `formalAuthorization.granted: true`
+- `formalCorpusGenerated: false`
+- GitHub Actions formal execution: prohibited
+- authorization policy commit: `5e01628618d2b37cda8c794e5de51a662a44f6b8`
+- authorization checkpoint: `doc/phase-transition/checkpoints/2026-08-05-e020-formal-start-authorization.md`
+
+承認はH18/E-020のN、seed、condition、endpoint、two-sided exact McNemar、alpha、minimum discordants、prospective direction `LG-only > P2-only`、decision contract、secondary boundaryを一切変更しない。
+
+formal seed `20275001–20279500`はexecution lock成功前には使用しない。過去experimentのapproval token / execution lockも流用しない。
+
+次工程はfixed-local environment再確認とE-020専用execution lock生成。lockが`prepared-approved / errors=[]`であることを確認した後にのみformal 9000局を開始する。
+
+既存formal decisionsは変更しない。E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`。PR #26はopen / draftを維持する。
