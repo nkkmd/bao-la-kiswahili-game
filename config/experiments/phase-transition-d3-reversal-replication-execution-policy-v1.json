@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "experimentId": "E-020",
-  "status": "preregistered-awaiting-infrastructure-validation",
+  "status": "infrastructure-validated-awaiting-formal-authorization",
   "repositoryPath": "/home/oruorane/github/bao-la-kiswahili-game",
   "branch": "research/forced-capture-regime-analysis",
   "expectedNodeVersion": "v24.6.0",
@@ -35,16 +35,16 @@
   "formalCorpusGenerated": false,
   "githubActionsFormalRunAllowed": false,
   "infrastructureValidation": {
-    "validated": false,
-    "validatedBranchHead": null,
-    "workflow": null,
-    "workflowRunId": null,
-    "fixtureBaseSeed": null,
-    "fixtureGamesPerCondition": null,
-    "fixtureTotalGames": null,
-    "artifactId": null,
-    "artifactDigest": null,
-    "note": "Only non-formal infrastructure validation using fixture seeds outside the E-020 formal seed range is allowed before explicit E-020 formal authorization."
+    "validated": true,
+    "validatedBranchHead": "124ca132900487c66b44c37df3de99b59849ad0c",
+    "workflow": "Phase Transition D3 Reversal Replication",
+    "workflowRunId": 30972650445,
+    "fixtureBaseSeed": 90902001,
+    "fixtureGamesPerCondition": 2,
+    "fixtureTotalGames": 4,
+    "artifactId": 8917220737,
+    "artifactDigest": "sha256:332e093b061fd2c065e21a09d6263c992dc3352ef65d5157acf97be672d3a617",
+    "note": "Non-formal infrastructure validation succeeded. The workflow used only the two-condition fixture seed range 90902001-90902002, outside the E-020 formal seed block. Unit/formal-guard tests, paired fixture generation, paired seed/opening/source/condition integrity verification, candidate/control construction, paired endpoint construction, the primary decision contract, structural secondary construction, and artifact upload all completed successfully. No E-020 formal corpus was generated."
   },
   "formalAuthorization": {
     "granted": false,
