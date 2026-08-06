@@ -1,7 +1,7 @@
 # 局面相転移点研究 — 現在地
 
-更新日: 2026-08-05
-Status: Active / Study 1 completion phase / Stage A E-020 formal authorized / awaiting local lock
+更新日: 2026-08-07
+Status: Active / Study 1 completion phase / Stage A complete / Stage B depth-search-profile mechanism next
 原始マスター計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`
 第1研究完了計画: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`
 
@@ -57,9 +57,9 @@ PR #26は明示的な指示があるまでopen / draftのまま維持する。
 - Stage A D3独立replication設計選定
 - E-020 / H18 preregistration・execution policy・専用基盤実装
 
-現在は、**Study 1 Stage AとしてE-020/H18のformal開始承認を完了し、fixed-local execution lock生成前のゲートにある**。
+**Study 1 Stage AはE-020/H18 formal `confirmed`により完了した。現在はStage B depth/search-profile mechanismへ進む状態にある。**
 
-E-020 formal corpusはまだ生成していない。E-020固有の明示的開始承認は2026-08-05 18:41 JSTに受領済みであり、次にE-020専用fixed-local execution lockを要求する。
+E-020はfixed-localで9000 formal gamesを完了し、formal integrity `mode=formal / valid=true / errors=[]`を通過した。final bundleもrepository外へ固定・監査済みである。
 
 ## 固定済みformal decisions
 
@@ -68,10 +68,11 @@ E-020 formal corpusはまだ生成していない。E-020固有の明示的開�
 - E-017: **`not-confirmed`**
 - E-018: **`confirmed`**
 - E-019: **`not-confirmed`**
+- E-020: **`confirmed`**
 
 これらを結果後に変更しない。threshold、sample size、seed、primary endpoint、direction rule、decision ruleも事後変更しない。
 
-E-020はpreregistered / infrastructure-validated / formal開始承認済みだが、execution lock未生成・formal未実行であり、formal decisionはまだ存在しない。
+E-020/H18はformal `confirmed`。固定`hard / bao / depth3`でLG event-game rate 2.8667%、P2 0.40%、LG-only 129、P2-only 18、discordants 147、exact two-sided McNemar p `7.0456833990241785e-22`。この結果を一般的なdepth interactionへ拡張しない。
 
 ## 主要な研究結果
 
@@ -169,40 +170,44 @@ Final bundle:
 
 ### E-020 — H18 D3 reversal replication
 
-Stage Aでは、広いsearch-profile × depth interactionを最初からformal検定するのではなく、E-019 D3で新規観測された逆転そのものを狭く独立replicateする設計を選択した。
+Stage AではE-019 D3で事後観測されたlegacy > phase2逆転を、独立seed blockでprospectiveに直接replicateした。
 
-H18:
-
-> 固定 `hard / bao / depth 3` において、eligible category-A `capture-branch-expansion` のゲーム単位manifestationはphase2よりlegacyで高い。
-
-Data generation前に固定済み:
+Formal design:
 
 - 4500 paired seeds / 9000 games
 - formal seed `20275001–20279500`
+- condition `hard / bao / depth3`
 - P2=`phase2`, LG=`legacy`
-- same-seed / same random-opening paired design
 - primary population `pliesRemaining >= 9`
-- paired game-level binary endpoint
+- paired game-level endpoint
 - two-sided exact McNemar
 - alpha 0.05
 - minimum discordants 20
 - prospective direction **LG-only > P2-only**
 
-Decision contract:
+Formal integrity: `mode=formal / valid=true / errors=[]`.
 
-- exact N・availability・p値・LG>P2方向を全て満たす場合のみ`confirmed`
-- evaluableだがsignificanceまたは方向不通過なら`not-confirmed`
-- integrity / exact N / availabilityが成立しなければ`inconclusive`
+Primary result:
 
-E-020でP2>LGへ戻っても方向を結果後に反転しない。H18の範囲は`hard / bao / depth3`のみで、一般的なdepth interactionや非単調性を直接確認する実験ではない。
+- n00: 4353
+- LG-only: 129
+- P2-only: 18
+- n11: 0
+- discordants: 147
+- P2 event rate: 0.40%
+- LG event rate: 2.8667%
+- RD P2−LG: -2.4667pp
+- OR LG/P2: 7.1667
+- exact McNemar p: `7.0456833990241785e-22`
+- formal decision: **`confirmed`**
 
-Preregistration:
+Interpretation boundary: E-020は固定`hard / bao / depth3`だけを確認し、E-019/H17 `not-confirmed`を変更せず、一般的search-profile × depth interactionを自動的にconfirmしない。
 
-- `config/experiments/phase-transition-d3-reversal-replication-v1.json`
-- `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
-- `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
+Completion / archive:
 
-non-formal fixtureによるinfrastructure validationは完了済み。E-020固有formal開始承認も受領済みで、現在はfixed-local execution lock待ち。GitHub Actionsではformal seedを使用しない。
+- `doc/phase-transition/checkpoints/2026-08-07-e020-formal-completion.md`
+- `doc/phase-transition/checkpoints/2026-08-07-e020-final-bundle-audit.md`
+- archive SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
 
 ## 第1研究に残る工程
 
@@ -210,18 +215,9 @@ non-formal fixtureによるinfrastructure validationは完了済み。E-020固�
 
 ### Stage A — D3逆転の独立確認
 
-**進行中。** E-020 / H18を新規preregisterした。formal data generationはまだ開始していない。
+**完了。** E-020 / H18はformal `confirmed`。4500 paired gamesでLG-only 129、P2-only 18、discordants 147、exact McNemar p `7.0456833990241785e-22`。
 
-現在のゲート:
-
-1. E-020専用non-formal fixture / formal guard / integrity基盤のCI監査 — 完了
-2. infrastructure validation結果の固定 — 完了
-3. **E-020固有の明示的formal開始承認 — 完了**
-4. fixed-local environmentの再確認
-5. E-020専用execution lock生成
-6. lock監査成功後、同一lock下でformal 9000局 → analyze → verify → evaluate
-
-過去experimentのapproval token / execution lockを流用しない。
+Stage Aの役割はD3境界条件を独立seedでprospectiveに確認することであり、一般的depth interactionを主張することではない。
 
 ### Stage B — depth/search-profile依存の機構解析
 
@@ -320,11 +316,13 @@ RQ8の探索条件再現性は第1研究内で重点的に扱い、D3境界条�
 
 ### E-020
 
-- planned games: 9000
+- games: 9000
 - paired comparisons: 4500
 - formal seed block: `20275001–20279500`
 - condition: `hard / bao / depth3`, phase2 vs legacy
-- formal execution authorization: not granted
-- formal corpus generated: no
-- formal integrity: not yet available
-- formal decision: not yet available
+- formal execution authorization: granted 2026-08-05 18:41 JST
+- locked source: `43ab667403d307e4163aefab631969a43fa897ee`
+- formal corpus generated: yes
+- formal integrity: `valid`
+- formal decision: **`confirmed`**
+- final archive SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`

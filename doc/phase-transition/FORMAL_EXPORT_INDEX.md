@@ -1,6 +1,6 @@
 # Formal実験 最終成果物保管台帳
 
-更新日: 2026-08-05
+更新日: 2026-08-07
 
 保管規則: `doc/phase-transition/FORMAL_EXPORT_STORAGE.md`
 
@@ -11,6 +11,7 @@
 | E-011 | `e011-final-formal-evaluation.tar.gz` | `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc` | `/home/oruorane/bao-e011-exports/` | `\\wsl.localhost\Ubuntu\home\oruorane\bao-e011-exports` | 保管先確認済み |
 | E-018 | `e018-final-formal-evaluation.tar.gz` | `bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5` | `/home/oruorane/bao-e018-exports/` | `\\wsl.localhost\Ubuntu\home\oruorane\bao-e018-exports` | final bundle監査済み / 保管先固定 |
 | E-019 | `e019-final-formal-evaluation.tar.gz` | `6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75` | `/home/oruorane/bao-e019-exports/` | `\\wsl.localhost\Ubuntu\home\oruorane\bao-e019-exports` | final bundle監査済み / 保管先固定 |
+| E-020 | `e020-final-formal-evaluation.tar.gz` | `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2` | `/home/oruorane/bao-e020-exports/` | `\\wsl.localhost\Ubuntu\home\oruorane\bao-e020-exports` | final bundle監査済み / 保管先固定 |
 
 ## E-011
 
@@ -48,6 +49,24 @@
 - reported archive size: 321M
 - formal integrity: `valid: true`
 - component decisions: D1 `pass`, D3 `fail`, V2 `pass`
+
+## E-020
+
+- formal decision: `confirmed`
+- final archive: `e020-final-formal-evaluation.tar.gz`
+- checksum file: `e020-final-formal-evaluation.tar.gz.sha256`
+- SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
+- local export directory: `/home/oruorane/bao-e020-exports/`
+- external analysis root: `/home/oruorane/bao-e020-exports/e020-analysis-final`
+- Windows: `\\wsl.localhost\Ubuntu\home\oruorane\bao-e020-exports`
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-07-e020-formal-completion.md`
+- final bundle audit: `doc/phase-transition/checkpoints/2026-08-07-e020-final-bundle-audit.md`
+- archive member count: 9049
+- unsafe path member: 0
+- reported archive size: 116M
+- formal integrity: `valid: true`
+- primary result: LG-only 129 / P2-only 18 / discordants 147 / exact McNemar p `7.0456833990241785e-22`
+- external reconstruction: `EXTERNAL_REBUILD_MATCH=true`
 
 ## 追記規則
 

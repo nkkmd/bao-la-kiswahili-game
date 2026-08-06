@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 判断台帳
 
-更新日: 2026-08-05
+更新日: 2026-08-07
 
 ## 状態
 
@@ -132,6 +132,12 @@
 | D-122 | 一般的な研究続行指示をE-020 formal開始承認とは扱わない | 採用 | infrastructure validation完了後もE-020固有の明示的開始承認、専用approval token、fixed-local execution lockを別途要求する。GitHub Actions formal generationは禁止 |
 
 | D-123 | E-020固有formal開始承認を受領し、execution policyをapproved-awaiting-local-lockへ遷移する | 採用 | 2026-08-05 18:41 JST。承認はexecution stateだけを変更し、H18/E-020のN、seed、endpoint、direction、alpha、decision rule、secondary boundaryを変更しない。formal corpus開始前にE-020専用fixed-local execution lockを必須とする |
+
+| D-124 | E-020/H18のformal decisionを`confirmed`とする | 採用 | exact 4500 pairs、discordants 147、LG-only 129 > P2-only 18、two-sided exact McNemar p `7.0456833990241785e-22`。全integrity checks通過 |
+| D-125 | E-020 confirmedを固定`hard / bao / depth3`の境界条件に限定する | 採用 | E-019/H17 `not-confirmed`とE-018/H16 depth2 confirmedを変更せず、一般的depth interactionを結果後に自動昇格しない |
+| D-126 | Study 1 Stage A D3逆転独立確認を完了し、Stage B depth/search-profile mechanismへ進む | 採用 | E-020が独立seedでprospective directionを確認。Stage B secondaryはmechanism explanationであり、新formal claimは別preregistrationを要求 |
+| D-127 | E-020 final formal bundleを`/home/oruorane/bao-e020-exports/`へ固定し、SHA-256を`37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`とする | 採用 | `sha256sum -c`成功、archive member 9049、unsafe path 0、reported size 116M、archive内primary result一致 |
+| D-128 | E-020 repository内local analysis rootの保持不具合はscientific decisionと分離し、同一locked corpusからrepository外へ決定論的再構築する | 採用 | `EXTERNAL_REBUILD_MATCH=true`。formal corpus・lock・source・runtime・N・seed・endpoint・direction・decision ruleは変更せず、主要成果物SHA-256を固定 |
 
 ## 今後固定が必要な判断
 

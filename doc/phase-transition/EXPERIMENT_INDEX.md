@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 実験索引
 
-更新日: 2026-08-05
+更新日: 2026-08-07
 
 | ID | 実験 | 入力 | 実行コード / Notebook | 主出力 | 状態 |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@
 | E-017 | 独立構造確認 | 1000局、seed 20263001–20264000 | `run-phase-transition-independent-confirmation-formal.js` | 固有trajectory-ply濃縮、構造availability | 完了・formal `not-confirmed` |
 | E-018 | search profile依存性直接比較 | P2/LG各2000局、shared seed 20265001–20267000 | `run-phase-transition-search-profile-dependence-formal.js` | paired game-level McNemar、構造副次比較 | **完了・formal `confirmed`** |
 | E-019 | search profile一般化 | D1 6500 pairs / D3 4500 pairs / V2 2000 pairs | `run-phase-transition-search-profile-generalization-formal.js` | stratum別McNemar、global IUT、Holm、構造副次比較 | **完了・formal `not-confirmed`** |
-| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **preregistered / infrastructure-validated / formal開始承認済み / local lock待ち** |
+| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **完了・formal `confirmed`** |
 
 ## E-010 未使用seed確認実験
 
@@ -537,9 +537,38 @@ Infrastructure validationはformal seedと分離した2-pair fixture（seed `909
 ### E-020 D3逆転独立確認群
 
 - studyVersion: `0.4.1`
-- planned games: 9000 total
-- planned paired comparisons: 4500
+- games: 9000 total
+- paired comparisons: 4500
 - seed range: `20275001–20279500`
-- formal integrity: not yet available
-- formal decision: not yet available
-- formal execution authorization: granted / awaiting E-020 fixed-local execution lock
+- formal integrity: `valid`
+- formal decision: **`confirmed`**
+- formal execution authorization: granted / formal complete
+- locked source commit: `43ab667403d307e4163aefab631969a43fa897ee`
+
+## E-020 D3逆転独立確認 — formal completion
+
+- hypothesis: H18
+- analysisVersion: `18-d3-reversal-replication`
+- status: `preregistered / infrastructure-validated / formal-complete / confirmed`
+- condition: `hard / bao / depth3`
+- P2: `phase2`
+- LG: `legacy`
+- games: 4500 / condition, 9000 total
+- shared formal seed: `20275001–20279500`
+- locked source: `43ab667403d307e4163aefab631969a43fa897ee`
+- formal integrity: `mode=formal / valid=true / errors=[]`
+- n00: 4353
+- LG-only: 129
+- P2-only: 18
+- n11: 0
+- discordants: 147
+- P2 rate: 0.40%
+- LG rate: 2.8667%
+- RD P2−LG: -2.4667pp
+- OR LG/P2: 7.1667
+- exact McNemar p: `7.0456833990241785e-22`
+- formal decision: **`confirmed`**
+- completion checkpoint: `doc/phase-transition/checkpoints/2026-08-07-e020-formal-completion.md`
+- final bundle audit: `doc/phase-transition/checkpoints/2026-08-07-e020-final-bundle-audit.md`
+- final archive SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
+- interpretation: fixed `hard / bao / depth3` only; E-019/H17 remains `not-confirmed`; no general depth interaction claim

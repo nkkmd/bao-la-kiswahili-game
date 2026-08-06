@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 "use strict";
 
-const fs = require("node:fs");
+import * as fs from "node:fs";
 
 function read(path) { return fs.readFileSync(path, "utf8"); }
 function write(path, text) { fs.writeFileSync(path, text.endsWith("\n") ? text : `${text}\n`); }
 function replaceRequired(text, search, replacement, label) {
-  if (!text.includes(search)) throw new Error(`Missing expected marker for ${label}`);
-  return text.replace(search, replacement);
+  if (text.includes(search)) return text.replace(search, replacement);
+  if (text.includes(replacement)) return text;
+  throw new Error(`Missing expected marker for ${label}`);
 }
 function replaceRegexRequired(text, regex, replacement, label) {
-  if (!regex.test(text)) throw new Error(`Missing expected regex marker for ${label}`);
-  return text.replace(regex, replacement);
+  if (regex.test(text)) return text.replace(regex, replacement);
+  const normalizedReplacement = replacement.trim();
+  if (normalizedReplacement && text.includes(normalizedReplacement)) return text;
+  throw new Error(`Missing expected regex marker for ${label}`);
 }
 function appendOnce(text, marker, block) {
   if (text.includes(marker)) return text;
@@ -96,6 +99,12 @@ index = replaceRequired(
   "| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **preregistered / infrastructure-validated / formal開始承認済み / local lock待ち** |",
   "| E-020 | D3逆転独立確認 | P2/LG各4500局、新規seed 20275001–20279500 | `run-phase-transition-d3-reversal-replication-formal.js` | paired game-level exact McNemar、構造・機構bridge副次 | **完了・formal `confirmed`** |",
   "EXPERIMENT_INDEX E020 row",
+);
+index = replaceRequired(
+  index,
+  "### E-020 D3逆転独立確認群\n\n- studyVersion: `0.4.1`\n- planned games: 9000 total\n- planned paired comparisons: 4500\n- seed range: `20275001–20279500`\n- formal integrity: not yet available\n- formal decision: not yet available\n- formal execution authorization: granted / awaiting E-020 fixed-local execution lock",
+  "### E-020 D3逆転独立確認群\n\n- studyVersion: `0.4.1`\n- games: 9000 total\n- paired comparisons: 4500\n- seed range: `20275001–20279500`\n- formal integrity: `valid`\n- formal decision: **`confirmed`**\n- formal execution authorization: granted / formal complete\n- locked source commit: `43ab667403d307e4163aefab631969a43fa897ee`",
+  "EXPERIMENT_INDEX E020 legacy status block",
 );
 index = appendOnce(index, "## E-020 D3逆転独立確認 — formal completion", `## E-020 D3逆転独立確認 — formal completion\n\n- hypothesis: H18\n- analysisVersion: \`18-d3-reversal-replication\`\n- status: \`preregistered / infrastructure-validated / formal-complete / confirmed\`\n- condition: \`hard / bao / depth3\`\n- P2: \`phase2\`\n- LG: \`legacy\`\n- games: 4500 / condition, 9000 total\n- shared formal seed: \`20275001–20279500\`\n- locked source: \`43ab667403d307e4163aefab631969a43fa897ee\`\n- formal integrity: \`mode=formal / valid=true / errors=[]\`\n- n00: 4353\n- LG-only: 129\n- P2-only: 18\n- n11: 0\n- discordants: 147\n- P2 rate: 0.40%\n- LG rate: 2.8667%\n- RD P2−LG: -2.4667pp\n- OR LG/P2: 7.1667\n- exact McNemar p: \`7.0456833990241785e-22\`\n- formal decision: **\`confirmed\`**\n- completion checkpoint: \`doc/phase-transition/checkpoints/2026-08-07-e020-formal-completion.md\`\n- final bundle audit: \`doc/phase-transition/checkpoints/2026-08-07-e020-final-bundle-audit.md\`\n- final archive SHA-256: \`37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2\`\n- interpretation: fixed \`hard / bao / depth3\` only; E-019/H17 remains \`not-confirmed\`; no general depth interaction claim\n`);
 write(indexPath, index);

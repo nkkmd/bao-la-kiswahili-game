@@ -1,6 +1,6 @@
 # 局面相転移点研究 — 仮説台帳
 
-更新日: 2026-08-05
+更新日: 2026-08-07
 
 第1研究の現在スコープ: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`
 
@@ -271,42 +271,49 @@ E-018 `confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-010 `not-co
 
 ## H18 — depth 3におけるlegacy > phase2逆転は独立seedで再現する
 
-状態: **E-020 preregistered / infrastructure-validated / formal開始承認済み / execution lock待ち**
+状態: **E-020 formal `confirmed`**
 
-E-019 D3で観測された`legacy > phase2`はH17の事前登録方向とは逆であり、E-019内ではconfirmatory resultにしない。H18はこの逆方向現象を、E-019とは独立した新規seed blockでprospectiveに検定する新規仮説である。
+E-019 D3で観測された`legacy > phase2`はH17の事前登録方向とは逆だったため、E-019内ではconfirmatory resultにしなかった。H18/E-020として独立seed block `20275001–20279500`、4500 paired gamesでprospectiveに直接検定した。
 
-固定対象:
+Formal integrity:
 
-- condition: `hard / bao / depth 3`
-- P2: `phase2`
-- LG: `legacy`
-- 4500 paired seeds / 9000 total games
-- formal seed: `20275001–20279500`
-- primary population: `pliesRemaining >= 9`
-- primary unit: paired shared-seed game
-- endpoint: eligible category-A `capture-branch-expansion` candidateがゲーム内に1件以上あるか
-- test: two-sided exact McNemar
-- alpha: `0.05`
-- minimum discordant pairs: `20`
-- prospective direction: **legacy-only > phase2-only**
+- `mode: formal`
+- `valid: true`
+- `errors: []`
+- exact paired seed sequence: true
+- paired opening hashes: true
+- source commit matches execution lock: true
+- artifact verification: true
 
-Decision contract:
+Primary result:
 
-- `confirmed`: exact 4500 pairs、discordants >=20、p <=0.05、legacy-only > phase2-only
-- `not-confirmed`: valid/evaluableだがsignificanceまたはprospective direction不通過
-- `inconclusive`: integrity/pairing/output/exact pair count不成立、またはdiscordants <20
+- n00: 4353
+- LG-only: 129
+- P2-only: 18
+- n11: 0
+- discordants: 147
+- P2 event-game rate: 0.40%
+- LG event-game rate: 2.8667%
+- paired RD P2−LG: -2.4667pp
+- discordant OR LG/P2: 7.1667
+- exact two-sided McNemar p: `7.0456833990241785e-22`
 
-E-020でphase2 > legacyへ有意に戻っても、H18を結果後に反転せず`not-confirmed`とする。
+事前登録済みのexact N、minimum discordants、alpha、prospective direction `LG-only > P2-only`を全て満たしたため、H18は**`confirmed`**。
 
-H18の解釈範囲は`hard / bao / depth3`に限定し、depth全体の単調性・非単調性、一般的search-profile × depth interaction、他evaluatorへの一般化は主張しない。
+Secondary trajectory-ply endpointでもP2 5/42 = 11.90%、LG 13/35 = 37.14%、Fisher two-sided p `0.01413147130729561`だったが、secondaryはprimary decisionを置換しない。
 
-Preregistration:
+Interpretation boundary:
 
-- `config/experiments/phase-transition-d3-reversal-replication-v1.json`
-- `config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json`
-- `doc/phase-transition/checkpoints/2026-08-05-e020-d3-reversal-preregistration.md`
+- confirmationは`hard / bao / depth3`に限定
+- E-019/H17 global `not-confirmed`を変更しない
+- E-018/H16 depth2 `phase2 > legacy` confirmedを変更しない
+- depth全体の単調性/非単調性や一般的search-profile × depth interactionをこの実験だけでconfirmしない
 
-Formal executionは2026-08-05 18:41 JSTにE-020固有の明示的開始承認を受領済み。GitHub Actionsではformal corpusを生成せず、新規fixed-local execution lockを生成・監査した後にのみformal seedを使用する。
+Completion:
+
+- `doc/phase-transition/checkpoints/2026-08-07-e020-formal-completion.md`
+- `doc/phase-transition/checkpoints/2026-08-07-e020-final-bundle-audit.md`
+- final archive SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
 
 ## 第1研究スコープ上の仮説分類
 
@@ -320,7 +327,7 @@ Formal executionは2026-08-05 18:41 JSTにE-020固有の明示的開始承認を
 - H15: 新規seedでの濃縮方向
 - H16: search-profile dependence — E-018 formal `confirmed`
 - H17: 指定depth/evaluatorへの同方向一般化 — E-019 formal `not-confirmed`
-- H18: D3 legacy > phase2逆転の独立再現 — E-020 preregistered / formal開始承認済み / local lock待ち
+- H18: D3 legacy > phase2逆転の独立再現 — E-020 formal `confirmed`
 
 H18はD3境界条件を独立確認し、第1研究の適用範囲を閉じるStage Aの仮説である。
 
@@ -334,8 +341,9 @@ H5/H8/H11/H12等の探索的方法論・分類上の知見は第1研究の最終
 
 ## 次の検証
 
-- E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`を固定する。
-- E-020/H18のinfrastructure validationはformal seed非使用fixtureで完了済み。
-- E-020固有の明示的formal開始承認は受領済み。次にfixed-local execution lockを生成し、lock監査成功後にのみformal data generationを開始する。
-- E-020結果後、必要なStage B機構解析 → 認定範囲 → 語彙固定 → 最終統合の順で進める。
+- E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`、E-020 `confirmed`を固定する。
+- Stage AはE-020/H18により完了。
+- 次にStage B depth/search-profile mechanismを進め、E-018 depth2とE-020 depth3の逆方向をcandidate occurrence / manifestation / forced-capture regime / branching等から説明する。
+- Stage Bで新しいformal claimが必要な場合だけ新規hypothesis / experiment / preregistrationへ分離する。
+- その後Stage C認定範囲 → Stage D機械定義/Bao語彙 → Stage E最終統合の順で進める。
 - reserve、nyumba等の残RQは第1研究完了後の追加研究として独立設計する。

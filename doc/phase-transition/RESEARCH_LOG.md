@@ -1186,3 +1186,61 @@ formal seed `20275001–20279500`はexecution lock成功前には使用しない
 次工程はfixed-local environment再確認とE-020専用execution lock生成。lockが`prepared-approved / errors=[]`であることを確認した後にのみformal 9000局を開始する。
 
 既存formal decisionsは変更しない。E-010 `not-confirmed`、E-011 `inconclusive`、E-017 `not-confirmed`、E-018 `confirmed`、E-019 `not-confirmed`。PR #26はopen / draftを維持する。
+
+## 2026-08-07 — E-020 fixed-local formal 9000局・final bundle監査完了
+
+E-020/H18をlocked source `43ab667403d307e4163aefab631969a43fa897ee`でfixed-local実行した。P2/LG各4500局、合計9000局、shared formal seed `20275001–20279500`。
+
+Formal corpus:
+
+- P2 `phase2`: 4500 games / 276764 observations
+- LG `legacy`: 4500 games / 249575 observations
+
+Formal verifyは`mode=formal / valid=true / errors=[]`。paired seed sequence、paired opening hash、source-lock一致、condition identity、trajectory hash、artifact verificationを含む全checksが通過した。
+
+Preregistered primary result:
+
+- n00 4353
+- LG-only 129
+- P2-only 18
+- n11 0
+- discordants 147
+- P2 event rate 0.40%
+- LG event rate 2.8667%
+- paired RD P2−LG -2.4667pp
+- discordant OR LG/P2 7.1667
+- two-sided exact McNemar p `7.0456833990241785e-22`
+
+exact pair count、minimum discordants、alpha、prospective direction `LG-only > P2-only`を全て満たしたため、**E-020/H18 formal decision = `confirmed`**。
+
+Secondary trajectory-ply endpointはP2 5/42、LG 13/35、Fisher p `0.01413147130729561`。secondaryはprimary decisionを変更しない。
+
+Repository内既定local analysis rootがprocess終了後に保持されない事象が再現したため、同一formal corpus / execution lock / source / runtimeから明示`--output`でrepository外へ分析成果物を決定論的再構築した。
+
+- external root: `/home/oruorane/bao-e020-exports/e020-analysis-final`
+- `EXTERNAL_REBUILD_MATCH=true`
+- integrity SHA-256: `61a7fc55b6607a02e45d0577981d5277eeea632cbd0da794643734f1ee3e7503`
+- paired endpoint SHA-256: `f64652a0067cd5dc51f958470f43cdef14330b893811af72f57736fd2a439fa6`
+- evaluation SHA-256: `548ee212aaaf7cdadf35856f144e16bdd1eb73c35024970b45898deedbb514d3`
+
+Final archive:
+
+- directory: `/home/oruorane/bao-e020-exports/`
+- archive: `e020-final-formal-evaluation.tar.gz`
+- SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
+- `sha256sum -c`: OK
+- reported size: 116M
+- member count: 9049
+- unsafe path member: 0
+- archive内primary result: confirmed / 4500 pairs / LG-only 129 / P2-only 18 / p `7.0456833990241785e-22`
+
+Interpretationは`hard / bao / depth3`に限定し、E-019/H17 `not-confirmed`、E-018/H16 depth2 `confirmed`を変更しない。一般的depth interactionへ結果後拡張しない。
+
+Stage A D3 independent confirmationは完了。次はStage B depth/search-profile mechanism。
+
+Checkpoints:
+
+- `doc/phase-transition/checkpoints/2026-08-07-e020-formal-completion.md`
+- `doc/phase-transition/checkpoints/2026-08-07-e020-final-bundle-audit.md`
+
+PR #26はopen / draftを維持する。
