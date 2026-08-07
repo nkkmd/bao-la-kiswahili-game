@@ -17,10 +17,17 @@ const preregistration = JSON.parse(fs.readFileSync(
 E020.validatePreregistration(preregistration);
 
 assert.equal(policy.experimentId, "E-020");
-assert.equal(policy.formalExecutionAllowed, false);
-assert.equal(policy.formalAuthorization.granted, false);
+assert.equal(policy.formalExecutionAllowed, true);
+assert.equal(policy.formalAuthorization.granted, true);
 assert.equal(policy.githubActionsFormalRunAllowed, false);
 assert.match(policy.activationRule, /separate explicit user instruction specific to E-020/);
+
+// Preserve coverage of the pre-authorization guard without requiring the
+// repository's historical execution policy to remain in its pre-approval state.
+const preAuthorizationPolicy = JSON.parse(JSON.stringify(policy));
+preAuthorizationPolicy.formalExecutionAllowed = false;
+preAuthorizationPolicy.status = "infrastructure-validated-awaiting-authorization";
+preAuthorizationPolicy.formalAuthorization.granted = false;
 
 const fakeLock = {
   approval: {
@@ -29,7 +36,7 @@ const fakeLock = {
   },
 };
 assert.throws(
-  () => Formal.approve(fakeLock, policy, policy.approvalToken),
+  () => Formal.approve(fakeLock, preAuthorizationPolicy, policy.approvalToken),
   /disabled by the repository execution policy/,
 );
 
@@ -47,14 +54,14 @@ const otherwiseValidEnvironment = {
     packages: { ...policy.pythonEnvironment.expectedPackages },
   },
 };
-const authorizationErrors = Prepare.validateEnvironment(policy, otherwiseValidEnvironment, preregistration);
+const authorizationErrors = Prepare.validateEnvironment(
+  preAuthorizationPolicy,
+  otherwiseValidEnvironment,
+  preregistration,
+);
 assert.ok(authorizationErrors.some((message) => message.includes("explicit formal authorization")));
 
-const approvedPolicy = JSON.parse(JSON.stringify(policy));
-approvedPolicy.formalExecutionAllowed = true;
-approvedPolicy.status = "approved-awaiting-local-lock";
-approvedPolicy.formalAuthorization.granted = true;
-const noAuthorizationErrors = Prepare.validateEnvironment(approvedPolicy, otherwiseValidEnvironment, preregistration);
+const noAuthorizationErrors = Prepare.validateEnvironment(policy, otherwiseValidEnvironment, preregistration);
 assert.equal(noAuthorizationErrors.length, 0);
 
 const directionChanged = JSON.parse(JSON.stringify(preregistration));
