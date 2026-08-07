@@ -146,19 +146,28 @@ node tools/diagnostic-to-fixture.js \
 | `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
 | `test/` | 回帰テスト |
 | `artifacts/` | 保存済みのベンチマーク・チューニング・研究出力 |
-| `doc/` | ルール学習、ロードマップ、ベンチマーク、開発ログ、技術レポート |
+| `doc/` | ルール学習、研究成果、ロードマップ、ベンチマーク、開発ログ、技術レポート |
+
+## 研究成果
+
+本リポジトリでは、AI自己対局・固定seed・paired openingなどを用いたBaoの実験研究も行っています。研究成果が増えても辿りやすいよう、**研究全体の中央索引**を用意しています。
+
+- [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md): 研究成果の中央索引。初見向け概要、科学的正本、研究運用文書への入口
+- [`doc/phase-transition/STUDY_1_OVERVIEW.md`](doc/phase-transition/STUDY_1_OVERVIEW.md): 局面相転移点研究Study 1「Baoにおける局面相転移点の発見と、capture-branch-expansionの確認」の初見向け成果概要
+- [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
+- [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録
+- [`doc/FUTURE_RESEARCH_AGENDA.md`](doc/FUTURE_RESEARCH_AGENDA.md): 局面分類、手筋、形勢判断、終盤解析など、既存研究から切り出した将来研究課題
+
+新しい独立研究が完了した場合は、初見向けOverview / Conclusionと科学的・技術的な正本を分け、`doc/RESEARCH_INDEX.md`から参照する方針です。
 
 ## ドキュメント
 
 - [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md): 採用ルールの参照元、固定コミット、実装差分、更新方針
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
-- [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録、統計比較、現在の結論
-- [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
 - [`doc/JOSEKI_RESEARCH.md`](doc/JOSEKI_RESEARCH.md): 定石研究の方法、全フェーズの実験結果、最終判断をまとめた統合記録
 - [`doc/JOSEKI_RESEARCH_PLAN.md`](doc/JOSEKI_RESEARCH_PLAN.md): 定石研究の研究課題、判定基準、完了条件、実施記録
 - [`doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md`](doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md): 全継続AI条件で固定開局系列を共有するペア追試計画
 - [`doc/NAMUA_SYMMETRY_RESEARCH_PLAN.md`](doc/NAMUA_SYMMETRY_RESEARCH_PLAN.md): namua鏡像変換、合法手、bao評価の不一致原因を調査するローカル研究計画
-- [`doc/FUTURE_RESEARCH_AGENDA.md`](doc/FUTURE_RESEARCH_AGENDA.md): 局面分類、手筋、形勢判断、終盤解析など、先攻差・定石研究後の新しい研究課題
 - [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 公開向け Bao AI 技術レポート
 - [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md): ベンチマークコマンドとベースライン結果
 - [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): 設計判断、失敗した試行、制限事項
