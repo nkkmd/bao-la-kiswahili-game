@@ -1,202 +1,168 @@
 # 局面相転移点研究
 
-このディレクトリは、`doc/PHASE_TRANSITION_RESEARCH_PLAN.md`に基づく研究記録を保存する。
+このディレクトリは、[`doc/PHASE_TRANSITION_RESEARCH_PLAN.md`](../PHASE_TRANSITION_RESEARCH_PLAN.md) から始まったBao局面相転移点研究の文書・実験台帳・provenanceを保存します。
 
-## 現在の段階
+## 現在の状態
 
-Phase 0の研究基盤、10局diversity smoke、100局pilot-v1、開局妥当性を補正した100局pilot-v2まで完了している。
+**Study 1: closed / Stages A–E complete / repository closure complete**
 
-正式な分析入力は次の成果物とする。
+第1研究の題目:
+
+> **Baoにおける局面相転移点の発見と、capture-branch-expansionの確認**
+
+第1研究では、再現可能な戦略的転移phenotypeとして `capture-branch-expansion` を同定しました。固定 `hard / bao` 条件では、depth2でphase2 > legacy、depth3でlegacy > phase2というsearch-profile orderingの逆転がそれぞれformalに確認されています。
+
+ただし、一般的なsearch-profile × depth interactionや、Bao一般に普遍的なphase-transition lawを確認したとは扱いません。
+
+---
+
+## 初めて読む場合
+
+まず次の順で読むことを推奨します。
+
+1. **[`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)**  
+   初見向けの成果概要。研究の問い、`capture-branch-expansion`、新規seed再現、depth2/depth3逆転、`sustained-forcing window`、研究の限界を平易にまとめる。
+2. **[`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)**  
+   科学的な最終統合。実験chronology、formal decisions、Stage B–E、negative result、reproducibilityを含む。
+3. **[`STUDY_1_VOCABULARY.md`](STUDY_1_VOCABULARY.md)**  
+   classifier、forced-capture regime、trajectory-plyなどの用語・機械定義の正本。
+
+現在地だけを確認する場合は [`CURRENT_STATUS.md`](CURRENT_STATUS.md) を参照してください。
+
+リポジトリ全体の研究成果一覧は [`../RESEARCH_INDEX.md`](../RESEARCH_INDEX.md) にまとめています。
+
+---
+
+## 第1研究の最終formal decisions
+
+| Experiment | Formal decision | 固定範囲 / 理由 |
+| --- | --- | --- |
+| E-010 | `not-confirmed` | minimum primary candidate 12に対し11 |
+| E-011 | `inconclusive` | 複数conditionでavailability不足 |
+| E-017 | `not-confirmed` | minimum unique controls 30,000に対し23,306 |
+| E-018 / H16 | `confirmed` | fixed `hard / bao / depth2` のphase2 > legacyのみ |
+| E-019 / H17 | `not-confirmed` | D3が事前登録方向と逆転しglobal IUT不成立 |
+| E-020 / H18 | `confirmed` | fixed `hard / bao / depth3` のlegacy > phase2のみ |
+
+これらのformal decisionは、後続のsecondary / retrospective analysisで置換・救済・反転しません。
+
+---
+
+## 文書の役割
+
+### 成果を読む
+
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向け成果概要
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 科学的最終報告
+- [`STUDY_1_VOCABULARY.md`](STUDY_1_VOCABULARY.md) — 用語・機械定義
+- [`STUDY_1_COMPLETION_PLAN.md`](STUDY_1_COMPLETION_PLAN.md) — Study 1 completion設計
+
+### 現在地・判断履歴を確認する
+
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在地
+- [`HYPOTHESES.md`](HYPOTHESES.md) — hypothesis台帳
+- [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md) — experiment台帳
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — decision台帳
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — append-only研究ログ
+- [`checkpoints/`](checkpoints/) — 工程・formal execution・completion checkpoint
+
+### formal execution / archiveを確認する
+
+- [`E011_FORMAL_EXECUTION.md`](E011_FORMAL_EXECUTION.md)
+- [`E017_FORMAL_EXECUTION.md`](E017_FORMAL_EXECUTION.md)
+- [`E018_FORMAL_EXECUTION.md`](E018_FORMAL_EXECUTION.md)
+- [`E019_FORMAL_EXECUTION.md`](E019_FORMAL_EXECUTION.md)
+- [`E020_FORMAL_EXECUTION.md`](E020_FORMAL_EXECUTION.md)
+- [`FORMAL_EXPORT_INDEX.md`](FORMAL_EXPORT_INDEX.md) — repository外final bundleとSHA-256
+- [`FORMAL_EXPORT_STORAGE.md`](FORMAL_EXPORT_STORAGE.md) — archive運用
+
+### 探索段階を確認する
+
+- [`PILOT_V2.md`](PILOT_V2.md) — 開局検証済みpilot-v2
+- [`REPORT.md`](REPORT.md) — 初期分析報告
+- [`RESULTS.md`](RESULTS.md) — 初期結果
+
+探索段階のNotebookは `notebooks/phase-transition/`、分析・formal experiment toolingは `tools/experiments/` にあります。
+
+---
+
+## データとprovenanceの基本階層
+
+後期Study 1では、独立性を混同しないため次の階層を区別しました。
+
+```text
+paired seed
+  -> game
+    -> forced-capture regime
+      -> trajectory / ply
+        -> candidate row
+```
+
+E-018 / E-019 / E-020のformal search-profile comparisonはpaired game-level endpointを使用します。candidate / regime / trajectory-ply分析はsecondary structural analysisであり、formal paired endpointを置換しません。
+
+---
+
+## Pilot-v2の位置づけ
+
+pilot-v2はStudy 1の探索基盤として重要ですが、現在の研究状態を表す最終成果ではありません。
+
+正式な開局検証済みpilot-v2分析入力:
 
 ```text
 artifacts/phase-transition/pilot-v2/
 ```
 
+主な値:
+
 - study version: `0.4.1`
-- 完了ゲーム数: 100
-- 観測数: 5,650
-- 固有軌跡数: 90
-- 固有最終局面数: 89
-- 開局棄却数: 1
-- 開局直後の7 ply早期終局: 2
-- diversity pilot gate: 通過
+- games: 100
+- observations: 5,650
+- forced-capture regimes: 421
+- Category-A candidate intervals: 15
 
-詳細は`doc/phase-transition/PILOT_V2.md`を参照する。
-
-## 成果物の区分
-
-```text
-artifacts/phase-transition/
-├── smoke/
-├── diversity-smoke/
-├── pilot/
-├── pilot-v2/
-└── archive/
-    └── pilot-v2-seed-shifted/
-```
-
-- `smoke/`
-  - 標準初期局面からの決定論的基準線
-  - 全10局が同一48 ply軌跡へ収束した旧smoke
-- `diversity-smoke/`
-  - seed付き合法開局を用いた10局の多様性確認
-- `pilot/`
-  - pilot-v1
-  - 開局妥当性フィルター導入前の監査記録
-- `pilot-v2/`
-  - study version `0.4.1`
-  - 正式な開局検証済み分析データ
-- `archive/pilot-v2-seed-shifted/`
-  - study version `0.4.0`
-  - attempt 1から派生seedを使っていた旧実験
-  - 正式分析には使わず、seed不具合の監査記録として保持
-
-これらの大規模成果物は`.gitignore`で除外し、manifest、研究文書、再生成コードによって追跡する。
-
-## データ生成
-
-pilot-v2を再生成する場合は、リポジトリのルートで実行する。
+再生成:
 
 ```bash
 node tools/experiments/run-phase-transition-research.js --profile pilot-v2
 ```
 
-進捗確認:
-
-```bash
-node tools/experiments/run-phase-transition-research.js \
-  --profile pilot-v2 \
-  --status
-```
-
-同じ設定で通常コマンドを再実行すると、検証済みの完了局を再利用して再開する。設定hashが異なる場合は再開を拒否する。
-
-最初から再実行する場合:
-
-```bash
-node tools/experiments/run-phase-transition-research.js \
-  --profile pilot-v2 \
-  --force
-```
-
-`--force`は出力ディレクトリを削除するため、必要な成果物を先に退避する。
-
-## 成果物検証
+検証:
 
 ```bash
 node tools/experiments/verify-phase-transition-artifacts.js \
   --input artifacts/phase-transition/pilot-v2
 ```
 
-検証器は次を確認する。
+大規模成果物は原則としてrepositoryへcommitせず、manifest、hash、研究文書、再生成コード、final export indexで追跡します。
 
-- 必須ファイル
-- JSONL構文
-- 観測件数とゲーム件数
-- SHA-256
-- `gameId + ply`の一意性
-- plyの連続性
-- `previousStateHash`の連鎖
-- 最終state hashとtrajectory hash
-- 開局メタデータ
-- diversity集計
-- 特徴量の基本整合性
+---
 
-## Notebook
+## 恒久的な研究運用ルール
 
-### 01-data-audit.ipynb
+Study 1 closure後も次を維持します。
 
-```text
-notebooks/phase-transition/01-data-audit.ipynb
-```
+- `RESEARCH_LOG.md` はappend-only。
+- 過去formal corpusを再生成・上書きしない。
+- secondary / retrospective analysisでformal primary decisionを置換しない。
+- 新規formal experimentには新規hypothesis / experiment ID / seed block / preregistration / execution policy / explicit authorization / execution lockを要求する。
+- GitHub Actionsではformal corpusを生成しない。
+- Study 1の未解決mechanismを追究する場合は、Study 1の結論を書き換えず、新しいstudyとして開始する。
 
-JSONLの構造監査と基本記述統計を行う。相転移候補の検出は行わない。
+---
 
-### 02-transition-candidate-analysis.ipynb
+## 次の研究へ
 
-```text
-notebooks/phase-transition/02-transition-candidate-analysis.ipynb
-```
+Study 1から残った主な独立課題には次があります。
 
-pilot-v2の相転移候補分析をColabから実行する入口である。分析ロジックの正本は次のPythonスクリプトとする。
+- search-tree / PV / cutoff / leaf-evaluation / horizon mechanism
+- second independent feature groupのprospective confirmation
+- reserve threshold
+- nyumba transition
+- front-row control
+- capture-to-mobility transition
+- non-terminal forcing-to-free-choice transition
+- formal `namua -> mtaji` とstrategic transitionの時間関係
+- multiple transition taxonomy
+- broader evaluator / depth / search implementation external validity
 
-```text
-tools/experiments/analyze-phase-transition-pilot.py
-```
-
-Notebookでは`/content/pilot-v2/`へ次の3ファイルを配置する。
-
-```text
-/content/pilot-v2/
-├── observations.jsonl
-├── games.json
-└── manifest.json
-```
-
-pilot-v1との比較も行う場合は、次も配置する。
-
-```text
-/content/pilot/games.json
-```
-
-## 相転移候補分析
-
-ローカルでも同じ分析を実行できる。
-
-```bash
-python tools/experiments/analyze-phase-transition-pilot.py \
-  --input artifacts/phase-transition/pilot-v2 \
-  --output artifacts/local/phase-transition-analysis
-```
-
-出力:
-
-```text
-artifacts/local/phase-transition-analysis/
-├── analysis-summary.json
-└── transition-candidates.csv
-```
-
-分析内容:
-
-1. study version、件数、SHA-256の再監査
-2. reserve、可動性、捕獲構造、前列、強制性の特徴群作成
-3. `namua → mtaji`、reserve枯渇、nyumba状態、強制捕獲状態の形式的イベント抽出
-4. 二つ以上の独立特徴群が変化した地点の候補化
-5. 3 plyと5 plyの持続性評価
-6. 最寄り形式的転移との距離計測
-7. 全100局と7 ply早期終局2局を除外した98局の感度比較
-
-現在の探索閾値は次のとおり。
-
-```text
-signal threshold: 1.5
-minimum active feature groups: 2
-persistence threshold: 0.5
-primary persistence window: 3 ply
-secondary persistence window: 5 ply
-early terminal boundary: 7 ply
-```
-
-これらはpilot-v2の探索用設定であり、正式認定基準ではない。
-
-## 比較方針
-
-- pilot-v1は無検証開局の比較基準として保持する。
-- pilot-v2は正式な開局検証済みデータとして扱う。
-- 同一軌跡を維持した局と、開局棄却によって置換された局を分離する。
-- 7 ply早期終局2局を含む100局分析と、除外した98局感度分析を併記する。
-- 候補スコアや形式的転移への近接だけで相転移を正式認定しない。
-
-## 次段階
-
-pilot-v2で候補数、特徴群寄与、形式的転移との距離、早期終局感度を確認した後、次を固定する。
-
-1. 候補スコアの閾値
-2. 持続期間
-3. 代表局面の選定規則
-4. 反例の記録方法
-5. 新規seedによる再現実験条件
-6. 別探索深度・別AI条件による頑健性確認
-
-100局パイロットでは統計的な最終結論を出さず、正式実験の分析手順と事前指定条件を確定する。
+これらはStudy 1の未完了項目ではなく、今後の新規研究候補です。
