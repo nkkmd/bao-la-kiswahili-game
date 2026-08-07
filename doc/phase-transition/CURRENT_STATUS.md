@@ -1,7 +1,7 @@
 # 局面相転移点研究 — 現在地
 
 更新日: 2026-08-07  
-Status: **Study 1 scientifically complete / Stages A–E complete / PR #26 repository closure in progress**
+Status: **Study 1 closed / Stages A–E complete / PR #26 merged into main**
 
 原始マスター計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`  
 第1研究完了計画: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`  
@@ -17,7 +17,7 @@ Status: **Study 1 scientifically complete / Stages A–E complete / PR #26 repos
 - secondary / retrospective analysisでformal primary decisionを置換・救済・反転しない。
 - 新規formal experimentには新規hypothesis / experiment ID / seed block / preregistration / execution policy / explicit authorization / execution lockを要求する。
 - GitHub Actionsではformal corpusを生成しない。
-- PR #26のrepository closureは科学的完了と分離して扱う。2026-08-07に最終化・Draft解除へ進む指示を受領済みであり、mergeは最終CI・差分監査後に行う。
+- PR #26は2026-08-07に通常のmerge commitで`main`へ統合済み。merge commitは`f0c74a0e76e9309844f5207fd009b9a6813c14e9`。merge前の最新head `329607627c1175c6f4dbddf9159846636bb8f138`では11/11 GitHub Actions workflowが`success`だった。
 
 ## 第1研究のスコープ
 
@@ -35,7 +35,7 @@ Status: **Study 1 scientifically complete / Stages A–E complete / PR #26 repos
 - Stage D — machine definition / Bao research vocabulary: **complete**
 - Stage E — final Study 1 integration: **complete**
 
-Scientific completionとPR #26のmerge状態は分離する。
+Scientific completionとPR #26のmerge状態は分離して管理した。科学的完了後、repository closureとしてPR #26を`main`へ統合し、第1研究をrepository上でも閉じた。
 
 ## 固定済みformal decisions
 
@@ -48,7 +48,7 @@ Scientific completionとPR #26のmerge状態は分離する。
 | E-019 / H17 | **`not-confirmed`** | D1/V2 pass、D3が事前登録方向と逆でglobal IUT不成立 |
 | E-020 / H18 | **`confirmed`** | 固定 `hard / bao / depth3` のlegacy > phase2のみ |
 
-これらをStage B–Eの統合解釈で変更しない。
+これらをStage B–Eの統合解釈およびrepository closureで変更しない。
 
 ## 中心現象
 
@@ -256,11 +256,11 @@ Repository外final bundles:
 
 ## 再開時の原則
 
-第1研究はscientifically completeとして扱う。
+第1研究はscientifically completeかつrepository closure completeとして扱う。
 
 新規研究では:
 
 1. 第1研究formal decisionsを変更しない。
 2. 新しいformal claimには新規preregistrationを要求する。
 3. 第1研究の未解決mechanismを新規studyへ持ち越す場合、Stage B retrospective findingsをhypothesis-generation evidenceとして扱う。
-4. PR #26のrepository closure後は`main`上のStudy 1 final report / vocabulary / checkpointsを第1研究の正本とする。
+4. `main`上のStudy 1 final report / vocabulary / checkpointsを第1研究の正本とする。
