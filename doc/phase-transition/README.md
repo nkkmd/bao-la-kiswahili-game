@@ -79,8 +79,7 @@
 ### 探索段階を確認する
 
 - [`PILOT_V2.md`](PILOT_V2.md) — 開局検証済みpilot-v2
-- [`REPORT.md`](REPORT.md) — 初期分析報告
-- [`RESULTS.md`](RESULTS.md) — 初期結果
+- [`checkpoints/`](checkpoints/) — 探索からformal completionまでの時系列checkpoint
 
 探索段階のNotebookは `notebooks/phase-transition/`、分析・formal experiment toolingは `tools/experiments/` にあります。
 
