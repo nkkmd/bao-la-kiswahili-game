@@ -1,124 +1,266 @@
 # 局面相転移点研究 — 現在地
 
-更新日: 2026-07-30  
-Status: Active  
-研究計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`
+更新日: 2026-08-07  
+Status: **Study 1 scientifically complete / Stages A–E complete / PR #26 repository closure in progress**
+
+原始マスター計画: `doc/PHASE_TRANSITION_RESEARCH_PLAN.md`  
+第1研究完了計画: `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md`  
+第1研究最終報告: `doc/phase-transition/STUDY_1_FINAL_REPORT.md`  
+機械定義・語彙: `doc/phase-transition/STUDY_1_VOCABULARY.md`
 
 ## 恒久運用ルール
 
-本研究に対して、次のような再開指示が与えられた場合、特に明示的な除外指示がない限り、**研究の続行だけでなく、各工程完了時の研究台帳更新まで含む指示**として扱う。
+再開指示は研究続行と工程完了時の研究台帳更新を含む。過去結果は黙って上書きせず、解釈変更の理由・根拠・影響を記録する。
 
-```text
-CURRENT_STATUS.mdを読んで再開して
-```
+- `RESEARCH_LOG.md` はappend-only。
+- 過去formal corpusを再生成・上書きしない。
+- secondary / retrospective analysisでformal primary decisionを置換・救済・反転しない。
+- 新規formal experimentには新規hypothesis / experiment ID / seed block / preregistration / execution policy / explicit authorization / execution lockを要求する。
+- GitHub Actionsではformal corpusを生成しない。
+- PR #26のrepository closureは科学的完了と分離して扱う。2026-08-07に最終化・Draft解除へ進む指示を受領済みであり、mergeは最終CI・差分監査後に行う。
 
-再開後は、各工程について実装・実験・結果監査まで進め、完了時に必要な研究台帳を更新してから次工程へ進む。
+## 第1研究のスコープ
 
-必須更新対象:
+第1研究は次として完結した。
 
-- `doc/phase-transition/CURRENT_STATUS.md`
-- `doc/phase-transition/RESEARCH_LOG.md`
-- `doc/phase-transition/DECISION_REGISTER.md`
-- `doc/phase-transition/EXPERIMENT_INDEX.md`
-- `doc/phase-transition/HYPOTHESES.md`
-- 必要に応じて `doc/phase-transition/checkpoints/`
+> **第1研究: Baoにおける局面相転移点の発見と、capture-branch-expansionの確認**
 
-運用原則:
+初期RQ1–RQ10は削除しない。第1研究で中心対象にしなかったreserve、nyumba、前列、capture→mobility、forcing→free-choice、formal phaseとの一般的関係等はformal failureではなくFuture Workへ繰り越す。
 
-- 過去の判断・結果・数値を黙って上書きしない。
-- 解釈を変更した場合は、旧解釈、変更理由、根拠、影響範囲を記録する。
-- 実験ごとに入力識別情報、analysisVersion、configHash、commit SHA、Notebook、出力先を残す。
-- 工程途中で停止する場合も、再開地点、未完了事項、次に実行する操作を `CURRENT_STATUS.md` に記録する。
-- 新しい判断は `DECISION_REGISTER.md`、仮説の支持状況は `HYPOTHESES.md`、時系列経過は `RESEARCH_LOG.md` に反映する。
-- 節目となる結果、重要な解釈変更、正式検証開始前にはチェックポイント文書を作成する。
+## 科学的完了状態
 
-## 現在の研究段階
+- Stage A — D3逆転の独立確認: **complete**
+- Stage B — depth/search-profile mechanism analysis: **complete**
+- Stage C — capture-branch-expansion recognition scope: **complete**
+- Stage D — machine definition / Bao research vocabulary: **complete**
+- Stage E — final Study 1 integration: **complete**
 
-100局 `pilot-v2` を用いた探索的パイロットの後半。候補抽出・forcingアブレーション・アーキタイプ化・代表局面監査まで完了した。
+Scientific completionとPR #26のmerge状態は分離する。
 
-現在は、候補を単一plyではなく **連続する強制捕獲レジームの内部構造**として再解釈し、次の確認的分析へ進む直前である。
+## 固定済みformal decisions
 
-## 現時点で確定したこと
+| Experiment | Formal decision | 固定範囲 / 理由 |
+|---|---|---|
+| E-010 | **`not-confirmed`** | minimum primary candidate 12に対し11 |
+| E-011 | **`inconclusive`** | 複数conditionがavailability不足 |
+| E-017 | **`not-confirmed`** | minimum unique controls 30000に対し23306 |
+| E-018 / H16 | **`confirmed`** | 固定 `hard / bao / depth2` のphase2 > legacyのみ |
+| E-019 / H17 | **`not-confirmed`** | D1/V2 pass、D3が事前登録方向と逆でglobal IUT不成立 |
+| E-020 / H18 | **`confirmed`** | 固定 `hard / bao / depth3` のlegacy > phase2のみ |
 
-- ランダム開局中と終局観測は候補検出から除外する。
-- 候補は隣接plyをクラスタ化した区間として扱う。
-- forcingを候補成立の独立特徴群として数えると候補が過剰になる。
-- 主閾値 `signal=2.0 / persistence=0.75` では、forcing込み95区間、forcing除外45区間。
-- 45区間はA 15、B 30へ分かれ、forcing込みでのみ成立するCは51区間。
-- A 15候補は13固有局面・13アーキタイプに集約された。
-- A主要6候補はすべて候補plyで `forcedCapture=true` かつ `legalMoveCount=captureMoveCount`。
-- 主要6候補の中心現象は、forcingから独立した転移ではなく、強制捕獲レジーム内部の捕獲選択肢構造の急変である。
-- `2e79188a987a` と `7360876ad5c7` は監査窓内で `namua → mtaji` へ接続する前兆候補。
-- 残る4件は暫定的に「捕獲分岐爆発候補」とする。
+これらをStage B–Eの統合解釈で変更しない。
 
-## 撤回・修正した解釈
+## 中心現象
 
-- 撤回: `nearestForcingDistance > 0` を「forcing独立」と呼ぶ。
-- 修正: 正しくは「forcing切替非同時」。候補局面自体は強制捕獲状態に含まれる場合がある。
-- 撤回: strict閾値だけで独立した戦略的相転移を認定できる。
-- 保留: 主要6候補を正式な「戦略的相転移」と認定すること。
+第1研究の中心現象は `capture-branch-expansion`。
 
-## 次工程
+最終的な推奨表現:
 
-### 強制捕獲レジーム分析
+> **capture-branch-expansion strategic-transition phenotype**
 
-各ゲームの連続する `forcedCapture=true` 区間を抽出し、候補について次を測定する。
+または:
 
-- レジーム開始・終了ply
-- レジーム長
-- 候補のレジーム内位置
-- 候補前後の捕獲手数平均と持続性
-- 捕獲手数が元の水準へ戻るか
-- forcing解除までの距離
-- `namua → mtaji` までの距離
-- 終局までの距離
+> **strong phase-transition candidate with bounded recognition scope**
 
-候補を次へ分類する。
+無限定の `universal Bao phase transition` とは呼ばない。
 
-1. 捕獲分岐の急拡大
-2. 捕獲分岐の収束
-3. 強制捕獲解除前兆
-4. `namua → mtaji` 前兆
-5. 一時的スパイク
+Machine definitionと人間向け説明の正本:
 
-## 次工程の後に必要な作業
+- `doc/phase-transition/STUDY_1_VOCABULARY.md`
 
-1. 候補手の質的特徴量追加
-2. 検出定義・閾値・持続期間の事前固定
-3. 未使用seedによる確認用コーパス生成
-4. AI条件・探索深度横断の頑健性検証
-5. 対照群・反例分析
-6. 人間による局面評価
-7. 統計的検証
-8. 正式認定とBao固有語彙化
+## 探索・構造同定
 
-## 研究データ識別情報
+pilot-v2:
 
-- studyVersion: `0.4.1`
-- configHash: `3567b34b3289bda4903c6df98238f12a50d025d3b487871372d3dd5d7869d9c5`
-- corpus: `pilot-v2-analysis-input.zip`
-- profile: `pilot-v2`
-- games: 100
+- 100 games
+- 5650 observations
+- 421 forced-capture regimes
+- Category-A 15 intervals
+- 13 Category-A archetypes
+- `capture-branch-expansion` 5/15 = 33.3%
+- forced-capture control 120/4127 = 2.9%
+- RR ≈ 11.46
 
-## 最新の実装
+探索段階でforcing-release precursorは終局近傍効果へ分離し、一時的spikeも独立分類した。
 
-- 最新マージコミット: `c1810f45c582c8147725d67a737b44ec368b8514`
-- PR: `#23 Add resumable phase-transition research ledger`
+## 新規seed・構造一般性
 
-## 再開手順
+### E-010
 
-1. 本ファイルを読む。
-2. 本ファイルの「恒久運用ルール」を適用する。
-3. `doc/phase-transition/DECISION_REGISTER.md` で採用・撤回判断を確認する。
-4. `doc/phase-transition/EXPERIMENT_INDEX.md` で入力、Notebook、成果物を確認する。
-5. `doc/phase-transition/checkpoints/2026-07-30-board-audit.md` を読む。
-6. `pilot-v2-analysis-input.zip` を用意する。
-7. 強制捕獲レジーム分析の実装から再開する。
+- candidate expansion 7/11 = 63.64%
+- control 249/8424 = 2.96%
+- RR 21.53
+- trajectory-ply dedup: 2/5 vs 218/7061, RR 12.96
+- formal decision: `not-confirmed`
 
-## 完了済みNotebook
+### E-017
 
-- `notebooks/phase-transition/01-data-audit.ipynb`
-- `notebooks/phase-transition/02-transition-candidate-analysis.ipynb`
-- `notebooks/phase-transition/03-forcing-ablation.ipynb`
-- `notebooks/phase-transition/04-candidate-archetypes.ipynb`
-- `notebooks/phase-transition/05-candidate-board-audit.ipynb`
+- unique candidates 21
+- unique expansion trajectory-ply 9
+- unique expansion trajectories 9
+- unique controls 23306
+- dedup candidate rate 42.86%
+- dedup control rate 3.12%
+- RR 13.74
+- formal decision: `not-confirmed`
+
+これらは濃縮方向と構造的一般性を支持するが、formal decisionを救済しない。
+
+## Search-profile boundary
+
+### E-018 / H16 — depth2
+
+固定 `hard / bao / depth2`、P2 phase2 vs LG legacy、2000 paired games。
+
+- P2-only 63
+- LG-only 9
+- discordants 72
+- P2 event 3.15%
+- LG event 0.45%
+- RD +2.70pp
+- OR P2/LG 7.0
+- exact McNemar p `4.1812279092751445e-11`
+- formal: **`confirmed`**
+
+### E-019 / H17 — generalization
+
+D1 / D3 / V2の3 strata。
+
+- D1: phase2 > legacy, pass
+- D3: legacy > phase2, preregistered direction fail
+- V2: phase2 > legacy, pass
+- global IUT: **`not-confirmed`**
+
+D3 reverse:
+
+- P2 event 13/4500
+- LG event 140/4500
+- exact McNemar p `4.614222568073049e-28`
+
+### E-020 / H18 — independent D3 replication
+
+固定 `hard / bao / depth3`、independent seeds `20275001–20279500`、4500 paired games。
+
+- P2-only 18
+- LG-only 129
+- discordants 147
+- P2 event 0.40%
+- LG event 2.8667%
+- OR LG/P2 7.1667
+- exact McNemar p `7.0456833990241785e-22`
+- formal: **`confirmed`**
+
+H18 confirmationはこの固定条件だけに限定する。
+
+## Stage B mechanism synthesis
+
+Stage Bはretrospective / secondaryであり、formal decisionsを変更しない。
+
+主要所見:
+
+1. game-level event rateはcandidate-bearing game rateとconditional manifestation rateへ算術分解でき、3比較すべてでconditional manifestation差がより大きい成分だった。
+2. D3 legacy優位はE-019と独立E-020でregime morphologyまで再現した。
+3. `namua × inside forced-capture regime`に限定しても、D2ではP2優位、D3ではLG優位が残る。
+4. classifier fixed-gate分解では`captureDelta >= 3`のprofile差は小さく、phase-transition proximity、forcing-release proximity、persistenceで大きく分離する。
+5. trajectory-ply dedup後も方向は維持:
+   - E-018 D2: P2 11/34 = 32.35%, LG 7/31 = 22.58%
+   - E-019 D3: P2 6/49 = 12.24%, LG 17/36 = 47.22%
+   - E-020 D3: P2 5/42 = 11.90%, LG 13/35 = 37.14%
+
+Working structural explanation:
+
+> search profileとdepthはcandidateをforced-capture regimeの異なるライフサイクル位置へ配置し、長いregimeの比較的早い位置でphase transition / forcing releaseから十分離れた、持続可能なforcing区間への到達profileがD2ではP2、D3ではLGへ反転する。
+
+これはcausal mediation / general search-profile × depth interaction confirmationではない。
+
+Search-tree内部のPV、cutoff、leaf evaluation、horizon diagnosticsは現formal archiveに存在せず、「なぜdepth3でこの到達先が反転するか」はFuture Workへ分離する。
+
+## Stage C recognition scope
+
+原始マスター計画の6認定基準:
+
+| Criterion | Final assessment |
+|---|---|
+| 異なる対局で再発 | **satisfied** |
+| 二つ以上の独立特徴群に変化 | **partially satisfied** |
+| 事前指定期間の持続 | **satisfied** |
+| 新規seedで再現 | **satisfied** |
+| 局面構造として説明可能 | **satisfied** |
+| 反例・適用範囲を記録可能 | **satisfied** |
+
+第2基準のみ保守的にpartialとする。最大捕獲可能量非対称化は探索群とE-010で平均方向一致したが、trajectory-ply dedup後E-010の2独立構造すべてに一般化していない。
+
+この評価はformal experiment decisionとは別の総合認定である。
+
+## Stage D vocabulary
+
+正本:
+
+- `doc/phase-transition/STUDY_1_VOCABULARY.md`
+
+重要な区別:
+
+- `capture-branch-expansion`のmachine classifier
+- formal primary event-game endpoint
+- empirical forced-capture-regime scope
+- `search-profile dependence`
+- `trajectory` / `trajectory-ply`
+
+を別々に定義する。
+
+特に「forced-capture regime内」は経験的な強いscopeだが、結果後にclassifierの新しい必要条件へ追加しない。
+
+## Stage E final integration
+
+正本:
+
+- `doc/phase-transition/STUDY_1_FINAL_REPORT.md`
+
+統合済み:
+
+- exploration → E-020 chronology
+- formal decisions
+- Stage B mechanism
+- Stage C recognition
+- Stage D vocabulary
+- representative positive / negative cases
+- reproducibility / archive index
+- Future Work
+
+## Formal archive index
+
+Repository外final bundles:
+
+- E-011: SHA-256 `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
+- E-018: SHA-256 `bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5`
+- E-019: SHA-256 `6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`
+- E-020: SHA-256 `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
+
+正本:
+
+- `doc/phase-transition/FORMAL_EXPORT_INDEX.md`
+
+## Future Work
+
+第1研究のformal conclusionsを拡張せず、独立研究として扱う。
+
+- search-tree / horizon mechanism diagnostics
+- reserve threshold
+- nyumba transition
+- front-row control
+- capture→mobility transition
+- non-terminal forcing→free-choice transition
+- formal namua→mtajiとstrategic transitionの時間関係
+- multiple transition taxonomy
+- broader evaluator / depth / search implementation external validity
+
+## 再開時の原則
+
+第1研究はscientifically completeとして扱う。
+
+新規研究では:
+
+1. 第1研究formal decisionsを変更しない。
+2. 新しいformal claimには新規preregistrationを要求する。
+3. 第1研究の未解決mechanismを新規studyへ持ち越す場合、Stage B retrospective findingsをhypothesis-generation evidenceとして扱う。
+4. PR #26のrepository closure後は`main`上のStudy 1 final report / vocabulary / checkpointsを第1研究の正本とする。

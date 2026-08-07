@@ -1,0 +1,31 @@
+name: Phase Transition Capture Branch Formation
+
+on:
+  pull_request:
+    paths:
+      - "tools/experiments/analyze-capture-branch-formation.js"
+      - "tools/experiments/run-capture-branch-formation-audit.js"
+      - "test/phase-transition-capture-branch-formation.test.js"
+      - ".github/workflows/phase-transition-capture-branch-formation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: node test/phase-transition-capture-branch-formation.test.js
+      - name: Rebuild targeted games and analyze formation
+        run: node tools/experiments/run-capture-branch-formation-audit.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-transition-capture-branch-formation
+          path: artifacts/local/phase-transition-capture-branch-formation/
+          if-no-files-found: error

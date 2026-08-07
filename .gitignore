@@ -11,6 +11,8 @@ pnpm-debug.log*
 # Runtime and coverage output
 coverage/
 .nyc_output/
+__pycache__/
+*.py[cod]
 
 # Local environment
 .env
@@ -42,4 +44,9 @@ artifacts/*-local.json
 /artifacts/phase-transition/diversity-smoke/
 /artifacts/phase-transition/pilot/
 /artifacts/phase-transition/pilot-v2/
+/artifacts/phase-transition/robustness-v1/
+/artifacts/phase-transition/independent-confirmation-v2/
+/artifacts/phase-transition/search-profile-dependence-v1/
+/artifacts/phase-transition/search-profile-generalization-v2/
+/artifacts/phase-transition/d3-reversal-replication-v1/
 /artifacts/phase-transition/archive/

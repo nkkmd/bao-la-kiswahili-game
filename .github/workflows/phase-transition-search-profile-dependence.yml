@@ -1,0 +1,92 @@
+name: Phase Transition Search Profile Dependence
+
+on:
+  pull_request:
+    paths:
+      - "config/experiments/phase-transition-search-profile-dependence-v1.json"
+      - "config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json"
+      - "tools/experiments/lib/phase-transition-search-profile-dependence.js"
+      - "tools/experiments/run-phase-transition-search-profile-dependence.js"
+      - "tools/experiments/run-phase-transition-search-profile-dependence-formal.js"
+      - "tools/experiments/prepare-phase-transition-search-profile-dependence-execution.js"
+      - "tools/experiments/verify-phase-transition-search-profile-dependence.js"
+      - "tools/experiments/build-phase-transition-search-profile-pairs.js"
+      - "tools/experiments/evaluate-phase-transition-search-profile-dependence.js"
+      - "tools/experiments/summarize-phase-transition-search-profile-structure.js"
+      - "test/phase-transition-search-profile-dependence.test.js"
+      - "test/phase-transition-search-profile-dependence-formal.test.js"
+      - ".gitignore"
+      - ".github/workflows/phase-transition-search-profile-dependence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - name: Run evaluator, pair-builder, preregistration, and formal-guard tests
+        run: |
+          node test/phase-transition-search-profile-dependence.test.js
+          node test/phase-transition-search-profile-dependence-formal.test.js
+      - name: Generate paired two-game fixture
+        run: |
+          node tools/experiments/run-phase-transition-search-profile-dependence.js \
+            --fixture-games 2 \
+            --force \
+            --output artifacts/phase-transition/search-profile-dependence-v1-fixture
+      - name: Verify paired fixture integrity
+        run: |
+          node tools/experiments/verify-phase-transition-search-profile-dependence.js \
+            --fixture-games 2 \
+            --input artifacts/phase-transition/search-profile-dependence-v1-fixture
+      - name: Detect candidates and build controls for both search profiles
+        run: |
+          for condition in P2 LG; do
+            python tools/experiments/analyze-phase-transition-archetypes.py \
+              --input artifacts/phase-transition/search-profile-dependence-v1-fixture/${condition} \
+              --output artifacts/local/search-profile-dependence-v1-fixture/${condition}/archetypes
+            node tools/experiments/analyze-forced-capture-regime-controls.js \
+              --observations artifacts/phase-transition/search-profile-dependence-v1-fixture/${condition}/observations.jsonl \
+              --candidates artifacts/local/search-profile-dependence-v1-fixture/${condition}/archetypes/archetype-members.csv \
+              --output artifacts/local/search-profile-dependence-v1-fixture/${condition}/controls
+          done
+      - name: Build paired game-level endpoints
+        run: |
+          node tools/experiments/build-phase-transition-search-profile-pairs.js \
+            --p2-games artifacts/phase-transition/search-profile-dependence-v1-fixture/P2/games.json \
+            --p2-candidates artifacts/local/search-profile-dependence-v1-fixture/P2/controls/candidate-control-metrics.csv \
+            --lg-games artifacts/phase-transition/search-profile-dependence-v1-fixture/LG/games.json \
+            --lg-candidates artifacts/local/search-profile-dependence-v1-fixture/LG/controls/candidate-control-metrics.csv \
+            --output artifacts/local/search-profile-dependence-v1-fixture/paired-game-endpoints.json
+          node -e 'const p=require("./artifacts/local/search-profile-dependence-v1-fixture/paired-game-endpoints.json"); if(p.length!==2) throw new Error(`expected 2 pairs, got ${p.length}`);'
+      - name: Summarize preregistered structural secondary
+        run: |
+          node tools/experiments/summarize-phase-transition-search-profile-structure.js \
+            --p2-games artifacts/phase-transition/search-profile-dependence-v1-fixture/P2/games.json \
+            --p2-candidates artifacts/local/search-profile-dependence-v1-fixture/P2/controls/candidate-control-metrics.csv \
+            --p2-controls artifacts/local/search-profile-dependence-v1-fixture/P2/controls/control-point-metrics.csv \
+            --lg-games artifacts/phase-transition/search-profile-dependence-v1-fixture/LG/games.json \
+            --lg-candidates artifacts/local/search-profile-dependence-v1-fixture/LG/controls/candidate-control-metrics.csv \
+            --lg-controls artifacts/local/search-profile-dependence-v1-fixture/LG/controls/control-point-metrics.csv \
+            --output artifacts/local/search-profile-dependence-v1-fixture/structure
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase-transition-search-profile-dependence-fixture
+          path: |
+            config/experiments/phase-transition-search-profile-dependence-v1.json
+            config/experiments/phase-transition-search-profile-dependence-execution-policy-v1.json
+            artifacts/phase-transition/search-profile-dependence-v1-fixture/
+            artifacts/local/search-profile-dependence-v1-fixture/
+          if-no-files-found: error

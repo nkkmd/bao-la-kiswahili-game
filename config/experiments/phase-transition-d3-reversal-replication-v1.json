@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "E-020",
+  "analysisVersion": "18-d3-reversal-replication",
+  "status": "preregistered-not-run",
+  "preregisteredDate": "2026-08-05",
+  "hypothesisId": "H18",
+  "purpose": "Independently test the legacy-over-phase2 capture-branch-expansion manifestation reversal observed in E-019 D3, using a new seed block and the same paired game-level endpoint without changing any prior experiment decision.",
+  "hypothesis": "Under fixed hard / bao / depth 3 conditions, eligible category-A capture-branch-expansion manifestation is more frequent under legacy search than under phase2 search.",
+  "interpretationBoundary": "E-020 tests only hard / bao / depth 3. It does not retroactively confirm the E-019 D3 observation, does not alter E-019/H17, does not establish monotonic depth dependence or a general search-profile-by-depth interaction, and does not generalize to other evaluators or future search implementations.",
+  "corpus": {
+    "profile": "pilot-v2",
+    "pairedSeeds": 4500,
+    "gamesPerCondition": 4500,
+    "totalGames": 9000,
+    "seedRange": [20275001, 20279500],
+    "maxPly": 180,
+    "openingPlies": 6,
+    "baselineGames": 1,
+    "level": "hard",
+    "evaluationProfile": "bao",
+    "maxDepth": 3,
+    "conditions": [
+      { "conditionId": "P2", "searchProfile": "phase2" },
+      { "conditionId": "LG", "searchProfile": "legacy" }
+    ],
+    "pairedOpeningRequired": true
+  },
+  "independence": {
+    "excludedSeedRanges": [
+      [20260721, 20260820],
+      [20261001, 20261200],
+      [20262001, 20262400],
+      [20263001, 20264000],
+      [20265001, 20267000],
+      [20268001, 20274500]
+    ],
+    "newSeedRange": [20275001, 20279500],
+    "overlapWithPriorFormalOrExploratoryBlocksAllowed": false,
+    "designSources": [
+      "E-018 formal paired primary endpoint",
+      "E-019 formal D3 observation and completion checkpoint",
+      "Study 1 completion plan Stage A"
+    ],
+    "designUseOnly": "Prior results are used only to motivate the prospective reversed-direction hypothesis, preserve the paired endpoint, and select a conservative sample size before E-020 data generation. E-019 is not reused as confirmatory evidence for H18.",
+    "postStartThresholdRelaxationAllowed": false
+  },
+  "candidateDetection": {
+    "signalThreshold": 2.0,
+    "persistenceThreshold": 0.75,
+    "excludeOpeningPlies": true,
+    "excludeFinalObservation": true,
+    "mergeAdjacentCandidatePlies": true,
+    "category": "A"
+  },
+  "regimeClassification": {
+    "beforeWindow": 3,
+    "afterWindow": 8,
+    "expansionDelta": 3,
+    "convergenceDelta": -2,
+    "persistenceFraction": 0.5,
+    "eventWindow": 8,
+    "controlExclusionBuffer": 8
+  },
+  "primaryPopulation": {
+    "minimumPliesRemaining": 9,
+    "inheritance": "Unchanged from E-018 and E-019."
+  },
+  "primaryUnit": {
+    "name": "paired shared-seed game",
+    "pairKey": "seed/gameIndex",
+    "pairingRequirement": "P2 and LG must use the same seed and identical random-opening boundary state for each paired game.",
+    "binaryEndpointPerCondition": "1 if the game contains at least one category-A candidate in the primary population classified as capture-branch-expansion; otherwise 0."
+  },
+  "primaryEndpoint": {
+    "name": "paired D3 search-profile difference in capture-branch-expansion manifestation",
+    "comparison": "legacy versus phase2 on the paired game-level binary endpoint",
+    "test": "two-sided exact McNemar test on discordant pairs",
+    "alpha": 0.05,
+    "directionRequirement": "legacy-only discordant pairs must exceed phase2-only discordant pairs",
+    "minimumDiscordantPairs": 20,
+    "reportedEffectMeasures": [
+      "phase2 event-game rate",
+      "legacy event-game rate",
+      "paired risk difference phase2-minus-legacy",
+      "discordant-pair odds ratio legacy-only/phase2-only with infinity reported when phase2-only=0",
+      "exact McNemar two-sided p-value"
+    ]
+  },
+  "sampleSizeDesign": {
+    "selectedPairedSeeds": 4500,
+    "totalGames": 9000,
+    "rationale": "Use the same paired N as E-019 D3 for direct replication comparability while checking power under assumptions materially weaker than the E-019 D3 observation.",
+    "conservativePlanningAssumption": {
+      "discordanceProbability": 0.01,
+      "legacyShareAmongDiscordantPairs": 0.75,
+      "legacyToPhase2DiscordantOddsRatio": 3.0,
+      "minimumDiscordantPairs": 20,
+      "alpha": 0.05,
+      "test": "two-sided exact McNemar"
+    },
+    "plannedPropertiesAt4500Pairs": {
+      "probabilityAtLeast20DiscordantPairs": 0.9999905274,
+      "unconditionalExactMcNemarPowerForProspectiveLegacyDirection": 0.9127717901
+    },
+    "observedE019D3ForContextOnly": {
+      "pairedGames": 4500,
+      "discordantPairs": 153,
+      "discordanceRate": 0.034,
+      "legacyOnly": 140,
+      "phase2Only": 13,
+      "legacyShareAmongDiscordants": 0.9150326797
+    },
+    "caveat": "The E-019 D3 observation is context, not confirmation for H18. No E-020 observed data may be used to revise N, seed range, endpoint, direction, minimum discordants, alpha, or the decision contract after formal generation begins."
+  },
+  "decisionRule": {
+    "confirmed": "Formal corpus integrity and exact pairing pass, exactly 4500 pairs are evaluated, at least 20 discordant paired games are available, the two-sided exact McNemar p-value is <=0.05, and legacy-only discordant pairs exceed phase2-only discordant pairs.",
+    "notConfirmed": "Formal corpus integrity and exact pairing pass and at least 20 discordant paired games are available, but the preregistered significance or prospective legacy-over-phase2 direction criterion fails.",
+    "inconclusive": "Corpus generation, schema/hash/source validation, paired-opening validation, seed pairing, candidate-event construction, required output construction, exact pair-count verification, or minimum 20 discordant-pair availability fails."
+  },
+  "structuralSecondaryEndpoint": {
+    "status": "preregistered-secondary-only",
+    "eventPlyResolution": ["candidatePly", "representativePly", "ply"],
+    "candidateAndControlKey": "trajectoryHash + eventPly",
+    "trajectoryKey": "trajectoryHash",
+    "perCondition": [
+      "unique candidate trajectory-ply count",
+      "unique expansion trajectory-ply count",
+      "unique candidate trajectory count",
+      "unique expansion trajectory count",
+      "candidate and expansion archetype counts",
+      "largest trajectory-ply duplicate multiplicity",
+      "trajectory-ply-deduplicated candidate versus control expansion rates and risk ratio"
+    ],
+    "directComparison": "Compare capture-branch-expansion rates among unique candidate trajectory-ply units between legacy and phase2; report Fisher exact two-sided p-value, risk ratio, and risk difference.",
+    "decisionBoundary": "Structural secondary results never replace, override, rescue, or reverse the paired game-level McNemar primary decision."
+  },
+  "mechanismBridgeSecondary": {
+    "status": "descriptive-secondary-only",
+    "purpose": "Preserve quantities needed to hand off to Study 1 Stage B without turning mechanism exploration into a second confirmatory claim.",
+    "outputs": [
+      "raw candidate occurrence count by condition",
+      "raw expansion manifestation count by condition",
+      "candidate-to-expansion manifestation rate by condition",
+      "forced-capture regime length and candidate position summaries",
+      "terminal-distance strata"
+    ],
+    "decisionBoundary": "No mechanism-bridge output changes the E-020 primary decision. Detailed trajectory divergence and depth-boundary mechanism analysis remains Stage B."
+  },
+  "executionPolicy": {
+    "environment": "fixed local environment",
+    "githubActionsFormalRunAllowed": false,
+    "formalExecutionApproved": false,
+    "approvalRequirement": "A separate explicit user instruction specific to E-020 is required after preregistration and infrastructure validation and before any E-020 formal seed is generated.",
+    "formalCorpusGenerated": false
+  },
+  "changePolicy": "Any post-preregistration change to sample size, seed range, conditions, candidate/regime thresholds, primary population, primary unit, exact McNemar test, alpha, prospective direction, minimum discordant pairs, decision contract, or primary/secondary boundary requires a new preregistration version. E-020 results may not be used to relax this file after formal data generation starts."
+}

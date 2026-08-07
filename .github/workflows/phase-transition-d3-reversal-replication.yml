@@ -1,0 +1,106 @@
+name: Phase Transition D3 Reversal Replication
+
+on:
+  pull_request:
+    paths:
+      - "config/experiments/phase-transition-d3-reversal-replication-v1.json"
+      - "config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json"
+      - "tools/experiments/lib/phase-transition-d3-reversal-replication.js"
+      - "tools/experiments/run-phase-transition-d3-reversal-replication.js"
+      - "tools/experiments/run-phase-transition-d3-reversal-replication-formal.js"
+      - "tools/experiments/prepare-phase-transition-d3-reversal-replication-execution.js"
+      - "tools/experiments/verify-phase-transition-d3-reversal-replication.js"
+      - "tools/experiments/build-phase-transition-d3-reversal-replication-pairs.js"
+      - "tools/experiments/evaluate-phase-transition-d3-reversal-replication.js"
+      - "tools/experiments/summarize-phase-transition-d3-reversal-replication-structure.js"
+      - "test/phase-transition-d3-reversal-replication.test.js"
+      - "test/phase-transition-d3-reversal-replication-formal.test.js"
+      - ".gitignore"
+      - ".github/workflows/phase-transition-d3-reversal-replication.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - name: Test preregistration, reversed-direction evaluator, and formal guards
+        run: |
+          node test/phase-transition-d3-reversal-replication.test.js
+          node test/phase-transition-d3-reversal-replication-formal.test.js
+      - name: Generate two-condition non-formal fixture
+        run: |
+          node tools/experiments/run-phase-transition-d3-reversal-replication.js \
+            --fixture-games 2 \
+            --fixture-base-seed 90902001 \
+            --force \
+            --output artifacts/phase-transition/d3-reversal-replication-v1-fixture
+      - name: Verify paired fixture integrity
+        run: |
+          node tools/experiments/verify-phase-transition-d3-reversal-replication.js \
+            --fixture-games 2 \
+            --fixture-base-seed 90902001 \
+            --input artifacts/phase-transition/d3-reversal-replication-v1-fixture
+      - name: Detect candidates and build controls
+        run: |
+          for condition in P2 LG; do
+            python tools/experiments/analyze-phase-transition-archetypes.py \
+              --input artifacts/phase-transition/d3-reversal-replication-v1-fixture/${condition} \
+              --output artifacts/local/d3-reversal-replication-v1-fixture/${condition}/archetypes
+            node tools/experiments/analyze-forced-capture-regime-controls.js \
+              --observations artifacts/phase-transition/d3-reversal-replication-v1-fixture/${condition}/observations.jsonl \
+              --candidates artifacts/local/d3-reversal-replication-v1-fixture/${condition}/archetypes/archetype-members.csv \
+              --output artifacts/local/d3-reversal-replication-v1-fixture/${condition}/controls
+          done
+      - name: Build paired game-level endpoints
+        run: |
+          node tools/experiments/build-phase-transition-d3-reversal-replication-pairs.js \
+            --p2-games artifacts/phase-transition/d3-reversal-replication-v1-fixture/P2/games.json \
+            --p2-candidates artifacts/local/d3-reversal-replication-v1-fixture/P2/controls/candidate-control-metrics.csv \
+            --lg-games artifacts/phase-transition/d3-reversal-replication-v1-fixture/LG/games.json \
+            --lg-candidates artifacts/local/d3-reversal-replication-v1-fixture/LG/controls/candidate-control-metrics.csv \
+            --output artifacts/local/d3-reversal-replication-v1-fixture/paired-game-endpoints.json
+          node - <<'NODE'
+          const value = require('./artifacts/local/d3-reversal-replication-v1-fixture/paired-game-endpoints.json');
+          if (value.length !== 2) throw new Error('Expected exactly two fixture pairs');
+          NODE
+      - name: Exercise primary decision contract on fixture
+        run: |
+          node tools/experiments/evaluate-phase-transition-d3-reversal-replication.js \
+            --pairs artifacts/local/d3-reversal-replication-v1-fixture/paired-game-endpoints.json \
+            --output artifacts/local/d3-reversal-replication-v1-fixture/evaluation || test $? -eq 2
+          node - <<'NODE'
+          const value = require('./artifacts/local/d3-reversal-replication-v1-fixture/evaluation/d3-reversal-replication-result.json');
+          if (value.decision !== 'inconclusive') throw new Error('Two-game fixture must be inconclusive against preregistered formal N/minimum-discordance contract');
+          NODE
+      - name: Summarize preregistered structural secondary
+        run: |
+          node tools/experiments/summarize-phase-transition-d3-reversal-replication-structure.js \
+            --p2-games artifacts/phase-transition/d3-reversal-replication-v1-fixture/P2/games.json \
+            --p2-candidates artifacts/local/d3-reversal-replication-v1-fixture/P2/controls/candidate-control-metrics.csv \
+            --p2-controls artifacts/local/d3-reversal-replication-v1-fixture/P2/controls/control-point-metrics.csv \
+            --lg-games artifacts/phase-transition/d3-reversal-replication-v1-fixture/LG/games.json \
+            --lg-candidates artifacts/local/d3-reversal-replication-v1-fixture/LG/controls/candidate-control-metrics.csv \
+            --lg-controls artifacts/local/d3-reversal-replication-v1-fixture/LG/controls/control-point-metrics.csv \
+            --output artifacts/local/d3-reversal-replication-v1-fixture/structure
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase-transition-d3-reversal-replication-fixture
+          path: |
+            config/experiments/phase-transition-d3-reversal-replication-v1.json
+            config/experiments/phase-transition-d3-reversal-replication-execution-policy-v1.json
+            artifacts/phase-transition/d3-reversal-replication-v1-fixture/
+            artifacts/local/d3-reversal-replication-v1-fixture/
+          if-no-files-found: error

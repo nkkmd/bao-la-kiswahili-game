@@ -1,8 +1,11 @@
 # Bao la Kiswahili 局面相転移点研究計画
 
 Version: 0.1.0  
-Status: Draft  
+Status: Draft / original master plan  
 作成日: 2026-07-21
+
+> **2026-08-05 スコープ整理**  
+> この文書は研究開始前にRQ1–RQ10を広く設定した**原始マスター計画**として保持する。研究進行の結果、強制捕獲レジーム内部の`capture-branch-expansion`が第1研究の中心確認対象になった。現在の第1研究の完了スコープ、残工程、Future Workは `doc/phase-transition/STUDY_1_COMPLETION_PLAN.md` を正本とする。初期RQは削除・否定せず、第1研究で主対象としなかった問いは追加研究課題として繰り越す。この整理は既存formal decisionや事前登録条件を変更しない。
 
 ## 0. 概要
 

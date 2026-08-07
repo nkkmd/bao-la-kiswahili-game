@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "experimentId": "E-011",
+  "analysisVersion": "12-ai-depth-robustness",
+  "status": "preregistered",
+  "preregisteredAt": "2026-07-31T23:44:00+09:00",
+  "objective": "Test whether capture-branch-expansion enrichment is robust to one-factor changes in evaluation profile, search implementation, and fixed search depth.",
+  "corpus": {
+    "profile": "pilot-v2",
+    "gamesPerCondition": 400,
+    "sharedBaseSeed": 20262001,
+    "sharedSeedRange": [
+      20262001,
+      20262400
+    ],
+    "maxPly": 180,
+    "openingPlies": 6,
+    "baselineGames": 1,
+    "pairedOpeningSeedsAcrossConditions": true
+  },
+  "independence": {
+    "exploratorySeedRange": [
+      20260721,
+      20260820
+    ],
+    "confirmationSeedRange": [
+      20261001,
+      20261200
+    ],
+    "robustnessSeedRange": [
+      20262001,
+      20262400
+    ],
+    "overlapAllowed": false,
+    "sameSeedAcrossConditions": true,
+    "rationale": "Use a new seed block for independence from E-002 and E-010, while reusing the same opening seeds across E-011 conditions to reduce opening-composition noise."
+  },
+  "conditions": [
+    {
+      "id": "C0",
+      "role": "reference",
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 2
+    },
+    {
+      "id": "C1",
+      "role": "depth-1",
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 1
+    },
+    {
+      "id": "C2",
+      "role": "depth-3",
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 3
+    },
+    {
+      "id": "C3",
+      "role": "evaluation-variant",
+      "level": "hard",
+      "evaluationProfile": "bao-v2",
+      "searchProfile": "phase2",
+      "maxDepth": 2
+    },
+    {
+      "id": "C4",
+      "role": "search-variant",
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "legacy",
+      "maxDepth": 2
+    }
+  ],
+  "candidateDetection": {
+    "signalThreshold": 2.0,
+    "persistenceThreshold": 0.75,
+    "excludeOpeningPlies": true,
+    "excludeFinalObservation": true,
+    "mergeAdjacentCandidatePlies": true,
+    "category": "A"
+  },
+  "regimeClassification": {
+    "beforeWindow": 3,
+    "afterWindow": 8,
+    "expansionDelta": 3,
+    "convergenceDelta": -2,
+    "persistenceFraction": 0.5,
+    "eventWindow": 8,
+    "controlExclusionBuffer": 8
+  },
+  "primaryPopulation": {
+    "minimumPliesRemaining": 9,
+    "reason": "Preserve the E-010 terminal-distance restriction and the full eight-ply post-candidate window."
+  },
+  "primaryEndpoint": {
+    "name": "condition-specific capture-branch-expansion enrichment",
+    "candidateNumerator": "A candidate members classified as capture-branch-expansion in the primary population",
+    "candidateDenominator": "All A candidate members in the primary population",
+    "controlNumerator": "Eligible control plies classified as capture-branch-expansion under the same condition",
+    "controlDenominator": "All eligible control plies under the same condition",
+    "effectMeasure": "candidate rate divided by condition-specific control rate"
+  },
+  "sampleSizeDesign": {
+    "sourceExperiment": "E-010",
+    "observedPrimaryCandidates": 11,
+    "observedGames": 200,
+    "observedPrimaryCandidateRatePerGame": 0.055,
+    "gamesPerCondition": 400,
+    "expectedPrimaryCandidatesPerCondition": 22.0,
+    "approximation": "Poisson",
+    "approximateProbabilityOfAtLeast12Candidates": 0.9924,
+    "note": "This calculation fixes E-011 sample size only and does not revise E-010 criteria or interpretation."
+  },
+  "conditionSuccessCriteria": {
+    "minimumPrimaryCandidateCount": 12,
+    "minimumExpansionCandidateCount": 5,
+    "minimumControlPointCount": 10000,
+    "minimumRiskRatio": 3.0,
+    "requireCandidateRateGreaterThanControlRate": true
+  },
+  "conditionDecisionRule": {
+    "pass": "All condition success criteria pass.",
+    "insufficient": "Corpus integrity passes but one or more minimum count criteria fail.",
+    "fail": "Minimum count criteria pass but one or more enrichment criteria fail.",
+    "inconclusive": "Corpus generation, schema validation, or source-condition integrity fails."
+  },
+  "globalDecisionRule": {
+    "robust": "C0 passes and all four perturbation conditions C1-C4 pass.",
+    "partiallyRobust": "C0 passes, at least three of C1-C4 pass, and no perturbation condition fails; any remaining condition must be insufficient.",
+    "notRobust": "C0 fails, at least two perturbation conditions fail, or any evaluable condition has risk ratio less than or equal to 1.",
+    "inconclusive": "Any outcome not classified above, including integrity failure or unresolved sample insufficiency."
+  },
+  "secondaryEndpoints": [
+    "primary candidate count per 100 games by condition",
+    "candidate and control expansion rates by condition",
+    "risk-ratio range and minimum risk ratio across conditions",
+    "A-archetype count and signature distribution by condition",
+    "terminal-near subtype count by condition",
+    "maximum-capture asymmetry around expansion candidates"
+  ],
+  "executionPolicy": {
+    "environment": "fixed local environment",
+    "runOrder": [
+      "C0",
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+    ],
+    "parallelExecutionAllowed": false,
+    "githubActionsFullRunAllowed": false,
+    "reason": "The research plan reserves large self-play and formal statistics for a fixed local environment; GitHub Actions is limited to tests and artifact validation."
+  },
+  "changePolicy": "Any change after this commit must create a new preregistration version and may not silently replace this file."
+}

@@ -1,0 +1,10 @@
+"use strict";
+const assert = require("node:assert/strict");
+const C = require("../tools/experiments/lib/regime-control-analysis.js");
+const candidates = [{ gameId: "g", startPly: 10, endPly: 12 }];
+assert.equal(C.overlapsCandidate({ gameId: "g", ply: 2 }, candidates, 8), true);
+assert.equal(C.overlapsCandidate({ gameId: "g", ply: 1 }, candidates, 8), false);
+assert.equal(C.overlapsCandidate({ gameId: "other", ply: 10 }, candidates, 8), false);
+assert.deepEqual(C.classCounts([{ classification: "b" }, { classification: "a" }, { classification: "b" }]), { a: 1, b: 2 });
+assert.equal(C.sensitivitySettings().length, 27);
+console.log("regime control helper tests passed");
