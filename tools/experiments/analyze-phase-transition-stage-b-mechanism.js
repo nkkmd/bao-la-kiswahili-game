@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 const IO = require("./analyze-forced-capture-regimes.js");
@@ -106,6 +107,10 @@ function parseArgs(argv) {
     }
   }
   return options;
+}
+
+function sha256File(filePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
 
 function finiteNumber(row, name) {
@@ -305,10 +310,15 @@ function mechanismDirections(comparison) {
 
 function run(options) {
   const conditions = {};
+  const inputs = {};
   for (const [conditionKey, definition] of Object.entries(CONDITION_DEFINITIONS)) {
     const input = path.resolve(options.inputs[conditionKey]);
     const rows = IO.readCsv(input);
     conditions[definition.key] = summarizeCondition(definition, rows);
+    inputs[conditionKey] = {
+      path: input,
+      sha256: sha256File(input),
+    };
   }
 
   const comparisons = {
@@ -320,11 +330,8 @@ function run(options) {
   const result = {
     schemaVersion: "1.0.0",
     analysisVersion: "stage-b-mechanism-1",
-    generatedAt: new Date().toISOString(),
     boundary: ANALYSIS_BOUNDARY,
-    inputs: Object.fromEntries(
-      Object.entries(options.inputs).map(([key, value]) => [key, path.resolve(value)]),
-    ),
+    inputs,
     conditions,
     comparisons,
     directionSummary: {
@@ -369,5 +376,6 @@ module.exports = {
   numericSummary,
   parseArgs,
   run,
+  sha256File,
   summarizeCondition,
 };
