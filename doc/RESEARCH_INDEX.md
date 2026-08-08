@@ -77,6 +77,26 @@ Baoのゲーム開始時の先攻・後攻差、および生成局面におけ�
 
 ---
 
+## 次に開始する研究
+
+### 4. 局面類型と棋風 — Study 1
+
+**研究題目（作業名）:** Baoにおける局面類型と棋風の発見・検証  
+**状態:** selected next research / kickoff design / not preregistered  
+**作業branch:** `research/position-typology-and-playing-style`
+
+Baoに反復して現れるposition typeを盤面・合法手・構造特徴から発見し、その類型をどのように選択・維持・遷移するかというtrajectory / policy-levelの傾向をplaying styleとして検討します。AI実装名をそのまま棋風とせず、position typeとplaying styleを分離して研究します。
+
+**研究開始時に読む:**
+
+- [`position-typology/README.md`](position-typology/README.md) — 研究ディレクトリ入口
+- [`position-typology/RESEARCH_PLAN.md`](position-typology/RESEARCH_PLAN.md) — 研究設計骨格
+- [`position-typology/CURRENT_STATUS.md`](position-typology/CURRENT_STATUS.md) — kickoff時点の状態と固定境界
+
+この研究は現在exploratory設計段階です。formal hypothesis、cluster数、類型名、feature set、seed block、confirmation thresholdはまだ固定していません。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
