@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 1 first clustering diagnostic complete / mtaji coarse candidate identified / namua unresolved / stability audit tooling ready / no final cluster decision / no formal confirmation authorized**
+Status: **Stage 1 candidate stability audit complete / mtaji k=2 robust relational-polarity candidate / namua no discrete candidate / mtaji polarity-discreteness audit tooling ready / no final cluster decision / no formal confirmation authorized**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -12,7 +12,8 @@ Branch: `research/position-typology-and-playing-style`
 - [`STAGE_1_PILOT_RESULT.md`](STAGE_1_PILOT_RESULT.md)
 - [`STAGE_1_FEATURE_AUDIT_RESULT.md`](STAGE_1_FEATURE_AUDIT_RESULT.md)
 - [`STAGE_1_CLUSTER_DIAGNOSTIC_RESULT.md`](STAGE_1_CLUSTER_DIAGNOSTIC_RESULT.md)
-- [`STAGE_1_STABILITY_AUDIT_RUNBOOK.md`](STAGE_1_STABILITY_AUDIT_RUNBOOK.md)
+- [`STAGE_1_STABILITY_AUDIT_RESULT.md`](STAGE_1_STABILITY_AUDIT_RESULT.md)
+- [`STAGE_1_POLARITY_AUDIT_RUNBOOK.md`](STAGE_1_POLARITY_AUDIT_RUNBOOK.md)
 
 ## 現在地
 
@@ -27,16 +28,18 @@ Branch: `research/position-typology-and-playing-style`
 5. redundancy / distribution audit
 6. S-pruned first clustering diagnostic, k=2..10
 7. first diagnostic result interpretation
-8. candidate stability / representation audit tooling
+8. candidate stability / representation audit
+9. representative / boundary position extraction
+10. mtaji k=2 polarity-vs-discreteness audit design + tooling
 
-現在の停止点は **candidate stability / representation auditのローカル実行前**。
+現在の停止点は **mtaji polarity / discreteness auditのローカル実行前**。
 
 まだ実施していない:
 
-- candidate stability audit実行
-- board-level representative inspection
-- provisional position-type命名
+- mtaji polarity / discreteness audit実行
 - final cluster数選択
+- provisional position-type命名
+- namua gradient-specific follow-up
 - playing-style分析
 - Study 1 cross-study analysis
 - formal confirmation
@@ -62,34 +65,15 @@ ply >= 8
 - seat-canonical collapse: 0
 - states shared across trajectories: 0
 
-## Feature policy
-
-Baseline S-prunedはdeterministic redundancyを除いたactor / opponent structural primitives。
-
-Namua reserve pairは:
+## Candidate stability artifact
 
 ```text
-reserveTotal
-reserveDifference
+artifacts/local/position-typology/stage1-pilot-v1/stability-audit-v1/candidate-stability.json
 ```
 
-へ置換。
+Audit hash:
 
-Mtaji reserveはconstant 0のため除外。Rare `houseOwned`もbaselineから除外しsensitivityへ回した。
-
-Binaryは0/1のまま、continuousはstandard / log1p-standardを比較した。
-
-## First clustering diagnostic
-
-Artifact:
-
-```text
-artifacts/local/position-typology/stage1-pilot-v1/clustering-diagnostic-v1/clustering-diagnostic.json
-```
-
-Diagnostic hash:
-
-`dc57cd1b5da3d1ff67c5a59bccef0f4bf9463bcc57296aaf48acec19b47243cf`
+`7ed8bad7137cee50fa7f55d80f27d27ea90f4be9756de023acc020f25f0df1ae`
 
 Boundary:
 
@@ -98,150 +82,200 @@ Boundary:
 - `finalClusterCountSelected: false`
 - `positionTypesNamed: false`
 
-Environment:
+## Mtaji k=2 — current strongest structure
 
-- Python 3.12.3
-- numpy 2.5.1
-- pandas 3.0.5
-- scikit-learn 1.9.0
-- scipy 1.18.0
+Reference:
 
-## Mtaji result
+```text
+S-pruned
+phase = mtaji
+game-phase-capped
+log1p-standard
+k = 2
+```
 
-### Coarse k=2 candidate
-
-k=2は4 view/preprocessing conditionsで一貫して最上位silhouette。
-
-Game-phase-capped + log1p-standard:
+### Same-representation
 
 - K-means silhouette: 0.2328
 - GMM silhouette: 0.2321
 - Ward silhouette: 0.2084
-- mean method ARI: 0.7566
-- minimum pairwise ARI: 0.6775
 - K-means vs GMM ARI: 0.9041
-- condition NMI: approximately 0
+- K-means vs Ward ARI: 0.6883
+- GMM vs Ward ARI: 0.6775
+- condition NMI ≈ 0
+- K-means cluster fractions ≈ 49.2% / 50.8%
 
-Cluster sizeもほぼbalanced。
+### Cross-view
 
-このため **mtaji k=2をcoarse candidateとしてshortlist** する。
+log1p-standard full vs capped:
 
-ただしboard interpretation未実施のため、まだposition typeとは呼ばない。
+- K-means: 0.9515
+- GMM: 0.8459
+- Ward: 0.5541
 
-### Fine structure probe
+### Cross-preprocessing
 
-Capped + log1p:
+capped standard vs log1p:
 
-- k=5 mean method ARI: 0.6972, min 0.6461
-- k=6 mean method ARI: 0.7284, min 0.6994
+- K-means: 0.9073
+- GMM: 0.8131
+- Ward: 0.5763
 
-k=6をk=5–6 familyのfine-structure probeとして次auditへ残す。
+### Cross-representation
 
-これはfinal kの選択ではない。
+S-pruned vs P-raw-pits:
 
-## Namua result
+- K-means: 0.9515
+- GMM: 0.8671
+- Ward: 0.4970
+
+S-pruned vs C-level-contrast:
+
+- K-means: 0.7466
+- GMM: 0.8489
+- Ward: 0.6143
+
+### Trajectory resampling
+
+80% games × 40 repetitions:
+
+K-means:
+
+- min 0.9356
+- p10 0.9451
+- median 0.9707
+- p90 0.9902
+
+GMM:
+
+- min 0.7723
+- p10 0.8369
+- median 0.9387
+- p90 0.9782
+
+### Rare house
+
+Rare mtaji `houseOwned`を戻すと:
+
+- K-means ARI: 1.0000
+- Ward ARI: 1.0000
+- GMM ARI: 0.2125
+
+したがってk=2 signalはK-means / Wardでは維持されるが、GMM component interpretationはrare featureに敏感。
+
+## Mtaji k=2 interpretation boundary
+
+Representative profileでは2群の主要effectがほぼ符号反転する。
+
+一方:
+
+- actor front seeds / front occupancy / reusable pits / connectionsが高い
+- opponent側が低い
+
+他方はその逆。
+
+Median plyは52 vs 51でほぼ同じ。
+
+したがって、単純なmtaji進行stageではない一方、
+
+> **actor優勢 ↔ opponent優勢という単一relational polarity axisを2分割しただけ**
+
+という可能性が残る。
+
+現在の表現は:
+
+```text
+mtaji k=2 = robust relational-polarity candidate
+```
+
+であり、まだ:
+
+```text
+2 position types
+```
+
+とは呼ばない。
+
+## Mtaji k=6
+
+Fine-structure probeとして残る。
+
+Capped + log1p method agreement:
+
+- K-means vs GMM: 0.7864
+- K-means vs Ward: 0.6897
+- GMM vs Ward: 0.7042
+
+Trajectory resampling median:
+
+- K-means: 0.9469
+- GMM: 0.9290
+
+ただしpreprocessing sensitivityがk=2より大きく、silhouetteも低い。
+
+Status:
+
+```text
+secondary stable fine-structure probe only
+```
+
+## Namua
 
 ### k=2
 
-Silhouette単独では比較的高いがmethod agreementが弱い。
+同一algorithm内trajectory resamplingは安定するが、cross-method agreementが弱い。
 
 Capped + log1p:
 
-- K-means silhouette: 0.1732
-- GMM silhouette: 0.2363
-- Ward silhouette: 0.1357
-- mean method ARI: 0.1211
-- minimum ARI: -0.0450
+- K-means vs GMM: 0.0486
+- K-means vs Ward: 0.3598
+- GMM vs Ward: -0.0450
 
-したがってk=2をprovisional candidateへ昇格しない。
+GMMは約9.5% / 90.5%、K-meansは約52.7% / 47.3%を切り、同じk=2でも同じ構造ではない。
 
-### k=4 probe
+K-means median plyも30 vs 19.5で離れる。
+
+### k=4
 
 Capped + log1p:
 
-- K-means silhouette: 0.1368
-- GMM silhouette: 0.1258
-- Ward silhouette: 0.1126
-- mean method ARI: 0.4177
-- minimum ARI: 0.3760
+- method ARI ≈ 0.377–0.482
+- silhouette ≈ 0.113–0.137
 
-Method agreementは改善するがseparationは弱い。
+Trajectory resampling:
 
-**Namuaにはまだprovisional cluster countを与えない。**
+- K-means median: 0.9402
+- GMM median: 0.3744
 
-k=2とk=4をrepresentation sensitivity probeとしてのみ残す。
-
-## Condition dependence
-
-First diagnostic全体のcondition NMIは低い。
-
-- mtaji: approximately 0.00004–0.036
-- namua: approximately 0.010–0.049
-
-したがってclustersがgeneration condition labelそのものを再現している証拠は弱い。
-
-## PCA
-
-Game-phase-capped + log1p-standard:
-
-### Mtaji
-
-- PC1 ≈ 34.8%
-- PC1–2 ≈ 53.0%
-- PC1–5 ≈ 72.0%
-
-### Namua
-
-- PC1 ≈ 32.1%
-- PC1–2 ≈ 44.5%
-- PC1–5 ≈ 69.0%
-
-PCAはdiagnosticのみでtype definitionには使わない。
-
-## Current exploratory candidate set
-
-### Mtaji
+したがって:
 
 ```text
-k=2 : coarse candidate
-k=6 : fine-structure probe representing k=5–6 family
+namua = no discrete cluster count promoted
 ```
 
-### Namua
+進行度 / capture activity等のcontinuous gradientとして扱う可能性を優先して残す。
+
+## 次audit — mtaji polarity / discreteness
+
+実装:
 
 ```text
-no provisional cluster count
-k=2 : compactness probe only
-k=4 : method-agreement probe only
-```
-
-## Stability audit tooling
-
-実装済み:
-
-```text
-tools/experiments/analyze-position-typology-stage1-stability.py
+tools/experiments/analyze-position-typology-stage1-polarity.py
 ```
 
 Runbook:
 
 ```text
-doc/position-typology/STAGE_1_STABILITY_AUDIT_RUNBOOK.md
+doc/position-typology/STAGE_1_POLARITY_AUDIT_RUNBOOK.md
 ```
 
-次auditは:
+次に検査する:
 
-- full vs capped label ARI
-- standard vs log1p label ARI
-- S-pruned vs C-level-contrast
-- S-pruned vs P-raw-pits
-- mtaji rare-house sensitivity
-- 80% trajectory resampling × 40 repetitions
-- K-means representative positions
-- boundary positions
-- standardized profile effects
-
-を出力する。
+1. actor/opponent role swapでk=2 labelが反転するか
+2. centroid-axis projectionが二峰性かcontinuousか
+3. 1D GMM / KDE / marginでdensity separationを記述
+4. actor/opponent directionを消したtotal + absolute-difference representation上で構造が残るか
+5. consecutive mtaji plyでclusterがplayer-to-move交代と機械的にflipするか
 
 ## 次のローカル作業
 
@@ -254,43 +288,43 @@ git pull --ff-only
 git status --short
 python --version
 
-python -m py_compile tools/experiments/analyze-position-typology-stage1-stability.py
-python tools/experiments/analyze-position-typology-stage1-stability.py
+python -m py_compile tools/experiments/analyze-position-typology-stage1-polarity.py
+python tools/experiments/analyze-position-typology-stage1-polarity.py
 ```
+
+追加package installは不要。
 
 共有対象:
 
 ```text
-artifacts/local/position-typology/stage1-pilot-v1/stability-audit-v1/candidate-stability.json
+artifacts/local/position-typology/stage1-pilot-v1/polarity-audit-v1/mtaji-polarity-audit.json
 ```
-
-`candidate-assignments.csv`はローカル保持。
 
 ## 次のdecision point
 
-Candidate stability結果から:
+### Polarity-axis interpretation
 
-### Mtaji
+role swapでほぼ完全反転し、projectionが連続的で、swap-invariant representationで強いk=2が消えるなら:
 
-- k=2をboard-level provisional candidateへ昇格できるか
-- k=6がstable finer subdivisionとして残るか
+> k=2は二つのposition typeではなく一つのrelational polarity axisとして扱う。
 
-### Namua
+### Discrete morphology remains plausible
 
-- representation changeでstructureが安定化するか
-- k=2 / k=4のどちらかを残せるか
-- またはcontinuous gradientとして扱うべきか
+role swapだけでは説明できず、density gapとswap-invariant cluster structureが残るなら:
 
-を判断する。
+> mtaji k=2をboard-level provisional type setへ昇格する余地がある。
 
-まだtype名は付けず、Stage 2へも進まない。
+### Mixed
+
+両方ならpolarity coordinateとintrinsic morphologyを二層化する。
 
 ## 重要原則
 
 - position typeとplaying styleを分離する
 - AI implementation conditionをtype / style名にしない
 - raw plyを独立標本とみなさない
-- condition occupancyを無批判にdistance weightへしない
 - same-pilot robustnessをformal replicationと呼ばない
+- GMM rare-feature sensitivityを無視しない
+- final k / type名をpilot上でformal freezeしない
 - Study 1 formal decisionsを変更しない
-- future held-out seedsへ触れない
+- future held-out seed blockには触れない
