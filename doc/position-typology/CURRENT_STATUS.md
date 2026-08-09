@@ -1,35 +1,25 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-09  
-Status: **Stage 0 instrumentation implemented / local smoke validation pending / no formal experiment authorized**
+Status: **Stage 0 complete / Stage 1 exploratory design next / no formal experiment authorized**
 
 Branch: `research/position-typology-and-playing-style`
 
 - Stage 0監査: [`STAGE_0_AUDIT.md`](STAGE_0_AUDIT.md)
 - Stage 0実行手順: [`STAGE_0_RUNBOOK.md`](STAGE_0_RUNBOOK.md)
+- Stage 0 smoke結果: [`STAGE_0_SMOKE_RESULT.md`](STAGE_0_SMOKE_RESULT.md)
 
 ## 現在地
 
 次の優先研究課題として **「Baoにおける局面類型と棋風の発見・検証」** を開始した。
 
-2026-08-09にrepository auditを完了し、その監査結果に基づくposition-typology専用instrumentationを実装した。
+2026-08-09にrepository auditを完了し、position-typology専用instrumentationを実装した。その後、ローカル環境で16-game Stage 0 instrumentation smoke、full replay verification、seat-canonical identity auditを実行し、hard integrity gateはすべてpassした。
 
-実装済み:
+Stage 0は完了した。
 
-- full 32-pit stateを保存するposition observation schema
-- board / legal-state primitive feature extractor
-- historical state hash / `ruleStateKey` / `seatCanonicalKey`
-- maximum capturable seeds
-- relay / capture-chain primitive
-- seed-distribution summary
-- exploratory Stage 0 smoke generator
-- replay / schema / provenance verifier
-- reachable-state seat-canonical identity audit
-- unit test
+現時点ではまだlarge exploratory corpus、clustering、position-type命名、playing-style分析、formal confirmationは開始していない。
 
-現時点ではまだ大量自己対局、clustering、formal confirmationは開始していない。
-
-次の停止点は**ローカル環境でのStage 0 instrumentation smokeとQA**である。
+次工程は **Stage 1 — Exploratory position typology discovery の設計と小規模pilot** である。
 
 以下は引き続き固定していない。
 
@@ -39,12 +29,12 @@ Branch: `research/position-typology-and-playing-style`
 - playing-style名称
 - feature setの最終版
 - preprocessing
-- seed block
+- formal seed block
 - confirmation threshold
 - statistical test
 - formal execution policy
 
-したがって、`RESEARCH_PLAN.md`、`STAGE_0_AUDIT.md`、現在のsmoke protocolはいずれもpreregistrationではない。
+したがって、`RESEARCH_PLAN.md`、Stage 0文書、および次のStage 1 exploratory protocolはいずれもpreregistrationではない。
 
 ## Study 1との固定境界
 
@@ -63,131 +53,121 @@ Branch: `research/position-typology-and-playing-style`
 
 Study 1 formal corpusはinitial typology discovery corpusへ入れない。独立に得られたposition typeとの関係を、研究後半のcross-study analysisで検討するためにのみ使用する。
 
-## Stage 0 instrumentationの設計境界
+## Stage 0実装済み
 
-### Primary board / legal-state
-
-新しいposition observationは、AI実装名や評価値ではなく、engine stateから導出するprimitiveを保存する。
-
-主な対象:
-
-- phase
-- reserve
-- house / nyumba
-- full pit distribution
-- front / back seed and occupancy
-- legal move count
-- capture move count
-- forced capture
-- reusable pits
-- front connections
+- full 32-pit stateを保存するposition observation schema
+- board / legal-state primitive feature extractor
+- historical state hash / `ruleStateKey` / `seatCanonicalKey`
 - maximum capturable seeds
 - relay / capture-chain primitive
-- seed concentration / variance
+- seed-distribution summary
+- exploratory smoke generator
+- replay / schema / provenance verifier
+- reachable-state seat-canonical identity audit
+- unit test
 
-### Trajectory / context
+Primary observationにはAI evaluation、root score、search depth、nodes、cutoff等を含めない。search diagnosticsはmove-level secondary metadataとしてのみ扱う。
 
-次はinitial cluster形成へ直接入れない。
+## Stage 0 smoke結果
 
-- ply / turn
-- opening id / generation condition
-- trajectory identity
-- forced-capture regime lifecycle
-- recent persistence / dwell history
+実行provenance:
 
-### Secondary AI/search
+- source commit: `d72c2c20e4f4e6376208e687d65157b1ee4756c8`
+- source tree: clean
+- Node.js: v24.6.0
+- games: 16
+- observations: 970
+- 4 generation conditions × 4 games
 
-次はinitial cluster形成へ入れない。
+Hard integrity checks:
 
-- evaluation / root score
-- search depth
-- node count
-- cutoff / cache diagnostics
-- PV / horizon information
+- schema validation: passed
+- full replay: passed
+- stored observation recomputation: passed
+- move legality: passed
+- state identity: passed
+- trajectory hash: passed
+- summary recomputation: passed
+- source provenance: passed
+- partial-file policy: per-game atomic files only
 
-Smoke runnerはsearch diagnosticsをmove-level secondary metadataとして保存できるが、position observationのprimary featuresには含めない。
+Position / trajectory summary:
 
-## Position identity
+- raw positions: 970
+- unique rule states: 935
+- duplicate rule-state slots: 35
+- unique rule-state rate: approximately 96.4%
+- unique seat-canonical states: 935
+- seat-canonical collapse: 0
+- within-trajectory repeated rule positions: 0
+- unique trajectories: 16 / 16
+- unique 8-ply opening states: 16 / 16
 
-Stage 0では「同じ局面」を一種類のhashへまとめない。
+Phase distribution:
 
-1. **historical state identity**
-   - 既存Study 1互換のstate hash
-   - turn等を含むreplay/provenance用
-2. **rule-state identity**
-   - pits / reserve / houseOwned / player / phase / terminal-relevant state
-   - turn、seed、gameId、AI conditionを除外
-3. **seat-canonical identity**
-   - 既存symmetry研究で確認済みのSouth/North seat exchangeだけを同値変換候補とする
-   - 単純なcolumn / direction reversalは使用しない
-4. **trajectory identity**
-   - historical / rule-state / seat-canonical state sequenceを別々に保持する
+- raw namua: 704 / 970 ≈ 72.6%
+- raw mtaji: 266 / 970 ≈ 27.4%
+- unique-state audit namua: 669
+- unique-state audit mtaji: 266
 
-新しいreachable-state smoke上でseat-symmetryを再監査してから、seat-canonical dedupをStage 1のprimary policyにするか決める。
+35 duplicate rule-state slotsは今回のsmokeではnamua側にのみ現れた。
 
-## 実装済みファイル
+## Seat-canonical identity
 
-```text
-schemas/position-typology-observation.schema.json
+新しいreachable-state sampleで再監査した。
 
-tools/experiments/lib/position-typology-features.js
-tools/experiments/run-position-typology-smoke.js
-tools/experiments/verify-position-typology-smoke.js
-tools/experiments/audit-position-typology-identity.js
+- unique rule states checked: 935
+- legal moves checked: 3,714
+- transitions checked: 3,714
+- namua / mtaji双方を含む
+- failures: 0
+- result: passed
 
-test/position-typology-features.test.js
+使用するsymmetry候補は既存研究で検証済みのSouth/North seat exchangeのみであり、column / direction reversalは使用しない。
 
-doc/position-typology/STAGE_0_RUNBOOK.md
-```
+この結果によりseat exchange transformのvalidityは再確認できた。
 
-## 次に行う作業
+ただしsmokeでは`uniqueRuleState == uniqueSeatCanonical`でcollapseが0だったため、larger corpusにおけるcanonical dedupの実効的影響は未評価である。
 
-ローカル環境で `STAGE_0_RUNBOOK.md` に従い、次を実行する。
+Stage 1では `ruleStateKey` dedupと`seatCanonicalKey` dedupをsensitivityとして比較する。transform validityとprimary dedup policyを混同しない。
 
-1. new feature unit test
-2. existing symmetry regression tests
-3. 16-game Stage 0 instrumentation smoke
-4. replay / schema / provenance verification
-5. reachable-state seat-canonical identity audit
-6. phase / opening / trajectory / position duplication summaryのinspection
+## Stage 1へ継承する設計判断
 
-出力は `artifacts/local/position-typology/stage0-smoke-v1/` に保存し、Gitへcommitしない。
+### Phase
 
-必要な主要出力:
+namua / mtajiはmechanicsが異なり、smokeでも約73:27のphase imbalanceが観測された。
 
-- `manifest.json`
-- `verification.json`
-- `identity-audit.json`
+そのためStage 1では次を優先候補とする。
 
-## Stage 0 data-quality gate
+1. natural trajectoryをそのまま生成する
+2. raw corpusのnatural phase occupancyを保存する
+3. generation時に人工的な50:50 phase balanceを作らない
+4. **phase-separated exploratory discoveryをprimary exploratory viewとする**
+5. joint feature-space analysisをsecondary diagnostic / sensitivityとして残す
 
-以下はhard integrity gateとする。
+これはexploratory designでありformal freezeではない。
 
-- schema validation pass
-- complete replay pass
-- every stored move legal
-- stored observation recomputation pass
-- state / trajectory identity match
-- source provenance match
-- seat-canonical identity audit pass
-- incomplete / mixed-config gameをanalysisへ入れない
+### Duplication / sampling
 
-一方、次の数値thresholdはまだformalに固定しない。
+- raw plyを独立標本数とみなさない
+- exact duplicate rule statesをcluster geometryへ無批判に重複投入しない
+- trajectory / gameをstability resamplingの基本単位とする
+- raw frequency情報は後のplaying-style occupancy分析用に保持する
+- trajectory-balanced weightingまたはbalanced subsamplingをStage 1で比較する
 
-- unique trajectory rate
-- dominant trajectory rate
-- unique position rate
-- seat-canonical collapse rate
-- namua / mtaji ratio
-- opening concentration
+### Terminal positions
 
-まずsmokeで分布を監査し、Stage 1 exploratory corpusのsampling designとして決定する。
+terminal observationはprovenance / transition endpointとして保存するが、active decision positionのtypology discoveryへ含めるかはStage 1 protocolで明示する。
+
+### AI condition
+
+`phase2` / `legacy` / evaluator / depthはcorpus diversificationとlater sensitivity用metadataであり、position typeのfeature定義やplaying-style名称には使用しない。
 
 ## 重要原則
 
 - position typeとplaying styleを分離する。
 - playing styleを一局面だけから判定しない。
-- `phase2` / `legacy`等の実装名を棋風名にしない。
+- AI実装条件をそのまま棋風名にしない。
 - 勝率・AI評価値を局面類型そのものと同一視しない。
 - 類型名を先に決めない。
 - raw ply数を独立標本数とみなさない。
@@ -196,16 +176,38 @@ doc/position-typology/STAGE_0_RUNBOOK.md
 - Study 1 formal decisionsを変更しない。
 - formal corpusをGitHub Actionsで生成しない。
 
-## 次のdecision point
+## 次に行う作業
 
-local smokeとidentity / duplication auditをpassした後に、次を判断する。
+Stage 1 exploratory protocolを作成し、次を明示する。
 
-- namua / mtajiを分離して類型化するか
-- raw pit vectorをcluster inputへ含めるか
-- rule-state dedupだけかseat-canonical dedupまで使うか
-- trajectory-level weightingとbalanced subsamplingのどちらを主とするか
-- unsupervised / semi-supervised / rule-basedの比較方法
-- exploratory corpusのgeneration strata・規模・多様性条件
-- Stage 2 replication用held-out design
+1. exploratory corpus generation strata
+2. exploratory-only seed namespace
+3. corpus sizeとincremental expansion policy
+4. terminal-state inclusion policy
+5. phase-separated / joint analysis views
+6. rule-state / seat-canonical dedup sensitivity
+7. trajectory-balanced sampling / weighting
+8. candidate feature matrices
+9. scaling / transformation candidates
+10. clustering methods / dimensionality-reduction diagnostics
+11. cluster stability diagnostics
+12. representative positions / counterexamplesの抽出方法
 
-これらを決めるまではformal confirmationへ進まない。
+その後、**large runではなくStage 1 pilot**を生成し、feature distribution / redundancy / sampling sensitivityを監査してから本格的exploratory clusteringへ進む。
+
+## 次のformal decision point
+
+Stage 1 exploratory evidenceからprovisional position typesが安定して初めて、Stage 2 replicationに向けて以下をfreezeする。
+
+- target position population
+- final feature set
+- preprocessing
+- clustering / assignment definition
+- deduplication rule
+- held-out seed block
+- stability criterion
+- minimum sample / cluster availability
+- success / failure / inconclusive rule
+- stopping condition
+
+これらを固定するまではconfirmatory claimを行わない。
