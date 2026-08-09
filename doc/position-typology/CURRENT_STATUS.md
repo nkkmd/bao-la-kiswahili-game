@@ -1,49 +1,48 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-09  
-Status: **Stage 0 complete / Stage 1 pilot tooling ready / local pilot execution pending / no formal confirmation authorized**
+Status: **Stage 0 complete / Stage 1 pilot passed / Python feature audit tooling ready / clustering not yet authorized / no formal confirmation authorized**
 
 Branch: `research/position-typology-and-playing-style`
 
-- Stage 0監査: [`STAGE_0_AUDIT.md`](STAGE_0_AUDIT.md)
-- Stage 0実行手順: [`STAGE_0_RUNBOOK.md`](STAGE_0_RUNBOOK.md)
-- Stage 0 smoke結果: [`STAGE_0_SMOKE_RESULT.md`](STAGE_0_SMOKE_RESULT.md)
-- Stage 1 exploratory protocol: [`STAGE_1_EXPLORATORY_PROTOCOL.md`](STAGE_1_EXPLORATORY_PROTOCOL.md)
-- Stage 1 pilot runbook: [`STAGE_1_RUNBOOK.md`](STAGE_1_RUNBOOK.md)
+主要文書:
+
+- [`STAGE_0_AUDIT.md`](STAGE_0_AUDIT.md)
+- [`STAGE_0_RUNBOOK.md`](STAGE_0_RUNBOOK.md)
+- [`STAGE_0_SMOKE_RESULT.md`](STAGE_0_SMOKE_RESULT.md)
+- [`STAGE_1_EXPLORATORY_PROTOCOL.md`](STAGE_1_EXPLORATORY_PROTOCOL.md)
+- [`STAGE_1_RUNBOOK.md`](STAGE_1_RUNBOOK.md)
+- [`STAGE_1_PILOT_RESULT.md`](STAGE_1_PILOT_RESULT.md)
+- [`STAGE_1_FEATURE_AUDIT_RUNBOOK.md`](STAGE_1_FEATURE_AUDIT_RUNBOOK.md)
 
 ## 現在地
 
-次の優先研究課題として **「Baoにおける局面類型と棋風の発見・検証」** を進行中。
+研究 **「Baoにおける局面類型と棋風の発見・検証」** を進行中。
 
-2026-08-09にrepository audit、専用instrumentation実装、16-game Stage 0 smoke、full replay verification、seat-canonical identity auditを完了した。Stage 0 hard integrity gateはすべてpassした。
+完了済み:
 
-その結果に基づきStage 1 exploratory protocolを作成し、96-game pilot generator、専用full verifier、eligible-population auditを実装した。
+1. Stage 0 repository / instrumentation / corpus audit
+2. position-typology専用instrumentation実装
+3. Stage 0 16-game smoke + full verification + seat-symmetry audit
+4. Stage 1 exploratory protocol
+5. Stage 1 96-game pilot generation
+6. Stage 1 full replay / provenance verification
+7. Stage 1 eligible-population audit
+8. Stage 1 pilot result記録
+9. Python feature-table / redundancy-audit tooling実装
 
-現在の停止点は **Stage 1 exploratory pilotのローカル実行前** である。
+現在の停止点は **Python feature auditのローカル実行前**。
 
 まだ実施していない:
 
-- Stage 1 96-game pilot generation
-- Python feature-table analysis
+- Python feature audit実行
 - clustering
 - PCA / dimensionality-reduction diagnostics
+- cluster数選択
 - provisional position-type命名
 - playing-style分析
 - Study 1 cross-study analysis
 - formal confirmation
-
-以下は引き続きformalには固定していない。
-
-- formal hypothesis
-- final cluster数
-- final position-type名称
-- playing-style名称
-- final feature set
-- final preprocessing
-- confirmatory seed block
-- confirmation threshold
-- formal statistical test
-- formal execution policy
 
 Stage 1はexploratoryでありpreregistrationではない。
 
@@ -64,10 +63,24 @@ Stage 1はexploratoryでありpreregistrationではない。
 
 Study 1 formal corpusはinitial typology discoveryへ入れない。独立に得られたposition typeとの関係を、研究後半のcross-study analysisでのみ検討する。
 
-## Stage 0結果
+## Stage 0結論
 
-### Integrity
+Stage 0 integrity gateはすべてpass。
 
+- 16 games
+- 970 observations
+- 935 unique rule states
+- 16 / 16 unique trajectories
+- 16 / 16 unique opening states
+- seat-symmetry audit: 935 states / 3,714 legal moves / 3,714 transitions / failure 0
+
+Phase distributionは約73:27だったため、Stage 1ではphase-separated primary viewを採用した。
+
+## Stage 1 pilot — integrity
+
+96-game pilotはfull verificationをpass。
+
+- exploratory boundary: passed
 - schema validation: passed
 - full replay: passed
 - stored observation recomputation: passed
@@ -76,163 +89,169 @@ Study 1 formal corpusはinitial typology discoveryへ入れない。独立に得
 - trajectory hash: passed
 - summary recomputation: passed
 - source provenance: passed
+- clean source tree: passed
+- legal moves checked: 22,299
 
-### Corpus
+Source commit:
 
-- games: 16
-- observations: 970
-- unique rule states: 935
-- duplicate rule-state slots: 35
-- unique seat-canonical states: 935
+`cb5376145a8aeddf5ca42bc9c74e6a0efdb0e114`
+
+Config hash:
+
+`6d61f44cfaacf8dbb55fde544a31224faf45c729142fec83b68535bb941ccf10`
+
+## Stage 1 pilot — raw corpus
+
+- games: 96
+- observations: 5,694
+- terminal observations: 95
+- namua: 4,111
+- mtaji: 1,583
+- unique rule states: 5,301
+- duplicate rule-state slots: 393
+- unique trajectories: 96 / 96
+- unique opening states: 96 / 96
 - seat-canonical collapse: 0
-- within-trajectory repeated rule positions: 0
-- unique trajectories: 16 / 16
-- unique 8-ply opening states: 16 / 16
 
-### Phase
+95 / 96 gamesはterminalへ到達し、1 / 96のみmax-ply 100でtruncated。
 
-- raw namua: 704 / 970 ≈ 72.6%
-- raw mtaji: 266 / 970 ≈ 27.4%
-- unique-state audit namua: 669
-- unique-state audit mtaji: 266
+## Stage 1 primary eligible population
 
-35 duplicate rule-state slotsはsmokeではnamua側にのみ現れた。
-
-### Seat-canonical identity
-
-新reachable-state sampleで:
-
-- unique rule states checked: 935
-- legal moves checked: 3,714
-- transitions checked: 3,714
-- failures: 0
-- result: passed
-
-South/North seat exchange transformのvalidityは再確認できた。ただしsmokeではseat-canonical collapseが0だったため、primary dedupとしての実効的影響はStage 1で比較する。
-
-## Stage 1 exploratory pilot design
-
-### Corpus
-
-- 96 games
-- base seed `20270001`
-- exploratory-only seed namespace
-- max ply 100
-- random opening 8 ply
-- future confirmatory useは禁止
-
-### Generation strata
-
-各16 games:
-
-| ID | evaluator | search | depth |
-|---|---|---|---:|
-| B-D1 | bao | phase2 | 1 |
-| B-D2 | bao | phase2 | 2 |
-| B-D3 | bao | phase2 | 3 |
-| LS-D2 | bao | legacy | 2 |
-| V2-D2 | bao-v2 | phase2 | 2 |
-| LE-D2 | legacy | phase2 | 2 |
-
-conditionはsampling / metadataでありposition featureではない。
-
-### Primary discovery population
+Definition:
 
 ```text
 terminal == false
 ply >= 8
 ```
 
-random-opening中のply 0–7とterminal positionはraw corpusへ残すが、primary discovery geometryから外す。
+Result:
 
-### Phase
+- eligible positions: 4,834
+- unique `ruleStateKey`: 4,834
+- duplicate rule-state slots: 0
+- rule states shared across trajectories: 0
+- unique `seatCanonicalKey`: 4,834
+- seat-canonical collapse: 0
 
-- **phase-separated discoveryをprimary exploratory view**
-- natural phase occupancyはraw corpusに保存
-- generation時に50:50へ人工調整しない
-- joint feature-space analysisはsecondary diagnostic
+Raw corpusの393 duplicate slotsはprimary対象外領域にのみ存在した。
 
-### Identity / dedup
+Primary eligible phase counts:
 
-- primary pilot view: `ruleStateKey` exact dedup
-- sensitivity: `seatCanonicalKey` dedup
-- raw occurrence frequencyは別途保持
+- namua: 3,339 ≈ 69.1%
+- mtaji: 1,495 ≈ 30.9%
 
-### Trajectory balance
+Pilot-level exploratory clusteringのsample availabilityとしては両phaseとも十分と判断する。
 
-比較する:
+## Condition coverage
+
+各conditionは16 gamesだがeligible position数はtrajectory lengthで異なる。
+
+| condition | all | namua | mtaji |
+|---|---:|---:|---:|
+| B-D1 | 980 | 576 | 404 |
+| B-D2 | 865 | 576 | 289 |
+| B-D3 | 847 | 568 | 279 |
+| LS-D2 | 703 | 546 | 157 |
+| V2-D2 | 702 | 505 | 197 |
+| LE-D2 | 737 | 568 | 169 |
+
+特にmtajiでcondition-specific occupancy差が大きい。
+
+これをposition-type geometryへの暗黙のsample weightにしないため、後段で:
 
 1. unique-position unweighted
-2. trajectory-balanced weighted
+2. game × phase balanced weighting
 3. deterministic trajectory-balanced subsample
 
-stability resamplingの基本単位はgame / trajectoryとする。
+を比較する。
 
-## Stage 1実装済み
+Condition label自体はfeature vectorへ入れない。
+
+## Phase / identity policy
+
+Primary exploratory clustering:
+
+- namua / mtajiを分離する
+- primary dedup: `ruleStateKey`
+- seat-canonical dedup: sensitivity
+
+Joint phase viewはsecondary diagnostic。
+
+このpilotではprimary eligible populationにmirror pairが存在しなかったため、rule-state dedupとseat-canonical dedupのsample countは同一。
+
+## Python feature audit
+
+実装済み:
 
 ```text
-tools/experiments/run-position-typology-stage1-pilot.js
-tools/experiments/verify-position-typology-stage1-pilot.js
-tools/experiments/audit-position-typology-stage1-pilot.js
-
-doc/position-typology/STAGE_1_EXPLORATORY_PROTOCOL.md
-doc/position-typology/STAGE_1_RUNBOOK.md
+tools/experiments/analyze-position-typology-stage1-features.py
 ```
 
-Pilot auditは次を出力する。
+Runbook:
 
-- terminal / max-ply truncation
-- game length
-- eligible positions per game
-- phase / condition counts
-- phase × condition counts
-- unique rule states
-- duplicate rule-state slots by phase
-- repeated/shared rule states
-- unique seat-canonical states
-- seat-canonical collapse
+```text
+doc/position-typology/STAGE_1_FEATURE_AUDIT_RUNBOOK.md
+```
+
+監査内容:
+
+- actor-oriented raw 32-pit vector
+- Matrix S / C / P candidate inventory
+- constant columns
+- exact duplicate columns
+- known deterministic relations
+- high-correlation pairs (`|r| >= 0.98` exploratory diagnostic)
+- min / p50 / p95 / max
+- mean / standard deviation
+- skewness
+- zero fraction
+- package / Python versions
+- `gamePhaseWeight = 1 / eligible positions within game × phase`
+
+このscriptはclusteringを実行しない。
 
 ## 次のローカル作業
 
-`STAGE_1_RUNBOOK.md` に従いNode.jsで:
+以前の研究venvを再利用する。
 
 ```bash
-node test/position-typology-features.test.js
-node test/symmetry-transform.test.js
-node test/transition-symmetry.test.js
-node test/evaluation-symmetry.test.js
+source ~/.venvs/bao-phase-transition-e011/bin/activate
 
-node tools/experiments/run-position-typology-stage1-pilot.js
-node tools/experiments/verify-position-typology-stage1-pilot.js
-node tools/experiments/audit-position-typology-stage1-pilot.js
+git switch research/position-typology-and-playing-style
+git pull --ff-only
+
+python -m py_compile tools/experiments/analyze-position-typology-stage1-features.py
+python tools/experiments/analyze-position-typology-stage1-features.py
 ```
-
-この段階ではPython venvは不要。
 
 共有対象:
 
 ```text
-artifacts/local/position-typology/stage1-pilot-v1/manifest.json
-artifacts/local/position-typology/stage1-pilot-v1/verification.json
-artifacts/local/position-typology/stage1-pilot-v1/pilot-audit.json
+artifacts/local/position-typology/stage1-pilot-v1/python-feature-audit-v1/feature-audit.json
 ```
 
-## Pilot後の停止点
+CSVは現段階では共有不要。
 
-3ファイルをinspectionしてから、初めてPython venvを使うfeature-table / clustering toolingを実装・実行する。
+## Feature audit後のdecision point
 
-Pilot監査前には:
+`feature-audit.json`を見てから:
 
-- large corpusへ拡張しない
-- clusteringしない
-- cluster数を選ばない
-- position typeを命名しない
+- Matrix S redundancy pruning
+- Matrix C comparison design
+- Matrix P採用可否
+- raw / log1p / robust scaling候補
+- first clustering diagnostic grid
+- trajectory-balanced weighting / subsampling design
+
+を決定する。
+
+Audit前にはclusteringしない。
 
 ## 重要原則
 
 - position typeとplaying styleを分離する。
 - playing styleを一局面だけから判定しない。
-- AI実装条件を棋風名にしない。
+- AI実装条件を棋風名・position type名にしない。
 - 勝率・AI評価値を局面類型そのものと同一視しない。
 - 類型名を先に決めない。
 - raw ply数を独立標本数とみなさない。
@@ -243,7 +262,7 @@ Pilot監査前には:
 
 ## 次のformal decision point
 
-Stage 1 exploratory evidenceからprovisional position typesが安定した後、Stage 2 replication前に:
+Stage 1でprovisional position typesが安定した後、Stage 2 replication前に少なくとも:
 
 - target position population
 - final feature set
