@@ -1,40 +1,51 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-09  
-Status: **Stage 0 complete / Stage 1 exploratory design next / no formal experiment authorized**
+Status: **Stage 0 complete / Stage 1 pilot tooling ready / local pilot execution pending / no formal confirmation authorized**
 
 Branch: `research/position-typology-and-playing-style`
 
 - Stage 0監査: [`STAGE_0_AUDIT.md`](STAGE_0_AUDIT.md)
 - Stage 0実行手順: [`STAGE_0_RUNBOOK.md`](STAGE_0_RUNBOOK.md)
 - Stage 0 smoke結果: [`STAGE_0_SMOKE_RESULT.md`](STAGE_0_SMOKE_RESULT.md)
+- Stage 1 exploratory protocol: [`STAGE_1_EXPLORATORY_PROTOCOL.md`](STAGE_1_EXPLORATORY_PROTOCOL.md)
+- Stage 1 pilot runbook: [`STAGE_1_RUNBOOK.md`](STAGE_1_RUNBOOK.md)
 
 ## 現在地
 
-次の優先研究課題として **「Baoにおける局面類型と棋風の発見・検証」** を開始した。
+次の優先研究課題として **「Baoにおける局面類型と棋風の発見・検証」** を進行中。
 
-2026-08-09にrepository auditを完了し、position-typology専用instrumentationを実装した。その後、ローカル環境で16-game Stage 0 instrumentation smoke、full replay verification、seat-canonical identity auditを実行し、hard integrity gateはすべてpassした。
+2026-08-09にrepository audit、専用instrumentation実装、16-game Stage 0 smoke、full replay verification、seat-canonical identity auditを完了した。Stage 0 hard integrity gateはすべてpassした。
 
-Stage 0は完了した。
+その結果に基づきStage 1 exploratory protocolを作成し、96-game pilot generator、専用full verifier、eligible-population auditを実装した。
 
-現時点ではまだlarge exploratory corpus、clustering、position-type命名、playing-style分析、formal confirmationは開始していない。
+現在の停止点は **Stage 1 exploratory pilotのローカル実行前** である。
 
-次工程は **Stage 1 — Exploratory position typology discovery の設計と小規模pilot** である。
+まだ実施していない:
 
-以下は引き続き固定していない。
+- Stage 1 96-game pilot generation
+- Python feature-table analysis
+- clustering
+- PCA / dimensionality-reduction diagnostics
+- provisional position-type命名
+- playing-style分析
+- Study 1 cross-study analysis
+- formal confirmation
+
+以下は引き続きformalには固定していない。
 
 - formal hypothesis
-- cluster数
-- position-type名称
+- final cluster数
+- final position-type名称
 - playing-style名称
-- feature setの最終版
-- preprocessing
-- formal seed block
+- final feature set
+- final preprocessing
+- confirmatory seed block
 - confirmation threshold
-- statistical test
+- formal statistical test
 - formal execution policy
 
-したがって、`RESEARCH_PLAN.md`、Stage 0文書、および次のStage 1 exploratory protocolはいずれもpreregistrationではない。
+Stage 1はexploratoryでありpreregistrationではない。
 
 ## Study 1との固定境界
 
@@ -51,35 +62,11 @@ Stage 0は完了した。
 - `sustained-forcing window` のStage B retrospective interpretation boundary
 - trajectory-ply sensitivityの位置づけ
 
-Study 1 formal corpusはinitial typology discovery corpusへ入れない。独立に得られたposition typeとの関係を、研究後半のcross-study analysisで検討するためにのみ使用する。
+Study 1 formal corpusはinitial typology discoveryへ入れない。独立に得られたposition typeとの関係を、研究後半のcross-study analysisでのみ検討する。
 
-## Stage 0実装済み
+## Stage 0結果
 
-- full 32-pit stateを保存するposition observation schema
-- board / legal-state primitive feature extractor
-- historical state hash / `ruleStateKey` / `seatCanonicalKey`
-- maximum capturable seeds
-- relay / capture-chain primitive
-- seed-distribution summary
-- exploratory smoke generator
-- replay / schema / provenance verifier
-- reachable-state seat-canonical identity audit
-- unit test
-
-Primary observationにはAI evaluation、root score、search depth、nodes、cutoff等を含めない。search diagnosticsはmove-level secondary metadataとしてのみ扱う。
-
-## Stage 0 smoke結果
-
-実行provenance:
-
-- source commit: `d72c2c20e4f4e6376208e687d65157b1ee4756c8`
-- source tree: clean
-- Node.js: v24.6.0
-- games: 16
-- observations: 970
-- 4 generation conditions × 4 games
-
-Hard integrity checks:
+### Integrity
 
 - schema validation: passed
 - full replay: passed
@@ -89,85 +76,163 @@ Hard integrity checks:
 - trajectory hash: passed
 - summary recomputation: passed
 - source provenance: passed
-- partial-file policy: per-game atomic files only
 
-Position / trajectory summary:
+### Corpus
 
-- raw positions: 970
+- games: 16
+- observations: 970
 - unique rule states: 935
 - duplicate rule-state slots: 35
-- unique rule-state rate: approximately 96.4%
 - unique seat-canonical states: 935
 - seat-canonical collapse: 0
 - within-trajectory repeated rule positions: 0
 - unique trajectories: 16 / 16
 - unique 8-ply opening states: 16 / 16
 
-Phase distribution:
+### Phase
 
 - raw namua: 704 / 970 ≈ 72.6%
 - raw mtaji: 266 / 970 ≈ 27.4%
 - unique-state audit namua: 669
 - unique-state audit mtaji: 266
 
-35 duplicate rule-state slotsは今回のsmokeではnamua側にのみ現れた。
+35 duplicate rule-state slotsはsmokeではnamua側にのみ現れた。
 
-## Seat-canonical identity
+### Seat-canonical identity
 
-新しいreachable-state sampleで再監査した。
+新reachable-state sampleで:
 
 - unique rule states checked: 935
 - legal moves checked: 3,714
 - transitions checked: 3,714
-- namua / mtaji双方を含む
 - failures: 0
 - result: passed
 
-使用するsymmetry候補は既存研究で検証済みのSouth/North seat exchangeのみであり、column / direction reversalは使用しない。
+South/North seat exchange transformのvalidityは再確認できた。ただしsmokeではseat-canonical collapseが0だったため、primary dedupとしての実効的影響はStage 1で比較する。
 
-この結果によりseat exchange transformのvalidityは再確認できた。
+## Stage 1 exploratory pilot design
 
-ただしsmokeでは`uniqueRuleState == uniqueSeatCanonical`でcollapseが0だったため、larger corpusにおけるcanonical dedupの実効的影響は未評価である。
+### Corpus
 
-Stage 1では `ruleStateKey` dedupと`seatCanonicalKey` dedupをsensitivityとして比較する。transform validityとprimary dedup policyを混同しない。
+- 96 games
+- base seed `20270001`
+- exploratory-only seed namespace
+- max ply 100
+- random opening 8 ply
+- future confirmatory useは禁止
 
-## Stage 1へ継承する設計判断
+### Generation strata
+
+各16 games:
+
+| ID | evaluator | search | depth |
+|---|---|---|---:|
+| B-D1 | bao | phase2 | 1 |
+| B-D2 | bao | phase2 | 2 |
+| B-D3 | bao | phase2 | 3 |
+| LS-D2 | bao | legacy | 2 |
+| V2-D2 | bao-v2 | phase2 | 2 |
+| LE-D2 | legacy | phase2 | 2 |
+
+conditionはsampling / metadataでありposition featureではない。
+
+### Primary discovery population
+
+```text
+terminal == false
+ply >= 8
+```
+
+random-opening中のply 0–7とterminal positionはraw corpusへ残すが、primary discovery geometryから外す。
 
 ### Phase
 
-namua / mtajiはmechanicsが異なり、smokeでも約73:27のphase imbalanceが観測された。
+- **phase-separated discoveryをprimary exploratory view**
+- natural phase occupancyはraw corpusに保存
+- generation時に50:50へ人工調整しない
+- joint feature-space analysisはsecondary diagnostic
 
-そのためStage 1では次を優先候補とする。
+### Identity / dedup
 
-1. natural trajectoryをそのまま生成する
-2. raw corpusのnatural phase occupancyを保存する
-3. generation時に人工的な50:50 phase balanceを作らない
-4. **phase-separated exploratory discoveryをprimary exploratory viewとする**
-5. joint feature-space analysisをsecondary diagnostic / sensitivityとして残す
+- primary pilot view: `ruleStateKey` exact dedup
+- sensitivity: `seatCanonicalKey` dedup
+- raw occurrence frequencyは別途保持
 
-これはexploratory designでありformal freezeではない。
+### Trajectory balance
 
-### Duplication / sampling
+比較する:
 
-- raw plyを独立標本数とみなさない
-- exact duplicate rule statesをcluster geometryへ無批判に重複投入しない
-- trajectory / gameをstability resamplingの基本単位とする
-- raw frequency情報は後のplaying-style occupancy分析用に保持する
-- trajectory-balanced weightingまたはbalanced subsamplingをStage 1で比較する
+1. unique-position unweighted
+2. trajectory-balanced weighted
+3. deterministic trajectory-balanced subsample
 
-### Terminal positions
+stability resamplingの基本単位はgame / trajectoryとする。
 
-terminal observationはprovenance / transition endpointとして保存するが、active decision positionのtypology discoveryへ含めるかはStage 1 protocolで明示する。
+## Stage 1実装済み
 
-### AI condition
+```text
+tools/experiments/run-position-typology-stage1-pilot.js
+tools/experiments/verify-position-typology-stage1-pilot.js
+tools/experiments/audit-position-typology-stage1-pilot.js
 
-`phase2` / `legacy` / evaluator / depthはcorpus diversificationとlater sensitivity用metadataであり、position typeのfeature定義やplaying-style名称には使用しない。
+doc/position-typology/STAGE_1_EXPLORATORY_PROTOCOL.md
+doc/position-typology/STAGE_1_RUNBOOK.md
+```
+
+Pilot auditは次を出力する。
+
+- terminal / max-ply truncation
+- game length
+- eligible positions per game
+- phase / condition counts
+- phase × condition counts
+- unique rule states
+- duplicate rule-state slots by phase
+- repeated/shared rule states
+- unique seat-canonical states
+- seat-canonical collapse
+
+## 次のローカル作業
+
+`STAGE_1_RUNBOOK.md` に従いNode.jsで:
+
+```bash
+node test/position-typology-features.test.js
+node test/symmetry-transform.test.js
+node test/transition-symmetry.test.js
+node test/evaluation-symmetry.test.js
+
+node tools/experiments/run-position-typology-stage1-pilot.js
+node tools/experiments/verify-position-typology-stage1-pilot.js
+node tools/experiments/audit-position-typology-stage1-pilot.js
+```
+
+この段階ではPython venvは不要。
+
+共有対象:
+
+```text
+artifacts/local/position-typology/stage1-pilot-v1/manifest.json
+artifacts/local/position-typology/stage1-pilot-v1/verification.json
+artifacts/local/position-typology/stage1-pilot-v1/pilot-audit.json
+```
+
+## Pilot後の停止点
+
+3ファイルをinspectionしてから、初めてPython venvを使うfeature-table / clustering toolingを実装・実行する。
+
+Pilot監査前には:
+
+- large corpusへ拡張しない
+- clusteringしない
+- cluster数を選ばない
+- position typeを命名しない
 
 ## 重要原則
 
 - position typeとplaying styleを分離する。
 - playing styleを一局面だけから判定しない。
-- AI実装条件をそのまま棋風名にしない。
+- AI実装条件を棋風名にしない。
 - 勝率・AI評価値を局面類型そのものと同一視しない。
 - 類型名を先に決めない。
 - raw ply数を独立標本数とみなさない。
@@ -176,28 +241,9 @@ terminal observationはprovenance / transition endpointとして保存するが�
 - Study 1 formal decisionsを変更しない。
 - formal corpusをGitHub Actionsで生成しない。
 
-## 次に行う作業
-
-Stage 1 exploratory protocolを作成し、次を明示する。
-
-1. exploratory corpus generation strata
-2. exploratory-only seed namespace
-3. corpus sizeとincremental expansion policy
-4. terminal-state inclusion policy
-5. phase-separated / joint analysis views
-6. rule-state / seat-canonical dedup sensitivity
-7. trajectory-balanced sampling / weighting
-8. candidate feature matrices
-9. scaling / transformation candidates
-10. clustering methods / dimensionality-reduction diagnostics
-11. cluster stability diagnostics
-12. representative positions / counterexamplesの抽出方法
-
-その後、**large runではなくStage 1 pilot**を生成し、feature distribution / redundancy / sampling sensitivityを監査してから本格的exploratory clusteringへ進む。
-
 ## 次のformal decision point
 
-Stage 1 exploratory evidenceからprovisional position typesが安定して初めて、Stage 2 replicationに向けて以下をfreezeする。
+Stage 1 exploratory evidenceからprovisional position typesが安定した後、Stage 2 replication前に:
 
 - target position population
 - final feature set
@@ -210,4 +256,4 @@ Stage 1 exploratory evidenceからprovisional position typesが安定して初�
 - success / failure / inconclusive rule
 - stopping condition
 
-これらを固定するまではconfirmatory claimを行わない。
+をfreezeする。
