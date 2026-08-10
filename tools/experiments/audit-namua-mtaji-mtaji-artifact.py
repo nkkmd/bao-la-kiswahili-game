@@ -55,6 +55,14 @@ def atomic_json(path: Path, value):
     tmp.replace(path)
 
 
+def expected_field_order(candidate: dict) -> list[str]:
+    names: list[str] = []
+    for field in candidate["representation"]["baseFields"]:
+        names.extend([f"total.{field}", f"absDifference.{field}"])
+    names.extend(["total.forcedCapture", "absDifference.forcedCapture"])
+    return names
+
+
 def validate_candidate(candidate: dict):
     actual = candidate.get("candidateDefinitionHash")
     recomputed = canonical_hash_without(candidate, "candidateDefinitionHash")
@@ -69,11 +77,15 @@ def validate_candidate(candidate: dict):
     field_order = candidate["representation"]["fieldOrder"]
     if len(field_order) != 40:
         raise RuntimeError("frozen Mtaji fieldOrder length is not 40")
+    if field_order != expected_field_order(candidate):
+        raise RuntimeError("frozen Mtaji fieldOrder does not match its base-field construction")
     mean = candidate["scaler"]["mean"]
     scale = candidate["scaler"]["scale"]
     centers = candidate["clustering"]["centersStandardized"]
     if len(mean) != 40 or len(scale) != 40:
         raise RuntimeError("frozen scaler dimension mismatch")
+    if any(float(value) <= 0 for value in scale):
+        raise RuntimeError("frozen candidate scaler has nonpositive scale")
     if len(centers) != 2 or any(len(row) != 40 for row in centers):
         raise RuntimeError("frozen centroid dimension mismatch")
     mapping = candidate["clustering"]["rawLabelToCanonical"]
@@ -120,8 +132,6 @@ def classify(observation: dict, candidate: dict) -> str:
     scale = candidate["scaler"]["scale"]
     standardized = [
         (raw[index] - float(mean[index])) / float(scale[index])
-        if float(scale[index]) != 0
-        else 0.0
         for index in range(40)
     ]
     centers = candidate["clustering"]["centersStandardized"]
