@@ -29,6 +29,11 @@
     "restandardizationForFrozenCoordinatesAllowed": false,
     "rotationOrPermutationRescueAllowed": false
   },
+  "coordinateIngredients": {
+    "description": "exact discovery-side N-ACT/N-CON state-level scaler plus fixed mtaji classifier dependency",
+    "requiredHash": null,
+    "status": "pending-style-ingredient-definition-export"
+  },
   "corpus": {
     "baseSeed": 20350001,
     "conditionAssignment": "gameIndex modulo 6",
@@ -100,16 +105,19 @@
   },
   "executionBoundary": {
     "cleanSourceTreeRequired": true,
+    "formalRunAuthorized": false,
     "fullReplayVerificationRequiredBeforeAnalysis": true,
-    "futureHeldoutDataInspectedBeforeThisSpec": false,
+    "futureHeldoutDataInspectedBeforeThisDraft": false,
     "githubActionsFormalRunAllowed": false,
-    "localRunRequired": true
+    "localRunRequired": true,
+    "reasonFormalRunNotAuthorized": "style ingredient definition hash must be frozen into this spec first"
   },
   "exploratory": false,
-  "formalExperiment": true,
+  "formalExperiment": false,
   "population": {
     "eligibleStateMinimumPlyInclusive": 8,
     "fullPhaseRequired": true,
+    "identityDedup": "none; preserve within-trajectory consecutive state sequence",
     "minimumFullPhaseGames": 144,
     "minimumFullPhaseGamesPerCondition": 20,
     "terminalStatesExcludedFromDescriptorConstruction": true,
@@ -204,6 +212,6 @@
     "outcomeAssociation": "optional report-only if available; never part of style definition or confirmation gate"
   },
   "stage": "stage5-playing-style-continuous-independent-confirmation",
-  "status": "preregistered-before-heldout-generation",
+  "status": "draft-pending-style-ingredient-freeze",
   "study": "position-typology-and-playing-style"
 }
