@@ -1,25 +1,9 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 2 mtaji independent confirmation complete / MTAJI-M1 and MTAJI-M2 formally confirmed under frozen study boundary / namua no discrete candidate / naming and playing-style follow-up not yet performed**
+Status: **Stage 2 mtaji independent confirmation complete / confirmed mtaji ontology names fixed / Stage 3 namua continuous-gradient tooling ready / playing-style analysis not yet started**
 
 Branch: `research/position-typology-and-playing-style`
-
-主要文書:
-
-- [`STAGE_1_EXPLORATORY_PROTOCOL.md`](STAGE_1_EXPLORATORY_PROTOCOL.md)
-- [`STAGE_1_PILOT_RESULT.md`](STAGE_1_PILOT_RESULT.md)
-- [`STAGE_1_FEATURE_AUDIT_RESULT.md`](STAGE_1_FEATURE_AUDIT_RESULT.md)
-- [`STAGE_1_CLUSTER_DIAGNOSTIC_RESULT.md`](STAGE_1_CLUSTER_DIAGNOSTIC_RESULT.md)
-- [`STAGE_1_STABILITY_AUDIT_RESULT.md`](STAGE_1_STABILITY_AUDIT_RESULT.md)
-- [`STAGE_1_POLARITY_AUDIT_RESULT.md`](STAGE_1_POLARITY_AUDIT_RESULT.md)
-- [`STAGE_1_INVARIANT_MORPHOLOGY_RESULT.md`](STAGE_1_INVARIANT_MORPHOLOGY_RESULT.md)
-- [`STAGE_1_MTAJI_CANDIDATE_DEFINITION_RESULT.md`](STAGE_1_MTAJI_CANDIDATE_DEFINITION_RESULT.md)
-- [`STAGE_2_MTAJI_CONFIRMATION_PREREGISTRATION.md`](STAGE_2_MTAJI_CONFIRMATION_PREREGISTRATION.md)
-- [`STAGE_2_MTAJI_CONFIRMATION_RUNBOOK.md`](STAGE_2_MTAJI_CONFIRMATION_RUNBOOK.md)
-- [`STAGE_2_MTAJI_CONFIRMATION_RESULT.md`](STAGE_2_MTAJI_CONFIRMATION_RESULT.md)
-- [`preregistration/STAGE_2_MTAJI_CONFIRMATION_SPEC.json`](preregistration/STAGE_2_MTAJI_CONFIRMATION_SPEC.json)
-- [`checkpoints/2026-08-10-stage2-mtaji-formal-confirmation.md`](checkpoints/2026-08-10-stage2-mtaji-formal-confirmation.md)
 
 ## Current stop point
 
@@ -44,15 +28,16 @@ Branch: `research/position-typology-and-playing-style`
 15. full replay / provenance verification
 16. preregistered G1–G5 formal analysis
 17. **Stage 2 formal decision = confirmed**
+18. confirmed mtaji human-readable ontology naming
+19. Stage 3 namua continuous-gradient audit design / tooling
 
 現在の停止点は:
 
-> **Mtaji two-type confirmation完了後。final naming / namua gradient / playing-style analysisへ進む前。**
+> **Stage 3 namua continuous-gradient auditのローカル実行前**
 
 まだ実施していない:
 
-- final mtaji ontology naming review
-- namua gradient-specific follow-up
+- Stage 3 namua gradient audit execution / interpretation
 - playing-style analysis
 - Study 1 cross-study relation analysis
 
@@ -75,6 +60,8 @@ actor-oriented mtaji k=2
 ```
 
 このdecisionはStage 2 confirmation後も変更しない。
+
+このcoordinateは将来playing-style trajectory descriptorとして利用可能性があるが、position-type countには入れない。
 
 ## Confirmed mtaji position morphology
 
@@ -111,14 +98,39 @@ MTAJI-M1
 MTAJI-M2
 ```
 
-Current descriptive aliases:
+## Final mtaji human-readable ontology names
+
+Naming document:
 
 ```text
-MTAJI-M1 = capture-engaged / relatively balanced morphology
-MTAJI-M2 = capture-sparse / relatively asymmetric morphology
+doc/position-typology/MTAJI_CONFIRMED_ONTOLOGY.md
 ```
 
-IDsはfixed classifier / population boundary内でformal confirmation済み。English aliasesはontology wording review前のdescriptive labels。
+Final names:
+
+```text
+MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
+MTAJI-M2 = Capture-Sparse High-Contrast Morphology
+```
+
+Japanese descriptive rendering:
+
+```text
+MTAJI-M1 = 捕獲関与・低コントラスト型局面形態
+MTAJI-M2 = 捕獲希薄・高コントラスト型局面形態
+```
+
+`Low-Contrast / High-Contrast` refers only to actor/opponent structural absolute differences in the frozen role-invariant representation.
+
+It does not mean:
+
+- equal/unequal player strength,
+- win probability,
+- actor advantage,
+- playing style,
+- AI implementation class.
+
+The canonical IDs and classifier are unchanged by this naming decision.
 
 ## Stage 2 formal confirmation
 
@@ -149,88 +161,22 @@ Observed formal population:
 - rule-state-dedup rows: 2,704
 - capped rows: 2,256
 
-Technical gates:
+Technical gates all passed.
 
-- full replay / provenance verification: passed
-- contributing games: 180 >= 144
-- capped rows: 2,256 >= 1,500
-
-## Primary formal gates — all passed
-
-### G1 — type non-collapse
+Primary formal gates all passed:
 
 ```text
-minority frozen type fraction = 0.4481 >= 0.20
+G1 minority frozen type fraction = 0.4481 >= 0.20
+G2 frozen silhouette            = 0.1964 >= 0.12
+G3 BIC(2) beats BIC(1) by       = 890.28; BIC(2) < BIC(3)
+G4 de-novo median ARI           = 0.9167 >= 0.70
+G5 80%-game subsample ARI p10   = 0.8931 >= 0.60
 ```
 
-### G2 — frozen separation
+Formal decision:
 
 ```text
-silhouette = 0.1964 >= 0.12
-```
-
-### G3 — frozen-axis discreteness
-
-```text
-BIC(1) = 11612.37
-BIC(2) = 10722.08
-BIC(3) = 10735.33
-BIC(1)-BIC(2) = 890.28
-BIC(3)-BIC(2) = 13.25
-```
-
-Passed both preregistered requirements.
-
-Secondary KDE reproduced two peaks with valley / lower-peak ratio 0.3826.
-
-### G4 — de-novo held-out agreement
-
-ARI with frozen labels:
-
-```text
-K-means = 0.9167
-GMM     = 0.9184
-Ward    = 0.9031
-median  = 0.9167
-```
-
-3/3 methods exceeded 0.70.
-
-### G5 — trajectory-level robustness
-
-100 deterministic 80%-game subsamples:
-
-```text
-ARI p10   = 0.8931 >= 0.60
-ARI median= 0.9205
-ARI min   = 0.8790
-```
-
-## Formal decision
-
-Preregistered rule:
-
-```text
-all technical gates + G1..G5 pass -> confirmed
-technical gates pass + any G1..G5 fails -> not-confirmed
-technical/integrity insufficiency -> inconclusive
-```
-
-Observed:
-
-```text
-all technical gates passed
-G1 passed
-G2 passed
-G3 passed
-G4 passed
-G5 passed
-```
-
-Therefore:
-
-```text
-FORMAL DECISION = confirmed
+CONFIRMED
 ```
 
 Confirmed claim:
@@ -239,80 +185,167 @@ Confirmed claim:
 
 No post-hoc rescue was used.
 
-## Held-out morphology profile
+## Namua — retained negative discrete result
 
-### MTAJI-M1
-
-Held-out direction reproduces the discovery description:
-
-- much higher total forced-capture availability
-- much higher total capture-move count
-- much higher total capturable seeds / capture events
-- higher total front occupancy
-- smaller actor/opponent differences on several capture/front measures
-
-### MTAJI-M2
-
-Approximately the reverse:
-
-- capture-sparser
-- lower total capture-event availability
-- lower front occupancy
-- larger actor/opponent structural asymmetry on several measures
-
-These remain position morphologies, not playing styles, win/loss classes, actor-advantage labels, or AI implementation labels.
-
-## Trajectory persistence
-
-Held-out consecutive mtaji pairs: 2,524.
+Current discrete-type decision remains:
 
 ```text
-same-type rate = 0.6311
-flip rate      = 0.3689
-run p75        = 3 plies
-run p90        = 5 plies
-run max        = 16 plies
+namua k=2 = not promoted
+namua k=4 = not promoted
+no discrete namua position-type candidate
 ```
 
-This independently reproduces the discovery pattern of state-level persistence plus within-game transitions.
+Why:
 
-## Interpretation boundary
+- cross-method agreement was weak,
+- preprocessing / representation sensitivity was substantial,
+- k=2 methods cut very different partitions,
+- k=4 separation remained weak,
+- same-method resampling stability did not rescue cross-method disagreement.
 
-Formal confirmation does **not** establish:
+Do not reopen k-search merely to obtain a positive discrete result.
 
-- a universal Bao ontology for every legal state,
-- a corresponding two-type namua ontology,
-- a playing-style classification,
-- causal outcome advantage,
-- causal AI evaluator/search effects.
+## Stage 3 namua continuous-gradient audit
 
-The confirmed object is specifically the frozen mtaji structural morphology classifier under the preregistered population boundary.
-
-## Namua
-
-Current decision remains:
+Tool:
 
 ```text
-no discrete position-type candidate promoted
+tools/experiments/analyze-position-typology-stage3-namua-gradients.py
 ```
 
-Do not force namua into the confirmed mtaji two-type set.
+Runbook:
 
-## Next authorized research streams
+```text
+doc/position-typology/STAGE_3_NAMUA_GRADIENT_RUNBOOK.md
+```
 
-The following may now proceed separately without altering the Stage 2 formal decision:
+Checkpoint:
 
-1. **Mtaji ontology/naming review** — choose final human-readable terminology for MTAJI-M1/M2 while preserving the frozen classifier.
-2. **Namua continuous-gradient analysis** — test whether progress/tactical-activity coordinates describe namua better than discrete types.
-3. **Playing-style analysis** — derive trajectory/policy-level patterns from confirmed mtaji type occupancy, dwell, transitions, relational polarity, and other predeclared trajectory descriptors. Do not call AI implementation labels playing styles.
-4. **Study 1 cross-study relation analysis** — only after the current typology/style definitions are independently fixed; do not revise Study 1 formal decisions.
+```text
+doc/position-typology/checkpoints/2026-08-10-mtaji-ontology-naming-and-namua-gradient-start.md
+```
+
+### Purpose
+
+Test whether namua is better described by continuous state coordinates rather than discrete types.
+
+Primary interpretable coordinates:
+
+1. `reserveDepletion`
+   - negative z-score of total actor+opponent reserve
+   - higher means less reserve remains
+   - state-intrinsic progress proxy
+
+2. `captureActivity`
+   - composite of role-invariant total capture-move / capturable-seed / capture-event / forced-capture measures
+
+3. `structuralContrast`
+   - composite of role-invariant actor/opponent absolute differences across board / mobility / tactical primitives
+
+### Geometry
+
+Role-invariant representation:
+
+```text
+for each namua base field:
+  total(actor, opponent)
+  absDifference(actor, opponent)
+```
+
+Includes reserve and houseOwned in addition to the structural primitives used in mtaji work.
+
+PCA is descriptive only; it cannot define a type in this audit.
+
+Diagnostics:
+
+- PC1–PC5 explained variance / loadings
+- correlations with reserve depletion / capture activity / structural contrast
+- ply correlation as descriptive-only
+- 1D GMM / KDE density shape for main coordinates
+- full-vs-capped principal subspace angles
+- 80%-game resampling subspace stability ×40
+- full-trajectory per-game monotonicity and consecutive deltas
+- condition-group variance fraction
+
+### Strict boundary
+
+```text
+discreteTypeSearchAuthorized = false
+previousK2K4RescueAllowed = false
+rawPlyUsedAsFeature = false
+```
+
+Stage 3 uses only the original Stage 1 exploratory corpus.
+
+Stage 2 mtaji held-out rows are not reused for initial namua gradient discovery.
+
+## Next local action
+
+```bash
+source ~/.venvs/bao-phase-transition-e011/bin/activate
+
+git switch research/position-typology-and-playing-style
+git pull --ff-only
+
+git status --short
+python --version
+
+python -m py_compile tools/experiments/analyze-position-typology-stage3-namua-gradients.py
+python tools/experiments/analyze-position-typology-stage3-namua-gradients.py
+```
+
+Expected output:
+
+```text
+artifacts/local/position-typology/stage3-namua-gradient-v1/namua-gradient-audit.json
+```
+
+Share only that JSON.
+
+## Decision after Stage 3 audit
+
+Possible outcomes:
+
+### Continuous namua representation supported
+
+If stable role-invariant axes align with interpretable state coordinates and density remains broadly continuous:
+
+> represent namua by continuous coordinates rather than discrete position types.
+
+### Mixed geometry
+
+If a stable continuous axis coexists with independent strong multimodality:
+
+> keep the continuous coordinate and separately justify any later discrete follow-up; do not retroactively rescue k=2/k=4.
+
+### No compact representation
+
+If low-dimensional subspaces are unstable or uninterpretable:
+
+> record that this pilot supports neither a stable discrete namua typology nor a compact continuous namua representation.
+
+## Playing-style boundary
+
+Playing-style analysis has not started.
+
+It may later use:
+
+- confirmed MTAJI-M1/MTAJI-M2 occupancy,
+- dwell durations,
+- M1↔M2 transition patterns,
+- mtaji relational polarity coordinate,
+- namua continuous coordinates that survive Stage 3,
+- other predeclared trajectory descriptors.
+
+AI implementation/search/evaluator labels themselves are never playing styles.
 
 ## Important principles
 
 - position type and playing style remain separate
 - relational polarity remains a coordinate, not an intrinsic type
-- Stage 2 confirmation is independent of the Stage 1 discovery corpus
-- confirmed classifier may not be retroactively refit and called the same result
-- aliases/names may change wording without changing the classifier
-- no post-hoc rescue of future negative/null analyses
+- confirmed mtaji classifier is immutable under the same study ID
+- final human-readable naming does not alter the classifier
+- namua negative discrete result is not post-hoc rescued
+- same-pilot gradient analysis is exploratory, not confirmation
+- no future namua confirmatory corpus is touched here
 - Study 1 formal decisions remain unchanged
