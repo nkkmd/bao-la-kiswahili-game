@@ -13,7 +13,6 @@ import json
 import math
 import os
 import platform
-from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -259,15 +258,16 @@ def trajectory_monotonicity(frame: pd.DataFrame, coordinates: dict[str, np.ndarr
                 if int(right["ply"]) - int(left["ply"]) == 1:
                     deltas.append(float(right[name] - left[name]))
         delta_array = np.asarray(deltas, dtype=float)
+        delta_summary = quantiles(delta_array) if len(delta_array) else {}
+        delta_summary.update({
+            "positiveFraction": float(np.mean(delta_array > 0)) if len(delta_array) else None,
+            "negativeFraction": float(np.mean(delta_array < 0)) if len(delta_array) else None,
+            "zeroFraction": float(np.mean(delta_array == 0)) if len(delta_array) else None,
+        })
         result[name] = {
             "gamesWithRho": int(len(per_game_rho)),
             "perGameSpearmanRho": quantiles(per_game_rho) if per_game_rho else None,
-            "consecutiveDelta": {
-                **quantiles(delta_array) if len(delta_array) else {},
-                "positiveFraction": float(np.mean(delta_array > 0)) if len(delta_array) else None,
-                "negativeFraction": float(np.mean(delta_array < 0)) if len(delta_array) else None,
-                "zeroFraction": float(np.mean(delta_array == 0)) if len(delta_array) else None,
-            },
+            "consecutiveDelta": delta_summary,
         }
     return result
 
@@ -327,17 +327,27 @@ def main():
     namua = frame[frame["phase"] == "namua"].copy()
     capped = balanced_capped(namua, options.cap_per_game_phase)
 
-    raw_full, names_full, _, pca_full, scores_full = fit_geometry(namua)
-    raw, names, _, pca, scores = fit_geometry(capped)
+    raw_full_fit, names_full, _, pca_full, _ = fit_geometry(namua)
+    raw, names, scaler, pca, scores = fit_geometry(capped)
     if names != names_full:
         raise RuntimeError("feature-order mismatch between full and capped views")
 
+    raw_full, _ = raw_invariant(namua)
+    full_scores = pca.transform(scaler.transform(raw_full))
+
     scalars = scalar_coordinates(raw, names)
+    full_scalars = scalar_coordinates(raw_full, names)
     coordinates = {
         **scalars,
         "PC1": scores[:, 0],
         "PC2": scores[:, 1],
         "PC3": scores[:, 2],
+    }
+    full_coordinates = {
+        **full_scalars,
+        "PC1": full_scores[:, 0],
+        "PC2": full_scores[:, 1],
+        "PC3": full_scores[:, 2],
     }
 
     correlations = {}
@@ -386,6 +396,7 @@ def main():
             "rawPlyUsedAsFeature": False,
             "previousK2K4RescueAllowed": False,
             "futureConfirmationCorpusTouched": False,
+            "trajectoryDiagnosticsUseFullNamuaSeries": True,
         },
         "population": {
             "fullRows": int(len(namua)),
@@ -432,7 +443,7 @@ def main():
         "pcCorrelations": correlations,
         "densityDiagnostics": densities,
         "conditionVarianceFraction": condition_dependence,
-        "trajectoryMonotonicity": trajectory_monotonicity(capped, coordinates),
+        "trajectoryMonotonicity": trajectory_monotonicity(namua, full_coordinates),
         "interpretationBoundary": {
             "continuousCoordinatesAreDescriptiveNotFormalTypes": True,
             "noClusterCountMayBePromotedFromThisAudit": True,
