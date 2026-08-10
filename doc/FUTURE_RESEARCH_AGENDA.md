@@ -1,8 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.0.0  
+Version: 1.1.0  
 Status: Active  
-作成日: 2026-07-21
+作成日: 2026-07-21  
+更新日: 2026-08-10
 
 ## 1. 目的
 
@@ -11,6 +12,8 @@ Status: Active
 ここで扱う課題は、既存研究の試行数追加、別seedによる追試、既存定石候補の再検証ではない。囲碁・将棋で発展してきた局面分類、手筋、形勢判断、終盤解析、認知研究、計算複雑性研究などを参考にしつつ、Bao固有の構造へ置き換えた独立の研究領域を対象とする。
 
 本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
+
+2026-08-10時点で、第1段階のうち「局面の相転移点」と「局面類型と棋風」のStudy 1は完了した。これらの成果を接続する次期独立研究として、**「BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — capture-branch-expansionからMtaji morphologyへの時間的接続」**を選定した。
 
 ## 2. 既存研究との境界
 
@@ -23,10 +26,14 @@ Status: Active
 - 評価関数および探索方式の比較
 - 戦術局面回帰
 - 実対局由来の局面監査
+- 局面相転移点Study 1 — [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
+- 局面類型と棋風Study 1 — [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
 > Baoの局面にはどのような構造があり、どのような原理で戦略が変化し、それを人間が理解可能な知識として記述できるか。
+
+完了済みStudyのformal decision、事前登録条件、negative/null/inconclusive result、解釈境界は後続研究によって変更しない。後続研究は、既存Studyの救済や再定義ではなく、新しい研究課題として開始する。
 
 ## 3. 研究上の共通原則
 
@@ -41,6 +48,15 @@ Status: Active
 ## 4. 研究課題
 
 ### 4.1 局面の相転移点
+
+#### 現在の状態
+
+**Study 1完了。**
+
+- 初見向け概要: [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`phase-transition/STUDY_1_FINAL_REPORT.md`](phase-transition/STUDY_1_FINAL_REPORT.md)
+
+Study 1では`capture-branch-expansion`をboundedなstrategic-transition phenotypeとして保持し、固定条件でdepth2とdepth3のsearch-profile orderingが逆転することまで確認した。一方、universal Bao phase-transition law、一般的なsearch-profile × depth interaction、reserve・nyumba・front-row・mobility・formal Namua→Mtaji timingを包含する一般理論は確立していない。これらは後続する独立研究の対象である。
 
 #### 中心課題
 
@@ -67,6 +83,15 @@ Baoの対局において、局面の価値基準や最善戦略が不可逆的�
 
 ### 4.2 局面類型と棋風
 
+#### 現在の状態
+
+**Study 1完了。**
+
+- 初見向け概要: [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`position-typology/STUDY_1_FINAL_REPORT.md`](position-typology/STUDY_1_FINAL_REPORT.md)
+
+Study 1では、固定representation / population内でMtajiの`MTAJI-M1 / MTAJI-M2`二類型をformalにconfirmedした。Namuaでは離散typeをpromoteせず、`N-ACT / N-CON`をexploratory continuous coordinatesとして保持した。discrete playing-style cluster setは支持されず、探索で得たexact `STYLE-C1..C4` 4D geometryも独立確認では`not-confirmed`となった。
+
 #### 中心課題
 
 Baoに繰り返し現れる局面構造と、対局者またはAIが選びやすい戦略傾向を分類する。
@@ -82,6 +107,8 @@ Baoに繰り返し現れる局面構造と、対局者またはAIが選びやす
 - 強制系列型
 - 持久型
 
+これらは当初の候補語彙であり、Study 1の結果によって確認済み類型へ自動的に昇格したものではない。
+
 #### 研究方法の例
 
 多数の対局から捕獲頻度、nyumba保持期間、reserve消費速度、前列占有率、relay長、合法手数、mtaji移行時点、評価変動などを抽出し、クラスタリングと代表局面分析を行う。
@@ -89,6 +116,53 @@ Baoに繰り返し現れる局面構造と、対局者またはAIが選びやす
 #### 期待成果
 
 Bao固有の棋風語彙、対局スタイル分類、異なる戦略傾向を持つAI、学習者向けスタイル診断。
+
+---
+
+### 4.2.1 Namua→Mtaji移行前後の戦略的転移構造 — 次期研究
+
+#### 研究題目
+
+> **BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — capture-branch-expansionからMtaji morphologyへの時間的接続**
+
+Status: **next research / new independent study**
+
+#### 位置づけ
+
+局面相転移点Study 1と局面類型と棋風Study 1の両方から生じた未解決点を、prospectiveな独立研究として扱う。
+
+局面類型Study 1の固定cross-study bridgeでは、対象となった`capture-branch-expansion` 59件がすべてNamuaに位置し、Mtajiとの同時点overlapが0だった。そのため、`capture-branch-expansion`とconfirmed Mtaji morphology `MTAJI-M1 / MTAJI-M2`の直接対応は推定できなかった。
+
+この未推定部分を、同一時点の対応付けではなく**時間的接続**として研究する。
+
+#### 中心課題
+
+`capture-branch-expansion`は単にNamua中に現れるphenotypeなのか、それともformal Namua→Mtaji移行へ近づく過程に位置する戦略的転移構造なのかを調べる。さらに、その後最初に到達するMtaji局面がどのようなmorphologyを持つかを検討する。
+
+#### 主要研究質問候補
+
+1. `capture-branch-expansion`からfirst later Mtajiまでの時間距離は、適切な比較対象と異なるか。
+2. Namua→Mtajiへ近づく過程で、reserve、nyumba、mobility、front-row structure、capture structure、forced-capture lifecycleはどのように変化するか。
+3. `capture-branch-expansion`を経たtrajectoryが最初に到達するMtaji局面は、frozen `MTAJI-M1 / MTAJI-M2` classifier上でどのように分布するか。
+4. 上記の時間構造にsearch profileやdepthによる差が存在するか。扱う場合は、過去Studyのdepth2/depth3 reversalをそのまま再主張するのではなく、新しいtemporal endpointに対する独立仮説として事前登録する。
+
+#### 設計上の優先原則
+
+- primaryな時間変数は、可能な限り`time-to-first-Mtaji`のような連続的距離として定義する。
+- 結果を見てから「前後5手」などのwindowや閾値を選び、前兆を作ることを避ける。
+- 新しいformal/confirmatory claimを行う場合は、fresh prospective corpusと事前登録を用いる。
+- 局面相転移点Study 1の`capture-branch-expansion`定義、formal decisions、negative/null/inconclusive resultsを変更しない。
+- `MTAJI-M1 / MTAJI-M2`を利用する場合は、confirmed frozen classifierをrefitせず使用する。
+- `N-ACT / N-CON`は現時点ではexploratory coordinatesであり、別途独立確認しない限りconfirmed state coordinatesとして扱わない。
+- AI evaluator/search/depth等の実装ラベルをposition typeやhuman-readable morphologyの定義へ混入させない。
+- causal mediationやuniversal Bao transition lawを、観測的な時間関係だけから主張しない。
+
+#### 期待成果
+
+- `capture-branch-expansion`とformal Namua→Mtaji移行の時間的関係
+- Namua末期における戦略的・構造的変化の記述
+- Namuaのtransition phenotypeからfirst Mtaji morphologyへのbridge
+- 将来のBao局面フェーズ分類、重要局面抽出、局面複雑度研究に利用できる時間的語彙
 
 ---
 
@@ -314,14 +388,15 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 ### 第1段階: Baoを記述する語彙の構築
 
-優先課題:
+現在の優先順位:
 
-1. 局面の相転移点
-2. 局面類型と棋風
-3. 局面複雑度と難易度
-4. 手筋の発見と体系化
+1. **[完了] 局面の相転移点 — Study 1**
+2. **[完了] 局面類型と棋風 — Study 1**
+3. **[次期研究] Namua→Mtaji移行前後の戦略的転移構造**
+4. **[未着手] 局面複雑度と難易度**
+5. **[未着手] 手筋の発見と体系化**
 
-この段階では、Baoの局面を人間と機械の双方が記述できる共通語彙を作る。
+この段階では、Baoの局面を人間と機械の双方が記述できる共通語彙を作る。最初の二研究によってstate morphologyとstrategic-transition phenotypeの基礎語彙が得られたため、次に両者を時間軸上で接続し、その後に難易度と手筋へ進む。
 
 ### 第2段階: 理解、教育、解説への展開
 
@@ -349,7 +424,7 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 ### 6.1 Bao局面分類学
 
-相転移、局面類型、棋風、難易度を統合し、Baoの局面を体系的に記述する。
+相転移、局面類型、棋風、難易度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1と局面類型と棋風Study 1の完了後は、Namua→Mtajiの時間的接続を次の中心課題とする。
 
 ### 6.2 Bao手筋・錯覚体系
 
@@ -372,6 +447,8 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 - 人間レビューが必要な箇所
 - 成功基準、否定基準、停止条件
 - 成果物の保存先
+
+次期研究では特に、既存Studyのformal decisionsを変更しないこと、新しい時間的endpointを結果を見る前に定義すること、既存のconfirmed/exploratory vocabularyを同じ証拠水準として扱わないことを開始条件に含める。
 
 ## 8. 到達目標
 
