@@ -1,8 +1,8 @@
 # 局面類型と棋風研究
 
-このディレクトリは、Bao la Kiswahili に反復して現れる局面構造と、対局trajectoryに現れる戦略傾向を分類・検証する研究を管理します。
+このディレクトリは、Bao la Kiswahili に反復して現れる局面構造と、対局trajectoryに現れる戦略傾向を分類・検証した研究を管理します。
 
-Status: **position typology formal confirmation complete / playing-style formal result = not-confirmed / cross-study relation next**  
+Status: **research complete**  
 Branch: `research/position-typology-and-playing-style`
 
 ## 研究題目
@@ -13,43 +13,50 @@ Branch: `research/position-typology-and-playing-style`
 
 ## まず読む文書
 
-1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在地、formal decisions、固定境界、次工程
-2. [`STAGE_5_PLAYING_STYLE_CONFIRMATION_RESULT.md`](STAGE_5_PLAYING_STYLE_CONFIRMATION_RESULT.md) — playing-style independent confirmationのformal result
-3. [`STAGE_2_MTAJI_CONFIRMATION_RESULT.md`](STAGE_2_MTAJI_CONFIRMATION_RESULT.md) — confirmed Mtaji position morphologyのformal result
-4. [`MTAJI_CONFIRMED_ONTOLOGY.md`](MTAJI_CONFIRMED_ONTOLOGY.md) — confirmed Mtaji position-type vocabulary
-5. [`STAGE_3_NAMUA_GRADIENT_RESULT.md`](STAGE_3_NAMUA_GRADIENT_RESULT.md) — Namua continuous-coordinate result
-6. [`STAGE_4_PLAYING_STYLE_RESULT.md`](STAGE_4_PLAYING_STYLE_RESULT.md) — exploratory playing-style trajectory geometry
-7. [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md) — 研究開始時の目的、RQ、段階計画
-8. [`../phase-transition/STUDY_1_FINAL_REPORT.md`](../phase-transition/STUDY_1_FINAL_REPORT.md) — closed phase-transition Study 1の科学的正本
+1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向けの研究全体像
+2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 科学的正本
+3. [`STUDY_1_VOCABULARY.md`](STUDY_1_VOCABULARY.md) — confirmed / exploratory / rejectedを分けた最終語彙
+4. [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — hash、artifact、toolingの再現性索引
+5. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — closure状態と固定境界
+6. [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md) — 研究開始時の設計骨格
+7. [`../phase-transition/STUDY_1_FINAL_REPORT.md`](../phase-transition/STUDY_1_FINAL_REPORT.md) — cross-study bridgeの対象となったclosed phase-transition Study 1
 
-## 現在の主要結果
+## 最終主要結果
 
-### Mtaji position morphology
+### Mtaji — confirmed two-type morphology
 
-独立held-out confirmationにより、固定representation / preregistered population内で次の二つのstate-level morphologyがformalにconfirmedです。
+独立held-out confirmationにより、固定representation / preregistered population内で次の二つのstate-level morphologyをformalにconfirmedしました。
 
 ```text
 MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
+           捕獲関与・低コントラスト型局面形態
+
 MTAJI-M2 = Capture-Sparse High-Contrast Morphology
+           捕獲希薄・高コントラスト型局面形態
+```
+
+```text
+Stage 2 formal decision = confirmed
+resultHash = 26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347
 ```
 
 これはuniversal/final Bao ontologyではなく、bounded empirical claimです。
 
-### Namua
+### Namua — continuous representation preferred
 
-Namuaでは探索corpus上でstable discrete typeを採用していません。
+Namuaではstable discrete position typeをpromoteしませんでした。
 
 ```text
 N-PROG = deterministic progress context
-N-ACT  = continuous capture-activity coordinate
-N-CON  = continuous structural-contrast coordinate
+N-ACT  = exploratory continuous capture-activity coordinate
+N-CON  = exploratory continuous structural-contrast coordinate
 ```
 
-N-ACT / N-CONはexploratory continuous representationです。
+N-PROGは進行contextでありmorphology/style featureには使いません。N-ACT/N-CONはexploratoryです。
 
-### Playing style
+### Playing style — discrete set unsupported / exact 4D geometry not confirmed
 
-Stage 4では、predeclared k=2..6にcoherent discrete style setは得られず、continuous multi-axis trajectory geometryを探索的に採用しました。
+Stage 4ではk=2..6のcoherent discrete style setは得られませんでした。
 
 Discovery-derived coordinates:
 
@@ -60,42 +67,85 @@ STYLE-C3 = Activity-Escalation Dynamics
 STYLE-C4 = Morphology-Switching Tempo
 ```
 
-しかし独立Stage 5 confirmationでは、behavioral anchors / signaturesは再現した一方、exact 4D PCA subspaceのheld-out alignmentとtrajectory-resampling stabilityが事前登録基準を満たしませんでした。
+Stage 5 independent confirmationではbehavioral anchors/signaturesは再現しましたが、exact 4D PCA subspaceのalignmentとtrajectory-resampling stabilityが事前登録基準を満たしませんでした。
 
 ```text
 Stage 5 formal decision = not-confirmed
+resultHash = 6069ea45dc055dbd65a14a939ccaa427466d1e3f8852ed81f555dc7ebe16e97c
 ```
 
-したがってSTYLE-C1..C4はconfirmed style ontologyではなく、**discovery-derived exploratory trajectory descriptors**として保持します。
+したがってSTYLE-C1..C4はconfirmed style ontologyではなく、**discovery-derived exploratory trajectory descriptors**です。
 
-## Study 1との関係
+### Cross-study — capture-branch-expansionは固定bridgeでNamuaに位置
 
-局面相転移点Study 1はclosedです。本研究はそのformal decisionやclassifierを拡張・修正しません。
+closed phase-transition Study 1のE-018 D2 / E-019 D3 / E-020 D3 formal archivesをread-only replayし、position representationへsecondary bridgeしました。
 
-Study 1の `capture-branch-expansion`、forced-capture lifecycle、`sustained-forcing window`、depth2/depth3 search-profile findingsは、独立に得たposition/style vocabularyとの関係を後段で検討できる既存知見です。
+```text
+Stage 6 protocolHash
+= 4fcf67ed5f0e43acb898af4adacb010d56b5305bbac68be5bfa3672fc3df8ecc
 
-次工程はこのcross-study relationです。ただしこれはsecondary / hypothesis-generation analysisであり、Study 1のformal resultもStage 5のnegative resultも救済・変更しません。
+Stage 6 resultHash
+= 59b210fb76970314a9c3c29b3cf47070172e0aa850d1e47c0c1ab06f3006537a
+```
+
+Unique trajectory-ply単位の`capture-branch-expansion`は59件で、
+
+```text
+Namua = 59
+Mtaji = 0
+```
+
+でした。
+
+したがって、この固定scopeではexpansionをMTAJI-M1/M2へ対応づけることはできません。
+
+NamuaではN-ACTがexpansion位置で高い方向を6条件すべてで示し、とくにD3 legacyのE-019/E-020で大きな正のCliff's deltaが繰り返されました。N-CONはcondition-dependentでした。
+
+これはsecondary / hypothesis-generation evidenceであり、新しいformal confirmation、causal mediation、一般的search-profile × depth interactionではありません。
+
+## 最終的な構造像
+
+```text
+Bao position structure
+├─ Namua
+│  ├─ discrete type: promotedせず
+│  ├─ N-PROG: context
+│  ├─ N-ACT: exploratory continuous coordinate
+│  └─ N-CON: exploratory continuous coordinate
+│
+└─ Mtaji
+   ├─ MTAJI-M1: formally confirmed
+   └─ MTAJI-M2: formally confirmed
+
+Playing style
+├─ discrete clusters: unsupported
+└─ exact STYLE-C1..C4 4D geometry: formal not-confirmed
+```
 
 ## 重要な概念分離
 
-本研究では次を同一視しません。
+- **局面類型 (position type)**: state-level structural object
+- **棋風 (playing style)**: trajectory / policy-level pattern
+- **AI実装名 / search profile**: metadata
+- **強さ / 勝率**: 別の性能指標
 
-- **局面類型 (position type)**: ある時点の盤面・合法手・構造を表すstate-level object
-- **棋風 (playing style)**: 多数の局面・着手・遷移にわたるtrajectory / policy-level pattern
-- **AI実装名 / search profile**: `phase2`, `legacy` 等の実装条件
-- **強さ / 勝率**: 類型や棋風とは別の性能指標
+```text
+MTAJI-M1/M2 != playing style
+N-ACT/N-CON != discrete position type
+STYLE-C1..C4 != confirmed styles
+phase2/legacy != styles
+capture-branch-expansion != MTAJI-M1/M2
+```
 
-特定search profileをそのまま棋風とは命名しません。
+## 研究規律
 
-## 研究運用
+- exploratory discoveryとconfirmatory validationを分離した。
+- formal thresholdを結果後に緩和していない。
+- negative / inconclusive resultを保持した。
+- trajectory / repeated state dependenceを無視していない。
+- Study 1 formal decisionsを変更していない。
+- formal corpusをGitHub Actionsで生成していない。
+- Stage 5 failed confirmationを同じheld-out data上の新feature/k/thresholdで救済していない。
+- Stage 6 protocolをassociation値を見る前にfreezeした。
 
-- exploratory discoveryとconfirmatory validationを分離する。
-- formal thresholdを結果後に緩和しない。
-- negative / inconclusive resultを保持する。
-- trajectory / repeated statesの依存構造を無視しない。
-- formal claimは新規preregistration、未使用seed block、固定判定基準の下でのみ行う。
-- Study 1 formal decisionsを変更しない。
-- GitHub Actionsでformal corpusを生成しない。
-- failed confirmationを同じheld-out data上の新しいfeature/k/thresholdで救済しない。
-
-最新の研究状態は常に [`CURRENT_STATUS.md`](CURRENT_STATUS.md) を正本として参照してください。
+研究の科学的正本は [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) です。
