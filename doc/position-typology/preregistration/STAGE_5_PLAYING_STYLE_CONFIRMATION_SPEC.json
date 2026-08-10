@@ -24,62 +24,31 @@
     "dimensions": 10,
     "frozenCoordinateCount": 4,
     "refitAllowed": false,
-    "requiredHash": "568f272bac81bf3a99e4629e9f5e75fe426383278064b5465b62fd6b01c08afc",
     "representation": "playing-style-trajectory-descriptor-v1",
+    "requiredHash": "568f272bac81bf3a99e4629e9f5e75fe426383278064b5465b62fd6b01c08afc",
     "restandardizationForFrozenCoordinatesAllowed": false,
     "rotationOrPermutationRescueAllowed": false
   },
   "coordinateIngredients": {
     "description": "exact discovery-side N-ACT/N-CON state-level scaler plus fixed mtaji classifier dependency",
-    "requiredHash": null,
-    "status": "pending-style-ingredient-definition-export"
+    "mtajiClassifierDefinitionHash": "7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d",
+    "mtajiClassifierRefitAllowed": false,
+    "namuaDimensions": 44,
+    "namuaRepresentation": "namua-role-invariant-continuous-geometry-v1",
+    "namuaScalerRefitAllowed": false,
+    "requiredHash": "b7ac18a99228cd38a8a29580e5f852240c3b9e16a1d1f7bb45c779e4c599c3da",
+    "status": "frozen-before-heldout-generation"
   },
   "corpus": {
     "baseSeed": 20350001,
     "conditionAssignment": "gameIndex modulo 6",
     "conditions": [
-      {
-        "evaluator": "bao",
-        "id": "B-D1",
-        "level": "hard",
-        "maxDepth": 1,
-        "search": "phase2"
-      },
-      {
-        "evaluator": "bao",
-        "id": "B-D2",
-        "level": "hard",
-        "maxDepth": 2,
-        "search": "phase2"
-      },
-      {
-        "evaluator": "bao",
-        "id": "B-D3",
-        "level": "hard",
-        "maxDepth": 3,
-        "search": "phase2"
-      },
-      {
-        "evaluator": "bao",
-        "id": "LS-D2",
-        "level": "hard",
-        "maxDepth": 2,
-        "search": "legacy"
-      },
-      {
-        "evaluator": "bao-v2",
-        "id": "V2-D2",
-        "level": "hard",
-        "maxDepth": 2,
-        "search": "phase2"
-      },
-      {
-        "evaluator": "legacy",
-        "id": "LE-D2",
-        "level": "hard",
-        "maxDepth": 2,
-        "search": "phase2"
-      }
+      {"evaluator":"bao","id":"B-D1","level":"hard","maxDepth":1,"search":"phase2"},
+      {"evaluator":"bao","id":"B-D2","level":"hard","maxDepth":2,"search":"phase2"},
+      {"evaluator":"bao","id":"B-D3","level":"hard","maxDepth":3,"search":"phase2"},
+      {"evaluator":"bao","id":"LS-D2","level":"hard","maxDepth":2,"search":"legacy"},
+      {"evaluator":"bao-v2","id":"V2-D2","level":"hard","maxDepth":2,"search":"phase2"},
+      {"evaluator":"legacy","id":"LE-D2","level":"hard","maxDepth":2,"search":"phase2"}
     ],
     "games": 192,
     "gamesPerCondition": 32,
@@ -105,15 +74,14 @@
   },
   "executionBoundary": {
     "cleanSourceTreeRequired": true,
-    "formalRunAuthorized": false,
+    "formalRunAuthorized": true,
     "fullReplayVerificationRequiredBeforeAnalysis": true,
-    "futureHeldoutDataInspectedBeforeThisDraft": false,
+    "futureHeldoutDataInspectedBeforeThisSpec": false,
     "githubActionsFormalRunAllowed": false,
-    "localRunRequired": true,
-    "reasonFormalRunNotAuthorized": "style ingredient definition hash must be frozen into this spec first"
+    "localRunRequired": true
   },
   "exploratory": false,
-  "formalExperiment": false,
+  "formalExperiment": true,
   "population": {
     "eligibleStateMinimumPlyInclusive": 8,
     "fullPhaseRequired": true,
@@ -132,10 +100,7 @@
     },
     "G2_de_novo_subspace_alignment": {
       "metric": "principal angles between frozen 4D component subspace and heldout de-novo PCA 4D subspace in discovery-scaled descriptor coordinates",
-      "requirements": [
-        "maximum principal angle <= 25 degrees",
-        "mean principal angle <= 15 degrees"
-      ]
+      "requirements": ["maximum principal angle <= 25 degrees","mean principal angle <= 15 degrees"]
     },
     "G3_behavioral_anchor_reproduction": {
       "metric": "Spearman rho between each frozen coordinate score and its preregistered anchor descriptor",
@@ -148,46 +113,14 @@
     },
     "G4_non_anchor_behavioral_signature": {
       "associations": [
-        {
-          "coordinate": "STYLE-C1",
-          "descriptor": "namuaCaptureActivityMean",
-          "expectedSign": "positive"
-        },
-        {
-          "coordinate": "STYLE-C1",
-          "descriptor": "namuaCaptureActivityStd",
-          "expectedSign": "negative"
-        },
-        {
-          "coordinate": "STYLE-C2",
-          "descriptor": "namuaStructuralContrastStd",
-          "expectedSign": "positive"
-        },
-        {
-          "coordinate": "STYLE-C2",
-          "descriptor": "namuaStructuralContrastTrendRho",
-          "expectedSign": "positive"
-        },
-        {
-          "coordinate": "STYLE-C3",
-          "descriptor": "mtajiM2MeanDwell",
-          "expectedSign": "negative"
-        },
-        {
-          "coordinate": "STYLE-C3",
-          "descriptor": "namuaCaptureActivityStd",
-          "expectedSign": "positive"
-        },
-        {
-          "coordinate": "STYLE-C4",
-          "descriptor": "mtajiM2MeanDwell",
-          "expectedSign": "negative"
-        },
-        {
-          "coordinate": "STYLE-C4",
-          "descriptor": "namuaStructuralContrastTrendRho",
-          "expectedSign": "negative"
-        }
+        {"coordinate":"STYLE-C1","descriptor":"namuaCaptureActivityMean","expectedSign":"positive"},
+        {"coordinate":"STYLE-C1","descriptor":"namuaCaptureActivityStd","expectedSign":"negative"},
+        {"coordinate":"STYLE-C2","descriptor":"namuaStructuralContrastStd","expectedSign":"positive"},
+        {"coordinate":"STYLE-C2","descriptor":"namuaStructuralContrastTrendRho","expectedSign":"positive"},
+        {"coordinate":"STYLE-C3","descriptor":"mtajiM2MeanDwell","expectedSign":"negative"},
+        {"coordinate":"STYLE-C3","descriptor":"namuaCaptureActivityStd","expectedSign":"positive"},
+        {"coordinate":"STYLE-C4","descriptor":"mtajiM2MeanDwell","expectedSign":"negative"},
+        {"coordinate":"STYLE-C4","descriptor":"namuaStructuralContrastTrendRho","expectedSign":"negative"}
       ],
       "requirements": [
         "at least 6 of 8 associations preserve the preregistered sign with absolute Spearman rho >= 0.20",
@@ -212,6 +145,6 @@
     "outcomeAssociation": "optional report-only if available; never part of style definition or confirmation gate"
   },
   "stage": "stage5-playing-style-continuous-independent-confirmation",
-  "status": "draft-pending-style-ingredient-freeze",
+  "status": "preregistered-before-heldout-generation",
   "study": "position-typology-and-playing-style"
 }
