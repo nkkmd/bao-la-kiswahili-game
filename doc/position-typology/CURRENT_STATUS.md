@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 2 mtaji formal confirmation complete / Stage 3 namua continuous representation complete / Stage 4 playing-style geometry = continuous multi-axis / exact style-coordinate freeze tooling ready / future style confirmation not yet preregistered**
+Status: **Stage 2 mtaji confirmed / Stage 3 namua continuous / Stage 4 style geometry continuous multi-axis / STYLE-C1..C4 exact definition accepted / Stage 5 formal run blocked pending underlying state-ingredient freeze**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -11,44 +11,49 @@ Branch: `research/position-typology-and-playing-style`
 
 現在の停止点:
 
-> **Stage 4 continuous playing-style coordinate definition exporter のローカル実行前**
+> **Stage 5 style ingredient definition exporter のローカル実行前。Stage 5 held-out corpus generationはまだ禁止。**
 
 完了済み:
 
 1. Stage 0 instrumentation / corpus / symmetry audit
 2. 96-game Stage 1 exploratory discovery pilot
 3. feature / redundancy / clustering diagnostics
-4. mtaji actor-oriented polarity audit
-5. actor-oriented mtaji k=2をintrinsic typesとして棄却
-6. actor/opponent-invariant mtaji morphology k=2発見
-7. invariant morphology stability / discreteness audit
-8. exact mtaji candidate definition freeze
-9. Stage 2 independent confirmation preregistration
-10. 192-game held-out formal corpus generation / full replay verification
-11. preregistered G1–G5 analysis
-12. **Stage 2 mtaji formal decision = confirmed**
-13. confirmed mtaji human-readable ontology naming
-14. Stage 3 namua continuous-gradient audit
-15. namua continuous-coordinate interpretation固定
-16. Stage 4 playing-style trajectory geometry audit
-17. **Stage 4 discrete playing-style set not supported**
-18. provisional four-axis continuous style geometry promoted
-19. exact discovery style-coordinate freeze exporter / runbook implemented
+4. actor-oriented mtaji k=2をintrinsic typeとして棄却し relational-polarity coordinateへ整理
+5. actor/opponent-invariant mtaji morphology k=2発見
+6. exact mtaji candidate definition freeze
+7. Stage 2 independent confirmation preregistration / 192-game held-out run / full replay verification
+8. **Stage 2 mtaji formal decision = confirmed**
+9. confirmed mtaji ontology naming
+10. Stage 3 namua continuous-gradient audit
+11. **namua = continuous-coordinate representation preferred / no discrete type promoted**
+12. Stage 4 one-game-one-trajectory playing-style geometry audit
+13. **Stage 4 discrete style set not supported**
+14. **playing style = continuous multi-axis trajectory space** をprovisional discovery resultとして採用
+15. exact Stage 4 style-coordinate definition export / inspection / acceptance
+16. Stage 5 future seed block and G1-G5 design drafted before any held-out generation
+17. underlying Stage 3 N-ACT/N-CON scaler dependencyを検出し、formal runをguard
+18. exact state-ingredient freeze exporter実装
 
 未実施:
 
-- local style-coordinate definition export / validation
-- independent future style-confirmation preregistration
-- future style-confirmation corpus generation
+- Stage 5 style ingredient definition export / hash acceptance
+- Stage 5 machine spec finalization
+- Stage 5 formal preregistration checkpoint
+- Stage 5 held-out corpus generation
+- Stage 5 full replay verification
+- Stage 5 formal G1-G5 analysis
 - Study 1 cross-study relation analysis
 
-## Study 1 fixed boundary
+## Fixed global boundaries
 
-Closed phase-transition Study 1は変更しない。
-
-過去のformal decisions、`capture-branch-expansion` classifier / vocabulary、forced-capture regime、`sustained-forcing window` interpretation boundary、trajectory-ply sensitivity、negative/null resultsを維持する。
-
-Study 1 formal corpusはcurrent typology/style discoveryへ使用しない。
+- Study 1 formal decisions are unchanged.
+- Study 1 formal corpus is not used for current typology/style discovery or Stage 5 confirmation.
+- position type = state-level structural object.
+- playing style = trajectory / policy-level pattern.
+- AI evaluator/search/depth/condition labels are metadata, not styles.
+- negative/null discrete-cluster results may not be rescued post hoc.
+- same-pilot robustness is not independent confirmation.
+- future formal confirmation is local only; GitHub Actions is not authorized.
 
 ## Confirmed Mtaji ontology
 
@@ -56,9 +61,6 @@ Frozen classifier:
 
 ```text
 candidateDefinitionHash = 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
-actor-opponent-invariant-morphology-v1
-40 dimensions
-KMeans k=2
 ```
 
 Formal Stage 2 result:
@@ -69,14 +71,14 @@ resultHash = 26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347
 FORMAL DECISION = confirmed
 ```
 
-Confirmed IDs / names:
+Confirmed names:
 
 ```text
 MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
 MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 ```
 
-These remain state-level position morphologies, not playing styles, outcome classes, advantage labels, or AI implementation names.
+These remain state-level position morphologies, not playing styles or outcome classes.
 
 Rejected actor-oriented mtaji k=2 remains:
 
@@ -85,7 +87,7 @@ continuous relational-polarity coordinate
 != intrinsic position type
 ```
 
-## Stage 3 Namua result
+## Stage 3 Namua representation
 
 Audit hash:
 
@@ -101,19 +103,11 @@ N-ACT  = continuous capture-activity coordinate
 N-CON  = continuous structural-contrast coordinate
 ```
 
-Previous namua k=2 / k=4 remain rejected as discrete position-type candidates.
+Namua k=2 / k=4 remain rejected as discrete position-type candidates.
 
-N-PROG is effectively a deterministic namua clock and is not a style feature.
+N-PROG is a progress clock and is excluded from playing-style features.
 
-N-ACT / N-CON remain exploratory continuous state coordinates.
-
-## Stage 4 Playing-Style result
-
-Artifact:
-
-```text
-artifacts/local/position-typology/stage4-playing-style-exploratory-v1/playing-style-trajectory-audit.json
-```
+## Stage 4 Playing-Style discovery result
 
 Audit hash:
 
@@ -123,12 +117,12 @@ bb19b78205f87ac4271884fc406cd9a12b2b9b4675a38336f17479231ae6b98c
 
 Population:
 
-- full-phase game trajectories: 89
-- unit: one game trajectory = one observation
-- condition labels used as metadata only
-- confirmed mtaji classifier not refit
+```text
+89 full-phase game trajectories
+one game trajectory = one observation
+```
 
-Primary 10-descriptor style vector:
+Primary 10-descriptor vector:
 
 ```text
 namuaCaptureActivityMean
@@ -143,15 +137,7 @@ mtajiM1MeanDwell
 mtajiM2MeanDwell
 ```
 
-Excluded:
-
-- raw ply
-- N-PROG
-- AI evaluator/search/depth
-- condition ID
-- winner/outcome
-
-### PCA
+PCA:
 
 ```text
 PC1 = 28.42%
@@ -159,33 +145,9 @@ PC2 = 18.86%
 PC3 = 14.94%
 PC4 = 14.57%
 PC1..4 cumulative = 76.78%
-PC5 = 8.46%
 ```
 
-PC1–PC3 KDE density is unimodal.
-
-For each PC1–PC3, 1-component GMM has lower BIC than 2–4 components.
-
-### Discrete cluster decision
-
-Predeclared k=2..6 did not yield a coherent playing-style type set.
-
-Examples:
-
-```text
-k=2 KMeans-GMM ARI = 0.165
-k=2 KMeans-Ward ARI = 0.114
-k=2 GMM-Ward ARI = 0.696
-```
-
-80%-game resampling ×100 at k=2:
-
-```text
-KMeans median ARI = 0.545, p10 = 0.296
-GMM median ARI    = 0.779, p10 = 0.403
-```
-
-Higher k did not rescue cross-method / resampling instability, and some GMM solutions produced one-game clusters.
+Predeclared k=2..6 did not yield coherent cross-method / resampling-stable discrete styles. PC1-PC3 density was unimodal and 1-component GMM BIC was preferred.
 
 Decision:
 
@@ -195,11 +157,23 @@ playing-style geometry
 != discrete style-type set in Stage 4 discovery corpus
 ```
 
-No cluster count is promoted and no cluster receives a style name.
+## Accepted exact style-coordinate definition
 
-## Provisional compact style coordinate system
+Artifact:
 
-Use provisional IDs / behavioral aliases:
+```text
+artifacts/local/position-typology/stage4-playing-style-exploratory-v1/style-coordinate-definition-v1/style-coordinate-definition.json
+```
+
+Accepted hash:
+
+```text
+568f272bac81bf3a99e4629e9f5e75fe426383278064b5465b62fd6b01c08afc
+```
+
+The uploaded artifact was independently checked for canonical JSON hash, dimensions, scaler consistency, component dimensions, anchor orientation, and source hashes.
+
+Frozen provisional coordinates:
 
 ```text
 STYLE-C1 = Engagement-Persistence
@@ -208,55 +182,73 @@ STYLE-C3 = Activity-Escalation Dynamics
 STYLE-C4 = Morphology-Switching Tempo
 ```
 
-These are trajectory-level coordinates, not state-level position types.
-
-Interpretive anchors:
-
-- C1: `mtajiM1Fraction`
-- C2: `namuaStructuralContrastMean`
-- C3: `namuaCaptureActivityTrendRho`
-- C4: `mtajiTypeSwitchRate`
-
-Aliases are provisional until independent future confirmation.
-
-## Discovery coordinate freeze
-
-Exporter:
+Canonical positive anchors:
 
 ```text
-tools/experiments/export-position-typology-stage4-style-coordinates.py
+C1 -> mtajiM1Fraction
+C2 -> namuaStructuralContrastMean
+C3 -> namuaCaptureActivityTrendRho
+C4 -> mtajiTypeSwitchRate
 ```
 
-Runbook:
-
-```text
-doc/position-typology/STAGE_4_STYLE_COORDINATE_FREEZE_RUNBOOK.md
-```
+These are continuous trajectory-level coordinates. They are not discrete style classes.
 
 Result document:
 
 ```text
-doc/position-typology/STAGE_4_PLAYING_STYLE_RESULT.md
+doc/position-typology/STAGE_4_STYLE_COORDINATE_DEFINITION_RESULT.md
 ```
 
-Checkpoint:
+## Stage 5 future confirmation design — currently guarded draft
+
+Future seed block already selected before any generation:
 
 ```text
-doc/position-typology/checkpoints/2026-08-10-stage4-continuous-style-result-and-freeze-start.md
+20350001..20350192
+192 games
+6 conditions x 32
 ```
 
-The exporter freezes:
+Draft machine spec:
 
-- exact 10-feature order
-- discovery StandardScaler mean / scale / variance
-- PC1..PC4 component vectors
-- canonical PCA signs via fixed positive behavioral anchors
-- discovery game ID set hash
-- source audit hashes
+```text
+doc/position-typology/preregistration/STAGE_5_PLAYING_STYLE_CONFIRMATION_SPEC.json
+```
 
-No future style-confirmation seed has been generated or inspected.
+Primary intended gates are already fixed conceptually:
+
+```text
+G1 frozen 4D subspace variance retention
+G2 frozen vs held-out de-novo 4D subspace principal-angle alignment
+G3 four behavioral-anchor correlations
+G4 eight prespecified non-anchor behavioral signatures
+G5 80%-game subsample subspace robustness
+```
+
+No cluster rescue is permitted.
+
+### Important guard discovered before held-out generation
+
+Stage 4's Namua game descriptors depend on Stage 3 `N-ACT` / `N-CON`. Stage 3 did not serialize the exact discovery-side 44D StandardScaler arrays.
+
+Held-out refitting of that scaler is not acceptable for the intended frozen-transfer confirmation.
+
+Therefore the exact state ingredient must be frozen first.
+
+Current machine-spec state:
+
+```text
+status = draft-pending-style-ingredient-freeze
+formalExperiment = false
+executionBoundary.formalRunAuthorized = false
+coordinateIngredients.requiredHash = null
+```
+
+Stage 5 corpus generation is **not authorized yet**.
 
 ## Next local action
+
+Run only the ingredient exporter:
 
 ```bash
 source ~/.venvs/bao-phase-transition-e011/bin/activate
@@ -267,29 +259,28 @@ git pull --ff-only
 git status --short
 python --version
 
-python -m py_compile tools/experiments/export-position-typology-stage4-style-coordinates.py
-python tools/experiments/export-position-typology-stage4-style-coordinates.py
+python -m py_compile tools/experiments/export-position-typology-stage5-style-ingredient-definition.py
+python tools/experiments/export-position-typology-stage5-style-ingredient-definition.py
 ```
 
 Expected artifact:
 
 ```text
-artifacts/local/position-typology/stage4-playing-style-exploratory-v1/style-coordinate-definition-v1/style-coordinate-definition.json
+artifacts/local/position-typology/stage4-playing-style-exploratory-v1/style-ingredient-definition-v1/style-ingredient-definition.json
 ```
 
 Share only that JSON.
 
-Only after validating the frozen definition may an independent style-confirmation preregistration be written.
+Runbook:
 
-## Global interpretation boundaries
+```text
+doc/position-typology/STAGE_5_STYLE_INGREDIENT_FREEZE_RUNBOOK.md
+```
 
-- position type and playing style remain separate
-- confirmed mtaji classifier may not be retroactively refit
-- namua k=2/k=4 negative result is not rescued
-- N-ACT/N-CON are continuous coordinates, not types
-- N-PROG is progression context, not morphology/style
-- Stage 4 same-pilot structure is not independent confirmation
-- no post-hoc algorithm/k expansion to rescue discrete styles
-- AI condition labels remain metadata only and may never themselves be named as styles
-- future formal style confirmation must use untouched future seeds
-- Study 1 formal decisions remain unchanged
+Checkpoint:
+
+```text
+doc/position-typology/checkpoints/2026-08-10-stage4-style-coordinate-freeze-and-stage5-ingredient-guard.md
+```
+
+After that artifact is accepted, its hash will be inserted into the machine spec, the Stage 5 analyzer will be finalized, formal preregistration will be checkpointed, and only then will held-out generation be authorized.
