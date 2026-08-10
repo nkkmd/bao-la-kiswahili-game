@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 2 mtaji confirmed / Stage 3 Namua continuous exploratory / Stage 4 style discovery / Stage 5 formal not-confirmed / Stage 6 protocol frozen / replay integrity next**
+Status: **Stage 2 mtaji confirmed / Stage 3 Namua continuous exploratory / Stage 4 style discovery / Stage 5 formal not-confirmed / Stage 6 replay integrity accepted / association analysis next**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -11,7 +11,7 @@ Branch: `research/position-typology-and-playing-style`
 
 現在の停止点:
 
-> **Stage 6 Study 1 cross-study bridge protocolをassociation値を見る前にfreeze済み。次はfixed formal archivesからcandidate-bearing gamesのみをread-only抽出し、candidate plyまでのdeterministic replay / stateHash / phase integrityを検証する。MTAJI-M1/M2・N-ACT/N-CON associationはまだ計算しない。**
+> **Stage 6 cross-study bridgeのfrozen protocolに従うcandidate-state deterministic replayを全6条件で完了・受理。全stateHash / move before-after / candidate phase integrityが通過した。次はfreeze済みprotocolを変更せず、MTAJI-M1/M2およびN-ACT/N-CONとのsecondary associationを計算する。**
 
 ## Completed scientific state
 
@@ -121,6 +121,7 @@ Passing G1/G3/G4 does not rescue G2/G5. No alternative coordinate count, cluster
 - Stage 6 is secondary / hypothesis-generation only.
 - Stage 6 may not rescue Stage 5 or alter Study 1.
 - no new cluster search or Namua discrete-type search is authorized.
+- Stage 6 relation protocol was frozen before association values were calculated and may not now be revised from the observed relation values.
 
 ## Stage 6 — Study 1 cross-study bridge
 
@@ -130,9 +131,11 @@ Passing G1/G3/G4 does not rescue G2/G5. No alternative coordinate count, cluster
 2. E-018/E-019/E-020 fixed archive inventory completed.
 3. All three fixed archive SHA-256 values matched and unsafe member count was zero.
 4. Candidate/game schema audit completed for the bridge scope.
-5. Six condition schemas contain `gameId`, `candidatePly`, `phaseAtCandidate`, `classification`, regime fields, archived moves, observations and state hashes.
-6. Deterministic board replay is feasible from archived moves.
-7. No scientific relation value was reported by inventory/schema audit.
+5. Deterministic board replay feasibility established from archived moves.
+6. Stage 6 scientific bridge protocol frozen before relation values.
+7. Candidate-bearing formal games extracted read-only to a separate working area.
+8. Deterministic replay completed for all fixed candidate targets.
+9. **All six condition replay-integrity checks passed.**
 
 Schema audit SHA-256:
 
@@ -140,7 +143,7 @@ Schema audit SHA-256:
 910990b049abf31e42deccac2756dc68a721e565127f842209abf72b4a62e90c
 ```
 
-### Frozen Stage 6 scientific protocol
+### Frozen Stage 6 protocol
 
 Machine spec:
 
@@ -154,8 +157,6 @@ Narrative protocol:
 ```text
 doc/position-typology/STAGE_6_CROSS_STUDY_BRIDGE_PROTOCOL.md
 ```
-
-Protocol was fixed **before** MTAJI-M1/M2 or N-ACT/N-CON association values were calculated.
 
 Core corpus scope:
 
@@ -200,70 +201,81 @@ Primary descriptive unit:
 experiment + condition + trajectoryHash + candidatePly
 ```
 
-Raw candidate rows are provenance only; repeated raw rows are not treated as independent structural examples.
+Raw candidate rows are provenance only. No cross-condition/cross-experiment deduplication or pooled confirmatory inference is allowed.
 
-### Phase-specific bridge
+### Replay integrity — accepted
 
-First report phase overlap.
-
-For actual `mtaji` candidate states only:
+Accepted hashes:
 
 ```text
-apply frozen confirmed MTAJI-M1/MTAJI-M2 classifier
-no refit
+replayedCandidateStateDatasetHash = 798dd665dd60e76c4860f95c0e1714b5bcb2aa9c968cabd715789aff23dfe3dc
+replayAuditHash = 3cdacb0aacd1fcecb53b72833cfffd8c02576ae882956f780c0c465bfdf8acf5
+allReplayChecksPassed = true
 ```
 
-For actual `namua` candidate states only:
+`auditHash` was independently recomputed from canonical JSON and matched exactly.
+
+Per-condition replay:
 
 ```text
-apply frozen discovery N-ACT/N-CON transform
-no scaler refit
-explicitly exploratory
+E-018 D2-LG  games 53   targets 54   PASS
+E-018 D2-P2  games 104  targets 107  PASS
+E-019 D3-LG  games 194  targets 194  PASS
+E-019 D3-P2  games 114  targets 114  PASS
+E-020 D3-LG  games 176  targets 176  PASS
+E-020 D3-P2  games 112  targets 112  PASS
 ```
 
-Do not assign Mtaji types to Namua.
-
-`STYLE-C1..C4` are excluded from the Stage 6 primary state bridge because the exact four-dimensional playing-style geometry was formally `not-confirmed` in Stage 5.
-
-No confirmatory p-value, causal mediation claim, universal Bao claim, or general depth interaction claim is authorized.
-
-## Replay integrity stage — next
-
-Preparation tool:
+At replay completion:
 
 ```text
-tools/experiments/prepare-position-typology-stage6-cross-study-bridge.py
+formalExperiment = false
+associationAnalysisPerformed = false
+gamesExecuted = false
+formalAnalysisRerun = false
+archivesModified = false
+scientificAssociationValuesComputed = false
+study1FormalDecisionsModified = false
+stage5DecisionModified = false
 ```
 
-Replay tool:
+Result document:
 
 ```text
-tools/experiments/replay-position-typology-stage6-candidate-states.js
-```
-
-Runbook:
-
-```text
-doc/position-typology/STAGE_6_CROSS_STUDY_REPLAY_RUNBOOK.md
+doc/position-typology/STAGE_6_CROSS_STUDY_REPLAY_RESULT.md
 ```
 
 Checkpoint:
 
 ```text
-doc/position-typology/checkpoints/2026-08-10-stage6-cross-study-protocol-freeze-and-replay-start.md
+doc/position-typology/checkpoints/2026-08-10-stage6-replay-integrity-accepted-association-authorized.md
 ```
 
-Replay requirements:
+## Stage 6 association analysis — next
 
-- fixed archive SHA-256 must match again;
-- candidate-bearing games only are extracted to a new local working directory;
-- every traversed archived observation `stateHash` must match replay;
-- move before/after hashes must match where present;
-- CSV phase, archived observation phase and replayed position phase must agree;
-- no new game generation;
-- no formal analysis rerun;
-- no archive modification;
-- no scientific association calculation yet.
+Analyzer:
+
+```text
+tools/experiments/analyze-position-typology-stage6-cross-study-association.py
+```
+
+Runbook:
+
+```text
+doc/position-typology/STAGE_6_CROSS_STUDY_ASSOCIATION_RUNBOOK.md
+```
+
+The analyzer is fixed to:
+
+1. verify protocol / replay / classifier / ingredient hashes;
+2. deduplicate only by `experiment + condition + trajectoryHash + candidatePly`;
+3. report phase overlap first;
+4. apply frozen MTAJI-M1/M2 only to `mtaji`;
+5. apply frozen N-ACT/N-CON only to `namua`;
+6. compare expansion with the already frozen non-precursor comparator;
+7. report M1-fraction differences, Namua median differences and Cliff's delta;
+8. compute no confirmatory p-values;
+9. perform no refit, cluster search, STYLE-C1..C4 analysis, causal mediation, or pooled formal D2/D3 inference.
 
 ## Next local action
 
@@ -275,28 +287,19 @@ git pull --ff-only
 
 git status --short
 python --version
-node --version
 
 python -m py_compile \
-  tools/experiments/prepare-position-typology-stage6-cross-study-bridge.py
+  tools/experiments/analyze-position-typology-stage6-cross-study-association.py
 
-node --check \
-  tools/experiments/replay-position-typology-stage6-candidate-states.js
-
-python tools/experiments/prepare-position-typology-stage6-cross-study-bridge.py
-node tools/experiments/replay-position-typology-stage6-candidate-states.js
+python tools/experiments/analyze-position-typology-stage6-cross-study-association.py
 ```
 
-Keep this local dataset:
+Expected output:
 
 ```text
-artifacts/local/position-typology/stage6-cross-study-bridge-v1/replay/replayed-candidate-states.json
+artifacts/local/position-typology/stage6-cross-study-bridge-v1/association/cross-study-association-result.json
 ```
 
-Share only:
+Share only that JSON.
 
-```text
-artifacts/local/position-typology/stage6-cross-study-bridge-v1/replay/replay-audit.json
-```
-
-Only after replay integrity is accepted will Stage 6 association analysis be run.
+The resulting relation is secondary / hypothesis-generation evidence only. It cannot modify Study 1 formal decisions or Stage 5 `not-confirmed`.
