@@ -1,0 +1,209 @@
+{
+  "analysisSettings": {
+    "deNovoPca": {
+      "centering": "sklearn PCA centering after applying frozen discovery scaler",
+      "componentsCompared": 4,
+      "heldoutScalerRefitAllowed": false
+    },
+    "frozenProjection": "apply exact discovery 10-descriptor StandardScaler and exact canonical 4x10 component matrix",
+    "principalAngles": "scipy.linalg.subspace_angles between frozen 4D component subspace and heldout de-novo PCA 4D subspace",
+    "randomState": 20359999,
+    "subsample": {
+      "gameFraction": 0.8,
+      "repetitions": 100,
+      "withoutReplacement": true
+    }
+  },
+  "coordinateDefinition": {
+    "coordinateIds": [
+      "STYLE-C1",
+      "STYLE-C2",
+      "STYLE-C3",
+      "STYLE-C4"
+    ],
+    "dimensions": 10,
+    "frozenCoordinateCount": 4,
+    "refitAllowed": false,
+    "requiredHash": "568f272bac81bf3a99e4629e9f5e75fe426383278064b5465b62fd6b01c08afc",
+    "representation": "playing-style-trajectory-descriptor-v1",
+    "restandardizationForFrozenCoordinatesAllowed": false,
+    "rotationOrPermutationRescueAllowed": false
+  },
+  "corpus": {
+    "baseSeed": 20350001,
+    "conditionAssignment": "gameIndex modulo 6",
+    "conditions": [
+      {
+        "evaluator": "bao",
+        "id": "B-D1",
+        "level": "hard",
+        "maxDepth": 1,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "bao",
+        "id": "B-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "bao",
+        "id": "B-D3",
+        "level": "hard",
+        "maxDepth": 3,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "bao",
+        "id": "LS-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "legacy"
+      },
+      {
+        "evaluator": "bao-v2",
+        "id": "V2-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "legacy",
+        "id": "LE-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "phase2"
+      }
+    ],
+    "games": 192,
+    "gamesPerCondition": 32,
+    "heldOutFromAllPriorSeedBlocks": true,
+    "lastSeed": 20350192,
+    "maxPly": 100,
+    "opening": {
+      "pairedAcrossConditions": false,
+      "plies": 8,
+      "policy": "seeded-uniform-legal"
+    }
+  },
+  "decisionRule": {
+    "alternativeCoordinateCountAllowed": false,
+    "alternativeDescriptorSetAllowed": false,
+    "alternativePreprocessingAllowed": false,
+    "clusterRescueAllowed": false,
+    "confirmed": "all technical gates pass and G1-G5 all pass",
+    "discoveryRefitAllowed": false,
+    "inconclusive": "integrity/replay/provenance fails or technical minimum trajectory population is not met",
+    "notConfirmed": "technical gates pass and at least one of G1-G5 fails",
+    "postHocRescueAllowed": false
+  },
+  "executionBoundary": {
+    "cleanSourceTreeRequired": true,
+    "fullReplayVerificationRequiredBeforeAnalysis": true,
+    "futureHeldoutDataInspectedBeforeThisSpec": false,
+    "githubActionsFormalRunAllowed": false,
+    "localRunRequired": true
+  },
+  "exploratory": false,
+  "formalExperiment": true,
+  "population": {
+    "eligibleStateMinimumPlyInclusive": 8,
+    "fullPhaseRequired": true,
+    "minimumFullPhaseGames": 144,
+    "minimumFullPhaseGamesPerCondition": 20,
+    "terminalStatesExcludedFromDescriptorConstruction": true,
+    "unit": "one game trajectory containing both eligible namua and eligible mtaji states"
+  },
+  "preregistrationId": "PTYP-S5-STYLE-CONTINUOUS-CONFIRM-2026-08-10-v1",
+  "primaryConfirmationGates": {
+    "G1_frozen_subspace_variance": {
+      "metric": "sum variance of frozen STYLE-C1..C4 heldout scores divided by total variance of the 10 discovery-standardized heldout descriptors",
+      "operator": ">=",
+      "threshold": 0.6
+    },
+    "G2_de_novo_subspace_alignment": {
+      "metric": "principal angles between frozen 4D component subspace and heldout de-novo PCA 4D subspace in discovery-scaled descriptor coordinates",
+      "requirements": [
+        "maximum principal angle <= 25 degrees",
+        "mean principal angle <= 15 degrees"
+      ]
+    },
+    "G3_behavioral_anchor_reproduction": {
+      "metric": "Spearman rho between each frozen coordinate score and its preregistered anchor descriptor",
+      "requirements": [
+        "STYLE-C1 vs mtajiM1Fraction >= 0.35",
+        "STYLE-C2 vs namuaStructuralContrastMean >= 0.35",
+        "STYLE-C3 vs namuaCaptureActivityTrendRho >= 0.35",
+        "STYLE-C4 vs mtajiTypeSwitchRate >= 0.35"
+      ]
+    },
+    "G4_non_anchor_behavioral_signature": {
+      "associations": [
+        {
+          "coordinate": "STYLE-C1",
+          "descriptor": "namuaCaptureActivityMean",
+          "expectedSign": "positive"
+        },
+        {
+          "coordinate": "STYLE-C1",
+          "descriptor": "namuaCaptureActivityStd",
+          "expectedSign": "negative"
+        },
+        {
+          "coordinate": "STYLE-C2",
+          "descriptor": "namuaStructuralContrastStd",
+          "expectedSign": "positive"
+        },
+        {
+          "coordinate": "STYLE-C2",
+          "descriptor": "namuaStructuralContrastTrendRho",
+          "expectedSign": "positive"
+        },
+        {
+          "coordinate": "STYLE-C3",
+          "descriptor": "mtajiM2MeanDwell",
+          "expectedSign": "negative"
+        },
+        {
+          "coordinate": "STYLE-C3",
+          "descriptor": "namuaCaptureActivityStd",
+          "expectedSign": "positive"
+        },
+        {
+          "coordinate": "STYLE-C4",
+          "descriptor": "mtajiM2MeanDwell",
+          "expectedSign": "negative"
+        },
+        {
+          "coordinate": "STYLE-C4",
+          "descriptor": "namuaStructuralContrastTrendRho",
+          "expectedSign": "negative"
+        }
+      ],
+      "requirements": [
+        "at least 6 of 8 associations preserve the preregistered sign with absolute Spearman rho >= 0.20",
+        "at least one qualifying non-anchor association for each STYLE-C1..C4"
+      ]
+    },
+    "G5_trajectory_subsample_subspace_robustness": {
+      "gameFraction": 0.8,
+      "metric": "p90 of maximum principal angle between frozen 4D subspace and de-novo PCA 4D subspace across deterministic heldout game subsamples",
+      "operator": "<=",
+      "randomState": 20359999,
+      "repetitions": 100,
+      "thresholdDegrees": 30
+    }
+  },
+  "schemaVersion": 1,
+  "secondaryDiagnostics": {
+    "conditionAssociation": "report condition-group variance fraction for each frozen coordinate; metadata only",
+    "coordinateDensity": "report 1D GMM BIC and KDE shape for frozen scores; no cluster rescue or veto",
+    "coordinateMoments": "report means, standard deviations and quantiles",
+    "heldoutDescriptorCorrelations": "report full frozen-coordinate by descriptor Spearman matrix",
+    "outcomeAssociation": "optional report-only if available; never part of style definition or confirmation gate"
+  },
+  "stage": "stage5-playing-style-continuous-independent-confirmation",
+  "status": "preregistered-before-heldout-generation",
+  "study": "position-typology-and-playing-style"
+}
