@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 1 candidate stability audit complete / mtaji k=2 robust relational-polarity candidate / namua no discrete candidate / mtaji polarity-discreteness audit tooling ready / no final cluster decision / no formal confirmation authorized**
+Status: **Stage 1 mtaji polarity audit complete / relational k=2 rejected as two discrete types / swap-invariant morphology k=2 candidate identified / invariant morphology audit tooling ready / no final cluster decision / no formal confirmation authorized**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -13,7 +13,8 @@ Branch: `research/position-typology-and-playing-style`
 - [`STAGE_1_FEATURE_AUDIT_RESULT.md`](STAGE_1_FEATURE_AUDIT_RESULT.md)
 - [`STAGE_1_CLUSTER_DIAGNOSTIC_RESULT.md`](STAGE_1_CLUSTER_DIAGNOSTIC_RESULT.md)
 - [`STAGE_1_STABILITY_AUDIT_RESULT.md`](STAGE_1_STABILITY_AUDIT_RESULT.md)
-- [`STAGE_1_POLARITY_AUDIT_RUNBOOK.md`](STAGE_1_POLARITY_AUDIT_RUNBOOK.md)
+- [`STAGE_1_POLARITY_AUDIT_RESULT.md`](STAGE_1_POLARITY_AUDIT_RESULT.md)
+- [`STAGE_1_INVARIANT_MORPHOLOGY_RUNBOOK.md`](STAGE_1_INVARIANT_MORPHOLOGY_RUNBOOK.md)
 
 ## 現在地
 
@@ -26,17 +27,18 @@ Branch: `research/position-typology-and-playing-style`
 3. full replay / provenance / eligible-population audit
 4. Python feature-table generation
 5. redundancy / distribution audit
-6. S-pruned first clustering diagnostic, k=2..10
-7. first diagnostic result interpretation
-8. candidate stability / representation audit
-9. representative / boundary position extraction
-10. mtaji k=2 polarity-vs-discreteness audit design + tooling
+6. S-pruned clustering diagnostic k=2..10
+7. candidate stability / representation audit
+8. representative / boundary position extraction
+9. mtaji relational-polarity vs discreteness audit
+10. actor/opponent-invariant morphology exploratory grid
+11. mtaji invariant morphology follow-up tooling
 
-現在の停止点は **mtaji polarity / discreteness auditのローカル実行前**。
+現在の停止点は **mtaji invariant morphology k=2 auditのローカル実行前**。
 
 まだ実施していない:
 
-- mtaji polarity / discreteness audit実行
+- invariant morphology stability / persistence audit実行
 - final cluster数選択
 - provisional position-type命名
 - namua gradient-specific follow-up
@@ -65,15 +67,15 @@ ply >= 8
 - seat-canonical collapse: 0
 - states shared across trajectories: 0
 
-## Candidate stability artifact
+## Polarity audit artifact
 
 ```text
-artifacts/local/position-typology/stage1-pilot-v1/stability-audit-v1/candidate-stability.json
+artifacts/local/position-typology/stage1-pilot-v1/polarity-audit-v1/mtaji-polarity-audit.json
 ```
 
 Audit hash:
 
-`7ed8bad7137cee50fa7f55d80f27d27ea90f4be9756de023acc020f25f0df1ae`
+`3ac4b402c122702682ccbca7fea4488694a6d89544f1632e951d23aa1613733d`
 
 Boundary:
 
@@ -81,201 +83,140 @@ Boundary:
 - `exploratory: true`
 - `finalClusterCountSelected: false`
 - `positionTypesNamed: false`
+- future held-out seeds untouched
 
-## Mtaji k=2 — current strongest structure
+## Mtaji reference S-pruned k=2 — decision
 
 Reference:
 
 ```text
 S-pruned
-phase = mtaji
+mtaji
 game-phase-capped
 log1p-standard
-k = 2
+K-means k=2
 ```
 
-### Same-representation
+このsplitはstability上は非常に強かったが、polarity auditでstate-intrinsic discrete typesではない可能性が強まった。
 
-- K-means silhouette: 0.2328
-- GMM silhouette: 0.2321
-- Ward silhouette: 0.2084
-- K-means vs GMM ARI: 0.9041
-- K-means vs Ward ARI: 0.6883
-- GMM vs Ward ARI: 0.6775
-- condition NMI ≈ 0
-- K-means cluster fractions ≈ 49.2% / 50.8%
+### Role swap
 
-### Cross-view
+- cluster flip rate: 0.8175
+- same-cluster rate: 0.1825
+- original projection vs negative swapped projection correlation: 0.9063
 
-log1p-standard full vs capped:
+### Consecutive trajectory
 
-- K-means: 0.9515
-- GMM: 0.8459
-- Ward: 0.5541
+- consecutive pairs: 1,406
+- player flip rate: 1.0000
+- cluster flip rate: 0.9011
 
-### Cross-preprocessing
+したがってplayer-to-move交代とreference label反転が強く同期する。
 
-capped standard vs log1p:
+### Axis density
 
-- K-means: 0.9073
-- GMM: 0.8131
-- Ward: 0.5763
+1D centroid-axis GMM BIC:
 
-### Cross-representation
+- 1 component: 6643.23
+- 2 components: 6510.18
+- 3 components: 6491.15
 
-S-pruned vs P-raw-pits:
+KDE:
 
-- K-means: 0.9515
-- GMM: 0.8671
-- Ward: 0.4970
+- peak count: 3
+- major two-peak valley / lower-peak density ratio: 0.9699
 
-S-pruned vs C-level-contrast:
+二つのpeak間にdeep density valleyは存在しない。
 
-- K-means: 0.7466
-- GMM: 0.8489
-- Ward: 0.6143
+PlyとのSpearman rhoは -0.0334で、単純なgame-progress axisでもない。
 
-### Trajectory resampling
-
-80% games × 40 repetitions:
-
-K-means:
-
-- min 0.9356
-- p10 0.9451
-- median 0.9707
-- p90 0.9902
-
-GMM:
-
-- min 0.7723
-- p10 0.8369
-- median 0.9387
-- p90 0.9782
-
-### Rare house
-
-Rare mtaji `houseOwned`を戻すと:
-
-- K-means ARI: 1.0000
-- Ward ARI: 1.0000
-- GMM ARI: 0.2125
-
-したがってk=2 signalはK-means / Wardでは維持されるが、GMM component interpretationはrare featureに敏感。
-
-## Mtaji k=2 interpretation boundary
-
-Representative profileでは2群の主要effectがほぼ符号反転する。
-
-一方:
-
-- actor front seeds / front occupancy / reusable pits / connectionsが高い
-- opponent側が低い
-
-他方はその逆。
-
-Median plyは52 vs 51でほぼ同じ。
-
-したがって、単純なmtaji進行stageではない一方、
-
-> **actor優勢 ↔ opponent優勢という単一relational polarity axisを2分割しただけ**
-
-という可能性が残る。
-
-現在の表現は:
+### Current interpretation
 
 ```text
-mtaji k=2 = robust relational-polarity candidate
+reference mtaji k=2 = continuous relational polarity axis with stable sign-oriented partition
 ```
 
-であり、まだ:
+**two discrete position typesとしては採用しない。**
+
+このaxis自体は後にplaying-style trajectory coordinateとして有用な可能性があるが、type countには数えない。
+
+## Mtaji swap-invariant morphology k=2
+
+Actor/opponent orientationを消したrepresentation:
 
 ```text
-2 position types
+total(actor, opponent)
+absDifference(actor, opponent)
 ```
 
-とは呼ばない。
+40 dimensions。
 
-## Mtaji k=6
+Capped population 1,222 rowsでk=2:
 
-Fine-structure probeとして残る。
+Silhouette:
 
-Capped + log1p method agreement:
+- K-means: 0.1962
+- GMM: 0.1967
+- Ward: 0.1963
 
-- K-means vs GMM: 0.7864
-- K-means vs Ward: 0.6897
-- GMM vs Ward: 0.7042
+Method agreement ARI:
 
-Trajectory resampling median:
+- K-means vs GMM: 0.9197
+- K-means vs Ward: 0.9134
+- GMM vs Ward: 0.9935
 
-- K-means: 0.9469
-- GMM: 0.9290
+Cluster fractionsはおよそ57:43 / 59:41。
 
-ただしpreprocessing sensitivityがk=2より大きく、silhouetteも低い。
+Condition NMIは約0.024–0.027。
 
-Status:
+k=3以降ではmethod agreementが低下する。
+
+したがって現在の新しい候補は:
 
 ```text
-secondary stable fine-structure probe only
+mtaji invariant morphology k=2 = provisional structural candidate
 ```
 
-## Namua
+ただしまだposition typeとは命名しない。
 
-### k=2
-
-同一algorithm内trajectory resamplingは安定するが、cross-method agreementが弱い。
-
-Capped + log1p:
-
-- K-means vs GMM: 0.0486
-- K-means vs Ward: 0.3598
-- GMM vs Ward: -0.0450
-
-GMMは約9.5% / 90.5%、K-meansは約52.7% / 47.3%を切り、同じk=2でも同じ構造ではない。
-
-K-means median plyも30 vs 19.5で離れる。
-
-### k=4
-
-Capped + log1p:
-
-- method ARI ≈ 0.377–0.482
-- silhouette ≈ 0.113–0.137
-
-Trajectory resampling:
-
-- K-means median: 0.9402
-- GMM median: 0.3744
-
-したがって:
-
-```text
-namua = no discrete cluster count promoted
-```
-
-進行度 / capture activity等のcontinuous gradientとして扱う可能性を優先して残す。
-
-## 次audit — mtaji polarity / discreteness
+## 次audit — invariant morphology
 
 実装:
 
 ```text
-tools/experiments/analyze-position-typology-stage1-polarity.py
+tools/experiments/analyze-position-typology-stage1-invariant-morphology.py
 ```
 
 Runbook:
 
 ```text
-doc/position-typology/STAGE_1_POLARITY_AUDIT_RUNBOOK.md
+doc/position-typology/STAGE_1_INVARIANT_MORPHOLOGY_RUNBOOK.md
 ```
 
-次に検査する:
+検査内容:
 
-1. actor/opponent role swapでk=2 labelが反転するか
-2. centroid-axis projectionが二峰性かcontinuousか
-3. 1D GMM / KDE / marginでdensity separationを記述
-4. actor/opponent directionを消したtotal + absolute-difference representation上で構造が残るか
-5. consecutive mtaji plyでclusterがplayer-to-move交代と機械的にflipするか
+1. K-means / GMM / Ward method agreement
+2. full vs game-phase-capped stability
+3. 80% trajectory resampling × 40
+4. actor/opponent swap invariance numerical check
+5. consecutive trajectory persistence / dwell runs
+6. representative / boundary positions
+7. `imbalanceMagnitude`単独で説明できるか
+8. `activityMagnitude`単独で説明できるか
+9. reference relational polarity k=2とのARI / NMI
+10. invariant centroid-axisの1D GMM / KDE discreteness
+
+## Namua
+
+引き続き:
+
+```text
+no discrete position-type candidate
+```
+
+k=2 / k=4は同一method内で一部stableでもcross-method agreementが弱い。
+
+後段でcontinuous gradient-specific analysisを行う。
 
 ## 次のローカル作業
 
@@ -288,8 +229,8 @@ git pull --ff-only
 git status --short
 python --version
 
-python -m py_compile tools/experiments/analyze-position-typology-stage1-polarity.py
-python tools/experiments/analyze-position-typology-stage1-polarity.py
+python -m py_compile tools/experiments/analyze-position-typology-stage1-invariant-morphology.py
+python tools/experiments/analyze-position-typology-stage1-invariant-morphology.py
 ```
 
 追加package installは不要。
@@ -297,34 +238,36 @@ python tools/experiments/analyze-position-typology-stage1-polarity.py
 共有対象:
 
 ```text
-artifacts/local/position-typology/stage1-pilot-v1/polarity-audit-v1/mtaji-polarity-audit.json
+artifacts/local/position-typology/stage1-pilot-v1/invariant-morphology-audit-v1/mtaji-invariant-morphology-audit.json
 ```
 
 ## 次のdecision point
 
-### Polarity-axis interpretation
+### Intrinsic discrete morphology candidate
 
-role swapでほぼ完全反転し、projectionが連続的で、swap-invariant representationで強いk=2が消えるなら:
+trajectory resampling / full-capped / persistence / representativesが強く、single scalar magnitudeでは説明できず、density separationも一定程度あるなら:
 
-> k=2は二つのposition typeではなく一つのrelational polarity axisとして扱う。
+> mtaji invariant k=2をboard-level provisional type setへ昇格する余地がある。
 
-### Discrete morphology remains plausible
+### Continuous intrinsic morphology coordinate
 
-role swapだけでは説明できず、density gapとswap-invariant cluster structureが残るなら:
+clusterがstableでもdensity gapが浅く、imbalance/activity magnitudeでほぼ説明されるなら:
 
-> mtaji k=2をboard-level provisional type setへ昇格する余地がある。
+> discrete typeではなくcontinuous intrinsic morphology coordinateとして扱う。
 
-### Mixed
+### Negative result
 
-両方ならpolarity coordinateとintrinsic morphologyを二層化する。
+representation / trajectory changesで崩れるなら:
+
+> mtajiについてもStage 1 pilotから離散position typeは発見されなかった、と記録する。
 
 ## 重要原則
 
 - position typeとplaying styleを分離する
-- AI implementation conditionをtype / style名にしない
+- robust clusteringを自動的にdiscrete ontologyへ変換しない
+- actor-to-move polarityをintrinsic board typeと混同しない
 - raw plyを独立標本とみなさない
 - same-pilot robustnessをformal replicationと呼ばない
-- GMM rare-feature sensitivityを無視しない
 - final k / type名をpilot上でformal freezeしない
 - Study 1 formal decisionsを変更しない
 - future held-out seed blockには触れない
