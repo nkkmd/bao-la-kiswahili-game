@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 1 mtaji provisional two-type discovery frozen / Stage 2 independent confirmation preregistered / held-out corpus not yet generated / namua no discrete candidate / no held-out result inspected**
+Status: **Stage 2 mtaji independent confirmation complete / MTAJI-M1 and MTAJI-M2 formally confirmed under frozen study boundary / namua no discrete candidate / naming and playing-style follow-up not yet performed**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -17,7 +17,9 @@ Branch: `research/position-typology-and-playing-style`
 - [`STAGE_1_MTAJI_CANDIDATE_DEFINITION_RESULT.md`](STAGE_1_MTAJI_CANDIDATE_DEFINITION_RESULT.md)
 - [`STAGE_2_MTAJI_CONFIRMATION_PREREGISTRATION.md`](STAGE_2_MTAJI_CONFIRMATION_PREREGISTRATION.md)
 - [`STAGE_2_MTAJI_CONFIRMATION_RUNBOOK.md`](STAGE_2_MTAJI_CONFIRMATION_RUNBOOK.md)
+- [`STAGE_2_MTAJI_CONFIRMATION_RESULT.md`](STAGE_2_MTAJI_CONFIRMATION_RESULT.md)
 - [`preregistration/STAGE_2_MTAJI_CONFIRMATION_SPEC.json`](preregistration/STAGE_2_MTAJI_CONFIRMATION_SPEC.json)
+- [`checkpoints/2026-08-10-stage2-mtaji-formal-confirmation.md`](checkpoints/2026-08-10-stage2-mtaji-formal-confirmation.md)
 
 ## Current stop point
 
@@ -36,21 +38,20 @@ Branch: `research/position-typology-and-playing-style`
 9. actor/opponent-invariant morphology k=2発見
 10. invariant morphology stability / persistence / density audit
 11. mtaji invariant k=2をboard-level provisional two-type setへ昇格
-12. exact discovery classifier definition export
-13. candidate-definition artifact inspection / acceptance
-14. Stage 2 independent confirmation preregistration
-15. formal corpus runner / replay verifier / confirmation analyzer implementation
+12. exact discovery classifier definition export / freeze
+13. Stage 2 independent confirmation preregistration
+14. 192-game held-out formal corpus generation
+15. full replay / provenance verification
+16. preregistered G1–G5 formal analysis
+17. **Stage 2 formal decision = confirmed**
 
 現在の停止点は:
 
-> **Stage 2 formal held-out corpus generationの直前**
+> **Mtaji two-type confirmation完了後。final naming / namua gradient / playing-style analysisへ進む前。**
 
 まだ実施していない:
 
-- Stage 2 seeds `20310001..20310192` のgame generation
-- Stage 2 replay verification
-- Stage 2 formal confirmation metrics
-- final mtaji ontology naming
+- final mtaji ontology naming review
 - namua gradient-specific follow-up
 - playing-style analysis
 - Study 1 cross-study relation analysis
@@ -61,18 +62,11 @@ Closed phase-transition Study 1は変更しない。
 
 過去のformal decisions、`capture-branch-expansion` classifier / vocabulary、forced-capture regime、`sustained-forcing window`解釈境界、trajectory-ply sensitivityの位置づけ、negative/null resultsを維持する。
 
-Study 1 formal corpusはinitial typology discoveryへ使用していない。Stage 2 confirmationにも使用しない。
+Study 1 formal corpusはinitial typology discoveryにもStage 2 mtaji confirmationにも使用していない。
 
 ## Rejected mtaji relational k=2
 
-Actor-oriented S-pruned mtaji k=2はstableだったが:
-
-- role swap cluster flip rate: 0.8175
-- original projection vs negative swapped projection correlation: 0.9063
-- consecutive cluster flip rate: 0.9011 while player-to-move always flips
-- KDE major-peak valley ratio: 0.9699
-
-Decision:
+Actor-oriented S-pruned mtaji k=2はstableだったが、role swap / consecutive-ply flip / shallow density valleyから:
 
 ```text
 actor-oriented mtaji k=2
@@ -80,9 +74,9 @@ actor-oriented mtaji k=2
 != two intrinsic position types
 ```
 
-このcoordinateは将来trajectory / playing-style分析で利用可能性があるが、position-type countには入れない。
+このdecisionはStage 2 confirmation後も変更しない。
 
-## Stage 1 discovered mtaji invariant morphology
+## Confirmed mtaji position morphology
 
 Representation:
 
@@ -97,193 +91,124 @@ total(actor, opponent)
 absDifference(actor, opponent)
 ```
 
-40 dimensions。predeclared skewed fieldsはlog1p後にconstructionし、discovery training rows上でStandardScaler。
+40 dimensions。predeclared skewed fieldsはlog1p後にconstruction。
 
-### Discovery evidence
-
-Capped discovery population:
-
-- 1,222 mtaji states
-- 89 contributing games
-- K-means cluster fractions: 0.5728 / 0.4272
-- silhouette: 0.1962
-
-Method agreement:
-
-- K-means vs GMM ARI: 0.9197
-- K-means vs Ward ARI: 0.9134
-- GMM vs Ward ARI: 0.9935
-
-Full vs capped:
-
-- K-means ARI: 0.9514
-- GMM: 1.0000
-- Ward: 0.9869
-
-Trajectory resampling 80% games ×40:
-
-- K-means median ARI: 0.9902
-- K-means min: 0.9387
-- GMM median: 1.0000
-
-Invariant-axis discreteness:
-
-- BIC 1 component: 6213.06
-- BIC 2 components: 5786.86
-- BIC 3 components: 5796.42
-- KDE peaks: 2
-- valley / lower-peak ratio: 0.4305
-
-Not reducible to single scalar:
-
-- activityMagnitude ARI: 0.0236
-- imbalanceMagnitude ARI: 0.1837
-
-Relation to rejected actor-oriented polarity:
-
-- ARI: 0.0548
-- NMI: 0.0426
-
-Decision:
+Frozen discovery classifier:
 
 ```text
-mtaji invariant morphology k=2
-= board-level provisional two-type set
-= discovery-corpus result
-= independent confirmation required
+candidateDefinitionHash = 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
+KMeans k=2
+n_init=50
+random_state=20260809
 ```
 
-## Frozen discovery classifier
+Discovery StandardScaler・2×40 centroids・canonical mappingをheld-out dataでrefit/restandardize/relabelしない。
 
-Accepted local artifact:
+Canonical study IDs:
 
 ```text
-artifacts/local/position-typology/stage1-pilot-v1/mtaji-candidate-definition-v1/mtaji-candidate-definition.json
+MTAJI-M1
+MTAJI-M2
 ```
 
-Candidate definition hash:
-
-```text
-7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
-```
-
-Frozen specification contains:
-
-- exact 40-feature order
-- log1p field set
-- discovery StandardScaler mean / scale / variance
-- K-means `k=2`, `n_init=50`, `random_state=20260809`
-- exact 2×40 discovery centroids
-- discovery training-state hash
-- raw-label → canonical provisional ID mapping
-
-Canonical mapping is fixed:
-
-```text
-raw 0 -> MTAJI-M1
-raw 1 -> MTAJI-M2
-```
-
-The discovery-side canonicalization feature was `total.meanCapturableSeeds`; this rule is **not recomputed on held-out data**.
-
-### Provisional aliases
+Current descriptive aliases:
 
 ```text
 MTAJI-M1 = capture-engaged / relatively balanced morphology
 MTAJI-M2 = capture-sparse / relatively asymmetric morphology
 ```
 
-Aliases remain descriptive, not final ontology names.
+IDsはfixed classifier / population boundary内でformal confirmation済み。English aliasesはontology wording review前のdescriptive labels。
 
-The frozen classifier may not be refit, restandardized, or relabeled using Stage 2 data.
+## Stage 2 formal confirmation
 
-## Stage 2 formal preregistration
-
-Preregistration ID:
+Preregistration:
 
 ```text
 PTYP-S2-MTAJI-CONFIRM-2026-08-10-v1
 ```
 
-Machine spec:
+Formal result hash:
 
 ```text
-doc/position-typology/preregistration/STAGE_2_MTAJI_CONFIRMATION_SPEC.json
+26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347
 ```
 
-Formal corpus:
+Held-out corpus:
 
 ```text
 192 games
-20310001..20310192
+seed block = 20310001..20310192
 6 conditions × 32 games
-opening = seeded-uniform legal, 8 plies
-maxPly = 100
 ```
 
-The held-out seed block was defined before any Stage 2 game was generated or inspected.
+Observed formal population:
 
-### Population
+- mtaji-contributing games: 180
+- raw eligible mtaji rows: 2,704
+- rule-state-dedup rows: 2,704
+- capped rows: 2,256
+
+Technical gates:
+
+- full replay / provenance verification: passed
+- contributing games: 180 >= 144
+- capped rows: 2,256 >= 1,500
+
+## Primary formal gates — all passed
+
+### G1 — type non-collapse
 
 ```text
-phase == mtaji
-terminal == false
-ply >= 8
-global ruleStateKey dedup
-cap <= 20 states per game
-cap order = SHA-256(ruleStateKey) lexical
+minority frozen type fraction = 0.4481 >= 0.20
 ```
 
-Technical minimum:
+### G2 — frozen separation
 
 ```text
-contributing games >= 144
-capped rows >= 1500
+silhouette = 0.1964 >= 0.12
 ```
 
-Technical failure -> `inconclusive`.
-
-## Primary formal gates
-
-All must pass:
-
-### G1 type non-collapse
+### G3 — frozen-axis discreteness
 
 ```text
-minority frozen type fraction >= 0.20
+BIC(1) = 11612.37
+BIC(2) = 10722.08
+BIC(3) = 10735.33
+BIC(1)-BIC(2) = 890.28
+BIC(3)-BIC(2) = 13.25
 ```
 
-### G2 frozen separation
+Passed both preregistered requirements.
+
+Secondary KDE reproduced two peaks with valley / lower-peak ratio 0.3826.
+
+### G4 — de-novo held-out agreement
+
+ARI with frozen labels:
 
 ```text
-frozen-label silhouette >= 0.12
+K-means = 0.9167
+GMM     = 0.9184
+Ward    = 0.9031
+median  = 0.9167
 ```
 
-### G3 frozen-axis discreteness
+3/3 methods exceeded 0.70.
 
-```text
-BIC(2) <= BIC(1) - 10
-BIC(2) < BIC(3)
-```
-
-### G4 de-novo agreement
-
-Held-out StandardScaler; fixed k=2 only; K-means / diagonal GMM / Ward.
-
-```text
-at least 2 of 3 ARIs >= 0.70
-median ARI >= 0.70
-```
-
-### G5 trajectory-level robustness
+### G5 — trajectory-level robustness
 
 100 deterministic 80%-game subsamples:
 
 ```text
-p10 frozen-vs-de-novo-KMeans ARI >= 0.60
+ARI p10   = 0.8931 >= 0.60
+ARI median= 0.9205
+ARI min   = 0.8790
 ```
 
-## Formal decision rule
+## Formal decision
+
+Preregistered rule:
 
 ```text
 all technical gates + G1..G5 pass -> confirmed
@@ -291,41 +216,77 @@ technical gates pass + any G1..G5 fails -> not-confirmed
 technical/integrity insufficiency -> inconclusive
 ```
 
-No post-hoc rescue by:
-
-- alternate k,
-- alternate feature set,
-- alternate preprocessing,
-- refitting discovery scaler/centroids,
-- changing canonical labels.
-
-## Formal tooling
-
-Generation:
+Observed:
 
 ```text
-tools/experiments/run-position-typology-stage2-confirmation.js
+all technical gates passed
+G1 passed
+G2 passed
+G3 passed
+G4 passed
+G5 passed
 ```
 
-Replay / provenance verification:
+Therefore:
 
 ```text
-tools/experiments/verify-position-typology-stage2-confirmation.js
+FORMAL DECISION = confirmed
 ```
 
-Formal metrics / decision:
+Confirmed claim:
+
+> Within the preregistered Bao mtaji population and the frozen actor/opponent-invariant morphology representation, the Stage 1 two-type structural partition independently replicates.
+
+No post-hoc rescue was used.
+
+## Held-out morphology profile
+
+### MTAJI-M1
+
+Held-out direction reproduces the discovery description:
+
+- much higher total forced-capture availability
+- much higher total capture-move count
+- much higher total capturable seeds / capture events
+- higher total front occupancy
+- smaller actor/opponent differences on several capture/front measures
+
+### MTAJI-M2
+
+Approximately the reverse:
+
+- capture-sparser
+- lower total capture-event availability
+- lower front occupancy
+- larger actor/opponent structural asymmetry on several measures
+
+These remain position morphologies, not playing styles, win/loss classes, actor-advantage labels, or AI implementation labels.
+
+## Trajectory persistence
+
+Held-out consecutive mtaji pairs: 2,524.
 
 ```text
-tools/experiments/analyze-position-typology-stage2-mtaji-confirmation.py
+same-type rate = 0.6311
+flip rate      = 0.3689
+run p75        = 3 plies
+run p90        = 5 plies
+run max        = 16 plies
 ```
 
-Runbook:
+This independently reproduces the discovery pattern of state-level persistence plus within-game transitions.
 
-```text
-doc/position-typology/STAGE_2_MTAJI_CONFIRMATION_RUNBOOK.md
-```
+## Interpretation boundary
 
-Formal run is local only. GitHub Actions is not authorized.
+Formal confirmation does **not** establish:
+
+- a universal Bao ontology for every legal state,
+- a corresponding two-type namua ontology,
+- a playing-style classification,
+- causal outcome advantage,
+- causal AI evaluator/search effects.
+
+The confirmed object is specifically the frozen mtaji structural morphology classifier under the preregistered population boundary.
 
 ## Namua
 
@@ -335,64 +296,23 @@ Current decision remains:
 no discrete position-type candidate promoted
 ```
 
-Do not force namua into the mtaji two-type set. Continuous progress / tactical-activity gradient follow-up is separate and remains unperformed.
+Do not force namua into the confirmed mtaji two-type set.
 
-## Next local action
+## Next authorized research streams
 
-Activate the existing research venv:
+The following may now proceed separately without altering the Stage 2 formal decision:
 
-```bash
-source ~/.venvs/bao-phase-transition-e011/bin/activate
-```
-
-Update and check branch:
-
-```bash
-git switch research/position-typology-and-playing-style
-git pull --ff-only
-git status --short
-```
-
-Syntax checks:
-
-```bash
-node --check tools/experiments/run-position-typology-stage2-confirmation.js
-node --check tools/experiments/verify-position-typology-stage2-confirmation.js
-python -m py_compile tools/experiments/analyze-position-typology-stage2-mtaji-confirmation.py
-```
-
-Formal generation:
-
-```bash
-node tools/experiments/run-position-typology-stage2-confirmation.js
-```
-
-Then full replay verification:
-
-```bash
-node tools/experiments/verify-position-typology-stage2-confirmation.js
-```
-
-Only after verification passes:
-
-```bash
-python tools/experiments/analyze-position-typology-stage2-mtaji-confirmation.py
-```
-
-Share only:
-
-```text
-artifacts/local/position-typology/stage2-mtaji-confirmation-v1/confirmation-result.json
-```
+1. **Mtaji ontology/naming review** — choose final human-readable terminology for MTAJI-M1/M2 while preserving the frozen classifier.
+2. **Namua continuous-gradient analysis** — test whether progress/tactical-activity coordinates describe namua better than discrete types.
+3. **Playing-style analysis** — derive trajectory/policy-level patterns from confirmed mtaji type occupancy, dwell, transitions, relational polarity, and other predeclared trajectory descriptors. Do not call AI implementation labels playing styles.
+4. **Study 1 cross-study relation analysis** — only after the current typology/style definitions are independently fixed; do not revise Study 1 formal decisions.
 
 ## Important principles
 
 - position type and playing style remain separate
-- relational polarity is not an intrinsic type
-- same-pilot robustness is not confirmation
-- discovery classifier is frozen before held-out generation
-- failed confirmation cannot be rescued post hoc
-- `inconclusive` is technical only, not a synonym for failed metric gate
-- no final ontology naming before formal confirmation
+- relational polarity remains a coordinate, not an intrinsic type
+- Stage 2 confirmation is independent of the Stage 1 discovery corpus
+- confirmed classifier may not be retroactively refit and called the same result
+- aliases/names may change wording without changing the classifier
+- no post-hoc rescue of future negative/null analyses
 - Study 1 formal decisions remain unchanged
-- held-out Stage 2 data have not yet been generated or inspected
