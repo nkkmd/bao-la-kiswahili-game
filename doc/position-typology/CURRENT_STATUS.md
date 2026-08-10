@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 2 mtaji confirmed / Stage 3 namua continuous exploratory / Stage 4 continuous style discovery / Stage 5 formal decision = not-confirmed / cross-study relation next**
+Status: **Stage 2 mtaji confirmed / Stage 3 namua continuous exploratory / Stage 4 continuous style discovery / Stage 5 formal decision = not-confirmed / Stage 6 Study 1 bridge inventory ready**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -11,7 +11,7 @@ Branch: `research/position-typology-and-playing-style`
 
 現在の停止点:
 
-> **Stage 5 continuous playing-style independent confirmation完了。formal decisionは `not-confirmed`。次はStudy 1とのcross-study relationを、別のsecondary / hypothesis-generation境界で設計する。**
+> **Stage 5 formal `not-confirmed` を固定済み。Stage 6 Study 1 cross-study bridgeのread-only archive inventoryをローカル実行する直前。cross-study association自体はまだ計算していない。**
 
 ## 完了済み
 
@@ -38,10 +38,15 @@ Branch: `research/position-typology-and-playing-style`
 21. Stage 5 full replay / provenance verification
 22. Stage 5 frozen-transfer formal analysis
 23. **Stage 5 formal decision = not-confirmed**
+24. Stage 5 formal result document / checkpoint / README更新
+25. closed Study 1 final report / vocabulary / formal export index再監査
+26. Stage 6 read-only archive inventory tooling / runbook / checkpoint実装
 
 未実施:
 
-- Study 1 cross-study relation protocol / execution
+- Stage 6 archive inventory local execution
+- Stage 6 cross-study scientific bridge protocol
+- Stage 6 cross-study relation analysis
 - final research integration / overview / final report / vocabulary / reproducibility index
 
 ## Fixed global boundaries
@@ -55,6 +60,7 @@ Branch: `research/position-typology-and-playing-style`
 - same-pilot robustnessをindependent confirmationと呼ばない。
 - formal corpusをGitHub Actionsで生成しない。
 - Stage 5失敗後にcoordinate数、descriptor、preprocessing、threshold、seed、cluster searchを変更して同じheld-out dataをconfirmationへ再利用しない。
+- Stage 6はsecondary / hypothesis-generationであり、Study 1 formal resultやStage 5 resultを救済しない。
 
 ## Confirmed Mtaji ontology
 
@@ -205,24 +211,7 @@ Full-phase formal population:
 176 game trajectories
 ```
 
-Condition counts:
-
-```text
-B-D1  27
-B-D2  32
-B-D3  30
-LS-D2 28
-V2-D2 31
-LE-D2 28
-```
-
-All technical gates passed:
-
-```text
-full replay verification = pass
-full-phase games >= 144 = pass
-each condition >= 20 = pass
-```
+All technical gates passed.
 
 Formal result hash:
 
@@ -230,42 +219,14 @@ Formal result hash:
 6069ea45dc055dbd65a14a939ccaa427466d1e3f8852ed81f555dc7ebe16e97c
 ```
 
-### G1-G5
+Primary result:
 
 ```text
-G1 frozen 4D variance retention
-   0.69823 >= 0.60
-   PASS
-
-G2 frozen vs held-out de-novo 4D subspace alignment
-   maximum principal angle = 34.1058° > 25°
-   mean principal angle    = 15.7369° > 15°
-   FAIL
-
-G3 behavioral anchors
-   C1 rho = 0.7758
-   C2 rho = 0.6022
-   C3 rho = 0.6807
-   C4 rho = 0.6637
-   all >= 0.35
-   PASS
-
-G4 non-anchor behavioral signatures
-   qualifying = 7/8
-   >=1 qualifying relation for every C1..C4
-   PASS
-
-G5 80%-game subsample x100 subspace robustness
-   p90(max principal angle) = 48.8193° > 30°
-   FAIL
-```
-
-Formal decision rule:
-
-```text
-technical + G1..G5 all pass -> confirmed
-technical pass + any G1..G5 fail -> not-confirmed
-integrity/replay/population failure -> inconclusive
+G1 frozen 4D variance retention      PASS  0.69823 >= 0.60
+G2 de-novo subspace alignment        FAIL  max 34.1058° > 25°; mean 15.7369° > 15°
+G3 behavioral anchors                PASS  all four rho >= 0.35
+G4 non-anchor signatures             PASS  7/8; >=1 per coordinate
+G5 game-resample subspace robustness FAIL  p90 max-angle 48.8193° > 30°
 ```
 
 Therefore:
@@ -288,26 +249,18 @@ doc/position-typology/checkpoints/2026-08-10-stage5-playing-style-formal-not-con
 
 ## Stage 5 interpretation boundary
 
-The correct interpretation is:
+Correct synthesis:
 
-> Stage 4のfrozen continuous trajectory coordinatesはheld-out corpusでもbehavioral anchor / signatureをかなりよく再現した。しかし、事前登録したexact 4D PCA subspaceは、de-novo held-out geometryとのalignmentとgame-level resampling stabilityが不足し、formal confirmationには至らなかった。
-
-Therefore:
+> Frozen trajectory coordinates retained substantial held-out variance and reproduced their behavioral anchors/signatures, but the preregistered exact four-dimensional PCA subspace lacked sufficient independent alignment and trajectory-resampling stability. The exact 4D playing-style geometry is therefore not confirmed.
 
 ```text
 STYLE-C1..C4 = discovery-derived exploratory trajectory descriptors
 != formally confirmed playing-style coordinate system
 ```
 
-Do not say:
+Passing G1/G3/G4 does not rescue G2/G5.
 
-- Bao has exactly four confirmed playing-style dimensions,
-- STYLE-C1..C4 are confirmed styles,
-- Stage 5 almost passed so it should be treated as confirmed,
-- G3/G4 passing rescues G2/G5,
-- a new k/cluster solution can replace the failed confirmation on the same held-out data.
-
-Secondary density diagnostics also do not support a discrete-style rescue. C1/C3/C4 were KDE-unimodal and 1-component GMM BIC was preferred; C2 had a small secondary KDE peak but 1-component GMM BIC remained preferred.
+Secondary density diagnostics do not authorize a discrete-style rescue.
 
 ## Current scientific synthesis
 
@@ -332,29 +285,84 @@ Stage 4 STYLE-C1..C4 continuous geometry -> discovered / exploratory
 Stage 5 exact 4D continuous geometry -> formally not-confirmed
 ```
 
-Thus the strongest completed formal finding of this study remains the confirmed Mtaji two-type state morphology. The playing-style part yields useful hypothesis-generation coordinates but no independently confirmed style ontology.
+The strongest completed formal finding remains the confirmed Mtaji two-type state morphology. The playing-style part yields useful hypothesis-generation coordinates but no independently confirmed style ontology.
 
-## Next substantive phase — cross-study relation
+## Stage 6 — Study 1 cross-study bridge
 
-The original `RESEARCH_PLAN.md` scheduled a later cross-study relation to closed phase-transition Study 1. Because independent confirmation stages were inserted during implementation, this next operational phase should be treated as **Stage 6 cross-study relation** while preserving the original plan's scientific purpose.
+The original `RESEARCH_PLAN.md` scheduled a later cross-study relation to closed phase-transition Study 1. Because independent confirmation stages were inserted during implementation, the next operational phase is called **Stage 6**.
 
-Candidate relation targets include:
+Study 1 fixed sources rechecked:
 
-- confirmed `MTAJI-M1` / `MTAJI-M2`,
-- Mtaji relational-polarity coordinate as a continuous secondary descriptor,
-- exploratory Namua N-ACT / N-CON only with explicit exploratory labeling,
-- exploratory STYLE-C1..C4 only as secondary trajectory descriptors, never as confirmed styles,
-- Study 1 `capture-branch-expansion`, forced-capture lifecycle, `sustained-forcing window`, and fixed depth2/depth3 search-profile findings.
+```text
+doc/phase-transition/STUDY_1_FINAL_REPORT.md
+doc/phase-transition/STUDY_1_VOCABULARY.md
+doc/phase-transition/FORMAL_EXPORT_INDEX.md
+```
 
-This phase is secondary / hypothesis-generation. It may not change any Study 1 formal decision or rescue Stage 5.
+Primary formal archives for bridge feasibility:
 
-## Next action
+```text
+E-018  e018-final-formal-evaluation.tar.gz
+SHA-256 bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5
 
-Before executing cross-study analysis:
+E-019  e019-final-formal-evaluation.tar.gz
+SHA-256 6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75
 
-1. inspect Study 1 final report / vocabulary / formal export index,
-2. identify exactly which archived formal artifacts are required locally,
-3. write a cross-study protocol with source hashes and interpretation boundaries,
-4. only then run relation analysis.
+E-020  e020-final-formal-evaluation.tar.gz
+SHA-256 37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2
+```
 
-No new confirmation of STYLE-C1..C4 is authorized on the Stage 5 held-out corpus.
+Repository-code feasibility fact:
+
+- Study 1 observations do not serialize the full pits,
+- formal game JSON stores the complete move sequence,
+- therefore exact candidate board states can be reconstructed from `initialState` + archived moves without new game generation.
+
+No candidate position is forced into a phase-incompatible representation. MTAJI-M1/M2 may only classify `mtaji`; Namua remains separate.
+
+### Stage 6 inventory tool
+
+```text
+tools/experiments/inventory-position-typology-stage6-study1-archives.py
+```
+
+Runbook:
+
+```text
+doc/position-typology/STAGE_6_CROSS_STUDY_BRIDGE_RUNBOOK.md
+```
+
+Checkpoint:
+
+```text
+doc/position-typology/checkpoints/2026-08-10-stage5-not-confirmed-and-stage6-bridge-start.md
+```
+
+The first Stage 6 operation verifies archive hashes and inventories member paths only. It does not extract archives or inspect scientific relation values.
+
+## Next local action
+
+```bash
+source ~/.venvs/bao-phase-transition-e011/bin/activate
+
+git switch research/position-typology-and-playing-style
+git pull --ff-only
+
+git status --short
+python --version
+
+python -m py_compile \
+  tools/experiments/inventory-position-typology-stage6-study1-archives.py
+
+python tools/experiments/inventory-position-typology-stage6-study1-archives.py
+```
+
+Expected artifact:
+
+```text
+artifacts/local/position-typology/stage6-cross-study-bridge-v1/study1-archive-inventory.json
+```
+
+Share only that JSON.
+
+After inventory, define and freeze the cross-study bridge protocol before computing association values.
