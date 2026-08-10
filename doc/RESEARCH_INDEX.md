@@ -77,6 +77,30 @@ Baoのゲーム開始時の先攻・後攻差、および生成局面におけ�
 
 ---
 
+### 4. 局面類型と棋風 — Study 1
+
+**研究題目:** Baoにおける局面類型と棋風の発見・検証  
+**状態:** research complete / final integration complete  
+**作業branch:** `research/position-typology-and-playing-style`
+
+Baoのposition typeとplaying styleをstate-level / trajectory-levelに分離して探索・検証した研究です。固定representationではMtajiに`MTAJI-M1 / MTAJI-M2`というbounded two-type morphologyが独立formal confirmationされました。一方、Namuaでは離散typeをpromoteせずN-ACT/N-CONというexploratory continuous representationを保持し、discrete playing-style clusteringも支持されませんでした。Stage 4で得たexact 4D style geometryは独立Stage 5で`not-confirmed`です。
+
+closed phase-transition Study 1とのsecondary bridgeでは、E-018 D2 / E-019 D3 / E-020 D3の固定scopeにおける`capture-branch-expansion` 59件がすべてNamuaに位置し、N-ACTの高い側との記述的関係が観測されました。これはhypothesis-generation evidenceであり、新しいformal confirmationやcausal mediationではありません。
+
+**最初に読む:**
+
+- [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`position-typology/STUDY_1_FINAL_REPORT.md`](position-typology/STUDY_1_FINAL_REPORT.md) — 科学的最終統合
+- [`position-typology/STUDY_1_VOCABULARY.md`](position-typology/STUDY_1_VOCABULARY.md) — confirmed / exploratory / rejectedを分けた最終語彙
+- [`position-typology/REPRODUCIBILITY_INDEX.md`](position-typology/REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
+- [`position-typology/CURRENT_STATUS.md`](position-typology/CURRENT_STATUS.md) — closure状態と固定境界
+- [`position-typology/README.md`](position-typology/README.md) — 研究ディレクトリ案内
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -84,6 +108,8 @@ Baoのゲーム開始時の先攻・後攻差、および生成局面におけ�
 - [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)
 
 局面相転移点研究Study 1の未解決課題には、search-tree / PV / cutoff / horizon mechanism、reserve、nyumba、front-row control、capture-to-mobility、forcing-to-free-choiceなどがあります。これらはStudy 1の未完了作業ではなく、新規studyとして扱います。
+
+局面類型と棋風Study 1からの主要future study候補は、N-ACT/N-CONの独立formal replication、Namua→Mtajiとcapture-branch-expansionのprospective temporal analysis、新しいplaying-style model family、MTAJI-M1/M2の人間/expert validation、より広いengine/search implementationでのexternal validityです。Stage 5 held-out corpusを再定義してconfirmationを救済することはfuture workに含めません。
 
 ---
 

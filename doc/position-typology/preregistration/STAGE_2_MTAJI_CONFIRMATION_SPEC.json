@@ -1,0 +1,183 @@
+{
+  "analysisSettings": {
+    "axisGmm": {
+      "components": [
+        1,
+        2,
+        3
+      ],
+      "covarianceType": "full",
+      "nInit": 20,
+      "randomState": 20319999,
+      "regCovar": 1e-06
+    },
+    "deNovoStandardization": "StandardScaler fit on heldout capped rows",
+    "gmm": {
+      "covarianceType": "diag",
+      "nComponents": 2,
+      "nInit": 10,
+      "randomState": 20319999,
+      "regCovar": 1e-06
+    },
+    "kmeans": {
+      "nClusters": 2,
+      "nInit": 50,
+      "randomState": 20319999
+    },
+    "silhouette": "full heldout capped population; no row subsampling",
+    "ward": {
+      "linkage": "ward",
+      "nClusters": 2
+    }
+  },
+  "candidateDefinition": {
+    "labels": [
+      "MTAJI-M1",
+      "MTAJI-M2"
+    ],
+    "nTypes": 2,
+    "phase": "mtaji",
+    "refitAllowed": false,
+    "relabelingFromHeldoutAllowed": false,
+    "representation": "actor-opponent-invariant-morphology-v1",
+    "requiredHash": "7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d",
+    "restandardizationForFrozenClassifierAllowed": false
+  },
+  "corpus": {
+    "baseSeed": 20310001,
+    "conditionAssignment": "gameIndex modulo 6",
+    "conditions": [
+      {
+        "evaluator": "bao",
+        "id": "B-D1",
+        "level": "hard",
+        "maxDepth": 1,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "bao",
+        "id": "B-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "bao",
+        "id": "B-D3",
+        "level": "hard",
+        "maxDepth": 3,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "bao",
+        "id": "LS-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "legacy"
+      },
+      {
+        "evaluator": "bao-v2",
+        "id": "V2-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "phase2"
+      },
+      {
+        "evaluator": "legacy",
+        "id": "LE-D2",
+        "level": "hard",
+        "maxDepth": 2,
+        "search": "phase2"
+      }
+    ],
+    "games": 192,
+    "gamesPerCondition": 32,
+    "heldOutFromDiscoverySeedBlock": true,
+    "lastSeed": 20310192,
+    "maxPly": 100,
+    "opening": {
+      "pairedAcrossConditions": false,
+      "plies": 8,
+      "policy": "seeded-uniform-legal"
+    }
+  },
+  "decisionRule": {
+    "alternativeFeatureSetAllowed": false,
+    "alternativeKAllowed": false,
+    "alternativePreprocessingAllowed": false,
+    "confirmed": "all technical gates pass and G1-G5 all pass",
+    "discoveryRefitAllowed": false,
+    "inconclusive": "integrity/replay/provenance fails or technical minimum population is not met",
+    "notConfirmed": "technical gates pass and at least one of G1-G5 fails",
+    "postHocRescueAllowed": false
+  },
+  "executionBoundary": {
+    "cleanSourceTreeRequired": true,
+    "fullReplayVerificationRequiredBeforeAnalysis": true,
+    "futureHeldoutDataInspectedBeforeThisSpec": false,
+    "githubActionsFormalRunAllowed": false,
+    "localRunRequired": true
+  },
+  "exploratory": false,
+  "formalExperiment": true,
+  "population": {
+    "capPerGamePhase": 20,
+    "capSelectionOrder": "SHA-256(ruleStateKey) lexical order",
+    "dedupOrder": "game file order then observation ply order; retain first occurrence",
+    "identityDedup": "ruleStateKey",
+    "minimumPlyInclusive": 8,
+    "phase": "mtaji",
+    "populationView": "game-phase-capped",
+    "technicalMinimumCappedRows": 1500,
+    "technicalMinimumContributingGames": 144,
+    "terminalExcluded": true
+  },
+  "preregistrationId": "PTYP-S2-MTAJI-CONFIRM-2026-08-10-v1",
+  "primaryConfirmationGates": {
+    "G1_type_noncollapse": {
+      "metric": "minimum frozen canonical type fraction",
+      "operator": ">=",
+      "threshold": 0.2
+    },
+    "G2_frozen_separation": {
+      "metric": "silhouette of frozen labels in discovery-standardized 40D representation",
+      "operator": ">=",
+      "threshold": 0.12
+    },
+    "G3_axis_discreteness": {
+      "metric": "1D GMM BIC on frozen centroid-axis projection",
+      "requirements": [
+        "BIC(2) <= BIC(1) - 10",
+        "BIC(2) < BIC(3)"
+      ]
+    },
+    "G4_de_novo_agreement": {
+      "heldoutStandardization": "StandardScaler fit on heldout capped rows",
+      "kSearchAllowed": false,
+      "metric": "ARI between frozen labels and heldout-fitted k=2 KMeans / diagonal GMM / Ward",
+      "requirements": [
+        "at least 2 of 3 ARI values >= 0.70",
+        "median of 3 ARI values >= 0.70"
+      ]
+    },
+    "G5_trajectory_subsample_robustness": {
+      "gameFraction": 0.8,
+      "metric": "p10 ARI between frozen labels and de-novo KMeans on deterministic 80%-game subsamples",
+      "operator": ">=",
+      "randomState": 20319999,
+      "repetitions": 100,
+      "threshold": 0.6
+    }
+  },
+  "schemaVersion": 1,
+  "secondaryDiagnostics": {
+    "conditionNMI": "report only; contamination diagnostic",
+    "kdePeakValley": "report only; no rescue or veto",
+    "perConditionFractions": "report only; no condition-specific formal claim",
+    "profileDirection": "report MTAJI-M1 vs MTAJI-M2 descriptive feature means; alias validity only",
+    "trajectoryPersistence": "report consecutive-ply same-type rate and run lengths; no gate"
+  },
+  "stage": "stage2-mtaji-independent-confirmation",
+  "status": "preregistered-before-heldout-generation",
+  "study": "position-typology"
+}
