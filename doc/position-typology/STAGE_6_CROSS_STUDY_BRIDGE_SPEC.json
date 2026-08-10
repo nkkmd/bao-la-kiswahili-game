@@ -1,0 +1,152 @@
+{
+  "analysisUnit": {
+    "crossConditionDeduplication": false,
+    "crossExperimentDeduplication": false,
+    "duplicateConflictPolicy": "integrity-error if phase or classification differs within a key",
+    "key": "experiment + condition + trajectoryHash + candidatePly",
+    "pooledCrossCorpusPrimaryInference": false,
+    "primaryDescriptiveUnit": "unique trajectory-ply within experiment and condition",
+    "rawCandidateRowsAlsoReported": true
+  },
+  "candidatePopulation": {
+    "candidatePlyField": "candidatePly",
+    "category": "A",
+    "classificationField": "classification",
+    "minimumPliesRemaining": 9,
+    "nonPrecursorComparator": [
+      "temporary-spike",
+      "capture-branch-convergence"
+    ],
+    "phaseField": "phaseAtCandidate",
+    "positivePhenotype": "capture-branch-expansion",
+    "precursorExclusionsFromComparator": [
+      "namua-to-mtaji-precursor",
+      "forcing-release-precursor"
+    ],
+    "precursorsReportedForPhaseOverlapOnly": true,
+    "unknownClassificationPolicy": "integrity-error"
+  },
+  "excludedFromStage6PrimaryBridge": {
+    "aiConditionLabelsAsFeatures": false,
+    "newClusterSearch": false,
+    "newPositionTypeSearch": false,
+    "styleCoordinates": {
+      "ids": [
+        "STYLE-C1",
+        "STYLE-C2",
+        "STYLE-C3",
+        "STYLE-C4"
+      ],
+      "reason": "Stage 5 exact 4D playing-style geometry was formally not-confirmed; do not use it to rescue or define the state-level bridge."
+    },
+    "sustainedForcingWindowThresholdFit": false,
+    "winnerOrOutcomeAsDefinition": false
+  },
+  "formalExperiment": false,
+  "hypothesisGenerationOnly": true,
+  "phaseSpecificBridge": {
+    "mtaji": {
+      "applyOnlyWhenCandidatePhase": "mtaji",
+      "classifierRefitAllowed": false,
+      "descriptiveEndpoints": [
+        "MTAJI-M1 and MTAJI-M2 counts/fractions among expansion candidates",
+        "MTAJI-M1 and MTAJI-M2 counts/fractions among non-precursor comparators",
+        "MTAJI-M1 fraction difference expansion-minus-comparator"
+      ],
+      "representation": "frozen confirmed MTAJI-M1/MTAJI-M2 classifier"
+    },
+    "namua": {
+      "applyOnlyWhenCandidatePhase": "namua",
+      "descriptiveEndpoints": [
+        "N-ACT distribution among expansion candidates and non-precursor comparators",
+        "N-CON distribution among expansion candidates and non-precursor comparators",
+        "median difference expansion-minus-comparator",
+        "Cliff's delta expansion versus comparator"
+      ],
+      "formalConfirmationStatus": "exploratory-only",
+      "representation": "frozen discovery-side N-ACT/N-CON ingredient transform",
+      "scalerRefitAllowed": false
+    },
+    "phaseOverlapFirst": true
+  },
+  "protocolHash": "4fcf67ed5f0e43acb898af4adacb010d56b5305bbac68be5bfa3672fc3df8ecc",
+  "replayVerification": {
+    "candidatePhaseMustMatchArchivedObservation": true,
+    "candidatePhaseMustMatchReplayedPosition": true,
+    "failurePolicy": "stop affected condition; do not patch or regenerate",
+    "required": true,
+    "source": "archived initial state plus archived move sequence",
+    "verifyEveryReplayedObservationStateHash": true,
+    "verifyMoveBeforeAfterStateHashWhenPresent": true
+  },
+  "reporting": {
+    "allowedClaim": "secondary/hypothesis-generation evidence about where the fixed Study 1 phenotype lies in the independently defined position representation",
+    "noCausalMediationClaim": true,
+    "noConfirmatoryPValues": true,
+    "noUniversalBaoClaim": true,
+    "reportD2AndD3AsCrossCorpusDescriptiveContrastOnly": true,
+    "reportD3E019AndE020Separately": true,
+    "stratifyByExperimentAndCondition": true
+  },
+  "schemaVersion": 1,
+  "scope": [
+    {
+      "conditions": [
+        "D2-P2",
+        "D2-LG"
+      ],
+      "depth": 2,
+      "experiment": "E-018"
+    },
+    {
+      "conditions": [
+        "D3-P2",
+        "D3-LG"
+      ],
+      "depth": 3,
+      "experiment": "E-019"
+    },
+    {
+      "conditions": [
+        "D3-P2",
+        "D3-LG"
+      ],
+      "depth": 3,
+      "experiment": "E-020"
+    }
+  ],
+  "secondaryCrossStudyAnalysis": true,
+  "sourceArtifacts": {
+    "mtajiCandidateDefinitionHash": "7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d",
+    "mtajiStage2FormalResultHash": "26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347",
+    "schemaAuditFileSha256": "910990b049abf31e42deccac2756dc68a721e565127f842209abf72b4a62e90c",
+    "stage5FormalResultHash": "6069ea45dc055dbd65a14a939ccaa427466d1e3f8852ed81f555dc7ebe16e97c",
+    "study1Archives": {
+      "E-018": {
+        "scope": "D2 only",
+        "sha256": "bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5"
+      },
+      "E-019": {
+        "scope": "D3 only",
+        "sha256": "6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75"
+      },
+      "E-020": {
+        "scope": "D3 only",
+        "sha256": "37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2"
+      }
+    },
+    "styleIngredientDefinitionHash": "b7ac18a99228cd38a8a29580e5f852240c3b9e16a1d1f7bb45c779e4c599c3da"
+  },
+  "sourceBoundaries": {
+    "archiveMutationAllowed": false,
+    "associationValuesInspectedBeforeFreeze": false,
+    "formalAnalysisRerunAllowed": false,
+    "newGamesAllowed": false,
+    "stage5DecisionModified": false,
+    "stage5NotConfirmedRescueAllowed": false,
+    "study1FormalDecisionsModified": false
+  },
+  "stage": "stage6-study1-cross-study-bridge",
+  "status": "frozen-secondary-protocol-before-association-analysis",
+  "study": "position-typology-and-playing-style"
+}
