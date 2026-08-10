@@ -1,7 +1,7 @@
 # 局面類型と棋風研究 — 現在地
 
 更新日: 2026-08-10  
-Status: **Stage 2 mtaji confirmed / Stage 3 namua continuous exploratory / Stage 4 continuous style discovery / Stage 5 formal decision = not-confirmed / Stage 6 Study 1 bridge inventory ready**
+Status: **Stage 2 mtaji confirmed / Stage 3 namua continuous exploratory / Stage 4 continuous style discovery / Stage 5 formal decision = not-confirmed / Stage 6 Study 1 inventory accepted / schema audit next**
 
 Branch: `research/position-typology-and-playing-style`
 
@@ -11,7 +11,7 @@ Branch: `research/position-typology-and-playing-style`
 
 現在の停止点:
 
-> **Stage 5 formal `not-confirmed` を固定済み。Stage 6 Study 1 cross-study bridgeのread-only archive inventoryをローカル実行する直前。cross-study association自体はまだ計算していない。**
+> **Stage 6 Study 1 formal archive inventoryをread-onlyで完了・受理。3 archiveの固定SHA-256一致とmember-path availabilityを確認済み。次はcandidate/game schemaだけを監査し、cross-study relation値を計算する前にbridge protocolを固定する。**
 
 ## 完了済み
 
@@ -41,11 +41,13 @@ Branch: `research/position-typology-and-playing-style`
 24. Stage 5 formal result document / checkpoint / README更新
 25. closed Study 1 final report / vocabulary / formal export index再監査
 26. Stage 6 read-only archive inventory tooling / runbook / checkpoint実装
+27. **Stage 6 local archive inventory complete / accepted**
+28. Stage 6 schema-only audit tooling / runbook / checkpoint実装
 
 未実施:
 
-- Stage 6 archive inventory local execution
-- Stage 6 cross-study scientific bridge protocol
+- Stage 6 archive schema audit local execution
+- Stage 6 exact cross-study scientific bridge protocol freeze
 - Stage 6 cross-study relation analysis
 - final research integration / overview / final report / vocabulary / reproducibility index
 
@@ -61,6 +63,7 @@ Branch: `research/position-typology-and-playing-style`
 - formal corpusをGitHub Actionsで生成しない。
 - Stage 5失敗後にcoordinate数、descriptor、preprocessing、threshold、seed、cluster searchを変更して同じheld-out dataをconfirmationへ再利用しない。
 - Stage 6はsecondary / hypothesis-generationであり、Study 1 formal resultやStage 5 resultを救済しない。
+- Stage 6 relation protocolを固定する前にposition-type / coordinate association値を計算しない。
 
 ## Confirmed Mtaji ontology
 
@@ -235,20 +238,6 @@ Therefore:
 FORMAL DECISION = not-confirmed
 ```
 
-Result document:
-
-```text
-doc/position-typology/STAGE_5_PLAYING_STYLE_CONFIRMATION_RESULT.md
-```
-
-Formal checkpoint:
-
-```text
-doc/position-typology/checkpoints/2026-08-10-stage5-playing-style-formal-not-confirmed.md
-```
-
-## Stage 5 interpretation boundary
-
 Correct synthesis:
 
 > Frozen trajectory coordinates retained substantial held-out variance and reproduced their behavioral anchors/signatures, but the preregistered exact four-dimensional PCA subspace lacked sufficient independent alignment and trajectory-resampling stability. The exact 4D playing-style geometry is therefore not confirmed.
@@ -258,9 +247,7 @@ STYLE-C1..C4 = discovery-derived exploratory trajectory descriptors
 != formally confirmed playing-style coordinate system
 ```
 
-Passing G1/G3/G4 does not rescue G2/G5.
-
-Secondary density diagnostics do not authorize a discrete-style rescue.
+Passing G1/G3/G4 does not rescue G2/G5. Secondary density diagnostics do not authorize a discrete-style rescue.
 
 ## Current scientific synthesis
 
@@ -289,9 +276,9 @@ The strongest completed formal finding remains the confirmed Mtaji two-type stat
 
 ## Stage 6 — Study 1 cross-study bridge
 
-The original `RESEARCH_PLAN.md` scheduled a later cross-study relation to closed phase-transition Study 1. Because independent confirmation stages were inserted during implementation, the next operational phase is called **Stage 6**.
+The original `RESEARCH_PLAN.md` scheduled a later cross-study relation to closed phase-transition Study 1. Because independent confirmation stages were inserted during implementation, this operational phase is called **Stage 6**.
 
-Study 1 fixed sources rechecked:
+Study 1 fixed sources:
 
 ```text
 doc/phase-transition/STUDY_1_FINAL_REPORT.md
@@ -299,46 +286,106 @@ doc/phase-transition/STUDY_1_VOCABULARY.md
 doc/phase-transition/FORMAL_EXPORT_INDEX.md
 ```
 
-Primary formal archives for bridge feasibility:
+### Archive inventory — completed
+
+Accepted local artifact:
 
 ```text
-E-018  e018-final-formal-evaluation.tar.gz
-SHA-256 bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5
-
-E-019  e019-final-formal-evaluation.tar.gz
-SHA-256 6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75
-
-E-020  e020-final-formal-evaluation.tar.gz
-SHA-256 37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2
+artifacts/local/position-typology/stage6-cross-study-bridge-v1/study1-archive-inventory.json
 ```
 
-Repository-code feasibility fact:
-
-- Study 1 observations do not serialize the full pits,
-- formal game JSON stores the complete move sequence,
-- therefore exact candidate board states can be reconstructed from `initialState` + archived moves without new game generation.
-
-No candidate position is forced into a phase-incompatible representation. MTAJI-M1/M2 may only classify `mtaji`; Namua remains separate.
-
-### Stage 6 inventory tool
+Boundary flags remained:
 
 ```text
-tools/experiments/inventory-position-typology-stage6-study1-archives.py
+archivesExtracted = false
+formalAnalysisRerun = false
+gamesExecuted = false
+scientificResultValuesInspected = false
+study1FormalDecisionsModified = false
+stage5DecisionModified = false
+```
+
+Archive identity:
+
+```text
+E-018
+SHA-256 bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5
+member count 4046
+unsafe members 0
+formal game JSON 4000
+
+E-019
+SHA-256 6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75
+member count 26120
+unsafe members 0
+formal game JSON 26000
+
+E-020
+SHA-256 37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2
+member count 9049
+unsafe members 0
+formal game JSON 9000
+```
+
+Required member classes exist in all relevant archives:
+
+- formal game JSON,
+- `candidate-control-metrics.csv`,
+- candidate/archetype CSV,
+- manifests,
+- integrity reports,
+- evaluation results,
+- paired endpoint results.
+
+Inventory result document:
+
+```text
+doc/position-typology/STAGE_6_STUDY1_ARCHIVE_INVENTORY_RESULT.md
+```
+
+### Fixed core bridge scope
+
+The core cross-study bridge is limited to:
+
+```text
+E-018 D2: P2 / LG
+E-019 D3: P2 / LG
+E-020 D3: P2 / LG
+```
+
+E-019 D1 and V2 are not part of this D2/D3 bridge core.
+
+No candidate position is forced into a phase-incompatible representation. MTAJI-M1/M2 may classify only `mtaji`; Namua remains separate.
+
+### Schema audit — next
+
+Tool:
+
+```text
+tools/experiments/inspect-position-typology-stage6-study1-archive-schemas.py
 ```
 
 Runbook:
 
 ```text
-doc/position-typology/STAGE_6_CROSS_STUDY_BRIDGE_RUNBOOK.md
+doc/position-typology/STAGE_6_STUDY1_ARCHIVE_SCHEMA_AUDIT_RUNBOOK.md
 ```
 
 Checkpoint:
 
 ```text
-doc/position-typology/checkpoints/2026-08-10-stage5-not-confirmed-and-stage6-bridge-start.md
+doc/position-typology/checkpoints/2026-08-10-stage6-study1-archive-inventory-accepted.md
 ```
 
-The first Stage 6 operation verifies archive hashes and inventories member paths only. It does not extract archives or inspect scientific relation values.
+The schema audit reports only:
+
+- exact candidate-metrics member paths,
+- candidate CSV header names,
+- archived game JSON key/type structure,
+- move / observation field availability,
+- deterministic replay feasibility.
+
+It may not calculate candidate frequencies, phenotype associations, position-type frequencies, coordinate values, or search-profile relation values.
 
 ## Next local action
 
@@ -352,17 +399,17 @@ git status --short
 python --version
 
 python -m py_compile \
-  tools/experiments/inventory-position-typology-stage6-study1-archives.py
+  tools/experiments/inspect-position-typology-stage6-study1-archive-schemas.py
 
-python tools/experiments/inventory-position-typology-stage6-study1-archives.py
+python tools/experiments/inspect-position-typology-stage6-study1-archive-schemas.py
 ```
 
 Expected artifact:
 
 ```text
-artifacts/local/position-typology/stage6-cross-study-bridge-v1/study1-archive-inventory.json
+artifacts/local/position-typology/stage6-cross-study-bridge-v1/study1-archive-schema-audit.json
 ```
 
 Share only that JSON.
 
-After inventory, define and freeze the cross-study bridge protocol before computing association values.
+Only after schema feasibility is accepted will the exact cross-study relation population, comparator, replay verification, phase-specific representation and descriptive endpoints be frozen. Association values remain prohibited until that protocol freeze.
