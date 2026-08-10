@@ -301,7 +301,7 @@ def trajectory_subsampling(rows, frozen_labels, spec):
         rows_by_game.setdefault(row["gameId"], []).append(row)
         labels_by_game.setdefault(row["gameId"], []).append(label)
 
-    for repeat in range(int(gate["repetitions"])):
+    for _ in range(int(gate["repetitions"])):
         selected = set(rng.choice(games, size=take, replace=False).tolist())
         selected_rows = []
         selected_labels = []
@@ -313,7 +313,7 @@ def trajectory_subsampling(rows, frozen_labels, spec):
         model = KMeans(
             n_clusters=2,
             n_init=int(settings["nInit"]),
-            random_state=int(gate["randomState"]) + repeat + 1,
+            random_state=int(gate["randomState"]),
         ).fit(x)
         scores.append(float(adjusted_rand_score(selected_labels, model.labels_)))
     return quantiles(scores)
@@ -489,7 +489,7 @@ def main():
 
     raw = matrix(capped)
     frozen_x = frozen_transform(raw, candidate)
-    raw_frozen_labels, frozen_labels, distances = frozen_assign(frozen_x, candidate)
+    _, frozen_labels, distances = frozen_assign(frozen_x, candidate)
     label_counts = Counter(str(label) for label in frozen_labels)
     label_fractions = {
         label: float(label_counts.get(label, 0) / len(capped))
@@ -507,7 +507,7 @@ def main():
     axis_gmm = gmm_axis(projection, spec["analysisSettings"]["axisGmm"])
     kde = kde_shape(projection)
 
-    heldout_x, de_novo_labels = fit_de_novo(raw, spec["analysisSettings"])
+    _, de_novo_labels = fit_de_novo(raw, spec["analysisSettings"])
     de_novo_ari = {
         method: float(adjusted_rand_score(frozen_labels, labels))
         for method, labels in de_novo_labels.items()
