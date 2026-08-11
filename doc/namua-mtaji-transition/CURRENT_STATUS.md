@@ -1,7 +1,7 @@
 # Namua→Mtaji Strategic Temporal Transition — Current Status
 
 更新日: 2026-08-11  
-Status: **ACTIVE / Stage 1 primary pilot complete / exact-ply risk-set PASS / exposure-support extension frozen, local generation pending**  
+Status: **ACTIVE / Stage 1 extension complete / Stage 2 readiness minimum not met / extension-wide exact-ply risk-set audit pending**  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
@@ -13,15 +13,13 @@ Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
 Stage 0 technical feasibility is closed PASS.
 
-The 192-game Stage 1 primary exploratory pilot is complete, replay/provenance verified, and permanently consumed.
-
-The supplemental exact-ply risk-set support audit is also complete and passes comparator feasibility.
+The 192-game Stage 1 primary pilot, its exact-ply risk-set audit, and the fixed 768-game Stage 1 exposure-support extension are complete and permanently consumed exploratory data.
 
 Current pause point:
 
-> **Stage 2 design freeze remains unauthorized because only one unique Namua CBE trajectory-ply exposure was observed in the primary pilot. Comparator scarcity is no longer the blocking issue: the strict R3 exact-ply risk set retains 31 unique controls in each observed condition. A fixed 384-paired-opening P2-D2/V2-D2 exploratory exposure-support extension has now been frozen before generation.**
+> **The fixed exposure-support extension increased combined independent Namua CBE support from one to five historicalTrajectoryHash+candidatePly units, but the prospectively frozen Stage 2 readiness minimum of 10 units / 8 trajectories is not met. Stage 2 remains unauthorized. Before any further game generation, the unchanged exact-ply R0–R3 comparator-support audit must be applied to every extension CBE unit at the newly observed candidate plies 24, 26, and 27.**
 
-## 1. Closed-study boundaries remain unchanged
+## 1. Immutable closed-study boundaries
 
 ### Phase-transition Study 1
 
@@ -34,7 +32,7 @@ E-019 / H17 = global not-confirmed
 E-020 / H18 = confirmed only fixed hard / bao / depth3, legacy > phase2
 ```
 
-Frozen `capture-branch-expansion` settings:
+Frozen `capture-branch-expansion` settings remain:
 
 ```text
 before = 3
@@ -45,11 +43,11 @@ persistenceFraction = 0.5
 eventWindow = 8
 ```
 
-Classifier order remains unchanged.
+Classifier precedence remains unchanged.
 
 ### Position-typology / playing-style Study 1
 
-Confirmed bounded Mtaji classifier:
+Frozen Mtaji classifier:
 
 ```text
 candidateDefinitionHash
@@ -61,46 +59,20 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 
 No refit / restandardization / relabeling.
 
-Namua discrete type remains unsupported; N-ACT/N-CON remain exploratory. Playing-style STYLE-C1..C4 exact 4D geometry remains formal not-confirmed.
+Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates only. STYLE-C1..C4 exact geometry remains formal not-confirmed.
 
-## 2. Stage 0 — CLOSED PASS
+## 2. Deterministic Namua clock — fixed research boundary
 
-Canonical result:
-
-```text
-doc/namua-mtaji-transition/STAGE_0_RESULT.md
-```
-
-Technical smoke:
-
-```text
-8 games
-452 observations
-all replay/identity/legacy/provenance gates = passed
-frozen Mtaji artifact hash = exact
-```
-
-## 3. Deterministic Namua clock — fixed design boundary
-
-Engine semantics and fresh Stage 1 establish:
+Engine semantics establish:
 
 ```text
 initial total reserve = 44
 first Mtaji observation = ply 44
 ```
 
-for standard trajectories that survive Namua.
+for a standard trajectory that survives Namua.
 
-Primary Stage 1 clock audit:
-
-```text
-reached Mtaji = 178
-first Mtaji at ply 44 = 178
-terminal before Mtaji = 14
-violations = 0
-```
-
-Therefore:
+Thus:
 
 ```text
 candidate-to-first-Mtaji = 44 - candidatePly
@@ -108,7 +80,7 @@ candidate-to-first-Mtaji = 44 - candidatePly
 
 is deterministic progression, not survival time.
 
-Unauthorized interpretations:
+Unauthorized claims remain:
 
 - CBE accelerates Mtaji;
 - CBE delays Mtaji;
@@ -120,7 +92,7 @@ Canonical amendment:
 doc/namua-mtaji-transition/STAGE_1_PROTOCOL_AMENDMENT_1.md
 ```
 
-## 4. Stage 1 primary exploratory corpus — COMPLETE
+## 3. Stage 1 primary pilot — COMPLETE / CONSUMED
 
 Generation source commit:
 
@@ -128,30 +100,16 @@ Generation source commit:
 b2e36fe3c76a599b4c96d77fd25685836a27dbbd
 ```
 
-Identity:
+Corpus:
 
 ```text
 paired opening replicates = 32
 conditions = 6
 games = 192
-opening seeds = 20271001..20271032
-opening plies = 8
-max ply = 100
-configHash = 88a90e90ded76151d200d75e419097bb7b581cd662da08a1a015e39ce990360c
-summaryHash = 5ce3b8e1fbe58bfbadc5be0a149f1eddb7c204e991599755bdc22eb254e29546
-```
-
-Corpus summary:
-
-```text
 observations = 11083
 unique historical trajectories = 169
-duplicate historical trajectory groups = 22
-largest trajectory group = 3
 reached Mtaji = 178
-first-Mtaji morphology eligible = 178
 terminal before Mtaji = 14
-administrative truncation = 1
 ```
 
 Verification:
@@ -159,10 +117,32 @@ Verification:
 ```text
 43422 legal moves checked
 11083 legacy compatibility checks
-178 phase events
 32 paired openings verified
-all checks = passed
-source hashes match = true
+all replay/provenance checks = passed
+```
+
+Clock:
+
+```text
+178/178 reached-Mtaji games first Mtaji at ply 44
+violations = 0
+```
+
+Primary inherited Category-A result:
+
+```text
+Category A = 9
+Category B = 72
+Category C = 105
+```
+
+Namua CBE result after identity collapse:
+
+```text
+raw condition rows = 2
+unique CBE historicalTrajectoryHash+candidatePly units = 1
+unique CBE historical trajectories = 1
+candidate ply = 33
 ```
 
 Canonical result:
@@ -171,70 +151,26 @@ Canonical result:
 doc/namua-mtaji-transition/STAGE_1_RESULT.md
 ```
 
-## 5. Inherited Category-A / phenotype support
+## 4. Primary exact-ply risk-set audit — PASS
 
-Historical Category-A pipeline reused unchanged:
-
-```text
-signalThreshold = 2.0
-persistenceThreshold = 0.75
-clusterMaxGap = 1
-non-forcing groups = reserve / mobility / capture / front
-```
-
-Fresh classes:
+Prospectively frozen nested support families:
 
 ```text
-Category A = 9
-Category B = 72
-Category C = 105
+R0 = same condition + exact candidate ply
+R1 = R0 + not Category A at exact index
+R2 = R1 + same forced-capture status
+R3 = R2 + no Namua CBE anywhere in control trajectory
 ```
 
-Only four Category-A rows occur in Namua.
-
-Frozen phenotype classification:
+Primary-pilot CBE at ply 33:
 
 ```text
-capture-branch-expansion = 2 Namua rows
-capture-branch-convergence = 2 Namua rows
-forcing-release-precursor = 5 Mtaji rows
-temporary-spike = 0
+P2-D2: R0=31 R1=31 R2=31 R3=31 unique trajectories
+V2-D2: R0=31 R1=31 R2=31 R3=31 unique trajectories
+progression violations = 0
 ```
 
-After identity collapse:
-
-```text
-CBE = 1 unique historicalTrajectoryHash + candidatePly unit
-convergence = 1 unique historicalTrajectoryHash + candidatePly unit
-```
-
-The CBE condition rows P2-D2 and V2-D2 are the same complete historical trajectory at candidate ply 33.
-
-Condition labels therefore cannot be treated as independent replication when historical trajectory identity is equal.
-
-## 6. Why inherited Stage 6 comparator cannot be reused directly
-
-Observed progression support:
-
-```text
-CBE:
-  candidate ply = 33
-  candidate total reserve = 11
-  landmark ply = 41
-  landmark total reserve = 3
-
-convergence:
-  candidate ply = 29
-  candidate total reserve = 15
-  landmark ply = 37
-  landmark total reserve = 7
-```
-
-No deterministic-progression overlap exists, and no temporary-spike Category-A event is available.
-
-Therefore the prior Stage 6 comparator family is not frozen for this prospective study.
-
-## 7. Exact-ply risk-set audit — PASS
+Thus comparator scarcity at ply 33 is not the bottleneck.
 
 Canonical result:
 
@@ -242,123 +178,21 @@ Canonical result:
 doc/namua-mtaji-transition/STAGE_1_RISKSET_RESULT.md
 ```
 
-Observed unique CBE exposure:
-
-```text
-historicalTrajectoryHash = f74b37cbb627b3d5e290667c5fb22aa6ede828a86525c56faf45f9abe6689cbb
-candidate ply = 33
-landmark ply = 41
-forcedCapture = true
-raw condition rows = P2-D2, V2-D2
-unique exposure units = 1
-```
-
-Prespecified nested control families:
-
-```text
-R0 = same condition + exact ply
-R1 = R0 + not Category-A at index
-R2 = R1 + same forced-capture status
-R3 = R2 + no Namua CBE anywhere in control trajectory
-```
-
-Support result:
-
-```text
-P2-D2: R0=31 R1=31 R2=31 R3=31 unique trajectories
-V2-D2: R0=31 R1=31 R2=31 R3=31 unique trajectories
-```
-
-Thus exact-ply deterministic-progression control is feasible and remains abundant under the strictest prespecified family.
-
-At ply 33 all R3 controls have:
-
-```text
-actor reserve = 6
-opponent reserve = 5
-total reserve = 11
-```
-
-At ply 41 total reserve is 3.
-
-No progression violations were observed.
-
-## 8. Risk-set structural positivity and duplicate structure
-
-The observed CBE lies within the R3 control range for 27/28 audited candidate/landmark numeric quantities in both conditions.
-
-Only:
-
-```text
-candidateOpponentFrontSeeds
-CBE = 6
-R3 control range = 8..28
-```
-
-falls outside the observed control range.
-
-This is not a reason to match on front-row structure, because capture/front-row quantities may constitute or mediate the phenotype itself.
-
-Cross-condition duplicate structure remains important:
-
-```text
-R3 condition rows = 62
-R3 unique historical trajectories across P2-D2/V2-D2 = 48
-shared across both conditions = 14
-```
-
-Any formal design must deduplicate or cluster identical complete trajectories across condition labels.
-
-## 9. First-Mtaji morphology technical viability
-
-Frozen artifact audit remains exact:
-
-```text
-expected = stored = recomputed hash
-= 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
-
-classifier refit = false
-restandardization = false
-relabeling = false
-```
-
-Primary Stage 1 background support:
-
-```text
-first-Mtaji eligible = 178
-MTAJI-M1 = 118
-MTAJI-M2 = 60
-```
-
-Outcome measurement is technically viable. Exposure prevalence remains the current bottleneck.
-
-No comparator family may be selected using CBE-vs-control morphology contrast before Stage 2 freeze.
-
-## 10. Stage 2 freeze — STILL NOT AUTHORIZED
-
-Do not freeze yet:
-
-- exact formal comparator;
-- primary statistical unit;
-- duplicate-trajectory handling model;
-- formal condition set;
-- formal exposure/sample target;
-- post-ascertainment structural model;
-- first-Mtaji morphology model;
-- terminal-before-Mtaji estimand policy;
-- formal seed block;
-- effect direction;
-- significance/multiplicity policy.
-
-The remaining reason is inadequate independent CBE exposure, not comparator scarcity or morphology measurement failure.
-
-## 11. Stage 1 exposure-support extension — FROZEN BEFORE GENERATION
+## 5. Stage 1 exposure-support extension — COMPLETE / CONSUMED
 
 Protocol:
 
 ```text
 doc/namua-mtaji-transition/STAGE_1_EXPOSURE_EXTENSION_PROTOCOL.md
 ```
+
+Generation source commit:
+
+```text
+19dde6fded74283942519e7a7cceabfc8f9786c1
+```
+
+Source tree was clean.
 
 Fixed corpus:
 
@@ -371,56 +205,251 @@ opening plies = 8
 max ply = 100
 ```
 
-This condition selection is based only on fresh exposure availability and exact-ply control support, not morphology outcome.
-
-No early stopping based on CBE count or morphology is authorized.
-
-The corpus is permanently exploratory and cannot be reused formally.
-
-Stage 2 design-readiness minimum:
+Identity:
 
 ```text
->= 10 unique Namua CBE historicalTrajectoryHash+candidatePly units
+configHash = 38ac12979e63694b2ba36160094d94e3bef1a81a04dd84d6798133b642a6345a
+summaryHash = a08f3734dc82075c3d233fdc371d5484d255d42924f7fe4f723825f4c15770b0
+```
+
+Corpus summary:
+
+```text
+games = 768
+observations = 42980
+unique historical trajectories = 525
+duplicate historical trajectory groups = 217
+largest trajectory group = 6
+unique opening state keys = 352
+reached Mtaji = 723
+terminal before Mtaji = 45
+administrative truncation = 2
+```
+
+Verification:
+
+```text
+182784 legal moves checked
+42980 legacy compatibility checks
+723 phase events
+384 paired opening replicates verified
+all checks = passed
+source hashes match = true
+```
+
+Extension clock audit:
+
+```text
+first Mtaji at ply 44 = 723/723 reached-Mtaji games
+violations = 0
+```
+
+Canonical extension result:
+
+```text
+doc/namua-mtaji-transition/STAGE_1_EXTENSION_RESULT.md
+```
+
+## 6. Extension inherited Category-A result
+
+Historical pipeline reused unchanged:
+
+```text
+signalThreshold = 2.0
+persistenceThreshold = 0.75
+clusterMaxGap = 1
+non-forcing groups = reserve / mobility / capture / front
+```
+
+Result:
+
+```text
+Category A = 54
+Category B = 247
+Category C = 336
+```
+
+Category A by phase:
+
+```text
+Namua = 24 rows
+Mtaji = 30 rows
+```
+
+No threshold optimization or candidate-definition modification occurred.
+
+## 7. Extension phenotype support
+
+Raw Category-A classes:
+
+```text
+capture-branch-expansion = 6 Namua rows
+capture-branch-convergence = 3 Namua + 4 Mtaji rows
+temporary-spike = 6 Namua rows
+namua-to-mtaji-precursor = 7 Namua rows
+forcing-release-precursor = 2 Namua + 26 Mtaji rows
+```
+
+The six extension CBE condition rows collapse to:
+
+```text
+4 unique CBE trajectory-ply units
+4 unique CBE historical trajectories
+```
+
+Unique extension CBE candidate-ply support:
+
+```text
+ply 24 = 1
+ply 26 = 2
+ply 27 = 1
+```
+
+All four unique extension CBE units are fully ascertained and reach Mtaji.
+
+No CBE-bearing historical trajectory contains multiple CBE events.
+
+## 8. Combined CBE support and readiness gate
+
+Primary + extension:
+
+```text
+raw CBE condition rows = 8
+unique CBE historicalTrajectoryHash+candidatePly units = 5
+unique CBE historical trajectories = 5
+duplicate condition rows = 3
+```
+
+Combined candidate-ply support:
+
+```text
+ply 24 = 1
+ply 26 = 2
+ply 27 = 1
+ply 33 = 1
+```
+
+Prospectively frozen Stage 2 design-readiness minimum:
+
+```text
+>= 10 unique Namua CBE trajectory-ply units
 >= 8 unique CBE-bearing historical trajectories
 ```
 
-This is a feasibility threshold, not a significance rule.
-
-## 12. Extension instrumentation
+Observed:
 
 ```text
-tools/experiments/run-namua-mtaji-stage1-extension.js
-tools/experiments/verify-namua-mtaji-stage1-extension.js
-tools/experiments/extract-namua-mtaji-stage1-extension-candidates.py
-tools/experiments/analyze-namua-mtaji-stage1-events.js
-tools/experiments/audit-namua-mtaji-stage1-clock.js
-tools/experiments/audit-namua-mtaji-stage1-extension-support.js
+5 / 10 units
+5 / 8 trajectories
+```
+
+Decision:
+
+> **NOT MET. The readiness threshold is not waived. Stage 2 remains unauthorized.**
+
+The threshold is a design-feasibility rule, not a significance threshold.
+
+## 9. Comparator landscape after extension
+
+Unlike the primary pilot, the extension contains temporary-spike and convergence support whose raw deterministic-progression ranges overlap the CBE range.
+
+Observed raw CBE candidate-ply range:
+
+```text
+24..27
+```
+
+Raw Stage 6 comparator-family progression overlap is therefore present in the extension.
+
+However, the historical Stage 6 comparator family is **not automatically reinstated**.
+
+The exact-ply risk-set strategy was already prospectively audited without morphology outcomes and directly controls deterministic Namua progression.
+
+No comparator may be selected by inspecting M1/M2 contrasts.
+
+## 10. Mtaji morphology outcome firewall
+
+The frozen MTAJI-M1/MTAJI-M2 classifier remains available technically, but morphology-effect inspection remains unauthorized for Stage 1 design selection.
+
+No CBE-vs-control morphology effect was used to:
+
+- select P2-D2/V2-D2;
+- set the extension size;
+- select a comparator;
+- select candidate-ply support;
+- determine the current next step.
+
+The extension and primary pilot are permanently consumed exploratory corpora and cannot be reused for later formal confirmation.
+
+## 11. Extension-wide exact-ply risk-set audit — FROZEN, PENDING
+
+The primary risk-set PASS was demonstrated only at ply 33.
+
+Extension CBE occurs at new clock positions:
+
+```text
+24
+26
+27
+```
+
+Before any additional game generation, the unchanged R0–R3 support audit must be applied to **every fully ascertained extension Namua CBE unit**.
+
+Canonical scope amendment:
+
+```text
+doc/namua-mtaji-transition/STAGE_1_PROTOCOL_AMENDMENT_3.md
 ```
 
 Runbook:
 
 ```text
-doc/namua-mtaji-transition/STAGE_1_EXTENSION_RUNBOOK.md
+doc/namua-mtaji-transition/STAGE_1_EXTENSION_RISKSET_RUNBOOK.md
 ```
 
-Checkpoint:
+The audit must not inspect morphology labels, tune tolerances, or omit poorly supported exposure units.
 
-```text
-doc/namua-mtaji-transition/checkpoints/2026-08-11-riskset-pass-exposure-extension-frozen.md
-```
+Even a PASS does not itself authorize Stage 2 because the 10-unit / 8-trajectory readiness gate remains unmet.
+
+## 12. Decisions still unfrozen
+
+Do not freeze yet:
+
+- exact formal comparator;
+- primary statistical unit;
+- paired-opening / duplicate-trajectory dependence model;
+- formal condition set;
+- formal sample/exposure target;
+- post-ascertainment structural endpoint/model;
+- first-Mtaji morphology endpoint/model;
+- terminal-before-Mtaji estimand policy;
+- disjoint formal seed block;
+- effect direction;
+- significance/multiplicity policy.
 
 ## 13. Immediate next local step
+
+Do **not** generate more games yet.
 
 Follow:
 
 ```text
-doc/namua-mtaji-transition/STAGE_1_EXTENSION_RUNBOOK.md
+doc/namua-mtaji-transition/STAGE_1_EXTENSION_RISKSET_RUNBOOK.md
 ```
 
-Generate the fixed extension, verify it, rerun the deterministic clock and inherited Category-A pipeline, classify frozen events, and run the combined exposure-support gate.
+Run the existing exact-ply risk-set audit on:
 
-Do not compute CBE-vs-control M1/M2 contrasts before Stage 2 comparator/design freeze.
+```text
+artifacts/local/namua-mtaji-transition/stage1-extension-v1
+```
+
+Return:
+
+```text
+stage1-riskset-audit.json
+stage1-riskset-controls.csv
+```
 
 ## Pause point
 
-> **Stage 1 primary pilot and exact-ply risk-set feasibility audit are complete. Exact-ply same-condition comparison is feasible, but only one unique CBE exposure exists. Stage 2 remains blocked. A fixed 384-paired-opening P2-D2/V2-D2 exploratory exposure-support extension using seeds 20272001..20272384 is now frozen before generation. The next action is local extension generation and exposure-support auditing only; morphology effects remain uninspected for design selection.**
+> **Stage 1 exposure extension is complete, technically valid, and consumed. Combined independent Namua CBE support is now 5 trajectory-ply units / 5 trajectories, below the prospectively frozen 10 / 8 Stage 2 readiness minimum. Stage 2 remains unauthorized. Before any further exploratory generation, apply the unchanged exact-ply R0–R3 support audit to all extension CBE units at plies 24, 26, and 27 without consulting Mtaji morphology outcomes.**
