@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nkkmd/bao-la-kiswahili-game/schemas/namua-mtaji-transition-observation.schema.json",
+  "title": "Bao Namua-Mtaji temporal-transition observation",
+  "description": "New-study observation schema. The payload is intentionally identical to the frozen position-typology observation shape; temporal/event quantities are derived at game or event level rather than written back into closed-study schemas.",
+  "allOf": [
+    {
+      "$ref": "position-typology-observation.schema.json"
+    }
+  ]
+}

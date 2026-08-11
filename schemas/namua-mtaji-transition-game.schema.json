@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/nkkmd/bao-la-kiswahili-game/schemas/namua-mtaji-transition-game.schema.json",
+  "title": "Bao Namua-Mtaji temporal-transition game artifact",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion", "gameId", "gameIndex", "seed", "conditionId", "condition",
+    "configHash", "observations", "moves", "historicalTrajectoryHash",
+    "ruleTrajectoryHash", "seatCanonicalTrajectoryHash", "temporalOutcome"
+  ],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "gameId": {"type": "string", "minLength": 1},
+    "gameIndex": {"type": "integer", "minimum": 0},
+    "seed": {"type": "integer", "minimum": 0},
+    "conditionId": {"type": "string", "minLength": 1},
+    "condition": {"type": "object"},
+    "configHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "namua-mtaji-transition-observation.schema.json"}
+    },
+    "moves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ply", "player", "source", "move", "moveKey",
+          "beforeHistoricalStateHash", "beforeRuleStateKey",
+          "afterHistoricalStateHash", "afterRuleStateKey",
+          "phaseTransitionOccurred"
+        ],
+        "properties": {
+          "ply": {"type": "integer", "minimum": 0},
+          "player": {"type": "integer", "enum": [0, 1]},
+          "source": {"type": "string"},
+          "move": {"type": "object"},
+          "moveKey": {"type": "string"},
+          "beforeHistoricalStateHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "beforeRuleStateKey": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "afterHistoricalStateHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "afterRuleStateKey": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "phaseTransitionOccurred": {"type": "boolean"},
+          "secondarySearch": {"type": ["object", "null"]}
+        }
+      }
+    },
+    "historicalTrajectoryHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "ruleTrajectoryHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "seatCanonicalTrajectoryHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "temporalOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "firstMtajiPly", "terminalPly", "maxObservedPly", "reachedMtaji",
+        "terminalBeforeMtaji", "administrativeTruncation",
+        "firstMtajiMorphologyEligible"
+      ],
+      "properties": {
+        "firstMtajiPly": {"type": ["integer", "null"], "minimum": 0},
+        "terminalPly": {"type": ["integer", "null"], "minimum": 0},
+        "maxObservedPly": {"type": "integer", "minimum": 0},
+        "reachedMtaji": {"type": "boolean"},
+        "terminalBeforeMtaji": {"type": "boolean"},
+        "administrativeTruncation": {"type": "boolean"},
+        "firstMtajiMorphologyEligible": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 # Namua→Mtaji Strategic Temporal Transition — Current Status
 
 更新日: 2026-08-10  
-Status: **ACTIVE / Stage 0 design complete, execution not yet started**  
+Status: **ACTIVE / Stage 0 instrumentation implemented, local validation pending**  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
@@ -13,14 +13,19 @@ Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
 を開始した。
 
-現在は**Stage 0 feasibility auditの設計完了点**である。
+Stage 0のschema / adapter / technical smoke runner / replay verifier / engine regression test / frozen Mtaji artifact auditをrepository上へ実装済みである。
+
+現在の停止点:
+
+> **Stage 0 instrumentation implementation complete / local technical validation pending.**
 
 まだ行っていないこと:
 
-- new scientific corpus generation
+- new scientific exploratory corpus generation
 - exploratory temporal association analysis
 - formal endpoint freeze
 - formal comparator freeze
+- formal statistical unit freeze
 - formal seed freeze
 - statistical model freeze
 - preregistration
@@ -30,34 +35,21 @@ Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
 ## Main head verification
 
-研究開始時にGitHub `main`を再確認した。
+研究開始時GitHub `main`:
 
 ```text
-main
-= c7d06d485789e1ea96d6603802423951a88c1f87
-```
-
-Commit message:
-
-```text
+c7d06d485789e1ea96d6603802423951a88c1f87
 docs: update future research agenda after Study 1 closures
 ```
 
 このSHAを研究開始provenanceとして固定する。
 
-## Restored closed-study state
+## Closed-study state inherited unchanged
 
 ### Phase-transition Study 1
 
-Status:
-
 ```text
-Study 1 closed
-```
-
-Formal decisions:
-
-```text
+Study 1 = closed
 E-010 = not-confirmed
 E-011 = inconclusive
 E-017 = not-confirmed
@@ -66,23 +58,30 @@ E-019 / H17 = global not-confirmed
 E-020 / H18 = confirmed only fixed hard / bao / depth3, legacy > phase2
 ```
 
-Fixed interpretation:
+`capture-branch-expansion`はbounded strategic-transition phenotypeとして固定する。
 
-- `capture-branch-expansion` is a bounded strategic-transition phenotype.
-- classifier/threshold/order remain fixed.
-- E-019 D3 is not retrospectively relabeled as an H17 confirmation.
-- E-018 and E-020 do not jointly establish a general depth interaction.
-- `sustained-forcing window` remains retrospective Stage B vocabulary, not a numeric fitted threshold.
+Frozen classifier settings:
+
+```text
+before = 3
+after = 8
+expansionDelta = 3
+convergenceDelta = -2
+persistenceFraction = 0.5
+eventWindow = 8
+```
+
+Classifier precedenceもclosed moduleからそのまま継承し、変更しない。
+
+`sustained-forcing window`はretrospective Stage B interpretationであり、新研究のfitted thresholdではない。
 
 ### Position-typology / playing-style Study 1
-
-Status:
 
 ```text
 research complete / final integration complete
 ```
 
-Confirmed Mtaji morphology:
+Confirmed bounded Mtaji classifier:
 
 ```text
 candidateDefinitionHash
@@ -92,11 +91,7 @@ MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
 MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 ```
 
-Boundary:
-
-- fixed representation/population only;
-- no refit/restandardization/relabeling;
-- not a universal/final Bao ontology.
+No refit / restandardization / relabeling.
 
 Namua:
 
@@ -116,17 +111,9 @@ STYLE-C1..C4 exact 4D geometry = formal not-confirmed
 
 No rescue is allowed in this study.
 
-## Cross-study bridge state inherited unchanged
+## Cross-study bridge inherited unchanged
 
-Frozen Stage 6 scope:
-
-```text
-E-018 D2: P2 / LG
-E-019 D3: P2 / LG
-E-020 D3: P2 / LG
-```
-
-Result:
+Frozen Stage 6 result:
 
 ```text
 capture-branch-expansion = 59 unique trajectory-ply units
@@ -134,161 +121,133 @@ Namua = 59
 Mtaji = 0
 ```
 
-Therefore same-ply `capture-branch-expansion ↔ MTAJI-M1/M2` was not estimable.
+Same-ply `capture-branch-expansion ↔ MTAJI-M1/M2` was therefore not estimable. The new study addresses the unestimated **future temporal connection** prospectively and does not reinterpret this zero-overlap result.
 
-This new study addresses the unestimated temporal connection prospectively; it does not reinterpret the old zero-overlap result as absence of a future relationship.
+## Critical pre-pilot methodological findings
 
-## Stage 0 repository audit findings
+### 1. Frozen phenotype has an 8-ply future ascertainment window
 
-### Engine
+The existing classifier uses observations through `candidatePly + 8` and gives precedence to `namua-to-mtaji-precursor` when first later Mtaji occurs within 8 ply.
 
-`public/engine.js` exposes sufficient deterministic rule-state transitions for temporal replay.
+Therefore a frozen `capture-branch-expansion` cannot, by definition, have first later Mtaji at distance `<= 8` ply.
 
-Formal phase transition occurs in `finishTurn()` when:
+Consequently the formal time origin remains unfrozen. Candidate-ply time may be retained descriptively, but an ascertainment-aware landmark such as `candidatePly + 8` must be evaluated before preregistration.
+
+### 2. Formal Mtaji is mechanically linked to reserve exhaustion
+
+`public/engine.js` transitions from Namua to Mtaji when both reserves are zero at turn completion.
+
+Therefore any temporal association must distinguish strategic structure from rule-derived progression. Stage 1 must audit raw actor/opponent/total reserve support; N-PROG is not upgraded to a confirmed coordinate.
+
+### 3. Non-Mtaji outcomes require explicit treatment
+
+Current candidate event-state distinction:
 
 ```text
-phase == namua
-reserve[0] == 0
-reserve[1] == 0
+first Mtaji                     = target event candidate
+natural terminal before Mtaji  = competing-event candidate
+max-ply truncation              = administrative censoring candidate
 ```
 
-then `phase = mtaji`.
+The exact survival / competing-risk model remains unfrozen until Stage 1 support is known.
 
-Implication:
+## Stage 0 implementation now present
 
-`time-to-first-Mtaji` is intrinsically related to reserve depletion. Raw reserve must be audited as rule-derived progression context.
+```text
+schemas/namua-mtaji-transition-observation.schema.json
+schemas/namua-mtaji-transition-game.schema.json
 
-### Existing phase-transition instrumentation
+tools/experiments/lib/namua-mtaji-transition-features.js
+tools/experiments/run-namua-mtaji-transition-smoke.js
+tools/experiments/verify-namua-mtaji-transition-smoke.js
+tools/experiments/audit-namua-mtaji-mtaji-artifact.py
 
-`tools/experiments/lib/phase-transition-features.js` records:
+test/namua-mtaji-transition-features.test.js
+test/namua-mtaji-transition-engine.test.js
+
+doc/namua-mtaji-transition/STAGE_0_RUNBOOK.md
+```
+
+Implementation checkpoint:
+
+```text
+doc/namua-mtaji-transition/checkpoints/2026-08-10-stage0-instrumentation-implemented.md
+```
+
+## Stage 0 compatibility design
+
+The new research does not edit closed-study feature/classifier modules.
+
+For every smoke replay state:
+
+1. compute the position-typology observation;
+2. independently compute the legacy phase-transition observation;
+3. require equality for inherited phenotype inputs and state quantities;
+4. replay the stored move and require before/after identity hashes;
+5. recompute game-level temporal outcome.
+
+Compatibility checks cover at least:
 
 - phase
-- reserve
-- houseOwned
-- legalMoveCount
-- captureMoveCount
-- forcedCapture
-- board/global counts
-- front-row occupancy/seeds
-- stateHash
+- reserve / houseOwned / pending
+- historical state hash
+- legal move count
+- capture move count
+- forced-capture state
+- board/non-empty seed summaries
+- front-row occupancy and seed counts
 
-`tools/experiments/lib/forced-capture-regimes.js` implements the frozen candidate/regime classifier.
+This guards against semantic drift when the new study composes both prior research infrastructures.
 
-### Existing position-typology instrumentation
+## Frozen Mtaji artifact audit
 
-`tools/experiments/lib/position-typology-features.js` records full board state plus actor/opponent primitives including:
+RQ3 requires the historical `mtaji-candidate-definition.json` artifact.
 
-- reserve
-- houseOwned / nyumbaSeeds
-- board/front/back seeds
-- occupied/reusable pits
-- front connections
-- legal/capture move counts
-- forcedCapture
-- max/mean capturable seeds
-- capture/relay/chain measures
-- pit variance/concentration
-- rule-state / seat-canonical identities
-
-The existing position-typology schema is therefore a strong base for the new temporal schema.
-
-### Replay
-
-Existing Stage 6 tooling already proves the following pattern is feasible:
+The Stage 0 audit requires all of the following:
 
 ```text
-initialState
--> archived move replay
--> per-ply stateHash verification
--> before/after move hash verification
--> phase agreement
--> reconstructed full position features
+stored candidateDefinitionHash = expected hash
+canonical recomputation hash   = expected hash
+representation dimensions      = 40
+field order                    = exact frozen order
+scaler                         = frozen discovery scaler
+centroids                      = frozen discovery centroids
+canonical labels               = MTAJI-M1 / MTAJI-M2
 ```
 
-The new study should reuse this QA pattern rather than create a weaker replay path.
-
-### Frozen Mtaji artifact dependency
-
-The new RQ3 endpoint requires the actual frozen classifier artifact containing:
-
-- 40-feature order
-- log1p field set
-- discovery StandardScaler parameters
-- discovery centroids
-- raw-label → canonical-label mapping
-
-with hash:
-
-```text
-7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
-```
-
-Stage 0 must verify the artifact file's availability and exact hash before any RQ3 formal design is authorized.
-
-## Critical methodological issue identified before pilot
-
-The existing phenotype classifier uses future observations through 8 ply and gives precedence to `namua-to-mtaji-precursor` when Mtaji occurs within that window.
-
-Therefore:
-
-```text
-capture-branch-expansion -> first later Mtaji distance <= 8
-```
-
-is structurally impossible under the frozen classifier.
-
-The formal time origin is consequently not yet frozen. A `candidatePly + 8` landmark or equivalent ascertainment-aware design must be evaluated before preregistration.
-
-This issue was identified from code/definition audit, not from new outcome inspection.
+If the artifact is unavailable, it is not reconstructed from smoke or held-out data. RQ3 must remain unauthorized/deferred until provenance is restored.
 
 ## Current RQ status
 
 ### RQ1
 
-Priority endpoint family:
-
 ```text
-time-to-first-Mtaji
-```
-
-Status:
-
-```text
-candidate endpoint family selected
-exact origin/model not frozen
+time-to-first-Mtaji = priority endpoint family
+exact time origin / estimator / model = not frozen
 ```
 
 ### RQ2
 
-Status:
-
 ```text
+reserve / nyumba / mobility / front-row / capture / forcing lifecycle
 feature families identified
 functional/time representation not frozen
 ```
 
-Priority is full interval / rule-derived progression rather than post-hoc last-N-ply windows.
-
 ### RQ3
-
-Status:
 
 ```text
 frozen MTAJI-M1/M2 classifier authorized in principle
-artifact availability/hash audit pending
-endpoint handling for ineligible first Mtaji state pending
+historical artifact exact-hash local audit pending
 ```
 
 ### RQ4
 
-Status:
-
 ```text
 secondary/formal candidate only
 no direction preregistered
+past D2/D3 reversal = motivation only
 ```
-
-Past D2/D3 reversal is motivation, not a copied hypothesis.
 
 ## Decisions intentionally not made yet
 
@@ -307,18 +266,39 @@ Do not freeze before Stage 0/1 evidence:
 - significance/decision threshold;
 - RQ2 smoothing/window/functional form.
 
-## Immediate next execution steps
+## Immediate next step — local Stage 0 validation
 
-1. create a new-study temporal schema/spec proposal that composes existing position-typology primitives with phase-transition candidate/regime fields;
-2. add engine regression tests for monotonic `namua -> mtaji`, first-Mtaji detection, reserve/pass edge cases, and terminal-before-Mtaji behavior;
-3. implement a Stage 0 smoke runner or adapter using fresh smoke-only seeds;
-4. implement replay/schema/provenance verifier using full state/move hash checks;
-5. inventory and hash-check the frozen MTAJI classifier artifact;
-6. run only the technical smoke locally;
-7. inspect technical outputs and event-support/multiplicity feasibility without treating them as formal scientific evidence;
-8. define a fresh exploratory Stage 1 seed block and pilot protocol;
-9. only after Stage 1, freeze endpoint/comparator/unit/censoring/model/seeds and preregister.
+Follow:
+
+```text
+doc/namua-mtaji-transition/STAGE_0_RUNBOOK.md
+```
+
+Required local outputs:
+
+```text
+artifacts/local/namua-mtaji-transition/stage0-smoke-v1/manifest.json
+artifacts/local/namua-mtaji-transition/stage0-smoke-v1/verification.json
+artifacts/local/namua-mtaji-transition/stage0-smoke-v1/mtaji-artifact-audit.json
+```
+
+These are technical QA artifacts, not scientific evidence.
+
+## Stage 0 completion gate
+
+Stage 0 is not complete until:
+
+1. new-study unit tests pass;
+2. inherited critical regression tests pass;
+3. technical smoke completes;
+4. full replay/recomputation passes;
+5. legacy/new observation compatibility passes;
+6. formal phase-transition engine regression passes;
+7. first-Mtaji reserve exhaustion/linkage passes;
+8. terminal-before-Mtaji and max-ply truncation remain distinguishable;
+9. source provenance passes;
+10. frozen Mtaji artifact exact hash passes, or RQ3 defer is formally recorded.
 
 ## Pause point
 
-> **Branch and initial research governance are established. Stage 0 audit design is complete. No new games have been generated. Next work starts with temporal schema/instrumentation implementation and local technical smoke; formal endpoint/comparator/seeds remain deliberately unfrozen.**
+> **Stage 0 instrumentation has been implemented on the research branch. No scientific pilot or formal corpus has been generated. Local unit/regression tests, technical smoke, replay verification, and frozen Mtaji artifact audit are now required. Formal endpoint, comparator, statistical unit, model, and seed block remain deliberately unfrozen.**
