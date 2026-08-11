@@ -171,9 +171,11 @@ For each primary exposed trajectory at candidate ply `t`, a control trajectory i
 5. observation exists at `t + 8`;
 6. it is not an inherited Category-A representative at exact index `t`;
 7. actor forced-capture status at `t` equals the exposed CBE status;
-8. the control historical trajectory contains **no Namua CBE anywhere**;
+8. the control historical trajectory contains **no Namua row classified CBE anywhere**;
 9. `firstMtajiMorphologyEligible == true`;
 10. the control historical trajectory has not already been allocated to another matched set.
+
+Rule 8 is deliberately conservative: the R3 exclusion set uses every inherited Namua Category-A row classified CBE, not only rows that later qualify as fully ascertained formal exposures.
 
 This is named **R3-M**: the prospectively supported R3 structural comparator restricted to the morphology-eligible target population.
 
@@ -317,7 +319,7 @@ The exact conditional p-value, not the descriptive effect summary, controls the 
 
 ## 15. Formal decision rule
 
-After integrity, classifier, G1, and G2 pass:
+After integrity, classifier, G1, G2, and the independently bound outcome unlock pass:
 
 ```text
 if p_two_sided < 0.05:
@@ -382,13 +384,14 @@ Complete historical trajectory identity dominates seed, gameId, or replicate ide
 
 - duplicate games sharing `historicalTrajectoryHash` collapse to one canonical trajectory;
 - canonical representative is lexicographically smallest `gameId`;
+- duplicate historical trajectories must have identical stored temporal outcomes or matching aborts;
 - one exposed trajectory maximum per historical trajectory;
 - control historical trajectories are globally non-reused;
 - exposed trajectories can never be controls.
 
 The formal analysis must report raw-game and unique-trajectory counts.
 
-## 19. Outcome firewall and execution order
+## 19. Machine-enforced outcome firewall
 
 Required order:
 
@@ -397,12 +400,29 @@ Required order:
 3. verify deterministic Namua clock;
 4. run inherited Category-A pipeline;
 5. classify frozen Namua events;
-6. construct exposure units and R3-M matched sets **without reading M1/M2 labels**;
-7. evaluate G1/G2;
-8. audit frozen Mtaji artifact hash;
-9. only if G1/G2 pass, classify first-Mtaji M1/M2 and run the formal test.
+6. run `--phase match`, constructing exposure units and R3-M sets **without loading the frozen Mtaji classifier or reading M1/M2 labels**;
+7. evaluate G1/G2 and write the preoutcome assignment/hash;
+8. **stop** and independently review the preoutcome artifacts;
+9. only after that review, commit `doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json` binding the exact observed hashes;
+10. audit the frozen Mtaji artifact hash;
+11. run `--phase evaluate` and the single primary test.
 
-The analysis implementation must keep matched-set construction and morphology classification as distinct phases or functions so the firewall is auditable.
+The unlock file must not exist before preoutcome review. To authorize morphology evaluation it must contain exactly matching values for:
+
+```text
+stage = stage2-formal-outcome-unlock
+outcomeEvaluationAuthorized = true
+inputConfigHash
+formalSourceCommit
+matchingAssignmentHash
+preoutcomeAssignmentCsvSha256
+formalSpecSha256
+eventTableSha256
+```
+
+`--phase evaluate` must refuse to load the Mtaji classifier if the unlock is absent or any bound value differs.
+
+If G1 or G2 fails, the frozen inconclusive decision can be emitted without reading morphology and without an outcome unlock.
 
 ## 20. Formal data boundary
 
