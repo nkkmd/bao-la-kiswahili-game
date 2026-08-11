@@ -57,6 +57,7 @@
     "notCategoryAAtIndex": true,
     "sameForcedCaptureStatus": true,
     "noNamuaCbeAnywhere": true,
+    "noNamuaCbeAnywhereUsesAllClassifiedCbeRows": true,
     "firstMtajiMorphologyEligibleRequired": true,
     "controlsPerExposure": 20,
     "globalControlReuseAllowed": false,
@@ -73,6 +74,22 @@
     "rescueSamplingAllowed": false,
     "thresholdRelaxationAllowed": false,
     "comparatorRelaxationAllowed": false
+  },
+  "outcomeFirewall": {
+    "preoutcomeMatchingPhase": "match",
+    "morphologyEvaluationPhase": "evaluate",
+    "unlockRequiredForMorphologyEvaluation": true,
+    "unlockPath": "doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json",
+    "unlockMustNotExistBeforePreoutcomeReview": true,
+    "unlockStageValue": "stage2-formal-outcome-unlock",
+    "unlockMustBind": [
+      "inputConfigHash",
+      "formalSourceCommit",
+      "matchingAssignmentHash",
+      "preoutcomeAssignmentCsvSha256",
+      "formalSpecSha256",
+      "eventTableSha256"
+    ]
   },
   "primaryOutcome": {
     "observation": "first eligible Mtaji observation",
@@ -113,6 +130,7 @@
     "classify frozen Namua events",
     "construct exposure units and R3-M matched sets without M1/M2 labels",
     "evaluate estimability gates",
+    "independently review and bind the exact preoutcome matching hashes in an outcome-unlock file",
     "audit frozen Mtaji classifier hash",
     "classify first-Mtaji morphology and run primary test"
   ]
