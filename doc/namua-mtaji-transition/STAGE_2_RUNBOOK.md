@@ -18,11 +18,19 @@ Do not:
 
 - reuse any Stage 1 games;
 - change seeds, game count, condition, depth, evaluator, or opening policy;
-- inspect M1/M2 before preoutcome matching is frozen;
+- inspect M1/M2 before preoutcome matching is frozen and independently unlocked;
 - append games after seeing CBE count or morphology outcomes;
 - relax G1/G2;
 - replace R3-M;
 - rerun with a favorable seed block.
+
+The file below must **not exist** before the preoutcome review:
+
+```text
+doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json
+```
+
+`--phase evaluate` is machine-blocked until that file is created after review with exact matching/config/file hashes.
 
 ## 1. Update local branch
 
@@ -36,6 +44,14 @@ git status --short
 ```
 
 The worktree must be clean before formal generation.
+
+Confirm the unlock is absent:
+
+```bash
+test ! -e doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json
+```
+
+If this command fails, stop and inspect why an outcome unlock already exists.
 
 ## 2. Dependency check
 
@@ -199,17 +215,19 @@ stage2-matched-sets-preoutcome.csv
 The matching phase:
 
 - deduplicates complete historical trajectories;
+- requires duplicate complete trajectories to have identical temporal outcomes;
 - selects earliest fully ascertained CBE per trajectory;
+- excludes from controls every trajectory with any Namua row classified CBE;
 - restricts the primary population to first-Mtaji morphology-eligible trajectories without reading M1/M2;
 - applies exact-ply R3-M;
 - selects 20 globally non-reused controls per exposure by frozen SHA-256 ranking;
-- writes `matchingAssignmentHash`;
+- writes `matchingAssignmentHash` and all relevant file/config hashes;
 - evaluates G1/G2;
 - does **not** load the Mtaji classifier.
 
 ## 11. HARD STOP — upload preoutcome artifacts
 
-**Do not run `--phase evaluate` yet.**
+**Do not run `--phase evaluate`.** It will refuse to evaluate because no valid outcome-unlock file exists yet.
 
 Return these files for formal preoutcome review:
 
@@ -231,14 +249,25 @@ G1 morphology-eligible unique CBE trajectories >= 20
 G2 every exposure has exactly 20 unique R3-M controls
 progression violations = 0
 matching assignment hash present
+preoutcome CSV hash present
+formal config/spec/event hashes bound
 no M1/M2 labels read
+frozen Mtaji classifier not loaded by matching
 ```
 
 If either G1 or G2 fails, formal decision is the frozen inconclusive status and no morphology evaluation is authorized.
 
-## 12. Outcome phase — only after preoutcome review passes
+If both pass, the exact observed hashes are committed in:
 
-The commands below are frozen now but must not be run before the hard stop is cleared.
+```text
+doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json
+```
+
+The user then pulls that commit. The unlock is not guessed or created in advance.
+
+## 12. Outcome phase — only after preoutcome review and unlock
+
+The commands below are frozen now but must not be run before the hard stop is cleared and the exact unlock file has been pulled.
 
 First re-audit the frozen classifier without classifying the formal corpus:
 
@@ -254,7 +283,18 @@ Then evaluate the already-frozen assignment:
 python3 tools/experiments/analyze-namua-mtaji-stage2-formal.py --phase evaluate
 ```
 
-`--phase evaluate` recomputes the preoutcome matching assignment and refuses to proceed if its hash or CSV SHA-256 differs.
+`--phase evaluate` recomputes the preoutcome assignment and verifies:
+
+```text
+matchingAssignmentHash
+preoutcomeAssignmentCsvSha256
+formalSpecSha256
+eventTableSha256
+inputConfigHash
+formalSourceCommit
+```
+
+against both the local preoutcome audit and the independently committed unlock **before loading the Mtaji classifier**.
 
 Outputs include:
 
