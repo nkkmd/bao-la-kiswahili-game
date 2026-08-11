@@ -1,7 +1,7 @@
 # Namua→Mtaji Strategic Temporal Transition — Current Status
 
 更新日: 2026-08-11  
-Status: **ACTIVE / Stage 0 closed PASS / Stage 1 pre-generation protocol amended / local generation pending**  
+Status: **ACTIVE / Stage 1 primary pilot complete / supplemental exact-ply risk-set audit pending**  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
@@ -11,13 +11,13 @@ Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
 > **BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — capture-branch-expansionからMtaji morphologyへの時間的接続**
 
-Stage 0 technical feasibility is closed as PASS.
+Stage 0 technical feasibility is closed PASS.
 
-Stage 1 fresh exploratory pilot has been protocol-frozen before generation, but a **pre-generation engine-level amendment** was added after proving that the standard Namua→Mtaji transition clock is deterministic.
+The fresh Stage 1 exploratory pilot has now been generated, replay-verified, and audited. The pilot is permanently consumed exploratory data and cannot be reused for later formal confirmation.
 
 Current pause point:
 
-> **No Stage 1 games have yet been generated. The exploratory corpus/instrumentation is ready, but the study no longer treats time-to-first-Mtaji as a candidate survival endpoint. The next action is local Stage 1 generation followed by deterministic-clock, replay, inherited-candidacy, event-support, and frozen-Mtaji audits.**
+> **The 192-game Stage 1 primary pilot is complete and technically valid, but Stage 2 design freeze remains unauthorized. Only one independent Namua CBE trajectory-ply unit and one independent convergence unit were observed after duplicate collapse, and the inherited Stage 6 comparator family has no deterministic-progression overlap. A prespecified exact-ply same-condition risk-set support audit must now be run on the existing pilot before any larger exploratory generation.**
 
 ## 1. Closed-study boundaries remain unchanged
 
@@ -69,248 +69,279 @@ Canonical result:
 doc/namua-mtaji-transition/STAGE_0_RESULT.md
 ```
 
-Local technical artifacts were generated from:
-
-```text
-023a8bd16ec16838e1a5f072bdc941f702f850b6
-```
-
-Identity:
-
-```text
-configHash
-= 49cbccf1b060afccc9148b70308484eb6c30abb8e800c8b50ec931f1e7a27492
-summaryHash
-= c64ab305cd4691a44738d3068187c453ad2b609aaabf28083aa8652d1b18f916
-```
-
-Technical verification:
+Technical smoke established:
 
 ```text
 8 games
 452 observations
-1878 legal moves checked
-452 legacy compatibility checks
-8 phase-transition events
-all replay/identity/phase/provenance checks = passed
-source hashes match = true
+all replay/identity/legacy/provenance gates = passed
+frozen Mtaji artifact hash = exact
 ```
 
-Frozen Mtaji artifact:
+## 3. Deterministic Namua clock — fixed design boundary
+
+Engine semantics and fresh Stage 1 independently establish:
 
 ```text
-expected = stored = recomputed
-= 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
+initial total reserve = 44
+first Mtaji observation = ply 44
 ```
 
-No refit, restandardization, or relabeling occurred.
+for standard trajectories that survive Namua.
 
-## 3. Deterministic Namua clock — critical pre-generation finding
-
-Engine re-audit established:
+Stage 1 clock audit:
 
 ```text
-initial reserve = [22, 22]
-initial player = 0
+reached Mtaji = 178
+first Mtaji at ply 44 = 178
+terminal before Mtaji = 14
+violations = 0
 ```
 
-Every non-pass Namua move decrements the current player's reserve by exactly 1, and normal turn completion alternates the player.
-
-Formal phase conversion occurs when:
+Therefore:
 
 ```text
-reserve[0] == 0 && reserve[1] == 0
+candidate-to-first-Mtaji = 44 - candidatePly
 ```
 
-Therefore, for a standard trajectory that does not terminate during Namua:
+is a deterministic progression coordinate, not a survival-time endpoint.
 
-```text
-first Mtaji observation ply = 44
-```
+Unauthorized interpretations:
 
-Stage 0 smoke independently showed first Mtaji at ply 44 in all 8/8 games.
+- CBE accelerates Mtaji;
+- CBE delays Mtaji;
+- CBE changes first-Mtaji hazard.
 
-### Consequence
-
-For a surviving Namua candidate at ply `t`:
-
-```text
-candidate-to-first-Mtaji = 44 - t
-```
-
-This is a deterministic progression coordinate, not a variable survival time.
-
-Therefore the study must not use a first-Mtaji hazard/survival model to claim that CBE accelerates or delays formal phase transition.
-
-Canonical amendment:
+Canonical pre-generation amendment:
 
 ```text
 doc/namua-mtaji-transition/STAGE_1_PROTOCOL_AMENDMENT_1.md
 ```
 
-## 4. Revised temporal research target
+## 4. Stage 1 primary exploratory corpus — COMPLETE
 
-The new study now separates:
-
-### A. Temporal localization
-
-Where inherited candidate classes occur on the fixed Namua progression clock.
-
-Candidate ply and total remaining reserve encode essentially the same clock information and must not be treated as independent evidence.
-
-### B. Post-ascertainment structural carry-through
-
-How board/legal-move/forced-capture structure evolves from the fully ascertained phenotype landmark:
+Source commit used for generation:
 
 ```text
-candidatePly + 8
+b2e36fe3c76a599b4c96d77fd25685836a27dbbd
 ```
 
-toward the fixed formal boundary at ply 44.
-
-### C. First Mtaji morphology
-
-Whether progression-matched trajectories containing `capture-branch-expansion` reach a different frozen first-Mtaji morphology than a prespecified progression-matched comparator.
-
-This is now a stronger candidate family for the later formal bridge than raw time-to-first-Mtaji.
-
-No formal primary endpoint is frozen yet.
-
-## 5. Additional inherited-classifier implication
-
-Because `namua-to-mtaji-precursor` has precedence when first Mtaji is within 8 ply and first Mtaji is fixed at ply 44 for surviving games:
-
-```text
-candidatePly >= 36
-```
-
-falls inside the precursor window.
-
-Thus a surviving-trajectory `capture-branch-expansion` cannot occur at candidate ply 36 or later under the frozen classifier.
-
-This is a structural consequence of the machine definition and fixed phase clock, not an empirical discovery about late-Namua strategy.
-
-## 6. Category-A semantic preservation
-
-`capture-branch-expansion` is not applied to every ply.
-
-Only inherited Category-A candidate representatives proceed to phenotype classification.
-
-Historical candidacy is reused unchanged:
-
-```text
-signalThreshold = 2.0
-persistenceThreshold = 0.75
-non-forcing groups = reserve / mobility / capture / front
-minimum active non-forcing groups = 2
-cluster max gap = 1
-Category A = survives forcing-excluded candidacy and is not forcing-coincident
-```
-
-## 7. Stage 1 exploratory corpus identity
-
-No Stage 1 game has yet been generated.
-
-Pre-generation corpus identity remains:
+Identity:
 
 ```text
 paired opening replicates = 32
 conditions = 6
-total games = 192
+games = 192
 opening seeds = 20271001..20271032
 opening plies = 8
 max ply = 100
+configHash = 88a90e90ded76151d200d75e419097bb7b581cd662da08a1a015e39ce990360c
+summaryHash = 5ce3b8e1fbe58bfbadc5be0a149f1eddb7c204e991599755bdc22eb254e29546
 ```
 
-Conditions:
+Corpus summary:
 
 ```text
-P2-D1
-P2-D2
-P2-D3
-LG-D2
-LG-D3
-V2-D2
+observations = 11083
+unique historical trajectories = 169
+duplicate historical trajectory groups = 22
+largest trajectory group = 3
+reached Mtaji = 178
+first-Mtaji morphology eligible = 178
+terminal before Mtaji = 14
+administrative truncation = 1
 ```
 
-The Stage 1 seed block is permanently exploratory and cannot be reused formally.
-
-## 8. Stage 1 instrumentation
+Replay/provenance verification:
 
 ```text
-tools/experiments/run-namua-mtaji-stage1-pilot.js
-tools/experiments/verify-namua-mtaji-stage1-pilot.js
-tools/experiments/audit-namua-mtaji-stage1-clock.js
-tools/experiments/extract-namua-mtaji-stage1-candidates.py
-tools/experiments/analyze-namua-mtaji-stage1-events.js
-tools/experiments/audit-namua-mtaji-mtaji-artifact.py
+43422 legal moves checked
+11083 legacy compatibility checks
+178 phase events
+32 paired openings verified
+all checks = passed
+source hashes match = true
 ```
 
-Runbooks:
+Canonical result:
 
 ```text
-doc/namua-mtaji-transition/STAGE_1_RUNBOOK.md
-doc/namua-mtaji-transition/STAGE_1_RUNBOOK_AMENDMENT_1.md
+doc/namua-mtaji-transition/STAGE_1_RESULT.md
 ```
 
-## 9. Stage 1 required design audits
+## 5. Inherited Category-A pipeline result
 
-Stage 1 may inspect only exploratory design support:
+Historical functions and thresholds were reused unchanged:
 
-- Category-A event availability;
-- inherited phenotype class availability;
-- progression/candidate-ply support;
-- shared progression support for comparator construction;
-- repeated/mixed event structure;
-- overlapping 8-ply ascertainment windows;
-- early terminal-before-Mtaji frequency;
-- post-ascertainment structural support;
-- first-Mtaji frozen M1/M2 classifiability and exploratory counts;
-- condition coverage.
+```text
+signalThreshold = 2.0
+persistenceThreshold = 0.75
+clusterMaxGap = 1
+non-forcing groups = reserve / mobility / capture / front
+```
 
-Raw candidate-to-Mtaji distances remain only deterministic clock diagnostics.
+Fresh classification:
 
-## 10. Decisions still intentionally unfrozen
+```text
+Category A = 9
+Category B = 72
+Category C = 105
+```
 
-Do not freeze until Stage 1 exploratory evidence is inspected:
+Only four Category-A rows occur in Namua:
 
-- formal target population;
-- progression representation used for matching/stratification;
-- exact comparator;
+```text
+P2-D2 Namua = 2
+V2-D2 Namua = 2
+```
+
+The remaining five Category-A rows are already in Mtaji.
+
+## 6. Frozen phenotype support
+
+Category-A phenotype classes:
+
+```text
+capture-branch-expansion = 2 Namua rows
+capture-branch-convergence = 2 Namua rows
+forcing-release-precursor = 5 Mtaji rows
+temporary-spike = 0
+```
+
+Identity collapse shows:
+
+```text
+CBE rows 2 -> 1 unique historical trajectory-ply unit
+convergence rows 2 -> 1 unique historical trajectory-ply unit
+```
+
+The duplicated CBE unit appears under P2-D2 and V2-D2 but has the same complete historical trajectory and candidate ply 33.
+
+The duplicated convergence unit likewise appears under P2-D2 and V2-D2 with the same complete historical trajectory and candidate ply 29.
+
+Condition labels are therefore not independent replications when trajectory identity is equal.
+
+## 7. Inherited Stage 6 comparator is not usable as-is
+
+Observed deterministic-progression locations:
+
+```text
+CBE:
+  candidate ply = 33
+  candidate total reserve = 11
+  landmark ply = 41
+  landmark total reserve = 3
+
+convergence:
+  candidate ply = 29
+  candidate total reserve = 15
+  landmark ply = 37
+  landmark total reserve = 7
+```
+
+There is no reserve/progression overlap.
+
+No temporary-spike Category-A event is available.
+
+Therefore the old Stage 6 comparator family is **not frozen** for the new study.
+
+A direct CBE-versus-convergence morphology comparison would confound phenotype with deterministic Namua progression.
+
+## 8. First-Mtaji morphology remains technically viable
+
+Frozen artifact audit:
+
+```text
+expected = stored = recomputed hash
+= 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
+
+classifier refit = false
+restandardization = false
+relabeling = false
+```
+
+Fresh first-Mtaji background support:
+
+```text
+eligible = 178
+MTAJI-M1 = 118
+MTAJI-M2 = 60
+```
+
+Thus outcome measurement is not the current bottleneck. Exposure/comparator support is.
+
+The unique observed CBE and convergence trajectories both reach MTAJI-M1, but this is non-inferential because there is only one independent unit per class and no progression matching.
+
+## 9. Stage 2 freeze — NOT AUTHORIZED
+
+Do not freeze yet:
+
+- formal comparator;
 - primary statistical unit;
-- repeated-event handling;
-- early-terminal handling;
-- post-ascertainment structural endpoint/model;
-- first-Mtaji morphology endpoint/model;
 - formal condition set;
-- formal sample size;
-- disjoint formal seed block;
+- formal exposure/sample target;
+- post-ascertainment structural model;
+- first-Mtaji morphology model;
+- terminal-before-Mtaji estimand policy;
+- formal seed block;
 - effect direction;
-- decision threshold/multiplicity policy.
+- significance/multiplicity policy.
 
-A standard first-Mtaji survival model is no longer on the candidate-primary list.
+The primary reason is inadequate independent CBE exposure and comparator overlap, not a failed outcome classifier.
+
+## 10. Supplemental Stage 1 exact-ply risk-set audit — FROZEN, NOT YET RUN
+
+Deterministic progression enables an exact-ply comparator candidate.
+
+For a CBE event at ply `t`, another trajectory at the same `t` has the same total remaining reserve under the standard clock.
+
+Prespecified nested support families:
+
+```text
+R0 = same condition + exact ply
+R1 = R0 + no Category-A representative at exact index
+R2 = R1 + same forced-capture status
+R3 = R2 + no Namua CBE anywhere in control trajectory
+```
+
+Protocol:
+
+```text
+doc/namua-mtaji-transition/STAGE_1_PROTOCOL_AMENDMENT_2.md
+```
+
+Implementation:
+
+```text
+tools/experiments/audit-namua-mtaji-stage1-riskset.js
+```
+
+Runbook:
+
+```text
+doc/namua-mtaji-transition/STAGE_1_RISKSET_RUNBOOK.md
+```
+
+This audit uses only the existing consumed pilot. It performs no p-values/effect tests and intentionally does not compare M1 versus M2 labels across risk-set families.
 
 ## 11. Immediate next local step
 
-Follow both:
+Update the branch and run:
 
-```text
-doc/namua-mtaji-transition/STAGE_1_RUNBOOK.md
-doc/namua-mtaji-transition/STAGE_1_RUNBOOK_AMENDMENT_1.md
+```bash
+node --check tools/experiments/audit-namua-mtaji-stage1-riskset.js
+node tools/experiments/audit-namua-mtaji-stage1-riskset.js
 ```
 
-After successful generation and verification, return:
+Return:
 
 ```text
-manifest.json
-verification.json
-clock-audit.json
-candidate-pipeline-audit.json
-stage1-event-audit.json
-stage1-event-table.csv
-mtaji-artifact-audit.json
+artifacts/local/namua-mtaji-transition/stage1-pilot-v1/stage1-riskset-audit.json
+artifacts/local/namua-mtaji-transition/stage1-pilot-v1/stage1-riskset-controls.csv
 ```
+
+No new games should be generated before this audit is inspected.
 
 ## Pause point
 
-> **Stage 0 is closed PASS. Before any Stage 1 data generation, engine semantics showed that first Mtaji is fixed at ply 44 for surviving standard trajectories. The study was prospectively amended: raw time-to-first-Mtaji is no longer a meaningful candidate survival endpoint. Stage 1 will instead audit progression-matched temporal localization, post-ascertainment structural carry-through, and first-Mtaji morphology feasibility. Local Stage 1 generation is now the next action.**
+> **Stage 1 primary pilot is complete and technically valid. The deterministic clock eliminates survival timing as a meaningful endpoint, first-Mtaji morphology is technically available, but only one independent CBE trajectory-ply unit was observed and the inherited comparator lacks progression overlap. Stage 2 remains unauthorized. The next action is the frozen exact-ply same-condition risk-set support audit on the existing 192-game exploratory corpus; no new corpus generation should occur before that audit is inspected.**
