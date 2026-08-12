@@ -1,12 +1,16 @@
-name: Position Complexity Stage 0 CI
+name: Position Complexity Research CI
 
 on:
   pull_request:
     paths:
       - "tools/experiments/lib/position-complexity-search-diagnostic.js"
       - "tools/experiments/run-position-complexity-stage0-smoke.js"
+      - "tools/experiments/run-position-complexity-stage1-exploratory.js"
+      - "tools/experiments/verify-position-complexity-stage1-exploratory.js"
       - "test/position-complexity-search-diagnostic.test.js"
+      - "test/position-complexity-stage1-runner.test.js"
       - "test/search.test.js"
+      - "doc/position-complexity/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
       - ".github/workflows/position-complexity-stage0-ci.yml"
   workflow_dispatch:
 
@@ -38,3 +42,5 @@ jobs:
           }, null, 2));
           if (!result.passed) process.exit(1);
           NODE
+      - name: Position-complexity Stage 1 runner/verifier unit tests
+        run: node test/position-complexity-stage1-runner.test.js
