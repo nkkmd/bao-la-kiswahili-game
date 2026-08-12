@@ -3,7 +3,7 @@
 更新日: 2026-08-12  
 Status: **ACTIVE INDEX**
 
-This index distinguishes technical validation, exploratory design development, and future formal confirmation. An entry in this file does not by itself authorize scientific inference.
+This index distinguishes technical validation, exploratory design development, and future formal confirmation. An entry here does not by itself authorize scientific inference.
 
 ## PCX-S0-T001 — Exact root/depth diagnostic technical validation
 
@@ -16,7 +16,7 @@ status = COMPLETE / PASS
 
 Purpose:
 
-- validate exact exhaustive root-candidate searched values;
+- validate exhaustive exact root-candidate searched values;
 - validate tie-aware TopSet and depth trace;
 - validate mate-domain handling;
 - validate non-mutation, determinism, replay and existing-search consistency.
@@ -29,31 +29,13 @@ tools/experiments/run-position-complexity-stage0-smoke.js
 test/position-complexity-search-diagnostic.test.js
 ```
 
-Result record:
+Result:
 
 ```text
 doc/position-complexity/STAGE_0_SMOKE_RESULT.md
-```
-
-Validated branch head:
-
-```text
-7bf6d801fc1f60ecf73d51c6be158f3f82b226d9
-```
-
-Successful CI identity:
-
-```text
 workflow run = 31589325398
-job = 94090388506
-result = success
-```
-
-Interpretation:
-
-```text
-technical PASS only
-not scientific confirmation
+validated branch head = 7bf6d801fc1f60ecf73d51c6be158f3f82b226d9
+result = PASS / technical only
 ```
 
 ## PCX-S1-E001 — Multi-layer complexity exploratory design corpus
@@ -62,7 +44,7 @@ not scientific confirmation
 stage = Stage 1
 class = exploratory / design development
 scientific inference = exploratory only
-status = FROZEN / READY FOR LOCAL EXECUTION / NOT YET GENERATED
+status = GENERATED / FULLY VERIFIED / EXPLORATORY-CONSUMED / SELECT+MEASURE PENDING
 ```
 
 Stage ID:
@@ -75,6 +57,7 @@ Frozen spec:
 
 ```text
 doc/position-complexity/preregistration/STAGE_1_EXPLORATORY_SPEC.json
+specSha256 = 20574bf430c26181fe6947a9d4ae10db86a9a37b8aec43e8c59af4fa98497165
 ```
 
 Protocol/runbook:
@@ -84,7 +67,7 @@ doc/position-complexity/STAGE_1_EXPLORATORY_PROTOCOL.md
 doc/position-complexity/STAGE_1_RUNBOOK.md
 ```
 
-Population:
+Frozen population:
 
 ```text
 768 games
@@ -94,14 +77,44 @@ then hard / bao / phase2 / depth2
 max ply 100
 ```
 
+Generation verification record:
+
+```text
+doc/position-complexity/STAGE_1_GENERATION_VERIFICATION.md
+```
+
+Verified corpus identity:
+
+```text
+gamesVerified = 768
+observationsVerified = 43110
+movesVerified = 42342
+searchMovesRecomputed = 36211
+fullSearchRecomputation = true
+uniqueHistoricalTrajectories = 685
+duplicateHistoricalTrajectoryGroups = 61
+largestHistoricalTrajectoryGroup = 6
+reachedMtajiGames = 732
+verifiedIdentityHash = b74a48c2c88fc46f48507245ec08f3da820ba4bd2fc5edb7d08bf6574924784f
+verification = PASS
+```
+
+The 768-game corpus and seed block are now permanently consumed exploratory material. No seed extension, selective regeneration, favorable reseeding or duplicate-trajectory replacement is allowed within v1.
+
+Frozen next phases:
+
+```text
+select -> measure -> analyze
+```
+
 Primary design-development targets:
 
-- legalMoveCount distribution and phase coverage;
+- selected-state / phase coverage after trajectory and rule-state deduplication;
+- legalMoveCount distribution;
 - D1→D2 / D2→D3 / D3→D4 TopSet instability prevalence;
 - D2 best-second exact margin and tie prevalence;
 - mate-domain prevalence;
 - nodes/cutoffs/evaluation distributions;
-- unique historical trajectory / unique rule-state availability;
 - Stage 2 estimability gates.
 
 Tooling:
@@ -122,10 +135,9 @@ artifacts/local/position-complexity/stage1-exploratory-v1/
 Formal reuse:
 
 ```text
+scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 ```
-
-No seed extension or outcome-dependent replacement is authorized inside v1.
 
 ## Future Stage 2
 
@@ -135,4 +147,4 @@ formal preregistration = NOT CREATED
 formal corpus = NOT AUTHORIZED / NOT GENERATED
 ```
 
-A Stage 2 experiment ID is created only after PCX-S1-E001 is complete, consumed, independently reviewed, and the formal metric/population/test/sample-size/seed block are frozen prospectively.
+Stage 2 may only be designed after PCX-S1-E001 state selection, D1-D4 measurement, exploratory analysis and readiness-gate audit are completed and recorded. A fresh formal seed block and separate frozen preregistration are mandatory.
