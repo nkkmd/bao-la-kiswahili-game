@@ -1,7 +1,8 @@
 # Namua→Mtaji Strategic Temporal Transition Study
 
-Status: **active / Stage 0 design**  
+Status: **primary formal study complete / not-confirmed / final integration**  
 開始日: 2026-08-10  
+Formal evaluation date: 2026-08-12  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base: `main@c7d06d485789e1ea96d6603802423951a88c1f87`
 
@@ -14,194 +15,179 @@ Base: `main@c7d06d485789e1ea96d6603802423951a88c1f87`
 1. 局面相転移点 Study 1
 2. 局面類型と棋風 Study 1
 
-から生じた未推定部分を扱う、**新規・prospectiveな独立研究**です。
+から生じた未推定部分を扱う、新規・prospectiveな独立研究です。
 
-既存Studyの再解析による救済、formal decisionの変更、negative/null/inconclusive resultの再解釈を目的としません。
+既存Studyのformal decision、threshold、negative/null/inconclusive result、classifier、vocabulary statusを変更・救済しません。
 
-研究上の直接の起点は [`../FUTURE_RESEARCH_AGENDA.md`](../FUTURE_RESEARCH_AGENDA.md) 4.2.1 です。
+## 結論
 
-## 中心研究課題
+Stage 0 feasibilityとStage 1 exploratory design workを経て、fresh held-out Stage 2 formal corpusを事前固定しました。
 
-> `capture-branch-expansion`は単にNamua中に現れるphenotypeなのか、それともformal Namua→Mtaji移行へ近づく過程に位置する戦略的転移構造なのか。
-
-さらに、
-
-> Namuaで観測されたtransition phenotypeの後に最初に到達するMtaji局面は、frozen `MTAJI-M1 / MTAJI-M2` classifier上でどのようなmorphologyを持つのか。
-
-を調べます。
-
-## 既存研究から固定して引き継ぐもの
-
-### 局面相転移点 Study 1
-
-Study 1はclosedです。
-
-- `capture-branch-expansion`はboundedなstrategic-transition phenotypeとして定義済みです。
-- classifier、threshold、classifier orderを変更しません。
-- E-018 / H16: fixed `hard / bao / depth2` で `phase2 > legacy` confirmed。
-- E-019 / H17: global `not-confirmed`。
-- E-020 / H18: fixed `hard / bao / depth3` で `legacy > phase2` independently confirmed。
-- depth2/depth3の逆転を一般的search-profile × depth interactionとは扱いません。
-- `sustained-forcing window`はretrospective Stage B interpretationであり、新研究のfitted thresholdではありません。
-
-### 局面類型と棋風 Study 1
-
-こちらもclosedです。
-
-- `MTAJI-M1 = Capture-Engaged Low-Contrast Morphology`
-- `MTAJI-M2 = Capture-Sparse High-Contrast Morphology`
-
-は、固定representation / population内でformalにconfirmedされたbounded Mtaji morphologyです。使用時はfrozen classifierをrefit・restandardize・relabelしません。
-
-Namuaでは離散position typeをpromoteしません。
-
-- `N-PROG`: progression context
-- `N-ACT`: exploratory continuous capture-activity coordinate
-- `N-CON`: exploratory continuous structural-contrast coordinate
-
-`N-ACT/N-CON`はexploratoryのままです。
-
-Playing styleについては、discrete cluster setはunsupported、`STYLE-C1..C4` exact 4D geometryはStage 5 formal `not-confirmed`です。新研究で救済しません。
-
-## 新研究が扱う未推定部分
-
-固定Stage 6 bridgeでは、unique trajectory-ply単位の`capture-branch-expansion` 59件が
+Primary formal condition:
 
 ```text
-Namua = 59
-Mtaji = 0
+P2-D2 only
+hard / bao / phase2 / depth2
+games = 4096
+seeds = 20280001..20284096
 ```
 
-でした。
-
-したがって、同一candidate ply上の
+Formal exposure/comparator:
 
 ```text
-capture-branch-expansion ↔ MTAJI-M1/M2
+exposure = earliest fully ascertained Namua CBE per unique historical trajectory
+comparator = exact-ply R3-M
+controls = 20 unique controls per exposure
+global control reuse = false
 ```
 
-は推定できませんでした。
+Observed estimability:
 
-本研究ではこの未推定部分を、同時点associationではなく**時間的接続**として研究します。
+```text
+unique earliest-CBE trajectories = 31
+morphology-eligible exposed trajectories = 30
+G1 = PASS (30 >= 20)
+G2 = PASS (20 controls for every exposure)
+matched sets = 30
+unique controls = 600
+```
 
-## 主要RQ候補
+First-Mtaji morphology:
 
-### RQ1 — time-to-first-Mtaji
+```text
+Exposed MTAJI-M1 = 26 / 30 = 0.8667
+Matched-control MTAJI-M1 = 509 / 600 = 0.8483
+mean within-stratum matched risk difference = +0.01833
+Mantel-Haenszel common OR = 1.1618
+```
 
-`capture-branch-expansion`後のfirst later Mtajiまでの時間構造は、事前に固定した適切な比較対象と異なるか。
+Preregistered matched-set exact conditional Poisson-binomial test:
 
-### RQ2 — Namua末期の構造trajectory
+```text
+observed T = 26
+p_two_sided = 1.0
+alpha = 0.05
+```
 
-Namua→Mtajiへ近づく過程で、少なくとも以下のrule-state / board-state primitiveがどのように変化するか。
+Formal decision:
 
-- reserve
-- house ownership / nyumba seeds
-- legal mobility
-- front-row occupancy / seeds / connections
-- legal capture-option count
-- capturable-seed morphology
-- relay / chain structure
-- forced-capture lifecycle
+> **NOT-CONFIRMED**
 
-結果を見てから「移行前5手」「移行前10手」のようなwindowを選びません。可能な限り連続的event time、rule-derived progression coordinate、または事前固定したfunctional representationを使います。
+Within the frozen P2-D2, first-Mtaji-morphology-eligible target population, the preregistered analysis did not confirm an association between prior fully ascertained Namua `capture-branch-expansion` and first-Mtaji frozen morphology relative to exact-ply R3-M controls.
 
-### RQ3 — first Mtaji morphology
+The small positive descriptive difference is not a confirmed association and is not interpreted as a trend or rescued positive result.
 
-`capture-branch-expansion`を経たtrajectoryが最初に到達するnon-terminal Mtaji stateを、frozen classifierで`MTAJI-M1 / MTAJI-M2`へ分類し、その分布を比較します。
+## Deterministic Namua clock
 
-### RQ4 — search profile / depth
+An important design finding became permanent before formal analysis:
 
-新しいtemporal endpointにsearch profileやdepthによる差があるかを検討します。
+```text
+initial total reserve = 44
+first Mtaji observation = ply 44
+Namua total reserve at ply t = 44 - t
+```
 
-formalに扱う場合は、過去Studyのdepth2/depth3 reversalを再確認する設計ではなく、**新しいtemporal endpointに対する独立仮説**として事前登録します。
+Stage 2 again observed first Mtaji at ply 44 for all 3886 reached-Mtaji games, with zero violations.
 
-## Stage 0で既に判明している重要な設計制約
+Therefore first-Mtaji timing is not a survival/hazard endpoint in this engine. The study does not claim CBE accelerates or delays Mtaji.
 
-### 1. phenotype ascertainmentに未来8 plyを使う
+## Frozen inherited definitions
 
-既存`capture-branch-expansion` classifierはcandidate後の最大8 plyを使ってpersistenceを判定し、さらにfirst future Mtajiが8 ply以内なら先に`namua-to-mtaji-precursor`へ分類します。
+### capture-branch-expansion
 
-したがって、`capture-branch-expansion`および同じnon-precursor classifier familyのeventは、定義上「Mtajiまで8 ply以内」の範囲を持ちません。
+```text
+before = 3
+after = 8
+expansionDelta = 3
+convergenceDelta = -2
+persistenceFraction = 0.5
+eventWindow = 8
+```
 
-このためformal survival clockをcandidate plyから開始すると、exposure classificationに未来情報を使うことになります。Stage 0/1では、少なくとも次を比較してからtime originをfreezeします。
+### Historical Category-A
 
-- candidate-ply originを使用する設計
-- classifier ascertainment完了後 (`candidatePly + 8`) をlandmarkとする設計
-- raw candidate-to-Mtaji距離をdescriptiveに残し、formal endpointはpost-ascertainment timeとする設計
+```text
+signalThreshold = 2.0
+persistenceThreshold = 0.75
+clusterMaxGap = 1
+non-forcing groups = reserve / mobility / capture / front
+```
 
-結果を見て有利なoriginを選ぶことは禁止します。
+### Mtaji morphology
 
-### 2. formal Namua→Mtajiはreserve exhaustionで発生する
+```text
+candidateDefinitionHash
+= 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
 
-現engineでは、turn終了時に両playerのreserveが0ならphaseが`mtaji`へ切り替わります。
+MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
+MTAJI-M2 = Capture-Sparse High-Contrast Morphology
+```
 
-したがって、`time-to-first-Mtaji`はreserve残量と機械的に強く関係します。新研究では、raw reserveをprogress contextとして必ず監査し、単なるgame progressionとstrategic-transition phenotypeの関係を混同しません。
+No classifier refit, restandardization, relabeling, threshold tuning, or alternative-k rescue was performed.
 
-`N-PROG`をconfirmed coordinateとして使うのではなく、engine primitiveであるreserveを直接扱います。
+Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates. STYLE-C1..C4 exact geometry remains formal not-confirmed.
 
-### 3. terminal before Mtajiとmax-plyは同じではない
+## Outcome firewall
 
-- natural game termination before Mtajiは、Mtaji到達を不可能にするabsorbing competing event候補です。
-- max-ply打切りはadministrative right censoring候補です。
+Preoutcome matching was completed before any M1/M2 label was read.
 
-単純に「Mtaji非到達gameを除外」しません。実際の頻度をfresh pilotで確認してから、survival / competing-risk設計をfreezeします。
+```text
+morphologyLabelsRead during matching = false
+frozen Mtaji classifier loaded during matching = false
+```
 
-### 4. raw plyは独立標本ではない
+Only after independent review passed was the exact matching/config/file identity bound in:
 
-primary statistical unitはまだfreezeしません。
+```text
+preregistration/STAGE_2_OUTCOME_UNLOCK.json
+```
 
-同一trajectory内の複数candidate event、重複trajectory、overlapping risk episodeをStage 1 pilotで監査し、以下のどれをformal primary unitとするかを結果を見る前に固定します。
+The evaluated morphology CSV preserved the frozen preoutcome assignment exactly. Final artifact audit independently reproduced the primary statistics and formal decision.
 
-- one index event per game / trajectory
-- trajectory-event episode with trajectory-clustered inference
-- prespecified risk-set / matched episode
-- その他、依存構造を明示的に扱う設計
+## 最初に読む文書
 
-## 研究stage
+1. [`RESUME_HERE.md`](RESUME_HERE.md) — current restart boundary
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — complete current state and immutable boundaries
+3. [`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) — canonical Stage 2 formal result
+4. [`STAGE_2_FORMAL_PROTOCOL.md`](STAGE_2_FORMAL_PROTOCOL.md) — frozen protocol
+5. [`preregistration/STAGE_2_FORMAL_SPEC.json`](preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable preregistration
+6. [`checkpoints/2026-08-12-stage2-formal-not-confirmed.md`](checkpoints/2026-08-12-stage2-formal-not-confirmed.md) — formal decision checkpoint
 
-1. **Stage 0 — schema / engine / artifact / replay feasibility audit**
-2. **Stage 1 — fresh exploratory temporal pilot**
-3. **Stage 2 — endpoint / comparator / population / unit / censoring / model / seed freeze**
-4. **Stage 3 — preregistration**
-5. **Stage 4 — fresh held-out formal corpus generation**
-6. **Stage 5 — preregistered confirmatory analysis**
-7. **Stage 6 — bounded secondary analysis / external-validity diagnostics if preregistered or clearly exploratory**
-8. **Stage 7 — final integration / closure**
+## Stage 1 provenance
 
-Formal corpusはlocalで生成し、GitHub Actionsで大規模生成しません。held-out formal corpusはpreregistration freeze前に科学的inspectionしません。
+All Stage 1 corpora are permanently consumed exploratory evidence and are excluded from Stage 2 formal inference.
 
-## 現在の文書
+Final Stage 1 readiness:
 
-- [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md) — 研究設計骨格
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在地・固定境界・pause point
-- [`STAGE_0_AUDIT.md`](STAGE_0_AUDIT.md) — Stage 0 feasibility audit設計
-- [`checkpoints/`](checkpoints/) — 研究判断の時系列記録
+```text
+unique CBE trajectory-ply units = 14
+unique CBE historical trajectories = 14
+frozen gate = >=10 units / >=8 trajectories
+result = PASS
+```
 
-## 既存科学的正本
+Relevant records include:
 
-### Phase-transition Study 1
-
-- [`../phase-transition/STUDY_1_OVERVIEW.md`](../phase-transition/STUDY_1_OVERVIEW.md)
-- [`../phase-transition/STUDY_1_FINAL_REPORT.md`](../phase-transition/STUDY_1_FINAL_REPORT.md)
-- [`../phase-transition/STUDY_1_VOCABULARY.md`](../phase-transition/STUDY_1_VOCABULARY.md)
-- [`../phase-transition/FORMAL_EXPORT_INDEX.md`](../phase-transition/FORMAL_EXPORT_INDEX.md)
-
-### Position-typology / playing-style Study 1
-
-- [`../position-typology/STUDY_1_OVERVIEW.md`](../position-typology/STUDY_1_OVERVIEW.md)
-- [`../position-typology/STUDY_1_FINAL_REPORT.md`](../position-typology/STUDY_1_FINAL_REPORT.md)
-- [`../position-typology/STUDY_1_VOCABULARY.md`](../position-typology/STUDY_1_VOCABULARY.md)
-- [`../position-typology/REPRODUCIBILITY_INDEX.md`](../position-typology/REPRODUCIBILITY_INDEX.md)
-- [`../position-typology/MTAJI_CONFIRMED_ONTOLOGY.md`](../position-typology/MTAJI_CONFIRMED_ONTOLOGY.md)
+- [`STAGE_1_RESULT.md`](STAGE_1_RESULT.md)
+- [`STAGE_1_EXTENSION_RESULT.md`](STAGE_1_EXTENSION_RESULT.md)
+- [`STAGE_1_FINAL_EXTENSION_RESULT.md`](STAGE_1_FINAL_EXTENSION_RESULT.md)
+- [`STAGE_1_RISKSET_RESULT.md`](STAGE_1_RISKSET_RESULT.md)
+- [`STAGE_1_EXTENSION_RISKSET_RESULT.md`](STAGE_1_EXTENSION_RISKSET_RESULT.md)
 
 ## Interpretation boundary
 
-本研究が将来positive resultを得ても、それだけで次を主張しません。
+This formal negative result does not authorize:
 
-- universal Bao transition law
-- causal mediation
-- MTAJI-M1/M2のuniversal ontology化
-- N-ACT/N-CONのconfirmed coordinate化
-- STYLE-C1..C4の救済
-- general search-profile × depth interaction
-- 既存Studyのformal decision変更
+- proof of absence of all Namua→Mtaji temporal structure;
+- causal null claims;
+- Mtaji timing/hazard claims;
+- generalization beyond P2-D2;
+- universal ontology claims for MTAJI-M1/M2;
+- post-hoc candidate-ply subgroup, comparator, threshold, seed, or sample-size rescue;
+- reclassification of N-ACT/N-CON or STYLE-C1..C4.
+
+Any new confirmatory question must be a separate prospective study with a fresh preregistration and fresh evidence.
+
+## Local artifact policy
+
+Formal corpus and derived large artifacts remain under `artifacts/local/`, are gitignored, and must not be committed. Formal generation remains local-only; GitHub Actions is not used for the 4096-game corpus.
