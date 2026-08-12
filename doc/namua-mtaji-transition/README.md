@@ -1,8 +1,9 @@
 # Namua→Mtaji Strategic Temporal Transition Study
 
-Status: **primary formal study complete / not-confirmed / final integration**  
+Status: **Study 1 closed / repository closure complete / formal decision `not-confirmed`**  
 開始日: 2026-08-10  
 Formal evaluation date: 2026-08-12  
+Closure date: 2026-08-12  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base: `main@c7d06d485789e1ea96d6603802423951a88c1f87`
 
@@ -15,15 +16,15 @@ Base: `main@c7d06d485789e1ea96d6603802423951a88c1f87`
 1. 局面相転移点 Study 1
 2. 局面類型と棋風 Study 1
 
-から生じた未推定部分を扱う、新規・prospectiveな独立研究です。
+から生じた未推定部分を扱った、prospectiveな独立研究です。
 
-既存Studyのformal decision、threshold、negative/null/inconclusive result、classifier、vocabulary statusを変更・救済しません。
+既存Studyのformal decision、threshold、negative/null/inconclusive result、classifier、vocabulary statusは変更・救済していません。
 
 ## 結論
 
-Stage 0 feasibilityとStage 1 exploratory design workを経て、fresh held-out Stage 2 formal corpusを事前固定しました。
+Fresh held-out Stage 2 formal corpusを使ったprimary formal analysisは完了しました。
 
-Primary formal condition:
+Formal condition:
 
 ```text
 P2-D2 only
@@ -61,9 +62,10 @@ mean within-stratum matched risk difference = +0.01833
 Mantel-Haenszel common OR = 1.1618
 ```
 
-Preregistered matched-set exact conditional Poisson-binomial test:
+Single preregistered primary test:
 
 ```text
+matched-set exact conditional Poisson-binomial test
 observed T = 26
 p_two_sided = 1.0
 alpha = 0.05
@@ -75,11 +77,11 @@ Formal decision:
 
 Within the frozen P2-D2, first-Mtaji-morphology-eligible target population, the preregistered analysis did not confirm an association between prior fully ascertained Namua `capture-branch-expansion` and first-Mtaji frozen morphology relative to exact-ply R3-M controls.
 
-The small positive descriptive difference is not a confirmed association and is not interpreted as a trend or rescued positive result.
+The small positive descriptive difference is not treated as a trend or rescued positive result.
 
 ## Deterministic Namua clock
 
-An important design finding became permanent before formal analysis:
+A central design result became permanent before formal outcome analysis:
 
 ```text
 initial total reserve = 44
@@ -90,6 +92,29 @@ Namua total reserve at ply t = 44 - t
 Stage 2 again observed first Mtaji at ply 44 for all 3886 reached-Mtaji games, with zero violations.
 
 Therefore first-Mtaji timing is not a survival/hazard endpoint in this engine. The study does not claim CBE accelerates or delays Mtaji.
+
+## 最初に読む文書
+
+1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向け成果概要
+2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 科学的最終統合
+3. [`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) — canonical Stage 2 formal result
+4. [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
+5. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — closure状態とimmutable boundary
+6. [`RESUME_HERE.md`](RESUME_HERE.md) — closed studyの安全な復元入口
+
+## Formal design / preregistration
+
+- [`STAGE_2_FORMAL_PROTOCOL.md`](STAGE_2_FORMAL_PROTOCOL.md) — frozen human-readable protocol
+- [`preregistration/STAGE_2_FORMAL_SPEC.json`](preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable preregistration
+- [`preregistration/STAGE_2_OUTCOME_UNLOCK.json`](preregistration/STAGE_2_OUTCOME_UNLOCK.json) — independently reviewed preoutcome identity binding
+- [`STAGE_2_RUNBOOK.md`](STAGE_2_RUNBOOK.md) — completed execution runbook
+
+## Key checkpoints
+
+- [`checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md`](checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md)
+- [`checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md`](checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md)
+- [`checkpoints/2026-08-12-stage2-formal-not-confirmed.md`](checkpoints/2026-08-12-stage2-formal-not-confirmed.md)
+- [`checkpoints/2026-08-12-study1-formal-closure.md`](checkpoints/2026-08-12-study1-formal-closure.md)
 
 ## Frozen inherited definitions
 
@@ -127,31 +152,18 @@ No classifier refit, restandardization, relabeling, threshold tuning, or alterna
 
 Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates. STYLE-C1..C4 exact geometry remains formal not-confirmed.
 
-## Outcome firewall
+## Outcome firewall and final audit
 
-Preoutcome matching was completed before any M1/M2 label was read.
+Preoutcome matching completed before any M1/M2 label was read.
 
 ```text
 morphologyLabelsRead during matching = false
 frozen Mtaji classifier loaded during matching = false
 ```
 
-Only after independent review passed was the exact matching/config/file identity bound in:
+Only after independent review passed was the exact matching/config/file identity bound in `preregistration/STAGE_2_OUTCOME_UNLOCK.json`.
 
-```text
-preregistration/STAGE_2_OUTCOME_UNLOCK.json
-```
-
-The evaluated morphology CSV preserved the frozen preoutcome assignment exactly. Final artifact audit independently reproduced the primary statistics and formal decision.
-
-## 最初に読む文書
-
-1. [`RESUME_HERE.md`](RESUME_HERE.md) — current restart boundary
-2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — complete current state and immutable boundaries
-3. [`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) — canonical Stage 2 formal result
-4. [`STAGE_2_FORMAL_PROTOCOL.md`](STAGE_2_FORMAL_PROTOCOL.md) — frozen protocol
-5. [`preregistration/STAGE_2_FORMAL_SPEC.json`](preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable preregistration
-6. [`checkpoints/2026-08-12-stage2-formal-not-confirmed.md`](checkpoints/2026-08-12-stage2-formal-not-confirmed.md) — formal decision checkpoint
+The evaluated morphology assignment preserved the frozen preoutcome assignment exactly. Independent post-evaluation review reproduced the primary counts, all matched-set summaries, Poisson-binomial test, risk difference, MH OR, and final decision.
 
 ## Stage 1 provenance
 
@@ -166,14 +178,6 @@ frozen gate = >=10 units / >=8 trajectories
 result = PASS
 ```
 
-Relevant records include:
-
-- [`STAGE_1_RESULT.md`](STAGE_1_RESULT.md)
-- [`STAGE_1_EXTENSION_RESULT.md`](STAGE_1_EXTENSION_RESULT.md)
-- [`STAGE_1_FINAL_EXTENSION_RESULT.md`](STAGE_1_FINAL_EXTENSION_RESULT.md)
-- [`STAGE_1_RISKSET_RESULT.md`](STAGE_1_RISKSET_RESULT.md)
-- [`STAGE_1_EXTENSION_RISKSET_RESULT.md`](STAGE_1_EXTENSION_RISKSET_RESULT.md)
-
 ## Interpretation boundary
 
 This formal negative result does not authorize:
@@ -186,8 +190,10 @@ This formal negative result does not authorize:
 - post-hoc candidate-ply subgroup, comparator, threshold, seed, or sample-size rescue;
 - reclassification of N-ACT/N-CON or STYLE-C1..C4.
 
-Any new confirmatory question must be a separate prospective study with a fresh preregistration and fresh evidence.
+Any new confirmatory question must be a separate prospective study with fresh preregistration and fresh evidence.
 
-## Local artifact policy
+## Closed-study rule
 
-Formal corpus and derived large artifacts remain under `artifacts/local/`, are gitignored, and must not be committed. Formal generation remains local-only; GitHub Actions is not used for the 4096-game corpus.
+Study 1 is complete. Do not append Stage 2 games, seek a favorable seed block, change the comparator/control ratio, or reinterpret the primary result.
+
+Formal corpus and derived large artifacts remain under `artifacts/local/`, are gitignored, and must not be committed. Formal generation remains local-only; GitHub Actions was not used for the 4096-game corpus.
