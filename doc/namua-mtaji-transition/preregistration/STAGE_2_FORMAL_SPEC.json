@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "study": "namua-mtaji-temporal-transition",
+  "stage": "stage2-formal-confirmation",
+  "frozenAt": "2026-08-11",
+  "formalExperiment": true,
+  "condition": {
+    "id": "P2-D2",
+    "level": "hard",
+    "evaluator": "bao",
+    "search": "phase2",
+    "maxDepth": 2
+  },
+  "corpus": {
+    "games": 4096,
+    "baseOpeningSeed": 20280001,
+    "lastOpeningSeed": 20284096,
+    "openingPolicy": "seeded-uniform-legal",
+    "openingPlies": 8,
+    "maxPly": 100,
+    "earlyStoppingAllowed": false,
+    "appendAfterOutcomeInspectionAllowed": false
+  },
+  "inheritedDefinitions": {
+    "categoryASignalThreshold": 2.0,
+    "categoryAPersistenceThreshold": 0.75,
+    "categoryAClusterMaxGap": 1,
+    "captureBranchExpansion": {
+      "before": 3,
+      "after": 8,
+      "expansionDelta": 3,
+      "convergenceDelta": -2,
+      "persistenceFraction": 0.5,
+      "eventWindow": 8
+    },
+    "mtajiCandidateDefinitionHash": "7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d"
+  },
+  "exposure": {
+    "phase": "namua",
+    "category": "A",
+    "classification": "capture-branch-expansion",
+    "ascertainmentCompleteRequired": true,
+    "deduplicateByHistoricalTrajectory": true,
+    "withinTrajectoryEventRule": "earliest fully ascertained CBE candidate ply",
+    "maximumExposuresPerHistoricalTrajectory": 1
+  },
+  "targetPopulation": {
+    "firstMtajiMorphologyEligibleRequired": true,
+    "terminalBeforeMtajiImputation": "none",
+    "interpretation": "conditional on reaching first eligible Mtaji"
+  },
+  "comparator": {
+    "name": "R3-M",
+    "sameCondition": true,
+    "exactCandidatePly": true,
+    "landmarkOffset": 8,
+    "notCategoryAAtIndex": true,
+    "sameForcedCaptureStatus": true,
+    "noNamuaCbeAnywhere": true,
+    "noNamuaCbeAnywhereUsesAllClassifiedCbeRows": true,
+    "firstMtajiMorphologyEligibleRequired": true,
+    "controlsPerExposure": 20,
+    "globalControlReuseAllowed": false,
+    "matchOnCaptureOrFrontFeatures": false,
+    "canonicalTrajectoryRepresentative": "lexicographically smallest gameId",
+    "exposureOrderSalt": "nmt-stage2-exposure-order-v1",
+    "controlRankSalt": "nmt-stage2-control-rank-v1"
+  },
+  "estimabilityGates": {
+    "minimumMorphologyEligibleUniqueExposedTrajectories": 20,
+    "requiredControlsPerExposedTrajectory": 20,
+    "ifExposureGateFails": "inconclusive-insufficient-exposure",
+    "ifComparatorGateFails": "inconclusive-comparator-shortage",
+    "rescueSamplingAllowed": false,
+    "thresholdRelaxationAllowed": false,
+    "comparatorRelaxationAllowed": false
+  },
+  "outcomeFirewall": {
+    "preoutcomeMatchingPhase": "match",
+    "morphologyEvaluationPhase": "evaluate",
+    "unlockRequiredForMorphologyEvaluation": true,
+    "unlockPath": "doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json",
+    "unlockMustNotExistBeforePreoutcomeReview": true,
+    "unlockStageValue": "stage2-formal-outcome-unlock",
+    "unlockMustBind": [
+      "inputConfigHash",
+      "formalSourceCommit",
+      "matchingAssignmentHash",
+      "preoutcomeAssignmentCsvSha256",
+      "formalSpecSha256",
+      "eventTableSha256"
+    ]
+  },
+  "primaryOutcome": {
+    "observation": "first eligible Mtaji observation",
+    "MTAJI-M1": 1,
+    "MTAJI-M2": 0,
+    "classifierRefitAllowed": false,
+    "restandardizationAllowed": false,
+    "relabelingAllowed": false
+  },
+  "primaryTest": {
+    "name": "matched-set exact conditional Poisson-binomial test",
+    "statistic": "number of exposed trajectories classified MTAJI-M1",
+    "nullStratumProbability": "total MTAJI-M1 count in stratum / stratum size",
+    "twoSidedPValue": "min(1, 2 * min(P(T<=Tobs), P(T>=Tobs)))",
+    "alpha": 0.05,
+    "alternative": "two-sided",
+    "multiplicityCorrection": "none; one primary test"
+  },
+  "effectSummaries": [
+    "exposed MTAJI-M1 proportion",
+    "pooled matched-control MTAJI-M1 proportion",
+    "mean within-stratum matched risk difference",
+    "Mantel-Haenszel common odds ratio"
+  ],
+  "decisionRule": {
+    "ifEstimableAndPBelowAlpha": "confirmed-association",
+    "ifEstimableAndPAtOrAboveAlpha": "not-confirmed",
+    "positiveRiskDifferenceDirection": "CBE-associated-with-MTAJI-M1",
+    "negativeRiskDifferenceDirection": "CBE-associated-with-MTAJI-M2",
+    "causalInterpretationAuthorized": false,
+    "timingInterpretationAuthorized": false
+  },
+  "executionOrder": [
+    "generate fixed corpus",
+    "verify replay/provenance/identity",
+    "verify deterministic Namua clock",
+    "run inherited Category-A pipeline",
+    "classify frozen Namua events",
+    "construct exposure units and R3-M matched sets without M1/M2 labels",
+    "evaluate estimability gates",
+    "independently review and bind the exact preoutcome matching hashes in an outcome-unlock file",
+    "audit frozen Mtaji classifier hash",
+    "classify first-Mtaji morphology and run primary test"
+  ]
+}

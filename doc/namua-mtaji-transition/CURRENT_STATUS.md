@@ -1,55 +1,77 @@
 # Namua→Mtaji Strategic Temporal Transition — Current Status
 
-更新日: 2026-08-10  
-Status: **ACTIVE / Stage 0 instrumentation implemented, local validation pending**  
+更新日: 2026-08-12  
+Status: **STUDY 1 CLOSED / REPOSITORY CLOSURE COMPLETE / FORMAL DECISION = NOT-CONFIRMED**  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
 ## Current state
 
-新規独立研究
+研究題目:
 
 > **BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — capture-branch-expansionからMtaji morphologyへの時間的接続**
 
-を開始した。
-
-Stage 0のschema / adapter / technical smoke runner / replay verifier / engine regression test / frozen Mtaji artifact auditをrepository上へ実装済みである。
-
-現在の停止点:
-
-> **Stage 0 instrumentation implementation complete / local technical validation pending.**
-
-まだ行っていないこと:
-
-- new scientific exploratory corpus generation
-- exploratory temporal association analysis
-- formal endpoint freeze
-- formal comparator freeze
-- formal statistical unit freeze
-- formal seed freeze
-- statistical model freeze
-- preregistration
-- held-out formal corpus generation/inspection
-
-したがって、このbranch上には新研究のpositive/negative scientific resultはまだ存在しない。
-
-## Main head verification
-
-研究開始時GitHub `main`:
+Final state:
 
 ```text
-c7d06d485789e1ea96d6603802423951a88c1f87
-docs: update future research agenda after Study 1 closures
+Stage 0 technical feasibility = CLOSED PASS
+Stage 1 exploratory work = COMPLETE / CONSUMED
+Stage 2 readiness = PASS
+Stage 2 formal design = FROZEN
+Stage 2 formal corpus = COMPLETE / VERIFIED
+Stage 2 preoutcome matching = COMPLETE / PASS
+G1 = PASS
+G2 = PASS
+outcome firewall = PASSED
+frozen Mtaji artifact audit = PASS
+primary formal evaluation = COMPLETE
+formal decision = NOT-CONFIRMED
+post-evaluation independent audit = PASS
+final integration = COMPLETE
+research status = CLOSED
 ```
 
-このSHAを研究開始provenanceとして固定する。
+No further Stage 2 sampling, primary analysis, rescue analysis, or outcome-dependent redesign is authorized.
 
-## Closed-study state inherited unchanged
+## 1. Canonical closure records
+
+First-read overview:
+
+```text
+doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md
+```
+
+Scientific final integration:
+
+```text
+doc/namua-mtaji-transition/STUDY_1_FINAL_REPORT.md
+```
+
+Canonical formal result:
+
+```text
+doc/namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md
+```
+
+Reproducibility/provenance index:
+
+```text
+doc/namua-mtaji-transition/REPRODUCIBILITY_INDEX.md
+```
+
+Formal closure checkpoint:
+
+```text
+doc/namua-mtaji-transition/checkpoints/2026-08-12-study1-formal-closure.md
+```
+
+## 2. Immutable inherited boundaries
+
+No closed-study decision is reopened.
 
 ### Phase-transition Study 1
 
 ```text
-Study 1 = closed
 E-010 = not-confirmed
 E-011 = inconclusive
 E-017 = not-confirmed
@@ -58,9 +80,7 @@ E-019 / H17 = global not-confirmed
 E-020 / H18 = confirmed only fixed hard / bao / depth3, legacy > phase2
 ```
 
-`capture-branch-expansion`はbounded strategic-transition phenotypeとして固定する。
-
-Frozen classifier settings:
+Frozen CBE settings:
 
 ```text
 before = 3
@@ -71,17 +91,18 @@ persistenceFraction = 0.5
 eventWindow = 8
 ```
 
-Classifier precedenceもclosed moduleからそのまま継承し、変更しない。
+Historical Category-A settings:
 
-`sustained-forcing window`はretrospective Stage B interpretationであり、新研究のfitted thresholdではない。
+```text
+signalThreshold = 2.0
+persistenceThreshold = 0.75
+clusterMaxGap = 1
+non-forcing groups = reserve / mobility / capture / front
+```
 
 ### Position-typology / playing-style Study 1
 
-```text
-research complete / final integration complete
-```
-
-Confirmed bounded Mtaji classifier:
+Frozen Mtaji classifier:
 
 ```text
 candidateDefinitionHash
@@ -91,214 +112,278 @@ MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
 MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 ```
 
-No refit / restandardization / relabeling.
+No refit, restandardization, relabeling, feature change, or alternative-k rescue is authorized.
 
-Namua:
+Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory only. STYLE-C1..C4 exact geometry remains formal not-confirmed.
 
-```text
-no discrete type promoted
-N-PROG = progression context
-N-ACT  = exploratory continuous coordinate
-N-CON  = exploratory continuous coordinate
-```
+## 3. Deterministic Namua clock — permanent boundary
 
-Playing style:
+For standard trajectories surviving Namua:
 
 ```text
-discrete cluster set = unsupported
-STYLE-C1..C4 exact 4D geometry = formal not-confirmed
+initial total reserve = 44
+first Mtaji observation = ply 44
+Namua total reserve at ply t = 44 - t
 ```
 
-No rescue is allowed in this study.
-
-## Cross-study bridge inherited unchanged
-
-Frozen Stage 6 result:
+Stage 2 reconfirmed:
 
 ```text
-capture-branch-expansion = 59 unique trajectory-ply units
-Namua = 59
-Mtaji = 0
+reached Mtaji games = 3886
+first Mtaji at ply 44 = 3886 / 3886
+violations = 0
 ```
 
-Same-ply `capture-branch-expansion ↔ MTAJI-M1/M2` was therefore not estimable. The new study addresses the unestimated **future temporal connection** prospectively and does not reinterpret this zero-overlap result.
+Therefore candidate-to-first-Mtaji distance is deterministic progression, not survival time.
 
-## Critical pre-pilot methodological findings
+Permanent unauthorized interpretations:
 
-### 1. Frozen phenotype has an 8-ply future ascertainment window
+- CBE accelerates Mtaji;
+- CBE delays Mtaji;
+- CBE changes first-Mtaji hazard;
+- first-Mtaji timing is a survival endpoint.
 
-The existing classifier uses observations through `candidatePly + 8` and gives precedence to `namua-to-mtaji-precursor` when first later Mtaji occurs within 8 ply.
+## 4. Stage 1 — complete and consumed
 
-Therefore a frozen `capture-branch-expansion` cannot, by definition, have first later Mtaji at distance `<= 8` ply.
+All Stage 1 corpora are exploratory and permanently excluded from Stage 2 formal inference.
 
-Consequently the formal time origin remains unfrozen. Candidate-ply time may be retained descriptively, but an ascertainment-aware landmark such as `candidatePly + 8` must be evaluated before preregistration.
-
-### 2. Formal Mtaji is mechanically linked to reserve exhaustion
-
-`public/engine.js` transitions from Namua to Mtaji when both reserves are zero at turn completion.
-
-Therefore any temporal association must distinguish strategic structure from rule-derived progression. Stage 1 must audit raw actor/opponent/total reserve support; N-PROG is not upgraded to a confirmed coordinate.
-
-### 3. Non-Mtaji outcomes require explicit treatment
-
-Current candidate event-state distinction:
+Combined readiness result:
 
 ```text
-first Mtaji                     = target event candidate
-natural terminal before Mtaji  = competing-event candidate
-max-ply truncation              = administrative censoring candidate
+raw CBE condition rows = 23
+unique CBE trajectory-ply units = 14
+unique CBE historical trajectories = 14
+readiness minimum = 10 units / 8 trajectories
+result = PASS
 ```
 
-The exact survival / competing-risk model remains unfrozen until Stage 1 support is known.
-
-## Stage 0 implementation now present
+Final exact-ply R3 support:
 
 ```text
-schemas/namua-mtaji-transition-observation.schema.json
-schemas/namua-mtaji-transition-game.schema.json
-
-tools/experiments/lib/namua-mtaji-transition-features.js
-tools/experiments/run-namua-mtaji-transition-smoke.js
-tools/experiments/verify-namua-mtaji-transition-smoke.js
-tools/experiments/audit-namua-mtaji-mtaji-artifact.py
-
-test/namua-mtaji-transition-features.test.js
-test/namua-mtaji-transition-engine.test.js
-
-doc/namua-mtaji-transition/STAGE_0_RUNBOOK.md
+601..646 unique controls per final-extension exposure-condition stratum
+progression violations = 0
+364 / 364 structural-range comparisons in-range
 ```
 
-Implementation checkpoint:
+## 5. Frozen Stage 2 design
+
+Formal condition:
 
 ```text
-doc/namua-mtaji-transition/checkpoints/2026-08-10-stage0-instrumentation-implemented.md
+P2-D2 only
+hard / bao / phase2 / depth2
 ```
 
-## Stage 0 compatibility design
-
-The new research does not edit closed-study feature/classifier modules.
-
-For every smoke replay state:
-
-1. compute the position-typology observation;
-2. independently compute the legacy phase-transition observation;
-3. require equality for inherited phenotype inputs and state quantities;
-4. replay the stored move and require before/after identity hashes;
-5. recompute game-level temporal outcome.
-
-Compatibility checks cover at least:
-
-- phase
-- reserve / houseOwned / pending
-- historical state hash
-- legal move count
-- capture move count
-- forced-capture state
-- board/non-empty seed summaries
-- front-row occupancy and seed counts
-
-This guards against semantic drift when the new study composes both prior research infrastructures.
-
-## Frozen Mtaji artifact audit
-
-RQ3 requires the historical `mtaji-candidate-definition.json` artifact.
-
-The Stage 0 audit requires all of the following:
+Formal corpus:
 
 ```text
-stored candidateDefinitionHash = expected hash
-canonical recomputation hash   = expected hash
-representation dimensions      = 40
-field order                    = exact frozen order
-scaler                         = frozen discovery scaler
-centroids                      = frozen discovery centroids
-canonical labels               = MTAJI-M1 / MTAJI-M2
+games = 4096
+seeds = 20280001..20284096
+opening = seeded-uniform-legal, 8 plies
+max ply = 100
 ```
 
-If the artifact is unavailable, it is not reconstructed from smoke or held-out data. RQ3 must remain unauthorized/deferred until provenance is restored.
-
-## Current RQ status
-
-### RQ1
+Exposure:
 
 ```text
-time-to-first-Mtaji = priority endpoint family
-exact time origin / estimator / model = not frozen
+unique historicalTrajectoryHash
+earliest fully ascertained Namua CBE
+maximum one exposure per trajectory
 ```
 
-### RQ2
+Comparator R3-M:
 
 ```text
-reserve / nyumba / mobility / front-row / capture / forcing lifecycle
-feature families identified
-functional/time representation not frozen
+same P2-D2
+exact candidate ply
+not Category A at exact index
+same forced-capture status
+no Namua CBE anywhere in control trajectory
+first-Mtaji morphology eligible
+20 unique controls per exposure
+global control non-reuse
+deterministic SHA-256 allocation
 ```
 
-### RQ3
+Primary test:
 
 ```text
-frozen MTAJI-M1/M2 classifier authorized in principle
-historical artifact exact-hash local audit pending
+Y=1 MTAJI-M1
+Y=0 MTAJI-M2
+matched-set exact conditional Poisson-binomial test
+two-sided alpha = 0.05
+one primary test
 ```
 
-### RQ4
+## 6. Formal corpus integrity — PASS
+
+Formal source commit:
 
 ```text
-secondary/formal candidate only
-no direction preregistered
-past D2/D3 reversal = motivation only
+b0e04a1c53d9c4d982a37c9489f3b56d9e6282ca
 ```
 
-## Decisions intentionally not made yet
-
-Do not freeze before Stage 0/1 evidence:
-
-- exact comparator;
-- candidate-ply versus landmark time origin;
-- survival versus competing-risk model;
-- primary statistical unit;
-- multiple-event policy;
-- reserve matching/stratification/covariate policy;
-- formal condition set;
-- sample size;
-- formal seed block;
-- effect direction;
-- significance/decision threshold;
-- RQ2 smoothing/window/functional form.
-
-## Immediate next step — local Stage 0 validation
-
-Follow:
+Observed corpus:
 
 ```text
-doc/namua-mtaji-transition/STAGE_0_RUNBOOK.md
+games = 4096
+observations = 227040
+unique historical trajectories = 2874
+reached Mtaji games = 3886
+first-Mtaji morphology-eligible games = 3885
+terminal before Mtaji games = 210
+administrative truncation games = 3
 ```
 
-Required local outputs:
+Full replay, provenance, move legality, state identity, temporal outcome recomputation, seed range, single-condition, aggregate-view, and trajectory-hash checks all passed.
+
+## 7. Preoutcome matching — PASS
 
 ```text
-artifacts/local/namua-mtaji-transition/stage0-smoke-v1/manifest.json
-artifacts/local/namua-mtaji-transition/stage0-smoke-v1/verification.json
-artifacts/local/namua-mtaji-transition/stage0-smoke-v1/mtaji-artifact-audit.json
+raw Namua CBE rows = 37
+fully ascertained Namua CBE rows = 37
+unique earliest-CBE trajectories = 31
+terminal before Mtaji among earliest-CBE trajectories = 1
+morphology-eligible exposed trajectories = 30
 ```
 
-These are technical QA artifacts, not scientific evidence.
+Estimability:
 
-## Stage 0 completion gate
+```text
+G1: 30 >= 20 -> PASS
+G2: exactly 20 controls for every exposure -> PASS
+```
 
-Stage 0 is not complete until:
+Matched structure:
 
-1. new-study unit tests pass;
-2. inherited critical regression tests pass;
-3. technical smoke completes;
-4. full replay/recomputation passes;
-5. legacy/new observation compatibility passes;
-6. formal phase-transition engine regression passes;
-7. first-Mtaji reserve exhaustion/linkage passes;
-8. terminal-before-Mtaji and max-ply truncation remain distinguishable;
-9. source provenance passes;
-10. frozen Mtaji artifact exact hash passes, or RQ3 defer is formally recorded.
+```text
+matched sets = 30
+unique controls = 600
+control reuse = 0
+exposure/control overlap = 0
+progression violations = 0
+morphology labels read during matching = false
+frozen Mtaji classifier loaded during matching = false
+```
 
-## Pause point
+Frozen identities:
 
-> **Stage 0 instrumentation has been implemented on the research branch. No scientific pilot or formal corpus has been generated. Local unit/regression tests, technical smoke, replay verification, and frozen Mtaji artifact audit are now required. Formal endpoint, comparator, statistical unit, model, and seed block remain deliberately unfrozen.**
+```text
+matchingAssignmentHash
+= b7de843fbe61f07fce9ac8a6143e73a1c2ff834f7e44b2600479af68991644b1
+
+preoutcomeAssignmentCsvSha256
+= bea056341b8f49d2a32f2ddffa5247a58ca87067f63371d77be362fbbc2e0374
+
+eventTableSha256
+= 84e80ce832e5f10c627f4fb09d906adaf201ecd1350b7764624b973af4af8d82
+```
+
+Independent review passed before outcome unlock commit:
+
+```text
+afe1ca9e9021f5f391c2cedbf9c0fcf8330aafcb
+```
+
+## 8. Frozen Mtaji artifact — PASS
+
+```text
+expected candidateDefinitionHash
+= 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
+
+stored hash = expected
+recomputed hash = expected
+classifier refit = false
+restandardization = false
+relabeling = false
+```
+
+## 9. Primary formal result — NOT-CONFIRMED
+
+Observed first-Mtaji morphology:
+
+```text
+Exposed:
+  MTAJI-M1 = 26
+  MTAJI-M2 = 4
+  M1 proportion = 0.8666666667
+
+Matched controls:
+  MTAJI-M1 = 509
+  MTAJI-M2 = 91
+  M1 proportion = 0.8483333333
+```
+
+Descriptive summaries:
+
+```text
+mean within-stratum matched risk difference = +0.0183333333
+Mantel-Haenszel common OR = 1.1617647059
+```
+
+Primary exact conditional test:
+
+```text
+observed T = 26
+p_lower = 0.6873577200535744
+p_upper = 0.5180837673658513
+p_two_sided = 1.0
+alpha = 0.05
+```
+
+Frozen decision:
+
+> **NOT-CONFIRMED**
+
+No direction label is assigned. The positive descriptive difference is not a confirmed association and is not a rescue signal.
+
+## 10. Final artifact audit — PASS
+
+```text
+matched sets = 30
+total matched units = 630
+1 exposed + 20 controls / set
+600 / 600 unique controls
+firstMtajiPly = 44 for 630 / 630
+M1/M2-to-Y coding mismatches = 0
+```
+
+Morphology assignment SHA-256:
+
+```text
+961f5ef1c08447331642f10dbd4b67b9166f443a5909855ca2ac8ae38fe5e592
+```
+
+Primary counts, all stratum summaries, matched risk difference, MH OR, Poisson-binomial PMF, tail probabilities, and two-sided p-value were independently recomputed and matched the formal result exactly.
+
+## 11. Final interpretation boundary
+
+Allowed conclusion:
+
+> Within the frozen P2-D2, first-Mtaji-morphology-eligible target population, prior fully ascertained Namua CBE was **not confirmed** to be associated with first-Mtaji frozen morphology relative to exact-ply R3-M controls.
+
+Do not reinterpret as:
+
+- proof of no downstream structural relationship;
+- causal null effect;
+- timing/hazard result;
+- absence of all Namua→Mtaji structure;
+- generalization beyond P2-D2;
+- justification for subgroup/comparator/seed/threshold rescue.
+
+## 12. Closed-study rule
+
+Study 1 is closed.
+
+Do not:
+
+- append Stage 2 formal games;
+- rerun with another seed block to seek significance;
+- alter R3-M;
+- change the 1:20 ratio;
+- refit CBE or Mtaji classifiers;
+- promote candidate-ply subgroup analyses into the completed primary result.
+
+Any new confirmatory question must be separately preregistered and use fresh evidence.
+
+`artifacts/local/` remains gitignored and uncommitted.

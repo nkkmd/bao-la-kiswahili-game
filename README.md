@@ -155,6 +155,7 @@ node tools/diagnostic-to-fixture.js \
 - [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md): 研究成果の中央索引。初見向け概要、科学的正本、研究運用文書への入口
 - [`doc/phase-transition/STUDY_1_OVERVIEW.md`](doc/phase-transition/STUDY_1_OVERVIEW.md): 局面相転移点研究Study 1「Baoにおける局面相転移点の発見と、capture-branch-expansionの確認」の初見向け成果概要
 - [`doc/position-typology/STUDY_1_OVERVIEW.md`](doc/position-typology/STUDY_1_OVERVIEW.md): 局面類型と棋風Study 1「Baoにおける局面類型と棋風の発見・検証」の初見向け成果概要
+- [`doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md`](doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md): Namua→Mtaji Strategic Temporal Transition Study 1「capture-branch-expansionからMtaji morphologyへの時間的接続」の初見向け成果概要（formal decision `not-confirmed`）
 - [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
 - [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録
 - [`doc/FUTURE_RESEARCH_AGENDA.md`](doc/FUTURE_RESEARCH_AGENDA.md): 局面分類、手筋、形勢判断、終盤解析など、既存研究から切り出した将来研究課題
