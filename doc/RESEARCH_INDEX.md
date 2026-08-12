@@ -101,15 +101,15 @@ closed phase-transition Study 1とのsecondary bridgeでは、E-018 D2 / E-019 D
 
 ---
 
-### 5. Namua→Mtaji Strategic Temporal Transition
+### 5. Namua→Mtaji Strategic Temporal Transition — Study 1
 
 **研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続  
-**状態:** Stage 2 primary formal analysis complete / formal decision `not-confirmed` / final integration  
+**状態:** Study 1 closed / repository closure complete / formal decision `not-confirmed`  
 **作業branch:** `research/namua-mtaji-temporal-transition`
 
 この独立prospective studyは、局面相転移点Study 1で固定されたNamua `capture-branch-expansion`と、局面類型と棋風Study 1でconfirmedされたfrozen `MTAJI-M1 / MTAJI-M2` morphologyの時間的bridgeを検討しました。
 
-Stage 0/1で、現engineではfirst Mtajiがdeterministic Namua clock (`firstMtajiPly = 44`) に従うことが判明したため、first-Mtaji timingをsurvival/hazard endpointとして扱う設計は棄却しました。そのうえでStage 2では、fixed `P2-D2`のみのfresh held-out 4096-game corpus、earliest fully ascertained Namua CBE exposure、exact-ply R3-M 1:20 matchingを事前固定しました。
+Stage 0/1で、現engineではfirst Mtajiがdeterministic Namua clock (`firstMtajiPly = 44`) に従うことが判明したため、first-Mtaji timingをsurvival/hazard endpointとして扱う設計を棄却しました。そのうえでStage 2では、fixed `P2-D2`のみのfresh held-out 4096-game corpus、earliest fully ascertained Namua CBE exposure、exact-ply R3-M 1:20 matchingを事前固定しました。
 
 Formal estimabilityはG1/G2ともPASSしました。
 
@@ -125,16 +125,15 @@ First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)で�
 
 **最初に読む:**
 
-- [`namua-mtaji-transition/README.md`](namua-mtaji-transition/README.md) — 研究概要とformal conclusion
-- [`namua-mtaji-transition/RESUME_HERE.md`](namua-mtaji-transition/RESUME_HERE.md) — current restart boundary
+- [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md) — 初見向け成果概要
 
 **詳細・正本:**
 
+- [`namua-mtaji-transition/STUDY_1_FINAL_REPORT.md`](namua-mtaji-transition/STUDY_1_FINAL_REPORT.md) — 科学的最終統合
 - [`namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md`](namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md) — Stage 2 canonical formal result
-- [`namua-mtaji-transition/CURRENT_STATUS.md`](namua-mtaji-transition/CURRENT_STATUS.md) — current scientific state / immutable boundaries
-- [`namua-mtaji-transition/STAGE_2_FORMAL_PROTOCOL.md`](namua-mtaji-transition/STAGE_2_FORMAL_PROTOCOL.md) — frozen human-readable protocol
-- [`namua-mtaji-transition/preregistration/STAGE_2_FORMAL_SPEC.json`](namua-mtaji-transition/preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable preregistration
-- [`namua-mtaji-transition/checkpoints/2026-08-12-stage2-formal-not-confirmed.md`](namua-mtaji-transition/checkpoints/2026-08-12-stage2-formal-not-confirmed.md) — formal decision checkpoint
+- [`namua-mtaji-transition/REPRODUCIBILITY_INDEX.md`](namua-mtaji-transition/REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
+- [`namua-mtaji-transition/CURRENT_STATUS.md`](namua-mtaji-transition/CURRENT_STATUS.md) — closure状態とimmutable boundaries
+- [`namua-mtaji-transition/README.md`](namua-mtaji-transition/README.md) — 研究ディレクトリ案内
 
 ---
 
@@ -148,7 +147,7 @@ First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)で�
 
 局面類型と棋風Study 1からの主要future study候補には、N-ACT/N-CONの独立formal replication、新しいplaying-style model family、MTAJI-M1/M2の人間/expert validation、より広いengine/search implementationでのexternal validityがあります。Stage 5 held-out corpusを再定義してconfirmationを救済することはfuture workに含めません。
 
-Namua→Mtaji temporal-transition studyの`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。新しいstructural-trajectory questionや別conditionでのexternal validityを扱う場合は、新規prospective studyとして分離します。
+Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。新しいstructural-trajectory question、mechanistic analysis、human/expert validation、別conditionでのexternal validityを扱う場合は、新規prospective studyとして分離します。
 
 ---
 
