@@ -229,3 +229,21 @@ No Stage 2 formal corpus is authorized until all of the following exist:
 - formal runbook/preregistration.
 
 No GitHub Actions generation of the large formal corpus.
+
+## PCX-D018 — Single-choice roots are excluded from primary decision-instability inference
+
+Status: **FROZEN**
+
+Decision:
+
+The primary structural-branching versus decision-instability population must require:
+
+```text
+legalMoveCount >= 2
+```
+
+Reason:
+
+A root with exactly one legal move is mechanically stable across search depths because no alternative decision exists. Including those positions would bake a trivial structural relationship into the primary endpoint and could exaggerate the association between low branching and stability.
+
+Single-choice roots may still be retained in structural/search-workload descriptive summaries, but they are not eligible for the primary D2→D3 decision-instability test.
