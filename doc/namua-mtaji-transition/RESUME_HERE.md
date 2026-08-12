@@ -1,6 +1,6 @@
 # Namua→Mtaji Strategic Temporal Transition — RESUME HERE
 
-更新日: 2026-08-11  
+更新日: 2026-08-12  
 Purpose: **新しいチャット・新しいローカルセッションから研究状態を安全に復元するための入口**
 
 ## 0. 最重要の現在地
@@ -13,11 +13,17 @@ Purpose: **新しいチャット・新しいローカルセッションから研
 
 ```text
 Stage 0 technical feasibility = CLOSED PASS
-Stage 1 exploratory work      = COMPLETE / CONSUMED
-Stage 2 formal design         = FROZEN
-Stage 2 formal generation     = NOT STARTED
-Stage 2 preoutcome matching   = NOT STARTED
-M1/M2 formal evaluation       = NOT AUTHORIZED
+Stage 1 exploratory work = COMPLETE / CONSUMED
+Stage 2 readiness = PASS
+Stage 2 formal design = FROZEN
+Stage 2 formal corpus = COMPLETE / VERIFIED
+Stage 2 preoutcome matching = COMPLETE / PASS
+G1 = PASS
+G2 = PASS
+outcome firewall = PASSED
+frozen Mtaji artifact audit = PASS
+M1/M2 primary formal evaluation = COMPLETE
+formal decision = NOT-CONFIRMED
 ```
 
 Branch:
@@ -32,30 +38,37 @@ Study-start main head:
 c7d06d485789e1ea96d6603802423951a88c1f87
 ```
 
-The last formal-design hardening checkpoint before this resume document was created at branch head:
+Formal held-out corpus source commit:
 
 ```text
-e6359b49675d12c91865ca2593ed634b7294365e
+b0e04a1c53d9c4d982a37c9489f3b56d9e6282ca
 ```
 
-On resume, **do not assume this is still the branch tip**. Fetch the current branch and verify its actual head before acting.
+Outcome-unlock commit after independent preoutcome review:
+
+```text
+afe1ca9e9021f5f391c2cedbf9c0fcf8330aafcb
+```
+
+On resume, always fetch the current branch tip rather than assuming either historical SHA is the current tip.
 
 ## 1. Required read order
 
-Read these files in order before making any scientific or implementation decision:
+Read these files in order before making any scientific decision:
 
 1. `doc/namua-mtaji-transition/RESUME_HERE.md`
 2. `doc/namua-mtaji-transition/CURRENT_STATUS.md`
-3. `doc/namua-mtaji-transition/checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md`
-4. `doc/namua-mtaji-transition/STAGE_2_FORMAL_PROTOCOL.md`
-5. `doc/namua-mtaji-transition/preregistration/STAGE_2_FORMAL_SPEC.json`
-6. `doc/namua-mtaji-transition/STAGE_2_RUNBOOK.md`
-7. `doc/namua-mtaji-transition/checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md`
-8. `doc/namua-mtaji-transition/STAGE_1_FINAL_EXTENSION_RESULT.md`
-9. `doc/namua-mtaji-transition/STAGE_1_EXTENSION_RISKSET_RESULT.md`
-10. `doc/namua-mtaji-transition/STAGE_1_RISKSET_RESULT.md`
+3. `doc/namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md`
+4. `doc/namua-mtaji-transition/checkpoints/2026-08-12-stage2-formal-not-confirmed.md`
+5. `doc/namua-mtaji-transition/STAGE_2_FORMAL_PROTOCOL.md`
+6. `doc/namua-mtaji-transition/preregistration/STAGE_2_FORMAL_SPEC.json`
+7. `doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json`
+8. `doc/namua-mtaji-transition/STAGE_2_RUNBOOK.md`
+9. `doc/namua-mtaji-transition/checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md`
+10. `doc/namua-mtaji-transition/checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md`
+11. `doc/namua-mtaji-transition/STAGE_1_FINAL_EXTENSION_RESULT.md`
 
-Read older Stage 0 / Stage 1 protocol and amendment files only when needed to resolve provenance or inherited-definition questions.
+Read older Stage 0 / Stage 1 protocol and risk-set files only when needed for provenance or inherited-definition questions.
 
 ## 2. Immutable inherited boundaries
 
@@ -83,7 +96,7 @@ persistenceFraction = 0.5
 eventWindow = 8
 ```
 
-Historical Category-A definition remains unchanged:
+Historical Category-A definition:
 
 ```text
 signalThreshold = 2.0
@@ -106,16 +119,23 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 
 Never refit, restandardize, relabel, change features, or use alternative-k rescue.
 
-Namua discrete type remains unsupported. N-ACT/N-CON are exploratory coordinates only. STYLE-C1..C4 exact geometry remains formal not-confirmed.
+Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates only. STYLE-C1..C4 exact geometry remains formal not-confirmed.
 
-## 3. Deterministic Namua clock — permanent interpretation boundary
+## 3. Deterministic Namua clock — permanent boundary
 
-For a standard trajectory that survives Namua:
+For a standard trajectory surviving Namua:
 
 ```text
 initial total reserve = 44
 first Mtaji observation = ply 44
 Namua total reserve at ply t = 44 - t
+```
+
+Stage 2 observed:
+
+```text
+3886 / 3886 reached-Mtaji games first entered Mtaji at ply 44
+progression violations = 0
 ```
 
 Therefore candidate-to-first-Mtaji distance is deterministic progression, not survival time.
@@ -129,99 +149,57 @@ Never claim:
 
 ## 4. Stage 1 final state — complete and consumed
 
-All Stage 1 corpora are exploratory and permanently consumed. They may support design/provenance, but **must never enter Stage 2 formal inference**.
+All Stage 1 corpora are exploratory and permanently consumed. They may support design/provenance, but must never enter Stage 2 formal inference.
 
-Final combined readiness result:
+Final readiness:
 
 ```text
-raw CBE condition rows = 23
-unique CBE historicalTrajectoryHash + candidatePly units = 14
+unique CBE trajectory-ply units = 14
 unique CBE historical trajectories = 14
-
-frozen readiness gate:
-units >= 10
-trajectories >= 8
-
+frozen gate = >=10 units / >=8 trajectories
 result = PASS
 ```
 
-Observed exact-ply R3 comparator support was abundant across all observed CBE clock positions. In the final extension:
+Final-extension R3 feasibility:
 
 ```text
-R3 unique controls per exposure-condition stratum = 601..646
+601..646 unique controls per exposure-condition stratum
 progression violations = 0
-364/364 audited exposure-vs-R3 structural range comparisons were in-range
+364 / 364 structural-range comparisons in-range
 ```
 
-Comparator scarcity is therefore not the reason for Stage 2 uncertainty.
-
-## 5. Stage 2 frozen formal design
-
-Primary and only formal condition:
+## 5. Frozen Stage 2 design
 
 ```text
-P2-D2
+condition = P2-D2 only
 hard / bao / phase2 / depth2
-```
-
-Fixed formal corpus:
-
-```text
 games = 4096
-opening seeds = 20280001..20284096
-opening policy = seeded-uniform-legal
-opening plies = 8
+seeds = 20280001..20284096
+opening = seeded-uniform-legal, 8 plies
 max ply = 100
-no early stopping
-no post-outcome extension
 ```
 
-Exposure unit:
+Exposure:
 
 ```text
-unique historicalTrajectoryHash
-earliest fully ascertained Namua CBE only
-maximum one exposure per historical trajectory
+earliest fully ascertained Namua CBE per unique historicalTrajectoryHash
+maximum one exposure per trajectory
 ```
 
-Primary target population:
+Comparator R3-M:
 
 ```text
-firstMtajiMorphologyEligible == true
-```
-
-Formal comparator `R3-M`:
-
-```text
-same P2-D2 condition
 exact candidate ply
-not Category A at exact index
-same actor forced-capture status
-control trajectory has no Namua CBE anywhere
+not Category A at index
+same forced-capture status
+no Namua CBE anywhere in control trajectory
 first-Mtaji morphology eligible
-20 unique controls per exposure
-global control reuse = false
+20 controls per exposure
+global control non-reuse
 deterministic SHA-256 allocation
-no matching on capture/front-row quantities
 ```
 
-Estimability gates:
-
-```text
-G1: morphology-eligible unique exposed trajectories >= 20
-G2: every exposure receives exactly 20 unique R3-M controls
-```
-
-Frozen failures:
-
-```text
-G1 fail -> inconclusive-insufficient-exposure
-G2 fail -> inconclusive-comparator-shortage
-```
-
-No rescue sampling, threshold relaxation, comparator relaxation, or favorable reseeding is authorized.
-
-Primary outcome/test:
+Primary test:
 
 ```text
 Y=1 MTAJI-M1
@@ -231,90 +209,129 @@ two-sided alpha = 0.05
 one primary test
 ```
 
-Allowed interpretation is a bounded association within the frozen P2-D2, Mtaji-reaching target population. Causal, timing, or broad-generalization claims are unauthorized.
-
-## 6. Machine-enforced outcome firewall
-
-Required execution order:
+## 6. Stage 2 observed estimability and firewall
 
 ```text
-formal generation
--> full verification
--> deterministic-clock audit
--> inherited Category-A extraction
--> frozen CBE classification
--> R3-M preoutcome matching
--> HARD STOP / independent review
--> outcome unlock commit
--> frozen Mtaji artifact audit
--> M1/M2 evaluation
+raw fully ascertained Namua CBE rows = 37
+unique earliest-CBE trajectories = 31
+morphology-eligible exposed trajectories = 30
+G1 = PASS (30 >= 20)
+G2 = PASS (20 controls per exposure)
+matched sets = 30
+unique controls = 600
+control reuse = 0
+progression violations = 0
 ```
 
-Before the preoutcome review, this file must **not exist**:
+Preoutcome matching was frozen before morphology inspection.
 
 ```text
-doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json
-```
-
-`--phase match` must not load the frozen Mtaji classifier or read M1/M2 labels.
-
-`--phase evaluate` is machine-blocked until an independently committed unlock file binds the exact observed:
-
-```text
-inputConfigHash
-formalSourceCommit
 matchingAssignmentHash
+= b7de843fbe61f07fce9ac8a6143e73a1c2ff834f7e44b2600479af68991644b1
+
 preoutcomeAssignmentCsvSha256
-formalSpecSha256
+= bea056341b8f49d2a32f2ddffa5247a58ca87067f63371d77be362fbbc2e0374
+
 eventTableSha256
+= 84e80ce832e5f10c627f4fb09d906adaf201ecd1350b7764624b973af4af8d82
 ```
 
-Do not create or guess the unlock before the preoutcome artifacts have been reviewed.
+Independent review passed while:
 
-## 7. Immediate resume action
+```text
+morphologyLabelsRead = false
+frozenMtajiClassifierLoaded = false
+```
 
-First restore repository state only. Do not generate data until the branch, files, and formal boundary have been checked.
+Only then was the exact outcome unlock committed.
+
+## 7. Formal result — immutable negative result
+
+First-Mtaji morphology:
+
+```text
+Exposed M1 = 26 / 30 = 0.8666666667
+Matched-control M1 = 509 / 600 = 0.8483333333
+mean within-stratum matched risk difference = +0.0183333333
+Mantel-Haenszel common OR = 1.1617647059
+```
+
+Primary exact test:
+
+```text
+observed T = 26
+p_lower = 0.6873577200535744
+p_upper = 0.5180837673658513
+p_two_sided = 1.0
+alpha = 0.05
+```
+
+Frozen rule:
+
+```text
+p < .05 -> confirmed-association
+p >= .05 -> not-confirmed
+```
+
+Decision:
+
+> **NOT-CONFIRMED**
+
+No direction label is assigned. The positive descriptive difference is not a confirmed trend or effect and must not be used to rescue the result.
+
+## 8. Final artifact audit
+
+The evaluated assignment passed independent consistency checks:
+
+```text
+30 matched sets
+630 total units
+1 exposed + 20 controls in each set
+600 / 600 unique controls
+firstMtajiPly = 44 for 630 / 630
+M1/M2-to-Y mismatches = 0
+preoutcome assignment altered = no
+```
+
+Morphology assignment SHA-256:
+
+```text
+961f5ef1c08447331642f10dbd4b67b9166f443a5909855ca2ac8ae38fe5e592
+```
+
+Primary counts, RD, MH OR, Poisson-binomial PMF, tail probabilities, p-value, and all stratum summaries were independently recomputed and matched the formal output.
+
+## 9. Interpretation boundary
+
+Allowed conclusion:
+
+> Within the frozen P2-D2, first-Mtaji-morphology-eligible population, the preregistered matched analysis did not confirm an association between prior fully ascertained Namua CBE and first-Mtaji frozen morphology.
+
+Do not claim:
+
+- absence of all temporal structure;
+- a causal null effect;
+- a Mtaji timing/hazard result;
+- generalization beyond P2-D2;
+- post-hoc candidate-ply subgroup confirmation;
+- alternative-comparator, threshold, seed, or sample-size rescue.
+
+Any new confirmatory claim requires a new preregistered prospective study with fresh evidence.
+
+## 10. Resume action
+
+On resume:
 
 ```bash
 git fetch origin
 git switch research/namua-mtaji-temporal-transition
 git pull --ff-only
-
 git rev-parse HEAD
 git status --short
-
-test ! -e doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json
 ```
 
-Then follow `doc/namua-mtaji-transition/STAGE_2_RUNBOOK.md` exactly.
+Then read the Required read order above.
 
-The next scientific execution is the one-shot 4096-game P2-D2 formal corpus. Run only through:
+Do **not** regenerate the Stage 2 corpus, rerun with different seeds, or modify the formal decision. `artifacts/local/` remains gitignored and must not be committed.
 
-```bash
-python3 tools/experiments/analyze-namua-mtaji-stage2-formal.py --phase match
-```
-
-Then **stop** and review/upload the preoutcome artifacts. Do not run `--phase evaluate`.
-
-Required preoutcome artifacts:
-
-```text
-manifest.json
-verification.json
-clock-audit.json
-candidate-pipeline-audit.json
-stage2-event-audit.json
-stage2-event-table.csv
-stage2-matching-audit.json
-stage2-matched-sets-preoutcome.csv
-```
-
-## 8. Local artifact policy
-
-Formal and exploratory corpora under `artifacts/local/` remain gitignored and must not be committed.
-
-Stage 2 formal generation must be local only. Do not move formal corpus generation into GitHub Actions.
-
-## 9. Pause point
-
-> **Research is deliberately paused after Stage 1 completion and after Stage 2 protocol/spec/instrumentation/outcome-firewall freeze, but before any Stage 2 formal held-out game is generated. This is a clean prospective boundary. On resume, restore the branch and read order above, verify that the outcome unlock is absent, then execute the frozen Stage 2 runbook only through the preoutcome matching hard stop.**
+The remaining work in this branch is documentation/final integration only unless a separately defined new exploratory or prospective study is explicitly started.
