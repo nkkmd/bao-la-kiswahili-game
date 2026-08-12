@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PCX-STUDY1",
+  "stageId": "PCX-S1-EXPLORATORY-2026-08-12-v1",
+  "status": "exploratory-prospective-consumed-after-run",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "baseMainHead": "d681b4593242973fcb33805edca12eb3e8633653",
+  "population": {
+    "games": 768,
+    "seedStart": 20400001,
+    "seedEnd": 20400768,
+    "opening": {
+      "policy": "seeded-uniform-legal-moveVariants",
+      "plies": 8
+    },
+    "trajectoryGenerator": {
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 2,
+      "timeLimitMs": "Infinity",
+      "quiescenceDepth": 1,
+      "adaptive": false,
+      "stableBestDepths": 0,
+      "aspirationWindow": 0
+    },
+    "maxPly": 100
+  },
+  "trajectoryIdentity": {
+    "primary": "historicalTrajectoryHash",
+    "duplicateHandling": "collapse-identical-historical-trajectories-before-state-selection",
+    "representativeRule": "minimum-seed-then-gameId"
+  },
+  "stateSelection": {
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "minimumLegalMoveCount": 2,
+    "legalMoveDefinition": "E.moveVariants(state).length",
+    "phaseAssignment": {
+      "method": "sha256-parity",
+      "salt": "PCX-S1-PHASE-v1",
+      "mapping": {
+        "even": "namua",
+        "odd": "mtaji"
+      }
+    },
+    "withinAssignedPhase": {
+      "method": "minimum-sha256-rank",
+      "salt": "PCX-S1-STATE-v1",
+      "fields": [
+        "historicalTrajectoryHash",
+        "ruleStateKey",
+        "ply"
+      ]
+    },
+    "unavailableAssignedPhase": "no-replacement",
+    "duplicateSelectedRuleStateHandling": "retain-lowest-historicalTrajectoryHash-only"
+  },
+  "measurement": {
+    "searchSemantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+    "depths": [1, 2, 3, 4],
+    "evaluationProfile": "bao",
+    "searchProfile": "phase2",
+    "quiescenceDepth": 1,
+    "orderQuiescenceCaptures": false,
+    "timeLimitMs": "Infinity",
+    "adaptive": false,
+    "stableBestDepths": 0,
+    "aspirationWindow": 0,
+    "wallClockInferentialUse": false
+  },
+  "candidateMetricFamilies": {
+    "structural": [
+      "legalMoveCount",
+      "captureMoveCount",
+      "forcedCapture",
+      "maxCapturableSeeds",
+      "meanCapturableSeeds",
+      "maxCaptureEvents",
+      "meanCaptureEvents",
+      "maxRelayEvents",
+      "meanRelayEvents",
+      "maxChainEvents",
+      "meanChainEvents",
+      "frontOccupied",
+      "frontConnections",
+      "reusablePits",
+      "reserve",
+      "houseOwned",
+      "nyumbaSeeds",
+      "pitSeedVariance",
+      "seedConcentration"
+    ],
+    "searchWorkload": [
+      "nodes",
+      "quiescenceNodes",
+      "cutoffs",
+      "evaluationRequests",
+      "evaluations",
+      "completedDepth"
+    ],
+    "decisionAmbiguity": [
+      "bestSecondGap",
+      "topSetSize",
+      "fullRootScoreDispersion",
+      "exactTieStatus"
+    ],
+    "predictionInstability": [
+      "D1_D2_topSetDisjoint",
+      "D2_D3_topSetDisjoint",
+      "D3_D4_topSetDisjoint",
+      "canonicalBestChanged",
+      "bestScoreSignReversal",
+      "bestScoreDelta"
+    ]
+  },
+  "readinessGates": {
+    "minimumSelectedUniqueRuleStates": 300,
+    "minimumNamuaSelectedStates": 120,
+    "minimumMtajiSelectedStates": 120,
+    "minimumD23InstabilityEvents": 30,
+    "minimumD23StableEvents": 30,
+    "minimumOrdinaryDomainD2Margins": 200
+  },
+  "stopping": {
+    "gamesFixed": 768,
+    "earlyStopAllowed": false,
+    "outcomeDependentExtensionAllowed": false,
+    "automaticReplacementForUnavailableTrajectory": false
+  },
+  "stage2Boundary": {
+    "stage1PositionsReusableForConfirmation": false,
+    "stage1SeedsReusableForConfirmation": false,
+    "stage2GenerationAuthorizedByThisSpec": false,
+    "requiredBeforeStage2": "separate frozen formal preregistration and fresh seed block"
+  }
+}
