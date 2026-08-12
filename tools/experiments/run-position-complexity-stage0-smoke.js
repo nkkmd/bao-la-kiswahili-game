@@ -15,14 +15,14 @@ function fixtures() {
   return [
     { id: "initial", state: E.initialState(), depths: [1, 2, 3] },
     {
-      id: "forced-namua-single-choice",
+      id: "mtaji-single-variant",
       state: {
         pits: [
-          [[0, 0, 0, 0, 0, 4, 5, 1], [0, 0, 0, 0, 0, 0, 1, 1]],
-          [[0, 1, 0, 6, 9, 0, 1, 0], [0, 0, 0, 0, 0, 0, 1, 1]],
+          [[2, 0, 0, 0, 0, 0, 0, 0], Array(8).fill(0)],
+          [[1, 0, 0, 0, 0, 0, 0, 0], Array(8).fill(0)],
         ],
-        reserve: [16, 17], houseOwned: [false, true], player: 1, phase: "namua",
-        winner: null, reason: "", turn: 12, pending: [0, 0],
+        reserve: [0, 0], houseOwned: [false, false], player: 0, phase: "mtaji",
+        winner: null, reason: "", turn: 50, pending: [0, 0],
       },
       depths: [1, 2, 3],
     },
