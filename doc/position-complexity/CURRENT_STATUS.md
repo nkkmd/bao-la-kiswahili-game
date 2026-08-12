@@ -1,7 +1,7 @@
 # Position Complexity / Difficulty Study — Current Status
 
 更新日: 2026-08-12  
-Status: **ACTIVE / STAGE 0 COMPLETE / STAGE 1 FROZEN AND READY FOR LOCAL EXECUTION / STAGE 2 LOCKED**
+Status: **ACTIVE / STAGE 0 COMPLETE / STAGE 1 GENERATION VERIFIED AND CONSUMED / SELECT+MEASURE NEXT / STAGE 2 LOCKED**
 
 ## Research identity
 
@@ -10,18 +10,17 @@ research title = Baoにおける局面複雑度の多層構造 — structural co
 branch = research/position-complexity-difficulty
 base main head = d681b4593242973fcb33805edca12eb3e8633653
 draft PR = #29
-current phase = Stage 1 exploratory execution readiness
-Stage 1 corpus = NOT GENERATED YET
+Stage 1 ID = PCX-S1-EXPLORATORY-2026-08-12-v1
+current phase = Stage 1 exploratory state selection / measurement
+Stage 1 generated corpus = COMPLETE / VERIFIED / EXPLORATORY-CONSUMED
 Stage 2 formal corpus = NOT GENERATED / NOT AUTHORIZED
 ```
 
-Current `main` was checked at study initiation and exactly matched the expected closure head `d681b4593242973fcb33805edca12eb3e8633653`.
+The study remains prospective and independent. Closed Study formal decisions are immutable and are not rescued or reinterpreted here.
 
-## Canonical inherited boundaries
+## Immutable inherited boundaries
 
 ### Phase-transition Study 1
-
-Immutable:
 
 ```text
 E-010 = not-confirmed
@@ -32,11 +31,9 @@ E-019 / H17 = global not-confirmed
 E-020 / H18 = confirmed only fixed hard / bao / depth3, legacy > phase2
 ```
 
-`capture-branch-expansion` remains a bounded historical phenotype. No threshold/classifier rescue is permitted.
+`capture-branch-expansion` remains a bounded historical phenotype. Its classifier/thresholds are not refit.
 
 ### Position-typology / playing-style Study 1
-
-Immutable:
 
 ```text
 MTAJI-M1 / MTAJI-M2 = bounded formally confirmed Mtaji morphology
@@ -48,8 +45,6 @@ STYLE-C1..C4 exact 4D geometry = formal not-confirmed
 
 ### Namua→Mtaji Study 1
 
-Immutable:
-
 ```text
 FORMAL DECISION = NOT-CONFIRMED
 initial reserve total = 44
@@ -59,19 +54,13 @@ first Mtaji observation = ply 44
 
 No first-Mtaji timing/survival/hazard/acceleration/delay endpoint is authorized.
 
-## Stage 0 — COMPLETE
+## Stage 0 — COMPLETE / TECHNICAL PASS
 
-Read-only audit:
+Canonical records:
 
 ```text
 doc/position-complexity/STAGE_0_TECHNICAL_AUDIT.md
-```
-
-Technical validation result:
-
-```text
 doc/position-complexity/STAGE_0_SMOKE_RESULT.md
-Status = PASS / technical only
 ```
 
 Validated diagnostic:
@@ -81,69 +70,35 @@ tools/experiments/lib/position-complexity-search-diagnostic.js
 search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
 ```
 
-It provides:
+It provides exhaustive exact root-candidate scores, exact tied-best `TopSet`, best-second gap, mate-domain classification and D1-D4 depth traces while remaining separate from normal `public/ai.js` move selection.
 
-- exhaustive exact root-candidate values;
-- root-player score perspective;
-- exact tied-best `TopSet`;
-- best/second-best gap;
-- explicit mate-domain classification;
-- D1/D2/D3/D4 compatible depth trace;
-- adjacent-depth TopSet disjointness and score changes.
-
-The research diagnostic is separate from normal `public/ai.js` move selection.
-
-### Stage 0 validation gates
-
-Successful CI run:
+Successful Stage 0 CI:
 
 ```text
-workflow = Position Complexity Stage 0 CI
-run id = 31589325398
+workflow run = 31589325398
 validated branch head = 7bf6d801fc1f60ecf73d51c6be158f3f82b226d9
-Node = v24.18.0
+G0-1..G0-9 = PASS
 ```
 
-Passed:
+## Frozen measurement boundaries
+
+### Structural primary candidate
 
 ```text
-G0-1 state immutability
-G0-2 legal-root exhaustiveness
-G0-3 common root-player score perspective
-G0-4 fixed-depth consistency with existing phase2 search
-G0-5 determinism
-G0-6 depth-trace consistency
-G0-7 replay validity
-G0-8 identity availability
-G0-9 existing search behavior protection
+legalMoveCount = E.moveVariants(state).length
 ```
 
-The first CI attempt failed only because a borrowed fixture had `legalMoves=1` but `moveVariants=2`. The measurement definition was not changed; the fixture was replaced with a true one-variant state, after which validation passed.
-
-## Study 1 measurement layers now available
-
-### Structural
-
-Existing position-typology primitives remain reusable:
+The primary decision-instability population requires:
 
 ```text
-legalMoveCount
-captureMoveCount
-forcedCapture
-reserve / house / nyumba
-front occupancy / connections
-reusable pits
-capturable seeds
-capture / relay / chain event summaries
-pit variance / seed concentration
-historicalStateHash / ruleStateKey / seatCanonicalKey
+legalMoveCount >= 2
 ```
 
-`legalMoveCount` means `E.moveVariants(state).length` in this study.
+True single-choice roots remain descriptive only for decision-instability purposes.
 
 ### Search workload
 
-Existing engine counters:
+Prefer deterministic fixed-search counters:
 
 ```text
 nodes
@@ -158,17 +113,17 @@ completedDepth
 
 ### Decision ambiguity
 
-Now technically measurable:
+Technically measurable from exact root values:
 
 ```text
-exact best-second gap
-exact TopSet size / tie status
-full root score table / score dispersion
+bestSecondGap
+TopSet size / exact tie
+full root-score dispersion
 ```
 
 ### Prediction instability
 
-Now technically measurable:
+Technically measurable:
 
 ```text
 D1->D2 TopSet disjointness
@@ -178,67 +133,89 @@ canonical-best change
 best-score sign / magnitude change
 ```
 
-PV instability remains optional and is not required for the primary Study 1 design.
+PV instability is not required for Study 1 primary inference.
 
-## Frozen primary-population boundary
+## Stage 1 v1 — FROZEN EXPLORATORY CORPUS
 
-For primary decision-instability analyses:
-
-```text
-legalMoveCount >= 2
-```
-
-True single-choice roots are excluded because their stability is mechanically guaranteed by the absence of alternatives.
-
-## Stage 1 — FROZEN / NOT YET GENERATED
-
-Protocol:
-
-```text
-doc/position-complexity/STAGE_1_EXPLORATORY_PROTOCOL.md
-```
-
-Machine spec:
+Frozen specification:
 
 ```text
 doc/position-complexity/preregistration/STAGE_1_EXPLORATORY_SPEC.json
-Stage ID = PCX-S1-EXPLORATORY-2026-08-12-v1
+specSha256 = 20574bf430c26181fe6947a9d4ae10db86a9a37b8aec43e8c59af4fa98497165
 ```
 
-Runbook:
+Protocol/runbook:
 
 ```text
+doc/position-complexity/STAGE_1_EXPLORATORY_PROTOCOL.md
 doc/position-complexity/STAGE_1_RUNBOOK.md
 ```
 
-Frozen Stage 1 corpus:
+Frozen corpus definition:
 
 ```text
-768 games
-seeds 20400001..20400768
-8-ply seeded-uniform moveVariants opening
-then hard / bao / phase2 / depth2
-max ply = 100
+games = 768
+seeds = 20400001..20400768
+opening = seeded-uniform E.moveVariants, 8 plies
+trajectory generator = hard / bao / phase2 / depth2
+quiescenceDepth = 1
 timeLimitMs = Infinity
+adaptive = false
+max ply = 100
 ```
 
-No early stopping, favorable reseeding, automatic replacement or outcome-dependent extension is authorized in Stage 1 v1.
+No early stopping, favorable reseeding, within-v1 seed extension, duplicate replacement or outcome-dependent replacement is permitted.
 
-### Stage 1 unit structure
+## Stage 1 generation and full verification — PASS
+
+Canonical record:
 
 ```text
-generated games
--> collapse duplicate historicalTrajectoryHash
--> hash-parity assign one phase per unique trajectory
--> choose one eligible state by frozen SHA-256 rank
--> require moveVariants legalMoveCount >= 2
--> no replacement if assigned phase unavailable
--> collapse exact duplicate selected ruleStateKey
+doc/position-complexity/STAGE_1_GENERATION_VERIFICATION.md
 ```
 
-This keeps at most one selected state per unique historical trajectory before exact-state collapse.
+Verification output:
 
-### Frozen phase assignment
+```text
+passed = true
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+gamesVerified = 768
+observationsVerified = 43110
+movesVerified = 42342
+searchMovesRecomputed = 36211
+fullSearchRecomputation = true
+uniqueHistoricalTrajectories = 685
+duplicateHistoricalTrajectoryGroups = 61
+largestHistoricalTrajectoryGroup = 6
+reachedMtajiGames = 732
+verifiedIdentityHash = b74a48c2c88fc46f48507245ec08f3da820ba4bd2fc5edb7d08bf6574924784f
+```
+
+Interpretation:
+
+- all 768 frozen games were verified;
+- every post-opening depth-2 search covered by the verifier was recomputed;
+- the fixed Stage 1 corpus is now permanently exploratory-consumed;
+- duplicate trajectories are handled by the already frozen collapse rule rather than replacement;
+- `reachedMtajiGames = 732` is an availability description only and is not yet a readiness-gate result.
+
+The generation phase must not be selectively rerun to obtain a more favorable corpus.
+
+## Frozen Stage 1 state-selection scheme
+
+```text
+768 generated games
+-> collapse duplicate historicalTrajectoryHash
+-> representative = minimum seed then gameId
+-> phase assignment by frozen SHA-256 parity
+-> one eligible state by frozen SHA-256 state rank
+-> require legalMoveCount >= 2
+-> no replacement if assigned phase unavailable
+-> collapse duplicate selected ruleStateKey
+```
+
+Phase assignment:
 
 ```text
 sha256("PCX-S1-PHASE-v1|" + historicalTrajectoryHash)
@@ -246,9 +223,18 @@ even -> Namua
 odd  -> Mtaji
 ```
 
-### Fixed measurement
+Within assigned phase:
 
-On each selected state:
+```text
+minimum SHA-256 rank using salt PCX-S1-STATE-v1
+fields = historicalTrajectoryHash, ruleStateKey, ply
+```
+
+Search outcome, ambiguity, instability, CBE, morphology and game winner are not used for state selection.
+
+## Stage 1 measurement
+
+Each selected state is measured at:
 
 ```text
 D1 / D2 / D3 / D4
@@ -258,39 +244,19 @@ timeLimitMs = Infinity
 adaptive = false
 ```
 
-Exact diagnostic and normal engine search are cross-checked at every depth.
+Exact diagnostic and normal fixed-depth engine search are cross-checked by the runner.
 
-## Stage 1 tooling — TECHNICALLY VALIDATED
-
-Runner:
+Tooling:
 
 ```text
 tools/experiments/run-position-complexity-stage1-exploratory.js
-```
-
-Verifier:
-
-```text
 tools/experiments/verify-position-complexity-stage1-exploratory.js
-```
-
-Exploratory analyzer:
-
-```text
 tools/experiments/analyze-position-complexity-stage1-exploratory.py
 ```
 
-Technical test:
+## Stage 1 readiness gates — NOT YET EVALUATED
 
-```text
-test/position-complexity-stage1-runner.test.js
-```
-
-`Position Complexity Research CI` run `31589875147` passed the Stage 1 runner/verifier technical unit test in addition to all Stage 0 regression checks. The analyzer is included in CI syntax validation.
-
-## Stage 1 readiness gates
-
-A later Stage 2 design may be frozen only if Stage 1 v1 provides:
+A Stage 2 design may proceed only if the completed Stage 1 measurement satisfies all frozen design-estimability gates:
 
 ```text
 selected unique rule states >= 300
@@ -301,38 +267,35 @@ D2->D3 stable events >= 30
 ordinary-domain D2 margins >= 200
 ```
 
-These are design-estimability gates, not scientific confirmation criteria.
+These are not scientific confirmation criteria.
 
-If any gate fails, Stage 1 v1 closes as insufficient for the current Stage 2 design. Do not append seeds or relax thresholds inside v1.
+If a gate fails, do not append seeds or relax a threshold inside Stage 1 v1. The result must be recorded as insufficient for the current Stage 2 design and a new prospective design considered separately.
 
 ## Current hypothesis state
 
-Still provisional for Stage 2:
+Still provisional for future Stage 2:
 
 ```text
 H1 candidate:
-  structural branching (legalMoveCount)
-  is associated with tie-aware D2->D3 root-optimum instability
+  legalMoveCount is associated with tie-aware D2->D3 root-optimum instability
 
 H2 candidate:
   exact D2 decision ambiguity adds information beyond structural branching
 ```
 
-Stage 1 may reject or refine these candidates only within the predeclared metric families and before any Stage 2 corpus exists. The smallest exploratory p-value is not a metric-selection rule.
+Stage 1 is allowed to assess whether these metrics are estimable and scientifically usable. It is not confirmation, and smallest exploratory p-value selection is prohibited.
 
 ## Next authorized work
 
-The next scientific action is **local Stage 1 exploratory execution**, in this exact order:
+Generation and full verification are complete. Continue on the same local artifact root without regenerating the 768 games:
 
 ```bash
-node tools/experiments/run-position-complexity-stage1-exploratory.js --phase generate
-node tools/experiments/verify-position-complexity-stage1-exploratory.js
 node tools/experiments/run-position-complexity-stage1-exploratory.js --phase select
 node tools/experiments/run-position-complexity-stage1-exploratory.js --phase measure
 python3 tools/experiments/analyze-position-complexity-stage1-exploratory.py
 ```
 
-Large Stage 1 corpus generation must be local. The GitHub Actions workflow is technical validation only.
+After `analyze`, preserve the complete analyzer output and record all readiness gates before designing Stage 2.
 
 ## Stage 2 remains locked
 
@@ -340,8 +303,9 @@ Not authorized:
 
 - Stage 2 formal corpus generation;
 - formal hypothesis testing;
-- use of Stage 1 observations as confirmation;
-- prior formal archive reuse as current formal evidence;
-- result-dependent metric/threshold/depth/population rescue.
+- Stage 1 observation reuse as confirmation;
+- prior formal archive reuse as present confirmation;
+- result-dependent metric/depth/population rescue;
+- favorable reseeding or extension of Stage 1 v1.
 
-A separate frozen Stage 2 preregistration with fresh seeds is mandatory after Stage 1 is complete and consumed.
+A separate frozen Stage 2 preregistration and fresh seed block are mandatory after Stage 1 is completed and consumed.
