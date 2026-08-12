@@ -89,22 +89,22 @@ function verifyAgainstEngine(state, depth, options = {}) {
 }
 
 {
-  const forced = {
+  const singleVariant = {
     pits: [
-      [[0, 0, 0, 0, 0, 4, 5, 1], [0, 0, 0, 0, 0, 0, 1, 1]],
-      [[0, 1, 0, 6, 9, 0, 1, 0], [0, 0, 0, 0, 0, 0, 1, 1]],
+      [[2, 0, 0, 0, 0, 0, 0, 0], Array(8).fill(0)],
+      [[1, 0, 0, 0, 0, 0, 0, 0], Array(8).fill(0)],
     ],
-    reserve: [16, 17],
-    houseOwned: [false, true],
-    player: 1,
-    phase: "namua",
+    reserve: [0, 0],
+    houseOwned: [false, false],
+    player: 0,
+    phase: "mtaji",
     winner: null,
     reason: "",
-    turn: 12,
+    turn: 50,
     pending: [0, 0],
   };
-  assert.equal(E.moveVariants(forced).length, 1, "fixture is a single-choice root");
-  const diagnostic = D.analyzeRootCandidates(forced, 3);
+  assert.equal(E.moveVariants(singleVariant).length, 1, "fixture is a true single-variant root");
+  const diagnostic = D.analyzeRootCandidates(singleVariant, 3);
   assert.equal(diagnostic.legalMoveCount, 1);
   assert.equal(diagnostic.topSetSize, 1);
   assert.equal(diagnostic.bestSecondGap, null,
