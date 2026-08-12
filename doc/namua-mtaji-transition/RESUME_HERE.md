@@ -1,7 +1,7 @@
 # Namua→Mtaji Strategic Temporal Transition — RESUME HERE
 
 更新日: 2026-08-12  
-Purpose: **新しいチャット・新しいローカルセッションから研究状態を安全に復元するための入口**
+Purpose: **新しいチャット・新しいローカルセッションからclosed studyの科学的状態を安全に復元するための入口**
 
 ## 0. 最重要の現在地
 
@@ -24,6 +24,9 @@ outcome firewall = PASSED
 frozen Mtaji artifact audit = PASS
 M1/M2 primary formal evaluation = COMPLETE
 formal decision = NOT-CONFIRMED
+post-evaluation independent audit = PASS
+final integration = COMPLETE
+research status = CLOSED
 ```
 
 Branch:
@@ -44,35 +47,51 @@ Formal held-out corpus source commit:
 b0e04a1c53d9c4d982a37c9489f3b56d9e6282ca
 ```
 
-Outcome-unlock commit after independent preoutcome review:
+Outcome-unlock commit:
 
 ```text
 afe1ca9e9021f5f391c2cedbf9c0fcf8330aafcb
 ```
 
-On resume, always fetch the current branch tip rather than assuming either historical SHA is the current tip.
+Always fetch the current branch tip. Historical source/unlock SHAs are provenance identities, not necessarily the current tip.
 
 ## 1. Required read order
 
-Read these files in order before making any scientific decision:
+Read these files in order before making any scientific decision about this closed study:
 
 1. `doc/namua-mtaji-transition/RESUME_HERE.md`
-2. `doc/namua-mtaji-transition/CURRENT_STATUS.md`
-3. `doc/namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md`
-4. `doc/namua-mtaji-transition/checkpoints/2026-08-12-stage2-formal-not-confirmed.md`
-5. `doc/namua-mtaji-transition/STAGE_2_FORMAL_PROTOCOL.md`
-6. `doc/namua-mtaji-transition/preregistration/STAGE_2_FORMAL_SPEC.json`
-7. `doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json`
-8. `doc/namua-mtaji-transition/STAGE_2_RUNBOOK.md`
-9. `doc/namua-mtaji-transition/checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md`
-10. `doc/namua-mtaji-transition/checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md`
-11. `doc/namua-mtaji-transition/STAGE_1_FINAL_EXTENSION_RESULT.md`
+2. `doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md`
+3. `doc/namua-mtaji-transition/STUDY_1_FINAL_REPORT.md`
+4. `doc/namua-mtaji-transition/CURRENT_STATUS.md`
+5. `doc/namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md`
+6. `doc/namua-mtaji-transition/REPRODUCIBILITY_INDEX.md`
+7. `doc/namua-mtaji-transition/checkpoints/2026-08-12-study1-formal-closure.md`
+8. `doc/namua-mtaji-transition/checkpoints/2026-08-12-stage2-formal-not-confirmed.md`
+9. `doc/namua-mtaji-transition/STAGE_2_FORMAL_PROTOCOL.md`
+10. `doc/namua-mtaji-transition/preregistration/STAGE_2_FORMAL_SPEC.json`
+11. `doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json`
 
-Read older Stage 0 / Stage 1 protocol and risk-set files only when needed for provenance or inherited-definition questions.
+Read the Stage 2 runbook, firewall-hardening checkpoint, Stage 1 result/protocol files, or Stage 0 records only when implementation chronology or provenance is required.
 
-## 2. Immutable inherited boundaries
+## 2. Closed-study execution boundary
 
-Do not reopen or reinterpret closed studies.
+This study is complete.
+
+Do **not** resume by running the Stage 2 runner or evaluator.
+
+Do not:
+
+- generate more Stage 2 games;
+- rerun with another seed block to seek significance;
+- change R3-M or the 1:20 ratio;
+- change CBE / Category-A definitions;
+- refit or relabel the Mtaji classifier;
+- select favorable candidate-ply subgroups as a replacement primary result;
+- reinterpret the positive descriptive risk difference as confirmation.
+
+Any new confirmatory analysis requires a new independent prospective study and fresh evidence.
+
+## 3. Immutable inherited boundaries
 
 ### Phase-transition Study 1
 
@@ -121,7 +140,7 @@ Never refit, restandardize, relabel, change features, or use alternative-k rescu
 
 Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates only. STYLE-C1..C4 exact geometry remains formal not-confirmed.
 
-## 3. Deterministic Namua clock — permanent boundary
+## 4. Deterministic Namua clock — permanent boundary
 
 For a standard trajectory surviving Namua:
 
@@ -147,16 +166,14 @@ Never claim:
 - CBE changes first-Mtaji hazard;
 - first-Mtaji timing is a survival endpoint.
 
-## 4. Stage 1 final state — complete and consumed
+## 5. Stage 1 final state
 
-All Stage 1 corpora are exploratory and permanently consumed. They may support design/provenance, but must never enter Stage 2 formal inference.
-
-Final readiness:
+All Stage 1 corpora are exploratory and permanently consumed.
 
 ```text
 unique CBE trajectory-ply units = 14
 unique CBE historical trajectories = 14
-frozen gate = >=10 units / >=8 trajectories
+frozen readiness gate = >=10 units / >=8 trajectories
 result = PASS
 ```
 
@@ -168,7 +185,9 @@ progression violations = 0
 364 / 364 structural-range comparisons in-range
 ```
 
-## 5. Frozen Stage 2 design
+Stage 1 data cannot enter a new confirmatory interpretation of the Stage 2 result.
+
+## 6. Frozen Stage 2 design
 
 ```text
 condition = P2-D2 only
@@ -209,7 +228,7 @@ two-sided alpha = 0.05
 one primary test
 ```
 
-## 6. Stage 2 observed estimability and firewall
+## 7. Estimability and outcome firewall
 
 ```text
 raw fully ascertained Namua CBE rows = 37
@@ -223,7 +242,7 @@ control reuse = 0
 progression violations = 0
 ```
 
-Preoutcome matching was frozen before morphology inspection.
+Preoutcome identity:
 
 ```text
 matchingAssignmentHash
@@ -245,9 +264,7 @@ frozenMtajiClassifierLoaded = false
 
 Only then was the exact outcome unlock committed.
 
-## 7. Formal result — immutable negative result
-
-First-Mtaji morphology:
+## 8. Formal result — immutable
 
 ```text
 Exposed M1 = 26 / 30 = 0.8666666667
@@ -266,22 +283,13 @@ p_two_sided = 1.0
 alpha = 0.05
 ```
 
-Frozen rule:
-
-```text
-p < .05 -> confirmed-association
-p >= .05 -> not-confirmed
-```
-
 Decision:
 
 > **NOT-CONFIRMED**
 
-No direction label is assigned. The positive descriptive difference is not a confirmed trend or effect and must not be used to rescue the result.
+No direction label is assigned. The positive descriptive difference is not a confirmed trend or effect.
 
-## 8. Final artifact audit
-
-The evaluated assignment passed independent consistency checks:
+## 9. Final artifact audit
 
 ```text
 30 matched sets
@@ -299,9 +307,9 @@ Morphology assignment SHA-256:
 961f5ef1c08447331642f10dbd4b67b9166f443a5909855ca2ac8ae38fe5e592
 ```
 
-Primary counts, RD, MH OR, Poisson-binomial PMF, tail probabilities, p-value, and all stratum summaries were independently recomputed and matched the formal output.
+Primary counts, all stratum summaries, matched risk difference, MH OR, Poisson-binomial PMF, tail probabilities, and final p-value were independently recomputed and matched the machine result.
 
-## 9. Interpretation boundary
+## 10. Final interpretation boundary
 
 Allowed conclusion:
 
@@ -313,14 +321,11 @@ Do not claim:
 - a causal null effect;
 - a Mtaji timing/hazard result;
 - generalization beyond P2-D2;
-- post-hoc candidate-ply subgroup confirmation;
-- alternative-comparator, threshold, seed, or sample-size rescue.
+- subgroup/comparator/threshold/seed/sample-size rescue.
 
-Any new confirmatory claim requires a new preregistered prospective study with fresh evidence.
+## 11. Safe restore procedure
 
-## 10. Resume action
-
-On resume:
+If a later chat needs to inspect this closed study:
 
 ```bash
 git fetch origin
@@ -330,8 +335,6 @@ git rev-parse HEAD
 git status --short
 ```
 
-Then read the Required read order above.
+Then follow the Required read order.
 
-Do **not** regenerate the Stage 2 corpus, rerun with different seeds, or modify the formal decision. `artifacts/local/` remains gitignored and must not be committed.
-
-The remaining work in this branch is documentation/final integration only unless a separately defined new exploratory or prospective study is explicitly started.
+No local scientific execution is required simply to restore the closed state. `artifacts/local/` remains gitignored and uncommitted.
