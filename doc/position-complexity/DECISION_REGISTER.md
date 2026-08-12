@@ -247,3 +247,141 @@ Reason:
 A root with exactly one legal move is mechanically stable across search depths because no alternative decision exists. Including those positions would bake a trivial structural relationship into the primary endpoint and could exaggerate the association between low branching and stability.
 
 Single-choice roots may still be retained in structural/search-workload descriptive summaries, but they are not eligible for the primary D2→D3 decision-instability test.
+
+## PCX-D019 — Stage 0 exact-root measurement semantics validated
+
+Status: **FROZEN**
+
+Decision:
+
+Stage 0 adopts the validated research diagnostic semantics:
+
+```text
+exact-full-window-root-candidates/phase2-value-semantics/v1
+```
+
+The diagnostic is separate from normal `public/ai.js` move selection and was validated for:
+
+- state non-mutation;
+- exhaustive `moveVariants()` root coverage;
+- common root-player score perspective;
+- fixed-depth best-score consistency with existing phase2 search;
+- exact tied-best TopSet handling;
+- deterministic repeatability;
+- depth-trace consistency;
+- move replay validity;
+- trajectory/state identity availability;
+- existing search regression protection.
+
+Stage 0 result is technical PASS, not a scientific confirmation.
+
+## PCX-D020 — Stage 1 exploratory corpus v1 is fixed before generation
+
+Status: **FROZEN**
+
+Decision:
+
+Stage 1 v1 uses:
+
+```text
+Stage ID = PCX-S1-EXPLORATORY-2026-08-12-v1
+games = 768
+seeds = 20400001..20400768
+opening = seeded-uniform E.moveVariants, 8 plies
+trajectory generator = hard / bao / phase2 / depth2
+max ply = 100
+timeLimitMs = Infinity
+```
+
+This is exploratory only and permanently ineligible as Stage 2 confirmation evidence.
+
+No seed extension is authorized within v1 after inspection.
+
+## PCX-D021 — Stage 1 one-state-per-trajectory selection uses outcome-independent hashes
+
+Status: **FROZEN for Stage 1 v1**
+
+Decision:
+
+After collapsing identical `historicalTrajectoryHash` groups, assign each unique trajectory to one phase using:
+
+```text
+sha256("PCX-S1-PHASE-v1|" + historicalTrajectoryHash)
+even -> Namua
+odd  -> Mtaji
+```
+
+Within the assigned phase, eligible states require:
+
+```text
+nonterminal
+ply >= 8
+E.moveVariants(state).length >= 2
+```
+
+Select exactly one state by the minimum frozen SHA-256 rank over:
+
+```text
+historicalTrajectoryHash | ruleStateKey | ply
+salt = PCX-S1-STATE-v1
+```
+
+No replacement is made when the assigned phase has no eligible state. Exact duplicate selected `ruleStateKey` states are collapsed by a fixed representative rule.
+
+No search score, instability outcome, CBE label, morphology label or game outcome enters this selection.
+
+## PCX-D022 — Stage 1 measurement grid is D1–D4 under fixed phase2/bao semantics
+
+Status: **FROZEN for Stage 1 v1**
+
+Decision:
+
+Every selected Stage 1 state is measured at:
+
+```text
+D1 / D2 / D3 / D4
+phase2 / bao
+quiescenceDepth = 1
+orderQuiescenceCaptures = false
+timeLimitMs = Infinity
+adaptive = false
+stableBestDepths = 0
+aspirationWindow = 0
+```
+
+At every depth, exact diagnostic best score must equal normal engine `rootScore`, and the normal engine chosen move must belong to the exact TopSet.
+
+## PCX-D023 — Stage 1 readiness gates are design-estimability gates only
+
+Status: **FROZEN for Stage 1 v1**
+
+Decision:
+
+A separate Stage 2 design may be frozen only if Stage 1 v1 yields:
+
+```text
+selected unique rule states >= 300
+Namua selected states >= 120
+Mtaji selected states >= 120
+D2->D3 instability events >= 30
+D2->D3 stable events >= 30
+ordinary-domain D2 margins >= 200
+```
+
+These gates do not confirm H1/H2.
+
+Failure of a gate closes Stage 1 v1 as insufficient for the current Stage 2 design; it does not authorize relaxed gates, added seeds or favorable state replacement inside v1.
+
+## PCX-D024 — Stage 1 large corpus is local-only; Actions remains technical validation
+
+Status: **FROZEN**
+
+Decision:
+
+The 768-game Stage 1 corpus and per-state measurements are generated under:
+
+```text
+artifacts/local/position-complexity/stage1-exploratory-v1/
+```
+
+GitHub Actions may run only small technical unit/smoke tests for the research tooling. It must not be repurposed to generate the Stage 1 exploratory corpus or future Stage 2 formal corpus.
