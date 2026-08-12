@@ -1,0 +1,40 @@
+name: Position Complexity Stage 0 CI
+
+on:
+  pull_request:
+    paths:
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/run-position-complexity-stage0-smoke.js"
+      - "test/position-complexity-search-diagnostic.test.js"
+      - "test/search.test.js"
+      - ".github/workflows/position-complexity-stage0-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  technical-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Existing search regression
+        run: node test/search.test.js
+      - name: Position-complexity diagnostic unit tests
+        run: node test/position-complexity-search-diagnostic.test.js
+      - name: Position-complexity Stage 0 smoke
+        run: node tools/experiments/run-position-complexity-stage0-smoke.js > /tmp/position-complexity-stage0-smoke.json
+      - name: Show Stage 0 gate summary
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const result = JSON.parse(fs.readFileSync('/tmp/position-complexity-stage0-smoke.json', 'utf8'));
+          console.log(JSON.stringify({
+            passed: result.passed,
+            aggregateGates: result.aggregateGates,
+            G0_9_existingSearchBehaviorProtection: result.G0_9_existingSearchBehaviorProtection,
+            fixtureCount: result.fixtures.length,
+          }, null, 2));
+          if (!result.passed) process.exit(1);
+          NODE
