@@ -76,8 +76,9 @@ stage = Stage 2
 class = formal / confirmatory
 stage ID = PCX-S2-FORMAL-2026-08-13-v1
 scientific design = FROZEN
-formal corpus = NOT GENERATED
-generation authorization = LOCKED PENDING TOOL VALIDATION
+tooling = VALIDATED
+local execution authorization = ACTIVE
+formal corpus = NOT YET GENERATED
 ```
 
 Formal design:
@@ -85,6 +86,15 @@ Formal design:
 ```text
 doc/position-complexity/STAGE_2_FORMAL_PROTOCOL.md
 doc/position-complexity/preregistration/STAGE_2_FORMAL_SPEC.json
+specSha256 = f717d3990e83bfb08b584d49b521c87d7d9a9b73692a823137b5dbaaf9bd9071
+```
+
+Authorization/runbook:
+
+```text
+doc/position-complexity/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+doc/position-complexity/STAGE_2_FORMAL_RUNBOOK.md
+doc/position-complexity/checkpoints/2026-08-13-stage2-formal-generation-authorization.md
 ```
 
 Fresh fixed corpus:
@@ -117,4 +127,34 @@ adds information beyond phase + log1pLegalMoveCount
 confirmatory only if PCX-H1 is confirmed
 ```
 
-Formal generation remains prohibited until a dedicated Stage 2 runner, independent verifier, formal analyzer, technical tests/CI, source/tool hashes and explicit authorization record are all present.
+Validated formal tooling:
+
+```text
+tools/experiments/run-position-complexity-stage2-formal.js
+tools/experiments/verify-position-complexity-stage2-formal.js
+tools/experiments/analyze-position-complexity-stage2-formal.py
+tools/experiments/check-position-complexity-stage2-authorization.js
+test/position-complexity-stage2-formal-tooling.test.js
+```
+
+Technical authorization validation:
+
+```text
+fingerprint CI run = 31673666993 / success
+authorization-present CI run = 31673835352 / success
+authorization preflight = success
+```
+
+Formal corpus generation is authorized only locally under the exact frozen pipeline. GitHub Actions generation, Stage 1 reuse, seed extension, early stopping, outcome-dependent replacement and post-hoc model/metric changes remain prohibited.
+
+Artifact root after execution:
+
+```text
+artifacts/local/position-complexity/stage2-formal-v1/
+```
+
+Current formal result:
+
+```text
+NOT YET GENERATED
+```
