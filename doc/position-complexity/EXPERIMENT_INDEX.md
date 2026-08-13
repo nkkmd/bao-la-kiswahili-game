@@ -1,150 +1,120 @@
 # Position Complexity / Difficulty Study — Experiment Index
 
-更新日: 2026-08-12  
+更新日: 2026-08-13  
 Status: **ACTIVE INDEX**
-
-This index distinguishes technical validation, exploratory design development, and future formal confirmation. An entry here does not by itself authorize scientific inference.
 
 ## PCX-S0-T001 — Exact root/depth diagnostic technical validation
 
 ```text
 stage = Stage 0
-class = technical / measurement validation
-scientific inference = none
+class = technical validation
 status = COMPLETE / PASS
+scientific inference = none
 ```
 
-Purpose:
-
-- validate exhaustive exact root-candidate searched values;
-- validate tie-aware TopSet and depth trace;
-- validate mate-domain handling;
-- validate non-mutation, determinism, replay and existing-search consistency.
-
-Key tooling:
-
-```text
-tools/experiments/lib/position-complexity-search-diagnostic.js
-tools/experiments/run-position-complexity-stage0-smoke.js
-test/position-complexity-search-diagnostic.test.js
-```
-
-Result:
+Canonical result:
 
 ```text
 doc/position-complexity/STAGE_0_SMOKE_RESULT.md
 workflow run = 31589325398
-validated branch head = 7bf6d801fc1f60ecf73d51c6be158f3f82b226d9
-result = PASS / technical only
 ```
 
 ## PCX-S1-E001 — Multi-layer complexity exploratory design corpus
 
 ```text
 stage = Stage 1
-class = exploratory / design development
+class = exploratory design development
+stage ID = PCX-S1-EXPLORATORY-2026-08-12-v1
+status = COMPLETE / READINESS PASS / CONSUMED
 scientific inference = exploratory only
-status = GENERATED / FULLY VERIFIED / EXPLORATORY-CONSUMED / SELECT+MEASURE PENDING
+confirmatory reuse = prohibited
 ```
 
-Stage ID:
+Frozen identity:
 
 ```text
-PCX-S1-EXPLORATORY-2026-08-12-v1
-```
-
-Frozen spec:
-
-```text
-doc/position-complexity/preregistration/STAGE_1_EXPLORATORY_SPEC.json
 specSha256 = 20574bf430c26181fe6947a9d4ae10db86a9a37b8aec43e8c59af4fa98497165
+verificationIdentityHash = b74a48c2c88fc46f48507245ec08f3da820ba4bd2fc5edb7d08bf6574924784f
+selectionHash = 64df1467410923ce900d4f46c49c61b0d19b8142c041a55394b82020c460a823
+measurementHash = 5a85c54a2dcfb3bbd17bb0c806e6f7347e6dfa7c2dcd63a1ddc2cbdf536ef584
+resultHash = 51e6a0f7352e553f6a66e4e1db7c867148424cdbf7954b818bf7667bfd3c2eec
 ```
 
-Protocol/runbook:
+Population/result:
 
 ```text
-doc/position-complexity/STAGE_1_EXPLORATORY_PROTOCOL.md
-doc/position-complexity/STAGE_1_RUNBOOK.md
+games = 768
+unique historical trajectories = 685
+selected unique rule states = 666
+Namua = 341
+Mtaji = 325
+D23 instability = 162
+D23 stable = 504
+ordinary-domain D2 margins = 510
+all preregistered readiness gates = PASS
 ```
 
-Frozen population:
-
-```text
-768 games
-seeds 20400001..20400768
-8-ply seeded-uniform moveVariants opening
-then hard / bao / phase2 / depth2
-max ply 100
-```
-
-Generation verification record:
+Canonical records:
 
 ```text
 doc/position-complexity/STAGE_1_GENERATION_VERIFICATION.md
+doc/position-complexity/STAGE_1_EXPLORATORY_RESULT.md
 ```
 
-Verified corpus identity:
-
-```text
-gamesVerified = 768
-observationsVerified = 43110
-movesVerified = 42342
-searchMovesRecomputed = 36211
-fullSearchRecomputation = true
-uniqueHistoricalTrajectories = 685
-duplicateHistoricalTrajectoryGroups = 61
-largestHistoricalTrajectoryGroup = 6
-reachedMtajiGames = 732
-verifiedIdentityHash = b74a48c2c88fc46f48507245ec08f3da820ba4bd2fc5edb7d08bf6574924784f
-verification = PASS
-```
-
-The 768-game corpus and seed block are now permanently consumed exploratory material. No seed extension, selective regeneration, favorable reseeding or duplicate-trajectory replacement is allowed within v1.
-
-Frozen next phases:
-
-```text
-select -> measure -> analyze
-```
-
-Primary design-development targets:
-
-- selected-state / phase coverage after trajectory and rule-state deduplication;
-- legalMoveCount distribution;
-- D1→D2 / D2→D3 / D3→D4 TopSet instability prevalence;
-- D2 best-second exact margin and tie prevalence;
-- mate-domain prevalence;
-- nodes/cutoffs/evaluation distributions;
-- Stage 2 estimability gates.
-
-Tooling:
-
-```text
-tools/experiments/run-position-complexity-stage1-exploratory.js
-tools/experiments/verify-position-complexity-stage1-exploratory.js
-tools/experiments/analyze-position-complexity-stage1-exploratory.py
-test/position-complexity-stage1-runner.test.js
-```
-
-Artifact root:
+Local artifact root:
 
 ```text
 artifacts/local/position-complexity/stage1-exploratory-v1/
 ```
 
-Formal reuse:
+No Stage 1 state or seed may serve as Stage 2 confirmation evidence.
+
+## PCX-S2-F001 — Structural branching / decision-instability formal confirmation
 
 ```text
-scientificInferenceAuthorized = false
-confirmatoryReuseAllowed = false
+stage = Stage 2
+class = formal / confirmatory
+stage ID = PCX-S2-FORMAL-2026-08-13-v1
+scientific design = FROZEN
+formal corpus = NOT GENERATED
+generation authorization = LOCKED PENDING TOOL VALIDATION
 ```
 
-## Future Stage 2
+Formal design:
 
 ```text
-experiment ID = NOT ASSIGNED
-formal preregistration = NOT CREATED
-formal corpus = NOT AUTHORIZED / NOT GENERATED
+doc/position-complexity/STAGE_2_FORMAL_PROTOCOL.md
+doc/position-complexity/preregistration/STAGE_2_FORMAL_SPEC.json
 ```
 
-Stage 2 may only be designed after PCX-S1-E001 state selection, D1-D4 measurement, exploratory analysis and readiness-gate audit are completed and recorded. A fresh formal seed block and separate frozen preregistration are mandatory.
+Fresh fixed corpus:
+
+```text
+1024 games
+seeds 20410001..20411024
+8-ply seeded-uniform moveVariants opening
+then hard / bao / phase2 / depth2
+max ply 100
+```
+
+Primary:
+
+```text
+PCX-H1
+D23Instability ~ phase + log1pLegalMoveCount
+vs phase-only reduced model
+unpenalized binomial logistic likelihood-ratio test
+df = 1
+alpha = 0.05
+```
+
+Key secondary:
+
+```text
+PCX-H2
+ordinary-domain log1pD2BestSecondGap
+adds information beyond phase + log1pLegalMoveCount
+confirmatory only if PCX-H1 is confirmed
+```
+
+Formal generation remains prohibited until a dedicated Stage 2 runner, independent verifier, formal analyzer, technical tests/CI, source/tool hashes and explicit authorization record are all present.
