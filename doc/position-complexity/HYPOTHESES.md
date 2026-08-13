@@ -1,132 +1,203 @@
 # Position Complexity / Difficulty Study 1 — Hypotheses
 
-更新日: 2026-08-12  
-Status: **CANDIDATE HYPOTHESES / NOT YET FORMALLY PREREGISTERED**
+更新日: 2026-08-13  
+Status: **STAGE 2 FORMAL HYPOTHESES FROZEN / FORMAL CORPUS NOT GENERATED**
 
-この文書はStage 0開始時点のhypothesis候補を記録する。Stage 1 exploratory evidenceを用いてmeasurement feasibilityを確認した後、Stage 2 fresh corpus生成前にformal hypothesisを一度だけfreezeする。
+Stage 1 exploratory evidence has been consumed and may be used only for prospective Stage 2 design freezing. It is not confirmatory evidence.
 
-Stage 2 outcomeを見て仮説・metric・方向・thresholdを変更してはならない。
-
-## H1 candidate — Structural branching and depth instability
-
-Scientific statement:
-
-> 合法選択肢のstructural branchingは、同一局面を固定search/evaluatorでdepth 2からdepth 3へ深くしたときのroot decision instabilityと関連する。
-
-Provisional structural variable:
+Formal machine-readable specification:
 
 ```text
-legalMoveCount
+doc/position-complexity/preregistration/STAGE_2_FORMAL_SPEC.json
 ```
 
-Provisional outcome:
+Formal protocol:
 
 ```text
-tie-aware D2 -> D3 root-optimum instability
+doc/position-complexity/STAGE_2_FORMAL_PROTOCOL.md
 ```
 
-Current preferred inferential form:
-
-```text
-H0: beta_legalMoveCount = 0
-H1: beta_legalMoveCount != 0
-```
+## PCX-H1 — Structural branching and depth instability
 
 Status:
 
 ```text
-PRIMARY CANDIDATE
-NOT FROZEN
+PRIMARY FORMAL HYPOTHESIS — FROZEN
 ```
-
-Rationale:
-
-- structural variable does not contain evaluator/search outcome;
-- prediction instability is a different layer;
-- two-sided association avoids assuming that more legal moves must necessarily imply more instability before exploratory feasibility is known.
-
-## H2 candidate — Decision ambiguity adds information beyond structure
 
 Scientific statement:
 
-> Root decision ambiguityは、structural branchingだけでは説明できないdepth-instability情報を持つ。
+> Structural root branching is associated with tie-aware D2-to-D3 root-optimum instability conditional on Namua/Mtaji phase.
 
-Provisional ambiguity variable:
-
-```text
-bestScore_D2 - secondBestScore_D2
-```
-
-Expected relation:
+Formal outcome:
 
 ```text
-smaller margin -> greater D2-to-D3 instability
+D23Instability = 1 iff TopSet_D2 intersect TopSet_D3 is empty
+otherwise 0
 ```
 
-Candidate model adds ambiguity after `legalMoveCount` and phase context.
+Formal predictor:
+
+```text
+log1pLegalMoveCount = log(1 + E.moveVariants(state).length)
+```
+
+Population:
+
+```text
+one outcome-independent selected state per unique historical trajectory
+exact duplicate selected ruleStateKey collapsed
+legalMoveCount >= 2
+Namua and Mtaji included
+```
+
+Covariate:
+
+```text
+phaseMtajiIndicator
+```
+
+Reduced model:
+
+```text
+D23Instability ~ 1 + phaseMtajiIndicator
+```
+
+Full model:
+
+```text
+D23Instability ~ 1 + phaseMtajiIndicator + log1pLegalMoveCount
+```
+
+Formal test:
+
+```text
+unpenalized binomial logistic likelihood-ratio test
+df = 1
+alpha = 0.05
+two-sided association
+```
+
+Decision:
+
+```text
+required gates pass and p < 0.05  -> CONFIRMED
+required gates pass and p >= 0.05 -> NOT-CONFIRMED
+required technical/estimability gate fails -> INCONCLUSIVE
+```
+
+A valid nonsignificant result is not `inconclusive`.
+
+The formal test is two-sided. A positive Stage 1 exploratory direction does not authorize a one-sided Stage 2 test.
+
+## PCX-H2 — Decision ambiguity adds information beyond structure
 
 Status:
 
 ```text
-KEY SECONDARY CONFIRMATORY CANDIDATE
-NOT FROZEN
+KEY SECONDARY FORMAL HYPOTHESIS — FROZEN / GATE-KEPT BY PCX-H1
+```
+
+Scientific statement:
+
+> Among states with a finite ordinary-evaluation-domain D2 best-second margin, D2 root-score margin adds information about D2-to-D3 instability beyond structural branching and phase.
+
+Formal ambiguity predictor:
+
+```text
+log1pD2BestSecondGap
+  = log(1 + D2 bestScore - D2 secondBestScore)
+```
+
+Population restriction:
+
+```text
+finite ordinary-evaluation-domain D2 margin only
+```
+
+Mate-domain and ordinary-domain raw margins are not pooled into one ambiguity scale.
+
+Reduced model:
+
+```text
+D23Instability
+  ~ 1 + phaseMtajiIndicator + log1pLegalMoveCount
+```
+
+Full model:
+
+```text
+D23Instability
+  ~ 1 + phaseMtajiIndicator
+    + log1pLegalMoveCount
+    + log1pD2BestSecondGap
+```
+
+Formal test:
+
+```text
+unpenalized binomial logistic likelihood-ratio test
+df = 1
+alpha = 0.05
+```
+
+Gatekeeping:
+
+```text
+if PCX-H1 CONFIRMED:
+  H2 may receive confirmatory status if its own estimability gates pass
+
+if PCX-H1 NOT-CONFIRMED:
+  H2 confirmatory status = NOT-CONFIRMATORILY-EVALUATED
+```
+
+If H1 is confirmed and H2 gates pass:
+
+```text
+p < 0.05  -> SECONDARY-CONFIRMED
+p >= 0.05 -> SECONDARY-NOT-CONFIRMED
 ```
 
 This is an incremental association hypothesis, not causal mediation and not human cognitive difficulty.
 
-## H3 candidate — Structural branching and search workload are related but non-identical
-
-Scientific statement:
-
-> Structural branchingとfixed-search workloadは関連し得るが、legal move countだけでnodes/cutoffs/evaluationsの全変動を表現できるとは仮定しない。
-
-Candidate quantities:
-
-```text
-legalMoveCount
-captureMoveCount
-relay/chain quantities
-nodes
-quiescenceNodes
-cutoffs
-evaluations
-```
+## H3 — Structural branching and deterministic search workload
 
 Status:
 
 ```text
-SECONDARY / EXPLORATORY AT STUDY INITIATION
+EXPLORATORY / DESCRIPTIVE IN STUDY 1
 ```
 
-No success criterion based on a desired correlation magnitude is currently authorized.
+Stage 1 showed a substantial descriptive association between `legalMoveCount` and `log1p(D3 nodes)`, but no formal Stage 2 H3 test is preregistered.
 
-## H4 candidate — Multiple machine-reproducible layers
+Allowed after the H1/H2 formal decision is locked:
 
-Scientific statement:
+- legalMoveCount vs nodes;
+- other structural features vs deterministic workload;
+- quiescence/cutoff/evaluation analyses;
+- phase-stratified workload descriptions.
 
-> Structural, search-workload, ambiguity and prediction-instability measures will not collapse cleanly into one empirically interchangeable dimension.
+These cannot modify H1/H2.
 
-Possible exploratory diagnostics:
+## H4 — Multiple machine-reproducible layers
 
-- within-/cross-layer correlation matrix;
+Status:
+
+```text
+EXPLORATORY ONLY FOR STUDY 1
+```
+
+Possible post-formal diagnostics include:
+
+- cross-layer correlation matrix;
 - partial associations;
-- incremental prediction;
 - PCA/factor diagnostics;
-- variance partitioning.
+- variance partitioning;
+- interaction diagnostics.
 
-Status:
+No exact latent-factor count is a formal Study 1 endpoint.
 
-```text
-EXPLORATORY ONLY FOR STUDY 1 UNLESS SEPARATELY FROZEN
-```
-
-A one-factor vs multi-factor latent model is not currently the primary formal test because representation/model-family selection would create excessive researcher degrees of freedom before measurement validity is established.
-
-## H5 future — Human difficulty validation
-
-Future question:
-
-> Do machine-reproducible structural/ambiguity/instability layers predict human error rate, response time, candidate generation or explanation quality?
+## H5 — Human difficulty validation
 
 Status:
 
@@ -135,18 +206,54 @@ OUT OF SCOPE FOR STUDY 1
 FUTURE INDEPENDENT STUDY
 ```
 
-Human difficulty is not inferred from engine search difficulty in the present study.
+Machine search workload, ambiguity or instability is not automatically interpreted as human difficulty.
 
-## Explicit non-hypotheses / prohibited rescue targets
+A separate human/expert validation study would be required for:
 
-The following are not present-study hypotheses:
+- error rate;
+- response time;
+- candidate generation;
+- explanation quality;
+- expertise interactions.
 
-- CBE accelerates or delays first Mtaji;
-- CBE changes first-Mtaji survival/hazard;
-- prior D2 phase2 > legacy and D3 legacy > phase2 results are re-confirmed by reanalysis;
-- MTAJI-M1 is harder/easier than MTAJI-M2;
-- N-ACT/N-CON are confirmed difficulty axes;
-- STYLE-C1..C4 are rescued as difficulty/style coordinates;
-- the existing adaptive `complexityScore()` is a validated research metric.
+## Formal estimability gates
 
-Any later decision to study one of these requires a separately documented prospective question and fresh evidence.
+PCX-H1 requires:
+
+```text
+selected unique rule states >= 500
+Namua selected >= 180
+Mtaji selected >= 180
+D23 instability events >= 80
+D23 stable events >= 80
+primary models finite/converged
+```
+
+PCX-H2 additionally requires:
+
+```text
+ordinary-domain D2 margins >= 350
+H2-subset instability events >= 50
+H2-subset stable events >= 50
+secondary models finite/converged
+```
+
+Gate failure is `inconclusive` for the affected hypothesis and never authorizes seed extension or model switching.
+
+## Explicit prohibited rescue targets
+
+Stage 2 may not rescue H1/H2 by:
+
+- redefining legalMoveCount;
+- including legalMoveCount=1 roots;
+- switching D2->D3 to another depth pair;
+- phase-stratified confirmation after global failure;
+- adding a phase interaction after outcome inspection;
+- changing state-selection salts or replacing unavailable phase assignments;
+- mixing mate-domain and ordinary-domain raw margins for H2;
+- selecting an alternative ambiguity/structural metric by smaller p-value;
+- changing alpha/test family;
+- appending games or seeds;
+- reusing Stage 1 states/seeds as confirmation.
+
+Closed-study rescue targets remain prohibited as already documented in the Decision Register.
