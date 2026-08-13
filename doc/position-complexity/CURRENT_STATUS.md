@@ -1,7 +1,7 @@
 # Position Complexity / Difficulty Study — Current Status
 
 更新日: 2026-08-13  
-Status: **ACTIVE / STAGE 1 COMPLETE / STAGE 2 FORMAL DESIGN FROZEN / FORMAL GENERATION LOCKED PENDING TOOL VALIDATION**
+Status: **ACTIVE / STAGE 1 COMPLETE / STAGE 2 FORMAL EXECUTION AUTHORIZED / CORPUS NOT YET GENERATED**
 
 ## Research identity
 
@@ -12,7 +12,7 @@ base main head = d681b4593242973fcb33805edca12eb3e8633653
 draft PR = #29
 Stage 0 = COMPLETE / TECHNICAL PASS
 Stage 1 = COMPLETE / EXPLORATORY / CONSUMED
-Stage 2 = FORMAL DESIGN FROZEN / CORPUS NOT GENERATED
+Stage 2 = FORMAL DESIGN FROZEN / TOOLING VALIDATED / LOCAL EXECUTION AUTHORIZED / NOT GENERATED
 ```
 
 ## Immutable inherited boundaries
@@ -53,7 +53,7 @@ tools/experiments/lib/position-complexity-search-diagnostic.js
 search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
 ```
 
-Stage 0 gates G0-1..G0-9 passed. Existing search behavior remained protected.
+Stage 0 gates G0-1..G0-9 passed and existing search behavior remained protected.
 
 Canonical record:
 
@@ -70,19 +70,19 @@ PCX-S1-EXPLORATORY-2026-08-12-v1
 specSha256 = 20574bf430c26181fe6947a9d4ae10db86a9a37b8aec43e8c59af4fa98497165
 ```
 
-Generation verification:
+Generation/full verification:
 
 ```text
 games = 768
 observations verified = 43,110
 moves verified = 42,342
 post-opening searches recomputed = 36,211
-full search recomputation = true
+fullSearchRecomputation = true
 unique historical trajectories = 685
-verification identity hash = b74a48c2c88fc46f48507245ec08f3da820ba4bd2fc5edb7d08bf6574924784f
+verificationIdentityHash = b74a48c2c88fc46f48507245ec08f3da820ba4bd2fc5edb7d08bf6574924784f
 ```
 
-Frozen selection result:
+Frozen selection/measurement:
 
 ```text
 assigned Namua = 343
@@ -93,27 +93,11 @@ selected Namua = 341
 selected Mtaji = 325
 duplicate selected rule states collapsed = 0
 selectionHash = 64df1467410923ce900d4f46c49c61b0d19b8142c041a55394b82020c460a823
-```
-
-Measurement result:
-
-```text
-selected states = 666
-completed measurements = 666
 measurementHash = 5a85c54a2dcfb3bbd17bb0c806e6f7347e6dfa7c2dcd63a1ddc2cbdf536ef584
 resultHash = 51e6a0f7352e553f6a66e4e1db7c867148424cdbf7954b818bf7667bfd3c2eec
 ```
 
-Canonical Stage 1 records:
-
-```text
-doc/position-complexity/STAGE_1_GENERATION_VERIFICATION.md
-doc/position-complexity/STAGE_1_EXPLORATORY_RESULT.md
-```
-
-### Stage 1 readiness gates
-
-All preregistered design-estimability gates passed:
+All preregistered readiness gates passed:
 
 ```text
 selected unique rule states >= 300      666 PASS
@@ -124,30 +108,17 @@ D2->D3 stable events >= 30              504 PASS
 ordinary-domain D2 margins >= 200       510 PASS
 ```
 
-This is a readiness result, not scientific confirmation.
+This is a design-readiness result, not scientific confirmation.
 
-### Stage 1 exploratory measurement summary
-
-Prediction instability:
+Exploratory descriptive results, no p-values:
 
 ```text
-D1->D2 events = 205 / 666
-D2->D3 events = 162 / 666 = 24.32%
-D3->D4 events = 170 / 666
-```
+D1->D2 instability = 205 / 666
+D2->D3 instability = 162 / 666 = 24.32%
+D3->D4 instability = 170 / 666
+D2 exact ties = 70 / 666
+ordinary-domain D2 margins = 510
 
-Decision ambiguity at D2:
-
-```text
-exact ties = 70 / 666
-ordinary-domain best-second margins = 510
-ordinary margin median = 91
-ordinary margin p90 = 403.1
-```
-
-Exploratory descriptive correlations, no p-values:
-
-```text
 legalMoveCount vs D23 instability:
   Pearson +0.1446
   Spearman +0.1476
@@ -161,9 +132,14 @@ legalMoveCount vs log1p(D3 nodes):
   Spearman +0.6555
 ```
 
-These directions may motivate/freeze the formal design but are not confirmation.
-
 Stage 1 is permanently ineligible for Stage 2 confirmatory reuse.
+
+Canonical Stage 1 records:
+
+```text
+doc/position-complexity/STAGE_1_GENERATION_VERIFICATION.md
+doc/position-complexity/STAGE_1_EXPLORATORY_RESULT.md
+```
 
 ## Stage 2 — FORMAL DESIGN FROZEN
 
@@ -173,11 +149,12 @@ Stage ID:
 PCX-S2-FORMAL-2026-08-13-v1
 ```
 
-Canonical formal design:
+Formal design:
 
 ```text
 doc/position-complexity/STAGE_2_FORMAL_PROTOCOL.md
 doc/position-complexity/preregistration/STAGE_2_FORMAL_SPEC.json
+specSha256 = f717d3990e83bfb08b584d49b521c87d7d9a9b73692a823137b5dbaaf9bd9071
 ```
 
 Fresh fixed corpus:
@@ -194,51 +171,45 @@ adaptive = false
 
 No Stage 1 seed/state is reused.
 
-### Frozen Stage 2 selection
+Frozen selection:
 
 ```text
 collapse duplicate historicalTrajectoryHash
--> phase assignment using salt PCX-S2-PHASE-v1
--> eligible nonterminal ply >= 8 and legalMoveCount >= 2
--> one state/trajectory by salt PCX-S2-STATE-v1
+-> phase assignment using PCX-S2-PHASE-v1
+-> nonterminal ply >= 8 and legalMoveCount >= 2
+-> one state/trajectory using PCX-S2-STATE-v1
 -> no replacement if assigned phase unavailable
 -> collapse duplicate selected ruleStateKey
 ```
 
-No outcome enters selection.
+No search outcome enters state selection.
 
-### Frozen primary hypothesis PCX-H1
-
-Outcome:
+## Frozen primary PCX-H1
 
 ```text
-D23Instability = 1 iff exact TopSet_D2 and TopSet_D3 are disjoint
+outcome:
+  D23Instability = 1 iff exact TopSet_D2 and TopSet_D3 are disjoint
+
+predictor:
+  log1pLegalMoveCount = log(1 + E.moveVariants(state).length)
+
+covariate:
+  phaseMtajiIndicator
+
+reduced:
+  D23Instability ~ 1 + phase
+
+full:
+  D23Instability ~ 1 + phase + log1pLegalMoveCount
+
+test:
+  unpenalized binomial logistic likelihood-ratio test
+  df = 1
+  alpha = 0.05
+  two-sided
 ```
 
-Predictor:
-
-```text
-log1pLegalMoveCount = log(1 + E.moveVariants(state).length)
-```
-
-Covariate:
-
-```text
-phaseMtajiIndicator
-```
-
-Formal test:
-
-```text
-unpenalized binomial logistic likelihood-ratio test
-reduced: D23Instability ~ 1 + phase
-full:    D23Instability ~ 1 + phase + log1pLegalMoveCount
-df = 1
-alpha = 0.05
-two-sided association
-```
-
-Decision after all primary gates pass:
+After primary technical/estimability gates pass:
 
 ```text
 p < 0.05  -> PCX-H1 CONFIRMED
@@ -247,7 +218,7 @@ p >= 0.05 -> PCX-H1 NOT-CONFIRMED
 
 A valid nonsignificant result is not `inconclusive`.
 
-### Frozen key secondary PCX-H2
+## Frozen key secondary PCX-H2
 
 Population:
 
@@ -255,31 +226,28 @@ Population:
 finite ordinary-evaluation-domain D2 best-second margin only
 ```
 
-Predictor added:
+Formal comparison:
 
 ```text
-log1pD2BestSecondGap
-```
+reduced:
+  D23Instability ~ 1 + phase + log1pLegalMoveCount
 
-Formal model comparison:
-
-```text
-reduced: D23Instability ~ 1 + phase + log1pLegalMoveCount
-full:    D23Instability ~ 1 + phase + log1pLegalMoveCount + log1pD2BestSecondGap
+full:
+  D23Instability ~ 1 + phase + log1pLegalMoveCount + log1pD2BestSecondGap
 ```
 
 H2 receives a confirmatory label only if H1 is confirmed. If H1 is not-confirmed, H2 is `not-confirmatorily-evaluated` even if computed descriptively.
 
-### Frozen formal estimability gates
+## Frozen formal estimability gates
 
-Primary:
+H1:
 
 ```text
 selected unique rule states >= 500
-Namua selected >= 180
-Mtaji selected >= 180
-D23 instability events >= 80
-D23 stable events >= 80
+Namua >= 180
+Mtaji >= 180
+D23 instability >= 80
+D23 stable >= 80
 primary models finite/converged
 ```
 
@@ -287,50 +255,95 @@ H2:
 
 ```text
 ordinary-domain D2 margins >= 350
-H2-subset instability events >= 50
-H2-subset stable events >= 50
+H2-subset D23 instability >= 50
+H2-subset D23 stable >= 50
 secondary models finite/converged
 ```
 
-Gate failure yields `inconclusive` for the affected formal decision and does not authorize extension or relaxation.
+Gate failure yields `inconclusive` for the affected hypothesis and does not authorize extension or relaxation.
 
-### Fixed sample-size planning
+## Stage 2 tooling — VALIDATED
 
-Stage 1 availability projected to 1024 games gives approximately:
-
-```text
-selected states ~ 888
-D23 instability events ~ 216
-D23 stable events ~ 672
-ordinary D2 margins ~ 680
-```
-
-These are planning projections only. Stage 2 always stops at exactly 1024 games.
-
-## Stage 2 generation remains LOCKED
-
-The scientific protocol is frozen, but formal generation is not yet authorized.
-
-Required next:
-
-1. implement dedicated Stage 2 formal runner;
-2. implement independent full verifier;
-3. implement frozen H1/H2 analyzer;
-4. add technical unit/smoke tests;
-5. pass technical CI;
-6. freeze source/tool hashes;
-7. create explicit formal-generation authorization record and runbook.
-
-Until all seven are complete:
+Dedicated tooling:
 
 ```text
-Stage 2 corpus = NOT GENERATED
-Stage 2 formal inference = NOT STARTED
+tools/experiments/run-position-complexity-stage2-formal.js
+tools/experiments/verify-position-complexity-stage2-formal.js
+tools/experiments/analyze-position-complexity-stage2-formal.py
+tools/experiments/check-position-complexity-stage2-authorization.js
+test/position-complexity-stage2-formal-tooling.test.js
 ```
+
+Technical CI used to freeze source/tool fingerprints:
+
+```text
+workflow = Position Complexity Research CI
+run = 31673666993
+job = 94363432226
+result = success
+validated tooling commit = 767d59b08b4772aa904058a47457ff3a822b0017
+```
+
+After the authorization record was committed, a second technical CI also passed:
+
+```text
+workflow = Position Complexity Research CI
+run = 31673835352
+job = 94363941841
+result = success
+authorization preflight = success
+```
+
+This CI generated no scientific Stage 2 corpus.
+
+## Stage 2 formal execution — AUTHORIZED / NOT STARTED
+
+Authorization:
+
+```text
+doc/position-complexity/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+authorized = true
+```
+
+Canonical authorization checkpoint:
+
+```text
+doc/position-complexity/checkpoints/2026-08-13-stage2-formal-generation-authorization.md
+```
+
+Local execution runbook:
+
+```text
+doc/position-complexity/STAGE_2_FORMAL_RUNBOOK.md
+```
+
+Formal artifact root:
+
+```text
+artifacts/local/position-complexity/stage2-formal-v1/
+```
+
+Before generation, local preflight must pass:
+
+```bash
+node tools/experiments/check-position-complexity-stage2-authorization.js
+```
+
+Required scientific execution order:
+
+```text
+generate
+-> full independent verification
+-> frozen select
+-> D2/D3 measure
+-> formal analyze
+```
+
+GitHub Actions formal-corpus generation remains prohibited.
 
 ## Prohibited rescue remains in force
 
-Do not after outcome inspection:
+Do not after formal generation/outcome inspection:
 
 - change `legalMoveCount` definition;
 - include single-choice roots;
@@ -343,6 +356,17 @@ Do not after outcome inspection:
 - substitute another ambiguity metric;
 - change alpha/test family;
 - append games/seeds;
-- reuse Stage 1 evidence as confirmation.
+- reuse Stage 1 evidence as confirmation;
+- relabel a valid nonsignificant result as inconclusive.
 
-Draft PR #29 remains open/draft and should not be merged solely because Stage 1 readiness passed.
+## Next authorized action
+
+Run the Stage 2 formal pipeline locally according to `STAGE_2_FORMAL_RUNBOOK.md`.
+
+At the present repository state:
+
+```text
+Stage 2 corpus = NOT YET GENERATED
+Stage 2 formal result = NONE
+PR #29 = draft / unmerged
+```
