@@ -11,6 +11,7 @@ on:
       - "tools/experiments/run-position-complexity-stage2-formal.js"
       - "tools/experiments/verify-position-complexity-stage2-formal.js"
       - "tools/experiments/analyze-position-complexity-stage2-formal.py"
+      - "tools/experiments/check-position-complexity-stage2-authorization.js"
       - "test/position-complexity-search-diagnostic.test.js"
       - "test/position-complexity-stage1-runner.test.js"
       - "test/position-complexity-stage2-formal-tooling.test.js"
@@ -64,6 +65,8 @@ jobs:
         run: python -m py_compile tools/experiments/analyze-position-complexity-stage2-formal.py
       - name: Position-complexity Stage 2 formal analyzer self-test
         run: python tools/experiments/analyze-position-complexity-stage2-formal.py --self-test
+      - name: Position-complexity Stage 2 authorization preflight
+        run: node tools/experiments/check-position-complexity-stage2-authorization.js
       - name: Position-complexity Stage 2 authorization fingerprint
         run: |
           node - <<'NODE'
