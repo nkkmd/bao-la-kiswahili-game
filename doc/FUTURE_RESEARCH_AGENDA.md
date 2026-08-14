@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.2.0  
+Version: 1.3.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-12
+更新日: 2026-08-14
 
 ## 1. 目的
 
@@ -13,7 +13,7 @@ Status: Active
 
 本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
 
-2026-08-12時点で、第1段階のうち「局面の相転移点」「局面類型と棋風」に加え、両者を接続する独立研究 **「BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — capture-branch-expansionからMtaji morphologyへの時間的接続」** のStudy 1も完了した。Namua→Mtaji Study 1のprimary formal resultは `not-confirmed` であり、同一formal corpusの追加解析や別seedによる救済はfuture workとして扱わない。
+2026-08-14時点で、第1段階のうち「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」に加え、**「Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離」** Study 1も完了した。Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。
 
 ## 2. 既存研究との境界
 
@@ -29,6 +29,7 @@ Status: Active
 - 局面相転移点Study 1 — [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
 - 局面類型と棋風Study 1 — [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
 - Namua→Mtaji Strategic Temporal Transition Study 1 — [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
+- Position Complexity / Difficulty Study 1 — [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -250,23 +251,51 @@ P2-D2内のfirst-Mtaji morphology associationは確認されなかった。小�
 
 ---
 
-### 4.3 局面複雑度と難易度
+### 4.3 局面複雑度と難易度 — Study 1完了
 
-#### 中心課題
+#### 現在の状態
 
-Baoにおける「難しい局面」を、探索量だけに依存せず複数の観点から定義する。
+**Study 1完了 / formal decision `inconclusive`。**
 
-#### 難易度の層
+- 初見向け概要: [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`position-complexity/STUDY_1_FINAL_REPORT.md`](position-complexity/STUDY_1_FINAL_REPORT.md)
+- Formal result: [`position-complexity/STAGE_2_FORMAL_RESULT.md`](position-complexity/STAGE_2_FORMAL_RESULT.md)
 
-1. **探索難易度**: 最善手安定までに必要な深度、node数、時間
-2. **判断難易度**: 上位候補間の評価差、唯一手性
-3. **予測難易度**: 浅い評価と深い評価の乖離
-4. **構造難易度**: 合法手数、relay長、強制捕獲系列、分岐形状
-5. **人間難易度**: 誤答率、判断時間、説明の不一致
+Study 1では「難しい局面」を単一scoreに圧縮せず、`structural complexity`、`search workload`、`decision ambiguity`、`prediction instability`を分離して機械再現可能に測定した。Stage 1 exploratoryではstructural branching、D2→D3 instability、D2 best-second marginの関係を設計開発し、fresh Stage 2 formal corpusでprimary associationを検証した。
 
-#### 期待成果
+Stage 2では1024 gamesをfull verificationし、862 unique rule statesをformal populationとした。count/coverage gateはすべてPASSしたが、preregistered primary full logistic modelがBFGS precision lossにより`converged=false`となり、事前固定したfinite+converged gateを満たさなかった。
 
-Bao局面難易度尺度、難易度別問題集、層別ベンチマーク、教材の段階設計。
+したがって:
+
+```text
+PCX-H1 = INCONCLUSIVE
+PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
+OVERALL FORMAL DECISION = INCONCLUSIVE
+```
+
+計算上のH1 `p = 0.086676...`を使って`not-confirmed`へ変更せず、H2の小さい計算上のp値もconfirmationへ昇格させない。
+
+#### Study 1で分離した難易度層
+
+1. **探索難易度 / search workload**: node数、cutoff、evaluation count等
+2. **判断難易度 / decision ambiguity**: root candidate valueの近接性、best-second gap、tie
+3. **予測難易度 / prediction instability**: depth変更に伴うexact TopSetの変化
+4. **構造難易度 / structural complexity**: 合法手数、capture/relay/front-row/reserve等のstate structure
+5. **人間難易度**: Study 1では未検証。誤答率、判断時間、候補生成、説明等は独立future study
+
+#### Future-work boundary
+
+同じStage 2 formal corpusについて、次はfuture workに含めない。
+
+- optimizer/toleranceを変更してformal decisionを救済すること
+- seed/gameを追加して再判定すること
+- alternative depth pair・endpoint・metricへ切り替えること
+- phase interaction / phase-stratified analysisをprimary rescueに使うこと
+- H2の計算上の小さいp値をformal confirmationへ昇格させること
+
+H1 scientific questionを再検証する場合は、**robust optimizer / convergence procedureを事前固定し、fresh seed block / fresh corpusを使う新しいprospective numerical-method replication**とする。
+
+Human difficultyを扱う場合も、machine workload/ambiguity/instabilityを人間の難しさと同一視せず、人間・expert dataを用いた独立studyとする。
 
 ---
 
@@ -477,10 +506,10 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 1. **[完了] 局面の相転移点 — Study 1**
 2. **[完了] 局面類型と棋風 — Study 1**
 3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`not-confirmed`)**
-4. **[未着手] 局面複雑度と難易度**
+4. **[完了] 局面複雑度と難易度 — Study 1 (`inconclusive`)**
 5. **[未着手] 手筋の発見と体系化**
 
-この段階では、Baoの局面を人間と機械の双方が記述できる共通語彙を作る。最初の三研究によりstate morphology、strategic-transition phenotype、両者のprospective bridgeに関する境界が得られた。Namua→Mtaji Study 1はprimary morphology associationを確認しなかったが、deterministic clockという重要なrule-derived boundaryを確立した。次の研究はこのnegative resultを救済するのではなく、難易度・手筋、または新しくpreregisterしたstructural/mechanistic questionへ進む。
+この段階では、Baoの局面を人間と機械の双方が記述できる共通語彙を作る。最初の四研究によりstate morphology、strategic-transition phenotype、Namua→Mtaji bridgeの境界、machine-reproducible complexity layersに関する知見と限界が得られた。局面複雑度Study 1はprimary formal questionを確認も否定もせず、数値収束gateにより`inconclusive`として閉じた。次の研究はこのformal resultを救済するのではなく、手筋研究、human difficulty validation、またはfresh corpusを用いた新規prospective numerical-method replicationへ進む。
 
 ### 第2段階: 理解、教育、解説への展開
 
@@ -508,7 +537,7 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 ### 6.1 Bao局面分類学
 
-相転移、局面類型、棋風、難易度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1は完了した。今後、Namua→Mtajiの追加研究を行う場合は、完了済みprimary resultを再検定するのではなく、structural trajectory、mechanism、external validity等の新しい問いとしてprospectively定義する。
+相転移、局面類型、棋風、複雑度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1、Position Complexity / Difficulty Study 1は完了した。Position Complexity Study 1のformal `inconclusive`を再検証する場合は、同一formal corpusの再解析ではなく、数値手法を事前固定したfresh prospective replicationとする。Human difficultyはmachine complexity layerとは別に独立検証する。
 
 ### 6.2 Bao手筋・錯覚体系
 
@@ -535,6 +564,8 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 完了済み研究から派生する新研究では特に、既存Studyのformal decisionsを変更しないこと、endpoint・comparator・population・seed・decision ruleを結果を見る前に定義すること、confirmed/exploratory vocabularyを同じ証拠水準として扱わないことを開始条件に含める。
 
 Namua→Mtajiを扱う場合、現engineではfirst-Mtaji timingがdeterministic progressionであるため、`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。異なるengine semanticsを研究対象にする場合は、それ自体を別システム・別studyとして明示する。
+
+Position Complexity / Difficulty Study 1のH1を再検証する場合、既存Stage 2 corpusのoptimizer/tolerance変更による再判定は行わない。optimizer、収束基準、failure handling、fresh seed blockを新しいprospective preregistrationで固定してから新規evidenceを生成する。
 
 ## 8. 到達目標
 
