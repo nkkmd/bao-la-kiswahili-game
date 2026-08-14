@@ -137,6 +137,32 @@ First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)で�
 
 ---
 
+### 6. Position Complexity / Difficulty — Study 1
+
+**研究題目:** Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離  
+**状態:** Study 1 closed / formal decision `inconclusive`  
+**作業branch:** `research/position-complexity-difficulty`
+
+このprospective independent studyは、Baoの「難しい局面」を単一difficulty scoreへ圧縮せず、structural complexity、search workload、decision ambiguity、prediction instabilityへ分離して測定することを目的としました。Stage 0でexact root candidate / TopSet / best-second gap / depth-transition diagnosticをtechnical validationし、Stage 1 exploratory corpusでは666 unique rule statesを測定して全Stage 2 readiness gateをPASSしました。
+
+Fresh Stage 2 formal corpusは1024局で、全局を独立replay/search verifierで確認し、862 unique rule statesをformal populationとして測定しました。Namua 424、Mtaji 438、D2→D3 instability 203、stable 659で、count/coverage gatesはすべてPASSしました。
+
+Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized logistic likelihood-ratio testでした。しかしfull modelのBFGS optimizerがprecision lossでpreregistered `finite and converged` gateを満たさなかったため、formal decisionは **`inconclusive`** です。計算上のp値だけで`not-confirmed`へ変更しません。Key secondary PCX-H2もH1 gatekeepingとsecondary reduced-model non-convergenceにより`not-confirmatorily-evaluated`です。
+
+**最初に読む:**
+
+- [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`position-complexity/STUDY_1_FINAL_REPORT.md`](position-complexity/STUDY_1_FINAL_REPORT.md) — 科学的最終統合
+- [`position-complexity/STAGE_2_FORMAL_RESULT.md`](position-complexity/STAGE_2_FORMAL_RESULT.md) — Stage 2 canonical formal result
+- [`position-complexity/REPRODUCIBILITY_INDEX.md`](position-complexity/REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
+- [`position-complexity/CURRENT_STATUS.md`](position-complexity/CURRENT_STATUS.md) — closure状態とimmutable boundaries
+- [`position-complexity/README.md`](position-complexity/README.md) — 研究ディレクトリ案内
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -148,6 +174,8 @@ First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)で�
 局面類型と棋風Study 1からの主要future study候補には、N-ACT/N-CONの独立formal replication、新しいplaying-style model family、MTAJI-M1/M2の人間/expert validation、より広いengine/search implementationでのexternal validityがあります。Stage 5 held-out corpusを再定義してconfirmationを救済することはfuture workに含めません。
 
 Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。新しいstructural-trajectory question、mechanistic analysis、human/expert validation、別conditionでのexternal validityを扱う場合は、新規prospective studyとして分離します。
+
+Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。数値収束問題を解消してH1を再検証する場合は、optimizer/convergence procedureを事前固定した新しいprospective independent replicationとfresh corpusを使用します。Human difficulty validationも別studyです。
 
 ---
 
