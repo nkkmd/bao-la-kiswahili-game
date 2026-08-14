@@ -4,7 +4,7 @@ Updated: 2026-08-14
 
 ## Current state
 
-**ACTIVE — Stage 0 technical / representation audit.**
+**ACTIVE — Stage 0 technical / representation audit completed and technically validated; Stage 1 design/specification is next.**
 
 Baseline `main` HEAD was verified at study start as:
 
@@ -14,9 +14,13 @@ This exactly matched the pre-chat recorded HEAD, so no intervening-main diff aud
 
 Branch: `research/tactical-motif-discovery`
 
+Stage 0 initialization commit: `de4931fb20c218c0d4b3d13689cf79af400e89bd`
+
+Technical validation workflow: `Tactical motif Stage 0 technical validation`, run `31768708597`, conclusion `success`.
+
 ## Scientific authorization state
 
-- Stage 0 technical inspection: **authorized / active**
+- Stage 0 technical inspection: **COMPLETE / VALIDATED**
 - Stage 1 scientific corpus generation: **NOT YET AUTHORIZED**
 - Stage 1 exploratory inference: **NOT STARTED**
 - Stage 2 formal corpus generation: **NOT AUTHORIZED**
@@ -47,9 +51,9 @@ Study is closed. PCX-H1=`INCONCLUSIVE`; PCX-H2=`NOT-CONFIRMATORILY-EVALUATED`; o
 
 Opening-sequence knowledge remains separate from position-transferrable tesuji. A move or sequence that is useful only under a specific opening prefix cannot be promoted as a tesuji on that evidence alone.
 
-## Stage 0 audit status
+## Stage 0 audit result
 
-Code inspection supports the following capabilities:
+The current codebase supports:
 
 - `historicalStateHash`: history-sensitive identity including turn/reason bookkeeping.
 - `ruleStateKey`: rule-state identity that deliberately ignores turn/reason.
@@ -59,6 +63,8 @@ Code inspection supports the following capabilities:
 - engine event stream: reserve/lift/sow/capture/relay/phase/turn/win/limit snapshots.
 - exact fixed-depth root candidate values at D1/D2/D3 under named evaluator profiles.
 - immediate opponent reply-set cardinality and forced/free reply classification.
+
+The new `tactical-motif-features.js` and its Stage 0 test passed together with prerequisite symmetry, position-typology, and exact-root diagnostic tests in GitHub Actions.
 
 Current explicit limitations:
 

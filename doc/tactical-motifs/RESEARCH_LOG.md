@@ -13,6 +13,8 @@
 - Identified two important limits: only seat-swap symmetry is validated; current exact-root diagnostic does not expose a search-consistent principal variation.
 - Chose response-set / response-envelope analysis as the safer default for Stage 1 rather than fabricating a PV from repeated independent searches.
 - Created branch `research/tactical-motif-discovery` from the verified baseline.
-- Added Stage 0 technical instrumentation `tools/experiments/lib/tactical-motif-features.js` and deterministic test `test/tactical-motif-stage0.test.js` in the initialization change set.
+- Added Stage 0 technical instrumentation `tools/experiments/lib/tactical-motif-features.js` and deterministic test `test/tactical-motif-stage0.test.js` in initialization commit `de4931fb20c218c0d4b3d13689cf79af400e89bd`.
+- Added technical-only GitHub Actions workflow `.github/workflows/tactical-motif-stage0.yml`; it does not generate scientific data.
+- GitHub Actions run `31768708597` completed with conclusion `success`. It validated symmetry transforms, position-typology features/identities, exact root search diagnostics, and the new tactical-motif Stage 0 instrumentation.
 - No scientific corpus generated.
 - Stage 1 generation remains blocked pending a committed machine-readable exploratory spec and technical validation.
