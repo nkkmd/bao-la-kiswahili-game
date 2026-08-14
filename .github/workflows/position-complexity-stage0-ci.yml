@@ -1,0 +1,87 @@
+name: Position Complexity Research CI
+
+on:
+  pull_request:
+    paths:
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/run-position-complexity-stage0-smoke.js"
+      - "tools/experiments/run-position-complexity-stage1-exploratory.js"
+      - "tools/experiments/verify-position-complexity-stage1-exploratory.js"
+      - "tools/experiments/analyze-position-complexity-stage1-exploratory.py"
+      - "tools/experiments/run-position-complexity-stage2-formal.js"
+      - "tools/experiments/verify-position-complexity-stage2-formal.js"
+      - "tools/experiments/analyze-position-complexity-stage2-formal.py"
+      - "tools/experiments/check-position-complexity-stage2-authorization.js"
+      - "test/position-complexity-search-diagnostic.test.js"
+      - "test/position-complexity-stage1-runner.test.js"
+      - "test/position-complexity-stage2-formal-tooling.test.js"
+      - "test/search.test.js"
+      - "doc/position-complexity/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/position-complexity/preregistration/STAGE_2_FORMAL_SPEC.json"
+      - "doc/position-complexity/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json"
+      - ".github/workflows/position-complexity-stage0-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  technical-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install formal-analysis technical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy
+      - name: Existing search regression
+        run: node test/search.test.js
+      - name: Position-complexity diagnostic unit tests
+        run: node test/position-complexity-search-diagnostic.test.js
+      - name: Position-complexity Stage 0 smoke
+        run: node tools/experiments/run-position-complexity-stage0-smoke.js > /tmp/position-complexity-stage0-smoke.json
+      - name: Show Stage 0 gate summary
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const result = JSON.parse(fs.readFileSync('/tmp/position-complexity-stage0-smoke.json', 'utf8'));
+          console.log(JSON.stringify({
+            passed: result.passed,
+            aggregateGates: result.aggregateGates,
+            G0_9_existingSearchBehaviorProtection: result.G0_9_existingSearchBehaviorProtection,
+            fixtureCount: result.fixtures.length,
+          }, null, 2));
+          if (!result.passed) process.exit(1);
+          NODE
+      - name: Position-complexity Stage 1 runner/verifier unit tests
+        run: node test/position-complexity-stage1-runner.test.js
+      - name: Position-complexity Stage 1 analyzer syntax
+        run: python -m py_compile tools/experiments/analyze-position-complexity-stage1-exploratory.py
+      - name: Position-complexity Stage 2 formal runner/verifier unit tests
+        run: node test/position-complexity-stage2-formal-tooling.test.js
+      - name: Position-complexity Stage 2 formal analyzer syntax
+        run: python -m py_compile tools/experiments/analyze-position-complexity-stage2-formal.py
+      - name: Position-complexity Stage 2 formal analyzer self-test
+        run: python tools/experiments/analyze-position-complexity-stage2-formal.py --self-test
+      - name: Position-complexity Stage 2 authorization preflight
+        run: node tools/experiments/check-position-complexity-stage2-authorization.js
+      - name: Position-complexity Stage 2 authorization fingerprint
+        run: |
+          node - <<'NODE'
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+          const R = require('./tools/experiments/run-position-complexity-stage2-formal.js');
+          const sha = (file) => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+          const { specSha256 } = R.loadSpec();
+          console.log(JSON.stringify({
+            specSha256,
+            sourceFileSha256: R.sourceFileHashes(),
+            pipelineFileSha256: {
+              'tools/experiments/verify-position-complexity-stage2-formal.js': sha('tools/experiments/verify-position-complexity-stage2-formal.js'),
+              'tools/experiments/analyze-position-complexity-stage2-formal.py': sha('tools/experiments/analyze-position-complexity-stage2-formal.py'),
+              'test/position-complexity-stage2-formal-tooling.test.js': sha('test/position-complexity-stage2-formal-tooling.test.js'),
+            },
+          }, null, 2));
+          NODE
