@@ -96,3 +96,19 @@
 - Both artifacts report `sourceTreeDirty=false`; their scientific source SHA-256 mappings match exactly and remain equal to the authorization-bound mapping.
 - No state selection, motif measurement, candidate discovery, threshold adjustment, or scientific interpretation was performed before this integrity gate was accepted.
 - The preregistered firewall therefore permits the deterministic `select` phase next. Selection readiness must be inspected before measurement.
+
+## 2026-08-14 — Stage 1 deterministic selection and readiness pass
+
+- Executed the preregistered deterministic `select` phase only after full replay/search verification passed.
+- From 741 unique historical trajectories, 25 had no eligible root in their hash-assigned phase and were retained as unavailable with no replacement: 23 Mtaji assignments and 2 Namua assignments.
+- 716 roots were selected before global rule-state collapse.
+- One duplicate selected `ruleStateKey` was collapsed by the frozen rule, leaving 715 selected unique rule states.
+- `replacementPerformed=false`.
+- Selected phase counts: Namua 370, Mtaji 345.
+- Selected generation-stratum counts: `B-D1=114`, `B-D2=115`, `B-D3=122`, `LS-D2=122`, `V2-D2=121`, `LE-D2=121`.
+- Distinct selected opening-prefix identities: 659.
+- Selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`.
+- Independently checked every frozen selection-readiness threshold against the observed counts: historical trajectories 741≥550; selected unique rule states 715≥450; Namua 370≥180; Mtaji 345≥180; opening prefixes 659≥32; minimum stratum count 114≥40.
+- All six readiness gates are `true`; `selection-audit.json` reports `passed=true`.
+- No replacement sampling, threshold retuning, phase reassignment, favorable subset selection, opening-threshold relaxation, or motif-outcome inspection occurred.
+- The frozen firewall therefore authorizes Stage 1 `measure`. Discovery remains blocked until the separate minimum of 1800 measured exact move records is passed.
