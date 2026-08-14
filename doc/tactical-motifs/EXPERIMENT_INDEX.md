@@ -33,13 +33,12 @@
 - Freeze commit: `62fbf68cf12a3539b46dcdcd4487a0a9ea7debba`
 - Validation run: `31770343371` = `success`
 
-### TM-S1-A01 — Stage 1 representation / candidate grammar
+### TM-S1-A01 — Representation / candidate grammar
 
 - Status: **COMPLETE / VALIDATED**
 - Feature helper: `tools/experiments/lib/tactical-motif-features.js`
 - Candidate grammar: `tools/experiments/lib/tactical-motif-discovery.js`
 - Spec validator: `tools/experiments/validate-tactical-motif-stage1-spec.js`
-- Test: `test/tactical-motif-stage1-tooling.test.js`
 
 ### TM-S1-A02 — Scientific corpus runner / independent verifier
 
@@ -49,15 +48,12 @@
 - Independent verifier: `tools/experiments/verify-tactical-motif-stage1-exploratory.js`
 - Implementation commit: `1f97881338b14b9a885bd124a1a68d436c1e0a43`
 - Validation run: `31770629848` = `success`
-- Validation job: `94675639391` = `success`
-- CI scientific games generated: 0
 
 ### TM-S1-A03 — Stage 1 generation authorization
 
 - Status: **COMPLETE**
 - Authorization: `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
 - Authorization commit: `1079e2e02d4031f980f0ddc2213c50f6c8a6e678`
-- Binds: spec SHA-256 + implementation commit + exact scientific source-file SHA-256 mapping
 - Confirmatory inference: not authorized
 - Stage 2 generation: not authorized
 
@@ -67,70 +63,78 @@
 - Population: 768 games
 - Seeds: `21900001–21900768`
 - Generation strata: 6 × 128 games
-- Source commit used for generation: `6694714194eee2f536e90b4411566d9126e162ae`
 - Unique historical trajectories: 741
-- Duplicate historical-trajectory groups: 27
-- Largest duplicate group: 2
 - Distinct opening prefixes: 681
 - Manifest summary hash: `7d11bae51a21b77ed91eb7ffe4098d6be3e7035a0480689616a72bd76b3eb96c`
 - Verification: `passed=true`
 - Full search recomputation: `true`
 - Games verified: 768
 - Verification identity hash: `9584bba101e3cad37bcf2c05556f478ab6ca9cd3d16c923614bd0245a9a1f9ec`
-- Source tree dirty: false
-- Scientific source hash mapping: manifest/verifier exact match to frozen authorization binding
-- Output root: `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
-- Confirmatory reuse: forbidden
 
 ### TM-S1-E02 — Deterministic state selection / readiness audit
 
 - Status: **COMPLETE / READINESS PASSED**
-- Input requirement: `verification.json` with `passed=true` and `fullSearchRecomputation=true` — satisfied before execution
 - Unique historical trajectories: 741
 - Unavailable assigned phase: 25, no replacement
 - Selected before rule-state collapse: 716
 - Duplicate selected rule states collapsed: 1
 - Selected unique rule states: 715
-- Selected phases: Namua 370 / Mtaji 345
+- Namua / Mtaji: 370 / 345
 - Distinct selected opening prefixes: 659
-- Selected strata: `B-D1=114`, `B-D2=115`, `B-D3=122`, `LS-D2=122`, `V2-D2=121`, `LE-D2=121`
 - Selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
-- Replacement performed: false
-- Frozen readiness gates: all six passed
-- Measurement authorization: yes, by preregistered gate
+- Frozen readiness gates: all passed
 
 ### TM-S1-E03 — All-move exact measurement
 
 - Status: **COMPLETE / READINESS PASSED**
-- Roots: 715 frozen selected unique rule states
-- Completed measurements: 715
-- Measurement unit: every exact legal `E.moveVariants` move at each selected root
-- Measured exact move records: 3148
+- Roots: 715
+- Exact measured move records: 3148
 - Frozen minimum for discovery: 1800
-- `measurementReadinessPassed=true`
 - Measurement hash: `c4b8dc55caa21a6143c09c42e1686a9610208080ce467fee92ec044cf9e5ae4c`
-- Selection hash binding: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
-- Measurement source commit: `40990b1489f956d52486553bb5e39d974e47dd75`
-- Source tree dirty: false
-- Frozen scientific source SHA-256 mapping: unchanged
-- Discovery authorization: **YES, by preregistered gate**
+- `measurementReadinessPassed=true`
 
 ### TM-S1-E04 — Exploratory candidate discovery
 
-- Status: **AUTHORIZED / NOT YET EXECUTED**
-- Input: frozen 3148 exact move records
-- Candidate grammar/promotion thresholds: already frozen before corpus generation
-- Ranking/candidate caps: deterministic and already frozen
-- Manual override: forbidden
-- Any promoted candidate: Stage 2 planning only, not confirmed tesuji
+- Status: **COMPLETE**
+- Local discovery result SHA-256: `aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34`
+- Raw pattern instances: 3,116,520
+- Unique pattern keys: 323,676
+- Detailed candidates: 105,501
+- Low-support patterns: 218,175
+- Detailed candidates passing all frozen promotion gates: 948
+  - Mtaji 921 / Namua 27
+  - coarse-no-index 833 / indexed 115
+- Frozen ranking/cap independently reapplied: exact promoted-key match
+- Promoted definitions: 8
+- Post-cap ranks derive from pre-cap eligible positions `1,2,22,23,40,41,645,646`
+- Candidate freeze: `STAGE_1_CANDIDATE_FREEZE.json`
+- Human-readable result: `STAGE_1_EXPLORATORY_RESULT.md`
+- Stage 2 generation: **NOT AUTHORIZED**
+
+### TM-S1-E05 — Stage 1 candidate freeze / support-equivalence audit
+
+- Status: **COMPLETE**
+- Frozen candidate definitions: 8
+- Phase cap outcome: 4 Mtaji / 4 Namua
+- Move-abstraction cap outcome: 2 definitions for each of 4 exact move-abstraction tokens
+- Support-equivalent pairs by identical `supportIdentityHash`: ranks 1–2, 3–4, 5–6, 7–8
+- Boundary: support equivalence is an audit observation, not a manual merge
+- Any Stage 2 grouping must be prospective and frozen before fresh data
 
 ## Stage 2 — Fresh prospective formal confirmation
+
+### TM-S2-A00 — Candidate/family formalization
+
+- Status: **NEXT / NOT YET FROZEN**
+- Must decide prospectively whether the eight Stage 1 definitions are tested individually, as four support-equivalent families, or hierarchically
+- Must freeze exact formal candidate matching before any Stage 2 corpus generation
 
 ### TM-S2-F01+ — Candidate-specific/family-specific confirmation
 
 - Status: **NOT AUTHORIZED / NOT DESIGNED YET**
-- Prerequisite: Stage 1 candidate freeze plus candidate-specific formal preregistration and explicit generation authorization
 - Fresh non-overlapping corpus required
+- Separate formal preregistration required
+- Explicit generation authorization required
 
 ## Naming rule
 
