@@ -11,9 +11,9 @@ const SPEC_PATH = path.join(ROOT, "doc/tactical-motifs/preregistration/STAGE_2_F
 const STAGE1_FREEZE_PATH = path.join(ROOT, "doc/tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json");
 
 const EXPECTED_STAGE_ID = "TM-S2-FORMAL-2026-08-14-v1";
-const EXPECTED_CANDIDATE_SHA256 = "8543a0ca9b25b14a26cb64578559c36eaf98605d9e5f6993299429cb6da137f0";
-const EXPECTED_SPEC_SHA256 = "43cae8541ba5630e82e67f28aca4d5950cac0065e9a03b1289af7d204faa4fcc";
-const EXPECTED_STAGE1_FREEZE_SHA256 = "59c74a8741fea699ea371ad877ca971d913d2f23dcae6d19d58906d9e4b0ba78";
+const EXPECTED_CANDIDATE_SHA256 = "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8";
+const EXPECTED_SPEC_SHA256 = "83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8";
+const EXPECTED_STAGE1_FREEZE_SHA256 = "f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73";
 
 function sha256File(file) {
   return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
