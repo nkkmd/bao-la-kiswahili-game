@@ -112,3 +112,18 @@
 - All six readiness gates are `true`; `selection-audit.json` reports `passed=true`.
 - No replacement sampling, threshold retuning, phase reassignment, favorable subset selection, opening-threshold relaxation, or motif-outcome inspection occurred.
 - The frozen firewall therefore authorizes Stage 1 `measure`. Discovery remains blocked until the separate minimum of 1800 measured exact move records is passed.
+
+## 2026-08-14 — Stage 1 all-move measurement and discovery-readiness pass
+
+- Executed the frozen `measure` phase against exactly the 715 selected unique rule states after selection readiness passed.
+- `measurement-manifest.json` binds the same Stage ID and frozen spec SHA-256 and reproduces selection hash `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`.
+- Completed measurements: 715, matching all selected unique rule states.
+- Exact measured move records: 3148.
+- Frozen discovery-readiness minimum: 1800 measured exact move records.
+- `measurementReadinessPassed=true` because 3148≥1800.
+- Measurement hash: `c4b8dc55caa21a6143c09c42e1686a9610208080ce467fee92ec044cf9e5ae4c`.
+- Measurement provenance records source commit `40990b1489f956d52486553bb5e39d974e47dd75` with `sourceTreeDirty=false`.
+- The scientific source-file SHA-256 mapping remains identical to the previously authorized frozen mapping.
+- No candidate enumeration, promotion statistic, ranking, manual curation, threshold retuning, or Stage 2 interpretation was performed before this gate was accepted.
+- The preregistered firewall therefore authorizes the deterministic Stage 1 `discover` phase.
+- Any promoted result from discovery remains exploratory and may be used only to plan a separately preregistered fresh Stage 2 confirmation study.
