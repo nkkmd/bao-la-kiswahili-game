@@ -1,15 +1,16 @@
 # Position Complexity / Difficulty Study — Current Status
 
 更新日: 2026-08-14  
-Status: **STUDY 1 CLOSED / FORMAL DECISION INCONCLUSIVE / REPOSITORY INTEGRATION IN PROGRESS**
+Status: **STUDY 1 CLOSED / FORMAL DECISION INCONCLUSIVE / REPOSITORY CLOSURE COMPLETE**
 
 ## Research identity
 
 ```text
 research title = Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離
-branch = research/position-complexity-difficulty
-base main head = d681b4593242973fcb33805edca12eb3e8633653
-draft PR = #29
+research branch = research/position-complexity-difficulty
+base main head at study initiation = d681b4593242973fcb33805edca12eb3e8633653
+PR #29 = MERGED
+merge commit = 7ef83fcb95621aedd1f4b22ec6f213f976576a6c
 Stage 0 = COMPLETE / TECHNICAL PASS
 Stage 1 = COMPLETE / EXPLORATORY / READINESS PASS / CONSUMED
 Stage 2 = COMPLETE / FORMAL
@@ -259,5 +260,7 @@ Human difficulty validation also remains a separate future independent study.
 Study 1 scientific work = CLOSED
 Stage 2 corpus = CONSUMED
 formal result = INCONCLUSIVE
-PR #29 = draft / unmerged pending final repository integration and review
+PR #29 = MERGED
+merge commit = 7ef83fcb95621aedd1f4b22ec6f213f976576a6c
+repository closure = COMPLETE
 ```
