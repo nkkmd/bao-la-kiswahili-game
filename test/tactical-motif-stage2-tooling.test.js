@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 const Formal = require("../tools/experiments/lib/tactical-motif-stage2-formal.js");
 const Evaluator = require("../tools/experiments/evaluate-tactical-motif-stage2-formal.js");
 const C = require("../tools/experiments/lib/tactical-motif-stage2-corpus.js");
+const Verifier = require("../tools/experiments/verify-tactical-motif-stage2-formal.js");
 
 const SAMPLE_CANDIDATE = {
   candidateId: "TEST",
@@ -24,6 +25,14 @@ test("Stage 2 exact one-sided binomial is deterministic", () => {
   assert.equal(Formal.exactBinomialUpper(3, 3, 0.5), 0.125);
   assert.equal(Formal.exactBinomialUpper(0, 3, 0.5), 1);
   assert.equal(Formal.exactBinomialUpper(2, 2, 0.5), 0.25);
+});
+
+test("Stage 2 exact binomial remains numerically stable above floating-point underflow range", () => {
+  const centerTail = Formal.exactBinomialUpper(1000, 2000, 0.5);
+  assert.ok(centerTail > 0.508 && centerTail < 0.510);
+  const highTail = Formal.exactBinomialUpper(1200, 2000, 0.5);
+  assert.ok(Number.isFinite(highTail));
+  assert.ok(highTail > 0 && highTail < 1e-10);
 });
 
 test("Stage 2 Holm-Bonferroni preserves family-wise ordering", () => {
@@ -112,4 +121,19 @@ test("Stage 2 evaluator substitutes p=1 only for non-estimable planned endpoints
   assert.ok(endpoints.every((row) => row.rawPValue < 0.01));
   assert.ok(endpoints.every((row) => row.pValue === 1));
   assert.ok(endpoints.every((row) => row.substitutedForNonEstimability));
+});
+
+test("Stage 2 short technical trajectory is deterministic and fully replay-verifiable", () => {
+  const { spec } = C.loadSpec();
+  const { candidateSha256 } = C.loadCandidates();
+  const smokeSpec = JSON.parse(JSON.stringify(spec));
+  smokeSpec.population.maxPly = 10;
+  const smokeSpecSha256 = "technical-smoke-stage2-not-formal-corpus";
+  const first = C.runGame(smokeSpec, smokeSpecSha256, candidateSha256, 0);
+  const second = C.runGame(smokeSpec, smokeSpecSha256, candidateSha256, 0);
+  assert.deepEqual(first, second);
+  const verified = Verifier.verifyGame(first, 0, smokeSpec, smokeSpecSha256, candidateSha256);
+  assert.equal(verified.seed, smokeSpec.population.seedStart);
+  assert.equal(verified.conditionId, "B-D1");
+  assert.equal(verified.plies, first.plies);
 });
