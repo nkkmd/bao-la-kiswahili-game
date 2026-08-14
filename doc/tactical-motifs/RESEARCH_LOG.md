@@ -102,4 +102,58 @@
 - Recorded support equivalence as an audit observation only; no candidate was merged, renamed, or manually promoted.
 - Created `STAGE_1_EXPLORATORY_RESULT.md`, `STAGE_1_CANDIDATE_FREEZE.json`, and completion checkpoint.
 - Stage 1 exploratory discovery is **COMPLETE**.
-- Stage 2 generation remains **NOT AUTHORIZED**. The next work is prospective candidate/family formalization and formal preregistration using fresh non-overlapping data.
+
+## 2026-08-14 — Stage 2 prospective formal candidate/family freeze
+
+- Before any fresh Stage 2 data existed, fixed Stage 2 ID `TM-S2-FORMAL-2026-08-14-v1`.
+- Preserved all eight Stage 1 definitions unchanged.
+- Chose four canonical formal candidates, one per exact Stage 1 support-identity pair, by the deterministic prospective rule: lowest Stage 1 promoted rank within each pair.
+- Canonical ranks: `1,3,5,7`; paired ranks `2,4,6,8` are diagnostic-only.
+- Post-fresh-data candidate substitution, pair merge/split, and paired-definition promotion are forbidden.
+- Candidate-definition file: `preregistration/STAGE_2_FORMAL_CANDIDATES.json`.
+- Candidate-definition SHA-256: `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`.
+- Correctly bound the actual repository Stage 1 candidate-freeze SHA-256 `f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73`; an earlier reconstructed hash was rejected by CI before authorization and did not affect scientific data.
+
+## 2026-08-14 — Stage 2 formal scientific-contract freeze
+
+- Froze fresh population at 3,072 games, seeds `22000001–22003072`, six strata ×512, max ply 100, seeded-uniform first 8 plies, no extension, and no replacement.
+- Froze candidate-specific root selection using only candidate phase, canonical structural precondition, legal-move eligibility, and canonical move-abstraction availability.
+- Explicitly prohibited consequence, D1/D2/D3 value, reply outcome, and game outcome from root eligibility.
+- Froze one SHA-ranked root per unique historical trajectory per candidate, with duplicate rule-state collapse and no replacement.
+- Froze formal candidate move as lexicographically smallest exact matching `AI.moveKey`, independent of search value or consequence.
+- Froze two co-primary endpoints per candidate: structural consequence success and exact D3 top-set membership.
+- Froze one-sided exact-binomial H0 `p<=0.50`, required observed rate `>=0.60`, D3 median/worst consistency gates, and six estimability/transferability gates.
+- Froze 8 planned p-values (`4×2`) with Holm-Bonferroni FWER `0.05` and no endpoint dropping.
+- Froze decision states `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, `TECHNICAL-INCONCLUSIVE` and accepted zero confirmed candidates as a valid outcome.
+- Formal spec SHA-256: `83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`.
+- Design-freeze Actions run `31784338545` = `success`.
+
+## 2026-08-14 — Stage 2 tooling implementation and initial validation
+
+- Implemented Stage 2 formal helper, corpus/provenance helper, runner, independent verifier, evaluator, validator, tests, and dedicated Actions workflows.
+- Formal runner phases: `status`, `generate`, `select`, `measure`, `evaluate`.
+- Mandatory execution firewall inserts independent full replay/search verification between `generate` and `select`.
+- Independent verifier has no weakened/no-search mode and recomputes all fixed-seed post-opening generation search diagnostics.
+- Initial Stage 2 tooling run `31784819713` completed with `success` and generated 0 scientific games / 0 formal measurements.
+
+## 2026-08-14 — Pre-generation exact-binomial numerical hardening
+
+- Before any Stage 2 scientific game was generated, a numeric audit found that naive probability-domain exact-binomial upper-tail accumulation could underflow for large selected-root counts.
+- Explicitly suspended Stage 2 authorization before changing scientific source.
+- Replaced the calculation with log-combination, log-space recurrence, and log-sum-exp accumulation.
+- Candidate definitions, population, seed block, endpoints, thresholds, multiplicity, and formal decision rules were unchanged.
+- Added large-`n` numerical stability tests and a deterministic short technical trajectory with full replay verification.
+- One CI run failed only because the test compared floating-point `0.125` and `0.12500000000000003` using strict equality; large-`n` stability and replay tests already passed. The test assertion was corrected to use numeric tolerance without changing scientific source.
+- Hardened tooling run `31785214590`, job `94719501008` completed with `success`: 9 tests passed, scientific games = 0, formal measurements = 0.
+
+## 2026-08-14 — Stage 2 hardened authorization
+
+- Reissued Stage 2 authorization only after the hardened tooling validation passed.
+- Active authorization binds the frozen candidate definition, formal spec, actual Stage 1 candidate-freeze hash, Stage 1 discovery artifact hash, and exact SHA-256 mapping of all hardened scientific source files.
+- Authorization SHA-256: `43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51`.
+- Active authorization-binding run `31785382236`, job `94720016585` completed with `success`.
+- The CI reread the authorization through `loadAuthorization()` and confirmed `stage2GenerationAuthorized=true` and `scientificInferenceAuthorized=true` against the current source mapping.
+- At authorization acceptance: Stage 2 scientific games = 0, verification absent, selection absent, candidate measurement files = 0, formal result absent.
+- Created Stage 2 pre-generation checkpoint and execution runbook.
+- Stage 2 formal scientific generation is now **AUTHORIZED / NOT YET GENERATED**.
+- Next authorized action is fixed 3,072-game generation followed immediately by mandatory independent full replay/search verification. Candidate-specific selection remains blocked until that gate is independently accepted.
