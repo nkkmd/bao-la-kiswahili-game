@@ -4,7 +4,7 @@ Updated: 2026-08-14
 
 ## Current state
 
-**ACTIVE — Stage 0 complete; Stage 1 v1 scientific contract and execution tooling frozen/validated; Stage 1 exploratory generation AUTHORIZED but NOT YET EXECUTED.**
+**ACTIVE — Stage 0 complete; Stage 1 v1 scientific contract/tooling frozen and validated; the fixed 768-game Stage 1 exploratory corpus has been generated and independently fully replay/search verified; selection is the next unopened analysis gate.**
 
 Baseline `main` HEAD remains:
 
@@ -21,6 +21,7 @@ Key commits:
 - Stage 1 scientific-contract freeze: `62fbf68cf12a3539b46dcdcd4487a0a9ea7debba`
 - Stage 1 execution-tooling implementation: `1f97881338b14b9a885bd124a1a68d436c1e0a43`
 - Stage 1 generation authorization: `1079e2e02d4031f980f0ddc2213c50f6c8a6e678`
+- Stage 1 stable-runtime execution runbook/recovery checkpoint: `6694714194eee2f536e90b4411566d9126e162ae`
 
 Validated Actions runs:
 
@@ -33,13 +34,50 @@ Validated Actions runs:
 - Stage 0 technical inspection: **COMPLETE / VALIDATED**
 - Stage 1 v1 spec: **FROZEN / VALIDATED**
 - Stage 1 execution tooling: **IMPLEMENTED / VALIDATED**
-- Stage 1 scientific corpus generation: **AUTHORIZED / NOT GENERATED**
-- Stage 1 exploratory inference: **NOT STARTED**
+- Stage 1 scientific corpus generation: **COMPLETE**
+- Stage 1 independent full replay/search verification: **PASSED**
+- Stage 1 state selection: **AUTHORIZED BY PRE-FROZEN FIREWALL / NOT YET EXECUTED**
+- Stage 1 measurement: **BLOCKED PENDING SELECTION READINESS**
+- Stage 1 exploratory discovery: **NOT STARTED**
 - Stage 2 formal corpus generation: **NOT AUTHORIZED**
 - `confirmed tesuji` claim: **NOT AUTHORIZED**
 - human/expert/traditional tesuji claim: **OUT OF SCOPE for Study 1**
 
-No Stage 1 scientific game, selected scientific state, motif measurement, or candidate result has been generated yet.
+No selected scientific state, motif measurement, discovery candidate result, or Stage 2 materialization has yet been generated.
+
+## Stage 1 corpus generation / verification milestone
+
+The fixed Stage 1 corpus was generated in a clean stable runtime from source commit:
+
+`6694714194eee2f536e90b4411566d9126e162ae`
+
+Manifest facts:
+
+- Stage ID: `TM-S1-EXPLORATORY-2026-08-14-v1`
+- spec SHA-256: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
+- authorization SHA-256: `9df06af5c330a529c7d4b33fbd3fa885a084fd1797d425a20d4ce620b6328f9a`
+- generated games: 768
+- seeds: `21900001–21900768`
+- six generation strata: 128 games each
+- unique historical trajectories: 741
+- duplicate historical trajectory groups: 27
+- largest duplicate group: 2
+- distinct opening prefixes: 681
+- manifest summary hash: `7d11bae51a21b77ed91eb7ffe4098d6be3e7035a0480689616a72bd76b3eb96c`
+- source tree dirty: false
+
+Independent verification facts:
+
+- `passed = true`
+- `fullSearchRecomputation = true`
+- games verified: 768
+- unique historical trajectories: 741
+- distinct opening prefixes: 681
+- verification identity hash: `9584bba101e3cad37bcf2c05556f478ab6ca9cd3d16c923614bd0245a9a1f9ec`
+- source tree dirty: false
+- manifest and verifier scientific source SHA-256 mappings match exactly
+
+This crosses only the preregistered technical gate from `verify` to `select`. It is not a motif result and does not authorize confirmatory inference.
 
 ## Stage 1 v1 frozen design
 
@@ -122,9 +160,9 @@ Passing Stage 1 promotion gates means **candidate for Stage 2 planning only**, n
 
 Authorized scientific execution order is fixed:
 
-1. `generate`
-2. independent full replay/search `verify`
-3. `select`
+1. `generate` — **COMPLETE**
+2. independent full replay/search `verify` — **PASSED**
+3. `select` — **NEXT**
 4. inspect selection readiness
 5. `measure`
 6. inspect measurement readiness
@@ -163,12 +201,10 @@ Opening-sequence knowledge remains distinct from position-transferrable tesuji. 
 
 ## No-rescue boundary
 
-Once Stage 1 scientific generation is executed, the frozen protocol forbids seed extension, replacement sampling, threshold retuning, phase reassignment, opening-threshold relaxation, favorable subset selection, post-outcome depth selection, failed-candidate renaming, and manual candidate promotion.
+Scientific generation has now occurred. Therefore the frozen protocol forbids seed extension, replacement sampling, threshold retuning, phase reassignment, opening-threshold relaxation, favorable subset selection, post-outcome depth selection, failed-candidate renaming, and manual candidate promotion.
 
 A redesign requires a new prospective version and fresh non-overlapping corpus.
 
 ## Next action
 
-The next scientific action is to execute the already-authorized local Stage 1 pipeline beginning with the fixed 768-game `generate` phase, then independent full replay/search verification.
-
-At this checkpoint **authorization exists but scientific generation has intentionally not been executed**.
+Execute the deterministic Stage 1 `select` phase against the verified 768-game corpus, then inspect `selection-audit.json` against the frozen readiness gates **before** any measurement is allowed.
