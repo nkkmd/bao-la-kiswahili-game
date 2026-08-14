@@ -4,111 +4,51 @@
 
 **Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証**
 
-## 状態
+## 現在の状態
 
-- Study: **active / prospective independent study**
-- Baseline `main`: `08c70ba6ac980884d51562c207410db3521b8ae4`
-- Branch: `research/tactical-motif-discovery`
-- Stage 0: **complete / validated**
-- Current stage: **Stage 1 v1 pre-generation specification freeze**
-- Stage 1 scientific corpus: **not generated**
-- Stage 1 generation: **not authorized; frozen spec/tooling CI pending; runner/verifier are next gate**
-- Formal confirmation: **not authorized**
+- baseline `main`: `08c70ba6ac980884d51562c207410db3521b8ae4`
+- branch: `research/tactical-motif-discovery`
+- Stage 0: **COMPLETE / VALIDATED**
+- Stage 1 v1 contract/tooling: **FROZEN / VALIDATED**
+- Stage 1 scientific generation: **AUTHORIZED / NOT GENERATED**
+- Stage 2: **NOT AUTHORIZED**
+- `confirmed tesuji` claim: **NOT AUTHORIZED**
 
-## 中心課題
+Stage 1 ID: `TM-S1-EXPLORATORY-2026-08-14-v1`
 
-特定のopening sequenceに依存せず、異なるhistorical trajectories / rule statesで繰り返し成立する
-
-> structural condition → move / move family → reply structure → reproducible downstream consequence
-
-を、再利用可能な手筋候補として機械的に定義・発見・fresh confirmationできるかを調べる。
-
-本研究は「AIが高評価した手」を収集する研究ではない。frequency、search value、forcing
-structure、structural consequence、transferabilityを別概念として扱う。
-
-## Study separation
-
-既存の以下の研究のformal decision、threshold、classifier、endpoint、population、
-interpretation boundaryはimmutableである。
-
-- 局面相転移点 Study 1
-- 局面類型と棋風 Study 1
-- Namua→Mtaji Strategic Temporal Transition Study 1
-- Position Complexity / Difficulty Study 1
-- 第一次定石研究
-
-特に `capture-branch-expansion`、`MTAJI-M1/MTAJI-M2`、N-ACT/N-CON、
-Position Complexityのsearch metricsを、自動的に手筋ラベルへ変換しない。
-
-## Josekiとの境界
-
-- **joseki**: standard opening / opening-sequence level knowledge
-- **tesuji / tactical motif**: opening identityを必要条件とせず、異なる局面へ転移可能なstructural move principle
-
-opening sequenceそのものをmatching ruleに必要とするpatternは、本Studyではtesuji
-confirmation対象にしない。Stage 1ではopening-prefix concentrationを明示的に監査する。
-
-## Stage architecture
-
-1. **Stage 0** — technical / representation audit — **COMPLETE / VALIDATED**
-2. **Stage 1** — prospective exploratory discovery — **v1 SPEC FROZEN / NOT YET GENERATED**
-3. **Stage 2** — fresh prospective formal confirmation — **NOT AUTHORIZED**
-
-Stage 1 positions/seeds are not reusable in Stage 2. Stage 2 requires a separately frozen
-candidate-specific formal preregistration and fresh non-overlapping corpus.
-
-## Stage 1 v1
-
-Stage ID:
-
-`TM-S1-EXPLORATORY-2026-08-14-v1`
-
-Spec SHA-256:
+Frozen spec SHA-256:
 
 `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
 
-Frozen population:
+Stage 1 population is fixed at 768 games with fresh seeds `21900001–21900768`, six trajectory-generation strata, no extension, and no replacement sampling.
 
-- 768 games
-- seeds `21900001–21900768`
-- 6 trajectory-generation strata × 128 games
-- 8 seeded-uniform exact-moveVariant opening plies
-- max ply 100
-- no extension / no replacement
+The study measures all legal exact moveVariants at outcome-independently selected roots and separates recurrence, search value, forcing, structural consequence, and transferability. Opening-prefix concentration is audited so opening/joseki repetition cannot by itself establish a position-transferrable tesuji.
 
-Stage 1 uses one outcome-independently selected root per representative historical trajectory,
-measures all legal moveVariants, and characterizes all immediate opponent replies through a
-root-actor-relative response envelope.
+## Boundaries
 
-The spec alone does not authorize generation. After this frozen contract passes dedicated CI, a corpus runner and independent verifier must be implemented and separately validated. Only then may a source-hash-bound authorization file be created.
+Prior Bao studies remain immutable. `capture-branch-expansion`, MTAJI morphology, N-ACT/N-CON, Position Complexity metrics, or joseki moves are not automatically tesuji labels.
 
-## 文書
+Stage 1 is exploratory only. A Stage 1 candidate can at most be promoted for future Stage 2 planning. Formal confirmation requires a new candidate-specific preregistration and fresh non-overlapping corpus.
 
-- `CURRENT_STATUS.md` — 現在地
-- `RESEARCH_PLAN.md` — 全体設計
-- `HYPOTHESES.md` — 仮説・candidate familyの扱い
-- `DECISION_REGISTER.md` — 研究判断
-- `EXPERIMENT_INDEX.md` — Stage / experiment index
-- `RESEARCH_LOG.md` — chronological log
-- `STAGE_0_TECHNICAL_AUDIT.md` — engine / AI / tooling audit
-- `STAGE_1_EXPLORATORY_PROTOCOL.md` — frozen Stage 1 scientific protocol
-- `preregistration/STAGE_1_EXPLORATORY_SPEC.json` — machine-readable Stage 1 freeze
+## Key documents
 
-## Technical instrumentation
+- `CURRENT_STATUS.md`
+- `RESEARCH_PLAN.md`
+- `HYPOTHESES.md`
+- `DECISION_REGISTER.md`
+- `EXPERIMENT_INDEX.md`
+- `RESEARCH_LOG.md`
+- `STAGE_0_TECHNICAL_AUDIT.md`
+- `STAGE_1_EXPLORATORY_PROTOCOL.md`
+- `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
+- `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
 
-Reused:
+## Execution
 
-- `tools/experiments/lib/position-typology-features.js`
-- `tools/experiments/lib/position-complexity-search-diagnostic.js`
-- `tools/symmetry/transform-candidates.js`
+Authorized order:
 
-Study-specific:
+`generate → independent full replay/search verify → select → measure → discover`
 
-- `tools/experiments/lib/tactical-motif-features.js`
-- `tools/experiments/lib/tactical-motif-discovery.js`
-- `tools/experiments/validate-tactical-motif-stage1-spec.js`
-- `test/tactical-motif-stage0.test.js`
-- `test/tactical-motif-stage1-tooling.test.js`
+Large scientific artifacts remain only under `artifacts/local/tactical-motifs/stage1-exploratory-v1/` and are not committed or generated in GitHub Actions.
 
-Large scientific corpus is generated only under `artifacts/local/` and is never committed.
-GitHub Actions are limited to technical validation and smoke/unit tests.
+At the current checkpoint, no Stage 1 scientific corpus has been generated.

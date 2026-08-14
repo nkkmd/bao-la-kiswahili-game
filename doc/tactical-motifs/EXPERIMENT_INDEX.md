@@ -5,7 +5,6 @@
 ### TM-S0-A01 — Existing identity and representation audit
 
 - Status: **COMPLETE / VALIDATED**
-- Inputs: engine, position-typology features, symmetry transforms
 - Scientific inference: not authorized
 - Output: `STAGE_0_TECHNICAL_AUDIT.md`
 
@@ -14,59 +13,62 @@
 - Status: **COMPLETE / VALIDATED**
 - Tool: `tools/experiments/lib/tactical-motif-features.js`
 - Test: `test/tactical-motif-stage0.test.js`
-- Validation: GitHub Actions run `31768708597` = `success`
-- Purpose: actor-relative move/event/structural deltas and reply-set measurement
-- Scientific corpus: none
+- Validation: Actions run `31768708597` = `success`
 
 ### TM-S0-A03 — Exact search instrumentation reuse audit
 
 - Status: **COMPLETE / VALIDATED**
 - Reused tool: `tools/experiments/lib/position-complexity-search-diagnostic.js`
-- Supported: exact root candidate tables, D1/D2/D3, tie-aware top sets, depth trace
+- Supported: exact root candidate tables, D1/D2/D3, tie-aware top sets
 - Unsupported: search-consistent PV reconstruction
-- Prerequisite search-diagnostic test passed in Stage 0 CI run `31768708597`.
 
 ## Stage 1 — Prospective exploratory discovery
 
-### TM-S1-A00 — Pre-generation design/specification freeze
+### TM-S1-A00 — Scientific contract freeze
 
-- Status: **FROZEN / TECHNICAL VALIDATION PENDING**
+- Status: **FROZEN / VALIDATED**
 - Stage ID: `TM-S1-EXPLORATORY-2026-08-14-v1`
 - Spec: `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
-- Protocol: `STAGE_1_EXPLORATORY_PROTOCOL.md`
-- Scientific corpus: not generated
-- Generation authorization: not yet granted
-- Confirmatory reuse: forbidden
+- Spec SHA-256: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
+- Freeze commit: `62fbf68cf12a3539b46dcdcd4487a0a9ea7debba`
+- Validation run: `31770343371` = `success`
 
-### TM-S1-A01 — Stage 1 representation / candidate-grammar tooling
+### TM-S1-A01 — Stage 1 representation / candidate grammar
 
-- Status: **IMPLEMENTED / TECHNICAL VALIDATION PENDING**
+- Status: **COMPLETE / VALIDATED**
 - Feature helper: `tools/experiments/lib/tactical-motif-features.js`
-- Candidate discovery grammar: `tools/experiments/lib/tactical-motif-discovery.js`
+- Candidate grammar: `tools/experiments/lib/tactical-motif-discovery.js`
 - Spec validator: `tools/experiments/validate-tactical-motif-stage1-spec.js`
 - Test: `test/tactical-motif-stage1-tooling.test.js`
-- CI: `.github/workflows/tactical-motif-stage1-spec.yml`
-- Scientific corpus generation: impossible from this tooling alone
 
 ### TM-S1-A02 — Scientific corpus runner / independent verifier
 
-- Status: **NOT YET IMPLEMENTED / NEXT GATE**
-- Constraint: must implement the frozen v1 contract without changing population, selection, measurement, promotion, or no-rescue rules
-- Authorization: forbidden until implementation receives separate technical validation
+- Status: **COMPLETE / VALIDATED**
+- Corpus helper: `tools/experiments/lib/tactical-motif-stage1-corpus.js`
+- Runner: `tools/experiments/run-tactical-motif-stage1-exploratory.js`
+- Independent verifier: `tools/experiments/verify-tactical-motif-stage1-exploratory.js`
+- Implementation commit: `1f97881338b14b9a885bd124a1a68d436c1e0a43`
+- Validation run: `31770629848` = `success`
+- Validation job: `94675639391` = `success`
+- CI scientific games generated: 0
+
+### TM-S1-A03 — Stage 1 generation authorization
+
+- Status: **COMPLETE**
+- Authorization: `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
+- Authorization commit: `1079e2e02d4031f980f0ddc2213c50f6c8a6e678`
+- Binds: spec SHA-256 + implementation commit + exact scientific source-file SHA-256 mapping
+- Confirmatory inference: not authorized
+- Stage 2 generation: not authorized
 
 ### TM-S1-E01 — Exploratory discovery corpus
 
-- Status: **NOT AUTHORIZED / NOT GENERATED**
-- Population: 768 games, seeds `21900001–21900768`
+- Status: **AUTHORIZED / NOT GENERATED**
+- Population: 768 games
+- Seeds: `21900001–21900768`
 - Generation strata: 6 × 128 games
-- Required execution order: generate → verify → select → measure → discover
-- Required outputs:
-  - `manifest.json`
-  - `verification.json`
-  - `selection-audit.json`
-  - `selected-states.json`
-  - `measurement-manifest.json`
-  - `discovery-result.json`
+- Execution order: `generate → verify → select → measure → discover`
+- Output root: `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 - Confirmatory reuse: forbidden
 - Candidate output, if any: Stage 2 planning only
 
@@ -80,7 +82,4 @@
 
 ## Naming rule
 
-Stage 0 identifiers are technical only. Stage 1 candidate labels must remain exploratory
-(for example `TM-CAND-*`) until a prospective Stage 2 decision is complete.
-
-The term `confirmed tesuji` is reserved for a candidate that passes its frozen Stage 2 rule.
+Stage 1 candidate labels remain exploratory until a prospective Stage 2 decision is complete. The term `confirmed tesuji` is reserved for a candidate that passes a separately frozen Stage 2 rule.
