@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "stageId": "TM-S2-FORMAL-2026-08-14-v1",
+  "status": "formal-generation-authorized",
+  "stage2GenerationAuthorized": true,
+  "scientificInferenceAuthorized": true,
+  "stage1FormalObservationReuseAllowed": false,
+  "specSha256": "83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8",
+  "candidateDefinitionSha256": "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8",
+  "stage1CandidateFreezeSha256": "f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73",
+  "sourceDiscoveryResultSha256": "aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34",
+  "population": {
+    "games": 3072,
+    "seedStart": 22000001,
+    "seedEnd": 22003072,
+    "maxPly": 100,
+    "openingPlies": 8,
+    "strata": {
+      "B-D1": 512,
+      "B-D2": 512,
+      "B-D3": 512,
+      "LS-D2": 512,
+      "V2-D2": 512,
+      "LE-D2": 512
+    }
+  },
+  "formalCandidates": [
+    {
+      "candidateId": "TM-S2-C01",
+      "canonicalStage1Rank": 1,
+      "canonicalCandidateKey": "23e3dbe362049a6e220fa2aa74b6f9364b8277cadc4f329e8181b483cf03fe38"
+    },
+    {
+      "candidateId": "TM-S2-C02",
+      "canonicalStage1Rank": 3,
+      "canonicalCandidateKey": "76dacf8980eeecec8af798b19fb3e87d23665a67bffaf555fb05cec5dea5c852"
+    },
+    {
+      "candidateId": "TM-S2-C03",
+      "canonicalStage1Rank": 5,
+      "canonicalCandidateKey": "7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba"
+    },
+    {
+      "candidateId": "TM-S2-C04",
+      "canonicalStage1Rank": 7,
+      "canonicalCandidateKey": "8a2c28eaefd59c83d6a7983b3f7c6b36c80f677b08ab6d2af65203e6af0c8755"
+    }
+  ],
+  "toolingValidation": {
+    "implementationCommit": "8671ce5493653408cd93bed7ef5f67e6c88e7695",
+    "workflow": "Tactical Motif Stage 2 Formal Tooling",
+    "runId": 31784819713,
+    "jobId": 94718283122,
+    "conclusion": "success",
+    "scientificGamesGeneratedByValidation": 0,
+    "formalMeasurementsGeneratedByValidation": 0
+  },
+  "authorizedSourceFileSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+    "tools/symmetry/transform-candidates.js": "fc85e8520b23b0b4ceb0bd8a95ad7f2b47171405190eedecdc822054d44decc5",
+    "tools/experiments/lib/phase-transition-features.js": "b0948a94b8e6358d12194e4dad10018448f85814ac735ca3ceee7a4c74a78480",
+    "tools/experiments/lib/position-typology-features.js": "94ec8283cdc9d8f75cbdb13215cc2acd95fd33a2ca3a14afccd3a26ca8644242",
+    "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
+    "tools/experiments/lib/tactical-motif-features.js": "26fc334801c3cf879e41429ae011eb313cbb7a7f60184a7adfd5cb623eb31a42",
+    "tools/experiments/lib/tactical-motif-discovery.js": "7a1e570c139b01c21ee76b224db7ed4bb6dd52380c3d2172206ab145f3ed3e5f",
+    "tools/experiments/lib/tactical-motif-stage2-formal.js": "08f9f7445ac5b54a511d1133ed09f815713a1470742ae7edb7e25c35ddf3b444",
+    "tools/experiments/lib/tactical-motif-stage2-corpus.js": "cb1693cb80fbe84e918c9d62cdcaed2b48978533367f420cec13434a7a2a6801",
+    "tools/experiments/validate-tactical-motif-stage2-formal-spec.js": "0123da633f9a53352399aca1b23149a1ad3ba5cc07fc998a249a6636d5266f3e",
+    "tools/experiments/run-tactical-motif-stage2-formal.js": "e5407c986daf7aa62bba914a034c297fad2a23d7c23f7e9d32dd51b5aa84b1d5",
+    "tools/experiments/verify-tactical-motif-stage2-formal.js": "d6500cc42fd00208150218e16d2d621e110a2d191390680253cff5019e0b7425",
+    "tools/experiments/evaluate-tactical-motif-stage2-formal.js": "9b4a7a89c844c05be0d9066913a6ab93d04592cd7a70e797e1d59b9694f74a38",
+    "doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json": "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8",
+    "doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json": "83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8"
+  },
+  "executionOrder": [
+    "generate",
+    "independent-full-replay-and-generation-search-verify",
+    "candidate-specific-select",
+    "measure",
+    "formal-evaluate"
+  ],
+  "firewall": {
+    "selectionRequiresVerificationPassed": true,
+    "selectionRequiresFullSearchRecomputation": true,
+    "formalEvaluationRequiresMeasurementIntegrityPassed": true,
+    "stage1SeedsReusable": false,
+    "stage1StatesReusable": false,
+    "stage1MeasurementsReusableAsFormalObservations": false
+  },
+  "noRescue": {
+    "seedExtensionAllowed": false,
+    "replacementSamplingAllowed": false,
+    "replacementForUnavailableTrajectoryAllowed": false,
+    "replacementForDuplicateRuleStateAllowed": false,
+    "candidateSubstitutionAllowed": false,
+    "pairedDefinitionPromotionAllowed": false,
+    "thresholdRetuningAllowed": false,
+    "endpointRetuningAllowed": false,
+    "postOutcomeDepthSelectionAllowed": false,
+    "favorableSubsetSelectionAllowed": false
+  },
+  "interpretationBoundary": {
+    "machineReproducibleFormalInferenceAuthorized": true,
+    "humanExpertTraditionalClaimAuthorized": false,
+    "pedagogicalClaimAuthorized": false,
+    "generalizationBeyondCurrentRulesAndFrozenSearchInstrumentAuthorized": false
+  }
+}
