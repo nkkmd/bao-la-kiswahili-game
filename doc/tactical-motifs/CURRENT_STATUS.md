@@ -4,7 +4,7 @@ Updated: 2026-08-14
 
 ## Current state
 
-**ACTIVE — Stage 1 exploratory discovery is COMPLETE. Eight deterministic candidate definitions are frozen for Stage 2 planning only. Stage 2 formal design has not yet been frozen or authorized.**
+**ACTIVE — Stage 1 exploratory discovery is COMPLETE. Stage 2 formal candidate definitions, preregistration, runner/verifier/evaluator tooling, numerical hardening, and exact source-hash authorization are COMPLETE. The fresh 3,072-game Stage 2 formal corpus is AUTHORIZED / NOT YET GENERATED.**
 
 Baseline `main` HEAD:
 
@@ -17,189 +17,232 @@ Current branch:
 ## Scientific state
 
 - Stage 0 technical inspection: **COMPLETE / VALIDATED**
-- Stage 1 v1 spec: **FROZEN / VALIDATED**
-- Stage 1 execution tooling: **IMPLEMENTED / VALIDATED**
-- Stage 1 scientific corpus generation: **COMPLETE**
-- Stage 1 independent full replay/search verification: **PASSED**
-- Stage 1 deterministic state selection: **COMPLETE / READINESS PASSED**
-- Stage 1 all-move exact measurement: **COMPLETE / READINESS PASSED**
-- Stage 1 exploratory candidate discovery: **COMPLETE**
-- Stage 1 candidate freeze: **COMPLETE — 8 definitions**
-- Stage 2 formal preregistration: **NOT YET FROZEN**
-- Stage 2 corpus generation: **NOT AUTHORIZED**
-- `confirmed tesuji` claim: **NOT AUTHORIZED**
-- human/expert/traditional tesuji claim: **OUT OF SCOPE for Study 1**
+- Stage 1 exploratory discovery: **COMPLETE**
+- Stage 1 promoted definitions: **8 / frozen**
+- Stage 2 canonical formal candidates: **4 / FROZEN**
+- Stage 2 formal spec: **FROZEN / VALIDATED**
+- Stage 2 runner / independent verifier / evaluator: **IMPLEMENTED / VALIDATED**
+- Stage 2 numerical hardening: **COMPLETE / VALIDATED BEFORE SCIENTIFIC GENERATION**
+- Stage 2 source-hash authorization: **ACTIVE / VALIDATED**
+- Stage 2 scientific corpus generation: **AUTHORIZED / NOT YET GENERATED**
+- Stage 2 selection: **BLOCKED PENDING FULL REPLAY/SEARCH VERIFICATION**
+- Stage 2 formal measurements: **NOT STARTED**
+- Stage 2 formal evaluation: **NOT STARTED**
+- `confirmed tesuji` claim: **NOT AUTHORIZED AT PRESENT**
+- human/expert/traditional/pedagogical claim: **OUT OF SCOPE**
 
-## Frozen Stage 1 identity
+No Stage 2 scientific game, selected state, formal measurement, or formal result has yet been generated.
+
+## Stage 1 frozen result
 
 Stage ID:
 
 `TM-S1-EXPLORATORY-2026-08-14-v1`
 
-Spec SHA-256:
-
-`f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
-
-Authorization SHA-256:
-
-`9df06af5c330a529c7d4b33fbd3fa885a084fd1797d425a20d4ce620b6328f9a`
-
-Population:
-
-- 768 games
-- fresh seeds `21900001–21900768`
-- six fixed generation strata × 128 games
-- first 8 plies seeded-uniform over exact `E.moveVariants`
-- max ply 100
-- no early stop
-- no outcome-dependent extension
-- no replacement sampling
-
-## Corpus / verification
-
-- generated games: 768
+- Stage 1 spec SHA-256: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
+- population: 768 games / seeds `21900001–21900768`
 - unique historical trajectories: 741
-- duplicate historical-trajectory groups: 27
-- largest duplicate group: 2
-- distinct opening prefixes: 681
-- manifest summary hash: `7d11bae51a21b77ed91eb7ffe4098d6be3e7035a0480689616a72bd76b3eb96c`
-- verification: `passed=true`
-- full search recomputation: `true`
-- games verified: 768
-- verification identity hash: `9584bba101e3cad37bcf2c05556f478ab6ca9cd3d16c923614bd0245a9a1f9ec`
-
-## Selection / measurement
-
-Selection:
-
-- unique historical trajectories entering selection: 741
-- unavailable assigned phase: 25, no replacement
-- selected before rule-state collapse: 716
-- duplicate selected rule states collapsed: 1
 - selected unique rule states: 715
-- Namua: 370
-- Mtaji: 345
-- distinct selected opening prefixes: 659
-- minimum selected in any generation stratum: 114
-- selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
-- every frozen selection-readiness gate: **PASS**
+- exact measured move records: 3,148
+- discovery raw pattern instances: 3,116,520
+- unique pattern keys: 323,676
+- detailed candidates: 105,501
+- candidates passing every frozen promotion gate: 948
+- promoted Stage 2-planning definitions after frozen ranking/caps: 8
+- discovery-result SHA-256: `aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34`
+- Stage 1 candidate-freeze file SHA-256: `f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73`
 
-Measurement:
+The eight definitions form four exact Stage 1 `supportIdentityHash` pairs. Stage 1 itself remains eight immutable exploratory definitions; no retrospective merge occurred.
 
-- completed root measurements: 715
-- measured exact move records: 3148
-- frozen minimum: 1800
-- measurement readiness: **PASS**
-- measurement hash: `c4b8dc55caa21a6143c09c42e1686a9610208080ce467fee92ec044cf9e5ae4c`
+## Stage 2 formal identity
 
-## Stage 1 discovery result
+Stage ID:
 
-Local discovery artifact:
+`TM-S2-FORMAL-2026-08-14-v1`
 
-`artifacts/local/tactical-motifs/stage1-exploratory-v1/discovery-result.json`
+Candidate definition:
+
+`doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json`
 
 SHA-256:
 
-`aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34`
+`667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
 
-Discovery scale:
+Formal spec:
 
-- raw pattern instances: 3,116,520
-- unique pattern keys: 323,676
-- detailed candidates: 105,501
-- low-support patterns: 218,175
-- candidates passing every frozen promotion gate: 948
-  - Mtaji: 921
-  - Namua: 27
-  - coarse-no-index: 833
-  - indexed: 115
+`doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json`
 
-The full 105,501-candidate detailed set was independently stream-audited. Reapplication of the frozen comparator and caps reproduced the stored promoted candidate keys exactly.
+SHA-256:
 
-Promoted post-cap ranks correspond to pre-cap eligible ranks:
+`83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`
 
-`1, 2, 22, 23, 40, 41, 645, 646`
+Authorization:
 
-The eight candidate definitions are frozen in:
+`doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`
 
-`doc/tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json`
+Authorization SHA-256:
 
-Human-readable result:
+`43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51`
 
-`doc/tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md`
+Human-readable formal protocol:
 
-## Promoted candidate families at a glance
+`doc/tactical-motifs/STAGE_2_FORMAL_PROTOCOL.md`
 
-The eight definitions use four exact move-abstraction tokens, two definitions per token, with the frozen maximum-per-move cap reached in each case:
+Execution runbook:
 
-1. Mtaji back-row takata left — ranks 1–2
-2. Namua front-row right-side capture left — ranks 3–4
-3. Mtaji back-row takata right — ranks 5–6
-4. Namua front-row takata right — ranks 7–8
+`doc/tactical-motifs/STAGE_2_EXECUTION_RUNBOOK.md`
 
-All eight pass all nine prospectively frozen promotion gates.
+## Four canonical formal candidates
 
-## Support-equivalence audit
+Stage 2 prospectively chooses exactly one canonical definition per Stage 1 support-equivalence pair using the lowest Stage 1 promoted rank before fresh data:
 
-The eight definitions form four exact `supportIdentityHash` pairs:
+- `TM-S2-C01` — Stage 1 rank 1; paired rank 2 diagnostic-only
+- `TM-S2-C02` — Stage 1 rank 3; paired rank 4 diagnostic-only
+- `TM-S2-C03` — Stage 1 rank 5; paired rank 6 diagnostic-only
+- `TM-S2-C04` — Stage 1 rank 7; paired rank 8 diagnostic-only
 
-- ranks 1–2
-- ranks 3–4
-- ranks 5–6
-- ranks 7–8
+The paired definition cannot replace, rescue, merge with, or supersede the canonical definition after Stage 2 data inspection.
 
-This is an **audit observation only**. Stage 1 output remains eight definitions. No post-hoc merge or relabeling is authorized.
+## Fresh Stage 2 population
 
-Stage 2 must prospectively freeze whether these are tested as eight definitions, four support-equivalent families, or a hierarchical structure before any fresh confirmation data exist.
+- games: 3,072
+- fresh seeds: `22000001–22003072`
+- six fixed generation strata × 512 games
+- first 8 plies: seeded-uniform exact `E.moveVariants`
+- max ply: 100
+- no early stop
+- no outcome-dependent extension
+- no replacement sampling
+- Stage 1 seeds/states/measurements cannot be formal Stage 2 observations
 
-## Interpretation boundary
+Generation strata remain trajectory-diversification metadata only; they do not reopen prior search/evaluator comparisons.
 
-Authorized Stage 1 statement:
+## Candidate-specific root and move selection
 
-> The frozen exploratory pipeline identified eight recurrent, opening-diverse, multi-stratum tactical-pattern definitions satisfying the preregistered Stage 1 transferability and D3-value gates. They are candidates for a fresh prospective Stage 2 design.
+For each canonical candidate, fresh roots are eligible only from:
 
-Not authorized:
+- the frozen candidate phase;
+- the frozen canonical structural precondition;
+- nonterminal states at ply >= 8;
+- states with >=2 exact `E.moveVariants`;
+- states where at least one exact legal move matches the canonical move abstraction.
 
-- confirmed tesuji
-- universal Bao principle
-- causal strategic benefit
-- human/expert/traditional recognition
-- pedagogical importance
-- treating eight candidate definitions automatically as eight independent empirical phenomena
-- reusing Stage 1 positions or seeds for confirmation
+Eligibility explicitly excludes the candidate consequence, D1/D2/D3 values, reply outcome, and game outcome.
+
+One root per eligible unique historical trajectory is chosen by frozen candidate-specific SHA-256 rank. Unavailable candidate trajectories receive no replacement. Duplicate selected `ruleStateKey` values collapse within candidate with no replacement.
+
+At a selected root, the formal candidate move is the lexicographically smallest matching `AI.moveKey`; search value and consequence cannot affect this choice.
+
+## Formal endpoints and multiplicity
+
+Each canonical candidate has two co-primary binary endpoints:
+
+1. **Structural success:** the deterministic candidate move satisfies the frozen Stage 1 consequence predicate.
+2. **Tactical-value success:** the deterministic candidate move belongs to the exact D3 top set among all legal root moveVariants under frozen `bao / phase2 / D3` instrumentation.
+
+For each endpoint:
+
+- H0: `p <= 0.50`
+- H1: `p > 0.50`
+- exact one-sided binomial
+- observed rate must also be `>= 0.60`
+
+All `4 candidates × 2 endpoints = 8` planned p-values are adjusted by Holm-Bonferroni at family-wise alpha `0.05`.
+
+Consistency gates:
+
+- D3 at-or-above-state-median rate `>= 0.60`
+- D3 unique-worst rate `<= 0.15`
+
+## Estimability / transferability gates
+
+Per canonical candidate:
+
+- unique historical trajectories `>= 96`
+- unique rule states `>= 96`
+- distinct opening prefixes `>= 48`
+- maximum single opening-prefix share `<= 0.10`
+- generation strata represented `>= 4`
+- maximum single generation-stratum share `<= 0.50`
+
+Failure yields `INCONCLUSIVE-NOT-ESTIMABLE`; the corpus is not extended.
+
+## Formal decision states
+
+Per candidate:
+
+- `CONFIRMED`
+- `NOT-CONFIRMED`
+- `INCONCLUSIVE-NOT-ESTIMABLE`
+- `TECHNICAL-INCONCLUSIVE`
+
+Zero confirmed candidates is a valid study outcome.
+
+## Numerical hardening and authorization chronology
+
+Before any Stage 2 scientific generation, pre-generation audit identified potential floating-point underflow in a naive exact-binomial upper-tail calculation for large selected-root counts.
+
+The Stage 2 authorization was explicitly suspended before changing scientific source. The calculation was replaced by log-combination + log-space recurrence + log-sum-exp accumulation. **No scientific design element changed:** candidates, fresh population, endpoints, thresholds, multiplicity, and decision rules remained fixed.
+
+Validation chronology:
+
+- design-freeze run `31784338545` = `success`
+- initial tooling run `31784819713` = `success`, scientific games = 0
+- hardened tooling run `31785214590`, job `94719501008` = `success`, 9 tests passed, scientific games = 0
+- active authorization-binding run `31785382236`, job `94720016585` = `success`
+
+The active authorization binds the exact hardened scientific source SHA-256 mapping. Any scientific source change invalidates generation until a new pre-generation validation/authorization boundary is created.
+
+## Execution firewall
+
+Required order:
+
+1. `generate` — **NEXT / AUTHORIZED**
+2. independent full replay/search `verify`
+3. inspect manifest + verification
+4. candidate-specific `select`
+5. inspect selection identity / estimability preview
+6. `measure`
+7. inspect measurement integrity
+8. formal `evaluate`
+
+`select` is blocked unless `verification.json` has both `passed=true` and `fullSearchRecomputation=true`.
+
+Large Stage 2 artifacts remain under:
+
+`artifacts/local/tactical-motifs/stage2-formal-v1/`
+
+GitHub Actions validate tooling but never generate the 3,072-game formal scientific corpus.
 
 ## No-rescue boundary
 
-The discovery artifact preserves:
+After Stage 2 scientific generation begins, forbidden actions include:
 
-- threshold retuning allowed: `false`
-- favorable subset selection allowed: `false`
-- phase relabeling allowed: `false`
-- failed-candidate renaming allowed: `false`
-- outcome-dependent extension allowed: `false`
+- seed extension;
+- replacement sampling;
+- replacement of unavailable candidate trajectories;
+- replacement of duplicate rule states;
+- canonical-candidate substitution;
+- paired-definition promotion;
+- candidate merge/split in response to fresh data;
+- endpoint or threshold retuning;
+- dropping planned tests from Holm adjustment;
+- post-outcome depth selection;
+- favorable subset selection;
+- failed-candidate renaming.
 
-Manual promotion remains forbidden.
+A redesign requires a new prospective Stage 2 version and fresh non-overlapping seed block.
 
-## Immutable prior-study boundaries
+## Immutable interpretation boundary
 
-- Phase Transition Study 1 remains immutable; `capture-branch-expansion` is not automatically a tesuji.
-- Position Typology / Playing Style Study 1 remains immutable; morphology/style constructs are not automatically motif classes.
-- Namua→Mtaji Study 1 remains `NOT-CONFIRMED`; timing/survival/hazard endpoints are not reused.
-- Position Complexity Study 1 remains closed and inconclusive; search tooling is reused only as instrumentation.
-- Joseki remains opening-sequence knowledge, distinct from position-transferrable tesuji.
+A future `CONFIRMED` result can support only a **machine-reproducible transferable tactical motif under the frozen Bao engine/search operationalization**.
+
+It does not establish traditional/expert recognition, human importance, beginner importance, pedagogical value, causal strategic benefit, or generalization beyond the frozen rules/engine/search instrument.
+
+Prior Bao studies remain immutable and are not reopened by this Stage 2 design.
 
 ## Next action
 
-Proceed to **Stage 2 prospective formal design only**. Before Stage 2 generation, freeze and commit:
+Generate exactly the authorized 3,072-game fresh Stage 2 corpus in a stable local/Colab runtime, then run the independent full replay/search verifier.
 
-1. candidate-definition versus support-equivalent-family handling;
-2. exact matching rule;
-3. fresh eligible population and non-overlapping seed block;
-4. comparator and formal outcome;
-5. duplicate/trajectory handling;
-6. estimability/sample-size rules;
-7. multiplicity and alpha;
-8. decision/failure/no-rescue rules;
-9. separate Stage 2 generation authorization.
-
-Until those gates are complete, Stage 2 generation remains **NOT AUTHORIZED**.
+**Do not execute candidate-specific selection until `manifest.json` and `verification.json` have been independently inspected and accepted.**
