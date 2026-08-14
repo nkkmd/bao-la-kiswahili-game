@@ -1,7 +1,7 @@
 # Position Complexity / Difficulty Study — Experiment Index
 
-更新日: 2026-08-13  
-Status: **ACTIVE INDEX**
+更新日: 2026-08-14  
+Status: **STUDY 1 CLOSED INDEX**
 
 ## PCX-S0-T001 — Exact root/depth diagnostic technical validation
 
@@ -61,100 +61,101 @@ doc/position-complexity/STAGE_1_GENERATION_VERIFICATION.md
 doc/position-complexity/STAGE_1_EXPLORATORY_RESULT.md
 ```
 
-Local artifact root:
-
-```text
-artifacts/local/position-complexity/stage1-exploratory-v1/
-```
-
-No Stage 1 state or seed may serve as Stage 2 confirmation evidence.
-
 ## PCX-S2-F001 — Structural branching / decision-instability formal confirmation
 
 ```text
 stage = Stage 2
 class = formal / confirmatory
 stage ID = PCX-S2-FORMAL-2026-08-13-v1
-scientific design = FROZEN
-tooling = VALIDATED
-local execution authorization = ACTIVE
-formal corpus = NOT YET GENERATED
+status = COMPLETE
+formal decision = INCONCLUSIVE
+PCX-H1 = INCONCLUSIVE
+PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 ```
 
-Formal design:
+Formal identity:
 
 ```text
-doc/position-complexity/STAGE_2_FORMAL_PROTOCOL.md
-doc/position-complexity/preregistration/STAGE_2_FORMAL_SPEC.json
 specSha256 = f717d3990e83bfb08b584d49b521c87d7d9a9b73692a823137b5dbaaf9bd9071
+authorizationHash = 00471bc8f285ae544994b636d922dff75995d548151cd12349259b390d8b0dee
+sourceCommit = ba0e9a1dab6ca88095b0d35043c67f965adf7509
+verificationIdentityHash = 27d4de0818033226f23e1a806a85457d71d8c05beaaf20a596e27fb411b8ef10
+selectionHash = d214073fc1645a2942bc0bdc4a07c68309dc62737b5e18748907c8e8a0028c22
+measurementHash = c7ad1762aad979513e12da2d83278f8d2de30888318aa9215749c0c7fdd8d105
+resultHash = f20b51ec05b7c02e33dd77f8ce27b85c1b9671f6d8046dc6104f2e01946f5b75
 ```
 
-Authorization/runbook:
-
-```text
-doc/position-complexity/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
-doc/position-complexity/STAGE_2_FORMAL_RUNBOOK.md
-doc/position-complexity/checkpoints/2026-08-13-stage2-formal-generation-authorization.md
-```
-
-Fresh fixed corpus:
+Formal corpus:
 
 ```text
 1024 games
 seeds 20410001..20411024
-8-ply seeded-uniform moveVariants opening
-then hard / bao / phase2 / depth2
-max ply 100
+gamesVerified = 1024
+fullSearchRecomputation = true
+unique historical trajectories = 891
+selected unique rule states = 862
+Namua = 424
+Mtaji = 438
+D23 instability = 203
+D23 stable = 659
+ordinary-domain D2 margins = 630
 ```
 
-Primary:
+All preregistered count/coverage gates passed.
+
+Primary PCX-H1 computed quantities:
 
 ```text
-PCX-H1
-D23Instability ~ phase + log1pLegalMoveCount
-vs phase-only reduced model
-unpenalized binomial logistic likelihood-ratio test
-df = 1
-alpha = 0.05
+beta_log1pLegalMoveCount = +0.3818030009
+OR = 1.4649234681
+LR = 2.9350451603
+p = 0.0866762390
 ```
 
-Key secondary:
+But the preregistered primary full-model convergence gate failed:
 
 ```text
-PCX-H2
-ordinary-domain log1pD2BestSecondGap
-adds information beyond phase + log1pLegalMoveCount
-confirmatory only if PCX-H1 is confirmed
+optimizerStatus = 2
+optimizerMessage = Desired error not necessarily achieved due to precision loss.
+converged = false
 ```
 
-Validated formal tooling:
+Therefore:
 
 ```text
-tools/experiments/run-position-complexity-stage2-formal.js
-tools/experiments/verify-position-complexity-stage2-formal.js
-tools/experiments/analyze-position-complexity-stage2-formal.py
-tools/experiments/check-position-complexity-stage2-authorization.js
-test/position-complexity-stage2-formal-tooling.test.js
+PCX-H1 = INCONCLUSIVE
 ```
 
-Technical authorization validation:
+Key secondary PCX-H2 is:
 
 ```text
-fingerprint CI run = 31673666993 / success
-authorization-present CI run = 31673835352 / success
-authorization preflight = success
+NOT-CONFIRMATORILY-EVALUATED
 ```
 
-Formal corpus generation is authorized only locally under the exact frozen pipeline. GitHub Actions generation, Stage 1 reuse, seed extension, early stopping, outcome-dependent replacement and post-hoc model/metric changes remain prohibited.
+because H1 was not confirmed and the secondary reduced model also failed the frozen convergence gate. Its computed p-value is retained only for transparency and is not a confirmation result.
 
-Artifact root after execution:
+Canonical formal result:
 
 ```text
-artifacts/local/position-complexity/stage2-formal-v1/
+doc/position-complexity/STAGE_2_FORMAL_RESULT.md
 ```
 
-Current formal result:
+## Study 1 closure
 
 ```text
-NOT YET GENERATED
+scientific work = CLOSED
+overall formal decision = INCONCLUSIVE
+current formal corpus = consumed
+within-study rescue = prohibited
 ```
+
+Canonical closure documents:
+
+```text
+doc/position-complexity/STUDY_1_OVERVIEW.md
+doc/position-complexity/STUDY_1_FINAL_REPORT.md
+doc/position-complexity/REPRODUCIBILITY_INDEX.md
+doc/position-complexity/checkpoints/2026-08-14-stage2-formal-result-and-study1-closure.md
+```
+
+A future numerical-method replication must be a new prospective independent study with fresh evidence.
