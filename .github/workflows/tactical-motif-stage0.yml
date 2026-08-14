@@ -1,0 +1,46 @@
+name: Tactical motif Stage 0 technical validation
+
+on:
+  push:
+    branches:
+      - research/tactical-motif-discovery
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "tools/symmetry/transform-candidates.js"
+      - "tools/experiments/lib/position-typology-features.js"
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/lib/tactical-motif-features.js"
+      - "test/tactical-motif-stage0.test.js"
+      - ".github/workflows/tactical-motif-stage0.yml"
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "tools/symmetry/transform-candidates.js"
+      - "tools/experiments/lib/position-typology-features.js"
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/lib/tactical-motif-features.js"
+      - "test/tactical-motif-stage0.test.js"
+      - ".github/workflows/tactical-motif-stage0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  technical-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate prerequisite representation tooling
+        run: |
+          node test/symmetry-transform.test.js
+          node test/position-typology-features.test.js
+          node test/position-complexity-search-diagnostic.test.js
+      - name: Validate tactical motif Stage 0 instrumentation
+        run: node test/tactical-motif-stage0.test.js
