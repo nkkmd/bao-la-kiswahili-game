@@ -36,9 +36,14 @@ jobs:
         run: node --test test/tactical-motif-stage2-spec.test.js test/tactical-motif-stage2-tooling.test.js
       - name: Inspect Stage 2 status without scientific generation
         run: node tools/experiments/run-tactical-motif-stage2-formal.js --phase status
-      - name: Validate Stage 2 generation authorization binding
+      - name: Validate Stage 2 authorization binding when active
         run: >-
-          node -e "const C=require('./tools/experiments/lib/tactical-motif-stage2-corpus.js');
+          node -e "const fs=require('node:fs');
+          const p='./doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json';
+          if(!fs.existsSync(p)){console.log('Stage 2 authorization absent; generation remains blocked.');process.exit(0);}
+          const a=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(a.stage2GenerationAuthorized!==true){console.log('Stage 2 authorization is inactive; generation remains blocked.');process.exit(0);}
+          const C=require('./tools/experiments/lib/tactical-motif-stage2-corpus.js');
           const {specSha256}=C.loadSpec();
           const {candidateSha256}=C.loadCandidates();
           const x=C.loadAuthorization(specSha256,candidateSha256);
