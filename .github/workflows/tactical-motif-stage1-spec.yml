@@ -9,7 +9,10 @@ on:
       - "doc/tactical-motifs/STAGE_1_EXPLORATORY_PROTOCOL.md"
       - "tools/experiments/lib/tactical-motif-features.js"
       - "tools/experiments/lib/tactical-motif-discovery.js"
+      - "tools/experiments/lib/tactical-motif-stage1-corpus.js"
       - "tools/experiments/validate-tactical-motif-stage1-spec.js"
+      - "tools/experiments/run-tactical-motif-stage1-exploratory.js"
+      - "tools/experiments/verify-tactical-motif-stage1-exploratory.js"
       - "test/tactical-motif-stage1-tooling.test.js"
       - ".github/workflows/tactical-motif-stage1-spec.yml"
   pull_request:
@@ -18,7 +21,10 @@ on:
       - "doc/tactical-motifs/STAGE_1_EXPLORATORY_PROTOCOL.md"
       - "tools/experiments/lib/tactical-motif-features.js"
       - "tools/experiments/lib/tactical-motif-discovery.js"
+      - "tools/experiments/lib/tactical-motif-stage1-corpus.js"
       - "tools/experiments/validate-tactical-motif-stage1-spec.js"
+      - "tools/experiments/run-tactical-motif-stage1-exploratory.js"
+      - "tools/experiments/verify-tactical-motif-stage1-exploratory.js"
       - "test/tactical-motif-stage1-tooling.test.js"
       - ".github/workflows/tactical-motif-stage1-spec.yml"
   workflow_dispatch:
@@ -43,7 +49,9 @@ jobs:
           node test/position-typology-features.test.js
           node test/position-complexity-search-diagnostic.test.js
           node test/tactical-motif-stage0.test.js
-      - name: Validate Stage 1 representation and candidate grammar
+      - name: Validate Stage 1 runner verifier representation and candidate grammar
         run: node test/tactical-motif-stage1-tooling.test.js
+      - name: Show frozen source hashes without generating scientific data
+        run: node tools/experiments/run-tactical-motif-stage1-exploratory.js --phase status
       - name: Assert scientific generation remains unauthorized
         run: test ! -f doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
