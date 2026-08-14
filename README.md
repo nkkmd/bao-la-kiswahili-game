@@ -157,6 +157,7 @@ node tools/diagnostic-to-fixture.js \
 - [`doc/position-typology/STUDY_1_OVERVIEW.md`](doc/position-typology/STUDY_1_OVERVIEW.md): 局面類型と棋風Study 1「Baoにおける局面類型と棋風の発見・検証」の初見向け成果概要
 - [`doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md`](doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md): Namua→Mtaji Strategic Temporal Transition Study 1「capture-branch-expansionからMtaji morphologyへの時間的接続」の初見向け成果概要（formal decision `not-confirmed`）
 - [`doc/position-complexity/STUDY_1_OVERVIEW.md`](doc/position-complexity/STUDY_1_OVERVIEW.md): Position Complexity / Difficulty Study 1「Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離」の初見向け成果概要（formal decision `inconclusive`）
+- [`doc/tactical-motifs/README.md`](doc/tactical-motifs/README.md): Tactical Motifs / Tesuji Study 1「局面横断的 tactical motifs と transferable move principles」の研究入口。Stage 1探索完了、4 canonical candidateのStage 2 formal corpus generation authorized / not yet generated
 - [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
 - [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録
 - [`doc/FUTURE_RESEARCH_AGENDA.md`](doc/FUTURE_RESEARCH_AGENDA.md): 局面分類、手筋、形勢判断、終盤解析など、既存研究から切り出した将来研究課題
