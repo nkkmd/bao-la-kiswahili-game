@@ -4,7 +4,7 @@
   "status": "prospective-formal-candidate-definition-frozen-pending-validation",
   "sourceStage1CandidateFreeze": {
     "path": "doc/tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json",
-    "sha256": "59c74a8741fea699ea371ad877ca971d913d2f23dcae6d19d58906d9e4b0ba78",
+    "sha256": "f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73",
     "stageId": "TM-S1-EXPLORATORY-2026-08-14-v1",
     "discoveryResultSha256": "aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34"
   },
