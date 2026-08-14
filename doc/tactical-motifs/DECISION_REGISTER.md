@@ -36,8 +36,6 @@ Updated: 2026-08-14
 
 **Decision:** Seat exchange using the validated player-swap transform is allowed. Horizontal column reversal or direction reversal is not assumed as a valid canonicalization.
 
-**Reason:** Existing symmetry tooling identifies seat-swap without column/direction reversal as the validated engine symmetry.
-
 ## TM-D009 — Exact moveVariant identity
 
 **Decision:** Exact move identity uses `AI.moveKey`, including Namua `houseChoice` and `houseTwo`. Where `E.moveVariants` exposes distinct house outcomes they must not be collapsed accidentally.
@@ -186,3 +184,66 @@ Observed support-equivalent pairs:
 **Decision:** Completion of Stage 1 and presence of eight promoted definitions does not authorize Stage 2 generation.
 
 Before Stage 2 generation, separately freeze candidate/family handling, exact matching, fresh eligible population and non-overlapping seeds, comparator, formal outcome, duplicate handling, estimability/sample-size rules, multiplicity/alpha, decision/failure rules, no-rescue rules, and an explicit Stage 2 generation authorization.
+
+## TM-D039 — Four canonical Stage 2 formal candidates
+
+**Decision:** Treat the four exact Stage 1 `supportIdentityHash` pairs as the Stage 2 family structure, while leaving all eight Stage 1 definitions immutable. Freeze one canonical formal definition per pair using the lowest Stage 1 promoted rank: ranks `1,3,5,7`.
+
+Paired ranks `2,4,6,8` are diagnostic-only. They may not replace, merge with, rescue, or supersede the canonical definition after fresh-data inspection.
+
+**Reason:** Avoid testing duplicate Stage 1 support realizations as eight nominally independent primary hypotheses while preventing outcome-driven post-hoc consolidation.
+
+## TM-D040 — Stage 2 fresh population and candidate-specific root sampling
+
+**Decision:** Freeze Stage 2 at 3,072 fresh games using seeds `22000001–22003072`, six generation strata ×512, first 8 plies seeded-uniform exact `E.moveVariants`, max ply100, no extension, and no replacement.
+
+For each canonical candidate, root eligibility may use only the candidate phase, frozen canonical precondition, minimum legal-move eligibility, and availability of a matching exact legal move. Candidate consequence, D1/D2/D3 values, reply outcome, and game outcome are forbidden from eligibility.
+
+Each eligible unique historical trajectory contributes at most one candidate-specific SHA-ranked root. Duplicate selected rule states collapse within candidate without replacement.
+
+## TM-D041 — Deterministic formal candidate move and two co-primary endpoints
+
+**Decision:** At a selected root, freeze the formal candidate move as the lexicographically smallest exact matching `AI.moveKey`; search value and consequence cannot affect move choice.
+
+Two co-primary endpoints are frozen per candidate:
+
+1. candidate move satisfies the frozen structural consequence;
+2. candidate move belongs to the exact D3 top set among all legal root moves.
+
+Each endpoint uses a one-sided exact-binomial test against `p=0.50` and also requires observed rate `>=0.60`. D3 at-or-above-median must be `>=0.60`; D3 unique-worst must be `<=0.15`.
+
+## TM-D042 — Stage 2 transferability, multiplicity, and decision rules
+
+**Decision:** A candidate is formally estimable only with at least 96 unique historical trajectories, 96 unique rule states, 48 opening prefixes, at least 4 generation strata, maximum one-prefix share `<=0.10`, and maximum one-stratum share `<=0.50`.
+
+Exactly eight planned p-values (`4 candidates × 2 co-primary endpoints`) are adjusted using Holm-Bonferroni at FWER `0.05`. A non-estimable planned endpoint contributes `p=1.0` to the adjustment and cannot be dropped.
+
+Formal decisions are `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or `TECHNICAL-INCONCLUSIVE`. Zero confirmed candidates is a valid outcome.
+
+## TM-D043 — Pre-generation numerical hardening does not alter the scientific design
+
+**Decision:** Before any Stage 2 scientific generation, treat potential floating-point underflow in naive exact-binomial tail evaluation as a technical validity issue requiring hardening, not as a reason to change any scientific threshold or endpoint.
+
+Authorization was suspended before the scientific source change. The binomial calculation was replaced with log-combination, log-space recurrence, and log-sum-exp accumulation. Candidate definitions, population, seed block, endpoints, thresholds, multiplicity, and decision rules remained unchanged.
+
+Hardened validation run `31785214590`, job `94719501008` passed all 9 tests with 0 formal games and 0 formal measurements.
+
+## TM-D044 — Source-hash-bound Stage 2 formal authorization
+
+**Decision:** Authorize Stage 2 formal generation only after hardened tooling validation and bind authorization to the exact candidate-definition SHA, spec SHA, Stage 1 candidate-freeze SHA, Stage 1 discovery-result SHA, and exact hardened scientific source-file SHA mapping.
+
+Active authorization SHA-256:
+
+`43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51`
+
+Active authorization-binding run `31785382236`, job `94720016585` = `success`.
+
+**Boundary:** This authorizes only the fixed Stage 2 pipeline. Any authorization-bound scientific source change invalidates generation until a new pre-generation validation/authorization boundary is established.
+
+## TM-D045 — Stage 2 generate → verify → select → measure → evaluate firewall
+
+**Decision:** Stage 2 execution order is fixed as `generate → independent full replay/search verify → candidate-specific select → measure → formal evaluate`.
+
+Candidate-specific selection requires `verification.json` with `passed=true` and `fullSearchRecomputation=true`. Formal evaluation requires measurement-integrity success. GitHub Actions must never generate the 3,072-game scientific corpus.
+
+After Stage 2 scientific generation begins, seed extension, replacement, candidate substitution, paired-definition promotion, merge/split based on fresh outcomes, threshold/endpoint retuning, planned-test dropping, post-outcome depth selection, favorable subset selection, and failed-candidate renaming are forbidden.
