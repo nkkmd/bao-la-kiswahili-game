@@ -97,22 +97,32 @@
 - Selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
 - Replacement performed: false
 - Frozen readiness gates: all six passed
-- Measurement authorization: **YES, by preregistered gate**
+- Measurement authorization: yes, by preregistered gate
 
 ### TM-S1-E03 — All-move exact measurement
 
-- Status: **AUTHORIZED / NOT YET EXECUTED**
+- Status: **COMPLETE / READINESS PASSED**
 - Roots: 715 frozen selected unique rule states
+- Completed measurements: 715
 - Measurement unit: every exact legal `E.moveVariants` move at each selected root
-- Frozen instrumentation: move transition, all-immediate-reply response envelope, exact D1/D2/D3 root values, D1 reply search
-- Discovery readiness gate: at least 1800 measured exact move records
-- Discovery remains blocked until `measurement-manifest.json` reports `measurementReadinessPassed=true`
+- Measured exact move records: 3148
+- Frozen minimum for discovery: 1800
+- `measurementReadinessPassed=true`
+- Measurement hash: `c4b8dc55caa21a6143c09c42e1686a9610208080ce467fee92ec044cf9e5ae4c`
+- Selection hash binding: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
+- Measurement source commit: `40990b1489f956d52486553bb5e39d974e47dd75`
+- Source tree dirty: false
+- Frozen scientific source SHA-256 mapping: unchanged
+- Discovery authorization: **YES, by preregistered gate**
 
 ### TM-S1-E04 — Exploratory candidate discovery
 
-- Status: **BLOCKED PENDING TM-S1-E03 READINESS**
+- Status: **AUTHORIZED / NOT YET EXECUTED**
+- Input: frozen 3148 exact move records
 - Candidate grammar/promotion thresholds: already frozen before corpus generation
-- Any promoted candidate is for Stage 2 planning only
+- Ranking/candidate caps: deterministic and already frozen
+- Manual override: forbidden
+- Any promoted candidate: Stage 2 planning only, not confirmed tesuji
 
 ## Stage 2 — Fresh prospective formal confirmation
 
