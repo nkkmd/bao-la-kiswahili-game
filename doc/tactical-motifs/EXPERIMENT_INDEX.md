@@ -63,7 +63,7 @@
 
 ### TM-S1-E01 — Exploratory discovery corpus
 
-- Status: **GENERATED / FULLY VERIFIED / SELECTION PENDING**
+- Status: **GENERATED / FULLY VERIFIED**
 - Population: 768 games
 - Seeds: `21900001–21900768`
 - Generation strata: 6 × 128 games
@@ -79,20 +79,40 @@
 - Verification identity hash: `9584bba101e3cad37bcf2c05556f478ab6ca9cd3d16c923614bd0245a9a1f9ec`
 - Source tree dirty: false
 - Scientific source hash mapping: manifest/verifier exact match to frozen authorization binding
-- Execution order: `generate → verify → select → measure → discover`
-- Current next gate: deterministic `select`, then inspect frozen selection-readiness gates
 - Output root: `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 - Confirmatory reuse: forbidden
-- Candidate output, if any: Stage 2 planning only
 
 ### TM-S1-E02 — Deterministic state selection / readiness audit
 
-- Status: **AUTHORIZED BY VERIFIED-CORPUS FIREWALL / NOT YET EXECUTED**
-- Input requirement: `verification.json` with `passed=true` and `fullSearchRecomputation=true` — satisfied
-- Selection unit: representative unique historical trajectory
-- Phase assignment/root rank: prospectively frozen hash rules
-- Duplicate selected `ruleStateKey`: collapse without replacement
-- Measurement authorization: only if all frozen selection-readiness gates pass
+- Status: **COMPLETE / READINESS PASSED**
+- Input requirement: `verification.json` with `passed=true` and `fullSearchRecomputation=true` — satisfied before execution
+- Unique historical trajectories: 741
+- Unavailable assigned phase: 25, no replacement
+- Selected before rule-state collapse: 716
+- Duplicate selected rule states collapsed: 1
+- Selected unique rule states: 715
+- Selected phases: Namua 370 / Mtaji 345
+- Distinct selected opening prefixes: 659
+- Selected strata: `B-D1=114`, `B-D2=115`, `B-D3=122`, `LS-D2=122`, `V2-D2=121`, `LE-D2=121`
+- Selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
+- Replacement performed: false
+- Frozen readiness gates: all six passed
+- Measurement authorization: **YES, by preregistered gate**
+
+### TM-S1-E03 — All-move exact measurement
+
+- Status: **AUTHORIZED / NOT YET EXECUTED**
+- Roots: 715 frozen selected unique rule states
+- Measurement unit: every exact legal `E.moveVariants` move at each selected root
+- Frozen instrumentation: move transition, all-immediate-reply response envelope, exact D1/D2/D3 root values, D1 reply search
+- Discovery readiness gate: at least 1800 measured exact move records
+- Discovery remains blocked until `measurement-manifest.json` reports `measurementReadinessPassed=true`
+
+### TM-S1-E04 — Exploratory candidate discovery
+
+- Status: **BLOCKED PENDING TM-S1-E03 READINESS**
+- Candidate grammar/promotion thresholds: already frozen before corpus generation
+- Any promoted candidate is for Stage 2 planning only
 
 ## Stage 2 — Fresh prospective formal confirmation
 
