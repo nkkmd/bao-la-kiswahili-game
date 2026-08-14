@@ -4,23 +4,31 @@ Updated: 2026-08-14
 
 ## Current state
 
-**ACTIVE — Stage 0 technical / representation audit completed and technically validated; Stage 1 design/specification is next.**
+**ACTIVE — Stage 0 complete; Stage 1 v1 prospective exploratory specification, representation, and candidate grammar frozen; pre-generation technical validation pending. Scientific corpus runner/verifier are the next gate.**
 
-Baseline `main` HEAD was verified at study start as:
+Baseline `main` HEAD:
 
 `08c70ba6ac980884d51562c207410db3521b8ae4`
 
-This exactly matched the pre-chat recorded HEAD, so no intervening-main diff audit was required.
+Current branch:
 
-Branch: `research/tactical-motif-discovery`
+`research/tactical-motif-discovery`
 
-Stage 0 initialization commit: `de4931fb20c218c0d4b3d13689cf79af400e89bd`
+Stage 0 initialization commit:
 
-Technical validation workflow: `Tactical motif Stage 0 technical validation`, run `31768708597`, conclusion `success`.
+`de4931fb20c218c0d4b3d13689cf79af400e89bd`
+
+Stage 0 validation-record commit:
+
+`c3e14ea9bdf7c6a92ec57b0413af925e9c8e70d1`
+
+Stage 0 GitHub Actions run `31768708597` = `success`.
 
 ## Scientific authorization state
 
 - Stage 0 technical inspection: **COMPLETE / VALIDATED**
+- Stage 1 v1 spec: **FROZEN**
+- Stage 1 v1 pre-generation technical validation: **PENDING**
 - Stage 1 scientific corpus generation: **NOT YET AUTHORIZED**
 - Stage 1 exploratory inference: **NOT STARTED**
 - Stage 2 formal corpus generation: **NOT AUTHORIZED**
@@ -29,64 +37,147 @@ Technical validation workflow: `Tactical motif Stage 0 technical validation`, ru
 
 No scientific corpus has been generated for this study.
 
-## Restored immutable boundaries
+## Stage 1 v1 frozen design
+
+Stage ID:
+
+`TM-S1-EXPLORATORY-2026-08-14-v1`
+
+Spec:
+
+`doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_SPEC.json`
+
+Frozen spec SHA-256:
+
+`f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
+
+Scientific population:
+
+- 768 games
+- fresh seeds `21900001–21900768`
+- 6 prospectively fixed generation strata × 128 games
+- 8 seeded-uniform opening plies from exact `moveVariants`
+- max ply 100
+- no early stop
+- no outcome-dependent extension
+- no replacement for unavailable trajectories or duplicate selected rule states
+
+The six generation strata are `B-D1`, `B-D2`, `B-D3`, `LS-D2`, `V2-D2`, and `LE-D2`.
+They are used only to diversify trajectory generation; prior research comparisons are not reopened.
+
+## Stage 1 identity / sampling firewall
+
+- recurrence/support unit = unique `historicalTrajectoryHash`
+- identical historical trajectories collapse before state selection
+- each representative trajectory is hash-assigned to Namua or Mtaji
+- exactly one eligible root is selected from the assigned phase by frozen SHA-256 rank
+- root must have at least two `E.moveVariants`
+- unavailable assigned phase receives no replacement
+- selected duplicate `ruleStateKey` roots collapse globally without replacement
+- opening-prefix family is separately hashed and audited
+
+## Stage 1 measurement
+
+Every selected root is measured over **all legal moveVariants**, not only an AI-selected best move.
+
+The frozen representation/tooling contract records:
+
+- move-local actor/opponent structural transformation
+- capture / relay / sow event morphology
+- house/nyumba changes
+- immediate reply set and forced/free status
+- all-immediate-reply structural response envelope
+- exact D1/D2/D3 root candidate values using the frozen `bao` instrument
+- D1 reply-search diagnostic
+
+A search-consistent principal variation is still not available and is not fabricated.
+
+## Prospective candidate mining
+
+Candidate patterns are frozen as:
+
+`phase + 1–2 structural preconditions + one move abstraction + one consequence token`
+
+Two move abstraction levels are retained:
+
+- `coarse-no-index`
+- `indexed`
+
+Support is deduplicated to one vote per historical trajectory.
+Opening-prefix and generation-stratum concentration gates prevent one opening/policy family from
+masquerading as transferability.
+
+Passing Stage 1 promotion gates means **candidate for Stage 2 planning only**.
+
+## Pre-generation authorization firewall
+
+The frozen spec alone cannot start scientific generation.
+
+Before `generate` can run:
+
+1. the frozen Stage 1 spec/representation/candidate grammar must pass dedicated technical validation;
+2. a scientific corpus runner and independent verifier must be implemented and separately validated against this frozen contract;
+3. only then may a separate `doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json` be committed;
+4. that authorization must bind the exact spec SHA and validated scientific implementation hashes.
+
+No authorization file exists at this checkpoint.
+
+## Future scientific execution order
+
+Once runner/verifier implementation is validated and separately authorized, the frozen order is:
+
+1. generate
+2. independently verify full replay/search
+3. select
+4. inspect readiness gates
+5. measure
+6. inspect measurement readiness
+7. discover
+
+Selection is blocked until verification passes.
+Measurement is blocked if selection readiness fails.
+Discovery is blocked if measurement readiness fails.
+
+## Immutable prior-study boundaries
 
 ### Phase Transition Study 1
 
-`capture-branch-expansion` remains a bounded strategic-transition phenotype, not a universal Bao law and not a confirmed tesuji. E-010=`not-confirmed`, E-011=`inconclusive`, E-017=`not-confirmed`, E-018/H16 only fixed hard/bao/D2 phase2>legacy confirmed, E-019/H17 global=`not-confirmed`, E-020/H18 only fixed hard/bao/D3 legacy>phase2 confirmed.
+`capture-branch-expansion` remains a bounded strategic-transition phenotype, not a universal Bao
+law and not a confirmed tesuji. Prior formal decisions remain immutable.
 
 ### Position Typology / Playing Style Study 1
 
-MTAJI-M1/MTAJI-M2 remain bounded confirmed morphology. Namua has no confirmed discrete type. N-ACT/N-CON are exploratory continuous coordinates. Discrete playing-style clustering is unsupported. STYLE-C1..C4 exact geometry is formal `not-confirmed`.
+MTAJI-M1/MTAJI-M2 remain bounded confirmed morphology. Namua has no confirmed discrete type.
+N-ACT/N-CON remain exploratory continuous coordinates. STYLE-C1..C4 remains `not-confirmed`.
 
 ### Namua→Mtaji Transition Study 1
 
-Formal decision remains `NOT-CONFIRMED`. Current engine makes first Mtaji observation deterministic at ply 44 for games reaching Mtaji. time-to-first-Mtaji / survival / hazard / acceleration / delay are not strategic endpoints for reuse.
+Formal decision remains `NOT-CONFIRMED`. Current-engine first-Mtaji timing remains deterministic at
+ply 44 for games reaching Mtaji. Timing/survival/hazard endpoints are not reused.
 
 ### Position Complexity / Difficulty Study 1
 
-Study is closed. PCX-H1=`INCONCLUSIVE`; PCX-H2=`NOT-CONFIRMATORILY-EVALUATED`; overall=`INCONCLUSIVE`. The reported p-values cannot override preregistered convergence/gatekeeping failures. This study will not rescue or re-test those hypotheses.
+Study remains closed with PCX-H1=`INCONCLUSIVE`,
+PCX-H2=`NOT-CONFIRMATORILY-EVALUATED`, overall=`INCONCLUSIVE`.
+Exact-root search tooling is reused only as an instrument.
 
 ### Joseki Study 1
 
-Opening-sequence knowledge remains separate from position-transferrable tesuji. A move or sequence that is useful only under a specific opening prefix cannot be promoted as a tesuji on that evidence alone.
+Opening-sequence knowledge remains distinct from position-transferrable tesuji.
+Opening-prefix concentration is explicitly audited in Stage 1.
 
-## Stage 0 audit result
+## Current explicit technical bounds
 
-The current codebase supports:
+- validated canonical symmetry is seat exchange only
+- horizontal reflection is not assumed
+- `relayEndpoint` is not engine-native; landing measures remain explicitly derived
+- current exact-root diagnostic does not expose a search-consistent PV
+- AI/search value is one axis only, not a tesuji definition
 
-- `historicalStateHash`: history-sensitive identity including turn/reason bookkeeping.
-- `ruleStateKey`: rule-state identity that deliberately ignores turn/reason.
-- `seatCanonicalKey`: validated South/North seat-exchange canonicalization.
-- `AI.moveKey`: moveVariant identity including Namua `houseChoice` and `houseTwo`.
-- actor/opponent structural features: reserve, house/nyumba, occupancy, connections, reusable pits, mobility/legal moves, capture options, capture/relay morphology, seed-distribution statistics.
-- engine event stream: reserve/lift/sow/capture/relay/phase/turn/win/limit snapshots.
-- exact fixed-depth root candidate values at D1/D2/D3 under named evaluator profiles.
-- immediate opponent reply-set cardinality and forced/free reply classification.
+## Next gate
 
-The new `tactical-motif-features.js` and its Stage 0 test passed together with prerequisite symmetry, position-typology, and exact-root diagnostic tests in GitHub Actions.
+Run and inspect the dedicated Stage 1 pre-generation technical validation.
 
-Current explicit limitations:
+If this validation succeeds, the next gate is implementation and independent technical validation of the corpus runner/verifier against the frozen contract. Authorization remains forbidden until that later gate also passes.
 
-- validated canonical symmetry is seat exchange only; horizontal column/direction reflection must not be assumed.
-- engine does not expose a dedicated `relayEndpoint` field; a clearly named landing/event-derived measure can be constructed, but must not be silently called an engine-native endpoint.
-- current exact-root diagnostic does not expose a search-consistent principal variation. Stage 1 must not present an independently replayed greedy line as the original search PV.
-
-## Next readiness gate
-
-Before Stage 1 corpus generation, freeze a machine-readable exploratory spec covering:
-
-- fresh seed block and number of games
-- trajectory-generation conditions
-- maximum ply and stopping rule
-- outcome-independent state sampling
-- historical-trajectory deduplication
-- exact rule-state duplicate collapse
-- opening-family concentration audit
-- structural feature set and candidate representation
-- search depths/evaluator semantics
-- candidate-family promotion rule
-- failure/no-rescue rule
-- explicit statement that Stage 1 cannot authorize Stage 2 generation
-
-Until that spec is committed and technically validated, scientific generation remains blocked.
+Scientific corpus generation remains blocked.

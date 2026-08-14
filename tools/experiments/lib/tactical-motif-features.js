@@ -9,13 +9,19 @@ const {
 } = require("./position-typology-features.js");
 const Search = require("./position-complexity-search-diagnostic.js");
 
-const SCHEMA_VERSION = "1.0.0";
+const SCHEMA_VERSION = "1.1.0";
 
 const DELTA_FIELDS = Object.freeze([
   "reserve", "nyumbaSeeds", "boardSeeds", "frontSeeds", "backSeeds",
   "occupiedPits", "frontOccupied", "backOccupied", "reusablePits", "frontConnections",
   "legalMoveCount", "captureMoveCount", "maxCapturableSeeds", "maxCaptureEvents",
   "maxRelayEvents", "maxChainEvents", "maxPitSeeds", "pitSeedVariance", "seedConcentration",
+]);
+
+const RESPONSE_ENVELOPE_FIELDS = Object.freeze([
+  "boardSeeds", "frontSeeds", "backSeeds", "occupiedPits",
+  "frontOccupied", "backOccupied", "reusablePits", "frontConnections",
+  "legalMoveCount", "captureMoveCount", "maxCapturableSeeds", "nyumbaSeeds",
 ]);
 
 function clone(value) {
@@ -31,8 +37,8 @@ function normalizePosition(position, actor) {
   };
 }
 
-function numericDelta(before, after) {
-  return Object.fromEntries(DELTA_FIELDS.map((field) => [field, after[field] - before[field]]));
+function numericDelta(before, after, fields = DELTA_FIELDS) {
+  return Object.fromEntries(fields.map((field) => [field, after[field] - before[field]]));
 }
 
 function eventSummary(events, actor) {
@@ -72,6 +78,15 @@ function moveFamily(move) {
     houseChoice: move.houseChoice || null,
     houseTwo: Boolean(move.houseTwo),
   };
+}
+
+function abstractMoveFamily(move, mode = "coarse-no-index") {
+  if (!["coarse-no-index", "indexed"].includes(mode)) {
+    throw new Error(`Unsupported move abstraction mode: ${mode}`);
+  }
+  const family = moveFamily(move);
+  if (mode === "coarse-no-index") delete family.index;
+  return family;
 }
 
 function summarizeMoveTransition(state, move) {
@@ -124,6 +139,96 @@ function summarizeMoveTransition(state, move) {
   return result;
 }
 
+function aggregate(values) {
+  if (!values.length) return { min: null, max: null, mean: null };
+  return {
+    min: Math.min(...values),
+    max: Math.max(...values),
+    mean: values.reduce((sum, value) => sum + value, 0) / values.length,
+  };
+}
+
+function summarizeReplyEnvelope(state, move, fields = RESPONSE_ENVELOPE_FIELDS) {
+  if (!state || state.winner !== null) throw new Error("Reply envelope requires a nonterminal root");
+  const before = stableStringify(state);
+  const actor = state.player;
+  const opponent = 1 - actor;
+  const actorRoot = playerFeatures(state, actor);
+  const opponentRoot = playerFeatures(state, opponent);
+  const applied = E.applyMove(state, move);
+
+  if (applied.state.winner !== null) {
+    return {
+      schemaVersion: SCHEMA_VERSION,
+      rootActor: actor,
+      moveKey: AI.moveKey(move),
+      replyCount: 0,
+      forced: false,
+      candidateTerminal: true,
+      candidateWinnerRelativeToActor: applied.state.winner === actor ? "actor" : "opponent",
+      replies: [],
+      actorDeltaFromRoot: Object.fromEntries(fields.map((field) => [field, aggregate([])])),
+      opponentDeltaFromRoot: Object.fromEntries(fields.map((field) => [field, aggregate([])])),
+      replyCapturedSeeds: aggregate([]),
+      replyRelayEvents: aggregate([]),
+      terminalCounts: {
+        actorWin: applied.state.winner === actor ? 1 : 0,
+        opponentWin: applied.state.winner === opponent ? 1 : 0,
+        nonterminal: 0,
+      },
+    };
+  }
+
+  const replies = E.moveVariants(applied.state).map((reply) => {
+    const result = E.applyMove(applied.state, reply);
+    const actorAfterReply = playerFeatures(result.state, actor);
+    const opponentAfterReply = playerFeatures(result.state, opponent);
+    const events = eventSummary(result.events, actor);
+    return {
+      replyMoveKey: AI.moveKey(reply),
+      replyMove: clone(reply),
+      actorDeltaFromRoot: numericDelta(actorRoot, actorAfterReply, fields),
+      opponentDeltaFromRoot: numericDelta(opponentRoot, opponentAfterReply, fields),
+      events,
+      terminal: result.state.winner !== null,
+      winnerRelativeToActor: result.state.winner === null
+        ? null
+        : result.state.winner === actor ? "actor" : "opponent",
+      afterRuleStateKey: identityKeys(result.state).ruleStateKey,
+    };
+  }).sort((a, b) => a.replyMoveKey.localeCompare(b.replyMoveKey));
+
+  const actorAggregate = Object.fromEntries(fields.map((field) => [
+    field, aggregate(replies.map((reply) => reply.actorDeltaFromRoot[field])),
+  ]));
+  const opponentAggregate = Object.fromEntries(fields.map((field) => [
+    field, aggregate(replies.map((reply) => reply.opponentDeltaFromRoot[field])),
+  ]));
+
+  const envelope = {
+    schemaVersion: SCHEMA_VERSION,
+    rootActor: actor,
+    moveKey: AI.moveKey(move),
+    replyCount: replies.length,
+    forced: replies.length === 1,
+    candidateTerminal: false,
+    candidateWinnerRelativeToActor: null,
+    replies,
+    actorDeltaFromRoot: actorAggregate,
+    opponentDeltaFromRoot: opponentAggregate,
+    replyCapturedSeeds: aggregate(replies.map((reply) => reply.events.capturedSeeds)),
+    replyRelayEvents: aggregate(replies.map((reply) => reply.events.relayEvents)),
+    terminalCounts: {
+      actorWin: replies.filter(({ winnerRelativeToActor }) => winnerRelativeToActor === "actor").length,
+      opponentWin: replies.filter(({ winnerRelativeToActor }) => winnerRelativeToActor === "opponent").length,
+      nonterminal: replies.filter(({ terminal }) => !terminal).length,
+    },
+  };
+
+  if (stableStringify(state) !== before) throw new Error("Reply-envelope extraction mutated source state");
+  return envelope;
+}
+
 function structuralSignature(summary) {
   return {
     schemaVersion: summary.schemaVersion,
@@ -169,7 +274,9 @@ function analyzeReplyValues(state, move, depth = 1, options = {}) {
 
 module.exports = {
   DELTA_FIELDS,
+  RESPONSE_ENVELOPE_FIELDS,
   SCHEMA_VERSION,
+  abstractMoveFamily,
   analyzeExactRootValues,
   analyzeReplyValues,
   eventSummary,
@@ -177,4 +284,5 @@ module.exports = {
   normalizePosition,
   structuralSignature,
   summarizeMoveTransition,
+  summarizeReplyEnvelope,
 };

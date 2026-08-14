@@ -1,0 +1,49 @@
+name: Tactical motif Stage 1 pre-generation validation
+
+on:
+  push:
+    branches:
+      - research/tactical-motif-discovery
+    paths:
+      - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/tactical-motifs/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "tools/experiments/lib/tactical-motif-features.js"
+      - "tools/experiments/lib/tactical-motif-discovery.js"
+      - "tools/experiments/validate-tactical-motif-stage1-spec.js"
+      - "test/tactical-motif-stage1-tooling.test.js"
+      - ".github/workflows/tactical-motif-stage1-spec.yml"
+  pull_request:
+    paths:
+      - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/tactical-motifs/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "tools/experiments/lib/tactical-motif-features.js"
+      - "tools/experiments/lib/tactical-motif-discovery.js"
+      - "tools/experiments/validate-tactical-motif-stage1-spec.js"
+      - "test/tactical-motif-stage1-tooling.test.js"
+      - ".github/workflows/tactical-motif-stage1-spec.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pre-generation-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate frozen Stage 1 exploratory specification
+        run: node tools/experiments/validate-tactical-motif-stage1-spec.js
+      - name: Validate prerequisite technical instrumentation
+        run: |
+          node test/symmetry-transform.test.js
+          node test/position-typology-features.test.js
+          node test/position-complexity-search-diagnostic.test.js
+          node test/tactical-motif-stage0.test.js
+      - name: Validate Stage 1 representation and candidate grammar
+        run: node test/tactical-motif-stage1-tooling.test.js
+      - name: Assert scientific generation remains unauthorized
+        run: test ! -f doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json

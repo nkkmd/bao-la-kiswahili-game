@@ -89,3 +89,81 @@ Updated: 2026-08-14
 ## TM-D021 — Negative closure is acceptable
 
 **Decision:** No reproducible candidate, not-confirmed, insufficient estimability, or technical inconclusive are valid outcomes; production of a tesuji catalogue is not a success requirement.
+
+## TM-D022 — Stage 1 v1 corpus size and seed block
+
+**Decision:** Freeze Stage 1 v1 at 768 games using fresh seeds `21900001–21900768`, max ply 100, no early stop, no outcome-dependent extension, and no replacement sampling.
+
+**Reason:** Fix the scientific population before any motif outcome is observed.
+
+## TM-D023 — Six-stratum trajectory diversification
+
+**Decision:** Assign games by `gameIndex modulo 6` to `B-D1`, `B-D2`, `B-D3`, `LS-D2`, `V2-D2`, and `LE-D2`, exactly 128 games each.
+
+**Boundary:** These are trajectory-generation strata only. Reusing the condition names does not reopen the formal comparisons of earlier studies.
+
+## TM-D024 — Randomized opening and explicit opening-family identity
+
+**Decision:** The first 8 plies of every game use seeded uniform selection over exact `E.moveVariants`. The ordered exact 8-ply prefix is hashed as the opening-family identity.
+
+**Promotion boundary:** A candidate requires at least 4 distinct opening prefixes and may have no single opening prefix above 50% of support.
+
+## TM-D025 — One outcome-independently selected root per unique trajectory
+
+**Decision:** After identical historical trajectories are collapsed, each representative trajectory is hash-assigned to Namua or Mtaji and contributes at most one root chosen by frozen SHA-256 rank within that phase. Unavailable assigned phases receive no replacement.
+
+## TM-D026 — All legal moveVariants and all-reply response envelope
+
+**Decision:** Measure every exact legal moveVariant at each selected root. For each candidate move, enumerate all immediate opponent moveVariants and summarize the response envelope relative to the original root actor.
+
+**Reason:** Separate move value, forcing, and downstream robustness without fabricating a principal variation.
+
+## TM-D027 — Prospective Stage 1 candidate grammar
+
+**Decision:** Stage 1 candidate patterns have the frozen form:
+
+`phase + 1–2 structural precondition tokens + one move-abstraction token + one consequence token`
+
+The phase token is mandatory and is not counted among the 1–2 additional structural preconditions.
+
+Two move abstraction levels are retained: `coarse-no-index` and `indexed`.
+
+## TM-D028 — Outcome-independent within-trajectory candidate representative
+
+**Decision:** If multiple exact moves from the same historical trajectory match the same candidate pattern, that trajectory contributes one vote using the lexicographically smallest exact `moveKey`.
+
+**Reason:** Do not select the within-trajectory representative by D3 value.
+
+## TM-D029 — Frozen candidate promotion gates and deterministic cap
+
+**Decision:** A pattern can be promoted only for Stage 2 planning if it satisfies all prospectively frozen support, opening-diversity, generation-stratum diversity, and D3 value gates in the Stage 1 spec.
+
+The promoted set is selected deterministically and capped at 8 total, 4 per phase, and 2 per move-abstraction key. Manual override is forbidden.
+
+## TM-D030 — Two-step Stage 1 generation authorization
+
+**Decision:** The Stage 1 spec alone cannot authorize scientific generation.
+
+Scientific generation requires a separate `STAGE_1_EXPLORATORY_AUTHORIZATION.json` committed only after (a) this frozen spec/representation CI passes and (b) a later corpus runner + independent verifier implementation passes its own technical validation. The authorization must bind:
+
+- frozen spec SHA-256 `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`;
+- exact hashes of every frozen scientific source file;
+- the validated implementation commit.
+
+No authorization file may be created at the specification-freeze checkpoint. The future runner must reject scientific phases if these bindings do not match.
+
+## TM-D031 — Generate → verify → select → measure → discover firewall
+
+**Decision:** State selection is blocked until independent full replay/search verification passes. Measurement is blocked if selection readiness fails. Discovery is blocked if the frozen minimum move-record gate fails.
+
+**Reason:** Prevent scientific interpretation of a technically incomplete or non-reproducible corpus.
+
+## TM-D032 — Stage 1 no-rescue rule
+
+**Decision:** After scientific generation begins, seed extension, replacement sampling, threshold retuning, favorable subset selection, phase reassignment, depth selection, opening-threshold relaxation, failed-candidate renaming, and manual promotion are forbidden.
+
+A scientifically motivated redesign requires a new prospective Stage 1 version and a fresh non-overlapping corpus.
+
+## TM-D033 — Large scientific artifacts remain local
+
+**Decision:** The 768-game corpus and per-state measurements live only under `artifacts/local/tactical-motifs/stage1-exploratory-v1/`. GitHub Actions may validate tooling but must not generate the scientific corpus.

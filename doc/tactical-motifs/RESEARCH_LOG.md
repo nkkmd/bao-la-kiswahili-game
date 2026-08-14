@@ -17,4 +17,30 @@
 - Added technical-only GitHub Actions workflow `.github/workflows/tactical-motif-stage0.yml`; it does not generate scientific data.
 - GitHub Actions run `31768708597` completed with conclusion `success`. It validated symmetry transforms, position-typology features/identities, exact root search diagnostics, and the new tactical-motif Stage 0 instrumentation.
 - No scientific corpus generated.
-- Stage 1 generation remains blocked pending a committed machine-readable exploratory spec and technical validation.
+- Stage 1 generation remained blocked pending a committed machine-readable exploratory spec and technical validation.
+
+## 2026-08-14 — Stage 1 v1 prospective design freeze
+
+- Rechecked `main`; it remained at baseline `08c70ba6ac980884d51562c207410db3521b8ae4`.
+- Rechecked `research/tactical-motif-discovery`; no external branch change had occurred.
+- Froze Stage 1 ID `TM-S1-EXPLORATORY-2026-08-14-v1`.
+- Froze scientific population at 768 games, fresh seeds `21900001–21900768`, max ply 100, no early stop, no outcome-dependent extension, and no replacement sampling.
+- Froze six trajectory-generation strata, 128 games each: `B-D1`, `B-D2`, `B-D3`, `LS-D2`, `V2-D2`, `LE-D2`.
+- Explicitly restricted reuse of those condition names to trajectory diversification; prior formal comparisons remain immutable.
+- Froze the first 8 plies of every game as seeded uniform selection over exact `E.moveVariants`.
+- Froze opening-family identity as the SHA-256 hash of the ordered exact opening move-key prefix with prefix length included.
+- Froze recurrence/support at unique historical trajectory level.
+- Froze one outcome-independently selected root per representative trajectory using hash phase assignment and within-phase SHA-256 rank.
+- Froze no-replacement handling for unavailable assigned phases and exact selected rule-state duplicates.
+- Froze measurement over all legal moveVariants rather than only generated/AI-best moves.
+- Extended technical instrumentation to include all-immediate-reply structural response envelopes relative to the original root actor.
+- Froze exact D1/D2/D3 root value measurement and D1 reply diagnostics; search-consistent PV remains unnecessary/unavailable.
+- Froze candidate grammar as phase + 1–2 structural precondition tokens + one move-abstraction token + one consequence token.
+- Froze both coarse-no-index and indexed move abstractions.
+- Froze within-trajectory candidate support representative as lexicographically smallest exact moveKey, not highest D3 value.
+- Froze detailed-candidate, transferability, opening-family, generation-stratum, D3 value, ranking, and candidate-cap rules before corpus generation.
+- Froze readiness gates before measurement/discovery.
+- Implemented response-envelope representation, deterministic candidate-mining grammar, machine-readable spec validator, technical tests, and a dedicated pre-generation GitHub Actions workflow.
+- Deliberately left the scientific corpus runner and independent replay verifier for the next gate so the frozen scientific contract is validated before execution code can authorize data creation.
+- Preserved the two-step authorization firewall: the spec alone cannot authorize generation; authorization remains forbidden until runner/verifier implementation is separately validated and hash-bound.
+- Scientific corpus remains **not generated** and **not authorized**.
