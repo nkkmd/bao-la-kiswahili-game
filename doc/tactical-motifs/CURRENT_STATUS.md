@@ -4,7 +4,7 @@ Updated: 2026-08-14
 
 ## Current state
 
-**ACTIVE — Stage 0 complete; Stage 1 v1 scientific contract/tooling frozen and validated; the fixed 768-game Stage 1 exploratory corpus has been generated and independently fully replay/search verified; selection is the next unopened analysis gate.**
+**ACTIVE — Stage 0 complete; Stage 1 v1 contract/tooling frozen and validated; the 768-game corpus is generated and fully replay/search verified; deterministic state selection is complete and every frozen selection-readiness gate passed; measurement is now authorized.**
 
 Baseline `main` HEAD remains:
 
@@ -22,6 +22,7 @@ Key commits:
 - Stage 1 execution-tooling implementation: `1f97881338b14b9a885bd124a1a68d436c1e0a43`
 - Stage 1 generation authorization: `1079e2e02d4031f980f0ddc2213c50f6c8a6e678`
 - Stage 1 stable-runtime execution runbook/recovery checkpoint: `6694714194eee2f536e90b4411566d9126e162ae`
+- Stage 1 full-verification checkpoint: `831d441d426a9e0cb308a41d54c77a6074c4c490`
 
 Validated Actions runs:
 
@@ -36,14 +37,15 @@ Validated Actions runs:
 - Stage 1 execution tooling: **IMPLEMENTED / VALIDATED**
 - Stage 1 scientific corpus generation: **COMPLETE**
 - Stage 1 independent full replay/search verification: **PASSED**
-- Stage 1 state selection: **AUTHORIZED BY PRE-FROZEN FIREWALL / NOT YET EXECUTED**
-- Stage 1 measurement: **BLOCKED PENDING SELECTION READINESS**
-- Stage 1 exploratory discovery: **NOT STARTED**
+- Stage 1 deterministic state selection: **COMPLETE**
+- Stage 1 selection readiness: **PASSED**
+- Stage 1 measurement: **AUTHORIZED / NOT YET EXECUTED**
+- Stage 1 exploratory discovery: **BLOCKED PENDING MEASUREMENT READINESS**
 - Stage 2 formal corpus generation: **NOT AUTHORIZED**
 - `confirmed tesuji` claim: **NOT AUTHORIZED**
 - human/expert/traditional tesuji claim: **OUT OF SCOPE for Study 1**
 
-No selected scientific state, motif measurement, discovery candidate result, or Stage 2 materialization has yet been generated.
+No motif measurement, discovery candidate result, or Stage 2 materialization has yet been generated.
 
 ## Stage 1 corpus generation / verification milestone
 
@@ -77,7 +79,51 @@ Independent verification facts:
 - source tree dirty: false
 - manifest and verifier scientific source SHA-256 mappings match exactly
 
-This crosses only the preregistered technical gate from `verify` to `select`. It is not a motif result and does not authorize confirmatory inference.
+This crossed only the preregistered technical gate from `verify` to `select`; it was not a motif result.
+
+## Stage 1 deterministic selection / readiness milestone
+
+Selection was executed only after the verified-corpus firewall passed.
+
+Selection facts:
+
+- generated games represented: 768
+- unique historical trajectories entering trajectory-level selection: 741
+- unavailable assigned phase: 25
+  - Mtaji-assigned: 23
+  - Namua-assigned: 2
+- selected before rule-state collapse: 716
+- duplicate selected rule states collapsed: 1
+- selected unique rule states: 715
+- replacement performed: `false`
+- selected Namua states: 370
+- selected Mtaji states: 345
+- distinct selected opening prefixes: 659
+- selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
+
+Selected counts by generation stratum:
+
+- `B-D1`: 114
+- `B-D2`: 115
+- `B-D3`: 122
+- `LS-D2`: 122
+- `V2-D2`: 121
+- `LE-D2`: 121
+
+Frozen readiness gates and observed values:
+
+- unique historical trajectories: 741 ≥ 550 — **PASS**
+- selected unique rule states: 715 ≥ 450 — **PASS**
+- Namua selected states: 370 ≥ 180 — **PASS**
+- Mtaji selected states: 345 ≥ 180 — **PASS**
+- distinct opening prefixes: 659 ≥ 32 — **PASS**
+- minimum selected in any generation stratum: 114 ≥ 40 — **PASS**
+
+`selection-audit.json` therefore has `passed=true`.
+
+The 25 unavailable assigned-phase cases and one duplicate-rule-state collapse were handled exactly by the frozen no-replacement rules. No replacement sampling, phase reassignment, threshold relaxation, or favorable subset selection occurred.
+
+This crosses the preregistered gate from `select` to `measure`. It is still not a motif finding.
 
 ## Stage 1 v1 frozen design
 
@@ -96,8 +142,6 @@ Frozen spec SHA-256:
 Authorization:
 
 `doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
-
-The authorization binds the exact validated scientific implementation commit and exact SHA-256 mapping of all frozen scientific source files. A scientific source change invalidates the binding and requires a new validation/authorization boundary before generation.
 
 Scientific population:
 
@@ -119,7 +163,7 @@ Generation strata:
 - `V2-D2`
 - `LE-D2`
 
-These are trajectory-diversification metadata only. They do not reopen prior formal search/evaluator comparisons.
+These remain trajectory-diversification metadata only and do not reopen prior formal search/evaluator comparisons.
 
 ## Stage 1 pseudoreplication / leakage firewall
 
@@ -148,7 +192,7 @@ Frozen measurements include:
 
 A search-consistent principal variation is unavailable and is not fabricated.
 
-Candidate patterns are prospectively frozen as:
+Candidate patterns remain prospectively frozen as:
 
 `phase + 1–2 structural preconditions + one move abstraction + one consequence token`
 
@@ -162,19 +206,18 @@ Authorized scientific execution order is fixed:
 
 1. `generate` — **COMPLETE**
 2. independent full replay/search `verify` — **PASSED**
-3. `select` — **NEXT**
-4. inspect selection readiness
-5. `measure`
+3. `select` — **COMPLETE**
+4. inspect selection readiness — **PASSED**
+5. `measure` — **NEXT / AUTHORIZED**
 6. inspect measurement readiness
 7. `discover`
 
 Technical enforcement:
 
 - all scientific phases require the hash-bound authorization file
-- `select` additionally requires `verification.json` with `passed=true` and `fullSearchRecomputation=true`
-- `measure` requires frozen selection-readiness gates to pass
-- `discover` requires frozen measurement-readiness to pass
-- GitHub Actions never generate the 768-game scientific corpus
+- `measure` requires selection readiness to pass — now satisfied
+- `discover` requires at least 1800 measured exact move records
+- GitHub Actions never generate the scientific corpus or measurements
 - large artifacts remain under `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 
 ## Immutable prior-study boundaries
@@ -201,10 +244,10 @@ Opening-sequence knowledge remains distinct from position-transferrable tesuji. 
 
 ## No-rescue boundary
 
-Scientific generation has now occurred. Therefore the frozen protocol forbids seed extension, replacement sampling, threshold retuning, phase reassignment, opening-threshold relaxation, favorable subset selection, post-outcome depth selection, failed-candidate renaming, and manual candidate promotion.
+Scientific generation has occurred. Therefore the frozen protocol forbids seed extension, replacement sampling, threshold retuning, phase reassignment, opening-threshold relaxation, favorable subset selection, post-outcome depth selection, failed-candidate renaming, and manual candidate promotion.
 
 A redesign requires a new prospective version and fresh non-overlapping corpus.
 
 ## Next action
 
-Execute the deterministic Stage 1 `select` phase against the verified 768-game corpus, then inspect `selection-audit.json` against the frozen readiness gates **before** any measurement is allowed.
+Execute the Stage 1 `measure` phase against the frozen 715 selected unique rule states. After it completes, inspect `measurement-manifest.json` and require `measurementReadinessPassed=true` with at least 1800 measured exact move records **before** `discover` is allowed.
