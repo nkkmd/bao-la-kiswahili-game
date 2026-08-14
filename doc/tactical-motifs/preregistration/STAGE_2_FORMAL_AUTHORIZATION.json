@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "stageId": "TM-S2-FORMAL-2026-08-14-v1",
-  "status": "revalidation-required-pre-generation",
-  "stage2GenerationAuthorized": false,
-  "scientificInferenceAuthorized": false,
+  "status": "formal-generation-authorized-after-numeric-hardening",
+  "stage2GenerationAuthorized": true,
+  "scientificInferenceAuthorized": true,
   "stage1FormalObservationReuseAllowed": false,
   "specSha256": "83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8",
   "candidateDefinitionSha256": "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8",
@@ -46,17 +46,28 @@
       "canonicalCandidateKey": "8a2c28eaefd59c83d6a7983b3f7c6b36c80f677b08ab6d2af65203e6af0c8755"
     }
   ],
-  "revalidationReason": "Pre-generation numeric audit identified potential floating-point underflow in the exact-binomial implementation for large selected-root counts. No Stage 2 scientific games or formal measurements have been generated. Authorization is intentionally inactive until the numerically stable implementation passes technical validation and receives a new exact source-hash binding.",
-  "previousToolingValidation": {
-    "implementationCommit": "8671ce5493653408cd93bed7ef5f67e6c88e7695",
+  "numericHardening": {
+    "performedBeforeAnyStage2ScientificGeneration": true,
+    "reason": "Pre-generation audit identified potential floating-point underflow in naive exact-binomial upper-tail evaluation at large n.",
+    "change": "Replaced naive probability-domain tail accumulation with log-combination plus log-space recurrence and log-sum-exp accumulation.",
+    "scientificDesignChanged": false,
+    "candidateDefinitionsChanged": false,
+    "populationChanged": false,
+    "formalEndpointsChanged": false,
+    "decisionThresholdsChanged": false,
+    "multiplicityChanged": false
+  },
+  "toolingValidation": {
+    "implementationCommit": "ecce8620ea812b2ce5247f924cea7897f0478554",
     "workflow": "Tactical Motif Stage 2 Formal Tooling",
-    "runId": 31784819713,
-    "jobId": 94718283122,
+    "runId": 31785214590,
+    "jobId": 94719501008,
     "conclusion": "success",
+    "testsPassed": 9,
     "scientificGamesGeneratedByValidation": 0,
     "formalMeasurementsGeneratedByValidation": 0
   },
-  "previousAuthorizedSourceFileSha256": {
+  "authorizedSourceFileSha256": {
     "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
     "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
     "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
@@ -67,7 +78,7 @@
     "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
     "tools/experiments/lib/tactical-motif-features.js": "26fc334801c3cf879e41429ae011eb313cbb7a7f60184a7adfd5cb623eb31a42",
     "tools/experiments/lib/tactical-motif-discovery.js": "7a1e570c139b01c21ee76b224db7ed4bb6dd52380c3d2172206ab145f3ed3e5f",
-    "tools/experiments/lib/tactical-motif-stage2-formal.js": "08f9f7445ac5b54a511d1133ed09f815713a1470742ae7edb7e25c35ddf3b444",
+    "tools/experiments/lib/tactical-motif-stage2-formal.js": "7b689b1933357ddc7758abd8e7f4dca69bb9d3614f811d149cbb48ef61a9b67d",
     "tools/experiments/lib/tactical-motif-stage2-corpus.js": "cb1693cb80fbe84e918c9d62cdcaed2b48978533367f420cec13434a7a2a6801",
     "tools/experiments/validate-tactical-motif-stage2-formal-spec.js": "0123da633f9a53352399aca1b23149a1ad3ba5cc07fc998a249a6636d5266f3e",
     "tools/experiments/run-tactical-motif-stage2-formal.js": "e5407c986daf7aa62bba914a034c297fad2a23d7c23f7e9d32dd51b5aa84b1d5",
@@ -104,7 +115,7 @@
     "favorableSubsetSelectionAllowed": false
   },
   "interpretationBoundary": {
-    "machineReproducibleFormalInferenceAuthorized": false,
+    "machineReproducibleFormalInferenceAuthorized": true,
     "humanExpertTraditionalClaimAuthorized": false,
     "pedagogicalClaimAuthorized": false,
     "generalizationBeyondCurrentRulesAndFrozenSearchInstrumentAuthorized": false
