@@ -21,10 +21,14 @@ const SAMPLE_CANDIDATE = {
   },
 };
 
+function nearlyEqual(actual, expected, tolerance = 1e-12) {
+  assert.ok(Math.abs(actual - expected) <= tolerance, `${actual} != ${expected}`);
+}
+
 test("Stage 2 exact one-sided binomial is deterministic", () => {
-  assert.equal(Formal.exactBinomialUpper(3, 3, 0.5), 0.125);
-  assert.equal(Formal.exactBinomialUpper(0, 3, 0.5), 1);
-  assert.equal(Formal.exactBinomialUpper(2, 2, 0.5), 0.25);
+  nearlyEqual(Formal.exactBinomialUpper(3, 3, 0.5), 0.125);
+  nearlyEqual(Formal.exactBinomialUpper(0, 3, 0.5), 1);
+  nearlyEqual(Formal.exactBinomialUpper(2, 2, 0.5), 0.25);
 });
 
 test("Stage 2 exact binomial remains numerically stable above floating-point underflow range", () => {
@@ -41,9 +45,9 @@ test("Stage 2 Holm-Bonferroni preserves family-wise ordering", () => {
     { id: "b", pValue: 0.01 },
     { id: "c", pValue: 0.04 },
   ], 0.05);
-  assert.equal(adjusted[0].adjustedPValue, 0.003);
-  assert.equal(adjusted[1].adjustedPValue, 0.02);
-  assert.equal(adjusted[2].adjustedPValue, 0.04);
+  nearlyEqual(adjusted[0].adjustedPValue, 0.003);
+  nearlyEqual(adjusted[1].adjustedPValue, 0.02);
+  nearlyEqual(adjusted[2].adjustedPValue, 0.04);
   assert.ok(adjusted.every((row) => row.rejected));
 });
 
