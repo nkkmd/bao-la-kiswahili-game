@@ -4,7 +4,7 @@ Updated: 2026-08-14
 
 ## Current state
 
-**ACTIVE — Stage 0 complete; Stage 1 v1 contract/tooling frozen and validated; the 768-game corpus is generated and fully replay/search verified; deterministic state selection is complete and every frozen selection-readiness gate passed; measurement is now authorized.**
+**ACTIVE — Stage 0 complete; Stage 1 v1 contract/tooling frozen and validated; the 768-game corpus is generated and fully replay/search verified; deterministic selection and measurement are complete; every frozen readiness gate has passed; exploratory candidate discovery is now authorized.**
 
 Baseline `main` HEAD remains:
 
@@ -18,11 +18,12 @@ Key commits:
 
 - Stage 0 initialization: `de4931fb20c218c0d4b3d13689cf79af400e89bd`
 - Stage 0 validation record: `c3e14ea9bdf7c6a92ec57b0413af925e9c8e70d1`
-- Stage 1 scientific-contract freeze: `62fbf68cf12a3539b46dcdcd4487a0a9ea7debba`
+- Stage 1 scientific-contract freeze: `62fbf68cf12a3539b46dcd4487a0a9ea7debba`
 - Stage 1 execution-tooling implementation: `1f97881338b14b9a885bd124a1a68d436c1e0a43`
 - Stage 1 generation authorization: `1079e2e02d4031f980f0ddc2213c50f6c8a6e678`
 - Stage 1 stable-runtime execution runbook/recovery checkpoint: `6694714194eee2f536e90b4411566d9126e162ae`
 - Stage 1 full-verification checkpoint: `831d441d426a9e0cb308a41d54c77a6074c4c490`
+- Stage 1 selection-readiness checkpoint: `40990b1489f956d52486553bb5e39d974e47dd75`
 
 Validated Actions runs:
 
@@ -39,13 +40,14 @@ Validated Actions runs:
 - Stage 1 independent full replay/search verification: **PASSED**
 - Stage 1 deterministic state selection: **COMPLETE**
 - Stage 1 selection readiness: **PASSED**
-- Stage 1 measurement: **AUTHORIZED / NOT YET EXECUTED**
-- Stage 1 exploratory discovery: **BLOCKED PENDING MEASUREMENT READINESS**
+- Stage 1 all-move exact measurement: **COMPLETE**
+- Stage 1 measurement readiness: **PASSED**
+- Stage 1 exploratory candidate discovery: **AUTHORIZED / NOT YET EXECUTED**
 - Stage 2 formal corpus generation: **NOT AUTHORIZED**
 - `confirmed tesuji` claim: **NOT AUTHORIZED**
 - human/expert/traditional tesuji claim: **OUT OF SCOPE for Study 1**
 
-No motif measurement, discovery candidate result, or Stage 2 materialization has yet been generated.
+No discovery candidate result or Stage 2 materialization has yet been generated.
 
 ## Stage 1 corpus generation / verification milestone
 
@@ -123,7 +125,31 @@ Frozen readiness gates and observed values:
 
 The 25 unavailable assigned-phase cases and one duplicate-rule-state collapse were handled exactly by the frozen no-replacement rules. No replacement sampling, phase reassignment, threshold relaxation, or favorable subset selection occurred.
 
-This crosses the preregistered gate from `select` to `measure`. It is still not a motif finding.
+This crossed the preregistered gate from `select` to `measure`. It was still not a motif finding.
+
+## Stage 1 measurement / readiness milestone
+
+Measurement was executed against exactly the 715 frozen selected unique rule states.
+
+Measurement manifest facts:
+
+- stage ID: `TM-S1-EXPLORATORY-2026-08-14-v1`
+- spec SHA-256: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
+- selection hash: `06d0004c71a7f72fee1d80f6c9048c95b053625d6a210ff32c9af839cd5db01a`
+- completed measurements: 715
+- measured exact move records: 3148
+- frozen minimum measured move records: 1800
+- measurement readiness passed: `true`
+- measurement hash: `c4b8dc55caa21a6143c09c42e1686a9610208080ce467fee92ec044cf9e5ae4c`
+- measurement source commit: `40990b1489f956d52486553bb5e39d974e47dd75`
+- source tree dirty: `false`
+- scientific source SHA-256 mapping: exact match to the frozen authorization-bound mapping
+
+The frozen discovery-readiness gate is therefore satisfied:
+
+- measured exact move records: 3148 ≥ 1800 — **PASS**
+
+This crosses the preregistered gate from `measure` to `discover`. It does not itself identify, rank, promote, or confirm any tactical motif.
 
 ## Stage 1 v1 frozen design
 
@@ -178,7 +204,7 @@ These remain trajectory-diversification metadata only and do not reopen prior fo
 
 ## Stage 1 measurement / discovery contract
 
-Every selected root is measured over **all legal exact moveVariants**, not only an AI-selected move.
+Every selected root was measured over **all legal exact moveVariants**, not only an AI-selected move.
 
 Frozen measurements include:
 
@@ -208,15 +234,15 @@ Authorized scientific execution order is fixed:
 2. independent full replay/search `verify` — **PASSED**
 3. `select` — **COMPLETE**
 4. inspect selection readiness — **PASSED**
-5. `measure` — **NEXT / AUTHORIZED**
-6. inspect measurement readiness
-7. `discover`
+5. `measure` — **COMPLETE**
+6. inspect measurement readiness — **PASSED**
+7. `discover` — **NEXT / AUTHORIZED**
 
 Technical enforcement:
 
 - all scientific phases require the hash-bound authorization file
-- `measure` requires selection readiness to pass — now satisfied
-- `discover` requires at least 1800 measured exact move records
+- `measure` required selection readiness to pass — satisfied
+- `discover` requires at least 1800 measured exact move records — satisfied with 3148
 - GitHub Actions never generate the scientific corpus or measurements
 - large artifacts remain under `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 
@@ -250,4 +276,4 @@ A redesign requires a new prospective version and fresh non-overlapping corpus.
 
 ## Next action
 
-Execute the Stage 1 `measure` phase against the frozen 715 selected unique rule states. After it completes, inspect `measurement-manifest.json` and require `measurementReadinessPassed=true` with at least 1800 measured exact move records **before** `discover` is allowed.
+Execute the frozen Stage 1 `discover` phase against the completed 3148 exact move measurements. After it completes, inspect `discovery-result.json` under the prospectively frozen candidate grammar, transferability gates, D3-value gates, deterministic ranking, and candidate caps. Any promoted item remains an **exploratory Stage 2 planning candidate only**.
