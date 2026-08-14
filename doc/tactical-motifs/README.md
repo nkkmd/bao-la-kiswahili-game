@@ -10,7 +10,7 @@
 - branch: `research/tactical-motif-discovery`
 - Stage 0: **COMPLETE / VALIDATED**
 - Stage 1 v1 contract/tooling: **FROZEN / VALIDATED**
-- Stage 1 scientific generation: **AUTHORIZED / NOT GENERATED**
+- Stage 1 scientific generation: **AUTHORIZED / stable-runtime execution pending; no retained corpus**
 - Stage 2: **NOT AUTHORIZED**
 - `confirmed tesuji` claim: **NOT AUTHORIZED**
 
@@ -40,6 +40,7 @@ Stage 1 is exploratory only. A Stage 1 candidate can at most be promoted for fut
 - `RESEARCH_LOG.md`
 - `STAGE_0_TECHNICAL_AUDIT.md`
 - `STAGE_1_EXPLORATORY_PROTOCOL.md`
+- `STAGE_1_EXECUTION_RUNBOOK.md`
 - `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
 - `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
 
@@ -49,6 +50,8 @@ Authorized order:
 
 `generate → independent full replay/search verify → select → measure → discover`
 
-Large scientific artifacts remain only under `artifacts/local/tactical-motifs/stage1-exploratory-v1/` and are not committed or generated in GitHub Actions.
+Use `STAGE_1_EXECUTION_RUNBOOK.md` for stable local/Colab execution. Large scientific artifacts remain only under `artifacts/local/tactical-motifs/stage1-exploratory-v1/` and are not committed or generated in GitHub Actions.
 
-At the current checkpoint, no Stage 1 scientific corpus has been generated.
+The first authorized materialization attempt in the disposable assistant container was interrupted by execution-environment recreation before a complete corpus could be retained. No selection, measurement, candidate discovery, or scientific interpretation occurred. The fixed seed block and all frozen rules remain unchanged; exact deterministic regeneration in a stable runtime is the authorized recovery path.
+
+At the current checkpoint, there is **no retained Stage 1 scientific corpus**.
