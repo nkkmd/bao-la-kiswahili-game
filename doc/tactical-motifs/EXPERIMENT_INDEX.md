@@ -63,14 +63,36 @@
 
 ### TM-S1-E01 — Exploratory discovery corpus
 
-- Status: **AUTHORIZED / NOT GENERATED**
+- Status: **GENERATED / FULLY VERIFIED / SELECTION PENDING**
 - Population: 768 games
 - Seeds: `21900001–21900768`
 - Generation strata: 6 × 128 games
+- Source commit used for generation: `6694714194eee2f536e90b4411566d9126e162ae`
+- Unique historical trajectories: 741
+- Duplicate historical-trajectory groups: 27
+- Largest duplicate group: 2
+- Distinct opening prefixes: 681
+- Manifest summary hash: `7d11bae51a21b77ed91eb7ffe4098d6be3e7035a0480689616a72bd76b3eb96c`
+- Verification: `passed=true`
+- Full search recomputation: `true`
+- Games verified: 768
+- Verification identity hash: `9584bba101e3cad37bcf2c05556f478ab6ca9cd3d16c923614bd0245a9a1f9ec`
+- Source tree dirty: false
+- Scientific source hash mapping: manifest/verifier exact match to frozen authorization binding
 - Execution order: `generate → verify → select → measure → discover`
+- Current next gate: deterministic `select`, then inspect frozen selection-readiness gates
 - Output root: `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 - Confirmatory reuse: forbidden
 - Candidate output, if any: Stage 2 planning only
+
+### TM-S1-E02 — Deterministic state selection / readiness audit
+
+- Status: **AUTHORIZED BY VERIFIED-CORPUS FIREWALL / NOT YET EXECUTED**
+- Input requirement: `verification.json` with `passed=true` and `fullSearchRecomputation=true` — satisfied
+- Selection unit: representative unique historical trajectory
+- Phase assignment/root rank: prospectively frozen hash rules
+- Duplicate selected `ruleStateKey`: collapse without replacement
+- Measurement authorization: only if all frozen selection-readiness gates pass
 
 ## Stage 2 — Fresh prospective formal confirmation
 
