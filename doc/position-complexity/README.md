@@ -1,7 +1,7 @@
 # Bao Position Complexity / Difficulty Study
 
 更新日: 2026-08-14  
-Status: **STUDY 1 CLOSED / FORMAL INCONCLUSIVE**
+Status: **STUDY 1 CLOSED / FORMAL INCONCLUSIVE / REPOSITORY CLOSURE COMPLETE**
 
 ## 研究題目
 
@@ -18,15 +18,17 @@ Status: **STUDY 1 CLOSED / FORMAL INCONCLUSIVE**
 ## 最終状態
 
 ```text
-branch = research/position-complexity-difficulty
-base main = d681b4593242973fcb33805edca12eb3e8633653
-draft PR = #29
+research branch = research/position-complexity-difficulty
+base main at study initiation = d681b4593242973fcb33805edca12eb3e8633653
+PR #29 = MERGED
+merge commit = 7ef83fcb95621aedd1f4b22ec6f213f976576a6c
 Stage 0 = COMPLETE / TECHNICAL PASS
 Stage 1 = COMPLETE / EXPLORATORY / READINESS PASS / CONSUMED
 Stage 2 = COMPLETE / FORMAL
 PCX-H1 = INCONCLUSIVE
 PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 OVERALL FORMAL DECISION = INCONCLUSIVE
+repository closure = COMPLETE
 ```
 
 ## 最初に読む
