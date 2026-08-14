@@ -52,6 +52,15 @@ function pairedConsequenceHolds(moveRecord, candidate) {
   return consequenceHolds(moveRecord, candidate.pairedDiagnosticDefinition.consequence);
 }
 
+function logCombination(total, successes) {
+  const r = Math.min(successes, total - successes);
+  let value = 0;
+  for (let i = 1; i <= r; i += 1) {
+    value += Math.log(total - r + i) - Math.log(i);
+  }
+  return value;
+}
+
 function exactBinomialUpper(successes, total, nullProbability = 0.5) {
   if (!Number.isInteger(successes) || !Number.isInteger(total) || successes < 0 || total < 0 || successes > total) {
     throw new Error("Invalid binomial counts");
@@ -60,17 +69,23 @@ function exactBinomialUpper(successes, total, nullProbability = 0.5) {
   if (total === 0) return 1;
   if (nullProbability === 0) return successes === 0 ? 1 : 0;
   if (nullProbability === 1) return 1;
-  let probability = 0;
+
   const q = 1 - nullProbability;
-  let term = Math.pow(nullProbability, successes) * Math.pow(q, total - successes);
-  let combination = 1;
-  for (let i = 1; i <= successes; i += 1) combination *= (total - successes + i) / i;
-  term *= combination;
-  probability += term;
-  for (let k = successes; k < total; k += 1) {
-    term *= ((total - k) / (k + 1)) * (nullProbability / q);
-    probability += term;
+  const logP = Math.log(nullProbability);
+  const logQ = Math.log(q);
+  const logTerms = [];
+  let logTerm = logCombination(total, successes)
+    + successes * logP
+    + (total - successes) * logQ;
+  for (let k = successes; k <= total; k += 1) {
+    logTerms.push(logTerm);
+    if (k < total) {
+      logTerm += Math.log(total - k) - Math.log(k + 1) + logP - logQ;
+    }
   }
+  const maxLog = Math.max(...logTerms);
+  const scaled = logTerms.reduce((sum, value) => sum + Math.exp(value - maxLog), 0);
+  const probability = Math.exp(maxLog) * scaled;
   return Math.min(1, Math.max(0, probability));
 }
 
@@ -137,6 +152,7 @@ module.exports = {
   estimabilityGates,
   exactBinomialUpper,
   holmBonferroni,
+  logCombination,
   maxShare,
   moveMatchesCandidate,
   pairedConsequenceHolds,
