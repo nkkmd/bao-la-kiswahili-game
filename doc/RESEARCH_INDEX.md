@@ -163,6 +163,38 @@ Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized lo
 
 ---
 
+### 7. Tactical Motifs / Tesuji — Study 1
+
+**研究題目:** Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証  
+**状態:** Stage 1 exploratory discovery complete / Stage 2 formal generation authorized, not yet generated  
+**作業branch:** `research/tactical-motif-discovery`
+
+このprospective independent studyは、特定のopening sequenceに依存せず、異なる局面に再出現する `position → move → reply structure → downstream consequence/value` の構造を抽出し、transferable tactical motifとして検証する研究です。
+
+Stage 1では768-game fresh exploratory corpusから715 unique rule states / 3,148 exact legal move recordsを測定し、3,116,520 raw pattern instances、323,676 unique pattern keysを列挙しました。105,501 detailed candidatesのうち948件が全promotion gateを通過し、事前固定ranking/capsにより8 exploratory definitionsがStage 2 planningへpromotionされました。8定義は4つのexact `supportIdentityHash` pairを形成しますが、Stage 1では8定義をそのまま凍結しています。
+
+Stage 2はfresh dataを見る前に、各support-equivalence pairからStage 1 rankの最上位定義をcanonical candidateとして固定し、4 candidate × 2 co-primary endpointsをformalに検証する設計をfreezeしました。fresh corpusは3,072 games / seeds `22000001–22003072`、8 planned p-valuesはHolm-BonferroniでFWER 0.05を制御します。pre-generation numeric auditでexact-binomial計算をlog-spaceへhardeningし、scientific data 0件のまま再validation / source-hash authorizationまで完了しています。
+
+**最初に読む:**
+
+- [`tactical-motifs/README.md`](tactical-motifs/README.md) — 研究概要・現在地・主要文書への入口
+- [`tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md`](tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md) — Stage 1 exploratory result
+
+**詳細・正本:**
+
+- [`tactical-motifs/CURRENT_STATUS.md`](tactical-motifs/CURRENT_STATUS.md) — 現在地とscientific authorization state
+- [`tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json`](tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json) — Stage 1 promoted definitionsのcompact freeze
+- [`tactical-motifs/STAGE_2_FORMAL_PROTOCOL.md`](tactical-motifs/STAGE_2_FORMAL_PROTOCOL.md) — Stage 2 formal protocol
+- [`tactical-motifs/STAGE_2_EXECUTION_RUNBOOK.md`](tactical-motifs/STAGE_2_EXECUTION_RUNBOOK.md) — Stage 2 stable-runtime execution order
+- [`tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json`](tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json) — 4 canonical formal candidates
+- [`tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json`](tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable formal contract
+- [`tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`](tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json) — hardened exact-source authorization
+- [`tactical-motifs/DECISION_REGISTER.md`](tactical-motifs/DECISION_REGISTER.md) — scientific decisions / no-rescue boundaries
+
+**Boundary:** Stage 2 `CONFIRMED`となっても、現時点のformal claimはfrozen Bao engine/search operationalizationにおけるmachine-reproducible transferable tactical motifまでです。traditional/expert recognition、human importance、pedagogical valueは別studyを要します。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -176,6 +208,8 @@ Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized lo
 Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。新しいstructural-trajectory question、mechanistic analysis、human/expert validation、別conditionでのexternal validityを扱う場合は、新規prospective studyとして分離します。
 
 Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。数値収束問題を解消してH1を再検証する場合は、optimizer/convergence procedureを事前固定した新しいprospective independent replicationとfresh corpusを使用します。Human difficulty validationも別studyです。
+
+Tactical Motifs / Tesuji Study 1は現在Stage 2 formal generation直前です。fresh Stage 2 resultが出る前に、human/expert/traditional tesuji validationやpedagogical valueを同じformal studyへ追加しません。これらはmachine-reproducible Stage 2 completion後の別prospective validation studyとして扱います。
 
 ---
 
