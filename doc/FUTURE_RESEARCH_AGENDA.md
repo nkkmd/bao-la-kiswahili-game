@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.3.0  
+Version: 1.4.0  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-14
@@ -13,7 +13,9 @@ Status: Active
 
 本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
 
-2026-08-14時点で、第1段階のうち「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」に加え、**「Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離」** Study 1も完了した。Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。
+2026-08-14時点で、第1段階のうち「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」のStudy 1が完了した。さらに、**「Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証」** Study 1はStage 1 exploratory discoveryを完了し、4 canonical candidateを対象とするfresh Stage 2 formal corpus generationがsource-hash-bound authorization済み・未生成の状態にある。
+
+Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。Tactical Motifs Study 1についても、Stage 1の8 exploratory definitionsをfresh Stage 2 outcomeに応じて統合・置換・再定義することは行わない。
 
 ## 2. 既存研究との境界
 
@@ -30,6 +32,7 @@ Status: Active
 - 局面類型と棋風Study 1 — [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
 - Namua→Mtaji Strategic Temporal Transition Study 1 — [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
 - Position Complexity / Difficulty Study 1 — [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
+- Tactical Motifs / Tesuji Study 1 — [`tactical-motifs/README.md`](tactical-motifs/README.md)
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -299,11 +302,24 @@ Human difficultyを扱う場合も、machine workload/ambiguity/instabilityを�
 
 ---
 
-### 4.4 手筋の発見と体系化
+### 4.4 手筋の発見と体系化 — Study 1 Stage 2 formal進行中
+
+#### 現在の状態
+
+**Stage 1 exploratory discovery完了 / Stage 2 formal corpus generation authorized / not yet generated。**
+
+研究入口:
+
+- [`tactical-motifs/README.md`](tactical-motifs/README.md)
+- [`tactical-motifs/CURRENT_STATUS.md`](tactical-motifs/CURRENT_STATUS.md)
+
+Stage 1では768-game fresh corpusから715 unique rule states / 3,148 exact move recordsを測定し、3,116,520 raw pattern instancesを列挙した。105,501 detailed candidatesのうち948件が全promotion gateを通過し、事前固定ranking/capsによって8 exploratory definitionsをStage 2 planningへpromotionした。
+
+8定義は4つのexact `supportIdentityHash` pairを形成した。Stage 1の8定義自体は変更せず、Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical formal candidateとして固定した。4 canonical candidates × 2 co-primary endpointsを、fresh 3,072-game corpus / seeds `22000001–22003072`で検証するformal protocolをfreezeし、source-hash authorizationまで完了している。
 
 #### 中心課題
 
-特定の開局手順に依存せず、異なる局面で共通して有効になるBao固有の着手原理を発見する。
+特定の開局手順に依存せず、異なる局面で共通して有効になるBao固有の着手原理を発見・検証する。
 
 #### 候補例
 
@@ -314,13 +330,23 @@ Human difficultyを扱う場合も、machine workload/ambiguity/instabilityを�
 - reserve投入位置から連続構想を作る
 - 前列の一部を犠牲にして可動性を回復する
 
-#### 研究方法の例
+これらはagenda上の例であり、Stage 1でpromotionされた8 definitionsと同一の固定ontologyではない。
 
-高深度探索または熟練者レビューで支持された着手から、着手前後の局所構造、強制応手、relay終点、数手後の利益を抽象化し、同じ因果系列を持つ局面をまとめる。
+#### Study 1の研究方法
+
+Stage 1では高深度AIの選択手だけを採集せず、outcome-independently選択したfresh rootsにおける**全合法exact moveVariants**を測定した。move前後の構造、capture/relay/sow、nyumba、即時reply set、all-reply response envelope、exact D1/D2/D3 valueを分離し、opening-prefix concentrationとgeneration-stratum concentrationをgateした。
+
+Stage 2ではcandidate consequenceやD3 valueをroot selection・move selectionに使用せず、candidate-specific hash-ranked rootとlexicographically smallest matching `AI.moveKey`を事前固定した。formal endpointsはfrozen structural consequence successとexact D3 top-set membershipであり、8 planned testsをHolm-BonferroniでFWER 0.05に制御する。
+
+#### 現在の解釈境界
+
+Stage 2で将来`CONFIRMED`となっても、確認されるのはfrozen Bao engine/search operationalizationにおける**machine-reproducible transferable tactical motif**までである。
+
+traditional/expert-recognized tesuji、human importance、beginner importance、pedagogical valueは同じStudy 1で自動的に主張せず、別のhuman/expert validation studyを要する。
 
 #### 期待成果
 
-局面横断的な「Bao手筋辞典」、手筋検出器、手筋別練習問題。
+機械的に再現可能な局面横断tactical motifの語彙、将来の手筋検出器・練習問題・人間/expert validationへ接続できるcandidate体系。
 
 ---
 
@@ -507,9 +533,11 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 2. **[完了] 局面類型と棋風 — Study 1**
 3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`not-confirmed`)**
 4. **[完了] 局面複雑度と難易度 — Study 1 (`inconclusive`)**
-5. **[未着手] 手筋の発見と体系化**
+5. **[進行中] 手筋の発見と体系化 — Study 1（Stage 1完了 / Stage 2 formal generation authorized）**
 
-この段階では、Baoの局面を人間と機械の双方が記述できる共通語彙を作る。最初の四研究によりstate morphology、strategic-transition phenotype、Namua→Mtaji bridgeの境界、machine-reproducible complexity layersに関する知見と限界が得られた。局面複雑度Study 1はprimary formal questionを確認も否定もせず、数値収束gateにより`inconclusive`として閉じた。次の研究はこのformal resultを救済するのではなく、手筋研究、human difficulty validation、またはfresh corpusを用いた新規prospective numerical-method replicationへ進む。
+この段階では、Baoの局面を人間と機械の双方が記述できる共通語彙を作る。最初の四研究によりstate morphology、strategic-transition phenotype、Namua→Mtaji bridgeの境界、machine-reproducible complexity layersに関する知見と限界が得られた。手筋Study 1ではStage 1から8 exploratory definitions / 4 support-equivalence pairsを得て、現在fresh Stage 2 formal confirmationへ進んでいる。
+
+局面複雑度Study 1のformal `inconclusive`を救済するために手筋研究を利用しない。また手筋Study 1のStage 2 resultに応じてStage 1 candidate ontologyを変更しない。
 
 ### 第2段階: 理解、教育、解説への展開
 
@@ -521,6 +549,8 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 4. 人間とAIの判断差
 
 この段階では、局面知識を教材、棋譜解説、学習支援へ変換する。
+
+Tactical Motifs Study 1のmachine-reproducible candidateを教材・expert tesujiへ昇格させる場合も、Stage 2 formal completion後にhuman/expert validationを独立studyとして実施する。
 
 ### 第3段階: 理論および完全解析への展開
 
@@ -542,6 +572,8 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 ### 6.2 Bao手筋・錯覚体系
 
 定石とは異なる局面横断的な手筋と、典型的な誤判断を対応付ける。
+
+Tactical Motifs / Tesuji Study 1はこの柱の最初のmachine-reproducible motif studyとして進行中であり、Stage 1 exploratory discoveryを完了し、fresh Stage 2 formal generation直前にある。Stage 2 completion後も、human/expert/traditional tesuji validationは別の証拠層として扱う。
 
 ### 6.3 Bao終盤科学
 
@@ -566,6 +598,8 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 Namua→Mtajiを扱う場合、現engineではfirst-Mtaji timingがdeterministic progressionであるため、`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。異なるengine semanticsを研究対象にする場合は、それ自体を別システム・別studyとして明示する。
 
 Position Complexity / Difficulty Study 1のH1を再検証する場合、既存Stage 2 corpusのoptimizer/tolerance変更による再判定は行わない。optimizer、収束基準、failure handling、fresh seed blockを新しいprospective preregistrationで固定してから新規evidenceを生成する。
+
+Tactical Motifs / Tesuji Study 1のStage 2を扱う場合、Stage 1の8 definitions / 4 support-equivalence pairsをfresh outcomeに応じて再編しない。formal candidate、fresh seed block、co-primary endpoints、Holm family、estimability gates、no-rescue ruleはStage 2 generation前のfrozen protocolを正本とする。
 
 ## 8. 到達目標
 
