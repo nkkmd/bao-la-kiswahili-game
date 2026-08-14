@@ -15,6 +15,7 @@ on:
       - test/tactical-motif-stage2-tooling.test.js
       - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json
       - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json
+      - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
       - .github/workflows/tactical-motif-stage2-tooling.yml
   workflow_dispatch:
 
@@ -35,3 +36,10 @@ jobs:
         run: node --test test/tactical-motif-stage2-spec.test.js test/tactical-motif-stage2-tooling.test.js
       - name: Inspect Stage 2 status without scientific generation
         run: node tools/experiments/run-tactical-motif-stage2-formal.js --phase status
+      - name: Validate Stage 2 generation authorization binding
+        run: >-
+          node -e "const C=require('./tools/experiments/lib/tactical-motif-stage2-corpus.js');
+          const {specSha256}=C.loadSpec();
+          const {candidateSha256}=C.loadCandidates();
+          const x=C.loadAuthorization(specSha256,candidateSha256);
+          console.log(JSON.stringify({authorizationSha256:x.authorizationSha256,stage2GenerationAuthorized:x.authorization.stage2GenerationAuthorized,scientificInferenceAuthorized:x.authorization.scientificInferenceAuthorized},null,2));"
