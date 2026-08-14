@@ -35,7 +35,7 @@ Machine-readable candidate definition:
 
 SHA-256:
 
-`8543a0ca9b25b14a26cb64578559c36eaf98605d9e5f6993299429cb6da137f0`
+`667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
 
 ## 3. Fresh confirmatory corpus
 
@@ -239,4 +239,4 @@ Machine-readable spec:
 
 SHA-256:
 
-`43cae8541ba5630e82e67f28aca4d5950cac0065e9a03b1289af7d204faa4fcc`
+`83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`
