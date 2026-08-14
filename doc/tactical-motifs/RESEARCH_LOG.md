@@ -38,7 +38,7 @@
 - Froze candidate grammar as phase + 1–2 structural precondition tokens + one move-abstraction token + one consequence token.
 - Froze both coarse-no-index and indexed move abstractions.
 - Froze within-trajectory candidate support representative as lexicographically smallest exact moveKey, not highest D3 value.
-- Froze detailed-candidate, transferability, opening-family, generation-stratum, D3 value, ranking, and candidate-cap rules before corpus generation.
+- Froze detailed-candidate, transferability, opening-family, generation-stratum, D3 value, ranking, and candidate-cap rules before generation.
 - Froze readiness gates before measurement/discovery.
 - Implemented response-envelope representation, deterministic candidate-mining grammar, machine-readable spec validator, technical tests, and a dedicated pre-generation GitHub Actions workflow.
 - Deliberately left the scientific corpus runner and independent replay verifier for the next gate so the frozen scientific contract is validated before execution code can authorize data creation.
@@ -74,3 +74,25 @@
 - Stage 1 remains exploratory; confirmatory inference is not authorized.
 - Stage 2 generation and any `confirmed tesuji` claim remain not authorized.
 - No scientific corpus was generated as part of authorization.
+
+## 2026-08-14 — Stage 1 execution-environment recovery boundary
+
+- The first in-chat container attempt was not retained as scientific data because the ephemeral runtime was recreated before the fixed 768-game corpus completed.
+- No threshold, seed, phase assignment, candidate rule, or population was changed.
+- No partial corpus was promoted, no replacement sampling was introduced, and no motif outcome was inspected.
+- Added `STAGE_1_EXECUTION_RUNBOOK.md` and a recovery checkpoint at commit `6694714194eee2f536e90b4411566d9126e162ae` so the exact authorized corpus could be generated in a stable local/Colab runtime.
+
+## 2026-08-14 — Stage 1 corpus generation and full replay/search verification
+
+- Generated the exact fixed Stage 1 exploratory population of 768 games using seeds `21900001–21900768` from clean source commit `6694714194eee2f536e90b4411566d9126e162ae`.
+- Generation produced exactly 128 games in each frozen stratum: `B-D1`, `B-D2`, `B-D3`, `LS-D2`, `V2-D2`, and `LE-D2`.
+- Manifest summary: 741 unique historical trajectories, 27 duplicate historical-trajectory groups, largest duplicate group 2, and 681 distinct opening-prefix identities.
+- Manifest summary hash: `7d11bae51a21b77ed91eb7ffe4098d6be3e7035a0480689616a72bd76b3eb96c`.
+- Authorization SHA-256 recorded by the manifest: `9df06af5c330a529c7d4b33fbd3fa885a084fd1797d425a20d4ce620b6328f9a`.
+- Independent verifier then replayed and recomputed the full search trajectory for all 768 games.
+- Verification returned `passed=true`, `fullSearchRecomputation=true`, and `gamesVerified=768`.
+- Verification reproduced 741 unique historical trajectories and 681 opening prefixes exactly.
+- Verification identity hash: `9584bba101e3cad37bcf2c05556f478ab6ca9cd3d16c923614bd0245a9a1f9ec`.
+- Both artifacts report `sourceTreeDirty=false`; their scientific source SHA-256 mappings match exactly and remain equal to the authorization-bound mapping.
+- No state selection, motif measurement, candidate discovery, threshold adjustment, or scientific interpretation was performed before this integrity gate was accepted.
+- The preregistered firewall therefore permits the deterministic `select` phase next. Selection readiness must be inspected before measurement.
