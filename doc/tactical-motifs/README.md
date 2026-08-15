@@ -17,8 +17,8 @@
 - Stage 2 generation authorization: **ACTIVE / VALIDATED**
 - Stage 2 formal corpus: **GENERATED / FULLY VERIFIED — 3,072 games**
 - Stage 2 candidate-specific selection: **COMPLETE / ALL 4 ESTIMABILITY PREVIEWS PASS**
-- Stage 2 formal measurement: **AUTHORIZED / NOT YET EXECUTED**
-- Stage 2 formal evaluation: **BLOCKED PENDING MEASUREMENT-INTEGRITY ACCEPTANCE**
+- Stage 2 formal measurement: **COMPLETE / INTEGRITY PASSED — 6,605 measurements**
+- Stage 2 formal evaluation: **AUTHORIZED / NOT YET ACCEPTED**
 - `confirmed tesuji` claim: **NOT AUTHORIZED AT PRESENT**
 
 ## Stage 1 result
@@ -120,6 +120,25 @@ Selected formal roots:
 
 All four candidates pass all six frozen estimability / transferability preview gates. No candidate receives extra games, replacement roots, or paired-definition substitution.
 
+## Stage 2 formal measurement
+
+Measurement completed on exactly the selected formal roots.
+
+| candidate | completed measurements |
+| --- | ---: |
+| `TM-S2-C01` | 1597 |
+| `TM-S2-C02` | 2705 |
+| `TM-S2-C03` | 1272 |
+| `TM-S2-C04` | 1031 |
+
+Total measurements: `6605`.
+
+Overall measurement hash:
+
+`c912d0eb5e0d2a5957163b0bd1a17e85e4756ef693d1b3aef545aad65aaed2c9`
+
+`measurementIntegrityPassed=true`. The selection hash and all authorization-bound scientific source SHA-256 values remain intact; the measurement source tree was clean.
+
 ## Pre-generation numerical hardening
 
 Before any Stage 2 scientific game was generated, a numeric audit found potential underflow in a naive exact-binomial tail implementation at large `n`. Authorization was deliberately suspended, the calculation was replaced by a log-space/log-sum-exp method, and the tooling was revalidated.
@@ -159,6 +178,7 @@ It does not establish:
 - `STAGE_2_EXECUTION_RUNBOOK.md`
 - `checkpoints/2026-08-15-stage2-corpus-full-verification.md`
 - `checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
+- `checkpoints/2026-08-15-stage2-measurement-integrity-pass.md`
 - `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
 - `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
 - `preregistration/STAGE_2_FORMAL_CANDIDATES.json`
@@ -179,10 +199,10 @@ Scientific corpora and per-state/per-candidate measurement files are not generat
 
 ## Next boundary
 
-The next authorized operation is **Stage 2 formal measurement only**.
+The next authorized operation is **Stage 2 formal evaluation only**.
 
 Required order remains:
 
-`generate → verify → inspect → select → inspect → measure → inspect → evaluate`
+`generate → verify → inspect → select → inspect → measure → inspect → evaluate → inspect`
 
-Run `--phase measure`, then inspect `measurement-manifest.json`. Formal evaluation remains blocked until measurement integrity is accepted.
+Run `--phase evaluate`, then inspect `stage2-formal-result.json` before recording any final scientific conclusion.
