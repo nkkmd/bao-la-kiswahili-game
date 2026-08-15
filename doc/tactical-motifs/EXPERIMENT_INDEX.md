@@ -103,34 +103,27 @@
 
 ## Stage 2 — Fresh prospective formal confirmation
 
-Stage ID:
-
-`TM-S2-FORMAL-2026-08-14-v1`
+Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
 
 ### TM-S2-A00 — Canonical formal candidate freeze
 
 - Status: **COMPLETE / FROZEN / VALIDATED**
 - Formal primary candidates: 4
-- Canonical rule: lowest Stage 1 promoted rank within each exact `supportIdentityHash` pair
 - Canonical Stage 1 ranks: `1, 3, 5, 7`
 - Paired diagnostic-only ranks: `2, 4, 6, 8`
-- Candidate definition: `preregistration/STAGE_2_FORMAL_CANDIDATES.json`
 - Candidate-definition SHA-256: `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
 - Post-fresh-data substitution/merge/split: forbidden
 
 ### TM-S2-A01 — Formal scientific contract freeze
 
 - Status: **COMPLETE / FROZEN / VALIDATED**
-- Spec: `preregistration/STAGE_2_FORMAL_SPEC.json`
 - Spec SHA-256: `83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`
-- Fresh population: 3,072 games
-- Fresh seeds: `22000001–22003072`
+- Fresh population: 3,072 games / seeds `22000001–22003072`
 - Six generation strata × 512
 - Co-primary endpoints: frozen structural consequence + exact D3 top-set membership
 - Planned confirmatory tests: 8
 - Multiplicity: Holm-Bonferroni / FWER 0.05
 - Per-candidate estimability/transferability gates: frozen
-- Decision states: `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, `TECHNICAL-INCONCLUSIVE`
 - Design validation run `31784338545` = `success`
 
 ### TM-S2-A02 — Formal runner / independent verifier / evaluator
@@ -141,50 +134,53 @@ Stage ID:
 - Runner: `tools/experiments/run-tactical-motif-stage2-formal.js`
 - Independent verifier: `tools/experiments/verify-tactical-motif-stage2-formal.js`
 - Evaluator: `tools/experiments/evaluate-tactical-motif-stage2-formal.js`
-- Runner phases: `status → generate → select → measure → evaluate`
-- Mandatory scientific order adds independent verifier between generate and select
-- Initial tooling validation run `31784819713` = `success`; scientific games generated = 0
+- Mandatory order: `generate → verify → select → measure → evaluate`
 
 ### TM-S2-A03 — Pre-generation numerical hardening
 
 - Status: **COMPLETE / VALIDATED BEFORE SCIENTIFIC GENERATION**
-- Pre-generation audit identified possible underflow in naive exact-binomial upper-tail calculation for large `n`
-- Authorization was suspended before scientific source modification
-- Replaced calculation with log-combination + log-space recurrence + log-sum-exp
-- Candidate definitions, population, endpoints, thresholds, multiplicity, and decision rules: unchanged
+- Exact-binomial upper-tail implementation hardened with log-space/log-sum-exp accumulation before formal generation
+- Candidate definitions, population, endpoints, thresholds, multiplicity, and decision rules unchanged
 - Hardened validation run `31785214590`, job `94719501008` = `success`
-- Tests: 9 passed, including large-`n` stability and deterministic full-replay technical smoke
-- Scientific formal games generated during validation: 0
-- Formal measurements generated during validation: 0
+- Tests: 9 passed
+- Scientific games during validation: 0
 
 ### TM-S2-A04 — Hardened source-hash authorization
 
 - Status: **COMPLETE / ACTIVE / VALIDATED**
-- Authorization: `preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`
 - Authorization SHA-256: `43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51`
-- Binds exact spec + candidate-definition + hardened scientific source SHA-256 mapping
 - Active authorization-binding run `31785382236`, job `94720016585` = `success`
-- Stage 2 scientific inference: authorized only under the frozen formal contract
 
 ### TM-S2-F01 — Fresh formal corpus generation / full verification
 
-- Status: **GENERATION AUTHORIZED / NOT YET GENERATED**
-- Population: 3,072 games
+- Status: **COMPLETE / FULLY VERIFIED / PASS**
+- Generated games: `3072`
 - Seeds: `22000001–22003072`
-- Output root: `artifacts/local/tactical-motifs/stage2-formal-v1/`
-- GitHub Actions scientific games: 0
-- Next gate: `generate`, then independent full replay/search `verify`
-- Candidate-specific selection remains blocked until verifier reports `passed=true` and `fullSearchRecomputation=true`
+- Condition counts: all six strata exactly `512`
+- Unique historical trajectories: `2736`
+- Duplicate historical-trajectory groups: `239`
+- Largest duplicate group: `7`
+- Distinct opening prefixes: `2220`
+- Manifest summary hash: `e766078f6cd3e134d4bc03104712586a5d3d001d274e36be3552ef908a868f16`
+- Source commit: `3082cd2132cdd572e43f5f78e8d662271a9ed492`
+- Source tree dirty: `false`
+- Verification: `passed=true`
+- Full search recomputation: `true`
+- Games verified: `3072`
+- Verification identity hash: `bec870b1bff4abe1d95b87a473e26b08343ada7c8f4b2ca1de44eb0473086c4d`
+- Checkpoint: `checkpoints/2026-08-15-stage2-corpus-full-verification.md`
 
 ### TM-S2-F02 — Candidate-specific selection
 
-- Status: **BLOCKED PENDING TM-S2-F01 VERIFICATION**
-- Outcome/value-blind eligibility and SHA-ranked root selection already frozen
+- Status: **AUTHORIZED / NOT YET EXECUTED**
+- Verification firewall satisfied
+- Eligibility/value separation remains frozen
 - No replacement for unavailable trajectories or duplicate selected rule states
+- Next artifact to inspect: `selection-audit.json`
 
 ### TM-S2-F03 — Formal measurement
 
-- Status: **NOT STARTED**
+- Status: **BLOCKED PENDING SELECTION AUDIT**
 - Deterministic canonical candidate move = lexicographically smallest matching exact `AI.moveKey`
 - All legal root moves measured as search comparator
 
