@@ -4,7 +4,7 @@ Updated: 2026-08-15
 
 ## Current state
 
-**ACTIVE — Stage 1 exploratory discovery is COMPLETE. Stage 2 formal design/tooling/authorization are frozen and validated. The fresh 3,072-game Stage 2 formal corpus has been GENERATED and independently FULLY VERIFIED. Candidate-specific selection is now AUTHORIZED; formal measurement and evaluation have not started.**
+**ACTIVE — Stage 1 exploratory discovery is COMPLETE. Stage 2 formal design/tooling/authorization are frozen and validated. The fresh 3,072-game formal corpus is GENERATED / FULLY VERIFIED, candidate-specific selection is COMPLETE with all four estimability previews passing, and formal measurement is now AUTHORIZED. Formal evaluation has not started.**
 
 Baseline `main` HEAD:
 
@@ -21,18 +21,19 @@ Current branch:
 - Stage 1 promoted definitions: **8 / frozen**
 - Stage 2 canonical formal candidates: **4 / FROZEN**
 - Stage 2 formal spec: **FROZEN / VALIDATED**
-- Stage 2 runner / independent verifier / evaluator: **IMPLEMENTED / VALIDATED**
+- Stage 2 runner / verifier / evaluator: **IMPLEMENTED / VALIDATED**
 - Stage 2 numerical hardening: **COMPLETE / VALIDATED BEFORE SCIENTIFIC GENERATION**
 - Stage 2 source-hash authorization: **ACTIVE / VALIDATED**
 - Stage 2 scientific corpus generation: **COMPLETE — 3,072 games**
 - Stage 2 independent full replay/search verification: **PASSED**
-- Stage 2 candidate-specific selection: **AUTHORIZED / NOT YET EXECUTED**
-- Stage 2 formal measurements: **NOT STARTED**
-- Stage 2 formal evaluation: **NOT STARTED**
+- Stage 2 candidate-specific selection: **COMPLETE / SELECTION INTEGRITY PASSED**
+- Stage 2 estimability preview: **ALL 4 CANDIDATES PASS ALL 6 GATES**
+- Stage 2 formal measurements: **AUTHORIZED / NOT YET EXECUTED**
+- Stage 2 formal evaluation: **BLOCKED PENDING MEASUREMENT-INTEGRITY ACCEPTANCE**
 - `confirmed tesuji` claim: **NOT AUTHORIZED AT PRESENT**
 - human/expert/traditional/pedagogical claim: **OUT OF SCOPE**
 
-No Stage 2 candidate consequence, formal endpoint success rate, p-value, or formal decision has yet been inspected.
+No Stage 2 candidate consequence-success rate, D1/D2/D3 endpoint rate, p-value, Holm-adjusted result, or formal candidate decision has yet been accepted.
 
 ## Stage 1 frozen result
 
@@ -60,80 +61,61 @@ Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
 
 Canonical formal candidates are Stage 1 ranks `1,3,5,7`; paired ranks `2,4,6,8` remain diagnostic-only and cannot replace or rescue canonical candidates.
 
-## Fresh Stage 2 corpus
+## Fresh Stage 2 corpus and verification
 
 Generated exactly under the frozen contract:
 
 - games: `3072`
 - seeds: `22000001–22003072`
 - six generation strata × `512`
-- first 8 plies: seeded-uniform exact `E.moveVariants`
-- max ply: 100
-- early stop: false
-- outcome-dependent extension: false
-- replacement sampling: false
-- Stage 1 formal-observation reuse: false
-
-Observed corpus identity:
-
 - unique historical trajectories: `2736`
-- duplicate historical-trajectory groups: `239`
-- largest duplicate group: `7`
 - distinct opening prefixes: `2220`
 - manifest summary hash: `e766078f6cd3e134d4bc03104712586a5d3d001d274e36be3552ef908a868f16`
 - source commit: `3082cd2132cdd572e43f5f78e8d662271a9ed492`
 - source tree dirty: `false`
 
-Condition counts are exactly:
-
-```text
-B-D1  = 512
-B-D2  = 512
-B-D3  = 512
-LS-D2 = 512
-V2-D2 = 512
-LE-D2 = 512
-```
-
-## Independent verification
-
-The independent verifier completed full fixed-seed replay and generation-search recomputation:
+Independent verification:
 
 ```text
 passed = true
 fullSearchRecomputation = true
 gamesVerified = 3072
+verificationIdentityHash = bec870b1bff4abe1d95b87a473e26b08343ada7c8f4b2ca1de44eb0473086c4d
 ```
-
-Verification identity:
-
-- unique historical trajectories: `2736`
-- distinct opening prefixes: `2220`
-- verification identity hash: `bec870b1bff4abe1d95b87a473e26b08343ada7c8f4b2ca1de44eb0473086c4d`
-- source commit: `3082cd2132cdd572e43f5f78e8d662271a9ed492`
-- source tree dirty: `false`
-
-Manifest and verifier agree on trajectory count, opening-prefix count, six stratum counts, source commit, clean-tree status, and the full scientific source SHA-256 mapping.
 
 Checkpoint:
 
 `checkpoints/2026-08-15-stage2-corpus-full-verification.md`
 
-## Candidate-specific selection rule
+## Candidate-specific selection result
 
-Selection is now authorized under the already-frozen rule. For each canonical candidate:
+Top-level selection identity:
 
-- eligibility uses only candidate phase, canonical structural precondition, nonterminal/ply/legal-move requirements, and canonical move-abstraction availability;
-- eligibility excludes consequence, D1/D2/D3 value, reply outcome, and game outcome;
-- identical historical trajectories collapse before candidate-specific root selection;
-- at most one root per unique historical trajectory per candidate is chosen by the frozen SHA-256 ranking;
-- duplicate selected `ruleStateKey` values collapse within candidate;
-- unavailable trajectories and duplicate rule states receive no replacement;
-- cross-candidate trajectory/rule-state reuse remains allowed exactly as preregistered.
+- generated games: `3072`
+- unique historical trajectories in corpus: `2736`
+- candidate count: `4`
+- replacement performed: `false`
+- selection integrity passed: `true`
+- selection hash: `81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
+
+Candidate selected sets:
+
+| candidate | phase | eligible histories | duplicates collapsed | selected unique states | opening prefixes | max prefix share | strata | max stratum share | preview |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `TM-S2-C01` | Mtaji | 1607 | 10 | 1597 | 1373 | 0.003757 | 6 | 0.191609 | PASS |
+| `TM-S2-C02` | Namua | 2712 | 7 | 2705 | 2192 | 0.002218 | 6 | 0.169686 | PASS |
+| `TM-S2-C03` | Mtaji | 1282 | 10 | 1272 | 1121 | 0.003145 | 6 | 0.195755 | PASS |
+| `TM-S2-C04` | Namua | 1097 | 66 | 1031 | 891 | 0.004850 | 6 | 0.215325 | PASS |
+
+All per-candidate `replacementPerformed` flags are `false`.
+
+Checkpoint:
+
+`checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
 
 ## Estimability / transferability gates
 
-Per canonical candidate:
+Frozen per-candidate gates are:
 
 - selected unique historical trajectories `>= 96`
 - selected unique rule states `>= 96`
@@ -142,16 +124,18 @@ Per canonical candidate:
 - generation strata represented `>= 4`
 - maximum single generation-stratum share `<= 0.50`
 
-A failure yields `INCONCLUSIVE-NOT-ESTIMABLE`; no corpus extension or replacement is allowed.
+All six preview gates pass for all four candidates. The smallest selected set is C04 with 1,031 unique histories/states and 891 distinct opening prefixes; therefore no extension or replacement is needed or authorized.
+
+The preview is not a replacement for the final frozen formal gate evaluation and cannot authorize corpus extension.
 
 ## Formal endpoints and multiplicity
 
-After selection and measurement, each candidate has two co-primary binary endpoints:
+Each candidate has two frozen co-primary binary endpoints:
 
 1. frozen structural-consequence success;
 2. exact D3 top-set membership.
 
-Each uses H0 `p <= 0.50`, one-sided exact binomial, required observed rate `>= 0.60`. All eight planned tests (`4×2`) are Holm-Bonferroni adjusted at family-wise alpha `0.05`.
+Each uses H0 `p <= 0.50`, one-sided exact binomial, and required observed rate `>= 0.60`. All eight planned tests (`4×2`) are Holm-Bonferroni adjusted at family-wise alpha `0.05`.
 
 Consistency gates remain:
 
@@ -180,11 +164,12 @@ A future `CONFIRMED` candidate can support only a **machine-reproducible transfe
 
 ## Next action
 
-Run candidate-specific selection only:
+Run formal measurement only:
 
 ```bash
 node tools/experiments/run-tactical-motif-stage2-formal.js \
-  --phase select
+  --phase measure \
+  2>&1 | tee /tmp/tm-stage2-measure.log
 ```
 
-Then inspect `artifacts/local/tactical-motifs/stage2-formal-v1/selection-audit.json` before executing `--phase measure`.
+Then inspect `artifacts/local/tactical-motifs/stage2-formal-v1/measurement-manifest.json` before executing `--phase evaluate`.
