@@ -1,12 +1,14 @@
-name: Tactical motif Stage 1 pre-generation validation
+name: Tactical motif Stage 1 contract/tooling validation
 
 on:
   push:
     branches:
       - research/tactical-motif-discovery
+      - fix/tactical-motif-stage1-closure-ci
     paths:
       - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
-      - "doc/tactical-motifs/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json"
       - "tools/experiments/lib/tactical-motif-features.js"
       - "tools/experiments/lib/tactical-motif-discovery.js"
       - "tools/experiments/lib/tactical-motif-stage1-corpus.js"
@@ -18,7 +20,8 @@ on:
   pull_request:
     paths:
       - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
-      - "doc/tactical-motifs/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json"
       - "tools/experiments/lib/tactical-motif-features.js"
       - "tools/experiments/lib/tactical-motif-discovery.js"
       - "tools/experiments/lib/tactical-motif-stage1-corpus.js"
@@ -33,7 +36,7 @@ permissions:
   contents: read
 
 jobs:
-  pre-generation-validation:
+  stage1-validation:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -53,5 +56,20 @@ jobs:
         run: node test/tactical-motif-stage1-tooling.test.js
       - name: Show frozen source hashes without generating scientific data
         run: node tools/experiments/run-tactical-motif-stage1-exploratory.js --phase status
-      - name: Assert scientific generation remains unauthorized
-        run: test ! -f doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
+      - name: Validate Stage 1 authorization boundary
+        run: |
+          if [ -f doc/tactical-motifs/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json ]; then
+            node - <<'NODE'
+          const C = require('./tools/experiments/lib/tactical-motif-stage1-corpus.js');
+          const { specSha256 } = C.loadSpec();
+          const { authorization, authorizationSha256 } = C.loadAuthorization(specSha256);
+          console.log(JSON.stringify({
+            authorizationSha256,
+            stage1GenerationAuthorized: authorization.stage1GenerationAuthorized,
+            scientificInferenceAuthorized: authorization.scientificInferenceAuthorized,
+            confirmatoryReuseAllowed: authorization.confirmatoryReuseAllowed,
+          }, null, 2));
+          NODE
+          else
+            echo "Stage 1 authorization absent; frozen spec alone remains non-authorizing."
+          fi
