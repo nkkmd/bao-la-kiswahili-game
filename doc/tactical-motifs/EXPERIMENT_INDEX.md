@@ -172,21 +172,29 @@ Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
 
 ### TM-S2-F02 — Candidate-specific selection
 
-- Status: **AUTHORIZED / NOT YET EXECUTED**
-- Verification firewall satisfied
-- Eligibility/value separation remains frozen
-- No replacement for unavailable trajectories or duplicate selected rule states
-- Next artifact to inspect: `selection-audit.json`
+- Status: **COMPLETE / SELECTION INTEGRITY PASSED / ALL ESTIMABILITY PREVIEWS PASS**
+- Top-level replacement performed: `false`
+- Selection integrity passed: `true`
+- Selection hash: `81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
+- C01: 1597 unique states / 1373 opening prefixes / 6 strata
+- C02: 2705 unique states / 2192 opening prefixes / 6 strata
+- C03: 1272 unique states / 1121 opening prefixes / 6 strata
+- C04: 1031 unique states / 891 opening prefixes / 6 strata
+- Per-candidate replacement performed: all `false`
+- All six frozen estimability-preview gates pass for all four candidates
+- Checkpoint: `checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
 
 ### TM-S2-F03 — Formal measurement
 
-- Status: **BLOCKED PENDING SELECTION AUDIT**
+- Status: **AUTHORIZED / NOT YET EXECUTED**
+- Frozen selected sets only; no reselection or supplementation
 - Deterministic canonical candidate move = lexicographically smallest matching exact `AI.moveKey`
 - All legal root moves measured as search comparator
+- Next compact artifact: `measurement-manifest.json`
 
 ### TM-S2-F04 — Formal evaluation
 
-- Status: **NOT STARTED**
+- Status: **BLOCKED PENDING MEASUREMENT-INTEGRITY ACCEPTANCE**
 - Four candidate-specific decisions
 - Eight planned co-primary tests with Holm adjustment
 - Zero confirmed candidates remains valid
