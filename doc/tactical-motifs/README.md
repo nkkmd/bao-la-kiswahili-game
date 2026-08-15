@@ -15,7 +15,10 @@
 - Stage 2 formal preregistration/tooling: **FROZEN / VALIDATED**
 - Stage 2 numerical hardening: **COMPLETE / VALIDATED BEFORE SCIENTIFIC GENERATION**
 - Stage 2 generation authorization: **ACTIVE / VALIDATED**
-- Stage 2 formal corpus: **AUTHORIZED / NOT YET GENERATED**
+- Stage 2 formal corpus: **GENERATED / FULLY VERIFIED — 3,072 games**
+- Stage 2 candidate-specific selection: **COMPLETE / ALL 4 ESTIMABILITY PREVIEWS PASS**
+- Stage 2 formal measurement: **AUTHORIZED / NOT YET EXECUTED**
+- Stage 2 formal evaluation: **BLOCKED PENDING MEASUREMENT-INTEGRITY ACCEPTANCE**
 - `confirmed tesuji` claim: **NOT AUTHORIZED AT PRESENT**
 
 ## Stage 1 result
@@ -46,7 +49,7 @@ Stage 2 ID:
 
 `TM-S2-FORMAL-2026-08-14-v1`
 
-Stage 2 prospectively freezes one canonical formal definition per Stage 1 support-equivalence pair using the lowest Stage 1 promoted rank:
+Stage 2 prospectively froze one canonical formal definition per Stage 1 support-equivalence pair using the lowest Stage 1 promoted rank:
 
 - `TM-S2-C01` = Stage 1 rank 1; rank 2 diagnostic-only
 - `TM-S2-C02` = Stage 1 rank 3; rank 4 diagnostic-only
@@ -75,7 +78,47 @@ Fresh formal population:
 - no extension / no replacement
 - no Stage 1 formal-observation reuse
 
-Per candidate, Stage 2 has two frozen co-primary endpoints: structural-consequence success and exact D3 top-set membership. All eight planned p-values (`4 × 2`) are Holm-Bonferroni adjusted at FWER 0.05. Candidate-specific estimability/transferability gates are frozen before generation.
+Per candidate, Stage 2 has two frozen co-primary endpoints: structural-consequence success and exact D3 top-set membership. All eight planned p-values (`4 × 2`) are Holm-Bonferroni adjusted at FWER 0.05. Candidate-specific estimability/transferability gates were frozen before generation.
+
+## Stage 2 corpus and verification
+
+The fresh formal corpus was generated under the active authorization and independently fully replay/search verified.
+
+```text
+games = 3072
+uniqueHistoricalTrajectories = 2736
+distinctOpeningPrefixes = 2220
+passed = true
+fullSearchRecomputation = true
+gamesVerified = 3072
+```
+
+Manifest summary hash:
+
+`e766078f6cd3e134d4bc03104712586a5d3d001d274e36be3552ef908a868f16`
+
+Verification identity hash:
+
+`bec870b1bff4abe1d95b87a473e26b08343ada7c8f4b2ca1de44eb0473086c4d`
+
+## Stage 2 candidate-specific selection
+
+The frozen outcome/value/consequence-blind selection completed with `replacementPerformed=false` and `selectionIntegrityPassed=true`.
+
+Selection hash:
+
+`81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
+
+Selected formal roots:
+
+| candidate | phase | selected unique states | opening prefixes | strata | estimability preview |
+| --- | --- | ---: | ---: | ---: | --- |
+| `TM-S2-C01` | Mtaji | 1597 | 1373 | 6 | PASS |
+| `TM-S2-C02` | Namua | 2705 | 2192 | 6 | PASS |
+| `TM-S2-C03` | Mtaji | 1272 | 1121 | 6 | PASS |
+| `TM-S2-C04` | Namua | 1031 | 891 | 6 | PASS |
+
+All four candidates pass all six frozen estimability / transferability preview gates. No candidate receives extra games, replacement roots, or paired-definition substitution.
 
 ## Pre-generation numerical hardening
 
@@ -83,7 +126,7 @@ Before any Stage 2 scientific game was generated, a numeric audit found potentia
 
 No scientific design quantity changed. Candidate definitions, seed block, endpoints, thresholds, multiplicity, and decision rules remained fixed.
 
-Hardened tooling run `31785214590` passed all 9 tests, including large-`n` stability and deterministic short full-replay smoke. Active authorization binding run `31785382236` also passed. Both occurred with **0 formal scientific games and 0 formal measurements**.
+Hardened tooling run `31785214590` passed all 9 tests, including large-`n` stability and deterministic short full-replay smoke. Active authorization binding run `31785382236` also passed. Both occurred with 0 formal scientific games and 0 formal measurements.
 
 ## Boundaries
 
@@ -114,6 +157,8 @@ It does not establish:
 - `STAGE_1_CANDIDATE_FREEZE.json`
 - `STAGE_2_FORMAL_PROTOCOL.md`
 - `STAGE_2_EXECUTION_RUNBOOK.md`
+- `checkpoints/2026-08-15-stage2-corpus-full-verification.md`
+- `checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
 - `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
 - `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
 - `preregistration/STAGE_2_FORMAL_CANDIDATES.json`
@@ -126,7 +171,7 @@ Large Stage 1 scientific artifacts remain under:
 
 `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 
-Large Stage 2 scientific artifacts will remain under:
+Large Stage 2 scientific artifacts remain under:
 
 `artifacts/local/tactical-motifs/stage2-formal-v1/`
 
@@ -134,10 +179,10 @@ Scientific corpora and per-state/per-candidate measurement files are not generat
 
 ## Next boundary
 
-The next authorized operation is **Stage 2 fresh corpus generation**, immediately followed by independent full replay/search verification.
+The next authorized operation is **Stage 2 formal measurement only**.
 
-Required order:
+Required order remains:
 
-`generate → verify → inspect → select → measure → evaluate`
+`generate → verify → inspect → select → inspect → measure → inspect → evaluate`
 
-Candidate-specific selection must not be executed until `manifest.json` and `verification.json` have been independently inspected and the verifier reports both `passed=true` and `fullSearchRecomputation=true`.
+Run `--phase measure`, then inspect `measurement-manifest.json`. Formal evaluation remains blocked until measurement integrity is accepted.
