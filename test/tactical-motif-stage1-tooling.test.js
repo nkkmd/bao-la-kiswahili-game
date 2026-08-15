@@ -80,9 +80,15 @@ assert.deepEqual(Array.from({ length: 6 }, (_, i) => Corpus.conditionForGame(spe
 
 {
   const status = Runner.status("/tmp/tm-stage1-does-not-exist", spec, specSha256);
-  assert.equal(status.authorizationFilePresent, false);
+  assert.equal(status.authorizationFilePresent, true);
   assert.equal(status.generatedGames, 0);
   assert.equal(Object.keys(status.sourceFileSha256).length, Corpus.SOURCE_FILES.length);
+
+  const { authorization, authorizationSha256 } = Corpus.loadAuthorization(specSha256);
+  assert.equal(authorization.stage1GenerationAuthorized, true);
+  assert.equal(authorization.scientificInferenceAuthorized, false);
+  assert.equal(authorization.confirmatoryReuseAllowed, false);
+  assert.match(authorizationSha256, /^[a-f0-9]{64}$/);
 }
 
-console.log("Tactical motif Stage 1 pre-generation tooling tests passed");
+console.log("Tactical motif Stage 1 tooling tests passed");
