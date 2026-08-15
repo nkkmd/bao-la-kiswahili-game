@@ -4,13 +4,24 @@ Updated: 2026-08-15
 
 ## Current state
 
-**ACTIVE — Stage 1 exploratory discovery is COMPLETE. Stage 2 formal design/tooling/authorization are frozen and validated. The fresh 3,072-game formal corpus is GENERATED / FULLY VERIFIED, candidate-specific selection is COMPLETE with all four estimability previews passing, and formal measurement is COMPLETE with `measurementIntegrityPassed=true`. Formal evaluation is now AUTHORIZED / NOT YET ACCEPTED.**
+**CLOSED / COMPLETE — Stage 0 technical validation, Stage 1 prospective exploratory discovery, and Stage 2 fresh prospective formal confirmation are complete.**
 
-Baseline `main` HEAD:
+Final Stage 2 decisions:
+
+```text
+TM-S2-C01 = NOT-CONFIRMED
+TM-S2-C02 = NOT-CONFIRMED
+TM-S2-C03 = CONFIRMED
+TM-S2-C04 = NOT-CONFIRMED
+```
+
+Exactly one candidate is confirmed as a **machine-reproducible transferable tactical motif under the frozen Bao engine/search operationalization**.
+
+Baseline `main` HEAD at study start:
 
 `08c70ba6ac980884d51562c207410db3521b8ae4`
 
-Current branch:
+Study branch:
 
 `research/tactical-motif-discovery`
 
@@ -18,172 +29,112 @@ Current branch:
 
 - Stage 0 technical inspection: **COMPLETE / VALIDATED**
 - Stage 1 exploratory discovery: **COMPLETE**
-- Stage 1 promoted definitions: **8 / frozen**
+- Stage 1 promoted definitions: **8 / FROZEN**
 - Stage 2 canonical formal candidates: **4 / FROZEN**
-- Stage 2 formal spec: **FROZEN / VALIDATED**
-- Stage 2 runner / verifier / evaluator: **IMPLEMENTED / VALIDATED**
-- Stage 2 numerical hardening: **COMPLETE / VALIDATED BEFORE SCIENTIFIC GENERATION**
-- Stage 2 source-hash authorization: **ACTIVE / VALIDATED**
-- Stage 2 scientific corpus generation: **COMPLETE — 3,072 games**
-- Stage 2 independent full replay/search verification: **PASSED**
-- Stage 2 candidate-specific selection: **COMPLETE / SELECTION INTEGRITY PASSED**
-- Stage 2 estimability preview: **ALL 4 CANDIDATES PASS ALL 6 GATES**
-- Stage 2 formal measurements: **COMPLETE — 6,605 / INTEGRITY PASSED**
-- Stage 2 formal evaluation: **AUTHORIZED / NOT YET ACCEPTED**
-- `confirmed tesuji` claim: **NOT AUTHORIZED AT PRESENT**
-- human/expert/traditional/pedagogical claim: **OUT OF SCOPE**
+- Stage 2 formal spec/tooling: **FROZEN / VALIDATED**
+- Stage 2 numerical hardening: **COMPLETE BEFORE SCIENTIFIC GENERATION**
+- Stage 2 fresh corpus: **3,072 games / FULLY VERIFIED**
+- Stage 2 selection: **COMPLETE / INTEGRITY PASSED**
+- Stage 2 estimability: **ALL 4 CANDIDATES PASS ALL 6 GATES**
+- Stage 2 measurements: **6,605 / INTEGRITY PASSED**
+- Stage 2 formal evaluation: **COMPLETE / ACCEPTED**
+- confirmed candidates: **1 / 4 — C03**
+- human/expert/traditional/pedagogical claim: **NOT ESTABLISHED / OUT OF SCOPE**
 
-No Stage 2 endpoint success rate, exact-binomial p-value, Holm-adjusted result, consistency-gate result, or formal candidate decision has yet been accepted into the scientific record.
+## Final formal identity
 
-## Stage 1 frozen result
+Stage ID:
 
-Stage ID: `TM-S1-EXPLORATORY-2026-08-14-v1`
+`TM-S2-FORMAL-2026-08-14-v1`
 
-- Stage 1 spec SHA-256: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
-- population: 768 games / seeds `21900001–21900768`
-- selected unique rule states: 715
-- exact measured move records: 3,148
-- detailed candidates: 105,501
-- candidates passing every frozen promotion gate: 948
-- promoted Stage 2-planning definitions after frozen ranking/caps: 8
-- discovery-result SHA-256: `aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34`
-- candidate-freeze SHA-256: `f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73`
-
-The eight Stage 1 definitions remain immutable exploratory definitions and form four exact `supportIdentityHash` pairs.
-
-## Stage 2 formal identity
-
-Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
-
-- candidate definition SHA-256: `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
+- candidate-definition SHA-256: `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
 - formal spec SHA-256: `83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`
-- active authorization SHA-256: `43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51`
+- authorization SHA-256: `43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51`
+- selection hash: `81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
+- measurement hash: `c912d0eb5e0d2a5957163b0bd1a17e85e4756ef693d1b3aef545aad65aaed2c9`
+- result-core hash: `62719429fcca9de8b99309e2b8542a237184a91c29863db23d5aa8c0f4ad6748`
+- local/uploaded result artifact SHA-256: `f13f5a87464a5c8b360695977edc5fca4348f438fbf20c4bd5be682ed80d4dd4`
+- evaluation source commit: `d41b061067ab2e5dbe65294d3860586d9d3c1454`
+- source tree dirty: `false`
 
-Canonical formal candidates are Stage 1 ranks `1,3,5,7`; paired ranks `2,4,6,8` remain diagnostic-only and cannot replace or rescue canonical candidates.
+## Confirmed candidate — TM-S2-C03
 
-## Fresh Stage 2 corpus and verification
+Canonical Stage 1 rank: `5`
 
-- games: `3072`
-- seeds: `22000001–22003072`
-- six generation strata × `512`
-- unique historical trajectories: `2736`
-- distinct opening prefixes: `2220`
-- manifest summary hash: `e766078f6cd3e134d4bc03104712586a5d3d001d274e36be3552ef908a868f16`
-- generation source commit: `3082cd2132cdd572e43f5f78e8d662271a9ed492`
-- generation source tree dirty: `false`
+Canonical candidate key:
 
-Independent verification:
+`7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba`
+
+Frozen definition:
 
 ```text
-passed = true
-fullSearchRecomputation = true
-gamesVerified = 3072
-verificationIdentityHash = bec870b1bff4abe1d95b87a473e26b08343ada7c8f4b2ca1de44eb0473086c4d
+phase = mtaji
+precondition = reusablePits=0-2
+move = takata / row 1 / direction right / coarse-no-index
+consequence = actorNyumbaSeedsDeltaSign=0
 ```
 
-Checkpoint:
+Fresh formal result:
 
-`checkpoints/2026-08-15-stage2-corpus-full-verification.md`
+```text
+selected roots = 1272
+distinct opening prefixes = 1121
+generation strata = 6
+structural success = 1245 / 1272 = 0.978774
+D3 top set = 937 / 1272 = 0.736635
+D3 at-or-above median = 1106 / 1272 = 0.869497
+D3 unique worst = 90 / 1272 = 0.070755
+formal decision = CONFIRMED
+```
 
-## Candidate-specific selection result
+Both co-primary endpoints passed the frozen `>=0.60` observed-rate requirement and Holm-adjusted significance criterion. Both D3 consistency gates also passed.
 
-- replacement performed: `false`
-- selection integrity passed: `true`
-- selection hash: `81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
+## Negative formal results
 
-| candidate | phase | selected unique states | opening prefixes | strata | estimability preview |
-| --- | --- | ---: | ---: | ---: | --- |
-| `TM-S2-C01` | Mtaji | 1597 | 1373 | 6 | PASS |
-| `TM-S2-C02` | Namua | 2705 | 2192 | 6 | PASS |
-| `TM-S2-C03` | Mtaji | 1272 | 1121 | 6 | PASS |
-| `TM-S2-C04` | Namua | 1031 | 891 | 6 | PASS |
+### C01 — NOT-CONFIRMED
 
-All six frozen estimability/transferability preview gates pass for all four candidates. No extension, replacement, or paired-definition substitution is authorized.
+Structural consequence reproduced (`0.694427`) but D3 top-set rate was `0.493425`. The tactical-value co-primary endpoint failed, so the candidate is not confirmed.
 
-Checkpoint:
+### C02 — NOT-CONFIRMED
 
-`checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
+Structural success `0.092791`, D3 top-set `0.307209`, D3 median consistency `0.597043`, and unique-worst `0.230314` do not satisfy the frozen decision rule.
 
-## Formal measurement result
+### C04 — NOT-CONFIRMED
 
-Measurement was performed on exactly the frozen selected sets:
+Structural success `0.414161`, D3 top-set `0.315228`, D3 median consistency `0.558681`, and unique-worst `0.195926` do not satisfy the frozen decision rule.
 
-| candidate | selected unique states | completed measurements | candidate measurement hash |
-| --- | ---: | ---: | --- |
-| `TM-S2-C01` | 1597 | 1597 | `3e66255a70116f37c75f6b299fd29faa7051595356e84ae9b94ca99ee63eb033` |
-| `TM-S2-C02` | 2705 | 2705 | `07ed4a22a9617658a973549088c729017ddb6541e4b8b8f2c40628ab423ab3c9` |
-| `TM-S2-C03` | 1272 | 1272 | `f9053e48840f3b6b72393f7fd560009b3d5f06c376319083786779ad3e63b1ba` |
-| `TM-S2-C04` | 1031 | 1031 | `01928aee253c664add28a40a11cbb15ca4d57ea74452ccc68a7a20a1d4820caf` |
+No result is rescued by extra seeds, paired-definition substitution, subset selection, threshold change, endpoint change, depth selection, candidate merging, or renaming.
 
-- total formal measurements: `6605`
-- overall measurement hash: `c912d0eb5e0d2a5957163b0bd1a17e85e4756ef693d1b3aef545aad65aaed2c9`
-- measurement integrity passed: `true`
-- measurement source commit: `e6f5e9528d523e7710a953020b1719abf60a26e8`
-- source tree dirty: `false`
-- scientific source SHA-256 mapping: authorization-bound mapping retained
+## Numerical audit
 
-Checkpoint:
+The Stage 2 result-core SHA-256 was independently recomputed from the final artifact and matched exactly.
 
-`checkpoints/2026-08-15-stage2-measurement-integrity-pass.md`
-
-## Frozen formal evaluation
-
-Each candidate has two co-primary binary endpoints:
-
-1. frozen structural-consequence success;
-2. exact D3 top-set membership.
-
-Each endpoint uses:
-
-- H0: `p <= 0.50`
-- H1: `p > 0.50`
-- exact one-sided binomial
-- required observed rate `>= 0.60`
-
-All eight planned tests (`4 candidates × 2 endpoints`) remain in the Holm-Bonferroni family at FWER `0.05`; no endpoint may be dropped.
-
-Consistency gates remain:
-
-- D3 at-or-above-state-median rate `>= 0.60`
-- D3 unique-worst rate `<= 0.15`
-
-Formal decisions remain exactly:
-
-- `CONFIRMED`
-- `NOT-CONFIRMED`
-- `INCONCLUSIVE-NOT-ESTIMABLE`
-- `TECHNICAL-INCONCLUSIVE`
-
-Zero confirmed candidates remains a valid outcome.
-
-## No-rescue boundary
-
-Forbidden after Stage 2 generation began:
-
-- seed extension or replacement sampling;
-- replacement of unavailable trajectories or duplicate rule states;
-- candidate substitution or paired-definition promotion;
-- candidate merge/split in response to fresh data;
-- threshold/endpoint retuning;
-- dropping planned tests from Holm adjustment;
-- post-outcome depth selection;
-- favorable subset selection;
-- failed-candidate renaming.
-
-A redesign requires a new prospective version and fresh non-overlapping seed block.
+Independent exact-binomial recalculation reproduced the endpoint p-values within numerical precision. For `C03:structuralSuccess`, the exact probability is approximately `5.79 × 10^-328`, below IEEE-754 double range; the stored `0` therefore reflects representational underflow after a scientifically valid log-space computation and cannot change the decision.
 
 ## Interpretation boundary
 
-A future `CONFIRMED` candidate can support only a **machine-reproducible transferable tactical motif under the frozen Bao engine/search operationalization**. It does not establish traditional/expert recognition, human importance, pedagogical value, causal strategic benefit, or generalization beyond the frozen rules/engine/search instrument.
+C03 may now be described only as a **machine-reproducible transferable tactical motif under the frozen Study 1 operationalization**.
 
-## Next action
+Study 1 does not establish:
 
-Run formal evaluation only:
+- traditional/expert-recognized tesuji status;
+- human strategic importance;
+- beginner importance;
+- pedagogical value;
+- causal benefit outside the frozen formal construct;
+- external validity across other Bao rule implementations, engines, evaluators, or search instruments.
 
-```bash
-node tools/experiments/run-tactical-motif-stage2-formal.js \
-  --phase evaluate \
-  2>&1 | tee /tmp/tm-stage2-evaluate.log
-```
+These require separate prospective studies.
 
-Then inspect `artifacts/local/tactical-motifs/stage2-formal-v1/stage2-formal-result.json` before recording any formal scientific conclusion.
+## Canonical closure documents
+
+- `STUDY_1_OVERVIEW.md` — 初見向け成果概要
+- `STUDY_1_FINAL_REPORT.md` — Study 1 scientific integration
+- `STAGE_2_FORMAL_RESULT.md` — canonical Stage 2 formal result
+- `REPRODUCIBILITY_INDEX.md` — hash / artifact / tooling index
+- `checkpoints/2026-08-15-stage2-formal-completion.md` — closure checkpoint
+- `DECISION_REGISTER.md` — immutable scientific decisions
+
+## Closure rule
+
+This study is closed. Any replication, human/expert validation, external-validity study, pedagogical study, or alternative motif formalization must be a new prospective independent study using a separately frozen contract. The final decisions above are immutable historical results.
