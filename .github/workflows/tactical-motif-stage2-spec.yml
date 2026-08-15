@@ -1,0 +1,30 @@
+name: Tactical Motif Stage 2 Formal Spec
+
+on:
+  push:
+    branches:
+      - research/tactical-motif-discovery
+    paths:
+      - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json
+      - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json
+      - doc/tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json
+      - tools/experiments/validate-tactical-motif-stage2-formal-spec.js
+      - test/tactical-motif-stage2-spec.test.js
+      - .github/workflows/tactical-motif-stage2-spec.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-stage2-formal-freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate Stage 2 formal candidate/spec freeze
+        run: node tools/experiments/validate-tactical-motif-stage2-formal-spec.js
+      - name: Run Stage 2 formal freeze test
+        run: node --test test/tactical-motif-stage2-spec.test.js

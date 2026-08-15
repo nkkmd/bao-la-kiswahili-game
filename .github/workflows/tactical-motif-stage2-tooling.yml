@@ -1,0 +1,50 @@
+name: Tactical Motif Stage 2 Formal Tooling
+
+on:
+  push:
+    branches:
+      - research/tactical-motif-discovery
+    paths:
+      - tools/experiments/lib/tactical-motif-stage2-formal.js
+      - tools/experiments/lib/tactical-motif-stage2-corpus.js
+      - tools/experiments/run-tactical-motif-stage2-formal.js
+      - tools/experiments/verify-tactical-motif-stage2-formal.js
+      - tools/experiments/evaluate-tactical-motif-stage2-formal.js
+      - tools/experiments/validate-tactical-motif-stage2-formal-spec.js
+      - test/tactical-motif-stage2-spec.test.js
+      - test/tactical-motif-stage2-tooling.test.js
+      - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json
+      - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json
+      - doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+      - .github/workflows/tactical-motif-stage2-tooling.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-stage2-formal-tooling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate frozen Stage 2 candidate/spec contract
+        run: node tools/experiments/validate-tactical-motif-stage2-formal-spec.js
+      - name: Run Stage 2 formal tests
+        run: node --test test/tactical-motif-stage2-spec.test.js test/tactical-motif-stage2-tooling.test.js
+      - name: Inspect Stage 2 status without scientific generation
+        run: node tools/experiments/run-tactical-motif-stage2-formal.js --phase status
+      - name: Validate Stage 2 authorization binding when active
+        run: >-
+          node -e "const fs=require('node:fs');
+          const p='./doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json';
+          if(!fs.existsSync(p)){console.log('Stage 2 authorization absent; generation remains blocked.');process.exit(0);}
+          const a=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(a.stage2GenerationAuthorized!==true){console.log('Stage 2 authorization is inactive; generation remains blocked.');process.exit(0);}
+          const C=require('./tools/experiments/lib/tactical-motif-stage2-corpus.js');
+          const {specSha256}=C.loadSpec();
+          const {candidateSha256}=C.loadCandidates();
+          const x=C.loadAuthorization(specSha256,candidateSha256);
+          console.log(JSON.stringify({authorizationSha256:x.authorizationSha256,stage2GenerationAuthorized:x.authorization.stage2GenerationAuthorized,scientificInferenceAuthorized:x.authorization.scientificInferenceAuthorized},null,2));"

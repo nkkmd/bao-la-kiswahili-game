@@ -163,6 +163,40 @@ Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized lo
 
 ---
 
+### 7. Tactical Motifs / Tesuji — Study 1
+
+**研究題目:** Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証  
+**状態:** **Study 1 closed / complete — C03 confirmed, C01/C02/C04 not-confirmed**  
+**作業branch:** `research/tactical-motif-discovery`
+
+このprospective independent studyは、特定のopening sequenceに依存せず、異なる局面に再出現する `position → move → reply structure → downstream consequence/value` の構造を抽出し、transferable tactical motifとして検証しました。
+
+Stage 1では768-game fresh exploratory corpusから715 unique rule states / 3,148 exact legal move recordsを測定し、3,116,520 raw pattern instances、323,676 unique pattern keysを列挙しました。105,501 detailed candidatesのうち948件が全promotion gateを通過し、事前固定ranking/capsにより8 exploratory definitionsをpromotionしました。8定義は4つのexact `supportIdentityHash` pairを形成しましたが、Stage 1の8定義は変更せず凍結しています。
+
+Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical formal candidateとして固定し、3,072 fresh games / seeds `22000001–22003072`で4候補×2 co-primary endpointsを検証しました。全3,072局を独立replay/search verificationし、4候補すべてがestimability gateを通過、6,605 formal measurementsのintegrityもPASSしました。
+
+8 planned p-valuesをHolm-BonferroniでFWER 0.05に制御したformal evaluationでは、**TM-S2-C03のみCONFIRMED**、C01/C02/C04はNOT-CONFIRMEDでした。C03はMtajiで`reusablePits=0-2`の局面における`takata / row 1 / right / coarse-no-index`で、`actorNyumbaSeedsDeltaSign=0`を構造結果とする候補です。fresh 1,272 rootsでstructural success 97.88%、D3 top-set 73.66%、D3 median以上86.95%、D3 unique-worst 7.08%でした。
+
+**最初に読む:**
+
+- [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+- [`tactical-motifs/README.md`](tactical-motifs/README.md) — 研究ディレクトリ入口
+
+**詳細・正本:**
+
+- [`tactical-motifs/STUDY_1_FINAL_REPORT.md`](tactical-motifs/STUDY_1_FINAL_REPORT.md) — Study 1科学的統合
+- [`tactical-motifs/STAGE_2_FORMAL_RESULT.md`](tactical-motifs/STAGE_2_FORMAL_RESULT.md) — Stage 2 canonical formal result
+- [`tactical-motifs/REPRODUCIBILITY_INDEX.md`](tactical-motifs/REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
+- [`tactical-motifs/CURRENT_STATUS.md`](tactical-motifs/CURRENT_STATUS.md) — closure状態とfixed boundaries
+- [`tactical-motifs/DECISION_REGISTER.md`](tactical-motifs/DECISION_REGISTER.md) — scientific decisions / no-rescue boundaries
+- [`tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md`](tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md) — Stage 1 exploratory result
+- [`tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json`](tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json) — Stage 1 promoted definitions freeze
+- [`tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json`](tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable formal contract
+
+**Boundary:** C03の`CONFIRMED`はfrozen Bao engine/search operationalizationにおける**machine-reproducible transferable tactical motif**までです。traditional/expert-recognized tesuji、human importance、pedagogical value、他engine/rulesへのgeneralizationは別studyを要します。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -176,6 +210,8 @@ Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized lo
 Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。新しいstructural-trajectory question、mechanistic analysis、human/expert validation、別conditionでのexternal validityを扱う場合は、新規prospective studyとして分離します。
 
 Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。数値収束問題を解消してH1を再検証する場合は、optimizer/convergence procedureを事前固定した新しいprospective independent replicationとfresh corpusを使用します。Human difficulty validationも別studyです。
+
+Tactical Motifs / Tesuji Study 1は完了しました。C03のhuman/expert/traditional tesuji validation、pedagogical validation、別engine/search/rulesでのexternal validityは、Study 1のformal decisionを変更しない新規prospective studyとして扱います。C01/C02/C04を追加gameやpaired-definition substitutionで救済することはfuture workに含めません。
 
 ---
 
