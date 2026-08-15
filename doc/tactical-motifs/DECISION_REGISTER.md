@@ -1,6 +1,6 @@
 # DECISION_REGISTER — Tactical Motifs / Tesuji Study 1
 
-Updated: 2026-08-14
+Updated: 2026-08-15
 
 ## TM-D001 — New prospective independent study
 
@@ -247,3 +247,53 @@ Active authorization-binding run `31785382236`, job `94720016585` = `success`.
 Candidate-specific selection requires `verification.json` with `passed=true` and `fullSearchRecomputation=true`. Formal evaluation requires measurement-integrity success. GitHub Actions must never generate the 3,072-game scientific corpus.
 
 After Stage 2 scientific generation begins, seed extension, replacement, candidate substitution, paired-definition promotion, merge/split based on fresh outcomes, threshold/endpoint retuning, planned-test dropping, post-outcome depth selection, favorable subset selection, and failed-candidate renaming are forbidden.
+
+## TM-D046 — Accept the Stage 2 formal result without rescue
+
+**Decision:** Accept `stage2-formal-result.json` as the canonical local Stage 2 result, anchored by result-core SHA-256 `62719429fcca9de8b99309e2b8542a237184a91c29863db23d5aa8c0f4ad6748` and uploaded/local file SHA-256 `f13f5a87464a5c8b360695977edc5fca4348f438fbf20c4bd5be682ed80d4dd4`.
+
+All four candidates were estimable and all eight preregistered co-primary tests remained in the Holm-Bonferroni family. The final formal decisions are:
+
+```text
+TM-S2-C01 = NOT-CONFIRMED
+TM-S2-C02 = NOT-CONFIRMED
+TM-S2-C03 = CONFIRMED
+TM-S2-C04 = NOT-CONFIRMED
+```
+
+No formal decision is changed by paired-definition diagnostics or post-hoc interpretation.
+
+## TM-D047 — C03 is the sole confirmed machine-operational tactical motif
+
+**Decision:** Authorize C03 as a **machine-reproducible transferable tactical motif under the frozen Bao engine/search operationalization**.
+
+Frozen definition:
+
+```text
+phase = mtaji
+precondition = reusablePits=0-2
+move = takata / row 1 / direction right / coarse-no-index
+consequence = actorNyumbaSeedsDeltaSign=0
+```
+
+Fresh formal evidence:
+
+```text
+n = 1272
+structural success = 0.978774
+D3 top-set rate = 0.736635
+D3 at-or-above-median rate = 0.869497
+D3 unique-worst rate = 0.070755
+```
+
+Both co-primary endpoints, both observed-rate requirements, all estimability gates, and both D3 consistency gates pass.
+
+**Boundary:** This does not establish traditional/expert-recognized tesuji status, human importance, beginner importance, pedagogical value, causal strategic benefit outside the formal construct, or generalization beyond the frozen rules/engine/search instrument.
+
+## TM-D048 — C01/C02/C04 are immutable negative formal results and Study 1 closes
+
+**Decision:** Retain C01, C02, and C04 as `NOT-CONFIRMED` and close Tactical Motifs / Tesuji Study 1 as **CLOSED / COMPLETE**.
+
+C01's structural recurrence is not sufficient to rescue its failed tactical-value co-primary endpoint. C02 and C04 are not rescued by their exploratory origin or paired diagnostic definitions.
+
+Any replication, human/expert validation, pedagogical study, external-validity extension, or alternative formalization requires a new prospective independent study with a separately frozen contract and, where formal data are required, a fresh non-overlapping corpus.
