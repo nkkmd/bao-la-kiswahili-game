@@ -158,12 +158,8 @@ Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
 - Seeds: `22000001–22003072`
 - Condition counts: all six strata exactly `512`
 - Unique historical trajectories: `2736`
-- Duplicate historical-trajectory groups: `239`
-- Largest duplicate group: `7`
 - Distinct opening prefixes: `2220`
 - Manifest summary hash: `e766078f6cd3e134d4bc03104712586a5d3d001d274e36be3552ef908a868f16`
-- Source commit: `3082cd2132cdd572e43f5f78e8d662271a9ed492`
-- Source tree dirty: `false`
 - Verification: `passed=true`
 - Full search recomputation: `true`
 - Games verified: `3072`
@@ -173,31 +169,38 @@ Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
 ### TM-S2-F02 — Candidate-specific selection
 
 - Status: **COMPLETE / SELECTION INTEGRITY PASSED / ALL ESTIMABILITY PREVIEWS PASS**
-- Top-level replacement performed: `false`
-- Selection integrity passed: `true`
 - Selection hash: `81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
 - C01: 1597 unique states / 1373 opening prefixes / 6 strata
 - C02: 2705 unique states / 2192 opening prefixes / 6 strata
 - C03: 1272 unique states / 1121 opening prefixes / 6 strata
 - C04: 1031 unique states / 891 opening prefixes / 6 strata
-- Per-candidate replacement performed: all `false`
-- All six frozen estimability-preview gates pass for all four candidates
+- Replacement performed: all `false`
 - Checkpoint: `checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
 
 ### TM-S2-F03 — Formal measurement
 
-- Status: **AUTHORIZED / NOT YET EXECUTED**
-- Frozen selected sets only; no reselection or supplementation
-- Deterministic canonical candidate move = lexicographically smallest matching exact `AI.moveKey`
-- All legal root moves measured as search comparator
-- Next compact artifact: `measurement-manifest.json`
+- Status: **COMPLETE / MEASUREMENT INTEGRITY PASSED**
+- Completed measurements: C01 `1597`, C02 `2705`, C03 `1272`, C04 `1031`
+- Total measurements: `6605`
+- Counts exactly match frozen selected unique states
+- Candidate measurement hashes:
+  - C01 `3e66255a70116f37c75f6b299fd29faa7051595356e84ae9b94ca99ee63eb033`
+  - C02 `07ed4a22a9617658a973549088c729017ddb6541e4b8b8f2c40628ab423ab3c9`
+  - C03 `f9053e48840f3b6b72393f7fd560009b3d5f06c376319083786779ad3e63b1ba`
+  - C04 `01928aee253c664add28a40a11cbb15ca4d57ea74452ccc68a7a20a1d4820caf`
+- Overall measurement hash: `c912d0eb5e0d2a5957163b0bd1a17e85e4756ef693d1b3aef545aad65aaed2c9`
+- `measurementIntegrityPassed=true`
+- Source tree dirty: `false`
+- Checkpoint: `checkpoints/2026-08-15-stage2-measurement-integrity-pass.md`
 
 ### TM-S2-F04 — Formal evaluation
 
-- Status: **BLOCKED PENDING MEASUREMENT-INTEGRITY ACCEPTANCE**
+- Status: **AUTHORIZED / NOT YET ACCEPTED**
 - Four candidate-specific decisions
 - Eight planned co-primary tests with Holm adjustment
+- Frozen observed-rate and D3 consistency gates apply
 - Zero confirmed candidates remains valid
+- Next compact artifact: `stage2-formal-result.json`
 
 ## Naming rule
 
