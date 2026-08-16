@@ -117,6 +117,16 @@ Expected scientific games:
 
 No seed extension or replacement is allowed.
 
+### Interruption / resume rule
+
+The generator is restart-safe under the same frozen spec: without `--force`, already existing game files are read and reused, while missing games are generated. Therefore, after a Colab/runtime interruption, rerun the **same** command:
+
+```sh
+node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase generate
+```
+
+Do **not** add `--force`. Do not delete a subset of games to obtain a different result. If an existing game has a different `specSha256`, the runner stops rather than silently replacing it.
+
 After generation, preserve the terminal JSON output and confirm that `manifest.json` exists before continuing.
 
 ## 4. Independent full verification
@@ -124,6 +134,8 @@ After generation, preserve the terminal JSON output and confirm that `manifest.j
 ```sh
 node tools/experiments/verify-tactical-motif-human-validation-stage1.js
 ```
+
+The verifier recomputes all 1,536 games from the beginning on every invocation. It does not checkpoint partial verification. If the runtime is interrupted during verification, rerun the same verifier command from the beginning.
 
 Do not continue unless `verification.json` contains:
 
