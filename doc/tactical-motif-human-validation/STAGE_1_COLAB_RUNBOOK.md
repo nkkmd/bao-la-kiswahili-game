@@ -23,6 +23,32 @@ git --version
 
 The scientific runner uses repository code and Node built-ins; no `npm install` step is required for this Stage 1 execution.
 
+### Persistent output for Colab
+
+A Colab runtime reset can remove `/content`. To preserve resumable generation, mount Google Drive and place only the scientific output there.
+
+In a Colab Python cell:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+Then in a shell cell:
+
+```sh
+export TMHV_OUT=/content/drive/MyDrive/bao-research/tmhv-stage1-stimulus-v1
+mkdir -p "$TMHV_OUT"
+```
+
+For a normal local machine, either use the default repository-local output or set a persistent path, for example:
+
+```sh
+export TMHV_OUT="$PWD/artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1"
+```
+
+All commands below may use `--output "$TMHV_OUT"`.
+
 ## 1. Clean checkout of the authorized tree
 
 Use the exact authorization commit:
@@ -63,7 +89,7 @@ Run:
 ```sh
 node tools/experiments/validate-tactical-motif-human-validation-stage1-spec.js
 node test/tactical-motif-human-validation-stage1.test.js
-node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase status
+node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase status --output "$TMHV_OUT"
 ```
 
 Then explicitly validate the authorization binding and print its hash:
@@ -100,10 +126,10 @@ If any identity anchor differs, **stop before generation**. Do not repair by edi
 ## 3. Generate the fixed corpus
 
 ```sh
-node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase generate
+node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase generate --output "$TMHV_OUT"
 ```
 
-Default output root:
+If `TMHV_OUT` is not set, the default output root is:
 
 ```text
 artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/
@@ -119,20 +145,20 @@ No seed extension or replacement is allowed.
 
 ### Interruption / resume rule
 
-The generator is restart-safe under the same frozen spec: without `--force`, already existing game files are read and reused, while missing games are generated. Therefore, after a Colab/runtime interruption, rerun the **same** command:
+The generator is restart-safe under the same frozen spec: without `--force`, already existing game files are read and reused, while missing games are generated. Therefore, after a Colab/runtime interruption, remount Drive, restore the same `TMHV_OUT`, check out the same authorized commit, and rerun the **same** command:
 
 ```sh
-node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase generate
+node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase generate --output "$TMHV_OUT"
 ```
 
 Do **not** add `--force`. Do not delete a subset of games to obtain a different result. If an existing game has a different `specSha256`, the runner stops rather than silently replacing it.
 
-After generation, preserve the terminal JSON output and confirm that `manifest.json` exists before continuing.
+After generation, preserve the terminal JSON output and confirm that `$TMHV_OUT/manifest.json` exists before continuing.
 
 ## 4. Independent full verification
 
 ```sh
-node tools/experiments/verify-tactical-motif-human-validation-stage1.js
+node tools/experiments/verify-tactical-motif-human-validation-stage1.js --output "$TMHV_OUT"
 ```
 
 The verifier recomputes all 1,536 games from the beginning on every invocation. It does not checkpoint partial verification. If the runtime is interrupted during verification, rerun the same verifier command from the beginning.
@@ -151,10 +177,11 @@ A verification failure is preserved as a technical failure; do not regenerate se
 For a compact check:
 
 ```sh
-node - <<'NODE'
+node - "$TMHV_OUT" <<'NODE'
 const fs = require('fs');
-const p = 'artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/verification.json';
-const v = JSON.parse(fs.readFileSync(p, 'utf8'));
+const path = require('path');
+const out = process.argv[2];
+const v = JSON.parse(fs.readFileSync(path.join(out, 'verification.json'), 'utf8'));
 console.log(JSON.stringify({
   passed: v.passed,
   fullSearchRecomputation: v.fullSearchRecomputation,
@@ -170,7 +197,7 @@ NODE
 Only after verification PASS:
 
 ```sh
-node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase select
+node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase select --output "$TMHV_OUT"
 ```
 
 This creates:
@@ -199,17 +226,18 @@ Create hashes:
 
 ```sh
 sha256sum \
-  artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/manifest.json \
-  artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/verification.json \
-  artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/stimulus-pool-audit.json \
-  artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/stimulus-pool.json
+  "$TMHV_OUT/manifest.json" \
+  "$TMHV_OUT/verification.json" \
+  "$TMHV_OUT/stimulus-pool-audit.json" \
+  "$TMHV_OUT/stimulus-pool.json"
 ```
 
 Create a compact return bundle if convenient:
 
 ```sh
+rm -rf tmhv-stage1-return
 mkdir -p tmhv-stage1-return
-cp artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/{manifest.json,verification.json,stimulus-pool-audit.json,stimulus-pool.json} tmhv-stage1-return/
+cp "$TMHV_OUT"/{manifest.json,verification.json,stimulus-pool-audit.json,stimulus-pool.json} tmhv-stage1-return/
 sha256sum tmhv-stage1-return/*.json > tmhv-stage1-return/SHA256SUMS.txt
 tar -czf tmhv-stage1-return.tar.gz tmhv-stage1-return
 ```
