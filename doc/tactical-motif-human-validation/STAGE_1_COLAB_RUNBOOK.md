@@ -232,15 +232,28 @@ sha256sum \
   "$TMHV_OUT/stimulus-pool.json"
 ```
 
-Create a compact return bundle if convenient:
+Return bundles are local execution artifacts and must not be created in the repository root. Store them under the gitignored `artifacts/local/` boundary:
 
 ```sh
-rm -rf tmhv-stage1-return
-mkdir -p tmhv-stage1-return
-cp "$TMHV_OUT"/{manifest.json,verification.json,stimulus-pool-audit.json,stimulus-pool.json} tmhv-stage1-return/
-sha256sum tmhv-stage1-return/*.json > tmhv-stage1-return/SHA256SUMS.txt
-tar -czf tmhv-stage1-return.tar.gz tmhv-stage1-return
+TMHV_RETURN="$PWD/artifacts/local/tactical-motif-human-validation/stage1-return"
+TMHV_RETURN_TAR="$PWD/artifacts/local/tactical-motif-human-validation/tmhv-stage1-return.tar.gz"
+
+rm -rf "$TMHV_RETURN"
+mkdir -p "$TMHV_RETURN"
+cp "$TMHV_OUT"/{manifest.json,verification.json,stimulus-pool-audit.json,stimulus-pool.json} "$TMHV_RETURN"/
+sha256sum "$TMHV_RETURN"/*.json > "$TMHV_RETURN/SHA256SUMS.txt"
+tar -czf "$TMHV_RETURN_TAR" -C "$(dirname "$TMHV_RETURN")" "$(basename "$TMHV_RETURN")"
+sha256sum "$TMHV_RETURN_TAR"
 ```
+
+Canonical local placement:
+
+```text
+artifacts/local/tactical-motif-human-validation/stage1-return/
+artifacts/local/tactical-motif-human-validation/tmhv-stage1-return.tar.gz
+```
+
+Both paths are intentionally ignored by Git. They must not be committed.
 
 Return either:
 
