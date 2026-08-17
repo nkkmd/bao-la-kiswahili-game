@@ -10,7 +10,9 @@ on:
       - "tools/experiments/validate-tactical-motif-human-validation-stage1-spec.js"
       - "tools/experiments/run-tactical-motif-human-validation-stage1.js"
       - "tools/experiments/verify-tactical-motif-human-validation-stage1.js"
+      - "tools/experiments/freeze-tactical-motif-human-validation-formal-stimuli.js"
       - "test/tactical-motif-human-validation-stage1.test.js"
+      - "test/tactical-motif-human-validation-formal-freeze.test.js"
       - ".github/workflows/tactical-motif-human-validation-stage1.yml"
   pull_request:
     paths:
@@ -19,7 +21,9 @@ on:
       - "tools/experiments/validate-tactical-motif-human-validation-stage1-spec.js"
       - "tools/experiments/run-tactical-motif-human-validation-stage1.js"
       - "tools/experiments/verify-tactical-motif-human-validation-stage1.js"
+      - "tools/experiments/freeze-tactical-motif-human-validation-formal-stimuli.js"
       - "test/tactical-motif-human-validation-stage1.test.js"
+      - "test/tactical-motif-human-validation-formal-freeze.test.js"
       - ".github/workflows/tactical-motif-human-validation-stage1.yml"
   workflow_dispatch:
 
@@ -44,6 +48,8 @@ jobs:
           node test/tactical-motif-stage0.test.js
       - name: Validate human-validation Stage 1 tooling
         run: node test/tactical-motif-human-validation-stage1.test.js
+      - name: Validate deterministic formal stimulus freezer
+        run: node test/tactical-motif-human-validation-formal-freeze.test.js
       - name: Print frozen source hashes without scientific generation
         run: node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase status
       - name: Validate authorization boundary
