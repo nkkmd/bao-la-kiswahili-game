@@ -1,6 +1,6 @@
 # EXPERIMENT_INDEX — Tactical Motif Human / Expert Validation Study 1
 
-Updated: 2026-08-17
+Updated: 2026-08-18
 
 ## Stage 0 — repository / construct / feasibility audit
 
@@ -166,25 +166,50 @@ MORPH_NEAR = 672
 
 ### TMHV-S1-E06 — Exact private formal-stimulus materialization
 
-- Status: **PENDING LOCAL EXECUTION**
-- required private file: `artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/formal-stimulus-freeze.private.json`
-- required public-safe audit: `artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/formal-stimulus-freeze-audit.json`
-- public repository should receive only the private-file SHA-256 commitment and aggregate audit metadata, not exact formal identities before collection.
+- Status: **COMPLETE / PASS — EXACT FORMAL MACHINE STIMULI FROZEN**
+- formal selection-spec SHA-256: `67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5`
+- private exact freeze SHA-256 commitment: `2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
+- public-safe freeze audit SHA-256: `e994ddeb2875831a7a79e1181aa2bbbb39658316ebffcf896c7953265cdd70b3`
+- primary blocks: `12`
+- primary C03 targets: `24`
+- primary controls: `12`
+- control balance: `4 / 4 / 4`
+- secondary C03 move-choice targets: `6`
+- total unique formal positions: `42`
+- unique rule states: **PASS**
+- unique historical trajectories: **PASS**
+- unique opening prefixes: **PASS**
+- primary actors South: **PASS**
+- primary phase Mtaji: **PASS**
+- public exact identities included: `false`
+- human data collection authorized: `false`
+- scientific human inference authorized: `false`
+
+Observed generation-condition provenance across all 42 formal positions is `LS-D2=10`, `LE-D2=10`, `B-D1=10`, `V2-D2=10`, `B-D2=1`, `B-D3=1`. The prospective freeze rule did not define primary generation-condition balance as a gate, so this is preserved without post-materialization rebalancing or substitution.
+
+### TMHV-S1-E07 — Stage 1 machine/instrument closure
+
+- Status: **COMPLETE**
+- exact formal machine stimuli: frozen privately and cryptographically committed
+- exact public board identities before collection: prohibited
+- human evidence: `NOT-YET-COLLECTED`
+- scientific recruitment: **NOT AUTHORIZED**
+- formal human responses: **NOT AUTHORIZED**
 
 ## Stage 2 — preregistered human/expert validation
 
-Status: **BLOCKED**
+Status: **BLOCKED / PRE-COLLECTION GATES PENDING**
 
 Requirements before start:
 
-- exact private formal stimuli materialized and commitment recorded;
-- ethics determination/consent complete;
-- secure participant-data storage/withdrawal workflow operational;
+- applicable ethics determination and consent/withdrawal/retention materials complete;
+- secure participant/contact/linkage storage and withdrawal workflow operational;
 - expert recruitment feasibility established without criterion relaxation;
-- language-equivalence review complete for formal instrument versions;
+- Kiswahili/English formal instrument wording frozen and content-equivalence reviewed;
 - participant/exclusion/missing/stopping rules frozen;
 - exact primary test/alpha/effect gate frozen;
 - secondary multiplicity policy frozen;
+- response/data schema frozen;
 - machine-readable Stage 2 spec validated;
 - no-rescue/source-integrity boundary committed;
 - separate authorization before any scientific human response.
