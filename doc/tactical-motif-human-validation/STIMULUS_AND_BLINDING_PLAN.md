@@ -1,13 +1,13 @@
 # STIMULUS_AND_BLINDING_PLAN — Tactical Motif Human / Expert Validation Study 1
 
-Updated: 2026-08-16  
-Status: **STAGE 0 DESIGN / NO HUMAN STIMULI GENERATED YET**
+Updated: 2026-08-17  
+Status: **STAGE 1 MACHINE POOL READY / THREE-POSITION FORMAL FREEZE RULE VALIDATED / NO HUMAN DATA**
 
 ## 1. Fresh stimulus pool
 
-Stage 1 will use a new non-overlapping machine corpus rather than Tactical Motifs Study 1 formal roots.
+Stage 1 uses a new non-overlapping machine corpus rather than Tactical Motifs Study 1 formal roots.
 
-Reserved v1 population:
+Frozen v1 population:
 
 ```text
 games = 1536
@@ -20,11 +20,11 @@ extension = forbidden
 replacement = forbidden
 ```
 
-The corpus must be independently replay/search verified before stimulus selection.
+The corpus was independently replay/search verified before stimulus selection: `1536/1536`, full recomputation, mismatch count `0`.
 
 ## 2. C03 target eligibility
 
-A target root must satisfy the frozen historical C03 definition without using human outcomes:
+A target root satisfies the frozen historical C03 definition without human outcomes:
 
 ```text
 phase = mtaji
@@ -33,84 +33,138 @@ at least one legal exact move matching:
   takata / row 1 / direction right / coarse-no-index
 ```
 
-C03 structural consequence and machine search value are not allowed to determine whether a state enters the human target pool. They may be retained only as historical/diagnostic metadata where explicitly permitted.
+C03 structural consequence and machine search value do not determine entry into the human target pool.
+
+Observed frozen target count: `687`.
 
 ## 3. Near-miss controls
 
-Primary controls are selected prospectively from the same fresh pool and Mtaji context.
+Primary controls come from the same fresh pool and Mtaji context.
 
-Prespecified classes:
+Frozen classes:
 
-- `P-ONLY`: low reusable-pit precondition holds but no canonical C03 matching move is available;
-- `M-ONLY`: canonical C03 matching move is available but low reusable-pit precondition fails;
-- `MORPH-NEAR`: row-1 takata/local morphology is similar but the frozen C03 rightward combination is not satisfied.
+- `P_ONLY`: low reusable-pit precondition holds but no canonical C03 matching move is available;
+- `M_ONLY`: canonical C03 matching move is available but low reusable-pit precondition fails;
+- `MORPH_NEAR`: a Mtaji takata differs from C03 morphology in exactly one of row/direction while the exact C03 combination is absent and the C03 precondition fails.
 
-Controls are not assumed to be strategically bad. They are controls for C03 construct identity, not labels of poor play.
+Controls are not assumed to be strategically bad. They are controls for construct identity, not labels of poor play.
+
+Observed counts:
+
+```text
+P_ONLY     = 277
+M_ONLY     = 621
+MORPH_NEAR = 987
+```
 
 ## 4. Matching variables
 
-The following nuisance variables are fixed before human outcome data and will be audited in Stage 1:
+The Stage 1 nuisance matching is frozen on:
 
-- phase: exact Mtaji match;
-- ply / game progress;
-- legal move count;
-- capture move count / forced-capture status;
-- total seeds on board;
-- front-row occupancy;
-- nyumba seed count / house state where compatible;
-- generation stratum;
-- opening-prefix diversity.
+- generation condition;
+- ply bin;
+- actor house-owned state;
+- actor legal-move count;
+- actor front-row occupancy;
+- actor board-seed count.
 
-`reusablePits` and exact C03 move availability are construct-defining quantities and are not blindly matched away when they define a near-miss class.
+Maximum accepted cost: `10`.
 
-Stage 1 may set numeric calipers after inspecting only machine stimulus-pool distributions. Calipers must be frozen before any formal human response.
+Controls may not reuse the same historical trajectory or opening prefix as their matched target, and control reuse is forbidden.
 
-## 5. Primary task layout
+Observed matched counts:
 
-Planned formal instrument: `12` paired-comparison blocks per participant.
+```text
+P_ONLY     = 277
+M_ONLY     = 605
+MORPH_NEAR = 672
+```
 
-Each block contains:
+The compact artifact audit independently found zero same-trajectory violations, zero same-opening-prefix violations, zero within-family control reuse, and zero cost violations above `10`.
 
-- one target pair: two C03-eligible positions from distinct trajectories/rule states/opening prefixes;
-- one matched decoy pair: two near-miss control positions from a prespecified control class;
-- randomized Pair A / Pair B assignment and randomized position order.
+## 5. Primary task layout — superseding the Stage 0 pair-vs-pair draft
 
-Neutral prompt concept:
+The initial Stage 0 draft considered a four-position target-pair vs control-pair layout. That draft was superseded **before scientific human data** by `TMHV-D024` and the frozen Stage 1 machine-readable contract.
 
-> Which pair is better explained by the same reusable move-selection reason across the two positions?
+The current formal candidate is a **three-position discrimination block**:
 
-Exact wording and translations will be frozen after non-scientific instrument validation.
+```text
+C03 target A
+C03 target B
+matched non-C03 control
+```
 
-## 6. Opening leakage firewall
+The participant selects which two positions are better explained by the same reusable move-selection principle. The correct construct pair is target A + target B. There are three possible pairs, so random correctness is `1/3`.
 
-Primary stimuli show board/rule state only. They do not show opening move history, seed, generator condition, candidate ID, search values, or Study 1 labels.
+Planned formal instrument:
 
-Position-only presentation is the formal default. A context-present condition, if ever scientifically desired, requires a separate prospectively frozen study/version and cannot be added after outcome inspection.
+- 12 primary blocks;
+- 4 blocks with `P_ONLY` control;
+- 4 blocks with `M_ONLY` control;
+- 4 blocks with `MORPH_NEAR` control.
 
-## 7. Task contamination firewall
+The exact formal identities are generated only by `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`.
 
-Formal order:
+## 6. Formal position recurrence firewall
 
-1. primary pair discrimination;
+The exact formal-freeze rule requires, across all 36 primary positions:
+
+- unique `ruleStateKey`;
+- unique `historicalTrajectoryHash`;
+- unique `openingPrefixHash`.
+
+Target B is selected from unused C03 targets using the same Stage 1 nuisance cost relative to target A, with maximum accepted cost `10`.
+
+Six secondary move-choice C03 target positions are selected separately, one per generation stratum. They may not reuse any primary rule state, trajectory, or opening prefix and may not reuse one another.
+
+Expected total formal unique positions: `42`.
+
+## 7. Opening leakage firewall
+
+Primary stimuli show board/rule state only. They do not show opening move history, seed, generator condition, candidate ID, search values, ply, reusable-pit counts, or Study 1 labels.
+
+Position-only presentation is the formal default. A context-present condition requires a separate prospective study/version.
+
+## 8. Task contamination firewall
+
+Formal order remains:
+
+1. primary three-position discrimination;
 2. individual move choice on different positions;
 3. free-text explanation;
 4. explicit label task.
 
 No formal position is reused across primary and secondary tasks. Explicit `tesuji`/C03 terminology appears only after uncued tasks are complete.
 
-## 8. Rendering requirements
+## 9. Rendering requirements
 
-The existing game UI already defines board orientation and pit labels, but the study requires a separate static renderer that:
+The dedicated renderer:
 
 - reconstructs exact frozen rule states;
-- shows current player/phase/reserve only when prespecified;
-- does not highlight legal moves before a response unless the formal instrument explicitly requires it;
-- does not expose AI/search metadata;
-- has deterministic rendering identity/hash;
-- supports audit screenshots or deterministic DOM/state snapshots without participant data.
+- normalizes the actor to South using validated player swap only;
+- does not reverse columns or directions;
+- does not show opening history, ply, machine labels, legal-move highlights, search values, reusable-pit counts, or tesuji terminology;
+- produces deterministic participant-facing SVG.
 
-## 9. Negative-control candidates C01/C02/C04
+The compact artifact audit confirmed the participant-facing object is restricted to `stimulusId`, `phase`, `actor`, and `svg`, with all actors South and all positions Mtaji.
+
+## 10. Pre-collection public/private boundary
+
+Exact selected formal board states and participant SVGs are kept in the gitignored private local freeze artifact before collection. Public Git records only:
+
+- the deterministic selection rule;
+- exact input artifact hashes;
+- the private freeze SHA-256 commitment after materialization;
+- aggregate audit metadata.
+
+This reduces avoidable participant pre-exposure while preserving a cryptographic preregistration commitment.
+
+## 11. Negative-control candidates C01/C02/C04
 
 They are not primary controls.
 
-Fresh C01/C02/C04 examples may be included only as prespecified secondary calibration items if Stage 1 shows adequate estimability. Human results for those items do not change their historical machine labels and do not affect C03 primary decision.
+Fresh C01/C02/C04 examples may be included only as separately prespecified secondary calibration items. Human results for such items do not change their historical machine labels and do not affect C03 primary decision.
+
+## 12. Human-data boundary
+
+No scientific recruitment or human response collection is authorized by Stage 1 machine readiness, artifact audit, rendering audit, or exact formal-stimulus freezing. Stage 2 preregistration, ethics/consent/storage gates, and separate authorization remain mandatory.
