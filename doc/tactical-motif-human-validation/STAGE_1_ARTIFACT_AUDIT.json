@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "stageId": "TMHV-S1-STIMULUS-2026-08-17-v1",
+  "auditId": "TMHV-S1-ARTIFACT-AUDIT-2026-08-17-v1",
+  "passed": true,
+  "humanDataCollectionAuthorized": false,
+  "bundle": {
+    "file": "tmhv-stage1-return.tar.gz",
+    "sha256": "88918bf56e2e4e58875b014ab47da71b69756121c6c6dfa8ea76348400c16f3c"
+  },
+  "files": {
+    "manifest.json": "24d23be9e08ef392f1eab5f767dc069cad4a819c2211f2f2c88c64801038dea4",
+    "verification.json": "39f642eb65de48da99ba6c491d5647eb23c33e40631d3db36995e4cb725b0866",
+    "stimulus-pool-audit.json": "ccf376539588b5b06ad5ca0b16bba1b61b096506d9b1e0c00f29f785a1338c27",
+    "stimulus-pool.json": "a1ee4f6749a6f6b433122ea896975deef45fa6b2fb41c1a9edc53955a302f5a8"
+  },
+  "identity": {
+    "specSha256": "c0dcff68255e1e1149d9c96c76fe0e7e8aa7ba8da32abd149077b6936772fd80",
+    "authorizationSha256": "d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009",
+    "authorizedSourceCommit": "12b02975f0c0e7ad053eef6db8b6a2d2c7392d70",
+    "poolHash": "6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1",
+    "verificationIdentityHash": "225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397",
+    "generationSummaryHash": "6af30d6827e36a0c8a9ba0a4856b2e590da98bab0021111ba014655ffd85e581"
+  },
+  "independentChecks": {
+    "sha256SumsFileMatchesAllFourArtifacts": true,
+    "stageIdAndSpecConsistentAcrossArtifacts": true,
+    "authorizationBindingMatchesManifest": true,
+    "authorizedSourceCommitMatchesManifestAndVerification": true,
+    "sourceTreeCleanInManifestAndVerification": true,
+    "poolHashMatchesPoolAndAudit": true,
+    "classCountsMatchAudit": true,
+    "matchedCountsMatchAudit": true,
+    "oneStatePerHistoricalTrajectoryPerClass": true,
+    "uniqueRuleStateWithinEachClass": true,
+    "classNameConsistency": true,
+    "matchingConstraintsPass": true,
+    "participantStimulusKeysRestricted": true,
+    "participantStimulusActorNormalizedToSouth": true,
+    "participantStimulusPhaseMtaji": true,
+    "participantStimulusForbiddenCueScanPass": true
+  },
+  "observed": {
+    "classCounts": {
+      "C03_TARGET": 687,
+      "P_ONLY": 277,
+      "M_ONLY": 621,
+      "MORPH_NEAR": 987
+    },
+    "matchedCounts": {
+      "P_ONLY": 277,
+      "M_ONLY": 605,
+      "MORPH_NEAR": 672
+    },
+    "totalMatchedPairs": 1554,
+    "sameHistoricalTrajectoryViolations": 0,
+    "sameOpeningPrefixViolations": 0,
+    "duplicateControlWithinFamily": 0,
+    "duplicateTargetWithinFamily": 0,
+    "matchingCostOverMaximum": 0,
+    "maximumObservedMatchingCost": 10,
+    "targetGenerationStrata": 6
+  },
+  "renderingAudit": {
+    "participantStimulusFields": ["stimulusId", "phase", "actor", "svg"],
+    "allActorsSouth": true,
+    "forbiddenCueOccurrences": {
+      "opening": 0,
+      "ply": 0,
+      "candidate": 0,
+      "legalMove": 0,
+      "search": 0,
+      "reusable": 0,
+      "tesuji": 0,
+      "C03": 0,
+      "TM-S2": 0
+    }
+  },
+  "interpretationBoundary": {
+    "machineStimulusPoolReady": true,
+    "exactFormalStimulusIdentitiesFrozen": false,
+    "scientificHumanRecruitmentAuthorized": false,
+    "formalHumanResponsesAuthorized": false,
+    "humanRecognitionClaimAuthorized": false,
+    "traditionalityClaimAuthorized": false
+  }
+}
