@@ -65,15 +65,109 @@ Scientific Stage 1 games generated in CI: `0`.
 - Human data collection: not authorized.
 - Scientific human inference: not authorized.
 
-## 2026-08-17 — Local execution environment boundary
+## 2026-08-17 — Assistant-runtime execution boundary
 
 - Attempted to obtain the exact authorized repository tree in the assistant local runtime for scientific generation.
-- Local `git clone` failed because the runtime could not resolve `github.com`.
+- Local `git clone` failed because that runtime could not resolve `github.com`.
 - Did not move scientific generation into GitHub Actions as a workaround because the Stage 1 protocol explicitly reserves Actions for contract/tooling validation.
 - No corpus-size extension, threshold change, matching change, or alternative source tree was used.
 
-Current Stage 1 execution state:
+This was an execution-environment limitation only and did not alter the scientific contract.
 
-`TOOLING VALIDATED / MACHINE GENERATION AUTHORIZED / SCIENTIFIC CORPUS GENERATION PENDING LOCAL OR COLAB EXECUTION`
+## 2026-08-17 — Authorized local pre-generation validation
 
-Human scientific data collected to date: `0`.
+- User local environment checked out detached HEAD `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`.
+- Worktree was clean.
+- Runtime: Node `v24.6.0`, Git `2.43.0`, Linux x64.
+- Stage 1 spec validator passed.
+- Dedicated Stage 1 tooling test passed.
+- All authorization-bound source hashes matched.
+- Spec SHA-256 matched `c0dcff68255e1e1149d9c96c76fe0e7e8aa7ba8da32abd149077b6936772fd80`.
+- Authorization SHA-256 matched `d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009`.
+- `machineStimulusGenerationAuthorized = true`.
+- `humanDataCollectionAuthorized = false`.
+- `scientificHumanInferenceAuthorized = false`.
+
+## 2026-08-17 — Fixed 1,536-game machine corpus generated
+
+Generation completed successfully under the exact authorized source tree.
+
+- games: `1536 / 1536`
+- generation exit: `0`
+- unique historical trajectories: `1453`
+- duplicate historical trajectory groups: `71`
+- largest duplicate historical trajectory group: `4`
+- distinct opening prefixes: `1278`
+- each of six generation strata: `256`
+- summary hash: `6af30d6827e36a0c8a9ba0a4856b2e590da98bab0021111ba014655ffd85e581`
+- source commit: `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`
+- source tree dirty: `false`
+- extension: none
+- replacement: none
+
+Human scientific data collected: `0`.
+
+## 2026-08-17 — Independent full verification PASS
+
+The independent verifier recomputed all fixed games.
+
+- verification exit: `0`
+- `passed = true`
+- `fullSearchRecomputation = true`
+- games verified: `1536`
+- mismatch count: `0`
+- verification identity hash: `225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397`
+- source commit / source hashes matched authorization
+- source tree dirty: `false`
+
+No selective regeneration was performed.
+
+## 2026-08-17 — Outcome-blind stimulus selection / readiness PASS
+
+Selection and matching ran only after full verification PASS.
+
+- `selectionOutcomeBlind = true`
+- `humanResponsesInspected = false`
+- unique historical trajectories: `1453`
+- target generation strata represented: `6`
+
+Class counts:
+
+```text
+C03_TARGET = 687
+P_ONLY     = 277
+M_ONLY     = 621
+MORPH_NEAR = 987
+```
+
+Matched counts:
+
+```text
+P_ONLY     = 277
+M_ONLY     = 605
+MORPH_NEAR = 672
+```
+
+All ten prospectively frozen readiness gates passed. No replacement or control reuse occurred.
+
+Stimulus pool hash:
+
+`6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
+
+Stage 1 machine conclusion:
+
+`MACHINE STIMULUS POOL READY`
+
+Interpretation boundary:
+
+- this is a machine stimulus/instrument readiness result;
+- it is not human/expert validation;
+- it does not establish traditional tesuji status;
+- it does not authorize scientific recruitment or formal human response collection;
+- historical `TM-S2-C03 = CONFIRMED` remains unchanged.
+
+Current human evidence:
+
+`humanExpertEvidence = NOT-YET-COLLECTED`
+
+Next required step is compact artifact identity/hash audit followed by prospective exact formal stimulus freeze, ethics/recruitment feasibility completion, and Stage 2 preregistration before any formal human response.
