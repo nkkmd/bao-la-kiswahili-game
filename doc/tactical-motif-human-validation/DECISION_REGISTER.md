@@ -129,6 +129,27 @@ Validation runs:
 
 ## TMHV-D027 — Scientific corpus must not be moved into CI as a convenience rescue
 
-**Decision:** GitHub Actions remains contract/tooling validation only. Failure of the current assistant runtime to resolve GitHub for local checkout does not justify generating the 1536-game scientific corpus in CI.
+**Decision:** GitHub Actions remains contract/tooling validation only. Failure of the assistant runtime to resolve GitHub for local checkout did not justify generating the 1536-game scientific corpus in CI.
 
-Corpus generation remains pending an authorized local/Colab execution environment. This is a technical execution state, not a scientific result.
+The scientific corpus was subsequently generated in an authorized clean local environment; no CI substitution, corpus extension, threshold change, or source-tree substitution was used.
+
+## TMHV-D028 — Stage 1 machine stimulus pool is empirically ready
+
+**Decision:** Accept the prospectively frozen Stage 1 readiness result as `MACHINE STIMULUS POOL READY`.
+
+Observed under the frozen contract:
+
+- `C03_TARGET = 687`
+- `P_ONLY = 277`
+- `M_ONLY = 621`
+- `MORPH_NEAR = 987`
+- matched `P_ONLY = 277`
+- matched `M_ONLY = 605`
+- matched `MORPH_NEAR = 672`
+- target generation strata represented = `6`
+- all ten readiness gates = `true`
+- replacement performed = `false`
+- control reuse performed = `false`
+- pool hash = `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
+
+**Boundary:** Machine pool readiness is not human validation. Human evidence remains `NOT-YET-COLLECTED`, and no exact formal 12-block stimulus set, scientific recruitment, formal response collection, or Stage 2 inference is authorized by this decision.
