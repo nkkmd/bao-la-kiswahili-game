@@ -4,9 +4,9 @@ Updated: 2026-08-17
 
 ## Current state
 
-**STAGE 1 MACHINE STIMULUS POOL READY / HUMAN DATA COLLECTION NOT STARTED**
+**STAGE 1 ARTIFACT AUDIT PASS / FORMAL FREEZE RULE VALIDATED / EXACT PRIVATE MATERIALIZATION PENDING / HUMAN DATA COLLECTION NOT STARTED**
 
-Stage 0 design is complete. Stage 1 prospective machine-stimulus contract, generator, independent verifier, target/control matcher, and position-only renderer were implemented and validated before scientific machine generation. The fixed 1,536-game corpus has now been generated locally from the exact authorized clean source tree, independently recomputed in full with zero mismatches, and passed every prospectively frozen stimulus-readiness gate.
+The fixed Stage 1 machine corpus has been generated from the exact authorized clean source tree, independently recomputed with zero mismatches, passed all prospectively frozen stimulus-readiness gates, and passed compact-artifact identity/integrity audit. A deterministic exact formal-stimulus freeze rule has now been prospectively fixed and CI-validated before exact formal identities are materialized.
 
 ## Repository baseline
 
@@ -39,9 +39,7 @@ humanExpertEvidence = NOT-YET-COLLECTED
 
 ## Stage 1 frozen identity
 
-Stage ID:
-
-`TMHV-S1-STIMULUS-2026-08-17-v1`
+Stage ID: `TMHV-S1-STIMULUS-2026-08-17-v1`
 
 - games: `1536`
 - seeds: `22100001..22101536`
@@ -54,20 +52,14 @@ Stage ID:
 - authorization SHA-256: `d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009`
 - authorized source commit: `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`
 
-This seed block is fresh and non-overlapping with Tactical Motifs Study 1.
-
-## Stage 1 scientific machine execution
-
-Local execution completed from the exact authorized clean source tree under Node `v24.6.0` / Linux x64.
+## Stage 1 machine execution
 
 Generation:
 
 - games generated: `1536 / 1536`
 - unique historical trajectories: `1453`
-- duplicate trajectory groups: `71`
-- largest duplicate group: `4`
 - distinct opening prefixes: `1278`
-- six strata: `256` games each
+- six strata: `256` each
 - source tree dirty: `false`
 - generation summary hash: `6af30d6827e36a0c8a9ba0a4856b2e590da98bab0021111ba014655ffd85e581`
 
@@ -80,8 +72,6 @@ Independent verification:
 - verification identity hash: `225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397`
 
 ## Stage 1 stimulus pool readiness
-
-Selection was outcome-blind and inspected no human response.
 
 Class counts:
 
@@ -100,71 +90,85 @@ M_ONLY     = 605
 MORPH_NEAR = 672
 ```
 
-Target generation strata represented: `6 / 6`.
+All ten frozen readiness gates passed. Target generation strata represented: `6 / 6`. No replacement and no control reuse were performed.
 
-All frozen readiness gates passed:
-
-- unique historical trajectories
-- distinct opening prefixes
-- C03 target supply
-- P_ONLY supply
-- M_ONLY supply
-- MORPH_NEAR supply
-- matched P_ONLY supply
-- matched M_ONLY supply
-- matched MORPH_NEAR supply
-- target generation-strata coverage
-
-No replacement and no control reuse were performed.
-
-Stimulus pool hash:
+Pool hash:
 
 `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
 
-Stage 1 machine conclusion:
+Machine conclusion:
 
 `MACHINE STIMULUS POOL READY`
 
-This is an instrument-readiness conclusion only. It is not human validation and does not authorize expert/traditional/pedagogical claims.
+## Compact artifact audit
 
-## Primary task candidate
+Audit ID: `TMHV-S1-ARTIFACT-AUDIT-2026-08-17-v1`
 
-Three-position blinded principle discrimination:
+Bundle SHA-256:
+
+`88918bf56e2e4e58875b014ab47da71b69756121c6c6dfa8ea76348400c16f3c`
+
+Artifact SHA-256:
 
 ```text
-C03 target A
-C03 target B
-matched non-C03 control
+manifest.json            24d23be9e08ef392f1eab5f767dc069cad4a819c2211f2f2c88c64801038dea4
+verification.json        39f642eb65de48da99ba6c491d5647eb23c33e40631d3db36995e4cb725b0866
+stimulus-pool-audit.json ccf376539588b5b06ad5ca0b16bba1b61b096506d9b1e0c00f29f785a1338c27
+stimulus-pool.json       a1ee4f6749a6f6b433122ea896975deef45fa6b2fb41c1a9edc53955a302f5a8
 ```
 
-Participant selects the pair sharing a reusable move principle. Chance correctness is `1/3`. Planned formal blocks remain 12, balanced 4 per control family, subject to prospective exact stimulus freeze and Stage 2 preregistration.
+Independent artifact checks passed, including all 1,554 stored target-control matches: same-trajectory violations `0`, same-opening-prefix violations `0`, duplicate controls within family `0`, duplicate targets within family `0`, and matching-cost violations above `10` = `0`.
+
+Participant-facing rendering audit also passed: actor normalized to South, Mtaji phase, restricted participant-stimulus fields, and no detected hidden-cue terminology.
+
+## Formal stimulus freeze rule
+
+Freeze ID:
+
+`TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`
+
+The prospectively frozen construction requires:
+
+- 12 three-position primary blocks;
+- exactly 4 `P_ONLY`, 4 `M_ONLY`, 4 `MORPH_NEAR` controls;
+- 24 unique C03 primary target positions;
+- global no-reuse of rule state, historical trajectory, or opening prefix across all 36 primary positions;
+- target B matched to target A with exact Stage 1 nuisance cost, maximum `10`;
+- 6 secondary C03 move-choice positions, one per generation stratum;
+- no primary/secondary recurrence;
+- exactly `42` unique formal positions;
+- no manual aesthetic substitution or human-outcome-dependent reselection.
+
+GitHub Actions run `32040413639`, job `95418609369`: **SUCCESS**, including the deterministic formal-freezer test.
+
+Exact selected board identities and SVGs are intentionally not public before formal collection. They will be materialized only in a gitignored private local artifact and committed publicly only by SHA-256 commitment plus aggregate audit metadata.
 
 ## Authorization state
 
-Completed/authorized machine work:
+Completed machine/instrument work:
 
-- fixed Stage 1 machine corpus generation
-- independent full replay/search verification
-- target/control selection and matching audit
-- readiness evaluation
-- rendering / stimulus-identity technical audit
-- non-scientific dry runs under the pilot firewall
+- fixed Stage 1 machine corpus generation;
+- independent full replay/search verification;
+- target/control selection and matching audit;
+- readiness evaluation;
+- compact artifact identity/integrity audit;
+- deterministic exact formal-stimulus selection rule freeze and CI validation.
 
 Still not authorized:
 
-- expert recruitment for scientific participation
-- formal human responses
-- human outcome inspection
-- Stage 2 inference
-- human/expert-validated tesuji claims
+- expert recruitment for scientific participation;
+- formal human responses;
+- human outcome inspection;
+- Stage 2 inference;
+- human/expert-validated tesuji claims.
 
 ## Next required work
 
-1. Preserve and SHA-256 hash the compact Stage 1 artifacts: `manifest.json`, `verification.json`, `stimulus-pool-audit.json`, and `stimulus-pool.json`.
-2. Audit those compact artifacts against the recorded Stage 1 identities and pool hash.
-3. Prospectively freeze the exact formal stimulus identities / 12-block construction and any separate secondary move-choice stimuli.
-4. Complete ethics determination, consent, secure storage, and expert recruitment feasibility without eligibility relaxation.
+1. Materialize the exact 42 formal positions locally using the validated freezer against the exact audited artifacts.
+2. Preserve the exact private freeze file locally; return only the public-safe freeze audit and SHA-256 commitment.
+3. Record the private freeze SHA-256 commitment in the repository without publishing exact formal positions.
+4. Complete ethics determination, consent, secure storage, language-equivalence review, and expert recruitment feasibility without relaxing eligibility criteria.
 5. Freeze and validate the Stage 2 machine-readable human preregistration before any formal human response.
 6. Only after those gates may scientific expert recruitment / response collection be separately authorized.
 
-If expert recruitment later proves insufficient, the valid human result remains `INCONCLUSIVE-NOT-ESTIMABLE`; Stage 1 machine readiness does not rescue human estimability.
+If later recruitment is insufficient, the valid human result remains `INCONCLUSIVE-NOT-ESTIMABLE`. Stage 1 machine readiness does not rescue human estimability.
