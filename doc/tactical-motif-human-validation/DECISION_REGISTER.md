@@ -1,6 +1,6 @@
 # DECISION_REGISTER — Tactical Motif Human / Expert Validation Study 1
 
-Updated: 2026-08-17
+Updated: 2026-08-18
 
 ## TMHV-D001 — New prospective independent study
 
@@ -42,7 +42,7 @@ Updated: 2026-08-17
 
 ## TMHV-D010 — C01/C02/C04 are secondary calibration only
 
-**Decision:** Prior machine-negative candidates are not primary controls. Fresh examples may be used only in prespecified secondary calibration, and their human results do not alter historical machine labels.
+**Decision:** Prior machine-negative candidates are not primary controls. Fresh examples may be used only as prespecified secondary calibration, and their human results do not alter historical machine labels.
 
 ## TMHV-D011 — Participant is the primary inferential unit
 
@@ -193,3 +193,30 @@ Exact selected board identities and SVGs remain private before formal collection
 CI validation of the deterministic freezer: run `32040413639`, job `95418609369` = success.
 
 **Boundary:** Formal machine-stimulus freezing is not ethics approval, recruitment authorization, human validation, or traditionality evidence.
+
+## TMHV-D031 — Exact formal machine stimuli are frozen; observed generation-condition imbalance is preserved
+
+**Decision:** Accept the deterministic private materialization result as the exact formal machine stimulus freeze for this study.
+
+Cryptographic commitments:
+
+- selection-spec SHA-256: `67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5`
+- private exact freeze SHA-256: `2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
+- public-safe audit SHA-256: `e994ddeb2875831a7a79e1181aa2bbbb39658316ebffcf896c7953265cdd70b3`
+
+The materialized set contains 12 primary blocks, 24 primary C03 targets, 12 primary controls balanced `4/4/4`, six secondary C03 move-choice targets, and 42 total unique formal positions. All rule-state, historical-trajectory, and opening-prefix uniqueness checks passed.
+
+Observed generation-condition counts across all 42 positions are:
+
+```text
+LS-D2 = 10
+LE-D2 = 10
+B-D1  = 10
+V2-D2 = 10
+B-D2  = 1
+B-D3  = 1
+```
+
+The prospective freeze contract did not define primary generation-condition balance as a gate. Therefore this distribution is preserved exactly. It must not be post hoc rebalanced, substituted, or aesthetically revised.
+
+**Boundary:** Exact formal machine stimuli are frozen, but scientific recruitment, formal human responses, scientific human inference, human-recognition claims, and traditionality claims remain unauthorized.
