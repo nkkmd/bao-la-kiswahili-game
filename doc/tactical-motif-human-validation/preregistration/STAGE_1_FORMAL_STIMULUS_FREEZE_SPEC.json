@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "studyId": "TMHV-STUDY1",
+  "stageId": "TMHV-S1-STIMULUS-2026-08-17-v1",
+  "freezeId": "TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1",
+  "status": "prospective-selection-rule-before-private-materialization",
+  "humanDataCollectionAuthorized": false,
+  "scientificHumanInferenceAuthorized": false,
+  "inputArtifacts": {
+    "manifestSha256": "24d23be9e08ef392f1eab5f767dc069cad4a819c2211f2f2c88c64801038dea4",
+    "verificationSha256": "39f642eb65de48da99ba6c491d5647eb23c33e40631d3db36995e4cb725b0866",
+    "stimulusPoolAuditSha256": "ccf376539588b5b06ad5ca0b16bba1b61b096506d9b1e0c00f29f785a1338c27",
+    "stimulusPoolSha256": "a1ee4f6749a6f6b433122ea896975deef45fa6b2fb41c1a9edc53955a302f5a8",
+    "poolHash": "6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1",
+    "verificationIdentityHash": "225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397"
+  },
+  "primaryBlocks": {
+    "count": 12,
+    "positionsPerBlock": 3,
+    "shape": ["C03_TARGET_A", "C03_TARGET_B", "MATCHED_CONTROL"],
+    "correctPair": ["C03_TARGET_A", "C03_TARGET_B"],
+    "chanceCorrectPerBlock": 0.3333333333333333,
+    "controlBalance": {
+      "P_ONLY": 4,
+      "M_ONLY": 4,
+      "MORPH_NEAR": 4
+    },
+    "slotControlSequence": [
+      "P_ONLY", "M_ONLY", "MORPH_NEAR",
+      "P_ONLY", "M_ONLY", "MORPH_NEAR",
+      "P_ONLY", "M_ONLY", "MORPH_NEAR",
+      "P_ONLY", "M_ONLY", "MORPH_NEAR"
+    ],
+    "targetAControlCandidateOrder": {
+      "primary": "stored Stage 1 target-control matching cost ascending",
+      "tieBreak": "sha256(TMHV-S1-FORMAL-BLOCK-v1|slot|controlClass|targetARuleStateKey|controlRuleStateKey)"
+    },
+    "targetBSelection": {
+      "class": "C03_TARGET",
+      "matchCost": "exact Stage 1 matchCost against target A",
+      "maximumAcceptedCost": 10,
+      "primary": "match cost ascending",
+      "tieBreak": "sha256(TMHV-S1-FORMAL-TARGETB-v1|slot|controlClass|targetARuleStateKey|controlRuleStateKey|targetBRuleStateKey)"
+    },
+    "globalPrimaryNoReuse": {
+      "ruleStateKey": true,
+      "historicalTrajectoryHash": true,
+      "openingPrefixHash": true
+    },
+    "withinBlockRequirements": {
+      "threeDistinctRuleStates": true,
+      "threeDistinctHistoricalTrajectories": true,
+      "threeDistinctOpeningPrefixes": true
+    },
+    "selectionMethod": "greedy fixed slot order; for each slot choose the first ranked targetA-control candidate for which an eligible targetB exists; then permanently reserve all three rule-state, trajectory, and opening-prefix identities"
+  },
+  "secondaryMoveChoice": {
+    "count": 6,
+    "class": "C03_TARGET",
+    "onePerGenerationStratum": true,
+    "stratumOrder": ["B-D1", "B-D2", "B-D3", "LS-D2", "V2-D2", "LE-D2"],
+    "rank": "sha256(TMHV-S1-SECONDARY-v1|conditionId|ruleStateKey)",
+    "mustNotReusePrimaryRuleState": true,
+    "mustNotReusePrimaryHistoricalTrajectory": true,
+    "mustNotReusePrimaryOpeningPrefix": true,
+    "secondaryInternalNoReuse": true
+  },
+  "expectedUniqueFormalPositions": 42,
+  "privatePublicBoundary": {
+    "exactRuleStateIdentitiesPublicBeforeFormalCollection": false,
+    "exactBoardStatesPublicBeforeFormalCollection": false,
+    "participantSvgPublicBeforeFormalCollection": false,
+    "privateFreezeLocation": "artifacts/local/tactical-motif-human-validation/stage1-stimulus-v1/formal-stimulus-freeze.private.json",
+    "publicCommitmentMayContain": [
+      "input artifact hashes",
+      "selection spec hash",
+      "private freeze SHA-256",
+      "aggregate counts",
+      "constraint audit",
+      "no exact stimulus identities"
+    ]
+  },
+  "failurePolicy": {
+    "insufficientEligibleBlock": "TECHNICAL-INCONCLUSIVE; do not relax matching/no-reuse rules",
+    "insufficientSecondaryStratum": "TECHNICAL-INCONCLUSIVE; do not substitute another stratum",
+    "humanOutcomeDependentReselectionAllowed": false,
+    "manualAestheticSelectionAllowed": false,
+    "postMaterializationIdentityReplacementAllowed": false
+  },
+  "interpretationBoundary": {
+    "formalStimulusFreezeIsHumanStudyAuthorization": false,
+    "scientificRecruitmentAuthorized": false,
+    "formalHumanResponsesAuthorized": false,
+    "humanRecognitionClaimAuthorized": false,
+    "traditionalityClaimAuthorized": false
+  }
+}
