@@ -1,12 +1,12 @@
 # CURRENT_STATUS — Tactical Motif Human / Expert Validation Study 1
 
-Updated: 2026-08-17
+Updated: 2026-08-18
 
 ## Current state
 
-**STAGE 1 ARTIFACT AUDIT PASS / FORMAL FREEZE RULE VALIDATED / EXACT PRIVATE MATERIALIZATION PENDING / HUMAN DATA COLLECTION NOT STARTED**
+**STAGE 1 EXACT FORMAL MACHINE STIMULI FROZEN / HUMAN DATA COLLECTION NOT STARTED**
 
-The fixed Stage 1 machine corpus has been generated from the exact authorized clean source tree, independently recomputed with zero mismatches, passed all prospectively frozen stimulus-readiness gates, and passed compact-artifact identity/integrity audit. A deterministic exact formal-stimulus freeze rule has now been prospectively fixed and CI-validated before exact formal identities are materialized.
+The fixed Stage 1 machine corpus was generated from the exact authorized clean source tree, independently recomputed with zero mismatches, passed every prospectively frozen pool-readiness gate, passed compact-artifact identity/integrity audit, and has now been deterministically reduced to the exact private formal machine stimulus set under the prospectively frozen freeze rule. Exact board identities remain private; the repository records only cryptographic commitments and aggregate audit metadata.
 
 ## Repository baseline
 
@@ -117,31 +117,67 @@ stimulus-pool-audit.json ccf376539588b5b06ad5ca0b16bba1b61b096506d9b1e0c00f29f78
 stimulus-pool.json       a1ee4f6749a6f6b433122ea896975deef45fa6b2fb41c1a9edc53955a302f5a8
 ```
 
-Independent artifact checks passed, including all 1,554 stored target-control matches: same-trajectory violations `0`, same-opening-prefix violations `0`, duplicate controls within family `0`, duplicate targets within family `0`, and matching-cost violations above `10` = `0`.
+Independent checks passed across all 1,554 stored target-control matches, including zero same-trajectory violations, zero same-opening-prefix violations, zero duplicate controls/targets within family, and zero matching-cost violations above `10`.
 
-Participant-facing rendering audit also passed: actor normalized to South, Mtaji phase, restricted participant-stimulus fields, and no detected hidden-cue terminology.
-
-## Formal stimulus freeze rule
+## Exact formal machine stimulus freeze
 
 Freeze ID:
 
 `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`
 
-The prospectively frozen construction requires:
+Prospective selection-spec SHA-256:
 
-- 12 three-position primary blocks;
-- exactly 4 `P_ONLY`, 4 `M_ONLY`, 4 `MORPH_NEAR` controls;
-- 24 unique C03 primary target positions;
-- global no-reuse of rule state, historical trajectory, or opening prefix across all 36 primary positions;
-- target B matched to target A with exact Stage 1 nuisance cost, maximum `10`;
-- 6 secondary C03 move-choice positions, one per generation stratum;
-- no primary/secondary recurrence;
-- exactly `42` unique formal positions;
-- no manual aesthetic substitution or human-outcome-dependent reselection.
+`67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5`
 
-GitHub Actions run `32040413639`, job `95418609369`: **SUCCESS**, including the deterministic formal-freezer test.
+Private exact freeze SHA-256 commitment:
 
-Exact selected board identities and SVGs are intentionally not public before formal collection. They will be materialized only in a gitignored private local artifact and committed publicly only by SHA-256 commitment plus aggregate audit metadata.
+`2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
+
+Returned public-safe freeze audit SHA-256:
+
+`e994ddeb2875831a7a79e1181aa2bbbb39658316ebffcf896c7953265cdd70b3`
+
+Materialization result:
+
+```text
+primary blocks              = 12
+primary positions           = 36
+primary C03 targets         = 24
+primary controls            = 12
+P_ONLY controls             = 4
+M_ONLY controls             = 4
+MORPH_NEAR controls         = 4
+secondary move-choice C03   = 6
+total unique formal states  = 42
+```
+
+All formal-freeze checks passed:
+
+- primary block count;
+- control balance;
+- secondary count;
+- expected 42 unique formal positions;
+- unique rule states;
+- unique historical trajectories;
+- unique opening prefixes;
+- primary actor normalized South;
+- primary phase Mtaji;
+- human-data authorization remains false.
+
+Aggregate generation-condition provenance across the 42 positions is:
+
+```text
+LS-D2 = 10
+LE-D2 = 10
+B-D1  = 10
+V2-D2 = 10
+B-D2  = 1
+B-D3  = 1
+```
+
+This distribution is preserved, not repaired. The prospectively frozen formal-stimulus rule required one secondary item per generation stratum but did not define primary generation-condition balance as a gate. Post-materialization rebalancing, substitution, aesthetic reselection, and human-outcome-dependent reselection are prohibited.
+
+Exact rule-state identities, board states, seeds, and participant SVGs remain in the gitignored private local artifact only. `STAGE_1_FORMAL_STIMULUS_FREEZE_AUDIT.json` contains no exact stimulus identities.
 
 ## Authorization state
 
@@ -152,7 +188,8 @@ Completed machine/instrument work:
 - target/control selection and matching audit;
 - readiness evaluation;
 - compact artifact identity/integrity audit;
-- deterministic exact formal-stimulus selection rule freeze and CI validation.
+- deterministic exact formal-stimulus selection rule freeze and CI validation;
+- exact private formal-stimulus materialization and public cryptographic commitment.
 
 Still not authorized:
 
@@ -164,11 +201,11 @@ Still not authorized:
 
 ## Next required work
 
-1. Materialize the exact 42 formal positions locally using the validated freezer against the exact audited artifacts.
-2. Preserve the exact private freeze file locally; return only the public-safe freeze audit and SHA-256 commitment.
-3. Record the private freeze SHA-256 commitment in the repository without publishing exact formal positions.
-4. Complete ethics determination, consent, secure storage, language-equivalence review, and expert recruitment feasibility without relaxing eligibility criteria.
-5. Freeze and validate the Stage 2 machine-readable human preregistration before any formal human response.
-6. Only after those gates may scientific expert recruitment / response collection be separately authorized.
+1. Complete applicable ethics-review determination and finalize consent/withdrawal/retention materials before scientific recruitment.
+2. Establish secure participant/contact/linkage storage and withdrawal workflow outside public Git.
+3. Complete expert recruitment feasibility under the already frozen eligibility criteria; do not relax criteria to reach the minimum sample.
+4. Freeze Kiswahili/English formal instrument wording and document content-equivalence review.
+5. Freeze and validate the Stage 2 machine-readable human preregistration: participant/exclusion/missing/stopping rules, exact primary endpoint/test/alpha/effect gate, secondary multiplicity policy, data schema, and no-rescue firewall.
+6. Issue a separate human-data collection authorization only after every pre-collection gate is satisfied.
 
-If later recruitment is insufficient, the valid human result remains `INCONCLUSIVE-NOT-ESTIMABLE`. Stage 1 machine readiness does not rescue human estimability.
+If recruitment is insufficient, the valid human result remains `INCONCLUSIVE-NOT-ESTIMABLE`. Stage 1 machine readiness/freeze cannot rescue human estimability.
