@@ -6,7 +6,7 @@
 
 ## 状態
 
-**STAGE 1 ARTIFACT AUDIT PASS / FORMAL FREEZE RULE VALIDATED / EXACT PRIVATE MATERIALIZATION PENDING / HUMAN DATA COLLECTION NOT STARTED**
+**STAGE 1 EXACT FORMAL MACHINE STIMULI FROZEN / HUMAN DATA COLLECTION NOT STARTED**
 
 - repository baseline: `main` `3cc40d83917660dd815c785ff0e0c754666d9a0e`
 - study branch: `research/tactical-motif-human-validation`
@@ -16,6 +16,7 @@
 - Stage 1 authorization SHA-256: `d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009`
 - Stage 1 pool hash: `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
 - formal freeze ID: `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`
+- private formal freeze SHA-256: `2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
 - human recruitment: **NOT AUTHORIZED**
 - human scientific data collection: **NOT STARTED / NOT AUTHORIZED**
 - Stage 2 formal preregistration: **NOT YET FROZEN**
@@ -61,7 +62,7 @@ Historical machine confirmation never changes because of this study's later huma
 
 Primary constructは**blinded cross-position principle discrimination**。
 
-Formal candidate block:
+Formal primary block:
 
 ```text
 C03 target A
@@ -127,28 +128,40 @@ The four compact artifact hashes are recorded in `STAGE_1_ARTIFACT_AUDIT.json`. 
 
 ## Exact formal stimulus freeze
 
-A deterministic selection rule has been prospectively frozen and CI-validated before exact private materialization.
+The deterministic freezer has now been executed against the exact hash-frozen Stage 1 artifacts.
 
-It requires:
+Cryptographic commitments:
 
-- `12` primary blocks;
-- control balance `4/4/4` across `P_ONLY / M_ONLY / MORPH_NEAR`;
-- `24` unique primary C03 targets;
-- `12` unique primary controls;
-- global no-reuse of rule state / historical trajectory / opening prefix across all 36 primary positions;
-- `6` secondary C03 move-choice positions, one per generation stratum;
-- no primary/secondary recurrence;
-- total `42` unique formal positions.
+```text
+selection spec SHA-256 = 67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5
+private freeze SHA-256 = 2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22
+public audit SHA-256   = e994ddeb2875831a7a79e1181aa2bbbb39658316ebffcf896c7953265cdd70b3
+```
 
-CI run `32040413639`, job `95418609369`: **success**.
+Frozen machine stimulus set:
 
-Exact selected board states and SVGs remain private before collection. Public Git will receive only the deterministic rule, private-freeze SHA-256 commitment, and aggregate audit metadata.
+```text
+primary blocks              = 12
+primary C03 targets         = 24
+primary controls            = 12
+control balance             = P_ONLY 4 / M_ONLY 4 / MORPH_NEAR 4
+secondary C03 move-choice   = 6
+total unique formal states  = 42
+```
+
+All 42 positions are unique by rule state, historical trajectory, and opening prefix. Exact selected board states and participant SVGs remain private in the gitignored local freeze artifact; public Git contains only the deterministic rule, SHA-256 commitment, aggregate counts, and constraint audit.
+
+Observed aggregate generation-condition provenance is `LS-D2=10`, `LE-D2=10`, `B-D1=10`, `V2-D2=10`, `B-D2=1`, `B-D3=1`. Primary generation-condition balance was not a prospectively frozen gate, so this distribution is preserved without post hoc rebalancing or substitution.
+
+Stage 1 machine/instrument conclusion:
+
+`EXACT FORMAL MACHINE STIMULI FROZEN`
 
 ## Stage構成
 
 - **Stage 0** — repository / construct / feasibility / ethics / statistics audit。**COMPLETE**。
-- **Stage 1** — fresh machine pool、verification、matching、renderer、artifact audit、formal identity freeze。machine pool/artifact audit/freezer rule **PASS**、exact private materialization **PENDING**。
-- **Stage 2** — participant/stimulus/endpoint/test/exclusion/stopping/no-rescueをmachine-readableにfreezeし、ethics/recruitment gatesを満たした後にのみformal human data collection。**BLOCKED**。
+- **Stage 1** — fresh machine pool、verification、matching、renderer、artifact audit、exact formal machine stimulus freeze。**COMPLETE**。
+- **Stage 2** — ethics/recruitment/language/data-governance gatesとparticipant/stimulus/endpoint/test/exclusion/stopping/no-rescueをmachine-readableにfreezeした後にのみformal human data collection。**BLOCKED / PRE-COLLECTION**。
 
 ## 最初に読む
 
@@ -157,6 +170,7 @@ Exact selected board states and SVGs remain private before collection. Public Gi
 - `STAGE_1_STIMULUS_PROTOCOL.md`
 - `STAGE_1_FORMAL_STIMULUS_FREEZE_PROTOCOL.md`
 - `STAGE_1_ARTIFACT_AUDIT.json`
+- `STAGE_1_FORMAL_STIMULUS_FREEZE_AUDIT.json`
 - `EXPERT_ELIGIBILITY.md`
 - `STIMULUS_AND_BLINDING_PLAN.md`
 - `STATISTICAL_ANALYSIS_PLAN.md`
