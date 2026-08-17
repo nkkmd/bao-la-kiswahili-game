@@ -84,30 +84,73 @@ Validated components:
 
 ### TMHV-S1-E01 — Fresh corpus generation
 
-- Status: **PENDING LOCAL / COLAB EXECUTION**
-- required games: `1536`
-- extension / replacement: forbidden
-- reason not executed in the assistant local runtime: repository checkout network/DNS unavailable
-- CI substitution: forbidden by protocol
+- Status: **COMPLETE / PASS**
+- games generated: `1536 / 1536`
+- unique historical trajectories: `1453`
+- distinct opening prefixes: `1278`
+- six generation strata: `256` each
+- generation summary hash: `6af30d6827e36a0c8a9ba0a4856b2e590da98bab0021111ba014655ffd85e581`
+- source commit: `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`
+- source tree dirty: `false`
+- runtime: Node `v24.6.0`, Linux x64
+- extension / replacement: none
 
 ### TMHV-S1-E02 — Independent full verification
 
-- Status: **BLOCKED ON E01**
-- required: `passed=true`, `fullSearchRecomputation=true`
+- Status: **COMPLETE / PASS**
+- `passed = true`
+- `fullSearchRecomputation = true`
+- games verified: `1536`
+- mismatch count: `0`
+- verification identity hash: `225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397`
 
 ### TMHV-S1-E03 — Target/control selection and matching audit
 
-- Status: **BLOCKED ON E02**
-- primary target: `C03_TARGET`
-- primary control families: `P_ONLY`, `M_ONLY`, `MORPH_NEAR`
-- no same-trajectory target/control
-- no same-opening-prefix target/control
-- no control reuse
+- Status: **COMPLETE / PASS**
+- selection outcome-blind: `true`
+- human responses inspected: `false`
+- unique historical trajectories: `1453`
+- target generation strata represented: `6`
 
-### TMHV-S1-E04 — Formal stimulus freeze / instrument readiness
+Class counts:
 
-- Status: **BLOCKED ON E03 + ethics/recruitment feasibility**
-- Stage 1 dry-run responses may not become Stage 2 formal observations.
+```text
+C03_TARGET = 687
+P_ONLY     = 277
+M_ONLY     = 621
+MORPH_NEAR = 987
+```
+
+Matched counts:
+
+```text
+P_ONLY     = 277
+M_ONLY     = 605
+MORPH_NEAR = 672
+```
+
+- same-trajectory target/control exclusion: frozen
+- same-opening-prefix target/control exclusion: frozen
+- replacement performed: `false`
+- control reuse performed: `false`
+- pool hash: `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
+
+All ten prospective readiness gates passed.
+
+### TMHV-S1-E04 — Machine stimulus pool readiness
+
+- Status: **COMPLETE / PASS — MACHINE STIMULUS POOL READY**
+- machine estimability/diversity gates: all passed
+- human evidence collected: none
+- human data collection authorized: `false`
+
+### TMHV-S1-E05 — Compact artifact hash audit / exact formal stimulus freeze
+
+- Status: **PENDING**
+- required compact artifacts: `manifest.json`, `verification.json`, `stimulus-pool-audit.json`, `stimulus-pool.json`
+- exact 12-block formal stimulus identities: not yet frozen
+- separate secondary move-choice identities: not yet frozen
+- formal human reuse: still blocked pending prospective freeze and Stage 2 preregistration
 
 ## Stage 2 — preregistered human/expert validation
 
@@ -115,11 +158,13 @@ Status: **BLOCKED**
 
 Requirements before start:
 
+- compact Stage 1 artifact identity audit complete;
+- exact formal stimuli frozen;
 - ethics determination/consent complete;
 - expert recruitment feasibility established without criterion relaxation;
-- formal stimuli frozen;
 - participant/exclusion/missing/stopping rules frozen;
 - exact primary test/alpha/effect gate frozen;
 - secondary multiplicity policy frozen;
 - machine-readable Stage 2 spec validated;
-- no-rescue/source-integrity boundary committed.
+- no-rescue/source-integrity boundary committed;
+- separate authorization before any scientific human response.
