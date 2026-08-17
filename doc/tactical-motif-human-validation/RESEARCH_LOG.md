@@ -214,10 +214,65 @@ Implementation/tooling was added and validated by GitHub Actions:
 - result: `success`
 - deterministic formal-freezer test: `success`
 
-Current state:
+## 2026-08-18 — Exact private formal-stimulus materialization PASS
 
-`FORMAL FREEZE RULE VALIDATED / EXACT PRIVATE MATERIALIZATION PENDING / HUMAN DATA COLLECTION NOT AUTHORIZED`
+The deterministic freezer was run locally against the exact four hash-frozen Stage 1 artifacts. The public-safe audit reports `passed=true` and all formal-freeze checks true.
 
-Current human evidence:
+Cryptographic commitments:
 
-`humanExpertEvidence = NOT-YET-COLLECTED`
+```text
+selectionSpecSha256  = 67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5
+privateFreezeSha256  = 2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22
+publicAuditSha256    = e994ddeb2875831a7a79e1181aa2bbbb39658316ebffcf896c7953265cdd70b3
+```
+
+Formal machine stimulus result:
+
+```text
+primaryBlocks              = 12
+primaryPositions           = 36
+primaryC03Targets          = 24
+primaryControls            = 12
+controlBalance             = P_ONLY 4 / M_ONLY 4 / MORPH_NEAR 4
+secondaryMoveChoiceTargets = 6
+totalUniqueFormalPositions = 42
+```
+
+Passed constraints:
+
+- unique rule states across all 42 positions;
+- unique historical trajectories across all 42 positions;
+- unique opening prefixes across all 42 positions;
+- primary actors normalized to South;
+- primary phase Mtaji;
+- no human-data authorization.
+
+Observed aggregate generation-condition provenance:
+
+```text
+LS-D2 = 10
+LE-D2 = 10
+B-D1  = 10
+V2-D2 = 10
+B-D2  = 1
+B-D3  = 1
+```
+
+The prospective freeze rule required one secondary position per generation stratum but did not impose primary generation-condition balance. This observed distribution is therefore preserved without post-materialization rebalance, replacement, or aesthetic substitution.
+
+Exact rule-state identities, board states, seeds, and participant SVGs remain only in the private gitignored local artifact. The public audit contains no exact stimulus identities.
+
+Stage 1 machine/instrument conclusion:
+
+`EXACT FORMAL MACHINE STIMULI FROZEN`
+
+Current human state:
+
+```text
+humanExpertEvidence = NOT-YET-COLLECTED
+scientificRecruitmentAuthorized = false
+formalHumanResponsesAuthorized = false
+scientificHumanInferenceAuthorized = false
+```
+
+Next work moves to pre-collection human-study gates: ethics determination/consent/data governance, recruitment feasibility under frozen expert criteria, language-equivalence review, and machine-readable Stage 2 preregistration. Historical `TM-S2-C03 = CONFIRMED` remains unchanged.
