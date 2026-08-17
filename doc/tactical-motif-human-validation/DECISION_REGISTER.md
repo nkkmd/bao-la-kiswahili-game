@@ -123,7 +123,7 @@ Validation runs:
 - pre-authorization: run `31955303204`, job `95184928361` = success;
 - authorization binding: run `31955362114`, job `95185068008` = success.
 
-**Authorized:** local/Colab generation, independent verification, outcome-blind selection/matching, rendering audit, non-scientific dry runs.
+**Authorized:** local generation, independent verification, outcome-blind selection/matching, rendering audit, non-scientific dry runs.
 
 **Not authorized:** scientific expert recruitment, formal human responses, human outcome inspection, Stage 2 inference.
 
@@ -152,4 +152,44 @@ Observed under the frozen contract:
 - control reuse performed = `false`
 - pool hash = `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
 
-**Boundary:** Machine pool readiness is not human validation. Human evidence remains `NOT-YET-COLLECTED`, and no exact formal 12-block stimulus set, scientific recruitment, formal response collection, or Stage 2 inference is authorized by this decision.
+**Boundary:** Machine pool readiness is not human validation. Human evidence remains `NOT-YET-COLLECTED`.
+
+## TMHV-D029 — Compact Stage 1 artifacts are hash-frozen after independent audit
+
+**Decision:** Accept the returned compact Stage 1 artifact bundle as identity-consistent and internally valid, and bind subsequent exact formal-stimulus materialization to its exact SHA-256 values.
+
+Bundle SHA-256:
+
+`88918bf56e2e4e58875b014ab47da71b69756121c6c6dfa8ea76348400c16f3c`
+
+Artifact SHA-256:
+
+```text
+manifest.json            24d23be9e08ef392f1eab5f767dc069cad4a819c2211f2f2c88c64801038dea4
+verification.json        39f642eb65de48da99ba6c491d5647eb23c33e40631d3db36995e4cb725b0866
+stimulus-pool-audit.json ccf376539588b5b06ad5ca0b16bba1b61b096506d9b1e0c00f29f785a1338c27
+stimulus-pool.json       a1ee4f6749a6f6b433122ea896975deef45fa6b2fb41c1a9edc53955a302f5a8
+```
+
+Independent audit found zero same-trajectory target/control violations, zero same-opening-prefix violations, zero duplicate controls or targets within a family, and zero matching-cost violations above the frozen maximum.
+
+## TMHV-D030 — Exact formal positions are privately materialized from a public deterministic rule
+
+**Decision:** Freeze `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1` before exact identity materialization.
+
+The formal machine stimulus construction is fixed as:
+
+- 12 three-position primary blocks;
+- 4 controls from each of `P_ONLY`, `M_ONLY`, and `MORPH_NEAR`;
+- target-A/control chosen from existing Stage 1 matches by stored cost then SHA-256 tie-break;
+- target B chosen from unused C03 targets by exact Stage 1 nuisance cost `<=10` then SHA-256 tie-break;
+- global no-reuse of rule state, historical trajectory, and opening prefix across all 36 primary positions;
+- six secondary C03 target positions, one per generation stratum, with no primary/secondary recurrence;
+- total unique formal positions = `42`;
+- no manual aesthetic substitution and no human-outcome-dependent reselection.
+
+Exact selected board identities and SVGs remain private before formal collection. Public Git receives only the rule, a later private-freeze SHA-256 commitment, and aggregate audit metadata.
+
+CI validation of the deterministic freezer: run `32040413639`, job `95418609369` = success.
+
+**Boundary:** Formal machine-stimulus freezing is not ethics approval, recruitment authorization, human validation, or traditionality evidence.
