@@ -1,100 +1,107 @@
 # ETHICS_AND_DATA_GOVERNANCE — Tactical Motif Human / Expert Validation Study 1
 
-Updated: 2026-08-16  
-Status: **PRE-COLLECTION DESIGN**
+Updated: 2026-08-18  
+Status: **CLOSED BEFORE HUMAN-FACING RESEARCH**
 
-## 1. Recruitment gate
+## 1. Original recruitment gate
 
-No scientific participant recruitment or response collection may start until:
+The study design required that scientific participant recruitment or response collection not begin until:
 
-1. participant information/consent materials are finalized;
-2. the responsible researcher determines and documents the applicable institutional/funder/publication ethics-review requirement;
-3. any required approval/exemption/not-required determination is obtained before recruitment;
-4. private data storage and withdrawal workflow are operational.
+1. participant information/consent materials were finalized;
+2. the responsible researcher determined and documented the applicable ethics-review requirement;
+3. any required approval/exemption/not-required determination was obtained before recruitment;
+4. private data storage and withdrawal workflow were operational.
 
-The repository alone cannot determine which institutional ethics process applies to a future investigator. Absence of a repository-level requirement is not treated as ethics approval.
+The repository itself was never treated as ethics approval.
 
-## 2. Data minimization
+## 2. Study closure before recruitment
 
-Collect only fields required for eligibility, provenance, and the prespecified scientific endpoints.
+The study was conducted as independent research without institutional affiliation.
 
-Expected categories:
+Before scientific recruitment began, the investigator determined that there was no feasible current route to contact qualified Bao experts, researchers, or competitive players for the frozen primary cohort.
 
-- pseudonymous participant ID;
-- age eligibility confirmation, not full birth date;
-- Bao experience duration/category;
-- qualification route/evidence category;
-- neutral competence-screen result;
-- prior C03 exposure flag;
-- instrument language/version;
-- task responses and timestamps needed for integrity;
-- optional free-text explanations.
+The human-facing phase was therefore not launched.
 
-Avoid precise location, unnecessary demographic detail, government identifiers, or unrelated personal data.
+Observed closure state:
 
-## 3. Contact/linkage separation
+```text
+scientific recruitment authorized = false
+scientific recruitment started = false
+persons contacted for scientific recruitment = 0
+consented participants = 0
+formal human responses = 0
+identifiable participant data collected = false
+```
 
-Recruitment contact information must be stored separately from scientific responses. A private linkage table, if needed for withdrawal/duplicate handling, must not be committed to Git.
+## 3. Ethics claims at closure
 
-Public participant IDs must not embed name, email, phone, username, or other directly identifying values.
+This study makes **no claim** of:
 
-## 4. Public repository boundary
+- institutional ethics approval;
+- ethics exemption;
+- a general determination that ethics review is unnecessary for this topic;
+- permission to recruit future participants under this closed protocol.
 
-Public GitHub may contain:
+Because no human-facing scientific procedure was initiated, no consent procedure was executed and no participant-data retention/withdrawal lifecycle became active.
+
+A future human validation effort must make its own applicable ethics determination before recruitment.
+
+## 4. Data actually collected
+
+Human participant data collected in Study 1:
+
+```text
+contact data = 0
+linkage records = 0
+eligibility records = 0
+consent records = 0
+task responses = 0
+free-text responses = 0
+```
+
+The only retained private artifact relevant to a possible future human study is the exact machine-generated formal stimulus freeze, which contains no human participant data.
+
+Private freeze SHA-256 commitment:
+
+`2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
+
+## 5. Public repository boundary
+
+Public GitHub may retain:
 
 - protocol/spec/schema;
-- aggregate/de-identified summaries;
-- stimulus identity hashes where they do not expose participant data;
+- aggregate machine results;
+- stimulus cryptographic commitments;
 - software/tooling;
-- audit manifests and reproducibility metadata.
+- audit manifests and reproducibility metadata;
+- the N=0 recruitment-feasibility closure.
 
-Public GitHub must not contain:
+No participant-identifying material exists from this study.
 
-- names/contact details;
-- raw participant identifiers/linkage keys;
-- raw free text containing identifiable references;
-- private eligibility documentation;
-- potentially identifying metadata combinations.
+## 6. Counterfactual policy if a future human study is opened
 
-`artifacts/local/` is gitignored, but ignored status is not sufficient security for identifiable raw data. Durable raw storage should be private and encrypted/access-controlled.
+If a later prospective study recruits humans, the prior design principles remain appropriate starting constraints:
 
-## 5. Free-text handling
+- collect only necessary eligibility/provenance/endpoint fields;
+- keep contact information separate from scientific responses;
+- use pseudonymous participant IDs;
+- treat free text as potentially identifying;
+- define withdrawal and retention before consent;
+- keep identifiable raw data outside public Git;
+- provide formal materials in languages participants can adequately understand.
 
-Free-text explanations are treated as potentially identifying.
+These are future-study requirements, not evidence that they were executed in the present N=0 closure.
 
-Before any public quotation:
+## 7. Final governance boundary
 
-- remove names/locations/unique personal references;
-- confirm separate quotation permission if the consent form requires it;
-- preserve original meaning without fabricating text;
-- do not publish raw full-response dumps.
+The present study closes with:
 
-## 6. Withdrawal
+```text
+humanParticipants = 0
+humanDataCollected = false
+scientificRecruitmentStarted = false
+institutionalEthicsApprovalClaimed = false
+ethicsExemptionClaimed = false
+```
 
-Consent materials must state a concrete withdrawal deadline and mechanism.
-
-Default design intent:
-
-- identifiable/pseudonym-linkable raw data can be withdrawn until the preregistered de-linking/aggregate-freeze point;
-- after irreversible de-identification/aggregate publication, selective removal may no longer be technically possible and this limitation must be disclosed before consent.
-
-## 7. Retention
-
-Provisional default:
-
-- contact/linkage and identifiable raw material: retain only as long as necessary for study integrity/withdrawal, with a maximum target of 5 years after study closure/publication;
-- de-identified aggregate/protocol/audit metadata: may be retained for reproducibility.
-
-If an applicable institution/funder requires another retention period, it must be fixed before collection and documented as a protocol version change, not changed in response to outcomes.
-
-## 8. Licensing and quotations
-
-Participant consent to research use does not automatically imply permission to publish identifiable quotations or license raw responses under the repository software/documentation license. Quotation/public-release permission is handled separately.
-
-## 9. Language and comprehension
-
-Formal consent/instructions must be available in languages the enrolled experts can adequately understand. Planned instrument language support should prioritize Kiswahili and English; any additional formal-language version requires content-equivalence review before Stage 2.
-
-## 10. Ethics-related stop rule
-
-If required ethics determination, consent validity, or secure data handling is unresolved, stop before human data collection. Do not reinterpret technical readiness as permission to recruit participants.
+The lack of human data cannot be reinterpreted as human support or opposition to `TM-S2-C03`.
