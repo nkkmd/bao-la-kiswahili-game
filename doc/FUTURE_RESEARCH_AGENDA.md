@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.5.0  
+Version: 1.6.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-15
+更新日: 2026-08-18
 
 ## 1. 目的
 
@@ -13,9 +13,11 @@ Status: Active
 
 本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
 
-2026-08-15時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
+2026-08-18時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
 
-Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。Tactical Motifs Study 1についても、C01/C02/C04を追加game・paired-definition substitution・threshold変更で救済せず、C03のtraditional/expert/human/pedagogical validationは別のprospective studyとして扱う。
+さらにC03のHuman / Expert Validation Study 1も完了した。machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。一方human側は、独立研究者としてfrozen expert criteriaを満たす対象へ現実的にアクセスできる経路を確保できず、scientific recruitmentを開始しないまま`N=0`で閉じた。human axisのformal labelは`INCONCLUSIVE-NOT-ESTIMABLE`であり、これはC03へのnegative human evidenceではない。
+
+Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。Tactical Motifs Study 1についても、C01/C02/C04を追加game・paired-definition substitution・threshold変更で救済しない。C03のhuman/expert validationを再び行う場合も、完了済みHuman / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`を上書きせず、新しいprospective studyまたはnew responses前に明示的にversionedされたprospective reopeningとして扱う。
 
 ## 2. 既存研究との境界
 
@@ -33,12 +35,13 @@ Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclus
 - Namua→Mtaji Strategic Temporal Transition Study 1 — [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
 - Position Complexity / Difficulty Study 1 — [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
 - Tactical Motifs / Tesuji Study 1 — [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
+- Tactical Motif Human / Expert Validation Study 1 — [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
 > Baoの局面にはどのような構造があり、どのような原理で戦略が変化し、それを人間が理解可能な知識として記述できるか。
 
-完了済みStudyのformal decision、事前登録条件、negative/null/inconclusive result、解釈境界は後続研究によって変更しない。後続研究は、既存Studyの救済や再定義ではなく、新しい研究課題として開始する。
+完了済みStudyのformal decision、事前登録条件、negative/null/inconclusive/non-estimable result、解釈境界は後続研究によって変更しない。後続研究は、既存Studyの救済や再定義ではなく、新しい研究課題として開始する。
 
 ## 3. 研究上の共通原則
 
@@ -357,6 +360,61 @@ traditional/expert-recognized tesuji、human importance、beginner importance、
 
 ---
 
+### 4.4.1 C03 Human / Expert Validation — Study 1完了
+
+#### 現在の状態
+
+**Study 1 complete — machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`。**
+
+- 初見向け概要: [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md`](tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md)
+- Human-axis closure: [`tactical-motif-human-validation/STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json`](tactical-motif-human-validation/STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json)
+
+Tactical Motifs Study 1でmachine-confirmedとなった`TM-S2-C03`を、Bao expertが局面横断的な再利用可能原理として認識するかを検証するための独立prospective studyとして開始した。
+
+Machine/instrument側では次を完了した。
+
+```text
+fresh machine games = 1536
+independent verification mismatch = 0
+C03_TARGET = 687
+matched P_ONLY = 277
+matched M_ONLY = 605
+matched MORPH_NEAR = 672
+formal primary blocks = 12
+formal unique positions = 42
+```
+
+Exact formal positionsはdeterministic ruleでfreezeされ、private exact freeze SHA-256は次で固定された。
+
+`2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
+
+Human側では、所属機関によらない独立研究としてscientific recruitment開始前の時点で、frozen expert criteriaを満たすBao専門家・研究者・競技者へ現実的にアクセスする経路を確保できなかった。
+
+```text
+accessible eligible experts = 0
+scientific recruitment started = false
+persons contacted for scientific recruitment = 0
+formal human responses = 0
+minimum included experts required = 10
+```
+
+minimum Nやexpert criteriaを緩和せず、human axisは`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として閉じた。これはexpertがC03を認識しないというnegative evidenceではない。
+
+Final evidence state:
+
+```text
+machineEvidence = CONFIRMED
+humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
+humanExpertN = 0
+```
+
+#### Future-work boundary
+
+将来qualified expertへのアクセスが可能になってhuman/expert recognitionを再検証する場合、今回のN=0 closureをretroactiveに変更しない。新しいprospective independent study、またはnew responses前に明示的にversionedされたprospective reopeningとして扱う。
+
+---
+
 ### 4.5 悪手と錯覚パターン
 
 #### 中心課題
@@ -557,7 +615,7 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 この段階では、局面知識を教材、棋譜解説、学習支援へ変換する。
 
-Tactical Motifs Study 1のC03を教材・expert tesujiへ昇格させる場合は、**human/expert validationを独立prospective studyとして実施する**。machine confirmationをそのままpedagogical claimへ読み替えない。
+C03 Human / Expert Validation Study 1は、machine-to-human validation instrumentを42 formal positionsのfreezeまで完成させたが、expert accessを確保できずhuman axisは`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として完了した。したがってC03を教材・expert tesujiへ昇格させる根拠は得られていない。将来再検証する場合は新しいprospective human studyとして扱い、machine confirmationをそのままpedagogical claimへ読み替えない。
 
 ### 第3段階: 理論および完全解析への展開
 
@@ -580,7 +638,7 @@ Tactical Motifs Study 1のC03を教材・expert tesujiへ昇格させる場合�
 
 定石とは異なる局面横断的な手筋と、典型的な誤判断を対応付ける。
 
-Tactical Motifs / Tesuji Study 1はこの柱の最初のmachine-reproducible motif studyとして完了した。4 canonical candidatesのうちC03がfresh Stage 2 formal confirmationを通過した。次の主要課題は、C03をtraditional/expert/human/pedagogical tesujiへ自動昇格させることではなく、**独立したhuman/expert validation**と、C03とは別の新規motif family探索をprospectively分離することである。
+Tactical Motifs / Tesuji Study 1はこの柱の最初のmachine-reproducible motif studyとして完了した。4 canonical candidatesのうちC03がfresh Stage 2 formal confirmationを通過した。C03 Human / Expert Validation Study 1ではmachine/instrument pipelineとformal stimulus freezeまでは完了したが、human evidenceはN=0で非推定可能だった。したがって次の主要課題は、今回のN=0 resultを救済することではなく、expert accessを確保できる条件が成立した場合に新しいprospective human/expert validationを設計すること、traditional/pedagogical validationを別studyに分離すること、そしてC03とは別の新規motif family探索をprospectively行うことである。
 
 ### 6.3 Bao終盤科学
 
@@ -606,7 +664,7 @@ Namua→Mtajiを扱う場合、現engineではfirst-Mtaji timingがdeterministic
 
 Position Complexity / Difficulty Study 1のH1を再検証する場合、既存Stage 2 corpusのoptimizer/tolerance変更による再判定は行わない。optimizer、収束基準、failure handling、fresh seed blockを新しいprospective preregistrationで固定してから新規evidenceを生成する。
 
-Tactical Motifs / Tesuji Study 1は完了済みである。C01/C02/C04を既存Stage 2 dataの再解析、追加seed、paired-definition substitution、threshold変更で救済しない。C03についてhuman/expert/traditional recognition、pedagogical value、external validityを検証する場合は、Study 1のformal `CONFIRMED`を変更しない新しいprospective independent studyとして、対象population・判定基準・評価者・analysis planを事前固定する。
+Tactical Motifs / Tesuji Study 1は完了済みである。C01/C02/C04を既存Stage 2 dataの再解析、追加seed、paired-definition substitution、threshold変更で救済しない。C03についてhuman/expert recognitionを再検証する場合は、Tactical Motif Human / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`を変更しない新しいprospective independent study、またはnew responses前に明示的にversionedされたprospective reopeningとして、対象population・判定基準・評価者・analysis plan・ethics boundaryを事前固定する。traditional recognition、pedagogical value、external validityもそれぞれ別の証拠軸として扱う。
 
 ## 8. 到達目標
 

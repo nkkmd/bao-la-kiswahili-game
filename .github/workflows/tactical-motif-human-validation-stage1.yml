@@ -1,0 +1,66 @@
+name: Tactical motif human validation Stage 1 tooling
+
+on:
+  push:
+    branches:
+      - research/tactical-motif-human-validation
+    paths:
+      - "doc/tactical-motif-human-validation/**"
+      - "tools/experiments/lib/tactical-motif-human-validation-*.js"
+      - "tools/experiments/validate-tactical-motif-human-validation-stage1-spec.js"
+      - "tools/experiments/run-tactical-motif-human-validation-stage1.js"
+      - "tools/experiments/verify-tactical-motif-human-validation-stage1.js"
+      - "tools/experiments/freeze-tactical-motif-human-validation-formal-stimuli.js"
+      - "test/tactical-motif-human-validation-stage1.test.js"
+      - "test/tactical-motif-human-validation-formal-freeze.test.js"
+      - ".github/workflows/tactical-motif-human-validation-stage1.yml"
+  pull_request:
+    paths:
+      - "doc/tactical-motif-human-validation/**"
+      - "tools/experiments/lib/tactical-motif-human-validation-*.js"
+      - "tools/experiments/validate-tactical-motif-human-validation-stage1-spec.js"
+      - "tools/experiments/run-tactical-motif-human-validation-stage1.js"
+      - "tools/experiments/verify-tactical-motif-human-validation-stage1.js"
+      - "tools/experiments/freeze-tactical-motif-human-validation-formal-stimuli.js"
+      - "test/tactical-motif-human-validation-stage1.test.js"
+      - "test/tactical-motif-human-validation-formal-freeze.test.js"
+      - ".github/workflows/tactical-motif-human-validation-stage1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-tooling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate Stage 1 machine stimulus contract
+        run: node tools/experiments/validate-tactical-motif-human-validation-stage1-spec.js
+      - name: Validate inherited representation prerequisites
+        run: |
+          node test/symmetry-transform.test.js
+          node test/position-typology-features.test.js
+          node test/tactical-motif-stage0.test.js
+      - name: Validate human-validation Stage 1 tooling
+        run: node test/tactical-motif-human-validation-stage1.test.js
+      - name: Validate deterministic formal stimulus freezer
+        run: node test/tactical-motif-human-validation-formal-freeze.test.js
+      - name: Print frozen source hashes without scientific generation
+        run: node tools/experiments/run-tactical-motif-human-validation-stage1.js --phase status
+      - name: Validate authorization boundary
+        run: |
+          if [ -f doc/tactical-motif-human-validation/preregistration/STAGE_1_STIMULUS_AUTHORIZATION.json ]; then
+            node - <<'NODE'
+          const C = require('./tools/experiments/lib/tactical-motif-human-validation-stage1.js');
+          const { specSha256 } = C.loadSpec();
+          const { authorization, authorizationSha256 } = C.loadAuthorization(specSha256);
+          console.log(JSON.stringify({authorizationSha256,machineStimulusGenerationAuthorized:authorization.machineStimulusGenerationAuthorized,humanDataCollectionAuthorized:authorization.humanDataCollectionAuthorized,scientificHumanInferenceAuthorized:authorization.scientificHumanInferenceAuthorized}, null, 2));
+          NODE
+          else
+            echo "Stage 1 authorization absent; specification alone remains non-authorizing."
+          fi

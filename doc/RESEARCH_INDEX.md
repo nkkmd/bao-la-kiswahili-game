@@ -197,6 +197,51 @@ Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical 
 
 ---
 
+### 8. Tactical Motif Human / Expert Validation — Study 1
+
+**研究題目:** Baoにおけるmachine-confirmed tactical motifのHuman / Expert Validation — TM-S2-C03は人間の熟練者にも手筋として認識されるか  
+**状態:** **Study 1 complete — machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`**  
+**作業branch:** `research/tactical-motif-human-validation`
+
+Tactical Motifs Study 1でmachine-confirmedとなった`TM-S2-C03`を、人間のBao expertが異なる局面に共通するtransferable move principleとして認識するかを検証するためのprospective independent studyです。
+
+Machine/instrument側ではfresh 1,536-game corpusを生成し、全1,536局をindependent full recomputationでmismatch 0まで確認しました。prospective C03 target / near-miss controlsを構成し、全readiness gateをPASSしたうえで、12 primary blocks、24 C03 targets、12 matched controls、6 secondary move-choice targetsからなる42 unique formal positionsをdeterministically freezeしました。
+
+Human側は、所属機関によらない独立研究としてformal recruitmentを開始する前の時点で、frozen expert criteriaを満たすBao専門家・研究者・競技者へ現実的にアクセスする経路を確保できませんでした。
+
+```text
+accessible eligible experts = 0
+scientific recruitment started = false
+formal human responses = 0
+minimum included experts required = 10
+```
+
+expert criteriaやminimum Nを緩和せず、human axisを`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として閉じました。これはhuman negative resultではなく、expert recognitionについてformal inferenceできなかったという結果です。
+
+Final evidence state:
+
+```text
+machineEvidence = CONFIRMED
+humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
+humanExpertN = 0
+```
+
+**最初に読む:**
+
+- [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md`](tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md) — 科学的最終統合
+- [`tactical-motif-human-validation/CURRENT_STATUS.md`](tactical-motif-human-validation/CURRENT_STATUS.md) — closure状態とimmutable boundaries
+- [`tactical-motif-human-validation/STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json`](tactical-motif-human-validation/STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json) — machine-readable N=0 closure
+- [`tactical-motif-human-validation/DECISION_REGISTER.md`](tactical-motif-human-validation/DECISION_REGISTER.md) — scientific decisions / no-rescue boundaries
+- [`tactical-motif-human-validation/EXPERIMENT_INDEX.md`](tactical-motif-human-validation/EXPERIMENT_INDEX.md) — stage/experiment index
+
+**Boundary:** N=0はC03へのnegative human evidenceではありません。将来qualified expertsへのアクセスが可能になっても、このclosed Study 1をretroactiveに書き換えず、新規prospective studyまたはnew responses前に明示的にversionedされたprospective reopeningとして扱います。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -211,7 +256,7 @@ Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについて�
 
 Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。数値収束問題を解消してH1を再検証する場合は、optimizer/convergence procedureを事前固定した新しいprospective independent replicationとfresh corpusを使用します。Human difficulty validationも別studyです。
 
-Tactical Motifs / Tesuji Study 1は完了しました。C03のhuman/expert/traditional tesuji validation、pedagogical validation、別engine/search/rulesでのexternal validityは、Study 1のformal decisionを変更しない新規prospective studyとして扱います。C01/C02/C04を追加gameやpaired-definition substitutionで救済することはfuture workに含めません。
+Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加gameやpaired-definition substitutionで救済することはfuture workに含めません。C03のhuman/expert validationについてはTactical Motif Human / Expert Validation Study 1がmachine/instrument pipelineを42 formal positionsのfreezeまで完了しましたが、human axisはN=0で`INCONCLUSIVE-NOT-ESTIMABLE`として閉じました。将来再びhuman/expert recognitionを検証する場合は、このclosed resultを変更するのではなく新しいprospective studyまたは明示的にversionedされたprospective reopeningとして扱います。traditionality、pedagogical validation、別engine/search/rulesでのexternal validityも別の研究課題です。
 
 ---
 

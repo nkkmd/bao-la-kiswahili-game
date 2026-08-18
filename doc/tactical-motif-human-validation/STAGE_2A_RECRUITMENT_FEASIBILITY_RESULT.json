@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "studyId": "TMHV-STUDY1",
+  "stageId": "TMHV-S2A-RECRUITMENT-FEASIBILITY-2026-08-18-v1",
+  "resultDate": "2026-08-18",
+  "studyMode": "independent-research-without-institutional-affiliation",
+  "status": "CLOSED-BEFORE-SCIENTIFIC-RECRUITMENT",
+  "historicalMachineEvidence": {
+    "TM-S2-C01": "NOT-CONFIRMED",
+    "TM-S2-C02": "NOT-CONFIRMED",
+    "TM-S2-C03": "CONFIRMED",
+    "TM-S2-C04": "NOT-CONFIRMED",
+    "unchangedByThisClosure": true
+  },
+  "stage1FormalStimulusFreeze": {
+    "freezeId": "TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1",
+    "selectionSpecSha256": "67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5",
+    "privateFreezeSha256": "2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22",
+    "formalPositions": 42,
+    "preservedWithoutReselection": true
+  },
+  "operationalAccessDetermination": {
+    "basis": "investigator-declared current operational constraint before formal scientific recruitment",
+    "accessibleEligibleExpertsAtDecisionPoint": 0,
+    "contactWithExpertsResearchersOrCompetitivePlayersCurrentlyFeasible": false,
+    "claimOfFailedRecruitmentCampaign": false,
+    "claimOfPopulationPrevalence": false
+  },
+  "recruitment": {
+    "scientificRecruitmentAuthorized": false,
+    "scientificRecruitmentStarted": false,
+    "personsContactedForScientificRecruitment": 0,
+    "consentedParticipants": 0,
+    "includedPrimaryExperts": 0,
+    "minimumIncludedPrimaryExpertsRequired": 10,
+    "expertCriteriaRelaxed": false
+  },
+  "humanData": {
+    "formalHumanResponsesAuthorized": false,
+    "formalHumanResponsesCollected": 0,
+    "primaryParticipantsObserved": 0,
+    "primaryBlocksObserved": 0,
+    "humanOutcomeInspectionPerformed": false
+  },
+  "estimability": {
+    "minimumPrimaryExpertsGatePassed": false,
+    "observedIncludedPrimaryExperts": 0,
+    "requiredIncludedPrimaryExperts": 10,
+    "formalHumanInferencePerformed": false,
+    "primaryExactBinomialTestPerformed": false,
+    "primaryPValue": null,
+    "medianPrimaryScore": null
+  },
+  "finalHumanAxisDecision": "INCONCLUSIVE-NOT-ESTIMABLE",
+  "reasonCode": "ZERO-ACCESSIBLE-ELIGIBLE-EXPERT-COHORT-PRECOLLECTION",
+  "ethicsAndGovernance": {
+    "institutionalEthicsApprovalClaimed": false,
+    "ethicsExemptionClaimed": false,
+    "humanFacingResearchProcedureInitiated": false,
+    "identifiableParticipantDataCollected": false,
+    "consentProcedureExecuted": false,
+    "note": "The study closed before scientific recruitment or response collection. This record does not claim that ethics review would be unnecessary for a future human study."
+  },
+  "interpretationBoundary": {
+    "negativeHumanEvidenceAuthorized": false,
+    "notHumanExpertValidatedDecisionAuthorized": false,
+    "humanExpertValidatedDecisionAuthorized": false,
+    "humanRecognitionClaimAuthorized": false,
+    "traditionalTesujiClaimAuthorized": false,
+    "pedagogicalClaimAuthorized": false,
+    "machineConfirmedC03RemainsValid": true,
+    "futureHumanValidationRequiresNewProspectiveStudyOrExplicitProspectiveReopening": true
+  },
+  "noRescue": {
+    "lowerMinimumExpertCount": false,
+    "relaxExpertEligibility": false,
+    "substituteNonExpertsForExperts": false,
+    "substituteAIForHumanExperts": false,
+    "reselectFormalStimuli": false,
+    "reinterpretZeroParticipantsAsNegativeHumanOutcome": false
+  }
+}
