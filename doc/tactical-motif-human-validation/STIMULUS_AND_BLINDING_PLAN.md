@@ -1,11 +1,24 @@
 # STIMULUS_AND_BLINDING_PLAN — Tactical Motif Human / Expert Validation Study 1
 
-Updated: 2026-08-17  
-Status: **STAGE 1 MACHINE POOL READY / THREE-POSITION FORMAL FREEZE RULE VALIDATED / NO HUMAN DATA**
+Updated: 2026-08-18  
+Status: **EXACT FORMAL MACHINE STIMULI FROZEN / NEVER PRESENTED TO HUMAN PARTICIPANTS**
+
+## Final use state
+
+Stage 1 completed the machine stimulus pipeline and deterministically froze the exact formal set. Study 1 then closed before scientific recruitment.
+
+```text
+exact formal positions frozen = 42
+scientific recruitment started = false
+human participants exposed to formal stimuli = 0
+formal human responses = 0
+```
+
+The planned blinding/task-order rules below were therefore technically prepared but never exercised on human participants.
 
 ## 1. Fresh stimulus pool
 
-Stage 1 uses a new non-overlapping machine corpus rather than Tactical Motifs Study 1 formal roots.
+Stage 1 used a new non-overlapping machine corpus rather than Tactical Motifs Study 1 formal roots.
 
 Frozen v1 population:
 
@@ -59,7 +72,7 @@ MORPH_NEAR = 987
 
 ## 4. Matching variables
 
-The Stage 1 nuisance matching is frozen on:
+The Stage 1 nuisance matching was frozen on:
 
 - generation condition;
 - ply bin;
@@ -86,7 +99,7 @@ The compact artifact audit independently found zero same-trajectory violations, 
 
 The initial Stage 0 draft considered a four-position target-pair vs control-pair layout. That draft was superseded **before scientific human data** by `TMHV-D024` and the frozen Stage 1 machine-readable contract.
 
-The current formal candidate is a **three-position discrimination block**:
+The frozen formal design is a **three-position discrimination block**:
 
 ```text
 C03 target A
@@ -94,47 +107,53 @@ C03 target B
 matched non-C03 control
 ```
 
-The participant selects which two positions are better explained by the same reusable move-selection principle. The correct construct pair is target A + target B. There are three possible pairs, so random correctness is `1/3`.
+A participant would select which two positions are better explained by the same reusable move-selection principle. The correct construct pair is target A + target B. There are three possible pairs, so random correctness is `1/3`.
 
-Planned formal instrument:
+Frozen formal instrument structure:
 
 - 12 primary blocks;
 - 4 blocks with `P_ONLY` control;
 - 4 blocks with `M_ONLY` control;
 - 4 blocks with `MORPH_NEAR` control.
 
-The exact formal identities are generated only by `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`.
+The exact formal identities were generated only by `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`.
 
 ## 6. Formal position recurrence firewall
 
-The exact formal-freeze rule requires, across all 36 primary positions:
+The exact formal-freeze result contains, across all 36 primary positions:
 
 - unique `ruleStateKey`;
 - unique `historicalTrajectoryHash`;
 - unique `openingPrefixHash`.
 
-Target B is selected from unused C03 targets using the same Stage 1 nuisance cost relative to target A, with maximum accepted cost `10`.
+Target B was selected from unused C03 targets using the same Stage 1 nuisance cost relative to target A, with maximum accepted cost `10`.
 
-Six secondary move-choice C03 target positions are selected separately, one per generation stratum. They may not reuse any primary rule state, trajectory, or opening prefix and may not reuse one another.
+Six secondary move-choice C03 target positions were selected separately, one per generation stratum. They do not reuse any primary rule state, trajectory, or opening prefix and do not reuse one another.
 
-Expected total formal unique positions: `42`.
+Total formal unique positions: `42`.
+
+Private exact freeze SHA-256:
+
+`2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
 
 ## 7. Opening leakage firewall
 
-Primary stimuli show board/rule state only. They do not show opening move history, seed, generator condition, candidate ID, search values, ply, reusable-pit counts, or Study 1 labels.
+The intended primary stimuli show board/rule state only. They do not show opening move history, seed, generator condition, candidate ID, search values, ply, reusable-pit counts, or Study 1 labels.
 
-Position-only presentation is the formal default. A context-present condition requires a separate prospective study/version.
+Position-only presentation was the formal default. A context-present condition would require a separate prospective study/version.
 
 ## 8. Task contamination firewall
 
-Formal order remains:
+The intended formal order was:
 
 1. primary three-position discrimination;
 2. individual move choice on different positions;
 3. free-text explanation;
 4. explicit label task.
 
-No formal position is reused across primary and secondary tasks. Explicit `tesuji`/C03 terminology appears only after uncued tasks are complete.
+No formal position was to be reused across primary and secondary tasks. Explicit `tesuji`/C03 terminology would appear only after uncued tasks.
+
+No human participant reached any of these tasks in Study 1.
 
 ## 9. Rendering requirements
 
@@ -148,23 +167,34 @@ The dedicated renderer:
 
 The compact artifact audit confirmed the participant-facing object is restricted to `stimulusId`, `phase`, `actor`, and `svg`, with all actors South and all positions Mtaji.
 
-## 10. Pre-collection public/private boundary
+## 10. Public/private boundary
 
-Exact selected formal board states and participant SVGs are kept in the gitignored private local freeze artifact before collection. Public Git records only:
+Exact selected formal board states and participant SVGs remain in the gitignored private local freeze artifact. Public Git records only:
 
 - the deterministic selection rule;
 - exact input artifact hashes;
-- the private freeze SHA-256 commitment after materialization;
+- the private freeze SHA-256 commitment;
 - aggregate audit metadata.
 
-This reduces avoidable participant pre-exposure while preserving a cryptographic preregistration commitment.
+Because Study 1 closed at N=0, no participant exposure occurred. Keeping the exact identities private also preserves the option of a separately versioned future prospective study without unnecessary public pre-exposure.
 
 ## 11. Negative-control candidates C01/C02/C04
 
-They are not primary controls.
+They were not primary controls.
 
-Fresh C01/C02/C04 examples may be included only as separately prespecified secondary calibration items. Human results for such items do not change their historical machine labels and do not affect C03 primary decision.
+No human calibration data for C01/C02/C04 were collected. Their historical machine labels remain unchanged.
 
-## 12. Human-data boundary
+## 12. Human-data closure
 
-No scientific recruitment or human response collection is authorized by Stage 1 machine readiness, artifact audit, rendering audit, or exact formal-stimulus freezing. Stage 2 preregistration, ethics/consent/storage gates, and separate authorization remain mandatory.
+Stage 1 machine readiness, artifact audit, rendering audit, and exact formal-stimulus freezing never authorized human recruitment or responses.
+
+Study 1 closed before those human-facing gates were completed or activated:
+
+```text
+scientific recruitment started = false
+formal human responses = 0
+humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
+humanExpertN = 0
+```
+
+A future expert-validation effort must be a new prospective study or an explicitly versioned prospective reopening established before new human responses.
