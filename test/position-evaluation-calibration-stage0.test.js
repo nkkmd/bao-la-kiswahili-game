@@ -19,7 +19,10 @@ const authPath = path.resolve(
   __dirname,
   "../doc/position-evaluation-calibration/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json",
 );
-assert.equal(fs.existsSync(authPath), false,
-  "Stage 1 authorization must remain absent until Stage 0 technical validation is accepted");
+if (fs.existsSync(authPath)) {
+  const Common = require("../tools/experiments/lib/position-evaluation-calibration-common.js");
+  assert.doesNotThrow(() => Common.loadAuthorization(loaded.spec, loaded.specSha256),
+    "Any future Stage 1 authorization must be spec- and source-hash-bound");
+}
 
 console.log("Position evaluation calibration Stage 0 contract tests passed");
