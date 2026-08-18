@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.6.0  
+Version: 1.6.1  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-18
@@ -15,7 +15,7 @@ Status: Active
 
 2026-08-18時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
 
-さらにC03のHuman / Expert Validation Study 1も完了した。machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。一方human側は、独立研究者としてfrozen expert criteriaを満たす対象へ現実的にアクセスできる経路を確保できず、scientific recruitmentを開始しないまま`N=0`で閉じた。human axisのformal labelは`INCONCLUSIVE-NOT-ESTIMABLE`であり、これはC03へのnegative human evidenceではない。
+さらにC03のHuman / Expert Validation Study 1も完了した。machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。一方human側は、独立研究者としてfrozen expert criteriaを満たす対象へ現実的にアクセスする経路を確保できず、scientific recruitmentを開始しないまま`N=0`で閉じた。human axisのformal labelは`INCONCLUSIVE-NOT-ESTIMABLE`であり、これはC03へのnegative human evidenceではない。
 
 Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。Tactical Motifs Study 1についても、C01/C02/C04を追加game・paired-definition substitution・threshold変更で救済しない。C03のhuman/expert validationを再び行う場合も、完了済みHuman / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`を上書きせず、新しいprospective studyまたはnew responses前に明示的にversionedされたprospective reopeningとして扱う。
 
@@ -417,6 +417,14 @@ humanExpertN = 0
 
 ### 4.5 悪手と錯覚パターン
 
+#### 現在の優先度
+
+**形勢判断と勝率校正 Study 1の後に着手することを推奨する。**
+
+悪手severityや勝敗への影響を評価するには、engine evaluationとempirical continuation win probabilityの対応を先に校正しておく方が、後続のmeasurementを明確にできる。また「錯覚」のうち人間の誤認理由を直接扱う部分はhuman dataを必要とするため、現時点ではmachine-onlyで完結可能な勝率校正を先行させる。
+
+これは悪手・錯覚研究の中止や重要度低下を意味しない。研究依存関係に基づく実施順序の変更であり、C03 Human / Expert Validation Study 1のN=0を科学的前提として悪手研究を否定するものでもない。
+
 #### 中心課題
 
 初心者、人間一般、浅い探索AIが繰り返し陥る誤判断を分類する。
@@ -442,6 +450,12 @@ humanExpertN = 0
 ---
 
 ### 4.6 形勢判断と勝率校正
+
+#### 現在の優先度
+
+**第2段階の次期推奨研究。**
+
+engine evaluationとempirical continuation win probabilityの対応をprospectively校正し、後続する悪手severity、重要局面・勝敗分岐点、逆転可能性・勝負手の研究に共通するmeasurement foundationを構築する。Human / Expert Validation Study 1のN=0はこの順序を実務上補強するが、本研究を先行させる主理由はmeasurement dependencyである。
 
 #### 中心課題
 
@@ -608,12 +622,14 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 優先課題:
 
-1. 悪手と錯覚パターン
-2. 形勢判断と勝率校正
+1. **形勢判断と勝率校正**
+2. 悪手と錯覚パターン
 3. 重要局面と勝敗分岐点
 4. 人間とAIの判断差
 
-この段階では、局面知識を教材、棋譜解説、学習支援へ変換する。
+この段階では、まず形勢判断と勝率校正をmeasurement foundationとして整備し、その後に悪手severityや勝敗分岐を扱う。engine evaluationからempirical continuation win probabilityへの対応が得られれば、後続研究で「どの程度悪い手か」「どの地点で勝敗見込みが大きく変化したか」を、単なる内部評価値差より明確に定義できる可能性がある。
+
+この順序変更の主因は研究依存関係である。C03 Human / Expert Validation Study 1のN=0は、人間の錯覚やexpert judgmentを必要としないmachine-only研究を先行させる実務的理由にはなるが、悪手研究を否定するnegative evidenceではない。
 
 C03 Human / Expert Validation Study 1は、machine-to-human validation instrumentを42 formal positionsのfreezeまで完成させたが、expert accessを確保できずhuman axisは`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として完了した。したがってC03を教材・expert tesujiへ昇格させる根拠は得られていない。将来再検証する場合は新しいprospective human studyとして扱い、machine confirmationをそのままpedagogical claimへ読み替えない。
 
