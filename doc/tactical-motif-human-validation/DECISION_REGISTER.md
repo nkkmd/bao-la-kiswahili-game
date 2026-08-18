@@ -152,7 +152,7 @@ Observed under the frozen contract:
 - control reuse performed = `false`
 - pool hash = `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
 
-**Boundary:** Machine pool readiness is not human validation. Human evidence remains `NOT-YET-COLLECTED`.
+**Boundary:** Machine pool readiness is not human validation. Human evidence remains `NOT-YET-COLLECTED` at this stage.
 
 ## TMHV-D029 — Compact Stage 1 artifacts are hash-frozen after independent audit
 
@@ -219,4 +219,61 @@ B-D3  = 1
 
 The prospective freeze contract did not define primary generation-condition balance as a gate. Therefore this distribution is preserved exactly. It must not be post hoc rebalanced, substituted, or aesthetically revised.
 
-**Boundary:** Exact formal machine stimuli are frozen, but scientific recruitment, formal human responses, scientific human inference, human-recognition claims, and traditionality claims remain unauthorized.
+**Boundary:** Exact formal machine stimuli are frozen, but scientific recruitment, formal human responses, scientific human inference, human-recognition claims, and traditionality claims remain unauthorized at this stage.
+
+## TMHV-D032 — Independent-research zero-access state closes feasibility before recruitment
+
+**Decision:** Record the investigator's current operational access state as `accessible eligible experts = 0` before any scientific recruitment is launched.
+
+The study is conducted without institutional affiliation, and no feasible current route to qualified Bao experts, researchers, or competitive players is available for the frozen primary cohort.
+
+This is **not** recorded as a failed recruitment campaign:
+
+```text
+scientific recruitment started = false
+persons contacted for scientific recruitment = 0
+consented participants = 0
+included primary experts = 0
+formal human responses = 0
+```
+
+No claim is made about the prevalence of qualified experts in the broader Bao population.
+
+## TMHV-D033 — Human axis closes as INCONCLUSIVE-NOT-ESTIMABLE at N=0
+
+**Decision:** Apply the already frozen minimum-estimability rule without relaxation.
+
+```text
+required included primary experts = 10
+observed included primary experts = 0
+```
+
+Therefore the human endpoint is not estimable and the final human-axis label is:
+
+`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
+
+Reason code:
+
+`ZERO-ACCESSIBLE-ELIGIBLE-EXPERT-COHORT-PRECOLLECTION`
+
+No exact binomial test, p-value, median primary score, or other formal human inference is produced.
+
+**Boundary:** N=0 is not negative human evidence and does not authorize `NOT-HUMAN-EXPERT-VALIDATED`.
+
+## TMHV-D034 — Close Study 1 without rescue or human-facing research
+
+**Decision:** Close Study 1 after completing the machine/instrument pipeline and before human-facing scientific research.
+
+Final evidence state:
+
+```text
+machineEvidence = CONFIRMED
+humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
+humanExpertN = 0
+```
+
+No institutional ethics approval or exemption is claimed. Scientific recruitment, consent execution, identifiable participant-data collection, and formal human response collection did not occur.
+
+The closure must not be rescued by lowering the minimum expert count, relaxing eligibility, substituting non-experts or AI, reselecting the 42 formal positions, or interpreting zero observations as a human negative outcome.
+
+Any future expert validation requires a new prospective independent study or an explicitly prospective versioned reopening established before new human responses.
