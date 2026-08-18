@@ -2,18 +2,15 @@
 
 ## 2026-08-16 — Study initiation / Stage 0
 
-- Verified current GitHub `main` HEAD as `3cc40d83917660dd815c785ff0e0c754666d9a0e`.
-- Confirmed exact match to the study-initiation reference SHA; no main delta required review.
-- Recovered Tactical Motifs Study 1 final decisions and C03 canonical definition from repository source of truth.
-- Reconfirmed Study 1 boundary: C03 is machine-confirmed only; expert/traditional/pedagogical claims were explicitly deferred.
-- Selected cross-position principle discrimination as the confirmatory center; move-choice retained as secondary.
-- Defined outcome-blind expert eligibility framework and prior-C03-exposure exclusion for the primary cohort.
-- Reserved fresh Stage 1 machine seed block `22100001..22101536` with no extension/replacement.
-- Defined C03 near-miss primary control classes; C01/C02/C04 limited to secondary calibration.
-- Chose participant-level exact inference to avoid pseudoreplication from repeated position ratings.
-- Established minimum primary expert count `10` and planned `12` primary blocks/participant.
-- Established ethics/privacy/data-governance gate; no human scientific data were collected.
-- Created branch `research/tactical-motif-human-validation` and initialized independent study documents.
+- Verified study-start `main` HEAD `3cc40d83917660dd815c785ff0e0c754666d9a0e`.
+- Recovered Tactical Motifs Study 1 decisions and immutable C03 definition.
+- Reconfirmed evidence-layer boundary: machine confirmation is separate from human/expert/traditional/pedagogical claims.
+- Selected blinded cross-position principle discrimination as the primary human construct.
+- Defined outcome-blind expert eligibility and prior-C03-exposure handling.
+- Fixed participant as the primary inferential unit.
+- Fixed minimum included primary experts at `10`, planned primary blocks at `12`, minimum usable blocks at `10/12`.
+- Established ethics/privacy/data-governance firewall before any scientific recruitment.
+- No human scientific data were collected.
 
 Stage 0 conclusion:
 
@@ -22,111 +19,73 @@ Stage 0 conclusion:
 ## 2026-08-17 — Stage 1 prospective machine-stimulus contract
 
 - Froze Stage ID `TMHV-S1-STIMULUS-2026-08-17-v1`.
-- Froze fresh population at 1536 games / seeds `22100001..22101536` / six strata ×256 / first 8 plies seeded-uniform exact moveVariants / max ply100 / no extension / no replacement.
+- Froze 1,536 games / seeds `22100001..22101536` / six strata ×256 / first 8 plies seeded-uniform exact legal moves / max ply100 / no extension / no replacement.
 - Froze Stage 1 spec SHA-256 `c0dcff68255e1e1149d9c96c76fe0e7e8aa7ba8da32abd149077b6936772fd80`.
-- Bound historical C03 by candidate-definition SHA-256 `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`, canonical rank 5, and immutable candidate key.
+- Bound historical C03 by immutable candidate-definition hash and key.
 - Defined `C03_TARGET`, `P_ONLY`, `M_ONLY`, and `MORPH_NEAR` before scientific corpus generation.
-- Froze deterministic one-state-per-trajectory-per-class selection and duplicate rule-state collapse.
-- Froze no-reuse matching with same-trajectory and same-opening-prefix exclusions.
-- Defined primary instrument candidate as two C03 targets + one matched control, with `1/3` random pair-selection probability.
-- Implemented actor-to-South position-only renderer using validated player-swap only; no column/direction reversal.
+- Froze deterministic one-state-per-trajectory-per-class selection and no-reuse matching.
+- Defined the three-position primary block: two C03 targets + one matched control.
+- Implemented actor-to-South position-only rendering without column/direction reversal.
 
-## 2026-08-17 — Stage 1 tooling validation
+## 2026-08-17 — Stage 1 tooling validation / authorization
 
 Implementation commit:
 
 `03838e5d88329dd4b3c1f8e06598bbbc6d6a92cc`
 
-GitHub Actions run `31955303204`, job `95184928361` completed successfully.
+GitHub Actions run `31955303204`, job `95184928361`: success.
 
-Passed before scientific machine generation:
+Source-hash-bound generation authorization:
 
-- frozen spec validator;
-- historical C03 SHA/identity validator;
-- inherited symmetry/position-feature/tactical-motif tests;
-- dedicated Stage 1 tooling test;
-- deterministic 9-ply technical replay smoke;
-- actor-normalized renderer smoke;
-- non-generative status/source-hash reporting;
-- absent-authorization generation firewall.
+- authorization SHA-256 `d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009`
+- authorization commit `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`
+- authorization-binding run `31955362114`, job `95185068008`: success
+- machine stimulus generation authorized: true
+- human data collection authorized: false
 
-Scientific Stage 1 games generated in CI: `0`.
+## 2026-08-17 — Local pre-generation validation
 
-## 2026-08-17 — Stage 1 generation authorization
-
-- Issued source-hash-bound authorization after successful tooling validation.
-- Authorization SHA-256: `d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009`.
-- Authorization commit: `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`.
-- Authorization-binding GitHub Actions run `31955362114`, job `95185068008`: success.
-- Machine stimulus generation: authorized.
-- Human data collection: not authorized.
-- Scientific human inference: not authorized.
-
-## 2026-08-17 — Assistant-runtime execution boundary
-
-- Attempted to obtain the exact authorized repository tree in the assistant local runtime for scientific generation.
-- Local `git clone` failed because that runtime could not resolve `github.com`.
-- Did not move scientific generation into GitHub Actions as a workaround because the Stage 1 protocol explicitly reserves Actions for contract/tooling validation.
-- No corpus-size extension, threshold change, matching change, or alternative source tree was used.
-
-This was an execution-environment limitation only and did not alter the scientific contract.
-
-## 2026-08-17 — Authorized local pre-generation validation
-
-- User local environment checked out detached HEAD `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`.
-- Worktree was clean.
-- Runtime: Node `v24.6.0`, Git `2.43.0`, Linux x64.
+- User local environment checked out detached authorized commit `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`.
+- Worktree clean.
+- Runtime Node `v24.6.0`, Git `2.43.0`, Linux x64.
 - Stage 1 spec validator passed.
-- Dedicated Stage 1 tooling test passed.
+- Dedicated tooling tests passed.
 - All authorization-bound source hashes matched.
-- Spec SHA-256 matched `c0dcff68255e1e1149d9c96c76fe0e7e8aa7ba8da32abd149077b6936772fd80`.
-- Authorization SHA-256 matched `d91efea5995ef6ae19996053cc1fc41c7ce7c95b132bd3b1368405abb5dda009`.
-- `machineStimulusGenerationAuthorized = true`.
-- `humanDataCollectionAuthorized = false`.
-- `scientificHumanInferenceAuthorized = false`.
 
 ## 2026-08-17 — Fixed 1,536-game machine corpus generated
 
-Generation completed successfully under the exact authorized source tree.
+Generation completed under the exact authorized clean source tree.
 
-- games: `1536 / 1536`
-- generation exit: `0`
-- unique historical trajectories: `1453`
-- duplicate historical trajectory groups: `71`
-- largest duplicate historical trajectory group: `4`
-- distinct opening prefixes: `1278`
-- each of six generation strata: `256`
-- summary hash: `6af30d6827e36a0c8a9ba0a4856b2e590da98bab0021111ba014655ffd85e581`
-- source commit: `12b02975f0c0e7ad053eef6db8b6a2d2c7392d70`
-- source tree dirty: `false`
-- extension: none
-- replacement: none
+```text
+games = 1536 / 1536
+unique historical trajectories = 1453
+distinct opening prefixes = 1278
+six strata = 256 each
+source tree dirty = false
+```
 
-Human scientific data collected: `0`.
+Generation summary hash:
+
+`6af30d6827e36a0c8a9ba0a4856b2e590da98bab0021111ba014655ffd85e581`
+
+No extension, replacement, or selective regeneration occurred.
 
 ## 2026-08-17 — Independent full verification PASS
 
-The independent verifier recomputed all fixed games.
+Independent verifier recomputed all fixed games.
 
-- verification exit: `0`
-- `passed = true`
-- `fullSearchRecomputation = true`
-- games verified: `1536`
-- mismatch count: `0`
-- verification identity hash: `225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397`
-- source commit / source hashes matched authorization
-- source tree dirty: `false`
+```text
+passed = true
+fullSearchRecomputation = true
+gamesVerified = 1536
+mismatchCount = 0
+```
 
-No selective regeneration was performed.
+Verification identity hash:
+
+`225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397`
 
 ## 2026-08-17 — Outcome-blind stimulus selection / readiness PASS
-
-Selection and matching ran only after full verification PASS.
-
-- `selectionOutcomeBlind = true`
-- `humanResponsesInspected = false`
-- unique historical trajectories: `1453`
-- target generation strata represented: `6`
 
 Class counts:
 
@@ -145,9 +104,14 @@ M_ONLY     = 605
 MORPH_NEAR = 672
 ```
 
-All ten prospectively frozen readiness gates passed. No replacement or control reuse occurred.
+All ten frozen readiness gates passed.
 
-Stimulus pool hash:
+- selection outcome-blind: true
+- human responses inspected: false
+- replacement: false
+- control reuse: false
+
+Pool hash:
 
 `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
 
@@ -155,99 +119,70 @@ Stage 1 machine conclusion:
 
 `MACHINE STIMULUS POOL READY`
 
-## 2026-08-17 — Compact Stage 1 artifact identity audit PASS
+## 2026-08-17 — Compact artifact identity audit PASS
 
-The returned compact bundle was independently inspected before exact formal identity materialization.
-
-Bundle SHA-256:
+Return bundle SHA-256:
 
 `88918bf56e2e4e58875b014ab47da71b69756121c6c6dfa8ea76348400c16f3c`
 
-Artifact SHA-256:
+Artifact SHA-256 values were fixed for `manifest.json`, `verification.json`, `stimulus-pool-audit.json`, and `stimulus-pool.json`.
+
+Independent audit checked all 1,554 stored target-control pairs:
 
 ```text
-manifest.json            24d23be9e08ef392f1eab5f767dc069cad4a819c2211f2f2c88c64801038dea4
-verification.json        39f642eb65de48da99ba6c491d5647eb23c33e40631d3db36995e4cb725b0866
-stimulus-pool-audit.json ccf376539588b5b06ad5ca0b16bba1b61b096506d9b1e0c00f29f785a1338c27
-stimulus-pool.json       a1ee4f6749a6f6b433122ea896975deef45fa6b2fb41c1a9edc53955a302f5a8
+same historical trajectory violations = 0
+same opening-prefix violations = 0
+duplicate controls within family = 0
+duplicate targets within family = 0
+matching cost > 10 violations = 0
 ```
 
-- returned `SHA256SUMS.txt` matched all four independently recomputed hashes;
-- stage/spec/authorization/source identities were internally consistent;
-- stored pool hash matched the recorded readiness result;
-- class and matched counts matched the frozen audit;
-- all 1,554 stored target-control pairs were checked;
-- same historical trajectory violations: `0`;
-- same opening-prefix violations: `0`;
-- duplicate controls within family: `0`;
-- duplicate targets within family: `0`;
-- matching cost above maximum `10`: `0`;
-- participant-facing actor/phase/field restrictions passed;
-- hidden-cue terminology scan passed.
-
-Artifact audit decision:
-
-`PASS — COMPACT ARTIFACT IDENTITY VERIFIED`
+Participant-facing hidden-cue scan passed.
 
 ## 2026-08-17 — Prospective exact formal-stimulus freeze rule
 
-Before exact identities were publicly exposed or formal human data existed, froze `TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`.
+Before exact identities were materialized, froze:
 
-The rule fixes:
+`TMHV-S1-FORMAL-STIMULUS-FREEZE-2026-08-17-v1`
 
-- 12 three-position blocks;
-- four controls from each primary control family;
-- target-A/control selection from existing Stage 1 matches by matching cost then deterministic hash tie-break;
-- target-B selection using exact Stage 1 nuisance match cost `<=10` then deterministic hash tie-break;
-- no reuse of rule state, historical trajectory, or opening prefix across all 36 primary positions;
-- six secondary C03 targets, one per generation stratum, with no primary/secondary recurrence;
-- total formal positions `42`;
+Rule fixed:
+
+- 12 three-position primary blocks;
+- four controls per primary control family;
+- 24 unique primary C03 targets;
+- global no-reuse of rule state, historical trajectory, and opening prefix across all 36 primary positions;
+- six secondary C03 targets, one per generation stratum;
+- total formal positions 42;
 - no manual aesthetic replacement;
 - no human-outcome-dependent reselection.
 
-Exact selected identities/board states/SVGs are designated private until formal collection is complete. Public Git will carry only the deterministic rule and cryptographic commitments/aggregate audit metadata.
-
-Implementation/tooling was added and validated by GitHub Actions:
-
-- run `32040413639`
-- job `95418609369`
-- result: `success`
-- deterministic formal-freezer test: `success`
+Deterministic freezer CI run `32040413639`, job `95418609369`: success.
 
 ## 2026-08-18 — Exact private formal-stimulus materialization PASS
 
-The deterministic freezer was run locally against the exact four hash-frozen Stage 1 artifacts. The public-safe audit reports `passed=true` and all formal-freeze checks true.
+Selection-spec SHA-256:
 
-Cryptographic commitments:
+`67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5`
 
-```text
-selectionSpecSha256  = 67384b96b14551eb80d83d26f798f396e52098712d533b0e2e88131bc69d3df5
-privateFreezeSha256  = 2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22
-publicAuditSha256    = e994ddeb2875831a7a79e1181aa2bbbb39658316ebffcf896c7953265cdd70b3
-```
+Private exact freeze SHA-256:
 
-Formal machine stimulus result:
+`2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
+
+Materialized set:
 
 ```text
-primaryBlocks              = 12
-primaryPositions           = 36
-primaryC03Targets          = 24
-primaryControls            = 12
-controlBalance             = P_ONLY 4 / M_ONLY 4 / MORPH_NEAR 4
-secondaryMoveChoiceTargets = 6
-totalUniqueFormalPositions = 42
+primary blocks = 12
+primary positions = 36
+primary C03 targets = 24
+primary controls = 12
+control balance = 4 / 4 / 4
+secondary move-choice C03 targets = 6
+total unique formal positions = 42
 ```
 
-Passed constraints:
+All uniqueness and human-data-firewall checks passed.
 
-- unique rule states across all 42 positions;
-- unique historical trajectories across all 42 positions;
-- unique opening prefixes across all 42 positions;
-- primary actors normalized to South;
-- primary phase Mtaji;
-- no human-data authorization.
-
-Observed aggregate generation-condition provenance:
+Observed aggregate generation-condition counts were preserved exactly rather than post hoc rebalanced:
 
 ```text
 LS-D2 = 10
@@ -258,21 +193,63 @@ B-D2  = 1
 B-D3  = 1
 ```
 
-The prospective freeze rule required one secondary position per generation stratum but did not impose primary generation-condition balance. This observed distribution is therefore preserved without post-materialization rebalance, replacement, or aesthetic substitution.
+## 2026-08-18 — Independent-research access determination
 
-Exact rule-state identities, board states, seeds, and participant SVGs remain only in the private gitignored local artifact. The public audit contains no exact stimulus identities.
+The investigator specified that the study is being conducted without institutional affiliation and that there is currently no feasible route to contact qualified Bao experts, researchers, or competitive players for the frozen primary cohort.
 
-Stage 1 machine/instrument conclusion:
+This determination occurred before scientific recruitment was launched.
 
-`EXACT FORMAL MACHINE STIMULI FROZEN`
-
-Current human state:
+Observed access state:
 
 ```text
-humanExpertEvidence = NOT-YET-COLLECTED
-scientificRecruitmentAuthorized = false
-formalHumanResponsesAuthorized = false
-scientificHumanInferenceAuthorized = false
+accessible eligible experts = 0
+scientific recruitment started = false
+persons contacted for scientific recruitment = 0
+consented participants = 0
+included primary experts = 0
+formal human responses = 0
 ```
 
-Next work moves to pre-collection human-study gates: ethics determination/consent/data governance, recruitment feasibility under frozen expert criteria, language-equivalence review, and machine-readable Stage 2 preregistration. Historical `TM-S2-C03 = CONFIRMED` remains unchanged.
+This is not recorded as a failed recruitment campaign.
+
+## 2026-08-18 — Stage 2A estimability closure
+
+Frozen minimum included primary experts remained `10`.
+
+```text
+required = 10
+observed = 0
+estimability gate = FAIL
+```
+
+No exact binomial test or human outcome analysis was run.
+
+Final human-axis decision:
+
+`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
+
+Reason code:
+
+`ZERO-ACCESSIBLE-ELIGIBLE-EXPERT-COHORT-PRECOLLECTION`
+
+Zero participants are not negative human evidence.
+
+## 2026-08-18 — Study 1 closure
+
+Final evidence state:
+
+```text
+machineEvidence = CONFIRMED
+humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
+humanExpertN = 0
+```
+
+No institutional ethics approval or exemption is claimed. No scientific recruitment, consent execution, identifiable participant-data collection, or formal human response occurred.
+
+No rescue was performed by lowering expert minimum, relaxing eligibility, substituting non-experts or AI, reselecting formal stimuli, or reinterpreting N=0 as a human negative result.
+
+Study 1 conclusion:
+
+`COMPLETE — MACHINE/INSTRUMENT STAGE COMPLETE / HUMAN AXIS INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
+
+Any future qualified-expert validation must be a new prospective study or an explicitly prospective versioned reopening before new human responses.
