@@ -136,3 +136,43 @@ Stage 1 generation = NOT AUTHORIZED
 Stage 2 generation = NOT AUTHORIZED
 formal inference = NOT AUTHORIZED
 ```
+
+## 2026-08-18 — Stage 0 technical smoke PASS and Stage 1 authorization
+
+The returned non-scientific smoke artifact was audited against the frozen Stage 1 contract.
+
+```text
+smokeId = PEC-S0-SMOKE-2026-08-18-v1
+smoke artifact SHA-256 = 11172d1a31d5716b40a5dd8d4cf092d0e7d6142c6b2299d30e6591e305d007f8
+source commit = 28bb3ba1782c2ed7ea4c78a4dd962c96c782cd0a
+spec SHA-256 = a5015789b8293105dbfd7a9c977d0dbd66fc7564ab93ba9848f7b662d53b0f7c
+passed = true
+sourceTreeDirty = false
+deterministicReplay = true
+staticPerspectiveAntisymmetry = true
+games = 8
+uniqueHistoricalTrajectories = 8
+selectedStates = 8
+selectedNamua = 6
+selectedMtaji = 2
+scientificGeneration = false
+scientificInferenceAuthorized = false
+authorizationFilePresent = false
+generationAuthorizedBySpecAlone = false
+```
+
+The spec hash also matched the spec entry in the returned source SHA-256 mapping. The smoke exercised both authoritative phases and confirmed deterministic replay and actor-relative static-score antisymmetry. It is technical validation only and is permanently excluded from calibration evidence.
+
+A separate source-bound authorization artifact was then committed:
+
+```text
+authorization commit = e4323705087c854650097c7d3789ef1371f7a489
+file = doc/position-evaluation-calibration/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
+Stage 1 generation = AUTHORIZED
+Stage 1 scientific inference before independent verification = NOT AUTHORIZED
+Stage 1 confirmatory reuse = NOT AUTHORIZED
+Stage 2 generation = NOT AUTHORIZED
+formal inference = NOT AUTHORIZED
+```
+
+The authorization binds the exact Stage 1 spec SHA-256 and the exact frozen source-file SHA-256 mapping returned by the passing smoke. Subsequent documentation-only commits do not change the frozen source set.
