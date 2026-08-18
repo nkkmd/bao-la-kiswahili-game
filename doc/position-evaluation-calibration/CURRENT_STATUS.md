@@ -1,54 +1,69 @@
 # Current Status — Position Evaluation / Win-Rate Calibration Study 1
 
 Updated: 2026-08-18
-Status: **STAGE 0 OPEN / SCIENTIFIC GENERATION NOT AUTHORIZED**
+Status: **STAGE 0 DESIGN FROZEN / LOCAL TECHNICAL VALIDATION PENDING / SCIENTIFIC GENERATION NOT AUTHORIZED**
 
 ## Repository identity
 
 ```text
 baseline main HEAD = 8672ba4fafb896124df0c4728d41f7c3a6ed5056
-previous reported main HEAD = 1a5a591d526b2383ca3540827eff6f8f39c14861
-delta = one merge; FUTURE_RESEARCH_AGENDA priority update only
 study branch = research/position-evaluation-winrate-calibration
 ```
 
-## Completed initiation audit
+The branch remains based on current main; no closed-study formal decision has been changed.
 
-- central research index and future agenda reviewed;
-- Position Complexity Study 1 boundary restored;
-- Tactical Motifs Study 1 decisions restored;
-- TMHV Study 1 N=0 boundary restored;
-- phase-transition / position-typology boundaries reviewed;
-- first-player/continuation-policy dependence reviewed;
-- `engine.js`, `ai.js`, `ai-weights.js`, benchmark/test/search diagnostic semantics audited;
-- initial historical seed inventory started.
+## Completed Stage 0 design work
 
-## Current technical decisions
+- evaluation/search semantics audit complete;
+- prior-study scientific boundaries restored;
+- declared research-corpus seed namespace audit closed;
+- Stage 1 seeds frozen at `22200001..22201024` for 1024 games;
+- Stage 2 namespace reserved at `22300001..22302048` for 2048 games;
+- frozen opening = first 8 plies seeded-uniform exact `E.moveVariants`;
+- frozen continuation = `hard / bao / phase2 / D2 / Infinity`;
+- frozen trajectory max ply = 160;
+- one selected state maximum per unique historical trajectory;
+- frozen SHA phase assignment and within-phase state selection;
+- duplicate selected `ruleStateKey` collapse with no replacement;
+- administrative truncation is not a draw and receives no binary outcome;
+- Stage 1 model candidate family and 5-fold selection rule frozen;
+- Stage 1 production runner and replay/measurement verifier implemented;
+- production runner requires separate source-bound authorization artifact.
+
+## Primary construct
 
 ```text
-primary measurement candidate = static bao evaluation
-perspective = selected actor / state.player
-key secondary = exact D2 root search bestScore
-phase = authoritative global state.phase
-continuation principle = deterministic fixed hard/phase2/fixed-depth policy
-within-state artificial replication = not assumed
+primary score = AI.evaluate(state, state.player)
+key secondary = exact D2 root bestScore
+empirical outcome = selected actor terminal win under frozen continuation
 ```
 
-## Open Stage 0 gates
+This remains distinct from game-theoretic value, human perception, causal effect, and Position Complexity constructs.
 
-1. close repository-wide seed audit;
-2. freeze exact Stage 1 seed block and corpus size;
-3. freeze opening generation and state-selection identity rules;
-4. freeze continuation max-ply and administrative-truncation gate;
-5. freeze exact deterministic continuation configuration;
-6. freeze Stage 1 model-development candidates and selection rule;
-7. implement/validate generator + independent verifier;
-8. create source SHA-256 manifest;
-9. create generation authorization artifact.
-
-Until all required gates pass:
+## Stage 1 readiness design
 
 ```text
-scientificGenerationAuthorized = false
-formalInferenceAuthorized = false
+unique historical trajectories >= 800
+selected unique rule states >= 750
+Namua >= 330
+Mtaji >= 330
+distinct opening prefixes >= 200
+distinct static evaluations per phase >= 50
+actor wins per phase >= 75
+actor losses per phase >= 75
+administrative truncation <= 1%
+```
+
+Failure does not authorize extra games.
+
+## Current gate
+
+Before scientific generation, the investigator must run the Stage 0 contract test, spec validator and non-scientific smoke from `STAGE_1_RUNBOOK.md` and return the smoke JSON for audit.
+
+Until a separate `STAGE_1_EXPLORATORY_AUTHORIZATION.json` is created and source-hash bound:
+
+```text
+Stage 1 scientific generation = NOT AUTHORIZED
+Stage 2 scientific generation = NOT AUTHORIZED
+formal inference = NOT AUTHORIZED
 ```

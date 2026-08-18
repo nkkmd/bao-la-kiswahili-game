@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S1-EXPLORATORY-2026-08-18-v1",
+  "status": "prospective-frozen-pending-technical-validation",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "baselineMainHead": "8672ba4fafb896124df0c4728d41f7c3a6ed5056",
+  "researchBranch": "research/position-evaluation-winrate-calibration",
+  "construct": {
+    "primaryEvaluation": "AI.evaluate(state, state.player)",
+    "evaluationProfile": "bao",
+    "actor": "state.player-at-selected-root",
+    "empiricalOutcome": "terminal-winner-under-frozen-continuation-policy",
+    "gameTheoreticValueClaimAuthorized": false,
+    "humanAdvantageClaimAuthorized": false,
+    "causalClaimAuthorized": false
+  },
+  "population": {
+    "games": 1024,
+    "seedStart": 22200001,
+    "seedEnd": 22201024,
+    "opening": {
+      "policy": "seeded-uniform-exact-E.moveVariants",
+      "plies": 8
+    },
+    "continuation": {
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 2,
+      "timeLimitMs": "Infinity",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false,
+      "adaptive": false,
+      "stableBestDepths": 0,
+      "aspirationWindow": 0,
+      "randomnessUsedForMoveChoiceAfterOpening": false
+    },
+    "maxPly": 160
+  },
+  "trajectoryIdentity": {
+    "primary": "historicalTrajectoryHash",
+    "duplicateHandling": "collapse-identical-historical-trajectories-before-state-selection",
+    "representativeRule": "minimum-seed-then-gameId",
+    "supportUnit": "unique-historical-trajectory"
+  },
+  "openingFamily": {
+    "prefixPlies": 8,
+    "identity": "sha256-of-explicit-length-and-ordered-exact-AI.moveKey-prefix"
+  },
+  "stateSelection": {
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "maximumSelectedStatesPerHistoricalTrajectory": 1,
+    "phaseAssignment": {
+      "method": "sha256-parity",
+      "salt": "PEC-S1-PHASE-v1",
+      "mapping": {
+        "even": "namua",
+        "odd": "mtaji"
+      }
+    },
+    "withinAssignedPhase": {
+      "method": "minimum-sha256-rank",
+      "salt": "PEC-S1-STATE-v1",
+      "fields": [
+        "historicalTrajectoryHash",
+        "ruleStateKey",
+        "ply"
+      ]
+    },
+    "unavailableAssignedPhase": "no-replacement",
+    "duplicateSelectedRuleStateHandling": "retain-lowest-historicalTrajectoryHash-then-seed-no-replacement"
+  },
+  "measurement": {
+    "primary": {
+      "name": "staticBaoEvaluation",
+      "function": "AI.evaluate(state, actor)",
+      "actor": "state.player"
+    },
+    "keySecondary": {
+      "name": "exactD2RootBestScore",
+      "searchSemantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+      "depth": 2,
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false
+    },
+    "prespecifiedCovariates": [
+      "phase",
+      "actorSeat",
+      "forcedCapture",
+      "legalMoveCount",
+      "captureMoveCount",
+      "actorReserve",
+      "opponentReserve",
+      "actorHouseOwned",
+      "opponentHouseOwned",
+      "actorNyumbaSeeds",
+      "opponentNyumbaSeeds"
+    ]
+  },
+  "outcome": {
+    "binaryDefinition": {
+      "one": "final winner equals selected actor",
+      "zero": "final winner equals selected actor opponent"
+    },
+    "administrativeTruncation": {
+      "definition": "winner is null at frozen maxPly",
+      "treatedAsDraw": false,
+      "binaryOutcome": null,
+      "excludedFromBinaryCalibrationAfterOutcomeBlindSelection": true,
+      "maximumSelectedStateRateForReadiness": 0.01,
+      "failureAction": "stage1-readiness-fail-no-extension"
+    }
+  },
+  "modelDevelopment": {
+    "scoreTransform": {
+      "name": "fixed-linear-scale",
+      "formula": "z=staticBaoEvaluation/100"
+    },
+    "folds": {
+      "count": 5,
+      "assignment": "sha256(PEC-S1-CV-v1|historicalTrajectoryHash) modulo 5",
+      "unit": "selected-unique-historical-trajectory"
+    },
+    "candidateFamilies": [
+      {
+        "id": "phase-aware-logistic",
+        "form": "separate intercept and score slope for Namua and Mtaji",
+        "optimizer": "deterministic-newton-irls-with-step-halving",
+        "maxIterations": 100,
+        "gradientTolerance": 1e-10,
+        "maximumStepHalvings": 20,
+        "fitFailure": "candidate-ineligible-no-rescue"
+      },
+      {
+        "id": "phase-stratified-isotonic",
+        "form": "separate unweighted PAVA fit for Namua and Mtaji",
+        "extrapolation": "constant-endpoint",
+        "fitFailure": "candidate-ineligible-no-rescue"
+      }
+    ],
+    "referenceModel": "pooled-logistic-descriptive-only",
+    "selectionMetric": "five-fold-out-of-fold-Brier-score",
+    "selectionRule": "choose isotonic only if its Brier is at least 0.002 lower than phase-aware logistic; otherwise choose phase-aware logistic",
+    "ifOneCandidateIneligible": "select-the-eligible-candidate",
+    "ifBothCandidatesIneligible": "stage1-inconclusive-no-stage2",
+    "finalFit": "refit-selected-family-on-all-nontruncated-stage1-selected-states-and-freeze-exact-parameters-or-knots-before-stage2"
+  },
+  "readinessGates": {
+    "minimumUniqueHistoricalTrajectories": 800,
+    "minimumSelectedUniqueRuleStates": 750,
+    "minimumNamuaSelectedStates": 330,
+    "minimumMtajiSelectedStates": 330,
+    "minimumDistinctOpeningPrefixes": 200,
+    "minimumDistinctStaticEvaluationsPerPhase": 50,
+    "minimumActorWinsPerPhase": 75,
+    "minimumActorLossesPerPhase": 75,
+    "maximumAdministrativeTruncationRate": 0.01
+  },
+  "stopping": {
+    "gamesFixed": 1024,
+    "earlyStopAllowed": false,
+    "outcomeDependentExtensionAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementForUnavailableAssignedPhase": false,
+    "replacementForDuplicateRuleState": false,
+    "extensionForAdministrativeTruncation": false
+  },
+  "sourceFreeze": {
+    "files": [
+      "public/engine.js",
+      "public/ai.js",
+      "public/ai-weights.js",
+      "tools/benchmark.js",
+      "tools/symmetry/transform-candidates.js",
+      "tools/experiments/lib/phase-transition-features.js",
+      "tools/experiments/lib/position-typology-features.js",
+      "tools/experiments/lib/position-complexity-search-diagnostic.js",
+      "tools/experiments/lib/position-evaluation-calibration-common.js",
+      "tools/experiments/validate-position-evaluation-calibration-stage1-spec.js",
+      "tools/experiments/run-position-evaluation-calibration-stage1.js",
+      "tools/experiments/verify-position-evaluation-calibration-stage1.js",
+      "doc/position-evaluation-calibration/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+    ],
+    "sha256RequiredInAuthorization": true
+  },
+  "authorization": {
+    "generationAuthorizedBySpecAlone": false,
+    "stage1GenerationAuthorized": false,
+    "requiredAuthorizationFile": "doc/position-evaluation-calibration/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json",
+    "requiredBeforeGeneration": "stage0 smoke PASS plus spec validation PASS plus source SHA-256 freeze plus explicit authorization commit"
+  },
+  "stage2Reservation": {
+    "scientificGenerationAuthorized": false,
+    "gamesReserved": 2048,
+    "seedStart": 22300001,
+    "seedEnd": 22302048,
+    "reuseOfStage1Seeds": false,
+    "forbiddenIdentityOverlap": [
+      "historicalTrajectoryHash",
+      "ruleStateKey",
+      "openingPrefixHash"
+    ],
+    "formalModelAndDecisionRule": "to-be-frozen-from-stage1-before-any-stage2-generation"
+  }
+}
