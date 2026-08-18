@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S0-AUDIT-2026-08-18-v1",
+  "title": "Position Evaluation / Win-Rate Calibration Study 1",
+  "baseline": {
+    "mainHead": "8672ba4fafb896124df0c4728d41f7c3a6ed5056",
+    "previousReportedMainHead": "1a5a591d526b2383ca3540827eff6f8f39c14861",
+    "branch": "research/position-evaluation-winrate-calibration"
+  },
+  "scientificBoundaries": {
+    "engineEvaluationDistinctFromEmpiricalWinProbability": true,
+    "empiricalWinProbabilityDistinctFromGameTheoreticValue": true,
+    "machineAdvantageDistinctFromHumanPerception": true,
+    "calibrationIsNotCausal": true,
+    "priorFormalDecisionsImmutable": true
+  },
+  "workingMeasurement": {
+    "primaryTarget": "static-bao-evaluation",
+    "primaryFunction": "AI.evaluate(state, actor)",
+    "actorRule": "actor=state.player-at-selected-root",
+    "keySecondaryTarget": "exact-D2-root-bestScore",
+    "keySecondarySearchSemantics": "exact-full-window-root-candidates/phase2-value-semantics/v1"
+  },
+  "architecture": {
+    "stage0": "technical-construct-feasibility-audit",
+    "stage1": "fresh-exploratory-calibration-development",
+    "stage2": "fresh-held-out-formal-evaluation"
+  },
+  "identityFirewall": {
+    "historicalTrajectoryHashRequired": true,
+    "ruleStateKeyRequired": true,
+    "openingPrefixHashRequired": true,
+    "maxSelectedStatesPerHistoricalTrajectory": 1,
+    "duplicateRuleStateReplacementAllowed": false
+  },
+  "seedFirewall": {
+    "historicalAuditClosed": false,
+    "stage1SeedRange": null,
+    "stage2SeedRange": null,
+    "newSeedAllocationAuthorized": false
+  },
+  "generationAuthorization": {
+    "specAloneAuthorizesScientificGeneration": false,
+    "stage1ScientificGenerationAuthorized": false,
+    "stage2ScientificGenerationAuthorized": false,
+    "formalInferenceAuthorized": false,
+    "separateAuthorizationArtifactRequired": true
+  },
+  "noRescue": {
+    "outcomeDependentGameExtension": false,
+    "outcomeDependentSeedExtension": false,
+    "outcomeDependentReplicateExtension": false,
+    "postHocBinChange": false,
+    "postHocPhaseSplitMerge": false,
+    "postHocModelFamilyChange": false,
+    "postHocOptimizerToleranceChange": false,
+    "postHocPrimaryMetricChange": false,
+    "postHocInclusionThresholdChange": false,
+    "outcomeDependentOutlierExclusion": false,
+    "sameFormalCorpusRescueModel": false
+  },
+  "openStage0Gates": [
+    "repository-wide-seed-audit",
+    "source-sha256-manifest",
+    "exact-stage1-population-and-size",
+    "exact-state-selection-rule",
+    "exact-continuation-policy",
+    "administrative-truncation-rule",
+    "stage1-model-selection-protocol",
+    "generator-verifier-technical-validation",
+    "generation-authorization-artifact"
+  ]
+}
