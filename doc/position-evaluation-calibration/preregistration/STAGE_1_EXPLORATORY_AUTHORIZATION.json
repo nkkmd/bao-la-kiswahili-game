@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S1-EXPLORATORY-2026-08-18-v1",
+  "status": "authorized-after-stage0-technical-smoke-pass",
+  "authorizedAt": "2026-08-18",
+  "specSha256": "a5015789b8293105dbfd7a9c977d0dbd66fc7564ab93ba9848f7b662d53b0f7c",
+  "stage1GenerationAuthorized": true,
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "sourceCommitAtTechnicalValidation": "28bb3ba1782c2ed7ea4c78a4dd962c96c782cd0a",
+  "authorizedSourceFileSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+    "tools/symmetry/transform-candidates.js": "fc85e8520b23b0b4ceb0bd8a95ad7f2b47171405190eedecdc822054d44decc5",
+    "tools/experiments/lib/phase-transition-features.js": "b0948a94b8e6358d12194e4dad10018448f85814ac735ca3ceee7a4c74a78480",
+    "tools/experiments/lib/position-typology-features.js": "94ec8283cdc9d8f75cbdb13215cc2acd95fd33a2ca3a14afccd3a26ca8644242",
+    "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
+    "tools/experiments/lib/position-evaluation-calibration-common.js": "fb1d85f4532054c6cf807e724d2aca5300f2802349b12f3c2f9bc1732960e246",
+    "tools/experiments/validate-position-evaluation-calibration-stage1-spec.js": "6e9a5b6d9ff9b840098e44c9528ad2ab71d079a482f4f33d8a38f193dfbea312",
+    "tools/experiments/run-position-evaluation-calibration-stage1.js": "8c0231df3d89f0b6fdcddbdac3374e4d5d2afee931be28a5e872cac2ffcef704",
+    "tools/experiments/verify-position-evaluation-calibration-stage1.js": "97ac50ccdd94da3cf8d77a257352159297e963813442ce61018fff9a76ea001b",
+    "doc/position-evaluation-calibration/preregistration/STAGE_1_EXPLORATORY_SPEC.json": "a5015789b8293105dbfd7a9c977d0dbd66fc7564ab93ba9848f7b662d53b0f7c"
+  },
+  "technicalValidation": {
+    "smokeId": "PEC-S0-SMOKE-2026-08-18-v1",
+    "smokeArtifactSha256": "11172d1a31d5716b40a5dd8d4cf092d0e7d6142c6b2299d30e6591e305d007f8",
+    "passed": true,
+    "scientificGeneration": false,
+    "scientificInferenceAuthorized": false,
+    "smokeSeeds": [990001, 990008],
+    "deterministicReplay": true,
+    "staticPerspectiveAntisymmetry": true,
+    "games": 8,
+    "uniqueHistoricalTrajectories": 8,
+    "selectedStates": 8,
+    "selectedNamua": 6,
+    "selectedMtaji": 2,
+    "sourceTreeDirty": false,
+    "authorizationFilePresentDuringSmoke": false,
+    "generationAuthorizedBySpecAlone": false
+  },
+  "authorizationScope": {
+    "allowsStage1CorpusGeneration": true,
+    "allowsStage1ExploratoryAnalysisAfterIndependentVerification": true,
+    "allowsFormalInference": false,
+    "allowsConfirmatoryReuseOfStage1": false,
+    "allowsStage2Generation": false,
+    "allowsOutcomeDependentExtension": false
+  },
+  "interpretationBoundary": {
+    "stage1ExploratoryOnly": true,
+    "empiricalWinProbabilityConditionalOnFrozenPopulationAndPolicy": true,
+    "gameTheoreticValueClaimAuthorized": false,
+    "humanAdvantagePerceptionClaimAuthorized": false,
+    "causalClaimAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false
+  }
+}
