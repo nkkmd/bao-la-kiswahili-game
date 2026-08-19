@@ -176,3 +176,81 @@ formal inference = NOT AUTHORIZED
 ```
 
 The authorization binds the exact Stage 1 spec SHA-256 and the exact frozen source-file SHA-256 mapping returned by the passing smoke. Subsequent documentation-only commits do not change the frozen source set.
+
+## 2026-08-19 — Stage 1 generation, independent verification, and readiness PASS
+
+The fixed Stage 1 corpus was generated under the prior authorization and returned for audit.
+
+```text
+generation manifest SHA-256 = 0a1ad53c2ac5dff272b771d6b9c48ca26b349aad650029a5d13464c0aa990813
+selection/measurement summary SHA-256 = 1e843c9fbc3f286f2e6bc17a99e6590b51f636d09b051ff73fa96228fb756d73
+verification SHA-256 = 6b4e08a11b1145337410036a697e81f7c7f2408378f4584bc1a2b27cef76ff21
+generation source commit = c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4
+games = 1024
+seed range = 22200001..22201024
+sourceTreeDirty = false
+```
+
+The prior verifier attempt was interrupted by a WSL disconnection before `verification.json` existed. Process inspection confirmed that no verifier remained running and no completed verification artifact existed. The verifier was therefore rerun over the same already-generated corpus. This was a verification repeat only; no scientific regeneration, seed extension, replacement, or outcome-dependent continuation occurred.
+
+Independent verification returned:
+
+```text
+passed = true
+gamesVerified = 1024
+gameReplayMismatches = 0
+uniqueHistoricalTrajectories = 872
+selectedUniqueRuleStates = 830
+measurementMismatches = 0
+measurementHashMatches = true
+selectionHash = 29b270b7dbfca8ef67c393c60f6232694c629b80228665eb1166dddeb257dd79
+measurementHash = 0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa
+```
+
+### Readiness result
+
+All preregistered Stage 1 readiness gates passed:
+
+```text
+unique historical trajectories = 872 >= 800
+selected unique rule states = 830 >= 750
+Namua = 430 >= 330
+Mtaji = 400 >= 330
+distinct opening prefixes = 830 >= 200
+distinct static evaluations = 327 Namua / 363 Mtaji >= 50 each
+Namua actor wins/losses = 190 / 240 >= 75 each
+Mtaji actor wins/losses = 200 / 200 >= 75 each
+administrative truncation rate = 0 <= 0.01
+```
+
+Selection accounting was:
+
+```text
+unique historical trajectories = 872
+provisional selected states = 832
+unavailable assigned phase = 40
+duplicate selected rule states collapsed = 2
+final selected unique rule states = 830
+```
+
+No replacement or extension is needed or authorized.
+
+### Analysis mechanics freeze
+
+Before opening individual score–outcome pairs for model fitting, residual implementation mechanics were separately frozen in `preregistration/STAGE_1_ANALYSIS_METHOD_FREEZE.json`.
+
+The underlying scientific choices did not change: the candidate set remains phase-aware logistic versus phase-stratified isotonic, five trajectory-level folds remain fixed, Brier remains the selection metric, and isotonic still requires an absolute Brier improvement of at least 0.002.
+
+The added freeze only makes previously unspecified computational mechanics exact: zero initialization for phase-specific logistic fits, full 256-bit SHA-256 integer modulo for CV folds, deterministic Newton/IRLS and step-halving behavior, equal-score PAVA grouping, support-floor isotonic prediction, endpoint clamping, and no-rescue failure handling.
+
+### Current state
+
+```text
+Stage 1 generation = COMPLETE
+Stage 1 independent verification = PASS
+Stage 1 readiness = PASS
+Stage 1 exploratory model fitting = OPEN
+Stage 1 confirmatory reuse = NOT AUTHORIZED
+Stage 2 generation = NOT AUTHORIZED
+formal inference = NOT AUTHORIZED
+```
