@@ -1,27 +1,50 @@
 # Stage 1 Runbook — Position Evaluation / Win-Rate Calibration Study 1
 
-Updated: 2026-08-18
-Status: **STAGE 1 SCIENTIFIC GENERATION AUTHORIZED / FORMAL INFERENCE NOT AUTHORIZED**
+Updated: 2026-08-19
+Status: **STAGE 1 GENERATED / VERIFIED / READINESS PASS / EXPLORATORY MODEL FITTING OPEN**
 
-## A. Authorization basis
+## A. Completed scientific generation and verification
 
-Stage 0 technical validation passed and the repository now contains the separate source-bound artifact:
-
-```text
-doc/position-evaluation-calibration/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
-```
-
-Authorization is bound to:
+The fixed Stage 1 corpus has already been generated using exactly:
 
 ```text
 Stage 1 spec SHA-256 = a5015789b8293105dbfd7a9c977d0dbd66fc7564ab93ba9848f7b662d53b0f7c
-validated source commit = 28bb3ba1782c2ed7ea4c78a4dd962c96c782cd0a
-Stage 0 smoke = PEC-S0-SMOKE-2026-08-18-v1 PASS
+games = 1024
+seeds = 22200001..22201024
+generation source commit = c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4
 ```
 
-The smoke is technical only and is not calibration evidence.
+Independent replay and measurement verification passed:
 
-## B. Prepare a clean checkout
+```text
+gamesVerified = 1024
+gameReplayMismatches = 0
+measurementMismatches = 0
+measurementHashMatches = true
+```
+
+All preregistered readiness gates passed. Do **not** regenerate, extend, replace, or modify the Stage 1 corpus now that outcomes exist.
+
+## B. Frozen analysis mechanics
+
+Before individual score–outcome model fitting, exact residual mechanics were frozen in:
+
+```text
+doc/position-evaluation-calibration/preregistration/STAGE_1_ANALYSIS_METHOD_FREEZE.json
+```
+
+The candidate set remains exactly:
+
+```text
+phase-aware logistic
+phase-stratified isotonic PAVA
+```
+
+The primary selection metric remains five-fold out-of-fold Brier score. Isotonic displaces logistic only if its Brier is at least 0.002 lower. No alternative family, optimizer, fold assignment, smoother, or rescue rule is authorized.
+
+## C. Prepare the existing verified checkout
+
+From the repository root:
 
 ```bash
 git fetch origin
@@ -33,53 +56,51 @@ git rev-parse HEAD
 node --version
 ```
 
-`git status --short` must be empty before scientific generation.
+The local `artifacts/local/position-evaluation-calibration/stage1-exploratory-v1/` directory must still contain the previously generated games, measurements, generation manifest, selection/measurement summary, and passing `verification.json`.
 
-Re-run the contract checks after pulling the authorization/documentation commits:
+Do not delete or regenerate these scientific artifacts merely because documentation/analysis-code commits were pulled.
+
+## D. Validate analysis mechanics
+
+Run the synthetic contract test:
 
 ```bash
-node test/position-evaluation-calibration-stage0.test.js
-node tools/experiments/validate-position-evaluation-calibration-stage1-spec.js
+node test/position-evaluation-calibration-stage1-analysis.test.js
 ```
 
-Do not edit any frozen source file if these checks fail.
+A failure here is a technical analysis-code issue. Do not modify model families or scientific thresholds in response to a failure.
 
-## C. Stage 1 fixed scientific generation
+## E. Run Stage 1 exploratory calibration development
 
 Run exactly:
 
 ```bash
-node tools/experiments/run-position-evaluation-calibration-stage1.js --phase generate
+node tools/experiments/analyze-position-evaluation-calibration-stage1.js \
+  --output artifacts/local/position-evaluation-calibration/stage1-exploratory-v1
 ```
 
-This generates exactly the frozen 1024-game corpus using seeds `22200001..22201024`. Do not add games, extend seeds, alter max ply, or rerun with a modified source/configuration after outcome inspection.
+Before fitting, the analyzer independently checks:
 
-## D. Outcome-blind selection and measurement
+- Stage/spec identity;
+- exact 1024-game seed manifest;
+- passing independent verification;
+- all readiness gates;
+- measurement-file count;
+- recomputed measurement hash against both summary and verifier.
 
-After generation completes:
+Only then does it perform the frozen five-fold comparison and full-data refit of the selected family.
 
-```bash
-node tools/experiments/run-position-evaluation-calibration-stage1.js --phase select-measure
+Expected new artifact:
+
+```text
+artifacts/local/position-evaluation-calibration/stage1-exploratory-v1/stage1-exploratory-calibration-result.json
 ```
 
-Selection uses the preregistered trajectory deduplication, SHA phase assignment, within-phase SHA ranking, duplicate-rule-state collapse, and no-replacement rules.
-
-## E. Independent verification before exploratory analysis
-
-Run:
-
-```bash
-node tools/experiments/verify-position-evaluation-calibration-stage1.js \
-  artifacts/local/position-evaluation-calibration/stage1-exploratory-v1
-```
-
-Return the verifier output/artifacts for audit before any Stage 1 model fitting or calibration interpretation.
-
-The Stage 1 output directory is local by default. Large scientific corpus files should not be committed merely to move computation into GitHub Actions.
+Return that JSON for research audit before any Stage 2 spec, decision threshold, authorization, or generation is created.
 
 ## F. Interpretation firewall
 
-Even after Stage 1 verification PASS:
+Even after successful Stage 1 model selection:
 
 ```text
 Stage 1 = exploratory development only
@@ -88,10 +109,10 @@ Stage 2 generation = not authorized
 formal inference = not authorized
 ```
 
-Stage 1 may select/freeze the prospective calibration mapping for a future fresh Stage 2, but it cannot itself confirm calibration.
+A selected mapping is a prospective object to freeze for a **fresh** Stage 2. Stage 1 itself cannot establish formal calibration.
 
 ## G. No-rescue
 
-Do not alter game count, seeds, max ply, phase assignment, state selection, duplicate handling, continuation policy, model candidate families, readiness thresholds, or truncation handling after observing Stage 1 outcomes.
+Do not alter game count, seeds, max ply, phase assignment, state selection, duplicate handling, continuation policy, candidate families, readiness thresholds, truncation handling, CV assignment, logistic convergence rule, isotonic prediction rule, or the 0.002 selection margin after inspecting Stage 1 score–outcome results.
 
-A readiness-gate failure, technical failure, or inconclusive Stage 1 result does not authorize outcome-dependent extension or replacement.
+If both candidates are ineligible, or the selected family cannot be validly frozen, Stage 1 is inconclusive and Stage 2 is not generated unless a genuinely new prospective study is designed.
