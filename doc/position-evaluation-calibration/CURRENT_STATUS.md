@@ -1,7 +1,7 @@
 # Current Status — Position Evaluation / Win-Rate Calibration Study 1
 
-Updated: 2026-08-18
-Status: **STAGE 0 TECHNICAL VALIDATION PASS / STAGE 1 GENERATION AUTHORIZED / FORMAL INFERENCE NOT AUTHORIZED**
+Updated: 2026-08-19
+Status: **STAGE 1 GENERATION COMPLETE / INDEPENDENT VERIFICATION PASS / READINESS PASS / EXPLORATORY MODEL FITTING OPEN**
 
 ## Repository identity
 
@@ -9,88 +9,106 @@ Status: **STAGE 0 TECHNICAL VALIDATION PASS / STAGE 1 GENERATION AUTHORIZED / FO
 baseline main HEAD = 8672ba4fafb896124df0c4728d41f7c3a6ed5056
 study branch = research/position-evaluation-winrate-calibration
 Stage 0 validated source commit = 28bb3ba1782c2ed7ea4c78a4dd962c96c782cd0a
+Stage 1 generation source commit = c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4
 Stage 1 authorization commit = e4323705087c854650097c7d3789ef1371f7a489
 ```
 
 The branch remains based on current main; no closed-study formal decision has been changed.
 
-## Completed Stage 0 design work
+## Frozen scientific design
 
-- evaluation/search semantics audit complete;
-- prior-study scientific boundaries restored;
-- declared research-corpus seed namespace audit closed;
-- Stage 1 seeds frozen at `22200001..22201024` for 1024 games;
-- Stage 2 namespace reserved at `22300001..22302048` for 2048 games;
-- frozen opening = first 8 plies seeded-uniform exact `E.moveVariants`;
-- frozen continuation = `hard / bao / phase2 / D2 / Infinity`;
-- frozen trajectory max ply = 160;
-- one selected state maximum per unique historical trajectory;
-- frozen SHA phase assignment and within-phase state selection;
-- duplicate selected `ruleStateKey` collapse with no replacement;
-- administrative truncation is not a draw and receives no binary outcome;
-- Stage 1 model candidate family and 5-fold selection rule frozen;
-- Stage 1 production runner and replay/measurement verifier implemented;
-- production runner requires separate source-bound authorization artifact.
+```text
+Stage 1 seeds = 22200001..22201024 (1024 games)
+Stage 2 reserved = 22300001..22302048 (2048 games; generation not authorized)
+opening = first 8 plies seeded-uniform exact E.moveVariants
+continuation = hard / bao / phase2 / D2 / Infinity
+max ply = 160
+primary score = AI.evaluate(state, state.player)
+key secondary = exact D2 root bestScore
+trajectory support unit = unique historicalTrajectoryHash
+selected states per trajectory <= 1
+```
+
+Administrative truncation is not a draw and receives no binary outcome. Stage 1 remains exploratory only.
 
 ## Stage 0 technical validation
 
-Returned smoke artifact:
+`PEC-S0-SMOKE-2026-08-18-v1` passed with clean source, deterministic replay, static actor-perspective antisymmetry, and both Namua/Mtaji exercised. The smoke is technical only and is not calibration evidence.
+
+## Stage 1 returned corpus and verification
 
 ```text
-smokeId = PEC-S0-SMOKE-2026-08-18-v1
-smoke SHA-256 = 11172d1a31d5716b40a5dd8d4cf092d0e7d6142c6b2299d30e6591e305d007f8
 spec SHA-256 = a5015789b8293105dbfd7a9c977d0dbd66fc7564ab93ba9848f7b662d53b0f7c
-passed = true
+games = 1024
+seed range = 22200001..22201024
 sourceTreeDirty = false
-deterministicReplay = true
-staticPerspectiveAntisymmetry = true
-games = 8
-uniqueHistoricalTrajectories = 8
-selectedStates = 8
-selectedNamua = 6
-selectedMtaji = 2
-scientificGeneration = false
-scientificInferenceAuthorized = false
+unique historical trajectories = 872
+selected unique rule states = 830
+Namua = 430
+Mtaji = 400
+administrative truncation = 0 / 830
+selectionHash = 29b270b7dbfca8ef67c393c60f6232694c629b80228665eb1166dddeb257dd79
+measurementHash = 0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa
 ```
 
-The smoke is technical only. Its eight states are not calibration evidence and are not reusable as Stage 1 scientific observations.
-
-## Primary construct
+Independent verification:
 
 ```text
-primary score = AI.evaluate(state, state.player)
-key secondary = exact D2 root bestScore
-empirical outcome = selected actor terminal win under frozen continuation
+passed = true
+gamesVerified = 1024
+gameReplayMismatches = 0
+measurementMismatches = 0
+measurementHashMatches = true
 ```
 
-This remains distinct from game-theoretic value, human perception, causal effect, and Position Complexity constructs.
+## Stage 1 readiness
 
-## Stage 1 readiness design
+All frozen gates passed:
 
 ```text
-unique historical trajectories >= 800
-selected unique rule states >= 750
-Namua >= 330
-Mtaji >= 330
-distinct opening prefixes >= 200
-distinct static evaluations per phase >= 50
-actor wins per phase >= 75
-actor losses per phase >= 75
-administrative truncation <= 1%
+unique historical trajectories: 872 >= 800
+selected unique rule states: 830 >= 750
+Namua: 430 >= 330
+Mtaji: 400 >= 330
+distinct opening prefixes: 830 >= 200
+distinct static evaluations: Namua 327 >= 50; Mtaji 363 >= 50
+actor wins/losses: Namua 190/240; Mtaji 200/200; each >= 75
+administrative truncation rate: 0 <= 0.01
 ```
 
-Failure does not authorize extra games.
+Machine-readable audit:
+
+```text
+doc/position-evaluation-calibration/results/STAGE_1_READINESS_AUDIT.json
+```
+
+## Stage 1 analysis method freeze
+
+Before individual score–outcome model fitting, residual mechanics were frozen in:
+
+```text
+doc/position-evaluation-calibration/preregistration/STAGE_1_ANALYSIS_METHOD_FREEZE.json
+```
+
+Candidate set remains exactly:
+
+```text
+phase-aware logistic
+phase-stratified isotonic PAVA
+```
+
+Selection remains five-fold trajectory-level CV Brier score, with isotonic selected only if its Brier is at least 0.002 lower than logistic. No rescue model, alternate optimizer, alternate fold assignment, or outcome-dependent extension is authorized.
 
 ## Current authorization state
 
-`STAGE_1_EXPLORATORY_AUTHORIZATION.json` now exists and is bound to the exact Stage 1 spec SHA-256 and exact frozen source-file SHA-256 mapping returned by the passing smoke.
-
 ```text
-Stage 1 scientific corpus generation = AUTHORIZED
-Stage 1 exploratory inference before independent verification = NOT AUTHORIZED
+Stage 1 scientific generation = COMPLETE
+Stage 1 independent verification = PASS
+Stage 1 readiness = PASS
+Stage 1 exploratory model fitting = AUTHORIZED / OPEN
 Stage 1 confirmatory reuse = NOT AUTHORIZED
 Stage 2 scientific generation = NOT AUTHORIZED
 formal inference = NOT AUTHORIZED
 ```
 
-Next required sequence: generate the fixed 1024-game Stage 1 corpus, perform selection/measurement, then run the independent verifier. No Stage 1 exploratory model fitting should be interpreted until verification PASS is established.
+Next required step: run the frozen Stage 1 analysis mechanics, return `stage1-exploratory-calibration-result.json`, audit candidate eligibility/CV Brier/model selection, and only then freeze the exact selected mapping and prospective Stage 2 formal protocol before any Stage 2 generation.
