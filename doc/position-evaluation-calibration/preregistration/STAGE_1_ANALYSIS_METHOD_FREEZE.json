@@ -44,7 +44,7 @@
     "form": "separate nondecreasing unweighted PAVA within Namua and Mtaji",
     "equalScoreHandling": "group exact-equal z values before PAVA with observation count as block weight and actor-win sum as block numerator",
     "mergeRule": "while an adjacent left block mean exceeds the right block mean, merge the pair; equality is not a violation",
-    "predictionWithinSupport": "left-continuous step by support: use the fitted block whose minimum observed z is the greatest value not exceeding the query z",
+    "predictionWithinSupport": "support-floor step: use the fitted block whose minimum observed z is the greatest value not exceeding the query z",
     "predictionBelowSupport": "clamp to first fitted block mean",
     "predictionAboveSupport": "clamp to last fitted block mean",
     "candidateFailure": "missing required phase support or non-finite fitted values makes candidate ineligible; no rescue smoother"
