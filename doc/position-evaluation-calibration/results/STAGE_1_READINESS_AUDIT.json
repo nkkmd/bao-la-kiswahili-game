@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S1-EXPLORATORY-2026-08-18-v1",
+  "auditId": "PEC-S1-READINESS-2026-08-19-v1",
+  "auditedAt": "2026-08-19",
+  "specSha256": "a5015789b8293105dbfd7a9c977d0dbd66fc7564ab93ba9848f7b662d53b0f7c",
+  "passed": true,
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "stage2GenerationAuthorized": false,
+  "stage1ExploratoryModelFittingAuthorized": true,
+  "inputArtifacts": {
+    "generationManifestSha256": "0a1ad53c2ac5dff272b771d6b9c48ca26b349aad650029a5d13464c0aa990813",
+    "selectionMeasurementSummarySha256": "1e843c9fbc3f286f2e6bc17a99e6590b51f636d09b051ff73fa96228fb756d73",
+    "verificationSha256": "6b4e08a11b1145337410036a697e81f7c7f2408378f4584bc1a2b27cef76ff21"
+  },
+  "generation": {
+    "sourceCommit": "c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4",
+    "sourceTreeDirty": false,
+    "games": 1024,
+    "seedStart": 22200001,
+    "seedEnd": 22201024,
+    "authorizationSha256": "a8077ddc92fc6c528795a1907b39cb6dcb83995ad03a1ee00101f56ff24ac5f8",
+    "frozenSourceHashesMatchAuthorization": true
+  },
+  "selectionMeasurement": {
+    "uniqueHistoricalTrajectories": 872,
+    "provisionalSelectedStates": 832,
+    "unavailableAssignedPhase": 40,
+    "duplicateSelectedRuleStatesCollapsed": 2,
+    "selectedUniqueRuleStates": 830,
+    "phaseCounts": {
+      "namua": 430,
+      "mtaji": 400
+    },
+    "distinctOpeningPrefixes": 830,
+    "distinctStaticEvaluationByPhase": {
+      "namua": 327,
+      "mtaji": 363
+    },
+    "administrativeTruncationSelectedStates": 0,
+    "administrativeTruncationRate": 0,
+    "outcomeByPhase": {
+      "namua": {
+        "actorWins": 190,
+        "actorLosses": 240
+      },
+      "mtaji": {
+        "actorWins": 200,
+        "actorLosses": 200
+      }
+    },
+    "selectionHash": "29b270b7dbfca8ef67c393c60f6232694c629b80228665eb1166dddeb257dd79",
+    "measurementHash": "0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa"
+  },
+  "verification": {
+    "passed": true,
+    "gamesVerified": 1024,
+    "gameReplayMismatches": 0,
+    "uniqueHistoricalTrajectories": 872,
+    "selectedUniqueRuleStates": 830,
+    "measurementMismatches": 0,
+    "measurementHashMatches": true,
+    "recomputedMeasurementHash": "0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa",
+    "sourceCommit": "c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4",
+    "sourceTreeDirty": false
+  },
+  "readinessChecks": {
+    "uniqueHistoricalTrajectories": { "observed": 872, "minimum": 800, "passed": true },
+    "selectedUniqueRuleStates": { "observed": 830, "minimum": 750, "passed": true },
+    "namuaSelectedStates": { "observed": 430, "minimum": 330, "passed": true },
+    "mtajiSelectedStates": { "observed": 400, "minimum": 330, "passed": true },
+    "distinctOpeningPrefixes": { "observed": 830, "minimum": 200, "passed": true },
+    "namuaDistinctStaticEvaluations": { "observed": 327, "minimum": 50, "passed": true },
+    "mtajiDistinctStaticEvaluations": { "observed": 363, "minimum": 50, "passed": true },
+    "namuaActorWins": { "observed": 190, "minimum": 75, "passed": true },
+    "namuaActorLosses": { "observed": 240, "minimum": 75, "passed": true },
+    "mtajiActorWins": { "observed": 200, "minimum": 75, "passed": true },
+    "mtajiActorLosses": { "observed": 200, "minimum": 75, "passed": true },
+    "administrativeTruncationRate": { "observed": 0, "maximum": 0.01, "passed": true }
+  },
+  "decision": {
+    "stage1Readiness": "PASS",
+    "independentVerification": "PASS",
+    "stage1ExploratoryModelFitting": "OPEN",
+    "stage1FormalInference": "NOT-AUTHORIZED",
+    "stage2Generation": "NOT-AUTHORIZED"
+  }
+}
