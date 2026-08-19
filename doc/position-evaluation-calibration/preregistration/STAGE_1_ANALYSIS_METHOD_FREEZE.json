@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S1-EXPLORATORY-2026-08-18-v1",
+  "analysisId": "PEC-S1-CALIBRATION-DEVELOPMENT-2026-08-19-v1",
+  "status": "analysis-method-frozen-after-independent-verification-before-score-outcome-model-fitting",
+  "frozenAt": "2026-08-19",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "stage2GenerationAuthorized": false,
+  "inputGate": {
+    "verificationPassedRequired": true,
+    "readinessPassedRequired": true,
+    "measurementHashMatchRequired": true,
+    "binaryRows": "selected states with administrativeTruncation=false and actorWin in {0,1}"
+  },
+  "scoreTransform": {
+    "formula": "z=staticBaoEvaluation/100",
+    "phaseVariable": "phase"
+  },
+  "crossValidation": {
+    "folds": 5,
+    "assignment": "integer(SHA256(PEC-S1-CV-v1|historicalTrajectoryHash)) modulo 5",
+    "shaIntegerConvention": "entire 256-bit hexadecimal digest interpreted as one unsigned big-endian integer",
+    "unit": "selected unique historical trajectory",
+    "aggregation": "pooled mean squared error over all held-out binary rows",
+    "primaryMetric": "Brier score"
+  },
+  "phaseAwareLogistic": {
+    "form": "independent intercept and z slope within Namua and Mtaji",
+    "likelihood": "unpenalized Bernoulli log likelihood",
+    "initialParametersPerPhase": [0, 0],
+    "optimizer": "deterministic Newton/IRLS using observed score rows",
+    "maxIterations": 100,
+    "gradientCriterion": "maximum absolute component of score gradient",
+    "gradientTolerance": 1e-10,
+    "maximumStepHalvings": 20,
+    "stepRule": "try full Newton step, then successive factors 1/2 through 1/2^20; accept first step with nondecreasing finite log likelihood",
+    "informationFailure": "non-finite information terms or exactly zero 2x2 determinant makes that fit fail",
+    "prediction": "stable logistic transform of phase-specific intercept plus slope times z",
+    "candidateFailure": "any required phase fit or CV-fold fit failure makes candidate ineligible; no rescue optimizer or penalty"
+  },
+  "phaseStratifiedIsotonic": {
+    "form": "separate nondecreasing unweighted PAVA within Namua and Mtaji",
+    "equalScoreHandling": "group exact-equal z values before PAVA with observation count as block weight and actor-win sum as block numerator",
+    "mergeRule": "while an adjacent left block mean exceeds the right block mean, merge the pair; equality is not a violation",
+    "predictionWithinSupport": "left-continuous step by support: use the fitted block whose minimum observed z is the greatest value not exceeding the query z",
+    "predictionBelowSupport": "clamp to first fitted block mean",
+    "predictionAboveSupport": "clamp to last fitted block mean",
+    "candidateFailure": "missing required phase support or non-finite fitted values makes candidate ineligible; no rescue smoother"
+  },
+  "candidateSelection": {
+    "candidates": [
+      "phase-aware-logistic",
+      "phase-stratified-isotonic"
+    ],
+    "rule": "choose isotonic only if isotonic CV Brier <= logistic CV Brier - 0.002; otherwise choose logistic",
+    "ifOneIneligible": "select the eligible candidate",
+    "ifBothIneligible": "Stage 1 inconclusive; Stage 2 not generated"
+  },
+  "fullFit": {
+    "rule": "refit selected family on all eligible Stage 1 binary rows using the exact frozen mechanics above",
+    "freezeForStage2": "exact logistic parameters or exact isotonic blocks must be recorded before any Stage 2 generation"
+  },
+  "descriptiveOnly": {
+    "pooledLogisticReference": true,
+    "cvLogLoss": true,
+    "phaseSpecificCvMetrics": true,
+    "baseRates": true,
+    "cannotOverrideSelectionRule": true
+  },
+  "noRescue": {
+    "additionalCandidateFamiliesAuthorized": false,
+    "alternateOptimizerAfterFailureAuthorized": false,
+    "alternateCvAssignmentAuthorized": false,
+    "outcomeDependentThresholdChangeAuthorized": false,
+    "stage2GenerationAuthorizedByThisFreeze": false
+  }
+}
