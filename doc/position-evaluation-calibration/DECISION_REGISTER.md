@@ -14,8 +14,6 @@ Status: **FROZEN**
 main baseline = 8672ba4fafb896124df0c4728d41f7c3a6ed5056
 ```
 
-The prior reported SHA was one merge behind; the only changed file was `doc/FUTURE_RESEARCH_AGENDA.md`.
-
 Status: **FROZEN**
 
 ## D-003 — Construct boundary
@@ -38,7 +36,7 @@ PCX-H1 = INCONCLUSIVE
 PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 ```
 
-No calibration model may be described as resolving the PCX BFGS convergence failure.
+Calibration does not rescue these decisions.
 
 Status: **FROZEN**
 
@@ -59,8 +57,6 @@ Status: **FROZEN**
 
 ## D-006 — Primary perspective
 
-Selected-state actor perspective is used:
-
 ```text
 actor = state.player
 score sign = actor-relative
@@ -71,48 +67,49 @@ Status: **FROZEN**
 
 ## D-007 — Primary construct
 
-Primary calibration target is static default `bao` evaluation via `AI.evaluate(state, actor)`.
-
-Exact D2 search bestScore remains key secondary and is not merged with the static score.
+Primary calibration target is static default `bao` evaluation via `AI.evaluate(state, actor)`. Exact D2 search bestScore remains secondary and is not merged with the static score.
 
 Status: **FROZEN**
 
 ## D-008 — Replication principle
 
-Do not create pseudo-replication by repeating the same deterministic state/policy. Primary uncertainty is over prospectively sampled independent trajectory/state units.
+Primary uncertainty is over prospectively sampled independent trajectory/state units. Repeating one deterministic state/policy does not create replication.
 
 Status: **FROZEN**
 
 ## D-009 — Seed firewall
 
-Stage 1 used only `22200001..22201024`. Stage 2 used only `22300001..22302048`. No extension is allowed after outcome inspection.
+```text
+Stage 1 = 22200001..22201024
+Stage 2 = 22300001..22302048
+```
+
+No outcome-dependent extension is allowed.
 
 Status: **FROZEN**
 
 ## D-010 — Authorization firewall
 
-A preregistration/spec file alone does not authorize scientific generation. A separate authorization artifact is required after technical validation and source/seed freeze.
+A spec alone never authorizes scientific generation. Separate source-bound authorization is required.
 
 Status: **FROZEN**
 
 ## D-011 — Formal no-rescue
 
-No outcome-dependent extension, reseeding, replicate increase, bin change, model-family change, phase split/merge, optimizer/tolerance change, endpoint substitution, threshold change or outlier exclusion is allowed on Stage 2 evidence.
+No outcome-dependent extension, reseeding, replicate increase, bin change, model-family change, optimizer/tolerance rescue, endpoint substitution, threshold change, or outlier exclusion may change the formal result.
 
 Status: **FROZEN**
 
 ## D-012 — Stage 1 selected calibration family
 
-The prospectively enumerated phase-aware logistic candidate became ineligible in five-fold CV because fold 1 Mtaji failed the frozen numerical convergence gate after 100 iterations:
+Phase-aware logistic became ineligible in CV fold 1 / Mtaji after 100 iterations:
 
 ```text
 max |gradient| = 4.513435944430988e-10
 required tolerance = 1e-10
 ```
 
-No rescue optimizer/tolerance/regularization is permitted.
-
-The phase-stratified isotonic candidate remained eligible:
+Phase-stratified isotonic remained eligible:
 
 ```text
 pooled CV Brier = 0.1532240986334561
@@ -120,21 +117,19 @@ Namua CV Brier = 0.2296469061338478
 Mtaji CV Brier = 0.07106958057053532
 ```
 
-Therefore the frozen selection rule chooses:
+Frozen selection:
 
 ```text
 selected family = phase-stratified-isotonic
 reason = only-eligible-candidate
-Stage 1 result status = MODEL-SELECTED-EXPLORATORY
+Stage 1 status = MODEL-SELECTED-EXPLORATORY
 ```
 
-Stage 1 does not itself authorize a formal calibration claim.
+Stage 1 itself does not authorize a formal calibration claim.
 
 Status: **FROZEN**
 
 ## D-013 — Stage 2 mapping lock
-
-Stage 2 uses the exact Stage 1 isotonic mapping bound by:
 
 ```text
 Stage 1 result SHA-256 = 136889c6d778bfccbde2adf969c838cccc6e7372722c157807bf21a0794d1449
@@ -147,21 +142,21 @@ Status: **FROZEN**
 
 ## D-014 — Stage 2 cross-stage identity firewall
 
-Final Stage 2 selected states must have zero overlap with Stage 1 on:
+Final Stage 2 states must have zero Stage 1 overlap on:
 
 ```text
-historicalTrajectoryHash — all Stage 1 generated games
-openingPrefixHash — all Stage 1 generated games
-ruleStateKey — all Stage 1 observations
+historicalTrajectoryHash
+openingPrefixHash
+ruleStateKey
 ```
 
-Overlaps are excluded without replacement; no seed extension is allowed.
+Overlaps are excluded without replacement.
 
 Status: **FROZEN**
 
-## D-015 — Stage 2 primary formal decision
+## D-015 — Stage 2 primary formal rule
 
-After all estimability/identity/verification gates pass, `CONFIRMED` requires every criterion:
+After every estimability/identity/verification gate passes, `CONFIRMED` requires all:
 
 ```text
 paired Brier-skill one-sided 95% bootstrap lower bound > 0
@@ -174,40 +169,36 @@ If estimable but any criterion fails: `NOT-CONFIRMED`.
 
 If any estimability/identity gate fails: `INCONCLUSIVE`.
 
-Secondary/descriptive results cannot rescue this decision.
+Secondary/descriptive values cannot rescue the decision.
 
 Status: **FROZEN**
 
 ## D-016 — Stage 2 authorization
 
-The non-scientific Stage 2 smoke passed and the source-bound authorization was committed before scientific generation:
+Stage 2 technical smoke passed before scientific generation. Source-bound authorization then allowed exactly:
 
 ```text
-smokeId = PEC-S2-SMOKE-2026-08-20-v1
-Stage 2 spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
-authorization commit = 2b4b186f8fd51912c5b4ed52fa0f1a6c6672e8a2
-scientific generation = AUTHORIZED for exactly 2048 games / 22300001..22302048
-Stage 1 refit = FORBIDDEN
-seed extension / overlap replacement / outcome-dependent extension = FORBIDDEN
+2048 games
+22300001..22302048
 ```
+
+Stage 1 refit, seed extension, overlap replacement, and outcome-dependent extension remained forbidden.
 
 Status: **FROZEN / EXECUTED**
 
-## D-017 — Stage 2 verification and estimability decision
+## D-017 — Stage 2 verification and estimability
 
-The fixed 2048-game Stage 2 corpus was independently verified:
+Independent verification passed:
 
 ```text
 gamesVerified = 2048
 gameReplayMismatches = 0
 measurementMismatches = 0
 measurementHashMatches = true
-final Stage 1 historicalTrajectoryHash overlap = 0
-final Stage 1 openingPrefixHash overlap = 0
-final Stage 1 ruleStateKey overlap = 0
+final Stage 1 overlaps = 0 / 0 / 0
 ```
 
-Three preregistered estimability gates failed after the no-replacement firewall/selection process:
+Three preregistered estimability gates failed:
 
 ```text
 unique historical trajectories after Stage 1 firewall = 1383 < 1600
@@ -215,16 +206,40 @@ selected unique rule states = 1290 < 1500
 Mtaji selected states = 627 < 650
 ```
 
-Other support/outcome/truncation/identity gates passed.
-
-Under D-015, this forces:
+Therefore D-015 forces:
 
 ```text
 formal decision = INCONCLUSIVE
-formal performance criteria eligible = false
-paired bootstrap eligible = false
+bootstrap eligible = false
+primary performance criteria eligible = false
 ```
 
-This is an estimability failure and must not be relabeled as `NOT-CONFIRMED`. Additional games, seed extension, overlap replacement, threshold relaxation, or mapping refit are not authorized.
+This is an estimability failure and must not be relabeled `NOT-CONFIRMED`.
 
-Status: **FORMAL DECISION FORCED — INCONCLUSIVE**
+Status: **FROZEN — INCONCLUSIVE**
+
+## D-018 — Canonical formal-result materialization and closure
+
+The frozen evaluator materialized the canonical Stage 2 result without changing the prior gate decision.
+
+```text
+canonical stage2-formal-result SHA-256 = 94602023bdf8e9086703cbff44a68a9a070ada85c0bdbb2aaad104ffbd0b5405
+formalDecision = INCONCLUSIVE
+bootstrap = null
+criteria = null
+```
+
+Descriptive values include:
+
+```text
+pooled Brier = 0.15550141283724248
+Namua Brier = 0.22678074548187638
+Mtaji Brier = 0.08012948693071474
+observed paired Brier skill = +0.09555981447607745
+```
+
+These do not enter the formal decision because the estimability branch failed first. Exact unclipped log loss is non-finite with 7 boundary contradictions; this also remains descriptive only.
+
+Study 1 closes without extra data or any rescue change.
+
+Status: **FINAL / STUDY 1 CLOSED / FORMAL INCONCLUSIVE**
