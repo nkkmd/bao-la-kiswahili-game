@@ -189,9 +189,6 @@ Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical 
 - [`tactical-motifs/REPRODUCIBILITY_INDEX.md`](tactical-motifs/REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
 - [`tactical-motifs/CURRENT_STATUS.md`](tactical-motifs/CURRENT_STATUS.md) — closure状態とfixed boundaries
 - [`tactical-motifs/DECISION_REGISTER.md`](tactical-motifs/DECISION_REGISTER.md) — scientific decisions / no-rescue boundaries
-- [`tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md`](tactical-motifs/STAGE_1_EXPLORATORY_RESULT.md) — Stage 1 exploratory result
-- [`tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json`](tactical-motifs/STAGE_1_CANDIDATE_FREEZE.json) — Stage 1 promoted definitions freeze
-- [`tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json`](tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable formal contract
 
 **Boundary:** C03の`CONFIRMED`はfrozen Bao engine/search operationalizationにおける**machine-reproducible transferable tactical motif**までです。traditional/expert-recognized tesuji、human importance、pedagogical value、他engine/rulesへのgeneralizationは別studyを要します。
 
@@ -202,8 +199,6 @@ Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical 
 **研究題目:** Baoにおけるmachine-confirmed tactical motifのHuman / Expert Validation — TM-S2-C03は人間の熟練者にも手筋として認識されるか  
 **状態:** **Study 1 complete — machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`**  
 **作業branch:** `research/tactical-motif-human-validation`
-
-Tactical Motifs Study 1でmachine-confirmedとなった`TM-S2-C03`を、人間のBao expertが異なる局面に共通するtransferable move principleとして認識するかを検証するためのprospective independent studyです。
 
 Machine/instrument側ではfresh 1,536-game corpusを生成し、全1,536局をindependent full recomputationでmismatch 0まで確認しました。prospective C03 target / near-miss controlsを構成し、全readiness gateをPASSしたうえで、12 primary blocks、24 C03 targets、12 matched controls、6 secondary move-choice targetsからなる42 unique formal positionsをdeterministically freezeしました。
 
@@ -216,7 +211,7 @@ formal human responses = 0
 minimum included experts required = 10
 ```
 
-expert criteriaやminimum Nを緩和せず、human axisを`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として閉じました。これはhuman negative resultではなく、expert recognitionについてformal inferenceできなかったという結果です。
+expert criteriaやminimum Nを緩和せず、human axisを`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として閉じました。これはhuman negative resultではありません。
 
 Final evidence state:
 
@@ -242,6 +237,52 @@ humanExpertN = 0
 
 ---
 
+### 9. Position Evaluation / Win-Rate Calibration — Study 1
+
+**研究題目:** Baoにおける形勢評価値と実現勝率の校正 — phase-aware empirical win-probability calibration と評価値の解釈境界  
+**状態:** **Study 1 closed / formal decision `INCONCLUSIVE`**  
+**作業branch:** `research/position-evaluation-winrate-calibration`
+
+このprospective independent studyは、static `bao` evaluationをそのまま勝率とみなさず、frozen sampled-state populationとdeterministic continuation policyのもとでempirical continuation win probabilityへ校正できるかを検証しました。
+
+Stage 1はfresh 1,024-game corpus / 830 selected statesで全readiness gateをPASSしました。事前固定した2 candidateのうちphase-aware logisticはfold 1 Mtajiでfrozen numerical convergence gateを満たさずineligibleとなり、phase-stratified isotonicが唯一のeligible candidateとして選択されました。
+
+```text
+Stage 1 isotonic pooled CV Brier = 0.1532240986334561
+Namua = 0.2296469061338478
+Mtaji = 0.07106958057053532
+```
+
+Stage 2はfresh 2,048 games / seeds `22300001..22302048`で実施し、全局のindependent replay/measurement verificationがPASS、final Stage 1 overlapもtrajectory/opening/rule-stateの全軸で0でした。
+
+しかしstrict Stage 1 identity firewallとno-replacement selection後に:
+
+```text
+unique trajectories after firewall = 1383 < 1600
+selected unique rule states = 1290 < 1500
+Mtaji selected states = 627 < 650
+```
+
+となり、3つのpreregistered estimability gateが未達でした。したがってbootstrapとprimary performance criteriaはformal decisionに入らず、final decisionは **`INCONCLUSIVE`** です。
+
+Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080129...`でしたが、これらはformal confirmationへ昇格しません。
+
+**最初に読む:**
+
+- [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`position-evaluation-calibration/STUDY_1_FINAL_REPORT.md`](position-evaluation-calibration/STUDY_1_FINAL_REPORT.md) — 科学的最終統合
+- [`position-evaluation-calibration/STAGE_2_FORMAL_RESULT.md`](position-evaluation-calibration/STAGE_2_FORMAL_RESULT.md) — Stage 2 canonical formal result
+- [`position-evaluation-calibration/REPRODUCIBILITY_INDEX.md`](position-evaluation-calibration/REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
+- [`position-evaluation-calibration/CURRENT_STATUS.md`](position-evaluation-calibration/CURRENT_STATUS.md) — closure状態とimmutable boundaries
+- [`position-evaluation-calibration/DECISION_REGISTER.md`](position-evaluation-calibration/DECISION_REGISTER.md) — frozen decisions / no-rescue boundaries
+
+**Boundary:** Study 1のisotonic mappingはexploratory development artifactであり、formalにvalidatedされたBao勝率ではありません。game-theoretic value、human advantage perception、causal effect、別engine/search/populationへのgeneralizationも主張しません。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -252,11 +293,15 @@ humanExpertN = 0
 
 局面類型と棋風Study 1からの主要future study候補には、N-ACT/N-CONの独立formal replication、新しいplaying-style model family、MTAJI-M1/M2の人間/expert validation、より広いengine/search implementationでのexternal validityがあります。Stage 5 held-out corpusを再定義してconfirmationを救済することはfuture workに含めません。
 
-Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。新しいstructural-trajectory question、mechanistic analysis、human/expert validation、別conditionでのexternal validityを扱う場合は、新規prospective studyとして分離します。
+Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。
 
-Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。数値収束問題を解消してH1を再検証する場合は、optimizer/convergence procedureを事前固定した新しいprospective independent replicationとfresh corpusを使用します。Human difficulty validationも別studyです。
+Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。再検証する場合はfresh prospective replicationを使用します。
 
-Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加gameやpaired-definition substitutionで救済することはfuture workに含めません。C03のhuman/expert validationについてはTactical Motif Human / Expert Validation Study 1がmachine/instrument pipelineを42 formal positionsのfreezeまで完了しましたが、human axisはN=0で`INCONCLUSIVE-NOT-ESTIMABLE`として閉じました。将来再びhuman/expert recognitionを検証する場合は、このclosed resultを変更するのではなく新しいprospective studyまたは明示的にversionedされたprospective reopeningとして扱います。traditionality、pedagogical validation、別engine/search/rulesでのexternal validityも別の研究課題です。
+Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加gameやpaired-definition substitutionで救済しません。C03 human axisのN=0 closureもretroactiveに変更しません。
+
+Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`についても、同じStage 2へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えてformal decisionを救済しません。formal calibration generalizationを再検証する場合は、identity-firewall attritionを事前に織り込んだfresh prospective independent studyとします。
+
+悪手・錯覚研究は新規studyとして開始できますが、今回のisotonic mappingをformalにvalidatedされたwin probabilityとして扱わず、使用する場合はexploratory/descriptive contextと明示します。
 
 ---
 
