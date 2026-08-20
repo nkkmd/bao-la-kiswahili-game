@@ -131,7 +131,8 @@
       "withinPhaseResampling": true,
       "deterministicIndexGenerator": "SHA256(PEC-S2-BOOT-v1|replicate|phase|draw) interpreted as unsigned 256-bit integer modulo phase sample size",
       "oneSidedConfidenceLevel": 0.95,
-      "lowerQuantile": 0.05
+      "lowerQuantile": 0.05,
+      "quantileConvention": "sort replicate means ascending and use zero-based index floor(q*(B-1)); no interpolation"
     },
     "successCriteriaAllRequired": {
       "pairedSkillLower95GreaterThan": 0,
@@ -178,6 +179,26 @@
     "replacementForUnavailableAssignedPhase": false,
     "replacementForDuplicateRuleState": false,
     "extensionForAdministrativeTruncation": false
+  },
+  "sourceFreeze": {
+    "files": [
+      "public/engine.js",
+      "public/ai.js",
+      "public/ai-weights.js",
+      "tools/benchmark.js",
+      "tools/symmetry/transform-candidates.js",
+      "tools/experiments/lib/phase-transition-features.js",
+      "tools/experiments/lib/position-typology-features.js",
+      "tools/experiments/lib/position-complexity-search-diagnostic.js",
+      "tools/experiments/lib/position-evaluation-calibration-stage2-common.js",
+      "tools/experiments/validate-position-evaluation-calibration-stage2-spec.js",
+      "tools/experiments/run-position-evaluation-calibration-stage2.js",
+      "tools/experiments/verify-position-evaluation-calibration-stage2.js",
+      "tools/experiments/evaluate-position-evaluation-calibration-stage2.js",
+      "tools/experiments/run-position-evaluation-calibration-stage2-smoke.js",
+      "doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_SPEC.json"
+    ],
+    "sha256RequiredInAuthorization": true
   },
   "authorization": {
     "generationAuthorizedBySpecAlone": false,
