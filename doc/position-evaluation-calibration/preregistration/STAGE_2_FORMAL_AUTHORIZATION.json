@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S2-FORMAL-2026-08-20-v1",
+  "status": "authorized-after-stage2-technical-smoke-pass",
+  "authorizedAt": "2026-08-20",
+  "specSha256": "92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38",
+  "stage2GenerationAuthorized": true,
+  "stage2FormalInferenceAuthorized": true,
+  "stage1RefitAllowed": false,
+  "sourceCommitAtTechnicalValidation": "fbb84549713b0b699fc32ea87345112b378d9e5a",
+  "authorizedSourceFileSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+    "tools/symmetry/transform-candidates.js": "fc85e8520b23b0b4ceb0bd8a95ad7f2b47171405190eedecdc822054d44decc5",
+    "tools/experiments/lib/phase-transition-features.js": "b0948a94b8e6358d12194e4dad10018448f85814ac735ca3ceee7a4c74a78480",
+    "tools/experiments/lib/position-typology-features.js": "94ec8283cdc9d8f75cbdb13215cc2acd95fd33a2ca3a14afccd3a26ca8644242",
+    "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
+    "tools/experiments/lib/position-evaluation-calibration-stage2-common.js": "55514a152da33051204e272de07cc3475323b42f3e88e62d884937c9815532eb",
+    "tools/experiments/validate-position-evaluation-calibration-stage2-spec.js": "b5643daf58f8e1381c3f3b6499dce581bed8a51d5ccbbfe9a17af748cd6ed7bd",
+    "tools/experiments/run-position-evaluation-calibration-stage2.js": "4fcfafd7fe741fefc6406b6982a8f565b017ac7f60f8c65e82a098a415c4c49a",
+    "tools/experiments/verify-position-evaluation-calibration-stage2.js": "c0218f53cb521d3fefdaa316ca85806f64151088f507bd9329516c64c3792d99",
+    "tools/experiments/evaluate-position-evaluation-calibration-stage2.js": "3bc856b3cacd9f3c6bc515e2203ebba8e2f8ba320b90cec6a6defdb02c716a1d",
+    "tools/experiments/run-position-evaluation-calibration-stage2-smoke.js": "95b80b69b8b045c82c6500c5e92929e9f617b9d0c20d0abcf3500628d8883949",
+    "doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_SPEC.json": "92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38"
+  },
+  "technicalValidation": {
+    "smokeId": "PEC-S2-SMOKE-2026-08-20-v1",
+    "smokeArtifactSha256": "5cf0e2276f997cca689d52b8304e42dc1ac9df96769b7a7e858535e7c38628d2",
+    "passed": true,
+    "scientificGeneration": false,
+    "formalInferencePerformed": false,
+    "smokeSeeds": [990101, 990108],
+    "scientificReuseAllowed": false,
+    "deterministicReplay": true,
+    "stage1ResultHashVerified": true,
+    "stage1MeasurementHashVerified": true,
+    "games": 8,
+    "uniqueHistoricalTrajectories": 8,
+    "selectedStates": 5,
+    "finiteFrozenModelPredictions": true,
+    "sourceTreeDirty": false,
+    "authorizationFilePresentDuringSmoke": false,
+    "generationAuthorizedBySpecAlone": false
+  },
+  "stage1Binding": {
+    "stage1ResultSha256": "136889c6d778bfccbde2adf969c838cccc6e7372722c157807bf21a0794d1449",
+    "stage1MeasurementHash": "0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa",
+    "selectedFamily": "phase-stratified-isotonic",
+    "refitOnStage2Allowed": false
+  },
+  "authorizationScope": {
+    "allowsFixed2048GameStage2Generation": true,
+    "allowsOutcomeBlindSelectionAndMeasurement": true,
+    "allowsIndependentVerification": true,
+    "allowsFormalEvaluationOnlyAfterVerificationAndEstimabilityGates": true,
+    "allowsStage1Refit": false,
+    "allowsOutcomeDependentExtension": false,
+    "allowsSeedExtension": false,
+    "allowsIdentityOverlapReplacement": false
+  },
+  "interpretationBoundary": {
+    "heldOutFormalCalibrationEvaluation": true,
+    "gameTheoreticValueClaimAuthorized": false,
+    "humanAdvantagePerceptionClaimAuthorized": false,
+    "causalClaimAuthorized": false,
+    "generalizationBeyondFrozenPopulationAndPolicyAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false
+  }
+}
