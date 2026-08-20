@@ -1,7 +1,7 @@
 # Current Status — Position Evaluation / Win-Rate Calibration Study 1
 
 Updated: 2026-08-20
-Status: **STAGE 1 MODEL SELECTED / STAGE 2 FORMAL DESIGN FROZEN / STAGE 2 TECHNICAL VALIDATION PENDING / GENERATION NOT AUTHORIZED**
+Status: **STAGE 1 MODEL SELECTED / STAGE 2 TECHNICAL VALIDATION PASS / STAGE 2 FORMAL GENERATION AUTHORIZED / FORMAL OUTCOME NOT YET EVALUATED**
 
 ## Repository identity
 
@@ -11,6 +11,8 @@ study branch = research/position-evaluation-winrate-calibration
 Stage 0 validated source commit = 28bb3ba1782c2ed7ea4c78a4dd962c96c782cd0a
 Stage 1 generation source commit = c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4
 Stage 1 analysis source commit = b02fff06a63f1908cf74d1713d6a681c58c04269
+Stage 2 technical-smoke source commit = fbb84549713b0b699fc32ea87345112b378d9e5a
+Stage 2 authorization commit = 2b4b186f8fd51912c5b4ed52fa0f1a6c6672e8a2
 ```
 
 No closed-study formal decision has been changed.
@@ -99,6 +101,7 @@ Formal spec:
 ```text
 doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_SPEC.json
 stageId = PEC-S2-FORMAL-2026-08-20-v1
+spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
 ```
 
 Fresh population:
@@ -166,29 +169,54 @@ If any estimability/identity gate fails: `INCONCLUSIVE`.
 
 No secondary metric may rescue the primary result.
 
-## Tooling and current gate
+## Stage 2 technical validation
 
-Materialized before Stage 2 generation:
+Returned non-scientific smoke:
 
-- Stage 2 formal spec and protocol;
-- guarded production runner;
-- Stage 1 identity/model reference loader;
-- independent replay/measurement verifier;
-- frozen formal evaluator;
-- spec validator;
-- contract test;
-- non-scientific Stage 2 smoke;
-- Stage 2 runbook.
+```text
+smokeId = PEC-S2-SMOKE-2026-08-20-v1
+smoke artifact SHA-256 = 5cf0e2276f997cca689d52b8304e42dc1ac9df96769b7a7e858535e7c38628d2
+source commit = fbb84549713b0b699fc32ea87345112b378d9e5a
+spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
+passed = true
+scientificGeneration = false
+formalInferencePerformed = false
+stage2GenerationAuthorized = false during smoke
+smoke seeds = 990101..990108
+scientificReuseAllowed = false
+deterministicReplay = true
+stage1ResultHashVerified = true
+stage1MeasurementHashVerified = true
+finiteFrozenModelPredictions = true
+sourceTreeDirty = false
+authorizationFilePresent = false during smoke
+generationAuthorizedBySpecAlone = false
+```
 
-Current authorization state:
+The smoke is technical only and is permanently excluded from formal evidence.
+
+A separate authorization now exists:
+
+```text
+doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+authorization commit = 2b4b186f8fd51912c5b4ed52fa0f1a6c6672e8a2
+```
+
+It is bound to the exact Stage 2 spec SHA-256 and exact source-file SHA-256 mapping returned by the passing smoke.
+
+## Current authorization state
 
 ```text
 Stage 1 exploratory development = COMPLETE / MODEL SELECTED
 Stage 1 formal claim = NOT AUTHORIZED
-Stage 2 technical validation = OPEN
-Stage 2 scientific generation = NOT AUTHORIZED
-STAGE_2_FORMAL_AUTHORIZATION.json = ABSENT by design
+Stage 2 technical validation = PASS
+Stage 2 scientific generation = AUTHORIZED
+Stage 2 outcome-blind selection/measurement = AUTHORIZED after generation
+Stage 2 independent verification = REQUIRED before formal evaluation
+Stage 2 formal evaluation = AUTHORIZED only after verification + estimability/identity gates
+Stage 1 refit = FORBIDDEN
+outcome-dependent extension / seed extension / replacement = FORBIDDEN
 formal Stage 2 outcome = NOT YET EVALUATED
 ```
 
-Next required step: run only the Stage 2 contract/spec checks and non-scientific smoke from `STAGE_2_RUNBOOK.md`, then return `stage2-preflight/smoke.json` for source-binding audit. Do not run Stage 2 scientific generation before a separate authorization commit exists.
+Next required sequence: generate exactly the frozen 2048-game Stage 2 corpus, perform outcome-blind selection/measurement, then run the independent verifier. Return the generation manifest, Stage 2 selection/measurement summary, and verification JSON for audit **before** running the formal evaluator.
