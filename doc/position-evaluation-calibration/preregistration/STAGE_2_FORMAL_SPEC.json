@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S2-FORMAL-2026-08-20-v1",
+  "status": "prospective-frozen-pending-technical-validation",
+  "frozenAt": "2026-08-20",
+  "scientificInferenceAuthorized": true,
+  "stage2GenerationAuthorized": false,
+  "baselineMainHead": "8672ba4fafb896124df0c4728d41f7c3a6ed5056",
+  "researchBranch": "research/position-evaluation-winrate-calibration",
+  "stage1Dependency": {
+    "stage1StageId": "PEC-S1-EXPLORATORY-2026-08-18-v1",
+    "analysisId": "PEC-S1-CALIBRATION-DEVELOPMENT-2026-08-19-v1",
+    "stage1ResultSha256": "136889c6d778bfccbde2adf969c838cccc6e7372722c157807bf21a0794d1449",
+    "stage1MeasurementHash": "0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa",
+    "selectedFamily": "phase-stratified-isotonic",
+    "fullFitCanonicalJsonSha256": "94bad0adc157503a729709d138b973f99dd213ad7bd926ad6d525e207060e343",
+    "scoreTransform": "z=staticBaoEvaluation/100",
+    "predictionWithinSupport": "support-floor step using the fitted block whose minZ is greatest and <= query z",
+    "predictionBelowSupport": "clamp to first fitted block mean",
+    "predictionAboveSupport": "clamp to last fitted block mean",
+    "refitOnStage2Allowed": false,
+    "smoothingOrProbabilityClippingForPrimaryBrierAllowed": false
+  },
+  "population": {
+    "games": 2048,
+    "seedStart": 22300001,
+    "seedEnd": 22302048,
+    "opening": {
+      "policy": "seeded-uniform-exact-E.moveVariants",
+      "plies": 8
+    },
+    "continuation": {
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 2,
+      "timeLimitMs": "Infinity",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false,
+      "adaptive": false,
+      "stableBestDepths": 0,
+      "aspirationWindow": 0,
+      "randomnessUsedForMoveChoiceAfterOpening": false
+    },
+    "maxPly": 160
+  },
+  "identityFirewall": {
+    "stage1ReferenceUniverse": {
+      "historicalTrajectoryHash": "all Stage 1 generated games",
+      "openingPrefixHash": "all Stage 1 generated games",
+      "ruleStateKey": "all Stage 1 observations"
+    },
+    "forbiddenAcrossStage1Stage2": [
+      "historicalTrajectoryHash",
+      "openingPrefixHash",
+      "ruleStateKey"
+    ],
+    "overlapAction": "exclude-without-replacement",
+    "outcomeDependentReplacementAllowed": false,
+    "seedExtensionAllowed": false
+  },
+  "trajectoryIdentity": {
+    "primary": "historicalTrajectoryHash",
+    "duplicateHandlingWithinStage2": "collapse-identical-historical-trajectories-before-state-selection",
+    "representativeRule": "minimum-seed-then-gameId",
+    "supportUnit": "unique-historical-trajectory"
+  },
+  "stateSelection": {
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "maximumSelectedStatesPerHistoricalTrajectory": 1,
+    "phaseAssignment": {
+      "method": "sha256-parity",
+      "salt": "PEC-S2-PHASE-v1",
+      "mapping": {
+        "even": "namua",
+        "odd": "mtaji"
+      }
+    },
+    "withinAssignedPhase": {
+      "method": "minimum-sha256-rank",
+      "salt": "PEC-S2-STATE-v1",
+      "fields": [
+        "historicalTrajectoryHash",
+        "ruleStateKey",
+        "ply"
+      ]
+    },
+    "unavailableAssignedPhase": "no-replacement",
+    "duplicateSelectedRuleStateHandling": "retain-lowest-historicalTrajectoryHash-then-seed-no-replacement"
+  },
+  "outcome": {
+    "one": "final winner equals selected actor",
+    "zero": "final winner equals selected actor opponent",
+    "administrativeTruncation": {
+      "definition": "winner is null at frozen maxPly",
+      "treatedAsDraw": false,
+      "binaryOutcome": null,
+      "excludedFromBinaryFormalEvaluationAfterOutcomeBlindSelection": true,
+      "maximumSelectedStateRateForEstimability": 0.01
+    }
+  },
+  "readinessGates": {
+    "minimumUniqueHistoricalTrajectoriesAfterStage1TrajectoryFirewall": 1600,
+    "minimumSelectedUniqueRuleStates": 1500,
+    "minimumNamuaSelectedStates": 650,
+    "minimumMtajiSelectedStates": 650,
+    "minimumDistinctOpeningPrefixes": 400,
+    "minimumDistinctStaticEvaluationsPerPhase": 100,
+    "minimumActorWinsPerPhase": 150,
+    "minimumActorLossesPerPhase": 150,
+    "maximumAdministrativeTruncationRate": 0.01,
+    "requiredStage1HistoricalTrajectoryOverlap": 0,
+    "requiredStage1OpeningPrefixOverlap": 0,
+    "requiredStage1RuleStateOverlap": 0
+  },
+  "primaryFormalEvaluation": {
+    "estimand": "paired proper-score improvement of the frozen Stage 1 isotonic mapping over a frozen Stage 1 phase-only reference on fresh Stage 2 selected states",
+    "modelMetric": "Brier score",
+    "referencePrediction": {
+      "namua": 0.4418604651162791,
+      "mtaji": 0.5,
+      "source": "Stage 1 phase actor-win rates, frozen before Stage 2 generation"
+    },
+    "pairedSkillPerState": "(referencePrediction-y)^2 - (frozenModelPrediction-y)^2",
+    "uncertainty": {
+      "method": "phase-stratified nonparametric paired bootstrap",
+      "replicates": 10000,
+      "resamplingUnit": "selected unique historical trajectory/state",
+      "withinPhaseResampling": true,
+      "deterministicIndexGenerator": "SHA256(PEC-S2-BOOT-v1|replicate|phase|draw) interpreted as unsigned 256-bit integer modulo phase sample size",
+      "oneSidedConfidenceLevel": 0.95,
+      "lowerQuantile": 0.05
+    },
+    "successCriteriaAllRequired": {
+      "pairedSkillLower95GreaterThan": 0,
+      "pooledModelBrierMaximum": 0.18,
+      "namuaModelBrierMaximum": 0.25,
+      "mtajiModelBrierMaximum": 0.12
+    },
+    "formalDecisionIfAllGatesAndCriteriaPass": "CONFIRMED",
+    "formalDecisionIfEstimableButAnyCriterionFails": "NOT-CONFIRMED",
+    "formalDecisionIfAnyEstimabilityOrIdentityGateFails": "INCONCLUSIVE"
+  },
+  "keySecondary": {
+    "phaseSpecificBrier": true,
+    "pooledAndPhaseCalibrationBias": "mean(frozen prediction - outcome)",
+    "fixedReliabilityBins": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "eceConvention": "weighted absolute observed-minus-predicted gap using fixed decile bins; p=1 belongs to final bin",
+    "logLoss": {
+      "probabilityClippingAllowed": false,
+      "boundaryContradiction": "if p=0,y=1 or p=1,y=0, log loss is infinite and is recorded explicitly rather than clipped"
+    },
+    "monotonicAssociation": {
+      "metric": "phase-specific AUC of raw static evaluation against actorWin with exact ties contributing 0.5",
+      "interpretation": "discrimination/association only, not calibration and not a primary rescue criterion"
+    }
+  },
+  "descriptiveStructuralHeterogeneity": {
+    "cannotRescuePrimary": true,
+    "groups": {
+      "forcedCapture": [false, true],
+      "actorSeat": [0, 1],
+      "legalMoveCount": ["1", "2-3", ">=4"],
+      "captureMoveCount": ["0", "1", ">=2"],
+      "actorHouseOwned": [false, true],
+      "actorNyumbaSeeds": ["0", ">0"]
+    },
+    "reportedMetric": "Brier and n when group n>=30; otherwise n only"
+  },
+  "stopping": {
+    "gamesFixed": 2048,
+    "earlyStopAllowed": false,
+    "outcomeDependentExtensionAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementForIdentityOverlap": false,
+    "replacementForUnavailableAssignedPhase": false,
+    "replacementForDuplicateRuleState": false,
+    "extensionForAdministrativeTruncation": false
+  },
+  "authorization": {
+    "generationAuthorizedBySpecAlone": false,
+    "stage2GenerationAuthorized": false,
+    "requiredAuthorizationFile": "doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json",
+    "requiredBeforeGeneration": "Stage 2 contract tests PASS plus non-scientific Stage 2 smoke PASS plus exact source SHA-256 freeze plus explicit authorization commit"
+  },
+  "interpretationBoundary": {
+    "formalClaimScope": "held-out empirical win-probability generalization under the frozen population, evaluator, continuation policy, state-selection rule, and Stage 1 mapping",
+    "gameTheoreticValueClaimAuthorized": false,
+    "humanAdvantagePerceptionClaimAuthorized": false,
+    "causalClaimAuthorized": false,
+    "generalizationBeyondFrozenPopulationAndPolicyAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false
+  }
+}
