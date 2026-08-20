@@ -254,3 +254,121 @@ Stage 1 confirmatory reuse = NOT AUTHORIZED
 Stage 2 generation = NOT AUTHORIZED
 formal inference = NOT AUTHORIZED
 ```
+
+## 2026-08-20 — Stage 1 model selection and Stage 2 formal freeze
+
+The returned frozen Stage 1 analysis result was audited before any Stage 2 scientific generation.
+
+```text
+result SHA-256 = 136889c6d778bfccbde2adf969c838cccc6e7372722c157807bf21a0794d1449
+analysisId = PEC-S1-CALIBRATION-DEVELOPMENT-2026-08-19-v1
+selected binary rows = 830
+analysis source commit = b02fff06a63f1908cf74d1713d6a681c58c04269
+analysis code dirty = false
+```
+
+### Frozen candidate decision
+
+Phase-aware logistic failed its frozen numerical eligibility rule in CV fold 1, Mtaji:
+
+```text
+reason = maximum-iterations-without-gradient-convergence
+iterations = 100
+max |gradient| = 4.513435944430988e-10
+required tolerance = 1e-10
+```
+
+This is not rescued by tolerance relaxation, additional iterations, an alternate optimizer, regularization, or a new model family.
+
+Phase-stratified isotonic remained eligible:
+
+```text
+pooled CV Brier = 0.1532240986334561
+pooled CV log loss = 0.6349271789417926
+Namua CV Brier = 0.2296469061338478
+Mtaji CV Brier = 0.07106958057053532
+```
+
+The pre-frozen selection rule therefore selects:
+
+```text
+family = phase-stratified-isotonic
+reason = only-eligible-candidate
+Stage 1 status = MODEL-SELECTED-EXPLORATORY
+formal Stage 1 claim = not authorized
+```
+
+The full fit reconciles phase sample sizes/outcomes and is monotone nondecreasing:
+
+```text
+Namua = 327 support points / 24 blocks / n=430
+Mtaji = 363 support points / 200 blocks / n=400
+fullFit canonical JSON SHA-256 = 94bad0adc157503a729709d138b973f99dd213ad7bd926ad6d525e207060e343
+```
+
+The large exploratory CV-performance difference between phases is retained as development information only.
+
+### Stage 2 formal design
+
+The reserved Stage 2 block remains:
+
+```text
+2048 games
+22300001..22302048
+```
+
+A prospective machine-readable Stage 2 spec was frozen before Stage 2 generation:
+
+```text
+stageId = PEC-S2-FORMAL-2026-08-20-v1
+file = preregistration/STAGE_2_FORMAL_SPEC.json
+```
+
+The exact Stage 1 result hash and selected mapping are frozen dependencies; Stage 2 refitting is forbidden.
+
+Stage 2 candidates overlapping Stage 1 are excluded without replacement against:
+
+```text
+all Stage 1 historicalTrajectoryHash values from generated games
+all Stage 1 openingPrefixHash values from generated games
+all Stage 1 ruleStateKey values from all observations
+```
+
+The formal center is held-out Brier-skill generalization versus a frozen Stage 1 phase-only reference. `CONFIRMED` requires all:
+
+```text
+paired Brier-skill one-sided 95% bootstrap lower bound > 0
+pooled Brier <= 0.18
+Namua Brier <= 0.25
+Mtaji Brier <= 0.12
+```
+
+The paired bootstrap is phase-stratified, 10,000 replicates, selected-trajectory/state resampling, with a deterministic SHA-256 index stream and frozen non-interpolated 5% quantile convention.
+
+Failed estimability/identity gates yield `INCONCLUSIVE`; estimable failure of any primary criterion yields `NOT-CONFIRMED`. Secondary metrics cannot rescue the primary decision.
+
+### Stage 2 tooling and firewall
+
+Materialized before scientific generation:
+
+- Stage 2 source/model common library;
+- formal spec validator;
+- guarded production runner;
+- independent verifier;
+- frozen formal evaluator;
+- contract test;
+- non-scientific smoke;
+- Stage 2 protocol/runbook;
+- checkpoint and status records.
+
+Current state:
+
+```text
+Stage 1 exploratory development = COMPLETE
+Stage 1 selected model = phase-stratified isotonic
+Stage 2 formal spec = FROZEN
+Stage 2 technical validation = OPEN
+Stage 2 scientific generation = NOT AUTHORIZED
+STAGE_2_FORMAL_AUTHORIZATION.json = ABSENT by design
+formal Stage 2 result = NOT YET EVALUATED
+```
