@@ -14,6 +14,33 @@
 - Fixed initial construct separation and D3+Q1 primary machine reference before any present-Study scientific data.
 - Reserved fresh seed capacities `22400001..22402048` and `22500001..22504096`; no scientific generation authorized.
 
+Initial design commit:
+
+```text
+0c0b88649cd77043bfadc2a2d48c7f27b611dc2d
+```
+
+## 2026-08-20 — Stage 0 tooling materialized
+
+Added a thin, non-engine-modifying technical layer:
+
+```text
+tools/experiments/lib/blunder-misvaluation-patterns.js
+test/blunder-misvaluation-stage0.test.js
+.github/workflows/blunder-misvaluation-stage0.yml
+doc/blunder-misvaluation-patterns/STAGE_0_TECHNICAL_PROTOCOL.md
+```
+
+Tooling commit:
+
+```text
+dff7d11874c92d585f50f57b3077204271ab682b
+```
+
+The wrapper adds domain-aware regret classification, same-root median/rank diagnostics, root-actor static post-move evaluation and existing tactical transition/reply summaries. It does not change engine, evaluator or exact-search implementation.
+
+A technical PASS is not yet recorded because a push-workflow execution/result is not observable through the currently available connector path. Stage 1 remains blocked.
+
 ## Current boundary
 
 ```text
@@ -22,4 +49,4 @@ new scientific states measured = 0
 formal results = none
 ```
 
-Next work is Stage 0 executable technical smoke and feasibility validation only.
+Next work is Stage 0 executable technical validation and feasibility confirmation only.
