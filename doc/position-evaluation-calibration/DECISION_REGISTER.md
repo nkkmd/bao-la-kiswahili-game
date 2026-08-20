@@ -85,7 +85,7 @@ Status: **FROZEN**
 
 ## D-009 — Seed firewall
 
-Stage 1 used only `22200001..22201024`. Stage 2 is reserved at `22300001..22302048`. No extension is allowed after outcome inspection.
+Stage 1 used only `22200001..22201024`. Stage 2 used only `22300001..22302048`. No extension is allowed after outcome inspection.
 
 Status: **FROZEN**
 
@@ -178,14 +178,53 @@ Secondary/descriptive results cannot rescue this decision.
 
 Status: **FROZEN**
 
-## D-016 — Current Stage 2 authorization boundary
+## D-016 — Stage 2 authorization
 
-`STAGE_2_FORMAL_SPEC.json` is frozen, but `STAGE_2_FORMAL_AUTHORIZATION.json` is intentionally absent pending Stage 2 technical smoke and source binding.
+The non-scientific Stage 2 smoke passed and the source-bound authorization was committed before scientific generation:
 
 ```text
-Stage 2 technical validation = OPEN
-Stage 2 scientific generation = NOT AUTHORIZED
-formal outcome inspection = NOT STARTED
+smokeId = PEC-S2-SMOKE-2026-08-20-v1
+Stage 2 spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
+authorization commit = 2b4b186f8fd51912c5b4ed52fa0f1a6c6672e8a2
+scientific generation = AUTHORIZED for exactly 2048 games / 22300001..22302048
+Stage 1 refit = FORBIDDEN
+seed extension / overlap replacement / outcome-dependent extension = FORBIDDEN
 ```
 
-Status: **ACTIVE FIREWALL**
+Status: **FROZEN / EXECUTED**
+
+## D-017 — Stage 2 verification and estimability decision
+
+The fixed 2048-game Stage 2 corpus was independently verified:
+
+```text
+gamesVerified = 2048
+gameReplayMismatches = 0
+measurementMismatches = 0
+measurementHashMatches = true
+final Stage 1 historicalTrajectoryHash overlap = 0
+final Stage 1 openingPrefixHash overlap = 0
+final Stage 1 ruleStateKey overlap = 0
+```
+
+Three preregistered estimability gates failed after the no-replacement firewall/selection process:
+
+```text
+unique historical trajectories after Stage 1 firewall = 1383 < 1600
+selected unique rule states = 1290 < 1500
+Mtaji selected states = 627 < 650
+```
+
+Other support/outcome/truncation/identity gates passed.
+
+Under D-015, this forces:
+
+```text
+formal decision = INCONCLUSIVE
+formal performance criteria eligible = false
+paired bootstrap eligible = false
+```
+
+This is an estimability failure and must not be relabeled as `NOT-CONFIRMED`. Additional games, seed extension, overlap replacement, threshold relaxation, or mapping refit are not authorized.
+
+Status: **FORMAL DECISION FORCED — INCONCLUSIVE**
