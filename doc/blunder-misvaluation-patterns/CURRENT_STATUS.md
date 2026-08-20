@@ -12,6 +12,8 @@ initial design commit = 0c0b88649cd77043bfadc2a2d48c7f27b611dc2d
 Stage 0 tooling commit = dff7d11874c92d585f50f57b3077204271ab682b
 Stage 0 feasibility execution HEAD = 45ce006eb63d5555a030d50fe7aa4e97637db327
 Stage 1 contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
+Stage 1 contract validation execution HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
+Stage 1 tooling materialization head = 3fd53b108e0941f9e5ace0e191bc1390f50d566d
 ```
 
 ## Current scientific state
@@ -21,7 +23,9 @@ Stage 0 design restoration/audit = COMPLETE
 Stage 0 executable technical semantics validation = PASS
 Stage 0 D3+Q1 compute feasibility = PASS
 Stage 1 exploratory spec = FROZEN
-Stage 1 canonical contract validation = PENDING
+Stage 1 canonical contract validation = PASS
+Stage 1 execution tooling = MATERIALIZED
+Stage 1 execution tooling validation = PENDING
 Stage 1 scientific generation = NOT AUTHORIZED
 Stage 2 formal spec = NOT CREATED
 Stage 2 scientific generation = NOT AUTHORIZED
@@ -79,6 +83,39 @@ primary reference = D3 + Q1 / bao / root actor
 
 The fixed Stage 1 seed interval uses the full previously reserved capacity. No outcome-dependent extension remains available inside this Study version.
 
+## Canonical Stage 1 contract validation
+
+The investigator executed the frozen validator and contract test at exact local HEAD:
+
+```text
+b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
+```
+
+Returned result:
+
+```text
+specSha256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+passed = true
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+generationAuthorizedBySpecAlone = false
+exactGames = 2048
+exactSeedStart = 22400001
+exactSeedEnd = 22402048
+exactSelectedRootsIfReadinessPasses = 1200
+contract test = PASS
+```
+
+Decision:
+
+```text
+Stage 1 canonical contract validation = PASS
+```
+
+Machine-readable archive:
+
+`results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`
+
 ## Root-selection firewall
 
 ```text
@@ -134,6 +171,22 @@ per failure family <= 2
 manual override = false
 ```
 
+## Stage 1 execution tooling now present
+
+```text
+tools/experiments/lib/blunder-misvaluation-stage1-corpus.js
+tools/experiments/lib/blunder-misvaluation-stage1-discovery.js
+tools/experiments/run-blunder-misvaluation-stage1-exploratory.js
+tools/experiments/verify-blunder-misvaluation-stage1-exploratory.js
+test/blunder-misvaluation-stage1-tooling.test.js
+.github/workflows/blunder-misvaluation-stage1-tooling.yml
+STAGE_1_EXECUTION_RUNBOOK.md
+```
+
+The tooling enforces the frozen population, six-stratum assignment, independent full replay/search verification before selection, exact phase quotas, D1/D2/D3 measurement, matcher/failure separation, support-equivalence collapse and deterministic promotion caps.
+
+The technical tooling test uses a non-scientific fixture seed namespace beginning at `99000001`. The reserved scientific Stage 1 seeds are not used by technical validation.
+
 ## Frozen inherited boundaries
 
 ```text
@@ -161,27 +214,27 @@ No closed-study decision is reopened.
 
 ## Current gate
 
-Canonical Stage 1 contract files are now defined by the freeze:
-
 ```text
-STAGE_1_EXPLORATORY_PROTOCOL.md
-preregistration/STAGE_1_EXPLORATORY_SPEC.json
-tools/experiments/lib/blunder-misvaluation-stage1-contract.js
-tools/experiments/validate-blunder-misvaluation-stage1-spec.js
-test/blunder-misvaluation-stage1-contract.test.js
+Stage 1 spec freeze                              DONE
+canonical spec validator                         PASS
+canonical contract test                          PASS
+runner + independent verifier materialized       DONE
+runner/verifier technical tooling validation     PENDING
+exact source-file SHA-256 freeze                  PENDING
+separate source-bound generation authorization   ABSENT / PENDING
 ```
 
 Before scientific generation:
 
-1. execute the canonical spec validator and contract test;
-2. implement a runner and independent replay/search verifier without changing the frozen scientific contract;
-3. technically validate that implementation;
-4. freeze exact source-file SHA-256 mapping and spec SHA-256;
-5. create a separate source-bound Stage 1 generation authorization.
+1. execute the canonical validator, contract test and new tooling test on the materialized tooling HEAD;
+2. confirm the runner `status` surface and authorization absence;
+3. if technical validation passes, freeze the exact source-file SHA-256 map and implementation commit;
+4. only then create a separate source-bound Stage 1 generation authorization.
 
 Until then:
 
 ```text
 Stage 1 generation authorized = false
+Stage 1 scientific games generated = 0
 Stage 2 generation authorized = false
 ```
