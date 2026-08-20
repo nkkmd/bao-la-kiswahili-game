@@ -1,7 +1,7 @@
 # Current Status — Position Evaluation / Win-Rate Calibration Study 1
 
 Updated: 2026-08-20
-Status: **STAGE 1 MODEL SELECTED / STAGE 2 TECHNICAL VALIDATION PASS / STAGE 2 FORMAL GENERATION AUTHORIZED / FORMAL OUTCOME NOT YET EVALUATED**
+Status: **STAGE 2 GENERATED / INDEPENDENT VERIFICATION PASS / ESTIMABILITY FAIL / FORMAL DECISION FORCED INCONCLUSIVE**
 
 ## Repository identity
 
@@ -13,6 +13,7 @@ Stage 1 generation source commit = c97a4f620f1a0da4e013ed55eb0fcf37fec16bf4
 Stage 1 analysis source commit = b02fff06a63f1908cf74d1713d6a681c58c04269
 Stage 2 technical-smoke source commit = fbb84549713b0b699fc32ea87345112b378d9e5a
 Stage 2 authorization commit = 2b4b186f8fd51912c5b4ed52fa0f1a6c6672e8a2
+Stage 2 generation source commit = a6f36a7cb86eab38897372680acd7eadc6f3436b
 ```
 
 No closed-study formal decision has been changed.
@@ -45,40 +46,19 @@ SHA-256 = 136889c6d778bfccbde2adf969c838cccc6e7372722c157807bf21a0794d1449
 analysisId = PEC-S1-CALIBRATION-DEVELOPMENT-2026-08-19-v1
 ```
 
-### Candidate eligibility
+Phase-aware logistic became ineligible in CV fold 1 Mtaji under the frozen 100-iteration / `1e-10` gradient criterion. No numerical rescue is allowed.
 
-Phase-aware logistic:
-
-```text
-eligible = false
-failed fold = 1
-failed phase = Mtaji
-reason = maximum-iterations-without-gradient-convergence
-iterations = 100
-max |gradient| = 4.513435944430988e-10
-tolerance = 1e-10
-```
-
-The frozen no-rescue rule forbids tolerance relaxation, alternate optimizer, regularization, or another family.
-
-Phase-stratified isotonic:
+Phase-stratified isotonic remained eligible:
 
 ```text
-eligible = true
 pooled CV Brier = 0.1532240986334561
 Namua CV Brier = 0.2296469061338478
 Mtaji CV Brier = 0.07106958057053532
-```
-
-Frozen selection:
-
-```text
 selected family = phase-stratified-isotonic
 selection reason = only-eligible-candidate
-Stage 1 development status = MODEL-SELECTED-EXPLORATORY
 ```
 
-### Frozen full fit
+Frozen full fit:
 
 ```text
 Namua: 327 support points -> 24 nondecreasing blocks; n=430
@@ -86,27 +66,11 @@ Mtaji: 363 support points -> 200 nondecreasing blocks; n=400
 fullFit canonical JSON SHA-256 = 94bad0adc157503a729709d138b973f99dd213ad7bd926ad6d525e207060e343
 ```
 
-The marked Stage 1 phase difference in exploratory CV performance is recorded but is not a formal phase-effect claim.
-
-Machine-readable compact record:
+## Stage 2 frozen design
 
 ```text
-doc/position-evaluation-calibration/results/STAGE_1_CALIBRATION_RESULT_SUMMARY.json
-```
-
-## Stage 2 formal freeze
-
-Formal spec:
-
-```text
-doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_SPEC.json
 stageId = PEC-S2-FORMAL-2026-08-20-v1
 spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
-```
-
-Fresh population:
-
-```text
 games = 2048
 seeds = 22300001..22302048
 opening = 8-ply seeded-uniform exact E.moveVariants
@@ -114,109 +78,137 @@ continuation = hard / bao / phase2 / D2 / Infinity
 max ply = 160
 ```
 
-The Stage 1 isotonic mapping is hash-bound. Stage 2 refitting/smoothing/clipping for the primary Brier calculation is forbidden.
+The exact Stage 1 isotonic mapping is hash-bound. Stage 2 refitting, smoothing, endpoint substitution, and primary-probability clipping are forbidden.
 
-### Cross-stage identity firewall
-
-No selected Stage 2 observation may overlap Stage 1 on:
+Cross-stage identity firewall reference universes are:
 
 ```text
-historicalTrajectoryHash — reference universe: all Stage 1 generated games
-openingPrefixHash — reference universe: all Stage 1 generated games
-ruleStateKey — reference universe: all Stage 1 observations
+historicalTrajectoryHash — all Stage 1 generated games
+openingPrefixHash — all Stage 1 generated games
+ruleStateKey — all Stage 1 observations
 ```
 
-Overlaps are excluded without replacement. No extra games or seed extension are authorized.
+Overlaps are excluded without replacement.
 
-### Stage 2 readiness
+## Stage 2 technical validation and authorization
+
+`PEC-S2-SMOKE-2026-08-20-v1` passed on fixture seeds `990101..990108`, with deterministic replay, Stage 1 result/measurement binding, finite frozen-model predictions, clean source, and no scientific reuse.
+
+A separate source-bound `STAGE_2_FORMAL_AUTHORIZATION.json` then authorized exactly the frozen 2048-game Stage 2 generation. It did not authorize Stage 1 refit, seed extension, identity-overlap replacement, or outcome-dependent extension.
+
+## Stage 2 returned corpus
+
+Artifact SHA-256 values:
 
 ```text
-historical trajectories after Stage 1 trajectory/opening firewall >= 1600
-selected unique rule states >= 1500
-Namua >= 650
-Mtaji >= 650
-distinct opening prefixes >= 400
-distinct static evaluations per phase >= 100
-actor wins/losses per phase >= 150 each
-administrative truncation <= 1%
-final cross-stage identity overlap = 0 on all three identities
+generation-manifest = 1b5aae5333bc9b02a36fc72cbaf2514a303f9bfd5fae97ceb0ad530d4828e71b
+stage2-selection-measurement-summary = 575caef5058cb3d04209708b7e04f0f09381f7beea6d41706624cb73534f1b51
+verification = 10790c52ec15bf89dfd301942d91424504bf5bf2afd7230182382d33134515ff
+measurementHash = 373d780504814999466c3bc822a17b048054e8079b1c000e903a503cac9d1a33
+```
+
+Generation:
+
+```text
+games = 2048
+seed range = 22300001..22302048
+source commit = a6f36a7cb86eab38897372680acd7eadc6f3436b
+sourceTreeDirty = false
+```
+
+Independent verification:
+
+```text
+passed = true
+gamesVerified = 2048
+gameReplayMismatches = 0
+measurementMismatches = 0
+measurementHashMatches = true
+stage1HistoricalTrajectoryOverlap = 0
+stage1OpeningPrefixOverlap = 0
+stage1RuleStateOverlap = 0
+```
+
+The Stage 2 corpus is therefore technically reproducible and the final selected-state set respects the cross-stage identity firewall.
+
+## Stage 2 selection accounting
+
+```text
+unique historical trajectories before Stage 1 firewall = 1618
+Stage 1 trajectory overlaps excluded = 235
+Stage 1 opening-prefix overlaps excluded = 0
+unique historical trajectories after trajectory/opening firewall = 1383
+Stage 1 rule-state observations excluded = 1199
+provisional selected states = 1292
+unavailable assigned phase = 91
+duplicate selected rule states collapsed = 2
+selected unique rule states = 1290
+Namua = 663
+Mtaji = 627
+administrative truncation = 0
+```
+
+No replacement occurred and none is authorized.
+
+## Stage 2 estimability / identity gates
+
+Passed:
+
+```text
+Namua selected states = 663 >= 650
+distinct opening prefixes = 1290 >= 400
+distinct static evaluations = Namua 440 / Mtaji 534 >= 100 each
+Namua actor wins/losses = 324 / 339 >= 150 each
+Mtaji actor wins/losses = 336 / 291 >= 150 each
+administrative truncation = 0 <= 1%
+final Stage 1 overlap = 0 on historicalTrajectoryHash/openingPrefixHash/ruleStateKey
 independent verification = PASS
 ```
 
-Any failed gate yields formal `INCONCLUSIVE` and does not authorize replacement.
-
-### Primary formal rule
-
-Reference probabilities frozen from Stage 1:
+Failed:
 
 ```text
-Namua = 0.4418604651162791
-Mtaji = 0.5
+unique historical trajectories after Stage 1 firewall = 1383 < 1600
+selected unique rule states = 1290 < 1500
+Mtaji selected states = 627 < 650
 ```
 
-`CONFIRMED` requires all:
+Machine-readable audit:
 
 ```text
-paired Brier-skill one-sided 95% bootstrap lower bound > 0
-pooled frozen-model Brier <= 0.18
-Namua frozen-model Brier <= 0.25
-Mtaji frozen-model Brier <= 0.12
+doc/position-evaluation-calibration/results/STAGE_2_READINESS_AUDIT.json
 ```
 
-If all gates pass but any criterion fails: `NOT-CONFIRMED`.
+## Formal consequence
 
-If any estimability/identity gate fails: `INCONCLUSIVE`.
-
-No secondary metric may rescue the primary result.
-
-## Stage 2 technical validation
-
-Returned non-scientific smoke:
+The frozen Stage 2 decision rule states:
 
 ```text
-smokeId = PEC-S2-SMOKE-2026-08-20-v1
-smoke artifact SHA-256 = 5cf0e2276f997cca689d52b8304e42dc1ac9df96769b7a7e858535e7c38628d2
-source commit = fbb84549713b0b699fc32ea87345112b378d9e5a
-spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
-passed = true
-scientificGeneration = false
-formalInferencePerformed = false
-stage2GenerationAuthorized = false during smoke
-smoke seeds = 990101..990108
-scientificReuseAllowed = false
-deterministicReplay = true
-stage1ResultHashVerified = true
-stage1MeasurementHashVerified = true
-finiteFrozenModelPredictions = true
-sourceTreeDirty = false
-authorizationFilePresent = false during smoke
-generationAuthorizedBySpecAlone = false
+if any estimability or identity gate fails -> INCONCLUSIVE
 ```
 
-The smoke is technical only and is permanently excluded from formal evidence.
-
-A separate authorization now exists:
+Therefore, before inspecting the preregistered performance criteria:
 
 ```text
-doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
-authorization commit = 2b4b186f8fd51912c5b4ed52fa0f1a6c6672e8a2
+formal decision = INCONCLUSIVE
+formal performance criteria eligible = false
+paired bootstrap eligible = false
 ```
 
-It is bound to the exact Stage 2 spec SHA-256 and exact source-file SHA-256 mapping returned by the passing smoke.
+This is an **estimability failure**, not a `NOT-CONFIRMED` calibration-performance result. It does not establish that the frozen mapping performs poorly, and it cannot be rescued by additional games, seed extension, replacement, threshold relaxation, or mapping refit.
 
-## Current authorization state
+The frozen formal evaluator may now be run once to materialize the canonical `stage2-formal-result.json`. Under the frozen implementation it must retain `formalDecision = INCONCLUSIVE`, set bootstrap and primary criteria to null because readiness failed, and treat any computed Brier/reliability/log-loss values as descriptive only.
+
+## Current state
 
 ```text
 Stage 1 exploratory development = COMPLETE / MODEL SELECTED
 Stage 1 formal claim = NOT AUTHORIZED
-Stage 2 technical validation = PASS
-Stage 2 scientific generation = AUTHORIZED
-Stage 2 outcome-blind selection/measurement = AUTHORIZED after generation
-Stage 2 independent verification = REQUIRED before formal evaluation
-Stage 2 formal evaluation = AUTHORIZED only after verification + estimability/identity gates
-Stage 1 refit = FORBIDDEN
-outcome-dependent extension / seed extension / replacement = FORBIDDEN
-formal Stage 2 outcome = NOT YET EVALUATED
+Stage 2 scientific generation = COMPLETE
+Stage 2 independent verification = PASS
+Stage 2 estimability = FAIL
+Stage 2 formal decision = INCONCLUSIVE (forced by frozen gate rule)
+formal performance criteria = NOT ELIGIBLE FOR DECISION
+additional generation / replacement / rescue = FORBIDDEN
+canonical formal-result materialization = READY
 ```
-
-Next required sequence: generate exactly the frozen 2048-game Stage 2 corpus, perform outcome-blind selection/measurement, then run the independent verifier. Return the generation manifest, Stage 2 selection/measurement summary, and verification JSON for audit **before** running the formal evaluator.
