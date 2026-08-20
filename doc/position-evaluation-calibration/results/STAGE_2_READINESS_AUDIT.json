@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S2-FORMAL-2026-08-20-v1",
+  "auditId": "PEC-S2-READINESS-AUDIT-2026-08-20-v1",
+  "auditedAt": "2026-08-20",
+  "specSha256": "92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38",
+  "inputArtifacts": {
+    "generationManifestSha256": "1b5aae5333bc9b02a36fc72cbaf2514a303f9bfd5fae97ceb0ad530d4828e71b",
+    "selectionMeasurementSummarySha256": "575caef5058cb3d04209708b7e04f0f09381f7beea6d41706624cb73534f1b51",
+    "verificationSha256": "10790c52ec15bf89dfd301942d91424504bf5bf2afd7230182382d33134515ff",
+    "measurementHash": "373d780504814999466c3bc822a17b048054e8079b1c000e903a503cac9d1a33",
+    "stage1ResultSha256": "136889c6d778bfccbde2adf969c838cccc6e7372722c157807bf21a0794d1449",
+    "stage1MeasurementHash": "0c32a56f8724beb87d0d69cf01288c9655e769526fb384384c57cf356f70eafa"
+  },
+  "generation": {
+    "games": 2048,
+    "seedStart": 22300001,
+    "seedEnd": 22302048,
+    "sourceCommit": "a6f36a7cb86eab38897372680acd7eadc6f3436b",
+    "sourceTreeDirty": false,
+    "passed": true
+  },
+  "independentVerification": {
+    "passed": true,
+    "gamesVerified": 2048,
+    "gameReplayMismatches": 0,
+    "measurementMismatches": 0,
+    "measurementHashMatches": true
+  },
+  "checks": {
+    "uniqueHistoricalTrajectoriesAfterStage1TrajectoryOpeningFirewall": {
+      "observed": 1383,
+      "minimum": 1600,
+      "passed": false
+    },
+    "selectedUniqueRuleStates": {
+      "observed": 1290,
+      "minimum": 1500,
+      "passed": false
+    },
+    "namuaSelectedStates": {
+      "observed": 663,
+      "minimum": 650,
+      "passed": true
+    },
+    "mtajiSelectedStates": {
+      "observed": 627,
+      "minimum": 650,
+      "passed": false
+    },
+    "distinctOpeningPrefixes": {
+      "observed": 1290,
+      "minimum": 400,
+      "passed": true
+    },
+    "namuaDistinctStaticEvaluations": {
+      "observed": 440,
+      "minimum": 100,
+      "passed": true
+    },
+    "mtajiDistinctStaticEvaluations": {
+      "observed": 534,
+      "minimum": 100,
+      "passed": true
+    },
+    "namuaActorWins": {
+      "observed": 324,
+      "minimum": 150,
+      "passed": true
+    },
+    "namuaActorLosses": {
+      "observed": 339,
+      "minimum": 150,
+      "passed": true
+    },
+    "mtajiActorWins": {
+      "observed": 336,
+      "minimum": 150,
+      "passed": true
+    },
+    "mtajiActorLosses": {
+      "observed": 291,
+      "minimum": 150,
+      "passed": true
+    },
+    "administrativeTruncationRate": {
+      "observed": 0,
+      "maximum": 0.01,
+      "passed": true
+    },
+    "stage1HistoricalTrajectoryOverlap": {
+      "observed": 0,
+      "required": 0,
+      "passed": true
+    },
+    "stage1OpeningPrefixOverlap": {
+      "observed": 0,
+      "required": 0,
+      "passed": true
+    },
+    "stage1RuleStateOverlap": {
+      "observed": 0,
+      "required": 0,
+      "passed": true
+    },
+    "independentVerification": {
+      "observed": true,
+      "required": true,
+      "passed": true
+    }
+  },
+  "selectionAccounting": {
+    "uniqueHistoricalTrajectoriesBeforeStage1Firewall": 1618,
+    "stage1TrajectoryOverlapExcluded": 235,
+    "stage1OpeningPrefixOverlapExcluded": 0,
+    "uniqueHistoricalTrajectoriesAfterStage1TrajectoryOpeningFirewall": 1383,
+    "stage1RuleStateObservationsExcluded": 1199,
+    "provisionalSelectedStates": 1292,
+    "unavailableAssignedPhase": 91,
+    "duplicateSelectedRuleStatesCollapsed": 2,
+    "selectedUniqueRuleStates": 1290
+  },
+  "readinessPassed": false,
+  "failedGates": [
+    "minimumUniqueHistoricalTrajectoriesAfterStage1TrajectoryFirewall",
+    "minimumSelectedUniqueRuleStates",
+    "minimumMtajiSelectedStates"
+  ],
+  "formalDecisionForcedByFrozenRule": "INCONCLUSIVE",
+  "formalPerformanceCriteriaEligible": false,
+  "bootstrapEligible": false,
+  "noRescue": {
+    "additionalGamesAllowed": false,
+    "seedExtensionAllowed": false,
+    "identityOverlapReplacementAllowed": false,
+    "thresholdChangeAllowed": false,
+    "mappingRefitAllowed": false
+  }
+}
