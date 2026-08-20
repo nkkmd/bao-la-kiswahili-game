@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEC-STUDY1",
+  "stageId": "PEC-S2-FORMAL-2026-08-20-v1",
+  "status": "INCONCLUSIVE",
+  "recordedAt": "2026-08-20",
+  "sourceResultSha256": "94602023bdf8e9086703cbff44a68a9a070ada85c0bdbb2aaad104ffbd0b5405",
+  "specSha256": "92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38",
+  "formalDecision": "INCONCLUSIVE",
+  "estimabilityAndIdentityGatesPassed": false,
+  "failedGates": {
+    "uniqueHistoricalTrajectories": {"observed": 1383, "minimum": 1600},
+    "selectedUniqueRuleStates": {"observed": 1290, "minimum": 1500},
+    "mtajiSelectedStates": {"observed": 627, "minimum": 650}
+  },
+  "verification": {
+    "passed": true,
+    "gamesVerified": 2048,
+    "gameReplayMismatches": 0,
+    "measurementMismatches": 0,
+    "measurementHashMatches": true,
+    "crossStageOverlap": {
+      "historicalTrajectoryHash": 0,
+      "openingPrefixHash": 0,
+      "ruleStateKey": 0
+    }
+  },
+  "primaryDescriptiveOnly": {
+    "n": 1290,
+    "frozenModelBrier": 0.15550141283724248,
+    "frozenPhaseOnlyReferenceBrier": 0.2510612273133199,
+    "observedPairedBrierSkill": 0.09555981447607745,
+    "bootstrap": null,
+    "criteria": null,
+    "formalPerformanceCriteriaEligible": false
+  },
+  "phaseDescriptiveOnly": {
+    "namua": {"n": 663, "modelBrier": 0.22678074548187638, "aucRawStaticEvaluation": 0.708638333515423},
+    "mtaji": {"n": 627, "modelBrier": 0.08012948693071474, "aucRawStaticEvaluation": 0.9603788250695467}
+  },
+  "exactLogLoss": {
+    "finite": false,
+    "boundaryContradictions": 7
+  },
+  "noRescue": true
+}
