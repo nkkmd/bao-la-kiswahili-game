@@ -159,6 +159,7 @@ node tools/diagnostic-to-fixture.js \
 - [`doc/position-complexity/STUDY_1_OVERVIEW.md`](doc/position-complexity/STUDY_1_OVERVIEW.md): Position Complexity / Difficulty Study 1「Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離」の初見向け成果概要（formal decision `inconclusive`）
 - [`doc/tactical-motifs/STUDY_1_OVERVIEW.md`](doc/tactical-motifs/STUDY_1_OVERVIEW.md): Tactical Motifs / Tesuji Study 1「局面横断的 tactical motifs と transferable move principles」の初見向け成果概要（Study 1完了、`TM-S2-C03` confirmed / C01,C02,C04 not-confirmed）
 - [`doc/tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](doc/tactical-motif-human-validation/STUDY_1_OVERVIEW.md): TM-S2-C03 Human / Expert Validation Study 1の初見向け成果概要（machine/instrument stage complete、human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`）
+- [`doc/position-evaluation-calibration/STUDY_1_OVERVIEW.md`](doc/position-evaluation-calibration/STUDY_1_OVERVIEW.md): Position Evaluation / Win-Rate Calibration Study 1「形勢評価値と実現勝率の校正」の初見向け成果概要（formal decision `inconclusive`）
 - [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
 - [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録
 - [`doc/FUTURE_RESEARCH_AGENDA.md`](doc/FUTURE_RESEARCH_AGENDA.md): 局面分類、手筋、形勢判断、終盤解析など、既存研究から切り出した将来研究課題
