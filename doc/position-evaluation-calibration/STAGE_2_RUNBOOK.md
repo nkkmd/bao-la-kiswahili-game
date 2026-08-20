@@ -1,7 +1,7 @@
 # Stage 2 Runbook — Position Evaluation / Win-Rate Calibration Study 1
 
 Updated: 2026-08-20
-Status: **TECHNICAL VALIDATION ONLY / SCIENTIFIC GENERATION NOT AUTHORIZED**
+Status: **STAGE 2 SCIENTIFIC GENERATION AUTHORIZED / FORMAL EVALUATION REQUIRES INDEPENDENT VERIFICATION**
 
 ## A. Preserve Stage 1 local artifacts
 
@@ -25,81 +25,99 @@ git rev-parse HEAD
 node --version
 ```
 
-`git status --short` must be empty before the technical smoke.
+`git status --short` must be empty before scientific generation.
 
-## C. Contract/spec validation — authorized now
+## C. Authorization basis
+
+Stage 2 technical validation passed:
+
+```text
+smokeId = PEC-S2-SMOKE-2026-08-20-v1
+smoke seeds = 990101..990108
+passed = true
+scientificGeneration = false
+formalInferencePerformed = false
+deterministicReplay = true
+stage1ResultHashVerified = true
+stage1MeasurementHashVerified = true
+finiteFrozenModelPredictions = true
+sourceTreeDirty = false
+spec SHA-256 = 92473695bc81832358be8ceb3e9b0cf41c3c70a5638402319863f70ec0f66d38
+```
+
+The repository now contains the separate source-bound authorization:
+
+```text
+doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+```
+
+The authorization is bound to the exact frozen source SHA-256 mapping returned by the passing smoke. It does not authorize Stage 1 refitting, seed extension, outcome-dependent extension, or replacement for identity overlap.
+
+Re-run the contract/spec checks after pulling the authorization/documentation commits:
 
 ```bash
 node test/position-evaluation-calibration-stage2.test.js
 node tools/experiments/validate-position-evaluation-calibration-stage2-spec.js
 ```
 
-These commands perform no Stage 2 scientific generation.
+## D. Stage 2 fixed scientific generation
 
-## D. Non-scientific Stage 2 smoke — authorized now
-
-```bash
-mkdir -p artifacts/local/position-evaluation-calibration/stage2-preflight
-
-node tools/experiments/run-position-evaluation-calibration-stage2-smoke.js \
-  --stage1-output artifacts/local/position-evaluation-calibration/stage1-exploratory-v1 \
-  --output artifacts/local/position-evaluation-calibration/stage2-preflight/smoke.json
-```
-
-The smoke uses only fixture seeds `990101..990108`. It is technical validation, must not be treated as scientific evidence, and may not be reused in Stage 2.
-
-Return:
-
-```text
-artifacts/local/position-evaluation-calibration/stage2-preflight/smoke.json
-```
-
-for audit.
-
-## E. Scientific generation remains blocked
-
-The production runner requires:
-
-```text
-doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
-```
-
-That file is intentionally absent at this point. Do not bypass the guard.
-
-The following command must not be run until a passing smoke is audited and a source-bound authorization artifact is committed:
-
-```bash
-node tools/experiments/run-position-evaluation-calibration-stage2.js --phase generate
-```
-
-## F. Commands after future Stage 2 authorization
-
-Only after the valid authorization artifact exists:
+Run exactly:
 
 ```bash
 node tools/experiments/run-position-evaluation-calibration-stage2.js \
   --phase generate \
   --stage1-output artifacts/local/position-evaluation-calibration/stage1-exploratory-v1
+```
 
+This generates exactly 2048 games on frozen seeds `22300001..22302048` using the preregistered opening, continuation, evaluator and max-ply policy.
+
+Do not add games, extend seeds, change source/configuration, or regenerate after outcome inspection.
+
+## E. Outcome-blind selection and measurement
+
+After generation completes:
+
+```bash
 node tools/experiments/run-position-evaluation-calibration-stage2.js \
   --phase select-measure \
   --stage1-output artifacts/local/position-evaluation-calibration/stage1-exploratory-v1
+```
 
+The Stage 1 cross-stage identity firewall is applied before final Stage 2 selection. Overlap exclusions, unavailable assigned phase, within-Stage-2 trajectory duplicates and duplicate selected rule states receive no replacement.
+
+## F. Independent verification before formal evaluation
+
+Run:
+
+```bash
 node tools/experiments/verify-position-evaluation-calibration-stage2.js \
   artifacts/local/position-evaluation-calibration/stage2-formal-v1 \
   artifacts/local/position-evaluation-calibration/stage1-exploratory-v1
 ```
 
-Return the generation manifest, Stage 2 selection/measurement summary, and verification JSON for audit **before** running formal evaluation.
+Return the following for audit **before running the formal evaluator**:
 
-Only after independent verification/readiness/identity audit passes may the frozen evaluator run:
+```text
+artifacts/local/position-evaluation-calibration/stage2-formal-v1/generation-manifest.json
+artifacts/local/position-evaluation-calibration/stage2-formal-v1/stage2-selection-measurement-summary.json
+artifacts/local/position-evaluation-calibration/stage2-formal-v1/verification.json
+```
+
+The audit must establish independent verification PASS, source/measurement integrity, zero forbidden cross-stage identity overlap, and all preregistered estimability/readiness gates.
+
+## G. Formal evaluation — do not run before audit
+
+Only after the returned Stage 2 artifacts are independently audited and all gates pass may the frozen evaluator run:
 
 ```bash
 node tools/experiments/evaluate-position-evaluation-calibration-stage2.js \
   artifacts/local/position-evaluation-calibration/stage2-formal-v1
 ```
 
-## G. No-rescue
+The evaluator applies the already-frozen Stage 1 isotonic mapping and Stage 2 decision rule. No refit or threshold change is permitted.
+
+## H. No-rescue
 
 Do not change after Stage 2 generation begins:
 
