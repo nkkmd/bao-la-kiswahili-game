@@ -1,0 +1,51 @@
+name: Blunder misvaluation Stage 0 technical validation
+
+on:
+  push:
+    branches:
+      - research/blunder-misvaluation-patterns
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/lib/position-typology-features.js"
+      - "tools/experiments/lib/tactical-motif-features.js"
+      - "tools/experiments/lib/blunder-misvaluation-patterns.js"
+      - "test/position-complexity-search-diagnostic.test.js"
+      - "test/tactical-motif-stage0.test.js"
+      - "test/blunder-misvaluation-stage0.test.js"
+      - ".github/workflows/blunder-misvaluation-stage0.yml"
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/lib/position-typology-features.js"
+      - "tools/experiments/lib/tactical-motif-features.js"
+      - "tools/experiments/lib/blunder-misvaluation-patterns.js"
+      - "test/position-complexity-search-diagnostic.test.js"
+      - "test/tactical-motif-stage0.test.js"
+      - "test/blunder-misvaluation-stage0.test.js"
+      - ".github/workflows/blunder-misvaluation-stage0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  technical-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate prerequisite exact-search instrumentation
+        run: node test/position-complexity-search-diagnostic.test.js
+      - name: Validate prerequisite structural/reply instrumentation
+        run: node test/tactical-motif-stage0.test.js
+      - name: Validate blunder/misvaluation Stage 0 semantics
+        run: node test/blunder-misvaluation-stage0.test.js
