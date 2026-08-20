@@ -123,7 +123,7 @@ Candidate design separates the outcome-blind matcher from the failure signature.
 
 Frozen promotion requirements include minimum 24 opportunity trajectories, failure-signature rate >= 0.65, D3-inferior rate >= 0.70, D3 TopSet rate <= 0.20, median normalized rank loss >= 0.50, opening/stratum diversity, and a deterministic maximum of 6 promoted candidates.
 
-A clean-room pre-materialization self-check of the exact planned JSON/contract content passed, but canonical post-commit validation remains required.
+A clean-room pre-materialization self-check of the exact planned JSON/contract content passed, but canonical post-commit validation remained required at that checkpoint.
 
 ```text
 Stage 1 scientific generation authorized = false
@@ -131,4 +131,72 @@ Stage 2 scientific generation authorized = false
 new scientific games generated = 0
 new scientific states measured = 0
 formal results = none
+```
+
+## 2026-08-20 — Stage 1 canonical contract validation PASS
+
+The investigator returned exact local identity:
+
+```text
+branch = research/blunder-misvaluation-patterns
+HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
+```
+
+The canonical validator returned:
+
+```text
+stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
+specSha256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+passed = true
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+generationAuthorizedBySpecAlone = false
+exactGames = 2048
+exactSeedStart = 22400001
+exactSeedEnd = 22402048
+exactSelectedRootsIfReadinessPasses = 1200
+```
+
+The contract test returned:
+
+```text
+Blunder / misvaluation Stage 1 contract tests passed
+```
+
+Decision:
+
+```text
+Stage 1 canonical contract validation = PASS
+```
+
+The PASS is archived in `results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`. It validates the frozen scientific contract and does not itself authorize generation.
+
+## 2026-08-20 — Stage 1 execution tooling materialized
+
+After canonical contract PASS, materialized the implementation layer without changing the frozen spec:
+
+```text
+tools/experiments/lib/blunder-misvaluation-stage1-corpus.js
+tools/experiments/lib/blunder-misvaluation-stage1-discovery.js
+tools/experiments/run-blunder-misvaluation-stage1-exploratory.js
+tools/experiments/verify-blunder-misvaluation-stage1-exploratory.js
+test/blunder-misvaluation-stage1-tooling.test.js
+.github/workflows/blunder-misvaluation-stage1-tooling.yml
+doc/blunder-misvaluation-patterns/STAGE_1_EXECUTION_RUNBOOK.md
+```
+
+The implementation is fail-closed: any scientific runner phase other than `status` requires a separate authorization file bound to the exact spec and exact scientific source-file SHA-256 map. That authorization file has not been created.
+
+The independent verifier reconstructs each generated game from initial state and seed and recomputes trajectory AI search before selection can run. Root selection enforces historical-trajectory collapse, frozen phase assignment, no unavailable-phase reassignment, duplicate-rule-state collapse, and exact 600/600 phase quota if readiness is estimable.
+
+The tooling test uses only a non-scientific fixture seed namespace beginning at `99000001`; it does not use the reserved Stage 1 scientific seeds.
+
+Current boundary:
+
+```text
+Stage 1 execution tooling validation = PENDING
+Stage 1 scientific generation authorized = false
+Stage 1 scientific games generated = 0
+Stage 2 generation authorized = false
+formal scientific result = none
 ```
