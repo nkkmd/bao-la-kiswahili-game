@@ -65,6 +65,12 @@ preregistration/STAGE_2_FORMAL_SPEC.json
 preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
 ```
 
+## Historical status labels
+
+`STAGE_0_TECHNICAL_PROTOCOL.md`、`STAGE_1_EXPLORATORY_PROTOCOL.md`、`STAGE_2_FORMAL_PROTOCOL.md`、`HYPOTHESES.md`、`STATISTICAL_ANALYSIS_PLAN.md`、`SEED_AUDIT.md`、`STAGE_1_RUNBOOK.md`、`STAGE_2_RUNBOOK.md`には、prospective freezeまたは実行時点の `PENDING` / `NOT AUTHORIZED` / `OPEN` 等の表記が意図的に残っている。これらは当時のauthorization chronologyとpreregistration provenanceを保存する履歴文書であり、現在状態を示すものではない。
+
+現在のscientific stateは [`CURRENT_STATUS.md`](CURRENT_STATUS.md)、[`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)、[`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) を正本とする。freeze-time文書を結果判明後に現在形へ書き換えて、当時の事前状態を消去しない。
+
 ## Interpretation boundary
 
 本研究のcalibration mappingをformalにvalidatedされたBao勝率として扱わない。game-theoretic probability、human advantage perception、causal effect、別engine/search/populationへのgeneralizationも主張しない。
