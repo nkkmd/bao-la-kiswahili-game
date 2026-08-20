@@ -1,7 +1,7 @@
 # STAGE_0_TECHNICAL_PROTOCOL — Blunder / Misvaluation Patterns Study 1
 
 Updated: 2026-08-20  
-Status: **TECHNICAL VALIDATION ONLY — NO SCIENTIFIC GENERATION**
+Status: **SEMANTICS TEST PASS / COMPUTE FEASIBILITY PENDING / NO SCIENTIFIC GENERATION**
 
 ## Purpose
 
@@ -36,9 +36,9 @@ position-complexity-search-diagnostic.js
 tactical-motif-features.js
 ```
 
-## Required validation
+## Required semantics validation
 
-Stage 0 PASS requires:
+Stage 0 semantics PASS requires:
 
 1. prerequisite exact-search diagnostic test PASS;
 2. prerequisite tactical transition/reply test PASS;
@@ -50,6 +50,48 @@ Stage 0 PASS requires:
 8. static post-move evaluation uses the original root actor;
 9. candidate summary does not mutate root state;
 10. D1/D2/D3 trace remains Q1 under the wrapper.
+
+## Semantics execution result
+
+The investigator returned:
+
+```text
+node test/position-complexity-search-diagnostic.test.js
+Position-complexity search diagnostic tests passed
+
+node test/tactical-motif-stage0.test.js
+Tactical motif Stage 0 feature tests passed
+
+node test/blunder-misvaluation-stage0.test.js
+Blunder / misvaluation Stage 0 technical tests passed
+```
+
+Therefore:
+
+```text
+Stage 0 executable semantics validation = PASS
+```
+
+The exact local HEAD was not included in the transcript. This is retained as a provenance caveat; a fresh source-file SHA audit is mandatory before any scientific authorization.
+
+## Compute-feasibility substage
+
+Before freezing the Stage 1 scientific population size, run:
+
+```text
+tools/experiments/benchmark-blunder-misvaluation-stage0.js
+```
+
+The benchmark is technical-only. It:
+
+- uses deterministic no-RNG fixture walks;
+- does not use Stage 1/Stage 2 reserved scientific seeds;
+- samples nonterminal roots only for workload measurement;
+- reports timing, node counts, legal-move counts and phase coverage;
+- suppresses search scores, regrets, candidate-pattern summaries and game outcomes;
+- writes no scientific artifact.
+
+The runtime result may inform a prospective Stage 1 measurement budget before scientific generation. It may not be used to tune a scientific effect threshold.
 
 ## CI scope
 
@@ -63,7 +105,7 @@ GitHub Actions may execute these technical tests. It must not generate Stage 1/2
 
 ## Scientific firewall
 
-Even after technical PASS:
+Even after Stage 0 semantics PASS and compute-feasibility completion:
 
 ```text
 Stage 1 scientific generation authorized = false

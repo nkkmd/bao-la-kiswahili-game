@@ -17,7 +17,8 @@ Stage 0 tooling commit = dff7d11874c92d585f50f57b3077204271ab682b
 ```text
 Stage 0 design restoration/audit = COMPLETE
 Stage 0 tooling materialization = COMPLETE
-Stage 0 executable technical validation = RESULT NOT YET VERIFIED
+Stage 0 executable technical semantics validation = PASS
+Stage 0 D3+Q1 compute feasibility benchmark = PENDING
 Stage 1 exploratory spec = NOT YET FROZEN
 Stage 1 scientific generation = NOT AUTHORIZED
 Stage 2 formal spec = NOT CREATED
@@ -26,7 +27,26 @@ scientific corpus generated in this Study = 0
 formal scientific result = NONE
 ```
 
-## Stage 0 tooling now present
+## Stage 0 technical PASS evidence
+
+The investigator returned successful local execution for all three required tests:
+
+```text
+node test/position-complexity-search-diagnostic.test.js
+Position-complexity search diagnostic tests passed
+
+node test/tactical-motif-stage0.test.js
+Tactical motif Stage 0 feature tests passed
+
+node test/blunder-misvaluation-stage0.test.js
+Blunder / misvaluation Stage 0 technical tests passed
+```
+
+This satisfies the executable semantics-test gate defined in `STAGE_0_TECHNICAL_PROTOCOL.md`.
+
+Provenance caveat: the exact local `git rev-parse HEAD` was not printed in the returned command transcript. The present-study test file necessarily requires the Stage 0 tooling materialization to be present, but Stage 1 authorization will still require a separate source-file SHA / source-commit audit before any scientific generation.
+
+## Stage 0 tooling present
 
 ```text
 tools/experiments/lib/blunder-misvaluation-patterns.js
@@ -81,20 +101,22 @@ Stage 2 reservation = 22500001..22504096
 generation authorization = false / false
 ```
 
-## Technical execution note
-
-A push-triggered Stage 0 workflow has been committed. The currently available GitHub connector view does not expose a confirmed push-workflow execution/result for the tooling commit, so this repository state does **not** claim Stage 0 PASS yet.
-
-No scientific gate is weakened because of this observability limitation.
-
 ## Immediate next gate
+
+A deterministic technical-only benchmark is prepared in:
+
+```text
+tools/experiments/benchmark-blunder-misvaluation-stage0.js
+```
+
+It does not use the reserved scientific seed namespaces and does not emit scientific scores, regret patterns, game outcomes, or candidate-discovery results. It measures workload/timing only.
 
 Before Stage 1 design can be finalized:
 
-1. execute/confirm prerequisite exact-search and tactical-transition tests plus `test/blunder-misvaluation-stage0.test.js`;
-2. record a machine-verifiable PASS/failure result;
-3. benchmark D3+Q1 feasibility without generating a scientific corpus;
-4. determine Stage 1 exact game count and promotion-support gates prospectively;
-5. freeze Stage 1 exploratory spec;
-6. independently validate scientific-contract/tooling source hashes;
-7. only then consider Stage 1 generation authorization.
+1. execute the Stage 0 D3+Q1 feasibility benchmark;
+2. record its technical workload/timing result;
+3. choose Stage 1 exact game count and measurement budget prospectively from technical feasibility only;
+4. freeze candidate grammar and promotion/support gates;
+5. freeze and validate the Stage 1 exploratory spec;
+6. independently audit source commit / source-file hashes;
+7. only then consider a separate Stage 1 generation authorization.

@@ -39,7 +39,28 @@ dff7d11874c92d585f50f57b3077204271ab682b
 
 The wrapper adds domain-aware regret classification, same-root median/rank diagnostics, root-actor static post-move evaluation and existing tactical transition/reply summaries. It does not change engine, evaluator or exact-search implementation.
 
-A technical PASS is not yet recorded because a push-workflow execution/result is not observable through the currently available connector path. Stage 1 remains blocked.
+## 2026-08-20 — Stage 0 executable semantics validation PASS
+
+The investigator returned successful local execution for the three required tests:
+
+```text
+Position-complexity search diagnostic tests passed
+Tactical motif Stage 0 feature tests passed
+Blunder / misvaluation Stage 0 technical tests passed
+```
+
+Decision:
+
+```text
+Stage 0 executable semantics validation = PASS
+scientific inference authorized = false
+Stage 1 generation authorized = false
+Stage 2 generation authorized = false
+```
+
+The exact local HEAD was not included in the returned transcript. Before any Stage 1 authorization, source commit and source-file hashes will be independently bound and checked.
+
+A deterministic technical-only feasibility benchmark was then prepared to measure D1/D2/D3+Q1 and structural-measurement workload without using research seed blocks or exposing scientific candidate/outcome results.
 
 ## Current boundary
 
@@ -49,4 +70,4 @@ new scientific states measured = 0
 formal results = none
 ```
 
-Next work is Stage 0 executable technical validation and feasibility confirmation only.
+Next work is Stage 0 compute feasibility only; Stage 1 remains blocked.
