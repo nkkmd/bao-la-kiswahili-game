@@ -71,3 +71,64 @@ formal results = none
 ```
 
 Next work is Stage 0 compute feasibility only; Stage 1 remains blocked.
+
+## 2026-08-20 — Stage 0 compute feasibility PASS
+
+The investigator returned:
+
+```text
+branch = research/blunder-misvaluation-patterns
+HEAD = 45ce006eb63d5555a030d50fe7aa4e97637db327
+```
+
+and executed `benchmark-blunder-misvaluation-stage0.js`.
+
+Returned result:
+
+```text
+coveragePassed = true
+selected technical roots = Namua 4 / Mtaji 4
+overall mean total measurement = 214.412715875 ms/root
+overall median total measurement = 139.4082525 ms/root
+projected serial hours / 2000 roots = 0.11911817548611109
+scientific seed namespace used = false
+scientific corpus generated = false
+```
+
+Decision:
+
+```text
+Stage 0 compute feasibility = PASS
+D3+Q1 primary reference = RETAIN
+```
+
+## 2026-08-20 — Stage 1 exploratory design freeze
+
+Before any present-Study scientific generation, froze:
+
+```text
+stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
+games = 2048
+seeds = 22400001..22402048
+maxPly = 100
+selected-root target = 1200
+Namua / Mtaji root quota = 600 / 600
+spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
+```
+
+The full reserved Stage 1 block is used; no within-version outcome-dependent extension is possible.
+
+Candidate design separates the outcome-blind matcher from the failure signature. Promotion is evaluated over all matcher opportunities, with deterministic within-trajectory move representation and no favorable manual selection.
+
+Frozen promotion requirements include minimum 24 opportunity trajectories, failure-signature rate >= 0.65, D3-inferior rate >= 0.70, D3 TopSet rate <= 0.20, median normalized rank loss >= 0.50, opening/stratum diversity, and a deterministic maximum of 6 promoted candidates.
+
+A clean-room pre-materialization self-check of the exact planned JSON/contract content passed, but canonical post-commit validation remains required.
+
+```text
+Stage 1 scientific generation authorized = false
+Stage 2 scientific generation authorized = false
+new scientific games generated = 0
+new scientific states measured = 0
+formal results = none
+```

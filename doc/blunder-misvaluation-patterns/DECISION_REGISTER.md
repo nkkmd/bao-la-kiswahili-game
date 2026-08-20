@@ -143,3 +143,75 @@ Status: **FROZEN**
 **Decision:** Zero promoted candidates, zero confirmed candidates, NOT-CONFIRMED, INCONCLUSIVE-NOT-ESTIMABLE and TECHNICAL-INCONCLUSIVE are valid outcomes. Do not extend data or loosen thresholds to produce a positive catalogue.
 
 Status: **FROZEN**
+
+## BMP-D021 — Stage 0 compute feasibility
+
+**Decision:** The deterministic no-RNG Stage 0 benchmark executed at exact returned HEAD `45ce006eb63d5555a030d50fe7aa4e97637db327` passed phase coverage and showed D3+Q1 workload is technically feasible. Retain D3+Q1 as the primary machine reference.
+
+Status: **FROZEN**
+
+## BMP-D022 — Exact Stage 1 population
+
+```text
+games = 2048
+seeds = 22400001..22402048
+maxPly = 100
+```
+
+**Decision:** Use the full previously reserved Stage 1 seed block. No unused within-study extension capacity remains.
+
+Status: **FROZEN**
+
+## BMP-D023 — Exact Stage 1 root budget
+
+```text
+Namua = 600
+Mtaji = 600
+total = 1200 if readiness passes
+```
+
+**Decision:** Root selection is trajectory-aware, phase-hash-assigned and outcome/value-independent. Unavailable assigned phases, duplicate rule states or inadequate pools do not trigger replacement, phase reassignment or corpus extension.
+
+Status: **FROZEN**
+
+## BMP-D024 — Matcher/failure separation
+
+**Decision:** Candidate matching uses only phase + 1–2 structural preconditions + move abstraction. The failure token is excluded from the matcher. Failure and D3-inferior rates are computed over all matcher opportunities.
+
+This prevents failure-positive observations from defining their own denominator.
+
+Status: **FROZEN**
+
+## BMP-D025 — Stage 1 exploratory promotion gate
+
+A candidate requires:
+
+```text
+opportunity trajectories >= 24
+opportunity rule states >= 24
+failure-positive trajectories >= 16
+distinct opening prefixes >= 6
+maximum one prefix share <= 0.40
+generation strata >= 3
+maximum one stratum share <= 0.60
+failure-signature rate >= 0.65
+D3-inferior rate >= 0.70
+D3 TopSet rate <= 0.20
+median normalized rank loss >= 0.50
+```
+
+Automatic cap is 6 total, 3 per phase and 2 per failure family. Manual override is forbidden.
+
+Status: **FROZEN**
+
+## BMP-D026 — Stage 1 spec identity and authorization boundary
+
+```text
+stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
+spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
+```
+
+**Decision:** Freezing the Stage 1 spec does not authorize generation. Canonical contract validation, runner/verifier technical validation, exact source-file hash binding and a separate explicit authorization commit remain mandatory.
+
+Status: **FROZEN**

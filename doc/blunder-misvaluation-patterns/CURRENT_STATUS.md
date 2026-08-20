@@ -10,16 +10,18 @@ research branch = research/blunder-misvaluation-patterns
 baseline main HEAD = b1cc7047504b73c5a848e866f795c26a64250d13
 initial design commit = 0c0b88649cd77043bfadc2a2d48c7f27b611dc2d
 Stage 0 tooling commit = dff7d11874c92d585f50f57b3077204271ab682b
+Stage 0 feasibility execution HEAD = 45ce006eb63d5555a030d50fe7aa4e97637db327
+Stage 1 contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
 ```
 
 ## Current scientific state
 
 ```text
 Stage 0 design restoration/audit = COMPLETE
-Stage 0 tooling materialization = COMPLETE
 Stage 0 executable technical semantics validation = PASS
-Stage 0 D3+Q1 compute feasibility benchmark = PENDING
-Stage 1 exploratory spec = NOT YET FROZEN
+Stage 0 D3+Q1 compute feasibility = PASS
+Stage 1 exploratory spec = FROZEN
+Stage 1 canonical contract validation = PENDING
 Stage 1 scientific generation = NOT AUTHORIZED
 Stage 2 formal spec = NOT CREATED
 Stage 2 scientific generation = NOT AUTHORIZED
@@ -27,35 +29,110 @@ scientific corpus generated in this Study = 0
 formal scientific result = NONE
 ```
 
-## Stage 0 technical PASS evidence
+## Stage 0 closure
 
-The investigator returned successful local execution for all three required tests:
+Required semantics tests returned PASS.
 
-```text
-node test/position-complexity-search-diagnostic.test.js
-Position-complexity search diagnostic tests passed
-
-node test/tactical-motif-stage0.test.js
-Tactical motif Stage 0 feature tests passed
-
-node test/blunder-misvaluation-stage0.test.js
-Blunder / misvaluation Stage 0 technical tests passed
-```
-
-This satisfies the executable semantics-test gate defined in `STAGE_0_TECHNICAL_PROTOCOL.md`.
-
-Provenance caveat: the exact local `git rev-parse HEAD` was not printed in the returned command transcript. The present-study test file necessarily requires the Stage 0 tooling materialization to be present, but Stage 1 authorization will still require a separate source-file SHA / source-commit audit before any scientific generation.
-
-## Stage 0 tooling present
+The later feasibility benchmark was executed on exact returned local HEAD:
 
 ```text
-tools/experiments/lib/blunder-misvaluation-patterns.js
-test/blunder-misvaluation-stage0.test.js
-.github/workflows/blunder-misvaluation-stage0.yml
-STAGE_0_TECHNICAL_PROTOCOL.md
+45ce006eb63d5555a030d50fe7aa4e97637db327
 ```
 
-The wrapper is intentionally thin: it consumes existing exact-search and tactical-transition instrumentation and does not modify `public/engine.js`, `public/ai.js`, `public/ai-weights.js`, the Position Complexity search diagnostic, or Tactical Motif feature semantics.
+Benchmark:
+
+```text
+benchmarkId = BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1
+coveragePassed = true
+technical roots = Namua 4 + Mtaji 4
+overall mean total measurement = 214.412715875 ms/root
+overall median total measurement = 139.4082525 ms/root
+projected serial hours / 2000 roots = 0.11911817548611109
+scientific seed namespace used = false
+scientific corpus generated = false
+```
+
+Decision:
+
+```text
+Stage 0 compute feasibility = PASS
+primary D3+Q1 reference = RETAIN
+```
+
+Machine-readable archive:
+
+`results/STAGE_0_FEASIBILITY_RESULT.json`
+
+## Frozen Stage 1 exploratory design
+
+```text
+stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
+spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+games = 2048
+seeds = 22400001..22402048
+maxPly = 100
+selected roots if readiness passes = 1200
+Namua quota = 600
+Mtaji quota = 600
+primary reference = D3 + Q1 / bao / root actor
+```
+
+The fixed Stage 1 seed interval uses the full previously reserved capacity. No outcome-dependent extension remains available inside this Study version.
+
+## Root-selection firewall
+
+```text
+collapse historicalTrajectoryHash
+→ hash phase assignment
+→ one eligible root in assigned phase
+→ no unavailable-phase reassignment
+→ duplicate ruleStateKey collapse
+→ hash quota ranking
+→ 600 Namua + 600 Mtaji if sufficient
+```
+
+Insufficient phase support causes readiness failure, not replacement or corpus extension.
+
+## Candidate anti-selection-bias rule
+
+The candidate **matcher** is:
+
+```text
+phase + 1–2 structural preconditions + move abstraction
+```
+
+The failure signature is separate and excluded from the matcher.
+
+For each matcher/trajectory, the representative exact move is the lexicographically smallest `AI.moveKey`.
+
+D3-inferior and failure-signature rates are evaluated over all outcome-blind matcher opportunities.
+
+## Frozen promotion gate
+
+A candidate requires all of:
+
+```text
+opportunity trajectories >= 24
+opportunity rule states >= 24
+failure-positive trajectories >= 16
+opening prefixes >= 6
+max one opening prefix <= 0.40
+generation strata >= 3
+max one stratum <= 0.60
+failure-signature rate >= 0.65
+D3-inferior rate >= 0.70
+D3 TopSet rate <= 0.20
+median normalized rank loss >= 0.50
+```
+
+Automatic cap:
+
+```text
+total <= 6
+per phase <= 3
+per failure family <= 2
+manual override = false
+```
 
 ## Frozen inherited boundaries
 
@@ -80,43 +157,31 @@ Tactical Motif Human / Expert Validation Study 1
   humanExpertN = 0
 ```
 
-No closed-study formal decision is reopened.
+No closed-study decision is reopened.
 
-## Current primary design choice
+## Current gate
 
-```text
-primary reference search = D3 + quiescenceDepth 1
-search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
-evaluation profile = bao
-perspective = root actor
-```
-
-D2 is the shallow comparator. D4 is not primary and may only be used under a prospectively frozen technical/robustness role.
-
-## Current seed state
+Canonical Stage 1 contract files are now defined by the freeze:
 
 ```text
-Stage 1 reservation = 22400001..22402048
-Stage 2 reservation = 22500001..22504096
-generation authorization = false / false
+STAGE_1_EXPLORATORY_PROTOCOL.md
+preregistration/STAGE_1_EXPLORATORY_SPEC.json
+tools/experiments/lib/blunder-misvaluation-stage1-contract.js
+tools/experiments/validate-blunder-misvaluation-stage1-spec.js
+test/blunder-misvaluation-stage1-contract.test.js
 ```
 
-## Immediate next gate
+Before scientific generation:
 
-A deterministic technical-only benchmark is prepared in:
+1. execute the canonical spec validator and contract test;
+2. implement a runner and independent replay/search verifier without changing the frozen scientific contract;
+3. technically validate that implementation;
+4. freeze exact source-file SHA-256 mapping and spec SHA-256;
+5. create a separate source-bound Stage 1 generation authorization.
+
+Until then:
 
 ```text
-tools/experiments/benchmark-blunder-misvaluation-stage0.js
+Stage 1 generation authorized = false
+Stage 2 generation authorized = false
 ```
-
-It does not use the reserved scientific seed namespaces and does not emit scientific scores, regret patterns, game outcomes, or candidate-discovery results. It measures workload/timing only.
-
-Before Stage 1 design can be finalized:
-
-1. execute the Stage 0 D3+Q1 feasibility benchmark;
-2. record its technical workload/timing result;
-3. choose Stage 1 exact game count and measurement budget prospectively from technical feasibility only;
-4. freeze candidate grammar and promotion/support gates;
-5. freeze and validate the Stage 1 exploratory spec;
-6. independently audit source commit / source-file hashes;
-7. only then consider a separate Stage 1 generation authorization.
