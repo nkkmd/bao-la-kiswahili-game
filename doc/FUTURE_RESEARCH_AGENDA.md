@@ -1,23 +1,33 @@
 # Bao 今後の研究課題
 
-Version: 1.6.1  
+Version: 1.7.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-18
+更新日: 2026-08-20
 
 ## 1. 目的
 
-この文書は、先攻・後攻差研究および第一次定石研究の完了後に検討する、Bao la Kiswahili の新しい研究方向を整理した研究アジェンダである。
+この文書は、先攻・後攻差研究および第一次定石研究の完了後に検討する、Bao la Kiswahili の独立研究課題を整理する研究アジェンダである。
 
-ここで扱う課題は、既存研究の試行数追加、別seedによる追試、既存定石候補の再検証ではない。囲碁・将棋で発展してきた局面分類、手筋、形勢判断、終盤解析、認知研究、計算複雑性研究などを参考にしつつ、Bao固有の構造へ置き換えた独立の研究領域を対象とする。
+ここで扱うfuture workは、完了済み研究の試行数追加、別seedによる有意化探索、既存候補の閾値変更や別解析による救済ではない。局面分類、手筋、形勢判断、終盤解析、認知研究、計算複雑性研究などをBao固有の構造へ置き換え、各テーマを新しいprospective studyとして扱う。
 
-本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
+本書は実装ロードマップではない。各研究を開始する際は、目的、仮説、population、measurement、seed、判定基準、停止条件、解釈境界を個別に事前固定する。
 
-2026-08-18時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
+2026-08-20時点で、第1段階の5つのStudy 1に加え、第2段階の最初の研究であるPosition Evaluation / Win-Rate Calibration Study 1まで完了した。
 
-さらにC03のHuman / Expert Validation Study 1も完了した。machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。一方human側は、独立研究者としてfrozen expert criteriaを満たす対象へ現実的にアクセスする経路を確保できず、scientific recruitmentを開始しないまま`N=0`で閉じた。human axisのformal labelは`INCONCLUSIVE-NOT-ESTIMABLE`であり、これはC03へのnegative human evidenceではない。
+主要な完了状態は次のとおりである。
 
-Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclusive` であり、同一formal corpusを別optimizer/toleranceで再解析してformal labelを救済することはfuture workとして扱わない。Tactical Motifs Study 1についても、C01/C02/C04を追加game・paired-definition substitution・threshold変更で救済しない。C03のhuman/expert validationを再び行う場合も、完了済みHuman / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`を上書きせず、新しいprospective studyまたはnew responses前に明示的にversionedされたprospective reopeningとして扱う。
+```text
+Phase Transition Study 1 = closed
+Position Typology / Playing Style Study 1 = closed
+Namua→Mtaji Temporal Transition Study 1 = NOT-CONFIRMED
+Position Complexity / Difficulty Study 1 = INCONCLUSIVE
+Tactical Motifs / Tesuji Study 1 = C03 CONFIRMED; C01/C02/C04 NOT-CONFIRMED
+C03 Human / Expert Validation Study 1 = INCONCLUSIVE-NOT-ESTIMABLE (N=0)
+Position Evaluation / Win-Rate Calibration Study 1 = INCONCLUSIVE
+```
+
+Position Evaluation / Win-Rate Calibration Study 1ではStage 1でphase-stratified isotonic mappingをexploratoryに選択したが、fresh Stage 2で3つのpreregistered estimability gateが未達となったため、held-out calibration generalizationはformalに確認も棄却もされていない。したがってこのmappingを「formalにvalidatedされたBao勝率」として後続研究の前提にしない。
 
 ## 2. 既存研究との境界
 
@@ -25,393 +35,142 @@ Position Complexity / Difficulty Study 1のprimary formal decisionは `inconclus
 
 - 先攻・後攻の有利差
 - 固定開局を共有するペア対局
-- 定石候補の抽出と検証
+- 第一次定石研究
 - seed付き自己対局
-- 評価関数および探索方式の比較
+- 評価関数・探索方式の比較
 - 戦術局面回帰
 - 実対局由来の局面監査
-- 局面相転移点Study 1 — [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
-- 局面類型と棋風Study 1 — [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
+- 局面相転移点 Study 1 — [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
+- 局面類型と棋風 Study 1 — [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
 - Namua→Mtaji Strategic Temporal Transition Study 1 — [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
 - Position Complexity / Difficulty Study 1 — [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
 - Tactical Motifs / Tesuji Study 1 — [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
 - Tactical Motif Human / Expert Validation Study 1 — [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
+- Position Evaluation / Win-Rate Calibration Study 1 — [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
 
-今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
+完了済みStudyのformal decision、negative/null/inconclusive/non-estimable result、事前登録条件、population、endpoint、解釈境界は後続研究によって変更しない。
 
-> Baoの局面にはどのような構造があり、どのような原理で戦略が変化し、それを人間が理解可能な知識として記述できるか。
+特に次をfuture workとして扱わない。
 
-完了済みStudyのformal decision、事前登録条件、negative/null/inconclusive/non-estimable result、解釈境界は後続研究によって変更しない。後続研究は、既存Studyの救済や再定義ではなく、新しい研究課題として開始する。
+- Position Complexity Study 1を既存Stage 2 dataの別optimizer/toleranceで救済すること
+- Tactical Motifs C01/C02/C04を追加game、paired-definition substitution、threshold変更で救済すること
+- C03 Human / Expert Validation Study 1のN=0をhuman negative evidenceとして読み替えること
+- Namua→Mtaji Study 1のdeterministic first-Mtaji clockをsurvival/hazard endpointとして再包装すること
+- Position Evaluation / Win-Rate Calibration Study 1へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えて`INCONCLUSIVE`を変更すること
 
 ## 3. 研究上の共通原則
 
 1. 自己対局AIの評価をBao上の絶対的正解とはみなさない。
 2. 機械的観測、統計的傾向、棋力判断、理論的証明を区別する。
 3. 局面番号や特定手順だけでなく、再利用可能な構造として知識を表現する。
-4. namuaとmtajiを必要に応じて分離して分析する。
-5. 人間向け概念と機械向け特徴量を安易に同一視しない。
-6. 研究結果には適用範囲、既知の反例、未解決点を残す。
-7. 研究用データは再現可能な局面形式、条件、seed、AI設定とともに保存する。
+4. NamuaとMtajiを必要に応じて分離する。
+5. 人間向け概念と機械特徴量を同一視しない。
+6. 適用範囲、反例、未解決点を明示する。
+7. data / seed / AI条件 / source version / identityを再現可能に保存する。
+8. exploratory mappingやdescriptive metricをformal confirmationへ昇格させない。
+9. downstream studyはupstream studyの未確認resultをconfirmed instrumentとして扱わない。
 
 ## 4. 研究課題
 
-### 4.1 局面の相転移点
+### 4.1 局面の相転移点 — Study 1完了
 
-#### 現在の状態
+**現在の状態:** Study 1 closed。
 
-**Study 1完了。**
+- [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
+- [`phase-transition/STUDY_1_FINAL_REPORT.md`](phase-transition/STUDY_1_FINAL_REPORT.md)
 
-- 初見向け概要: [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`phase-transition/STUDY_1_FINAL_REPORT.md`](phase-transition/STUDY_1_FINAL_REPORT.md)
+Study 1では`capture-branch-expansion`をbounded strategic-transition phenotypeとして保持し、固定条件でsearch-profile orderingのdepth依存逆転を確認した。一方、universal Bao phase-transition law、一般的depth interaction、reserve・nyumba・front-row・mobilityを統合する一般理論は未確立である。
 
-Study 1では`capture-branch-expansion`をboundedなstrategic-transition phenotypeとして保持し、固定条件でdepth2とdepth3のsearch-profile orderingが逆転することまで確認した。一方、universal Bao phase-transition law、一般的なsearch-profile × depth interaction、reserve・nyumba・front-row・mobilityを包含する一般理論は確立していない。これらは後続する独立研究の対象である。
+将来候補:
 
-#### 中心課題
+- search-tree / PV / cutoff / horizon mechanism
+- nyumbaの機能変化
+- front-row支配の崩壊・固定化
+- capture-to-mobility transition
+- forcing-to-free-choice transition
 
-Baoの対局において、局面の価値基準や最善戦略が不可逆的に変化する地点を特定する。
-
-#### 主な対象
-
-- namuaからmtajiへの移行
-- nyumbaの消失または機能変化
-- reserveが特定範囲を下回る局面
-- 前列支配の崩壊または固定化
-- 捕獲重視から可動性重視への移行
-- 強制系列中心から自由選択中心への移行
-
-#### 研究方法の例
-
-各手についてreserve、nyumba状態、合法手数、捕獲手数、最大捕獲量、前列占有、評価値、候補手順位、最善手安定性を時系列化し、急激な変化点を検出する。
-
-#### 期待成果
-
-手数によらないBao固有の序盤・中盤・終盤分類、および局面フェーズ判定基準。
+これらは新しいprospective studyとして扱う。
 
 ---
 
-### 4.2 局面類型と棋風
+### 4.2 局面類型と棋風 — Study 1完了
 
-#### 現在の状態
+**現在の状態:** Study 1 closed。
 
-**Study 1完了。**
+- [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
+- [`position-typology/STUDY_1_FINAL_REPORT.md`](position-typology/STUDY_1_FINAL_REPORT.md)
 
-- 初見向け概要: [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`position-typology/STUDY_1_FINAL_REPORT.md`](position-typology/STUDY_1_FINAL_REPORT.md)
+Study 1ではMtaji `MTAJI-M1 / MTAJI-M2` bounded morphologyをformalにconfirmedした。Namuaでは離散typeをpromoteせず、`N-ACT / N-CON`をexploratory continuous coordinatesとして保持した。Discrete playing-style clusterは支持されず、`STYLE-C1..C4` exact geometryもheld-outでnot-confirmedだった。
 
-Study 1では、固定representation / population内でMtajiの`MTAJI-M1 / MTAJI-M2`二類型をformalにconfirmedした。Namuaでは離散typeをpromoteせず、`N-ACT / N-CON`をexploratory continuous coordinatesとして保持した。discrete playing-style cluster setは支持されず、探索で得たexact `STYLE-C1..C4` 4D geometryも独立確認では`not-confirmed`となった。
+将来候補:
 
-#### 中心課題
+- N-ACT/N-CONのfresh formal replication
+- 新しいplaying-style model family
+- MTAJI-M1/M2 human/expert validation
+- 別engine/search条件でのexternal validity
 
-Baoに繰り返し現れる局面構造と、対局者またはAIが選びやすい戦略傾向を分類する。
-
-#### 類型候補
-
-- 捕獲重視型
-- nyumba維持型
-- 前列制圧型
-- reserve温存型
-- 早期mtaji移行型
-- 可動性重視型
-- 強制系列型
-- 持久型
-
-これらは当初の候補語彙であり、Study 1の結果によって確認済み類型へ自動的に昇格したものではない。
-
-#### 研究方法の例
-
-多数の対局から捕獲頻度、nyumba保持期間、reserve消費速度、前列占有率、relay長、合法手数、mtaji移行時点、評価変動などを抽出し、クラスタリングと代表局面分析を行う。
-
-#### 期待成果
-
-Bao固有の棋風語彙、対局スタイル分類、異なる戦略傾向を持つAI、学習者向けスタイル診断。
+既存Stage 5を再定義してSTYLE-C1..C4を救済しない。
 
 ---
 
 ### 4.2.1 Namua→Mtaji移行前後の戦略的転移構造 — Study 1完了
 
-#### 研究題目
+Status: **formal decision `NOT-CONFIRMED`**
 
-> **BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — capture-branch-expansionからMtaji morphologyへの時間的接続**
+- [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
+- [`namua-mtaji-transition/STUDY_1_FINAL_REPORT.md`](namua-mtaji-transition/STUDY_1_FINAL_REPORT.md)
 
-Status: **Study 1 closed / formal decision `not-confirmed`**
+現engineのstandard trajectoryではfirst Mtajiがreserve exhaustionによりdeterministically ply 44に現れる。このため`time-to-first-Mtaji`、hazard、acceleration/delayはstrategic endpointとして用いない。
 
-- 初見向け概要: [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`namua-mtaji-transition/STUDY_1_FINAL_REPORT.md`](namua-mtaji-transition/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md`](namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md)
+Fresh Stage 2ではP2-D2のfirst-Mtaji morphology associationを検証したが、formal resultは`NOT-CONFIRMED`だった。
 
-#### 研究の起点
-
-局面類型Study 1の固定cross-study bridgeでは、対象となった`capture-branch-expansion` 59件がすべてNamuaに位置し、Mtajiとの同時点overlapが0だった。そのため、`capture-branch-expansion`とconfirmed Mtaji morphology `MTAJI-M1 / MTAJI-M2`の直接対応は推定できなかった。
-
-この未推定部分を、同一時点の対応付けではなくprospectiveな時間的接続として独立研究化した。
-
-#### Design-stageで判明した決定的境界
-
-Stage 0/1で、現engineのstandard trajectoryではNamua→Mtaji移行がreserve exhaustionによるdeterministic clockであることが確立した。
-
-```text
-initial total reserve = 44
-Namua total reserve at ply t = 44 - t
-first Mtaji observation = ply 44
-```
-
-Stage 2 formal corpusでも、Mtajiへ到達した3886/3886 gamesがply 44でfirst Mtajiへ移行し、progression violationは0だった。
-
-したがって、当初候補だった
-
-```text
-time-to-first-Mtaji
-first-Mtaji survival
-first-Mtaji hazard
-CBEによるMtaji acceleration / delay
-```
-
-は、現engineにおけるstrategic inferential endpointとして棄却された。candidate-to-first-Mtaji距離は戦略的survival timeではなく、rule-derived deterministic progressionである。
-
-この境界はformal outcome inspection前に固定されており、negative result後の再解釈ではない。
-
-#### Frozen Stage 2 formal question
-
-Formal analysisは、timingではなくfirst-Mtaji morphology associationへ限定された。
-
-```text
-condition = P2-D2 only
-hard / bao / phase2 / depth2
-games = 4096
-seeds = 20280001..20284096
-```
-
-Exposure:
-
-```text
-earliest fully ascertained Namua CBE per unique historical trajectory
-```
-
-Comparator:
-
-```text
-R3-M
-exact candidate ply
-not Category A at index
-same forced-capture status
-no Namua CBE anywhere in control trajectory
-first-Mtaji morphology eligible
-20 unique controls per exposure
-global control non-reuse
-```
-
-Estimability:
-
-```text
-morphology-eligible exposed trajectories = 30
-G1 >= 20 -> PASS
-G2 exactly 20 controls/exposure -> PASS
-matched sets = 30
-unique controls = 600
-```
-
-#### Formal result
-
-```text
-Exposed MTAJI-M1 = 26 / 30 = 0.8667
-Matched-control MTAJI-M1 = 509 / 600 = 0.8483
-mean matched risk difference = +0.01833
-MH common OR = 1.1618
-```
-
-Single preregistered matched-set exact conditional Poisson-binomial test:
-
-```text
-observed T = 26
-p_two_sided = 1.0
-alpha = 0.05
-```
-
-Formal decision:
-
-> **NOT-CONFIRMED**
-
-P2-D2内のfirst-Mtaji morphology associationは確認されなかった。小さな正の記述差をtrendとして救済しない。
-
-#### Future-work boundary
-
-この完了研究について、次はfuture workに含めない。
-
-- 同一formal corpusでcandidate-ply subgroupを探すことによるprimary resultの救済
-- alternative comparatorへの切替
-- 追加game / 別seedによる有意化探索
-- CBE / Category-A thresholdの緩和
-- Mtaji classifierのrefit / relabeling
-- deterministic clockをsurvival/hazard endpointとして再包装すること
-
-将来扱う場合は、別のscientific questionとしてprospectively分離する。
-
-新しい研究候補には、例えば次がある。
-
-- Namua progression上のfull structural trajectoryを、事前固定したrule-state representationで調べる研究
-- front-row / nyumba / mobility / forcing lifecycle / search-tree mechanismの新規mechanistic study
-- MTAJI-M1/M2とCBEのhuman/expert validation
-- P2-D2以外でのexternal validityをfresh corpusで検証する研究
-
-いずれもNamua→Mtaji Study 1の`not-confirmed` decisionを変更しない。
+将来候補はfull structural trajectory、front-row/nyumba/mobility/forcing lifecycle、mechanistic search analysis、別conditionでのexternal validityであり、同一formal corpusのsubgroup/comparator変更による救済ではない。
 
 ---
 
 ### 4.3 局面複雑度と難易度 — Study 1完了
 
-#### 現在の状態
+Status: **formal decision `INCONCLUSIVE`**
 
-**Study 1完了 / formal decision `inconclusive`。**
+- [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
+- [`position-complexity/STUDY_1_FINAL_REPORT.md`](position-complexity/STUDY_1_FINAL_REPORT.md)
 
-- 初見向け概要: [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`position-complexity/STUDY_1_FINAL_REPORT.md`](position-complexity/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`position-complexity/STAGE_2_FORMAL_RESULT.md`](position-complexity/STAGE_2_FORMAL_RESULT.md)
+Study 1はstructural complexity、search workload、decision ambiguity、prediction instabilityを機械再現可能に分離したが、primary formal logistic modelがfrozen convergence gateを満たさず`INCONCLUSIVE`となった。H2は`NOT-CONFIRMATORILY-EVALUATED`である。
 
-Study 1では「難しい局面」を単一scoreに圧縮せず、`structural complexity`、`search workload`、`decision ambiguity`、`prediction instability`を分離して機械再現可能に測定した。Stage 1 exploratoryではstructural branching、D2→D3 instability、D2 best-second marginの関係を設計開発し、fresh Stage 2 formal corpusでprimary associationを検証した。
-
-Stage 2では1024 gamesをfull verificationし、862 unique rule statesをformal populationとした。count/coverage gateはすべてPASSしたが、preregistered primary full logistic modelがBFGS precision lossにより`converged=false`となり、事前固定したfinite+converged gateを満たさなかった。
-
-したがって:
-
-```text
-PCX-H1 = INCONCLUSIVE
-PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
-OVERALL FORMAL DECISION = INCONCLUSIVE
-```
-
-計算上のH1 `p = 0.086676...`を使って`not-confirmed`へ変更せず、H2の小さい計算上のp値もconfirmationへ昇格させない。
-
-#### Study 1で分離した難易度層
-
-1. **探索難易度 / search workload**: node数、cutoff、evaluation count等
-2. **判断難易度 / decision ambiguity**: root candidate valueの近接性、best-second gap、tie
-3. **予測難易度 / prediction instability**: depth変更に伴うexact TopSetの変化
-4. **構造難易度 / structural complexity**: 合法手数、capture/relay/front-row/reserve等のstate structure
-5. **人間難易度**: Study 1では未検証。誤答率、判断時間、候補生成、説明等は独立future study
-
-#### Future-work boundary
-
-同じStage 2 formal corpusについて、次はfuture workに含めない。
-
-- optimizer/toleranceを変更してformal decisionを救済すること
-- seed/gameを追加して再判定すること
-- alternative depth pair・endpoint・metricへ切り替えること
-- phase interaction / phase-stratified analysisをprimary rescueに使うこと
-- H2の計算上の小さいp値をformal confirmationへ昇格させること
-
-H1 scientific questionを再検証する場合は、**robust optimizer / convergence procedureを事前固定し、fresh seed block / fresh corpusを使う新しいprospective numerical-method replication**とする。
-
-Human difficultyを扱う場合も、machine workload/ambiguity/instabilityを人間の難しさと同一視せず、人間・expert dataを用いた独立studyとする。
+H1を再検証する場合は、robust optimizer / convergence procedureを事前固定したfresh independent replicationとする。Human difficultyはmachine complexityと別軸で検証する。
 
 ---
 
 ### 4.4 手筋の発見と体系化 — Study 1完了
 
-#### 現在の状態
+Status: **C03 CONFIRMED / C01,C02,C04 NOT-CONFIRMED**
 
-**Study 1 closed / complete。Stage 2 formal decision: C03 confirmed; C01/C02/C04 not-confirmed。**
+- [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
+- [`tactical-motifs/STUDY_1_FINAL_REPORT.md`](tactical-motifs/STUDY_1_FINAL_REPORT.md)
 
-- 初見向け概要: [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`tactical-motifs/STUDY_1_FINAL_REPORT.md`](tactical-motifs/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`tactical-motifs/STAGE_2_FORMAL_RESULT.md`](tactical-motifs/STAGE_2_FORMAL_RESULT.md)
+C03はfrozen Bao engine/search operationalization内のmachine-reproducible transferable tactical motifとしてconfirmedされた。traditional tesuji、human importance、pedagogical valueは未確認である。
 
-Stage 1では768-game fresh corpusから715 unique rule states / 3,148 exact move recordsを測定し、3,116,520 raw pattern instancesを列挙した。105,501 detailed candidatesのうち948件が全promotion gateを通過し、事前固定ranking/capsによって8 exploratory definitionsをpromotionした。
+C01/C02/C04を追加gameやontology/threshold変更で救済しない。
 
-8定義は4つのexact `supportIdentityHash` pairを形成した。Stage 1の8定義自体は変更せず、Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical formal candidateとして固定した。
+将来候補:
 
-Fresh Stage 2では3,072 games / seeds `22000001–22003072`を生成し、全局をindependent full replay/search verificationした。4候補すべてがestimability gateをPASSし、6,605 formal measurementsのintegrityもPASSした。4 candidate × 2 co-primary endpointsの8 planned testsをHolm-BonferroniでFWER 0.05に制御した結果、`TM-S2-C03`のみ`CONFIRMED`となった。
-
-Confirmed C03のfrozen machine definition:
-
-```text
-phase = mtaji
-precondition = reusablePits=0-2
-move = takata / row 1 / direction right / coarse-no-index
-consequence = actorNyumbaSeedsDeltaSign=0
-```
-
-Fresh 1,272 rootsで、structural success 97.88%、D3 top-set 73.66%、D3 at-or-above-median 86.95%、D3 unique-worst 7.08%。opening prefixesは1,121種類、generation strataは6種類すべてに広がった。
-
-C01はstructural recurrence 69.44%を示したがD3 top-set 49.34%でformal confirmationに失敗した。C02/C04もco-primary endpointsを満たさず、3候補はいずれも`NOT-CONFIRMED`として固定する。
-
-#### Future-work boundary
-
-Study 1の結果に対して次は行わない。
-
-- C01/C02/C04への追加game・別seedによる救済
-- paired diagnostic definitionへの差し替え
-- candidate merge/split
-- threshold / endpoint / depthの変更による再判定
-- Stage 1 exploratory metricsを使ったformal resultの再解釈
-
-C03について次を扱う場合は、新しいprospective studyとする。
-
-- traditional / expert-recognized tesuji validation
-- human strategic importance
-- beginner / pedagogical value
-- 別engine / evaluator / search profileでのexternal validity
-- human-vs-machine decision comparison
-
-#### 現在の解釈境界
-
-C03の`CONFIRMED`が意味するのは、frozen Bao engine/search operationalizationにおける**machine-reproducible transferable tactical motif**までである。
-
-traditional/expert-recognized tesuji、human importance、beginner importance、pedagogical valueはStudy 1では主張しない。
+- C03 traditional/expert recognition
+- beginner/pedagogical validation
+- external validity
+- C03とは独立した新規motif family探索
 
 ---
 
 ### 4.4.1 C03 Human / Expert Validation — Study 1完了
 
-#### 現在の状態
+Status: **human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`**
 
-**Study 1 complete — machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`。**
+- [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
+- [`tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md`](tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md)
 
-- 初見向け概要: [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md`](tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md)
-- Human-axis closure: [`tactical-motif-human-validation/STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json`](tactical-motif-human-validation/STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json)
+Machine/instrument pipelineと42 formal positionsのdeterministic freezeまで完了したが、qualified Bao expertへの現実的アクセスを確保できずscientific recruitmentを開始しないままN=0で閉じた。
 
-Tactical Motifs Study 1でmachine-confirmedとなった`TM-S2-C03`を、Bao expertが局面横断的な再利用可能原理として認識するかを検証するための独立prospective studyとして開始した。
-
-Machine/instrument側では次を完了した。
-
-```text
-fresh machine games = 1536
-independent verification mismatch = 0
-C03_TARGET = 687
-matched P_ONLY = 277
-matched M_ONLY = 605
-matched MORPH_NEAR = 672
-formal primary blocks = 12
-formal unique positions = 42
-```
-
-Exact formal positionsはdeterministic ruleでfreezeされ、private exact freeze SHA-256は次で固定された。
-
-`2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
-
-Human側では、所属機関によらない独立研究としてscientific recruitment開始前の時点で、frozen expert criteriaを満たすBao専門家・研究者・競技者へ現実的にアクセスする経路を確保できなかった。
-
-```text
-accessible eligible experts = 0
-scientific recruitment started = false
-persons contacted for scientific recruitment = 0
-formal human responses = 0
-minimum included experts required = 10
-```
-
-minimum Nやexpert criteriaを緩和せず、human axisは`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として閉じた。これはexpertがC03を認識しないというnegative evidenceではない。
-
-Final evidence state:
-
-```text
-machineEvidence = CONFIRMED
-humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
-humanExpertN = 0
-```
-
-#### Future-work boundary
-
-将来qualified expertへのアクセスが可能になってhuman/expert recognitionを再検証する場合、今回のN=0 closureをretroactiveに変更しない。新しいprospective independent study、またはnew responses前に明示的にversionedされたprospective reopeningとして扱う。
+N=0はnegative human evidenceではない。将来再検証する場合は新しいprospective study、またはnew responses前にversionedされたprospective reopeningとする。
 
 ---
 
@@ -419,55 +178,91 @@ humanExpertN = 0
 
 #### 現在の優先度
 
-**形勢判断と勝率校正 Study 1の後に着手することを推奨する。**
+**第2段階の次期推奨研究。**
 
-悪手severityや勝敗への影響を評価するには、engine evaluationとempirical continuation win probabilityの対応を先に校正しておく方が、後続のmeasurementを明確にできる。また「錯覚」のうち人間の誤認理由を直接扱う部分はhuman dataを必要とするため、現時点ではmachine-onlyで完結可能な勝率校正を先行させる。
+Position Evaluation / Win-Rate Calibration Study 1は完了したため、研究順序上はこのテーマへ進める。ただしCalibration Study 1のformal resultは`INCONCLUSIVE`であり、Stage 1 isotonic mappingをformalにvalidatedされたwin probabilityとして利用してはならない。
 
-これは悪手・錯覚研究の中止や重要度低下を意味しない。研究依存関係に基づく実施順序の変更であり、C03 Human / Expert Validation Study 1のN=0を科学的前提として悪手研究を否定するものでもない。
+したがって次の研究では、machine-onlyのbad-move / misvaluation patternをまず独立に定義するのが適切である。Formal severity endpointには、fresh continuation outcomes、exact search-based regret/decision loss、または新研究内でprospectively frozenされた別のmeasurementを使い、Calibration Study 1 mappingを使う場合はexploratory/descriptive covariateに限定する。
+
+「錯覚」という語で人間の誤認理由を主張するにはhuman dataが必要である。Human dataなしの研究は、machine-observed blunder pattern / search error / value misestimationまでに限定する。
 
 #### 中心課題
 
-初心者、人間一般、浅い探索AIが繰り返し陥る誤判断を分類する。
+初心者、人間一般、浅い探索AIが繰り返し陥りうる誤判断候補を、まずmachine-reproducible patternとして分類する。
 
-#### 錯覚候補
+#### 候補
 
 - 即時捕獲量の過大評価
 - nyumba維持の絶対視
 - reserveの過度な温存
-- relay終了後の配置の見落とし
-- 相手の強制捕獲を自分の利益と誤認
-- 一手後の可動性低下の見落とし
+- relay終了後配置の見落とし
+- 相手の強制捕獲を自分の利益と誤認する構造
+- 一手後の可動性低下
 - 見かけ上の左右対称性への依存
-
-#### 研究方法の例
-
-誤った候補手について、選択理由、浅深度差、反撃系列、特徴量変化、人間の説明を比較し、失敗原因を再利用可能なカテゴリへ整理する。
 
 #### 期待成果
 
-初心者向け注意点、誤答理由付き問題集、悪手説明機能、人間らしい難易度調整。
+machine-reproducible bad-move taxonomy、説明可能なerror pattern、将来のhuman misconception validation用stimulus、悪手説明機能のmeasurement foundation。
 
 ---
 
-### 4.6 形勢判断と勝率校正
+### 4.6 形勢判断と勝率校正 — Study 1完了
 
-#### 現在の優先度
+Status: **Study 1 closed / formal decision `INCONCLUSIVE`**
 
-**第2段階の次期推奨研究。**
+- 初見向け概要: [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`position-evaluation-calibration/STUDY_1_FINAL_REPORT.md`](position-evaluation-calibration/STUDY_1_FINAL_REPORT.md)
+- Formal result: [`position-evaluation-calibration/STAGE_2_FORMAL_RESULT.md`](position-evaluation-calibration/STAGE_2_FORMAL_RESULT.md)
 
-engine evaluationとempirical continuation win probabilityの対応をprospectively校正し、後続する悪手severity、重要局面・勝敗分岐点、逆転可能性・勝負手の研究に共通するmeasurement foundationを構築する。Human / Expert Validation Study 1のN=0はこの順序を実務上補強するが、本研究を先行させる主理由はmeasurement dependencyである。
+Stage 1 fresh exploratory corpusではphase-aware logisticとphase-stratified isotonicをprospectively比較し、logisticがfrozen numerical convergence gateを満たさなかったため、isotonicを唯一のeligible candidateとして選択した。
 
-#### 中心課題
+```text
+Stage 1 selected states = 830
+pooled isotonic CV Brier = 0.1532240986334561
+Namua CV Brier = 0.2296469061338478
+Mtaji CV Brier = 0.07106958057053532
+```
 
-AIの内部評価値が、実際の勝率とどのような関係にあるかを明らかにする。
+Stage 2 fresh formal corpus:
 
-#### 研究方法の例
+```text
+games = 2048
+seeds = 22300001..22302048
+independent verification = PASS
+final Stage 1 identity overlaps = 0 / 0 / 0
+```
 
-異なる評価値を持つ多数の局面から反復対局を行い、phase、reserve差、nyumba状態、AI強度ごとに実勝率を測定する。評価値と勝率の対応を校正し、信頼区間も記録する。
+しかしstrict Stage 1 identity firewallとno-replacement selection後に3つのestimability gateが未達となった。
 
-#### 期待成果
+```text
+unique historical trajectories after firewall = 1383 < 1600
+selected unique rule states = 1290 < 1500
+Mtaji selected states = 627 < 650
+```
 
-「互角」「やや有利」「優勢」「勝勢」などのBao固有基準、観戦用勝率表示、評価値の解釈可能性向上。
+そのためfrozen decision ruleにより:
+
+```text
+OVERALL FORMAL DECISION = INCONCLUSIVE
+paired bootstrap = not decision-eligible
+primary performance criteria = not decision-eligible
+```
+
+Descriptive-only:
+
+```text
+pooled Brier = 0.15550141283724248
+Namua Brier = 0.22678074548187638
+Mtaji Brier = 0.08012948693071474
+```
+
+これらはformal confirmationを意味しない。
+
+#### Future-work boundary
+
+同じStage 2 corpusへ追加game、別seed、identity-overlap replacement、readiness gate緩和、mapping refit、descriptive thresholdの事後利用を加えてStudy 1を救済しない。
+
+formal calibration generalizationを再検証する場合は、Stage 1 identity firewallによるattritionを事前に見込んだfresh prospective replicationとする。
 
 ---
 
@@ -477,18 +272,16 @@ AIの内部評価値が、実際の勝率とどのような関係にあるかを
 
 理論上の最善手と、実戦で相手に誤りを要求して逆転可能性を高める手を区別する。
 
-#### 主な指標
+候補指標:
 
 - 最善応手に対する評価
-- 平均的応手に対する勝率
+- 平均的応手に対する結果
 - 応手の唯一性
 - 分岐数
-- 相手AIの強度別誤答率
+- AI強度別誤答率
 - 候補手ごとの逆転率
 
-#### 期待成果
-
-劣勢時の勝負手分類、実戦型AI、難しい応手を要求する局面の教材化。
+Calibration Study 1のmappingをformal win probabilityとして前提にしない。
 
 ---
 
@@ -496,20 +289,17 @@ AIの内部評価値が、実際の勝率とどのような関係にあるかを
 
 #### 中心課題
 
-完全なゲーム解析ではなく、制約された終盤局面を列挙・後退解析し、必勝・必敗・循環・勝利距離を求める。
+制約された終盤局面を列挙・後退解析し、必勝・必敗・循環・勝利距離を求める。
 
-#### 対象候補
+対象候補:
 
-- reserveが0
+- reserve = 0
 - nyumbaなし
-- 総種数が一定以下
-- 非空穴数が一定以下
+- 総種数または非空穴数が小さい
 - 合法手数が少ない
-- 特定の種数分布に限定する
+- 特定種数分布
 
-#### 期待成果
-
-Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数およびルールエンジンの検証用正解データ。
+期待成果はBao終盤テーブルベース、完全手、必勝問題、engine/evaluatorの正解データである。
 
 ---
 
@@ -517,20 +307,17 @@ Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数�
 
 #### 中心課題
 
-一局の全着手から、勝敗や戦略方針を大きく変えた少数の局面を抽出する。
+一局の全着手から、勝敗見込みや戦略方針を大きく変えた少数局面を抽出する。
 
-#### 判定候補
+判定候補:
 
-- 勝率または評価値の急変
-- 最善手との差が大きい着手
-- 唯一手が存在した局面
-- 相転移を起こした着手
-- 以後の局面類型を変えた着手
-- 不可逆な構造損失
+- fresh continuation outcomeの大きな変化
+- exact best-move regret
+- 唯一手
+- strategic transition
+- irreversible structural loss
 
-#### 期待成果
-
-勝着、敗着、疑問手、分岐点を中心とする自動棋譜解説、一局から少数問を生成する復習機能。
+Calibration Study 1 mappingをformalにvalidatedされた勝率変化として使わない。
 
 ---
 
@@ -538,21 +325,19 @@ Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数�
 
 #### 中心課題
 
-初心者、熟練者、評価関数のみのAI、浅い探索AI、深い探索AIが、どの局面で異なる判断を行うかを調べる。
+初心者、熟練者、static evaluator、浅い探索AI、深い探索AIがどの局面で異なる判断を行うかを調べる。
 
-#### 測定候補
+測定候補:
 
 - 選択手
 - 判断時間
 - 候補手数
 - 形勢予測
 - 理由説明
-- 読み筋の長さ
+- 読み筋
 - 見落とした反撃
 
-#### 期待成果
-
-熟達過程のモデル、初心者が優先して学ぶべき概念、人間らしいAI、説明機能の改善。
+Human evidenceが必要なclaimをmachine self-playで代替しない。
 
 ---
 
@@ -560,22 +345,18 @@ Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数�
 
 #### 中心課題
 
-盤面表示が異なっていても、合法手、局面遷移、勝敗が本質的に同じ局面を体系化する。
+盤面表示が異なっていても合法手・遷移・勝敗が本質的に同じ局面を体系化する。
 
-#### 研究対象
+研究対象:
 
 - 左右反転
-- プレイヤー交換
-- 穴番号の正規化
-- namuaとmtajiで成立する変換の違い
-- 合法手グラフの同型
-- canonical formの構築
+- player交換
+- pit numbering正規化
+- Namua/Mtajiで成立する変換差
+- legal-move graph同型
+- canonical form
 
-#### 期待成果
-
-重複局面削減、研究データ圧縮、Transposition Table効率化、対称性を利用したテスト生成。
-
-既存のnamua対称性研究とは異なり、個別の不一致原因だけでなく、Bao全体の局面同値関係を研究対象とする。
+期待成果は重複局面削減、研究data圧縮、TT効率化、symmetry test生成である。
 
 ---
 
@@ -583,117 +364,103 @@ Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数�
 
 #### 中心課題
 
-Baoの計算論的規模を推定し、他の盤上ゲームやマンカラ系ゲームと比較可能な基礎値を得る。
+Baoの計算論的規模を推定する。
 
-#### 主な対象
+主な対象:
 
-1. 到達可能な合法局面数
-2. 可能な対局系列数
-3. phase別の実効分岐係数
-4. 平均対局長と分布
-5. 強制手がゲーム木を圧縮する割合
-6. 対称性を除いた局面数
+1. 到達可能合法局面数
+2. 対局系列数
+3. phase別実効分岐係数
+4. 対局長分布
+5. 強制手によるtree圧縮
+6. 対称性除去後の局面数
 
-#### 研究方法の例
-
-完全列挙が困難な場合は、到達可能性判定、canonical form、自己対局標本、ランダムウォーク、モンテカルロ推定を組み合わせる。
-
-#### 期待成果
-
-Baoの探索困難性に対する定量的説明、研究用基準値、ゲームAI方式選択の理論的根拠。
+完全列挙が困難な場合はcanonicalization、random walk、self-play sampling、Monte Carlo estimationを組み合わせる。
 
 ## 5. 推奨する研究プログラム
 
 ### 第1段階: Baoを記述する語彙の構築
 
-現在の優先順位:
-
 1. **[完了] 局面の相転移点 — Study 1**
 2. **[完了] 局面類型と棋風 — Study 1**
-3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`not-confirmed`)**
-4. **[完了] 局面複雑度と難易度 — Study 1 (`inconclusive`)**
+3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`NOT-CONFIRMED`)**
+4. **[完了] 局面複雑度と難易度 — Study 1 (`INCONCLUSIVE`)**
 5. **[完了] 手筋の発見と体系化 — Study 1（C03 `CONFIRMED` / C01,C02,C04 `NOT-CONFIRMED`）**
 
-第1段階の5つのStudy 1は完了した。state morphology、strategic-transition phenotype、Namua→Mtaji bridgeの境界、machine-reproducible complexity layersに加え、fresh formal confirmationを通過したmachine-reproducible transferable tactical motif C03を得た。
-
-局面複雑度Study 1のformal `inconclusive`を他研究で救済しない。また手筋Study 1のnegative candidatesを追加gameやontology変更で救済しない。
+第1段階は完了した。完了済みresultを後続研究で救済しない。
 
 ### 第2段階: 理解、教育、解説への展開
 
-優先課題:
+現在の優先順位:
 
-1. **形勢判断と勝率校正**
-2. 悪手と錯覚パターン
+1. **[完了] 形勢判断と勝率校正 — Study 1 (`INCONCLUSIVE`)**
+2. **悪手と錯覚パターン — 次期推奨**
 3. 重要局面と勝敗分岐点
 4. 人間とAIの判断差
 
-この段階では、まず形勢判断と勝率校正をmeasurement foundationとして整備し、その後に悪手severityや勝敗分岐を扱う。engine evaluationからempirical continuation win probabilityへの対応が得られれば、後続研究で「どの程度悪い手か」「どの地点で勝敗見込みが大きく変化したか」を、単なる内部評価値差より明確に定義できる可能性がある。
+勝率校正Study 1によってevaluation→empirical outcomeを扱う技術基盤とexploratory mappingは得られたが、formal held-out validationはestimability failureで未解決である。そのため後続研究は「formalに校正済みの勝率」を前提にせず、新しいprimary endpointをprospectively定義する。
 
-この順序変更の主因は研究依存関係である。C03 Human / Expert Validation Study 1のN=0は、人間の錯覚やexpert judgmentを必要としないmachine-only研究を先行させる実務的理由にはなるが、悪手研究を否定するnegative evidenceではない。
-
-C03 Human / Expert Validation Study 1は、machine-to-human validation instrumentを42 formal positionsのfreezeまで完成させたが、expert accessを確保できずhuman axisは`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`として完了した。したがってC03を教材・expert tesujiへ昇格させる根拠は得られていない。将来再検証する場合は新しいprospective human studyとして扱い、machine confirmationをそのままpedagogical claimへ読み替えない。
+悪手研究はmachine-only stageから開始可能である。ただしhuman misconceptionを主張する場合は別途human dataを必要とする。
 
 ### 第3段階: 理論および完全解析への展開
-
-優先課題:
 
 1. 限定終盤と必勝圏
 2. 対称性と同型局面
 3. 状態空間とゲーム木複雑度
 4. 逆転可能性と勝負手
 
-この段階では、数学的・計算論的性質と実戦的選択の違いを研究する。
-
 ## 6. 特に優先する三本柱
 
 ### 6.1 Bao局面分類学
 
-相転移、局面類型、棋風、複雑度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1、Position Complexity / Difficulty Study 1は完了した。Position Complexity Study 1のformal `inconclusive`を再検証する場合は、同一formal corpusの再解析ではなく、数値手法を事前固定したfresh prospective replicationとする。Human difficultyはmachine complexity layerとは別に独立検証する。
+相転移、局面類型、棋風、複雑度を統合してBao局面を体系的に記述する。完了済みStudyのinconclusive/not-confirmed結果を同一dataの再解析で変更しない。
 
 ### 6.2 Bao手筋・錯覚体系
 
-定石とは異なる局面横断的な手筋と、典型的な誤判断を対応付ける。
-
-Tactical Motifs / Tesuji Study 1はこの柱の最初のmachine-reproducible motif studyとして完了した。4 canonical candidatesのうちC03がfresh Stage 2 formal confirmationを通過した。C03 Human / Expert Validation Study 1ではmachine/instrument pipelineとformal stimulus freezeまでは完了したが、human evidenceはN=0で非推定可能だった。したがって次の主要課題は、今回のN=0 resultを救済することではなく、expert accessを確保できる条件が成立した場合に新しいprospective human/expert validationを設計すること、traditional/pedagogical validationを別studyに分離すること、そしてC03とは別の新規motif family探索をprospectively行うことである。
+Tactical Motifs Study 1でC03 machine motifをconfirmedしたが、human recognitionはN=0で未推定である。次の実務的主要課題は、machine-reproducible bad-move / error-pattern taxonomyと、将来human validation可能なinstrumentの構築である。
 
 ### 6.3 Bao終盤科学
 
-限定局面の完全解析、必勝圏、勝利距離、終盤テーブルベースを扱う。
+限定局面の完全解析、必勝圏、勝利距離、終盤tablebaseを扱う。
 
 ## 7. 個別研究を開始する条件
 
 各研究課題を実施へ移す際は、最低限次を定義する。
 
-- 研究課題と既存研究との差
+- 既存研究との差
 - 検証可能な仮説
-- 対象とするphaseおよび局面集合
-- 使用するAI、探索深度、時間制限、seed
-- 収集する特徴量とデータ形式
-- 統計単位と相関の扱い
-- 人間レビューが必要な箇所
-- 成功基準、否定基準、停止条件
-- 成果物の保存先
+- phase / population
+- AI / search / seed
+- 特徴量・outcome・data format
+- statistical unit / identity / pseudoreplication control
+- human reviewが必要なclaim
+- success / failure / estimability gate
+- stopping / no-rescue rule
+- artifact保存先
 
-完了済み研究から派生する新研究では特に、既存Studyのformal decisionsを変更しないこと、endpoint・comparator・population・seed・decision ruleを結果を見る前に定義すること、confirmed/exploratory vocabularyを同じ証拠水準として扱わないことを開始条件に含める。
+完了済み研究から派生する場合は、既存formal decisionを変更しないこと、endpoint/comparator/population/seed/decision ruleを新しいoutcomeを見る前に固定すること、confirmed/exploratory/descriptive evidenceを区別することを開始条件に含める。
 
-Namua→Mtajiを扱う場合、現engineではfirst-Mtaji timingがdeterministic progressionであるため、`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。異なるengine semanticsを研究対象にする場合は、それ自体を別システム・別studyとして明示する。
+追加の固有境界:
 
-Position Complexity / Difficulty Study 1のH1を再検証する場合、既存Stage 2 corpusのoptimizer/tolerance変更による再判定は行わない。optimizer、収束基準、failure handling、fresh seed blockを新しいprospective preregistrationで固定してから新規evidenceを生成する。
-
-Tactical Motifs / Tesuji Study 1は完了済みである。C01/C02/C04を既存Stage 2 dataの再解析、追加seed、paired-definition substitution、threshold変更で救済しない。C03についてhuman/expert recognitionを再検証する場合は、Tactical Motif Human / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`を変更しない新しいprospective independent study、またはnew responses前に明示的にversionedされたprospective reopeningとして、対象population・判定基準・評価者・analysis plan・ethics boundaryを事前固定する。traditional recognition、pedagogical value、external validityもそれぞれ別の証拠軸として扱う。
+- Namua→Mtaji: current engineのfirst-Mtaji timingをstrategic survival/hazard endpointとして再利用しない。
+- Position Complexity: H1再検証はfresh seedとprospectively frozen numerical methodで行う。
+- Tactical Motifs: C01/C02/C04を既存evidenceの再定義で救済しない。
+- C03 Human Validation: N=0をnegative human evidenceへ変換しない。
+- Position Evaluation / Win-Rate Calibration: Study 1のisotonic mappingをformal validated probabilityとして扱わない。formal replicationはfresh corpusで行う。
+- Bad-move study: calibration mappingをprimary formal severity scaleにする場合は、それ自体を新研究内でprospectively validateするか、fresh continuation outcomeをprimaryにする。
 
 ## 8. 到達目標
 
-長期的な目標は、Baoを単にプレイ可能なゲーム、または勝率を比較できるAI対象として扱うだけでなく、次の形へ発展させることである。
+長期的な目標はBaoを単にプレイ可能なゲームやAI勝率比較対象として扱うだけでなく、次の形へ発展させることである。
 
 - 局面を分類できる
 - 戦略転換を説明できる
-- 手筋と錯覚を言語化できる
-- 形勢と勝率を校正できる
+- 手筋とerror patternを言語化できる
+- 形勢評価とempirical outcomeの関係を再現可能に扱える
 - 重要局面を抽出できる
 - 限定終盤を証明できる
 - 人間の学習過程を支援できる
 
-中心となる研究方針は次のとおりである。
+中心方針:
 
-> Baoの局面を分類し、局面間に共通する戦略原理を発見し、それを人間が理解できる知識へ変換する。
+> Baoの局面を分類し、局面間に共通する戦略原理を発見し、それを再現可能かつ人間が理解できる知識へ変換する。
