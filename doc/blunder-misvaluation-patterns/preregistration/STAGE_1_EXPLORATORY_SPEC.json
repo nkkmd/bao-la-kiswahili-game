@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BMP-STUDY1",
+  "stageId": "BMP-S1-EXPLORATORY-2026-08-20-v1",
+  "status": "prospective-frozen-pending-contract-validation",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "baseMainHead": "b1cc7047504b73c5a848e866f795c26a64250d13",
+  "designFreezeParentHead": "45ce006eb63d5555a030d50fe7aa4e97637db327",
+  "population": {
+    "games": 2048,
+    "seedStart": 22400001,
+    "seedEnd": 22402048,
+    "opening": {
+      "policy": "seeded-uniform-legal-moveVariants",
+      "plies": 8,
+      "appliesToAllStrata": true
+    },
+    "conditionAssignment": {
+      "method": "game-index-modulo-6",
+      "indexBase": 0,
+      "strata": [
+        {
+          "id": "B-D1",
+          "moduloRemainder": 0,
+          "expectedGames": 342,
+          "generator": {
+            "kind": "ai",
+            "level": "hard",
+            "evaluationProfile": "bao",
+            "searchProfile": "phase2",
+            "maxDepth": 1,
+            "timeLimitMs": "Infinity",
+            "quiescenceDepth": 1,
+            "orderQuiescenceCaptures": false,
+            "adaptive": false,
+            "stableBestDepths": 0,
+            "aspirationWindow": 0
+          }
+        },
+        {
+          "id": "B-D2",
+          "moduloRemainder": 1,
+          "expectedGames": 342,
+          "generator": {
+            "kind": "ai",
+            "level": "hard",
+            "evaluationProfile": "bao",
+            "searchProfile": "phase2",
+            "maxDepth": 2,
+            "timeLimitMs": "Infinity",
+            "quiescenceDepth": 1,
+            "orderQuiescenceCaptures": false,
+            "adaptive": false,
+            "stableBestDepths": 0,
+            "aspirationWindow": 0
+          }
+        },
+        {
+          "id": "B-D3",
+          "moduloRemainder": 2,
+          "expectedGames": 341,
+          "generator": {
+            "kind": "ai",
+            "level": "hard",
+            "evaluationProfile": "bao",
+            "searchProfile": "phase2",
+            "maxDepth": 3,
+            "timeLimitMs": "Infinity",
+            "quiescenceDepth": 1,
+            "orderQuiescenceCaptures": false,
+            "adaptive": false,
+            "stableBestDepths": 0,
+            "aspirationWindow": 0
+          }
+        },
+        {
+          "id": "LS-D2",
+          "moduloRemainder": 3,
+          "expectedGames": 341,
+          "generator": {
+            "kind": "ai",
+            "level": "hard",
+            "evaluationProfile": "bao",
+            "searchProfile": "legacy",
+            "maxDepth": 2,
+            "timeLimitMs": "Infinity",
+            "quiescenceDepth": 0,
+            "orderQuiescenceCaptures": false,
+            "adaptive": false,
+            "stableBestDepths": 0,
+            "aspirationWindow": 0
+          }
+        },
+        {
+          "id": "V2-D2",
+          "moduloRemainder": 4,
+          "expectedGames": 341,
+          "generator": {
+            "kind": "ai",
+            "level": "hard",
+            "evaluationProfile": "bao-v2",
+            "searchProfile": "phase2",
+            "maxDepth": 2,
+            "timeLimitMs": "Infinity",
+            "quiescenceDepth": 1,
+            "orderQuiescenceCaptures": false,
+            "adaptive": false,
+            "stableBestDepths": 0,
+            "aspirationWindow": 0
+          }
+        },
+        {
+          "id": "LE-D2",
+          "moduloRemainder": 5,
+          "expectedGames": 341,
+          "generator": {
+            "kind": "ai",
+            "level": "hard",
+            "evaluationProfile": "legacy",
+            "searchProfile": "phase2",
+            "maxDepth": 2,
+            "timeLimitMs": "Infinity",
+            "quiescenceDepth": 1,
+            "orderQuiescenceCaptures": false,
+            "adaptive": false,
+            "stableBestDepths": 0,
+            "aspirationWindow": 0
+          }
+        }
+      ]
+    },
+    "maxPly": 100
+  },
+  "trajectoryIdentity": {
+    "primary": "historicalTrajectoryHash",
+    "duplicateHandling": "collapse-identical-historical-trajectories-before-state-selection",
+    "representativeRule": "minimum-seed-then-gameId",
+    "supportUnit": "unique-historical-trajectory"
+  },
+  "openingFamily": {
+    "prefixPlies": 8,
+    "identity": "sha256-ordered-exact-AI.moveKey-prefix-with-explicit-prefix-length",
+    "candidateMinimumDistinctPrefixes": 6,
+    "candidateMaximumSinglePrefixShare": 0.4
+  },
+  "stateSelection": {
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "minimumLegalMoveCount": 2,
+    "legalMoveDefinition": "E.moveVariants(state).length",
+    "phaseAssignment": {
+      "method": "sha256-parity",
+      "salt": "BMP-S1-PHASE-v1",
+      "mapping": {
+        "even": "namua",
+        "odd": "mtaji"
+      }
+    },
+    "withinAssignedPhase": {
+      "method": "minimum-sha256-rank",
+      "salt": "BMP-S1-STATE-v1",
+      "fields": [
+        "historicalTrajectoryHash",
+        "ruleStateKey",
+        "ply"
+      ]
+    },
+    "unavailableAssignedPhase": "no-replacement-no-reassignment",
+    "duplicateSelectedRuleStateHandling": "retain-lowest-historicalTrajectoryHash-then-seed-before-quota",
+    "phaseQuota": {
+      "namua": 600,
+      "mtaji": 600,
+      "rankingMethod": "minimum-sha256-rank",
+      "salt": "BMP-S1-QUOTA-v1",
+      "fields": [
+        "phase",
+        "historicalTrajectoryHash",
+        "ruleStateKey",
+        "seed"
+      ],
+      "insufficientPoolHandling": "fail-readiness-no-extension-no-reassignment"
+    }
+  },
+  "measurement": {
+    "allLegalMoveVariants": true,
+    "rootSearch": {
+      "searchSemantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+      "depths": [
+        1,
+        2,
+        3
+      ],
+      "primaryDepth": 3,
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false,
+      "perspective": "root-actor"
+    },
+    "staticPostMove": {
+      "evaluationProfile": "bao",
+      "perspective": "original-root-actor",
+      "rankingPopulation": "all-legal-E.moveVariants-at-root",
+      "tieHandling": "all-equal-maximum-static-scores-are-static-top-set",
+      "medianDefinition": "ordinary-numeric-median-across-all-static-post-move-scores"
+    },
+    "responseEnvelope": {
+      "replyPopulation": "all-immediate-E.moveVariants-replies-after-candidate-move",
+      "orientation": "original-root-actor-relative",
+      "deltaReference": "original-root-state",
+      "numericFields": [
+        "boardSeeds",
+        "frontSeeds",
+        "backSeeds",
+        "occupiedPits",
+        "frontOccupied",
+        "backOccupied",
+        "reusablePits",
+        "frontConnections",
+        "legalMoveCount",
+        "captureMoveCount",
+        "maxCapturableSeeds",
+        "nyumbaSeeds"
+      ],
+      "aggregates": [
+        "min",
+        "max",
+        "mean"
+      ],
+      "terminalHandling": "record-terminal-counts-and-relative-winner"
+    },
+    "wallClockInferentialUse": false,
+    "principalVariationRequired": false,
+    "d4Measured": false,
+    "freshDeterministicContinuationMeasured": false
+  },
+  "decisionLoss": {
+    "primaryReference": "D3+Q1",
+    "topSetLoss": "regret-zero-for-all-D3-top-set-ties",
+    "domainOrder": [
+      "root-loss-mate-domain",
+      "ordinary-evaluation-domain",
+      "root-win-mate-domain"
+    ],
+    "ordinaryRegretPoolingAcrossMateDomainsAllowed": false,
+    "inferiorEvent": {
+      "id": "d3-inferior-v1",
+      "rule": "candidate-is-not-D3-top-set AND (candidate-is-strictly-below-D3-state-median OR candidate-score-domain-is-worse-than-best-score-domain)"
+    },
+    "normalizedRankLoss": "(scoreRank-1)/(legalMoveCount-1) for legalMoveCount>=2"
+  },
+  "discoveryRepresentation": {
+    "moveAbstractionModes": [
+      "coarse-no-index",
+      "indexed"
+    ],
+    "preconditionTokenFamilies": {
+      "captureRegime": [
+        "none",
+        "forced",
+        "mixed"
+      ],
+      "legalMoveCountBins": [
+        "2",
+        "3-4",
+        "5+"
+      ],
+      "captureMoveCountBins": [
+        "0",
+        "1",
+        "2+"
+      ],
+      "reserveBins": [
+        "0",
+        "1-4",
+        "5-12",
+        "13+"
+      ],
+      "houseOwned": [
+        "false",
+        "true"
+      ],
+      "nyumbaSeedsBins": [
+        "0",
+        "1-4",
+        "5+"
+      ],
+      "frontOccupiedBins": [
+        "0-2",
+        "3-5",
+        "6-8"
+      ],
+      "frontConnectionsBins": [
+        "0-1",
+        "2-4",
+        "5+"
+      ],
+      "reusablePitsBins": [
+        "0-2",
+        "3-5",
+        "6+"
+      ]
+    },
+    "failureTokenFamilies": {
+      "immediate-structural": [
+        "actorLegalMoveDeltaNegative",
+        "actorCaptureMoveDeltaNegative",
+        "actorFrontConnectionsDeltaNegative",
+        "actorReusablePitsDeltaNegative",
+        "actorNyumbaSeedsDeltaNegative",
+        "actorHouseOwnershipLost"
+      ],
+      "response-envelope": [
+        "allRepliesActorLegalMoveDeltaNegative",
+        "allRepliesActorCaptureMoveDeltaNegative",
+        "worstReplyActorFrontConnectionsDeltaNegative",
+        "worstReplyActorReusablePitsDeltaNegative",
+        "opponentImmediateWinningReplyExists"
+      ],
+      "forcing-response": [
+        "singleReplyAndActorLegalMoveDeltaNegative",
+        "singleReplyAndActorCaptureMoveDeltaNegative"
+      ],
+      "horizon-misvaluation": [
+        "d1TopSetAndD3NonTop",
+        "d2TopSetAndD3NonTop",
+        "d2AtOrAboveMedianAndD3BelowMedian"
+      ],
+      "static-misvaluation": [
+        "staticTopSetAndD3NonTop",
+        "staticAtOrAboveMedianAndD3BelowMedian"
+      ]
+    },
+    "candidatePattern": {
+      "mandatoryPhaseToken": true,
+      "minimumPreconditionTokens": 1,
+      "maximumPreconditionTokens": 2,
+      "maximumOneTokenPerPreconditionFamily": true,
+      "exactlyOneMoveAbstractionToken": true,
+      "exactlyOneFailureToken": true,
+      "matcherExcludesFailureToken": true,
+      "opportunityDenominator": "all-outcome-blind-matcher-opportunities-after-within-trajectory-representative-selection",
+      "withinTrajectoryMatcherRepresentative": "lexicographically-smallest-exact-AI.moveKey",
+      "oneOpportunityVotePerHistoricalTrajectoryPerMatcher": true,
+      "candidateKeyFields": [
+        "phase",
+        "sorted-precondition-tokens",
+        "move-abstraction-mode",
+        "move-abstraction-key",
+        "failure-token"
+      ],
+      "patternComplexity": "number-of-precondition-tokens + (move-abstraction-mode==indexed ? 1 : 0)"
+    },
+    "candidateEnumeration": {
+      "minimumMatcherOpportunityTrajectoriesForDetailedAudit": 12,
+      "belowThresholdHandling": "count-and-hash-summary-only",
+      "manualCandidateAdditionAllowed": false
+    }
+  },
+  "candidatePromotion": {
+    "minimumOpportunityUniqueHistoricalTrajectories": 24,
+    "minimumOpportunityUniqueRuleStates": 24,
+    "minimumFailurePositiveUniqueHistoricalTrajectories": 16,
+    "minimumDistinctOpeningPrefixes": 6,
+    "maximumSingleOpeningPrefixShare": 0.4,
+    "minimumGenerationStrata": 3,
+    "maximumSingleGenerationStratumShare": 0.6,
+    "minimumFailureSignatureRate": 0.65,
+    "minimumD3InferiorRate": 0.7,
+    "maximumD3TopSetRate": 0.2,
+    "minimumMedianNormalizedRankLoss": 0.5,
+    "supportEquivalence": {
+      "opportunityIdentity": "sha256-sorted-historicalTrajectoryHash|ruleStateKey|moveKey-tuples",
+      "equivalentIf": "same-opportunityIdentityHash-and-same-failureToken",
+      "representativeRule": "minimum-pattern-complexity-then-candidateKey"
+    },
+    "candidateCap": {
+      "maximumTotal": 6,
+      "maximumPerPhase": 3,
+      "maximumPerFailureFamily": 2
+    },
+    "ranking": [
+      "min(d3InferiorRate,failureSignatureRate)-desc",
+      "opportunityUniqueHistoricalTrajectorySupport-desc",
+      "d3InferiorRate-desc",
+      "failureSignatureRate-desc",
+      "medianNormalizedRankLoss-desc",
+      "patternComplexity-asc",
+      "candidateKey-asc"
+    ],
+    "failedCandidatesRetainedInAudit": true,
+    "manualOverrideAllowed": false
+  },
+  "readinessGates": {
+    "minimumUniqueHistoricalTrajectories": 1600,
+    "requiredSelectedUniqueRuleStates": 1200,
+    "requiredNamuaSelectedStates": 600,
+    "requiredMtajiSelectedStates": 600,
+    "minimumDistinctOpeningPrefixes": 128,
+    "minimumSelectedPerGenerationStratum": 100,
+    "minimumMeasuredMoveRecords": 3600,
+    "allSelectedRootsRequireFiniteD3CandidateTables": true
+  },
+  "stopping": {
+    "gamesFixed": 2048,
+    "rootsFixedIfReadinessPasses": 1200,
+    "earlyStopAllowed": false,
+    "outcomeDependentExtensionAllowed": false,
+    "automaticReplacementForUnavailableAssignedPhase": false,
+    "automaticPhaseReassignmentAllowed": false,
+    "automaticReplacementForDuplicateRuleState": false,
+    "unusedReservedSeedCapacityAfterGeneration": 0
+  },
+  "authorization": {
+    "generationAuthorizedBySpecAlone": false,
+    "requiredAuthorizationFile": "doc/blunder-misvaluation-patterns/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json",
+    "requiredBeforeGeneration": [
+      "stage1-spec-validator-pass",
+      "stage1-contract-test-pass",
+      "runner-and-independent-verifier-technical-validation-pass",
+      "exact-spec-sha256-bound",
+      "exact-source-commit-and-source-file-sha256-bound",
+      "separate-explicit-authorization-commit"
+    ]
+  },
+  "stage2Boundary": {
+    "stage1PositionsReusableForConfirmation": false,
+    "stage1SeedsReusableForConfirmation": false,
+    "stage1PromotedCandidatesAutomaticallyConfirmed": false,
+    "stage1PromotionThresholdsReusableAsFormalDecisionRules": false,
+    "stage2GenerationAuthorizedByThisSpec": false,
+    "stage2SeedReservation": {
+      "seedStart": 22500001,
+      "seedEnd": 22504096
+    },
+    "requiredBeforeStage2": "separate-candidate-freeze-and-formal-preregistration-before-any-stage2-data"
+  },
+  "interpretationBoundary": {
+    "exploratoryOnly": true,
+    "machineReproduciblePatternOnly": true,
+    "gameTheoreticBlunderClaimAuthorized": false,
+    "validatedWinProbabilityLossClaimAuthorized": false,
+    "humanMisconceptionClaimAuthorized": false,
+    "beginnerExpertPedagogicalClaimAuthorized": false,
+    "closedStudyRescueAuthorized": false
+  }
+}

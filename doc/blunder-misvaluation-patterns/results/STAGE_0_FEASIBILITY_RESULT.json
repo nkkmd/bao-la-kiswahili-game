@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "benchmarkId": "BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1",
+  "studyId": "BMP-STUDY1",
+  "executionSourceCommit": "45ce006eb63d5555a030d50fe7aa4e97637db327",
+  "expectedSourceCommit": "45ce006eb63d5555a030d50fe7aa4e97637db327",
+  "headMatchedExpected": true,
+  "technicalOnly": true,
+  "scientificInferenceAuthorized": false,
+  "scientificCorpusGenerated": false,
+  "reservedScientificSeedNamespaceUsed": false,
+  "stateSource": "deterministic-no-rng-multi-policy-fixture-walk",
+  "targetPerPhase": 4,
+  "availableTechnicalStates": {
+    "namua": 233,
+    "mtaji": 145
+  },
+  "selectedTechnicalStates": {
+    "namua": 4,
+    "mtaji": 4
+  },
+  "coveragePassed": true,
+  "searchReference": {
+    "depths": [
+      1,
+      2,
+      3
+    ],
+    "primaryDepth": 3,
+    "options": {
+      "evaluationProfile": "bao",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false
+    }
+  },
+  "summary": {
+    "namua": {
+      "roots": 4,
+      "legalMoveCount": {
+        "n": 4,
+        "min": 2,
+        "median": 3.5,
+        "mean": 3.75,
+        "max": 6
+      },
+      "trace123Ms": {
+        "n": 4,
+        "min": 59.873276999999916,
+        "median": 127.58352949999994,
+        "mean": 255.21082774999994,
+        "max": 705.802975
+      },
+      "structuralAllMovesMs": {
+        "n": 4,
+        "min": 12.221313999999893,
+        "median": 40.5042499999999,
+        "mean": 39.4073262499999,
+        "max": 64.3994909999999
+      },
+      "totalMeasurementMs": {
+        "n": 4,
+        "min": 72.09459099999981,
+        "median": 168.08777949999984,
+        "mean": 294.61815399999983,
+        "max": 770.2024659999998
+      },
+      "traceNodes": {
+        "n": 4,
+        "min": 58,
+        "median": 155,
+        "mean": 206.5,
+        "max": 458
+      },
+      "traceEvaluations": {
+        "n": 4,
+        "min": 29,
+        "median": 72,
+        "mean": 105,
+        "max": 247
+      }
+    },
+    "mtaji": {
+      "roots": 4,
+      "legalMoveCount": {
+        "n": 4,
+        "min": 2,
+        "median": 3.5,
+        "mean": 3.5,
+        "max": 5
+      },
+      "trace123Ms": {
+        "n": 4,
+        "min": 20.489410000000134,
+        "median": 107.76827700000001,
+        "mean": 100.20583850000003,
+        "max": 164.79738999999995
+      },
+      "structuralAllMovesMs": {
+        "n": 4,
+        "min": 20.413694000000305,
+        "median": 31.63997549999999,
+        "mean": 34.00143925000009,
+        "max": 52.31211200000007
+      },
+      "totalMeasurementMs": {
+        "n": 4,
+        "min": 40.90310400000044,
+        "median": 139.4082525,
+        "mean": 134.20727775000012,
+        "max": 217.10950200000002
+      },
+      "traceNodes": {
+        "n": 4,
+        "min": 46,
+        "median": 148.5,
+        "mean": 134,
+        "max": 193
+      },
+      "traceEvaluations": {
+        "n": 4,
+        "min": 15,
+        "median": 63.5,
+        "mean": 57.25,
+        "max": 87
+      }
+    },
+    "overall": {
+      "roots": 8,
+      "legalMoveCount": {
+        "n": 8,
+        "min": 2,
+        "median": 3.5,
+        "mean": 3.625,
+        "max": 6
+      },
+      "trace123Ms": {
+        "n": 8,
+        "min": 20.489410000000134,
+        "median": 107.76827700000001,
+        "mean": 177.708333125,
+        "max": 705.802975
+      },
+      "structuralAllMovesMs": {
+        "n": 8,
+        "min": 12.221313999999893,
+        "median": 38.428909499999975,
+        "mean": 36.70438274999999,
+        "max": 64.3994909999999
+      },
+      "totalMeasurementMs": {
+        "n": 8,
+        "min": 40.90310400000044,
+        "median": 139.4082525,
+        "mean": 214.41271587499998,
+        "max": 770.2024659999998
+      },
+      "traceNodes": {
+        "n": 8,
+        "min": 46,
+        "median": 150.5,
+        "mean": 170.25,
+        "max": 458
+      },
+      "traceEvaluations": {
+        "n": 8,
+        "min": 15,
+        "median": 64,
+        "mean": 81.125,
+        "max": 247
+      }
+    },
+    "projectedSerialHoursPer1000MeasuredRoots": 0.059559087743055544,
+    "projectedSerialHoursPer2000MeasuredRoots": 0.11911817548611109
+  },
+  "technicalDecision": {
+    "feasibility": "PASS",
+    "primaryD3Q1ReferenceRetained": true,
+    "stage1GameCountFrozen": 2048,
+    "stage1SeedStartFrozen": 22400001,
+    "stage1SeedEndFrozen": 22402048,
+    "stage1SelectedRootTargetIfReadinessPasses": 1200,
+    "stage1PhaseRootQuota": {
+      "namua": 600,
+      "mtaji": 600
+    },
+    "scientificGenerationAuthorized": false
+  },
+  "interpretationBoundary": "Timing/workload only. No score, regret, candidate-pattern, outcome, or scientific-effect inference is authorized."
+}

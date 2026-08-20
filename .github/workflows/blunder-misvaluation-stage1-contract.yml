@@ -1,0 +1,37 @@
+name: Blunder misvaluation Stage 1 contract validation
+
+on:
+  push:
+    branches:
+      - research/blunder-misvaluation-patterns
+    paths:
+      - "doc/blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "doc/blunder-misvaluation-patterns/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "tools/experiments/lib/blunder-misvaluation-stage1-contract.js"
+      - "tools/experiments/validate-blunder-misvaluation-stage1-spec.js"
+      - "test/blunder-misvaluation-stage1-contract.test.js"
+      - ".github/workflows/blunder-misvaluation-stage1-contract.yml"
+  pull_request:
+    paths:
+      - "doc/blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_PROTOCOL.md"
+      - "doc/blunder-misvaluation-patterns/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "tools/experiments/lib/blunder-misvaluation-stage1-contract.js"
+      - "tools/experiments/validate-blunder-misvaluation-stage1-spec.js"
+      - "test/blunder-misvaluation-stage1-contract.test.js"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate frozen Stage 1 spec
+        run: node tools/experiments/validate-blunder-misvaluation-stage1-spec.js
+      - name: Test Stage 1 contract helper
+        run: node test/blunder-misvaluation-stage1-contract.test.js
