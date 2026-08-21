@@ -1,51 +1,38 @@
 # EXPERIMENT_INDEX — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-20
+Updated: 2026-08-21
 
 | Stage / ID | Purpose | Scientific data | Status |
 | --- | --- | --- | --- |
 | `BMP-S0-DESIGN-2026-08-20-v1` | Restore boundaries, fix constructs/reference semantics, reserve seeds | none | **COMPLETE / DESIGN FROZEN** |
 | `BMP-S0-TECHNICAL-SMOKE-2026-08-20-v1` | Fixture validation of regret/search/move/identity semantics | none | **PASS** |
 | `BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1` | Deterministic workload/timing benchmark | none | **PASS** |
-| `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory bad-move / misvaluation candidate discovery | future fresh corpus | **SPEC FROZEN / CONTRACT PASS / TOOLING VALIDATION PENDING / NOT AUTHORIZED** |
-| `BMP-S2-FORMAL-*` | Fresh candidate confirmation | future fresh corpus | **BLOCKED** |
-
-## Stage 0 closure
-
-```text
-semantics tests = PASS
-feasibility coverage = PASS
-feasibility source HEAD = 45ce006eb63d5555a030d50fe7aa4e97637db327
-D3+Q1 primary reference = RETAIN
-scientific corpus generated = 0
-```
+| `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory bad-move / misvaluation candidate discovery | authorized fresh corpus | **SPEC FROZEN / CONTRACT PASS / TOOLING PASS / SOURCE FROZEN / GENERATION AUTHORIZED** |
+| `BMP-S2-FORMAL-*` | Fresh candidate confirmation | none | **BLOCKED / NOT AUTHORIZED** |
 
 ## Stage 1 frozen identity
 
 ```text
 stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
 spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
-contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
-contract validation execution HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
 games = 2048
 seeds = 22400001..22402048
 root target = 1200 if readiness passes
 Namua / Mtaji = 600 / 600
 ```
 
-The full reserved Stage 1 seed block is the exact frozen population. No outcome-dependent extension is allowed.
-
-## Stage 1 contract validation
+## Pre-generation validation chain
 
 ```text
-canonical validator = PASS
-canonical contract test = PASS
-scientificInferenceAuthorized = false
-confirmatoryReuseAllowed = false
-generationAuthorizedBySpecAlone = false
+contract freeze = 94b565468a9222dcaee0576529147ef032a284e6
+contract validation execution HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
+validated implementation = 8df328ca238611919ac58c262b92058712ee1049
+tooling validation PASS = cd26cb3280fde00663618162f7c1e2d306470032
+source SHA freeze = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
+generation authorization = 1af3828c1c25789d6f4af590ee973cffd34bca46
 ```
 
-Machine-readable record: `results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`.
+The authorization permits only the frozen Stage 1 exploratory pipeline. Confirmatory inference and Stage 2 generation remain unauthorized.
 
 ## Stage 1 readiness gate
 
@@ -60,7 +47,7 @@ measured move records >= 3600
 complete finite D3 tables for all selected roots
 ```
 
-Failure blocks discovery and does not authorize replacement or extension.
+Failure blocks downstream discovery and does not authorize replacement or extension.
 
 ## Stage 1 promotion gate
 
@@ -80,21 +67,6 @@ median normalized rank loss >= 0.50
 
 Automatic cap: 6 total / 3 per phase / 2 per failure family. Manual override forbidden.
 
-## Stage 1 execution tooling
-
-Materialized:
-
-```text
-tools/experiments/lib/blunder-misvaluation-stage1-corpus.js
-tools/experiments/lib/blunder-misvaluation-stage1-discovery.js
-tools/experiments/run-blunder-misvaluation-stage1-exploratory.js
-tools/experiments/verify-blunder-misvaluation-stage1-exploratory.js
-test/blunder-misvaluation-stage1-tooling.test.js
-.github/workflows/blunder-misvaluation-stage1-tooling.yml
-```
-
-The technical tooling test uses only a non-scientific fixture seed namespace beginning at `99000001`.
-
 ## Current stage gate
 
 ```text
@@ -105,8 +77,9 @@ candidate grammar/promotion gates frozen       DONE
 Stage 1 spec frozen                            DONE
 canonical Stage 1 contract validation          PASS
 runner + independent verifier materialized     DONE
-runner/verifier technical validation           PENDING
-source-hash-bound explicit authorization       ABSENT / PENDING
+runner/verifier technical validation           PASS
+exact scientific source SHA map                FROZEN
+source-bound Stage 1 authorization              AUTHORIZED
+scientific corpus generated                     0 / NOT YET RUN
+Stage 2                                          BLOCKED
 ```
-
-Stage 2 remains blocked.
