@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BMP-STUDY1",
+  "stageId": "BMP-S1-EXPLORATORY-2026-08-20-v1",
+  "resultId": "BMP-S1-GENERATION-2026-08-21-v1",
+  "status": "generation-complete-verification-pending",
+  "specSha256": "f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd",
+  "authorizationSha256": "469d1614a8e6609b05cca6047c364dab35754a41ede825f54de492d47d8c8e75",
+  "exploratory": true,
+  "formalExperiment": false,
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "generatedAt": "2026-08-21T15:30:48.459Z",
+  "population": {
+    "games": 2048,
+    "seedStart": 22400001,
+    "seedEnd": 22402048,
+    "maxPly": 100,
+    "openingPolicy": "seeded-uniform-legal-moveVariants",
+    "openingPlies": 8,
+    "conditionAssignment": "game-index-modulo-6"
+  },
+  "summary": {
+    "games": 2048,
+    "uniqueHistoricalTrajectories": 1884,
+    "duplicateHistoricalTrajectoryGroups": 121,
+    "largestHistoricalTrajectoryGroup": 7,
+    "distinctOpeningPrefixes": 1621,
+    "conditionCounts": {
+      "B-D1": 342,
+      "B-D2": 342,
+      "B-D3": 341,
+      "LE-D2": 341,
+      "LS-D2": 341,
+      "V2-D2": 341
+    }
+  },
+  "summaryHash": "0db8a18aa28020d8803a144d592966753f16a83425680993a1bfd310dfc2a7e9",
+  "provenance": {
+    "sourceCommit": "a8fd9ac0361d276e0f4a05e7df7d7a0c0ecd6ad2",
+    "sourceTreeDirty": false,
+    "node": "v24.6.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "generationLevelChecks": {
+    "exactGameCountObserved": true,
+    "exactSeedIntervalBoundBySpec": true,
+    "conditionCountsMatchFrozenModuloAssignment": true,
+    "sourceHashAuthorizationCheckPassedBeforeRunnerExecution": true,
+    "minimumUniqueHistoricalTrajectoriesNumericallyExceeded": true,
+    "minimumDistinctOpeningPrefixesNumericallyExceeded": true
+  },
+  "decision": {
+    "generation": "COMPLETE",
+    "fullReplaySearchVerification": "PENDING",
+    "selectionAuthorizedBeforeVerification": false,
+    "selectionReadinessDecision": "NOT-YET-EVALUATED",
+    "measurementReadinessDecision": "NOT-YET-EVALUATED",
+    "candidateDiscoveryDecision": "NOT-YET-EVALUATED",
+    "stage2GenerationAuthorized": false
+  },
+  "interpretationBoundary": "This is a corpus-generation provenance record only. Generation-level trajectory/opening counts are not a complete Stage 1 readiness decision. No candidate-pattern, regret-distribution, effect, confirmatory, game-theoretic blunder, or human-misconception inference is authorized from this record."
+}
