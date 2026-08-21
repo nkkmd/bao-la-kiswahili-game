@@ -58,30 +58,11 @@ Stage 1 generation authorized = false
 Stage 2 generation authorized = false
 ```
 
-The exact local HEAD was not included in the returned transcript. Before any Stage 1 authorization, source commit and source-file hashes will be independently bound and checked.
-
-A deterministic technical-only feasibility benchmark was then prepared to measure D1/D2/D3+Q1 and structural-measurement workload without using research seed blocks or exposing scientific candidate/outcome results.
-
-## Current boundary
-
-```text
-new scientific games generated = 0
-new scientific states measured = 0
-formal results = none
-```
-
-Next work is Stage 0 compute feasibility only; Stage 1 remains blocked.
+The exact local HEAD was not included in the transcript. Before any Stage 1 authorization, source commit and source-file hashes were required to be independently bound and checked.
 
 ## 2026-08-20 — Stage 0 compute feasibility PASS
 
-The investigator returned:
-
-```text
-branch = research/blunder-misvaluation-patterns
-HEAD = 45ce006eb63d5555a030d50fe7aa4e97637db327
-```
-
-and executed `benchmark-blunder-misvaluation-stage0.js`.
+The investigator returned exact HEAD `45ce006eb63d5555a030d50fe7aa4e97637db327` and executed the deterministic technical-only benchmark.
 
 Returned result:
 
@@ -117,63 +98,26 @@ spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
 contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
 ```
 
-The full reserved Stage 1 block is used; no within-version outcome-dependent extension is possible.
-
-Candidate design separates the outcome-blind matcher from the failure signature. Promotion is evaluated over all matcher opportunities, with deterministic within-trajectory move representation and no favorable manual selection.
-
-Frozen promotion requirements include minimum 24 opportunity trajectories, failure-signature rate >= 0.65, D3-inferior rate >= 0.70, D3 TopSet rate <= 0.20, median normalized rank loss >= 0.50, opening/stratum diversity, and a deterministic maximum of 6 promoted candidates.
-
-A clean-room pre-materialization self-check of the exact planned JSON/contract content passed, but canonical post-commit validation remained required at that checkpoint.
-
-```text
-Stage 1 scientific generation authorized = false
-Stage 2 scientific generation authorized = false
-new scientific games generated = 0
-new scientific states measured = 0
-formal results = none
-```
+The full reserved Stage 1 block is used; no within-version outcome-dependent extension is possible. Candidate design separates the outcome-blind matcher from the failure signature.
 
 ## 2026-08-20 — Stage 1 canonical contract validation PASS
 
-The investigator returned exact local identity:
+The investigator returned exact local HEAD `b3ff83a4b94b5e60e98ef48b6b2666a20a26334a`.
 
 ```text
-branch = research/blunder-misvaluation-patterns
-HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
-```
-
-The canonical validator returned:
-
-```text
-stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
 specSha256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
-passed = true
+validator = PASS
+contract test = PASS
 scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 generationAuthorizedBySpecAlone = false
-exactGames = 2048
-exactSeedStart = 22400001
-exactSeedEnd = 22402048
-exactSelectedRootsIfReadinessPasses = 1200
 ```
 
-The contract test returned:
-
-```text
-Blunder / misvaluation Stage 1 contract tests passed
-```
-
-Decision:
-
-```text
-Stage 1 canonical contract validation = PASS
-```
-
-The PASS is archived in `results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`. It validates the frozen scientific contract and does not itself authorize generation.
+The PASS is archived in `results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`.
 
 ## 2026-08-20 — Stage 1 execution tooling materialized
 
-After canonical contract PASS, materialized the implementation layer without changing the frozen spec:
+Materialized without changing the frozen spec:
 
 ```text
 tools/experiments/lib/blunder-misvaluation-stage1-corpus.js
@@ -185,17 +129,94 @@ test/blunder-misvaluation-stage1-tooling.test.js
 doc/blunder-misvaluation-patterns/STAGE_1_EXECUTION_RUNBOOK.md
 ```
 
-The implementation is fail-closed: any scientific runner phase other than `status` requires a separate authorization file bound to the exact spec and exact scientific source-file SHA-256 map. That authorization file has not been created.
+The implementation is fail-closed and requires a separate source-bound authorization before scientific generation.
 
-The independent verifier reconstructs each generated game from initial state and seed and recomputes trajectory AI search before selection can run. Root selection enforces historical-trajectory collapse, frozen phase assignment, no unavailable-phase reassignment, duplicate-rule-state collapse, and exact 600/600 phase quota if readiness is estimable.
+## 2026-08-21 — Stage 1 execution tooling validation PASS
 
-The tooling test uses only a non-scientific fixture seed namespace beginning at `99000001`; it does not use the reserved Stage 1 scientific seeds.
-
-Current boundary:
+The investigator returned exact local HEAD:
 
 ```text
-Stage 1 execution tooling validation = PENDING
-Stage 1 scientific generation authorized = false
+8df328ca238611919ac58c262b92058712ee1049
+```
+
+All required checks passed:
+
+```text
+canonical spec validator = PASS
+contract test = PASS
+tooling test = PASS
+runner status surface = PASS
+authorizationFilePresent = false
+generatedGames = 0
+hasManifest = false
+hasVerification = false
+hasSelectionAudit = false
+measurementFiles = 0
+hasDiscoveryResult = false
+```
+
+The complete returned source-file SHA-256 map was archived in `results/STAGE_1_TOOLING_VALIDATION_RESULT.json` at commit:
+
+```text
+cd26cb3280fde00663618162f7c1e2d306470032
+```
+
+Decision:
+
+```text
+Stage 1 execution tooling validation = PASS
+scientific corpus generated = 0
+```
+
+## 2026-08-21 — Stage 1 execution source freeze
+
+The exact scientific source-file SHA-256 map validated at implementation commit `8df328ca238611919ac58c262b92058712ee1049` was frozen before authorization in:
+
+```text
+preregistration/STAGE_1_EXECUTION_SOURCE_FREEZE.json
+freeze commit = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
+```
+
+This freeze itself did not authorize generation.
+
+## 2026-08-21 — Stage 1 exploratory scientific generation authorized
+
+After explicit investigator approval, created the separate source-bound authorization:
+
+```text
+preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
+authorization commit = 1af3828c1c25789d6f4af590ee973cffd34bca46
+```
+
+Authorized scope:
+
+```text
+Stage 1 exploratory generation = true
+exact games = 2048
+exact seeds = 22400001..22402048
+confirmatory inference = false
+Stage 2 generation = false
+game-theoretic blunder claim = false
+human misconception claim = false
+```
+
+The authorized execution order is:
+
+```text
+generate
+→ independent full replay/search verify
+→ select
+→ inspect selection readiness
+→ measure
+→ inspect measurement readiness
+→ discover
+```
+
+No-rescue rules remain frozen: no seed extension, replacement sampling, phase reassignment, threshold retuning, favorable subset selection, post-outcome depth selection, failed-candidate renaming, or manual promotion.
+
+State at authorization:
+
+```text
 Stage 1 scientific games generated = 0
 Stage 2 generation authorized = false
 formal scientific result = none
