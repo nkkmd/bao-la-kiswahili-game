@@ -1,6 +1,6 @@
 # CURRENT_STATUS — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-20
+Updated: 2026-08-21
 
 ## Research identity
 
@@ -8,12 +8,12 @@ Updated: 2026-08-20
 studyId = BMP-STUDY1
 research branch = research/blunder-misvaluation-patterns
 baseline main HEAD = b1cc7047504b73c5a848e866f795c26a64250d13
-initial design commit = 0c0b88649cd77043bfadc2a2d48c7f27b611dc2d
-Stage 0 tooling commit = dff7d11874c92d585f50f57b3077204271ab682b
-Stage 0 feasibility execution HEAD = 45ce006eb63d5555a030d50fe7aa4e97637db327
 Stage 1 contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
 Stage 1 contract validation execution HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
-Stage 1 tooling materialization head = 3fd53b108e0941f9e5ace0e191bc1390f50d566d
+validated implementation commit = 8df328ca238611919ac58c262b92058712ee1049
+tooling validation result commit = cd26cb3280fde00663618162f7c1e2d306470032
+execution source freeze commit = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
+Stage 1 generation authorization commit = 1af3828c1c25789d6f4af590ee973cffd34bca46
 ```
 
 ## Current scientific state
@@ -24,50 +24,16 @@ Stage 0 executable technical semantics validation = PASS
 Stage 0 D3+Q1 compute feasibility = PASS
 Stage 1 exploratory spec = FROZEN
 Stage 1 canonical contract validation = PASS
-Stage 1 execution tooling = MATERIALIZED
-Stage 1 execution tooling validation = PENDING
-Stage 1 scientific generation = NOT AUTHORIZED
+Stage 1 execution tooling validation = PASS
+Stage 1 exact source-file SHA-256 map = FROZEN
+Stage 1 scientific generation = AUTHORIZED
+Stage 1 scientific corpus generated = 0
 Stage 2 formal spec = NOT CREATED
 Stage 2 scientific generation = NOT AUTHORIZED
-scientific corpus generated in this Study = 0
 formal scientific result = NONE
 ```
 
-## Stage 0 closure
-
-Required semantics tests returned PASS.
-
-The later feasibility benchmark was executed on exact returned local HEAD:
-
-```text
-45ce006eb63d5555a030d50fe7aa4e97637db327
-```
-
-Benchmark:
-
-```text
-benchmarkId = BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1
-coveragePassed = true
-technical roots = Namua 4 + Mtaji 4
-overall mean total measurement = 214.412715875 ms/root
-overall median total measurement = 139.4082525 ms/root
-projected serial hours / 2000 roots = 0.11911817548611109
-scientific seed namespace used = false
-scientific corpus generated = false
-```
-
-Decision:
-
-```text
-Stage 0 compute feasibility = PASS
-primary D3+Q1 reference = RETAIN
-```
-
-Machine-readable archive:
-
-`results/STAGE_0_FEASIBILITY_RESULT.json`
-
-## Frozen Stage 1 exploratory design
+## Frozen Stage 1 identity
 
 ```text
 stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
@@ -81,40 +47,38 @@ Mtaji quota = 600
 primary reference = D3 + Q1 / bao / root actor
 ```
 
-The fixed Stage 1 seed interval uses the full previously reserved capacity. No outcome-dependent extension remains available inside this Study version.
+The complete reserved Stage 1 seed block is the exact authorized population. No extension, replacement sampling, phase reassignment or threshold retuning is authorized.
 
-## Canonical Stage 1 contract validation
+## Authorization chain
 
-The investigator executed the frozen validator and contract test at exact local HEAD:
-
-```text
-b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
-```
-
-Returned result:
+The Stage 1 generation authorization is bound to:
 
 ```text
-specSha256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
-passed = true
-scientificInferenceAuthorized = false
-confirmatoryReuseAllowed = false
-generationAuthorizedBySpecAlone = false
-exactGames = 2048
-exactSeedStart = 22400001
-exactSeedEnd = 22402048
-exactSelectedRootsIfReadinessPasses = 1200
-contract test = PASS
+spec freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
+contract validation execution HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
+validated implementation commit = 8df328ca238611919ac58c262b92058712ee1049
+tooling validation PASS = cd26cb3280fde00663618162f7c1e2d306470032
+source SHA freeze = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
+authorization = 1af3828c1c25789d6f4af590ee973cffd34bca46
 ```
 
-Decision:
+Authorization file:
+
+`preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
+
+The authorization permits only the frozen Stage 1 exploratory pipeline:
 
 ```text
-Stage 1 canonical contract validation = PASS
+generate
+→ independent full replay/search verify
+→ select
+→ inspect selection readiness
+→ measure
+→ inspect measurement readiness
+→ discover
 ```
 
-Machine-readable archive:
-
-`results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`
+It does **not** authorize confirmatory inference, Stage 2 generation, game-theoretic blunder claims, or human misconception claims.
 
 ## Root-selection firewall
 
@@ -128,25 +92,22 @@ collapse historicalTrajectoryHash
 → 600 Namua + 600 Mtaji if sufficient
 ```
 
-Insufficient phase support causes readiness failure, not replacement or corpus extension.
+Insufficient support causes readiness failure. It does not authorize replacement or additional games.
 
-## Candidate anti-selection-bias rule
-
-The candidate **matcher** is:
+## Frozen readiness gate
 
 ```text
-phase + 1–2 structural preconditions + move abstraction
+unique historical trajectories >= 1600
+selected unique rule states = 1200
+Namua selected = 600
+Mtaji selected = 600
+distinct opening prefixes >= 128
+selected per generation stratum >= 100
+measured move records >= 3600
+complete finite D3 tables for all selected roots
 ```
 
-The failure signature is separate and excluded from the matcher.
-
-For each matcher/trajectory, the representative exact move is the lexicographically smallest `AI.moveKey`.
-
-D3-inferior and failure-signature rates are evaluated over all outcome-blind matcher opportunities.
-
-## Frozen promotion gate
-
-A candidate requires all of:
+## Frozen candidate promotion gate
 
 ```text
 opportunity trajectories >= 24
@@ -162,30 +123,7 @@ D3 TopSet rate <= 0.20
 median normalized rank loss >= 0.50
 ```
 
-Automatic cap:
-
-```text
-total <= 6
-per phase <= 3
-per failure family <= 2
-manual override = false
-```
-
-## Stage 1 execution tooling now present
-
-```text
-tools/experiments/lib/blunder-misvaluation-stage1-corpus.js
-tools/experiments/lib/blunder-misvaluation-stage1-discovery.js
-tools/experiments/run-blunder-misvaluation-stage1-exploratory.js
-tools/experiments/verify-blunder-misvaluation-stage1-exploratory.js
-test/blunder-misvaluation-stage1-tooling.test.js
-.github/workflows/blunder-misvaluation-stage1-tooling.yml
-STAGE_1_EXECUTION_RUNBOOK.md
-```
-
-The tooling enforces the frozen population, six-stratum assignment, independent full replay/search verification before selection, exact phase quotas, D1/D2/D3 measurement, matcher/failure separation, support-equivalence collapse and deterministic promotion caps.
-
-The technical tooling test uses a non-scientific fixture seed namespace beginning at `99000001`. The reserved scientific Stage 1 seeds are not used by technical validation.
+Automatic cap: 6 total / 3 per phase / 2 per failure family. Manual override is forbidden.
 
 ## Frozen inherited boundaries
 
@@ -212,29 +150,18 @@ Tactical Motif Human / Expert Validation Study 1
 
 No closed-study decision is reopened.
 
-## Current gate
+## Immediate next gate
+
+Stage 1 generation may now be executed on the research branch. After generation, independent full replay/search verification must PASS before state selection is allowed.
+
+Current pre-generation state remains:
 
 ```text
-Stage 1 spec freeze                              DONE
-canonical spec validator                         PASS
-canonical contract test                          PASS
-runner + independent verifier materialized       DONE
-runner/verifier technical tooling validation     PENDING
-exact source-file SHA-256 freeze                  PENDING
-separate source-bound generation authorization   ABSENT / PENDING
-```
-
-Before scientific generation:
-
-1. execute the canonical validator, contract test and new tooling test on the materialized tooling HEAD;
-2. confirm the runner `status` surface and authorization absence;
-3. if technical validation passes, freeze the exact source-file SHA-256 map and implementation commit;
-4. only then create a separate source-bound Stage 1 generation authorization.
-
-Until then:
-
-```text
-Stage 1 generation authorized = false
-Stage 1 scientific games generated = 0
+scientific games generated = 0
+manifest = absent
+verification = absent
+selection audit = absent
+measurements = 0
+discovery result = absent
 Stage 2 generation authorized = false
 ```
