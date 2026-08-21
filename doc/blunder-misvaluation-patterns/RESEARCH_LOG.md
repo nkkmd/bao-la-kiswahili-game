@@ -221,3 +221,69 @@ Stage 1 scientific games generated = 0
 Stage 2 generation authorized = false
 formal scientific result = none
 ```
+
+## 2026-08-22 — Stage 1 authorized corpus generation COMPLETE
+
+The investigator returned the final generation manifest produced under the source-bound authorization.
+
+Identity/provenance:
+
+```text
+stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
+specSha256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+authorizationSha256 = 469d1614a8e6609b05cca6047c364dab35754a41ede825f54de492d47d8c8e75
+sourceCommit = a8fd9ac0361d276e0f4a05e7df7d7a0c0ecd6ad2
+sourceTreeDirty = false
+generatedAt = 2026-08-21T15:30:48.459Z
+```
+
+Exact population:
+
+```text
+games = 2048
+seeds = 22400001..22402048
+maxPly = 100
+```
+
+Generation summary:
+
+```text
+uniqueHistoricalTrajectories = 1884
+duplicateHistoricalTrajectoryGroups = 121
+largestHistoricalTrajectoryGroup = 7
+distinctOpeningPrefixes = 1621
+summaryHash = 0db8a18aa28020d8803a144d592966753f16a83425680993a1bfd310dfc2a7e9
+```
+
+Frozen condition assignment was realized exactly:
+
+```text
+B-D1 = 342
+B-D2 = 342
+B-D3 = 341
+LS-D2 = 341
+V2-D2 = 341
+LE-D2 = 341
+```
+
+The manifest-reported scientific source-file SHA-256 map matched the frozen authorization map. The compact generation record was archived in:
+
+```text
+results/STAGE_1_GENERATION_RESULT.json
+generation result commit = bb6375ff1ce3afab00d588b4b6e017b6aaf24541
+```
+
+Generation-level counts numerically exceed the frozen future minima for unique historical trajectories (1884 >= 1600) and opening-prefix diversity (1621 >= 128). This is not a complete readiness decision.
+
+Current firewall:
+
+```text
+independent full replay/search verification = PENDING
+selection = BLOCKED
+measurement = BLOCKED
+discovery = BLOCKED
+confirmatory inference = NOT AUTHORIZED
+Stage 2 generation = NOT AUTHORIZED
+```
+
+No selection or candidate-pattern interpretation is permitted before independent verification PASS.
