@@ -34,12 +34,30 @@ function canonicalMatchingMoves(moves, supportGroup) {
     .sort((a, b) => AI.moveKey(a).localeCompare(AI.moveKey(b)));
 }
 
+function responseAggregateNegative(envelope, field, aggregate) {
+  const value = envelope?.actorDeltaFromRoot?.[field]?.[aggregate];
+  return typeof value === "number" && value < 0;
+}
+
 function failureTokenHolds(moveRecord, candidate) {
-  const flags = moveRecord.failureFlags || Discovery.failureFlags(moveRecord);
-  if (typeof flags[candidate.failureToken] !== "boolean") {
-    throw new Error(`Missing frozen failure-token value: ${candidate.failureToken}`);
+  const token = candidate.failureToken;
+  const transition = moveRecord.transition;
+  const envelope = moveRecord.responseEnvelope;
+  if (token === "worstReplyActorFrontConnectionsDeltaNegative") {
+    return envelope.replyCount > 0
+      && responseAggregateNegative(envelope, "frontConnections", "min");
   }
-  return flags[candidate.failureToken];
+  if (token === "actorCaptureMoveDeltaNegative") {
+    return transition.actorDelta.captureMoveCount < 0;
+  }
+  if (token === "actorLegalMoveDeltaNegative") {
+    return transition.actorDelta.legalMoveCount < 0;
+  }
+  if (token === "allRepliesActorCaptureMoveDeltaNegative") {
+    return envelope.replyCount > 0
+      && responseAggregateNegative(envelope, "captureMoveCount", "max");
+  }
+  throw new Error(`Unsupported frozen Stage 2 failure token: ${token}`);
 }
 
 function median(values) {
@@ -159,6 +177,7 @@ module.exports = {
   maxShare,
   median,
   moveMatchesSupport,
+  responseAggregateNegative,
   rootSatisfiesSupport,
   supportGroupById,
 };
