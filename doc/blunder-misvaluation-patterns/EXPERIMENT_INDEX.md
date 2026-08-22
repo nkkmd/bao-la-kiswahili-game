@@ -8,7 +8,7 @@ Updated: 2026-08-22
 | `BMP-S0-TECHNICAL-SMOKE-2026-08-20-v1` | Fixture validation of regret/search/move/identity semantics | none | **PASS** |
 | `BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1` | Deterministic D3+Q1 workload benchmark | none | **PASS** |
 | `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory candidate discovery | 2048 verified games; 1200 selected roots; 5295 measured moves | **COMPLETE / 4 EXPLORATORY CANDIDATES PROMOTED** |
-| `BMP-S2-FORMAL-2026-08-22-v1` | Fresh prospective formal confirmation of exact Stage 1 candidates | none | **DESIGN/SPEC FROZEN / TOOLING MATERIALIZED / LOCAL TECHNICAL VALIDATION PENDING / GENERATION NOT AUTHORIZED** |
+| `BMP-S2-FORMAL-2026-08-22-v1` | Fresh prospective formal confirmation of exact Stage 1 candidates | none yet | **SPEC/SOURCE FROZEN / TECHNICAL VALIDATION PASS / GENERATION AUTHORIZED** |
 
 ## Stage 1 frozen result
 
@@ -19,7 +19,6 @@ unique historical trajectories = 1884
 selected roots = 1200
 Namua / Mtaji = 600 / 600
 selectionHash = 80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df
-measured moves = 5295
 measurementHash = 614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92
 promoted candidates = 4
 raw discovery SHA-256 = c910b7c4f854daf0223fa5ed935dc0b2a5fe844ef5541d623adfdaca94cb8d26
@@ -42,9 +41,12 @@ C01/C02/C03 share one exact Namua support group; C04 uses one Mtaji support grou
 stageId = BMP-S2-FORMAL-2026-08-22-v1
 baseline integrated main = 52f5635be7064b5016baf7cde82faebe60609d9e
 research branch = research/blunder-misvaluation-patterns-stage2-formal
-candidate freeze ID = BMP-S2-CANDIDATES-2026-08-22-v1
 candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
-formal spec SHA-256 = 097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730
+formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab
+validated execution HEAD = 011b9a56ecb95046f7d61a331b76dea093aa7663
+technical validation result commit = 3d5a1a33f673c9c98ba6a5ed2862b25c8d76e777
+source freeze commit = 11670e528dccff063b8e66be9ff190e61e4e4e77
+final corrected authorization commit = a9eee06c6a1ad36f9e65948f5d78eff58a91d561
 ```
 
 ## Stage 2 population
@@ -79,7 +81,7 @@ ruleStateKey = 0
 
 Trajectory/opening overlap is removed before root selection. Rule-state overlap is removed only after outcome-blind root selection, with no alternate root, replacement, or seed extension.
 
-## Stage 2 estimability gates
+## Stage 2 estimability and formal endpoints
 
 Per candidate:
 
@@ -92,10 +94,6 @@ generation strata >= 4
 maximum one generation-stratum share <= 0.50
 ```
 
-Failure -> `INCONCLUSIVE-NOT-ESTIMABLE` with no rescue.
-
-## Stage 2 formal endpoints
-
 Two co-primary endpoints per candidate:
 
 ```text
@@ -103,25 +101,9 @@ failure-signature recurrence: exact one-sided binomial H0 p<=0.50; observed floo
 D3-inferior recurrence:       exact one-sided binomial H0 p<=0.50; observed floor >=0.70
 ```
 
-Eight planned tests use Holm-Bonferroni FWER 0.05. Additional confirmation consistency gates:
+Eight planned tests use Holm-Bonferroni FWER 0.05. Additional gates are D3 TopSet rate <=0.20 and median normalized rank loss >=0.50.
 
-```text
-D3 TopSet rate <= 0.20
-median normalized rank loss >= 0.50
-```
-
-Candidate labels:
-
-```text
-CONFIRMED
-NOT-CONFIRMED
-INCONCLUSIVE-NOT-ESTIMABLE
-TECHNICAL-INCONCLUSIVE
-```
-
-Zero confirmed candidates is valid.
-
-## Stage 2 verification chain
+## Verification chain
 
 ```text
 generate
@@ -132,21 +114,15 @@ generate
 -> formal evaluation
 ```
 
-Formal evaluation is blocked until independent measurement verification reproduces the exact measurement hash and Stage 1 identity firewall.
-
 ## Current gate
 
 ```text
-Stage 2 contract validator = materialized
-Stage 2 contract test = materialized
-Stage 2 runner/verifiers/evaluator = materialized
-Stage 2 tooling semantics test = materialized
-Stage 2 CI workflows = materialized
-local technical validation = PENDING
-source-file SHA freeze = PENDING
-generation authorization = NOT CREATED
-scientific generation = NOT AUTHORIZED
+technical validation = PASS
+exact source-file SHA freeze = COMPLETE
+generation authorization = COMPLETE
+scientific generation = AUTHORIZED
+generated games = 0 / 4096
 formal result = NONE
 ```
 
-The next action is pre-authorization technical validation only. No Stage 2 scientific corpus may be generated until the exact source map is frozen and a separate authorization is committed.
+The next action is the fixed 4096-game Stage 2 generation. After generation, independent full replay/search verification is mandatory before selection.
