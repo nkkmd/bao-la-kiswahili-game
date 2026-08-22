@@ -7,7 +7,7 @@ Updated: 2026-08-22
 | `BMP-S0-DESIGN-2026-08-20-v1` | Restore boundaries, fix constructs/reference semantics, reserve seeds | none | **COMPLETE / DESIGN FROZEN** |
 | `BMP-S0-TECHNICAL-SMOKE-2026-08-20-v1` | Fixture validation of regret/search/move/identity semantics | none | **PASS** |
 | `BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1` | Deterministic workload/timing benchmark | none | **PASS** |
-| `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory bad-move / misvaluation candidate discovery | 2048 generated games | **GENERATION COMPLETE / FULL VERIFICATION PENDING / SELECTION BLOCKED** |
+| `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory bad-move / misvaluation candidate discovery | 2048 generated + verified games | **GENERATION COMPLETE / FULL VERIFICATION PASS / SELECTION NEXT** |
 | `BMP-S2-FORMAL-*` | Fresh candidate confirmation | none | **BLOCKED / NOT AUTHORIZED** |
 
 ## Stage 1 frozen identity
@@ -43,17 +43,38 @@ summaryHash = 0db8a18aa28020d8803a144d592966753f16a83425680993a1bfd310dfc2a7e9
 sourceTreeDirty = false
 ```
 
-Generation-level trajectory/opening counts exceed their future numerical minima, but this does not constitute the complete readiness decision.
+## Independent verification result
 
-## Stage 1 readiness gate
+```text
+verification execution HEAD = 897dcd2cb8775f8c129dbbde01167eef1f973089
+verification result commit = 17995f04f3b9abbe0d73b2f035e8129ff07e191f
+passed = true
+fullSearchRecomputation = true
+gamesVerified = 2048
+unique historical trajectories = 1884
+distinct opening prefixes = 1621
+verificationIdentityHash = f0ef925b8690020762c90c5438565d731bce46476bd5428f77450407e1867343
+sourceTreeDirty = false
+```
+
+Generation and verification stratum counts agree exactly: 342 / 342 / 341 / 341 / 341 / 341 for `B-D1`, `B-D2`, `B-D3`, `LS-D2`, `V2-D2`, `LE-D2`.
+
+## Stage 1 selection/readiness gate
+
+The next operation is frozen outcome-blind state selection. After selection, all of the following must pass:
 
 ```text
 unique historical trajectories >= 1600
 selected unique rule states = 1200
 Namua selected = 600
 Mtaji selected = 600
-distinct opening prefixes >= 128
-selected per generation stratum >= 100
+distinct selected opening prefixes >= 128
+selected roots per generation stratum >= 100
+```
+
+Measurement remains blocked until selection readiness passes. Later measurement-level gates are:
+
+```text
 measured move records >= 3600
 complete finite D3 tables for all selected roots
 ```
@@ -88,8 +109,9 @@ runner/verifier technical validation           PASS
 exact scientific source SHA map                FROZEN
 source-bound Stage 1 authorization              AUTHORIZED
 scientific corpus generation                    COMPLETE (2048/2048)
-independent full replay/search verification     PENDING
-state selection                                 BLOCKED
+independent full replay/search verification     PASS
+state selection                                 NEXT / NOT YET EVALUATED
+selection readiness                             PENDING
 measurement                                     BLOCKED
 discovery                                       BLOCKED
 Stage 2                                          BLOCKED
