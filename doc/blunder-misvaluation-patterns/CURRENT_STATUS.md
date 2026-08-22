@@ -16,6 +16,8 @@ execution source freeze commit = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
 Stage 1 generation authorization commit = 1af3828c1c25789d6f4af590ee973cffd34bca46
 Stage 1 generation result commit = bb6375ff1ce3afab00d588b4b6e017b6aaf24541
 Stage 1 verification result commit = 17995f04f3b9abbe0d73b2f035e8129ff07e191f
+Stage 1 selection execution HEAD = 2f6567bab0590ca7741fd8ad9907118544f6331d
+Stage 1 selection result commit = d6a8617a517140e34e9af3a5f2b0793884fb1345
 ```
 
 ## Current scientific state
@@ -30,10 +32,11 @@ Stage 1 execution tooling validation = PASS
 Stage 1 exact source-file SHA-256 map = FROZEN
 Stage 1 scientific generation = COMPLETE (2048 / 2048)
 Stage 1 independent full replay/search verification = PASS
-Stage 1 state selection = AUTHORIZED NEXT / NOT YET EVALUATED
-Stage 1 selection readiness = PENDING
-Stage 1 measurement = BLOCKED PENDING SELECTION READINESS
-Stage 1 discovery = BLOCKED
+Stage 1 outcome-blind state selection = COMPLETE
+Stage 1 selection readiness = PASS
+Stage 1 measurement gate = OPEN
+Stage 1 measurement readiness = PENDING
+Stage 1 discovery = BLOCKED PENDING MEASUREMENT READINESS
 Stage 2 formal spec = NOT CREATED
 Stage 2 scientific generation = NOT AUTHORIZED
 formal scientific result = NONE
@@ -47,7 +50,7 @@ spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
 games = 2048
 seeds = 22400001..22402048
 maxPly = 100
-selected roots if readiness passes = 1200
+selected roots = 1200
 Namua quota = 600
 Mtaji quota = 600
 primary reference = D3 + Q1 / bao / root actor
@@ -57,33 +60,18 @@ No seed extension, replacement sampling, phase reassignment, threshold retuning 
 
 ## Generation and verification
 
-Generation completed under the source-bound authorization:
-
 ```text
-generatedAt = 2026-08-21T15:30:48.459Z
-sourceCommit = a8fd9ac0361d276e0f4a05e7df7d7a0c0ecd6ad2
-sourceTreeDirty = false
-authorizationSha256 = 469d1614a8e6609b05cca6047c364dab35754a41ede825f54de492d47d8c8e75
-games = 2048
-uniqueHistoricalTrajectories = 1884
-distinctOpeningPrefixes = 1621
-summaryHash = 0db8a18aa28020d8803a144d592966753f16a83425680993a1bfd310dfc2a7e9
-```
-
-Independent full replay/search verification then passed at exact execution HEAD:
-
-```text
-verification execution HEAD = 897dcd2cb8775f8c129dbbde01167eef1f973089
-passed = true
+generated games = 2048
+unique historical trajectories = 1884
+distinct opening prefixes = 1621
+generation summaryHash = 0db8a18aa28020d8803a144d592966753f16a83425680993a1bfd310dfc2a7e9
+verification passed = true
 fullSearchRecomputation = true
 gamesVerified = 2048
-uniqueHistoricalTrajectories = 1884
-distinctOpeningPrefixes = 1621
 verificationIdentityHash = f0ef925b8690020762c90c5438565d731bce46476bd5428f77450407e1867343
-sourceTreeDirty = false
 ```
 
-Frozen stratum counts matched exactly in generation and verification:
+Generation and verification stratum counts matched exactly:
 
 ```text
 B-D1 = 342
@@ -94,16 +82,9 @@ V2-D2 = 341
 LE-D2 = 341
 ```
 
-Machine-readable records:
+## Outcome-blind state selection
 
-```text
-results/STAGE_1_GENERATION_RESULT.json
-results/STAGE_1_VERIFICATION_RESULT.json
-```
-
-## Selection firewall
-
-The next phase is outcome-blind state selection only:
+Selection was executed only after full verification PASS. The frozen selection firewall was applied without score/regret/failure inspection:
 
 ```text
 collapse duplicate historicalTrajectoryHash
@@ -112,32 +93,72 @@ collapse duplicate historicalTrajectoryHash
 → no unavailable-phase reassignment
 → collapse duplicate selected ruleStateKey
 → rank within each phase by frozen quota SHA
-→ select up to 600 Namua + 600 Mtaji
+→ select exactly 600 Namua + 600 Mtaji if support is sufficient
 ```
 
-Selection may not use D1/D2/D3 scores, regret, static evaluation, failure signatures, candidate promotion metrics, game outcome, or manual replacement.
-
-## Frozen selection/readiness gate
-
-After `--phase select`, all selection-level gates must pass:
+Returned selection audit:
 
 ```text
-unique historical trajectories >= 1600
-selected unique rule states = 1200
-Namua selected = 600
-Mtaji selected = 600
-distinct selected opening prefixes >= 128
-selected roots per generation stratum >= 100
+uniqueHistoricalTrajectories = 1884
+unavailableAssignedPhase = 70
+selectedBeforeRuleStateCollapse = 1814
+duplicateSelectedRuleStatesCollapsed = 1
+phasePoolAfterRuleStateCollapse.namua = 961
+phasePoolAfterRuleStateCollapse.mtaji = 852
+droppedByPhaseQuota.namua = 361
+droppedByPhaseQuota.mtaji = 252
+selectedUniqueRuleStates = 1200
+selectedPhaseCounts.namua = 600
+selectedPhaseCounts.mtaji = 600
+distinctOpeningPrefixes = 1067
+selectionHash = 80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df
+replacementPerformed = false
+phaseReassignmentPerformed = false
+passed = true
 ```
 
-The remaining measurement-level gates are evaluated only after selection PASS:
+Selected roots per generation stratum:
+
+```text
+B-D1 = 191
+B-D2 = 185
+B-D3 = 218
+LS-D2 = 203
+V2-D2 = 187
+LE-D2 = 216
+```
+
+All frozen selection/readiness gates passed:
+
+```text
+unique historical trajectories >= 1600                  PASS (1884)
+selected unique rule states = 1200                       PASS (1200)
+Namua selected = 600                                     PASS (600)
+Mtaji selected = 600                                     PASS (600)
+distinct selected opening prefixes >= 128                PASS (1067)
+selected roots per generation stratum >= 100             PASS (minimum 185)
+```
+
+The 70 unavailable assigned-phase trajectories remain unavailable. They were not replaced or reassigned.
+
+Machine-readable record:
+
+`results/STAGE_1_SELECTION_RESULT.json`
+
+## Measurement gate
+
+The next permitted operation is the frozen measurement phase over all 1200 selected roots. For every exact legal move it records the frozen D1/D2/D3 search quantities, D3 domain-aware decision loss / normalized rank loss, static post-move evaluation, structural transition and reply envelope.
+
+Measurement is fail-closed unless the stored selection audit has `passed = true` and the selected-state artifact matches the exact selection hash.
+
+After all selected roots are processed, measurement readiness requires:
 
 ```text
 measured move records >= 3600
-complete finite D3 candidate tables for all selected roots
+complete finite D3 candidate tables for all 1200 selected roots
 ```
 
-Failure does not authorize additional games, reassignment, replacement or threshold changes.
+Discovery remains blocked until both measurement gates pass.
 
 ## Frozen candidate promotion gate
 
@@ -174,7 +195,7 @@ No closed-study decision is reopened.
 Run only:
 
 ```text
-node tools/experiments/run-blunder-misvaluation-stage1-exploratory.js --phase select
+node tools/experiments/run-blunder-misvaluation-stage1-exploratory.js --phase measure
 ```
 
-Do not run measurement or discovery until the returned selection audit is reviewed and selection readiness is explicitly recorded as PASS.
+Do not run discovery until the measurement manifest has been reviewed and measurement readiness is explicitly recorded as PASS.
