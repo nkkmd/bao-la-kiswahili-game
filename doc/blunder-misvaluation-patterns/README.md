@@ -6,113 +6,57 @@
 
 ## 状態
 
-**STUDY 1 ACTIVE — STAGE 1 EXPLORATORY COMPLETE / 4 CANDIDATES PROMOTED / STAGE 2 NOT STARTED**
+**STUDY 1 ACTIVE — STAGE 1 EXPLORATORY COMPLETE / STAGE 2 FORMAL DESIGN FROZEN / PRE-AUTHORIZATION TECHNICAL VALIDATION PENDING**
 
 ```text
 studyId = BMP-STUDY1
-stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
-baseline main HEAD = b1cc7047504b73c5a848e866f795c26a64250d13
-research branch = research/blunder-misvaluation-patterns
-Stage 1 scientific games = 2048
-selected roots = 1200
-measured legal moves = 5295
-promoted exploratory candidates = 4
-candidate confirmation = NOT PERFORMED
-Study 1 formal result = NONE
+integrated Stage 1 main HEAD = 52f5635be7064b5016baf7cde82faebe60609d9e
+Stage 2 branch = research/blunder-misvaluation-patterns-stage2-formal
+Stage 1 promoted exploratory candidates = 4
+Stage 2 stageId = BMP-S2-FORMAL-2026-08-22-v1
 Stage 2 scientific generation = NOT AUTHORIZED
+Study 1 formal result = NONE
 ```
 
 ## 最初に読む
 
-- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — Study 1全体の現在地と初見向け概要
-- [`STAGE_1_EXPLORATORY_REPORT.md`](STAGE_1_EXPLORATORY_REPORT.md) — 完了したStage 1 exploratoryの科学的統合
-- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — commit / hash / artifact / tooling索引
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在地と固定済み解釈境界
-- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — frozen scientific decisions / no-rescue boundaries
-- [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md) — stage・experiment index
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — Study 1全体の概要
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在のscientific gate
+- [`STAGE_2_FORMAL_PROTOCOL.md`](STAGE_2_FORMAL_PROTOCOL.md) — Stage 2 prospective formal protocol
+- [`STAGE_2_DECISION_REGISTER.md`](STAGE_2_DECISION_REGISTER.md) — Stage 2-specific frozen decisions
+- [`STAGE_2_EXECUTION_RUNBOOK.md`](STAGE_2_EXECUTION_RUNBOOK.md) — pre-authorization validationと将来のscientific execution順序
+- [`STAGE_1_EXPLORATORY_REPORT.md`](STAGE_1_EXPLORATORY_REPORT.md) — 完了済みStage 1の科学的統合
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — Stage 1 commit/hash/artifact/tooling索引
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — Study-level frozen decisions
+- [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md) — stage index
 
 ## Study architecture
 
 ```text
 Stage 0 — technical / construct audit                 COMPLETE
 Stage 1 — fresh exploratory discovery                COMPLETE
-Stage 2 — fresh prospective formal confirmation      NOT STARTED
+Stage 2 — fresh prospective formal confirmation      DESIGN FROZEN / PRE-AUTHORIZATION
 ```
 
-現在閉じているのはStage 1 exploratoryであり、Study 1全体はStage 2 formal confirmation前なので継続中である。
+現在閉じているのはStage 1 exploratoryであり、Study 1全体のformal conclusionはまだ存在しない。
 
-## Study 1の中心
-
-異なるBao局面に繰り返し現れる、機械的に再現可能なbad-move / value-misestimation structureを、
-
-```text
-pre-move state
-→ exact candidate move
-→ frozen deeper-search decision loss
-→ reply / forcing structure
-→ downstream structural consequence
-```
-
-として抽出し、次段階でfresh dataによりformal confirmationできるかを検証する。
-
-このStudyでは「その後負けた手」「static evaluationが低い手」「AIが選ばなかった手」を、それだけで悪手とは定義しない。
-
-Primary machine reference:
-
-```text
-evaluation profile = bao
-search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
-primary reference depth = D3
-quiescence depth = 1
-root move set = exact E.moveVariants(state)
-perspective = root actor = state.player
-```
-
-## Stage 1結果
-
-Generation / verification:
+## Stage 1 result
 
 ```text
 games = 2048
 seeds = 22400001..22402048
 unique historical trajectories = 1884
-distinct generation opening prefixes = 1621
-independent full replay/search verification = PASS
-```
-
-Outcome-blind selection:
-
-```text
-selected unique rule states = 1200
+selected roots = 1200
 Namua / Mtaji = 600 / 600
-distinct selected opening prefixes = 1067
-selection readiness = PASS
-replacement = false
-phase reassignment = false
-```
-
-Measurement:
-
-```text
-completed roots = 1200
-measured legal moves = 5295
-all selected roots finite D3 candidate tables = true
-measurement readiness = PASS
-```
-
-Discovery:
-
-```text
+measured exact legal moves = 5295
 matcherCount = 16421
-lowSupportMatcherCount = 9553
 detailedCandidateCount = 123624
-promotion passing before support-equivalence = 11
 promotion passing after support-equivalence = 11
-promoted candidates after deterministic ranking/caps = 4
+final promoted candidates = 4
 manual override = false
 ```
 
-Promoted candidate set:
+Promoted candidates:
 
 ```text
 BMP-S1-C01 — Namua / worstReplyActorFrontConnectionsDeltaNegative
@@ -121,91 +65,115 @@ BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
 BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
 ```
 
-Exact definitions and all promotion metrics are frozen in [`results/STAGE_1_DISCOVERY_RESULT.json`](results/STAGE_1_DISCOVERY_RESULT.json).
+These remain exploratory inputs only.
 
-## Immutable inherited boundaries
+## Stage 2 frozen design
 
-### Position Evaluation / Win-Rate Calibration Study 1
-
-```text
-formal decision = INCONCLUSIVE
-```
-
-Stage 1 `phase-stratified isotonic` mapping is exploratory only and is not a validated win-probability severity scale for this Study.
-
-### Position Complexity / Difficulty Study 1
+Candidate mapping:
 
 ```text
-PCX-H1 = INCONCLUSIVE
-PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
+BMP-S1-C01 -> BMP-S2-C01
+BMP-S1-C02 -> BMP-S2-C02
+BMP-S1-C03 -> BMP-S2-C03
+BMP-S1-C04 -> BMP-S2-C04
 ```
 
-Exact-search tooling was reused only as instrumentation; those formal results were not reopened.
+C01/C02/C03 share one exact Namua support-group denominator and deterministic candidate move; only failure token differs. C04 uses the Mtaji support group.
 
-### Tactical Motifs / Tesuji Study 1
+Machine-readable freeze:
 
 ```text
-C01 = NOT-CONFIRMED
-C02 = NOT-CONFIRMED
-C03 = CONFIRMED
-C04 = NOT-CONFIRMED
+candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
+formal spec SHA-256 = 097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730
 ```
 
-Historical C03 remains a machine-confirmed tactical motif under its own frozen operationalization and is not redefined here.
-
-### Tactical Motif Human / Expert Validation Study 1
+Fresh Stage 2 population:
 
 ```text
-machineEvidence = CONFIRMED
-humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
-humanExpertN = 0
+games = 4096
+seeds = 22500001..22504096
+maxPly = 100
+opening random plies = 8
 ```
 
-N=0 is not negative human evidence. This Study collected no new human evidence.
+Three-axis Stage 1 identity firewall requires final overlap 0 on:
+
+```text
+historicalTrajectoryHash
+openingPrefixHash
+ruleStateKey
+```
+
+No replacement or seed extension is allowed.
+
+## Stage 2 formal decision structure
+
+Per candidate estimability:
+
+```text
+unique historical trajectories >= 96
+unique rule states >= 96
+distinct opening prefixes >= 48
+maximum one opening-prefix share <= 0.10
+generation strata >= 4
+maximum one generation-stratum share <= 0.50
+```
+
+Co-primary endpoints:
+
+```text
+failure-signature recurrence — exact one-sided binomial H0 p<=0.50; observed floor >=0.65
+D3-inferior recurrence       — exact one-sided binomial H0 p<=0.50; observed floor >=0.70
+```
+
+Eight planned tests use Holm-Bonferroni FWER 0.05. Confirmation additionally requires:
+
+```text
+D3 TopSet rate <= 0.20
+median normalized rank loss >= 0.50
+```
+
+Possible labels:
+
+```text
+CONFIRMED
+NOT-CONFIRMED
+INCONCLUSIVE-NOT-ESTIMABLE
+TECHNICAL-INCONCLUSIVE
+```
+
+Zero confirmed candidates is valid.
+
+## Verification firewall
+
+```text
+generate
+-> independent full replay + generation-search verification
+-> support-group select
+-> formal measure
+-> independent formal measurement verification
+-> formal evaluate
+```
+
+Formal evaluation cannot run until independent measurement verification reproduces the measurement hash and identity firewall.
+
+## Current gate
+
+The Stage 2 candidate/spec, runner, independent corpus verifier, independent formal measurement verifier, evaluator, contract/tooling tests, and CI workflows are materialized.
+
+**Scientific generation is still blocked.** Next run only the pre-authorization validation commands in [`STAGE_2_EXECUTION_RUNBOOK.md`](STAGE_2_EXECUTION_RUNBOOK.md). If they pass, freeze the exact source-file SHA-256 map and create a separate source-bound authorization.
 
 ## Interpretation boundary
 
-The four Stage 1 candidates are **exploratory machine candidates only**.
-
-Not authorized:
-
-```text
-confirmed Bao blunder claim
-game-theoretic blunder claim
-human misconception / beginner-error claim
-expert/traditional recognition claim
-pedagogical importance claim
-generalization beyond the frozen Stage 1 source/population
-```
-
-Stage 1 data cannot be reused as Stage 2 confirmation evidence.
-
-## Next stage
-
-The next scientifically valid step is a fresh prospective Stage 2 formal-confirmation design for the exact frozen candidate definitions `BMP-S1-C01..C04`.
-
-Stage 2 reserved capacity:
-
-```text
-22500001..22504096
-```
-
-Reservation is not authorization. Stage 2 generation remains blocked until a separate formal spec, tooling/contract validation, source freeze and explicit source-bound authorization are complete.
+Even a future Stage 2 `CONFIRMED` label is limited to machine-reproducible recurrence under the frozen Bao engine/search/population. It is not a game-theoretic proof, human misconception result, expert/traditional recognition, pedagogical result, causal claim, or external-validity claim.
 
 ## Artifact policy
 
-Large scientific corpora and per-state/per-move artifacts remain under:
+Large scientific data remain local:
 
 ```text
-artifacts/local/blunder-misvaluation-patterns/
+artifacts/local/blunder-misvaluation-patterns/stage1-exploratory-v1/
+artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/
 ```
 
-The raw Stage 1 discovery artifact is hash-bound but intentionally not committed:
-
-```text
-path = artifacts/local/blunder-misvaluation-patterns/stage1-exploratory-v1/discovery-result.json
-bytes = 268693257
-sha256 = c910b7c4f854daf0223fa5ed935dc0b2a5fe844ef5541d623adfdaca94cb8d26
-```
-
-Compact machine-readable result records are stored under [`results/`](results/).
+Compact machine-readable records and provenance are committed; large corpus/measurement payloads are not.
