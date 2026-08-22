@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "candidateFreezeId": "BMP-S2-CANDIDATES-2026-08-22-v1",
+  "studyId": "BMP-STUDY1",
+  "stageId": "BMP-S2-FORMAL-2026-08-22-v1",
+  "createdAt": "2026-08-22",
+  "purpose": "One-to-one formal freeze of the four Stage 1 promoted exploratory candidates before any Stage 2 scientific data generation.",
+  "upstream": {
+    "baselineMainHead": "52f5635be7064b5016baf7cde82faebe60609d9e",
+    "stage1StageId": "BMP-S1-EXPLORATORY-2026-08-20-v1",
+    "stage1SpecSha256": "f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd",
+    "stage1SelectionHash": "80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df",
+    "stage1MeasurementHash": "614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92",
+    "stage1DiscoveryExecutionHead": "14c0d29683611ecd76771a213ce2380cb71fa18d",
+    "stage1DiscoveryResultCommit": "ffb9184d84c775e94f52b91f0c1621ea46061a93",
+    "stage1RawDiscoverySha256": "c910b7c4f854daf0223fa5ed935dc0b2a5fe844ef5541d623adfdaca94cb8d26"
+  },
+  "candidateSelectionRule": {
+    "mapping": "one-to-one exact Stage 1 promoted candidate mapping",
+    "renamingAllowed": false,
+    "mergingAllowed": false,
+    "splittingAllowed": false,
+    "pairedSubstitutionAllowed": false,
+    "postOutcomeRedefinitionAllowed": false
+  },
+  "supportGroups": [
+    {
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "sourceStage1CandidateIds": [
+        "BMP-S1-C01",
+        "BMP-S1-C02",
+        "BMP-S1-C03"
+      ],
+      "phase": "namua",
+      "preconditionTokens": [
+        {
+          "family": "frontOccupiedBins",
+          "value": "6-8"
+        },
+        {
+          "family": "houseOwned",
+          "value": "false"
+        }
+      ],
+      "moveAbstractionMode": "indexed",
+      "moveAbstraction": {
+        "direction": "left",
+        "houseChoice": null,
+        "houseTwo": false,
+        "index": 4,
+        "phase": "namua",
+        "row": 0,
+        "side": "right",
+        "type": "capture"
+      },
+      "stage1OpportunityIdentityHash": "bf553ebf87514ed00f4f620780df21fa4d3c4f507ca8508d02f581131bda8f5d",
+      "stage2RootSelectionSalt": "BMP-S2-G01-ROOT-v1"
+    },
+    {
+      "supportGroupId": "BMP-S2-G02-MTAJI",
+      "sourceStage1CandidateIds": [
+        "BMP-S1-C04"
+      ],
+      "phase": "mtaji",
+      "preconditionTokens": [
+        {
+          "family": "frontOccupiedBins",
+          "value": "3-5"
+        },
+        {
+          "family": "legalMoveCountBins",
+          "value": "5+"
+        }
+      ],
+      "moveAbstractionMode": "coarse-no-index",
+      "moveAbstraction": {
+        "direction": "right",
+        "houseChoice": null,
+        "houseTwo": false,
+        "phase": "mtaji",
+        "row": 1,
+        "side": null,
+        "type": "capture"
+      },
+      "stage1OpportunityIdentityHash": "3dd70e0b64efb50bdd6122792815df029c231967e5e7e2e020b78979451dfb88",
+      "stage2RootSelectionSalt": "BMP-S2-G02-ROOT-v1"
+    }
+  ],
+  "formalCandidates": [
+    {
+      "formalCandidateId": "BMP-S2-C01",
+      "sourceStage1CandidateId": "BMP-S1-C01",
+      "sourcePromotedRank": 1,
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "failureToken": "worstReplyActorFrontConnectionsDeltaNegative",
+      "failureFamily": "response-envelope",
+      "stage1PromotionMetrics": {
+        "opportunityUniqueHistoricalTrajectories": 26,
+        "failurePositiveUniqueHistoricalTrajectories": 26,
+        "failureSignatureRate": 1.0,
+        "d3InferiorRate": 0.7307692307692307,
+        "d3TopSetRate": 0.07692307692307693,
+        "medianNormalizedRankLoss": 0.7321428571428572
+      }
+    },
+    {
+      "formalCandidateId": "BMP-S2-C02",
+      "sourceStage1CandidateId": "BMP-S1-C02",
+      "sourcePromotedRank": 2,
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "failureToken": "actorCaptureMoveDeltaNegative",
+      "failureFamily": "immediate-structural",
+      "stage1PromotionMetrics": {
+        "opportunityUniqueHistoricalTrajectories": 26,
+        "failurePositiveUniqueHistoricalTrajectories": 22,
+        "failureSignatureRate": 0.8461538461538461,
+        "d3InferiorRate": 0.7307692307692307,
+        "d3TopSetRate": 0.07692307692307693,
+        "medianNormalizedRankLoss": 0.7321428571428572
+      }
+    },
+    {
+      "formalCandidateId": "BMP-S2-C03",
+      "sourceStage1CandidateId": "BMP-S1-C03",
+      "sourcePromotedRank": 3,
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "failureToken": "actorLegalMoveDeltaNegative",
+      "failureFamily": "immediate-structural",
+      "stage1PromotionMetrics": {
+        "opportunityUniqueHistoricalTrajectories": 26,
+        "failurePositiveUniqueHistoricalTrajectories": 22,
+        "failureSignatureRate": 0.8461538461538461,
+        "d3InferiorRate": 0.7307692307692307,
+        "d3TopSetRate": 0.07692307692307693,
+        "medianNormalizedRankLoss": 0.7321428571428572
+      }
+    },
+    {
+      "formalCandidateId": "BMP-S2-C04",
+      "sourceStage1CandidateId": "BMP-S1-C04",
+      "sourcePromotedRank": 4,
+      "supportGroupId": "BMP-S2-G02-MTAJI",
+      "failureToken": "allRepliesActorCaptureMoveDeltaNegative",
+      "failureFamily": "response-envelope",
+      "stage1PromotionMetrics": {
+        "opportunityUniqueHistoricalTrajectories": 27,
+        "failurePositiveUniqueHistoricalTrajectories": 18,
+        "failureSignatureRate": 0.6666666666666666,
+        "d3InferiorRate": 0.7037037037037037,
+        "d3TopSetRate": 0.14814814814814814,
+        "medianNormalizedRankLoss": 0.6
+      }
+    }
+  ],
+  "interpretationBoundary": {
+    "stage1MetricsAreExploratoryOnly": true,
+    "stage1SupportMayBeUsedAsStage2Evidence": false,
+    "gameTheoreticBlunderClaimAuthorized": false,
+    "humanMisconceptionClaimAuthorized": false,
+    "expertTraditionalClaimAuthorized": false,
+    "pedagogicalClaimAuthorized": false
+  }
+}
