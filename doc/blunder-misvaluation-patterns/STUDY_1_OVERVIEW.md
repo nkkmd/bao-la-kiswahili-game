@@ -1,11 +1,23 @@
 # Blunder / Misvaluation Patterns Study 1 — Overview
 
 更新日: 2026-08-22  
-Status: **STUDY 1 CLOSED / 4 EXPLORATORY CANDIDATES PROMOTED / NOT CONFIRMED**
+Status: **STUDY 1 ACTIVE / STAGE 1 EXPLORATORY COMPLETE / 4 CANDIDATES PROMOTED / STAGE 2 NOT STARTED**
 
 ## 研究題目
 
 > **Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証**
+
+## 現在地
+
+Study 1はStage 0→Stage 1 exploratory→Stage 2 formal confirmationの三段階構成である。
+
+```text
+Stage 0 technical / construct audit = COMPLETE
+Stage 1 fresh exploratory discovery = COMPLETE
+Stage 2 fresh formal confirmation = NOT STARTED
+```
+
+したがって、現在閉じているのは**Stage 1 exploratory discovery**であり、Study 1全体のformal conclusionはまだ存在しない。
 
 ## 何を調べたか
 
@@ -104,14 +116,13 @@ manual override = false
 
 C01–C03は同一opportunity supportを共有するが、frozen support-equivalenceは`opportunityIdentityHash + failureToken`で定義されるため別candidateとして保持された。
 
-## 最終結論
-
-Study 1で得られた結論は次である。
+## Stage 1結論
 
 ```text
 Stage 1 exploratory discovery = COMPLETE
 exploratory candidates promoted = 4
 candidate confirmation = NOT PERFORMED
+Study 1 formal result = NONE
 ```
 
 4件は、fresh-data Stage 2 formal confirmationへ送るための**machine-reproducible exploratory candidates**である。
@@ -120,13 +131,13 @@ candidate confirmation = NOT PERFORMED
 
 ## 次に何をすべきか
 
-Stage 1 supportをconfirmation evidenceとして再利用せず、`BMP-S1-C01..C04`の定義を固定したままfresh seed / fresh corpusによるprospective Stage 2 formal-confirmation studyを設計する。
+Stage 1 supportをconfirmation evidenceとして再利用せず、`BMP-S1-C01..C04`の定義を固定したままfresh seed / fresh corpusによるprospective Stage 2 formal-confirmationを設計する。
 
 Stage 2 generationは、formal spec、contract/tooling validation、source freeze、source-bound explicit authorizationが完了するまで開始しない。
 
 ## 詳細
 
-- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+- [`STAGE_1_EXPLORATORY_REPORT.md`](STAGE_1_EXPLORATORY_REPORT.md)
 - [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md)
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
