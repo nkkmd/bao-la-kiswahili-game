@@ -6,214 +6,236 @@ Updated: 2026-08-22
 
 ```text
 studyId = BMP-STUDY1
-research branch = research/blunder-misvaluation-patterns
-baseline main HEAD = b1cc7047504b73c5a848e866f795c26a64250d13
-Stage 1 contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
-Stage 1 contract validation execution HEAD = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
-validated implementation commit = 8df328ca238611919ac58c262b92058712ee1049
-tooling validation result commit = cd26cb3280fde00663618162f7c1e2d306470032
-execution source freeze commit = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
-Stage 1 generation authorization commit = 1af3828c1c25789d6f4af590ee973cffd34bca46
-Stage 1 generation result commit = bb6375ff1ce3afab00d588b4b6e017b6aaf24541
-Stage 1 verification result commit = 17995f04f3b9abbe0d73b2f035e8129ff07e191f
-Stage 1 selection execution HEAD = 2f6567bab0590ca7741fd8ad9907118544f6331d
-Stage 1 selection result commit = d6a8617a517140e34e9af3a5f2b0793884fb1345
-Stage 1 measurement execution HEAD = 1c7fc1f8d979d6952433406e7ab5d0a515a633fb
-Stage 1 measurement result commit = 5e916c6676022a50d551310f21cf1d3414b6c27c
+integrated Stage 1 main HEAD = 52f5635be7064b5016baf7cde82faebe60609d9e
+Stage 2 research branch = research/blunder-misvaluation-patterns-stage2-formal
+```
+
+Stage 1 immutable identities:
+
+```text
+Stage 1 stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
+Stage 1 spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
+Stage 1 selectionHash = 80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df
+Stage 1 measurementHash = 614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92
 Stage 1 discovery execution HEAD = 14c0d29683611ecd76771a213ce2380cb71fa18d
 Stage 1 discovery result commit = ffb9184d84c775e94f52b91f0c1621ea46061a93
+Stage 1 raw discovery SHA-256 = c910b7c4f854daf0223fa5ed935dc0b2a5fe844ef5541d623adfdaca94cb8d26
+```
+
+Stage 2 frozen design identities:
+
+```text
+Stage 2 stageId = BMP-S2-FORMAL-2026-08-22-v1
+candidate freeze ID = BMP-S2-CANDIDATES-2026-08-22-v1
+candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
+formal spec SHA-256 = 097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730
 ```
 
 ## Current scientific state
 
 ```text
-Stage 0 design restoration/audit = COMPLETE
-Stage 0 executable technical semantics validation = PASS
-Stage 0 D3+Q1 compute feasibility = PASS
-Stage 1 exploratory spec = FROZEN
-Stage 1 canonical contract validation = PASS
-Stage 1 execution tooling validation = PASS
-Stage 1 exact source-file SHA-256 map = FROZEN
-Stage 1 scientific generation = COMPLETE (2048 / 2048)
-Stage 1 independent full replay/search verification = PASS
-Stage 1 outcome-blind state selection = COMPLETE
-Stage 1 selection readiness = PASS
-Stage 1 measurement = COMPLETE (1200 / 1200 roots)
-Stage 1 measurement readiness = PASS
-Stage 1 candidate discovery = COMPLETE
-Stage 1 exploratory candidates promoted = 4
-Stage 1 candidate confirmation = NOT PERFORMED
-Stage 2 formal spec = NOT CREATED
+Stage 0 technical / construct audit = COMPLETE
+Stage 1 fresh exploratory discovery = COMPLETE
+Stage 1 promoted candidates = 4
+Stage 1 integrated to main = COMPLETE
+
+Stage 2 candidate definition freeze = COMPLETE
+Stage 2 formal protocol = FROZEN
+Stage 2 machine-readable spec = FROZEN
+Stage 2 contract validator = MATERIALIZED
+Stage 2 contract test = MATERIALIZED
+Stage 2 runner = MATERIALIZED
+Stage 2 independent corpus verifier = MATERIALIZED
+Stage 2 independent formal measurement verifier = MATERIALIZED
+Stage 2 formal evaluator = MATERIALIZED
+Stage 2 tooling semantics test = MATERIALIZED
+Stage 2 CI validation workflow = MATERIALIZED
+
+Stage 2 local technical validation = PENDING
+Stage 2 exact scientific source-file SHA-256 freeze = PENDING
+Stage 2 generation authorization = NOT CREATED
 Stage 2 scientific generation = NOT AUTHORIZED
-formal scientific result = NONE
+Stage 2 formal result = NONE
+Study 1 formal result = NONE
 ```
 
-## Frozen Stage 1 identity
+## Stage 1 result boundary
+
+Stage 1 used:
 
 ```text
-stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
-spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
 games = 2048
 seeds = 22400001..22402048
-selected roots = 1200
-Namua / Mtaji = 600 / 600
-primary reference = D3 + Q1 / bao / root actor
-selectionHash = 80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df
-measurementHash = 614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92
-```
-
-No seed extension, replacement sampling, phase reassignment, threshold retuning or manual candidate promotion was used or is authorized.
-
-## Readiness chain
-
-```text
-generated games = 2048
 unique historical trajectories = 1884
-distinct generation opening prefixes = 1621
-full replay/search verification = PASS
 selected unique rule states = 1200
-selected Namua / Mtaji = 600 / 600
-distinct selected opening prefixes = 1067
-minimum selected generation-stratum count = 185
-completed measurements = 1200
-measured move records = 5295
-all selected roots finite D3 candidate tables = true
-measurement readiness = PASS
-```
-
-## Stage 1 discovery result
-
-The frozen automatic candidate discovery procedure was executed at:
-
-```text
-discovery execution HEAD = 14c0d29683611ecd76771a213ce2380cb71fa18d
-generatedAt = 2026-08-22T04:11:03.583Z
-```
-
-Enumeration:
-
-```text
+Namua / Mtaji = 600 / 600
+measured exact legal moves = 5295
 matcherCount = 16421
-lowSupportMatcherCount = 9553
-lowSupportMatcherKeyHash = 46909b7f207af4f714f0d7845e5ebe8f080d1c68d43f51c520296933d6d31b60
 detailedCandidateCount = 123624
-promotionPassingBeforeSupportEquivalence = 11
-promotionPassingAfterSupportEquivalence = 11
-promotedCandidateCount = 4
-manualOverridePerformed = false
+promotion passing after support-equivalence = 11
+final promoted candidates = 4
+manual override = false
 ```
 
-Frozen candidate cap:
+Frozen promoted inputs:
 
 ```text
-maximum total = 6
-maximum per phase = 3
-maximum per failure family = 2
+BMP-S1-C01 — Namua / worstReplyActorFrontConnectionsDeltaNegative
+BMP-S1-C02 — Namua / actorCaptureMoveDeltaNegative
+BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
+BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
 ```
 
-The 268,693,257-byte raw discovery artifact is retained locally and hash-bound:
+These are exploratory candidates only. They are not confirmed Bao blunders.
+
+## Stage 2 formal candidate mapping
 
 ```text
-path = artifacts/local/blunder-misvaluation-patterns/stage1-exploratory-v1/discovery-result.json
-sha256 = c910b7c4f854daf0223fa5ed935dc0b2a5fe844ef5541d623adfdaca94cb8d26
+BMP-S1-C01 -> BMP-S2-C01
+BMP-S1-C02 -> BMP-S2-C02
+BMP-S1-C03 -> BMP-S2-C03
+BMP-S1-C04 -> BMP-S2-C04
 ```
 
-It was processed by streaming extraction for repository-scale result recording; the original artifact was not modified.
+C01/C02/C03 share the exact same frozen Namua support group and therefore must use the same fresh Stage 2 selected roots and deterministic candidate move. They differ only in failure token.
 
-## Promoted exploratory candidates
+C04 uses its own frozen Mtaji support group.
 
-Candidate IDs are assigned in exact deterministic promoted order and do not change matcher/failure definitions.
-
-### BMP-S1-C01
+## Stage 2 fresh population
 
 ```text
-phase = Namua
-preconditions = frontOccupiedBins:6-8 + houseOwned:false
-move abstraction = indexed capture / row 0 / index 4 / side right / direction left
-failure = worstReplyActorFrontConnectionsDeltaNegative
-failure family = response-envelope
-opportunity trajectories = 26
-failure-positive trajectories = 26
-failureSignatureRate = 1.000000
-d3InferiorRate = 0.730769
-d3TopSetRate = 0.076923
-medianNormalizedRankLoss = 0.732143
-promotionPassed = true
+games = 4096
+seeds = 22500001..22504096
+maxPly = 100
+opening = first 8 plies seeded-uniform exact E.moveVariants
+condition assignment = game-index-modulo-6
 ```
 
-### BMP-S1-C02
+Generation strata:
 
 ```text
-phase = Namua
-same matcher/support as C01
-failure = actorCaptureMoveDeltaNegative
-failure family = immediate-structural
-opportunity trajectories = 26
-failure-positive trajectories = 22
-failureSignatureRate = 0.846154
-d3InferiorRate = 0.730769
-d3TopSetRate = 0.076923
-medianNormalizedRankLoss = 0.732143
-promotionPassed = true
+B-D1 = 683
+B-D2 = 683
+B-D3 = 683
+LS-D2 = 683
+V2-D2 = 682
+LE-D2 = 682
 ```
 
-### BMP-S1-C03
+No early stopping, replacement, or seed extension is authorized.
+
+## Stage 1 identity firewall for Stage 2
+
+Fresh formal evidence must end with zero overlap on:
 
 ```text
-phase = Namua
-same matcher/support as C01
-failure = actorLegalMoveDeltaNegative
-failure family = immediate-structural
-opportunity trajectories = 26
-failure-positive trajectories = 22
-failureSignatureRate = 0.846154
-d3InferiorRate = 0.730769
-d3TopSetRate = 0.076923
-medianNormalizedRankLoss = 0.732143
-promotionPassed = true
+historicalTrajectoryHash
+openingPrefixHash
+ruleStateKey
 ```
 
-### BMP-S1-C04
+Rules:
+
+- Stage 1 trajectory/opening overlap drops the whole Stage 2 trajectory before root selection.
+- Stage 1 rule-state overlap is checked only after outcome-blind root selection; the selected root/trajectory is dropped without an alternate root.
+- no replacement;
+- no seed extension.
+
+## Stage 2 outcome-blind root and move selection
+
+Support-group root eligibility uses only phase, frozen structural preconditions, nonterminal status, ply >= 8, legal move count >= 2, and existence of a legal move matching the frozen move abstraction.
+
+It excludes failure token, D1/D2/D3 values, D3-inferior status, TopSet, normalized rank loss, reply outcome, and game outcome.
+
+Within an eligible trajectory, the selected root is deterministic SHA-256 minimum rank under the support-group salt.
+
+Formal candidate move is the lexicographically smallest exact `AI.moveKey` among legal moves matching the frozen move abstraction.
+
+## Stage 2 standardized formal measurement
 
 ```text
-phase = Mtaji
-preconditions = frontOccupiedBins:3-5 + legalMoveCountBins:5+
-move abstraction = coarse-no-index capture / row 1 / direction right
-failure = allRepliesActorCaptureMoveDeltaNegative
-failure family = response-envelope
-opportunity trajectories = 27
-failure-positive trajectories = 18
-failureSignatureRate = 0.666667
-d3InferiorRate = 0.703704
-d3TopSetRate = 0.148148
-medianNormalizedRankLoss = 0.600000
-promotionPassed = true
+evaluation = bao
+search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
+primary depth = D3
+quiescence depth = 1
+perspective = root actor
 ```
 
-All four satisfy every frozen promotion gate. The three Namua candidates share the same opportunity support but have distinct failure tokens; support-equivalence is defined by opportunity identity plus failure token, so they remain distinct candidates.
+The Stage 1 `d3-inferior-v1`, TopSet, domain ordering and normalized rank loss definitions are unchanged.
 
-Machine-readable record:
+## Stage 2 estimability gates
 
-`results/STAGE_1_DISCOVERY_RESULT.json`
-
-## Interpretation boundary
+Each candidate must pass:
 
 ```text
-Stage 1 = exploratory candidate discovery only
-candidate confirmation = NOT PERFORMED
-confirmatory reuse of Stage 1 data = FORBIDDEN
-game-theoretic blunder claim = NOT AUTHORIZED
-human misconception claim = NOT AUTHORIZED
-expert/traditional claim = NOT AUTHORIZED
-pedagogical claim = NOT AUTHORIZED
-generalization beyond frozen Stage 1 population = NOT AUTHORIZED
-Stage 2 scientific generation = NOT AUTHORIZED
+unique historical trajectories >= 96
+unique rule states >= 96
+distinct opening prefixes >= 48
+maximum one opening-prefix share <= 0.10
+generation strata >= 4
+maximum one generation-stratum share <= 0.50
 ```
 
-No closed-study decision is reopened.
+Failure -> `INCONCLUSIVE-NOT-ESTIMABLE`; no rescue.
+
+## Stage 2 primary tests and decision rule
+
+Exactly eight planned one-sided exact binomial tests:
+
+```text
+4 candidates x 2 co-primary endpoints
+FWER alpha = 0.05
+Holm-Bonferroni
+```
+
+Co-primary endpoints:
+
+```text
+failure-signature recurrence: H0 p <= 0.50; observed floor >= 0.65
+D3-inferior recurrence:       H0 p <= 0.50; observed floor >= 0.70
+```
+
+Additional confirmation consistency gates:
+
+```text
+D3 TopSet rate <= 0.20
+median normalized rank loss >= 0.50
+```
+
+Candidate labels:
+
+```text
+CONFIRMED
+NOT-CONFIRMED
+INCONCLUSIVE-NOT-ESTIMABLE
+TECHNICAL-INCONCLUSIVE
+```
+
+Zero confirmed candidates is valid.
+
+## Verification firewall
+
+Exact order:
+
+```text
+generate
+-> independent full replay + generation-search verification
+-> support-group select
+-> formal measure
+-> independent formal measurement verification
+-> formal evaluate
+```
+
+Formal evaluation is blocked until independent measurement verification passes and reproduces the exact measurement hash and Stage 1 identity firewall.
+
+## No-rescue / interpretation boundary
+
+After Stage 2 generation starts, candidate edits, seed extension, replacement, alternate roots after overlap, matcher/failure substitution, endpoint/null/floor retuning, multiplicity changes, favorable subgroup promotion, alternate primary depth/evaluator, and manual override are forbidden.
+
+Even a Stage 2 `CONFIRMED` result means machine-reproducible recurrence under the frozen Bao engine/search/population only. It does not establish game-theoretic blunder status, human misconception, expert/traditional recognition, pedagogical value, causal mechanism, or external validity.
 
 ## Immediate next gate
 
-Stage 1 exploratory discovery is closed. The next scientifically permissible step is prospective Stage 2 formal-confirmation design for `BMP-S1-C01` through `BMP-S1-C04`, using fresh data only.
+Run only the pre-authorization technical validation in [`STAGE_2_EXECUTION_RUNBOOK.md`](STAGE_2_EXECUTION_RUNBOOK.md).
 
-Stage 2 generation must remain blocked until a separate formal spec, contract/tooling validation, source freeze and explicit source-bound authorization are completed.
+If and only if validator, contract/tooling tests, syntax checks, status/source-hash audit, and clean scientific source tree all pass, freeze the exact Stage 2 source-file SHA-256 map and create a separate source-bound generation authorization.
