@@ -17,7 +17,8 @@ Current checkpoints:
 - `2026-08-22-stage2-formal-design-freeze-tooling-materialized.md`
 - `2026-08-22-stage2-preauth-spec-hash-binding-correction.md`
 - `2026-08-22-stage2-generation-authorization.md`
+- `2026-08-22-stage2-generation-complete-full-verification-pass-selection-open.md`
 
 Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification and formal evaluation are distinct gates.
 
-Current state: Stage 1 exploratory discovery is complete and integrated to `main`. Stage 2 candidate/spec design is frozen, local validator/contract/tooling/syntax/status validation passed, the exact scientific source-file SHA-256 map is frozen, and the corrected source-bound authorization is committed. No Stage 2 game has yet been generated. The next gate is the fixed 4096-game corpus generation followed immediately by independent full replay/search verification.
+Current state: Stage 2 fixed corpus generation is complete at 4096/4096 games and mandatory independent full replay + generation-search verification passed with full search recomputation. The next open gate is frozen outcome-blind support-group selection. Formal measurement and endpoint evaluation remain blocked pending selection review.
