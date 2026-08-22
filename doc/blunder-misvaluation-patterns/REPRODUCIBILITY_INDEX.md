@@ -1,7 +1,7 @@
 # REPRODUCIBILITY_INDEX — Blunder / Misvaluation Patterns Study 1
 
 Updated: 2026-08-22  
-Status: **STUDY 1 CLOSED / EXPLORATORY DISCOVERY COMPLETE**
+Status: **STUDY 1 ACTIVE / STAGE 1 EXPLORATORY COMPLETE**
 
 ## Study identity
 
@@ -12,6 +12,8 @@ research branch = research/blunder-misvaluation-patterns
 stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
 spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
 ```
+
+This index freezes the reproducibility chain for the completed Stage 1 exploratory discovery. Study 1 as a whole remains active because Stage 2 formal confirmation has not started.
 
 ## Stage 1 execution chain
 
@@ -156,6 +158,8 @@ test/blunder-misvaluation-stage1-tooling.test.js
 Reproducibility of Stage 1 establishes the machine procedure and exploratory promotion output only. It does not turn Stage 1 candidates into confirmed blunders.
 
 ```text
+Stage 1 exploratory discovery = complete
+Study 1 formal result = none
 confirmatory reuse of Stage 1 data = forbidden
 Stage 2 generation = not authorized
 human misconception claim = not authorized
