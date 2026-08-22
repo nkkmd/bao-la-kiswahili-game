@@ -14,7 +14,8 @@ Current checkpoints:
 - `2026-08-22-stage1-measurement-readiness-pass-discovery-open.md`
 - `2026-08-22-stage1-discovery-complete-four-candidates-promoted.md`
 - `2026-08-22-stage1-exploratory-closure-main-integration-ready.md`
+- `2026-08-22-stage2-formal-design-freeze-tooling-materialized.md`
 
-Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection readiness, measurement readiness and candidate discovery are distinct gates.
+Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification and formal evaluation are distinct gates.
 
-Current state: Stage 1 generation, full replay/search verification, outcome-blind selection, measurement and automatic exploratory discovery are complete. Four exploratory candidates (`BMP-S1-C01` through `BMP-S1-C04`) were promoted by frozen gates/ranking/caps with no manual override. Stage 1 exploratory is closed and ready for main integration as an immutable upstream discovery boundary. Study 1 as a whole remains active: candidate confirmation has not been performed, Stage 2 formal spec is not yet created, and Stage 2 scientific generation remains unauthorized.
+Current state: Stage 1 exploratory discovery is complete and integrated to `main`. Stage 2 candidate/spec design and execution tooling are materialized on `research/blunder-misvaluation-patterns-stage2-formal`, but local technical validation and exact source-file SHA-256 freeze are still pending. `STAGE_2_FORMAL_AUTHORIZATION.json` does not yet exist; Stage 2 scientific generation remains unauthorized.
