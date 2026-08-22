@@ -105,8 +105,6 @@ Trajectory/opening overlap removes the Stage 2 trajectory before candidate-root 
 
 ## Formal measurement / endpoints
 
-Standardized formal measurement:
-
 ```text
 evaluation = bao
 search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
@@ -147,7 +145,7 @@ Formal labels are `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or
 
 ## Authorization correction audit
 
-The first authorization commit `a0e7d9ee619d081749039271f039b32267699d4b` had one clerical source-hash transcription error. It was detected immediately and **never used for scientific generation**. The final corrected authorization is `a9eee06c6a1ad36f9e65948f5d78eff58a91d561` and matches the frozen source map.
+The first authorization commit `a0e7d9ee619d081749039271f039b32267699d4b` had one clerical source-hash transcription error. It was detected immediately and never used for scientific generation. The final corrected authorization is `a9eee06c6a1ad36f9e65948f5d78eff58a91d561` and matches the frozen source map.
 
 ## Mandatory execution order
 
@@ -168,4 +166,4 @@ Even a Stage 2 `CONFIRMED` result means only machine-reproducible recurrence und
 
 ## Immediate next gate
 
-Pull the authorized branch, run `--phase status` once to prove that the corrected authorization/source map is accepted, then generate exactly the fixed 4096-game Stage 2 corpus. After generation, stop and run independent full replay/search verification before any selection.
+Pull the authorized branch. First inspect `--phase status`, then run the non-generating `C.loadAuthorization(...)` acceptance check from `STAGE_2_EXECUTION_RUNBOOK.md`. Only if that exact source-bound authorization check succeeds should the fixed 4096-game Stage 2 generation start. After generation, independent full replay/search verification is mandatory before any selection.
