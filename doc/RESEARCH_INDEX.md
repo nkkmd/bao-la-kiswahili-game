@@ -286,10 +286,10 @@ Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080
 ### 10. Blunder / Misvaluation Patterns — Study 1
 
 **研究題目:** Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証  
-**状態:** **Study 1 closed / exploratory discovery complete — 4 candidates promoted / not confirmed**  
+**状態:** **Study 1 active / Stage 1 exploratory complete — 4 candidates promoted / Stage 2 not started**  
 **作業branch:** `research/blunder-misvaluation-patterns`
 
-このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索しました。
+このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索しています。
 
 Fresh Stage 1は2,048 games / seeds `22400001..22402048`で実施し、1,884 unique historical trajectoriesを独立full replay/search verificationしました。outcome-blind selectionで1,200 unique rule states（Namua/Mtaji 600/600）を固定し、5,295 exact legal movesを測定しました。selection/measurement readinessは全gate PASSで、replacement、phase reassignment、threshold retuning、seed extensionはありませんでした。
 
@@ -304,18 +304,18 @@ BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
 
 **最初に読む:**
 
-- [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+- [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md) — Study 1全体の現在地と初見向け概要
 - [`blunder-misvaluation-patterns/README.md`](blunder-misvaluation-patterns/README.md) — 研究ディレクトリ入口
 
-**詳細・正本:**
+**Stage 1詳細・正本:**
 
-- [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md) — Study 1科学的統合
+- [`blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_REPORT.md`](blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_REPORT.md) — 完了したStage 1 exploratoryの科学的統合
 - [`blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md`](blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md) — commit / hash / artifact / tooling索引
 - [`blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json) — canonical compact discovery result
-- [`blunder-misvaluation-patterns/CURRENT_STATUS.md`](blunder-misvaluation-patterns/CURRENT_STATUS.md) — closure状態とfixed boundaries
+- [`blunder-misvaluation-patterns/CURRENT_STATUS.md`](blunder-misvaluation-patterns/CURRENT_STATUS.md) — 現在地とfixed boundaries
 - [`blunder-misvaluation-patterns/DECISION_REGISTER.md`](blunder-misvaluation-patterns/DECISION_REGISTER.md) — frozen decisions / no-rescue boundaries
 
-**Boundary:** 4件はStage 2 fresh-data confirmationに送るexploratory candidatesであり、confirmed Bao blunder、game-theoretic error、human misconception、expert/traditional knowledge、pedagogical principleではありません。Stage 1 supportをStage 2 confirmation evidenceとして再利用しません。
+**Boundary:** 4件はStage 2 fresh-data confirmationに送るexploratory candidatesであり、confirmed Bao blunder、game-theoretic error、human misconception、expert/traditional knowledge、pedagogical principleではありません。Stage 1 supportをStage 2 confirmation evidenceとして再利用しません。Study 1全体のformal resultはまだありません。
 
 ---
 
@@ -337,7 +337,7 @@ Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加game
 
 Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`についても、同じStage 2へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えてformal decisionを救済しません。formal calibration generalizationを再検証する場合は、identity-firewall attritionを事前に織り込んだfresh prospective independent studyとします。
 
-Blunder / Misvaluation Patterns Study 1の4候補をformalに確認する場合は、exact Stage 1 definitionsを結果後に変更せず、Stage 1 dataをconfirmation evidenceとして再利用しないfresh prospective Stage 2とします。human misconceptionやpedagogical claimは別evidence axisとして扱います。
+Blunder / Misvaluation Patterns Study 1の次段階では、Stage 1の4候補をexact definitionのままfresh dataでformal confirmationします。Stage 1 dataをconfirmation evidenceとして再利用せず、human misconceptionやpedagogical claimは別evidence axisとして扱います。
 
 ---
 
