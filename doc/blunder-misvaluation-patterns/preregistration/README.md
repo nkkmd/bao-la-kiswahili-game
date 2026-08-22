@@ -34,7 +34,7 @@ Stage 2 identity:
 stageId = BMP-S2-FORMAL-2026-08-22-v1
 candidate freeze ID = BMP-S2-CANDIDATES-2026-08-22-v1
 candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
-formal spec SHA-256 = 097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730
+formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab
 fresh reserved/fixed seeds = 22500001..22504096
 games = 4096
 ```
