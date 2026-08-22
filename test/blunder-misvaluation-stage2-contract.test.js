@@ -10,7 +10,7 @@ function testStage2FormalContract() {
   assert.equal(result.candidateDefinitionSha256,
     "12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b");
   assert.equal(result.specSha256,
-    "e2845026a8414fcff1f5c8163a7de8a9089c7cbe3138fd67660cf0e026da5c65");
+    "097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730");
   assert.equal(result.formalCandidates.length, 4);
   assert.equal(result.population.games, 4096);
   assert.equal(result.population.seedStart, 22500001);
@@ -18,6 +18,7 @@ function testStage2FormalContract() {
   assert.equal(result.population.strata.reduce((sum, row) => sum + row.expectedGames, 0), 4096);
   assert.equal(result.plannedCoPrimaryTests, 8);
   assert.equal(result.multiplicity, "Holm-Bonferroni");
+  assert.equal(result.independentMeasurementVerificationRequired, true);
   assert.equal(result.generationAuthorized, false);
 }
 
