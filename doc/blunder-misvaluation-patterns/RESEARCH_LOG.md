@@ -275,15 +275,62 @@ generation result commit = bb6375ff1ce3afab00d588b4b6e017b6aaf24541
 
 Generation-level counts numerically exceed the frozen future minima for unique historical trajectories (1884 >= 1600) and opening-prefix diversity (1621 >= 128). This is not a complete readiness decision.
 
-Current firewall:
+At this point independent verification remained mandatory before selection.
+
+## 2026-08-22 — Stage 1 independent full replay/search verification PASS
+
+The investigator returned exact local HEAD before verification:
 
 ```text
-independent full replay/search verification = PENDING
-selection = BLOCKED
+897dcd2cb8775f8c129dbbde01167eef1f973089
+```
+
+The independent verifier replayed all generated games from initial state and seed and recomputed trajectory AI search.
+
+Returned result:
+
+```text
+passed = true
+fullSearchRecomputation = true
+gamesVerified = 2048
+uniqueHistoricalTrajectories = 1884
+distinctOpeningPrefixes = 1621
+verificationIdentityHash = f0ef925b8690020762c90c5438565d731bce46476bd5428f77450407e1867343
+verifiedAt = 2026-08-22T03:07:13.071Z
+sourceCommit = 897dcd2cb8775f8c129dbbde01167eef1f973089
+sourceTreeDirty = false
+```
+
+Condition counts matched the generation manifest exactly:
+
+```text
+B-D1 = 342
+B-D2 = 342
+B-D3 = 341
+LS-D2 = 341
+V2-D2 = 341
+LE-D2 = 341
+```
+
+The returned source-file SHA-256 map matched the authorization-bound map.
+
+Machine-readable verification record:
+
+```text
+results/STAGE_1_VERIFICATION_RESULT.json
+verification result commit = 17995f04f3b9abbe0d73b2f035e8129ff07e191f
+```
+
+Decision:
+
+```text
+Stage 1 independent full replay/search verification = PASS
+state selection gate = OPEN
+selection readiness = PENDING
 measurement = BLOCKED
 discovery = BLOCKED
 confirmatory inference = NOT AUTHORIZED
 Stage 2 generation = NOT AUTHORIZED
 ```
 
-No selection or candidate-pattern interpretation is permitted before independent verification PASS.
+The next permitted operation is frozen outcome-blind state selection only. If selection readiness fails, no seed extension, replacement sampling, phase reassignment or threshold relaxation is authorized.
