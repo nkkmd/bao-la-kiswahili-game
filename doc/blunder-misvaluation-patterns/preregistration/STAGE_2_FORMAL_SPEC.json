@@ -329,10 +329,12 @@
       "independent-full-replay-and-generation-search-verify",
       "support-group-select",
       "formal-measure",
+      "independent-formal-measurement-verify",
       "formal-evaluate"
     ],
     "selectionBlockedUntilVerificationPass": true,
     "evaluationBlockedUntilMeasurementIntegrityPass": true,
+    "evaluationBlockedUntilIndependentMeasurementVerificationPass": true,
     "independentVerifierRequired": true,
     "fullGenerationSearchRecomputationRequired": true,
     "formalD3CandidateTableRecomputationRequired": true,
