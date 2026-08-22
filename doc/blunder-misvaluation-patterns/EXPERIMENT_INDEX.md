@@ -7,7 +7,7 @@ Updated: 2026-08-22
 | `BMP-S0-DESIGN-2026-08-20-v1` | Restore boundaries, fix constructs/reference semantics, reserve seeds | none | **COMPLETE / DESIGN FROZEN** |
 | `BMP-S0-TECHNICAL-SMOKE-2026-08-20-v1` | Fixture validation of regret/search/move/identity semantics | none | **PASS** |
 | `BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1` | Deterministic workload/timing benchmark | none | **PASS** |
-| `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory bad-move / misvaluation candidate discovery | 2048 verified games; 1200 selected roots | **SELECTION READINESS PASS / MEASUREMENT NEXT** |
+| `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory bad-move / misvaluation candidate discovery | 2048 verified games; 1200 selected roots; 5295 measured moves | **MEASUREMENT READINESS PASS / DISCOVERY NEXT** |
 | `BMP-S2-FORMAL-*` | Fresh candidate confirmation | none | **BLOCKED / NOT AUTHORIZED** |
 
 ## Stage 1 frozen identity
@@ -48,20 +48,11 @@ verificationIdentityHash = f0ef925b8690020762c90c5438565d731bce46476bd5428f77450
 
 ## Stage 1 selection result
 
-Outcome-blind state selection executed at:
-
 ```text
 selection execution HEAD = 2f6567bab0590ca7741fd8ad9907118544f6331d
 selection result commit = d6a8617a517140e34e9af3a5f2b0793884fb1345
-```
-
-Result:
-
-```text
 unavailable assigned phase = 70
-selected before rule-state collapse = 1814
-duplicate selected rule states collapsed = 1
-phase pool after collapse: Namua 961 / Mtaji 852
+phase pool after collapse = Namua 961 / Mtaji 852
 selected unique rule states = 1200
 selected phase counts = Namua 600 / Mtaji 600
 distinct selected opening prefixes = 1067
@@ -82,19 +73,21 @@ V2-D2 = 187
 LE-D2 = 216
 ```
 
-All selection/readiness gates passed. No rescue, replacement, reassignment or threshold relaxation occurred.
-
-## Measurement readiness gate
-
-Measurement now runs over all 1200 selected roots. It must satisfy:
+## Stage 1 measurement result
 
 ```text
+measurement execution HEAD = 1c7fc1f8d979d6952433406e7ab5d0a515a633fb
+measurement result commit = 5e916c6676022a50d551310f21cf1d3414b6c27c
 completed measurements = 1200
-measured move records >= 3600
-complete finite D3 candidate tables for all selected roots
+measured move records = 5295
+minimum measured move records = 3600
+all selected roots finite D3 candidate tables = true
+measurement readiness = PASS
+measurementHash = 614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92
+sourceTreeDirty = false
 ```
 
-Discovery remains blocked until measurement readiness passes.
+All measurement readiness gates passed. The discovery gate is therefore open.
 
 ## Stage 1 promotion gate
 
@@ -127,8 +120,10 @@ scientific corpus generation                    COMPLETE (2048/2048)
 independent full replay/search verification     PASS
 outcome-blind state selection                   COMPLETE
 selection readiness                             PASS
-measurement                                     NEXT
-measurement readiness                           PENDING
-discovery                                       BLOCKED
-Stage 2                                          BLOCKED
+measurement                                     COMPLETE (1200/1200)
+measurement readiness                           PASS
+candidate discovery                             NEXT
+Stage 2                                          BLOCKED / NOT AUTHORIZED
 ```
+
+Stage 1 discovery remains exploratory. A zero-candidate result is admissible and does not permit post-hoc rescue or threshold retuning.
