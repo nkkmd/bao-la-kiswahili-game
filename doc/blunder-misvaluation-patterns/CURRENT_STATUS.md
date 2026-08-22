@@ -25,13 +25,13 @@ Stage 2 frozen/authorized identities:
 
 ```text
 stageId = BMP-S2-FORMAL-2026-08-22-v1
-candidate freeze ID = BMP-S2-CANDIDATES-2026-08-22-v1
 candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
 formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab
 validated execution HEAD = 011b9a56ecb95046f7d61a331b76dea093aa7663
 technical validation result commit = 3d5a1a33f673c9c98ba6a5ed2862b25c8d76e777
 execution source freeze commit = 11670e528dccff063b8e66be9ff190e61e4e4e77
 final corrected authorization commit = a9eee06c6a1ad36f9e65948f5d78eff58a91d561
+authorization SHA-256 = 0e5b29fcf64caf82c3e2106b85387eea5bb04ed66a0624f75f76518f13596a87
 ```
 
 ## Current scientific state
@@ -44,19 +44,55 @@ Stage 1 integrated to main = COMPLETE
 
 Stage 2 candidate definition freeze = COMPLETE
 Stage 2 formal protocol/spec = FROZEN
-Stage 2 runner/verifiers/evaluator = MATERIALIZED
-Stage 2 local technical validation = PASS
-Stage 2 exact scientific source-file SHA-256 freeze = COMPLETE
+Stage 2 technical validation = PASS
+Stage 2 exact source-file SHA-256 freeze = COMPLETE
 Stage 2 generation authorization = COMPLETE
-Stage 2 scientific generation = AUTHORIZED
-Stage 2 generated games = 0 / 4096
-Stage 2 corpus verification = PENDING
-Stage 2 selection = PENDING
-Stage 2 formal measurement = PENDING
+Stage 2 scientific generation = COMPLETE (4096 / 4096)
+Stage 2 independent full replay/search verification = PASS
+Stage 2 outcome-blind support-group selection = OPEN / PENDING
+Stage 2 formal measurement = BLOCKED UNTIL SELECTION RESULT REVIEW
 Stage 2 independent measurement verification = PENDING
 Stage 2 formal result = NONE
 Study 1 formal result = NONE
 ```
+
+## Stage 2 generation result
+
+```text
+games = 4096
+seeds = 22500001..22504096
+unique historical trajectories = 3559
+duplicate historical-trajectory groups = 352
+largest historical-trajectory group = 12
+distinct opening prefixes = 2827
+summaryHash = 9875e142a1d1067d1fc0042e3eeaf9060a1d2b783bfb40a8782e72c1238a4b2c
+scientific source commit = eecb2c8213fc71e518b0e96946e82790fd20961b
+source tree dirty = false
+```
+
+Condition counts:
+
+```text
+B-D1 = 683
+B-D2 = 683
+B-D3 = 683
+LS-D2 = 683
+V2-D2 = 682
+LE-D2 = 682
+```
+
+## Stage 2 independent corpus verification
+
+```text
+passed = true
+fullSearchRecomputation = true
+gamesVerified = 4096
+unique historical trajectories = 3559
+distinct opening prefixes = 2827
+verificationIdentityHash = e2fab371ae09d18e7fed0aa979f72cb87ec4e2fdc67caacdb6129818b2b38fa4
+```
+
+Generation and verification agree on stage/spec/candidate identity, all corpus counts, condition distribution, source commit, clean-tree state and the complete frozen source-file SHA map.
 
 ## Formal candidate mapping
 
@@ -68,28 +104,6 @@ BMP-S1-C04 -> BMP-S2-C04
 ```
 
 C01/C02/C03 share exactly one frozen Namua support group/root denominator and deterministic candidate move; only failure token differs. C04 uses the frozen Mtaji support group.
-
-## Fixed Stage 2 population
-
-```text
-games = 4096
-seeds = 22500001..22504096
-maxPly = 100
-opening = first 8 plies seeded-uniform exact E.moveVariants
-```
-
-Generation strata:
-
-```text
-B-D1 = 683
-B-D2 = 683
-B-D3 = 683
-LS-D2 = 683
-V2-D2 = 682
-LE-D2 = 682
-```
-
-No early stopping, replacement, or seed extension is authorized.
 
 ## Stage 1 leakage firewall
 
@@ -103,17 +117,9 @@ ruleStateKey
 
 Trajectory/opening overlap removes the Stage 2 trajectory before candidate-root selection. Rule-state overlap is checked after outcome-blind root selection; the selected root/trajectory is removed with no alternate root and no replacement.
 
-## Formal measurement / endpoints
+## Stage 2 estimability / decision boundary
 
-```text
-evaluation = bao
-search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
-primary depth = D3
-quiescence depth = 1
-perspective = root actor
-```
-
-Per candidate estimability:
+Per candidate:
 
 ```text
 unique historical trajectories >= 96
@@ -134,31 +140,22 @@ FWER alpha = 0.05
 Holm-Bonferroni
 ```
 
-Additional confirmation gates:
-
-```text
-D3 TopSet rate <= 0.20
-median normalized rank loss >= 0.50
-```
+Additional gates are D3 TopSet rate <= 0.20 and median normalized rank loss >= 0.50.
 
 Formal labels are `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or `TECHNICAL-INCONCLUSIVE`. Zero confirmed candidates is valid.
-
-## Authorization correction audit
-
-The first authorization commit `a0e7d9ee619d081749039271f039b32267699d4b` had one clerical source-hash transcription error. It was detected immediately and never used for scientific generation. The final corrected authorization is `a9eee06c6a1ad36f9e65948f5d78eff58a91d561` and matches the frozen source map.
 
 ## Mandatory execution order
 
 ```text
-generate
--> independent full replay + generation-search verification
--> support-group select
--> formal measure
--> independent formal measurement verification
--> formal evaluate
+generate                                                  COMPLETE
+-> independent full replay + generation-search verify    PASS
+-> support-group select                                   OPEN
+-> formal measure                                         BLOCKED PENDING SELECTION REVIEW
+-> independent formal measurement verification           PENDING
+-> formal evaluate                                        PENDING
 ```
 
-No later phase may be run before the preceding gate is accepted.
+No seed extension, replacement, alternate root after overlap, candidate edit, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, multiplicity change, favorable subgroup promotion, alternate primary depth/evaluator or manual override is authorized.
 
 ## Interpretation boundary
 
@@ -166,4 +163,4 @@ Even a Stage 2 `CONFIRMED` result means only machine-reproducible recurrence und
 
 ## Immediate next gate
 
-Pull the authorized branch. First inspect `--phase status`, then run the non-generating `C.loadAuthorization(...)` acceptance check from `STAGE_2_EXECUTION_RUNBOOK.md`. Only if that exact source-bound authorization check succeeds should the fixed 4096-game Stage 2 generation start. After generation, independent full replay/search verification is mandatory before any selection.
+Run the frozen outcome-blind Stage 2 support-group selection only. Inspect and archive `selection-audit.json` before any formal measurement is allowed.
