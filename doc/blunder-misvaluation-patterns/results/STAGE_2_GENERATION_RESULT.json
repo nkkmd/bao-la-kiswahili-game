@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BMP-STUDY1",
+  "stageId": "BMP-S2-FORMAL-2026-08-22-v1",
+  "resultType": "stage2-formal-generation",
+  "specSha256": "4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab",
+  "candidateDefinitionSha256": "12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b",
+  "authorizationSha256": "0e5b29fcf64caf82c3e2106b85387eea5bb04ed66a0624f75f76518f13596a87",
+  "formalExperiment": true,
+  "scientificInferenceAuthorized": true,
+  "confirmatoryReuseOfStage1DataAllowed": false,
+  "generatedAt": "2026-08-22T09:28:27.112Z",
+  "population": {
+    "games": 4096,
+    "seedStart": 22500001,
+    "seedEnd": 22504096,
+    "maxPly": 100
+  },
+  "summary": {
+    "games": 4096,
+    "uniqueHistoricalTrajectories": 3559,
+    "duplicateHistoricalTrajectoryGroups": 352,
+    "largestHistoricalTrajectoryGroup": 12,
+    "distinctOpeningPrefixes": 2827,
+    "conditionCounts": {
+      "B-D1": 683,
+      "B-D2": 683,
+      "B-D3": 683,
+      "LS-D2": 683,
+      "V2-D2": 682,
+      "LE-D2": 682
+    },
+    "summaryHash": "9875e142a1d1067d1fc0042e3eeaf9060a1d2b783bfb40a8782e72c1238a4b2c"
+  },
+  "localArtifact": {
+    "path": "artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/manifest.json",
+    "uploadedArtifactSha256": "d4198cdbf713b9a33666b4d0eadca7c8f686415d428af4872660f58180e35032"
+  },
+  "provenance": {
+    "sourceCommit": "eecb2c8213fc71e518b0e96946e82790fd20961b",
+    "sourceTreeDirty": false,
+    "node": "v24.6.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "decision": {
+    "generationComplete": true,
+    "corpusVerificationRequiredBeforeSelection": true
+  }
+}
