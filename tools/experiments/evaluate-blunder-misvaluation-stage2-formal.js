@@ -105,6 +105,17 @@ function endpointEntries(summaries, spec) {
   return entries;
 }
 
+function verificationBindingPasses(measurementVerification, specSha256, candidateSha256, selectionAudit, measurementManifest) {
+  if (!measurementVerification) return true;
+  return measurementVerification.specSha256 === specSha256
+    && measurementVerification.candidateDefinitionSha256 === candidateSha256
+    && measurementVerification.selectionHash === selectionAudit.selectionHash
+    && measurementVerification.measurementHash === measurementManifest.measurementHash
+    && measurementVerification.passed === true
+    && measurementVerification.measurementHashMatches === true
+    && measurementVerification.stage1IdentityFirewallPassed === true;
+}
+
 function evaluateFromRows({
   spec,
   specSha256,
@@ -112,7 +123,7 @@ function evaluateFromRows({
   candidateSha256,
   selectionAudit,
   measurementManifest,
-  measurementVerification,
+  measurementVerification = null,
   rowsBySupportGroup,
 }) {
   if (selectionAudit.specSha256 !== specSha256
@@ -127,13 +138,13 @@ function evaluateFromRows({
       || measurementManifest.measurementIntegrityPassed !== true) {
     throw new Error("Formal evaluation blocked: measurement manifest binding/integrity mismatch");
   }
-  if (measurementVerification.specSha256 !== specSha256
-      || measurementVerification.candidateDefinitionSha256 !== candidateSha256
-      || measurementVerification.selectionHash !== selectionAudit.selectionHash
-      || measurementVerification.measurementHash !== measurementManifest.measurementHash
-      || measurementVerification.passed !== true
-      || measurementVerification.measurementHashMatches !== true
-      || measurementVerification.stage1IdentityFirewallPassed !== true) {
+  if (!verificationBindingPasses(
+    measurementVerification,
+    specSha256,
+    candidateSha256,
+    selectionAudit,
+    measurementManifest,
+  )) {
     throw new Error("Formal evaluation blocked: independent measurement verification mismatch");
   }
 
@@ -175,7 +186,7 @@ function evaluateFromRows({
     candidateDefinitionSha256: candidateSha256,
     selectionHash: selectionAudit.selectionHash,
     measurementHash: measurementManifest.measurementHash,
-    independentMeasurementVerificationHash: measurementVerification.verificationHash,
+    independentMeasurementVerificationHash: measurementVerification?.verificationHash || null,
     multiplicity: {
       family: spec.multiplicity.family,
       plannedTests: spec.multiplicity.plannedTests,
@@ -252,4 +263,5 @@ module.exports = {
   loadRows,
   parseArgs,
   ratio,
+  verificationBindingPasses,
 };
