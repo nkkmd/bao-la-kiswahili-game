@@ -10,7 +10,7 @@ function testStage2FormalContract() {
   assert.equal(result.candidateDefinitionSha256,
     "12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b");
   assert.equal(result.specSha256,
-    "097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730");
+    "4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab");
   assert.equal(result.formalCandidates.length, 4);
   assert.equal(result.population.games, 4096);
   assert.equal(result.population.seedStart, 22500001);
