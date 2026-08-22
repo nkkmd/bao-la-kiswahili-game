@@ -283,6 +283,42 @@ Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080
 
 ---
 
+### 10. Blunder / Misvaluation Patterns — Study 1
+
+**研究題目:** Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証  
+**状態:** **Study 1 closed / exploratory discovery complete — 4 candidates promoted / not confirmed**  
+**作業branch:** `research/blunder-misvaluation-patterns`
+
+このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索しました。
+
+Fresh Stage 1は2,048 games / seeds `22400001..22402048`で実施し、1,884 unique historical trajectoriesを独立full replay/search verificationしました。outcome-blind selectionで1,200 unique rule states（Namua/Mtaji 600/600）を固定し、5,295 exact legal movesを測定しました。selection/measurement readinessは全gate PASSで、replacement、phase reassignment、threshold retuning、seed extensionはありませんでした。
+
+Frozen matcher/failure grammarから16,421 matchers / 123,624 detailed candidatesを列挙し、11件がpromotion gateを通過しました。support-equivalence後も11件で、事前固定ranking/capsにより4件をexploratory candidateとしてpromotionしました。
+
+```text
+BMP-S1-C01 — Namua / worstReplyActorFrontConnectionsDeltaNegative
+BMP-S1-C02 — Namua / actorCaptureMoveDeltaNegative
+BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
+BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
+```
+
+**最初に読む:**
+
+- [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+- [`blunder-misvaluation-patterns/README.md`](blunder-misvaluation-patterns/README.md) — 研究ディレクトリ入口
+
+**詳細・正本:**
+
+- [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md) — Study 1科学的統合
+- [`blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md`](blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md) — commit / hash / artifact / tooling索引
+- [`blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json) — canonical compact discovery result
+- [`blunder-misvaluation-patterns/CURRENT_STATUS.md`](blunder-misvaluation-patterns/CURRENT_STATUS.md) — closure状態とfixed boundaries
+- [`blunder-misvaluation-patterns/DECISION_REGISTER.md`](blunder-misvaluation-patterns/DECISION_REGISTER.md) — frozen decisions / no-rescue boundaries
+
+**Boundary:** 4件はStage 2 fresh-data confirmationに送るexploratory candidatesであり、confirmed Bao blunder、game-theoretic error、human misconception、expert/traditional knowledge、pedagogical principleではありません。Stage 1 supportをStage 2 confirmation evidenceとして再利用しません。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -301,7 +337,7 @@ Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加game
 
 Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`についても、同じStage 2へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えてformal decisionを救済しません。formal calibration generalizationを再検証する場合は、identity-firewall attritionを事前に織り込んだfresh prospective independent studyとします。
 
-悪手・錯覚研究は新規studyとして開始できますが、今回のisotonic mappingをformalにvalidatedされたwin probabilityとして扱わず、使用する場合はexploratory/descriptive contextと明示します。
+Blunder / Misvaluation Patterns Study 1の4候補をformalに確認する場合は、exact Stage 1 definitionsを結果後に変更せず、Stage 1 dataをconfirmation evidenceとして再利用しないfresh prospective Stage 2とします。human misconceptionやpedagogical claimは別evidence axisとして扱います。
 
 ---
 
