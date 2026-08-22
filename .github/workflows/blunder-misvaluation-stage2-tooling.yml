@@ -1,0 +1,60 @@
+name: Blunder misvaluation Stage 2 tooling validation
+
+on:
+  push:
+    branches:
+      - research/blunder-misvaluation-patterns-stage2-formal
+    paths:
+      - "doc/blunder-misvaluation-patterns/STAGE_2_FORMAL_PROTOCOL.md"
+      - "doc/blunder-misvaluation-patterns/preregistration/STAGE_2_FORMAL_CANDIDATES.json"
+      - "doc/blunder-misvaluation-patterns/preregistration/STAGE_2_FORMAL_SPEC.json"
+      - "tools/experiments/lib/blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/lib/blunder-misvaluation-stage2-corpus.js"
+      - "tools/experiments/run-blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/verify-blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/evaluate-blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/validate-blunder-misvaluation-stage2-formal-spec.js"
+      - "test/blunder-misvaluation-stage2-contract.test.js"
+      - "test/blunder-misvaluation-stage2-tooling.test.js"
+      - ".github/workflows/blunder-misvaluation-stage2-tooling.yml"
+  pull_request:
+    paths:
+      - "doc/blunder-misvaluation-patterns/STAGE_2_FORMAL_PROTOCOL.md"
+      - "doc/blunder-misvaluation-patterns/preregistration/STAGE_2_FORMAL_CANDIDATES.json"
+      - "doc/blunder-misvaluation-patterns/preregistration/STAGE_2_FORMAL_SPEC.json"
+      - "tools/experiments/lib/blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/lib/blunder-misvaluation-stage2-corpus.js"
+      - "tools/experiments/run-blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/verify-blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/evaluate-blunder-misvaluation-stage2-formal.js"
+      - "tools/experiments/validate-blunder-misvaluation-stage2-formal-spec.js"
+      - "test/blunder-misvaluation-stage2-contract.test.js"
+      - "test/blunder-misvaluation-stage2-tooling.test.js"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tooling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate Stage 2 contract
+        run: node tools/experiments/validate-blunder-misvaluation-stage2-formal-spec.js
+      - name: Test Stage 2 contract
+        run: node test/blunder-misvaluation-stage2-contract.test.js
+      - name: Test Stage 2 tooling semantics
+        run: node test/blunder-misvaluation-stage2-tooling.test.js
+      - name: Syntax-check Stage 2 scientific tooling
+        run: |
+          node --check tools/experiments/lib/blunder-misvaluation-stage2-formal.js
+          node --check tools/experiments/lib/blunder-misvaluation-stage2-corpus.js
+          node --check tools/experiments/run-blunder-misvaluation-stage2-formal.js
+          node --check tools/experiments/verify-blunder-misvaluation-stage2-formal.js
+          node --check tools/experiments/evaluate-blunder-misvaluation-stage2-formal.js
+      - name: Check pre-authorization status path
+        run: node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase status
