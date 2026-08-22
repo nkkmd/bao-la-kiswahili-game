@@ -334,3 +334,67 @@ Stage 2 generation = NOT AUTHORIZED
 ```
 
 The next permitted operation is frozen outcome-blind state selection only. If selection readiness fails, no seed extension, replacement sampling, phase reassignment or threshold relaxation is authorized.
+
+## 2026-08-22 — Stage 1 outcome-blind selection readiness PASS
+
+The investigator returned exact local HEAD before selection:
+
+```text
+2f6567bab0590ca7741fd8ad9907118544f6331d
+```
+
+The pre-selection status showed the complete generated and verified corpus, no prior selection audit, zero measurement files, and no discovery result. The source-file SHA-256 map remained identical to the authorization-bound map.
+
+The frozen outcome-blind selection procedure returned:
+
+```text
+uniqueHistoricalTrajectories = 1884
+unavailableAssignedPhase = 70
+selectedBeforeRuleStateCollapse = 1814
+duplicateSelectedRuleStatesCollapsed = 1
+phasePoolAfterRuleStateCollapse.namua = 961
+phasePoolAfterRuleStateCollapse.mtaji = 852
+droppedByPhaseQuota.namua = 361
+droppedByPhaseQuota.mtaji = 252
+selectedUniqueRuleStates = 1200
+selectedPhaseCounts.namua = 600
+selectedPhaseCounts.mtaji = 600
+distinctOpeningPrefixes = 1067
+replacementPerformed = false
+phaseReassignmentPerformed = false
+selectionHash = 80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df
+passed = true
+```
+
+Selected generation-stratum counts:
+
+```text
+B-D1 = 191
+B-D2 = 185
+B-D3 = 218
+LS-D2 = 203
+V2-D2 = 187
+LE-D2 = 216
+```
+
+All frozen selection/readiness gates passed. The minimum selected stratum count was 185, above the required 100. The 70 trajectories without an eligible root in their assigned phase remained unavailable; they were not replaced or reassigned. Both post-collapse phase pools were already above 600 before deterministic quota ranking.
+
+Machine-readable selection record:
+
+```text
+results/STAGE_1_SELECTION_RESULT.json
+selection result commit = d6a8617a517140e34e9af3a5f2b0793884fb1345
+```
+
+Decision:
+
+```text
+Stage 1 selection readiness = PASS
+measurement gate = OPEN
+measurement readiness = PENDING
+discovery = BLOCKED
+confirmatory inference = NOT AUTHORIZED
+Stage 2 generation = NOT AUTHORIZED
+```
+
+The next permitted operation is the frozen measurement phase over all 1200 selected roots. Discovery remains blocked until measured move records are at least 3600 and every selected root has a complete finite D3 candidate table.
