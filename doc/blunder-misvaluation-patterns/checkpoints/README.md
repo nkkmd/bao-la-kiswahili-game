@@ -15,7 +15,8 @@ Current checkpoints:
 - `2026-08-22-stage1-discovery-complete-four-candidates-promoted.md`
 - `2026-08-22-stage1-exploratory-closure-main-integration-ready.md`
 - `2026-08-22-stage2-formal-design-freeze-tooling-materialized.md`
+- `2026-08-22-stage2-preauth-spec-hash-binding-correction.md`
 
 Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification and formal evaluation are distinct gates.
 
-Current state: Stage 1 exploratory discovery is complete and integrated to `main`. Stage 2 candidate/spec design and execution tooling are materialized on `research/blunder-misvaluation-patterns-stage2-formal`, but local technical validation and exact source-file SHA-256 freeze are still pending. `STAGE_2_FORMAL_AUTHORIZATION.json` does not yet exist; Stage 2 scientific generation remains unauthorized.
+Current state: Stage 1 exploratory discovery is complete and integrated to `main`. Stage 2 candidate/spec design and execution tooling are materialized on `research/blunder-misvaluation-patterns-stage2-formal`. A pre-authorization clerical spec-hash binding error was corrected without changing the machine-readable scientific spec; local technical validation must now be rerun. Exact source-file SHA-256 freeze is still pending. `STAGE_2_FORMAL_AUTHORIZATION.json` does not yet exist; Stage 2 scientific generation remains unauthorized.
