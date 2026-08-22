@@ -37,9 +37,9 @@ generate
 
 Do not skip gates.
 
-## 2. Authorization acceptance check
+## 2. Pre-generation status and authorization acceptance
 
-After pulling the latest branch, first run:
+After pulling the latest branch, first inspect status:
 
 ```bash
 node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase status
@@ -59,7 +59,26 @@ hasMeasurementVerification = false
 hasFormalResult = false
 ```
 
-The Stage 2 loader requires the authorization-bound source-file SHA map to match exactly. Any mismatch must stop the study before generation.
+`--phase status` reports current hashes but intentionally does not consume the authorization. Therefore run this explicit **non-generating authorization acceptance check** next:
+
+```bash
+node - <<'NODE'
+const C = require('./tools/experiments/lib/blunder-misvaluation-stage2-corpus.js');
+const { specSha256 } = C.loadSpec();
+const { candidateSha256 } = C.loadCandidates();
+const { authorizationSha256 } = C.loadAuthorization(specSha256, candidateSha256);
+console.log(JSON.stringify({
+  stageId: 'BMP-S2-FORMAL-2026-08-22-v1',
+  authorizationAccepted: true,
+  specSha256,
+  candidateSha256,
+  authorizationSha256,
+  sourceFileSha256: C.sourceFileSha256()
+}, null, 2));
+NODE
+```
+
+This validates authorization semantics, candidate/spec binding, and the exact ordered `authorizedSourceFileSha256` map without generating scientific data. Any failure stops the study.
 
 ## 3. Generate the fixed formal corpus
 
