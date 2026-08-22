@@ -13,7 +13,7 @@ const STAGE1_RESULT_PATH = path.join(ROOT, "doc/blunder-misvaluation-patterns/re
 
 const EXPECTED_STAGE_ID = "BMP-S2-FORMAL-2026-08-22-v1";
 const EXPECTED_CANDIDATE_SHA256 = "12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b";
-const EXPECTED_SPEC_SHA256 = "e2845026a8414fcff1f5c8163a7de8a9089c7cbe3138fd67660cf0e026da5c65";
+const EXPECTED_SPEC_SHA256 = "097aa6450f270254ec6dee2a7fd7e74a2d8298cae36923a39e822b2137172730";
 const EXPECTED_STAGE1_SPEC_SHA256 = "f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd";
 const EXPECTED_STAGE1_SELECTION_HASH = "80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df";
 const EXPECTED_STAGE1_MEASUREMENT_HASH = "614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92";
@@ -184,8 +184,12 @@ function validate() {
     "independent-full-replay-and-generation-search-verify",
     "support-group-select",
     "formal-measure",
+    "independent-formal-measurement-verify",
     "formal-evaluate",
   ]);
+  assert.equal(spec.verificationFirewall.selectionBlockedUntilVerificationPass, true);
+  assert.equal(spec.verificationFirewall.evaluationBlockedUntilMeasurementIntegrityPass, true);
+  assert.equal(spec.verificationFirewall.evaluationBlockedUntilIndependentMeasurementVerificationPass, true);
   assert.equal(spec.verificationFirewall.independentVerifierRequired, true);
   assert.equal(spec.verificationFirewall.fullGenerationSearchRecomputationRequired, true);
   assert.equal(spec.verificationFirewall.formalD3CandidateTableRecomputationRequired, true);
@@ -217,6 +221,7 @@ function validate() {
     },
     plannedCoPrimaryTests: spec.multiplicity.plannedTests,
     multiplicity: spec.multiplicity.method,
+    independentMeasurementVerificationRequired: true,
     generationAuthorized: false,
   };
 }
