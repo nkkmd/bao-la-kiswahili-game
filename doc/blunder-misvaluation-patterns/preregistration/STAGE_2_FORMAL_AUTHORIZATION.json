@@ -24,7 +24,7 @@
     "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
     "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
     "tools/experiments/lib/position-typology-features.js": "94ec8283cdc9d8f75cbdb13215cc2acd95fd33a2ca3a14afccd3a26ca8644242",
-    "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3a26ca8644242",
+    "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
     "tools/experiments/lib/tactical-motif-features.js": "26fc334801c3cf879e41429ae011eb313cbb7a7f60184a7adfd5cb623eb31a42",
     "tools/experiments/lib/blunder-misvaluation-patterns.js": "609f4e7d3191de34ace405bc1e81f10033a3c741f044ceb0d4c3f9b8b3573e89",
     "tools/experiments/lib/blunder-misvaluation-stage1-contract.js": "57d9eed9870014fecb013cc6c42d2b50f96f6824d61b8999869dff38780b77ed",
