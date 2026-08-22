@@ -6,7 +6,7 @@
 
 ## 状態
 
-**STUDY 1 CLOSED — EXPLORATORY DISCOVERY COMPLETE / 4 CANDIDATES PROMOTED / NOT CONFIRMED**
+**STUDY 1 ACTIVE — STAGE 1 EXPLORATORY COMPLETE / 4 CANDIDATES PROMOTED / STAGE 2 NOT STARTED**
 
 ```text
 studyId = BMP-STUDY1
@@ -18,17 +18,28 @@ selected roots = 1200
 measured legal moves = 5295
 promoted exploratory candidates = 4
 candidate confirmation = NOT PERFORMED
+Study 1 formal result = NONE
 Stage 2 scientific generation = NOT AUTHORIZED
 ```
 
 ## 最初に読む
 
-- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向け成果概要
-- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — Study 1科学的統合正本
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — Study 1全体の現在地と初見向け概要
+- [`STAGE_1_EXPLORATORY_REPORT.md`](STAGE_1_EXPLORATORY_REPORT.md) — 完了したStage 1 exploratoryの科学的統合
 - [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — commit / hash / artifact / tooling索引
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在地と固定済み解釈境界
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — frozen scientific decisions / no-rescue boundaries
 - [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md) — stage・experiment index
+
+## Study architecture
+
+```text
+Stage 0 — technical / construct audit                 COMPLETE
+Stage 1 — fresh exploratory discovery                COMPLETE
+Stage 2 — fresh prospective formal confirmation      NOT STARTED
+```
+
+現在閉じているのはStage 1 exploratoryであり、Study 1全体はStage 2 formal confirmation前なので継続中である。
 
 ## Study 1の中心
 
@@ -42,9 +53,9 @@ pre-move state
 → downstream structural consequence
 ```
 
-として抽出した。
+として抽出し、次段階でfresh dataによりformal confirmationできるかを検証する。
 
-このStudyでは「その後負けた手」「static evaluationが低い手」「AIが選ばなかった手」を、それだけで悪手とは定義していない。
+このStudyでは「その後負けた手」「static evaluationが低い手」「AIが選ばなかった手」を、それだけで悪手とは定義しない。
 
 Primary machine reference:
 
