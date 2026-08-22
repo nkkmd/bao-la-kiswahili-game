@@ -1,6 +1,6 @@
 # DECISION_REGISTER — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-20
+Updated: 2026-08-22
 
 ## BMP-D001 — New prospective independent study
 
@@ -29,7 +29,7 @@ Status: **FROZEN**
 
 D2 is the shallow comparator. D1 is additional shallow diagnostic. D4 is non-primary technical/robustness candidate only.
 
-Status: **FROZEN — SUBJECT ONLY TO PRE-GENERATION TECHNICAL INVALIDITY AMENDMENT**
+Status: **FROZEN**
 
 ## BMP-D005 — Root actor perspective
 
@@ -213,5 +213,77 @@ contract freeze commit = 94b565468a9222dcaee0576529147ef032a284e6
 ```
 
 **Decision:** Freezing the Stage 1 spec does not authorize generation. Canonical contract validation, runner/verifier technical validation, exact source-file hash binding and a separate explicit authorization commit remain mandatory.
+
+Status: **FROZEN**
+
+## BMP-D027 — Stage 1 readiness chain passed without rescue
+
+**Decision:** Accept the executed Stage 1 population, selection and measurement as readiness-valid because all frozen gates passed under the preregistered no-replacement/no-reassignment rules.
+
+```text
+games = 2048
+unique historical trajectories = 1884
+selected unique rule states = 1200
+Namua / Mtaji selected = 600 / 600
+measured legal moves = 5295
+all selected roots finite D3 candidate tables = true
+```
+
+No seed extension, replacement, phase reassignment or threshold relaxation was used.
+
+Status: **FROZEN**
+
+## BMP-D028 — Stage 1 discovery closure
+
+**Decision:** Freeze the exact deterministic Stage 1 exploratory discovery output as:
+
+```text
+matcherCount = 16421
+detailedCandidateCount = 123624
+promotionPassingBeforeSupportEquivalence = 11
+promotionPassingAfterSupportEquivalence = 11
+promotedCandidateCount = 4
+manualOverridePerformed = false
+```
+
+The four promoted candidate IDs follow exact deterministic promoted order:
+
+```text
+BMP-S1-C01
+BMP-S1-C02
+BMP-S1-C03
+BMP-S1-C04
+```
+
+Exact definitions and metrics are canonical in `results/STAGE_1_DISCOVERY_RESULT.json`.
+
+Status: **FROZEN**
+
+## BMP-D029 — Stage 1 interpretation boundary
+
+**Decision:** Promotion means exploratory eligibility for fresh-data confirmation only.
+
+It does not authorize:
+
+```text
+confirmed Bao blunder claim
+game-theoretic blunder claim
+human misconception claim
+expert/traditional recognition claim
+pedagogical importance claim
+generalization beyond frozen Stage 1 source/population
+```
+
+Stage 1 data may not be reused as Stage 2 confirmation evidence.
+
+Status: **FROZEN**
+
+## BMP-D030 — Stage 2 may be designed but generation remains blocked
+
+**Decision:** After Stage 1 repository closure, prospective Stage 2 formal-confirmation design may begin for the exact frozen candidates `BMP-S1-C01..C04`.
+
+Stage 2 scientific generation remains unauthorized until a separate formal spec, canonical contract/tooling validation, exact source-file hash freeze, and explicit source-bound authorization are complete.
+
+The reserved Stage 2 capacity `22500001..22504096` remains reservation only.
 
 Status: **FROZEN**
