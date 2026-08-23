@@ -1,7 +1,9 @@
 # RESEARCH_PLAN — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-20  
-Status: **STAGE 0 DESIGN FROZEN — SCIENTIFIC GENERATION NOT AUTHORIZED**
+Updated: 2026-08-23  
+Status: **HISTORICAL PROSPECTIVE PLAN — STUDY 1 CLOSED**
+
+> The prospective design below is retained as provenance. Stage 1 and Stage 2 were subsequently executed under versioned frozen specifications and authorizations. Current status and formal adjudication are canonical in [`CURRENT_STATUS.md`](CURRENT_STATUS.md), [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md), and [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json).
 
 ## 1. Objective
 
@@ -213,3 +215,18 @@ Its Stage 1 isotonic mapping is excluded from this Study's formal primary endpoi
 ## 9. Human boundary
 
 Without new human participants/data, this Study can support only machine-level claims. `misconception`, `beginner error`, `expert oversight`, or cognitive-bias claims remain future human-validation questions.
+
+## 10. Executed resolution
+
+The prospective plan was materialized through a frozen Stage 1 exploratory specification and a separate frozen Stage 2 formal specification. Stage 2 used fresh seeds `22500001..22504096`, passed independent corpus and measurement verification, retained final Stage 1 identity overlap `0 / 0 / 0`, and formally evaluated all four promoted candidates.
+
+```text
+Stage 2 games = 4096
+formal measurements = 2678
+formal candidates = 4
+estimable = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+```
+
+No seed extension, replacement, candidate retuning, endpoint change, threshold change, multiplicity change, favorable subgroup promotion, alternate primary depth/evaluator, or manual override was used. The completed Study 1 is not reopened by this plan; any materially different follow-up requires a new prospective study/version and fresh evidence.
