@@ -1,6 +1,6 @@
 # CURRENT_STATUS — Critical Positions / Outcome Branching Study 1
 
-Updated: 2026-08-23
+Updated: 2026-08-24
 
 ## Repository identity
 
@@ -14,7 +14,7 @@ directory = doc/critical-positions-outcome-branching/
 artifact root = artifacts/local/critical-positions-outcome-branching/
 ```
 
-The verified current `main` had advanced beyond `2c452186...`; the study branch was created from the actual verified `576783b1...` HEAD.
+The study branch was created from the actually verified main HEAD `576783b1...`. Completed prior-study formal decisions remain immutable.
 
 ## Current scientific state
 
@@ -28,26 +28,42 @@ Stage 0 scientific data = NONE
 Stage 1 prospective design = FROZEN / VALIDATED
 Stage 1 pre-generation firewall = COMPLETE / PASS
 Stage 1 source-bound generation authorization = ISSUED
-Stage 1 scientific source generation = COMPLETE
-Stage 1 scientific source games generated = 3072 / 3072
+Stage 1 scientific source generation = COMPLETE / 3072 of 3072
 Stage 1 scientific source seeds consumed = 22600001..22603072 / COMPLETE
 Stage 1 independent full corpus replay verification = COMPLETE / PASS
-Stage 1 outcome-blind root selection = UNBLOCKED / NOT STARTED
-Stage 1 scientific continuation measurement = NOT STARTED
+Stage 1 outcome-blind root selection = COMPLETE / READINESS PASS
+Stage 1 selected roots = 600 = 300 Namua + 300 Mtaji
+Stage 1 scientific continuation measurement = UNBLOCKED / NOT STARTED
 Stage 1 scientific continuation outcomes inspected = false
 Stage 2 scientific generation = NOT AUTHORIZED / NOT STARTED
 ```
 
-Authorization permits only the frozen Stage 1 exploratory pipeline. It does **not** authorize confirmatory inference, Stage 2 generation, game-theoretic criticality claims, validated win-probability claims, or human/expert criticality claims.
+Stage 1 remains exploratory only:
+
+```text
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+stage2GenerationAuthorized = false
+```
+
+Authorization does not permit confirmatory inference, Stage 2 generation, validated win-probability claims, game-theoretic criticality claims, human/expert criticality claims, or rescue/relabeling of completed studies.
+
+## Frozen Stage 1 identity
+
+```text
+stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
+spec SHA-256 = 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
+authorization SHA-256 = 34ae3f2afb066521f2165f6e16d5edd720ab9587b71c64dce677696ad23cd941
+source games = 3072
+source seeds = 22600001..22603072
+selectionHash = 702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d
+```
 
 ## Stage 1 generated source corpus
 
 Generated manifest identity:
 
 ```text
-stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
-spec SHA-256 = 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
-authorization SHA-256 = 34ae3f2afb066521f2165f6e16d5edd720ab9587b71c64dce677696ad23cd941
 generatedAt = 2026-08-23T11:15:15.447Z
 sourceCommit = 157a4947435213b430ae7a9a85cc861aebfc258e
 sourceTreeDirty = false
@@ -58,8 +74,6 @@ Frozen population realized exactly:
 
 ```text
 games = 3072
-seedStart = 22600001
-seedEnd = 22603072
 B-D1 = 512
 B-D2 = 512
 B-D3 = 512
@@ -77,14 +91,12 @@ largestHistoricalTrajectoryGroup = 7
 distinctOpeningPrefixes = 2226
 ```
 
-Generation-level preregistered identity/diversity gates:
+Generation-level preregistered identity/diversity gates passed:
 
 ```text
 unique historical trajectories: 2726 >= 2500 -> PASS
 generated distinct opening prefixes: 2226 >= 1800 -> PASS
 ```
-
-Duplicate trajectories remain subject to the frozen pre-selection collapse. The manifest's scientific source-file SHA-256 mapping matches the authorization-bound mapping.
 
 Generation checkpoint:
 
@@ -95,12 +107,9 @@ commit = cd7b367c90df7d628b48471d7d63d863313e6057
 
 ## Stage 1 independent full corpus replay verification
 
-The independently produced local `verification.json` reports:
+Independent local `verification.json`:
 
 ```text
-schemaVersion = 1
-stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
-specSha256 = 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
 passed = true
 gamesVerified = 3072
 fullCorpusReplay = true
@@ -110,8 +119,6 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 ```
 
-Therefore the mandatory corpus-verification firewall is PASS and the frozen outcome-blind root-selection phase is unblocked.
-
 Verification checkpoint:
 
 ```text
@@ -119,108 +126,21 @@ doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-full-corp
 checkpoint commit = e6a1fa2a467ba6646418a1096e1b3bacc4566914
 ```
 
-This verification is a reproducibility/identity result only. It does not provide continuation outcome evidence, does not authorize scientific confirmation, and does not alter Stage 2 authorization.
+This was a reproducibility/identity firewall only and did not inspect continuation outcomes.
 
-## Primary construct and frozen measurement
+## Stage 1 outcome-blind root selection
 
-Primary construct:
-
-```text
-fixed-policy empirical continuation divergence
-```
-
-For every selected nonterminal root with at least two exact legal `E.moveVariants(root)` moves:
-
-```text
-root actor = state.player
-root move interventions = every exact AI.moveKey variant
-post-root continuation policy = P1_NORMAL_TOP3
-replicates per exact root move = 64
-maximum post-root continuation plies = 200
-replicate pairing = common derived seed across all root moves at replicate index r
-administrative cap = ADMINISTRATIVE_UNFINISHED, never draw/0.5
-primary root estimability = every exact root move terminates in all 64 replicates
-```
-
-For an estimable root:
-
-```text
-p_hat_m = root-actor wins / 64 for exact legal move m
-D_range = max_m(p_hat_m) - min_m(p_hat_m)
-Stage 1 high-divergence root = D_range >= 0.30
-```
-
-`p_hat_m` is a fixed-policy empirical continuation quantity. It is not a game-theoretic probability and is not derived from the inconclusive Calibration Study isotonic mapping.
-
-## Stage 1 pre-generation firewall and authorization
-
-Frozen Stage 1 specification:
-
-```text
-stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
-spec SHA-256 = 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
-source games = 3072
-source seeds = 22600001..22603072
-selected roots if readiness passes = 600 = 300 Namua + 300 Mtaji
-```
-
-Final source-changing scientific implementation commit before authorization:
-
-```text
-3995932ae73e9e99a27d4143de4e359db1136060
-```
-
-Validation evidence:
-
-```text
-Stage 1 contract validation:
-  run = 32625783543
-  conclusion = success
-
-Stage 1 production tooling validation:
-  run = 32625783544
-  job = 97160810538
-  conclusion = success
-
-Stage 0 regression validation:
-  run = 32625783553
-  conclusion = success
-```
-
-Pre-generation firewall checkpoint:
-
-```text
-53dcfd971c9408327d2d9830486523322ec41a22
-```
-
-Separate source-bound authorization commit:
-
-```text
-a85f9b36abbf492cd8085b0a95c8d10b76f849e8
-```
-
-Authorization semantics:
-
-```text
-stage1GenerationAuthorized = true
-scientificInferenceAuthorized = false
-confirmatoryReuseAllowed = false
-stage2GenerationAuthorized = false
-```
-
-## Frozen outcome-blind root selection
-
-The next phase uses only preregistered pre-outcome state identity and structural eligibility:
+Frozen procedure:
 
 ```text
 collapse duplicate historicalTrajectoryHash groups
--> deterministic Namua/Mtaji phase assignment by frozen SHA parity
+-> deterministic Namua/Mtaji assignment by frozen SHA parity
 -> choose one eligible root within assigned phase by frozen SHA rank
 -> collapse duplicate selected ruleStateKey without replacement
 -> apply frozen phase quotas: 300 Namua + 300 Mtaji
 ```
 
-Forbidden selection inputs include:
+Forbidden selection inputs remained excluded:
 
 ```text
 game winner
@@ -231,7 +151,135 @@ candidate matcher
 post-move consequence
 ```
 
-Selection readiness requires all frozen checks to pass, including exactly 600 unique selected rule states, exactly 300 roots per phase, selected opening-prefix diversity, and generation-stratum representation. Failure is terminal for downstream v1 measurement: no replacements, phase reassignment, seed extension, threshold retuning, or favorable-subset rescue.
+Observed selection audit:
+
+```text
+generatedGames = 3072
+uniqueHistoricalTrajectories = 2726
+unavailableAssignedPhase = 87
+selectedBeforeRuleStateCollapse = 2639
+duplicateSelectedRuleStatesCollapsed = 6
+phasePoolAfterRuleStateCollapse:
+  namua = 1356
+  mtaji = 1277
+droppedByPhaseQuota:
+  namua = 1056
+  mtaji = 977
+selectedUniqueRuleStates = 600
+replacementPerformed = false
+phaseReassignmentPerformed = false
+```
+
+Final selected population:
+
+```text
+Namua = 300
+Mtaji = 300
+total = 600
+unique historical trajectories among selected roots = 600
+unique rule states among selected roots = 600
+selected distinct opening prefixes = 567
+maximum single generation-stratum share = 0.18833333333333332
+```
+
+Generation-stratum counts:
+
+```text
+B-D1 = 95
+B-D2 = 95
+B-D3 = 105
+LS-D2 = 113
+V2-D2 = 99
+LE-D2 = 93
+```
+
+All frozen selection-readiness gates passed:
+
+```text
+uniqueHistoricalTrajectories = PASS
+generatedDistinctOpeningPrefixes = PASS
+selectedUniqueRuleStates = PASS
+namuaSelectedRoots = PASS
+mtajiSelectedRoots = PASS
+selectedDistinctOpeningPrefixes = PASS
+selectedPerGenerationStratum = PASS
+maximumSingleSelectedGenerationStratumShare = PASS
+selection readiness = PASS
+```
+
+Independent cross-check of the supplied compact artifacts also found:
+
+```text
+selectionHash agrees across selected-roots and selection-audit = true
+terminal selected roots = 0
+assigned phase mismatches = 0
+selected roots with actor legalMoveCount < 2 = 0
+selected roots with ply < 8 = 0
+```
+
+Selection checkpoint:
+
+```text
+doc/critical-positions-outcome-branching/checkpoints/2026-08-24-stage1-outcome-blind-selection-readiness-pass.md
+checkpoint commit = 5c3a6e87cd4fbe19c845756341d1afc62c735a2b
+```
+
+## Primary construct and frozen measurement
+
+Primary construct:
+
+```text
+fixed-policy empirical continuation divergence
+```
+
+For every selected root:
+
+```text
+root actor = state.player
+root move interventions = every exact E.moveVariants(root) / AI.moveKey variant
+post-root continuation policy = P1_NORMAL_TOP3
+replicates per exact root move = 64
+maximum post-root continuation plies = 200
+replicate pairing = common derived seed across all root moves at replicate index r
+administrative cap = ADMINISTRATIVE_UNFINISHED, never draw/0.5
+primary root estimability = every exact root move terminates in all 64 replicates
+```
+
+For a primary-estimable root:
+
+```text
+p_hat_m = root-actor wins / 64 for exact legal move m
+D_range = max_m(p_hat_m) - min_m(p_hat_m)
+highDivergence = D_range >= 0.30
+```
+
+`p_hat_m` is a fixed-policy empirical continuation quantity. It is not a game-theoretic probability and is not derived from the inconclusive Calibration Study isotonic mapping.
+
+Secondary root-only measurements remain:
+
+```text
+exact D2/D3 / bao / phase2 / Q1 search-value axis
+TopSet / ranking-instability summaries
+immediate structural transition
+exhaustive one-ply opponent reply envelope
+```
+
+D3 is not ground truth. No validated probability conversion is authorized. No fabricated PV is allowed.
+
+## Stage 1 pre-generation firewall and authorization
+
+Final source-changing implementation before authorization:
+
+```text
+implementation commit = 3995932ae73e9e99a27d4143de4e359db1136060
+Stage 1 contract run = 32625783543 / success
+Stage 1 tooling run/job = 32625783544 / 97160810538 / success
+Stage 0 regression run = 32625783553 / success
+pre-generation firewall checkpoint = 53dcfd971c9408327d2d9830486523322ec41a22
+authorization commit = a85f9b36abbf492cd8085b0a95c8d10b76f849e8
+```
+
+The authorization remains bound to the frozen spec and exact scientific source hashes. Documentation/checkpoint changes after generation do not change the authorized scientific implementation.
 
 ## Immutable inherited formal states
 
@@ -266,7 +314,7 @@ Namua→Mtaji Strategic Temporal Transition Study 1:
   first Mtaji observation under frozen engine = deterministic ply 44 for Mtaji-reaching trajectories
 ```
 
-No label above may be changed by this study.
+No inherited label may be changed by this study.
 
 ## Seed state
 
@@ -280,19 +328,26 @@ Continuation RNG seeds are deterministically derived from stage salt + root iden
 
 ## Current next gate
 
-The independent full corpus replay firewall has passed. The next permitted operation is frozen outcome-blind root selection:
+The outcome-blind selection readiness firewall has passed. The next permitted operation is frozen Stage 1 continuation/secondary/structural measurement:
 
 ```bash
-node tools/experiments/run-critical-positions-stage1-exploratory.js --phase select
+node tools/experiments/run-critical-positions-stage1-exploratory.js --phase measure
 ```
 
-Expected local outputs:
+Expected compact output includes:
 
 ```text
-selection-audit.json
-selected-roots.json
+measurement-audit.json
 ```
 
-Inspect `selection-audit.json` before any continuation measurement. Measurement is permitted only if the frozen selection readiness reports `passed = true`. If selection readiness fails, stop without replacement, seed extension, phase reassignment, or other rescue.
+Do not replace non-estimable roots, increase replicates, extend the source seed block, change the 200-ply cap, substitute the continuation policy, retune `D_range`, or inspect/promote favorable subgroups.
 
-Stage 2 remains locked until Stage 1 is independently verified and completed as exploratory evidence, candidate definitions are separately frozen, Stage 2 formal rules are preregistered, source-bound Stage 2 authorization exists, and fresh evidence is guaranteed.
+After measurement, run the mandatory independent full remeasurement/recomputation:
+
+```bash
+node tools/experiments/verify-critical-positions-stage1-exploratory.js \
+  --phase measurement \
+  --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
+```
+
+Deterministic discovery remains blocked until `measurement-verification.json` has been produced and its required verification conditions pass. Stage 2 remains locked and unconsumed.
