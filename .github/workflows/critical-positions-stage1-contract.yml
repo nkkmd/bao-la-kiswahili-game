@@ -1,0 +1,47 @@
+name: Critical positions Stage 1 contract validation
+
+on:
+  push:
+    branches:
+      - research/critical-positions-outcome-branching
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+      - "tools/experiments/lib/critical-positions-stage1-contract.js"
+      - "tools/experiments/validate-critical-positions-stage1-spec.js"
+      - "test/critical-positions-stage1-contract.test.js"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - ".github/workflows/critical-positions-stage1-contract.yml"
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+      - "tools/experiments/lib/critical-positions-stage1-contract.js"
+      - "tools/experiments/validate-critical-positions-stage1-spec.js"
+      - "test/critical-positions-stage1-contract.test.js"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - ".github/workflows/critical-positions-stage1-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate frozen Stage 1 spec
+        run: node tools/experiments/validate-critical-positions-stage1-spec.js
+      - name: Validate Stage 1 contract semantics
+        run: node test/critical-positions-stage1-contract.test.js
+      - name: Assert scientific authorization absent
+        run: |
+          test ! -e doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
+          echo "Stage 1 authorization absent as required during contract validation"
