@@ -1,6 +1,6 @@
 # DECISION_REGISTER — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-22
+Updated: 2026-08-23
 
 ## BMP-D001 — New prospective independent study
 
@@ -286,4 +286,69 @@ Stage 2 scientific generation remains unauthorized until a separate formal spec,
 
 The reserved Stage 2 capacity `22500001..22504096` remains reservation only.
 
+Status: **FROZEN HISTORICAL GATE — SUBSEQUENTLY SATISFIED**
+
+## BMP-D031 — Stage 2 prospective identity and authorization completed
+
+**Decision:** Accept the prospectively frozen Stage 2 design and final source-bound authorization as the only formal-confirmation contract for Study 1.
+
+```text
+stageId = BMP-S2-FORMAL-2026-08-22-v1
+candidate SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
+spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab
+authorization SHA-256 = 0e5b29fcf64caf82c3e2106b85387eea5bb04ed66a0624f75f76518f13596a87
+games = 4096
+seeds = 22500001..22504096
+```
+
+The initial authorization commit with one clerical source-hash transcription error was never used and was corrected before scientific generation.
+
 Status: **FROZEN**
+
+## BMP-D032 — Stage 2 verification and identity firewall passed
+
+**Decision:** Accept the Stage 2 population, selection, formal measurement and independent verification chain as technically and scientifically eligible for formal evaluation.
+
+```text
+unique historical trajectories = 3559
+selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
+G01 selected/measured = 1868
+G02 selected/measured = 810
+total measurements = 2678
+measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
+measurement verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
+final Stage 1 overlap = 0 / 0 / 0
+```
+
+No replacement, seed extension or alternate-root rescue was performed.
+
+Status: **FROZEN**
+
+## BMP-D033 — Stage 2 formal result and Study 1 closure
+
+**Decision:** Apply the frozen candidate-level decision rule without modification and close Study 1 with zero confirmed candidates.
+
+```text
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+formal candidates = 4
+estimable = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+```
+
+C01-C03 reproduce their frozen structural/reply failure signatures at high rates but fail the D3-inferior co-primary confirmation requirement. C04 fails the absolute failure-signature floor and the D3-inferior requirement.
+
+Status: **FINAL / FROZEN**
+
+## BMP-D034 — No rescue and final interpretation boundary
+
+**Decision:** The completed Stage 2 formal decision is immutable within Study 1. Do not add games, extend seeds, alter floors, redefine candidates, change primary depth/evaluator, select favorable subgroups or otherwise use the completed data to rescue a positive catalogue.
+
+`NOT-CONFIRMED` means the exact frozen machine-operational candidate did not satisfy the Stage 2 confirmation rule. It does not prove the move is game-theoretically non-blundering and does not establish human misconception, expert/traditional recognition, pedagogical importance, causal mechanism or external validity.
+
+Any materially different follow-up is a new prospective study/version with fresh evidence.
+
+Status: **FINAL / FROZEN**
