@@ -97,6 +97,16 @@ function benchmarkPolicy(root, policyId) {
   };
 }
 
+function deterministicCore(result) {
+  const core = JSON.parse(JSON.stringify(result));
+  delete core.resultHash;
+  for (const benchmark of core.benchmarks) {
+    delete benchmark.elapsedMs;
+    delete benchmark.elapsedMsPerRecordedContinuationPly;
+  }
+  return core;
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const initial = E.initialState();
@@ -160,7 +170,7 @@ function main() {
     replaySamples,
     benchmarks: C.POLICY_IDS.map((policyId) => benchmarkPolicy(initial, policyId)),
   };
-  result.resultHash = C.canonicalHash(result);
+  result.resultHash = C.canonicalHash(deterministicCore(result));
   const text = `${JSON.stringify(result, null, 2)}\n`;
   if (args.output) {
     fs.mkdirSync(path.dirname(path.resolve(args.output)), { recursive: true });
