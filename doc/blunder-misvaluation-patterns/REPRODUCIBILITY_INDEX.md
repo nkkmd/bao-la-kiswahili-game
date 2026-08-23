@@ -1,121 +1,189 @@
 # REPRODUCIBILITY_INDEX — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-22  
-Status: **STUDY 1 ACTIVE / STAGE 1 EXPLORATORY COMPLETE**
+Updated: 2026-08-23  
+Status: **STUDY 1 CLOSED / STAGE 1 + STAGE 2 COMPLETE**
 
 ## Study identity
 
 ```text
 studyId = BMP-STUDY1
-baseline main HEAD = b1cc7047504b73c5a848e866f795c26a64250d13
-research branch = research/blunder-misvaluation-patterns
+original baseline main HEAD = b1cc7047504b73c5a848e866f795c26a64250d13
+integrated Stage 1 main HEAD = 52f5635be7064b5016baf7cde82faebe60609d9e
+Stage 2 branch = research/blunder-misvaluation-patterns-stage2-formal
+```
+
+## Stage 1 exploratory identity
+
+```text
 stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
 spec SHA-256 = f4820c1fa77f8a3c1f808e5367e2b10a1150492c0a1544aa076b61929f68a3dd
-```
-
-This index freezes the reproducibility chain for the completed Stage 1 exploratory discovery. Study 1 as a whole remains active because Stage 2 formal confirmation has not started.
-
-## Stage 1 execution chain
-
-```text
-contract freeze commit
-  94b565468a9222dcaee0576529147ef032a284e6
-
-contract validation execution HEAD
-  b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
-
-validated implementation commit
-  8df328ca238611919ac58c262b92058712ee1049
-
-tooling validation result commit
-  cd26cb3280fde00663618162f7c1e2d306470032
-
-execution source freeze commit
-  0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
-
-Stage 1 generation authorization commit
-  1af3828c1c25789d6f4af590ee973cffd34bca46
-
-generation result commit
-  bb6375ff1ce3afab00d588b4b6e017b6aaf24541
-
-verification result commit
-  17995f04f3b9abbe0d73b2f035e8129ff07e191f
-
-selection execution HEAD
-  2f6567bab0590ca7741fd8ad9907118544f6331d
-
-selection result commit
-  d6a8617a517140e34e9af3a5f2b0793884fb1345
-
-measurement execution HEAD
-  1c7fc1f8d979d6952433406e7ab5d0a515a633fb
-
-measurement result commit
-  5e916c6676022a50d551310f21cf1d3414b6c27c
-
-discovery execution HEAD
-  14c0d29683611ecd76771a213ce2380cb71fa18d
-
-discovery result commit
-  ffb9184d84c775e94f52b91f0c1621ea46061a93
-```
-
-## Population and identity
-
-```text
 Stage 1 games = 2048
 seeds = 22400001..22402048
 unique historical trajectories = 1884
-distinct generation opening prefixes = 1621
-verificationIdentityHash = f0ef925b8690020762c90c5438565d731bce46476bd5428f77450407e1867343
-```
-
-Selection:
-
-```text
+distinct opening prefixes = 1621
 selected unique rule states = 1200
-Namua = 600
-Mtaji = 600
-distinct selected opening prefixes = 1067
-selectionHash = 80a8ccbacb2ee943a8620f853a91789e24a09a55a8d46a3b93936246536a10df
-```
-
-Measurement:
-
-```text
-completed roots = 1200
-measured legal moves = 5295
-all selected roots finite D3 tables = true
 measurementHash = 614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd92
+promoted exploratory candidates = 4
 ```
 
-## Discovery artifact identity
+Stage 1 support is not reused as Stage 2 confirmation evidence.
 
-Raw local artifact:
+## Stage 2 frozen identity
 
 ```text
-path = artifacts/local/blunder-misvaluation-patterns/stage1-exploratory-v1/discovery-result.json
-bytes = 268693257
-sha256 = c910b7c4f854daf0223fa5ed935dc0b2a5fe844ef5541d623adfdaca94cb8d26
+stageId = BMP-S2-FORMAL-2026-08-22-v1
+candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
+formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab
+authorization SHA-256 = 0e5b29fcf64caf82c3e2106b85387eea5bb04ed66a0624f75f76518f13596a87
+scientific generation source commit = eecb2c8213fc71e518b0e96946e82790fd20961b
+scientific measurement source commit = 06ce63155c5b060a9ea3f80ba5a2dc48216e848b
 ```
 
-The raw artifact is intentionally not committed because it contains the full detailed failed-candidate set.
+The historical pre-authorization spec-hash transcription error is documented in its own checkpoint. The canonical formal spec SHA is `426041...caab`.
 
-Repository-scale streaming extraction:
+## Stage 2 execution chronology
+
+Key Stage 2 gate identities:
 
 ```text
-bytes = 10034
-sha256 = 0df0438105c7d7b248e014ffc30087b96dceb97bb4aeb716456b504cddc32db0
-method = streaming extraction of top-level discovery identity/counts, promotedCandidates and noRescue
-original artifact modified = false
+Stage 1 integrated main baseline
+  52f5635be7064b5016baf7cde82faebe60609d9e
+
+pre-authorization design/tooling branch tip before local validation
+  5d3b53ac9c205df396d4213762623add4429cd66
+
+spec-hash binding correction / locally validated execution HEAD
+  011b9a56ecb95046f7d61a331b76dea093aa7663
+
+technical validation result commit
+  3d5a1a33f673c9c98ba6a5ed2862b25c8d76e777
+
+execution source freeze commit
+  11670e528dccff063b8e66be9ff190e61e4e4e77
+
+final corrected authorization commit
+  a9eee06c6a1ad36f9e65948f5d78eff58a91d561
+
+scientific generation execution source commit
+  eecb2c8213fc71e518b0e96946e82790fd20961b
+
+generation + independent corpus-verification recorded branch tip
+  ea2ac4fe80e4ffd5926cbba7dc8c0745c27d9e0e
+
+selection-pass / formal-measurement-open branch tip
+  06ce63155c5b060a9ea3f80ba5a2dc48216e848b
+
+measurement-verification-pass / formal-evaluation-open branch tip
+  b0a62af568b27b30273f3c435debeeee10691904
+
+formal-result closure documentation branch tip before final cross-audit
+  f8a6413e772eecf4d46eac329ecfb7e0c9877037
 ```
 
-Canonical compact discovery record:
+The branch-tip entries above are gate-boundary identities; compact result/checkpoint documents for the corresponding gates are indexed below. The final cross-audit checkpoint records the later documentation-only closure tip.
 
-- [`results/STAGE_1_DISCOVERY_RESULT.json`](results/STAGE_1_DISCOVERY_RESULT.json)
+## Stage 2 population and corpus verification
 
-## Machine-readable result records
+```text
+games = 4096
+seeds = 22500001..22504096
+unique historical trajectories = 3559
+distinct opening prefixes = 2827
+summaryHash = 9875e142a1d1067d1fc0042e3eeaf9060a1d2b783bfb40a8782e72c1238a4b2c
+verificationIdentityHash = e2fab371ae09d18e7fed0aa979f72cb87ec4e2fdc67caacdb6129818b2b38fa4
+fullSearchRecomputation = true
+corpus verification = PASS
+```
+
+## Stage 2 selection
+
+```text
+selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
+G01 Namua selected unique rule states = 1868
+G02 Mtaji selected unique rule states = 810
+final Stage 1 overlap = 0 / 0 / 0
+replacementPerformed = false
+seedExtensionPerformed = false
+alternateRootAfterRuleStateOverlapPerformed = false
+selectionIntegrityPassed = true
+```
+
+## Stage 2 measurement and independent verification
+
+```text
+G01 measurements = 1868
+G02 measurements = 810
+total formal measurements = 2678
+all formal D3 candidate tables finite = true
+measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
+```
+
+Independent verification:
+
+```text
+verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
+verifiedMeasurementRows = 2678
+measurementHashMatches = true
+independentFormalD3CandidateTableRecomputation = true
+independentCandidateMatcherAndFailureRecomputation = true
+stage1IdentityFirewallPassed = true
+passed = true
+```
+
+## Stage 2 formal result identity
+
+Complete local formal artifact:
+
+```text
+path = artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/stage2-formal-result.json
+bytes = 480791
+sha256 = e478d3fb29ad15508ddcaf6973d8eb8aa6bf4debd23921564ae08a1ac518293d
+embedded resultHash = 1de774ca5aac8a284ec5f78395050238fab93643e47fc47046cf511612d50d50
+independentMeasurementVerificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
+```
+
+The earlier wrapper-generated local result with a null verification-binding field is superseded. The corrected result was produced by the already-frozen direct evaluator; endpoint values and formal decisions did not change.
+
+Canonical compact result:
+
+- [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
+
+## Formal decisions
+
+```text
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+confirmedCount = 0
+```
+
+All four candidates were estimable and technically valid.
+
+## Stage 1 execution chain
+
+Key Stage 1 commits:
+
+```text
+contract freeze = 94b565468a9222dcaee0576529147ef032a284e6
+contract validation execution = b3ff83a4b94b5e60e98ef48b6b2666a20a26334a
+validated implementation = 8df328ca238611919ac58c262b92058712ee1049
+tooling validation result = cd26cb3280fde00663618162f7c1e2d306470032
+execution source freeze = 0a5c57aa5bb081b4785ce13678d057f5d3bc0b9c
+Stage 1 generation authorization = 1af3828c1c25789d6f4af590ee973cffd34bca46
+generation result = bb6375ff1ce3afab00d588b4b6e017b6aaf24541
+verification result = 17995f04f3b9abbe0d73b2f035e8129ff07e191f
+selection execution = 2f6567bab0590ca7741fd8ad9907118544f6331d
+selection result = d6a8617a517140e34e9af3a5f2b0793884fb1345
+measurement execution = 1c7fc1f8d979d6952433406e7ab5d0a515a633fb
+measurement result = 5e916c6676022a50d551310f21cf1d3414b6c27c
+discovery execution = 14c0d29683611ecd76771a213ce2380cb71fa18d
+discovery result = ffb9184d84c775e94f52b91f0c1621ea46061a93
+```
+
+## Machine-readable records
+
+Stage 1:
 
 - [`results/STAGE_0_FEASIBILITY_RESULT.json`](results/STAGE_0_FEASIBILITY_RESULT.json)
 - [`results/STAGE_1_CONTRACT_VALIDATION_RESULT.json`](results/STAGE_1_CONTRACT_VALIDATION_RESULT.json)
@@ -126,42 +194,28 @@ Canonical compact discovery record:
 - [`results/STAGE_1_MEASUREMENT_RESULT.json`](results/STAGE_1_MEASUREMENT_RESULT.json)
 - [`results/STAGE_1_DISCOVERY_RESULT.json`](results/STAGE_1_DISCOVERY_RESULT.json)
 
-## Preregistration / authorization
+Stage 2:
 
-- [`preregistration/STAGE_0_DESIGN_FREEZE.json`](preregistration/STAGE_0_DESIGN_FREEZE.json)
-- [`preregistration/STAGE_1_EXPLORATORY_SPEC.json`](preregistration/STAGE_1_EXPLORATORY_SPEC.json)
-- [`preregistration/STAGE_1_EXECUTION_SOURCE_FREEZE.json`](preregistration/STAGE_1_EXECUTION_SOURCE_FREEZE.json)
-- [`preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`](preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json)
-
-## Scientific tooling
-
-```text
-tools/experiments/lib/blunder-misvaluation-patterns.js
-tools/experiments/lib/blunder-misvaluation-stage1-contract.js
-tools/experiments/lib/blunder-misvaluation-stage1-corpus.js
-tools/experiments/lib/blunder-misvaluation-stage1-discovery.js
-tools/experiments/run-blunder-misvaluation-stage1-exploratory.js
-tools/experiments/verify-blunder-misvaluation-stage1-exploratory.js
-tools/experiments/validate-blunder-misvaluation-stage1-spec.js
-```
-
-Tests:
-
-```text
-test/blunder-misvaluation-stage0.test.js
-test/blunder-misvaluation-stage1-contract.test.js
-test/blunder-misvaluation-stage1-tooling.test.js
-```
+- [`results/STAGE_2_TECHNICAL_VALIDATION_RESULT.json`](results/STAGE_2_TECHNICAL_VALIDATION_RESULT.json)
+- [`results/STAGE_2_GENERATION_RESULT.json`](results/STAGE_2_GENERATION_RESULT.json)
+- [`results/STAGE_2_VERIFICATION_RESULT.json`](results/STAGE_2_VERIFICATION_RESULT.json)
+- [`results/STAGE_2_SELECTION_RESULT.json`](results/STAGE_2_SELECTION_RESULT.json)
+- [`results/STAGE_2_MEASUREMENT_RESULT.json`](results/STAGE_2_MEASUREMENT_RESULT.json)
+- [`results/STAGE_2_MEASUREMENT_VERIFICATION_RESULT.json`](results/STAGE_2_MEASUREMENT_VERIFICATION_RESULT.json)
+- [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
 
 ## Interpretation firewall
 
-Reproducibility of Stage 1 establishes the machine procedure and exploratory promotion output only. It does not turn Stage 1 candidates into confirmed blunders.
+Reproducibility establishes the exact machine procedure and formal candidate decisions only.
 
 ```text
-Stage 1 exploratory discovery = complete
-Study 1 formal result = none
-confirmatory reuse of Stage 1 data = forbidden
-Stage 2 generation = not authorized
+Study 1 formal result = 0 confirmed / 4 not-confirmed
+game-theoretic claim = not authorized
 human misconception claim = not authorized
-game-theoretic blunder claim = not authorized
+expert/traditional claim = not authorized
+pedagogical claim = not authorized
+causal claim = not authorized
+external-validity claim = not authorized
 ```
+
+Study 1 is closed. Any alternate evaluator/depth, human-validation or game-theoretic follow-up must be a new prospective study.

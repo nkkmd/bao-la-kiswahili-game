@@ -1,29 +1,35 @@
 # Blunder / Misvaluation Patterns Study 1 — Overview
 
-更新日: 2026-08-22  
-Status: **STUDY 1 ACTIVE / STAGE 1 EXPLORATORY COMPLETE / 4 CANDIDATES PROMOTED / STAGE 2 NOT STARTED**
+更新日: 2026-08-23  
+Status: **STUDY 1 CLOSED / STAGE 2 FORMAL COMPLETE / 0 CONFIRMED / 4 NOT-CONFIRMED**
 
 ## 研究題目
 
 > **Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証**
 
-## 現在地
+## 最終状態
 
-Study 1はStage 0→Stage 1 exploratory→Stage 2 formal confirmationの三段階構成である。
+Study 1はStage 0→Stage 1 exploratory→Stage 2 formal confirmationの三段階構成で完了した。
 
 ```text
 Stage 0 technical / construct audit = COMPLETE
 Stage 1 fresh exploratory discovery = COMPLETE
-Stage 2 fresh formal confirmation = NOT STARTED
+Stage 2 fresh formal confirmation = COMPLETE
+Study 1 = CLOSED
 ```
 
-したがって、現在閉じているのは**Stage 1 exploratory discovery**であり、Study 1全体のformal conclusionはまだ存在しない。
+Stage 1で4件をexploratory promotionし、fresh Stage 2で全4件をformal evaluationした。4件すべてestimableであったが、全件`NOT-CONFIRMED`となった。
 
-## 何を調べたか
+```text
+formal candidates = 4
+estimable = 4
+confirmed = 0
+not-confirmed = 4
+```
 
-Baoで繰り返し現れる「悪い着手候補」を、対局結果や人間の印象だけで定義せず、同一局面の全合法手をexact searchで比較し、構造変化・応手構造・探索深度差と組み合わせて再利用可能なmachine-reproducible patternとして抽出できるかを調べた。
+## 研究上の分離
 
-本Studyでは次を明確に分離した。
+本Studyでは次を同一視しなかった。
 
 ```text
 search-based decision loss
@@ -35,110 +41,132 @@ game-theoretic blunder
 human misconception
 ```
 
-Primary machine referenceは`bao` evaluation / exact full-window root candidate search / D3 + Q1 / root-actor perspectiveである。
+Primary machine referenceは`bao` evaluation / exact full-window root candidate search / D3 + Q1 / root-actor perspectiveである。D3はground truthではない。
 
-## 重要な境界
-
-Position Evaluation / Win-Rate Calibration Study 1は`INCONCLUSIVE`であり、そのStage 1 isotonic mappingをvalidated win probabilityとして本Studyのseverity endpointに使用していない。
-
-また、Human / Expert Validation Study 1はhuman axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`であるため、本Studyは人間の錯覚・初心者の誤認・expert judgmentを主張しない。
-
-## Stage 0 — construct / technical validation
-
-Stage 0では、exact move identity、root-actor perspective、TopSet/tie handling、mate-domain boundary、D3+Q1 compute feasibility、failure-token semanticsをtechnical-onlyに監査した。
-
-D3+Q1 feasibilityはPASSし、scientific generation前にprimary referenceを固定した。
-
-## Stage 1 — fresh exploratory discovery
-
-Fresh corpus:
+## Stage 1 — exploratory discovery
 
 ```text
 games = 2048
 seeds = 22400001..22402048
 unique historical trajectories = 1884
 distinct opening prefixes = 1621
+selected unique rule states = 1200
+Namua / Mtaji = 600 / 600
+measured legal-move records = 5295
 independent full replay/search verification = PASS
 ```
 
-Outcome-blind selectionはtrajectory-aware / phase-hash-assigned / no-replacementで実施した。
+Frozen grammar / promotion ruleから4件をpromotionした。
+
+| ID | Phase | Failure token | Stage 1 failure rate | Stage 1 D3 inferior |
+| --- | --- | --- | ---: | ---: |
+| `BMP-S1-C01` | Namua | `worstReplyActorFrontConnectionsDeltaNegative` | 1.000000 | 0.730769 |
+| `BMP-S1-C02` | Namua | `actorCaptureMoveDeltaNegative` | 0.846154 | 0.730769 |
+| `BMP-S1-C03` | Namua | `actorLegalMoveDeltaNegative` | 0.846154 | 0.730769 |
+| `BMP-S1-C04` | Mtaji | `allRepliesActorCaptureMoveDeltaNegative` | 0.666667 | 0.703704 |
+
+Stage 1 dataはStage 2 confirmation evidenceとして再利用していない。
+
+## Stage 2 — fresh formal confirmation
+
+Fresh formal corpus:
 
 ```text
-selected unique rule states = 1200
-Namua = 600
-Mtaji = 600
-distinct selected opening prefixes = 1067
-minimum selected generation-stratum count = 185
-selection readiness = PASS
+games = 4096
+seeds = 22500001..22504096
+unique historical trajectories = 3559
+distinct opening prefixes = 2827
+fullSearchRecomputation = true
+independent corpus verification = PASS
 ```
 
-全1200 selected rootsについて全合法手を測定した。
+Stage 1 identity firewall final overlap:
 
 ```text
-measured legal-move records = 5295
-all selected roots finite D3 candidate tables = true
-measurement readiness = PASS
+historicalTrajectoryHash = 0
+openingPrefixHash = 0
+ruleStateKey = 0
 ```
 
-## Candidate discovery
-
-凍結済みgrammarにより、phase + 1–2 structural preconditions + move abstractionをmatcherとし、failure tokenをmatcherから分離した。
+Outcome-blind formal support:
 
 ```text
-matcherCount = 16421
-lowSupportMatcherCount = 9553
-detailedCandidateCount = 123624
-promotionPassingBeforeSupportEquivalence = 11
-promotionPassingAfterSupportEquivalence = 11
+G01 Namua = 1868 unique roots
+G02 Mtaji = 810 unique roots
+total formal measurements = 2678
 ```
 
-Promotion gateはsupport、opening/stratum diversity、failure rate、D3-inferior rate、D3 TopSet rate、median normalized rank lossを事前固定した。
-
-Automatic cap:
+Independent measurement verification independently reproduced D3 candidate tables, matcher/failure classification and exact measurement hash.
 
 ```text
-maximum total = 6
-maximum per phase = 3
-maximum per failure family = 2
-manual override = false
+measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
+verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
+passed = true
 ```
 
-最終的に4 exploratory candidatesがpromotionされた。
+## Frozen confirmation rule
 
-## Promoted candidates
-
-| ID | Phase | Matcher summary | Failure token | Failure rate | D3 inferior | Median rank loss |
-| --- | --- | --- | --- | ---: | ---: | ---: |
-| `BMP-S1-C01` | Namua | frontOccupied 6-8; no house; indexed row0/index4 right-side left capture | `worstReplyActorFrontConnectionsDeltaNegative` | 1.000000 | 0.730769 | 0.732143 |
-| `BMP-S1-C02` | Namua | same matcher/support as C01 | `actorCaptureMoveDeltaNegative` | 0.846154 | 0.730769 | 0.732143 |
-| `BMP-S1-C03` | Namua | same matcher/support as C01 | `actorLegalMoveDeltaNegative` | 0.846154 | 0.730769 | 0.732143 |
-| `BMP-S1-C04` | Mtaji | frontOccupied 3-5; legalMoves 5+; coarse row1 right capture | `allRepliesActorCaptureMoveDeltaNegative` | 0.666667 | 0.703704 | 0.600000 |
-
-C01–C03は同一opportunity supportを共有するが、frozen support-equivalenceは`opportunityIdentityHash + failureToken`で定義されるため別candidateとして保持された。
-
-## Stage 1結論
+Per candidate, two co-primary endpoints were required:
 
 ```text
-Stage 1 exploratory discovery = COMPLETE
-exploratory candidates promoted = 4
-candidate confirmation = NOT PERFORMED
-Study 1 formal result = NONE
+failure-signature recurrence: H0 p <= 0.50; observed floor >= 0.65
+D3-inferior recurrence:       H0 p <= 0.50; observed floor >= 0.70
 ```
 
-4件は、fresh-data Stage 2 formal confirmationへ送るための**machine-reproducible exploratory candidates**である。
+4 candidates × 2 endpoints = 8 tests were controlled by Holm-Bonferroni at FWER 0.05.
 
-これは「Baoの悪手パターン4件が確認された」という意味ではない。game-theoretic blunder、人間の錯覚、traditional/expert recognition、pedagogical value、別engine/populationへの一般化は未検証である。
+Additional gates:
 
-## 次に何をすべきか
+```text
+D3 TopSet rate <= 0.20
+median normalized rank loss >= 0.50
+```
 
-Stage 1 supportをconfirmation evidenceとして再利用せず、`BMP-S1-C01..C04`の定義を固定したままfresh seed / fresh corpusによるprospective Stage 2 formal-confirmationを設計する。
+Zero confirmed candidates was a valid preregistered outcome.
 
-Stage 2 generationは、formal spec、contract/tooling validation、source freeze、source-bound explicit authorizationが完了するまで開始しない。
+## Final candidate results
 
-## 詳細
+| Candidate | Failure recurrence | D3 inferior | D3 TopSet | Median rank loss | Formal decision |
+| --- | ---: | ---: | ---: | ---: | --- |
+| `BMP-S2-C01` | 0.923983 | 0.464668 | 0.152034 | 0.500000 | **NOT-CONFIRMED** |
+| `BMP-S2-C02` | 0.797645 | 0.464668 | 0.152034 | 0.500000 | **NOT-CONFIRMED** |
+| `BMP-S2-C03` | 0.794968 | 0.464668 | 0.152034 | 0.500000 | **NOT-CONFIRMED** |
+| `BMP-S2-C04` | 0.627160 | 0.507407 | 0.193827 | 0.500000 | **NOT-CONFIRMED** |
 
-- [`STAGE_1_EXPLORATORY_REPORT.md`](STAGE_1_EXPLORATORY_REPORT.md)
-- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md)
+C01-C03ではfrozen structural failure signatureは強く再現したが、fresh Stage 2でD3-inferior recurrenceが0.464668に低下し、co-primary confirmation conditionを満たさなかった。
+
+C04ではfailure-signature recurrence自体がabsolute floor 0.65を下回り、D3-inferior recurrenceも0.70を大きく下回った。
+
+## Study 1 conclusion
+
+```text
+Stage 1 exploratory candidates = 4
+Stage 2 formally evaluated = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+Study 1 = CLOSED
+```
+
+これは「Baoの悪手パターンが存在しない」ことを意味しない。今回の4つのexploratory candidatesが、凍結済みengine/search/populationとprospective ruleの下でmachine-confirmed blunder/misvaluation patternにならなかった、という限定されたformal resultである。
+
+## Interpretation boundary
+
+次の主張は認可されない。
+
+```text
+game-theoretic blunder / soundness
+human misconception or absence thereof
+expert/traditional recognition or rejection
+pedagogical importance or lack thereof
+causal mechanism
+external validity beyond the frozen system
+```
+
+## Canonical records
+
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md)
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
 - [`results/STAGE_1_DISCOVERY_RESULT.json`](results/STAGE_1_DISCOVERY_RESULT.json)
+- [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)

@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.8.0  
+Version: 1.9.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-22
+更新日: 2026-08-23
 
 ## 1. 目的
 
@@ -13,15 +13,15 @@ Status: Active
 
 本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
 
-2026-08-22時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
+2026-08-23時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
 
 C03のHuman / Expert Validation Study 1も完了した。machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。一方human側は、独立研究者としてfrozen expert criteriaを満たす対象へ現実的にアクセスする経路を確保できず、scientific recruitmentを開始しないまま`N=0`で閉じた。human axisのformal labelは`INCONCLUSIVE-NOT-ESTIMABLE`であり、これはC03へのnegative human evidenceではない。
 
 第2段階では、measurement dependencyを理由に先行させたPosition Evaluation / Win-Rate Calibration Study 1も完了した。Stage 1ではphase-stratified isotonic mappingをexploratoryに選択し、fresh Stage 2では全2,048局のindependent verificationとStage 1 identity overlap 0を達成した。しかしstrict identity firewallとno-replacement selection後に3つのpreregistered estimability gateが未達となったため、formal decisionは`INCONCLUSIVE`である。mappingはformalにvalidatedされたBao勝率ではない。
 
-その後開始したBlunder / Misvaluation Patterns Study 1では、Stage 0 technical/construct auditとStage 1 fresh exploratory discoveryが完了した。2,048 fresh games、1,200 selected roots、5,295 exact legal movesを用い、全generation/selection/measurement readiness gateをPASSした。frozen matcher/failure grammarから16,421 matchers / 123,624 detailed candidatesを列挙し、11件がpromotion gateを通過、deterministic ranking/capsにより4件をexploratory candidateとしてpromotionした。**Study 1全体はまだ継続中であり、次はfresh-data Stage 2 formal confirmationである。**
+Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完了した。Stage 1では2,048 fresh games、1,200 selected roots、5,295 exact legal movesから4 exploratory candidatesをpromotionした。Stage 2ではfresh 4,096 games、3,559 unique historical trajectories、2,678 formal measurementsを用い、independent corpus/measurement verificationとStage 1 identity overlap `0 / 0 / 0`を達成した。4候補すべてestimableだったが、formal resultは**0 `CONFIRMED` / 4 `NOT-CONFIRMED`**である。C01-C03はstructural/reply failure signature自体を高率に再現したが、共通D3-inferior recurrenceがconfirmation floorを満たさず、C04はfailure recurrenceとD3-inferior recurrenceの両方が事前floorを満たさなかった。
 
-完了済みStudyのformal decisionを後続研究で変更しない。またBlunder / Misvaluation Patterns Study 1のStage 1 supportをStage 2 confirmation evidenceとして再利用しない。
+完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。
 
 ## 2. 既存研究との境界
 
@@ -41,7 +41,7 @@ C03のHuman / Expert Validation Study 1も完了した。machine/instrument側�
 - Tactical Motifs / Tesuji Study 1 — [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
 - Tactical Motif Human / Expert Validation Study 1 — [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
 - Position Evaluation / Win-Rate Calibration Study 1 — [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
-- Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Stage 1 exploratory complete / Stage 2 not started）
+- Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 confirmed / 4 not-confirmed）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -234,46 +234,24 @@ N=0はnegative human evidenceではない。将来再検証する場合は新規
 
 ---
 
-### 4.5 悪手・誤評価パターン — Study 1進行中
+### 4.5 悪手・誤評価パターン — Study 1完了
 
 #### 現在の状態
 
-**Stage 1 exploratory discovery完了 / 4 candidates promoted / Stage 2 formal confirmation未開始。**
+**Study 1 closed / Stage 2 formal confirmation complete / 0 confirmed / 4 not-confirmed。**
 
-- Study概要: [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)
-- Stage 1正本: [`blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_REPORT.md`](blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_REPORT.md)
+- 初見向け概要: [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md)
+- Formal result: [`blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json)
 - Reproducibility: [`blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md`](blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md)
-- Canonical discovery result: [`blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json)
-
-#### Stage 1 design boundary
-
-Calibration Study 1のformal resultは`INCONCLUSIVE`であるため、exploratory isotonic mappingをformal validated win probabilityとして使用しなかった。Primary machine referenceは`bao` / exact full-window root candidates / D3+Q1 / root actorとした。
-
-Human dataなしではhuman misconceptionを主張せず、machine-reproducible bad-move / value-misestimation structureに限定した。
-
-#### Stage 1 population / readiness
-
-```text
-games = 2048
-seeds = 22400001..22402048
-unique historical trajectories = 1884
-independent full replay/search verification = PASS
-selected unique rule states = 1200
-Namua / Mtaji = 600 / 600
-measured exact legal moves = 5295
-selection readiness = PASS
-measurement readiness = PASS
-```
-
-replacement sampling、phase reassignment、seed extension、threshold retuningは行っていない。
 
 #### Stage 1 discovery
 
+Stage 1ではfresh 2,048 games / 1,884 unique historical trajectoriesを独立verificationし、1,200 unique rule statesと5,295 exact legal movesを測定した。
+
 ```text
 matcherCount = 16421
-lowSupportMatcherCount = 9553
 detailedCandidateCount = 123624
-promotionPassingBeforeSupportEquivalence = 11
 promotionPassingAfterSupportEquivalence = 11
 promotedCandidateCount = 4
 manualOverridePerformed = false
@@ -288,25 +266,39 @@ BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
 BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
 ```
 
-4件は**exploratory candidates**であり、confirmed Bao blunderではない。
+#### Stage 2 formal confirmation
 
-#### Immediate next stage
-
-次は`BMP-S1-C01..C04`のexact definitionを結果後に変更せず、fresh seed / fresh corpusでStage 2 formal confirmationをprospectively設計する。
-
-Stage 1 supportはStage 2 confirmation evidenceとして再利用しない。
-
-Stage 2 generationは次が完了するまで禁止する。
+Fresh Stage 2:
 
 ```text
-formal Stage 2 spec
-canonical contract validation
-execution tooling validation
-exact source-file hash freeze
-explicit source-bound authorization
+games = 4096
+seeds = 22500001..22504096
+unique historical trajectories = 3559
+independent full replay/search verification = PASS
+G01 Namua selected/measured states = 1868
+G02 Mtaji selected/measured states = 810
+total formal measurements = 2678
+final Stage 1 identity overlap = 0 / 0 / 0
+independent measurement verification = PASS
 ```
 
-Stage 2 reserved capacity `22500001..22504096`はreservationであってauthorizationではない。
+4候補すべてestimability gateをPASSし、4 candidates × 2 co-primary endpointsの8 testsをHolm-Bonferroni FWER 0.05で評価した。
+
+```text
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+CONFIRMED = 0
+```
+
+C01-C03のfailure recurrenceはそれぞれ`0.923983 / 0.797645 / 0.794968`と高率だったが、共通D3-inferior recurrenceは`0.464668`でconfirmation floor `0.70`未満だった。C04はfailure recurrence `0.627160 < 0.65`、D3-inferior recurrence `0.507407 < 0.70`だった。
+
+#### Boundary / future use
+
+この結果は、exact frozen machine-operational candidate patternがformal confirmation ruleを通らなかったことを意味する。「その手はgame-theoretically悪手ではない」という証明ではない。
+
+C01-C03のstructural/reply failure signature再現性は新しいhypothesis generationには利用できるが、現Studyのformal resultをpositiveへ変更しない。同一Stage 2への追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済は禁止する。新しく検証する場合はfresh prospective independent studyとする。
 
 Human misconception、expert recognition、pedagogical valueを扱う場合は対応するhuman/expert evidenceを別axisで収集する。
 
@@ -405,7 +397,7 @@ Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数�
 
 Calibration Study 1のisotonic mappingをformal validated勝率変化として使わない。
 
-Blunder / Misvaluation Patterns Study 1のStage 1 candidatesを利用する場合も、Stage 2 formal confirmation前はexploratory contextに限定する。
+Blunder / Misvaluation Patterns Study 1のC01-C04はformalに`NOT-CONFIRMED`であり、validated blunder markerや重要局面判定器として使用しない。historical/exploratory contextとして参照する場合も、formal resultを明示する。
 
 #### 期待成果
 
@@ -491,18 +483,18 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 ### 第2段階: 理解、教育、解説への展開
 
-現在の優先順位:
+現在の状態:
 
 1. **[完了] 形勢判断と勝率校正 — Study 1 (`INCONCLUSIVE`)**
-2. **[Stage 1 exploratory完了] 悪手・誤評価パターン — Study 1 / Stage 2 formal confirmation next**
-3. 重要局面と勝敗分岐点
-4. 人間とAIの判断差
+2. **[完了] 悪手・誤評価パターン — Study 1（0 `CONFIRMED` / 4 `NOT-CONFIRMED`）**
+3. **[未開始候補] 重要局面と勝敗分岐点**
+4. **[未開始候補] 人間とAIの判断差**
 
 Position Evaluation / Win-Rate Calibration Study 1によって、engine evaluationとempirical continuation outcomeを分離して扱うtechnical measurement foundationは得られたが、formal held-out validationはestimability failureで未解決である。
 
-Blunder / Misvaluation Patterns Study 1 Stage 1では、exact search-based decision lossとstructural/response failureを用いたmachine-only discovery pipelineを確立し、4 exploratory candidatesを得た。**現在の最優先工程は、この4候補をfresh dataでprospectively formal confirmationするStage 2である。**
+Blunder / Misvaluation Patterns Study 1によって、exact search-based decision lossとstructural/response failureを用いたmachine-only discovery→fresh formal confirmation pipelineは実装・検証された。ただし4候補はいずれもfull confirmationを通過しなかった。C01-C03のstructural failure recurrenceは将来の新規仮説を動機づけうるが、現Studyのpositive resultへ昇格させない。
 
-Stage 2 confirmationではStage 1 supportを再利用せず、candidate definition、population、seed、estimability gate、endpoint、multiplicity handling、decision ruleをformal outcome生成前に固定する。
+したがって、第2段階で次に着手する場合の未開始候補は「重要局面と勝敗分岐点」または「人間とAIの判断差」である。研究順序は各studyのmeasurement dependencyと実行可能性を新規prospective design時に再評価する。
 
 Human misconceptionを主張する段階では、新しいhuman evidenceを必要とする。
 
@@ -527,7 +519,7 @@ Human misconceptionを主張する段階では、新しいhuman evidenceを必�
 
 Tactical Motifs / Tesuji Study 1では4 canonical candidatesのうちC03がfresh Stage 2 formal confirmationを通過した。C03 Human / Expert Validation Study 1ではmachine/instrument pipelineとformal stimulus freezeまでは完了したが、human evidenceはN=0で非推定可能だった。
 
-Blunder / Misvaluation Patterns Study 1 Stage 1ではmachine-reproducible bad-move / error-pattern taxonomyを探索し、4 exploratory candidatesをpromotionした。次の主要工程はfresh Stage 2 formal confirmationである。
+Blunder / Misvaluation Patterns Study 1はfresh Stage 2まで完了し、4候補すべてestimableだったが0 confirmed / 4 not-confirmedで閉じた。C01-C03のstructural/reply failure signaturesは高率に再現した一方、D3-inferior co-primary endpointを満たさなかった。したがって、これらをconfirmed blunder patternとして教材・解説へ直接昇格させない。
 
 Calibration Study 1がformal `INCONCLUSIVE`だったため、bad-move severityをformal validated win-probability lossとして定義しない。Human misconception validationは別evidence axisとして分離する。
 
@@ -559,16 +551,7 @@ Tactical Motifs / Tesuji Study 1のC01/C02/C04を既存Stage 2 dataの再解析�
 
 Position Evaluation / Win-Rate Calibration Study 1を再検証する場合、既存Stage 2 corpusへ追加game、seed extension、identity-overlap replacement、readiness gate緩和、mapping refitを加えない。formal calibration generalizationはfresh prospective replicationとする。Study 1 isotonic mappingをformal validated probabilityとしてdownstream primary endpointに使用しない。
 
-Blunder / Misvaluation Patterns Study 1 Stage 2を開始する場合、次を追加条件とする。
-
-```text
-Stage 1 candidate definitions BMP-S1-C01..C04 = immutable inputs
-Stage 1 support/data = confirmation evidenceとして再利用しない
-fresh Stage 2 seed block / population = outcome生成前に固定
-formal endpoint / estimability / multiplicity / decision rule = preregistered
-source-file identity = frozen
-scientific generation = separate explicit authorization後のみ
-```
+Blunder / Misvaluation Patterns Study 1はStage 2まで完了しているため、同Studyの「次stage」として再開しない。C01-C04を再検証する場合も、既存Stage 2への追加game、seed extension、threshold/floor緩和、candidate edit、alternate primary depth/evaluator、favorable subgroupでformal decisionを変更しない。新しい問い、endpoint、population、seed、source identity、decision ruleをoutcome生成前に固定した**新規prospective independent study**としてのみ扱う。C01-C03のstructural failure recurrenceを新研究のhypothesis-generation inputに使うことはできるが、現Studyのconfirmation evidenceにはならない。
 
 Human evidenceなしではhuman error mechanismをformalに主張しない。
 

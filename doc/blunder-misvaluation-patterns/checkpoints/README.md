@@ -14,7 +14,31 @@ Current checkpoints:
 - `2026-08-22-stage1-measurement-readiness-pass-discovery-open.md`
 - `2026-08-22-stage1-discovery-complete-four-candidates-promoted.md`
 - `2026-08-22-stage1-exploratory-closure-main-integration-ready.md`
+- `2026-08-22-stage2-formal-design-freeze-tooling-materialized.md`
+- `2026-08-22-stage2-preauth-spec-hash-binding-correction.md`
+- `2026-08-22-stage2-generation-authorization.md`
+- `2026-08-22-stage2-generation-complete-full-verification-pass-selection-open.md`
+- `2026-08-23-stage2-selection-pass-formal-measurement-open.md`
+- `2026-08-23-stage2-measurement-verification-pass-formal-evaluation-open.md`
+- `2026-08-23-stage2-formal-complete-study1-closed-zero-confirmed.md`
+- `2026-08-23-study1-final-cross-audit-pass-integration-pending.md`
 
-Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection readiness, measurement readiness and candidate discovery are distinct gates.
+Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification, formal evaluation, scientific closure and repository cross-audit are distinct gates.
 
-Current state: Stage 1 generation, full replay/search verification, outcome-blind selection, measurement and automatic exploratory discovery are complete. Four exploratory candidates (`BMP-S1-C01` through `BMP-S1-C04`) were promoted by frozen gates/ranking/caps with no manual override. Stage 1 exploratory is closed and ready for main integration as an immutable upstream discovery boundary. Study 1 as a whole remains active: candidate confirmation has not been performed, Stage 2 formal spec is not yet created, and Stage 2 scientific generation remains unauthorized.
+Final state:
+
+```text
+Stage 2 formal evaluation = COMPLETE
+formal candidates = 4
+estimable = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+Study 1 = CLOSED
+final cross-document audit = PASS
+main integration = NOT PERFORMED
+integration readiness = PASS / USER AUTHORIZATION PENDING
+```
+
+C01-C03 reproduce their frozen structural failure signatures but fail the D3-inferior co-primary endpoint. C04 fails the absolute failure-signature confirmation floor and the D3-inferior endpoint. No rescue or post-outcome retuning was performed.
+
+Historical checkpoint/status language remains a record of the gate state at that time and is not rewritten to mimic current status.
