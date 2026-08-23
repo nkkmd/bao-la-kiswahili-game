@@ -46,6 +46,7 @@ function terminalCaptureFixture() {
     [Array(8).fill(0), Array(8).fill(0)],
   ];
   state.pits[0][E.FRONT][0] = 2;
+  state.pits[0][E.FRONT][2] = 1;
   state.pits[1][E.FRONT][5] = 2;
   state.reserve = [0, 0];
   state.houseOwned = [false, false];
