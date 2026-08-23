@@ -28,46 +28,70 @@ Stage 0 scientific data = NONE
 Stage 1 prospective design = FROZEN / VALIDATED
 Stage 1 pre-generation firewall = COMPLETE / PASS
 Stage 1 source-bound generation authorization = ISSUED
-Stage 1 scientific generation = AUTHORIZED / NOT STARTED
-Stage 1 scientific source seeds consumed = 0
+Stage 1 scientific source generation = COMPLETE
+Stage 1 scientific source games generated = 3072 / 3072
+Stage 1 scientific source seeds consumed = 22600001..22603072 / COMPLETE
+Stage 1 independent full corpus replay verification = PENDING
+Stage 1 outcome-blind root selection = BLOCKED pending corpus verification PASS
+Stage 1 scientific continuation measurement = NOT STARTED
 Stage 1 scientific continuation outcomes inspected = false
 Stage 2 scientific generation = NOT AUTHORIZED / NOT STARTED
 ```
 
-Authorization changes only the execution permission for the frozen Stage 1 exploratory pipeline. It does **not** authorize confirmatory inference, Stage 2 generation, game-theoretic criticality claims, validated win-probability claims, or human/expert criticality claims.
+Authorization permits only the frozen Stage 1 exploratory pipeline. It does **not** authorize confirmatory inference, Stage 2 generation, game-theoretic criticality claims, validated win-probability claims, or human/expert criticality claims.
 
-## Stage 0 technical validation
+## Stage 1 generated source corpus
 
-Validated branch source before Stage 0 closure:
+Generated manifest identity:
 
 ```text
-technical validation source head = b6d4fafd34720e59223cb645476f5e384890eacd
-GitHub Actions run = 32624898086
-job = 97158580192
-technical smoke = PASS
-independent replay verification = PASS
-cap/replicate audit = PASS
-independent cap/replicate replay = PASS
-scientificSeedConsumed = false
-reservedScientificSeedBlocksTouched = false
+stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
+spec SHA-256 = 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
+authorization SHA-256 = 34ae3f2afb066521f2165f6e16d5edd720ab9587b71c64dce677696ad23cd941
+generatedAt = 2026-08-23T11:15:15.447Z
+sourceCommit = 157a4947435213b430ae7a9a85cc861aebfc258e
+sourceTreeDirty = false
+summaryHash = 1a56b7afb8c6c295f827c0546a87e9c2b0788914bffd1587b47f0d778bf73d63
 ```
 
-Deterministic technical core hashes exclude wall-clock timing:
+Frozen population realized exactly:
 
 ```text
-CPOB-S0-TECHNICAL-2026-08-23-v1 core hash
-= 75aaa30a9f8154873bf9391c27b4720886fce17ec7402b68800c03b2cbe276cd
-
-CPOB-S0-CAP-AUDIT-2026-08-23-v1 core hash
-= 0530faca878fa71b86f6b55b355cd0b70f67b5f8c32e287b82ce10dd8bb77678
+games = 3072
+seedStart = 22600001
+seedEnd = 22603072
+B-D1 = 512
+B-D2 = 512
+B-D3 = 512
+LS-D2 = 512
+V2-D2 = 512
+LE-D2 = 512
 ```
 
-Technical artifact bundle:
+Outcome-independent generation summary:
 
 ```text
-artifactId = 9489405729
-zip SHA-256 = e38ae9939f75ba8dc03d49eca436f9ce06f4a2368122672df9981afa1793e2b3
-retention = temporary CI artifact only
+uniqueHistoricalTrajectories = 2726
+duplicateHistoricalTrajectoryGroups = 232
+largestHistoricalTrajectoryGroup = 7
+distinctOpeningPrefixes = 2226
+```
+
+Generation-level preregistered identity/diversity gates:
+
+```text
+unique historical trajectories: 2726 >= 2500 -> PASS
+generated distinct opening prefixes: 2226 >= 1800 -> PASS
+```
+
+These are not selection-readiness results. Duplicate trajectories are collapsed by the frozen selection procedure without replacement. Root selection remains blocked until independent full corpus replay verification passes.
+
+The manifest's scientific source-file SHA-256 mapping matches the authorization-bound mapping.
+
+Generation checkpoint:
+
+```text
+cd7b367c90df7d628b48471d7d63d863313e6057
 ```
 
 ## Primary construct and frozen measurement
@@ -101,46 +125,7 @@ Stage 1 high-divergence root = D_range >= 0.30
 
 `p_hat_m` is a fixed-policy empirical continuation quantity. It is not a game-theoretic probability and is not derived from the inconclusive Calibration Study isotonic mapping.
 
-## Continuation-policy technical decision
-
-Stage 0 prospectively compared only the three pre-enumerated technical candidates:
-
-```text
-P1 = seeded existing normal / bao top-3 immediate-score policy
-P2 = seeded exact D2-ranked top-3 / bao / phase2 / Q1 wrapper
-P3 = seeded uniform exact legal moves
-```
-
-All three were exactly replayable under supplied RNG. On the fixed smoke workload, run-specific wall-clock observations were approximately:
-
-```text
-P1 = 2.279 ms / recorded continuation ply
-P2 = 52.513 ms / recorded continuation ply
-P3 = 0.280 ms / recorded continuation ply
-```
-
-P2 was therefore about 23× P1 on this technical workload and was judged impractical as the every-ply continuation policy for exhaustive all-root-move × 64-replicate measurement plus independent remeasurement. P3 is substantially cheaper but intentionally weak as a strategic continuation policy. P1 is frozen as the primary balance of seeded stochasticity, existing engine semantics, exact replayability, and feasible cost.
-
-P2 remains available only as a secondary root search-value instrument. P3 remains a technical comparator, not a primary scientific continuation.
-
-## Cap / replicate technical audit
-
-P1 was independently replayed for 64 technical replicates to a maximum cap of 200 from one fixed non-scientific fixture/root-move.
-
-```text
-terminal continuation ply min = 7
-terminal continuation ply max = 104
-terminal continuation ply mean = 45.25
-
-R=64 / cap=80  completion = 60/64 = 0.9375
-R=64 / cap=120 completion = 64/64 = 1.0000
-R=64 / cap=160 completion = 64/64 = 1.0000
-R=64 / cap=200 completion = 64/64 = 1.0000
-```
-
-These are technical fixture results only. They do not establish population-level completion or any scientific win rate. The scientific cap is frozen conservatively at 200; roots failing complete 64/64 termination for any legal move are primary-non-estimable with no replacement.
-
-## Stage 1 pre-generation firewall
+## Stage 1 pre-generation firewall and authorization
 
 Frozen Stage 1 specification:
 
@@ -175,33 +160,6 @@ Stage 0 regression validation:
   conclusion = success
 ```
 
-The technical-only end-to-end pipeline independently reproduced:
-
-```text
-gamesVerified = 2
-rootsReselected = 2
-measurementsFullyRemeasured = 2
-deterministicDiscoveryRecomputed = true
-scientificSeedConsumed = false
-```
-
-The production execution firewall is frozen as:
-
-```text
-generate source corpus
-→ independent full corpus replay verification
-→ outcome-blind root selection
-→ inspect selection readiness
-→ all-exact-root-move continuation + D2/D3 + structural measurement
-→ inspect measurement readiness
-→ independent full continuation remeasurement + secondary/structural recomputation
-→ deterministic exploratory candidate discovery
-```
-
-Selection cannot proceed without a passing independent corpus `verification.json`; measurement cannot proceed without selection readiness; discovery cannot proceed without passing `measurement-verification.json` with full continuation remeasurement and secondary recomputation.
-
-## Stage 1 authorization
-
 Pre-generation firewall checkpoint:
 
 ```text
@@ -214,12 +172,6 @@ Separate source-bound authorization commit:
 a85f9b36abbf492cd8085b0a95c8d10b76f849e8
 ```
 
-Authorization file:
-
-```text
-doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
-```
-
 Authorization semantics:
 
 ```text
@@ -228,8 +180,6 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 stage2GenerationAuthorized = false
 ```
-
-The authorization is bound to the exact Stage 1 spec SHA-256 and the exact scientific source-file SHA-256 mapping validated at implementation commit `3995932...`. Subsequent changes to tests, workflows, status documentation and runbook do not alter that authorized scientific source set.
 
 ## Immutable inherited formal states
 
@@ -266,27 +216,34 @@ Namua→Mtaji Strategic Temporal Transition Study 1:
 
 No label above may be changed by this study.
 
-## Seed reservation and consumption
+## Seed state
 
 ```text
 Stage 0 scientific seed block = NONE
-Stage 1 reserved = 22600001..22603072 (3072 seeds)
-Stage 2 reserved = 22700001..22706144 (6144 seeds)
-
-Stage 1 source seeds consumed as of this status = 0
-Stage 2 source seeds consumed as of this status = 0
+Stage 1 = 22600001..22603072 -> CONSUMED by frozen source generation
+Stage 2 = 22700001..22706144 -> RESERVED / NOT AUTHORIZED / UNCONSUMED
 ```
 
 Continuation RNG seeds are deterministically derived from stage salt + root identity + replicate index and do not expand the source-game seed namespace.
 
-## Current execution boundary
+## Current next gate
 
-Stage 1 is **ready for local/Colab scientific execution under the frozen authorization**. Generated outputs remain under:
+Independent full replay verification of all 3072 source games is mandatory before selection:
 
-```text
-artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1/
+```bash
+node tools/experiments/verify-critical-positions-stage1-exploratory.js \
+  --phase corpus \
+  --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
 ```
 
-Execution must follow the frozen order in `STAGE_1_RUNBOOK.md`. No seed extension, replacement, replicate extension, threshold adjustment, matcher retuning or phase reassignment is allowed if a readiness gate fails.
+Required:
 
-Stage 2 remains blocked until Stage 1 is generated, independently verified and consumed as exploratory evidence; any promoted candidate definitions are then frozen; a separate Stage 2 formal preregistration and source-bound authorization must exist; and the required Stage 1/Stage 2 identity firewall must pass.
+```text
+passed = true
+fullCorpusReplay = true
+gamesVerified = 3072
+```
+
+If verification fails, stop. Do not regenerate selective games, extend seeds, or perform root selection.
+
+Stage 2 remains locked until Stage 1 is independently verified and completed as exploratory evidence, candidate definitions are separately frozen, Stage 2 formal rules are preregistered, source-bound Stage 2 authorization exists, and fresh evidence is guaranteed.
