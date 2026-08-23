@@ -22,8 +22,9 @@ Current checkpoints:
 - `2026-08-23-stage2-measurement-verification-pass-formal-evaluation-open.md`
 - `2026-08-23-stage2-formal-complete-study1-closed-zero-confirmed.md`
 - `2026-08-23-study1-final-cross-audit-pass-integration-pending.md`
+- `2026-08-23-study1-main-integration-complete.md`
 
-Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification, formal evaluation, scientific closure and repository cross-audit are distinct gates.
+Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification, formal evaluation, scientific closure, repository cross-audit and final main integration are distinct gates.
 
 Final state:
 
@@ -35,8 +36,9 @@ CONFIRMED = 0
 NOT-CONFIRMED = 4
 Study 1 = CLOSED
 final cross-document audit = PASS
-main integration = NOT PERFORMED
-integration readiness = PASS / USER AUTHORIZATION PENDING
+integration PR = #34
+integration merge commit = da2f5a1a18debe8bf09cd0bcaab8ef64ddf5d7d7
+main integration = COMPLETE
 ```
 
 C01-C03 reproduce their frozen structural failure signatures but fail the D3-inferior co-primary endpoint. C04 fails the absolute failure-signature confirmation floor and the D3-inferior endpoint. No rescue or post-outcome retuning was performed.
