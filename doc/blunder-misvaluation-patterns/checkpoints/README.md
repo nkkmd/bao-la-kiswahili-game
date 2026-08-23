@@ -20,7 +20,19 @@ Current checkpoints:
 - `2026-08-22-stage2-generation-complete-full-verification-pass-selection-open.md`
 - `2026-08-23-stage2-selection-pass-formal-measurement-open.md`
 - `2026-08-23-stage2-measurement-verification-pass-formal-evaluation-open.md`
+- `2026-08-23-stage2-formal-complete-study1-closed-zero-confirmed.md`
 
 Technical validation, scientific-spec freeze, execution-tooling validation, source-hash binding, scientific generation authorization, corpus generation, independent verification, selection, formal measurement, independent measurement verification and formal evaluation are distinct gates.
 
-Current state: Stage 2 generation and independent corpus verification passed; outcome-blind selection passed with final Stage 1 overlap `0 / 0 / 0`; 2678 formal D3 measurements completed; independent measurement verification reproduced the exact measurement hash and independently recomputed D3 candidate tables plus candidate matcher/failure classification. Formal evaluation is now open. No candidate decision has yet been computed.
+Final state:
+
+```text
+Stage 2 formal evaluation = COMPLETE
+formal candidates = 4
+estimable = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+Study 1 = CLOSED
+```
+
+C01-C03 reproduce their frozen structural failure signatures but fail the D3-inferior co-primary endpoint. C04 fails the absolute failure-signature confirmation floor and the D3-inferior endpoint. No rescue or post-outcome retuning was performed.
