@@ -1,6 +1,6 @@
 # CURRENT_STATUS — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-22
+Updated: 2026-08-23
 
 ## Research identity
 
@@ -49,50 +49,90 @@ Stage 2 exact source-file SHA-256 freeze = COMPLETE
 Stage 2 generation authorization = COMPLETE
 Stage 2 scientific generation = COMPLETE (4096 / 4096)
 Stage 2 independent full replay/search verification = PASS
-Stage 2 outcome-blind support-group selection = OPEN / PENDING
-Stage 2 formal measurement = BLOCKED UNTIL SELECTION RESULT REVIEW
+Stage 2 outcome-blind support-group selection = PASS
+Stage 2 formal measurement = OPEN
 Stage 2 independent measurement verification = PENDING
 Stage 2 formal result = NONE
 Study 1 formal result = NONE
 ```
 
-## Stage 2 generation result
+## Stage 2 corpus / verification
 
 ```text
 games = 4096
 seeds = 22500001..22504096
 unique historical trajectories = 3559
-duplicate historical-trajectory groups = 352
-largest historical-trajectory group = 12
 distinct opening prefixes = 2827
 summaryHash = 9875e142a1d1067d1fc0042e3eeaf9060a1d2b783bfb40a8782e72c1238a4b2c
-scientific source commit = eecb2c8213fc71e518b0e96946e82790fd20961b
-source tree dirty = false
-```
-
-Condition counts:
-
-```text
-B-D1 = 683
-B-D2 = 683
-B-D3 = 683
-LS-D2 = 683
-V2-D2 = 682
-LE-D2 = 682
-```
-
-## Stage 2 independent corpus verification
-
-```text
-passed = true
-fullSearchRecomputation = true
-gamesVerified = 4096
-unique historical trajectories = 3559
-distinct opening prefixes = 2827
 verificationIdentityHash = e2fab371ae09d18e7fed0aa979f72cb87ec4e2fdc67caacdb6129818b2b38fa4
+fullSearchRecomputation = true
+verification passed = true
+scientific source commit = eecb2c8213fc71e518b0e96946e82790fd20961b
 ```
 
-Generation and verification agree on stage/spec/candidate identity, all corpus counts, condition distribution, source commit, clean-tree state and the complete frozen source-file SHA map.
+Condition counts are fixed at B-D1/B-D2/B-D3/LS-D2 = 683 each and V2-D2/LE-D2 = 682 each.
+
+## Stage 2 outcome-blind selection result
+
+Overall selection identity:
+
+```text
+selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
+selectionIntegrityPassed = true
+```
+
+Pre-selection Stage 1 leakage firewall:
+
+```text
+representative historical trajectories = 3559
+historicalTrajectoryHash overlap dropped = 299
+openingPrefixHash overlap dropped = 633
+```
+
+G01 Namua, shared by C01/C02/C03:
+
+```text
+eligible trajectories = 1890
+Stage 1 rule-state overlap dropped = 0
+duplicate selected rule states collapsed = 22
+selected unique rule states = 1868
+distinct opening prefixes = 1695
+generation strata = 6
+maximum opening-prefix share = 0.0021413276231263384
+maximum stratum share = 0.20717344753747324
+estimablePreview = true
+```
+
+G02 Mtaji, used by C04:
+
+```text
+eligible trajectories = 823
+Stage 1 rule-state overlap dropped = 1
+duplicate selected rule states collapsed = 12
+selected unique rule states = 810
+distinct opening prefixes = 763
+generation strata = 6
+maximum opening-prefix share = 0.0049382716049382715
+maximum stratum share = 0.18888888888888888
+estimablePreview = true
+```
+
+Final Stage 1 overlap in selected formal evidence:
+
+```text
+historicalTrajectoryHash = 0
+openingPrefixHash = 0
+ruleStateKey = 0
+stage1IdentityFirewallPassed = true
+```
+
+No rescue occurred:
+
+```text
+replacementPerformed = false
+seedExtensionPerformed = false
+alternateRootAfterRuleStateOverlapPerformed = false
+```
 
 ## Formal candidate mapping
 
@@ -105,21 +145,19 @@ BMP-S1-C04 -> BMP-S2-C04
 
 C01/C02/C03 share exactly one frozen Namua support group/root denominator and deterministic candidate move; only failure token differs. C04 uses the frozen Mtaji support group.
 
-## Stage 1 leakage firewall
+## Formal measurement / decision boundary
 
-Final Stage 2 formal evidence must have zero Stage 1 overlap on:
+Formal measurement is standardized to:
 
 ```text
-historicalTrajectoryHash
-openingPrefixHash
-ruleStateKey
+evaluation = bao
+search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
+primary depth = D3
+quiescence depth = 1
+perspective = root actor
 ```
 
-Trajectory/opening overlap removes the Stage 2 trajectory before candidate-root selection. Rule-state overlap is checked after outcome-blind root selection; the selected root/trajectory is removed with no alternate root and no replacement.
-
-## Stage 2 estimability / decision boundary
-
-Per candidate:
+Per-candidate estimability gates remain:
 
 ```text
 unique historical trajectories >= 96
@@ -130,7 +168,7 @@ generation strata >= 4
 maximum one generation-stratum share <= 0.50
 ```
 
-Co-primary tests:
+Co-primary tests remain:
 
 ```text
 failure-signature recurrence: H0 p <= 0.50; observed floor >= 0.65
@@ -140,7 +178,7 @@ FWER alpha = 0.05
 Holm-Bonferroni
 ```
 
-Additional gates are D3 TopSet rate <= 0.20 and median normalized rank loss >= 0.50.
+Additional confirmation gates are D3 TopSet rate <= 0.20 and median normalized rank loss >= 0.50.
 
 Formal labels are `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or `TECHNICAL-INCONCLUSIVE`. Zero confirmed candidates is valid.
 
@@ -149,18 +187,18 @@ Formal labels are `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or
 ```text
 generate                                                  COMPLETE
 -> independent full replay + generation-search verify    PASS
--> support-group select                                   OPEN
--> formal measure                                         BLOCKED PENDING SELECTION REVIEW
+-> support-group select                                   PASS
+-> formal measure                                         OPEN
 -> independent formal measurement verification           PENDING
--> formal evaluate                                        PENDING
+-> formal evaluate                                        BLOCKED
 ```
 
 No seed extension, replacement, alternate root after overlap, candidate edit, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, multiplicity change, favorable subgroup promotion, alternate primary depth/evaluator or manual override is authorized.
 
 ## Interpretation boundary
 
-Even a Stage 2 `CONFIRMED` result means only machine-reproducible recurrence under the frozen Bao engine/search/population. It does not establish game-theoretic blunder status, human misconception, expert/traditional recognition, pedagogical importance, causal mechanism, or external validity.
+No candidate has yet been confirmed or rejected. Even a future Stage 2 `CONFIRMED` result means only machine-reproducible recurrence under the frozen Bao engine/search/population. It does not establish game-theoretic blunder status, human misconception, expert/traditional recognition, pedagogical importance, causal mechanism, or external validity.
 
 ## Immediate next gate
 
-Run the frozen outcome-blind Stage 2 support-group selection only. Inspect and archive `selection-audit.json` before any formal measurement is allowed.
+Run the frozen formal D3 measurement only. Do not evaluate. After measurement, archive `measurement-manifest.json` and run the independent formal measurement verifier before any formal endpoint decision is allowed.
