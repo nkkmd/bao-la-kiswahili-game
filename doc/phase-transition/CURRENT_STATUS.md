@@ -41,12 +41,12 @@ Scientific completionとPR #26のmerge状態は分離して管理した。科学
 
 | Experiment | Formal decision | 固定範囲 / 理由 |
 |---|---|---|
-| E-010 | **`not-confirmed`** | minimum primary candidate 12に対し11 |
-| E-011 | **`inconclusive`** | 複数conditionがavailability不足 |
-| E-017 | **`not-confirmed`** | minimum unique controls 30000に対し23306 |
-| E-018 / H16 | **`confirmed`** | 固定 `hard / bao / depth2` のphase2 > legacyのみ |
-| E-019 / H17 | **`not-confirmed`** | D1/V2 pass、D3が事前登録方向と逆でglobal IUT不成立 |
-| E-020 / H18 | **`confirmed`** | 固定 `hard / bao / depth3` のlegacy > phase2のみ |
+| E-010 | **`NOT-CONFIRMED`** | minimum primary candidate 12に対し11 |
+| E-011 | **`INCONCLUSIVE`** | 複数conditionがavailability不足 |
+| E-017 | **`NOT-CONFIRMED`** | minimum unique controls 30000に対し23306 |
+| E-018 / H16 | **`CONFIRMED`** | 固定 `hard / bao / depth2` のphase2 > legacyのみ |
+| E-019 / H17 | **`NOT-CONFIRMED`** | D1/V2 pass、D3が事前登録方向と逆でglobal IUT不成立 |
+| E-020 / H18 | **`CONFIRMED`** | 固定 `hard / bao / depth3` のlegacy > phase2のみ |
 
 これらをStage B–Eの統合解釈およびrepository closureで変更しない。
 
@@ -91,7 +91,7 @@ pilot-v2:
 - control 249/8424 = 2.96%
 - RR 21.53
 - trajectory-ply dedup: 2/5 vs 218/7061, RR 12.96
-- formal decision: `not-confirmed`
+- formal decision: `NOT-CONFIRMED`
 
 ### E-017
 
@@ -102,7 +102,7 @@ pilot-v2:
 - dedup candidate rate 42.86%
 - dedup control rate 3.12%
 - RR 13.74
-- formal decision: `not-confirmed`
+- formal decision: `NOT-CONFIRMED`
 
 これらは濃縮方向と構造的一般性を支持するが、formal decisionを救済しない。
 
@@ -120,7 +120,7 @@ pilot-v2:
 - RD +2.70pp
 - OR P2/LG 7.0
 - exact McNemar p `4.1812279092751445e-11`
-- formal: **`confirmed`**
+- formal: **`CONFIRMED`**
 
 ### E-019 / H17 — generalization
 
@@ -129,7 +129,7 @@ D1 / D3 / V2の3 strata。
 - D1: phase2 > legacy, pass
 - D3: legacy > phase2, preregistered direction fail
 - V2: phase2 > legacy, pass
-- global IUT: **`not-confirmed`**
+- global IUT: **`NOT-CONFIRMED`**
 
 D3 reverse:
 
@@ -148,7 +148,7 @@ D3 reverse:
 - LG event 2.8667%
 - OR LG/P2 7.1667
 - exact McNemar p `7.0456833990241785e-22`
-- formal: **`confirmed`**
+- formal: **`CONFIRMED`**
 
 H18 confirmationはこの固定条件だけに限定する。
 

@@ -70,7 +70,7 @@ STYLE-C4 = Morphology-Switching Tempo
 しかし独立Stage 5では、behavioral anchors/signaturesは再現した一方、exact 4D PCA subspaceのalignmentとtrajectory-resampling stabilityが事前登録基準を満たしませんでした。
 
 ```text
-FORMAL DECISION = not-confirmed
+FORMAL DECISION = NOT-CONFIRMED
 ```
 
 したがってSTYLE-C1..C4は、confirmed style ontologyではなく探索的trajectory descriptorsとして残します。
@@ -110,7 +110,7 @@ Bao position structure
 
 Playing style
 ├─ discrete style clusters: unsupported
-└─ STYLE-C1..C4 exact 4D geometry: formal not-confirmed
+└─ STYLE-C1..C4 exact 4D geometry: formal NOT-CONFIRMED
 
 Cross-study
 └─ capture-branch-expansion:
@@ -130,7 +130,7 @@ Cross-study
 
 という**非対称な構造**が見えました。
 
-positive resultだけでなく、Namua discrete typeの棄却、discrete style clusteringの不支持、Stage 5 `not-confirmed`も本研究の主要成果として保持します。
+positive resultだけでなく、Namua discrete typeの棄却、discrete style clusteringの不支持、Stage 5 `NOT-CONFIRMED`も本研究の主要成果として保持します。
 
 ## 詳細
 

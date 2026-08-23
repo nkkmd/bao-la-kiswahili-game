@@ -53,7 +53,7 @@ Stage 2:
 ```text
 PTYP-S2-MTAJI-CONFIRM-2026-08-10-v1
 resultHash = 26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347
-FORMAL DECISION = confirmed
+FORMAL DECISION = CONFIRMED
 ```
 
 Confirmed bounded ontology:
@@ -137,7 +137,7 @@ styleIngredientDefinitionHash
 ```text
 PTYP-S5-STYLE-CONTINUOUS-CONFIRM-2026-08-10-v1
 resultHash = 6069ea45dc055dbd65a14a939ccaa427466d1e3f8852ed81f555dc7ebe16e97c
-FORMAL DECISION = not-confirmed
+FORMAL DECISION = NOT-CONFIRMED
 ```
 
 Primary gates:
@@ -277,7 +277,7 @@ Bao position structure
 
 Playing style
 ├─ discrete style clusters: unsupported
-└─ exact STYLE-C1..C4 4D geometry: formal not-confirmed
+└─ exact STYLE-C1..C4 4D geometry: formal NOT-CONFIRMED
 
 Cross-study
 └─ capture-branch-expansion:
@@ -292,7 +292,7 @@ The study therefore supports a **phase-dependent asymmetric representation**, no
 - old actor-oriented Mtaji k=2 is not an intrinsic position type.
 - no discrete Namua type is promoted.
 - Stage 4 k=2..6 does not support a coherent discrete style ontology.
-- Stage 5 exact 4D style geometry is formally not-confirmed.
+- Stage 5 exact 4D style geometry is formally `NOT-CONFIRMED`.
 - Stage 6 cannot estimate M1-vs-M2 expansion preference because observed Mtaji expansion count is zero.
 - N-CON does not show one universal expansion direction across all conditions.
 

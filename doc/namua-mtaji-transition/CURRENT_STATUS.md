@@ -72,12 +72,12 @@ No closed-study decision is reopened.
 ### Phase-transition Study 1
 
 ```text
-E-010 = not-confirmed
-E-011 = inconclusive
-E-017 = not-confirmed
-E-018 / H16 = confirmed only fixed hard / bao / depth2, phase2 > legacy
-E-019 / H17 = global not-confirmed
-E-020 / H18 = confirmed only fixed hard / bao / depth3, legacy > phase2
+E-010 = NOT-CONFIRMED
+E-011 = INCONCLUSIVE
+E-017 = NOT-CONFIRMED
+E-018 / H16 = CONFIRMED only fixed hard / bao / depth2, phase2 > legacy
+E-019 / H17 = global NOT-CONFIRMED
+E-020 / H18 = CONFIRMED only fixed hard / bao / depth3, legacy > phase2
 ```
 
 Frozen CBE settings:
@@ -114,7 +114,7 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 
 No refit, restandardization, relabeling, feature change, or alternative-k rescue is authorized.
 
-Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory only. STYLE-C1..C4 exact geometry remains formal not-confirmed.
+Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory only. STYLE-C1..C4 exact geometry remains formal `NOT-CONFIRMED`.
 
 ## 3. Deterministic Namua clock — permanent boundary
 

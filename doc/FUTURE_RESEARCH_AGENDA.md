@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.9.0  
+Version: 1.9.1  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-23
@@ -41,7 +41,7 @@ Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完�
 - Tactical Motifs / Tesuji Study 1 — [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
 - Tactical Motif Human / Expert Validation Study 1 — [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
 - Position Evaluation / Win-Rate Calibration Study 1 — [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
-- Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 confirmed / 4 not-confirmed）
+- Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -103,7 +103,7 @@ Baoの対局において、局面の価値基準や最善戦略が不可逆的�
 - 初見向け概要: [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
 - 科学的正本: [`position-typology/STUDY_1_FINAL_REPORT.md`](position-typology/STUDY_1_FINAL_REPORT.md)
 
-Study 1では、固定representation / population内でMtajiの`MTAJI-M1 / MTAJI-M2`二類型をformalにconfirmedした。Namuaでは離散typeをpromoteせず、`N-ACT / N-CON`をexploratory continuous coordinatesとして保持した。discrete playing-style cluster setは支持されず、探索で得たexact `STYLE-C1..C4` 4D geometryも独立確認では`not-confirmed`となった。
+Study 1では、固定representation / population内でMtajiの`MTAJI-M1 / MTAJI-M2`二類型をformalにconfirmedした。Namuaでは離散typeをpromoteせず、`N-ACT / N-CON`をexploratory continuous coordinatesとして保持した。discrete playing-style cluster setは支持されず、探索で得たexact `STYLE-C1..C4` 4D geometryも独立確認では`NOT-CONFIRMED`となった。
 
 #### 中心課題
 
@@ -131,7 +131,7 @@ Bao固有の棋風語彙、対局スタイル分類、異なる戦略傾向を�
 ### 4.2.1 Namua→Mtaji移行前後の戦略的転移構造 — Study 1完了
 
 **研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続  
-**状態:** Study 1 closed / formal decision `not-confirmed`
+**状態:** Study 1 closed / formal decision `NOT-CONFIRMED`
 
 - 初見向け概要: [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
 - 科学的正本: [`namua-mtaji-transition/STUDY_1_FINAL_REPORT.md`](namua-mtaji-transition/STUDY_1_FINAL_REPORT.md)
@@ -187,7 +187,7 @@ Human difficultyはmachine workload/ambiguity/instabilityとは別に独立検�
 
 ### 4.4 手筋の発見と体系化 — Study 1完了
 
-**状態:** Study 1 closed / complete。Stage 2 formal decision: C03 confirmed; C01/C02/C04 not-confirmed。
+**状態:** Study 1 closed / complete。Stage 2 formal decision: C03 `CONFIRMED`; C01/C02/C04 `NOT-CONFIRMED`。
 
 - 初見向け概要: [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
 - 科学的正本: [`tactical-motifs/STUDY_1_FINAL_REPORT.md`](tactical-motifs/STUDY_1_FINAL_REPORT.md)
@@ -238,7 +238,7 @@ N=0はnegative human evidenceではない。将来再検証する場合は新規
 
 #### 現在の状態
 
-**Study 1 closed / Stage 2 formal confirmation complete / 0 confirmed / 4 not-confirmed。**
+**Study 1 closed / Stage 2 formal confirmation complete / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`。**
 
 - 初見向け概要: [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)
 - 科学的正本: [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md)
@@ -475,8 +475,8 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 1. **[完了] 局面の相転移点 — Study 1**
 2. **[完了] 局面類型と棋風 — Study 1**
-3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`not-confirmed`)**
-4. **[完了] 局面複雑度と難易度 — Study 1 (`inconclusive`)**
+3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`NOT-CONFIRMED`)**
+4. **[完了] 局面複雑度と難易度 — Study 1 (`INCONCLUSIVE`)**
 5. **[完了] 手筋の発見と体系化 — Study 1（C03 `CONFIRMED` / C01,C02,C04 `NOT-CONFIRMED`）**
 
 第1段階の5 Studyは完了した。既存のnegative/inconclusive resultを別研究で救済しない。
@@ -511,7 +511,7 @@ Human misconceptionを主張する段階では、新しいhuman evidenceを必�
 
 ### 6.1 Bao局面分類学
 
-相転移、局面類型、棋風、複雑度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1、Position Complexity / Difficulty Study 1は完了した。Position Complexity Study 1のformal `inconclusive`を再検証する場合は、同一formal corpusの再解析ではなく、数値手法を事前固定したfresh prospective replicationとする。Human difficultyはmachine complexity layerとは別に独立検証する。
+相転移、局面類型、棋風、複雑度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1、Position Complexity / Difficulty Study 1は完了した。Position Complexity Study 1のformal `INCONCLUSIVE`を再検証する場合は、同一formal corpusの再解析ではなく、数値手法を事前固定したfresh prospective replicationとする。Human difficultyはmachine complexity layerとは別に独立検証する。
 
 ### 6.2 Bao手筋・悪手・錯覚体系
 
@@ -519,7 +519,7 @@ Human misconceptionを主張する段階では、新しいhuman evidenceを必�
 
 Tactical Motifs / Tesuji Study 1では4 canonical candidatesのうちC03がfresh Stage 2 formal confirmationを通過した。C03 Human / Expert Validation Study 1ではmachine/instrument pipelineとformal stimulus freezeまでは完了したが、human evidenceはN=0で非推定可能だった。
 
-Blunder / Misvaluation Patterns Study 1はfresh Stage 2まで完了し、4候補すべてestimableだったが0 confirmed / 4 not-confirmedで閉じた。C01-C03のstructural/reply failure signaturesは高率に再現した一方、D3-inferior co-primary endpointを満たさなかった。したがって、これらをconfirmed blunder patternとして教材・解説へ直接昇格させない。
+Blunder / Misvaluation Patterns Study 1はfresh Stage 2まで完了し、4候補すべてestimableだったが0 `CONFIRMED` / 4 `NOT-CONFIRMED`で閉じた。C01-C03のstructural/reply failure signaturesは高率に再現した一方、D3-inferior co-primary endpointを満たさなかった。したがって、これらをconfirmed blunder patternとして教材・解説へ直接昇格させない。
 
 Calibration Study 1がformal `INCONCLUSIVE`だったため、bad-move severityをformal validated win-probability lossとして定義しない。Human misconception validationは別evidence axisとして分離する。
 

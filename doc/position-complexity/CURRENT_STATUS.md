@@ -27,19 +27,19 @@ Immutable historical results remain:
 
 ```text
 phase-transition:
-  E-010 not-confirmed
-  E-011 inconclusive
-  E-017 not-confirmed
-  E-018/H16 confirmed only fixed hard/bao/D2 phase2 > legacy
-  E-019/H17 global not-confirmed
-  E-020/H18 confirmed only fixed hard/bao/D3 legacy > phase2
+  E-010 NOT-CONFIRMED
+  E-011 INCONCLUSIVE
+  E-017 NOT-CONFIRMED
+  E-018/H16 CONFIRMED only fixed hard/bao/D2 phase2 > legacy
+  E-019/H17 global NOT-CONFIRMED
+  E-020/H18 CONFIRMED only fixed hard/bao/D3 legacy > phase2
 
 position typology / style:
   MTAJI-M1/M2 bounded confirmed morphology
   no discrete Namua type
   N-ACT/N-CON exploratory only
   discrete playing-style clustering unsupported
-  STYLE-C1..C4 exact geometry formal not-confirmed
+  STYLE-C1..C4 exact geometry formal NOT-CONFIRMED
 
 Namua->Mtaji:
   formal decision NOT-CONFIRMED
@@ -186,7 +186,7 @@ Because the convergence gate failed before the p-value decision branch:
 PCX-H1 = INCONCLUSIVE
 ```
 
-Do not relabel this as `not-confirmed` from p=0.0867 and do not claim confirmation from the positive coefficient.
+Do not relabel this as `NOT-CONFIRMED` from p=0.0867 and do not claim confirmation from the positive coefficient.
 
 ## PCX-H2 — FINAL STATUS = NOT-CONFIRMATORILY-EVALUATED
 
@@ -202,7 +202,7 @@ p = 6.6297244613e-07
 However:
 
 ```text
-H1 = inconclusive
+H1 = INCONCLUSIVE
 secondary reduced model converged = false
 finiteConvergedSecondaryModels = false
 ```
