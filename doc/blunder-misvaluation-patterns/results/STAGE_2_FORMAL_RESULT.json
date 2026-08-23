@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BMP-STUDY1",
+  "stageId": "BMP-S2-FORMAL-2026-08-22-v1",
+  "formalExperiment": true,
+  "specSha256": "4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962ebcaab",
+  "candidateDefinitionSha256": "12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b",
+  "selectionHash": "76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf",
+  "measurementHash": "6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb",
+  "independentMeasurementVerificationHash": "e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382",
+  "rawLocalResult": {
+    "path": "artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/stage2-formal-result.json",
+    "bytes": 480791,
+    "sha256": "e478d3fb29ad15508ddcaf6973d8eb8aa6bf4debd23921564ae08a1ac518293d",
+    "embeddedResultHash": "1de774ca5aac8a284ec5f78395050238fab93643e47fc47046cf511612d50d50"
+  },
+  "multiplicity": {
+    "family": "4 formal candidates x 2 co-primary endpoints",
+    "plannedTests": 8,
+    "alpha": 0.05,
+    "method": "Holm-Bonferroni"
+  },
+  "candidateResults": [
+    {
+      "formalCandidateId": "BMP-S2-C01",
+      "sourceStage1CandidateId": "BMP-S1-C01",
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "selectedRoots": 1868,
+      "estimable": true,
+      "technicalIntegrityPassed": true,
+      "failureToken": "worstReplyActorFrontConnectionsDeltaNegative",
+      "failureSignature": {
+        "successes": 1726,
+        "total": 1868,
+        "observedRate": 0.923982869379015,
+        "minimumObservedRateForConfirmation": 0.65,
+        "adjustedPValue": 0,
+        "rejected": true
+      },
+      "d3Inferior": {
+        "successes": 868,
+        "total": 1868,
+        "observedRate": 0.46466809421841543,
+        "minimumObservedRateForConfirmation": 0.70,
+        "adjustedPValue": 1,
+        "rejected": false
+      },
+      "d3TopSetRate": 0.15203426124197003,
+      "medianNormalizedRankLoss": 0.5,
+      "consistencyGatesPassed": true,
+      "formalDecision": "NOT-CONFIRMED"
+    },
+    {
+      "formalCandidateId": "BMP-S2-C02",
+      "sourceStage1CandidateId": "BMP-S1-C02",
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "selectedRoots": 1868,
+      "estimable": true,
+      "technicalIntegrityPassed": true,
+      "failureToken": "actorCaptureMoveDeltaNegative",
+      "failureSignature": {
+        "successes": 1490,
+        "total": 1868,
+        "observedRate": 0.797644539614561,
+        "minimumObservedRateForConfirmation": 0.65,
+        "adjustedPValue": 3.995751301553668e-155,
+        "rejected": true
+      },
+      "d3Inferior": {
+        "successes": 868,
+        "total": 1868,
+        "observedRate": 0.46466809421841543,
+        "minimumObservedRateForConfirmation": 0.70,
+        "adjustedPValue": 1,
+        "rejected": false
+      },
+      "d3TopSetRate": 0.15203426124197003,
+      "medianNormalizedRankLoss": 0.5,
+      "consistencyGatesPassed": true,
+      "formalDecision": "NOT-CONFIRMED"
+    },
+    {
+      "formalCandidateId": "BMP-S2-C03",
+      "sourceStage1CandidateId": "BMP-S1-C03",
+      "supportGroupId": "BMP-S2-G01-NAMUA",
+      "selectedRoots": 1868,
+      "estimable": true,
+      "technicalIntegrityPassed": true,
+      "failureToken": "actorLegalMoveDeltaNegative",
+      "failureSignature": {
+        "successes": 1485,
+        "total": 1868,
+        "observedRate": 0.7949678800856531,
+        "minimumObservedRateForConfirmation": 0.65,
+        "adjustedPValue": 3.1297556505619717e-152,
+        "rejected": true
+      },
+      "d3Inferior": {
+        "successes": 868,
+        "total": 1868,
+        "observedRate": 0.46466809421841543,
+        "minimumObservedRateForConfirmation": 0.70,
+        "adjustedPValue": 1,
+        "rejected": false
+      },
+      "d3TopSetRate": 0.15203426124197003,
+      "medianNormalizedRankLoss": 0.5,
+      "consistencyGatesPassed": true,
+      "formalDecision": "NOT-CONFIRMED"
+    },
+    {
+      "formalCandidateId": "BMP-S2-C04",
+      "sourceStage1CandidateId": "BMP-S1-C04",
+      "supportGroupId": "BMP-S2-G02-MTAJI",
+      "selectedRoots": 810,
+      "estimable": true,
+      "technicalIntegrityPassed": true,
+      "failureToken": "allRepliesActorCaptureMoveDeltaNegative",
+      "failureSignature": {
+        "successes": 508,
+        "total": 810,
+        "observedRate": 0.6271604938271605,
+        "minimumObservedRateForConfirmation": 0.65,
+        "adjustedPValue": 1.1087829948086514e-12,
+        "rejected": true
+      },
+      "d3Inferior": {
+        "successes": 411,
+        "total": 810,
+        "observedRate": 0.5074074074074074,
+        "minimumObservedRateForConfirmation": 0.70,
+        "adjustedPValue": 1,
+        "rejected": false
+      },
+      "d3TopSetRate": 0.19382716049382717,
+      "medianNormalizedRankLoss": 0.5,
+      "consistencyGatesPassed": true,
+      "formalDecision": "NOT-CONFIRMED"
+    }
+  ],
+  "studySummary": {
+    "formalCandidateCount": 4,
+    "estimableCandidateCount": 4,
+    "confirmedCount": 0,
+    "notConfirmedCount": 4,
+    "confirmedCandidateIds": [],
+    "zeroConfirmedIsValidOutcome": true,
+    "study1FormalState": "COMPLETE",
+    "study1FormalConclusion": "ZERO-CONFIRMED-FOUR-NOT-CONFIRMED"
+  },
+  "interpretationBoundary": {
+    "gameTheoreticBlunderClaimAuthorized": false,
+    "humanMisconceptionClaimAuthorized": false,
+    "expertTraditionalClaimAuthorized": false,
+    "pedagogicalClaimAuthorized": false,
+    "causalMechanismClaimAuthorized": false,
+    "externalValidityBeyondFrozenSystemAuthorized": false,
+    "note": "NOT-CONFIRMED is a preregistered machine-operational candidate decision, not proof that the move is game-theoretically sound or harmless to humans. C01-C03 reproduce their frozen structural failure signatures strongly but fail the frozen D3-inferior co-primary endpoint."
+  },
+  "noRescue": {
+    "seedExtensionAllowed": false,
+    "replacementSamplingAllowed": false,
+    "candidateDefinitionEditAllowed": false,
+    "matcherRetuningAllowed": false,
+    "failureTokenSubstitutionAllowed": false,
+    "candidateMergeSplitAllowed": false,
+    "phaseReassignmentAllowed": false,
+    "endpointSubstitutionAllowed": false,
+    "nullThresholdRetuningAllowed": false,
+    "absoluteRateFloorRetuningAllowed": false,
+    "multiplicityFamilyChangeAllowed": false,
+    "alphaChangeAllowed": false,
+    "postOutcomePrimaryDepthOrEvaluatorSelectionAllowed": false,
+    "favorableSubgroupPromotionAllowed": false,
+    "manualCandidateOverrideAllowed": false
+  }
+}
