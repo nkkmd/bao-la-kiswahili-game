@@ -91,7 +91,8 @@ The manifest's scientific source-file SHA-256 mapping matches the authorization-
 Generation checkpoint:
 
 ```text
-cd7b367c90df7d628b48471d7d63d863313e6057
+doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-source-corpus-generated-verification-pending.md
+commit = cd7b367c90df7d628b48471d7d63d863313e6057
 ```
 
 ## Primary construct and frozen measurement
@@ -118,7 +119,7 @@ primary root estimability = every exact root move terminates in all 64 replicate
 For an estimable root:
 
 ```text
-p_hat_m = root-actor wins / 64 for exact root move m
+p_hat_m = root-actor wins / 64 for exact legal move m
 D_range = max_m(p_hat_m) - min_m(p_hat_m)
 Stage 1 high-divergence root = D_range >= 0.30
 ```
