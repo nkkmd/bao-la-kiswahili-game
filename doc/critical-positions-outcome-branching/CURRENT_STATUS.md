@@ -31,8 +31,8 @@ Stage 1 source-bound generation authorization = ISSUED
 Stage 1 scientific source generation = COMPLETE
 Stage 1 scientific source games generated = 3072 / 3072
 Stage 1 scientific source seeds consumed = 22600001..22603072 / COMPLETE
-Stage 1 independent full corpus replay verification = PENDING
-Stage 1 outcome-blind root selection = BLOCKED pending corpus verification PASS
+Stage 1 independent full corpus replay verification = COMPLETE / PASS
+Stage 1 outcome-blind root selection = UNBLOCKED / NOT STARTED
 Stage 1 scientific continuation measurement = NOT STARTED
 Stage 1 scientific continuation outcomes inspected = false
 Stage 2 scientific generation = NOT AUTHORIZED / NOT STARTED
@@ -84,9 +84,7 @@ unique historical trajectories: 2726 >= 2500 -> PASS
 generated distinct opening prefixes: 2226 >= 1800 -> PASS
 ```
 
-These are not selection-readiness results. Duplicate trajectories are collapsed by the frozen selection procedure without replacement. Root selection remains blocked until independent full corpus replay verification passes.
-
-The manifest's scientific source-file SHA-256 mapping matches the authorization-bound mapping.
+Duplicate trajectories remain subject to the frozen pre-selection collapse. The manifest's scientific source-file SHA-256 mapping matches the authorization-bound mapping.
 
 Generation checkpoint:
 
@@ -94,6 +92,34 @@ Generation checkpoint:
 doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-source-corpus-generated-verification-pending.md
 commit = cd7b367c90df7d628b48471d7d63d863313e6057
 ```
+
+## Stage 1 independent full corpus replay verification
+
+The independently produced local `verification.json` reports:
+
+```text
+schemaVersion = 1
+stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
+specSha256 = 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
+passed = true
+gamesVerified = 3072
+fullCorpusReplay = true
+uniqueHistoricalTrajectories = 2726
+distinctOpeningPrefixes = 2226
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+```
+
+Therefore the mandatory corpus-verification firewall is PASS and the frozen outcome-blind root-selection phase is unblocked.
+
+Verification checkpoint:
+
+```text
+doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-full-corpus-replay-verification-pass.md
+checkpoint commit = e6a1fa2a467ba6646418a1096e1b3bacc4566914
+```
+
+This verification is a reproducibility/identity result only. It does not provide continuation outcome evidence, does not authorize scientific confirmation, and does not alter Stage 2 authorization.
 
 ## Primary construct and frozen measurement
 
@@ -182,6 +208,31 @@ confirmatoryReuseAllowed = false
 stage2GenerationAuthorized = false
 ```
 
+## Frozen outcome-blind root selection
+
+The next phase uses only preregistered pre-outcome state identity and structural eligibility:
+
+```text
+collapse duplicate historicalTrajectoryHash groups
+-> deterministic Namua/Mtaji phase assignment by frozen SHA parity
+-> choose one eligible root within assigned phase by frozen SHA rank
+-> collapse duplicate selected ruleStateKey without replacement
+-> apply frozen phase quotas: 300 Namua + 300 Mtaji
+```
+
+Forbidden selection inputs include:
+
+```text
+game winner
+continuation outcome
+D_range
+D2/D3 score
+candidate matcher
+post-move consequence
+```
+
+Selection readiness requires all frozen checks to pass, including exactly 600 unique selected rule states, exactly 300 roots per phase, selected opening-prefix diversity, and generation-stratum representation. Failure is terminal for downstream v1 measurement: no replacements, phase reassignment, seed extension, threshold retuning, or favorable-subset rescue.
+
 ## Immutable inherited formal states
 
 ```text
@@ -229,22 +280,19 @@ Continuation RNG seeds are deterministically derived from stage salt + root iden
 
 ## Current next gate
 
-Independent full replay verification of all 3072 source games is mandatory before selection:
+The independent full corpus replay firewall has passed. The next permitted operation is frozen outcome-blind root selection:
 
 ```bash
-node tools/experiments/verify-critical-positions-stage1-exploratory.js \
-  --phase corpus \
-  --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
+node tools/experiments/run-critical-positions-stage1-exploratory.js --phase select
 ```
 
-Required:
+Expected local outputs:
 
 ```text
-passed = true
-fullCorpusReplay = true
-gamesVerified = 3072
+selection-audit.json
+selected-roots.json
 ```
 
-If verification fails, stop. Do not regenerate selective games, extend seeds, or perform root selection.
+Inspect `selection-audit.json` before any continuation measurement. Measurement is permitted only if the frozen selection readiness reports `passed = true`. If selection readiness fails, stop without replacement, seed extension, phase reassignment, or other rescue.
 
 Stage 2 remains locked until Stage 1 is independently verified and completed as exploratory evidence, candidate definitions are separately frozen, Stage 2 formal rules are preregistered, source-bound Stage 2 authorization exists, and fresh evidence is guaranteed.
