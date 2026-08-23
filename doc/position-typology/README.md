@@ -36,7 +36,7 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 ```
 
 ```text
-Stage 2 formal decision = confirmed
+Stage 2 formal decision = CONFIRMED
 resultHash = 26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347
 ```
 
@@ -70,7 +70,7 @@ STYLE-C4 = Morphology-Switching Tempo
 Stage 5 independent confirmationではbehavioral anchors/signaturesは再現しましたが、exact 4D PCA subspaceのalignmentとtrajectory-resampling stabilityが事前登録基準を満たしませんでした。
 
 ```text
-Stage 5 formal decision = not-confirmed
+Stage 5 formal decision = NOT-CONFIRMED
 resultHash = 6069ea45dc055dbd65a14a939ccaa427466d1e3f8852ed81f555dc7ebe16e97c
 ```
 
@@ -119,7 +119,7 @@ Bao position structure
 
 Playing style
 ├─ discrete clusters: unsupported
-└─ exact STYLE-C1..C4 4D geometry: formal not-confirmed
+└─ exact STYLE-C1..C4 4D geometry: formal NOT-CONFIRMED
 ```
 
 ## 重要な概念分離
