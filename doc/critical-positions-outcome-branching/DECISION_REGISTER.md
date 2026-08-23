@@ -237,11 +237,11 @@ Status: **FROZEN**
 
 Status: **FROZEN**
 
-## CPOB-D028 — Scientific generation remains locked
+## CPOB-D028 — Initiation and Stage 0 records do not authorize scientific generation
 
-No Stage 1 or Stage 2 scientific corpus or continuation measurement is authorized by the initiation or Stage 0 closure records alone.
+No Stage 1 or Stage 2 scientific corpus or continuation measurement is authorized **by the initiation or Stage 0 closure records alone**. Stage 1 may be unlocked only by the separate source-bound authorization required by CPOB-D025; Stage 2 always requires its own future authorization.
 
-Status: **LOCKED**
+Status: **FROZEN FIREWALL**
 
 ## CPOB-D029 — Stage 0 technical validation passed
 
@@ -335,10 +335,113 @@ Technical result hashes exclude wall-clock timing so the deterministic scientifi
 
 Status: **FROZEN**
 
-## CPOB-D035 — Stage 1 design may be frozen, but generation remains unauthorized
+## CPOB-D035 — Stage 1 design may be frozen, but generation requires a separate authorization
 
-**Decision:** After Stage 0 technical PASS, a Stage 1 exploratory spec may freeze the fresh source-game population, outcome-blind root selection, structural candidate grammar, all-move continuation measurement, readiness gates and deterministic promotion rule.
+**Decision:** After Stage 0 technical PASS, the Stage 1 exploratory spec freezes the fresh source-game population, outcome-blind root selection, structural candidate grammar, all-move continuation measurement, readiness gates and deterministic promotion rule.
 
-The Stage 1 spec itself is not authorization. Scientific generation remains blocked until contract validation, runner/verifier technical validation, exact source hash binding, and a separate explicit authorization commit all pass.
+The Stage 1 spec itself is not authorization. Contract validation, runner/verifier technical validation, exact source hash binding and a separate explicit authorization commit are required before scientific generation.
 
-Status: **FROZEN GATE / GENERATION LOCKED**
+Status: **FROZEN GATE**
+
+## CPOB-D036 — Stage 1 pre-generation firewall passed
+
+**Decision:** Accept the Stage 1 production implementation only after the full pre-generation technical firewall passed without consuming any Stage 1 or Stage 2 scientific source seed.
+
+Frozen evidence:
+
+```text
+Stage 1 spec SHA-256
+= 22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc
+
+final source-changing implementation commit before authorization
+= 3995932ae73e9e99a27d4143de4e359db1136060
+
+Stage 1 contract validation run
+= 32625783543 / success
+
+Stage 1 production tooling validation run/job
+= 32625783544 / 97160810538 / success
+
+Stage 0 regression run
+= 32625783553 / success
+```
+
+The technical-only end-to-end pipeline reproduced independently:
+
+```text
+gamesVerified = 2
+rootsReselected = 2
+measurementsFullyRemeasured = 2
+deterministicDiscoveryRecomputed = true
+scientificSeedConsumed = false
+```
+
+The technical pipeline covered source-game generation through the same generator path, outcome-blind root selection, all-exact-root-move continuation, independent seed/policy replay, D2/D3 recomputation, structural/reply-envelope recomputation and deterministic discovery.
+
+Checkpoint commit:
+
+```text
+53dcfd971c9408327d2d9830486523322ec41a22
+```
+
+Status: **FROZEN / PASS**
+
+## CPOB-D037 — Compact continuation storage requires full-record hash replay
+
+**Decision:** Scientific measurement artifacts may store a compact per-replicate continuation record instead of every intermediate continuation state/move, provided that each compact record contains the derived seed, outcome category, continuation length, final rule-state identity and a hash of the complete continuation record.
+
+The independent verifier must rerun every continuation from the selected root/move/replicate and reproduce the complete-record hash, terminal outcome, final rule-state identity and continuation length. It must also independently recompute D2/D3 secondary tables and structural/reply-envelope measurements.
+
+This is a storage decision only; it does not reduce the required independent scientific remeasurement.
+
+Status: **FROZEN**
+
+## CPOB-D038 — Stage 1 exploratory generation authorized under exact source binding
+
+**Decision:** Authorize only the frozen Stage 1 exploratory source corpus and downstream exploratory pipeline under the exact Stage 1 specification and exact scientific source-file SHA-256 mapping validated before outcome generation.
+
+Separate authorization commit:
+
+```text
+a85f9b36abbf492cd8085b0a95c8d10b76f849e8
+```
+
+Authorization semantics:
+
+```text
+stage1GenerationAuthorized = true
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+stage2GenerationAuthorized = false
+```
+
+Authorized population and measurement:
+
+```text
+source games = 3072
+source seeds = 22600001..22603072
+selected roots if readiness passes = 600
+P1_NORMAL_TOP3
+64 replicates per exact legal root move
+200 post-root ply cap
+D_range >= 0.30 high-divergence definition
+```
+
+Execution must remain staged:
+
+```text
+generate
+→ independent full corpus replay
+→ outcome-blind root selection
+→ selection readiness
+→ all-move continuation + secondary measurement
+→ measurement readiness
+→ independent full continuation remeasurement + secondary/structural recomputation
+→ deterministic exploratory discovery
+```
+
+Authorization does not permit seed extension, replacement, result-triggered replicate extension, threshold/matcher retuning, phase reassignment or manual promotion.
+
+Stage 2 generation, confirmatory inference, game-theoretic claims, validated win-probability claims and human/expert criticality claims remain unauthorized.
+
+Status: **STAGE 1 AUTHORIZED / STAGE 2 LOCKED**
