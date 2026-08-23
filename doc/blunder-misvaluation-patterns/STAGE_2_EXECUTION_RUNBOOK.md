@@ -1,7 +1,9 @@
 # Blunder / Misvaluation Patterns Study 1 — Stage 2 Execution Runbook
 
-Updated: 2026-08-22  
-Status: **SOURCE-BOUND AUTHORIZED / GENERATION NEXT**
+Updated: 2026-08-23  
+Status: **HISTORICAL EXECUTION RUNBOOK — STAGE 2 COMPLETE**
+
+> This file records the frozen execution order and the completed execution audit. It is no longer an instruction to generate another Stage 2 corpus. Final scientific results are canonical in [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) and [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json).
 
 ```text
 stageId = BMP-S2-FORMAL-2026-08-22-v1
@@ -10,21 +12,11 @@ formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962
 validated execution HEAD = 011b9a56ecb95046f7d61a331b76dea093aa7663
 source freeze commit = 11670e528dccff063b8e66be9ff190e61e4e4e77
 final corrected authorization commit = a9eee06c6a1ad36f9e65948f5d78eff58a91d561
+research branch = research/blunder-misvaluation-patterns-stage2-formal
+baseline integrated main = 52f5635be7064b5016baf7cde82faebe60609d9e
 ```
 
-Research branch:
-
-```text
-research/blunder-misvaluation-patterns-stage2-formal
-```
-
-Baseline integrated `main`:
-
-```text
-52f5635be7064b5016baf7cde82faebe60609d9e
-```
-
-## 1. Mandatory execution order
+## 1. Frozen mandatory execution order
 
 ```text
 generate
@@ -35,189 +27,117 @@ generate
 -> formal evaluation
 ```
 
-Do not skip gates.
+This order was executed without skipping a gate.
 
-## 2. Pre-generation status and authorization acceptance
+## 2. Completed execution record
 
-After pulling the latest branch, first inspect status:
+### Authorization acceptance
 
-```bash
-node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase status
-```
+The source-bound authorization was accepted against the exact candidate/spec hashes and ordered scientific source-file SHA-256 map before scientific generation.
 
-Required before generation:
+### Corpus generation
 
 ```text
-authorizationFilePresent = true
-generatedGames = 0
-expectedGames = 4096
-hasManifest = false
-hasCorpusVerification = false
-hasSelectionAudit = false
-hasMeasurementManifest = false
-hasMeasurementVerification = false
-hasFormalResult = false
-```
-
-`--phase status` reports current hashes but intentionally does not consume the authorization. Therefore run this explicit **non-generating authorization acceptance check** next:
-
-```bash
-node - <<'NODE'
-const C = require('./tools/experiments/lib/blunder-misvaluation-stage2-corpus.js');
-const { specSha256 } = C.loadSpec();
-const { candidateSha256 } = C.loadCandidates();
-const { authorizationSha256 } = C.loadAuthorization(specSha256, candidateSha256);
-console.log(JSON.stringify({
-  stageId: 'BMP-S2-FORMAL-2026-08-22-v1',
-  authorizationAccepted: true,
-  specSha256,
-  candidateSha256,
-  authorizationSha256,
-  sourceFileSha256: C.sourceFileSha256()
-}, null, 2));
-NODE
-```
-
-This validates authorization semantics, candidate/spec binding, and the exact ordered `authorizedSourceFileSha256` map without generating scientific data. Any failure stops the study.
-
-## 3. Generate the fixed formal corpus
-
-Only after the authorization acceptance check succeeds:
-
-```bash
-node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase generate \
-  2>&1 | tee /tmp/bmp-stage2-generate.log
-```
-
-Frozen population:
-
-```text
-games = 4096
+games = 4096 / 4096
 seeds = 22500001..22504096
 maxPly = 100
+unique historical trajectories = 3559
+distinct opening prefixes = 2827
 ```
 
-Do not extend seeds or use replacement sampling. The runner is deterministic/resumable under the same frozen identity; rerunning after an interruption is not authorization to change scientific inputs.
-
-Expected compact artifact:
+Raw artifact root:
 
 ```text
-artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/manifest.json
+artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/
 ```
 
-**After generation, do not run selection. Run independent corpus verification next.**
-
-## 4. Independent corpus verification
-
-```bash
-node tools/experiments/verify-blunder-misvaluation-stage2-formal.js --phase corpus \
-  2>&1 | tee /tmp/bmp-stage2-verify-corpus.log
-```
-
-Required before selection:
+### Independent corpus verification
 
 ```text
 passed = true
 fullSearchRecomputation = true
 gamesVerified = 4096
-candidate/spec/source bindings intact
 ```
 
-Expected artifact:
+### Outcome-blind support-group selection
 
 ```text
-artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/verification.json
+selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
+G01 Namua selected unique states = 1868
+G02 Mtaji selected unique states = 810
+final Stage 1 overlap = 0 / 0 / 0
+replacementPerformed = false
+seedExtensionPerformed = false
+alternateRootAfterRuleStateOverlapPerformed = false
 ```
 
-Stop and inspect `manifest.json` + `verification.json` before selection.
-
-## 5. Support-group selection
-
-Only after corpus verification PASS:
-
-```bash
-node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase select
-```
-
-Selection is outcome-blind and applies the Stage 1 leakage firewall. C01/C02/C03 share one Namua support-group root set; C04 uses one Mtaji support-group root set. No alternate root or replacement is allowed after a rule-state overlap exclusion.
-
-Expected artifact:
+### Formal D3 measurement
 
 ```text
-artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/selection-audit.json
+G01 measurements = 1868
+G02 measurements = 810
+total measurements = 2678
+measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
+measurementIntegrityPassed = true
 ```
 
-## 6. Formal D3 measurement
-
-Only after selection audit is accepted:
-
-```bash
-node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase measure \
-  2>&1 | tee /tmp/bmp-stage2-measure.log
-```
-
-Expected compact artifact:
+### Independent measurement verification
 
 ```text
-artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/measurement-manifest.json
-```
-
-## 7. Independent measurement verification
-
-```bash
-node tools/experiments/verify-blunder-misvaluation-stage2-formal.js --phase measurement \
-  2>&1 | tee /tmp/bmp-stage2-verify-measurement.log
-```
-
-Required before evaluation:
-
-```text
-passed = true
+verifiedMeasurementRows = 2678
 measurementHashMatches = true
 stage1IdentityFirewallPassed = true
 independentFormalD3CandidateTableRecomputation = true
 independentCandidateMatcherAndFailureRecomputation = true
+verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
+passed = true
 ```
 
-Expected artifact:
+### Formal evaluation
 
-```text
-artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/measurement-verification.json
-```
-
-## 8. Formal evaluation
-
-Only after independent measurement verification PASS:
-
-```bash
-node tools/experiments/run-blunder-misvaluation-stage2-formal.js --phase evaluate \
-  2>&1 | tee /tmp/bmp-stage2-evaluate.log
-```
-
-Expected result:
+The formal result file is:
 
 ```text
 artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/stage2-formal-result.json
 ```
 
-Candidate labels are exactly `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or `TECHNICAL-INCONCLUSIVE`. Zero confirmed candidates is valid.
+Final decision:
 
-## 9. No-rescue boundary
+```text
+formal candidates = 4
+estimable = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+```
 
-After scientific generation begins, do not extend seeds, replace excluded trajectories/states, choose alternate roots after identity overlap, edit/merge/split/rename candidates, retune matcher/failure token, change endpoint/null/floors, change alpha/multiplicity family, promote favorable subgroups, switch primary depth/evaluator, or manually override a decision.
+## 3. Formal-evaluation provenance note
 
-A materially different design requires a new prospective version and a new fresh seed block.
+The wrapper command `run-blunder-misvaluation-stage2-formal.js --phase evaluate` correctly blocked evaluation unless independent measurement verification had passed, but the wrapper did not pass the verification object into `evaluateFromRows()`. Its first result therefore had the provenance field `independentMeasurementVerificationHash = null` even though the verification gate had been enforced.
 
-## 10. Authorization correction audit
+No scientific endpoint, threshold, candidate, support set, or input data were changed. The already-frozen direct evaluator was then executed against the same verified measurement artifacts. It produced the same endpoint decisions and bound the existing independent verification correctly:
 
-The first authorization commit `a0e7d9ee619d081749039271f039b32267699d4b` had one clerical source-hash transcription error and was never used. Final valid authorization is:
+```text
+independentMeasurementVerificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
+```
+
+The direct-evaluator output is the canonical raw formal result. This was a provenance-binding correction, not a scientific reanalysis or rescue.
+
+## 4. Authorization correction audit
+
+The first authorization commit `a0e7d9ee619d081749039271f039b32267699d4b` contained one clerical source-hash transcription error and was never used. Final valid authorization is:
 
 ```text
 a9eee06c6a1ad36f9e65948f5d78eff58a91d561
 ```
 
-No scientific source or scientific data changed as part of that correction.
+The correction occurred before scientific generation and did not alter scientific semantics.
 
-## 11. Interpretation boundary
+## 5. No-rescue boundary
 
-Even `CONFIRMED` means machine-reproducible recurrence under the frozen Bao engine/search/population only. It is not a game-theoretic proof, human misconception result, expert/traditional validation, pedagogical result, causal claim, or external-validity claim.
+No seed extension, replacement sampling, alternate root after identity overlap, candidate edit/merge/split/rename, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, alpha/multiplicity change, favorable subgroup promotion, primary depth/evaluator switch, or manual override was performed.
+
+The completed Stage 2 cannot be rerun with changed rules to rescue a result. A materially different question requires a new prospective version and a newly audited fresh seed block.
+
+## 6. Interpretation boundary
+
+The four exact frozen machine patterns were `NOT-CONFIRMED`. This does not establish that the moves are game-theoretically non-blunders, nor does it establish human misconception, expert/traditional recognition, pedagogical importance, causal mechanism, or external validity.
