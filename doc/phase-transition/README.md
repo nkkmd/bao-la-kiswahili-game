@@ -37,12 +37,12 @@
 
 | Experiment | Formal decision | 固定範囲 / 理由 |
 | --- | --- | --- |
-| E-010 | `not-confirmed` | minimum primary candidate 12に対し11 |
-| E-011 | `inconclusive` | 複数conditionでavailability不足 |
-| E-017 | `not-confirmed` | minimum unique controls 30,000に対し23,306 |
-| E-018 / H16 | `confirmed` | fixed `hard / bao / depth2` のphase2 > legacyのみ |
-| E-019 / H17 | `not-confirmed` | D3が事前登録方向と逆転しglobal IUT不成立 |
-| E-020 / H18 | `confirmed` | fixed `hard / bao / depth3` のlegacy > phase2のみ |
+| E-010 | `NOT-CONFIRMED` | minimum primary candidate 12に対し11 |
+| E-011 | `INCONCLUSIVE` | 複数conditionでavailability不足 |
+| E-017 | `NOT-CONFIRMED` | minimum unique controls 30,000に対し23,306 |
+| E-018 / H16 | `CONFIRMED` | fixed `hard / bao / depth2` のphase2 > legacyのみ |
+| E-019 / H17 | `NOT-CONFIRMED` | D3が事前登録方向と逆転しglobal IUT不成立 |
+| E-020 / H18 | `CONFIRMED` | fixed `hard / bao / depth3` のlegacy > phase2のみ |
 
 これらのformal decisionは、後続のsecondary / retrospective analysisで置換・救済・反転しません。
 
