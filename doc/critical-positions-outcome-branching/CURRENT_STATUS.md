@@ -7,24 +7,19 @@ Updated: 2026-08-24
 ```text
 studyId = CPOB-STUDY1
 baseline main HEAD = 576783b1a1d514726d4d30e4dfac1bf79dde9e2a
-previously reported main HEAD = 2c452186fc1bfbe2800c84d9acc8546915c33da1
 study branch = research/critical-positions-outcome-branching
 draft tracking PR = #36 / DO NOT MERGE during active scientific execution
 directory = doc/critical-positions-outcome-branching/
 artifact root = artifacts/local/critical-positions-outcome-branching/
 ```
 
-The study branch was created from the actually verified main HEAD `576783b1...`. Completed prior-study formal decisions remain immutable.
+Completed prior-study formal decisions remain immutable.
 
 ## Current scientific state
 
 ```text
-prior-study state restoration = COMPLETE
-seed namespace audit = COMPLETE for tracked declarations at initiation
 Stage 0 construct design = COMPLETE / FROZEN
-Stage 0 technical execution = COMPLETE / PASS
-Stage 0 independent technical replay verification = PASS
-Stage 0 scientific data = NONE
+Stage 0 technical validation + independent replay = PASS
 Stage 1 prospective design = FROZEN / VALIDATED
 Stage 1 pre-generation firewall = COMPLETE / PASS
 Stage 1 source-bound generation authorization = ISSUED
@@ -33,8 +28,9 @@ Stage 1 scientific source seeds consumed = 22600001..22603072 / COMPLETE
 Stage 1 independent full corpus replay verification = COMPLETE / PASS
 Stage 1 outcome-blind root selection = COMPLETE / READINESS PASS
 Stage 1 selected roots = 600 = 300 Namua + 300 Mtaji
-Stage 1 scientific continuation measurement = UNBLOCKED / NOT STARTED
-Stage 1 scientific continuation outcomes inspected = false
+Stage 1 continuation / secondary / structural measurement = COMPLETE / READINESS PASS
+Stage 1 independent full continuation remeasurement = PENDING / NEXT
+Stage 1 deterministic exploratory discovery = BLOCKED pending measurement verification PASS
 Stage 2 scientific generation = NOT AUTHORIZED / NOT STARTED
 ```
 
@@ -45,8 +41,6 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 stage2GenerationAuthorized = false
 ```
-
-Authorization does not permit confirmatory inference, Stage 2 generation, validated win-probability claims, game-theoretic criticality claims, human/expert criticality claims, or rescue/relabeling of completed studies.
 
 ## Frozen Stage 1 identity
 
@@ -59,18 +53,9 @@ source seeds = 22600001..22603072
 selectionHash = 702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d
 ```
 
-## Stage 1 generated source corpus
+## Source corpus and verification
 
-Generated manifest identity:
-
-```text
-generatedAt = 2026-08-23T11:15:15.447Z
-sourceCommit = 157a4947435213b430ae7a9a85cc861aebfc258e
-sourceTreeDirty = false
-summaryHash = 1a56b7afb8c6c295f827c0546a87e9c2b0788914bffd1587b47f0d778bf73d63
-```
-
-Frozen population realized exactly:
+Generated source corpus:
 
 ```text
 games = 3072
@@ -80,34 +65,11 @@ B-D3 = 512
 LS-D2 = 512
 V2-D2 = 512
 LE-D2 = 512
-```
-
-Outcome-independent generation summary:
-
-```text
 uniqueHistoricalTrajectories = 2726
-duplicateHistoricalTrajectoryGroups = 232
-largestHistoricalTrajectoryGroup = 7
 distinctOpeningPrefixes = 2226
 ```
 
-Generation-level preregistered identity/diversity gates passed:
-
-```text
-unique historical trajectories: 2726 >= 2500 -> PASS
-generated distinct opening prefixes: 2226 >= 1800 -> PASS
-```
-
-Generation checkpoint:
-
-```text
-doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-source-corpus-generated-verification-pending.md
-commit = cd7b367c90df7d628b48471d7d63d863313e6057
-```
-
-## Stage 1 independent full corpus replay verification
-
-Independent local `verification.json`:
+Independent corpus replay:
 
 ```text
 passed = true
@@ -115,20 +77,11 @@ gamesVerified = 3072
 fullCorpusReplay = true
 uniqueHistoricalTrajectories = 2726
 distinctOpeningPrefixes = 2226
-scientificInferenceAuthorized = false
-confirmatoryReuseAllowed = false
 ```
 
-Verification checkpoint:
+No continuation outcome was used for source generation, corpus verification, or root selection.
 
-```text
-doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-full-corpus-replay-verification-pass.md
-checkpoint commit = e6a1fa2a467ba6646418a1096e1b3bacc4566914
-```
-
-This was a reproducibility/identity firewall only and did not inspect continuation outcomes.
-
-## Stage 1 outcome-blind root selection
+## Outcome-blind root selection
 
 Frozen procedure:
 
@@ -140,49 +93,24 @@ collapse duplicate historicalTrajectoryHash groups
 -> apply frozen phase quotas: 300 Namua + 300 Mtaji
 ```
 
-Forbidden selection inputs remained excluded:
+Observed audit:
 
 ```text
-game winner
-continuation outcome
-D_range
-D2/D3 score
-candidate matcher
-post-move consequence
-```
-
-Observed selection audit:
-
-```text
-generatedGames = 3072
-uniqueHistoricalTrajectories = 2726
 unavailableAssignedPhase = 87
 selectedBeforeRuleStateCollapse = 2639
 duplicateSelectedRuleStatesCollapsed = 6
-phasePoolAfterRuleStateCollapse:
-  namua = 1356
-  mtaji = 1277
-droppedByPhaseQuota:
-  namua = 1056
-  mtaji = 977
+phasePoolAfterRuleStateCollapse = Namua 1356 / Mtaji 1277
 selectedUniqueRuleStates = 600
 replacementPerformed = false
 phaseReassignmentPerformed = false
-```
-
-Final selected population:
-
-```text
 Namua = 300
 Mtaji = 300
-total = 600
-unique historical trajectories among selected roots = 600
-unique rule states among selected roots = 600
 selected distinct opening prefixes = 567
 maximum single generation-stratum share = 0.18833333333333332
+selection readiness = PASS
 ```
 
-Generation-stratum counts:
+Generation-stratum counts among selected roots:
 
 ```text
 B-D1 = 95
@@ -193,35 +121,11 @@ V2-D2 = 99
 LE-D2 = 93
 ```
 
-All frozen selection-readiness gates passed:
-
-```text
-uniqueHistoricalTrajectories = PASS
-generatedDistinctOpeningPrefixes = PASS
-selectedUniqueRuleStates = PASS
-namuaSelectedRoots = PASS
-mtajiSelectedRoots = PASS
-selectedDistinctOpeningPrefixes = PASS
-selectedPerGenerationStratum = PASS
-maximumSingleSelectedGenerationStratumShare = PASS
-selection readiness = PASS
-```
-
-Independent cross-check of the supplied compact artifacts also found:
-
-```text
-selectionHash agrees across selected-roots and selection-audit = true
-terminal selected roots = 0
-assigned phase mismatches = 0
-selected roots with actor legalMoveCount < 2 = 0
-selected roots with ply < 8 = 0
-```
-
 Selection checkpoint:
 
 ```text
 doc/critical-positions-outcome-branching/checkpoints/2026-08-24-stage1-outcome-blind-selection-readiness-pass.md
-checkpoint commit = 5c3a6e87cd4fbe19c845756341d1afc62c735a2b
+commit = 5c3a6e87cd4fbe19c845756341d1afc62c735a2b
 ```
 
 ## Primary construct and frozen measurement
@@ -255,40 +159,74 @@ highDivergence = D_range >= 0.30
 
 `p_hat_m` is a fixed-policy empirical continuation quantity. It is not a game-theoretic probability and is not derived from the inconclusive Calibration Study isotonic mapping.
 
-Secondary root-only measurements remain:
+Secondary measurements are exact D2/D3 root tables under the frozen bao/phase2/Q1 semantics plus immediate structural transitions and exhaustive one-ply opponent reply envelopes. D3 is not ground truth.
+
+## Stage 1 measurement readiness result
+
+The local compact `measurement-audit.json` reports:
 
 ```text
-exact D2/D3 / bao / phase2 / Q1 search-value axis
-TopSet / ranking-instability summaries
-immediate structural transition
-exhaustive one-ply opponent reply envelope
+selectedRoots = 600
+measuredExactRootMoveInterventions = 2666
+primaryEstimableRoots = 600
+primaryNonEstimableRoots = 0
+primaryEstimableNamuaRoots = 300
+primaryEstimableMtajiRoots = 300
+replacementPerformed = false
+replicateExtensionPerformed = false
+continuationPolicySubstitutionPerformed = false
 ```
 
-D3 is not ground truth. No validated probability conversion is authorized. No fabricated PV is allowed.
-
-## Stage 1 pre-generation firewall and authorization
-
-Final source-changing implementation before authorization:
+All frozen measurement-readiness gates passed:
 
 ```text
-implementation commit = 3995932ae73e9e99a27d4143de4e359db1136060
-Stage 1 contract run = 32625783543 / success
-Stage 1 tooling run/job = 32625783544 / 97160810538 / success
-Stage 0 regression run = 32625783553 / success
-pre-generation firewall checkpoint = 53dcfd971c9408327d2d9830486523322ec41a22
-authorization commit = a85f9b36abbf492cd8085b0a95c8d10b76f849e8
+measuredExactRootMoveInterventions = PASS
+primaryEstimableRoots = PASS
+primaryEstimableNamuaRoots = PASS
+primaryEstimableMtajiRoots = PASS
+finiteD2D3CandidateTables = PASS
+overall = PASS
 ```
 
-The authorization remains bound to the frozen spec and exact scientific source hashes. Documentation/checkpoint changes after generation do not change the authorized scientific implementation.
+Important boundary:
+
+```text
+independentContinuationRemeasurementPending = true
+```
+
+The measurement outputs now contain exploratory continuation outcomes, but deterministic discovery remains blocked until the independent verifier fully reproduces the selected-root set, all continuation measurements, D2/D3 tables, and structural branches.
+
+Measurement checkpoint:
+
+```text
+doc/critical-positions-outcome-branching/checkpoints/2026-08-24-stage1-measurement-readiness-pass-remeasurement-pending.md
+checkpoint commit = 9a8cfd23b4af430c1858a80ffa5e5d00e5dbc725
+```
+
+## No-rescue boundary
+
+The following remain forbidden:
+
+```text
+source seed extension
+root replacement
+phase reassignment
+replicate extension
+continuation policy substitution
+continuation cap change
+D_range threshold retuning
+primary evaluator/depth substitution
+favorable subgroup rescue
+manual candidate override
+```
+
+Stage 1 cannot confirm itself. Stage 2 cannot reuse Stage 1 support as confirmation evidence.
 
 ## Immutable inherited formal states
 
 ```text
 Blunder / Misvaluation Patterns Study 1:
-  4 estimable formal candidates
-  0 CONFIRMED
-  4 NOT-CONFIRMED
-  CLOSED
+  0 CONFIRMED / 4 NOT-CONFIRMED / CLOSED
 
 Position Evaluation / Win-Rate Calibration Study 1:
   FORMAL DECISION = INCONCLUSIVE
@@ -311,7 +249,7 @@ Tactical Motif Human / Expert Validation Study 1:
 
 Namua→Mtaji Strategic Temporal Transition Study 1:
   FORMAL DECISION = NOT-CONFIRMED
-  first Mtaji observation under frozen engine = deterministic ply 44 for Mtaji-reaching trajectories
+  first Mtaji under frozen engine = deterministic ply 44 for Mtaji-reaching trajectories
 ```
 
 No inherited label may be changed by this study.
@@ -324,25 +262,11 @@ Stage 1 = 22600001..22603072 -> CONSUMED by frozen source generation
 Stage 2 = 22700001..22706144 -> RESERVED / NOT AUTHORIZED / UNCONSUMED
 ```
 
-Continuation RNG seeds are deterministically derived from stage salt + root identity + replicate index and do not expand the source-game seed namespace.
+Continuation RNG seeds are deterministic derivatives of stage salt + root identity + replicate index; they do not expand the source-game seed namespace.
 
 ## Current next gate
 
-The outcome-blind selection readiness firewall has passed. The next permitted operation is frozen Stage 1 continuation/secondary/structural measurement:
-
-```bash
-node tools/experiments/run-critical-positions-stage1-exploratory.js --phase measure
-```
-
-Expected compact output includes:
-
-```text
-measurement-audit.json
-```
-
-Do not replace non-estimable roots, increase replicates, extend the source seed block, change the 200-ply cap, substitute the continuation policy, retune `D_range`, or inspect/promote favorable subgroups.
-
-After measurement, run the mandatory independent full remeasurement/recomputation:
+Run the mandatory independent full continuation remeasurement/recomputation:
 
 ```bash
 node tools/experiments/verify-critical-positions-stage1-exploratory.js \
@@ -350,4 +274,21 @@ node tools/experiments/verify-critical-positions-stage1-exploratory.js \
   --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
 ```
 
-Deterministic discovery remains blocked until `measurement-verification.json` has been produced and its required verification conditions pass. Stage 2 remains locked and unconsumed.
+Expected compact output:
+
+```text
+measurement-verification.json
+```
+
+Required before discovery:
+
+```text
+fullContinuationRemeasurement = true
+fullSecondaryRecomputation = true
+fullStructuralRecomputation = true
+passed = true
+```
+
+If independent measurement verification fails, stop. Do not repair by replacement, seed extension, replicate extension, policy substitution, threshold retuning, or subgroup rescue.
+
+Only after measurement verification PASS may the frozen deterministic exploratory `discover` phase run. Stage 2 remains locked and unconsumed.
