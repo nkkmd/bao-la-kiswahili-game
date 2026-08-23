@@ -84,7 +84,7 @@ Status: **Study 1 closed**
 
 新しい200局では、主要候補11件のうち7件、**63.64%** がexpansionでした。controlは249/8,424、**2.96%** で、risk ratioは **21.53** でした。
 
-ただし、事前登録した最低候補数は12件で、実際は11件でした。そのためformal decisionは **`not-confirmed`** です。
+ただし、事前登録した最低候補数は12件で、実際は11件でした。そのためformal decisionは **`NOT-CONFIRMED`** です。
 
 結果を見た後で12を11へ緩めることはしませんでした。
 
@@ -101,7 +101,7 @@ Status: **Study 1 closed**
 
 ここでも強い濃縮方向は維持されました。
 
-一方、事前登録した最低unique control数30,000を満たさなかったため、formal decisionは **`not-confirmed`** のままです。
+一方、事前登録した最低unique control数30,000を満たさなかったため、formal decisionは **`NOT-CONFIRMED`** のままです。
 
 このように、第1研究では「現象を支持するデータが強い」ことと「事前登録したformal confirmation条件を満たした」ことを明確に分離しています。
 
@@ -142,7 +142,7 @@ D1とV2では事前登録方向を満たしましたが、D3では:
 
 となり、方向が強く逆転しました。
 
-このため、全strataが同方向でなければならないH17 globalは **`not-confirmed`** です。
+このため、全strataが同方向でなければならないH17 globalは **`NOT-CONFIRMED`** です。
 
 ここでE-019を後から「legacy優位を確認した実験」と読み替えることはしませんでした。
 
@@ -164,8 +164,8 @@ D3逆転を新しい仮説として改めて事前登録し、新しい4,500 pai
 
 | 固定条件 | `capture-branch-expansion`がより現れやすいprofile | formal status |
 | --- | --- | --- |
-| `hard / bao / depth2` | **phase2 > legacy** | confirmed |
-| `hard / bao / depth3` | **legacy > phase2** | independently confirmed |
+| `hard / bao / depth2` | **phase2 > legacy** | `CONFIRMED` |
+| `hard / bao / depth3` | **legacy > phase2** | independently `CONFIRMED` |
 
 これは一般的な「search profile × depth interaction」をformalに確認したという意味ではありません。また、任意のdepthで非単調な法則が成立することも意味しません。
 
@@ -307,12 +307,12 @@ favored profileにはcandidate-bearing gameも多い傾向がありましたが�
 
 | Experiment | Question | Formal decision | Main boundary |
 | --- | --- | --- | --- |
-| E-010 | unused-seed candidate enrichment | `not-confirmed` | minimum candidate countを1件下回った |
-| E-011 | evaluator/depth/search robustness | `inconclusive` | 複数conditionでavailability不足 |
-| E-017 | independent structural enrichment | `not-confirmed` | minimum unique controls未達 |
-| E-018 / H16 | phase2 vs legacy at depth2 | `confirmed` | fixed `hard / bao / depth2` only |
-| E-019 / H17 | D1/D3/V2同方向generalization | `not-confirmed` | D3が逆転 |
-| E-020 / H18 | independent D3 legacy > phase2 replication | `confirmed` | fixed `hard / bao / depth3` only |
+| E-010 | unused-seed candidate enrichment | `NOT-CONFIRMED` | minimum candidate countを1件下回った |
+| E-011 | evaluator/depth/search robustness | `INCONCLUSIVE` | 複数conditionでavailability不足 |
+| E-017 | independent structural enrichment | `NOT-CONFIRMED` | minimum unique controls未達 |
+| E-018 / H16 | phase2 vs legacy at depth2 | `CONFIRMED` | fixed `hard / bao / depth2` only |
+| E-019 / H17 | D1/D3/V2同方向generalization | `NOT-CONFIRMED` | D3が逆転 |
+| E-020 / H18 | independent D3 legacy > phase2 replication | `CONFIRMED` | fixed `hard / bao / depth3` only |
 
 E-010、E-017の閾値を結果後に緩めず、E-019 D3をpost-hocでconfirmatory resultへ変えず、secondary analysisでprimary decisionを置換しなかったことは、第1研究の再現性と解釈規律の一部です。
 
