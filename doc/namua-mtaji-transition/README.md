@@ -1,6 +1,6 @@
 # Namua→Mtaji Strategic Temporal Transition Study
 
-Status: **Study 1 closed / repository closure complete / formal decision `not-confirmed`**  
+Status: **Study 1 closed / repository closure complete / formal decision `NOT-CONFIRMED`**  
 開始日: 2026-08-10  
 Formal evaluation date: 2026-08-12  
 Closure date: 2026-08-12  
@@ -150,7 +150,7 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 
 No classifier refit, restandardization, relabeling, threshold tuning, or alternative-k rescue was performed.
 
-Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates. STYLE-C1..C4 exact geometry remains formal not-confirmed.
+Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates. STYLE-C1..C4 exact geometry remains formal `NOT-CONFIRMED`.
 
 ## Outcome firewall and final audit
 
