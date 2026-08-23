@@ -177,7 +177,7 @@ function runContinuation(root, rootMove, replicateIndex, options = {}) {
     finalPhase: state.phase,
     finalTurn: state.turn,
   };
-  result.recordHash = canonicalHash({ ...result, recordHash: undefined });
+  result.recordHash = canonicalHash(result);
   if (stableStringify(root) !== before) throw new Error("Continuation executor mutated root state");
   return result;
 }
@@ -237,7 +237,7 @@ function measureRoot(root, options = {}) {
     dRangeCompletedOnly,
     moves,
   };
-  result.measurementHash = canonicalHash({ ...result, measurementHash: undefined });
+  result.measurementHash = canonicalHash(result);
   if (stableStringify(root) !== before) throw new Error("Root measurement mutated root state");
   return result;
 }
