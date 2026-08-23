@@ -145,10 +145,12 @@ function main() {
   assert.equal(result.audit.structuralBranchCount, legal(root).length);
   assert.equal(result.benchmarks.length, 3);
   for (const benchmark of result.benchmarks) {
-    assert.equal(benchmark.replicates, 32);
-    assert.equal(benchmark.maxContinuationPlies, 24);
+    assert.equal(benchmark.replicates, 8);
+    assert.equal(benchmark.maxContinuationPlies, 12);
     assert.equal(Number.isFinite(benchmark.elapsedMs) && benchmark.elapsedMs >= 0, true);
     assert.equal(Number.isFinite(benchmark.meanBytesPerContinuation) && benchmark.meanBytesPerContinuation > 0, true);
+    assert.equal(Number.isFinite(benchmark.elapsedMsPerRecordedContinuationPly)
+      && benchmark.elapsedMsPerRecordedContinuationPly >= 0, true);
   }
 
   console.log(JSON.stringify({
