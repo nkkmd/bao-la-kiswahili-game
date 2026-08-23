@@ -1,5 +1,8 @@
 # Preregistration records
 
+Updated: 2026-08-23  
+Status: **STUDY 1 CLOSED / STAGE 2 FORMAL EXECUTION COMPLETE**
+
 ## Stage 0 / Stage 1
 
 - `STAGE_0_DESIGN_FREEZE.json` — construct/search/seed reservation before present-Study scientific data.
@@ -17,7 +20,7 @@ measurementHash = 614c0a41473dcc6a3dd5a609d6b6890449b8cf9014a6cae711ec541fdf40cd
 promoted exploratory candidates = 4
 ```
 
-Stage 1 is complete and integrated to `main`. Its support is not reusable as Stage 2 confirmation evidence.
+Stage 1 is complete and integrated to `main`. Its support was not reused as Stage 2 confirmation evidence.
 
 ## Stage 2 formal confirmation
 
@@ -41,6 +44,9 @@ source freeze commit = 11670e528dccff063b8e66be9ff190e61e4e4e77
 final corrected authorization commit = a9eee06c6a1ad36f9e65948f5d78eff58a91d561
 fresh fixed seeds = 22500001..22504096
 games = 4096
+selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
+measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
+measurement verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
 ```
 
 Formal candidate mapping:
@@ -52,39 +58,41 @@ BMP-S1-C03 -> BMP-S2-C03
 BMP-S1-C04 -> BMP-S2-C04
 ```
 
-C01/C02/C03 share the same frozen Namua support-group roots. C04 uses the Mtaji support group.
+C01/C02/C03 shared the same frozen Namua support-group roots. C04 used the Mtaji support group.
 
-Stage 2 requires final zero overlap with Stage 1 on:
+Stage 2 required and achieved final zero overlap with Stage 1 on:
 
 ```text
-historicalTrajectoryHash
-openingPrefixHash
-ruleStateKey
+historicalTrajectoryHash = 0
+openingPrefixHash = 0
+ruleStateKey = 0
 ```
 
-No replacement or seed extension is permitted.
+No replacement or seed extension was performed.
 
 ## Authorization correction audit
 
 The initial authorization commit `a0e7d9ee619d081749039271f039b32267699d4b` contained one clerical source-hash transcription error and was never used. It was corrected before scientific generation. The final authorization is `a9eee06c6a1ad36f9e65948f5d78eff58a91d561`.
 
-## Current gate
+## Completed execution chain
 
 ```text
-Stage 2 technical validation = PASS
-Stage 2 source SHA freeze = COMPLETE
-Stage 2 scientific generation = AUTHORIZED
-Stage 2 generated games = 0
-Stage 2 formal result = NONE
+generate                                        COMPLETE (4096 / 4096)
+-> independent full replay/search verification PASS
+-> support-group selection                     PASS
+-> formal measurement                          COMPLETE (2678 rows)
+-> independent measurement verification        PASS
+-> formal evaluation                           COMPLETE
 ```
 
-Scientific execution must follow:
+Final formal state:
 
 ```text
-generate
--> independent full replay/search verification
--> support-group selection
--> formal measurement
--> independent measurement verification
--> formal evaluation
+formal candidates = 4
+estimable = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+Study 1 = CLOSED
 ```
+
+Canonical result records are in [`../results/`](../results/), with scientific interpretation in [`../STUDY_1_FINAL_REPORT.md`](../STUDY_1_FINAL_REPORT.md). The preregistration and authorization records here remain immutable historical inputs and are not modified to accommodate the observed result.
