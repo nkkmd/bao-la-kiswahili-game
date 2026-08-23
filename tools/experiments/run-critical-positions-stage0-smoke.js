@@ -71,14 +71,17 @@ function phaseChangeFixture() {
 
 function benchmarkPolicy(root, policyId) {
   const move = C.exactLegalMoves(root)[0];
-  const replicates = 32;
-  const maxContinuationPlies = 24;
+  const replicates = 8;
+  const maxContinuationPlies = 12;
   const started = performance.now();
   const records = Array.from({ length: replicates }, (_, replicateIndex) => C.runContinuation(
     root, move, replicateIndex, { policyId, maxContinuationPlies },
   ));
   const elapsedMs = performance.now() - started;
   const bytes = Buffer.byteLength(JSON.stringify(records));
+  const recordedContinuationPlies = records.reduce(
+    (sum, record) => sum + record.continuationMoves.length, 0,
+  );
   return {
     policyId,
     replicates,
@@ -86,10 +89,11 @@ function benchmarkPolicy(root, policyId) {
     elapsedMs,
     bytes,
     meanBytesPerContinuation: bytes / replicates,
+    recordedContinuationPlies,
+    elapsedMsPerRecordedContinuationPly: recordedContinuationPlies
+      ? elapsedMs / recordedContinuationPlies : null,
     outcomeCounts: C.summarizeOutcomes(records).counts,
-    meanRecordedContinuationPlies: records.reduce(
-      (sum, record) => sum + record.continuationMoves.length, 0,
-    ) / records.length,
+    meanRecordedContinuationPlies: recordedContinuationPlies / records.length,
   };
 }
 
