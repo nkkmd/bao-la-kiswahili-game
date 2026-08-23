@@ -24,20 +24,20 @@ scientific measurement source commit = 06ce63155c5b060a9ea3f80ba5a2dc48216e848b
 ## Current scientific state
 
 ```text
+Stage 0 technical / construct audit = COMPLETE
 Stage 1 exploratory discovery = COMPLETE / 4 CANDIDATES PROMOTED
 Stage 1 integrated to main = COMPLETE
-
 Stage 2 candidate/spec/source freeze = COMPLETE
 Stage 2 technical validation = PASS
-Stage 2 generation authorization = COMPLETE
 Stage 2 scientific generation = COMPLETE (4096 / 4096)
 Stage 2 independent full replay/search verification = PASS
 Stage 2 outcome-blind support-group selection = PASS
 Stage 2 formal measurement = COMPLETE (2678 rows)
 Stage 2 independent formal measurement verification = PASS
-Stage 2 formal evaluation = OPEN / NOT YET PERFORMED
-Stage 2 formal result = NONE
-Study 1 formal result = NONE
+Stage 2 formal evaluation = COMPLETE
+Stage 2 formal candidates = 4 ESTIMABLE / 0 CONFIRMED / 4 NOT-CONFIRMED
+Study 1 formal result = COMPLETE / ZERO CONFIRMED
+Study 1 = CLOSED
 ```
 
 ## Corpus and verification
@@ -90,55 +90,51 @@ verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7
 passed = true
 ```
 
-## Frozen formal decision boundary
-
-Per candidate estimability:
+## Formal result
 
 ```text
-unique historical trajectories >= 96
-unique rule states >= 96
-distinct opening prefixes >= 48
-maximum one opening-prefix share <= 0.10
-generation strata >= 4
-maximum one generation-stratum share <= 0.50
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+confirmedCount = 0
 ```
 
-Co-primary endpoints:
+Key recurrence rates:
+
+| Candidate | Failure signature | D3-inferior | D3 TopSet | Median normalized rank loss |
+| --- | ---: | ---: | ---: | ---: |
+| C01 | 0.923983 | 0.464668 | 0.152034 | 0.500000 |
+| C02 | 0.797645 | 0.464668 | 0.152034 | 0.500000 |
+| C03 | 0.794968 | 0.464668 | 0.152034 | 0.500000 |
+| C04 | 0.627160 | 0.507407 | 0.193827 | 0.500000 |
+
+C01-C03 reproduce their structural failure signatures but fail the preregistered D3-inferior co-primary endpoint. C04 fails the absolute failure-signature floor as well as the D3-inferior endpoint.
+
+Canonical identities:
 
 ```text
-failure-signature recurrence: H0 p <= 0.50; observed floor >= 0.65
-D3-inferior recurrence:       H0 p <= 0.50; observed floor >= 0.70
-4 candidates x 2 endpoints = 8 tests
-FWER alpha = 0.05
-Holm-Bonferroni
+formal embedded resultHash = 1de774ca5aac8a284ec5f78395050238fab93643e47fc47046cf511612d50d50
+raw formal-result SHA-256 = e478d3fb29ad15508ddcaf6973d8eb8aa6bf4debd23921564ae08a1ac518293d
 ```
 
-Additional gates:
-
-```text
-D3 TopSet rate <= 0.20
-median normalized rank loss >= 0.50
-```
-
-Formal labels are `CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE-NOT-ESTIMABLE`, or `TECHNICAL-INCONCLUSIVE`. Zero confirmed candidates is valid.
-
-## Mandatory execution order
-
-```text
-generate                                                COMPLETE
--> independent corpus verification                     PASS
--> support-group select                                 PASS
--> formal measure                                       COMPLETE
--> independent formal measurement verification         PASS
--> formal evaluate                                      OPEN
-```
-
-No seed extension, replacement, alternate root after overlap, candidate edit, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, multiplicity change, favorable subgroup promotion, alternate primary depth/evaluator or manual override is authorized.
+The earlier wrapper-generated local result with `independentMeasurementVerificationHash = null` is superseded. The canonical result binds `e2a57675...7382`; endpoint values and decisions are unchanged.
 
 ## Interpretation boundary
 
-No candidate has yet been confirmed or rejected. A future `CONFIRMED` result would mean only machine-reproducible recurrence under the frozen Bao engine/search/population. It would not establish game-theoretic blunder status, human misconception, expert/traditional recognition, pedagogical importance, causal mechanism, or external validity.
+`NOT-CONFIRMED` is a machine-operational formal decision under the frozen Stage 2 definition. It is not evidence that a move is game-theoretically sound or harmless to humans.
 
-## Immediate next gate
+No game-theoretic blunder, human misconception, expert/traditional recognition, pedagogical, causal-mechanism or external-validity claim is authorized. D3 remains a frozen machine reference, not ground truth.
 
-Run the frozen formal evaluator only. Archive and review `formal-result.json` before any study-level closure or `main` integration.
+## No-rescue closure
+
+No seed extension, replacement, alternate-root rescue, candidate edit/merge/split, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, multiplicity/alpha change, favorable subgroup promotion, alternate primary depth/evaluator or manual override was used.
+
+## Final state
+
+Study 1 is scientifically closed. Any future investigation of these structural failure signatures, alternate search depths/evaluators, human judgement or game-theoretic status must be a new prospective study.
+
+See:
+
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+- [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
