@@ -66,6 +66,26 @@ function selector(policyId, seed) {
 
 function initialFixture() { return E.initialState(); }
 
+function terminalCaptureFixture() {
+  const state = E.initialState();
+  state.pits = [
+    [Array(8).fill(0), Array(8).fill(0)],
+    [Array(8).fill(0), Array(8).fill(0)],
+  ];
+  state.pits[0][E.FRONT][0] = 2;
+  state.pits[0][E.FRONT][2] = 1;
+  state.pits[1][E.FRONT][5] = 2;
+  state.reserve = [0, 0];
+  state.houseOwned = [false, false];
+  state.player = 0;
+  state.phase = "mtaji";
+  state.winner = null;
+  state.reason = "";
+  state.turn = 60;
+  state.pending = [0, 0];
+  return state;
+}
+
 function replaySample(root, sample) {
   const rootMove = legal(root).find((move) => AI.moveKey(move) === sample.rootMoveKey);
   assert.ok(rootMove, `missing root move ${sample.rootMoveKey}`);
@@ -108,8 +128,15 @@ function main() {
   assert.equal(result.audit.exactInitialMoveCount, legal(root).length);
   assert.equal(result.audit.houseChoice.distinctMoveKeys, true);
   assert.equal(result.audit.houseChoice.distinctResultStates, true);
+
+  const terminal = terminalCaptureFixture();
+  const terminalMove = legal(terminal)[0];
+  const terminalAfter = E.applyMove(terminal, terminalMove).state;
+  assert.equal(terminalAfter.winner, terminal.player);
+  assert.equal(terminalAfter.reason, "front-empty");
   assert.equal(result.audit.terminal.category, "ROOT_ACTOR_WIN");
   assert.equal(result.audit.terminal.reason, "front-empty");
+
   assert.equal(result.audit.phaseChange.after, "mtaji");
   assert.equal(result.audit.administrativeCap.category, "ADMINISTRATIVE_UNFINISHED");
   for (const item of result.audit.pairedSeedExamples) assert.equal(item.seed32, seed32(root, item.replicateIndex));
