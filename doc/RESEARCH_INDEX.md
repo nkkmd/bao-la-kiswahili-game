@@ -20,6 +20,8 @@
 
 Overviewは読みやすさを優先しますが、formal decisionやscientific claimを独自に拡張しません。矛盾がある場合は、各研究で指定されたFinal Report / Conclusion / formal registerを優先します。
 
+Current-facingな人間向け文書でformal decision / evidence labelを明示する場合は、正本のcanonical uppercase token（例: `CONFIRMED`、`NOT-CONFIRMED`、`INCONCLUSIVE`、`INCONCLUSIVE-NOT-ESTIMABLE`、`NOT-CONFIRMATORILY-EVALUATED`）を使用します。一般語としてのconfirmed/inconclusive等や、履歴・machine-readable schemaに保存された文字列は、表記統一だけを目的として機械的に書き換えません。
+
 ---
 
 ## 研究成果
@@ -83,7 +85,7 @@ Baoのゲーム開始時の先攻・後攻差、および生成局面におけ�
 **状態:** research complete / final integration complete  
 **作業branch:** `research/position-typology-and-playing-style`
 
-Baoのposition typeとplaying styleをstate-level / trajectory-levelに分離して探索・検証した研究です。固定representationではMtajiに`MTAJI-M1 / MTAJI-M2`というbounded two-type morphologyが独立formal confirmationされました。一方、Namuaでは離散typeをpromoteせずN-ACT/N-CONというexploratory continuous representationを保持し、discrete playing-style clusteringも支持されませんでした。Stage 4で得たexact 4D style geometryは独立Stage 5で`not-confirmed`です。
+Baoのposition typeとplaying styleをstate-level / trajectory-levelに分離して探索・検証した研究です。固定representationではMtajiに`MTAJI-M1 / MTAJI-M2`というbounded two-type morphologyが独立formal confirmationされました。一方、Namuaでは離散typeをpromoteせずN-ACT/N-CONというexploratory continuous representationを保持し、discrete playing-style clusteringも支持されませんでした。Stage 4で得たexact 4D style geometryは独立Stage 5で`NOT-CONFIRMED`です。
 
 closed phase-transition Study 1とのsecondary bridgeでは、E-018 D2 / E-019 D3 / E-020 D3の固定scopeにおける`capture-branch-expansion` 59件がすべてNamuaに位置し、N-ACTの高い側との記述的関係が観測されました。これはhypothesis-generation evidenceであり、新しいformal confirmationやcausal mediationではありません。
 
@@ -104,7 +106,7 @@ closed phase-transition Study 1とのsecondary bridgeでは、E-018 D2 / E-019 D
 ### 5. Namua→Mtaji Strategic Temporal Transition — Study 1
 
 **研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続  
-**状態:** Study 1 closed / repository closure complete / formal decision `not-confirmed`  
+**状態:** Study 1 closed / repository closure complete / formal decision `NOT-CONFIRMED`  
 **作業branch:** `research/namua-mtaji-temporal-transition`
 
 この独立prospective studyは、局面相転移点Study 1で固定されたNamua `capture-branch-expansion`と、局面類型と棋風Study 1でconfirmedされたfrozen `MTAJI-M1 / MTAJI-M2` morphologyの時間的bridgeを検討しました。
@@ -119,7 +121,7 @@ matched sets = 30
 unique R3-M controls = 600
 ```
 
-First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)でしたが、唯一のpreregistered matched-set exact conditional Poisson-binomial testは `p_two_sided = 1.0` で、formal decisionは **`not-confirmed`** です。小さな正の記述差はpositive trendとして救済しません。
+First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)でしたが、唯一のpreregistered matched-set exact conditional Poisson-binomial testは `p_two_sided = 1.0` で、formal decisionは **`NOT-CONFIRMED`** です。小さな正の記述差はpositive trendとして救済しません。
 
 この結果は、P2-D2内のfirst-Mtaji morphology associationが確認されなかったことを意味します。CBEにlater structureが存在しないこと、因果的null、Mtaji timing効果、P2-D2外への一般化は意味しません。
 
@@ -140,14 +142,14 @@ First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)で�
 ### 6. Position Complexity / Difficulty — Study 1
 
 **研究題目:** Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離  
-**状態:** Study 1 closed / formal decision `inconclusive`  
+**状態:** Study 1 closed / formal decision `INCONCLUSIVE`  
 **作業branch:** `research/position-complexity-difficulty`
 
 このprospective independent studyは、Baoの「難しい局面」を単一difficulty scoreへ圧縮せず、structural complexity、search workload、decision ambiguity、prediction instabilityへ分離して測定することを目的としました。Stage 0でexact root candidate / TopSet / best-second gap / depth-transition diagnosticをtechnical validationし、Stage 1 exploratory corpusでは666 unique rule statesを測定して全Stage 2 readiness gateをPASSしました。
 
 Fresh Stage 2 formal corpusは1024局で、全局を独立replay/search verifierで確認し、862 unique rule statesをformal populationとして測定しました。Namua 424、Mtaji 438、D2→D3 instability 203、stable 659で、count/coverage gatesはすべてPASSしました。
 
-Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized logistic likelihood-ratio testでした。しかしfull modelのBFGS optimizerがprecision lossでpreregistered `finite and converged` gateを満たさなかったため、formal decisionは **`inconclusive`** です。計算上のp値だけで`not-confirmed`へ変更しません。Key secondary PCX-H2もH1 gatekeepingとsecondary reduced-model non-convergenceにより`not-confirmatorily-evaluated`です。
+Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized logistic likelihood-ratio testでした。しかしfull modelのBFGS optimizerがprecision lossでpreregistered `finite and converged` gateを満たさなかったため、formal decisionは **`INCONCLUSIVE`** です。計算上のp値だけで`NOT-CONFIRMED`へ変更しません。Key secondary PCX-H2もH1 gatekeepingとsecondary reduced-model non-convergenceにより`NOT-CONFIRMATORILY-EVALUATED`です。
 
 **最初に読む:**
 
@@ -166,7 +168,7 @@ Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized lo
 ### 7. Tactical Motifs / Tesuji — Study 1
 
 **研究題目:** Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証  
-**状態:** **Study 1 closed / complete — C03 confirmed, C01/C02/C04 not-confirmed**  
+**状態:** **Study 1 closed / complete — C03 `CONFIRMED`, C01/C02/C04 `NOT-CONFIRMED`**  
 **作業branch:** `research/tactical-motif-discovery`
 
 このprospective independent studyは、特定のopening sequenceに依存せず、異なる局面に再出現する `position → move → reply structure → downstream consequence/value` の構造を抽出し、transferable tactical motifとして検証しました。
@@ -175,7 +177,7 @@ Stage 1では768-game fresh exploratory corpusから715 unique rule states / 3,1
 
 Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical formal candidateとして固定し、3,072 fresh games / seeds `22000001–22003072`で4候補×2 co-primary endpointsを検証しました。全3,072局を独立replay/search verificationし、4候補すべてがestimability gateを通過、6,605 formal measurementsのintegrityもPASSしました。
 
-8 planned p-valuesをHolm-BonferroniでFWER 0.05に制御したformal evaluationでは、**TM-S2-C03のみCONFIRMED**、C01/C02/C04はNOT-CONFIRMEDでした。C03はMtajiで`reusablePits=0-2`の局面における`takata / row 1 / right / coarse-no-index`で、`actorNyumbaSeedsDeltaSign=0`を構造結果とする候補です。fresh 1,272 rootsでstructural success 97.88%、D3 top-set 73.66%、D3 median以上86.95%、D3 unique-worst 7.08%でした。
+8 planned p-valuesをHolm-BonferroniでFWER 0.05に制御したformal evaluationでは、**TM-S2-C03のみ`CONFIRMED`**、C01/C02/C04は`NOT-CONFIRMED`でした。C03はMtajiで`reusablePits=0-2`の局面における`takata / row 1 / right / coarse-no-index`で、`actorNyumbaSeedsDeltaSign=0`を構造結果とする候補です。fresh 1,272 rootsでstructural success 97.88%、D3 top-set 73.66%、D3 median以上86.95%、D3 unique-worst 7.08%でした。
 
 **最初に読む:**
 
@@ -286,7 +288,7 @@ Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080
 ### 10. Blunder / Misvaluation Patterns — Study 1
 
 **研究題目:** Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証  
-**状態:** **Study 1 closed / Stage 2 formal complete — 0 confirmed / 4 not-confirmed**  
+**状態:** **Study 1 closed / Stage 2 formal complete — 0 `CONFIRMED` / 4 `NOT-CONFIRMED`**  
 **作業branch:** `research/blunder-misvaluation-patterns-stage2-formal`
 
 このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索・検証しました。
@@ -334,15 +336,15 @@ C01-C03はfrozen structural/reply failure signature自体は高率に再現し�
 
 局面類型と棋風Study 1からの主要future study候補には、N-ACT/N-CONの独立formal replication、新しいplaying-style model family、MTAJI-M1/M2の人間/expert validation、より広いengine/search implementationでのexternal validityがあります。Stage 5 held-out corpusを再定義してconfirmationを救済することはfuture workに含めません。
 
-Namua→Mtaji temporal-transition Study 1の`not-confirmed` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。
+Namua→Mtaji temporal-transition Study 1の`NOT-CONFIRMED` resultについても、同一formal corpusのcandidate-ply subgroup、alternative comparator、追加game、別seed、threshold変更による救済はfuture workに含めません。
 
-Position Complexity / Difficulty Study 1の`inconclusive` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。再検証する場合はfresh prospective replicationを使用します。
+Position Complexity / Difficulty Study 1の`INCONCLUSIVE` resultについて、同じStage 2 dataを別optimizer/toleranceで再解析してformal decisionを救済することはfuture workに含めません。再検証する場合はfresh prospective replicationを使用します。
 
 Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加gameやpaired-definition substitutionで救済しません。C03 human axisのN=0 closureもretroactiveに変更しません。
 
 Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`についても、同じStage 2へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えてformal decisionを救済しません。formal calibration generalizationを再検証する場合は、identity-firewall attritionを事前に織り込んだfresh prospective independent studyとします。
 
-Blunder / Misvaluation Patterns Study 1は0 confirmed / 4 not-confirmedで閉じました。同じStage 2 dataを追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupで救済しません。C01-C03で観測されたstructural/reply failure signatureの再現性は新しい仮説生成には利用できますが、現Studyのformal decisionを変更しません。追試する場合は新しいprospective independent studyとfresh evidenceを使用します。
+Blunder / Misvaluation Patterns Study 1は0 `CONFIRMED` / 4 `NOT-CONFIRMED`で閉じました。同じStage 2 dataを追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupで救済しません。C01-C03で観測されたstructural/reply failure signatureの再現性は新しい仮説生成には利用できますが、現Studyのformal decisionを変更しません。追試する場合は新しいprospective independent studyとfresh evidenceを使用します。
 
 ---
 
