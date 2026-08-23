@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),C=require("./lib/critical-positions-stage1-corpus.js");
+function args(){let mode="technical-smoke",output=null;for(let i=2;i<process.argv.length;i++){if(process.argv[i]==="--mode")mode=process.argv[++i];else if(process.argv[i]==="--output")output=process.argv[++i];else throw new Error(`Unknown argument ${process.argv[i]}`);}return{mode,output};}
+function write(file,v){if(!file){console.log(JSON.stringify(v,null,2));return;}fs.mkdirSync(path.dirname(path.resolve(file)),{recursive:true});fs.writeFileSync(file,`${JSON.stringify(v,null,2)}\n`);}
+function main(){const a=args(),loaded=C.loadSpec();if(a.mode==="technical-smoke"){const game=C.runGameCore(loaded.spec,loaded.specSha256,0,C.technicalSeed(),16,true);write(a.output,{schemaVersion:1,stageId:loaded.spec.stageId,mode:a.mode,technicalOnly:true,scientificSeedConsumed:false,reservedScientificSeedBlocksTouched:false,specSha256:loaded.specSha256,game});return;}if(a.mode==="generate"){C.loadAuthorization(loaded.specSha256);if(!a.output)throw new Error("--output required for scientific generation");for(let i=0;i<loaded.spec.population.games;i++){const file=path.join(a.output,"games",`game-${String(i).padStart(4,"0")}.json`);write(file,C.runScientificGame(loaded.spec,loaded.specSha256,i));}return;}throw new Error(`Unsupported mode ${a.mode}`);}
+main();

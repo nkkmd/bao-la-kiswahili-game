@@ -1,0 +1,28 @@
+name: Critical positions Stage 1 tooling validation
+on:
+  push:
+    branches: [research/critical-positions-outcome-branching]
+    paths: ["tools/experiments/lib/critical-positions-stage1-corpus.js","tools/experiments/run-critical-positions-stage1-exploratory.js","tools/experiments/verify-critical-positions-stage1-exploratory.js","test/critical-positions-stage1-tooling.test.js","doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json",".github/workflows/critical-positions-stage1-tooling.yml"]
+  pull_request:
+    paths: ["tools/experiments/lib/critical-positions-stage1-corpus.js","tools/experiments/run-critical-positions-stage1-exploratory.js","tools/experiments/verify-critical-positions-stage1-exploratory.js","test/critical-positions-stage1-tooling.test.js","doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json",".github/workflows/critical-positions-stage1-tooling.yml"]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  tooling-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: node tools/experiments/validate-critical-positions-stage1-spec.js
+      - run: node test/critical-positions-stage1-contract.test.js
+      - run: node test/critical-positions-stage1-tooling.test.js
+      - run: node tools/experiments/run-critical-positions-stage1-exploratory.js --mode technical-smoke --output /tmp/cpob-s1-smoke.json
+      - run: node tools/experiments/verify-critical-positions-stage1-exploratory.js --input /tmp/cpob-s1-smoke.json
+      - name: Assert scientific generation remains blocked
+        run: |
+          if node tools/experiments/run-critical-positions-stage1-exploratory.js --mode generate --output /tmp/should-not-exist; then echo "generation unexpectedly succeeded"; exit 1; fi
+          test ! -e doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
+      - name: Print source hash map
+        run: node -e 'const C=require("./tools/experiments/lib/critical-positions-stage1-corpus.js"); console.log(JSON.stringify(C.sourceFileSha256(),null,2))'
