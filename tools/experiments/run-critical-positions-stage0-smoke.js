@@ -155,7 +155,7 @@ function main() {
     replaySamples,
     benchmarks: C.POLICY_IDS.map((policyId) => benchmarkPolicy(initial, policyId)),
   };
-  result.resultHash = C.canonicalHash({ ...result, resultHash: undefined });
+  result.resultHash = C.canonicalHash(result);
   const text = `${JSON.stringify(result, null, 2)}\n`;
   if (args.output) {
     fs.mkdirSync(path.dirname(path.resolve(args.output)), { recursive: true });
