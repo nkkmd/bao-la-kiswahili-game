@@ -8,6 +8,9 @@ Updated: 2026-08-23
 studyId = BMP-STUDY1
 integrated Stage 1 main HEAD = 52f5635be7064b5016baf7cde82faebe60609d9e
 Stage 2 research branch = research/blunder-misvaluation-patterns-stage2-formal
+Stage 2 pre-merge branch HEAD = 1451181211d98e7db48f8817472d3f4338acb5ab
+Stage 2 integration PR = #34
+Stage 2 integration merge commit = da2f5a1a18debe8bf09cd0bcaab8ef64ddf5d7d7
 ```
 
 Frozen Stage 2 identity:
@@ -38,6 +41,7 @@ Stage 2 formal evaluation = COMPLETE
 Stage 2 formal candidates = 4 ESTIMABLE / 0 CONFIRMED / 4 NOT-CONFIRMED
 Study 1 formal result = COMPLETE / ZERO CONFIRMED
 Study 1 = CLOSED
+Stage 2 integrated to main = COMPLETE
 ```
 
 ## Corpus and verification
@@ -135,17 +139,20 @@ No seed extension, replacement, alternate-root rescue, candidate edit/merge/spli
 The final cross-document audit updated only documentation and compact result/provenance records after the frozen scientific execution chain. No engine, AI, Stage 2 scientific tooling, candidate/spec, source-freeze or authorization artifact was modified after scientific execution.
 
 ```text
-main = 52f5635be7064b5016baf7cde82faebe60609d9e
-main integration of Stage 2 = NOT PERFORMED
+pre-Stage-2-integration main = 52f5635be7064b5016baf7cde82faebe60609d9e
+pre-merge research branch HEAD = 1451181211d98e7db48f8817472d3f4338acb5ab
+integration PR = #34
+merge commit = da2f5a1a18debe8bf09cd0bcaab8ef64ddf5d7d7
+main integration of Stage 2 = COMPLETE
 final cross-document audit = PASS
-integration readiness = PASS / USER AUTHORIZATION PENDING
+post-merge status synchronization = COMPLETE
 ```
 
 Historical protocol/checkpoint status lines that describe their original freeze-time gate are intentionally preserved and are not current-status claims.
 
 ## Final state
 
-Study 1 is scientifically closed. Any future investigation of these structural failure signatures, alternate search depths/evaluators, human judgement or game-theoretic status must be a new prospective study.
+Study 1 is scientifically and repository-wise closed on `main`. Any future investigation of these structural failure signatures, alternate search depths/evaluators, human judgement or game-theoretic status must be a new prospective study.
 
 See:
 
