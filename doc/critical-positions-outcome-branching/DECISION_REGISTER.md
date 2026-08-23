@@ -107,7 +107,7 @@ D_range = max(p_hat_m) - min(p_hat_m)
 
 Status: **FROZEN CONSTRUCT**
 
-Numeric criticality floor and completion gate remain provisional until Stage 0 technical close and must be frozen before any Stage 1 scientific outcome exists.
+Numeric criticality floor and completion gate were frozen at Stage 0 technical closure in CPOB-D032/D033.
 
 ## CPOB-D015 — Administrative truncation
 
@@ -127,7 +127,9 @@ P3 = seeded uniform exact legal technical comparator/fallback
 
 Policy choice may use only Stage 0 technical criteria such as exact replay, RNG control, terminal completion, runtime and artifact feasibility. Scientific divergence/outcome magnitude is forbidden from policy selection.
 
-Status: **PROVISIONAL / MUST FREEZE BEFORE STAGE 1**
+Final Stage 0 selection is recorded in CPOB-D030.
+
+Status: **FROZEN MENU / SELECTION COMPLETE**
 
 ## CPOB-D017 — Search diagnostic boundary
 
@@ -189,7 +191,9 @@ Status: **FROZEN PRINCIPLE**
 
 **Decision:** Freeze feature grammar, bins, minimum support, opening/stratum diversity, deterministic ranking, support-equivalence handling and maximum candidate caps before Stage 1 generation. Manual promotion is forbidden.
 
-Status: **FROZEN PRINCIPLE / NUMBERS PENDING STAGE 0**
+Exact Stage 1 grammar is frozen in the Stage 1 exploratory spec described by CPOB-D035.
+
+Status: **FROZEN**
 
 ## CPOB-D024 — No fabricated PV
 
@@ -235,6 +239,106 @@ Status: **FROZEN**
 
 ## CPOB-D028 — Scientific generation remains locked
 
-No Stage 1 or Stage 2 scientific corpus or continuation measurement is authorized by this initiation commit.
+No Stage 1 or Stage 2 scientific corpus or continuation measurement is authorized by the initiation or Stage 0 closure records alone.
 
 Status: **LOCKED**
+
+## CPOB-D029 — Stage 0 technical validation passed
+
+**Decision:** Accept the technical-only Stage 0 tooling after exact root-variant, house-choice, RNG, continuation replay, terminal, phase-change, structural/reply-envelope and D2/D3 diagnostic validation passed in GitHub Actions run `32624898086`, job `97158580192`.
+
+Deterministic core identities:
+
+```text
+CPOB-S0-TECHNICAL-2026-08-23-v1
+core hash = 75aaa30a9f8154873bf9391c27b4720886fce17ec7402b68800c03b2cbe276cd
+
+CPOB-S0-CAP-AUDIT-2026-08-23-v1
+core hash = 0530faca878fa71b86f6b55b355cd0b70f67b5f8c32e287b82ce10dd8bb77678
+```
+
+No scientific seed or scientific root was consumed.
+
+Status: **FROZEN / PASS**
+
+## CPOB-D030 — Primary continuation policy = P1
+
+**Decision:** Freeze `P1_NORMAL_TOP3` as the post-root scientific continuation policy.
+
+Operational semantics:
+
+```text
+AI.analyzeMove(state, "normal", suppliedRng, { evaluationProfile: "bao" })
+selection = seeded uniform among the existing normal-policy top min(3,n) immediate-score pool
+one persistent RNG stream per (root, rootMove, replicate)
+```
+
+Technical rationale only:
+
+- all P1 continuations replay exactly under supplied seed;
+- P2 also replayed exactly but cost about 23× P1 per recorded continuation ply on the fixed smoke workload because exact D2 search is recomputed at every continuation ply;
+- P3 was cheapest but is deliberately a weak uniform-legal policy;
+- P1 preserves a bounded strategy-sensitive policy while allowing exhaustive all-root-move × replicate measurement and independent remeasurement at tractable cost.
+
+No scientific `D_range`, candidate frequency, win rate or favorable outcome was inspected to make this choice.
+
+P2 remains a secondary root search-value instrument only. P3 remains technical-only comparator/fallback and is not an alternate primary analysis.
+
+Status: **FROZEN**
+
+## CPOB-D031 — Scientific replicate count = 64
+
+**Decision:** Freeze exactly `64` continuation replicates per exact legal root move.
+
+Each replicate index is paired across every legal root move via the same derived seed material, but each intervention receives a separately initialized RNG instance.
+
+No result-triggered increase beyond 64 is allowed.
+
+Status: **FROZEN**
+
+## CPOB-D032 — Scientific continuation cap and estimability
+
+**Decision:** Freeze maximum post-root continuation length at `200` plies.
+
+```text
+terminal before/equal cap -> ROOT_ACTOR_WIN or ROOT_ACTOR_LOSS
+nonterminal after 200 post-root plies -> ADMINISTRATIVE_UNFINISHED
+```
+
+A root is primary-estimable only if **every exact legal root move terminates in all 64 replicates**. Thus every move-specific primary win rate has denominator exactly 64. A root with any administrative unfinished replicate is retained for truncation audit but excluded from primary `D_range` candidate discovery, without replacement.
+
+The fixed technical fixture reached 64/64 terminal outcomes by cap 120 and had maximum terminal continuation ply 104. Cap 200 was chosen prospectively as a conservative buffer; this fixture result is not a population-level completion claim.
+
+Status: **FROZEN**
+
+## CPOB-D033 — Stage 1 high-divergence threshold
+
+For a primary-estimable root:
+
+```text
+p_hat_m = root-actor wins / 64 for exact legal move m
+D_range = max_m(p_hat_m) - min_m(p_hat_m)
+highDivergence = (D_range >= 0.30)
+```
+
+**Decision:** Freeze `0.30` as the Stage 1 exploratory material-divergence floor before scientific outcome generation.
+
+This threshold defines a machine/policy-conditioned root property only. It is not a validated win-probability-loss threshold, game-theoretic threshold, or human-importance threshold.
+
+Status: **FROZEN**
+
+## CPOB-D034 — Runtime is QA only
+
+**Decision:** Wall-clock benchmark quantities are hardware/environment-specific QA. They may justify pre-generation feasibility choices but may not enter candidate matching, criticality classification, scientific ranking or formal inference.
+
+Technical result hashes exclude wall-clock timing so the deterministic scientific/technical core can reproduce across runners.
+
+Status: **FROZEN**
+
+## CPOB-D035 — Stage 1 design may be frozen, but generation remains unauthorized
+
+**Decision:** After Stage 0 technical PASS, a Stage 1 exploratory spec may freeze the fresh source-game population, outcome-blind root selection, structural candidate grammar, all-move continuation measurement, readiness gates and deterministic promotion rule.
+
+The Stage 1 spec itself is not authorization. Scientific generation remains blocked until contract validation, runner/verifier technical validation, exact source hash binding, and a separate explicit authorization commit all pass.
+
+Status: **FROZEN GATE / GENERATION LOCKED**
