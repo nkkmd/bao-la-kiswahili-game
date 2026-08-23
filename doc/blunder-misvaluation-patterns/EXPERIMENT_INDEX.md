@@ -8,7 +8,7 @@ Updated: 2026-08-23
 | `BMP-S0-TECHNICAL-SMOKE-2026-08-20-v1` | Fixture validation of regret/search/move/identity semantics | none | **PASS** |
 | `BMP-S0-D3Q1-FEASIBILITY-2026-08-20-v1` | Deterministic D3+Q1 workload benchmark | none | **PASS** |
 | `BMP-S1-EXPLORATORY-2026-08-20-v1` | Fresh exploratory candidate discovery | 2048 verified games; 1200 roots; 5295 moves | **COMPLETE / 4 EXPLORATORY CANDIDATES PROMOTED** |
-| `BMP-S2-FORMAL-2026-08-22-v1` | Fresh prospective formal confirmation of exact Stage 1 candidates | 4096 verified games; 2678 formal measurements | **MEASUREMENT COMPLETE / INDEPENDENT VERIFICATION PASS / FORMAL EVALUATION OPEN** |
+| `BMP-S2-FORMAL-2026-08-22-v1` | Fresh prospective formal confirmation of exact Stage 1 candidates | 4096 verified games; 2678 formal measurements | **COMPLETE / 4 ESTIMABLE / 0 CONFIRMED / 4 NOT-CONFIRMED** |
 
 ## Frozen Stage 2 identity
 
@@ -18,7 +18,7 @@ formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962
 authorization SHA-256 = 0e5b29fcf64caf82c3e2106b85387eea5bb04ed66a0624f75f76518f13596a87
 ```
 
-## Stage 2 verified chain
+## Verified Stage 2 chain
 
 ```text
 games = 4096 / 4096
@@ -38,22 +38,39 @@ independent matcher/failure recomputation = true
 measurement verification passed = true
 ```
 
-## Formal endpoints
+## Formal result
 
-Per candidate estimability requires >=96 unique trajectories and rule states, >=48 opening prefixes, <=0.10 maximum opening-prefix share, >=4 strata, and <=0.50 maximum stratum share.
-
-Two co-primary endpoints per candidate use exact one-sided binomial tests against `p=0.50`, with observed floors `0.65` for failure recurrence and `0.70` for D3-inferior recurrence. Eight planned tests use Holm-Bonferroni FWER 0.05. Additional gates are D3 TopSet rate <=0.20 and median normalized rank loss >=0.50.
-
-## Current gate
+All four candidates passed estimability and technical-integrity gates.
 
 ```text
-generation = COMPLETE
-independent corpus verification = PASS
-support-group selection = PASS
-formal D3 measurement = COMPLETE
-independent measurement verification = PASS
-formal evaluation = OPEN
-formal result = NONE
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+confirmedCount = 0
 ```
 
-The next and only permissible scientific action is the frozen formal evaluator. No endpoint, alpha, multiplicity, candidate definition, support set, primary depth, or evaluator may be changed before evaluation.
+Formal embedded result hash:
+
+```text
+1de774ca5aac8a284ec5f78395050238fab93643e47fc47046cf511612d50d50
+```
+
+Canonical compact record:
+
+- [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
+
+## Formal interpretation
+
+C01-C03 strongly reproduce their frozen structural failure signatures but do not reproduce D3-inferior status at the preregistered confirmation rate. C04 falls below the failure-signature absolute floor and also fails the D3-inferior endpoint.
+
+`NOT-CONFIRMED` is limited to the frozen machine-operational definition. It is not proof of game-theoretic soundness and does not authorize human, expert/traditional, pedagogical, causal, or external-validity claims.
+
+## Study state
+
+```text
+Stage 0 = COMPLETE
+Stage 1 = COMPLETE
+Stage 2 = COMPLETE
+Study 1 = CLOSED
+```
