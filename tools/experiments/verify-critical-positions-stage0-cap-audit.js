@@ -33,6 +33,13 @@ function stableHash(value) {
   return sha256(stableStringify(value));
 }
 
+function deterministicCore(result) {
+  const core = JSON.parse(JSON.stringify(result));
+  delete core.resultHash;
+  delete core.elapsedMs;
+  return core;
+}
+
 function seed32(root, replicateIndex) {
   const identity = identityKeys(root);
   return Number.parseInt(sha256(`${SALT}|${identity.ruleStateKey}|${root.player}|${replicateIndex}`)
@@ -83,9 +90,7 @@ function main() {
   assert.equal(result.policyId, POLICY_ID);
   assert.equal(result.replicateCount, 64);
   assert.equal(result.maxContinuationPlies, MAX_CAP);
-  const noHash = { ...result };
-  delete noHash.resultHash;
-  assert.equal(result.resultHash, stableHash(noHash));
+  assert.equal(result.resultHash, stableHash(deterministicCore(result)));
 
   const root = E.initialState();
   const rootMove = legal(root)[0];
