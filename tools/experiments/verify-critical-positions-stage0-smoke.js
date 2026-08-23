@@ -35,6 +35,16 @@ function stableHash(value) {
   return sha256(stableStringify(value));
 }
 
+function deterministicCore(result) {
+  const core = JSON.parse(JSON.stringify(result));
+  delete core.resultHash;
+  for (const benchmark of core.benchmarks) {
+    delete benchmark.elapsedMs;
+    delete benchmark.elapsedMsPerRecordedContinuationPly;
+  }
+  return core;
+}
+
 function seed32(root, replicateIndex) {
   const identity = identityKeys(root);
   return Number.parseInt(sha256(`${SALT}|${identity.ruleStateKey}|${root.player}|${replicateIndex}`)
@@ -119,9 +129,7 @@ function main() {
   assert.equal(result.confirmatoryReuseAllowed, false);
   assert.equal(result.scientificSeedConsumed, false);
   assert.equal(result.reservedScientificSeedBlocksTouched, false);
-  const withoutHash = { ...result };
-  delete withoutHash.resultHash;
-  assert.equal(result.resultHash, stableHash(withoutHash), "resultHash mismatch");
+  assert.equal(result.resultHash, stableHash(deterministicCore(result)), "resultHash mismatch");
 
   const root = initialFixture();
   for (const sample of result.replaySamples) replaySample(root, sample);
