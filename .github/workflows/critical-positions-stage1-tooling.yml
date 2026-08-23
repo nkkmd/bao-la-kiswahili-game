@@ -10,6 +10,7 @@ on:
       - "tools/experiments/verify-critical-positions-stage1-exploratory.js"
       - "test/critical-positions-stage1-tooling.test.js"
       - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json"
       - ".github/workflows/critical-positions-stage1-tooling.yml"
   pull_request:
     paths:
@@ -19,6 +20,7 @@ on:
       - "tools/experiments/verify-critical-positions-stage1-exploratory.js"
       - "test/critical-positions-stage1-tooling.test.js"
       - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json"
       - ".github/workflows/critical-positions-stage1-tooling.yml"
   workflow_dispatch:
 
@@ -44,12 +46,16 @@ jobs:
         run: node tools/experiments/run-critical-positions-stage1-exploratory.js --phase technical-pipeline-smoke --output /tmp/cpob-s1-pipeline-smoke.json
       - name: Independently replay technical pipeline
         run: node tools/experiments/verify-critical-positions-stage1-exploratory.js --phase technical-pipeline-smoke --input /tmp/cpob-s1-pipeline-smoke.json
-      - name: Assert scientific generation remains blocked
+      - name: Validate exact source-bound authorization without generating scientific data
         run: |
-          if node tools/experiments/run-critical-positions-stage1-exploratory.js --phase generate --output /tmp/should-not-exist; then
-            echo "generation unexpectedly succeeded"
-            exit 1
-          fi
-          test ! -e doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
+          node - <<'NODE'
+          const C = require('./tools/experiments/lib/critical-positions-stage1-corpus.js');
+          const loaded = C.loadSpec();
+          const { authorization } = C.loadAuthorization(loaded.specSha256);
+          if (authorization.stage1GenerationAuthorized !== true) process.exit(1);
+          if (authorization.stage2GenerationAuthorized !== false) process.exit(1);
+          if (authorization.scientificInferenceAuthorized !== false) process.exit(1);
+          console.log('Stage 1 authorization matches frozen spec and source hashes; scientific generation not executed in CI');
+          NODE
       - name: Print exact scientific source hash map
         run: node -e 'const C=require("./tools/experiments/lib/critical-positions-stage1-corpus.js"); console.log(JSON.stringify(C.sourceFileSha256(),null,2))'
