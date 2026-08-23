@@ -1,9 +1,9 @@
 # Stage 2 Decision Register — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-22  
-Status: **FROZEN PRE-AUTHORIZATION DESIGN DECISIONS**
+Updated: 2026-08-23  
+Status: **FROZEN PROSPECTIVE DESIGN + FORMAL CLOSURE RECORDED**
 
-This register records Stage 2-specific prospective decisions. It supplements the Study-level `DECISION_REGISTER.md` and does not modify any Stage 1 decision.
+This register records Stage 2-specific prospective decisions and their final formal closure. It supplements the Study-level `DECISION_REGISTER.md` and does not modify any Stage 1 decision.
 
 ## BMP-S2-D001 — One-to-one candidate freeze
 
@@ -235,4 +235,31 @@ Status: **FROZEN**
 
 Generation requires validator/test PASS, clean source tree, exact scientific source-file SHA-256 freeze, and a separate source-bound `STAGE_2_FORMAL_AUTHORIZATION.json` commit.
 
-Status: **FROZEN**
+Status: **FROZEN / SATISFIED BEFORE GENERATION**
+
+## BMP-S2-D019 — Formal candidate closure
+
+**Decision:** Accept the frozen formal evaluator result without post-outcome modification.
+
+```text
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+estimable = 4 / 4
+confirmed = 0 / 4
+```
+
+C01-C03 satisfy their structural/reply failure recurrence floor but fail the D3-inferior co-primary requirement. C04 fails both the absolute failure-recurrence floor and the D3-inferior requirement.
+
+Status: **FINAL / FROZEN**
+
+## BMP-S2-D020 — Closure and no post-hoc rescue
+
+**Decision:** Stage 2 is complete. No additional seed, replacement, candidate adjustment, floor/alpha/multiplicity change, alternate primary depth/evaluator or favorable subgroup may be used to change the completed formal decision.
+
+The strong structural/reply recurrence observed for C01-C03 may motivate a new hypothesis, but it is not confirmation of the current candidate pattern and cannot modify `NOT-CONFIRMED`.
+
+Any follow-up requires a new prospective study/version with fresh evidence and its own authorization.
+
+Status: **FINAL / FROZEN**
