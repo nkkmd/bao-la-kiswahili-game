@@ -41,6 +41,47 @@ scientific measurement source commit = 06ce63155c5b060a9ea3f80ba5a2dc48216e848b
 
 The historical pre-authorization spec-hash transcription error is documented in its own checkpoint. The canonical formal spec SHA is `426041...caab`.
 
+## Stage 2 execution chronology
+
+Key Stage 2 gate identities:
+
+```text
+Stage 1 integrated main baseline
+  52f5635be7064b5016baf7cde82faebe60609d9e
+
+pre-authorization design/tooling branch tip before local validation
+  5d3b53ac9c205df396d4213762623add4429cd66
+
+spec-hash binding correction / locally validated execution HEAD
+  011b9a56ecb95046f7d61a331b76dea093aa7663
+
+technical validation result commit
+  3d5a1a33f673c9c98ba6a5ed2862b25c8d76e777
+
+execution source freeze commit
+  11670e528dccff063b8e66be9ff190e61e4e4e77
+
+final corrected authorization commit
+  a9eee06c6a1ad36f9e65948f5d78eff58a91d561
+
+scientific generation execution source commit
+  eecb2c8213fc71e518b0e96946e82790fd20961b
+
+generation + independent corpus-verification recorded branch tip
+  ea2ac4fe80e4ffd5926cbba7dc8c0745c27d9e0e
+
+selection-pass / formal-measurement-open branch tip
+  06ce63155c5b060a9ea3f80ba5a2dc48216e848b
+
+measurement-verification-pass / formal-evaluation-open branch tip
+  b0a62af568b27b30273f3c435debeeee10691904
+
+formal-result closure documentation branch tip before final cross-audit
+  f8a6413e772eecf4d46eac329ecfb7e0c9877037
+```
+
+The branch-tip entries above are gate-boundary identities; compact result/checkpoint documents for the corresponding gates are indexed below. The final cross-audit checkpoint records the later documentation-only closure tip.
+
 ## Stage 2 population and corpus verification
 
 ```text
