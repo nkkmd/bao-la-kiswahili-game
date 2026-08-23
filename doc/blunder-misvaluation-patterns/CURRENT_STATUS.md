@@ -115,7 +115,7 @@ Canonical identities:
 
 ```text
 formal embedded resultHash = 1de774ca5aac8a284ec5f78395050238fab93643e47fc47046cf511612d50d50
-raw formal-result SHA-256 = e478d3fb29ad15508ddcaf6973d8eb8aa6bf4debd23921564ae08a1ac518293d
+raw stage2-formal-result.json SHA-256 = e478d3fb29ad15508ddcaf6973d8eb8aa6bf4debd23921564ae08a1ac518293d
 ```
 
 The earlier wrapper-generated local result with `independentMeasurementVerificationHash = null` is superseded. The canonical result binds `e2a57675...7382`; endpoint values and decisions are unchanged.
@@ -129,6 +129,19 @@ No game-theoretic blunder, human misconception, expert/traditional recognition, 
 ## No-rescue closure
 
 No seed extension, replacement, alternate-root rescue, candidate edit/merge/split, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, multiplicity/alpha change, favorable subgroup promotion, alternate primary depth/evaluator or manual override was used.
+
+## Repository closure state
+
+The final cross-document audit updated only documentation and compact result/provenance records after the frozen scientific execution chain. No engine, AI, Stage 2 scientific tooling, candidate/spec, source-freeze or authorization artifact was modified after scientific execution.
+
+```text
+main = 52f5635be7064b5016baf7cde82faebe60609d9e
+main integration of Stage 2 = NOT PERFORMED
+final cross-document audit = PASS
+integration readiness = PASS / USER AUTHORIZATION PENDING
+```
+
+Historical protocol/checkpoint status lines that describe their original freeze-time gate are intentionally preserved and are not current-status claims.
 
 ## Final state
 
