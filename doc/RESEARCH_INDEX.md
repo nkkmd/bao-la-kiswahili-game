@@ -286,36 +286,41 @@ Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080
 ### 10. Blunder / Misvaluation Patterns — Study 1
 
 **研究題目:** Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証  
-**状態:** **Study 1 active / Stage 1 exploratory complete — 4 candidates promoted / Stage 2 not started**  
-**作業branch:** `research/blunder-misvaluation-patterns`
+**状態:** **Study 1 closed / Stage 2 formal complete — 0 confirmed / 4 not-confirmed**  
+**作業branch:** `research/blunder-misvaluation-patterns-stage2-formal`
 
-このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索しています。
+このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索・検証しました。
 
-Fresh Stage 1は2,048 games / seeds `22400001..22402048`で実施し、1,884 unique historical trajectoriesを独立full replay/search verificationしました。outcome-blind selectionで1,200 unique rule states（Namua/Mtaji 600/600）を固定し、5,295 exact legal movesを測定しました。selection/measurement readinessは全gate PASSで、replacement、phase reassignment、threshold retuning、seed extensionはありませんでした。
+Stage 1は2,048 fresh games / seeds `22400001..22402048`で実施し、1,884 unique historical trajectoriesを独立full replay/search verificationしました。outcome-blind selectionで1,200 unique rule states（Namua/Mtaji 600/600）を固定し、5,295 exact legal movesを測定しました。frozen matcher/failure grammarから16,421 matchers / 123,624 detailed candidatesを列挙し、事前固定ranking/capsにより4件をexploratory candidateとしてpromotionしました。
 
-Frozen matcher/failure grammarから16,421 matchers / 123,624 detailed candidatesを列挙し、11件がpromotion gateを通過しました。support-equivalence後も11件で、事前固定ranking/capsにより4件をexploratory candidateとしてpromotionしました。
+Fresh Stage 2は4,096 games / seeds `22500001..22504096`で実施し、3,559 unique historical trajectoriesを独立full replay/search verificationしました。Stage 1 identity firewall後のoutcome-blind support-group selectionはG01 Namua 1,868 states、G02 Mtaji 810 statesで、final Stage 1 overlapはtrajectory/opening/rule-stateの全軸で`0 / 0 / 0`でした。2,678 formal D3 measurementsを独立verifierが再計算し、measurement hashを一致させました。
+
+Formal evaluationは4 candidates × 2 co-primary endpoints = 8 testsをHolm-Bonferroni FWER 0.05で評価しました。4候補すべてestimableでしたが、最終結果は:
 
 ```text
-BMP-S1-C01 — Namua / worstReplyActorFrontConnectionsDeltaNegative
-BMP-S1-C02 — Namua / actorCaptureMoveDeltaNegative
-BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
-BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
+BMP-S2-C01 = NOT-CONFIRMED
+BMP-S2-C02 = NOT-CONFIRMED
+BMP-S2-C03 = NOT-CONFIRMED
+BMP-S2-C04 = NOT-CONFIRMED
+CONFIRMED = 0
 ```
+
+C01-C03はfrozen structural/reply failure signature自体は高率に再現した一方、共通のD3-inferior recurrenceは`868/1868 = 0.464668...`でpreregistered confirmation floor `0.70`を満たしませんでした。C04はfailure recurrence `508/810 = 0.627160...`がfloor `0.65`未満、D3-inferior recurrence `411/810 = 0.507407...`もfloor `0.70`未満でした。
 
 **最初に読む:**
 
-- [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md) — Study 1全体の現在地と初見向け概要
+- [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md) — 初見向け成果概要
 - [`blunder-misvaluation-patterns/README.md`](blunder-misvaluation-patterns/README.md) — 研究ディレクトリ入口
 
-**Stage 1詳細・正本:**
+**詳細・正本:**
 
-- [`blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_REPORT.md`](blunder-misvaluation-patterns/STAGE_1_EXPLORATORY_REPORT.md) — 完了したStage 1 exploratoryの科学的統合
+- [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md) — Study 1科学的最終統合
+- [`blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json) — canonical compact Stage 2 formal result
 - [`blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md`](blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md) — commit / hash / artifact / tooling索引
-- [`blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_1_DISCOVERY_RESULT.json) — canonical compact discovery result
-- [`blunder-misvaluation-patterns/CURRENT_STATUS.md`](blunder-misvaluation-patterns/CURRENT_STATUS.md) — 現在地とfixed boundaries
+- [`blunder-misvaluation-patterns/CURRENT_STATUS.md`](blunder-misvaluation-patterns/CURRENT_STATUS.md) — closure状態とfixed boundaries
 - [`blunder-misvaluation-patterns/DECISION_REGISTER.md`](blunder-misvaluation-patterns/DECISION_REGISTER.md) — frozen decisions / no-rescue boundaries
 
-**Boundary:** 4件はStage 2 fresh-data confirmationに送るexploratory candidatesであり、confirmed Bao blunder、game-theoretic error、human misconception、expert/traditional knowledge、pedagogical principleではありません。Stage 1 supportをStage 2 confirmation evidenceとして再利用しません。Study 1全体のformal resultはまだありません。
+**Boundary:** `NOT-CONFIRMED`は、exact frozen machine-operational patternがStage 2 confirmation ruleを通らなかったことを意味します。「その手はgame-theoretically悪手ではない」という証明ではありません。human misconception、expert/traditional recognition、pedagogical value、causal mechanism、別engine/search/populationへのgeneralizationも主張しません。同じStage 2 dataへのthreshold緩和、alternate depth/evaluator、favorable subgroup、seed extensionなどによる救済は行いません。
 
 ---
 
@@ -337,7 +342,7 @@ Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加game
 
 Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`についても、同じStage 2へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えてformal decisionを救済しません。formal calibration generalizationを再検証する場合は、identity-firewall attritionを事前に織り込んだfresh prospective independent studyとします。
 
-Blunder / Misvaluation Patterns Study 1の次段階では、Stage 1の4候補をexact definitionのままfresh dataでformal confirmationします。Stage 1 dataをconfirmation evidenceとして再利用せず、human misconceptionやpedagogical claimは別evidence axisとして扱います。
+Blunder / Misvaluation Patterns Study 1は0 confirmed / 4 not-confirmedで閉じました。同じStage 2 dataを追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupで救済しません。C01-C03で観測されたstructural/reply failure signatureの再現性は新しい仮説生成には利用できますが、現Studyのformal decisionを変更しません。追試する場合は新しいprospective independent studyとfresh evidenceを使用します。
 
 ---
 
