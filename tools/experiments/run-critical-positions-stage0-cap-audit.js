@@ -51,6 +51,13 @@ function summarizePrefix(records, r, cap) {
   };
 }
 
+function deterministicCore(result) {
+  const core = JSON.parse(JSON.stringify(result));
+  delete core.resultHash;
+  delete core.elapsedMs;
+  return core;
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const root = E.initialState();
@@ -93,7 +100,7 @@ function main() {
     grid: R_GRID.flatMap((r) => CAP_GRID.map((cap) => summarizePrefix(records, r, cap))),
     records,
   };
-  result.resultHash = C.canonicalHash(result);
+  result.resultHash = C.canonicalHash(deterministicCore(result));
   const text = `${JSON.stringify(result, null, 2)}\n`;
   if (args.output) {
     fs.mkdirSync(path.dirname(path.resolve(args.output)), { recursive: true });
