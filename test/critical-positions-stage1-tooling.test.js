@@ -8,8 +8,14 @@ const Contract = require("../tools/experiments/lib/critical-positions-stage1-con
 const Discovery = require("../tools/experiments/lib/critical-positions-stage1-discovery.js");
 
 const loaded = C.loadSpec();
-assert.throws(() => C.loadAuthorization(loaded.specSha256), /authorization file absent/);
-assert.equal(fs.existsSync(C.AUTH_PATH), false);
+assert.equal(fs.existsSync(C.AUTH_PATH), true);
+const { authorization, authorizationSha256 } = C.loadAuthorization(loaded.specSha256);
+assert.equal(authorization.stage1GenerationAuthorized, true);
+assert.equal(authorization.scientificInferenceAuthorized, false);
+assert.equal(authorization.confirmatoryReuseAllowed, false);
+assert.equal(authorization.stage2GenerationAuthorized, false);
+assert.equal(authorization.specSha256, loaded.specSha256);
+assert.match(authorizationSha256, /^[0-9a-f]{64}$/);
 
 for (let index = 0; index < 16; index += 1) {
   const seed = C.technicalSeed(index);
@@ -82,4 +88,5 @@ for (let index = 0; index < 16; index += 1) {
 const hashes = C.sourceFileSha256();
 assert.equal(Object.keys(hashes).length, C.SOURCE_FILES.length);
 assert.ok(hashes["tools/experiments/lib/critical-positions-stage1-discovery.js"]);
-console.log("Critical positions Stage 1 production-tooling tests passed");
+assert.deepEqual(authorization.authorizedSourceFileSha256, hashes);
+console.log("Critical positions Stage 1 production-tooling and authorization tests passed");
