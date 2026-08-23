@@ -1,7 +1,9 @@
 # HYPOTHESES — Blunder / Misvaluation Patterns Study 1
 
-Updated: 2026-08-20  
-Status: **PROSPECTIVE STAGE 0 DESIGN RECORD — STAGE 1/2 SCIENTIFIC GENERATION NOT AUTHORIZED**
+Updated: 2026-08-23  
+Status: **HISTORICAL PROSPECTIVE DESIGN RECORD — STUDY 1 CLOSED**
+
+> This file preserves the hypothesis space as it existed before scientific generation. It is not a current-status document. Formal adjudication is recorded in [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) and [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json).
 
 ## 1. Primary scientific question
 
@@ -59,3 +61,20 @@ humanExpertN = 0
 ```
 
 Any future human misconception hypothesis requires a separate prospective human study or separately versioned human-validation stage.
+
+## 5. Final resolution
+
+The prospective pipeline was completed through fresh Stage 2 formal confirmation.
+
+```text
+formal candidates = 4
+estimable candidates = 4
+CONFIRMED = 0
+NOT-CONFIRMED = 4
+```
+
+`BMP-S2-C01..C03` reproduced their frozen structural/reply failure signatures at high rates, but their shared D3-inferior recurrence was `868/1868 = 0.4646680942`, below the preregistered confirmation floor `0.70`; therefore none was confirmed. `BMP-S2-C04` had failure recurrence `508/810 = 0.6271604938`, below the `0.65` floor, and D3-inferior recurrence `411/810 = 0.5074074074`, below the `0.70` floor.
+
+The broader exploratory items BMP-H3 through BMP-H5 were not promoted into separate post-hoc formal claims. Their presence in this initial hypothesis record does not authorize retrospective adjudication from the completed data.
+
+Final interpretation remains machine-bounded: the exact frozen candidate patterns were not confirmed under the Stage 2 decision rule. This does not prove that the moves are game-theoretically non-blunders or establish any human-cognitive conclusion.
