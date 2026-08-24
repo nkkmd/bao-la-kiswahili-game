@@ -25,7 +25,7 @@ Critical Positions / Outcome Branching Study 1も完了した。fresh 3,072-game
 
 Restricted Endgame / Winning Regions Study 1も完了した。outcome-blindなStage 0 technical selectionと独立graph reconstructionを経て、standard initial stateから到達証明を持つ1つのMtaji rootのcomplete forward closure（8 states / 7 legal edges）をprospectively freezeした。Stage 1ではproduction solverと別実装のindependent verifierが全state rows、state/edge hashes、value、DTF、optimal movesを完全一致させ、formal decisionは`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`となった。frozen rootはPlayer 0の`WIN`, DTF=3で、unique optimal moveは`capture:mtaji:1:4:left:::false`である。このexact claimは8-state bounded domainだけに限定される。
 
-Symmetry / Isomorphic Positions Study 1も完了した。fresh formal seed block `22910001..22910064`からoutcome-blindにfreezeしたNamua / Mtaji / Mtaji-houselessのdepth-3 bounded-local graphsでは、3 scientific candidates・5 formal outcomesすべてでproduction / independent双方がexact mismatch 0を再現した。一方、preregistered mandatory anchorであるRestricted Endgame Study 1のimmutable 8-state result artifactをrule-semantic transform検証へ接続した際、IDENTITY positive controlを含むoracle layerでproduction / independent equality `G12`を満たせなかった。post-outcome read-only diagnosticでは8 stateRows中3 terminal rowsにstored `stateKey`とstored `ruleState`のre-hash不一致が確認されたため、formal resultは0 validated / 0 rejected / 5 `NON-ESTIMABLE`で閉じた。この診断はRestricted Endgame Study 1のformal decisionを変更しない。
+Symmetry / Isomorphic Positions Study 1も完了した。technically invalidated v1 executionのfresh bounded-local diagnosticsでは3 scientific candidates・5 preregistered scopesすべてでproduction / independent双方がexact mismatch 0を再現したが、mandatory oracle reconstructionでIDENTITY positive controlがFAILしたためv1はcandidate-decision runとして無効化された。corrected v2はformal spec / authorization / independent verifier / resultを作成せず未承認・未実行で終了した。したがってvalid formal candidate-decision runは完成せず、Study-level resultは0 validated / 0 rejected / 5 `NON-ESTIMABLE`で閉じた。post-v1 read-only diagnosticで確認したoracle terminal-row identity limitationはRestricted Endgame Study 1のformal decisionを変更しない。
 
 完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。
 
@@ -493,7 +493,7 @@ Human evidenceが必要なclaimをmachine self-playで代替しない。
 - 初見向け概要: [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)
 - 科学的正本: [`symmetry-isomorphic-positions/STUDY_1_FINAL_REPORT.md`](symmetry-isomorphic-positions/STUDY_1_FINAL_REPORT.md)
 
-Fresh historically reachable bounded-local graphsではT01 seat swap、T02 houseless-Mtaji LR、T03 compositionの5 formal scopesすべてでexact mismatch 0だった。しかしmandatory exact-oracle anchorのIDENTITY positive controlとproduction / independent equality G12を満たせず、formal validationは成立しなかった。validated transformは0件で、canonicalization / symmetry group / symmetry-reduced state countingは未承認である。
+Technically invalidated v1のfresh historically reachable bounded-local diagnosticsではT01 seat swap、T02 houseless-Mtaji LR、T03 compositionの5 preregistered scopesすべてでexact mismatch 0だった。しかしmandatory exact-oracle reconstructionのIDENTITY positive control failureによりv1はcandidate-decision runとして無効化され、corrected v2は未承認・未実行で終了した。valid formal candidate-decision runは完成していないためvalidated transformは0件で、canonicalization / symmetry group / symmetry-reduced state countingは未承認である。
 
 Post-outcome read-only diagnosticで確認したterminal state-row identity limitationは、完了済みRestricted Endgame Study 1を変更・救済する根拠として使わない。
 
@@ -567,7 +567,7 @@ Critical Positions / Outcome Branching Study 1によって、全exact legal root
 4. **[raw identityなら着手可] 状態空間とゲーム木複雑度**
 5. **[後続候補] 逆転可能性と勝負手**
 
-限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではfresh bounded-local zero-mismatch evidenceを得た一方、mandatory oracle-anchor integrity / G12を完了できずformal transform validationは0件だった。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。raw-state State Space研究は進行可能であり、symmetry-reduced countが必要な場合のみ、上流Studyを変更しない新規oracle-integrity / symmetry-confirmation研究を先行させる。
+限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず、corrected v2は未承認・未実行のままStudy-level 5/5 `NON-ESTIMABLE`で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。raw-state State Space研究は進行可能であり、symmetry-reduced countが必要な場合のみ、上流Studyを変更しない新規oracle-integrity / symmetry-confirmation研究を先行させる。
 
 ## 6. 特に優先する三本柱
 

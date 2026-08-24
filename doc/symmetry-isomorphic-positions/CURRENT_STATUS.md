@@ -6,7 +6,10 @@ Updated: 2026-08-24
 
 **COMPLETED — formal result `NON-ESTIMABLE`; 0 formally validated transforms.**
 
-Five preregistered scientific outcomes were executed under frozen candidate, domain, source-hash and authorization contracts. Fresh historically reachable bounded-local graphs showed exact zero mismatch for all scientific candidates, but the mandatory immutable Restricted Endgame 8-state oracle anchor could not satisfy the positive-control / independent-equality requirements. The independent verifier therefore assigned all five outcomes `NON-ESTIMABLE` with `G12=FAIL`.
+> **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
+
+
+The v1 candidate-decision execution used frozen candidate, domain, source-hash and authorization contracts, but was technically invalidated when the mandatory immutable Restricted Endgame 8-state oracle reconstruction failed the IDENTITY positive control. Production/independent fresh bounded-local diagnostics both observed exact zero mismatch, while the oracle path disagreed. No corrected v2 formal contract was completed or authorized. The Study therefore closes all five preregistered outcomes as `NON-ESTIMABLE` without a valid candidate-level pass/fail decision.
 
 ```text
 VALIDATED-BOUNDED-ISOMORPHISM = 0
@@ -14,7 +17,7 @@ NOT-VALIDATED                  = 0
 NON-ESTIMABLE                  = 5
 ```
 
-The fresh zero-mismatch evidence is preserved as bounded evidence but is not promoted to formal validation.
+The invalidated-v1 fresh zero-mismatch evidence is preserved as bounded diagnostic evidence only and is not promoted to formal validation.
 
 ## Source identity recovered at study start
 

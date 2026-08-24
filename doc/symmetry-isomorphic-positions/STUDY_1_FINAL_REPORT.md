@@ -2,12 +2,16 @@
 
 Updated: 2026-08-24  
 Study ID: `SIP-STUDY1`  
-Formal stage: `SIP-S1-FORMAL-2026-08-24-v1`  
+Executed candidate-decision stage: `SIP-S1-FORMAL-2026-08-24-v1` — **TECHNICALLY INVALIDATED**  
+Corrected v2 stage: **NOT AUTHORIZED / NOT EXECUTED**  
 Status: **COMPLETED**
+
+> **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
+
 
 ## 1. Final decision
 
-本Studyのformal resultは、5つのpreregistered scientific outcomeすべてについて
+本Studyの**Study-level closure decision**は、5つのpreregistered scientific outcomeすべてについて
 
 > **`NON-ESTIMABLE`**
 
@@ -19,9 +23,9 @@ NOT-VALIDATED                  = 0
 NON-ESTIMABLE                  = 5
 ```
 
-これはcandidate transformationにexact transition mismatchが確認されたためではない。fresh historically reachable bounded-local graphsでは、productionとindependent verifierの双方で全scientific candidateがzero mismatchだった。
+これはcandidate transformationにvalid formal run上のexact transition mismatchが確認されたためではない。technically invalidated v1のfresh historically reachable bounded-local diagnosticsでは、productionとindependent verifierの双方で全scientific candidateがzero mismatchだった。これらはcandidate decision evidenceではない。
 
-formal validationを止めたのは、prospectively mandatoryとしたRestricted Endgame 8-state exact-oracle anchorのstate-row identity integrityと、それに起因するproduction / independent equality gate `G12` のfailureである。
+v1をcandidate-decision runとしてtechnical invalidationしたのは、prospectively mandatoryとしたRestricted Endgame 8-state exact-oracle reconstructionがIDENTITY positive controlを満たさず、state-row identity integrityとproduction / independent equalityを保証できなかったためである。補正v2は設計草案に留まり、spec / authorization / independent verifier / formal outcomeを作成せず終了した。そのためStudy-levelで`NON-ESTIMABLE`としてcloseした。
 
 ## 2. Prospective framework
 

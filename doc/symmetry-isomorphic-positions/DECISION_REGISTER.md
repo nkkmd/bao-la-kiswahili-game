@@ -122,3 +122,7 @@ A future prospective study may independently audit oracle terminal-state represe
 ## D-024 — Study closure
 
 `SIP-STUDY1` is closed after preservation of the frozen production result, independent verification, compact canonical formal result, read-only diagnostic, Overview and Final Report. No further scientific outcome generation is authorized within Study 1.
+
+## D-025 — v1 invalidation controls the closure provenance
+
+The executed `SIP-S1-FORMAL-2026-08-24-v1` run is technically invalidated for candidate-decision use because the IDENTITY positive control fails only in the exact-oracle reconstruction path. Its fresh zero-mismatch observations remain diagnostic only. The proposed corrected `SIP-S1-FORMAL-2026-08-24-v2` path was not completed: no v2 formal spec, authorization, independent verifier, or scientific result exists. Study closure at 5/5 `NON-ESTIMABLE` is therefore a Study-level estimability decision caused by the absence of a valid completed formal candidate run. This clarification supersedes any wording that could be read as treating v1 G12 output itself as a valid formal candidate decision.

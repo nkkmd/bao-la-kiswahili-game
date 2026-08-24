@@ -5,6 +5,9 @@ Study: `SIP-STUDY1`
 Formal stage: `SIP-S1-FORMAL-2026-08-24-v1`  
 Status: **CLOSED**
 
+> **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
+
+
 ## Canonical formal decision
 
 ```text
@@ -14,7 +17,7 @@ NOT-VALIDATED = 0
 NON-ESTIMABLE = 5
 ```
 
-All five frozen fresh bounded-local scientific scopes produced exact mismatch count 0 in production and independent implementations. This evidence is retained but is not promoted to Study-level validation because the prospectively mandatory immutable exact-oracle anchor and production/independent equality gate `G12` were not estimable to the required exact standard.
+The technically invalidated v1 execution produced exact fresh bounded-local mismatch count 0 in production and independent implementations for all five frozen scopes. These counts are retained as diagnostics only. v1 cannot supply candidate decisions because IDENTITY exposed an oracle reconstruction defect, and the proposed corrected v2 path was not authorized or executed. The Study-level closure is therefore 5/5 `NON-ESTIMABLE` because no valid completed formal candidate-decision run exists.
 
 ## Required anchor limitation
 

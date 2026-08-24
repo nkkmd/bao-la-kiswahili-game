@@ -3,6 +3,9 @@
 Status: **COMPLETED — formal decision `NON-ESTIMABLE`**  
 Study ID: `SIP-STUDY1`
 
+> **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
+
+
 ## Research question
 
 Bao の candidate state/player/move transformation が、単なる visual symmetry ではなく、state validity、exact legal-move set、transition、terminal/winner semantics を保存する **rule-semantic graph isomorphism** かを、prospectively frozen bounded domains 上で deterministic に検証した。
@@ -18,9 +21,9 @@ NOT-VALIDATED = 0
 NON-ESTIMABLE = 5
 ```
 
-Fresh historically reachable depth-3 bounded-local graphsでは、3 scientific candidates / 5 formal outcomesのすべてでexact mismatchが0だった。しかし、preregistered mandatory anchorであるRestricted Endgame Study 1のimmutable 8-state exact-oracle artifactをrule-semantic transform検証へ接続した際、IDENTITY positive controlを含めてstate-row identity integrityを満たせず、production / independent verifier agreement gate `G12` がFAILした。
+Technically invalidated v1 executionのfresh historically reachable depth-3 bounded-local graphsでは、3 scientific candidates / 5 preregistered scopesのすべてでexact mismatchが0だった。このzero-mismatch observationはdiagnostic evidenceとしてのみ保持する。しかし、preregistered mandatory anchorであるRestricted Endgame Study 1のimmutable 8-state exact-oracle artifactをrule-semantic transform検証へ接続した際、IDENTITY positive controlを含めてstate-row identity integrityを満たせず、production / independent verifier agreement gate `G12` がFAILした。
 
-このためfresh zero-mismatch evidenceは保持するが、formal validationへ昇格しない。candidate rejectionにも読み替えず、5 outcomesすべてを`NON-ESTIMABLE`としてStudy 1をcloseした。
+v1はcandidate-decision runとしてtechnical invalidationされ、corrected v2は未承認・未実行のまま終了した。このためformal validationにもcandidate rejectionにも進まず、5 outcomesすべてをStudy-level `NON-ESTIMABLE`としてcloseした。
 
 ## Oracle-anchor diagnostic boundary
 

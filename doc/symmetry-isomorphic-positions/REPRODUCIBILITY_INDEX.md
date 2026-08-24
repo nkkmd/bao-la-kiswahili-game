@@ -102,6 +102,14 @@ runner = 28b2355bc2f223c06f5d7be9be975cdfde79cd7b4f318b8ae1980970e2082b85
 verifier = c1bbf2377a6b7214caa9cd023c31ab136c3e9072acec24e03ff46c53151ba854
 ```
 
+## v1 technical invalidation and unexecuted v2 correction
+
+The archived v1 production/independent files are preserved byte-for-byte for traceability, but `results/STAGE_1_V1_INVALIDATION.json` marks that run `TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION`. The root cause is the oracle reconstruction from terminal `stateRows.ruleState`, for which three snapshots do not re-hash to their stored raw keys and represent 63 seeds.
+
+A corrected v2 production runner was drafted prospectively around raw oracle graph reconstruction, but the correction path was not completed: `STAGE_1_FORMAL_SPEC_V2.json`, `STAGE_1_AUTHORIZATION_V2.json`, an independent v2 verifier, and v2 result artifacts were never created. v2 was not authorized or executed. The draft runner is not part of the closed Study result.
+
+Accordingly, the final 0 validated / 0 rejected / 5 `NON-ESTIMABLE` status is a Study-level closure decision. Fresh v1 zero-mismatch counts are reproducible diagnostics from an invalidated run, not formal positive findings.
+
 ## Formal outcome artifacts
 
 Canonical repository files:

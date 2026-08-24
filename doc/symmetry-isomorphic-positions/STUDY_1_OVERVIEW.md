@@ -4,6 +4,9 @@ Updated: 2026-08-24
 Study ID: `SIP-STUDY1`  
 Status: **COMPLETED — FORMAL OUTCOMES NON-ESTIMABLE**
 
+> **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
+
+
 ## 研究課題
 
 Bao の盤面・player・move transformation が、visual similarity ではなく、state validity、exact legal-move set、transition、terminal/winner semantics を保存する rule-semantic graph isomorphism であるかを、prospectively frozen bounded domains で検証した。
@@ -20,7 +23,7 @@ candidate semantics はformal outcome生成前にfreezeされ、outcome後の修
 
 Stage 0のoutcome-blind technical sizingにより、fresh formal seed block `22910001..22910064`、各stratum 8 roots、local depth 3をfreezeした。
 
-Formal fresh validationではproductionとindependent verifierの双方が以下を再現した。
+Technically invalidated v1 executionのfresh-domain diagnosticではproductionとindependent verifierの双方が以下を再現した。
 
 | Outcome | Roots | States | Edges | Tested states | Exact mismatches |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -30,7 +33,7 @@ Formal fresh validationではproductionとindependent verifierの双方が以下
 | T02 / Mtaji-houseless | 8 | 532 | 529 | 160 | 0 |
 | T03 / Mtaji-houseless | 8 | 532 | 529 | 160 | 0 |
 
-したがってfresh bounded-local source graphsだけを見れば、全candidateはG1–G8のprospective scopeでzero mismatchだった。
+したがってinvalidated v1のfresh bounded-local source graphsだけを見れば、全candidateはG1–G8相当のprospective scopeでzero mismatchだった。ただしv1はcandidate-decision runとして無効であり、この観測をformal validationへ使わない。
 
 ## Mandatory exact-oracle anchor
 
@@ -42,7 +45,7 @@ IDENTITY positive control自身がoracle anchorでFAILしたため、nontrivial 
 
 ## Formal result
 
-5 preregistered outcomesすべてについて、independent verifierはG12をFAILとし、最終decisionを
+v1ではproduction / independent oracle accountingが一致せずG12相当のequality requirementを満たさなかったうえ、IDENTITY failureによりrun自体がtechnical invalidationされた。corrected v2は未承認・未実行である。したがってStudy-level closureとして5 preregistered outcomesすべてを
 
 > **`NON-ESTIMABLE`**
 

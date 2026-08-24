@@ -81,3 +81,11 @@ At candidate freeze time no Study 1 formal candidate pass/fail result had been g
 - Restricted Endgame Study 1 remains immutable; no formal decision, count, hash, value or DTF is rewritten.
 
 Study 1 is closed. No further scientific outcome generation is authorized within `SIP-STUDY1`.
+
+## 2026-08-24 — Closure provenance clarification
+
+- Final repository audit recovered the already-recorded `STAGE_1_V1_INVALIDATION.json` chronology.
+- The v1 run is therefore treated as technically invalidated for candidate-decision use; its fresh zero-mismatch observations remain diagnostics only.
+- A corrected v2 runner draft existed, but no v2 formal spec, authorization, independent verifier, workflow result, or candidate decision was ever created.
+- The correction path was not resumed. Study closure remains 0 validated / 0 rejected / 5 `NON-ESTIMABLE` because no valid completed formal candidate-decision run exists.
+- This does not change Restricted Endgame Study 1 and does not rescue any SIP candidate.

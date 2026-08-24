@@ -23,3 +23,7 @@ NON-ESTIMABLE                  = 5
 ```
 
 All five fresh scientific scopes had zero exact mismatches. They were not promoted because the mandatory immutable 8-state oracle anchor failed the identity positive control and production/independent oracle accounting failed G12 equality.
+
+## Closure provenance clarification
+
+The executed v1 candidate-decision path is recorded in `results/STAGE_1_V1_INVALIDATION.json` as `TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION`. Fresh zero-mismatch and control counts from v1 are diagnostic only. A corrected v2 runner draft existed, but no v2 formal spec, authorization, independent verifier, or result was created; v2 was not authorized or executed. The Study-level final state remains 0 validated / 0 rejected / 5 `NON-ESTIMABLE`.

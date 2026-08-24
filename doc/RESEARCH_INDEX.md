@@ -425,9 +425,9 @@ Frozen rootはPlayer 0 to moveの`WIN`、absolute forced winner = Player 0、`DT
 
 このprospective independent machine-only studyは、visual symmetryではなく、state transformation・player permutation・exact move bijectionが合法手集合、transition、terminal/winner semanticsを保存するかを検証した。candidate semantics、fresh seed block、root selection、depth、exact gatesをformal outcome前にfreezeした。
 
-Fresh formal domainはseeds `22910001..22910064`、Namua / Mtaji / Mtaji-houseless各8 roots、depth 3である。3 candidates / 5 scientific outcomesはいずれもproduction / independent双方でfresh bounded-local mismatch 0だった。negative controlは638 fresh mismatches、IDENTITYはfresh mismatch 0で、fresh machineryはpositive/negative controlを識別した。
+Technically invalidated v1 diagnosticはseeds `22910001..22910064`、Namua / Mtaji / Mtaji-houseless各8 roots、depth 3で実行され、3 candidates / 5 preregistered scopesはいずれもproduction / independent双方でfresh bounded-local mismatch 0だった。negative controlは638 fresh mismatches、IDENTITYはfresh mismatch 0だったが、v1はcandidate-decision runとしてtechnical invalidationされているため、これらはdiagnostic evidenceのみである。
 
-しかしmandatoryとしたRestricted Endgame Study 1のimmutable 8-state exact-oracle anchorではIDENTITY positive control自身がPASSせず、production oracle mismatch count 19とindependent count 10が一致しなかった。G12がFAILしたため、5 outcomesすべて最終 `NON-ESTIMABLE` とした。post-outcome read-only diagnosticでは3 terminal stateRowsについてstored `stateKey`とstored `ruleState`のcanonical re-hash不一致を確認したが、これは上流Restricted Endgame Study 1のformal decisionを変更しない。
+mandatoryとしたRestricted Endgame Study 1のimmutable 8-state exact-oracle reconstructionでIDENTITY positive control自身がPASSしなかったため、v1は`TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION`となった。corrected v2はdraft runnerに留まり、formal spec / authorization / independent verifier / resultを作成せず未承認・未実行で終了した。したがってvalid formal candidate-decision runが存在せず、Study-level closureは5 outcomesすべて`NON-ESTIMABLE`である。read-only diagnosticで確認した3 terminal stateRowsのidentity limitationは、上流Restricted Endgame Study 1のformal decisionを変更しない。
 
 **最初に読む:**
 
