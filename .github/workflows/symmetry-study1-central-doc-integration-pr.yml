@@ -22,12 +22,21 @@ jobs:
           node-version: "22"
       - name: Integrate completed Study 1 into central docs
         run: node tools/experiments/integrate-symmetry-study1-closure-docs.js
+      - name: Place completed Study 1 before future-research guidance
+        run: node tools/experiments/reorder-symmetry-study1-research-index.js
       - name: Verify expected closure markers
         run: |
           grep -F "Version: 1.12.0" doc/FUTURE_RESEARCH_AGENDA.md
           grep -F "### 13. Symmetry / Isomorphic Positions — Study 1" doc/RESEARCH_INDEX.md
           grep -F "doc/symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md" README.md
           grep -F "5/5 \`NON-ESTIMABLE\`" doc/FUTURE_RESEARCH_AGENDA.md
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const text = fs.readFileSync('doc/RESEARCH_INDEX.md', 'utf8');
+          const study = text.indexOf('### 13. Symmetry / Isomorphic Positions — Study 1');
+          const future = text.indexOf('## 将来研究');
+          if (!(study >= 0 && future >= 0 && study < future)) process.exit(2);
+          NODE
       - name: Commit central documentation integration to PR head
         run: |
           if git diff --quiet -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md; then
