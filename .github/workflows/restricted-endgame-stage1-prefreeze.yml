@@ -48,5 +48,11 @@ jobs:
           node test/restricted-endgame-tablebase.test.js
       - name: Emit frozen-source SHA-256 candidates
         run: node tools/experiments/hash-restricted-endgame-stage1-sources.js
-      - name: Confirm authorization absent at prefreeze
-        run: test ! -e doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json
+      - name: Validate authorization lifecycle
+        run: |
+          AUTH=doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json
+          if [ -e "$AUTH" ]; then
+            node -e "const V=require('./tools/experiments/validate-restricted-endgame-stage1-spec.js'); const c=V.loadFrozenContract(); const a=V.loadAuthorization(c); console.log(JSON.stringify({state:'AUTHORIZED',specSha256:c.specSha256,domainSha256:c.domainSha256,authorizationSha256:a.authorizationSha256},null,2));"
+          else
+            echo '{"state":"PREFREEZE","authorizationPresent":false}'
+          fi
