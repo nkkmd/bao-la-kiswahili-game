@@ -11,6 +11,17 @@ on:
       - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
       - "doc/symmetry-isomorphic-positions/preregistration/CANDIDATE_TRANSFORMS.json"
       - ".github/workflows/symmetry-isomorphism-stage1-prefreeze.yml"
+  pull_request:
+    branches:
+      - research/symmetry-isomorphic-positions
+    paths:
+      - "tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js"
+      - "tools/experiments/run-symmetry-isomorphism-stage1-formal.js"
+      - "tools/experiments/verify-symmetry-isomorphism-stage1-formal.js"
+      - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
+      - "doc/symmetry-isomorphic-positions/preregistration/CANDIDATE_TRANSFORMS.json"
+      - ".github/workflows/symmetry-isomorphism-stage1-prefreeze.yml"
+      - "doc/symmetry-isomorphic-positions/checkpoints/**"
   workflow_dispatch:
 
 permissions:
@@ -43,7 +54,6 @@ jobs:
           node - <<'NODE'
           const crypto = require('node:crypto');
           const fs = require('node:fs');
-          const path = require('node:path');
           const hash = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
           const paths = {
             engine: 'public/engine.js',
@@ -75,6 +85,7 @@ jobs:
             doc/symmetry-isomorphic-positions/preregistration/STAGE_1_PREFREEZE_AUDIT.json
           if-no-files-found: error
       - name: Materialize prefreeze artifacts on research branch
+        if: github.event_name == 'push'
         run: |
           if git diff --quiet -- \
             doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json \
