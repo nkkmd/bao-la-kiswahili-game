@@ -1,0 +1,92 @@
+name: Restricted endgame Stage 0 technical validation
+
+on:
+  push:
+    branches:
+      - research/restricted-endgame-winning-regions
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/run-restricted-endgame-stage0-feasibility.js"
+      - "test/restricted-endgame-retrograde.test.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-stage0.test.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_TECHNICAL_SPEC.json"
+      - ".github/workflows/restricted-endgame-stage0.yml"
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/run-restricted-endgame-stage0-feasibility.js"
+      - "test/restricted-endgame-retrograde.test.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-stage0.test.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_TECHNICAL_SPEC.json"
+      - ".github/workflows/restricted-endgame-stage0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  technical-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate baseline engine
+        run: node test/engine.test.js
+      - name: Validate synthetic retrograde semantics
+        run: node test/restricted-endgame-retrograde.test.js
+      - name: Validate guard-free Mtaji transition parity
+        run: node test/restricted-endgame-transition.test.js
+      - name: Validate witness and closure mechanics
+        run: node test/restricted-endgame-stage0.test.js
+      - name: Run technical-only witness/root scan
+        run: |
+          node tools/experiments/run-restricted-endgame-stage0-feasibility.js \
+            --mode scan \
+            --output /tmp/rewr-stage0 > /tmp/rewr-stage0-console.json
+      - name: Assert scientific outcome firewall
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = '/tmp/rewr-stage0/stage0-technical-manifest.json';
+          const r = JSON.parse(fs.readFileSync(p, 'utf8'));
+          if (r.technicalOnly !== true
+              || r.scientificOutcomeGenerationAuthorized !== false
+              || r.scientificTablebaseGenerationAuthorized !== false
+              || r.outcomeFieldsEmitted !== false
+              || r.benchmark !== null) {
+            throw new Error('Stage 0 firewall violation');
+          }
+          const forbidden = /\b(WIN|LOSS|RECURRENT|DTF|optimalMoveSet|absoluteWinner)\b/;
+          if (forbidden.test(JSON.stringify(r.scan))) {
+            throw new Error('Scientific outcome token leaked into scan output');
+          }
+          console.log(JSON.stringify({
+            stageId: r.stageId,
+            specSha256: r.specSha256,
+            uniqueWitnessRoots: r.scan.uniqueWitnessRoots,
+            candidatePlanCount: r.candidatePlans.length,
+            outcomeFieldsEmitted: r.outcomeFieldsEmitted,
+            manifestSha256: r.manifestSha256,
+          }, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rewr-stage0-technical-scan
+          path: |
+            /tmp/rewr-stage0/stage0-technical-manifest.json
+            /tmp/rewr-stage0/witness-roots.json
+          if-no-files-found: error
+          retention-days: 14
