@@ -1,7 +1,7 @@
 # SEED_AUDIT — Critical Positions / Outcome Branching Study 1
 
-Updated: 2026-08-23  
-Status: **FRESH NAMESPACE AUDITED / RESERVED / NOT AUTHORIZED**
+Updated: 2026-08-24  
+Status: **STUDY 1 CLOSED / STAGE 1 CONSUMED / STAGE 2 RESERVED AND UNCONSUMED**
 
 ## 1. Audit principle
 
@@ -28,82 +28,74 @@ Calibration Stage 1               22200001..22201024
 Calibration Stage 2               22300001..22302048
 BMP Stage 1                       22400001..22402048
 BMP Stage 2                       22500001..22504096
+CPOB Stage 1                      22600001..22603072
 ```
 
 Older Phase Transition, Position Typology, Namua→Mtaji, first-player and joseki blocks remain historical/consumed and are not reallocated.
 
-## 3. New namespace audit
-
-At verified baseline:
+## 3. CPOB Stage 1
 
 ```text
-576783b1a1d514726d4d30e4dfac1bf79dde9e2a
-```
-
-repository search found no tracked declaration for exact new block starts:
-
-```text
-22600001
-22700001
-```
-
-An incidental search for broader numeric prefixes can match arbitrary historical artifact values; those are not seed declarations. The reservation below is based on explicit tracked scientific seed declarations.
-
-## 4. New reservations
-
-### Stage 0
-
-```text
-scientific source-game block = NONE
-```
-
-Stage 0 technical fixtures should use deterministic fixed states. If stochastic fixture testing is required, use a documented technical-only derived RNG function/salt; do not consume the Stage 1/2 scientific source-game blocks.
-
-### Stage 1 exploratory
-
-```text
-reserved = 22600001..22603072
+block = 22600001..22603072
 capacity = 3072 source games
+status = CONSUMED EXACTLY ONCE
 ```
 
-### Stage 2 formal
+Frozen source generation used all 3072 seeds. No extension, replacement generation or candidate-specific reseeding occurred.
+
+```text
+games generated = 3072
+seedStart = 22600001
+seedEnd = 22603072
+```
+
+The block must not be reused.
+
+## 4. CPOB Stage 2 reservation
 
 ```text
 reserved = 22700001..22706144
 capacity = 6144 source games
+authorization issued = false
+games generated = 0
+seeds consumed = false
 ```
 
-The larger Stage 2 block is a prospective attrition allowance motivated by the Calibration Study 1 identity-firewall estimability failure. It is not a result-dependent extension.
+The block was originally reserved prospectively as an attrition allowance for a possible Stage 2 formal confirmation.
 
-## 5. Reservation is not authorization
-
-No game in either block may be generated as scientific evidence until the corresponding preregistration/spec, technical validation, exact source hash freeze and separate authorization are committed.
-
-Once a stage begins, the exact authorized range is fixed. Unused later seeds may not be appended because candidate support or outcome is unfavorable.
-
-## 6. Continuation replicate RNG
-
-Continuation replicate RNG is nested inside a selected root and must be derived from a stage-specific salt, root identity and replicate index, for example conceptually:
+Stage 1 deterministic discovery produced:
 
 ```text
-seed32 = H(stageSalt | rootRuleStateKey | replicateIndex)
+promotedCandidateCount = 0
 ```
 
-Each legal root move receives a freshly initialized RNG with the same `seed32` for that replicate index.
+Therefore no exact Stage 1 candidate mapping existed for Stage 2 freeze, and Stage 2 generation was never authorized or executed.
+
+This reservation remains an explicit historical declaration. It must not be silently reused by another study. A future independent study must perform a new seed-namespace audit and explicitly decide its own fresh block.
+
+## 5. Continuation replicate RNG
+
+Stage 1 continuation RNG was nested inside selected roots and deterministically derived from the frozen stage salt, root identity and replicate index.
+
+Each legal root move received a separately initialized RNG using the same derived seed at replicate index `r`.
 
 These values:
 
 - do not count as independent source-game seeds;
 - do not increase root-level N;
-- must not collide across stages because stage salts differ;
-- must be reproducibly recorded or derivable.
+- do not alter the Stage 1 source-game namespace;
+- remain reproducibly derivable from the frozen implementation.
 
-## 7. No-rescue seed rule
+## 6. No-rescue seed closure
 
-Forbidden after scientific generation begins:
+The following were not performed:
 
-- seed extension;
-- replacement after identity exclusion;
-- candidate-specific reseeding;
-- favorable seed subset selection;
-- moving Stage 2 evidence into the Stage 1 block or vice versa.
+```text
+Stage 1 seed extension = false
+replacement generation = false
+candidate-specific reseeding = false
+favorable seed subset selection = false
+Stage 2 generation = false
+```
+
+Do not move a future study into `22700001..22706144` merely because the block is unconsumed. The existing reservation must first be addressed explicitly in a new prospective seed audit.
