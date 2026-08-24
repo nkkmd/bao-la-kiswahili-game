@@ -4,9 +4,17 @@ Updated: 2026-08-24
 
 ## Scientific status
 
-**Stage 0 active. No formal reachable-corpus candidate outcome has been generated.**
+**COMPLETED — formal result `NON-ESTIMABLE`; 0 formally validated transforms.**
 
-The candidate semantics are frozen in `preregistration/CANDIDATE_TRANSFORMS.json` before any Study 1 formal-corpus transition-commutation result is inspected.
+Five preregistered scientific outcomes were executed under frozen candidate, domain, source-hash and authorization contracts. Fresh historically reachable bounded-local graphs showed exact zero mismatch for all scientific candidates, but the mandatory immutable Restricted Endgame 8-state oracle anchor could not satisfy the positive-control / independent-equality requirements. The independent verifier therefore assigned all five outcomes `NON-ESTIMABLE` with `G12=FAIL`.
+
+```text
+VALIDATED-BOUNDED-ISOMORPHISM = 0
+NOT-VALIDATED                  = 0
+NON-ESTIMABLE                  = 5
+```
+
+The fresh zero-mismatch evidence is preserved as bounded evidence but is not promoted to formal validation.
 
 ## Source identity recovered at study start
 
@@ -18,44 +26,93 @@ Restricted Endgame canonical result blob = 811eb78806813d236dc91c776e1e408d4feac
 historical transform-candidates.js blob = a9117f46643fc79fc3352771d684c4ac9f7a01f6
 ```
 
-## Upstream exact oracle recovered
+The upstream Restricted Endgame Study 1 remains immutable and retains formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`. This Study does not revise its raw state count, hashes, solution, or interpretation boundary.
 
-`REWR-S1-DOMAIN-2026-08-24-v1` remains immutable:
+## Frozen candidate set
+
+Scientific candidates:
+
+- `SIP-T01-SEAT-SWAP-LOCAL`
+- `SIP-T02-LR-MTAJI-HOUSELESS`
+- `SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS`
+
+Controls:
+
+- `SIP-C00-IDENTITY`
+- `SIP-C01-LR-NO-DIRECTION-FLIP`
+
+Candidate semantics were frozen before formal reachable-corpus outcomes. No post-outcome transform repair, failed-state/phase exclusion, root/depth shrinkage, or candidate rescue was performed.
+
+## Frozen Stage 1 population
 
 ```text
-root = fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33
-states = 8
-edges = 7
-TERMINAL = 4
-WIN = 3
-LOSS = 1
-RECURRENT = 0
-stateSetSha256 = 95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307
-transitionSetSha256 = 33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11
-solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15
-formalDecision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
+formal seed block      = 22910001..22910064
+maximum trajectory ply = 120
+roots per stratum      = 8
+local expansion depth  = 3
+strata                  = namua / mtaji / mtaji-houseless
 ```
 
-This Study may derive symmetry observations from that oracle but must not rewrite its identity or result.
+Domain materialization had shortage 0, witness replay failure 0, and trajectory runtime guard hit 0.
 
-## Engine semantics recovered
+## Fresh bounded-local evidence
 
-- rows: `FRONT=0`, `BACK=1`
-- nyumba coordinate: `HOUSE=4` in each player's local coordinates
-- each player's pit indices run left-to-right from that player's own viewpoint
-- physical facing front pits use `opponentIndex = 7 - index`
-- sowing ring is player-local and independent of numeric player id
-- `side=left` enters at front index 0 and maps to sowing `direction=right`; `side=right` enters at index 7 and maps to `direction=left`
-- `moveVariants()` is required for exact Namua move identity because `houseChoice=stop/use` may create distinct transitions
-- raw rule-state identity contains `pits,reserve,houseOwned,player,phase,winner,pending`; `turn` and textual `reason` are excluded
-- exact move identity contains `type,phase,row,index,direction,side,houseChoice,houseTwo`
-- browser `MAX_RELAY=512` / `relay-limit` is an administrative guard, not a normative terminal rule
+| Outcome | Roots | States | Edges | Tested states | Mismatches |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| T01 / Namua | 8 | 697 | 707 | 167 | 0 |
+| T01 / Mtaji | 8 | 530 | 527 | 162 | 0 |
+| T01 / Namua+Mtaji | 16 | 1227 | 1234 | 329 | 0 |
+| T02 / Mtaji-houseless | 8 | 532 | 529 | 160 | 0 |
+| T03 / Mtaji-houseless | 8 | 532 | 529 | 160 | 0 |
 
-## Next authorized work
+The negative control produced 638 independent fresh mismatches; the identity control produced zero fresh mismatches.
 
-1. implement new Study-owned transform library; do not use the historical transform implementation as the formal implementation;
-2. run synthetic identity/inverse fixtures and negative controls;
-3. run outcome-blind Stage 0 graph-size benchmark with fresh technical seeds;
-4. choose formal root count and local depth only from technical cost/coverage quantities;
-5. freeze Stage 1 domain/spec and source hashes;
-6. only then generate formal candidate outcomes.
+## Mandatory oracle-anchor limitation
+
+The identity positive control failed the immutable 8-state oracle integration. Production counted 19 oracle mismatches; the independent implementation counted 10, so `G12` failed.
+
+A post-outcome read-only diagnostic found:
+
+```text
+oracle stateRows                    = 8
+stored stateKey mismatch rows       = 3
+production/independent key disagreement = 0
+seed totals observed                = 63, 64
+recomputed legal transitions        = 7
+successor escapes stored key set    = 0
+```
+
+The three mismatching rows are terminal rows whose stored `stateKey` does not equal the hash recomputed from the stored `ruleState`. This is recorded only as a limitation of using that immutable artifact as this Study's transform anchor; it does not alter the upstream Study.
+
+## Reproducibility identities
+
+```text
+specSha256 = ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a
+authorizationSha256 = a539de44b26e513ab461a559e97ee4e7914900178a469389a5c996def3d7f5a4
+domainSha256 = fa40e1b7d2fc5e34291ec9537e8a5f19b280be8203d62ca8687090dc96ff9e22
+productionResultSha256 = fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a
+independentVerificationSha256 = 8e7327b4192e2616716d34deae86b15a51f269201f591a843310d414541596f0
+archive workflow run = 32728925376
+oracle diagnostic workflow run = 32728619101
+```
+
+## Downstream authorization
+
+```text
+validated transformation set = empty
+canonicalization = NOT AUTHORIZED
+symmetry-group claim = NOT AUTHORIZED
+symmetry-reduced state counting = NOT AUTHORIZED
+State Space Study raw identity = AUTHORIZED
+use T01/T02/T03 for state reduction = NOT AUTHORIZED
+```
+
+## Canonical conclusion documents
+
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+- [`results/STAGE_1_FORMAL_RESULT.json`](results/STAGE_1_FORMAL_RESULT.json)
+- [`results/STAGE_1_PRODUCTION_RESULT.json`](results/STAGE_1_PRODUCTION_RESULT.json)
+- [`results/STAGE_1_INDEPENDENT_VERIFICATION.json`](results/STAGE_1_INDEPENDENT_VERIFICATION.json)
+
+No further scientific outcome generation is authorized within Study 1.
