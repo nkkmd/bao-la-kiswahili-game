@@ -12,6 +12,17 @@ on:
       - "test/symmetry-isomorphism-stage0.test.js"
       - "doc/symmetry-isomorphic-positions/**"
       - ".github/workflows/symmetry-isomorphism-stage0.yml"
+  pull_request:
+    branches:
+      - research/symmetry-isomorphic-positions
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
+      - "tools/experiments/audit-symmetry-isomorphism-stage0.js"
+      - "test/symmetry-isomorphism-stage0.test.js"
+      - "doc/symmetry-isomorphic-positions/**"
+      - ".github/workflows/symmetry-isomorphism-stage0.yml"
   workflow_dispatch:
 
 permissions:
@@ -40,6 +51,7 @@ jobs:
           path: doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
           if-no-files-found: error
       - name: Materialize technical audit on research branch
+        if: github.event_name == 'push'
         run: |
           if git diff --quiet -- doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json; then
             exit 0
