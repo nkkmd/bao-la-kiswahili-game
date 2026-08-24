@@ -1,0 +1,50 @@
+name: Restricted endgame Stage 1 exact solution
+
+on:
+  push:
+    branches:
+      - research/restricted-endgame-winning-regions
+    paths:
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json"
+      - ".github/workflows/restricted-endgame-stage1-exact.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-solution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate frozen contract and authorization
+        run: |
+          node -e "const V=require('./tools/experiments/validate-restricted-endgame-stage1-spec.js'); const c=V.loadFrozenContract(); const a=V.loadAuthorization(c); console.log(JSON.stringify({specSha256:c.specSha256,domainSha256:c.domainSha256,authorizationSha256:a.authorizationSha256},null,2));"
+      - name: Generate frozen exact tablebase
+        run: |
+          node tools/experiments/run-restricted-endgame-stage1-exact.js \
+            --output /tmp/stage1-exact-result.json \
+            | tee /tmp/stage1-exact-console.json
+      - name: Independently reconstruct and verify full solution
+        run: |
+          node tools/experiments/verify-restricted-endgame-stage1-exact.js \
+            --input /tmp/stage1-exact-result.json \
+            --output /tmp/stage1-exact-verification.json \
+            | tee /tmp/stage1-verification-console.json
+      - name: Assert exact-claim gate
+        run: |
+          node -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('/tmp/stage1-exact-result.json')); const v=JSON.parse(fs.readFileSync('/tmp/stage1-exact-verification.json')); if(p.exactClaimAuthorized!==false||p.exactClaimPendingIndependentVerification!==true||v.passed!==true||v.exactClaimAuthorized!==true) throw new Error('Stage 1 exact-claim gate failed'); console.log(JSON.stringify({productionResultSha256:p.resultSha256,verificationResultSha256:v.resultSha256,solutionSha256:v.independent.solution.solutionSha256,counts:v.independent.solution.counts},null,2));"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rewr-stage1-exact-solution
+          path: |
+            /tmp/stage1-exact-result.json
+            /tmp/stage1-exact-verification.json
+            /tmp/stage1-exact-console.json
+            /tmp/stage1-verification-console.json
+          if-no-files-found: error
+          retention-days: 30
