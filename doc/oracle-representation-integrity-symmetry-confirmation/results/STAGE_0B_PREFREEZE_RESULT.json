@@ -1,21 +1,25 @@
 {
   "schemaVersion": 1,
   "studyId": "ORISC-STUDY1",
-  "stageId": "ORISC-STAGE0B-PREFREEZE-2026-08-25-v1",
+  "stageId": "ORISC-STAGE0B-PREFREEZE-2026-08-25-v2",
   "classification": "TECHNICAL-PREFREEZE-NO-STAGE1-OUTCOME",
   "technicalOnly": true,
   "scientificOutcomeGenerated": false,
   "repositoryFacingOracleSemanticGateEvaluated": false,
   "symmetryCandidateOutcomeEvaluated": false,
   "stage1AuthorizationCreated": false,
+  "supersedes": {
+    "stageId": "ORISC-STAGE0B-PREFREEZE-2026-08-25-v1",
+    "reason": "Add the formal Stage 1 orchestration workflow to the frozen source-identity set before authorization; no scientific endpoint, gate, population, candidate, or decision rule changed."
+  },
   "workflow": {
-    "runId": 32752507379,
-    "jobId": 97512489239,
-    "artifactId": 9529559552,
+    "runId": 32752858110,
+    "jobId": 97513606755,
+    "artifactId": 9529690660,
     "artifactName": "orisc-stage0b-prefreeze",
-    "artifactZipSha256": "d6a32d552eb613f38b815ce08d18dd3719dbe2be6f9729decdc7d989e80c78a7",
-    "resultJsonSha256": "e5091cdf2a9ec98136101a8e236b7804125098d2baf1baf63ddf622aeea7582e",
-    "headSha": "99775f334f25ecbd39ad12f39a8ebc36ad867785",
+    "artifactZipSha256": "6305da6b61c1eaa296ca65696c51f81a0e2eb62072dc5aa1bae4e7c9555e06ec",
+    "resultJsonSha256": "ce37364ad472903bc6449ff402b527e2a5a193a28f2196c3ec2b2ebc1756d581",
+    "headSha": "7c4fc54ae049d1945959cd7d810384c0ca12c1a9",
     "conclusion": "success"
   },
   "immutableGraph": {
@@ -40,6 +44,7 @@
     "edgesEqual": true,
     "seedConservationPass": true
   },
+  "formalWorkflowSha256": "0f5e5da13e84e9511a477a8fdfc01133e3a36cc08e908e16a31b71517e3b429f",
   "stage2CandidateContractSha256": "6509dc18553d968437d87f7522cacebb4b66f13f15469240075964b72f1c8796",
   "readyForStage1SpecFreeze": true,
   "interpretationBoundary": "Technical prefreeze readiness only. Repository-facing oracle semantic gates A-G8/A-G9/A-G11 were not evaluated and no ORISC Stage 1 decision was generated."
