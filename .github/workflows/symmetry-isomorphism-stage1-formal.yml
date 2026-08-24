@@ -6,6 +6,7 @@ on:
       - research/symmetry-isomorphic-positions
     paths:
       - "doc/symmetry-isomorphic-positions/preregistration/STAGE_1_AUTHORIZATION.json"
+      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-one-shot-trigger.md"
   pull_request:
     branches:
       - research/symmetry-isomorphic-positions
