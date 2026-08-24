@@ -9,9 +9,12 @@ on:
       - "tools/benchmark.js"
       - "tools/experiments/lib/restricted-endgame-transition.js"
       - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
       - "tools/experiments/run-restricted-endgame-stage0-v2-matrix.js"
+      - "tools/experiments/verify-restricted-endgame-stage0-v2-matrix.js"
       - "test/restricted-endgame-transition.test.js"
       - "test/restricted-endgame-stage0.test.js"
+      - "test/restricted-endgame-independent-verifier.test.js"
       - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_TECHNICAL_SPEC_V2.json"
       - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_V2_MATRIX_SELECTION_RULE.json"
       - ".github/workflows/restricted-endgame-stage0-matrix.yml"
@@ -21,9 +24,12 @@ on:
       - "tools/benchmark.js"
       - "tools/experiments/lib/restricted-endgame-transition.js"
       - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
       - "tools/experiments/run-restricted-endgame-stage0-v2-matrix.js"
+      - "tools/experiments/verify-restricted-endgame-stage0-v2-matrix.js"
       - "test/restricted-endgame-transition.test.js"
       - "test/restricted-endgame-stage0.test.js"
+      - "test/restricted-endgame-independent-verifier.test.js"
       - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_TECHNICAL_SPEC_V2.json"
       - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_V2_MATRIX_SELECTION_RULE.json"
       - ".github/workflows/restricted-endgame-stage0-matrix.yml"
@@ -45,6 +51,8 @@ jobs:
         run: node test/restricted-endgame-transition.test.js
       - name: Validate witness and closure mechanics
         run: node test/restricted-endgame-stage0.test.js
+      - name: Validate independent verifier primitives
+        run: node test/restricted-endgame-independent-verifier.test.js
       - name: Run frozen outcome-blind closure matrix
         run: |
           node tools/experiments/run-restricted-endgame-stage0-v2-matrix.js \
@@ -71,9 +79,38 @@ jobs:
             throw new Error('Invalid matrix decision state');
           }
           NODE
+      - name: Independently reconstruct selected complete graph
+        if: success()
+        run: |
+          node tools/experiments/verify-restricted-endgame-stage0-v2-matrix.js \
+            --matrix /tmp/rewr-stage0-v2-matrix.json \
+            --output /tmp/rewr-stage0-v2-independent-verification.json \
+            > /tmp/rewr-stage0-v2-independent-console.json
+          cat /tmp/rewr-stage0-v2-independent-console.json
+      - name: Assert independent full graph equality
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = '/tmp/rewr-stage0-v2-independent-verification.json';
+          const r = JSON.parse(fs.readFileSync(p, 'utf8'));
+          if (r.technicalOnly !== true
+              || r.scientificOutcomeGenerationAuthorized !== false
+              || r.scientificTablebaseGenerationAuthorized !== false
+              || r.outcomeFieldsEmitted !== false
+              || r.passed !== true
+              || r.stage1ReadinessFromGraphVerification !== true) {
+            throw new Error('Independent graph verification failed');
+          }
+          const forbidden = /\b(WIN|LOSS|RECURRENT|DTF|optimalMoveSet|absoluteWinner)\b/;
+          if (forbidden.test(JSON.stringify(r))) {
+            throw new Error('Scientific outcome token leaked into independent verification artifact');
+          }
+          NODE
       - uses: actions/upload-artifact@v4
         with:
           name: rewr-stage0-closure-matrix
-          path: /tmp/rewr-stage0-v2-matrix.json
+          path: |
+            /tmp/rewr-stage0-v2-matrix.json
+            /tmp/rewr-stage0-v2-independent-verification.json
           if-no-files-found: error
           retention-days: 14
