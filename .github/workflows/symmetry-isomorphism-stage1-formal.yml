@@ -6,6 +6,12 @@ on:
       - research/symmetry-isomorphic-positions
     paths:
       - "doc/symmetry-isomorphic-positions/preregistration/STAGE_1_AUTHORIZATION.json"
+  pull_request:
+    branches:
+      - research/symmetry-isomorphic-positions
+    paths:
+      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-rerun-trigger.md"
+      - ".github/workflows/symmetry-isomorphism-stage1-formal.yml"
   workflow_dispatch:
 
 permissions:
@@ -50,6 +56,7 @@ jobs:
             schemaVersion: 1,
             studyId: 'SIP-STUDY1',
             stageId: 'SIP-S1-FORMAL-2026-08-24-v1',
+            executionRoute: process.env.GITHUB_EVENT_NAME,
             workflowRunId: Number(process.env.GITHUB_RUN_ID),
             workflowRunAttempt: Number(process.env.GITHUB_RUN_ATTEMPT),
             triggeringCommit: process.env.GITHUB_SHA,
@@ -72,6 +79,7 @@ jobs:
             doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json
           if-no-files-found: error
       - name: Materialize verified formal artifacts on research branch
+        if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
