@@ -17,6 +17,8 @@ const { solveRetrograde, validateGraph } = require(
       ],
     },
   ]);
+  assert.equal(solved.results["t-win0"].status, "TERMINAL");
+  assert.equal(solved.results["t-win1"].status, "TERMINAL");
   assert.equal(solved.results.root.status, "WIN");
   assert.equal(solved.results.root.absoluteWinner, 0);
   assert.equal(solved.results.root.dtf, 1);
@@ -50,6 +52,28 @@ const { solveRetrograde, validateGraph } = require(
   assert.equal(solved.results["loss-root"].absoluteWinner, 0);
   assert.equal(solved.results["loss-root"].dtf, 3);
   assert.deepEqual(solved.results["loss-root"].optimalMoveKeys, ["slow-loss"]);
+}
+
+// Regression: synchronous waves prevent node-id ordering from freezing a
+// longer WIN distance before a shorter winning child becomes resolved.
+{
+  const solved = solveRetrograde([
+    { id: "terminal", player: 0, winner: 0, moves: [] },
+    { id: "a1", player: 0, winner: null, moves: [{ key: "a1", to: "terminal" }] },
+    { id: "a2", player: 0, winner: null, moves: [{ key: "a2", to: "a1" }] },
+    { id: "a3", player: 0, winner: null, moves: [{ key: "a3", to: "a2" }] },
+    {
+      id: "root", player: 0, winner: null,
+      moves: [
+        { key: "slow", to: "a3" },
+        { key: "fast", to: "z1" },
+      ],
+    },
+    { id: "z1", player: 0, winner: null, moves: [{ key: "z1", to: "terminal" }] },
+  ]);
+  assert.equal(solved.results.root.status, "WIN");
+  assert.equal(solved.results.root.dtf, 2);
+  assert.deepEqual(solved.results.root.optimalMoveKeys, ["fast"]);
 }
 
 {

@@ -1,19 +1,12 @@
 "use strict";
 
 /**
- * Generic deterministic retrograde solver for Stage 0 synthetic fixtures.
+ * Generic deterministic retrograde solver.
  *
- * This module is deliberately independent of BaoEngine. Nodes use absolute
- * player identities so terminal states do not depend on how a runtime engine
- * stores its `player` field after a winning move.
- *
- * Node schema:
- * {
- *   id: string,
- *   player: 0 | 1,
- *   winner: null | 0 | 1,
- *   moves: [{ key: string, to: string }]
- * }
+ * Terminal nodes are represented as TERMINAL + absoluteWinner rather than a
+ * player-relative WIN/LOSS label because the runtime engine's stored `player`
+ * field is not a uniform "player to move" concept after termination.
+ * Nonterminal states are classified WIN / LOSS / RECURRENT.
  */
 
 function validateGraph(nodes) {
@@ -121,7 +114,7 @@ function solveRetrograde(nodes) {
   for (const node of graph.values()) {
     if (node.winner === null) continue;
     solved.set(node.id, {
-      status: node.winner === node.player ? "WIN" : "LOSS",
+      status: "TERMINAL",
       absoluteWinner: node.winner,
       dtf: 0,
       optimalMoveKeys: [],
@@ -131,52 +124,53 @@ function solveRetrograde(nodes) {
     });
   }
 
-  let changed = true;
-  while (changed) {
-    changed = false;
+  // Synchronous waves make DTF independent of node iteration order.
+  // A WIN enters on the earliest wave that exposes any same-winner child,
+  // which fixes the minimum distance. A LOSS enters only after every child is
+  // resolved for the opponent, fixing the maximum-resistance distance.
+  while (true) {
+    const additions = [];
     for (const node of [...graph.values()].sort((a, b) => a.id.localeCompare(b.id))) {
       if (solved.has(node.id) || node.winner !== null) continue;
       const rows = node.moves.map((move) => ({ move, result: solved.get(move.to) || null }));
       const winning = rows.filter(({ result }) => result && result.absoluteWinner === node.player);
       if (winning.length) {
         const bestChildDistance = Math.min(...winning.map(({ result }) => result.dtf));
-        const optimalMoveKeys = winning
-          .filter(({ result }) => result.dtf === bestChildDistance)
-          .map(({ move }) => move.key)
-          .sort();
-        solved.set(node.id, {
+        additions.push([node.id, {
           status: "WIN",
           absoluteWinner: node.player,
           dtf: bestChildDistance + 1,
-          optimalMoveKeys,
+          optimalMoveKeys: winning
+            .filter(({ result }) => result.dtf === bestChildDistance)
+            .map(({ move }) => move.key)
+            .sort(),
           recurrentMoveKeys: [],
           sccId: null,
           cyclicScc: false,
-        });
-        changed = true;
+        }]);
         continue;
       }
 
       const allResolved = rows.every(({ result }) => result !== null);
       const opponent = 1 - node.player;
       if (allResolved && rows.every(({ result }) => result.absoluteWinner === opponent)) {
-        const bestResistanceDistance = Math.max(...rows.map(({ result }) => result.dtf));
-        const optimalMoveKeys = rows
-          .filter(({ result }) => result.dtf === bestResistanceDistance)
-          .map(({ move }) => move.key)
-          .sort();
-        solved.set(node.id, {
+        const resistance = Math.max(...rows.map(({ result }) => result.dtf));
+        additions.push([node.id, {
           status: "LOSS",
           absoluteWinner: opponent,
-          dtf: bestResistanceDistance + 1,
-          optimalMoveKeys,
+          dtf: resistance + 1,
+          optimalMoveKeys: rows
+            .filter(({ result }) => result.dtf === resistance)
+            .map(({ move }) => move.key)
+            .sort(),
           recurrentMoveKeys: [],
           sccId: null,
           cyclicScc: false,
-        });
-        changed = true;
+        }]);
       }
     }
+    if (!additions.length) break;
+    for (const [id, row] of additions) solved.set(id, row);
   }
 
   const unresolved = new Set([...graph.keys()].filter((id) => !solved.has(id)));
@@ -205,6 +199,7 @@ function solveRetrograde(nodes) {
     recurrentSccs,
     counts: {
       nodes: graph.size,
+      terminal: Object.values(results).filter((row) => row.status === "TERMINAL").length,
       win: Object.values(results).filter((row) => row.status === "WIN").length,
       loss: Object.values(results).filter((row) => row.status === "LOSS").length,
       recurrent: Object.values(results).filter((row) => row.status === "RECURRENT").length,
