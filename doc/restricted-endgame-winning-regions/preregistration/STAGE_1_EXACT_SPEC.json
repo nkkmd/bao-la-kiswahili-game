@@ -5,7 +5,7 @@
   "domainId": "REWR-S1-DOMAIN-2026-08-24-v1",
   "repositorySourceIdentity": {
     "baselineMainHeadAtStudyStart": "626480507710e0095ef8aec6a53c3e4e0318fa4f",
-    "prefreezeResearchHead": "c4840190112c350ec733c9dd0813490ebc664bfb",
+    "prefreezeResearchHead": "d32cdfcaca21c5d10e290434c286b9f702d6f93c",
     "branch": "research/restricted-endgame-winning-regions"
   },
   "domainSha256": "acfc25413f9c237569884f166ed971ad9ee9395665ce96ec6d094d8ed4a6c56a",
@@ -135,7 +135,18 @@
     "tools/experiments/lib/restricted-endgame-tablebase.js": "d8cd54a03b97c148f81e7d122621d7bc7ddbdc0f5e192d0dac1cfab9c1f893c3",
     "tools/experiments/lib/restricted-endgame-tablebase-independent.js": "b170602bf8900a8979cf14644a8d7503e239cab3872a3818bd7740186a1802e1",
     "tools/experiments/validate-restricted-endgame-stage1-spec.js": "aa284e00416c3e9486c5da224547d1c3fdb5c2c692eba59367fe1463c79a1cb0",
-    "tools/experiments/run-restricted-endgame-stage1-exact.js": "7197e70b5f51bf96d6de0a9c3678c7e979b3c130ec42c24c863bb8ce09bc76d6",
-    "tools/experiments/verify-restricted-endgame-stage1-exact.js": "b1065cb21acf51f953a548f0ab4370b4ee3ed218c5af2aa0fca14ace39eb0a4e"
+    "tools/experiments/run-restricted-endgame-stage1-exact.js": "d08611f120d0cd00e34b82efcdfab50928bb6ba17300ffb8812505fa4c457213",
+    "tools/experiments/verify-restricted-endgame-stage1-exact.js": "d0b3ccffa1dc9e1fdff6ed0f9cb4dbf3725397c892003f60c4d0c1b4d1a8e319"
+  },
+  "preGenerationCorrection": {
+    "required": true,
+    "reason": "The first authorization was revoked before any scientific outcome because the runner/verifier referenced maximumMoveMicrostates while the frozen spec field was administrativeMaximumMoveMicrostates.",
+    "supersededAuthorizationCommit": "5a08d1fdce27c1d80f182e89112db5004353c8a5",
+    "authorizationRevocationCommit": "f4133b17b1e6c5a4fe7a646757c86001d99cf47f",
+    "productionRunnerCorrectionCommit": "367a6f2e460e9fc5b774c32a5748d87e789eea13",
+    "independentVerifierCorrectionCommit": "d32cdfcaca21c5d10e290434c286b9f702d6f93c",
+    "scientificOutcomeGeneratedBeforeCorrection": false,
+    "domainChanged": false,
+    "classificationOrDistanceRuleChanged": false
   }
 }
