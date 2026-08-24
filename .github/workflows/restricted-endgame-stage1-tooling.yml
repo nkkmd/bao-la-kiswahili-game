@@ -1,0 +1,61 @@
+name: Restricted endgame Stage 1 tooling validation
+
+on:
+  push:
+    branches:
+      - research/restricted-endgame-winning-regions
+    paths:
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
+      - "test/restricted-endgame-retrograde.test.js"
+      - "test/restricted-endgame-retrograde-independent.test.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-independent-verifier.test.js"
+      - "test/restricted-endgame-tablebase.test.js"
+      - ".github/workflows/restricted-endgame-stage1-tooling.yml"
+  pull_request:
+    paths:
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
+      - "test/restricted-endgame-retrograde.test.js"
+      - "test/restricted-endgame-retrograde-independent.test.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-independent-verifier.test.js"
+      - "test/restricted-endgame-tablebase.test.js"
+      - ".github/workflows/restricted-endgame-stage1-tooling.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tooling-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate production retrograde semantics
+        run: node test/restricted-endgame-retrograde.test.js
+      - name: Cross-check independent retrograde implementation
+        run: node test/restricted-endgame-retrograde-independent.test.js
+      - name: Validate production/independent transition primitives
+        run: |
+          node test/restricted-endgame-transition.test.js
+          node test/restricted-endgame-independent-verifier.test.js
+      - name: Cross-check complete tablebase materialization on technical fixture
+        run: node test/restricted-endgame-tablebase.test.js
+      - name: Confirm no scientific domain runner exists yet
+        run: |
+          test ! -e tools/experiments/run-restricted-endgame-stage1-exact.js
+          test ! -e doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json
