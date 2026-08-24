@@ -1,0 +1,79 @@
+name: Restricted endgame Stage 0 closure matrix
+
+on:
+  push:
+    branches:
+      - research/restricted-endgame-winning-regions
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/run-restricted-endgame-stage0-v2-matrix.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-stage0.test.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_TECHNICAL_SPEC_V2.json"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_V2_MATRIX_SELECTION_RULE.json"
+      - ".github/workflows/restricted-endgame-stage0-matrix.yml"
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/run-restricted-endgame-stage0-v2-matrix.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-stage0.test.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_TECHNICAL_SPEC_V2.json"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_0_V2_MATRIX_SELECTION_RULE.json"
+      - ".github/workflows/restricted-endgame-stage0-matrix.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate guard-free Mtaji transition parity
+        run: node test/restricted-endgame-transition.test.js
+      - name: Validate witness and closure mechanics
+        run: node test/restricted-endgame-stage0.test.js
+      - name: Run frozen outcome-blind closure matrix
+        run: |
+          node tools/experiments/run-restricted-endgame-stage0-v2-matrix.js \
+            --output /tmp/rewr-stage0-v2-matrix.json \
+            > /tmp/rewr-stage0-v2-matrix-console.json
+          cat /tmp/rewr-stage0-v2-matrix-console.json
+      - name: Assert matrix scientific outcome firewall
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('/tmp/rewr-stage0-v2-matrix.json', 'utf8'));
+          if (r.technicalOnly !== true
+              || r.scientificOutcomeGenerationAuthorized !== false
+              || r.scientificTablebaseGenerationAuthorized !== false
+              || r.outcomeFieldsEmitted !== false
+              || r.profileCount !== 36) {
+            throw new Error('Stage 0 matrix firewall/coverage violation');
+          }
+          const forbidden = /\b(WIN|LOSS|RECURRENT|DTF|optimalMoveSet|absoluteWinner)\b/;
+          if (forbidden.test(JSON.stringify(r))) {
+            throw new Error('Scientific outcome token leaked into Stage 0 matrix artifact');
+          }
+          if (!r.selectedTechnicalDomainCandidate && r.technicalDecision !== 'TECHNICALLY-INFEASIBLE') {
+            throw new Error('Invalid matrix decision state');
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rewr-stage0-closure-matrix
+          path: /tmp/rewr-stage0-v2-matrix.json
+          if-no-files-found: error
+          retention-days: 14
