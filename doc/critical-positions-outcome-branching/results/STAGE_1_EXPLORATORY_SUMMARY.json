@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "recordType": "compact-repository-synthesis",
+  "studyId": "CPOB-STUDY1",
+  "stageId": "CPOB-S1-EXPLORATORY-2026-08-23-v1",
+  "exploratoryOnly": true,
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "specSha256": "22710c008cbcb6f6030d30f3295e9e3420efeeed75edfbfc3de3e292ff6a16fc",
+  "selectionHash": "702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d",
+  "sourceDiscoveryResultHash": "565b6f1570aa20a8b239d9275109fcb6bad2ec9d6f583c359b205b37ad7f6ce8",
+  "sourceDiscoveryFileSha256": "e1931c0f84b294bf8201e7732756bf156d688e4a38d55587e61b7303848d5024",
+  "selectedRoots": 600,
+  "primaryEstimableRoots": 600,
+  "primaryNonEstimableRoots": 0,
+  "highDivergenceThresholdInclusive": 0.3,
+  "highDivergenceRootCounts": {
+    "namua": {
+      "roots": 300,
+      "highDivergence": 52,
+      "rate": 0.17333333333333334,
+      "derivation": "sum of disjoint single-token legalMoveCount bins 2, 3-4, 5+"
+    },
+    "mtaji": {
+      "roots": 300,
+      "highDivergence": 87,
+      "rate": 0.29,
+      "derivation": "sum of disjoint single-token legalMoveCount bins 2, 3-4, 5+"
+    },
+    "overall": {
+      "roots": 600,
+      "highDivergence": 139,
+      "rate": 0.23166666666666666
+    }
+  },
+  "candidateAuditCount": 1183,
+  "candidateGatePassCounts": {
+    "opportunityUniqueHistoricalTrajectories": 748,
+    "opportunityUniqueRuleStates": 748,
+    "highDivergenceUniqueHistoricalTrajectories": 244,
+    "distinctOpeningPrefixes": 1045,
+    "maximumSingleOpeningPrefixShare": 1105,
+    "generationStrata": 1086,
+    "maximumSingleGenerationStratumShare": 1111,
+    "highDivergenceRate": 52,
+    "medianDRange": 54
+  },
+  "candidatesPassingPromotionGates": 0,
+  "supportEquivalenceRepresentativeCount": 0,
+  "promotedCandidateCount": 0,
+  "zeroPromotedCandidatesAllowed": true,
+  "manualOverridePerformed": false,
+  "stage2": {
+    "seedReservation": {
+      "seedStart": 22700001,
+      "seedEnd": 22706144
+    },
+    "generationAuthorized": false,
+    "generated": false,
+    "seedsConsumed": false,
+    "reasonNotExecuted": "No Stage 1 candidate passed the prospectively frozen promotion gates; therefore no exact Stage 1 candidate mapping exists for a prospective Stage 2 candidate freeze."
+  },
+  "studyClosure": {
+    "status": "CLOSED_AFTER_STAGE_1_NEGATIVE_EXPLORATORY_RESULT",
+    "primaryExploratoryExistenceObservation": "High-divergence roots exist under the frozen P1 continuation policy in the selected Stage 1 population.",
+    "structuralRecurrenceResult": "No candidate in the frozen one-to-two-token pre-root structural grammar passed all promotion gates.",
+    "formalCandidateDecisionLabelsApplicable": false,
+    "noRescue": true
+  }
+}

@@ -1,0 +1,61 @@
+name: Critical positions Stage 1 tooling validation
+
+on:
+  push:
+    branches: [research/critical-positions-outcome-branching]
+    paths:
+      - "tools/experiments/lib/critical-positions-stage1-corpus.js"
+      - "tools/experiments/lib/critical-positions-stage1-discovery.js"
+      - "tools/experiments/run-critical-positions-stage1-exploratory.js"
+      - "tools/experiments/verify-critical-positions-stage1-exploratory.js"
+      - "test/critical-positions-stage1-tooling.test.js"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json"
+      - ".github/workflows/critical-positions-stage1-tooling.yml"
+  pull_request:
+    paths:
+      - "tools/experiments/lib/critical-positions-stage1-corpus.js"
+      - "tools/experiments/lib/critical-positions-stage1-discovery.js"
+      - "tools/experiments/run-critical-positions-stage1-exploratory.js"
+      - "tools/experiments/verify-critical-positions-stage1-exploratory.js"
+      - "test/critical-positions-stage1-tooling.test.js"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json"
+      - ".github/workflows/critical-positions-stage1-tooling.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tooling-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate frozen Stage 1 spec
+        run: node tools/experiments/validate-critical-positions-stage1-spec.js
+      - name: Validate Stage 1 contract
+        run: node test/critical-positions-stage1-contract.test.js
+      - name: Validate production tooling semantics
+        run: node test/critical-positions-stage1-tooling.test.js
+      - name: Run technical-only end-to-end pipeline
+        run: node tools/experiments/run-critical-positions-stage1-exploratory.js --phase technical-pipeline-smoke --output /tmp/cpob-s1-pipeline-smoke.json
+      - name: Independently replay technical pipeline
+        run: node tools/experiments/verify-critical-positions-stage1-exploratory.js --phase technical-pipeline-smoke --input /tmp/cpob-s1-pipeline-smoke.json
+      - name: Validate exact source-bound authorization without generating scientific data
+        run: |
+          node - <<'NODE'
+          const C = require('./tools/experiments/lib/critical-positions-stage1-corpus.js');
+          const loaded = C.loadSpec();
+          const { authorization } = C.loadAuthorization(loaded.specSha256);
+          if (authorization.stage1GenerationAuthorized !== true) process.exit(1);
+          if (authorization.stage2GenerationAuthorized !== false) process.exit(1);
+          if (authorization.scientificInferenceAuthorized !== false) process.exit(1);
+          console.log('Stage 1 authorization matches frozen spec and source hashes; scientific generation not executed in CI');
+          NODE
+      - name: Print exact scientific source hash map
+        run: node -e 'const C=require("./tools/experiments/lib/critical-positions-stage1-corpus.js"); console.log(JSON.stringify(C.sourceFileSha256(),null,2))'

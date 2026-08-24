@@ -326,6 +326,56 @@ C01-C03はfrozen structural/reply failure signature自体は高率に再現し�
 
 ---
 
+### 11. Critical Positions / Outcome Branching — Study 1
+
+**研究題目:** Baoにおける重要局面と勝敗分岐点の同定 — move-sensitive continuation divergence と decision-critical position structure の抽出・検証  
+**状態:** **Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed**  
+**作業branch:** `research/critical-positions-outcome-branching`
+
+このprospective independent studyは、同一root stateの全exact legal moveVariantsを別々にinterveneし、その後を事前固定した`P1_NORMAL_TOP3` continuation policyで進めたときのroot-actor empirical continuation outcome divergenceを測定しました。engine/search value、ranking instability、structural branch divergence、game-theoretic value、human-perceived importanceは別constructとして保持しています。
+
+Stage 1はfresh 3,072 games / seeds `22600001..22603072`で実施しました。independent full corpus replay、outcome-blind root selection、全exact legal move interventionのcontinuation/secondary/structural measurement、independent full continuation remeasurement / secondary / structural recomputationをすべてPASSしました。
+
+```text
+selected roots = 600 = 300 Namua + 300 Mtaji
+measured exact root-move interventions = 2666
+primary-estimable roots = 600 / 600
+high-divergence threshold = D_range >= 0.30
+Namua high-divergence roots = 52 / 300
+Mtaji high-divergence roots = 87 / 300
+overall high-divergence roots = 139 / 600
+```
+
+Frozen deterministic discoveryでは、phase + 1〜2個のpre-root structural tokensから1183 candidate auditsを構成しましたが、preregistered support/diversity/recurrence/median-divergence gatesをすべて通過したcandidateは0でした。
+
+```text
+candidateAuditCount = 1183
+candidatesPassingPromotionGates = 0
+supportEquivalenceRepresentativeCount = 0
+promotedCandidateCount = 0
+manualOverridePerformed = false
+```
+
+`zeroPromotedCandidatesAllowed = true`はprospectively frozenでした。したがってこれは解析失敗ではなく、**高いfixed-policy empirical continuation divergenceを示すfresh rootsは観測されたが、今回凍結した単純なstructural grammarでは再現可能なcandidate classをpromotionできなかった**というnegative exploratory discovery resultです。
+
+Stage 2はexact Stage 1 promoted-candidate mappingを事前freezeしてから開始する設計でした。promoted candidateが0だったためformal targetがなく、Stage 2 generationはauthorize/executeしていません。reserved seeds `22700001..22706144`は未消費です。near-miss promotion、grammar拡張、threshold緩和、manual overrideはno-rescue違反となるため実施していません。
+
+**最初に読む:**
+
+- [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`critical-positions-outcome-branching/STUDY_1_FINAL_REPORT.md`](critical-positions-outcome-branching/STUDY_1_FINAL_REPORT.md) — Study 1科学的最終統合
+- [`critical-positions-outcome-branching/results/STAGE_1_EXPLORATORY_SUMMARY.json`](critical-positions-outcome-branching/results/STAGE_1_EXPLORATORY_SUMMARY.json) — canonical compact exploratory summary
+- [`critical-positions-outcome-branching/REPRODUCIBILITY_INDEX.md`](critical-positions-outcome-branching/REPRODUCIBILITY_INDEX.md) — seed/hash/artifact/tooling索引
+- [`critical-positions-outcome-branching/CURRENT_STATUS.md`](critical-positions-outcome-branching/CURRENT_STATUS.md) — closure状態とfixed boundaries
+- [`critical-positions-outcome-branching/DECISION_REGISTER.md`](critical-positions-outcome-branching/DECISION_REGISTER.md) — frozen decisions / no-rescue / closure decision
+
+**Boundary:** この結果はStage 2 `NOT-CONFIRMED`ではありません。また「Baoに重要局面が存在しない」「game-theoretic turning pointがない」「人間が重要と感じる局面がない」という結論でもありません。今回のfrozen machine policy・population・grammarに限定されたexploratory resultです。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -345,6 +395,8 @@ Tactical Motifs / Tesuji Study 1は完了しました。C01/C02/C04を追加game
 Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`についても、同じStage 2へ追加game、seed extension、identity-overlap replacement、estimability-threshold緩和、mapping refitを加えてformal decisionを救済しません。formal calibration generalizationを再検証する場合は、identity-firewall attritionを事前に織り込んだfresh prospective independent studyとします。
 
 Blunder / Misvaluation Patterns Study 1は0 `CONFIRMED` / 4 `NOT-CONFIRMED`で閉じました。同じStage 2 dataを追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupで救済しません。C01-C03で観測されたstructural/reply failure signatureの再現性は新しい仮説生成には利用できますが、現Studyのformal decisionを変更しません。追試する場合は新しいprospective independent studyとfresh evidenceを使用します。
+
+Critical Positions / Outcome Branching Study 1はStage 1で0 promoted candidatesとなり閉じました。同じStage 1 outcomeを見た後にgrammarを広げる、near-missをpromotionする、support/divergence thresholdを緩和する、Stage 2 targetを手動選択することはfuture workに含めません。より豊富なstructural representationや別candidate grammarを検証する場合は、新しいprospective independent studyとしてfresh design/evidenceを用います。
 
 ---
 

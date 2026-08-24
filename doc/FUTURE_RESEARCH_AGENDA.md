@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.9.1  
+Version: 1.10.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-23
+更新日: 2026-08-24
 
 ## 1. 目的
 
@@ -21,7 +21,9 @@ C03のHuman / Expert Validation Study 1も完了した。machine/instrument側�
 
 Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完了した。Stage 1では2,048 fresh games、1,200 selected roots、5,295 exact legal movesから4 exploratory candidatesをpromotionした。Stage 2ではfresh 4,096 games、3,559 unique historical trajectories、2,678 formal measurementsを用い、independent corpus/measurement verificationとStage 1 identity overlap `0 / 0 / 0`を達成した。4候補すべてestimableだったが、formal resultは**0 `CONFIRMED` / 4 `NOT-CONFIRMED`**である。C01-C03はstructural/reply failure signature自体を高率に再現したが、共通D3-inferior recurrenceがconfirmation floorを満たさず、C04はfailure recurrenceとD3-inferior recurrenceの両方が事前floorを満たさなかった。
 
-完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。
+Critical Positions / Outcome Branching Study 1も完了した。fresh 3,072-game Stage 1 corpusからoutcome-blindに600 roots（Namua/Mtaji 300/300）を選択し、2,666 exact root-move interventionsを測定・独立再測定した。全600 rootsがprimary-estimableで、`D_range >= 0.30`のhigh-divergence rootsは139/600（Namua 52、Mtaji 87）だった。一方、frozen one-to-two-token structural grammarから得た1,183 candidate auditsのうちpromotion gateをすべて通過したcandidateは0で、Stage 2 formal targetは形成されなかった。Stage 2 generationはauthorize/executeせず、reserved seeds `22700001..22706144`は未消費のままStudy 1をnegative exploratory resultとして閉じた。
+
+完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。
 
 ## 2. 既存研究との境界
 
@@ -42,6 +44,7 @@ Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完�
 - Tactical Motif Human / Expert Validation Study 1 — [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
 - Position Evaluation / Win-Rate Calibration Study 1 — [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
 - Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`）
+- Critical Positions / Outcome Branching Study 1 — [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md)（Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -379,29 +382,59 @@ Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数�
 
 ---
 
-### 4.9 重要局面と勝敗分岐点
+### 4.9 重要局面と勝敗分岐点 — Study 1完了
 
-#### 中心課題
+#### 現在の状態
 
-一局の全着手から、勝敗や戦略方針を大きく変えた少数の局面を抽出する。
+**Critical Positions / Outcome Branching Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed。**
 
-#### 判定候補
+- 初見向け概要: [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`critical-positions-outcome-branching/STUDY_1_FINAL_REPORT.md`](critical-positions-outcome-branching/STUDY_1_FINAL_REPORT.md)
+- Compact summary: [`critical-positions-outcome-branching/results/STAGE_1_EXPLORATORY_SUMMARY.json`](critical-positions-outcome-branching/results/STAGE_1_EXPLORATORY_SUMMARY.json)
 
-- fresh continuation outcomeまたはprospectively validな勝率指標の急変
-- 評価値の急変
-- 最善手との差が大きい着手
-- 唯一手が存在した局面
-- 相転移を起こした着手
-- 以後の局面類型を変えた着手
-- 不可逆な構造損失
+Study 1では「評価値の急変」をvalidated win-probability changeとして扱わず、同一root stateの全exact legal movesをinterveneした後のfixed-policy empirical continuation outcome divergenceをprimary constructとした。
 
-Calibration Study 1のisotonic mappingをformal validated勝率変化として使わない。
+Fresh Stage 1:
 
-Blunder / Misvaluation Patterns Study 1のC01-C04はformalに`NOT-CONFIRMED`であり、validated blunder markerや重要局面判定器として使用しない。historical/exploratory contextとして参照する場合も、formal resultを明示する。
+```text
+games = 3072
+selected roots = 600 = 300 Namua + 300 Mtaji
+measured exact root-move interventions = 2666
+primary-estimable roots = 600 / 600
+high-divergence threshold = D_range >= 0.30
+Namua high-divergence roots = 52 / 300
+Mtaji high-divergence roots = 87 / 300
+overall high-divergence roots = 139 / 600
+```
+
+independent full corpus replay、outcome-blind selection、continuation/secondary/structural measurement、independent full remeasurement/recomputationはいずれもPASSした。
+
+Frozen deterministic discovery:
+
+```text
+candidateAuditCount = 1183
+candidatesPassingPromotionGates = 0
+supportEquivalenceRepresentativeCount = 0
+promotedCandidateCount = 0
+manualOverridePerformed = false
+zeroPromotedCandidatesAllowed = true
+```
+
+したがって、**高いfixed-policy empirical continuation divergenceを持つfresh rootsは観測されたが、今回のfrozen one-to-two-token pre-root structural grammarでは、support/diversity/recurrence/median-divergence条件をすべて満たす再現可能なstructural classをpromotionできなかった**、がStudy 1のbounded conclusionである。
+
+これはStage 2 `NOT-CONFIRMED`ではない。また「Baoに重要局面が存在しない」「true/game-theoretic turning pointがない」「human/expertにとって重要な局面がない」という証明でもない。
+
+Stage 2はexact Stage 1 promoted-candidate mappingを事前freezeする設計だったが、promoted candidateが0だったためformal targetが存在しなかった。Stage 2 generationはauthorize/executeせず、reserved seeds `22700001..22706144`は未消費である。
+
+#### 今後の研究候補
+
+今回の結果を救済せず、より豊富なstructural representation、interaction grammar、trajectory/context featureを用いてhigh-divergence rootの再現可能な分類を試みる場合は、新しいprospective independent studyとして実施する。
+
+Calibration Study 1のisotonic mappingをformal validated勝率変化として使わない。Blunder / Misvaluation Patterns Study 1のC01-C04もvalidated critical-position markerとして使用しない。
 
 #### 期待成果
 
-勝着、敗着、疑問手、分岐点を中心とする自動棋譜解説、一局から少数問を生成する復習機能。
+将来の独立研究では、勝着、敗着、疑問手、分岐点を中心とする自動棋譜解説、一局から少数問を生成する復習機能へ接続可能な、より再現性の高いcritical-position representationを目指す。
 
 ---
 
@@ -487,14 +520,16 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 
 1. **[完了] 形勢判断と勝率校正 — Study 1 (`INCONCLUSIVE`)**
 2. **[完了] 悪手・誤評価パターン — Study 1（0 `CONFIRMED` / 4 `NOT-CONFIRMED`）**
-3. **[未開始候補] 重要局面と勝敗分岐点**
+3. **[完了] 重要局面と勝敗分岐点 — Study 1（139/600 high-divergence roots / promoted candidates 0 / Stage 2 not executed）**
 4. **[未開始候補] 人間とAIの判断差**
 
 Position Evaluation / Win-Rate Calibration Study 1によって、engine evaluationとempirical continuation outcomeを分離して扱うtechnical measurement foundationは得られたが、formal held-out validationはestimability failureで未解決である。
 
 Blunder / Misvaluation Patterns Study 1によって、exact search-based decision lossとstructural/response failureを用いたmachine-only discovery→fresh formal confirmation pipelineは実装・検証された。ただし4候補はいずれもfull confirmationを通過しなかった。C01-C03のstructural failure recurrenceは将来の新規仮説を動機づけうるが、現Studyのpositive resultへ昇格させない。
 
-したがって、第2段階で次に着手する場合の未開始候補は「重要局面と勝敗分岐点」または「人間とAIの判断差」である。研究順序は各studyのmeasurement dependencyと実行可能性を新規prospective design時に再評価する。
+Critical Positions / Outcome Branching Study 1によって、全exact legal root movesへのinterventionとfixed-policy continuation outcomeを用いるmachine-only criticality measurement pipelineはfull independent verificationまで実装・検証された。high-divergence roots自体は139/600観測されたが、frozen structural grammarからformal Stage 2 candidateへpromotionできるclassは0だった。これは新しいrepresentation研究を動機づけうるが、同Study内でのgrammar/threshold rescueは行わない。
+
+したがって、第2段階で未開始の主要候補は「人間とAIの判断差」である。Critical Positionsのrepresentationを深める場合も、Study 1を再開するのではなくfresh prospective independent studyとして設計する。
 
 Human misconceptionを主張する段階では、新しいhuman evidenceを必要とする。
 
@@ -512,6 +547,8 @@ Human misconceptionを主張する段階では、新しいhuman evidenceを必�
 ### 6.1 Bao局面分類学
 
 相転移、局面類型、棋風、複雑度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1、Position Complexity / Difficulty Study 1は完了した。Position Complexity Study 1のformal `INCONCLUSIVE`を再検証する場合は、同一formal corpusの再解析ではなく、数値手法を事前固定したfresh prospective replicationとする。Human difficultyはmachine complexity layerとは別に独立検証する。
+
+Critical Positions / Outcome Branching Study 1ではfixed-policy high-divergence rootsを抽出するmeasurement基盤は成立したが、単純なstructural grammarによる再現可能class promotionは0だった。重要局面分類学を発展させる場合は、より豊富なrepresentationを新規prospective studyで検証する。
 
 ### 6.2 Bao手筋・悪手・錯覚体系
 
@@ -552,6 +589,8 @@ Tactical Motifs / Tesuji Study 1のC01/C02/C04を既存Stage 2 dataの再解析�
 Position Evaluation / Win-Rate Calibration Study 1を再検証する場合、既存Stage 2 corpusへ追加game、seed extension、identity-overlap replacement、readiness gate緩和、mapping refitを加えない。formal calibration generalizationはfresh prospective replicationとする。Study 1 isotonic mappingをformal validated probabilityとしてdownstream primary endpointに使用しない。
 
 Blunder / Misvaluation Patterns Study 1はStage 2まで完了しているため、同Studyの「次stage」として再開しない。C01-C04を再検証する場合も、既存Stage 2への追加game、seed extension、threshold/floor緩和、candidate edit、alternate primary depth/evaluator、favorable subgroupでformal decisionを変更しない。新しい問い、endpoint、population、seed、source identity、decision ruleをoutcome生成前に固定した**新規prospective independent study**としてのみ扱う。C01-C03のstructural failure recurrenceを新研究のhypothesis-generation inputに使うことはできるが、現Studyのconfirmation evidenceにはならない。
+
+Critical Positions / Outcome Branching Study 1はStage 1 negative exploratory resultとして閉じているため、同Studyの「Stage 2 target」を後から作らない。既存Stage 1 dataを見た後のcandidate grammar broadening/narrowing、near-miss promotion、support/divergence threshold relaxation、manual target selection、Stage 2 seed consumptionは行わない。より豊かなrepresentationを検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
 
 Human evidenceなしではhuman error mechanismをformalに主張しない。
 
