@@ -24,13 +24,15 @@ Stage 1 prospective design = FROZEN / VALIDATED
 Stage 1 pre-generation firewall = COMPLETE / PASS
 Stage 1 source-bound generation authorization = ISSUED
 Stage 1 scientific source generation = COMPLETE / 3072 of 3072
-Stage 1 scientific source seeds consumed = 22600001..22603072 / COMPLETE
+Stage 1 source seeds = 22600001..22603072 / CONSUMED
 Stage 1 independent full corpus replay verification = COMPLETE / PASS
 Stage 1 outcome-blind root selection = COMPLETE / READINESS PASS
 Stage 1 selected roots = 600 = 300 Namua + 300 Mtaji
 Stage 1 continuation / secondary / structural measurement = COMPLETE / READINESS PASS
-Stage 1 independent full continuation remeasurement = PENDING / NEXT
-Stage 1 deterministic exploratory discovery = BLOCKED pending measurement verification PASS
+Stage 1 independent full continuation remeasurement = COMPLETE / PASS
+Stage 1 independent secondary recomputation = COMPLETE / PASS
+Stage 1 independent structural recomputation = COMPLETE / PASS
+Stage 1 deterministic exploratory discovery = UNBLOCKED / NEXT
 Stage 2 scientific generation = NOT AUTHORIZED / NOT STARTED
 ```
 
@@ -41,6 +43,8 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 stage2GenerationAuthorized = false
 ```
+
+No validated win-probability, game-theoretic criticality, human/expert criticality, confirmatory inference, or rescue/relabeling claim is authorized from Stage 1.
 
 ## Frozen Stage 1 identity
 
@@ -53,7 +57,7 @@ source seeds = 22600001..22603072
 selectionHash = 702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d
 ```
 
-## Source corpus and verification
+## Source corpus and corpus verification
 
 Generated source corpus:
 
@@ -93,7 +97,7 @@ collapse duplicate historicalTrajectoryHash groups
 -> apply frozen phase quotas: 300 Namua + 300 Mtaji
 ```
 
-Observed audit:
+Observed selection audit:
 
 ```text
 unavailableAssignedPhase = 87
@@ -110,7 +114,7 @@ maximum single generation-stratum share = 0.18833333333333332
 selection readiness = PASS
 ```
 
-Generation-stratum counts among selected roots:
+Selected generation-stratum counts:
 
 ```text
 B-D1 = 95
@@ -161,9 +165,9 @@ highDivergence = D_range >= 0.30
 
 Secondary measurements are exact D2/D3 root tables under the frozen bao/phase2/Q1 semantics plus immediate structural transitions and exhaustive one-ply opponent reply envelopes. D3 is not ground truth.
 
-## Stage 1 measurement readiness result
+## Stage 1 measurement readiness
 
-The local compact `measurement-audit.json` reports:
+Local measurement audit:
 
 ```text
 selectedRoots = 600
@@ -172,35 +176,64 @@ primaryEstimableRoots = 600
 primaryNonEstimableRoots = 0
 primaryEstimableNamuaRoots = 300
 primaryEstimableMtajiRoots = 300
+finiteD2D3CandidateTables = PASS
 replacementPerformed = false
 replicateExtensionPerformed = false
 continuationPolicySubstitutionPerformed = false
-```
-
-All frozen measurement-readiness gates passed:
-
-```text
-measuredExactRootMoveInterventions = PASS
-primaryEstimableRoots = PASS
-primaryEstimableNamuaRoots = PASS
-primaryEstimableMtajiRoots = PASS
-finiteD2D3CandidateTables = PASS
 overall = PASS
 ```
-
-Important boundary:
-
-```text
-independentContinuationRemeasurementPending = true
-```
-
-The measurement outputs now contain exploratory continuation outcomes, but deterministic discovery remains blocked until the independent verifier fully reproduces the selected-root set, all continuation measurements, D2/D3 tables, and structural branches.
 
 Measurement checkpoint:
 
 ```text
 doc/critical-positions-outcome-branching/checkpoints/2026-08-24-stage1-measurement-readiness-pass-remeasurement-pending.md
 checkpoint commit = 9a8cfd23b4af430c1858a80ffa5e5d00e5dbc725
+```
+
+## Independent full measurement verification
+
+The mandatory independent verifier reproduced the selected-root identity and the complete frozen measurement stack:
+
+```text
+passed = true
+rootsReselectedIndependently = 600
+fullContinuationRemeasurement = true
+fullSecondaryRecomputation = true
+fullStructuralRecomputation = true
+measuredExactRootMoveInterventions = 2666
+primaryEstimableRoots = 600
+primaryNonEstimableRoots = 0
+primaryEstimableNamuaRoots = 300
+primaryEstimableMtajiRoots = 300
+finiteD2D3CandidateTables = PASS
+```
+
+Therefore the Stage 1 measurement-verification firewall is closed with PASS and deterministic exploratory discovery is unblocked.
+
+Verification checkpoint:
+
+```text
+doc/critical-positions-outcome-branching/checkpoints/2026-08-24-stage1-independent-measurement-verification-pass.md
+checkpoint commit = 2831f4bdb5473a3f32eaa6602b7a0ba175c061d9
+```
+
+## Frozen deterministic discovery
+
+The next permitted scientific operation is exactly:
+
+```bash
+node tools/experiments/run-critical-positions-stage1-exploratory.js --phase discover
+```
+
+Discovery applies only the already frozen structural candidate grammar, bins, support thresholds, opening/stratum diversity gates, support-equivalence handling, deterministic ranking and candidate caps.
+
+Important boundary:
+
+```text
+Stage 1 discovery is exploratory only.
+Zero promoted candidates is a valid result.
+Stage 1 cannot confirm its own candidates.
+No manual promotion or candidate redefinition is permitted.
 ```
 
 ## No-rescue boundary
@@ -216,11 +249,10 @@ continuation policy substitution
 continuation cap change
 D_range threshold retuning
 primary evaluator/depth substitution
+candidate matcher broadening/narrowing
 favorable subgroup rescue
 manual candidate override
 ```
-
-Stage 1 cannot confirm itself. Stage 2 cannot reuse Stage 1 support as confirmation evidence.
 
 ## Immutable inherited formal states
 
@@ -266,29 +298,11 @@ Continuation RNG seeds are deterministic derivatives of stage salt + root identi
 
 ## Current next gate
 
-Run the mandatory independent full continuation remeasurement/recomputation:
+Run frozen deterministic exploratory discovery only after pulling the documentation checkpoint:
 
 ```bash
-node tools/experiments/verify-critical-positions-stage1-exploratory.js \
-  --phase measurement \
-  --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
+git pull --ff-only
+node tools/experiments/run-critical-positions-stage1-exploratory.js --phase discover
 ```
 
-Expected compact output:
-
-```text
-measurement-verification.json
-```
-
-Required before discovery:
-
-```text
-fullContinuationRemeasurement = true
-fullSecondaryRecomputation = true
-fullStructuralRecomputation = true
-passed = true
-```
-
-If independent measurement verification fails, stop. Do not repair by replacement, seed extension, replicate extension, policy substitution, threshold retuning, or subgroup rescue.
-
-Only after measurement verification PASS may the frozen deterministic exploratory `discover` phase run. Stage 2 remains locked and unconsumed.
+Review the resulting compact discovery artifacts without changing grammar, thresholds, ranking, or caps. Stage 2 remains locked and unconsumed until Stage 1 exploratory closure and a separate prospective Stage 2 preregistration/authorization.
