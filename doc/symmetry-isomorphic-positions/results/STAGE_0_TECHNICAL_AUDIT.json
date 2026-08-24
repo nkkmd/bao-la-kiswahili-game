@@ -163,8 +163,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 6,
-      "elapsedMs": 2.560766,
-      "rssBytes": 66359296
+      "elapsedMs": 2.699675,
+      "rssBytes": 68255744
     },
     {
       "domainId": "namua",
@@ -176,8 +176,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 6,
-      "elapsedMs": 11.944765,
-      "rssBytes": 66498560
+      "elapsedMs": 13.732505,
+      "rssBytes": 68386816
     },
     {
       "domainId": "namua",
@@ -189,8 +189,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 8,
-      "elapsedMs": 49.410666,
-      "rssBytes": 71303168
+      "elapsedMs": 52.844669,
+      "rssBytes": 72486912
     },
     {
       "domainId": "mtaji",
@@ -202,8 +202,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 5,
-      "elapsedMs": 1.813275,
-      "rssBytes": 71303168
+      "elapsedMs": 2.753547,
+      "rssBytes": 73535488
     },
     {
       "domainId": "mtaji",
@@ -215,8 +215,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 12,
-      "elapsedMs": 14.841732,
-      "rssBytes": 75628544
+      "elapsedMs": 15.691379,
+      "rssBytes": 77860864
     },
     {
       "domainId": "mtaji",
@@ -228,8 +228,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 12,
-      "elapsedMs": 38.530954,
-      "rssBytes": 76283904
+      "elapsedMs": 41.070539,
+      "rssBytes": 78385152
     },
     {
       "domainId": "mtaji-houseless",
@@ -241,8 +241,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 5,
-      "elapsedMs": 2.138338,
-      "rssBytes": 76283904
+      "elapsedMs": 2.275504,
+      "rssBytes": 78385152
     },
     {
       "domainId": "mtaji-houseless",
@@ -254,8 +254,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 12,
-      "elapsedMs": 13.307791,
-      "rssBytes": 76414976
+      "elapsedMs": 13.680618,
+      "rssBytes": 78516224
     },
     {
       "domainId": "mtaji-houseless",
@@ -267,8 +267,8 @@
       "guardHits": 0,
       "completeUnderRuntimeEngine": true,
       "maxBranching": 12,
-      "elapsedMs": 39.795253,
-      "rssBytes": 76615680
+      "elapsedMs": 40.394288,
+      "rssBytes": 79302656
     }
   ],
   "formalSelectionAuthorized": false,
