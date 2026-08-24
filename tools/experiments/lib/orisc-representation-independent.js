@@ -108,7 +108,7 @@ function moveIdentity(move) {
     move.houseChoice,
     move.houseTwo === true,
   ];
-  return parts.map((part) => String(part)).join(":");
+  return parts.map((part) => (part === undefined || part === null ? "" : String(part))).join(":");
 }
 
 module.exports = {
