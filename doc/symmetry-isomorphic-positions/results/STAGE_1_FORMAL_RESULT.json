@@ -1,73 +1,100 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "studyId": "SIP-STUDY1",
-  "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "closureDecisionId": "SIP-STUDY1-CLOSURE-2026-08-24-v1",
   "studyStatus": "COMPLETED",
+  "closed": true,
   "formalDecision": "NON-ESTIMABLE",
-  "formalDecisionReason": "All five preregistered scientific outcomes have exact fresh-domain zero-mismatch evidence, but the mandatory immutable 8-state exact-oracle anchor is internally inconsistent at three terminal stateRows and production/independent oracle mismatch accounting does not agree; therefore G12 fails and no candidate receives formal validation.",
+  "decisionLevel": "STUDY-CLOSURE",
+  "formalDecisionReason": "The only executed Stage 1 candidate-decision run (v1) was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. A corrected v2 path was drafted but never completed, frozen, authorized, or executed. Therefore no valid formal candidate-decision run exists from which to validate or reject the five preregistered outcomes. The Study closes with all five outcomes NON-ESTIMABLE. Fresh bounded-local zero-mismatch observations are retained only as reproducible diagnostic evidence from the invalidated v1 execution.",
   "summary": {
     "validated": 0,
     "notValidated": 0,
     "nonEstimable": 5
   },
+  "outcomeSummary": {
+    "validated": 0,
+    "notValidated": 0,
+    "nonEstimable": 5
+  },
+  "executedStageV1": {
+    "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+    "status": "TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION",
+    "invalidationArtifact": "results/STAGE_1_V1_INVALIDATION.json",
+    "candidateDecisionAuthorizedFromThisRun": false,
+    "reason": "IDENTITY failed only in the exact-oracle reconstruction path. Three terminal ruleState snapshots reconstructed from the immutable result artifact do not bind to their stored raw stateKey and represent 63 rather than 64 seeds, so v1 oracle reconstruction cannot support candidate pass/fail interpretation.",
+    "archivedProductionResultSha256": "fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a",
+    "archivedIndependentVerificationSha256": "8e7327b4192e2616716d34deae86b15a51f269201f591a843310d414541596f0",
+    "archiveWorkflowRunId": 32728925376,
+    "diagnosticWorkflowRunId": 32728619101
+  },
+  "correctedStageV2": {
+    "plannedStageId": "SIP-S1-FORMAL-2026-08-24-v2",
+    "status": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "formalSpecCreated": false,
+    "authorizationCreated": false,
+    "independentVerifierCreated": false,
+    "formalOutcomeGenerated": false,
+    "candidateDecisionGenerated": false,
+    "closureRule": "Do not continue the correction path within SIP-STUDY1 after the decision to close the Study as non-estimable. Any future oracle-representation audit or symmetry confirmation must be a new prospective independent Study."
+  },
   "outcomes": [
     {
       "outcomeId": "SIP-O01-T01-NAMUA",
       "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
-      "scope": "fresh Namua roots, depth 3 + immutable exact-oracle anchor",
-      "fresh": {"roots": 8, "states": 697, "edges": 707, "testedStates": 167, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
-      "G12": "FAIL",
-      "finalDecision": "NON-ESTIMABLE"
+      "finalDecision": "NON-ESTIMABLE",
+      "validated": false,
+      "rejected": false,
+      "invalidatedV1FreshDiagnostic": {"roots": 8, "states": 697, "edges": 707, "testedStates": 167, "mismatches": 0}
     },
     {
       "outcomeId": "SIP-O02-T01-MTAJI",
       "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
-      "scope": "fresh Mtaji roots, depth 3 + immutable exact-oracle anchor",
-      "fresh": {"roots": 8, "states": 530, "edges": 527, "testedStates": 162, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
-      "G12": "FAIL",
-      "finalDecision": "NON-ESTIMABLE"
+      "finalDecision": "NON-ESTIMABLE",
+      "validated": false,
+      "rejected": false,
+      "invalidatedV1FreshDiagnostic": {"roots": 8, "states": 530, "edges": 527, "testedStates": 162, "mismatches": 0}
     },
     {
       "outcomeId": "SIP-O03-T01-BOTH",
       "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
-      "scope": "fresh Namua+Mtaji roots, depth 3 + immutable exact-oracle anchor",
-      "fresh": {"roots": 16, "states": 1227, "edges": 1234, "testedStates": 329, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
-      "G12": "FAIL",
-      "finalDecision": "NON-ESTIMABLE"
+      "finalDecision": "NON-ESTIMABLE",
+      "validated": false,
+      "rejected": false,
+      "invalidatedV1FreshDiagnostic": {"roots": 16, "states": 1227, "edges": 1234, "testedStates": 329, "mismatches": 0}
     },
     {
       "outcomeId": "SIP-O04-T02-MTAJI-HOUSELESS",
       "candidateId": "SIP-T02-LR-MTAJI-HOUSELESS",
-      "scope": "fresh Mtaji-houseless roots, depth 3 + immutable exact-oracle anchor",
-      "fresh": {"roots": 8, "states": 532, "edges": 529, "testedStates": 160, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
-      "G12": "FAIL",
-      "finalDecision": "NON-ESTIMABLE"
+      "finalDecision": "NON-ESTIMABLE",
+      "validated": false,
+      "rejected": false,
+      "invalidatedV1FreshDiagnostic": {"roots": 8, "states": 532, "edges": 529, "testedStates": 160, "mismatches": 0}
     },
     {
       "outcomeId": "SIP-O05-T03-MTAJI-HOUSELESS",
       "candidateId": "SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS",
-      "scope": "fresh Mtaji-houseless roots, depth 3 + immutable exact-oracle anchor",
-      "fresh": {"roots": 8, "states": 532, "edges": 529, "testedStates": 160, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
-      "G12": "FAIL",
-      "finalDecision": "NON-ESTIMABLE"
+      "finalDecision": "NON-ESTIMABLE",
+      "validated": false,
+      "rejected": false,
+      "invalidatedV1FreshDiagnostic": {"roots": 8, "states": 532, "edges": 529, "testedStates": 160, "mismatches": 0}
     }
   ],
-  "controls": {
+  "controlsFromInvalidatedV1": {
     "identity": {
-      "freshMismatches": 0,
-      "freshDecision": "VALIDATED-BOUNDED-ISOMORPHISM",
+      "freshMismatchCount": 0,
       "oracleProductionMismatchCount": 19,
       "oracleIndependentMismatchCount": 10,
-      "interpretation": "Positive-control oracle failure demonstrates an anchor/integration defect rather than evidence against a nontrivial candidate."
+      "interpretation": "The positive-control failure localizes the problem to the v1 oracle reconstruction/integration path and invalidates candidate-decision use of that run."
     },
     "negativeControl": {
       "candidateId": "SIP-C01-LR-NO-DIRECTION-FLIP",
       "freshIndependentMismatchCount": 638,
-      "freshDecision": "NOT-VALIDATED"
+      "interpretation": "Retained as diagnostic evidence that the fresh transformation checker distinguished the intentionally defective mapping; it is not a substitute for a valid formal candidate run."
     }
   },
   "oracleAnchorDiagnostic": {
-    "classification": "POST-OUTCOME-READ-ONLY",
+    "classification": "POST-V1-READ-ONLY-DIAGNOSTIC",
     "rows": 8,
     "storedKeyMismatchRows": 3,
     "productionIndependentRecomputedKeyDisagreements": 0,
@@ -79,17 +106,19 @@
       "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed",
       "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
     ],
+    "diagnosticRootCause": "ORACLE-REPRESENTATION-RECONSTRUCTION-DEFECT",
     "upstreamStudyModified": false,
-    "upstreamFormalDecisionModified": false
+    "upstreamFormalDecisionModified": false,
+    "upstreamOracleRewritten": false
   },
-  "identities": {
+  "v1FrozenIdentities": {
     "specSha256": "ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a",
     "authorizationSha256": "a539de44b26e513ab461a559e97ee4e7914900178a469389a5c996def3d7f5a4",
-    "domainSha256": "fa40e1b7d2fc5e34291ec9537e8a5f19b280be8203d62ca8687090dc96ff9e22",
+    "domainSha256": "fa40e1b7d2fc5e34291ec9537e8a5f19b280be8203d62ca8687090dc96ff9e22"
+  },
+  "formalRun": {
     "productionResultSha256": "fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a",
-    "independentVerificationSha256": "8e7327b4192e2616716d34deae86b15a51f269201f591a843310d414541596f0",
-    "archiveWorkflowRunId": 32728925376,
-    "diagnosticWorkflowRunId": 32728619101
+    "independentVerificationSha256": "8e7327b4192e2616716d34deae86b15a51f269201f591a843310d414541596f0"
   },
   "downstreamAuthorization": {
     "validatedTransformationSet": [],
@@ -99,5 +128,5 @@
     "stateSpaceStudyMayUseRawStateIdentity": true,
     "stateSpaceStudyMayUseTheseCandidatesForReduction": false
   },
-  "interpretationBoundary": "The fresh bounded-local zero-mismatch results are reproducible positive evidence within those tested graphs, but they are not promoted to the Study's formal VALIDATED label because the preregistered exact-oracle anchor and G12 independent-equality gates are not estimable. This does not invalidate or revise Restricted Endgame Study 1; its artifacts and decision remain immutable."
+  "interpretationBoundary": "SIP-STUDY1 establishes no validated or rejected nontrivial symmetry transform. The invalidated v1 fresh bounded-local zero-mismatch observations are reproducible diagnostics only. Restricted Endgame Study 1 remains unchanged. Future resolution of oracle representation integrity or symmetry must occur in a new prospective independent Study and must not revise this closure decision."
 }
