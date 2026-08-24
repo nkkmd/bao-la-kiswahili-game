@@ -1,120 +1,142 @@
 # CURRENT_STATUS — Restricted Endgame / Winning Regions Study 1
 
-Updated: 2026-08-24
+Updated: 2026-08-24  
+Status: **STUDY 1 COMPLETE / EXACT-SOLVED-WITHIN-FROZEN-DOMAIN / REPOSITORY CLOSURE IN PROGRESS**
 
 ## Repository identity
 
 ```text
 studyId = REWR-STUDY1
 baseline main HEAD = 626480507710e0095ef8aec6a53c3e4e0318fa4f
-baseline engine.js blob = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
-baseline RULES_BASELINE.md blob = 9a07ce6c2895cd4b4048af71a41fc5de02f87129
 branch = research/restricted-endgame-winning-regions
+Draft PR = #38
 directory = doc/restricted-endgame-winning-regions/
 ```
 
 ## Scientific state
 
 ```text
-Prior-study audit = COMPLETE ENOUGH TO OPEN STAGE 0
-Rule/engine semantic audit = INITIAL PASS
-Stage 0 construct design = OPEN / PROSPECTIVE
-Stage 0 technical fixture solver = AUTHORIZED
-Stage 0 Bao-domain benchmark = NOT YET EXECUTED
-Stage 1 exact-domain spec = NOT FROZEN
-Stage 1 scientific tablebase generation = BLOCKED
-Study 1 scientific result = NONE YET
+Rule/engine semantic audit = COMPLETE
+Stage 0 technical feasibility = COMPLETE
+Stage 0 outcome firewall = PASSED
+Stage 0 selected domain = 8 states / 7 edges
+Stage 0 independent graph reconstruction = PASS
+Stage 0 one-shot v3 expansion = INFEASIBLE / V2 FALLBACK
+Stage 1 domain/spec freeze = COMPLETE
+Stage 1 pre-generation correction = COMPLETE BEFORE OUTCOME
+Stage 1 authorization v2 = VALID
+Stage 1 production exact solution = COMPLETE
+Stage 1 independent full verification = PASS
+Formal decision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
 ```
 
-## Recovered engine semantics
-
-Authoritative runtime state includes `pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `reason`, `turn`, `pending`.
-
-For rule-state identity, existing direct `ruleStateKey` infrastructure serializes:
+## Frozen exact domain
 
 ```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
+domainId = REWR-S1-DOMAIN-2026-08-24-v1
+root count = 1
+root state key = fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33
+root witness seed = 22800188
+root witness ply = 48
+states = 8
+edges = 7
+symmetry reduction = none
+stateSetSha256 = 95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307
+transitionSetSha256 = 33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11
 ```
 
-It excludes history-only/administrative `turn` and textual `reason`. This Study will use a direct, non-symmetry rule-state serialization derived from those rule-relevant fields and will not use `seatCanonicalKey`.
-
-Exact move identity must distinguish `houseChoice`; existing `AI.moveKey` includes:
+## Formal exact result
 
 ```text
-type, phase, row, index, direction, side, houseChoice, houseTwo
+TERMINAL = 4
+WIN = 3
+LOSS = 1
+RECURRENT = 0
+solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15
 ```
 
-For Mtaji-only primary candidates, `houseChoice` is not expected to occur, but identity remains explicit.
-
-## Terminal semantics audit
-
-Observed engine terminal reasons:
+Frozen root:
 
 ```text
-front-empty
-no-move
-relay-limit
+player to move = Player 0
+value = WIN
+absolute forced winner = Player 0
+DTF = 3
+optimal move set = { capture:mtaji:1:4:left:::false }
 ```
 
-`front-empty` and `no-move` are implemented as gameplay termination semantics. `relay-limit` is not accepted as a normative terminal: `RULES_BASELINE.md` explicitly describes the relay cap as a browser safety constraint, not a Bao rule.
-
-The engine has no intrinsic formal draw/repetition state. Research-driver max-ply draws from prior studies are administrative truncations only.
-
-## Stage 0 preliminary decisions A–H
-
-### A. Is bounded exact retrograde possible in principle?
-
-**YES, conditionally.** It is possible if the frozen domain is finite and legal-transition closed, all state/move identities are deterministic, normative terminal cases are separated from implementation guards, and every legal move in-domain has exact terminating semantics. Current `applyMove` cannot by itself certify the last condition because of `MAX_RELAY`.
-
-### B. Should Study 1 start Mtaji-only?
-
-**YES.** Mtaji-only removes reserve placement and Namua nyumba choice complexity. `phase=mtaji` with `reserve=[0,0]` is invariant under successors. A primary candidate should additionally prefer `houseOwned=[false,false]`, which is also forward-invariant in Mtaji.
-
-### C. How to construct a nontrivial transition-closed domain?
-
-Use a frozen set of historically reachable Mtaji witness roots `R`, then define:
+Canonical state-level result:
 
 ```text
-D(R) = every raw rule state reachable from R by zero or more legal moves,
-       including normative terminal successors.
+results/STAGE_1_EXACT_RESULT.json
 ```
 
-This is transition closed by construction if every legal move is expanded exactly. Root filters may use technical structural quantities, but those filters do not truncate the closure.
+## Independent verification
 
-### D. Reachable-only or rule-valid closed primary population?
+Scientific workflow:
 
-**Primary = witness-reachable closure.** Every root must have a legal path from the standard initial state; every successor then inherits reachability. Rule-valid-but-unproven states may be audited separately but will not be the primary exact population in Study 1.
+```text
+runId = 32702596730
+artifactId = 9511074442
+artifact ZIP SHA-256 = 7da2a3f46745c18f4aa8896bc6a576b5d56b490b1461a4def3364183b047c023
+```
 
-### E. Draw / cycle / nontermination semantics
+Identities:
 
-No formal repetition/draw rule is currently implemented. Fixed-point leftovers must therefore be reported as `RECURRENT` / `CYCLE-REGION`, not automatically `DRAW`. Intra-move nontermination is a separate semantic failure (`MOVE-NONTERMINATION`) and makes a candidate domain ineligible for exact Study 1 unless a normative rule is established prospectively.
+```text
+domainSha256 = acfc25413f9c237569884f166ed971ad9ee9395665ce96ec6d094d8ed4a6c56a
+specSha256 = ec20df4621b7d8e50fd979bee4681c7eadb5bf2138c14911cb6ab97acd0738cc
+authorizationSha256 = d3fe788e95606c6641ad4c33a396a2c02b21138b9b80bef2522f85cd124f282c
+productionResultSha256 = e581236b94ca74f6e681a363c15e0c6f8ef6851dcadf4856b0637e277d8fd603
+verificationResultSha256 = 87ab7d7fa44820d1c6b524481da1f1faa377c38a1d2509d172044d35028dad52
+```
 
-### F. Distance metric
+Full verification checks all passed:
 
-Provisional metric name: `DTF` = distance-to-forced-terminal, measured in legal moves. Terminal distance = 0. For resolved WIN states, the winner minimizes distance; for resolved LOSS states, the player-to-move maximizes resistance. Recurrent states have no finite DTF. The exact recurrence must be frozen in Stage 1 spec.
+```text
+root keys
+state count
+edge count
+state-set hash
+transition-set hash
+value counts
+full state-level rows
+RECURRENT SCCs
+solution hash
+```
 
-### G. Feasibility benchmark strategy
+## Pre-generation correction record
 
-Benchmark only technical quantities before domain freeze: root count, closure state count, edge count, branching, maximum move-internal relay work, closure completeness, memory and runtime. Do not inspect WIN/LOSS proportions, winning-region size, optimal-move frequencies or DTF distribution when selecting the Study 1 domain.
+Authorization v1 was revoked before any scientific outcome was generated because a runner/verifier resource-limit field name did not match the frozen spec. Only the field reference was corrected; domain, classification, DTF, selection rule and scientific endpoint were unchanged. Source hashes were re-frozen and authorization v2 was issued before the first scientific run.
 
-### H. Smallest meaningful exact domain without symmetry
+This is a pre-generation technical correction, not post-outcome rescue.
 
-A single historically reachable Mtaji witness root plus its complete forward closure is the minimum scientifically meaningful unit, provided it is nonterminal, has more than one reachable state, passes guard-free move semantics, and is fully independently reconstructable. Stage 0 may prospectively select multiple roots if the complete closure remains feasible.
+## Permanent semantic boundaries
 
-## Immediate next gate
+```text
+relay-limit != normative Bao terminal
+administrative cutoff != game-theoretic draw/loss
+RECURRENT != formal DRAW
+engine evaluation != exact game-theoretic value
+empirical continuation outcome != exact game-theoretic value
+bounded exact solution != full-Bao solution
+```
 
-Stage 0 must implement and test:
+The observed `RECURRENT = 0` applies only to the frozen 8-state domain.
 
-1. generic retrograde semantics on synthetic graphs;
-2. guard-free Bao move executor/auditor or equivalent exact relay-termination proof mechanism;
-3. witness-root generation and replay verification;
-4. complete forward-closure enumeration;
-5. independent closure/state/edge hashing.
+## Final claim boundary
 
-No scientific outcome tablebase may be generated before these gates and a frozen Stage 1 spec.
+Allowed:
+
+> Frozen `REWR-S1-DOMAIN-2026-08-24-v1` is exactly solved and independently verified. The frozen root is a Player-0 forced WIN with DTF=3 and unique optimal move `capture:mtaji:1:4:left:::false`.
+
+Not allowed:
+
+- full Bao solved;
+- all Mtaji solved;
+- all Bao endgames solved;
+- Bao has no cycles or draws;
+- engine evaluation is validated;
+- symmetry transformations preserve value.
+
+No further domain retuning, Stage 0 cap expansion or outcome-dependent root replacement is authorized within Study 1.
