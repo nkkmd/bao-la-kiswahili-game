@@ -1,0 +1,30 @@
+name: Symmetry Isomorphism Stage 0
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Engine regression
+        run: node test/engine.test.js
+      - name: Synthetic transform and control validation
+        run: node test/symmetry-isomorphism-stage0.test.js
+      - name: Outcome-blind technical graph benchmark
+        run: |
+          node tools/experiments/audit-symmetry-isomorphism-stage0.js \
+            --output doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: symmetry-isomorphism-stage0
+          path: doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
+          if-no-files-found: error

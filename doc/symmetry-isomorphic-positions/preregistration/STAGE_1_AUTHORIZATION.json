@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "authorized": true,
+  "authorizationVersion": 1,
+  "authorizedDate": "2026-08-24",
+  "specSha256": "ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a",
+  "prefreezeWorkflowRunId": 32727065041,
+  "prefreezeWorkflowArtifactId": 9519914807,
+  "scientificOutcomeGeneratedBeforeAuthorization": false,
+  "candidateOutcomeInspectedBeforeAuthorization": false,
+  "domainSelectionChangedAfterPrefreeze": false,
+  "candidateSemanticsChangedAfterFreeze": false,
+  "noRescueFirewallAcknowledged": true,
+  "authorizationScope": [
+    "production formal candidate validation over the frozen domain",
+    "immutable 8-state exact-oracle transformed-graph validation",
+    "independent full verification"
+  ],
+  "notAuthorized": [
+    "post-outcome candidate repair",
+    "post-outcome phase/state exclusion",
+    "post-outcome root/depth change",
+    "global Bao symmetry theorem",
+    "state-space count estimation",
+    "canonicalization before validated-transform decisions"
+  ]
+}

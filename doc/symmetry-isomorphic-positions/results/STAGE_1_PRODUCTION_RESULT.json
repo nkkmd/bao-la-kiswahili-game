@@ -1,0 +1,3442 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "formalOutcomeGenerated": true,
+  "productionImplementation": true,
+  "independentVerificationComplete": false,
+  "identities": {
+    "specSha256": "ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a",
+    "authorizationSha256": "a539de44b26e513ab461a559e97ee4e7914900178a469389a5c996def3d7f5a4",
+    "domainSha256": "fa40e1b7d2fc5e34291ec9537e8a5f19b280be8203d62ca8687090dc96ff9e22",
+    "candidateContractSha256": "b349a34c28824ee54770329a516fd0cf7a7c2cc6488e874b02fe5800ee75c9f0",
+    "oracleSha256": "e8ddff92818f6192cbfdaec3cac6fed79114df377582b11bf0374cb11fd81e0d"
+  },
+  "claimBoundary": "Fresh results are exact only over the frozen selected roots and depth-3 bounded local source graphs; oracle results are exact only over the immutable 8-state REWR frozen domain. No global Bao/Namua/Mtaji theorem is claimed.",
+  "outcomes": [
+    {
+      "outcomeId": "SIP-O01-T01-NAMUA",
+      "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
+      "strata": [
+        "namua"
+      ],
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "PASS",
+          "G5": "PASS",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "PASS"
+        },
+        "counts": {
+          "roots": 8,
+          "states": 697,
+          "edges": 707,
+          "testedStates": 167
+        },
+        "mismatchCount": 0,
+        "mismatchCounts": {},
+        "mismatches": [],
+        "witness": [
+          {
+            "stateKey": "0072e8a9a06be8c442b173e6df61cd931c23d3c46f92e72916cc1f49a96dd895",
+            "status": "PASS",
+            "finalStateKey": "978372ab04487b5f75baa6e3bef23b28df1cb9551d2e7a2443d4aa2294067816",
+            "expectedStateKey": "978372ab04487b5f75baa6e3bef23b28df1cb9551d2e7a2443d4aa2294067816"
+          },
+          {
+            "stateKey": "038faf32c4aa20a4b0836576260e49dfd3ce35effb3ae37892e7be1b27bf2570",
+            "status": "PASS",
+            "finalStateKey": "1300d96d9e4213f8df0e4bbdeb2b7a667b50325730adcd4d1efa0d53da422742",
+            "expectedStateKey": "1300d96d9e4213f8df0e4bbdeb2b7a667b50325730adcd4d1efa0d53da422742"
+          },
+          {
+            "stateKey": "0e441cdf29f2c2696796ac93d9a7bd1ffb39220093bb8da95419cc73430d9255",
+            "status": "PASS",
+            "finalStateKey": "923ad888aa13db0b0cbcd4552073c84daa2a2ed8347a8b9e66da15f2f1673ea5",
+            "expectedStateKey": "923ad888aa13db0b0cbcd4552073c84daa2a2ed8347a8b9e66da15f2f1673ea5"
+          },
+          {
+            "stateKey": "0ebdbbd07383479d43d007c2bb756f28f740bcb3022447c4e9425c6ae95fb0c7",
+            "status": "PASS",
+            "finalStateKey": "aacac4b1e6ef0f4ab7dcd22a7ff1f99209b3a76bfbd8c17776df2633976a57f7",
+            "expectedStateKey": "aacac4b1e6ef0f4ab7dcd22a7ff1f99209b3a76bfbd8c17776df2633976a57f7"
+          },
+          {
+            "stateKey": "0f378f1c9b7cc33212bd521bfed228aca8f2bd59f9760c5bc4c29113bf9ab992",
+            "status": "PASS",
+            "finalStateKey": "2b6e5c5b53877a5b21deb7485ce140d9de7732ba69db7539024c5ffd865a63a3",
+            "expectedStateKey": "2b6e5c5b53877a5b21deb7485ce140d9de7732ba69db7539024c5ffd865a63a3"
+          },
+          {
+            "stateKey": "18deac0ba14a57ad5f27d301ca10bd911091bd588b4b9749c8462c0f9e26adb4",
+            "status": "PASS",
+            "finalStateKey": "ee608598ea12d70a22e3c9cd7a65238e0eb1d4071f75fee74c37bea871698468",
+            "expectedStateKey": "ee608598ea12d70a22e3c9cd7a65238e0eb1d4071f75fee74c37bea871698468"
+          },
+          {
+            "stateKey": "1f70157d64140cc7e41b1dadddb35be943cecf25edae1242b52c5ca7fd7dd79e",
+            "status": "PASS",
+            "finalStateKey": "f7eb856dfcb757682cc399885b37af2af2224588686f76dd81643f1daa7cbb82",
+            "expectedStateKey": "f7eb856dfcb757682cc399885b37af2af2224588686f76dd81643f1daa7cbb82"
+          },
+          {
+            "stateKey": "1f898f17168e88a25209c4d297bc7d79f98445e3827f454404709fadf4eb6253",
+            "status": "PASS",
+            "finalStateKey": "096cde08277548c55c41f1a9aea4029d6e42d16435ba1cf6d66ddec56abc92e6",
+            "expectedStateKey": "096cde08277548c55c41f1a9aea4029d6e42d16435ba1cf6d66ddec56abc92e6"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 19,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-VALUE-MISMATCH": 3,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+          "ORACLE-DTF-MISMATCH": 3,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:0:left:::false",
+              "takata:mtaji:1:0:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": [
+              "capture:mtaji:0:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:4:left:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "provisionalDecision": "NOT-VALIDATED",
+      "G12": "PENDING-INDEPENDENT-VERIFICATION"
+    },
+    {
+      "outcomeId": "SIP-O02-T01-MTAJI",
+      "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
+      "strata": [
+        "mtaji"
+      ],
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "PASS",
+          "G5": "PASS",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "PASS"
+        },
+        "counts": {
+          "roots": 8,
+          "states": 530,
+          "edges": 527,
+          "testedStates": 162
+        },
+        "mismatchCount": 0,
+        "mismatchCounts": {},
+        "mismatches": [],
+        "witness": [
+          {
+            "stateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "status": "PASS",
+            "finalStateKey": "a447473e298482e92d65586de86a488d3dea87d0164f219ea825a0dc6d5ba8fe",
+            "expectedStateKey": "a447473e298482e92d65586de86a488d3dea87d0164f219ea825a0dc6d5ba8fe"
+          },
+          {
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "status": "PASS",
+            "finalStateKey": "83fd607c80d4595babeaa6d5f6bd6be4093ac4d241d5135a6065284188c81876",
+            "expectedStateKey": "83fd607c80d4595babeaa6d5f6bd6be4093ac4d241d5135a6065284188c81876"
+          },
+          {
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "status": "PASS",
+            "finalStateKey": "40b701d1a9e0d47e2d3da1194e44cd93f589314997b62b7700202b67d0b0e7a1",
+            "expectedStateKey": "40b701d1a9e0d47e2d3da1194e44cd93f589314997b62b7700202b67d0b0e7a1"
+          },
+          {
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "status": "PASS",
+            "finalStateKey": "7331cc370865efc6ddb660c6366dba0d913cc2fd27c006ecd69f39b012d03929",
+            "expectedStateKey": "7331cc370865efc6ddb660c6366dba0d913cc2fd27c006ecd69f39b012d03929"
+          },
+          {
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "status": "PASS",
+            "finalStateKey": "1d3761e9a092238a264aab7a7a0636f366e3fe37fdf0b33dbb58a7f51302e550",
+            "expectedStateKey": "1d3761e9a092238a264aab7a7a0636f366e3fe37fdf0b33dbb58a7f51302e550"
+          },
+          {
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "status": "PASS",
+            "finalStateKey": "75473e5cd2ac1e923117d41297853f08f7c6c5c6fe9e2f963296c8b8f564d198",
+            "expectedStateKey": "75473e5cd2ac1e923117d41297853f08f7c6c5c6fe9e2f963296c8b8f564d198"
+          },
+          {
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "status": "PASS",
+            "finalStateKey": "d0696114e26e85cc9dc56f740298de8ac0168d98fbf162041efce68fa9c4af7f",
+            "expectedStateKey": "d0696114e26e85cc9dc56f740298de8ac0168d98fbf162041efce68fa9c4af7f"
+          },
+          {
+            "stateKey": "23ee272911f7212bcb96781539542312e862568f8f2195b0cca5719eb436f452",
+            "status": "PASS",
+            "finalStateKey": "e70972c86fef0c50504a8d656f08461af7910f2189f627b7114b43dc25972e59",
+            "expectedStateKey": "e70972c86fef0c50504a8d656f08461af7910f2189f627b7114b43dc25972e59"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 19,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-VALUE-MISMATCH": 3,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+          "ORACLE-DTF-MISMATCH": 3,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:0:left:::false",
+              "takata:mtaji:1:0:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": [
+              "capture:mtaji:0:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:4:left:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "provisionalDecision": "NOT-VALIDATED",
+      "G12": "PENDING-INDEPENDENT-VERIFICATION"
+    },
+    {
+      "outcomeId": "SIP-O03-T01-BOTH",
+      "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
+      "strata": [
+        "namua",
+        "mtaji"
+      ],
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "PASS",
+          "G5": "PASS",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "PASS"
+        },
+        "counts": {
+          "roots": 16,
+          "states": 1227,
+          "edges": 1234,
+          "testedStates": 329
+        },
+        "mismatchCount": 0,
+        "mismatchCounts": {},
+        "mismatches": [],
+        "witness": [
+          {
+            "stateKey": "0072e8a9a06be8c442b173e6df61cd931c23d3c46f92e72916cc1f49a96dd895",
+            "status": "PASS",
+            "finalStateKey": "978372ab04487b5f75baa6e3bef23b28df1cb9551d2e7a2443d4aa2294067816",
+            "expectedStateKey": "978372ab04487b5f75baa6e3bef23b28df1cb9551d2e7a2443d4aa2294067816"
+          },
+          {
+            "stateKey": "038faf32c4aa20a4b0836576260e49dfd3ce35effb3ae37892e7be1b27bf2570",
+            "status": "PASS",
+            "finalStateKey": "1300d96d9e4213f8df0e4bbdeb2b7a667b50325730adcd4d1efa0d53da422742",
+            "expectedStateKey": "1300d96d9e4213f8df0e4bbdeb2b7a667b50325730adcd4d1efa0d53da422742"
+          },
+          {
+            "stateKey": "0e441cdf29f2c2696796ac93d9a7bd1ffb39220093bb8da95419cc73430d9255",
+            "status": "PASS",
+            "finalStateKey": "923ad888aa13db0b0cbcd4552073c84daa2a2ed8347a8b9e66da15f2f1673ea5",
+            "expectedStateKey": "923ad888aa13db0b0cbcd4552073c84daa2a2ed8347a8b9e66da15f2f1673ea5"
+          },
+          {
+            "stateKey": "0ebdbbd07383479d43d007c2bb756f28f740bcb3022447c4e9425c6ae95fb0c7",
+            "status": "PASS",
+            "finalStateKey": "aacac4b1e6ef0f4ab7dcd22a7ff1f99209b3a76bfbd8c17776df2633976a57f7",
+            "expectedStateKey": "aacac4b1e6ef0f4ab7dcd22a7ff1f99209b3a76bfbd8c17776df2633976a57f7"
+          },
+          {
+            "stateKey": "0f378f1c9b7cc33212bd521bfed228aca8f2bd59f9760c5bc4c29113bf9ab992",
+            "status": "PASS",
+            "finalStateKey": "2b6e5c5b53877a5b21deb7485ce140d9de7732ba69db7539024c5ffd865a63a3",
+            "expectedStateKey": "2b6e5c5b53877a5b21deb7485ce140d9de7732ba69db7539024c5ffd865a63a3"
+          },
+          {
+            "stateKey": "18deac0ba14a57ad5f27d301ca10bd911091bd588b4b9749c8462c0f9e26adb4",
+            "status": "PASS",
+            "finalStateKey": "ee608598ea12d70a22e3c9cd7a65238e0eb1d4071f75fee74c37bea871698468",
+            "expectedStateKey": "ee608598ea12d70a22e3c9cd7a65238e0eb1d4071f75fee74c37bea871698468"
+          },
+          {
+            "stateKey": "1f70157d64140cc7e41b1dadddb35be943cecf25edae1242b52c5ca7fd7dd79e",
+            "status": "PASS",
+            "finalStateKey": "f7eb856dfcb757682cc399885b37af2af2224588686f76dd81643f1daa7cbb82",
+            "expectedStateKey": "f7eb856dfcb757682cc399885b37af2af2224588686f76dd81643f1daa7cbb82"
+          },
+          {
+            "stateKey": "1f898f17168e88a25209c4d297bc7d79f98445e3827f454404709fadf4eb6253",
+            "status": "PASS",
+            "finalStateKey": "096cde08277548c55c41f1a9aea4029d6e42d16435ba1cf6d66ddec56abc92e6",
+            "expectedStateKey": "096cde08277548c55c41f1a9aea4029d6e42d16435ba1cf6d66ddec56abc92e6"
+          },
+          {
+            "stateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "status": "PASS",
+            "finalStateKey": "a447473e298482e92d65586de86a488d3dea87d0164f219ea825a0dc6d5ba8fe",
+            "expectedStateKey": "a447473e298482e92d65586de86a488d3dea87d0164f219ea825a0dc6d5ba8fe"
+          },
+          {
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "status": "PASS",
+            "finalStateKey": "83fd607c80d4595babeaa6d5f6bd6be4093ac4d241d5135a6065284188c81876",
+            "expectedStateKey": "83fd607c80d4595babeaa6d5f6bd6be4093ac4d241d5135a6065284188c81876"
+          },
+          {
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "status": "PASS",
+            "finalStateKey": "40b701d1a9e0d47e2d3da1194e44cd93f589314997b62b7700202b67d0b0e7a1",
+            "expectedStateKey": "40b701d1a9e0d47e2d3da1194e44cd93f589314997b62b7700202b67d0b0e7a1"
+          },
+          {
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "status": "PASS",
+            "finalStateKey": "7331cc370865efc6ddb660c6366dba0d913cc2fd27c006ecd69f39b012d03929",
+            "expectedStateKey": "7331cc370865efc6ddb660c6366dba0d913cc2fd27c006ecd69f39b012d03929"
+          },
+          {
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "status": "PASS",
+            "finalStateKey": "1d3761e9a092238a264aab7a7a0636f366e3fe37fdf0b33dbb58a7f51302e550",
+            "expectedStateKey": "1d3761e9a092238a264aab7a7a0636f366e3fe37fdf0b33dbb58a7f51302e550"
+          },
+          {
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "status": "PASS",
+            "finalStateKey": "75473e5cd2ac1e923117d41297853f08f7c6c5c6fe9e2f963296c8b8f564d198",
+            "expectedStateKey": "75473e5cd2ac1e923117d41297853f08f7c6c5c6fe9e2f963296c8b8f564d198"
+          },
+          {
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "status": "PASS",
+            "finalStateKey": "d0696114e26e85cc9dc56f740298de8ac0168d98fbf162041efce68fa9c4af7f",
+            "expectedStateKey": "d0696114e26e85cc9dc56f740298de8ac0168d98fbf162041efce68fa9c4af7f"
+          },
+          {
+            "stateKey": "23ee272911f7212bcb96781539542312e862568f8f2195b0cca5719eb436f452",
+            "status": "PASS",
+            "finalStateKey": "e70972c86fef0c50504a8d656f08461af7910f2189f627b7114b43dc25972e59",
+            "expectedStateKey": "e70972c86fef0c50504a8d656f08461af7910f2189f627b7114b43dc25972e59"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 19,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-VALUE-MISMATCH": 3,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+          "ORACLE-DTF-MISMATCH": 3,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:0:left:::false",
+              "takata:mtaji:1:0:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": [
+              "capture:mtaji:0:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:4:left:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "provisionalDecision": "NOT-VALIDATED",
+      "G12": "PENDING-INDEPENDENT-VERIFICATION"
+    },
+    {
+      "outcomeId": "SIP-O04-T02-MTAJI-HOUSELESS",
+      "candidateId": "SIP-T02-LR-MTAJI-HOUSELESS",
+      "strata": [
+        "mtaji-houseless"
+      ],
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "PASS",
+          "G5": "PASS",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "N/A"
+        },
+        "counts": {
+          "roots": 8,
+          "states": 532,
+          "edges": 529,
+          "testedStates": 160
+        },
+        "mismatchCount": 0,
+        "mismatchCounts": {},
+        "mismatches": [],
+        "witness": [
+          {
+            "stateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "0cf2b2b0f70b40a47fc64f23f617c46f243e1685fa09f34d15810479340a0027",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 19,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-VALUE-MISMATCH": 3,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+          "ORACLE-DTF-MISMATCH": 3,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:7:left:::false",
+              "takata:mtaji:1:7:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "actual": [
+              "capture:mtaji:0:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:3:right:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "provisionalDecision": "NOT-VALIDATED",
+      "G12": "PENDING-INDEPENDENT-VERIFICATION"
+    },
+    {
+      "outcomeId": "SIP-O05-T03-MTAJI-HOUSELESS",
+      "candidateId": "SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS",
+      "strata": [
+        "mtaji-houseless"
+      ],
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "PASS",
+          "G5": "PASS",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "N/A"
+        },
+        "counts": {
+          "roots": 8,
+          "states": 532,
+          "edges": 529,
+          "testedStates": 160
+        },
+        "mismatchCount": 0,
+        "mismatchCounts": {},
+        "mismatches": [],
+        "witness": [
+          {
+            "stateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "0cf2b2b0f70b40a47fc64f23f617c46f243e1685fa09f34d15810479340a0027",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 19,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-VALUE-MISMATCH": 3,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+          "ORACLE-DTF-MISMATCH": 3,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:7:left:::false",
+              "takata:mtaji:1:7:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "actual": [
+              "capture:mtaji:0:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 1,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:3:right:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "provisionalDecision": "NOT-VALIDATED",
+      "G12": "PENDING-INDEPENDENT-VERIFICATION"
+    }
+  ],
+  "controls": [
+    {
+      "candidateId": "SIP-C00-IDENTITY",
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "PASS",
+          "G5": "PASS",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "PASS"
+        },
+        "counts": {
+          "roots": 16,
+          "states": 1227,
+          "edges": 1234,
+          "testedStates": 329
+        },
+        "mismatchCount": 0,
+        "mismatchCounts": {},
+        "mismatches": [],
+        "witness": [
+          {
+            "stateKey": "0072e8a9a06be8c442b173e6df61cd931c23d3c46f92e72916cc1f49a96dd895",
+            "status": "PASS",
+            "finalStateKey": "0072e8a9a06be8c442b173e6df61cd931c23d3c46f92e72916cc1f49a96dd895",
+            "expectedStateKey": "0072e8a9a06be8c442b173e6df61cd931c23d3c46f92e72916cc1f49a96dd895"
+          },
+          {
+            "stateKey": "038faf32c4aa20a4b0836576260e49dfd3ce35effb3ae37892e7be1b27bf2570",
+            "status": "PASS",
+            "finalStateKey": "038faf32c4aa20a4b0836576260e49dfd3ce35effb3ae37892e7be1b27bf2570",
+            "expectedStateKey": "038faf32c4aa20a4b0836576260e49dfd3ce35effb3ae37892e7be1b27bf2570"
+          },
+          {
+            "stateKey": "0e441cdf29f2c2696796ac93d9a7bd1ffb39220093bb8da95419cc73430d9255",
+            "status": "PASS",
+            "finalStateKey": "0e441cdf29f2c2696796ac93d9a7bd1ffb39220093bb8da95419cc73430d9255",
+            "expectedStateKey": "0e441cdf29f2c2696796ac93d9a7bd1ffb39220093bb8da95419cc73430d9255"
+          },
+          {
+            "stateKey": "0ebdbbd07383479d43d007c2bb756f28f740bcb3022447c4e9425c6ae95fb0c7",
+            "status": "PASS",
+            "finalStateKey": "0ebdbbd07383479d43d007c2bb756f28f740bcb3022447c4e9425c6ae95fb0c7",
+            "expectedStateKey": "0ebdbbd07383479d43d007c2bb756f28f740bcb3022447c4e9425c6ae95fb0c7"
+          },
+          {
+            "stateKey": "0f378f1c9b7cc33212bd521bfed228aca8f2bd59f9760c5bc4c29113bf9ab992",
+            "status": "PASS",
+            "finalStateKey": "0f378f1c9b7cc33212bd521bfed228aca8f2bd59f9760c5bc4c29113bf9ab992",
+            "expectedStateKey": "0f378f1c9b7cc33212bd521bfed228aca8f2bd59f9760c5bc4c29113bf9ab992"
+          },
+          {
+            "stateKey": "18deac0ba14a57ad5f27d301ca10bd911091bd588b4b9749c8462c0f9e26adb4",
+            "status": "PASS",
+            "finalStateKey": "18deac0ba14a57ad5f27d301ca10bd911091bd588b4b9749c8462c0f9e26adb4",
+            "expectedStateKey": "18deac0ba14a57ad5f27d301ca10bd911091bd588b4b9749c8462c0f9e26adb4"
+          },
+          {
+            "stateKey": "1f70157d64140cc7e41b1dadddb35be943cecf25edae1242b52c5ca7fd7dd79e",
+            "status": "PASS",
+            "finalStateKey": "1f70157d64140cc7e41b1dadddb35be943cecf25edae1242b52c5ca7fd7dd79e",
+            "expectedStateKey": "1f70157d64140cc7e41b1dadddb35be943cecf25edae1242b52c5ca7fd7dd79e"
+          },
+          {
+            "stateKey": "1f898f17168e88a25209c4d297bc7d79f98445e3827f454404709fadf4eb6253",
+            "status": "PASS",
+            "finalStateKey": "1f898f17168e88a25209c4d297bc7d79f98445e3827f454404709fadf4eb6253",
+            "expectedStateKey": "1f898f17168e88a25209c4d297bc7d79f98445e3827f454404709fadf4eb6253"
+          },
+          {
+            "stateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "status": "PASS",
+            "finalStateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "expectedStateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255"
+          },
+          {
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "status": "PASS",
+            "finalStateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "expectedStateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe"
+          },
+          {
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "status": "PASS",
+            "finalStateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "expectedStateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce"
+          },
+          {
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "status": "PASS",
+            "finalStateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "expectedStateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253"
+          },
+          {
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "status": "PASS",
+            "finalStateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "expectedStateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f"
+          },
+          {
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "status": "PASS",
+            "finalStateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "expectedStateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8"
+          },
+          {
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "status": "PASS",
+            "finalStateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "expectedStateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b"
+          },
+          {
+            "stateKey": "23ee272911f7212bcb96781539542312e862568f8f2195b0cca5719eb436f452",
+            "status": "PASS",
+            "finalStateKey": "23ee272911f7212bcb96781539542312e862568f8f2195b0cca5719eb436f452",
+            "expectedStateKey": "23ee272911f7212bcb96781539542312e862568f8f2195b0cca5719eb436f452"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 19,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-VALUE-MISMATCH": 3,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+          "ORACLE-DTF-MISMATCH": 3,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:0:left:::false",
+              "takata:mtaji:1:0:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "actual": [
+              "capture:mtaji:0:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:4:left:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "controlDecision": "NOT-VALIDATED"
+    },
+    {
+      "candidateId": "SIP-C01-LR-NO-DIRECTION-FLIP",
+      "fresh": {
+        "technicalFailure": null,
+        "decision": "NOT-VALIDATED",
+        "gates": {
+          "G1": "PASS",
+          "G2": "PASS",
+          "G3": "PASS",
+          "G4": "FAIL",
+          "G5": "FAIL",
+          "G6": "PASS",
+          "G7": "PASS",
+          "G8": "N/A"
+        },
+        "counts": {
+          "roots": 8,
+          "states": 532,
+          "edges": 529,
+          "testedStates": 160
+        },
+        "mismatchCount": 638,
+        "mismatchCounts": {
+          "LEGAL-MOVE-SET-MISMATCH": 117,
+          "TRANSITION-COMMUTATION-MISMATCH": 188,
+          "MAPPED-MOVE-ILLEGAL": 333
+        },
+        "mismatches": [
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "0cf2b2b0f70b40a47fc64f23f617c46f243e1685fa09f34d15810479340a0027",
+            "mappedMoves": [
+              "capture:mtaji:1:1:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:1:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "mappedMoves": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "8506efb2c2f2d7e3a7b34fe1df28b546d36d1772efac8449e75c05ad9ec87bf2",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "10155ad1ec8b08b70fc6911520fcae1907d53757b042afd5cf9419e0e6b71d25",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "6e9442d42bbf33c7f6cf823dd789861f3e47742ce9b3bfb332c6e2363042ebda",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "887ebad452cc6a15c9272c62cd8a3667117f3e90b64f0eb45607bed83bc80038",
+            "mappedMoves": [
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "4c1ca20a666f07d937b115daf77afc9fe30e59ed8a2b4b7b8bd337672061e178",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:1:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "3b227c460f0c26830f8dc5752186fdccf32faf0f13dc6b0a7e4a821d5a015533",
+            "mappedMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "c86ea12a9e76a95867cf107cc584e57003627164e58f579b18b01fc4ca4ebefa",
+            "mappedMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "1f94ca693bd6d096cc8c3bcbbae83bbc4a405b47dde5466e274264c8d6cd8ae8",
+            "mappedMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "f5f68e82ae5fcf3465acbce7dfb6e2141fa83a07d2c18888d84a98390a673f0b",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "bf8387fcbd1d7e04b9d5d8b103597d5e843376ef4d778228040c0c9ed7f86ecb",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "f4133e31035897b9d83c54c7fb17aec1ff07953715893b9e161165284e0694f0",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "71934fd855f2f597227be95ee39cda658b66d51ae9c5aaa61874f3cdc98912ea",
+            "mappedMoves": [
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "8c4faff4d3718698aaafff4f57ce3442a376c04e30442495004ab484d9cb6e24",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "9b910262ea1bdf295375c8f5486b5cf128faf4bb179f92a9d730c60b6e681c70",
+            "mappedMoves": [
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "64fadcc4cd16e18fa6d8d1fbe346452eeabe766d25887551ef541af09e019724",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:1:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:1:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "8712b6c08896c43291d78884988bb5d055df6b3fd8eec417aef86e7be772a464",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "a6332eade7ecdfc01e03bbbe7d94282f91d84affd064819278e4657f4786cb5a",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "fb82d0e81dc394e791eac56aecabce5ef51546ed82d51ddef164ddab6b4eb688",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "6c2c1833e97a4fbf57751887a5fcb167682dff7f2eaa3e931bda5612ace60565",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:5:right:::false",
+              "capture:mtaji:1:6:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:5:left:::false",
+              "capture:mtaji:1:6:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "ce1c6075a54d4c49733982ab6161be755920d620a37e46161e9ee7a09b48dfb7",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "079ba0599ba548fe1cd9439205ac055d5f8a3de8f4f01a01b73cf514d283d451",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:5:right:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:5:left:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "5ea749cccb4ea62670d898c10a9527db4c09f901c7cb27aab16b9bb4047ae178",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:5:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:5:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "42793de608496994636fe48e51b7b424cbafb2e491857b2d4ff6097d57b1e1c2",
+            "mappedMoves": [
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "bd8c7860d205682ceb21bcb9d4ab2e37d460c54c0048776191d8500280eeb6bc",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "985cd1fad43f3044ad0266e14da3aece09e8e65990387ad0c3ecb157786758d1",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "b4254c39c6c8db14c8c36335f0368f7651176336d16c5dc9fed8ad124c0dada2",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "13133b10436132a8bed4f6bce82e52fd00dbce175eac809d0ddc9ab8c73ae897",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "9cfbc5f75377d5b319c843fed6a545bbdb4d737b1579b0cc4a7ee257d6c5ceac",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "23af3b0bc719926be4bbf236503d640a352f397ac66b45f29bd66c770961bfe3",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "b5a0e33d1c9838fba361615e8e0f5ba676e7da957977a1e34b8eebb8afe0be7d",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "ce55bff91a005ac0b79a531d27ccb9288af7c8556dbc69751dcb3ed2d56c9d28",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "d70a7e5878653db33c214007566f8d8db80814bf9253e215485ff48e3b81ffc1",
+            "mappedMoves": [
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "b1e2029f7c8396b8f12b50955f8760c186c99bccf5c9e5cea431f1de617458d7",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "393330ff9ab1f910c1f39113282e83d324daa415eeeb1bccbe463c24051d6f68",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "02811d9af122f32b016d348dda3438c02266f1c3ff878eda18b7a7a9f7b32e8c",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "d33a9c98eb502a54cd3747cc68b6773b2d217c465b7597d4daa0f6e673c81c09",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "1e16a1b81519091f18245e40143cd18ebea32414eae5745343e4bdbf44e83b57",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "260cd3bd0d2ef936781cd0604fa979b65e1c264a79463a02288623a5eb6e09ea",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "cb553d4e3a29c3af4cf26a5fb048e565ae424e9ce1a29b0bef656eb89b84246b",
+            "mappedMoves": [
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:3:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:3:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "d2a3d77767686d1304edcfd872bfd4330337c817a0866b9993ea3def1e269cd4",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:3:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:3:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "6933ff666f5055f1d8085e34cb592008ce905d031bbd85a4c1ac5492e0b38645",
+            "mappedMoves": [
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "24aeef4120e48fac7757e9d4bbab191a6c5bd9a30fc0dabc26b888d449d75cfe",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:1:1:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:1:1:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "e4fcf0383177be11fd2d589ebaf93f6418e47c41864f35d7a5518f1b338fd053",
+            "mappedMoves": [
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "7ac71702b3af063c3dd64cf02af4b0c2dbfee9595cd941ad8b7b0c795ccb1bdf",
+            "mappedMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "5da9688011f786a5c9390161819e3ef42471cbd22b4587a61ac0c42b43adc7c9",
+            "mappedMoves": [
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "1e1710eaedaef1079ba2ffb0fc4dc1d41e689d3910c03d8cc535ae3486d7634d",
+            "mappedMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "b525ce771d2b2a8d55fa5bf8c83c727aa4dabfad079c393e085d7f322ea559ca",
+            "mappedMoves": [
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "3cc5adaae3194a3264d65d515df5588b95bc1123adfffdfc00516f1752c56bad",
+            "mappedMoves": [
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "35b7b4fdee7c9a04aca523e3bc4415007d675e901ec061e2caa0b4e6e7db8778",
+            "mappedMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "9bec305d898404420746d67a15895483d4977264d2031417184760af79e3d181",
+            "mappedMoves": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "5451c3ee8de75a22e7ffc21e7fc90b7a76cfbfb0f8afecab7a56032db4f4b72e",
+            "mappedMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:5:right:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:5:left:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "5d7a7f9517cd40fe6ad8830664d1bf2ba928298c59fdd6152e98ced68ad52f22",
+            "mappedMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:5:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:5:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "018e359258fffeaf1f3d8dea3ca7c02dd3f72f7189e1ab5f3c75f5000ba4f6f6",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:5:right:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:5:left:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "46acc971e33d33cd16b82a8bb821b91463a795f65d3f0c415be483a49c782f2f",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "68980231b9d4a825d06c162aa33cab08dd481795d0668efc47f8469bf3c26289",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:5:right:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:5:left:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "ec6843bf8d9b4202e6c160a8cc16d43f56408b058356fcb0f11c5ad05f0e91da",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "70048e8598dcb76cb466d2f0198a5bbbf97b55614261a6bbcdab417e38b32a1f",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "fdeb5b2885f375c956ff4af973f9c954a133b62b5660fa6ac0badd835c85c4bb",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "64f75879a61880e7b07c5b9884e311abd5682984e3f576559d7c2dd597672e5c",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "11201b8fb80804748b8f891feb098703bfde6386e4d5f2da58dedc4094a2bc08",
+            "mappedMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "4432c61c57aca4bceb36f3783bb28365285ad5b6c0ac1ab764093db4736fac21",
+            "mappedMoves": [
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:1:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "e814e9b4c485e46261d811ac2b8a2c36cffcdb5da22e42603d22024cdd827358",
+            "mappedMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "2706cce4750fed9fcfd7fb56489130ad327b75dce418a13ca37957e625da56f2",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:6:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:6:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "6db03ec989e16d582f056faf6a7572946c3ca4cf9397901c9253fcad430bdcf2",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "86e559413d2e61d643c3291bc1b5c1a8345922219d7382f884c3cb8ea5210216",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "33217fe307e66defd341b5e2257fcdf804b2f8c7b865b120f1b02742b8b52ed6",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "7072b636732271b501862d3c1723e5a9e834f94dbfc1f38cfc3192b6d66245ac",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "f0ef3188318a393eb0e7a196f6fd20dfefaa08140e7f21b19a6649bb969b692a",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "22795014c654247234c9984f3f2d91f2d3b736fe67edd85a88095207de8d492b",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "21d6f61246a84e0e97913c2642cd4b6b6ce853cee91e4784eb3d7463f9582670",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "384e4f1d988f59bbf12b91af7f0295a8dd3dd6374b60b5fb9f38ee15af684e38",
+            "mappedMoves": [
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:1:2:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:1:2:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "b793db378169350c71869d3ff80cf74f6f89de84aa2fbc1f4823e73099516f76",
+            "mappedMoves": [
+              "capture:mtaji:1:2:left:::false",
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:2:right:::false",
+              "capture:mtaji:1:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "77dcf394234911e283c6bc867a6488dbbdeab95017bdcdfb2f1cdd9831b595fd",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "93f8352bed3bb1835730f8bf9c51c2cc801f1f5af8839a45badd5fcfaf0398b7",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "138e1863b63838050f3627cec0608d6e61269a7b7290147adde38687f2646360",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "e980c826e783ecf24a1ee3e1d48b707ac313c95f724e1656df3a26ccdd200470",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:0:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:0:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "969a5d2775e2a1d32e56994dde9ee52fd309e38e530a2854811f7395640516a9",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:1:6:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:1:6:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "21ca3a0ce3d8c5d1dcfe9db6fc2907821fb0596a4abd65a654ddd3a3bf45f656",
+            "mappedMoves": [
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:3:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:3:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "c62eb8c6a0d08d6d4342803be8b64207af1ef33d0b5a6e1f8213bb854e49e497",
+            "mappedMoves": [
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "e0c50f79d0c283e48dac561a33788e2e2b9ad39de213a68bb4a343c644e2d326",
+            "mappedMoves": [
+              "capture:mtaji:0:0:left:::false",
+              "capture:mtaji:0:1:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:3:left:::false",
+              "capture:mtaji:1:3:right:::false",
+              "capture:mtaji:1:6:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:0:right:::false",
+              "capture:mtaji:0:1:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:3:left:::false",
+              "capture:mtaji:1:3:right:::false",
+              "capture:mtaji:1:6:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "f2663bccc09d787d029f0cf8454a030559d7ea69136cdb8b4e441028b6e817ea",
+            "mappedMoves": [
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "c3c0b0d27f75beb4a348e90607f1aa2badd23cbebb90d24793c46a00ea63db72",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "f17af95366b72768e74e53947ba86abda13ae917796d56b8f690686f46ab7512",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:5:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:5:left:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "7fa07fc44ea9c79843aefb67266e74f03bace56fe82d9dbb3f6b827fae7e71bf",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "883b6d67db2dcbcf9d7a50002a8830d90c07432151c24004489ef329380e9704",
+            "mappedMoves": [
+              "capture:mtaji:0:7:right:::false",
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:7:left:::false",
+              "capture:mtaji:1:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "67a1d48706da64eb16be0a01e25d2f7dfceb670b50b7392e0d5434ca930d6998",
+            "mappedMoves": [
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "876a87f7906f8c9c0e5d49ee0e0ba77aca0d9293a133aadb1a93ea1b01c90a95",
+            "mappedMoves": [
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "9eb00048623e6d2508114ea1640bb3b8aabffb791e50c3c4fbb52e6560d6d046",
+            "mappedMoves": [
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "f508efed487b999cd9b1dcca8c7bfd44e597ab5a9c527a25508021529f5508ce",
+            "mappedMoves": [
+              "capture:mtaji:1:4:left:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "80545d3018bdffcdb6dbadf7ec3b789ff84da3ad7719777683a05db3c6a32a7e",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:0:3:left:::false",
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:6:right:::false",
+              "capture:mtaji:1:4:right:::false",
+              "capture:mtaji:1:7:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:0:3:right:::false",
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:0:6:left:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:7:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "c5065ad91b02e6a28aab43ef1f6de11587741d7399874d9fcd697e0679dec21b",
+            "mappedMoves": [
+              "capture:mtaji:0:2:left:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:0:2:right:::false",
+              "capture:mtaji:1:4:left:::false",
+              "capture:mtaji:1:4:right:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "fb2b53f53088dd331ab8afd1fc84fe34e505e1920e10c07b446c3db7e55b760d",
+            "mappedMoves": [
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:left:::false"
+            ]
+          },
+          {
+            "gate": "G4",
+            "type": "LEGAL-MOVE-SET-MISMATCH",
+            "stateKey": "58ee1b1ed3088d06a6b463c8629618897ad961e26250351ef2166a81328f5f92",
+            "mappedMoves": [
+              "capture:mtaji:1:4:right:::false"
+            ],
+            "targetMoves": [
+              "capture:mtaji:1:4:left:::false"
+            ]
+          }
+        ],
+        "witness": [
+          {
+            "stateKey": "023cfa09ec8005466c551bada6bd50ed7d2d2bfccd18f909f8129a4b7a466255",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "0cad191788caadb473de338f56d23773d48f75655d15bfd9d6bd35ff0f8c6bbe",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "0cf2b2b0f70b40a47fc64f23f617c46f243e1685fa09f34d15810479340a0027",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "12088ffbf5a187a0d8818a7650a378ea666c01a110b5193fc1dd8cd984f7a9ce",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "127834a3178d9caf805b6867984ef77504060c622b2da6e6401e7b8cf8e38253",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "184bb465d33801e2c7ac0ef1ed1e8c1a792ce44990fdd8d7a27df02313ebfd0f",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "1b3bd7f84492030a5dc5abf7ce9643133f5dfd75c2cbcc8d38c14a1a740ac2e8",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          },
+          {
+            "stateKey": "224c3ed885406e4b8006809ec3c45a013ab76d5554654ab71803934eea72d38b",
+            "status": "N/A",
+            "reason": "candidate is not applicable to the full standard-initial witness"
+          }
+        ]
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "technicalFailure": null,
+        "gates": {
+          "G9": "FAIL",
+          "G10": "FAIL",
+          "G11": "FAIL"
+        },
+        "counts": {
+          "states": 8,
+          "edges": 2,
+          "recurrentSccs": 0
+        },
+        "mismatchCount": 33,
+        "mismatchCounts": {
+          "ORACLE-TRANSFORMED-INVALID": 3,
+          "ORACLE-STATE-INVERSE": 3,
+          "ORACLE-COMMUTATION-MISMATCH": 2,
+          "ORACLE-LEGAL-SET-MISMATCH": 3,
+          "ORACLE-MAPPED-MOVE-ILLEGAL": 5,
+          "ORACLE-EDGE-BIJECTION-COUNT": 1,
+          "ORACLE-VALUE-MISMATCH": 4,
+          "ORACLE-ABSOLUTE-WINNER-MISMATCH": 4,
+          "ORACLE-DTF-MISMATCH": 4,
+          "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+        },
+        "mismatches": [
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6"
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-COMMUTATION-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "moveKey": "takata:mtaji:1:0:left:::false",
+            "expected": "512ebf2b566413a57b0f2961523ab211f2d098f30a3f2586cba16a739bf26ef1",
+            "actual": "17799e8e0ddbf8d3a6622ff9d19edc54d6a00aff67042acb9e5833c97fd7d9ea"
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-COMMUTATION-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "moveKey": "takata:mtaji:1:0:right:::false",
+            "expected": "17799e8e0ddbf8d3a6622ff9d19edc54d6a00aff67042acb9e5833c97fd7d9ea",
+            "actual": "512ebf2b566413a57b0f2961523ab211f2d098f30a3f2586cba16a739bf26ef1"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed"
+          },
+          {
+            "gate": "G4",
+            "type": "ORACLE-LEGAL-SET-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "mappedKeys": [
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ],
+            "targetKeys": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ]
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-MAPPED-MOVE-ILLEGAL",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "moveKey": "capture:mtaji:0:3:right:::false",
+            "mappedKey": "capture:mtaji:0:4:right:::false"
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-MAPPED-MOVE-ILLEGAL",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "moveKey": "capture:mtaji:1:0:left:::false",
+            "mappedKey": "capture:mtaji:1:7:left:::false"
+          },
+          {
+            "gate": "G2",
+            "type": "ORACLE-TRANSFORMED-INVALID",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G3",
+            "type": "ORACLE-STATE-INVERSE",
+            "stateKey": "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+          },
+          {
+            "gate": "G4",
+            "type": "ORACLE-LEGAL-SET-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "mappedKeys": [
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ],
+            "targetKeys": [
+              "capture:mtaji:0:4:left:::false",
+              "capture:mtaji:1:7:right:::false"
+            ]
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-MAPPED-MOVE-ILLEGAL",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "moveKey": "capture:mtaji:0:3:right:::false",
+            "mappedKey": "capture:mtaji:0:4:right:::false"
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-MAPPED-MOVE-ILLEGAL",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "moveKey": "capture:mtaji:1:0:left:::false",
+            "mappedKey": "capture:mtaji:1:7:left:::false"
+          },
+          {
+            "gate": "G4",
+            "type": "ORACLE-LEGAL-SET-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "mappedKeys": [
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "targetKeys": [
+              "capture:mtaji:1:3:right:::false"
+            ]
+          },
+          {
+            "gate": "G5",
+            "type": "ORACLE-MAPPED-MOVE-ILLEGAL",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "moveKey": "capture:mtaji:1:4:left:::false",
+            "mappedKey": "capture:mtaji:1:3:left:::false"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-EDGE-BIJECTION-COUNT",
+            "transformed": 2,
+            "expected": 7
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "sourceStatus": "LOSS",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": 2,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "6de4c58523ec71d1365d3dcb2f834c98ffb762c3562bfb4beea538e872a02d67",
+            "expected": [
+              "takata:mtaji:1:7:left:::false",
+              "takata:mtaji:1:7:right:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "8d9b1aafa1fd0dd718baad3de67e8c768fcf5cd37a065968bd640febc8f3659b",
+            "expected": [
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": 1,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "e9fbd5d69ab24f88e307d36c74cc85b2042fe066fc49d84e305d37d615ac996f",
+            "expected": [
+              "capture:mtaji:0:4:right:::false",
+              "capture:mtaji:1:7:left:::false"
+            ],
+            "actual": []
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-VALUE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "sourceStatus": "WIN",
+            "transformedStatus": "RECURRENT"
+          },
+          {
+            "gate": "G9",
+            "type": "ORACLE-ABSOLUTE-WINNER-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expectedWinner": 0,
+            "actualWinner": null
+          },
+          {
+            "gate": "G10",
+            "type": "ORACLE-DTF-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": 3,
+            "actual": null
+          },
+          {
+            "gate": "G11",
+            "type": "ORACLE-OPTIMAL-MOVE-MISMATCH",
+            "stateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+            "expected": [
+              "capture:mtaji:1:3:left:::false"
+            ],
+            "actual": []
+          }
+        ]
+      },
+      "controlDecision": "NOT-VALIDATED"
+    }
+  ],
+  "summary": {
+    "validated": 0,
+    "notValidated": 5,
+    "nonEstimable": 0
+  },
+  "interpretationBoundary": {
+    "globalSymmetryClaimAuthorized": false,
+    "allReachableStatesClaimAuthorized": false,
+    "stateSpaceReductionAuthorized": false,
+    "canonicalizationAuthorized": false,
+    "groupClaimAuthorized": false
+  }
+}

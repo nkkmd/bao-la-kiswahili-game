@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "stageId": "SIP-STAGE0-TECHNICAL-2026-08-24-v2",
+  "supersedesTechnicalStageId": "SIP-STAGE0-TECHNICAL-2026-08-24-v1",
+  "supersessionReason": "Adds the prospectively frozen mtaji-houseless structural applicability stratum before any formal candidate outcome generation.",
+  "scientificOutcomeGenerated": false,
+  "candidateOutcomeInspected": false,
+  "technicalSeedBlock": {
+    "start": 22900001,
+    "end": 22900032,
+    "trajectories": 32,
+    "maximumTrajectoryPly": 120,
+    "trajectoryRuntimeGuardHits": 0
+  },
+  "candidateContract": {
+    "path": "doc/symmetry-isomorphic-positions/preregistration/CANDIDATE_TRANSFORMS.json",
+    "bytesSha256": "b349a34c28824ee54770329a516fd0cf7a7c2cc6488e874b02fe5800ee75c9f0",
+    "implementationDefinitionHashes": {
+      "SIP-C00-IDENTITY": "6058be3e3ea6756fbaaba4a977a67c957788f176108a3a1e41ebd553316223a9",
+      "SIP-T01-SEAT-SWAP-LOCAL": "6e8823204485cda94aea5c27166ae13d1ef05c002738c6f3197ca206ea6b23d3",
+      "SIP-T02-LR-MTAJI-HOUSELESS": "1f961785e6d2d2ec623c2b2fa9d11c46555a6013750abd31c3af6a5383c06a1d",
+      "SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": "f0603d4381aa96fd1c0c5c42788738decfc6444901ef162d0c827a926e5c5c99",
+      "SIP-C01-LR-NO-DIRECTION-FLIP": "e6b4adcaa95100bb642493682b35240e63a22f5e267994be02a042dda370bacd"
+    }
+  },
+  "technicalRootInventory": {
+    "namua": [
+      {
+        "stateKey": "03a69a3d0f16c6b0f41e68c204862afbbef399b70b9b065a8454d73e82c6842e",
+        "seed": 22900018,
+        "ply": 8
+      },
+      {
+        "stateKey": "0fcba4fa0e633b9987b1db9990488b7d5481b153bb7d35d24413aa0b7dd7aa2f",
+        "seed": 22900007,
+        "ply": 8
+      },
+      {
+        "stateKey": "202c09b17cd0fa952daba132776d3c38092bbe5c1275b5ee791843df3b9c35f4",
+        "seed": 22900024,
+        "ply": 8
+      },
+      {
+        "stateKey": "21b115337e04155dab4e267477ea5205508598092f427d9b3cec20f21b94fc0c",
+        "seed": 22900001,
+        "ply": 8
+      },
+      {
+        "stateKey": "3395c982cd99f3d68b3dd8c2c1484371448e481722f76d43f94de5f4070a01e7",
+        "seed": 22900013,
+        "ply": 8
+      },
+      {
+        "stateKey": "4274d6ec99a4edc65d19472072c1a639d2a020d3252bd263736186a3fdf3b26f",
+        "seed": 22900002,
+        "ply": 8
+      },
+      {
+        "stateKey": "4be6a082c1ced9dbaf917b5ba0a2d6983b050e0c245776c89110f90c9f476063",
+        "seed": 22900022,
+        "ply": 8
+      },
+      {
+        "stateKey": "5108094b1fad919415e83737f9bc20aa9d739b73a0426afb047037c3d97d590c",
+        "seed": 22900031,
+        "ply": 8
+      }
+    ],
+    "mtaji": [
+      {
+        "stateKey": "3e3f53b64100ec3d6b33fe3b0a2a663eaf4fd7bf9fbb9d0a42008b690c0887ae",
+        "seed": 22900013,
+        "ply": 44
+      },
+      {
+        "stateKey": "3e48c9611a43799593915a7680f7321f80b7ac6a6404afaf8727aa067ec97311",
+        "seed": 22900025,
+        "ply": 44
+      },
+      {
+        "stateKey": "428e57e506d8989e352160b121db866ba25555396d3f95c4a89baa620c9e8f00",
+        "seed": 22900010,
+        "ply": 44
+      },
+      {
+        "stateKey": "42959c2ed02f65f8c43eb1391d49812a97f99dfa0cf3f6c448b1aae87e41d05b",
+        "seed": 22900012,
+        "ply": 44
+      },
+      {
+        "stateKey": "815df73158a09f1930b23363dc232ebe6985c249635c59ec2d3feab4fb77443d",
+        "seed": 22900008,
+        "ply": 44
+      },
+      {
+        "stateKey": "85f67b208493b3e51da42f300bc1f972008bc6e58a95b7c1c4110c46896b27b1",
+        "seed": 22900014,
+        "ply": 44
+      },
+      {
+        "stateKey": "86aeebd8b86c997998a6415e839f1bdf5a2285301d19bee9eeda8b2f2c84e3f9",
+        "seed": 22900017,
+        "ply": 44
+      },
+      {
+        "stateKey": "8e7fa0ea1c3b66bcc67e97ef0e79f23f909443a31e20dd37ea2f07c01bc37b5d",
+        "seed": 22900030,
+        "ply": 44
+      }
+    ],
+    "mtaji-houseless": [
+      {
+        "stateKey": "3e3f53b64100ec3d6b33fe3b0a2a663eaf4fd7bf9fbb9d0a42008b690c0887ae",
+        "seed": 22900013,
+        "ply": 44
+      },
+      {
+        "stateKey": "3e48c9611a43799593915a7680f7321f80b7ac6a6404afaf8727aa067ec97311",
+        "seed": 22900025,
+        "ply": 44
+      },
+      {
+        "stateKey": "428e57e506d8989e352160b121db866ba25555396d3f95c4a89baa620c9e8f00",
+        "seed": 22900010,
+        "ply": 44
+      },
+      {
+        "stateKey": "42959c2ed02f65f8c43eb1391d49812a97f99dfa0cf3f6c448b1aae87e41d05b",
+        "seed": 22900012,
+        "ply": 44
+      },
+      {
+        "stateKey": "815df73158a09f1930b23363dc232ebe6985c249635c59ec2d3feab4fb77443d",
+        "seed": 22900008,
+        "ply": 44
+      },
+      {
+        "stateKey": "85f67b208493b3e51da42f300bc1f972008bc6e58a95b7c1c4110c46896b27b1",
+        "seed": 22900014,
+        "ply": 44
+      },
+      {
+        "stateKey": "86aeebd8b86c997998a6415e839f1bdf5a2285301d19bee9eeda8b2f2c84e3f9",
+        "seed": 22900017,
+        "ply": 44
+      },
+      {
+        "stateKey": "8e7fa0ea1c3b66bcc67e97ef0e79f23f909443a31e20dd37ea2f07c01bc37b5d",
+        "seed": 22900030,
+        "ply": 44
+      }
+    ]
+  },
+  "graphProfiles": [
+    {
+      "domainId": "namua",
+      "depth": 1,
+      "rootCount": 8,
+      "stateCount": 34,
+      "edgeCount": 26,
+      "attemptedEdges": 26,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 6,
+      "elapsedMs": 2.688232,
+      "rssBytes": 67256320
+    },
+    {
+      "domainId": "namua",
+      "depth": 2,
+      "rootCount": 8,
+      "stateCount": 112,
+      "edgeCount": 104,
+      "attemptedEdges": 104,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 6,
+      "elapsedMs": 12.457623,
+      "rssBytes": 67387392
+    },
+    {
+      "domainId": "namua",
+      "depth": 3,
+      "rootCount": 8,
+      "stateCount": 386,
+      "edgeCount": 386,
+      "attemptedEdges": 386,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 8,
+      "elapsedMs": 51.795681,
+      "rssBytes": 72609792
+    },
+    {
+      "domainId": "mtaji",
+      "depth": 1,
+      "rootCount": 8,
+      "stateCount": 28,
+      "edgeCount": 20,
+      "attemptedEdges": 20,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 5,
+      "elapsedMs": 3.363083,
+      "rssBytes": 75886592
+    },
+    {
+      "domainId": "mtaji",
+      "depth": 2,
+      "rootCount": 8,
+      "stateCount": 121,
+      "edgeCount": 113,
+      "attemptedEdges": 113,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 12,
+      "elapsedMs": 13.851398,
+      "rssBytes": 76541952
+    },
+    {
+      "domainId": "mtaji",
+      "depth": 3,
+      "rootCount": 8,
+      "stateCount": 372,
+      "edgeCount": 364,
+      "attemptedEdges": 364,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 12,
+      "elapsedMs": 39.966889,
+      "rssBytes": 76935168
+    },
+    {
+      "domainId": "mtaji-houseless",
+      "depth": 1,
+      "rootCount": 8,
+      "stateCount": 28,
+      "edgeCount": 20,
+      "attemptedEdges": 20,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 5,
+      "elapsedMs": 2.259862,
+      "rssBytes": 77066240
+    },
+    {
+      "domainId": "mtaji-houseless",
+      "depth": 2,
+      "rootCount": 8,
+      "stateCount": 121,
+      "edgeCount": 113,
+      "attemptedEdges": 113,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 12,
+      "elapsedMs": 13.392931,
+      "rssBytes": 77066240
+    },
+    {
+      "domainId": "mtaji-houseless",
+      "depth": 3,
+      "rootCount": 8,
+      "stateCount": 372,
+      "edgeCount": 364,
+      "attemptedEdges": 364,
+      "guardHits": 0,
+      "completeUnderRuntimeEngine": true,
+      "maxBranching": 12,
+      "elapsedMs": 41.405897,
+      "rssBytes": 77721600
+    }
+  ],
+  "formalSelectionAuthorized": false,
+  "formalSeedBlockConsumed": false,
+  "notes": [
+    "No symmetry/isomorphism mismatch rate is computed by this technical benchmark.",
+    "The mtaji-houseless stratum is a predeclared structural applicability domain, not an outcome-based subset.",
+    "Runtime relay-limit hits are administrative incompleteness, never game-theoretic or symmetry outcomes.",
+    "Stage 1 root count/depth must be frozen later using only these technical quantities."
+  ]
+}

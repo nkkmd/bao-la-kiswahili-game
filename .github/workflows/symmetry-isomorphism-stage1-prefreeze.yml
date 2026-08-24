@@ -1,0 +1,102 @@
+# SIP-STUDY1 Stage 1 prefreeze tracking trigger — 2026-08-24
+name: Symmetry Isomorphism Stage 1 Prefreeze
+
+on:
+  push:
+    branches:
+      - research/symmetry-isomorphic-positions
+    paths:
+      - "tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js"
+      - "tools/experiments/run-symmetry-isomorphism-stage1-formal.js"
+      - "tools/experiments/verify-symmetry-isomorphism-stage1-formal.js"
+      - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
+      - "doc/symmetry-isomorphic-positions/preregistration/CANDIDATE_TRANSFORMS.json"
+      - ".github/workflows/symmetry-isomorphism-stage1-prefreeze.yml"
+  pull_request:
+    branches:
+      - research/symmetry-isomorphic-positions
+    paths:
+      - "tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js"
+      - "tools/experiments/run-symmetry-isomorphism-stage1-formal.js"
+      - "tools/experiments/verify-symmetry-isomorphism-stage1-formal.js"
+      - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
+      - "doc/symmetry-isomorphic-positions/preregistration/CANDIDATE_TRANSFORMS.json"
+      - ".github/workflows/symmetry-isomorphism-stage1-prefreeze.yml"
+      - "doc/symmetry-isomorphic-positions/checkpoints/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prefreeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Engine regression
+        run: node test/engine.test.js
+      - name: Stage 0 transform controls
+        run: node test/symmetry-isomorphism-stage0.test.js
+      - name: Syntax check Stage 1 tooling
+        run: |
+          node --check tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js
+          node --check tools/experiments/run-symmetry-isomorphism-stage1-formal.js
+          node --check tools/experiments/verify-symmetry-isomorphism-stage1-formal.js
+      - name: Materialize frozen source-state domain without candidate transforms
+        run: |
+          node tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js \
+            --output doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json
+      - name: Build prefreeze source-hash audit
+        run: |
+          node - <<'NODE'
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+          const hash = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          const paths = {
+            engine: 'public/engine.js',
+            candidateContract: 'doc/symmetry-isomorphic-positions/preregistration/CANDIDATE_TRANSFORMS.json',
+            transformImplementation: 'tools/experiments/lib/symmetry-isomorphism-transforms.js',
+            domain: 'doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json',
+            oracle: 'doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json',
+            runner: 'tools/experiments/run-symmetry-isomorphism-stage1-formal.js',
+            verifier: 'tools/experiments/verify-symmetry-isomorphism-stage1-formal.js'
+          };
+          const result = {
+            schemaVersion: 1,
+            studyId: 'SIP-STUDY1',
+            stageId: 'SIP-S1-FORMAL-2026-08-24-v1',
+            classification: 'PREFREEZE-NO-SCIENTIFIC-OUTCOME',
+            scientificOutcomeGenerated: false,
+            candidateOutcomeInspected: false,
+            paths,
+            sourceSha256: Object.fromEntries(Object.entries(paths).map(([k,p]) => [k,hash(p)]))
+          };
+          fs.writeFileSync('doc/symmetry-isomorphic-positions/preregistration/STAGE_1_PREFREEZE_AUDIT.json', JSON.stringify(result,null,2)+'\n');
+          console.log(JSON.stringify(result,null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: symmetry-isomorphism-stage1-prefreeze
+          path: |
+            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json
+            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_PREFREEZE_AUDIT.json
+          if-no-files-found: error
+      - name: Materialize prefreeze artifacts on research branch
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet -- \
+            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json \
+            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_PREFREEZE_AUDIT.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json \
+            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_PREFREEZE_AUDIT.json
+          git commit -m "Research: materialize Symmetry Study 1 Stage 1 prefreeze artifacts"
+          git push

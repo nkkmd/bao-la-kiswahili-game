@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "invalidatedStageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "status": "TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION",
+  "scientificCandidateDecisionAuthorized": false,
+  "reason": "The IDENTITY positive control failed only in the exact-oracle reconstruction path, so v1 candidate NOT-VALIDATED labels are not interpretable as symmetry failures.",
+  "traceableRun": {
+    "workflowRunId": 32727565186,
+    "workflowJobId": 97432202448,
+    "productionSummary": {
+      "validated": 0,
+      "notValidated": 5,
+      "nonEstimable": 0
+    },
+    "independentSummary": {
+      "validated": 0,
+      "notValidated": 0,
+      "nonEstimable": 5
+    }
+  },
+  "diagnosticPreservationRun": {
+    "workflowRunId": 32727707652,
+    "workflowArtifactId": 9520162913,
+    "workflowArtifactZipSha256": "10c15d29cc2f452fe2760a05e0ac07cb57a544131419fcabcf9c3ba7520f3e95",
+    "productionResultSha256": "fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a"
+  },
+  "positiveControlEvidence": {
+    "candidateId": "SIP-C00-IDENTITY",
+    "freshDomainProductionMismatchCount": 0,
+    "freshDomainIndependentMismatchCount": 0,
+    "productionOracleMismatchCount": 19,
+    "independentOracleMismatchCount": 10,
+    "productionOracleMismatchTypes": {
+      "ORACLE-TRANSFORMED-INVALID": 3,
+      "ORACLE-STATE-INVERSE": 3,
+      "ORACLE-VALUE-MISMATCH": 3,
+      "ORACLE-ABSOLUTE-WINNER-MISMATCH": 3,
+      "ORACLE-DTF-MISMATCH": 3,
+      "ORACLE-OPTIMAL-MOVE-MISMATCH": 4
+    }
+  },
+  "rootCause": {
+    "class": "ORACLE-REPRESENTATION-RECONSTRUCTION-DEFECT",
+    "description": "v1 reconstructed raw oracle nodes directly from canonical result stateRows.ruleState. Three terminal row snapshots have pending=[0,0] and only 63 represented seeds, while their frozen raw stateKey corresponds to the actual terminal raw state with pending=[1,0]. This makes even IDENTITY fail raw identity and corrupts retrograde reconstruction.",
+    "affectedFrozenStateKeys": [
+      "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6",
+      "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed",
+      "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+    ]
+  },
+  "allowedCorrection": {
+    "candidateDefinitionsChanged": false,
+    "candidateApplicabilityChanged": false,
+    "freshSeedBlockChanged": false,
+    "rootSelectionChanged": false,
+    "localGraphDepthChanged": false,
+    "decisionLabelsChanged": false,
+    "correctionPrinciple": "Reconstruct the immutable oracle graph from its frozen nonterminal root under the production and independent guard-free Mtaji implementations, require exact equality to the immutable 8-state/7-edge stateSetSha256 and transitionSetSha256, and only then transform/solve that reconstructed raw graph.",
+    "nextStageId": "SIP-S1-FORMAL-2026-08-24-v2"
+  },
+  "interpretationBoundary": "The v1 fresh zero-mismatch observations are retained only as invalidated-run diagnostics and are not formal positive findings. v2 must rerun all frozen candidates uniformly after identity-control validation of the corrected oracle harness."
+}
