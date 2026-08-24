@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "independentVerification": true,
+  "passed": false,
+  "identities": {
+    "specSha256": "ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a",
+    "productionSha256": "fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a",
+    "verifierSha256": "c1bbf2377a6b7214caa9cd023c31ab136c3e9072acec24e03ff46c53151ba854"
+  },
+  "domainRegeneration": {
+    "runtimeGuardHitsEqual": true,
+    "strata": {
+      "namua": true,
+      "mtaji": true,
+      "mtaji-houseless": true
+    }
+  },
+  "independence": {
+    "candidateTransformImplementationShared": false,
+    "graphTraversalImplementationShared": false,
+    "serializationImplementationShared": false,
+    "freshLegalMoveGeneratorSharedEngine": true,
+    "freshTransitionSharedEngine": true,
+    "oracleLegalMoveGeneratorSharedProduction": false,
+    "oracleGuardFreeTransitionSharedProduction": false,
+    "retrogradeImplementationShared": false
+  },
+  "outcomes": [
+    {
+      "outcomeId": "SIP-O01-T01-NAMUA",
+      "id": "SIP-T01-SEAT-SWAP-LOCAL",
+      "strata": [
+        "namua"
+      ],
+      "fresh": {
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "mismatchCount": 0,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 8,
+          "states": 697,
+          "edges": 707,
+          "testedStates": 167
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 10,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false,
+      "finalDecision": "NON-ESTIMABLE",
+      "G12": "FAIL"
+    },
+    {
+      "outcomeId": "SIP-O02-T01-MTAJI",
+      "id": "SIP-T01-SEAT-SWAP-LOCAL",
+      "strata": [
+        "mtaji"
+      ],
+      "fresh": {
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "mismatchCount": 0,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 8,
+          "states": 530,
+          "edges": 527,
+          "testedStates": 162
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 10,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false,
+      "finalDecision": "NON-ESTIMABLE",
+      "G12": "FAIL"
+    },
+    {
+      "outcomeId": "SIP-O03-T01-BOTH",
+      "id": "SIP-T01-SEAT-SWAP-LOCAL",
+      "strata": [
+        "namua",
+        "mtaji"
+      ],
+      "fresh": {
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "mismatchCount": 0,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 16,
+          "states": 1227,
+          "edges": 1234,
+          "testedStates": 329
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 10,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false,
+      "finalDecision": "NON-ESTIMABLE",
+      "G12": "FAIL"
+    },
+    {
+      "outcomeId": "SIP-O04-T02-MTAJI-HOUSELESS",
+      "id": "SIP-T02-LR-MTAJI-HOUSELESS",
+      "strata": [
+        "mtaji-houseless"
+      ],
+      "fresh": {
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "mismatchCount": 0,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 8,
+          "states": 532,
+          "edges": 529,
+          "testedStates": 160
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 10,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false,
+      "finalDecision": "NON-ESTIMABLE",
+      "G12": "FAIL"
+    },
+    {
+      "outcomeId": "SIP-O05-T03-MTAJI-HOUSELESS",
+      "id": "SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS",
+      "strata": [
+        "mtaji-houseless"
+      ],
+      "fresh": {
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "mismatchCount": 0,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 8,
+          "states": 532,
+          "edges": 529,
+          "testedStates": 160
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 10,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false,
+      "finalDecision": "NON-ESTIMABLE",
+      "G12": "FAIL"
+    }
+  ],
+  "controls": [
+    {
+      "id": "SIP-C00-IDENTITY",
+      "strata": [
+        "namua",
+        "mtaji"
+      ],
+      "fresh": {
+        "decision": "VALIDATED-BOUNDED-ISOMORPHISM",
+        "mismatchCount": 0,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 16,
+          "states": 1227,
+          "edges": 1234,
+          "testedStates": 329
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 10,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 7,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false
+    },
+    {
+      "id": "SIP-C01-LR-NO-DIRECTION-FLIP",
+      "strata": [
+        "mtaji-houseless"
+      ],
+      "fresh": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 638,
+        "technicalFailure": null,
+        "counts": {
+          "roots": 8,
+          "states": 532,
+          "edges": 529,
+          "testedStates": 160
+        }
+      },
+      "exactOracle": {
+        "decision": "NOT-VALIDATED",
+        "mismatchCount": 22,
+        "technicalFailure": null,
+        "counts": {
+          "states": 8,
+          "edges": 2,
+          "recurrentSccs": 0
+        }
+      },
+      "recomputedDecision": "NOT-VALIDATED",
+      "productionAgreement": false
+    }
+  ],
+  "summary": {
+    "validated": 0,
+    "notValidated": 0,
+    "nonEstimable": 5
+  },
+  "interpretationBoundary": {
+    "globalTheorem": false,
+    "fullReachabilityPreservation": false,
+    "stateSpaceReductionAuthorized": false,
+    "canonicalizationPendingConditionalStage": true
+  }
+}

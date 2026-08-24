@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "executionRoute": "push",
+  "workflowRunId": 32728925376,
+  "workflowRunAttempt": 1,
+  "triggeringCommit": "efee0817adefab1b5e9bebed78a199b972741dc0",
+  "specSha256": "ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a",
+  "authorizationSha256": "a539de44b26e513ab461a559e97ee4e7914900178a469389a5c996def3d7f5a4",
+  "domainSha256": "fa40e1b7d2fc5e34291ec9537e8a5f19b280be8203d62ca8687090dc96ff9e22",
+  "productionResultSha256": "fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a",
+  "independentVerificationSha256": "8e7327b4192e2616716d34deae86b15a51f269201f591a843310d414541596f0",
+  "independentVerificationStepOutcome": "failure",
+  "classification": "DIAGNOSTIC-PRESERVATION-OF-FROZEN-RUN-ARTIFACTS"
+}
