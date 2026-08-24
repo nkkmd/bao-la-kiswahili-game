@@ -376,6 +376,46 @@ Stage 2はexact Stage 1 promoted-candidate mappingを事前freezeしてから開
 
 ---
 
+### 12. Restricted Endgame / Winning Regions — Study 1
+
+**研究題目:** Baoにおける限定終盤と必勝圏の完全解析 — constrained endgame state spaces における exact game-theoretic value, cycle structure, and distance-to-win の列挙・後退解析  
+**状態:** **Study 1 complete / formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`**  
+**作業branch:** `research/restricted-endgame-winning-regions`
+
+このprospective independent machine-only studyでは、standard initial stateから到達証明を持つ1つのMtaji rootと、そのrootからの全合法手によるcomplete raw-state forward closureをoutcome生成前に固定し、symmetry reductionなしでexact retrograde analysisを行った。
+
+Final frozen domainとexact resultは次のとおり。
+
+```text
+roots = 1
+states = 8
+edges = 7
+TERMINAL = 4
+WIN = 3
+LOSS = 1
+RECURRENT = 0
+```
+
+Frozen rootはPlayer 0 to moveの`WIN`、absolute forced winner = Player 0、`DTF = 3`で、unique optimal moveは`capture:mtaji:1:4:left:::false`だった。Production solverと独立実装verifierは全state rows、state/edge hashes、value counts、RECURRENT SCCs、solution hashまで完全一致した。
+
+より大きいone-shot候補は423,733 states / 426,938 edgesまで展開したが、1着手が1,000,000 microstepsのadministrative cutoffへ到達したためexact不適格となった。このcutoffをgame resultへ読み替えず、事前規則どおり追加cap拡張は行わなかった。
+
+**最初に読む:**
+
+- [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`restricted-endgame-winning-regions/STUDY_1_FINAL_REPORT.md`](restricted-endgame-winning-regions/STUDY_1_FINAL_REPORT.md) — 科学的・技術的最終統合
+- [`restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json`](restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json) — canonical exact oracle
+- [`restricted-endgame-winning-regions/REPRODUCIBILITY_INDEX.md`](restricted-endgame-winning-regions/REPRODUCIBILITY_INDEX.md) — hash / workflow / verification索引
+- [`restricted-endgame-winning-regions/CURRENT_STATUS.md`](restricted-endgame-winning-regions/CURRENT_STATUS.md) — closure状態とclaim boundary
+- [`restricted-endgame-winning-regions/DECISION_REGISTER.md`](restricted-endgame-winning-regions/DECISION_REGISTER.md) — frozen decisions / no-rescue boundary
+
+**Boundary:** exact claimはfrozen 8-state restricted domainだけに限定される。Bao全体、全Mtaji、全終盤が解けたこと、Baoにcycle/drawがないこと、engine evaluationがgame-theoretically正しいこと、symmetry/isomorphismが成立することは意味しない。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

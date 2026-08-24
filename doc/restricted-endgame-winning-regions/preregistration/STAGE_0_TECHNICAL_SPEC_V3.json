@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "studyId": "REWR-STUDY1",
+  "stageId": "REWR-S0-TECHNICAL-2026-08-24-v3",
+  "supersedesDomainFreezeAttempt": "REWR-S0-MATRIX-SELECTION-2026-08-24-v1",
+  "technicalOnly": true,
+  "scientificOutcomeGenerationAuthorized": false,
+  "scientificTablebaseGenerationAuthorized": false,
+  "basis": {
+    "v2MatrixResultSha256": "df50610aa20bc5dcfdd96560ddb6e9bb9ad48ab142a9abccd6f7691e6a9a4ee1",
+    "v2IndependentVerificationResultSha256": "34731c808cb0447b9f73f4f0d080fa920c1e79b08ad41b28c87632b7efbaa208",
+    "noScientificOutcomeInspected": true
+  },
+  "candidate": {
+    "rootSetSha256": "01b83d448363c322a794cacca4aea8a851f0c017b15a4742a35a46b95204631c",
+    "rootKeys": ["03c06cf9887e0c5efac2a32934bf0e7c9275bcb811414d582a439c2aa96c4312"],
+    "origin": {"nonEmptyCap": 20, "legalMoveCap": 1, "prefixSize": 1},
+    "v2ObservedTechnicalStop": "STATE-LIMIT",
+    "v2ObservedStateCount": 250001,
+    "v2ObservedEdgeCount": 251989,
+    "v2ObservedMaxMoveMicrosteps": 49,
+    "v2ObservedElapsedMs": 17847.502724,
+    "v2ObservedHeapUsedBytesAfter": 432665232,
+    "selectionRationale": "single-root, root legal-move cap 1, low observed move-internal work, and v2 failure solely by state-resource cap rather than recurrence/nontermination semantics"
+  },
+  "expandedTechnicalLimits": {
+    "maximumStatesTechnicalStop": 1000000,
+    "maximumEdgesTechnicalStop": 8000000,
+    "maximumMoveMicrostatesTechnicalStop": 1000000,
+    "nodeMaxOldSpaceMiB": 6144,
+    "workflowTimeoutMinutes": 30
+  },
+  "decisionRule": {
+    "ifCompleteAndIndependentFullGraphEquality": "USE-V3-DOMAIN-FOR-STAGE-1-FREEZE",
+    "ifStateLimitOrEdgeLimitOrMoveNonterminationOrAdminCutoffOrVerificationMismatch": "USE-V2-SELECTED-8-STATE-DOMAIN-FOR-STAGE-1-FREEZE",
+    "additionalCapExpansionAfterV3": false,
+    "fallbackV2RootSetSha256": "cca1db8aaaee310ed7a4113f97a9a802bab8d4ab19c464d1fca471ff41fd954a",
+    "fallbackV2RootKeys": ["fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33"],
+    "fallbackV2StateCount": 8,
+    "fallbackV2EdgeCount": 7,
+    "fallbackV2StateSetSha256": "95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307",
+    "fallbackV2TransitionSetSha256": "33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11"
+  },
+  "forbiddenSelectionInputs": [
+    "WIN", "LOSS", "RECURRENT", "formalDRAW", "absoluteWinner", "DTF", "DTW", "DTM",
+    "optimalMoveSet", "engineEvaluation", "searchValue", "empiricalContinuationOutcome"
+  ]
+}

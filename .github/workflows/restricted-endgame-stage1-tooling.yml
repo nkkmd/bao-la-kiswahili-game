@@ -1,0 +1,84 @@
+name: Restricted endgame Stage 1 tooling validation
+
+on:
+  push:
+    branches:
+      - research/restricted-endgame-winning-regions
+    paths:
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
+      - "tools/experiments/validate-restricted-endgame-stage1-spec.js"
+      - "tools/experiments/run-restricted-endgame-stage1-exact.js"
+      - "tools/experiments/verify-restricted-endgame-stage1-exact.js"
+      - "test/restricted-endgame-retrograde.test.js"
+      - "test/restricted-endgame-retrograde-independent.test.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-independent-verifier.test.js"
+      - "test/restricted-endgame-tablebase.test.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_SPEC.json"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json"
+      - ".github/workflows/restricted-endgame-stage1-tooling.yml"
+  pull_request:
+    paths:
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
+      - "tools/experiments/validate-restricted-endgame-stage1-spec.js"
+      - "tools/experiments/run-restricted-endgame-stage1-exact.js"
+      - "tools/experiments/verify-restricted-endgame-stage1-exact.js"
+      - "test/restricted-endgame-retrograde.test.js"
+      - "test/restricted-endgame-retrograde-independent.test.js"
+      - "test/restricted-endgame-transition.test.js"
+      - "test/restricted-endgame-independent-verifier.test.js"
+      - "test/restricted-endgame-tablebase.test.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_SPEC.json"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json"
+      - ".github/workflows/restricted-endgame-stage1-tooling.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tooling-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate production retrograde semantics
+        run: node test/restricted-endgame-retrograde.test.js
+      - name: Cross-check independent retrograde implementation
+        run: node test/restricted-endgame-retrograde-independent.test.js
+      - name: Validate production/independent transition primitives
+        run: |
+          node test/restricted-endgame-transition.test.js
+          node test/restricted-endgame-independent-verifier.test.js
+      - name: Cross-check complete tablebase materialization on technical fixture
+        run: node test/restricted-endgame-tablebase.test.js
+      - name: Validate frozen contract if present
+        run: |
+          if [ -f doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_SPEC.json ]; then
+            node -e "const V=require('./tools/experiments/validate-restricted-endgame-stage1-spec.js'); const c=V.loadFrozenContract(); console.log(JSON.stringify({specSha256:c.specSha256,domainSha256:c.domainSha256},null,2));"
+          fi
+      - name: Assert scientific runner is blocked before authorization
+        run: |
+          AUTH=doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json
+          if [ ! -f "$AUTH" ] && [ -f doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_SPEC.json ]; then
+            if node tools/experiments/run-restricted-endgame-stage1-exact.js --output /tmp/should-not-exist.json; then
+              echo "Scientific runner unexpectedly succeeded without authorization" >&2
+              exit 1
+            fi
+            test ! -e /tmp/should-not-exist.json
+          fi

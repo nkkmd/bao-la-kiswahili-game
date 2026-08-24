@@ -1,0 +1,58 @@
+name: Restricted endgame Stage 1 prefreeze audit
+
+on:
+  push:
+    branches:
+      - research/restricted-endgame-winning-regions
+    paths:
+      - "tools/experiments/hash-restricted-endgame-stage1-sources.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
+      - "tools/experiments/validate-restricted-endgame-stage1-spec.js"
+      - "tools/experiments/run-restricted-endgame-stage1-exact.js"
+      - "tools/experiments/verify-restricted-endgame-stage1-exact.js"
+      - ".github/workflows/restricted-endgame-stage1-prefreeze.yml"
+  pull_request:
+    paths:
+      - "tools/experiments/hash-restricted-endgame-stage1-sources.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde.js"
+      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase.js"
+      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
+      - "tools/experiments/validate-restricted-endgame-stage1-spec.js"
+      - "tools/experiments/run-restricted-endgame-stage1-exact.js"
+      - "tools/experiments/verify-restricted-endgame-stage1-exact.js"
+      - ".github/workflows/restricted-endgame-stage1-prefreeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prefreeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate all prefreeze solver fixtures
+        run: |
+          node test/restricted-endgame-retrograde.test.js
+          node test/restricted-endgame-retrograde-independent.test.js
+          node test/restricted-endgame-transition.test.js
+          node test/restricted-endgame-independent-verifier.test.js
+          node test/restricted-endgame-tablebase.test.js
+      - name: Emit frozen-source SHA-256 candidates
+        run: node tools/experiments/hash-restricted-endgame-stage1-sources.js
+      - name: Validate authorization lifecycle
+        run: |
+          AUTH=doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json
+          if [ -e "$AUTH" ]; then
+            node -e "const V=require('./tools/experiments/validate-restricted-endgame-stage1-spec.js'); const c=V.loadFrozenContract(); const a=V.loadAuthorization(c); console.log(JSON.stringify({state:'AUTHORIZED',specSha256:c.specSha256,domainSha256:c.domainSha256,authorizationSha256:a.authorizationSha256},null,2));"
+          else
+            echo '{"state":"PREFREEZE","authorizationPresent":false}'
+          fi

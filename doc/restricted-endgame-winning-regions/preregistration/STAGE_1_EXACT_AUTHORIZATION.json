@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "studyId": "REWR-STUDY1",
+  "stageId": "REWR-S1-EXACT-2026-08-24-v1",
+  "authorizationId": "REWR-S1-EXACT-AUTH-2026-08-24-v2",
+  "stage1ExactGenerationAuthorized": true,
+  "scientificInferenceAuthorized": true,
+  "specSha256": "ec20df4621b7d8e50fd979bee4681c7eadb5bf2138c14911cb6ab97acd0738cc",
+  "domainSha256": "acfc25413f9c237569884f166ed971ad9ee9395665ce96ec6d094d8ed4a6c56a",
+  "authorizedSourceFileSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "doc/RULES_BASELINE.md": "083c347fc222976ee84e488c0b14d5b71549d67f1ea918fe3fe3972904f25f8f",
+    "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+    "tools/experiments/lib/restricted-endgame-stage0.js": "ffc7c4a8d5fe7e2fd4a053b6a7c78d5064a729b4f1ae2d34d705c46c156a3749",
+    "tools/experiments/lib/restricted-endgame-transition.js": "7c46154b9c50823bc7b4e1bc9f8f687cd6e9e6b5e50e3178f75e26fa39c26b73",
+    "tools/experiments/lib/restricted-endgame-independent-verifier.js": "b3edda4283793eddc238f11bfc57d98b291ef9b5786f440573e79d3f9c99c3ee",
+    "tools/experiments/lib/restricted-endgame-retrograde.js": "8d3aa85b79104413a0e3ad0a66766713f0c3f5c7408142c761d0def9e62dbdd5",
+    "tools/experiments/lib/restricted-endgame-retrograde-independent.js": "427ffa7784bc649a3f83418745b2e75856b669437cced8d1a1c1096edf944855",
+    "tools/experiments/lib/restricted-endgame-tablebase.js": "d8cd54a03b97c148f81e7d122621d7bc7ddbdc0f5e192d0dac1cfab9c1f893c3",
+    "tools/experiments/lib/restricted-endgame-tablebase-independent.js": "b170602bf8900a8979cf14644a8d7503e239cab3872a3818bd7740186a1802e1",
+    "tools/experiments/validate-restricted-endgame-stage1-spec.js": "aa284e00416c3e9486c5da224547d1c3fdb5c2c692eba59367fe1463c79a1cb0",
+    "tools/experiments/run-restricted-endgame-stage1-exact.js": "d08611f120d0cd00e34b82efcdfab50928bb6ba17300ffb8812505fa4c457213",
+    "tools/experiments/verify-restricted-endgame-stage1-exact.js": "d0b3ccffa1dc9e1fdff6ed0f9cb4dbf3725397c892003f60c4d0c1b4d1a8e319"
+  },
+  "authorizationBoundary": {
+    "domainRetuningAllowed": false,
+    "sourceModificationAllowedBeforeRun": false,
+    "additionalStage0ExpansionAllowed": false,
+    "outcomeDependentRedesignAllowed": false,
+    "claimLimitedToFrozenDomain": true,
+    "supersedesRevokedAuthorizationV1": true
+  }
+}

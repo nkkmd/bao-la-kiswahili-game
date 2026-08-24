@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.10.1  
+Version: 1.11.0  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-24
@@ -23,9 +23,11 @@ Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完�
 
 Critical Positions / Outcome Branching Study 1も完了した。fresh 3,072-game Stage 1 corpusからoutcome-blindに600 roots（Namua/Mtaji 300/300）を選択し、2,666 exact root-move interventionsを測定・独立再測定した。全600 rootsがprimary-estimableで、`D_range >= 0.30`のhigh-divergence rootsは139/600（Namua 52、Mtaji 87）だった。一方、frozen one-to-two-token structural grammarから得た1,183 candidate auditsのうちpromotion gateをすべて通過したcandidateは0で、Stage 2 formal targetは形成されなかった。Stage 2 generationはauthorize/executeせず、reserved seeds `22700001..22706144`は未消費のままStudy 1をnegative exploratory resultとして閉じた。
 
+Restricted Endgame / Winning Regions Study 1も完了した。outcome-blindなStage 0 technical selectionと独立graph reconstructionを経て、standard initial stateから到達証明を持つ1つのMtaji rootのcomplete forward closure（8 states / 7 legal edges）をprospectively freezeした。Stage 1ではproduction solverと別実装のindependent verifierが全state rows、state/edge hashes、value、DTF、optimal movesを完全一致させ、formal decisionは`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`となった。frozen rootはPlayer 0の`WIN`, DTF=3で、unique optimal moveは`capture:mtaji:1:4:left:::false`である。このexact claimは8-state bounded domainだけに限定される。
+
 完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。
 
-2026-08-24の研究運用上、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。この制約下では、次のmachine-only research sequenceを **限定終盤と必勝圏 → 対称性と同型局面 → 状態空間とゲーム木複雑度** とする。この順序決定は既存Studyのscientific resultを変更するものではなく、各新規Studyのdomain・endpoint・decision ruleは開始時にprospectively freezeする。
+2026-08-24の研究運用上、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。machine-only sequenceの第1項だった**限定終盤と必勝圏 Study 1は完了**したため、次は **対称性と同型局面 → 状態空間とゲーム木複雑度** の順で進む。この順序決定は既存Studyのscientific resultを変更するものではなく、各新規Studyのdomain・endpoint・decision ruleは開始時にprospectively freezeする。
 
 ## 2. 既存研究との境界
 
@@ -47,6 +49,7 @@ Critical Positions / Outcome Branching Study 1も完了した。fresh 3,072-game
 - Position Evaluation / Win-Rate Calibration Study 1 — [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
 - Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`）
 - Critical Positions / Outcome Branching Study 1 — [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md)（Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed）
+- Restricted Endgame / Winning Regions Study 1 — [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md)（Study 1 complete / `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` / 8 states / 7 edges）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -363,29 +366,35 @@ Calibration Study 1のmappingをformal validated win probabilityとして前提�
 
 ---
 
-### 4.8 限定終盤と必勝圏
+### 4.8 限定終盤と必勝圏 — Study 1完了
 
-#### 現在の実行状態
+#### 現在の状態
 
-**次に着手するmachine-only研究。** 現時点では新Studyのdomain・state cap・terminal/cycle semantics・retrograde rule・decision ruleは未freezeであり、開始時にprospectively定義する。
+**Study 1 complete / formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`。**
 
-#### 中心課題
+- 初見向け概要: [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`restricted-endgame-winning-regions/STUDY_1_FINAL_REPORT.md`](restricted-endgame-winning-regions/STUDY_1_FINAL_REPORT.md)
+- Canonical oracle: [`restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json`](restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json)
 
-完全なゲーム解析ではなく、制約された終盤局面を列挙・後退解析し、必勝・必敗・循環・勝利距離を求める。
+Study 1ではMtaji-only、historically reachable root、raw state identity、no symmetry reduction、complete legal forward closureを採用した。Outcome-blind Stage 0 selectionでfinal domainを固定し、Stage 1 exact solutionとindependent full verificationを完了した。
 
-#### 対象候補
+```text
+roots = 1
+states = 8
+edges = 7
+TERMINAL = 4
+WIN = 3
+LOSS = 1
+RECURRENT = 0
+```
 
-- reserveが0
-- nyumbaなし
-- 総種数が一定以下
-- 非空穴数が一定以下
-- 合法手数が少ない
-- 特定の種数分布に限定する
+Frozen rootはPlayer 0 to moveの`WIN`、absoluteWinner = 0、`DTF = 3`、unique optimal move = `capture:mtaji:1:4:left:::false`。より大きいone-shot candidateは423,733 states / 426,938 edgesまで展開したが、1着手が1,000,000 microstepsの`ADMIN-CUTOFF`へ達したためexact不適格となり、cutoffをdraw/lossへ読み替えず追加cap拡張も行わなかった。
 
-#### 期待成果
+Exact claimはfrozen 8-state domainだけに限定する。Bao全体、全Mtaji、全終盤、cycle absence、engine evaluation correctness、symmetry成立は主張しない。
 
-Bao終盤テーブルベース、終盤完全手、必勝問題、評価関数およびルールエンジンの検証用正解データ。
+#### 後続利用
 
+このraw exact oracleを次のSymmetry / Isomorphic Positions Studyで候補変換がstate value・optimal move set・DTFを保存するか検証するground truthとして利用する。Study 1自体へsymmetry reductionをretrofitしない。
 ---
 
 ### 4.9 重要局面と勝敗分岐点 — Study 1完了
@@ -476,7 +485,7 @@ Human evidenceが必要なclaimをmachine self-playで代替しない。
 
 #### 現在の実行状態
 
-**限定終盤と必勝圏 Study 1の後に着手予定。** 限定終盤で得られるbounded exact game-theoretic oracleを、将来のsymmetry/isomorphism validationにも利用できる順序を採用する。
+**次に着手するmachine-only研究。** Restricted Endgame / Winning Regions Study 1で得られたraw 8-state exact oracleをground truthとして利用し、候補変換が合法手グラフ、game-theoretic value、optimal move set、DTFを保存するかをprospectively検証する。
 
 #### 中心課題
 
@@ -501,7 +510,7 @@ Human evidenceが必要なclaimをmachine self-playで代替しない。
 
 #### 現在の実行状態
 
-**対称性と同型局面 Study 1の後に着手予定。** raw state countとsymmetry-reduced canonical state countを区別できる基盤を先に確立する。
+**対称性と同型局面 Study 1の後に着手予定。** raw state countと、独立検証されたsymmetry-reduced canonical state countを区別できる基盤を先に確立する。
 
 #### 中心課題
 
@@ -551,12 +560,12 @@ Critical Positions / Outcome Branching Study 1によって、全exact legal root
 
 ### 第3段階: 理論および完全解析への展開
 
-1. **[次に着手] 限定終盤と必勝圏**
-2. **[その後] 対称性と同型局面**
+1. **[完了] 限定終盤と必勝圏 — Study 1 (`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`)**
+2. **[次に着手] 対称性と同型局面**
 3. **[その後] 状態空間とゲーム木複雑度**
 4. **[後続候補] 逆転可能性と勝負手**
 
-この順序を現行のmachine-only research sequenceとする。まず限定終盤でsymmetry reductionに依存しないbounded exact solutionを確立し、そのexact oracleを後続のsymmetry/isomorphism validationへ利用する。次にcanonical representationを確立したうえで、raw state spaceとsymmetry-reduced state spaceを区別する状態空間研究へ進む。
+限定終盤と必勝圏 Study 1でsymmetry reductionに依存しないbounded exact solutionを確立した。次はそのraw exact oracleを後続のsymmetry/isomorphism validationへ利用し、canonical representationを独立検証したうえで、raw state spaceとsymmetry-reduced state spaceを区別する状態空間研究へ進む。
 
 ## 6. 特に優先する三本柱
 

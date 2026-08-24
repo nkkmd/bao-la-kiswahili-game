@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "studyId": "REWR-STUDY1",
+  "domainId": "REWR-S1-DOMAIN-2026-08-24-v1",
+  "title": "Restricted Endgame / Winning Regions Study 1 frozen exact domain",
+  "phase": "mtaji",
+  "symmetryReduction": false,
+  "populationType": "historically-reachable-root complete legal forward closure",
+  "domainDefinition": "D(R) = the complete raw-state forward closure under every exact legal move from the single frozen historically reachable Mtaji root R",
+  "stateEligibilityAtRoot": {
+    "phase": "mtaji",
+    "reserve": [
+      0,
+      0
+    ],
+    "houseOwned": [
+      false,
+      false
+    ],
+    "pending": [
+      0,
+      0
+    ],
+    "winner": null,
+    "totalKete": 64
+  },
+  "reachability": {
+    "historicalWitnessRequired": true,
+    "witnessRegeneratedAtExecution": true,
+    "sourceInitialState": "BaoEngine.initialState()",
+    "technicalSeedBlock": {
+      "seedBase": 22800001,
+      "seedEnd": 22800256
+    },
+    "witnessPolicy": "regenerate the exact seeded trajectory to the frozen ply and require root identity plus stable witness hash equality"
+  },
+  "roots": [
+    {
+      "rootStateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+      "seed": 22800188,
+      "ply": 48,
+      "nonEmptyPitCount": 16,
+      "legalMoveCount": 1,
+      "witnessStableSha256": "a57e086f6e85d46052f9bacb0ad1f24851e04935b3bcd9ee41647aaa43228fa2",
+      "rootStateStableSha256": "179e129c58dab07e5f6177b22e3d1d0914f76a334708c4a9bab8c4b573a6098b",
+      "state": {
+        "pits": [
+          [
+            [
+              3,
+              1,
+              6,
+              2,
+              3,
+              0,
+              10,
+              0
+            ],
+            [
+              10,
+              0,
+              11,
+              0,
+              5,
+              1,
+              4,
+              3
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 49,
+        "pending": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "transitionClosure": {
+    "requirement": "complete-forward-closure-over-every-exact-legal-move",
+    "boundaryHeuristicsAllowed": false,
+    "engineEvaluationAtBoundaryAllowed": false,
+    "administrativeCutoffAsGameOutcomeAllowed": false,
+    "runtimeRelayLimitAsTerminalAllowed": false
+  },
+  "expectedGraph": {
+    "stateCount": 8,
+    "edgeCount": 7,
+    "stateSetSha256": "95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307",
+    "transitionSetSha256": "33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11",
+    "maximumMoveMicrostepsObservedStage0": 10
+  },
+  "stage0SelectionProvenance": {
+    "v2SelectionRuleSha256": "2055de803cdb65e64519d88e002ee7db2ce57aafbc8f020133c1d5bb7e3cb78f",
+    "selectedRootSetSha256": "cca1db8aaaee310ed7a4113f97a9a802bab8d4ab19c464d1fca471ff41fd954a",
+    "matrixResultSha256": "df50610aa20bc5dcfdd96560ddb6e9bb9ad48ab142a9abccd6f7691e6a9a4ee1",
+    "independentGraphVerificationResultSha256": "34731c808cb0447b9f73f4f0d080fa920c1e79b08ad41b28c87632b7efbaa208",
+    "v3ExpansionDecision": "V3-INFEASIBLE-USE-V2-FALLBACK",
+    "v3ResultSha256": "ba407b4b6afb53da7c72ea15e6ac600ad9efaf621a988fb5937398c4bc79fc41",
+    "additionalCapExpansionAuthorized": false
+  },
+  "claimBoundary": {
+    "exactWithinFrozenDomainOnly": true,
+    "fullBaoSolved": false,
+    "allMtajiSolved": false,
+    "allEndgamesSolved": false
+  }
+}
