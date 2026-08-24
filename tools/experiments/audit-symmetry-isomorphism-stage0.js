@@ -16,8 +16,9 @@ const {
 const TECH_SEED_START = 22900001;
 const TECH_SEED_END = 22900032;
 const MAX_TRAJECTORY_PLY = 120;
-const ROOT_CAP_PER_PHASE = 8;
+const ROOT_CAP_PER_DOMAIN = 8;
 const DEPTHS = [1, 2, 3];
+const DOMAIN_IDS = ["namua", "mtaji", "mtaji-houseless"];
 
 function sha256Buffer(buffer) {
   return crypto.createHash("sha256").update(buffer).digest("hex");
@@ -48,14 +49,22 @@ function trajectory(seed) {
   return { seed, rows, guardHit };
 }
 
-function selectTechnicalRoots(trajectories, phase) {
+function matchesDomain(state, ply, domainId) {
+  if (state.winner !== null) return false;
+  if (domainId === "namua") return state.phase === "namua" && ply >= 8;
+  if (domainId === "mtaji") return state.phase === "mtaji";
+  if (domainId === "mtaji-houseless") {
+    return state.phase === "mtaji"
+      && state.reserve?.[0] === 0 && state.reserve?.[1] === 0
+      && state.houseOwned?.[0] === false && state.houseOwned?.[1] === false;
+  }
+  throw new Error(`Unknown technical domain: ${domainId}`);
+}
+
+function selectTechnicalRoots(trajectories, domainId) {
   const byKey = new Map();
   for (const item of trajectories) {
-    const candidate = item.rows.find(({ state, ply }) => (
-      state.winner === null
-      && state.phase === phase
-      && (phase !== "namua" || ply >= 8)
-    ));
+    const candidate = item.rows.find(({ state, ply }) => matchesDomain(state, ply, domainId));
     if (!candidate) continue;
     const key = rawStateKey(candidate.state);
     if (!byKey.has(key)) {
@@ -67,7 +76,9 @@ function selectTechnicalRoots(trajectories, phase) {
       });
     }
   }
-  return [...byKey.values()].sort((a, b) => a.stateKey.localeCompare(b.stateKey)).slice(0, ROOT_CAP_PER_PHASE);
+  return [...byKey.values()]
+    .sort((a, b) => a.stateKey.localeCompare(b.stateKey))
+    .slice(0, ROOT_CAP_PER_DOMAIN);
 }
 
 function expandLocalGraph(roots, depth) {
@@ -132,21 +143,22 @@ function main() {
   const trajectories = [];
   for (let seed = TECH_SEED_START; seed <= TECH_SEED_END; seed += 1) trajectories.push(trajectory(seed));
 
-  const phaseRoots = {
-    namua: selectTechnicalRoots(trajectories, "namua"),
-    mtaji: selectTechnicalRoots(trajectories, "mtaji"),
-  };
+  const domainRoots = Object.fromEntries(
+    DOMAIN_IDS.map((domainId) => [domainId, selectTechnicalRoots(trajectories, domainId)]),
+  );
   const profiles = [];
-  for (const phase of ["namua", "mtaji"]) {
+  for (const domainId of DOMAIN_IDS) {
     for (const depth of DEPTHS) {
-      profiles.push({ phase, ...expandLocalGraph(phaseRoots[phase], depth) });
+      profiles.push({ domainId, ...expandLocalGraph(domainRoots[domainId], depth) });
     }
   }
 
   const result = {
     schemaVersion: 1,
     studyId: "SIP-STUDY1",
-    stageId: "SIP-STAGE0-TECHNICAL-2026-08-24-v1",
+    stageId: "SIP-STAGE0-TECHNICAL-2026-08-24-v2",
+    supersedesTechnicalStageId: "SIP-STAGE0-TECHNICAL-2026-08-24-v1",
+    supersessionReason: "Adds the prospectively frozen mtaji-houseless structural applicability stratum before any formal candidate outcome generation.",
     scientificOutcomeGenerated: false,
     candidateOutcomeInspected: false,
     technicalSeedBlock: {
@@ -163,8 +175,8 @@ function main() {
         Object.keys(DEFINITIONS).map((candidateId) => [candidateId, definitionHash(candidateId)]),
       ),
     },
-    technicalRootInventory: Object.fromEntries(Object.entries(phaseRoots).map(([phase, rows]) => [
-      phase,
+    technicalRootInventory: Object.fromEntries(Object.entries(domainRoots).map(([domainId, rows]) => [
+      domainId,
       rows.map(({ stateKey, seed, ply }) => ({ stateKey, seed, ply })),
     ])),
     graphProfiles: profiles,
@@ -172,6 +184,7 @@ function main() {
     formalSeedBlockConsumed: false,
     notes: [
       "No symmetry/isomorphism mismatch rate is computed by this technical benchmark.",
+      "The mtaji-houseless stratum is a predeclared structural applicability domain, not an outcome-based subset.",
       "Runtime relay-limit hits are administrative incompleteness, never game-theoretic or symmetry outcomes.",
       "Stage 1 root count/depth must be frozen later using only these technical quantities.",
     ],
