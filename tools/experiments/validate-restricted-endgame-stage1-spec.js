@@ -35,6 +35,7 @@ function validateDomain(domain) {
     || domain.symmetryReduction !== false
     || domain.phase !== "mtaji"
     || domain.reachability?.historicalWitnessRequired !== true
+    || domain.reachability?.witnessRegeneratedAtExecution !== true
     || !Array.isArray(domain.roots) || domain.roots.length !== 1
     || domain.expectedGraph?.stateCount !== 8
     || domain.expectedGraph?.edgeCount !== 7
@@ -46,8 +47,13 @@ function validateDomain(domain) {
   if (root.rootStateKey !== "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33"
     || root.seed !== 22800188 || root.ply !== 48
     || root.nonEmptyPitCount !== 16 || root.legalMoveCount !== 1
-    || !root.state || !root.witness || !Array.isArray(root.witness.moves)) {
-    throw new Error("Invalid frozen Stage 1 root witness");
+    || typeof root.witnessStableSha256 !== "string"
+    || typeof root.rootStateStableSha256 !== "string"
+    || !root.state) {
+    throw new Error("Invalid frozen Stage 1 root witness identity");
+  }
+  if (sha256(stableStringify(root.state)) !== root.rootStateStableSha256) {
+    throw new Error("Frozen Stage 1 root-state stable hash mismatch");
   }
   return domain;
 }
@@ -77,7 +83,7 @@ function validateSpec(spec) {
     || spec.verification?.fullDistanceEqualityRequired !== true
     || spec.failureRules?.domainRetuningAfterOutcomeAllowed !== false
     || spec.failureRules?.additionalStage0CapExpansionAllowed !== false
-    || !Array.isArray(spec.sourceFiles) || spec.sourceFiles.length < 8
+    || !Array.isArray(spec.sourceFiles) || spec.sourceFiles.length < 10
     || !spec.sourceFileSha256 || typeof spec.domainSha256 !== "string") {
     throw new Error("Invalid frozen Stage 1 spec");
   }

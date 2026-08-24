@@ -2,7 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const E = require("../../public/engine.js");
+const S0 = require("./lib/restricted-endgame-stage0.js");
 const T = require("./lib/restricted-endgame-transition.js");
 const TB = require("./lib/restricted-endgame-tablebase.js");
 const Contract = require("./validate-restricted-endgame-stage1-spec.js");
@@ -17,34 +17,27 @@ function parseArgs(argv) {
   return args;
 }
 
-function replayFrozenWitness(root) {
-  let state = E.initialState();
-  for (let ply = 0; ply < root.witness.moves.length; ply += 1) {
-    const row = root.witness.moves[ply];
-    const legal = E.moveVariants(state).slice().sort((a, b) => T.moveKey(a).localeCompare(T.moveKey(b)));
-    const move = legal.find((candidate) => T.moveKey(candidate) === row.moveKey);
-    if (!move) throw new Error(`Frozen witness move is not legal at ply ${ply}`);
-    const before = T.directStateKey(state);
-    if (before !== row.beforeStateKey) throw new Error(`Frozen witness before-state mismatch at ply ${ply}`);
-    const next = E.applyMove(state, move).state;
-    if (next.reason === "relay-limit") throw new Error(`Frozen witness hit runtime relay guard at ply ${ply}`);
-    const after = T.directStateKey(next);
-    if (after !== row.afterStateKey) throw new Error(`Frozen witness after-state mismatch at ply ${ply}`);
-    state = next;
+function regenerateFrozenWitness(root) {
+  const trajectory = S0.generateTechnicalTrajectory(root.seed, root.ply);
+  const candidate = trajectory.roots.find((row) => row.rootStateKey === root.rootStateKey && row.ply === root.ply);
+  if (!candidate) throw new Error("Frozen witness root not regenerated");
+  const witnessHash = Contract.sha256(Contract.stableStringify(candidate.witness));
+  if (witnessHash !== root.witnessStableSha256) throw new Error("Frozen witness stable hash mismatch");
+  if (Contract.sha256(Contract.stableStringify(candidate.state)) !== root.rootStateStableSha256) {
+    throw new Error("Frozen regenerated root-state hash mismatch");
   }
-  const rootKey = T.directStateKey(state);
-  if (rootKey !== root.rootStateKey) throw new Error("Frozen witness root mismatch");
-  if (Contract.stableStringify(state) !== Contract.stableStringify(root.state)) {
-    throw new Error("Frozen witness root-state serialization mismatch");
+  if (T.directStateKey(candidate.state) !== root.rootStateKey
+    || Contract.stableStringify(candidate.state) !== Contract.stableStringify(root.state)) {
+    throw new Error("Frozen regenerated root-state mismatch");
   }
-  return state;
+  return candidate.state;
 }
 
 function main(argv = process.argv.slice(2)) {
   const args = parseArgs(argv);
   const contract = Contract.loadFrozenContract();
   const auth = Contract.loadAuthorization(contract);
-  const roots = contract.domain.roots.map(replayFrozenWitness);
+  const roots = contract.domain.roots.map(regenerateFrozenWitness);
   const limits = contract.spec.resourceLimits;
   const started = process.hrtime.bigint();
   const tablebase = TB.solveExactTablebase(roots, {
@@ -90,10 +83,7 @@ function main(argv = process.argv.slice(2)) {
       arch: process.arch,
     },
   };
-  const result = {
-    ...resultCore,
-    resultSha256: Contract.sha256(Contract.stableStringify(resultCore)),
-  };
+  const result = { ...resultCore, resultSha256: Contract.sha256(Contract.stableStringify(resultCore)) };
   fs.mkdirSync(path.dirname(args.output), { recursive: true });
   fs.writeFileSync(args.output, `${JSON.stringify(result, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify({
@@ -111,4 +101,4 @@ function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main();
-module.exports = { main, parseArgs, replayFrozenWitness };
+module.exports = { main, parseArgs, regenerateFrozenWitness };

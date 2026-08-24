@@ -8,6 +8,8 @@ const ROOT = path.resolve(__dirname, "../..");
 const SOURCE_FILES = Object.freeze([
   "public/engine.js",
   "doc/RULES_BASELINE.md",
+  "tools/benchmark.js",
+  "tools/experiments/lib/restricted-endgame-stage0.js",
   "tools/experiments/lib/restricted-endgame-transition.js",
   "tools/experiments/lib/restricted-endgame-independent-verifier.js",
   "tools/experiments/lib/restricted-endgame-retrograde.js",
