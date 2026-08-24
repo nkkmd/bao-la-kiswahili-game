@@ -1,0 +1,101 @@
+name: ORISC Stage 1 formal representation integrity
+
+on:
+  push:
+    branches:
+      - research/oracle-representation-integrity-symmetry-confirmation
+    paths:
+      - "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_1_AUTHORIZATION.json"
+  pull_request:
+    paths:
+      - "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_1_AUTHORIZATION.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formal-stage1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate frozen Stage 1 contract and authorization
+        run: |
+          node - <<'NODE'
+          const V = require('./tools/experiments/validate-orisc-stage1-spec.js');
+          const c = V.loadSpec();
+          const a = V.loadAuthorization(c);
+          console.log(JSON.stringify({
+            stageId: c.spec.stageId,
+            specSha256: c.specSha256,
+            authorizationSha256: a.authorizationSha256,
+            stage2CandidateContractSha256: c.candidateContractSha256
+          }, null, 2));
+          NODE
+
+      - name: Generate production Stage 1 evidence
+        run: |
+          node tools/experiments/run-orisc-stage1-formal.js \
+            --output /tmp/orisc-stage1-production.json \
+            | tee /tmp/orisc-stage1-production-console.json
+
+      - name: Independently reconstruct, verify, and decide
+        run: |
+          node tools/experiments/verify-orisc-stage1-formal.js \
+            --input /tmp/orisc-stage1-production.json \
+            --output /tmp/orisc-stage1-independent-verification.json \
+            | tee /tmp/orisc-stage1-verification-console.json
+
+      - name: Assert decision and no-rescue boundaries
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = JSON.parse(fs.readFileSync('/tmp/orisc-stage1-production.json', 'utf8'));
+          const v = JSON.parse(fs.readFileSync('/tmp/orisc-stage1-independent-verification.json', 'utf8'));
+          const allowed = new Set([
+            'ORACLE-REPRESENTATION-INTEGRITY-CONFIRMED',
+            'ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED',
+            'NON-ESTIMABLE'
+          ]);
+          if (p.finalFormalDecisionGenerated !== false
+              || p.scientificInferenceAuthorized !== false
+              || p.upstreamFormalDecisionChanged !== false
+              || p.upstreamOracleMutated !== false) {
+            throw new Error('Production Stage 1 boundary violation');
+          }
+          if (v.finalFormalDecisionGenerated !== true
+              || v.scientificInferenceAuthorized !== true
+              || v.upstreamFormalDecisionChanged !== false
+              || v.upstreamOracleMutated !== false
+              || !allowed.has(v.formalDecision)) {
+            throw new Error('Independent Stage 1 decision/boundary violation');
+          }
+          if (v.formalDecision !== 'ORACLE-REPRESENTATION-INTEGRITY-CONFIRMED'
+              && v.stage2ExecutionAuthorizedByThisResult !== false) {
+            throw new Error('Stage 2 incorrectly eligible after non-confirmed Stage 1');
+          }
+          console.log(JSON.stringify({
+            formalDecision: v.formalDecision,
+            A_G12: v.crossImplementation.A_G12_passed,
+            identityControlPassed: v.independent.identityControl.passed,
+            stage2ExecutionAuthorizedByThisResult: v.stage2ExecutionAuthorizedByThisResult,
+            productionResultSha256: p.resultSha256,
+            verificationResultSha256: v.resultSha256
+          }, null, 2));
+          NODE
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: orisc-stage1-formal
+          path: |
+            /tmp/orisc-stage1-production.json
+            /tmp/orisc-stage1-independent-verification.json
+            /tmp/orisc-stage1-production-console.json
+            /tmp/orisc-stage1-verification-console.json
+          if-no-files-found: error
+          retention-days: 30
