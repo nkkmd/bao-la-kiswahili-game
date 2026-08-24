@@ -7,6 +7,10 @@ on:
     paths:
       - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json"
       - ".github/workflows/restricted-endgame-stage1-exact.yml"
+  pull_request:
+    paths:
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_AUTHORIZATION.json"
+      - ".github/workflows/restricted-endgame-stage1-exact.yml"
   workflow_dispatch:
 
 permissions:
