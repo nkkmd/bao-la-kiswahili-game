@@ -56,7 +56,7 @@ function main(argv = process.argv.slice(2)) {
   const independent = I.solveIndependentTablebase(roots, {
     maxStates: limits.maximumStates,
     maxEdges: limits.maximumEdges,
-    maxMicrostates: limits.maximumMoveMicrostates,
+    maxMicrostates: limits.administrativeMaximumMoveMicrostates,
   });
   const elapsedMs = Number(process.hrtime.bigint() - started) / 1e6;
 
