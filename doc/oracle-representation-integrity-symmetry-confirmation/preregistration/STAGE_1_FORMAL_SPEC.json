@@ -1,17 +1,24 @@
 {
   "schemaVersion": 1,
+  "specRevision": 2,
   "studyId": "ORISC-STUDY1",
   "stageId": "ORISC-S1-REPRESENTATION-INTEGRITY-2026-08-25-v1",
   "freezeStatus": "FROZEN-BEFORE-STAGE1-FORMAL-OUTCOME",
   "scientificOutcomeGeneratedAtFreeze": false,
   "repositoryBaseMainAtStudyStart": "e8f0a3c360d9e7c9f7f6882fb212a32921040912",
   "studyBranch": "research/oracle-representation-integrity-symmetry-confirmation",
+  "preAuthorizationCorrection": {
+    "priorSpecSha256": "7ebc1cfc5e7b6e503fb8351d7748002809a3cdf2cd4c38ad7b8fb235fdc1d2be",
+    "priorSpecAuthorized": false,
+    "scientificOutcomeGeneratedUnderPriorSpec": false,
+    "reason": "Bind the already-defined formal GitHub Actions orchestration workflow by byte SHA-256 before authorization. No population, endpoint, identity field, gate, decision rule, candidate, seed block, or interpretation boundary changed."
+  },
   "stage0bPrefreeze": {
-    "runId": 32752507379,
-    "jobId": 97512489239,
-    "artifactId": 9529559552,
-    "artifactZipSha256": "d6a32d552eb613f38b815ce08d18dd3719dbe2be6f9729decdc7d989e80c78a7",
-    "resultJsonSha256": "e5091cdf2a9ec98136101a8e236b7804125098d2baf1baf63ddf622aeea7582e",
+    "runId": 32752858110,
+    "jobId": 97513606755,
+    "artifactId": 9529690660,
+    "artifactZipSha256": "6305da6b61c1eaa296ca65696c51f81a0e2eb62072dc5aa1bae4e7c9555e06ec",
+    "resultJsonSha256": "ce37364ad472903bc6449ff402b527e2a5a193a28f2196c3ec2b2ebc1756d581",
     "repositoryFacingOracleSemanticGateEvaluated": false,
     "symmetryCandidateOutcomeEvaluated": false,
     "readyForStage1SpecFreeze": true
@@ -31,6 +38,7 @@
     "specValidator": "tools/experiments/validate-orisc-stage1-spec.js",
     "productionRunner": "tools/experiments/run-orisc-stage1-formal.js",
     "independentVerifier": "tools/experiments/verify-orisc-stage1-formal.js",
+    "formalWorkflow": ".github/workflows/orisc-stage1-formal.yml",
     "stage2CandidateContract": "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_2_CANDIDATE_CONTRACT.json"
   },
   "sourceSha256": {
@@ -48,6 +56,7 @@
     "tools/experiments/validate-orisc-stage1-spec.js": "754058b05d7d4d3d7e85eb10664877067002dd976601a4ac598336de353c1ec2",
     "tools/experiments/run-orisc-stage1-formal.js": "1352e91951658cc980d095555a6bcb21f171149680b446f846a4e0effd3be580",
     "tools/experiments/verify-orisc-stage1-formal.js": "86d7a1622c814176f2b9e0c2a70fb2df1d03e75dd6f1b39e3a12b97f843dcab2",
+    ".github/workflows/orisc-stage1-formal.yml": "0f5e5da13e84e9511a477a8fdfc01133e3a36cc08e908e16a31b71517e3b429f",
     "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_2_CANDIDATE_CONTRACT.json": "6509dc18553d968437d87f7522cacebb4b66f13f15469240075964b72f1c8796"
   },
   "stage2CandidateContractSha256": "6509dc18553d968437d87f7522cacebb4b66f13f15469240075964b72f1c8796",
@@ -65,19 +74,8 @@
     "upstreamOracleMutationAllowed": false
   },
   "rawIdentityContract": {
-    "includedFields": [
-      "pits",
-      "reserve",
-      "houseOwned",
-      "player",
-      "phase",
-      "winner",
-      "pending"
-    ],
-    "excludedFields": [
-      "turn",
-      "reason"
-    ],
+    "includedFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
     "pendingPresenceRequired": true,
     "missingPendingDefaultAllowed": false,
     "serialization": "recursive JSON-compatible canonical serialization with lexicographically sorted object keys and preserved array order",
@@ -142,11 +140,7 @@
     "confirmed": "A-G1 through A-G12 all PASS with exact zero mismatch where applicable",
     "notConfirmed": "A-G12 PASS and at least one mandatory semantic/binding gate A-G1 through A-G11 FAILS in an interpretable exact manner",
     "nonEstimable": "A-G12 FAILS, source identity drifts, reconstruction is incomplete, a technical/resource stop occurs, or another required exact comparison cannot be completed",
-    "labels": [
-      "ORACLE-REPRESENTATION-INTEGRITY-CONFIRMED",
-      "ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED",
-      "NON-ESTIMABLE"
-    ]
+    "labels": ["ORACLE-REPRESENTATION-INTEGRITY-CONFIRMED", "ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED", "NON-ESTIMABLE"]
   },
   "stage2ConditionalGate": {
     "requiresStage1Decision": "ORACLE-REPRESENTATION-INTEGRITY-CONFIRMED",
