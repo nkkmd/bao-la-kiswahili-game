@@ -1,15 +1,16 @@
 # CURRENT_STATUS — Restricted Endgame / Winning Regions Study 1
 
 Updated: 2026-08-24  
-Status: **STUDY 1 COMPLETE / EXACT-SOLVED-WITHIN-FROZEN-DOMAIN / REPOSITORY CLOSURE IN PROGRESS**
+Status: **STUDY 1 COMPLETE / EXACT-SOLVED-WITHIN-FROZEN-DOMAIN / REPOSITORY CLOSURE COMPLETE**
 
 ## Repository identity
 
 ```text
 studyId = REWR-STUDY1
 baseline main HEAD = 626480507710e0095ef8aec6a53c3e4e0318fa4f
-branch = research/restricted-endgame-winning-regions
-Draft PR = #38
+study branch = research/restricted-endgame-winning-regions
+PR = #38 (merged)
+merge commit = c31756ad4d236704c8cc237be5190eac432d67dc
 directory = doc/restricted-endgame-winning-regions/
 ```
 
@@ -28,6 +29,7 @@ Stage 1 authorization v2 = VALID
 Stage 1 production exact solution = COMPLETE
 Stage 1 independent full verification = PASS
 Formal decision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
+Repository integration = COMPLETE
 ```
 
 ## Frozen exact domain
@@ -140,3 +142,17 @@ Not allowed:
 - symmetry transformations preserve value.
 
 No further domain retuning, Stage 0 cap expansion or outcome-dependent root replacement is authorized within Study 1.
+
+## Repository closure
+
+PR #38 was merged to `main` after the complete final CI set passed on study HEAD `81828598430d3bb31f9284d23b7afb4ccabba6b1`. The merge commit is `c31756ad4d236704c8cc237be5190eac432d67dc`.
+
+Central repository integration is complete in:
+
+```text
+README.md
+doc/RESEARCH_INDEX.md
+doc/FUTURE_RESEARCH_AGENDA.md
+```
+
+The next machine-only research item recorded by the agenda is **Symmetry / Isomorphic Positions**. This transition does not modify any result or claim boundary of `REWR-STUDY1`.
