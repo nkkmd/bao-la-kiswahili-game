@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "studyId": "ORISC-STUDY1",
+  "contractId": "ORISC-STAGE2-CANDIDATES-2026-08-25-v1",
+  "freezeStatus": "FROZEN-BEFORE-ORISC-STAGE1-FORMAL-OUTCOME",
+  "stage1OutcomeInspectedAtFreeze": false,
+  "priorSipDiagnosticsKnown": true,
+  "priorSipDiagnosticsUsedAsFormalEvidence": false,
+  "automaticInheritanceFromSipStudy1": false,
+  "semanticPremises": {
+    "frontRow": 0,
+    "backRow": 1,
+    "houseIndex": 4,
+    "pitCoordinates": "player-local-left-to-right",
+    "facingOpponentFrontIndex": "7-index",
+    "sowingRing": "player-local",
+    "rawIdentityFields": [
+      "pits",
+      "reserve",
+      "houseOwned",
+      "player",
+      "phase",
+      "winner",
+      "pending"
+    ],
+    "excludedIdentityFields": [
+      "turn",
+      "reason"
+    ]
+  },
+  "controls": [
+    {
+      "candidateId": "ORISC-C00-IDENTITY",
+      "role": "positive-control",
+      "applicability": "all-stage2-tested-states",
+      "stateMap": "identity",
+      "moveMap": "identity",
+      "winnerPermutation": "identity",
+      "inverseExpectation": "involution"
+    },
+    {
+      "candidateId": "ORISC-C01-LR-NO-DIRECTION-FLIP",
+      "role": "negative-control",
+      "applicability": "phase=mtaji && reserve=[0,0] && houseOwned=[false,false]",
+      "stateMap": "reverse pit index i->7-i for both players/rows; preserve player/winner/reserve/houseOwned/pending/phase",
+      "moveMap": "reverse index i->7-i; deliberately preserve direction; flip side when present",
+      "winnerPermutation": "identity",
+      "inverseExpectation": "involution",
+      "expectedBehavior": "instrumentation-discrimination-only; no target mismatch count is frozen"
+    }
+  ],
+  "scientificCandidates": [
+    {
+      "candidateId": "ORISC-T01-SEAT-SWAP-LOCAL",
+      "applicability": "phase in {namua,mtaji}",
+      "stateMap": {
+        "swapPlayersFor": [
+          "pits",
+          "reserve",
+          "houseOwned",
+          "pending"
+        ],
+        "player": "0<->1",
+        "winner": "0<->1 with null preserved",
+        "phase": "preserve"
+      },
+      "moveMap": {
+        "type": "preserve",
+        "phase": "preserve",
+        "row": "preserve",
+        "index": "preserve",
+        "direction": "preserve",
+        "side": "preserve",
+        "houseChoice": "preserve",
+        "houseTwo": "preserve",
+        "explicitPlayerFieldIfPresent": "0<->1"
+      },
+      "winnerPermutation": "0<->1",
+      "inverseExpectation": "involution",
+      "reachabilityInterpretation": "rule-semantic and transformed-initial reachability only; fixed raw initial state is not preserved",
+      "requiredScopes": [
+        "fresh-namua",
+        "fresh-mtaji",
+        "reconstructed-exact-oracle"
+      ]
+    },
+    {
+      "candidateId": "ORISC-T02-LR-MTAJI-HOUSELESS",
+      "applicability": "phase=mtaji && reserve=[0,0] && houseOwned=[false,false]",
+      "stateMap": {
+        "pits": "reverse pit index i->7-i for both players and both rows",
+        "reserve": "preserve",
+        "houseOwned": "preserve",
+        "pending": "preserve",
+        "player": "preserve",
+        "winner": "preserve",
+        "phase": "preserve"
+      },
+      "moveMap": {
+        "index": "i->7-i",
+        "direction": "left<->right",
+        "side": "left<->right",
+        "row": "preserve",
+        "type": "preserve",
+        "phase": "preserve",
+        "houseChoice": "preserve",
+        "houseTwo": "preserve"
+      },
+      "winnerPermutation": "identity",
+      "inverseExpectation": "involution",
+      "reachabilityInterpretation": "bounded rule-semantic isomorphism; no full standard-initial witness preservation claim",
+      "requiredScopes": [
+        "fresh-mtaji-houseless",
+        "reconstructed-exact-oracle"
+      ]
+    },
+    {
+      "candidateId": "ORISC-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS",
+      "applicability": "phase=mtaji && reserve=[0,0] && houseOwned=[false,false]",
+      "stateMap": "composition ORISC-T01 then ORISC-T02",
+      "moveMap": "composition ORISC-T01 then ORISC-T02",
+      "winnerPermutation": "0<->1",
+      "inverseExpectation": "involution",
+      "reachabilityInterpretation": "bounded rule-semantic isomorphism; no full standard-initial witness preservation claim",
+      "requiredScopes": [
+        "fresh-mtaji-houseless",
+        "reconstructed-exact-oracle"
+      ]
+    }
+  ],
+  "candidateDecisions": [
+    {
+      "outcomeId": "ORISC-O01-T01",
+      "candidateId": "ORISC-T01-SEAT-SWAP-LOCAL",
+      "requiredScopes": [
+        "fresh-namua",
+        "fresh-mtaji",
+        "reconstructed-exact-oracle"
+      ]
+    },
+    {
+      "outcomeId": "ORISC-O02-T02",
+      "candidateId": "ORISC-T02-LR-MTAJI-HOUSELESS",
+      "requiredScopes": [
+        "fresh-mtaji-houseless",
+        "reconstructed-exact-oracle"
+      ]
+    },
+    {
+      "outcomeId": "ORISC-O03-T03",
+      "candidateId": "ORISC-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS",
+      "requiredScopes": [
+        "fresh-mtaji-houseless",
+        "reconstructed-exact-oracle"
+      ]
+    }
+  ],
+  "freshPopulation": {
+    "seedBlock": {
+      "start": 23110001,
+      "end": 23110128,
+      "count": 128
+    },
+    "repositoryExactEndpointCollisionSearchAtFreeze": {
+      "query": "23110001",
+      "matches": 0
+    },
+    "maximumTrajectoryPly": 160,
+    "requiredRootCountPerStratum": 12,
+    "localExpansionDepth": 4,
+    "strata": [
+      "namua",
+      "mtaji",
+      "mtaji-houseless"
+    ],
+    "selectionRule": {
+      "namua": "first nonterminal valid Namua state at ply>=8 per seed; deduplicate by ORISC raw key; ascending key; first 12",
+      "mtaji": "first nonterminal valid Mtaji state per seed; deduplicate by ORISC raw key; ascending key; first 12",
+      "mtajiHouseless": "first nonterminal valid Mtaji state with reserve=[0,0] and houseOwned=[false,false] per seed; deduplicate by ORISC raw key; ascending key; first 12"
+    },
+    "outcomeInputsForbidden": [
+      "candidate mismatch counts",
+      "candidate pass/fail labels",
+      "oracle representation result",
+      "oracle value or DTF",
+      "canonical orbit sizes"
+    ],
+    "shortageRule": "required scope becomes NON-ESTIMABLE; do not extend seed block or lower root requirement",
+    "runtimeGuardRule": "required scope becomes NON-ESTIMABLE; never classify runtime guard as semantic mismatch",
+    "postOutcomeDepthChangeAllowed": false,
+    "postOutcomeRootReplacementAllowed": false,
+    "postOutcomeSeedExtensionAllowed": false
+  },
+  "stage2Gates": {
+    "B-G1": "source and candidate contract identity",
+    "B-G2": "applicability and transformed-state validity",
+    "B-G3": "state inverse/bijection",
+    "B-G4": "exact move-set bijection using moveVariants where required",
+    "B-G5": "move inverse/bijection",
+    "B-G6": "exact transition commutation",
+    "B-G7": "terminal equivalence",
+    "B-G8": "winner equivariance",
+    "B-G9": "graph node/edge isomorphism on declared bounded scope",
+    "B-G10": "reconstructed exact-oracle value/DTF/optimal-move preservation where required",
+    "B-G11": "production/independent equality"
+  },
+  "decisionRules": {
+    "validated": "all required scopes and all applicable exact gates pass with zero mismatch and B-G11 PASS",
+    "notValidated": "at least one interpretable exact semantic mismatch occurs with production/independent agreement",
+    "nonEstimable": "required verification is incomplete or production/independent implementations disagree",
+    "labels": [
+      "VALIDATED-BOUNDED-ISOMORPHISM",
+      "NOT-VALIDATED",
+      "NON-ESTIMABLE"
+    ]
+  },
+  "conditionalAuthorization": {
+    "stage2ExecutionRequiresStage1Confirmed": true,
+    "stage2ExecutionRequiresIdentityPass": true,
+    "stage2ExecutionRequiresStage1ProductionIndependentEquality": true,
+    "separateStage2AuthorizationRequired": true,
+    "defaultIfAnyConditionFails": "NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "noRescueFirewall": [
+    "no candidate repair after ORISC Stage 1 or Stage 2 outcome generation",
+    "no applicability narrowing after outcome",
+    "no threshold relaxation from exact zero mismatch",
+    "no seed extension",
+    "no root-count reduction",
+    "no local-depth reduction",
+    "no favorable subgroup selection",
+    "no negative-control tuning",
+    "no reuse of SIP zero-mismatch observations as ORISC formal evidence"
+  ]
+}
