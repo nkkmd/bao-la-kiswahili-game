@@ -1,104 +1,36 @@
-name: Symmetry Isomorphism Stage 1 Formal
+name: Symmetry Isomorphism Stage 1 — Closed Study Integrity Check
 
 on:
-  push:
-    branches:
-      - research/symmetry-isomorphic-positions
-    paths:
-      - "doc/symmetry-isomorphic-positions/preregistration/STAGE_1_AUTHORIZATION.json"
-      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-one-shot-trigger.md"
-      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-archive-rerun.md"
-  pull_request:
-    branches:
-      - research/symmetry-isomorphic-positions
-    paths:
-      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-rerun-trigger.md"
-      - ".github/workflows/symmetry-isomorphism-stage1-formal.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  formal:
+  closed-study-integrity:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Regression and frozen-source syntax checks
-        run: |
-          node test/engine.test.js
-          node test/symmetry-isomorphism-stage0.test.js
-          node --check tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js
-          node --check tools/experiments/run-symmetry-isomorphism-stage1-formal.js
-          node --check tools/experiments/verify-symmetry-isomorphism-stage1-formal.js
-      - name: Re-materialize frozen source domain before scientific outcome
-        run: |
-          node tools/experiments/materialize-symmetry-isomorphism-stage1-domain.js \
-            --output doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json
-          ACTUAL=$(sha256sum doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json | awk '{print $1}')
-          EXPECTED=$(node -e "console.log(require('./doc/symmetry-isomorphic-positions/preregistration/STAGE_1_FORMAL_SPEC.json').sourceSha256.domain)")
-          test "$ACTUAL" = "$EXPECTED"
-      - name: Generate production formal outcomes
-        run: node tools/experiments/run-symmetry-isomorphism-stage1-formal.js
-      - name: Independent full verification
-        id: independent_verification
-        continue-on-error: true
-        run: node tools/experiments/verify-symmetry-isomorphism-stage1-formal.js
-      - name: Record workflow provenance
-        if: always()
+      - name: Verify archived formal result is closed and non-estimable
         run: |
           node - <<'NODE'
           const fs = require('node:fs');
           const crypto = require('node:crypto');
-          const hash = (p) => fs.existsSync(p) ? crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex') : null;
-          const out = {
-            schemaVersion: 1,
-            studyId: 'SIP-STUDY1',
-            stageId: 'SIP-S1-FORMAL-2026-08-24-v1',
-            executionRoute: process.env.GITHUB_EVENT_NAME,
-            workflowRunId: Number(process.env.GITHUB_RUN_ID),
-            workflowRunAttempt: Number(process.env.GITHUB_RUN_ATTEMPT),
-            triggeringCommit: process.env.GITHUB_SHA,
-            specSha256: hash('doc/symmetry-isomorphic-positions/preregistration/STAGE_1_FORMAL_SPEC.json'),
-            authorizationSha256: hash('doc/symmetry-isomorphic-positions/preregistration/STAGE_1_AUTHORIZATION.json'),
-            domainSha256: hash('doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json'),
-            productionResultSha256: hash('doc/symmetry-isomorphic-positions/results/STAGE_1_PRODUCTION_RESULT.json'),
-            independentVerificationSha256: hash('doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json'),
-            independentVerificationStepOutcome: '${{ steps.independent_verification.outcome }}',
-            classification: 'DIAGNOSTIC-PRESERVATION-OF-FROZEN-RUN-ARTIFACTS'
-          };
-          fs.writeFileSync('doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json', JSON.stringify(out,null,2)+'\n');
-          console.log(JSON.stringify(out,null,2));
+          const formal = JSON.parse(fs.readFileSync('doc/symmetry-isomorphic-positions/results/STAGE_1_FORMAL_RESULT.json'));
+          const productionPath = 'doc/symmetry-isomorphic-positions/results/STAGE_1_PRODUCTION_RESULT.json';
+          const independentPath = 'doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json';
+          const hash = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          if (formal.studyId !== 'SIP-STUDY1') throw new Error('unexpected studyId');
+          if (formal.closed !== true || formal.formalDecision !== 'NON-ESTIMABLE') throw new Error('Study 1 is not in the canonical closed state');
+          if (formal.outcomeSummary?.validated !== 0 || formal.outcomeSummary?.notValidated !== 0 || formal.outcomeSummary?.nonEstimable !== 5) throw new Error('canonical outcome summary mismatch');
+          if (hash(productionPath) !== formal.formalRun.productionResultSha256) throw new Error('production result hash mismatch');
+          if (hash(independentPath) !== formal.formalRun.independentVerificationSha256) throw new Error('independent verification hash mismatch');
+          console.log('SIP-STUDY1 archived closure integrity verified. No new scientific outcome is generated by this workflow.');
           NODE
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: symmetry-isomorphism-stage1-formal
-          path: |
-            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json
-            doc/symmetry-isomorphic-positions/results/STAGE_1_PRODUCTION_RESULT.json
-            doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json
-            doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json
-          if-no-files-found: error
-      - name: Materialize frozen formal artifacts including verification failure
-        if: github.event_name == 'push' && always()
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json \
-            doc/symmetry-isomorphic-positions/results/STAGE_1_PRODUCTION_RESULT.json \
-            doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json \
-            doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json
-          if git diff --cached --quiet; then
-            exit 0
-          fi
-          git commit -m "Research: archive Symmetry Study 1 Stage 1 formal artifacts"
-          git push
-      - name: Preserve verifier failure status
-        if: steps.independent_verification.outcome != 'success'
-        run: exit 3
+
+# SIP-STUDY1 is closed. The former formal outcome-generation steps are intentionally
+# retired from CI. Frozen runners and preregistration artifacts remain in the repository
+# for provenance, but generating a new Study 1 scientific outcome is not authorized.
