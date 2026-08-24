@@ -44,14 +44,17 @@ jobs:
         run: |
           node tools/experiments/run-symmetry-isomorphism-stage1-formal.js
       - name: Independent full verification
+        id: independent_verification
+        continue-on-error: true
         run: |
           node tools/experiments/verify-symmetry-isomorphism-stage1-formal.js
       - name: Record workflow provenance
+        if: always()
         run: |
           node - <<'NODE'
           const fs = require('node:fs');
           const crypto = require('node:crypto');
-          const hash = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          const hash = (p) => fs.existsSync(p) ? crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex') : null;
           const out = {
             schemaVersion: 1,
             studyId: 'SIP-STUDY1',
@@ -64,12 +67,15 @@ jobs:
             authorizationSha256: hash('doc/symmetry-isomorphic-positions/preregistration/STAGE_1_AUTHORIZATION.json'),
             domainSha256: hash('doc/symmetry-isomorphic-positions/preregistration/STAGE_1_DOMAIN.json'),
             productionResultSha256: hash('doc/symmetry-isomorphic-positions/results/STAGE_1_PRODUCTION_RESULT.json'),
-            independentVerificationSha256: hash('doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json')
+            independentVerificationSha256: hash('doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json'),
+            independentVerificationStepOutcome: '${{ steps.independent_verification.outcome }}',
+            classification: 'DIAGNOSTIC-PRESERVATION-OF-FROZEN-RUN-ARTIFACTS'
           };
           fs.writeFileSync('doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json', JSON.stringify(out,null,2)+'\n');
           console.log(JSON.stringify(out,null,2));
           NODE
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: symmetry-isomorphism-stage1-formal
           path: |
@@ -79,7 +85,7 @@ jobs:
             doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json
           if-no-files-found: error
       - name: Materialize verified formal artifacts on research branch
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && steps.independent_verification.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -93,3 +99,6 @@ jobs:
           fi
           git commit -m "Research: materialize verified Symmetry Study 1 Stage 1 results"
           git push
+      - name: Preserve verifier failure status
+        if: steps.independent_verification.outcome != 'success'
+        run: exit 3
