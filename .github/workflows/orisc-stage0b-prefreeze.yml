@@ -1,0 +1,94 @@
+name: ORISC Stage 0B prefreeze
+
+on:
+  push:
+    branches:
+      - research/oracle-representation-integrity-symmetry-confirmation
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json"
+      - "doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
+      - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/lib/orisc-representation-production.js"
+      - "tools/experiments/lib/orisc-representation-independent.js"
+      - "tools/experiments/lib/orisc-stage1-production.js"
+      - "tools/experiments/lib/orisc-stage1-independent.js"
+      - "tools/experiments/validate-orisc-stage1-spec.js"
+      - "tools/experiments/run-orisc-stage1-formal.js"
+      - "tools/experiments/verify-orisc-stage1-formal.js"
+      - "tools/experiments/run-orisc-stage0b-prefreeze.js"
+      - "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_2_CANDIDATE_CONTRACT.json"
+      - ".github/workflows/orisc-stage0b-prefreeze.yml"
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "tools/benchmark.js"
+      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json"
+      - "doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json"
+      - "tools/experiments/lib/restricted-endgame-transition.js"
+      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
+      - "tools/experiments/lib/restricted-endgame-stage0.js"
+      - "tools/experiments/lib/orisc-representation-production.js"
+      - "tools/experiments/lib/orisc-representation-independent.js"
+      - "tools/experiments/lib/orisc-stage1-production.js"
+      - "tools/experiments/lib/orisc-stage1-independent.js"
+      - "tools/experiments/validate-orisc-stage1-spec.js"
+      - "tools/experiments/run-orisc-stage1-formal.js"
+      - "tools/experiments/verify-orisc-stage1-formal.js"
+      - "tools/experiments/run-orisc-stage0b-prefreeze.js"
+      - "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_2_CANDIDATE_CONTRACT.json"
+      - ".github/workflows/orisc-stage0b-prefreeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prefreeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Stage 0A synthetic fixtures
+        run: node test/orisc-stage0a-representation.test.js
+
+      - name: Run Stage 0B raw-graph prefreeze audit
+        run: |
+          node tools/experiments/run-orisc-stage0b-prefreeze.js \
+            --output /tmp/orisc-stage0b-prefreeze.json
+
+      - name: Assert no Stage 1 outcome leakage
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('/tmp/orisc-stage0b-prefreeze.json', 'utf8'));
+          if (r.technicalOnly !== true
+              || r.scientificOutcomeGenerated !== false
+              || r.repositoryFacingOracleSemanticGateEvaluated !== false
+              || r.symmetryCandidateOutcomeEvaluated !== false
+              || r.stage1AuthorizationCreated !== false
+              || r.readyForStage1SpecFreeze !== true) {
+            throw new Error('Stage 0B firewall/readiness violation');
+          }
+          if (r.production.immutableGraphPass !== true
+              || r.independent.immutableGraphPass !== true
+              || r.crossImplementation.stateRowsEqual !== true
+              || r.crossImplementation.edgesEqual !== true
+              || r.crossImplementation.seedConservationPass !== true) {
+            throw new Error('Stage 0B reconstruction readiness failed');
+          }
+          NODE
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: orisc-stage0b-prefreeze
+          path: /tmp/orisc-stage0b-prefreeze.json
+          if-no-files-found: error
+          retention-days: 30
