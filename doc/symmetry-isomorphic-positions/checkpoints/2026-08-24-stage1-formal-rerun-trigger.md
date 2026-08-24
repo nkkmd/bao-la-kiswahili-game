@@ -15,3 +15,7 @@ The existing authorization remains in force. This rerun must:
 - upload the exact resulting artifacts for inspection.
 
 No candidate, applicability predicate, seed, root selection, depth, gate, decision rule, or no-rescue boundary is changed.
+
+## Diagnostic preservation rerun
+
+The first traceable PR run showed zero fresh-domain mismatches but failure of the exact-oracle identity positive control and production/independent oracle-count disagreement. This rerun changes only workflow error handling so both unchanged frozen result JSON files are uploaded even when G12 fails. The scientific runner and verifier remain the exact SHA-256-bound versions in the frozen spec.
