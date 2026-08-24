@@ -1,0 +1,26 @@
+name: Symmetry Stage 1 Oracle Anchor Diagnostic
+
+on:
+  pull_request:
+    branches:
+      - research/symmetry-isomorphic-positions
+    paths:
+      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-oracle-anchor-diagnostic-trigger.md"
+      - "tools/experiments/audit-symmetry-stage1-oracle-anchor.js"
+      - ".github/workflows/symmetry-stage1-oracle-anchor-diagnostic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Read-only oracle anchor self-consistency audit
+        run: node tools/experiments/audit-symmetry-stage1-oracle-anchor.js
