@@ -24,6 +24,7 @@ const SOURCE_PATHS = Object.freeze([
   "tools/experiments/validate-orisc-stage1-spec.js",
   "tools/experiments/run-orisc-stage1-formal.js",
   "tools/experiments/verify-orisc-stage1-formal.js",
+  ".github/workflows/orisc-stage1-formal.yml",
   "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_2_CANDIDATE_CONTRACT.json"
 ]);
 
@@ -101,7 +102,7 @@ function main(argv = process.argv.slice(2)) {
   const result = {
     schemaVersion: 1,
     studyId: "ORISC-STUDY1",
-    stageId: "ORISC-STAGE0B-PREFREEZE-2026-08-25-v1",
+    stageId: "ORISC-STAGE0B-PREFREEZE-2026-08-25-v2",
     classification: "TECHNICAL-PREFREEZE-NO-STAGE1-OUTCOME",
     technicalOnly: true,
     scientificOutcomeGenerated: false,
