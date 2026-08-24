@@ -1,32 +1,10 @@
 name: Symmetry Isomorphism Stage 0
 
 on:
-  push:
-    branches:
-      - research/symmetry-isomorphic-positions
-    paths:
-      - "public/engine.js"
-      - "tools/benchmark.js"
-      - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
-      - "tools/experiments/audit-symmetry-isomorphism-stage0.js"
-      - "test/symmetry-isomorphism-stage0.test.js"
-      - "doc/symmetry-isomorphic-positions/**"
-      - ".github/workflows/symmetry-isomorphism-stage0.yml"
-  pull_request:
-    branches:
-      - research/symmetry-isomorphic-positions
-    paths:
-      - "public/engine.js"
-      - "tools/benchmark.js"
-      - "tools/experiments/lib/symmetry-isomorphism-transforms.js"
-      - "tools/experiments/audit-symmetry-isomorphism-stage0.js"
-      - "test/symmetry-isomorphism-stage0.test.js"
-      - "doc/symmetry-isomorphic-positions/**"
-      - ".github/workflows/symmetry-isomorphism-stage0.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   stage0:
@@ -50,14 +28,3 @@ jobs:
           name: symmetry-isomorphism-stage0
           path: doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
           if-no-files-found: error
-      - name: Materialize technical audit on research branch
-        if: github.event_name == 'push'
-        run: |
-          if git diff --quiet -- doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json; then
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
-          git commit -m "Research: materialize Symmetry Study 1 Stage 0 technical audit"
-          git push
