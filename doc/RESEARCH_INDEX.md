@@ -463,3 +463,31 @@ doc/<research-area>/
 - 科学的・技術的な正本
 
 これにより、研究成果が増えてもルートREADMEを個別実験リンクで肥大化させず、研究全体を一覧できます。
+
+---
+
+### 13. Symmetry / Isomorphic Positions — Study 1
+
+**研究題目:** Baoにおける対称性と同型局面の厳密検証 — rule-semantic state transformations, move-equivariant graph isomorphism, and validated canonicalization  
+**状態:** **Study 1 closed / formal result 0 validated / 0 rejected / 5 `NON-ESTIMABLE`**  
+**作業branch:** `research/symmetry-isomorphic-positions`
+
+このprospective independent machine-only studyは、visual symmetryではなく、state transformation・player permutation・exact move bijectionが合法手集合、transition、terminal/winner semanticsを保存するかを検証した。candidate semantics、fresh seed block、root selection、depth、exact gatesをformal outcome前にfreezeした。
+
+Fresh formal domainはseeds `22910001..22910064`、Namua / Mtaji / Mtaji-houseless各8 roots、depth 3である。3 candidates / 5 scientific outcomesはいずれもproduction / independent双方でfresh bounded-local mismatch 0だった。negative controlは638 fresh mismatches、IDENTITYはfresh mismatch 0で、fresh machineryはpositive/negative controlを識別した。
+
+しかしmandatoryとしたRestricted Endgame Study 1のimmutable 8-state exact-oracle anchorではIDENTITY positive control自身がPASSせず、production oracle mismatch count 19とindependent count 10が一致しなかった。G12がFAILしたため、5 outcomesすべて最終 `NON-ESTIMABLE` とした。post-outcome read-only diagnosticでは3 terminal stateRowsについてstored `stateKey`とstored `ruleState`のcanonical re-hash不一致を確認したが、これは上流Restricted Endgame Study 1のformal decisionを変更しない。
+
+**最初に読む:**
+
+- [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`symmetry-isomorphic-positions/STUDY_1_FINAL_REPORT.md`](symmetry-isomorphic-positions/STUDY_1_FINAL_REPORT.md) — 科学的・技術的最終統合
+- [`symmetry-isomorphic-positions/results/STAGE_1_FORMAL_RESULT.json`](symmetry-isomorphic-positions/results/STAGE_1_FORMAL_RESULT.json) — canonical compact formal result
+- [`symmetry-isomorphic-positions/REPRODUCIBILITY_INDEX.md`](symmetry-isomorphic-positions/REPRODUCIBILITY_INDEX.md) — hash / workflow / artifact provenance
+- [`symmetry-isomorphic-positions/CURRENT_STATUS.md`](symmetry-isomorphic-positions/CURRENT_STATUS.md) — closure状態とdownstream boundary
+- [`symmetry-isomorphic-positions/DECISION_REGISTER.md`](symmetry-isomorphic-positions/DECISION_REGISTER.md) — prospective decisions / no-rescue / closure
+
+**Boundary:** formalにvalidatedされたtransformは0件。Study 1からcanonicalization、symmetry-group claim、symmetry-reduced state countingは承認しない。State Space / Game Tree Complexity Studyはraw state identityで進行できる。symmetry reductionが必要なら、上流Studyをretrofitしないnew prospective oracle-representation-integrity / symmetry-confirmation Studyを先行させる。

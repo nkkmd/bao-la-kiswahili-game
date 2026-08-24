@@ -163,6 +163,7 @@ node tools/diagnostic-to-fixture.js \
 - [`doc/blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](doc/blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md): Blunder / Misvaluation Patterns Study 1「悪手・誤評価パターンの発見と体系化」の初見向け成果概要（Study 1完了、4候補すべて `NOT-CONFIRMED`、`CONFIRMED` 0）
 - [`doc/critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](doc/critical-positions-outcome-branching/STUDY_1_OVERVIEW.md): Critical Positions / Outcome Branching Study 1「重要局面と勝敗分岐点」の初見向け成果概要（Study 1完了、139/600 rootsがhigh-divergence、promoted structural candidates 0、Stage 2未実施）
 - [`doc/restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](doc/restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md): Restricted Endgame / Winning Regions Study 1「限定終盤と必勝圏の完全解析」の初見向け成果概要（formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`、8 states / 7 edges、frozen rootはPlayer 0 `WIN`, DTF=3）
+- [`doc/symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](doc/symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md): Symmetry / Isomorphic Positions Study 1「対称性と同型局面の厳密検証」の初見向け成果概要（Study 1 closed、0 validated / 0 rejected / 5 `NON-ESTIMABLE`; fresh bounded-local mismatch 0、mandatory oracle-anchor G12 failed）
 - [`doc/joseki/README.md`](doc/joseki/README.md): 完了済み第一次定石研究の結論、個別成果、照合資料、将来研究への索引
 - [`doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](doc/FIRST_PLAYER_ADVANTAGE_RESEARCH.md): 先攻・後攻差研究の統合記録
 - [`doc/FUTURE_RESEARCH_AGENDA.md`](doc/FUTURE_RESEARCH_AGENDA.md): 局面分類、手筋、形勢判断、終盤解析など、既存研究から切り出した将来研究課題
