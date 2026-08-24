@@ -1,96 +1,129 @@
 # Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — Overview
 
 **Study ID:** `ORISC-STUDY1`  
-**Status:** Study initialized; no formal scientific result yet.
+**Status:** **COMPLETED**  
+**Axis A formal decision:** `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`  
+**Axis B:** `NOT-AUTHORIZED-NOT-EXECUTED`
 
-## Research question
+## 何を調べたか
 
-The study asks two deliberately separated questions.
+この研究は、限定終盤exact oracleについて次の2軸を意図的に分離した。
 
-### Axis A — Oracle Representation Integrity
+1. **Axis A — Oracle Representation Integrity**  
+   Bao engine-semantic raw state、terminal `pending` accounting、raw serialization、`stateKey`、凍結8-state graph、repository-facing oracle rowが、同一の厳密なreconstruction contractとして成立するか。
+2. **Axis B — Independent Symmetry Confirmation**  
+   Axis Aが事前gateを通過した場合にのみ、prospectively frozenな非自明symmetry candidatesをmove-equivariance / transition commutation / graph isomorphismで確認する。
 
-Can the Bao engine-semantic raw state, terminal-state accounting, raw serialization, SHA-256 state identity, immutable Restricted Endgame 8-state graph, and repository-facing oracle rows be reconstructed under one prospectively frozen contract with exact production/independent agreement?
+## Upstreamは変更していない
 
-The audit distinguishes at minimum:
-
-```text
-engine-semantic state
-serialized raw rule state
-stateKey
-workflow-run raw state row
-repository-facing stored state row
-reconstructed raw state
-reporting/display representation
-```
-
-These objects must not be treated as interchangeable merely because they describe the same nominal position.
-
-### Axis B — Independent Symmetry Confirmation
-
-Only if Axis A passes its predefined authorization gate, can a separately frozen set of nontrivial state/move transforms be evaluated for exact move-equivariance, transition commutation, terminal/winner semantics, graph isomorphism, inverse properties, and downstream canonicalization eligibility.
-
-## What this study does not change
-
-The study cannot revise any existing formal decision.
-
-- `REWR-STUDY1` stays `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` for its frozen 8-state / 7-edge domain.
-- `SIP-STUDY1` stays completed at `0 validated / 0 rejected / 5 NON-ESTIMABLE`.
-- `SIP-S1-FORMAL-2026-08-24-v1` stays technically invalidated for candidate-decision use.
-- SIP corrected v2 stays not authorized and not executed.
-- Existing oracle state/edge/value/DTF/optimal-move claims are not rewritten by this study.
-
-## Known prior information declared before the new formal protocol
-
-At study start, prior documentation already recorded that three repository-facing terminal `stateRows.ruleState` snapshots do not re-hash to their stored state keys and represent 63 rather than 64 seeds when `pending=[0,0]` is used.
-
-A new **technical provenance recovery performed before any ORISC formal outcome generation** additionally recovered the original Restricted Endgame scientific workflow artifact (`runId 32702596730`, artifact `9511074442`). In both the original production file and the independent verification file, the three affected terminal states carry:
+以下はそのまま維持される。
 
 ```text
-pending = [1,0]
-represented seed total = 64
+REWR-STUDY1
+  formalDecision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
+  frozen graph = 8 states / 7 edges
+
+SIP-STUDY1
+  formalDecision = NON-ESTIMABLE
+  validated = 0
+  rejected = 0
+  nonEstimable = 5
 ```
 
-and all eight raw states represent 64 seeds. The repository-facing canonical result introduced later contains `pending=[0,0]` in those three rows.
+今回の結果は、REWRのexact value / DTF / optimal moveやSIPのclosureをretroactively変更しない。
 
-This provenance fact is treated as **known prior technical information**, not as an `ORISC-STUDY1` Stage 1 result. Stage 1 must re-evaluate the prospectively frozen endpoints independently.
+## Stage 0で確認したこと
 
-## Why the distinction matters
+元のREWR scientific workflow artifactをread-onlyで回収すると、productionとindependent verificationの8 raw rowsは完全一致し、全stateが64 seedsを表現していた。
 
-The original production and independent tablebase machinery used raw state identity containing:
+一方、後からrepositoryへ保存された`STAGE_1_EXACT_RESULT.json`では、3 terminal rowsだけが元workflow rowと異なり、差分は`pending`のみだった。
 
 ```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
+original workflow rows: pending = [1,0], represented seeds = 64
+repository-facing rows: pending = [0,0], represented seeds = 63
 ```
 
-while excluding administrative/history fields `turn` and `reason` from the state key. The engine's terminal capture path can remove captured seeds from the opponent front row and place the removed quantity in `pending` before setting the winner. Therefore a reporting snapshot that drops `pending` can describe the same visible board yet fail raw identity and seed-conservation reconstruction.
+この差がどのmaterialization mechanismで導入されたかは確定できないため、原因は`UNRESOLVED-PROVENANCE-GAP`として残した。
 
-## Planned decision flow
+## Formal Stage 1 result
+
+production / independentの別実装は、凍結rootから同じraw graphを再構成した。
 
 ```text
-Stage 0A provenance/semantic audit
-    |
-    v
-Stage 0B freeze all outcome-facing contracts
-    |
-    v
-Stage 1 representation integrity
-    |-- not confirmed / non-estimable --> Stage 2 blocked
-    |
-    `-- confirmed + identity gate pass --> separate Stage 2 authorization possible
-                                              |
-                                              v
-                                      independent symmetry confirmation
-                                              |
-                                              v
-                                      Stage 3 downstream decision
+states = 8
+edges = 7
+state-set hash = exact match
+transition-set hash = exact match
+all reconstructed seed totals = 64
+terminal accounting mismatches = 0
+repository transition mismatches = 0
 ```
 
-## Current scientific status
+しかしrepository-facing rowについて:
 
-No `ORISC-STUDY1` scientific endpoint has been evaluated. No nontrivial symmetry candidate has a new-study pass/fail label. No canonicalization or symmetry-reduced state counting is authorized.
+```text
+A-G8 stored-row re-hash       = FAIL (3 rows)
+A-G9 raw-state binding        = FAIL (3 rows)
+A-G11 IDENTITY control        = FAIL
+A-G12 production/independent  = PASS
+```
+
+影響rowは:
+
+```text
+469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6
+75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed
+df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55
+```
+
+すべてterminal rowで、reconstructed raw stateとの差分fieldは`pending`のみだった。
+
+したがってformal decisionは:
+
+> **`ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`**
+
+である。
+
+これはimplementation disagreementによる`NON-ESTIMABLE`ではない。production / independentが同じ失敗箇所と判定を再現したため、事前規則上のinterpretable representation-integrity failureである。
+
+## Symmetry confirmationは実行していない
+
+Stage 2 candidate contractはStage 1 outcomeを見る前にfreeze済みだったが、Stage 2 authorizationには:
+
+```text
+Stage 1 = CONFIRMED
+IDENTITY = PASS
+production/independent equality = PASS
+```
+
+を要求していた。
+
+Stage 1とIDENTITYが未達だったため:
+
+```text
+Axis B = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+とした。
+
+したがって今回のStudyでは、T01/T02/T03をformalにvalidateもrejectもしていない。
+
+## Downstream contract
+
+Study 1完了時点の契約は:
+
+```text
+validated symmetry transformation set = empty
+canonicalization = NOT AUTHORIZED
+symmetry-reduced state counting = NOT AUTHORIZED
+raw state identity = authoritative downstream representation
+State Space / Game Tree Complexity = raw-onlyで進行可能
+```
+
+## 最初に読む詳細文書
+
+- `STUDY_1_FINAL_REPORT.md` — scientific/technical final integration
+- `results/STAGE_1_FORMAL_RESULT.json` — Axis A canonical formal result
+- `results/STUDY_1_FINAL_RESULT.json` — Study-level closure
+- `REPRODUCIBILITY_INDEX.md` — hashes / workflows / source identities
+- `CURRENT_STATUS.md` — final status and immutable boundaries
