@@ -7,6 +7,7 @@ on:
     paths:
       - "doc/symmetry-isomorphic-positions/preregistration/STAGE_1_AUTHORIZATION.json"
       - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-one-shot-trigger.md"
+      - "doc/symmetry-isomorphic-positions/checkpoints/2026-08-24-stage1-formal-archive-rerun.md"
   pull_request:
     branches:
       - research/symmetry-isomorphic-positions
@@ -42,13 +43,11 @@ jobs:
           EXPECTED=$(node -e "console.log(require('./doc/symmetry-isomorphic-positions/preregistration/STAGE_1_FORMAL_SPEC.json').sourceSha256.domain)")
           test "$ACTUAL" = "$EXPECTED"
       - name: Generate production formal outcomes
-        run: |
-          node tools/experiments/run-symmetry-isomorphism-stage1-formal.js
+        run: node tools/experiments/run-symmetry-isomorphism-stage1-formal.js
       - name: Independent full verification
         id: independent_verification
         continue-on-error: true
-        run: |
-          node tools/experiments/verify-symmetry-isomorphism-stage1-formal.js
+        run: node tools/experiments/verify-symmetry-isomorphism-stage1-formal.js
       - name: Record workflow provenance
         if: always()
         run: |
@@ -85,8 +84,8 @@ jobs:
             doc/symmetry-isomorphic-positions/results/STAGE_1_INDEPENDENT_VERIFICATION.json
             doc/symmetry-isomorphic-positions/results/STAGE_1_WORKFLOW_PROVENANCE.json
           if-no-files-found: error
-      - name: Materialize verified formal artifacts on research branch
-        if: github.event_name == 'push' && steps.independent_verification.outcome == 'success'
+      - name: Materialize frozen formal artifacts including verification failure
+        if: github.event_name == 'push' && always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -98,7 +97,7 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "Research: materialize verified Symmetry Study 1 Stage 1 results"
+          git commit -m "Research: archive Symmetry Study 1 Stage 1 formal artifacts"
           git push
       - name: Preserve verifier failure status
         if: steps.independent_verification.outcome != 'success'
