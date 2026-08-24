@@ -70,11 +70,7 @@ jobs:
       - name: Validate frozen contract if present
         run: |
           if [ -f doc/restricted-endgame-winning-regions/preregistration/STAGE_1_EXACT_SPEC.json ]; then
-            node - <<'NODE'
-            const V = require('./tools/experiments/validate-restricted-endgame-stage1-spec.js');
-            const c = V.loadFrozenContract();
-            console.log(JSON.stringify({specSha256:c.specSha256,domainSha256:c.domainSha256},null,2));
-            NODE
+            node -e "const V=require('./tools/experiments/validate-restricted-endgame-stage1-spec.js'); const c=V.loadFrozenContract(); console.log(JSON.stringify({specSha256:c.specSha256,domainSha256:c.domainSha256},null,2));"
           fi
       - name: Assert scientific runner is blocked before authorization
         run: |
