@@ -20,3 +20,7 @@ Forbidden in this PR:
 - fresh-corpus transition-commutation outcome inspection;
 - exact-oracle symmetry outcome generation;
 - canonicalization or group claims.
+
+## Rerun note
+
+This trigger was updated after a pre-outcome artifact-handling check. The candidate set, seed block, root selection rule, root count, graph depth, and all scientific semantics are unchanged. The rerun verifies the restored full domain/witness artifact representation that the frozen production runner and independent verifier consume.
