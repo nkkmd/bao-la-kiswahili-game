@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.10.0  
+Version: 1.10.1  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-24
@@ -24,6 +24,8 @@ Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完�
 Critical Positions / Outcome Branching Study 1も完了した。fresh 3,072-game Stage 1 corpusからoutcome-blindに600 roots（Namua/Mtaji 300/300）を選択し、2,666 exact root-move interventionsを測定・独立再測定した。全600 rootsがprimary-estimableで、`D_range >= 0.30`のhigh-divergence rootsは139/600（Namua 52、Mtaji 87）だった。一方、frozen one-to-two-token structural grammarから得た1,183 candidate auditsのうちpromotion gateをすべて通過したcandidateは0で、Stage 2 formal targetは形成されなかった。Stage 2 generationはauthorize/executeせず、reserved seeds `22700001..22706144`は未消費のままStudy 1をnegative exploratory resultとして閉じた。
 
 完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。
+
+2026-08-24の研究運用上、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。この制約下では、次のmachine-only research sequenceを **限定終盤と必勝圏 → 対称性と同型局面 → 状態空間とゲーム木複雑度** とする。この順序決定は既存Studyのscientific resultを変更するものではなく、各新規Studyのdomain・endpoint・decision ruleは開始時にprospectively freezeする。
 
 ## 2. 既存研究との境界
 
@@ -363,6 +365,10 @@ Calibration Study 1のmappingをformal validated win probabilityとして前提�
 
 ### 4.8 限定終盤と必勝圏
 
+#### 現在の実行状態
+
+**次に着手するmachine-only研究。** 現時点では新Studyのdomain・state cap・terminal/cycle semantics・retrograde rule・decision ruleは未freezeであり、開始時にprospectively定義する。
+
 #### 中心課題
 
 完全なゲーム解析ではなく、制約された終盤局面を列挙・後退解析し、必勝・必敗・循環・勝利距離を求める。
@@ -440,6 +446,10 @@ Calibration Study 1のisotonic mappingをformal validated勝率変化として�
 
 ### 4.10 人間とAIの判断差
 
+#### 現在の実行状態
+
+**当面保留。** Baoに精通したqualified human/expert participantへの現実的アクセスを確保できないため、human evidenceを必要とする本研究には着手しない。アクセス可能性が変化するまでmachine-only代替研究へ置換せず保留する。この運用判断はhuman/AI differenceについてのscientific resultではない。
+
 #### 中心課題
 
 初心者、熟練者、評価関数のみのAI、浅い探索AI、深い探索AIが、どの局面で異なる判断を行うかを調べる。
@@ -464,6 +474,10 @@ Human evidenceが必要なclaimをmachine self-playで代替しない。
 
 ### 4.11 対称性と同型局面
 
+#### 現在の実行状態
+
+**限定終盤と必勝圏 Study 1の後に着手予定。** 限定終盤で得られるbounded exact game-theoretic oracleを、将来のsymmetry/isomorphism validationにも利用できる順序を採用する。
+
 #### 中心課題
 
 盤面表示が異なっていても、合法手、局面遷移、勝敗が本質的に同じ局面を体系化する。
@@ -484,6 +498,10 @@ Human evidenceが必要なclaimをmachine self-playで代替しない。
 ---
 
 ### 4.12 状態空間とゲーム木複雑度
+
+#### 現在の実行状態
+
+**対称性と同型局面 Study 1の後に着手予定。** raw state countとsymmetry-reduced canonical state countを区別できる基盤を先に確立する。
 
 #### 中心課題
 
@@ -521,7 +539,7 @@ Baoの探索困難性に対する定量的説明、研究用基準値、ゲー�
 1. **[完了] 形勢判断と勝率校正 — Study 1 (`INCONCLUSIVE`)**
 2. **[完了] 悪手・誤評価パターン — Study 1（0 `CONFIRMED` / 4 `NOT-CONFIRMED`）**
 3. **[完了] 重要局面と勝敗分岐点 — Study 1（139/600 high-divergence roots / promoted candidates 0 / Stage 2 not executed）**
-4. **[未開始候補] 人間とAIの判断差**
+4. **[当面保留] 人間とAIの判断差 — qualified human/expert participantへのアクセス確保まで着手しない**
 
 Position Evaluation / Win-Rate Calibration Study 1によって、engine evaluationとempirical continuation outcomeを分離して扱うtechnical measurement foundationは得られたが、formal held-out validationはestimability failureで未解決である。
 
@@ -529,18 +547,16 @@ Blunder / Misvaluation Patterns Study 1によって、exact search-based decisio
 
 Critical Positions / Outcome Branching Study 1によって、全exact legal root movesへのinterventionとfixed-policy continuation outcomeを用いるmachine-only criticality measurement pipelineはfull independent verificationまで実装・検証された。high-divergence roots自体は139/600観測されたが、frozen structural grammarからformal Stage 2 candidateへpromotionできるclassは0だった。これは新しいrepresentation研究を動機づけうるが、同Study内でのgrammar/threshold rescueは行わない。
 
-したがって、第2段階で未開始の主要候補は「人間とAIの判断差」である。Critical Positionsのrepresentationを深める場合も、Study 1を再開するのではなくfresh prospective independent studyとして設計する。
-
-Human misconceptionを主張する段階では、新しいhuman evidenceを必要とする。
+第2段階で残る「人間とAIの判断差」はhuman evidence依存であり、現状のparticipant access制約下では着手しない。human misconceptionを主張する段階では新しいhuman evidenceを必要とし、machine self-playを代替証拠として用いない。したがって、現在のmachine-only研究プログラムは第3段階へ進む。
 
 ### 第3段階: 理論および完全解析への展開
 
-1. 限定終盤と必勝圏
-2. 対称性と同型局面
-3. 状態空間とゲーム木複雑度
-4. 逆転可能性と勝負手
+1. **[次に着手] 限定終盤と必勝圏**
+2. **[その後] 対称性と同型局面**
+3. **[その後] 状態空間とゲーム木複雑度**
+4. **[後続候補] 逆転可能性と勝負手**
 
-この段階では、数学的・計算論的性質と実戦的選択の違いを研究する。
+この順序を現行のmachine-only research sequenceとする。まず限定終盤でsymmetry reductionに依存しないbounded exact solutionを確立し、そのexact oracleを後続のsymmetry/isomorphism validationへ利用する。次にcanonical representationを確立したうえで、raw state spaceとsymmetry-reduced state spaceを区別する状態空間研究へ進む。
 
 ## 6. 特に優先する三本柱
 
