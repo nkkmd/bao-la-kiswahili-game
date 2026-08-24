@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   stage0:
@@ -33,9 +33,19 @@ jobs:
       - name: Outcome-blind technical graph benchmark
         run: |
           node tools/experiments/audit-symmetry-isomorphism-stage0.js \
-            --output artifacts/local/symmetry-isomorphic-positions/stage0-technical-audit.json
+            --output doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
       - uses: actions/upload-artifact@v4
         with:
           name: symmetry-isomorphism-stage0
-          path: artifacts/local/symmetry-isomorphic-positions/stage0-technical-audit.json
+          path: doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
           if-no-files-found: error
+      - name: Materialize technical audit on research branch
+        run: |
+          if git diff --quiet -- doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/symmetry-isomorphic-positions/results/STAGE_0_TECHNICAL_AUDIT.json
+          git commit -m "Research: materialize Symmetry Study 1 Stage 0 technical audit"
+          git push
