@@ -1,6 +1,6 @@
 # DECISION_REGISTER — Critical Positions / Outcome Branching Study 1
 
-Updated: 2026-08-23
+Updated: 2026-08-24
 
 Decision status vocabulary:
 
@@ -432,3 +432,56 @@ The scientific source-file hashes reported by the manifest match the authorizati
 This decision does **not** establish corpus verification PASS or selection readiness. Root selection remains blocked pending independent verification.
 
 Status: **FROZEN GENERATION RECORD / VERIFICATION PENDING**
+
+## CPOB-D039 — Stage 1 full verification, discovery result, and Study 1 closure
+
+**Decision:** Accept the completed Stage 1 pipeline and close Study 1 after the prospectively frozen deterministic discovery produced zero promoted candidates.
+
+Mandatory execution gates completed as follows:
+
+```text
+independent full corpus replay = PASS / 3072 of 3072
+outcome-blind root selection = PASS
+selected roots = 600 = 300 Namua + 300 Mtaji
+selectionHash = 702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d
+continuation / secondary / structural measurement = COMPLETE
+measured exact root-move interventions = 2666
+primary-estimable roots = 600 / 600
+independent full continuation remeasurement = PASS
+independent secondary recomputation = PASS
+independent structural recomputation = PASS
+```
+
+Frozen deterministic exploratory discovery returned:
+
+```text
+high-divergence roots = 139 / 600
+Namua high-divergence roots = 52 / 300
+Mtaji high-divergence roots = 87 / 300
+candidateAuditCount = 1183
+candidatesPassingPromotionGates = 0
+supportEquivalenceRepresentativeCount = 0
+promotedCandidateCount = 0
+zeroPromotedCandidatesAllowed = true
+manualOverridePerformed = false
+discovery resultHash = 565b6f1570aa20a8b239d9275109fcb6bad2ec9d6f583c359b205b37ad7f6ce8
+```
+
+Interpretation is bounded to the frozen machine operationalization: material fixed-policy empirical continuation divergence was observed in fresh roots, but the frozen one-to-two-token pre-root structural grammar produced no candidate satisfying all preregistered support, diversity, recurrence, median-divergence, support-equivalence, ranking, and cap rules.
+
+This is a **negative exploratory discovery result**, not a Stage 2 `NOT-CONFIRMED` result. It does not establish that Bao lacks important positions, that high-divergence roots are game-theoretically critical, or that humans/experts would not recognize turning points.
+
+Stage 2 required a separately frozen exact Stage 1 promoted-candidate mapping before any formal generation. Because `promotedCandidateCount = 0`, there is no prospective formal target for this Study 1 version. Promoting a near-miss, broadening the grammar, relaxing thresholds, changing the endpoint, or manually selecting a candidate would violate CPOB-D026.
+
+Therefore:
+
+```text
+Stage 1 = COMPLETE
+Stage 2 generation = NOT AUTHORIZED / NOT EXECUTED
+Stage 2 reserved seeds 22700001..22706144 = UNCONSUMED
+Study 1 = CLOSED AFTER STAGE 1 NEGATIVE EXPLORATORY RESULT
+```
+
+Any future attempt to classify high-divergence roots with a richer grammar or different representation must be a new prospective study with fresh design/evidence; it may not retroactively alter this Study 1 result.
+
+Status: **FROZEN / STUDY 1 CLOSED**
