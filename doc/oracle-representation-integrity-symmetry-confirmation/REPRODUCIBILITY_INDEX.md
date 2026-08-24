@@ -51,14 +51,7 @@ artifact ZIP SHA-256 = 7da2a3f46745c18f4aa8896bc6a576b5d56b490b1461a4def3364183b
 workflow head SHA = 85c6a85fada301fcba526142549945e25a659855
 ```
 
-Recovered local file byte hashes from the downloaded artifact:
-
-```text
-stage1-exact-result.json
-358? NO — see note below
-```
-
-The authoritative scientific identity is the embedded production `resultSha256`, not the ZIP member byte hash:
+The authoritative scientific identities embedded in the workflow files are:
 
 ```text
 production resultSha256 = e581236b94ca74f6e681a363c15e0c6f8ef6851dcadf4856b0637e277d8fd603
