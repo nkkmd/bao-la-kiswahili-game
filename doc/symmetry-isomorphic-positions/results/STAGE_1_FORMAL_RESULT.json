@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SIP-STUDY1",
+  "stageId": "SIP-S1-FORMAL-2026-08-24-v1",
+  "studyStatus": "COMPLETED",
+  "formalDecision": "NON-ESTIMABLE",
+  "formalDecisionReason": "All five preregistered scientific outcomes have exact fresh-domain zero-mismatch evidence, but the mandatory immutable 8-state exact-oracle anchor is internally inconsistent at three terminal stateRows and production/independent oracle mismatch accounting does not agree; therefore G12 fails and no candidate receives formal validation.",
+  "summary": {
+    "validated": 0,
+    "notValidated": 0,
+    "nonEstimable": 5
+  },
+  "outcomes": [
+    {
+      "outcomeId": "SIP-O01-T01-NAMUA",
+      "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
+      "scope": "fresh Namua roots, depth 3 + immutable exact-oracle anchor",
+      "fresh": {"roots": 8, "states": 697, "edges": 707, "testedStates": 167, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
+      "G12": "FAIL",
+      "finalDecision": "NON-ESTIMABLE"
+    },
+    {
+      "outcomeId": "SIP-O02-T01-MTAJI",
+      "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
+      "scope": "fresh Mtaji roots, depth 3 + immutable exact-oracle anchor",
+      "fresh": {"roots": 8, "states": 530, "edges": 527, "testedStates": 162, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
+      "G12": "FAIL",
+      "finalDecision": "NON-ESTIMABLE"
+    },
+    {
+      "outcomeId": "SIP-O03-T01-BOTH",
+      "candidateId": "SIP-T01-SEAT-SWAP-LOCAL",
+      "scope": "fresh Namua+Mtaji roots, depth 3 + immutable exact-oracle anchor",
+      "fresh": {"roots": 16, "states": 1227, "edges": 1234, "testedStates": 329, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
+      "G12": "FAIL",
+      "finalDecision": "NON-ESTIMABLE"
+    },
+    {
+      "outcomeId": "SIP-O04-T02-MTAJI-HOUSELESS",
+      "candidateId": "SIP-T02-LR-MTAJI-HOUSELESS",
+      "scope": "fresh Mtaji-houseless roots, depth 3 + immutable exact-oracle anchor",
+      "fresh": {"roots": 8, "states": 532, "edges": 529, "testedStates": 160, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
+      "G12": "FAIL",
+      "finalDecision": "NON-ESTIMABLE"
+    },
+    {
+      "outcomeId": "SIP-O05-T03-MTAJI-HOUSELESS",
+      "candidateId": "SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS",
+      "scope": "fresh Mtaji-houseless roots, depth 3 + immutable exact-oracle anchor",
+      "fresh": {"roots": 8, "states": 532, "edges": 529, "testedStates": 160, "mismatches": 0, "decisionWithinFreshBoundedDomain": "VALIDATED-BOUNDED-ISOMORPHISM"},
+      "G12": "FAIL",
+      "finalDecision": "NON-ESTIMABLE"
+    }
+  ],
+  "controls": {
+    "identity": {
+      "freshMismatches": 0,
+      "freshDecision": "VALIDATED-BOUNDED-ISOMORPHISM",
+      "oracleProductionMismatchCount": 19,
+      "oracleIndependentMismatchCount": 10,
+      "interpretation": "Positive-control oracle failure demonstrates an anchor/integration defect rather than evidence against a nontrivial candidate."
+    },
+    "negativeControl": {
+      "candidateId": "SIP-C01-LR-NO-DIRECTION-FLIP",
+      "freshIndependentMismatchCount": 638,
+      "freshDecision": "NOT-VALIDATED"
+    }
+  },
+  "oracleAnchorDiagnostic": {
+    "classification": "POST-OUTCOME-READ-ONLY",
+    "rows": 8,
+    "storedKeyMismatchRows": 3,
+    "productionIndependentRecomputedKeyDisagreements": 0,
+    "seedTotalsObserved": [63, 64],
+    "transitionsRecomputed": 7,
+    "successorEscapesStoredKeySet": 0,
+    "affectedStoredStateKeys": [
+      "469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6",
+      "75ca44183c7d5abd62c32342e31620b1d485b41d91f0e7ffcfb7dace9097c4ed",
+      "df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55"
+    ],
+    "upstreamStudyModified": false,
+    "upstreamFormalDecisionModified": false
+  },
+  "identities": {
+    "specSha256": "ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a",
+    "authorizationSha256": "a539de44b26e513ab461a559e97ee4e7914900178a469389a5c996def3d7f5a4",
+    "domainSha256": "fa40e1b7d2fc5e34291ec9537e8a5f19b280be8203d62ca8687090dc96ff9e22",
+    "productionResultSha256": "fd1c509b40a3ea40675e738826db8cb4030378ed8955f122594a6f5e4756574a",
+    "independentVerificationSha256": "8e7327b4192e2616716d34deae86b15a51f269201f591a843310d414541596f0",
+    "archiveWorkflowRunId": 32728925376,
+    "diagnosticWorkflowRunId": 32728619101
+  },
+  "downstreamAuthorization": {
+    "validatedTransformationSet": [],
+    "canonicalizationAuthorized": false,
+    "symmetryGroupClaimAuthorized": false,
+    "symmetryReducedStateCountingAuthorized": false,
+    "stateSpaceStudyMayUseRawStateIdentity": true,
+    "stateSpaceStudyMayUseTheseCandidatesForReduction": false
+  },
+  "interpretationBoundary": "The fresh bounded-local zero-mismatch results are reproducible positive evidence within those tested graphs, but they are not promoted to the Study's formal VALIDATED label because the preregistered exact-oracle anchor and G12 independent-equality gates are not estimable. This does not invalidate or revise Restricted Endgame Study 1; its artifacts and decision remain immutable."
+}
