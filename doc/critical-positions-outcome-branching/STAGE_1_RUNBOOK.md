@@ -1,7 +1,7 @@
 # Critical Positions / Outcome Branching Study 1 — Stage 1 Exploratory Runbook
 
-更新日: 2026-08-23  
-Status: **SOURCE GENERATION COMPLETE / CORPUS VERIFICATION NEXT / EXPLORATORY ONLY**
+更新日: 2026-08-24  
+Status: **STAGE 1 COMPLETE / ZERO PROMOTED CANDIDATES / DO NOT RERUN AS RESCUE**
 
 Stage ID:
 
@@ -20,14 +20,11 @@ Source-bound authorization:
 
 ```text
 doc/critical-positions-outcome-branching/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json
-authorization commit = a85f9b36abbf492cd8085b0a95c8d10b76f849e8
 ```
 
-Large/generated outputs remain under `artifacts/local/` and are not committed unless a separate archival decision is made.
+## 1. Final scientific boundary
 
-## 1. Scientific boundary
-
-This run is fresh **Stage 1 exploratory** evidence only.
+This run is completed **Stage 1 exploratory** evidence only.
 
 ```text
 scientificInferenceAuthorized = false
@@ -35,13 +32,19 @@ confirmatoryReuseAllowed = false
 stage2GenerationAuthorized = false
 ```
 
-The following remain forbidden:
+Final Stage 1 result:
 
-- confirmation claims from Stage 1 itself;
-- game-theoretic criticality claims;
-- treating empirical continuation win rates as validated game-theoretic probabilities;
-- human/expert turning-point claims;
-- rescue or relabeling of any completed study.
+```text
+selected roots = 600
+primary estimable roots = 600
+high-divergence roots = 139 / 600
+candidate audits = 1183
+promoted candidates = 0
+manual override = false
+Stage 2 = NOT EXECUTED
+```
+
+Do not rerun or modify Stage 1 to obtain a positive candidate set.
 
 ## 2. Frozen population and measurement
 
@@ -49,19 +52,18 @@ Source corpus:
 
 ```text
 games = 3072
-seeds = 22600001..22603072
+seeds = 22600001..22603072 / CONSUMED
 opening = 8-ply seeded-uniform exact E.moveVariants
 post-opening generation = six frozen strata, 512 games each
 max source-game ply = 100
 ```
 
-Selected roots, if selection readiness passes:
+Selected roots:
 
 ```text
 600 roots total
 300 Namua
 300 Mtaji
-one selected root per unique historical trajectory before quota
 no replacement / no phase reassignment
 ```
 
@@ -78,170 +80,99 @@ D_range = max(move win rate) - min(move win rate)
 highDivergence = D_range >= 0.30
 ```
 
-## 3. No-rescue rule
-
-Once scientific generation starts, do **not** change within v1:
+## 3. Completed execution sequence
 
 ```text
-seed block
-number of games
-selected-root quotas
-continuation policy
-replicate count
-continuation cap
-root estimability rule
-D_range threshold
-candidate grammar or bins
-support/diversity thresholds
-candidate ranking/caps
-phase assignment
-endpoint
+Phase A generate source corpus                    COMPLETE
+Phase B independent full corpus replay            PASS
+Phase C outcome-blind root selection              PASS
+Phase D all-root-move measurement                 PASS
+Phase E independent full remeasurement            PASS
+Phase F deterministic exploratory discovery       COMPLETE
 ```
 
-If a readiness gate fails, record the failure and stop the affected downstream inference. Do not add seeds, replace roots, increase replicates, relax thresholds, or search for a favorable subgroup.
-
-A genuine implementation defect requires stopping and documenting a new prospective version; never silently patch v1 after outcome inspection.
-
-## 4. Environment / repository preflight
-
-Use a clean checkout of the study branch:
-
-```bash
-git switch research/critical-positions-outcome-branching
-git pull --ff-only
-git status --short
-node --version
-```
-
-Required source identity remains the authorization-bound scientific source set. Documentation-only branch commits after source generation do not change the already generated local corpus.
-
-Validate frozen contracts and authorization when reproducing from scratch:
-
-```bash
-node tools/experiments/validate-critical-positions-stage1-spec.js
-node test/critical-positions-stage1-contract.test.js
-node test/critical-positions-stage1-tooling.test.js
-```
-
-## 5. Phase A — fixed source corpus — COMPLETE
-
-The frozen source corpus was generated exactly over:
+Relevant compact identities:
 
 ```text
-3072 games
-seeds 22600001..22603072
+selectionHash = 702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d
+discovery resultHash = 565b6f1570aa20a8b239d9275109fcb6bad2ec9d6f583c359b205b37ad7f6ce8
 ```
 
-Generated manifest identity:
+## 4. Final discovery result
 
 ```text
-sourceCommit = 157a4947435213b430ae7a9a85cc861aebfc258e
-sourceTreeDirty = false
-summaryHash = 1a56b7afb8c6c295f827c0546a87e9c2b0788914bffd1587b47f0d778bf73d63
-uniqueHistoricalTrajectories = 2726
-distinctOpeningPrefixes = 2226
+candidateAuditCount = 1183
+candidatesPassingPromotionGates = 0
+supportEquivalenceRepresentativeCount = 0
+promotedCandidateCount = 0
+zeroPromotedCandidatesAllowed = true
+manualOverridePerformed = false
 ```
 
-All six generation strata contain exactly 512 games.
-
-Do **not** rerun generation as replacement sampling. The Stage 1 seed block is consumed.
-
-Generation checkpoint:
+The disjoint single-token legal-move-count bins show:
 
 ```text
-doc/critical-positions-outcome-branching/checkpoints/2026-08-23-stage1-source-corpus-generated-verification-pending.md
+Namua high-divergence = 52 / 300
+Mtaji high-divergence = 87 / 300
+overall = 139 / 600
 ```
 
-## 6. Phase B — independent full corpus replay verification — NEXT
+Thus high-divergence roots existed, but no candidate in the frozen one-to-two-token structural grammar passed all promotion gates.
 
-Run against the existing local artifact root:
+## 5. No-rescue rule after closure
 
-```bash
-node tools/experiments/verify-critical-positions-stage1-exploratory.js \
-  --phase corpus \
-  --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
-```
-
-This independently replays all 3072 source games, including opening RNG, post-opening generator moves, state identities, trajectory hashes and opening-prefix identities.
-
-Required result:
+Do **not** run any of the following as a continuation of v1:
 
 ```text
-passed = true
-fullCorpusReplay = true
-gamesVerified = 3072
+additional Stage 1 source games
+seed extension
+replacement generation
+root replacement
+phase reassignment
+replicate extension
+continuation cap extension
+policy substitution
+D_range threshold change
+candidate grammar expansion
+candidate token/bin edit
+support threshold reduction
+high-divergence-rate floor reduction
+median-D_range floor reduction
+near-miss promotion
+manual override
 ```
 
-Expected output:
+A genuine implementation defect discovered later must be documented separately; it does not authorize silent repair of the completed scientific version.
+
+## 6. Stage 2 boundary
+
+Stage 2 reserved namespace:
 
 ```text
-verification.json
+22700001..22706144
 ```
 
-If corpus verification fails, **stop**. Root selection is forbidden until it passes. Do not selectively regenerate problematic games.
-
-## 7. Phase C — outcome-blind root selection
-
-Only after independent corpus verification PASS:
-
-```bash
-node tools/experiments/run-critical-positions-stage1-exploratory.js --phase select
-```
-
-Selection uses only frozen pre-outcome information and hashes:
+Final state:
 
 ```text
-collapse duplicate historicalTrajectoryHash groups
-→ assign each unique trajectory to Namua/Mtaji by frozen hash parity
-→ choose one eligible root within assigned phase by frozen SHA-256 rank
-→ collapse duplicate selected ruleStateKey
-→ apply frozen 300/300 phase quotas by frozen quota rank
+reserved = true
+authorized = false
+consumed = false
+executed = false
 ```
 
-It does **not** use game winner, continuation outcome, D_range, D2/D3 score, candidate matcher or post-move consequence.
+Stage 2 required an exact promoted Stage 1 candidate mapping before any formal generation. Because Stage 1 produced zero promoted candidates, no formal target exists within this Study.
 
-After selection, inspect `selection-audit.json` only for preregistered readiness gates. If readiness fails, do not replace states or extend the source corpus.
+Do not select a near miss to populate Stage 2. Any richer representation or alternate classifier is a **new prospective independent study** requiring a new design, fresh evidence, fresh seed audit and separate authorization.
 
-## 8. Phase D — all-root-move measurement
+## 7. Closure documents
 
-Only after selection readiness PASS:
+Read in this order for final state:
 
-```bash
-node tools/experiments/run-critical-positions-stage1-exploratory.js --phase measure
-```
+1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
+2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+3. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
+4. [`results/STAGE_1_EXPLORATORY_SUMMARY.json`](results/STAGE_1_EXPLORATORY_SUMMARY.json)
+5. [`checkpoints/2026-08-24-stage1-discovery-zero-promoted-candidates-study-closure.md`](checkpoints/2026-08-24-stage1-discovery-zero-promoted-candidates-study-closure.md)
 
-For each selected root this computes all exact legal root interventions, 64 P1 continuations per exact root move, D2/D3 secondary search axes, and structural/reply-envelope summaries.
-
-Inspect only the preregistered measurement-readiness gates before independent remeasurement. Do not extend replicates or replace non-estimable roots.
-
-## 9. Phase E — independent full continuation remeasurement
-
-After measurement:
-
-```bash
-node tools/experiments/verify-critical-positions-stage1-exploratory.js \
-  --phase measurement \
-  --output artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1
-```
-
-Required scientific verification is full remeasurement, not spot checking. It must reproduce continuation outcomes/hashes and recompute the frozen secondary/structural axes.
-
-Discovery is blocked until this verification passes.
-
-## 10. Phase F — deterministic exploratory discovery
-
-Only after measurement verification PASS:
-
-```bash
-node tools/experiments/run-critical-positions-stage1-exploratory.js --phase discover
-```
-
-Discovery applies the already frozen structural candidate grammar, opportunity/high-divergence support thresholds, opening/stratum diversity gates, support-equivalence rule, ranking and caps.
-
-Zero promoted candidates is a valid result. Do not manually promote or redefine candidates.
-
-## 11. Stage boundary
-
-Stage 1 remains exploratory regardless of its result.
-
-After compact Stage 1 artifacts are reviewed, only then may a **separate prospective Stage 2 design** be drafted using fresh evidence and the reserved `227...` namespace. This runbook does not authorize Stage 2.
+Large generated outputs remain under `artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1/`.
