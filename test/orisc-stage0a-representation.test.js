@@ -1,5 +1,6 @@
 "use strict";
 
+// Stage 0A fixtures are intentionally oracle-independent and emit no scientific outcome.
 const assert = require("node:assert/strict");
 const E = require("../public/engine.js");
 const P = require("../tools/experiments/lib/orisc-representation-production.js");
