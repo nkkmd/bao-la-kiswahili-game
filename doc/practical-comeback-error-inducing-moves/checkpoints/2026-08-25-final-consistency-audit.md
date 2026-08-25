@@ -62,7 +62,7 @@ Exact embedded-file SHA-256 values are frozen in `results/STAGE_1_ARTIFACT_PROVE
 
 ## Consistency corrections made
 
-Two post-closure provenance/operations ambiguities were found and corrected. Neither changed scientific evidence or interpretation.
+Three post-closure documentation/provenance/operations issues were found and corrected. None changed scientific evidence, thresholds, candidate definitions, or interpretation.
 
 ### 1. Result-hash scope
 
@@ -74,6 +74,25 @@ The execution amendment correctly binds the scientific `.github/workflows/pcem-s
 
 The remaining PCEM Stage 0 / pre-authorization / authorization-material workflows were also converted to non-generative closure guards so PR synchronization cannot create new noncanonical technical or authorization artifacts after Study 1 completion.
 
+### 3. `FUTURE_RESEARCH_AGENDA.md` terminal-state synchronization
+
+The agenda's introduction and completed-study inventory already recorded PCEM-STUDY1 as complete, but deeper current-facing sections still retained pre-study wording. The audit found and corrected all three stale locations:
+
+```text
+§4.7 逆転可能性と勝負手
+  pre-study research-question text -> Study 1 complete result/boundary text
+
+§5 第3段階 item 5
+  [後続候補] -> [完了] with Stage 1 / Stage 2 terminal labels
+
+§7 individual-study continuation conditions
+  PCEM-specific no-rescue / fresh-evidence rule added
+```
+
+The synchronized agenda now states the same bounded result as the canonical records: Stage 1 `EXPLORATORY-ONLY`, 55 candidate audits, zero promoted candidates, and Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`. It also explicitly forbids threshold relaxation, near-miss promotion, favorable subgroup rescue, candidate-grammar expansion, opponent-policy substitution, and Stage 1 row reuse as Stage 2 evidence.
+
+A one-shot synchronization helper used only to materialize the stale §4.7 replacement was removed after successful materialization. It is not part of the terminal repository state.
+
 ## Historical records intentionally not rewritten
 
 Prospective records retain their original freeze-state semantics. In particular, `STAGE_1_EXPLORATORY_SPEC.json` keeps its historical `prospective-frozen-not-authorized` status while the later separate authorization record documents authorization. This is intentional provenance, not a stale current-status error.
@@ -84,16 +103,27 @@ Added:
 
 ```text
 test/practical-comeback-closure-consistency.test.js
+test/practical-comeback-agenda-closure.test.js
 .github/workflows/pcem-closure-audit.yml
 ```
 
-The audit checks terminal result values, independent verification, Stage 2 non-authorization, no-rescue flags, canonical artifact provenance, current-facing documentation, frozen-preregistration preservation, and post-closure workflow guards.
+The general closure audit checks terminal result values, independent verification, Stage 2 non-authorization, no-rescue flags, canonical artifact provenance, current-facing documentation, frozen-preregistration preservation, and post-closure workflow guards.
+
+The agenda-specific audit additionally requires:
+
+```text
+§4.7 = Study 1完了
+第3段階 item 5 = [完了]
+§7 = PCEM-specific no-rescue / fresh-evidence condition present
+```
+
+and rejects the stale pre-study §4.7 block and `[後続候補] 逆転可能性と勝負手` entry.
 
 ## Final interpretation
 
-No scientific inconsistency, missing Stage 2 disposition, stale current-facing study status, or central-document omission remains known after these corrections.
+After the corrections above, no scientific inconsistency, missing Stage 2 disposition, stale current-facing PCEM study status, or known central-document omission remains.
 
-The corrections are post-closure reproducibility/operations hardening only:
+The corrections are post-closure reproducibility/documentation/operations hardening only:
 
 ```text
 scientificResultChanged = false
