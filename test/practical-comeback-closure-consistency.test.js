@@ -113,10 +113,13 @@ assert.equal(stage2.reservedStage2SeedEnd, 23306144);
 assert.equal(stage2.reservedStage2SeedsConsumed, false);
 assert.ok(Object.values(stage2.rescueProhibited).every(Boolean));
 
-const currentFacing = [
+const centralCurrentFacing = [
   "README.md",
   "doc/RESEARCH_INDEX.md",
-  "doc/FUTURE_RESEARCH_AGENDA.md",
+  "doc/FUTURE_RESEARCH_AGENDA.md"
+];
+
+const studyCurrentFacing = [
   "doc/practical-comeback-error-inducing-moves/README.md",
   "doc/practical-comeback-error-inducing-moves/CURRENT_STATUS.md",
   "doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md",
@@ -127,19 +130,25 @@ const currentFacing = [
   "doc/research-program-decisions/2026-08-25-practical-comeback-error-inducing-move-study1-closure.md"
 ];
 
-for (const rel of currentFacing) {
-  containsAll(rel, ["PCEM", "EXPLORATORY-ONLY"]);
-  containsNone(rel, [
-    "Stage 1 = AUTHORIZED-NOT-YET-EXECUTED",
-    "Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED",
-    "Stage 0 technical-only未実行",
-    "scientific result未生成",
-    "NO SCIENTIFIC RESULT YET"
-  ]);
+const staleCurrentFacingText = [
+  "Stage 1 = AUTHORIZED-NOT-YET-EXECUTED",
+  "Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED",
+  "Stage 0 technical-only未実行",
+  "scientific result未生成",
+  "NO SCIENTIFIC RESULT YET"
+];
+
+for (const rel of [...centralCurrentFacing, ...studyCurrentFacing]) {
+  containsAll(rel, ["EXPLORATORY-ONLY"]);
+  containsNone(rel, staleCurrentFacingText);
 }
 
-containsAll("README.md", ["55 candidate audits", "promoted candidates 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
-containsAll("doc/RESEARCH_INDEX.md", ["### 16. Practical Comeback / Error-Inducing Move — Study 1", "promotedCandidateCount = 0"]);
+for (const rel of studyCurrentFacing) {
+  containsAll(rel, ["PCEM"]);
+}
+
+containsAll("README.md", ["PCEM", "55 candidate audits", "promoted candidates 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
+containsAll("doc/RESEARCH_INDEX.md", ["### 16. Practical Comeback / Error-Inducing Move — Study 1", "promotedCandidateCount = 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
 containsAll("doc/FUTURE_RESEARCH_AGENDA.md", ["Version: 1.15.0", "Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。"]);
 containsAll("doc/practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md", [
   "scientificWorkflowGitBlobSha = 3320575988f9f0ec315a8d7474840745a99ae325",
