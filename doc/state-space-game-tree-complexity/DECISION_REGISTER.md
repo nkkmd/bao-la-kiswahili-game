@@ -1,6 +1,6 @@
 # SSGTC-STUDY1 — Decision Register
 
-All decisions below are frozen before any Stage 0 count is interpreted and before any Stage 1 scientific outcome is observed.
+All decisions below preserve the prospective order of the study. D001-D019 were fixed before the relevant Stage 0/1 outcomes; closure decisions record later events without changing those earlier rules.
 
 ## D001 — Prospective independence
 
@@ -106,7 +106,7 @@ GitHub Actions run `32803985808` passed all frozen `S0-G1` through `S0-G12` gate
 
 ## D018 — Stage 1 numeric resource profile
 
-Before any Stage 1 outcome generation, the following caps are frozen for namespace `SSGTC-S1-EXPLORATORY-2026-08-25-v1`:
+Before any Stage 1 outcome generation, the following caps were frozen for namespace `SSGTC-S1-EXPLORATORY-2026-08-25-v1`:
 
 ```text
 graph max depth = 12
@@ -128,3 +128,62 @@ The first reached cap stops the applicable expansion and partial layers are cens
 ## D019 — Stage 2 minimum feasibility rule
 
 Stage 2 design may begin only if Stage 1 completes at least four fully expanded graph depths beyond the root and four fully expanded game-tree depths beyond the root, with every mandatory integrity gate passing. Failure of this minimum leaves Stage 2 not authorized; no cap increase or favorable-subset rescue is permitted.
+
+## D020 — Non-canonical Stage 1 technical failures remain sealed
+
+Runs `32805036665`, `32805162435`, and `32805259739` are retained as technical-invalid/non-canonical attempts. The first two failed self-inspection implementation checks. The third showed that branching summaries had included individually processed states from a partial depth, contrary to the pre-frozen complete-layer censoring rule.
+
+No scientific pattern from these runs is used to choose endpoints, caps, or formal claims. The corrective changes were restricted to technical self-checking and alignment of aggregation with the already frozen partial-layer rule.
+
+## D021 — Accepted Stage 1 remains exploratory-only
+
+Run `32805576462` passed production and separate-process independent verification and is the accepted Stage 1 exploratory artifact. Its graph reached the pre-frozen frontier cap while attempting parent depth 8; depth-9 rows are censored observed-only. Raw-state depths 0..8 and transitions from parent depths 0..7 were completely verified, and the tree completed through depth 8.
+
+Stage 1 remains `EXPLORATORY-ONLY`, `scientificInferenceAuthorized=false`, and `formalReuseInStage2=false`. It may support only the preregistered feasibility decision.
+
+## D022 — Stage 2 formal target frozen as bounded depth-8 replication
+
+After the D019 feasibility minimum passed, Stage 2 prospectively froze a fresh standard-root target with:
+
+```text
+raw graph parent depths = 0..7
+reachable raw-state depths = 0..8
+game-tree depths = 0..8
+symmetry reduction = false
+canonicalization = false
+estimation = false
+Stage 1 rows reused = false
+```
+
+The formal outcome labels were fixed before execution: exact bounded completion, resource-censored completion failure, or technical invalidity. A failed exact attempt could not be relabeled as an estimate.
+
+## D023 — Formal decision
+
+Canonical Stage 2 run `32805975114` completed the frozen target and passed independent full-domain re-enumeration. The formal decision is:
+
+```text
+SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
+```
+
+Canonical endpoint values are:
+
+```text
+reachable raw states through depth 8 = 24848
+transitions from parent depths 0..7 = 25648
+game-tree node occurrences through depth 8 = 30941
+game-tree edge occurrences through depth 8 = 30940
+```
+
+with exact set identities:
+
+```text
+stateSetSha256 = 8215be574a04177710b479faffb70084920d79fd2449c56802d0584853c05ca9
+transitionSetSha256 = f0e57235a6611b1b4f265b51807a1943420f130d87e16e2bc367a0e2347f892e
+treeOccurrenceSetSha256 = 194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6a32edc3f08
+```
+
+## D024 — Closure boundary
+
+The Stage 2 result is exact only inside the frozen standard-root depth-8 RAW-ONLY domain. The study does not authorize a full Bao state-space count, full game-tree count, global growth law, global transposition ratio, symmetry-reduced count, canonicalization claim, or full-game estimator.
+
+SSGTC-STUDY1 is complete once final documentation consistency and CI audit pass. Any deeper enumeration, full-game estimation, or symmetry-reduced count must use a new prospective study/versioned protocol. Upstream Restricted Endgame, Symmetry, and ORISC decisions remain unchanged.
