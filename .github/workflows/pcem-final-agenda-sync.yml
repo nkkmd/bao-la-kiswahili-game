@@ -1,5 +1,6 @@
 name: PCEM final agenda section sync
 
+# One-shot closure integration helper; delete after successful materialization.
 on:
   pull_request:
     branches: [main]
