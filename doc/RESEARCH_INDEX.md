@@ -414,7 +414,6 @@ Frozen rootはPlayer 0 to moveの`WIN`、absolute forced winner = Player 0、`DT
 
 **Boundary:** exact claimはfrozen 8-state restricted domainだけに限定される。Bao全体、全Mtaji、全終盤が解けたこと、Baoにcycle/drawがないこと、engine evaluationがgame-theoretically正しいこと、symmetry/isomorphismが成立することは意味しない。
 
-
 ---
 
 ### 13. Symmetry / Isomorphic Positions — Study 1
@@ -441,7 +440,57 @@ mandatoryとしたRestricted Endgame Study 1のimmutable 8-state exact-oracle re
 - [`symmetry-isomorphic-positions/CURRENT_STATUS.md`](symmetry-isomorphic-positions/CURRENT_STATUS.md) — closure状態とdownstream boundary
 - [`symmetry-isomorphic-positions/DECISION_REGISTER.md`](symmetry-isomorphic-positions/DECISION_REGISTER.md) — prospective decisions / no-rescue / closure
 
-**Boundary:** formalにvalidatedされたtransformは0件。Study 1からcanonicalization、symmetry-group claim、symmetry-reduced state countingは承認しない。State Space / Game Tree Complexity Studyはraw state identityで進行できる。symmetry reductionが必要なら、上流Studyをretrofitしないnew prospective oracle-representation-integrity / symmetry-confirmation Studyを先行させる。
+**Boundary:** formalにvalidatedされたtransformは0件。Study 1からcanonicalization、symmetry-group claim、symmetry-reduced state countingは承認しない。State Space / Game Tree Complexity Studyはraw state identityで進行できる。このfollow-up requirementは`ORISC-STUDY1`として独立に実施され、Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`で閉じたため、symmetry reductionは引き続き未承認である。
+
+---
+
+### 14. Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1
+
+**研究題目:** 限定終盤exact oracleの表現整合性・raw-state identity監査と独立symmetry confirmation — oracle representation integrity, reconstruction contract, and prospective symmetry validation  
+**状態:** **COMPLETED / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`**  
+**作業branch:** `research/oracle-representation-integrity-symmetry-confirmation`
+
+このprospective independent machine-only studyは、Restricted Endgame Study 1のexact solutionそのものと、後からrepositoryへ保存されたstate-row representationを明示的に分離し、後者がraw-state reconstruction / downstream transform-validation anchorとして成立するかを新しいformal endpointとして検証した。
+
+Stage 0Aでは元のREWR scientific workflow artifactをread-onlyで回収し、original production / independentの8 raw rowsが完全一致し、全stateが64 seedsを表現していることを確認した。repository-facing resultとの差は3 terminal rowsの`pending`だけに限定され、materialization mechanismは証拠不足のため`UNRESOLVED-PROVENANCE-GAP`として残した。
+
+Formal Axis Aではproduction / independent別実装が凍結rootから同じraw graphを再構成した。
+
+```text
+states = 8
+edges = 7
+state/transition hashes = immutable REWR identityとexact match
+all reconstructed represented seed totals = 64
+terminal accounting mismatches = 0
+transition successor mismatches = 0
+A-G12 production/independent equality = PASS
+```
+
+一方、3 immutable repository-facing terminal rowsがstored-row re-hash (`A-G8`) と reconstructed raw-state binding (`A-G9`) をFAILし、差分fieldはすべて`pending`のみだった。repository rowは63 seeds、reconstructed raw stateは64 seedsを表現した。repository reconstructionがmandatory IDENTITY controlの一部だったため`A-G11=FAIL`となり、formal decisionは:
+
+```text
+ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+```
+
+である。production / independentが同じfailure locationとgate分類を再現したため、implementation disagreementによる`NON-ESTIMABLE`ではない。
+
+Conditional Stage 2 candidate contractはAxis A outcome前にfreeze済みだったが、Stage 1 `CONFIRMED`とIDENTITY PASSがauthorization prerequisiteだったため、Axis Bは`NOT-AUTHORIZED-NOT-EXECUTED`となった。したがってORISC-T01/T02/T03にはformal pass/fail labelを付与していない。
+
+**最初に読む:**
+
+- [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_FINAL_REPORT.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_FINAL_REPORT.md) — 科学的・技術的最終統合
+- [`oracle-representation-integrity-symmetry-confirmation/results/STAGE_1_FORMAL_RESULT.json`](oracle-representation-integrity-symmetry-confirmation/results/STAGE_1_FORMAL_RESULT.json) — canonical Axis A formal result
+- [`oracle-representation-integrity-symmetry-confirmation/results/STUDY_1_FINAL_RESULT.json`](oracle-representation-integrity-symmetry-confirmation/results/STUDY_1_FINAL_RESULT.json) — Study-level closure
+- [`oracle-representation-integrity-symmetry-confirmation/REPRODUCIBILITY_INDEX.md`](oracle-representation-integrity-symmetry-confirmation/REPRODUCIBILITY_INDEX.md) — source/hash/workflow/artifact provenance
+- [`oracle-representation-integrity-symmetry-confirmation/CURRENT_STATUS.md`](oracle-representation-integrity-symmetry-confirmation/CURRENT_STATUS.md) — closure状態とdownstream boundary
+- [`oracle-representation-integrity-symmetry-confirmation/DECISION_REGISTER.md`](oracle-representation-integrity-symmetry-confirmation/DECISION_REGISTER.md) — prospective decisions / no-rescue / closure
+
+**Boundary:** `REWR-STUDY1`の`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`やvalue/DTF/optimal moveを変更しない。`SIP-STUDY1`の5 `NON-ESTIMABLE` closureも変更しない。ORISC Axis Bは未実行なので、非自明symmetry candidateがfalseであることも示さない。validated transform setは空のままで、canonicalization / symmetry-group claim / symmetry-reduced state countingは未承認。State Space / Game Tree Complexityはauthoritative raw state identityだけを用いるRAW-ONLY研究として進行可能である。
+
 ---
 
 ## 将来研究
@@ -465,6 +514,8 @@ Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`について�
 Blunder / Misvaluation Patterns Study 1は0 `CONFIRMED` / 4 `NOT-CONFIRMED`で閉じました。同じStage 2 dataを追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupで救済しません。C01-C03で観測されたstructural/reply failure signatureの再現性は新しい仮説生成には利用できますが、現Studyのformal decisionを変更しません。追試する場合は新しいprospective independent studyとfresh evidenceを使用します。
 
 Critical Positions / Outcome Branching Study 1はStage 1で0 promoted candidatesとなり閉じました。同じStage 1 outcomeを見た後にgrammarを広げる、near-missをpromotionする、support/divergence thresholdを緩和する、Stage 2 targetを手動選択することはfuture workに含めません。より豊富なstructural representationや別candidate grammarを検証する場合は、新しいprospective independent studyとしてfresh design/evidenceを用います。
+
+ORISC-STUDY1はAxis A `NOT-CONFIRMED`、Axis B未実行で閉じました。同じclosed Study内でrepository rowを書き換えてAxis Aを再判定したり、Stage 2 authorizationを後付けしたりしません。repository representationを修復・置換して再評価する場合や非自明symmetryを再検証する場合は、新しいprospective study/versioned protocolとfresh authorizationを使用します。
 
 ---
 
@@ -491,4 +542,3 @@ doc/<research-area>/
 - 科学的・技術的な正本
 
 これにより、研究成果が増えてもルートREADMEを個別実験リンクで肥大化させず、研究全体を一覧できます。
-
