@@ -1,19 +1,40 @@
 # Research Program Decision — Oracle Representation Integrity / Symmetry Confirmation
 
 Date: 2026-08-24  
-Status: **RECORDED — NEXT PROSPECTIVE INDEPENDENT STUDY**
+Updated: 2026-08-25  
+Status: **RECORDED — SEQUENCE DECISION FULFILLED / ORISC-STUDY1 COMPLETED**
 
-## Decision
+## Original decision
 
-The next Bao research study will be conducted as a new prospective independent study under the working title:
+The next Bao research study after Symmetry / Isomorphic Positions Study 1 was selected as a new prospective independent study under the working title:
 
 > **Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1**
 >
 > Japanese working description: **限定終盤exact oracleの表現整合性・raw-state identity監査と、独立したsymmetry confirmation**
 
-This study is selected **before** State Space / Game Tree Complexity research.
+This study was intentionally selected **before** State Space / Game Tree Complexity research.
 
-## Research-program sequence
+## Fulfillment update — 2026-08-25
+
+The sequence decision has now been fulfilled as `ORISC-STUDY1`.
+
+Final result:
+
+```text
+ORISC-STUDY1 = COMPLETED
+Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+Axis B = NOT-AUTHORIZED-NOT-EXECUTED
+validated symmetry transformation set = []
+canonicalization = NOT AUTHORIZED
+symmetry-reduced state counting = NOT AUTHORIZED
+raw state identity = authoritative
+```
+
+Axis A independently reconstructed the immutable raw 8-state / 7-edge Restricted Endgame graph with production/independent equality, 64-seed conservation, terminal captured/pending accounting and transition closure. Three immutable repository-facing terminal rows nevertheless failed the prospectively frozen stored-row re-hash and reconstructed raw-state binding gates; the identity-field difference was `pending` only. Because production and independent implementations agreed exactly, the formal result is `NOT-CONFIRMED`, not `NON-ESTIMABLE`.
+
+The conditional symmetry stage had been frozen before Axis A outcome but required Axis A `CONFIRMED` and IDENTITY PASS. Those conditions were not met, so no nontrivial symmetry candidate was executed or assigned a formal pass/fail label.
+
+## Current research-program sequence
 
 ```text
 Restricted Endgame / Winning Regions Study 1
@@ -23,17 +44,17 @@ Symmetry / Isomorphic Positions Study 1
   -> completed; Study-level 0 validated / 0 rejected / 5 NON-ESTIMABLE
 
 Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1
-  -> NEXT prospective independent study
+  -> completed; Axis A NOT-CONFIRMED / Axis B NOT-AUTHORIZED-NOT-EXECUTED
 
 State Space / Game Tree Complexity
-  -> after the oracle-integrity / symmetry-confirmation study
+  -> next machine-only candidate, RAW-STATE IDENTITY ONLY
 ```
 
-Although raw-state State Space / Game Tree Complexity research is technically possible without symmetry reduction, the research program will intentionally perform the oracle-integrity / symmetry-confirmation study first so that later state-space work has an explicit, independently validated decision on whether any symmetry reduction is authorized.
+The original rationale for placing ORISC before State Space has therefore been satisfied. State Space / Game Tree Complexity may now proceed without waiting for another symmetry study, provided its formal representation uses authoritative raw state identity and does not use any unvalidated transformation for state reduction.
 
 ## Independence and no-rescue boundary
 
-This new study must not reopen, rescue, amend, or reinterpret the formal decisions of either completed upstream study.
+This sequence update does not reopen, rescue, amend, or reinterpret the formal decisions of either completed upstream study.
 
 ### Restricted Endgame / Winning Regions Study 1
 
@@ -43,7 +64,7 @@ The following remain immutable:
 - frozen 8-state / 7-edge bounded-domain result;
 - existing state/edge/solution identities, value, DTF, and optimal-move claims within that frozen boundary.
 
-The new study may audit whether the stored result artifact is suitable for **raw-state identity reconstruction and downstream transform validation**, but that audit is a new endpoint and does not retroactively change the prior exact-solution decision.
+ORISC evaluated the separate downstream endpoint of whether the repository-facing stored result is suitable for **raw-state identity reconstruction and downstream transform validation**. Its failure at that endpoint does not retroactively change the prior exact-solution decision.
 
 ### Symmetry / Isomorphic Positions Study 1
 
@@ -55,40 +76,44 @@ The following remain immutable:
 - corrected v2 was not authorized or executed;
 - no T01/T02/T03 canonicalization or symmetry reduction is authorized by Study 1.
 
-The new study must not be treated as a continuation, rescue stage, or retroactive v2 of `SIP-STUDY1`. It must use a new study ID, a fresh prospective protocol, explicit source identities, and pre-outcome decision rules.
+`ORISC-STUDY1` was not a continuation, rescue stage, or retroactive v2 of `SIP-STUDY1`, and its result does not modify SIP closure.
 
-## Prospective research targets
+## ORISC prospective targets and their disposition
 
-The exact protocol will be frozen only when the new study starts. At minimum, the design should separately address:
+The original sequence decision required a future protocol to separately address:
 
 1. terminal-state representation and raw `ruleState` identity;
 2. `stateKey` serialization / re-hash contract;
 3. pending/captured-seed accounting and 64-seed conservation representation;
 4. reconstruction of the immutable Restricted Endgame graph from an independently specified source contract;
-5. identity-positive-control behavior before any nontrivial transform decision is authorized;
+5. identity-positive-control behavior before any nontrivial transform decision;
 6. production / independent implementation agreement;
-7. only after the representation-integrity gates pass, a prospectively specified symmetry/isomorphism confirmation stage;
+7. only after representation-integrity gates pass, a prospectively specified symmetry/isomorphism confirmation stage;
 8. explicit downstream authorization or prohibition of canonicalization and symmetry-reduced state counting.
 
-No candidate transformation, corrected representation rule, reconstruction method, population, seed block, or pass/fail criterion may be selected after inspecting the new study's scientific outcome.
+`ORISC-STUDY1` implemented these requirements prospectively. Items 1–6 were formally evaluated in Axis A; the repository-facing binding requirement failed while production/independent equality passed. Item 7 therefore remained conditionally blocked. Item 8 closed with no canonicalization or symmetry-reduced counting authorization.
 
-## Downstream contract
+No candidate transformation, corrected representation rule, reconstruction method, population, seed block, or pass/fail criterion was selected after inspecting the formal Axis A outcome.
 
-Until this new study produces its own valid formal result:
+## Current downstream contract
+
+After completion of ORISC-STUDY1:
 
 ```text
 validated symmetry transformation set = empty
-canonicalization from SIP-T01/T02/T03 = not authorized
+canonicalization = not authorized
+symmetry-group claim = not authorized
 symmetry-reduced state counting = not authorized
 raw state identity = authoritative downstream representation
+State Space / Game Tree Complexity = may proceed RAW-ONLY
 ```
 
-State Space / Game Tree Complexity research is therefore **programmatically deferred until after this study**, even though a raw-only version would otherwise be technically permissible.
+If a future study wishes to repair or replace the repository-facing oracle representation, or to test nontrivial symmetries again, it must do so as a new prospective study/versioned protocol. It must not rewrite the closed ORISC result or the upstream REWR/SIP decisions.
 
 ## Human-evidence boundary
 
-The existing decision to defer human/expert-dependent research is unchanged. This next study is machine-only unless a future prospective protocol explicitly adds a separate human evidence axis.
+The existing decision to defer human/expert-dependent research is unchanged. ORISC-STUDY1 was machine-only; no human claim was added.
 
-## Start condition
+## Historical significance of this record
 
-When this study is actually started, it should begin in a new chat and a new dedicated research branch from then-current `main`. The current file records only the research-program ordering decision; it does not preregister scientific hypotheses or authorize outcome generation.
+This file originally recorded why ORISC should precede State Space. It now records that the prerequisite study was completed and that its result authorizes only the raw-state route forward. It does not itself authorize or execute the next State Space / Game Tree Complexity study.
