@@ -7,13 +7,13 @@ Status: **COMPLETED / AXIS A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / A
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
-baseline main HEAD = e8f0a3c360d9e7c9f7f6882fb212a32921040912
+baseline main HEAD at study start = e8f0a3c360d9e7c9f7f6882fb212a32921040912
 study branch = research/oracle-representation-integrity-symmetry-confirmation
-draft PR = #48
+integration PR = #48
 studyId = ORISC-STUDY1
 ```
 
-`main` has not been modified by this study branch. Merge is intentionally deferred until explicit user instruction.
+Repository integration through PR `#48` was explicitly authorized by the user on 2026-08-25 after final documentation and CI review. The PR / `main` history is the authoritative record of the resulting merge state; the scientific closure recorded below does not depend on branch-lifecycle metadata.
 
 ## Immutable upstream scientific state
 
