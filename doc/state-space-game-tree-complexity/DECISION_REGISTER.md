@@ -99,3 +99,32 @@ Prohibited after outcome inspection: changing depth/caps for favorable growth, f
 ## D016 — Integration
 
 No merge to `main` and no auto-merge are authorized before study completion, documentation audit, CI/reproducibility checks, and explicit user instruction.
+
+## D017 — Stage 0 accepted as technical PASS only
+
+GitHub Actions run `32803985808` passed all frozen `S0-G1` through `S0-G12` gates and the separate-process independent verifier. The accepted label is exactly `SSGTC-STAGE0-PASS`. The diagnostic depth-2 counts remain technical-only and may not be promoted to a Bao-wide complexity claim or reused as Stage 1 observations.
+
+## D018 — Stage 1 numeric resource profile
+
+Before any Stage 1 outcome generation, the following caps are frozen for namespace `SSGTC-S1-EXPLORATORY-2026-08-25-v1`:
+
+```text
+graph max depth = 12
+graph max unique raw states = 100000
+graph max generated edges = 500000
+graph max frontier states = 50000
+
+tree max depth = 8
+tree max node occurrences = 250000
+tree max edge occurrences = 250000
+
+global max wall clock = 600 seconds
+global max RSS = 4294967296 bytes
+global max uncompressed artifact bytes = 134217728 bytes
+```
+
+The first reached cap stops the applicable expansion and partial layers are censored. These caps may not be increased after Stage 1 scientific-pattern inspection.
+
+## D019 — Stage 2 minimum feasibility rule
+
+Stage 2 design may begin only if Stage 1 completes at least four fully expanded graph depths beyond the root and four fully expanded game-tree depths beyond the root, with every mandatory integrity gate passing. Failure of this minimum leaves Stage 2 not authorized; no cap increase or favorable-subset rescue is permitted.
