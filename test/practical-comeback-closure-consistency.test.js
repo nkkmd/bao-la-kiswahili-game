@@ -5,7 +5,6 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "..");
-const STUDY = path.join(ROOT, "doc/practical-comeback-error-inducing-moves");
 
 function read(rel) {
   return fs.readFileSync(path.join(ROOT, rel), "utf8");
@@ -157,6 +156,22 @@ const amendment = json("doc/practical-comeback-error-inducing-moves/preregistrat
 assert.equal(amendment.executionBindings.parallelWorkflowGitBlobSha, "3320575988f9f0ec315a8d7474840745a99ae325");
 assert.equal(amendment.scientificContract.scientificLogicChanged, false);
 
+containsAll(".github/workflows/pcem-stage0-technical.yml", [
+  "PCEM Stage 0 technical validation (closed)",
+  "technical pilot regeneration is disabled"
+]);
+containsAll(".github/workflows/pcem-stage1-contract.yml", [
+  "PCEM Stage 1 pre-authorization contract (closed)",
+  "absence-of-authorization smoke is not rerun after authorization"
+]);
+containsAll(".github/workflows/pcem-stage1-authorization-material.yml", [
+  "PCEM Stage 1 authorization material (closed)",
+  "new post-closure materialization artifacts are disabled"
+]);
+containsAll(".github/workflows/pcem-stage1-exploratory.yml", [
+  "PCEM Stage 1 exploratory scientific (serial superseded)",
+  "if: ${{ false }}"
+]);
 containsAll(".github/workflows/pcem-stage1-parallel.yml", [
   "PCEM Stage 1 exploratory scientific (closed)",
   "Refuse scientific rerun after canonical closure",
