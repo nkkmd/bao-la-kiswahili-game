@@ -13,7 +13,7 @@ AI世代、evaluation/search profile、engineering candidate、research generati
 - next adopted public lineage reserved name: **`AI-GEN3`**
 - candidate IDs: `PBAI-Cxxx`; public採用前に`AI-GEN3`へpromotionしない
 - `legacy` / `bao` / `bao-v2`等はprofile名でありAI世代名ではない
-- Research Generation 1 / 2はresearch namespaceであり、AI generation numberとは独立
+- `Research Generation 1` / `Research Generation 2`はresearch namespaceであり、AI generation numberとは独立
 
 正本: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
 
@@ -24,9 +24,11 @@ Program-level naming decision: [`engineering-program-decisions/2026-08-26-ai-gen
 ### Public Bao AI Improvement Program 1 (`PBAI-P1`)
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-**状態:** ESTABLISHED / Phase A evidence audit ready / public AI code unchanged  
-**evidence cutoff:** Generation-1 completed research available at program-start repository anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Generation-2 research outcomes:** excluded from PBAI-P1 by default
+**状態:** ESTABLISHED / **PBAI-A COMPLETE** / PBAI-B AI-GEN2 baseline freeze next / public AI code unchanged  
+**scientific evidence cutoff:** completed Research Generation 1 evidence at program-start anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
+**Research Generation 2 outcomes:** excluded from PBAI-P1
+
+PBAI-A fixed a 14-Study Research Generation 1 evidence core, classified engineering use as E1/E2/E3/E4 without changing scientific labels, and advanced `PBAI-C001..PBAI-C005` only to `EVIDENCE-AUDIT-READY`. Candidate development authorization remains 0.
 
 入口:
 
@@ -39,20 +41,33 @@ Program-level naming decision: [`engineering-program-decisions/2026-08-26-ai-gen
 - [`ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md)
 
-Program-level decision:
+Program-level establishment decision:
 
 - [`engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md`](engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md)
+
+## Current phase boundary
+
+```text
+PBAI-A Research Generation 1 evidence audit = COMPLETE
+PBAI-B AI-GEN2 exact baseline = NOT-FROZEN / NEXT
+PBAI-C benchmark framework = FRAMEWORK-FROZEN
+PBAI-C numeric non-regression / release gates = NOT-FROZEN
+candidate implementations = 0
+AI-GEN3 = RESERVED / NOT-AUTHORIZED
+```
+
+PBAI-Aのread-only inspectionで、current `AI.stateKey`はResearch Generation 1のauthoritative RAW identityと同一ではなく`pending`を含まないことを記録した。これはcurrent public AI failureの判定ではないが、research-derived tablebase/RAW keyへ暗黙流用しないconstraintとして固定されている。
 
 ## Separation from research
 
 ```text
-Generation-1 completed research
+completed Research Generation 1
           ↓
 PBAI-P1 engineering evidence audit
           ↓
 engineering candidates / benchmark / release decision
 
-Generation-2 research = separate pure research track
+Research Generation 2 = separate pure research track
 ```
 
 AI engineeringで得たpositive/negative resultはengineering decisionとして記録する。科学的仮説を新たに検証する必要が生じた場合は、既存Studyを再解釈せず、新しいprospective research StudyとしてResearch Trackへ戻す。
