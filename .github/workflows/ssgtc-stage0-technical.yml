@@ -5,6 +5,7 @@ on:
     paths:
       - "public/engine.js"
       - "tools/experiments/run-ssgtc-stage0-technical.js"
+      - "tools/experiments/verify-ssgtc-stage0-independent.js"
       - "tools/experiments/lib/ssgtc-representation-*.js"
       - "doc/state-space-game-tree-complexity/**"
       - ".github/workflows/ssgtc-stage0-technical.yml"
@@ -25,10 +26,15 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Run frozen Stage 0 technical validation
+      - name: Run frozen Stage 0 production validation
         env:
           SSGTC_STAGE0_OUT: ${{ runner.temp }}/ssgtc-stage0-technical-v1
         run: node tools/experiments/run-ssgtc-stage0-technical.js
+
+      - name: Run separate-process independent artifact verification
+        env:
+          SSGTC_STAGE0_OUT: ${{ runner.temp }}/ssgtc-stage0-technical-v1
+        run: node tools/experiments/verify-ssgtc-stage0-independent.js
 
       - name: Upload technical artifacts
         if: always()
