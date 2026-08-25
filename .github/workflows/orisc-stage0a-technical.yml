@@ -1,103 +1,17 @@
-name: ORISC Stage 0A technical audit
+name: ORISC Stage 0A technical audit — closed study
 
 on:
-  push:
-    branches:
-      - research/oracle-representation-integrity-symmetry-confirmation
-    paths:
-      - "public/engine.js"
-      - "tools/experiments/lib/orisc-representation-production.js"
-      - "tools/experiments/lib/orisc-representation-independent.js"
-      - "tools/experiments/run-orisc-stage0a-technical-audit.js"
-      - "test/orisc-stage0a-representation.test.js"
-      - "doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json"
-      - ".github/workflows/orisc-stage0a-technical.yml"
-  pull_request:
-    paths:
-      - "public/engine.js"
-      - "tools/experiments/lib/orisc-representation-production.js"
-      - "tools/experiments/lib/orisc-representation-independent.js"
-      - "tools/experiments/run-orisc-stage0a-technical-audit.js"
-      - "test/orisc-stage0a-representation.test.js"
-      - "doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json"
-      - ".github/workflows/orisc-stage0a-technical.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
-  actions: read
 
 jobs:
-  stage0a-technical:
+  closed-study:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Run oracle-independent synthetic representation fixtures
-        run: node test/orisc-stage0a-representation.test.js
-
-      - name: Recover immutable REWR scientific workflow artifact
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Closed-study notice
         run: |
-          rm -rf /tmp/rewr-original
-          mkdir -p /tmp/rewr-original
-          gh run download 32702596730 \
-            --repo "${{ github.repository }}" \
-            --name rewr-stage1-exact-solution \
-            --dir /tmp/rewr-original
-          test -f /tmp/rewr-original/stage1-exact-result.json
-          test -f /tmp/rewr-original/stage1-exact-verification.json
-
-      - name: Run read-only cross-artifact provenance audit
-        run: |
-          node tools/experiments/run-orisc-stage0a-technical-audit.js \
-            --repository-result doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json \
-            --original-production /tmp/rewr-original/stage1-exact-result.json \
-            --original-independent /tmp/rewr-original/stage1-exact-verification.json \
-            --output /tmp/orisc-stage0a-technical-audit.json
-
-      - name: Assert Stage 0A technical firewall and original-artifact integrity
-        run: |
-          node - <<'NODE'
-          const fs = require('node:fs');
-          const r = JSON.parse(fs.readFileSync('/tmp/orisc-stage0a-technical-audit.json', 'utf8'));
-          if (r.technicalOnly !== true
-              || r.scientificOutcomeGenerated !== false
-              || r.formalRepresentationIntegrityDecisionGenerated !== false
-              || r.symmetryCandidateDecisionGenerated !== false
-              || r.mutatesUpstreamOracle !== false) {
-            throw new Error('ORISC Stage 0A scientific-outcome firewall violation');
-          }
-          if (r.crossArtifact.stateKeySetsEqual !== true
-              || r.crossArtifact.originalProductionIndependentRowEquality !== true) {
-            throw new Error('Original REWR workflow artifact equality failed');
-          }
-          for (const block of [r.originalProduction.audit, r.originalIndependent.audit]) {
-            if (block.rows !== 8
-                || JSON.stringify(block.representedSeedTotals) !== JSON.stringify([64])
-                || block.serializerDisagreements !== 0
-                || block.recomputedKeyDisagreements !== 0
-                || block.storedKeyMismatchRows !== 0) {
-              throw new Error('Original workflow raw-state representation audit failed');
-            }
-          }
-          console.log(JSON.stringify({
-            technicalOnly: r.technicalOnly,
-            originalProduction: r.originalProduction.audit,
-            originalIndependent: r.originalIndependent.audit,
-            repositoryFacing: r.repositoryFacing.audit,
-            repositoryDifferenceRows: r.crossArtifact.repositoryDifferenceRows,
-          }, null, 2));
-          NODE
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: orisc-stage0a-technical-audit
-          path: /tmp/orisc-stage0a-technical-audit.json
-          if-no-files-found: error
-          retention-days: 30
+          echo "ORISC-STUDY1 is completed."
+          echo "Stage 0A technical generation is no longer authorized within this study."
+          echo "Use the frozen historical run/artifact identities recorded in doc/oracle-representation-integrity-symmetry-confirmation/REPRODUCIBILITY_INDEX.md."
