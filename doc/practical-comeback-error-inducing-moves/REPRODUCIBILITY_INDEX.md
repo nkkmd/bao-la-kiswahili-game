@@ -37,6 +37,8 @@ terminalState = COMPLETE
 - `preregistration/STAGE_1_EXECUTION_AMENDMENT_1.json`
 - `preregistration/STAGE_2_FORMAL_SKELETON.md`
 
+Historical preregistration/status fields are preserved as records of their freeze points. They are not rewritten to terminal status after outcome generation. Current study state is carried by `CURRENT_STATUS.md`, the final report, compact result records, and the program closure decision.
+
 ## Authoritative representation
 
 ```text
@@ -140,9 +142,19 @@ Pre-seed parallel gate failures were retained in `STAGE_1_EXECUTION_AMENDMENT_1.
 
 None changed the frozen scientific contract.
 
-## Stage 1 production implementation
+## Stage 1 canonical execution code
 
-Primary production components include:
+The canonical scientific execution is identified by the **exact source commit and frozen Git blobs**, not merely by current repository paths.
+
+```text
+sourceCommit = f4b336ee6655c37f6c456ef1ba6175dc0816a93c
+scientificWorkflowPath = .github/workflows/pcem-stage1-parallel.yml
+scientificWorkflowGitBlobSha = 3320575988f9f0ec315a8d7474840745a99ae325
+parallelProductionHelperGitBlobSha = 4ee0f0c595564a5222159b5f1e995091a1eb12a6
+parallelIndependentHelperGitBlobSha = 9bcea2d351e9ba0755bdb851b247fd5c33a0dcd4
+```
+
+Canonical production components at that source commit include:
 
 ```text
 tools/experiments/run-pcem-stage1-exploratory.js
@@ -162,6 +174,18 @@ tools/experiments/lib/practical-comeback-stage1-independent-discovery.js
 ```
 
 The independent verifier does not import the production Stage 1 corpus, measurement, or discovery modules.
+
+### Post-closure workflow-path distinction
+
+After canonical Stage 1 completion, the file at `.github/workflows/pcem-stage1-parallel.yml` was intentionally replaced by a lightweight **closure guard** so PR synchronization cannot regenerate the completed 3,072-game scientific evidence. The current closure-guard workflow is therefore **not** the workflow blob frozen in `STAGE_1_EXECUTION_AMENDMENT_1.json`.
+
+```text
+canonical scientific workflow blob = 3320575988f9f0ec315a8d7474840745a99ae325
+post-closure guard blob at provenance freeze = 53637539dca6269b63b18dd155e233dcf8a290b0
+same blob = false
+```
+
+This is an intentional post-outcome operational hardening, not a change to the scientific execution. A scientific reproduction must check out the canonical source commit `f4b336ee...` (or otherwise restore the exact frozen blobs) rather than invoking the production binding check against the current closure-guard workflow.
 
 ## Canonical Stage 1 workflow
 
@@ -184,6 +208,22 @@ selectionHash = 5bf65534e88500b5d30565a1a9266664375a1d43b9a374b69aa7dd14c1409339
 discoveryHash = 3cd0df252036aa5794a7699b21d833e1f68b854cb8b5ec25ec59d65a314b81e8
 stage1ResultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
 ```
+
+`stage1ResultHash` is the study's canonical-content hash computed by the Stage 1 runner over the canonical `stage1-result` object **before** the `resultHash` field was appended. It is not a byte SHA-256 of the later repository-facing compact JSON, which was augmented after the canonical workflow with workflow/artifact provenance. The scientific outcome fields were not changed by that augmentation.
+
+Canonical files inside the verified artifact have these byte SHA-256 values:
+
+```text
+stage1-result.json = 0302b39d739e437175a054585ba53cb5b582c9ca8d015ecf671a4e28576b9b95
+independent-verification.json = 89ba84c235c784d49fe2f6b0e9aed43549f77d65b26bbacd74866ffda7b074c6
+discovery.json = 084a848d2c59b9407f1bf1dec593e9a43dfea031f1c39623f8b715f22106515d
+selection.json = 6a47b73e229959256c18ec03f2de2542386d7a4a626972f0575be0f438467f7b
+measurements.json = 95db19310648d8a6d5cdbf693c0000e9a74ec6a680773782dedcb21c668c5fb3
+source-summary.json = 5d84a42938b0ca5bed14c505207313558b1d2be945e33934b5fa89d6ba25c1ea
+parallel-control.json = 67a3cc16d841a35ee9ee496e1b6852657e441f0e80e3de75b6192e4adb6572bb
+```
+
+The machine-readable provenance clarification is `results/STAGE_1_ARTIFACT_PROVENANCE.json`.
 
 ## Stage 1 evidence accounting
 
@@ -229,9 +269,11 @@ promotedCandidateCountVerified = 0
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_EXPLORATORY_RESULT.json`
 - `results/STAGE_1_INDEPENDENT_VERIFICATION.json`
+- `results/STAGE_1_ARTIFACT_PROVENANCE.json`
 - `results/STAGE_2_NON_AUTHORIZATION.json`
 - `checkpoints/2026-08-25-stage0-technical-pass.md`
 - `checkpoints/2026-08-25-stage1-exploratory-complete-stage2-not-authorized.md`
+- `doc/research-program-decisions/2026-08-25-practical-comeback-error-inducing-move-study1-closure.md`
 
 ## Terminal scientific boundary
 
@@ -245,3 +287,12 @@ reservedStage2SeedsConsumed = false
 ```
 
 No threshold relaxation, candidate near-miss promotion, favorable subgroup rescue, altered opponent policy, expanded grammar, or reuse of Stage 1 rows as Stage 2 evidence is authorized.
+
+## Reproduction rule after closure
+
+For scientific reproduction or verification of the completed Stage 1:
+
+1. use source commit `f4b336ee6655c37f6c456ef1ba6175dc0816a93c` and the exact execution bindings above;
+2. treat workflow run `32820391017` plus artifact IDs/digests as the canonical execution record;
+3. use `results/STAGE_1_ARTIFACT_PROVENANCE.json` to distinguish artifact byte hashes from the canonical-content `resultHash`;
+4. do not interpret current post-closure workflow files as an authorization to regenerate or alter the completed scientific result.
