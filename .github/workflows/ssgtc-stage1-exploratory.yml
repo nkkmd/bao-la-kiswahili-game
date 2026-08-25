@@ -35,7 +35,7 @@ jobs:
           dst = Path("tools/experiments/run-ssgtc-stage1-exploratory-exec.js")
           text = src.read_text(encoding="utf-8")
           old = '    "S1-G9-NO-SYMMETRY": !/symmetry-isomorphic|orisc-transform|canonicalizeState|seatSwap|leftRightReflection/.test(source),'
-          new = '    "S1-G9-NO-SYMMETRY": !source.split("\\n").filter((line) => line.includes("require(")).some((line) => /symmetry|orisc|sip/i.test(line)),'
+          new = '    "S1-G9-NO-SYMMETRY": !source.split("\\n").filter((line) => /^\\s*const\\s+[^=]+?=\\s*require\\(/.test(line)).some((line) => /symmetry|orisc|sip/i.test(line)),'
           if text.count(old) != 1:
               raise SystemExit("expected exactly one frozen G9 line")
           patched = text.replace(old, new)
