@@ -1,67 +1,56 @@
 # ORISC-STUDY1 — Stage 0A Candidate / Population Proposal
 
-Status: **PRE-OUTCOME PROPOSAL / NOT YET FROZEN**  
-Scientific outcome inspected in ORISC Stage 1: **NO**
+Status: **HISTORICAL PRE-OUTCOME PROPOSAL / SUBSEQUENTLY FROZEN / STAGE 2 NOT EXECUTED**  
+Scientific outcome inspected when this proposal was created: **NO**
 
-## 1. Purpose
+## Purpose and provenance
 
-This document derives the conditional Stage 2 symmetry candidates and population from current Bao rule semantics before any ORISC Stage 1 formal representation-integrity outcome exists.
+This document records the Stage 0A proposal that derived the conditional Stage 2 symmetry candidates and population from Bao rule semantics before any ORISC Stage 1 formal representation-integrity outcome existed.
 
-Prior `SIP-STUDY1` candidate names and its zero-mismatch diagnostics are known prior information. They are not used here as pass evidence, tuning data, or a reason to narrow a candidate after observing ORISC outcomes.
+The proposal was subsequently frozen, without post-outcome tuning, in:
 
-## 2. Semantic premises re-derived from current engine
+```text
+preregistration/STAGE_2_CANDIDATE_CONTRACT.json
+candidateContractSha256 = 6509dc18553d968437d87f7522cacebb4b66f13f15469240075964b72f1c8796
+```
 
-Current code fixes:
+That machine-readable contract is authoritative for the candidate definitions. The proposed Stage 2 was never authorized or executed because Axis A later failed its prospectively frozen authorization gate.
+
+## Semantic premises used before outcome
+
+Current engine semantics used for derivation were:
 
 ```text
 FRONT = 0
 BACK = 1
 HOUSE = 4
+opponent facing front index = 7 - localIndex
+raw identity = pits, reserve, houseOwned, player, phase, winner, pending
+turn / reason excluded from raw identity
 ```
 
-Pit arrays are player-local. Physical facing front pits satisfy:
+Pit arrays and sowing directions are player-local. Active nyumba remains fixed at local `HOUSE=4`, so unrestricted global local-LR reflection was not retained as a scientific all-state candidate.
+
+Prior `SIP-STUDY1` candidate names and diagnostic zero-mismatch observations were declared prior information, not pass evidence or tuning data.
+
+## Frozen controls
 
 ```text
-opponentIndex = 7 - localIndex
+ORISC-C00-IDENTITY
+  mandatory positive control
+
+ORISC-C01-LR-NO-DIRECTION-FLIP
+  intentionally malformed Mtaji-houseless LR transform
+  index reflected, sow direction deliberately not reflected
 ```
 
-Sowing direction and entry side are player-local. Active nyumba remains fixed at local `HOUSE=4`, so a global local-coordinate left/right reflection maps index 4 to 3 and is not a plausible all-state symmetry while house semantics are active.
+The negative control was selected from rule semantics and was not tuned to a target mismatch rate.
 
-Raw identity includes:
-
-```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
-```
-
-`turn` and textual `reason` are not part of the raw identity key.
-
-## 3. Proposed controls
-
-### `ORISC-C00-IDENTITY`
-
-Role: mandatory positive control.
-
-State map and move map are exact identity. It is applicable wherever the Stage 2 instrumentation is asked to evaluate another transformation. Any failure blocks interpretation of all nontrivial candidates.
-
-### `ORISC-C01-LR-NO-DIRECTION-FLIP`
-
-Role: frozen negative control.
-
-On Mtaji houseless states it reverses pit index `i -> 7-i` but deliberately does **not** flip sow direction. Player identities are preserved.
-
-This defect is selected from rule semantics: reflecting the local sowing ring without reflecting direction should generally break transition commutation. No mismatch count is targeted and the control will not be altered if it behaves unexpectedly.
-
-## 4. Proposed scientific transformations
+## Frozen scientific candidates
 
 ### `ORISC-T01-SEAT-SWAP-LOCAL`
 
-State map:
+Player-indexed state fields are swapped:
 
 ```text
 pits[0] <-> pits[1]
@@ -73,30 +62,11 @@ winner 0 <-> 1
 phase unchanged
 ```
 
-Because row/index/side/direction are player-local, the move map preserves:
-
-```text
-type
-phase
-row
-index
-direction
-side
-houseChoice
-houseTwo
-```
-
-If a diagnostic move object contains an explicit player field, that player field is swapped.
-
-Applicability: valid Namua and Mtaji rule states.
-
-Inverse expectation: involution.
-
-Reachability interpretation: this transform does not preserve the repository's fixed raw initial state because `player=0` becomes `player=1`. Therefore it may support rule-semantic isomorphism and transformed-initial witness replay, but it does not automatically establish reachability from the fixed raw initial state.
+Player-local move coordinates remain local. Expected inverse: involution. The transform does not preserve the raw standard initial state's `player=0`, so fixed-start reachability was not automatically claimed.
 
 ### `ORISC-T02-LR-MTAJI-HOUSELESS`
 
-Applicability predicate:
+Frozen applicability:
 
 ```text
 phase = mtaji
@@ -104,124 +74,45 @@ reserve = [0,0]
 houseOwned = [false,false]
 ```
 
-Terminal states remain applicable when the predicate is otherwise satisfied; nonzero `pending` is permitted and must be preserved.
-
-State map:
-
-```text
-for both players and both rows: pit index i -> 7-i
-reserve unchanged
-houseOwned unchanged
-pending unchanged
-player unchanged
-winner unchanged
-phase unchanged
-```
-
-Move map:
-
-```text
-index i -> 7-i
-direction left <-> right
-side left <-> right
-row unchanged
-type/phase/houseChoice/houseTwo unchanged
-```
-
-Inverse expectation: involution.
-
-Rationale for restriction: with inactive houses and Mtaji reserve exhaustion, the fixed local `HOUSE=4` asymmetry is semantically inactive. This restriction is derived before ORISC Stage 1 outcome generation.
+State pits reflect `i -> 7-i`; move index reflects `i -> 7-i`; direction and side both flip left/right. Player/winner/pending are preserved. Expected inverse: involution.
 
 ### `ORISC-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS`
 
-Composition of the two independently specified maps above on the T02 applicability domain.
+Frozen composition of the T01 seat swap and T02 local-LR reflection on the T02 applicability domain. Expected inverse: involution.
 
-State map = T01 player-indexed swap followed by T02 local LR reflection.  
-Move map = T01 local-preserving map followed by T02 index/direction/side reflection.
+## Frozen candidate-level decisions
 
-Inverse expectation: involution.
-
-## 5. Proposed formal candidate decisions
-
-Unlike `SIP-STUDY1`, the new study does **not** propose a separate redundant pooled T01 outcome.
-
-Proposed candidate-level Stage 2 decisions:
+The contract prospectively defined three candidate decisions rather than reproducing SIP-STUDY1's five-scope closure structure:
 
 ```text
 ORISC-O01-T01
-  requires exact pass on fresh Namua stratum,
-  fresh Mtaji stratum,
-  and the valid reconstructed exact-oracle graph.
+  required fresh Namua + fresh Mtaji + reconstructed exact-oracle scopes
 
 ORISC-O02-T02
-  requires exact pass on fresh Mtaji-houseless stratum
-  and the valid reconstructed exact-oracle graph.
+  required fresh Mtaji-houseless + reconstructed exact-oracle scopes
 
 ORISC-O03-T03
-  requires exact pass on fresh Mtaji-houseless stratum
-  and the valid reconstructed exact-oracle graph.
+  required fresh Mtaji-houseless + reconstructed exact-oracle scopes
 ```
 
-A candidate is validated only if **all** of its prospectively required scopes pass. A failure in one required scope is not rescued by another scope.
+Each candidate would have required all prospectively required scopes to pass with exact zero mismatch.
 
-## 6. Proposed fresh Stage 2 population
-
-Fresh reserved seed block:
+## Frozen fresh population
 
 ```text
-23110001..23110128
-```
-
-Repository search before this proposal found no use of `23100001`; the final freeze will hash-check the exact chosen block and perform a broader collision audit against research seed registries/documents.
-
-Trajectory design:
-
-```text
+seed block             = 23110001..23110128
 seeds                  = 128
 maximum trajectory ply = 160
-policy                  = deterministic seeded legal-move trajectory generator frozen in Stage 0B
-runtime relay-limit hit = technical failure / non-estimability, never semantic mismatch
+roots per stratum      = 12
+local expansion depth  = 4
+strata                  = namua / mtaji / mtaji-houseless
 ```
 
-Fresh strata:
+Root selection was outcome-blind and based on first eligible states per seeded trajectory, raw-key deduplication, ascending raw key and fixed root count. Candidate behavior, mismatch counts, value, DTF, oracle result and canonical orbit quantities were forbidden selection inputs.
 
-```text
-namua
-mtaji
-mtaji-houseless
-```
+Shortage or runtime-guard failure was prospectively non-rescuing: no seed extension, root-count reduction, stratum replacement or depth reduction after candidate behavior.
 
-Root selection, independently chosen before ORISC Stage 1 outcomes:
-
-```text
-required roots per stratum = 12
-local exact expansion depth = 4
-```
-
-For each seed, candidate root is:
-
-- Namua: first nonterminal valid Namua state at `ply >= 8`;
-- Mtaji: first nonterminal valid Mtaji state;
-- Mtaji-houseless: first nonterminal Mtaji state with `reserve=[0,0]` and `houseOwned=[false,false]`.
-
-Candidate roots are deduplicated by the new ORISC raw state key, sorted by ascending raw key, and the first 12 are selected per stratum.
-
-No candidate transform, mismatch count, value, DTF, oracle result, or canonical orbit quantity may participate in root selection.
-
-## 7. Shortage / technical failure rule
-
-The proposed freeze rule is intentionally non-rescuing:
-
-- if fewer than 12 unique roots exist in any required stratum, Stage 2 becomes `NON-ESTIMABLE` for candidates requiring that stratum;
-- do not extend the seed block;
-- do not lower required root count;
-- do not replace the stratum;
-- do not reduce depth after observing candidate behavior;
-- a runtime guard hit in required expansion makes that scope `NON-ESTIMABLE` unless a pre-outcome technical Stage 0B audit rejects the design before any Stage 1 outcome exists.
-
-## 8. Exact Stage 2 gates per required scope
-
-Proposed gates:
+## Frozen exact Stage 2 gates
 
 ```text
 B-G1  source/candidate contract identity
@@ -232,23 +123,31 @@ B-G5  move inverse/bijection
 B-G6  exact transition commutation
 B-G7  terminal equivalence
 B-G8  winner equivariance
-B-G9  graph-node/edge isomorphism on declared bounded scope
+B-G9  bounded graph-node/edge isomorphism
 B-G10 reconstructed exact-oracle value/DTF/optimal-move preservation where required
 B-G11 production/independent equality
 ```
 
-All applicable gates require zero mismatch.
+All applicable gates required exact zero mismatch.
 
-## 9. Proposed decision labels
+## Final disposition
+
+Formal Axis A later produced:
 
 ```text
-VALIDATED-BOUNDED-ISOMORPHISM
-NOT-VALIDATED
-NON-ESTIMABLE
+ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+A-G11 IDENTITY = FAIL
+A-G12 production/independent equality = PASS
 ```
 
-`NOT-VALIDATED` requires an interpretable exact semantic mismatch with production/independent agreement. Implementation disagreement or incomplete verification is `NON-ESTIMABLE`.
+The Stage 2 conditional gate therefore failed before any nontrivial candidate execution. Final status:
 
-## 10. Stage 3 boundary
+```text
+Stage 2 authorization = NONE
+Stage 2 execution = NONE
+candidate validations = 0
+candidate rejections = 0
+candidate non-estimable decisions = 0
+```
 
-Even if one or more candidates are validated, canonicalization is not automatic. Stage 3 must separately verify common-domain identity/inverse/composition/closure requirements and bind any canonicalization authorization to an exact domain and reachability interpretation.
+This proposal and its frozen contract must not be interpreted as scientific evidence for or against T01/T02/T03.
