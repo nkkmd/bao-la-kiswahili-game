@@ -1,20 +1,50 @@
 # Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1
 
 **Study ID:** `ORISC-STUDY1`  
-**Status:** `INITIALIZED / STAGE 0 TECHNICAL-PROVENANCE AUDIT / SCIENTIFIC OUTCOME GENERATION BLOCKED`  
+**Status:** **COMPLETED**  
+**Axis A:** `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`  
+**Axis B:** `NOT-AUTHORIZED-NOT-EXECUTED`  
 **Branch:** `research/oracle-representation-integrity-symmetry-confirmation`  
 **Baseline main HEAD:** `e8f0a3c360d9e7c9f7f6882fb212a32921040912`
 
 ## Purpose
 
-This is a new prospective independent Bao study. It audits whether the immutable Restricted Endgame Study 1 exact-oracle representation is suitable as a raw-state reconstruction anchor and, only if prospectively defined representation-integrity gates pass, conditionally performs a new independent symmetry/isomorphism confirmation.
+This prospective independent Bao study audited whether the immutable Restricted Endgame Study 1 repository-facing exact-oracle representation is suitable as a raw-state reconstruction anchor. A separate symmetry/isomorphism confirmation stage was allowed only if prospectively frozen representation-integrity gates passed.
 
-It is **not**:
+The study was not a continuation, corrected v2, rescue, or retrospective reanalysis of `SIP-STUDY1`, and it did not change `REWR-STUDY1`.
 
-- a continuation, Stage 2, corrected v2, rescue, or retrospective reanalysis of `SIP-STUDY1`;
-- a correction or invalidation of `REWR-STUDY1`;
-- authorization to rewrite any upstream oracle artifact;
-- authorization to use symmetry reduction or canonicalization.
+## Final result
+
+Axis A independently reconstructed the frozen raw graph exactly:
+
+```text
+states = 8
+edges = 7
+production / independent graph equality = PASS
+production / independent serializer equality = PASS
+all reconstructed represented seed totals = 64
+terminal accounting mismatches = 0
+transition successor mismatches = 0
+```
+
+However three immutable repository-facing terminal rows failed the prospectively frozen stored-row re-hash and reconstructed raw-state binding gates. In all three, the identity-field difference was `pending` only and the repository row represented 63 seeds rather than 64.
+
+Therefore:
+
+```text
+Axis A formal decision = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+A-G8 = FAIL
+A-G9 = FAIL
+A-G11 IDENTITY = FAIL
+A-G12 production/independent equality = PASS
+```
+
+Because Axis A and IDENTITY did not satisfy the conditional Stage 2 authorization gate:
+
+```text
+Axis B = NOT-AUTHORIZED-NOT-EXECUTED
+nontrivial symmetry candidate decisions = 0
+```
 
 ## Immutable upstream boundaries
 
@@ -24,64 +54,51 @@ It is **not**:
 formalDecision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
 states = 8
 edges = 7
-stateSetSha256 = 95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307
-transitionSetSha256 = 33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11
-solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15
 ```
 
 `SIP-STUDY1` remains:
 
 ```text
-studyStatus = COMPLETED
 formalDecision = NON-ESTIMABLE
 validated = 0
-notValidated = 0
+rejected = 0
 nonEstimable = 5
-validated symmetry transformation set = empty
-canonicalization = not authorized
-symmetry-reduced state counting = not authorized
 ```
 
-## Stage structure
+No upstream oracle row was rewritten.
 
-```text
-Stage 0A  Technical / semantic / provenance reconstruction audit
-          No scientific symmetry decision
-
-Stage 0B  Pre-outcome contract freeze
-          Freeze representation endpoints, identity controls,
-          Stage 2 candidate-selection contract, populations,
-          source identities, failure rules, and independent interfaces
-
-Stage 1   Formal Oracle Representation Integrity
-          Full exact 8-state / 7-edge reconstruction and artifact-binding audit
-
-Stage 2   Conditional Independent Symmetry Confirmation
-          Executable only if all predefined Stage 1 authorization gates pass
-
-Stage 3   Canonicalization / downstream authorization decision
-          Executable only from valid Stage 2 evidence
-```
-
-## Current downstream contract
-
-Until a valid new formal result says otherwise:
+## Final downstream contract
 
 ```text
 raw state identity = authoritative
 validated symmetry transformation set = empty
 canonicalization = NOT AUTHORIZED
+symmetry-group claim = NOT AUTHORIZED
 symmetry-reduced state counting = NOT AUTHORIZED
+State Space / Game Tree Complexity = may proceed RAW-ONLY
 ```
 
-## Documents
+The ORISC result does not show that the unexecuted T01/T02/T03 candidates are false symmetries.
 
-- `STUDY_1_OVERVIEW.md` — initial human-readable scope; no result yet
-- `PROTOCOL_DRAFT.md` — prospective design and gates; not yet frozen/authorized
-- `CURRENT_STATUS.md` — current repository/scientific state
-- `DECISION_REGISTER.md` — immutable decisions and firewall rules
-- `REPRODUCIBILITY_INDEX.md` — source/artifact identities and provenance anchors
+## Canonical documents
+
+- `STUDY_1_OVERVIEW.md` — human-readable result overview
+- `STUDY_1_FINAL_REPORT.md` — scientific and technical final integration
+- `results/STAGE_1_FORMAL_RESULT.json` — canonical Axis A formal result
+- `results/STUDY_1_FINAL_RESULT.json` — Study-level closure
+- `CURRENT_STATUS.md` — final status and downstream boundary
+- `DECISION_REGISTER.md` — prospective decisions, no-rescue rules and closure decisions
+- `REPRODUCIBILITY_INDEX.md` — source/hash/workflow identities
 - `RESEARCH_LOG.md` — chronology
-- `checkpoints/2026-08-25-study-start-firewall.md` — start checkpoint
+- `preregistration/STAGE_1_FORMAL_SPEC.json` — frozen Axis A spec
+- `preregistration/STAGE_1_AUTHORIZATION.json` — Axis A authorization
+- `preregistration/STAGE_2_CANDIDATE_CONTRACT.json` — pre-outcome conditional Stage 2 contract; **never authorized/executed**
 
-No formal scientific outcome generation is authorized by the existence of these documents.
+## Historical design documents
+
+- `PROTOCOL_DRAFT.md` — prefreeze design draft, superseded by the frozen formal spec
+- `STAGE_0A_TECHNICAL_AUDIT_PLAN.md` — Stage 0A technical-only plan
+- `STAGE_0A_TECHNICAL_AUDIT.md` — completed technical/provenance audit
+- `STAGE_0A_CANDIDATE_POPULATION_PROPOSAL.md` — pre-outcome proposal later frozen in the Stage 2 candidate contract
+
+No further scientific outcome generation is authorized within this completed Study 1.
