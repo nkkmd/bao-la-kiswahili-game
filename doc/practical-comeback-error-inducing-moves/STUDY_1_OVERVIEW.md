@@ -1,7 +1,7 @@
 # Practical Comeback / Error-Inducing Move Study 1 — Overview
 
 更新日: 2026-08-25  
-Status: **RESEARCH START / NO SCIENTIFIC RESULT YET**
+Status: **STUDY 1 COMPLETE**
 
 ## 研究題目
 
@@ -10,77 +10,120 @@ Status: **RESEARCH START / NO SCIENTIFIC RESULT YET**
 Working English title: **Practical Comeback / Error-Inducing Move Study 1**  
 Study ID: `PCEM-STUDY1`
 
-## 中心課題
+## 結論
 
-本Studyは、prospectively defined disadvantaged rootにおいて、strong/reference policy上の最善手と、frozen imperfect-opponent policy下で実現するbounded-horizon comeback frequencyを分離して測定する。
+本Studyは、prospectively defined disadvantaged rootsにおいて、strong/reference-policy上のmove qualityと、frozen imperfect-opponent policy下のbounded-horizon empirical comeback frequencyを分離して測定した。
 
-特に、あるroot moveがreference-policy上のbest moveではない、またはsmall positive optimality gapを持つ場合でも、相手のsuccessful-defense reply setを狭くし、frozen imperfect policyがそのreply setを外す頻度を増やすことによって、より高いempirical comeback frequencyを生む構造をmachine-reproducibly同定できるかを検討する。
-
-## Formal claim boundary at study start
-
-Even a positive result would authorize only a statement of the form:
-
-> A prospectively defined move class produced a higher bounded-horizon empirical comeback frequency under the frozen opponent policy, population, phase, root-eligibility rule and continuation conditions used by this study.
-
-It would not by itself establish:
-
-- objective superiority;
-- game-theoretic optimality;
-- true Bao winning probability;
-- effectiveness against all opponent strengths;
-- human difficulty, deception, pressure, or psychology;
-- expert/traditional recognition as a Bao “winning try”.
-
-## Immutable upstream boundaries
-
-The study does not alter completed results from Critical Positions / Outcome Branching, Position Evaluation / Win-Rate Calibration, Blunder / Misvaluation Patterns, Position Complexity / Difficulty, Restricted Endgame / Winning Regions, Symmetry / Isomorphic Positions, ORISC-STUDY1, or State Space / Game Tree Complexity Study 1.
-
-In particular:
-
-- Critical Positions Study 1 Stage 2 remains unexecuted after 0 promoted candidates.
-- Calibration Study 1 remains `INCONCLUSIVE`; its isotonic mapping is not a validated Bao win probability.
-- Blunder Study 1 remains 0 `CONFIRMED` / 4 `NOT-CONFIRMED`.
-- Position Complexity / Difficulty Study 1 remains `INCONCLUSIVE`; machine workload is not human difficulty.
-- Restricted Endgame exact claims remain limited to the frozen 8-state / 7-edge domain.
-- Symmetry Study 1 remains `NON-ESTIMABLE` with no validated transformation.
-- ORISC-STUDY1 retains Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`, Axis B `NOT-AUTHORIZED-NOT-EXECUTED`, validated transformation set `[]`.
-- State Space / Game Tree Complexity Study 1 remains exact only within the frozen depth-8 RAW-ONLY domain.
-
-## Measurement architecture
-
-The planned measurement system separates at least six axes:
+Stage 1 exploratory discoveryは独立再計算を含めて成功したが、frozen promotion ruleを通過したcandidate classは0件だった。
 
 ```text
-A. strongest-policy value / best-response robustness
-B. empirical comeback frequency under frozen imperfect opponent policy
+Stage 0 = TECHNICAL-PASS
+Stage 1 = EXPLORATORY-ONLY / COMPLETE
+candidateAuditCount = 55
+promotedCandidateCount = 0
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+したがって、PCEM-STUDY1は「実用的な勝負手クラスを確認した」とは結論しない。
+
+## Stage 1 evidence
+
+```text
+generatedGames = 3072
+uniqueHistoricalTrajectories = 2764
+selectedRoots = 300
+Namua roots = 150
+Mtaji roots = 150
+exactRootMoveInterventions = 1065
+primaryContinuationRows = 12780
+secondaryContinuationRows = 4260
+referenceContinuationRows = 1065
+totalContinuationRows = 18105
+primaryAdministrativeHorizonExhaustions = 2
+```
+
+All frozen readiness gates passed.
+
+## Independent verification
+
+Canonical workflow run `32820391017` completed successfully. The independent implementation reproduced:
+
+- all 3072 source games;
+- root selection;
+- RAW-ONLY state identity;
+- all selected-root measurements;
+- candidate discovery and promotion result.
+
+```text
+independent decision = TECHNICAL-PASS
+independence = true
+sourceReplay = true
+selection = true
+rawIdentity = true
+measurement = true
+discovery = true
+stage1ResultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
+```
+
+## Why no candidate was promoted
+
+55 prospectively bounded candidate definitions were audited under templates `PCEM-T1..T8`. Every candidate failed at least one frozen promotion gate.
+
+Most importantly, all 55 failed each of the following support requirements:
+
+```text
+minimumUniqueRoots
+minimumUniqueHistoricalTrajectories
+minimumDistinctOpeningPrefixes
+minimumUniqueRootsContributingErrorCondition
+minimumUniqueRootsContributingDefenseCondition
+```
+
+Some candidate definitions passed individual machine-error-dependence or reply-concentration gates, but none passed the full conjunction of support, diversity, primary comeback-difference, and error-dependence requirements. Near-miss promotion is forbidden.
+
+## Construct separation retained
+
+The study kept the following quantities separate:
+
+```text
+A. strongest/reference-policy quality
+B. bounded-horizon empirical comeback frequency under frozen imperfect opponent
 C. successful-defense reply-set narrowness
 D. opponent-error dependence
 E. machine-operational reply difficulty / punishment concentration
 F. move optimality gap
 ```
 
-The precise root disadvantage rule, reference comparator, opponent policy, comeback horizon, defensive-success definition and numerical thresholds are not inferred from Stage 1 outcomes. They must be frozen prospectively after technical-only Stage 0 feasibility checks and before Stage 1 scientific outcome inspection.
+## Representation boundary
 
-## Stage architecture
+Authoritative downstream state identity remained RAW-ONLY:
 
-### Stage 0
+`pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending`.
 
-Technical / construct feasibility only. No scientific inference. It validates representation, legal move intervention, seeded policy behavior, outcome accounting, reply enumeration, independent verification feasibility and resource envelope.
+`turn` and `reason` were excluded. Missing `pending` was invalid before engine entry, seed conservation to 64 was mandatory, and no symmetry/canonicalization was used.
 
-### Stage 1
+## Interpretation boundary
 
-Fresh exploratory discovery using a new seed block. Disadvantaged roots are selected by a prospectively frozen outcome-blind rule; exact legal root moves are measured; candidate grammar is bounded in advance; zero promoted candidates is valid.
+This study does **not** establish:
 
-### Stage 2
+- objective move superiority;
+- game-theoretic optimality;
+- true Bao winning probability;
+- effectiveness against all opponent strengths;
+- human difficulty, deception, pressure, or psychology;
+- expert/traditional recognition as a Bao “winning try”.
 
-Fresh formal confirmation is authorized only if Stage 1 produces at least one candidate through the frozen promotion rule. Stage 2 requires a separately frozen candidate definition, population, comparator, endpoints, estimability gates, statistical test, multiplicity correction, missingness/cutoff handling and stopping rule.
+The zero-promotion result is specific to the frozen population, D3/D2 reference semantics, `P_MEDIUM_D1_TOP3` primary opponent, 96-ply bounded endpoint, candidate grammar, and promotion requirements.
 
-If Stage 1 promotes zero candidates:
+## Upstream boundary
 
-```text
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-```
+No formal decision, negative/null/inconclusive/non-estimable result, threshold, classifier, endpoint, population, or interpretation boundary from any completed upstream Bao study was changed or rescued.
 
-## Current state
+## Canonical records
 
-No Stage 0 scientific outcome, Stage 1 outcome, candidate, or formal result exists yet. The current repository changes establish only the independent-study identity, immutable boundaries, measurement dependency audit and protocol skeleton.
+- `STUDY_1_FINAL_REPORT.md`
+- `CURRENT_STATUS.md`
+- `results/STAGE_1_EXPLORATORY_RESULT.json`
+- `results/STAGE_1_INDEPENDENT_VERIFICATION.json`
+- `results/STAGE_2_NON_AUTHORIZATION.json`
+- `checkpoints/2026-08-25-stage1-exploratory-complete-stage2-not-authorized.md`
