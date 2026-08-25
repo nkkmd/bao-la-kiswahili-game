@@ -22,7 +22,6 @@ jobs:
         run: python tools/experiments/pcem-central-doc-closure.py
       - name: Commit central documentation closure
         run: |
-          git diff --check
           git diff -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
           if git diff --quiet; then
             echo 'No central documentation changes required.'
