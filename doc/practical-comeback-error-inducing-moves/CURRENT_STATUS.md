@@ -14,15 +14,44 @@ studyStartMainHead = 587472b7e1a3f6e390cdfea6ed0d8e0971d5711d
 ## Current stage
 
 ```text
-study = ACTIVE-PROTOCOL-DEVELOPMENT
-Stage 0 = NOT-YET-EXECUTED
+study = ACTIVE-STAGE1-DESIGN-FREEZE
+Stage 0 = TECHNICAL-PASS
 Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 scientificInferenceAuthorized = false
 scientificOutcomeGenerated = false
 ```
 
-## Fixed at research start
+## Stage 0 canonical record
+
+```text
+stageId = PCEM-S0-TECHNICAL-2026-08-25-v1
+canonical source commit = 29976182dcdcabf206a1d0bf59252fe8bb2288df
+workflow run = 32813154014
+job = 97696278964
+artifact = 9550497573
+artifact digest = sha256:0021c59fea047c0a192b0e9394513d63aba6347a02d79b1ce41b1bf6e61e2d32
+production = PASS (12/12 technical gates)
+independent verification = TECHNICAL-PASS (8/8 gates)
+```
+
+Technical coverage:
+
+```text
+fixtures = 3
+phases = Namua + Mtaji
+exact root moves = 15
+exact first replies = 38
+continuation rows = 60
+accounted rows = 60
+production elapsed = 4857.528147 ms
+max RSS = 94.82421875 MiB
+production payload = 350925 bytes
+```
+
+The first workflow run `32813015855` remains recorded as an invalidated technical attempt. Production passed and the independent measurements matched, but the verifier independence audit self-matched its own forbidden-module regex literals. The corrected verifier audit was rerun from a new commit; the complete workflow then passed. No scientific outcome was used in this correction.
+
+## Fixed at research start and retained
 
 1. The study is prospective and independent; no upstream decision may be rescued or re-adjudicated.
 2. Authoritative state identity is RAW-ONLY: `pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending`.
@@ -31,27 +60,26 @@ scientificOutcomeGenerated = false
 5. Symmetry reduction and transform-based deduplication are forbidden.
 6. Strongest-policy quality, practical comeback frequency, reply narrowness, error dependence, machine reply difficulty and move optimality gap are separate constructs.
 7. Human difficulty/psychology claims are outside scope unless a future separately authorized human study is performed.
-8. Stage 0 is technical-only.
+8. Stage 0 is technical-only and cannot supply scientific evidence.
 9. Stage 1 and Stage 2 must use fresh non-overlapping evidence blocks.
 10. Stage 1 zero promoted candidates is a legitimate outcome and does not authorize rescue.
 11. No merge, auto-merge or branch deletion is authorized without explicit user instruction.
 
-## Measurement decisions still requiring prospective freeze before Stage 1
+## Stage 0 technical decisions now available for Stage 1 design
 
-The following are intentionally not fixed from scientific outcomes at study start. They must be resolved using technical identifiability/resource evidence only and frozen before any Stage 1 outcome inspection:
+The following measurement machinery is technically validated:
 
-- exact disadvantaged-root eligibility rule and phase quotas;
-- exact strong/reference search/policy configuration;
-- exact primary imperfect-opponent policy and any secondary strength conditions;
-- bounded-horizon comeback endpoint and horizon;
-- exact definition of successful defense, best reply and punishing reply;
-- reply-narrowness and machine-operational reply-difficulty metrics;
-- move optimality-gap normalization and allowed near-best/inferior range;
-- continuation replicate count and common-random-number binding;
-- Stage 1 candidate feature universe, interaction order and promotion thresholds;
-- resource caps and Stage 1/Stage 2 seed blocks;
-- Stage 2 estimability, confirmation floors, tests and multiplicity correction.
+- exact RAW pre-entry validation;
+- exact legal root-move enumeration and application;
+- exact first-reply enumeration;
+- deterministic D2/D3 reference-search tables under `pcem-exact-full-window-root-candidates/bao/q0/v1`;
+- asymmetric continuation with a reference-policy root actor and seeded imperfect opponent;
+- common-random-number binding by root + replicate index;
+- bounded terminal/cutoff outcome accounting;
+- independent full recomputation.
+
+Stage 0 did **not** validate any scientific threshold, population prevalence, comeback effect, candidate grammar or promotion floor.
 
 ## Immediate next step
 
-Implement and run Stage 0 technical validation only. Stage 0 must not inspect or report scientific candidate prevalence or a comeback-effect result. After Stage 0 passes, freeze the complete Stage 1 design before generating or inspecting Stage 1 scientific outcomes.
+Freeze the complete Stage 1 exploratory specification using only the immutable upstream boundaries, construct logic and technical/resource feasibility. Then bind a separate Stage 1 authorization to that exact spec/source state before any fresh scientific generation.
