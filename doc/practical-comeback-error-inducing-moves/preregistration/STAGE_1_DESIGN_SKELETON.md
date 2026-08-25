@@ -1,225 +1,331 @@
-# PCEM-STUDY1 — Stage 1 Exploratory Design Skeleton
+# PCEM-STUDY1 — Stage 1 Exploratory Design
 
-Status: **NOT AUTHORIZED / NUMERICAL DESIGN NOT YET FROZEN**
+Status: **PROSPECTIVELY FROZEN / NOT YET AUTHORIZED**  
+Canonical machine-readable spec: `STAGE_1_EXPLORATORY_SPEC.json`
 
-This file is a prospective skeleton only. Stage 1 scientific generation may not begin until all `TO-FREEZE` fields below are replaced by exact values/rules after Stage 0 technical-only validation.
+Stage 1 remains blocked until the scientific implementation, independent verifier and authorization record are hash-bound to the exact spec. Nothing in this document authorizes generation by itself.
 
 ## Scientific role
 
 ```text
 stageLabel = EXPLORATORY-ONLY
-scientificInferenceAuthorized = exploratory-only
+scientificInferenceAuthorized = false
+exploratoryAnalysisAuthorized = true
 confirmatoryReuseAllowed = false
 ```
 
+Stage 1 may discover and promote candidates but cannot confirm them. `promotedCandidateCount = 0` is explicitly valid.
+
 ## Fresh source population
 
-TO-FREEZE before Stage 1:
-
 ```text
-seedStart
-seedEnd
-gameCount
-generation strata
-opening policy
-maximum game ply
-historical trajectory identity
-opening-prefix identity
-phase quotas
-root sampling rule
+games = 3072
+seeds = 23200001..23203072
+opening = 8-ply seeded-uniform exact legal moves
+max game ply = 100
+generation strata = 6, game-index modulo assignment
+Stage 2 reserved seeds = 23300001..23306144
 ```
 
-Stage 1 seed block must not overlap any reserved Stage 2 block.
+The six source-generation strata reuse tested trajectory-generation infrastructure rather than any CPOB candidate definition:
 
-## Root eligibility
+```text
+B-D1
+B-D2
+B-D3
+LS-D2
+V2-D2
+LE-D2
+```
 
-Mandatory base conditions:
+This reuse is infrastructure-level only. PCEM does not reopen the CPOB high-divergence endpoint, structural grammar or promotion result.
+
+## Root disadvantage — frozen rule
+
+A source trajectory is first collapsed by exact historical trajectory identity and assigned to Namua or Mtaji by frozen SHA-256 parity.
+
+Within the assigned phase, exactly one base-eligible state is selected by an outcome-independent hash rank **before its reference disadvantage is inspected**.
+
+Base eligibility:
 
 ```text
 RAW representation valid
-pending present before engine entry
-seed invariant = 64
+pending present
+64 represented seeds
 nonterminal
->= 2 exact legal root moves
-Namua / Mtaji assigned from raw state
+ply >= 8
+exact legal root moves >= 2
+phase = assigned phase
 ```
 
-The disadvantaged-root rule must be frozen before outcomes and must not use the Calibration Study isotonic mapping.
-
-Preferred family to resolve after Stage 0 technical audit:
+Only then is the frozen reference test applied:
 
 ```text
-outcome-blind reference-search disadvantage
-+ phase-specific selection/quota
+reference search = pcem-exact-full-window-root-candidates/bao/q0/v1
+reference depth = D3
+root actor = state.player
+reference disadvantaged iff D3 bestScore < 0
 ```
 
-Exact score/rank/quantile threshold is TO-FREEZE.
+If the preselected state fails that rule, that trajectory gets no second state. The study does not search within a trajectory for the most negative or most favorable root.
 
-## Reference comparator
+The rule does not use the Calibration Study isotonic mapping, empirical continuation outcomes, a game-theoretic oracle or human judgment.
 
-TO-FREEZE exactly:
+Phase quotas after RAW-state deduplication:
 
 ```text
-reference search profile
-reference evaluation profile
-reference fixed depth
-quiescence settings
-time-limit behavior
-all-legal-move score/rank procedure
-tie handling
+Namua = 150
+Mtaji = 150
+total = 300
 ```
 
-For each root move, record at least:
+No phase reassignment, replacement or seed extension is allowed after a readiness failure.
+
+## Reference move quality
+
+All exact legal root moves receive a D3 reference table under the same search semantics.
 
 ```text
-referenceScore
-referenceRank
-referenceBestIndicator
-moveOptimalityGap
+best set = all moves tied at maximum D3 score
+canonical best = lexicographically smallest exact moveKey in best set
+moveOptimalityGap = bestScore - moveScore
+strictReferenceInferior = moveOptimalityGap > 0
 ```
 
-## Primary imperfect opponent policy
+The central practical-alternative analysis requires a strictly reference-inferior move. Therefore a positive PCEM result cannot arise merely because the ordinary D3 best move also wins often against an imperfect policy.
 
-TO-FREEZE exactly before Stage 1:
+D3 is a frozen machine reference, not ground truth.
+
+## Reply structure and machine-operational defense
+
+For each exact root move, enumerate every exact opponent first reply.
+
+Three reply concepts remain distinct:
 
 ```text
-policy implementation
-strength/configuration
-RNG algorithm/binding
-root-actor continuation policy
-opponent continuation policy
-first-reply policy semantics
+unique legal reply
+unique D2 reference-best reply
+unique reference-defense-maintained reply
 ```
 
-A separate reference-opponent condition should be retained as a robustness comparator if technically feasible.
-
-If additional opponent-strength conditions are included, their roles (primary / secondary / co-primary) and multiplicity handling must be frozen before outcomes.
-
-## Comeback endpoint
-
-Preferred primary family:
+`referenceDefenseMaintained` is frozen as follows after applying an exact opponent first reply:
 
 ```text
-bounded-horizon root-actor terminal win indicator
+terminal root-actor loss -> true
+terminal root-actor win  -> false
+otherwise                -> root-actor-to-move D2 bestScore < 0
 ```
 
-TO-FREEZE:
+Thus the condition means only that the opponent reply maintains the root actor's negative machine-reference status under the frozen D2 check. It is not a game-theoretic defense and not a humanly difficult defense.
+
+A `referenceMostPunishingReply` is a reply minimizing the root actor's post-reply D2 best score. Ties are retained.
+
+## Opponent policy separation
+
+Root actor continuation policy is frozen as:
 
 ```text
-post-root horizon H
-replicates per exact root move
-terminal/draw/cutoff accounting
-technical-invalid handling
+P_REFERENCE_D2_BEST
 ```
 
-The endpoint is policy-conditioned and bounded-horizon; it is not “true Bao winning probability.”
-
-## First-reply measurements
-
-For every exact root move where technically valid, enumerate all exact legal opponent first replies and record:
+Opponent conditions:
 
 ```text
-legalReplyCount
-referenceBestReplyCount
-successfulDefenseReplyCount
-punishingReplyCount
-uniqueLegalReply
-uniqueReferenceBestReply
-uniqueSuccessfulDefense
-noSuccessfulDefense
-defensiveReplyFraction
-machineReplyDifficultyIndex if prospectively frozen
+primary imperfect = P_MEDIUM_D1_TOP3, 12 replicates per exact root move
+secondary shallow = P_SHALLOW_UNIFORM, 4 replicates per exact root move
+reference          = P_REFERENCE_D2_BEST, 1 deterministic trajectory per exact root move
 ```
 
-The exact `successfulDefense` and `punishingReply` definitions are TO-FREEZE and may not be derived from post-hoc favorable outcomes.
+Only the primary imperfect condition may drive candidate promotion. The shallow and reference conditions are sensitivity/robustness descriptors and may not be selected post-outcome as alternate primaries.
 
-## Opponent-error dependence
+## Bounded practical comeback endpoint
 
-At minimum record per root move:
+Primary bounded endpoint:
 
 ```text
-observed first-reply selections across replicates
-firstReplyErrorIndicator under frozen successful-defense rule
-firstReplyErrorRate
-comeback frequency conditional on error
-comeback frequency conditional on successful defense
+H = 96 post-root plies
+boundedComeback96 = 1 iff root actor reaches terminal win within H
 ```
 
-If a reference-opponent continuation condition is included, record the paired imperfect-vs-reference comeback-frequency difference.
+Terminal loss and administrative horizon exhaustion both yield `boundedComeback96 = 0`, because the endpoint is specifically **win within H**, not eventual game outcome. They remain separate outcome categories in the raw measurement record.
 
-## Root-paired comparison
+Administrative exhaustion is not relabeled as a draw or a terminal loss.
 
-For each root, all measured legal moves remain clustered within that root. Candidate discovery should prioritize root-paired contrasts such as:
+Primary move-level quantity:
 
 ```text
-DeltaComeback(candidate, reference-best)
-DeltaReference(candidate, reference-best)
-DeltaReplyNarrowness(candidate, reference-best)
-DeltaErrorRate(candidate, reference-best)
+p96_medium(root, move)
+  = mean boundedComeback96 over the 12 P_MEDIUM_D1_TOP3 replicates
 ```
 
-Continuation replicates are not independent roots.
+Root-paired practical difference:
+
+```text
+DeltaComeback96
+  = p96_medium(candidate alternative)
+    - p96_medium(canonical D3 best move)
+```
+
+This is not a true Bao win-probability difference.
+
+## First-reply reference error
+
+The primary imperfect opponent selects uniformly from its D1-ranked top-3 pool, truncated when fewer replies exist.
+
+If at least one `referenceDefenseMaintained` reply exists:
+
+```text
+firstReplyReferenceError = selected first reply not in referenceDefenseMaintained set
+```
+
+The exact policy-level error opportunity is:
+
+```text
+1 - |primary first-reply pool intersect defense-maintained set|
+    / |primary first-reply pool|
+```
+
+If no reference-defense-maintained reply exists, the error concept is undefined rather than declaring every legal reply an error.
+
+This is a machine-reference error label only; it does not mean human mistake.
+
+## Move analysis eligibility
+
+A move can enter PCEM candidate discovery only when all hold:
+
+```text
+strictReferenceInferior = true
+referenceDefenseMaintainedCount >= 1
+referenceDefenseMaintainedFraction <= 0.5
+exact first-reply reference-error probability is finite
+```
+
+Thus the study asks whether an objectively inferior-under-reference alternative can outperform the canonical reference best against the frozen imperfect opponent **while real machine-reference defense exists but is narrow**.
 
 ## Candidate representation universe
 
-Before Stage 1 outcome inspection, freeze a bounded feature universe drawn only from prospectively listed families such as:
+The matcher cannot inspect continuation outcomes, `DeltaComeback96`, or reference score magnitudes.
+
+Frozen feature families:
 
 ```text
 phase
-root morphology
-root move type
-capture structure
-reply-set structure
-forcedness
-branching
-reserve structure
-nyumba/house status
-front/back row structure
-reusable pit count
-capture source/target morphology
-prospectively defined continuation-response concentration
+moveType
+legalReplyCountBin
+referenceDefenseMaintainedFractionBin
+firstReplyReferenceErrorProbabilityBin
+actorReserveBin
+actorHouseOwned
+actorReusablePitsBin
+actorFrontOccupiedBin
 ```
 
-TO-FREEZE:
+Frozen templates are `PCEM-T1` through `PCEM-T8` in the JSON spec. Each template has at most four tokens including phase.
+
+This is a new move/reply-centered PCEM representation. It is not an expansion of the CPOB pre-root one-to-two-token grammar.
+
+When several eligible matched moves occur at one root, the representative is the lexicographically smallest exact moveKey. No within-root outcome maximization is permitted.
+
+## Promotion gates
+
+A candidate must satisfy all frozen support/diversity gates:
 
 ```text
-exact feature list
-exact discretization/binning
-maximum interaction order
-candidate equivalence/deduplication rule
+unique roots >= 24
+unique historical trajectories >= 24
+distinct opening prefixes >= 12
+generation strata >= 4
+maximum single-stratum share <= 0.50
+maximum single-opening-prefix share <= 0.25
 ```
 
-This is a new PCEM representation; it is not an expansion or rescue of the CPOB frozen 1–2 token grammar.
-
-## Promotion rule
-
-TO-FREEZE before Stage 1 outcomes:
+Practical-comeback gates:
 
 ```text
-minimum unique-root support
-minimum unique historical trajectories
-minimum opening-family diversity
-minimum phase support or phase-specific rule
-maximum dependence on one source stratum
-minimum practical-vs-reference comeback difference
-minimum opponent-error dependence
-maximum/minimum allowed optimality gap
-reply-narrowness/reply-difficulty condition
-promotion multiplicity/equivalence rule
+median DeltaComeback96 >= 0.25
+proportion roots with DeltaComeback96 >= 0.25 >= 0.60
 ```
 
-`zeroPromotedCandidatesAllowed = true`.
+Reply/error gates:
 
-Manual promotion is forbidden.
+```text
+median exact first-reply reference-error probability >= 0.50
+median reference-defense-maintained fraction <= 0.50
+error-conditioned primary replicates >= 24
+defense-conditioned primary replicates >= 24
+unique roots contributing error condition >= 12
+unique roots contributing defense condition >= 12
+pooled boundedComeback96(error) - boundedComeback96(defense) >= 0.20
+```
+
+These are exploratory promotion floors, not formal Stage 2 confirmation thresholds.
+
+Support-equivalent patterns are collapsed by exact root set plus deterministic representative move mapping. At most four candidates may be promoted by the frozen ranking rule. Manual promotion is forbidden.
+
+## Readiness and resources
+
+Before candidate discovery, Stage 1 must satisfy the frozen selection/readiness gates in the JSON spec, including:
+
+```text
+unique historical trajectories >= 2500
+generated opening prefixes >= 2000
+selected unique raw roots = 300
+Namua / Mtaji = 150 / 150
+selected distinct opening prefixes >= 250
+minimum selected per generation stratum >= 20
+maximum selected single-stratum share <= 0.30
+exact root-move interventions <= 2500
+```
+
+Resource caps:
+
+```text
+source games <= 3072
+selected roots <= 300
+exact root-move interventions <= 2500
+planned continuation rows <= 42500
+post-root horizon <= 96
+wall clock per workflow job <= 18000 s
+RSS <= 2048 MiB
+uncompressed artifact <= 2 GiB
+```
+
+Resource exhaustion yields `RESOURCE-CENSORED`; partial candidate promotion is forbidden.
+
+## Fresh-evidence firewall
+
+Stage 1 rows cannot be formal Stage 2 evidence. Stage 2 must have zero overlap with Stage 1 on:
+
+```text
+seed block
+historicalTrajectoryHash
+openingPrefixHash
+RAW state key
+```
+
+No overlap replacement is allowed. Upstream-study overlap is audited when the corresponding identity inventories are accessible; unavailable upstream inventories must be reported as unavailable rather than silently claiming zero overlap.
 
 ## Stage 1 result vocabulary
 
-Stage 1 may produce only exploratory labels and promotion decisions. A candidate is not `CONFIRMED` in Stage 1.
-
-If zero candidates pass the frozen promotion rule:
+Possible execution-state labels are:
 
 ```text
-Stage 1 = EXPLORATORY-ONLY
+EXPLORATORY-ONLY
+NON-ESTIMABLE
+RESOURCE-CENSORED
+TECHNICALLY-INVALID
+```
+
+If:
+
+```text
 promotedCandidateCount = 0
+```
+
+then:
+
+```text
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
+
+No threshold relaxation, opponent-strength switching, phase-only rescue, grammar expansion, manual candidate promotion, seed extension or replacement is permitted after Stage 1 outcomes are inspected.
