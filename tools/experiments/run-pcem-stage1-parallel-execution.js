@@ -45,20 +45,22 @@ function loadContracts() {
   }
   assert.ok(fs.existsSync(AMEND_PATH), "parallel execution amendment absent");
   const amendment = readJson(AMEND_PATH);
+  const scientific = amendment.scientificContract;
+  const parallel = amendment.parallelPlan;
   assert.equal(amendment.studyId, loaded.spec.studyId);
   assert.equal(amendment.stageId, loaded.spec.stageId);
   assert.equal(amendment.parallelExecutionAuthorized, true);
-  assert.equal(amendment.scientificLogicChanged, false);
-  assert.equal(amendment.sourceSeedBlockChanged, false);
-  assert.equal(amendment.endpointChanged, false);
-  assert.equal(amendment.promotionRuleChanged, false);
-  assert.equal(amendment.sourceChunks, 12);
-  assert.equal(amendment.sourceGamesPerChunk, 256);
-  assert.equal(amendment.measurementChunks, 12);
-  assert.equal(amendment.maximumRootsPerMeasurementChunk, 25);
-  assert.equal(gitBlob(SELF_PATH), amendment.parallelProductionHelperGitBlobSha);
-  assert.equal(gitBlob(WORKFLOW_PATH), amendment.parallelWorkflowGitBlobSha);
-  return { loaded, auth, amendment };
+  assert.equal(scientific.scientificLogicChanged, false);
+  assert.equal(scientific.sourceSeedBlockChanged, false);
+  assert.equal(scientific.endpointChanged, false);
+  assert.equal(scientific.promotionRuleChanged, false);
+  assert.equal(parallel.sourceChunks, 12);
+  assert.equal(parallel.sourceGamesPerChunk, 256);
+  assert.equal(parallel.measurementChunks, 12);
+  assert.equal(parallel.maximumRootsPerMeasurementChunk, 25);
+  assert.equal(gitBlob(SELF_PATH), amendment.executionBindings.parallelProductionHelperGitBlobSha);
+  assert.equal(gitBlob(WORKFLOW_PATH), amendment.executionBindings.parallelWorkflowGitBlobSha);
+  return { loaded, auth, amendment, scientific, parallel };
 }
 
 function compactSelected(item) {
@@ -87,13 +89,13 @@ function provenance(contracts, execution) {
 
 function modeGate() {
   const c=loadContracts();
-  process.stdout.write(`${JSON.stringify({passed:true,stageId:c.loaded.spec.stageId,parallelExecutionAuthorized:true,sourceChunks:c.amendment.sourceChunks,measurementChunks:c.amendment.measurementChunks},null,2)}\n`);
+  process.stdout.write(`${JSON.stringify({passed:true,stageId:c.loaded.spec.stageId,parallelExecutionAuthorized:true,sourceChunks:c.parallel.sourceChunks,measurementChunks:c.parallel.measurementChunks},null,2)}\n`);
 }
 
 function modeSource(args) {
   const startTime=performance.now(); const c=loadContracts(); const spec=c.loaded.spec;
-  const chunkIndex=Number(args["chunk-index"]); const chunkCount=Number(args["chunk-count"]); assert.equal(chunkCount,c.amendment.sourceChunks); assert.ok(Number.isInteger(chunkIndex)&&chunkIndex>=0&&chunkIndex<chunkCount);
-  const start=chunkIndex*c.amendment.sourceGamesPerChunk; const end=Math.min(spec.population.games,start+c.amendment.sourceGamesPerChunk); const records=[];
+  const chunkIndex=Number(args["chunk-index"]); const chunkCount=Number(args["chunk-count"]); assert.equal(chunkCount,c.parallel.sourceChunks); assert.ok(Number.isInteger(chunkIndex)&&chunkIndex>=0&&chunkIndex<chunkCount);
+  const start=chunkIndex*c.parallel.sourceGamesPerChunk; const end=Math.min(spec.population.games,start+c.parallel.sourceGamesPerChunk); const records=[];
   for(let i=start;i<end;i++) records.push(Corpus.runGame(spec,i));
   const result={schemaVersion:1,stageId:spec.stageId,chunkIndex,chunkCount,startGameIndex:start,endGameIndexExclusive:end,records,recordHash:P.canonicalHash(records),resource:{elapsedSeconds:elapsed(startTime),maxRSSMiB:process.resourceUsage().maxRSS/1024}};
   writeJson(path.resolve(args.out),result);
@@ -101,7 +103,7 @@ function modeSource(args) {
 
 function modeSelect(args) {
   const startTime=performance.now(); const c=loadContracts(); const spec=c.loaded.spec;
-  const chunks=filesNamed(path.resolve(args["source-dir"]),"source-chunk-").map(readJson).sort((a,b)=>a.chunkIndex-b.chunkIndex); assert.equal(chunks.length,c.amendment.sourceChunks);
+  const chunks=filesNamed(path.resolve(args["source-dir"]),"source-chunk-").map(readJson).sort((a,b)=>a.chunkIndex-b.chunkIndex); assert.equal(chunks.length,c.parallel.sourceChunks);
   chunks.forEach((x,i)=>{assert.equal(x.chunkIndex,i);assert.equal(x.recordHash,P.canonicalHash(x.records));});
   const records=chunks.flatMap((x)=>x.records).sort((a,b)=>a.gameSummary.gameIndex-b.gameSummary.gameIndex); assert.equal(records.length,spec.population.games); records.forEach((r,i)=>assert.equal(r.gameSummary.gameIndex,i));
   const gameSummaries=records.map((r)=>r.gameSummary); const outDir=path.resolve(args["out-dir"]);
@@ -119,7 +121,7 @@ function modeSelect(args) {
 
 function modeMeasure(args) {
   const startTime=performance.now(); const c=loadContracts(); const spec=c.loaded.spec; const selection=readJson(path.resolve(args.selection)); assert.equal(selection.passed,true);
-  const chunkIndex=Number(args["chunk-index"]); const chunkCount=Number(args["chunk-count"]); assert.equal(chunkCount,c.amendment.measurementChunks); const size=c.amendment.maximumRootsPerMeasurementChunk; const start=chunkIndex*size,end=Math.min(selection.selected.length,start+size); const measurements=[]; let resourceCensored=false;
+  const chunkIndex=Number(args["chunk-index"]); const chunkCount=Number(args["chunk-count"]); assert.equal(chunkCount,c.parallel.measurementChunks); const size=c.parallel.maximumRootsPerMeasurementChunk; const start=chunkIndex*size,end=Math.min(selection.selected.length,start+size); const measurements=[]; let resourceCensored=false;
   for(let i=start;i<end;i++){measurements.push(Measurement.measureRoot(selection.selected[i],i,spec));if(elapsed(startTime)>spec.resourceCaps.maximumWallClockSecondsPerWorkflowJob||process.resourceUsage().maxRSS/1024>spec.resourceCaps.maximumRSSMiB){resourceCensored=true;break;}}
   const result={schemaVersion:1,stageId:spec.stageId,chunkIndex,chunkCount,startSelectedIndex:start,endSelectedIndexExclusive:end,plannedRoots:end-start,measuredRoots:measurements.length,resourceCensored,measurements,measurementHash:P.canonicalHash(measurements.map((m)=>m.measurementHash)),resource:{elapsedSeconds:elapsed(startTime),maxRSSMiB:process.resourceUsage().maxRSS/1024}};
   writeJson(path.resolve(args.out),result);
@@ -128,9 +130,9 @@ function modeMeasure(args) {
 function modeFinalize(args) {
   const startTime=performance.now(); const c=loadContracts(); const spec=c.loaded.spec; const baseDir=path.resolve(args["selection-dir"]); const outDir=path.resolve(args["out-dir"]); fs.mkdirSync(outDir,{recursive:true});
   for(const name of ["source-summary.json","selection.json","parallel-control.json"]) fs.copyFileSync(path.join(baseDir,name),path.join(outDir,name));
-  const selection=readJson(path.join(baseDir,"selection.json")); const control=readJson(path.join(baseDir,"parallel-control.json")); const prov=provenance(c,{sourceChunks:c.amendment.sourceChunks,measurementChunks:c.amendment.measurementChunks});
+  const selection=readJson(path.join(baseDir,"selection.json")); const control=readJson(path.join(baseDir,"parallel-control.json")); const prov=provenance(c,{sourceChunks:c.parallel.sourceChunks,measurementChunks:c.parallel.measurementChunks});
   if(!control.readyForMeasurement){const result={schemaVersion:1,studyId:spec.studyId,stageId:spec.stageId,scientificLabel:control.classification,scientificInferenceAuthorized:false,confirmatoryReuseAllowed:false,reason:control.reason,generatedGames:selection.generatedGames,selection:{...selection,selected:undefined},plannedInterventions:control.plannedInterventions,plannedContinuationRows:control.plannedContinuationRows,provenance:prov};writeJson(path.join(outDir,"stage1-result.json"),result);return;}
-  const chunks=filesNamed(path.resolve(args["measure-dir"]),"measure-chunk-").map(readJson).sort((a,b)=>a.chunkIndex-b.chunkIndex); assert.equal(chunks.length,c.amendment.measurementChunks);
+  const chunks=filesNamed(path.resolve(args["measure-dir"]),"measure-chunk-").map(readJson).sort((a,b)=>a.chunkIndex-b.chunkIndex); assert.equal(chunks.length,c.parallel.measurementChunks);
   chunks.forEach((x,i)=>{assert.equal(x.chunkIndex,i);assert.equal(x.measurementHash,P.canonicalHash(x.measurements.map((m)=>m.measurementHash)));});
   if(chunks.some((x)=>x.resourceCensored||x.measuredRoots!==x.plannedRoots)){const result={schemaVersion:1,studyId:spec.studyId,stageId:spec.stageId,scientificLabel:"RESOURCE-CENSORED",scientificInferenceAuthorized:false,confirmatoryReuseAllowed:false,reason:"parallel-measurement-resource-cap",measuredRoots:chunks.reduce((s,x)=>s+x.measuredRoots,0),plannedRoots:selection.selected.length,provenance:prov};writeJson(path.join(outDir,"stage1-result.json"),result);return;}
   const measurements=chunks.flatMap((x)=>x.measurements).sort((a,b)=>a.selectedIndex-b.selectedIndex); assert.equal(measurements.length,selection.selected.length); measurements.forEach((m,i)=>assert.equal(m.selectedIndex,i));
