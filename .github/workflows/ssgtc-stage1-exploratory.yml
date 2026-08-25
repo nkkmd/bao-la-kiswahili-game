@@ -1,0 +1,46 @@
+name: SSGTC Stage 1 exploratory characterization
+
+on:
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "tools/experiments/run-ssgtc-stage1-exploratory.js"
+      - "tools/experiments/verify-ssgtc-stage1-independent.js"
+      - "tools/experiments/lib/ssgtc-representation-*.js"
+      - "doc/state-space-game-tree-complexity/**"
+      - ".github/workflows/ssgtc-stage1-exploratory.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-exploratory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run frozen Stage 1 production expansion
+        env:
+          SSGTC_STAGE1_OUT: ${{ runner.temp }}/ssgtc-stage1-exploratory-v1
+        run: node tools/experiments/run-ssgtc-stage1-exploratory.js
+
+      - name: Run separate-process Stage 1 independent verification
+        env:
+          SSGTC_STAGE1_OUT: ${{ runner.temp }}/ssgtc-stage1-exploratory-v1
+        run: node tools/experiments/verify-ssgtc-stage1-independent.js
+
+      - name: Upload Stage 1 exploratory artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssgtc-stage1-exploratory-v1
+          path: ${{ runner.temp }}/ssgtc-stage1-exploratory-v1
+          if-no-files-found: warn
