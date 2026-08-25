@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.12.0  
+Version: 1.13.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-24
+更新日: 2026-08-25
 
 ## 1. 目的
 
@@ -27,9 +27,11 @@ Restricted Endgame / Winning Regions Study 1も完了した。outcome-blindなSt
 
 Symmetry / Isomorphic Positions Study 1も完了した。technically invalidated v1 executionのfresh bounded-local diagnosticsでは3 scientific candidates・5 preregistered scopesすべてでproduction / independent双方がexact mismatch 0を再現したが、mandatory oracle reconstructionでIDENTITY positive controlがFAILしたためv1はcandidate-decision runとして無効化された。corrected v2はformal spec / authorization / independent verifier / resultを作成せず未承認・未実行で終了した。したがってvalid formal candidate-decision runは完成せず、Study-level resultは0 validated / 0 rejected / 5 `NON-ESTIMABLE`で閉じた。post-v1 read-only diagnosticで確認したoracle terminal-row identity limitationはRestricted Endgame Study 1のformal decisionを変更しない。
 
-完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。
+Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 (`ORISC-STUDY1`)も完了した。Axis Aではproduction / independent別実装が凍結rootからimmutable 8-state / 7-edge raw graphを完全一致で再構成し、全stateの64-seed representation、terminal captured/pending accounting、transition successor bindingを確認した。一方、repository-facing oracleの3 terminal rowsがstored-row re-hash / reconstructed raw-state bindingをFAILし、差分fieldは`pending`のみだった。production / independentは同じfailureを再現したためformal decisionは`ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`である。Stage 2 symmetry candidate contractはAxis A outcome前にfreeze済みだったが、Axis A `CONFIRMED`とIDENTITY PASSがauthorization prerequisiteだったためAxis Bは`NOT-AUTHORIZED-NOT-EXECUTED`で閉じた。validated transformation setは引き続き空である。
 
-2026-08-24の研究運用上、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。machine-only sequenceでは限定終盤と必勝圏 Study 1に続き、**対称性と同型局面 Study 1も完了したがformal resultは5/5 `NON-ESTIMABLE`**であり、validated transformation setは空である。したがってState Space / Game Tree Complexity Studyは**raw state identityなら進行可能**だが、本Study 1のT01/T02/T03をsymmetry reductionへ使用してはならない。symmetry-reduced countを扱いたい場合は、Restricted Endgame Study 1をretrofitせず、oracle terminal-state representation / captured-seed accounting / raw-state identity contractを独立監査する新しいprospective Studyを先行させる。
+完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。ORISC-STUDY1についてもrepository rowの後付け修正によるAxis A再判定や、同Study内でのStage 2 authorization追加による救済を行わない。
+
+2026-08-25時点で、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。machine-only sequenceでは限定終盤、Symmetry Study 1、ORISC-STUDY1まで完了した。ORISCはrepository-facing oracleをdownstream transform-validation anchorとして確認できず、非自明symmetry stageも実行しなかったため、canonicalization / symmetry-reduced state countingは未承認のままである。したがって次のState Space / Game Tree Complexity Studyは**authoritative raw state identityのみを使用するRAW-ONLY研究として進行可能**であり、SIPまたはORISCの未検証transformをreductionへ使用してはならない。
 
 ## 2. 既存研究との境界
 
@@ -52,7 +54,8 @@ Symmetry / Isomorphic Positions Study 1も完了した。technically invalidated
 - Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`）
 - Critical Positions / Outcome Branching Study 1 — [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md)（Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed）
 - Restricted Endgame / Winning Regions Study 1 — [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md)（Study 1 complete / `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` / 8 states / 7 edges）
-- Symmetry / Isomorphic Positions Study 1 — [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)（Study 1 complete / 0 validated / 0 rejected / 5 `NON-ESTIMABLE`; fresh bounded-local mismatch 0, mandatory oracle-anchor G12 failed）
+- Symmetry / Isomorphic Positions Study 1 — [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)（Study 1 complete / 0 validated / 0 rejected / 5 `NON-ESTIMABLE`; invalidated v1 fresh bounded-local mismatch 0、corrected v2未実行）
+- Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md)（Study complete / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -397,7 +400,8 @@ Exact claimはfrozen 8-state domainだけに限定する。Bao全体、全Mtaji�
 
 #### 後続利用
 
-このraw exact oracleを次のSymmetry / Isomorphic Positions Studyで候補変換がstate value・optimal move set・DTFを保存するか検証するground truthとして利用する。Study 1自体へsymmetry reductionをretrofitしない。
+このraw exact oracleはSymmetry / Isomorphic Positions Study 1と、そのrepresentation contractを独立監査した`ORISC-STUDY1`のupstream anchorとして使用された。ORISCはraw 8-state / 7-edge graph自体を再構成したが、repository-facing state-row bindingを`NOT-CONFIRMED`とした。この結果はRestricted Endgame Study 1のexact decisionを変更しない。今後もStudy 1自体へsymmetry reductionをretrofitしない。
+
 ---
 
 ### 4.9 重要局面と勝敗分岐点 — Study 1完了
@@ -497,13 +501,21 @@ Technically invalidated v1のfresh historically reachable bounded-local diagnost
 
 Post-outcome read-only diagnosticで確認したterminal state-row identity limitationは、完了済みRestricted Endgame Study 1を変更・救済する根拠として使わない。
 
-#### 今後の独立研究候補
+#### Follow-up studyの完了
 
-**Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation**（作業名）として、terminal-state representation、captured-seed accounting、raw-rule-state identity、state-key serializationを新規prospective contractで独立監査する。必要ならその後にfresh symmetry confirmationを行う。既存SIP-STUDY1の5 `NON-ESTIMABLE` decisionは変更しない。
+このfollow-up requirementは、**Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 (`ORISC-STUDY1`)**として新しいprospective contractで実施済みである。
+
+```text
+Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+Axis B = NOT-AUTHORIZED-NOT-EXECUTED
+validated symmetry transformation set = []
+```
+
+ORISC Axis Aではraw graphそのものはproduction / independent双方でexact reconstructionできたが、repository-facing oracleの3 terminal rowsがre-hash / raw-state bindingをFAILした。IDENTITYがmandatory repository reconstruction requirementを満たさなかったため、pre-outcome frozen symmetry candidate contractは実行されなかった。既存SIP-STUDY1の5 `NON-ESTIMABLE` decisionは変更しない。
 
 #### Downstream boundary
 
-State Space / Game Tree Complexity Studyはraw state identityで進行できる。本Study 1のT01/T02/T03をstate reductionに使用してはならない。
+State Space / Game Tree Complexity Studyはauthoritative raw state identityで進行できる。SIP-STUDY1またはORISC-STUDY1のT01/T02/T03をstate reductionに使用してはならない。symmetry reductionを再検証する場合は、closed ORISCを修正・救済せず、新しいprospective study/versioned protocolを必要とする。
 
 ---
 
@@ -511,7 +523,9 @@ State Space / Game Tree Complexity Studyはraw state identityで進行できる�
 
 #### 現在の実行状態
 
-**machine-only次研究候補。** raw state identityによる状態空間・ゲーム木複雑度研究は着手可能。一方、symmetry-reduced canonical state countはSymmetry Study 1で未承認のため、T01/T02/T03によるreductionを使用しない。symmetry-reduced countをformal targetに含める場合は、別prospective studyでanchor integrityとtransform validationを先に確立する。
+**次のmachine-only研究候補 / RAW-ONLY。** ORISC-STUDY1というprogrammatic prerequisiteは完了したが、canonicalization / symmetry-reduced state countingは承認されなかった。したがってState Space / Game Tree Complexity Studyはauthoritative raw state identityだけを用いる設計なら着手可能であり、現時点の推奨次研究である。
+
+初回Studyではsymmetry-reduced canonical state countをformal primary targetに含めず、SIP/ORISCの未検証transformをstate reductionへ使用しない。将来symmetry-reduced countを扱う場合は、別のnew prospective studyでrepresentation integrityとtransform validationを事前に確立する。
 
 #### 中心課題
 
@@ -524,7 +538,7 @@ Baoの計算論的規模を推定し、他の盤上ゲームやマンカラ系�
 3. phase別の実効分岐係数
 4. 平均対局長と分布
 5. 強制手がゲーム木を圧縮する割合
-6. 対称性を除いた局面数
+6. 対称性を除いた局面数（**現時点では未承認transformを用いたformal primary estimateにはしない**）
 
 #### 期待成果
 
@@ -563,11 +577,11 @@ Critical Positions / Outcome Branching Study 1によって、全exact legal root
 
 1. **[完了] 限定終盤と必勝圏 — Study 1 (`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`)**
 2. **[完了] 対称性と同型局面 — Study 1（5/5 `NON-ESTIMABLE`）**
-3. **[推奨先行候補] Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — new prospective Study**
-4. **[raw identityなら着手可] 状態空間とゲーム木複雑度**
+3. **[完了] Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1（Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）**
+4. **[次研究候補 / RAW-ONLY] 状態空間とゲーム木複雑度**
 5. **[後続候補] 逆転可能性と勝負手**
 
-限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず、corrected v2は未承認・未実行のままStudy-level 5/5 `NON-ESTIMABLE`で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。raw-state State Space研究は進行可能であり、symmetry-reduced countが必要な場合のみ、上流Studyを変更しない新規oracle-integrity / symmetry-confirmation研究を先行させる。
+限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。**現在のmachine-only programmatic next stepはraw-state State Space / Game Tree Complexity Studyである。**
 
 ## 6. 特に優先する三本柱
 
@@ -590,6 +604,8 @@ Calibration Study 1がformal `INCONCLUSIVE`だったため、bad-move severity�
 ### 6.3 Bao終盤科学
 
 限定局面の完全解析、必勝圏、勝利距離、終盤テーブルベースを扱う。
+
+ORISC-STUDY1によって、exact-solved raw graphとrepository-facing representationを別endpointとして扱う必要性がformalに確認された。今後のtablebase / exact-oracle研究では、solver output、archived workflow artifact、repository-facing projection、raw identity keyのbinding contractを明示的に保存し、downstream利用時にrepresentation integrityを別gateとして扱う。
 
 ## 7. 個別研究を開始・継続する条件
 
@@ -618,6 +634,10 @@ Position Evaluation / Win-Rate Calibration Study 1を再検証する場合、既
 Blunder / Misvaluation Patterns Study 1はStage 2まで完了しているため、同Studyの「次stage」として再開しない。C01-C04を再検証する場合も、既存Stage 2への追加game、seed extension、threshold/floor緩和、candidate edit、alternate primary depth/evaluator、favorable subgroupでformal decisionを変更しない。新しい問い、endpoint、population、seed、source identity、decision ruleをoutcome生成前に固定した**新規prospective independent study**としてのみ扱う。C01-C03のstructural failure recurrenceを新研究のhypothesis-generation inputに使うことはできるが、現Studyのconfirmation evidenceにはならない。
 
 Critical Positions / Outcome Branching Study 1はStage 1 negative exploratory resultとして閉じているため、同Studyの「Stage 2 target」を後から作らない。既存Stage 1 dataを見た後のcandidate grammar broadening/narrowing、near-miss promotion、support/divergence threshold relaxation、manual target selection、Stage 2 seed consumptionは行わない。より豊かなrepresentationを検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
+
+ORISC-STUDY1はcompleted studyであり、repository-facing rowsを修正して同一formal Axis Aを再実行したり、pre-outcome candidate contractを後からStage 2へ昇格させたりしない。representation repairやsymmetry re-confirmationを行う場合は、new study IDまたは明示的なnew version、fresh prospective authorization、outcome前のcontract freezeを必要とする。
+
+State Space / Game Tree Complexity Studyを開始する場合、少なくともStudy 1ではauthoritative raw state identityをstate-count identityとし、ORISC/SIPでformal validationされていないtransformをcanonicalizationやdeduplicationへ使用しない。symmetry-reduced countは別のvalidated symmetry studyなしにformal primary resultとして主張しない。
 
 Human evidenceなしではhuman error mechanismをformalに主張しない。
 

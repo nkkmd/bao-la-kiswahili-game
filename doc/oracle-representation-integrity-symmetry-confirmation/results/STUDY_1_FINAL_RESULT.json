@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "studyId": "ORISC-STUDY1",
+  "studyStatus": "COMPLETED",
+  "closureDate": "2026-08-25",
+  "axisA": {
+    "name": "Oracle Representation Integrity",
+    "stageId": "ORISC-S1-REPRESENTATION-INTEGRITY-2026-08-25-v1",
+    "formalDecision": "ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED",
+    "formalResult": "results/STAGE_1_FORMAL_RESULT.json",
+    "gateSummary": {
+      "passed": ["A-G1", "A-G2", "A-G3", "A-G4", "A-G5", "A-G6", "A-G7", "A-G10", "A-G12"],
+      "failed": ["A-G8", "A-G9", "A-G11"]
+    },
+    "affectedRepositoryRows": 3,
+    "affectedIdentityField": "pending",
+    "productionIndependentEquality": true
+  },
+  "axisB": {
+    "name": "Independent Symmetry Confirmation",
+    "candidateContractFrozenBeforeAxisAOutcome": true,
+    "candidateContractSha256": "6509dc18553d968437d87f7522cacebb4b66f13f15469240075964b72f1c8796",
+    "status": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "reason": "Axis A did not satisfy the prospectively frozen Stage 2 authorization gate because representation integrity was NOT-CONFIRMED and IDENTITY failed the repository reconstruction requirement.",
+    "nontrivialCandidateFormalDecisionsGenerated": 0,
+    "candidateValidationCount": 0,
+    "candidateRejectionCount": 0,
+    "candidateNonEstimableCount": 0,
+    "note": "No T01/T02/T03 pass/fail label is generated because the conditional symmetry stage was never authorized."
+  },
+  "stage3DownstreamDecision": {
+    "status": "CLOSED-WITHOUT-CANONICALIZATION-AUTHORIZATION",
+    "validatedSymmetryTransformationSet": [],
+    "canonicalizationAuthorized": false,
+    "symmetryReducedStateCountingAuthorized": false,
+    "symmetryGroupClaimAuthorized": false,
+    "rawStateIdentityAuthoritative": true,
+    "stateSpaceGameTreeComplexityMayProceedRawOnly": true
+  },
+  "immutableUpstreamBoundary": {
+    "rewrStudy1": {
+      "formalDecision": "EXACT-SOLVED-WITHIN-FROZEN-DOMAIN",
+      "states": 8,
+      "edges": 7,
+      "changed": false
+    },
+    "sipStudy1": {
+      "formalDecision": "NON-ESTIMABLE",
+      "validated": 0,
+      "rejected": 0,
+      "nonEstimable": 5,
+      "changed": false
+    }
+  },
+  "finalInterpretation": "ORISC-STUDY1 independently confirms that the frozen raw 8-state graph itself can be reconstructed consistently by separate implementations, but the immutable repository-facing oracle representation fails the preregistered raw-state row re-hash/binding contract for three terminal rows. Therefore the repository-facing oracle is not authorized as a downstream transform-validation anchor under this study, the conditional nontrivial symmetry stage is not executed, and raw state identity remains the only authorized downstream representation.",
+  "notClaimed": [
+    "REWR-STUDY1 was invalid or incorrectly solved",
+    "the three prior SIP scientific transformations are false symmetries",
+    "Bao has no useful symmetry",
+    "a corrected repository oracle has been created",
+    "symmetry reduction is authorized"
+  ]
+}

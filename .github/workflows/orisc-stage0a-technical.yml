@@ -1,0 +1,17 @@
+name: ORISC Stage 0A technical audit — closed study
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closed-study:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Closed-study notice
+        run: |
+          echo "ORISC-STUDY1 is completed."
+          echo "Stage 0A technical generation is no longer authorized within this study."
+          echo "Use the frozen historical run/artifact identities recorded in doc/oracle-representation-integrity-symmetry-confirmation/REPRODUCIBILITY_INDEX.md."
