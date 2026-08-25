@@ -12,7 +12,7 @@
 - Identified compatibility behavior in current engine that can synthesize missing `pending`. SSGTC therefore hard-rejects missing `pending` before engine entry and validates after every studied transition.
 - Frozen study-start firewall, Stage 0 protocol, Stage 1 exploratory boundary, Stage 2 prospective firewall, exact/estimate vocabulary, and independent-verification/materialization responsibilities before scientific outcome generation.
 - Added study-owned production and independent raw-state representation modules and Stage 0 technical tooling.
-- Opened draft PR #49 from `research/state-space-game-tree-complexity` to `main`; no merge or auto-merge authorized.
+- Opened draft PR #49 from `research/state-space-game-tree-complexity` to `main`; no merge or auto-merge authorized at study start.
 
 ## 2026-08-25 — Stage 0 technical acceptance
 
@@ -125,8 +125,28 @@ The downloaded ZIP was re-hashed after retrieval and matched the GitHub digest. 
 - Finalized `STUDY_1_FINAL_REPORT.md`, `STUDY_1_OVERVIEW.md`, `CURRENT_STATUS.md`, `REPRODUCIBILITY_INDEX.md`, study `README.md`, results index, and decision register.
 - Preserved all upstream decisions and the empty validated symmetry transformation set.
 - Kept the formal claim strictly bounded: this Study does not claim `Bao state space = 24848`, a full game-tree count, a global growth law, a validated estimator, or symmetry-reduced canonicalization.
-- Began repository-wide documentation and CI consistency audit before any merge to `main`.
+- Completed repository-wide documentation and CI consistency audit before merge to `main`.
+
+## 2026-08-25 — Main integration completed
+
+Final PR head `5847268c9fcf8f9262aa102be5df5bc09f4bbe98` passed all five integration checks:
+
+```text
+SSGTC Stage 0 technical validation = SUCCESS
+SSGTC Stage 1 exploratory characterization = SUCCESS
+SSGTC Stage 2 formal bounded quantification = SUCCESS
+SSGTC closure consistency audit = SUCCESS
+Phase Transition Research CI = SUCCESS
+```
+
+PR #49 was marked ready for review and merged with the expected-head guard. The merge commit is:
+
+```text
+ced3751f2c063a0e5e801a3c0f59afbdbae7922d
+```
+
+After merge, the integration-status record and permanent closure checker were updated so that `main` no longer contains a stale `NOT-YET-PERFORMED` integration state. These post-merge bookkeeping updates do not change any scientific endpoint, hash, representation contract, or interpretation boundary.
 
 ## Repository interface boundary
 
-GitHub connector operations record remote branch/commit state. No claim is made about an unrelated local worktree. PR #49 remains the integration vehicle and must not be merged until final audit succeeds and the user explicitly authorizes merge.
+GitHub connector operations record remote branch/commit state. No claim is made about an unrelated local worktree. SSGTC-STUDY1 is integrated in `main`; any deeper enumeration, estimator, canonicalization, or symmetry-reduced counting must proceed as a new prospective study/versioned protocol rather than as a rescue or extension of this closed Study 1.
