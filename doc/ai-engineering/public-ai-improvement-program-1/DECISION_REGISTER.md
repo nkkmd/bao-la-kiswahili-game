@@ -106,6 +106,140 @@ PBAI-A完了後の次工程は`AI-GEN2` exact public baseline freezeである。
 
 `EVIDENCE-AUDIT-READY`、`AUTHORIZED-FOR-DEVELOPMENT`、development build、validation pass、release candidateのいずれも`AI-GEN3`を意味しない。`AI-GEN3`は明示的`ADOPT` decisionとpublic-default deployment後のみ付与する。
 
+## PBAI-B decisions — 2026-08-26
+
+### D16 — Exact AI-GEN2 baseline identity
+
+PBAI-Bのcanonical exact baselineを次としてfreezeする。
+
+```text
+baselineId = AI-GEN2-BASELINE-2026-08-26-v1
+generationLineage = AI-GEN2
+repository = nkkmd/bao-la-kiswahili-game
+source branch = main
+source commit = f4ae3b11901180cbe417b3e643e2b357d8045d2d
+public source directory = public/
+```
+
+Machine-readable正本は:
+
+```text
+doc/ai-engineering/public-ai-improvement-program-1/
+  baselines/AI-GEN2-BASELINE-2026-08-26-v1.json
+```
+
+とする。Baseline Specとmanifestでexact byte SHA-256、runtime/config semantics、verification provenanceを固定する。
+
+### D17 — Public deployment binding and unknown-provider-ID boundary
+
+PBAI-B時点のpublic endpointは:
+
+```text
+https://bao-la-kiswahili.cultivationdata.net/
+```
+
+であり、Cloudflare Pages static deploymentとしてdocumented repository sourceとlive surfaceが整合することを確認した。
+
+Cloudflare provider内部のdeployment IDは今回のrepository/toolingから取得できなかったため、推測値を記録しない。PBAI-B bindingは:
+
+```text
+public endpoint
++ documented Cloudflare Pages target
++ main/public source ref
++ exact repository asset SHA-256
+```
+
+とする。
+
+Exact live JS asset byte comparisonは未実施であり、この制約をbaselineへ明記する。これはunobserved provider metadataを捏造するより厳密な境界として扱う。
+
+### D18 — Current public hard/expert configuration overrides stale historical prose
+
+Current public source `public/ai-config.js`をbaseline authorityとし、hard/expert settingsを次にfreezeする。
+
+```text
+hard:
+  low      D6  / 400ms
+  standard D8  / 500ms
+  high     D10 / 600ms
+
+expert:
+  low      D10 / 1500ms
+  standard D12 / 2000ms
+  high     D14 / 3000ms
+```
+
+`searchOptions()`は現在base settingsをそのまま返すためadaptive public defaultはfalseである。
+
+`doc/AI_DEVELOPMENT_LOG.md`の`D4 / 450ms`記述はhistorical/stale engineering proseとして保持し、current baseline truthとして使用しない。歴史記録を現在値に見せるためretroactiveに書き換えない。
+
+### D19 — Search/runtime semantics are baseline properties, not candidate claims
+
+`AI-GEN2-BASELINE-2026-08-26-v1`では少なくとも次をfreezeする。
+
+```text
+default evaluation profile = bao
+hard/expert implementation = enhanced alpha-beta iterative deepening
+historical benchmark identifier = phase2
+quiescenceDepth = 1
+TT max entries = 50,000
+evaluation cache hard/expert = enabled / max 2,048
+PWA cache = bao-la-kiswahili-v24
+```
+
+TT、evaluation cache、Worker stale guardがcurrent `AI.stateKey`を使用することもbaseline propertyとして記録する。D13のRAW-identity prohibitionは維持する。
+
+### D20 — Fixed-depth and time-limited baseline evidence remain separate
+
+Canonical PBAI-B workflow `32910436754`でdeterministic fixed-depth verificationとtime-limited operational smokeを別ステップとして実行した。
+
+Fixed-depth D3 hard/bao standard-rootはdirect/Workerとも:
+
+```text
+takata:namua:0:5:right:::false
+```
+
+を返し、engine/AI/evaluation/search/config/worker/tactical/program-contract regressionsはPASSした。
+
+Time-limited hard/expert measurementsはGitHub-hosted runner依存のdescriptive operational observationsであり、PBAI-C acceptance thresholdまたはcross-device guaranteeとして使用しない。
+
+### D21 — PWA/cache identity is part of release safety
+
+Current Service Worker cache nameは:
+
+```text
+bao-la-kiswahili-v24
+```
+
+で、AI/engine/worker/configをpre-cacheするcache-first構成である。したがってfuture public candidate adoptionでは、source codeだけでなくPWA cache version / asset replacement / rollback behaviorもoperational release gateに含める。
+
+PBAI-Bはpublic assetを変更しないためcache versionを変更しない。
+
+### D22 — PBAI-B complete; PBAI-C numeric gate freeze is next
+
+PBAI-Bのbaseline freeze gatesを満たしたため:
+
+```text
+PBAI-B = COMPLETE
+baselineFrozen = true
+baselineId = AI-GEN2-BASELINE-2026-08-26-v1
+```
+
+とする。
+
+ただし:
+
+```text
+PBAI-C numeric non-regression/release gates = NOT-FROZEN
+AUTHORIZED-FOR-DEVELOPMENT = 0
+candidate implementations = 0
+AI-GEN3 promotion = NOT-AUTHORIZED
+```
+
+を維持する。
+
+次に許可されるengineering phaseはPBAI-Cのnumeric benchmark/non-regression/release-gate freezeである。candidate outputを観測する前にthreshold、seed blocks、validation/holdout contractを固定する。
+
 ## Future decisions
 
-PBAI-B以降のbaseline ID、benchmark numeric thresholds、candidate authorization、adoption/rejection、release/rollback decisionは本registerへ追記する。
+PBAI-C以降のnumeric thresholds、candidate development authorization、adoption/rejection、release/rollback decisionは本registerへ追記する。
