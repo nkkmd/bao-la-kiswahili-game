@@ -40,3 +40,5 @@ jobs:
           git add doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
           git commit -m "docs(ssgtc): synchronize completed study program state"
           git push origin HEAD:research/state-space-game-tree-complexity
+
+# One-shot closure synchronization; remove after the program-level files are committed.
