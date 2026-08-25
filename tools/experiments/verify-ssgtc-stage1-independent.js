@@ -337,18 +337,19 @@ function main() {
   ensure(JSON.stringify(reporting.computation) === JSON.stringify(summary.computation), "reporting computation projection mismatch");
 
   const verifierSource = fs.readFileSync(__filename, "utf8");
+  const requireLines = verifierSource.split("\n").filter((line) => line.includes("require("));
   const independence = {
-    importsProductionSerializer: /ssgtc-representation-production/.test(verifierSource),
-    importsProductionRunner: /run-ssgtc-stage1-exploratory/.test(verifierSource),
-    usesIndependentSerializer: /ssgtc-representation-independent/.test(verifierSource),
+    importsProductionSerializer: requireLines.some((line) => line.includes("ssgtc-representation-production")),
+    importsProductionRunner: requireLines.some((line) => line.includes("run-ssgtc-stage1-exploratory")),
+    usesIndependentSerializer: requireLines.some((line) => line.includes("ssgtc-representation-independent")),
     independentlyRerunsCompletedGraph: true,
     independentlyRerunsCompletedTree: true,
   };
   ensure(!independence.importsProductionSerializer && !independence.importsProductionRunner
     && independence.usesIndependentSerializer, "independence boundary failed");
 
-  const promotionFeasibility = lastFullyExpandedDepth >= 3
-    && summary.tree.lastFullyExpandedDepth >= 3;
+  const promotionFeasibility = lastFullyExpandedDepth >= 4
+    && summary.tree.lastFullyExpandedDepth >= 4;
   const result = {
     schemaVersion: 1,
     studyId: STUDY_ID,
