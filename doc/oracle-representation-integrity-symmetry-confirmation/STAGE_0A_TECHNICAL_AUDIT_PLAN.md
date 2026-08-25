@@ -1,6 +1,8 @@
 # ORISC-STUDY1 — Stage 0A Technical / Semantic / Provenance Audit Plan
 
-Status: **TECHNICAL-ONLY / NO SCIENTIFIC SYMMETRY DECISION**
+Status: **HISTORICAL PREFORMAL PLAN / STAGE 0A COMPLETED / TECHNICAL-ONLY**
+
+This file preserves the plan that governed Stage 0A before formal Axis A execution. It is not the current study status. The completed Stage 0A record is `STAGE_0A_TECHNICAL_AUDIT.md`; final study status is in `CURRENT_STATUS.md` and `STUDY_1_FINAL_REPORT.md`.
 
 ## Objective
 
@@ -144,3 +146,7 @@ Stage 0A is complete only when:
 - all information needed for a machine-readable Stage 0B freeze is available.
 
 Completion of Stage 0A does **not** authorize Stage 1.
+
+## Historical disposition
+
+All Stage 0A completion criteria were subsequently met. Stage 1 was later frozen and separately authorized, and the final Axis A decision was `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`. Stage 2 remained `NOT-AUTHORIZED-NOT-EXECUTED`. These later results do not alter the preformal rules recorded above.
