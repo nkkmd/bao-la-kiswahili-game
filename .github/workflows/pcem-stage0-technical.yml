@@ -1,47 +1,35 @@
-name: PCEM Stage 0 technical validation
+name: PCEM Stage 0 technical validation (closed)
 
 on:
   pull_request:
+    branches: [main]
     paths:
-      - "public/engine.js"
-      - "public/ai.js"
-      - "tools/experiments/run-pcem-stage0-technical.js"
-      - "tools/experiments/verify-pcem-stage0-independent.js"
-      - "tools/experiments/lib/practical-comeback-stage0-production.js"
-      - "tools/experiments/lib/ssgtc-representation-*.js"
-      - "test/practical-comeback-stage0-tooling.test.js"
-      - "doc/practical-comeback-error-inducing-moves/**"
-      - ".github/workflows/pcem-stage0-technical.yml"
-  workflow_dispatch:
+      - '.github/workflows/pcem-stage0-technical.yml'
+      - 'doc/practical-comeback-error-inducing-moves/results/STAGE_0_TECHNICAL_RESULT.json'
+      - 'test/practical-comeback-closure-consistency.test.js'
 
 permissions:
   contents: read
 
 jobs:
-  stage0-technical:
+  closure-guard:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
         with:
-          node-version: "22"
-
-      - name: Run Stage 0 primitive tests
-        run: node test/practical-comeback-stage0-tooling.test.js
-
-      - name: Run production technical pilot
-        run: node tools/experiments/run-pcem-stage0-technical.js --out "${{ runner.temp }}/pcem-stage0-technical-v1"
-
-      - name: Run independent verification
-        run: node tools/experiments/verify-pcem-stage0-independent.js --input "${{ runner.temp }}/pcem-stage0-technical-v1/production.json" --output "${{ runner.temp }}/pcem-stage0-technical-v1/independent-verification.json"
-
-      - name: Upload technical artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
         with:
-          name: pcem-stage0-technical-v1
-          path: ${{ runner.temp }}/pcem-stage0-technical-v1
-          if-no-files-found: warn
+          node-version: '20'
+      - name: Verify canonical Stage 0 is closed
+        run: |
+          node - <<'NODE'
+          const r = require('./doc/practical-comeback-error-inducing-moves/results/STAGE_0_TECHNICAL_RESULT.json');
+          if (r.stageId !== 'PCEM-S0-TECHNICAL-2026-08-25-v1') throw new Error('unexpected Stage 0 id');
+          if (r.decision !== 'TECHNICAL-PASS') throw new Error('unexpected Stage 0 decision');
+          if (r.canonicalWorkflow.runId !== 32813154014) throw new Error('unexpected Stage 0 canonical run');
+          if (r.canonicalWorkflow.artifactId !== 9550497573) throw new Error('unexpected Stage 0 artifact');
+          if (r.independentVerification.decision !== 'TECHNICAL-PASS' || !r.independentVerification.passed) throw new Error('independent Stage 0 verification not frozen PASS');
+          console.log('PCEM Stage 0 is canonically closed; technical pilot regeneration is disabled.');
+          NODE
