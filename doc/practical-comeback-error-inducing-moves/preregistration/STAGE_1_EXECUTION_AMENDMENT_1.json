@@ -23,6 +23,16 @@
     "parallelPreparationHeadBeforeAmendment": "1e9350317a058a1b6a431a8803526ac352861be3",
     "earlierAuthorizedSerialRunAlsoObservedWithoutResult": 32816467225
   },
+  "technicalCorrectionsBeforeScientificGeneration": [
+    {
+      "parallelWorkflowRunId": 32819669618,
+      "stage": "gate",
+      "classification": "TECHNICALLY-INVALID-NO-SCIENTIFIC-GENERATION",
+      "reason": "missing closing parenthesis in execution-only result assembly helper",
+      "scientificSeedsGenerated": 0,
+      "scientificOutcomeObserved": false
+    }
+  ],
   "scientificContract": {
     "specSha256": "26a7daea8588a460e19ae8e77485c50a092d714bfb3243608b5b64a95fa3fe22",
     "featureDefinitionsSha256": "3f1e622c86fca8d4153baca815000234cd1672ad5a6a259aaae4ffea4a6e84d6",
@@ -72,7 +82,7 @@
   },
   "executionBindings": {
     "parallelProductionHelper": "tools/experiments/run-pcem-stage1-parallel-execution.js",
-    "parallelProductionHelperGitBlobSha": "6cf7a1e59a6edda646c5722099d351925b1a25d8",
+    "parallelProductionHelperGitBlobSha": "31562a5ce1c52be0c966b738e1d29f5003994929",
     "parallelIndependentHelper": "tools/experiments/verify-pcem-stage1-parallel-execution.js",
     "parallelIndependentHelperGitBlobSha": "c463dc1fcf6bf7b2501177b953455df9afb5e1d6",
     "parallelWorkflow": ".github/workflows/pcem-stage1-parallel.yml",
