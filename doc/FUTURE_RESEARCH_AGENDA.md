@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.14.0  
+Version: 1.15.0  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-25
@@ -35,6 +35,8 @@ Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study
 
 State Space / Game Tree Complexity Study 1は、ORISCのRAW-ONLY downstream contractを維持してstandard initial stateからdepth 8までのbounded reachable raw-state graphとgame treeをprospectively freezeし、production / independent双方の全域再列挙一致により`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で閉じた。exact resultは24,848 raw states / 25,648 graph transition occurrences / 30,941 game-tree node occurrences / 30,940 tree edgesである。ただしこれはfrozen depth-8 domainだけのexact claimであり、Bao全体のstate-space sizeやfull game-tree complexityを解いたことを意味しない。canonicalization / symmetry-reduced state countingは引き続き未承認で、より深い列挙・full-game estimation・symmetry reductionは新しいprospective study/versioned protocolとして扱う。
 
+Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。RAW-ONLY identityを維持し、fresh 3,072-game Stage 1 corpusから300 disadvantaged roots（Namua/Mtaji 150/150）、1,065 exact root-move interventions、18,105 continuation rowsを測定し、independent verifierがsource generation、selection、measurement、discoveryを再構築して一致した。frozen `PCEM-T1..T8` grammarから55 candidate auditsを得たが、promotion gateを全て通過したcandidateは0だったため、Stage 1は`EXPLORATORY-ONLY`で閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`とした。reserved Stage 2 seeds `23300001..23306144`は未消費である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup、candidate grammar expansion、opponent-policy substitutionによる救済は行わない。
+
 ## 2. 既存研究との境界
 
 既存の研究・開発基盤では、主に次を扱っている。
@@ -59,6 +61,7 @@ State Space / Game Tree Complexity Study 1は、ORISCのRAW-ONLY downstream cont
 - Symmetry / Isomorphic Positions Study 1 — [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)（Study 1 complete / 0 validated / 0 rejected / 5 `NON-ESTIMABLE`; invalidated v1 fresh bounded-local mismatch 0、corrected v2未実行）
 - Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md)（Study complete / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）
 - State Space / Game Tree Complexity Study 1 — [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)（Study complete / `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` / standard-root depth 8で24,848 raw states / 30,941 game-tree node occurrences / RAW-ONLY）
+- Practical Comeback / Error-Inducing Move Study 1 — [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)（Study complete / Stage 1 `EXPLORATORY-ONLY` / 55 candidate audits / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
