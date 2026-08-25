@@ -153,6 +153,7 @@ node tools/diagnostic-to-fixture.js \
 本リポジトリでは、AI自己対局・固定seed・paired openingなどを用いたBaoの実験研究も行っています。研究成果が増えても辿りやすいよう、**研究全体の中央索引**を用意しています。
 
 - [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md): 研究成果の中央索引。初見向け概要、科学的正本、研究運用文書への入口
+- [`doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md): Practical Comeback / Error-Inducing Move Study 1（`PCEM-STUDY1`）。Study 1完了、Stage 0 `TECHNICAL-PASS`、Stage 1 `EXPLORATORY-ONLY`、55 candidate audits / promoted candidates 0、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`
 - [`doc/phase-transition/STUDY_1_OVERVIEW.md`](doc/phase-transition/STUDY_1_OVERVIEW.md): 局面相転移点研究Study 1「Baoにおける局面相転移点の発見と、capture-branch-expansionの確認」の初見向け成果概要
 - [`doc/position-typology/STUDY_1_OVERVIEW.md`](doc/position-typology/STUDY_1_OVERVIEW.md): 局面類型と棋風Study 1「Baoにおける局面類型と棋風の発見・検証」の初見向け成果概要
 - [`doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md`](doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md): Namua→Mtaji Strategic Temporal Transition Study 1「capture-branch-expansionからMtaji morphologyへの時間的接続」の初見向け成果概要（formal decision `NOT-CONFIRMED`）

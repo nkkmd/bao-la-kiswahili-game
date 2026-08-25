@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.14.0  
+Version: 1.15.0  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-25
@@ -35,6 +35,8 @@ Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study
 
 State Space / Game Tree Complexity Study 1は、ORISCのRAW-ONLY downstream contractを維持してstandard initial stateからdepth 8までのbounded reachable raw-state graphとgame treeをprospectively freezeし、production / independent双方の全域再列挙一致により`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で閉じた。exact resultは24,848 raw states / 25,648 graph transition occurrences / 30,941 game-tree node occurrences / 30,940 tree edgesである。ただしこれはfrozen depth-8 domainだけのexact claimであり、Bao全体のstate-space sizeやfull game-tree complexityを解いたことを意味しない。canonicalization / symmetry-reduced state countingは引き続き未承認で、より深い列挙・full-game estimation・symmetry reductionは新しいprospective study/versioned protocolとして扱う。
 
+Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。RAW-ONLY identityを維持し、fresh 3,072-game Stage 1 corpusから300 disadvantaged roots（Namua/Mtaji 150/150）、1,065 exact root-move interventions、18,105 continuation rowsを測定し、independent verifierがsource generation、selection、measurement、discoveryを再構築して一致した。frozen `PCEM-T1..T8` grammarから55 candidate auditsを得たが、promotion gateを全て通過したcandidateは0だったため、Stage 1は`EXPLORATORY-ONLY`で閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`とした。reserved Stage 2 seeds `23300001..23306144`は未消費である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup、candidate grammar expansion、opponent-policy substitutionによる救済は行わない。
+
 ## 2. 既存研究との境界
 
 既存の研究・開発基盤では、主に次を扱っている。
@@ -59,6 +61,7 @@ State Space / Game Tree Complexity Study 1は、ORISCのRAW-ONLY downstream cont
 - Symmetry / Isomorphic Positions Study 1 — [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)（Study 1 complete / 0 validated / 0 rejected / 5 `NON-ESTIMABLE`; invalidated v1 fresh bounded-local mismatch 0、corrected v2未実行）
 - Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md)（Study complete / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）
 - State Space / Game Tree Complexity Study 1 — [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)（Study complete / `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` / standard-root depth 8で24,848 raw states / 30,941 game-tree node occurrences / RAW-ONLY）
+- Practical Comeback / Error-Inducing Move Study 1 — [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)（Study complete / Stage 1 `EXPLORATORY-ONLY` / 55 candidate audits / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -352,26 +355,46 @@ OVERALL FORMAL DECISION = INCONCLUSIVE
 
 ---
 
-### 4.7 逆転可能性と勝負手
+### 4.7 逆転可能性と勝負手 — Study 1完了
 
-#### 中心課題
+#### 現在の状態
 
-理論上の最善手と、実戦で相手に誤りを要求して逆転可能性を高める手を区別する。
+**Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`) complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。**
 
-#### 主な指標
+- 初見向け概要: [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md`](practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md)
+- Canonical compact result: [`practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json`](practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json)
+- Artifact provenance: [`practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json`](practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json)
 
-- 最善応手に対する評価
-- 平均的応手に対する勝率
-- 応手の唯一性
-- 分岐数
-- 相手AIの強度別誤答率
-- 候補手ごとの逆転率
+Study 1では、reference-policy上のmove qualityとfrozen imperfect-opponent policy下のbounded-horizon empirical comebackを分離した。RAW-ONLY identityを維持し、D3 referenceでmachine-reference disadvantagedと判定したfresh rootsから、strict-reference-inferior move、reply-defense concentration、first-reply reference-error dependence、bounded comebackを測定した。
 
-Calibration Study 1のmappingをformal validated win probabilityとして前提にしない。勝率をprimary endpointに使う場合は、新研究内でfresh continuation outcomeまたはprospectively validated measurementを定義する。
+```text
+generated games = 3072
+unique historical trajectories = 2764
+selected roots = 300 = 150 Namua + 150 Mtaji
+exact root-move interventions = 1065
+continuation rows = 18105
+candidate audits = 55
+candidates passing promotion gates = 0
+promoted candidates = 0
+scientificLabel = EXPLORATORY-ONLY
+```
+
+Productionとindependent verifierはsource generation、root selection、RAW identity、measurement、discoveryを独立に再構築して一致した。55 candidate definitionsはすべてfrozen promotion conjunctionを満たさず、特にminimum unique-root / trajectory / opening-prefix supportとerror-condition / defense-condition root supportを満たさなかった。
+
+Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせず、reserved seeds `23300001..23306144`は未消費である。
+
+#### Boundary / future use
+
+この結果は、「Baoに実戦的な勝負手が存在しない」「相手の誤りを誘発する手が存在しない」「人間に難しい応手を要求する構造が存在しない」という証明ではない。また、objective superiority、game-theoretic winning move、true Bao winning probability、human error probability、expert/traditional winning-try recognitionも確立しない。
+
+同じStage 1 outcomeを見た後にthresholdを緩和する、near-missをpromotionする、favorable subgroupを選ぶ、candidate grammarを拡張する、opponent policyを置換する、Stage 1 rowsをStage 2 evidenceとして再利用することは禁止する。
+
+より豊富なmove/reply representation、別のprospectively frozen imperfect-opponent family、human/expert response difficulty、traditional winning-try recognitionを検証する場合は、新しいprospective independent studyとfresh evidenceを使用する。
 
 #### 期待成果
 
-劣勢時の勝負手分類、実戦型AI、難しい応手を要求する局面の教材化。
+将来の独立研究では、PCEM-STUDY1を救済せず、machine-operational practical comeback structureとhuman/expert difficultyを別axisとして検証し、十分な再現性と外部妥当性が得られた場合に限って、劣勢時の実戦型AIや教材化へ接続する。
 
 ---
 
@@ -597,9 +620,9 @@ Critical Positions / Outcome Branching Study 1によって、全exact legal root
 2. **[完了] 対称性と同型局面 — Study 1（5/5 `NON-ESTIMABLE`）**
 3. **[完了] Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1（Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）**
 4. **[完了] 状態空間とゲーム木複雑度 — Study 1 (`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`)**
-5. **[後続候補] 逆転可能性と勝負手**
+5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 
-限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。State Space / Game Tree Complexity Study 1もRAW-ONLYで完了し、frozen depth-8 domainのbounded exact countを確立した。次のmachine-only研究は、この結果をfull-game claimへ救済せず、より深いRAW-only enumeration、prospectively specified estimation、または独立にvalidationされた将来transformを用いる新研究のいずれかとして設計する。
+限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。State Space / Game Tree Complexity Study 1もRAW-ONLYで完了し、frozen depth-8 domainのbounded exact countを確立した。PCEM-STUDY1もfresh Stage 1 evidenceとfull independent reconstructionまで完了したが、55 candidate auditsからpromoted candidateは0で、Stage 2は未承認・未実行で閉じた。これらの完了研究を同一data・threshold変更・near-miss promotion・post-outcome再定義で救済せず、次のmachine-only研究はnew study IDまたはversioned prospective protocolとfresh evidenceを用いて設計する。
 
 ## 6. 特に優先する三本柱
 
@@ -652,6 +675,8 @@ Position Evaluation / Win-Rate Calibration Study 1を再検証する場合、既
 Blunder / Misvaluation Patterns Study 1はStage 2まで完了しているため、同Studyの「次stage」として再開しない。C01-C04を再検証する場合も、既存Stage 2への追加game、seed extension、threshold/floor緩和、candidate edit、alternate primary depth/evaluator、favorable subgroupでformal decisionを変更しない。新しい問い、endpoint、population、seed、source identity、decision ruleをoutcome生成前に固定した**新規prospective independent study**としてのみ扱う。C01-C03のstructural failure recurrenceを新研究のhypothesis-generation inputに使うことはできるが、現Studyのconfirmation evidenceにはならない。
 
 Critical Positions / Outcome Branching Study 1はStage 1 negative exploratory resultとして閉じているため、同Studyの「Stage 2 target」を後から作らない。既存Stage 1 dataを見た後のcandidate grammar broadening/narrowing、near-miss promotion、support/divergence threshold relaxation、manual target selection、Stage 2 seed consumptionは行わない。より豊かなrepresentationを検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
+
+PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じており、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup selection、candidate grammar expansion、opponent-policy substitution、Stage 1 rowsのStage 2 evidenceへの再利用は行わない。practical comeback / error-inducing moveを再検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
 
 ORISC-STUDY1はcompleted studyであり、repository-facing rowsを修正して同一formal Axis Aを再実行したり、pre-outcome candidate contractを後からStage 2へ昇格させたりしない。representation repairやsymmetry re-confirmationを行う場合は、new study IDまたは明示的なnew version、fresh prospective authorization、outcome前のcontract freezeを必要とする。
 

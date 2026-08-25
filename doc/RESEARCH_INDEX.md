@@ -538,6 +538,43 @@ treeOccurrenceSetSha256 = 194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6
 
 ---
 
+### 16. Practical Comeback / Error-Inducing Move — Study 1
+
+**研究題目:** Baoにおける逆転可能性と勝負手の定量化 — opponent-error dependence, reply difficulty, and practical comeback potential の分離・検証  
+**状態:** **Study 1 complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**  
+**作業branch:** `research/practical-comeback-error-inducing-moves`
+
+このprospective independent studyは、reference-policy上のmove qualityと、frozen imperfect-opponent policy下のbounded-horizon empirical comebackを分離し、reply-defense concentration、first-reply reference-error dependence、move optimality gapをmachine-operationalに測定した。
+
+Stage 0は`TECHNICAL-PASS`。Stage 1ではfresh 3,072 gamesから300 disadvantaged roots（Namua/Mtaji 150/150）を選択し、1,065 exact root-move interventionsと18,105 continuation rowsを測定した。productionとindependent verifierはsource generation、RAW identity、selection、measurement、discoveryを再構築して一致した。
+
+```text
+candidateAuditCount = 55
+candidatesPassingPromotionGates = 0
+promotedCandidateCount = 0
+scientificLabel = EXPLORATORY-ONLY
+```
+
+55 candidate definitionsは全て、少なくともfrozen promotion conjunctionを満たさなかった。特に55/55がminimum unique-root / trajectory / opening-prefix supportと、error-condition / defense-condition root supportを満たさなかった。near-miss promotion、threshold relaxation、favorable subgroup rescueは行っていない。
+
+Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせず、reserved seeds `23300001..23306144`は未消費である。
+
+**最初に読む:**
+
+- [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md`](practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md) — Study 1科学的最終統合
+- [`practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json`](practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json) — canonical compact Stage 1 result
+- [`practical-comeback-error-inducing-moves/results/STAGE_1_INDEPENDENT_VERIFICATION.json`](practical-comeback-error-inducing-moves/results/STAGE_1_INDEPENDENT_VERIFICATION.json) — independent reconstruction result
+- [`practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md`](practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md) — workflow / artifact / hash / verifier索引
+- [`practical-comeback-error-inducing-moves/CURRENT_STATUS.md`](practical-comeback-error-inducing-moves/CURRENT_STATUS.md) — terminal stateとclaim boundary
+
+**Boundary:** 本Studyはobjective superiority、game-theoretic winning move、true Bao winning probability、human difficulty/error inducement、expert/traditional winning-try recognitionを示さない。結果はfrozen population、D3/D2 reference semantics、`P_MEDIUM_D1_TOP3`、96-ply endpoint、candidate grammar、promotion rulesに限定される。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

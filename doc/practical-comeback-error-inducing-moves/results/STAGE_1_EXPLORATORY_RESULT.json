@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PCEM-STUDY1",
+  "stageId": "PCEM-S1-EXPLORATORY-2026-08-25-v1",
+  "scientificLabel": "EXPLORATORY-ONLY",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "generatedGames": 3072,
+  "uniqueHistoricalTrajectories": 2764,
+  "selectedRoots": 300,
+  "phaseCounts": {
+    "namua": 150,
+    "mtaji": 150
+  },
+  "selectionHash": "5bf65534e88500b5d30565a1a9266664375a1d43b9a374b69aa7dd14c1409339",
+  "accounting": {
+    "interventions": 1065,
+    "primaryRows": 12780,
+    "secondaryRows": 4260,
+    "referenceRows": 1065,
+    "totalContinuationRows": 18105,
+    "exhaustedPrimary": 2
+  },
+  "readiness": {
+    "exactRootMoveInterventionsWithinCap": true,
+    "allReferenceTablesFinite": true,
+    "allPrimaryContinuationRowsAccounted": true,
+    "totalContinuationRowsWithinPlan": true
+  },
+  "candidateAuditCount": 55,
+  "candidatesPassingPromotionGates": 0,
+  "supportEquivalenceRepresentativeCount": 0,
+  "promotedCandidateCount": 0,
+  "promotedCandidates": [],
+  "discoveryHash": "3cd0df252036aa5794a7699b21d833e1f68b854cb8b5ec25ec59d65a314b81e8",
+  "zeroPromotedCandidatesAllowed": true,
+  "manualPromotionPerformed": false,
+  "resource": {
+    "elapsedSeconds": 0.213118864,
+    "maxRSSMiB": 143.44921875,
+    "parallelChunkResource": {
+      "sourceElapsedSeconds": null,
+      "selectionElapsedSeconds": 391.999615496,
+      "measurementElapsedSecondsSum": 3496.087003238,
+      "maximumChunkRSSMiB": 148.2265625
+    }
+  },
+  "provenance": {
+    "sourceCommit": "f4b336ee6655c37f6c456ef1ba6175dc0816a93c",
+    "workflowRunId": 32820391017,
+    "productionArtifactId": 9557783361,
+    "productionArtifactDigest": "sha256:e5936bba25b0aa55d81ec79c09710206d22f27b4a2f75903a6153694126ce693",
+    "verifiedArtifactId": 9558356215,
+    "verifiedArtifactDigest": "sha256:bd92dc89283835c862e1fe6a86b4bbd7c43de696211d2761576b67055d202067",
+    "specSha256": "26a7daea8588a460e19ae8e77485c50a092d714bfb3243608b5b64a95fa3fe22",
+    "featureDefinitionsSha256": "3f1e622c86fca8d4153baca815000234cd1672ad5a6a259aaae4ffea4a6e84d6",
+    "authorizationSha256": "3037ee2477bf58a6d77f325609933a40c69f008cd0820c9c1e9dce960e44fe7b",
+    "executionAmendmentSha256": "6fd9dc408c7ff30cadbb1acefe3f27c591098bdb1dea53a9e26b651ca0c54c19",
+    "executionMode": "parallel-chunked-v1",
+    "execution": {
+      "sourceChunks": 12,
+      "measurementChunks": 12
+    },
+    "node": "v20.20.2",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "resultHash": "4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08",
+  "resultHashScope": "canonical workflow artifact stage1-result object before resultHash was appended; not a hash of this post-closure augmented repository JSON payload",
+  "artifactProvenanceRecord": "STAGE_1_ARTIFACT_PROVENANCE.json",
+  "repositoryRecordAugmentedAfterCanonicalExecution": true,
+  "scientificOutcomeChangedByRepositoryAugmentation": false
+}
