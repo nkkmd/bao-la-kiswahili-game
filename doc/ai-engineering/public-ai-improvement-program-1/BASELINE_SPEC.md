@@ -9,12 +9,15 @@ candidate implementation前に、publicで実際に使用されているBao AI�
 
 Program start repository anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`はdocumentation上のevidence cutoff anchorであり、**それだけではpublic AI baseline freezeではない**。deployment configurationと実際のdefault pathを確認してからfreezeする。
 
+AI generation namingは`doc/ai-engineering/AI_GENERATION_NAMING.md`を正本とし、PBAI-Bでfreezeするbaselineは`generationLineage = AI-GEN2`を必須fieldとする。
+
 ## 2. Required baseline fields
 
 PBAI-B completion前に最低限次を記録する。
 
 ```text
 baselineId
+generationLineage
 repositoryCommit
 publicDeploymentSource/ref
 rulesEngineCommit/identity
@@ -39,8 +42,13 @@ supported device classes
 
 必要に応じてPWA/cache versionとUI difficulty mappingも記録する。
 
+推奨baseline IDは`AI-GEN2-BASELINE-YYYY-MM-vN`のように、AI generation lineageとexact baseline versionを分離して表現する。
+
+`legacy` / `bao` / `bao-v2`等のprofile identifierをgenerationLineageとして使用しない。
+
 ## 3. Baseline freeze gate
 
+- `generationLineage = AI-GEN2` recorded
 - actual public default path verified
 - public difficulty names ↔ engine settings mapped
 - relevant files hashed
@@ -53,14 +61,17 @@ supported device classes
 
 baseline freeze後にpublic AIが別経路で変更された場合、PBAI-P1の比較対象を黙って差し替えない。
 
-- candidate developmentはfrozen baselineを保持する。
+- candidate developmentはfrozen `AI-GEN2` baselineを保持する。
 - live public version driftは別途記録する。
 - 必要ならnew baseline versionを作り、candidate comparison matrixを明示する。
+- minor patchやconfig変更だけでAI generation numberを自動更新しない。
 
 ## 5. Current state
 
 ```text
 baselineFrozen = false
 baselineId = null
+generationLineage = AI-GEN2
 candidateImplementationAuthorized = false
+AI-GEN3 promotionAuthorized = false
 ```

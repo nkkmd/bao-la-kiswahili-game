@@ -8,6 +8,7 @@ const ROOT = path.resolve(__dirname, "..");
 const read = (rel) => fs.readFileSync(path.join(ROOT, rel), "utf8");
 
 const index = read("doc/AI_ENGINEERING_INDEX.md");
+const naming = read("doc/ai-engineering/AI_GENERATION_NAMING.md");
 const readme = read("doc/ai-engineering/public-ai-improvement-program-1/README.md");
 const status = read("doc/ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md");
 const audit = read("doc/ai-engineering/public-ai-improvement-program-1/GENERATION_1_EVIDENCE_AUDIT.md");
@@ -16,6 +17,7 @@ const bench = read("doc/ai-engineering/public-ai-improvement-program-1/BENCHMARK
 const candidates = read("doc/ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md");
 const decisions = read("doc/ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md");
 const releases = read("doc/ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md");
+const namingDecision = read("doc/engineering-program-decisions/2026-08-26-ai-generation-naming-convention.md");
 
 for (const text of [index, readme, status, audit, baseline, bench, candidates, decisions, releases]) {
   assert.ok(text.includes("PBAI-P1"), "PBAI-P1 marker missing");
@@ -34,6 +36,19 @@ assert.ok(candidates.includes("NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION"));
 assert.ok(decisions.includes("No unvalidated win-probability semantics"));
 assert.ok(decisions.includes("RAW identity remains authoritative"));
 assert.ok(releases.includes("NO PBAI-P1 PUBLIC RELEASE YET"));
+
+for (const text of [index, naming, readme, status, baseline, namingDecision]) {
+  assert.ok(text.includes("AI-GEN2"), "AI-GEN2 naming marker missing");
+  assert.ok(text.includes("AI-GEN3"), "AI-GEN3 naming marker missing");
+}
+assert.ok(naming.includes("AI-GEN1"));
+assert.ok(naming.includes("`bao-v2`という既存experimental evaluation profile名は`AI-GEN2`を意味しない"));
+assert.ok(naming.includes("AI-GEN3 promotion before public adoption = prohibited"));
+assert.ok(naming.includes("Research Generation 2"));
+assert.ok(status.includes("AI-GEN3 promotion = NOT-AUTHORIZED"));
+assert.ok(baseline.includes("generationLineage = AI-GEN2"));
+assert.ok(baseline.includes("AI-GEN3 promotionAuthorized = false"));
+assert.ok(namingDecision.includes("AI-GEN3 promotion authorized now = false"));
 
 const forbidden = [
   "Generation-2 research outcomes are included",

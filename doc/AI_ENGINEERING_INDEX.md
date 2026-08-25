@@ -4,6 +4,21 @@
 
 研究成果の科学的正本は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)および[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)を参照する。engineering trackは研究とは独立して運用し、AI実装・benchmark・deploymentの結果によって既存Studyのformal decisionを変更しない。
 
+## AI generation naming
+
+AI世代、evaluation/search profile、engineering candidate、research generationは別namespaceとして扱う。
+
+- canonical AI lineage: `AI-GEN1`, `AI-GEN2`, `AI-GEN3`, ...
+- current public lineage at PBAI-P1 establishment: **`AI-GEN2`**
+- next adopted public lineage reserved name: **`AI-GEN3`**
+- candidate IDs: `PBAI-Cxxx`; public採用前に`AI-GEN3`へpromotionしない
+- `legacy` / `bao` / `bao-v2`等はprofile名でありAI世代名ではない
+- Research Generation 1 / 2はresearch namespaceであり、AI generation numberとは独立
+
+正本: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
+
+Program-level naming decision: [`engineering-program-decisions/2026-08-26-ai-generation-naming-convention.md`](engineering-program-decisions/2026-08-26-ai-generation-naming-convention.md)
+
 ## Active program
 
 ### Public Bao AI Improvement Program 1 (`PBAI-P1`)

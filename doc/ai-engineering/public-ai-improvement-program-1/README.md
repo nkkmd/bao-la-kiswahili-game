@@ -11,6 +11,23 @@
 
 このProgramは研究ではない。研究成果を実装へ利用する場合も、AIが強くなった・弱くなったというengineering outcomeによって元研究のformal decisionを変更しない。
 
+## 1.1 AI generation naming
+
+AI世代名の正本は[`../AI_GENERATION_NAMING.md`](../AI_GENERATION_NAMING.md)とする。
+
+PBAI-P1開始時点では次を固定する。
+
+```text
+current public AI lineage = AI-GEN2
+next adopted public lineage reserved name = AI-GEN3
+candidate IDs = PBAI-Cxxx
+AI-GEN3 promotion before formal public adoption = prohibited
+```
+
+`legacy` / `bao` / `bao-v2`等はevaluation/search profile identifierであり、AI generation numberではない。特に`bao-v2`は`AI-GEN2`の別名ではない。
+
+PBAI candidateがdevelopment/validation benchmarkを通過しただけでは`AI-GEN3`と呼ばない。frozen release gateとnon-regression gateを通過し、explicit `ADOPT` decisionを得てpublic defaultとして正式採用された場合にのみ`AI-GEN3`へpromotionする。
+
 ## 2. Evidence cutoff
 
 PBAI-P1のscientific inputは、program-start repository anchorまでに完了・closureされた**Generation-1 research results**に限定する。
@@ -65,6 +82,7 @@ PBAI-H  Staged public deployment / keep-or-rollback decision
 8. candidate開発でrelease holdout seed/resultを見ない。
 9. rule correctness、crash、timeout、major tactical regressionを棋力向上で相殺しない。
 10. Generation-2 researchをPBAI-P1へ途中投入しない。
+11. candidate段階で`AI-GEN3`へpromotionしない。
 
 ## 6. Existing engineering assets
 
