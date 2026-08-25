@@ -65,5 +65,9 @@
     "platform": "linux",
     "arch": "x64"
   },
-  "resultHash": "4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08"
+  "resultHash": "4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08",
+  "resultHashScope": "canonical workflow artifact stage1-result object before resultHash was appended; not a hash of this post-closure augmented repository JSON payload",
+  "artifactProvenanceRecord": "STAGE_1_ARTIFACT_PROVENANCE.json",
+  "repositoryRecordAugmentedAfterCanonicalExecution": true,
+  "scientificOutcomeChangedByRepositoryAugmentation": false
 }
