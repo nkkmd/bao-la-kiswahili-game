@@ -10,16 +10,18 @@
   "stage2GenerationAuthorized": false,
   "reason": "Execution-only parallelization after the authorized serial workflow showed unexpectedly long orchestration runtime. No Stage 1 scientific result artifact existed and no candidate/effect/promotion outcome was observed at the amendment freeze point.",
   "freezePoint": {
-    "serialWorkflowRunId": 32816467225,
-    "serialWorkflowHeadSha": "64802acbec0f0239fa76f137169321f9598bc0c4",
-    "serialProductionJobId": 97705709875,
+    "latestPreAmendmentSerialWorkflowRunId": 32819436295,
+    "latestPreAmendmentSerialWorkflowHeadSha": "1e9350317a058a1b6a431a8803526ac352861be3",
+    "latestPreAmendmentSerialProductionJobId": 97714353910,
     "serialStatusAtFreeze": "in_progress-production",
     "workflowArtifactCountAtFreeze": 0,
+    "verifiedPostCancellationArtifactCount": 0,
     "stage1ResultArtifactObserved": false,
     "candidateCountObserved": false,
     "effectEstimateObserved": false,
     "promotionOutcomeObserved": false,
-    "parallelPreparationHeadBeforeAmendment": "1e9350317a058a1b6a431a8803526ac352861be3"
+    "parallelPreparationHeadBeforeAmendment": "1e9350317a058a1b6a431a8803526ac352861be3",
+    "earlierAuthorizedSerialRunAlsoObservedWithoutResult": 32816467225
   },
   "scientificContract": {
     "specSha256": "26a7daea8588a460e19ae8e77485c50a092d714bfb3243608b5b64a95fa3fe22",
