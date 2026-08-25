@@ -1,0 +1,88 @@
+from pathlib import Path
+
+# Root README
+p = Path('README.md')
+s = p.read_text()
+old = '- [`doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md): Practical Comeback / Error-Inducing Move Study 1（`PCEM-STUDY1`）。2026-08-25研究開始、Stage 0 technical-only未実行、scientific result未生成'
+new = '- [`doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](doc/practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md): Practical Comeback / Error-Inducing Move Study 1（`PCEM-STUDY1`）。Study 1完了、Stage 0 `TECHNICAL-PASS`、Stage 1 `EXPLORATORY-ONLY`、55 candidate audits / promoted candidates 0、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`'
+if old in s:
+    s = s.replace(old, new, 1)
+elif new not in s:
+    raise SystemExit('README PCEM anchor not found')
+p.write_text(s)
+
+# RESEARCH_INDEX
+p = Path('doc/RESEARCH_INDEX.md')
+s = p.read_text()
+heading = '### 16. Practical Comeback / Error-Inducing Move — Study 1'
+section = '''### 16. Practical Comeback / Error-Inducing Move — Study 1
+
+**研究題目:** Baoにおける逆転可能性と勝負手の定量化 — opponent-error dependence, reply difficulty, and practical comeback potential の分離・検証  
+**状態:** **Study 1 complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**  
+**作業branch:** `research/practical-comeback-error-inducing-moves`
+
+このprospective independent studyは、reference-policy上のmove qualityと、frozen imperfect-opponent policy下のbounded-horizon empirical comebackを分離し、reply-defense concentration、first-reply reference-error dependence、move optimality gapをmachine-operationalに測定した。
+
+Stage 0は`TECHNICAL-PASS`。Stage 1ではfresh 3,072 gamesから300 disadvantaged roots（Namua/Mtaji 150/150）を選択し、1,065 exact root-move interventionsと18,105 continuation rowsを測定した。productionとindependent verifierはsource generation、RAW identity、selection、measurement、discoveryを再構築して一致した。
+
+```text
+candidateAuditCount = 55
+candidatesPassingPromotionGates = 0
+promotedCandidateCount = 0
+scientificLabel = EXPLORATORY-ONLY
+```
+
+55 candidate definitionsは全て、少なくともfrozen promotion conjunctionを満たさなかった。特に55/55がminimum unique-root / trajectory / opening-prefix supportと、error-condition / defense-condition root supportを満たさなかった。near-miss promotion、threshold relaxation、favorable subgroup rescueは行っていない。
+
+Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせず、reserved seeds `23300001..23306144`は未消費である。
+
+**最初に読む:**
+
+- [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md`](practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md) — Study 1科学的最終統合
+- [`practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json`](practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json) — canonical compact Stage 1 result
+- [`practical-comeback-error-inducing-moves/results/STAGE_1_INDEPENDENT_VERIFICATION.json`](practical-comeback-error-inducing-moves/results/STAGE_1_INDEPENDENT_VERIFICATION.json) — independent reconstruction result
+- [`practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md`](practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md) — workflow / artifact / hash / verifier索引
+- [`practical-comeback-error-inducing-moves/CURRENT_STATUS.md`](practical-comeback-error-inducing-moves/CURRENT_STATUS.md) — terminal stateとclaim boundary
+
+**Boundary:** 本Studyはobjective superiority、game-theoretic winning move、true Bao winning probability、human difficulty/error inducement、expert/traditional winning-try recognitionを示さない。結果はfrozen population、D3/D2 reference semantics、`P_MEDIUM_D1_TOP3`、96-ply endpoint、candidate grammar、promotion rulesに限定される。
+
+---
+
+'''
+if heading not in s:
+    anchor = '## 将来研究'
+    idx = s.find(anchor)
+    if idx < 0:
+        raise SystemExit('RESEARCH_INDEX future-research anchor not found')
+    s = s[:idx] + section + s[idx:]
+p.write_text(s)
+
+# FUTURE_RESEARCH_AGENDA
+p = Path('doc/FUTURE_RESEARCH_AGENDA.md')
+s = p.read_text()
+if 'Version: 1.14.0' in s:
+    s = s.replace('Version: 1.14.0', 'Version: 1.15.0', 1)
+elif 'Version: 1.15.0' not in s:
+    raise SystemExit('FUTURE_RESEARCH_AGENDA version anchor not found')
+paragraph_marker = 'Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。'
+paragraph = '''Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。RAW-ONLY identityを維持し、fresh 3,072-game Stage 1 corpusから300 disadvantaged roots（Namua/Mtaji 150/150）、1,065 exact root-move interventions、18,105 continuation rowsを測定し、independent verifierがsource generation、selection、measurement、discoveryを再構築して一致した。frozen `PCEM-T1..T8` grammarから55 candidate auditsを得たが、promotion gateを全て通過したcandidateは0だったため、Stage 1は`EXPLORATORY-ONLY`で閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`とした。reserved Stage 2 seeds `23300001..23306144`は未消費である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup、candidate grammar expansion、opponent-policy substitutionによる救済は行わない。
+
+'''
+if paragraph_marker not in s:
+    anchor = '## 2. 既存研究との境界'
+    idx = s.find(anchor)
+    if idx < 0:
+        raise SystemExit('FUTURE_RESEARCH_AGENDA section-2 anchor not found')
+    s = s[:idx] + paragraph + s[idx:]
+bullet_marker = '- Practical Comeback / Error-Inducing Move Study 1 — [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`]'
+bullet = '- Practical Comeback / Error-Inducing Move Study 1 — [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)（Study complete / Stage 1 `EXPLORATORY-ONLY` / 55 candidate audits / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）\n'
+if bullet_marker not in s:
+    state_space_bullet = '- State Space / Game Tree Complexity Study 1 — [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)（Study complete / `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` / standard-root depth 8で24,848 raw states / 30,941 game-tree node occurrences / RAW-ONLY）\n'
+    if state_space_bullet not in s:
+        raise SystemExit('FUTURE_RESEARCH_AGENDA state-space bullet anchor not found')
+    s = s.replace(state_space_bullet, state_space_bullet + bullet, 1)
+p.write_text(s)
