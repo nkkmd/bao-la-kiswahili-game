@@ -1,56 +1,37 @@
-name: PCEM Stage 1 authorization material
+name: PCEM Stage 1 authorization material (closed)
 
 on:
   pull_request:
+    branches: [main]
     paths:
-      - ".github/workflows/pcem-stage1-authorization-material.yml"
-  workflow_dispatch:
+      - '.github/workflows/pcem-stage1-authorization-material.yml'
+      - 'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json'
+      - 'doc/practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json'
+      - 'test/practical-comeback-closure-consistency.test.js'
 
 permissions:
   contents: read
 
 jobs:
-  materialize:
+  closure-guard:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
-      - name: Materialize exact pre-authorization hashes
-        shell: bash
+          node-version: '20'
+      - name: Verify canonical authorization material is frozen
         run: |
-          node <<'NODE' > "${{ runner.temp }}/authorization-material.json"
-          const fs = require('node:fs');
-          const crypto = require('node:crypto');
-          const cp = require('node:child_process');
-          const files = [
-            'public/engine.js',
-            'public/ai.js',
-            'public/ai-weights.js',
-            'tools/experiments/lib/ssgtc-representation-production.js',
-            'tools/experiments/lib/practical-comeback-stage0-production.js',
-            'tools/experiments/lib/practical-comeback-stage1-corpus.js',
-            'tools/experiments/lib/practical-comeback-stage1-measurement.js',
-            'tools/experiments/lib/practical-comeback-stage1-discovery.js',
-            'tools/experiments/validate-pcem-stage1-spec.js',
-            'tools/experiments/run-pcem-stage1-exploratory.js',
-            'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_SPEC.json',
-            'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_FEATURE_DEFINITIONS.json'
-          ];
-          const sha = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
-          const sourceFileSha256 = Object.fromEntries(files.map((p) => [p, sha(p)]));
-          const output = {
-            schemaVersion: 1,
-            headCommit: cp.execFileSync('git', ['rev-parse','HEAD'], {encoding:'utf8'}).trim(),
-            specSha256: sha('doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_SPEC.json'),
-            featureDefinitionsSha256: sha('doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_FEATURE_DEFINITIONS.json'),
-            sourceFileSha256
-          };
-          process.stdout.write(JSON.stringify(output, null, 2) + '\n');
+          node - <<'NODE'
+          const a = require('./doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json');
+          if (a.hashMaterialization.workflowRunId !== 32814274403) throw new Error('unexpected materialization run');
+          if (a.hashMaterialization.artifactId !== 9550850177) throw new Error('unexpected materialization artifact');
+          if (a.hashMaterialization.artifactDigest !== 'sha256:86d78ce3a88e65361aeae17bc0bae7d8d2f9b8c887a0e54b184f571f8d5ff270') throw new Error('unexpected materialization digest');
+          if (a.specSha256 !== '26a7daea8588a460e19ae8e77485c50a092d714bfb3243608b5b64a95fa3fe22') throw new Error('unexpected frozen spec hash');
+          if (a.featureDefinitionsSha256 !== '3f1e622c86fca8d4153baca815000234cd1672ad5a6a259aaae4ffea4a6e84d6') throw new Error('unexpected frozen feature hash');
+          if (a.stage2GenerationAuthorized !== false) throw new Error('Stage 2 unexpectedly authorized');
+          console.log('Authorization material is canonically frozen; new post-closure materialization artifacts are disabled.');
           NODE
-          cat "${{ runner.temp }}/authorization-material.json"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pcem-stage1-authorization-material
-          path: ${{ runner.temp }}/authorization-material.json
