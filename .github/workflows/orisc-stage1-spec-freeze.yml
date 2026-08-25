@@ -1,62 +1,17 @@
-name: ORISC Stage 1 spec freeze validation
+name: ORISC Stage 1 spec freeze validation — closed study
 
 on:
-  push:
-    branches:
-      - research/oracle-representation-integrity-symmetry-confirmation
-    paths:
-      - "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_1_FORMAL_SPEC.json"
-      - ".github/workflows/orisc-stage1-spec-freeze.yml"
-  pull_request:
-    paths:
-      - "doc/oracle-representation-integrity-symmetry-confirmation/preregistration/STAGE_1_FORMAL_SPEC.json"
-      - ".github/workflows/orisc-stage1-spec-freeze.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  validate-freeze:
+  closed-study:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Validate frozen source identities and candidate contract
+      - name: Closed-study notice
         run: |
-          node - <<'NODE'
-          const fs = require('node:fs');
-          const V = require('./tools/experiments/validate-orisc-stage1-spec.js');
-          const c = V.loadSpec();
-          const out = {
-            schemaVersion: 1,
-            studyId: c.spec.studyId,
-            stageId: c.spec.stageId,
-            classification: 'SPEC-FREEZE-VALIDATION-NO-SCIENTIFIC-OUTCOME',
-            scientificOutcomeGenerated: false,
-            authorizationCreated: false,
-            specSha256: c.specSha256,
-            stage2CandidateContractSha256: c.candidateContractSha256,
-            sourceChecksPassed: Object.values(c.sourceChecks).every((row) => row.passed),
-            sourceChecks: c.sourceChecks
-          };
-          if (!out.sourceChecksPassed) throw new Error('Frozen source identity validation failed');
-          fs.writeFileSync('/tmp/orisc-stage1-spec-freeze.json', JSON.stringify(out, null, 2) + '\n');
-          console.log(JSON.stringify({
-            stageId: out.stageId,
-            classification: out.classification,
-            scientificOutcomeGenerated: out.scientificOutcomeGenerated,
-            specSha256: out.specSha256,
-            stage2CandidateContractSha256: out.stage2CandidateContractSha256,
-            sourceChecksPassed: out.sourceChecksPassed
-          }, null, 2));
-          NODE
-      - uses: actions/upload-artifact@v4
-        with:
-          name: orisc-stage1-spec-freeze
-          path: /tmp/orisc-stage1-spec-freeze.json
-          if-no-files-found: error
-          retention-days: 30
+          echo "ORISC-STUDY1 is completed."
+          echo "Stage 1 spec refreeze/validation is no longer authorized within this study."
+          echo "The final frozen spec and validation provenance are recorded in doc/oracle-representation-integrity-symmetry-confirmation/REPRODUCIBILITY_INDEX.md."
