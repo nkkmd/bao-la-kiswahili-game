@@ -493,6 +493,51 @@ Conditional Stage 2 candidate contractはAxis A outcome前にfreeze済みだっ�
 
 ---
 
+### 15. State Space / Game Tree Complexity — Study 1
+
+**研究題目:** Baoにおける状態空間とゲーム木複雑度の定量化 — authoritative raw-state identity に基づく reachable-state growth, transposition structure, branching complexity, and bounded game-tree expansion  
+**状態:** **COMPLETED / formal decision `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`**  
+**作業branch:** `research/state-space-game-tree-complexity`
+
+このprospective independent machine-only studyは、ORISC-STUDY1のdownstream contractに従い、未検証symmetry reduction / canonicalizationを一切使用せず、authoritative raw-state identityだけでreachable-state graphとgame-tree occurrenceを定量化した。
+
+Formal Stage 2ではstandard initial stateからraw-state depth 8まで、parent depth 0..7をcomplete expansionするbounded graphと、depth 8までのnon-deduplicated game treeをoutcome前にfreezeし、fresh evidenceで全域を列挙した。Productionとseparate-process independent verifierは全frozen domainを別々に再列挙して完全一致した。
+
+```text
+reachable raw states through depth 8 = 24,848
+graph transition occurrences (parent depths 0..7) = 25,648
+duplicate encounters = 801
+multi-parent states = 763
+
+game-tree node occurrences through depth 8 = 30,941
+game-tree edge occurrences through depth 8 = 30,940
+raw-state / tree-node ratio = 0.803076823632074
+```
+
+Canonical identities:
+
+```text
+stateSetSha256 = 8215be574a04177710b479faffb70084920d79fd2449c56802d0584853c05ca9
+transitionSetSha256 = f0e57235a6611b1b4f265b51807a1943420f130d87e16e2bc367a0e2347f892e
+treeOccurrenceSetSha256 = 194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6a32edc3f08
+```
+
+**最初に読む:**
+
+- [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md) — 初見向け成果概要
+
+**詳細・正本:**
+
+- [`state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md`](state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md) — 科学的・技術的最終統合
+- [`state-space-game-tree-complexity/results/STAGE_2_FORMAL_RESULT.json`](state-space-game-tree-complexity/results/STAGE_2_FORMAL_RESULT.json) — canonical formal result
+- [`state-space-game-tree-complexity/REPRODUCIBILITY_INDEX.md`](state-space-game-tree-complexity/REPRODUCIBILITY_INDEX.md) — workflow / artifact / hash / verifier索引
+- [`state-space-game-tree-complexity/CURRENT_STATUS.md`](state-space-game-tree-complexity/CURRENT_STATUS.md) — closure状態とclaim boundary
+- [`state-space-game-tree-complexity/DECISION_REGISTER.md`](state-space-game-tree-complexity/DECISION_REGISTER.md) — prospective decisions / no-rescue / closure
+
+**Boundary:** exact claimはstandard-rootのfrozen depth-8 RAW-ONLY domainだけに限定される。`Bao state space = 24,848`、full game-tree exact count、depth-8 growthのfull-game extrapolation、global transposition ratio、symmetry-reduced count、validated canonicalization、full-game estimatorは主張しない。より深い列挙・推定・symmetry reductionは新しいprospective study/versioned protocolを必要とする。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

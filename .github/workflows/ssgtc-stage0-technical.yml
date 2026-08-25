@@ -1,0 +1,45 @@
+name: SSGTC Stage 0 technical validation
+
+on:
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "tools/experiments/run-ssgtc-stage0-technical.js"
+      - "tools/experiments/verify-ssgtc-stage0-independent.js"
+      - "tools/experiments/lib/ssgtc-representation-*.js"
+      - "doc/state-space-game-tree-complexity/**"
+      - ".github/workflows/ssgtc-stage0-technical.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage0-technical:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run frozen Stage 0 production validation
+        env:
+          SSGTC_STAGE0_OUT: ${{ runner.temp }}/ssgtc-stage0-technical-v1
+        run: node tools/experiments/run-ssgtc-stage0-technical.js
+
+      - name: Run separate-process independent artifact verification
+        env:
+          SSGTC_STAGE0_OUT: ${{ runner.temp }}/ssgtc-stage0-technical-v1
+        run: node tools/experiments/verify-ssgtc-stage0-independent.js
+
+      - name: Upload technical artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssgtc-stage0-technical-v1
+          path: ${{ runner.temp }}/ssgtc-stage0-technical-v1
+          if-no-files-found: warn

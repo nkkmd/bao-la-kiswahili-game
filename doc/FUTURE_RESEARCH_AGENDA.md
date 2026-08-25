@@ -1,6 +1,6 @@
 # Bao 今後の研究課題
 
-Version: 1.13.0  
+Version: 1.14.0  
 Status: Active  
 作成日: 2026-07-21  
 更新日: 2026-08-25
@@ -31,7 +31,9 @@ Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study
 
 完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。ORISC-STUDY1についてもrepository rowの後付け修正によるAxis A再判定や、同Study内でのStage 2 authorization追加による救済を行わない。
 
-2026-08-25時点で、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。machine-only sequenceでは限定終盤、Symmetry Study 1、ORISC-STUDY1まで完了した。ORISCはrepository-facing oracleをdownstream transform-validation anchorとして確認できず、非自明symmetry stageも実行しなかったため、canonicalization / symmetry-reduced state countingは未承認のままである。したがって次のState Space / Game Tree Complexity Studyは**authoritative raw state identityのみを使用するRAW-ONLY研究として進行可能**であり、SIPまたはORISCの未検証transformをreductionへ使用してはならない。
+2026-08-25時点で、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。machine-only sequenceでは限定終盤、Symmetry Study 1、ORISC-STUDY1に続き、State Space / Game Tree Complexity Study 1も完了した。
+
+State Space / Game Tree Complexity Study 1は、ORISCのRAW-ONLY downstream contractを維持してstandard initial stateからdepth 8までのbounded reachable raw-state graphとgame treeをprospectively freezeし、production / independent双方の全域再列挙一致により`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で閉じた。exact resultは24,848 raw states / 25,648 graph transition occurrences / 30,941 game-tree node occurrences / 30,940 tree edgesである。ただしこれはfrozen depth-8 domainだけのexact claimであり、Bao全体のstate-space sizeやfull game-tree complexityを解いたことを意味しない。canonicalization / symmetry-reduced state countingは引き続き未承認で、より深い列挙・full-game estimation・symmetry reductionは新しいprospective study/versioned protocolとして扱う。
 
 ## 2. 既存研究との境界
 
@@ -56,6 +58,7 @@ Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study
 - Restricted Endgame / Winning Regions Study 1 — [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md)（Study 1 complete / `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` / 8 states / 7 edges）
 - Symmetry / Isomorphic Positions Study 1 — [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)（Study 1 complete / 0 validated / 0 rejected / 5 `NON-ESTIMABLE`; invalidated v1 fresh bounded-local mismatch 0、corrected v2未実行）
 - Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md)（Study complete / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）
+- State Space / Game Tree Complexity Study 1 — [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)（Study complete / `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` / standard-root depth 8で24,848 raw states / 30,941 game-tree node occurrences / RAW-ONLY）
 
 今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
 
@@ -519,30 +522,45 @@ State Space / Game Tree Complexity Studyはauthoritative raw state identityで�
 
 ---
 
-### 4.12 状態空間とゲーム木複雑度
+### 4.12 状態空間とゲーム木複雑度 — Study 1完了
 
-#### 現在の実行状態
+#### 現在の状態
 
-**次のmachine-only研究候補 / RAW-ONLY。** ORISC-STUDY1というprogrammatic prerequisiteは完了したが、canonicalization / symmetry-reduced state countingは承認されなかった。したがってState Space / Game Tree Complexity Studyはauthoritative raw state identityだけを用いる設計なら着手可能であり、現時点の推奨次研究である。
+**State Space / Game Tree Complexity Study 1 complete / formal decision `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`.**
 
-初回Studyではsymmetry-reduced canonical state countをformal primary targetに含めず、SIP/ORISCの未検証transformをstate reductionへ使用しない。将来symmetry-reduced countを扱う場合は、別のnew prospective studyでrepresentation integrityとtransform validationを事前に確立する。
+- 初見向け概要: [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md`](state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md)
+- Formal result: [`state-space-game-tree-complexity/results/STAGE_2_FORMAL_RESULT.json`](state-space-game-tree-complexity/results/STAGE_2_FORMAL_RESULT.json)
+- Reproducibility: [`state-space-game-tree-complexity/REPRODUCIBILITY_INDEX.md`](state-space-game-tree-complexity/REPRODUCIBILITY_INDEX.md)
 
-#### 中心課題
+Study 1はORISC-STUDY1のdownstream representation firewallを維持し、`pits,reserve,houseOwned,player,phase,winner,pending`のraw identityのみを使用した。`turn/reason`はidentityから除外し、missing `pending`はengine entry前にhard reject、全accepted stateで64-seed conservationを要求した。SIP/ORISC transform、seat swap、reflection、canonicalization、symmetry quotientは使用していない。
 
-Baoの計算論的規模を推定し、他の盤上ゲームやマンカラ系ゲームと比較可能な基礎値を得る。
+Formal Stage 2はfresh evidenceでstandard rootからparent depth 0..7を完全展開し、raw-state depth 8までとnon-deduplicated tree depth 8までをexact enumerationした。
 
-#### 主な対象
+```text
+reachable raw states through depth 8 = 24,848
+graph transition occurrences parent depth 0..7 = 25,648
+duplicate encounters = 801
+multi-parent states = 763
 
-1. 到達可能な合法局面数
-2. 可能な対局系列数
-3. phase別の実効分岐係数
-4. 平均対局長と分布
-5. 強制手がゲーム木を圧縮する割合
-6. 対称性を除いた局面数（**現時点では未承認transformを用いたformal primary estimateにはしない**）
+game-tree node occurrences through depth 8 = 30,941
+game-tree edge occurrences through depth 8 = 30,940
+raw-state / tree-node ratio = 0.803076823632074
+```
 
-#### 期待成果
+Independent verifierはproduction serializer/formal runner/Stage 1 artifact codeをimportせず、frozen graph/tree全域を再列挙し、countとset hashを完全一致させた。
 
-Baoの探索困難性に対する定量的説明、研究用基準値、ゲームAI方式選択の理論的根拠。
+```text
+stateSetSha256 = 8215be574a04177710b479faffb70084920d79fd2449c56802d0584853c05ca9
+transitionSetSha256 = f0e57235a6611b1b4f265b51807a1943420f130d87e16e2bc367a0e2347f892e
+treeOccurrenceSetSha256 = 194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6a32edc3f08
+```
+
+#### Boundary / future use
+
+このexact resultはfrozen standard-root depth-8 RAW-ONLY domainだけに限定する。`Bao state space = 24,848`とは主張しない。full Bao state-space / full game-tree exact count、global growth law、global transposition ratio、full-game estimator、symmetry-reduced count、validated canonicalizationは未解決である。
+
+Stage 1のpartial depth-9 rowsをestimateへ読み替えたり、結果後にcapを上げたりしない。より深いRAW-only exact enumeration、full-game estimation、またはsymmetry-reduced countingを検討する場合は、現Studyを延長・救済せず、新しいprospective study/versioned protocolとしてresource rule・estimatorまたはtransform authorizationを事前固定する。
 
 ## 5. 推奨する研究プログラム
 
@@ -578,10 +596,10 @@ Critical Positions / Outcome Branching Study 1によって、全exact legal root
 1. **[完了] 限定終盤と必勝圏 — Study 1 (`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`)**
 2. **[完了] 対称性と同型局面 — Study 1（5/5 `NON-ESTIMABLE`）**
 3. **[完了] Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1（Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）**
-4. **[次研究候補 / RAW-ONLY] 状態空間とゲーム木複雑度**
+4. **[完了] 状態空間とゲーム木複雑度 — Study 1 (`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`)**
 5. **[後続候補] 逆転可能性と勝負手**
 
-限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。**現在のmachine-only programmatic next stepはraw-state State Space / Game Tree Complexity Studyである。**
+限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。State Space / Game Tree Complexity Study 1もRAW-ONLYで完了し、frozen depth-8 domainのbounded exact countを確立した。次のmachine-only研究は、この結果をfull-game claimへ救済せず、より深いRAW-only enumeration、prospectively specified estimation、または独立にvalidationされた将来transformを用いる新研究のいずれかとして設計する。
 
 ## 6. 特に優先する三本柱
 
