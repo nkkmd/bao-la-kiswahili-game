@@ -1,0 +1,42 @@
+name: SSGTC program documentation sync
+
+on:
+  push:
+    branches:
+      - research/state-space-game-tree-complexity
+    paths:
+      - "tools/experiments/sync-ssgtc-program-docs.js"
+      - ".github/workflows/ssgtc-program-doc-sync.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-program-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout study branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/state-space-game-tree-complexity
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Synchronize program-level SSGTC documentation
+        run: node tools/experiments/sync-ssgtc-program-docs.js
+
+      - name: Commit synchronized documentation
+        run: |
+          if git diff --quiet -- doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md; then
+            echo "No program documentation changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
+          git commit -m "docs(ssgtc): synchronize completed study program state"
+          git push origin HEAD:research/state-space-game-tree-complexity
