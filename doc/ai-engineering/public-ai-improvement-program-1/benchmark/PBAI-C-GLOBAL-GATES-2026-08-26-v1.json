@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "phase": "PBAI-C",
+  "gateSpecId": "PBAI-C-GLOBAL-GATES-2026-08-26-v1",
+  "status": "FROZEN-BEFORE-CANDIDATE-IMPLEMENTATION",
+  "baselineId": "AI-GEN2-BASELINE-2026-08-26-v1",
+  "baselineSourceCommit": "f4ae3b11901180cbe417b3e643e2b357d8045d2d",
+  "gateFreezeSourceMain": "0887551fd2e67c6e90c5171465b3354f9042adc4",
+  "candidateImplementationsObservedBeforeFreeze": 0,
+  "candidateOutcomesObservedBeforeFreeze": 0,
+  "researchGeneration2EvidenceIncluded": false,
+  "principles": {
+    "singleCandidateAblation": true,
+    "hardGatesCannotBeOffset": true,
+    "releaseHoldoutMayTuneCandidate": false,
+    "scientificConfirmationFromEngineeringSuccess": false,
+    "rawIdentityAuthoritative": true,
+    "unvalidatedSymmetryAllowed": false
+  },
+  "fixedDepthStrength": {
+    "level": "hard",
+    "timeLimitMs": "Infinity",
+    "maxDepth": 3,
+    "maxTurns": 160,
+    "pairing": "two games share one seeded opening; candidate/baseline swap South/North",
+    "score": {
+      "win": 1.0,
+      "drawOrAdministrativeUnresolved": 0.5,
+      "loss": 0.0,
+      "pairScore": "candidate game points across both seat-swapped games divided by 2"
+    },
+    "openingStrata": {
+      "namuaCore": { "openingPhase": "namua", "openingPlies": 8 },
+      "mtajiCore": { "openingPhase": "mtaji", "openingPlies": 4 },
+      "namuaEarlyChallenge": { "openingPhase": "namua", "openingPlies": 4 },
+      "namuaLateChallenge": { "openingPhase": "namua", "openingPlies": 12 },
+      "mtajiEntryChallenge": { "openingPhase": "mtaji", "openingPlies": 0 },
+      "mtajiLaterChallenge": { "openingPhase": "mtaji", "openingPlies": 8 }
+    },
+    "seedBlocks": {
+      "development": {
+        "namuaCore": { "start": 31000001, "end": 31000128, "openingPairs": 128, "games": 256 },
+        "mtajiCore": { "start": 31001001, "end": 31001128, "openingPairs": 128, "games": 256 }
+      },
+      "validation": {
+        "namuaCore": { "start": 31100001, "end": 31100256, "openingPairs": 256, "games": 512 },
+        "mtajiCore": { "start": 31101001, "end": 31101256, "openingPairs": 256, "games": 512 },
+        "namuaEarlyChallenge": { "start": 31102001, "end": 31102064, "openingPairs": 64, "games": 128 },
+        "namuaLateChallenge": { "start": 31103001, "end": 31103064, "openingPairs": 64, "games": 128 },
+        "mtajiEntryChallenge": { "start": 31104001, "end": 31104064, "openingPairs": 64, "games": 128 },
+        "mtajiLaterChallenge": { "start": 31105001, "end": 31105064, "openingPairs": 64, "games": 128 }
+      },
+      "releaseHoldout": {
+        "namuaCore": { "start": 31200001, "end": 31200512, "openingPairs": 512, "games": 1024 },
+        "mtajiCore": { "start": 31201001, "end": 31201512, "openingPairs": 512, "games": 1024 },
+        "namuaEarlyChallenge": { "start": 31202001, "end": 31202128, "openingPairs": 128, "games": 256 },
+        "namuaLateChallenge": { "start": 31203001, "end": 31203128, "openingPairs": 128, "games": 256 },
+        "mtajiEntryChallenge": { "start": 31204001, "end": 31204128, "openingPairs": 128, "games": 256 },
+        "mtajiLaterChallenge": { "start": 31205001, "end": 31205128, "openingPairs": 128, "games": 256 }
+      }
+    },
+    "bootstrap": {
+      "unit": "openingPair",
+      "replicates": 20000,
+      "analysisSeed": 31999991,
+      "lowerConfidenceBound": "one-sided 95% percentile lower bound = 5th percentile of bootstrap mean pair score"
+    },
+    "globalGate": {
+      "validation": {
+        "coreObservedScoreMinimum": 0.50,
+        "coreOneSided95LowerBoundMinimum": 0.47,
+        "eachCorePhaseObservedScoreMinimum": 0.48,
+        "eachSeatObservedScoreMinimum": 0.47,
+        "eachChallengeStratumObservedScoreMinimum": 0.45
+      },
+      "releaseHoldout": {
+        "coreObservedScoreMinimum": 0.50,
+        "coreOneSided95LowerBoundMinimum": 0.47,
+        "eachCorePhaseObservedScoreMinimum": 0.48,
+        "eachSeatObservedScoreMinimum": 0.47,
+        "eachChallengeStratumObservedScoreMinimum": 0.45
+      },
+      "lockedValidationPlusHoldout": {
+        "coreObservedScoreMinimum": 0.50,
+        "coreOneSided95LowerBoundMinimum": 0.48,
+        "eachCorePhaseObservedScoreMinimum": 0.49,
+        "eachSeatObservedScoreMinimum": 0.48
+      }
+    }
+  },
+  "decisionQuality": {
+    "rootPopulation": {
+      "minimumLegalMoveCount": 2,
+      "targetDevelopment": 256,
+      "targetValidation": 512,
+      "targetReleaseHoldout": 1024,
+      "phaseBalance": "50% Namua / 50% Mtaji",
+      "uniqueRawStateRequired": true,
+      "uniqueHistoricalTrajectoryRequired": true,
+      "selection": "outcome/value/consequence-blind deterministic hash ranking within assigned phase; no replacement after outcome inspection"
+    },
+    "sourceSeedBlocks": {
+      "development": { "start": 31300001, "end": 31300512 },
+      "validation": { "start": 31400001, "end": 31401024 },
+      "releaseHoldout": { "start": 31500001, "end": 31502048 }
+    },
+    "reference": {
+      "source": "frozen AI-GEN2 baseline worktree/process",
+      "semantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+      "evaluationProfile": "bao",
+      "depth": 4,
+      "quiescenceDepth": 1,
+      "timeLimitMs": "Infinity",
+      "candidateCodeMayDefineReference": false
+    },
+    "candidateComparisonBudget": {
+      "level": "hard",
+      "maxDepth": 3,
+      "timeLimitMs": "Infinity"
+    },
+    "metrics": {
+      "topSetAgreement": "selected move belongs to frozen D4 reference top set",
+      "normalizedRankLoss": "(reference scoreRank - 1) / max(1, legalMoveCount - 1)",
+      "severeLoss": "selected move is unique worst under D4 reference OR selected move is root-loss-mate-domain while D4 best is not root-loss-mate-domain",
+      "catastrophicNewLoss": "candidate severe loss on a root where baseline is not severe and the candidate move is immediate terminal loss or root-loss-mate-domain while a non-loss reference move exists"
+    },
+    "gate": {
+      "validation": {
+        "catastrophicNewLossCountMaximum": 0,
+        "severeLossRateExcessOverBaselineMaximum": 0.01,
+        "topSetAgreementDeltaMinimum": -0.02,
+        "meanNormalizedRankLossDeltaMaximum": 0.02,
+        "eachPhaseSevereLossRateExcessMaximum": 0.02,
+        "eachPhaseTopSetAgreementDeltaMinimum": -0.03
+      },
+      "releaseHoldout": {
+        "catastrophicNewLossCountMaximum": 0,
+        "severeLossRateExcessOverBaselineMaximum": 0.01,
+        "topSetAgreementDeltaMinimum": -0.02,
+        "meanNormalizedRankLossDeltaMaximum": 0.02,
+        "eachPhaseSevereLossRateExcessMaximum": 0.02,
+        "eachPhaseTopSetAgreementDeltaMinimum": -0.03
+      },
+      "lockedValidationPlusHoldout": {
+        "catastrophicNewLossCountMaximum": 0,
+        "severeLossRateExcessOverBaselineMaximum": 0.005,
+        "topSetAgreementDeltaMinimum": -0.01,
+        "meanNormalizedRankLossDeltaMaximum": 0.01
+      }
+    }
+  },
+  "operationalQuality": {
+    "sourceSeedBlocks": {
+      "development": { "start": 31600001, "end": 31600256, "targetRoots": 128 },
+      "validation": { "start": 31700001, "end": 31700512, "targetRoots": 256 },
+      "releaseHoldout": { "start": 31800001, "end": 31801024, "targetRoots": 512 }
+    },
+    "rootBalance": "50% Namua / 50% Mtaji where support permits",
+    "comparison": "baseline and candidate run on the same roots and same host; AB/BA execution order alternates by root; record environment",
+    "standardHard": { "maxDepth": 8, "timeLimitMs": 500 },
+    "standardExpertSubset": {
+      "validationRoots": 64,
+      "releaseHoldoutRoots": 128,
+      "maxDepth": 12,
+      "timeLimitMs": 2000
+    },
+    "gate": {
+      "crashOrUnhandledExceptionCountMaximum": 0,
+      "illegalMoveCountMaximum": 0,
+      "invalidStateGenerationCountMaximum": 0,
+      "medianElapsedRatioCandidateOverBaselineMaximum": 1.05,
+      "p95ElapsedRatioCandidateOverBaselineMaximum": 1.10,
+      "medianCompletedDepthDeltaMinimum": -1,
+      "fractionRootsWithCompletedDepthDeficitAtLeast2Maximum": 0.05,
+      "timeoutRateIncreaseMaximum": 0.05,
+      "directWorkerDeterministicMismatchCountMaximum": 0,
+      "publicAddedStaticAssetBytesMaximum": 524288,
+      "persistentMemoryExceptionRule": "candidate adding persistent tables/caches must freeze an additional memory gate before development; no post-outcome exception"
+    }
+  },
+  "correctnessAndRegression": {
+    "hardGate": true,
+    "publicEngineSha256MustRemain": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "publicRuleEngineChangeWithinCandidate": "REJECT-AND-SEPARATE-RULES-WORK",
+    "existingTacticalSuiteFailureMaximum": 0,
+    "candidateSpecificRegressionFailureMaximum": 0,
+    "allRelevantTestFailuresMaximum": 0,
+    "unvalidatedSymmetryCanonicalizationAllowed": false,
+    "researchGeneration1RawIdentityViolationAllowed": false,
+    "scientificallyProhibitedInferenceInImplementationOrUIAllowed": false
+  },
+  "pwaReleaseSafety": {
+    "ifPrecachedPublicAssetChanges": {
+      "serviceWorkerCacheVersionMustChangeFromBaseline": true,
+      "baselineCacheVersion": "bao-la-kiswahili-v24",
+      "rollbackTargetMustBeRecorded": true
+    },
+    "releaseCandidateMustIncludeCacheChangeBeforeHoldout": true
+  },
+  "candidateSpecificGateFloor": {
+    "mustBeFrozenBeforeDevelopmentAuthorization": true,
+    "mustSpecify": [
+      "exact mechanism and feature flag",
+      "affected code surface",
+      "primary intended-benefit endpoint",
+      "minimum practical benefit",
+      "candidate-local development/validation/holdout seeds or fixtures",
+      "target and control strata",
+      "runtime/memory budget if mechanism can add cost",
+      "failure handling and rollback"
+    ],
+    "benefitRule": "candidate must pass at least one prospectively declared intended-benefit endpoint; global non-inferiority alone is insufficient for adoption unless candidate is prospectively classified as a correctness/semantics-only maintenance candidate",
+    "mayRelaxGlobalGate": false
+  },
+  "implementationIsolation": {
+    "candidateMustBeFeatureGated": true,
+    "featureDefaultBeforeAdoption": "off",
+    "featureOffMustReproduceFrozenBaselineBehavior": true,
+    "combinedCandidateRequiresNewId": true,
+    "componentAblationRequiredBeforeCombination": true
+  },
+  "releaseHoldout": {
+    "authorizedAtPBAI_C": false,
+    "authorizationCondition": "candidate code/config hash frozen after validation PASS and explicit PBAI-F holdout authorization",
+    "tuningAfterHoldoutInspectionAllowed": false,
+    "failureAction": "REJECT or HOLD; changing mechanism/threshold after holdout requires a new candidate/version and a newly frozen future holdout block",
+    "publicReleaseBeforeHoldoutPassAllowed": false
+  },
+  "releaseDecision": {
+    "allRequiredGlobalHardGatesMustPass": true,
+    "candidateSpecificBenefitGateMustPass": true,
+    "validationMustPass": true,
+    "releaseHoldoutMustPass": true,
+    "rollbackMustBeReady": true,
+    "strengthMayOffsetCorrectnessFailure": false,
+    "operationalImprovementMayOffsetDecisionFailure": false,
+    "decisionImprovementMayOffsetMajorRobustnessFailure": false,
+    "noAcceptableCandidateOutcome": "KEEP-AI-GEN2"
+  }
+}

@@ -6,42 +6,42 @@
 
 ## AI generation naming
 
-AI世代、evaluation/search profile、engineering candidate、research generationは別namespaceとして扱う。
-
 - canonical AI lineage: `AI-GEN1`, `AI-GEN2`, `AI-GEN3`, ...
 - current public lineage: **`AI-GEN2`**
-- PBAI-P1 exact frozen comparison target: **`AI-GEN2-BASELINE-2026-08-26-v1`**
-- next adopted public lineage reserved name: **`AI-GEN3`**
-- candidate IDs: `PBAI-Cxxx`; public採用前に`AI-GEN3`へpromotionしない
-- `legacy` / `bao` / `bao-v2`等はprofile名でありAI世代名ではない
-- `Research Generation 1` / `Research Generation 2`はresearch namespaceであり、AI generation numberとは独立
+- frozen PBAI-P1 exact comparator: **`AI-GEN2-BASELINE-2026-08-26-v1`**
+- next adopted public lineage reserved: **`AI-GEN3`**
+- candidate IDs: `PBAI-Cxxx`
+- pre-adoption assembly: `PBAI-P1-RCxx`
+- `legacy` / `bao` / `bao-v2` are profile identifiers, not AI generation names
+- `Research Generation 1` / `Research Generation 2` are a separate research namespace
 
-正本: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
+Naming source: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
 
-Program-level naming decision: [`engineering-program-decisions/2026-08-26-ai-generation-naming-convention.md`](engineering-program-decisions/2026-08-26-ai-generation-naming-convention.md)
-
-## Active program
-
-### Public Bao AI Improvement Program 1 (`PBAI-P1`)
+## Active program — `PBAI-P1`
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-**状態:** ESTABLISHED / **PBAI-A COMPLETE / PBAI-B COMPLETE** / PBAI-C numeric gate freeze next / public AI code unchanged  
-**scientific evidence cutoff:** completed Research Generation 1 evidence at anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Research Generation 2 outcomes:** excluded from PBAI-P1
+**状態:** **PBAI-A COMPLETE / PBAI-B COMPLETE / PBAI-C COMPLETE / PBAI-D NEXT**  
+**scientific evidence cutoff:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a` completed Research Generation 1 evidence  
+**Research Generation 2 outcomes:** excluded
 
-PBAI-A fixed a 14-Study Research Generation 1 evidence core and advanced `PBAI-C001..PBAI-C005` only to `EVIDENCE-AUDIT-READY`.
-
-PBAI-B froze the exact `AI-GEN2` public-source comparison target:
+### Completed controls
 
 ```text
-baselineId = AI-GEN2-BASELINE-2026-08-26-v1
-source main commit = f4ae3b11901180cbe417b3e643e2b357d8045d2d
-public endpoint = https://bao-la-kiswahili.cultivationdata.net/
+PBAI-A evidence audit
+  = 14-Study Research Generation 1 core frozen
+
+PBAI-B baseline
+  = AI-GEN2-BASELINE-2026-08-26-v1
+  = public-source commit f4ae3b11901180cbe417b3e643e2b357d8045d2d
+
+PBAI-C global gate spec
+  = PBAI-C-GLOBAL-GATES-2026-08-26-v1
+  = frozen before candidate implementation/outcome
 ```
 
-No candidate is authorized for implementation.
+No initial candidate is yet `AUTHORIZED-FOR-DEVELOPMENT`。
 
-入口:
+## Program documents
 
 - [`ai-engineering/public-ai-improvement-program-1/README.md`](ai-engineering/public-ai-improvement-program-1/README.md)
 - [`ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md)
@@ -49,6 +49,7 @@ No candidate is authorized for implementation.
 - [`ai-engineering/public-ai-improvement-program-1/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-1/BASELINE_SPEC.md)
 - [`ai-engineering/public-ai-improvement-program-1/baselines/AI-GEN2-BASELINE-2026-08-26-v1.json`](ai-engineering/public-ai-improvement-program-1/baselines/AI-GEN2-BASELINE-2026-08-26-v1.json)
 - [`ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md)
+- [`ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json)
 - [`ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md)
@@ -60,29 +61,34 @@ Program-level establishment decision:
 ## Current phase boundary
 
 ```text
-PBAI-A Research Generation 1 evidence audit = COMPLETE
-PBAI-B AI-GEN2 exact baseline = COMPLETE
-PBAI-C benchmark framework = FRAMEWORK-FROZEN
-PBAI-C numeric non-regression / release gates = NOT-FROZEN / NEXT
+PBAI-A = COMPLETE
+PBAI-B = COMPLETE
+PBAI-C global numeric gates = COMPLETE / FROZEN
+PBAI-C001..PBAI-C005 = EVIDENCE-AUDIT-READY
 AUTHORIZED-FOR-DEVELOPMENT = 0
 candidate implementations = 0
+release holdout execution = NOT-AUTHORIZED
 AI-GEN3 = RESERVED / NOT-AUTHORIZED
 ```
 
-Current `AI.stateKey` remains distinct from Research Generation 1 authoritative RAW identity because it omits `pending`; the exact baseline records this current runtime property but does not authorize it as a research-derived tablebase key.
+PBAI-C freezes global playing-strength, decision-quality, robustness, operational and correctness floors plus dev/validation/holdout seed blocks. Candidate-specific benefit thresholds must still be frozen in PBAI-D before any one candidate receives development authorization; those rules may add constraints but may not relax PBAI-C global gates。
+
+Current `AI.stateKey` remains distinct from Research Generation 1 authoritative RAW identity because it omits `pending`; it is not authorized as a research-derived exact-tablebase key。
 
 ## Separation from research
 
 ```text
 completed Research Generation 1
           ↓
-PBAI-P1 evidence audit + frozen AI-GEN2 baseline
+PBAI-A evidence audit
           ↓
-prospectively frozen engineering gates
+frozen AI-GEN2 baseline
           ↓
-engineering candidates / validation / release decision
+frozen pre-outcome engineering gates
+          ↓
+PBAI-D+ isolated candidate engineering
 
 Research Generation 2 = separate pure research track
 ```
 
-AI engineeringで得たpositive/negative resultはengineering decisionとして記録する。科学的仮説を新たに検証する必要が生じた場合は、既存Studyを再解釈せず、新しいprospective research StudyとしてResearch Trackへ戻す。
+Engineering success or failure is recorded as an engineering decision and does not revise scientific results. If no candidate passes all applicable gates, maintaining `AI-GEN2` is the correct result。

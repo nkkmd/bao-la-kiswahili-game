@@ -17,6 +17,9 @@ const baselineManifest = JSON.parse(read(
   "doc/ai-engineering/public-ai-improvement-program-1/baselines/AI-GEN2-BASELINE-2026-08-26-v1.json",
 ));
 const bench = read("doc/ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md");
+const gateSpec = JSON.parse(read(
+  "doc/ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json",
+));
 const candidates = read("doc/ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md");
 const decisions = read("doc/ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md");
 const releases = read("doc/ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md");
@@ -26,59 +29,63 @@ for (const text of [index, readme, status, audit, baseline, bench, candidates, d
   assert.ok(text.includes("PBAI-P1"), "PBAI-P1 marker missing");
 }
 
-assert.ok(readme.includes("Research Generation 2 research outcomesはPBAI-P1へ逐次流入させない"));
-assert.ok(readme.includes("Candidate implementationはまだ禁止する"));
+assert.ok(readme.includes("Research Generation 2 outcomeはPBAI-P1へ逐次流入させない"));
+assert.ok(readme.includes("PBAI-D exact candidate contract next"));
 
 assert.ok(status.includes("PBAI-A Research Generation 1 evidence audit = COMPLETE"));
 assert.ok(status.includes("PBAI-B AI-GEN2 exact public baseline = COMPLETE"));
-assert.ok(status.includes("AI-GEN2 exact baseline ID = AI-GEN2-BASELINE-2026-08-26-v1"));
-assert.ok(status.includes("PBAI-C benchmark framework = FRAMEWORK-FROZEN"));
-assert.ok(status.includes("PBAI-C numeric non-regression / release gates = NOT-FROZEN / NEXT"));
+assert.ok(status.includes("PBAI-C global benchmark / numeric non-regression / release gates = COMPLETE / FROZEN"));
+assert.ok(status.includes("PBAI-C gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1"));
 assert.ok(status.includes("AUTHORIZED-FOR-DEVELOPMENT = 0"));
 assert.ok(status.includes("candidate implementations = 0"));
+assert.ok(status.includes("release holdout execution = NOT-AUTHORIZED"));
 assert.ok(status.includes("public AI code changed by PBAI-P1 = false"));
 assert.ok(status.includes("Research Generation 2 evidence included = false"));
 
 assert.ok(audit.includes("PBAI-A = COMPLETE"));
-assert.ok(audit.includes("14-Study Research Generation 1 scientific evidence core")
-  || audit.includes("14 Study core"));
 assert.ok(audit.includes("AI.stateKey != Research Generation 1 authoritative RAW identity contract"));
-assert.ok(audit.includes("candidate development authorization = 0"));
 
 assert.ok(baseline.includes("Status: **FROZEN / PBAI-B COMPLETE**"));
-assert.ok(baseline.includes("AI-GEN2-BASELINE-2026-08-26-v1"));
-assert.ok(baseline.includes("baselineFrozen = true"));
-assert.ok(baseline.includes("PBAI-C numeric non-regression/release gates = NOT-FROZEN"));
-assert.ok(baseline.includes("AI-GEN3 promotionAuthorized = false"));
-
 assert.equal(baselineManifest.baselineFrozen, true);
 assert.equal(baselineManifest.baselineId, "AI-GEN2-BASELINE-2026-08-26-v1");
-assert.equal(baselineManifest.generationLineage, "AI-GEN2");
-assert.equal(baselineManifest.sourceOfTruth.repositoryCommit,
-  "f4ae3b11901180cbe417b3e643e2b357d8045d2d");
 assert.equal(baselineManifest.authorization.candidateImplementationAuthorized, false);
-assert.equal(baselineManifest.authorization.authorizedForDevelopmentCount, 0);
-assert.equal(baselineManifest.authorization.PBAI_C_numericGatesFrozen, false);
 assert.equal(baselineManifest.authorization.AI_GEN3PromotionAuthorized, false);
 
-assert.ok(bench.includes("release holdoutはcandidate tuningに使用しない"));
-assert.ok(bench.includes("Ablation rule"));
+assert.ok(bench.includes("Status: **FROZEN / PBAI-C GLOBAL NUMERIC GATES COMPLETE**"));
+assert.ok(bench.includes("PBAI-C-GLOBAL-GATES-2026-08-26-v1"));
+assert.ok(bench.includes("release holdout executionは**NOT-AUTHORIZED**"));
+assert.ok(bench.includes("observed candidate score >= 0.50"));
+assert.ok(bench.includes("catastrophic new loss count = 0"));
+assert.ok(bench.includes("median elapsed(candidate / baseline) <= 1.05"));
+assert.ok(bench.includes("KEEP-AI-GEN2"));
+
+assert.equal(gateSpec.status, "FROZEN-BEFORE-CANDIDATE-IMPLEMENTATION");
+assert.equal(gateSpec.baselineId, baselineManifest.baselineId);
+assert.equal(gateSpec.candidateImplementationsObservedBeforeFreeze, 0);
+assert.equal(gateSpec.candidateOutcomesObservedBeforeFreeze, 0);
+assert.equal(gateSpec.researchGeneration2EvidenceIncluded, false);
+assert.equal(gateSpec.fixedDepthStrength.globalGate.validation.coreObservedScoreMinimum, 0.50);
+assert.equal(gateSpec.fixedDepthStrength.globalGate.releaseHoldout.coreObservedScoreMinimum, 0.50);
+assert.equal(gateSpec.fixedDepthStrength.globalGate.lockedValidationPlusHoldout.coreOneSided95LowerBoundMinimum, 0.48);
+assert.equal(gateSpec.decisionQuality.gate.validation.catastrophicNewLossCountMaximum, 0);
+assert.equal(gateSpec.operationalQuality.gate.crashOrUnhandledExceptionCountMaximum, 0);
+assert.equal(gateSpec.correctnessAndRegression.publicEngineSha256MustRemain,
+  baselineManifest.fileIdentity["public/engine.js"].sha256);
+assert.equal(gateSpec.releaseHoldout.authorizedAtPBAI_C, false);
+assert.equal(gateSpec.candidateSpecificGateFloor.mayRelaxGlobalGate, false);
+assert.equal(gateSpec.releaseDecision.noAcceptableCandidateOutcome, "KEEP-AI-GEN2");
 
 for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) {
   assert.ok(candidates.includes(id), `${id} missing`);
 }
-assert.ok(candidates.includes("PBAI-A COMPLETE / NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION"));
+assert.ok(candidates.includes("PBAI-C GLOBAL GATES FROZEN / NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION"));
 assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 0"));
 assert.ok((candidates.match(/EVIDENCE-AUDIT-READY/g) || []).length >= 5,
-  "all initial candidates should be evidence-audit-ready");
+  "all initial candidates remain evidence-audit-ready");
 
-assert.ok(decisions.includes("No unvalidated win-probability semantics"));
-assert.ok(decisions.includes("RAW identity remains authoritative"));
-assert.ok(decisions.includes("D11 — Canonical Research Generation 1 evidence core"));
-assert.ok(decisions.includes("D12 — PBAI-A complete"));
-assert.ok(decisions.includes("D13 — Current `AI.stateKey` is not the Research Generation 1 RAW identity contract"));
-assert.ok(decisions.includes("D16 — Exact AI-GEN2 baseline identity"));
-assert.ok(decisions.includes("D22 — PBAI-B complete; PBAI-C numeric gate freeze is next"));
+assert.ok(decisions.includes("D23 — Global gate-spec identity and pre-outcome freeze"));
+assert.ok(decisions.includes("D24 — Playing-strength non-inferiority rule"));
+assert.ok(decisions.includes("D31 — PBAI-C complete; PBAI-D is next"));
 assert.ok(releases.includes("NO PBAI-P1 PUBLIC RELEASE YET"));
 
 for (const text of [index, naming, readme, status, baseline, namingDecision]) {
@@ -96,6 +103,7 @@ const forbidden = [
   "Research Generation 2 evidence included = true",
   "AUTHORIZED-FOR-DEVELOPMENT = 1",
   "candidate implementations = 1",
+  "release holdout execution = AUTHORIZED",
   "public AI code changed by PBAI-P1 = true",
   "AI-GEN3 promotion = AUTHORIZED"
 ];

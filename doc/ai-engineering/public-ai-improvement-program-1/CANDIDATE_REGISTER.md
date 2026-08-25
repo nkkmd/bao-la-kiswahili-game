@@ -1,6 +1,12 @@
 # PBAI-P1 Candidate Register
 
-Status: **PBAI-A COMPLETE / NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION**
+Status: **PBAI-C GLOBAL GATES FROZEN / NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION**
+
+Global gate spec:
+
+```text
+PBAI-C-GLOBAL-GATES-2026-08-26-v1
+```
 
 Candidate status vocabulary:
 
@@ -17,9 +23,9 @@ HOLD
 WITHDRAWN
 ```
 
-`EVIDENCE-AUDIT-READY` means only that PBAI-A has identified the completed Research Generation 1 evidence basis, scientific boundary, prohibited inference and required engineering safeguards. It does **not** authorize code changes.
+`EVIDENCE-AUDIT-READY` means only that PBAI-A identified the completed Research Generation 1 evidence basis, scientific boundary, prohibited inference and required engineering safeguards. PBAI-C completion adds global numeric gates but still does **not** authorize code changes.
 
-## Candidates after PBAI-A
+## Candidates after PBAI-C
 
 | ID | Candidate family | Research Generation 1 evidence basis | Current status | Key constraint / risk |
 | --- | --- | --- | --- | --- |
@@ -29,35 +35,78 @@ WITHDRAWN
 | `PBAI-C004` | Search-instability-aware selective deepening | reproducible adjacent-depth instability, high continuation divergence, reply-pressure/opponent-policy sensitivity | `EVIDENCE-AUDIT-READY` | define a new engineering-only trigger; do not reuse scientific difficulty/criticality/PCEM classifiers as production truth |
 | `PBAI-C005` | Evaluation semantics sanitation | Calibration Study 1 `INCONCLUSIVE`; engine score explicitly not validated probability | `EVIDENCE-AUDIT-READY` | no score→win-probability mapping; semantics-only changes should preserve move decisions unless a separate decision-logic mechanism is prospectively authorized |
 
-## PBAI-A evidence trace
-
-Canonical audit: `GENERATION_1_EVIDENCE_AUDIT.md`.
-
-Important cross-candidate constraints:
+## Cross-candidate evidence constraints
 
 - authoritative research-derived RAW identity includes `pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending` and excludes `turn`, `reason`;
 - unvalidated symmetry, reflection, seat-swap or quotient canonicalization is prohibited;
 - current `AI.stateKey` is not interchangeable with the Research Generation 1 RAW identity contract because it omits `pending`;
 - `bao-v2` is an experimental evaluation profile, not `AI-GEN2`;
 - machine search/reply phenomena must not be described as human difficulty/error/deception;
-- Research Generation 2 outcomes are outside PBAI-P1 evidence.
+- Research Generation 2 outcomes are outside PBAI-P1 evidence;
+- all candidates compare against `AI-GEN2-BASELINE-2026-08-26-v1`;
+- all candidates must pass `PBAI-C-GLOBAL-GATES-2026-08-26-v1`; candidate-specific rules may add requirements but may not relax global gates.
+
+## Frozen global PBAI-C floor
+
+Every decision-changing candidate is subject to, at minimum:
+
+```text
+fixed-depth paired strength:
+  validation pooled observed score >= 0.50
+  validation one-sided 95% LCB >= 0.47
+  release holdout pooled observed score >= 0.50
+  release holdout one-sided 95% LCB >= 0.47
+  locked validation+holdout observed score >= 0.50
+  locked validation+holdout one-sided 95% LCB >= 0.48
+
+decision quality:
+  new catastrophic losses = 0
+  validation/holdout severe-loss excess <= +0.01
+  validation/holdout top-set delta >= -0.02
+  validation/holdout normalized rank-loss delta <= +0.02
+
+operational:
+  crash / illegal move / invalid state = 0
+  median elapsed ratio <= 1.05
+  p95 elapsed ratio <= 1.10
+  roots with completed-depth deficit >=2 <= 5%
+
+correctness:
+  frozen public/engine.js hash unchanged
+  existing tactical failures = 0
+  candidate-specific regression failures = 0
+```
+
+Phase/seat/challenge-stratum local floors and exact seed blocks are defined in the global gate spec and `BENCHMARK_PROTOCOL.md`.
 
 ## Authorization requirements
 
-A candidate may move to `AUTHORIZED-FOR-DEVELOPMENT` only after PBAI-B exact baseline and PBAI-C numeric gates are frozen and the candidate entry records at minimum:
+A candidate may move to `AUTHORIZED-FOR-DEVELOPMENT` only after all of the following are recorded **before candidate code exists**:
 
 - exact source Study / document / evidence tier;
-- engineering mechanism and exact trigger semantics;
+- exact engineering mechanism and feature flag semantics;
 - affected code surface;
-- expected benefit;
-- expected runtime/memory cost;
-- known prohibited inference;
-- development benchmark endpoints and seed block;
-- validation benchmark endpoints and fresh seed block;
-- release-holdout block and no-tuning rule;
-- candidate-specific acceptance/rejection thresholds fixed before results;
-- hard rule-correctness/tactical/operational rejection gates;
-- rollback method.
+- prospective classification as normal improvement candidate or correctness/semantics-only maintenance candidate;
+- primary intended-benefit endpoint;
+- minimum practical benefit;
+- target and matched/control strata where applicable;
+- candidate-local development block;
+- candidate-local fresh validation block;
+- candidate-local reserved release-holdout block or fixture set;
+- runtime/memory budget if the mechanism may add cost or persistent data;
+- candidate-specific failure handling;
+- rollback method;
+- confirmation that global PBAI-C thresholds are unchanged.
+
+Implementation isolation is mandatory:
+
+```text
+feature off = frozen baseline comparator
+feature on  = exactly one PBAI candidate
+public default before adoption = off
+```
+
+Feature-off behavior must reproduce mandatory frozen baseline fixtures.
 
 Current authorization state:
 
@@ -68,17 +117,45 @@ PBAI-C003 authorized = false
 PBAI-C004 authorized = false
 PBAI-C005 authorized = false
 AUTHORIZED-FOR-DEVELOPMENT count = 0
+candidate implementations = 0
 ```
 
-## Required benchmark direction by candidate
+## Required candidate-specific benchmark direction
 
-- `PBAI-C001`: morphology/phase strata, paired strength, decision loss, local non-inferiority, runtime.
-- `PBAI-C002`: exact C03 + matched controls, existing tactical suite, paired strength, node/time overhead, severe-loss frequency.
-- `PBAI-C003`: exact 8-state correctness, zero false hits, RAW-key/seed-conservation binding, fallback equivalence, lookup overhead.
-- `PBAI-C004`: trigger precision/coverage, fixed-depth decision loss, time-limited depth/timeout/latency, phase/opening robustness, paired strength.
-- `PBAI-C005`: semantics/API/UI regression, absence of probability claims, move-decision equivalence where decision logic is not intentionally changed.
+### `PBAI-C001`
 
-Numeric acceptance thresholds remain PBAI-C work and must be frozen before candidate outcomes.
+Must prospectively choose one exact phase/morphology mechanism rather than simultaneously changing evaluation and search. Required targeted morphology/phase endpoint and matched non-target control must be frozen before implementation. Global strength/decision/operational gates remain mandatory.
+
+### `PBAI-C002`
+
+Must freeze the exact `TM-S2-C03` engineering trigger independently of human/traditional labels, use C03-target and matched non-C03 controls, declare a minimum targeted decision-quality benefit, and pass existing tactical + global non-regression gates.
+
+### `PBAI-C003`
+
+Must use a strict dedicated RAW key including `pending`. Candidate contract must require exact lookup/value/optimal-move equality throughout the frozen eligible 8-state domain, zero false lookup hits outside membership, 100% fallback equivalence outside domain, and a prospective lookup overhead/memory budget. It may not infer a global Bao tablebase.
+
+### `PBAI-C004`
+
+Must define a new engineering-only trigger, prospective trigger coverage bounds, minimum triggered-root decision-quality benefit, and cost budget. Existing scientific difficulty/criticality/PCEM classifiers cannot be relabeled as the production trigger.
+
+### `PBAI-C005`
+
+Must be prospectively classified as semantics/correctness-only unless it explicitly proposes decision-logic changes under a new mechanism contract. The semantics-only route requires exact decision-equivalence on frozen candidate-specific validation/holdout roots, zero probability claim introduction, API/UI compatibility, and global non-regression.
+
+## Release-holdout rule
+
+The global release-holdout blocks are frozen but **NOT AUTHORIZED FOR EXECUTION** at PBAI-C.
+
+Holdout authorization requires:
+
+```text
+candidate development complete
+candidate source/config hash frozen
+fresh validation PASS
+explicit PBAI-F authorization
+```
+
+A candidate may not tune against holdout results. Failure after holdout inspection is not repaired by threshold relaxation or same-holdout retuning.
 
 ## Combination rule
 

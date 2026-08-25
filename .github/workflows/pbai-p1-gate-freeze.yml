@@ -1,0 +1,41 @@
+name: PBAI-P1 benchmark gate freeze
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'doc/AI_ENGINEERING_INDEX.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/README.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/benchmark/**'
+      - 'tools/engineering/validate-pbai-p1-gate-spec.js'
+      - 'test/public-ai-improvement-program1-contract.test.js'
+      - '.github/workflows/pbai-p1-gate-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate-freeze-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify frozen AI-GEN2 baseline is still the comparison source
+        run: node tools/engineering/verify-pbai-ai-gen2-baseline-freeze.js
+      - name: Validate PBAI-C global gate specification
+        run: node tools/engineering/validate-pbai-p1-gate-spec.js
+      - name: Verify benchmark and decision-quality instrumentation
+        run: |
+          node test/benchmark.test.js
+          node test/position-complexity-search-diagnostic.test.js
+          node test/tactical.test.js
+      - name: Verify PBAI-P1 program contract
+        run: node test/public-ai-improvement-program1-contract.test.js
