@@ -3,7 +3,7 @@
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
 **開始日:** 2026-08-26  
 **Program scientific evidence anchor:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Status:** ESTABLISHED / **PBAI-A COMPLETE** / PBAI-B baseline freeze next / no public AI implementation change
+**Status:** ESTABLISHED / **PBAI-A COMPLETE / PBAI-B COMPLETE** / PBAI-C numeric gate freeze next / no public AI implementation change
 
 ## 1. 目的
 
@@ -15,14 +15,15 @@
 
 AI世代名の正本は[`../AI_GENERATION_NAMING.md`](../AI_GENERATION_NAMING.md)とする。
 
-PBAI-P1開始時点では次を固定する。
-
 ```text
 current public AI lineage = AI-GEN2
+exact frozen baseline = AI-GEN2-BASELINE-2026-08-26-v1
 next adopted public lineage reserved name = AI-GEN3
 candidate IDs = PBAI-Cxxx
 AI-GEN3 promotion before formal public adoption = prohibited
 ```
+
+`AI-GEN2`はlineage、`AI-GEN2-BASELINE-2026-08-26-v1`はPBAI-P1のexact comparison configurationである。
 
 `legacy` / `bao` / `bao-v2`等はevaluation/search profile identifierであり、AI generation numberではない。特に`bao-v2`は`AI-GEN2`の別名ではない。
 
@@ -32,7 +33,7 @@ PBAI candidateがdevelopment/validation benchmarkを通過しただけでは`AI-
 
 PBAI-P1のscientific inputは、program scientific evidence anchorまでに完了・closureされた**Research Generation 1 results**に限定する。
 
-- Research Generation 1の`CONFIRMED`、bounded exact、descriptive、negative、`NOT-CONFIRMED`、`INCONCLUSIVE`、`NON-ESTIMABLE`、`NOT-AUTHORIZED-NOT-EXECUTED`を、それぞれ元のevidence levelのまま扱う。
+- Research Generation 1のformal labelを元のevidence levelのまま扱う。
 - Research Generation 2 research outcomesはPBAI-P1へ逐次流入させない。
 - Research Generation 2を利用する場合はPBAI-P1の結果後拡張ではなく、新しいprogram/versionのevidence cutoffをprospectively定義する。
 - First Joseki Study、first-player advantage research、paired-opening / historical AI-development workはbaseline/context/infrastructureとして利用できるが、PBAI-AによってResearch Generation 1 scientific evidenceへ黙って再分類しない。
@@ -41,9 +42,7 @@ PBAI-Aのcanonical auditは[`GENERATION_1_EVIDENCE_AUDIT.md`](GENERATION_1_EVIDE
 
 ## 3. Engineering evidence tiers
 
-研究のscientific labelを上書きせず、engineering利用目的だけを次のtierで整理する。
-
-- **E1 — direct engineering candidate evidence:** formal positiveまたはbounded exact evidenceから、bounded trigger/fixture/benchmark stratum等を直接設計できる。production adoptionは別途benchmarkを必要とする。
+- **E1 — direct engineering candidate evidence:** formal positiveまたはbounded exact evidenceからbounded trigger/fixture/benchmark stratum等を直接設計できる。production adoptionは別途benchmarkを必要とする。
 - **E2 — engineering hypothesis evidence:** bounded/descriptive signalはあるがproduction ruleへ直接昇格できない。新しいengineering candidateとして独立にbenchmarkする。
 - **E3 — engineering constraint:** negative/inconclusive/non-estimable resultから「してはいけない実装」「誤表示」「未検証仮定」を固定する。
 - **E4 — reusable infrastructure:** replay、RAW identity、exact move enumeration、seed ledger、benchmark、artifact verification等をengineering validationへ再利用する。
@@ -52,14 +51,12 @@ E1〜E4は科学的evidence strengthの再分類ではない。
 
 ## 4. Program flow
 
-旧`AI_ADVANCED_ROADMAP.md`のPhase番号と衝突しないよう、本Programでは`PBAI-A`〜`PBAI-H`を用いる。
-
 ```text
 PBAI-A  Research Generation 1 Evidence → Engineering Audit       COMPLETE
    ↓
-PBAI-B  AI-GEN2 Public Baseline Freeze                           NEXT
+PBAI-B  AI-GEN2 Public Baseline Freeze                           COMPLETE
    ↓
-PBAI-C  Benchmark / Numeric Non-Regression / Release-Gate Freeze FRAMEWORK ONLY
+PBAI-C  Benchmark / Numeric Non-Regression / Release-Gate Freeze NEXT
    ↓
 PBAI-D  Candidate Registration + isolated implementation
    ↓
@@ -78,21 +75,42 @@ PBAI-A fixed:
 
 - a 14-Study Research Generation 1 scientific evidence core;
 - engineering use and prohibited inference for every Study;
-- First Joseki / first-player work as earlier context/infrastructure unless a later decision explicitly makes a specific finding eligible;
+- First Joseki / first-player work as earlier context/infrastructure;
 - Research Generation 2 exclusion;
 - authoritative research-derived RAW identity;
 - candidate evidence trace for `PBAI-C001..PBAI-C005`.
 
-Candidate state is now:
+Candidate state:
 
 ```text
 PBAI-C001..PBAI-C005 = EVIDENCE-AUDIT-READY
 AUTHORIZED-FOR-DEVELOPMENT = 0
 ```
 
-PBAI-A also records that current `public/ai.js` `AI.stateKey` omits `pending` and therefore is not identical to the Research Generation 1 authoritative RAW identity contract. This is a constraint on future research-derived/tablebase keys, not a PBAI-A declaration that current public search is defective. No AI code is changed by this finding.
+## 6. PBAI-B completion
 
-## 6. Non-negotiable boundaries
+Exact baseline:
+
+```text
+AI-GEN2-BASELINE-2026-08-26-v1
+source main commit = f4ae3b11901180cbe417b3e643e2b357d8045d2d
+public endpoint = https://bao-la-kiswahili.cultivationdata.net/
+```
+
+Canonical sources:
+
+- [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
+- [`baselines/AI-GEN2-BASELINE-2026-08-26-v1.json`](baselines/AI-GEN2-BASELINE-2026-08-26-v1.json)
+
+PBAI-B freezes exact public-source SHA-256, rules binding, difficulty mapping, default `bao` evaluation, hard/expert enhanced search semantics, device-tier budgets, timeout/max-depth semantics, quiescence, TT/evaluation cache, randomness, Worker/fallback behavior and PWA cache identity.
+
+Canonical verification workflow `32910436754` passed deterministic fixed-depth, Worker equivalence, timeout-safe move and existing rule/AI/search/config/worker/tactical regressions. Time-limited values were measured separately as descriptive operational observations only.
+
+Cloudflare-internal deployment ID was unavailable through the repository/tooling used for PBAI-B, so it was not invented. The deployment binding and exact live-asset comparison boundary are recorded explicitly in the baseline.
+
+PBAI-B changed no `public/` asset.
+
+## 7. Non-negotiable boundaries
 
 1. Research decisionをengineering resultで変更しない。
 2. Calibration Study 1のmappingをvalidated Bao win probabilityとして実装・表示しない。
@@ -106,30 +124,35 @@ PBAI-A also records that current `public/ai.js` `AI.stateKey` omits `pending` an
 10. Research Generation 2 researchをPBAI-P1へ途中投入しない。
 11. candidate段階で`AI-GEN3`へpromotionしない。
 12. Research Generation 1 RAW identityを必要とするtablebase/research-derived keyへcurrent `AI.stateKey`を暗黙流用しない。
+13. frozen `AI-GEN2` baselineをlive driftへ黙って差し替えない。
 
-## 7. Existing engineering assets
+## 8. Existing engineering assets
 
-既存の以下は再利用する。
+再利用する主要基盤:
 
 - `doc/AI_BENCHMARK.md`
 - `doc/AI_ADVANCED_ROADMAP.md`
 - `doc/AI_DEVELOPMENT_LOG.md`
 - `doc/AI_HUMAN_REVIEW_GUIDE.md`
 - `tools/benchmark.js`
-- `test/engine.test.js`
-- `test/ai.test.js`
-- `test/evaluation.test.js`
-- `test/search.test.js`
-- `test/tactical.test.js`
-- paired opening / seeded self-play / diagnostic fixtures / worker regression infrastructure
+- rule / AI / evaluation / search / config / Worker / tactical tests
+- paired opening / seeded self-play / diagnostic fixtures
 - Research Generation 1 replay / independent-verification / identity-firewall / bounded exact-oracle / continuation-policy infrastructure
 
-既存roadmapのPhase 0〜11の結果は歴史的engineering recordとして保持し、本Programの採否結果によってretroactiveに書き換えない。過去に不採用となったMCTS、`bao-v2`、adaptive search budget、weight-tuning variantsをPBAI-A完了だけで自動再開しない。
+過去に不採用となったMCTS、`bao-v2`、adaptive search budget、weight-tuning variantsをPBAI-A/B完了だけで自動再開しない。
 
-## 8. Current authorization boundary
+## 9. Current authorization boundary
 
-現時点で許可されるのは**PBAI-B exact baseline freezeとPBAI-C gate design**までである。
+現時点で許可される次工程は**PBAI-C numeric benchmark / non-regression / release-gate freeze**までである。
 
-public AIの評価関数、探索、重み、UI、worker、時間配分、state identityを変更するcandidate implementationは、`BASELINE_SPEC.md`をfreezeし、`BENCHMARK_PROTOCOL.md`のnumeric non-regression/release gatesをcandidate outcome前にfreezeし、`CANDIDATE_REGISTER.md`でcandidateを`AUTHORIZED-FOR-DEVELOPMENT`へ明示的に移してから行う。
+Candidate implementationはまだ禁止する。
 
-`AI-GEN2` exact baseline is still `NOT-FROZEN`; `AI-GEN3` remains `RESERVED / NOT-AUTHORIZED`.
+```text
+PBAI-B baseline = FROZEN
+PBAI-C numeric gates = NOT-FROZEN
+AUTHORIZED-FOR-DEVELOPMENT = 0
+candidate implementations = 0
+AI-GEN3 = RESERVED / NOT-AUTHORIZED
+```
+
+PBAI-Cではcandidate outcomeを見る前に、candidate-independent hard rejection gates、playing-strength non-inferiority、decision-quality、robustness、operational thresholds、development/validation/release-holdout blocksをprospectively固定する。その後にのみ個別`PBAI-Cxxx`をdevelopment authorizationへ進められる。
