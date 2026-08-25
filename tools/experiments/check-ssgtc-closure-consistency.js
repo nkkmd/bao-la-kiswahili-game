@@ -25,6 +25,12 @@ function excludes(path, needles) {
   for (const needle of needles) if (text.includes(needle)) fail(`${path}: stale/prohibited text remains: ${JSON.stringify(needle)}`);
   return text;
 }
+function includesNumber(path, value) {
+  const text = read(path);
+  const plain = String(value);
+  const grouped = Number(value).toLocaleString("en-US");
+  if (!text.includes(plain) && !text.includes(grouped)) fail(`${path}: missing numeric value ${value}`);
+}
 
 const formal = json(`${ROOT}/results/STAGE_2_FORMAL_RESULT.json`);
 if (formal.studyId !== "SSGTC-STUDY1") fail("formal result studyId mismatch");
@@ -82,7 +88,10 @@ for (const path of [
   "README.md",
   "doc/RESEARCH_INDEX.md",
   "doc/FUTURE_RESEARCH_AGENDA.md",
-]) includes(path, ["24,848", "30,941"]);
+]) {
+  includesNumber(path, 24848);
+  includesNumber(path, 30941);
+}
 
 for (const path of [
   `${ROOT}/STUDY_1_OVERVIEW.md`,
