@@ -9,7 +9,8 @@
 AI世代、evaluation/search profile、engineering candidate、research generationは別namespaceとして扱う。
 
 - canonical AI lineage: `AI-GEN1`, `AI-GEN2`, `AI-GEN3`, ...
-- current public lineage at PBAI-P1 establishment: **`AI-GEN2`**
+- current public lineage: **`AI-GEN2`**
+- PBAI-P1 exact frozen comparison target: **`AI-GEN2-BASELINE-2026-08-26-v1`**
 - next adopted public lineage reserved name: **`AI-GEN3`**
 - candidate IDs: `PBAI-Cxxx`; public採用前に`AI-GEN3`へpromotionしない
 - `legacy` / `bao` / `bao-v2`等はprofile名でありAI世代名ではない
@@ -24,11 +25,21 @@ Program-level naming decision: [`engineering-program-decisions/2026-08-26-ai-gen
 ### Public Bao AI Improvement Program 1 (`PBAI-P1`)
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-**状態:** ESTABLISHED / **PBAI-A COMPLETE** / PBAI-B AI-GEN2 baseline freeze next / public AI code unchanged  
-**scientific evidence cutoff:** completed Research Generation 1 evidence at program-start anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
+**状態:** ESTABLISHED / **PBAI-A COMPLETE / PBAI-B COMPLETE** / PBAI-C numeric gate freeze next / public AI code unchanged  
+**scientific evidence cutoff:** completed Research Generation 1 evidence at anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
 **Research Generation 2 outcomes:** excluded from PBAI-P1
 
-PBAI-A fixed a 14-Study Research Generation 1 evidence core, classified engineering use as E1/E2/E3/E4 without changing scientific labels, and advanced `PBAI-C001..PBAI-C005` only to `EVIDENCE-AUDIT-READY`. Candidate development authorization remains 0.
+PBAI-A fixed a 14-Study Research Generation 1 evidence core and advanced `PBAI-C001..PBAI-C005` only to `EVIDENCE-AUDIT-READY`.
+
+PBAI-B froze the exact `AI-GEN2` public-source comparison target:
+
+```text
+baselineId = AI-GEN2-BASELINE-2026-08-26-v1
+source main commit = f4ae3b11901180cbe417b3e643e2b357d8045d2d
+public endpoint = https://bao-la-kiswahili.cultivationdata.net/
+```
+
+No candidate is authorized for implementation.
 
 入口:
 
@@ -36,6 +47,7 @@ PBAI-A fixed a 14-Study Research Generation 1 evidence core, classified engineer
 - [`ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md)
 - [`ai-engineering/public-ai-improvement-program-1/GENERATION_1_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-1/GENERATION_1_EVIDENCE_AUDIT.md)
 - [`ai-engineering/public-ai-improvement-program-1/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-1/BASELINE_SPEC.md)
+- [`ai-engineering/public-ai-improvement-program-1/baselines/AI-GEN2-BASELINE-2026-08-26-v1.json`](ai-engineering/public-ai-improvement-program-1/baselines/AI-GEN2-BASELINE-2026-08-26-v1.json)
 - [`ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md)
 - [`ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md)
@@ -49,23 +61,26 @@ Program-level establishment decision:
 
 ```text
 PBAI-A Research Generation 1 evidence audit = COMPLETE
-PBAI-B AI-GEN2 exact baseline = NOT-FROZEN / NEXT
+PBAI-B AI-GEN2 exact baseline = COMPLETE
 PBAI-C benchmark framework = FRAMEWORK-FROZEN
-PBAI-C numeric non-regression / release gates = NOT-FROZEN
+PBAI-C numeric non-regression / release gates = NOT-FROZEN / NEXT
+AUTHORIZED-FOR-DEVELOPMENT = 0
 candidate implementations = 0
 AI-GEN3 = RESERVED / NOT-AUTHORIZED
 ```
 
-PBAI-Aのread-only inspectionで、current `AI.stateKey`はResearch Generation 1のauthoritative RAW identityと同一ではなく`pending`を含まないことを記録した。これはcurrent public AI failureの判定ではないが、research-derived tablebase/RAW keyへ暗黙流用しないconstraintとして固定されている。
+Current `AI.stateKey` remains distinct from Research Generation 1 authoritative RAW identity because it omits `pending`; the exact baseline records this current runtime property but does not authorize it as a research-derived tablebase key.
 
 ## Separation from research
 
 ```text
 completed Research Generation 1
           ↓
-PBAI-P1 engineering evidence audit
+PBAI-P1 evidence audit + frozen AI-GEN2 baseline
           ↓
-engineering candidates / benchmark / release decision
+prospectively frozen engineering gates
+          ↓
+engineering candidates / validation / release decision
 
 Research Generation 2 = separate pure research track
 ```
