@@ -29,14 +29,14 @@ studyId = SSGTC-STUDY1
 The prospectively frozen Stage 2 domain was the standard engine initial state, complete raw-state reachability through depth 8 with all parent states at depths 0..7 expanded, and a separate non-deduplicated game tree through depth 8.
 
 ```text
-reachableRawStatesThroughDepth8 = 24848
-graphTransitionOccurrencesParentDepth0Through7 = 25648
+reachableRawStatesThroughDepth8 = 24,848
+graphTransitionOccurrencesParentDepth0Through7 = 25,648
 duplicateEncounters = 801
 multiParentStates = 763
 maxIndegree = 4
 
-gameTreeNodeOccurrencesThroughDepth8 = 30941
-gameTreeEdgeOccurrencesThroughDepth8 = 30940
+gameTreeNodeOccurrencesThroughDepth8 = 30,941
+gameTreeEdgeOccurrencesThroughDepth8 = 30,940
 rawStateToTreeNodeRatioThroughDepth8 = 0.803076823632074
 ```
 
@@ -89,7 +89,7 @@ Authorized:
 
 Not authorized:
 
-- `Bao state space = 24848`;
+- `Bao state space = 24,848`;
 - exact full-game state-space or game-tree claim;
 - extrapolation of the depth-8 ratio/growth law to the full game;
 - symmetry-reduced counting or canonicalization;
