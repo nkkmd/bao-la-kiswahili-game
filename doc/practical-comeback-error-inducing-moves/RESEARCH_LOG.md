@@ -267,3 +267,39 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 No upstream completed-study decision, human claim, game-theoretic claim, true-win-probability claim, or all-opponent-strength claim is altered or authorized.
+
+## 2026-08-25 — Repository closure integration
+
+After the canonical scientific result was frozen, current-facing repository documents were synchronized to the terminal Study 1 state:
+
+- root `README.md`;
+- `doc/RESEARCH_INDEX.md` (Study 16);
+- `doc/FUTURE_RESEARCH_AGENDA.md` (Version 1.15.0);
+- study overview/final report/status/register/reproducibility/results index;
+- program-level closure decision `doc/research-program-decisions/2026-08-25-practical-comeback-error-inducing-move-study1-closure.md`;
+- draft PR #50 completion summary.
+
+One-shot central-document patch helpers were removed after their changes were materialized. No scientific code, result, threshold, candidate grammar, endpoint or population was changed by repository closure integration.
+
+## 2026-08-25 — Final consistency audit and post-closure provenance hardening
+
+A cross-document final audit checked the canonical artifact against current-facing study/program documentation and identified two provenance ambiguities rather than scientific discrepancies:
+
+1. repository `STAGE_1_EXPLORATORY_RESULT.json` had been augmented with workflow/artifact provenance after the canonical workflow while retaining the canonical `resultHash`, so the hash scope was not self-evident;
+2. `.github/workflows/pcem-stage1-parallel.yml` had been intentionally replaced after closure by a lightweight rerun guard, while the execution amendment correctly continued to bind the original scientific workflow blob.
+
+The canonical verified artifact was re-opened and all seven embedded files were byte-hashed. The `stage1ResultHash` was also independently recomputed from the canonical artifact object using the same sorted-key stable serialization and matched exactly:
+
+```text
+stage1ResultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
+recomputed = MATCH
+scientificResultChanged = false
+```
+
+`results/STAGE_1_ARTIFACT_PROVENANCE.json` was added to bind exact artifact file SHA-256 values, explain the result-hash scope, preserve the canonical source commit/workflow blob, and distinguish the current closure guard from the scientific workflow.
+
+The Stage 0, pre-authorization contract, authorization-material, serial-superseded, and parallel-scientific workflows were all placed into post-closure non-generative states. In particular, the historical pre-authorization test that required an absent authorization file is no longer rerun after authorization, and no new post-closure authorization-material artifact is generated.
+
+A permanent read-only `test/practical-comeback-closure-consistency.test.js` plus `.github/workflows/pcem-closure-audit.yml` was added to check terminal counts/labels, Stage 2 non-authorization, no-rescue flags, artifact provenance, historical-preregistration preservation, current-facing document status, and all workflow closure guards.
+
+Historical preregistration records such as `STAGE_1_EXPLORATORY_SPEC.json` remain unchanged at their original freeze-state labels by design; they are not stale current-status documents and were not rewritten during this audit.
