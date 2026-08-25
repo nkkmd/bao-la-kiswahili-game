@@ -1,0 +1,45 @@
+name: PCEM Stage 1 pre-authorization contract
+
+on:
+  pull_request:
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+      - "tools/experiments/validate-pcem-stage1-spec.js"
+      - "tools/experiments/run-pcem-stage1-exploratory.js"
+      - "tools/experiments/verify-pcem-stage1-independent.js"
+      - "tools/experiments/lib/practical-comeback-stage0-production.js"
+      - "tools/experiments/lib/practical-comeback-stage1-*.js"
+      - "tools/experiments/lib/ssgtc-representation-*.js"
+      - "test/practical-comeback-stage1-contract.test.js"
+      - "doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_SPEC.json"
+      - "doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_FEATURE_DEFINITIONS.json"
+      - ".github/workflows/pcem-stage1-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate frozen Stage 1 spec
+        run: node tools/experiments/validate-pcem-stage1-spec.js
+      - name: Run pre-authorization contract smoke
+        run: node test/practical-comeback-stage1-contract.test.js
+      - name: Confirm scientific runner remains authorization-blocked
+        shell: bash
+        run: |
+          set +e
+          node tools/experiments/run-pcem-stage1-exploratory.js --out "${{ runner.temp }}/pcem-stage1-blocked" > "${{ runner.temp }}/blocked.log" 2>&1
+          status=$?
+          set -e
+          cat "${{ runner.temp }}/blocked.log"
+          test "$status" -ne 0
+          grep -q "authorization file absent" "${{ runner.temp }}/blocked.log"
