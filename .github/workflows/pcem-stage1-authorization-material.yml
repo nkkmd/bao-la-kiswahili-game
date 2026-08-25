@@ -1,0 +1,56 @@
+name: PCEM Stage 1 authorization material
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pcem-stage1-authorization-material.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Materialize exact pre-authorization hashes
+        shell: bash
+        run: |
+          node <<'NODE' > "${{ runner.temp }}/authorization-material.json"
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const cp = require('node:child_process');
+          const files = [
+            'public/engine.js',
+            'public/ai.js',
+            'public/ai-weights.js',
+            'tools/experiments/lib/ssgtc-representation-production.js',
+            'tools/experiments/lib/practical-comeback-stage0-production.js',
+            'tools/experiments/lib/practical-comeback-stage1-corpus.js',
+            'tools/experiments/lib/practical-comeback-stage1-measurement.js',
+            'tools/experiments/lib/practical-comeback-stage1-discovery.js',
+            'tools/experiments/validate-pcem-stage1-spec.js',
+            'tools/experiments/run-pcem-stage1-exploratory.js',
+            'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_SPEC.json',
+            'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_FEATURE_DEFINITIONS.json'
+          ];
+          const sha = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          const sourceFileSha256 = Object.fromEntries(files.map((p) => [p, sha(p)]));
+          const output = {
+            schemaVersion: 1,
+            headCommit: cp.execFileSync('git', ['rev-parse','HEAD'], {encoding:'utf8'}).trim(),
+            specSha256: sha('doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_SPEC.json'),
+            featureDefinitionsSha256: sha('doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_FEATURE_DEFINITIONS.json'),
+            sourceFileSha256
+          };
+          process.stdout.write(JSON.stringify(output, null, 2) + '\n');
+          NODE
+          cat "${{ runner.temp }}/authorization-material.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcem-stage1-authorization-material
+          path: ${{ runner.temp }}/authorization-material.json
