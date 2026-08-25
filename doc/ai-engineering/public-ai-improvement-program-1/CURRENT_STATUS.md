@@ -88,11 +88,24 @@ Read-only inspection during PBAI-A confirms the current public path is consisten
 - `bao-v2`: historical experimental/diagnostic profile, not public lineage identity;
 - hard/expert: iterative-deepening enhanced alpha-beta family using TT, PVS-style search, killer ordering and quiescence;
 - hard/expert evaluation caching enabled by default inside `analyzeMove`;
-- public `AIConfig.searchOptions(...)` currently returns fixed base budgets; historical adaptive-budget APIs are not public-default behavior;
+- public `AIConfig.searchOptions(...)` currently returns fixed device-tier base budgets; historical adaptive-budget APIs are not public-default behavior;
+- current `public/ai-config.js` hard budgets are low `D6/400ms`, standard `D8/500ms`, high `D10/600ms`;
+- current expert budgets are low `D10/1500ms`, standard `D12/2000ms`, high `D14/3000ms`;
 - Web Worker search with same-AI fallback path;
 - public and benchmark move legality flows through `public/engine.js`.
 
 These are inspection findings only. Exact hashes, deployment ref, device settings, cache/PWA implications and all baseline semantics remain to be formally bound in PBAI-B.
+
+## PBAI-B reconciliation items discovered by PBAI-A
+
+The following are **known baseline/documentation questions**, not candidate results and not PBAI-A code-change requests:
+
+1. `doc/AI_DEVELOPMENT_LOG.md` still describes the hard browser default as `maxDepth=4 / 450ms`, while current `public/ai-config.js` supplies device-tier hard budgets of D6/400, D8/500 or D10/600. PBAI-B must treat current public code/deployment as authoritative and either classify the development-log statement as historical/stale or update the engineering documentation after the exact baseline is established.
+2. `public/ai.js` `AI.stateKey` omits `pending`, while Research Generation 1 authoritative RAW identity includes it. `test/search.test.js` currently describes its key check as covering “every rule-relevant field” without testing `pending`. PBAI-B/PBAI-C must determine the actual public-search applicability separately; PBAI-C003 may not reuse this key as RAW tablebase identity.
+3. `public/diagnostics.js` stores `pending` but supplies `[0,0]` when absent. This compatibility behavior is not equivalent to the strict ORISC research identity contract where missing `pending` is invalid. Any research-derived RAW fixture/tablebase path needs a dedicated strict binding.
+4. `RULES_BASELINE.md` retains known implementation boundaries (`takasia` not applied; relay safety guard is an implementation guard, not a Bao rule). PBAI-B must bind the exact engine/rules source so candidate comparisons do not mix rule changes with AI changes.
+
+None of these items authorizes a public-code modification before baseline and benchmark-gate freeze.
 
 ## Benchmark / regression state
 
@@ -111,7 +124,7 @@ Existing reusable infrastructure includes:
 
 ## Next required work
 
-1. **PBAI-B — AI-GEN2 Public Baseline Freeze**: bind exact repository/deployment source, file hashes, engine binding, default profile/search, hard/expert device budgets, TT/quiescence/move-order/cache/randomness/worker/fallback semantics and supported runtime/PWA assumptions.
+1. **PBAI-B — AI-GEN2 Public Baseline Freeze**: bind exact repository/deployment source, file hashes, engine binding, default profile/search, hard/expert device budgets, TT/quiescence/move-order/cache/randomness/worker/fallback semantics and supported runtime/PWA assumptions; resolve the baseline/documentation reconciliation items above.
 2. **PBAI-C — numeric non-regression / release-gate freeze**: freeze candidate-independent hard gates and candidate-specific numeric acceptance rules before any development authorization.
 3. Only after PBAI-B/PBAI-C may a single `PBAI-Cxxx` candidate be moved to `AUTHORIZED-FOR-DEVELOPMENT`.
 4. `AI-GEN3` remains reserved until all validation/holdout/regression/operational gates pass, an explicit `ADOPT` decision exists, and the approved build is actually deployed as public default.
