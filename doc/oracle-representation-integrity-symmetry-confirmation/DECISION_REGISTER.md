@@ -219,3 +219,34 @@ It does block treating the repository-facing REWR state rows as a validated tran
 `ORISC-STUDY1` is closed after preservation of the Stage 0A provenance audit, pre-outcome Stage 2 candidate contract, Stage 0B prefreeze, final Stage 1 spec and authorization, formal production/independent evidence, canonical Axis A result, Study-level closure result, Overview and Final Report.
 
 No further scientific outcome generation is authorized within this Study 1. Any future attempt to repair repository representation or re-test symmetry must use a new prospective study/versioned protocol without changing the formal result recorded here.
+
+## D-032 — Post-closure automatic duplicate is non-canonical and scientific workflows are locked
+
+During final documentation closure, GitHub pull-request synchronization triggered the already-consumed formal workflow again because the PR-wide changed-file set continued to satisfy the workflow's `pull_request.paths` filter. This was an orchestration-side closure defect, not a new scientific authorization.
+
+Duplicate run:
+
+```text
+runId = 32797248144
+jobId = 97650964412
+artifactId = 9545248579
+artifact ZIP SHA-256 = 1b339c75af3ee7a514a04c51902934c8b0930d792cfcc19f8c320cae181053e0
+classification = POST-CLOSURE-AUTOMATIC-DUPLICATE / NON-CANONICAL / NO-NEW-SCIENTIFIC-EVIDENCE
+```
+
+The duplicate reproduced the exact already-canonical scientific identities and decision:
+
+```text
+formalDecision = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+production resultSha256 = 03b112ba6dc1b79d65e4bfd3dbba603f0a20d0f3e16ab9d98a37e9bf50f6afe9
+independent verification resultSha256 = 3501a65b4920e9ae44f55e2a46da370f750cbac01c1293398dc7b020cdae4bcf
+A-G12 = PASS
+IDENTITY = FAIL
+Stage 2 authorized = false
+```
+
+It does not replace the canonical run, enlarge the evidence set, or reopen the Study. The canonical formal run remains `32753073798` / artifact `9529771157`.
+
+After detecting this, all ORISC Stage 0A / Stage 0B / Stage 1 spec-freeze / Stage 1 formal workflows were converted to closed-study archival stubs with no push or pull-request trigger and no scientific-tool execution. Their current post-closure bytes are intentionally different from the pre-outcome executable workflow bytes bound in the formal spec. Historical executable source remains preserved by Git history and the frozen SHA-256 contract.
+
+This workflow archival operation is a post-closure execution lock only. It changes no formal source identity retroactively, no decision, no gate result, no candidate status, and no upstream result.
