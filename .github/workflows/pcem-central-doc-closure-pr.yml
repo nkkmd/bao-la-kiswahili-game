@@ -1,0 +1,35 @@
+name: PCEM central documentation closure PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/pcem-central-doc-closure-pr.yml'
+      - 'tools/experiments/pcem-central-doc-closure.py'
+
+permissions:
+  contents: write
+
+jobs:
+  patch-central-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Patch central documentation
+        run: python tools/experiments/pcem-central-doc-closure.py
+      - name: Commit central documentation closure
+        run: |
+          git diff --check
+          git diff -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
+          if git diff --quiet; then
+            echo 'No central documentation changes required.'
+            exit 0
+          fi
+          git config user.name 'Sawa'
+          git config user.email '72678394+nkkmd@users.noreply.github.com'
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
+          git commit -m 'docs(pcem): integrate completed Study 1 centrally'
+          git push origin HEAD:research/practical-comeback-error-inducing-moves
