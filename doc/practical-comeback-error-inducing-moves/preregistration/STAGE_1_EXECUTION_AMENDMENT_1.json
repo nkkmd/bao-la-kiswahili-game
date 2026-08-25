@@ -31,6 +31,15 @@
       "reason": "missing closing parenthesis in execution-only result assembly helper",
       "scientificSeedsGenerated": 0,
       "scientificOutcomeObserved": false
+    },
+    {
+      "parallelWorkflowRunId": 32819832614,
+      "parallelWorkflowJobId": 97715434355,
+      "stage": "gate",
+      "classification": "TECHNICALLY-INVALID-NO-SCIENTIFIC-GENERATION",
+      "reason": "execution-only helpers read scientificContract, parallelPlan, and executionBindings fields from the wrong JSON hierarchy; corrected without modifying any frozen scientific field",
+      "scientificSeedsGenerated": 0,
+      "scientificOutcomeObserved": false
     }
   ],
   "scientificContract": {
@@ -82,9 +91,9 @@
   },
   "executionBindings": {
     "parallelProductionHelper": "tools/experiments/run-pcem-stage1-parallel-execution.js",
-    "parallelProductionHelperGitBlobSha": "31562a5ce1c52be0c966b738e1d29f5003994929",
+    "parallelProductionHelperGitBlobSha": "4ee0f0c595564a5222159b5f1e995091a1eb12a6",
     "parallelIndependentHelper": "tools/experiments/verify-pcem-stage1-parallel-execution.js",
-    "parallelIndependentHelperGitBlobSha": "c463dc1fcf6bf7b2501177b953455df9afb5e1d6",
+    "parallelIndependentHelperGitBlobSha": "3b702d6e6b5fc2f0075060019ce05ce755b21b5e",
     "parallelWorkflow": ".github/workflows/pcem-stage1-parallel.yml",
     "parallelWorkflowGitBlobSha": "3320575988f9f0ec315a8d7474840745a99ae325"
   },
