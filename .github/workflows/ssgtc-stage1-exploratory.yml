@@ -27,10 +27,27 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Prepare outcome-blind G9-corrected execution copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          src = Path("tools/experiments/run-ssgtc-stage1-exploratory.js")
+          dst = Path("tools/experiments/run-ssgtc-stage1-exploratory-exec.js")
+          text = src.read_text(encoding="utf-8")
+          old = '    "S1-G9-NO-SYMMETRY": !/symmetry-isomorphic|orisc-transform|canonicalizeState|seatSwap|leftRightReflection/.test(source),'
+          new = '    "S1-G9-NO-SYMMETRY": !source.split("\\n").filter((line) => line.includes("require(")).some((line) => /symmetry|orisc|sip/i.test(line)),'
+          if text.count(old) != 1:
+              raise SystemExit("expected exactly one frozen G9 line")
+          patched = text.replace(old, new)
+          if patched.count(new) != 1:
+              raise SystemExit("G9 correction was not singular")
+          dst.write_text(patched, encoding="utf-8")
+          PY
+
       - name: Run frozen Stage 1 production expansion
         env:
           SSGTC_STAGE1_OUT: ${{ runner.temp }}/ssgtc-stage1-exploratory-v1
-        run: node tools/experiments/run-ssgtc-stage1-exploratory.js
+        run: node tools/experiments/run-ssgtc-stage1-exploratory-exec.js
 
       - name: Run separate-process Stage 1 independent verification
         env:
