@@ -1,21 +1,21 @@
 # CURRENT_STATUS — ORISC-STUDY1
 
 Updated: 2026-08-25  
-Status: **STUDY INITIALIZED / STAGE 0A OPEN / FORMAL OUTCOME GENERATION BLOCKED**
+Status: **COMPLETED / AXIS A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / AXIS B `NOT-AUTHORIZED-NOT-EXECUTED`**
 
-## Repository state at study start
+## Repository state
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
-main HEAD = e8f0a3c360d9e7c9f7f6882fb212a32921040912
-open PRs at start = 0
+baseline main HEAD = e8f0a3c360d9e7c9f7f6882fb212a32921040912
 study branch = research/oracle-representation-integrity-symmetry-confirmation
+draft PR = #48
 studyId = ORISC-STUDY1
 ```
 
-The GitHub connector exposes the remote repository state, not a local checkout worktree. No local uncommitted worktree state is asserted here.
+`main` has not been modified by this study branch. Merge is intentionally deferred until explicit user instruction.
 
-## Upstream scientific state restored
+## Immutable upstream scientific state
 
 ### REWR-STUDY1
 
@@ -29,7 +29,7 @@ transitionSetSha256 = 33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c1898
 solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15
 ```
 
-No REWR formal claim is reopened.
+No REWR state/edge/value/DTF/optimal-move claim or formal decision is changed.
 
 ### SIP-STUDY1
 
@@ -37,34 +37,86 @@ No REWR formal claim is reopened.
 studyStatus = COMPLETED
 formalDecision = NON-ESTIMABLE
 validated = 0
-notValidated = 0
+rejected = 0
 nonEstimable = 5
 v1 = TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION
 corrected v2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-No SIP candidate is validated, rejected, or rescued by this study.
+No SIP candidate is rescued, validated, or rejected by ORISC-STUDY1.
 
-## Stage 0A technical provenance recovery completed so far
+## Stage 0A — complete
 
-The original REWR Stage 1 workflow artifact was recovered from:
+The original REWR scientific workflow artifact was recovered read-only. Original production and independent verification rows were exactly equal, all eight raw states represented 64 seeds, and the three terminal keys later implicated in repository-row reconstruction contained `pending=[1,0]` in both original workflow files.
 
-```text
-workflow run = 32702596730
-artifact id = 9511074442
-artifact digest = sha256:7da2a3f46745c18f4aa8896bc6a576b5d56b490b1461a4def3364183b047c023
-workflow head = 85c6a85fada301fcba526142549945e25a659855
-```
-
-Recovered files include the original production exact result and independent verification.
-
-For all eight states in both original raw files:
+The later repository-facing exact result contains `pending=[0,0]` for those same three rows. Stage 0A bounded the difference to `pending` only, with no outcome-field differences. The materialization mechanism remains:
 
 ```text
-sum(pits) + sum(reserve) + sum(pending) = 64
+UNRESOLVED-PROVENANCE-GAP
 ```
 
-The three terminal keys later identified by SIP as repository-row mismatches carry `pending=[1,0]` in both original production and independent workflow artifacts:
+Stage 0A generated no ORISC formal decision.
+
+## Stage 0B — complete
+
+Before Stage 1 outcome generation, the following were frozen:
+
+- strict raw identity fields and serializer contract;
+- 64-seed conservation rule including `pending`;
+- production / independent implementation boundary;
+- Stage 1 A-G1..A-G12 gates and decision rules;
+- conditional Stage 2 candidate definitions, population, controls and stop rules.
+
+Frozen Stage 2 candidate-contract identity:
+
+```text
+6509dc18553d968437d87f7522cacebb4b66f13f15469240075964b72f1c8796
+```
+
+Final Stage 1 spec identity:
+
+```text
+5a766ec900c1f76c5b832f2c76153b9426b3970316b31806d377c497d1e585e5
+```
+
+A pre-authorization spec revision only added the already-defined formal workflow byte hash. It changed no endpoint, population, identity field, gate, candidate, seed block, threshold or decision rule.
+
+## Stage 1 — formal Axis A complete
+
+Authorization:
+
+```text
+authorizationId = ORISC-S1-REPRESENTATION-INTEGRITY-AUTH-2026-08-25-v1
+authorizationSha256 = b8bc9c65510c2f4ea0909e269af7945d7ae5d3d32b595224519b1549a275325e
+```
+
+Authorized workflow:
+
+```text
+runId = 32753073798
+jobId = 97514309075
+artifactId = 9529771157
+artifact ZIP SHA-256 = 13844208eeaaa4ae8eedc35724a0d71ed043f982cfaaa48cf1d692133d74d6e8
+production resultSha256 = 03b112ba6dc1b79d65e4bfd3dbba603f0a20d0f3e16ab9d98a37e9bf50f6afe9
+independent verification resultSha256 = 3501a65b4920e9ae44f55e2a46da370f750cbac01c1293398dc7b020cdae4bcf
+```
+
+Formal decision:
+
+```text
+ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+```
+
+Gate summary:
+
+```text
+PASS = A-G1 A-G2 A-G3 A-G4 A-G5 A-G6 A-G7 A-G10 A-G12
+FAIL = A-G8 A-G9 A-G11
+```
+
+Production and independent implementations both reconstructed the exact frozen 8-state / 7-edge raw graph, agreed on serialization and state keys, preserved 64 represented seeds, reproduced terminal captured/pending accounting, and found zero transition-successor mismatches.
+
+Exactly three immutable repository-facing terminal rows failed both stored-row re-hash and raw-state binding:
 
 ```text
 469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6
@@ -72,63 +124,59 @@ The three terminal keys later identified by SIP as repository-row mismatches car
 df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55
 ```
 
-The repository-facing `doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json` instead stores `pending=[0,0]` in those three rows.
-
-The commit that introduced the repository-facing result is:
+For all three:
 
 ```text
-eb6052679e94de62bacec0eebe13758c7e85638d
+repository represented seeds = 63
+reconstructed represented seeds = 64
+identity-field difference = pending only
 ```
 
-Its parent is `85c6a85fada301fcba526142549945e25a659855`. The commit adds/modifies documentation, checkpoints and the repository result; no result-materializer source file was introduced in that commit. This establishes a provenance gap between the verified workflow raw artifact and the repository-facing transcription/materialization step. It does not by itself establish the mechanism that caused the row differences.
+Because repository reconstruction was a mandatory part of `ORISC-C00-IDENTITY`, `A-G11=FAIL`. Because production and independent implementations agreed on all failure locations and gate classifications, `A-G12=PASS`; the result is therefore `NOT-CONFIRMED`, not `NON-ESTIMABLE`.
 
-This is **prior technical provenance**, not a Stage 1 scientific integrity decision.
+## Axis B — closed without execution
 
-## Current engine semantics re-audited
-
-Current `public/engine.js` confirms:
+The conditional Stage 2 contract required all of:
 
 ```text
-FRONT = 0
-BACK = 1
-HOUSE = 4
-opposite front index = 7 - index
-initial pending = [0,0]
+Stage 1 = ORACLE-REPRESENTATION-INTEGRITY-CONFIRMED
+A-G11 IDENTITY = PASS
+A-G12 production/independent equality = PASS
+separate Stage 2 authorization = present and valid
 ```
 
-`finishOnEmptyFront(state, player, captured, events)` adds the captured amount to `pending[player]` before setting `winner` and `reason="front-empty"`.
-
-Primary raw identity in the existing exact tooling includes:
+The first two conditions failed. Therefore:
 
 ```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
+Axis B = NOT-AUTHORIZED-NOT-EXECUTED
+nontrivial candidate formal decisions generated = 0
+candidate validations = 0
+candidate rejections = 0
+candidate non-estimable decisions = 0
 ```
 
-and excludes `turn` / `reason` from the state key.
+No Stage 2 authorization or result was created.
 
-## Current authorization state
+## Stage 3 / downstream contract
 
 ```text
-Stage 0A technical provenance work = authorized
-Stage 0B contract design = authorized
-Stage 1 formal scientific outcome generation = NOT AUTHORIZED
-Stage 2 symmetry scientific outcome generation = NOT AUTHORIZED
-Stage 3 canonicalization decision = NOT AUTHORIZED
+validated symmetry transformation set = []
+canonicalization = NOT AUTHORIZED
+symmetry-group claim = NOT AUTHORIZED
+symmetry-reduced state counting = NOT AUTHORIZED
+raw state identity = authoritative downstream representation
+State Space / Game Tree Complexity may proceed = RAW-ONLY
 ```
 
-## Next required work
+A future study must not interpret the ORISC result as evidence that the frozen nontrivial symmetry candidates are false. They were not formally evaluated.
 
-1. complete Stage 0A serializer/materialization provenance audit;
-2. define synthetic terminal/pending fixtures independent of the oracle rows;
-3. define production/independent code-separation rules;
-4. perform repository-wide seed/source collision audit for any future fresh Stage 2 population;
-5. freeze Stage 1 machine-readable spec and the conditional Stage 2 candidate contract before inspecting any new Stage 1 result;
-6. create a separate Stage 1 authorization only after all frozen hashes pass validation.
+## Canonical conclusion documents
 
-No formal result artifact exists for `ORISC-STUDY1`.
+- `STUDY_1_OVERVIEW.md`
+- `STUDY_1_FINAL_REPORT.md`
+- `results/STAGE_1_FORMAL_RESULT.json`
+- `results/STUDY_1_FINAL_RESULT.json`
+- `REPRODUCIBILITY_INDEX.md`
+- `DECISION_REGISTER.md`
+
+No further scientific outcome generation is authorized within ORISC-STUDY1.
