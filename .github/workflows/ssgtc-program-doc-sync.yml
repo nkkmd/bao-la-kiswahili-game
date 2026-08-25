@@ -7,6 +7,12 @@ on:
     paths:
       - "tools/experiments/sync-ssgtc-program-docs.js"
       - ".github/workflows/ssgtc-program-doc-sync.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "tools/experiments/sync-ssgtc-program-docs.js"
+      - ".github/workflows/ssgtc-program-doc-sync.yml"
   workflow_dispatch:
 
 permissions:
@@ -14,6 +20,7 @@ permissions:
 
 jobs:
   sync-program-docs:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout study branch
