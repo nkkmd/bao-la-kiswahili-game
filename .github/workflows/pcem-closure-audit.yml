@@ -1,0 +1,31 @@
+name: PCEM closure consistency audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'doc/RESEARCH_INDEX.md'
+      - 'doc/FUTURE_RESEARCH_AGENDA.md'
+      - 'doc/practical-comeback-error-inducing-moves/**'
+      - 'doc/research-program-decisions/2026-08-25-practical-comeback-error-inducing-move-study1-closure.md'
+      - 'test/practical-comeback-closure-consistency.test.js'
+      - '.github/workflows/pcem-closure-audit.yml'
+      - '.github/workflows/pcem-stage1-parallel.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  closure-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify terminal PCEM state and provenance boundaries
+        run: node test/practical-comeback-closure-consistency.test.js
