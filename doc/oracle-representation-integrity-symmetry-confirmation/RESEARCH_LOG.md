@@ -163,7 +163,7 @@ Stage 2 execution and upstream oracle mutation were explicitly not authorized.
 
 ## 2026-08-25 — Formal Axis A executed
 
-Authorized workflow:
+Canonical authorized workflow:
 
 ```text
 runId = 32753073798
@@ -229,3 +229,45 @@ State Space / Game Tree Complexity may proceed = RAW-ONLY
 `REWR-STUDY1` remains `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`; `SIP-STUDY1` remains closed at 0 validated / 0 rejected / 5 `NON-ESTIMABLE`.
 
 No further scientific outcome generation is authorized within `ORISC-STUDY1`. Repository closure documentation may be updated on the study branch, but `main` integration is deferred until explicit instruction.
+
+## 2026-08-25 — Post-closure workflow audit and execution lock
+
+During the final document-consistency audit, a workflow-orchestration issue was detected: the historical formal workflow still had a `pull_request.paths` trigger. Because the authorization file was already part of PR #48's changed-file set, a later documentation-only PR synchronization automatically triggered the consumed formal workflow again.
+
+Post-closure duplicate:
+
+```text
+runId = 32797248144
+jobId = 97650964412
+artifactId = 9545248579
+artifact ZIP SHA-256 = 1b339c75af3ee7a514a04c51902934c8b0930d792cfcc19f8c320cae181053e0
+classification = POST-CLOSURE-AUTOMATIC-DUPLICATE / NON-CANONICAL / NO-NEW-SCIENTIFIC-EVIDENCE
+```
+
+The duplicate reproduced the exact same frozen contract, decision and result identities:
+
+```text
+specSha256 = 5a766ec900c1f76c5b832f2c76153b9426b3970316b31806d377c497d1e585e5
+authorizationSha256 = b8bc9c65510c2f4ea0909e269af7945d7ae5d3d32b595224519b1549a275325e
+formalDecision = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+production resultSha256 = 03b112ba6dc1b79d65e4bfd3dbba603f0a20d0f3e16ab9d98a37e9bf50f6afe9
+independent verification resultSha256 = 3501a65b4920e9ae44f55e2a46da370f750cbac01c1293398dc7b020cdae4bcf
+A-G12 = PASS
+IDENTITY = FAIL
+Stage 2 authorization = false
+```
+
+It was therefore classified as a non-canonical execution duplicate, not a new replication, additional evidence, or reopened scientific run. The canonical evidence remains run `32753073798` / artifact `9529771157` only.
+
+To prevent any further scientific generation inside the closed Study, the four ORISC workflows were changed to archival stubs:
+
+```text
+Stage 0A workflow archival commit = cfb292af840818e5767149969a86772c2e567eac
+Stage 0B workflow archival commit = 0caf5b791d2bf08622d992dd2a11fff6248ec47e
+Stage 1 spec-freeze archival commit = b626d60c4cc2a71ad4c8c7572328ee862b0f76c7
+Stage 1 formal workflow archival commit = 8f6ecf623abd733bc7d5333f124b8923d4456141
+```
+
+The archival stubs have no automatic push/pull-request trigger and execute no scientific ORISC tooling. The historical executable workflow used for the canonical result remains preserved in Git history and is bound by its pre-outcome SHA-256 in the final formal spec. This post-closure lock changes no formal result or scientific input retroactively.
+
+`main` remains untouched; PR #48 remains the integration boundary pending explicit user instruction.
