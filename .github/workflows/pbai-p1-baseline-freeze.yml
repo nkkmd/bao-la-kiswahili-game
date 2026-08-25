@@ -6,6 +6,7 @@ on:
     paths:
       - 'public/**'
       - 'tools/engineering/inspect-pbai-ai-gen2-baseline.js'
+      - 'tools/engineering/measure-pbai-ai-gen2-operational.js'
       - 'doc/ai-engineering/public-ai-improvement-program-1/**'
       - 'test/**'
       - '.github/workflows/pbai-p1-baseline-freeze.yml'
@@ -23,10 +24,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Materialize AI-GEN2 baseline inspection
+      - name: Materialize deterministic AI-GEN2 baseline inspection
         run: |
           mkdir -p artifacts/pbai-p1
           node tools/engineering/inspect-pbai-ai-gen2-baseline.js | tee artifacts/pbai-p1/ai-gen2-baseline-inspection.json
+      - name: Measure time-limited operational baseline separately
+        run: |
+          node tools/engineering/measure-pbai-ai-gen2-operational.js | tee artifacts/pbai-p1/ai-gen2-operational-inspection.json
       - name: Run AI-GEN2 relevant regression suite
         run: |
           node test/engine.test.js
@@ -40,5 +44,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: pbai-p1-ai-gen2-baseline-inspection
-          path: artifacts/pbai-p1/ai-gen2-baseline-inspection.json
+          path: |
+            artifacts/pbai-p1/ai-gen2-baseline-inspection.json
+            artifacts/pbai-p1/ai-gen2-operational-inspection.json
           if-no-files-found: error
