@@ -198,7 +198,7 @@ upstreamOracleMutationAuthorized = false
 
 The authorization permitted only the frozen Axis A Stage 1 endpoint.
 
-## Formal Stage 1 workflow
+## Canonical Formal Stage 1 workflow
 
 ```text
 runId = 32753073798
@@ -241,6 +241,54 @@ studyStatus = COMPLETED
 Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
 Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 ```
+
+## Post-closure automatic duplicate — non-canonical
+
+During final documentation audit, PR synchronization automatically reran the consumed formal workflow because the PR-wide changed-file set continued to match the historical `pull_request.paths` filter.
+
+```text
+runId = 32797248144
+jobId = 97650964412
+artifactId = 9545248579
+artifact ZIP SHA-256 = 1b339c75af3ee7a514a04c51902934c8b0930d792cfcc19f8c320cae181053e0
+classification = POST-CLOSURE-AUTOMATIC-DUPLICATE / NON-CANONICAL / NO-NEW-SCIENTIFIC-EVIDENCE
+```
+
+The duplicate reproduced exactly:
+
+```text
+specSha256 = 5a766ec900c1f76c5b832f2c76153b9426b3970316b31806d377c497d1e585e5
+authorizationSha256 = b8bc9c65510c2f4ea0909e269af7945d7ae5d3d32b595224519b1549a275325e
+formalDecision = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+production resultSha256 = 03b112ba6dc1b79d65e4bfd3dbba603f0a20d0f3e16ab9d98a37e9bf50f6afe9
+independent verification resultSha256 = 3501a65b4920e9ae44f55e2a46da370f750cbac01c1293398dc7b020cdae4bcf
+A-G12 = PASS
+IDENTITY = FAIL
+stage2ExecutionAuthorizedByThisResult = false
+```
+
+This run is excluded from the canonical evidence set. It does not replace or supplement run `32753073798` and does not reopen Stage 1.
+
+## Post-closure workflow archival lock
+
+After the duplicate was detected, the four ORISC workflow definitions were changed only as a post-closure execution lock:
+
+```text
+orisc-stage0a-technical.yml = archival stub
+orisc-stage0b-prefreeze.yml = archival stub
+orisc-stage1-spec-freeze.yml = archival stub
+orisc-stage1-formal.yml = archival stub
+```
+
+They now have no automatic push/pull-request trigger and execute no ORISC scientific tooling. A manual dispatch only emits a closed-study notice.
+
+The current workflow-file bytes intentionally differ from the frozen executable workflow SHA-256. This is not formal-spec drift: the executable source used for the canonical scientific run is preserved in Git history and is bound by the final pre-outcome spec as:
+
+```text
+formal workflow SHA-256 = 0f5e5da13e84e9511a477a8fdfc01133e3a36cc08e908e16a31b71517e3b429f
+```
+
+Reproducibility of the completed formal result uses that historical source identity plus the canonical workflow run/artifact, not the post-closure archival stub bytes.
 
 ## Axis B / Stage 2 reproducibility state
 
