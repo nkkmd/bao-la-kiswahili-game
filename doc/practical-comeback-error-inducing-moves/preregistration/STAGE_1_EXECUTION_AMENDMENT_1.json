@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PCEM-STUDY1",
+  "stageId": "PCEM-S1-EXPLORATORY-2026-08-25-v1",
+  "amendmentId": "PCEM-S1-EXEC-AMEND-1-2026-08-25",
+  "status": "AUTHORIZED-FOR-PARALLEL-EXECUTION",
+  "parallelExecutionAuthorized": true,
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "stage2GenerationAuthorized": false,
+  "reason": "Execution-only parallelization after the authorized serial workflow showed unexpectedly long orchestration runtime. No Stage 1 scientific result artifact existed and no candidate/effect/promotion outcome was observed at the amendment freeze point.",
+  "freezePoint": {
+    "serialWorkflowRunId": 32816467225,
+    "serialWorkflowHeadSha": "64802acbec0f0239fa76f137169321f9598bc0c4",
+    "serialProductionJobId": 97705709875,
+    "serialStatusAtFreeze": "in_progress-production",
+    "workflowArtifactCountAtFreeze": 0,
+    "stage1ResultArtifactObserved": false,
+    "candidateCountObserved": false,
+    "effectEstimateObserved": false,
+    "promotionOutcomeObserved": false,
+    "parallelPreparationHeadBeforeAmendment": "1e9350317a058a1b6a431a8803526ac352861be3"
+  },
+  "scientificContract": {
+    "specSha256": "26a7daea8588a460e19ae8e77485c50a092d714bfb3243608b5b64a95fa3fe22",
+    "featureDefinitionsSha256": "3f1e622c86fca8d4153baca815000234cd1672ad5a6a259aaae4ffea4a6e84d6",
+    "authorizationFile": "doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json",
+    "scientificLogicChanged": false,
+    "sourceSeedBlockChanged": false,
+    "populationChanged": false,
+    "rootSelectionChanged": false,
+    "referenceComparatorChanged": false,
+    "opponentPolicyChanged": false,
+    "continuationReplicatesChanged": false,
+    "endpointChanged": false,
+    "featureUniverseChanged": false,
+    "promotionRuleChanged": false,
+    "stage2ReservationChanged": false
+  },
+  "parallelPlan": {
+    "sourceChunks": 12,
+    "sourceGamesPerChunk": 256,
+    "sourceGamesTotal": 3072,
+    "sourceGameIndexPartition": "chunk i contains gameIndex [256*i, 256*(i+1))",
+    "measurementChunks": 12,
+    "maximumRootsPerMeasurementChunk": 25,
+    "selectedRootMaximum": 300,
+    "measurementPartition": "chunk i contains selectedIndex [25*i, min(25*(i+1), selectedRoots))",
+    "aggregationOrder": "ascending gameIndex for source; ascending selectedIndex for measurements",
+    "scientificModuleReuse": "parallel production calls the already authorized frozen Corpus.runGame, Corpus.selectRoots, Measurement.measureRoot, Measurement.accounting, and Discovery.discover implementations without modification",
+    "independentVerification": "parallel independent jobs use practical-comeback-stage1-independent-core.js and practical-comeback-stage1-independent-discovery.js and compare each chunk plus final aggregation against production artifacts"
+  },
+  "resourceContract": {
+    "maximumWallClockSecondsPerWorkflowJob": 18000,
+    "maximumRSSMiBPerWorkflowJob": 2048,
+    "maximumSourceGames": 3072,
+    "maximumSelectedRoots": 300,
+    "maximumExactRootMoveInterventions": 2500,
+    "maximumPlannedContinuationRows": 42500,
+    "evidenceBudgetChanged": false,
+    "additionalScientificSeedsAllowed": false
+  },
+  "supersededSerialAttempt": {
+    "classification": "ORCHESTRATION-SUPERSEDED-NO-SCIENTIFIC-RESULT",
+    "scientificEvidenceAuthorizedFromAttempt": false,
+    "partialRowsMayBeUsed": false,
+    "partialRowsMayBeCombinedWithParallelRun": false,
+    "sameFrozenSeedBlockMayBeRegenerated": true,
+    "rationale": "No completed scientific artifact or outcome was observed; the replacement regenerates the exact same frozen evidence deterministically under execution-only chunking."
+  },
+  "executionBindings": {
+    "parallelProductionHelper": "tools/experiments/run-pcem-stage1-parallel-execution.js",
+    "parallelProductionHelperGitBlobSha": "6cf7a1e59a6edda646c5722099d351925b1a25d8",
+    "parallelIndependentHelper": "tools/experiments/verify-pcem-stage1-parallel-execution.js",
+    "parallelIndependentHelperGitBlobSha": "c463dc1fcf6bf7b2501177b953455df9afb5e1d6",
+    "parallelWorkflow": ".github/workflows/pcem-stage1-parallel.yml",
+    "parallelWorkflowGitBlobSha": "3320575988f9f0ec315a8d7474840745a99ae325"
+  },
+  "interpretationBoundary": {
+    "parallelizationCreatesNoNewScientificEndpoint": true,
+    "parallelizationCreatesNoNewCandidateRule": true,
+    "parallelizationDoesNotAuthorizeStage2": true,
+    "zeroPromotedCandidatesRemainLegitimate": true,
+    "resourceCensoringVocabularyUnchanged": true,
+    "humanDifficultyClaimAuthorized": false
+  }
+}
