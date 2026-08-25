@@ -23,18 +23,39 @@ for (const text of [index, readme, status, audit, baseline, bench, candidates, d
   assert.ok(text.includes("PBAI-P1"), "PBAI-P1 marker missing");
 }
 
-assert.ok(readme.includes("Generation-2 research outcomesはPBAI-P1へ逐次流入させない"));
+assert.ok(readme.includes("Research Generation 2 research outcomesはPBAI-P1へ逐次流入させない"));
 assert.ok(readme.includes("public AIの評価関数、探索、重み、UI、worker、時間配分、state identityを変更するcandidate implementation"));
+assert.ok(status.includes("PBAI-A Research Generation 1 evidence audit = COMPLETE"));
+assert.ok(status.includes("PBAI-B AI-GEN2 exact public baseline = NOT-FROZEN / NEXT"));
+assert.ok(status.includes("PBAI-C benchmark framework = FRAMEWORK-FROZEN"));
+assert.ok(status.includes("PBAI-C numeric non-regression / release gates = NOT-FROZEN"));
 assert.ok(status.includes("candidate implementations = 0"));
-assert.ok(status.includes("public AI code changed by program establishment = false"));
+assert.ok(status.includes("public AI code changed by PBAI-P1 = false"));
+assert.ok(status.includes("Research Generation 2 evidence included = false"));
+
+assert.ok(audit.includes("PBAI-A = COMPLETE"));
+assert.ok(audit.includes("14-Study Research Generation 1 scientific evidence core")
+  || audit.includes("14 Study core"));
+assert.ok(audit.includes("AI.stateKey != Research Generation 1 authoritative RAW identity contract"));
+assert.ok(audit.includes("candidate development authorization = 0"));
+
 assert.ok(baseline.includes("baselineFrozen = false"));
 assert.ok(bench.includes("release holdoutはcandidate tuningに使用しない"));
 assert.ok(bench.includes("Ablation rule"));
-assert.ok(candidates.includes("PBAI-C001"));
-assert.ok(candidates.includes("PBAI-C005"));
-assert.ok(candidates.includes("NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION"));
+
+for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) {
+  assert.ok(candidates.includes(id), `${id} missing`);
+}
+assert.ok(candidates.includes("PBAI-A COMPLETE / NO CANDIDATE AUTHORIZED FOR IMPLEMENTATION"));
+assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 0"));
+assert.ok((candidates.match(/EVIDENCE-AUDIT-READY/g) || []).length >= 5,
+  "all initial candidates should be evidence-audit-ready");
+
 assert.ok(decisions.includes("No unvalidated win-probability semantics"));
 assert.ok(decisions.includes("RAW identity remains authoritative"));
+assert.ok(decisions.includes("D11 — Canonical Research Generation 1 evidence core"));
+assert.ok(decisions.includes("D12 — PBAI-A complete"));
+assert.ok(decisions.includes("D13 — Current `AI.stateKey` is not the Research Generation 1 RAW identity contract"));
 assert.ok(releases.includes("NO PBAI-P1 PUBLIC RELEASE YET"));
 
 for (const text of [index, naming, readme, status, baseline, namingDecision]) {
@@ -51,13 +72,14 @@ assert.ok(baseline.includes("AI-GEN3 promotionAuthorized = false"));
 assert.ok(namingDecision.includes("AI-GEN3 promotion authorized now = false"));
 
 const forbidden = [
-  "Generation-2 research outcomes are included",
+  "Research Generation 2 evidence included = true",
   "baselineFrozen = true",
   "candidate implementations = 1",
-  "public AI code changed by program establishment = true"
+  "public AI code changed by PBAI-P1 = true",
+  "AI-GEN3 promotion = AUTHORIZED"
 ];
 for (const f of forbidden) {
-  assert.ok(!status.includes(f), `unexpected establishment-state claim: ${f}`);
+  assert.ok(!status.includes(f), `unexpected PBAI state claim: ${f}`);
 }
 
 console.log("PBAI-P1 engineering program contract audit: PASS");
