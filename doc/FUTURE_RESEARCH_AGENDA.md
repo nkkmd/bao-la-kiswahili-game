@@ -355,26 +355,46 @@ OVERALL FORMAL DECISION = INCONCLUSIVE
 
 ---
 
-### 4.7 逆転可能性と勝負手
+### 4.7 逆転可能性と勝負手 — Study 1完了
 
-#### 中心課題
+#### 現在の状態
 
-理論上の最善手と、実戦で相手に誤りを要求して逆転可能性を高める手を区別する。
+**Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`) complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。**
 
-#### 主な指標
+- 初見向け概要: [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md`](practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md)
+- Canonical compact result: [`practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json`](practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json)
+- Artifact provenance: [`practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json`](practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json)
 
-- 最善応手に対する評価
-- 平均的応手に対する勝率
-- 応手の唯一性
-- 分岐数
-- 相手AIの強度別誤答率
-- 候補手ごとの逆転率
+Study 1では、reference-policy上のmove qualityとfrozen imperfect-opponent policy下のbounded-horizon empirical comebackを分離した。RAW-ONLY identityを維持し、D3 referenceでmachine-reference disadvantagedと判定したfresh rootsから、strict-reference-inferior move、reply-defense concentration、first-reply reference-error dependence、bounded comebackを測定した。
 
-Calibration Study 1のmappingをformal validated win probabilityとして前提にしない。勝率をprimary endpointに使う場合は、新研究内でfresh continuation outcomeまたはprospectively validated measurementを定義する。
+```text
+generated games = 3072
+unique historical trajectories = 2764
+selected roots = 300 = 150 Namua + 150 Mtaji
+exact root-move interventions = 1065
+continuation rows = 18105
+candidate audits = 55
+candidates passing promotion gates = 0
+promoted candidates = 0
+scientificLabel = EXPLORATORY-ONLY
+```
+
+Productionとindependent verifierはsource generation、root selection、RAW identity、measurement、discoveryを独立に再構築して一致した。55 candidate definitionsはすべてfrozen promotion conjunctionを満たさず、特にminimum unique-root / trajectory / opening-prefix supportとerror-condition / defense-condition root supportを満たさなかった。
+
+Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせず、reserved seeds `23300001..23306144`は未消費である。
+
+#### Boundary / future use
+
+この結果は、「Baoに実戦的な勝負手が存在しない」「相手の誤りを誘発する手が存在しない」「人間に難しい応手を要求する構造が存在しない」という証明ではない。また、objective superiority、game-theoretic winning move、true Bao winning probability、human error probability、expert/traditional winning-try recognitionも確立しない。
+
+同じStage 1 outcomeを見た後にthresholdを緩和する、near-missをpromotionする、favorable subgroupを選ぶ、candidate grammarを拡張する、opponent policyを置換する、Stage 1 rowsをStage 2 evidenceとして再利用することは禁止する。
+
+より豊富なmove/reply representation、別のprospectively frozen imperfect-opponent family、human/expert response difficulty、traditional winning-try recognitionを検証する場合は、新しいprospective independent studyとfresh evidenceを使用する。
 
 #### 期待成果
 
-劣勢時の勝負手分類、実戦型AI、難しい応手を要求する局面の教材化。
+将来の独立研究では、PCEM-STUDY1を救済せず、machine-operational practical comeback structureとhuman/expert difficultyを別axisとして検証し、十分な再現性と外部妥当性が得られた場合に限って、劣勢時の実戦型AIや教材化へ接続する。
 
 ---
 
