@@ -1,6 +1,6 @@
 # PCEM-STUDY1 — Decision Register
 
-All entries below are prospective research-start decisions unless later superseded by an explicitly prospective pre-outcome decision.
+All entries below are prospective research-start decisions unless later superseded by an explicitly prospective pre-outcome decision. Terminal entries record outcomes under those frozen decisions and do not retroactively alter them.
 
 ## D-001 — Study identity
 
@@ -10,8 +10,6 @@ workingEnglishTitle = Practical Comeback / Error-Inducing Move Study 1
 slug = practical-comeback-error-inducing-moves
 branch = research/practical-comeback-error-inducing-moves
 ```
-
-Rationale: consistent with recent repository convention such as `CPOB-STUDY1`, `ORISC-STUDY1`, and `SSGTC-STUDY1`.
 
 ## D-002 — Study-start baseline
 
@@ -164,7 +162,7 @@ P_SHALLOW_UNIFORM
 
 This validates implementation/seedability only. It does not establish which policy is scientifically primary until the Stage 1 spec is prospectively frozen.
 
-Status: **TECHNICALLY VALIDATED / SCIENTIFIC ROLE NOT YET FROZEN**.
+Status: **TECHNICALLY VALIDATED**.
 
 ## D-017 — Stage 0 common-random-number binding
 
@@ -209,3 +207,118 @@ confirmatoryReuseAllowed = false
 ```
 
 Status: **FROZEN**.
+
+## D-021 — Stage 1 frozen exploratory design
+
+Before Stage 1 outcome inspection, the exact design was frozen as `PCEM-S1-EXPLORATORY-2026-08-25-v1`.
+
+```text
+specSha256 = 26a7daea8588a460e19ae8e77485c50a092d714bfb3243608b5b64a95fa3fe22
+featureDefinitionsSha256 = 3f1e622c86fca8d4153baca815000234cd1672ad5a6a259aaae4ffea4a6e84d6
+source games = 3072
+Stage 1 seeds = 23200001..23203072
+root target = 300 (Namua 150 / Mtaji 150)
+reference disadvantage = D3 bestScore < 0
+primary opponent = P_MEDIUM_D1_TOP3
+primary replicates = 12 per exact root move
+bounded horizon = 96 post-root plies
+candidate templates = PCEM-T1..T8
+```
+
+The root state is hash-selected before disadvantage inspection, and no within-trajectory replacement is permitted after reference failure.
+
+Status: **FROZEN PROSPECTIVELY**.
+
+## D-022 — Stage 1 authorization boundary
+
+Stage 1 generation was separately authorized after the pre-authorization contract passed and exact source/spec/feature hashes were materialized.
+
+```text
+stage1GenerationAuthorized = true
+scientificInferenceAuthorized = false
+exploratoryAnalysisAuthorized = true
+confirmatoryReuseAllowed = false
+stage2GenerationAuthorized = false
+```
+
+Status: **FROZEN PROSPECTIVELY**.
+
+## D-023 — Execution-only parallel amendment
+
+Before any canonical Stage 1 result artifact existed or candidate/effect/promotion outcome was inspected, the long serial workflow was superseded by deterministic parallel execution.
+
+```text
+sourceChunks = 12 x 256 games
+measurementChunks = 12 x <=25 roots
+scientificLogicChanged = false
+sourceSeedBlockChanged = false
+populationChanged = false
+rootSelectionChanged = false
+opponentPolicyChanged = false
+endpointChanged = false
+promotionRuleChanged = false
+additionalScientificSeedsAllowed = false
+```
+
+Three parallel gate implementation defects occurred before scientific seed generation and are retained in `STAGE_1_EXECUTION_AMENDMENT_1.json`; all had `scientificSeedsGenerated = 0`.
+
+Status: **FROZEN PRE-OUTCOME EXECUTION AMENDMENT**.
+
+## D-024 — Canonical Stage 1 exploratory result
+
+Canonical workflow `32820391017` completed successfully and independent reconstruction passed.
+
+```text
+scientificLabel = EXPLORATORY-ONLY
+generatedGames = 3072
+uniqueHistoricalTrajectories = 2764
+selectedRoots = 300
+exactRootMoveInterventions = 1065
+totalContinuationRows = 18105
+candidateAuditCount = 55
+candidatesPassingPromotionGates = 0
+promotedCandidateCount = 0
+manualPromotionPerformed = false
+resultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
+```
+
+All frozen readiness gates passed. Independent gates `independence`, `sourceReplay`, `selection`, `rawIdentity`, `measurement`, and `discovery` all passed.
+
+Status: **FROZEN EXPLORATORY RESULT**.
+
+## D-025 — No near-miss rescue
+
+All 55 audited candidate definitions failed each of the frozen minimum unique-root, unique-historical-trajectory, distinct-opening-prefix, unique error-condition root, and unique defense-condition root support gates.
+
+Individual candidate definitions may show large descriptive machine-error-conditioned differences, but these rows do not satisfy the full frozen promotion conjunction. They are not to be relabeled as promoted, confirmed, or informally privileged near-miss candidates within PCEM-STUDY1.
+
+Status: **FROZEN NO-RESCUE INTERPRETATION**.
+
+## D-026 — Stage 2 terminal disposition
+
+Because Stage 1 produced zero promoted candidates:
+
+```text
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+stage2GenerationAuthorized = false
+reservedStage2Seeds = 23300001..23306144
+reservedStage2SeedsConsumed = false
+```
+
+Threshold relaxation, favorable subgroup rescue, candidate grammar expansion, opponent-policy substitution, and reuse of Stage 1 rows as Stage 2 evidence are prohibited.
+
+Status: **TERMINAL**.
+
+## D-027 — Final Study 1 state
+
+```text
+PCEM-STUDY1 = COMPLETE
+Stage 0 = TECHNICAL-PASS
+Stage 1 = EXPLORATORY-ONLY / COMPLETE
+Stage 1 promoted candidates = 0
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+No human, game-theoretic, true-win-probability, all-opponent, or expert/traditional winning-try claim is authorized.
+
+Status: **FINAL**.
