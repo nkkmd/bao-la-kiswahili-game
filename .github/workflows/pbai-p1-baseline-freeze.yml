@@ -4,11 +4,16 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'public/**'
       - 'tools/engineering/inspect-pbai-ai-gen2-baseline.js'
       - 'tools/engineering/measure-pbai-ai-gen2-operational.js'
-      - 'doc/ai-engineering/public-ai-improvement-program-1/**'
-      - 'test/**'
+      - 'tools/engineering/verify-pbai-ai-gen2-baseline-freeze.js'
+      - 'doc/AI_ENGINEERING_INDEX.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/README.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/BASELINE_SPEC.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/baselines/**'
+      - 'test/public-ai-improvement-program1-contract.test.js'
       - '.github/workflows/pbai-p1-baseline-freeze.yml'
   workflow_dispatch:
 
@@ -28,6 +33,8 @@ jobs:
         run: |
           mkdir -p artifacts/pbai-p1
           node tools/engineering/inspect-pbai-ai-gen2-baseline.js | tee artifacts/pbai-p1/ai-gen2-baseline-inspection.json
+      - name: Verify frozen manifest matches baseline public source
+        run: node tools/engineering/verify-pbai-ai-gen2-baseline-freeze.js
       - name: Measure time-limited operational baseline separately
         run: |
           node tools/engineering/measure-pbai-ai-gen2-operational.js | tee artifacts/pbai-p1/ai-gen2-operational-inspection.json
