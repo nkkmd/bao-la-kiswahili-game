@@ -130,3 +130,140 @@ stage2GenerationAuthorized = false
 ```
 
 Any source/spec/feature hash mismatch or dirty scientific source tree blocks generation. Stage 2 remains unauthorized. No Stage 1 scientific outcome had been generated at the moment of authorization.
+
+## 2026-08-25 — Authorized serial execution and orchestration correction
+
+The first authorized scientific workflow architecture was serial. A hash-gate implementation defect initially caused a module `require()` to begin generation during the gate. That run was superseded before `stage1-result.json` was produced; no candidate/effect/promotion outcome was inspected.
+
+The corrected serial run then proceeded under the frozen contract but showed unexpectedly long orchestration runtime. Before any completed Stage 1 result artifact existed, the latest pre-amendment serial run was confirmed to have zero workflow result artifacts and was superseded.
+
+No serial partial row is authorized for combination with the final parallel run.
+
+## 2026-08-25 — Execution-only parallel amendment
+
+`STAGE_1_EXECUTION_AMENDMENT_1.json` prospectively froze deterministic execution-only chunking without changing any scientific input or decision rule:
+
+```text
+source chunks = 12 x 256 games
+measurement chunks = 12 x <=25 roots
+scientific logic changed = false
+seed block changed = false
+population changed = false
+root selection changed = false
+opponent policy changed = false
+endpoint changed = false
+promotion rule changed = false
+additional scientific seeds allowed = false
+```
+
+Three implementation defects were caught at the parallel gate before scientific seed generation:
+
+1. a missing parenthesis in an execution helper;
+2. wrong JSON hierarchy paths for execution-amendment fields;
+3. an independent-verifier self-audit that matched its own audit literal.
+
+Each was recorded as `TECHNICALLY-INVALID-NO-SCIENTIFIC-GENERATION` with `scientificSeedsGenerated = 0`. Only execution/helper code and binding hashes were corrected; the frozen scientific contract was unchanged.
+
+## 2026-08-25 — Canonical Stage 1 parallel execution
+
+At head `f4b336ee6655c37f6c456ef1ba6175dc0816a93c`, workflow `32820391017` passed the complete frozen contract gate and generated all 12 source chunks.
+
+Production source generation completed 3072 games successfully. Root selection then completed with all readiness gates passing.
+
+Selection summary:
+
+```text
+generatedGames = 3072
+uniqueHistoricalTrajectories = 2764
+duplicateHistoricalTrajectoriesCollapsed = 308
+unavailableAssignedPhase = 93
+failedReferenceDisadvantage = 2004
+disadvantagedBeforeRawStateCollapse = 667
+duplicateDisadvantagedRawStatesCollapsed = 0
+disadvantagedPoolNamua = 225
+disadvantagedPoolMtaji = 442
+selectedRoots = 300
+namuaRoots = 150
+mtajiRoots = 150
+generatedDistinctOpeningPrefixes = 2262
+selectedDistinctOpeningPrefixes = 287
+```
+
+Production measurement completed all 12 chunks:
+
+```text
+exactRootMoveInterventions = 1065
+primaryContinuationRows = 12780
+secondaryContinuationRows = 4260
+referenceContinuationRows = 1065
+totalContinuationRows = 18105
+primaryAdministrativeHorizonExhaustions = 2
+```
+
+## 2026-08-25 — Independent Stage 1 reconstruction PASS
+
+The independent implementation regenerated all 12 source chunks, reconstructed the selected roots, independently remeasured root chunks, and reproduced discovery.
+
+Canonical independent result:
+
+```text
+decision = TECHNICAL-PASS
+passed = true
+independence = true
+sourceReplay = true
+selection = true
+rawIdentity = true
+measurement = true
+discovery = true
+```
+
+Canonical workflow/artifacts:
+
+```text
+workflowRunId = 32820391017
+workflowConclusion = success
+productionArtifactId = 9557783361
+productionArtifactDigest = sha256:e5936bba25b0aa55d81ec79c09710206d22f27b4a2f75903a6153694126ce693
+verifiedArtifactId = 9558356215
+verifiedArtifactDigest = sha256:bd92dc89283835c862e1fe6a86b4bbd7c43de696211d2761576b67055d202067
+stage1ResultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
+```
+
+## 2026-08-25 — Stage 1 exploratory result and zero promotion
+
+The frozen candidate grammar generated 55 candidate definitions for audit.
+
+```text
+scientificLabel = EXPLORATORY-ONLY
+candidateAuditCount = 55
+candidatesPassingPromotionGates = 0
+promotedCandidateCount = 0
+manualPromotionPerformed = false
+```
+
+Every candidate failed at least one preregistered promotion gate. All 55 failed each of the minimum unique-root, unique-historical-trajectory, distinct-opening-prefix, unique error-condition root, and unique defense-condition root support gates.
+
+Some individual candidates passed machine error-dependence or reply-concentration metrics, but none satisfied the complete support/diversity/effect/error-dependence conjunction. No near-miss promotion or favorable subgroup rescue was performed.
+
+## 2026-08-25 — Stage 2 not authorized / Study 1 closure
+
+Frozen zero-promotion logic was applied without modification:
+
+```text
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+stage2GenerationAuthorized = false
+reserved Stage 2 seeds = 23300001..23306144
+reserved Stage 2 seeds consumed = false
+```
+
+Repository-owned compact records and the final report were added. The terminal Study 1 state is:
+
+```text
+PCEM-STUDY1 = COMPLETE
+Stage 0 = TECHNICAL-PASS
+Stage 1 = EXPLORATORY-ONLY / COMPLETE
+Stage 1 promoted candidates = 0
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+No upstream completed-study decision, human claim, game-theoretic claim, true-win-probability claim, or all-opponent-strength claim is altered or authorized.
