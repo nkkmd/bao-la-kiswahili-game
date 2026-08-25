@@ -8,21 +8,18 @@ on:
       - "tools/experiments/verify-ssgtc-stage0-independent.js"
       - "tools/experiments/lib/ssgtc-representation-*.js"
       - "doc/state-space-game-tree-complexity/**"
-      - "tools/experiments/sync-ssgtc-program-docs.js"
       - ".github/workflows/ssgtc-stage0-technical.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   stage0-technical:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout study branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: research/state-space-game-tree-complexity
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -38,19 +35,6 @@ jobs:
         env:
           SSGTC_STAGE0_OUT: ${{ runner.temp }}/ssgtc-stage0-technical-v1
         run: node tools/experiments/verify-ssgtc-stage0-independent.js
-
-      - name: One-shot synchronize program-level SSGTC documentation
-        run: |
-          node tools/experiments/sync-ssgtc-program-docs.js
-          if git diff --quiet -- doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md; then
-            echo "No program documentation changes required."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
-            git commit -m "docs(ssgtc): synchronize completed study program state"
-            git push origin HEAD:research/state-space-game-tree-complexity
-          fi
 
       - name: Upload technical artifacts
         if: always()
