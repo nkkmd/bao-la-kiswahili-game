@@ -28,41 +28,82 @@ permissions:
 
 concurrency:
   group: pcem-stage1-exploratory-${{ github.event.pull_request.number }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   production:
     name: stage1-production
     runs-on: ubuntu-latest
     timeout-minutes: 305
+    outputs:
+      should_run: ${{ steps.canonical_guard.outputs.should_run }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Canonical-result rerun guard
+        id: canonical_guard
+        shell: bash
+        run: |
+          if [ -f doc/practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json ]; then
+            echo 'Canonical Stage 1 result already exists; heavy scientific rerun is blocked.'
+            echo 'should_run=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'should_run=true' >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Node
+        if: steps.canonical_guard.outputs.should_run == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Validate frozen Stage 1 spec
+        if: steps.canonical_guard.outputs.should_run == 'true'
         run: node tools/experiments/validate-pcem-stage1-spec.js
 
       - name: Verify authorization and source hashes before generation
+        if: steps.canonical_guard.outputs.should_run == 'true'
         run: |
           node - <<'NODE'
-          const Runner = require('./tools/experiments/run-pcem-stage1-exploratory.js');
-          const Validator = require('./tools/experiments/validate-pcem-stage1-spec.js');
-          const loaded = Validator.loadValidated();
-          const auth = Runner.loadAuthorization(loaded);
-          if (!auth.auth.stage1GenerationAuthorized) throw new Error('Stage 1 not authorized');
-          if (auth.auth.stage2GenerationAuthorized) throw new Error('Stage 2 unexpectedly authorized');
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const path = require('node:path');
+          const authPath = 'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json';
+          const specPath = 'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_EXPLORATORY_SPEC.json';
+          const featurePath = 'doc/practical-comeback-error-inducing-moves/preregistration/STAGE_1_FEATURE_DEFINITIONS.json';
+          const files = [
+            'public/engine.js',
+            'public/ai.js',
+            'public/ai-weights.js',
+            'tools/experiments/lib/ssgtc-representation-production.js',
+            'tools/experiments/lib/practical-comeback-stage0-production.js',
+            'tools/experiments/lib/practical-comeback-stage1-corpus.js',
+            'tools/experiments/lib/practical-comeback-stage1-measurement.js',
+            'tools/experiments/lib/practical-comeback-stage1-discovery.js',
+            'tools/experiments/validate-pcem-stage1-spec.js',
+            'tools/experiments/run-pcem-stage1-exploratory.js',
+            specPath,
+            featurePath
+          ];
+          const sha = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          const authText = fs.readFileSync(authPath, 'utf8');
+          const auth = JSON.parse(authText);
+          const spec = JSON.parse(fs.readFileSync(specPath, 'utf8'));
+          const actual = Object.fromEntries(files.map((p) => [p, sha(p)]));
+          if (auth.schemaVersion !== 1 || auth.studyId !== 'PCEM-STUDY1' || auth.stageId !== spec.stageId) throw new Error('authorization identity mismatch');
+          if (auth.stage1GenerationAuthorized !== true || auth.scientificInferenceAuthorized !== false || auth.confirmatoryReuseAllowed !== false) throw new Error('authorization semantics mismatch');
+          if (auth.stage2GenerationAuthorized !== false) throw new Error('Stage 2 unexpectedly authorized');
+          if (auth.specSha256 !== sha(specPath)) throw new Error('spec hash mismatch');
+          if (auth.featureDefinitionsSha256 !== sha(featurePath)) throw new Error('feature-definition hash mismatch');
+          if (JSON.stringify(auth.authorizedSourceFileSha256) !== JSON.stringify(actual)) throw new Error('scientific source hash mismatch');
           console.log(JSON.stringify({
-            stageId: loaded.spec.stageId,
-            specSha256: loaded.specSha256,
-            featureDefinitionsSha256: loaded.featureSha256,
-            authorizationSha256: auth.authorizationSha256,
+            stageId: spec.stageId,
+            specSha256: auth.specSha256,
+            featureDefinitionsSha256: auth.featureDefinitionsSha256,
+            authorizationSha256: crypto.createHash('sha256').update(authText).digest('hex'),
             sourceHashesMatch: true,
             stage1GenerationAuthorized: true,
             stage2GenerationAuthorized: false
@@ -70,6 +111,7 @@ jobs:
           NODE
 
       - name: Run authorized Stage 1 production
+        if: steps.canonical_guard.outputs.should_run == 'true'
         run: |
           mkdir -p artifacts/local/practical-comeback-error-inducing-moves/stage1-exploratory-v1
           /usr/bin/time -v node tools/experiments/run-pcem-stage1-exploratory.js \
@@ -77,7 +119,7 @@ jobs:
             2> artifacts/local/practical-comeback-error-inducing-moves/stage1-exploratory-v1/production-resource.txt
 
       - name: Inspect production classification
-        if: always()
+        if: always() && steps.canonical_guard.outputs.should_run == 'true'
         run: |
           if [ -f artifacts/local/practical-comeback-error-inducing-moves/stage1-exploratory-v1/stage1-result.json ]; then
             cat artifacts/local/practical-comeback-error-inducing-moves/stage1-exploratory-v1/stage1-result.json
@@ -86,7 +128,7 @@ jobs:
           fi
 
       - name: Upload production artifact
-        if: always()
+        if: always() && steps.canonical_guard.outputs.should_run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: pcem-stage1-exploratory-production-v1
@@ -97,6 +139,7 @@ jobs:
   independent-verification:
     name: stage1-independent-verification
     needs: production
+    if: needs.production.result == 'success' && needs.production.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 305
     steps:
@@ -139,7 +182,7 @@ jobs:
             const out = {
               schemaVersion: 1,
               studyId: 'PCEM-STUDY1',
-              stageId: r.provenance?.stageId || 'PCEM-S1-EXPLORATORY-2026-08-25-v1',
+              stageId: 'PCEM-S1-EXPLORATORY-2026-08-25-v1',
               decision: 'RESOURCE-CENSORED-BEFORE-INDEPENDENT-FULL-RECONSTRUCTION',
               passed: false,
               scientificInferenceAuthorized: false,
