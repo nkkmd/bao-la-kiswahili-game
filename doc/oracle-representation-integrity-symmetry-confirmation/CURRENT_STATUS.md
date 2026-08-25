@@ -90,7 +90,7 @@ authorizationId = ORISC-S1-REPRESENTATION-INTEGRITY-AUTH-2026-08-25-v1
 authorizationSha256 = b8bc9c65510c2f4ea0909e269af7945d7ae5d3d32b595224519b1549a275325e
 ```
 
-Authorized workflow:
+Canonical authorized workflow:
 
 ```text
 runId = 32753073798
@@ -169,6 +169,35 @@ State Space / Game Tree Complexity may proceed = RAW-ONLY
 ```
 
 A future study must not interpret the ORISC result as evidence that the frozen nontrivial symmetry candidates are false. They were not formally evaluated.
+
+## Post-closure execution lock
+
+During final documentation audit, GitHub PR `pull_request.paths` semantics caused a documentation-only PR synchronization to trigger the already-consumed Stage 1 formal workflow once more. The duplicate run was:
+
+```text
+runId = 32797248144
+jobId = 97650964412
+artifactId = 9545248579
+artifact ZIP SHA-256 = 1b339c75af3ee7a514a04c51902934c8b0930d792cfcc19f8c320cae181053e0
+classification = POST-CLOSURE-AUTOMATIC-DUPLICATE / NON-CANONICAL / NO-NEW-SCIENTIFIC-EVIDENCE
+```
+
+It reproduced the already-canonical decision and exact scientific result identities:
+
+```text
+formalDecision = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+production resultSha256 = 03b112ba6dc1b79d65e4bfd3dbba603f0a20d0f3e16ab9d98a37e9bf50f6afe9
+independent verification resultSha256 = 3501a65b4920e9ae44f55e2a46da370f750cbac01c1293398dc7b020cdae4bcf
+A-G12 = PASS
+IDENTITY = FAIL
+Stage 2 authorized = false
+```
+
+This duplicate does not expand, replace, or re-estimate the evidence set. The canonical formal run remains `32753073798` / artifact `9529771157` only.
+
+To enforce the closure firewall, all four ORISC GitHub Actions workflows were subsequently converted to closed-study archival stubs. They no longer auto-run on push or pull request and no longer execute ORISC scientific tooling. The executable formal workflow used by the canonical result remains preserved in Git history and is bound by the frozen pre-outcome workflow SHA-256 `0f5e5da13e84e9511a477a8fdfc01133e3a36cc08e908e16a31b71517e3b429f`.
+
+Current workflow-file bytes are therefore intentionally post-closure archival state and are not expected to equal the frozen historical executable workflow hash.
 
 ## Canonical conclusion documents
 
