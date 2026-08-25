@@ -1,11 +1,37 @@
 # PCEM-STUDY1 Results Directory
 
-Status: **EMPTY BY DESIGN AT RESEARCH START**
+Status: **STUDY 1 COMPLETE**
 
-No scientific result has been generated yet.
+## Canonical compact records
 
-Stage 0 technical artifacts, when created, must be clearly labeled technical-only with `scientificInferenceAuthorized = false` and must not be reused as Stage 1/Stage 2 scientific evidence.
+- `STAGE_0_TECHNICAL_RESULT.json` — Stage 0 technical-only canonical result.
+- `STAGE_1_EXPLORATORY_RESULT.json` — Stage 1 canonical exploratory result.
+- `STAGE_1_INDEPENDENT_VERIFICATION.json` — independent full reconstruction result.
+- `STAGE_2_NON_AUTHORIZATION.json` — terminal Stage 2 non-authorization record.
 
-Stage 1 artifacts must be labeled `EXPLORATORY-ONLY` and remain disjoint from Stage 2 formal evidence.
+## Stage 1 canonical outcome
 
-Stage 2 artifacts may exist only after an explicit prospective Stage 2 authorization following a nonzero frozen Stage 1 promotion result.
+```text
+scientificLabel = EXPLORATORY-ONLY
+generatedGames = 3072
+selectedRoots = 300
+candidateAuditCount = 55
+promotedCandidateCount = 0
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+Canonical workflow:
+
+```text
+workflowRunId = 32820391017
+sourceCommit = f4b336ee6655c37f6c456ef1ba6175dc0816a93c
+productionArtifactId = 9557783361
+productionArtifactDigest = sha256:e5936bba25b0aa55d81ec79c09710206d22f27b4a2f75903a6153694126ce693
+verifiedArtifactId = 9558356215
+verifiedArtifactDigest = sha256:bd92dc89283835c862e1fe6a86b4bbd7c43de696211d2761576b67055d202067
+stage1ResultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
+```
+
+The large source/selection/measurement/discovery artifacts are retained as GitHub Actions artifacts rather than committed wholesale. The compact repository records preserve the canonical decision, counts, hashes, artifact IDs and interpretation boundary.
+
+Stage 1 remains exploratory-only and may not be reused as Stage 2 formal evidence. Zero promotion is the frozen terminal outcome; no threshold relaxation, favorable subgroup rescue or post-outcome candidate expansion is authorized.
