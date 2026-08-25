@@ -181,9 +181,13 @@ function main() {
     }
   }
   const source = fs.readFileSync(__filename, "utf8");
-  gates.independence = !/practical-comeback-stage0-production/.test(source)
-    && !/critical-positions-outcome-branching/.test(source)
-    && !/position-complexity-search-diagnostic/.test(source);
+  const forbiddenModuleTokens = [
+    ["practical", "comeback", "stage0", "production"].join("-"),
+    ["critical", "positions", "outcome", "branching"].join("-"),
+    ["position", "complexity", "search", "diagnostic"].join("-"),
+  ];
+  const requireLines = source.split("\n").filter((line) => line.includes("require("));
+  gates.independence = forbiddenModuleTokens.every((token) => requireLines.every((line) => !line.includes(token)));
   const passed = Object.values(gates).every(Boolean);
   const result = { schemaVersion:1, studyId:artifact.studyId, stageId:artifact.stageId,
     scientificInferenceAuthorized:false, decision: passed ? "TECHNICAL-PASS" : "TECHNICALLY-INVALID",
