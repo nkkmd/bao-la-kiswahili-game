@@ -54,7 +54,7 @@ assert.equal(baselineManifest.authorization.AI_GEN3PromotionAuthorized, false);
 assert.ok(bench.includes("Status: **FROZEN / PBAI-C GLOBAL NUMERIC GATES COMPLETE**"));
 assert.ok(bench.includes("PBAI-C-GLOBAL-GATES-2026-08-26-v1"));
 assert.ok(bench.includes("release holdout executionは**NOT-AUTHORIZED**"));
-assert.ok(bench.includes("core observed candidate score >= 0.50"));
+assert.ok(bench.includes("observed candidate score >= 0.50"));
 assert.ok(bench.includes("catastrophic new loss count = 0"));
 assert.ok(bench.includes("median elapsed(candidate / baseline) <= 1.05"));
 assert.ok(bench.includes("KEEP-AI-GEN2"));
