@@ -149,7 +149,7 @@ for (const rel of studyCurrentFacing) {
 
 containsAll("README.md", ["PCEM", "55 candidate audits", "promoted candidates 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
 containsAll("doc/RESEARCH_INDEX.md", ["### 16. Practical Comeback / Error-Inducing Move — Study 1", "promotedCandidateCount = 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
-containsAll("doc/FUTURE_RESEARCH_AGENDA.md", ["Version: 1.15.0", "Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。"]);
+containsAll("doc/FUTURE_RESEARCH_AGENDA.md", ["Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。"]);
 containsAll("doc/practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md", [
   "scientificWorkflowGitBlobSha = 3320575988f9f0ec315a8d7474840745a99ae325",
   "Post-closure workflow-path distinction",

@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 1.15.0  
+Version: 2.0.0  
 Status: Active  
 作成日: 2026-07-21  
-更新日: 2026-08-25
+更新日: 2026-08-26
 
 ## 1. 目的
 
@@ -12,6 +12,10 @@ Status: Active
 ここで扱う課題は、既存研究の試行数追加、別seedによる追試、既存候補の結果後の救済ではない。囲碁・将棋で発展してきた局面分類、手筋、形勢判断、終盤解析、認知研究、計算複雑性研究などを参考にしつつ、Bao固有の構造へ置き換えた独立の研究領域を対象とする。
 
 本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
+
+2026-08-26から、本書は第一世代研究のclosure記録に加えて**第二世代の純粋研究アジェンダ**を保持する。第二世代研究はBaoそのものについての再現可能な知識を増やすことを目的とし、publicで使用中のBao AIの棋力向上・製品品質・deployment結果をscientific endpointまたは成功基準に含めない。完了した研究成果をAI改善へ利用する工程は、研究プログラムとは独立したengineering trackとして別管理する。engineering側の結果によって既存Studyまたは第二世代Studyのformal decisionを変更しない。
+
+第一世代節に残るAI・教材・解説への言及は、研究成果の**潜在的downstream利用**を示す歴史的・構想上の記述であり、第二世代研究のendpointではない。各第二世代Studyでは研究用engine / evaluator / search semantics / population / seed / identity contractをprospectively freezeし、public AIがその後変更されても当該Studyのscientific instrumentをretroactiveに変更しない。
 
 2026-08-23時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
 
@@ -699,3 +703,309 @@ Human evidenceなしではhuman error mechanismをformalに主張しない。
 中心となる研究方針は次のとおりである。
 
 > Baoの局面を分類し、局面間に共通する戦略原理を発見し、それを人間が理解できる知識へ変換する。
+
+## 9. 第二世代研究アジェンダ
+
+### 9.1 位置づけ
+
+第一世代のmachine-only研究系列は一通りclosureした。human/expert evidenceを必要とする「人間とAIの判断差」はparticipant access制約のため当面保留であり、machine evidenceで代替しない。
+
+第二世代の作業英語名は次とする。
+
+**Bao Second-Generation Research Program — Robust Measurement, Strategic Representation, Temporal Structure, and Exact Analysis**
+
+日本語作業名:
+
+**Bao第二世代研究計画 — 測定の頑健化、戦略表現の高度化、時間構造の統合、exact解析の拡張**
+
+以下の`G2-01`〜`G2-12`および`G2-H01`は**Agenda上の順序ラベルであり、正式Study IDではない**。正式な研究題目、Study ID、stage ID、seed range、endpoint、threshold、estimability gate、停止条件は、各研究開始時に既存命名規則との整合を確認したうえでoutcome生成前にprospectively固定する。
+
+第二世代の中心目的は、第一世代で確立したmeasurement boundary、negative / inconclusive / non-estimable result、bounded exact resultを保持したまま、より頑健な測定、より豊かな戦略表現、時間構造、exact knowledgeを新しいfresh evidenceで検証することである。
+
+### 9.2 研究とAI改善の分離
+
+第二世代は純粋な研究プログラムとして完結させる。
+
+- public AIの棋力、対局勝率、応答速度、ユーザー体験、deployment成否を研究endpointにしない。
+- 研究結果をpublic AIへ実装したかどうかをStudyの成功条件にしない。
+- public AIの改善結果を用いて、既存Studyまたは第二世代Studyのformal decisionを変更しない。
+- public AIの新しいversionを将来の研究instrumentとして使用する場合は、そのversionを別のresearch instrumentとしてoutcome前にfreezeする。
+- 研究成果は完了後、独立したengineering trackへのinputになり得るが、そのtranslation / implementation / benchmark / deploymentは本Agendaの研究課題に含めない。
+
+したがって研究とengineeringの関係は原則として一方向とする。
+
+```text
+completed research result
+        ↓
+separate AI engineering program
+```
+
+engineering上の観測から新しい科学的疑問が生じた場合は、既存Studyへ戻して結果を変更せず、新しいprospective research questionとして別Studyを開始する。
+
+### 9.3 第二世代共通科学contract
+
+各core Studyは少なくとも次を満たす。
+
+1. 第一世代のformal decision、threshold、classifier、endpoint、population、interpretation boundaryを変更・救済しない。
+2. 第一世代dataはhypothesis generation、resource planning、failure-mode identification、technical fixtureには利用できるが、第二世代のformal confirmation evidenceへ無条件に再利用しない。
+3. formal claimには原則fresh evidenceを用い、development / exploratory / confirmationのidentity firewallを明示する。
+4. research engine commit、evaluator、search semantics、depth / node budget、policy、seed rangeをoutcome生成前にfreezeする。
+5. authoritative state identityは、別のvalid formal transformation studyが成立するまでは`pits,reserve,houseOwned,player,phase,winner,pending`のRAW identityとする。`turn`と`reason`はidentityへ含めない。
+6. symmetry / reflection / seat swap / quotient identity / canonicalizationは、G2-03等の独立Studyでformal validationされるまでstate deduplicationへ使用しない。
+7. engine evaluation、empirical continuation outcome、game-theoretic value、search reliability、structural complexity、decision criticality、practical comeback、machine decision failure、human difficulty/errorを別constructとして保持する。
+8. resource cutoff、administrative cutoff、missing evidenceをwin/loss/drawまたはscientific nullへ読み替えない。
+9. independent verifierまたは同等のindependent reconstructionを原則として設け、productionと同じscientific logicを無検証で共有しない。
+10. solver output、workflow artifact、repository-facing projection、raw identity bindingを別々に追跡し、representation integrityをdownstream利用の独立gateとする。
+11. negative / null / inconclusive / non-estimable / not-authorized resultも正常なclosure outcomeとして保存する。
+12. AI実装・AI品質向上をscientific endpointに混入させない。
+
+### 9.4 Wave A — Measurement and Exact Foundations
+
+#### G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1
+
+**状態:** planned / new prospective independent study
+
+中心課題:
+
+> engine evaluationとfresh empirical continuation outcomeの対応を、第一世代Study 1のestimability failureを救済せず、identity-firewall attritionを事前に見込んだ十分なfresh populationでformalに検証できるか。
+
+第一世代Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`はimmutableとする。Study 1のisotonic mappingをvalidated Bao win probabilityとして使用しない。
+
+最低限、phase-aware calibration、held-out reliability、Brier / log loss、calibration slope / intercept、uncertainty、identity firewall、sample-count estimabilityをoutcome前に固定する。Study 1 mappingの単純な再判定ではなく、新しいreplication Studyとして設計する。
+
+**Priority:** P0
+
+#### G2-02 — Search Reliability / Decision Robustness Study 1
+
+**状態:** planned / new construct
+
+中心課題:
+
+> 同一raw stateに対するbest move、TopSet、move ranking、score gap、principal variationは、depth、node budget、quiescence等のprospectively frozen探索条件を変えたときどの程度安定するか。
+
+主な測定候補はbest-move agreement、Top-k overlap、rank correlation、best-second gap stability、evaluation-sign stability、PV stability、depth sensitivity、budget sensitivityとする。
+
+Position Complexity / Difficulty Study 1のhuman difficulty constructとは分離し、search reliabilityそのものをprimary constructとする。
+
+**Priority:** P0
+
+#### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1
+
+**状態:** planned / new prospective independent study
+
+中心課題:
+
+> representation bindingを最初から明示したfresh raw-state evidenceに対して、candidate state transformationsがrule-semantic validity、legal-move equivariance、successor binding、graph isomorphismを満たすか。
+
+SIP-STUDY1の5 `NON-ESTIMABLE`およびORISC-STUDY1 Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`は変更しない。candidate transforms、positive / negative controls、repository projection contract、authorization gateをoutcome前にfreezeする。
+
+本Studyがformal validationに成功するまではcanonicalization / symmetry-reduced state countingを認めない。
+
+**Priority:** P0
+
+#### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1
+
+**状態:** planned / RAW-onlyで独立実施可能
+
+中心課題:
+
+> prospectively selectedした複数のrestricted raw-state domainsについて、complete forward closureとexact retrograde analysisによりgame-theoretic value、cycle structure、distance、optimal-move multiplicityを完全解析できるか。
+
+第一世代8-state exact domainのformal decisionを拡張解釈しない。423,733-state historical candidateへ結果後に単純cap追加して再開せず、新しいdomain-selection rule、resource rule、administrative-cutoff handlingを事前固定する。
+
+**G2-04はG2-03の成功を前提としない。** validated transformationがなくてもRAW-onlyで実施可能とする。将来symmetry-aware oracleを研究する場合は、別途そのtransform authorizationを明示する。
+
+**Priority:** P0
+
+#### G2-05 — Deep RAW State-Space Enumeration Study 1
+
+**状態:** planned / new prospective bounded-exact study
+
+中心課題:
+
+> standard rootまたはprospectively fixed rootsから、第一世代depth-8 domainを超えるbounded depthまでRAW-only complete enumerationを行い、per-depth reachable-state growth、branching、transposition structure、tree/graph occurrence比をexactに記述できるか。
+
+SSGTC-STUDY1のpartial depth-9 rowsはformal evidenceまたはestimateへ再利用しない。target depth、resource ceiling、complete-layer requirement、stop ruleをoutcome前にfreezeし、未完layerをexact countとして扱わない。
+
+本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。
+
+**Priority:** P0
+
+### 9.5 Wave B — Rich Strategic Representation
+
+#### G2-06 — Rich Critical-Position Representation Study 1
+
+**状態:** planned / new prospective independent study
+
+中心課題:
+
+> Critical Positions / Outcome Branching Study 1で139/600 high-divergence rootsが観測された一方simple one-to-two-token grammarでpromotion 0だったことを踏まえ、outcome前に固定したより豊かなrepresentationならfresh populationでdecision-critical structureを再現可能に識別できるか。
+
+候補representation familyにはlocal pit topology、capture graph、legal-move geometry、reply graph、reserve / house relation、move-set entropy、search-gap vector、local temporal context等を含め得るが、formal familyとfeature-selection ruleはoutcome前にfreezeする。
+
+第一世代1183 auditsのnear-miss promotion、threshold relaxation、manual Stage 2 target selectionは行わない。
+
+**Priority:** P0
+
+#### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
+
+**状態:** planned / new prospective independent study
+
+中心課題:
+
+> PCEM-STUDY1の`PCEM-T1..T8` grammarを救済せず、reply-set width、defense-maintaining reply fraction、reply-quality distribution、punishment concentration、opponent-policy sensitivity等を明示した新しいreply representationによりmachine-operational practical comeback structureをfresh evidenceで記述できるか。
+
+PCEM-STUDY1の55 audits / promoted 0 / Stage 2 non-authorizationはimmutable。machine reply pressureをhuman difficulty、human deception、human error probabilityと同一視しない。
+
+**Priority:** P1
+
+#### G2-08 — Machine Decision-Failure Taxonomy Study 1
+
+**状態:** planned / new research question
+
+中心課題:
+
+> 「悪手class」を直接promotionするのではなく、machine/search decision failureを再現可能なmechanistic failure modesへ分解できるか。
+
+候補familyにはhorizon failure、reply-undercoverage、ranking instability、capture-sequence misvaluation、reserve / house valuation failure、morphology mismatch、tactical oversight、long-horizon structural misvaluation等を含め得る。
+
+BMP Study 1の0 `CONFIRMED` / 4 `NOT-CONFIRMED`は変更しない。C01-C03のstructural/reply recurrenceはhypothesis-generation inputに限り使用可能とする。
+
+**Priority:** P1
+
+#### G2-09 — Tactical Motif Generalization / Counterexample Study 1
+
+**状態:** planned / new prospective independent study
+
+中心課題:
+
+> 第一世代でmachine-confirmedされた`TM-S2-C03`について、phase、morphology、search condition、state familyを変えたfresh evidenceで成立範囲とcounterexample domainをformalに特定できるか。
+
+目的はC03を普遍化することではなく、generalization boundaryとfailure boundaryを同時に確立することである。C01/C02/C04を救済しない。traditional / expert recognitionはHuman Trackの別evidenceとする。
+
+**Priority:** P1
+
+### 9.6 Wave C — Integration and Theory
+
+#### G2-10 — Unified Multiaxial Strategic State Representation Study 1
+
+**状態:** planned / downstream integrative study
+
+中心課題:
+
+> phase、morphology、activity / concentration、material / reserve、search reliability、tactical pressure、criticality、reply structure等を単一clusterへ押し込まず、複数軸を同時保持するBao strategic-state coordinate systemとして再現可能に構成できるか。
+
+本Study開始前に、どのupstream axisを`validated` / `exploratory` / `excluded`として含めるかのeligibility ruleをfreezeする。upstream negative/inconclusive resultを便宜的にvalidated axisへ昇格させない。
+
+目標は「真の局面タイプ」を宣言することではなく、fresh positionsに対して再現性・安定性・解釈可能性を持つmultiaxial representationの採否を判断することである。
+
+**Priority:** P1
+
+#### G2-11 — Long-Horizon Strategic Transition Structure Study 1
+
+**状態:** planned / downstream temporal study
+
+中心課題:
+
+> strategic-state representationを用いて、対局中にどのregimeからどのregimeへ遷移し、どの状態がpersistent / transient / bottleneck / recurrentとなるかを再現可能に記述できるか。
+
+Namua→Mtaji Study 1で棄却した`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。transition matrix、regime persistence、trajectory family、transition asymmetry等を候補とするが、primary endpointはoutcome前にfreezeする。
+
+G2-10が必要なrepresentation gateを満たさない場合、結果後に別representationへ差し替えて同じStudyを救済しない。新しいprotocolを必要とする。
+
+**Priority:** P2
+
+#### G2-12 — State-Space / Game-Tree Growth Estimation Study 1
+
+**状態:** planned / exact-enumerationとは別Study
+
+中心課題:
+
+> bounded exact layersからfull-game state-space / game-tree growthを推定するprospectively specified estimatorを構築し、fresh deeper exact holdout layersに対してそのcalibration / coverage / errorを検証できるか。
+
+G2-05等の完了済みbounded exact dataはestimator developmentやresource planningに利用できるが、formal validationに用いるdeeper exact holdoutの結果を見る前にestimator family、fitting rule、uncertainty method、acceptance criteriaをfreezeする。
+
+推定が不安定またはnon-estimableなら、その結果を正式closureとし、Bao全体のstate-space sizeを点推定として強制的に報告しない。
+
+**Priority:** P2
+
+### 9.7 Human Track — core machine programから独立
+
+#### G2-H01 — Human / Expert Strategic Judgment Study 1
+
+**状態:** participant access確保まで保留可能 / core studiesのdependencyにしない
+
+中心課題候補:
+
+- human-perceived difficulty
+- human-perceived critical positions
+- misconception / oversight
+- expert tactical-motif recognition
+- practical winning-try recognition
+- instructional salience
+
+第一世代Human / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`は変更しない。qualified participant accessが確保できない限りmachine-only proxyでformal human claimを代替しない。
+
+### 9.8 Dependencyと推奨実施順
+
+第二世代は1から12までを単純直列には実施しない。
+
+```text
+Second-Generation Common Scientific Contract
+        │
+        ├───────── G2-01 Calibration Replication
+        ├───────── G2-02 Search Reliability
+        ├───────── G2-03 State Transformation Validation
+        ├───────── G2-04 Exact Oracle Expansion (RAW-only可)
+        └───────── G2-05 Deep RAW Enumeration
+
+G2-02 ───────────────┐
+                     ├─ G2-06 Rich Critical Representation
+                     └─ G2-08 Decision-Failure Taxonomy
+
+PCEM-STUDY1 boundary ─── G2-07 Reply-Pressure Representation
+TM-S2-C03 boundary ───── G2-09 Motif Generalization / Counterexamples
+
+G2-02 + G2-06..09 closures
+        ↓
+G2-10 Unified Multiaxial Strategic State
+        ↓
+G2-11 Long-Horizon Strategic Transitions
+
+G2-05 bounded exact enumeration
+        ↓
+G2-12 prospectively specified Growth Estimation + fresh exact holdout
+
+G2-H01 Human Track = independent / non-blocking
+```
+
+G2-03がnon-confirmed / non-estimableでもG2-04とG2-05はRAW-onlyで進行可能である。validated transformが得られない限り、それらへsymmetry reductionを導入しない。
+
+開始優先度は次を推奨する。
+
+```text
+P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
+P1: G2-07, G2-08, G2-09, G2-10
+P2: G2-11, G2-12
+Separate / non-blocking: G2-H01
+```
+
+第二世代最初の独立研究候補としては`G2-01`を推奨する。ただしこれはAgenda上の優先順位であり、正式Study IDやprotocolをここでfreezeするものではない。
+
+### 9.9 第二世代プログラムの完了条件
+
+第二世代はpositive resultの数で完了判定しない。次を満たした時点をprogram closureの目安とする。
+
+1. G2-01〜G2-12が、それぞれprospectively specified stop ruleに従ってformal closureしている。dependency gateにより`NOT-AUTHORIZED-NOT-EXECUTED`となる場合も、事前規則に従ったclosureなら完了として扱える。
+2. negative / null / inconclusive / non-estimable resultをpositiveへ救済せず保存している。
+3. 第一世代のformal decisionsとinterpretation boundariesが変更されていない。
+4. research engine / data identity / seed / artifact provenanceが各Studyで再現可能に保存されている。
+5. evaluation、empirical outcome、exact value、search reliability、machine failure、human constructが分離されている。
+6. multiaxial strategic-state representationについてformalな採否またはnon-estimable decisionがある。
+7. long-horizon transition structureについてformalな採否またはnon-estimable decisionがある。
+8. expanded restricted exact-domain研究とdeeper RAW enumerationがそれぞれclosureしている。
+9. state-space / game-tree growth estimationがformal validationされるか、または推定不能性を含む明確なformal closureを持つ。
+10. 第二世代全体を統合するfinal synthesis文書が作成されている。
+11. public AIの棋力向上・deployment成否を第二世代Studyのscientific successへ読み替えていない。
+
+第二世代の完了とは「すべての仮説が確認された」ことではなく、**設定した研究課題に対して再現可能なscientific decisionを与え、その境界を保存したこと**を意味する。

@@ -581,6 +581,10 @@ Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせ�
 
 - [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)
 
+2026-08-26から、同Agenda Version 2.0.0に**第二世代の純粋研究プログラム**を追加した。第二世代は12 core studies + 独立Human Trackとして、測定の頑健化、rich strategic representation、temporal structure、exact analysis / bounded growth estimationを扱う。`G2-xx`はAgenda順序ラベルであり正式Study IDではない。
+
+publicで使用中のBao AIの品質向上は第二世代研究のendpointではなく、完了済み研究結果を入力とする**独立engineering track**として扱う。AI実装・benchmark・deploymentの結果によって研究のformal decisionを変更しない。Program-level decisionは[`research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`](research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md)を参照する。
+
 局面相転移点研究Study 1の未解決課題には、search-tree / PV / cutoff / horizon mechanism、reserve、nyumba、front-row control、capture-to-mobility、forcing-to-free-choiceなどがあります。これらはStudy 1の未完了作業ではなく、新規studyとして扱います。
 
 局面類型と棋風Study 1からの主要future study候補には、N-ACT/N-CONの独立formal replication、新しいplaying-style model family、MTAJI-M1/M2の人間/expert validation、より広いengine/search implementationでのexternal validityがあります。Stage 5 held-out corpusを再定義してconfirmationを救済することはfuture workに含めません。
