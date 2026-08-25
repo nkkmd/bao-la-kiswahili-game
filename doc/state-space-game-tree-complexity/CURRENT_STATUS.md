@@ -13,7 +13,7 @@ estimationAuthorized = false
 stage0 = SSGTC-STAGE0-PASS (TECHNICAL-ONLY)
 stage1 = EXPLORATORY-ONLY / TECHNICAL-ACCEPTANCE-PASS
 stage2 = FORMAL-STAGE-COMPLETE
-mergeToMain = NOT-YET-PERFORMED
+mergeToMain = PERFORMED
 ```
 
 ## Baseline
@@ -22,6 +22,8 @@ mergeToMain = NOT-YET-PERFORMED
 remoteMainAtStudyStart = 9e5cd1a4f48114bb0a8f13a8a58eb7a117cb5901
 studyBranch = research/state-space-game-tree-complexity
 studyId = SSGTC-STUDY1
+integrationPR = 49
+integrationMergeCommit = ced3751f2c063a0e5e801a3c0f59afbdbae7922d
 ```
 
 ## Formal result
@@ -98,4 +100,4 @@ Not authorized:
 
 ## Integration state
 
-Study work and study-level documentation are complete subject to final repository-wide documentation/CI audit. PR #49 must remain unmerged until that audit passes and the user explicitly authorizes integration. Auto-merge remains prohibited.
+Repository-wide documentation/CI audit completed successfully on the final PR head `5847268c9fcf8f9262aa102be5df5bc09f4bbe98`. PR #49 was merged to `main` on 2026-08-25 as merge commit `ced3751f2c063a0e5e801a3c0f59afbdbae7922d`. The Study 1 integration is complete. Future deeper enumeration, estimation, or symmetry-reduced counting requires a new prospective study/versioned protocol and must not reinterpret this bounded exact result.
