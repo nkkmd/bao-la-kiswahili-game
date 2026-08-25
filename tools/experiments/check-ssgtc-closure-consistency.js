@@ -8,6 +8,7 @@ const DECISION = "SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN";
 const STATE_HASH = "8215be574a04177710b479faffb70084920d79fd2449c56802d0584853c05ca9";
 const TRANSITION_HASH = "f0e57235a6611b1b4f265b51807a1943420f130d87e16e2bc367a0e2347f892e";
 const TREE_HASH = "194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6a32edc3f08";
+const INTEGRATION_MERGE_COMMIT = "ced3751f2c063a0e5e801a3c0f59afbdbae7922d";
 
 function fail(message) { throw new Error(message); }
 function read(path) {
@@ -104,9 +105,14 @@ for (const path of [
 
 includes(`${ROOT}/CURRENT_STATUS.md`, [
   "studyStatus = COMPLETED",
-  "mergeToMain = NOT-YET-PERFORMED",
+  "mergeToMain = PERFORMED",
+  `integrationMergeCommit = ${INTEGRATION_MERGE_COMMIT}`,
   "symmetryReductionUsed = false",
   "estimationAuthorized = false",
+]);
+excludes(`${ROOT}/CURRENT_STATUS.md`, [
+  "mergeToMain = NOT-YET-PERFORMED",
+  "PR #49 must remain unmerged",
 ]);
 
 includes("doc/RESEARCH_INDEX.md", [
@@ -160,5 +166,6 @@ process.stdout.write(`${JSON.stringify({
     transitionSetSha256: TRANSITION_HASH,
     treeOccurrenceSetSha256: TREE_HASH,
   },
-  integrationBoundary: "READY-FOR-FINAL-CI-NOT-MERGED",
+  integrationBoundary: "INTEGRATED-IN-MAIN",
+  integrationMergeCommit: INTEGRATION_MERGE_COMMIT,
 }, null, 2)}\n`);
