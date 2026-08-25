@@ -13,15 +13,22 @@
 - Confirmed the ORISC independent representation implementation is structurally separate from its production serializer and can inform, but not substitute for, a study-owned SSGTC independent verifier.
 - Confirmed existing ORISC Stage 0/1 workflows are closed-study notices; SSGTC will generate only fresh SSGTC-owned artifacts.
 - Frozen initial decision register, study-start firewall, Stage 0 technical protocol, Stage 1 exploratory boundary, and Stage 2 prospective firewall before Stage 0 outcome generation.
+- Added study-owned production and independent raw-state representation modules and a frozen depth-2 Stage 0 technical runner.
+- Added GitHub Actions workflow `SSGTC Stage 0 technical validation`.
+- Opened draft PR #49 from `research/state-space-game-tree-complexity` to `main`; no merge or auto-merge is authorized.
 
 ### Scientific outcome state
 
 ```text
-No Stage 0 diagnostic result generated yet.
+No Stage 0 diagnostic result has been accepted or materialized yet.
 No Stage 1 scientific corpus generated.
 No Stage 2 formal evidence generated.
 formalDecision = NOT-YET-AVAILABLE
 ```
+
+### Execution boundary
+
+An auxiliary clean-clone execution attempt from the assistant container could not begin because that container could not resolve `github.com`. This is an external execution-environment/network limitation, not an SSGTC representation gate result and not a scientific outcome. Remote GitHub CI remains the authoritative planned execution path for the committed Stage 0 runner.
 
 ### Repository interface boundary
 
