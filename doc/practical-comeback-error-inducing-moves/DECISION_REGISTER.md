@@ -134,3 +134,78 @@ Informal adjectives such as “promising” are not substitutes for formal decis
 ## D-014 — Git boundary
 
 No merge to `main`, auto-merge, or branch deletion without explicit user instruction.
+
+## D-015 — Stage 0 reference-search semantics
+
+Stage 0 prospectively implemented a study-owned deterministic exact-root search table:
+
+```text
+searchSemantics = pcem-exact-full-window-root-candidates/bao/q0/v1
+evaluationProfile = bao
+quiescence = 0
+root candidate enumeration = all exact legal moves
+```
+
+D2 and D3 tables were independently reproduced on technical fixtures. These tables are machine references only and are not game-theoretic ground truth.
+
+Status: **TECHNICALLY VALIDATED**.
+
+## D-016 — Asymmetric continuation architecture
+
+To avoid conflating opponent imperfection with weakening both players, Stage 0 fixed the technical architecture in which the root actor can use a reference policy while the opponent uses a separately specified imperfect policy.
+
+Technical policy implementations validated in Stage 0:
+
+```text
+P_REFERENCE_D2_BEST
+P_MEDIUM_D1_TOP3
+P_SHALLOW_UNIFORM
+```
+
+This validates implementation/seedability only. It does not establish which policy is scientifically primary until the Stage 1 spec is prospectively frozen.
+
+Status: **TECHNICALLY VALIDATED / SCIENTIFIC ROLE NOT YET FROZEN**.
+
+## D-017 — Stage 0 common-random-number binding
+
+For a fixed root and replicate index, the continuation RNG seed is derived independently of the chosen root move. Thus exact legal root moves are paired by the same replicate RNG stream.
+
+This is a variance-control/binding device. A continuation replicate remains nested within a root and does not enlarge root N.
+
+Status: **TECHNICALLY VALIDATED**.
+
+## D-018 — Stage 0 canonical decision
+
+Canonical Stage 0 result:
+
+```text
+stageId = PCEM-S0-TECHNICAL-2026-08-25-v1
+decision = TECHNICAL-PASS
+canonical source commit = 29976182dcdcabf206a1d0bf59252fe8bb2288df
+workflow run = 32813154014
+job = 97696278964
+artifact = 9550497573
+```
+
+Production passed 12/12 technical gates and independent verification passed 8/8 gates.
+
+Status: **FROZEN TECHNICAL RESULT**.
+
+## D-019 — Invalidated first technical run
+
+Workflow run `32813015855` is retained as an invalidated technical attempt. Its production measurement passed and all independent recomputations/hash binding passed, but the verifier independence source audit self-matched its own forbidden-module regex literals. The sole failed verifier gate was therefore `independence`.
+
+The correction changed only the verifier's source-audit mechanism and was rerun in full. No scientific population, endpoint, threshold, candidate grammar or scientific result was changed or inspected for this correction.
+
+Status: **TECHNICALLY INVALIDATED / NOT SCIENTIFIC EVIDENCE**.
+
+## D-020 — Stage 0 scientific firewall remains closed
+
+Stage 0 technical artifacts may support feasibility/resource decisions only. They may not be used to estimate disadvantaged-root prevalence, practical comeback effect, candidate recurrence, optimal promotion thresholds, or any human/game-theoretic claim.
+
+```text
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+```
+
+Status: **FROZEN**.
