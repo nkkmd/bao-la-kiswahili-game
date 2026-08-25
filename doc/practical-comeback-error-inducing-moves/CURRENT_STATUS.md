@@ -11,18 +11,20 @@ branch = research/practical-comeback-error-inducing-moves
 studyStartMainHead = 587472b7e1a3f6e390cdfea6ed0d8e0971d5711d
 ```
 
-## Current stage
+## Terminal study state
 
 ```text
-study = ACTIVE-STAGE1-EXPLORATORY-AUTHORIZED
+study = COMPLETE
 Stage 0 = TECHNICAL-PASS
-Stage 1 = AUTHORIZED-NOT-YET-EXECUTED
+Stage 1 = EXPLORATORY-ONLY / COMPLETE
+Stage 1 promoted candidates = 0
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 scientificInferenceAuthorized = false
-exploratoryAnalysisAuthorized = true
 confirmatoryReuseAllowed = false
-scientificOutcomeGenerated = false
+scientificOutcomeGenerated = true
 ```
+
+The terminal result is a valid zero-promotion exploratory result, not a technical failure. No upstream completed-study decision is reopened or rescued.
 
 ## Stage 0 canonical record
 
@@ -48,14 +50,11 @@ continuation rows = 60
 accounted rows = 60
 production elapsed = 4857.528147 ms
 max RSS = 94.82421875 MiB
-production payload = 350925 bytes
 ```
 
-The first workflow run `32813015855` remains recorded as an invalidated technical attempt. Production passed and the independent measurements matched, but the verifier independence audit self-matched its own forbidden-module regex literals. The corrected verifier audit was rerun from a new commit; the complete workflow then passed. No scientific outcome was used in this correction.
+The first workflow run `32813015855` remains an invalidated technical attempt. Its verifier independence audit self-matched its own forbidden-module literals; no scientific outcome was used in the correction.
 
-## Stage 1 frozen exploratory design
-
-The Stage 1 spec is immutable scientific input. Its embedded `status = prospective-frozen-not-authorized` records the state at which the spec itself was frozen; authorization is intentionally a separate later artifact and does not rewrite the frozen spec.
+## Stage 1 frozen design
 
 ```text
 stageId = PCEM-S1-EXPLORATORY-2026-08-25-v1
@@ -68,59 +67,82 @@ selected-root target = 300 (Namua 150 / Mtaji 150)
 primary imperfect opponent = P_MEDIUM_D1_TOP3
 primary replicates per exact root move = 12
 bounded continuation horizon = 96 post-root plies
+candidate templates = PCEM-T1..T8
+zeroPromotedCandidatesAllowed = true
 ```
 
-The disadvantaged-root rule is outcome-blind at selection time: one state is hash-ranked within the assigned phase before reference disadvantage is inspected; it is eligible only if the frozen D3 reference best score is `< 0`. No replacement within trajectory is permitted after reference failure.
+The disadvantaged-root rule was outcome-blind at selection time: one state was hash-ranked within the assigned phase before reference disadvantage was inspected; it was eligible only if the frozen D3 reference best score was `< 0`. No replacement within trajectory was permitted after reference failure.
 
-## Stage 1 authorization
+## Stage 1 execution and verification
 
-Stage 1 exploratory generation was authorized only after the pre-authorization contract workflow succeeded.
+Canonical run:
 
 ```text
-pre-authorization workflow = 32814139745
-pre-authorization head = c40679a93ab0e01899496e889f42476a3ac10339
-pre-authorization conclusion = success
-hash-materialization workflow = 32814274403
-hash-materialization artifact = 9550850177
-authorization commit = 6c7b8c53127f6b47f802d2d0af1ac14bba24d180
-stage1GenerationAuthorized = true
-scientificInferenceAuthorized = false
-exploratoryAnalysisAuthorized = true
-confirmatoryReuseAllowed = false
-stage2GenerationAuthorized = false
+sourceCommit = f4b336ee6655c37f6c456ef1ba6175dc0816a93c
+workflowRunId = 32820391017
+workflowConclusion = success
+productionArtifactId = 9557783361
+productionArtifactDigest = sha256:e5936bba25b0aa55d81ec79c09710206d22f27b4a2f75903a6153694126ce693
+verifiedArtifactId = 9558356215
+verifiedArtifactDigest = sha256:bd92dc89283835c862e1fe6a86b4bbd7c43de696211d2761576b67055d202067
+resultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
 ```
 
-The authorization binds the exact spec/feature-definition hashes and 12 scientific source-file SHA-256 values. Any scientific source, spec, or feature-definition mismatch blocks generation. The Stage 1 runner also blocks a dirty scientific source tree.
+Evidence accounting:
 
-## Fixed at research start and retained
+```text
+generatedGames = 3072
+uniqueHistoricalTrajectories = 2764
+selectedRoots = 300
+namuaRoots = 150
+mtajiRoots = 150
+exactRootMoveInterventions = 1065
+primaryContinuationRows = 12780
+secondaryContinuationRows = 4260
+referenceContinuationRows = 1065
+totalContinuationRows = 18105
+primaryAdministrativeHorizonExhaustions = 2
+```
 
-1. The study is prospective and independent; no upstream decision may be rescued or re-adjudicated.
-2. Authoritative state identity is RAW-ONLY: `pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending`.
-3. Missing `pending` is invalid before engine entry.
-4. Seed conservation is mandatory: `sum(pits) + sum(reserve) + sum(pending) = 64`.
-5. Symmetry reduction and transform-based deduplication are forbidden.
-6. Strongest-policy quality, practical comeback frequency, reply narrowness, error dependence, machine reply difficulty and move optimality gap are separate constructs.
-7. Human difficulty/psychology claims are outside scope unless a future separately authorized human study is performed.
-8. Stage 0 is technical-only and cannot supply scientific evidence.
-9. Stage 1 and Stage 2 must use fresh non-overlapping evidence blocks.
-10. Stage 1 zero promoted candidates is a legitimate outcome and does not authorize rescue.
-11. No merge, auto-merge or branch deletion is authorized without explicit user instruction.
+All frozen readiness gates passed. The independent verifier independently regenerated all 3072 source games and reproduced selection, RAW identity, measurement, and discovery.
 
-## Stage 0 technical decisions available to Stage 1
+## Stage 1 result
 
-The following measurement machinery is technically validated:
+```text
+scientificLabel = EXPLORATORY-ONLY
+candidateAuditCount = 55
+candidatesPassingPromotionGates = 0
+promotedCandidateCount = 0
+manualPromotionPerformed = false
+```
 
-- exact RAW pre-entry validation;
-- exact legal root-move enumeration and application;
-- exact first-reply enumeration;
-- deterministic D2/D3 reference-search tables under `pcem-exact-full-window-root-candidates/bao/q0/v1`;
-- asymmetric continuation with a reference-policy root actor and seeded imperfect opponent;
-- common-random-number binding by root + replicate index;
-- bounded terminal/cutoff outcome accounting;
-- independent full recomputation.
+All 55 audited candidate definitions failed the frozen minimum unique-root, unique-historical-trajectory, distinct-opening-prefix, unique error-condition root, and unique defense-condition root support requirements. Some other individual effect/error-dependence gates passed for subsets, but no candidate passed the full preregistered conjunction and no near-miss promotion is authorized.
 
-Stage 0 did **not** validate any scientific threshold, population prevalence, comeback effect, candidate grammar or promotion floor.
+## Stage 2 disposition
 
-## Immediate next step
+```text
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+stage2GenerationAuthorized = false
+reserved seeds = 23300001..23306144
+reserved seeds consumed = false
+```
 
-Execute the authorized Stage 1 exploratory workflow from the hash-bound source/spec state. Production generation must be followed by independent reconstruction/verification before any Stage 1 exploratory result is treated as valid. Stage 2 remains unauthorized regardless of Stage 1 execution until the frozen Stage 1 promotion result is independently verified and a separate prospective Stage 2 authorization is created.
+Threshold relaxation, favorable subgroup rescue, candidate grammar expansion, opponent-policy substitution, and reuse of Stage 1 rows as Stage 2 evidence are prohibited.
+
+## Interpretation boundary
+
+The study does not establish objective move superiority, game-theoretic optimality, true Bao winning probability, all-opponent-strength effectiveness, human difficulty/error inducement, or expert/traditional recognition as a Bao winning try.
+
+Machine-only reply structure remains machine-operational. RAW-ONLY identity remains authoritative. No symmetry/canonicalization is authorized.
+
+## Canonical repository records
+
+- `STUDY_1_FINAL_REPORT.md`
+- `results/STAGE_1_EXPLORATORY_RESULT.json`
+- `results/STAGE_1_INDEPENDENT_VERIFICATION.json`
+- `results/STAGE_2_NON_AUTHORIZATION.json`
+- `checkpoints/2026-08-25-stage1-exploratory-complete-stage2-not-authorized.md`
+
+## Git boundary
+
+No merge to `main`, auto-merge, or branch deletion is authorized without explicit user instruction.
