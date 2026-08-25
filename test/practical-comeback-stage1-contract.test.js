@@ -19,7 +19,7 @@ const technicalRoot = E.initialState();
 const legal = P.exactLegalMoves(technicalRoot);
 assert.ok(legal.length >= 2);
 const reply = Measurement.replyAnalysis(technicalRoot, legal[0], loaded.spec);
-assert.equal(reply.rootMoveKey, P.normalizeMove ? P.canonicalHash ? reply.rootMoveKey : reply.rootMoveKey : reply.rootMoveKey);
+assert.equal(typeof reply.rootMoveKey, "string");
 assert.equal(reply.legalReplyCount, reply.legalReplyMoveKeys.length);
 
 const prodD1 = P.referenceSearch(technicalRoot, 1);
