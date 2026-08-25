@@ -620,9 +620,9 @@ Critical Positions / Outcome Branching Study 1によって、全exact legal root
 2. **[完了] 対称性と同型局面 — Study 1（5/5 `NON-ESTIMABLE`）**
 3. **[完了] Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1（Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）**
 4. **[完了] 状態空間とゲーム木複雑度 — Study 1 (`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`)**
-5. **[後続候補] 逆転可能性と勝負手**
+5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 
-限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。State Space / Game Tree Complexity Study 1もRAW-ONLYで完了し、frozen depth-8 domainのbounded exact countを確立した。次のmachine-only研究は、この結果をfull-game claimへ救済せず、より深いRAW-only enumeration、prospectively specified estimation、または独立にvalidationされた将来transformを用いる新研究のいずれかとして設計する。
+限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。State Space / Game Tree Complexity Study 1もRAW-ONLYで完了し、frozen depth-8 domainのbounded exact countを確立した。PCEM-STUDY1もfresh Stage 1 evidenceとfull independent reconstructionまで完了したが、55 candidate auditsからpromoted candidateは0で、Stage 2は未承認・未実行で閉じた。これらの完了研究を同一data・threshold変更・near-miss promotion・post-outcome再定義で救済せず、次のmachine-only研究はnew study IDまたはversioned prospective protocolとfresh evidenceを用いて設計する。
 
 ## 6. 特に優先する三本柱
 
@@ -675,6 +675,8 @@ Position Evaluation / Win-Rate Calibration Study 1を再検証する場合、既
 Blunder / Misvaluation Patterns Study 1はStage 2まで完了しているため、同Studyの「次stage」として再開しない。C01-C04を再検証する場合も、既存Stage 2への追加game、seed extension、threshold/floor緩和、candidate edit、alternate primary depth/evaluator、favorable subgroupでformal decisionを変更しない。新しい問い、endpoint、population、seed、source identity、decision ruleをoutcome生成前に固定した**新規prospective independent study**としてのみ扱う。C01-C03のstructural failure recurrenceを新研究のhypothesis-generation inputに使うことはできるが、現Studyのconfirmation evidenceにはならない。
 
 Critical Positions / Outcome Branching Study 1はStage 1 negative exploratory resultとして閉じているため、同Studyの「Stage 2 target」を後から作らない。既存Stage 1 dataを見た後のcandidate grammar broadening/narrowing、near-miss promotion、support/divergence threshold relaxation、manual target selection、Stage 2 seed consumptionは行わない。より豊かなrepresentationを検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
+
+PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じており、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup selection、candidate grammar expansion、opponent-policy substitution、Stage 1 rowsのStage 2 evidenceへの再利用は行わない。practical comeback / error-inducing moveを再検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
 
 ORISC-STUDY1はcompleted studyであり、repository-facing rowsを修正して同一formal Axis Aを再実行したり、pre-outcome candidate contractを後からStage 2へ昇格させたりしない。representation repairやsymmetry re-confirmationを行う場合は、new study IDまたは明示的なnew version、fresh prospective authorization、outcome前のcontract freezeを必要とする。
 
