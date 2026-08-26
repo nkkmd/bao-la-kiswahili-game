@@ -1,0 +1,98 @@
+name: PBAI-P1 C004 development only
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/ai.js'
+      - 'test/pbai-c004-v1.test.js'
+      - 'tools/engineering/verify-pbai-c004-premetric.js'
+      - 'tools/engineering/run-pbai-c004-development.js'
+      - '.github/workflows/pbai-p1-c004-development.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify only authorized public surface changed
+        run: |
+          changed="$(git diff --name-only origin/main...HEAD -- public/)"
+          test "$changed" = "public/ai.js" || {
+            echo "Only public/ai.js may change for PBAI-C004-v1; got:" >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+
+      - name: Verify frozen rule engine remains unchanged
+        run: |
+          actual="$(sha256sum public/engine.js | awk '{print $1}')"
+          expected="e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$actual" = "$expected"
+
+      - name: Verify public/ai.js cost budget
+        run: |
+          baseline_bytes="$(git show f4ae3b11901180cbe417b3e643e2b357d8045d2d:public/ai.js | wc -c)"
+          candidate_bytes="$(wc -c < public/ai.js)"
+          added="$((candidate_bytes - baseline_bytes))"
+          echo "baseline_bytes=$baseline_bytes candidate_bytes=$candidate_bytes added=$added"
+          test "$added" -le 4096
+
+      - name: Validate frozen contracts and global gates
+        run: |
+          node tools/engineering/validate-pbai-p1-gate-spec.js
+          node tools/engineering/validate-pbai-c004-predevelopment-support-spec.js
+          node tools/engineering/validate-pbai-c004-contract.js
+          node test/public-ai-improvement-program1-contract.test.js
+
+      - name: Run isolated candidate unit checks
+        run: node test/pbai-c004-v1.test.js
+
+      - name: Run relevant regression tests
+        run: |
+          node test/engine.test.js
+          node test/ai.test.js
+          node test/evaluation.test.js
+          node test/search.test.js
+          node test/ai-config.test.js
+          node test/ai-worker.test.js
+          node test/tactical.test.js
+
+      - name: Holdout and validation seed firewall
+        run: |
+          ! grep -R --line-number -E '3140[0-9]{4}|3150[0-9]{4}' \
+            tools/engineering/verify-pbai-c004-premetric.js \
+            tools/engineering/run-pbai-c004-development.js || {
+              echo 'C004 development scripts must not contain validation/holdout seed values.' >&2
+              exit 1
+            }
+          echo 'Development-only firewall PASS'
+
+      - name: Run pre-metric trigger and D3 exactness audit
+        run: |
+          mkdir -p artifacts/pbai-p1/c004
+          node tools/engineering/verify-pbai-c004-premetric.js \
+            --output artifacts/pbai-p1/c004/premetric-safety.json
+
+      - name: Run frozen D4 development benefit gate
+        run: |
+          node tools/engineering/run-pbai-c004-development.js \
+            --output artifacts/pbai-p1/c004/development-result.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-c004-development
+          path: artifacts/pbai-p1/c004/
+          if-no-files-found: warn
