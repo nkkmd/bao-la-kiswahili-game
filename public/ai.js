@@ -36,6 +36,8 @@
       simulations: 0,
       playoutTurns: 0,
       maxPlayoutTurns: 0,
+      pbaiC002TriggerStates: 0,
+      pbaiC002PrioritizedMoves: 0,
     };
   }
 
@@ -377,19 +379,44 @@
       .reduce((total, event) => total + event.count, 0);
   }
 
+  function pbaiC002MoveMatches(move) {
+    return move.type === "takata"
+      && move.phase === "mtaji"
+      && move.row === 1
+      && move.direction === "right"
+      && (move.side ?? null) === null
+      && (move.houseChoice ?? null) === null
+      && Boolean(move.houseTwo) === false;
+  }
+
+  function pbaiC002OrderingActive(state, moves) {
+    if (state.phase !== "mtaji" || moves.length < 2) return false;
+    const reusablePits = state.pits[state.player].flat().filter((value) => value >= 2).length;
+    if (reusablePits > 2) return false;
+    const matching = moves.filter(pbaiC002MoveMatches).length;
+    return matching > 0 && matching < moves.length;
+  }
+
   function enhancedOrdered(
     state, player, evaluator, preferredMove, killerMove, ttMoveFirst = false, history = null,
+    pbaiC002C03Ordering = false, stats = null,
   ) {
     const maximizing = state.player === player;
-    return movesFor(state).map((move) => {
+    const moves = movesFor(state);
+    const pbaiC002Active = pbaiC002C03Ordering && pbaiC002OrderingActive(state, moves);
+    if (pbaiC002Active && stats) stats.pbaiC002TriggerStates += 1;
+    return moves.map((move) => {
       const result = E.applyMove(state, move);
       const captured = captureCount(result.events);
       const immediateWin = result.state.winner === state.player ? 1 : 0;
+      const pbaiC002Priority = pbaiC002Active && pbaiC002MoveMatches(move) ? 1 : 0;
+      if (pbaiC002Priority && stats) stats.pbaiC002PrioritizedMoves += 1;
       return {
         move,
         next: result.state,
         immediateWin,
         captured,
+        pbaiC002Priority,
         preferred: moveKey(move) === preferredMove ? 1 : 0,
         killer: moveKey(move) === killerMove ? 1 : 0,
         historyScore: history?.get(`${state.player}:${moveKey(move)}`) || 0,
@@ -398,6 +425,7 @@
     }).sort((a, b) => b.immediateWin - a.immediateWin
       || (ttMoveFirst ? b.preferred - a.preferred : 0)
       || b.captured - a.captured
+      || b.pbaiC002Priority - a.pbaiC002Priority
       || (ttMoveFirst ? 0 : b.preferred - a.preferred)
       || b.killer - a.killer
       || b.historyScore - a.historyScore
@@ -478,7 +506,7 @@
 
     const choices = enhancedOrdered(
       state, player, context.evaluator, cached?.bestMove || "", context.killers.get(ply) || "",
-      context.ttMoveFirst, context.history,
+      context.ttMoveFirst, context.history, context.pbaiC002C03Ordering, context.stats,
     );
     if (!choices.length) return state.player === player ? -WIN + ply : WIN - ply;
     const maximizing = state.player === player;
@@ -872,6 +900,7 @@
         ttMoveFirst: options.ttMoveFirst ?? false,
         orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
         normalizeTtMateScores: options.normalizeTtMateScores ?? false,
+        pbaiC002C03Ordering: options.pbaiC002C03Ordering ?? false,
       };
       let previousBestKey = moveKey(bestMove);
       let previousScore = null;
