@@ -12,9 +12,11 @@ PBAI-B AI-GEN2 exact public baseline = COMPLETE
 PBAI-C global benchmark / non-regression / release gates = COMPLETE / FROZEN
 AI-GEN2 exact baseline ID = AI-GEN2-BASELINE-2026-08-26-v1
 PBAI-C gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
-PBAI-C002-v1 = NON-ESTIMABLE / HOLD / PR #55 CLOSED WITHOUT MERGE
-PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD / PR #58 CLOSED WITHOUT MERGE
 PBAI-C001-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD / PR #61 CLOSED WITHOUT MERGE
+PBAI-C002-v1 = NON-ESTIMABLE / HOLD / PR #55 CLOSED WITHOUT MERGE
+PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD / PR #63 CLOSED WITHOUT MERGE
+PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD / PR #58 CLOSED WITHOUT MERGE
+PBAI-C005 = EVIDENCE-AUDIT-READY / NOT AUTHORIZED
 current public AI lineage = AI-GEN2
 next adopted public AI lineage reserved = AI-GEN3
 AI-GEN3 promotion = NOT-AUTHORIZED
@@ -60,6 +62,9 @@ PBAI-C001 contract-freeze work-start main
 PBAI-C001 isolated development base main
 = 65a335b455bfb288931487747d633315f71d1d17
 
+PBAI-C003 predevelopment support freeze source main
+= 5e7c67ef1fb0c1a9211c4c81d1f175f1921bde06
+
 PBAI-P1 scientific evidence cutoff
 = 2db7c4d65771066e914f32cbc4116fcc3e9e386a
 ```
@@ -77,159 +82,162 @@ frozen public AI SHA-256 = 2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8
 
 Global strength, decision-quality, operational, correctness, split/holdout and PWA release-safety gates remain unchanged.
 
-## Closed candidate — PBAI-C002-v1
-
-```text
-PBAI-C002-v1 = NON-ESTIMABLE / HOLD
-eligible target roots = 5
-minimum estimable = 48
-candidate benefit metrics = NOT EXECUTED
-validation = NOT EXECUTED
-release holdout = NOT EXECUTED
-PR #55 = CLOSED WITHOUT MERGE
-main/public candidate code = unchanged
-```
-
-The scientific source remains `TM-S2-C03 = CONFIRMED`; the engineering non-estimability result does not change it or establish motif ineffectiveness.
-
-## Closed candidate — PBAI-C004-v1
-
-Predevelopment support passed (`54 >= 48`) and isolated implementation safety passed. The frozen primary median node-ratio benefit gate failed (`1.000 > 0.950`) even though the fraction-non-worse gate and all measured semantic/boundary/control gates passed. Canonical development run `32918902388`, job `98028290217`, artifact `9589217604`; PR #58 was closed without merge. Position Complexity / Difficulty Study 1 remains formal `INCONCLUSIVE` and same-version rescue is prohibited.
-
 ## Closed candidate — PBAI-C001-v1
 
-### Scientific boundary
+Primary engineering input was Phase Transition Study 1 E-020/H18. That scientific result remains `CONFIRMED` only within its original fixed-condition scope and is not a proof that legacy search is stronger or chooses better moves.
 
-Primary Research Generation 1 input remains Phase Transition Study 1 E-020 / H18:
-
-```text
-formal decision = CONFIRMED
-scope = hard / bao / depth3 only
-scientific observation = legacy produced more capture-branch-expansion events than phase2
-```
-
-The engineering result does **not** establish that legacy search is globally stronger or weaker, that capture-branch-expansion improves winning, or that the scientific decision should change.
-
-### Baseline-only support and exact contract
-
-Before candidate implementation or benefit inspection, the following were prospectively frozen:
+Prospective support passed with `108 >= 32` eligible roots and 64 frozen targets. Premetric safety passed before benefit inspection. Binding development result:
 
 ```text
-development source = 31300001..31300512
-population = 128 Namua + 128 Mtaji = 256
-eligible Namua forced-capture roots = 108
-selected development targets = 64
-minimum estimable = 32
-feature = pbaiC001NamuaForcedCaptureLegacy
-public default = off
-levels = hard / expert
-public candidate surface = public/ai.js only
-candidate/baseline budget = hard / bao / D3 / Infinity
-reference = independent exact-full-window D4 bao
+TopSet agreement delta = +0.015625; required >= +0.05 => FAIL
+mean normalized rank-loss delta = -0.011718750000000028; required <= -0.02 => FAIL
+severe-loss-rate excess = +0.015625; required <= 0 => FAIL
+catastrophic new loss count = 0 => PASS
+median search-work ratio = 0.2772631454984396 => PASS
+fraction search-work ratio >2 = 0 => PASS
 ```
 
-Support provenance:
-
-```text
-run = 32952267253
-job = 98126097111
-artifact = 9600601764
-artifact ZIP SHA-256 = b240f1d8ffd0e3e6022db2524d1bbc1204489098def079c7c96a20dcc41a99ce
-population digest = fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734
-```
-
-### Premetric safety
-
-The isolated candidate passed feature isolation, regression, trigger/control and baseline-equivalence checks before D4 benefit was observed:
-
-```text
-premetric run = 32957250041
-job = 98141544109
-artifact = 9602505672
-artifact ZIP SHA-256 = 861735a270202e4488283dad3470ccc61ff060f4877402086b6c4b9771a8346d
-64/64 target trigger coverage = PASS
-32 Mtaji controls + 20 Namua non-forced controls = non-trigger / equivalent
-feature-off frozen baseline equivalence = PASS
-easy / normal / MCTS / explicit legacy invariance = PASS
-candidate benefit observed before PASS = false
-validation/holdout accessed = false
-```
-
-### Binding development result
-
-Canonical benefit execution:
-
-```text
-run = 32957738413
-job = 98143061656
-artifact = 9602744693
-artifact ZIP SHA-256 = 82fdffb39c967e8bf02abf3080ab1651fcfa1c88f881d0028ce5af3493d45762
-candidate branch head = f9767c575e512c1e0d41c2ad4dd1a7a9c302e29f
-candidate public/ai.js SHA-256 = 108a57d17d0d0bf2f63e3794f386ee480116791181793ff6cde7366f7bd0a439
-```
-
-Frozen 64-root gate results:
-
-```text
-TopSet agreement:
-  baseline = 0.640625 (41/64)
-  candidate = 0.65625 (42/64)
-  delta = +0.015625
-  required >= +0.05
-  => FAIL
-
-mean normalized rank loss:
-  baseline = 0.1648623511904762
-  candidate = 0.15314360119047618
-  delta = -0.011718750000000028
-  required <= -0.02
-  => FAIL
-
-severe loss:
-  baseline = 2/64 = 0.03125
-  candidate = 3/64 = 0.046875
-  excess = +0.015625
-  required <= 0
-  => FAIL
-
-catastrophic new losses = 0
-required = 0
-=> PASS
-
-median search-work ratio candidate/baseline = 0.2772631454984396
-required <= 1.50
-=> PASS
-
-fraction roots search-work ratio >2 = 0
-required <= 0.10
-=> PASS
-```
-
-The large search-work reduction cannot compensate for failed quality gates because the frozen acceptance rule is conjunctive.
-
-Binding decision:
+The efficiency gain cannot compensate for failed quality gates because the acceptance rule is conjunctive.
 
 ```text
 PBAI-C001-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
-development authorization = ENDED
-same-version rescue / retuning = PROHIBITED
-validation = NOT EXECUTED / NOT AUTHORIZED
-release holdout = NOT EXECUTED / NOT AUTHORIZED
-public adoption = NOT AUTHORIZED
-AI-GEN3 promotion = NOT-AUTHORIZED
 PR #61 = CLOSED WITHOUT MERGE
+same-version rescue = prohibited
+validation / release holdout = NOT EXECUTED / NOT AUTHORIZED
 main/public candidate implementation = 0
-main public result = KEEP-AI-GEN2
 ```
 
 Canonical result: `candidates/PBAI-C001-v1-development-result.json`.
+
+## Closed candidate — PBAI-C002-v1
+
+`TM-S2-C03 = CONFIRMED` remains unchanged. The engineering target population was non-estimable under the frozen v1 selector:
+
+```text
+eligible target roots = 5
+minimum estimable = 48
+candidate benefit metrics = NOT EXECUTED
+PBAI-C002-v1 = NON-ESTIMABLE / HOLD
+PR #55 = CLOSED WITHOUT MERGE
+validation / release holdout = NOT EXECUTED
+main/public candidate implementation = 0
+```
+
+No same-version population/trigger/threshold rescue is allowed.
+
+## Closed candidate — PBAI-C004-v1
+
+Position Complexity / Difficulty Study 1 remains formal `INCONCLUSIVE`. C004 support passed (`54 >= 48`) and isolated premetric safety passed, but the prospectively frozen practical-benefit gate failed:
+
+```text
+median nodes(candidate/baseline) = 1.000
+required <= 0.950
+=> FAIL
+```
+
+All measured semantic/boundary/control safety gates passed. PR #58 was closed without merge; same-version rescue is prohibited.
+
+## Closed candidate — PBAI-C003-v1
+
+### Scientific boundary
+
+C003 used only the completed restricted-endgame and ORISC results as engineering input:
+
+```text
+REWR-STUDY1 = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
+frozen domain = 8 states / 7 edges
+ORISC-STUDY1 = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+ORISC known repository stored-row rehash mismatch count = 3
+ORISC known RAW binding mismatch field = pending
+```
+
+Neither scientific formal decision is changed by PBAI-C003-v1.
+
+### Prospectively frozen support question
+
+Before any C003 lookup implementation or candidate-benefit measurement, the following was frozen on source main `5e7c67ef1fb0c1a9211c4c81d1f175f1921bde06`:
+
+```text
+development seeds = 31300001..31300512
+trajectories = 512
+maximum plies = 160
+target = naturally visited nonterminal state in the frozen 8-state oracle domain
+minimum practical support = >=1 hit trajectory AND >=1 unique nonterminal oracle state
+identity = pits,reserve,houseOwned,player,phase,winner,pending
+AI.stateKey = prohibited
+symmetry / seat / reflection canonicalization = prohibited
+missing pending coercion = prohibited
+oracle stored keys must rehash under strict RAW identity before reachability measurement
+```
+
+### Binding predevelopment result
+
+Canonical workflow:
+
+```text
+run = 32960056255
+job = 98150197902
+support branch head = 3a91ba211263de37115e0e22ad857df3f2e6b142
+PR #63 = CLOSED WITHOUT MERGE
+```
+
+The strict identity precondition failed before any trajectory reachability count was computed:
+
+```text
+failure stage = STRICT-RAW-IDENTITY-BINDING
+failure reason = ORACLE-STORED-ROW-REHASH-MISMATCH
+first stored key = 469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6
+strict RAW recomputed = 7849cf1069ca9c966d111bb83a1fb36915abedb4a8533083778fb67f71a39a70
+known affected repository rows = 3
+identity difference = pending
+```
+
+This is consistent with the already-completed ORISC-STUDY1 representation-integrity result. It is **not** a new scientific finding.
+
+Crucially:
+
+```text
+reachability measurement executed = false
+trajectoriesWithNonterminalOracleHit = unmeasured / null
+uniqueNonterminalOracleStatesHit = unmeasured / null
+zero-hit conclusion = NOT AUTHORIZED
+candidate implementation = 0
+candidate benefit metrics = NOT EXECUTED
+validation / release holdout = NOT EXECUTED / NOT AUTHORIZED
+```
+
+Binding engineering disposition:
+
+```text
+PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD
+same-version seed expansion = prohibited
+same-version identity relaxation = prohibited
+same-version stored-key replacement for support = prohibited
+same-version synthetic-fixture substitution = prohibited
+```
+
+Canonical files:
+
+- `candidates/PBAI-C003-v1-predevelopment-support-spec.json`
+- `candidates/PBAI-C003-v1-predevelopment-support-result.json`
+
+## Remaining candidate inventory
+
+```text
+PBAI-C005 = EVIDENCE-AUDIT-READY / NOT AUTHORIZED
+family = evaluation semantics sanitation
+scientific input = Position Evaluation / Win-Rate Calibration Study 1 = INCONCLUSIVE
+hard prohibition = no engine-score -> validated win-probability semantics
+```
+
+No C005 implementation, contract or outcome has been created. The next work should begin with a **read-only production-surface audit** to determine whether there is an actual current public semantics problem worth engineering. Do not authorize or implement C005 before that audit and a prospective exact contract.
 
 ## Current authorization boundary
 
 ```text
 PBAI-C001 authorized = false / HOLD
 PBAI-C002 authorized = false / HOLD
-PBAI-C003 authorized = false
+PBAI-C003 authorized = false / HOLD
 PBAI-C004 authorized = false / HOLD
 PBAI-C005 authorized = false
 AUTHORIZED-FOR-DEVELOPMENT = 0
@@ -240,4 +248,6 @@ public/main candidate implementations = 0
 AI-GEN3 promotion = NOT-AUTHORIZED
 ```
 
-The current public implementation remains frozen `AI-GEN2`. `KEEP-AI-GEN2` remains a valid final program outcome. A materially different C001-family mechanism requires a new prospective candidate/version and a new pre-outcome contract.
+The current public implementation remains frozen `AI-GEN2`. `KEEP-AI-GEN2` remains a valid final program outcome.
+
+For a clean restart, read `RESUME_HERE.md` first after verifying the current remote `main` HEAD.
