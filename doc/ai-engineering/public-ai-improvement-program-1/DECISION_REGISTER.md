@@ -341,6 +341,63 @@ AI-GEN3 promotion = NOT-AUTHORIZED
 
 次に許可されるphaseはPBAI-Dの**one exact candidate contract + development authorization**である。適切なcandidateが存在しない場合の正常なprogram outcomeは`KEEP-AI-GEN2`である。
 
+## PBAI-D / PBAI-E candidate decisions — 2026-08-26
+
+### D32 — PBAI-C002-v1 was prospectively authorized as move-ordering-only
+
+`PBAI-C002-v1`は`TM-S2-C03`のResearch Generation 1 evidenceを使う最初のengineering candidateとして、PR #54でexact contractをfreezeしてdevelopmentのみをauthorizeした。
+
+```text
+feature = pbaiC002C03Ordering
+public default = off
+mechanism = enhanced-alpha-beta root move ordering only
+allowed public code surface = public/ai.js only
+selective extension = prohibited
+evaluation bonus = prohibited
+forced move = prohibited
+depth/time-budget change = prohibited
+persistent table/cache = prohibited
+```
+
+Research consequenceはruntime triggerへ使用せず、scientific interpretation boundaryを維持した。
+
+### D33 — C002 development population was materialized before benefit metrics
+
+PBAI-E isolated draft PR #55でpre-metric safety testsをPASSした後、frozen development source block `31300001..31300512`だけをmaterializeした。
+
+```text
+run = 32914807381
+job = 98016194190
+population digest = e016daa0f4669ac7730d34725de16d8c1ff10c398ca07867f47e81df0b399ea7
+population = 128 Namua + 128 Mtaji = 256
+historical trajectory candidates = 432
+eligible C002 target roots = 5
+required minimum estimable roots = 48
+controls = 32 Namua + 32 Mtaji reusablePits>=3
+candidate benefit metrics observed = false
+validation seeds accessed = false
+release holdout seeds accessed = false
+```
+
+Artifact `9587768831`のZIP SHA-256は`bbf591baa19bdc33eb2a747e11e8fd390fd0fb33c84efd215cadbd19942d6d16`。
+
+### D34 — PBAI-C002-v1 is NON-ESTIMABLE / HOLD; no rescue
+
+Frozen contractのminimum estimability gate `48`に対しeligible target supportが`5`だったため、candidate node/score benefit evaluationへ進まない。
+
+```text
+PBAI-C002-v1 = NON-ESTIMABLE / HOLD
+candidate benefit metrics = NOT EXECUTED
+validation = NOT EXECUTED
+release holdout = NOT EXECUTED
+PR #55 = CLOSED WITHOUT MERGE
+public/main AI change = 0
+```
+
+同versionでのsource-block replacement、selector replacement、trigger/order/threshold retuningは禁止する。これは`TM-S2-C03 = CONFIRMED`というResearch Track decisionを変更せず、C03の有効性にnegative evidenceを与えるものでもない。`PBAI-C002-v1`のprospective engineering population/endpointが推定不能だったというengineering resultだけを意味する。
+
+C002 development authorizationはclosureと同時に終了し、`AUTHORIZED-FOR-DEVELOPMENT count = 0`へ戻す。次に進む場合は別の`EVIDENCE-AUDIT-READY` candidateについて新しいexact pre-outcome contractをfreezeする。
+
 ## Future decisions
 
-PBAI-D以降のcandidate-specific contract、development authorization、development/validation outcome、holdout authorization、adoption/rejection、release/rollback decisionは本registerへ追記する。
+次candidateのcandidate-specific contract、development authorization、development/validation outcome、holdout authorization、adoption/rejection、release/rollback decisionは本registerへ追記する。

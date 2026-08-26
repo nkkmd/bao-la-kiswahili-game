@@ -25,6 +25,9 @@ const candidates = read("doc/ai-engineering/public-ai-improvement-program-1/CAND
 const c002 = readJson(
   "doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1.json",
 );
+const c002Development = readJson(
+  "doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1-development-result.json",
+);
 const releases = read("doc/ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md");
 const authDecision = read(
   "doc/engineering-program-decisions/2026-08-26-pbai-c002-v1-development-authorization.md",
@@ -34,17 +37,23 @@ for (const text of [index, readme, status, audit, baseline, bench, candidates, r
   assert.ok(text.includes("PBAI-P1"), "PBAI-P1 marker missing");
 }
 
+// Historical phase/freeze facts remain immutable even after candidate disposition changes.
 assert.ok(readme.includes("PBAI-A/B/C COMPLETE"));
 assert.ok(readme.includes("PBAI-D PBAI-C002-v1 CONTRACT FROZEN"));
 assert.ok(readme.includes("Research Generation 2 outcomeはPBAI-P1へ逐次流入させない"));
 assert.ok(readme.includes("PBAI-E  isolated PBAI-C002-v1 development / ablation"));
 
+// Current status is allowed to advance from authorization to a frozen development disposition.
 assert.ok(status.includes("PBAI-A Research Generation 1 evidence audit = COMPLETE"));
 assert.ok(status.includes("PBAI-B AI-GEN2 exact public baseline = COMPLETE"));
 assert.ok(status.includes("PBAI-C global benchmark / numeric non-regression / release gates = COMPLETE / FROZEN"));
-assert.ok(status.includes("PBAI-D first exact candidate contract = PBAI-C002-v1 / FROZEN"));
-assert.ok(status.includes("AUTHORIZED-FOR-DEVELOPMENT = 1"));
-assert.ok(status.includes("candidate implementations = 0"));
+assert.ok(status.includes("PBAI-D PBAI-C002-v1 exact contract = COMPLETE / FROZEN"));
+assert.ok(status.includes("PBAI-E PBAI-C002-v1 development = NON-ESTIMABLE / HOLD"));
+assert.ok(status.includes("PBAI-C002 development PR #55 = CLOSED WITHOUT MERGE"));
+assert.ok(status.includes("AUTHORIZED-FOR-DEVELOPMENT = 0"));
+assert.ok(status.includes("active candidate implementations = 0"));
+assert.ok(status.includes("isolated development implementation attempts = 1"));
+assert.ok(status.includes("public/main candidate implementations = 0"));
 assert.ok(status.includes("release holdout execution = NOT-AUTHORIZED"));
 assert.ok(status.includes("public AI code changed by PBAI-P1 = false"));
 assert.ok(status.includes("Research Generation 2 evidence included = false"));
@@ -67,6 +76,7 @@ assert.equal(gateSpec.releaseHoldout.authorizedAtPBAI_C, false);
 assert.equal(gateSpec.candidateSpecificGateFloor.mayRelaxGlobalGate, false);
 assert.equal(gateSpec.releaseDecision.noAcceptableCandidateOutcome, "KEEP-AI-GEN2");
 
+// The candidate contract is historical/frozen and therefore retains its original authorization language.
 assert.equal(c002.candidateId, "PBAI-C002");
 assert.equal(c002.candidateVersion, "PBAI-C002-v1");
 assert.equal(c002.status, "FROZEN-FOR-DEVELOPMENT");
@@ -88,14 +98,43 @@ assert.equal(c002.mechanism.forcedMoveAllowed, false);
 assert.equal(c002.validationAndHoldoutFirewall.releaseHoldoutExecutionAuthorizedNow, false);
 assert.equal(c002.candidateSpecificBenefitGate.globalGateRelaxationAllowed, false);
 
+// The later development-result record is the authority for current disposition.
+assert.equal(c002Development.candidateVersion, "PBAI-C002-v1");
+assert.equal(c002Development.finalDevelopmentStatus, "NON-ESTIMABLE-HOLD");
+assert.equal(c002Development.developmentPullRequest, 55);
+assert.equal(c002Development.developmentPullRequestMerged, false);
+assert.equal(c002Development.developmentImplementationCreated, true);
+assert.equal(c002Development.publicOrMainImplementationChanged, false);
+assert.equal(c002Development.candidateBenefitMetricsObserved, false);
+assert.equal(c002Development.validationExecuted, false);
+assert.equal(c002Development.releaseHoldoutExecuted, false);
+assert.equal(c002Development.materialization.candidateSupport.eligibleTargets, 5);
+assert.equal(c002Development.materialization.candidateSupport.minimumEstimableTargets, 48);
+assert.equal(c002Development.materialization.candidateMetricsObserved, false);
+assert.equal(c002Development.materialization.validationSeedsAccessed, false);
+assert.equal(c002Development.materialization.releaseHoldoutSeedsAccessed, false);
+assert.equal(c002Development.frozenDecisionRule.supportGatePassed, false);
+assert.equal(c002Development.frozenDecisionRule.requiredAction, "NON-ESTIMABLE/HOLD");
+assert.equal(c002Development.frozenDecisionRule.sourceBlockReplacementAllowed, false);
+assert.equal(c002Development.frozenDecisionRule.selectorReplacementAllowed, false);
+assert.equal(c002Development.decision.candidateStatus, "HOLD");
+assert.equal(c002Development.decision.developmentAuthorizationContinues, false);
+assert.equal(c002Development.decision.validationAuthorized, false);
+assert.equal(c002Development.decision.releaseHoldoutAuthorized, false);
+assert.equal(c002Development.decision.publicAdoptionAuthorized, false);
+assert.equal(c002Development.decision.aiGen3PromotionAuthorized, false);
+assert.equal(c002Development.decision.mainPublicResult, "KEEP-AI-GEN2");
+
 for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) {
   assert.ok(candidates.includes(id), `${id} missing`);
 }
-assert.ok(candidates.includes("PBAI-C002 authorized = true"));
-assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 1"));
-assert.ok(candidates.includes("candidate implementations = 0"));
+assert.ok(candidates.includes("PBAI-C002 authorized = false / HOLD"));
+assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 0"));
+assert.ok(candidates.includes("active candidate implementation = 0"));
+assert.ok(candidates.includes("public/main candidate implementations = 0"));
 assert.ok(candidates.includes("release holdout execution = NOT-AUTHORIZED"));
 
+// Authorization decision remains as historical provenance, not current authorization state.
 assert.ok(authDecision.includes("AUTHORIZE DEVELOPMENT AFTER THIS CONTRACT-FREEZE CHANGE IS MERGED"));
 assert.ok(authDecision.includes("feature flag = pbaiC002C03Ordering"));
 assert.ok(authDecision.includes("release holdout execution = NOT-AUTHORIZED"));
@@ -111,7 +150,6 @@ assert.ok(naming.includes("Research Generation 2"));
 
 const forbiddenStatusClaims = [
   "Research Generation 2 evidence included = true",
-  "candidate implementations = 1",
   "release holdout execution = AUTHORIZED",
   "public AI code changed by PBAI-P1 = true",
   "AI-GEN3 promotion = AUTHORIZED"
