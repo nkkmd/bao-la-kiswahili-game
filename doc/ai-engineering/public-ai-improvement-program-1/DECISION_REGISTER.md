@@ -29,19 +29,7 @@ Position Evaluation / Win-Rate Calibration Study 1 is formal `INCONCLUSIVE`; no 
 
 ### D06 — RAW identity boundary
 
-Research-derived authoritative RAW identity contains:
-
-```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
-```
-
-Current `AI.stateKey` omits `pending` and is not authorized as a research-derived exact tablebase identity. Unvalidated symmetry/canonicalization is prohibited.
+Research-derived authoritative RAW identity contains `pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending`. Current `AI.stateKey` omits `pending` and is not authorized as a research-derived exact tablebase identity. Unvalidated symmetry/canonicalization is prohibited.
 
 ### D07 — Human claims remain separate
 
@@ -161,60 +149,15 @@ Research Generation 2 evidence included = false
 
 ### D24 — Playing-strength non-inferiority
 
-Primary strength evidence uses paired shared openings, hard fixed D3, infinite time, seat swap. Validation/holdout require:
-
-```text
-core observed score >= 0.50
-one-sided 95% opening-pair bootstrap LCB >= 0.47
-each core phase >= 0.48
-each seat >= 0.47
-each challenge stratum >= 0.45
-```
-
-Locked validation+holdout requires core `>=0.50`, LCB `>=0.48`, each core phase `>=0.49`, each seat `>=0.48`. Bootstrap unit = opening pair; 20,000 replicates; seed `31999991`.
+Primary strength evidence uses paired shared openings, hard fixed D3, infinite time, seat swap. Validation/holdout require core observed score `>=0.50`, one-sided 95% opening-pair bootstrap LCB `>=0.47`, each core phase `>=0.48`, each seat `>=0.47`, each challenge stratum `>=0.45`. Locked validation+holdout tightens core LCB to `>=0.48`, phases to `>=0.49`, seats to `>=0.48`. Bootstrap unit is opening pair, 20,000 replicates, seed `31999991`.
 
 ### D25 — Decision-quality non-regression
 
-Frozen D4 exact-full-window `bao` reference. Validation/holdout require:
-
-```text
-catastrophic new loss count = 0
-severe-loss excess <= +0.01
-top-set agreement delta >= -0.02
-mean normalized rank-loss delta <= +0.02
-per-phase severe-loss excess <= +0.02
-per-phase top-set agreement delta >= -0.03
-```
-
-Locked validation+holdout tightens severe-loss excess to `+0.005`, top-set delta to `-0.01`, normalized rank-loss delta to `+0.01`.
+Frozen D4 exact-full-window `bao` reference. Validation/holdout require catastrophic new loss count `0`, severe-loss excess `<=+0.01`, top-set agreement delta `>=-0.02`, mean normalized rank-loss delta `<=+0.02`, per-phase severe-loss excess `<=+0.02`, per-phase top-set agreement delta `>=-0.03`. Locked validation+holdout uses stricter pooled thresholds.
 
 ### D26 — Correctness and operational floors
 
-Correctness:
-
-```text
-frozen public/engine.js SHA unchanged
-existing tactical failures = 0
-candidate regression failures = 0
-required relevant test failures = 0
-crash / illegal move / invalid state = 0
-unvalidated canonicalization = prohibited
-scientifically prohibited inference in implementation/UI = prohibited
-```
-
-Operational:
-
-```text
-median elapsed ratio <= 1.05
-p95 elapsed ratio <= 1.10
-median completed-depth delta >= -1
-fraction roots >=2 depths below baseline <= 0.05
-timeout-rate increase <= +0.05
-direct/Worker deterministic mismatch = 0
-added public static assets <= 524,288 bytes
-```
-
-Persistent new tables/caches require a new prospective memory gate before implementation.
+Correctness requires unchanged frozen `public/engine.js`, zero relevant regression failures/crashes/illegal states, no unvalidated canonicalization and no scientifically prohibited inference. Operational gates remain those frozen in `PBAI-C-GLOBAL-GATES-2026-08-26-v1`.
 
 ### D27 — Frozen split and holdout firewall
 
@@ -281,9 +224,7 @@ No same-version source-block, selector, trigger, ordering or threshold rescue. T
 
 ### D35 — C004 selected before implementation; support probe required first
 
-Among remaining evidence-audit-ready candidates, C004 was selected for the next cycle because a reproducible exact D2/D3 search instrument had materially broader expected support than the 8-state exact-oracle C003 domain. Position Complexity Study remains `INCONCLUSIVE`; no validated difficulty/complexity classifier exists.
-
-To avoid repeating C002's post-implementation non-estimability, a baseline-only support probe was prospectively frozen before C004 candidate code.
+C004 was selected for the next cycle because a reproducible exact D2/D3 search instrument had materially broader expected support than the 8-state exact-oracle C003 domain. Position Complexity Study remains `INCONCLUSIVE`; no validated difficulty/complexity classifier exists. A baseline-only support probe was prospectively frozen before C004 candidate code.
 
 ### D36 — C004 predevelopment support PASS
 
@@ -321,19 +262,11 @@ exact TopSets overlap but deterministic canonical best changes = 5
 exact TopSets overlap and deterministic canonical best stays unchanged = 197
 ```
 
-Therefore:
-
-```text
-primary benefit stratum = exact TopSet-disjoint
-boundary-trigger stratum = overlap + deterministic best change; safety/cost only
-negative control = deterministic best unchanged; trigger zero + exact equivalence
-```
-
-Boundary roots are never merged into primary benefit inference.
+Therefore primary benefit stratum = exact TopSet-disjoint; boundary stratum = overlap + deterministic best change, safety/cost only; negative control = deterministic best unchanged, trigger zero + exact equivalence. Boundary roots are never merged into primary benefit inference.
 
 ### D38 — PBAI-C004-v1 exact contract and development authorization
 
-After support PASS and still before candidate implementation/outcome, freeze:
+After support PASS and before candidate implementation/outcome, the following was frozen:
 
 ```text
 candidate = PBAI-C004-v1
@@ -345,17 +278,7 @@ mechanism = depths >=4 root TT preferred move becomes TT-first
 internal nodes = baseline
 ```
 
-Prohibited:
-
-```text
-runtime exact TopSet computation
-scientific difficulty/complexity classifier
-extra depth/time
-evaluation/quiescence change
-persistent cache/table
-forced move
-engine/config/worker/UI change
-```
+Prohibited: runtime exact TopSet computation, scientific difficulty/complexity classifier, extra depth/time, evaluation/quiescence change, persistent cache/table, forced move, engine/config/worker/UI change.
 
 Primary D4 intended-benefit gate:
 
@@ -368,9 +291,86 @@ selected move outside frozen D4 top set = 0
 catastrophic new loss = 0
 ```
 
-Boundary aggregate node ratio must be `<=1.10` with exact semantic safety and no benefit claim. Negative controls require zero trigger and exact feature-on/off search-counter equality.
+Boundary aggregate node ratio must be `<=1.10` with semantic safety and no benefit claim. Negative controls require zero trigger and exact feature-on/off search-counter equality. Validation requires development PASS. Release holdout remains unauthorized. Post-outcome trigger/order/target/boundary/threshold retuning under v1 is prohibited.
 
-Development is authorized only after the exact-contract PR is merged. Validation requires development benefit/safety PASS. Release holdout remains not authorized. Post-outcome trigger/order/target/boundary/threshold retuning under v1 is prohibited.
+### D39 — C004 premetric safety PASS before benefit inspection
+
+On isolated development PR #58, the candidate passed all required premetric checks before D4 benefit was inspected:
+
+```text
+authorized public surface only = PASS
+frozen public/engine.js binding = PASS
+candidate size budget = PASS
+contract/global-gate validation = PASS
+feature-off baseline equivalence = PASS
+existing engine/AI/evaluation/search/config/worker/tactical regressions = PASS
+validation/holdout firewall = PASS
+54 primary runtime-trigger coverage = PASS
+32 selected stable-best negative controls trigger=0 = PASS
+D3 feature-on/off exactness = PASS
+candidate benefit metrics observed before this PASS = false
+```
+
+Thus the subsequent D4 result is an authorized, binding development outcome rather than a premetric implementation failure.
+
+### D40 — C004 frozen D4 median intended-benefit gate FAIL
+
+Canonical development provenance:
+
+```text
+development base main = ea86fcbd797c1c3d0f0549fd159cc643c228b34d
+candidate branch head = 992130acdd4f58180045291bb6bc540f9bc3c0ba
+run = 32918902388
+job = 98028290217
+artifact = 9589217604
+artifact ZIP SHA-256 = f5552a1b8386cf58a585ea92cd5443f9d306d70630e1ef4afa78fd96404f4e8f
+candidate public/ai.js SHA-256 = b24f4afddd43f6acf7595079e041ad5a047a95d1eb7beb45a418c9a71f7830c1
+```
+
+Primary 54-root result:
+
+```text
+median nodes(candidate/baseline) = 1.000
+frozen maximum = 0.950
+median benefit gate = FAIL
+
+fraction candidate nodes <= baseline = 46/54 = 0.8518518519
+frozen minimum = 0.55
+fraction gate = PASS
+```
+
+All measured frozen safety/boundary/control gates passed:
+
+```text
+primary trigger failures = 0
+root-score mismatches across primary+boundary = 0
+candidate outside frozen D4 TopSet = 0
+catastrophic new losses = 0
+boundary aggregate node ratio = 914/914 = 1.000 <= 1.10
+negative-control trigger failures = 0
+negative-control exactness failures = 0
+```
+
+Pooled primary nodes were descriptively `39869/41304 = 0.9652576`, but pooled ratio was not the prospectively frozen primary acceptance endpoint. It cannot replace or rescue the failed median endpoint.
+
+### D41 — PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD; no same-version rescue
+
+Because the candidate-specific benefit conjunction required the median gate to pass:
+
+```text
+PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
+development authorization = ENDED
+validation = NOT EXECUTED
+release holdout = NOT EXECUTED
+public adoption = NOT AUTHORIZED
+AI-GEN3 promotion = NOT-AUTHORIZED
+PR #58 = CLOSED WITHOUT MERGE
+main/public candidate implementation = 0
+```
+
+No same-version mechanism, trigger, ordering placement, target/boundary definition, source block or benefit-threshold retuning is allowed. A materially different search-instability engineering mechanism requires a new prospective candidate/version and new pre-outcome contract.
+
+This engineering result does not alter Position Complexity / Difficulty Study 1 (`INCONCLUSIVE`) and does not establish that every search-instability-aware mechanism is ineffective.
 
 ## Current authorization state
 
@@ -378,13 +378,14 @@ Development is authorized only after the exact-contract PR is merged. Validation
 PBAI-C001 authorized = false
 PBAI-C002 authorized = false / HOLD
 PBAI-C003 authorized = false
-PBAI-C004 authorized = true after exact-contract merge
+PBAI-C004 authorized = false / HOLD
 PBAI-C005 authorized = false
-AUTHORIZED-FOR-DEVELOPMENT = 1 after merge
+AUTHORIZED-FOR-DEVELOPMENT = 0
 active candidate implementations = 0
+isolated development implementation attempts = 2
 public/main candidate implementations = 0
 release holdout execution = NOT-AUTHORIZED
 AI-GEN3 promotion = NOT-AUTHORIZED
 ```
 
-Future development/validation outcome, holdout authorization, adoption/rejection and release/rollback decisions are appended here without changing earlier decisions.
+Future candidate selection, contract, development/validation outcome, holdout authorization, adoption/rejection and release/rollback decisions are appended here without changing earlier decisions. `KEEP-AI-GEN2` remains an acceptable program outcome.
