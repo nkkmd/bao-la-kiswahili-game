@@ -14,6 +14,8 @@ const naming = read("doc/ai-engineering/AI_GENERATION_NAMING.md");
 const readme = read(`${base}README.md`);
 const resume = read(`${base}RESUME_HERE.md`);
 const status = read(`${base}CURRENT_STATUS.md`);
+const finalReport = read(`${base}PROGRAM_FINAL_REPORT.md`);
+const c005Audit = read(`${base}C005_PRODUCTION_SURFACE_AUDIT.md`);
 const audit = read(`${base}GENERATION_1_EVIDENCE_AUDIT.md`);
 const baseline = read(`${base}BASELINE_SPEC.md`);
 const baselineManifest = readJson(`${base}baselines/AI-GEN2-BASELINE-2026-08-26-v1.json`);
@@ -29,26 +31,32 @@ const c002Result = readJson(`${base}candidates/PBAI-C002-v1-development-result.j
 const c003Spec = readJson(`${base}candidates/PBAI-C003-v1-predevelopment-support-spec.json`);
 const c003Result = readJson(`${base}candidates/PBAI-C003-v1-predevelopment-support-result.json`);
 const c004Result = readJson(`${base}candidates/PBAI-C004-v1-development-result.json`);
+const c005Result = readJson(`${base}candidates/PBAI-C005-production-surface-audit-result.json`);
 
-for (const text of [index, readme, resume, status, audit, baseline, bench, candidates, decisions, releases]) {
+for (const text of [
+  index, readme, resume, status, finalReport, c005Audit, audit, baseline, bench,
+  candidates, decisions, releases,
+]) {
   assert.ok(text.includes("PBAI-P1"), "PBAI-P1 marker missing");
 }
 
-assert.ok(readme.includes("PBAI-A/B/C COMPLETE"));
-assert.ok(readme.includes("C001 HOLD / C002 HOLD / C003 HOLD / C004 HOLD / C005 not authorized"));
+assert.ok(readme.includes("PROGRAM COMPLETE / KEEP-AI-GEN2"));
+assert.ok(status.includes("PROGRAM = COMPLETE"));
+assert.ok(status.includes("FINAL PROGRAM OUTCOME = KEEP-AI-GEN2"));
 assert.ok(status.includes("PBAI-C001-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD / PR #61 CLOSED WITHOUT MERGE"));
 assert.ok(status.includes("PBAI-C002-v1 = NON-ESTIMABLE / HOLD / PR #55 CLOSED WITHOUT MERGE"));
 assert.ok(status.includes("PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD / PR #63 CLOSED WITHOUT MERGE"));
 assert.ok(status.includes("PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD / PR #58 CLOSED WITHOUT MERGE"));
-assert.ok(status.includes("PBAI-C005 = EVIDENCE-AUDIT-READY / NOT AUTHORIZED"));
+assert.ok(status.includes("PBAI-C005 = NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD / CLOSED WITHOUT IMPLEMENTATION"));
 assert.ok(status.includes("AUTHORIZED-FOR-DEVELOPMENT = 0"));
 assert.ok(status.includes("active candidate implementations = 0"));
 assert.ok(status.includes("public/main candidate implementations = 0"));
-assert.ok(status.includes("validation execution = NOT-AUTHORIZED"));
-assert.ok(status.includes("release holdout execution = NOT-AUTHORIZED"));
+assert.ok(status.includes("validation execution = NOT-AUTHORIZED / NOT-EXECUTED"));
+assert.ok(status.includes("release holdout execution = NOT-AUTHORIZED / NOT-EXECUTED"));
 assert.ok(status.includes("public AI code changed by PBAI-P1 = false"));
+assert.ok(status.includes("original candidate inventory remaining = 0"));
 assert.ok(status.includes("Research Generation 2 evidence included = false"));
-assert.ok(status.includes("AI-GEN3 promotion = NOT-AUTHORIZED"));
+assert.ok(status.includes("AI-GEN3 promotion = NOT-AUTHORIZED / NOT-PROMOTED"));
 
 assert.ok(audit.includes("PBAI-A = COMPLETE"));
 assert.ok(audit.includes("AI.stateKey != Research Generation 1 authoritative RAW identity contract"));
@@ -142,22 +150,67 @@ assert.equal(c003Result.noRescueRule.sameVersionSeedBlockExpansionAllowed, false
 assert.equal(c003Result.noRescueRule.sameVersionSyntheticFixtureSubstitutionAllowed, false);
 assert.equal(c003Result.mainPublicResult, "KEEP-AI-GEN2");
 
-for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) assert.ok(candidates.includes(id), `${id} missing`);
+assert.equal(c005Result.program, "PBAI-P1");
+assert.equal(c005Result.candidateId, "PBAI-C005");
+assert.equal(c005Result.auditType, "read-only-production-surface");
+assert.equal(c005Result.auditSourceMain, "7f3ea339f7eec0668c641774eb6c2dcd37040a38");
+assert.equal(c005Result.researchGeneration2EvidenceIncluded, false);
+assert.equal(c005Result.scientificBoundary.formalDecision, "INCONCLUSIVE");
+assert.equal(c005Result.scientificBoundary.engineScoreIsValidatedBaoWinProbability, false);
+assert.equal(c005Result.scientificBoundary.formalDecisionChangedByEngineering, false);
+assert.equal(c005Result.baselineIdentity.currentMainMatchesFrozenBaselineBlobs, true);
+assert.equal(c005Result.publicTerminologySearch.probability, 0);
+assert.equal(c005Result.publicTerminologySearch["win rate"], 0);
+assert.equal(c005Result.publicTerminologySearch["winning chance"], 0);
+assert.equal(c005Result.publicTerminologySearch.confidence, 0);
+assert.equal(c005Result.publicTerminologySearch["勝率"], 0);
+assert.equal(c005Result.publicTerminologySearch["確率"], 0);
+assert.equal(c005Result.findings.userFacingWinProbabilityDisplayed, false);
+assert.equal(c005Result.findings.engineEvaluationConvertedToProbability, false);
+assert.equal(c005Result.findings.diagnosticRootScoreExported, false);
+assert.equal(c005Result.findings.actionableCurrentProductionSemanticsDefect, false);
+assert.equal(c005Result.decision.finalCandidateStatus, "NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT-HOLD");
+assert.equal(c005Result.decision.closedWithoutImplementation, true);
+assert.equal(c005Result.decision.implementationAuthorized, false);
+assert.equal(c005Result.decision.implementationCreated, false);
+assert.equal(c005Result.decision.validationAuthorized, false);
+assert.equal(c005Result.decision.releaseHoldoutAuthorized, false);
+assert.equal(c005Result.decision.aiGen3PromotionAuthorized, false);
+assert.equal(c005Result.decision.mainPublicResult, "KEEP-AI-GEN2");
+assert.equal(c005Result.programImplication.originalCandidateInventoryRemaining, 0);
+assert.equal(c005Result.programImplication.programFinalOutcome, "KEEP-AI-GEN2");
+assert.equal(c005Result.programImplication.aiGen3Promoted, false);
+
+for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) {
+  assert.ok(candidates.includes(id), `${id} missing`);
+}
 assert.ok(candidates.includes("PBAI-C003 authorized = false / HOLD"));
+assert.ok(candidates.includes("PBAI-C005 authorized = false / HOLD"));
 assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 0"));
-assert.ok(resume.includes("The next task is **PBAI-C005 read-only production-surface audit**"));
+assert.ok(candidates.includes("original candidate inventory remaining = 0"));
+assert.ok(resume.includes("Status: **PROGRAM COMPLETE / KEEP-AI-GEN2**"));
+assert.ok(resume.includes("PBAI-P1 has no next candidate task"));
 assert.ok(resume.includes("hit count = null / unmeasured"));
 assert.ok(resume.includes("zero-hit conclusion = NOT AUTHORIZED"));
 assert.ok(decisions.includes("D48 — PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD"));
-assert.ok(releases.includes("NO PBAI-P1 PUBLIC RELEASE YET"));
+assert.ok(decisions.includes("D51 — PBAI-C005 = NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD"));
+assert.ok(decisions.includes("D52 — PBAI-P1 closes with KEEP-AI-GEN2"));
+assert.ok(finalReport.includes("FINAL PROGRAM OUTCOME = KEEP-AI-GEN2"));
+assert.ok(c005Audit.includes("NO ACTIONABLE CURRENT PRODUCTION SEMANTICS DEFECT"));
+assert.ok(releases.includes("NO PBAI-P1 PUBLIC RELEASE / AI-GEN2 RETAINED"));
 
-for (const text of [index, naming, readme, resume, status, baseline]) {
+for (const text of [index, naming, readme, resume, status, finalReport, baseline]) {
   assert.ok(text.includes("AI-GEN2"), "AI-GEN2 naming marker missing");
   assert.ok(text.includes("AI-GEN3"), "AI-GEN3 naming marker missing");
 }
 assert.ok(naming.includes("AI-GEN3 promotion before public adoption = prohibited"));
 assert.ok(naming.includes("Research Generation 2"));
-for (const claim of ["Research Generation 2 evidence included = true", "release holdout execution = AUTHORIZED", "public AI code changed by PBAI-P1 = true", "AI-GEN3 promotion = AUTHORIZED"]) {
+for (const claim of [
+  "Research Generation 2 evidence included = true",
+  "release holdout execution = AUTHORIZED",
+  "public AI code changed by PBAI-P1 = true",
+  "AI-GEN3 promotion = AUTHORIZED",
+]) {
   assert.ok(!status.includes(claim), `unexpected PBAI state claim: ${claim}`);
 }
 
