@@ -1,52 +1,69 @@
 # PBAI-P1 Decision Register
 
-## Program decisions frozen at establishment
+This register records engineering decisions for `PBAI-P1`. Research formal decisions remain governed by the research-track documents and are never changed by this register.
+
+## Program establishment — 2026-08-26
 
 ### D01 — Separate engineering track
 
-PBAI-P1はResearch Trackとは独立する。engineering resultは既存研究のformal decisionを変更しない。
+PBAI-P1 is independent from the Research Track. Engineering success/failure cannot relabel a scientific result.
 
-### D02 — Evidence cutoff
+### D02 — Scientific evidence cutoff
 
-PBAI-P1はprogram-start scientific evidence anchor `2db7c4d65771066e914f32cbc4116fcc3e9e386a`までのcompleted **Research Generation 1** researchを科学的inputとする。Research Generation 2 outcomeを途中追加しない。
+```text
+Research Generation 1 evidence anchor = 2db7c4d65771066e914f32cbc4116fcc3e9e386a
+Research Generation 2 outcomes = excluded from PBAI-P1
+```
 
-### D03 — No implementation at program establishment
+### D03 — No implementation at establishment
 
-Program文書の追加だけではpublic AIコードを変更しない。PBAI-A/B/C完了前のcandidate implementationを承認しない。
+Candidate implementation is prohibited until evidence audit, exact baseline and global gates are frozen.
 
 ### D04 — Research labels remain intact
 
-`CONFIRMED`、`NOT-CONFIRMED`、`INCONCLUSIVE`、`NON-ESTIMABLE`、bounded exact、exploratory/descriptive等をengineering都合で再ラベルしない。
+`CONFIRMED`, `NOT-CONFIRMED`, `INCONCLUSIVE`, `NON-ESTIMABLE`, exact/bounded and exploratory/descriptive labels are not rewritten for engineering convenience.
 
 ### D05 — No unvalidated win-probability semantics
 
-Position Evaluation / Win-Rate Calibration Study 1はformal `INCONCLUSIVE`であり、既存mappingをvalidated Bao win probabilityとしてpublic UIまたはAI primary logicへ導入しない。
+Position Evaluation / Win-Rate Calibration Study 1 is formal `INCONCLUSIVE`; no score→validated-win-probability mapping is authorized.
 
-### D06 — RAW identity remains authoritative
+### D06 — RAW identity boundary
 
-validated transform setが存在しないため、unvalidated symmetry/reflection/seat swap/canonicalizationをproduction state identity、TT key、tablebase keyへ導入しない。
+Research-derived authoritative RAW identity contains:
+
+```text
+pits
+reserve
+houseOwned
+player
+phase
+winner
+pending
+```
+
+Current `AI.stateKey` omits `pending` and is not authorized as a research-derived exact tablebase identity. Unvalidated symmetry/canonicalization is prohibited.
 
 ### D07 — Human claims remain separate
 
-machine search complexity、reply concentration、error dependenceをhuman difficulty/error/deceptionとして表示しない。
+Machine search complexity, reply concentration, instability or error dependence may not be described as human difficulty/error/deception without separate evidence.
 
 ### D08 — Ablation before combination
 
-複数mechanismを同時導入せず、原則single-candidate comparisonから開始する。
+Candidates are single-mechanism by default. Combined mechanisms require a new candidate ID and component ablation first.
 
 ### D09 — Holdout protection
 
-release holdoutはcandidate tuningへ使用しない。holdout消耗時はnew blockをprospectively freezeする。
+Release holdout may not be used for tuning. If a holdout is consumed, replacement requires a newly prospective block.
 
 ### D10 — Release safety dominates strength
 
-rule correctness、invalid-state、crash、major operational regressionをstrength improvementで相殺しない。
+Correctness, invalid-state, crash and major operational failures cannot be offset by strength or efficiency gains.
 
-## PBAI-A decisions — 2026-08-26
+## PBAI-A — Research Generation 1 evidence audit
 
-### D11 — Canonical Research Generation 1 evidence core
+### D11 — Canonical evidence core
 
-PBAI-Aのscientific evidence coreを次の14 completed Study areasとしてfreezeする。
+The 14-study core is frozen as documented in `GENERATION_1_EVIDENCE_AUDIT.md`:
 
 ```text
 Phase Transition Study 1
@@ -65,67 +82,40 @@ State Space / Game Tree Complexity Study 1
 PCEM-STUDY1
 ```
 
-First Joseki Study、first-player advantage research、paired-opening work、historical AI developmentは重要な先行context / engineering infrastructureとして扱うが、PBAI-AによってResearch Generation 1 scientific evidenceへ黙って再分類しない。特定のscientific findingをcandidate evidenceとして使う場合は、後続decisionでeligibilityを明示する。
-
 ### D12 — PBAI-A complete
 
-`GENERATION_1_EVIDENCE_AUDIT.md`のStudy-by-Study audit、E1/E2/E3/E4分類、prohibited inference、candidate trace、Research Generation 2 exclusion、RAW identity boundaryを確認し、PBAI-Aを`COMPLETE`とする。
+Evidence use tiers, prohibited inference, candidate trace and RAW identity boundary are frozen. Evidence readiness alone does not authorize implementation.
 
-PBAI-A完了はcandidate implementation authorizationではない。
+### D13 — `AI.stateKey` distinction is a constraint, not a current failure claim
 
-```text
-PBAI-C001..PBAI-C005 = EVIDENCE-AUDIT-READY
-AUTHORIZED-FOR-DEVELOPMENT = 0
-```
+The RAW-key mismatch prohibits silent reuse for research-derived exact tables. It does not by itself establish a defect in the current public search.
 
-### D13 — Current `AI.stateKey` is not the Research Generation 1 RAW identity contract
+### D14 — PBAI-B next
 
-Research-derived authoritative RAW identityは次を含む。
+The exact current public baseline must be frozen before numeric candidate gates.
 
-```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
-```
+### D15 — AI-GEN3 naming rule
 
-`turn`、`reason`は除外する。
+`AI-GEN3` is granted only after explicit `ADOPT` plus actual public-default deployment. Development authorization, validation pass or release-candidate status is insufficient.
 
-PBAI-A開始時点の`public/ai.js` `AI.stateKey`は`pending`を含まないため、Research Generation 1のauthoritative RAW identityと同一ではない。この観測だけからcurrent public search failureを宣言しないが、`PBAI-C003`等のtablebase/research-derived RAW keyへ`AI.stateKey`を暗黙流用することを禁止する。
+## PBAI-B — exact AI-GEN2 baseline
 
-### D14 — PBAI-B is the next authorized phase
-
-PBAI-A完了後の次工程は`AI-GEN2` exact public baseline freezeである。PBAI-C numeric gates未freezeの間はcandidate developmentを承認しない。
-
-### D15 — Candidate evidence readiness does not reserve AI-GEN3
-
-`EVIDENCE-AUDIT-READY`、`AUTHORIZED-FOR-DEVELOPMENT`、development build、validation pass、release candidateのいずれも`AI-GEN3`を意味しない。`AI-GEN3`は明示的`ADOPT` decisionとpublic-default deployment後のみ付与する。
-
-## PBAI-B decisions — 2026-08-26
-
-### D16 — Exact AI-GEN2 baseline identity
+### D16 — Baseline identity
 
 ```text
 baselineId = AI-GEN2-BASELINE-2026-08-26-v1
-generationLineage = AI-GEN2
-repository = nkkmd/bao-la-kiswahili-game
-source branch = main
+lineage = AI-GEN2
 source commit = f4ae3b11901180cbe417b3e643e2b357d8045d2d
-public source directory = public/
+public directory = public/
 ```
 
-Machine-readable正本は`baselines/AI-GEN2-BASELINE-2026-08-26-v1.json`とする。
+### D17 — Public deployment binding boundary
 
-### D17 — Public deployment binding and unknown-provider-ID boundary
+Public endpoint + documented Cloudflare Pages source + repository source hashes are the binding. Unknown provider-internal deployment IDs are not guessed.
 
-PBAI-B public endpointは`https://bao-la-kiswahili.cultivationdata.net/`。Cloudflare provider内部のdeployment IDは今回のrepository/toolingから取得できなかったため推測しない。Bindingはpublic endpoint + documented Cloudflare Pages target + `main/public` source ref + repository asset SHA-256とする。Exact live JS asset byte comparison未実施の境界も明記する。
+### D18 — Current config overrides stale prose
 
-### D18 — Current public hard/expert configuration overrides stale historical prose
-
-Current `public/ai-config.js`をbaseline authorityとする。
+Current baseline hard/expert configuration is authoritative:
 
 ```text
 hard:   low D6/400ms; standard D8/500ms; high D10/600ms
@@ -133,46 +123,32 @@ expert: low D10/1500ms; standard D12/2000ms; high D14/3000ms
 adaptive public default = false
 ```
 
-`AI_DEVELOPMENT_LOG.md`のhistorical `D4/450ms`記述はcurrent truthとして使用しない。
-
-### D19 — Search/runtime semantics are baseline properties, not candidate claims
+### D19 — Baseline search semantics
 
 ```text
 default evaluation = bao
 hard/expert = enhanced alpha-beta iterative deepening
-historical benchmark identifier = phase2
 quiescenceDepth = 1
 TT max entries = 50,000
 evaluation cache hard/expert = enabled / max 2,048
 PWA cache = bao-la-kiswahili-v24
 ```
 
-D13 RAW-identity prohibitionは維持する。
+### D20 — Fixed-depth and time-limited evidence remain separate
 
-### D20 — Fixed-depth and time-limited baseline evidence remain separate
+Deterministic fixed-depth verification and time-limited operational smoke are separate evidence classes.
 
-PBAI-B canonical workflow `32910436754`でdeterministic fixed-depth verificationとtime-limited operational smokeを別々に実行し、relevant regressionsをPASSした。Time-limited absolute valuesはcandidate acceptance thresholdではない。
+### D21 — PWA/cache identity is release safety
 
-### D21 — PWA/cache identity is part of release safety
+Any adopted public asset change must satisfy the PBAI-C cache-version and rollback contract.
 
-Current cache `bao-la-kiswahili-v24`はAI/engine/worker/configをpre-cacheする。Future public adoptionではPWA cache version / asset replacement / rollback behaviorをrelease gateへ含める。PBAI-Bはpublic assetを変更しない。
+### D22 — PBAI-B complete
 
-### D22 — PBAI-B complete; PBAI-C numeric gate freeze is next
+The exact `AI-GEN2` comparator is frozen; candidate implementation remains unauthorized until PBAI-C is frozen.
 
-```text
-PBAI-B = COMPLETE
-baselineFrozen = true
-baselineId = AI-GEN2-BASELINE-2026-08-26-v1
-PBAI-C numeric gates = NOT-FROZEN
-AUTHORIZED-FOR-DEVELOPMENT = 0
-AI-GEN3 = NOT-AUTHORIZED
-```
+## PBAI-C — global pre-outcome gates
 
-## PBAI-C decisions — 2026-08-26
-
-### D23 — Global gate-spec identity and pre-outcome freeze
-
-Canonical PBAI-C gate specを次としてfreezeする。
+### D23 — Global gate-spec identity
 
 ```text
 gateSpecId = PBAI-C-GLOBAL-GATES-2026-08-26-v1
@@ -183,42 +159,23 @@ candidate outcomes observed before freeze = 0
 Research Generation 2 evidence included = false
 ```
 
-Machine-readable正本は`benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`とする。
+### D24 — Playing-strength non-inferiority
 
-Global gatesはcandidate-specific contractで緩和できない。
-
-### D24 — Playing-strength non-inferiority rule
-
-Primary relative playing-strength evidenceはhard / fixed D3 / unlimited timeのpaired shared-opening comparisonとする。Candidate/baselineは同openingでSouth/Northを交換する。
-
-Validationとfresh release holdoutは各々:
-
-```text
-core observed candidate score >= 0.50
-one-sided 95% opening-pair bootstrap LCB >= 0.47
-each core phase observed score >= 0.48
-each seat observed score >= 0.47
-each challenge stratum observed score >= 0.45
-```
-
-Locked validation + holdout final check:
+Primary strength evidence uses paired shared openings, hard fixed D3, infinite time, seat swap. Validation/holdout require:
 
 ```text
 core observed score >= 0.50
-one-sided 95% LCB >= 0.48
-each core phase >= 0.49
-each seat >= 0.48
+one-sided 95% opening-pair bootstrap LCB >= 0.47
+each core phase >= 0.48
+each seat >= 0.47
+each challenge stratum >= 0.45
 ```
 
-Bootstrapはopening pairをunit、20,000 replicates、analysis seed `31999991`で固定する。
+Locked validation+holdout requires core `>=0.50`, LCB `>=0.48`, each core phase `>=0.49`, each seat `>=0.48`. Bootstrap unit = opening pair; 20,000 replicates; seed `31999991`.
 
-Sample上のpooled observed scoreがbaseline未満のcandidateはpublic adoptionへ通さない。
+### D25 — Decision-quality non-regression
 
-### D25 — Decision-quality non-regression rule
-
-Fresh rootsはfrozen baseline D4 exact-full-window `bao` referenceで評価する。
-
-Validationとholdoutは各々:
+Frozen D4 exact-full-window `bao` reference. Validation/holdout require:
 
 ```text
 catastrophic new loss count = 0
@@ -229,175 +186,205 @@ per-phase severe-loss excess <= +0.02
 per-phase top-set agreement delta >= -0.03
 ```
 
-Locked validation + holdoutでは:
+Locked validation+holdout tightens severe-loss excess to `+0.005`, top-set delta to `-0.01`, normalized rank-loss delta to `+0.01`.
 
-```text
-catastrophic new loss count = 0
-severe-loss excess <= +0.005
-top-set agreement delta >= -0.01
-mean normalized rank-loss delta <= +0.01
-```
+### D26 — Correctness and operational floors
 
-を要求する。
-
-### D26 — Correctness and operational hard floors
-
-Correctness hard gates:
+Correctness:
 
 ```text
 frozen public/engine.js SHA unchanged
 existing tactical failures = 0
-candidate-specific regression failures = 0
+candidate regression failures = 0
 required relevant test failures = 0
 crash / illegal move / invalid state = 0
 unvalidated canonicalization = prohibited
-Research Generation 1 RAW identity violation = prohibited
 scientifically prohibited inference in implementation/UI = prohibited
 ```
 
-Operational relative gates:
+Operational:
 
 ```text
 median elapsed ratio <= 1.05
 p95 elapsed ratio <= 1.10
 median completed-depth delta >= -1
-fraction roots candidate >=2 depths below baseline <= 0.05
+fraction roots >=2 depths below baseline <= 0.05
 timeout-rate increase <= +0.05
 direct/Worker deterministic mismatch = 0
-added public static candidate assets <= 524,288 bytes
+added public static assets <= 524,288 bytes
 ```
 
-Persistent tables/cachesを導入するcandidateはimplementation前に追加memory gateをfreezeする。
+Persistent new tables/caches require a new prospective memory gate before implementation.
 
-### D27 — Frozen split and release-holdout authorization firewall
+### D27 — Frozen split and holdout firewall
 
-Development、validation、release holdoutのseed blocksをglobal gate specへprospectively freezeする。Engineering namespaces `31000001..31801024`内の各blockは相互非重複とする。
+Development, validation and release-holdout seed blocks are mutually non-overlapping and frozen. Release holdout execution requires fresh validation PASS, frozen candidate source/config hash and explicit PBAI-F authorization. Same-holdout retuning is prohibited.
 
-PBAI-C時点:
+### D28 — Feature-off comparator
 
-```text
-release holdout ranges = FROZEN
-release holdout execution = NOT-AUTHORIZED
-```
+Every candidate is feature-gated. Feature off must reproduce frozen `AI-GEN2`. Combined candidates require a new ID.
 
-Holdout実行にはvalidation PASS、candidate source/config hash freeze、explicit PBAI-F authorizationを必要とする。Holdoutを見た後のsame-holdout retuning、threshold relaxation、mechanism rescueは禁止する。
+### D29 — Candidate-specific intended benefit is mandatory
 
-### D28 — Candidate isolation / feature-off baseline comparator
+Global non-regression alone does not adopt an improvement candidate. Exact mechanism, intended-benefit endpoint, minimum benefit, populations, cost and failure/rollback rules are frozen before candidate outcome.
 
-Every candidate must be feature-gated:
+### D30 — No compensation between major gate classes
 
-```text
-feature off = frozen baseline comparator
-feature on = exactly one PBAI candidate
-public default before adoption = off
-```
+Strength, decision quality, operational quality, correctness and robustness are conjunctive. Improvement in one class cannot offset hard failure in another.
 
-Feature-offはmandatory frozen baseline fixturesを再現する必要がある。複合変更はnew candidate IDを必要とし、component ablationを先行する。
+### D31 — PBAI-C complete
 
-### D29 — Candidate-specific intended-benefit rule remains mandatory
+Global gates and seed blocks are frozen. Normal program outcome may still be `KEEP-AI-GEN2`.
 
-PBAI-C global non-regression PASSだけでは通常のimprovement candidateをADOPTしない。
+## Candidate decisions — 2026-08-26
 
-PBAI-Dで各candidateについてimplementation前に:
+### D32 — PBAI-C002-v1 exact contract
 
-- exact mechanism/flag;
-- primary intended-benefit endpoint;
-- minimum practical benefit;
-- target/control strata;
-- candidate-local dev/validation/holdout block;
-- runtime/memory budget where applicable;
-- failure/rollback contract;
-
-をfreezeする。
-
-Correctness/semantics-only maintenance candidateはstrength improvementを必須としないが、prospectivelyそのclassを宣言し、exact equivalence/correctness benefitとglobal non-regressionを満たす必要がある。
-
-### D30 — No compensation across major gate classes
-
-Playing strength、decision quality、operational quality、correctness、robustnessを別軸として判定する。
-
-```text
-strength improvement cannot offset correctness failure
-operational improvement cannot offset decision failure
-decision improvement cannot offset major robustness failure
-```
-
-Candidate-specific benefitもglobal hard gate failureを相殺できない。
-
-### D31 — PBAI-C complete; PBAI-D is next
-
-Global numeric gates、sample/seed blocks、holdout firewall、candidate isolation、release conjunctionをcandidate outcome前にfreezeしたため:
-
-```text
-PBAI-C = COMPLETE
-PBAI-C global gates = FROZEN
-AUTHORIZED-FOR-DEVELOPMENT = 0
-candidate implementations = 0
-release holdout execution = NOT-AUTHORIZED
-AI-GEN3 promotion = NOT-AUTHORIZED
-```
-
-とする。
-
-次に許可されるphaseはPBAI-Dの**one exact candidate contract + development authorization**である。適切なcandidateが存在しない場合の正常なprogram outcomeは`KEEP-AI-GEN2`である。
-
-## PBAI-D / PBAI-E candidate decisions — 2026-08-26
-
-### D32 — PBAI-C002-v1 was prospectively authorized as move-ordering-only
-
-`PBAI-C002-v1`は`TM-S2-C03`のResearch Generation 1 evidenceを使う最初のengineering candidateとして、PR #54でexact contractをfreezeしてdevelopmentのみをauthorizeした。
+C002 was prospectively authorized as `TM-S2-C03` move-ordering-only:
 
 ```text
 feature = pbaiC002C03Ordering
-public default = off
-mechanism = enhanced-alpha-beta root move ordering only
-allowed public code surface = public/ai.js only
-selective extension = prohibited
-evaluation bonus = prohibited
-forced move = prohibited
-depth/time-budget change = prohibited
-persistent table/cache = prohibited
+default = off
+public surface = public/ai.js only
+no extension / evaluation bonus / forced move / budget change / persistent cache
 ```
 
-Research consequenceはruntime triggerへ使用せず、scientific interpretation boundaryを維持した。
+Scientific `TM-S2-C03 = CONFIRMED` and its interpretation boundary were preserved.
 
-### D33 — C002 development population was materialized before benefit metrics
+### D33 — C002 population materialized before benefit metrics
 
-PBAI-E isolated draft PR #55でpre-metric safety testsをPASSした後、frozen development source block `31300001..31300512`だけをmaterializeした。
+After isolated safety tests, only frozen development block `31300001..31300512` was materialized:
 
 ```text
-run = 32914807381
-job = 98016194190
-population digest = e016daa0f4669ac7730d34725de16d8c1ff10c398ca07867f47e81df0b399ea7
-population = 128 Namua + 128 Mtaji = 256
-historical trajectory candidates = 432
-eligible C002 target roots = 5
-required minimum estimable roots = 48
-controls = 32 Namua + 32 Mtaji reusablePits>=3
+population = 256
+eligible target roots = 5
+minimum estimable = 48
 candidate benefit metrics observed = false
 validation seeds accessed = false
 release holdout seeds accessed = false
 ```
 
-Artifact `9587768831`のZIP SHA-256は`bbf591baa19bdc33eb2a747e11e8fd390fd0fb33c84efd215cadbd19942d6d16`。
+Canonical run `32914807381`, job `98016194190`, artifact `9587768831`, population digest `e016daa0f4669ac7730d34725de16d8c1ff10c398ca07867f47e81df0b399ea7`.
 
-### D34 — PBAI-C002-v1 is NON-ESTIMABLE / HOLD; no rescue
-
-Frozen contractのminimum estimability gate `48`に対しeligible target supportが`5`だったため、candidate node/score benefit evaluationへ進まない。
+### D34 — C002 is NON-ESTIMABLE / HOLD
 
 ```text
 PBAI-C002-v1 = NON-ESTIMABLE / HOLD
-candidate benefit metrics = NOT EXECUTED
+benefit metrics = NOT EXECUTED
 validation = NOT EXECUTED
 release holdout = NOT EXECUTED
 PR #55 = CLOSED WITHOUT MERGE
-public/main AI change = 0
+main/public change = 0
 ```
 
-同versionでのsource-block replacement、selector replacement、trigger/order/threshold retuningは禁止する。これは`TM-S2-C03 = CONFIRMED`というResearch Track decisionを変更せず、C03の有効性にnegative evidenceを与えるものでもない。`PBAI-C002-v1`のprospective engineering population/endpointが推定不能だったというengineering resultだけを意味する。
+No same-version source-block, selector, trigger, ordering or threshold rescue. This does not alter `TM-S2-C03 = CONFIRMED` and is not evidence of C03 ineffectiveness.
 
-C002 development authorizationはclosureと同時に終了し、`AUTHORIZED-FOR-DEVELOPMENT count = 0`へ戻す。次に進む場合は別の`EVIDENCE-AUDIT-READY` candidateについて新しいexact pre-outcome contractをfreezeする。
+### D35 — C004 selected before implementation; support probe required first
 
-## Future decisions
+Among remaining evidence-audit-ready candidates, C004 was selected for the next cycle because a reproducible exact D2/D3 search instrument had materially broader expected support than the 8-state exact-oracle C003 domain. Position Complexity Study remains `INCONCLUSIVE`; no validated difficulty/complexity classifier exists.
 
-次candidateのcandidate-specific contract、development authorization、development/validation outcome、holdout authorization、adoption/rejection、release/rollback decisionは本registerへ追記する。
+To avoid repeating C002's post-implementation non-estimability, a baseline-only support probe was prospectively frozen before C004 candidate code.
+
+### D36 — C004 predevelopment support PASS
+
+Frozen development block `31300001..31300512` produced:
+
+```text
+population = 128 Namua + 128 Mtaji = 256
+exact D2/D3 TopSet-disjoint = 54
+minimum estimable = 48
+Namua primary support = 42
+Mtaji primary support = 12
+candidate code used = false
+candidate benefit metrics observed = false
+validation/holdout seeds accessed = false
+```
+
+Canonical provenance:
+
+```text
+run = 32917223072
+job = 98023357050
+artifact = 9588624025
+artifact ZIP SHA-256 = 5012c904789dff9dc9ec4144d2987afcf59ae7e8d7c712ffe1ca76f2e8f23b2e
+population digest = fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734
+```
+
+Decision: `SUPPORT-PASS-ELIGIBLE-FOR-EXACT-CANDIDATE-CONTRACT-FREEZE`. This is engineering estimability evidence only.
+
+### D37 — Runtime-signal boundary is separated prospectively
+
+The intended production-native trigger is deterministic D2→D3 selected-root-move change, not exact TopSet computation. The baseline-only probe found:
+
+```text
+exact TopSets overlap but deterministic canonical best changes = 5
+exact TopSets overlap and deterministic canonical best stays unchanged = 197
+```
+
+Therefore:
+
+```text
+primary benefit stratum = exact TopSet-disjoint
+boundary-trigger stratum = overlap + deterministic best change; safety/cost only
+negative control = deterministic best unchanged; trigger zero + exact equivalence
+```
+
+Boundary roots are never merged into primary benefit inference.
+
+### D38 — PBAI-C004-v1 exact contract and development authorization
+
+After support PASS and still before candidate implementation/outcome, freeze:
+
+```text
+candidate = PBAI-C004-v1
+feature = pbaiC004D23RootTtFirst
+public default = off
+public source surface = public/ai.js only
+activation = completed D2 and D3; deterministic selected root move changes
+mechanism = depths >=4 root TT preferred move becomes TT-first
+internal nodes = baseline
+```
+
+Prohibited:
+
+```text
+runtime exact TopSet computation
+scientific difficulty/complexity classifier
+extra depth/time
+evaluation/quiescence change
+persistent cache/table
+forced move
+engine/config/worker/UI change
+```
+
+Primary D4 intended-benefit gate:
+
+```text
+development/validation median nodes(on/off) <= 0.95
+fraction candidate nodes <= baseline >= 0.55
+release holdout median <= 0.97; fraction >= 0.52
+root-score mismatch = 0
+selected move outside frozen D4 top set = 0
+catastrophic new loss = 0
+```
+
+Boundary aggregate node ratio must be `<=1.10` with exact semantic safety and no benefit claim. Negative controls require zero trigger and exact feature-on/off search-counter equality.
+
+Development is authorized only after the exact-contract PR is merged. Validation requires development benefit/safety PASS. Release holdout remains not authorized. Post-outcome trigger/order/target/boundary/threshold retuning under v1 is prohibited.
+
+## Current authorization state
+
+```text
+PBAI-C001 authorized = false
+PBAI-C002 authorized = false / HOLD
+PBAI-C003 authorized = false
+PBAI-C004 authorized = true after exact-contract merge
+PBAI-C005 authorized = false
+AUTHORIZED-FOR-DEVELOPMENT = 1 after merge
+active candidate implementations = 0
+public/main candidate implementations = 0
+release holdout execution = NOT-AUTHORIZED
+AI-GEN3 promotion = NOT-AUTHORIZED
+```
+
+Future development/validation outcome, holdout authorization, adoption/rejection and release/rollback decisions are appended here without changing earlier decisions.

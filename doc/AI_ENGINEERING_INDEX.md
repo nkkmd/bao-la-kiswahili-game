@@ -18,37 +18,31 @@ Canonical naming: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_G
 ## Active program — `PBAI-P1`
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-**状態:** **PBAI-A/B/C COMPLETE / PBAI-D PBAI-C002-v1 CONTRACT FROZEN / PBAI-E NEXT AFTER MERGE**  
+**状態:** **PBAI-A/B/C COMPLETE / C002 HOLD / C004 SUPPORT PASS + EXACT CONTRACT FROZEN**  
 **scientific evidence cutoff:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
 **Research Generation 2 outcomes:** excluded
 
 ### Frozen controls
 
 ```text
-PBAI-A evidence audit
-  = 14-Study Research Generation 1 core frozen
-
 PBAI-B exact baseline
   = AI-GEN2-BASELINE-2026-08-26-v1
 
 PBAI-C global gate spec
   = PBAI-C-GLOBAL-GATES-2026-08-26-v1
 
-PBAI-D first candidate contract
-  = PBAI-C002-v1
-  = feature pbaiC002C03Ordering
-  = move-ordering-only
+PBAI-C002-v1
+  = NON-ESTIMABLE / HOLD
+  = development PR #55 closed without merge
+
+PBAI-C004-v1
+  = predevelopment support 54 >= 48 / PASS
+  = feature pbaiC004D23RootTtFirst
+  = root-ordering-only exact contract
+  = development authorized only after contract merge
 ```
 
-After the PBAI-D contract-freeze change is merged:
-
-```text
-PBAI-C002 = AUTHORIZED-FOR-DEVELOPMENT
-AUTHORIZED-FOR-DEVELOPMENT count = 1
-candidate implementations = 0
-release holdout execution = NOT-AUTHORIZED
-AI-GEN3 = RESERVED / NOT-AUTHORIZED
-```
+Current public/main candidate implementations remain `0`; release holdout and `AI-GEN3` promotion remain unauthorized.
 
 ## Program documents
 
@@ -61,6 +55,10 @@ AI-GEN3 = RESERVED / NOT-AUTHORIZED
 - [`ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json)
 - [`ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1.json)
+- [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1-development-result.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1-development-result.json)
+- [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-spec.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-spec.json)
+- [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-result.json)
+- [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1.json)
 - [`ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md)
 
@@ -68,12 +66,13 @@ Program decisions:
 
 - [`engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md`](engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md)
 - [`engineering-program-decisions/2026-08-26-pbai-c002-v1-development-authorization.md`](engineering-program-decisions/2026-08-26-pbai-c002-v1-development-authorization.md)
+- [`engineering-program-decisions/2026-08-26-pbai-c004-v1-development-authorization.md`](engineering-program-decisions/2026-08-26-pbai-c004-v1-development-authorization.md)
 
-## PBAI-C002-v1 boundary
+## C004 boundary
 
-Research source is machine-confirmed `TM-S2-C03`. The engineering v1 uses only its frozen Mtaji/reusable-pits/coarse move-family representation for conservative move ordering. It does not implement the research consequence as a runtime trigger and does not authorize selective extension, evaluation bonus, forced move, human/traditional claim, public-default activation or holdout execution.
+Position Complexity / Difficulty Study 1 remains formal `INCONCLUSIVE`. C004 does not treat D23 instability as a validated human-difficulty or general complexity classifier. It uses a new production-native signal—completed D2/D3 deterministic root-best change—to test a root-ordering hypothesis under unchanged search depth/time/evaluator/quiescence budgets.
 
-The intended-benefit gate is D4 target-root node efficiency with exact semantic safety, plus all PBAI-C global gates. Failure or non-estimability leads to `HOLD/REJECT` and may correctly result in `KEEP-AI-GEN2`.
+The predevelopment support probe separated exact TopSet-disjoint primary roots from overlap-but-best-changed boundary roots before implementation. This avoids silently broadening the scientific endpoint when the runtime trigger is evaluated.
 
 ## Separation from research
 
@@ -86,9 +85,13 @@ PBAI-B frozen baseline
           ↓
 PBAI-C frozen pre-outcome gates
           ↓
-PBAI-D exact PBAI-C002-v1 contract
+C002 exact candidate → NON-ESTIMABLE / HOLD
           ↓
-PBAI-E isolated engineering implementation
+C004 baseline-only support → PASS
+          ↓
+C004 exact candidate contract
+          ↓
+C004 isolated engineering implementation after merge
 
 Research Generation 2 = separate pure research track
 ```
