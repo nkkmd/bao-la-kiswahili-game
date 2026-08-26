@@ -506,7 +506,8 @@
 
     const choices = enhancedOrdered(
       state, player, context.evaluator, cached?.bestMove || "", context.killers.get(ply) || "",
-      context.ttMoveFirst, context.history, context.pbaiC002C03Ordering, context.stats,
+      context.ttMoveFirst, context.history,
+      context.pbaiC002C03Ordering && ply === 0, context.stats,
     );
     if (!choices.length) return state.player === player ? -WIN + ply : WIN - ply;
     const maximizing = state.player === player;
