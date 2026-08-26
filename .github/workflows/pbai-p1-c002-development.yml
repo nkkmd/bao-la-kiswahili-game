@@ -1,0 +1,70 @@
+name: PBAI-P1 C002 development only
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/ai.js'
+      - 'tools/engineering/lib/pbai-p1-decision-population.js'
+      - 'tools/engineering/run-pbai-c002-development.js'
+      - 'test/pbai-c002-v1.test.js'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-DQ-POPULATION-MATERIALIZATION-2026-08-26-v1.json'
+      - '.github/workflows/pbai-p1-c002-development.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  development-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify only authorized public surface changed
+        run: |
+          changed="$(git diff --name-only origin/main...HEAD -- public/)"
+          test "$changed" = "public/ai.js" || {
+            echo "Only public/ai.js may change for PBAI-C002-v1; got:" >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+      - name: Verify frozen rule engine remains unchanged
+        run: |
+          actual="$(sha256sum public/engine.js | awk '{print $1}')"
+          expected="e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$actual" = "$expected"
+      - name: Verify public/ai.js cost budget
+        run: |
+          baseline_bytes="$(git show f4ae3b11901180cbe417b3e643e2b357d8045d2d:public/ai.js | wc -c)"
+          candidate_bytes="$(wc -c < public/ai.js)"
+          added="$((candidate_bytes - baseline_bytes))"
+          echo "baseline_bytes=$baseline_bytes candidate_bytes=$candidate_bytes added=$added"
+          test "$added" -le 4096
+      - name: Verify frozen C002 contract and PBAI-C gates
+        run: |
+          node tools/engineering/validate-pbai-p1-gate-spec.js
+          node tools/engineering/validate-pbai-c002-contract.js
+      - name: Run candidate feature and population tests
+        run: node test/pbai-c002-v1.test.js
+      - name: Run relevant regression tests
+        run: |
+          node test/engine.test.js
+          node test/ai.test.js
+          node test/evaluation.test.js
+          node test/search.test.js
+          node test/ai-config.test.js
+          node test/ai-worker.test.js
+          node test/tactical.test.js
+      - name: Holdout firewall assertion
+        run: |
+          ! grep -R --line-number -E '3150[0-9]{4}|3140[0-9]{4}' tools/engineering/run-pbai-c002-development.js 2>/dev/null || {
+            echo 'Development runner must not reference validation/holdout seed values.' >&2
+            exit 1
+          }
+          echo 'Development-only firewall PASS'
