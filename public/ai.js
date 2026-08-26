@@ -859,7 +859,16 @@
       stats.elapsedMs = performanceNow() - startedAt;
       return { move: bestMove, stats };
     }
-    if (options.searchProfile !== "legacy") {
+    const pbaiC001Enabled = options.pbaiC001NamuaForcedCaptureLegacy === true;
+    const pbaiC001Eligible = pbaiC001Enabled
+      && (level === "hard" || level === "expert")
+      && options.searchProfile !== "legacy"
+      && state.winner === null
+      && state.phase === "namua"
+      && choices.length >= 2
+      && choices.every((move) => move.type === "capture");
+    if (pbaiC001Enabled) stats.pbaiC001Triggered = pbaiC001Eligible;
+    if (options.searchProfile !== "legacy" && !pbaiC001Eligible) {
       const context = {
         table: new Map(),
         killers: new Map(),
