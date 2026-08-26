@@ -6,6 +6,8 @@ on:
     paths:
       - 'doc/position-evaluation-empirical-outcome-calibration-replication/**'
       - 'doc/research-program-decisions/2026-08-26-g2-01-study-start.md'
+      - 'tools/experiments/run-g2-01-calibration-stage0-technical.js'
+      - 'tools/experiments/verify-g2-01-calibration-stage0-independent.js'
       - 'test/g2-01-calibration-replication-contract.test.js'
       - '.github/workflows/g2-01-calibration-replication-contract.yml'
 
@@ -23,3 +25,13 @@ jobs:
           node-version: '20'
       - name: Audit G2-01 prospective contract
         run: node test/g2-01-calibration-replication-contract.test.js
+      - name: Run Stage 0 technical production smoke
+        run: node tools/experiments/run-g2-01-calibration-stage0-technical.js
+      - name: Independently verify Stage 0 technical smoke
+        run: node tools/experiments/verify-g2-01-calibration-stage0-independent.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: peocr-stage0-technical-v1
+          path: artifacts/local/position-evaluation-empirical-outcome-calibration-replication/stage0-technical-v1
+          if-no-files-found: error
