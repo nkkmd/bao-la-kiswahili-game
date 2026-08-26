@@ -4,7 +4,7 @@
 
 ## Status
 
-**STUDY STARTED / PROSPECTIVE CONTRACT FROZEN / STAGE 0 NOT YET EXECUTED**
+**STUDY ACTIVE / PROSPECTIVE CONTRACT FROZEN / STAGE 0 TECHNICAL PASS / STAGE 1 NOT AUTHORIZED**
 
 ## Identity
 
@@ -16,41 +16,35 @@ Baseline main = 9e9cb6e2525f09a873e741db9f8fa42696839fbe
 Branch = research/g2-01-position-evaluation-empirical-outcome-calibration-replication
 ```
 
-## Completed at this checkpoint
+## Completed
 
-- current remote `main` HEAD reacquired and fixed as study-start baseline
-- Research Generation 1 `PEC-STUDY1` final report and Stage 2 formal spec audited
-- upstream `INCONCLUSIVE` decision fixed as immutable
-- formal Study title and Study ID assigned prospectively
-- RAW state identity retained
-- Stage 0 / Stage 1 / Stage 2 stage IDs assigned
-- Stage 0 smoke seeds quarantined
-- Stage 1 development seed block reserved
-- Stage 2 formal seed block reserved
-- primary mapping family frozen before G2-01 outcomes
-- Stage 2 strict identity firewall and no-replacement policy frozen
-- Stage 2 estimability gates frozen with anticipated attrition margin
-- Brier + log-loss paired skill, replication Brier thresholds, calibration diagnostics, stop rules frozen
-- public-AI engineering endpoints excluded
+- Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` fixed as immutable
+- formal title / Study ID / Stage IDs fixed prospectively
+- Stage 0/1/2 populations, seeds, endpoint, RAW identity, strict identity firewall, estimability gates, metrics and stop rules frozen
+- Stage 0 production runner implemented
+- Stage 0 independent verifier implemented without importing production representation/scientific helper logic
+- CI run `32969621181` passed contract audit, production smoke and independent verification
+- canonical Stage 0 result: `results/STAGE_0_TECHNICAL_RESULT.json`
+- Stage 0 decision: `STAGE0-TECHNICAL-PASS`
+- production artifact SHA-256: `d0a72cad4e1c4612d30674bc3bc700a768b1ef5a3402f82343ec7b2fe58ca698`
 
 ## Not yet done
 
-- Stage 0 implementation/run
-- source-file SHA-256 freeze for Stage 0/1
-- Stage 1 explicit generation authorization
-- Stage 1 scientific generation
-- independent Stage 1 verification
-- Stage 1 mapping artifact freeze
-- Stage 2 technical smoke and authorization
-- Stage 2 scientific generation/evaluation
+- Stage 1 production/measurement implementation
+- Stage 1 independent verification implementation
+- exact Stage 1 scientific source hash freeze
+- explicit Stage 1 generation authorization
+- Stage 1 2,048-game fresh development generation
+- Stage 1 mapping freeze
+- Stage 2 smoke / authorization / 8,192-game formal generation
 - final formal decision
 
 ## Authorization state
 
 ```text
-Stage 0 technical execution = may proceed once implementation exists
+Stage 0 technical execution = COMPLETE / PASS
 Stage 1 scientific generation = NOT AUTHORIZED
 Stage 2 scientific generation = NOT AUTHORIZED
 ```
 
-No scientific outcome has been generated for G2-01 at this checkpoint.
+No G2-01 scientific outcome has yet been generated. Stage 0 evidence is technical-only and cannot support calibration claims.
