@@ -1,0 +1,107 @@
+name: PBAI-P1 C001 frozen development benefit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/ai.js'
+      - 'tools/engineering/run-pbai-c001-development.js'
+      - 'tools/engineering/verify-pbai-c001-premetric.js'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-development-measurement-spec.json'
+      - '.github/workflows/pbai-p1-c001-development-benefit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  development-benefit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify candidate source and frozen measurement spec
+        run: |
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "108a57d17d0d0bf2f63e3794f386ee480116791181793ff6cde7366f7bd0a439"
+          node tools/engineering/validate-pbai-c001-contract.js
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const s = JSON.parse(fs.readFileSync('doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-development-measurement-spec.json', 'utf8'));
+          if (s.status !== 'FROZEN-BEFORE-DEVELOPMENT-BENEFIT-OBSERVATION') throw new Error('measurement spec not frozen');
+          if (s.premetric.status !== 'PASS') throw new Error('premetric not bound PASS');
+          if (s.premetric.candidateBenefitMetricsObservedBeforePass !== false || s.premetric.d4ReferenceEvaluatedBeforePass !== false) throw new Error('premetric outcome leakage');
+          if (s.metricDefinitions.searchWork !== 'stats.nodes + stats.quiescenceNodes') throw new Error('search-work drift');
+          if (s.firewall.validationSeedAccessAuthorized !== false || s.firewall.releaseHoldoutSeedAccessAuthorized !== false) throw new Error('split firewall open');
+          NODE
+
+      - name: Enforce development-only seed firewall
+        run: |
+          ! grep -R --line-number -E '3140[0-9]{4}|3150[0-9]{4}' \
+            tools/engineering/run-pbai-c001-development.js \
+            doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-development-measurement-spec.json || {
+              echo 'Development measurement must not contain validation/holdout seed values.' >&2
+              exit 1
+            }
+
+      - name: Create frozen baseline worktree
+        run: |
+          test "$(git rev-parse origin/main)" = "65a335b455bfb288931487747d633315f71d1d17"
+          git worktree add baseline-worktree origin/main
+          test "$(sha256sum baseline-worktree/public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+
+      - name: Re-run outcome-blind premetric firewall before D4
+        run: |
+          mkdir -p artifacts/pbai-p1/c001
+          node tools/engineering/verify-pbai-c001-premetric.js \
+            --baseline-root baseline-worktree \
+            --output artifacts/pbai-p1/c001/premetric-before-benefit.json >/dev/null
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('artifacts/pbai-p1/c001/premetric-before-benefit.json', 'utf8'));
+          if (r.status !== 'PASS' || r.candidateBenefitMetricsObservedBeforePass !== false || r.d4ReferenceEvaluated !== false) throw new Error('premetric rerun failed');
+          NODE
+
+      - name: Run frozen 64-root D4 development benefit measurement
+        id: benefit
+        continue-on-error: true
+        run: |
+          node tools/engineering/run-pbai-c001-development.js \
+            --baseline-root baseline-worktree \
+            --output artifacts/pbai-p1/c001/development-result.json
+
+      - name: Verify development result firewall
+        if: always()
+        run: |
+          test -f artifacts/pbai-p1/c001/development-result.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('artifacts/pbai-p1/c001/development-result.json', 'utf8'));
+          if (r.selectedTargets !== 64) throw new Error('target count drift');
+          if (r.validationSeedsAccessed !== false || r.releaseHoldoutSeedsAccessed !== false) throw new Error('split firewall breach');
+          if (r.validationAuthorizedByThisResult !== false || r.releaseHoldoutAuthorizedByThisResult !== false) throw new Error('unauthorized promotion');
+          if (r.aiGen3PromotionAuthorizedByThisResult !== false) throw new Error('AI-GEN3 authorization leak');
+          console.log(JSON.stringify({ observed: r.observed, gates: r.gates, developmentPass: r.developmentPass, decision: r.decision }, null, 2));
+          NODE
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-c001-development-benefit
+          path: artifacts/pbai-p1/c001/
+          if-no-files-found: error
+
+      - name: Enforce frozen decision
+        if: always()
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('artifacts/pbai-p1/c001/development-result.json', 'utf8'));
+          if (!r.developmentPass) process.exit(2);
+          NODE

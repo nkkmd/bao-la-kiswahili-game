@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "candidateId": "PBAI-C001",
+  "candidateVersion": "PBAI-C001-v1",
+  "phase": "PBAI-E-DEVELOPMENT-MEASUREMENT-SPEC",
+  "status": "FROZEN-BEFORE-DEVELOPMENT-BENEFIT-OBSERVATION",
+  "baselineMain": "65a335b455bfb288931487747d633315f71d1d17",
+  "candidateImplementationCommit": "c441236795d1405cdf3e36f256fad7fd923ac4f4",
+  "premetricFreezeCommit": "6ac13cc9e72137e23beaf3d8130aa0f66a677608",
+  "candidatePublicAiSha256": "108a57d17d0d0bf2f63e3794f386ee480116791181793ff6cde7366f7bd0a439",
+  "publicEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "premetric": {
+    "status": "PASS",
+    "workflowRunId": 32957250041,
+    "artifactId": 9602505672,
+    "artifactDigestSha256": "861735a270202e4488283dad3470ccc61ff060f4877402086b6c4b9771a8346d",
+    "candidateBenefitMetricsObservedBeforePass": false,
+    "d4ReferenceEvaluatedBeforePass": false
+  },
+  "developmentPopulation": {
+    "sourceSeedBlock": {"start": 31300001, "end": 31300512},
+    "populationDigest": "fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734",
+    "selectedTargetCount": 64,
+    "selectedTargetRefsSha256": "aeaccee4052ba12c86d129b53775e3589479ffeac71edf8f0ad39fac81d4d323"
+  },
+  "candidateAndBaseline": {
+    "level": "hard",
+    "evaluationProfile": "bao",
+    "maxDepth": 3,
+    "quiescenceDepth": 1,
+    "timeLimitMs": "Infinity",
+    "baselineSource": "baseline worktree at baselineMain",
+    "candidateFeature": "pbaiC001NamuaForcedCaptureLegacy=true"
+  },
+  "reference": {
+    "source": "baseline worktree at baselineMain only",
+    "candidateCodeMayDefineReference": false,
+    "semantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+    "evaluationProfile": "bao",
+    "depth": 4,
+    "quiescenceDepth": 1,
+    "orderQuiescenceCaptures": false
+  },
+  "metricDefinitions": {
+    "topSetAgreement": "selected move belongs to frozen D4 reference top set",
+    "normalizedRankLoss": "(reference scoreRank - 1) / max(1, legalMoveCount - 1)",
+    "severeLoss": "selected move is unique worst under D4 reference OR selected move is root-loss-mate-domain while D4 best is not root-loss-mate-domain",
+    "catastrophicNewLoss": "candidate severe where baseline is not severe and candidate move is immediate terminal loss or root-loss-mate-domain while a non-loss reference move exists",
+    "searchWork": "stats.nodes + stats.quiescenceNodes",
+    "searchWorkRatio": "candidate searchWork / baseline searchWork"
+  },
+  "developmentGate": {
+    "topSetAgreementDeltaCandidateMinusBaselineMinimum": 0.05,
+    "meanNormalizedRankLossDeltaCandidateMinusBaselineMaximum": -0.02,
+    "severeLossRateExcessOverBaselineMaximum": 0.0,
+    "catastrophicNewLossCountMaximum": 0,
+    "medianSearchWorkRatioCandidateOverBaselineMaximum": 1.5,
+    "fractionRootsWithSearchWorkRatioAbove2Maximum": 0.1,
+    "candidateTriggerFailureCountMaximum": 0,
+    "allRequired": true
+  },
+  "firewall": {
+    "validationExecutionAuthorized": false,
+    "releaseHoldoutExecutionAuthorized": false,
+    "validationSeedAccessAuthorized": false,
+    "releaseHoldoutSeedAccessAuthorized": false,
+    "tuningAfterDevelopmentOutcomeAllowed": false,
+    "sameVersionMechanismRetuningAllowed": false,
+    "sameVersionTriggerRetuningAllowed": false,
+    "sameVersionPopulationRetuningAllowed": false,
+    "sameVersionThresholdRetuningAllowed": false,
+    "publicAdoptionAuthorized": false,
+    "aiGen3PromotionAuthorized": false
+  },
+  "decisionRule": {
+    "allGatesPass": "DEVELOPMENT-PASS/VALIDATION-ELIGIBLE-BUT-NOT-YET-AUTHORIZED",
+    "anyGateFails": "DEVELOPMENT-BENEFIT-FAIL/HOLD",
+    "noPostOutcomeRescueWithinV1": true
+  }
+}
