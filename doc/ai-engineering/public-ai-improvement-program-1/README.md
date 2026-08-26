@@ -3,7 +3,7 @@
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
 **開始日:** 2026-08-26  
 **Program scientific evidence anchor:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Status:** PBAI-A/B/C COMPLETE / C002 HOLD / **PBAI-C004-v1 CONTRACT FROZEN; DEVELOPMENT AUTHORIZED AFTER MERGE** / public AI unchanged
+**Status:** PBAI-A/B/C COMPLETE / **C002 HOLD / C004 HOLD** / no candidate currently authorized / public AI unchanged
 
 ## 1. Purpose and separation
 
@@ -15,8 +15,8 @@ PBAI-P1はcompleted **Research Generation 1**をengineering inputとしてpublic
 current public lineage = AI-GEN2
 frozen exact comparator = AI-GEN2-BASELINE-2026-08-26-v1
 global gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
-closed first candidate = PBAI-C002-v1 / NON-ESTIMABLE / HOLD
-current exact development contract = PBAI-C004-v1
+closed candidate = PBAI-C002-v1 / NON-ESTIMABLE / HOLD
+closed candidate = PBAI-C004-v1 / DEVELOPMENT-BENEFIT-FAIL / HOLD
 next adopted public lineage reserved = AI-GEN3
 ```
 
@@ -67,92 +67,112 @@ Scientific `TM-S2-C03 = CONFIRMED`は変更しない。同versionのpopulation/t
 
 Canonical result: [`candidates/PBAI-C002-v1-development-result.json`](candidates/PBAI-C002-v1-development-result.json)
 
-## 5. Current candidate — PBAI-C004-v1
+## 5. Closed candidate — PBAI-C004-v1
 
 Primary engineering inputはPosition Complexity / Difficulty Study 1の**reproducible exact D2/D3 search measurement**である。Studyのformal decision自体は`INCONCLUSIVE`のまま維持する。
 
-Research endpoint:
-
-```text
-D23Instability = exact TopSet_D2 ∩ TopSet_D3 = empty
-```
-
-これはproduction classifierとしてコピーしない。C004は新しいengineering hypothesisである。
-
-### Predevelopment support firewall
+### Predevelopment support
 
 Candidate implementation前にsupport ruleをfreezeし、PBAI-C development blockだけをbaseline-onlyで測定した。
 
 ```text
-run = 32917223072
-job = 98023357050
-artifact = 9588624025
-population digest = fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734
 population = 128 Namua + 128 Mtaji = 256
-exact TopSet-disjoint = 54
+population digest = fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734
+exact TopSet-disjoint primary roots = 54
 minimum estimable = 48
 SUPPORT = PASS
+boundary overlap-but-canonical-best-changed = 5
+stable-best control support = 197
 candidate code used = false
 candidate benefit metrics observed = false
-validation/holdout seeds accessed = false
 ```
 
 Canonical:
 
 - [`candidates/PBAI-C004-v1-predevelopment-support-spec.json`](candidates/PBAI-C004-v1-predevelopment-support-spec.json)
 - [`candidates/PBAI-C004-v1-predevelopment-support-result.json`](candidates/PBAI-C004-v1-predevelopment-support-result.json)
+- [`candidates/PBAI-C004-v1.json`](candidates/PBAI-C004-v1.json)
 
-### Exact v1 mechanism
-
-Canonical contract: [`candidates/PBAI-C004-v1.json`](candidates/PBAI-C004-v1.json)
+### Exact v1 mechanism tested
 
 ```text
 feature = pbaiC004D23RootTtFirst
 public default = off
 allowed public source surface = public/ai.js only
-mechanism = enhanced-alpha-beta root move ordering only
+mechanism = enhanced-alpha-beta root TT-best-first ordering after completed D2→D3 selected-best change
+activation earliest = D4
+internal-node ordering = unchanged
 ```
 
-Within one `analyzeMove` call, D2 and D3 must both complete without timeout. If their deterministic selected root move keys differ, depths >=4 give the current root TT preferred move TT-first priority. Internal-node ordering is unchanged.
+Runtime exact TopSet computation、scientific human-difficulty/general-complexity classifier、extra time/depth、evaluation/quiescence change、persistent cache/table、forced move、engine/config/worker/UI changeは認可しなかった。
 
-Not authorized:
+The candidate was implemented only on isolated PR #58 and never merged to `main`.
+
+### Premetric safety
+
+D4 benefitを観測する前に以下をPASSした。
 
 ```text
-runtime exact TopSet computation
-scientific human-difficulty/general-complexity classifier
-extra time/depth budget
-evaluation or quiescence change
-persistent cache/table
-forced move
-engine/config/worker/UI change
+source-surface / frozen engine / size budget = PASS
+feature-off exact baseline behavior = PASS
+existing engine/AI/evaluation/search/config/worker/tactical regressions = PASS
+validation/holdout firewall = PASS
+54 primary runtime-trigger coverage = PASS
+32 stable-best controls trigger=0 = PASS
+D3 feature-on/off exactness = PASS
 ```
 
-### Target / boundary / negative control separation
+### Frozen D4 result
 
-The support probe exposed a necessary runtime boundary:
+Primary candidate-specific benefit gateはconjunctionであり、median node ratioとfraction non-worseの双方を必要とした。
 
 ```text
-primary: exact TopSet-disjoint = 54
-boundary: TopSets overlap but deterministic canonical best changes = 5
-negative control: deterministic canonical best unchanged = 197
+median nodes(candidate/baseline) = 1.000
+required <= 0.950
+=> FAIL
+
+fraction roots candidate nodes <= baseline = 46/54 = 0.8518518519
+required >= 0.55
+=> PASS
 ```
 
-Primary roots alone determine the intended-benefit result. Boundary roots receive semantic-safety + cost auditing only. Negative controls must not trigger and must reproduce feature-off exactly.
-
-### Candidate-specific benefit gate
-
-Primary fixed-depth D4 feature-on/off:
+Measured semantic/boundary/control gatesはすべてPASSした。
 
 ```text
-development/validation median nodes(on/off) <= 0.95
-fraction roots candidate nodes <= baseline >= 0.55
-release holdout median <= 0.97 and fraction >= 0.52
-root-score mismatches = 0
-selected move outside frozen D4 top set = 0
-catastrophic new losses = 0
+root-score mismatch = 0
+candidate outside frozen D4 TopSet = 0
+catastrophic new loss = 0
+primary trigger failure = 0
+boundary aggregate node ratio = 1.000 <= 1.10
+negative-control trigger failure = 0
+negative-control exactness failure = 0
 ```
 
-Boundary roots additionally require aggregate candidate/baseline node ratio <=1.10, with no benefit claim. Global PBAI-C gates remain mandatory.
+Pooled primary nodesはcandidate `39,869`、baseline `41,304`、ratio `0.9652576`だったが、これは事前固定primary acceptance endpointではないためmedian failureを救済しない。
+
+Canonical development result: [`candidates/PBAI-C004-v1-development-result.json`](candidates/PBAI-C004-v1-development-result.json)
+
+Provenance:
+
+```text
+run = 32918902388
+job = 98028290217
+artifact = 9589217604
+artifact ZIP SHA-256 = f5552a1b8386cf58a585ea92cd5443f9d306d70630e1ef4afa78fd96404f4e8f
+PR #58 = CLOSED WITHOUT MERGE
+```
+
+Therefore:
+
+```text
+PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
+validation = NOT EXECUTED
+release holdout = NOT EXECUTED
+public adoption = NOT AUTHORIZED
+AI-GEN3 = NOT-AUTHORIZED
+```
+
+The result does not revise Position Complexity / Difficulty Study 1 (`INCONCLUSIVE`) and does not show that every search-instability mechanism is ineffective. It only closes the prospectively frozen v1 engineering mechanism. Same-version mechanism/trigger/order/target/boundary/threshold rescue is prohibited.
 
 ## 6. Program flow
 
@@ -161,11 +181,11 @@ PBAI-A  Research Generation 1 evidence audit                    COMPLETE
 PBAI-B  AI-GEN2 exact public baseline freeze                    COMPLETE
 PBAI-C  global numeric benchmark/release-gate freeze            COMPLETE
 C002    isolated candidate                                      NON-ESTIMABLE / HOLD
-C004-D  predevelopment support + exact contract                 SUPPORT PASS / FROZEN
-C004-E  isolated development / ablation                         NEXT AFTER CONTRACT MERGE
-PBAI-F  fresh validation + conditional holdout authorization
-PBAI-G  final regression / operational gate
-PBAI-H  staged public deployment / keep-or-rollback
+C004-D  predevelopment support + exact contract                 COMPLETE
+C004-E  isolated development                                    BENEFIT-GATE FAIL / HOLD
+NEXT    different EVIDENCE-AUDIT-READY candidate                NOT YET AUTHORIZED
+PBAI-F  fresh validation                                        NOT REACHED
+release holdout                                                 NOT AUTHORIZED
 ```
 
 ## 7. Current authorization boundary
@@ -174,15 +194,16 @@ PBAI-H  staged public deployment / keep-or-rollback
 PBAI-C001 authorized = false
 PBAI-C002 authorized = false / HOLD
 PBAI-C003 authorized = false
-PBAI-C004 authorized = true after exact-contract merge
+PBAI-C004 authorized = false / HOLD
 PBAI-C005 authorized = false
-AUTHORIZED-FOR-DEVELOPMENT = 1 after merge
+AUTHORIZED-FOR-DEVELOPMENT = 0
 active candidate implementation = 0
+isolated development implementation attempts = 2
 release holdout execution = NOT-AUTHORIZED
 public deployments caused by PBAI-P1 = 0
 AI-GEN3 = RESERVED / NOT-AUTHORIZED
 ```
 
-The contract-freeze change itself contains no candidate `public/` implementation edits. After merge, the next permitted operation is a fresh isolated `PBAI-C004-v1` development branch from the resulting `main`.
+The current public implementation remains frozen `AI-GEN2`; no PBAI candidate implementation has been merged to `main`.
 
-Failure, non-estimability or lack of practical benefit are valid outcomes; `KEEP-AI-GEN2` remains acceptable.
+The next permitted operation is evidence audit and prospective contract freeze for a different candidate. Failure, non-estimability or lack of practical benefit are valid outcomes; `KEEP-AI-GEN2` remains acceptable.
