@@ -1,0 +1,25 @@
+name: G2-01 calibration replication contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'doc/position-evaluation-empirical-outcome-calibration-replication/**'
+      - 'doc/research-program-decisions/2026-08-26-g2-01-study-start.md'
+      - 'test/g2-01-calibration-replication-contract.test.js'
+      - '.github/workflows/g2-01-calibration-replication-contract.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Audit G2-01 prospective contract
+        run: node test/g2-01-calibration-replication-contract.test.js

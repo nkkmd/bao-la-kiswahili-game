@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-01",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "PEOCR-STUDY1",
+  "stageId": "PEOCR-S0-TECHNICAL-2026-08-26-v1",
+  "status": "prospective-frozen-technical-validation-not-yet-executed",
+  "frozenAt": "2026-08-26",
+  "baselineMainHead": "9e9cb6e2525f09a873e741db9f8fa42696839fbe",
+  "researchBranch": "research/g2-01-position-evaluation-empirical-outcome-calibration-replication",
+  "scientificInferenceAuthorized": false,
+  "scientificOutcomeGenerationAuthorized": false,
+  "purpose": "Validate evaluator, raw-state identity, selection, calibration, metric, bootstrap, serialization, and authorization-firewall semantics before any Stage 1 scientific generation.",
+  "quarantinedSmokeSeeds": {
+    "start": 24010001,
+    "end": 24010032,
+    "count": 32,
+    "scientificReuseAllowed": false
+  },
+  "rawStateIdentity": {
+    "fields": [
+      "pits",
+      "reserve",
+      "houseOwned",
+      "player",
+      "phase",
+      "winner",
+      "pending"
+    ],
+    "excluded": [
+      "turn",
+      "reason"
+    ],
+    "symmetryCanonicalizationAllowed": false
+  },
+  "technicalChecks": [
+    "actor-relative bao evaluation determinism",
+    "terminal and nonterminal score semantics",
+    "hard/bao/phase2/D2 continuation determinism",
+    "maxPly unresolved is administrative truncation and never draw",
+    "historicalTrajectoryHash and openingPrefixHash determinism",
+    "RAW state key serialization and 64-seed conservation",
+    "phase-stratified isotonic PAVA determinism",
+    "prediction clipping to [0.01,0.99] after PAVA fit",
+    "Brier and finite clipped log-loss implementation",
+    "phase-stratified paired bootstrap deterministic index stream",
+    "phase-specific calibration slope/intercept diagnostic implementation",
+    "spec/source hash binding and authorization firewall"
+  ],
+  "passRule": "all mandatory checks pass with zero semantic mismatches; otherwise Stage 1 generation remains unauthorized",
+  "prohibitions": [
+    "no scientific inference from Stage 0 smoke outcomes",
+    "no reuse of Stage 0 smoke seeds in Stage 1 or Stage 2",
+    "no change to Research Generation 1 PEC-STUDY1 formal decision",
+    "no public-AI strength, deployment, latency, UX, or product-quality endpoint"
+  ]
+}
