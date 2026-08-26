@@ -1,0 +1,70 @@
+name: PBAI-P1 C004 closure
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'doc/AI_ENGINEERING_INDEX.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-1/**'
+      - 'test/public-ai-improvement-program1-contract.test.js'
+      - '.github/workflows/pbai-p1-c004-closure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify closure contains no public candidate implementation
+        run: |
+          changed="$(git diff --name-only origin/main...HEAD -- public/)"
+          test -z "$changed" || {
+            echo 'C004 closure must not modify public/.' >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+
+      - name: Verify frozen AI-GEN2 source remains on main path
+        run: |
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+
+      - name: Validate historical frozen gates and C004 contract
+        run: |
+          node tools/engineering/validate-pbai-p1-gate-spec.js
+          node tools/engineering/validate-pbai-c004-predevelopment-support-spec.js
+          node tools/engineering/validate-pbai-c004-contract.js
+
+      - name: Validate current PBAI-P1 closure state
+        run: node test/public-ai-improvement-program1-contract.test.js
+
+      - name: Verify binding C004 result and firewall
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = 'doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-development-result.json';
+          const r = JSON.parse(fs.readFileSync(p, 'utf8'));
+          if (r.finalDevelopmentStatus !== 'DEVELOPMENT-FAIL-HOLD') throw new Error('unexpected C004 disposition');
+          if (r.development.pullRequest !== 58 || r.development.pullRequestMerged !== false) throw new Error('PR disposition mismatch');
+          if (r.developmentGate.primary.medianNodeRatioCandidateOverBaseline !== 1) throw new Error('median result drift');
+          if (r.developmentGate.primary.medianNodeRatioGatePassed !== false) throw new Error('median gate drift');
+          if (r.developmentGate.developmentPass !== false) throw new Error('development disposition drift');
+          if (r.decision.developmentAuthorizationContinues !== false) throw new Error('authorization still active');
+          if (r.decision.sameVersionRetuningAllowed !== false) throw new Error('same-version rescue opened');
+          if (r.executionBoundary.validationExecuted !== false) throw new Error('validation unexpectedly executed');
+          if (r.executionBoundary.releaseHoldoutExecuted !== false) throw new Error('holdout unexpectedly executed');
+          if (r.executionBoundary.validationSeedsAccessed !== false) throw new Error('validation seed firewall violation');
+          if (r.executionBoundary.releaseHoldoutSeedsAccessed !== false) throw new Error('holdout seed firewall violation');
+          if (r.decision.aiGen3PromotionAuthorized !== false) throw new Error('AI-GEN3 unexpectedly authorized');
+          console.log('PBAI-C004-v1 closure binding: PASS');
+          NODE
