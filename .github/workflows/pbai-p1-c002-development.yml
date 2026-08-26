@@ -68,3 +68,22 @@ jobs:
             exit 1
           }
           echo 'Development-only firewall PASS'
+      - name: Materialize development population without candidate metrics
+        run: |
+          mkdir -p artifacts/pbai-p1/c002
+          node tools/engineering/run-pbai-c002-development.js \
+            --phase materialize \
+            --output artifacts/pbai-p1/c002/development-materialization.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync('artifacts/pbai-p1/c002/development-materialization.json', 'utf8'));
+          if (report.candidateMetricsObserved !== false) throw new Error('candidate metrics must not be observed during materialization');
+          if (report.validationSeedsAccessed !== false) throw new Error('validation seeds accessed');
+          if (report.releaseHoldoutSeedsAccessed !== false) throw new Error('release holdout seeds accessed');
+          console.log(JSON.stringify({populationDigest: report.populationDigest, populationSupport: report.populationSupport, c002Support: report.c002Support, estimability: report.estimability}, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pbai-c002-development-materialization
+          path: artifacts/pbai-p1/c002/development-materialization.json
+          if-no-files-found: error
