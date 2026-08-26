@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "phase": "PBAI-E-PRE-OUTCOME",
+  "materializationId": "PBAI-C-DQ-POPULATION-MATERIALIZATION-2026-08-26-v1",
+  "status": "FROZEN-BEFORE-CANDIDATE-DEVELOPMENT-METRICS",
+  "sourceMain": "381d5fc0e60a5ea76dbd9336ab1b541467fe2869",
+  "globalGateSpecId": "PBAI-C-GLOBAL-GATES-2026-08-26-v1",
+  "candidateContract": "PBAI-C002-v1",
+  "candidateOutcomeObservedBeforeFreeze": false,
+  "candidateDevelopmentMetricObservedBeforeFreeze": false,
+  "researchGeneration2EvidenceIncluded": false,
+  "engineBinding": {
+    "publicEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "authoritativeRawIdentity": "ORISC raw state: pits,reserve,houseOwned,player,phase,winner,pending",
+    "aiStateKeyAllowedForPopulationIdentity": false
+  },
+  "trajectory": {
+    "maximumPlies": 160,
+    "startState": "public/engine.js initialState()",
+    "moveSource": "exact E.moveVariants(state), lexicographically sorted by ORISC.exactMoveKey before seeded selection",
+    "randomGenerator": "Mulberry32-compatible seededRandom implementation already used by tools/benchmark.js",
+    "stop": "winner becomes non-null or maximumPlies reached",
+    "outcomeUsedForSelection": false,
+    "evaluationUsedForSelection": false,
+    "candidateFeatureUsedForSelection": false
+  },
+  "phaseAssignment": {
+    "rule": "offset parity within each split source block",
+    "evenOffset": "namua",
+    "oddOffset": "mtaji",
+    "reason": "prospective 50/50 phase assignment independent of trajectory outcome/value"
+  },
+  "perTrajectoryCandidate": {
+    "eligibility": [
+      "state is nonterminal",
+      "assigned phase matches state.phase",
+      "E.moveVariants(state).length >= 2"
+    ],
+    "rankingHash": "sha256('PBAI-C-DQ-v1|observation|' + assignedPhase + '|' + seed + '|' + ply + '|' + authoritativeRawKey)",
+    "selection": "lowest rankingHash; at most one selected root per historical trajectory"
+  },
+  "populationSelection": {
+    "phaseTarget": {
+      "development": 128,
+      "validation": 256,
+      "releaseHoldout": 512
+    },
+    "rankingHash": "sha256('PBAI-C-DQ-v1|population|' + assignedPhase + '|' + seed + '|' + ply + '|' + authoritativeRawKey)",
+    "selection": "within each phase sort by rankingHash, then seed, then ply; keep first roots with unique authoritative RAW state key until phase target",
+    "uniqueRawStateRequired": true,
+    "uniqueHistoricalTrajectoryRequired": true,
+    "replacementAfterOutcomeInspection": false,
+    "insufficientSupportAction": "NON-ESTIMABLE/HOLD for any dependent gate; do not change the seed block or selection algorithm after outcome inspection"
+  },
+  "sourceSeedBlocks": {
+    "development": { "start": 31300001, "end": 31300512, "executionAuthorizedNow": true },
+    "validation": { "start": 31400001, "end": 31401024, "executionAuthorizedNow": false },
+    "releaseHoldout": { "start": 31500001, "end": 31502048, "executionAuthorizedNow": false }
+  },
+  "currentExecutionBoundary": {
+    "developmentPopulationMaterialization": "AUTHORIZED",
+    "developmentCandidateMetricEvaluation": "AUTHORIZED-AFTER-MATERIALIZATION-AND-UNIT-TEST-PASS",
+    "validationPopulationMaterialization": "NOT-AUTHORIZED",
+    "validationCandidateMetricEvaluation": "NOT-AUTHORIZED",
+    "releaseHoldoutPopulationMaterialization": "NOT-AUTHORIZED",
+    "releaseHoldoutCandidateMetricEvaluation": "NOT-AUTHORIZED"
+  }
+}
