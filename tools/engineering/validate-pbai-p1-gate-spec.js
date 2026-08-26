@@ -14,14 +14,9 @@ const baselinePath = path.join(
   ROOT,
   "doc/ai-engineering/public-ai-improvement-program-1/baselines/AI-GEN2-BASELINE-2026-08-26-v1.json",
 );
-const candidatesPath = path.join(
-  ROOT,
-  "doc/ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md",
-);
 
 const gate = JSON.parse(fs.readFileSync(gatePath, "utf8"));
 const baseline = JSON.parse(fs.readFileSync(baselinePath, "utf8"));
-const candidates = fs.readFileSync(candidatesPath, "utf8");
 
 assert.equal(gate.schemaVersion, 1);
 assert.equal(gate.program, "PBAI-P1");
@@ -30,6 +25,10 @@ assert.equal(gate.gateSpecId, "PBAI-C-GLOBAL-GATES-2026-08-26-v1");
 assert.equal(gate.status, "FROZEN-BEFORE-CANDIDATE-IMPLEMENTATION");
 assert.equal(gate.baselineId, baseline.baselineId);
 assert.equal(gate.baselineSourceCommit, baseline.sourceOfTruth.repositoryCommit);
+
+// These are historical freeze-time facts. The validator deliberately checks the
+// immutable PBAI-C spec rather than requiring the current program state to keep
+// development authorization at zero forever after PBAI-D begins.
 assert.equal(gate.candidateImplementationsObservedBeforeFreeze, 0);
 assert.equal(gate.candidateOutcomesObservedBeforeFreeze, 0);
 assert.equal(gate.researchGeneration2EvidenceIncluded, false);
@@ -125,10 +124,5 @@ assert.equal(gate.releaseHoldout.authorizedAtPBAI_C, false);
 assert.equal(gate.releaseHoldout.tuningAfterHoldoutInspectionAllowed, false);
 assert.equal(gate.releaseDecision.allRequiredGlobalHardGatesMustPass, true);
 assert.equal(gate.releaseDecision.noAcceptableCandidateOutcome, "KEEP-AI-GEN2");
-
-assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 0"),
-  "no candidate is authorized while global gates are frozen");
-assert.ok(!candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 1"),
-  "candidate implementation authorization must remain zero at PBAI-C freeze");
 
 console.log("PBAI-P1 PBAI-C global gate specification: PASS");

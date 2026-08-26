@@ -12,12 +12,12 @@ PBAI-B AI-GEN2 exact public baseline = COMPLETE
 AI-GEN2 exact baseline ID = AI-GEN2-BASELINE-2026-08-26-v1
 PBAI-C global benchmark / numeric non-regression / release gates = COMPLETE / FROZEN
 PBAI-C gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
-candidate-specific exact gate contract = NOT-YET-FROZEN / REQUIRED IN PBAI-D BEFORE EACH AUTHORIZATION
+PBAI-D first exact candidate contract = PBAI-C002-v1 / FROZEN
+PBAI-C002 = AUTHORIZED-FOR-DEVELOPMENT after contract merge
 current public AI lineage = AI-GEN2
 next adopted public AI lineage reserved = AI-GEN3
 AI-GEN3 promotion = NOT-AUTHORIZED
-candidate evidence-audit-ready = 5
-AUTHORIZED-FOR-DEVELOPMENT = 0
+AUTHORIZED-FOR-DEVELOPMENT = 1
 candidate implementations = 0
 release holdout execution = NOT-AUTHORIZED
 candidate release decisions = 0
@@ -25,14 +25,6 @@ public deployments caused by PBAI-P1 = 0
 public AI code changed by PBAI-P1 = false
 Research Generation 2 evidence included = false
 ```
-
-## Canonical naming
-
-- `AI-GEN2` is the current public lineage.
-- `AI-GEN2-BASELINE-2026-08-26-v1` is the frozen exact comparison target, not a new lineage.
-- `AI-GEN3` remains reserved until explicit `ADOPT` plus actual public-default deployment.
-- `legacy`, `bao`, and `bao-v2` are profile/search identifiers, not AI generations.
-- Research uses `Research Generation 1` / `Research Generation 2`; those numbers do not map to AI generations.
 
 ## Source-of-truth progression
 
@@ -43,245 +35,192 @@ PBAI-A work-start main
 PBAI-B baseline public-source anchor
 = f4ae3b11901180cbe417b3e643e2b357d8045d2d
 
-PBAI-C work-start main after PBAI-B merge
+PBAI-C work-start main
 = 0887551fd2e67c6e90c5171465b3354f9042adc4
+
+PBAI-D contract-freeze work-start main
+= 1cc5377178047e03f9225634c63eae9025480de7
 
 PBAI-P1 scientific evidence cutoff
 = 2db7c4d65771066e914f32cbc4116fcc3e9e386a
 ```
 
-The scientific cutoff remains immutable. PBAI-B/C engineering documents do not add Research Generation 2 evidence or modify any Research Generation 1 formal result.
+The scientific cutoff remains unchanged. PBAI-D is engineering governance and does not modify any Research Generation 1 formal decision or import Research Generation 2 results.
 
-## PBAI-A — complete
+## Frozen baseline and global gates
 
-PBAI-A froze the 14-Study Research Generation 1 evidence core, E1/E2/E3/E4 engineering uses, prohibited inferences, candidate traceability, Research Generation 2 exclusion, and authoritative RAW identity boundary.
-
-Current candidate evidence state:
+PBAI-B exact comparison target:
 
 ```text
-PBAI-C001 = EVIDENCE-AUDIT-READY
-PBAI-C002 = EVIDENCE-AUDIT-READY
-PBAI-C003 = EVIDENCE-AUDIT-READY
-PBAI-C004 = EVIDENCE-AUDIT-READY
-PBAI-C005 = EVIDENCE-AUDIT-READY
+AI-GEN2-BASELINE-2026-08-26-v1
 ```
 
-## PBAI-B — complete
-
-Frozen exact baseline:
+PBAI-C global gate spec:
 
 ```text
-baselineId = AI-GEN2-BASELINE-2026-08-26-v1
-generationLineage = AI-GEN2
-repository source = f4ae3b11901180cbe417b3e643e2b357d8045d2d
-public directory = public/
-public endpoint = https://bao-la-kiswahili.cultivationdata.net/
-baselineFrozen = true
+PBAI-C-GLOBAL-GATES-2026-08-26-v1
 ```
 
-Canonical files:
+Global strength, decision-quality, operational, correctness, split/holdout and PWA release-safety gates remain unchanged and cannot be relaxed by a candidate-specific contract.
 
-- `BASELINE_SPEC.md`
-- `baselines/AI-GEN2-BASELINE-2026-08-26-v1.json`
+## PBAI-D candidate selection
 
-Public hard settings:
+The first authorized development candidate is:
 
 ```text
-low      D6  / 400ms
-standard D8  / 500ms
-high     D10 / 600ms
+PBAI-C002-v1
 ```
 
-Expert settings:
+Research evidence source:
 
 ```text
-low      D10 / 1500ms
-standard D12 / 2000ms
-high     D14 / 3000ms
+Tactical Motifs / Tesuji Study 1
+TM-S2-C03 = CONFIRMED
+canonical key = 7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba
 ```
 
-Default evaluation is `bao`; hard/expert uses enhanced alpha-beta iterative deepening; adaptive public default is false; quiescence depth is 1; TT max entries are 50,000; hard/expert evaluation cache max is 2,048; PWA cache is `bao-la-kiswahili-v24`.
-
-Current `AI.stateKey` omits `pending` and is therefore not interchangeable with Research Generation 1 authoritative RAW identity. That property is frozen as a baseline boundary, not converted into a retrospective scientific claim.
-
-PBAI-B changed no `public/` asset.
-
-## PBAI-C — global numeric gates frozen
-
-Canonical protocol and machine-readable spec:
+Formal C03 definition:
 
 ```text
-BENCHMARK_PROTOCOL.md
-benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json
+phase = mtaji
+precondition = reusablePits=0-2
+move abstraction = takata / row 1 / direction right / coarse-no-index
+consequence = actorNyumbaSeedsDeltaSign=0
 ```
 
-The gate freeze occurred while:
+The engineering contract preserves the interpretation boundary: C03 is a machine-reproducible tactical motif under the frozen research operationalization. It is not established as a forced win, traditional/expert tesuji, human-important move, pedagogical rule or general Bao law. The human/expert follow-up remained `INCONCLUSIVE-NOT-ESTIMABLE (N=0)` and is not negative human evidence.
+
+## PBAI-C002-v1 exact mechanism
+
+Canonical contract:
 
 ```text
-candidate implementations = 0
-candidate outcomes observed = 0
-AUTHORIZED-FOR-DEVELOPMENT = 0
+candidates/PBAI-C002-v1.json
 ```
 
-### Playing-strength floor
-
-Deterministic paired hard-vs-hard comparison:
+Mechanism:
 
 ```text
-maxDepth = 3
-timeLimitMs = Infinity
-pair = same opening, candidate/baseline swap South/North
+feature flag = pbaiC002C03Ordering
+public default = off
+allowed public code surface = public/ai.js only
+mechanism = move ordering only
+selective extension = prohibited
+evaluation bonus = prohibited
+forced move = prohibited
+depth/time-budget change = prohibited
+persistent table/cache = prohibited
 ```
 
-Validation and release holdout each require:
+Runtime trigger:
 
 ```text
-core observed candidate score >= 0.50
-one-sided 95% pair-bootstrap lower bound >= 0.47
-each core phase observed score >= 0.48
-each seat observed score >= 0.47
-each challenge opening stratum observed score >= 0.45
+phase = mtaji
+actor reusablePits = count of actor's 16 pits with >=2 seeds = 0..2
+minimum legal moveVariants = 2
+at least one C03 coarse-family legal move
+at least one non-C03 legal alternative
+C03 family = takata / mtaji / row 1 / direction right / coarse-no-index
 ```
 
-Locked validation + holdout requires:
+The research consequence `actorNyumbaSeedsDeltaSign=0` is deliberately **not** used as a runtime trigger. The paired diagnostic definition is also excluded from runtime logic.
+
+Ordering priority is conservative: it may not override immediate-win ordering, enabled TT-first preference or captured-seed ordering. Multiple matching C03 moves receive equal candidate priority, so no post hoc pit-index preference is introduced.
+
+## Candidate-specific benefit gate
+
+Primary intended benefit is fixed-depth D4 search-node efficiency on eligible C03 target roots with feature on versus feature off.
+
+Development and validation require:
 
 ```text
-core observed score >= 0.50
-one-sided 95% lower bound >= 0.48
-each core phase >= 0.49
-each seat >= 0.48
+median nodes(on/off) <= 0.95
+fraction roots candidate nodes <= baseline nodes >= 0.55
 ```
 
-Bootstrap:
+Release holdout, if later authorized, requires:
 
 ```text
-unit = opening pair
-replicates = 20,000
-analysis seed = 31999991
+median nodes(on/off) <= 0.97
+fraction roots candidate nodes <= baseline nodes >= 0.52
 ```
 
-### Decision-quality floor
-
-Fresh roots use a frozen baseline D4 full-window `bao` reference. Validation and holdout each require:
+Target-root semantic hard gates:
 
 ```text
-new catastrophic loss count = 0
-severe-loss excess <= +0.01
-top-set agreement delta >= -0.02
-mean normalized rank-loss delta <= +0.02
+root-score mismatch = 0
+selected move outside frozen D4 reference top set = 0
+catastrophic new loss = 0
 ```
 
-Locked validation + holdout tightens those floors to:
+Target-root counts:
 
 ```text
-new catastrophic loss count = 0
-severe-loss excess <= +0.005
-top-set agreement delta >= -0.01
-mean normalized rank-loss delta <= +0.01
+development target = 64, minimum estimable 48
+validation target = 128, minimum estimable 96
+release-holdout target = 256, minimum estimable 192
 ```
 
-### Operational floor
+If support is insufficient, the candidate is `NON-ESTIMABLE/HOLD`; replacement from another seed block after outcome inspection is prohibited.
 
-Same-root/same-host comparison requires:
+Negative controls are Namua roots and Mtaji roots with reusablePits >=3. Feature-on must not trigger there and must exactly reproduce feature-off fixed-depth move/root-score/search counters.
+
+## Cost / rollback / no-rescue
 
 ```text
-crash / exception = 0
-illegal move = 0
-invalid state = 0
-median elapsed candidate/baseline <= 1.05
-p95 elapsed candidate/baseline <= 1.10
-median completed-depth delta >= -1
-fraction roots candidate >=2 depths lower <= 0.05
-timeout-rate increase <= +0.05
-direct/Worker deterministic mismatch = 0
-added public static candidate assets <= 524,288 bytes
+additional persistent memory = 0 bytes
+additional public/ai.js bytes <= 4096
+new public asset = prohibited
+mechanism versions under PBAI-C002-v1 = 1
+post-outcome trigger retuning = prohibited
+post-outcome ordering-placement retuning = prohibited
+post-outcome threshold retuning = prohibited
 ```
 
-A candidate adding persistent tables/caches must freeze an additional memory budget before implementation.
+Before public adoption, rollback is simply feature-off to the frozen baseline path. Any later public release must also satisfy the PBAI-C PWA cache-version and rollback contract.
 
-### Correctness hard gates
+## Holdout firewall
 
 ```text
-public/engine.js frozen SHA must remain unchanged
-existing tactical regression failures = 0
-candidate-specific regression failures = 0
-required relevant test failures = 0
-unvalidated symmetry/canonicalization = prohibited
-Research Generation 1 RAW identity violation = prohibited
-scientifically prohibited inference in implementation/UI = prohibited
+release holdout ranges = FROZEN
+release holdout execution = NOT-AUTHORIZED
 ```
 
-No playing-strength or operational improvement may compensate for these failures.
-
-### Frozen split / holdout firewall
-
-Core strength blocks, challenge strata, decision-quality root-source blocks and operational root-source blocks are all frozen in the gate spec under engineering seed namespaces `31000001..31801024` with non-overlapping ranges.
-
-Release holdout ranges are reserved but **not authorized to execute** at PBAI-C. Holdout execution requires validation PASS, frozen candidate source/config hash, and explicit PBAI-F authorization. Same-holdout retuning after inspection is prohibited.
-
-### Candidate isolation
-
-Each candidate must be implemented behind an explicit flag/configuration:
+Holdout execution still requires:
 
 ```text
-feature off = frozen baseline comparator
-feature on = exactly one PBAI candidate
-public default before adoption = off
+implementation complete
+fresh development checks complete
+fresh validation PASS
+candidate source/config hash frozen
+explicit PBAI-F authorization
 ```
-
-Combined mechanisms require a separate candidate ID after component ablations.
-
-## Candidate-specific gate still required before implementation
-
-PBAI-C freezes the global floors. It does **not** authorize a generic candidate mechanism.
-
-Before any one candidate becomes `AUTHORIZED-FOR-DEVELOPMENT`, PBAI-D must freeze that candidate's:
-
-- exact mechanism and feature flag;
-- intended-benefit endpoint and minimum practical benefit;
-- target/control strata;
-- candidate-local development/validation/holdout seeds or fixtures;
-- runtime/memory budget where applicable;
-- failure/rollback contract;
-- confirmation that global PBAI-C thresholds remain unchanged.
-
-Candidate-specific rules may add requirements but cannot relax the global PBAI-C gates.
 
 ## Current authorization state
 
 ```text
 PBAI-C001 authorized = false
-PBAI-C002 authorized = false
+PBAI-C002 authorized = true
 PBAI-C003 authorized = false
 PBAI-C004 authorized = false
 PBAI-C005 authorized = false
-AUTHORIZED-FOR-DEVELOPMENT = 0
+AUTHORIZED-FOR-DEVELOPMENT = 1
 candidate implementations = 0
 release holdout execution = NOT-AUTHORIZED
+public AI code changed by PBAI-P1 = false
 AI-GEN3 promotion = NOT-AUTHORIZED
 ```
 
-## Next required work
+Authorization does not mean validation or adoption. No public AI implementation is part of the PBAI-D contract-freeze change.
 
-**PBAI-D — exact single-candidate contract + development authorization.**
+## Next permitted work
 
-The next candidate must be selected from the evidence-audit-ready registry, receive one exact mechanism/flag and candidate-specific benefit/validation contract, and only then may code be written on an isolated development branch.
+After the contract-freeze PR is merged, create an isolated `PBAI-C002-v1` development branch from the resulting `main`, implement only the frozen move-ordering feature behind `pbaiC002C03Ordering` with default `false`, add candidate-specific tests/instrumentation, and run only the authorized development block first.
 
-No acceptable candidate is also a valid outcome:
+Validation remains separate and release holdout remains blocked.
+
+A failed or non-estimable candidate is an acceptable engineering result:
 
 ```text
 KEEP-AI-GEN2
 ```
-
-## Explicitly not done
-
-- no evaluation-weight change;
-- no phase/morphology bonus;
-- no tactical C03 production hard-code;
-- no adaptive/selective deepening implementation;
-- no exact-oracle connection to public AI;
-- no score→win-probability conversion;
-- no symmetry/canonicalization introduction;
-- no release-holdout execution;
-- no PBAI-P1-caused public deployment;
-- no `AI-GEN3` promotion.

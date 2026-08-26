@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "phase": "PBAI-D",
+  "candidateId": "PBAI-C002",
+  "candidateVersion": "PBAI-C002-v1",
+  "status": "FROZEN-FOR-DEVELOPMENT",
+  "authorization": "AUTHORIZED-FOR-DEVELOPMENT-AFTER-CONTRACT-MERGE",
+  "contractFreezeSourceMain": "1cc5377178047e03f9225634c63eae9025480de7",
+  "baselineId": "AI-GEN2-BASELINE-2026-08-26-v1",
+  "globalGateSpecId": "PBAI-C-GLOBAL-GATES-2026-08-26-v1",
+  "candidateImplementationObservedBeforeFreeze": false,
+  "candidateOutcomeObservedBeforeFreeze": false,
+  "researchGeneration2EvidenceIncluded": false,
+  "researchEvidence": {
+    "study": "Tactical Motifs / Tesuji Study 1",
+    "formalCandidate": "TM-S2-C03",
+    "formalDecision": "CONFIRMED",
+    "candidateDefinitionSha256": "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8",
+    "formalSpecSha256": "83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8",
+    "canonicalCandidateKey": "7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba",
+    "formalFreshCorpus": {
+      "selectedRoots": 1272,
+      "structuralSuccessRate": 0.978774,
+      "d3TopSetRate": 0.736635,
+      "d3AtOrAboveMedianRate": 0.869497,
+      "d3UniqueWorstRate": 0.070755
+    },
+    "interpretationBoundary": {
+      "machineReproducibleTransferableTacticalMotifUnderFrozenOperationalization": true,
+      "forcedWinClaim": false,
+      "traditionalTesujiClaim": false,
+      "humanImportanceClaim": false,
+      "pedagogicalClaim": false,
+      "generalizationBeyondFrozenRulesEngineSearch": false
+    },
+    "humanExpertFollowup": {
+      "status": "INCONCLUSIVE-NOT-ESTIMABLE",
+      "n": 0,
+      "negativeHumanEvidence": false
+    }
+  },
+  "engineeringClassification": "single-mechanism-search-ordering-candidate",
+  "mechanism": {
+    "name": "TM-S2-C03 coarse-family move ordering",
+    "featureFlag": "pbaiC002C03Ordering",
+    "defaultBeforeAdoption": false,
+    "scope": "enhanced alpha-beta move ordering only",
+    "selectiveExtensionAllowed": false,
+    "evaluationBonusAllowed": false,
+    "forcedMoveAllowed": false,
+    "searchDepthBudgetChangeAllowed": false,
+    "timeBudgetChangeAllowed": false,
+    "persistentTableOrCacheAllowed": false,
+    "affectedPublicCode": [
+      "public/ai.js"
+    ],
+    "explicitlyUnaffectedPublicCode": [
+      "public/engine.js",
+      "public/ai-weights.js",
+      "public/ai-config.js",
+      "public/main.js",
+      "public/index.html",
+      "public/ai-worker.js"
+    ],
+    "workerContract": "worker already forwards options; no worker-source change is authorized for v1"
+  },
+  "trigger": {
+    "statePhase": "mtaji",
+    "actorReusablePits": {
+      "definition": "count across the actor's 16 board pits with seed count >= 2",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "minimumLegalMoveVariants": 2,
+    "requiresAtLeastOneMatchingLegalMove": true,
+    "requiresAtLeastOneNonMatchingLegalAlternative": true,
+    "moveAbstractionMode": "coarse-no-index",
+    "matchingMoveFamily": {
+      "type": "takata",
+      "phase": "mtaji",
+      "row": 1,
+      "direction": "right",
+      "side": null,
+      "houseChoice": null,
+      "houseTwo": false,
+      "index": "IGNORED-BY-FROZEN-ABSTRACTION"
+    },
+    "multipleMatchingMoves": "all matching moves receive equal candidate priority; existing downstream comparator resolves order; no pit-index preference may be added",
+    "researchConsequenceNotUsedAsRuntimeTrigger": "actorNyumbaSeedsDeltaSign=0",
+    "pairedDiagnosticConsequenceNotUsed": "worstReplyActorCaptureMoveDeltaSign=0"
+  },
+  "orderingPlacement": {
+    "mustNotOverrideImmediateWin": true,
+    "mustNotOverrideEnabledTtMoveFirstPreferredMove": true,
+    "mustNotOverrideCapturedSeedOrdering": true,
+    "priorityPosition": "after immediate-win / optional TT-first / captured-seed ordering and before non-TT preferred/killer/history/static ordering",
+    "reason": "conservative tie-class ordering; the research result does not justify forcing the C03 family over a tactically stronger move class"
+  },
+  "featureOffContract": {
+    "mustReproduceFrozenBaseline": true,
+    "mandatoryDeterministicSmoke": "PBAI-B standard-root hard/bao D3 baseline",
+    "mandatoryMoveKey": "takata:namua:0:5:right:::false",
+    "mandatoryRootScore": 13,
+    "publicDefaultFlagValue": false
+  },
+  "candidateSpecificPopulation": {
+    "source": "the frozen PBAI-C decision-quality root populations; no Research Generation 1 formal observation is reused as an engineering outcome",
+    "developmentSourceSeedBlock": {
+      "start": 31300001,
+      "end": 31300512
+    },
+    "validationSourceSeedBlock": {
+      "start": 31400001,
+      "end": 31401024
+    },
+    "releaseHoldoutSourceSeedBlock": {
+      "start": 31500001,
+      "end": 31502048,
+      "executionAuthorizedNow": false
+    },
+    "targetEligibility": [
+      "nonterminal",
+      "minimum 2 legal moveVariants",
+      "phase=mtaji",
+      "actor reusablePits in 0..2 using the frozen count definition",
+      "at least one legal coarse-no-index C03 matching move",
+      "at least one legal nonmatching alternative"
+    ],
+    "selection": "within each frozen source block, take eligible roots in the already frozen outcome/value-blind deterministic hash order",
+    "targetRoots": {
+      "development": 64,
+      "validation": 128,
+      "releaseHoldout": 256
+    },
+    "minimumEstimableRoots": {
+      "development": 48,
+      "validation": 96,
+      "releaseHoldout": 192
+    },
+    "insufficientSupportAction": "NON-ESTIMABLE/HOLD; no replacement from another seed block after outcome inspection"
+  },
+  "negativeControls": {
+    "source": "same frozen PBAI-C decision-quality populations",
+    "requiredClasses": [
+      "Namua roots",
+      "Mtaji roots with actor reusablePits >= 3"
+    ],
+    "selectionPerClass": {
+      "development": 32,
+      "validation": 64,
+      "releaseHoldout": 128
+    },
+    "gate": "with feature on, trigger count must be zero and fixed-depth selected move/root score/search counters must be exactly feature-off equivalent on every negative-control root"
+  },
+  "candidateSpecificBenefitGate": {
+    "primaryEndpoint": "fixed-depth D4 search-node efficiency on eligible target roots with candidate feature on versus feature off",
+    "measurement": "for each root, total nodes = nodes reported by hard enhanced search at maxDepth=4, timeLimitMs=Infinity, evaluationProfile=bao; compare paired feature-on/off runs",
+    "development": {
+      "medianNodeRatioMaximum": 0.95,
+      "fractionRootsCandidateNodesLessThanOrEqualBaselineMinimum": 0.55
+    },
+    "validation": {
+      "medianNodeRatioMaximum": 0.95,
+      "fractionRootsCandidateNodesLessThanOrEqualBaselineMinimum": 0.55
+    },
+    "releaseHoldout": {
+      "medianNodeRatioMaximum": 0.97,
+      "fractionRootsCandidateNodesLessThanOrEqualBaselineMinimum": 0.52
+    },
+    "semanticSafetyOnTargetRoots": {
+      "rootScoreMismatchMaximum": 0,
+      "candidateSelectedMoveOutsideFrozenD4ReferenceTopSetMaximum": 0,
+      "catastrophicNewLossMaximum": 0
+    },
+    "globalGatesStillMandatory": true,
+    "globalGateRelaxationAllowed": false
+  },
+  "operationalBudget": {
+    "additionalPersistentMemoryBytesMaximum": 0,
+    "additionalPublicAiJsBytesMaximum": 4096,
+    "newPublicAssetAllowed": false,
+    "globalOperationalGateStillMandatory": true
+  },
+  "developmentStoppingRule": {
+    "maximumMechanismVersionsUnderThisCandidateContract": 1,
+    "postOutcomeTriggerRetuningAllowed": false,
+    "postOutcomeOrderingPlacementRetuningAllowed": false,
+    "postOutcomeBenefitThresholdRetuningAllowed": false,
+    "ifDevelopmentBenefitGateFails": "REJECT or HOLD PBAI-C002-v1; a materially different mechanism requires a new candidate version/contract before outcomes",
+    "ifAnyGlobalHardGateFails": "REJECT/HOLD; strength or efficiency may not offset failure"
+  },
+  "validationAndHoldoutFirewall": {
+    "validationExecutionAllowedAfterImplementationAndDevelopmentChecks": true,
+    "validationMayTuneImplementation": false,
+    "releaseHoldoutExecutionAuthorizedNow": false,
+    "releaseHoldoutAuthorizationCondition": "candidate source/config hash frozen after fresh validation PASS plus explicit PBAI-F authorization",
+    "tuningAfterHoldoutInspectionAllowed": false
+  },
+  "rollback": {
+    "preAdoption": "feature flag off reproduces AI-GEN2 baseline behavior",
+    "publicReleaseRollback": "restore prior public/ai.js and service-worker cache identity according to PBAI-C PWA release-safety contract",
+    "aiGenerationPromotionBeforePublicAdoption": false
+  }
+}
