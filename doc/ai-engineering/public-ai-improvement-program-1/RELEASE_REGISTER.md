@@ -1,6 +1,6 @@
 # PBAI-P1 Release Register
 
-Status: EMPTY / NO PBAI-P1 PUBLIC RELEASE YET
+Status: **PROGRAM COMPLETE / NO PBAI-P1 PUBLIC RELEASE / AI-GEN2 RETAINED**
 
 AI generation namingは`doc/ai-engineering/AI_GENERATION_NAMING.md`に従う。PBAI-P1開始時点のpublic lineageは`AI-GEN2`であり、`AI-GEN3`はformal public adoptionまで予約名とする。
 
@@ -30,8 +30,33 @@ generationPromotionDecision
 
 同一generation内のminor releaseではgeneration numberを進めず、`AI-GENn-RELEASE-xxx`形式等のrelease suffixで識別する。
 
+## PBAI-P1 final release outcome
+
+PBAI-P1ではrelease-candidate statusへ到達したcandidateが存在しなかった。
+
+```text
+validation executions = 0
+release holdout executions = 0
+release candidates = 0
+formal ADOPT decisions = 0
+public deployments caused by PBAI-P1 = 0
+PBAI-P1 public releases = 0
+generation promotion = NONE
+```
+
+したがってrelease holdoutは消費されていない。No-candidate状態でholdoutを実行して`KEEP-AI-GEN2`を「検証」する必要はない。
+
 ## Current releases
 
-なし。
+PBAI-P1によるreleaseは**なし**。
 
-Program設立時点および命名規則固定時点ではpublic AI implementationを変更していない。
+Final program outcome:
+
+```text
+PBAI-P1 = COMPLETE
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
+current public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT PROMOTED
+```
+
+Program設立からclosureまで、PBAI-P1によるpublic AI implementation変更は発生していない。
