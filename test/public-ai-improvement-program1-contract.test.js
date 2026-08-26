@@ -85,13 +85,13 @@ assert.equal(c002Result.decision.developmentAuthorizationContinues, false);
 assert.equal(c002Result.decision.releaseHoldoutAuthorized, false);
 assert.equal(c002Result.decision.mainPublicResult, "KEEP-AI-GEN2");
 
-// Historical C004 contract and later development-benefit HOLD remain intact.
+// Historical C004 contract and later development HOLD remain intact.
 assert.equal(c004.status, "FROZEN-FOR-DEVELOPMENT");
 assert.equal(c004.authorization, "AUTHORIZED-FOR-DEVELOPMENT-AFTER-CONTRACT-MERGE");
 assert.equal(c004.researchEvidence.formalDecision, "INCONCLUSIVE");
 assert.equal(c004.mechanism.featureFlag, "pbaiC004D23RootTtFirst");
 assert.equal(c004.validationAndHoldoutFirewall.releaseHoldoutExecutionAuthorizedNow, false);
-assert.equal(c004Result.finalDevelopmentStatus, "DEVELOPMENT-BENEFIT-FAIL-HOLD");
+assert.equal(c004Result.finalDevelopmentStatus, "DEVELOPMENT-FAIL-HOLD");
 assert.equal(c004Result.development.pullRequest, 58);
 assert.equal(c004Result.development.pullRequestMerged, false);
 assert.equal(c004Result.developmentGate.primary.medianNodeRatioCandidateOverBaseline, 1);
