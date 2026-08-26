@@ -34,7 +34,6 @@ for (const text of [index, readme, resume, status, audit, baseline, bench, candi
   assert.ok(text.includes("PBAI-P1"), "PBAI-P1 marker missing");
 }
 
-// Program/public state.
 assert.ok(readme.includes("PBAI-A/B/C COMPLETE"));
 assert.ok(readme.includes("C001 HOLD / C002 HOLD / C003 HOLD / C004 HOLD / C005 not authorized"));
 assert.ok(status.includes("PBAI-C001-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD / PR #61 CLOSED WITHOUT MERGE"));
@@ -51,7 +50,6 @@ assert.ok(status.includes("public AI code changed by PBAI-P1 = false"));
 assert.ok(status.includes("Research Generation 2 evidence included = false"));
 assert.ok(status.includes("AI-GEN3 promotion = NOT-AUTHORIZED"));
 
-// Frozen A/B/C controls.
 assert.ok(audit.includes("PBAI-A = COMPLETE"));
 assert.ok(audit.includes("AI.stateKey != Research Generation 1 authoritative RAW identity contract"));
 assert.ok(baseline.includes("Status: **FROZEN / PBAI-B COMPLETE**"));
@@ -66,10 +64,9 @@ assert.equal(gates.releaseHoldout.authorizedAtPBAI_C, false);
 assert.equal(gates.candidateSpecificGateFloor.mayRelaxGlobalGate, false);
 assert.equal(gates.releaseDecision.noAcceptableCandidateOutcome, "KEEP-AI-GEN2");
 
-// Historical C001 closure remains binding.
 assert.equal(c001.status, "FROZEN-FOR-DEVELOPMENT");
 assert.equal(c001.mechanism.featureFlag, "pbaiC001NamuaForcedCaptureLegacy");
-assert.equal(c001Result.finalDevelopmentStatus, "DEVELOPMENT-FAIL-HOLD");
+assert.equal(c001Result.finalDevelopmentStatus, "DEVELOPMENT-BENEFIT-FAIL-HOLD");
 assert.equal(c001Result.development.pullRequest, 61);
 assert.equal(c001Result.development.pullRequestMerged, false);
 assert.equal(c001Result.developmentGate.developmentPass, false);
@@ -79,7 +76,6 @@ assert.equal(c001Result.decision.releaseHoldoutAuthorized, false);
 assert.equal(c001Result.decision.aiGen3PromotionAuthorized, false);
 assert.equal(c001Result.decision.mainPublicResult, "KEEP-AI-GEN2");
 
-// Historical C002 closure remains binding.
 assert.equal(c002Result.finalDevelopmentStatus, "NON-ESTIMABLE-HOLD");
 assert.equal(c002Result.materialization.candidateSupport.eligibleTargets, 5);
 assert.equal(c002Result.materialization.candidateSupport.minimumEstimableTargets, 48);
@@ -88,7 +84,6 @@ assert.equal(c002Result.decision.developmentAuthorizationContinues, false);
 assert.equal(c002Result.decision.releaseHoldoutAuthorized, false);
 assert.equal(c002Result.decision.mainPublicResult, "KEEP-AI-GEN2");
 
-// Historical C004 closure remains binding.
 assert.equal(c004Result.finalDevelopmentStatus, "DEVELOPMENT-FAIL-HOLD");
 assert.equal(c004Result.development.pullRequest, 58);
 assert.equal(c004Result.development.pullRequestMerged, false);
@@ -101,7 +96,6 @@ assert.equal(c004Result.decision.releaseHoldoutAuthorized, false);
 assert.equal(c004Result.decision.aiGen3PromotionAuthorized, false);
 assert.equal(c004Result.decision.mainPublicResult, "KEEP-AI-GEN2");
 
-// C003 support contract was prospective and support-only.
 assert.equal(c003Spec.candidateId, "PBAI-C003");
 assert.equal(c003Spec.candidateVersion, "PBAI-C003-v1");
 assert.equal(c003Spec.status, "FROZEN-PREDEVELOPMENT-SUPPORT-PROBE");
@@ -117,7 +111,6 @@ assert.equal(c003Spec.firewall.candidateBenefitMetricsObserved, false);
 assert.equal(c003Spec.firewall.validationSeedBlockAccessAuthorized, false);
 assert.equal(c003Spec.firewall.releaseHoldoutSeedBlockAccessAuthorized, false);
 
-// C003 binding result is identity-gate non-estimability, not a zero-hit result.
 assert.equal(c003Result.finalSupportStatus, "NON-ESTIMABLE-PRACTICAL-REACHABILITY-HOLD");
 assert.equal(c003Result.failureStage, "STRICT-RAW-IDENTITY-BINDING");
 assert.equal(c003Result.failureReason, "ORACLE-STORED-ROW-REHASH-MISMATCH");
@@ -149,10 +142,7 @@ assert.equal(c003Result.noRescueRule.sameVersionSeedBlockExpansionAllowed, false
 assert.equal(c003Result.noRescueRule.sameVersionSyntheticFixtureSubstitutionAllowed, false);
 assert.equal(c003Result.mainPublicResult, "KEEP-AI-GEN2");
 
-// Central docs and restart checkpoint agree on zero authorization and C005 read-only next step.
-for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) {
-  assert.ok(candidates.includes(id), `${id} missing`);
-}
+for (const id of ["PBAI-C001", "PBAI-C002", "PBAI-C003", "PBAI-C004", "PBAI-C005"]) assert.ok(candidates.includes(id), `${id} missing`);
 assert.ok(candidates.includes("PBAI-C003 authorized = false / HOLD"));
 assert.ok(candidates.includes("AUTHORIZED-FOR-DEVELOPMENT count = 0"));
 assert.ok(resume.includes("The next task is **PBAI-C005 read-only production-surface audit**"));
@@ -167,13 +157,7 @@ for (const text of [index, naming, readme, resume, status, baseline]) {
 }
 assert.ok(naming.includes("AI-GEN3 promotion before public adoption = prohibited"));
 assert.ok(naming.includes("Research Generation 2"));
-
-for (const claim of [
-  "Research Generation 2 evidence included = true",
-  "release holdout execution = AUTHORIZED",
-  "public AI code changed by PBAI-P1 = true",
-  "AI-GEN3 promotion = AUTHORIZED",
-]) {
+for (const claim of ["Research Generation 2 evidence included = true", "release holdout execution = AUTHORIZED", "public AI code changed by PBAI-P1 = true", "AI-GEN3 promotion = AUTHORIZED"]) {
   assert.ok(!status.includes(claim), `unexpected PBAI state claim: ${claim}`);
 }
 
