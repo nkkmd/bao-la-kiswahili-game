@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "phase": "PBAI-D-PREDEVELOPMENT-SUPPORT",
+  "candidateId": "PBAI-C001",
+  "candidateVersion": "PBAI-C001-v1",
+  "status": "SUPPORT-PASS",
+  "spec": "PBAI-C001-v1-predevelopment-support-spec.json",
+  "baselineId": "AI-GEN2-BASELINE-2026-08-26-v1",
+  "globalGateSpecId": "PBAI-C-GLOBAL-GATES-2026-08-26-v1",
+  "sourceMain": "06ef21c5ca3ef1bca90aa37a5ca5d4b2cf262bde",
+  "canonicalExecution": {
+    "workflowRunId": 32952267253,
+    "jobId": 98126097111,
+    "artifactId": 9600601764,
+    "artifactZipSha256": "b240f1d8ffd0e3e6022db2524d1bbc1204489098def079c7c96a20dcc41a99ce"
+  },
+  "firewall": {
+    "candidateImplementationObserved": false,
+    "candidateCodeUsed": false,
+    "candidateBenefitMetricsObserved": false,
+    "validationSeedsAccessed": false,
+    "releaseHoldoutSeedsAccessed": false,
+    "publicCodeChanged": false,
+    "developmentAuthorizationGrantedByThisResult": false,
+    "validationAuthorizedByThisResult": false,
+    "releaseHoldoutAuthorizedByThisResult": false,
+    "aiGen3PromotionAuthorizedByThisResult": false
+  },
+  "sourceBinding": {
+    "publicEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "publicAiSha256": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+  },
+  "developmentPopulation": {
+    "sourceSeedBlock": {
+      "start": 31300001,
+      "end": 31300512
+    },
+    "materializationId": "PBAI-C-DQ-POPULATION-MATERIALIZATION-2026-08-26-v1",
+    "populationDigest": "fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734",
+    "maximumTrajectoryPlies": 160,
+    "trajectoryCandidates": 432,
+    "support": {
+      "namua": 128,
+      "mtaji": 128,
+      "total": 256
+    }
+  },
+  "measurement": {
+    "definition": "current-root legal moveVariants only; no search score/value/reference/continuation outcome measurement",
+    "rootsMeasured": 256,
+    "namuaRoots": 128,
+    "mtajiRoots": 128,
+    "namuaAllCaptureRoots": 108,
+    "namuaAtLeastOneNonCaptureRoots": 20
+  },
+  "targetSupport": {
+    "eligibility": "nonterminal phase=namua; >=2 legal moveVariants; all variants type=capture",
+    "eligible": 108,
+    "selected": 64,
+    "maximum": 64,
+    "minimumEstimable": 32,
+    "supportPass": true,
+    "selectedRefsSha256": "aeaccee4052ba12c86d129b53775e3589479ffeac71edf8f0ad39fac81d4d323"
+  },
+  "controls": {
+    "mtaji": {
+      "available": 128,
+      "selected": 32,
+      "selectedRefsSha256": "64c2ade7ced2e8d27b9a3a2747930277afa7a1b7c805eea7a36112c45b1993e9"
+    },
+    "namuaNonForced": {
+      "available": 20,
+      "selected": 20,
+      "selectedRefsSha256": "12d3ce9caf882fed077aff64020c065fe835076f06c646360223470bd5d4e77d"
+    }
+  },
+  "decision": "SUPPORT-PASS-ELIGIBLE-FOR-EXACT-CANDIDATE-CONTRACT-FREEZE",
+  "decisionBoundary": {
+    "thisIsEngineeringEstimabilityEvidenceOnly": true,
+    "legacySearchStrengthClaimAuthorized": false,
+    "legacySearchBetterMoveClaimAuthorized": false,
+    "captureBranchExpansionWinningValueClaimAuthorized": false,
+    "phaseTransitionStudyFormalDecisionChanged": false,
+    "candidateImplementationAuthorizedByThisResult": false
+  }
+}
