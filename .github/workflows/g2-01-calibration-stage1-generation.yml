@@ -6,6 +6,7 @@ on:
       - research/g2-01-position-evaluation-empirical-outcome-calibration-replication
     paths:
       - 'doc/position-evaluation-empirical-outcome-calibration-replication/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json'
+      - 'doc/position-evaluation-empirical-outcome-calibration-replication/checkpoints/2026-08-27-stage1-timeout-recovery.md'
 
 permissions:
   contents: read
@@ -13,7 +14,7 @@ permissions:
 jobs:
   stage1-generation:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
