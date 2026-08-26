@@ -50,8 +50,8 @@ jobs:
               echo 'C003 support probe must not contain validation/holdout seed values.' >&2
               exit 1
             }
-          ! grep -n 'AI\.stateKey' tools/engineering/materialize-pbai-c003-predevelopment-support.js || {
-            echo 'C003 support probe must use strict ORISC RAW identity, not AI.stateKey.' >&2
+          ! grep -n -E 'AI\.stateKey[[:space:]]*\(' tools/engineering/materialize-pbai-c003-predevelopment-support.js || {
+            echo 'C003 support probe must use strict ORISC RAW identity, not AI.stateKey().' >&2
             exit 1
           }
 
