@@ -1,0 +1,94 @@
+name: PBAI-P1 C003 predevelopment support
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C003-v1-predevelopment-support-spec.json'
+      - 'tools/engineering/validate-pbai-c003-predevelopment-support-spec.js'
+      - 'tools/engineering/materialize-pbai-c003-predevelopment-support.js'
+      - '.github/workflows/pbai-p1-c003-predevelopment-support.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  support-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify no public candidate implementation is present
+        run: |
+          changed="$(git diff --name-only origin/main...HEAD -- public/)"
+          test -z "$changed" || {
+            echo 'C003 support probe must not modify public/.' >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+
+      - name: Validate frozen global gates and C003 support spec
+        run: |
+          node tools/engineering/validate-pbai-p1-gate-spec.js
+          node tools/engineering/validate-pbai-c003-predevelopment-support-spec.js
+          node test/public-ai-improvement-program1-contract.test.js
+
+      - name: Enforce support-only firewall
+        run: |
+          ! grep -R --line-number -E '3140[0-9]{4}|3150[0-9]{4}' \
+            tools/engineering/materialize-pbai-c003-predevelopment-support.js \
+            doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C003-v1-predevelopment-support-spec.json || {
+              echo 'C003 support probe must not contain validation/holdout seed values.' >&2
+              exit 1
+            }
+          ! grep -n 'AI\.stateKey' tools/engineering/materialize-pbai-c003-predevelopment-support.js || {
+            echo 'C003 support probe must use strict ORISC RAW identity, not AI.stateKey.' >&2
+            exit 1
+          }
+
+      - name: Run baseline-only exact-domain practical-reachability probe
+        run: |
+          mkdir -p artifacts/pbai-p1/c003
+          node tools/engineering/materialize-pbai-c003-predevelopment-support.js \
+            --output artifacts/pbai-p1/c003/predevelopment-support.json
+
+      - name: Verify result remains support-only
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('artifacts/pbai-p1/c003/predevelopment-support.json', 'utf8'));
+          for (const key of [
+            'candidateImplementationObserved', 'candidateCodeUsed', 'candidateBenefitMetricsObserved',
+            'searchScoresOrReferenceValuesMeasured', 'oracleSolutionValuesInspectedForSupport',
+            'validationSeedsAccessed', 'releaseHoldoutSeedsAccessed', 'publicCodeChanged',
+            'developmentAuthorizationGrantedByThisResult', 'publicAdoptionAuthorizedByThisResult',
+            'aiGen3PromotionAuthorizedByThisResult', 'researchGeneration2EvidenceIncluded',
+          ]) {
+            if (r.firewall[key] !== false) throw new Error(`support firewall violation: ${key}`);
+          }
+          if (r.identityAudit.aiStateKeyUsed !== false) throw new Error('AI.stateKey unexpectedly used');
+          if (r.identityAudit.oracleStoredKeyMismatches !== 0) throw new Error('oracle RAW key mismatch');
+          console.log(JSON.stringify({
+            status: r.status,
+            decision: r.decision,
+            statesScanned: r.trajectoryProbe.statesScanned,
+            trajectoriesWithNonterminalOracleHit: r.trajectoryProbe.trajectoriesWithNonterminalOracleHit,
+            uniqueNonterminalOracleStatesHit: r.trajectoryProbe.uniqueNonterminalOracleStatesHit,
+          }, null, 2));
+          NODE
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-c003-predevelopment-support
+          path: artifacts/pbai-p1/c003/
+          if-no-files-found: error

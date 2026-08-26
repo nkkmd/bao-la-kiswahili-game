@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "phase": "PBAI-D-PREDEVELOPMENT-SUPPORT-SPEC",
+  "candidateId": "PBAI-C003",
+  "candidateVersion": "PBAI-C003-v1",
+  "status": "FROZEN-PREDEVELOPMENT-SUPPORT-PROBE",
+  "freezeSourceMain": "5e7c67ef1fb0c1a9211c4c81d1f175f1921bde06",
+  "baselineId": "AI-GEN2-BASELINE-2026-08-26-v1",
+  "globalGateSpecId": "PBAI-C-GLOBAL-GATES-2026-08-26-v1",
+  "researchGeneration2EvidenceIncluded": false,
+  "researchEvidence": {
+    "study": "Restricted Endgame / Winning Regions Study 1",
+    "studyId": "REWR-STUDY1",
+    "formalDecision": "EXACT-SOLVED-WITHIN-FROZEN-DOMAIN",
+    "resultPath": "doc/restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json",
+    "domainSha256": "acfc25413f9c237569884f166ed971ad9ee9395665ce96ec6d094d8ed4a6c56a",
+    "stateSetSha256": "95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307",
+    "stateCount": 8,
+    "nonterminalStateCountExpected": 4,
+    "claimBoundary": "exact only within the frozen 8-state domain; no claim for full Bao, all Mtaji, or all endgames"
+  },
+  "supportObjective": {
+    "question": "Does the frozen public-engine development trajectory family naturally reach at least one nonterminal state in the exact 8-state oracle domain under strict authoritative RAW identity?",
+    "engineeringPurpose": "practical reachability/estimability only before any lookup implementation or candidate benefit measurement",
+    "candidateStrengthClaimAuthorized": false,
+    "oracleValueBenefitClaimAuthorized": false,
+    "candidateImplementationAuthorizationGrantedByThisSpec": false
+  },
+  "developmentTrajectoryProbe": {
+    "sourceSeedBlock": {
+      "start": 31300001,
+      "end": 31300512
+    },
+    "trajectoryCount": 512,
+    "maximumPlies": 160,
+    "initialState": "public/engine.js initialState()",
+    "moveOrdering": "ORISC exactMoveKey ascending through existing PBAI deterministic sortedMoves",
+    "moveSelection": "existing PBAI seededRandom(seed), uniform over sorted legal moveVariants",
+    "statesScanned": "every visited state from ply 0 through termination or maximumPlies; no one-root-per-trajectory subsampling"
+  },
+  "identityContract": {
+    "implementation": "tools/experiments/lib/orisc-representation-production.js",
+    "requiredFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "symmetryCanonicalizationAllowed": false,
+    "seatCanonicalizationAllowed": false,
+    "reflectionCanonicalizationAllowed": false,
+    "aiStateKeyAllowed": false,
+    "missingPendingAllowed": false,
+    "oracleStoredStateKeysMustRecomputeUnderStrictRawIdentity": true
+  },
+  "supportMeasurement": {
+    "target": "visited state whose strict ORISC stateKey equals one of the frozen oracle stateRows with ruleState.winner === null",
+    "oracleSolutionFieldsUsedForSupport": false,
+    "allowedOracleFields": ["stateRows[].stateKey", "stateRows[].ruleState"],
+    "forbiddenOracleFields": ["status", "absoluteWinner", "dtf", "optimalMoveKeys", "recurrentMoveKeys"],
+    "minimumTrajectoriesWithNonterminalOracleHit": 1,
+    "minimumUniqueNonterminalOracleStatesHit": 1,
+    "terminalOracleHitsAreDescriptiveOnly": true,
+    "noArtificialOracleFixtureInjection": true
+  },
+  "firewall": {
+    "candidateImplementationObserved": false,
+    "candidateCodeUsed": false,
+    "candidateBenefitMetricsObserved": false,
+    "searchScoresOrReferenceValuesMeasured": false,
+    "oracleSolutionValuesInspectedForSupport": false,
+    "publicCodeChangeAuthorized": false,
+    "validationSeedBlockAccessAuthorized": false,
+    "releaseHoldoutSeedBlockAccessAuthorized": false,
+    "developmentAuthorizationGrantedBySupportResult": false,
+    "aiGen3PromotionAuthorized": false
+  },
+  "decisionRule": {
+    "supportPass": "trajectoriesWithNonterminalOracleHit >= 1 AND uniqueNonterminalOracleStatesHit >= 1 with all identity/source/firewall checks passing",
+    "onPass": "SUPPORT-PASS-ELIGIBLE-FOR-EXACT-CANDIDATE-CONTRACT-FREEZE",
+    "onFail": "NON-ESTIMABLE-PRACTICAL-REACHABILITY/HOLD-NO-DEVELOPMENT",
+    "sameVersionSeedBlockExpansionAfterOutcomeAllowed": false,
+    "sameVersionIdentityRelaxationAfterOutcomeAllowed": false,
+    "sameVersionSyntheticFixtureSubstitutionForPracticalSupportAllowed": false,
+    "validationAfterSupportProbeAuthorized": false,
+    "releaseHoldoutAfterSupportProbeAuthorized": false
+  }
+}
