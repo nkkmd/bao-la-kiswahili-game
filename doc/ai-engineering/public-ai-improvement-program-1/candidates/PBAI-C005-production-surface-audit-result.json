@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P1",
+  "candidateId": "PBAI-C005",
+  "candidateFamily": "evaluation-semantics-sanitation",
+  "auditType": "read-only-production-surface",
+  "auditDate": "2026-08-26",
+  "auditSourceMain": "7f3ea339f7eec0668c641774eb6c2dcd37040a38",
+  "scientificEvidenceCutoff": "2db7c4d65771066e914f32cbc4116fcc3e9e386a",
+  "baselineId": "AI-GEN2-BASELINE-2026-08-26-v1",
+  "researchGeneration2EvidenceIncluded": false,
+  "scientificBoundary": {
+    "study": "Position Evaluation / Win-Rate Calibration Study 1",
+    "formalDecision": "INCONCLUSIVE",
+    "engineScoreIsValidatedBaoWinProbability": false,
+    "scoreToValidatedWinProbabilityAuthorized": false,
+    "formalDecisionChangedByEngineering": false
+  },
+  "baselineIdentity": {
+    "publicEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "publicAiSha256": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "currentMainMatchesFrozenBaselineBlobs": true
+  },
+  "auditedPublicSurfaces": [
+    "public/index.html",
+    "public/main.js",
+    "public/ai.js",
+    "public/ai-config.js",
+    "public/diagnostics.js",
+    "public/ai-worker.js",
+    "public/review-suggestion.js",
+    "public/diagnostic-download.js"
+  ],
+  "auditedDocumentation": [
+    "doc/AI_DEVELOPMENT_LOG.md",
+    "doc/position-evaluation-calibration/STUDY_1_FINAL_REPORT.md",
+    "doc/position-evaluation-calibration/DECISION_REGISTER.md",
+    "doc/position-evaluation-calibration/TECHNICAL_SEMANTICS_AUDIT.md"
+  ],
+  "publicTerminologySearch": {
+    "probability": 0,
+    "win rate": 0,
+    "winning chance": 0,
+    "confidence": 0,
+    "勝率": 0,
+    "確率": 0,
+    "evaluation score": 0,
+    "score": "internal-uses-present-reviewed-separately"
+  },
+  "findings": {
+    "userFacingEngineEvaluationDisplayed": false,
+    "userFacingWinProbabilityDisplayed": false,
+    "engineEvaluationConvertedToProbability": false,
+    "diagnosticRootScoreExported": false,
+    "diagnosticProbabilitySemanticsPresent": false,
+    "reviewSuggestionScoreIsEngineEvaluation": false,
+    "reviewSuggestionScoreIsProbability": false,
+    "complexityScoreIsProbability": false,
+    "normalizedMctsScoreIsCalibratedProbability": false,
+    "actionableCurrentProductionSemanticsDefect": false
+  },
+  "decision": {
+    "finalCandidateStatus": "NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT-HOLD",
+    "closedWithoutImplementation": true,
+    "exactCandidateContractRequired": false,
+    "implementationAuthorized": false,
+    "implementationCreated": false,
+    "validationAuthorized": false,
+    "releaseHoldoutAuthorized": false,
+    "publicAdoptionAuthorized": false,
+    "aiGen3PromotionAuthorized": false,
+    "mainPublicResult": "KEEP-AI-GEN2"
+  },
+  "programImplication": {
+    "originalCandidateInventoryRemaining": 0,
+    "authorizedForDevelopment": 0,
+    "activeCandidateImplementations": 0,
+    "publicMainCandidateImplementations": 0,
+    "publicReleases": 0,
+    "programFinalOutcome": "KEEP-AI-GEN2",
+    "aiGen3Promoted": false
+  }
+}
