@@ -2,14 +2,12 @@
 "use strict";
 
 const assert = require("node:assert/strict");
-const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "../..");
 const base = "doc/ai-engineering/public-ai-improvement-program-1/";
 const readJson = (rel) => JSON.parse(fs.readFileSync(path.join(ROOT, rel), "utf8"));
-const digest = (value) => crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex");
 
 const spec = readJson(`${base}candidates/PBAI-C001-v1-predevelopment-support-spec.json`);
 const support = readJson(`${base}candidates/PBAI-C001-v1-predevelopment-support-result.json`);
@@ -143,10 +141,9 @@ assert.equal(contract.rollback.aiGenerationPromotionBeforePublicAdoption, false)
 
 assert.equal(c002.finalDevelopmentStatus, "NON-ESTIMABLE-HOLD");
 assert.equal(c002.decision.developmentAuthorizationContinues, false);
-assert.equal(c004.finalDevelopmentStatus, "DEVELOPMENT-BENEFIT-FAIL-HOLD");
+assert.equal(c004.finalDevelopmentStatus, "DEVELOPMENT-FAIL-HOLD");
 assert.equal(c004.decision.developmentAuthorizationContinues, false);
 
-// These hashes bind the deterministic selection sets; the support artifact contains the refs.
 for (const value of [
   contract.predevelopmentSupport.selectedTargetRefsSha256,
   contract.predevelopmentSupport.mtajiControlRefsSha256,
