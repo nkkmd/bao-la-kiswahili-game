@@ -36,6 +36,8 @@
       simulations: 0,
       playoutTurns: 0,
       maxPlayoutTurns: 0,
+      pbaiC004TriggerCount: 0,
+      pbaiC004RootTtFirstDepths: 0,
     };
   }
 
@@ -476,9 +478,11 @@
       if (alpha >= beta) return cachedValue;
     }
 
+    const candidateRootTtMoveFirst = context.pbaiC004RootTtFirstActive && ply === 0;
+    if (candidateRootTtMoveFirst) context.stats.pbaiC004RootTtFirstDepths += 1;
     const choices = enhancedOrdered(
       state, player, context.evaluator, cached?.bestMove || "", context.killers.get(ply) || "",
-      context.ttMoveFirst, context.history,
+      context.ttMoveFirst || candidateRootTtMoveFirst, context.history,
     );
     if (!choices.length) return state.player === player ? -WIN + ply : WIN - ply;
     const maximizing = state.player === player;
@@ -724,6 +728,10 @@
       deadline,
       quiescenceDepth: 0,
       maxTableEntries: 2000,
+      ttMoveFirst: false,
+      orderQuiescenceCaptures: false,
+      normalizeTtMateScores: false,
+      pbaiC004RootTtFirstActive: false,
     };
     try {
       return enhancedSearch(next, depth - 1, -Infinity, Infinity, player, context, 1);
@@ -872,10 +880,12 @@
         ttMoveFirst: options.ttMoveFirst ?? false,
         orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
         normalizeTtMateScores: options.normalizeTtMateScores ?? false,
+        pbaiC004RootTtFirstActive: false,
       };
       let previousBestKey = moveKey(bestMove);
       let previousScore = null;
       let stableIterations = 0;
+      let depth2BestKey = null;
       const stableBestDepths = options.stableBestDepths ?? 0;
       const stableBestMinDepth = options.stableBestMinDepth ?? 3;
       for (let depth = 1; depth <= maxDepth; depth += 1) {
@@ -905,6 +915,12 @@
           else {
             stableIterations = 0;
             stats.rootBestChanges += 1;
+          }
+          if (depth === 2) depth2BestKey = currentBestKey;
+          if (depth === 3 && options.pbaiC004D23RootTtFirst === true
+            && depth2BestKey !== null && currentBestKey !== depth2BestKey) {
+            context.pbaiC004RootTtFirstActive = true;
+            stats.pbaiC004TriggerCount += 1;
           }
           previousBestKey = currentBestKey;
           stats.stableIterations = stableIterations;
