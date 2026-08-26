@@ -3,7 +3,7 @@
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
 **開始日:** 2026-08-26  
 **Program scientific evidence anchor:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Status:** PBAI-A/B/C COMPLETE / **C001 HOLD / C002 HOLD / C004 HOLD / no candidate authorized** / public AI unchanged
+**Status:** PBAI-A/B/C COMPLETE / **C001 HOLD / C002 HOLD / C003 HOLD / C004 HOLD / C005 not authorized** / public AI unchanged
 
 ## 1. Purpose and separation
 
@@ -17,11 +17,13 @@ frozen exact comparator = AI-GEN2-BASELINE-2026-08-26-v1
 global gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
 closed candidate = PBAI-C001-v1 / DEVELOPMENT-BENEFIT-FAIL / HOLD
 closed candidate = PBAI-C002-v1 / NON-ESTIMABLE / HOLD
+closed candidate = PBAI-C003-v1 / NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD
 closed candidate = PBAI-C004-v1 / DEVELOPMENT-BENEFIT-FAIL / HOLD
+remaining candidate = PBAI-C005 / EVIDENCE-AUDIT-READY / NOT AUTHORIZED
 next adopted public lineage reserved = AI-GEN3
 ```
 
-`AI-GEN3`はcandidate authorization、development、validation、release-candidate作成だけでは付与しない。Explicit `ADOPT` + actual public-default deployment後のみpromotionする。
+`AI-GEN3`はexplicit `ADOPT` + actual public-default deployment後のみ付与する。
 
 ## 3. Completed prerequisites
 
@@ -49,111 +51,124 @@ Canonical:
 - [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
 - [`benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json)
 
-Release-holdout ranges are frozen but execution remains **NOT-AUTHORIZED**.
+Release holdout execution remains **NOT-AUTHORIZED**.
 
-## 4. Closed candidate — PBAI-C001-v1
+## 4. Candidate outcomes
 
-Primary engineering input was Phase Transition Study 1 E-020/H18 (`CONFIRMED` only within its fixed scientific scope). C001 prospectively tested a new engineering-only hypothesis: on nonterminal Namua roots with at least two legal variants and all variants captures, route hard/expert enhanced-family search through the existing legacy branch. Public default remained off and only isolated `public/ai.js` was modified.
+### PBAI-C001-v1
 
-Baseline-only support passed (`108 >= 32`, 64 frozen targets), then premetric trigger/control/regression safety passed before benefit inspection. Binding D4-reference development results were:
+Phase/search-aware legacy-routing hypothesis. Baseline-only support and premetric safety passed. Search work fell strongly, but three prospectively frozen decision-quality benefit gates failed.
 
 ```text
-TopSet agreement delta = +0.015625; required >= +0.05 => FAIL
-mean normalized rank-loss delta = -0.011718750000000028; required <= -0.02 => FAIL
-severe-loss-rate excess = +0.015625; required <= 0 => FAIL
+TopSet delta = +0.015625 < +0.05 => FAIL
+rank-loss delta = -0.01171875 > -0.02 => FAIL
+severe-loss excess = +0.015625 > 0 => FAIL
 catastrophic new losses = 0 => PASS
-median search-work ratio = 0.2772631454984396; required <= 1.50 => PASS
-fraction roots with search-work ratio >2 = 0; required <= 0.10 => PASS
-```
-
-The efficiency gain cannot compensate for failed decision-quality gates because the contract is conjunctive.
-
-```text
+median search-work ratio = 0.2772631455 => PASS
 PBAI-C001-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
 PR #61 = CLOSED WITHOUT MERGE
-validation = NOT EXECUTED
-release holdout = NOT EXECUTED
-public/main implementation = unchanged
-same-version rescue = prohibited
 ```
 
-Canonical result: [`candidates/PBAI-C001-v1-development-result.json`](candidates/PBAI-C001-v1-development-result.json)
+Phase Transition Study 1 E-020/H18 remains unchanged.
 
-This engineering failure does not alter Phase Transition Study 1 E-020/H18 and does not establish a universal preference for or against legacy search.
+### PBAI-C002-v1
 
-## 5. Closed candidate — PBAI-C002-v1
-
-`TM-S2-C03 = CONFIRMED`をengineering inputとしたmove-ordering-only candidate。Prospectively frozen development populationでeligible targetが5件しかなく、minimum 48に達しなかった。
+`TM-S2-C03` move-ordering candidate. Frozen target support was insufficient:
 
 ```text
+eligible targets = 5
+minimum estimable = 48
 PBAI-C002-v1 = NON-ESTIMABLE / HOLD
-candidate benefit metrics = NOT EXECUTED
-validation = NOT EXECUTED
-release holdout = NOT EXECUTED
 PR #55 = CLOSED WITHOUT MERGE
-public/main implementation = unchanged
 ```
 
-Scientific `TM-S2-C03 = CONFIRMED`は変更しない。同versionのpopulation/trigger/threshold rescueは禁止する。
+`TM-S2-C03 = CONFIRMED` remains unchanged.
 
-Canonical result: [`candidates/PBAI-C002-v1-development-result.json`](candidates/PBAI-C002-v1-development-result.json)
+### PBAI-C004-v1
 
-## 6. Closed candidate — PBAI-C004-v1
-
-Position Complexity / Difficulty Study 1のreproducible D2/D3 search measurementをengineering inputとしたroot-ordering candidate。Studyのformal decisionは`INCONCLUSIVE`のまま維持する。
-
-Predevelopment supportは54/48でPASSし、isolated implementationのpremetric safetyもPASSしたが、frozen D4 practical-benefit median-node gate `1.000 <= 0.950` がFAILした。Measured semantic/boundary/control gatesは全PASSしたが、primary endpoint failureは救済しない。
-
-Canonical result: [`candidates/PBAI-C004-v1-development-result.json`](candidates/PBAI-C004-v1-development-result.json)
+Search-instability-aware root ordering. Support and safety passed, but the frozen median-node benefit endpoint failed:
 
 ```text
+median nodes(candidate/baseline) = 1.000 > 0.950
 PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
 PR #58 = CLOSED WITHOUT MERGE
-validation = NOT EXECUTED
-release holdout = NOT EXECUTED
-public/main implementation = unchanged
 ```
 
-## 7. Remaining candidate inventory
+Position Complexity / Difficulty Study 1 remains `INCONCLUSIVE`.
+
+### PBAI-C003-v1
+
+Restricted exact-oracle plumbing was stopped before implementation by a prospectively required strict RAW identity gate.
+
+Frozen support question:
 
 ```text
-PBAI-C003 = EVIDENCE-AUDIT-READY
-  restricted exact-oracle lookup plumbing
-  strict RAW identity including pending required
-  exact support only within frozen 8-state domain
-
-PBAI-C005 = EVIDENCE-AUDIT-READY
-  evaluation semantics sanitation
-  no score-to-win-probability claim permitted
+512 deterministic development trajectories
+seeds = 31300001..31300512
+max plies = 160
+support = natural visit to >=1 nonterminal state in frozen 8-state REWR domain
+identity = pits,reserve,houseOwned,player,phase,winner,pending
+AI.stateKey / symmetry / seat/reflection canonicalization / missing-pending coercion = prohibited
 ```
 
-Neither candidate is authorized for implementation. A prospective support/contract step is required before any new candidate code.
-
-## 8. Program flow and authorization
+Binding result:
 
 ```text
-PBAI-A  Research Generation 1 evidence audit                    COMPLETE
-PBAI-B  AI-GEN2 exact public baseline freeze                    COMPLETE
-PBAI-C  global numeric benchmark/release-gate freeze            COMPLETE
-C002    isolated candidate                                      NON-ESTIMABLE / HOLD
-C004    isolated candidate                                      DEVELOPMENT-BENEFIT-FAIL / HOLD
-C001    isolated candidate                                      DEVELOPMENT-BENEFIT-FAIL / HOLD
-PBAI-F  fresh validation                                        NOT AUTHORIZED
-release holdout                                                 NOT AUTHORIZED
+failure stage = STRICT-RAW-IDENTITY-BINDING
+failure reason = ORACLE-STORED-ROW-REHASH-MISMATCH
+known affected rows = 3
+identity difference = pending
+reachability measurement executed = false
+hit count = unmeasured / null
+zero-hit conclusion = NOT AUTHORIZED
+PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD
+PR #63 = CLOSED WITHOUT MERGE
 ```
+
+This is consistent with the already-completed ORISC-STUDY1 result `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`; it is not a new scientific finding and does not revise REWR-STUDY1 `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`.
+
+Canonical:
+
+- [`candidates/PBAI-C003-v1-predevelopment-support-spec.json`](candidates/PBAI-C003-v1-predevelopment-support-spec.json)
+- [`candidates/PBAI-C003-v1-predevelopment-support-result.json`](candidates/PBAI-C003-v1-predevelopment-support-result.json)
+
+## 5. Remaining candidate — PBAI-C005
+
+```text
+candidate family = evaluation semantics sanitation
+scientific basis = Position Evaluation / Win-Rate Calibration Study 1 = INCONCLUSIVE
+engine score -> validated Bao win probability = NOT ESTABLISHED
+current authorization = NONE
+```
+
+The next permitted step is a **read-only current production-surface audit**. Inspect `public/` code/UI/diagnostic surfaces to determine whether the current product actually presents engine evaluation as a win probability or otherwise violates the calibration boundary.
+
+Do not implement C005 merely because the research study was inconclusive. If no current semantics problem exists, close/hold C005 without a code candidate. If a concrete current problem exists, freeze a new exact prospective C005 contract and candidate-specific benefit/correctness criteria before implementation.
+
+## 6. Current authorization boundary
 
 ```text
 PBAI-C001 authorized = false / HOLD
 PBAI-C002 authorized = false / HOLD
-PBAI-C003 authorized = false
+PBAI-C003 authorized = false / HOLD
 PBAI-C004 authorized = false / HOLD
 PBAI-C005 authorized = false
 AUTHORIZED-FOR-DEVELOPMENT = 0
 active candidate implementation = 0
 public/main candidate implementations = 0
+validation execution = NOT-AUTHORIZED
 release holdout execution = NOT-AUTHORIZED
 public deployments caused by PBAI-P1 = 0
 AI-GEN3 = RESERVED / NOT-AUTHORIZED
 ```
 
 The current public implementation remains frozen `AI-GEN2`; no PBAI candidate implementation has been merged to `main`. `KEEP-AI-GEN2` remains an acceptable final program outcome.
+
+## 7. Restart entry point
+
+For continuation in a new chat/session:
+
+1. retrieve and record current remote `main` HEAD;
+2. read [`RESUME_HERE.md`](RESUME_HERE.md) first;
+3. verify the frozen AI-GEN2 hashes and that authorization remains zero;
+4. begin with the C005 read-only production-surface audit, not implementation.

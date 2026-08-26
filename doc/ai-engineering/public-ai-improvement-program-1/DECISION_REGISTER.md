@@ -288,12 +288,84 @@ main public result = KEEP-AI-GEN2
 
 This engineering result does not alter Phase Transition Study 1 E-020/H18 and does not establish a universal preference for or against legacy search. Any materially different mechanism requires a new prospective candidate/version and a new pre-outcome contract.
 
+### D46 — PBAI-C003-v1 practical-support contract frozen before implementation
+
+After C001 closure and with `AUTHORIZED-FOR-DEVELOPMENT = 0`, C003-v1 was evaluated only through a baseline-only predevelopment practical-support firewall. The contract was frozen from main `5e7c67ef1fb0c1a9211c4c81d1f175f1921bde06` before any C003 lookup implementation or candidate-benefit measurement.
+
+```text
+development seeds = 31300001..31300512
+trajectories = 512
+maximum plies = 160
+support threshold = >=1 hit trajectory AND >=1 unique nonterminal oracle state
+frozen domain = REWR-STUDY1 8 states / 7 edges
+required RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
+AI.stateKey = prohibited
+symmetry / seat / reflection canonicalization = prohibited
+missing pending coercion = prohibited
+stored oracle keys must rehash under strict RAW identity before reachability measurement
+```
+
+The support step did not authorize development, validation, holdout, adoption or AI-GEN3.
+
+### D47 — C003 strict RAW identity binding failed before reachability measurement
+
+Canonical workflow provenance:
+
+```text
+run = 32960056255
+job = 98150197902
+support branch head = 3a91ba211263de37115e0e22ad857df3f2e6b142
+PR #63 = CLOSED WITHOUT MERGE
+```
+
+The first repository-facing oracle row mismatch was:
+
+```text
+storedStateKey = 469b78a1f818f32d52f8da9c023b2b54378e34fccd2dde752a32581a12a016e6
+strict RAW recomputed = 7849cf1069ca9c966d111bb83a1fb36915abedb4a8533083778fb67f71a39a70
+identity difference = pending
+```
+
+This is consistent with the already-completed ORISC-STUDY1 result `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`, which recorded three repository stored-row rehash mismatches and three RAW binding mismatches involving `pending`.
+
+Therefore:
+
+```text
+reachability measurement executed = false
+trajectoriesWithNonterminalOracleHit = null / unmeasured
+uniqueNonterminalOracleStatesHit = null / unmeasured
+zero-hit conclusion = NOT AUTHORIZED
+candidate implementation = 0
+candidate benefit metrics = NOT EXECUTED
+```
+
+This is not a new scientific finding and does not revise REWR-STUDY1 or ORISC-STUDY1.
+
+### D48 — PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD
+
+```text
+PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD
+same-version seed expansion = PROHIBITED
+same-version identity relaxation = PROHIBITED
+same-version stored-key replacement for support = PROHIBITED
+same-version synthetic-fixture substitution = PROHIBITED
+development = NOT AUTHORIZED
+validation = NOT AUTHORIZED
+release holdout = NOT AUTHORIZED
+public adoption = NOT AUTHORIZED
+AI-GEN3 promotion = NOT-AUTHORIZED
+main/public candidate implementation = 0
+main public result = KEEP-AI-GEN2
+```
+
+A materially different exact-oracle engineering approach requires a new prospective candidate/version and new pre-outcome contract. The next original-inventory candidate is C005, which must begin with a read-only production-surface semantics audit; implementation is not assumed or authorized.
+
 ## Current authorization state
 
 ```text
 PBAI-C001 authorized = false / HOLD
 PBAI-C002 authorized = false / HOLD
-PBAI-C003 authorized = false
+PBAI-C003 authorized = false / HOLD
 PBAI-C004 authorized = false / HOLD
 PBAI-C005 authorized = false
 AUTHORIZED-FOR-DEVELOPMENT = 0
