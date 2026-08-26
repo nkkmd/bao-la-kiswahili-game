@@ -1,0 +1,46 @@
+name: PBAI-P1 C001 materialize source
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p1-c001-v1-development
+    paths:
+      - 'tools/engineering/apply-pbai-c001-v1-source.js'
+      - '.github/workflows/pbai-p1-c001-materialize-source.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p1-c001-v1-development
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify branch starts from frozen AI-GEN2 public source
+        run: |
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+      - name: Apply deterministic C001 transform
+        run: node tools/engineering/apply-pbai-c001-v1-source.js --apply
+      - name: Verify only public/ai.js changed in public surface
+        run: |
+          changed="$(git diff --name-only -- public/)"
+          test "$changed" = "public/ai.js" || {
+            echo "Unexpected public changes: $changed" >&2
+            exit 1
+          }
+          added=$(( $(wc -c < public/ai.js) - $(git show HEAD:public/ai.js | wc -c) ))
+          test "$added" -le 4096
+      - name: Commit candidate source to isolated branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/ai.js
+          git commit -m "dev(ai): implement isolated PBAI-C001-v1 routing"
+          git push origin HEAD:engineering/pbai-p1-c001-v1-development
