@@ -10,20 +10,20 @@ PROGRAM = ESTABLISHED
 PBAI-A Research Generation 1 evidence audit = COMPLETE
 PBAI-B AI-GEN2 exact public baseline = COMPLETE
 AI-GEN2 exact baseline ID = AI-GEN2-BASELINE-2026-08-26-v1
-PBAI-C global benchmark / numeric non-regression / release gates = COMPLETE / FROZEN
+PBAI-C global benchmark / non-regression / release gates = COMPLETE / FROZEN
 PBAI-C gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
-PBAI-D PBAI-C002-v1 exact contract = COMPLETE / FROZEN
-PBAI-E PBAI-C002-v1 development = NON-ESTIMABLE / HOLD
-PBAI-C002 development PR #55 = CLOSED WITHOUT MERGE
+PBAI-C002-v1 = NON-ESTIMABLE / HOLD / PR #55 CLOSED WITHOUT MERGE
+PBAI-C004-v1 predevelopment support = PASS (54 >= 48)
+PBAI-C004-v1 exact contract = FROZEN ON CONTRACT BRANCH
+PBAI-C004 development = AUTHORIZED AFTER CONTRACT MERGE
 current public AI lineage = AI-GEN2
 next adopted public AI lineage reserved = AI-GEN3
 AI-GEN3 promotion = NOT-AUTHORIZED
-AUTHORIZED-FOR-DEVELOPMENT = 0
+AUTHORIZED-FOR-DEVELOPMENT = 1 after contract merge
 active candidate implementations = 0
 isolated development implementation attempts = 1
 public/main candidate implementations = 0
 release holdout execution = NOT-AUTHORIZED
-candidate release decisions = 0
 public deployments caused by PBAI-P1 = 0
 public AI code changed by PBAI-P1 = false
 Research Generation 2 evidence included = false
@@ -47,134 +47,174 @@ PBAI-D C002 contract-freeze work-start main
 PBAI-C002 isolated development base main
 = 381d5fc0e60a5ea76dbd9336ab1b541467fe2869
 
+PBAI-C002 closure / C004 contract work-start main
+= 04f5ddd2c97f3452bd7081fbcc3df24b70a89df9
+
 PBAI-P1 scientific evidence cutoff
 = 2db7c4d65771066e914f32cbc4116fcc3e9e386a
 ```
 
-The scientific cutoff remains unchanged. No Research Generation 2 outcome was imported.
+The scientific cutoff is unchanged. No Research Generation 2 outcome is imported.
 
 ## Frozen baseline and global gates
 
 ```text
 exact comparator = AI-GEN2-BASELINE-2026-08-26-v1
 global gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
+public engine SHA-256 = e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c
+public AI SHA-256 = 2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e
 ```
 
 Global strength, decision-quality, operational, correctness, split/holdout and PWA release-safety gates remain unchanged.
 
-## PBAI-C002-v1 isolated development
+## Closed candidate — PBAI-C002-v1
 
-Research source remains:
-
-```text
-Tactical Motifs / Tesuji Study 1
-TM-S2-C03 = CONFIRMED
-canonical key = 7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba
-```
-
-This research decision is unchanged. The engineering candidate tested a much narrower prospective construct: root-only move ordering under feature flag `pbaiC002C03Ordering`, default off, with no extension/evaluation bonus/forced move/depth-time change/cache/engine/config/worker/UI change.
-
-### Pre-metric safety result
-
-The isolated implementation on draft PR #55 passed:
-
-```text
-feature default/off baseline equivalence = PASS
-root-only C03 trigger boundary = PASS
-Namua negative-control exactness = PASS
-Mtaji reusablePits>=3 negative-control exactness = PASS
-existing engine/AI/evaluation/search/config/worker/tactical regressions = PASS
-public surface isolation = PASS
-frozen engine hash = PASS
-holdout firewall = PASS
-public/ai.js size increase = 1325 bytes <= 4096
-```
-
-These results authorize only population materialization under the already frozen development block; they do not establish candidate benefit.
-
-## PBAI-C002-v1 development population result
-
-Canonical result:
-
-```text
-candidates/PBAI-C002-v1-development-result.json
-```
-
-Canonical workflow provenance:
-
-```text
-run = 32914807381
-job = 98016194190
-artifact = 9587768831
-artifact ZIP SHA-256 = bbf591baa19bdc33eb2a747e11e8fd390fd0fb33c84efd215cadbd19942d6d16
-```
-
-Frozen materialization result:
-
-```text
-source seed block = 31300001..31300512
-population digest = e016daa0f4669ac7730d34725de16d8c1ff10c398ca07867f47e81df0b399ea7
-population support = 128 Namua + 128 Mtaji = 256
-historical trajectory candidates = 432
-eligible C002 target roots = 5
-required minimum estimable target roots = 48
-Namua negative controls = 32 / 32
-Mtaji reusablePits>=3 negative controls = 32 / 32
-candidate benefit metrics observed = false
-validation seeds accessed = false
-release holdout seeds accessed = false
-```
-
-The support gate therefore failed before candidate node/score metrics were executed.
-
-## Formal engineering decision for C002-v1
-
-The prospectively frozen contract required:
-
-```text
-minimum estimable development target roots = 48
-observed eligible target roots = 5
-```
-
-and prohibited replacing the source block or selector after observing support. Therefore:
+The C002 scientific source remains `TM-S2-C03 = CONFIRMED`. The engineering candidate itself is closed because the prospectively frozen development population contained only 5 eligible roots versus the minimum 48.
 
 ```text
 PBAI-C002-v1 = NON-ESTIMABLE / HOLD
-candidate benefit evaluation = NOT EXECUTED
-fresh validation = NOT EXECUTED
+candidate benefit metrics = NOT EXECUTED
+validation = NOT EXECUTED
 release holdout = NOT EXECUTED
-public adoption = NOT AUTHORIZED
+PR #55 = CLOSED WITHOUT MERGE
+main/public candidate code = 0
+```
+
+No source-block, selector, trigger, ordering or threshold rescue is allowed under C002-v1. This does not alter the research result or establish C03 ineffectiveness.
+
+## Selected next candidate — PBAI-C004-v1
+
+Primary Research Generation 1 input is Position Complexity / Difficulty Study 1. Its formal decision remains:
+
+```text
+OVERALL FORMAL DECISION = INCONCLUSIVE
+```
+
+The engineering use is limited to a reproducible exact search measurement instrument:
+
+```text
+D23Instability = exact TopSet_D2 and exact TopSet_D3 are disjoint
+search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
+D2/D3 / bao / quiescenceDepth=1 / infinite time
+```
+
+No human-difficulty classifier, general complexity classifier or scientific decision is imported into production logic.
+
+## Predevelopment support result
+
+The support rule and source block were frozen before any C004 implementation. Canonical execution:
+
+```text
+run = 32917223072
+job = 98023357050
+artifact = 9588624025
+artifact ZIP SHA-256 = 5012c904789dff9dc9ec4144d2987afcf59ae7e8d7c712ffe1ca76f2e8f23b2e
+population digest = fd450aeef6fa62bc42543cf1734d356e60259dd3ade1ab20bc10d2ed471ba734
+```
+
+Result:
+
+```text
+source block = 31300001..31300512
+population = 128 Namua + 128 Mtaji = 256
+historical trajectory candidates = 432
+exact D2/D3 TopSet-disjoint = 54
+minimum estimable = 48
+support gate = PASS
+Namua primary targets = 42
+Mtaji primary targets = 12
+candidate code used = false
+candidate benefit metrics observed = false
+validation seeds accessed = false
+release holdout seeds accessed = false
+public code changed = false
+```
+
+This is engineering estimability evidence only. It does not resolve the formal Position Complexity Study result.
+
+## Runtime-signal boundary frozen before implementation
+
+The planned runtime signal uses a deterministic selected-root-move change, not exact TopSet computation. The baseline-only probe found:
+
+```text
+exact TopSets overlap but deterministic canonical best changes = 5
+exact TopSets overlap and deterministic canonical best stays unchanged = 197
+```
+
+Therefore C004 prospectively separates:
+
+1. **primary target** — exact D2/D3 TopSet-disjoint roots;
+2. **boundary-trigger stratum** — TopSets overlap but deterministic best changes; safety/cost only, no benefit inference;
+3. **negative control** — deterministic best unchanged; trigger must remain zero and feature-on/off must be exactly equivalent.
+
+## PBAI-C004-v1 exact mechanism
+
+Canonical contract:
+
+```text
+candidates/PBAI-C004-v1.json
+```
+
+Mechanism:
+
+```text
+feature flag = pbaiC004D23RootTtFirst
+public default = false
+allowed public code surface = public/ai.js only
+mechanism = enhanced-alpha-beta root move ordering only
+activation earliest = depth 4
+```
+
+Within one `analyzeMove` call, if D2 and D3 both complete without timeout and their deterministic selected root move keys differ, subsequent depths >=4 use the current root TT preferred move as TT-first. Internal nodes remain baseline.
+
+Prohibited:
+
+```text
+runtime exact TopSet computation
+scientific difficulty/complexity classifier use
+extra time or depth budget
+evaluation/quiescence changes
+persistent cache/table
+forced move
+engine/config/worker/UI changes
+```
+
+## Development gates
+
+Primary target fixed-depth D4 feature-on/off:
+
+```text
+median nodes(on/off) <= 0.95
+fraction roots candidate nodes <= baseline >= 0.55
+feature-on trigger >= 1 per primary target
+feature-off trigger = 0
+root-score mismatches = 0
+selected move outside frozen D4 top set = 0
+catastrophic new losses = 0
+```
+
+Boundary-trigger stratum:
+
+```text
+same semantic hard gates
+aggregate node ratio candidate/baseline <= 1.10
+no benefit claim
+```
+
+Negative controls require zero trigger and exact feature-on/off equality for selected move, root score and the frozen search counters.
+
+Global PBAI-C gates remain mandatory and cannot be relaxed.
+
+## Current authorization boundary
+
+```text
+PBAI-C001 authorized = false
+PBAI-C002 authorized = false / HOLD
+PBAI-C003 authorized = false
+PBAI-C004 authorized = true only after this exact-contract change merges
+PBAI-C005 authorized = false
+release holdout execution = NOT-AUTHORIZED
 AI-GEN3 promotion = NOT-AUTHORIZED
 ```
 
-PR #55 was closed without merge. Its isolated development branch is retained as engineering provenance only. `main` and the public path remain the frozen `AI-GEN2` implementation.
-
-This does **not** change the Research Generation 1 scientific result `TM-S2-C03 = CONFIRMED`, and it does not show that C03 is ineffective. It only shows that `PBAI-C002-v1` is not estimable under its prospectively fixed engineering population/endpoint.
-
-No same-version rescue is allowed:
-
-```text
-change source block after support observation = prohibited
-change selector after support observation = prohibited
-retune trigger/order/threshold under PBAI-C002-v1 = prohibited
-```
-
-A materially different C002 proposal would require a new prospective version and contract.
-
-## Current candidate state
-
-```text
-PBAI-C001 = EVIDENCE-AUDIT-READY
-PBAI-C002 = HOLD / NON-ESTIMABLE
-PBAI-C003 = EVIDENCE-AUDIT-READY
-PBAI-C004 = EVIDENCE-AUDIT-READY
-PBAI-C005 = EVIDENCE-AUDIT-READY
-AUTHORIZED-FOR-DEVELOPMENT = 0
-release holdout execution = NOT-AUTHORIZED
-```
-
-## Next permitted work
-
-Select a different `EVIDENCE-AUDIT-READY` candidate and freeze its exact mechanism, candidate-specific benefit gate, development population and no-rescue contract before authorization. No candidate code may be merged to `main` merely because isolated tests pass.
-
-`KEEP-AI-GEN2` remains an acceptable final engineering outcome.
+The contract branch itself contains no candidate implementation and no `public/` change. After merge, create a fresh isolated C004 development branch from the resulting `main`; development benefit/safety must pass before validation becomes authorized. `KEEP-AI-GEN2` remains an acceptable final program outcome.
