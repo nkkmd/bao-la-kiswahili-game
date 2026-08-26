@@ -106,7 +106,7 @@ jobs:
           const c004 = JSON.parse(fs.readFileSync('doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-development-result.json', 'utf8'));
           if (c002.finalDevelopmentStatus !== 'NON-ESTIMABLE-HOLD') throw new Error('C002 HOLD changed');
           if (c002.decision.developmentAuthorizationContinues !== false) throw new Error('C002 authorization revived');
-          if (c004.finalDevelopmentStatus !== 'DEVELOPMENT-BENEFIT-FAIL-HOLD') throw new Error('C004 HOLD changed');
+          if (c004.finalDevelopmentStatus !== 'DEVELOPMENT-FAIL-HOLD') throw new Error('C004 HOLD changed');
           if (c004.decision.developmentAuthorizationContinues !== false) throw new Error('C004 authorization revived');
           if (c001.validationAndHoldoutFirewall.validationExecutionAuthorizedNow !== false) throw new Error('validation authorization leaked');
           if (c001.validationAndHoldoutFirewall.releaseHoldoutExecutionAuthorizedNow !== false) throw new Error('holdout authorization leaked');
