@@ -18,7 +18,7 @@ Canonical naming: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_G
 ## Active program — `PBAI-P1`
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-**状態:** **PBAI-A/B/C COMPLETE / C002 HOLD / C004 HOLD / C001 SUPPORT PASS + EXACT CONTRACT FROZEN**  
+**状態:** **PBAI-A/B/C COMPLETE / C001 HOLD / C002 HOLD / C004 HOLD / no candidate authorized**  
 **scientific evidence cutoff:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
 **Research Generation 2 outcomes:** excluded
 
@@ -31,6 +31,16 @@ PBAI-B exact baseline
 PBAI-C global gate spec
   = PBAI-C-GLOBAL-GATES-2026-08-26-v1
 
+PBAI-C001-v1
+  = predevelopment support 108 >= 32 / PASS
+  = premetric safety / PASS
+  = TopSet delta +0.015625 < +0.05 / FAIL
+  = rank-loss delta -0.01171875 > -0.02 / FAIL
+  = severe-loss excess +0.015625 > 0 / FAIL
+  = median search-work ratio 0.2772631455 / PASS
+  = DEVELOPMENT-BENEFIT-FAIL / HOLD
+  = development PR #61 closed without merge
+
 PBAI-C002-v1
   = NON-ESTIMABLE / HOLD
   = eligible targets 5 < frozen minimum 48
@@ -42,15 +52,9 @@ PBAI-C004-v1
   = fixed-D4 median nodes(candidate/baseline) 1.000 > frozen maximum 0.950 / FAIL
   = DEVELOPMENT-BENEFIT-FAIL / HOLD
   = development PR #58 closed without merge
-
-PBAI-C001-v1
-  = predevelopment support 108 >= 32 / PASS
-  = selected development targets 64
-  = exact feature pbaiC001NamuaForcedCaptureLegacy
-  = development authorized only after exact-contract merge
 ```
 
-Current public/main candidate implementations remain `0`; validation, release holdout and `AI-GEN3` promotion remain unauthorized.
+Current public/main candidate implementations remain `0`; authorized candidates `0`; validation, release holdout and `AI-GEN3` promotion remain unauthorized.
 
 ## Program documents
 
@@ -65,6 +69,7 @@ Current public/main candidate implementations remain `0`; validation, release ho
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-predevelopment-support-spec.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-predevelopment-support-spec.json)
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-predevelopment-support-result.json)
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1.json)
+- [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-development-result.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-development-result.json)
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1.json)
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1-development-result.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C002-v1-development-result.json)
 - [`ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-spec.json`](ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-spec.json)
@@ -74,22 +79,16 @@ Current public/main candidate implementations remain `0`; validation, release ho
 - [`ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-1/RELEASE_REGISTER.md)
 
-Program decisions:
+## C001 engineering result boundary
 
-- [`engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md`](engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md)
-- [`engineering-program-decisions/2026-08-26-pbai-c001-v1-development-authorization.md`](engineering-program-decisions/2026-08-26-pbai-c001-v1-development-authorization.md)
-- [`engineering-program-decisions/2026-08-26-pbai-c002-v1-development-authorization.md`](engineering-program-decisions/2026-08-26-pbai-c002-v1-development-authorization.md)
-- [`engineering-program-decisions/2026-08-26-pbai-c004-v1-development-authorization.md`](engineering-program-decisions/2026-08-26-pbai-c004-v1-development-authorization.md)
+Phase Transition Study 1 E-020/H18 remains a fixed-condition scientific result about capture-branch-expansion event frequency, not a proof that legacy search is stronger or chooses better moves. The C001 engineering hypothesis reduced search work strongly on its frozen target set but failed three prospectively frozen decision-quality benefit gates. That engineering result is binding only for `PBAI-C001-v1`; it neither revises the scientific result nor proves every related mechanism ineffective.
 
-## C001 engineering boundary
+## Remaining candidate inventory
 
-Phase Transition Study 1 E-020/H18 remains a fixed-condition scientific result about **capture-branch-expansion event frequency**, not a proof that legacy search is stronger or chooses better moves. C001-v1 therefore tests a new engineering-only mechanism on a prospectively defined current-root subset:
+- `PBAI-C003`: restricted exact-oracle lookup plumbing. Only the frozen 8-state exact domain can be treated as exact. Strict authoritative RAW identity including `pending` is required; current `AI.stateKey` is not an authorized exact-tablebase key.
+- `PBAI-C005`: evaluation-semantics sanitation. Position Evaluation / Win-Rate Calibration Study 1 remains `INCONCLUSIVE`; no engine-score→validated-win-probability semantics may be introduced.
 
-```text
-Namua + nonterminal + >=2 legal moveVariants + all capture
-```
-
-Feature ON routes an otherwise enhanced hard/expert root through the existing legacy search branch without increasing depth/time or changing evaluation. The intended-benefit endpoint is D3 decision quality against the independent frozen D4 reference, not CBE frequency.
+Neither candidate is authorized. A prospective predevelopment support/contract cycle is required before implementation.
 
 ## Separation from research
 
@@ -106,9 +105,9 @@ C002 exact candidate → NON-ESTIMABLE / HOLD
           ↓
 C004 exact candidate → DEVELOPMENT-BENEFIT-FAIL / HOLD
           ↓
-C001 baseline-only support → PASS
+C001 exact candidate → DEVELOPMENT-BENEFIT-FAIL / HOLD
           ↓
-C001 exact contract → isolated development after merge
+no candidate currently authorized; public AI remains AI-GEN2
 
 Research Generation 2 = separate pure research track
 ```
