@@ -1,0 +1,90 @@
+name: PBAI-P1 C001 predevelopment support
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C001-v1-predevelopment-support-spec.json'
+      - 'tools/engineering/materialize-pbai-c001-predevelopment-support.js'
+      - 'tools/engineering/validate-pbai-c001-predevelopment-support-spec.js'
+      - '.github/workflows/pbai-p1-c001-predevelopment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  support-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify predevelopment change contains no public implementation
+        run: |
+          changed="$(git diff --name-only origin/main...HEAD -- public/)"
+          test -z "$changed" || {
+            echo 'PBAI-C001-v1 predevelopment probe must not modify public/.' >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+      - name: Verify frozen AI-GEN2 source hashes
+        run: |
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+      - name: Validate frozen global gates and C001 support spec
+        run: |
+          node tools/engineering/validate-pbai-p1-gate-spec.js
+          node tools/engineering/validate-pbai-c001-predevelopment-support-spec.js
+      - name: Verify current PBAI-P1 program contract
+        run: node test/public-ai-improvement-program1-contract.test.js
+      - name: Validation and holdout firewall
+        run: |
+          ! grep -R --line-number -E '3140[0-9]{4}|3150[0-9]{4}' \
+            tools/engineering/materialize-pbai-c001-predevelopment-support.js || {
+              echo 'C001 predevelopment runner must not reference validation/holdout seed values.' >&2
+              exit 1
+            }
+      - name: Materialize baseline-only C001 support
+        run: |
+          mkdir -p artifacts/pbai-p1/c001
+          node tools/engineering/materialize-pbai-c001-predevelopment-support.js \
+            --output artifacts/pbai-p1/c001/predevelopment-support.json >/dev/null
+      - name: Verify support report firewall and shared population identity
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const actual = JSON.parse(fs.readFileSync('artifacts/pbai-p1/c001/predevelopment-support.json', 'utf8'));
+          const c004 = JSON.parse(fs.readFileSync('doc/ai-engineering/public-ai-improvement-program-1/candidates/PBAI-C004-v1-predevelopment-support-result.json', 'utf8'));
+          const fail = (message) => { throw new Error(message); };
+          if (actual.candidateImplementationObserved !== false) fail('candidate implementation observed');
+          if (actual.candidateCodeUsed !== false) fail('candidate code used');
+          if (actual.candidateBenefitMetricsObserved !== false) fail('candidate benefit metrics observed');
+          if (actual.validationSeedsAccessed !== false) fail('validation seeds accessed');
+          if (actual.releaseHoldoutSeedsAccessed !== false) fail('release holdout seeds accessed');
+          if (actual.publicCodeChanged !== false) fail('public code changed');
+          if (actual.population.digest !== c004.developmentPopulation.populationDigest) fail('shared development population digest mismatch');
+          if (actual.population.support.namua !== 128 || actual.population.support.mtaji !== 128 || actual.population.support.total !== 256) fail('population support mismatch');
+          if (actual.developmentAuthorizationGrantedByThisReport !== false) fail('probe may not authorize development');
+          if (actual.validationAuthorizedByThisReport !== false) fail('probe may not authorize validation');
+          if (actual.releaseHoldoutAuthorizedByThisReport !== false) fail('probe may not authorize holdout');
+          console.log(JSON.stringify({
+            populationDigest: actual.population.digest,
+            eligibleTargets: actual.targetSupport.eligible,
+            selectedTargets: actual.targetSupport.selected,
+            minimumEstimable: actual.targetSupport.minimumEstimable,
+            supportPass: actual.targetSupport.supportPass,
+            mtajiControls: actual.controls.mtaji.selected,
+            namuaNonForcedControls: actual.controls.namuaNonForced.selected,
+            decision: actual.decision,
+          }, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pbai-c001-predevelopment-support
+          path: artifacts/pbai-p1/c001/predevelopment-support.json
+          if-no-files-found: error
