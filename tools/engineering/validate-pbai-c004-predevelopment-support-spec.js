@@ -46,15 +46,16 @@ assert.equal(spec.researchEvidence.interpretationBoundary.validatedHumanDifficul
 assert.equal(spec.researchEvidence.interpretationBoundary.validatedGeneralPurposeComplexityClassifier, false);
 assert.equal(spec.researchEvidence.interpretationBoundary.productionTriggerDirectlyAuthorizedByScientificStudy, false);
 
-assert.equal(spec.plannedEngineeringMechanism.featureFlag, "pbaiC004D23RootTtFirst");
-assert.equal(spec.plannedEngineeringMechanism.defaultBeforeAdoption, false);
-assert.equal(spec.plannedEngineeringMechanism.searchDepthBudgetChangeAllowed, false);
-assert.equal(spec.plannedEngineeringMechanism.timeBudgetChangeAllowed, false);
-assert.equal(spec.plannedEngineeringMechanism.evaluationChangeAllowed, false);
-assert.equal(spec.plannedEngineeringMechanism.quiescenceChangeAllowed, false);
-assert.equal(spec.plannedEngineeringMechanism.persistentTableOrCacheAllowed, false);
-assert.equal(spec.plannedEngineeringMechanism.forcedMoveAllowed, false);
-assert.equal(spec.plannedEngineeringMechanism.scientificClassifierCopiedIntoProduction, false);
+const mechanism = spec.plannedEngineeringMechanismIfSupportPasses;
+assert.equal(mechanism.featureFlag, "pbaiC004D23RootTtFirst");
+assert.equal(mechanism.defaultBeforeAdoption, false);
+assert.equal(mechanism.searchDepthBudgetChangeAllowed, false);
+assert.equal(mechanism.timeBudgetChangeAllowed, false);
+assert.equal(mechanism.evaluationChangeAllowed, false);
+assert.equal(mechanism.quiescenceChangeAllowed, false);
+assert.equal(mechanism.persistentTableOrCacheAllowed, false);
+assert.equal(mechanism.forcedMoveAllowed, false);
+assert.equal(mechanism.scientificClassifierCopiedIntoProduction, false);
 
 assert.deepEqual(spec.developmentPopulation.sourceSeedBlock,
   gates.decisionQuality.sourceSeedBlocks.development);
