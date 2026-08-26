@@ -358,23 +358,106 @@ main/public candidate implementation = 0
 main public result = KEEP-AI-GEN2
 ```
 
-A materially different exact-oracle engineering approach requires a new prospective candidate/version and new pre-outcome contract. The next original-inventory candidate is C005, which must begin with a read-only production-surface semantics audit; implementation is not assumed or authorized.
+A materially different exact-oracle engineering approach requires a new prospective candidate/version and new pre-outcome contract. C005 was the final original-inventory candidate and was required to begin with a read-only production-surface semantics audit.
 
-## Current authorization state
+### D49 — PBAI-C005 read-only production-surface audit
+
+C005 was not assumed to require code. The audit was executed read-only from remote `main`:
+
+```text
+audit source main = 7f3ea339f7eec0668c641774eb6c2dcd37040a38
+baseline = AI-GEN2-BASELINE-2026-08-26-v1
+scientific evidence cutoff = 2db7c4d65771066e914f32cbc4116fcc3e9e386a
+Research Generation 2 evidence included = false
+implementation authorization before audit = false
+```
+
+Required public surfaces, current diagnostic surfaces, `doc/AI_DEVELOPMENT_LOG.md` and the Position Evaluation / Win-Rate Calibration Study 1 final/decision/semantics records were inspected. Repository searches covered `win probability`, `win rate`, `winning chance`, `probability`, `confidence`, `evaluation score`, `score`, `勝率` and `確率`.
+
+### D50 — C005 audit found no actionable current production semantics defect
+
+The current public product does not display or expose the engine evaluation as a validated Bao win probability, win percentage, winning chance or confidence probability. `public/diagnostics.js` does not export `rootScore`. Internal `score` values in search, review-suggestion and complexity helpers do not carry prohibited probability semantics.
+
+```text
+user-facing score -> win-probability semantics = NOT PRESENT
+score -> calibrated probability conversion = NOT PRESENT
+diagnostic rootScore export = NOT PRESENT
+actionable current production semantics defect = false
+```
+
+Position Evaluation / Win-Rate Calibration Study 1 remains formal `INCONCLUSIVE`; no scientific decision is changed.
+
+Canonical audit:
+
+- `C005_PRODUCTION_SURFACE_AUDIT.md`
+- `candidates/PBAI-C005-production-surface-audit-result.json`
+
+### D51 — PBAI-C005 = NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD
+
+Because no concrete current defect exists, creating a code change solely to consume C005 would be an unnecessary production-surface modification and is not authorized.
+
+```text
+PBAI-C005 = NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD
+CLOSED WITHOUT IMPLEMENTATION
+exact correction contract required = false
+implementation authorized = false
+implementation created = false
+validation = NOT EXECUTED / NOT AUTHORIZED
+release holdout = NOT EXECUTED / NOT AUTHORIZED
+public adoption = NONE
+AI-GEN3 promotion = NOT-AUTHORIZED / NOT-PROMOTED
+```
+
+The standing future rule remains `engine score -> validated Bao win probability = NOT AUTHORIZED`. Any future probability-like public feature requires a new prospective candidate rather than reinterpretation of C005.
+
+### D52 — PBAI-P1 closes with KEEP-AI-GEN2
+
+C005 was the final undisposed candidate in the original PBAI-P1 inventory. After D51:
+
+```text
+original candidate inventory = 5
+candidate dispositions complete = 5
+original candidate inventory remaining = 0
+AUTHORIZED-FOR-DEVELOPMENT = 0
+active candidate implementations = 0
+public/main candidate implementations = 0
+validation executions = 0
+release holdout executions = 0
+formal ADOPT decisions = 0
+public deployments caused by PBAI-P1 = 0
+PBAI-P1 public releases = 0
+```
+
+No release holdout is consumed because no candidate reached release-candidate status.
+
+Final engineering outcome:
+
+```text
+PBAI-P1 = COMPLETE
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
+current public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT PROMOTED
+public AI code changed by PBAI-P1 = false
+Research Generation 2 evidence included = false
+```
+
+`KEEP-AI-GEN2` is the prospectively authorized success condition for a program in which no candidate satisfies the required engineering acceptance sequence. Future materially different public-AI engineering work requires a new prospective program/candidate identity and evidence cutoff; same-version candidate rescue is not part of PBAI-P1.
+
+## Final authorization state
 
 ```text
 PBAI-C001 authorized = false / HOLD
 PBAI-C002 authorized = false / HOLD
 PBAI-C003 authorized = false / HOLD
 PBAI-C004 authorized = false / HOLD
-PBAI-C005 authorized = false
+PBAI-C005 authorized = false / HOLD
 AUTHORIZED-FOR-DEVELOPMENT = 0
 active candidate implementations = 0
 isolated development implementation attempts = 3
 public/main candidate implementations = 0
-validation execution = NOT-AUTHORIZED
-release holdout execution = NOT-AUTHORIZED
-AI-GEN3 promotion = NOT-AUTHORIZED
+validation execution = NOT-AUTHORIZED / NOT-EXECUTED
+release holdout execution = NOT-AUTHORIZED / NOT-EXECUTED
+AI-GEN3 promotion = NOT-AUTHORIZED / NOT-PROMOTED
 ```
 
-Future candidate selection, contract, development/validation outcome, holdout authorization, adoption/rejection and release/rollback decisions are appended here without changing earlier decisions. `KEEP-AI-GEN2` remains an acceptable program outcome.
+PBAI-P1 is complete. Canonical final report: `PROGRAM_FINAL_REPORT.md`.
