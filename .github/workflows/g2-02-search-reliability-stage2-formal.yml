@@ -1,0 +1,78 @@
+name: G2-02 Stage 2 formal held-out replication
+
+on:
+  push:
+    branches:
+      - research/g2-02-search-reliability-decision-robustness
+    paths:
+      - doc/search-reliability-decision-robustness/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  stage2-formal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.2
+
+      - name: Verify explicit Stage 2 authorization before any reserved seed use
+        run: |
+          test -f doc/search-reliability-decision-robustness/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
+          node - <<'NODE'
+          const a = require('./doc/search-reliability-decision-robustness/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json');
+          if (a.stage2GenerationAuthorized !== true || a.formalInferenceAuthorized !== true) process.exit(1);
+          if (a.formalDecisionTaxonomyFrozen !== true || a.noRescueRuleActive !== true) process.exit(1);
+          NODE
+
+      - name: Download immutable Stage 1 consumed-identity firewall artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: g2-02-stage1-development-v1-verified-canonical
+          path: artifacts/reference/g2-02-stage1-development-v1-verified-canonical
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33123555267
+
+      - name: Generate, firewall-select, and measure frozen Stage 2 population
+        run: |
+          node tools/experiments/run-search-reliability-stage2-formal.js \
+            --phase all \
+            --stage1-artifact artifacts/reference/g2-02-stage1-development-v1-verified-canonical
+
+      - name: Independently replay, firewall-select, and remeasure Stage 2
+        run: |
+          node tools/experiments/verify-search-reliability-stage2-independent.js \
+            --stage1-artifact artifacts/reference/g2-02-stage1-development-v1-verified-canonical
+
+      - name: Apply frozen Stage 2 formal gates and scientific criterion
+        run: node tools/experiments/analyze-search-reliability-stage2-formal.js
+
+      - name: Print bounded formal decision
+        run: |
+          node - <<'NODE'
+          const r = require('./artifacts/local/search-reliability-decision-robustness/stage2-formal-v1/stage2-formal-result.json');
+          console.log(JSON.stringify({
+            formalDecision: r.formalDecision,
+            gates: r.gates,
+            primaryFormalCriterion: r.primaryFormalCriterion,
+            populationSummary: r.populationSummary,
+            interpretationBoundary: r.interpretationBoundary,
+            canonicalResultHash: r.canonicalResultHash
+          }, null, 2));
+          if (!['CONFIRMED','NOT-CONFIRMED','INCONCLUSIVE'].includes(r.formalDecision)) process.exit(1);
+          NODE
+
+      - name: Upload frozen Stage 2 formal artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2-02-stage2-formal-v1
+          path: artifacts/local/search-reliability-decision-robustness/stage2-formal-v1/
+          if-no-files-found: error
+          retention-days: 90
