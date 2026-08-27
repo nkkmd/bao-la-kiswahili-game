@@ -132,3 +132,21 @@ This is a development/model-freeze decision, not a held-out formal calibration c
 Date: 2026-08-27
 
 `PEOCR-S2-SMOKE-2026-08-27-v1` passed production and independent verification without using any Stage 2 scientific seed. The exact Stage 1 frozen mapping and identity-firewall reference universe were verified. This technical PASS is a prerequisite for, but does not itself constitute, Stage 2 scientific authorization.
+
+## D-012 — Stage 2 formal authorization
+
+Date: 2026-08-27
+
+After production + independent technical smoke PASS, exact source/model/reference hashes were frozen and Stage 2 formal generation was explicitly authorized at commit `5d1b4a40ef95ac639787aa0abf040a455c3c2995`.
+
+The authorized population was exactly 8,192 games, seeds `24020001..24028192`, partitioned for execution only into 8 contiguous 1,024-game shards. Seed extension, replacement, outcome-dependent extension, and Stage 2 refit remained forbidden.
+
+## D-013 — Stage 2 formal decision and Study closure
+
+Date: 2026-08-27
+
+All 8,192 games and all shard-level independent replays completed. Integrated selection/measurement independent verification passed with zero Stage 1 overlap on historical trajectory, opening prefix, and RAW state identity.
+
+Three frozen estimability gates failed: `3898 < 4500` trajectories after firewall, `3570 < 4000` selected RAW states, and `1747 < 1750` Mtaji selected states.
+
+Therefore `PEOCR-STUDY1 = INCONCLUSIVE`. The co-primary Brier/log-loss formal branch was not entered (`primary = null`). No near-miss exception, extra seed, replacement, gate relaxation, refit, subgroup rescue, or alternate-primary relabeling is authorized. This closes `PEOCR-STUDY1` scientifically.

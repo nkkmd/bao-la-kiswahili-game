@@ -4,7 +4,7 @@
 
 ## Status
 
-**STUDY ACTIVE / STAGE 0 PASS / STAGE 1 MODEL-FROZEN-DEVELOPMENT / STAGE 2 AUTHORIZED AND FORMAL GENERATION IN PROGRESS**
+**STUDY COMPLETE / FORMAL DECISION `INCONCLUSIVE` / SCIENTIFIC CLOSURE COMPLETE ON RESEARCH BRANCH**
 
 ## Identity
 
@@ -13,52 +13,46 @@ Program = G2-01
 Study ID = PEOCR-STUDY1
 Research Generation = Research Generation 2
 Baseline main = 9e9cb6e2525f09a873e741db9f8fa42696839fbe
-Branch = research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+Research branch = research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+Formal source commit = 5d1b4a40ef95ac639787aa0abf040a455c3c2995
+Formal workflow run = 33038132423
 ```
 
-## Completed scientific prerequisites
-
-- Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains immutable.
-- Stage 0 technical validation: `STAGE0-TECHNICAL-PASS`.
-- Stage 1 complete fresh development population: 2,048/2,048 games.
-- Stage 1 independent replay: 2,048/2,048, zero replay/measurement mismatch.
-- All Stage 1 readiness gates passed.
-- Stage 1 decision: `MODEL-FROZEN-DEVELOPMENT`.
-- Frozen PAVA mapping SHA-256: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`.
-- Stage 1 reference-universe SHA-256: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`.
-- Stage 2 technical smoke `PEOCR-S2-SMOKE-2026-08-27-v1`: production PASS and independent verification PASS.
-- Stage 2 technical smoke used no Stage 2 scientific seed and performed no formal inference.
-- Stage 2 source-bound authorization frozen at commit `5d1b4a40ef95ac639787aa0abf040a455c3c2995`.
-
-## Stage 2 frozen execution
+## Stage closure
 
 ```text
-workflow run = 33038132423
-games = 8192
-seeds = 24020001..24028192
-execution partition = 8 contiguous shards x 1024 games
-shard-level independent replay = required
-all shards required before selection = true
-seed extension = forbidden
-identity-overlap replacement = forbidden
-Stage 2 refit = forbidden
+Stage 0 = COMPLETE / STAGE0-TECHNICAL-PASS
+Stage 1 = COMPLETE / MODEL-FROZEN-DEVELOPMENT
+Stage 2 technical smoke = COMPLETE / PASS
+Stage 2 formal generation = COMPLETE / 8192 games
+Stage 2 independent verification = PASS
+Stage 2 formal decision = INCONCLUSIVE
 ```
 
-All eight shard jobs passed their source-bound contract/authorization audit and entered fixed scientific generation.
-
-After all eight shards complete and independently replay with zero mismatch, the workflow will merge exactly one game for each global index `0..8191`, apply the outcome-blind Stage 1 trajectory/opening/RAW-state firewall, perform deterministic state selection/measurement, independently verify the selection and zero cross-stage overlap, and only then run the frozen formal evaluator.
-
-## Authorization state
+Failed prospectively frozen estimability gates:
 
 ```text
-Stage 0 technical execution = COMPLETE / PASS
-Stage 1 scientific development generation = COMPLETE
-Stage 1 formal calibration confirmation = NOT CLAIMED (development stage)
-Stage 2 scientific generation = AUTHORIZED / IN PROGRESS
-Stage 2 frozen formal evaluation = AUTHORIZED after verification/gates
-Stage 2 formal decision = NOT YET MADE
+unique historical trajectories after Stage 1 firewall = 3898 < 4500
+selected unique RAW states = 3570 < 4000
+Mtaji selected states = 1747 < 1750
 ```
 
-## Interpretation boundary
+All 8 shard independent replays、integrated selection/measurement verification、Stage 1 overlap trajectory/opening/RAW = 0/0/0、outcome-count gates、administrative truncation 0、source/hash bindingはPASSした。
 
-Current Stage 2 authorization concerns held-out empirical continuation-outcome calibration only. It does not authorize game-theoretic, human-perception, causal, public-AI-quality, or Research Generation 1 decision-revision claims.
+Because estimability gates did not all pass, the co-primary Brier/log-loss formal branch was not entered and canonical `primary` is `null`. `NOT-CONFIRMED` is not an authorized label.
+
+## Canonical evidence
+
+```text
+artifact ID = 9636207301
+artifact ZIP SHA-256 = 056626968573aa8aa12adb4b84a1375c4bba8dd2b816f1464f4df8fa3abcb5b0
+formal result SHA-256 = 42aab2a086b323c1dcb9e39b1187cdd5375dfc7251bd89e5ed2fd24409c35b0c
+selection hash = eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbea
+measurement hash = e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294
+```
+
+## No-rescue boundary
+
+No additional Stage 2 game, seed extension, overlap replacement, gate relaxation, mapping refit, near-miss exception, favorable subgroup, or alternate-primary relabeling is authorized within `PEOCR-STUDY1`.
+
+Scientific closure is complete on the research branch. PR #67 remains the integration vehicle; merging to `main` is a repository integration step and does not alter the scientific decision.

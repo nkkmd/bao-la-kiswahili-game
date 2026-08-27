@@ -50,3 +50,20 @@ Next scientific action is Stage 0 technical implementation and validation. Failu
 - production smoke PASS; independent smoke verification PASS
 - no Stage 2 scientific seed used; no formal inference performed
 - Stage 2 scientific generation remains unauthorized pending explicit source-bound authorization
+
+## 2026-08-27 — Stage 2 formal replication and closure
+
+- source-bound formal authorization commit `5d1b4a40ef95ac639787aa0abf040a455c3c2995`
+- formal workflow run `33038132423` completed successfully
+- 8 fixed shards × 1024 = 8192/8192 scientific games generated
+- all 8 shard independent replay verifications passed
+- merged fixed population audit passed
+- trajectories before firewall = 4714; Stage 1 trajectory overlap excluded = 816; opening overlap excluded = 0
+- trajectories after trajectory/opening firewall = 3898
+- Stage 1 RAW-state observations excluded = 4765
+- selected unique RAW states = 3570 (Namua 1823; Mtaji 1747)
+- independent selection/measurement verification passed; measurement mismatches = 0; final overlap = `0 / 0 / 0`
+- failed estimability gates = trajectories 3898<4500; RAW states 3570<4000; Mtaji 1747<1750
+- formal decision = `INCONCLUSIVE`; primary formal branch not entered; canonical `primary = null`
+- no rescue/extension/replacement/refit/threshold relaxation performed
+- Study scientific closure complete

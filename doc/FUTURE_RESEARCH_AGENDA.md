@@ -1,9 +1,9 @@
 # Bao 今後の研究課題
 
-Version: 2.0.0  
-Status: Active  
-作成日: 2026-07-21  
-更新日: 2026-08-26
+Version: 2.0.0
+Status: Active
+作成日: 2026-07-21
+更新日: 2026-08-27
 
 ## 1. 目的
 
@@ -154,7 +154,7 @@ Bao固有の棋風語彙、対局スタイル分類、異なる戦略傾向を�
 
 ### 4.2.1 Namua→Mtaji移行前後の戦略的転移構造 — Study 1完了
 
-**研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続  
+**研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続
 **状態:** Study 1 closed / formal decision `NOT-CONFIRMED`
 
 - 初見向け概要: [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
@@ -763,7 +763,7 @@ engineering上の観測から新しい科学的疑問が生じた場合は、既
 
 #### G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1
 
-**状態:** planned / new prospective independent study
+**状態:** **完了 / `PEOCR-STUDY1` / formal decision `INCONCLUSIVE`**
 
 中心課題:
 
@@ -772,6 +772,21 @@ engineering上の観測から新しい科学的疑問が生じた場合は、既
 第一世代Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`はimmutableとする。Study 1のisotonic mappingをvalidated Bao win probabilityとして使用しない。
 
 最低限、phase-aware calibration、held-out reliability、Brier / log loss、calibration slope / intercept、uncertainty、identity firewall、sample-count estimabilityをoutcome前に固定する。Study 1 mappingの単純な再判定ではなく、新しいreplication Studyとして設計する。
+
+Stage 2 formal replication result:
+
+```text
+games = 8192 / 8192
+all 8 shard independent replay = PASS
+final Stage 1 overlap = trajectory 0 / opening 0 / RAW state 0
+unique trajectories after firewall = 3898 < 4500
+selected unique RAW states = 3570 < 4000
+Mtaji selected states = 1747 < 1750
+formal decision = INCONCLUSIVE
+primary formal branch = not entered (`primary = null`)
+```
+
+この`INCONCLUSIVE`は第一世代resultの救済でもmodel failureの`NOT-CONFIRMED`でもない。strict identity firewall後のformal populationが3つのprospective estimability gateへ届かなかったためである。同じdataへの追加seed、replacement、gate relaxation、mapping refit、near-miss exceptionによる救済を行わない。
 
 **Priority:** P0
 
@@ -990,7 +1005,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-第二世代最初の独立研究候補としては`G2-01`を推奨する。ただしこれはAgenda上の優先順位であり、正式Study IDやprotocolをここでfreezeするものではない。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`としてprospective stop ruleに従い完了した。次の未着手P0候補としては`G2-02` Search Reliability / Decision Robustnessを優先できるが、正式Study IDやprotocolは研究開始時にoutcome前freezeする。
 
 ### 9.9 第二世代プログラムの完了条件
 

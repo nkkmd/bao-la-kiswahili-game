@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-01",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "PEOCR-STUDY1",
+  "stageId": "PEOCR-S2-FORMAL-2026-08-26-v1",
+  "specSha256": "6ef20e20f639797c3d98673980e6e4b2c4c63a522e0c052ce523f6132a94ea60",
+  "formalDecision": "INCONCLUSIVE",
+  "estimabilityAndIdentityGates": {
+    "passed": false,
+    "checks": {
+      "uniqueHistoricalTrajectoriesAfterStage1Firewall": {
+        "observed": 3898,
+        "minimum": 4500,
+        "passed": false
+      },
+      "selectedUniqueRawStates": {
+        "observed": 3570,
+        "minimum": 4000,
+        "passed": false
+      },
+      "namuaSelectedStates": {
+        "observed": 1823,
+        "minimum": 1750,
+        "passed": true
+      },
+      "mtajiSelectedStates": {
+        "observed": 1747,
+        "minimum": 1750,
+        "passed": false
+      },
+      "distinctOpeningPrefixes": {
+        "observed": 3570,
+        "minimum": 1000,
+        "passed": true
+      },
+      "namuaDistinctStaticEvaluations": {
+        "observed": 724,
+        "minimum": 150,
+        "passed": true
+      },
+      "mtajiDistinctStaticEvaluations": {
+        "observed": 1110,
+        "minimum": 150,
+        "passed": true
+      },
+      "namuaActorWins": {
+        "observed": 903,
+        "minimum": 400,
+        "passed": true
+      },
+      "namuaActorLosses": {
+        "observed": 920,
+        "minimum": 400,
+        "passed": true
+      },
+      "mtajiActorWins": {
+        "observed": 938,
+        "minimum": 400,
+        "passed": true
+      },
+      "mtajiActorLosses": {
+        "observed": 809,
+        "minimum": 400,
+        "passed": true
+      },
+      "administrativeTruncationRate": {
+        "observed": 0,
+        "maximum": 0.01,
+        "passed": true
+      },
+      "stage1HistoricalTrajectoryOverlap": {
+        "observed": 0,
+        "required": 0,
+        "passed": true
+      },
+      "stage1OpeningPrefixOverlap": {
+        "observed": 0,
+        "required": 0,
+        "passed": true
+      },
+      "stage1RawStateOverlap": {
+        "observed": 0,
+        "required": 0,
+        "passed": true
+      },
+      "independentVerification": {
+        "observed": true,
+        "required": true,
+        "passed": true
+      }
+    }
+  },
+  "primary": null,
+  "requiredCalibrationDiagnostics": {
+    "namua": {
+      "n": 1823,
+      "calibrationBias": -0.010626742903065542,
+      "reliability": {
+        "bins": [
+          {
+            "lower": 0,
+            "upper": 0.1,
+            "n": 29,
+            "meanPrediction": 0.010000000000000004,
+            "observedWinRate": 0.06896551724137931
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 0,
+            "meanPrediction": null,
+            "observedWinRate": null
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "n": 428,
+            "meanPrediction": 0.27564355096919224,
+            "observedWinRate": 0.31542056074766356
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "n": 0,
+            "meanPrediction": null,
+            "observedWinRate": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 322,
+            "meanPrediction": 0.42483660130719086,
+            "observedWinRate": 0.468944099378882
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "n": 602,
+            "meanPrediction": 0.5483701475561922,
+            "observedWinRate": 0.5149501661129569
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "n": 286,
+            "meanPrediction": 0.6421345254343223,
+            "observedWinRate": 0.6328671328671329
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "n": 127,
+            "meanPrediction": 0.7047662925113087,
+            "observedWinRate": 0.7716535433070866
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 18,
+            "meanPrediction": 0.8000000000000003,
+            "observedWinRate": 0.9444444444444444
+          },
+          {
+            "lower": 0.9,
+            "upper": 1,
+            "n": 11,
+            "meanPrediction": 0.9900000000000001,
+            "observedWinRate": 0.8181818181818182
+          }
+        ],
+        "ece": 0.0376802844313647
+      },
+      "calibrationSlopeIntercept": {
+        "fit": {
+          "converged": true,
+          "iterations": 4,
+          "intercept": 0.04005613861697207,
+          "slope": 0.8232591596037042,
+          "maxAbsGradient": 1.1252110354575962e-13
+        },
+        "bootstrap": {
+          "replicates": 2000,
+          "successfulFits": 2000,
+          "failedFits": 0,
+          "intercept95": [
+            -0.053270833052607554,
+            0.13814279039140215
+          ],
+          "slope95": [
+            0.6533723064278535,
+            0.9948506094367947
+          ]
+        },
+        "bootstrapSalt": "PEOCR-S2-CALDIAG-v1"
+      },
+      "rawScoreAuc": 0.6711703741152679
+    },
+    "mtaji": {
+      "n": 1747,
+      "calibrationBias": -0.005272783615681153,
+      "reliability": {
+        "bins": [
+          {
+            "lower": 0,
+            "upper": 0.1,
+            "n": 553,
+            "meanPrediction": 0.021740546765568716,
+            "observedWinRate": 0.018083182640144666
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 46,
+            "meanPrediction": 0.16666666666666677,
+            "observedWinRate": 0.08695652173913043
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "n": 181,
+            "meanPrediction": 0.22368421052631524,
+            "observedWinRate": 0.2430939226519337
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "n": 0,
+            "meanPrediction": null,
+            "observedWinRate": null
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 0,
+            "meanPrediction": null,
+            "observedWinRate": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "n": 10,
+            "meanPrediction": 0.5,
+            "observedWinRate": 0.3
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "n": 0,
+            "meanPrediction": null,
+            "observedWinRate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "n": 183,
+            "meanPrediction": 0.7416081186572989,
+            "observedWinRate": 0.6775956284153005
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 232,
+            "meanPrediction": 0.8419309522504218,
+            "observedWinRate": 0.9396551724137931
+          },
+          {
+            "lower": 0.9,
+            "upper": 1,
+            "n": 542,
+            "meanPrediction": 0.9826017513906513,
+            "observedWinRate": 0.9870848708487084
+          }
+        ],
+        "ece": 0.027486263572534593
+      },
+      "calibrationSlopeIntercept": {
+        "fit": {
+          "converged": true,
+          "iterations": 4,
+          "intercept": 0.05559304460627495,
+          "slope": 1.089500622634686,
+          "maxAbsGradient": 1.413556771634461e-13
+        },
+        "bootstrap": {
+          "replicates": 2000,
+          "successfulFits": 2000,
+          "failedFits": 0,
+          "intercept95": [
+            -0.13146412017217954,
+            0.2397817702296832
+          ],
+          "slope95": [
+            0.9940119514772268,
+            1.2040293401405702
+          ]
+        },
+        "bootstrapSalt": "PEOCR-S2-CALDIAG-v1"
+      },
+      "rawScoreAuc": 0.9722287379981603
+    }
+  },
+  "interpretationBoundary": {
+    "formalClaimScope": "held-out empirical continuation-outcome calibration under the frozen evaluator, population, continuation policy, state-selection rule, and Stage 1 mapping",
+    "gameTheoreticValueClaimAuthorized": false,
+    "humanAdvantagePerceptionClaimAuthorized": false,
+    "causalClaimAuthorized": false,
+    "generalizationBeyondFrozenPopulationAndPolicyAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false,
+    "publicAiQualityClaimAuthorized": false
+  },
+  "source": {
+    "sourceCommit": "5d1b4a40ef95ac639787aa0abf040a455c3c2995",
+    "sourceTreeDirty": false,
+    "sourceFileSha256": {
+      "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+      "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+      "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+      "tools/experiments/lib/position-typology-features.js": "94ec8283cdc9d8f75cbdb13215cc2acd95fd33a2ca3a14afccd3a26ca8644242",
+      "tools/experiments/lib/ssgtc-representation-production.js": "eb9a25ff8026eee6efa1c4a1fe0b71e6b1bcd7701a1eb84bb46df679e5db913c",
+      "tools/experiments/lib/g2-01-calibration-stage2-common.js": "77e0fe4add0b8b3530e09abd70d2ad6f110a207f35713fd7c5c103eb8132b4c7",
+      "tools/experiments/validate-g2-01-calibration-stage2-spec.js": "f22f9f3f00aac06e7a9391f01646f347a762647dd37dfadfa507c593dbd99c9e",
+      "tools/experiments/run-g2-01-calibration-stage2.js": "c24534f2be059b09c922fc0caaac1dd0da875edde408e68c99c06f582272607f",
+      "tools/experiments/verify-g2-01-calibration-stage2-independent.js": "6a1509fbd8cfd6ecb6fcf057a90df4467be0daec5040fac315f94a8846a259c8",
+      "tools/experiments/evaluate-g2-01-calibration-stage2.js": "577541487c16567800c9730ae914b57a5c6b966a24dcb6c67838d981936c5278",
+      "tools/experiments/run-g2-01-calibration-stage2-smoke.js": "e653c9fd3c5da3d802797efff4366bf480f8900743bb30716a760b8f8e5846cb",
+      "tools/experiments/verify-g2-01-calibration-stage2-smoke-independent.js": "d34c0e4584cec809147b70379470fa642ce7d40eb0ec642ab86459514aefad61",
+      "doc/position-evaluation-empirical-outcome-calibration-replication/preregistration/STAGE_2_FORMAL_SPEC.json": "6ef20e20f639797c3d98673980e6e4b2c4c63a522e0c052ce523f6132a94ea60",
+      "doc/position-evaluation-empirical-outcome-calibration-replication/results/STAGE_1_DEVELOPMENT_RESULT.json": "93c449b5d28d5fe2a51375d867f27b47880b54bc13c0ec45c6206226edd47b75",
+      "doc/position-evaluation-empirical-outcome-calibration-replication/results/STAGE_1_FROZEN_MAPPING.json": "b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac",
+      "doc/position-evaluation-empirical-outcome-calibration-replication/results/STAGE_1_REFERENCE_UNIVERSE_MANIFEST.json": "f571ae94ca5dd2677efc2247de9428c45ee2b22f9a88cc3bb469dfa57a135cba"
+    },
+    "node": "v20.20.2",
+    "platform": "linux",
+    "arch": "x64"
+  }
+}

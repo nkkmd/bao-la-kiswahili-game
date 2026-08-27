@@ -82,3 +82,30 @@ The canonical mapping is the exact artifact bytes from the successful Stage 1 ru
 - `results/STAGE_2_TECHNICAL_SMOKE_VERIFICATION.json`: `1d5d9cba6869939d35156fa03069e9cf4490de8f291421d797d1545be82a5d6b`
 - Stage 1 reference universe SHA-256: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
 - frozen Stage 1 mapping SHA-256: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
+
+## Stage 2 formal evidence and closure
+
+- formal authorization commit: `5d1b4a40ef95ac639787aa0abf040a455c3c2995`
+- formal workflow run: `33038132423`
+- final formal artifact ID: `9636207301`
+- final artifact ZIP SHA-256: `056626968573aa8aa12adb4b84a1375c4bba8dd2b816f1464f4df8fa3abcb5b0`
+- `results/STAGE_2_GENERATION_MANIFEST.json`: `1c338346cd2d2999068c06637587e2f54913a8532e82b131b52bd479876c3411`
+- `results/STAGE_2_SELECTION_MEASUREMENT_SUMMARY.json`: `3e19627869fb57b28b180cabd33c73219d99b0a924b7d54de7b3575cc60c8a45`
+- `results/STAGE_2_VERIFICATION.json`: `48edbac47ae1807a512ff187486b1b8d2df4a0e54b9ca1b4c61eb6d65bbde7da`
+- `results/STAGE_2_FORMAL_RESULT.json`: `42aab2a086b323c1dcb9e39b1187cdd5375dfc7251bd89e5ed2fd24409c35b0c`
+- selection hash: `eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbea`
+- measurement hash: `e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294`
+- formal decision: `INCONCLUSIVE`
+
+Fixed shard artifacts:
+
+```text
+shard 0: ID 9636140572 / ebcfdea36bfe44b170b4fe6c46854738fc18208c686a06fd31de950826a7d49c
+shard 1: ID 9636038055 / cdcf43299defed7043396608d49ba59455c6aa5bc3f8dfcb0f26f06e13a07792
+shard 2: ID 9635952267 / 1bc3a847017c3107a6a4d0be385ad79fc2e69e86902f54b307ae4db6a8c97737
+shard 3: ID 9636024667 / 9a525b98de3a7c151d7bbc5e59732d84d74c7141b43096c7d070936651e2d5b4
+shard 4: ID 9636070999 / 727b499b15867d544c1377a9edfa92316b7b35686fee4117ab8424ec16e78118
+shard 5: ID 9636162351 / a8452c5c0c363e957cda949b2357c54d45fe607f9915f5c1edbdec167269085a
+shard 6: ID 9636005623 / 4612ac3ab7b3ae5e157f7c46c0e1c9b573f62efcc33ca297ccf3e9a8b53241d3
+shard 7: ID 9635949547 / 139219e0d8b483b0f68bc9ca169d07ed17719e21e4e5699e336e39d808a71d6b
+```
