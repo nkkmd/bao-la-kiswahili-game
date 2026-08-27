@@ -143,7 +143,7 @@ function select(output, contract) {
     selectionHash: selected.selectionHash,
     selected: selected.selected.map((row) => ({
       ...row,
-      state: C.rawStateObject(row.state),
+      state: C.cloneJson(row.state),
     })),
   };
   writeJson(path.join(output, "stage1-selected-states.json"), document);
