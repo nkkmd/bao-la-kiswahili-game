@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-02",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "SRDR-STUDY1",
+  "stageId": "SRDR-S2-FORMAL-2026-08-27-v1",
+  "status": "prospective-frozen-generation-not-authorized",
+  "frozenAt": "2026-08-28",
+  "baselineMainHead": "db6980bffb7e6853751914da628db8936c76d81e",
+  "researchBranch": "research/g2-02-search-reliability-decision-robustness",
+  "scientificInferenceAuthorized": true,
+  "formalConfirmationClaimAuthorized": true,
+  "stage2GenerationAuthorized": false,
+  "generationPrerequisite": "Stage 1 PROFILE-FROZEN-DEVELOPMENT plus Stage 1 consumed-identity firewall validation plus Stage 2 technical contract PASS plus Stage 2 source-hash freeze plus explicit Stage 2 authorization commit",
+  "construct": {
+    "primary": "machine search reliability / decision robustness under frozen search-condition perturbations",
+    "formalPattern": "material depth and quiescence decision sensitivity coexisting with high-node-budget convergence toward a frozen higher-resource search reference",
+    "notEquivalentTo": [
+      "human difficulty",
+      "position complexity",
+      "empirical win probability",
+      "game-theoretic value",
+      "engine evaluation correctness",
+      "public AI strength",
+      "human perception"
+    ],
+    "higherResourceReferenceInterpretation": "D3_Q1 is a frozen search reference only; it is not game-theoretic truth, a true best move oracle, or a validated optimal move source"
+  },
+  "stage1DevelopmentProvenance": {
+    "stageId": "SRDR-S1-DEVELOPMENT-2026-08-27-v1",
+    "decision": "PROFILE-FROZEN-DEVELOPMENT",
+    "developmentProfileHash": "665c284efeb0a9531ea49133ba313c0ed76cb09d888cbbe9324e2c0b6f3af280",
+    "canonicalArtifactWorkflowRun": 33123555267,
+    "canonicalArtifactId": 9667419537,
+    "canonicalArtifactName": "g2-02-stage1-development-v1-verified-canonical",
+    "canonicalArtifactZipSha256": "41c6b9940798aa1626b0c73279a47b53dbc3e14316d0cb75f48f4d194f5c8cf8",
+    "requiredFileSha256": {
+      "stage1-generation-manifest.json": "ce7dc177099ad4653af4bd9392828c367d2db0a8e8213445caaae23173652067",
+      "stage1-selected-states.json": "4ee7e09663fe6a3544e2b6180d68ff3bbedd74a816d8b6dd89470c0da512d7fd",
+      "stage1-measurements.json": "ee510b584242fd5c365e2539dbee676723a3dc38c3014a92aa3af517ca2950fb",
+      "stage1-verification.json": "17b42097ceedbd64325a9c09974dd78fec5182865ad2ffdfa189039703689197",
+      "stage1-development-profile.json": "20e5a07f09045cfb06e6b98af571854c5085df8d65fb77a04c9ade5cb6829c5e",
+      "stage1-development-result.json": "9f455cfe41b37d43ee75317ca59e0f9813f3b4ed536d34cf1c6b959084432954"
+    },
+    "stage1RowsReusableAsFormalEvidence": false,
+    "allowedUses": [
+      "formal endpoint freeze",
+      "substantive threshold freeze",
+      "resource planning",
+      "consumed-identity firewall construction"
+    ]
+  },
+  "rawStateIdentity": {
+    "fields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excluded": ["turn", "reason"],
+    "symmetryCanonicalizationAllowed": false,
+    "reflectionEquivalenceAllowed": false,
+    "playerSeatCanonicalizationAllowed": false
+  },
+  "population": {
+    "games": 1536,
+    "seedStart": 25021001,
+    "seedEnd": 25022536,
+    "opening": {
+      "policy": "seeded-uniform-exact-E.moveVariants",
+      "plies": 8
+    },
+    "continuation": {
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 2,
+      "timeLimitMs": "Infinity",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false,
+      "adaptive": false,
+      "stableBestDepths": 0,
+      "aspirationWindow": 0,
+      "randomnessUsedForMoveChoiceAfterOpening": false
+    },
+    "maxPly": 80,
+    "terminalTrajectoryAllowed": true,
+    "terminalStateSelectable": false,
+    "earlyStopAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementAllowed": false
+  },
+  "stage1IdentityFirewall": {
+    "source": "immutable corrected Stage 1 artifact referenced in stage1DevelopmentProvenance",
+    "historicalTrajectoryFirewall": "exclude every Stage 2 trajectory whose historicalTrajectoryHash occurs anywhere in Stage 1 generated games; no replacement",
+    "openingPrefixFirewall": "exclude every Stage 2 trajectory whose openingPrefixHash occurs anywhere in Stage 1 generated games; no replacement",
+    "rawStateFirewall": "after outcome-blind Stage 2 state selection, exclude every selected RAW state whose rawStateKey occurs in Stage 1 selected states; no replacement",
+    "requiredOverlapCounts": {
+      "historicalTrajectory": 0,
+      "openingPrefix": 0,
+      "selectedRawState": 0
+    },
+    "firewallAppliedBeforeSearchReliabilityMeasurement": true,
+    "stage1SearchOutcomeValuesUsedForFirewall": false
+  },
+  "trajectoryIdentity": {
+    "historicalTrajectoryHashDefinition": "SHA256 of ordered moveKey and resulting authoritative RAW-state identity sequence from the initial state through observed trajectory end",
+    "openingPrefixHashDefinition": "SHA256 of ordered first eight moveKey values",
+    "duplicateHandling": "after Stage 1 trajectory/opening-prefix firewall, collapse identical Stage 2 historical trajectories before state selection",
+    "representativeRule": "minimum-seed-then-gameId",
+    "maximumSelectedStatesPerHistoricalTrajectory": 1
+  },
+  "stateSelection": {
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "minimumLegalMoveVariants": 2,
+    "phaseAssignment": {
+      "method": "sha256-parity",
+      "salt": "SRDR-S2-PHASE-v1",
+      "input": "historicalTrajectoryHash",
+      "mapping": { "even": "namua", "odd": "mtaji" }
+    },
+    "withinAssignedPhase": {
+      "method": "minimum-sha256-rank",
+      "salt": "SRDR-S2-STATE-v1",
+      "fields": ["historicalTrajectoryHash", "rawStateKey", "ply"]
+    },
+    "unavailableAssignedPhase": "no-replacement",
+    "stage1RawStateOverlap": "exclude-no-replacement",
+    "duplicateSelectedRawStateHandling": "retain-lowest-selection-rank-then-historicalTrajectoryHash-then-seed; no replacement",
+    "reliabilityOutcomeBlind": true
+  },
+  "moveAndTieContract": {
+    "moveIdentity": "AI.moveKey exact string identity",
+    "moveOrderingForScientificSearch": "canonical lexical moveKey ascending",
+    "scoreTieTolerance": 0,
+    "topSetDefinition": "all legal moves with score exactly equal to the condition maximum score",
+    "canonicalBestDefinition": "lexically smallest moveKey in TopSet; deterministic representative only",
+    "topK": { "k": 3, "whenLegalMovesBelowK": "use all legal moves", "ordering": "score descending then lexical moveKey ascending" },
+    "scoreRankTies": "average rank for correlation metrics; exact equal scores are ties"
+  },
+  "searchGrid": {
+    "common": {
+      "evaluationProfile": "bao",
+      "legalMoveOrdering": "canonical",
+      "orderQuiescenceCaptures": false,
+      "scoreTieTolerance": 0
+    },
+    "conditions": [
+      { "id": "D1_Q1", "kind": "exact-depth", "depth": 1, "quiescenceDepth": 1 },
+      { "id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1, "role": "anchor" },
+      { "id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1, "role": "frozen-higher-resource-reference-not-truth" },
+      { "id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0 },
+      { "id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2 },
+      { "id": "B64_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 64, "maxDepth": 3, "quiescenceDepth": 1, "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded" },
+      { "id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1, "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded" },
+      { "id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1, "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded" }
+    ],
+    "gridChangedFromStage1": false
+  },
+  "comparisonFamilies": {
+    "depth": [["D1_Q1", "D2_Q1"], ["D2_Q1", "D3_Q1"]],
+    "quiescence": [["D2_Q0", "D2_Q1"], ["D2_Q2", "D2_Q1"]],
+    "nodeBudgetAgainstFrozenReference": [["B64_Q1_MAXD3", "D3_Q1"], ["B256_Q1_MAXD3", "D3_Q1"], ["B1024_Q1_MAXD3", "D3_Q1"]]
+  },
+  "endpointContract": {
+    "corePerComparison": [
+      "canonical-best exact agreement",
+      "TopSet Jaccard overlap",
+      "reference canonical-best inclusion in comparison TopSet",
+      "Kendall tau-b",
+      "pairwise ordering agreement",
+      "best-score sign agreement",
+      "PV first-move agreement",
+      "PV normalized common-prefix length"
+    ],
+    "undefinedHandling": "return null with an explicit definability flag; do not impute",
+    "budgetNonEstimable": "comparison endpoints are null; state remains in budget-estimability denominator"
+  },
+  "primaryFormalCriterion": {
+    "name": "mixed-material-sensitivity-and-high-budget-convergence/v1",
+    "confidenceMethod": "two-sided 95% Wilson score interval for a binomial proportion; z=1.959963984540054; decision uses the lower bound specified below",
+    "criteria": [
+      {
+        "id": "P1_DEPTH_MATERIAL_INSTABILITY",
+        "comparison": ["D2_Q1", "D3_Q1"],
+        "stateLevelBinary": "1 - canonicalBestAgreement",
+        "estimand": "pooled canonical-best disagreement proportion",
+        "decisionStatistic": "95% Wilson lower bound",
+        "operator": ">=",
+        "threshold": 0.20,
+        "interpretation": "at least materially non-trivial depth sensitivity; not an error rate against truth"
+      },
+      {
+        "id": "P2_QUIESCENCE_MATERIAL_INSTABILITY",
+        "comparison": ["D2_Q2", "D2_Q1"],
+        "stateLevelBinary": "1 - canonicalBestAgreement",
+        "estimand": "pooled canonical-best disagreement proportion",
+        "decisionStatistic": "95% Wilson lower bound",
+        "operator": ">=",
+        "threshold": 0.20,
+        "interpretation": "at least materially non-trivial quiescence-depth sensitivity; D2_Q1 is an anchor, not truth"
+      },
+      {
+        "id": "P3_HIGH_BUDGET_CONVERGENCE",
+        "comparison": ["B1024_Q1_MAXD3", "D3_Q1"],
+        "stateLevelBinary": "canonicalBestAgreement among defined B1024 comparisons",
+        "estimand": "pooled canonical-best agreement proportion",
+        "decisionStatistic": "95% Wilson lower bound",
+        "operator": ">=",
+        "threshold": 0.90,
+        "interpretation": "high node-budget convergence toward the frozen D3_Q1 reference; not optimality"
+      }
+    ],
+    "allCriteriaRequiredForConfirmed": true,
+    "thresholdSelectionRationale": "rounded substantive thresholds selected after Stage 1 development but before any Stage 2 outcome: 20% defines material perturbation sensitivity and 90% defines high agreement; thresholds are not Stage 1 point estimates or confidence limits"
+  },
+  "secondaryFormalReporting": {
+    "decisionBearing": false,
+    "requiredStrata": ["pooled", "namua", "mtaji"],
+    "requiredMetrics": [
+      "canonicalBestAgreement",
+      "TopSetJaccard",
+      "referenceBestIncludedInComparisonTopSet",
+      "kendallTauB",
+      "pairwiseOrderingAgreement",
+      "bestScoreSignAgreement",
+      "pvFirstMoveAgreement",
+      "pvNormalizedCommonPrefix",
+      "budget completedDepth distribution"
+    ],
+    "phaseDifferenceIsPrimary": false,
+    "favorableSubgroupRescueAllowed": false
+  },
+  "estimabilityAndReproducibilityGates": {
+    "minimumUniqueHistoricalTrajectoriesAfterStage1Firewall": 1050,
+    "minimumSelectedUniqueRawStates": 1000,
+    "minimumNamuaSelectedStates": 450,
+    "minimumMtajiSelectedStates": 450,
+    "minimumDistinctOpeningPrefixesAfterStage1Firewall": 900,
+    "requiredStage1HistoricalTrajectoryOverlap": 0,
+    "requiredStage1OpeningPrefixOverlap": 0,
+    "requiredStage1SelectedRawStateOverlap": 0,
+    "requiredDuplicateSelectedRawStatesAfterDedup": 0,
+    "requiredExactConditionMeasurementCompletionRate": 1.0,
+    "minimumB64AtLeastDepth1CompletionRatePooled": 0.85,
+    "minimumB64AtLeastDepth1CompletionRateEachPhase": 0.80,
+    "minimumB256AtLeastDepth2CompletionRatePooled": 0.70,
+    "minimumB256AtLeastDepth2CompletionRateEachPhase": 0.65,
+    "minimumB1024AtLeastDepth3CompletionRatePooled": 0.65,
+    "minimumB1024AtLeastDepth3CompletionRateEachPhase": 0.60,
+    "minimumB1024ComparisonEstimableRatePooled": 0.98,
+    "minimumB1024ComparisonEstimableRateEachPhase": 0.95,
+    "independentVerificationRequired": true,
+    "selectionHashMatchRequired": true,
+    "measurementHashMatchRequired": true
+  },
+  "formalDecisionRule": {
+    "ifAnyEstimabilityIdentityMeasurementOrReproducibilityGateFails": "INCONCLUSIVE",
+    "ifAllGatesPassAndAllPrimaryFormalCriteriaPass": "CONFIRMED",
+    "ifAllGatesPassAndAnyPrimaryFormalCriterionFails": "NOT-CONFIRMED",
+    "technicalExecutionFailure": "not a scientific NOT-CONFIRMED; execution-only retry may use the identical authorized seed block only when scientific instrument and artifacts are unchanged"
+  },
+  "measurementHashContract": {
+    "canonicalization": "JSON-roundtrip the measurement-core object before stable-stringify and SHA-256 so undefined-only object properties cannot create a pre-serialization/persisted-artifact hash split",
+    "stage1SerializationDefectAllowedToRecur": false
+  },
+  "stoppingAndNoRescue": {
+    "gamesFixed": 1536,
+    "earlyStopAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementAllowed": false,
+    "replacementForStage1FirewallExclusion": false,
+    "replacementForUnavailableAssignedPhase": false,
+    "replacementForDuplicateTrajectory": false,
+    "replacementForDuplicateRawState": false,
+    "thresholdChangeAfterStage2OutcomeAllowed": false,
+    "primaryMetricSubstitutionAllowed": false,
+    "searchGridChangeAfterStage2OutcomeAllowed": false,
+    "tieToleranceChangeAfterStage2OutcomeAllowed": false,
+    "subgroupRescueAllowed": false,
+    "alternatePrimaryAllowed": false
+  },
+  "interpretationBoundary": {
+    "gameTheoreticValueClaimAuthorized": false,
+    "trueBestMoveClaimAuthorized": false,
+    "validatedOptimalMoveClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false,
+    "engineCorrectnessClaimAuthorized": false,
+    "publicAiStrengthClaimAuthorized": false,
+    "publicAiChangeRecommendationAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false
+  }
+}
