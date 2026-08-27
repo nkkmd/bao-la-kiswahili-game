@@ -14,6 +14,8 @@ on:
       - 'tools/experiments/run-search-reliability-stage1-preauth-smoke.js'
       - 'test/search-reliability-stage1-contract.test.js'
       - '.github/workflows/g2-02-search-reliability-stage1-preauth.yml'
+      - '.github/workflows/g2-02-search-reliability-stage1-source-freeze.yml'
+      - '.github/workflows/g2-02-search-reliability-stage1-development.yml'
   workflow_dispatch:
 
 permissions:
