@@ -1,0 +1,248 @@
+name: G2-01 Stage 1 canonicalize
+
+on:
+  push:
+    branches:
+      - research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+    paths:
+      - '.github/workflows/g2-01-stage1-canonicalize.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  canonicalize-stage1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: peocr-stage1-development-v1
+          path: /tmp/peocr-stage1
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33017663172
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify exact Stage 1 artifacts
+        run: |
+          cd /tmp/peocr-stage1
+          echo '97b996f96ee236d3ea0a049a2980a27655696119e776bcd6f42905fa205c4ef9  generation-manifest.json' | sha256sum -c -
+          echo '6ef950393ba290a7df6af7228539903f9cc23bcfe01bdc8c0c791c24bb0ebd01  stage1-selection-measurement-summary.json' | sha256sum -c -
+          echo '792cb9bcf88402d785bc9ba581fba0f62c75f7e0d6ac49f6f99884c2a45173b5  verification.json' | sha256sum -c -
+          echo '93c449b5d28d5fe2a51375d867f27b47880b54bc13c0ec45c6206226edd47b75  stage1-development-result.json' | sha256sum -c -
+          echo 'b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac  stage1-frozen-mapping.json' | sha256sum -c -
+      - name: Materialize canonical Stage 1 records
+        run: |
+          set -euo pipefail
+          D=doc/position-evaluation-empirical-outcome-calibration-replication
+          mkdir -p "$D/results" "$D/checkpoints"
+          cp /tmp/peocr-stage1/generation-manifest.json "$D/results/STAGE_1_GENERATION_MANIFEST.json"
+          cp /tmp/peocr-stage1/stage1-selection-measurement-summary.json "$D/results/STAGE_1_SELECTION_MEASUREMENT_SUMMARY.json"
+          cp /tmp/peocr-stage1/verification.json "$D/results/STAGE_1_VERIFICATION.json"
+          cp /tmp/peocr-stage1/stage1-development-result.json "$D/results/STAGE_1_DEVELOPMENT_RESULT.json"
+          cp /tmp/peocr-stage1/stage1-frozen-mapping.json "$D/results/STAGE_1_FROZEN_MAPPING.json"
+
+          cat > "$D/checkpoints/2026-08-27-stage1-model-frozen-development.md" <<'EOF'
+          # PEOCR-STUDY1 — Stage 1 Model Frozen Development
+
+          Date: 2026-08-27
+
+          ## Decision
+
+          ```text
+          Stage 1 decision = MODEL-FROZEN-DEVELOPMENT
+          Stage 2 generation authorized = false
+          formal calibration claim authorized = false
+          ```
+
+          Recovery workflow run `33017663172` completed successfully after the administrative timeout ceiling was increased from 120 to 360 minutes. The scientific contract, authorized source hashes, population, seed range, selection rules, RAW identity, readiness gates, model family and interpretation boundary were unchanged.
+
+          ## Complete Stage 1 population
+
+          ```text
+          games = 2048 / 2048
+          seeds = 24011001..24013048
+          unique historical trajectories = 1602
+          selected unique RAW states = 1547
+          Namua selected = 806
+          Mtaji selected = 741
+          administrative truncation rate = 0
+          ```
+
+          ## Independent verification
+
+          ```text
+          games verified = 2048
+          game replay mismatches = 0
+          measurement mismatches = 0
+          selection hash match = true
+          measurement hash match = true
+          ```
+
+          ```text
+          selectionHash = 4c46baef47f52ecff47d042fb7983a806c55d891717cb8f9d0afa2b483bd3b87
+          measurementHash = a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b
+          ```
+
+          ## Readiness
+
+          All prospectively frozen Stage 1 readiness gates passed. No gate was relaxed and no seed was added or replaced.
+
+          ## Frozen model
+
+          ```text
+          family = phase-stratified-isotonic-PAVA
+          candidate family selection = none
+          prediction clipping for Stage 2 formal metrics = [0.01,0.99]
+          model artifact SHA-256 = b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac
+          ```
+
+          The Stage 1 development metrics are descriptive model-development diagnostics only and do not constitute the held-out formal calibration claim.
+
+          ## Canonical evidence hashes
+
+          ```text
+          STAGE_1_GENERATION_MANIFEST.json = 97b996f96ee236d3ea0a049a2980a27655696119e776bcd6f42905fa205c4ef9
+          STAGE_1_SELECTION_MEASUREMENT_SUMMARY.json = 6ef950393ba290a7df6af7228539903f9cc23bcfe01bdc8c0c791c24bb0ebd01
+          STAGE_1_VERIFICATION.json = 792cb9bcf88402d785bc9ba581fba0f62c75f7e0d6ac49f6f99884c2a45173b5
+          STAGE_1_DEVELOPMENT_RESULT.json = 93c449b5d28d5fe2a51375d867f27b47880b54bc13c0ec45c6206226edd47b75
+          STAGE_1_FROZEN_MAPPING.json = b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac
+          workflow artifact ZIP = 1c5f4c3440abda834b442ad9bb5ce811d777ed0750e8e3fdaeda0ab9c32a4e30
+          workflow artifact ID = 9632042234
+          ```
+
+          ## Next-stage boundary
+
+          Stage 2 is not authorized by this result alone. Before any Stage 2 scientific seed is generated, a non-scientific Stage 2 technical smoke, exact Stage 1 reference-universe/model/source hash freeze, independent verification path and explicit Stage 2 authorization are required.
+          EOF
+
+          cat > "$D/CURRENT_STATUS.md" <<'EOF'
+          # PEOCR-STUDY1 — Current Status
+
+          更新日: 2026-08-27
+
+          ## Status
+
+          **STUDY ACTIVE / STAGE 0 TECHNICAL PASS / STAGE 1 MODEL-FROZEN-DEVELOPMENT / STAGE 2 NOT AUTHORIZED**
+
+          ## Identity
+
+          ```text
+          Program = G2-01
+          Study ID = PEOCR-STUDY1
+          Research Generation = Research Generation 2
+          Baseline main = 9e9cb6e2525f09a873e741db9f8fa42696839fbe
+          Branch = research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+          ```
+
+          ## Completed
+
+          - Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains immutable.
+          - Stage 0 technical validation: `STAGE0-TECHNICAL-PASS`.
+          - Stage 1 source hashes and authorization were frozen before scientific generation.
+          - First authorized Stage 1 run stopped administratively at 1536/2048 because of the 120-minute workflow ceiling; that partial artifact is provenance-only.
+          - Recovery run `33017663172` reran the same complete fixed population from the beginning under unchanged scientific hashes and completed successfully.
+          - 2,048/2,048 fresh Stage 1 games generated.
+          - Independent full replay verified all 2,048 games with zero game/measurement mismatches.
+          - All prospectively frozen Stage 1 readiness gates passed.
+          - Stage 1 decision: `MODEL-FROZEN-DEVELOPMENT`.
+          - Exact phase-stratified isotonic PAVA mapping frozen: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`.
+
+          ## Stage 1 key counts
+
+          ```text
+          unique historical trajectories = 1602
+          selected unique RAW states = 1547
+          Namua = 806
+          Mtaji = 741
+          administrative truncation rate = 0
+          selection hash = 4c46baef47f52ecff47d042fb7983a806c55d891717cb8f9d0afa2b483bd3b87
+          measurement hash = a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b
+          ```
+
+          ## Authorization state
+
+          ```text
+          Stage 0 technical execution = COMPLETE / PASS
+          Stage 1 scientific generation = COMPLETE
+          Stage 1 formal calibration inference = NOT AUTHORIZED (development stage only)
+          Stage 2 scientific generation = NOT AUTHORIZED
+          ```
+
+          ## Next action
+
+          Implement and execute non-scientific Stage 2 technical smoke; freeze the exact Stage 1 reference universe, frozen mapping, Stage 2 source hashes and independent verification path; then create an explicit Stage 2 authorization before any seed in `24020001..24028192` is generated.
+          EOF
+
+          if ! grep -q 'D-010 — Stage 1 development decision' "$D/DECISION_REGISTER.md"; then
+            cat >> "$D/DECISION_REGISTER.md" <<'EOF'
+
+          ## D-010 — Stage 1 development decision
+
+          Date: 2026-08-27
+
+          The complete authorized Stage 1 population passed all prospectively frozen readiness and independent-verification gates.
+
+          ```text
+          Stage 1 decision = MODEL-FROZEN-DEVELOPMENT
+          frozen model = phase-stratified-isotonic-PAVA
+          frozen model SHA-256 = b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac
+          Stage 2 generation authorized = false
+          ```
+
+          This is a development/model-freeze decision, not a held-out formal calibration confirmation. Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains unchanged.
+          EOF
+          fi
+
+          if ! grep -q '2026-08-27 — Stage 1 complete development run' "$D/RESEARCH_LOG.md"; then
+            cat >> "$D/RESEARCH_LOG.md" <<'EOF'
+
+          ## 2026-08-27 — Stage 1 complete development run
+
+          - first authorized run `32971272256` stopped at 1536/2048 solely due to a 120-minute administrative Actions ceiling; partial artifact retained for provenance only
+          - execution ceiling changed to 360 minutes without changing any scientific source hash or contract element
+          - recovery run `33017663172` completed successfully
+          - 2048/2048 fresh games generated from the original fixed seed range
+          - independent verifier replayed all 2048 games
+          - replay mismatches = 0; measurement mismatches = 0
+          - unique historical trajectories = 1602
+          - selected unique RAW states = 1547 (Namua 806; Mtaji 741)
+          - administrative truncation rate = 0
+          - all Stage 1 readiness gates passed
+          - Stage 1 decision = `MODEL-FROZEN-DEVELOPMENT`
+          - frozen PAVA mapping SHA-256 = `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
+          - Stage 2 remains unauthorized pending its own technical smoke and exact authorization freeze
+          EOF
+          fi
+
+          if ! grep -q '## Stage 1 canonical evidence' "$D/REPRODUCIBILITY_INDEX.md"; then
+            cat >> "$D/REPRODUCIBILITY_INDEX.md" <<'EOF'
+
+          ## Stage 1 canonical evidence
+
+          - successful recovery workflow run: `33017663172`
+          - successful workflow artifact ID: `9632042234`
+          - workflow artifact ZIP SHA-256: `1c5f4c3440abda834b442ad9bb5ce811d777ed0750e8e3fdaeda0ab9c32a4e30`
+          - `results/STAGE_1_GENERATION_MANIFEST.json`: `97b996f96ee236d3ea0a049a2980a27655696119e776bcd6f42905fa205c4ef9`
+          - `results/STAGE_1_SELECTION_MEASUREMENT_SUMMARY.json`: `6ef950393ba290a7df6af7228539903f9cc23bcfe01bdc8c0c791c24bb0ebd01`
+          - `results/STAGE_1_VERIFICATION.json`: `792cb9bcf88402d785bc9ba581fba0f62c75f7e0d6ac49f6f99884c2a45173b5`
+          - `results/STAGE_1_DEVELOPMENT_RESULT.json`: `93c449b5d28d5fe2a51375d867f27b47880b54bc13c0ec45c6206226edd47b75`
+          - `results/STAGE_1_FROZEN_MAPPING.json`: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
+          - selection hash: `4c46baef47f52ecff47d042fb7983a806c55d891717cb8f9d0afa2b483bd3b87`
+          - measurement hash: `a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b`
+
+          The canonical mapping is the exact artifact bytes from the successful Stage 1 run; it is not refit during canonicalization.
+          EOF
+          fi
+      - name: Commit canonical Stage 1 freeze
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/position-evaluation-empirical-outcome-calibration-replication
+          git diff --cached --check
+          git commit -m 'research(g2-01): record Stage 1 model freeze'
+          git push origin HEAD:research/g2-01-position-evaluation-empirical-outcome-calibration-replication
