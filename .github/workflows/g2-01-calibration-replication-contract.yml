@@ -14,9 +14,15 @@ on:
       - 'tools/experiments/validate-g2-01-calibration-stage1-spec.js'
       - 'tools/experiments/run-g2-01-calibration-stage1-pipeline-smoke.js'
       - 'tools/experiments/lib/g2-01-calibration-stage1-common.js'
+      - 'tools/experiments/run-g2-01-calibration-stage2.js'
+      - 'tools/experiments/verify-g2-01-calibration-stage2-independent.js'
+      - 'tools/experiments/evaluate-g2-01-calibration-stage2.js'
+      - 'tools/experiments/validate-g2-01-calibration-stage2-spec.js'
+      - 'tools/experiments/run-g2-01-calibration-stage2-smoke.js'
+      - 'tools/experiments/verify-g2-01-calibration-stage2-smoke-independent.js'
+      - 'tools/experiments/lib/g2-01-calibration-stage2-common.js'
       - 'test/g2-01-calibration-replication-contract.test.js'
-      - '.github/workflows/g2-01-calibration-replication-contract.yml'
-      - '.github/workflows/g2-01-calibration-stage1-generation.yml'
+      - '.github/workflows/g2-01-*.yml'
 
 permissions:
   contents: read
@@ -34,11 +40,27 @@ jobs:
         run: node test/g2-01-calibration-replication-contract.test.js
       - name: Validate Stage 1 frozen spec
         run: node tools/experiments/validate-g2-01-calibration-stage1-spec.js
+      - name: Validate Stage 2 frozen spec when instantiated
+        run: |
+          if [[ -f doc/position-evaluation-empirical-outcome-calibration-replication/preregistration/STAGE_2_FORMAL_SPEC.json ]]; then
+            node tools/experiments/validate-g2-01-calibration-stage2-spec.js
+          fi
       - name: Run Stage 0 technical production smoke
         run: node tools/experiments/run-g2-01-calibration-stage0-technical.js
       - name: Independently verify Stage 0 technical smoke
         run: node tools/experiments/verify-g2-01-calibration-stage0-independent.js
-      - name: Run Stage 1 end-to-end technical pipeline smoke
+      - name: Detect Stage 1 authorization state
+        id: stage1_auth
+        shell: bash
+        run: |
+          if [[ -f doc/position-evaluation-empirical-outcome-calibration-replication/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json ]]; then
+            echo 'authorized=true' >> "$GITHUB_OUTPUT"
+            echo 'Stage 1 authorization exists; preauthorization smoke is historical and will not be re-run.'
+          else
+            echo 'authorized=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run Stage 1 end-to-end preauthorization technical pipeline smoke
+        if: steps.stage1_auth.outputs.authorized != 'true'
         run: |
           mkdir -p artifacts/local/position-evaluation-empirical-outcome-calibration-replication/stage1-preauthorization-v1
           node tools/experiments/run-g2-01-calibration-stage1-pipeline-smoke.js \
@@ -50,7 +72,7 @@ jobs:
           path: artifacts/local/position-evaluation-empirical-outcome-calibration-replication/stage0-technical-v1
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.stage1_auth.outputs.authorized != 'true'
         with:
           name: peocr-stage1-preauthorization-v1
           path: artifacts/local/position-evaluation-empirical-outcome-calibration-replication/stage1-preauthorization-v1
