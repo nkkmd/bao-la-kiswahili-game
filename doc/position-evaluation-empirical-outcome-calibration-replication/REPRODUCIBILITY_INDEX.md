@@ -110,3 +110,13 @@ shard 5: ID 9636162351 / a8452c5c0c363e957cda949b2357c54d45fe607f9915f5c1edbdec1
 shard 6: ID 9636005623 / 4612ac3ab7b3ae5e157f7c46c0e1c9b573f62efcc33ca297ccf3e9a8b53241d3
 shard 7: ID 9635949547 / 139219e0d8b483b0f68bc9ca169d07ed17719e21e4e5699e336e39d808a71d6b
 ```
+
+## Repository integration
+
+- integration PR: `#67`
+- expected research head: `6e64cd5bb252eab40c2608fc88562ba7371b2602`
+- integration merge commit: `12ce1f5f212349cc827147adcb5de8e7eadb98f3`
+- integrated branch: `main`
+- integration date: `2026-08-27`
+
+Repository integration occurred only after the final G2-01, second-generation agenda, SSGTC, PCEM, and Phase Transition audits were all green. Integration does not alter canonical scientific evidence or the `INCONCLUSIVE` decision.
