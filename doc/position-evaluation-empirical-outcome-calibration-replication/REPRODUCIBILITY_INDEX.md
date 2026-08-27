@@ -72,3 +72,13 @@ Production and independent verification logic must not share unverified scientif
 - measurement hash: `a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b`
 
 The canonical mapping is the exact artifact bytes from the successful Stage 1 run; it is not refit during canonicalization.
+
+## Stage 2 technical smoke evidence
+
+- workflow run: `33037897038`
+- workflow artifact ID: `9632722463`
+- artifact ZIP SHA-256: `e42e3ee6228363282bfb4abd3c55ea55fb51cc808ab34cb18ff1ed92c5da834a`
+- `results/STAGE_2_TECHNICAL_SMOKE_RESULT.json`: `f2cf9b0bc0b091611e88871d8399a340e579c84f4b4143feaf85e266c0bc491e`
+- `results/STAGE_2_TECHNICAL_SMOKE_VERIFICATION.json`: `1d5d9cba6869939d35156fa03069e9cf4490de8f291421d797d1545be82a5d6b`
+- Stage 1 reference universe SHA-256: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
+- frozen Stage 1 mapping SHA-256: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`

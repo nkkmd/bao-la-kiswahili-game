@@ -126,3 +126,9 @@ Stage 2 generation authorized = false
 ```
 
 This is a development/model-freeze decision, not a held-out formal calibration confirmation. Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains unchanged.
+
+## D-011 — Stage 2 technical smoke
+
+Date: 2026-08-27
+
+`PEOCR-S2-SMOKE-2026-08-27-v1` passed production and independent verification without using any Stage 2 scientific seed. The exact Stage 1 frozen mapping and identity-firewall reference universe were verified. This technical PASS is a prerequisite for, but does not itself constitute, Stage 2 scientific authorization.

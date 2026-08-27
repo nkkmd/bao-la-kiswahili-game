@@ -40,3 +40,13 @@ Next scientific action is Stage 0 technical implementation and validation. Failu
 - Stage 1 decision = `MODEL-FROZEN-DEVELOPMENT`
 - frozen PAVA mapping SHA-256 = `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
 - Stage 2 remains unauthorized pending its own technical smoke and exact authorization freeze
+
+## 2026-08-27 — Stage 2 technical smoke
+
+- Stage 2 production, independent verifier and formal evaluator implementations completed before formal outcomes
+- Stage 1 reference universe manifest frozen: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
+- execution sharding frozen prospectively as 8 contiguous shards × 1024 games
+- technical smoke run `33037897038` completed successfully
+- production smoke PASS; independent smoke verification PASS
+- no Stage 2 scientific seed used; no formal inference performed
+- Stage 2 scientific generation remains unauthorized pending explicit source-bound authorization
