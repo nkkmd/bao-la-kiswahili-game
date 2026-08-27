@@ -1,0 +1,75 @@
+name: G2-01 Stage 2 closure
+
+on:
+  push:
+    branches:
+      - research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+    paths:
+      - .github/workflows/g2-01-stage2-closure.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  close-study:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download exact Stage 2 formal artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: peocr-stage2-formal-v1
+          path: /tmp/peocr-stage2
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33038132423
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Materialize and audit closure
+        run: python3 tools/experiments/finalize-g2-01-stage2-closure.py --artifact /tmp/peocr-stage2
+
+      - name: Normalize generated Markdown whitespace
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          status = subprocess.check_output(['git', 'status', '--porcelain=v1', '--untracked-files=all'], text=True)
+          for row in status.splitlines():
+              name = row[3:]
+              if ' -> ' in name:
+                  name = name.split(' -> ', 1)[1]
+              if not name.endswith('.md'):
+                  continue
+              path = Path(name)
+              if not path.is_file():
+                  continue
+              text = path.read_text(encoding='utf-8')
+              normalized = '\n'.join(line.rstrip() for line in text.splitlines()) + ('\n' if text.endswith('\n') else '')
+              path.write_text(normalized, encoding='utf-8')
+          PY
+
+      - name: Run closure contract tests
+        run: |
+          node test/g2-01-calibration-replication-contract.test.js
+          node test/second-generation-research-agenda.test.js
+          git diff --check
+
+      - name: Commit scientific closure
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md doc/FUTURE_RESEARCH_AGENDA.md doc/RESEARCH_INDEX.md \
+            doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md \
+            doc/position-evaluation-empirical-outcome-calibration-replication
+          git diff --cached --check
+          git commit -m 'research(g2-01): close Stage 2 as inconclusive'
+          git push origin HEAD:research/g2-01-position-evaluation-empirical-outcome-calibration-replication

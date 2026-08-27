@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-01",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "PEOCR-STUDY1",
+  "stageId": "PEOCR-S1-DEVELOPMENT-2026-08-26-v1",
+  "specSha256": "3b5262105de7a804cbbbb67e9ad111212bef6f4859f722fcaea42e5504e8eb99",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "stage1Decision": "MODEL-FROZEN-DEVELOPMENT",
+  "stage2GenerationAuthorized": false,
+  "inputAudit": {
+    "generationManifestSha256": "97b996f96ee236d3ea0a049a2980a27655696119e776bcd6f42905fa205c4ef9",
+    "selectionMeasurementSummarySha256": "6ef950393ba290a7df6af7228539903f9cc23bcfe01bdc8c0c791c24bb0ebd01",
+    "verificationSha256": "792cb9bcf88402d785bc9ba581fba0f62c75f7e0d6ac49f6f99884c2a45173b5",
+    "measurementHash": "a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b",
+    "selectedBinaryRows": 1547,
+    "readiness": {
+      "passed": true,
+      "checks": {
+        "uniqueHistoricalTrajectories": {
+          "observed": 1602,
+          "minimum": 1500,
+          "passed": true
+        },
+        "selectedUniqueRawStates": {
+          "observed": 1547,
+          "minimum": 1400,
+          "passed": true
+        },
+        "namuaSelectedStates": {
+          "observed": 806,
+          "minimum": 600,
+          "passed": true
+        },
+        "mtajiSelectedStates": {
+          "observed": 741,
+          "minimum": 600,
+          "passed": true
+        },
+        "namuaDistinctStaticEvaluations": {
+          "observed": 496,
+          "minimum": 100,
+          "passed": true
+        },
+        "mtajiDistinctStaticEvaluations": {
+          "observed": 604,
+          "minimum": 100,
+          "passed": true
+        },
+        "namuaActorWins": {
+          "observed": 387,
+          "minimum": 150,
+          "passed": true
+        },
+        "namuaActorLosses": {
+          "observed": 419,
+          "minimum": 150,
+          "passed": true
+        },
+        "mtajiActorWins": {
+          "observed": 383,
+          "minimum": 150,
+          "passed": true
+        },
+        "mtajiActorLosses": {
+          "observed": 358,
+          "minimum": 150,
+          "passed": true
+        },
+        "administrativeTruncationRate": {
+          "observed": 0,
+          "maximum": 0.01,
+          "passed": true
+        },
+        "independentVerification": {
+          "observed": true,
+          "required": true,
+          "passed": true
+        },
+        "measurementHashMatch": {
+          "observed": true,
+          "required": true,
+          "passed": true
+        },
+        "selectionHashMatch": {
+          "observed": true,
+          "required": true,
+          "passed": true
+        }
+      }
+    }
+  },
+  "model": {
+    "family": "phase-stratified-isotonic-PAVA",
+    "candidateFamilySelectionPerformed": false,
+    "fitEligible": true,
+    "modelArtifactPath": "stage1-frozen-mapping.json",
+    "modelArtifactSha256": "b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac",
+    "developmentMetrics": {
+      "pooled": {
+        "n": 1547,
+        "brier": 0.14999816113419437,
+        "logLoss": 0.4401788442376836
+      },
+      "byPhase": {
+        "namua": {
+          "n": 806,
+          "brier": 0.22355360893107498,
+          "logLoss": 0.6340073837430251
+        },
+        "mtaji": {
+          "n": 741,
+          "brier": 0.0699904810744288,
+          "logLoss": 0.2293478012669582
+        }
+      }
+    },
+    "baseRates": {
+      "namua": {
+        "n": 806,
+        "actorWins": 387,
+        "actorLosses": 419,
+        "actorWinRate": 0.4801488833746898,
+        "zMin": -8.22,
+        "zMax": 5.33
+      },
+      "mtaji": {
+        "n": 741,
+        "actorWins": 383,
+        "actorLosses": 358,
+        "actorWinRate": 0.5168690958164642,
+        "zMin": -10.64,
+        "zMax": 10.14
+      }
+    }
+  },
+  "interpretationBoundary": {
+    "stage1FormalCalibrationClaimAuthorized": false,
+    "gameTheoreticValueClaimAuthorized": false,
+    "humanClaimAuthorized": false,
+    "causalClaimAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false,
+    "publicAiQualityClaimAuthorized": false
+  },
+  "nextStage": {
+    "stage2AuthorizedByThisResultAlone": false,
+    "requiresExplicitAuthorization": true,
+    "reason": "Stage 1 readiness passed and model is frozen; Stage 2 still requires its own technical smoke, source/model hash freeze, and explicit authorization."
+  }
+}

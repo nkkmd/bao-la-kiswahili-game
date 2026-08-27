@@ -28,7 +28,7 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 ### 1. 局面相転移点研究 — Study 1
 
-**研究題目:** Baoにおける局面相転移点の発見と、`capture-branch-expansion`の確認  
+**研究題目:** Baoにおける局面相転移点の発見と、`capture-branch-expansion`の確認
 **状態:** Study 1 closed / repository closure complete
 
 第1研究では、Baoの対局中に再現可能な戦略的転移候補を検出できるかを調べ、`capture-branch-expansion`を中心phenotypeとして同定しました。固定 `hard / bao` 条件では、depth2でphase2 > legacy、depth3でlegacy > phase2というsearch-profile orderingの逆転がそれぞれformalに確認されています。ただし一般的なdepth interactionや普遍的Bao phase-transition lawは主張しません。
@@ -81,8 +81,8 @@ Baoのゲーム開始時の先攻・後攻差、および生成局面におけ�
 
 ### 4. 局面類型と棋風 — Study 1
 
-**研究題目:** Baoにおける局面類型と棋風の発見・検証  
-**状態:** research complete / final integration complete  
+**研究題目:** Baoにおける局面類型と棋風の発見・検証
+**状態:** research complete / final integration complete
 **作業branch:** `research/position-typology-and-playing-style`
 
 Baoのposition typeとplaying styleをstate-level / trajectory-levelに分離して探索・検証した研究です。固定representationではMtajiに`MTAJI-M1 / MTAJI-M2`というbounded two-type morphologyが独立formal confirmationされました。一方、Namuaでは離散typeをpromoteせずN-ACT/N-CONというexploratory continuous representationを保持し、discrete playing-style clusteringも支持されませんでした。Stage 4で得たexact 4D style geometryは独立Stage 5で`NOT-CONFIRMED`です。
@@ -105,8 +105,8 @@ closed phase-transition Study 1とのsecondary bridgeでは、E-018 D2 / E-019 D
 
 ### 5. Namua→Mtaji Strategic Temporal Transition — Study 1
 
-**研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続  
-**状態:** Study 1 closed / repository closure complete / formal decision `NOT-CONFIRMED`  
+**研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続
+**状態:** Study 1 closed / repository closure complete / formal decision `NOT-CONFIRMED`
 **作業branch:** `research/namua-mtaji-temporal-transition`
 
 この独立prospective studyは、局面相転移点Study 1で固定されたNamua `capture-branch-expansion`と、局面類型と棋風Study 1でconfirmedされたfrozen `MTAJI-M1 / MTAJI-M2` morphologyの時間的bridgeを検討しました。
@@ -141,8 +141,8 @@ First-Mtaji M1はexposed 26/30 (0.8667)、matched controls 509/600 (0.8483)で�
 
 ### 6. Position Complexity / Difficulty — Study 1
 
-**研究題目:** Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離  
-**状態:** Study 1 closed / formal decision `INCONCLUSIVE`  
+**研究題目:** Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離
+**状態:** Study 1 closed / formal decision `INCONCLUSIVE`
 **作業branch:** `research/position-complexity-difficulty`
 
 このprospective independent studyは、Baoの「難しい局面」を単一difficulty scoreへ圧縮せず、structural complexity、search workload、decision ambiguity、prediction instabilityへ分離して測定することを目的としました。Stage 0でexact root candidate / TopSet / best-second gap / depth-transition diagnosticをtechnical validationし、Stage 1 exploratory corpusでは666 unique rule statesを測定して全Stage 2 readiness gateをPASSしました。
@@ -167,8 +167,8 @@ Primary PCX-H1は`D23Instability ~ phase + log1pLegalMoveCount`のunpenalized lo
 
 ### 7. Tactical Motifs / Tesuji — Study 1
 
-**研究題目:** Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証  
-**状態:** **Study 1 closed / complete — C03 `CONFIRMED`, C01/C02/C04 `NOT-CONFIRMED`**  
+**研究題目:** Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証
+**状態:** **Study 1 closed / complete — C03 `CONFIRMED`, C01/C02/C04 `NOT-CONFIRMED`**
 **作業branch:** `research/tactical-motif-discovery`
 
 このprospective independent studyは、特定のopening sequenceに依存せず、異なる局面に再出現する `position → move → reply structure → downstream consequence/value` の構造を抽出し、transferable tactical motifとして検証しました。
@@ -198,8 +198,8 @@ Stage 2ではfresh dataを見る前に各pairのlowest Stage 1 rankをcanonical 
 
 ### 8. Tactical Motif Human / Expert Validation — Study 1
 
-**研究題目:** Baoにおけるmachine-confirmed tactical motifのHuman / Expert Validation — TM-S2-C03は人間の熟練者にも手筋として認識されるか  
-**状態:** **Study 1 complete — machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`**  
+**研究題目:** Baoにおけるmachine-confirmed tactical motifのHuman / Expert Validation — TM-S2-C03は人間の熟練者にも手筋として認識されるか
+**状態:** **Study 1 complete — machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`**
 **作業branch:** `research/tactical-motif-human-validation`
 
 Machine/instrument側ではfresh 1,536-game corpusを生成し、全1,536局をindependent full recomputationでmismatch 0まで確認しました。prospective C03 target / near-miss controlsを構成し、全readiness gateをPASSしたうえで、12 primary blocks、24 C03 targets、12 matched controls、6 secondary move-choice targetsからなる42 unique formal positionsをdeterministically freezeしました。
@@ -241,8 +241,8 @@ humanExpertN = 0
 
 ### 9. Position Evaluation / Win-Rate Calibration — Study 1
 
-**研究題目:** Baoにおける形勢評価値と実現勝率の校正 — phase-aware empirical win-probability calibration と評価値の解釈境界  
-**状態:** **Study 1 closed / formal decision `INCONCLUSIVE`**  
+**研究題目:** Baoにおける形勢評価値と実現勝率の校正 — phase-aware empirical win-probability calibration と評価値の解釈境界
+**状態:** **Study 1 closed / formal decision `INCONCLUSIVE`**
 **作業branch:** `research/position-evaluation-winrate-calibration`
 
 このprospective independent studyは、static `bao` evaluationをそのまま勝率とみなさず、frozen sampled-state populationとdeterministic continuation policyのもとでempirical continuation win probabilityへ校正できるかを検証しました。
@@ -287,8 +287,8 @@ Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080
 
 ### 10. Blunder / Misvaluation Patterns — Study 1
 
-**研究題目:** Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証  
-**状態:** **Study 1 closed / Stage 2 formal complete — 0 `CONFIRMED` / 4 `NOT-CONFIRMED`**  
+**研究題目:** Baoにおける悪手・誤評価パターンの発見と体系化 — machine-reproducible blunder structures と search-based decision loss の抽出・検証
+**状態:** **Study 1 closed / Stage 2 formal complete — 0 `CONFIRMED` / 4 `NOT-CONFIRMED`**
 **作業branch:** `research/blunder-misvaluation-patterns-stage2-formal`
 
 このprospective independent studyは、「負けた手」やstatic evaluationだけで悪手を定義せず、同一局面の全合法手についてD3+Q1 exact search-based decision loss、構造変化、response envelope、horizon/static misvaluationを分離して測定し、局面横断的に再出現するmachine-reproducible error patternを探索・検証しました。
@@ -328,8 +328,8 @@ C01-C03はfrozen structural/reply failure signature自体は高率に再現し�
 
 ### 11. Critical Positions / Outcome Branching — Study 1
 
-**研究題目:** Baoにおける重要局面と勝敗分岐点の同定 — move-sensitive continuation divergence と decision-critical position structure の抽出・検証  
-**状態:** **Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed**  
+**研究題目:** Baoにおける重要局面と勝敗分岐点の同定 — move-sensitive continuation divergence と decision-critical position structure の抽出・検証
+**状態:** **Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed**
 **作業branch:** `research/critical-positions-outcome-branching`
 
 このprospective independent studyは、同一root stateの全exact legal moveVariantsを別々にinterveneし、その後を事前固定した`P1_NORMAL_TOP3` continuation policyで進めたときのroot-actor empirical continuation outcome divergenceを測定しました。engine/search value、ranking instability、structural branch divergence、game-theoretic value、human-perceived importanceは別constructとして保持しています。
@@ -378,8 +378,8 @@ Stage 2はexact Stage 1 promoted-candidate mappingを事前freezeしてから開
 
 ### 12. Restricted Endgame / Winning Regions — Study 1
 
-**研究題目:** Baoにおける限定終盤と必勝圏の完全解析 — constrained endgame state spaces における exact game-theoretic value, cycle structure, and distance-to-win の列挙・後退解析  
-**状態:** **Study 1 complete / formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`**  
+**研究題目:** Baoにおける限定終盤と必勝圏の完全解析 — constrained endgame state spaces における exact game-theoretic value, cycle structure, and distance-to-win の列挙・後退解析
+**状態:** **Study 1 complete / formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`**
 **作業branch:** `research/restricted-endgame-winning-regions`
 
 このprospective independent machine-only studyでは、standard initial stateから到達証明を持つ1つのMtaji rootと、そのrootからの全合法手によるcomplete raw-state forward closureをoutcome生成前に固定し、symmetry reductionなしでexact retrograde analysisを行った。
@@ -418,8 +418,8 @@ Frozen rootはPlayer 0 to moveの`WIN`、absolute forced winner = Player 0、`DT
 
 ### 13. Symmetry / Isomorphic Positions — Study 1
 
-**研究題目:** Baoにおける対称性と同型局面の厳密検証 — rule-semantic state transformations, move-equivariant graph isomorphism, and validated canonicalization  
-**状態:** **Study 1 closed / formal result 0 validated / 0 rejected / 5 `NON-ESTIMABLE`**  
+**研究題目:** Baoにおける対称性と同型局面の厳密検証 — rule-semantic state transformations, move-equivariant graph isomorphism, and validated canonicalization
+**状態:** **Study 1 closed / formal result 0 validated / 0 rejected / 5 `NON-ESTIMABLE`**
 **作業branch:** `research/symmetry-isomorphic-positions`
 
 このprospective independent machine-only studyは、visual symmetryではなく、state transformation・player permutation・exact move bijectionが合法手集合、transition、terminal/winner semanticsを保存するかを検証した。candidate semantics、fresh seed block、root selection、depth、exact gatesをformal outcome前にfreezeした。
@@ -446,8 +446,8 @@ mandatoryとしたRestricted Endgame Study 1のimmutable 8-state exact-oracle re
 
 ### 14. Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1
 
-**研究題目:** 限定終盤exact oracleの表現整合性・raw-state identity監査と独立symmetry confirmation — oracle representation integrity, reconstruction contract, and prospective symmetry validation  
-**状態:** **COMPLETED / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`**  
+**研究題目:** 限定終盤exact oracleの表現整合性・raw-state identity監査と独立symmetry confirmation — oracle representation integrity, reconstruction contract, and prospective symmetry validation
+**状態:** **COMPLETED / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`**
 **作業branch:** `research/oracle-representation-integrity-symmetry-confirmation`
 
 このprospective independent machine-only studyは、Restricted Endgame Study 1のexact solutionそのものと、後からrepositoryへ保存されたstate-row representationを明示的に分離し、後者がraw-state reconstruction / downstream transform-validation anchorとして成立するかを新しいformal endpointとして検証した。
@@ -495,8 +495,8 @@ Conditional Stage 2 candidate contractはAxis A outcome前にfreeze済みだっ�
 
 ### 15. State Space / Game Tree Complexity — Study 1
 
-**研究題目:** Baoにおける状態空間とゲーム木複雑度の定量化 — authoritative raw-state identity に基づく reachable-state growth, transposition structure, branching complexity, and bounded game-tree expansion  
-**状態:** **COMPLETED / formal decision `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`**  
+**研究題目:** Baoにおける状態空間とゲーム木複雑度の定量化 — authoritative raw-state identity に基づく reachable-state growth, transposition structure, branching complexity, and bounded game-tree expansion
+**状態:** **COMPLETED / formal decision `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`**
 **作業branch:** `research/state-space-game-tree-complexity`
 
 このprospective independent machine-only studyは、ORISC-STUDY1のdownstream contractに従い、未検証symmetry reduction / canonicalizationを一切使用せず、authoritative raw-state identityだけでreachable-state graphとgame-tree occurrenceを定量化した。
@@ -540,8 +540,8 @@ treeOccurrenceSetSha256 = 194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6
 
 ### 16. Practical Comeback / Error-Inducing Move — Study 1
 
-**研究題目:** Baoにおける逆転可能性と勝負手の定量化 — opponent-error dependence, reply difficulty, and practical comeback potential の分離・検証  
-**状態:** **Study 1 complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**  
+**研究題目:** Baoにおける逆転可能性と勝負手の定量化 — opponent-error dependence, reply difficulty, and practical comeback potential の分離・検証
+**状態:** **Study 1 complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 **作業branch:** `research/practical-comeback-error-inducing-moves`
 
 このprospective independent studyは、reference-policy上のmove qualityと、frozen imperfect-opponent policy下のbounded-horizon empirical comebackを分離し、reply-defense concentration、first-reply reference-error dependence、move optimality gapをmachine-operationalに測定した。
@@ -572,6 +572,35 @@ Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせ�
 - [`practical-comeback-error-inducing-moves/CURRENT_STATUS.md`](practical-comeback-error-inducing-moves/CURRENT_STATUS.md) — terminal stateとclaim boundary
 
 **Boundary:** 本Studyはobjective superiority、game-theoretic winning move、true Bao winning probability、human difficulty/error inducement、expert/traditional winning-try recognitionを示さない。結果はfrozen population、D3/D2 reference semantics、`P_MEDIUM_D1_TOP3`、96-ply endpoint、candidate grammar、promotion rulesに限定される。
+
+---
+
+
+### 17. Position Evaluation / Empirical Outcome Calibration Replication — Study 1
+
+**研究題目:** Baoにおける形勢評価値と経験的継続結果の校正再検証 — strict identity firewall下でのfresh held-out replication
+**Program:** `G2-01` / **Study ID:** `PEOCR-STUDY1` / **Research Generation 2**
+**状態:** **Study complete / formal decision `INCONCLUSIVE`**
+**作業branch:** `research/g2-01-position-evaluation-empirical-outcome-calibration-replication`
+
+第二世代最初のprospective independent studyとして、Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE`を変更・救済せず、fresh development + held-out formal populationでstatic Bao evaluationとempirical continuation outcomeのcalibration replicationを実施した。
+
+Stage 1は2,048 fresh gamesで全readiness gateをPASSし、phase-stratified isotonic PAVA mappingを`MODEL-FROZEN-DEVELOPMENT`として固定した。Stage 2は8,192/8,192 gamesと全8 shard independent replay、統合selection/measurement independent verification、Stage 1 overlap `0 / 0 / 0`を達成した。
+
+一方strict firewall後のformal populationは、`3898 < 4500` unique trajectories、`3570 < 4000` selected unique RAW states、Mtaji `1747 < 1750`となり、3つのpreregistered estimability gateが未達だった。このためformal decisionは**`INCONCLUSIVE`**。co-primary Brier/log-loss formal branchは未実行で`primary = null`であり、`NOT-CONFIRMED`やvalidated Bao win probabilityとは解釈しない。
+
+**最初に読む:**
+
+- [`position-evaluation-empirical-outcome-calibration-replication/STUDY_1_OVERVIEW.md`](position-evaluation-empirical-outcome-calibration-replication/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`position-evaluation-empirical-outcome-calibration-replication/STUDY_1_FINAL_REPORT.md`](position-evaluation-empirical-outcome-calibration-replication/STUDY_1_FINAL_REPORT.md)
+- [`position-evaluation-empirical-outcome-calibration-replication/results/STAGE_2_FORMAL_RESULT.json`](position-evaluation-empirical-outcome-calibration-replication/results/STAGE_2_FORMAL_RESULT.json)
+- [`position-evaluation-empirical-outcome-calibration-replication/REPRODUCIBILITY_INDEX.md`](position-evaluation-empirical-outcome-calibration-replication/REPRODUCIBILITY_INDEX.md)
+- [`position-evaluation-empirical-outcome-calibration-replication/CURRENT_STATUS.md`](position-evaluation-empirical-outcome-calibration-replication/CURRENT_STATUS.md)
+
+**Boundary:** 同じStage 2 dataに追加game、seed extension、replacement、gate relaxation、mapping refit、near-miss exception、favorable subgroupを適用してformal decisionを救済しない。game-theoretic / human / causal / public-AI-quality claimは本Study外。
 
 ---
 

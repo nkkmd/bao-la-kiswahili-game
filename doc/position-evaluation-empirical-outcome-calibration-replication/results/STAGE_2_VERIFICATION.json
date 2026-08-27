@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEOCR-STUDY1",
+  "stageId": "PEOCR-S2-FORMAL-2026-08-26-v1",
+  "specSha256": "6ef20e20f639797c3d98673980e6e4b2c4c63a522e0c052ce523f6132a94ea60",
+  "mode": "selection",
+  "passed": true,
+  "measurementMismatches": 0,
+  "selectedUniqueRawStates": 3570,
+  "measurementHash": "e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294",
+  "storedMeasurementHash": "e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294",
+  "measurementHashMatches": true,
+  "selectionHash": "eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbea",
+  "storedSelectionHash": "eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbea",
+  "selectionHashMatches": true,
+  "stage1HistoricalTrajectoryOverlap": 0,
+  "stage1OpeningPrefixOverlap": 0,
+  "stage1RawStateOverlap": 0,
+  "stage1ReferenceUniverseSha256": "5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063"
+}

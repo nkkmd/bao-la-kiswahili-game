@@ -122,7 +122,7 @@ includes("doc/RESEARCH_INDEX.md", [
 ]);
 
 includes("doc/FUTURE_RESEARCH_AGENDA.md", [
-  "Version: 1.14.0",
+  "Version: 2.0.0",
   "### 4.12 状態空間とゲーム木複雑度 — Study 1完了",
   "**[完了] 状態空間とゲーム木複雑度 — Study 1",
   "`Bao state space = 24,848`",

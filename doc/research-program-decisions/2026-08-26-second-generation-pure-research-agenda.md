@@ -1,7 +1,7 @@
 # Second-Generation Pure Research Agenda — Program Decision
 
-Date: 2026-08-26  
-Status: ACTIVE PROGRAM DECISION  
+Date: 2026-08-26
+Status: ACTIVE PROGRAM DECISION
 Scope: Bao research program governance
 
 ## Decision
@@ -38,3 +38,16 @@ Generation 2 core = G2-01 .. G2-12
 Human track = G2-H01 (independent / non-blocking)
 AI improvement = separate engineering program, outside Generation 2 scientific endpoints
 ```
+
+## Program progress — G2-01 closure
+
+Date: 2026-08-27
+
+Agenda label `G2-01` was instantiated as `PEOCR-STUDY1` and completed under a new prospective Research Generation 2 contract.
+
+```text
+Stage 1 = MODEL-FROZEN-DEVELOPMENT
+Stage 2 = INCONCLUSIVE
+```
+
+The Stage 2 conclusion follows exactly from preregistered estimability failure after strict Stage 1 identity firewall. No Generation 1 decision was changed, no AI-engineering outcome was used as scientific evidence, and no post-outcome rescue was performed. `G2-01` therefore counts as a valid program closure outcome under the program rule that negative/inconclusive/non-estimable results are normal scientific closures.
