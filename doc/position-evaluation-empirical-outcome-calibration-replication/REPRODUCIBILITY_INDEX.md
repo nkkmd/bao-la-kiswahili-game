@@ -1,6 +1,6 @@
 # PEOCR-STUDY1 — Reproducibility Index
 
-更新日: 2026-08-26
+更新日: 2026-08-27
 
 ## Study anchor
 
@@ -48,15 +48,15 @@ tools/experiments/verify-g2-01-calibration-stage0-independent.js = 03b8bb04af2fd
 - `doc/position-evaluation-calibration/STUDY_1_FINAL_REPORT.md`
 - `doc/position-evaluation-calibration/preregistration/STAGE_2_FORMAL_SPEC.json`
 
-## Before Stage 1 authorization
+## Pre-Stage 1 authorization requirement — historical / satisfied
 
-Must additionally freeze exact SHA-256 for the complete Stage 1 scientific code path, including generation, selection, measurement, model fit, result writer, validator and independent verifier. The Stage 1 authorization must bind those hashes and the immutable Stage 1 spec before fresh outcome generation.
+Before Stage 1 scientific generation, exact SHA-256 values for the complete Stage 1 scientific code path were frozen, including generation, selection, measurement, model fit, result writer, validator and independent verifier. The Stage 1 authorization bound those hashes and the immutable Stage 1 spec before fresh outcome generation.
 
-## Before Stage 2 authorization
+## Pre-Stage 2 authorization requirement — historical / satisfied
 
-Additionally freeze the verified Stage 1 result, exact calibration mapping artifact, Stage 2 production/evaluation code, independent verifier, Stage 2 spec and exact source hashes.
+Before Stage 2 scientific generation, the verified Stage 1 result, exact calibration mapping artifact, Stage 2 production/evaluation code, independent verifier, Stage 2 spec and exact source hashes were frozen.
 
-Production and independent verification logic must not share unverified scientific decision logic.
+Production and independent verification logic were kept separate from unverified shared scientific decision logic. The resulting source-bound authorization is recorded below.
 
 ## Stage 1 canonical evidence
 
@@ -71,7 +71,7 @@ Production and independent verification logic must not share unverified scientif
 - selection hash: `4c46baef47f52ecff47d042fb7983a806c55d891717cb8f9d0afa2b483bd3b87`
 - measurement hash: `a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b`
 
-The canonical mapping is the exact artifact bytes from the successful Stage 1 run; it is not refit during canonicalization.
+The canonical mapping is the exact artifact bytes from the successful Stage 1 run; it was not refit during canonicalization.
 
 ## Stage 2 technical smoke evidence
 
@@ -96,6 +96,7 @@ The canonical mapping is the exact artifact bytes from the successful Stage 1 ru
 - selection hash: `eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbea`
 - measurement hash: `e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294`
 - formal decision: `INCONCLUSIVE`
+- scientific closure commit: `b651b98b6267ddfb6f7ac11814f3e23870c83404`
 
 Fixed shard artifacts:
 
