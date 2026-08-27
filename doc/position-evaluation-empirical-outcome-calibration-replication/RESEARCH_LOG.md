@@ -24,3 +24,19 @@
 - Stage 1/2 generation remain unauthorized
 
 Next scientific action is Stage 0 technical implementation and validation. Failure at Stage 0 does not authorize relaxing the formal Study contract; a material contract change would require a new prospective version before scientific generation.
+
+## 2026-08-27 — Stage 1 complete development run
+
+- first authorized run `32971272256` stopped at 1536/2048 solely due to a 120-minute administrative Actions ceiling; partial artifact retained for provenance only
+- execution ceiling changed to 360 minutes without changing any scientific source hash or contract element
+- recovery run `33017663172` completed successfully
+- 2048/2048 fresh games generated from the original fixed seed range
+- independent verifier replayed all 2048 games
+- replay mismatches = 0; measurement mismatches = 0
+- unique historical trajectories = 1602
+- selected unique RAW states = 1547 (Namua 806; Mtaji 741)
+- administrative truncation rate = 0
+- all Stage 1 readiness gates passed
+- Stage 1 decision = `MODEL-FROZEN-DEVELOPMENT`
+- frozen PAVA mapping SHA-256 = `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
+- Stage 2 remains unauthorized pending its own technical smoke and exact authorization freeze

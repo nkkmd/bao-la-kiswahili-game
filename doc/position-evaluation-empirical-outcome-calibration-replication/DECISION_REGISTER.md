@@ -111,3 +111,18 @@ The Study does not authorize:
 - public-AI quality or promotion claims
 
 Engineering outcomes cannot revise this Study.
+
+## D-010 — Stage 1 development decision
+
+Date: 2026-08-27
+
+The complete authorized Stage 1 population passed all prospectively frozen readiness and independent-verification gates.
+
+```text
+Stage 1 decision = MODEL-FROZEN-DEVELOPMENT
+frozen model = phase-stratified-isotonic-PAVA
+frozen model SHA-256 = b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac
+Stage 2 generation authorized = false
+```
+
+This is a development/model-freeze decision, not a held-out formal calibration confirmation. Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains unchanged.

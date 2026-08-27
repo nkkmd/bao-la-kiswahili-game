@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PEOCR-STUDY1",
+  "stageId": "PEOCR-S1-DEVELOPMENT-2026-08-26-v1",
+  "specSha256": "3b5262105de7a804cbbbb67e9ad111212bef6f4859f722fcaea42e5504e8eb99",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "generatedGames": 2048,
+  "uniqueHistoricalTrajectories": 1602,
+  "provisionalSelectedStates": 1549,
+  "unavailableAssignedPhase": 53,
+  "duplicateSelectedRawStatesCollapsed": 2,
+  "selectedUniqueRawStates": 1547,
+  "phaseCounts": {
+    "namua": 806,
+    "mtaji": 741
+  },
+  "distinctOpeningPrefixes": 1547,
+  "distinctStaticEvaluationByPhase": {
+    "namua": 496,
+    "mtaji": 604
+  },
+  "administrativeTruncationSelectedStates": 0,
+  "administrativeTruncationRate": 0,
+  "outcomeByPhase": {
+    "namua": {
+      "actorWins": 387,
+      "actorLosses": 419
+    },
+    "mtaji": {
+      "actorWins": 383,
+      "actorLosses": 358
+    }
+  },
+  "selectionHash": "4c46baef47f52ecff47d042fb7983a806c55d891717cb8f9d0afa2b483bd3b87",
+  "measurementHash": "a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b"
+}
