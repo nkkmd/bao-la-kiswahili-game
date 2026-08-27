@@ -36,6 +36,22 @@ jobs:
       - name: Materialize and audit closure
         run: python3 tools/experiments/finalize-g2-01-stage2-closure.py --artifact /tmp/peocr-stage2
 
+      - name: Normalize generated Markdown whitespace
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          names = subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines()
+          for name in names:
+              if not name.endswith('.md'):
+                  continue
+              path = Path(name)
+              text = path.read_text(encoding='utf-8')
+              normalized = '\n'.join(line.rstrip() for line in text.splitlines()) + ('\n' if text.endswith('\n') else '')
+              path.write_text(normalized, encoding='utf-8')
+          PY
+
       - name: Run closure contract tests
         run: |
           node test/g2-01-calibration-replication-contract.test.js
