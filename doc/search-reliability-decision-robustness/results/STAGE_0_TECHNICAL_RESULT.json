@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-02",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "SRDR-STUDY1",
+  "stageId": "SRDR-S0-TECHNICAL-2026-08-27-v1",
+  "stageClass": "technical-feasibility-non-scientific",
+  "decision": "PASS",
+  "baselineMain": "db6980bffb7e6853751914da628db8936c76d81e",
+  "executionCommit": "93f46db6afda7ec864a0699f4bf2f2efe62183e7",
+  "workflowRunId": 33061951566,
+  "workflowConclusion": "success",
+  "specSha256": "12868cad547afbafb8ba60912e10aa3901076789265a29e68059193ab1d04b26",
+  "authorizationSha256": "59be5113a3e2bb89a7ea8791be2c4a282f3ad726afebbe8496ef2af01a6a9e5e",
+  "sourceFreezeWorkflowRunId": 33061797905,
+  "sourceFileSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
+    "tools/experiments/lib/search-reliability-decision-robustness.js": "b7db89afbdfda25f4394f9e7bf6f8b745b5c7d01cb7356e21a50e32d114013e4",
+    "tools/experiments/run-search-reliability-stage0.js": "80a62c5a08dbc7301bc4f501a02029c327f2070d6cf258e039613f2daa44c268",
+    "tools/experiments/verify-search-reliability-stage0.js": "78545eef4ab9bc2e83566ae052aada46afc9be5cb0ded4a38fc72535b80e741d",
+    "test/search-reliability-decision-robustness-stage0.test.js": "1d3f503c2d32c26b05e17f07a35c8b6f30148eb4f291f91b8175cb1136b841fd",
+    "doc/search-reliability-decision-robustness/preregistration/STAGE_0_TECHNICAL_SPEC.json": "12868cad547afbafb8ba60912e10aa3901076789265a29e68059193ab1d04b26"
+  },
+  "artifact": {
+    "name": "srdr-stage0-technical-audit",
+    "artifactId": 9642069374,
+    "zipSha256": "16b3f6591cd7133a59f876f357b9ff0cb30b337b18dae18d84bd727e4971cf2e",
+    "jsonSha256": "ea47cce0ec0ff3716b7e7e9f0c88bda30c28d2bf9f45f4d2d3818eeb64811162",
+    "deterministicResultHash": "98bd6c67588e33281066a05fd47189e86c6c4fdffa7b2576bd0c6781245fc218"
+  },
+  "verification": {
+    "passed": true,
+    "sourceHashesVerified": 9,
+    "exactConditionsVerified": 4,
+    "budgetConditionsVerified": 4,
+    "quiescenceConditionsVerified": 5,
+    "moveOrderingConditionsVerified": 3,
+    "canonicalPvVerified": true,
+    "stateMutationAuditPassed": true
+  },
+  "exactRootAgreement": {
+    "initialNamuaDepths": [
+      1,
+      2,
+      3
+    ],
+    "forcedWinMtajiDepth": 4,
+    "allRootScoresEqualToExistingExactDiagnostic": true,
+    "topSetEqual": true,
+    "bestScoreEqual": true
+  },
+  "nodeBudgetAudit": {
+    "semantics": "node-budgeted-iterative-deepening-last-complete-root-iteration",
+    "partialIterationRule": "discard-partial-iteration-use-last-complete-all-root-candidates",
+    "pvBudgetRule": "canonical PV reconstruction is measurement postprocessing and does not consume decision node budget",
+    "standaloneNodeCosts": {
+      "depth1": 14,
+      "depth2": 46,
+      "depth3": 124
+    },
+    "boundaryGrid": [
+      {
+        "budget": 13,
+        "completedDepth": 0,
+        "estimable": false
+      },
+      {
+        "budget": 59,
+        "completedDepth": 1,
+        "estimable": true
+      },
+      {
+        "budget": 60,
+        "completedDepth": 2,
+        "estimable": true
+      },
+      {
+        "budget": 184,
+        "completedDepth": 3,
+        "estimable": true
+      }
+    ],
+    "technicallyPromotable": true
+  },
+  "quiescenceAudit": {
+    "depth2InitialNamua": [
+      {
+        "quiescenceDepth": 0,
+        "bestScore": -67,
+        "topSetSize": 1
+      },
+      {
+        "quiescenceDepth": 1,
+        "bestScore": 154,
+        "topSetSize": 1
+      },
+      {
+        "quiescenceDepth": 2,
+        "bestScore": 2,
+        "topSetSize": 2
+      }
+    ],
+    "captureOrderingPreservedExactRootScores": true,
+    "technicallyPromotable": true
+  },
+  "moveOrderingAudit": {
+    "exactRootScoresInvariantAcrossTestedOrderings": true,
+    "aggregateNodeCounts": {
+      "engine": 46,
+      "canonical": 46,
+      "reverse-canonical": 44
+    },
+    "interpretation": "move ordering can change search cost and therefore budget completion even when complete-depth exact scores are invariant; ordering must be frozen within any node-budget scientific comparison"
+  },
+  "principalVariationAudit": {
+    "semantics": "canonical-exact-nominal-pv/quiescence-score-only/v1",
+    "independentlyVerified": true,
+    "firstMoveEqualsCanonicalBest": true,
+    "scoreEqualsBestScore": true,
+    "technicallyPromotable": true
+  },
+  "authorizationFirewall": {
+    "scientificInferenceAuthorized": false,
+    "scientificGenerationAuthorized": false,
+    "formalEvidenceAuthorized": false,
+    "scientificSeedConsumed": false,
+    "confirmatoryReuseAllowed": false
+  },
+  "stage1Status": "NOT-AUTHORIZED"
+}
