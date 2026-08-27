@@ -1,0 +1,131 @@
+name: G2-01 Stage 2 smoke canonicalize
+
+on:
+  push:
+    branches:
+      - research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+    paths:
+      - '.github/workflows/g2-01-stage2-smoke-canonicalize.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  canonicalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: peocr-stage2-smoke-v1
+          path: /tmp/peocr-stage2-smoke
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33037897038
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify exact smoke records
+        run: |
+          cd /tmp/peocr-stage2-smoke
+          echo 'f2cf9b0bc0b091611e88871d8399a340e579c84f4b4143feaf85e266c0bc491e  stage2-smoke.json' | sha256sum -c -
+          echo '1d5d9cba6869939d35156fa03069e9cf4490de8f291421d797d1545be82a5d6b  stage2-smoke-independent-verification.json' | sha256sum -c -
+      - name: Materialize canonical smoke records
+        run: |
+          set -euo pipefail
+          D=doc/position-evaluation-empirical-outcome-calibration-replication
+          mkdir -p "$D/results" "$D/checkpoints"
+          cp /tmp/peocr-stage2-smoke/stage2-smoke.json "$D/results/STAGE_2_TECHNICAL_SMOKE_RESULT.json"
+          cp /tmp/peocr-stage2-smoke/stage2-smoke-independent-verification.json "$D/results/STAGE_2_TECHNICAL_SMOKE_VERIFICATION.json"
+          cat > "$D/checkpoints/2026-08-27-stage2-technical-smoke-pass.md" <<'EOF'
+          # PEOCR-STUDY1 — Stage 2 Technical Smoke PASS
+
+          Date: 2026-08-27
+
+          ```text
+          smoke ID = PEOCR-S2-SMOKE-2026-08-27-v1
+          workflow run = 33037897038
+          workflow conclusion = success
+          production smoke = PASS
+          independent smoke verification = PASS
+          scientific generation = false
+          formal inference performed = false
+          ```
+
+          Technical seeds were the already-quarantined Stage 0 fixture seeds `24010001..24010004`; they are outside Stage 2's scientific seed block and remain ineligible for scientific reuse.
+
+          Verified Stage 1 dependencies:
+
+          ```text
+          reference universe SHA-256 = 5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063
+          historical trajectories = 1602
+          opening prefixes = 1604
+          RAW states = 76010
+          observations = 113642
+          frozen PAVA mapping SHA-256 = b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac
+          Stage 1 development result SHA-256 = 93c449b5d28d5fe2a51375d867f27b47880b54bc13c0ec45c6206226edd47b75
+          ```
+
+          All production gates passed: authorization remained closed, no scientific seed was used, dependency hashes were verified, deterministic replay passed, trajectory/opening firewall probes passed, selected cross-stage overlap was zero on all axes, predictions were finite and clipped to `[0.01,0.99]`, proper scores were finite, primary bootstrap was deterministic, IRLS was executable, and the scientific source tree was clean.
+
+          Independent verification separately reconstructed the complete Stage 1 reference universe, independently replayed all four technical games, verified the frozen monotone mapping/clipping contract, and verified exact production source hashes.
+
+          Canonical hashes:
+
+          ```text
+          STAGE_2_TECHNICAL_SMOKE_RESULT.json = f2cf9b0bc0b091611e88871d8399a340e579c84f4b4143feaf85e266c0bc491e
+          STAGE_2_TECHNICAL_SMOKE_VERIFICATION.json = 1d5d9cba6869939d35156fa03069e9cf4490de8f291421d797d1545be82a5d6b
+          workflow artifact ID = 9632722463
+          workflow artifact ZIP SHA-256 = e42e3ee6228363282bfb4abd3c55ea55fb51cc808ab34cb18ff1ed92c5da834a
+          ```
+
+          Passing this technical gate does not itself authorize Stage 2 scientific generation. An explicit source-bound Stage 2 authorization commit remains required.
+          EOF
+          if ! grep -q 'D-011 — Stage 2 technical smoke' "$D/DECISION_REGISTER.md"; then
+            cat >> "$D/DECISION_REGISTER.md" <<'EOF'
+
+          ## D-011 — Stage 2 technical smoke
+
+          Date: 2026-08-27
+
+          `PEOCR-S2-SMOKE-2026-08-27-v1` passed production and independent verification without using any Stage 2 scientific seed. The exact Stage 1 frozen mapping and identity-firewall reference universe were verified. This technical PASS is a prerequisite for, but does not itself constitute, Stage 2 scientific authorization.
+          EOF
+          fi
+          if ! grep -q '2026-08-27 — Stage 2 technical smoke' "$D/RESEARCH_LOG.md"; then
+            cat >> "$D/RESEARCH_LOG.md" <<'EOF'
+
+          ## 2026-08-27 — Stage 2 technical smoke
+
+          - Stage 2 production, independent verifier and formal evaluator implementations completed before formal outcomes
+          - Stage 1 reference universe manifest frozen: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
+          - execution sharding frozen prospectively as 8 contiguous shards × 1024 games
+          - technical smoke run `33037897038` completed successfully
+          - production smoke PASS; independent smoke verification PASS
+          - no Stage 2 scientific seed used; no formal inference performed
+          - Stage 2 scientific generation remains unauthorized pending explicit source-bound authorization
+          EOF
+          fi
+          if ! grep -q '## Stage 2 technical smoke evidence' "$D/REPRODUCIBILITY_INDEX.md"; then
+            cat >> "$D/REPRODUCIBILITY_INDEX.md" <<'EOF'
+
+          ## Stage 2 technical smoke evidence
+
+          - workflow run: `33037897038`
+          - workflow artifact ID: `9632722463`
+          - artifact ZIP SHA-256: `e42e3ee6228363282bfb4abd3c55ea55fb51cc808ab34cb18ff1ed92c5da834a`
+          - `results/STAGE_2_TECHNICAL_SMOKE_RESULT.json`: `f2cf9b0bc0b091611e88871d8399a340e579c84f4b4143feaf85e266c0bc491e`
+          - `results/STAGE_2_TECHNICAL_SMOKE_VERIFICATION.json`: `1d5d9cba6869939d35156fa03069e9cf4490de8f291421d797d1545be82a5d6b`
+          - Stage 1 reference universe SHA-256: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
+          - frozen Stage 1 mapping SHA-256: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
+          EOF
+          fi
+      - name: Commit canonical Stage 2 smoke
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/position-evaluation-empirical-outcome-calibration-replication
+          git diff --cached --check
+          git commit -m 'research(g2-01): record Stage 2 technical smoke pass'
+          git push origin HEAD:research/g2-01-position-evaluation-empirical-outcome-calibration-replication
