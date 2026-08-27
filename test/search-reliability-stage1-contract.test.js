@@ -10,6 +10,11 @@ const SPEC_PATH = path.join(__dirname, "../doc/search-reliability-decision-robus
 const spec = JSON.parse(fs.readFileSync(SPEC_PATH, "utf8"));
 
 {
+  assert.equal(Object.hasOwn(C, "measureState"), false,
+    "shared Stage 1 common module must not expose a duplicate measurement implementation");
+}
+
+{
   const state = E.initialState();
   const base = C.rawStateKey(state);
   const administrative = C.cloneJson(state);
