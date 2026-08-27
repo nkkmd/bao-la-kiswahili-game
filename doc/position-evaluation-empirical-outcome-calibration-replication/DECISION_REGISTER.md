@@ -150,3 +150,16 @@ All 8,192 games and all shard-level independent replays completed. Integrated se
 Three frozen estimability gates failed: `3898 < 4500` trajectories after firewall, `3570 < 4000` selected RAW states, and `1747 < 1750` Mtaji selected states.
 
 Therefore `PEOCR-STUDY1 = INCONCLUSIVE`. The co-primary Brier/log-loss formal branch was not entered (`primary = null`). No near-miss exception, extra seed, replacement, gate relaxation, refit, subgroup rescue, or alternate-primary relabeling is authorized. This closes `PEOCR-STUDY1` scientifically.
+
+## D-014 — Repository integration
+
+Date: 2026-08-27
+
+PR #67 was marked ready after all final audits passed and merged into `main` with expected research head `6e64cd5bb252eab40c2608fc88562ba7371b2602`.
+
+```text
+integration PR = 67
+integration merge commit = 12ce1f5f212349cc827147adcb5de8e7eadb98f3
+```
+
+This repository integration is administrative/provenance closure only. It does not change `PEOCR-STUDY1 = INCONCLUSIVE`, any frozen gate, canonical artifact, scientific interpretation boundary, or Research Generation 1 decision.
