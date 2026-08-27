@@ -4,7 +4,7 @@
 
 ## Status
 
-**STUDY COMPLETE / FORMAL DECISION `INCONCLUSIVE` / SCIENTIFIC CLOSURE COMPLETE ON RESEARCH BRANCH**
+**STUDY COMPLETE / FORMAL DECISION `INCONCLUSIVE` / SCIENTIFIC CLOSURE COMPLETE / INTEGRATED IN `main`**
 
 ## Identity
 
@@ -17,6 +17,8 @@ Research branch = research/g2-01-position-evaluation-empirical-outcome-calibrati
 Formal source commit = 5d1b4a40ef95ac639787aa0abf040a455c3c2995
 Formal workflow run = 33038132423
 Scientific closure commit = b651b98b6267ddfb6f7ac11814f3e23870c83404
+Integration PR = #67
+Integration merge commit = 12ce1f5f212349cc827147adcb5de8e7eadb98f3
 ```
 
 ## Stage closure
@@ -28,6 +30,7 @@ Stage 2 technical smoke = COMPLETE / PASS
 Stage 2 formal generation = COMPLETE / 8192 games
 Stage 2 independent verification = PASS
 Stage 2 formal decision = INCONCLUSIVE
+Repository integration = COMPLETE / main
 ```
 
 Failed prospectively frozen estimability gates:
@@ -56,4 +59,4 @@ measurement hash = e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38
 
 No additional Stage 2 game, seed extension, overlap replacement, gate relaxation, mapping refit, near-miss exception, favorable subgroup, or alternate-primary relabeling is authorized within `PEOCR-STUDY1`.
 
-Scientific closure is complete on the research branch. PR #67 remains the integration vehicle; merging to `main` is a repository integration step and does not alter the scientific decision.
+Scientific closure is complete and PR #67 was merged to `main` at `12ce1f5f212349cc827147adcb5de8e7eadb98f3`. Repository integration does not alter the scientific decision or any interpretation boundary.
