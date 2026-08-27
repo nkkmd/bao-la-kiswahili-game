@@ -1,0 +1,57 @@
+name: G2-02 Stage 1 scientific source freeze hashes
+
+on:
+  push:
+    branches:
+      - research/g2-02-search-reliability-decision-robustness
+    paths:
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+      - 'tools/benchmark.js'
+      - 'tools/experiments/lib/search-reliability-decision-robustness.js'
+      - 'tools/experiments/lib/search-reliability-stage1-common.js'
+      - 'tools/experiments/lib/search-reliability-stage1-measurement.js'
+      - 'tools/experiments/run-search-reliability-stage1.js'
+      - 'tools/experiments/verify-search-reliability-stage1-independent.js'
+      - 'tools/experiments/analyze-search-reliability-stage1.js'
+      - 'test/search-reliability-stage1-contract.test.js'
+      - 'doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
+      - '.github/workflows/g2-02-search-reliability-stage1-preauth.yml'
+      - '.github/workflows/g2-02-search-reliability-stage1-source-freeze.yml'
+      - '.github/workflows/g2-02-search-reliability-stage1-development.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-freeze-hashes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print complete Stage 1 authorized source SHA-256 set only
+        run: |
+          sha256sum \
+            public/engine.js \
+            public/ai.js \
+            public/ai-weights.js \
+            tools/benchmark.js \
+            tools/experiments/lib/search-reliability-decision-robustness.js \
+            tools/experiments/lib/search-reliability-stage1-common.js \
+            tools/experiments/lib/search-reliability-stage1-measurement.js \
+            tools/experiments/run-search-reliability-stage1.js \
+            tools/experiments/verify-search-reliability-stage1-independent.js \
+            tools/experiments/analyze-search-reliability-stage1.js \
+            test/search-reliability-stage1-contract.test.js \
+            doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_SPEC.json \
+            .github/workflows/g2-02-search-reliability-stage1-preauth.yml \
+            .github/workflows/g2-02-search-reliability-stage1-source-freeze.yml \
+            .github/workflows/g2-02-search-reliability-stage1-development.yml
+      - name: Assert source-freeze run itself cannot consume scientific seeds
+        run: |
+          test ! -f doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json
+          echo 'stage1GenerationAuthorized=false'
+          echo 'scientificSeedConsumed=false'
+          echo 'developmentOutcomeInspected=false'
