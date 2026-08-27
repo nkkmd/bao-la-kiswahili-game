@@ -67,3 +67,17 @@ Next scientific action is Stage 0 technical implementation and validation. Failu
 - formal decision = `INCONCLUSIVE`; primary formal branch not entered; canonical `primary = null`
 - no rescue/extension/replacement/refit/threshold relaxation performed
 - Study scientific closure complete
+
+## 2026-08-27 — Repository integration
+
+- final cross-document and CI audit completed
+- G2-01 calibration replication contract: PASS
+- Second-generation research agenda audit: PASS
+- SSGTC closure consistency audit: PASS after synchronizing its stale agenda-version assertion to the already-authoritative Version 2.0.0
+- PCEM closure consistency audit: PASS
+- Phase Transition Research CI: PASS
+- PR #67 marked ready for review
+- expected research head verified as `6e64cd5bb252eab40c2608fc88562ba7371b2602`
+- PR #67 merged into `main`
+- integration merge commit = `12ce1f5f212349cc827147adcb5de8e7eadb98f3`
+- repository integration did not alter the scientific decision, canonical artifacts, gates, or interpretation boundaries
