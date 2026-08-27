@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-01",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "PEOCR-STUDY1",
+  "sourceStageId": "PEOCR-S1-DEVELOPMENT-2026-08-26-v1",
+  "purpose": "Exact Stage 1 identity-firewall reference universe for Stage 2; the full set is deterministically reconstructed from the verified Stage 1 game artifact and is not refit or inferred from Stage 2 data.",
+  "stage1WorkflowRunId": 33017663172,
+  "stage1ArtifactId": 9632042234,
+  "stage1ArtifactZipSha256": "1c5f4c3440abda834b442ad9bb5ce811d777ed0750e8e3fdaeda0ab9c32a4e30",
+  "stage1GenerationManifestSha256": "97b996f96ee236d3ea0a049a2980a27655696119e776bcd6f42905fa205c4ef9",
+  "stage1VerificationSha256": "792cb9bcf88402d785bc9ba581fba0f62c75f7e0d6ac49f6f99884c2a45173b5",
+  "stage1FrozenMappingSha256": "b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac",
+  "sourcePopulation": {
+    "games": 2048,
+    "seedStart": 24011001,
+    "seedEnd": 24013048,
+    "observations": 113642
+  },
+  "referenceUniverse": {
+    "historicalTrajectoryHash": {
+      "source": "all Stage 1 generated games",
+      "uniqueCount": 1602
+    },
+    "openingPrefixHash": {
+      "source": "all Stage 1 generated games",
+      "uniqueCount": 1604
+    },
+    "rawStateKey": {
+      "source": "all Stage 1 observations",
+      "uniqueCount": 76010
+    }
+  },
+  "canonicalSerialization": {
+    "objectKeyOrder": [
+      "historicalTrajectoryHash",
+      "openingPrefixHash",
+      "rawStateKey"
+    ],
+    "setEncoding": "each unique SHA-256 string sorted ascending lexicographically",
+    "jsonEncoding": "compact JSON.stringify-compatible UTF-8 followed by one LF",
+    "sha256": "5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063"
+  },
+  "scientificBoundary": {
+    "stage2GenerationAuthorized": false,
+    "stage2OutcomeUsedToDefineUniverse": false,
+    "seedExtensionAllowed": false,
+    "replacementAllowed": false,
+    "symmetryCanonicalizationAllowed": false
+  }
+}
