@@ -4,7 +4,7 @@
 
 ## Status
 
-**STUDY ACTIVE / STAGE 0 TECHNICAL PASS / STAGE 1 MODEL-FROZEN-DEVELOPMENT / STAGE 2 NOT AUTHORIZED**
+**STUDY ACTIVE / STAGE 0 PASS / STAGE 1 MODEL-FROZEN-DEVELOPMENT / STAGE 2 AUTHORIZED AND FORMAL GENERATION IN PROGRESS**
 
 ## Identity
 
@@ -16,40 +16,49 @@ Baseline main = 9e9cb6e2525f09a873e741db9f8fa42696839fbe
 Branch = research/g2-01-position-evaluation-empirical-outcome-calibration-replication
 ```
 
-## Completed
+## Completed scientific prerequisites
 
 - Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains immutable.
 - Stage 0 technical validation: `STAGE0-TECHNICAL-PASS`.
-- Stage 1 source hashes and authorization were frozen before scientific generation.
-- First authorized Stage 1 run stopped administratively at 1536/2048 because of the 120-minute workflow ceiling; that partial artifact is provenance-only.
-- Recovery run `33017663172` reran the same complete fixed population from the beginning under unchanged scientific hashes and completed successfully.
-- 2,048/2,048 fresh Stage 1 games generated.
-- Independent full replay verified all 2,048 games with zero game/measurement mismatches.
-- All prospectively frozen Stage 1 readiness gates passed.
+- Stage 1 complete fresh development population: 2,048/2,048 games.
+- Stage 1 independent replay: 2,048/2,048, zero replay/measurement mismatch.
+- All Stage 1 readiness gates passed.
 - Stage 1 decision: `MODEL-FROZEN-DEVELOPMENT`.
-- Exact phase-stratified isotonic PAVA mapping frozen: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`.
+- Frozen PAVA mapping SHA-256: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`.
+- Stage 1 reference-universe SHA-256: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`.
+- Stage 2 technical smoke `PEOCR-S2-SMOKE-2026-08-27-v1`: production PASS and independent verification PASS.
+- Stage 2 technical smoke used no Stage 2 scientific seed and performed no formal inference.
+- Stage 2 source-bound authorization frozen at commit `5d1b4a40ef95ac639787aa0abf040a455c3c2995`.
 
-## Stage 1 key counts
+## Stage 2 frozen execution
 
 ```text
-unique historical trajectories = 1602
-selected unique RAW states = 1547
-Namua = 806
-Mtaji = 741
-administrative truncation rate = 0
-selection hash = 4c46baef47f52ecff47d042fb7983a806c55d891717cb8f9d0afa2b483bd3b87
-measurement hash = a521051db2f9197094ff6b48c141b8b65378d4dac17c16fca6f38af939356b0b
+workflow run = 33038132423
+games = 8192
+seeds = 24020001..24028192
+execution partition = 8 contiguous shards x 1024 games
+shard-level independent replay = required
+all shards required before selection = true
+seed extension = forbidden
+identity-overlap replacement = forbidden
+Stage 2 refit = forbidden
 ```
+
+All eight shard jobs passed their source-bound contract/authorization audit and entered fixed scientific generation.
+
+After all eight shards complete and independently replay with zero mismatch, the workflow will merge exactly one game for each global index `0..8191`, apply the outcome-blind Stage 1 trajectory/opening/RAW-state firewall, perform deterministic state selection/measurement, independently verify the selection and zero cross-stage overlap, and only then run the frozen formal evaluator.
 
 ## Authorization state
 
 ```text
 Stage 0 technical execution = COMPLETE / PASS
-Stage 1 scientific generation = COMPLETE
-Stage 1 formal calibration inference = NOT AUTHORIZED (development stage only)
-Stage 2 scientific generation = NOT AUTHORIZED
+Stage 1 scientific development generation = COMPLETE
+Stage 1 formal calibration confirmation = NOT CLAIMED (development stage)
+Stage 2 scientific generation = AUTHORIZED / IN PROGRESS
+Stage 2 frozen formal evaluation = AUTHORIZED after verification/gates
+Stage 2 formal decision = NOT YET MADE
 ```
 
-## Next action
+## Interpretation boundary
 
-Implement and execute non-scientific Stage 2 technical smoke; freeze the exact Stage 1 reference universe, frozen mapping, Stage 2 source hashes and independent verification path; then create an explicit Stage 2 authorization before any seed in `24020001..24028192` is generated.
+Current Stage 2 authorization concerns held-out empirical continuation-outcome calibration only. It does not authorize game-theoretic, human-perception, causal, public-AI-quality, or Research Generation 1 decision-revision claims.
