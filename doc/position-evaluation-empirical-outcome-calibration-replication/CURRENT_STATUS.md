@@ -16,6 +16,7 @@ Baseline main = 9e9cb6e2525f09a873e741db9f8fa42696839fbe
 Research branch = research/g2-01-position-evaluation-empirical-outcome-calibration-replication
 Formal source commit = 5d1b4a40ef95ac639787aa0abf040a455c3c2995
 Formal workflow run = 33038132423
+Scientific closure commit = b651b98b6267ddfb6f7ac11814f3e23870c83404
 ```
 
 ## Stage closure
