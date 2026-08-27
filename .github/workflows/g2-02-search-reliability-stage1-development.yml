@@ -1,0 +1,56 @@
+name: G2-02 Stage 1 scientific development characterization
+
+on:
+  push:
+    branches:
+      - research/g2-02-search-reliability-decision-robustness
+    paths:
+      - 'doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify authorization exists before any scientific seed use
+        run: |
+          test -f doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json
+          node -e 'const a=require("./doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json"); if(a.stage1GenerationAuthorized!==true||a.developmentCharacterizationAuthorized!==true||a.formalConfirmationClaimAuthorized!==false||a.stage2GenerationAuthorized!==false) process.exit(1)'
+      - name: Generate, select, and measure frozen Stage 1 population
+        run: node tools/experiments/run-search-reliability-stage1.js --phase all
+      - name: Independently replay, reselect, and remeasure all Stage 1 states
+        run: node tools/experiments/verify-search-reliability-stage1-independent.js
+      - name: Apply frozen readiness gates and write development profile
+        run: node tools/experiments/analyze-search-reliability-stage1.js
+      - name: Print bounded Stage 1 decision
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = 'artifacts/local/search-reliability-decision-robustness/stage1-development-v1/stage1-development-result.json';
+          const r = JSON.parse(fs.readFileSync(p, 'utf8'));
+          console.log(JSON.stringify({
+            stage1Decision: r.stage1Decision,
+            readinessPassed: r.inputAudit.readiness.passed,
+            populationSummary: r.populationSummary,
+            nextStage: r.nextStage,
+            scientificInferenceAuthorized: r.scientificInferenceAuthorized,
+            formalConfirmationClaimAuthorized: r.formalConfirmationClaimAuthorized,
+            stage2GenerationAuthorized: r.stage2GenerationAuthorized
+          }, null, 2));
+          NODE
+      - name: Upload frozen Stage 1 development artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2-02-stage1-development-v1
+          path: artifacts/local/search-reliability-decision-robustness/stage1-development-v1/
+          if-no-files-found: error
+          retention-days: 90
