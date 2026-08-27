@@ -1,10 +1,13 @@
 # Position Evaluation / Empirical Outcome Calibration Replication Study 1 — Protocol
 
-更新日: 2026-08-26  
-Status: **ACTIVE / PROSPECTIVE CONTRACT FROZEN / NO SCIENTIFIC OUTCOME GENERATED**  
-Program label: `G2-01`  
-Study ID: `PEOCR-STUDY1`  
+Protocol freeze date: 2026-08-26
+Closure status note: 2026-08-27
+Status: **FROZEN PROSPECTIVE PROTOCOL / STUDY COMPLETE / formal decision `INCONCLUSIVE`**
+Program label: `G2-01`
+Study ID: `PEOCR-STUDY1`
 Research generation: **Research Generation 2**
+
+> Post-closure note: the protocol body below preserves the prospective, pre-outcome contract and therefore intentionally retains future-tense and pre-authorization wording. Current execution state and the final scientific decision are recorded in [`CURRENT_STATUS.md`](CURRENT_STATUS.md), [`DECISION_REGISTER.md`](DECISION_REGISTER.md), and [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md). No protocol threshold, endpoint, identity rule, or decision rule was changed after outcomes.
 
 ## 1. 研究題目
 
