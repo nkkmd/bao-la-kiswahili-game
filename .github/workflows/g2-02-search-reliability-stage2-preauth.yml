@@ -10,6 +10,8 @@ on:
       - tools/experiments/verify-search-reliability-stage2-independent.js
       - tools/experiments/analyze-search-reliability-stage2-formal.js
       - .github/workflows/g2-02-search-reliability-stage2-preauth.yml
+      - .github/workflows/g2-02-search-reliability-stage2-source-freeze.yml
+      - .github/workflows/g2-02-search-reliability-stage2-formal.yml
   workflow_dispatch:
 
 permissions:
