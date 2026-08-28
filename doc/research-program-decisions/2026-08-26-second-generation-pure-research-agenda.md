@@ -85,7 +85,7 @@ canonicalization = NON-ESTIMABLE / not authorized
 
 Stage 2 was explicitly authorized only after a hardened prefreeze bound the Stage 1 identity firewall, formal decision rule, RAW identity, production runner, independent verifier, and exact source hashes before any Stage 2 scientific outcome existed.
 
-Fresh held-out production measurement selected the frozen 32 + 32 + 32 roots and reported production-only candidate mismatch 0 for all three candidates. The mandatory independent verifier then failed during formal-result assembly with a technical `ReferenceError`, so the complete independent-verification result, canonical formal result, canonical hashes, and workflow artifact were not materialized.
+Fresh held-out production measurement selected the frozen 32 + 32 + 32 roots and reported production-only candidate mismatch 0 for all three candidates. The mandatory independent verifier then failed during formal-result assembly with a technical `ReferenceError`, so the workflow-produced complete independent-verification artifact, independently verified formal-result artifact, canonical hashes, and workflow artifact were not materialized. A separate repository-facing fail-closed closure was subsequently recorded by applying the prospectively frozen global-failure rule.
 
 The prospectively frozen global-failure rule required any non-passing/not-established global gate to close the Study as `INCONCLUSIVE`, all candidates as `NON-ESTIMABLE`, and canonicalization as `NON-ESTIMABLE`. Production-only zero-mismatch diagnostics were not promoted to formal validation, and the technical failure was not reinterpreted as scientific candidate rejection.
 
