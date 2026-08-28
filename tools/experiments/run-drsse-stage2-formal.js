@@ -2,6 +2,7 @@
 "use strict";
 
 const childProcess = require("node:child_process");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -21,6 +22,10 @@ function ensure(condition, message) {
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function sha256File(filePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
 
 function gitBlob(relative) {
@@ -102,6 +107,8 @@ function main() {
     resultRole: "formal-production-pending-independent-verification",
     scientificInferenceAuthorized: true,
     formalExactDecisionAuthorized: true,
+    specFileSha256: sha256File(SPEC_PATH),
+    authorizationFileSha256: sha256File(AUTH_PATH),
     rootRawStateKey: rootKey,
     targetDepth: spec.formalDomain.targetDepth,
     productionCandidate,
