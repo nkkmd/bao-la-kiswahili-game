@@ -55,3 +55,5 @@ decisionCoreSha256 = c1756994ceea3ea9b605805ddd6387f359aeb14e14d894bfc8a1e8b2612
 The decision is exact only inside the prospectively frozen standard-initial-root depth-9 RAW domain. It is not a full Bao state-space count, full game-tree count, unbounded estimate, growth-law extrapolation, symmetry-reduced count, or game-theoretic solution.
 
 No G2-04 root, partial closure, G1 depth-9 partial row, Stage 1 row, Stage 1 root, symmetry transform, or canonicalization result was used as formal evidence. G2-04 remains `INCONCLUSIVE`; G1 `SSGTC-STUDY1` remains independently `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`.
+
+Administrative integration state: **accepted scientific result ready for central indexing; no further outcome generation authorized.**
