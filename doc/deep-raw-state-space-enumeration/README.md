@@ -29,4 +29,10 @@ Post-closure review disposition:
 
 - [`checkpoints/2026-08-28-pr71-review-disposition.md`](checkpoints/2026-08-28-pr71-review-disposition.md) — records two latent implementation concerns identified during PR review, demonstrates why neither affects the accepted canonical run, and preserves the frozen formal source/no-rerun boundary.
 
+Prospective implementation hardening:
+
+- [`../research-program-decisions/2026-08-28-post-g2-05-raw-enumeration-hardening.md`](../research-program-decisions/2026-08-28-post-g2-05-raw-enumeration-hardening.md) — promotes the review findings into mandatory future requirements for resource-censored prefix verification, final ambient/resource checks, negative controls, new source identity/authorization, post-merge read-only closure auditing, and any G2-12 reuse of bounded exact RAW enumeration.
+
+The hardening record is prospective only. It does not alter or rerun `DRSSE-S2-FORMAL-2026-08-28-v1` or change the accepted G2-05 decision.
+
 The exact result is bounded to the frozen standard-root depth-9 RAW domain. It is not a full Bao state-space count or full-game complexity estimate.
