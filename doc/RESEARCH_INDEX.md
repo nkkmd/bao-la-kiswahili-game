@@ -673,6 +673,44 @@ Production-only zero-mismatch diagnosticsをformal validationへ救済せず、t
 
 ---
 
+### 20. Restricted Endgame Exact Oracle Expansion — Study 1
+
+**研究題目:** Baoにおける限定終盤exact oracleの拡張 — prospectively selected RAW-state domains に対する complete forward closure, exact retrograde analysis, cycle structure, distance, and optimal-move multiplicity の厳密解析  
+**Program:** `G2-04` / **Study ID:** `REEOE-STUDY1` / **Research Generation 2**  
+**状態:** **Study complete / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+このprospective independent RAW-only studyは、複数のrestricted endgame domainsをoutcome-blindに選び、complete forward closureを証明できたdomainだけをexact retrograde analysisへ進める設計を検証した。Stage 0ではREWR 8-state / 7-edge oracleをtechnical fixtureとしてproduction / independent双方で再構築し、4 negative controlsを検出した。
+
+Stage 1 v1はproduction development後にindependent verifierのstartup path defectが判明したためsame-evidence rerunをせずtechnical-invalidとして閉じた。Fresh Stage 1 v2は同じstructural/resource/acceptance designのままseeds `24041001..24041512`を用い、production / independentがfull 512-trajectory scan、eligible set、first-eight selected roots、closure classificationsを一致させた。
+
+```text
+unique witness roots = 7055
+eligible roots = 141
+selected roots = 8
+complete closures = 0
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
+```
+
+Frozen feasibility ruleはindependently verified complete closures `>=3`を要求していたため、Stage 1 v2は`STAGE1-DEVELOPMENT-BLOCKED`。cap増加、domain shrinkage、root replacement、seed extension、partial-closure promotion、symmetry/canonicalizationによる救済を行わず、Stage 2を未承認・未実行で閉じた。
+
+**最初に読む:**
+
+- [`restricted-endgame-exact-oracle-expansion/STUDY_1_OVERVIEW.md`](restricted-endgame-exact-oracle-expansion/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`restricted-endgame-exact-oracle-expansion/STUDY_1_FINAL_REPORT.md`](restricted-endgame-exact-oracle-expansion/STUDY_1_FINAL_REPORT.md)
+- [`restricted-endgame-exact-oracle-expansion/results/STUDY_1_FINAL_RESULT.json`](restricted-endgame-exact-oracle-expansion/results/STUDY_1_FINAL_RESULT.json)
+- [`restricted-endgame-exact-oracle-expansion/REPRODUCIBILITY_INDEX.md`](restricted-endgame-exact-oracle-expansion/REPRODUCIBILITY_INDEX.md)
+- [`restricted-endgame-exact-oracle-expansion/CURRENT_STATUS.md`](restricted-endgame-exact-oracle-expansion/CURRENT_STATUS.md)
+- [`restricted-endgame-exact-oracle-expansion/DECISION_REGISTER.md`](restricted-endgame-exact-oracle-expansion/DECISION_REGISTER.md)
+
+**Boundary:** fresh G2-04 exact oracleは生成されていない。`STATE-LIMIT` / `ADMIN-CUTOFF`はgame outcomeではなく、`MOVE-NONTERMINATION`もgame-level `RECURRENT` / `DRAW`へ読み替えない。将来別のstructural/resource contractでexact expansionを試す場合はnew prospective Study/versionとfresh evidenceを必要とする。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

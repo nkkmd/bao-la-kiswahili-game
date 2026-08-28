@@ -860,17 +860,33 @@ validated transform set = []
 
 #### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1
 
-**状態:** planned / RAW-onlyで独立実施可能
+**状態:** **完了 / `REEOE-STUDY1` / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 中心課題:
 
 > prospectively selectedした複数のrestricted raw-state domainsについて、complete forward closureとexact retrograde analysisによりgame-theoretic value、cycle structure、distance、optimal-move multiplicityを完全解析できるか。
 
-第一世代8-state exact domainのformal decisionを拡張解釈しない。423,733-state historical candidateへ結果後に単純cap追加して再開せず、新しいdomain-selection rule、resource rule、administrative-cutoff handlingを事前固定する。
+第一世代8-state exact domainのformal decisionを拡張解釈せず、423,733-state historical candidateへ単純cap追加して再開しない新しいprospective RAW-only Studyとして実施した。
 
-**G2-04はG2-03の成功を前提としない。** validated transformationがなくてもRAW-onlyで実施可能とする。将来symmetry-aware oracleを研究する場合は、別途そのtransform authorizationを明示する。
+Stage 0 technical controlはREWR 8-state / 7-edge graph、solution、predecessor relationを独立再構築してPASS。Stage 1 v1はproduction development後のindependent-verifier startup defectによりsame-evidence rerunをせずtechnical-invalidとして閉じた。Fresh Stage 1 v2はseeds `24041001..24041512`、同一のstructural/resource/acceptance designで再実施した。
 
-**Priority:** P0
+```text
+unique witness roots = 7055
+eligible roots = 141
+selected roots = 8
+complete closures = 0
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
+```
+
+Production / independentはfull scan、eligible set、selected roots、closure classificationを一致させたが、frozen feasibility rule `complete closures >= 3`を満たさなかった。そのためStage 1 v2は`STAGE1-DEVELOPMENT-BLOCKED`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`となり、fresh G2-04 exact oracleは生成されなかった。
+
+**G2-04はG2-03の成功を前提としない。** 実際にvalidated transform set `[]`のままRAW-onlyで実施し、symmetry reduction / canonicalizationを使用しなかった。cap増加、domain shrinkage、root/seed replacement、partial-closure promotionによるsame-study rescueも行っていない。
+
+この`INCONCLUSIVE` closureは「Bao endgameのexact expansionが不可能」を意味しない。異なるstructural/resource contractを試す場合はnew prospective independent Study/versioned protocolとfresh evidenceを必要とする。
+
+**Priority:** P0 / completed
 
 #### G2-05 — Deep RAW State-Space Enumeration Study 1
 
@@ -1045,7 +1061,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop/global-failure ruleに従い完了した。G2-03はproduction-only zero-mismatch diagnosticsを持つがmandatory independent-verification gateをcanonicalに完遂できず、candidateをvalidationへ昇格させていない。次の未着手P0候補はdependencyを確認したうえで`G2-04` Restricted Endgame Exact Oracle Expansion、`G2-05` Deep RAW State-Space Enumeration、`G2-06` Rich Critical-Position Representationから選択する。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop/global-failure/feasibility ruleに従い完了した。G2-03のvalidated transform setは空のままで、G2-04はRAW-only development feasibilityを満たせずStage 2未実行で閉じた。次の未着手P0候補はdependencyを確認したうえで`G2-05` Deep RAW State-Space Enumerationまたは`G2-06` Rich Critical-Position Representationから選択する。
 
 ### 9.9 第二世代プログラムの完了条件
 
