@@ -1,7 +1,7 @@
 # DRSSE-STUDY1 — Reproducibility Index
 
 Updated: 2026-08-28  
-Status: **COMPLETE / EXACT WITHIN FROZEN DEPTH-9 DOMAIN**
+Status: **COMPLETE / EXACT WITHIN FROZEN DEPTH-9 DOMAIN / MAIN INTEGRATED**
 
 ## Study anchor
 
@@ -200,6 +200,39 @@ Formal exactness required both:
 2. independent full depth-9 re-enumeration agreement.
 
 Both passed in the canonical Stage 2 execution.
+
+## PR review disposition
+
+Two latent implementation concerns identified on PR #71 are preserved at:
+
+- `checkpoints/2026-08-28-pr71-review-disposition.md`
+
+They do not alter the canonical result because the accepted run took the target-complete path with full independent depth-9 re-enumeration, and its final recorded resource use remained below every frozen cap. Frozen Stage 2 source blobs were not modified or rerun after outcome observation.
+
+## Main integration provenance
+
+```text
+PR = #71
+final research head = a6a4dc73ae1b448a909913dbff99b06862da2ac0
+final PR CI = all five workflows success
+merge method = merge
+merge commit = 8d024c5a6b5114eefbab8fb23d54582d149b85f3
+integrated branch = main
+```
+
+Final PR workflow runs on the research head:
+
+```text
+DRSSE Study 1 Closure CI = 33167122626 / success
+Second-generation research agenda audit = 33167122612 / success
+SSGTC closure consistency audit = 33167122620 / success
+PCEM closure consistency audit = 33167122615 / success
+Phase Transition Research CI = 33167122608 / success
+```
+
+Post-merge integration checkpoint:
+
+- `checkpoints/2026-08-28-main-integration.md`
 
 ## Interpretation boundary
 

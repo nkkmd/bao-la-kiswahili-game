@@ -6,7 +6,7 @@ Study: `DRSSE-STUDY1` — Deep RAW State-Space Enumeration Study 1
 
 ## Status
 
-**STUDY COMPLETE — `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
+**STUDY COMPLETE / MAIN INTEGRATION COMPLETE — `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
 Stage state:
 
@@ -41,6 +41,18 @@ artifact = 9679860509
 artifact ZIP SHA256 = cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4ca4a71e
 ```
 
+## Repository integration
+
+```text
+PR = #71
+final research head = a6a4dc73ae1b448a909913dbff99b06862da2ac0
+merge method = merge
+merge commit = 8d024c5a6b5114eefbab8fb23d54582d149b85f3
+integrated branch = main
+```
+
+All five final PR workflows passed on the final research head. Both automated review threads were dispositioned and resolved before merge. The post-review audit did not alter or rerun the frozen Stage 2 formal source or evidence.
+
 ## Immutable boundaries
 
 - G2-01 remains `INCONCLUSIVE`.
@@ -51,4 +63,4 @@ artifact ZIP SHA256 = cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4c
 - No full-game state-space or game-tree estimate is authorized by G2-05.
 - Full-game extrapolation remains future prospective work, including G2-12.
 
-The remaining repository work after this status record is integration/documentation administration only; no new G2-05 scientific outcome generation is authorized.
+G2-05 scientific outcome generation is closed. Subsequent work must proceed as a new prospective Study/version where required.
