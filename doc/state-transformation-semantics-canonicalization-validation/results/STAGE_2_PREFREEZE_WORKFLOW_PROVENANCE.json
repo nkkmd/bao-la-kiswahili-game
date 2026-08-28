@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S2-FORMAL-2026-08-28-v1",
+  "classification": "PRE-FORMAL-WORKFLOW-PROVENANCE",
+  "workflowRunId": 33145557654,
+  "workflowJobId": 98765666170,
+  "headSha": "c1b0259cd5504e5fc26042040a01f1a3070bbef8",
+  "conclusion": "success",
+  "artifactId": 9675601577,
+  "artifactZipSha256": "1b7539c33c0fb5941cda36211b54eebbe7e171dac36de6174af21b41bb94ea15",
+  "manifestFileSha256": "b8e12e58b4313c6de9674c7c6834b1f4a88b0651cbfd5e3990697acdcb55017d",
+  "scientificOutcomeGenerated": false,
+  "readyForExplicitAuthorization": true
+}
