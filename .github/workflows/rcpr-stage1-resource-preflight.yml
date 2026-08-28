@@ -1,0 +1,38 @@
+name: RCPR Stage 1 Resource Preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-06-rich-critical-position-representation
+    paths:
+      - 'tools/experiments/run-rcpr-stage1-resource-preflight.js'
+      - '.github/workflows/rcpr-stage1-resource-preflight.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  resource-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout candidate implementation
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static syntax check
+        run: node --check tools/experiments/run-rcpr-stage1-resource-preflight.js
+      - name: Run non-scientific full-horizon resource preflight
+        run: |
+          node tools/experiments/run-rcpr-stage1-resource-preflight.js \
+            --out artifacts/local/rich-critical-position-representation/stage1-resource-preflight-v1
+      - name: Upload resource preflight artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcpr-stage1-resource-preflight-v1
+          path: artifacts/local/rich-critical-position-representation/stage1-resource-preflight-v1/
+          if-no-files-found: error
+          retention-days: 30
