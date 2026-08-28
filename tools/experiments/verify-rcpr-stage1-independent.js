@@ -9,6 +9,7 @@ const I = require("./lib/rcpr-stage1-independent.js");
 const ROOT = path.resolve(__dirname, "../..");
 const SPEC_PATH = path.join(ROOT, "doc/rich-critical-position-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json");
 const AUTH_PATH = path.join(ROOT, "doc/rich-critical-position-representation/authorizations/STAGE_1_EXECUTE.json");
+const ADDENDUM_PATH = path.join(ROOT, "doc/rich-critical-position-representation/preregistration/STAGE_1_EXECUTION_ADDENDUM.json");
 const DEFAULT_DIR = path.join(ROOT, "artifacts/local/rich-critical-position-representation/stage1-development-v1");
 function ensure(c,m){if(!c)throw new Error(m);}
 function sha256File(p){return crypto.createHash("sha256").update(fs.readFileSync(p)).digest("hex");}
@@ -22,6 +23,10 @@ function validateAuthorization(spec){
   ensure(auth.studyId===spec.studyId&&auth.stageId===spec.stageId,"authorization identity mismatch");
   ensure(auth.status==="AUTHORIZED"&&auth.scientificDevelopmentOutcomeGenerationAuthorized===true,"authorization inactive");
   ensure(auth.specSha256===sha256File(SPEC_PATH),"spec hash mismatch");
+  ensure(fs.existsSync(ADDENDUM_PATH),"Stage 1 execution addendum absent");
+  const addendum=JSON.parse(fs.readFileSync(ADDENDUM_PATH,"utf8"));
+  ensure(addendum.parentStage1SpecSha256===sha256File(SPEC_PATH),"execution addendum parent spec hash mismatch");
+  ensure(auth.executionAddendumSha256===sha256File(ADDENDUM_PATH),"execution addendum hash mismatch");
   for(const [relative,expected] of Object.entries(auth.sourceBlobHashes||{}))ensure(gitBlob(relative)===expected,`authorized source blob drift: ${relative}`);
   return auth;
 }

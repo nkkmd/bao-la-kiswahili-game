@@ -7,6 +7,7 @@ on:
       - research/g2-06-rich-critical-position-representation
     paths:
       - 'doc/rich-critical-position-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
+      - 'doc/rich-critical-position-representation/preregistration/STAGE_1_EXECUTION_ADDENDUM.json'
       - 'tools/experiments/lib/rcpr-stage1-production.js'
       - 'tools/experiments/lib/rcpr-stage1-independent.js'
       - 'tools/experiments/lib/rcpr-stage1-independent-corpus.js'
@@ -50,6 +51,22 @@ jobs:
           node --check tools/experiments/verify-rcpr-stage1-independent.js
           node --check tools/experiments/run-rcpr-stage1-implementation-smoke.js
           node --check tools/experiments/verify-rcpr-stage1-implementation-smoke.js
+
+      - name: Validate prospective execution addendum
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const specPath = 'doc/rich-critical-position-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json';
+          const addendumPath = 'doc/rich-critical-position-representation/preregistration/STAGE_1_EXECUTION_ADDENDUM.json';
+          const specSha = crypto.createHash('sha256').update(fs.readFileSync(specPath)).digest('hex');
+          const addendum = JSON.parse(fs.readFileSync(addendumPath, 'utf8'));
+          if (addendum.parentStage1SpecSha256 !== specSha) throw new Error('execution addendum parent spec hash mismatch');
+          if (addendum.scientificOutcomeGeneratedBeforeFreeze !== false || addendum.scientificDesignChanged !== false) throw new Error('execution addendum boundary invalid');
+          if (addendum.resourceContract.productionJobTimeoutMinutes !== 360 || addendum.resourceContract.independentJobTimeoutMinutes !== 360) throw new Error('resource ceiling drift');
+          if (addendum.resourceContract.productionAndIndependentMustUseSeparateJobs !== true) throw new Error('job separation contract missing');
+          console.log(JSON.stringify({specSha256: specSha, addendumId: addendum.addendumId, resourceContract: 'PASS'}, null, 2));
+          NODE
 
       - name: Production non-scientific implementation smoke
         run: |

@@ -9,6 +9,7 @@ const P = require("./lib/rcpr-stage1-production.js");
 const ROOT = path.resolve(__dirname, "../..");
 const SPEC_PATH = path.join(ROOT, "doc/rich-critical-position-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json");
 const AUTH_PATH = path.join(ROOT, "doc/rich-critical-position-representation/authorizations/STAGE_1_EXECUTE.json");
+const ADDENDUM_PATH = path.join(ROOT, "doc/rich-critical-position-representation/preregistration/STAGE_1_EXECUTION_ADDENDUM.json");
 const DEFAULT_OUT = path.join(ROOT, "artifacts/local/rich-critical-position-representation/stage1-development-v1");
 
 function ensure(condition, message) { if (!condition) throw new Error(message); }
@@ -26,11 +27,16 @@ function validateAuthorization(spec) {
   ensure(auth.status === "AUTHORIZED", "Stage 1 authorization status is not AUTHORIZED");
   ensure(auth.scientificDevelopmentOutcomeGenerationAuthorized === true, "Stage 1 outcome generation is not explicitly authorized");
   ensure(auth.specSha256 === sha256File(SPEC_PATH), "Stage 1 spec hash mismatch");
+  ensure(fs.existsSync(ADDENDUM_PATH), "Stage 1 execution addendum absent");
+  const addendum = JSON.parse(fs.readFileSync(ADDENDUM_PATH, "utf8"));
+  ensure(addendum.studyId === spec.studyId && addendum.stageId === spec.stageId, "execution addendum identity mismatch");
+  ensure(addendum.parentStage1SpecSha256 === sha256File(SPEC_PATH), "execution addendum parent spec hash mismatch");
+  ensure(auth.executionAddendumSha256 === sha256File(ADDENDUM_PATH), "Stage 1 execution addendum hash mismatch");
   ensure(auth.sourceBlobHashes && typeof auth.sourceBlobHashes === "object", "authorization sourceBlobHashes missing");
   for (const [relativePath, expected] of Object.entries(auth.sourceBlobHashes)) {
     ensure(gitBlob(relativePath) === expected, `authorized source blob drift: ${relativePath}`);
   }
-  return { auth, authorizationSha256: sha256File(AUTH_PATH) };
+  return { auth, authorizationSha256: sha256File(AUTH_PATH), executionAddendumSha256: sha256File(ADDENDUM_PATH) };
 }
 
 function run() {
@@ -39,12 +45,17 @@ function run() {
   ensure(spec.stageId === "RCPR-S1-DEVELOPMENT-2026-08-28-v1", "unexpected stageId");
   ensure(spec.developmentOutcomeGenerationAuthorizedBySpecAlone === false, "spec-alone authorization firewall missing");
   ensure(spec.scientificInferenceAuthorized === false, "Stage 1 must remain development-only");
-  const { auth, authorizationSha256 } = validateAuthorization(spec);
+  const { auth, authorizationSha256, executionAddendumSha256 } = validateAuthorization(spec);
   ensure(gitText(["status", "--porcelain"]) === "", "source tree must be clean");
 
   const outDir = parseOutDir();
   fs.rmSync(outDir, { recursive: true, force: true });
   fs.mkdirSync(outDir, { recursive: true });
+  writeJson(path.join(outDir, "execution-start.json"), {
+    schemaVersion: 1, studyId: spec.studyId, stageId: spec.stageId, scientificStage1SeedBlockConsumed: true,
+    sourceCommit: process.env.GITHUB_SHA || gitText(["rev-parse", "HEAD"]), specSha256: sha256File(SPEC_PATH),
+    executionAddendumSha256, authorizationSha256, seedStart: spec.sourcePopulation.seedStart, seedEnd: spec.sourcePopulation.seedEnd
+  });
   const development = P.runDevelopment(spec);
   const result = {
     schemaVersion: 1,
@@ -62,6 +73,7 @@ function run() {
     },
     specSha256: sha256File(SPEC_PATH),
     authorizationSha256,
+    executionAddendumSha256,
     authorizationSourceFreezeCommit: auth.sourceFreezeCommit || null,
     sourceBlobHashes: auth.sourceBlobHashes,
     development,

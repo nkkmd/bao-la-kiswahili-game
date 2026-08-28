@@ -12,33 +12,58 @@ permissions:
   contents: read
 
 jobs:
-  stage1-development:
+  stage1-production:
     runs-on: ubuntu-24.04
     timeout-minutes: 360
+    env:
+      NODE_OPTIONS: --max-old-space-size=6144
     steps:
       - name: Checkout authorized source
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-
       - name: Execute fresh Stage 1 development population once
         run: |
           node tools/experiments/run-rcpr-stage1-development.js \
             --out artifacts/local/rich-critical-position-representation/stage1-development-v1
+      - name: Upload production Stage 1 artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcpr-stage1-development-production-v1
+          path: artifacts/local/rich-critical-position-representation/stage1-development-v1/
+          if-no-files-found: warn
+          retention-days: 30
 
+  stage1-independent-verification:
+    needs: stage1-production
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      NODE_OPTIONS: --max-old-space-size=6144
+    steps:
+      - name: Checkout identical authorized source
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Download production Stage 1 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: rcpr-stage1-development-production-v1
+          path: artifacts/local/rich-critical-position-representation/stage1-development-v1
       - name: Independent full-corpus replay and recomputation
         run: |
           node tools/experiments/verify-rcpr-stage1-independent.js \
             --dir artifacts/local/rich-critical-position-representation/stage1-development-v1
-
-      - name: Upload Stage 1 development artifact
+      - name: Upload independently verified Stage 1 artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rcpr-stage1-development-v1
+          name: rcpr-stage1-development-verified-v1
           path: artifacts/local/rich-critical-position-representation/stage1-development-v1/
           if-no-files-found: warn
           retention-days: 30
