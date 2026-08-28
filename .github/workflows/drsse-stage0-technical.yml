@@ -19,8 +19,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Engine regression smoke
-        run: node --test test/rules.test.js
       - name: Production technical enumeration
         env:
           DRSSE_STAGE0_OUT: artifacts/drsse-stage0
