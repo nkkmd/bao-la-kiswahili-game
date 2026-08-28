@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-02",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "SRDR-STUDY1",
+  "stageId": "SRDR-S2-FORMAL-2026-08-27-v1",
+  "specSha256": "c4f4249896abc1a9b6c96c1782e4e3835cb395c1b436add3a8c90c1e02e1e509",
+  "authorizationSha256": "b8f5829322fc97986e7677e4bb39bd70171eb2203ba8f750635b23c607329a9b",
+  "formalInferenceAuthorized": true,
+  "stage2GenerationAuthorized": true,
+  "games": 1536,
+  "seedStart": 25021001,
+  "seedEnd": 25022536,
+  "trajectoryManifestHash": "062c441b6bfad5d66b9117892087363dee5735c5ec5764c6b9ad5e1bb0776532",
+  "stage1FirewallArtifactZipSha256": "41c6b9940798aa1626b0c73279a47b53dbc3e14316d0cb75f48f4d194f5c8cf8"
+}

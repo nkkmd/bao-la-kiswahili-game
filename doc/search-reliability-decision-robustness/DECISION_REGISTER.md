@@ -308,3 +308,26 @@ no-rescue = active
 ```
 
 Formal run `33124538584` is the authorized Stage 2 execution. No formal decision exists until that run passes independent verification and the frozen analyzer materializes a canonical result.
+
+## D-016 — Stage 1 development closure
+
+Stage 1 completed with `PROFILE-FROZEN-DEVELOPMENT`. The representation-only verification hash correction changed no scientific measurement row and did not authorize formal inference from Stage 1.
+
+## D-017 — Stage 2 formal rule and authorization
+
+Stage 2 was prospectively frozen at 1,536 games / seeds `25021001..25022536`, with Stage 1 trajectory + opening-prefix + RAW-state firewall, unchanged search grid, fixed formal gates and a three-criterion primary conjunction evaluated only after all gates pass. Source-freeze commit: `e176cafc15d2dde7b8767de6961959bb7ee9bb7b`; authorization commit: `bec87d54540c96c24353f2eeadc25338c53e54eb`.
+
+## D-018 — Formal Stage 2 decision
+
+The independent verifier passed with zero game/selection/measurement mismatches and exact hash matches. One preregistered estimability gate failed: `1040 < 1050` unique historical trajectories after the Stage 1 firewall. Under the frozen taxonomy:
+
+```text
+SRDR-STUDY1 = INCONCLUSIVE
+primaryFormalCriterion = null
+```
+
+The 10-trajectory shortfall receives no near-miss exception.
+
+## D-019 — No-rescue closure
+
+No Stage 2 seed extension, replacement, threshold relaxation, alternate primary, favorable subgroup, or reinterpretation of secondary metrics is authorized. Any future formal re-test requires a new prospective Study/version and fresh evidence. Public AI engineering cannot modify this decision.

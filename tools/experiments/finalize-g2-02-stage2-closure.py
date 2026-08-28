@@ -780,7 +780,7 @@ def validate_repo() -> None:
         ROOT / "doc/RESEARCH_INDEX.md": ["### 18. Search Reliability / Decision Robustness — Study 1", "formal decision `INCONCLUSIVE`", "1040 < 1050"],
         ROOT / "doc/FUTURE_RESEARCH_AGENDA.md": ["G2-02 — Search Reliability / Decision Robustness Study 1", "`SRDR-STUDY1`", "formal decision `INCONCLUSIVE`", "primary formal criterion = null"],
         STUDY / "STUDY_1_OVERVIEW.md": ["INCONCLUSIVE", "primaryFormalCriterion = null"],
-        STUDY / "STUDY_1_FINAL_REPORT.md": ["1040 < 1050", "No-rescue", "INCONCLUSIVE"],
+        STUDY / "STUDY_1_FINAL_REPORT.md": ["1040 < 1050", "Immutable closure boundary", "INCONCLUSIVE"],
         STUDY / "CURRENT_STATUS.md": ["STUDY COMPLETE", "INCONCLUSIVE"],
         STUDY / "REPRODUCIBILITY_INDEX.md": [str(RUN_ID), ARTIFACT_ZIP_SHA256],
     }

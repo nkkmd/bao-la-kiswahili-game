@@ -604,6 +604,36 @@ Stage 1は2,048 fresh gamesで全readiness gateをPASSし、phase-stratified iso
 
 ---
 
+
+### 18. Search Reliability / Decision Robustness — Study 1
+
+**研究題目:** Baoにおける探索信頼性と意思決定頑健性の定量化 — depth, node budget, quiescence等の探索条件変化に対するbest move・ranking・evaluation・principal variation安定性のprospective検証  
+**Program:** `G2-02` / **Study ID:** `SRDR-STUDY1` / **Research Generation 2**  
+**状態:** **Study complete / formal decision `INCONCLUSIVE`**
+
+同一RAW stateに対するmachine search decisionの安定性を、depth / node budget / quiescenceのprospectively frozen gridで検証した。Stage 1は1,280 fresh gamesから1,018 statesを測定して`PROFILE-FROZEN-DEVELOPMENT`となった。Stage 2は1,536 fresh held-out games、1,007 selected statesを用い、独立verifierが全game replay・selection・measurementをzero mismatchで再構築した。
+
+しかし、strict Stage 1 firewall後のunique historical trajectoriesが`1040 < 1050`となり、唯一のpreregistered estimability gate failureとなった。このためprimary formal criterionは評価されず`null`、formal decisionは`INCONCLUSIVE`である。10 trajectory不足への追加seed・replacement・gate relaxationは行っていない。
+
+Descriptive secondary profileではD2→D3 canonical-best agreement `0.734856`、Q2→Q1 `0.748759`、B1024→D3 `0.941410`が観測されたが、higher-resource searchはtruthではなく、これらをformal confirmation、human difficulty、engine correctnessへ昇格させない。
+
+**最初に読む:**
+
+- [`search-reliability-decision-robustness/STUDY_1_OVERVIEW.md`](search-reliability-decision-robustness/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`search-reliability-decision-robustness/STUDY_1_FINAL_REPORT.md`](search-reliability-decision-robustness/STUDY_1_FINAL_REPORT.md)
+- [`search-reliability-decision-robustness/results/STAGE_2_FORMAL_RESULT.json`](search-reliability-decision-robustness/results/STAGE_2_FORMAL_RESULT.json)
+- [`search-reliability-decision-robustness/results/STAGE_2_VERIFICATION.json`](search-reliability-decision-robustness/results/STAGE_2_VERIFICATION.json)
+- [`search-reliability-decision-robustness/REPRODUCIBILITY_INDEX.md`](search-reliability-decision-robustness/REPRODUCIBILITY_INDEX.md)
+- [`search-reliability-decision-robustness/CURRENT_STATUS.md`](search-reliability-decision-robustness/CURRENT_STATUS.md)
+- [`search-reliability-decision-robustness/DECISION_REGISTER.md`](search-reliability-decision-robustness/DECISION_REGISTER.md)
+
+**Boundary:** 同じStage 2 evidenceを追加seed、threshold relaxation、alternate primary、favorable subgroupで救済しない。`D3`/`B1024`をgame-theoretic truthとみなさない。formal再検証はnew prospective Study/versionとfresh evidenceを必要とする。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

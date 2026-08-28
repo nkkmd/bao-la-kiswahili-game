@@ -177,3 +177,23 @@ Explicit Stage 2 authorization was then committed at:
 Formal workflow run `33124538584` passed the explicit authorization gate, downloaded the immutable Stage 1 consumed-identity firewall artifact, and entered the frozen Stage 2 generation/firewall-selection/measurement step.
 
 No formal result has yet been declared. No rescue modification is authorized in response to the Stage 2 outcome.
+
+## 2026-08-28 — Stage 1 verification correction
+
+- Recovered the original Stage 1 artifact without consuming new scientific seeds.
+- Confirmed 1280/1280 replay, 1018/1018 selected-state measurements and zero row mismatches.
+- Isolated the aggregate hash discrepancy to pre-serialization `undefined` keys omitted by JSON persistence.
+- Ran representation-only correction; no scientific row, grid, seed or criterion changed.
+- Stage 1 decision fixed as `PROFILE-FROZEN-DEVELOPMENT`.
+
+## 2026-08-28 — Stage 2 formal closure
+
+- Source-freeze commit: `e176cafc15d2dde7b8767de6961959bb7ee9bb7b`.
+- Explicit authorization commit: `bec87d54540c96c24353f2eeadc25338c53e54eb`.
+- Formal workflow run `33124538584` completed successfully.
+- 1536/1536 games generated and independently replayed.
+- 1007 selected RAW states independently remeasured; selection/measurement mismatches 0; hashes exact-match.
+- Stage 1 cross-stage overlap: trajectory/opening-prefix/RAW state = `0 / 0 / 0`.
+- One frozen estimability gate failed: `1040 < 1050` unique historical trajectories after firewall.
+- Formal decision fixed as `INCONCLUSIVE`; `primaryFormalCriterion = null`.
+- No rescue, extension, replacement or threshold relaxation performed.

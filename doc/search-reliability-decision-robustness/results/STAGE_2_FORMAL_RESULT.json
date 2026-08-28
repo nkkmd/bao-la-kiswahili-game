@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-02",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "SRDR-STUDY1",
+  "stageId": "SRDR-S2-FORMAL-2026-08-27-v1",
+  "specSha256": "c4f4249896abc1a9b6c96c1782e4e3835cb395c1b436add3a8c90c1e02e1e509",
+  "formalDecision": "INCONCLUSIVE",
+  "gates": {
+    "passed": false,
+    "checks": {
+      "uniqueHistoricalTrajectoriesAfterStage1Firewall": {
+        "observed": 1040,
+        "operator": ">=",
+        "threshold": 1050,
+        "passed": false
+      },
+      "selectedUniqueRawStates": {
+        "observed": 1007,
+        "operator": ">=",
+        "threshold": 1000,
+        "passed": true
+      },
+      "namuaSelectedStates": {
+        "observed": 518,
+        "operator": ">=",
+        "threshold": 450,
+        "passed": true
+      },
+      "mtajiSelectedStates": {
+        "observed": 489,
+        "operator": ">=",
+        "threshold": 450,
+        "passed": true
+      },
+      "distinctOpeningPrefixesAfterStage1Firewall": {
+        "observed": 1040,
+        "operator": ">=",
+        "threshold": 900,
+        "passed": true
+      },
+      "stage1HistoricalTrajectoryOverlap": {
+        "observed": 0,
+        "operator": "===",
+        "threshold": 0,
+        "passed": true
+      },
+      "stage1OpeningPrefixOverlap": {
+        "observed": 0,
+        "operator": "===",
+        "threshold": 0,
+        "passed": true
+      },
+      "stage1SelectedRawStateOverlap": {
+        "observed": 0,
+        "operator": "===",
+        "threshold": 0,
+        "passed": true
+      },
+      "duplicateSelectedRawStatesAfterDedup": {
+        "observed": 0,
+        "operator": "===",
+        "threshold": 0,
+        "passed": true
+      },
+      "exactConditionMeasurementCompletionRate": {
+        "observed": 1,
+        "operator": ">=",
+        "threshold": 1,
+        "passed": true
+      },
+      "B64AtLeastDepth1Pooled": {
+        "observed": 0.9364448857994042,
+        "operator": ">=",
+        "threshold": 0.85,
+        "passed": true
+      },
+      "B64AtLeastDepth1Namua": {
+        "observed": 0.8803088803088803,
+        "operator": ">=",
+        "threshold": 0.8,
+        "passed": true
+      },
+      "B64AtLeastDepth1Mtaji": {
+        "observed": 0.9959100204498977,
+        "operator": ">=",
+        "threshold": 0.8,
+        "passed": true
+      },
+      "B256AtLeastDepth2Pooled": {
+        "observed": 0.8709036742800397,
+        "operator": ">=",
+        "threshold": 0.7,
+        "passed": true
+      },
+      "B256AtLeastDepth2Namua": {
+        "observed": 0.750965250965251,
+        "operator": ">=",
+        "threshold": 0.65,
+        "passed": true
+      },
+      "B256AtLeastDepth2Mtaji": {
+        "observed": 0.9979550102249489,
+        "operator": ">=",
+        "threshold": 0.65,
+        "passed": true
+      },
+      "B1024AtLeastDepth3Pooled": {
+        "observed": 0.8629592850049652,
+        "operator": ">=",
+        "threshold": 0.65,
+        "passed": true
+      },
+      "B1024AtLeastDepth3Namua": {
+        "observed": 0.7374517374517374,
+        "operator": ">=",
+        "threshold": 0.6,
+        "passed": true
+      },
+      "B1024AtLeastDepth3Mtaji": {
+        "observed": 0.9959100204498977,
+        "operator": ">=",
+        "threshold": 0.6,
+        "passed": true
+      },
+      "B1024ComparisonEstimablePooled": {
+        "observed": 1,
+        "operator": ">=",
+        "threshold": 0.98,
+        "passed": true
+      },
+      "B1024ComparisonEstimableNamua": {
+        "observed": 1,
+        "operator": ">=",
+        "threshold": 0.95,
+        "passed": true
+      },
+      "B1024ComparisonEstimableMtaji": {
+        "observed": 1,
+        "operator": ">=",
+        "threshold": 0.95,
+        "passed": true
+      },
+      "independentVerification": {
+        "observed": true,
+        "operator": "===",
+        "threshold": true,
+        "passed": true
+      },
+      "selectionHashMatch": {
+        "observed": true,
+        "operator": "===",
+        "threshold": true,
+        "passed": true
+      },
+      "measurementHashMatch": {
+        "observed": true,
+        "operator": "===",
+        "threshold": true,
+        "passed": true
+      }
+    }
+  },
+  "primaryFormalCriterion": null,
+  "secondaryProfile": {
+    "pooled": {
+      "D1_Q1_vs_D2_Q1": {
+        "nStates": 1007,
+        "nDefined": 1007,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.637537239324727,
+        "topSetJaccard": 0.639556438265475,
+        "referenceBestIncludedInComparisonTopSet": 0.6405163853028798,
+        "kendallTauB": 0.6097819191426769,
+        "pairwiseOrderingAgreement": 0.8070771554386237,
+        "bestScoreSignAgreement": 0.5908639523336644,
+        "pvFirstMoveAgreement": 0.637537239324727,
+        "pvNormalizedCommonPrefix": 0.637537239324727
+      },
+      "D2_Q1_vs_D3_Q1": {
+        "nStates": 1007,
+        "nDefined": 1007,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.7348560079443893,
+        "topSetJaccard": 0.7317941079112876,
+        "referenceBestIncludedInComparisonTopSet": 0.7348560079443893,
+        "kendallTauB": 0.6568054186974909,
+        "pairwiseOrderingAgreement": 0.8294910374850779,
+        "bestScoreSignAgreement": 0.634558093346574,
+        "pvFirstMoveAgreement": 0.7348560079443893,
+        "pvNormalizedCommonPrefix": 0.6444885799404171
+      },
+      "D2_Q0_vs_D2_Q1": {
+        "nStates": 1007,
+        "nDefined": 1007,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.6434955312810328,
+        "topSetJaccard": 0.6451837140019862,
+        "referenceBestIncludedInComparisonTopSet": 0.6454816285998014,
+        "kendallTauB": 0.6231527911256929,
+        "pairwiseOrderingAgreement": 0.8138331821549286,
+        "bestScoreSignAgreement": 0.5868917576961271,
+        "pvFirstMoveAgreement": 0.6434955312810328,
+        "pvNormalizedCommonPrefix": 0.5476663356504469
+      },
+      "D2_Q2_vs_D2_Q1": {
+        "nStates": 1007,
+        "nDefined": 1007,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.7487586891757696,
+        "topSetJaccard": 0.745945051307514,
+        "referenceBestIncludedInComparisonTopSet": 0.7497517378351539,
+        "kendallTauB": 0.6760577026860659,
+        "pairwiseOrderingAgreement": 0.8432987127624652,
+        "bestScoreSignAgreement": 0.6365441906653426,
+        "pvFirstMoveAgreement": 0.7487586891757696,
+        "pvNormalizedCommonPrefix": 0.6643495531281033
+      },
+      "B64_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 1007,
+        "nDefined": 943,
+        "estimableRate": 0.9364448857994042,
+        "canonicalBestAgreement": 0.6447507953340403,
+        "topSetJaccard": 0.6467302933898904,
+        "referenceBestIncludedInComparisonTopSet": 0.6468716861081655,
+        "kendallTauB": 0.5893697718898068,
+        "pairwiseOrderingAgreement": 0.7930960108584706,
+        "bestScoreSignAgreement": 0.8960763520678685,
+        "pvFirstMoveAgreement": 0.6447507953340403,
+        "pvNormalizedCommonPrefix": 0.6272534464475079
+      },
+      "B256_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 1007,
+        "nDefined": 1007,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.7954319761668321,
+        "topSetJaccard": 0.7931148626282688,
+        "referenceBestIncludedInComparisonTopSet": 0.7964250248262165,
+        "kendallTauB": 0.7631033842720576,
+        "pairwiseOrderingAgreement": 0.885493464937357,
+        "bestScoreSignAgreement": 0.7755710029791459,
+        "pvFirstMoveAgreement": 0.7954319761668321,
+        "pvNormalizedCommonPrefix": 0.7477656405163853
+      },
+      "B1024_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 1007,
+        "nDefined": 1007,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.9414101290963257,
+        "topSetJaccard": 0.9409136047666335,
+        "referenceBestIncludedInComparisonTopSet": 0.9414101290963257,
+        "kendallTauB": 0.9414715566341998,
+        "pairwiseOrderingAgreement": 0.9717224737085715,
+        "bestScoreSignAgreement": 0.887785501489573,
+        "pvFirstMoveAgreement": 0.9414101290963257,
+        "pvNormalizedCommonPrefix": 0.923038728897716
+      }
+    },
+    "namua": {
+      "D1_Q1_vs_D2_Q1": {
+        "nStates": 518,
+        "nDefined": 518,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.5579150579150579,
+        "topSetJaccard": 0.5569498069498069,
+        "referenceBestIncludedInComparisonTopSet": 0.5617760617760618,
+        "kendallTauB": 0.5719024608531686,
+        "pairwiseOrderingAgreement": 0.7837918623632911,
+        "bestScoreSignAgreement": 0.29922779922779924,
+        "pvFirstMoveAgreement": 0.5579150579150579,
+        "pvNormalizedCommonPrefix": 0.5579150579150579
+      },
+      "D2_Q1_vs_D3_Q1": {
+        "nStates": 518,
+        "nDefined": 518,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.638996138996139,
+        "topSetJaccard": 0.6361003861003861,
+        "referenceBestIncludedInComparisonTopSet": 0.638996138996139,
+        "kendallTauB": 0.5872241117819939,
+        "pairwiseOrderingAgreement": 0.7914887986316562,
+        "bestScoreSignAgreement": 0.34942084942084944,
+        "pvFirstMoveAgreement": 0.638996138996139,
+        "pvNormalizedCommonPrefix": 0.5096525096525096
+      },
+      "D2_Q0_vs_D2_Q1": {
+        "nStates": 518,
+        "nDefined": 518,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.5598455598455598,
+        "topSetJaccard": 0.5579150579150578,
+        "referenceBestIncludedInComparisonTopSet": 0.5637065637065637,
+        "kendallTauB": 0.5661757720787359,
+        "pairwiseOrderingAgreement": 0.7806938664081524,
+        "bestScoreSignAgreement": 0.29343629343629346,
+        "pvFirstMoveAgreement": 0.5598455598455598,
+        "pvNormalizedCommonPrefix": 0.43822393822393824
+      },
+      "D2_Q2_vs_D2_Q1": {
+        "nStates": 518,
+        "nDefined": 518,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.6428571428571429,
+        "topSetJaccard": 0.63996138996139,
+        "referenceBestIncludedInComparisonTopSet": 0.6428571428571429,
+        "kendallTauB": 0.5807992734391197,
+        "pairwiseOrderingAgreement": 0.7888320602606319,
+        "bestScoreSignAgreement": 0.35135135135135137,
+        "pvFirstMoveAgreement": 0.6428571428571429,
+        "pvNormalizedCommonPrefix": 0.5135135135135135
+      },
+      "B64_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 518,
+        "nDefined": 456,
+        "estimableRate": 0.8803088803088803,
+        "canonicalBestAgreement": 0.5614035087719298,
+        "topSetJaccard": 0.5617690058479531,
+        "referenceBestIncludedInComparisonTopSet": 0.5657894736842105,
+        "kendallTauB": 0.5321486265773036,
+        "pairwiseOrderingAgreement": 0.7630586883876361,
+        "bestScoreSignAgreement": 0.8508771929824561,
+        "pvFirstMoveAgreement": 0.5614035087719298,
+        "pvNormalizedCommonPrefix": 0.5427631578947368
+      },
+      "B256_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 518,
+        "nDefined": 518,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.6640926640926641,
+        "topSetJaccard": 0.6621621621621622,
+        "referenceBestIncludedInComparisonTopSet": 0.666023166023166,
+        "kendallTauB": 0.6399162006567101,
+        "pairwiseOrderingAgreement": 0.8184974399260122,
+        "bestScoreSignAgreement": 0.5714285714285714,
+        "pvFirstMoveAgreement": 0.6640926640926641,
+        "pvNormalizedCommonPrefix": 0.5897683397683398
+      },
+      "B1024_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 518,
+        "nDefined": 518,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.88996138996139,
+        "topSetJaccard": 0.888996138996139,
+        "referenceBestIncludedInComparisonTopSet": 0.88996138996139,
+        "kendallTauB": 0.8957633976686968,
+        "pairwiseOrderingAgreement": 0.9471730543159111,
+        "bestScoreSignAgreement": 0.7818532818532818,
+        "pvFirstMoveAgreement": 0.88996138996139,
+        "pvNormalizedCommonPrefix": 0.8542471042471043
+      }
+    },
+    "mtaji": {
+      "D1_Q1_vs_D2_Q1": {
+        "nStates": 489,
+        "nDefined": 489,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.721881390593047,
+        "topSetJaccard": 0.7270620313565098,
+        "referenceBestIncludedInComparisonTopSet": 0.7239263803680982,
+        "kendallTauB": 0.6537901886610485,
+        "pairwiseOrderingAgreement": 0.8317433759151551,
+        "bestScoreSignAgreement": 0.8997955010224948,
+        "pvFirstMoveAgreement": 0.721881390593047,
+        "pvNormalizedCommonPrefix": 0.721881390593047
+      },
+      "D2_Q1_vs_D3_Q1": {
+        "nStates": 489,
+        "nDefined": 489,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.83640081799591,
+        "topSetJaccard": 0.8331629175187458,
+        "referenceBestIncludedInComparisonTopSet": 0.83640081799591,
+        "kendallTauB": 0.7385634543231986,
+        "pairwiseOrderingAgreement": 0.8697469878451477,
+        "bestScoreSignAgreement": 0.9366053169734151,
+        "pvFirstMoveAgreement": 0.83640081799591,
+        "pvNormalizedCommonPrefix": 0.787321063394683
+      },
+      "D2_Q0_vs_D2_Q1": {
+        "nStates": 489,
+        "nDefined": 489,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.7321063394683026,
+        "topSetJaccard": 0.7376278118609406,
+        "referenceBestIncludedInComparisonTopSet": 0.7321063394683026,
+        "kendallTauB": 0.689348563816201,
+        "pairwiseOrderingAgreement": 0.848937815195484,
+        "bestScoreSignAgreement": 0.8977505112474438,
+        "pvFirstMoveAgreement": 0.7321063394683026,
+        "pvNormalizedCommonPrefix": 0.66359918200409
+      },
+      "D2_Q2_vs_D2_Q1": {
+        "nStates": 489,
+        "nDefined": 489,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.8609406952965235,
+        "topSetJaccard": 0.858214042263122,
+        "referenceBestIncludedInComparisonTopSet": 0.8629856850715747,
+        "kendallTauB": 0.7869779907956843,
+        "pairwiseOrderingAgreement": 0.9009954939402799,
+        "bestScoreSignAgreement": 0.9386503067484663,
+        "pvFirstMoveAgreement": 0.8609406952965235,
+        "pvNormalizedCommonPrefix": 0.8241308793456033
+      },
+      "B64_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 489,
+        "nDefined": 487,
+        "estimableRate": 0.9959100204498977,
+        "canonicalBestAgreement": 0.7227926078028748,
+        "topSetJaccard": 0.7262833675564682,
+        "referenceBestIncludedInComparisonTopSet": 0.7227926078028748,
+        "kendallTauB": 0.648811829234987,
+        "pairwiseOrderingAgreement": 0.8212213066422511,
+        "bestScoreSignAgreement": 0.9383983572895277,
+        "pvFirstMoveAgreement": 0.7227926078028748,
+        "pvNormalizedCommonPrefix": 0.7063655030800822
+      },
+      "B256_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 489,
+        "nDefined": 489,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.934560327198364,
+        "topSetJaccard": 0.9318336741649625,
+        "referenceBestIncludedInComparisonTopSet": 0.934560327198364,
+        "kendallTauB": 0.907848325020089,
+        "pairwiseOrderingAgreement": 0.9564626693461052,
+        "bestScoreSignAgreement": 0.9918200408997955,
+        "pvFirstMoveAgreement": 0.934560327198364,
+        "pvNormalizedCommonPrefix": 0.9151329243353783
+      },
+      "B1024_Q1_MAXD3_vs_D3_Q1": {
+        "nStates": 489,
+        "nDefined": 489,
+        "estimableRate": 1,
+        "canonicalBestAgreement": 0.9959100204498977,
+        "topSetJaccard": 0.9959100204498977,
+        "referenceBestIncludedInComparisonTopSet": 0.9959100204498977,
+        "kendallTauB": 0.9951786434186656,
+        "pairwiseOrderingAgreement": 0.9977277891388321,
+        "bestScoreSignAgreement": 1,
+        "pvFirstMoveAgreement": 0.9959100204498977,
+        "pvNormalizedCommonPrefix": 0.9959100204498977
+      }
+    }
+  },
+  "populationSummary": {
+    "generatedGames": 1536,
+    "trajectoriesAfterStage1TrajectoryOpeningFirewall": 1132,
+    "uniqueHistoricalTrajectoriesAfterStage1Firewall": 1040,
+    "selectedUniqueRawStates": 1007,
+    "phaseCounts": {
+      "namua": 518,
+      "mtaji": 489
+    },
+    "postFirewallOverlapCounts": {
+      "historicalTrajectory": 0,
+      "openingPrefix": 0,
+      "selectedRawState": 0
+    }
+  },
+  "hashes": {
+    "generationManifestSha256": "64ee67538d1a07a77553c1cd83319a23bc07574a2cff6ad70a02afd8cb67f209",
+    "selectedStatesSha256": "1c30b384c4afc38d6505f7065b1faba94111731a844565f55dd5b10d6996f263",
+    "measurementsSha256": "d58e14880853b8d0bf0929dfa8f8e6216e9f8aac33622b87c2dda0e1907ded34",
+    "verificationSha256": "aafefdd033da71104662202360c77579649ec62c4820b07d37461678fdca1a13",
+    "selectionHash": "a929e00fcedfcd9e6f89780d5ca02f9a5f126250e569bd3840d4d79cfa2d6f46",
+    "measurementHash": "13ca8825c250f038c510a2a7e7c0e8d1567f0d5027bd32ecb4dee0e34f64e2bd"
+  },
+  "interpretationBoundary": {
+    "higherResourceSearchReferenceIsGameTheoreticTruth": false,
+    "trueBestMoveClaimAuthorized": false,
+    "validatedOptimalMoveClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false,
+    "engineCorrectnessClaimAuthorized": false,
+    "publicAiStrengthClaimAuthorized": false,
+    "publicAiChangeRecommendationAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false
+  },
+  "canonicalResultHash": "7386f3efed01ba325bc3f03ed02e9cfc2d72ad48c356509987b5fcc8780f7d36"
+}
