@@ -1,0 +1,45 @@
+name: RCPR Stage 1 Source Freeze Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-06-rich-critical-position-representation
+    paths:
+      - 'tools/experiments/audit-rcpr-stage1-source-freeze.js'
+      - '.github/workflows/rcpr-stage1-source-freeze-audit.yml'
+      - 'doc/rich-critical-position-representation/checkpoints/2026-08-29-stage1-implementation-validation-and-source-freeze.md'
+
+permissions:
+  contents: read
+
+jobs:
+  source-freeze-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout preauthorization branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch remote main anchor
+        run: git fetch origin main:refs/remotes/origin/main --depth=1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Audit exact frozen scientific sources
+        run: |
+          node tools/experiments/audit-rcpr-stage1-source-freeze.js \
+            --out artifacts/local/rich-critical-position-representation/stage1-source-freeze-audit-v1
+
+      - name: Upload source-freeze audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcpr-stage1-source-freeze-audit-v1
+          path: artifacts/local/rich-critical-position-representation/stage1-source-freeze-audit-v1/
+          if-no-files-found: error
+          retention-days: 30
