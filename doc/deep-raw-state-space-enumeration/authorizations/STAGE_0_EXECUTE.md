@@ -2,9 +2,14 @@
 
 Date: 2026-08-28
 Stage: `DRSSE-S0-TECHNICAL-2026-08-28-v1`
-Authorization: EXECUTE CORRECTED ORCHESTRATION ONCE
+Authorization: EXECUTE TECHNICAL COMPATIBILITY-CORRECTED RUN ONCE
 Scientific inference authorized: false
 
-The first workflow attempt (`33155223966`) stopped before production enumeration because a workflow-only smoke-test path did not exist. No G2-05 enumeration output was generated. The production enumerator, independent verifier, frozen fixture, gates, and negative controls remain unchanged.
+Attempt history:
 
-This commit authorizes one corrected Stage 0 technical execution after removal of that pre-output workflow-plumbing defect. It does not authorize Stage 1 or Stage 2 scientific/formal outcome generation.
+- `33155223966`: pre-output workflow-plumbing failure; no enumerator execution.
+- `33155385913`: technical fixture hash-binding block. Depth-2 counts and G1 state-set hash matched, but the wrapper compared two different transition-hash conventions. Not accepted as PASS.
+
+Production enumerator and independent verifier remain unchanged from their original freeze. Only the Stage 0 fixture wrapper now reconstructs the immutable G1 transition hash using G1's own sorted raw fingerprint convention.
+
+This commit authorizes one further Stage 0 technical execution. It does not authorize Stage 1 or Stage 2 scientific/formal outcome generation.
