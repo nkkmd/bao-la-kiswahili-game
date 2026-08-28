@@ -56,4 +56,5 @@ The decision is exact only inside the prospectively frozen standard-initial-root
 
 No G2-04 root, partial closure, G1 depth-9 partial row, Stage 1 row, Stage 1 root, symmetry transform, or canonicalization result was used as formal evidence. G2-04 remains `INCONCLUSIVE`; G1 `SSGTC-STUDY1` remains independently `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`.
 
-Administrative integration state: **accepted scientific result ready for central indexing; no further outcome generation authorized.**
+Administrative integration state: **accepted scientific result ready for central indexing; no further outcome generation authorized.**  
+Central-indexing retry is administrative-only after a whitespace validation correction; the scientific result and canonical formal provenance are unchanged.
