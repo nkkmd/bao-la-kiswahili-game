@@ -105,3 +105,15 @@ primaryFormalCriterion = null
 ```
 
 No post-outcome rescue is authorized.
+
+## Repository integration
+
+```text
+integration PR = #68
+expected research head = f6814e4e828ea07ec309f6f7352c825494d8ff20
+integration merge commit = ee5f0a5e769516d635fe8b70e42244a8dc8d9b34
+integrated branch = main
+integration date = 2026-08-28
+```
+
+Repository integration occurred only after the G2-02 technical validation, second-generation research agenda audit, SSGTC closure consistency audit, PCEM closure consistency audit, and repo-wide Phase Transition Research CI were all green. The idempotent closure finalization workflow also passed against the immutable Stage 2 artifact. Integration does not alter canonical scientific evidence, the `INCONCLUSIVE` decision, `primaryFormalCriterion = null`, or any interpretation boundary.
