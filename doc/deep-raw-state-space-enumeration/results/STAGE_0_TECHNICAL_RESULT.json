@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "studyId": "DRSSE-STUDY1",
+  "stageId": "DRSSE-S0-TECHNICAL-2026-08-28-v1",
+  "resultClass": "TECHNICAL-DIAGNOSTIC-ONLY",
+  "scientificInferenceAuthorized": false,
+  "decision": "STAGE0-TECHNICAL-PASS",
+  "passed": true,
+  "acceptedWorkflowRunId": 33155526103,
+  "acceptedWorkflowJobId": 98797262242,
+  "acceptedHeadSha": "5bd85b10f2260f33ea747a5f4a468b1bc72ac310",
+  "actionsArtifactId": 9679427896,
+  "actionsArtifactName": "drsse-stage0-technical-v1",
+  "actionsArtifactZipSha256": "7cd8dbb4e61acf113c0085b79bd298a7588994447750e0f7d4d8201e51c638c4",
+  "fixture": {
+    "source": "immutable G1 SSGTC Stage 0 depth-2 technical result",
+    "targetDepth": 2,
+    "cumulativeRawStates": 19,
+    "cumulativeEdges": 18,
+    "stateSetSha256": "0a942b654f00265542c82b87f5dc53d685e96f3c0ef69a61fc574f90c6990a1f",
+    "g1TransitionSetSha256": "be534cbc3e99808a668483c21fca1720dc5ea5a7ac442075294f21a8542baea1"
+  },
+  "production": {
+    "targetComplete": true,
+    "lastCompleteDepth": 2,
+    "firstIncompleteDepth": null,
+    "stopReason": null,
+    "resultCoreSha256": "2843b8c9af4d6c7f2c349a65dd9d0bd0d7de560f96d9fa90e2dbe62b37b6835f",
+    "rootStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "internalCumulativeRawStateSetSha256": "0a942b654f00265542c82b87f5dc53d685e96f3c0ef69a61fc574f90c6990a1f",
+    "internalCumulativeGlobalRawGraphEdgeSetSha256": "e415fd7aabf3306ab0da07d0596cca98c3846228a676e4840bc96e2dbf820784",
+    "internalCumulativeDepthLabelledEdgeSetSha256": "cc6f5c1be386386ab67abfc50b3b6fe85465e1d7292aace7e06bc62a86b52a80",
+    "g1CompatibleTransitionSetSha256": "be534cbc3e99808a668483c21fca1720dc5ea5a7ac442075294f21a8542baea1"
+  },
+  "independentVerification": {
+    "passed": true,
+    "verifiedLayerCount": 3,
+    "verifiedParentLayerCount": 2,
+    "independentCoreSha256": "c1e5db4b98fcb1c7e406a67b0dd74aeff8c1ecf0ddfc43ad06200fc0a59af817",
+    "importsProductionEnumerator": false,
+    "importsProductionSerializer": false,
+    "negativeControls": {
+      "missingPending": true,
+      "rawKeyCorruption": true,
+      "missingSuccessor": true,
+      "missingEdge": true,
+      "depthMisassignment": true,
+      "uniqueStateAccounting": true,
+      "treeOccurrenceUndercount": true,
+      "predecessorCorruption": true
+    }
+  },
+  "artifactFileSha256": {
+    "result-core.json": "a249ba15df955a2139081423c527fc53f39ccf18ba1803f99bc8325fc6118b2e",
+    "stage0-production-summary.json": "441b94c2d134dd085ccc53326b7c9e9449cf2e2ee44b6919b0a2d5d0bc9f690a",
+    "stage0-independent-verification.json": "fb512cdb75dd4eea407d542c935fa4294fe630bd5c5e8b4aea3102ecda54b77a"
+  },
+  "attemptHistory": [
+    {
+      "workflowRunId": 33155223966,
+      "classification": "PRE-OUTPUT-WORKFLOW-INVALID",
+      "enumerationOutputGenerated": false
+    },
+    {
+      "workflowRunId": 33155385913,
+      "classification": "TECHNICAL-BLOCK-FIXTURE-HASH-SEMANTICS",
+      "accepted": false
+    },
+    {
+      "workflowRunId": 33155526103,
+      "classification": "STAGE0-TECHNICAL-PASS",
+      "accepted": true
+    }
+  ],
+  "interpretationBoundary": {
+    "scientificG2_05Evidence": false,
+    "stage1Evidence": false,
+    "stage2Evidence": false,
+    "fullGameClaimAuthorized": false,
+    "symmetryReductionUsed": false,
+    "canonicalizationUsed": false
+  }
+}

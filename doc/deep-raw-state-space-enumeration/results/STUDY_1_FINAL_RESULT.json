@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-05",
+  "studyId": "DRSSE-STUDY1",
+  "title": "Deep RAW State-Space Enumeration Study 1",
+  "researchGeneration": "Research Generation 2",
+  "formalDecision": "EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN",
+  "formalStageId": "DRSSE-S2-FORMAL-2026-08-28-v1",
+  "baselineMainSha": "c515c36a9b27a796dc7eae13fd1b2cec2b9d3ea6",
+  "formalAuthorizationSha": "9199a3d25ea38978673f94bfcd4250aa3b5411fa",
+  "rootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+  "targetDepth": 9,
+  "completeLayerRange": [0,1,2,3,4,5,6,7,8,9],
+  "completeParentExpansionRange": [0,1,2,3,4,5,6,7,8],
+  "targetComplete": true,
+  "lastCompleteDepth": 9,
+  "firstIncompleteDepth": null,
+  "stopReason": null,
+  "primaryExactEndpoints": {
+    "cumulativeDistinctRawStates": 102857,
+    "cumulativeDepthLabelledLegalEdges": 106773,
+    "cumulativeUniqueRawGraphEdges": 106773,
+    "cumulativeTreeNodeOccurrences": "136645",
+    "cumulativeTreeEdgeOccurrences": "136644",
+    "treeToCumulativeRawStateRatio": 1.328494900687362
+  },
+  "depth9Endpoints": {
+    "uniqueRawStateCount": 78009,
+    "newRawStateCount": 78009,
+    "treeNodeOccurrences": "105704",
+    "treeToLayerUniqueRatio": 1.3550231383558307,
+    "duplicateArrivalCount": 3116,
+    "statesWithMultiplePredecessors": 2658,
+    "phaseComposition": {"namuaNonterminal": 77658, "mtajiNonterminal": 0, "terminal": 351}
+  },
+  "exactSetIdentities": {
+    "cumulativeRawStateSetSha256": "993c5056ca54521b7b124d8c5c97fa18d8ef04b860b5e4c6870df278d5944816",
+    "cumulativeGlobalRawGraphEdgeSetSha256": "da836a6a0b2e18c155f59de7617b4e72ab62955410ca7725a3f3525211f9a654",
+    "cumulativeDepthLabelledEdgeSetSha256": "3453b457aee547c645be0ec3a3a5550656e9fcaa1917be13d5ac0bb0e7b69aed",
+    "productionResultCoreSha256": "b9e79571ab2492edf717569cb331f381e4dbff603684d2e932b8b57c2ffb322b",
+    "independentCoreSha256": "02e4a1fa865af977cb10c1f288c42886b32453e56a40bc85cbb0dc9975b257d3",
+    "decisionCoreSha256": "c1756994ceea3ea9b605805ddd6387f359aeb14e14d894bfc8a1e8b26122fa3f"
+  },
+  "verification": {
+    "materializedVerificationPassed": true,
+    "fullIndependentExactRecomputationPerformed": true,
+    "fullIndependentExactRecomputationPassed": true,
+    "verifiedLayerCount": 10,
+    "verifiedParentLayerCount": 9
+  },
+  "provenance": {
+    "workflowRunId": 33156581843,
+    "workflowJobId": 98800676702,
+    "actionsArtifactId": 9679860509,
+    "actionsArtifactName": "drsse-stage2-formal-v1",
+    "actionsArtifactZipSha256": "cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4ca4a71e",
+    "stage2FormalResultArtifactSha256": "3b6b0b194f79b4c768e0af775bca33ffa2e143c52f52b8f27db23c12a02c8545"
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "identityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedIdentityFields": ["turn", "reason"],
+    "validatedTransformSet": [],
+    "symmetryReductionUsed": false,
+    "canonicalizationUsed": false
+  },
+  "noRescueBoundary": {
+    "g2_04FormalDecisionChanged": false,
+    "g2_04SelectedRootsReused": false,
+    "g1SsgtcFormalDecisionChanged": false,
+    "g1Depth9PartialRowsReused": false,
+    "stage1RowsReusedInFormalStage": false,
+    "stage1RootsReusedInFormalStage": false
+  },
+  "interpretationBoundary": {
+    "exactOnlyWithinFrozenStandardRootDepth9Domain": true,
+    "fullBaoStateSpaceExactCountAuthorized": false,
+    "fullBaoGameTreeComplexityAuthorized": false,
+    "unboundedReachableStateEstimateAuthorized": false,
+    "asymptoticExtrapolationAuthorized": false,
+    "symmetryReducedStateCountAuthorized": false,
+    "g2_04RescueLanguageAuthorized": false,
+    "g1SsgtcRevisionAuthorized": false,
+    "engineeringEndpointAuthorized": false
+  }
+}

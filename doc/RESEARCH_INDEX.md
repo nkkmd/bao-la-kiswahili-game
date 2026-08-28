@@ -711,6 +711,41 @@ Frozen feasibility ruleはindependently verified complete closures `>=3`を要�
 
 ---
 
+### 21. Deep RAW State-Space Enumeration — Study 1
+
+**研究題目:** Baoにおける深層RAW状態空間の完全列挙 — prospectively fixed roots に対する bounded-depth complete enumeration, reachable-state growth, branching structure, transposition structure, and tree/graph occurrence ratio の厳密解析
+**Program:** `G2-05` / **Study ID:** `DRSSE-STUDY1` / **Research Generation 2**
+**状態:** **Study complete / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
+
+Standard initial RAW rootをoutcome前に固定し、authoritative RAW identityのみを用いてdepth 0..9の全reachable layerとparent depths 0..8の全合法edge expansionを完全列挙した。Production materializationとmandatory independent full-domain re-enumerationはいずれもPASSした。
+
+```text
+cumulative RAW states = 102857
+depth-labelled legal edges = 106773
+tree node occurrences = 136645
+tree edge occurrences = 136644
+tree / cumulative RAW-state ratio = 1.328494900687362
+```
+
+Depth 9では78,009 unique RAW states、105,704 tree occurrences、3,116 duplicate arrivals、2,658 multi-predecessor statesをexactに記録した。validated transform setは`[]`のままで、symmetry reduction / canonicalizationは使用していない。
+
+**最初に読む:**
+
+- [`deep-raw-state-space-enumeration/STUDY_1_OVERVIEW.md`](deep-raw-state-space-enumeration/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`deep-raw-state-space-enumeration/STUDY_1_FINAL_REPORT.md`](deep-raw-state-space-enumeration/STUDY_1_FINAL_REPORT.md)
+- [`deep-raw-state-space-enumeration/results/STAGE_2_FORMAL_RESULT.json`](deep-raw-state-space-enumeration/results/STAGE_2_FORMAL_RESULT.json)
+- [`deep-raw-state-space-enumeration/results/STUDY_1_FINAL_RESULT.json`](deep-raw-state-space-enumeration/results/STUDY_1_FINAL_RESULT.json)
+- [`deep-raw-state-space-enumeration/REPRODUCIBILITY_INDEX.md`](deep-raw-state-space-enumeration/REPRODUCIBILITY_INDEX.md)
+- [`deep-raw-state-space-enumeration/CURRENT_STATUS.md`](deep-raw-state-space-enumeration/CURRENT_STATUS.md)
+- [`deep-raw-state-space-enumeration/DECISION_REGISTER.md`](deep-raw-state-space-enumeration/DECISION_REGISTER.md)
+
+**Boundary:** exact claimはprospectively frozen standard-root depth-9 RAW domainだけに限定される。G2-04を救済せず、G1 SSGTCのformal decisionも変更しない。full Bao state-space / game-tree complexity、unbounded growth、asymptotic extrapolationはG2-05のendpointではなく、G2-12等のnew prospective Studyを必要とする。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

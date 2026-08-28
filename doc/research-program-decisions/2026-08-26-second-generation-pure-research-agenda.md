@@ -129,3 +129,29 @@ The prospectively frozen development gate required at least three independently 
 No resource-cap increase, domain shrinkage, root replacement, seed extension, partial-closure promotion, alternate solver substitution, symmetry reduction, or canonicalization rescue was used. `MOVE-NONTERMINATION` was not reinterpreted as a game-level `RECURRENT`/`DRAW` result.
 
 `G2-04` therefore counts as a valid `INCONCLUSIVE` Research Generation 2 closure. It changes no prior formal decision. RAW identity remains authoritative. The next independent P0 machine-only agenda item may proceed as `G2-05 — Deep RAW State-Space Enumeration Study 1`, subject to a fresh prospective contract and repository-state audit.
+
+
+## 2026-08-28 — G2-05 Deep RAW State-Space Enumeration Study 1 closure
+
+Agenda label `G2-05` was instantiated as `DRSSE-STUDY1` — **Deep RAW State-Space Enumeration Study 1** — under a fresh prospective RAW-only bounded-exact contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-PASS
+Stage 2 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
+formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
+```
+
+The standard initial RAW root, target depth 9, resource ceilings, complete-layer requirement, decision taxonomy, and independent-verification requirement were frozen before formal outcome generation. Stage 2 completed all reachable layers 0..9 and all parent expansion layers 0..8; a separate independent implementation re-enumerated the full bounded domain.
+
+```text
+cumulative RAW states = 102857
+depth-labelled legal edges = 106773
+tree node occurrences = 136645
+tree edge occurrences = 136644
+tree / cumulative RAW-state ratio = 1.328494900687362
+```
+
+No G2-04 root/partial closure, G1 SSGTC partial depth-9 row, G2-05 Stage 1 root/row, symmetry transform, or canonicalization result entered formal Stage 2 evidence. `G2-04 / REEOE-STUDY1 = INCONCLUSIVE` and G1 `SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` remain unchanged.
+
+G2-05 does not estimate total Bao state-space size or total game-tree complexity. Those questions remain separate prospective work, including `G2-12 — State-Space / Game-Tree Growth Estimation Study 1`. The next uncompleted P0 agenda item is `G2-06 — Rich Critical-Position Representation Study 1`.

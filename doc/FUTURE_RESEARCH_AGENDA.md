@@ -890,17 +890,28 @@ Production / independentはfull scan、eligible set、selected roots、closure c
 
 #### G2-05 — Deep RAW State-Space Enumeration Study 1
 
-**状態:** planned / new prospective bounded-exact study
+**状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
 中心課題:
 
 > standard rootまたはprospectively fixed rootsから、第一世代depth-8 domainを超えるbounded depthまでRAW-only complete enumerationを行い、per-depth reachable-state growth、branching、transposition structure、tree/graph occurrence比をexactに記述できるか。
 
-SSGTC-STUDY1のpartial depth-9 rowsはformal evidenceまたはestimateへ再利用しない。target depth、resource ceiling、complete-layer requirement、stop ruleをoutcome前にfreezeし、未完layerをexact countとして扱わない。
+Study-start時点でstandard initial RAW root、target depth 9、resource ceilings、complete-layer rule、formal decision taxonomyをfreezeした。Stage 0 technical validationとfresh Stage 1 development readinessを通過後、Stage 2を一度だけauthorizeして実行し、productionとindependent full-domain re-enumerationが一致した。
 
-本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。
+```text
+complete layers = 0..9
+cumulative RAW states = 102857
+depth-labelled legal edges = 106773
+tree node occurrences = 136645
+tree edge occurrences = 136644
+formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
+```
 
-**Priority:** P0
+SSGTC-STUDY1のpartial depth-9 rows、G2-04 selected roots / partial closures、G2-05 Stage 1 rows / rootsはformal evidenceへ再利用しなかった。validated transform setは`[]`で、symmetry reduction / canonicalizationは未使用である。
+
+本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。したがってfull Bao state-space / game-tree sizeの推定はG2-12へ残す。
+
+**Priority:** P0 / completed
 
 ### 9.5 Wave B — Rich Strategic Representation
 
@@ -1061,7 +1072,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop/global-failure/feasibility ruleに従い完了した。G2-03のvalidated transform setは空のままで、G2-04はRAW-only development feasibilityを満たせずStage 2未実行で閉じた。次の未着手P0候補はdependencyを確認したうえで`G2-05` Deep RAW State-Space Enumerationまたは`G2-06` Rich Critical-Position Representationから選択する。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop/global-failure/feasibility ruleに従い完了した。`G2-05`も`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`としてbounded exact enumerationを完了した。G2-03のvalidated transform setは空のままで、G2-04のStage 2未実行結果は変更されていない。次の未着手P0候補は`G2-06` Rich Critical-Position Representationである。
 
 ### 9.9 第二世代プログラムの完了条件
 

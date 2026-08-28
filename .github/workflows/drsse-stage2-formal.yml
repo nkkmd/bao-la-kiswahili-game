@@ -1,0 +1,17 @@
+name: DRSSE Stage 2 Formal — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-stage notice
+        run: |
+          echo 'DRSSE-S2-FORMAL-2026-08-28-v1 is closed as EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN.'
+          echo 'Canonical run: 33156581843; artifact: 9679860509.'
+          echo 'No additional Stage 2 formal evidence generation is authorized.'
