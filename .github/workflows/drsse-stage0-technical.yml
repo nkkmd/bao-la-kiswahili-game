@@ -1,0 +1,44 @@
+name: DRSSE Stage 0 Technical
+
+on:
+  push:
+    branches:
+      - research/g2-05-deep-raw-state-space-enumeration
+    paths:
+      - doc/deep-raw-state-space-enumeration/authorizations/STAGE_0_EXECUTE.md
+
+permissions:
+  contents: read
+
+jobs:
+  technical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Engine regression smoke
+        run: node --test test/rules.test.js
+      - name: Production technical enumeration
+        env:
+          DRSSE_STAGE0_OUT: artifacts/drsse-stage0
+        run: node --max-old-space-size=4096 tools/experiments/run-drsse-stage0-technical.js
+      - name: Separate-process independent verification and negative controls
+        env:
+          DRSSE_STAGE0_OUT: artifacts/drsse-stage0
+        run: node --max-old-space-size=4096 tools/experiments/verify-drsse-stage0-independent.js
+      - name: Artifact hashes
+        run: |
+          find artifacts/drsse-stage0 -type f -print0 | sort -z | xargs -0 sha256sum | tee artifacts/drsse-stage0/SHA256SUMS
+          echo "DRSSE_STAGE0_HEAD=${GITHUB_SHA}"
+          echo "DRSSE_STAGE0_RUN=${GITHUB_RUN_ID}"
+          echo "DRSSE_STAGE0_JOB=${GITHUB_JOB}"
+          cat artifacts/drsse-stage0/stage0-independent-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drsse-stage0-technical-v1
+          path: artifacts/drsse-stage0
+          if-no-files-found: error
+          retention-days: 90
