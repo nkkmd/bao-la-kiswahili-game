@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-03",
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S2-FORMAL-2026-08-28-v1",
+  "authorizationDate": "2026-08-28",
+  "authorized": true,
+  "formalConfirmationAuthorized": true,
+  "scientificInferenceAuthorized": true,
+  "authorizationBasis": "Prospectively frozen Stage 2 protocol, Stage 1 identity firewall, formal decision rule, independently reconstructed Stage 1 selection binding, frozen sources, and successful pre-formal audit before any Stage 2 scientific outcome existed.",
+  "prefreeze": {
+    "workflowRunId": 33145713610,
+    "workflowJobId": 98766151957,
+    "headSha": "bb6df48ab46bd1379d9aedbadb97db995e961271",
+    "artifactId": 9675658249,
+    "artifactZipSha256": "e2b6c07919875effade8f4d93b6f824d9e75522904243d079f504102ef746ae2",
+    "manifestFileSha256": "ac01b17ec365b64390e37c53fca563d3e35f014be5533b512c504da25271489a",
+    "scientificOutcomeGenerated": false,
+    "supersedesWorkflowRunId": 33145557654
+  },
+  "specSha256": "2afbef1faed32cf1a7fb71d8af924a01d721a6d8719057c68224732576a6f8f0",
+  "candidateContractSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+  "firewallSha256": "e82626b947706ae31d78675d2fab22e74524ec0c0830da61894e58425af0c1d1",
+  "decisionRuleSha256": "97125b04dfa10c0e7c359a8b1e3a48b615d6d3422a16cd801e327486be035310",
+  "stage1ResultSha256": "5f887b6d429a60a3a9cdc92b59fb626dbe626faa197c69436a0a865b7fb5e5c3",
+  "rawStateIdentitySha256": "b7bd7c07300e56273344392c9adcbaa649d2a72c4fad372494e219a41c0103f1",
+  "transformationDefinitionSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+  "sourceSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+    "tools/experiments/lib/ssgtc-representation-production.js": "eb9a25ff8026eee6efa1c4a1fe0b71e6b1bcd7701a1eb84bb46df679e5db913c",
+    "tools/experiments/lib/ssgtc-representation-independent.js": "6165404a6a45504448c2db8221a420758338c4ce8d64cf7bed0c41ee901a86fb",
+    "tools/experiments/lib/stscv-stage0-production.js": "68fa955c4601736f83c08caea242a37d46fead78c94b2939b9d1553a996428b1",
+    "tools/experiments/lib/stscv-stage0-independent.js": "c5b69be309a6fdfc31ebadaba9d388d480b0a95e3f76529a4e28d56e1af881b8",
+    "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part01.jsfrag": "47e42ca2c7263c1868450520f4af94739889a3ea1a2434876535c789080f5676",
+    "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part02.jsfrag": "f133b829916f0aaae192f2a4ff863a0f23208e2cb9567212b5beb94895035aee",
+    "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part03.jsfrag": "0f9eec2460a198e129b4dbe1d12a7dcfcaedb88d2c9adc23c90bd30653dd1a87",
+    "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part04.jsfrag": "eb19a7cd87e2b00dc5ea70372e6de8280857b04884a815464c114b53263be186",
+    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part01.jsfrag": "ea155d7057147f0cbddd1b1332d4bc8b884de68337151f8a00a554b70939e29e",
+    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part02.jsfrag": "2a3dfbc9bbf64627f409f9ac8bb534497b0972e80847ac5b35779dc7c543c12c",
+    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part03.jsfrag": "ebac64c6c889ac3749d4fc4bdac8902fe170ff5bda8c163cf905cc0076a9f35b",
+    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part04.jsfrag": "d8e3ffb0f4c8465a5b2dcc0da0a5e881078eedbde4d4ced11c06d378630ac4de",
+    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part05.jsfrag": "6d300f8f739669dc959cf5af52cc82bc2b4c3545bfca38f100b4be060538627b",
+    ".github/workflows/stscv-stage2-formal.yml": "ee60751bd04c3f2a7705d47b04b8a317f5e3eb7e0b405e3c641080af6de96206"
+  },
+  "combinedSourceSha256": {
+    "productionRunner": "faf4e81c146e0c6564599fe7c4e357cd3b9afb322149243de8086da2d69c3a7c",
+    "independentVerifier": "13b555e6ab34fda1d58213b583e8250d593a9f061c62ac403273265896cbaf93"
+  },
+  "candidateIds": [
+    "STSCV-T01-SEAT-SWAP-LOCAL",
+    "STSCV-T02-LR-MTAJI-HOUSELESS",
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS"
+  ],
+  "controlIds": [
+    "STSCV-C00-IDENTITY",
+    "STSCV-C01-LR-NO-DIRECTION-FLIP"
+  ],
+  "stage1FirewallCounts": {
+    "trajectorySeeds": 72,
+    "openingPrefixSha256": 71,
+    "rawStateKeys": 72
+  },
+  "stage2Population": {
+    "seedBlock": {"start": 26032001, "end": 26032768, "count": 768},
+    "targetRootsPerStratum": 32,
+    "localGraphDepth": 3,
+    "replacementOutsideFrozenSeedBlock": false,
+    "seedExtensionAfterOutcome": false
+  },
+  "candidateOutcomesInspectedBeforeAuthorization": false,
+  "stage2ScientificOutcomeExistedBeforeAuthorization": false,
+  "canonicalizationAuthorizedByThisFile": false,
+  "publicAIEngineeringChangeAuthorizedByThisFile": false,
+  "noRescue": true
+}

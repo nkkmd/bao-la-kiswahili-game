@@ -1,0 +1,91 @@
+#!/usr/bin/env node
+"use strict";
+
+const crypto = require("node:crypto");
+const fs = require("node:fs");
+const path = require("node:path");
+const E = require("../../public/engine.js");
+const R = require("./lib/ssgtc-representation-independent.js");
+const T = require("./lib/stscv-stage0-independent.js");
+
+const ROOT = path.resolve(__dirname, "../..");
+const SPEC_PATH = path.join(ROOT, "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_2_SPEC.json");
+const CONTRACT_PATH = path.join(ROOT, "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_1_CANDIDATE_CONTRACT.json");
+const FIREWALL_PATH = path.join(ROOT, "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_2_FIREWALL.json");
+const RULE_PATH = path.join(ROOT, "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_2_DECISION_RULE.json");
+const AUTH_PATH = path.join(ROOT, "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_2_AUTHORIZATION.json");
+const STAGE1_RESULT_PATH = path.join(ROOT, "doc/state-transformation-semantics-canonicalization-validation/results/STAGE_1_DEVELOPMENT_RESULT.json");
+
+function copied(v) { return JSON.parse(JSON.stringify(v)); }
+function shaBytes(v) { return crypto.createHash("sha256").update(v).digest("hex"); }
+function shaText(v) { return shaBytes(Buffer.from(v, "utf8")); }
+function shaFile(file) { return shaBytes(fs.readFileSync(file)); }
+function canonical(v) {
+  if (v === null || typeof v !== "object") return JSON.stringify(v);
+  if (Array.isArray(v)) return `[${v.map(canonical).join(",")}]`;
+  const names = Object.keys(v).sort((a,b)=>a<b?-1:a>b?1:0);
+  return `{${names.map((n)=>`${JSON.stringify(n)}:${canonical(v[n])}`).join(",")}}`;
+}
+function canonicalHash(v) { return shaText(canonical(v)); }
+function check(c,m) { if (!c) throw new Error(m); }
+function read(file) { return JSON.parse(fs.readFileSync(file,"utf8")); }
+function setEqual(a,b) { return JSON.stringify([...a].sort())===JSON.stringify([...b].sort()); }
+function linesHash(xs) { return shaText([...xs].sort().join("\n")); }
+function randomFor(seed) {
+  let value=seed>>>0;
+  return ()=>{ value+=0x6D2B79F5; let x=value; x=Math.imul(x^(x>>>15),x|1); x^=x+Math.imul(x^(x>>>7),x|61); return ((x^(x>>>14))>>>0)/4294967296; };
+}
+function verifyAuthorization(spec,auth) {
+  check(auth.studyId===spec.studyId && auth.stageId===spec.stageId && auth.authorized===true, "independent authorization identity");
+  check(auth.formalConfirmationAuthorized===true, "independent formal authorization missing");
+  check(auth.specSha256===shaFile(SPEC_PATH), "independent spec drift");
+  check(auth.candidateContractSha256===shaFile(CONTRACT_PATH), "independent candidate contract drift");
+  check(auth.firewallSha256===shaFile(FIREWALL_PATH), "independent firewall drift");
+  check(auth.decisionRuleSha256===shaFile(RULE_PATH), "independent decision rule drift");
+  for (const rel of spec.frozenSourcePathsToBindBeforeAuthorization) check(auth.sourceSha256?.[rel]===shaFile(path.join(ROOT,rel)),`independent source drift ${rel}`);
+}
+function stratumFor(seed,start) { return ["namua","mtaji","mtaji-houseless"][(seed-start)%3]; }
+function eligible(state,ply,stratum) {
+  R.assertStudyState(state);
+  if (state.winner!==null) return false;
+  if (stratum==="namua") return state.phase==="namua" && ply>=12;
+  if (stratum==="mtaji") return state.phase==="mtaji";
+  return state.phase==="mtaji" && state.reserve[0]===0 && state.reserve[1]===0 && state.houseOwned[0]===false && state.houseOwned[1]===false;
+}
+function trajectory(seed,spec) {
+  const rng=randomFor(seed), stratum=stratumFor(seed,spec.population.seedBlock.start);
+  let state=E.initialState(); const moveIds=[];
+  for (let ply=0; ply<=spec.population.maximumTrajectoryPly; ply+=1) {
+    R.assertStudyState(state);
+    if (eligible(state,ply,stratum)) {
+      const prefix=moveIds.slice(0,spec.population.openingPrefixLengthMoves);
+      check(prefix.length===spec.population.openingPrefixLengthMoves,`independent short prefix ${seed}`);
+      return {seed,stratum,ply,stateKey:R.key(state),openingPrefixSha256:shaText(prefix.join("\n")),state:copied(state),runtimeGuardHitBeforeSelection:false};
+    }
+    if (state.winner!==null) return {seed,stratum,unavailable:"terminal-before-eligibility",runtimeGuardHitBeforeSelection:false};
+    const moves=E.moveVariants(state);
+    if (!moves.length) return {seed,stratum,unavailable:"no-move-before-eligibility",runtimeGuardHitBeforeSelection:false};
+    const move=moves[Math.floor(rng()*moves.length)];
+    moveIds.push(R.moveIdentity(move));
+    const next=E.applyMove(state,move).state;
+    if (next.reason==="relay-limit") return {seed,stratum,unavailable:"relay-limit-before-eligibility",runtimeGuardHitBeforeSelection:true};
+    state=next;
+  }
+  return {seed,stratum,unavailable:"maximum-ply-before-eligibility",runtimeGuardHitBeforeSelection:false};
+}
+function consumedIdentitySets(fw,stage1) {
+  check(fw.sourceStage1.selectionSha256===stage1.hashes.selectionSha256,"independent Stage1 selection firewall binding");
+  check(fw.sourceStage1.measurementSha256===stage1.hashes.measurementSha256,"independent Stage1 measurement firewall binding");
+  const rows=Object.entries(stage1.selectedRoots).flatMap(([stratum,rs])=>rs.map((r)=>({stratum,...r})));
+  const recomputedSelection=linesHash(rows.map((r)=>`${r.stratum}|${r.seed}|${r.ply}|${r.openingPrefixSha256}|${r.stateKey}`));
+  check(recomputedSelection===fw.sourceStage1.selectionSha256,"independent Stage1 selectedRoots selection hash mismatch");
+  check(rows.length===fw.sourceStage1.selectedRootCount,"independent Stage1 firewall root count");
+  const seeds=new Set(rows.map((r)=>r.seed)), prefixes=new Set(rows.map((r)=>r.openingPrefixSha256)), raw=new Set(rows.map((r)=>r.stateKey));
+  check(seeds.size===fw.sourceStage1.expectedUniqueTrajectorySeeds,"independent firewall seed count");
+  check(prefixes.size===fw.sourceStage1.expectedUniqueOpeningPrefixSha256,"independent firewall prefix count");
+  check(raw.size===fw.sourceStage1.expectedUniqueRawStateKeys,"independent firewall RAW count");
+  return {seeds,prefixes,raw};
+}
+function population(spec,fw,stage1) {
+  const generated=[];
+  for(let seed=spec.population.seedBlock.start;seed<=spec.population.seedBlock.end;seed+=1) generated.push(trajectory(seed,spec));

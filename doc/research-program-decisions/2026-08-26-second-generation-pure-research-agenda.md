@@ -51,3 +51,44 @@ Stage 2 = INCONCLUSIVE
 ```
 
 The Stage 2 conclusion follows exactly from preregistered estimability failure after strict Stage 1 identity firewall. No Generation 1 decision was changed, no AI-engineering outcome was used as scientific evidence, and no post-outcome rescue was performed. `G2-01` therefore counts as a valid program closure outcome under the program rule that negative/inconclusive/non-estimable results are normal scientific closures.
+
+## Program progress — G2-02 closure
+
+Date: 2026-08-28
+
+Agenda label `G2-02` was instantiated as `SRDR-STUDY1` and completed under a separate prospective Research Generation 2 contract.
+
+```text
+Stage 1 = PROFILE-FROZEN-DEVELOPMENT
+Stage 2 = INCONCLUSIVE
+primary formal criterion = null
+```
+
+Stage 2 completed 1,536/1,536 fresh held-out games and independent replay/selection/measurement verification, but strict Stage 1 firewall left `1040 < 1050` unique historical trajectories. The single preregistered estimability failure prevented entry into the primary formal criterion. No seed extension, replacement, gate relaxation, alternate primary, favorable subgroup, or higher-resource-as-truth rescue was used.
+
+`G2-02` therefore counts as a valid `INCONCLUSIVE` program closure outcome and does not modify G2-01 or any Research Generation 1 decision.
+
+## Program progress — G2-03 closure
+
+Date: 2026-08-28
+
+Agenda label `G2-03` was instantiated as `STSCV-STUDY1` and completed under a new prospective representation-first Research Generation 2 contract.
+
+```text
+Stage 0 = technical validation complete
+Stage 1 = development evidence complete
+Stage 2 = INCONCLUSIVE
+T01 / T02 / T03 = NON-ESTIMABLE
+validated transform set = []
+canonicalization = NON-ESTIMABLE / not authorized
+```
+
+Stage 2 was explicitly authorized only after a hardened prefreeze bound the Stage 1 identity firewall, formal decision rule, RAW identity, production runner, independent verifier, and exact source hashes before any Stage 2 scientific outcome existed.
+
+Fresh held-out production measurement selected the frozen 32 + 32 + 32 roots and reported production-only candidate mismatch 0 for all three candidates. The mandatory independent verifier then failed during formal-result assembly with a technical `ReferenceError`, so the workflow-produced complete independent-verification artifact, independently verified formal-result artifact, canonical hashes, and workflow artifact were not materialized. A separate repository-facing fail-closed closure was subsequently recorded by applying the prospectively frozen global-failure rule.
+
+The prospectively frozen global-failure rule required any non-passing/not-established global gate to close the Study as `INCONCLUSIVE`, all candidates as `NON-ESTIMABLE`, and canonicalization as `NON-ESTIMABLE`. Production-only zero-mismatch diagnostics were not promoted to formal validation, and the technical failure was not reinterpreted as scientific candidate rejection.
+
+Because the verifier defect became known after fresh formal outcome generation, `STSCV-STUDY1` was not repaired and rerun on the same evidence. A future transformation/canonicalization test requires a new prospective Study or explicitly new versioned protocol with fresh authorization and fresh formal evidence.
+
+`G2-03` therefore counts as a valid program closure outcome. RAW state identity remains authoritative and G2-04/G2-05 remain independently executable as RAW-only studies.

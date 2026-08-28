@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-03",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S1-DEVELOPMENT-2026-08-28-v1",
+  "authorizationDate": "2026-08-28",
+  "authorized": true,
+  "authorizationClass": "EXPLICIT-PROSPECTIVE-STAGE1-DEVELOPMENT-AUTHORIZATION",
+  "scientificInferenceAuthorized": false,
+  "formalConfirmationAuthorized": false,
+  "canonicalizationAuthorized": false,
+  "stage2Authorized": false,
+  "baselineMain": "a8493d2a50e11f15d16ef8348f2442b262ca275d",
+  "prefreezeWorkflowRunId": 33143959121,
+  "prefreezeHeadSha": "315246914f83429bc660213b8c5f9f5e87144985",
+  "prefreezeArtifactZipSha256": "a3a4efb5cadb3e6d196ce09a38011e72e94aaa7ed45fee283fb51e376a3de4d9",
+  "specSha256": "5cc5321072ebeaded1d0be46fc8db98ffcc6a839d952ac020db4fab89fbb4943",
+  "candidateContractSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+  "rawStateIdentitySha256": "ac143e435e063a97b94f1c4584b8ef5f1f2cc257982539d9e1c67036baa126b5",
+  "transformationDefinitionSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+  "sourceSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "tools/benchmark.js": "2a893d7fe78d9d9cb211b38840c45f5c3dd9053fa3e05255b123985a08cfa808",
+    "tools/experiments/lib/ssgtc-representation-production.js": "eb9a25ff8026eee6efa1c4a1fe0b71e6b1bcd7701a1eb84bb46df679e5db913c",
+    "tools/experiments/lib/ssgtc-representation-independent.js": "6165404a6a45504448c2db8221a420758338c4ce8d64cf7bed0c41ee901a86fb",
+    "tools/experiments/lib/stscv-stage0-production.js": "68fa955c4601736f83c08caea242a37d46fead78c94b2939b9d1553a996428b1",
+    "tools/experiments/lib/stscv-stage0-independent.js": "c5b69be309a6fdfc31ebadaba9d388d480b0a95e3f76529a4e28d56e1af881b8",
+    "tools/experiments/run-stscv-stage1-development.js": "c0ac9c146062ca00df1defc421ef4f8ea662ae11542f000cef43ad170ded3b61",
+    "tools/experiments/verify-stscv-stage1-development.js": "27ed5e6b63e75eee06306a7c1b486273c19ba8581a56bd6a127e611236302051",
+    ".github/workflows/stscv-stage1-development.yml": "2c19d610e5fae40f6cad07622d9e9e976f2623595afb1d4d3befa98d37267873"
+  },
+  "frozenPopulation": {
+    "seedBlock": { "start": 26031001, "end": 26031384, "count": 384 },
+    "maximumTrajectoryPly": 160,
+    "targetRootsPerStratum": 24,
+    "openingPrefixLengthMoves": 8,
+    "localGraphDepth": 3,
+    "replacementOutsideFrozenSeedBlock": false
+  },
+  "candidateIds": [
+    "STSCV-T01-SEAT-SWAP-LOCAL",
+    "STSCV-T02-LR-MTAJI-HOUSELESS",
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS"
+  ],
+  "controlIds": [
+    "STSCV-C00-IDENTITY",
+    "STSCV-C01-LR-NO-DIRECTION-FLIP"
+  ],
+  "authorizationBasis": [
+    "Stage 0 technical validation passed with IDENTITY zero mismatch and the frozen broken negative control detected.",
+    "The Stage 1 candidate set and population were frozen before any Stage 1 scientific/development outcome.",
+    "The canonical Stage 1 prefreeze source audit passed after a preauthorization-only static-audit correction that changed no scientific definition.",
+    "All source/spec/candidate/RAW-identity hashes are frozen and source drift fails closed.",
+    "Stage 1 is development evidence only and cannot itself issue formal candidate decisions or canonicalization authorization."
+  ],
+  "stage1ConsumedIdentityAfterInspection": [
+    "selectedTrajectorySeed",
+    "openingPrefixSha256",
+    "authoritativeRawStateKey"
+  ],
+  "stage2AutomaticAuthorization": false,
+  "noRescue": true
+}

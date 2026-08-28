@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S0-TECHNICAL-2026-08-28-v1",
+  "classification": "TECHNICAL-ONLY-NON-SCIENTIFIC",
+  "workflow": {
+    "name": "STSCV Stage 0 Technical Validation",
+    "runId": 33143414612,
+    "jobId": 98759117746,
+    "headSha": "0b60be6f419d393cc6f2f2ed3b520a6ae1ac14e9",
+    "event": "push",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 9674826941,
+    "name": "stscv-stage0-technical-v1",
+    "zipSha256": "bf612fb1e7a592aad9c17d6f6ecf16c6cc65e72267614eebfc26d7127b56e835",
+    "uploadedBytes": 2172
+  },
+  "canonicalTechnicalDecision": "STSCV-STAGE0-TECHNICAL-PASS",
+  "scientificInferenceAuthorized": false,
+  "stage1ScientificGenerationAuthorized": false,
+  "stage2ScientificGenerationAuthorized": false
+}

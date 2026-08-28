@@ -1,0 +1,39 @@
+name: STSCV Stage 1 Development
+
+on:
+  push:
+    branches:
+      - research/g2-03-state-transformation-semantics-canonicalization-validation
+    paths:
+      - "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_1_AUTHORIZATION.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Engine regression
+        run: node test/engine.test.js
+      - name: Fresh Stage 1 development generation
+        run: |
+          mkdir -p artifacts/local/state-transformation-semantics-canonicalization-validation/stage1-development-v1
+          node tools/experiments/run-stscv-stage1-development.js \
+            --output artifacts/local/state-transformation-semantics-canonicalization-validation/stage1-development-v1/STAGE_1_PRODUCTION_RESULT.json
+      - name: Independent Stage 1 verification
+        run: |
+          node tools/experiments/verify-stscv-stage1-development.js \
+            --production artifacts/local/state-transformation-semantics-canonicalization-validation/stage1-development-v1/STAGE_1_PRODUCTION_RESULT.json \
+            --output artifacts/local/state-transformation-semantics-canonicalization-validation/stage1-development-v1/STAGE_1_INDEPENDENT_VERIFICATION.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stscv-stage1-development-v1
+          path: artifacts/local/state-transformation-semantics-canonicalization-validation/stage1-development-v1/
+          if-no-files-found: error

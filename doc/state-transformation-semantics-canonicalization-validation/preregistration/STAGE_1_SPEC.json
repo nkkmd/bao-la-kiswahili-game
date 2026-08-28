@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-03",
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S1-DEVELOPMENT-2026-08-28-v1",
+  "stageRole": "fresh-development-candidate-characterization",
+  "freezeDate": "2026-08-28",
+  "scientificInferenceAuthorized": false,
+  "formalConfirmationAuthorized": false,
+  "baselineMain": "a8493d2a50e11f15d16ef8348f2442b262ca275d",
+  "authorizationPath": "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_1_AUTHORIZATION.json",
+  "authoritativeRawIdentity": {
+    "include": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "exclude": ["turn", "reason"],
+    "missingPendingAllowed": false,
+    "canonicalizationForSelection": false
+  },
+  "exactMoveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+  "candidateContractPath": "doc/state-transformation-semantics-canonicalization-validation/preregistration/STAGE_1_CANDIDATE_CONTRACT.json",
+  "candidateIds": [
+    "STSCV-T01-SEAT-SWAP-LOCAL",
+    "STSCV-T02-LR-MTAJI-HOUSELESS",
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS"
+  ],
+  "controlIds": ["STSCV-C00-IDENTITY", "STSCV-C01-LR-NO-DIRECTION-FLIP"],
+  "population": {
+    "source": "fresh-historically-reachable-standard-engine-trajectories",
+    "seedBlock": { "start": 26031001, "end": 26031384, "count": 384 },
+    "maximumTrajectoryPly": 160,
+    "assignedStratumRule": {
+      "formula": "(seed - seedBlock.start) mod 3",
+      "0": "namua",
+      "1": "mtaji",
+      "2": "mtaji-houseless"
+    },
+    "oneStatePerTrajectory": true,
+    "eligibility": {
+      "common": ["winner=null", "representedSeeds=64", "no-runtime-relay-limit-before-selected-state"],
+      "namua": ["phase=namua", "ply>=12"],
+      "mtaji": ["phase=mtaji"],
+      "mtaji-houseless": ["phase=mtaji", "reserve=[0,0]", "houseOwned=[false,false]"]
+    },
+    "candidateWithinTrajectory": "first-eligible-state-for-assigned-stratum",
+    "openingPrefixLengthMoves": 8,
+    "openingPrefixDedup": "group-by-openingPrefixSha256-then-keep-lowest-rawStateKey-then-lowest-seed",
+    "rawStateDedup": true,
+    "selectionOrderAfterDedup": "rawStateKey-ascending-then-seed-ascending",
+    "targetRootsPerStratum": 24,
+    "replacementOutsideFrozenSeedBlock": false,
+    "selectionBlindTo": [
+      "candidate-transform-success",
+      "candidate-mismatch-count",
+      "search-result",
+      "game-outcome-beyond-common-eligibility",
+      "favorable-candidate-specific-result"
+    ]
+  },
+  "localGraph": {
+    "depth": 3,
+    "expandAllExactMoveVariants": true,
+    "runtimeRelayLimitHitPolicy": "stage1-readiness-failure",
+    "rawStateDedupOnly": true,
+    "canonicalization": false
+  },
+  "candidateScopes": {
+    "STSCV-T01-SEAT-SWAP-LOCAL": ["namua", "mtaji", "mtaji-houseless"],
+    "STSCV-T02-LR-MTAJI-HOUSELESS": ["mtaji-houseless"],
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": ["mtaji-houseless"]
+  },
+  "controlScopes": {
+    "STSCV-C00-IDENTITY": ["namua", "mtaji", "mtaji-houseless"],
+    "STSCV-C01-LR-NO-DIRECTION-FLIP": ["mtaji-houseless"]
+  },
+  "measurement": {
+    "perCandidateExactGates": [
+      "transformed-state-validity",
+      "inverse-roundtrip",
+      "applicability-closure",
+      "raw-reconstruction",
+      "exact-legal-move-cardinality",
+      "exact-legal-move-bijection",
+      "unique-exact-move-mapping",
+      "transition-commutation",
+      "terminal-preservation",
+      "winner-equivariance",
+      "phase-semantics",
+      "pending-reserve-houseOwned-semantics",
+      "bounded-node-bijection",
+      "bounded-edge-bijection",
+      "adjacency-preservation"
+    ],
+    "mismatchTolerance": 0,
+    "approximatePassAllowed": false,
+    "candidateOutcomeRole": "development-characterization-only"
+  },
+  "independentVerification": {
+    "required": true,
+    "regeneratePopulation": true,
+    "regenerateRawIdentity": true,
+    "independentTransformImplementation": true,
+    "regenerateLegalMovesAndSuccessorsAgainstFrozenRuleEngine": true,
+    "regenerateGraphBinding": true,
+    "compareSelectionHash": true,
+    "compareMeasurementHash": true,
+    "compareCandidateGateCounts": true
+  },
+  "readinessGatesForConsideringStage2": {
+    "S1-R1": "selectedRootsPerStratum>=24 for namua, mtaji, mtaji-houseless",
+    "S1-R2": "trajectory and local-graph runtime relay-limit hits=0",
+    "S1-R3": "IDENTITY has zero mismatch on every applicable selected state/edge/graph gate",
+    "S1-R4": "negative control has at least one interpretable semantic mismatch",
+    "S1-R5": "production and independent selection/measurement/candidate-gate hashes agree",
+    "S1-R6": "source/spec/candidate/authorization hashes all match frozen values"
+  },
+  "stage2AuthorizationPolicy": {
+    "automatic": false,
+    "candidateFavorabilityRequired": false,
+    "failedScientificCandidateMayBeCarriedForwardForHeldOutFormalRejectionTest": true,
+    "requiresAllReadinessGates": true,
+    "requiresSeparateProspectiveStage2Spec": true,
+    "requiresSeparateExplicitAuthorization": true
+  },
+  "stage1ConsumptionFirewall": {
+    "consumeSelectedAndInspectedTrajectorySeeds": true,
+    "consumeOpeningPrefixHashes": true,
+    "consumeRawStateKeys": true,
+    "reuseInStage2": false
+  },
+  "frozenSourcePathsToBindBeforeAuthorization": [
+    "public/engine.js",
+    "tools/benchmark.js",
+    "tools/experiments/lib/ssgtc-representation-production.js",
+    "tools/experiments/lib/ssgtc-representation-independent.js",
+    "tools/experiments/lib/stscv-stage0-production.js",
+    "tools/experiments/lib/stscv-stage0-independent.js",
+    "tools/experiments/run-stscv-stage1-development.js",
+    "tools/experiments/verify-stscv-stage1-development.js",
+    ".github/workflows/stscv-stage1-development.yml"
+  ],
+  "noRescue": {
+    "seedExtension": false,
+    "stateReplacementOutsideFrozenBlock": false,
+    "failedCandidateRepair": false,
+    "favorablePhaseRestriction": false,
+    "mismatchExclusion": false,
+    "toleranceAddition": false,
+    "candidateSetChangeAfterOutcome": false
+  }
+}

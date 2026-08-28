@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S2-FORMAL-2026-08-28-v1",
+  "classification": "PRE-FORMAL-WORKFLOW-PROVENANCE",
+  "workflowRunId": 33145713610,
+  "workflowJobId": 98766151957,
+  "headSha": "bb6df48ab46bd1379d9aedbadb97db995e961271",
+  "conclusion": "success",
+  "artifactId": 9675658249,
+  "artifactZipSha256": "e2b6c07919875effade8f4d93b6f824d9e75522904243d079f504102ef746ae2",
+  "manifestFileSha256": "ac01b17ec365b64390e37c53fca563d3e35f014be5533b512c504da25271489a",
+  "scientificOutcomeGenerated": false,
+  "readyForExplicitAuthorization": true,
+  "supersedesWorkflowRunId": 33145557654,
+  "supersessionReason": "Prospective pre-outcome firewall integrity hardening: Stage 1 selected roots are now required to reproduce the frozen Stage 1 selection SHA-256 independently in production, independent verifier, and prefreeze audit."
+}

@@ -316,7 +316,7 @@ C01-C03はfrozen structural/reply failure signature自体は高率に再現し�
 
 **詳細・正本:**
 
-- [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md) — Study 1科学的最終統合
+- [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md) — Study 1科学的統合
 - [`blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json) — canonical compact Stage 2 formal result
 - [`blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md`](blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md) — commit / hash / artifact / tooling索引
 - [`blunder-misvaluation-patterns/CURRENT_STATUS.md`](blunder-misvaluation-patterns/CURRENT_STATUS.md) — closure状態とfixed boundaries
@@ -575,7 +575,6 @@ Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせ�
 
 ---
 
-
 ### 17. Position Evaluation / Empirical Outcome Calibration Replication — Study 1
 
 **研究題目:** Baoにおける形勢評価値と経験的継続結果の校正再検証 — strict identity firewall下でのfresh held-out replication
@@ -603,7 +602,6 @@ Stage 1は2,048 fresh gamesで全readiness gateをPASSし、phase-stratified iso
 **Boundary:** 同じStage 2 dataに追加game、seed extension、replacement、gate relaxation、mapping refit、near-miss exception、favorable subgroupを適用してformal decisionを救済しない。game-theoretic / human / causal / public-AI-quality claimは本Study外。
 
 ---
-
 
 ### 18. Search Reliability / Decision Robustness — Study 1
 
@@ -634,6 +632,47 @@ Descriptive secondary profileではD2→D3 canonical-best agreement `0.734856`�
 
 ---
 
+### 19. State Transformation Semantics / Canonicalization Validation — Study 1
+
+**研究題目:** Baoにおける状態変換意味論とcanonicalizationの厳密検証 — rule-semantic validity, legal-move equivariance, successor binding, graph isomorphism, and prospective canonicalization authorization  
+**Program:** `G2-03` / **Study ID:** `STSCV-STUDY1` / **Research Generation 2**  
+**状態:** **Study complete / formal decision `INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`**
+
+SIP-STUDY1の5 `NON-ESTIMABLE`、ORISC Axis A `NOT-CONFIRMED` / Axis B未実行を変更せず、representation bindingを最初から明示したfresh RAW-state evidenceでstate transformationを検証した。Stage 1は72 fresh development rootsを使い、trajectory seed / opening prefix / RAW stateをStage 2からfirewallした。Stage 2はseeds `26032001..26032768`、Namua/Mtaji/Mtaji-houseless各32 roots、depth 3、zero mismatch toleranceをoutcome前にfreezeし、hardened prefreezeとexplicit authorizationを経て実行した。
+
+Fresh held-out production measurementは凍結quotaどおり96 rootsを選択し、T01 seat-swap-local、T02 LR-Mtaji-houseless、T03 compositionのproduction-only mismatchは全て0だった。しかしmandatory independent verifierがformal-result assembly時に`ReferenceError: standardStartReachablePopulationDedupDecision is not defined`で停止し、complete independent verification / formal result / canonical hashes / workflow artifactをmaterializeできなかった。
+
+Prospectively frozen global-failure ruleは、1つでもglobal gateがPASSしない場合にStudy `INCONCLUSIVE`、candidate `NON-ESTIMABLE`、canonicalization `NON-ESTIMABLE`とする。したがって最終closureは:
+
+```text
+STSCV-STUDY1 = INCONCLUSIVE
+STSCV-T01-SEAT-SWAP-LOCAL = NON-ESTIMABLE
+STSCV-T02-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+validated transform set = []
+semantic-domain canonicalization = NON-ESTIMABLE
+standard-start reachable-population deduplication = NON-ESTIMABLE
+```
+
+Production-only zero-mismatch diagnosticsをformal validationへ救済せず、technical verifier failureをscientific rejectionへも読み替えていない。Verifier defectはfresh outcome生成後に判明したため、同じStage 2 evidenceへのsource修正・再実行は行わない。
+
+**最初に読む:**
+
+- [`state-transformation-semantics-canonicalization-validation/STUDY_1_OVERVIEW.md`](state-transformation-semantics-canonicalization-validation/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`state-transformation-semantics-canonicalization-validation/STUDY_1_FINAL_REPORT.md`](state-transformation-semantics-canonicalization-validation/STUDY_1_FINAL_REPORT.md)
+- [`state-transformation-semantics-canonicalization-validation/results/STAGE_2_FORMAL_RESULT.json`](state-transformation-semantics-canonicalization-validation/results/STAGE_2_FORMAL_RESULT.json)
+- [`state-transformation-semantics-canonicalization-validation/results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json`](state-transformation-semantics-canonicalization-validation/results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json)
+- [`state-transformation-semantics-canonicalization-validation/REPRODUCIBILITY_INDEX.md`](state-transformation-semantics-canonicalization-validation/REPRODUCIBILITY_INDEX.md)
+- [`state-transformation-semantics-canonicalization-validation/CURRENT_STATUS.md`](state-transformation-semantics-canonicalization-validation/CURRENT_STATUS.md)
+- [`state-transformation-semantics-canonicalization-validation/DECISION_REGISTER.md`](state-transformation-semantics-canonicalization-validation/DECISION_REGISTER.md)
+
+**Boundary:** canonicalization for scientific population identity / symmetry-reduced state countingは未承認のまま。SIP、ORISC、SSGTC、G2-01、G2-02のformal decisionを変更しない。Transformation hypothesesを再検証する場合はnew prospective Studyまたはexplicitly new versioned protocolとfresh evidenceを必要とする。
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
@@ -661,6 +700,8 @@ Blunder / Misvaluation Patterns Study 1は0 `CONFIRMED` / 4 `NOT-CONFIRMED`で�
 Critical Positions / Outcome Branching Study 1はStage 1で0 promoted candidatesとなり閉じました。同じStage 1 outcomeを見た後にgrammarを広げる、near-missをpromotionする、support/divergence thresholdを緩和する、Stage 2 targetを手動選択することはfuture workに含めません。より豊富なstructural representationや別candidate grammarを検証する場合は、新しいprospective independent studyとしてfresh design/evidenceを用います。
 
 ORISC-STUDY1はAxis A `NOT-CONFIRMED`、Axis B未実行で閉じました。同じclosed Study内でrepository rowを書き換えてAxis Aを再判定したり、Stage 2 authorizationを後付けしたりしません。repository representationを修復・置換して再評価する場合や非自明symmetryを再検証する場合は、新しいprospective study/versioned protocolとfresh authorizationを使用します。
+
+STSCV-STUDY1は`INCONCLUSIVE`、3 candidatesすべて`NON-ESTIMABLE`で閉じました。production-only zero-mismatch diagnosticsをvalidated transformへ昇格させず、outcome後にindependent verifier sourceを修正して同じStage 2 evidenceを再実行することもfuture workに含めません。state transformation / canonicalizationを再検証する場合はnew prospective Studyまたはexplicitly new versioned protocol、fresh authorization、fresh formal evidenceを用います。
 
 ---
 
