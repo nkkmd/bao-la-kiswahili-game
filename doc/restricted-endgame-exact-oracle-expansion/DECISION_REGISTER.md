@@ -277,3 +277,96 @@ A genuine implementation defect found before scientific outcome may be corrected
 ## D-037 — Stage 0 first task
 
 The first technical task is to audit current RAW serialization, move identity, guard-free endgame transition, complete closure traversal, retrograde implementation, and independent verifier; then reproduce the positive fixture and demonstrate detection of all four corruption controls.
+
+## D-038 — Stage 0 accepted as technical PASS only
+
+Stage 0 workflow run `33150063023` passed all frozen technical gates and independently reproduced the immutable REWR 8-state / 7-edge graph, predecessor relation, exact solution, DTF, and all optimal/max-resistance moves. All four frozen corruption controls were detected.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+scientificEvidence = false
+artifactId = 9677327024
+artifactZipSha256 = 37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d3a7dac0
+```
+
+This result validates the technical instrument only and does not add fresh exact-oracle evidence.
+
+## D-039 — Missing `pending` compatibility fallback is not G2-04 authority
+
+Legacy REWR helpers can synthesize `pending=[0,0]` when the field is absent. G2-04 therefore added strict production/independent validation that rejects missing `pending` before scientific identity use. Historical REWR helpers were not rewritten, and reconstructed terminal rows preserved the current raw `pending` semantics.
+
+## D-040 — Stage 1 v1 was prospectively authorized as development-only
+
+Stage 1 v1 froze fresh seeds `24040001..24040512`, the structural envelope `nonEmptyPitCount<=18`, `exactLegalMoveCount<=2`, maximum 8 roots, and per-root ceilings of 100,000 states, 500,000 edges, and 1,000,000 move microstates. It prohibited retrograde outcome inspection for selection.
+
+## D-041 — Stage 1 v1 is technical-invalid and its evidence is consumed
+
+In workflow run `33150429724`, production development completed but the independent verifier failed to start because of an incorrect module path. Since production output had already been generated, the same evidence was not repaired and rerun.
+
+```text
+Stage 1 v1 = TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
+sameEvidenceRerunAuthorized = false
+v1ProductionOutputsEligibleForV2OrStage2Design = false
+v1SeedAndRawIdentitiesConsumed = true
+```
+
+## D-042 — Stage 1 v2 changed only fresh identities and verifier hardening
+
+A new version `REEOE-S1-DEVELOPMENT-2026-08-28-v2` was frozen before execution. The structural envelope, resource ceilings, selection order, maximum selected roots, and acceptance rule were unchanged from v1. The fresh block was `24041001..24041512`. The independent verifier was strengthened to regenerate the complete 512-trajectory scan, eligible set, first-eight selection, and per-root closures.
+
+This was not an outcome-driven rescue of v1; v1 production-only outputs were prohibited design inputs.
+
+## D-043 — Stage 1 v2 source freeze and authorization
+
+Stage 1 v2 execution was authorized only after production runner, independent verifier, spec, Stage 0 result, rule engine, benchmark, and exact-transition dependencies were frozen by Git blob identity. Stage 2 remained explicitly unauthorized.
+
+## D-044 — Stage 1 v2 validly fails the frozen acceptance gate
+
+Workflow run `33151053940` selected 8 roots from 7,055 unique witnessed roots / 141 eligible roots. Production and independent verification agreed through full scan, eligible-set reconstruction, selected-root identity/order, and closure classification. The frozen acceptance rule required at least 3 independently verified complete closures; the observed complete count was 0.
+
+```text
+Stage 1 v2 = STAGE1-DEVELOPMENT-BLOCKED
+selected roots = 8
+complete closures = 0
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
+```
+
+The workflow's nonzero conclusion reflects the preregistered acceptance failure, not an independent-verifier disagreement.
+
+## D-045 — Development stop labels remain non-game classifications
+
+`STATE-LIMIT` and `ADMIN-CUTOFF` are resource/administrative conditions. `MOVE-NONTERMINATION` records detected deterministic intra-move microstate recurrence under the guard-free transition instrument. None is automatically a game-level `WIN`, `LOSS`, `RECURRENT`, or `DRAW` result.
+
+## D-046 — Stage 2 is not authorized
+
+The valid Stage 1 v2 result did not pass the frozen development feasibility rule. Therefore no Stage 2 formal-domain definition, source freeze, authorization, production run, independent verification, or domain-level exact decision is created within REEOE-STUDY1.
+
+```text
+REEOE-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
+formal domains evaluated = 0
+fresh G2-04 exact oracle produced = false
+```
+
+## D-047 — No same-study feasibility rescue
+
+After Stage 1 v2 outcome, REEOE-STUDY1 does not increase the state/edge/microstate cap, shrink the domain, replace roots, extend seeds, ignore nontermination, promote partial closures, substitute a solver, or introduce symmetry/canonicalization. Any materially different exact-oracle expansion design requires a new prospective independent Study/versioned protocol and fresh evidence.
+
+## D-048 — Formal Study decision is INCONCLUSIVE
+
+The Study closes as:
+
+> **`INCONCLUSIVE`**
+
+The technical instrument passed, but the frozen fresh development design did not establish the complete-closure feasibility required to authorize Stage 2. Because Stage 2 was never authorized or executed, no formal domain-level exact-oracle decision exists.
+
+This is a valid fail-closed Research Generation 2 closure and does not imply that Bao endgames or future restricted domains are inherently unsolvable.
+
+## D-049 — Upstream decisions remain unchanged
+
+No G2-01, G2-02, G2-03, REWR, ORISC, SSGTC, or AI-engineering decision is modified. REWR remains exact only for its immutable 8-state / 7-edge domain, and the G2-03 validated transformation set remains empty.
+
+## D-050 — Post-closure scientific workflow lock
+
+The invalidated Stage 1 v1 workflow is an archival stub. After canonical closure records are complete, Stage 1 v2 and Stage 0 execution workflows are also to be converted to archival stubs so PR synchronization or later documentation changes cannot create duplicate scientific/technical evidence. Historical executable source remains preserved in Git history and bound by the recorded run/head/source identities.
