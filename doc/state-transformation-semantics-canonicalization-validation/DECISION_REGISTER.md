@@ -163,3 +163,146 @@ No post-outcome candidate repair, failed-state exclusion, favorable phase restri
 ## D-021 — Study-start scientific generation lock
 
 At study start, no Stage 1 or Stage 2 scientific outcome generation is authorized. The only next eligible work is Stage 0 technical validation under `STSCV-S0-TECHNICAL-2026-08-28-v1`.
+
+## D-022 — Stage 1 development closure
+
+Stage 1 completed as fresh development evidence only.
+
+```text
+selected roots = 72
+Namua = 24
+Mtaji = 24
+Mtaji-houseless = 24
+formal candidate decisions authorized = false
+```
+
+Stage 1 selected trajectory seeds, opening-prefix identities, and RAW-state identities are consumed and prospectively firewalled from Stage 2.
+
+## D-023 — Stage 2 prospective freeze and authorization
+
+The hardened Stage 2 prefreeze workflow `33145713610` passed before any Stage 2 scientific outcome existed. Stage 1 selection binding was independently recomputed during prefreeze hardening rather than trusting a stored hash.
+
+Stage 2 was explicitly authorized only at commit:
+
+```text
+c7619ded9f682b499a02d023b40ac54ba4dc95ca
+```
+
+Frozen formal population:
+
+```text
+seeds = 26032001..26032768
+target roots per stratum = 32
+strata = Namua / Mtaji / Mtaji-houseless
+local graph depth = 3
+replacement outside seed block = false
+seed extension after outcome = false
+```
+
+## D-024 — Frozen Stage 2 global-failure rule controls closure
+
+`STAGE_2_DECISION_RULE.json` requires all six global gates to PASS before candidate mismatch can receive a scientific decision.
+
+If any global gate fails or is not established:
+
+```text
+study = INCONCLUSIVE
+candidate = NON-ESTIMABLE
+canonicalization = NON-ESTIMABLE
+scientific mismatch interpretation authorized = false
+```
+
+This rule was frozen before Stage 2 outcome generation and is not altered after the workflow failure.
+
+## D-025 — Stage 2 production measurement completed but is non-decisional without mandatory independent verification
+
+Authorized workflow run `33145860098` completed the fresh production measurement and selected the exact target quotas:
+
+```text
+Namua = 32
+Mtaji = 32
+Mtaji-houseless = 32
+```
+
+Production-only mismatch diagnostics were:
+
+```text
+T01 = 0
+T02 = 0
+T03 = 0
+```
+
+These values are retained as diagnostics only. They are not `VALIDATED-BOUNDED-ISOMORPHISM` decisions because the global independent-verification precondition was not established.
+
+## D-026 — Independent verifier failure is technical/reproducibility failure, not scientific mismatch
+
+The mandatory independent verifier terminated during formal-result assembly with:
+
+```text
+ReferenceError: standardStartReachablePopulationDedupDecision is not defined
+```
+
+The canonical independent verification result, formal result, canonical hashes, and workflow artifact ZIP were not materialized by the scientific workflow.
+
+The failure is classified as:
+
+```text
+POST-MEASUREMENT-INDEPENDENT-VERIFIER-RESULT-ASSEMBLY-IMPLEMENTATION-ERROR
+```
+
+It is not interpreted as evidence that any candidate transform mismatched rule semantics.
+
+## D-027 — Final candidate decisions
+
+Because S2-G5 was not established as a complete canonical independent-verification result, the frozen global-failure rule applies.
+
+```text
+STSCV-T01-SEAT-SWAP-LOCAL = NON-ESTIMABLE
+STSCV-T02-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+validated transform set = []
+```
+
+No candidate is labeled `NOT-VALIDATED`, because scientific mismatch interpretation is not authorized under the failed global gate.
+
+## D-028 — Final Study decision
+
+```text
+STSCV-STUDY1 = INCONCLUSIVE
+```
+
+This is the terminal formal decision for Study 1.
+
+## D-029 — Canonicalization remains non-estimable and unauthorized
+
+```text
+semantic-domain canonicalization = NON-ESTIMABLE
+standard-start reachable-population deduplication = NON-ESTIMABLE
+scientific population identity may use canonicalization = false
+symmetry-reduced state counting authorized = false
+```
+
+Production-only semantic-domain canonicalization diagnostics cannot authorize the endpoint without mandatory independent verification.
+
+Separately, production diagnostics show that none of T01/T02/T03 preserves the standard initial RAW state, and no independent standard-start reachability-closure proof was implemented.
+
+## D-030 — No post-outcome verifier repair and rerun within Study 1
+
+The verifier variable-name defect became known only after fresh held-out Stage 2 production outcome generation. The frozen no-rescue contract therefore prohibits fixing the verifier source and rerunning the same Stage 2 evidence to obtain a candidate decision within this Study.
+
+A future formal test requires a new prospective Study or explicitly new versioned protocol with fresh authorization and fresh evidence.
+
+## D-031 — Downstream state after closure
+
+The following remain unauthorized by STSCV-STUDY1:
+
+```text
+canonicalization for scientific population identity
+symmetry-reduced state counting
+retrofit of symmetry reduction into SSGTC-STUDY1
+retrospective repair/redecision of SIP-STUDY1 or ORISC-STUDY1
+G2-01/G2-02 rescue
+public AI engineering changes
+```
+
+The terminal G2-03 closure changes no upstream Study decision.
