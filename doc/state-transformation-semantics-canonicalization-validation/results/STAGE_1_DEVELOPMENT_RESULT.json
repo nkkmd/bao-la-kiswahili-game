@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-03",
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S1-DEVELOPMENT-2026-08-28-v1",
+  "stageRole": "fresh-development-candidate-characterization",
+  "formalCandidateDecisionsAuthorized": false,
+  "stage2Authorized": false,
+  "canonicalizationAuthorized": false,
+  "workflow": {
+    "runId": 33144060069,
+    "artifactId": 9675082539,
+    "artifactZipSha256": "86d7a8635ab9e06632f67e9039371aa053fbc224e71ee70576bb983d0abd6ca5"
+  },
+  "hashes": {
+    "specSha256": "5cc5321072ebeaded1d0be46fc8db98ffcc6a839d952ac020db4fab89fbb4943",
+    "candidateContractSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+    "authorizationSha256": "e1113e6dd0f0ae15ed4b0e661fa42e5f0c2b037ff5701545dd53970979850731",
+    "selectionSha256": "f1cfeed4b712885ca1dd0ec84ea537b5ec8177fe64f16c677971558b2e2ae7c5",
+    "measurementSha256": "bae92c61d3a9736130da6d80a3ea6a6a7597d8277cfe362b13127749b7b74bf8"
+  },
+  "selectedRootCounts": {
+    "namua": 24,
+    "mtaji": 24,
+    "mtaji-houseless": 24
+  },
+  "selectedRoots": {
+    "namua": [
+      {"seed":26031001,"ply":12,"stateKey":"03d29524af11abdfac95356cca614f5d0124843c7e736491da519342074459a1","openingPrefixSha256":"971f96fc7d312e8e39b46e8810eddc5c7e51805cc19d19a8d42d2ca941eca500"},
+      {"seed":26031040,"ply":12,"stateKey":"044cf4f1156c852879bfa597f9ef68a06a1821d3b53fdfc75f72b0b91ae7ee39","openingPrefixSha256":"cf2a2b00a991be74144ed7e40dfd024ec0ca6c0b3006c6e746f057c2a5445c50"},
+      {"seed":26031301,"ply":12,"stateKey":"06798750d4584702dbb366f0b3b0f706643bfcc52e1ef429ce5432bb0a34ce8a","openingPrefixSha256":"34a0cd532bf48fdc7b5ec5255cfdf23ac04f934f80c191e212a5a0f8eebedb0d"},
+      {"seed":26031055,"ply":12,"stateKey":"0c4035b9302b4ecb6dad0f8f88cfed87401b2fc78820bb0e52a6631070bb66ac","openingPrefixSha256":"4efbd6e7b24c695f2e9709cfc7051f94490e277320726d5b4c3a1ff25cfed18d"},
+      {"seed":26031097,"ply":12,"stateKey":"0d53bda78f2edbc6d302e046d780e4a8e5e89bca20813bccd451d976bcaef3f6","openingPrefixSha256":"c53f0c67f2064a61fbd1b971bfaecda3d42041ad59f2731126ffbe624594ab2d"},
+      {"seed":26031184,"ply":12,"stateKey":"0eec1dbfb6e6c2d0ef93f62f4d30a1d430b00c67ef1994818c63249cb42ae3c0","openingPrefixSha256":"906cbadde32b37d0450d09327cdc96f0f936ad532ae91d95f579800bf6eb5dd8"},
+      {"seed":26031340,"ply":12,"stateKey":"10b712f91cde755ac1efe9747890b4323072561551c409585329dd99dda66a06","openingPrefixSha256":"c16ffaca21a1e7e2c4f696e12ed40c6e2423f98f8c2e433c27cc8a84f57aad31"},
+      {"seed":26031217,"ply":12,"stateKey":"11415f45e5098e4c925e544a24566af384f666a112a700d3b16f065c57ae6e2f","openingPrefixSha256":"5e97a030fc0ca18c45d8f5a8fe10d0f1ed1a01c1d6b1e7c5d6fdc1811c4c0880"},
+      {"seed":26031223,"ply":12,"stateKey":"130b9a7d696517826b0bf969c59f5932171c1c9471cb1345c6237a27f2b17ccd","openingPrefixSha256":"7608b55a81fb6e3ca413df2b90b4530d385ef4c6531738d9238dd9133bf30176"},
+      {"seed":26031235,"ply":12,"stateKey":"1395b83c69126e3babe40a9cd2a076fa230b57fcd10fdcc94ea324e5a5c23d43","openingPrefixSha256":"fca372c95e9cfe07d3627bd95864f49affb280528b8edbc224508c7cf89b6adf"},
+      {"seed":26031127,"ply":12,"stateKey":"1cc6f5a5db99be88c528e0b42c73b279562675c93a789c9e896b916a3bfe28ba","openingPrefixSha256":"0e02a362c412721c8b694f5ee97b772d3b4ca6db57430260fbda0091a43eb2ea"},
+      {"seed":26031214,"ply":12,"stateKey":"1ed7505c5dfc3adfb8edebd69e1c22b366c1902ddcc73b4966affb0396528aaa","openingPrefixSha256":"c2ec3da9cded5b7dc4bfb953b74ddfd6c77f4ab33b5d4979bef54118e071c442"},
+      {"seed":26031178,"ply":12,"stateKey":"1fe0167536b20d5021f88a31562a8f29aab16e8959f65308168bc55cafa1c750","openingPrefixSha256":"308b606e6e2db0e5cc05965d5cb77c64ac357e0fcb9bb3a5f6b4cca46c9c1cf3"},
+      {"seed":26031376,"ply":12,"stateKey":"24172433d7a62cdd3434e9b6b609420e7545e134f4245f50a3ac493ede8c8e03","openingPrefixSha256":"87d7dd2babf1dbc75f85d0a631fd95539b37dc7adb9b2215cf3e6f40e857236a"},
+      {"seed":26031115,"ply":12,"stateKey":"249099aa17533d4f57028850ead902529001b7fa2f16517fb0271ec9d8629082","openingPrefixSha256":"fba259e172cc5164ad6940bf36c0b9c67f73daf69b7e056dc835c41541bc17d6"},
+      {"seed":26031166,"ply":12,"stateKey":"24dd0ec08f44b2232feba812b868cf4800551fec23fb5be903d785ff44a9e061","openingPrefixSha256":"32b0fc02140a2089684efe48f10e5ac239862949fbeeb5258406b3a414cc029d"},
+      {"seed":26031298,"ply":12,"stateKey":"2740a9e597b608e9985cf793114fc8e92dae9d7568794cd41a07e7e7d02b4c07","openingPrefixSha256":"2931107e9bf7fdeb352dc09aeeeef5c7eebbe8277de135287b8fc8fe345eff2e"},
+      {"seed":26031010,"ply":12,"stateKey":"287198f7841672fb6473c9806978bc2a1bf055f64788bc0a67b97faf6615de43","openingPrefixSha256":"1a50787d3189130bbaf3c522c79367627ebcc7883ce8e935b0db9a7a54c2b846"},
+      {"seed":26031202,"ply":12,"stateKey":"2a8cb2f7535ebea5fde92783449dfd98f2122951fe731a4f970bb7fe15ab1d20","openingPrefixSha256":"a584fa18f08c57089e1ca8e73c90b4ae5efb3da1da18b9a6deffca96aa156a68"},
+      {"seed":26031133,"ply":12,"stateKey":"2db824b7349f0fdb3bdc286af47493c72b5d70db3e35167e473ff3f7160014b7","openingPrefixSha256":"ab7ff4cdb34d7e316be93e234e419fc31510f3946270d84541e0962875b0adf7"},
+      {"seed":26031058,"ply":12,"stateKey":"33598ea1a9e2817e946698fa27fc902841fb671b8f4f264c3f4c20dd1551e165","openingPrefixSha256":"843de0ba77b8465e0140694573650b0e61e9630321e272c6c1e73b34b77bb6bd"},
+      {"seed":26031046,"ply":12,"stateKey":"354e207e59d826ff56d74e216baf02642fc1150ae52c9e1817ee0c7d98653a75","openingPrefixSha256":"c6b3191728226f2a1a4410c92fc17bfed8393bd3e80111195200242187586cb3"},
+      {"seed":26031073,"ply":12,"stateKey":"35719b85a4996fcaf65c4cc0e624c238b0970a3a75e6956da636ff567533e869","openingPrefixSha256":"d764affbe8aa614788b91397e45d61d8b05ff698e8c9fc4efadab8dd353a2210"},
+      {"seed":26031373,"ply":12,"stateKey":"36d73962b83522dbf6f1de804bfabc648f54c674c0362d305a1a4222a74b50d5","openingPrefixSha256":"280f2b53dde97b1a9d10389453505407e1152c1a93011d59b4970a96e15d7bea"}
+    ],
+    "mtaji": [
+      {"seed":26031314,"ply":44,"stateKey":"007c76e8b4d073c77ce097fd52ca3afb683836ac8a5c5db83297dff7a6688332","openingPrefixSha256":"b572e9bb10ddb96f65d2f0c708a97b07f1e5bf8ffe785b7662e3d9cf6b4b6cb7"},
+      {"seed":26031095,"ply":44,"stateKey":"04f8672fa1a1e9b46ec4c12795641a61d95c4d8c4fd2d7a3227dde18eebf6f32","openingPrefixSha256":"f6475f6542e3febd75803094a65e06e358967717bc42ca1b6a49b871e74b35b9"},
+      {"seed":26031182,"ply":44,"stateKey":"09e706ebc709d993c0097e1262a7f11b0be69e0ef11753880e078b26dbff81c4","openingPrefixSha256":"f740368ebcaf08c94d068ec579014079dcd507f3932f811aa21c47a68f8b29e9"},
+      {"seed":26031284,"ply":44,"stateKey":"0a5f39e2ae2f5baa7e2acee2daa5f76e85ab854331594feee4b12ea6b3fee7ff","openingPrefixSha256":"5291f5e40a4605ea5fbc1b264747d38d60ac9ba0bcadf2fc447dacbc29c55d35"},
+      {"seed":26031134,"ply":44,"stateKey":"0bb9ec6ac61c11ae8130af5c823a7858cf5b3805394b76c58339f66847d04985","openingPrefixSha256":"74cd16dd3aa7133d30f1d7a237b9c73bbe7c572d5af4b664ae246615c4dfa8a0"},
+      {"seed":26031230,"ply":44,"stateKey":"0c12f6a788bd8f16d4e2e0200dfbd30e4c9021a74bb9b614e36e847fb7f37e06","openingPrefixSha256":"597d46de7eb6a5c2bb9f8442bc7364a9c748ce28bf678703d960ed74093dc0cf"},
+      {"seed":26031080,"ply":44,"stateKey":"0d83edd3bb4d1285451a9c1158c8679c10e5f2c762113c1c5778c3779fa5fe7f","openingPrefixSha256":"a5f55eb956a43c09d3c1b636a4137e2faae5acf65043a2199c9386f1a448dc2d"},
+      {"seed":26031068,"ply":44,"stateKey":"102e5cb329130c849754727c136b38ff7c5d03def0d8367fefdfa8260097b48a","openingPrefixSha256":"78112da8413bdab02f1a2e332a1cb7fbfc5721b3c4eefc32535ef8bc6449aa2b"},
+      {"seed":26031167,"ply":44,"stateKey":"139b09e834c991fe5b1100eb676f022e404b7adfb18586ca41663cd99f29e110","openingPrefixSha256":"7ea92b42e2002ac3a03c15378185869b0dc7b09f2577af95b75e4327582b374d"},
+      {"seed":26031050,"ply":44,"stateKey":"17259e5a8b831f789cec94b1d26f3355ff035a20f1b10550d6df063c5fdc173b","openingPrefixSha256":"d8ff42d6cb6572837dd66524fd02a70b109e0e44932a7ce3444272fb86211c03"},
+      {"seed":26031380,"ply":44,"stateKey":"17c21fef537ca1cda1287dda333a08907b956c682c34628be622b5b473dde92f","openingPrefixSha256":"c40775f1513d929118b9e0edeed45db47e8301dccf2339e6af434ed26f51cabb"},
+      {"seed":26031143,"ply":44,"stateKey":"1ad1721537f498fd86369628524bc995cf6ea7e4ce455d576e5f30a22d7c9f04f","openingPrefixSha256":"90158c4bfad16035e7e6bb6c10b48a9a0424f227207476567810d7031ea1ca14"},
+      {"seed":26031224,"ply":44,"stateKey":"1d60820c0372267189f4c6b44a3af9ddb1fe6eaaf46aeca64380ac9184c99f10","openingPrefixSha256":"0e02a362c412721c8b694f5ee97b772d3b4ca6db57430260fbda0091a43eb2ea"},
+      {"seed":26031044,"ply":44,"stateKey":"1e5861499bea3c2884ca67fe1fdfeb659c01ada8b538821849d560b0b7c86e29","openingPrefixSha256":"0a86b243444e3ded5d8781b932a082409825136c9770a07c873a82fdc8a359d5"},
+      {"seed":26031320,"ply":44,"stateKey":"22af2cd5c88b5a1ab1300adfb57b2362300d04e167b8b1ad42932b01114c9bad","openingPrefixSha256":"830972d2979a52c08b8c50ad204861198df108bf0a99e5f106b7c4d3dbe8e034"},
+      {"seed":26031299,"ply":44,"stateKey":"2f9e564db8a30db7079ebd940f30b9be125dcd60fa1fa8812101f0c9166d3b03","openingPrefixSha256":"d1e20fc20a300ec0d7ca846b7e23976fe99482510365a16b602df38691e89c8d"},
+      {"seed":26031071,"ply":44,"stateKey":"309c081ab50cb44b7aef19b5aecad5fc5dbdcb0ba7e9fdd6b6e14f18989fdd65","openingPrefixSha256":"8d3495ae0f6aec0d92cc70fc3dc1e27932690210ea8cf2dd9a9aa53a0dc95846"},
+      {"seed":26031302,"ply":44,"stateKey":"31d4c905ef4f4bed043b3af0443dd58b4d46ca4efacfa9bc28ee026434d65fe4","openingPrefixSha256":"eb43391fa42aff19811bc1e8ba58d4007a7cf2e8f8274338080e25763971f2b9"},
+      {"seed":26031191,"ply":44,"stateKey":"337c081227a7b12ed67ac7e61d3fcd58b77a7f66b1c723f82a5924d58242a4c9","openingPrefixSha256":"39c38bb1e5d3dddce99b4dd9f5753a876fd716d7f873b45e7a3a736d591ff30a"},
+      {"seed":26031311,"ply":44,"stateKey":"38c691a22062d94ec313df5172a3ac094f3e41670738710beaebf2e4db02b978","openingPrefixSha256":"f672b6450757721820021723525dcbd5852297a29637967c4783600d6231acc4"},
+      {"seed":26031347,"ply":44,"stateKey":"3b07120b801e238d3270f45e1e03423b700ff186121424997ed844435181cf2a","openingPrefixSha256":"bc027724384fc2506a197120ff39538b5a454914417ae545c4d1fa12af64d45f"},
+      {"seed":26031218,"ply":44,"stateKey":"3c7e191f1757a4b5a5f83a7023c058b89115bdf2420b9d9e10e723846e6b55f5","openingPrefixSha256":"edc655a8159bb5787b43568d4254ef2c38de8542f68079de78fe78d677210ecb"},
+      {"seed":26031308,"ply":44,"stateKey":"4ce55f3a3c8a75e79441fc2e552ee1e2ddaa1f1c8429d070c970135266b57db6","openingPrefixSha256":"67565c5690167283fb782f33c2dadf060387db14d149d378326ea071323560ed"},
+      {"seed":26031152,"ply":44,"stateKey":"4ef25d4493291365385895081317b732895c3756043793660813cae34e48e4cc","openingPrefixSha256":"cc56ab5c6652404888605052b3af670b9bb0e21a5693151705051bc539b97919"}
+    ],
+    "mtaji-houseless": [
+      {"seed":26031003,"ply":44,"stateKey":"01b9f818f9d62d438a475e738371edac2d78988fa027a830cb40e5e8a11a4f44","openingPrefixSha256":"6244421d2289b583afc8a92f5dc6f6175821ce5631258c9e6fc59b4354520fab"},
+      {"seed":26031231,"ply":44,"stateKey":"036bcba2974c03520189cb6a5e10db553271c5eb8b0309c991d07e589957b12e","openingPrefixSha256":"b2222f8ae62ba55e2f7306e2f56cb8c395401a06af5286103a2073862919a89a"},
+      {"seed":26031084,"ply":44,"stateKey":"0d2e85341a8970162b636144448a4b24b58f505ca6e67cce354ea704b0e55483","openingPrefixSha256":"f3f936ec1cd39ffbe84321c49ca8938f7fa7a40e0f7337cd759769c47c7ce74f"},
+      {"seed":26031141,"ply":44,"stateKey":"10eed5450cdde240fa4ac99d259049120e67287657389d9ae0d7cd68ae800621","openingPrefixSha256":"e254faee3b42e3e8cc3f0daaaf6a9c901dd0809270f2683e6960699736694840"},
+      {"seed":26031057,"ply":44,"stateKey":"179971508f6154a017da03d3996e8647c793e9ee41c7d91a6de26f3e095365cb","openingPrefixSha256":"82121fbe2fc61b535e5a97eced3ed4eb920f182c47dcd262ff9ad8a8d41e94ac"},
+      {"seed":26031252,"ply":44,"stateKey":"19f50161330956062105a2296109282a521555fd439f5a844129056a70d249ec","openingPrefixSha256":"f81bd7cdf4e77bfc1cc6bc1b6e6f77fc0ce18acfb36040192435ec7d64572a7b"},
+      {"seed":26031381,"ply":44,"stateKey":"1bb8d71d9ef3439f26b88388ddfbc26cfac1620eca62b819f9a063f077b77aeb","openingPrefixSha256":"713e80eb1ed49629ca805238858374651b64ba6e632979176549fc50ac1f01bf"},
+      {"seed":26031225,"ply":44,"stateKey":"1f5813dc70ad88ff7c664c82252ae13c9303f444d8903d599267c3aa97069c75","openingPrefixSha256":"188317cf617067c8bd57b6e789100ae50cf4b9bb4ed0712e72df9ca004f8d6fb"},
+      {"seed":26031210,"ply":44,"stateKey":"21b5fc4bb228d136c4d57ad92a7014f1818bb880e812b51524006267644e9c29","openingPrefixSha256":"bdd5cb981808f90d2ec83121e144a3bb2e8dcbe4bc2c3473ced48b08dcd466f0"},
+      {"seed":26031069,"ply":44,"stateKey":"22d832623ae5100dcc57059d884075737e7e4c8c0f7088628660801f2d2eef16","openingPrefixSha256":"6e069a011848184a3a76dfbfce9a4e3a5d6d143531af4a30a345468aa0744346"},
+      {"seed":26031336,"ply":44,"stateKey":"27aa9c60f502cc36166087bf434c1f28fa5aac9c89fe4526a14f566590321d29","openingPrefixSha256":"ef1099118866e1d29d9cb897747e5f66192170aa4ccf2c9c501fc25d34e95263"},
+      {"seed":26031246,"ply":44,"stateKey":"2b33e807d63cfa56a3aa37ea84c1aed986930db568ee64f9be5c1c6fa8ce9ba3","openingPrefixSha256":"99858ea5502804255397aba21bb15b06c9c4f442129ecf4b65f29f732a5af3d0"},
+      {"seed":26031357,"ply":44,"stateKey":"2c7ab75bc2d1e0f180ecf09c69e45dbb67b3c586398627932b7940d08c8a6465","openingPrefixSha256":"1b16938a4642a87fcb8532b9cf9ea4640df522cf55a524e5d0ef20561c487b7a"},
+      {"seed":26031267,"ply":44,"stateKey":"2e0527256853289542130889127acf9d4bb2cb3cc53fec601080b5005007fd9a","openingPrefixSha256":"d08a29135ace1efe5661ea58e6e30c85fbd6083d734583146ad67ba55df07f39"},
+      {"seed":26031171,"ply":44,"stateKey":"303a3bf240fd99c1d3d108d43e322049661536e540b75062367f49732c3555da","openingPrefixSha256":"8f500c5ef4893c9086e00155ee250679d69169453735452009264332504a2807"},
+      {"seed":26031234,"ply":44,"stateKey":"34e441798566409461d715b9b3257b3a2a5f33c90a12150c7ac906935caed918","openingPrefixSha256":"2aacd9be2e3cb8f008bf285850ff304fbc7abf9405593735aa042f706be6f8ad"},
+      {"seed":26031186,"ply":44,"stateKey":"35fb9b82a0a461238c7d463424ed1c6f5c9b38ad6d4ce2fe91a769c9875e1aa2","openingPrefixSha256":"b952a9d7bb66ced5846f1b9bc9fc64e5ea8e2009e24a93e98f038e2d03aa0de1"},
+      {"seed":26031150,"ply":44,"stateKey":"3d4492a4bc06d0ea2f51c557a52539a89e8db4d2cb07429a9e20ec2ea244805e","openingPrefixSha256":"723391a7055b12a2e6ea39a06661231c61bb45dde532467ed52f64e27974eaf7"},
+      {"seed":26031324,"ply":44,"stateKey":"4176fc40f158bb950b23dde25755cda96c4201aa6b745401ee49a3fed1b5191c","openingPrefixSha256":"49841755493454ca9584dc7621fc95580fb94e6c11244c3b0a50402f7a7780e3"},
+      {"seed":26031216,"ply":44,"stateKey":"44a5a382847ea56b5aa6ff44fa734fb6aeb53bf7e0e20ee1475c38201e076523","openingPrefixSha256":"91f19b24ba776f1e557575821143709cff86197132515ef548503585296d2db4"},
+      {"seed":26031285,"ply":44,"stateKey":"49e5761849680dc59eac8c730b2c62a2a3269ac9181b0f09c6bb6d21e1875e92","openingPrefixSha256":"d74a61083fdf2fa924f4fd4750bb34e5218475a1c2a8f392800b7deeced7e251"},
+      {"seed":26031105,"ply":44,"stateKey":"4ab07f0e7ac36d744f3778a86a883a74b56cd6427263d9a5be25cdd79f410946","openingPrefixSha256":"59a2a5242f865cd1f55e6fb23478855d70f99316a7c045266d1664b451419df8"},
+      {"seed":26031144,"ply":44,"stateKey":"4f74114a26220c1ed3b547079a66b766766150424c18d30d9eaeefb681f8c26a","openingPrefixSha256":"e76ca003774883ba80870a004238661547a7db8ec5cfc41eccb8282173a772a7"},
+      {"seed":26031243,"ply":44,"stateKey":"5419e1a2ec838512e6cfec32c07ab1bb4d36269b9b96298489fab1145d5e3fe8","openingPrefixSha256":"e5d0b97ff9d07e5ca8e7866090df2e4e1aff49b570fc1c04fd5aecab1f22e9fe"}
+    ]
+  },
+  "identityAudit": {
+    "selectedRootCount": 72,
+    "uniqueTrajectorySeeds": 72,
+    "uniqueRawStateKeys": 72,
+    "uniqueOpeningPrefixSha256": 71,
+    "crossStratumDuplicateOpeningPrefixes": {
+      "0e02a362c412721c8b694f5ee97b772d3b4ca6db57430260fbda0091a43eb2ea": [
+        {"stratum":"namua","seed":26031127,"stateKey":"1cc6f5a5db99be88c528e0b42c73b279562675c93a789c9e896b916a3bfe28ba"},
+        {"stratum":"mtaji","seed":26031224,"stateKey":"1d60820c0372267189f4c6b44a3af9ddb1fe6eaaf46aeca64380ac9184c99f10"}
+      ]
+    }
+  },
+  "developmentCandidateDiagnostics": {
+    "STSCV-T01-SEAT-SWAP-LOCAL": {"overallMismatchCount":0,"label":"ZERO-MISMATCH-DEVELOPMENT-DIAGNOSTIC"},
+    "STSCV-T02-LR-MTAJI-HOUSELESS": {"overallMismatchCount":0,"label":"ZERO-MISMATCH-DEVELOPMENT-DIAGNOSTIC"},
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": {"overallMismatchCount":0,"label":"ZERO-MISMATCH-DEVELOPMENT-DIAGNOSTIC"}
+  },
+  "positiveControlOverallMismatchCount": 0,
+  "negativeControlHouselessMismatchCount": 1665,
+  "readinessGates": {"S1-R1":true,"S1-R2":true,"S1-R3":true,"S1-R4":true,"S1-R5":true,"S1-R6":true},
+  "independentVerification": {
+    "passed": true,
+    "decision": "STSCV-STAGE1-INDEPENDENT-VERIFICATION-PASS",
+    "comparisons": {"selectionSha256":true,"selectedRoots":true,"measurementSha256":true,"measurementSummaries":true,"rootCounts":true,"productionReadinessPreR5":true}
+  },
+  "interpretationBoundary": [
+    "All candidate mismatch counts are development diagnostics only.",
+    "No VALIDATED-BOUNDED-ISOMORPHISM or NOT-VALIDATED candidate decision is issued by Stage 1.",
+    "All selected trajectory seeds, opening-prefix hashes, and RAW-state keys are consumed and unavailable to Stage 2.",
+    "The one cross-stratum duplicate opening-prefix hash motivates a prospectively stronger global-prefix Stage 2 firewall; it does not modify Stage 1."
+  ]
+}
