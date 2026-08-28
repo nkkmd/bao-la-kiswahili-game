@@ -1,0 +1,45 @@
+name: G2-02 Stage 0 source freeze hashes
+
+on:
+  push:
+    branches:
+      - research/g2-02-search-reliability-decision-robustness
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "public/ai-weights.js"
+      - "tools/experiments/lib/position-complexity-search-diagnostic.js"
+      - "tools/experiments/lib/search-reliability-decision-robustness.js"
+      - "tools/experiments/run-search-reliability-stage0.js"
+      - "tools/experiments/verify-search-reliability-stage0.js"
+      - "test/search-reliability-decision-robustness-stage0.test.js"
+      - "doc/search-reliability-decision-robustness/preregistration/STAGE_0_TECHNICAL_SPEC.json"
+      - ".github/workflows/g2-02-stage0-source-freeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-freeze-hashes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print source SHA-256 set only
+        run: |
+          sha256sum \
+            public/engine.js \
+            public/ai.js \
+            public/ai-weights.js \
+            tools/experiments/lib/position-complexity-search-diagnostic.js \
+            tools/experiments/lib/search-reliability-decision-robustness.js \
+            tools/experiments/run-search-reliability-stage0.js \
+            tools/experiments/verify-search-reliability-stage0.js \
+            test/search-reliability-decision-robustness-stage0.test.js \
+            doc/search-reliability-decision-robustness/preregistration/STAGE_0_TECHNICAL_SPEC.json
+      - name: Assert no scientific execution
+        run: |
+          echo "scientificInferenceAuthorized=false"
+          echo "technicalMeasurementExecuted=false"
+          echo "scientificSeedConsumed=false"

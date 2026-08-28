@@ -1,0 +1,48 @@
+name: G2-02 pre-Stage1 technical resource audit
+
+on:
+  push:
+    branches:
+      - research/g2-02-search-reliability-decision-robustness
+    paths:
+      - 'tools/experiments/run-search-reliability-stage1-resource-audit.js'
+      - 'tools/experiments/verify-search-reliability-stage1-resource-audit.js'
+      - '.github/workflows/g2-02-search-reliability-stage1-resource-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resource-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run technical-only resource audit
+        run: node tools/experiments/run-search-reliability-stage1-resource-audit.js --output /tmp/srdr-prestage1-resource.json
+      - name: Independently verify resource audit contract
+        run: node tools/experiments/verify-search-reliability-stage1-resource-audit.js --input /tmp/srdr-prestage1-resource.json
+      - name: Show resource envelope only
+        run: |
+          node - <<'NODE'
+          const r = require('/tmp/srdr-prestage1-resource.json');
+          console.log(JSON.stringify({
+            auditId: r.auditId,
+            stateCount: r.states.length,
+            summary: r.summary,
+            resultHash: r.resultHash,
+            scientificInferenceAuthorized: r.scientificInferenceAuthorized,
+            scientificOutcomeGenerationAuthorized: r.scientificOutcomeGenerationAuthorized,
+            scientificSeedConsumed: r.scientificSeedConsumed
+          }, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: srdr-prestage1-resource-audit
+          path: /tmp/srdr-prestage1-resource.json
+          if-no-files-found: error
+          retention-days: 14

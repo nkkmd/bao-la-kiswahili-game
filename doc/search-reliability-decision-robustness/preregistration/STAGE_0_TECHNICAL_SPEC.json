@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-02",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "SRDR-STUDY1",
+  "stageId": "SRDR-S0-TECHNICAL-2026-08-27-v1",
+  "stageClass": "technical-feasibility-non-scientific",
+  "baselineMain": "db6980bffb7e6853751914da628db8936c76d81e",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "scientificSeedUseAllowed": false,
+  "authoritativeRawIdentityFields": [
+    "pits",
+    "reserve",
+    "houseOwned",
+    "player",
+    "phase",
+    "winner",
+    "pending"
+  ],
+  "prohibitedIdentityTransforms": [
+    "symmetry-reduction",
+    "reflection-equivalence",
+    "player-seat-canonicalization",
+    "state-canonicalization",
+    "unvalidated-isomorphism"
+  ],
+  "technicalQuestions": {
+    "exactRootCandidateScores": true,
+    "deterministicMoveIdentityAndTieHandling": true,
+    "depthGrid": true,
+    "nodeBudgetInstrumentation": true,
+    "quiescenceDepthAndEnablement": true,
+    "quiescenceCaptureOrdering": true,
+    "moveOrderingAndSearchHeuristicControls": true,
+    "principalVariationExtraction": true,
+    "deterministicReplay": true,
+    "productionIndependentAgreement": true
+  },
+  "candidateScientificAxesAfterTechnicalPass": [
+    "depth-sensitivity",
+    "node-budget-sensitivity",
+    "quiescence-sensitivity"
+  ],
+  "technicalOnlyAxesUnlessSeparatelyPromotedBeforeScientificGeneration": [
+    "move-ordering",
+    "aspiration",
+    "adaptive/stability-controls",
+    "TT-ordering",
+    "history-heuristic"
+  ],
+  "mandatoryPassConditions": [
+    "source-state non-mutation",
+    "exact legal-root move-set exhaustiveness",
+    "canonical move-key determinism",
+    "exact-score tie determinism",
+    "repeat-run determinism",
+    "RAW identity reproducibility",
+    "depth semantics explicit and reproducible",
+    "node-budget exhaustion semantics explicit or node-budget axis excluded before Stage 1",
+    "PV semantics explicit or PV endpoint excluded before Stage 1",
+    "technical fixtures permanently excluded from Stage 1 and Stage 2",
+    "independent implementation reproduces promoted measurement semantics"
+  ],
+  "authorizationRule": {
+    "stage1ScientificGenerationInitiallyAuthorized": false,
+    "requiredBeforeStage1": [
+      "Stage 0 technical PASS",
+      "frozen Stage 1 population and seed range",
+      "frozen search-condition grid",
+      "frozen move/tie/TopSet/ranking/PV definitions",
+      "frozen source-file SHA-256 set",
+      "frozen Stage 1 spec SHA-256",
+      "independent verifier ready",
+      "explicit scientific authorization record"
+    ]
+  },
+  "noRescue": {
+    "postOutcomeGridReplacement": false,
+    "postOutcomeMetricReplacement": false,
+    "postOutcomeToleranceChange": false,
+    "scientificSeedExtension": false,
+    "favorableStateReplacement": false
+  }
+}

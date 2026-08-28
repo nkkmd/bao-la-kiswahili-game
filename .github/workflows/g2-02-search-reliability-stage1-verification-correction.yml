@@ -1,0 +1,92 @@
+name: G2-02 Stage 1 verification serialization correction
+
+on:
+  push:
+    branches:
+      - research/g2-02-search-reliability-decision-robustness
+    paths:
+      - tools/experiments/correct-search-reliability-stage1-verification-hash.js
+      - doc/search-reliability-decision-robustness/checkpoints/2026-08-28-stage1-verification-hash-serialization-correction.md
+      - .github/workflows/g2-02-search-reliability-stage1-verification-correction.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  correct-and-analyze-existing-artifact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.2
+
+      - name: Assert correction cannot regenerate scientific population
+        run: |
+          test -f doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json
+          node - <<'NODE'
+          const a = require('./doc/search-reliability-decision-robustness/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json');
+          if (a.sourceFreezeCommit !== '753425610573354ae6394ae414666c3bc62c5365') process.exit(1);
+          if (a.stage2GenerationAuthorized !== false || a.formalConfirmationClaimAuthorized !== false) process.exit(1);
+          console.log('scientificGenerationReexecuted=false');
+          console.log('scientificSeedsReconsumed=false');
+          console.log('stage2GenerationAuthorized=false');
+          NODE
+
+      - name: Syntax check correction path
+        run: |
+          node --check tools/experiments/correct-search-reliability-stage1-verification-hash.js
+          node --check tools/experiments/analyze-search-reliability-stage1.js
+
+      - name: Download immutable original Stage 1 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: g2-02-stage1-development-v1
+          path: artifacts/local/search-reliability-decision-robustness/stage1-development-v1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33067208005
+
+      - name: Assert original failed verifier evidence is present
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const p = 'artifacts/local/search-reliability-decision-robustness/stage1-development-v1/stage1-verification.json';
+          const v = JSON.parse(fs.readFileSync(p, 'utf8'));
+          if (v.passed !== false) process.exit(1);
+          if (v.gamesVerified !== 1280 || v.gameReplayMismatches !== 0 || v.selectedStateMismatches !== 0 || v.measurementMismatches !== 0) process.exit(1);
+          if (v.selectionHashMatches !== true || v.measurementHashMatches !== false) process.exit(1);
+          console.log(JSON.stringify(v, null, 2));
+          NODE
+
+      - name: Apply representation-only verification correction
+        run: node tools/experiments/correct-search-reliability-stage1-verification-hash.js
+
+      - name: Apply frozen Stage 1 readiness analysis
+        run: node tools/experiments/analyze-search-reliability-stage1.js
+
+      - name: Print bounded Stage 1 development decision
+        run: |
+          node - <<'NODE'
+          const r = require('./artifacts/local/search-reliability-decision-robustness/stage1-development-v1/stage1-development-result.json');
+          console.log(JSON.stringify({
+            stage1Decision: r.stage1Decision,
+            readiness: r.inputAudit.readiness,
+            populationSummary: r.populationSummary,
+            nextStage: r.nextStage,
+            interpretationBoundary: r.interpretationBoundary
+          }, null, 2));
+          if (r.stage2GenerationAuthorized !== false) process.exit(1);
+          NODE
+
+      - name: Upload corrected and analyzed immutable Stage 1 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2-02-stage1-development-v1-verified-canonical
+          path: artifacts/local/search-reliability-decision-robustness/stage1-development-v1/
+          if-no-files-found: error
+          retention-days: 90

@@ -3,7 +3,7 @@
 Version: 2.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-08-27
+更新日: 2026-08-28
 
 ## 1. 目的
 
@@ -792,18 +792,33 @@ primary formal branch = not entered (`primary = null`)
 
 #### G2-02 — Search Reliability / Decision Robustness Study 1
 
-**状態:** planned / new construct
+**状態:** **完了 / `SRDR-STUDY1` / formal decision `INCONCLUSIVE`**
 
 中心課題:
 
 > 同一raw stateに対するbest move、TopSet、move ranking、score gap、principal variationは、depth、node budget、quiescence等のprospectively frozen探索条件を変えたときどの程度安定するか。
 
-主な測定候補はbest-move agreement、Top-k overlap、rank correlation、best-second gap stability、evaluation-sign stability、PV stability、depth sensitivity、budget sensitivityとする。
+Stage 0 technical validationを経て、Stage 1は1,280 fresh games / 1,018 selected RAW statesで全readiness gateをPASSし、`PROFILE-FROZEN-DEVELOPMENT`を固定した。Stage 2は1,536 fresh held-out games / seeds `25021001..25022536`、Stage 1 trajectory + opening-prefix + RAW-state firewall、同一8-condition search gridで実行した。
 
-Position Complexity / Difficulty Study 1のhuman difficulty constructとは分離し、search reliabilityそのものをprimary constructとする。
+```text
+Stage 2 games = 1536 / 1536
+independent game replay mismatches = 0
+selected RAW states = 1007
+Namua / Mtaji = 518 / 489
+selection mismatches = 0
+measurement mismatches = 0
+selection / measurement hashes = exact match
+Stage 1 overlap = trajectory 0 / opening 0 / RAW state 0
+unique trajectories after firewall = 1040 < 1050
+formal decision = INCONCLUSIVE
+primary formal criterion = null
+```
 
-**Priority:** P0
+唯一のfailed gateはunique trajectoriesのpreregistered minimumだった。10 trajectory不足でもseed extension、replacement、gate relaxation、near-miss exceptionを行わない。D3/B1024等のhigher-resource conditionはtruthではなくfrozen search referenceである。
 
+Descriptive secondary profileは今後のnew hypothesis / resource planning inputには利用できるが、G2-02のformal confirmationやhuman difficulty、engine correctness、public AI strengthへ読み替えない。
+
+**Priority:** P0 / completed
 #### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1
 
 **状態:** planned / new prospective independent study
@@ -1005,7 +1020,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`としてprospective stop ruleに従い完了した。次の未着手P0候補としては`G2-02` Search Reliability / Decision Robustnessを優先できるが、正式Study IDやprotocolは研究開始時にoutcome前freezeする。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop ruleに従い完了した。G2-02はformal search measurementsとindependent verification自体は完了したが、1040/1050 unique-trajectory estimability gateによりprimary formal criterionを評価していない。次の未着手P0候補はdependencyを確認したうえで`G2-03` State Transformation Semantics / Canonicalization Validation、`G2-04`、`G2-05`、`G2-06`から選択する。
 
 ### 9.9 第二世代プログラムの完了条件
 

@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-02",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "SRDR-STUDY1",
+  "stageId": "SRDR-S1-DEVELOPMENT-2026-08-27-v1",
+  "status": "prospective-frozen-generation-not-authorized",
+  "frozenAt": "2026-08-27",
+  "baselineMainHead": "db6980bffb7e6853751914da628db8936c76d81e",
+  "researchBranch": "research/g2-02-search-reliability-decision-robustness",
+  "scientificInferenceAuthorized": false,
+  "developmentCharacterizationAuthorized": true,
+  "stage1GenerationAuthorized": false,
+  "stage2GenerationAuthorized": false,
+  "generationPrerequisite": "Stage 0 technical PASS plus pre-Stage1 technical resource audit PASS plus complete Stage 1 source-hash freeze plus explicit Stage 1 authorization commit",
+  "construct": {
+    "primary": "machine search reliability / decision robustness under frozen search-condition perturbations",
+    "notEquivalentTo": [
+      "human difficulty",
+      "position complexity",
+      "empirical win probability",
+      "game-theoretic value",
+      "engine evaluation correctness",
+      "public AI strength",
+      "human perception"
+    ],
+    "higherResourceReferenceInterpretation": "frozen search reference only; not game-theoretic truth, true best move, or validated optimal move"
+  },
+  "upstreamBoundary": {
+    "g2_01": {
+      "studyId": "PEOCR-STUDY1",
+      "formalDecision": "INCONCLUSIVE",
+      "decisionImmutable": true,
+      "scientificRowsReusable": false,
+      "allowedUses": [
+        "resource planning",
+        "failure-mode identification",
+        "technical design reference"
+      ]
+    },
+    "positionComplexityStudy1": {
+      "formalAndExploratoryDecisionsImmutable": true,
+      "thresholdsClassifiersAndInterpretationBoundariesImmutable": true,
+      "humanDifficultyConstructReuseAuthorized": false
+    }
+  },
+  "rawStateIdentity": {
+    "fields": [
+      "pits",
+      "reserve",
+      "houseOwned",
+      "player",
+      "phase",
+      "winner",
+      "pending"
+    ],
+    "excluded": [
+      "turn",
+      "reason"
+    ],
+    "symmetryCanonicalizationAllowed": false,
+    "reflectionEquivalenceAllowed": false,
+    "playerSeatCanonicalizationAllowed": false
+  },
+  "population": {
+    "games": 1280,
+    "seedStart": 25011001,
+    "seedEnd": 25012280,
+    "opening": {
+      "policy": "seeded-uniform-exact-E.moveVariants",
+      "plies": 8
+    },
+    "continuation": {
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "searchProfile": "phase2",
+      "maxDepth": 2,
+      "timeLimitMs": "Infinity",
+      "quiescenceDepth": 1,
+      "orderQuiescenceCaptures": false,
+      "adaptive": false,
+      "stableBestDepths": 0,
+      "aspirationWindow": 0,
+      "randomnessUsedForMoveChoiceAfterOpening": false
+    },
+    "maxPly": 80,
+    "terminalTrajectoryAllowed": true,
+    "terminalStateSelectable": false
+  },
+  "trajectoryIdentity": {
+    "historicalTrajectoryHashDefinition": "SHA256 of ordered moveKey and resulting authoritative RAW-state identity sequence from the initial state through observed trajectory end",
+    "openingPrefixHashDefinition": "SHA256 of ordered first eight moveKey values",
+    "duplicateHandling": "collapse-identical-historical-trajectories-before-state-selection",
+    "representativeRule": "minimum-seed-then-gameId",
+    "maximumSelectedStatesPerHistoricalTrajectory": 1
+  },
+  "stateSelection": {
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "minimumLegalMoveVariants": 2,
+    "phaseAssignment": {
+      "method": "sha256-parity",
+      "salt": "SRDR-S1-PHASE-v1",
+      "input": "historicalTrajectoryHash",
+      "mapping": {
+        "even": "namua",
+        "odd": "mtaji"
+      }
+    },
+    "withinAssignedPhase": {
+      "method": "minimum-sha256-rank",
+      "salt": "SRDR-S1-STATE-v1",
+      "fields": [
+        "historicalTrajectoryHash",
+        "rawStateKey",
+        "ply"
+      ]
+    },
+    "unavailableAssignedPhase": "no-replacement",
+    "duplicateSelectedRawStateHandling": "retain-lowest-selection-rank-then-historicalTrajectoryHash-then-seed; no replacement",
+    "reliabilityOutcomeBlind": true
+  },
+  "moveAndTieContract": {
+    "moveIdentity": "AI.moveKey exact string identity",
+    "moveOrderingForScientificSearch": "canonical lexical moveKey ascending",
+    "scoreTieTolerance": 0,
+    "topSetDefinition": "all legal moves with score exactly equal to the condition maximum score",
+    "canonicalBestDefinition": "lexically smallest moveKey in TopSet; deterministic representative only",
+    "topK": {
+      "k": 3,
+      "whenLegalMovesBelowK": "use all legal moves",
+      "ordering": "score descending then lexical moveKey ascending"
+    },
+    "scoreRankTies": "average rank for correlation metrics; exact equal scores are ties"
+  },
+  "searchGrid": {
+    "common": {
+      "evaluationProfile": "bao",
+      "legalMoveOrdering": "canonical",
+      "orderQuiescenceCaptures": false,
+      "scoreTieTolerance": 0
+    },
+    "conditions": [
+      {
+        "id": "D1_Q1",
+        "kind": "exact-depth",
+        "depth": 1,
+        "quiescenceDepth": 1
+      },
+      {
+        "id": "D2_Q1",
+        "kind": "exact-depth",
+        "depth": 2,
+        "quiescenceDepth": 1,
+        "role": "anchor"
+      },
+      {
+        "id": "D3_Q1",
+        "kind": "exact-depth",
+        "depth": 3,
+        "quiescenceDepth": 1,
+        "role": "frozen-higher-resource-reference-not-truth"
+      },
+      {
+        "id": "D2_Q0",
+        "kind": "exact-depth",
+        "depth": 2,
+        "quiescenceDepth": 0
+      },
+      {
+        "id": "D2_Q2",
+        "kind": "exact-depth",
+        "depth": 2,
+        "quiescenceDepth": 2
+      },
+      {
+        "id": "B64_Q1_MAXD3",
+        "kind": "node-budget",
+        "nodeBudget": 64,
+        "maxDepth": 3,
+        "quiescenceDepth": 1,
+        "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded"
+      },
+      {
+        "id": "B256_Q1_MAXD3",
+        "kind": "node-budget",
+        "nodeBudget": 256,
+        "maxDepth": 3,
+        "quiescenceDepth": 1,
+        "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded"
+      },
+      {
+        "id": "B1024_Q1_MAXD3",
+        "kind": "node-budget",
+        "nodeBudget": 1024,
+        "maxDepth": 3,
+        "quiescenceDepth": 1,
+        "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded"
+      }
+    ],
+    "excludedFromStage1ScientificGrid": [
+      "aspiration-window perturbation",
+      "adaptive-depth perturbation",
+      "stable-best early-stop perturbation",
+      "history-heuristic perturbation",
+      "transposition-table perturbation",
+      "move-ordering perturbation"
+    ],
+    "exclusionRationale": "bounded interpretable Study 1 grid; Stage 0 showed move ordering can change node consumption even when completed exact values are invariant"
+  },
+  "comparisonFamilies": {
+    "depth": [
+      ["D1_Q1", "D2_Q1"],
+      ["D2_Q1", "D3_Q1"]
+    ],
+    "quiescence": [
+      ["D2_Q0", "D2_Q1"],
+      ["D2_Q2", "D2_Q1"]
+    ],
+    "nodeBudgetAgainstFrozenReference": [
+      ["B64_Q1_MAXD3", "D3_Q1"],
+      ["B256_Q1_MAXD3", "D3_Q1"],
+      ["B1024_Q1_MAXD3", "D3_Q1"]
+    ]
+  },
+  "endpointContract": {
+    "corePerComparison": [
+      "canonical-best exact agreement",
+      "TopSet Jaccard overlap",
+      "reference canonical-best inclusion in comparison TopSet",
+      "Kendall tau-b of full legal-move ranking with exact score ties",
+      "pairwise ordering agreement including tie/tie agreement",
+      "best-score sign agreement",
+      "PV first-move agreement",
+      "PV normalized common-prefix length"
+    ],
+    "secondary": [
+      "Top-3 Jaccard overlap",
+      "Spearman correlation using average score ranks",
+      "best-score signed delta",
+      "best-score absolute delta",
+      "best-second gap in each condition",
+      "gap absolute delta",
+      "TopSet size in each condition",
+      "PV common-prefix length",
+      "PV divergence ply",
+      "node count",
+      "budget completedDepth distribution"
+    ],
+    "undefinedHandling": "return null with an explicit definability flag; do not impute",
+    "singleLegalMoveStates": "not selectable by Stage 1 population contract",
+    "budgetNonEstimable": "all decision/ranking/score/PV comparison endpoints for that budget condition are null; state remains in denominator for budget-estimability rates"
+  },
+  "pvContract": {
+    "semantics": "canonical-exact-nominal-pv/quiescence-score-only/v1",
+    "firstMove": "canonicalBestMoveKey",
+    "commonPrefixLength": "number of leading exact moveKey values shared by both PVs",
+    "normalizedCommonPrefix": "commonPrefixLength divided by min(PV lengths); null if either PV length is zero",
+    "divergencePly": "1-based first differing ply; if one PV is a strict prefix, minLength+1; null only for identical equal-length PVs",
+    "budgetPV": "PV of the last completed depth only"
+  },
+  "developmentProfile": {
+    "strata": [
+      "pooled",
+      "namua",
+      "mtaji"
+    ],
+    "aggregation": {
+      "binaryEndpoints": "mean of 0/1 defined state-level values",
+      "continuousEndpoints": "mean, median, p25, p75 over defined state-level values",
+      "correlations": "state-level correlation then aggregate over defined states; no pooled move-level pseudo-replication"
+    },
+    "stage1ProfileCanBeInspected": true,
+    "stage1FormalConfirmationClaimAuthorized": false,
+    "stage2RuleMayUseStage1ProfileOnlyAfterExactProfileArtifactAndRuleAreFrozen": true,
+    "manualFavorableSubgroupSelectionAllowed": false
+  },
+  "readinessGates": {
+    "minimumUniqueHistoricalTrajectories": 900,
+    "minimumSelectedUniqueRawStates": 850,
+    "minimumNamuaSelectedStates": 375,
+    "minimumMtajiSelectedStates": 375,
+    "minimumDistinctOpeningPrefixes": 600,
+    "requiredDuplicateSelectedRawStatesAfterDedup": 0,
+    "requiredExactConditionMeasurementCompletionRate": 1,
+    "minimumB64AtLeastDepth1CompletionRatePooled": 0.85,
+    "minimumB64AtLeastDepth1CompletionRateEachPhase": 0.8,
+    "minimumB256AtLeastDepth2CompletionRatePooled": 0.7,
+    "minimumB256AtLeastDepth2CompletionRateEachPhase": 0.65,
+    "minimumB1024AtLeastDepth3CompletionRatePooled": 0.65,
+    "minimumB1024AtLeastDepth3CompletionRateEachPhase": 0.6,
+    "independentVerificationRequired": true,
+    "selectionHashMatchRequired": true,
+    "measurementHashMatchRequired": true
+  },
+  "stage1Decision": {
+    "ifAllReadinessGatesPass": "PROFILE-FROZEN-DEVELOPMENT",
+    "ifAnyReadinessGateFails": "DEVELOPMENT-NOT-ESTIMABLE",
+    "stage2AuthorizedByStage1ResultAlone": false
+  },
+  "stopping": {
+    "gamesFixed": 1280,
+    "earlyStopAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementAllowed": false,
+    "replacementForUnavailableAssignedPhase": false,
+    "replacementForDuplicateTrajectory": false,
+    "replacementForDuplicateRawState": false,
+    "outcomeDependentExtensionAllowed": false,
+    "searchGridChangeAfterScientificMeasurementAllowed": false,
+    "tieToleranceChangeAfterScientificMeasurementAllowed": false
+  },
+  "interpretationBoundary": {
+    "gameTheoreticValueClaimAuthorized": false,
+    "trueBestMoveClaimAuthorized": false,
+    "validatedOptimalMoveClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false,
+    "engineCorrectnessClaimAuthorized": false,
+    "publicAiStrengthClaimAuthorized": false,
+    "publicAiChangeRecommendationAuthorized": false,
+    "priorStudyDecisionRevisionAuthorized": false,
+    "generalizationBeyondFrozenPopulationAndSearchConditionsAuthorized": false
+  }
+}
