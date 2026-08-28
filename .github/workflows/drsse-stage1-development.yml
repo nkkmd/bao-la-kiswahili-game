@@ -1,0 +1,44 @@
+name: DRSSE Stage 1 Development
+
+on:
+  push:
+    branches:
+      - research/g2-05-deep-raw-state-space-enumeration
+    paths:
+      - doc/deep-raw-state-space-enumeration/authorizations/STAGE_1_EXECUTE.json
+
+permissions:
+  contents: read
+
+jobs:
+  development:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Production Stage 1 development enumeration
+        env:
+          DRSSE_STAGE1_OUT: artifacts/drsse-stage1
+        run: node --max-old-space-size=4096 tools/experiments/run-drsse-stage1-development.js
+      - name: Separate-process independent Stage 1 verification
+        env:
+          DRSSE_STAGE1_OUT: artifacts/drsse-stage1
+        run: node --max-old-space-size=4096 tools/experiments/verify-drsse-stage1-independent.js
+      - name: Artifact hashes and accepted readiness record
+        run: |
+          find artifacts/drsse-stage1 -type f -print0 | sort -z | xargs -0 sha256sum | tee artifacts/drsse-stage1/SHA256SUMS
+          echo "DRSSE_STAGE1_HEAD=${GITHUB_SHA}"
+          echo "DRSSE_STAGE1_RUN=${GITHUB_RUN_ID}"
+          cat artifacts/drsse-stage1/stage1-production-summary.json
+          cat artifacts/drsse-stage1/stage1-independent-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: drsse-stage1-development-v1
+          path: artifacts/drsse-stage1
+          if-no-files-found: error
+          retention-days: 90
