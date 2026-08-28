@@ -19,11 +19,11 @@
     "tools/experiments/lib/ssgtc-representation-independent.js": "6165404a6a45504448c2db8221a420758338c4ce8d64cf7bed0c41ee901a86fb",
     "tools/experiments/lib/stscv-stage0-production.js": "68fa955c4601736f83c08caea242a37d46fead78c94b2939b9d1553a996428b1",
     "tools/experiments/lib/stscv-stage0-independent.js": "c5b69be309a6fdfc31ebadaba9d388d480b0a95e3f76529a4e28d56e1af881b8",
-    "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part01.jsfrag": "2ee7774f39c3b2f8068d54e0cd216e4acf2a9648a956663872ac58e4f3e928b7",
+    "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part01.jsfrag": "47e42ca2c7263c1868450520f4af94739889a3ea1a2434876535c789080f5676",
     "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part02.jsfrag": "f133b829916f0aaae192f2a4ff863a0f23208e2cb9567212b5beb94895035aee",
     "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part03.jsfrag": "0f9eec2460a198e129b4dbe1d12a7dcfcaedb88d2c9adc23c90bd30653dd1a87",
     "tools/experiments/stscv-stage2-formal-parts/run-stscv-stage2-formal.part04.jsfrag": "eb19a7cd87e2b00dc5ea70372e6de8280857b04884a815464c114b53263be186",
-    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part01.jsfrag": "5f59b385471ed22ea0d918d1d3fe2cf7c56b85aa8fa3e5c58f3dc028dda34c0e",
+    "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part01.jsfrag": "ea155d7057147f0cbddd1b1332d4bc8b884de68337151f8a00a554b70939e29e",
     "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part02.jsfrag": "2a3dfbc9bbf64627f409f9ac8bb534497b0972e80847ac5b35779dc7c543c12c",
     "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part03.jsfrag": "ebac64c6c889ac3749d4fc4bdac8902fe170ff5bda8c163cf905cc0076a9f35b",
     "tools/experiments/stscv-stage2-formal-parts/verify-stscv-stage2-formal.part04.jsfrag": "d8e3ffb0f4c8465a5b2dcc0da0a5e881078eedbde4d4ced11c06d378630ac4de",
@@ -31,8 +31,8 @@
     ".github/workflows/stscv-stage2-formal.yml": "ee60751bd04c3f2a7705d47b04b8a317f5e3eb7e0b405e3c641080af6de96206"
   },
   "combinedSourceSha256": {
-    "productionRunner": "13de0fa7af9e02271e6fe9c3b0320ccfb357a2d100e1aa9be2ea55009402e44f",
-    "independentVerifier": "0f6c6837fae8a4d7a31209b1a1b719ec3b7db33603c43f41b3cb14ef5df99961"
+    "productionRunner": "faf4e81c146e0c6564599fe7c4e357cd3b9afb322149243de8086da2d69c3a7c",
+    "independentVerifier": "13b555e6ab34fda1d58213b583e8250d593a9f061c62ac403273265896cbaf93"
   },
   "frozenPopulation": {
     "source": "fresh-historically-reachable-standard-engine-trajectories",
@@ -40,7 +40,12 @@
     "maximumTrajectoryPly": 160,
     "assignedStratumRule": {"0": "namua", "1": "mtaji", "2": "mtaji-houseless", "formula": "(seed - seedBlock.start) mod 3"},
     "oneStatePerTrajectory": true,
-    "eligibility": {"common": ["winner=null", "representedSeeds=64", "no-runtime-relay-limit-before-selected-state"], "namua": ["phase=namua", "ply>=12"], "mtaji": ["phase=mtaji"], "mtaji-houseless": ["phase=mtaji", "reserve=[0,0]", "houseOwned=[false,false]"]},
+    "eligibility": {
+      "common": ["winner=null", "representedSeeds=64", "no-runtime-relay-limit-before-selected-state"],
+      "namua": ["phase=namua", "ply>=12"],
+      "mtaji": ["phase=mtaji"],
+      "mtaji-houseless": ["phase=mtaji", "reserve=[0,0]", "houseOwned=[false,false]"]
+    },
     "candidateWithinTrajectory": "first-eligible-state-for-assigned-stratum",
     "openingPrefixLengthMoves": 8,
     "stage1FirewallRequired": ["trajectory-seed", "opening-prefix-sha256", "raw-state-key"],
