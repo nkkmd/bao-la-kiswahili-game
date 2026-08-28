@@ -169,4 +169,17 @@ A new formal test of these hypotheses requires a new prospective Study or explic
 
 ## Repository state
 
-The research branch is being prepared for integration review. No merge into `main` is recorded by this status document.
+Integrated into `main` through PR #69 after the final documentation and CI audit.
+
+```text
+Final research head = c6f2fa750ce2e30a5ce359b9f3c594145c8e5a38
+Merge commit = 2b5f297e09330348fdb2c42472aed50340eb0180
+Integrated branch = main
+```
+
+Post-merge integration provenance is recorded in:
+
+- `checkpoints/2026-08-28-main-integration.md`
+- `results/MAIN_INTEGRATION_PROVENANCE.json`
+
+Repository integration does not change the formal scientific closure, validated transform set, canonicalization boundary, or no-rescue rule.

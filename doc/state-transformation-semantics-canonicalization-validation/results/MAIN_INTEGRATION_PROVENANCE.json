@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-03",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "STSCV-STUDY1",
+  "recordType": "MAIN_INTEGRATION_PROVENANCE",
+  "recordDate": "2026-08-28",
+  "integration": {
+    "pullRequest": 69,
+    "baselineMainSha": "a8493d2a50e11f15d16ef8348f2442b262ca275d",
+    "finalResearchHeadSha": "c6f2fa750ce2e30a5ce359b9f3c594145c8e5a38",
+    "mergeCommitSha": "2b5f297e09330348fdb2c42472aed50340eb0180",
+    "targetBranch": "main",
+    "mergeMethod": "merge",
+    "expectedHeadShaEnforced": true
+  },
+  "formalClosure": {
+    "studyDecision": "INCONCLUSIVE",
+    "candidateDecisions": {
+      "STSCV-T01-SEAT-SWAP-LOCAL": "NON-ESTIMABLE",
+      "STSCV-T02-LR-MTAJI-HOUSELESS": "NON-ESTIMABLE",
+      "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": "NON-ESTIMABLE"
+    },
+    "validatedCandidateIds": [],
+    "semanticDomainCanonicalization": "NON-ESTIMABLE",
+    "standardStartReachablePopulationDeduplication": "NON-ESTIMABLE",
+    "scientificPopulationCanonicalizationAuthorized": false,
+    "symmetryReducedStateCountingAuthorized": false
+  },
+  "stage2Failure": {
+    "workflowRunId": 33145860098,
+    "workflowJobId": 98766622115,
+    "failureClass": "POST-MEASUREMENT-INDEPENDENT-VERIFIER-RESULT-ASSEMBLY-IMPLEMENTATION-ERROR",
+    "errorType": "ReferenceError",
+    "errorMessage": "standardStartReachablePopulationDedupDecision is not defined",
+    "sameEvidenceRerunPerformed": false,
+    "postOutcomeVerifierRepairPerformed": false
+  },
+  "preMergeChecks": {
+    "mergeable": true,
+    "unresolvedReviewThreads": 0,
+    "branchBehindMain": 0,
+    "workflowRuns": {
+      "secondGenerationResearchAgendaAudit": {
+        "runId": 33148001769,
+        "conclusion": "success"
+      },
+      "phaseTransitionResearchCI": {
+        "runId": 33148001787,
+        "conclusion": "success"
+      },
+      "pcemClosureConsistencyAudit": {
+        "runId": 33148001789,
+        "conclusion": "success"
+      },
+      "ssgtcClosureConsistencyAudit": {
+        "runId": 33148001829,
+        "conclusion": "success"
+      }
+    }
+  },
+  "interpretationBoundary": {
+    "integrationChangesFormalDecision": false,
+    "productionZeroMismatchPromotedToValidation": false,
+    "technicalFailureReinterpretedAsScientificMismatch": false,
+    "upstreamStudyDecisionChanged": false,
+    "publicAIEngineeringChangeAuthorized": false
+  }
+}
