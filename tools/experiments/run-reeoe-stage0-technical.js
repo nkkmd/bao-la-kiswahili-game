@@ -139,7 +139,7 @@ function main() {
   }
 
   const expected = spec.positiveControl.expected;
-  const rootResult = solution.rows.find((row) => row.stateKey === expected.rootStateKey);
+  const rootResult = solution.rows.find((row) => row.stateKey === spec.positiveControl.rootStateKey);
   const positiveChecks = {
     stateCount: graph.stateCount === expected.stateCount,
     edgeCount: graph.edgeCount === expected.edgeCount,
@@ -159,8 +159,6 @@ function main() {
     throw new Error(`Positive control mismatch: ${JSON.stringify(positiveChecks)}`);
   }
 
-  // Guard-free semantics must finish the entire technical fixture without turning
-  // an administrative/runtime guard into a game result.
   let runtimeGuardHits = 0;
   let transitionComparisonMismatches = 0;
   for (const record of graph.stateRecords) {
@@ -231,7 +229,6 @@ function main() {
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, `${JSON.stringify(result, null, 2)}\n`);
-  // Reopen immediately so materialization problems are technical failures.
   const reopened = readJson(outputPath);
   if (sha256Stable(reopened.technical) !== result.technicalCoreSha256) throw new Error("Reopened technical core hash mismatch");
   if (reopened.scientificInferenceAuthorized !== false || reopened.formalExactDecisionAuthorized !== false) {
