@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S2-FORMAL-2026-08-28-v1",
+  "freezeDate": "2026-08-28",
+  "sourceStage1": {
+    "stageId": "STSCV-S1-DEVELOPMENT-2026-08-28-v1",
+    "resultPath": "doc/state-transformation-semantics-canonicalization-validation/results/STAGE_1_DEVELOPMENT_RESULT.json",
+    "workflowRunId": 33144060069,
+    "artifactId": 9675082539,
+    "artifactZipSha256": "86d7a8635ab9e06632f67e9039371aa053fbc224e71ee70576bb983d0abd6ca5",
+    "selectionSha256": "f1cfeed4b712885ca1dd0ec84ea537b5ec8177fe64f16c677971558b2e2ae7c5",
+    "measurementSha256": "bae92c61d3a9736130da6d80a3ea6a6a7597d8277cfe362b13127749b7b74bf8",
+    "selectedRootCount": 72,
+    "expectedUniqueTrajectorySeeds": 72,
+    "expectedUniqueOpeningPrefixSha256": 71,
+    "expectedUniqueRawStateKeys": 72,
+    "independentVerificationRequired": true
+  },
+  "consumptionRule": {
+    "trajectorySeeds": "ALL selectedRoots[*].seed from the bound Stage 1 result",
+    "openingPrefixSha256": "ALL selectedRoots[*].openingPrefixSha256 from the bound Stage 1 result, globally unioned across strata",
+    "rawStateKeys": "ALL selectedRoots[*].stateKey from the bound Stage 1 result",
+    "stage2ReuseAllowed": false
+  },
+  "stage2InternalIndependence": {
+    "openingPrefixSha256": "globally unique across all Stage 2 strata",
+    "rawStateKeys": "globally unique across all Stage 2 strata",
+    "trajectorySeeds": "unique by construction within frozen seed block"
+  },
+  "candidateOutcomeUsedToDefineFirewall": false,
+  "firewallRelaxationAfterOutcomeAuthorized": false
+}
