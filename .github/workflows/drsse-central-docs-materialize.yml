@@ -22,6 +22,22 @@ jobs:
           node-version: '22'
       - name: Materialize bounded central-document updates
         run: python3 tools/experiments/materialize-g2-05-central-docs.py
+      - name: Normalize only inserted G2-05 index hard-break whitespace
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('doc/RESEARCH_INDEX.md')
+          text = p.read_text(encoding='utf-8')
+          targets = (
+              '**研究題目:** Baoにおける深層RAW状態空間の完全列挙 — prospectively fixed roots に対する bounded-depth complete enumeration, reachable-state growth, branching structure, transposition structure, and tree/graph occurrence ratio の厳密解析  \n',
+              '**Program:** `G2-05` / **Study ID:** `DRSSE-STUDY1` / **Research Generation 2**  \n',
+          )
+          for old in targets:
+              if text.count(old) != 1:
+                  raise SystemExit(f'expected one inserted whitespace target: {old!r}')
+              text = text.replace(old, old[:-3] + '\n', 1)
+          p.write_text(text, encoding='utf-8')
+          PY
       - name: Validate agenda and whitespace
         run: |
           node test/second-generation-research-agenda.test.js
