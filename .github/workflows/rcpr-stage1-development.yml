@@ -1,0 +1,44 @@
+name: RCPR Stage 1 Development
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-06-rich-critical-position-representation
+    paths:
+      - 'doc/rich-critical-position-representation/authorizations/STAGE_1_EXECUTE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-development:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Checkout authorized source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Execute fresh Stage 1 development population once
+        run: |
+          node tools/experiments/run-rcpr-stage1-development.js \
+            --out artifacts/local/rich-critical-position-representation/stage1-development-v1
+
+      - name: Independent full-corpus replay and recomputation
+        run: |
+          node tools/experiments/verify-rcpr-stage1-independent.js \
+            --dir artifacts/local/rich-critical-position-representation/stage1-development-v1
+
+      - name: Upload Stage 1 development artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rcpr-stage1-development-v1
+          path: artifacts/local/rich-critical-position-representation/stage1-development-v1/
+          if-no-files-found: warn
+          retention-days: 30
