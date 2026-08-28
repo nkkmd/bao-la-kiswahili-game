@@ -176,7 +176,7 @@ Explicit Stage 2 authorization was then committed at:
 
 Formal workflow run `33124538584` passed the explicit authorization gate, downloaded the immutable Stage 1 consumed-identity firewall artifact, and entered the frozen Stage 2 generation/firewall-selection/measurement step.
 
-No formal result has yet been declared. No rescue modification is authorized in response to the Stage 2 outcome.
+No formal result had yet been declared at this point. No rescue modification was authorized in response to the Stage 2 outcome.
 
 ## 2026-08-28 — Stage 1 verification correction
 
@@ -197,3 +197,16 @@ No formal result has yet been declared. No rescue modification is authorized in 
 - One frozen estimability gate failed: `1040 < 1050` unique historical trajectories after firewall.
 - Formal decision fixed as `INCONCLUSIVE`; `primaryFormalCriterion = null`.
 - No rescue, extension, replacement or threshold relaxation performed.
+
+## 2026-08-28 — Repository closure and main integration
+
+- Deterministic closure finalization validated the immutable Stage 2 artifact and materialized canonical compact result records.
+- Root `README.md`, `doc/RESEARCH_INDEX.md`, `doc/FUTURE_RESEARCH_AGENDA.md`, Study overview/final report/status/decision register/reproducibility index were audited for agreement with the canonical result.
+- Large per-game / selected-state / full-measurement Stage 2 artifacts were intentionally excluded from Git history; their hashes remain recorded.
+- The closure workflow was made idempotent and successfully rerun on the final research head.
+- Final research head before merge: `f6814e4e828ea07ec309f6f7352c825494d8ff20`.
+- The branch was 66 commits ahead and 0 behind `main`; no competing open PR or unresolved review thread remained.
+- All five normal PR workflows passed: G2-02 technical validation, second-generation research agenda audit, SSGTC closure audit, PCEM closure audit, and repo-wide Phase Transition Research CI.
+- PR `#68` was merged to `main` with merge commit `ee5f0a5e769516d635fe8b70e42244a8dc8d9b34`.
+- Repository integration changed no scientific evidence, formal gate, decision, or interpretation boundary.
+- Final scientific decision remains `SRDR-STUDY1 = INCONCLUSIVE`; `primaryFormalCriterion = null`.
