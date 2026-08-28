@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "studyId": "REEOE-STUDY1",
+  "stageId": "REEOE-S1-DEVELOPMENT-2026-08-28-v1",
+  "closureDate": "2026-08-28",
+  "resultRole": "invalid-development-execution-provenance-only",
+  "stage1V1Decision": "TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED",
+  "scientificInferenceAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "eligibleForStage2Design": false,
+  "eligibleForStage2Evidence": false,
+  "sameEvidenceRerunAuthorized": false,
+  "workflow": {
+    "runId": 33150429724,
+    "jobId": 98780893526,
+    "workflowHeadSha": "c295564d90b4b39946f7237be7e08a4bbc36cc73",
+    "productionStepConclusion": "success",
+    "independentVerificationStepConclusion": "failure",
+    "artifactUploaded": false
+  },
+  "failure": {
+    "class": "VERIFIER-STARTUP-IMPLEMENTATION-DEFECT",
+    "error": "Cannot find module '../public/engine.js'",
+    "file": "tools/experiments/verify-reeoe-stage1-independent.js",
+    "incorrectImport": "../public/engine.js",
+    "requiredImportFromThatFileLocation": "../../public/engine.js",
+    "verifierScientificLogicExecuted": false,
+    "independentClosureVerificationExecuted": false,
+    "detectedAfterProductionDevelopmentOutputWasVisible": true
+  },
+  "productionDevelopmentOutputObservedBeforeFailure": {
+    "status": "PRODUCTION-DEVELOPMENT-ELIGIBLE",
+    "uniqueWitnessRootCount": 6701,
+    "eligibleRootCount": 161,
+    "selectedRootCount": 8,
+    "completeClosureCount": 5,
+    "allEncounteredRootSetSha256": "93aa5e78f8c9e98988b336c0372009fcdefec4ac49f57c68a81d8b7633534d4d",
+    "developmentCoreSha256": "123de52210e38fa030e0874a110a76c858816932a1e873bb093bbd15336f8345",
+    "interpretation": "Observed execution provenance only. These values are not valid Stage 1 development evidence and may not be used to tune or select the Stage 2 design."
+  },
+  "consumedIdentityFirewall": {
+    "seedBase": 24040001,
+    "seedEnd": 24040512,
+    "allSeedsConsumed": true,
+    "allEncounteredRawRootKeysConsumed": true,
+    "allSelectedV1RootsConsumed": true,
+    "reuseInStage1V2": false,
+    "reuseInStage2": false
+  },
+  "noRescueDisposition": {
+    "editVerifierAndRerunSameSeedBlock": "FORBIDDEN",
+    "reinterpretProductionOnlyClosureRowsAsVerified": "FORBIDDEN",
+    "useV1ResourceObservationsToAlterStructuralEnvelope": "FORBIDDEN",
+    "useV1ResourceObservationsToAlterStage2ResourceCeilings": "FORBIDDEN",
+    "permittedNextAction": "new prospectively versioned Stage 1 development execution with unchanged structural/resource design, corrected verifier plumbing, and a fresh seed/RAW-identity block"
+  },
+  "formalStudyImpact": {
+    "studyTerminated": false,
+    "reason": "Stage 1 is development-only and no formal scientific exact-analysis outcome was authorized or generated; a new prospective Stage 1 version with fresh identities is permissible after recording this fail-closed invalidation.",
+    "stage2StillUnauthorized": true
+  }
+}
