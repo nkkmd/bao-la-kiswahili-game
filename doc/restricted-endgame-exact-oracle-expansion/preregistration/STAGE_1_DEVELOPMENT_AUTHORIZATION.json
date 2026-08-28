@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "studyId": "REEOE-STUDY1",
+  "stageId": "REEOE-S1-DEVELOPMENT-2026-08-28-v1",
+  "authorizationDate": "2026-08-28",
+  "authorizationRole": "fresh-development-execution-only",
+  "executionAuthorized": true,
+  "scientificInferenceAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "stage2ExecutionAuthorized": false,
+  "prerequisiteStage0": {
+    "stage0TechnicalDecision": "STAGE0-TECHNICAL-PASS",
+    "repositoryResultGitBlobSha": "32bad823c5e6fc75b61aeccd5b5f4cfc7ddcc62d",
+    "workflowRunId": 33150063023,
+    "artifactZipSha256": "37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d3a7dac0"
+  },
+  "sourceGitBlobSha": {
+    "public/engine.js": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c",
+    "tools/benchmark.js": "88a2543157eacf15693b30c589b0fbcc616223a6",
+    "tools/experiments/lib/restricted-endgame-stage0.js": "c0391da999314c4709e5002e73eae42ef3048436",
+    "tools/experiments/lib/restricted-endgame-transition.js": "7ca35ef03ecad102b9a9e1fa6c4767f72d409961",
+    "tools/experiments/lib/restricted-endgame-independent-verifier.js": "94a79d140803802acf607bbaf02d570aa3b6f362",
+    "tools/experiments/run-reeoe-stage1-development.js": "5b43fb30b439cc33662f578443637ec07d5a1890",
+    "tools/experiments/verify-reeoe-stage1-independent.js": "e3503ec00e152392cdd080bc5004dd0f26a302eb",
+    "doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_1_DEVELOPMENT_SPEC.json": "6ea0db71f61b4a473e5107ac12e13901058314e3",
+    "doc/restricted-endgame-exact-oracle-expansion/results/STAGE_0_TECHNICAL_RESULT.json": "32bad823c5e6fc75b61aeccd5b5f4cfc7ddcc62d"
+  },
+  "freshSeedBlock": {
+    "seedBase": 24040001,
+    "seedEnd": 24040512,
+    "games": 512,
+    "maxPly": 240
+  },
+  "authorizationConditions": [
+    "all source Git blob hashes must match at execution",
+    "Stage 1 may report structural root availability and closure/resource characteristics only",
+    "Stage 1 may not import or execute retrograde outcome logic for development selection",
+    "Stage 1 identities are consumed and excluded from Stage 2",
+    "Stage 1 result does not authorize Stage 2"
+  ],
+  "noRescue": true
+}
