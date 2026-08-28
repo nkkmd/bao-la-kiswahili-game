@@ -1,7 +1,7 @@
 # Restricted Endgame Exact Oracle Expansion Study 1 — Overview
 
 Updated: 2026-08-28  
-Status: **STARTED / PROSPECTIVE FREEZE COMPLETE / STAGE 0 TECHNICAL WORK ONLY**
+Status: **COMPLETED / `INCONCLUSIVE` / STAGE 2 NOT AUTHORIZED**
 
 ## Study identity
 
@@ -12,6 +12,7 @@ Research Generation = Research Generation 2
 Formal title = Restricted Endgame Exact Oracle Expansion Study 1
 Baseline main = aba61596e6440e9d54be6f1e9520f65e983000b3
 Research branch = research/g2-04-restricted-endgame-exact-oracle-expansion
+PR = #70
 ```
 
 日本語作業表記:
@@ -20,100 +21,92 @@ Research branch = research/g2-04-restricted-endgame-exact-oracle-expansion
 
 ## Question
 
-複数のrestricted Bao endgame domainを、game-theoretic outcomeを見ずにprospectively選択し、authoritative RAW identityの下でcomplete forward closureを証明したうえで、exact retrograde analysisによってvalue、recurrent/cycle structure、distance-to-resolution、all optimal moves、optimal-move multiplicityを完全かつ再現可能に列挙できるかを検証する。
+複数のrestricted Bao endgame domainをoutcome-blindにprospectively選択し、authoritative RAW identityの下でcomplete forward closureを証明したうえで、exact retrograde analysisに進めるかを検証した。
 
 ## Representation boundary
 
-Authoritative scientific identity:
-
 ```text
-pits,reserve,houseOwned,player,phase,winner,pending
+RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
+excluded = turn,reason
+validated transform set = []
+symmetry reduction / canonicalization / quotient graph = prohibited
 ```
 
-Excluded:
-
-```text
-turn,reason
-```
-
-G2-03のvalidated transform setは空であるため、このStudyはRAW-onlyで実施する。symmetry reduction、canonicalization、player-swap/left-right quotient、symmetry-reduced countingは使用しない。
-
-## Stage structure
+## Stage outcome
 
 ```text
 REEOE-S0-TECHNICAL-2026-08-28-v1
-  technical solver / representation / closure / verifier validation only
+  STAGE0-TECHNICAL-PASS
 
 REEOE-S1-DEVELOPMENT-2026-08-28-v1
-  fresh domain development + resource characterization
-  formal exact decision not authorized
+  TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
+
+REEOE-S1-DEVELOPMENT-2026-08-28-v2
+  STAGE1-DEVELOPMENT-BLOCKED
 
 REEOE-S2-FORMAL-2026-08-28-v1
-  prospectively frozen exact formal domains only
-  separate source freeze + explicit authorization required
+  NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-At Study start, only Stage 0 technical work is eligible. Stage 1 and Stage 2 scientific generation are not authorized.
+## Stage 0
 
-## Complete-closure rule
-
-An exact-oracle claim requires every legal successor of every included nonterminal state to be accounted for. A structural root filter does not prune successors. If closure is incomplete, escaping, resource-censored, or technically invalid, the domain is not reported as exact.
-
-## Retrograde rule
-
-Initial solver vocabulary:
+The immutable REWR 8-state / 7-edge domain was reconstructed only as a technical regression fixture. Production and independent paths reproduced the graph, predecessor relation, exact solution, DTF and all optimal/max-resistance moves; all four corruption controls were detected.
 
 ```text
-TERMINAL
-WIN
-LOSS
-RECURRENT
+workflowRunId = 33150063023
+artifactId = 9677327024
+artifactZipSha256 = 37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d3a7dac0
 ```
 
-At Study start, `RECURRENT` is not renamed `DRAW`. DTF is legal-move/ply distance to forced terminal:
+No fresh G2-04 scientific result was generated in Stage 0.
+
+## Stage 1
+
+Stage 1 v1 was fail-closed after production development had run but the independent verifier failed at startup. The same evidence was not repaired and rerun.
+
+A fresh v2 preserved the structural/resource/acceptance design and used seeds `24041001..24041512`. Production and independent verification agreed on the full scan, eligible set, selected roots, and closure classifications.
 
 ```text
-TERMINAL = 0
-WIN = 1 + min winning-successor DTF
-LOSS = 1 + max opponent-winning-successor DTF
-RECURRENT = null
+unique witness roots = 7055
+eligible roots = 141
+selected roots = 8
+complete closures = 0
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
 ```
 
-All optimal moves and optimal-move multiplicity are preserved.
+The prospectively frozen acceptance required at least 3 independently verified complete closures. Therefore v2 closed as `STAGE1-DEVELOPMENT-BLOCKED`.
 
-## Controls
+## Complete-closure boundary
 
-Positive technical regression:
+No incomplete or resource-censored graph was promoted to exact. `ADMIN-CUTOFF` is not a game outcome. `MOVE-NONTERMINATION` is an intra-move transition-instrument classification and is not automatically a game-level `RECURRENT` or `DRAW` result.
+
+## Stage 2 and formal decision
+
+Because the Stage 1 v2 feasibility gate failed, no Stage 2 formal-domain contract or authorization was created.
 
 ```text
-REEOE-C00-REWR-8STATE-REGRESSION
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+formal domains evaluated = 0
+fresh G2-04 exact oracle produced = false
+formalDecision = INCONCLUSIVE
 ```
 
-The prior REWR 8-state / 7-edge exact domain is reconstructed only as an instrument control. It is not fresh G2-04 evidence.
+No cap increase, domain shrinkage, root replacement, seed extension, solver substitution, partial-closure promotion, symmetry reduction, or canonicalization rescue was used.
 
-Negative technical controls require the independent verifier to detect:
+## Upstream boundary
 
-```text
-missing successor
-incorrect terminal classification
-incomplete edge set
-corrupted predecessor mapping
-```
+G2-01, G2-02, G2-03, REWR, ORISC, SSGTC and AI-engineering results remain unchanged. In particular, REWR remains exact only within its frozen 8-state/7-edge domain and the validated transformation set remains empty.
 
-## Immutable upstream boundaries
+## Canonical records
 
-```text
-PEOCR-STUDY1 = INCONCLUSIVE
-SRDR-STUDY1 = INCONCLUSIVE / primaryFormalCriterion = null / 1040 < 1050
-STSCV-STUDY1 = INCONCLUSIVE / T01-T03 NON-ESTIMABLE / validated transform set = []
-REWR-STUDY1 = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN for its 8-state domain only
-ORISC Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
-ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
-SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
-```
+- `STUDY_1_FINAL_REPORT.md`
+- `CURRENT_STATUS.md`
+- `DECISION_REGISTER.md`
+- `REPRODUCIBILITY_INDEX.md`
+- `results/STAGE_0_TECHNICAL_RESULT.json`
+- `results/STAGE_1_DEVELOPMENT_V2_RESULT.json`
+- `results/STUDY_1_FINAL_RESULT.json`
 
-The historical REWR 423,733-state candidate stopped at `ADMIN-CUTOFF`; G2-04 does not simply increase that cap and resume it.
-
-## Current next step
-
-Stage 0 must audit current RAW serialization, exact move identity, guard-free endgame transitions, closure traversal, retrograde solving, and independent verification; reproduce the REWR positive fixture; and prove detection of the four frozen corruption controls before any Stage 1 development generation can be considered.
+A future exact-oracle expansion under a materially different structural/resource contract requires a new prospective independent Study/versioned protocol with fresh evidence.
