@@ -1,48 +1,17 @@
-name: DRSSE Stage 2 Formal
+name: DRSSE Stage 2 Formal — closed-study archival stub
 
 on:
-  push:
-    branches:
-      - research/g2-05-deep-raw-state-space-enumeration
-    paths:
-      - doc/deep-raw-state-space-enumeration/authorizations/STAGE_2_EXECUTE.json
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  formal:
+  archived:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Production formal depth-9 enumeration
-        env:
-          DRSSE_STAGE2_OUT: artifacts/drsse-stage2
-        run: node --max-old-space-size=6144 tools/experiments/run-drsse-stage2-formal.js
-      - name: Separate-process independent formal verification
-        env:
-          DRSSE_STAGE2_OUT: artifacts/drsse-stage2
-        run: node --max-old-space-size=6144 tools/experiments/verify-drsse-stage2-independent.js
-      - name: Artifact hashes and provenance
-        if: always()
+      - name: Closed-stage notice
         run: |
-          if [ -d artifacts/drsse-stage2 ]; then
-            find artifacts/drsse-stage2 -type f -print0 | sort -z | xargs -0 sha256sum | tee artifacts/drsse-stage2/SHA256SUMS
-            echo "DRSSE_STAGE2_HEAD=${GITHUB_SHA}"
-            echo "DRSSE_STAGE2_RUN=${GITHUB_RUN_ID}"
-            echo "DRSSE_STAGE2_JOB=${GITHUB_JOB}"
-            if [ -f artifacts/drsse-stage2/stage2-formal-result.json ]; then cat artifacts/drsse-stage2/stage2-formal-result.json; fi
-          fi
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: drsse-stage2-formal-v1
-          path: artifacts/drsse-stage2
-          if-no-files-found: warn
-          retention-days: 90
+          echo 'DRSSE-S2-FORMAL-2026-08-28-v1 is closed as EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN.'
+          echo 'Canonical run: 33156581843; artifact: 9679860509.'
+          echo 'No additional Stage 2 formal evidence generation is authorized.'
