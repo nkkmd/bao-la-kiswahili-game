@@ -35,6 +35,20 @@ function ensure(condition, message) {
   if (!condition) throw new Error(message);
 }
 
+function g1CompatibleTransitionHash(core) {
+  const fingerprints = [];
+  for (const parentLayer of core.parentLayers) {
+    const filePath = path.join(OUT_DIR, parentLayer.edgeFile);
+    const text = fs.readFileSync(filePath, "utf8").trim();
+    if (!text) continue;
+    for (const line of text.split("\n")) {
+      const row = JSON.parse(line);
+      fingerprints.push(`${row.sourceKey}|${row.moveKey}|${row.childKey}`);
+    }
+  }
+  return prod.sha256Text(fingerprints.sort().join("\n"));
+}
+
 function main() {
   const core = prod.enumerateExactDepth({
     engine,
@@ -47,13 +61,14 @@ function main() {
     rootLabel: "G1-SSGTC-DEPTH2-TECHNICAL-POSITIVE-FIXTURE",
   });
 
+  const g1TransitionSetSha256 = g1CompatibleTransitionHash(core);
   const gates = {
     "S0-G1-RAW-IDENTITY": core.representation.mode === "RAW-ONLY" && core.representation.pendingRequired === true,
     "S0-G2-COMPLETE-LAYERS": core.targetComplete === true && core.lastCompleteDepth === 2,
     "S0-G3-G1-STATE-COUNT-FIXTURE": core.cumulative.distinctRawStatesThroughLastCompleteDepth === G1_FIXTURE.cumulativeRawStates,
     "S0-G4-G1-EDGE-COUNT-FIXTURE": core.cumulative.depthLabelledLegalEdgesThroughLastCompleteParent === G1_FIXTURE.cumulativeEdges,
     "S0-G5-G1-STATE-HASH-FIXTURE": core.cumulative.cumulativeRawStateSetSha256 === G1_FIXTURE.cumulativeRawStateSetSha256,
-    "S0-G6-G1-EDGE-HASH-FIXTURE": core.cumulative.cumulativeGlobalRawGraphEdgeSetSha256 === G1_FIXTURE.cumulativeGlobalRawGraphEdgeSetSha256,
+    "S0-G6-G1-EDGE-HASH-FIXTURE": g1TransitionSetSha256 === G1_FIXTURE.cumulativeGlobalRawGraphEdgeSetSha256,
     "S0-G7-NO-TRANSFORM": Array.isArray(core.representation.validatedTransformSet) && core.representation.validatedTransformSet.length === 0,
     "S0-G8-NO-RESOURCE-STOP": core.stopReason === null,
   };
@@ -68,11 +83,15 @@ function main() {
     productionPassed: true,
     gates,
     fixture: G1_FIXTURE,
+    fixtureCompatibility: {
+      g1TransitionSetSha256,
+      note: "G1 SSGTC hashes sorted raw transition fingerprints directly; DRSSE internal cumulative edge hashes use a separately frozen deterministic fingerprint-hash convention. Both are retained and not conflated.",
+    },
     productionCore: core,
     independentVerificationRequired: true,
   };
   fs.writeFileSync(path.join(OUT_DIR, "stage0-production-summary.json"), `${JSON.stringify(result, null, 2)}\n`, "utf8");
-  console.log(`DRSSE_STAGE0_PRODUCTION=${JSON.stringify({ passed: true, resultCoreSha256: core.resultCoreSha256, outDir: OUT_DIR })}`);
+  console.log(`DRSSE_STAGE0_PRODUCTION=${JSON.stringify({ passed: true, resultCoreSha256: core.resultCoreSha256, g1TransitionSetSha256, outDir: OUT_DIR })}`);
 }
 
 main();
