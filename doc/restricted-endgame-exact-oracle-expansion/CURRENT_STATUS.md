@@ -1,0 +1,169 @@
+# REEOE-STUDY1 — Current Status
+
+Updated: 2026-08-28
+
+## Status
+
+**COMPLETED / FORMAL DECISION `INCONCLUSIVE` / STAGE 2 NOT AUTHORIZED**
+
+## Identity
+
+```text
+Program = G2-04
+Study ID = REEOE-STUDY1
+Research Generation = Research Generation 2
+Formal title = Restricted Endgame Exact Oracle Expansion Study 1
+Baseline main = aba61596e6440e9d54be6f1e9520f65e983000b3
+Research branch = research/g2-04-restricted-endgame-exact-oracle-expansion
+Integration PR = #70
+```
+
+## Stage progression
+
+```text
+Stage 0 = REEOE-S0-TECHNICAL-2026-08-28-v1
+  STAGE0-TECHNICAL-PASS
+
+Stage 1 v1 = REEOE-S1-DEVELOPMENT-2026-08-28-v1
+  TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
+  same-evidence rerun prohibited
+
+Stage 1 v2 = REEOE-S1-DEVELOPMENT-2026-08-28-v2
+  STAGE1-DEVELOPMENT-BLOCKED
+
+Stage 2 = REEOE-S2-FORMAL-2026-08-28-v1
+  NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+## Formal decision
+
+```text
+formalDecision = INCONCLUSIVE
+freshExactOracleProduced = false
+formalStage2DomainsEvaluated = 0
+domainLevelFormalDecisionsGenerated = 0
+```
+
+The Study closed before Stage 2 because the valid fresh Stage 1 v2 development run did not satisfy its prospectively frozen feasibility/acceptance gate.
+
+## Stage 0 technical result
+
+The immutable REWR 8-state / 7-edge exact domain was reconstructed only as a technical positive control.
+
+```text
+workflowRunId = 33150063023
+artifactId = 9677327024
+artifactZipSha256 = 37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d3a7dac0
+states = 8
+edges = 7
+solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15
+S0-G1..S0-G12 = PASS
+negative controls detected = 4/4
+```
+
+Stage 0 generated no fresh G2-04 scientific evidence.
+
+## Stage 1 v1 failure boundary
+
+The first fresh development execution generated production-only development output, after which the independent verifier failed to start because of a module-path defect.
+
+```text
+workflowRunId = 33150429724
+classification = TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
+v1 outputs eligible for later design = false
+v1 seed/RAW identities consumed = true
+```
+
+The same block was not rerun after the defect became known.
+
+## Stage 1 v2 valid development result
+
+Fresh identities:
+
+```text
+seeds = 24041001..24041512
+games = 512
+maxPly = 240
+```
+
+Frozen structural/resource contract:
+
+```text
+phase = mtaji
+reserve = [0,0]
+houseOwned = [false,false]
+pending = [0,0]
+represented seeds = 64
+non-empty pits <= 18
+exact legal moves <= 2
+maximum selected roots = 8
+states/root <= 100000
+edges/root <= 500000
+move microstates <= 1000000
+minimum complete closures = 3
+```
+
+Observed and independently reconstructed:
+
+```text
+unique witness roots = 7055
+eligible roots = 141
+selected roots = 8
+complete closures = 0
+
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
+```
+
+Identities:
+
+```text
+allEncounteredRootSetSha256 = 36c8afe8eb06c268c80652d132d5149691b6d689c8f5729d31b05811d0e91107
+eligibleRootSetSha256 = 6e73ee17c2cac85a1d122c66b2be36afec67d8c42554518c7ef0f582483fe247
+selectedRootSetSha256 = a34918b684e8de06674463e072d36129f36bda5d23dac2200ad24c3363250de8
+selectedRootOrderSha256 = 77cd163773d526a49190fc090b3d4c8f9e4ef112b494ee40cc1946dc372bdd69
+developmentCoreSha256 = 1d21c1c29355556e1a2ba25c20bf8a29b156b86cc9cbe4216aa243bf16964caf
+independentVerificationCoreSha256 = b09c71350f990195d0b1e56ee267a615e11b7bfa90942bdbcb2dcd94db7ea003
+```
+
+Production and independent verification reached the frozen acceptance evaluation without population, selection, or closure-classification disagreement. The workflow exited nonzero only because `0 < 3` complete closures.
+
+## Stage 2 non-authorization
+
+Because the Stage 1 v2 feasibility gate failed, this Study did not create or execute a Stage 2 formal-domain contract.
+
+No post-outcome cap increase, structural restriction, favorable root replacement, seed extension, symmetry reduction, or partial-graph promotion was performed.
+
+## Authoritative representation
+
+```text
+RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
+excluded = turn,reason
+validated transform set = []
+symmetry reduction = forbidden
+canonicalization = forbidden
+quotient graph = forbidden
+```
+
+## Immutable upstream state
+
+```text
+PEOCR-STUDY1 = INCONCLUSIVE
+SRDR-STUDY1 = INCONCLUSIVE
+STSCV-STUDY1 = INCONCLUSIVE
+REWR-STUDY1 = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN (8 states / 7 edges only)
+ORISC Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
+ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
+SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
+```
+
+None is modified by this Study.
+
+## Canonical result files
+
+- `results/STAGE_0_TECHNICAL_RESULT.json`
+- `results/STAGE_1_DEVELOPMENT_V2_RESULT.json`
+- `results/STUDY_1_FINAL_RESULT.json`
+
+Any future attempt to expand the exact oracle under a different structural or resource contract requires a new prospective independent Study/versioned protocol with fresh evidence.

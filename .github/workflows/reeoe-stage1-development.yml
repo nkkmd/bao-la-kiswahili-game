@@ -1,0 +1,17 @@
+name: REEOE Stage 1 development v1 — invalidated archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-stage notice
+        run: |
+          echo 'REEOE-S1-DEVELOPMENT-2026-08-28-v1 is TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED.'
+          echo 'Its seed/RAW identities are consumed and its production-only outputs are not eligible for v2 or Stage 2 design.'
+          echo 'No v1 scientific/development generation is authorized.'

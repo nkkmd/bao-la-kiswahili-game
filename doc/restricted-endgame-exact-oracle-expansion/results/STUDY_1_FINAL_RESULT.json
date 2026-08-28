@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "REEOE-STUDY1",
+  "formalTitle": "Restricted Endgame Exact Oracle Expansion Study 1",
+  "resultDate": "2026-08-28",
+  "studyStatus": "COMPLETED",
+  "formalDecision": "INCONCLUSIVE",
+  "formalDecisionBasis": "Stage 0 technical validation passed. Stage 1 v1 was fail-closed as TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED and its identities were consumed. Fresh Stage 1 v2 was validly authorized and independently reconstructed, but the prospectively frozen development acceptance rule failed because 0 of 8 selected roots achieved complete forward closure under the frozen resource/termination contract. Stage 2 therefore remained NOT-AUTHORIZED-NOT-EXECUTED. No same-study resource, domain, root, seed, or identity rescue was performed.",
+  "stageStatus": {
+    "REEOE-S0-TECHNICAL-2026-08-28-v1": "STAGE0-TECHNICAL-PASS",
+    "REEOE-S1-DEVELOPMENT-2026-08-28-v1": "TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED",
+    "REEOE-S1-DEVELOPMENT-2026-08-28-v2": "STAGE1-DEVELOPMENT-BLOCKED",
+    "REEOE-S2-FORMAL-2026-08-28-v1": "NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "formalDomainDecisions": [],
+  "freshExactOracleProduced": false,
+  "authoritativeRepresentation": {
+    "identityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedIdentityFields": ["turn", "reason"],
+    "symmetryReductionUsed": false,
+    "canonicalizationUsed": false,
+    "quotientGraphUsed": false
+  },
+  "stage0": {
+    "positiveControl": "REEOE-C00-REWR-8STATE-REGRESSION",
+    "technicalDecision": "STAGE0-TECHNICAL-PASS",
+    "workflowRunId": 33150063023,
+    "artifactId": 9677327024,
+    "artifactZipSha256": "37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d3a7dac0",
+    "stateCount": 8,
+    "edgeCount": 7,
+    "solutionSha256": "4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15",
+    "negativeControlsDetected": 4,
+    "scientificEvidence": false
+  },
+  "stage1v1": {
+    "workflowRunId": 33150429724,
+    "disposition": "TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED",
+    "failure": "independent verifier startup module-path defect after production development output",
+    "sameEvidenceRerunAuthorized": false,
+    "productionOutputsEligibleForV2OrStage2Design": false,
+    "identitiesConsumed": true
+  },
+  "stage1v2": {
+    "workflowRunId": 33151053940,
+    "workflowJobId": 98782876984,
+    "workflowHeadSha": "a44a825c815b2182091ba5e9ff147b1ae8ec395d",
+    "decision": "STAGE1-DEVELOPMENT-BLOCKED",
+    "uniqueWitnessRootCount": 7055,
+    "eligibleRootCount": 141,
+    "selectedRootCount": 8,
+    "completeClosureCount": 0,
+    "closureStopCounts": {
+      "STATE-LIMIT": 4,
+      "ADMIN-CUTOFF": 3,
+      "MOVE-NONTERMINATION": 1
+    },
+    "developmentCoreSha256": "1d21c1c29355556e1a2ba25c20bf8a29b156b86cc9cbe4216aa243bf16964caf",
+    "reconstructedIndependentVerificationCoreSha256": "b09c71350f990195d0b1e56ee267a615e11b7bfa90942bdbcb2dcd94db7ea003",
+    "allEncounteredRootSetSha256": "36c8afe8eb06c268c80652d132d5149691b6d689c8f5729d31b05811d0e91107",
+    "eligibleRootSetSha256": "6e73ee17c2cac85a1d122c66b2be36afec67d8c42554518c7ef0f582483fe247",
+    "selectedRootSetSha256": "a34918b684e8de06674463e072d36129f36bda5d23dac2200ad24c3363250de8",
+    "selectedRootOrderSha256": "77cd163773d526a49190fc090b3d4c8f9e4ef112b494ee40cc1946dc372bdd69",
+    "independentFullScanAndSelectionAgreement": true,
+    "independentClosureClassificationAgreement": true,
+    "artifactUploaded": false,
+    "artifactAbsenceReason": "workflow exited nonzero at frozen acceptance check before upload-artifact step"
+  },
+  "stage2": {
+    "executionAuthorized": false,
+    "status": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "formalDomainContractCreated": false,
+    "formalSourceFreezeCreated": false,
+    "formalAuthorizationCreated": false,
+    "formalProductionOutcomeGenerated": false,
+    "formalIndependentVerificationGenerated": false,
+    "domainLevelDecisionsGenerated": 0
+  },
+  "interpretationBoundary": {
+    "fullBaoSolved": false,
+    "allEndgamesSolved": false,
+    "expandedG2OracleEstablished": false,
+    "gameTheoreticWinLossRecurrentCompositionEstablishedForFreshG2Domains": false,
+    "cycleStructureEstablishedForFreshG2Domains": false,
+    "distanceEstablishedForFreshG2Domains": false,
+    "optimalMoveMultiplicityEstablishedForFreshG2Domains": false,
+    "MOVE_NONTERMINATION_is_game_level_RECURRENCE": false,
+    "resourceCutoffIsGameOutcome": false,
+    "upstreamREWRDecisionChanged": false,
+    "upstreamG2DecisionsChanged": false
+  },
+  "noRescue": {
+    "capIncrease": false,
+    "domainShrinkage": false,
+    "rootReplacement": false,
+    "seedExtension": false,
+    "symmetryOrCanonicalizationIntroduction": false,
+    "partialGraphPromotionToExact": false,
+    "alternateSolverSubstitution": false
+  },
+  "futureWorkBoundary": "A future exact-oracle expansion attempt with a materially different structural restriction or resource contract requires a new prospective independent Study/versioned protocol and fresh evidence. It may use REEOE-STUDY1 only as prior resource/feasibility information and may not change this INCONCLUSIVE closure."
+}

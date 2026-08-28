@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "studyId": "REEOE-STUDY1",
+  "researchGeneration": "Research Generation 2",
+  "formalTitle": "Restricted Endgame Exact Oracle Expansion Study 1",
+  "japaneseWorkingTitle": "Baoにおける限定終盤exact oracleの拡張 — prospectively selected RAW-state domains に対する complete forward closure, exact retrograde analysis, cycle structure, distance, and optimal-move multiplicity の厳密解析",
+  "freezeDate": "2026-08-28",
+  "baselineMain": "aba61596e6440e9d54be6f1e9520f65e983000b3",
+  "researchBranch": "research/g2-04-restricted-endgame-exact-oracle-expansion",
+  "repositoryStartAudit": {
+    "expectedPriorMain": "aba61596e6440e9d54be6f1e9520f65e983000b3",
+    "observedRemoteMain": "aba61596e6440e9d54be6f1e9520f65e983000b3",
+    "mainMatches": true,
+    "openPrCount": 0,
+    "competingActiveGeneration2ResearchFound": false,
+    "g2ResidualBranchesAheadOfMain": 0,
+    "g2_04BranchExistedBeforeStudyStart": false
+  },
+  "authoritativeRawIdentity": {
+    "include": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "exclude": ["turn", "reason"],
+    "missingPendingAllowed": false,
+    "symmetryReductionAuthorized": false,
+    "canonicalizationAuthorized": false,
+    "quotientGraphAuthorized": false
+  },
+  "exactMoveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+  "stages": [
+    {
+      "stageId": "REEOE-S0-TECHNICAL-2026-08-28-v1",
+      "role": "technical-solver-representation-closure-and-verifier-validation",
+      "scientificInferenceAuthorized": false,
+      "scientificOutcomeGenerationAuthorized": false
+    },
+    {
+      "stageId": "REEOE-S1-DEVELOPMENT-2026-08-28-v1",
+      "role": "fresh-domain-development-and-resource-characterization",
+      "scientificInferenceAuthorized": false,
+      "formalExactDecisionAuthorized": false,
+      "executionAuthorizedAtStudyStart": false
+    },
+    {
+      "stageId": "REEOE-S2-FORMAL-2026-08-28-v1",
+      "role": "prospectively-frozen-exact-formal-domains",
+      "formalExactDecisionAuthorizedOnlyAfterSeparateFreezeAndAuthorization": true,
+      "executionAuthorizedAtStudyStart": false
+    }
+  ],
+  "centralScientificQuestion": "For multiple prospectively selected restricted Bao RAW-state domains, can complete forward closure be proven and exact retrograde analysis then completely and reproducibly enumerate game-theoretic value, recurrent/cycle structure, distance-to-resolution, all optimal moves, and optimal-move multiplicity under independent verification?",
+  "domainSelectionPrinciples": {
+    "outcomeBlind": true,
+    "allowedInputs": [
+      "structural-state-restrictions",
+      "historical-reachability-witness",
+      "synthetic-valid-fixture-status-for-technical-controls-only",
+      "technical-closure-size-and-resource-characteristics-during-development-only"
+    ],
+    "forbiddenInputs": [
+      "WIN-LOSS-RECURRENT-composition",
+      "distance-distribution",
+      "cycle-presence",
+      "optimal-move-multiplicity",
+      "tactical-interest",
+      "favorable-resource-subset-after-outcome"
+    ],
+    "historicalAndSyntheticEvidenceMustRemainSeparated": true
+  },
+  "closureContract": {
+    "exactOracleRequiresCompleteForwardClosure": true,
+    "allExactLegalMovesRequired": true,
+    "allSuccessorRawStatesRequired": true,
+    "missingOrOmittedSuccessorAllowed": false,
+    "resourceCutoffMayBeReinterpretedAsScientificOutcome": false,
+    "nearCompleteMayBeCalledExact": false
+  },
+  "retrogradeContract": {
+    "terminalUsesAbsoluteWinnerSemantics": true,
+    "resolvedNonterminalClasses": ["WIN", "LOSS"],
+    "unresolvedFixedPointClass": "RECURRENT",
+    "drawLabelAuthorizedAtStudyStart": false,
+    "distanceMetricFamily": "ply/legal-move distance-to-forced-terminal",
+    "winDistanceRule": "1 + minimum winning-successor distance",
+    "lossDistanceRule": "1 + maximum opponent-winning-successor distance",
+    "recurrentDistance": null,
+    "allOptimalMovesRequired": true,
+    "optimalMoveMultiplicityRequired": true,
+    "predecessorRelationRequired": true,
+    "sccAnalysisRequired": true
+  },
+  "controls": {
+    "positive": "REEOE-C00-REWR-8STATE-REGRESSION",
+    "negative": [
+      "REEOE-C01-MISSING-SUCCESSOR",
+      "REEOE-C02-INCORRECT-TERMINAL",
+      "REEOE-C03-INCOMPLETE-EDGE-SET",
+      "REEOE-C04-CORRUPTED-PREDECESSOR"
+    ]
+  },
+  "formalDecisionTaxonomyCandidate": {
+    "domainLevel": [
+      "EXACT-SOLVED-WITHIN-FROZEN-DOMAIN",
+      "NOT-EXACTLY-SOLVED",
+      "NON-ESTIMABLE"
+    ],
+    "technicalFailureLabelsMustRemainSeparate": [
+      "TECHNICAL-INVALID",
+      "INCOMPLETE-DOMAIN",
+      "RESOURCE-CUTOFF",
+      "REPRODUCIBILITY-FAILURE"
+    ],
+    "studyLevelRuleToFreezeBeforeStage2": true
+  },
+  "resourceContractMustFreezeBeforeStage2": [
+    "maximumStates",
+    "maximumEdges",
+    "maximumWallClockIndependentWorkUnitsWherePossible",
+    "memoryCeiling",
+    "artifactCeiling",
+    "shardRule",
+    "checkpointRule",
+    "restartSemantics",
+    "administrativeCutoff",
+    "resourceCutoffClassification"
+  ],
+  "hashAndProvenanceMinimum": [
+    "specSha256",
+    "sourceSha256",
+    "authorizationSha256",
+    "domainDefinitionSha256",
+    "rootOrPopulationSha256",
+    "rawStateIdentitySha256",
+    "nodeSetSha256",
+    "edgeSetSha256",
+    "closureSha256",
+    "retrogradeResultSha256",
+    "verificationSha256",
+    "canonicalResultSha256",
+    "artifactZipSha256"
+  ],
+  "immutableUpstream": {
+    "PEOCR-STUDY1": "INCONCLUSIVE",
+    "SRDR-STUDY1": "INCONCLUSIVE",
+    "SRDR-primaryFormalCriterion": null,
+    "SRDR-uniqueHistoricalTrajectoriesAfterStage1Firewall": "1040<1050",
+    "STSCV-STUDY1": "INCONCLUSIVE",
+    "STSCV-T01-SEAT-SWAP-LOCAL": "NON-ESTIMABLE",
+    "STSCV-T02-LR-MTAJI-HOUSELESS": "NON-ESTIMABLE",
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": "NON-ESTIMABLE",
+    "STSCV-validatedTransformSet": [],
+    "STSCV-canonicalization": "NON-ESTIMABLE",
+    "REWR-STUDY1": "EXACT-SOLVED-WITHIN-FROZEN-DOMAIN",
+    "REWR-domain": "8-states-7-edges-only",
+    "ORISC-Axis-A": "ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED",
+    "ORISC-Axis-B": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "SSGTC-STUDY1": "SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN"
+  },
+  "historical423733StateCandidate": {
+    "role": "technical-history-and-resource-planning-only",
+    "priorStop": "ADMIN-CUTOFF",
+    "sameCandidateCapExtensionRescueAuthorized": false
+  },
+  "noRescue": true,
+  "engineeringOutcomeMayChangeScientificDecision": false,
+  "stage1ScientificGenerationAuthorizedByThisContract": false,
+  "stage2ScientificGenerationAuthorizedByThisContract": false
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "studyId": "REEOE-STUDY1",
+  "stageId": "REEOE-S0-TECHNICAL-2026-08-28-v1",
+  "resultRole": "technical-instrument-validation-only",
+  "stage0TechnicalDecision": "STAGE0-TECHNICAL-PASS",
+  "scientificInferenceAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "stage1ScientificGenerationAuthorized": false,
+  "stage2ScientificGenerationAuthorized": false,
+  "workflow": {
+    "runId": 33150063023,
+    "jobId": 98779736420,
+    "artifactId": 9677327024,
+    "artifactName": "reeoe-stage0-technical",
+    "artifactZipSha256": "37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d3a7dac0",
+    "workflowHeadSha": "0557aa7573227eb57cec0088885f40bd2daa4a22"
+  },
+  "identities": {
+    "stage0SpecFileSha256": "b0372c35dae3cd2d722aa6cf9269b02463763371a7536cd309e324c4ce926887",
+    "upstreamDomainFileSha256": "acfc25413f9c237569884f166ed971ad9ee9395665ce96ec6d094d8ed4a6c56a",
+    "productionResultFileSha256": "2a127097ae5af976b4a00dbe9f35545aacfb672c9651c12c668a653cbc8e7431",
+    "independentVerificationFileSha256": "c82d9590fb8cf9a996a8033ab262c7165dc6ad29357b6596235c5fd6665c09ae",
+    "productionTechnicalCoreSha256": "26cd857fab4a57596208220e87306792138083a70ea2ac056dcb0518ea6fb277",
+    "independentVerificationCoreSha256": "284cc2c53035b0a614eae33c07282b78e5543540c06138b4f21d7f5f65346e40",
+    "predecessorSha256": "60a2923d053be5ffc07755c7e16000ae54ecf280f07384284e2f9d4b9361a2e3"
+  },
+  "sourceFileSha256": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "tools/experiments/lib/restricted-endgame-transition.js": "7c46154b9c50823bc7b4e1bc9f8f687cd6e9e6b5e50e3178f75e26fa39c26b73",
+    "tools/experiments/lib/restricted-endgame-retrograde.js": "8d3aa85b79104413a0e3ad0a66766713f0c3f5c7408142c761d0def9e62dbdd5",
+    "tools/experiments/lib/restricted-endgame-tablebase.js": "d8cd54a03b97c148f81e7d122621d7bc7ddbdc0f5e192d0dac1cfab9c1f893c3",
+    "tools/experiments/run-reeoe-stage0-technical.js": "3d3e68be1700da65acc3efbcca5fb942cfd834324db37107900fe948b6706309"
+  },
+  "positiveControl": {
+    "controlId": "REEOE-C00-REWR-8STATE-REGRESSION",
+    "rootKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+    "stateCount": 8,
+    "edgeCount": 7,
+    "stateSetSha256": "95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307",
+    "transitionSetSha256": "33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11",
+    "solutionSha256": "4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15",
+    "terminal": 4,
+    "win": 3,
+    "loss": 1,
+    "recurrent": 0,
+    "maxMoveMicrosteps": 10,
+    "representedSeedTotals": [64],
+    "runtimeGuardHits": 0,
+    "transitionComparisonMismatches": 0,
+    "productionIndependentFullGraphAgreement": true,
+    "productionIndependentFullSolutionAgreement": true
+  },
+  "negativeControls": {
+    "REEOE-C01-MISSING-SUCCESSOR": "DETECTED",
+    "REEOE-C02-INCORRECT-TERMINAL": "DETECTED",
+    "REEOE-C03-INCOMPLETE-EDGE-SET": "DETECTED",
+    "REEOE-C04-CORRUPTED-PREDECESSOR": "DETECTED"
+  },
+  "gates": {
+    "S0-G1": "PASS",
+    "S0-G2": "PASS",
+    "S0-G3": "PASS",
+    "S0-G4": "PASS",
+    "S0-G5": "PASS",
+    "S0-G6": "PASS",
+    "S0-G7": "PASS",
+    "S0-G8": "PASS",
+    "S0-G9": "PASS",
+    "S0-G10": "PASS",
+    "S0-G11": "PASS",
+    "S0-G12": "PASS"
+  },
+  "representationFinding": {
+    "historicalCompatibilityFallbackObserved": true,
+    "productionHistoricalHelperMissingPendingFallback": "[0,0]",
+    "independentHistoricalHelperMissingPendingFallback": "[0,0]",
+    "g2_04StrictLayerRejectsMissingPending": true,
+    "historicalHelpersModified": false,
+    "reconstructedAffectedTerminalRowsPreservePending": true
+  },
+  "interpretationBoundary": {
+    "scientificBaoEvidence": false,
+    "freshG2_04DomainEvidence": false,
+    "priorREWRDecisionChanged": false,
+    "stage1AutomaticallyAuthorized": false,
+    "stage2AutomaticallyAuthorized": false
+  }
+}

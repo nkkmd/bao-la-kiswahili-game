@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "studyId": "REEOE-STUDY1",
+  "stageId": "REEOE-S0-TECHNICAL-2026-08-28-v1",
+  "freezeDate": "2026-08-28",
+  "role": "technical-solver-representation-closure-and-independent-verifier-validation",
+  "scientificInferenceAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "stage1ScientificGenerationAuthorized": false,
+  "stage2ScientificGenerationAuthorized": false,
+  "baselineMain": "aba61596e6440e9d54be6f1e9520f65e983000b3",
+  "authoritativeRawIdentity": {
+    "include": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "exclude": ["turn", "reason"],
+    "missingPending": "HARD-FAIL",
+    "canonicalization": false,
+    "symmetryReduction": false
+  },
+  "exactMoveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+  "sourceAuditAnchors": {
+    "public/engine.js": {
+      "gitBlobSha": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"
+    },
+    "tools/experiments/lib/restricted-endgame-transition.js": {
+      "gitBlobSha": "7ca35ef03ecad102b9a9e1fa6c4767f72d409961",
+      "knownTechnicalCompatibilityBehavior": "directRuleState falls back missing pending to [0,0]; REEOE strict layer must reject missing pending before this helper is eligible"
+    },
+    "tools/experiments/lib/restricted-endgame-independent-verifier.js": {
+      "gitBlobSha": "94a79d140803802acf607bbaf02d570aa3b6f362",
+      "knownTechnicalCompatibilityBehavior": "rawRuleState falls back missing pending to [0,0]; independent REEOE strict layer must reject missing pending before this helper is eligible"
+    },
+    "tools/experiments/lib/restricted-endgame-retrograde.js": {
+      "gitBlobSha": "e07b78b388996213c859145cd5a546b62d6f6d68",
+      "algorithm": "synchronous-wave-fixed-point"
+    },
+    "tools/experiments/lib/restricted-endgame-retrograde-independent.js": {
+      "gitBlobSha": "8d8d087b610b65806cd552f3b8038c6fecc8cec7",
+      "algorithm": "predecessor-propagation"
+    },
+    "tools/experiments/lib/restricted-endgame-tablebase.js": {
+      "gitBlobSha": "f41ef2538b41e8ca9ed50f79cdab4bfa910989ef"
+    },
+    "tools/experiments/lib/restricted-endgame-tablebase-independent.js": {
+      "gitBlobSha": "e5caa7b42f2cd4c04b98183886136471b1ae9807"
+    }
+  },
+  "positiveControl": {
+    "controlId": "REEOE-C00-REWR-8STATE-REGRESSION",
+    "role": "technical-instrument-regression-only",
+    "upstreamDomainId": "REWR-S1-DOMAIN-2026-08-24-v1",
+    "rootStateKey": "fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33",
+    "rootSource": "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json",
+    "expected": {
+      "stateCount": 8,
+      "edgeCount": 7,
+      "stateSetSha256": "95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a1307",
+      "transitionSetSha256": "33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11",
+      "terminal": 4,
+      "win": 3,
+      "loss": 1,
+      "recurrent": 0,
+      "solutionSha256": "4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15",
+      "rootStatus": "WIN",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 3,
+      "rootOptimalMoveKeys": ["capture:mtaji:1:4:left:::false"]
+    },
+    "repositoryFacingRowsAreRawIdentityAuthority": false,
+    "reason": "ORISC found three immutable terminal repository rows whose pending values do not bind to their stored state keys; Stage 0 must reconstruct the graph from the frozen root instead of trusting those rows as raw identity"
+  },
+  "negativeControls": [
+    {
+      "controlId": "REEOE-C01-MISSING-SUCCESSOR",
+      "mutation": "remove one target node that remains referenced by an edge",
+      "requiredDetection": "missing-successor"
+    },
+    {
+      "controlId": "REEOE-C02-INCORRECT-TERMINAL",
+      "mutation": "change one terminal node winner to null while keeping zero outgoing moves",
+      "requiredDetection": "nonterminal-with-zero-moves-or-terminal-classification-mismatch"
+    },
+    {
+      "controlId": "REEOE-C03-INCOMPLETE-EDGE-SET",
+      "mutation": "remove one legal outgoing edge from a nonterminal node while preserving its target node",
+      "requiredDetection": "legal-edge-set-mismatch-or-closure-mismatch"
+    },
+    {
+      "controlId": "REEOE-C04-CORRUPTED-PREDECESSOR",
+      "mutation": "remove one predecessor relation from an otherwise unchanged exact graph",
+      "requiredDetection": "predecessor-reconstruction-mismatch"
+    }
+  ],
+  "mandatoryTechnicalGates": {
+    "S0-G1": "strict RAW shape and missing-pending rejection passes independently in production and verifier",
+    "S0-G2": "positive-control root exact identity matches",
+    "S0-G3": "production positive-control graph matches frozen node/edge counts and hashes",
+    "S0-G4": "independent positive-control graph matches frozen node/edge counts and hashes",
+    "S0-G5": "production and independent full graph node/edge identities agree",
+    "S0-G6": "predecessor relation is complete and independently reproduced",
+    "S0-G7": "production retrograde matches frozen counts/value/DTF/all-optimal-move target",
+    "S0-G8": "independent retrograde matches production and frozen target",
+    "S0-G9": "SCC/recurrent metadata agrees between algorithmic paths",
+    "S0-G10": "all four negative controls are detected by the independent verifier",
+    "S0-G11": "runtime relay-limit is not used as a terminal game outcome and guard-free fixture terminates without administrative cutoff",
+    "S0-G12": "technical result is reopened/rehashed and contains no scientific authorization flags"
+  },
+  "technicalDecisionRule": {
+    "allMandatoryGatesPass": "STAGE0-TECHNICAL-PASS",
+    "otherwise": "STAGE0-TECHNICAL-BLOCK",
+    "scientificInterpretationAllowed": false
+  },
+  "resourceProfile": {
+    "positiveFixtureMaxStates": 1000,
+    "positiveFixtureMaxEdges": 10000,
+    "maxMoveMicrostates": 1000000,
+    "purpose": "technical fixture only; these limits are not Stage 1 or Stage 2 scientific resource ceilings"
+  },
+  "noRescue": true
+}

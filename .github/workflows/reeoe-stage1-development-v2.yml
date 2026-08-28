@@ -1,0 +1,17 @@
+name: REEOE Stage 1 development v2 — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-stage notice
+        run: |
+          echo 'REEOE-S1-DEVELOPMENT-2026-08-28-v2 is closed as STAGE1-DEVELOPMENT-BLOCKED.'
+          echo 'Canonical run: 33151053940; Stage 2 was not authorized.'
+          echo 'No additional v2 development evidence generation is authorized.'
