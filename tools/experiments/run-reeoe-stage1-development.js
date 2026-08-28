@@ -104,7 +104,9 @@ function normalizeClosure(closure) {
     transitionSetSha256: closure.complete ? closure.transitionSetSha256 : null,
     branching: closure.complete ? closure.branching : null,
     maxMoveMicrosteps: closure.maxMoveMicrosteps ?? null,
-    deterministicWorkUnits: Number.isInteger(stateCount) && Number.isInteger(edgeCount) ? stateCount + edgeCount : null,
+    deterministicWorkUnits: closure.complete && closure.branching
+      ? closure.branching.expandedStates + closure.edgeCount
+      : null,
   };
 }
 
