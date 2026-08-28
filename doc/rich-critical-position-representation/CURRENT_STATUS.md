@@ -6,27 +6,32 @@ Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
 ## Status
 
-**STUDY ACTIVE / STAGE 0 TECHNICAL PASS / STAGE 1 DEVELOPMENT SPEC PROSPECTIVELY FROZEN / STAGE 1 OUTCOME GENERATION NOT AUTHORIZED / NO G2-06 SCIENTIFIC OUTCOME GENERATED**
+**STUDY ACTIVE / STAGE 0 TECHNICAL PASS / STAGE 1 SOURCE FREEZE PASS / STAGE 1 EXPLICITLY AUTHORIZED / STAGE 1 PRODUCTION EXECUTION IN PROGRESS / FRESH STAGE 1 BLOCK CONSUMED / STAGE 1 RESULT NOT YET AVAILABLE / STAGE 2 NOT AUTHORIZED**
 
 Stage state:
 
 ```text
 RCPR-S0-TECHNICAL-2026-08-28-v1 = COMPLETE / STAGE0-TECHNICAL-PASS
-RCPR-S1-DEVELOPMENT-2026-08-28-v1 = PROSPECTIVE-FROZEN / NOT-AUTHORIZED-NOT-EXECUTED
+RCPR-S1-DEVELOPMENT-2026-08-28-v1 = AUTHORIZED / EXECUTION-IN-PROGRESS / SEED-BLOCK-CONSUMED / RESULT-PENDING
 RCPR-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-Repository anchor:
+Repository and execution anchors:
 
 ```text
 baseline remote main = 37480777246aa306c6ca3d0679d936b5e0107071
-resume-audit branch head before documentation synchronization = efe44154c0fcfc99df492dc6680f59bf3a3d1f29
 research branch = research/g2-06-rich-critical-position-representation
-branch relation to baseline main at resume audit = ahead 17 / behind 0
+scientific source commit = a69ffce86cb278680ee676a2a9469aeb1d9ab1d4
+source-freeze checkpoint commit = 4366e439c2838dd7f2f388e834ecc93aed7efcb6
+authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
+Stage 1 workflow run = 33196954082
+Stage 1 production job = 98936414477
 G2-06 pull request = none
 ```
 
-The GitHub-connected workflow operates on remote repository state; no local checkout/worktree is participating in the current writes.
+The Stage 1 production step `Execute fresh Stage 1 development population once` has started. Under the prospectively frozen execution contract, the fresh development block is therefore treated as permanently **consumed** for `RCPR-STUDY1`. No same-block repair or rerun is authorized even if a later technical or independent-verification failure occurs.
+
+No Stage 1 development result is recorded yet in the repository at this status point. Stage 2 remains unauthorized.
 
 ## Frozen Study identity and scientific boundary
 
@@ -65,19 +70,11 @@ mandatory negative controls = PASS
 Stage 0 result core SHA256 = d26401b6814b501589d1811f3f182ce731822f91bef2a203a5b874b285de05ac
 ```
 
-Stage 0 generated no decision-criticality outcome and authorized no scientific inference.
-
-## Stage 1 prospective freeze
-
-`preregistration/STAGE_1_DEVELOPMENT_SPEC.json` is committed and frozen with status:
+## Stage 1 frozen design and source contract
 
 ```text
-prospective-frozen-pending-implementation-validation-and-authorization
-```
-
-Key frozen development design includes:
-
-```text
+Stage 1 spec SHA256 = 813b99ed64cc3af1438119f513faf6be64e7c6b6d6015a0fff5c962b58ef1fbb
+execution addendum SHA256 = e246f562735c72ccc29ea320021be7bb3cb0056f30cf063dca0e3d0366a89d64
 fresh source games = 3072
 fresh development seeds = 28610001..28613072
 seed use = CONSUME-ONCE-DEVELOPMENT-ONLY
@@ -87,23 +84,23 @@ candidate families = 8
 criticality construct = fixed-policy exact-root-move continuation D_range
 high-divergence boundary = D_range >= 0.30
 replicates per exact root move = 64
+continuation horizon = 200 post-root plies
 model-development CV = 5-fold by historicalTrajectoryHash
 Stage 1 rows reusable as Stage 2 evidence = false
 ```
 
-The spec alone does **not** authorize development outcome generation.
+Final implementation smoke passed in workflow `33195723195`; the exact source-freeze audit passed in workflow `33196797865`. The full frozen source-blob map is retained in `results/STAGE_1_SOURCE_FREEZE_AUDIT.json`.
 
-## Required next sequence
+Explicit authorization is retained in `authorizations/STAGE_1_EXECUTE.json` and binds the frozen spec, execution addendum, scientific source commit, exact source-blob map, consume-once seed block, and fail-closed failure contract.
 
-Before any Stage 1 scientific development outcome is generated:
+## Current next gate
 
-1. implement the Stage 1 production pipeline and structurally independent verifier under the frozen spec;
-2. implement contract/smoke/negative-control validation without consuming the fresh Stage 1 outcome block;
-3. bind the exact Stage 1 spec hash and production/independent scientific source hashes;
-4. pass the required implementation validation and source-drift checks;
-5. commit the explicit authorization file `authorizations/STAGE_1_EXECUTE.json`;
-6. only then execute the fresh Stage 1 development population `28610001..28613072` once.
+Do not alter scientific source files, seeds, feature families, model-selection rules, thresholds, continuation policy, or resource/failure semantics while Stage 1 is running.
 
-Fail closed on any mismatch. Do not extend/replace seeds, relax readiness gates, change the feature family search space, alter the `D_range >= 0.30` boundary, inspect historical CPOB outcome payloads, or generate Stage 2 evidence.
+The next valid state transition is determined solely by the already-running workflow:
 
-For restart, read `RESUME_HERE.md` first.
+- production success -> independent full-corpus replay/recomputation;
+- production or independent failure after consumption -> `STAGE1-TECHNICAL-INVALID`, no same-block rerun, Stage 2 not authorized;
+- complete production + independent verification -> record Stage 1 development result and apply the prospectively frozen readiness/target-formation rule before any Stage 2 freeze.
+
+For restart, inspect workflow run `33196954082` and read the latest execution checkpoint before taking any further action.
