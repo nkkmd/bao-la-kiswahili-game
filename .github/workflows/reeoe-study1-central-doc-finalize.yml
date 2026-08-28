@@ -1,0 +1,43 @@
+name: REEOE Study 1 central documentation finalizer
+
+on:
+  push:
+    branches:
+      - research/g2-04-restricted-endgame-exact-oracle-expansion
+    paths:
+      - '.github/workflows/reeoe-study1-central-doc-finalize.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/g2-04-restricted-endgame-exact-oracle-expansion
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply deterministic central-document closure updates
+        run: node tools/experiments/finalize-reeoe-study1-central-docs.js
+      - name: Audit second-generation agenda
+        run: node test/second-generation-research-agenda.test.js
+      - name: Commit central documentation changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md; then
+            echo 'No central documentation changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
+          git commit -m 'docs(g2-04): integrate completed study into central research indexes'
+          git push origin HEAD:research/g2-04-restricted-endgame-exact-oracle-expansion
