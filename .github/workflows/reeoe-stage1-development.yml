@@ -1,53 +1,17 @@
-name: REEOE Stage 1 development
+name: REEOE Stage 1 development v1 — invalidated archival stub
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "public/engine.js"
-      - "tools/benchmark.js"
-      - "tools/experiments/lib/restricted-endgame-stage0.js"
-      - "tools/experiments/lib/restricted-endgame-transition.js"
-      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
-      - "tools/experiments/run-reeoe-stage1-development.js"
-      - "tools/experiments/verify-reeoe-stage1-independent.js"
-      - "doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_1_DEVELOPMENT_SPEC.json"
-      - "doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json"
-      - "doc/restricted-endgame-exact-oracle-expansion/results/STAGE_0_TECHNICAL_RESULT.json"
-      - ".github/workflows/reeoe-stage1-development.yml"
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  development:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+  archived:
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout authorized PR state
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Production fresh development / closure characterization
-        run: node tools/experiments/run-reeoe-stage1-development.js
-
-      - name: Independent trajectory and closure verification
-        run: node tools/experiments/verify-reeoe-stage1-independent.js
-
-      - name: Hash development artifacts
-        shell: bash
+      - name: Closed-stage notice
         run: |
-          sha256sum artifacts/local/reeoe-stage1-development/production-result.json | tee artifacts/local/reeoe-stage1-development/production-result.sha256
-          sha256sum artifacts/local/reeoe-stage1-development/independent-verification.json | tee artifacts/local/reeoe-stage1-development/independent-verification.sha256
-
-      - name: Upload Stage 1 development artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: reeoe-stage1-development
-          path: artifacts/local/reeoe-stage1-development/
-          if-no-files-found: error
-          retention-days: 90
+          echo 'REEOE-S1-DEVELOPMENT-2026-08-28-v1 is TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED.'
+          echo 'Its seed/RAW identities are consumed and its production-only outputs are not eligible for v2 or Stage 2 design.'
+          echo 'No v1 scientific/development generation is authorized.'
