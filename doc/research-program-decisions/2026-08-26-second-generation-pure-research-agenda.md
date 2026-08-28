@@ -92,3 +92,40 @@ The prospectively frozen global-failure rule required any non-passing/not-establ
 Because the verifier defect became known after fresh formal outcome generation, `STSCV-STUDY1` was not repaired and rerun on the same evidence. A future transformation/canonicalization test requires a new prospective Study or explicitly new versioned protocol with fresh authorization and fresh formal evidence.
 
 `G2-03` therefore counts as a valid program closure outcome. RAW state identity remains authoritative and G2-04/G2-05 remain independently executable as RAW-only studies.
+
+## Program progress — G2-04 closure
+
+Date: 2026-08-28
+
+Agenda label `G2-04` was instantiated as `REEOE-STUDY1` — **Restricted Endgame Exact Oracle Expansion Study 1** — under a new prospective RAW-only exact-analysis contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 v1 = TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
+Stage 1 v2 = STAGE1-DEVELOPMENT-BLOCKED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+formal decision = INCONCLUSIVE
+fresh exact oracle produced = false
+```
+
+Stage 0 independently reproduced the immutable REWR 8-state / 7-edge exact fixture and all four corruption controls, but this was instrument validation only.
+
+Stage 1 v1 generated production development output and then encountered an independent-verifier startup path defect. Because the output had already been observed, the same evidence was not repaired and rerun; v1 identities were consumed and its production-only observations were excluded from v2/Stage 2 design.
+
+Fresh Stage 1 v2 retained the same structural/resource/acceptance design and used seeds `24041001..24041512`. Production and independent verification agreed on the complete fresh scan, eligible set, selected roots, and closure classifications:
+
+```text
+unique witness roots = 7055
+eligible roots = 141
+selected roots = 8
+complete closures = 0
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
+```
+
+The prospectively frozen development gate required at least three independently verified complete closures. Since `0 < 3`, Stage 1 v2 closed as `STAGE1-DEVELOPMENT-BLOCKED` and Stage 2 was not authorized.
+
+No resource-cap increase, domain shrinkage, root replacement, seed extension, partial-closure promotion, alternate solver substitution, symmetry reduction, or canonicalization rescue was used. `MOVE-NONTERMINATION` was not reinterpreted as a game-level `RECURRENT`/`DRAW` result.
+
+`G2-04` therefore counts as a valid `INCONCLUSIVE` Research Generation 2 closure. It changes no prior formal decision. RAW identity remains authoritative. The next independent P0 machine-only agenda item may proceed as `G2-05 — Deep RAW State-Space Enumeration Study 1`, subject to a fresh prospective contract and repository-state audit.
