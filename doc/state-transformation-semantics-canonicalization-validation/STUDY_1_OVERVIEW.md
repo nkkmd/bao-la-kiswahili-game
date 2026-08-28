@@ -110,7 +110,7 @@ Production-only diagnosticsではT01/T02/T03すべてcandidate mismatch 0だっ�
 ReferenceError: standardStartReachablePopulationDedupDecision is not defined
 ```
 
-そのためcomplete independent verification、canonical formal result、canonical hashes、workflow artifact ZIPはmaterializeされなかった。
+そのためworkflow-producedのcomplete independent-verification artifact、independently verified formal-result artifact、canonical hashes、workflow artifact ZIPはmaterializeされなかった。これとは別に、frozen global-failure ruleを適用したrepository-facing fail-closed closureを`results/STAGE_2_FORMAL_RESULT.json`として保存している。
 
 ## Final formal result
 
@@ -160,7 +160,7 @@ G2-03はSIP-STUDY1、ORISC-STUDY1、SSGTC-STUDY1、G2-01、G2-02のformal decisi
 ## Read next
 
 - `STUDY_1_FINAL_REPORT.md` — scientific/technical final integration
-- `results/STAGE_2_FORMAL_RESULT.json` — canonical fail-closed result
+- `results/STAGE_2_FORMAL_RESULT.json` — repository-facing fail-closed result
 - `results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json` — failed workflow provenance
 - `CURRENT_STATUS.md` — terminal status
 - `DECISION_REGISTER.md` — frozen decisions and no-rescue boundary
