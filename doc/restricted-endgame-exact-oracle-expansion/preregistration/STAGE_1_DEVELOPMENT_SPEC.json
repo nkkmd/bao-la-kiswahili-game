@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-04",
+  "studyId": "REEOE-STUDY1",
+  "stageId": "REEOE-S1-DEVELOPMENT-2026-08-28-v1",
+  "freezeDate": "2026-08-28",
+  "role": "fresh-domain-development-and-resource-characterization-only",
+  "scientificInferenceAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "executionAuthorizedByThisSpecAlone": false,
+  "stage2ExecutionAuthorized": false,
+  "freshTrajectoryBlock": {
+    "seedBase": 24040001,
+    "games": 512,
+    "seedEnd": 24040512,
+    "maxPly": 240,
+    "priorREWRSeedBlockOverlapAllowed": false
+  },
+  "baseRootEligibility": {
+    "phase": "mtaji",
+    "winner": null,
+    "reserve": [0, 0],
+    "houseOwned": [false, false],
+    "pending": [0, 0],
+    "representedSeeds": 64,
+    "bothFrontRowsOccupied": true,
+    "atLeastOneExactLegalMove": true
+  },
+  "developmentStructuralEnvelope": {
+    "maximumNonEmptyPitCount": 18,
+    "maximumExactLegalMoveCount": 2,
+    "selectionOrder": ["seed-ascending", "ply-ascending", "RAW-state-key-ascending"],
+    "maximumSelectedRoots": 8,
+    "duplicateRAWRootsRemoved": true,
+    "selectionMayUseClosureResult": false,
+    "selectionMayUseRetrogradeOutcome": false
+  },
+  "perRootClosureResourceProfile": {
+    "maximumStates": 100000,
+    "maximumEdges": 500000,
+    "maximumMoveMicrostates": 1000000,
+    "wallClockUsedAsScientificSelectionInput": false,
+    "closureStopLabels": [
+      "COMPLETE",
+      "STATE-LIMIT",
+      "EDGE-LIMIT",
+      "MOVE-NONTERMINATION",
+      "ADMIN-CUTOFF",
+      "PHASE-ESCAPE",
+      "NONCANONICAL-NO-MOVE"
+    ]
+  },
+  "reportedDevelopmentEndpoints": [
+    "uniqueEligibleRootCount",
+    "selectedRootIdentities",
+    "nonEmptyPitCount",
+    "exactLegalMoveCount",
+    "closureComplete",
+    "closureStopReason",
+    "closureStateCountOrObservedCount",
+    "closureEdgeCountOrObservedCount",
+    "stateSetSha256WhenComplete",
+    "transitionSetSha256WhenComplete",
+    "branchingSummaryWhenComplete",
+    "maximumMoveMicrosteps",
+    "deterministicWorkUnits"
+  ],
+  "forbiddenDevelopmentEndpoints": [
+    "WIN-LOSS-RECURRENT-counts",
+    "root-game-theoretic-value",
+    "DTF",
+    "cycle-interest-selection",
+    "optimal-move-set",
+    "optimal-move-multiplicity",
+    "winner-based-domain-selection"
+  ],
+  "deterministicWorkUnits": {
+    "definition": "expanded nonterminal states + generated exact legal edges",
+    "use": "resource characterization only"
+  },
+  "independentVerification": {
+    "freshTrajectoryRegenerationRequired": true,
+    "strictMissingPendingRejectionRequired": true,
+    "selectedRootRAWIdentityAgreementRequired": true,
+    "exactLegalMoveCountAgreementRequired": true,
+    "independentClosureReenumerationRequired": true,
+    "completeClosureStateAndEdgeHashAgreementRequired": true,
+    "resourceStopClassificationAgreementRequired": true
+  },
+  "stage1AcceptanceRule": {
+    "minimumSelectedRoots": 4,
+    "minimumIndependentlyVerifiedCompleteClosures": 3,
+    "allSelectedRootsMustPassWitnessAndRAWIdentityVerification": true,
+    "allClosureClassificationsMustAgree": true,
+    "passLabel": "STAGE1-DEVELOPMENT-ACCEPTED",
+    "failLabel": "STAGE1-DEVELOPMENT-BLOCKED"
+  },
+  "stage2DesignInputsAllowedAfterStage1": [
+    "structural root availability",
+    "closure completeness frequency",
+    "state counts",
+    "edge counts",
+    "deterministic work units",
+    "maximum move microsteps",
+    "branching resource summaries"
+  ],
+  "stage2DesignInputsForbiddenAfterStage1": [
+    "retrograde values",
+    "WIN-LOSS-RECURRENT proportions",
+    "cycle presence as favorable selection",
+    "DTF",
+    "optimal moves",
+    "tactical interest",
+    "winner identity"
+  ],
+  "stage1IdentityConsumption": {
+    "allSeeds24040001Through24040512ConsumedForStage2": true,
+    "allRAWRootKeysEncounteredInStage1ScanConsumedForStage2": true,
+    "selectedDevelopmentRootsMayBeFormalStage2Roots": false
+  },
+  "noRescue": true
+}
