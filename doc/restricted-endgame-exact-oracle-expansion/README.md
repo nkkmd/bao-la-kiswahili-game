@@ -2,29 +2,48 @@
 
 Research Generation 2 `G2-04` / formal Study ID `REEOE-STUDY1`.
 
-Status: **prospective Study freeze complete; Stage 0 technical work only; no scientific outcome generated**.
+Status: **COMPLETED / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**.
 
-## Canonical start documents
+## Canonical documents
 
-- `STUDY_1_OVERVIEW.md` — human-readable study entry
-- `STUDY_1_PROTOCOL.md` — prospective scientific/technical protocol
-- `CURRENT_STATUS.md` — current authorization and repository state
-- `DECISION_REGISTER.md` — immutable prospective decisions
-- `RESEARCH_LOG.md` — chronology
-- `REPRODUCIBILITY_INDEX.md` — identity/hash/reproduction index
-- `preregistration/STUDY_START_CONTRACT.json` — machine-readable Study-start freeze
-- `preregistration/STAGE_0_TECHNICAL_SPEC.json` — technical-only Stage 0 contract
+- `STUDY_1_OVERVIEW.md`
+- `STUDY_1_PROTOCOL.md`
+- `STUDY_1_FINAL_REPORT.md`
+- `CURRENT_STATUS.md`
+- `DECISION_REGISTER.md`
+- `RESEARCH_LOG.md`
+- `REPRODUCIBILITY_INDEX.md`
+- `preregistration/STUDY_START_CONTRACT.json`
+- `preregistration/STAGE_0_TECHNICAL_SPEC.json`
+- `results/STAGE_0_TECHNICAL_RESULT.json`
+- `preregistration/STAGE_1_DEVELOPMENT_SPEC.json` — invalidated v1 lineage
+- `preregistration/STAGE_1_DEVELOPMENT_AUTHORIZATION.json` — invalidated v1 lineage
+- `preregistration/STAGE_1_DEVELOPMENT_V2_SPEC.json`
+- `preregistration/STAGE_1_DEVELOPMENT_V2_AUTHORIZATION.json`
+- `results/STAGE_1_DEVELOPMENT_V2_RESULT.json`
+- `results/STUDY_1_FINAL_RESULT.json`
 
 ## Representation rule
 
-Authoritative RAW identity is:
+Authoritative RAW identity remained:
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn/reason` are excluded. G2-03 validated no non-identity transform, so symmetry reduction, canonicalization, quotient graphs, and symmetry-reduced state counting are forbidden in this Study.
+`turn/reason` are excluded. Symmetry reduction, canonicalization, quotient graphs, and symmetry-reduced state counting were not used or authorized.
 
-## Current execution boundary
+## Closure summary
 
-Only `REEOE-S0-TECHNICAL-2026-08-28-v1` is eligible. Stage 1 development and Stage 2 formal exact generation require separate prospective freezes and explicit authorization.
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 v1 = TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
+Stage 1 v2 = STAGE1-DEVELOPMENT-BLOCKED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+formal decision = INCONCLUSIVE
+fresh exact oracle produced = false
+```
+
+Stage 1 v2 independently reconstructed 8 selected fresh roots, but none achieved complete forward closure under the prospectively frozen ceilings: four reached `STATE-LIMIT`, three `ADMIN-CUTOFF`, and one `MOVE-NONTERMINATION`. The frozen feasibility rule required at least three complete closures, so Stage 2 was not authorized.
+
+No cap increase, domain shrinkage, root replacement, seed extension, partial-closure promotion, symmetry reduction, or other same-study rescue was performed.
