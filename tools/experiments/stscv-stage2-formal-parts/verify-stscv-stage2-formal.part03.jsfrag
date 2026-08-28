@@ -1,0 +1,51 @@
+  if(!setEqual(mappedEdges,targetEdges))gates["bounded-edge-bijection"]+=1;
+  if(!setEqual(mappedEdges,targetEdges))gates["adjacency-preservation"]+=1;
+  return {candidateId:id,strata,rootCount:roots.length,sourceGraph:{stateCount:source.states.size,edgeCount:source.edges.size,runtimeGuardHits:source.runtimeGuardHits,stateSetSha256:linesHash(source.states.keys()),edgeSetSha256:linesHash(source.edges.keys())},targetGraph:{stateCount:target.states.size,edgeCount:target.edges.size,runtimeGuardHits:target.runtimeGuardHits,stateSetSha256:linesHash(target.states.keys()),edgeSetSha256:linesHash(target.edges.keys())},gateMismatchCounts:gates,totalMismatchCount:Object.values(gates).reduce((a,b)=>a+b,0)};
+}
+function orbit(state,ids){
+  const states=new Map(),queue=[copied(state)];
+  while(queue.length){const cur=queue.shift(),ser=R.serialize(cur);if(states.has(ser))continue;states.set(ser,cur);for(const id of ids){if(!T.applicable(cur,id))continue;const n=T.transformState(cur,id),ns=R.serialize(n);if(!states.has(ns))queue.push(n);}}
+  return [...states.values()];
+}
+function canonState(state,ids){
+  const members=orbit(state,ids);let best=members[0],bestSer=R.serialize(best);
+  for(const m of members.slice(1)){const s=R.serialize(m);if(s<bestSer){best=m;bestSer=s;}}
+  return {state:best,serialization:bestSer,orbit:members};
+}
+function canonicalization(selected,depth,measurements,validated){
+  const roots=Object.values(selected).flat(),g=graph(roots,depth);
+  const gates={"non-identity-validated-transform-exists":validated.length?0:1,"orbit-closure":0,"canonical-idempotence":0,"orbit-consistency":0,"canonical-collision-absence":0,"canonical-raw-reconstruction":0,"validated-move-successor-consistency":0};
+  const map=new Map();let maxOrbitSize=1;
+  for(const state of g.states.values()){
+    const c=canonState(state,validated),serials=c.orbit.map((m)=>R.serialize(m)).sort(),sig=shaText(serials.join("\n"));maxOrbitSize=Math.max(maxOrbitSize,c.orbit.length);
+    for(const m of c.orbit){
+      try{R.assertStudyState(m);}catch{gates["canonical-raw-reconstruction"]+=1;}
+      if(canonState(m,validated).serialization!==c.serialization)gates["orbit-consistency"]+=1;
+      for(const id of validated)if(T.applicable(m,id)&&!serials.includes(R.serialize(T.transformState(m,id))))gates["orbit-closure"]+=1;
+    }
+    if(canonState(c.state,validated).serialization!==c.serialization)gates["canonical-idempotence"]+=1;
+    const prior=map.get(c.serialization);if(prior&&prior!==sig)gates["canonical-collision-absence"]+=1;map.set(c.serialization,sig);
+  }
+  const label={[T.IDS.SEAT_SWAP]:"T01-overall",[T.IDS.LR_MTAJI_HOUSELESS]:"T02-houseless",[T.IDS.SEAT_SWAP_LR_MTAJI_HOUSELESS]:"T03-houseless"};
+  for(const id of validated)if(measurements[label[id]]?.totalMismatchCount!==0)gates["validated-move-successor-consistency"]+=1;
+  const initial=E.initialState(),pres={};
+  for(const id of validated)pres[id]=T.applicable(initial,id)?R.key(T.transformState(initial,id))===R.key(initial):false;
+  const proof=false,eligible=validated.length>0&&validated.every((id)=>pres[id]===true)&&proof;
+  return {evaluatedSourceGraph:{stateCount:g.states.size,edgeCount:g.edges.size,runtimeGuardHits:g.runtimeGuardHits},validatedTransformIdsUsed:validated,canonicalOrbitCount:map.size,maxOrbitSize,gateMismatchCounts:gates,allSemanticDomainGatesPass:Object.values(gates).every((v)=>v===0),canonicalRepresentativeRule:"lexicographically minimum authoritative RAW state serialization within orbit generated only by validated applicable transforms",standardStartReachability:{initialRawStatePreservationByTransform:pres,independentReachabilityClosureProofImplemented:proof,standardStartReachablePopulationDedupEligible:eligible}};
+}
+function compactSelected(selected){return Object.fromEntries(Object.entries(selected).map(([s,rows])=>[s,rows.map((r)=>({seed:r.seed,ply:r.ply,stateKey:r.stateKey,openingPrefixSha256:r.openingPrefixSha256}))]));}
+
+function main(){
+  const pi=process.argv.indexOf("--production"),vi=process.argv.indexOf("--verification"),ri=process.argv.indexOf("--result");
+  check(pi>=0&&vi>=0&&ri>=0,"--production --verification --result required");
+  const productionPath=path.resolve(process.argv[pi+1]),verificationPath=path.resolve(process.argv[vi+1]),resultPath=path.resolve(process.argv[ri+1]);
+  const spec=read(SPEC_PATH),contract=read(CONTRACT_PATH),fw=read(FIREWALL_PATH),rule=read(RULE_PATH),auth=read(AUTH_PATH),stage1=read(STAGE1_RESULT_PATH),production=read(productionPath);
+  verifyAuthorization(spec,auth);
+  check(contract.scientificCandidates.map((x)=>x.candidateId).join(",")===spec.candidateIds.join(","),"independent candidate set drift");
+  check(rule.stageId===spec.stageId&&fw.stageId===spec.stageId,"independent Stage 2 identity mismatch");
+
+  const pop=population(spec,fw,stage1),selected=pop.selected;
+  const targets=[["C00-overall",T.IDS.IDENTITY,["namua","mtaji","mtaji-houseless"]],["C01-houseless",T.IDS.NEGATIVE_LR_NO_DIRECTION,["mtaji-houseless"]],["T01-namua",T.IDS.SEAT_SWAP,["namua"]],["T01-mtaji",T.IDS.SEAT_SWAP,["mtaji"]],["T01-mtaji-houseless",T.IDS.SEAT_SWAP,["mtaji-houseless"]],["T01-overall",T.IDS.SEAT_SWAP,["namua","mtaji","mtaji-houseless"]],["T02-houseless",T.IDS.LR_MTAJI_HOUSELESS,["mtaji-houseless"]],["T03-houseless",T.IDS.SEAT_SWAP_LR_MTAJI_HOUSELESS,["mtaji-houseless"]]];
+  const measurements={};for(const [label,id,strata] of targets)measurements[label]=measure(id,strata,selected,spec.localGraph.depth);
+  const summaries=Object.fromEntries(Object.entries(measurements).map(([label,row])=>[label,{candidateId:row.candidateId,strata:row.strata,rootCount:row.rootCount,sourceGraph:row.sourceGraph,targetGraph:row.targetGraph,gateMismatchCounts:row.gateMismatchCounts,totalMismatchCount:row.totalMismatchCount}]));
+  const rootCounts=Object.fromEntries(Object.entries(selected).map(([k,v])=>[k,v.length])),localGuards=Object.values(measurements).reduce((n,r)=>n+r.sourceGraph.runtimeGuardHits+r.targetGraph.runtimeGuardHits,0);
