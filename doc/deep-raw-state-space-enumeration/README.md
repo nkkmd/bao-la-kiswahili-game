@@ -25,4 +25,8 @@ Start here:
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md)
 - [`results/STUDY_1_FINAL_RESULT.json`](results/STUDY_1_FINAL_RESULT.json)
 
+Post-closure review disposition:
+
+- [`checkpoints/2026-08-28-pr71-review-disposition.md`](checkpoints/2026-08-28-pr71-review-disposition.md) — records two latent implementation concerns identified during PR review, demonstrates why neither affects the accepted canonical run, and preserves the frozen formal source/no-rerun boundary.
+
 The exact result is bounded to the frozen standard-root depth-9 RAW domain. It is not a full Bao state-space count or full-game complexity estimate.
