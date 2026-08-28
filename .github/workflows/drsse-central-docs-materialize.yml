@@ -5,7 +5,7 @@ on:
     branches:
       - research/g2-05-deep-raw-state-space-enumeration
     paths:
-      - doc/deep-raw-state-space-enumeration/authorizations/CENTRAL_DOCS_MATERIALIZE.md
+      - doc/deep-raw-state-space-enumeration/checkpoints/2026-08-28-stage2-formal-acceptance.md
 
 permissions:
   contents: write
