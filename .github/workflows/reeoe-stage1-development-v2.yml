@@ -1,0 +1,51 @@
+name: REEOE Stage 1 development v2
+
+on:
+  push:
+    branches:
+      - research/g2-04-restricted-endgame-exact-oracle-expansion
+    paths:
+      - '.github/workflows/reeoe-stage1-development-v2.yml'
+      - 'public/engine.js'
+      - 'tools/benchmark.js'
+      - 'tools/experiments/lib/restricted-endgame-stage0.js'
+      - 'tools/experiments/lib/restricted-endgame-transition.js'
+      - 'tools/experiments/lib/restricted-endgame-independent-verifier.js'
+      - 'tools/experiments/run-reeoe-stage1-development-v2.js'
+      - 'tools/experiments/verify-reeoe-stage1-development-v2-independent.js'
+      - 'doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_1_DEVELOPMENT_V2_SPEC.json'
+      - 'doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_1_DEVELOPMENT_V2_AUTHORIZATION.json'
+      - 'doc/restricted-endgame-exact-oracle-expansion/results/STAGE_0_TECHNICAL_RESULT.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  development-v2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout authorized branch head
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Production fresh development v2
+        run: node tools/experiments/run-reeoe-stage1-development-v2.js
+      - name: Independent full-scan selection and closure verification
+        run: node tools/experiments/verify-reeoe-stage1-development-v2-independent.js
+      - name: Hash development artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum artifacts/local/reeoe-stage1-development-v2/production-result.json | tee artifacts/local/reeoe-stage1-development-v2/production-result.sha256
+          sha256sum artifacts/local/reeoe-stage1-development-v2/independent-verification.json | tee artifacts/local/reeoe-stage1-development-v2/independent-verification.sha256
+      - name: Upload Stage 1 v2 development artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: reeoe-stage1-development-v2
+          path: artifacts/local/reeoe-stage1-development-v2/
+          if-no-files-found: error
+          retention-days: 90
