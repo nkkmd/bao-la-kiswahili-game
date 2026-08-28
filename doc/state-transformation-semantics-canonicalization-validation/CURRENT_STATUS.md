@@ -4,7 +4,7 @@ Updated: 2026-08-28
 
 ## Status
 
-**STUDY STARTED / STUDY-LEVEL PROTOCOL FROZEN / STAGE 0 TECHNICAL NOT YET EXECUTED / NO SCIENTIFIC OUTCOME GENERATED**
+**STUDY COMPLETE / FORMAL DECISION `INCONCLUSIVE` / 3 CANDIDATES `NON-ESTIMABLE` / CANONICALIZATION `NON-ESTIMABLE` / NO TRANSFORM VALIDATED**
 
 ## Identity
 
@@ -21,24 +21,120 @@ Japanese working title:
 
 **Baoにおける状態変換意味論とcanonicalizationの厳密検証 — rule-semantic validity, legal-move equivariance, successor binding, graph isomorphism, and prospective canonicalization authorization**
 
-## Repository start audit
+## Final formal closure
 
 ```text
-expected prior main = a8493d2a50e11f15d16ef8348f2442b262ca275d
-observed remote main = a8493d2a50e11f15d16ef8348f2442b262ca275d
-match = true
-open PRs = 0
+Study = INCONCLUSIVE
+STSCV-T01-SEAT-SWAP-LOCAL = NON-ESTIMABLE
+STSCV-T02-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+semantic-domain canonicalization = NON-ESTIMABLE
+standard-start reachable-population deduplication = NON-ESTIMABLE
+validated transform set = []
 ```
 
-Residual Research Generation 2 branches at start:
+This is a technical/reproducibility non-estimability closure, not a scientific rejection of the candidate transforms.
+
+## Stage progression
 
 ```text
-research/g2-01-position-evaluation-empirical-outcome-calibration-replication: ahead 0 / behind 78
-research/g2-01-stage1-implementation-backup: ahead 0 / behind 119
-research/g2-02-search-reliability-decision-robustness: ahead 0 / behind 7
+Stage 0 = STSCV-S0-TECHNICAL-2026-08-28-v1 — completed / technical
+Stage 1 = STSCV-S1-DEVELOPMENT-2026-08-28-v1 — completed / development only
+Stage 2 = STSCV-S2-FORMAL-2026-08-28-v1 — executed / fail-closed INCONCLUSIVE
 ```
 
-No residual G2 branch contains commits ahead of `main`; no competing active/unmerged G2 research was found.
+Stage 1 used 72 fresh development roots: 24 Namua + 24 Mtaji + 24 Mtaji-houseless. Those identities were prospectively firewalled from Stage 2 at trajectory-seed, opening-prefix, and RAW-state levels.
+
+Stage 2 prospectively froze seeds `26032001..26032768`, 32 roots per stratum, depth 3, zero mismatch tolerance, no replacement outside the seed block, and no seed extension after outcome.
+
+## Stage 2 prefreeze and authorization
+
+Hardened Stage 2 prefreeze:
+
+```text
+workflow run = 33145713610
+head = bb6df48ab46bd1379d9aedbadb97db995e961271
+conclusion = success
+scientific outcome existed = false
+```
+
+Explicit authorization commit:
+
+```text
+c7619ded9f682b499a02d023b40ac54ba4dc95ca
+```
+
+The authorization was bound to the frozen spec, candidate contract, Stage 1 firewall, decision rule, RAW identity, source hashes, production runner, and independent verifier before Stage 2 outcome generation.
+
+## Stage 2 formal workflow
+
+```text
+workflow = STSCV Stage 2 Formal
+run = 33145860098
+job = 98766622115
+head = c7619ded9f682b499a02d023b40ac54ba4dc95ca
+conclusion = failure
+```
+
+Successful steps:
+
+```text
+engine regression = PASS
+frozen source reconstruction = PASS
+fresh held-out production measurement = PASS
+```
+
+Production selected the frozen target exactly:
+
+```text
+Namua = 32
+Mtaji = 32
+Mtaji-houseless = 32
+```
+
+Production-only diagnostics reported candidate mismatch count 0 for T01/T02/T03. These are not candidate decisions.
+
+Mandatory independent verification then terminated during formal-result assembly with:
+
+```text
+ReferenceError: standardStartReachablePopulationDedupDecision is not defined
+```
+
+The canonical independent verification result, formal result, SHA256SUMS, and workflow artifact ZIP were therefore not materialized.
+
+## Frozen global-rule application
+
+The Stage 2 decision rule requires all global gates to PASS before candidate mismatch is scientifically interpretable.
+
+```text
+S2-G1 = PASS
+S2-G2 = PASS
+S2-G3 = PASS
+S2-G4 = PASS
+S2-G5 = NOT-ESTABLISHED
+S2-G6 = PASS
+all global gates PASS = false
+```
+
+Therefore the prospectively frozen global-failure rule requires:
+
+```text
+study = INCONCLUSIVE
+candidate = NON-ESTIMABLE
+canonicalization = NON-ESTIMABLE
+scientific mismatch interpretation = not authorized
+```
+
+## Authoritative representation
+
+```text
+RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
+excluded = turn,reason
+```
+
+No transform is authorized for scientific population identity, canonicalization, or symmetry-reduced state counting.
+
+Production diagnostics additionally showed that none of T01/T02/T03 preserves the standard initial RAW state, and no independent standard-start reachability-closure proof was implemented.
 
 ## Immutable upstream state
 
@@ -51,30 +147,26 @@ SIP v1 = TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION
 SIP corrected v2 = NOT-AUTHORIZED-NOT-EXECUTED
 ORISC Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
 ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
-validated transform set at G2-03 start = []
+SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-## Authoritative representation
+G2-03 changes none of these decisions.
 
-```text
-RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
-excluded = turn,reason
-canonicalization for scientific population identity = NOT AUTHORIZED
-symmetry-reduced state counting = NOT AUTHORIZED
-```
+## No-rescue closure
 
-## Frozen stage identities
+The verifier defect became known after fresh held-out Stage 2 outcome generation. The verifier source is not repaired and the same Stage 2 evidence is not rerun to rescue the formal decision.
 
-```text
-Stage 0 = STSCV-S0-TECHNICAL-2026-08-28-v1
-Stage 1 = STSCV-S1-DEVELOPMENT-2026-08-28-v1
-Stage 2 = STSCV-S2-FORMAL-2026-08-28-v1
-```
+A new formal test of these hypotheses requires a new prospective Study or explicitly new versioned protocol with fresh authorization and fresh formal evidence.
 
-Stage 0 is technical/non-scientific. Stage 1 is fresh development evidence. Stage 2 alone may generate formal candidate decisions, after a new prospective Stage 2 spec and explicit authorization.
+## Canonical closure documents
 
-## Next authorized work
+- `STUDY_1_FINAL_REPORT.md`
+- `results/STAGE_2_FORMAL_RESULT.json`
+- `results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json`
+- `checkpoints/2026-08-28-stage2-fail-closed-closure.md`
+- `DECISION_REGISTER.md`
+- `REPRODUCIBILITY_INDEX.md`
 
-Only Stage 0 technical work is currently eligible. It must reconstruct representation and transformation semantics, implement independent checking, prove the IDENTITY control works, detect the frozen broken negative control, and reduce the requested transform family to a finite prospectively frozen Stage 1 candidate contract.
+## Repository state
 
-No Stage 1 or Stage 2 scientific seed is authorized by this status document.
+The research branch is being prepared for integration review. No merge into `main` is recorded by this status document.
