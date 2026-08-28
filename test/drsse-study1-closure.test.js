@@ -12,6 +12,7 @@ const FINAL_DECISION = "EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN";
 const ROOT_KEY = "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6";
 
 const stage2 = json("doc/deep-raw-state-space-enumeration/results/STAGE_2_FORMAL_RESULT.json");
+const spec = json("doc/deep-raw-state-space-enumeration/preregistration/STAGE_2_FORMAL_SPEC.json");
 const finalResult = json("doc/deep-raw-state-space-enumeration/results/STUDY_1_FINAL_RESULT.json");
 
 assert.equal(stage2.studyId, "DRSSE-STUDY1");
@@ -74,6 +75,21 @@ assert.equal(stage2.verification.decisionCoreSha256,
 assert.equal(stage2.actionsArtifactId, 9679860509);
 assert.equal(stage2.actionsArtifactZipSha256,
   "cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4ca4a71e");
+
+// Post-review disposition: the accepted exact run used the target-complete branch,
+// so full independent re-enumeration was actually performed. Its recorded final
+// resource use also remained below every frozen Stage 2 cap, so the latent
+// incomplete-path/final-ambient-check concerns do not alter the canonical result.
+assert.equal(spec.formalDomain.targetDepth, stage2.targetDepth);
+assert.ok(stage2.resourceUse.parentStateExpansions < spec.formalResourceProfile.maxParentStateExpansions);
+assert.ok(stage2.resourceUse.moveEvaluations < spec.formalResourceProfile.maxMoveEvaluations);
+assert.ok(stage2.resourceUse.elapsedSeconds < spec.formalResourceProfile.maxWallClockSeconds);
+assert.ok(stage2.resourceUse.peakResidentSetBytes < spec.formalResourceProfile.maxResidentSetBytes);
+assert.ok(stage2.resourceUse.uncompressedArtifactBytesFinal < spec.formalResourceProfile.maxUncompressedArtifactBytes);
+assert.ok(stage2.cumulative.distinctRawStatesThroughLastCompleteDepth < spec.formalResourceProfile.maxCumulativeDistinctRawStates);
+assert.ok(stage2.cumulative.depthLabelledLegalEdgesThroughLastCompleteParent < spec.formalResourceProfile.maxDepthLabelledEdges);
+assert.ok(BigInt(stage2.cumulative.treeNodeOccurrencesThroughLastCompleteDepth)
+  < BigInt(spec.formalResourceProfile.maxCumulativeTreeNodeOccurrences));
 
 assert.equal(stage2.firewall.stage1ArtifactInputUsed, false);
 assert.equal(stage2.firewall.stage1RowsReused, false);
