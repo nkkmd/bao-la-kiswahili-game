@@ -684,6 +684,8 @@ PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じてお�
 
 ORISC-STUDY1はcompleted studyであり、repository-facing rowsを修正して同一formal Axis Aを再実行したり、pre-outcome candidate contractを後からStage 2へ昇格させたりしない。representation repairやsymmetry re-confirmationを行う場合は、new study IDまたは明示的なnew version、fresh prospective authorization、outcome前のcontract freezeを必要とする。
 
+STSCV-STUDY1は`INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`で閉じた。Fresh Stage 2 production outcome後に判明したindependent verifier implementation defectを修正して同じevidenceを再実行し、candidate decisionを救済しない。state transformation / canonicalizationを再検証する場合は、new study IDまたは明示的なnew version、fresh prospective authorization、fresh formal evidenceを必要とする。STSCV production-only zero-mismatch diagnosticsをvalidated transformとしてdownstream state deduplicationへ使用しない。
+
 State Space / Game Tree Complexity Studyを開始する場合、少なくともStudy 1ではauthoritative raw state identityをstate-count identityとし、ORISC/SIPでformal validationされていないtransformをcanonicalizationやdeduplicationへ使用しない。symmetry-reduced countは別のvalidated symmetry studyなしにformal primary resultとして主張しない。
 
 Human evidenceなしではhuman error mechanismをformalに主張しない。
@@ -819,19 +821,42 @@ primary formal criterion = null
 Descriptive secondary profileは今後のnew hypothesis / resource planning inputには利用できるが、G2-02のformal confirmationやhuman difficulty、engine correctness、public AI strengthへ読み替えない。
 
 **Priority:** P0 / completed
+
 #### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1
 
-**状態:** planned / new prospective independent study
+**状態:** **完了 / `STSCV-STUDY1` / formal decision `INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`**
 
 中心課題:
 
 > representation bindingを最初から明示したfresh raw-state evidenceに対して、candidate state transformationsがrule-semantic validity、legal-move equivariance、successor binding、graph isomorphismを満たすか。
 
-SIP-STUDY1の5 `NON-ESTIMABLE`およびORISC-STUDY1 Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`は変更しない。candidate transforms、positive / negative controls、repository projection contract、authorization gateをoutcome前にfreezeする。
+SIP-STUDY1の5 `NON-ESTIMABLE`およびORISC-STUDY1 Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`を変更せず、新しいRAW-state development / held-out evidenceとrepresentation-first contractを用いた。
 
-本Studyがformal validationに成功するまではcanonicalization / symmetry-reduced state countingを認めない。
+Stage 1は72 fresh development roots（Namua/Mtaji/Mtaji-houseless各24）を使用し、trajectory seed / opening prefix / RAW state identityをStage 2からfirewallした。Stage 2はseeds `26032001..26032768`、各stratum 32 roots、depth 3、candidate mismatch tolerance 0をoutcome前にfreezeし、hardened prefreeze run `33145713610`とexplicit authorization commit `c7619ded9f682b499a02d023b40ac54ba4dc95ca`を経て実行した。
 
-**Priority:** P0
+Fresh held-out production measurementは96 rootsを凍結quotaどおり選択し、T01/T02/T03のproduction-only candidate mismatchをすべて0とした。しかしmandatory independent verifierがformal-result assembly時に次のtechnical errorで停止した。
+
+```text
+ReferenceError: standardStartReachablePopulationDedupDecision is not defined
+```
+
+そのためmandatory S2-G5をcomplete canonical independent-verification resultとして確立できず、canonical hashesとworkflow artifactもmaterializeされなかった。Prospectively frozen global-failure ruleに従い:
+
+```text
+STSCV-STUDY1 = INCONCLUSIVE
+STSCV-T01-SEAT-SWAP-LOCAL = NON-ESTIMABLE
+STSCV-T02-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
+semantic-domain canonicalization = NON-ESTIMABLE
+standard-start reachable-population deduplication = NON-ESTIMABLE
+validated transform set = []
+```
+
+と閉じた。Production-only zero-mismatch diagnosticsをvalidationへ昇格させず、technical failureをscientific `NOT-VALIDATED`へも読み替えていない。Verifier defectはfresh Stage 2 outcome後に判明したため、同じevidenceへのsource repair / rerunを行わない。
+
+したがってG2-03完了後もcanonicalization / symmetry-reduced state countingは未承認であり、authoritative scientific state identityは引き続きRAW-onlyである。
+
+**Priority:** P0 / completed
 
 #### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1
 
@@ -1009,7 +1034,7 @@ G2-12 prospectively specified Growth Estimation + fresh exact holdout
 G2-H01 Human Track = independent / non-blocking
 ```
 
-G2-03がnon-confirmed / non-estimableでもG2-04とG2-05はRAW-onlyで進行可能である。validated transformが得られない限り、それらへsymmetry reductionを導入しない。
+G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完了し、validated transform setは空のままである。したがってG2-04とG2-05は予定どおりRAW-onlyで進行可能であり、validated transformが得られない限りsymmetry reductionを導入しない。
 
 開始優先度は次を推奨する。
 
@@ -1020,7 +1045,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop ruleに従い完了した。G2-02はformal search measurementsとindependent verification自体は完了したが、1040/1050 unique-trajectory estimability gateによりprimary formal criterionを評価していない。次の未着手P0候補はdependencyを確認したうえで`G2-03` State Transformation Semantics / Canonicalization Validation、`G2-04`、`G2-05`、`G2-06`から選択する。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop/global-failure ruleに従い完了した。G2-03はproduction-only zero-mismatch diagnosticsを持つがmandatory independent-verification gateをcanonicalに完遂できず、candidateをvalidationへ昇格させていない。次の未着手P0候補はdependencyを確認したうえで`G2-04` Restricted Endgame Exact Oracle Expansion、`G2-05` Deep RAW State-Space Enumeration、`G2-06` Rich Critical-Position Representationから選択する。
 
 ### 9.9 第二世代プログラムの完了条件
 
