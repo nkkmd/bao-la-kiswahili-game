@@ -76,7 +76,9 @@ function trajectory(seed,spec) {
 function consumedIdentitySets(fw,stage1) {
   check(fw.sourceStage1.selectionSha256===stage1.hashes.selectionSha256,"independent Stage1 selection firewall binding");
   check(fw.sourceStage1.measurementSha256===stage1.hashes.measurementSha256,"independent Stage1 measurement firewall binding");
-  const rows=Object.values(stage1.selectedRoots).flat();
+  const rows=Object.entries(stage1.selectedRoots).flatMap(([stratum,rs])=>rs.map((r)=>({stratum,...r})));
+  const recomputedSelection=linesHash(rows.map((r)=>`${r.stratum}|${r.seed}|${r.ply}|${r.openingPrefixSha256}|${r.stateKey}`));
+  check(recomputedSelection===fw.sourceStage1.selectionSha256,"independent Stage1 selectedRoots selection hash mismatch");
   check(rows.length===fw.sourceStage1.selectedRootCount,"independent Stage1 firewall root count");
   const seeds=new Set(rows.map((r)=>r.seed)), prefixes=new Set(rows.map((r)=>r.openingPrefixSha256)), raw=new Set(rows.map((r)=>r.stateKey));
   check(seeds.size===fw.sourceStage1.expectedUniqueTrajectorySeeds,"independent firewall seed count");
