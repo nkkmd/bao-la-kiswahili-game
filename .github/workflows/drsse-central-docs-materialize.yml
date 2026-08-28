@@ -1,59 +1,18 @@
-name: DRSSE Central Docs Materialize
+name: DRSSE Central Docs Materialize — closed-study archival stub
 
 on:
-  push:
-    branches:
-      - research/g2-05-deep-raw-state-space-enumeration
-    paths:
-      - doc/deep-raw-state-space-enumeration/checkpoints/2026-08-28-stage2-formal-acceptance.md
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  materialize:
+  archived:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Materialize bounded central-document updates
-        run: python3 tools/experiments/materialize-g2-05-central-docs.py
-      - name: Normalize only inserted G2-05 index hard-break whitespace
+      - name: Closed-workflow notice
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('doc/RESEARCH_INDEX.md')
-          text = p.read_text(encoding='utf-8')
-          targets = (
-              '**研究題目:** Baoにおける深層RAW状態空間の完全列挙 — prospectively fixed roots に対する bounded-depth complete enumeration, reachable-state growth, branching structure, transposition structure, and tree/graph occurrence ratio の厳密解析  \n',
-              '**Program:** `G2-05` / **Study ID:** `DRSSE-STUDY1` / **Research Generation 2**  \n',
-          )
-          for old in targets:
-              if text.count(old) != 1:
-                  raise SystemExit(f'expected one inserted whitespace target: {old!r}')
-              text = text.replace(old, old[:-3] + '\n', 1)
-          p.write_text(text, encoding='utf-8')
-          PY
-      - name: Validate agenda and whitespace
-        run: |
-          node test/second-generation-research-agenda.test.js
-          git diff --check
-          grep -F 'G2-05` / `DRSSE-STUDY1`' README.md
-          grep -F '### 21. Deep RAW State-Space Enumeration — Study 1' doc/RESEARCH_INDEX.md
-          grep -F '**状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**' doc/FUTURE_RESEARCH_AGENDA.md
-          grep -F 'G2-05 Deep RAW State-Space Enumeration Study 1 closure' doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
-      - name: Commit central-document materialization
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
-          if git diff --cached --quiet; then
-            echo 'No central documentation changes to commit.'
-            exit 1
-          fi
-          git commit -m 'docs(g2-05): integrate completed study into central research indexes'
-          git push origin HEAD:research/g2-05-deep-raw-state-space-enumeration
+          echo 'G2-05 central documentation materialization is closed.'
+          echo 'Canonical successful run: 33157578543.'
+          echo 'Central integration commit: 37d894219827df58427da178b412274cbc9136d7.'
+          echo 'No additional automatic central-document materialization is authorized.'
