@@ -54,3 +54,11 @@ The post-closure consistency test now explicitly asserts both facts relevant to 
 - final recorded resource use remained below all frozen Stage 2 caps.
 
 Any future protocol that permits a resource-censored formal outcome must independently re-enumerate all claimed-complete layers and must recheck ambient/resource caps after final transition/materialization before classifying completion. That requires a new prospective version/authorization rather than a same-evidence repair of `DRSSE-S2-FORMAL-2026-08-28-v1`.
+
+## Program-level prospective follow-up
+
+The two findings above are promoted, without changing G2-05, into a repository-level prospective implementation policy:
+
+- [`../../research-program-decisions/2026-08-28-post-g2-05-raw-enumeration-hardening.md`](../../research-program-decisions/2026-08-28-post-g2-05-raw-enumeration-hardening.md)
+
+The policy additionally requires a pre-formal negative-control matrix, new source identities/fresh authorization for the hardened implementation, read-only post-merge closure auditing, and explicit adoption by G2-12 if it consumes G2-05-derived bounded exact RAW enumeration.

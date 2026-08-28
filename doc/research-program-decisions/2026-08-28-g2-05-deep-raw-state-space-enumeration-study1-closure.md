@@ -48,3 +48,15 @@ No G2-04 selected root or partial closure and no G1 partial depth-9 row was used
 The exact result is bounded to the frozen standard-root depth-9 RAW domain. It does not authorize a total Bao state-space count, total game-tree complexity estimate, asymptotic growth model, symmetry-reduced count, game-theoretic solution, or engineering conclusion.
 
 Any inference beyond enumerated depth 9 requires a new prospective Study. Full-game state-space/game-tree estimation remains reserved for future Research Generation 2 work, including G2-12.
+
+## Post-closure implementation hardening
+
+PR #71 identified two latent implementation concerns that did not affect the accepted target-complete canonical run. They are not repaired retrospectively in the frozen G2-05 formal source.
+
+Instead, they are promoted to prospective program-level requirements in:
+
+- [`2026-08-28-post-g2-05-raw-enumeration-hardening.md`](2026-08-28-post-g2-05-raw-enumeration-hardening.md)
+
+Future RAW-enumeration implementations, including any G2-12 use of G2-05-derived bounded exact enumeration, must independently verify every claimed-complete prefix after a resource/admin stop and must perform a final ambient/resource recheck after final scientific materialization before exact completion classification. Scientific use of the hardened implementation requires new source identities, a fresh freeze, and fresh authorization.
+
+This follow-up changes no G2-05 count, hash, source blob, Stage ID, evidence, or formal decision.
