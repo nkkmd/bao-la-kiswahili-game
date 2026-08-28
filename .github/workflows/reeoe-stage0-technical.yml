@@ -1,55 +1,17 @@
-name: REEOE Stage 0 technical validation
+name: REEOE Stage 0 technical validation — closed-study archival stub
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [main]
-    paths:
-      - "public/engine.js"
-      - "tools/experiments/run-reeoe-stage0-technical.js"
-      - "tools/experiments/verify-reeoe-stage0-independent.js"
-      - "tools/experiments/lib/restricted-endgame-transition.js"
-      - "tools/experiments/lib/restricted-endgame-independent-verifier.js"
-      - "tools/experiments/lib/restricted-endgame-retrograde.js"
-      - "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
-      - "tools/experiments/lib/restricted-endgame-tablebase.js"
-      - "tools/experiments/lib/restricted-endgame-tablebase-independent.js"
-      - "doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json"
-      - "doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_0_TECHNICAL_SPEC.json"
-      - ".github/workflows/reeoe-stage0-technical.yml"
 
 permissions:
   contents: read
 
 jobs:
-  technical-validation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+  archived:
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout exact PR head
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Production positive-control reconstruction
-        run: node tools/experiments/run-reeoe-stage0-technical.js
-
-      - name: Independent graph / retrograde / corruption verification
-        run: node tools/experiments/verify-reeoe-stage0-independent.js
-
-      - name: Hash technical artifacts
-        shell: bash
+      - name: Closed-stage notice
         run: |
-          sha256sum artifacts/local/reeoe-stage0-technical/production-result.json | tee artifacts/local/reeoe-stage0-technical/production-result.sha256
-          sha256sum artifacts/local/reeoe-stage0-technical/independent-verification.json | tee artifacts/local/reeoe-stage0-technical/independent-verification.sha256
-
-      - name: Upload Stage 0 technical artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: reeoe-stage0-technical
-          path: artifacts/local/reeoe-stage0-technical/
-          if-no-files-found: error
-          retention-days: 90
+          echo 'REEOE-S0-TECHNICAL-2026-08-28-v1 is closed as STAGE0-TECHNICAL-PASS.'
+          echo 'Canonical run: 33150063023; artifact: 9677327024.'
+          echo 'No additional Stage 0 evidence generation is authorized.'
