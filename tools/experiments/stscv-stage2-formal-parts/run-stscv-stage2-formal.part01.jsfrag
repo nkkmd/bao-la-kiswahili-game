@@ -88,7 +88,9 @@ function trajectoryCandidate(seed, spec) {
 function consumedIdentitySets(firewall, stage1) {
   ensure(firewall.sourceStage1.selectionSha256 === stage1.hashes.selectionSha256, "Stage 1 selection firewall binding mismatch");
   ensure(firewall.sourceStage1.measurementSha256 === stage1.hashes.measurementSha256, "Stage 1 measurement firewall binding mismatch");
-  const rows=Object.values(stage1.selectedRoots).flat();
+  const rows=Object.entries(stage1.selectedRoots).flatMap(([stratum,rs])=>rs.map((r)=>({stratum,...r})));
+  const recomputedSelection=datasetHash(rows.map((r)=>`${r.stratum}|${r.seed}|${r.ply}|${r.openingPrefixSha256}|${r.stateKey}`));
+  ensure(recomputedSelection===firewall.sourceStage1.selectionSha256, "Stage 1 selectedRoots do not reproduce frozen selection hash");
   ensure(rows.length===firewall.sourceStage1.selectedRootCount, "Stage 1 firewall root count mismatch");
   const seeds=new Set(rows.map((r)=>r.seed)), prefixes=new Set(rows.map((r)=>r.openingPrefixSha256)), raw=new Set(rows.map((r)=>r.stateKey));
   ensure(seeds.size===firewall.sourceStage1.expectedUniqueTrajectorySeeds, "Stage 1 firewall seed count mismatch");
