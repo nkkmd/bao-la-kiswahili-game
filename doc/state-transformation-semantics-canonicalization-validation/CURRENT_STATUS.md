@@ -100,7 +100,7 @@ Mandatory independent verification then terminated during formal-result assembly
 ReferenceError: standardStartReachablePopulationDedupDecision is not defined
 ```
 
-The canonical independent verification result, formal result, SHA256SUMS, and workflow artifact ZIP were therefore not materialized.
+The workflow-produced canonical independent-verification artifact, independently verified formal-result artifact, SHA256SUMS, and workflow artifact ZIP were therefore not materialized. A separate repository-facing fail-closed closure was subsequently recorded at `results/STAGE_2_FORMAL_RESULT.json` by applying the already-frozen global-failure rule; it is not the missing workflow-produced independently verified result.
 
 ## Frozen global-rule application
 
