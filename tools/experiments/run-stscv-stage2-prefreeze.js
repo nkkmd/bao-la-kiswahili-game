@@ -29,6 +29,8 @@ function main(){
  ensure(fw.candidateOutcomeUsedToDefineFirewall===false&&fw.firewallRelaxationAfterOutcomeAuthorized===false,"Stage 2 firewall outcome dependence");
  ensure(fw.sourceStage1.selectionSha256===s1.hashes.selectionSha256&&fw.sourceStage1.measurementSha256===s1.hashes.measurementSha256,"Stage 1 firewall binding mismatch");
  const s1Rows=Object.entries(s1.selectedRoots).flatMap(([stratum,rows])=>rows.map((r)=>({stratum,...r})));
+ const recomputedStage1Selection=sha(Buffer.from(s1Rows.map((r)=>`${r.stratum}|${r.seed}|${r.ply}|${r.openingPrefixSha256}|${r.stateKey}`).sort().join("\n"),"utf8"));
+ ensure(recomputedStage1Selection===fw.sourceStage1.selectionSha256,"Stage 1 selectedRoots do not reproduce frozen selection hash");
  const fwCounts={trajectorySeeds:new Set(s1Rows.map((r)=>r.seed)).size,openingPrefixSha256:new Set(s1Rows.map((r)=>r.openingPrefixSha256)).size,rawStateKeys:new Set(s1Rows.map((r)=>r.stateKey)).size};
  ensure(s1Rows.length===fw.sourceStage1.selectedRootCount,"firewall Stage1 root count mismatch");
  ensure(fwCounts.trajectorySeeds===fw.sourceStage1.expectedUniqueTrajectorySeeds,"firewall seed count mismatch");
