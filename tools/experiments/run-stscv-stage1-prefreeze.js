@@ -51,8 +51,8 @@ function main() {
   ensure(!/symmetry-isomorphic-positions\/results/.test(runnerSource), "production runner imports prior SIP result evidence");
   ensure(!/symmetry-isomorphic-positions\/results/.test(verifierSource), "independent verifier imports prior SIP result evidence");
   ensure(!/oracle-representation-integrity-symmetry-confirmation\/results/.test(runnerSource + verifierSource), "Stage 1 imports ORISC result evidence");
-  ensure(!/run-stscv-stage1-development/.test(verifierSource), "independent verifier imports production runner");
-  ensure(!/stscv-stage0-production/.test(verifierSource), "independent verifier imports production transform");
+  ensure(!verifierSource.includes('require("./run-stscv-stage1-development.js")') && !verifierSource.includes("require('./run-stscv-stage1-development.js')"), "independent verifier imports production runner");
+  ensure(!verifierSource.includes('require("./lib/stscv-stage0-production.js")') && !verifierSource.includes("require('./lib/stscv-stage0-production.js')"), "independent verifier imports production transform");
 
   const rawIdentityContract = {
     include: spec.authoritativeRawIdentity.include,

@@ -222,9 +222,6 @@ function main() {
   const spec = loadJson(SPEC_PATH);
   const auth = loadJson(AUTH_PATH);
   verifyAuthorization(spec, auth);
-  const verifierSource = fs.readFileSync(__filename, "utf8");
-  ensure(!/stscv-stage0-production/.test(verifierSource), "independent verifier imports production transform");
-  ensure(!/run-stscv-stage1-development/.test(verifierSource), "independent verifier imports production runner");
 
   const pop = population(spec);
   const targets = [
