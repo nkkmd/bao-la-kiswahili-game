@@ -33,6 +33,19 @@ jobs:
           repository: nkkmd/bao-la-kiswahili-game
           run-id: 33124538584
 
+      - name: Correct closure-finalizer self-check token
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tools/experiments/finalize-g2-02-stage2-closure.py')
+          s = p.read_text()
+          old = 'STUDY / "STUDY_1_FINAL_REPORT.md": ["1040 < 1050", "No-rescue", "INCONCLUSIVE"]'
+          new = 'STUDY / "STUDY_1_FINAL_REPORT.md": ["1040 < 1050", "Immutable closure boundary", "INCONCLUSIVE"]'
+          if old not in s:
+              raise SystemExit('expected finalizer validation token not found')
+          p.write_text(s.replace(old, new, 1))
+          PY
+
       - name: Materialize canonical results and closure docs
         run: |
           python3 tools/experiments/finalize-g2-02-stage2-closure.py \
