@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-03",
+  "researchGeneration": "Research Generation 2",
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S2-FORMAL-2026-08-28-v1",
+  "resultDate": "2026-08-28",
+  "resultRole": "repository-facing fail-closed formal closure under prospectively frozen decision rule",
+  "formalDecision": "INCONCLUSIVE",
+  "formalDecisionBasis": "The held-out production measurement completed, but the mandatory independent verifier failed during formal-result assembly before a complete independently verified formal result and canonical artifact could be materialized. Under the frozen globalFailureRule, failure to establish every global gate yields study INCONCLUSIVE, candidate NON-ESTIMABLE, and canonicalization NON-ESTIMABLE.",
+  "globalGates": {
+    "S2-G1": true,
+    "S2-G2": true,
+    "S2-G3": true,
+    "S2-G4": true,
+    "S2-G5": null,
+    "S2-G6": true
+  },
+  "globalGateInterpretation": {
+    "S2-G5": "NOT-ESTABLISHED. The independent verifier process terminated with a ReferenceError during formal-result assembly; no complete independent verification file or formal result artifact was materialized. This is not interpreted as a scientific mismatch.",
+    "allGlobalGatesPass": false,
+    "scientificMismatchInterpretationAuthorized": false
+  },
+  "candidateDecisions": {
+    "STSCV-T01-SEAT-SWAP-LOCAL": "NON-ESTIMABLE",
+    "STSCV-T02-LR-MTAJI-HOUSELESS": "NON-ESTIMABLE",
+    "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": "NON-ESTIMABLE"
+  },
+  "validatedCandidateIds": [],
+  "productionDiagnostics": {
+    "decisionUseAuthorized": false,
+    "source": "GitHub Actions workflow log from run 33145860098; the production result file was ephemeral because artifact upload was skipped after verifier failure",
+    "selectedRootCounts": {
+      "namua": 32,
+      "mtaji": 32,
+      "mtaji-houseless": 32
+    },
+    "selectionSha256": "4d81f8adebfe7b32bfba86adaaeb3f04a8ca6b451e09953612804734d303bb1c",
+    "measurementSha256": "530ae49610dc7cc3af2713c0cf35c5d4e24d005f376d53e9da869b184b06b4fb",
+    "decisionInputSha256": "58c8a2f6422135073bb4cbd5bac985bf1e72e5040b1c285ff5eca3a129523264",
+    "candidateMismatchCounts": {
+      "STSCV-T01-SEAT-SWAP-LOCAL": 0,
+      "STSCV-T02-LR-MTAJI-HOUSELESS": 0,
+      "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": 0
+    },
+    "canonicalizationDiagnostics": {
+      "evaluatedSourceGraph": {
+        "stateCount": 6317,
+        "edgeCount": 6341,
+        "runtimeGuardHits": 0
+      },
+      "canonicalOrbitCount": 6317,
+      "maxOrbitSize": 4,
+      "semanticDomainGateMismatchCounts": {
+        "non-identity-validated-transform-exists": 0,
+        "orbit-closure": 0,
+        "canonical-idempotence": 0,
+        "orbit-consistency": 0,
+        "canonical-collision-absence": 0,
+        "canonical-raw-reconstruction": 0,
+        "validated-move-successor-consistency": 0
+      },
+      "productionAllSemanticDomainGatesPass": true,
+      "standardStartReachability": {
+        "initialRawStatePreservationByTransform": {
+          "STSCV-T01-SEAT-SWAP-LOCAL": false,
+          "STSCV-T02-LR-MTAJI-HOUSELESS": false,
+          "STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS": false
+        },
+        "independentReachabilityClosureProofImplemented": false,
+        "standardStartReachablePopulationDedupEligible": false
+      }
+    }
+  },
+  "independentVerification": {
+    "required": true,
+    "completedAsCanonicalArtifact": false,
+    "passed": false,
+    "failureClass": "POST-MEASUREMENT-INDEPENDENT-VERIFIER-RESULT-ASSEMBLY-IMPLEMENTATION-ERROR",
+    "errorType": "ReferenceError",
+    "errorMessage": "standardStartReachablePopulationDedupDecision is not defined",
+    "workflowRunId": 33145860098,
+    "workflowJobId": 98766622115,
+    "workflowConclusion": "failure",
+    "artifactUploaded": false,
+    "canonicalHashesMaterialized": false
+  },
+  "canonicalization": {
+    "semanticDomainDecision": "NON-ESTIMABLE",
+    "standardStartReachablePopulationDedupDecision": "NON-ESTIMABLE",
+    "scientificPopulationIdentityMayUseCanonicalization": false,
+    "symmetryReducedStateCountingAuthorized": false,
+    "reason": "Mandatory global independent-verification gate was not established; production-only zero-mismatch diagnostics cannot authorize canonicalization. Separately, production diagnostics also show that none of the three non-identity transforms preserves the standard initial RAW state and no independent standard-start reachability-closure proof was implemented."
+  },
+  "frozenContractHashes": {
+    "specSha256": "2afbef1faed32cf1a7fb71d8af924a01d721a6d8719057c68224732576a6f8f0",
+    "candidateContractSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+    "firewallSha256": "e82626b947706ae31d78675d2fab22e74524ec0c0830da61894e58425af0c1d1",
+    "decisionRuleSha256": "97125b04dfa10c0e7c359a8b1e3a48b615d6d3422a16cd801e327486be035310",
+    "stage1ResultSha256": "5f887b6d429a60a3a9cdc92b59fb626dbe626faa197c69436a0a865b7fb5e5c3",
+    "rawStateIdentitySha256": "b7bd7c07300e56273344392c9adcbaa649d2a72c4fad372494e219a41c0103f1",
+    "transformationDefinitionSha256": "e2869430325e80afcbb076bb450a6b6227701200dd83c1cb120a99d9dc446afc",
+    "productionRunnerSha256": "faf4e81c146e0c6564599fe7c4e357cd3b9afb322149243de8086da2d69c3a7c",
+    "independentVerifierSha256": "13b555e6ab34fda1d58213b583e8250d593a9f061c62ac403273265896cbaf93"
+  },
+  "authorization": {
+    "authorizationCommitSha": "c7619ded9f682b499a02d023b40ac54ba4dc95ca",
+    "prefreezeWorkflowRunId": 33145713610,
+    "prefreezePassed": true,
+    "candidateOutcomesInspectedBeforeAuthorization": false,
+    "stage2ScientificOutcomeExistedBeforeAuthorization": false
+  },
+  "interpretationBoundary": {
+    "productionZeroMismatchIsFormalValidation": false,
+    "candidateScientificRejectionAuthorized": false,
+    "canonicalizationAuthorized": false,
+    "standardStartReachablePopulationDedupAuthorized": false,
+    "retrospectiveSIPOrORISCDecisionChangeAuthorized": false,
+    "g2_01_or_g2_02_rescueAuthorized": false,
+    "publicAIEngineeringChangeAuthorized": false,
+    "sameStage2EvidenceRerunForRescueAuthorized": false,
+    "postOutcomeVerifierSourceFixForSameFormalDecisionAuthorized": false
+  },
+  "noRescueClosure": true
+}
