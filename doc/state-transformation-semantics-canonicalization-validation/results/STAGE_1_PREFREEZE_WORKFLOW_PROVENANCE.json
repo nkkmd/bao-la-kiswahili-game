@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "studyId": "STSCV-STUDY1",
+  "stageId": "STSCV-S1-DEVELOPMENT-2026-08-28-v1",
+  "classification": "PRE-SCIENTIFIC-PREFREEZE-WORKFLOW",
+  "canonicalRun": {
+    "runId": 33143959121,
+    "jobId": 98760815226,
+    "headSha": "315246914f83429bc660213b8c5f9f5e87144985",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 9675033351,
+    "name": "stscv-stage1-prefreeze-v1",
+    "uploadedBytes": 1355,
+    "zipSha256": "a3a4efb5cadb3e6d196ce09a38011e72e94aaa7ed45fee283fb51e376a3de4d9"
+  },
+  "priorFailedRun": {
+    "runId": 33143775539,
+    "jobId": 98760248129,
+    "headSha": "54e45fe0b8558231487f3b1c772a645a858860db",
+    "conclusion": "failure",
+    "failureClass": "PREAUTHORIZATION-STATIC-AUDIT-SELF-DETECTION-BUG",
+    "scientificOutcomeGenerated": false,
+    "candidateDefinitionChanged": false,
+    "populationDefinitionChanged": false,
+    "gateDefinitionChanged": false
+  },
+  "scientificOutcomeGenerated": false,
+  "readyForExplicitAuthorization": true
+}
