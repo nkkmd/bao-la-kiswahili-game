@@ -1,0 +1,43 @@
+name: PCRPR Central Docs Materialize
+
+on:
+  push:
+    branches:
+      - research/g2-07-practical-comeback-reply-pressure-representation
+    paths:
+      - 'tools/experiments/materialize-pcrpr-central-docs.js'
+      - '.github/workflows/pcrpr-central-docs-materialize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Materialize central documentation
+        run: node tools/experiments/materialize-pcrpr-central-docs.js
+      - name: Verify expected central references
+        run: |
+          grep -F 'doc/practical-comeback-reply-pressure-representation/STUDY_1_OVERVIEW.md' README.md
+          grep -F '### 23. Practical Comeback / Reply-Pressure Representation — Study 1' doc/RESEARCH_INDEX.md
+          grep -F 'G2-01..G2-07はclosure済み' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -F 'G2-08 — Machine Decision-Failure Taxonomy Study 1' doc/FUTURE_RESEARCH_AGENDA.md
+      - name: Commit materialized central docs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
+          if git diff --cached --quiet; then
+            echo 'No central-document changes required.'
+          else
+            git commit -m 'docs(g2-07): synchronize central research indexes'
+            git push origin HEAD:research/g2-07-practical-comeback-reply-pressure-representation
+          fi
