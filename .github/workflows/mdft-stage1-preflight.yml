@@ -1,0 +1,55 @@
+name: MDFT Stage 1 Technical Preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-08-machine-decision-failure-taxonomy
+    paths:
+      - '.github/workflows/mdft-stage1-preflight.yml'
+      - 'tools/experiments/run-mdft-stage1-preflight.js'
+      - 'tools/experiments/lib/mdft-stage1-production.js'
+      - 'tools/experiments/lib/mdft-stage1-independent.js'
+      - 'tools/experiments/lib/mdft-stage0-production.js'
+      - 'tools/experiments/lib/mdft-stage0-independent.js'
+      - 'tools/experiments/lib/search-reliability-decision-robustness.js'
+      - 'doc/machine-decision-failure-taxonomy/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+      - 'tools/benchmark.js'
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout prospective Stage 1 source
+        uses: actions/checkout@v4
+
+      - name: Environment and syntax
+        run: |
+          node --version
+          git rev-parse HEAD
+          node --check tools/experiments/lib/mdft-stage1-production.js
+          node --check tools/experiments/lib/mdft-stage1-independent.js
+          node --check tools/experiments/run-mdft-stage1-preflight.js
+
+      - name: Run technical-only Stage 1 preflight
+        run: |
+          /usr/bin/time -v node tools/experiments/run-mdft-stage1-preflight.js artifacts/local/mdft-stage1-preflight 2>&1 | tee artifacts-mdft-stage1-preflight.log
+
+      - name: Preserve preflight controls and transfer probe
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdft-stage1-preflight-${{ github.sha }}
+          path: |
+            artifacts/local/mdft-stage1-preflight/**
+            artifacts-mdft-stage1-preflight.log
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
