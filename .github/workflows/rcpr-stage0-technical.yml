@@ -1,53 +1,18 @@
-name: RCPR Stage 0 Technical
+name: RCPR Stage 0 Technical — closed-study archival stub
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/g2-06-rich-critical-position-representation
-    paths:
-      - 'doc/rich-critical-position-representation/preregistration/STAGE_0_TECHNICAL_SPEC.json'
-      - 'doc/rich-critical-position-representation/FEATURE_DICTIONARY.md'
-      - 'tools/experiments/lib/rcpr-production.js'
-      - 'tools/experiments/lib/rcpr-independent.js'
-      - 'tools/experiments/run-rcpr-stage0-technical.js'
-      - 'tools/experiments/verify-rcpr-stage0-independent.js'
-      - '.github/workflows/rcpr-stage0-technical.yml'
-      - 'public/engine.js'
-      - 'public/ai.js'
-      - 'public/ai-weights.js'
-      - 'tools/experiments/lib/position-complexity-search-diagnostic.js'
 
 permissions:
   contents: read
 
 jobs:
-  stage0-technical:
+  archived:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
     steps:
-      - name: Checkout frozen branch commit
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Production technical extraction
+      - name: Closed-workflow notice
         run: |
-          node tools/experiments/run-rcpr-stage0-technical.js \
-            --out artifacts/local/rich-critical-position-representation/stage0-technical-v1
-
-      - name: Independent full feature recomputation
-        run: |
-          node tools/experiments/verify-rcpr-stage0-independent.js \
-            --dir artifacts/local/rich-critical-position-representation/stage0-technical-v1
-
-      - name: Upload technical artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: rcpr-stage0-technical-v1
-          path: artifacts/local/rich-critical-position-representation/stage0-technical-v1/
-          if-no-files-found: error
-          retention-days: 30
+          echo 'RCPR-STUDY1 Stage 0 technical workflow is closed.'
+          echo 'Canonical successful run: 33179301221.'
+          echo 'Former executable workflow blob: 680049f0e07a4bfdb90324ffe1bdab8047596c75.'
+          echo 'No additional RCPR-STUDY1 Stage 0 execution is authorized.'

@@ -1,99 +1,18 @@
-name: RCPR Stage 1 Implementation Smoke
+name: RCPR Stage 1 Implementation Smoke — closed-study archival stub
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/g2-06-rich-critical-position-representation
-    paths:
-      - 'doc/rich-critical-position-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
-      - 'doc/rich-critical-position-representation/preregistration/STAGE_1_EXECUTION_ADDENDUM.json'
-      - 'tools/experiments/lib/rcpr-stage1-production.js'
-      - 'tools/experiments/lib/rcpr-stage1-independent.js'
-      - 'tools/experiments/lib/rcpr-stage1-independent-corpus.js'
-      - 'tools/experiments/lib/rcpr-stage1-independent-model.js'
-      - 'tools/experiments/run-rcpr-stage1-development.js'
-      - 'tools/experiments/verify-rcpr-stage1-independent.js'
-      - 'tools/experiments/run-rcpr-stage1-implementation-smoke.js'
-      - 'tools/experiments/verify-rcpr-stage1-implementation-smoke.js'
-      - '.github/workflows/rcpr-stage1-implementation-smoke.yml'
-      - '.github/workflows/rcpr-stage1-development.yml'
-      - 'tools/experiments/lib/rcpr-production.js'
-      - 'tools/experiments/lib/rcpr-independent.js'
-      - 'public/engine.js'
-      - 'public/ai.js'
-      - 'public/ai-weights.js'
-      - 'tools/benchmark.js'
 
 permissions:
   contents: read
 
 jobs:
-  implementation-smoke:
+  archived:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
     steps:
-      - name: Checkout candidate implementation
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Static syntax checks
+      - name: Closed-workflow notice
         run: |
-          node --check tools/experiments/lib/rcpr-stage1-production.js
-          node --check tools/experiments/lib/rcpr-stage1-independent.js
-          node --check tools/experiments/lib/rcpr-stage1-independent-corpus.js
-          node --check tools/experiments/lib/rcpr-stage1-independent-model.js
-          node --check tools/experiments/run-rcpr-stage1-development.js
-          node --check tools/experiments/verify-rcpr-stage1-independent.js
-          node --check tools/experiments/run-rcpr-stage1-implementation-smoke.js
-          node --check tools/experiments/verify-rcpr-stage1-implementation-smoke.js
-
-      - name: Validate prospective execution addendum
-        run: |
-          node <<'NODE'
-          const fs = require('node:fs');
-          const crypto = require('node:crypto');
-          const specPath = 'doc/rich-critical-position-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json';
-          const addendumPath = 'doc/rich-critical-position-representation/preregistration/STAGE_1_EXECUTION_ADDENDUM.json';
-          const specSha = crypto.createHash('sha256').update(fs.readFileSync(specPath)).digest('hex');
-          const addendum = JSON.parse(fs.readFileSync(addendumPath, 'utf8'));
-          if (addendum.parentStage1SpecSha256 !== specSha) throw new Error('execution addendum parent spec hash mismatch');
-          if (addendum.scientificOutcomeGeneratedBeforeFreeze !== false || addendum.scientificDesignChanged !== false) throw new Error('execution addendum boundary invalid');
-          if (addendum.resourceContract.productionJobTimeoutMinutes !== 360 || addendum.resourceContract.independentJobTimeoutMinutes !== 360) throw new Error('resource ceiling drift');
-          if (addendum.resourceContract.productionAndIndependentMustUseSeparateJobs !== true) throw new Error('job separation contract missing');
-          console.log(JSON.stringify({specSha256: specSha, addendumId: addendum.addendumId, resourceContract: 'PASS'}, null, 2));
-          NODE
-
-      - name: Production non-scientific implementation smoke
-        run: |
-          node tools/experiments/run-rcpr-stage1-implementation-smoke.js \
-            --out artifacts/local/rich-critical-position-representation/stage1-implementation-smoke-v1
-
-      - name: Independent non-scientific implementation smoke
-        run: |
-          node tools/experiments/verify-rcpr-stage1-implementation-smoke.js \
-            --dir artifacts/local/rich-critical-position-representation/stage1-implementation-smoke-v1
-
-      - name: Confirm scientific runner fails closed before authorization
-        run: |
-          set +e
-          node tools/experiments/run-rcpr-stage1-development.js \
-            --out artifacts/local/rich-critical-position-representation/UNAUTHORIZED-MUST-NOT-EXIST \
-            > /tmp/rcpr-stage1-refusal.log 2>&1
-          code=$?
-          set -e
-          test "$code" -ne 0
-          grep -q 'Stage 1 execution authorization absent' /tmp/rcpr-stage1-refusal.log
-          test ! -e artifacts/local/rich-critical-position-representation/UNAUTHORIZED-MUST-NOT-EXIST/production-result.json
-
-      - name: Upload implementation smoke artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: rcpr-stage1-implementation-smoke-v1
-          path: artifacts/local/rich-critical-position-representation/stage1-implementation-smoke-v1/
-          if-no-files-found: error
-          retention-days: 30
+          echo 'RCPR-STUDY1 implementation-smoke workflow is closed.'
+          echo 'Canonical successful run: 33195723195.'
+          echo 'Former executable workflow blob: d7d10fb1f4d1ec28e68a496133c1bc3fe4cc1c79.'
+          echo 'No additional RCPR-STUDY1 implementation-smoke execution is authorized.'
