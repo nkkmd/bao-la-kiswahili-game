@@ -1,46 +1,18 @@
-name: PCRPR Stage 1 Independent Smoke
+name: PCRPR Stage 1 Independent Smoke — closed-study archival stub
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/g2-07-practical-comeback-reply-pressure-representation
-    paths:
-      - 'doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
-      - 'doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_1_COMPUTATION_CONTRACT.json'
-      - 'tools/experiments/lib/pcrpr-stage0-production.js'
-      - 'tools/experiments/lib/pcrpr-stage1-production.js'
-      - 'tools/experiments/lib/pcrpr-stage1-model.js'
-      - 'tools/experiments/lib/pcrpr-stage1-independent.js'
-      - 'tools/experiments/run-pcrpr-stage1-independent-smoke.js'
-      - '.github/workflows/pcrpr-stage1-independent-smoke.yml'
-      - 'public/engine.js'
-      - 'public/ai.js'
-      - 'public/ai-weights.js'
 
 permissions:
   contents: read
 
 jobs:
-  independent-smoke:
+  archived:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Syntax checks
+      - name: Closed-workflow notice
         run: |
-          node --check tools/experiments/lib/pcrpr-stage1-independent.js
-          node --check tools/experiments/run-pcrpr-stage1-independent-smoke.js
-      - name: Independent technical-only smoke
-        run: |
-          node tools/experiments/run-pcrpr-stage1-independent-smoke.js \
-            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-independent-smoke-v1.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pcrpr-stage1-independent-smoke-v1
-          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-independent-smoke-v1.json
-          if-no-files-found: error
-          retention-days: 30
+          echo 'PCRPR-STUDY1 is closed.'
+          echo 'Canonical independent smoke run: 33241110983.'
+          echo 'Former executable workflow blob: 274ce2d9f4768440712b3833b6a7161fdc7b1202.'
+          echo 'No further PCRPR-STUDY1 independent smoke execution is authorized.'
