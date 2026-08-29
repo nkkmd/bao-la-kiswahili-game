@@ -5,24 +5,28 @@ Date: 2026-08-29
 ## Remote state
 
 ```text
-remote main = e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5
-research branch pre-audit HEAD = 4e11770c4d564e338b28b8dd91c14fa8432463b5
-merge base = e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5
-branch behind main = 0
-main integration = NOT PERFORMED
+remote main at study-start / pre-merge baseline = e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5
+research branch closure audit = COMPLETE
+main integration = PENDING PR MERGE
 ```
 
-Remote `main` remained exactly at the study-start baseline during closure.
+Remote `main` remained at the study-start baseline throughout scientific execution and research-branch closure. Central integration preparation was performed only on `research/g2-07-practical-comeback-reply-pressure-representation` before merge.
 
 ## Diff scope audit
 
-Compare `e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5...4e11770c4d564e338b28b8dd91c14fa8432463b5` showed 74 branch commits. All changed files are confined to:
+The research branch was originally created from `e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5`. Scientific/research implementation changes remain confined to PCRPR-specific paths:
 
 1. `.github/workflows/pcrpr-*`
 2. `doc/practical-comeback-reply-pressure-representation/**`
 3. `tools/experiments/*pcrpr*`
 
-No pre-existing `public/engine.js`, `public/ai.js`, `public/ai-weights.js`, rule semantics, unrelated study directory, or public gameplay code was modified by the G2-07 branch.
+Final integration preparation additionally updates only these shared documentation entry points:
+
+4. repository root `README.md`
+5. `doc/RESEARCH_INDEX.md`
+6. `doc/FUTURE_RESEARCH_AGENDA.md`
+
+No pre-existing `public/engine.js`, `public/ai.js`, `public/ai-weights.js`, Bao rule semantics, public gameplay code, or unrelated scientific result was modified by G2-07.
 
 ## Terminal record audit
 
@@ -56,18 +60,25 @@ Study = CLOSED
 
 ## Workflow audit
 
-All six PCRPR workflow files are notice-only archival stubs after closure. Former executable blob IDs and canonical run IDs are preserved in `2026-08-29-post-closure-workflow-archive.md`.
+All six PCRPR scientific/technical workflow files are notice-only archival stubs after closure. Former executable blob IDs and canonical run IDs are preserved in `2026-08-29-post-closure-workflow-archive.md`.
 
-## Shared central documents
+The one-shot central-document materializer was used only during integration preparation to make anchor-validated localized edits to the three shared documents. It is temporary integration tooling and must not remain in the merged main tree.
 
-`doc/RESEARCH_INDEX.md` and `doc/FUTURE_RESEARCH_AGENDA.md` were intentionally not full-file rewritten during this branch-only closure because the available repository write interface replaces whole files and these are large shared documents. Their localized G2-07 closure / G2-08 next-item synchronization is deferred to the explicit main-integration preparation step.
+## Shared central-document audit
 
-This is a documentation-integration deferment only; it does not leave the Study scientifically active.
+The previously deferred shared-document synchronization is now complete on the research branch:
+
+- root `README.md` contains the G2-07 closure entry after G2-06;
+- `doc/RESEARCH_INDEX.md` contains dedicated section 23 for `PCRPR-STUDY1`, preserving the fail-closed decision and human-claim boundary;
+- `doc/FUTURE_RESEARCH_AGENDA.md` marks G2-07 completed and advances the next unstarted machine-only agenda item to G2-08.
+
+The materialization workflow verified these expected anchors before committing the central-document changes.
 
 ## Audit conclusion
 
 ```text
 PCRPR-STUDY1 research-branch closure = COMPLETE
-main integration = HELD
+central document synchronization = COMPLETE
+main integration = READY AFTER TEMPORARY MATERIALIZER CLEANUP AND PR AUDIT
 next scientific execution in PCRPR-STUDY1 = NOT AUTHORIZED
 ```
