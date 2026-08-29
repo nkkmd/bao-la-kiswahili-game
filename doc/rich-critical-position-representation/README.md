@@ -1,12 +1,12 @@
-# RCPR-STUDY1
+# RCPR-STUDY1 — 重要局面の豊かな構造表現
 
-Research Generation 2 `G2-06` — **Rich Critical-Position Representation Study 1**.
+Research Generation 2 `G2-06` — **Rich Critical-Position Representation Study 1**。
 
-日本語作業表記:
+日本語題目:
 
-**Baoにおける重要局面の豊かな構造表現の構築とprospective検証 — rich pre-root representationによるdecision-critical structureの再現可能な識別**
+**Baoにおける重要局面の豊かな構造表現の構築と事前規定による検証 — rich pre-root representationによるdecision-critical structureの再現可能な識別**
 
-## Status
+## 状態
 
 ```text
 Study = CLOSED AT STAGE 1
@@ -19,29 +19,33 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 ```
 
-Stage 0 independently validated the eight prospectively declared representation families and the 310-scalar schema. The fresh Stage 1 production run completed and passed the production-only readiness gates, but mandatory independent feature recomputation failed exact equality on 4 of 600 selected rows. The frozen fail-closed rule therefore closes Stage 1 as `STAGE1-TECHNICAL-INVALID`.
+Stage 0では、結果を見る前に宣言した8つのrepresentation familyと310-scalar schemaを独立にtechnical validationしました。
 
-A read-only postmortem localized all four differences to floating-point accumulation order in `MOVE_SET_ENTROPY.indexEntropy`. This does not authorize post-hoc tolerance, rounding, repair, or rerun of the consumed Stage 1 block.
+fresh Stage 1 production runは完了し、production-only readiness gateをすべてPASSしましたが、mandatory independent feature recomputationでは600 selected rows中4 rowsでexact equalityが成立しませんでした。
 
-## Read first
+そのため、frozen fail-closed ruleに従いStage 1は`STAGE1-TECHNICAL-INVALID`で終了しています。
 
-1. `STUDY_1_OVERVIEW.md` — concise outcome and interpretation boundary
-2. `STUDY_1_FINAL_REPORT.md` — integrated scientific/technical closure
-3. `CURRENT_STATUS.md` — terminal state and execution anchors
-4. `DECISION_REGISTER.md` — prospectively fixed and closure decisions
-5. `REPRODUCIBILITY_INDEX.md` — hashes, runs, artifacts, and provenance
+read-only postmortemでは4件すべての差を`MOVE_SET_ENTROPY.indexEntropy`のfloating-point accumulation orderへ局在させました。しかし、これを理由としてpost-hoc tolerance、rounding、repair、consumed Stage 1 blockのrerunを承認することはありません。
+
+## 最初に読む文書
+
+1. `STUDY_1_OVERVIEW.md` — 結果とinterpretation boundaryの概要
+2. `STUDY_1_FINAL_REPORT.md` — scientific / technical closureの統合記録
+3. `CURRENT_STATUS.md` — terminal stateとexecution anchor
+4. `DECISION_REGISTER.md` — prospective decisionとclosure decision
+5. `REPRODUCIBILITY_INDEX.md` — hash、run、artifact、provenance
 6. `RESEARCH_LOG.md` — chronological research record
 7. `STUDY_1_PROTOCOL.md` — prospective scientific protocol
-8. `RESUME_HERE.md` — restart/continuation boundary
+8. `RESUME_HERE.md` — restart / continuation boundary
 
-## Canonical machine-readable records
+## canonical machine-readable record
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_SOURCE_FREEZE_AUDIT.json`
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 
-Key closure checkpoints:
+Key closure checkpoint:
 
 - `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
 - `checkpoints/2026-08-29-post-closure-workflow-archive.md`
@@ -50,7 +54,7 @@ Program-level closure:
 
 - `../research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
 
-## Frozen scientific boundary
+## frozen scientific boundary
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -63,7 +67,7 @@ feature schema SHA256 = 1d9dd5e0ea42dc7bcdb7a385077397e08385fcdb4eeb695fc5625501
 high-divergence boundary = D_range >= 0.30
 ```
 
-Research Generation 1 Critical Positions evidence and all G2-01..G2-05 formal decisions remain immutable. Historical CPOB roots/outcomes/audits were not reused as G2-06 training, threshold-selection, validation, or formal evidence.
+Research Generation 1 Critical Positions evidenceとG2-01..G2-05のformal decisionはすべてimmutableです。Historical CPOB roots / outcomes / auditsは、G2-06のtraining、threshold selection、validation、formal evidenceとして再利用していません。
 
 ## Stage 1 terminal provenance
 
@@ -86,10 +90,12 @@ selected family set = RICH_ALL
 overall OOF AUROC = 0.7093403948001926
 ```
 
-These values are retained as unverified development provenance only and are not promoted to an accepted scientific result.
+これらの値はunverified development provenanceとしてのみ保持し、accepted scientific resultへ昇格しません。
 
-## Closure and future work
+## closure / future work
 
-`RCPR-STUDY1` has no further scientific transition. The consumed seed block `28610001..28613072` must not be rerun, replaced, or extended, and Stage 2 must not be authorized inside this Study.
+`RCPR-STUDY1`にはこれ以上のscientific transitionはありません。consumed seed block `28610001..28613072`をrerun、replace、extendしてはいけません。また、このStudy内でStage 2を承認してはいけません。
 
-The immediate next Research Generation 2 machine-only agenda item is `G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`, which requires its own prospective contract and fresh evidence. A future revisit of rich critical-position representation would also require a distinct independent Study identity and fresh prospective validation rather than reopening this closed Study as a generic “Study 2” rescue.
+直後のResearch Generation 2 machine-only agenda itemは`G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`であり、独自のprospective contractとfresh evidenceを必要とします。
+
+将来rich critical-position representationを再検討する場合も、closed Studyをgenericな「Study 2」として再開・救済するのではなく、distinct independent Study identityとfresh prospective validationが必要です。
