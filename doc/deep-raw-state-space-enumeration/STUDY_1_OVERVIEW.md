@@ -1,27 +1,39 @@
-# Deep RAW State-Space Enumeration Study 1 — Overview
+# G2-05 第1研究概要 — 深層RAW状態空間の完全列挙
 
 Program: **Research Generation 2 / G2-05**  
 Study ID: `DRSSE-STUDY1`  
-Status: **COMPLETE**  
-Formal decision: **`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
+状態: **完了**  
+正式判断: **`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
-## What was studied
+正式英語名: **Deep RAW State-Space Enumeration Study 1**
 
-G2-05 prospectively froze the standard Bao initial state as an authoritative RAW root and asked whether every legal forward state through depth 9 could be completely enumerated, with exact graph-state, game-tree occurrence, branching, transposition, and phase accounting.
+## 1. この研究は何を調べたのか
 
-This was bounded exact enumeration, not complete game solution or full-game size estimation.
+G2-05では、標準的なBao初期局面をauthoritative RAW rootとして結果を見る前に固定し、**depth 9までのすべての合法な前向き到達状態を完全列挙できるか**を調べました。
 
-## Representation
+同時に、次の量をexactに記録しました。
 
-RAW state identity was exactly:
+- graph上のdistinct RAW state数
+- game tree上のstate occurrence数
+- branching structure
+- transposition structure
+- phase構成
+
+これは、固定depth内でのbounded exact enumerationです。Bao全体の完全解、全状態空間サイズの確定、full-game game-tree sizeの推定ではありません。
+
+## 2. 状態表現
+
+RAW state identityは次の7項目です。
 
 ```text
 pits, reserve, houseOwned, player, phase, winner, pending
 ```
 
-`turn` and `reason` were excluded. Missing `pending` was invalid. The validated transform set remained `[]`; no symmetry reduction or canonicalization was used.
+`turn`と`reason`は除外しました。`pending`が欠けた状態は無効です。
 
-## Formal domain
+validated transform setは引き続き`[]`であり、本研究ではsymmetry reductionもcanonicalizationも使用していません。
+
+## 3. 正式評価domain
 
 ```text
 root = fresh standard engine initialState()
@@ -31,11 +43,11 @@ complete reachable layers = 0..9
 complete parent expansions = 0..8
 ```
 
-The root, depth, resource ceilings, endpoints, decision rule, representation and verifier requirement were frozen before formal outcome generation.
+root、target depth、計算資源の上限、評価項目、decision rule、state representation、independent verifier requirementは、formal outcomeを生成する前に固定しました。
 
-## Result
+## 4. 結果
 
-All frozen layers completed and the independent implementation reproduced the entire exact domain.
+固定したすべてのlayerが完全に終了し、独立実装がdomain全体を再現しました。
 
 ```text
 cumulative distinct RAW states = 102857
@@ -48,7 +60,7 @@ firstIncompleteDepth = null
 stopReason = null
 ```
 
-Depth 9 itself contained:
+depth 9単独では次の結果でした。
 
 ```text
 unique RAW states = 78009
@@ -60,7 +72,9 @@ Mtaji nonterminal = 0
 terminal = 351
 ```
 
-## Verification provenance
+この結果から、同じRAW stateへ複数経路から到達するtranspositionが存在し、game tree上のoccurrence数がdistinct RAW state数より大きくなる構造を、固定depth 9までexactに記述できました。
+
+## 5. 独立検証とprovenance
 
 ```text
 formal authorization/head = 9199a3d25ea38978673f94bfcd4250aa3b5411fa
@@ -72,10 +86,31 @@ production core = b9e79571ab2492edf717569cb331f381e4dbff603684d2e932b8b57c2ffb32
 independent core = 02e4a1fa865af977cb10c1f288c42886b32453e56a40bc85cbb0dc9975b257d3
 ```
 
-## Interpretation boundary
+Productionとindependent implementationの双方が、固定domainを完全に再構築しました。
 
-The exact decision applies **only** to the frozen standard-root depth-9 RAW domain. It does not authorize a full Bao state-space count, total game-tree complexity estimate, asymptotic extrapolation, symmetry-reduced count, or game-theoretic solution.
+## 6. 正式判断
 
-G2-04 remains `INCONCLUSIVE`; its roots and partial closures were not reused. G1 `SSGTC-STUDY1` remains independently `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` and is not revised by this Study.
+```text
+DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
+```
 
-See `STUDY_1_FINAL_REPORT.md` for the complete scientific report and `REPRODUCIBILITY_INDEX.md` for provenance and reproduction entry points.
+このexactnessは、**標準初期局面をrootとした、事前固定depth 9までのRAW-state domainの内部だけ**に適用されます。
+
+## 7. 解釈上の境界
+
+本研究は次を承認しません。
+
+- Bao全体のstate-space exact count
+- full-game game-tree complexityの総量推定
+- depth 9以降へのasymptotic extrapolation
+- symmetry-reduced count
+- canonicalized state count
+- game-theoretic solution
+
+G2-04の正式判断は引き続き`INCONCLUSIVE`であり、そのrootやpartial closureをG2-05へ再利用していません。
+
+Research Generation 1の`SSGTC-STUDY1`も、独立に`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`として維持され、G2-05によって変更されません。
+
+## 8. 詳細・再現用文書
+
+完全な科学的報告は`STUDY_1_FINAL_REPORT.md`を、source・artifact・再現手順は`REPRODUCIBILITY_INDEX.md`を参照してください。
