@@ -1,10 +1,10 @@
 # PCRPR-STUDY1 — Decision Register
 
-Updated: 2026-08-29
+更新日: 2026-08-29
 
-Entries below are prospective study-start decisions unless later superseded by an explicitly prospective pre-outcome amendment. No entry authorizes scientific execution by itself.
+本書は`PCRPR-STUDY1`のprospective decisionsとterminal decisionsを一体で保持する。既存のprospective decisionは、後続のoutcomeによって遡及変更しない。
 
-## D01 — Study identity
+## D01 — 研究識別
 
 ```text
 Program = G2-07
@@ -14,9 +14,9 @@ Baseline main = e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5
 Branch = research/g2-07-practical-comeback-reply-pressure-representation
 ```
 
-Status: **FROZEN PROSPECTIVELY**.
+Status: **FROZEN**.
 
-## D02 — Stage architecture
+## D02 — Stage構成
 
 ```text
 Stage 0 = PCRPR-S0-TECHNICAL-2026-08-29-v1
@@ -24,29 +24,17 @@ Stage 1 = PCRPR-S1-DEVELOPMENT-2026-08-29-v1
 Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 ```
 
-Stage 0 is technical-only; Stage 1 is development-only; Stage 2 is fresh formal validation only and requires a separate explicit authorization.
-
-Status: **FROZEN PROSPECTIVELY**.
-
-## D03 — Immutable upstream / no-rescue
-
-G2-01..G2-06 and all Research Generation 1 decisions remain immutable. In particular:
-
-```text
-PCEM-STUDY1 candidate audits = 55
-PCEM-STUDY1 promoted candidates = 0
-PCEM Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-RCPR Stage 1 = STAGE1-TECHNICAL-INVALID
-RCPR Stage 1 seeds 28610001..28613072 = CONSUMED
-RCPR same-block rerun/replacement/extension = NOT AUTHORIZED
-RCPR Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-```
-
-PCEM grammar expansion, near-miss promotion, threshold relaxation, opponent-policy substitution and use of historical rows as PCRPR scientific evidence are prohibited.
+Stage 0はtechnical-only、Stage 1はdevelopment-only、Stage 2はfresh formal validation専用とする。
 
 Status: **FROZEN**.
 
-## D04 — RAW-only scientific identity
+## D03 — upstream no-rescue
+
+`PCEM-STUDY1`の55 audits / promoted 0 / Stage 2 non-authorization、`RCPR-STUDY1`のStage 1 technical-invalid / consumed block / Stage 2 non-authorizationを変更しない。
+
+Status: **FROZEN IMMUTABLE BOUNDARY**.
+
+## D04 — RAW identity
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -64,44 +52,34 @@ Status: **FROZEN**.
 historical RAW root occurrence × exact root-move variant
 ```
 
-Occurrence/history provenance is additional metadata; RAW identity remains authoritative for state identity and overlap firewalls.
-
 Status: **FROZEN**.
 
 ## D06 — Construct separation
 
-The Study shall not collapse the following into one quantity:
-
-```text
-baseline reference position value
-root-move-conditioned reference value
-reply-conditioned reference value
-machine policy-conditioned continuation value
-reply-pressure structural representation
-```
+baseline reference value、root-move-conditioned value、reply-conditioned value、machine-policy continuation value、reply-pressure representationを同一constructへ統合しない。
 
 Status: **FROZEN**.
 
 ## D07 — Human-claim firewall
 
-Machine reply pressure and machine opponent-policy sensitivity do not establish human difficulty, deception, human error probability, psychological pressure or expert-perceived complexity.
+machine reply pressure / opponent-policy sensitivityをhuman difficulty、deception、human error probability、psychological pressure、expert-perceived complexityと同一視しない。
 
 Status: **FROZEN**.
 
 ## D08 — Leakage taxonomy
 
 ```text
-A PRE_ROOT_OBSERVABLE
-B ROOT_OR_REPLY_DERIVED_OUTCOME_INDEPENDENT
-C SEARCH_OR_POLICY_DISTRIBUTION_DERIVED_OUTCOME_INDEPENDENT
-D CONTINUATION_OR_FUTURE_OUTCOME_DERIVED
+A = PRE_ROOT_OBSERVABLE
+B = ROOT_OR_REPLY_DERIVED_OUTCOME_INDEPENDENT
+C = SEARCH_OR_POLICY_DISTRIBUTION_DERIVED_OUTCOME_INDEPENDENT
+D = CONTINUATION_OR_FUTURE_OUTCOME_DERIVED
 ```
 
-Only A-C are predictor-eligible. D is target/outcome-only.
+predictorはA-Cのみ。Dはtarget/outcome専用。
 
 Status: **FROZEN**.
 
-## D09 — Prospectively declared representation families
+## D09 — Representation family search space
 
 ```text
 REPLY_SET_WIDTH
@@ -118,295 +96,276 @@ LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE
 LOCAL_TEMPORAL_CONTEXT
 ```
 
-No new family may be added after Stage 1 scientific outcomes are observed.
+Stage 1 outcome後のfamily追加は禁止。
 
 Status: **FROZEN SEARCH-SPACE BOUNDARY**.
 
-## D10 — Opponent-policy-sensitivity predictor boundary
+## D10 — Opponent-policy-sensitivity boundary
 
-Predictor-side `OPPONENT_POLICY_SENSITIVITY` may use only outcome-independent reply-selection distributions or deterministic policy scores over the exact reply set. Empirical terminal outcomes under a policy are forbidden from predictor features.
+predictor側ではoutcome-independentなreply distribution / deterministic scoreのみを使用し、empirical terminal outcomeを特徴量へ入れない。
 
 Status: **FROZEN**.
 
-## D11 — G2-06 numeric hardening applicability
+## D11 — G2-06 numeric lesson
 
-PCRPR prospectively requires canonical reply/category ordering, deterministic accumulation order, explicit binary64 serialization/hash semantics, integer-like-key adversarial fixtures, reply-order permutation tests and independent exact feature recomputation before Stage 1 authorization.
-
-No RCPR outcome is rescued and no post-hoc tolerance is inherited.
+canonical reply ordering、deterministic binary64 accumulation、binary64 serialization、integer-like-key adversarial control、reply permutation control、independent exact recomputationをStage 1 authorization前に要求する。
 
 Status: **FROZEN TECHNICAL REQUIREMENT**.
 
-## D12 — Fresh Stage 1 block reservation
+## D12 — Stage 1 fresh block
 
 ```text
-source games = 3072
+games = 3072
 seeds = 28710001..28713072
 use = CONSUME-ONCE-DEVELOPMENT-ONLY
-status at study start = RESERVED / UNCONSUMED
 ```
 
-Status: **FROZEN RESERVATION**.
+Status at reservation: **RESERVED / UNCONSUMED**.
 
-## D13 — Fresh Stage 2 block reservation
+## D13 — Stage 2 fresh block
 
 ```text
 seeds = 28810001..28816144
 count = 6144
 use = FORMAL-ONLY
-status at study start = RESERVED / UNCONSUMED
 ```
 
-Stage 2 reservation does not constitute Stage 2 authorization.
+Reservationはauthorizationではない。
 
-Status: **FROZEN RESERVATION**.
+Status: **RESERVED / UNCONSUMED**.
 
-## D14 — Study-start source population baseline
+## D14 — Source population
 
-```text
-opening plies = 8
-opening = seeded uniform over lexically sorted exact move variants
-max observed ply = 100
-strata assignment = deterministic game-index modulo 6
-strata = B-D1, B-D2, B-D3, LS-D2, V2-D2, LE-D2
-root target = 400 / Namua 200 / Mtaji 200
-```
+8-ply seeded-uniform exact opening、max observed ply 100、6 generation strata `B-D1/B-D2/B-D3/LS-D2/V2-D2/LE-D2`、root target 400（Namua/Mtaji 200/200）を固定する。
 
-Exact source hashes are not yet frozen. Stage 0 resource evidence may justify an explicit pre-scientific-outcome amendment only while zero Stage 1 scientific seeds have been consumed.
+Status: **FROZEN BEFORE SCIENTIFIC EXECUTION**.
 
-Status: **PROSPECTIVE BASELINE / AMENDABLE ONLY PRE-OUTCOME**.
+## D15 — Root selection
 
-## D15 — Root selection no-replacement rule
-
-Root selection is PCRPR-target-outcome-blind. One occurrence is hash-selected within an assigned phase before the reference-disadvantage screen. Failure of that screen does not permit within-trajectory replacement. Duplicate selected RAW states are deterministically collapsed before quota.
-
-Status: **FROZEN PRINCIPLE**.
-
-## D16 — Study-start disadvantage criterion
-
-Default criterion:
-
-```text
-newly frozen PCRPR D3 exact-root bestScore < 0
-```
-
-This is an operational sign screen on fresh PCRPR rows only. It does not reuse or re-adjudicate PCEM candidate outcomes.
-
-Exact search identity/tie-breaking must pass Stage 0 and be frozen before Stage 1 scientific generation.
-
-Status: **FROZEN DEFAULT / INSTRUMENT HASH PENDING**.
-
-## D17 — Continuation target family
-
-Primary target family:
-
-```text
-medium-vs-strong bounded practical-comeback lift
-```
-
-Secondary target families:
-
-```text
-weak-vs-strong lift
-full opponent-policy outcome span
-```
-
-Exact policy identities, actor policy, horizon, replicate count, CRN/RNG binding, administrative cutoff handling and formula must be frozen before Stage 1 scientific generation.
-
-Status: **FROZEN TARGET FAMILY / NUMERIC CONTRACT PENDING**.
-
-## D18 — Consume-once boundary
-
-A scientific block becomes consumed only after explicit authorization and source/spec/hash validation, when the runner writes the execution-start record immediately before first scientific game generation.
-
-After that boundary, same-block rerun, repair, replacement, extension, favorable root replacement, post-hoc tolerance, threshold or model substitution are prohibited.
+trajectory occurrenceをphase assignment後にhash-selectし、その後D3 disadvantage (`bestScore < 0`)を評価する。失敗時のwithin-trajectory replacementは禁止。duplicate RAW stateはquota前にdeterministically collapseする。
 
 Status: **FROZEN**.
 
-## D19 — Stage 2 automatic authorization prohibited
-
-Stage 1 success does not automatically authorize Stage 2. Stage 2 requires a separately committed formal transition/spec, fresh population/firewall, exact source hashes, independent verifier and explicit authorization.
-
-Status: **FROZEN**.
-
-## D20 — Independent verifier structure
-
-Independent verification may share the authoritative Bao rule engine but may not import production PCRPR feature, serializer, aggregation, model or result-assembly helpers. It must independently reconstruct the scientific decision core as far as technically feasible.
-
-Status: **FROZEN**.
-
-## D21 — Formal vocabulary constraint
-
-PCRPR must distinguish scientific, estimability, resource, technical and authorization dispositions. Exact conjunctions will be frozen before corresponding outcomes, using current Research Generation 2 vocabulary including `CONFIRMED-WITHIN-FROZEN-REPRESENTATION-AND-POPULATION`, `NOT-CONFIRMED`, `INCONCLUSIVE`, `NON-ESTIMABLE`, `STAGE1-DEVELOPMENT-BLOCKED`, `STAGE1-TECHNICAL-INVALID`, `TECHNICAL-INVALID`, `RESOURCE-CENSORED`, and `NOT-AUTHORIZED-NOT-EXECUTED`.
-
-Status: **FROZEN TAXONOMY BOUNDARY**.
-
-## D22 — Study-start authorization state
+## D16 — Continuation / target
 
 ```text
-scientificOutcomeGenerated = false
-Stage 0 technical work = permitted after study-start freeze
-Stage 1 scientific generation = NOT AUTHORIZED
-Stage 2 scientific generation = NOT AUTHORIZED
+actor = canonical D2 best
+strong = canonical D2 best / 1 replicate
+medium = seeded D1 top3 / 16 replicates
+weak = seeded uniform exact reply / 8 replicates
+horizon = 96 post-root plies
+primary target = medium bounded-win rate - strong bounded-win indicator
 ```
 
-Status at study start: **FROZEN**.
+Status: **FROZEN**.
 
-## D23 — Stage 0 formal technical semantics
+## D17 — Model contract
 
-Before execution, Stage 0 fixed:
+5 prospectively declared family sets、ridge lambda `0.1,1,10,100`、5-fold grouped CV、pooled OOF RMSE primary、tie-aware Spearman secondary、individual scalar selectionなし、interactionなし。
+
+Status: **FROZEN**.
+
+## D18 — Consume-once rule
+
+explicit authorization + source/spec/hash validation成功後、execution-start生成時点でblockをCONSUMEDとする。以後、rerun、repair、replacement、extension、threshold/model/target/tolerance変更は禁止。
+
+Status: **FROZEN**.
+
+## D19 — Independent verifier
+
+Bao engine/AIのauthoritative semanticsは共有可能だが、PCRPR production feature/model/result helpersをimportしない別実装でdecision coreを再構築する。
+
+Status: **FROZEN**.
+
+## D20 — Stage 2 automatic authorization禁止
+
+Stage 1が成功してもStage 2を自動開始しない。
+
+Status: **FROZEN**.
+
+## D21 — Stage 0 numeric contract
 
 ```text
 search = pcrpr-exact-full-window/bao/q0/v1
-reply quality perspective = replying player
-defense-maintaining reply = exact D2 top-set membership
-strong predictor distribution = uniform D2 top set
-medium predictor distribution = uniform first min(3,N) D1-ranked replies
-weak predictor distribution = uniform exact replies
-predictor policy sensitivity = expected D2 defense gap + total-variation distances only
-```
-
-Continuation outcomes are not predictor-side policy-sensitivity features.
-
-Status: **FROZEN PRE-EXECUTION**.
-
-## D24 — Stage 0 numeric/hash contract
-
-```text
-exact move/reply aggregation order = canonical lexical exact move identity
-float arithmetic = deterministic left-to-right IEEE-754 binary64 under frozen semantic order
-scalar hash encoding = big-endian binary64 lowercase hex
-feature-vector equality = EXACT
+aggregation order = lexical exact move identity
+float = deterministic IEEE-754 binary64
+scalar encoding = big-endian binary64 lowercase hex
+feature equality = EXACT
 tolerance = none
 ```
 
-Integer-like key ordering and reply-list permutation are mandatory adversarial controls.
+Status: **FROZEN**.
 
-Status: **FROZEN PRE-EXECUTION**.
-
-## D25 — Stage 0 canonical technical result
-
-Canonical execution:
+## D22 — Stage 0 canonical decision
 
 ```text
-source commit = 19c70ba60c8b43858b01a01c5a448311660269c4
-workflow run = 33238931893 / success
-job = 99064778014 / success
+workflow = 33238931893 / success
 artifact = 9710763348
-artifact ZIP SHA256 = 408c778171973903f0f7a55ed9b468cea37a4f41e94dbfd677a682c4dadcd59b
-production gates = 18 / 18 PASS
-independent gates = 9 / 9 PASS
-rows = 9 technical rows
-feature width = 80 scalars
+production gates = 18/18 PASS
+independent gates = 9/9 PASS
+feature width = 80
+Decision = STAGE0-TECHNICAL-PASS
 ```
-
-Decision: **`STAGE0-TECHNICAL-PASS`**.
-
-The technical seed menu `28700001..28700032` is outside both scientific blocks. No scientific outcome was generated and neither Stage 1 nor Stage 2 was authorized by this result.
 
 Status: **FROZEN TECHNICAL RESULT**.
 
-## D26 — Stage 1 source/population contract
+## D23 — Pre-outcome family-set correction
 
-Before scientific generation, Stage 1 fixes:
+initial Stage 1 specの`F03_REPLY_POLICY`と`F04_ALL_NO_TEMPORAL`重複を、implementation validation、authorization、seed consumption、scientific outcomeより前に修正した。
 
-```text
-source games = 3072
-seeds = 28710001..28713072
-opening = 8-ply seeded uniform exact-move opening
-max observed ply = 100
-source strata = B-D1, B-D2, B-D3, LS-D2, V2-D2, LE-D2
-phase assignment = SHA256 parity of seed under PCRPR-S1-PHASE-v1
-occurrence selection = minimum hash rank inside assigned phase
-reference disadvantage = exact D3 bestScore < 0 after occurrence selection
-within-trajectory replacement after disadvantage failure = prohibited
-root quota = Namua 200 / Mtaji 200
-row unit = selected historical root occurrence × every exact legal root-move variant
-```
+Status: **VALID PRE-OUTCOME CORRECTION**.
 
-Status: **FROZEN PROSPECTIVELY / NOT YET AUTHORIZED**.
+## D24 — Deterministic computation contract
 
-## D27 — Stage 1 continuation and target contract
+row/feature order、target arithmetic、fold、standardization、normal equation、Cholesky、prediction、RMSE、Spearman、top-quintile、candidate selection、binary64 model serializationを固定し、independent exact result/hash matchを要求する。
+
+Status: **FROZEN PRE-OUTCOME**.
+
+## D25 — Stage 1 decision mapping
 
 ```text
-root actor policy = canonical exact D2 best
-strong opponent = canonical exact D2 best / deterministic 1 replicate
-medium opponent = seeded uniform over first min(3,N) D1-ranked replies / 16 replicates
-weak opponent = seeded uniform exact legal replies / 8 replicates
-maximum post-root horizon = 96 plies
-administrative exhaustion = recorded and boundedWin=0
-primary target = medium bounded-win rate - strong bounded-win indicator
-secondary = weak-minus-strong lift; full policy bounded-win span
+all gates + full independent verification PASS
+  -> STAGE1-DEVELOPMENT-PASS-AND-FORMAL-TARGET-AVAILABLE
+population/root/target support failure
+  -> STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+model/enrichment failure
+  -> STAGE1-DEVELOPMENT-BLOCKED-ZERO-PROMOTION
+resource ceiling failure after consumption
+  -> RESOURCE-CENSORED
+technical/integrity/independent-verification failure
+  -> STAGE1-TECHNICAL-INVALID
 ```
-
-All continuation targets are leakage class D and prohibited from predictor features.
-
-Status: **FROZEN PROSPECTIVELY / NOT YET AUTHORIZED**.
-
-## D28 — Stage 1 model-development contract
-
-Stage 1 uses deterministic ridge linear regression only, with five prospectively declared family sets, lambdas `0.1, 1, 10, 100`, no outcome-driven individual scalar feature selection and no interactions.
-
-Five-fold cross-validation is grouped by `historicalTrajectoryHash`. Primary model selection minimizes pooled OOF RMSE. Exact tie-breaking uses pooled OOF Spearman, active feature count, family-set ID and lambda in the frozen order.
 
 Status: **FROZEN PROSPECTIVELY**.
 
-## D29 — Pre-outcome Stage 1 family-set correction
+## D26 — Preauthorization validation
 
-Immediately after the first Stage 1 spec commit, self-audit found that `F03_REPLY_POLICY` accidentally duplicated `F04_ALL_NO_TEMPORAL`.
-
-Before implementation validation, explicit authorization, scientific seed consumption or scientific outcome observation, `F03_REPLY_POLICY` was narrowed to its intended reply-quality/policy-distribution family set. The correction is recorded in the machine-readable Stage 1 spec.
+以下はscientific seed consumption前にPASSした。
 
 ```text
-scientificSeedsConsumed = false
-scientificOutcomeObserved = false
+production smoke = 33240901637
+resource preflight = 33240989191
+independent exact smoke = 33241110983
+source-freeze audit = 33241372471
+source-freeze commit = eb48ecae8d5ae171175f7cc9f00c9bcc77b2c237
 ```
 
-Status: **VALID PRE-OUTCOME SPECIFICATION CORRECTION**.
+Status: **PASS**.
 
-## D30 — Stage 1 deterministic computation contract
-
-The separate computation contract fixes exact row/feature ordering, target arithmetic, fold assignment, training means/population SD, normal-equation accumulation, unpenalized intercept, ridge Cholesky loop order, forward/back substitution, prediction order, RMSE, exact-tie average-rank Spearman, top-quintile enrichment, candidate selection and binary64 model serialization.
-
-Independent verification must reproduce OOF prediction and final-parameter/result hashes exactly. No numeric tolerance is authorized.
-
-Status: **FROZEN BEFORE IMPLEMENTATION VALIDATION AND SCIENTIFIC OUTCOME**.
-
-## D31 — Stage 1 readiness and disposition rules
-
-The complete machine-readable readiness gates are frozen in `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`. They include source diversity, exact 400-root quota, row support, phase support, target variance/range/class support, administrative-horizon ceilings, OOF Spearman, relative RMSE improvement, top-quintile lift enrichment, and mandatory full independent recomputation.
-
-Disposition mapping:
+## D27 — Stage 1 explicit authorization
 
 ```text
-all gates + independent verification PASS -> STAGE1-DEVELOPMENT-PASS-AND-FORMAL-TARGET-AVAILABLE
-population/root/target support failure -> STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
-model/enrichment failure -> STAGE1-DEVELOPMENT-BLOCKED-ZERO-PROMOTION
-resource ceiling failure after consumption -> RESOURCE-CENSORED
-technical/integrity/independent-verification failure -> STAGE1-TECHNICAL-INVALID
+authorization commit = 64f0352e7d8b26432e2a68c408e403859c3e71bf
+workflow = 33241465899
+authorize-and-consume job = 99071430645 / success
 ```
 
-Stage 2 is never automatically authorized.
+Status: **AUTHORIZED AND EXECUTION STARTED**.
 
-Status: **FROZEN PROSPECTIVELY**.
+## D28 — Stage 1 consumption
 
-## D32 — Stage 1 authorization barrier remains closed
-
-Stage 1 scientific generation requires all of the following before an authorization file may be committed:
-
-1. canonical Stage 0 PASS materialized;
-2. Stage 1 spec and computation contract frozen;
-3. production implementation smoke PASS;
-4. structurally separate independent verifier smoke PASS;
-5. technical-only resource preflight PASS;
-6. exact source/blob/hash envelope frozen and audited;
-7. explicit `authorizations/STAGE_1_EXECUTE.json` commit.
-
-At this decision entry, requirements 3-6 are not yet complete.
+consume-once gate成功により:
 
 ```text
-Stage 1 seeds 28710001..28713072 = RESERVED / UNCONSUMED
-Stage 1 scientific generation = NOT AUTHORIZED
-Stage 2 scientific generation = NOT AUTHORIZED
+seeds 28710001..28713072 = CONSUMED
+same-block rerun = NOT AUTHORIZED
+repair = NOT AUTHORIZED
+replacement = NOT AUTHORIZED
+extension = NOT AUTHORIZED
 ```
 
-Status: **CURRENT FAIL-CLOSED AUTHORIZATION BARRIER**.
+Status: **IRREVERSIBLY CONSUMED**.
+
+## D29 — Production outcome disposition
+
+production job `99071451933`は計算・artifact uploadとも成功し、400 roots / 1429 rows、`F05_ALL`、`lambda=100`、support/performance gates PASSを報告した。
+
+production disposition:
+
+```text
+STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATION
+```
+
+Status: **PRODUCTION-ONLY UNVERIFIED PROVENANCE**.
+
+## D30 — Independent computation completion
+
+independent job `99071451969`のscientific replay stepは成功した。terminal stdoutは3072 games / 400 roots / 1429 rows / `F05_ALL` / `lambda=100`を報告し、development core SHA256はproductionと一致した。
+
+```text
+4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2
+```
+
+Status: **COMPUTATION COMPLETED / FULL ARTIFACT NOT PRESERVED**.
+
+## D31 — Independent artifact transport incident
+
+`actions/upload-artifact@v4`の`CreateArtifact` requestが5回連続timeoutし、full `independent-result.json`はartifactとしてmaterializeされなかった。
+
+Status: **TECHNICAL INCIDENT**.
+
+## D32 — stdout-only substitution禁止
+
+frozen final comparerはsource corpus、selection、rows、measurements、compact rows、development core、model、final model、readinessをfull objectsからexact比較する契約である。terminal stdoutのcore hash一致をfull verificationの代替にしない。
+
+Status: **NO POST-OUTCOME RELAXATION**.
+
+## D33 — Final comparer未実行
+
+required independent artifactが存在しないためfinal-verification job `99096549383`はskippedとなった。
+
+```text
+mandatory full independent verification = INCOMPLETE
+```
+
+Status: **FAIL-CLOSED**.
+
+## D34 — Stage 1 final decision
+
+prospectively frozen decision mappingをそのまま適用する。
+
+```text
+Stage 1 = STAGE1-TECHNICAL-INVALID
+```
+
+これはrepresentationのscientific rejectionではなく、mandatory full independent verification contractを満たせなかったtechnical-invalid closureである。
+
+Status: **FINAL / IMMUTABLE FOR PCRPR-STUDY1**.
+
+## D35 — Production metricsの扱い
+
+`F05_ALL`、`lambda=100`、OOF metrics、top-quintile enrichment、support/performance PASSはprovenanceとfuture hypothesis generationにのみ使用可能。validated representation/modelまたはaccepted scientific evidenceとして使用しない。
+
+Status: **UNVERIFIED PROVENANCE ONLY**.
+
+## D36 — Stage 2 closure
+
+```text
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+seeds 28810001..28816144 = RESERVED / UNCONSUMED
+```
+
+Stage 1 production signalを理由にStage 2を例外authorizationしない。
+
+Status: **FINAL NON-AUTHORIZATION**.
+
+## D37 — Study closure
+
+```text
+PCRPR-STUDY1 = CLOSED
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+same-study result-driven retry = NOT AUTHORIZED
+```
+
+Status: **CLOSED**.
+
+## D38 — main integration
+
+本closureはresearch branch上で行う。mainへのmergeは別の明示的指示があるまで実施しない。
+
+```text
+main integration = NOT PERFORMED
+```
+
+Status: **HELD FOR EXPLICIT INTEGRATION DECISION**.
