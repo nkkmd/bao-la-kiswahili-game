@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "program": "G2-08",
+  "studyId": "MDFT-STUDY1",
+  "stageId": "MDFT-S1-DEVELOPMENT-2026-08-29-v1",
+  "purpose": "FRESH_DEVELOPMENT_TAXONOMY_CONSTRUCTION",
+  "seedStart": 28910001,
+  "seedEnd": 28914096,
+  "count": 4096,
+  "status": "RESERVED_UNCONSUMED",
+  "reservationIsAuthorization": false,
+  "consumeOnce": true,
+  "sameBlockRerunAuthorized": false,
+  "repairAuthorized": false,
+  "replacementAuthorized": false,
+  "extensionAuthorized": false,
+  "scientificGenerationAuthorized": false,
+  "prerequisitesBeforeAuthorization": [
+    "stage0-technical-pass",
+    "stage1-exact-spec-freeze",
+    "source-hash-freeze",
+    "independent-verifier-readiness",
+    "resource-preflight",
+    "artifact-preservation-preflight",
+    "explicit-authorization"
+  ]
+}
