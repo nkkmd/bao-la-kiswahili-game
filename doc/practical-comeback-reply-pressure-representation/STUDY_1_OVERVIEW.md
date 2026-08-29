@@ -15,7 +15,7 @@ Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 
 日本語研究題目:
 
-> **Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・事前規定検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
+> **Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・prospective検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
 
 ## この研究は何を調べたのか
 
