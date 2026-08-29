@@ -1,10 +1,10 @@
-# DRSSE-STUDY1 — Current Status
+# DRSSE-STUDY1 — 現在の状態
 
-Updated: 2026-08-28  
+更新日: 2026-08-28  
 Program: `G2-05` / Research Generation 2  
 Study: `DRSSE-STUDY1` — Deep RAW State-Space Enumeration Study 1
 
-## Status
+## 状態
 
 **STUDY COMPLETE / MAIN INTEGRATION COMPLETE — `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
@@ -29,7 +29,7 @@ firstIncompleteDepth = null
 stopReason = null
 ```
 
-Independent verification completed successfully, including full exact re-enumeration of the frozen depth-9 domain.
+frozen depth-9 domain全体について、full exact re-enumerationを含むindependent verificationが成功しています。
 
 Canonical Stage 2 provenance:
 
@@ -41,7 +41,7 @@ artifact = 9679860509
 artifact ZIP SHA256 = cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4ca4a71e
 ```
 
-## Repository integration
+## repository integration
 
 ```text
 PR = #71
@@ -51,16 +51,18 @@ merge commit = 8d024c5a6b5114eefbab8fb23d54582d149b85f3
 integrated branch = main
 ```
 
-All five final PR workflows passed on the final research head. Both automated review threads were dispositioned and resolved before merge. The post-review audit did not alter or rerun the frozen Stage 2 formal source or evidence.
+final research head上で5件すべてのfinal PR workflowがPASSしました。automated review thread 2件もmerge前にdisposition / resolve済みです。
 
-## Immutable boundaries
+post-review auditではfrozen Stage 2 formal sourceやevidenceを変更・再実行していません。
 
-- G2-01 remains `INCONCLUSIVE`.
-- G2-02 remains `INCONCLUSIVE`.
-- G2-03 remains `INCONCLUSIVE`; validated transform set remains `[]` and canonicalization is not authorized.
-- G2-04 remains `INCONCLUSIVE`; G2-05 is not its rescue.
-- G1 SSGTC remains `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`.
-- No full-game state-space or game-tree estimate is authorized by G2-05.
-- Full-game extrapolation remains future prospective work, including G2-12.
+## 変更しない境界
 
-G2-05 scientific outcome generation is closed. Subsequent work must proceed as a new prospective Study/version where required.
+- G2-01は`INCONCLUSIVE`のままです。
+- G2-02は`INCONCLUSIVE`のままです。
+- G2-03は`INCONCLUSIVE`のままです。validated transform set=`[]`、canonicalization未承認も変更しません。
+- G2-04は`INCONCLUSIVE`のままです。G2-05はそのrescueではありません。
+- G1 SSGTCは`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`のままです。
+- G2-05からfull-game state-space / game-tree estimateを主張することは承認されていません。
+- full-game extrapolationはG2-12を含む将来のprospective workです。
+
+G2-05 scientific outcome generationは終了しています。追加研究が必要な場合は、必要に応じて新しいprospective Study / versionとして実施します。

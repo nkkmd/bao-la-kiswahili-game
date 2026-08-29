@@ -1,7 +1,7 @@
-# PCRPR-STUDY1 — Reproducibility Index
+# PCRPR-STUDY1 — 再現性索引
 
-更新日: 2026-08-29
-Status: **CLOSED / STAGE1-TECHNICAL-INVALID / MAIN NOT INTEGRATED**
+更新日: 2026-08-29  
+状態: **CLOSED / STAGE1-TECHNICAL-INVALID / MAIN INTEGRATED**
 
 ## Study anchor
 
@@ -16,7 +16,7 @@ Stage 1 = PCRPR-S1-DEVELOPMENT-2026-08-29-v1
 Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 ```
 
-## Canonical closure records
+## canonical closure記録
 
 - `STUDY_1_FINAL_REPORT.md`
 - `CURRENT_STATUS.md`
@@ -40,7 +40,7 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-## Stage 0
+## Stage 0 — technical validation
 
 ```text
 source commit = 19c70ba60c8b43858b01a01c5a448311660269c4
@@ -53,7 +53,7 @@ production gates = 18/18 PASS
 independent gates = 9/9 PASS
 ```
 
-Frozen Stage 0 Git blobs:
+固定済みStage 0 Git blob:
 
 ```text
 protocol = b633eb40cfdb95de1f546bba951c425da768e8d3
@@ -63,7 +63,7 @@ independent = 7b00e2a579ce868a495ad4425f928266a0b4969d
 workflow = 0a7c83a0c658aba44633d88b7b3b434ebe7b80c3
 ```
 
-## Stage 1 frozen contract
+## Stage 1 — 固定済みcontract
 
 ```text
 spec SHA256 = 15aff7a35c7875c16a815ae0323b3726714b36941ce53ce4788f8947700b2f2c
@@ -73,7 +73,7 @@ source-freeze commit = eb48ecae8d5ae171175f7cc9f00c9bcc77b2c237
 source-freeze workflow = 33241372471 / PASS
 ```
 
-Preauthorization:
+scientific seed消費前のvalidation:
 
 ```text
 production smoke = 33240901637 / PASS
@@ -81,7 +81,7 @@ resource preflight = 33240989191 / PASS
 independent exact smoke = 33241110983 / PASS
 ```
 
-## Authorization and consume-once record
+## authorizationとconsume-once記録
 
 ```text
 authorization commit = 64f0352e7d8b26432e2a68c408e403859c3e71bf
@@ -92,7 +92,7 @@ execution-start ZIP SHA256 = cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e8
 Stage 1 seeds 28710001..28713072 = CONSUMED
 ```
 
-## Production artifact
+## production artifact
 
 ```text
 job = 99071451933 / success
@@ -107,9 +107,9 @@ compact rows SHA256 = b3fcd1a0484444c35ee3def141941ed743a6527a5647c8fd71f6c96928
 development core SHA256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2
 ```
 
-Production output is retained as unverified provenance only.
+production outputは、独立検証を完了したscientific resultではなく、unverified provenanceとしてのみ保持する。
 
-## Independent replay provenance
+## independent replay provenance
 
 ```text
 job = 99071451969
@@ -120,15 +120,15 @@ reported independent result SHA256 = db7358d1308481fd4d9645fbffd79a319603ea7debd
 reported development core SHA256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2
 ```
 
-The development-core stdout hash matched production, but this is not a substitute for the frozen full-object comparison.
+terminal stdout上のdevelopment-core hashはproductionと一致した。ただし、これは事前固定したfull-object comparisonの代替にはならない。
 
-Failure:
+artifact保存の失敗:
 
 ```text
 actions/upload-artifact CreateArtifact timeout after 5 attempts
 ```
 
-## Final verification
+## 最終verification
 
 ```text
 job = 99096549383
@@ -137,13 +137,13 @@ mandatory full independent artifact = unavailable
 frozen final comparer executed = false
 ```
 
-Final decision:
+最終decision:
 
 ```text
 STAGE1-TECHNICAL-INVALID
 ```
 
-## Scientific/authorization state
+## scientific / authorization state
 
 ```text
 scientificInferenceAuthorized = false
@@ -154,16 +154,19 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
 ```
 
-## Reproduction boundary
+## 再現時の境界
 
-PCRPR-STUDY1を再現する際、consumed Stage 1 blockを再生成してaccepted resultを作り直してはならない。canonical reproduction targetはGit history、frozen specs/hashes、production artifact provenance、independent job logs、terminal closure recordsである。
+PCRPR-STUDY1を再現する際、消費済みStage 1 blockを再生成してaccepted resultを作り直してはならない。canonical reproduction targetはGit history、frozen specs/hashes、production artifact provenance、independent job logs、terminal closure recordsである。
 
-Artifact transportを改善した再研究は、別Study identity・fresh seeds・新しいprospective artifact-preservation contractを必要とする。
+artifact transportを改善した再研究は、別Study identity、fresh seeds、新しいprospective artifact-preservation contractを必要とする。
 
-## main integration
+## main統合
 
 ```text
 main integration = COMPLETE
-merge PR = #77
-merge commit = 57f7cf2d58f0543082434cb4c3259e26e90fe02e
+research merge PR = #77
+research merge commit = 57f7cf2d58f0543082434cb4c3259e26e90fe02e
+post-main closure PR = #78
 ```
+
+PR #78はpost-mainのdocumentation/provenance整合を行ったmaintenanceであり、Stage 1 decision、seed消費状態、Stage 2 non-authorizationを変更していない。

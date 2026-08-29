@@ -1,83 +1,83 @@
-# PEOCR-STUDY1 — Research Log
+# PEOCR-STUDY1 — 研究ログ
 
-## 2026-08-26 — Study initiation
+## 2026-08-26 — Study開始
 
-- remote `main` reacquired: `9e9cb6e2525f09a873e741db9f8fa42696839fbe`
+- remote `main`を再取得: `9e9cb6e2525f09a873e741db9f8fa42696839fbe`
 - open PR audit: none
-- G2-01 selected as first Research Generation 2 Study
-- new branch created: `research/g2-01-position-evaluation-empirical-outcome-calibration-replication`
-- Research Generation 1 PEC final report audited
-- PEC Stage 2 estimability failure mechanism audited
-- formal title assigned
-- Study ID `PEOCR-STUDY1` assigned
-- Stage IDs assigned
-- Stage 0/1/2 contracts prospectively frozen
+- Research Generation 2の最初のStudyとしてG2-01を選択
+- 新branchを作成: `research/g2-01-position-evaluation-empirical-outcome-calibration-replication`
+- Research Generation 1 PEC final reportをaudit
+- PEC Stage 2 estimability failure mechanismをaudit
+- formal titleを確定
+- Study ID `PEOCR-STUDY1`を確定
+- Stage IDを確定
+- Stage 0 / 1 / 2 contractをprospectiveに固定
 - Stage 1 = 2,048 fresh development games
 - Stage 2 = 8,192 fresh formal games
-- strict Stage 1→2 trajectory/opening/RAW-state firewall retained
-- phase-stratified isotonic PAVA fixed as the only primary development family
-- prediction clipping `[0.01,0.99]` frozen before outcomes
-- Brier + log-loss paired skill formal criteria frozen
-- Research Generation 1 Brier maxima retained only as prospective replication targets
-- calibration slope/intercept, reliability bins, ECE, raw-score AUC required as diagnostics
-- no scientific outcome generated
-- Stage 1/2 generation remain unauthorized
+- strict Stage 1→2 trajectory / opening / RAW-state firewallを維持
+- phase-stratified isotonic PAVAを唯一のprimary development familyとして固定
+- outcome確認前にprediction clipping `[0.01,0.99]`を固定
+- Brier + log-loss paired skill formal criteriaを固定
+- Research Generation 1 Brier maximaはprospective replication targetとしてのみ保持
+- calibration slope / intercept、reliability bins、ECE、raw-score AUCを必須diagnosticとした
+- scientific outcomeは未生成
+- Stage 1 / 2 generationは未承認
 
-Next scientific action is Stage 0 technical implementation and validation. Failure at Stage 0 does not authorize relaxing the formal Study contract; a material contract change would require a new prospective version before scientific generation.
+次のscientific actionはStage 0 technical implementation / validationです。Stage 0 failureを理由にformal Study contractを緩和してはいけません。material contract changeが必要な場合はscientific generation前に新しいprospective versionを必要とします。
 
 ## 2026-08-27 — Stage 1 complete development run
 
-- first authorized run `32971272256` stopped at 1536/2048 solely due to a 120-minute administrative Actions ceiling; partial artifact retained for provenance only
-- execution ceiling changed to 360 minutes without changing any scientific source hash or contract element
-- recovery run `33017663172` completed successfully
-- 2048/2048 fresh games generated from the original fixed seed range
-- independent verifier replayed all 2048 games
+- 最初のauthorized run `32971272256`は120-minute administrative Actions ceilingだけを理由として1536/2048で停止。partial artifactはprovenance用にのみ保持
+- scientific source hashやcontract elementを変更せずexecution ceilingだけを360 minutesへ変更
+- recovery run `33017663172`が成功
+- original fixed seed rangeから2048/2048 fresh gamesを生成
+- independent verifierが全2048 gamesをreplay
 - replay mismatches = 0; measurement mismatches = 0
 - unique historical trajectories = 1602
 - selected unique RAW states = 1547 (Namua 806; Mtaji 741)
 - administrative truncation rate = 0
-- all Stage 1 readiness gates passed
+- Stage 1 readiness gateはすべてPASS
 - Stage 1 decision = `MODEL-FROZEN-DEVELOPMENT`
 - frozen PAVA mapping SHA-256 = `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
-- Stage 2 remains unauthorized pending its own technical smoke and exact authorization freeze
+- Stage 2は独自technical smokeとexact authorization freezeが完了するまで未承認
 
 ## 2026-08-27 — Stage 2 technical smoke
 
-- Stage 2 production, independent verifier and formal evaluator implementations completed before formal outcomes
-- Stage 1 reference universe manifest frozen: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
-- execution sharding frozen prospectively as 8 contiguous shards × 1024 games
-- technical smoke run `33037897038` completed successfully
+- formal outcome前にStage 2 production、independent verifier、formal evaluator implementationを完了
+- Stage 1 reference universe manifestを固定: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
+- execution shardingを8 contiguous shards ×1024 gamesとしてprospectiveに固定
+- technical smoke run `33037897038`が成功
 - production smoke PASS; independent smoke verification PASS
-- no Stage 2 scientific seed used; no formal inference performed
-- Stage 2 scientific generation remains unauthorized pending explicit source-bound authorization
+- Stage 2 scientific seedは未使用、formal inferenceも未実施
+- explicit source-bound authorizationまでStage 2 scientific generationは未承認
 
-## 2026-08-27 — Stage 2 formal replication and closure
+## 2026-08-27 — Stage 2 formal replication / closure
 
 - source-bound formal authorization commit `5d1b4a40ef95ac639787aa0abf040a455c3c2995`
-- formal workflow run `33038132423` completed successfully
-- 8 fixed shards × 1024 = 8192/8192 scientific games generated
-- all 8 shard independent replay verifications passed
-- merged fixed population audit passed
+- formal workflow run `33038132423`が成功
+- 8 fixed shards ×1024 = 8192/8192 scientific gamesを生成
+- 8 shardすべてのindependent replay verificationがPASS
+- merged fixed population auditがPASS
 - trajectories before firewall = 4714; Stage 1 trajectory overlap excluded = 816; opening overlap excluded = 0
-- trajectories after trajectory/opening firewall = 3898
+- trajectory / opening firewall後 trajectories = 3898
 - Stage 1 RAW-state observations excluded = 4765
 - selected unique RAW states = 3570 (Namua 1823; Mtaji 1747)
-- independent selection/measurement verification passed; measurement mismatches = 0; final overlap = `0 / 0 / 0`
+- independent selection / measurement verification PASS; measurement mismatches = 0; final overlap = `0 / 0 / 0`
 - failed estimability gates = trajectories 3898<4500; RAW states 3570<4000; Mtaji 1747<1750
-- formal decision = `INCONCLUSIVE`; primary formal branch not entered; canonical `primary = null`
-- no rescue/extension/replacement/refit/threshold relaxation performed
-- Study scientific closure complete
+- formal decision = `INCONCLUSIVE`; primary formal branchには入らずcanonical `primary = null`
+- rescue / extension / replacement / refit / threshold relaxationは未実施
+- Study scientific closure完了
 
 ## 2026-08-27 — Repository integration
 
-- final cross-document and CI audit completed
+- final cross-document / CI audit完了
 - G2-01 calibration replication contract: PASS
 - Second-generation research agenda audit: PASS
-- SSGTC closure consistency audit: PASS after synchronizing its stale agenda-version assertion to the already-authoritative Version 2.0.0
+- SSGTC closure consistency audit: authoritative Version 2.0.0へstale agenda-version assertionを同期後PASS
 - PCEM closure consistency audit: PASS
 - Phase Transition Research CI: PASS
-- PR #67 marked ready for review
-- expected research head verified as `6e64cd5bb252eab40c2608fc88562ba7371b2602`
-- PR #67 merged into `main`
+- PR #67をready for reviewへ変更
+- expected research head `6e64cd5bb252eab40c2608fc88562ba7371b2602`を確認
+- PR #67を`main`へmerge
 - integration merge commit = `12ce1f5f212349cc827147adcb5de8e7eadb98f3`
-- repository integration did not alter the scientific decision, canonical artifacts, gates, or interpretation boundaries
+- repository integrationによってscientific decision、canonical artifact、gate、interpretation boundaryは変更されていない

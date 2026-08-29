@@ -1,17 +1,21 @@
-# Position Evaluation / Empirical Outcome Calibration Replication Study 1 — Overview
+# G2-01 第1研究概要 — 形勢評価と実現勝敗の校正再検証
 
-Program label: `G2-01`
-Study ID: `PEOCR-STUDY1`
-Research Generation: **Research Generation 2**
-Status: **COMPLETE / formal decision `INCONCLUSIVE`**
+Program label: `G2-01`  
+Study ID: `PEOCR-STUDY1`  
+研究世代: **Research Generation 2**  
+状態: **完了 / 正式判断 `INCONCLUSIVE`**
 
-## 何を調べたか
+正式英語名: **Position Evaluation / Empirical Outcome Calibration Replication Study 1**
 
-Research Generation 1のPosition Evaluation / Win-Rate Calibration Study 1 (`PEC-STUDY1`) は、strict identity firewall後のformal populationが事前estimability gateへ届かず`INCONCLUSIVE`で閉じた。本Studyはそのdecisionを変更・救済せず、新しいfresh populationとStudy IDを用いて、actor-relative static Bao evaluationとempirical continuation outcomeのheld-out calibrationを再検証した。
+## 1. この研究は何を調べたのか
 
-研究とAI engineeringは分離し、public Bao AIの棋力、deployment、AI generation promotionはscientific endpointにしていない。
+Research Generation 1のPosition Evaluation / Win-Rate Calibration Study 1（`PEC-STUDY1`）は、厳格な状態同一性によるデータ分離後の正式評価対象集団が、事前に固定した推定可能性の条件へ届かなかったため、`INCONCLUSIVE`で終了しました。
 
-## 設計
+G2-01はその判断を変更・救済する研究ではありません。新しいStudy IDと、新たに生成した独立集団を用い、**手番側から見たBaoの静的評価値と、その局面から実際に得られる継続対局の勝敗との対応関係を、未使用の独立検証データで再検証できるか**を調べました。
+
+研究とAI Engineeringは分離しており、公開Bao AIの棋力、公開環境への反映、AI世代の昇格は本研究の科学的評価項目ではありません。
+
+## 2. 研究設計
 
 ```text
 Stage 0 = technical validation
@@ -24,38 +28,58 @@ formal clipping = [0.01, 0.99]
 Stage 2 refit = forbidden
 ```
 
-Stage 1は全readiness gateを通過し、`MODEL-FROZEN-DEVELOPMENT`としてPAVA mappingをfreezeした。
+Stage 1では2,048局の開発用データを使用しました。すべての実行準備条件を満たしたため、phase別のisotonic PAVA mappingを`MODEL-FROZEN-DEVELOPMENT`として固定し、Stage 2では再学習しないことを事前に確定しました。
 
-## Stage 2の結果
+Stage 1とStage 2の間では、trajectory、opening prefix、authoritative RAW stateの3層でデータ分離規則を適用しました。
 
-8,192/8,192局を固定8 shardで生成し、全shardを独立replayした。統合後のselection/measurementも独立verificationをPASSし、Stage 1とのcross-stage overlapはtrajectory / opening-prefix / RAW-stateすべて0だった。
+## 3. Stage 2の結果
 
-しかし、事前固定したestimability gateのうち3項目が未達だった。
+Stage 2では、8,192/8,192局を固定した8 shardで生成し、すべてのshardを独立にreplayしました。統合後の局面選択と測定についても独立検証を行い、Stage 1との重複はtrajectory / opening-prefix / RAW-stateのすべてで0でした。
 
-| Gate | observed | required | result |
+しかし、事前に固定した推定可能性の判定条件のうち3項目を満たしませんでした。
+
+| 判定条件 | 観測値 | 必要値 | 結果 |
 | --- | ---: | ---: | --- |
-| unique historical trajectories after Stage 1 firewall | 3,898 | >= 4,500 | FAIL |
-| selected unique RAW states | 3,570 | >= 4,000 | FAIL |
+| Stage 1との分離後に残ったunique historical trajectories | 3,898 | >= 4,500 | FAIL |
+| 選択されたunique RAW states | 3,570 | >= 4,000 | FAIL |
 | Namua selected states | 1,823 | >= 1,750 | PASS |
 | Mtaji selected states | 1,747 | >= 1,750 | FAIL |
 
-Mtajiは3 state不足だったが、追加seed、replacement、gate relaxationは事前に禁止されているため実施していない。
+Mtajiは必要数に3 state届きませんでした。ただし、結果を見た後の追加seed、対象のreplacement、判定条件の緩和は事前に禁止していたため実施していません。
 
-## Formal decision
+## 4. 正式判断
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
 ```
 
-これはcalibration modelが`NOT-CONFIRMED`だったことを意味しない。estimability gateが全PASSしなかったため、co-primary Brier skill / log-loss skillとBrier maximaによるformal success criteriaには入っておらず、canonical resultでは`primary = null`である。
+これは、校正modelが`NOT-CONFIRMED`だったという意味ではありません。
 
-## 解釈境界
+推定可能性の判定条件をすべて満たさなかったため、co-primary Brier skill / log-loss skillとBrier maximaによる正式な成功判定そのものへ進んでいません。canonical resultでは`primary = null`です。
 
-本結果からgame-theoretic winning probability、人間の形勢認知、因果効果、public AI品質、別population/search policyへの一般化は主張しない。
+したがって、本研究から主要校正仮説を肯定または否定する正式判断は行いません。
 
-同じStage 2 dataへの追加game、seed extension、identity-overlap replacement、gate relaxation、mapping refit、favorable subgroupによるformal救済は行わない。再検証する場合は新しいprospective Study / versioned protocolとfresh evidenceを必要とする。
+## 5. 何が分かり、何が分からなかったか
 
-## 詳細
+本研究では、8,192局の独立Stage 2 corpusを生成・検証し、Stage間の重複がないことまで確認できました。一方で、事前に要求した正式評価対象数を満たせなかったため、校正性能の主要評価を正式判断へ使用できませんでした。
+
+`INCONCLUSIVE`は「校正関係が存在しない」という意味ではなく、**この事前規定の設計では正式に判定可能な条件が揃わなかった**ことを表します。
+
+## 6. 解釈上の境界
+
+本結果から、次のことは主張しません。
+
+- game-theoretic winning probability
+- 人間による形勢認知
+- 因果効果
+- 公開Bao AIの品質
+- 別populationや別search policyへの一般化
+
+また、同じStage 2 dataに対する追加game、seed extension、identity-overlap replacement、判定条件の緩和、mappingの再学習、都合のよいsubgroupによる正式判断の救済は行いません。
+
+再検証する場合は、新しいprospective Studyまたは明示的にversion管理された新protocolと、新しい独立証拠が必要です。
+
+## 7. 詳細・再現用文書
 
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
 - [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)

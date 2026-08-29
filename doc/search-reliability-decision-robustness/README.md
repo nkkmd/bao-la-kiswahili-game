@@ -1,16 +1,18 @@
-# Search Reliability / Decision Robustness Study 1
+# G2-02 — 探索信頼性と意思決定頑健性
 
-`G2-02` / `SRDR-STUDY1` is a completed Research Generation 2 prospective independent Study.
+`G2-02` / `SRDR-STUDY1`は完了済みのResearch Generation 2 prospective independent Studyです。
 
-Formal decision:
+正式判断:
 
 ```text
 INCONCLUSIVE
 ```
 
-The Stage 2 search measurements and independent verification succeeded, but one preregistered estimability gate failed by 10 unique trajectories (`1040 < 1050`). The primary formal criterion was therefore not evaluated (`null`) and the result is not `NOT-CONFIRMED`.
+Stage 2のsearch measurementとindependent verificationは成功しましたが、事前登録したestimability gateの1件がunique trajectoriesで10不足しました（`1040 < 1050`）。
 
-## Reading order
+そのためprimary formal criterionは評価されず`null`であり、結果は`NOT-CONFIRMED`ではありません。
+
+## 読む順序
 
 1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
 2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
@@ -19,6 +21,10 @@ The Stage 2 search measurements and independent verification succeeded, but one 
 5. [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md)
 6. [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
 
-## Boundary
+## 境界
 
-Higher-resource search is a frozen comparison reference, not game-theoretic truth. This Study does not validate human difficulty, engine correctness, optimal play, empirical win probability or public AI strength. The `INCONCLUSIVE` result cannot be rescued by extending the same Stage 2 seed block or relaxing the failed gate.
+higher-resource searchはfrozen comparison referenceであり、game-theoretic truthではありません。
+
+本Studyはhuman difficulty、engine correctness、optimal play、empirical win probability、public AI strengthをvalidateしません。
+
+`INCONCLUSIVE` resultを、同じStage 2 seed blockのextensionやfailed gateのrelaxationで救済することはできません。

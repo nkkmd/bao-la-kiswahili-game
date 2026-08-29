@@ -1,18 +1,18 @@
-# STSCV-STUDY1 — Research Log
+# STSCV-STUDY1 — 研究ログ
 
 ## 2026-08-28 — Study-start repository audit
 
-Observed remote `main`:
+observed remote `main`:
 
 ```text
 a8493d2a50e11f15d16ef8348f2442b262ca275d
 ```
 
-This exactly matched the user-provided post-G2-02 integration/provenance anchor.
+これはhandoffで示されたpost-G2-02 integration / provenance anchorとexactに一致しました。
 
-Open PR audit returned zero open PRs.
+open PR auditは0件でした。
 
-Residual G2 branches:
+Residual G2 branch:
 
 ```text
 research/g2-01-position-evaluation-empirical-outcome-calibration-replication: ahead 0 / behind 78
@@ -20,13 +20,13 @@ research/g2-01-stage1-implementation-backup: ahead 0 / behind 119
 research/g2-02-search-reliability-decision-robustness: ahead 0 / behind 7
 ```
 
-Conclusion: no active/unmerged competing Research Generation 2 work was found.
+結論: active / unmergedなcompeting Research Generation 2 workはありませんでした。
 
-## 2026-08-28 — Required scientific-state reconstruction
+## 2026-08-28 — required scientific-state reconstruction
 
-Read and reconciled the Research Generation 2 agenda/governance, G2-01/G2-02 closure documents, SIP-STUDY1, ORISC-STUDY1, REWR-STUDY1, SSGTC-STUDY1, root README, and RULES_BASELINE.
+Research Generation 2 agenda / governance、G2-01 / G2-02 closure document、SIP-STUDY1、ORISC-STUDY1、REWR-STUDY1、SSGTC-STUDY1、root README、RULES_BASELINEを読み、整合を確認しました。
 
-Immutable boundaries recorded:
+記録したimmutable boundary:
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -37,9 +37,9 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 validated transform set = []
 ```
 
-## 2026-08-28 — Study identity and stage freeze
+## 2026-08-28 — Study identity / Stage freeze
 
-Formal Study identity fixed prospectively:
+Formal Study identityをprospectiveに固定:
 
 ```text
 Agenda = G2-03
@@ -47,7 +47,7 @@ Study ID = STSCV-STUDY1
 Formal title = State Transformation Semantics / Canonicalization Validation Study 1
 ```
 
-Stage IDs fixed:
+Stage IDを固定:
 
 ```text
 STSCV-S0-TECHNICAL-2026-08-28-v1
@@ -55,38 +55,38 @@ STSCV-S1-DEVELOPMENT-2026-08-28-v1
 STSCV-S2-FORMAL-2026-08-28-v1
 ```
 
-No scientific outcome existed at this point.
+この時点ではscientific outcomeは存在していませんでした。
 
-## 2026-08-28 — Representation design decision
+## 2026-08-28 — representation design decision
 
-Authoritative state identity retained as RAW-only:
+Authoritative state identityはRAW-onlyを維持:
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-A key G2-03 design distinction was fixed prospectively: exact rule-semantic isomorphism does not automatically imply authorization for fixed-start reachable-population canonicalization. Domain/reachability closure must be separately demonstrated.
+G2-03で重要なdesign distinctionをprospectiveに固定しました。exact rule-semantic isomorphismが成立しても、fixed-start reachable-population canonicalizationが自動的に承認されるわけではありません。domain / reachability closureを別途示す必要があります。
 
 ## 2026-08-28 — Stage 0 technical validation
 
-Stage 0 reconstructed the current engine representation/transformation semantics and established separate production and independent technical paths.
+Stage 0ではcurrent engine representation / transformation semanticsを再構築し、productionとindependentのtechnical pathを分離しました。
 
-The technical instrument contract covered:
+technical instrument contract:
 
-- authoritative RAW serialization;
-- exact move identity including Namua `moveVariants`;
-- transform and inverse handling;
-- legal-move-set comparison;
-- successor binding;
-- terminal/winner/pending semantics;
-- IDENTITY positive control;
-- deliberately broken LR negative control.
+- authoritative RAW serialization
+- Namua `moveVariants`を含むexact move identity
+- transform / inverse handling
+- legal-move-set comparison
+- successor binding
+- terminal / winner / pending semantics
+- IDENTITY positive control
+- deliberately broken LR negative control
 
-Stage 0 remained non-scientific and produced no candidate decision.
+Stage 0はnon-scientificでありcandidate decisionを生成していません。
 
-## 2026-08-28 — Stage 1 prospective development freeze and execution
+## 2026-08-28 — Stage 1 prospective development freeze / execution
 
-Stage 1 was authorized only after its candidate contract, population/selection rules, source hashes, and development role were frozen.
+candidate contract、population / selection rule、source hash、development roleを固定した後にのみStage 1を承認しました。
 
 Fresh development population:
 
@@ -108,7 +108,7 @@ measurementSha256 = bae92c61d3a9736130da6d80a3ea6a6a7597d8277cfe362b13127749b7b7
 formalCandidateDecisionsAuthorized = false
 ```
 
-Three non-identity candidates were retained for a later held-out formal stage:
+held-out formal Stageで検証するnon-identity candidateとして3件を保持しました。
 
 ```text
 STSCV-T01-SEAT-SWAP-LOCAL
@@ -116,11 +116,11 @@ STSCV-T02-LR-MTAJI-HOUSELESS
 STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS
 ```
 
-All 72 Stage 1 selected trajectory identities, opening-prefix identities, and RAW-state identities were prospectively consumed for the Stage 2 firewall. Stage 1 outcomes were not formal validation evidence.
+72件すべてのStage 1 selected trajectory identity、opening-prefix identity、RAW-state identityをStage 2 firewall用にprospectiveにconsumedとしました。Stage 1 outcomeはformal validation evidenceではありません。
 
 ## 2026-08-28 — Stage 2 prospective freeze
 
-A new Stage 2 formal contract was frozen before any Stage 2 scientific outcome existed.
+Stage 2 scientific outcomeが存在する前にformal contractを固定しました。
 
 ```text
 seed block = 26032001..26032768
@@ -133,9 +133,9 @@ replacement outside seed block = false
 seed extension after outcome = false
 ```
 
-Formal global gates were frozen as S2-G1..S2-G6. Mandatory production/independent agreement was S2-G5.
+Formal global gateをS2-G1..S2-G6として固定しました。mandatory production / independent agreementはS2-G5です。
 
-The global failure rule was also frozen prospectively:
+global failure ruleもprospectiveに固定しました。
 
 ```text
 if any global gate does not PASS:
@@ -145,11 +145,11 @@ if any global gate does not PASS:
   scientific mismatch interpretation = not authorized
 ```
 
-## 2026-08-28 — Stage 2 firewall hardening before authorization
+## 2026-08-28 — authorization前のStage 2 firewall hardening
 
-Initial prefreeze audit exposed a provenance weakness: the Stage 1 compact result's stored `selectionSha256` was being trusted rather than recomputed from its selected-root identities.
+initial prefreeze auditでprovenance weaknessを発見しました。Stage 1 compact resultのstored `selectionSha256`をselected-root identityから再計算せず信用していました。
 
-Because no Stage 2 scientific outcome existed, this was handled prospectively rather than as a rescue. Production, independent, and prefreeze paths were hardened to independently reconstruct the Stage 1 selection binding.
+Stage 2 scientific outcomeはまだ存在していなかったため、rescueではなくprospective hardeningとして対応しました。production、independent、prefreeze pathを強化し、Stage 1 selection bindingを独立再構築しました。
 
 Final hardened prefreeze:
 
@@ -163,21 +163,21 @@ artifact ZIP SHA-256 = e2b6c07919875effade8f4d93b6f824d9e75522904243d079f504102e
 scientificOutcomeGenerated = false
 ```
 
-Older run `33145557654` was superseded by the hardened prefreeze.
+older run `33145557654`はhardened prefreezeによりsupersededされました。
 
-## 2026-08-28 — Explicit Stage 2 authorization
+## 2026-08-28 — explicit Stage 2 authorization
 
-Stage 2 formal scientific generation was explicitly authorized at commit:
+Stage 2 formal scientific generationを次のcommitで明示的に承認しました。
 
 ```text
 c7619ded9f682b499a02d023b40ac54ba4dc95ca
 ```
 
-The authorization was bound to the exact frozen spec, candidate contract, firewall, decision rule, Stage 1 result identity, RAW identity, production runner, independent verifier, and source hash set.
+authorizationはexact frozen spec、candidate contract、firewall、decision rule、Stage 1 result identity、RAW identity、production runner、independent verifier、source hash setへbindingしました。
 
-No candidate outcome had been inspected before authorization and no Stage 2 scientific outcome existed before authorization.
+authorization前にcandidate outcomeは確認しておらず、Stage 2 scientific outcomeも存在していませんでした。
 
-## 2026-08-28 — Fresh held-out Stage 2 production measurement
+## 2026-08-28 — fresh held-out Stage 2 production measurement
 
 Authorized workflow:
 
@@ -188,9 +188,9 @@ job = 98766622115
 head = c7619ded9f682b499a02d023b40ac54ba4dc95ca
 ```
 
-The engine regression and frozen source reconstruction passed. Fresh held-out production measurement then completed successfully.
+engine regressionとfrozen source reconstructionがPASSし、その後fresh held-out production measurementが成功しました。
 
-Production selected the exact frozen quota:
+Productionはfrozen quotaをexactに選択しました。
 
 ```text
 Namua = 32
@@ -198,7 +198,7 @@ Mtaji = 32
 Mtaji-houseless = 32
 ```
 
-Production-only compact diagnostics printed to the workflow log:
+workflow logへ出力されたproduction-only compact diagnostic:
 
 ```text
 selectionSha256 = 4d81f8adebfe7b32bfba86adaaeb3f04a8ca6b451e09953612804734d303bb1c
@@ -212,17 +212,17 @@ runtime guard hits = 0
 max generated orbit size = 4
 ```
 
-These values were not interpreted as candidate decisions before mandatory independent verification.
+mandatory independent verification前に、これらをcandidate decisionとして解釈していません。
 
-## 2026-08-28 — Mandatory independent verifier failure
+## 2026-08-28 — mandatory independent verifier failure
 
-The independent verification step terminated during formal-result assembly with:
+independent verification stepはformal-result assembly中に次のerrorで停止しました。
 
 ```text
 ReferenceError: standardStartReachablePopulationDedupDecision is not defined
 ```
 
-Workflow consequence:
+workflow consequence:
 
 ```text
 independent verification / frozen decision rule = failure
@@ -231,13 +231,13 @@ artifact upload = skipped
 workflow conclusion = failure
 ```
 
-No complete canonical `STAGE_2_INDEPENDENT_VERIFICATION.json`, workflow-produced `STAGE_2_FORMAL_RESULT.json`, SHA256SUMS, or workflow artifact ZIP was materialized.
+complete canonical `STAGE_2_INDEPENDENT_VERIFICATION.json`、workflow-produced `STAGE_2_FORMAL_RESULT.json`、SHA256SUMS、workflow artifact ZIPはmaterializeされませんでした。
 
-The failure is a technical/reproducibility failure after fresh outcome generation, not a scientific candidate mismatch.
+これはfresh outcome生成後のtechnical / reproducibility failureであり、scientific candidate mismatchではありません。
 
-## 2026-08-28 — Fail-closed formal decision
+## 2026-08-28 — fail-closed formal decision
 
-Because mandatory global gate S2-G5 could not be established as a complete canonical independent-verification result, the pre-outcome frozen global-failure rule applied without modification.
+mandatory global gate S2-G5をcomplete canonical independent-verification resultとして成立確認できなかったため、pre-outcome frozen global-failure ruleを変更せず適用しました。
 
 Final closure:
 
@@ -251,13 +251,13 @@ standard-start reachable-population deduplication = NON-ESTIMABLE
 validated transform set = []
 ```
 
-Production-only zero-mismatch diagnostics were preserved but not upgraded to `VALIDATED-BOUNDED-ISOMORPHISM`. The technical verifier failure was also not converted into `NOT-VALIDATED`.
+Production-only zero-mismatch diagnosticを`VALIDATED-BOUNDED-ISOMORPHISM`へ昇格していません。technical verifier failureを`NOT-VALIDATED`へ変換することもしていません。
 
-## 2026-08-28 — Canonicalization boundary preserved
+## 2026-08-28 — canonicalization boundaryを維持
 
-Production-only diagnostics indicated zero semantic-domain canonicalization mismatches in the bounded source graph, but mandatory independent verification did not complete canonically.
+Production-only diagnosticではbounded source graphのsemantic-domain canonicalization mismatchは0でしたが、mandatory independent verificationがcanonicalに完了していません。
 
-Separately, production diagnostics showed:
+別途、production diagnosticでは次を確認しました。
 
 ```text
 T01 standard initial RAW preservation = false
@@ -266,12 +266,14 @@ T03 standard initial RAW preservation = false
 independent standard-start reachability-closure proof implemented = false
 ```
 
-Therefore G2-03 authorizes neither scientific-population canonicalization nor symmetry-reduced state counting.
+したがってG2-03はscientific-population canonicalizationもsymmetry-reduced state countingも承認しません。
 
-## 2026-08-28 — No-rescue closure
+## 2026-08-28 — no-rescue closure
 
-The verifier variable-name defect was discovered only after fresh held-out Stage 2 production outcome generation. It was not repaired for a same-evidence rerun.
+verifier variable-name defectはfresh held-out Stage 2 production outcome生成後に判明しました。同じevidenceを使うrerunのために修復していません。
 
-Any future formal re-examination requires a new prospective Study or explicitly new versioned protocol with fresh authorization and fresh formal evidence. SIP-STUDY1, ORISC-STUDY1, SSGTC-STUDY1, G2-01, and G2-02 remain unchanged.
+将来formalに再検討する場合は、新しいprospective Studyまたは明示的に新しいversioned protocol、fresh authorization、fresh formal evidenceが必要です。
 
-Repository-facing fail-closed closure records were added without modifying the frozen scientific runner/verifier or re-executing Stage 2 evidence.
+SIP-STUDY1、ORISC-STUDY1、SSGTC-STUDY1、G2-01、G2-02は変更しません。
+
+frozen scientific runner / verifierを変更せず、Stage 2 evidenceを再実行せずにrepository-facing fail-closed closure recordを追加しました。

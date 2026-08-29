@@ -1,28 +1,30 @@
-# Bao AI Engineering Index
+# Bao AI Engineering 中央索引
 
-この文書は、publicで使用されているBao AIの品質向上に関する**engineering track**の中央索引である。
+この文書は、**公開中のBao AIの品質向上を目的とするAI Engineering trackの中央索引**です。
 
-研究成果の科学的正本は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)および[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)を参照する。Engineering outcomeによって既存Studyのformal decisionを変更しない。
+科学研究の正本は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)および[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)を参照してください。AI Engineeringで得られた工学上の結果によって、既存Studyの正式判断を変更することはありません。
 
-## AI generation naming
+人間向け文書の言語・用語表記は[`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md)に従い、日本語を本文の主言語とします。Study ID、Program ID、AI generation、canonical decision token、JSON fieldなどの固定識別子は変更しません。
 
-- current public lineage: **`AI-GEN2`**
-- frozen exact comparator: **`AI-GEN2-BASELINE-2026-08-26-v1`**
-- next adopted public lineage reserved: **`AI-GEN3`**
-- engineering candidate IDs: `PBAI-Cxxx`
-- `legacy` / `bao` / `bao-v2` are profile identifiers, not AI generations
-- `Research Generation 1` / `Research Generation 2` are separate research namespaces
+## 1. AI世代の命名
 
-Canonical naming: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
+- 現在の公開系統: **`AI-GEN2`**
+- 完全固定した比較基準: **`AI-GEN2-BASELINE-2026-08-26-v1`**
+- 次に正式採用される公開系統の予約名: **`AI-GEN3`**
+- engineering candidate ID: `PBAI-Cxxx`
+- `legacy` / `bao` / `bao-v2`はprofile identifierであり、AI世代名ではない
+- `Research Generation 1` / `Research Generation 2`はAI世代とは別の研究namespaceである
 
-## Completed program — `PBAI-P1`
+正式な命名規則: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
+
+## 2. 完了済みProgram — `PBAI-P1`
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
 **状態:** **COMPLETE / KEEP-AI-GEN2**  
-**scientific evidence cutoff:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Research Generation 2 outcomes:** excluded
+**科学的証拠のcutoff:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
+**Research Generation 2の結果:** 対象外
 
-### Final controls
+### 2.1 最終管理状態
 
 ```text
 PBAI-B exact baseline = AI-GEN2-BASELINE-2026-08-26-v1
@@ -37,7 +39,7 @@ public releases = 0
 AI-GEN3 promotion = NOT-AUTHORIZED / NOT-PROMOTED
 ```
 
-### Final candidate dispositions
+### 2.2 各候補の最終状態
 
 ```text
 PBAI-C001-v1
@@ -71,7 +73,7 @@ PBAI-C005
   = closed without implementation
 ```
 
-### Final program outcome
+### 2.3 Programの最終判断
 
 ```text
 PBAI-P1 = COMPLETE
@@ -82,9 +84,11 @@ public AI code changed by PBAI-P1 = false
 Research Generation 2 evidence included = false
 ```
 
-`KEEP-AI-GEN2` is the prospectively authorized final outcome when no candidate survives the full engineering acceptance sequence.
+`KEEP-AI-GEN2`は、すべてのcandidateが事前に定めたengineering acceptance sequenceを生き残らなかった場合に許可されている最終結果です。
 
-## Program documents
+つまりPBAI-P1では、既存の公開AIを維持すること自体が正規の工学判断でした。
+
+## 3. Program文書
 
 - [`ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md)
 - [`ai-engineering/public-ai-improvement-program-1/RESUME_HERE.md`](ai-engineering/public-ai-improvement-program-1/RESUME_HERE.md)
@@ -100,7 +104,7 @@ Research Generation 2 evidence included = false
 - [`ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md)
 - [`ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json)
 
-### Candidate-specific canonical artifacts
+### 3.1 Candidate固有のcanonical artifact
 
 - `candidates/PBAI-C001-v1-predevelopment-support-spec.json`
 - `candidates/PBAI-C001-v1-predevelopment-support-result.json`
@@ -116,25 +120,33 @@ Research Generation 2 evidence included = false
 - `candidates/PBAI-C004-v1-development-result.json`
 - `candidates/PBAI-C005-production-surface-audit-result.json`
 
-## C003 engineering boundary
+これらのmachine-readable artifactや固定結果は、文書日本語化のために書き換えません。
 
-REWR-STUDY1 remains `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` for its frozen 8-state domain. ORISC-STUDY1 remains `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`, including its three repository-facing row rehash / RAW binding mismatches involving `pending`.
+## 4. C003の工学上の境界
 
-C003-v1 required stored oracle rows to rehash under the authoritative RAW identity before practical reachability could be measured. That precondition failed on the already-known ORISC mismatch, so C003-v1 did **not** produce a 0-hit result; the reachability metric is unmeasured. No candidate lookup implementation was created.
+REWR-STUDY1は、凍結した8-state domainの内部で引き続き`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`です。
 
-## C005 engineering boundary
+ORISC-STUDY1も`ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`のままであり、`pending`に関係する3件のrepository-facing row rehash / RAW binding mismatchを含む既存判断は変更しません。
 
-Position Evaluation / Win-Rate Calibration Study 1 remains formal `INCONCLUSIVE`. PBAI-C005 found no current public surface that treats engine evaluation as validated win probability, so no sanitation implementation was justified.
+C003-v1では、practical reachabilityを測定する前提として、保存済みoracle rowがauthoritative RAW identityの下で再hash可能であることを要求しました。この前提が既知のORISC mismatchで成立しなかったため、reachability measurementには進んでいません。
 
-The standing future prohibition remains:
+したがってC003-v1は「hitが0件だった」という結果を出していません。hit countは未測定です。また、candidate lookup implementationも作成していません。
+
+## 5. C005の工学上の境界
+
+Position Evaluation / Win-Rate Calibration Study 1の正式判断は引き続き`INCONCLUSIVE`です。
+
+PBAI-C005では、現在公開されているUI、code、diagnostic surfaceをread-onlyで監査し、engine evaluationを検証済みの勝率・勝利確率・confidence probabilityとして表示している箇所がないことを確認しました。そのため、現行production surfaceを修正するcandidate実装は正当化されませんでした。
+
+今後も次の禁止は維持します。
 
 ```text
 engine score -> validated Bao win probability = NOT AUTHORIZED
 ```
 
-A future probability-like public feature must be a new prospective engineering candidate; C005 is not blanket authorization for such a feature.
+将来probability-likeな公開機能を追加する場合は、新しいprospective engineering candidateとして独立に評価する必要があります。C005は、その種の機能を包括的に許可するものではありません。
 
-## Separation from research
+## 6. 研究とAI Engineeringの分離
 
 ```text
 completed Research Generation 1
@@ -156,6 +168,6 @@ PBAI-P1 COMPLETE → KEEP-AI-GEN2
 Research Generation 2 = separate pure research track
 ```
 
-Current `AI.stateKey` remains distinct from Research Generation 1 authoritative RAW identity because it omits `pending`; it is not authorized as a research-derived exact-tablebase key.
+現在の`AI.stateKey`は`pending`を含まないため、Research Generation 1で固定されたauthoritative RAW identityとは異なります。このため、研究由来のexact tablebase keyとして使用することは承認されていません。
 
-Future materially different public-AI engineering work should establish a new prospective program/candidate identity and evidence cutoff rather than reopening PBAI-P1.
+今後、内容が実質的に異なる公開AI改善を行う場合は、PBAI-P1を再開するのではなく、新しいprospective program / candidate identityと新しいevidence cutoffを設定します。

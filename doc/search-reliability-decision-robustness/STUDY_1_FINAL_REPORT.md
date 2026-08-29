@@ -1,6 +1,6 @@
-# Search Reliability / Decision Robustness Study 1 — Final Report
+# G2-02 第1研究 最終報告 — 探索信頼性と意思決定頑健性
 
-## 1. Study identity
+## 1. 研究識別子
 
 ```text
 Agenda label = G2-02
@@ -11,27 +11,37 @@ Baseline main = db6980bffb7e6853751914da628db8936c76d81e
 Formal decision = INCONCLUSIVE
 ```
 
-Japanese working title:
+日本語題目:
 
-**Baoにおける探索信頼性と意思決定頑健性の定量化 — depth, node budget, quiescence等の探索条件変化に対するbest move・ranking・evaluation・principal variation安定性のprospective検証**
+**Baoにおける探索信頼性と意思決定頑健性の定量化 — depth, node budget, quiescence等の探索条件変化に対するbest move・ranking・evaluation・principal variation安定性の事前規定による検証**
 
-## 2. Scientific question and boundary
+## 2. 科学的な問いと境界
 
-同一RAW stateに対するsearch-derived decisionが、depth / node budget / quiescenceのprospectively frozen perturbationに対してどの程度stableかを、fresh historically reachable statesで定量化することを目的とした。
+本研究では、同一のRAW stateに対して得られるsearch-derived decisionが、結果を見る前に固定したdepth / node budget / quiescenceの変化に対してどの程度安定するかを、新しく生成したhistorically reachable statesで定量化しました。
 
-本StudyはPosition Complexity / Difficulty Study 1のhuman difficulty constructを救済しない。engine evaluation correctness、game-theoretic true best move、empirical win probability、人間の知覚、public AI strengthもendpointではない。higher-resource searchはtruthではなくfrozen referenceに限定した。
+本StudyはPosition Complexity / Difficulty Study 1のhuman difficulty constructを救済するものではありません。
 
-## 3. Authoritative identity and search contract
+また、次は本研究のendpointではありません。
 
-Formal RAW identity:
+- engine evaluation correctness
+- game-theoretic true best move
+- empirical win probability
+- 人間の知覚
+- public AI strength
+
+higher-resource searchはtruthではなく、固定したsearch referenceとしてのみ扱いました。
+
+## 3. authoritative identityとsearch contract
+
+Formal RAW identityは次です。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn/reason`、reflection、seat swap、symmetry canonicalizationはidentityに使用していない。
+`turn/reason`、reflection、seat swap、symmetry canonicalizationはidentityに使用していません。
 
-Frozen scientific grid:
+固定したscientific gridは次です。
 
 ```text
 D1_Q1
@@ -44,17 +54,21 @@ B256_Q1_MAXD3
 B1024_Q1_MAXD3
 ```
 
-Node-budget conditionsはiterative deepeningで**全root candidatesを完了した最後のdepthだけ**を採用し、partial root iterationを破棄した。PVは`canonical-exact-nominal-pv/quiescence-score-only/v1`としてdeterministic postprocessingした。
+Node-budget条件ではiterative deepeningにおいて**全root candidateを完了した最後のdepthだけ**を採用し、partial root iterationは破棄しました。
 
-## 4. Stage 0 technical validation
+PVは`canonical-exact-nominal-pv/quiescence-score-only/v1`としてdeterministic postprocessingしました。
 
-Stage 0 `SRDR-S0-TECHNICAL-2026-08-27-v1`はtechnical PASS。既存Position Complexity exact diagnosticとのroot-score / TopSet agreement、node-budget semantics、quiescence、move-ordering control、RAW identity、PV reconstruction、independent verificationを通過した。
+## 4. Stage 0 — 技術検証
 
-Technical-only resource auditではD3 cumulative node cost distributionを測定し、Stage 1 gridをoutcome前に有限freezeした。technical fixturesはscientific evidenceから永久除外した。
+Stage 0 `SRDR-S0-TECHNICAL-2026-08-27-v1`はtechnical PASSでした。
 
-## 5. Stage 1 development
+既存Position Complexity exact diagnosticとのroot-score / TopSet agreement、node-budget semantics、quiescence、move-ordering control、RAW identity、PV reconstruction、independent verificationを通過しました。
 
-Stage 1 `SRDR-S1-DEVELOPMENT-2026-08-27-v1`は1,280 fresh games、seeds `25011001..25012280`。
+Technical-only resource auditではD3 cumulative node cost distributionを測定し、Stage 1 gridを科学的outcomeを見る前に有限な形で固定しました。technical fixtureはscientific evidenceから永久に除外しました。
+
+## 5. Stage 1 — development
+
+Stage 1 `SRDR-S1-DEVELOPMENT-2026-08-27-v1`では1,280 fresh games、seed `25011001..25012280`を使用しました。
 
 ```text
 games generated / verified = 1280 / 1280
@@ -67,20 +81,22 @@ selected-state mismatches = 0
 measurement mismatches = 0
 ```
 
-Initial verificationでは全1018 scientific rowsが一致した一方、production in-memory hashがJSON persistenceで脱落する`undefined` keysを含んだためaggregate measurement hashだけが不一致となった。scientific rowsを変更せず、original failed verificationを保持したrepresentation-only correctionを別workflowで実行し、canonical JSON artifact hashとlegacy production hashを双方再現した。
+Initial verificationでは全1018 scientific rowsが一致しました。一方、production in-memory hashにはJSON persistence時に消える`undefined` keyが含まれていたため、aggregate measurement hashだけが不一致となりました。
 
-Stage 1 readinessは全PASSし、decisionは:
+scientific rowを変更せずoriginal failed verificationを保持したまま、representation-only correctionを別workflowで実行し、canonical JSON artifact hashとlegacy production hashの双方を再現しました。
+
+Stage 1 readinessはすべてPASSし、decisionは次となりました。
 
 ```text
 PROFILE-FROZEN-DEVELOPMENT
 development profile hash = 665c284efeb0a9531ea49133ba313c0ed76cb09d888cbbe9324e2c0b6f3af280
 ```
 
-このdevelopment result自体はformal confirmation claimをauthorizedしない。
+このdevelopment result自体はformal confirmation claimを承認しません。
 
-## 6. Stage 2 prospective freeze
+## 6. Stage 2 — 結果を見る前の固定
 
-Stage 1 profileを消費後、Stage 2 formal ruleをoutcome前にfreezeした。
+Stage 1 profileを消費した後、Stage 2 formal ruleをoutcome生成前に固定しました。
 
 ```text
 games = 1536
@@ -91,11 +107,13 @@ source-freeze commit = e176cafc15d2dde7b8767de6961959bb7ee9bb7b
 authorization commit = bec87d54540c96c24353f2eeadc25338c53e54eb
 ```
 
-Formal primary criterionは、全estimability / identity / reproducibility gatesがPASSした場合にのみ3条件を評価するconjunctionとして固定した。gate failure時はprimaryを評価せず`INCONCLUSIVE`とするruleを事前固定した。
+Formal primary criterionは、すべてのestimability / identity / reproducibility gateがPASSした場合にのみ3条件を評価するconjunctionとして固定しました。
 
-## 7. Stage 2 execution and independent verification
+gate failure時にはprimaryを評価せず`INCONCLUSIVE`とするruleも事前に固定しました。
 
-Formal workflow run `33124538584`はSUCCESS。
+## 7. Stage 2 — 実行と独立検証
+
+Formal workflow run `33124538584`はSUCCESSでした。
 
 ```text
 generated games = 1536
@@ -107,7 +125,7 @@ Mtaji = 489
 post-firewall overlap = trajectory 0 / opening prefix 0 / RAW state 0
 ```
 
-Independent verifierはproduction Stage 1 common/search moduleおよびStage 2 runnerをimportせず、1536 gamesと1007 selected-state measurementsを再構築した。
+Independent verifierはproduction Stage 1 common / search moduleおよびStage 2 runnerをimportせず、1536 gamesと1007 selected-state measurementsを再構築しました。
 
 ```text
 games verified = 1536
@@ -120,30 +138,32 @@ selection hash match = true
 measurement hash match = true
 ```
 
-## 8. Formal gate result
+## 8. formal gateの結果
 
-唯一のfailed preregistered gate:
+事前登録したgateのうち、FAILしたのは次の1条件だけでした。
 
 ```text
 uniqueHistoricalTrajectoriesAfterStage1Firewall = 1040 < 1050
 ```
 
-他のpopulation、phase、opening-prefix、identity-overlap、measurement completion、node-budget estimability、independent verification、hash-match gatesはPASSした。
+その他のpopulation、phase、opening-prefix、identity-overlap、measurement completion、node-budget estimability、independent verification、hash-match gateはPASSしました。
 
-10 trajectories不足はnear missだが、prospective contractに例外はない。追加seed、追加game、replacement、threshold 1050→1040変更、favorable subgroup、post-outcome population reconstructionは実施していない。
+10 trajectoriesの不足はnear missですが、事前契約に例外はありません。追加seed、追加game、replacement、threshold 1050→1040変更、favorable subgroup、post-outcome population reconstructionは実施していません。
 
-## 9. Formal decision
+## 9. 正式判断
 
 ```text
 SRDR-STUDY1 = INCONCLUSIVE
 primaryFormalCriterion = null
 ```
 
-これは3 primary criteriaが`NOT-CONFIRMED`だったことを意味しない。formal gate conjunctionが成立しなかったためprimary branchへ入っていない。
+これは3つのprimary criterionが`NOT-CONFIRMED`だったことを意味しません。
 
-## 10. Descriptive secondary profile
+formal gate conjunctionが成立しなかったため、primary branchそのものへ入っていません。
 
-Formal decisionに使用しないpre-specified secondary profileでは、pooled canonical-best agreementは次だった。
+## 10. 記述的secondary profile
+
+Formal decisionには使用しない、事前指定済みsecondary profileのpooled canonical-best agreementは次でした。
 
 ```text
 D1_Q1 vs D2_Q1 = 0.637537
@@ -155,9 +175,11 @@ B256 vs D3 = 0.795432
 B1024 vs D3 = 0.941410
 ```
 
-Namua B1024→D3 agreementは0.889961、Mtajiは0.995910だった。これらはbounded machine-search descriptorsであり、true optimality、human difficulty、engine correctnessへ昇格させない。
+Namua B1024→D3 agreementは0.889961、Mtajiは0.995910でした。
 
-## 11. Provenance
+これらはbounded machine-search descriptorであり、true optimality、human difficulty、engine correctnessへ昇格させません。
+
+## 11. provenance
 
 ```text
 Stage 2 artifact ID = 9672561139
@@ -170,15 +192,17 @@ measurements artifact SHA-256 = d58e14880853b8d0bf0929dfa8f8e6216e9f8aac33622b87
 canonical result hash = 7386f3efed01ba325bc3f03ed02e9cfc2d72ad48c356509987b5fcc8780f7d36
 ```
 
-Large per-game / selected-state / measurement artifacts remain in the immutable GitHub Actions artifact. Repository-facing canonical small artifacts preserve the formal result, verification, generation manifest and compact selection/measurement summary.
+大きなper-game / selected-state / measurement artifactはimmutable GitHub Actions artifactに保持されています。
 
-## 12. Immutable closure boundary
+Repository-facing canonical small artifactには、formal result、verification、generation manifest、compact selection / measurement summaryを保存しています。
+
+## 12. 変更しないclosure boundary
 
 - 同じStage 2 populationへseed extensionを行わない。
-- 1050 trajectory gateを結果後に緩和しない。
-- Stage 2 rowsをreplacement / favorable subgroupで差し替えない。
+- 1050 trajectory gateを結果確認後に緩和しない。
+- Stage 2 rowをreplacement / favorable subgroupで差し替えない。
 - null primary criterionをsecondary profileで救済しない。
 - `D3`や`B1024`をgame-theoretic truthとして扱わない。
 - public AI engineering outcomeで本decisionを変更しない。
 
-再検証する場合はnew Study IDまたは明示的versioned prospective protocol、fresh evidence、outcome前のnew estimability designが必要である。
+再検証する場合は、新しいStudy IDまたは明示的にversion管理されたprospective protocol、新しい独立証拠、outcome生成前の新しいestimability designが必要です。

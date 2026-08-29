@@ -1,8 +1,8 @@
-# STSCV-STUDY1
+# STSCV-STUDY1 — 状態変換意味論とcanonicalizationの検証
 
-Research Generation 2 `G2-03` — **State Transformation Semantics / Canonicalization Validation Study 1**.
+Research Generation 2 `G2-03` — **State Transformation Semantics / Canonicalization Validation Study 1**。
 
-## Status
+## 状態
 
 ```text
 Study = COMPLETE
@@ -15,11 +15,13 @@ standard-start reachable-population deduplication = NON-ESTIMABLE
 validated transform set = []
 ```
 
-The Stage 2 held-out production measurement completed, but the mandatory independent verifier failed during formal-result assembly. The prospectively frozen global-failure rule therefore closes the Study as `INCONCLUSIVE` and all three candidates as `NON-ESTIMABLE`.
+Stage 2のheld-out production measurementは完了しましたが、mandatory independent verifierがformal-result assembly中に失敗しました。
 
-Production-only zero-mismatch diagnostics are preserved as non-decisional evidence and are not formal validations.
+そのため、結果を見る前に固定していたglobal-failure ruleを適用し、Studyは`INCONCLUSIVE`、3 candidateすべては`NON-ESTIMABLE`で終了しています。
 
-## Read first
+Production-onlyのzero-mismatch diagnosticはnon-decisional evidenceとして保存していますが、formal validationではありません。
+
+## 最初に読む文書
 
 1. `STUDY_1_OVERVIEW.md`
 2. `STUDY_1_FINAL_REPORT.md`
@@ -29,13 +31,13 @@ Production-only zero-mismatch diagnostics are preserved as non-decisional eviden
 6. `RESEARCH_LOG.md`
 7. `STUDY_1_PROTOCOL.md` — original prospective protocol / historical contract
 
-## Final machine-readable result
+## 最終machine-readable result
 
 - `results/STAGE_2_FORMAL_RESULT.json` — repository-facing fail-closed formal closure
 - `results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json` — failed Stage 2 workflow provenance
 - `checkpoints/2026-08-28-stage2-fail-closed-closure.md` — closure checkpoint
 
-## Stage 2 prospective contracts
+## Stage 2 prospective contract
 
 - `preregistration/STAGE_2_SPEC.json`
 - `preregistration/STAGE_2_FIREWALL.json`
@@ -64,9 +66,9 @@ Independent verifier failure:
 ReferenceError: standardStartReachablePopulationDedupDecision is not defined
 ```
 
-No same-evidence source repair/rerun was performed.
+同じevidenceに対するsource repair / rerunは行っていません。
 
-## Earlier stage records
+## Earlier-stage record
 
 Stage 0:
 
@@ -83,27 +85,27 @@ Stage 1:
 - `results/STAGE_1_PREFREEZE_WORKFLOW_PROVENANCE.json`
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 
-Stage 1 remained development-only and generated no formal candidate decision.
+Stage 1はdevelopment-onlyであり、formal candidate decisionを生成していません。
 
-## Representation boundary
+## representation boundary
 
-Authoritative scientific input identity remains RAW-only:
+Authoritative scientific input identityはRAW-onlyを維持します。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn/reason` are excluded.
+`turn/reason`は除外します。
 
-At Study closure:
+Study closure時点の状態:
 
 ```text
 canonicalization for scientific population identity = NOT AUTHORIZED
 symmetry-reduced state counting = NOT AUTHORIZED
 ```
 
-## Upstream immutability
+## upstream immutability
 
-This Study does not modify or rescue G2-01, G2-02, SIP-STUDY1, ORISC-STUDY1, REWR-STUDY1, SSGTC-STUDY1, or any other completed Study.
+本StudyはG2-01、G2-02、SIP-STUDY1、ORISC-STUDY1、REWR-STUDY1、SSGTC-STUDY1、その他の完了済みStudyを変更・救済しません。
 
-A future formal test of these transformation hypotheses requires a new prospective Study or explicitly new versioned protocol, fresh authorization, and fresh formal evidence.
+これらのtransformation hypothesisを将来formalに再検証する場合は、新しいprospective Studyまたは明示的に新しいversioned protocol、fresh authorization、fresh formal evidenceが必要です。

@@ -1,8 +1,8 @@
-# State Transformation Semantics / Canonicalization Validation Study 1 — Final Report
+# G2-03 第1研究 最終報告 — 状態変換意味論とcanonicalizationの検証
 
-Updated: 2026-08-28
+更新日: 2026-08-28
 
-## Study identity
+## 1. 研究識別子
 
 ```text
 Program label = G2-03
@@ -13,11 +13,11 @@ Baseline main = a8493d2a50e11f15d16ef8348f2442b262ca275d
 Research branch = research/g2-03-state-transformation-semantics-canonicalization-validation
 ```
 
-Japanese working title:
+日本語題目:
 
 **Baoにおける状態変換意味論とcanonicalizationの厳密検証 — rule-semantic validity, legal-move equivariance, successor binding, graph isomorphism, and prospective canonicalization authorization**
 
-## Final decision
+## 2. 最終判断
 
 ```text
 Study-level formal decision = INCONCLUSIVE
@@ -29,27 +29,45 @@ standard-start reachable-population deduplication = NON-ESTIMABLE
 validated transform set = []
 ```
 
-The Study closes under the prospectively frozen Stage 2 global-failure rule. This is not a scientific rejection of the three candidate transforms.
+本Studyは、結果を見る前に固定したStage 2 global-failure ruleに従って終了しました。
 
-## Research question
+これは3つのcandidate transformを科学的に棄却した結果ではありません。
 
-The Study asked whether candidate state transformations can be validated as exact rule-semantic bounded graph isomorphisms when the representation contract is explicit from the start, and whether any validated transforms can then support canonicalization without conflating semantic graph equivalence with fixed-start reachable-population identity.
+## 3. 研究上の問い
 
-The formal gates required exact preservation of authoritative RAW state semantics, exact legal-move-set bijection, exact move identity including Namua variants, successor commutation, terminal/winner/pending semantics, inverse/bijection properties, bounded graph binding, controls, firewall integrity, frozen source identity, and mandatory independent verification.
+本Studyでは、representation contractを研究開始時から明示したうえで、candidate state transformationを**exact rule-semantic bounded graph isomorphism**として検証できるかを調べました。
 
-## Authoritative identity
+さらに、transformがvalidであった場合に、semantic graph equivalenceとfixed-start reachable-population identityを混同することなくcanonicalizationへ利用できるかを、別endpointとして検討しました。
 
-The Study retained the RAW scientific identity:
+Formal gateでは、次の完全一致・完全保存を要求しました。
+
+- authoritative RAW state semantics
+- exact legal-move-set bijection
+- Namua variantを含むexact move identity
+- successor commutation
+- terminal / winner / pending semantics
+- inverse / bijection property
+- bounded graph binding
+- control
+- firewall integrity
+- frozen source identity
+- mandatory independent verification
+
+## 4. authoritative identity
+
+本Studyでは、scientific identityとして次のRAW identityを維持しました。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn` and `reason` were excluded. No symmetry transform or canonicalization was used to deduplicate the scientific population before formal authorization.
+`turn`と`reason`は除外しました。
 
-## Upstream boundaries
+formal authorization前に、symmetry transformやcanonicalizationをscientific populationのdeduplicationへ使用していません。
 
-The Study did not modify or rescue any earlier result, including:
+## 5. upstream研究との境界
+
+本Studyは、次を含む既存結果を変更・救済していません。
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -60,17 +78,23 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-In particular, G2-03 did not retrospectively repair repository-facing oracle rows or reinterpret historical zero-mismatch diagnostics as valid candidate decisions.
+特に、G2-03はrepository-facing oracle rowをretrospectiveに修復しておらず、過去のzero-mismatch diagnosticをvalid candidate decisionへ読み替えてもいません。
 
-## Stage 0 — technical reconstruction
+## 6. Stage 0 — technical reconstruction
 
-Stage 0 was technical only. It reconstructed current engine representation and transformation semantics, separately implemented production and independent paths, verified the IDENTITY positive control, confirmed that the deliberately broken left-right control is detectable, and reduced the requested transform family to a finite candidate contract before scientific development evidence.
+Stage 0はtechnical onlyです。
 
-Stage 0 did not create a scientific candidate decision.
+現在のengine representationとtransformation semanticsを再構築し、production pathとindependent pathを別実装しました。IDENTITY positive controlを検証し、意図的に壊したleft-right controlを検出できることを確認しました。
 
-## Stage 1 — development evidence
+また、scientific development evidenceを見る前に、要求されたtransform familyを有限なcandidate contractへ整理しました。
 
-Stage 1 used fresh historically reachable RAW states and remained development-only. It selected:
+Stage 0ではscientific candidate decisionを生成していません。
+
+## 7. Stage 1 — development evidence
+
+Stage 1はfresh historically reachable RAW stateを用いたdevelopment-only Stageです。
+
+選択rootは次です。
 
 ```text
 Namua roots = 24
@@ -79,9 +103,9 @@ Mtaji-houseless roots = 24
 Total = 72
 ```
 
-The Stage 1 selected identities were then consumed by the Stage 2 firewall at trajectory-seed, opening-prefix, and RAW-state levels. Stage 1 evidence was not reused as Stage 2 formal confirmation evidence.
+これらのStage 1 identityは、その後Stage 2 firewallでtrajectory-seed、opening-prefix、RAW-stateの各levelから除外しました。Stage 1 evidenceをStage 2 formal confirmation evidenceとして再利用していません。
 
-The Stage 1 candidate contract retained three non-identity candidates:
+Stage 1 candidate contractでは、次の3つのnon-identity candidateを維持しました。
 
 ```text
 STSCV-T01-SEAT-SWAP-LOCAL
@@ -89,11 +113,11 @@ STSCV-T02-LR-MTAJI-HOUSELESS
 STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS
 ```
 
-No Stage 1 candidate outcome was a formal validation.
+Stage 1のcandidate outcomeはいずれもformal validationではありません。
 
-## Stage 2 — prospective formal freeze
+## 8. Stage 2 — formal条件の事前固定
 
-Before any Stage 2 scientific outcome existed, the following were frozen:
+Stage 2のscientific outcomeが存在する前に、次を固定しました。
 
 ```text
 Stage = STSCV-S2-FORMAL-2026-08-28-v1
@@ -107,19 +131,21 @@ seed extension after outcome = false
 mismatch tolerance = 0
 ```
 
-The Stage 2 prefreeze workflow run `33145713610` passed after prospective firewall hardening. That hardening independently recomputed the Stage 1 selection binding rather than trusting a stored selection hash. No Stage 2 scientific outcome existed during the hardening.
+Stage 2 prefreeze workflow run `33145713610`は、prospective firewall hardening後にPASSしました。このhardeningではstored selection hashを信用するだけでなく、Stage 1 selection bindingを独立再計算しました。
 
-Explicit Stage 2 authorization was committed at:
+hardening時点ではStage 2 scientific outcomeは存在していませんでした。
+
+明示的なStage 2 authorizationは次のcommitで固定しました。
 
 ```text
 c7619ded9f682b499a02d023b40ac54ba4dc95ca
 ```
 
-The authorization was bound to the exact frozen spec, candidate contract, firewall, decision rule, RAW identity, production runner, independent verifier, and source hashes.
+authorizationは、exact frozen spec、candidate contract、firewall、decision rule、RAW identity、production runner、independent verifier、source hashへbindingしました。
 
-## Frozen Stage 2 decision rule
+## 9. 固定したStage 2 decision rule
 
-The formal decision rule required all six global gates to pass.
+Formal decision ruleでは、次の6つのglobal gateをすべてPASSすることを要求しました。
 
 ```text
 S2-G1 population / firewall / uniqueness
@@ -130,7 +156,7 @@ S2-G5 exact production / independent agreement
 S2-G6 frozen contract/source/hash agreement
 ```
 
-If any global gate failed or was not established, the prospectively frozen rule required:
+いずれかのglobal gateがFAIL、または成立確認できなかった場合は、事前固定ruleにより次とします。
 
 ```text
 study = INCONCLUSIVE
@@ -139,11 +165,11 @@ canonicalization = NON-ESTIMABLE
 scientific mismatch interpretation = not authorized
 ```
 
-Only if all global gates passed could zero candidate mismatch yield `VALIDATED-BOUNDED-ISOMORPHISM` or one-or-more mismatch yield `NOT-VALIDATED`.
+すべてのglobal gateをPASSした場合に限り、candidate mismatch 0なら`VALIDATED-BOUNDED-ISOMORPHISM`、1件以上なら`NOT-VALIDATED`を判断できる設計でした。
 
-## Stage 2 execution
+## 10. Stage 2実行
 
-The authorized formal workflow was:
+Authorized formal workflowは次です。
 
 ```text
 workflow = STSCV Stage 2 Formal
@@ -153,7 +179,7 @@ head = c7619ded9f682b499a02d023b40ac54ba4dc95ca
 conclusion = failure
 ```
 
-The following steps succeeded:
+次のstepまでは成功しました。
 
 ```text
 engine regression = PASS
@@ -161,7 +187,7 @@ frozen production/independent source reconstruction = PASS
 fresh held-out production measurement = PASS
 ```
 
-The production measurement selected the exact frozen quotas:
+Production measurementは固定quotaどおりに選択しました。
 
 ```text
 Namua = 32
@@ -170,7 +196,7 @@ Mtaji-houseless = 32
 Total = 96
 ```
 
-Production also reported:
+Production側のhashは次です。
 
 ```text
 selectionSha256 = 4d81f8adebfe7b32bfba86adaaeb3f04a8ca6b451e09953612804734d303bb1c
@@ -178,7 +204,7 @@ measurementSha256 = 530ae49610dc7cc3af2713c0cf35c5d4e24d005f376d53e9da869b184b06
 decisionInputSha256 = 58c8a2f6422135073bb4cbd5bac985bf1e72e5040b1c285ff5eca3a129523264
 ```
 
-Production-only candidate mismatch diagnostics were:
+Production-only candidate mismatch diagnosticは次でした。
 
 ```text
 T01 = 0
@@ -186,17 +212,19 @@ T02 = 0
 T03 = 0
 ```
 
-These zero-mismatch values are **not formal validations** because the mandatory independent-verification gate did not complete as a canonical artifact.
+ただし、mandatory independent-verification gateがcanonical artifactとして完了していないため、これらのzero-mismatch値は**formal validationではありません**。
 
-## Independent-verifier failure
+## 11. independent verifierのfailure
 
-The independent verifier ran after production measurement but terminated during formal-result assembly with:
+Independent verifierはproduction measurement後に実行されましたが、formal-result assembly中に次のerrorで停止しました。
 
 ```text
 ReferenceError: standardStartReachablePopulationDedupDecision is not defined
 ```
 
-The failure occurred in the frozen verifier source after fresh held-out scientific outcome generation had already occurred. The formal workflow therefore did not materialize:
+fresh held-out scientific outcomeがすでに生成された後に、frozen verifier source内で発生したfailureです。
+
+そのためformal workflowでは次を生成・確定できませんでした。
 
 ```text
 STAGE_2_INDEPENDENT_VERIFICATION.json
@@ -205,20 +233,22 @@ SHA256SUMS.txt
 workflow artifact ZIP
 ```
 
-The later canonical-hash and artifact-upload steps were skipped.
+後続のcanonical-hash stepとartifact-upload stepもskipされました。
 
-This is classified as a technical/reproducibility failure, not as a candidate semantic mismatch. The verifier source was not repaired and the same Stage 2 evidence was not rerun for rescue.
+これはtechnical / reproducibility failureとして分類し、candidate semantic mismatchとは扱いません。verifier sourceを修復して同じStage 2 evidenceを再実行する救済も行っていません。
 
-## Fail-closed application
+## 12. fail-closed ruleの適用
 
-Because mandatory global gate S2-G5 was not established as a complete canonical verification result:
+Mandatory global gate S2-G5がcomplete canonical verification resultとして成立しなかったため、
 
 ```text
 all global gates PASS = false
 scientific mismatch interpretation authorized = false
 ```
 
-The frozen global-failure rule therefore determines the final Study closure:
+となります。
+
+したがって、固定済みglobal-failure ruleによりStudy closureは次です。
 
 ```text
 Study = INCONCLUSIVE
@@ -229,11 +259,11 @@ semantic-domain canonicalization = NON-ESTIMABLE
 standard-start population dedup = NON-ESTIMABLE
 ```
 
-No candidate is placed in `NOT-VALIDATED`, because no scientific mismatch decision is authorized under the failed global verification gate.
+failed global verification gateの下ではscientific mismatch decision自体が承認されないため、どのcandidateも`NOT-VALIDATED`にはしません。
 
-## Canonicalization boundary
+## 13. canonicalization boundary
 
-Production-only diagnostics evaluated a bounded source graph of:
+Production-only diagnosticで評価したbounded source graphは次です。
 
 ```text
 states = 6317
@@ -242,9 +272,9 @@ runtime guard hits = 0
 max generated orbit size = 4
 ```
 
-Production reported zero mismatch for its semantic-domain canonicalization diagnostics. This is not sufficient for formal authorization because mandatory independent verification was not canonically completed.
+Production側ではsemantic-domain canonicalization diagnosticがmismatch 0でした。しかしmandatory independent verificationがcanonicalに完了していないため、formal authorizationにはなりません。
 
-There is also a distinct fixed-start boundary. Production diagnostics reported that none of the three non-identity candidates preserves the standard initial RAW state:
+さらにfixed-start boundaryは別問題です。Production diagnosticでは、3つのnon-identity candidateはいずれもstandard initial RAW stateを保存しませんでした。
 
 ```text
 T01 initial RAW preservation = false
@@ -252,42 +282,52 @@ T02 initial RAW preservation = false
 T03 initial RAW preservation = false
 ```
 
-No independent standard-start reachability-closure proof was implemented. Therefore this Study authorizes neither scientific-population canonicalization nor symmetry-reduced state counting.
+Independent standard-start reachability-closure proofも実装されていません。
 
-## What this Study does and does not establish
+したがって、本Studyはscientific-population canonicalizationもsymmetry-reduced state countingも承認しません。
 
-This Study establishes that a prospective representation-first transformation-validation pipeline can reach fresh held-out production measurement under a strict Stage 1 identity firewall, but its mandatory independent formal closure failed technically and must remain non-estimable.
+## 14. 本Studyが確立したこと・していないこと
 
-It does **not** establish that the three transforms are false. It also does not formally establish that they are valid, despite production-only zero-mismatch diagnostics.
+本Studyでは、strict Stage 1 identity firewallの下で、prospective representation-first transformation-validation pipelineがfresh held-out production measurementまで到達できることを確認しました。
 
-It does not authorize:
+一方、mandatory independent formal closureはtechnicalに失敗したため、formal candidate decisionはnon-estimableのままです。
 
-- canonicalization for scientific population identity;
-- symmetry-reduced state counting;
-- retrofit of symmetry reduction into SSGTC-STUDY1;
-- repair or reinterpretation of SIP-STUDY1 or ORISC-STUDY1;
-- any change to G2-01 or G2-02;
-- public AI engineering changes.
+本結果は、3つのtransformがfalseであることを意味しません。同時に、production-only zero-mismatch diagnosticがあってもformalにvalidであるとは確立していません。
 
-## No-rescue closure
+次は承認しません。
 
-After the fresh Stage 2 production outcome existed, the verifier variable-name defect was known. Under the frozen no-rescue rule, this Study does not fix the verifier and rerun the same formal evidence to obtain a favorable candidate decision.
+- scientific population identityへのcanonicalization
+- symmetry-reduced state counting
+- SSGTC-STUDY1へのsymmetry reductionのretrofit
+- SIP-STUDY1 / ORISC-STUDY1のrepairまたはreinterpretation
+- G2-01 / G2-02の変更
+- public AI engineering change
 
-A future re-examination of these transformation hypotheses must use a new prospective Study ID or explicitly new versioned protocol, a fresh authorization, and fresh formal evidence. The closed G2-03 result remains `INCONCLUSIVE` with all three candidates `NON-ESTIMABLE`.
+## 15. no-rescue closure
 
-## Canonical records
+fresh Stage 2 production outcomeが存在した後にverifier variable-name defectが判明しました。
+
+固定済みno-rescue ruleにより、Study 1ではverifierを修正して同じformal evidenceを再実行し、candidate decisionを得ることはしません。
+
+これらのtransformation hypothesisを将来再検証する場合は、新しいprospective Study IDまたは明示的に新しいversioned protocol、新しいauthorization、新しいformal evidenceが必要です。
+
+終了済みG2-03の結果は`INCONCLUSIVE`、3 candidateすべて`NON-ESTIMABLE`のままです。
+
+## 16. canonical records
 
 - `results/STAGE_2_FORMAL_RESULT.json` — repository-facing fail-closed formal closure
 - `results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json` — failed workflow provenance
 - `preregistration/STAGE_2_DECISION_RULE.json` — frozen decision rule
 - `preregistration/STAGE_2_AUTHORIZATION.json` — explicit pre-outcome authorization
-- `results/STAGE_2_PREFREEZE_MANIFEST.json` — source/firewall freeze
-- `REPRODUCIBILITY_INDEX.md` — reproducibility and provenance index
+- `results/STAGE_2_PREFREEZE_MANIFEST.json` — source / firewall freeze
+- `REPRODUCIBILITY_INDEX.md` — reproducibility / provenance index
 - `CURRENT_STATUS.md` — terminal Study status
 - `DECISION_REGISTER.md` — immutable Study decisions
 
-## Final conclusion
+## 17. 最終結論
 
-**STSCV-STUDY1 is complete with formal decision `INCONCLUSIVE`.**
+**STSCV-STUDY1はformal decision `INCONCLUSIVE`で完了しています。**
 
-The three held-out transformation candidates are **`NON-ESTIMABLE`**, not rejected and not validated. Canonicalization and symmetry-reduced scientific population identity remain **not authorized**. The production-only zero-mismatch diagnostics are preserved as bounded non-decisional evidence and are not used to rescue the failed mandatory independent-verification gate.
+3つのheld-out transformation candidateは**`NON-ESTIMABLE`**であり、rejectもvalidateもされていません。
+
+Canonicalizationとsymmetry-reduced scientific population identityは引き続き**not authorized**です。production-only zero-mismatch diagnosticはbounded non-decisional evidenceとして保持し、failed mandatory independent-verification gateの救済には使用しません。

@@ -1,7 +1,7 @@
-# RCPR-STUDY1 — Reproducibility Index
+# RCPR-STUDY1 — 再現性索引
 
-Updated: 2026-08-29  
-Status: **CLOSED AT STAGE 1 / STAGE0-TECHNICAL-PASS / STAGE1-TECHNICAL-INVALID / STAGE2-NOT-AUTHORIZED-NOT-EXECUTED**
+更新日: 2026-08-29  
+状態: **CLOSED AT STAGE 1 / STAGE0-TECHNICAL-PASS / STAGE1-TECHNICAL-INVALID / STAGE2-NOT-AUTHORIZED-NOT-EXECUTED**
 
 ## Study anchor
 
@@ -19,7 +19,7 @@ source-freeze checkpoint commit = 4366e439c2838dd7f2f388e834ecc93aed7efcb6
 authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
 ```
 
-## Frozen representation and design
+## frozen representation / design
 
 ```text
 RAW identity include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -82,7 +82,7 @@ independent verification job = 99007180273 / completed / failure
 failed verification step = Independent full-corpus replay and recomputation
 ```
 
-The archived `execution-start.json` records the Stage 1 seed block as consumed.
+archived `execution-start.json`にはStage 1 seed blockがconsumedであることを記録しています。
 
 ### Production artifact
 
@@ -111,7 +111,7 @@ phaseAuc.mtaji = 0.6657646992502396
 balancedAccuracy = 0.6684641309581127
 ```
 
-All frozen production readiness gates were true. These values are unverified production provenance only.
+frozen production readiness gateはすべてtrueでした。ただし、これらの値はunverified production provenanceのみです。
 
 ### Independent verification artifact
 
@@ -124,7 +124,7 @@ verification SHA256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4
 independent development core SHA256 = 5b2251ef1ac34295cd1d67412c9d7f09adbe55b5af81a8752d3cb639b036e22a
 ```
 
-Verification checks:
+Verification check:
 
 ```text
 fullCorpusReplay = true
@@ -139,21 +139,25 @@ technicalPass = false
 finalDecision = STAGE1-TECHNICAL-INVALID
 ```
 
-Exactly four of 600 rows failed feature-vector hash equality; all RAW keys and continuation-derived quantities matched.
+600 rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。すべてのRAW keyとcontinuation-derived quantityは一致しました。
 
-## Technical root cause
+## technical root cause
 
-The four feature mismatches are entirely localized to `MOVE_SET_ENTROPY.indexEntropy`. Production accumulates entropy from a `Map` in insertion order; the independent implementation accumulates values from a plain object whose integer-like keys enumerate numerically. The resulting difference in floating-point addition order yields exact differences of `2.220446049250313e-16` to `4.440892098500626e-16`.
+4件のfeature mismatchはすべて`MOVE_SET_ENTROPY.indexEntropy`へ局在します。
 
-The frozen verifier requires exact equality, so this is a technical integrity failure even though continuation remeasurement, model development and readiness recomputation match.
+Productionは`Map`のinsertion orderでentropyを累積し、independent implementationはplain objectのvalueを使用します。integer-like keyはnumeric orderで列挙されるため、floating-point addition orderが異なります。
 
-Authoritative machine-readable records:
+その結果、exact差として`2.220446049250313e-16`〜`4.440892098500626e-16`が生じました。
+
+frozen verifierはexact equalityを要求するため、continuation remeasurement、model development、readiness recomputationが一致していてもtechnical integrity failureです。
+
+Authoritative machine-readable record:
 
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 - `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
 
-## Final disposition
+## final disposition
 
 ```text
 Stage 1 = STAGE1-TECHNICAL-INVALID
@@ -164,4 +168,6 @@ replacement/extension = NOT AUTHORIZED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-The production result must not be promoted, and no post-hoc tolerance/rounding change may rescue this Stage 1. Any continuation of the research line requires a new prospective successor with technical hardening, a new scientific source freeze, fresh seed block, and new explicit authorization.
+production resultを昇格してはいけません。post-hoc tolerance / rounding changeでStage 1を救済することもできません。
+
+研究lineを継続する場合は、technical hardening、新しいscientific source freeze、fresh seed block、新しいexplicit authorizationを備えたprospective successorが必要です。

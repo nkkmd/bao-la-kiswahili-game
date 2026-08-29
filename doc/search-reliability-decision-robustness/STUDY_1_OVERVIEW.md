@@ -1,17 +1,21 @@
-# Search Reliability / Decision Robustness Study 1 — Overview
+# G2-02 第1研究概要 — 探索信頼性と意思決定頑健性
 
 Program label: `G2-02`  
 Study ID: `SRDR-STUDY1`  
-Research Generation: **Research Generation 2**  
-Status: **COMPLETE / formal decision `INCONCLUSIVE`**
+研究世代: **Research Generation 2**  
+状態: **完了 / 正式判断 `INCONCLUSIVE`**
 
-## 何を調べたか
+正式英語名: **Search Reliability / Decision Robustness Study 1**
 
-同一のauthoritative RAW stateに対し、探索depth、node budget、quiescenceをprospectively frozenに変化させたとき、best move、TopSet、ranking、evaluation sign、principal variationがどの程度安定するかを検証した。
+## 1. この研究は何を調べたのか
 
-本Studyのprimary constructは**machine search reliability / decision robustness**であり、人間の難しさ、局面複雑度、game-theoretic value、engine correctness、public AI strengthとは別物である。D3などの高resource条件もtruthではなくfrozen search referenceとしてのみ扱った。
+同一のauthoritative RAW stateに対して、探索depth、node budget、quiescence条件を結果を見る前に固定した複数条件へ変化させたとき、**best move、TopSet、着手順位、evaluation sign、principal variationがどの程度安定しているか**を検証しました。
 
-## 設計
+本研究が測定する中心概念は、**機械探索における信頼性と意思決定の頑健性（machine search reliability / decision robustness）**です。
+
+これは、人間にとっての局面の難しさ、局面そのものの複雑度、game-theoretic value、engine correctness、公開Bao AIの棋力とは別の概念です。また、D3など計算資源を多く使う条件も「真の正解」とはみなさず、事前に固定した探索上の比較基準としてのみ扱いました。
+
+## 2. 研究設計
 
 ```text
 Stage 0 = technical validation / PASS
@@ -24,11 +28,13 @@ move ordering = frozen
 node-budget partial iteration = discarded
 ```
 
-Stage 1は1,018 selected unique RAW states（Namua 527 / Mtaji 491）で全readiness gateをPASSし、development profileをfreezeした。
+Stage 1では1,280局の開発用データから1,018個のunique RAW statesを選択しました。内訳はNamua 527、Mtaji 491です。
 
-## Stage 2
+すべての実行準備条件を満たしたため、開発段階のsearch profileを`PROFILE-FROZEN-DEVELOPMENT`として固定し、Stage 2では変更しませんでした。
 
-Stage 2は1,536/1,536 gamesを生成し、独立verifierが全game replay、selection、1,007 selected statesのmeasurementを再構築した。
+## 3. Stage 2の検証結果
+
+Stage 2では1,536/1,536局を生成し、独立verifierが全対局のreplay、局面選択、1,007 selected statesの測定を再構築しました。
 
 ```text
 games verified = 1536 / 1536
@@ -40,30 +46,36 @@ measurement hash match = true
 Stage 1 overlap = trajectory 0 / opening prefix 0 / RAW state 0
 ```
 
-しかし、事前固定したestimability gateのうち1項目が未達だった。
+つまり、生成・局面選択・測定の独立再現は成立し、Stage 1とStage 2のデータ分離も確認できました。
 
-| Gate | observed | required | result |
+## 4. 推定可能性の判定
+
+しかし、事前に固定した推定可能性の条件のうち1項目を満たしませんでした。
+
+| 判定条件 | 観測値 | 必要値 | 結果 |
 | --- | ---: | ---: | --- |
-| unique historical trajectories after Stage 1 firewall | **1,040** | **>= 1,050** | **FAIL** |
+| Stage 1との分離後に残ったunique historical trajectories | **1,040** | **>= 1,050** | **FAIL** |
 | selected unique RAW states | 1,007 | >= 1,000 | PASS |
 | Namua selected states | 518 | >= 450 | PASS |
 | Mtaji selected states | 489 | >= 450 | PASS |
-| distinct opening prefixes after firewall | 1,040 | >= 900 | PASS |
+| 分離後のdistinct opening prefixes | 1,040 | >= 900 | PASS |
 
-10 trajectory不足でも、追加seed、replacement、threshold relaxation、near-miss exceptionはno-rescue ruleに反するため実施していない。
+必要数との差は10 trajectoryでしたが、結果を見た後の追加seed、replacement、threshold relaxation、near-miss exceptionは、事前に定めたno-rescue ruleに反するため実施していません。
 
-## Formal decision
+## 5. 正式判断
 
 ```text
 SRDR-STUDY1 = INCONCLUSIVE
 primaryFormalCriterion = null
 ```
 
-Gateが全PASSしなかったため、pre-registered primary 3 criteriaはformal decision-bearing evaluationへ入っていない。したがって`CONFIRMED`または`NOT-CONFIRMED`へ読み替えない。
+すべての推定可能性条件を満たさなかったため、事前登録したprimary 3 criteriaは正式判断を担う評価へ進んでいません。
 
-## 記述的secondary profile
+したがって、この研究結果を`CONFIRMED`または`NOT-CONFIRMED`へ読み替えることはしません。
 
-Gate failure後も、事前指定されたsecondary profileはdescriptive evidenceとして保存する。
+## 6. 記述的なsecondary profile
+
+正式判断には使用できませんが、事前に指定していたsecondary profileは記述的証拠として保存しています。
 
 ```text
 D2_Q1 vs D3_Q1 canonical-best agreement = 0.734856
@@ -71,9 +83,15 @@ D2_Q2 vs D2_Q1 canonical-best agreement = 0.748759
 B1024 vs D3 canonical-best agreement = 0.941410
 ```
 
-NamuaではMtajiより低いagreementが多く観測されたが、formal gate failure後のsecondary resultであり、human difficultyやtrue move qualityのclaimには使用しない。
+NamuaではMtajiよりagreementが低い比較が多く観測されました。ただし、これはformal gate failure後に保持したsecondary resultであり、人間の難しさや「真の着手品質」を示す結果としては使用しません。
 
-## 詳細
+## 7. 何が分かり、何が分からなかったか
+
+探索条件を変化させたときの各種decision representationを、独立に再現可能な形で測定するところまでは成功しました。一方、正式な主要基準を評価するために必要なtrajectory数が事前条件に届かなかったため、中心仮説について正式な肯定・否定はできませんでした。
+
+`INCONCLUSIVE`は探索が不安定だった、あるいは安定していた、という方向の結論ではありません。
+
+## 8. 詳細・再現用文書
 
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
 - [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)

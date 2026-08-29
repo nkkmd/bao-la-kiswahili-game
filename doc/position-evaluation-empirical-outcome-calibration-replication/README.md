@@ -1,17 +1,21 @@
-# Position Evaluation / Empirical Outcome Calibration Replication Study 1
+# G2-01 — 形勢評価と実現勝敗の校正再検証
 
-Program label: `G2-01`
-Study ID: `PEOCR-STUDY1`
-Status: **COMPLETE / formal decision `INCONCLUSIVE`**
-Research generation: **Research Generation 2**
+Program label: `G2-01`  
+Study ID: `PEOCR-STUDY1`  
+状態: **完了 / 正式判断 `INCONCLUSIVE`**  
+研究世代: **Research Generation 2**
 
-## Result
+正式英語名: **Position Evaluation / Empirical Outcome Calibration Replication Study 1**
 
-Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE`を変更・救済せず、新しいfresh populationでactor-relative static Bao evaluationとempirical continuation outcomeのheld-out calibration replicationを実施した。
+## 結果
 
-Stage 1は2,048 fresh gamesで全readiness gateをPASSし、phase-stratified isotonic PAVA mappingを`MODEL-FROZEN-DEVELOPMENT`として固定した。Stage 2は8,192/8,192 fresh gamesを生成し、全8 shardの独立replay、統合selection/measurementの独立verification、Stage 1 cross-stage overlap 0/0/0を達成した。
+Research Generation 1の`PEC-STUDY1 = INCONCLUSIVE`を変更・救済せず、新しいfresh populationを用いて、actor-relative static Bao evaluationとempirical continuation outcomeのheld-out calibration replicationを実施しました。
 
-しかしstrict firewall後に3つのestimability gateが未達となった。
+Stage 1は2,048 fresh gamesで全readiness gateをPASSし、phase-stratified isotonic PAVA mappingを`MODEL-FROZEN-DEVELOPMENT`として固定しました。
+
+Stage 2は8,192/8,192 fresh gamesを生成し、8 shardすべての独立replay、統合後のselection / measurement独立verification、Stage 1とのcross-stage overlap `0 / 0 / 0`を達成しました。
+
+しかし、strict firewall後に3つのestimability gateが未達となりました。
 
 ```text
 unique trajectories after firewall = 3898 < 4500
@@ -19,9 +23,9 @@ selected unique RAW states = 3570 < 4000
 Mtaji selected states = 1747 < 1750
 ```
 
-Formal decision: `PEOCR-STUDY1 = INCONCLUSIVE`。Primary Brier/log-loss formal branchには入っておらず、`NOT-CONFIRMED`ではない。
+正式判断は`PEOCR-STUDY1 = INCONCLUSIVE`です。Primary Brier / log-loss formal branchには入っておらず、`NOT-CONFIRMED`ではありません。
 
-## Start here
+## 最初に読む文書
 
 1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
 2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
@@ -31,10 +35,10 @@ Formal decision: `PEOCR-STUDY1 = INCONCLUSIVE`。Primary Brier/log-loss formal b
 6. [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
 7. [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
 
-## Immutable boundaries
+## 変更しない境界
 
-- Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE` remains immutable.
-- RAW identity remains `pits,reserve,houseOwned,player,phase,winner,pending`.
-- No symmetry/canonicalization was used for formal deduplication.
-- No Stage 2 seed extension, replacement, gate relaxation, mapping refit, or subgroup rescue is authorized.
-- Game-theoretic, human-perception, causal, public-AI-quality, and AI-generation claims are outside this Study.
+- Research Generation 1 `PEC-STUDY1 = INCONCLUSIVE`はimmutableです。
+- RAW identityは`pits,reserve,houseOwned,player,phase,winner,pending`を維持します。
+- formal deduplicationにsymmetry / canonicalizationは使用していません。
+- Stage 2 seed extension、replacement、gate relaxation、mapping refit、subgroup rescueは承認されていません。
+- game-theoretic、human-perception、causal、public-AI-quality、AI-generationに関するclaimは本Studyの範囲外です。
