@@ -148,6 +148,8 @@ node tools/diagnostic-to-fixture.js \
 | `artifacts/` | 保存済みのベンチマーク・チューニング・研究出力 |
 | `doc/` | ルール学習、研究成果、ロードマップ、ベンチマーク、開発ログ、技術レポート |
 
+人間向け研究・AI Engineering文書の言語と用語表記は、[`doc/DOCUMENTATION_LANGUAGE_POLICY.md`](doc/DOCUMENTATION_LANGUAGE_POLICY.md)を基準とします。
+
 ## AI Engineering
 
 本リポジトリでは、研究成果の科学的判断とは分離して、public Bao AI の品質向上作業を独立した engineering track として管理しています。研究結果そのものの formal decision を engineering outcome によって変更することはありません。
@@ -190,6 +192,7 @@ node tools/diagnostic-to-fixture.js \
 
 ## ドキュメント
 
+- [`doc/DOCUMENTATION_LANGUAGE_POLICY.md`](doc/DOCUMENTATION_LANGUAGE_POLICY.md): 人間向け研究・AI Engineering文書の日本語主言語、canonical identifier保持、凍結artifactの安全境界
 - [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md): 採用ルールの参照元、固定コミット、実装差分、更新方針
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
 - [`doc/JOSEKI_RESEARCH.md`](doc/JOSEKI_RESEARCH.md): 定石研究の方法、全フェーズの実験結果、最終判断をまとめた統合記録
