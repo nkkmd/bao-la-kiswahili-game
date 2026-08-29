@@ -1,0 +1,41 @@
+name: PCRPR Stage 1 Resource Preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-07-practical-comeback-reply-pressure-representation
+    paths:
+      - 'doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
+      - 'tools/experiments/lib/pcrpr-stage0-production.js'
+      - 'tools/experiments/lib/pcrpr-stage1-production.js'
+      - 'tools/experiments/run-pcrpr-stage1-resource-preflight.js'
+      - '.github/workflows/pcrpr-stage1-resource-preflight.yml'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+
+permissions:
+  contents: read
+
+jobs:
+  resource-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check
+        run: node --check tools/experiments/run-pcrpr-stage1-resource-preflight.js
+      - name: Technical-only resource preflight
+        run: |
+          node tools/experiments/run-pcrpr-stage1-resource-preflight.js \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-resource-preflight-v1.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage1-resource-preflight-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-resource-preflight-v1.json
+          if-no-files-found: error
+          retention-days: 30
