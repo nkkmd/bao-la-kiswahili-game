@@ -2,158 +2,178 @@
 
 ## 2026-08-28 — Startup audit and prospective freeze
 
-- Re-fetched remote `main` directly from GitHub.
-- Verified full SHA `37480777246aa306c6ca3d0679d936b5e0107071`.
-- Verified equality with the expected post-G2-05-hardening SHA supplied at study start.
-- Verified zero open pull requests.
-- Audited historical G2-01..G2-05 and G2-05 hardening branches against `main`; audited branches were ahead by zero commits and contained no residual unmerged scientific work.
-- Read central program state and G2-05 hardening decision.
-- Confirmed G2-06 start conditions were satisfied.
-- Created `research/g2-06-rich-critical-position-representation` directly from the verified baseline SHA.
-- Froze `RCPR-STUDY1` and Stage IDs before any G2-06 scientific outcome generation.
-- Froze RAW scientific identity and `validated transform set = []`.
-- Froze A/B/C/D leakage classes and the eight prospectively declared representation families.
-- Froze no-rescue, Stage transition, independent-verification and interpretation boundaries.
+- Verified remote `main` at `37480777246aa306c6ca3d0679d936b5e0107071`.
+- Created `research/g2-06-rich-critical-position-representation` from the verified baseline.
+- Prospectively froze `RCPR-STUDY1`, Stage IDs, RAW identity, no-canonicalization boundary, leakage classes, eight representation families, no-rescue behavior and independent-verification requirements.
+- Historical Research Generation 1 Critical Positions evidence was excluded from G2-06 training/tuning/validation/formal evidence.
 
 Scientific outcome generated: **none**.
 
-## 2026-08-28 — Stage 0 source audit
+## 2026-08-28 — Stage 0 source audit and technical acceptance
 
-Historical Critical Positions reproducibility material was inspected strictly as method/technical reference.
-
-Relevant historical primitives identified:
-
-```text
-public/engine.js
-public/ai.js
-public/ai-weights.js
-tools/experiments/lib/position-complexity-search-diagnostic.js
-tools/experiments/lib/critical-positions-outcome-branching.js
-tools/experiments/lib/tactical-motif-features.js
-tools/experiments/lib/position-typology-features.js
-```
-
-Important identity finding:
-
-`position-typology-features.js::identityKeys()` computes both a direct `ruleStateKey` and a seat-swapped canonical key using `mirrorState()`.
-
-Disposition:
-
-- do not use that helper as RCPR scientific identity;
-- implement a dedicated RAW-only serializer/keyer;
-- retain `public/engine.js` as the shared authoritative rule primitive;
-- permit search code only under an explicitly frozen search profile;
-- do not read historical CPOB Stage 1 corpus, selected-root payloads, measurements or discovery audit in the RCPR development/formal pipeline.
-
-Scientific outcome generated: **none**.
-
-## 2026-08-28 — Stage 0 technical acceptance
-
-- Stage 0 source commit `dca7a70e75fb1014b752f4549bd6d1164b1feecb` executed in GitHub Actions run `33179301221`.
-- Workflow conclusion was `success`.
-- Artifact `9688987798` (`rcpr-stage0-technical-v1`) was archived with ZIP SHA256 `442b7ba7dcaeab244e3ed35def5fa2e4508f999fecd7fdb1ea28951a3ea5a269`.
-- Six fixtures (Namua 3 / Mtaji 3) exercised all eight declared candidate families and 310 scalar features.
-- Production and structurally independent representations agreed exactly.
-- RAW identity implementations agreed exactly.
-- All mandatory positive and negative controls passed.
-- Feature schema SHA256 was frozen as `1d9dd5e0ea42dc7bcdb7a385077397e08385fcdb4eeb695fc5625501dbc8526b`.
-- Stage 0 result core SHA256 was frozen as `d26401b6814b501589d1811f3f182ce731822f91bef2a203a5b874b285de05ac`.
-- Decision recorded: `STAGE0-TECHNICAL-PASS`.
+- Implemented dedicated RAW-only production/independent representation paths.
+- Stage 0 source commit: `dca7a70e75fb1014b752f4549bd6d1164b1feecb`.
+- Workflow `33179301221` completed successfully; artifact `9688987798` ZIP SHA256 `442b7ba7dcaeab244e3ed35def5fa2e4508f999fecd7fdb1ea28951a3ea5a269`.
+- Six fixtures covered Namua/Mtaji, all eight families and 310 scalar features.
+- Production/independent representation and RAW identity agreed exactly; positive and negative controls passed.
+- Feature schema SHA256 frozen as `1d9dd5e0ea42dc7bcdb7a385077397e08385fcdb4eeb695fc5625501dbc8526b`.
+- Stage 0 result core SHA256 `d26401b6814b501589d1811f3f182ce731822f91bef2a203a5b874b285de05ac`.
+- Decision: `STAGE0-TECHNICAL-PASS`.
 
 Scientific outcome generated: **none**.
 
 ## 2026-08-28 — Stage 1 development design freeze
 
-- Committed `preregistration/STAGE_1_DEVELOPMENT_SPEC.json` at branch commit `efe44154c0fcfc99df492dc6680f59bf3a3d1f29`.
-- Froze fresh development games `3072` and seed block `28610001..28613072` as `CONSUME-ONCE-DEVELOPMENT-ONLY`.
-- Froze six generation strata, outcome-blind root selection, Namua/Mtaji quotas of `300/300`, RAW/trajectory/opening-prefix identity semantics, 310-feature representation contract, continuation instrument, `D_range >= 0.30` construct boundary, candidate family sets, deterministic 5-fold development rule, operating-threshold rule and readiness gates.
-- Froze the requirement for independent full-corpus replay, root reselection, feature recomputation, continuation remeasurement and model-development recomputation.
-- Explicitly retained `scientificInferenceAuthorized = false` and `developmentOutcomeGenerationAuthorizedBySpecAlone = false`.
-- Required authorization path frozen as `doc/rich-critical-position-representation/authorizations/STAGE_1_EXECUTE.json` after implementation/source-hash/contract-smoke validation.
+- Froze `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`.
+- Fresh source games: 3072; scientific seed block `28610001..28613072`, `CONSUME-ONCE-DEVELOPMENT-ONLY`.
+- Froze six generation strata, outcome-blind selection, 300/300 phase quotas, 310-feature representation, continuation instrument, `D_range >= 0.30`, candidate family sets, deterministic five-fold development procedure, operating-threshold rule and readiness gates.
+- Froze independent full-corpus replay, root reselection, feature recomputation, continuation remeasurement, model-development recomputation and fail-closed technical decision.
+- Stage 1 remained unauthorized by spec alone.
 
 Scientific outcome generated: **none**.
 
-## 2026-08-29 — Restart audit and resume synchronization
+## 2026-08-29 — Implementation validation and execution-contract freeze
 
-The previous chat became unstable, so repository state was re-audited before continuation.
+- Final implementation smoke: workflow `33195723195`, job `98932225577`, success.
+- Smoke artifact `9695647002`, ZIP SHA256 `9d87a3aba46e69952061aa3b30a628f41fe6525db69299634bf1386716273a11`.
+- Resource preflight: workflow `33195349152`, job `98930953453`, success.
+- Resource artifact `9695494212`, ZIP SHA256 `aec9f6c4c5bca8308ace21bfa47b17bc400e7215ecde8a69395b6183c560f4b1`.
+- Froze separate 360-minute production/independent jobs, Node 6144 MB old-space, deterministic encodings and consume-once failure semantics.
+- Scientific implementation/source contract frozen at `a69ffce86cb278680ee676a2a9469aeb1d9ab1d4`.
+- Stage 1 spec SHA256 `813b99ed64cc3af1438119f513faf6be64e7c6b6d6015a0fff5c962b58ef1fbb`.
+- Execution addendum SHA256 `e246f562735c72ccc29ea320021be7bb3cb0056f30cf063dca0e3d0366a89d64`.
 
-Verified:
-
-```text
-remote main = 37480777246aa306c6ca3d0679d936b5e0107071
-research branch pre-sync head = efe44154c0fcfc99df492dc6680f59bf3a3d1f29
-branch relation to main = ahead 17 / behind 0
-G2-06 PR = none
-Stage 0 workflow 33179301221 = completed / success
-Stage 0 decision = STAGE0-TECHNICAL-PASS
-Stage 1 spec = prospectively frozen
-Stage 1 scientific execution authorization = absent
-Stage 1 scientific outcome generated = none
-Stage 2 authorization = absent
-```
-
-A documentation inconsistency was identified: `CURRENT_STATUS.md` and `REPRODUCIBILITY_INDEX.md` still described the pre-Stage-0-execution state even though Stage 0 acceptance and the Stage 1 prospective freeze were already committed. This restart synchronization updated only status/reproducibility/resume documentation and did not change any scientific threshold, classifier, endpoint, population, feature family, seed block, representation boundary, upstream decision, or authorization state.
-
-Scientific outcome generated during restart synchronization: **none**.
-
-## 2026-08-29 — Stage 1 implementation validation
-
-- Implemented the frozen Stage 1 production pipeline and structurally independent verifier.
-- Added non-scientific implementation smoke controls using technical seeds outside the fresh Stage 1 development block.
-- Final implementation smoke executed in workflow `33195723195`, job `98932225577`, and passed all steps.
-- Production smoke SHA256: `e8c7a944876b370f0516b8b4dc2a1176e649202fc08354dc4663503a01d54611`.
-- Independent smoke SHA256: `e0e335e85f6759178f510dc50d6ca585c35c4aa10aa933045c2f6a6f1cf89bc4`.
-- Final smoke artifact `9695647002` ZIP SHA256: `9d87a3aba46e69952061aa3b30a628f41fe6525db69299634bf1386716273a11`.
-- Confirmed the scientific runner refused execution while explicit authorization was absent.
-
-Scientific outcome generated: **none**. Fresh Stage 1 block consumed: **no**.
-
-## 2026-08-29 — Stage 1 resource and execution-contract freeze
-
-- Ran full 200-ply non-scientific resource preflight in workflow `33195349152`, job `98930953453`.
-- Preflight artifact `9695494212` ZIP SHA256: `aec9f6c4c5bca8308ace21bfa47b17bc400e7215ecde8a69395b6183c560f4b1`.
-- Resource preflight result SHA256: `48682f9bf2c11cb7c3410d1620fe1a127cd4108befa2ddae88f20bb4697e32c0`.
-- Prospectively froze `STAGE_1_EXECUTION_ADDENDUM.json`, including deterministic implementation encodings, separate production/independent 360-minute jobs, 6144 MB Node old-space ceiling, and consume-once failure semantics.
-- Scientific implementation/source contract frozen at commit `a69ffce86cb278680ee676a2a9469aeb1d9ab1d4`.
-- Stage 1 spec SHA256 remained `813b99ed64cc3af1438119f513faf6be64e7c6b6d6015a0fff5c962b58ef1fbb`.
-- Execution addendum SHA256 later independently measured as `e246f562735c72ccc29ea320021be7bb3cb0056f30cf063dca0e3d0366a89d64`.
-
-Scientific outcome generated: **none**. Fresh Stage 1 block consumed: **no**.
+Scientific outcome generated: **none**. Fresh block consumed: **no**.
 
 ## 2026-08-29 — Exact source-freeze audit
 
-- Added a dedicated preauthorization, read-only source-freeze audit without modifying the scientific source commit.
-- Audit commit: `7545a50524d6ef425ff97c4bc93c7138a523f967`.
-- Workflow run `33196797865`, job `98935883477`, completed `success`.
-- Artifact `9696075216` ZIP SHA256: `fabb644c69d0f5efac48f3275a1e28a008a84832c7a7c4fd99a5f199038dbd7c`.
-- Audit envelope SHA256: `03c466fa075d95ee0a8aba8ba863e7236a9a1997e8b566e6725b0ba378476a2d`.
-- Verified remote `main` remained `37480777246aa306c6ca3d0679d936b5e0107071`.
-- Verified authorization was still absent at audit time.
-- Verified all 17 frozen runtime/orchestration files exactly matched their Git blobs at scientific source commit `a69ffce86cb278680ee676a2a9469aeb1d9ab1d4`.
-- Persisted the complete source-blob map in `results/STAGE_1_SOURCE_FREEZE_AUDIT.json`.
-- Source-freeze checkpoint closed at commit `4366e439c2838dd7f2f388e834ecc93aed7efcb6`.
+- Source-freeze audit workflow `33196797865`, job `98935883477`, success.
+- Artifact `9696075216`, ZIP SHA256 `fabb644c69d0f5efac48f3275a1e28a008a84832c7a7c4fd99a5f199038dbd7c`.
+- Audit envelope SHA256 `03c466fa075d95ee0a8aba8ba863e7236a9a1997e8b566e6725b0ba378476a2d`.
+- Verified baseline main, authorization absence at audit time, scientific-source ancestry, spec/addendum hashes and all 17 frozen source blobs.
+- Source-freeze checkpoint closed at `4366e439c2838dd7f2f388e834ecc93aed7efcb6`.
 
-Scientific outcome generated by audit: **none**. Fresh Stage 1 block consumed by audit: **no**.
+Scientific outcome generated: **none**. Fresh block consumed: **no**.
 
-## 2026-08-29 — Stage 1 explicit authorization and consume-once execution start
+## 2026-08-29 — Stage 1 explicit authorization and execution start
 
-- Created explicit authorization `RCPR-S1-EXECUTE-2026-08-29-v1` in `authorizations/STAGE_1_EXECUTE.json`.
-- Authorization commit: `a0d630df2ee5fbd943d306ab959ce509cbcc2330`.
-- Authorization binds the exact Stage 1 spec SHA256, execution-addendum SHA256, scientific source commit, complete source-blob map, source-freeze audit provenance, fixed seed block, and consume-once failure contract.
-- Authorization retains `scientificInferenceAuthorized = false`, `confirmatoryReuseAllowed = false`, and `stage2Authorized = false`.
-- Authorization push triggered Stage 1 workflow run `33196954082`.
-- Production job: `98936414477`.
-- The step `Execute fresh Stage 1 development population once` entered `in_progress`.
-- Under the prospectively frozen execution contract, once this production step has started and there is no evidence that execution remained before `execution-start.json`, the Stage 1 seed block is conservatively and irreversibly classified as consumed for this Study.
+- Created authorization `RCPR-S1-EXECUTE-2026-08-29-v1` at commit `a0d630df2ee5fbd943d306ab959ce509cbcc2330`.
+- Authorization retained `scientificInferenceAuthorized=false`, `confirmatoryReuseAllowed=false`, `stage2Authorized=false`.
+- Push triggered workflow run `33196954082`.
+- Production job `98936414477` crossed the execution-start boundary.
+- Under the prospectively frozen contract the block `28610001..28613072` became permanently consumed.
 
 ```text
-fresh games = 3072
-seed block = 28610001..28613072
 consumption state = CONSUMED
 same-block rerun = NOT AUTHORIZED
 replacement/extension = NOT AUTHORIZED
-Stage 1 result = PENDING
-Stage 2 = NOT AUTHORIZED
 ```
 
-No completed Stage 1 scientific result is recorded at this log point. The only authorized next action while run `33196954082` is active is read-only workflow inspection.
+## 2026-08-29 — Stage 1 production completion
+
+Production job `98936414477` completed `success`.
+
+Production output:
+
+```text
+status = PASS-AWAITING-INDEPENDENT-VERIFICATION
+generatedGames = 3072
+selectedRoots = 600
+primaryEstimable = 599
+highDivergence = 134
+lowDivergence = 465
+selectedFamilySetId = RICH_ALL
+overallAuc = 0.7093403948001926
+phaseAuc.namua = 0.7356189599631845
+phaseAuc.mtaji = 0.6657646992502396
+balancedAccuracy = 0.6684641309581127
+productionResultSha256 = bc2ece4cb2df6f3cc5625324661c56fcaa6476c9921265f08fa13f005373b66e
+```
+
+All production readiness gates were true.
+
+Artifact:
+
+```text
+ID = 9704250489
+name = rcpr-stage1-development-production-v1
+size = 3168004 bytes
+ZIP SHA256 = 00c210eb0fd9391c67e05b40daa3a85f66a1bc5ba2a460db40128f290e6d26d8
+```
+
+Interpretation at this point remained **production-only / awaiting independent verification**.
+
+## 2026-08-29 — Independent verification failure
+
+Independent job `99007180273` completed `failure` at `Independent full-corpus replay and recomputation` and still uploaded the verification artifact.
+
+Verifier result:
+
+```text
+fullCorpusReplay = true
+rootReselection = true
+selectedRowCount = true
+independentFeatureRecomputation = false
+independentFullContinuationRemeasurement = true
+independentModelDevelopmentRecomputation = true
+readinessRecomputation = true
+developmentCoreMatch = false
+technicalPass = false
+finalDecision = STAGE1-TECHNICAL-INVALID
+verificationSha256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4b44ee2
+```
+
+Verification artifact:
+
+```text
+ID = 9708956844
+name = rcpr-stage1-development-verified-v1
+size = 3191366 bytes
+ZIP SHA256 = 1f1be58ec9dccd5aa35ad7a903333b5c8c912795edab7b31d4e2541119e8d0e5
+```
+
+The artifact included `execution-start.json`, `production-result.json`, and `independent-verification.json`. `execution-start.json` explicitly confirmed the scientific Stage 1 seed block was consumed.
+
+Exactly four of 600 rows failed `featureVectorMatch`. All 600 rows were present; RAW state key, continuation measurement, `D_range`, and high-divergence label matched.
+
+## 2026-08-29 — Technical postmortem
+
+Read-only artifact/source analysis localized all four differences to `MOVE_SET_ENTROPY.indexEntropy`.
+
+Cause:
+
+- production `rcpr-production.js::entropy(values)` uses a `Map`, preserving insertion order;
+- independent `rcpr-independent.js::shannon(values)` uses a plain object;
+- JavaScript enumerates integer-like object keys in numeric order rather than encounter order;
+- the same entropy terms are therefore added in a different order;
+- IEEE-754 non-associativity produces exact differences of `2.220446049250313e-16` to `4.440892098500626e-16`.
+
+No difference was observed in continuation remeasurement, `D_range`, high-divergence classification, model-development recomputation or readiness recomputation.
+
+This technical explanation does **not** rescue Stage 1. The prospectively frozen verifier required exact feature-vector equality.
+
+## 2026-08-29 — Stage 1 fail-closed closure
+
+Final decision:
+
+**`STAGE1-TECHNICAL-INVALID`**
+
+Governance consequences:
+
+```text
+Stage 1 seed block = CONSUMED
+same-block repair/rerun = PROHIBITED
+post-hoc tolerance/rounding rescue = PROHIBITED
+production-only result promotion = PROHIBITED
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+Permanent records:
+
+- `results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
+- `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
+
+Any continuation of this research line must be a new prospective successor with deterministic entropy-order/numeric-hash semantics hardened before scientific authorization, adversarial technical fixtures, a new study/spec/source freeze, fresh scientific seed block and new explicit authorization. `RCPR-STUDY1` rows are not successor formal evidence.

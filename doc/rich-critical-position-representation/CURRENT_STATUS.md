@@ -6,17 +6,15 @@ Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
 ## Status
 
-**STUDY ACTIVE / STAGE 0 TECHNICAL PASS / STAGE 1 SOURCE FREEZE PASS / STAGE 1 EXPLICITLY AUTHORIZED / STAGE 1 PRODUCTION EXECUTION IN PROGRESS / FRESH STAGE 1 BLOCK CONSUMED / STAGE 1 RESULT NOT YET AVAILABLE / STAGE 2 NOT AUTHORIZED**
-
-Stage state:
+**STUDY CLOSED AT STAGE 1 / STAGE 0 TECHNICAL PASS / STAGE 1 TECHNICAL INVALID / FRESH STAGE 1 BLOCK CONSUMED / NO SAME-BLOCK RERUN / STAGE 2 NOT-AUTHORIZED-NOT-EXECUTED**
 
 ```text
 RCPR-S0-TECHNICAL-2026-08-28-v1 = COMPLETE / STAGE0-TECHNICAL-PASS
-RCPR-S1-DEVELOPMENT-2026-08-28-v1 = AUTHORIZED / EXECUTION-IN-PROGRESS / SEED-BLOCK-CONSUMED / RESULT-PENDING
+RCPR-S1-DEVELOPMENT-2026-08-28-v1 = COMPLETE / STAGE1-TECHNICAL-INVALID / SEED-BLOCK-CONSUMED
 RCPR-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-Repository and execution anchors:
+## Repository and execution anchors
 
 ```text
 baseline remote main = 37480777246aa306c6ca3d0679d936b5e0107071
@@ -24,83 +22,111 @@ research branch = research/g2-06-rich-critical-position-representation
 scientific source commit = a69ffce86cb278680ee676a2a9469aeb1d9ab1d4
 source-freeze checkpoint commit = 4366e439c2838dd7f2f388e834ecc93aed7efcb6
 authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
-Stage 1 workflow run = 33196954082
-Stage 1 production job = 98936414477
+Stage 1 workflow run = 33196954082 / completed / failure
+production job = 98936414477 / success
+independent verification job = 99007180273 / failure
 G2-06 pull request = none
 ```
 
-The Stage 1 production step `Execute fresh Stage 1 development population once` has started. Under the prospectively frozen execution contract, the fresh development block is therefore treated as permanently **consumed** for `RCPR-STUDY1`. No same-block repair or rerun is authorized even if a later technical or independent-verification failure occurs.
+Remote `main` was rechecked after the workflow failure and remained exactly `37480777246aa306c6ca3d0679d936b5e0107071`.
 
-No Stage 1 development result is recorded yet in the repository at this status point. Stage 2 remains unauthorized.
-
-## Frozen Study identity and scientific boundary
+## Stage 1 consume-once state
 
 ```text
-Study ID = RCPR-STUDY1
-Formal title = Rich Critical-Position Representation Study 1
-Stage 0 = RCPR-S0-TECHNICAL-2026-08-28-v1
-Stage 1 = RCPR-S1-DEVELOPMENT-2026-08-28-v1
-Stage 2 = RCPR-S2-FORMAL-2026-08-28-v1
+source games = 3072
+seed block = 28610001..28613072
+seed use = CONSUME-ONCE-DEVELOPMENT-ONLY
+consumption = CONSUMED
+same-block rerun = NOT AUTHORIZED
+replacement/extension = NOT AUTHORIZED
+```
+
+The archived `execution-start.json` records `scientificStage1SeedBlockConsumed = true`. The block cannot be rerun or repaired inside `RCPR-STUDY1`.
+
+## Terminal artifacts and hashes
+
+```text
+production artifact = 9704250489
+production artifact ZIP SHA256 = 00c210eb0fd9391c67e05b40daa3a85f66a1bc5ba2a460db40128f290e6d26d8
+production result SHA256 = bc2ece4cb2df6f3cc5625324661c56fcaa6476c9921265f08fa13f005373b66e
+production development core SHA256 = 245c7e04421b1ef534edcb23d3048df1e2f1d556f9223f1eee84f054973f66b8
+
+verification artifact = 9708956844
+verification artifact ZIP SHA256 = 1f1be58ec9dccd5aa35ad7a903333b5c8c912795edab7b31d4e2541119e8d0e5
+verification SHA256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4b44ee2
+independent development core SHA256 = 5b2251ef1ac34295cd1d67412c9d7f09adbe55b5af81a8752d3cb639b036e22a
+```
+
+## Production-only development output
+
+Production completed successfully and all frozen production readiness gates passed:
+
+```text
+generated games = 3072
+selected roots = 600
+primary estimable = 599
+high divergence = 134
+low divergence = 465
+selected family set = RICH_ALL
+overall OOF AUROC = 0.7093403948001926
+Namua AUROC = 0.7356189599631845
+Mtaji AUROC = 0.6657646992502396
+balanced accuracy = 0.6684641309581127
+```
+
+These values are retained for provenance only as **production-only unverified development output**. They do not constitute an accepted Stage 1 scientific result, do not authorize Stage 2, and are not confirmatory evidence.
+
+## Independent verification failure
+
+```text
+fullCorpusReplay = true
+rootReselection = true
+selectedRowCount = true
+independentFeatureRecomputation = false
+independentFullContinuationRemeasurement = true
+independentModelDevelopmentRecomputation = true
+readinessRecomputation = true
+developmentCoreMatch = false
+technicalPass = false
+finalDecision = STAGE1-TECHNICAL-INVALID
+```
+
+Exactly four of 600 selected rows failed exact feature-vector hash equality. All rows were present, and RAW state identity, continuation measurements, `D_range`, and high-divergence labels agreed.
+
+## Technical postmortem
+
+Root cause is a deterministic floating-point accumulation-order discrepancy in `MOVE_SET_ENTROPY.indexEntropy`:
+
+- production uses `Map` insertion order when summing entropy terms;
+- the independent implementation uses object enumeration, which numerically reorders integer-like move-index keys;
+- the resulting IEEE-754 differences are approximately `2.22e-16` to `4.44e-16` on four Mtaji rows;
+- exact hash equality therefore fails.
+
+This localization does not alter the frozen decision. Stage 1 remains **`STAGE1-TECHNICAL-INVALID`**.
+
+Machine-readable closure and postmortem:
+
+- `results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
+- `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
+
+## Scientific boundary
+
+```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
 validated transform set = []
 canonicalization = false
 symmetry reduction = false
-```
-
-All Research Generation 1 and G2-01..G2-05 formal decisions remain immutable. Historical Critical Positions outcomes are prohibited as G2-06 training, tuning, threshold selection, validation, or formal evidence.
-
-## Stage 0 accepted technical result
-
-Stage 0 was accepted as **STAGE0-TECHNICAL-PASS**.
-
-```text
-source commit = dca7a70e75fb1014b752f4549bd6d1164b1feecb
-workflow run = 33179301221
-workflow conclusion = success
-artifact = 9688987798
-artifact ZIP SHA256 = 442b7ba7dcaeab244e3ed35def5fa2e4508f999fecd7fdb1ea28951a3ea5a269
-fixtures = 6 (Namua 3 / Mtaji 3)
-candidate feature families = 8
-numeric scalar features = 310
 feature schema SHA256 = 1d9dd5e0ea42dc7bcdb7a385077397e08385fcdb4eeb695fc5625501dbc8526b
-production/independent exact representation agreement = true
-RAW identity production/independent agreement = true
-mandatory positive controls = PASS
-mandatory negative controls = PASS
-Stage 0 result core SHA256 = d26401b6814b501589d1811f3f182ce731822f91bef2a203a5b874b285de05ac
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Stage 1 frozen design and source contract
+All Research Generation 1 and G2-01..G2-05 formal decisions remain immutable. Historical Critical Positions evidence remains excluded from G2-06 training, tuning, threshold selection, validation, and formal evidence.
 
-```text
-Stage 1 spec SHA256 = 813b99ed64cc3af1438119f513faf6be64e7c6b6d6015a0fff5c962b58ef1fbb
-execution addendum SHA256 = e246f562735c72ccc29ea320021be7bb3cb0056f30cf063dca0e3d0366a89d64
-fresh source games = 3072
-fresh development seeds = 28610001..28613072
-seed use = CONSUME-ONCE-DEVELOPMENT-ONLY
-selected roots target = 600 (Namua 300 / Mtaji 300)
-representation width = 310 finite scalar features
-candidate families = 8
-criticality construct = fixed-policy exact-root-move continuation D_range
-high-divergence boundary = D_range >= 0.30
-replicates per exact root move = 64
-continuation horizon = 200 post-root plies
-model-development CV = 5-fold by historicalTrajectoryHash
-Stage 1 rows reusable as Stage 2 evidence = false
-```
+## Next valid work
 
-Final implementation smoke passed in workflow `33195723195`; the exact source-freeze audit passed in workflow `33196797865`. The full frozen source-blob map is retained in `results/STAGE_1_SOURCE_FREEZE_AUDIT.json`.
+`RCPR-STUDY1` itself has no further scientific stage transition. Do not rerun or repair Stage 1 and do not authorize Stage 2.
 
-Explicit authorization is retained in `authorizations/STAGE_1_EXECUTE.json` and binds the frozen spec, execution addendum, scientific source commit, exact source-blob map, consume-once seed block, and fail-closed failure contract.
-
-## Current next gate
-
-Do not alter scientific source files, seeds, feature families, model-selection rules, thresholds, continuation policy, or resource/failure semantics while Stage 1 is running.
-
-The next valid state transition is determined solely by the already-running workflow:
-
-- production success -> independent full-corpus replay/recomputation;
-- production or independent failure after consumption -> `STAGE1-TECHNICAL-INVALID`, no same-block rerun, Stage 2 not authorized;
-- complete production + independent verification -> record Stage 1 development result and apply the prospectively frozen readiness/target-formation rule before any Stage 2 freeze.
-
-For restart, inspect workflow run `33196954082` and read the latest execution checkpoint before taking any further action.
+A future successor may be designed only as a new prospective study after technical hardening. It must freeze deterministic entropy ordering/numeric-hash semantics, pass adversarial independent representation fixtures, and use a fresh study/spec/source freeze, fresh scientific seed block, and new explicit authorization.
