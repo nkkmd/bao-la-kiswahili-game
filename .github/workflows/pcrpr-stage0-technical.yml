@@ -1,0 +1,51 @@
+name: PCRPR Stage 0 Technical
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-07-practical-comeback-reply-pressure-representation
+    paths:
+      - 'doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_0_TECHNICAL_VALIDATION_PROTOCOL.md'
+      - 'tools/experiments/lib/pcrpr-stage0-production.js'
+      - 'tools/experiments/run-pcrpr-stage0-technical.js'
+      - 'tools/experiments/verify-pcrpr-stage0-independent.js'
+      - '.github/workflows/pcrpr-stage0-technical.yml'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+
+permissions:
+  contents: read
+
+jobs:
+  stage0-technical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout branch commit
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Production technical representation
+        run: |
+          node tools/experiments/run-pcrpr-stage0-technical.js \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage0-technical-v1
+
+      - name: Independent exact recomputation
+        run: |
+          node tools/experiments/verify-pcrpr-stage0-independent.js \
+            --input artifacts/local/practical-comeback-reply-pressure-representation/stage0-technical-v1/production.json \
+            --output artifacts/local/practical-comeback-reply-pressure-representation/stage0-technical-v1/independent-verification.json
+
+      - name: Upload Stage 0 technical artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage0-technical-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage0-technical-v1/
+          if-no-files-found: error
+          retention-days: 30
