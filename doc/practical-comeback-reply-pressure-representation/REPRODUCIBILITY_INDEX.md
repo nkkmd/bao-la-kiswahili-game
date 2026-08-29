@@ -1,7 +1,7 @@
 # PCRPR-STUDY1 — Reproducibility Index
 
 Updated: 2026-08-29
-Status: **STUDY START FROZEN / NO SCIENTIFIC OUTCOME GENERATED**
+Status: **STAGE 0 TECHNICAL PASS / STAGE 1 PREAUTHORIZATION VALIDATION IN PROGRESS / NO SCIENTIFIC OUTCOME GENERATED**
 
 ## Study anchor
 
@@ -72,28 +72,125 @@ Stage 2 use = FORMAL-ONLY
 
 Neither reservation constitutes authorization.
 
-## Current source-code provenance
+## Stage 0 frozen protocol and source
 
-No PCRPR scientific implementation, workflow, source hash, feature schema hash, Stage 0 result, Stage 1 spec hash, authorization hash, scientific workflow run, or artifact exists yet.
+Canonical Stage 0 source commit:
 
-These fields must be added only when materialized and frozen prospectively.
+```text
+19c70ba60c8b43858b01a01c5a448311660269c4
+```
 
-## Numeric integrity requirements before scientific generation
+Frozen Git blobs:
 
-The future Stage 0 reproducibility record must bind:
+```text
+protocol = b633eb40cfdb95de1f546bba951c425da768e8d3
+production implementation = 84385b79613328fe316a4d54300837efaea4c152
+production runner = e1d78f922daaad4a3f99567dc03abbf4104a03c0
+independent verifier = 7b00e2a579ce868a495ad4425f928266a0b4969d
+workflow = 0a7c83a0c658aba44633d88b7b3b434ebe7b80c3
+```
 
-- exact root/reply move serializer;
-- canonical category ordering;
-- deterministic accumulation order;
-- binary64 serialization/hash contract;
-- integer numerator/denominator storage where applicable;
-- production feature implementation blobs;
-- independent feature implementation blobs;
-- adversarial fixture set and hashes;
-- exact-vs-tolerance comparison semantics by output class;
-- resource preflight provenance.
+Canonical technical workflow:
 
-No scientific authorization may precede these bindings.
+```text
+run = 33238931893 / success
+job = 99064778014 / success
+artifact = 9710763348 / pcrpr-stage0-technical-v1
+artifact bytes = 18826
+artifact ZIP SHA256 = 408c778171973903f0f7a55ed9b468cea37a4f41e94dbfd677a682c4dadcd59b
+```
+
+Stage 0 result:
+
+```text
+STAGE0-TECHNICAL-PASS
+production gates = 18 / 18 PASS
+independent gates = 9 / 9 PASS
+technical rows = 9
+scalar features per row = 80
+production core SHA256 = 792eb081e5ed287b3adca5b6bfa340d7a23747d384483dca60b7c39aacceba37
+production file SHA256 = 380f67c70765f3f7dbd08480e5c25f73455a9b59b6c436b2d5d033e875c05b36
+```
+
+The technical fixture seed menu `28700001..28700032` is outside both scientific blocks.
+
+Canonical records:
+
+- `preregistration/STAGE_0_TECHNICAL_VALIDATION_PROTOCOL.md`
+- `FEATURE_DICTIONARY.md`
+- `results/STAGE_0_TECHNICAL_RESULT.json`
+- `checkpoints/2026-08-29-stage0-technical-pass.md`
+
+## Numeric integrity contract
+
+```text
+schema = PCRPR_FEATURES_STAGE0_V1
+families = 12
+scalar width = 80
+exact move/reply order = ASCII lexical exact move key where not explicitly score-ranked
+aggregation = deterministic left-to-right IEEE-754 binary64 over canonical order
+scalar encoding = IEEE-754 binary64 big-endian lowercase hex
+feature-vector comparison = exact hash equality
+tolerance = none
+```
+
+The Stage 0 adversarial matrix includes reply-list permutation, integer-like category labels, tied scores, zero/one reply semantics, missing/corrupted `pending`, seed conservation, leakage injection, search-config drift, schema drift, raw-key mismatch, and deliberate hash perturbation.
+
+## Stage 1 prospective records
+
+Before any Stage 1 scientific execution, the following have been committed:
+
+- `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
+- `preregistration/STAGE_1_COMPUTATION_CONTRACT.json`
+
+The development spec freezes source population, occurrence-first root selection, fresh D3 disadvantage screen, all-exact-root-move row construction, strong/medium/weak continuation policies, replicate counts, 96-ply bounded endpoint, primary/secondary class-D targets, grouped deterministic ridge grid, readiness gates, failure taxonomy, resource ceilings, consume-once rule, and Stage 1→2 firewall.
+
+A pre-outcome self-audit found an accidental duplicate family-set definition (`F03_REPLY_POLICY` duplicated `F04_ALL_NO_TEMPORAL`). It was corrected before implementation validation, authorization, scientific seed consumption, or scientific outcome. The correction is recorded inside the current Stage 1 spec.
+
+The computation contract freezes exact arithmetic/order semantics for target construction, standardization, normal equations, Cholesky decomposition, prediction, RMSE, tie-aware Spearman, top-quintile enrichment, candidate selection, final fitting and binary64 parameter serialization. Independent verification must reproduce exact OOF/final hashes; no tolerance is authorized.
+
+## Stage 1 current implementation provenance
+
+Current preauthorization production components include:
+
+```text
+tools/experiments/lib/pcrpr-stage1-production.js
+tools/experiments/lib/pcrpr-stage1-model.js
+tools/experiments/run-pcrpr-stage1-implementation-smoke.js
+.github/workflows/pcrpr-stage1-preauth-smoke.yml
+```
+
+These are not yet scientific source bindings. Exact blobs must be re-frozen only after all preauthorization validation completes.
+
+Preauthorization smoke history:
+
+```text
+run 33239399107 = TECHNICAL ATTEMPT / syntax failure before technical source-game generation
+scientific seeds generated = 0
+Stage 1 scientific block consumed = false
+
+run 33239459359 = corrected-source technical-only smoke / execution in progress at this reproducibility update
+head = 2851f7f82f092f664f16f845e5ea52cd189b7213
+syntax checks = PASS
+scientific block used = false
+technical seed menu = 28701001..28701064
+```
+
+The first failed preauthorization attempt has no scientific status and does not consume or invalidate the Stage 1 block.
+
+## Remaining preauthorization requirements
+
+Before `authorizations/STAGE_1_EXECUTE.json` may exist, the Study still requires:
+
+1. complete production Stage 1 implementation smoke PASS;
+2. structurally separate independent Stage 1 verifier implementation and exact smoke PASS;
+3. technical-only resource preflight PASS;
+4. Stage 1 spec/computation/feature/source byte hashes;
+5. exact production/verifier/workflow/source Git blob map;
+6. source-freeze audit PASS;
+7. explicit authorization commit.
+
+No scientific generation is authorized before all seven are satisfied.
 
 ## Reproduction boundary
 
