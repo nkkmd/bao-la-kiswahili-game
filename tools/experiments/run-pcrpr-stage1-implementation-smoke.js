@@ -20,17 +20,20 @@ function syntheticModelRows(realRows) {
   const measurements=[];
   const usedFolds=new Set();
   let counter=0;
-  while(rows.length<15 || usedFolds.size<5){
+  while(rows.length<20 || usedFolds.size<5){
     const historicalTrajectoryHash=Core.sha256("PCRPR-SMOKE-TRAJ|"+counter);
     const fold=Model.foldIndex(historicalTrajectoryHash);
     const rowIdentity=Core.sha256("PCRPR-SMOKE-ROW|"+counter);
-    const row={...Core.clone(template),rowIdentity,historicalTrajectoryHash};
+    const phase=counter%2===0?"namua":"mtaji";
+    const generationStratum="SMOKE-S"+(counter%6);
+    const row={...Core.clone(template),rowIdentity,historicalTrajectoryHash,phase,generationStratum};
     rows.push(row); usedFolds.add(fold);
     const value=((counter%7)-3)/8;
     measurements.push({rowIdentity,strongWin:0,mediumWinRate:Math.max(0,value),weakWinRate:Math.max(0,value/2),primaryLift:value,weakLift:value/2,policySpan:Math.abs(value),administrative:{strong:0,medium:0,weak:0},outcomes:{STRONG:[{boundedWin:0}],MEDIUM:[{boundedWin:0}],WEAK:[{boundedWin:0}]}});
     counter+=1;
     ensure(counter<200,"failed to populate synthetic folds");
   }
+  ensure(rows.some((row)=>row.phase==="namua")&&rows.some((row)=>row.phase==="mtaji"),"synthetic phase coverage missing");
   return {rows,measurements};
 }
 
@@ -55,6 +58,7 @@ function run(){
   const cv=Model.crossValidate(prepared,spec);
   ensure(cv.candidates.length===Object.keys(spec.developmentModel.candidateFamilySets).length*spec.developmentModel.ridgeLambdas.length,"candidate grid mismatch");
   ensure(Number.isFinite(cv.selectedPooledOofRmse)&&Number.isFinite(cv.selectedPooledOofSpearman),"non-finite model smoke metrics");
+  ensure(Number.isFinite(cv.selectedNamuaOofSpearman)&&Number.isFinite(cv.selectedMtajiOofSpearman),"non-finite phase smoke metrics");
 
   const result={
     schemaVersion:1,studyId:spec.studyId,stageId:spec.stageId,
@@ -68,7 +72,9 @@ function run(){
     reducedContinuationReplicates:{strong:1,medium:2,weak:2,horizon:16},
     modelSmokeRows:prepared.length,
     modelCandidateGrid:cv.candidates.length,
-    selectedModelSmoke:{familySetId:cv.selectedFamilySetId,lambda:cv.selectedLambda,rmse:cv.selectedPooledOofRmse,spearman:cv.selectedPooledOofSpearman},
+    syntheticPhaseCounts:{namua:prepared.filter((row)=>row.phase==="namua").length,mtaji:prepared.filter((row)=>row.phase==="mtaji").length},
+    syntheticFoldCounts:Object.fromEntries([0,1,2,3,4].map((fold)=>[fold,prepared.filter((row)=>Model.foldIndex(row.historicalTrajectoryHash)===fold).length])),
+    selectedModelSmoke:{familySetId:cv.selectedFamilySetId,lambda:cv.selectedLambda,rmse:cv.selectedPooledOofRmse,spearman:cv.selectedPooledOofSpearman,namuaSpearman:cv.selectedNamuaOofSpearman,mtajiSpearman:cv.selectedMtajiOofSpearman},
     passed:true
   };
   writeJson(parseOut(),result);
