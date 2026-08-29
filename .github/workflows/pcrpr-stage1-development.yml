@@ -1,0 +1,116 @@
+name: PCRPR Stage 1 Development — Consume Once
+
+on:
+  push:
+    branches:
+      - research/g2-07-practical-comeback-reply-pressure-representation
+    paths:
+      - 'doc/practical-comeback-reply-pressure-representation/authorizations/STAGE_1_EXECUTE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  authorize-and-consume:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate exact source/hash envelope and cross consume-once boundary
+        run: |
+          node tools/experiments/run-pcrpr-stage1-authorized-gate.js \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/execution-start.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage1-execution-start-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/execution-start.json
+          if-no-files-found: error
+          retention-days: 30
+
+  production:
+    needs: authorize-and-consume
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pcrpr-stage1-execution-start-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/gate
+      - name: Run canonical Stage 1 production development
+        run: |
+          node tools/experiments/run-pcrpr-stage1-development.js \
+            --gate artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/gate/execution-start.json \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/production-result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage1-production-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/production-result.json
+          if-no-files-found: error
+          retention-days: 30
+
+  independent-replay:
+    needs: authorize-and-consume
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pcrpr-stage1-execution-start-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/gate
+      - name: Run authorized structurally separate verifier replay
+        run: |
+          node tools/experiments/run-pcrpr-stage1-independent.js \
+            --gate artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/gate/execution-start.json \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/independent-result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage1-independent-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/independent-result.json
+          if-no-files-found: error
+          retention-days: 30
+
+  final-verification:
+    needs: [authorize-and-consume, production, independent-replay]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pcrpr-stage1-execution-start-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/gate
+      - uses: actions/download-artifact@v4
+        with:
+          name: pcrpr-stage1-production-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/production
+      - uses: actions/download-artifact@v4
+        with:
+          name: pcrpr-stage1-independent-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/independent
+      - name: Compare full independent decision core exactly
+        run: |
+          node tools/experiments/compare-pcrpr-stage1-development.js \
+            --gate artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/gate/execution-start.json \
+            --production artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/production/production-result.json \
+            --independent artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/independent/independent-result.json \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/final-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage1-final-verification-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-development-v1/final-verification.json
+          if-no-files-found: error
+          retention-days: 30
