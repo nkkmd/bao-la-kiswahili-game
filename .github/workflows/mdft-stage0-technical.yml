@@ -1,0 +1,49 @@
+name: MDFT Stage 0 Technical
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-08-machine-decision-failure-taxonomy
+    paths:
+      - '.github/workflows/mdft-stage0-technical.yml'
+      - 'tools/experiments/run-mdft-stage0-technical.js'
+      - 'tools/experiments/lib/mdft-stage0-production.js'
+      - 'tools/experiments/lib/mdft-stage0-independent.js'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+      - 'tools/experiments/lib/search-reliability-decision-robustness.js'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout frozen branch source
+        uses: actions/checkout@v4
+
+      - name: Environment
+        run: |
+          node --version
+          git rev-parse HEAD
+          uname -a
+
+      - name: Run MDFT Stage 0 technical-only controls
+        run: |
+          /usr/bin/time -v node tools/experiments/run-mdft-stage0-technical.js artifacts/local/mdft-stage0-technical 2>&1 | tee artifacts-mdft-stage0.log
+
+      - name: Preserve technical artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdft-stage0-technical-${{ github.sha }}
+          path: |
+            artifacts/local/mdft-stage0-technical/**
+            artifacts-mdft-stage0.log
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30
