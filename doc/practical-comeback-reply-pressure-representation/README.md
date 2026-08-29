@@ -4,7 +4,7 @@ Research Generation 2 `G2-07` — **Practical Comeback / Reply-Pressure Represen
 
 日本語研究題目:
 
-**Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・事前規定検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
+**Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・prospective検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
 
 ## 現在の状態
 
