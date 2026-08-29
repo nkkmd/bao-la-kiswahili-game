@@ -159,10 +159,26 @@ AI Engineeringでは研究世代とAI世代を混同しない。
 - source hash manifest
 - 実験時点のexact command / exact output
 - immutable decision recordとして明示された原文
+- scientific representation contractとして機能するfeature dictionary / technical dictionary
 
 これらに英語が残っていても、再現性・監査可能性を優先する。
 
 必要なら、原文を変えずに別の人間向け日本語Overviewまたは注釈文書を追加する。
+
+### 8.1 CI・validator互換性の固定phrase
+
+人間向けMarkdown内の英語phraseであっても、既存test / validator / workflowがliteral stringとして参照している場合は、そのphraseを**互換用canonical token**として保持する。
+
+本文の説明は日本語化してよいが、翻訳だけを理由としてliteral assertion対象を削除・改名してはならない。
+
+例:
+
+```text
+No additional PEC Stage 2 games
+STUDY COMPLETE / MAIN INTEGRATION COMPLETE
+```
+
+既存文書を日本語化する場合は、関連test / CIを確認し、literal assertionが存在する場合は意味を変えずに当該phraseを残す。
 
 ## 9. 既存文書を日本語化するときの安全規則
 
@@ -178,6 +194,7 @@ AI Engineeringでは研究世代とAI世代を混同しない。
 8. production-only resultをverified resultへ昇格しない。
 9. descriptive resultをformal claimへ昇格しない。
 10. 翻訳に伴う意味変更が疑われる場合は、原文のcanonical termを残す。
+11. relevant CI / testがMarkdown内のliteral phraseを参照していないか確認する。
 
 ## 10. 進行中研究の扱い
 
