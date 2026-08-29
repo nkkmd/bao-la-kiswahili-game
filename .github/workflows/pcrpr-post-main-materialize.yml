@@ -1,0 +1,43 @@
+name: PCRPR Post-Main Closure Materialize
+
+on:
+  push:
+    branches:
+      - maintenance/g2-07-post-merge-closure
+    paths:
+      - 'tools/experiments/materialize-pcrpr-post-main.js'
+      - '.github/workflows/pcrpr-post-main-materialize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Materialize post-main closure records
+        run: node tools/experiments/materialize-pcrpr-post-main.js
+      - name: Verify integration-only state
+        run: |
+          grep -F 'main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e' doc/practical-comeback-reply-pressure-representation/CURRENT_STATUS.md
+          grep -F 'Stage 1 = STAGE1-TECHNICAL-INVALID' doc/practical-comeback-reply-pressure-representation/CURRENT_STATUS.md
+          grep -F 'Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED' doc/practical-comeback-reply-pressure-representation/CURRENT_STATUS.md
+          grep -F 'merge commit = 57f7cf2d58f0543082434cb4c3259e26e90fe02e' doc/practical-comeback-reply-pressure-representation/checkpoints/2026-08-29-main-integration.md
+      - name: Commit post-main closure records
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/practical-comeback-reply-pressure-representation
+          if git diff --cached --quiet; then
+            echo 'No post-main closure changes required.'
+          else
+            git commit -m 'docs(g2-07): record main integration closure'
+            git push origin HEAD:maintenance/g2-07-post-merge-closure
+          fi
