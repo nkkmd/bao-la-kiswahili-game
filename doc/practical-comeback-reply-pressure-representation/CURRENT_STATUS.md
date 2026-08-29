@@ -17,7 +17,7 @@ Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 
 ## 現在の正式状態
 
-**STUDY CLOSED ON RESEARCH BRANCH / STAGE 1 TECHNICAL INVALID / STAGE 2 NOT AUTHORIZED / MAIN NOT INTEGRATED**
+**STUDY CLOSED / STAGE 1 TECHNICAL INVALID / STAGE 2 NOT AUTHORIZED / MAIN INTEGRATED**
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -32,7 +32,7 @@ Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
 validated transform set = []
 canonicalization = false
 symmetry reduction = false
-main integration = NOT PERFORMED
+main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
 ## Stage 0 canonical technical result
@@ -182,6 +182,6 @@ pits,reserve,houseOwned,player,phase,winner,pending
 
 PCRPR-STUDY1について新しいscientific executionは行わない。Stage 2は開始しない。
 
-研究branch上でclosure文書・workflow archival・関連indexの整合性を確認した後、main統合は**別途明示的な指示があるまで行わない**。
+研究branchのclosure、中央index同期、pre-main auditを完了後、PR #77でmainへ統合した。merge commitは`57f7cf2d58f0543082434cb4c3259e26e90fe02e`。
 
 次の独立研究候補は`G2-08 — Machine Decision-Failure Taxonomy Study 1`だが、本研究closureとは分離して開始する。
