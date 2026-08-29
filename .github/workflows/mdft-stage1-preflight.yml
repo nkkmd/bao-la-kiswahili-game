@@ -39,7 +39,9 @@ jobs:
           node --check tools/experiments/run-mdft-stage1-preflight.js
 
       - name: Run technical-only Stage 1 preflight
+        shell: bash
         run: |
+          set -o pipefail
           /usr/bin/time -v node tools/experiments/run-mdft-stage1-preflight.js artifacts/local/mdft-stage1-preflight 2>&1 | tee artifacts-mdft-stage1-preflight.log
 
       - name: Preserve preflight controls and transfer probe
