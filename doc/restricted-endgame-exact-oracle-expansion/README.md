@@ -1,10 +1,10 @@
-# Restricted Endgame Exact Oracle Expansion Study 1
+# G2-04 — 限定終盤exact oracleの拡張
 
-Research Generation 2 `G2-04` / formal Study ID `REEOE-STUDY1`.
+Research Generation 2 `G2-04` / formal Study ID `REEOE-STUDY1`。
 
-Status: **COMPLETED / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**.
+状態: **完了 / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**。
 
-## Canonical documents
+## canonical document
 
 - `STUDY_1_OVERVIEW.md`
 - `STUDY_1_PROTOCOL.md`
@@ -23,17 +23,17 @@ Status: **COMPLETED / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-N
 - `results/STAGE_1_DEVELOPMENT_V2_RESULT.json`
 - `results/STUDY_1_FINAL_RESULT.json`
 
-## Representation rule
+## representation rule
 
-Authoritative RAW identity remained:
+Authoritative RAW identityは次を維持しました。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn/reason` are excluded. Symmetry reduction, canonicalization, quotient graphs, and symmetry-reduced state counting were not used or authorized.
+`turn/reason`は除外します。symmetry reduction、canonicalization、quotient graph、symmetry-reduced state countingは使用も承認もしていません。
 
-## Closure summary
+## closure summary
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -44,6 +44,15 @@ formal decision = INCONCLUSIVE
 fresh exact oracle produced = false
 ```
 
-Stage 1 v2 independently reconstructed 8 selected fresh roots, but none achieved complete forward closure under the prospectively frozen ceilings: four reached `STATE-LIMIT`, three `ADMIN-CUTOFF`, and one `MOVE-NONTERMINATION`. The frozen feasibility rule required at least three complete closures, so Stage 2 was not authorized.
+Stage 1 v2では8 selected fresh rootsを独立再構築しましたが、結果を見る前に固定したceilingの下でcomplete forward closureへ到達したrootは0でした。
 
-No cap increase, domain shrinkage, root replacement, seed extension, partial-closure promotion, symmetry reduction, or other same-study rescue was performed.
+```text
+STATE-LIMIT = 4
+ADMIN-CUTOFF = 3
+MOVE-NONTERMINATION = 1
+COMPLETE = 0
+```
+
+frozen feasibility ruleは最低3 complete closuresを要求していたため、Stage 2は承認されませんでした。
+
+cap increase、domain shrinkage、root replacement、seed extension、partial-closure promotion、symmetry reduction、その他のsame-study rescueは行っていません。
