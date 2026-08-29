@@ -1,32 +1,34 @@
-# Deep RAW State-Space Enumeration Study 1 — Final Report
+# G2-05 第1研究 最終報告 — 深層RAW状態空間の完全列挙
 
-Updated: 2026-08-28  
+更新日: 2026-08-28  
 Program label: `G2-05`  
 Study ID: `DRSSE-STUDY1`  
-Research generation: **Research Generation 2**  
-Formal decision: **`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
+研究世代: **Research Generation 2**  
+正式判断: **`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
-## 1. Research question
+## 1. 研究上の問い
 
-This prospective independent Study asked whether the complete legal forward state space from a prospectively frozen Bao root could be exactly and reproducibly enumerated through a prospectively fixed bounded depth, while separately accounting for authoritative RAW states, game-tree occurrences, branching, transpositions, and phase composition.
+本prospective independent Studyでは、結果を見る前に固定したBao rootから、事前に固定したbounded depthまでのcomplete legal forward state spaceをexactかつ再現可能に列挙できるかを調べました。
 
-The Study did **not** ask for complete forward closure to terminal and did not estimate the total Bao state space or total game-tree complexity.
+同時に、authoritative RAW state、game-tree occurrence、branching、transposition、phase compositionを別々に記録しました。
 
-## 2. Immutable upstream boundaries
+本Studyはterminalまでのcomplete forward closureを求める研究ではなく、Bao全体のstate-space sizeやgame-tree complexity総量を推定する研究でもありません。
 
-Nothing in this Study changes the formal decisions or interpretation boundaries of upstream work:
+## 2. 変更しないupstream境界
 
-- `PEOCR-STUDY1 = INCONCLUSIVE`;
-- `SRDR-STUDY1 = INCONCLUSIVE`, including `1040 < 1050` after its firewall;
-- `STSCV-STUDY1 = INCONCLUSIVE`, T01/T02/T03 `NON-ESTIMABLE`, validated transform set `[]`, canonicalization not authorized;
-- `REEOE-STUDY1 = INCONCLUSIVE`, including Stage 1 v2 complete closures `0/8` and Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`;
-- G1 `SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`.
+本Studyはupstream研究のformal decisionやinterpretation boundaryを一切変更しません。
 
-G2-05 is not a rescue, correction, reclassification, or extension-success label for any of those Studies.
+- `PEOCR-STUDY1 = INCONCLUSIVE`
+- `SRDR-STUDY1 = INCONCLUSIVE`。firewall後の`1040 < 1050`を含む
+- `STSCV-STUDY1 = INCONCLUSIVE`、T01 / T02 / T03=`NON-ESTIMABLE`、validated transform set=`[]`、canonicalization未承認
+- `REEOE-STUDY1 = INCONCLUSIVE`、Stage 1 v2 complete closures=`0/8`、Stage 2=`NOT-AUTHORIZED-NOT-EXECUTED`
+- G1 `SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`
 
-## 3. Authoritative representation
+G2-05は、これらのStudyに対するrescue、correction、reclassification、extension-success labelではありません。
 
-Scientific state identity was RAW-only:
+## 3. authoritative representation
+
+Scientific state identityはRAW-onlyです。
 
 ```text
 pits
@@ -38,18 +40,18 @@ winner
 pending
 ```
 
-Excluded identity fields:
+identityから除外するfield:
 
 ```text
 turn
 reason
 ```
 
-Missing `pending` was fail-closed. The represented-seed invariant was 64.
+`pending`欠落時はfail closedです。represented-seed invariantは64です。
 
-The upstream validated transform set was empty, therefore no symmetry reduction, canonicalization, seat swap, left/right quotient, orbit deduplication, or symmetry-reduced counting was used.
+upstream validated transform setは空なので、symmetry reduction、canonicalization、seat swap、left / right quotient、orbit deduplication、symmetry-reduced countingは使用していません。
 
-Exact move identity was bound by:
+Exact move identityは次でbindingしました。
 
 ```text
 type
@@ -62,19 +64,19 @@ houseChoice
 houseTwo
 ```
 
-Every materialized edge retained the binding:
+materializeしたすべてのedgeでは次のbindingを保持しました。
 
 ```text
 source RAW key -> exact move key -> successor RAW key
 ```
 
-## 4. Prospective Stage structure
+## 4. prospective Stage構成
 
 ### Stage 0 — technical validation
 
-`DRSSE-S0-TECHNICAL-2026-08-28-v1` validated RAW identity, deterministic enumeration, layer accounting, tree-occurrence propagation, transposition accounting, hashing, materialization, and independent verification.
+`DRSSE-S0-TECHNICAL-2026-08-28-v1`では、RAW identity、deterministic enumeration、layer accounting、tree-occurrence propagation、transposition accounting、hashing、materialization、independent verificationを検証しました。
 
-The immutable G1 SSGTC depth-2 result was used only as a technical positive fixture. After two recorded technical blocks, the accepted run reproduced the fixture and all frozen corruption controls were detected.
+immutable G1 SSGTC depth-2 resultはtechnical positive fixtureとしてのみ使用しました。記録済みの2つのtechnical blockを経た後、accepted runはfixtureを再現し、固定corruption controlもすべて検出しました。
 
 ```text
 decision = STAGE0-TECHNICAL-PASS
@@ -84,11 +86,13 @@ artifact = 9679427896
 artifact ZIP SHA256 = 7cd8dbb4e61acf113c0085b79bd298a7588994447750e0f7d4d8201e51c638c4
 ```
 
-Stage 0 authorized no scientific inference.
+Stage 0はscientific inferenceを承認しません。
 
-### Stage 1 — fresh development/resource characterization
+### Stage 1 — fresh development / resource characterization
 
-`DRSSE-S1-DEVELOPMENT-2026-08-28-v1` used a fresh deterministic seed block `28050001..28050064` and prospectively selected three Namua and three Mtaji development roots. All six roots completed independent depth-5 local enumeration and independent replay/re-enumeration.
+`DRSSE-S1-DEVELOPMENT-2026-08-28-v1`ではfresh deterministic seed block `28050001..28050064`を使用し、prospectiveにNamua 3 roots、Mtaji 3 rootsを選択しました。
+
+6 rootsすべてでindependent depth-5 local enumerationとindependent replay / re-enumerationが完了しました。
 
 ```text
 decision = STAGE1-DEVELOPMENT-PASS
@@ -99,11 +103,11 @@ artifact ZIP SHA256 = 47f83b614876a988495c8a68f8d63dda9bf9de105b967398178e6b4bc4
 complete depth-5 roots = 6/6
 ```
 
-Stage 1 remained development-only. Its rows, roots, state counts, transposition observations, and artifacts were barred from formal Stage 2 evidence.
+Stage 1はdevelopment-onlyです。Stage 1 row、root、state count、transposition observation、artifactをformal Stage 2 evidenceとして使用することは禁止しました。
 
 ### Stage 2 — formal bounded enumeration
 
-The formal domain had already been fixed before Stage 1 outcome inspection:
+formal domainはStage 1 outcomeを見る前から次のとおり固定されていました。
 
 ```text
 root = fresh public/engine.js initialState()
@@ -113,11 +117,13 @@ required complete reachable layers = 0..9
 required complete parent expansion layers = 0..8
 ```
 
-The formal run was authorized exactly once against frozen source blobs and frozen resource ceilings.
+Formal runはfrozen source blobとfrozen resource ceilingに対してexactly once承認しました。
 
-## 5. Formal result
+## 5. formal result
 
-The production enumerator completed every frozen layer without resource or administrative stop. The independent verifier then validated all materialized rows and independently re-enumerated the complete depth-9 domain.
+Production enumeratorはresource / administrative stopなしにすべてのfrozen layerを完了しました。
+
+その後independent verifierがmaterialize済みrowをすべて検証し、complete depth-9 domainを独立に再列挙しました。
 
 ```text
 targetComplete = true
@@ -128,11 +134,11 @@ materialized verification = PASS
 full independent exact recomputation = PASS
 ```
 
-Therefore the formal decision is:
+したがって正式判断は次です。
 
 > **`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
-## 6. Exact reachable-state and tree structure
+## 6. exact reachable-state / tree structure
 
 | depth | unique RAW states | new RAW states | cumulative RAW states | tree occurrences | cumulative tree occurrences | tree / layer RAW | terminal |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -147,9 +153,11 @@ Therefore the formal decision is:
 | 8 | 18,298 | 18,298 | 24,848 | 23,270 | 30,941 | 1.2717 | 63 |
 | 9 | 78,009 | 78,009 | 102,857 | 105,704 | 136,645 | 1.3550 | 351 |
 
-Within this frozen range, `newRawStateCount[d] == uniqueRawStateCount[d]` at every depth: no authoritative RAW state in the enumerated standard-root domain appeared at two different exact depth labels through depth 9. This is a bounded descriptive fact, not a global acyclicity claim.
+このfrozen range内では、すべてのdepthで`newRawStateCount[d] == uniqueRawStateCount[d]`でした。つまり、depth 9までのstandard-root domainではauthoritative RAW stateが異なるexact depth labelで再出現していません。
 
-Cumulative exact endpoints are:
+これはbounded descriptive factであり、global acyclicity claimではありません。
+
+Cumulative exact endpoint:
 
 ```text
 distinct RAW states through depth 9 = 102857
@@ -160,7 +168,7 @@ tree edge occurrences from parent depths 0..8 = 136644
 tree / cumulative RAW-state occurrence ratio = 1.328494900687362
 ```
 
-## 7. Branching structure
+## 7. branching structure
 
 | parent depth | RAW parents | legal edges | mean branching | median | terminal parents |
 | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -174,11 +182,11 @@ tree / cumulative RAW-state occurrence ratio = 1.328494900687362
 | 7 | 4,706 | 18,860 | 4.0076 | 4 | 29 |
 | 8 | 18,298 | 81,125 | 4.4335 | 4 | 63 |
 
-No nonterminal parent with zero legal moves was observed in the completely enumerated parent layers. Full branching histograms and edge-set hashes are preserved in the Stage 2 artifact/result.
+完全列挙済みparent layerでは、legal move 0のnonterminal parentは観測されませんでした。full branching histogramとedge-set hashはStage 2 artifact / resultに保存しています。
 
-## 8. Transposition structure
+## 8. transposition structure
 
-Transposition was defined only by exact RAW state identity. Duplicate arrivals first appeared at depth 4.
+Transpositionはexact RAW state identityだけで定義しました。duplicate arrivalはdepth 4で初めて現れました。
 
 | child depth | duplicate arrivals | states with multiple predecessor RAW states |
 | ---: | ---: | ---: |
@@ -190,7 +198,7 @@ Transposition was defined only by exact RAW state identity. Duplicate arrivals f
 | 8 | 562 | 473 |
 | 9 | 3,116 | 2,658 |
 
-At depth 9 the exact predecessor multiplicity histogram was:
+Depth 9のexact predecessor multiplicity histogram:
 
 ```text
 1 -> 75351 states
@@ -200,7 +208,7 @@ At depth 9 the exact predecessor multiplicity histogram was:
 5 -> 2
 ```
 
-and the exact arrival multiplicity histogram was:
+exact arrival multiplicity histogram:
 
 ```text
 1 -> 75132 states
@@ -210,15 +218,15 @@ and the exact arrival multiplicity histogram was:
 5 -> 2
 ```
 
-The difference between graph-state count and game-tree occurrences therefore becomes materially visible by depth 9, but no extrapolation beyond the enumerated domain is authorized.
+したがってdepth 9までにgraph-state countとgame-tree occurrenceの差が明瞭になりますが、enumerated domain外へのextrapolationは承認しません。
 
-## 9. Phase composition
+## 9. phase composition
 
-All nonterminal states in exact layers 0..9 were Namua states. No Mtaji nonterminal state occurred within the frozen depth-9 domain. Terminal states first appeared at depth 5 and numbered 351 at depth 9.
+exact layer 0..9のすべてのnonterminal stateはNamuaでした。frozen depth-9 domainにはMtaji nonterminal stateは存在しませんでした。terminal stateはdepth 5で初めて現れ、depth 9では351 statesでした。
 
-This does **not** imply that Mtaji is globally absent or unreachable; it states only that none occurred within nine plies of this prospectively frozen standard root.
+これはMtajiがglobally absentまたはunreachableだという意味ではありません。事前固定したstandard rootから9 plies以内には存在しなかった、という限定された結果です。
 
-## 10. Independent verification and exact identities
+## 10. independent verification / exact identity
 
 Canonical provenance:
 
@@ -241,37 +249,43 @@ independentCoreSha256 = 02e4a1fa865af977cb10c1f288c42886b32453e56a40bc85cbb0dc99
 decisionCoreSha256 = c1756994ceea3ea9b605805ddd6387f359aeb14e14d894bfc8a1e8b26122fa3f
 ```
 
-Production resource measurements were 24,848 parent expansions, 106,773 move evaluations, 22.9188 seconds elapsed, peak RSS 680,075,264 bytes, and approximately 84.25 MB final uncompressed artifact content. These are computational provenance, not scientific endpoints for extrapolation.
+Production resource measurementは24,848 parent expansions、106,773 move evaluations、22.9188 seconds elapsed、peak RSS 680,075,264 bytes、final uncompressed artifact content約84.25 MBでした。
 
-## 11. Relationship to G1 SSGTC
+これらはcomputational provenanceであり、extrapolation用scientific endpointではありません。
 
-G2-05 independently reproduced the standard-root cumulative depth-8 values `24,848` RAW states and `30,941` tree occurrences as a prefix of the newly frozen depth-9 domain, then completed depth 9 with fresh formal enumeration and independent verification.
+## 11. G1 SSGTCとの関係
 
-This does not revise the G1 decision. `SSGTC-STUDY1` remains exactly what it was: exact only within its own frozen depth-8 domain.
+G2-05は、standard-root cumulative depth-8の`24,848` RAW statesと`30,941` tree occurrencesを、新しく固定したdepth-9 domainのprefixとして独立再現し、その後fresh formal enumerationとindependent verificationによってdepth 9を完了しました。
 
-## 12. Relationship to G2-04
+これはG1 decisionを変更しません。`SSGTC-STUDY1`は従来どおり、そのfrozen depth-8 domain内だけでexactです。
 
-G2-04 asked for complete forward closure to terminal for prospectively selected restricted endgame domains before retrograde exact solution. G2-05 instead asked only for complete enumeration to a fixed bounded depth from a separately frozen root.
+## 12. G2-04との関係
 
-No G2-04 selected root or partial closure was reused. The G2-04 decision remains `INCONCLUSIVE`; G2-05 is not described as its rescue.
+G2-04は、結果を見る前に選定したrestricted endgame domainについて、retrograde exact solutionへ進む前にterminalまでのcomplete forward closureを要求しました。
 
-## 13. Boundary to G2-12
+G2-05は別の固定rootからfixed bounded depthまでのcomplete enumerationだけを問いとしました。
 
-The observed depth-wise growth, branching and transposition statistics are exact descriptions of the enumerated domain only. This Study does not fit an asymptotic model or estimate:
+G2-04 selected rootやpartial closureは再利用していません。G2-04 decisionは`INCONCLUSIVE`のままであり、G2-05をそのrescueとは記述しません。
 
-- total Bao state-space size;
-- total game-tree complexity;
-- unbounded reachable states;
-- full-game growth rate.
+## 13. G2-12との境界
 
-Those questions remain prospective future work, including the designated G2-12 estimation study.
+観測したdepth-wise growth、branching、transposition statisticはenumerated domain内部のexact descriptionに限られます。
 
-## 14. Final conclusion
+本Studyではasymptotic modelをfitせず、次を推定しません。
 
-The frozen standard initial Bao RAW state was completely enumerated through depth 9 under authoritative RAW identity, with exact state, tree, branching, transposition, phase, and hash accounting and complete independent reproduction.
+- total Bao state-space size
+- total game-tree complexity
+- unbounded reachable states
+- full-game growth rate
 
-The correct scientific statement is therefore:
+これらはdesignated G2-12 estimation studyを含む将来のprospective workです。
+
+## 14. 最終結論
+
+frozen standard initial Bao RAW stateは、authoritative RAW identityの下でdepth 9まで完全列挙され、state、tree、branching、transposition、phase、hash accountingをexactに記録し、complete independent reproductionを達成しました。
+
+したがって正しいscientific statementは次です。
 
 > **G2-05 / `DRSSE-STUDY1` = `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`.**
 
-No stronger full-game, symmetry-reduced, game-theoretic, or engineering conclusion is authorized.
+これより強いfull-game、symmetry-reduced、game-theoretic、engineering conclusionは承認しません。

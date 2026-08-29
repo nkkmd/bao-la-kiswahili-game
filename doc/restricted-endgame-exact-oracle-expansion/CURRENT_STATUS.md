@@ -1,12 +1,12 @@
-# REEOE-STUDY1 — Current Status
+# REEOE-STUDY1 — 現在の状態
 
-Updated: 2026-08-28
+更新日: 2026-08-28
 
-## Status
+## 状態
 
 **COMPLETED / FORMAL DECISION `INCONCLUSIVE` / STAGE 2 NOT AUTHORIZED**
 
-## Identity
+## 研究識別子
 
 ```text
 Program = G2-04
@@ -35,7 +35,7 @@ Stage 2 = REEOE-S2-FORMAL-2026-08-28-v1
   NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Formal decision
+## 正式判断
 
 ```text
 formalDecision = INCONCLUSIVE
@@ -44,11 +44,11 @@ formalStage2DomainsEvaluated = 0
 domainLevelFormalDecisionsGenerated = 0
 ```
 
-The Study closed before Stage 2 because the valid fresh Stage 1 v2 development run did not satisfy its prospectively frozen feasibility/acceptance gate.
+valid fresh Stage 1 v2 development runが、結果を見る前に固定したfeasibility / acceptance gateを満たさなかったため、本StudyはStage 2へ進む前に終了しました。
 
 ## Stage 0 technical result
 
-The immutable REWR 8-state / 7-edge exact domain was reconstructed only as a technical positive control.
+immutable REWR 8-state / 7-edge exact domainをtechnical positive controlとしてのみ再構築しました。
 
 ```text
 workflowRunId = 33150063023
@@ -61,11 +61,11 @@ S0-G1..S0-G12 = PASS
 negative controls detected = 4/4
 ```
 
-Stage 0 generated no fresh G2-04 scientific evidence.
+Stage 0ではfresh G2-04 scientific evidenceを生成していません。
 
 ## Stage 1 v1 failure boundary
 
-The first fresh development execution generated production-only development output, after which the independent verifier failed to start because of a module-path defect.
+最初のfresh development executionではproduction-only development outputが生成された後、module-path defectによりindependent verifierが起動できませんでした。
 
 ```text
 workflowRunId = 33150429724
@@ -74,7 +74,7 @@ v1 outputs eligible for later design = false
 v1 seed/RAW identities consumed = true
 ```
 
-The same block was not rerun after the defect became known.
+defect判明後に同じblockを再実行していません。
 
 ## Stage 1 v2 valid development result
 
@@ -86,7 +86,7 @@ games = 512
 maxPly = 240
 ```
 
-Frozen structural/resource contract:
+固定structural / resource contract:
 
 ```text
 phase = mtaji
@@ -103,7 +103,7 @@ move microstates <= 1000000
 minimum complete closures = 3
 ```
 
-Observed and independently reconstructed:
+観測・独立再構築結果:
 
 ```text
 unique witness roots = 7055
@@ -127,15 +127,17 @@ developmentCoreSha256 = 1d21c1c29355556e1a2ba25c20bf8a29b156b86cc9cbe4216aa243bf
 independentVerificationCoreSha256 = b09c71350f990195d0b1e56ee267a615e11b7bfa90942bdbcb2dcd94db7ea003
 ```
 
-Production and independent verification reached the frozen acceptance evaluation without population, selection, or closure-classification disagreement. The workflow exited nonzero only because `0 < 3` complete closures.
+Productionとindependent verificationは、population、selection、closure classificationに不一致なく固定acceptance evaluationまで到達しました。
+
+workflowがnonzero終了した理由は、`0 < 3` complete closuresという事前登録済みacceptance failureだけです。
 
 ## Stage 2 non-authorization
 
-Because the Stage 1 v2 feasibility gate failed, this Study did not create or execute a Stage 2 formal-domain contract.
+Stage 1 v2 feasibility gateがFAILしたため、本StudyではStage 2 formal-domain contractを作成・実行していません。
 
-No post-outcome cap increase, structural restriction, favorable root replacement, seed extension, symmetry reduction, or partial-graph promotion was performed.
+結果確認後のcap increase、structural restriction追加、favorable root replacement、seed extension、symmetry reduction、partial-graph promotionも行っていません。
 
-## Authoritative representation
+## authoritative representation
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -146,7 +148,7 @@ canonicalization = forbidden
 quotient graph = forbidden
 ```
 
-## Immutable upstream state
+## 変更しないupstream state
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -158,12 +160,12 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-None is modified by this Study.
+本Studyはこれらを変更しません。
 
-## Canonical result files
+## canonical result files
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_DEVELOPMENT_V2_RESULT.json`
 - `results/STUDY_1_FINAL_RESULT.json`
 
-Any future attempt to expand the exact oracle under a different structural or resource contract requires a new prospective independent Study/versioned protocol with fresh evidence.
+異なるstructural / resource contractでexact oracle expansionを再検証する場合は、新しいprospective independent Study / versioned protocolとfresh evidenceが必要です。

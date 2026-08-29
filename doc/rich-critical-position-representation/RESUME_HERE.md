@@ -1,12 +1,12 @@
-# RCPR-STUDY1 — Resume Here
+# RCPR-STUDY1 — 再開位置
 
-Updated: 2026-08-29  
+更新日: 2026-08-29  
 Program: `G2-06` / Research Generation 2  
 Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
-## 1. Authoritative restart point
+## 1. authoritative restart point
 
-`RCPR-STUDY1` is closed at Stage 1 and integrated into `main`.
+`RCPR-STUDY1`はStage 1で終了し、`main`へ統合済みです。
 
 ```text
 baseline main before Study = 37480777246aa306c6ca3d0679d936b5e0107071
@@ -22,11 +22,11 @@ integration PR = #73 / merged
 main integration commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
 ```
 
-Do not dispatch, rerun, replace, extend, or reinterpret the consumed Stage 1 execution. All RCPR workflows in integrated `main` are closed-study archival stubs.
+consumed Stage 1 executionをdispatch、rerun、replace、extend、reinterpretしてはいけません。integrated `main`上のRCPR workflowはすべてclosed-study archival stubです。
 
-## 2. Read order
+## 2. 読む順序
 
-Read in this order:
+次の順で確認します。
 
 1. `README.md`
 2. `STUDY_1_OVERVIEW.md`
@@ -43,11 +43,11 @@ Read in this order:
 13. `STUDY_1_PROTOCOL.md`
 14. `preregistration/STUDY_START_FREEZE.md`
 
-## 3. Terminal Stage 1 evidence
+## 3. terminal Stage 1 evidence
 
-Production job `98936414477` succeeded and emitted a production-only readiness pass, including 600 roots, 599 primary-estimable roots, 134 high-divergence roots and `RICH_ALL` with overall OOF AUROC `0.7093403948001926`.
+Production job `98936414477`は成功し、600 roots、599 primary-estimable roots、134 high-divergence roots、`RICH_ALL`、overall OOF AUROC `0.7093403948001926`を含むproduction-only readiness passを出力しました。
 
-Independent job `99007180273` failed exact technical verification. The verifier recorded:
+Independent job `99007180273`はexact technical verificationでFAILしました。verifier record:
 
 ```text
 fullCorpusReplay = true
@@ -61,11 +61,11 @@ technicalPass = false
 finalDecision = STAGE1-TECHNICAL-INVALID
 ```
 
-The production values are provenance only and are not accepted as an independently verified scientific result.
+production valueはprovenance onlyであり、independently verified scientific resultとしてacceptしていません。
 
-## 4. Root cause
+## 4. root cause
 
-Exactly four of 600 rows failed feature-vector hash equality. The mismatch was isolated to `MOVE_SET_ENTROPY.indexEntropy` and to floating-point addition order:
+600 rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。mismatchは`MOVE_SET_ENTROPY.indexEntropy`とfloating-point addition orderへisolatedされました。
 
 ```text
 production: Map insertion-order accumulation
@@ -73,23 +73,25 @@ independent: object integer-key enumeration order
 maximum observed absolute difference: 4.440892098500626e-16
 ```
 
-RAW states, continuation measurements, `D_range`, high-divergence labels, model development and readiness recomputation otherwise matched. This is a technical representation-determinism failure, but the frozen exact-equality gate means the Stage 1 decision remains `STAGE1-TECHNICAL-INVALID`.
+RAW state、continuation measurement、`D_range`、high-divergence label、model development、readiness recomputationはそれ以外では一致しました。
 
-## 5. Immutable no-rescue boundary
+これはtechnical representation-determinism failureですが、frozen exact-equality gateによりStage 1 decisionは`STAGE1-TECHNICAL-INVALID`のままです。
 
-Do not:
+## 5. immutable no-rescue boundary
 
-- rerun seeds `28610001..28613072`;
-- add a tolerance or rounding rule to retrospectively pass this Stage 1;
-- replace the verifier and replay the same consumed block;
-- promote the production-only result;
-- authorize `RCPR-S2-FORMAL-2026-08-28-v1`;
-- reuse Stage 1 development rows as formal evidence;
-- modify prior G2-01..G2-05 or Research Generation 1 decisions.
+次を行ってはいけません。
 
-## 6. Main integration
+- seeds `28610001..28613072`をrerunする
+- retrospectiveにStage 1をPASSさせるためtolerance / rounding ruleを追加する
+- verifierをreplaceして同じconsumed blockをreplayする
+- production-only resultをpromoteする
+- `RCPR-S2-FORMAL-2026-08-28-v1`をauthorizeする
+- Stage 1 development rowをformal evidenceとしてreuseする
+- prior G2-01..G2-05またはResearch Generation 1 decisionを変更する
 
-PR #73 was merged only after the final branch audit, `mergeable=true`, no unresolved review threads, and all five PR workflows passed on head `374d25d2f09ba661aaa8ae8e2e0a06eb03536786`:
+## 6. main integration
+
+PR #73はfinal branch audit、`mergeable=true`、unresolved review thread 0、head `374d25d2f09ba661aaa8ae8e2e0a06eb03536786`上の5 PR workflowすべてのPASSを確認してからmergeしました。
 
 ```text
 Second-generation research agenda audit = 33235980651 / success
@@ -107,11 +109,11 @@ merge method = merge
 merge commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
 ```
 
-## 7. Immediate program continuation
+## 7. immediate program continuation
 
-There is no further scientific execution inside `RCPR-STUDY1`.
+`RCPR-STUDY1`内にこれ以上のscientific executionはありません。
 
-The immediate next agenda item is:
+直後のagenda itemは次です。
 
 ```text
 G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
@@ -119,18 +121,22 @@ priority = P1
 status = planned / new prospective independent study
 ```
 
-Before G2-07 outcome generation, reacquire the current remote `main` HEAD and prospectively freeze its formal Study ID, title, Stage IDs, endpoints, representation, source semantics, seed blocks, technical controls and authorization barrier. `RCPR-STUDY1` rows must not become G2-07 formal evidence.
+G2-07 outcome生成前にcurrent remote `main` HEADを再取得し、formal Study ID、title、Stage ID、endpoint、representation、source semantics、seed block、technical control、authorization barrierをprospectiveに固定する必要があります。
 
-## 8. Future rich-representation replication boundary
+`RCPR-STUDY1` rowをG2-07 formal evidenceとして使用してはいけません。
 
-A future independent study may revisit deterministic rich critical-position representation only after technical hardening:
+## 8. future rich-representation replication boundary
 
-1. freeze deterministic entropy category ordering and numeric/hash semantics;
-2. implement production and independent calculations separately under that semantic contract;
-3. add adversarial technical fixtures with integer-like category keys in nonnumeric encounter order;
-4. require exact equality for all 310 features;
-5. allocate fresh scientific evidence and authorization.
+将来の独立Studyでdeterministic rich critical-position representationを再検討する場合は、technical hardening後にのみ実施できます。
 
-Such work must receive a distinct independent title/identity and must not be named or treated as a reopening/rescue of `RCPR-STUDY1`.
+1. deterministic entropy category orderingとnumeric / hash semanticsを固定する
+2. そのsemantic contractの下でproduction / independent計算を別々に実装する
+3. nonnumeric encounter orderのinteger-like category keyを含むadversarial technical fixtureを追加する
+4. 310 featuresすべてでexact equalityを要求する
+5. fresh scientific evidenceとauthorizationを割り当てる
 
-The correct restart instruction is: **treat G2-06 / RCPR-STUDY1 as closed `STAGE1-TECHNICAL-INVALID` and integrated into main; do not rerun it; begin G2-07 only under a fresh prospective contract from the then-current main.**
+このworkにはdistinct independent title / identityが必要であり、`RCPR-STUDY1`のreopening / rescueとして命名・扱ってはいけません。
+
+正しいrestart instructionは次です。
+
+**G2-06 / RCPR-STUDY1はclosed `STAGE1-TECHNICAL-INVALID`かつmain統合済みとして扱い、rerunしない。G2-07はその時点のcurrent mainからfresh prospective contractの下でのみ開始する。**

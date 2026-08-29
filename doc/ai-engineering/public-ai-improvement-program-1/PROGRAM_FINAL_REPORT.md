@@ -1,17 +1,17 @@
-# PBAI-P1 — Program Final Report
+# PBAI-P1 最終報告
 
 Date: 2026-08-26  
 Program: `PBAI-P1` — Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
 Scientific evidence cutoff: `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
 Frozen baseline: `AI-GEN2-BASELINE-2026-08-26-v1`  
 Frozen global gates: `PBAI-C-GLOBAL-GATES-2026-08-26-v1`  
-Final status: **PROGRAM COMPLETE / KEEP-AI-GEN2**
+最終状態: **PROGRAM COMPLETE / KEEP-AI-GEN2**
 
-## 1. Final engineering outcome
+## 1. 工学上の最終判断
 
-PBAI-P1 evaluated the original candidate inventory without changing the completed Research Generation 1 scientific decisions and without importing Research Generation 2 outcomes.
+PBAI-P1では、完了済みResearch Generation 1の科学的判断を変更せず、Research Generation 2の結果も取り込まずに、開始時点で固定したcandidate inventoryを評価しました。
 
-No candidate reached public adoption.
+最終的に、公開採用まで到達したcandidateはありませんでした。
 
 ```text
 FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
@@ -21,9 +21,11 @@ PBAI-P1 public releases = 0
 public AI code changed by PBAI-P1 = false
 ```
 
-`KEEP-AI-GEN2` is the prospectively permitted and correct engineering result when no candidate satisfies the required evidence and release sequence.
+`KEEP-AI-GEN2`は、必要なevidence sequenceとrelease sequenceを満たすcandidateが存在しなかった場合に、事前に許可されていた正規のengineering resultです。
 
-## 2. Candidate dispositions
+したがって本Programの結論は「改善に失敗したので未決定」ではなく、**固定した評価手順の下では現行`AI-GEN2`を維持することが正しい工学判断だった**というものです。
+
+## 2. 各candidateの最終状態
 
 ### PBAI-C001-v1
 
@@ -33,7 +35,9 @@ result = DEVELOPMENT-BENEFIT-FAIL / HOLD
 PR #61 = CLOSED WITHOUT MERGE
 ```
 
-Support and premetric safety passed, but the frozen decision-quality benefit conjunction failed. Large search-work reduction did not rescue the failed quality gates.
+事前supportとpremetric safetyはPASSしましたが、固定したdecision-quality benefitの複合条件を満たしませんでした。
+
+探索workloadが大きく減少していても、品質条件のFAILを理由に後から救済することはしていません。
 
 ### PBAI-C002-v1
 
@@ -45,7 +49,9 @@ minimum estimable = 48
 PR #55 = CLOSED WITHOUT MERGE
 ```
 
-Candidate benefit metrics were not executed. `TM-S2-C03 = CONFIRMED` remains unchanged.
+評価対象となるeligible targetが必要数に達しなかったため、candidate benefit metricは実行していません。
+
+`TM-S2-C03 = CONFIRMED`という既存の科学的判断は変更しません。
 
 ### PBAI-C003-v1
 
@@ -57,7 +63,9 @@ reachability measurement = NOT EXECUTED
 PR #63 = CLOSED WITHOUT MERGE
 ```
 
-The strict RAW identity precondition failed on the already-known ORISC `pending` binding mismatch. C003 did not produce a zero-hit result and did not revise the restricted-endgame or ORISC scientific decisions.
+Practical reachabilityを測定する前提として要求したstrict RAW identity bindingが、既知のORISC `pending` binding mismatchで成立しませんでした。
+
+そのためC003は0-hit resultを生成しておらず、restricted-endgame研究やORISCの科学的判断も変更していません。
 
 ### PBAI-C004-v1
 
@@ -69,7 +77,9 @@ required <= 0.950
 PR #58 = CLOSED WITHOUT MERGE
 ```
 
-Support and safety passed; the frozen intended-benefit endpoint failed. Position Complexity / Difficulty Study 1 remains `INCONCLUSIVE`.
+事前supportとsafetyはPASSしましたが、固定したintended-benefit endpointを満たしませんでした。
+
+Position Complexity / Difficulty Study 1の正式判断は引き続き`INCONCLUSIVE`です。
 
 ### PBAI-C005
 
@@ -79,14 +89,16 @@ result = NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD
 implementation = NOT CREATED
 ```
 
-A read-only production-surface audit found no current public UI/code/diagnostic surface that represents engine evaluation as validated win probability, win rate, winning chance or confidence probability. Therefore no corrective implementation was justified.
+現在の公開UI、code、diagnostic surfaceをread-onlyで監査した結果、engine evaluationを検証済みのwin probability、win rate、winning chance、confidence probabilityとして扱う箇所は確認されませんでした。
+
+そのため、修正用implementationを作成する根拠はありませんでした。
 
 Canonical audit:
 
 - `C005_PRODUCTION_SURFACE_AUDIT.md`
 - `candidates/PBAI-C005-production-surface-audit-result.json`
 
-## 3. Final inventory
+## 3. 最終inventory
 
 ```text
 original candidate inventory = 5
@@ -101,11 +113,13 @@ public adoption decisions = 0
 PBAI-P1 releases = 0
 ```
 
-The isolated development attempts for C001, C002 and C004, plus C003 predevelopment support work, never produced a merged public candidate implementation.
+C001、C002、C004のisolated development attemptと、C003のpredevelopment support workを含め、public defaultへmergeされたcandidate implementationは1件もありません。
 
-## 4. Scientific boundaries preserved
+## 4. 科学的境界は変更していない
 
-PBAI-P1 does not revise any completed scientific formal decision. In particular:
+PBAI-P1は、完了済み研究の正式判断を一切変更しません。
+
+特に次の状態を維持します。
 
 ```text
 Position Evaluation / Win-Rate Calibration Study 1 = INCONCLUSIVE
@@ -127,17 +141,17 @@ ORISC-STUDY1
 unvalidated symmetry/canonicalization = NOT AUTHORIZED
 ```
 
-Research Generation 2 remains a separate pure-research track and was not incrementally incorporated into this Program.
+Research Generation 2は別個のpure-research trackであり、本Programへ途中から追加していません。
 
-## 5. Baseline retained
+## 5. 維持されたbaseline
 
-The retained public comparator is:
+公開AIの比較基準として維持されるのは次です。
 
 ```text
 AI-GEN2-BASELINE-2026-08-26-v1
 ```
 
-Frozen public source identities remain:
+固定した公開source identityは次のとおりです。
 
 ```text
 public/engine.js
@@ -147,13 +161,13 @@ public/ai.js
 SHA-256 = 2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e
 ```
 
-No PBAI-P1 candidate code is adopted into the public default.
+PBAI-P1で作られたcandidate codeは、公開defaultへ採用されていません。
 
-## 6. Release and generation decision
+## 6. releaseとAI世代の判断
 
-The release sequence was never entered because no candidate reached validation-ready/release-candidate status.
+validation-ready / release-candidate statusまで到達したcandidateが存在しなかったため、release sequenceには入りませんでした。
 
-Therefore:
+その結果、
 
 ```text
 release holdout execution = NOT REQUIRED / NOT EXECUTED
@@ -163,24 +177,26 @@ actual public-default deployment = NONE
 AI-GEN3 = NOT PROMOTED
 ```
 
-The reserved name `AI-GEN3` remains available only for a future engineering program/candidate that obtains both formal `ADOPT` and actual public-default deployment under an appropriate prospective release contract.
+となりました。
 
-## 7. Future work boundary
+予約名`AI-GEN3`は、将来のengineering program / candidateが適切なprospective release contractの下で正式な`ADOPT`と実際のpublic-default deploymentの両方を成立させた場合にのみ使用できます。
 
-PBAI-P1 is closed. Future AI work must not silently reopen or rescue its candidate versions.
+## 7. 今後のAI Engineeringに関する境界
 
-A future materially different engineering mechanism must:
+PBAI-P1は終了済みです。将来のAI Engineeringで、PBAI-P1のcandidate versionを暗黙に再開・救済してはいけません。
 
-1. receive a new candidate/program identity;
-2. state its evidence cutoff prospectively;
-3. preserve completed research decisions;
-4. freeze exact mechanism and acceptance contract before outcome inspection;
-5. protect validation and release holdouts;
-6. retain the `AI-GEN3` naming rule.
+実質的に異なる新しいengineering mechanismを評価する場合は、最低限次を必要とします。
 
-Research Generation 2 can inform a later engineering program only if that later program explicitly establishes a new evidence cutoff. It does not retroactively enter PBAI-P1.
+1. 新しいcandidateまたはProgram identityを付与する。
+2. evidence cutoffを結果を見る前に明示する。
+3. 完了済み研究の科学的判断を維持する。
+4. outcomeを見る前にexact mechanismとacceptance contractを固定する。
+5. validation / release holdoutを保護する。
+6. `AI-GEN3`の命名規則を維持する。
 
-## 8. Canonical final state
+Research Generation 2を将来のAI Engineeringへ利用することは可能ですが、その場合は**新しいProgramが新しいevidence cutoffを明示的に設定する必要があります**。Research Generation 2の結果をPBAI-P1へ遡及的に追加することはありません。
+
+## 8. canonical final state
 
 ```text
 PBAI-P1 = COMPLETE
@@ -191,3 +207,5 @@ original candidate inventory remaining = 0
 public AI code changed by PBAI-P1 = false
 Research Generation 2 evidence included = false
 ```
+
+このcode blockに示したcanonical tokenと状態が、PBAI-P1の最終工学状態です。

@@ -1,10 +1,10 @@
-# SRDR-STUDY1 — Decision Register
+# SRDR-STUDY1 — 判断台帳
 
 ## D-001 — Study identity
 
-Date: 2026-08-27
+日付: 2026-08-27
 
-`G2-02` is instantiated as a new independent Research Generation 2 Study.
+`G2-02`をResearch Generation 2の新しい独立Studyとして開始しました。
 
 ```text
 Formal title = Search Reliability / Decision Robustness Study 1
@@ -12,9 +12,9 @@ Study ID = SRDR-STUDY1
 Japanese working title = Baoにおける探索信頼性と意思決定頑健性の定量化 — depth, node budget, quiescence等の探索条件変化に対するbest move・ranking・evaluation・principal variation安定性のprospective検証
 ```
 
-`G2-02` remains the Agenda sequence label, not the formal Study ID.
+`G2-02`はAgenda上の順序labelであり、正式なStudy IDではありません。
 
-## D-002 — Baseline and branch
+## D-002 — baselineとbranch
 
 ```text
 Study-start remote main = db6980bffb7e6853751914da628db8936c76d81e
@@ -24,15 +24,15 @@ Research branch = research/g2-02-search-reliability-decision-robustness
 Open PRs at start = 0
 ```
 
-Residual G2-01 branches were behind `main` with no commits ahead and were not competing active research branches.
+残存していたG2-01 branchは`main`よりbehindでahead commitはなく、競合するactive research branchではありませんでした。
 
-## D-003 — Research Generation 2 position
+## D-003 — Research Generation 2内での位置づけ
 
-`SRDR-STUDY1` is the Wave A / P0 `G2-02` measurement-foundation Study. It is independent of G2-01 and precedes downstream uses of search-reliability information in later Research Generation 2 work.
+`SRDR-STUDY1`はWave A / P0 `G2-02` measurement-foundation Studyです。G2-01とは独立しており、Research Generation 2の後続研究でsearch-reliability情報を利用する場合の前段研究として位置づけます。
 
-## D-004 — Upstream immutable decisions
+## D-004 — upstreamの変更しない判断
 
-The following remain immutable:
+次の判断は変更しません。
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -41,9 +41,9 @@ PCX-H1 = INCONCLUSIVE
 PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 ```
 
-G2-01 data and Position Complexity scientific rows are prohibited as G2-02 formal evidence. Prior instruments and failure modes may inform technical design and resource planning only.
+G2-01 dataとPosition Complexityのscientific rowをG2-02 formal evidenceとして使用することは禁止します。既存instrumentとfailure modeはtechnical designとresource planningにのみ利用できます。
 
-## D-005 — Primary construct boundary
+## D-005 — primary constructの境界
 
 Primary construct:
 
@@ -52,23 +52,23 @@ machine search reliability / decision robustness
 under prospectively frozen search-condition perturbations
 ```
 
-Not equivalent to human difficulty, structural complexity, empirical win probability, game-theoretic value, engine evaluation correctness, public-AI strength or human perception.
+これはhuman difficulty、structural complexity、empirical win probability、game-theoretic value、engine evaluation correctness、public-AI strength、human perceptionと同一ではありません。
 
-A higher-resource condition is a `frozen search reference` only and never an oracle of true optimal play.
+higher-resource conditionは`frozen search reference`にすぎず、true optimal playのoracleとは扱いません。
 
 ## D-006 — RAW state identity
 
-Formal identity is:
+Formal identityは次です。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn` / `reason` are excluded. Symmetry reduction, reflection equivalence, player-seat canonicalization, state canonicalization and unvalidated isomorphism are forbidden for formal deduplication.
+`turn` / `reason`は除外します。formal deduplicationではsymmetry reduction、reflection equivalence、player-seat canonicalization、state canonicalization、未検証isomorphismを禁止します。
 
-## D-007 — Stage structure
+## D-007 — Stage構成
 
-Fixed at Study start:
+Study開始時に次を固定しました。
 
 ```text
 SRDR-S0-TECHNICAL-2026-08-27-v1
@@ -76,11 +76,11 @@ SRDR-S1-DEVELOPMENT-2026-08-27-v1
 SRDR-S2-FORMAL-2026-08-27-v1
 ```
 
-Stage 0 is technical/non-scientific. Stage 1 is fresh development/construct characterization and is consumed after inspection. Stage 2 is fresh held-out formal replication.
+Stage 0はtechnical / non-scientific、Stage 1はfresh development / construct characterizationで、観察後は消費済みとします。Stage 2はfresh held-out formal replicationです。
 
 ## D-008 — Stage 0 technical spec
 
-The Stage 0 machine-readable spec was frozen at:
+Stage 0 machine-readable specは次で固定しました。
 
 ```text
 preregistration/STAGE_0_TECHNICAL_SPEC.json
@@ -90,17 +90,21 @@ confirmatoryReuseAllowed = false
 scientificSeedUseAllowed = false
 ```
 
-## D-009 — Candidate search axes
+## D-009 — candidate search axes
 
-Stage 0 technically evaluated depth, node budget, quiescence, move ordering and PV extraction together with available public-search controls. The scientific sensitivity axes promoted prospectively were depth, node budget and quiescence. No unrestricted factorial grid was authorized.
+Stage 0ではdepth、node budget、quiescence、move ordering、PV extractionを、利用可能なpublic-search controlとともに技術評価しました。
 
-## D-010 — Implementation boundary
+科学的sensitivity axisとして結果を見る前にpromoteしたのはdepth、node budget、quiescenceです。制限のないfactorial gridは承認していません。
 
-Public `AI.analyzeMove()` supplies the underlying engine/search/evaluator behavior. Dedicated deterministic node-budget semantics and PV extraction are research instrumentation. Formal G2-02 does not interpret deeper or higher-budget search as truth.
+## D-010 — implementation boundary
 
-## D-011 — Move / tie / ranking / PV rules
+Public `AI.analyzeMove()`が基礎となるengine / search / evaluator behaviorを提供します。deterministic node-budget semanticsとPV extractionは研究instrumentationです。
 
-Scientific rules are frozen as:
+Formal G2-02ではdeeper / higher-budget searchをtruthとして解釈しません。
+
+## D-011 — move / tie / ranking / PV規則
+
+Scientific ruleは次で固定しました。
 
 ```text
 move identity = exact AI.moveKey
@@ -113,15 +117,17 @@ ranking ties = exact-score ties with average ranks for correlation
 PV = canonical-exact-nominal-pv/quiescence-score-only/v1
 ```
 
-No result-dependent tie-tolerance or TopSet change is authorized.
+結果に応じたtie toleranceやTopSetの変更は承認しません。
 
-## D-012 — Population / firewall principle
+## D-012 — population / firewall原則
 
-Fresh historically reachable RAW states are required. Selection is search-reliability-outcome-blind. One selected state per historical trajectory is the maximum, followed by RAW-state deduplication. Stage 1 scientific units are consumed after inspection and cannot be reused as Stage 2 formal evidence.
+Fresh historically reachable RAW statesを必要とします。selectionはsearch-reliability outcomeを参照せず行います。
 
-## D-013 — Formal decision taxonomy
+historical trajectoryあたり最大1 stateを選択し、その後RAW-state deduplicationを行います。Stage 1 scientific unitは観察後に消費済みとなり、Stage 2 formal evidenceとして再利用できません。
 
-Study-level taxonomy is frozen as:
+## D-013 — formal decision taxonomy
+
+Study-level taxonomyは次で固定しました。
 
 ```text
 CONFIRMED
@@ -129,19 +135,23 @@ NOT-CONFIRMED
 INCONCLUSIVE
 ```
 
-Technical execution failure is not a scientific failure and may not be relabeled `NOT-CONFIRMED`.
+technical execution failureはscientific failureではなく、`NOT-CONFIRMED`へ読み替えることはできません。
 
-## D-014 — No-rescue and engineering separation
+## D-014 — no-rescueとengineering分離
 
-No post-outcome seed extension, favorable state replacement, search-grid substitution, threshold relaxation, tie tolerance change, subgroup rescue, failed-gate exception or alternate primary is authorized.
+結果確認後のseed extension、favorable state replacement、search-grid substitution、threshold relaxation、tie tolerance change、subgroup rescue、failed-gate exception、alternate primaryは承認しません。
 
-`PBAI-P1` and later AI engineering decisions cannot modify the G2-02 scientific decision.
+`PBAI-P1`および将来のAI Engineering判断によってG2-02の科学的判断を変更することもできません。
 
 ## D-015 — Stage 0 decision
 
-Date: 2026-08-27
+日付: 2026-08-27
 
-Stage 0 passed all technical gates. Node-budget semantics are fixed as last fully completed all-root-candidate iterative-deepening depth only; partial iterations are discarded. PV reconstruction is deterministic postprocessing. Scientific move ordering must remain fixed because ordering can change node consumption even when complete-depth scores are unchanged.
+Stage 0はすべてのtechnical gateをPASSしました。
+
+Node-budget semanticsは、全root candidateを完了した最後のiterative-deepening depthだけを採用し、partial iterationを破棄する方式に固定しました。PV reconstructionはdeterministic postprocessingです。
+
+Scientific move orderingは固定を維持する必要があります。complete-depth scoreが変わらなくてもorderingによりnode consumptionが変化し得るためです。
 
 Decision:
 
@@ -149,11 +159,11 @@ Decision:
 STAGE 0 = PASS
 ```
 
-## D-016 — Stage 1 prospective population and grid
+## D-016 — Stage 1 prospective populationとgrid
 
-Date: 2026-08-27
+日付: 2026-08-27
 
-Stage 1 froze:
+Stage 1では次を固定しました。
 
 ```text
 games = 1280
@@ -164,13 +174,13 @@ no replacement
 search grid = D1_Q1 / D2_Q1 / D3_Q1 / D2_Q0 / D2_Q2 / B64 / B256 / B1024
 ```
 
-The Stage 1 source-freeze commit was `753425610573354ae6394ae414666c3bc62c5365`. Scientific generation was explicitly authorized only after preauthorization and source-hash freeze.
+Stage 1 source-freeze commitは`753425610573354ae6394ae414666c3bc62c5365`です。Scientific generationはpreauthorizationとsource-hash freezeの後にのみ明示的に承認しました。
 
-## D-017 — Stage 1 verification-hash correction classification
+## D-017 — Stage 1 verification-hash correctionの分類
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-The initial Stage 1 independent verifier completed all scientific replay and remeasurement with:
+Initial Stage 1 independent verifierは、すべてのscientific replayとremeasurementを次の状態で完了しました。
 
 ```text
 game replay mismatches = 0
@@ -179,9 +189,9 @@ measurement-row mismatches = 0
 selection hash match = true
 ```
 
-Its final aggregate hash differed because the frozen production pre-serialization representation contained exact-depth `attemptedDepth: undefined` and `abortedDepth: undefined`, whereas JSON persistence omitted those properties.
+最終aggregate hashだけが異なりました。原因は、frozen production pre-serialization representationにexact-depth `attemptedDepth: undefined`と`abortedDepth: undefined`が存在し、JSON persistenceではそれらのpropertyが省略されたことです。
 
-The discrepancy was exactly reproducible both ways from the immutable artifact. It is formally classified as:
+この差はimmutable artifactから両方向にexactに再現できました。正式分類は次です。
 
 ```text
 verification-hash-serialization-defect
@@ -190,15 +200,15 @@ scientific regeneration authorized = false
 seed reconsumption authorized = false
 ```
 
-Correction ID: `SRDR-S1-VERIFICATION-HASH-CORRECTION-2026-08-28-v1`.
+Correction ID: `SRDR-S1-VERIFICATION-HASH-CORRECTION-2026-08-28-v1`。
 
-This decision does not relax any scientific gate and is not a rescue of a scientific outcome.
+この判断はscientific gateを緩和するものではなく、scientific outcomeの救済でもありません。
 
 ## D-018 — Stage 1 development decision
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-After the strict representation-only correction, all prospectively frozen Stage 1 readiness gates passed.
+厳格なrepresentation-only correction後、事前固定したStage 1 readiness gateはすべてPASSしました。
 
 ```text
 games = 1280
@@ -216,15 +226,15 @@ Decision:
 STAGE 1 = PROFILE-FROZEN-DEVELOPMENT
 ```
 
-This is development characterization, not the Study-level formal decision.
+これはdevelopment characterizationであり、Study-level formal decisionではありません。
 
 ## D-019 — Stage 2 consumed-identity firewall
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-Stage 2 uses the corrected immutable Stage 1 artifact solely for consumed-identity exclusion and Stage 2 preregistration/resource planning. Stage 1 rows are not formal evidence.
+Stage 2では、corrected immutable Stage 1 artifactをconsumed-identity exclusionとStage 2 preregistration / resource planningにのみ使用します。Stage 1 rowはformal evidenceではありません。
 
-The Stage 2 firewall is prospectively frozen as:
+Stage 2 firewallは次で固定しました。
 
 ```text
 historicalTrajectoryHash overlap -> exclude / no replacement
@@ -235,11 +245,11 @@ required post-firewall overlap = 0 / 0 / 0
 
 ## D-020 — Stage 2 formal criterion
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-Before any Stage 2 outcome, formal criterion `mixed-material-sensitivity-and-high-budget-convergence/v1` was frozen.
+Stage 2 outcomeを見る前に、formal criterion `mixed-material-sensitivity-and-high-budget-convergence/v1`を固定しました。
 
-After all identity/measurement/reproducibility/estimability gates pass, all three are required:
+すべてのidentity / measurement / reproducibility / estimability gateがPASSした後、次の3条件をすべて要求します。
 
 ```text
 P1: D2_Q1 vs D3_Q1 pooled canonical-best disagreement
@@ -250,7 +260,7 @@ P3: B1024_Q1_MAXD3 vs D3_Q1 pooled canonical-best agreement
     95% Wilson lower bound >= 0.90
 ```
 
-These thresholds are substantive rounded definitions fixed after development but are not copies of Stage 1 point estimates or confidence limits.
+これらのthresholdはdevelopment後に固定したsubstantive rounded definitionですが、Stage 1 point estimateやconfidence limitをそのまま複写したものではありません。
 
 Formal rule:
 
@@ -260,13 +270,13 @@ all gates pass + P1/P2/P3 all pass -> CONFIRMED
 all gates pass + any of P1/P2/P3 fails -> NOT-CONFIRMED
 ```
 
-Phase-stratified metrics, ranking metrics and PV metrics remain mandatory secondary reporting and cannot rescue the primary decision.
+Phase-stratified metric、ranking metric、PV metricはmandatory secondary reportingのままであり、primary decisionを救済できません。
 
 ## D-021 — Stage 2 hash contract
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-Stage 2 prospectively prevents recurrence of the Stage 1 serialization defect:
+Stage 1 serialization defectの再発を防ぐため、Stage 2では次を固定しました。
 
 ```text
 measurement core
@@ -275,15 +285,15 @@ measurement core
 -> SHA-256
 ```
 
-Any undefined-only object property therefore cannot produce a hidden pre-persistence hash split.
+したがって、undefined-only object propertyがhidden pre-persistence hash splitを生むことはありません。
 
 ## D-022 — Stage 2 authorization
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-The Stage 2 preauthorization trigger coverage was repaired before authorization so that all Stage 2 workflow source changes retrigger both the technical contract and source-freeze workflow.
+authorization前にStage 2 preauthorization trigger coverageを修正し、すべてのStage 2 workflow source changeがtechnical contractとsource-freeze workflowの双方を再triggerするようにしました。
 
-On the same source commit:
+同じsource commit上で次を確認しました。
 
 ```text
 source commit = e176cafc15d2dde7b8767de6961959bb7ee9bb7b
@@ -292,11 +302,9 @@ source-freeze run 33124483869 = success
 Stage 2 spec SHA-256 = c4f4249896abc1a9b6c96c1782e4e3835cb395c1b436add3a8c90c1e02e1e509
 ```
 
-Stage 2 was explicitly authorized by commit:
+Stage 2はcommit `bec87d54540c96c24353f2eeadc25338c53e54eb`で明示的に承認しました。
 
-`bec87d54540c96c24353f2eeadc25338c53e54eb`
-
-Authorization is limited to:
+承認範囲は次に限定します。
 
 ```text
 games = 1536
@@ -307,44 +315,59 @@ replacement = false
 no-rescue = active
 ```
 
-Formal run `33124538584` is the authorized Stage 2 execution. No formal decision existed until that run passed independent verification and the frozen analyzer materialized a canonical result.
+Formal run `33124538584`がauthorized Stage 2 executionです。そのrunがindependent verificationをPASSし、frozen analyzerがcanonical resultを生成するまでformal decisionは存在しませんでした。
 
 ## D-023 — Stage 1 development closure
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-Stage 1 completed with `PROFILE-FROZEN-DEVELOPMENT`. The representation-only verification hash correction changed no scientific measurement row and did not authorize formal inference from Stage 1.
+Stage 1は`PROFILE-FROZEN-DEVELOPMENT`で完了しました。representation-only verification hash correctionはscientific measurement rowを一切変更せず、Stage 1からのformal inferenceも承認していません。
 
-## D-024 — Stage 2 formal rule and authorization closure
+## D-024 — Stage 2 formal ruleとauthorization closure
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-Stage 2 was prospectively frozen at 1,536 games / seeds `25021001..25022536`, with Stage 1 trajectory + opening-prefix + RAW-state firewall, unchanged search grid, fixed formal gates and a three-criterion primary conjunction evaluated only after all gates pass. Source-freeze commit: `e176cafc15d2dde7b8767de6961959bb7ee9bb7b`; authorization commit: `bec87d54540c96c24353f2eeadc25338c53e54eb`.
+Stage 2は1,536 games / seed `25021001..25022536`、Stage 1 trajectory + opening-prefix + RAW-state firewall、変更しないsearch grid、固定formal gate、全gate PASS後にのみ評価するthree-criterion primary conjunctionとして事前固定しました。
+
+Source-freeze commit: `e176cafc15d2dde7b8767de6961959bb7ee9bb7b`  
+Authorization commit: `bec87d54540c96c24353f2eeadc25338c53e54eb`
 
 ## D-025 — Formal Stage 2 decision
 
-Date: 2026-08-28
+日付: 2026-08-28
 
-The independent verifier passed with zero game/selection/measurement mismatches and exact hash matches. One preregistered estimability gate failed: `1040 < 1050` unique historical trajectories after the Stage 1 firewall. Under the frozen taxonomy:
+Independent verifierはgame / selection / measurement mismatch 0、exact hash matchでPASSしました。
+
+事前登録したestimability gateのうち1件だけがFAILしました。
+
+```text
+1040 < 1050 unique historical trajectories after the Stage 1 firewall
+```
+
+固定済みtaxonomyにより、
 
 ```text
 SRDR-STUDY1 = INCONCLUSIVE
 primaryFormalCriterion = null
 ```
 
-The 10-trajectory shortfall receives no near-miss exception.
+です。
 
-## D-026 — No-rescue closure
+10-trajectory shortfallにnear-miss exceptionは適用しません。
 
-Date: 2026-08-28
+## D-026 — no-rescue closure
 
-No Stage 2 seed extension, replacement, threshold relaxation, alternate primary, favorable subgroup, or reinterpretation of secondary metrics is authorized. Any future formal re-test requires a new prospective Study/version and fresh evidence. Public AI engineering cannot modify this decision.
+日付: 2026-08-28
 
-## D-027 — Repository integration
+Stage 2 seed extension、replacement、threshold relaxation、alternate primary、favorable subgroup、secondary metricのreinterpretationは承認しません。
 
-Date: 2026-08-28
+将来formal re-testを行う場合は、新しいprospective Study / versionとfresh evidenceが必要です。Public AI Engineeringによってこのdecisionを変更することもできません。
 
-After canonical closure documentation, an idempotent closure-finalization rerun, root-document consistency review, zero unresolved PR review threads, and all normal PR workflows passing, PR `#68` was merged to `main`.
+## D-027 — repository integration
+
+日付: 2026-08-28
+
+canonical closure documentation、idempotent closure-finalization rerun、root-document consistency review、unresolved PR review thread 0、通常PR workflow全PASSを確認した後、PR `#68`を`main`へmergeしました。
 
 ```text
 final research head = f6814e4e828ea07ec309f6f7352c825494d8ff20
@@ -354,4 +377,4 @@ primaryFormalCriterion unchanged = null
 scientific evidence changed by integration = false
 ```
 
-Repository integration is administrative/provenance closure only and does not revise any scientific decision, threshold, endpoint, population, search condition, or interpretation boundary.
+Repository integrationはadministrative / provenance closureにすぎず、scientific decision、threshold、endpoint、population、search condition、interpretation boundaryを変更しません。

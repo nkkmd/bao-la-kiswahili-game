@@ -1,4 +1,4 @@
-# SRDR-STUDY1 — Reproducibility Index
+# SRDR-STUDY1 — 再現性索引
 
 更新日: 2026-08-28
 
@@ -13,7 +13,7 @@ Branch = research/g2-02-search-reliability-decision-robustness
 Formal decision = INCONCLUSIVE
 ```
 
-## Stage identities
+## Stage identity
 
 ```text
 Stage 0 = SRDR-S0-TECHNICAL-2026-08-27-v1
@@ -21,7 +21,7 @@ Stage 1 = SRDR-S1-DEVELOPMENT-2026-08-27-v1
 Stage 2 = SRDR-S2-FORMAL-2026-08-27-v1
 ```
 
-## Canonical repository results
+## canonical repository result
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
@@ -40,7 +40,7 @@ canonical artifact ZIP SHA-256 = 41c6b9940798aa1626b0c73279a47b53dbc3e14316d0cb7
 development profile hash = 665c284efeb0a9531ea49133ba313c0ed76cb09d888cbbe9324e2c0b6f3af280
 ```
 
-Stage 1 verification correction changed no scientific row; it corrected representation-only hash semantics after all 1018 row comparisons matched.
+Stage 1 verification correctionではscientific rowを一切変更していません。1018 rowすべてが一致した後、representation-only hash semanticsだけをcorrectしました。
 
 ## Stage 2 source / authorization
 
@@ -63,7 +63,7 @@ selected unique RAW states = 1007
 Namua / Mtaji = 518 / 489
 ```
 
-## Stage 2 file hashes
+## Stage 2 file hash
 
 ```text
 generation manifest = 64ee67538d1a07a77553c1cd83319a23bc07574a2cff6ad70a02afd8cb67f209
@@ -76,7 +76,7 @@ measurement hash = 13ca8825c250f038c510a2a7e7c0e8d1567f0d5027bd32ecb4dee0e34f64e
 canonical result hash = 7386f3efed01ba325bc3f03ed02e9cfc2d72ad48c356509987b5fcc8780f7d36
 ```
 
-## Independent verification
+## independent verification
 
 ```text
 passed = true
@@ -89,24 +89,24 @@ measurement hash matches = true
 Stage 1 overlap = 0 / 0 / 0
 ```
 
-## Formal result
+## formal result
 
-Only one preregistered gate failed:
+FAILした事前登録gateは1件だけです。
 
 ```text
 uniqueHistoricalTrajectoriesAfterStage1Firewall = 1040 < 1050
 ```
 
-Therefore:
+したがって、
 
 ```text
 formalDecision = INCONCLUSIVE
 primaryFormalCriterion = null
 ```
 
-No post-outcome rescue is authorized.
+です。outcome確認後のrescueは承認されていません。
 
-## Repository integration
+## repository integration
 
 ```text
 integration PR = #68
@@ -116,4 +116,8 @@ integrated branch = main
 integration date = 2026-08-28
 ```
 
-Repository integration occurred only after the G2-02 technical validation, second-generation research agenda audit, SSGTC closure consistency audit, PCEM closure consistency audit, and repo-wide Phase Transition Research CI were all green. The idempotent closure finalization workflow also passed against the immutable Stage 2 artifact. Integration does not alter canonical scientific evidence, the `INCONCLUSIVE` decision, `primaryFormalCriterion = null`, or any interpretation boundary.
+Repository integrationは、G2-02 technical validation、second-generation research agenda audit、SSGTC closure consistency audit、PCEM closure consistency audit、repo-wide Phase Transition Research CIがすべてgreenになった後に実施しました。
+
+immutable Stage 2 artifactに対するidempotent closure finalization workflowもPASSしました。
+
+integrationによってcanonical scientific evidence、`INCONCLUSIVE` decision、`primaryFormalCriterion = null`、interpretation boundaryは変更していません。

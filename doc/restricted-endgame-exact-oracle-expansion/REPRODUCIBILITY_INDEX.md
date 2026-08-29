@@ -1,7 +1,7 @@
-# REEOE-STUDY1 — Reproducibility Index
+# REEOE-STUDY1 — 再現性索引
 
-Updated: 2026-08-28  
-Status: **COMPLETED / INCONCLUSIVE / STAGE 2 NOT EXECUTED**
+更新日: 2026-08-28  
+状態: **COMPLETED / INCONCLUSIVE / STAGE 2 NOT EXECUTED**
 
 ## Study anchor
 
@@ -15,7 +15,7 @@ PR = #70
 Formal decision = INCONCLUSIVE
 ```
 
-## Authoritative RAW identity
+## authoritative RAW identity
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -48,7 +48,7 @@ Canonical prospective contract:
 - baseline main: `aba61596e6440e9d54be6f1e9520f65e983000b3`
 - formal title: `Restricted Endgame Exact Oracle Expansion Study 1`
 
-The contract freezes RAW identity, complete-forward-closure requirement, retrograde vocabulary, DTF rule, all-optimal-move requirement, positive/negative controls, no-rescue policy, and the requirement for separate Stage 1 / Stage 2 authorization.
+このcontractではRAW identity、complete-forward-closure requirement、retrograde vocabulary、DTF rule、all-optimal-move requirement、positive / negative control、no-rescue policy、Stage 1 / Stage 2の別個authorization requirementを固定しました。
 
 ## Stage 0 technical validation
 
@@ -68,7 +68,7 @@ artifact ZIP SHA-256 = 37a7e522e233f8bfd0ce6534186d7babe4f3bf6551bb24b5e3f99698d
 workflow head = 0557aa7573227eb57cec0088885f40bd2daa4a22
 ```
 
-Technical positive-control identities:
+Technical positive-control identity:
 
 ```text
 root = fc1e124884276ba44b6d153580db9a7ddfc194d8b5e1b0d898e16de45f427d33
@@ -82,9 +82,9 @@ productionTechnicalCoreSha256 = 26cd857fab4a57596208220e87306792138083a70ea2ac05
 independentVerificationCoreSha256 = 284cc2c53035b0a614eae33c07282b78e5543540c06138b4f21d7f5f65346e40
 ```
 
-All `S0-G1..S0-G12` passed and all four corruption controls were detected. This is instrument evidence only.
+`S0-G1..S0-G12`はすべてPASSし、4 corruption controlすべてを検出しました。これはinstrument evidenceだけです。
 
-Stage 0 also established a G2-04 strict representation layer that rejects missing `pending`; the legacy REWR compatibility helpers were not modified.
+Stage 0ではmissing `pending`をrejectするG2-04 strict representation layerも確立しました。legacy REWR compatibility helperは変更していません。
 
 ## Stage 1 v1 — invalidated lineage
 
@@ -102,9 +102,9 @@ fresh seeds = 24040001..24040512
 classification = TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
 ```
 
-The production development step completed, then the independent verifier failed at startup because of an incorrect module path. Because production output had already been generated, the same evidence was not repaired and rerun.
+production development step完了後、incorrect module pathによりindependent verifierがstartupで失敗しました。production outputが既に生成されていたため、同じevidenceを修復して再実行していません。
 
-Frozen consequences:
+Frozen consequence:
 
 ```text
 v1 production-only outputs eligible for v2/Stage2 design = false
@@ -116,7 +116,7 @@ Checkpoint:
 
 - `checkpoints/2026-08-28-stage1-v1-verifier-startup-failure.md`
 
-The executable v1 workflow was subsequently replaced by an archival stub; historical executable source remains in Git history.
+その後executable v1 workflowはarchival stubへ置換しました。historical executable sourceはGit historyに残しています。
 
 ## Stage 1 v2 — fresh development contract
 
@@ -130,7 +130,7 @@ Authorization:
 - `preregistration/STAGE_1_DEVELOPMENT_V2_AUTHORIZATION.json`
 - Git blob: `e4906bf39ee2639bff69ad918489dd14c5053f98`
 
-Frozen source identities include:
+Frozen source identity:
 
 ```text
 public/engine.js = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -142,7 +142,7 @@ run-reeoe-stage1-development-v2.js = d72e45023fdabb09e12359f4130dd7c4a204e954
 verify-reeoe-stage1-development-v2-independent.js = 892b54de80f044d3ee7b2e226cf28b01039f32f5
 ```
 
-Fresh block and frozen structural/resource rule:
+Fresh block / frozen structural-resource rule:
 
 ```text
 seeds = 24041001..24041512
@@ -163,7 +163,7 @@ minimum selected roots = 4
 minimum independently verified complete closures = 3
 ```
 
-V1 structural/resource conditions were not relaxed; only fresh scientific identities and verifier hardening changed.
+v1のstructural / resource conditionは緩和していません。変更したのはfresh scientific identityとverifier hardeningだけです。
 
 ## Stage 1 v2 canonical execution
 
@@ -178,9 +178,9 @@ failure semantic = FROZEN-DEVELOPMENT-ACCEPTANCE-NOT-MET
 artifact uploaded = false
 ```
 
-No artifact was uploaded because the independent verifier intentionally exited nonzero at the frozen acceptance check before `upload-artifact`.
+independent verifierがfrozen acceptance checkで意図的にnonzero exitし、`upload-artifact`より前に停止したためartifactはuploadされませんでした。
 
-Production/independent reconstructed population:
+Production / independent reconstructed population:
 
 ```text
 unique witness roots = 7055
@@ -189,7 +189,7 @@ selected roots = 8
 complete closures = 0
 ```
 
-Population identities:
+Population identity:
 
 ```text
 allEncounteredRootSetSha256 = 36c8afe8eb06c268c80652d132d5149691b6d689c8f5729d31b05811d0e91107
@@ -200,7 +200,7 @@ developmentCoreSha256 = 1d21c1c29355556e1a2ba25c20bf8a29b156b86cc9cbe4216aa243bf
 reconstructedIndependentVerificationCoreSha256 = b09c71350f990195d0b1e56ee267a615e11b7bfa90942bdbcb2dcd94db7ea003
 ```
 
-Closure classifications:
+Closure classification:
 
 ```text
 STATE-LIMIT = 4
@@ -209,7 +209,7 @@ MOVE-NONTERMINATION = 1
 COMPLETE = 0
 ```
 
-The independent verifier independently regenerated all 512 trajectories, all encountered RAW roots, the eligible set, selected-root order/identity, and each closure classification. It reached the final acceptance evaluation and failed only because `complete=0 < 3`.
+Independent verifierは512 trajectoriesすべて、encountered RAW rootsすべて、eligible set、selected-root order / identity、各closure classificationを独立再生成しました。final acceptance evaluationまで到達し、`complete=0 < 3`だけを理由としてFAILしました。
 
 Canonical compact result:
 
@@ -222,7 +222,7 @@ Checkpoint:
 
 ## Stage 2 reproducibility state
 
-The following intentionally do not exist:
+次のものは意図的に存在しません。
 
 ```text
 Stage 2 formal-domain spec = NONE
@@ -233,7 +233,7 @@ Stage 2 independent verification = NONE
 Stage 2 artifact = NONE
 ```
 
-This is the required fail-closed consequence of the Stage 1 v2 development gate, not missing formal work.
+これはStage 1 v2 development gateのfail-closed consequenceであり、「formal workが欠落している」という意味ではありません。
 
 ## Study-level canonical result
 
@@ -250,10 +250,10 @@ freshExactOracleProduced = false
 formalStage2DomainsEvaluated = 0
 ```
 
-## No-rescue / interpretation boundary
+## no-rescue / interpretation boundary
 
-No post-result cap increase, domain shrinkage, root replacement, seed extension, partial-closure promotion, alternate solver substitution, or symmetry/canonicalization was used.
+結果確認後のcap increase、domain shrinkage、root replacement、seed extension、partial-closure promotion、alternate solver substitution、symmetry / canonicalizationは使用していません。
 
-`MOVE-NONTERMINATION` is an intra-move transition-instrument classification and is not promoted to game-level `RECURRENT` or `DRAW`.
+`MOVE-NONTERMINATION`はintra-move transition-instrument classificationであり、game-level `RECURRENT`や`DRAW`へ昇格していません。
 
-The upstream REWR 8-state/7-edge exact result remains unchanged. A future exact-oracle expansion with a materially different structural or resource contract requires a new prospective independent Study/versioned protocol and fresh evidence.
+upstream REWR 8-state / 7-edge exact resultは変更しません。実質的に異なるstructural / resource contractでexact-oracle expansionを行う場合は、新しいprospective independent Study / versioned protocolとfresh evidenceが必要です。

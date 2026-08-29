@@ -1,16 +1,17 @@
-# RCPR-STUDY1 — Overview
+# G2-06 第1研究概要 — 重要局面の豊かな構造表現
 
-Updated: 2026-08-29  
+更新日: 2026-08-29  
 Program: `G2-06` / Research Generation 2  
-Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
+Study ID: `RCPR-STUDY1`  
+状態: **Stage 1で終了 / `STAGE1-TECHNICAL-INVALID`**
 
-Japanese working title:
+正式英語名: **Rich Critical-Position Representation Study 1**
 
-> Baoにおける重要局面の豊かな構造表現の構築とprospective検証 — rich pre-root representationによるdecision-critical structureの再現可能な識別
+日本語題目:
 
-## Final study status
+> **Baoにおける重要局面の豊かな構造表現の構築と事前規定による検証 — root以前から利用可能な豊かな特徴表現によるdecision-critical structureの再現可能な識別**
 
-**CLOSED AT STAGE 1 — `STAGE1-TECHNICAL-INVALID`**
+## 1. 最終状態
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -20,23 +21,29 @@ same-block rerun = NOT AUTHORIZED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-The production Stage 1 pipeline passed all production readiness gates, but the prospectively required independent exact representation verification failed on four of 600 rows. The technical postmortem localized those four mismatches to floating-point addition order in `MOVE_SET_ENTROPY.indexEntropy`. Under the pre-frozen fail-closed contract this does not permit rescue or Stage 2 authorization.
+Stage 1のproduction pipelineは、production実行に必要なすべての準備条件を満たしました。しかし、事前に必須と定めていた**独立実装による特徴表現の完全一致検証**で、600行中4行に不一致が発生しました。
 
-See:
+技術的な事後調査では、この4件の不一致は`MOVE_SET_ENTROPY.indexEntropy`における浮動小数点加算順序の違いに局在しました。
+
+事前固定したfail-closed contractでは完全一致を要求していたため、この結果を救済してStage 2へ進むことは認められません。
+
+詳細:
 
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 - `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
 
-## Central question
+## 2. この研究は何を調べようとしたのか
 
-Can a richer representation, fixed prospectively from information available at or before a root, reproducibly identify the same machine-defined fixed-policy continuation-divergence construct in a fresh independent population?
+本研究の中心的な問いは、**あるroot時点までに観測可能な情報だけから構成した、より豊かな局面表現によって、固定policyによる継続対局の分岐が大きいという既存のmachine-defined constructを、新しい独立集団でも再現可能に識別できるか**というものです。
 
-For `RCPR-STUDY1`, this question is **not adjudicated positively or negatively at Stage 2**, because Stage 1 failed the frozen exact technical verification gate. The Stage 1 production-only model output is not an accepted independently verified scientific result.
+ただし、Stage 1の必須技術検証を通過しなかったため、この問いをStage 2で肯定・否定する正式評価には進んでいません。
 
-This Study is not an attempt to reclassify or rescue the 139/600 high-divergence roots or the 1,183 failed candidate audits from Research Generation 1.
+Stage 1のproduction-only model outputも、独立検証済みの科学結果としては採用していません。
 
-## Stage architecture
+また、本研究はResearch Generation 1で得られた139/600 high-divergence rootsや1,183件のfailed candidate auditsを再分類・救済することを目的としていません。
+
+## 3. Stage構成
 
 ```text
 RCPR-S0-TECHNICAL-2026-08-28-v1
@@ -52,7 +59,11 @@ RCPR-S2-FORMAL-2026-08-28-v1
   FINAL: NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Authoritative scientific state identity
+Stage 0は特徴表現が技術的に構築可能かを確認する段階、Stage 1は新しいdevelopment populationでrepresentation constructionとmodel selectionを行う段階、Stage 2は独立したfresh populationで正式検証を行う段階として設計しました。
+
+Stage 2はStage 1の条件付き承認を必要としていましたが、その条件は成立しませんでした。
+
+## 4. authoritative scientific state identity
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -62,9 +73,9 @@ symmetry reduction = false
 canonicalization = false
 ```
 
-Historical occurrence provenance may be retained for temporal features, but it does not replace RAW state identity.
+Historical occurrence provenanceはtemporal featureのために保持できますが、RAW state identityそのものを置き換えるものではありません。
 
-## Leakage boundary
+## 5. 情報漏洩を防ぐための境界
 
 ```text
 A PRE_ROOT_OBSERVABLE                       eligible
@@ -73,9 +84,11 @@ C SEARCH_DERIVED_OUTCOME_INDEPENDENT        eligible only under frozen search pr
 D CONTINUATION_OR_FUTURE_OUTCOME_DERIVED    forbidden
 ```
 
-No predictor representation may consume `D_range`, continuation wins/losses, post-root rollout states, future winner, or any other outcome-derived quantity.
+Predictor representationには、`D_range`、継続対局のwins/losses、root後のrollout state、future winner、その他のoutcome-derived quantityを使用してはいけないと事前に固定しました。
 
-## Prospectively declared representation families
+つまり、「あとで起きた勝敗を知っていなければ作れない特徴」を説明変数へ混入させない設計です。
+
+## 6. 事前に宣言したrepresentation family
 
 ```text
 LOCAL_PIT_TOPOLOGY
@@ -88,11 +101,11 @@ SEARCH_GAP_VECTOR
 LOCAL_TEMPORAL_CONTEXT
 ```
 
-No new family may be introduced to rescue the closed Stage 1.
+終了したStage 1を救済するために、新しいfamilyを事後追加することは認められません。
 
-## Stage 1 production-only output
+## 7. Stage 1 production-only output
 
-For provenance only, production emitted:
+Provenanceとしてのみ、production側では次の値が出力されました。
 
 ```text
 selected roots = 600
@@ -106,17 +119,21 @@ Mtaji AUROC = 0.6657646992502396
 balanced accuracy = 0.6684641309581127
 ```
 
-These are not promoted because independent exact representation verification failed.
+これらの値は、独立な特徴表現再計算が完全一致しなかったため、正式な科学結果へ昇格していません。
 
-## Technical-invalid reason
+## 8. `STAGE1-TECHNICAL-INVALID`となった理由
 
-Independent verification matched corpus replay, root reselection, continuation remeasurement, `D_range`, high-divergence labels, model development and readiness. Four exact feature-vector hashes differed because `MOVE_SET_ENTROPY.indexEntropy` was accumulated in different category orders across the two independently implemented extractors, creating IEEE-754 differences of roughly `2.22e-16` to `4.44e-16`.
+独立検証では、corpus replay、root reselection、continuation remeasurement、`D_range`、high-divergence label、model development、readinessについては一致しました。
 
-The frozen contract required exact equality; therefore final Stage 1 decision is `STAGE1-TECHNICAL-INVALID`.
+不一致は4件のexact feature-vector hashだけに発生しました。
 
-## Prior-study boundary
+原因は、production extractorとindependent extractorで`MOVE_SET_ENTROPY.indexEntropy`を加算するcategory順序が異なり、IEEE-754浮動小数点演算で約`2.22e-16`〜`4.44e-16`の差が生じたことでした。
 
-Immutable upstream references remain unchanged:
+しかし、凍結済みcontractはexact equalityを要求していました。そのため、原因が小さな数値差であっても最終判断は変更せず、Stage 1を`STAGE1-TECHNICAL-INVALID`としました。
+
+## 9. upstream研究との境界
+
+既存研究の固定済み状態は変更しません。
 
 ```text
 G2-01 / PEOCR-STUDY1 = INCONCLUSIVE
@@ -129,18 +146,29 @@ REEOE Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G2-05 / DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
 ```
 
-Research Generation 1 Critical Positions / Outcome Branching Study 1 remains closed with 600 selected roots, 139 high-divergence roots, 1,183 candidate audits, zero promoted candidates, and Stage 2 not executed.
+Research Generation 1のCritical Positions / Outcome Branching Study 1も、600 selected roots、139 high-divergence roots、1,183 candidate audits、promoted candidates 0、Stage 2未実施という既存状態を維持します。
 
-## Interpretation boundary and successor
+## 10. 解釈上の境界と将来研究
 
-`RCPR-STUDY1` establishes a technical failure of its frozen Stage 1 exact independent-verification contract. It does not establish game-theoretic turning points, human-perceived criticality, causality, universal Bao taxonomy, public-AI improvement, or a full-game solution.
+`RCPR-STUDY1`が確立したのは、**このStudyで凍結したStage 1の完全一致独立検証contractが技術的に成立しなかった**という点です。
 
-A future successor may harden deterministic entropy/numeric hashing and repeat the research question prospectively only with a new study identity, new technical validation, fresh scientific seed block and new explicit authorization. The consumed `RCPR-STUDY1` block may not be rerun or promoted.
+この結果から次を主張しません。
 
-## Detailed records
+- game-theoretic turning point
+- 人間が知覚するcriticality
+- causality
+- Bao全体に普遍的な局面taxonomy
+- 公開AIの改善効果
+- full-game solution
 
-- `README.md` — study-directory navigation and closure summary
-- `STUDY_1_FINAL_REPORT.md` — integrated scientific/technical closure
-- `CURRENT_STATUS.md` — terminal operational state
-- `DECISION_REGISTER.md` — frozen decisions and no-rescue boundaries
-- `REPRODUCIBILITY_INDEX.md` — hashes, runs, artifacts, and provenance
+将来、deterministic entropy計算やnumeric hashingを強化したうえで同じ研究問いを再検証することは可能です。ただし、その場合は新しいStudy identity、新しいtechnical validation、新しいscientific seed block、新しい明示的authorizationを必要とします。
+
+消費済みの`RCPR-STUDY1` seed blockを再実行して昇格させることは認められません。
+
+## 11. 詳細・再現用文書
+
+- `README.md` — 研究ディレクトリ案内とclosure概要
+- `STUDY_1_FINAL_REPORT.md` — 科学的・技術的な最終統合
+- `CURRENT_STATUS.md` — 最終運用状態
+- `DECISION_REGISTER.md` — 固定済み判断とno-rescue boundary
+- `REPRODUCIBILITY_INDEX.md` — hash、run、artifact、provenance

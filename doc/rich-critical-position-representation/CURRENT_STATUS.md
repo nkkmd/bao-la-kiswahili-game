@@ -1,10 +1,10 @@
-# RCPR-STUDY1 — Current Status
+# RCPR-STUDY1 — 現在の状態
 
-Updated: 2026-08-29  
+更新日: 2026-08-29  
 Program: `G2-06` / Research Generation 2  
 Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
-## Status
+## 状態
 
 **STUDY CLOSED AT STAGE 1 / MAIN INTEGRATION COMPLETE / STAGE 0 TECHNICAL PASS / STAGE 1 TECHNICAL INVALID / FRESH STAGE 1 BLOCK CONSUMED / NO SAME-BLOCK RERUN / STAGE 2 NOT-AUTHORIZED-NOT-EXECUTED**
 
@@ -14,7 +14,7 @@ RCPR-S1-DEVELOPMENT-2026-08-28-v1 = COMPLETE / STAGE1-TECHNICAL-INVALID / SEED-B
 RCPR-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Repository and execution anchors
+## repository / execution anchor
 
 ```text
 baseline remote main = 37480777246aa306c6ca3d0679d936b5e0107071
@@ -31,7 +31,7 @@ main integration commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
 integrated branch = main
 ```
 
-The original baseline `main` remained unchanged throughout scientific execution. PR #73 was merged only after final documentation/source-scope audit, all five PR CI workflows passed, the PR was mergeable, and no unresolved review thread existed.
+scientific execution中、original baseline `main`は変更されませんでした。PR #73はfinal documentation / source-scope audit、5件すべてのPR CI PASS、mergeable確認、unresolved review thread 0を確認した後にのみmergeしました。
 
 Canonical final PR CI:
 
@@ -43,7 +43,7 @@ SSGTC closure consistency audit = success / run 33235980551
 Phase Transition Research CI = success / run 33235980568
 ```
 
-Main-integration provenance is retained in `checkpoints/2026-08-29-main-integration.md`.
+main-integration provenanceは`checkpoints/2026-08-29-main-integration.md`に保存しています。
 
 ## Stage 1 consume-once state
 
@@ -56,9 +56,11 @@ same-block rerun = NOT AUTHORIZED
 replacement/extension = NOT AUTHORIZED
 ```
 
-The archived `execution-start.json` records `scientificStage1SeedBlockConsumed = true`. The block cannot be rerun or repaired inside `RCPR-STUDY1`.
+archived `execution-start.json`には`scientificStage1SeedBlockConsumed = true`が記録されています。
 
-## Terminal artifacts and hashes
+このblockを`RCPR-STUDY1`内で再実行・修復することはできません。
+
+## terminal artifact / hash
 
 ```text
 production artifact = 9704250489
@@ -72,9 +74,9 @@ verification SHA256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4
 independent development core SHA256 = 5b2251ef1ac34295cd1d67412c9d7f09adbe55b5af81a8752d3cb639b036e22a
 ```
 
-## Production-only development output
+## production-only development output
 
-Production completed successfully and all frozen production readiness gates passed:
+Productionは正常完了し、すべてのfrozen production readiness gateがPASSしました。
 
 ```text
 generated games = 3072
@@ -89,9 +91,9 @@ Mtaji AUROC = 0.6657646992502396
 balanced accuracy = 0.6684641309581127
 ```
 
-These values are retained for provenance only as **production-only unverified development output**. They do not constitute an accepted Stage 1 scientific result, do not authorize Stage 2, and are not confirmatory evidence.
+これらは**production-only unverified development output**としてprovenanceのためだけに保持します。accepted Stage 1 scientific resultではなく、Stage 2を承認せず、confirmatory evidenceでもありません。
 
-## Independent verification failure
+## independent verification failure
 
 ```text
 fullCorpusReplay = true
@@ -106,20 +108,22 @@ technicalPass = false
 finalDecision = STAGE1-TECHNICAL-INVALID
 ```
 
-Exactly four of 600 selected rows failed exact feature-vector hash equality. All rows were present, and RAW state identity, continuation measurements, `D_range`, and high-divergence labels agreed.
+600 selected rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。
 
-## Technical postmortem
+全rowは存在し、RAW state identity、continuation measurement、`D_range`、high-divergence labelは一致しました。
 
-Root cause is a deterministic floating-point accumulation-order discrepancy in `MOVE_SET_ENTROPY.indexEntropy`:
+## technical postmortem
 
-- production uses `Map` insertion order when summing entropy terms;
-- the independent implementation uses object enumeration, which numerically reorders integer-like move-index keys;
-- the resulting IEEE-754 differences are approximately `2.22e-16` to `4.44e-16` on four Mtaji rows;
-- exact hash equality therefore fails.
+root causeは`MOVE_SET_ENTROPY.indexEntropy`におけるdeterministic floating-point accumulation-order discrepancyです。
 
-This localization does not alter the frozen decision. Stage 1 remains **`STAGE1-TECHNICAL-INVALID`**.
+- productionはentropy term加算時に`Map` insertion orderを使用
+- independent implementationはobject enumerationを使用し、integer-like move-index keyがnumeric orderへ並び替えられる
+- 4 Mtaji rowsで約`2.22e-16`〜`4.44e-16`のIEEE-754差が生じる
+- その結果exact hash equalityがFAILする
 
-Machine-readable closure and postmortem:
+この原因特定によってfrozen decisionは変わりません。Stage 1は引き続き**`STAGE1-TECHNICAL-INVALID`**です。
+
+Machine-readable closure / postmortem:
 
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
@@ -129,7 +133,7 @@ Program-level closure record:
 
 - `doc/research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
 
-## Scientific boundary
+## scientific boundary
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -142,25 +146,29 @@ confirmatoryReuseAllowed = false
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-All Research Generation 1 and G2-01..G2-05 formal decisions remain immutable. Historical Critical Positions evidence remains excluded from G2-06 training, tuning, threshold selection, validation, and formal evidence.
+Research Generation 1およびG2-01..G2-05のformal decisionはすべてimmutableです。Historical Critical Positions evidenceはG2-06のtraining、tuning、threshold selection、validation、formal evidenceから引き続き除外します。
 
-## Post-closure workflow state
+## post-closure workflow state
 
-All RCPR technical/development/materialization workflows were converted to closed-study archival stubs before PR #73. They may be manually invoked only to display provenance notices and do not execute scientific or materialization code.
+PR #73前に、すべてのRCPR technical / development / materialization workflowをclosed-study archival stubへ変換しました。
+
+manual invocationが可能な場合もprovenance noticeを表示するだけで、scientific codeやmaterialization codeは実行しません。
 
 - `checkpoints/2026-08-29-post-closure-workflow-archive.md`
 
 ## Program continuation
 
-`RCPR-STUDY1` itself has no further scientific stage transition. Do not rerun or repair Stage 1 and do not authorize Stage 2.
+`RCPR-STUDY1`にはこれ以上のscientific stage transitionはありません。Stage 1を再実行・修復せず、Stage 2を承認しません。
 
-Under the active Research Generation 2 program sequencing rule, the immediate next independent agenda item is:
+active Research Generation 2 program sequencing rule上、次の独立agenda itemは次です。
 
 ```text
 G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
 priority = P1
 ```
 
-G2-07 must begin from the integrated `main` state with a fresh repository-state audit and its own prospective Study ID, Stage IDs, scientific contract, source freeze, seed allocation, and explicit authorization. It must not consume `RCPR-STUDY1` rows as formal evidence.
+G2-07はintegrated `main`からfresh repository-state auditを行い、独自のprospective Study ID、Stage ID、scientific contract、source freeze、seed allocation、explicit authorizationを必要とします。
 
-A future independent study may revisit rich critical-position representation after deterministic entropy/numeric-hash hardening, but it must have a distinct independent title/identity rather than reopening this closed Study as a generic “Study 2” retry.
+`RCPR-STUDY1` rowをformal evidenceとして使用してはいけません。
+
+将来、deterministic entropy / numeric-hash hardening後にrich critical-position representationを独立研究として再検討することは可能ですが、このclosed Studyをgenericな「Study 2」retryとして再開せず、distinct independent title / identityを必要とします。

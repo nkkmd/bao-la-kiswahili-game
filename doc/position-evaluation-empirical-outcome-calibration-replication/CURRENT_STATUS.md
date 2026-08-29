@@ -1,12 +1,12 @@
-# PEOCR-STUDY1 — Current Status
+# PEOCR-STUDY1 — 現在の状態
 
 更新日: 2026-08-27
 
-## Status
+## 状態
 
 **STUDY COMPLETE / FORMAL DECISION `INCONCLUSIVE` / SCIENTIFIC CLOSURE COMPLETE / INTEGRATED IN `main`**
 
-## Identity
+## 研究識別子
 
 ```text
 Program = G2-01
@@ -21,7 +21,7 @@ Integration PR = #67
 Integration merge commit = 12ce1f5f212349cc827147adcb5de8e7eadb98f3
 ```
 
-## Stage closure
+## Stageごとの終了状態
 
 ```text
 Stage 0 = COMPLETE / STAGE0-TECHNICAL-PASS
@@ -33,7 +33,7 @@ Stage 2 formal decision = INCONCLUSIVE
 Repository integration = COMPLETE / main
 ```
 
-Failed prospectively frozen estimability gates:
+事前に固定した推定可能性の判定条件のうち、次の3条件がFAILしました。
 
 ```text
 unique historical trajectories after Stage 1 firewall = 3898 < 4500
@@ -41,11 +41,13 @@ selected unique RAW states = 3570 < 4000
 Mtaji selected states = 1747 < 1750
 ```
 
-All 8 shard independent replays、integrated selection/measurement verification、Stage 1 overlap trajectory/opening/RAW = 0/0/0、outcome-count gates、administrative truncation 0、source/hash bindingはPASSした。
+一方、全8 shardのindependent replay、統合後のselection / measurement verification、Stage 1 overlap trajectory / opening / RAW = 0 / 0 / 0、outcome-count gates、administrative truncation 0、source / hash bindingはPASSしました。
 
-Because estimability gates did not all pass, the co-primary Brier/log-loss formal branch was not entered and canonical `primary` is `null`. `NOT-CONFIRMED` is not an authorized label.
+すべてのestimability gateを満たさなかったため、co-primary Brier / log-loss formal branchには入っていません。canonical `primary`は`null`です。
 
-## Canonical evidence
+したがって、`NOT-CONFIRMED`は本Studyで承認されたlabelではありません。
+
+## canonical evidence
 
 ```text
 artifact ID = 9636207301
@@ -55,8 +57,10 @@ selection hash = eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbe
 measurement hash = e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294
 ```
 
-## No-rescue boundary
+## no-rescue boundary
 
-No additional Stage 2 game, seed extension, overlap replacement, gate relaxation, mapping refit, near-miss exception, favorable subgroup, or alternate-primary relabeling is authorized within `PEOCR-STUDY1`.
+`PEOCR-STUDY1`内では、additional Stage 2 game、seed extension、overlap replacement、gate relaxation、mapping refit、near-miss exception、favorable subgroup、alternate-primary relabelingを行うことは承認されていません。
 
-Scientific closure is complete and PR #67 was merged to `main` at `12ce1f5f212349cc827147adcb5de8e7eadb98f3`. Repository integration does not alter the scientific decision or any interpretation boundary.
+Scientific closureは完了しており、PR #67は`12ce1f5f212349cc827147adcb5de8e7eadb98f3`で`main`へ統合されています。
+
+Repository integrationは、`PEOCR-STUDY1 = INCONCLUSIVE`という科学的判断や、いかなる解釈上の境界も変更しません。

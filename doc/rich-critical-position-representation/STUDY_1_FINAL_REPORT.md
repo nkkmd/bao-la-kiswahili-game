@@ -1,8 +1,8 @@
-# Rich Critical-Position Representation Study 1 — Final Report
+# G2-06 第1研究 最終報告 — 重要局面の豊かな構造表現
 
-Updated: 2026-08-29
+更新日: 2026-08-29
 
-## Study identity
+## 1. 研究識別子
 
 ```text
 Program label = G2-06
@@ -14,11 +14,11 @@ Research branch = research/g2-06-rich-critical-position-representation
 Scientific source commit = a69ffce86cb278680ee676a2a9469aeb1d9ab1d4
 ```
 
-Japanese working title:
+日本語題目:
 
-**Baoにおける重要局面の豊かな構造表現の構築とprospective検証 — rich pre-root representationによるdecision-critical structureの再現可能な識別**
+**Baoにおける重要局面の豊かな構造表現の構築と事前規定による検証 — rich pre-root representationによるdecision-critical structureの再現可能な識別**
 
-## Final decision
+## 2. 最終判断
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -31,23 +31,27 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 ```
 
-The Study closes at Stage 1 because the prospectively mandatory independent verifier did not reproduce all 600 pre-root feature vectors with exact equality. The technical failure is not a scientific rejection of the rich representation hypothesis, and the production-only readiness result is not promoted to an accepted scientific result.
+本StudyはStage 1で終了しました。理由は、結果を見る前に必須と固定したindependent verifierが、600個すべてのpre-root feature vectorをexact equalityで再現できなかったためです。
 
-## Research question
+このtechnical failureはrich representation hypothesisのscientific rejectionではありません。また、production-only readiness resultをaccepted scientific resultへ昇格していません。
 
-The Study asked whether a richer representation fixed from information available at or before a root can reproducibly identify the same machine-defined fixed-policy continuation-divergence construct in a fresh population.
+## 3. 研究上の問い
 
-The motivation came from the completed Research Generation 1 Critical Positions / Outcome Branching Study 1, which observed 139 high-divergence roots among 600 selected roots but promoted no candidate from its frozen simple structural grammar. G2-06 did not reopen that Study, promote its near misses, relax its thresholds, or reuse its measured roots/outcomes as development or formal evidence.
+root時点またはそれ以前に利用可能な情報だけから固定した、より豊かなrepresentationによって、machine-defined fixed-policy continuation-divergence constructをfresh populationでも再現可能に識別できるかを問いました。
 
-## Scientific identity and no-rescue boundary
+動機は完了済みResearch Generation 1 Critical Positions / Outcome Branching Study 1にあります。同Studyでは600 selected roots中139 high-divergence rootsを観測しましたが、frozen simple structural grammarからpromoted candidateは0でした。
 
-Authoritative state identity remained RAW-only:
+G2-06はそのStudyを再開せず、near missをpromoteせず、thresholdを緩和せず、測定済みroot / outcomeをdevelopmentまたはformal evidenceとして再利用していません。
+
+## 4. scientific identityとno-rescue boundary
+
+Authoritative state identityはRAW-onlyを維持しました。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn` and `reason` were excluded. The validated transform set remained empty:
+`turn`と`reason`は除外しました。validated transform setは空のままです。
 
 ```text
 validated transform set = []
@@ -55,11 +59,13 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-All Research Generation 1 decisions and G2-01..G2-05 decisions remained immutable. Historical Critical Positions source seeds, selected roots, high-divergence roots, candidate audits, and reserved Stage 2 evidence were excluded from G2-06 scientific development/formal evidence.
+Research Generation 1およびG2-01..G2-05の判断はすべてimmutableです。
 
-## Representation contract
+Historical Critical Positionsのsource seed、selected root、high-divergence root、candidate audit、reserved Stage 2 evidenceはG2-06 scientific development / formal evidenceから除外しました。
 
-The Study prospectively declared eight feature families:
+## 5. representation contract
+
+結果を見る前に次の8 feature familyを宣言しました。
 
 ```text
 LOCAL_PIT_TOPOLOGY
@@ -72,17 +78,19 @@ SEARCH_GAP_VECTOR
 LOCAL_TEMPORAL_CONTEXT
 ```
 
-Only predictor information available at or before the root was eligible. Continuation outcomes, future winners, `D_range`, post-root rollout states, and other future-outcome-derived quantities were prohibited from the predictor representation.
+predictorとして利用できるのはroot時点またはそれ以前に利用可能な情報だけです。
 
-Stage 0 froze a 310-scalar feature schema with:
+continuation outcome、future winner、`D_range`、post-root rollout state、その他のfuture-outcome-derived quantityをpredictor representationへ使用することは禁止しました。
+
+Stage 0で310-scalar feature schemaを固定しました。
 
 ```text
 feature schema SHA256 = 1d9dd5e0ea42dc7bcdb7a385077397e08385fcdb4eeb695fc5625501dbc8526b
 ```
 
-## Stage 0 — technical representation validation
+## 6. Stage 0 — technical representation validation
 
-Stage 0 was technical-only and generated no scientific outcome.
+Stage 0はtechnical-onlyでscientific outcomeを生成していません。
 
 Canonical execution:
 
@@ -95,7 +103,7 @@ artifact ZIP SHA256 = 442b7ba7dcaeab244e3ed35def5fa2e4508f999fecd7fdb1ea28951a3e
 Stage 0 result core SHA256 = d26401b6814b501589d1811f3f182ce731822f91bef2a203a5b874b285de05ac
 ```
 
-Six technical fixtures covered Namua and Mtaji. Production and structurally independent implementations agreed exactly on the full representation and RAW identity, and mandatory positive/negative controls passed.
+6 technical fixturesでNamuaとMtajiをcoveredしました。Productionとstructurally independent implementationはfull representationとRAW identityでexactに一致し、mandatory positive / negative controlもPASSしました。
 
 Decision:
 
@@ -103,9 +111,9 @@ Decision:
 STAGE0-TECHNICAL-PASS
 ```
 
-## Stage 1 — prospective development freeze
+## 7. Stage 1 — prospective development freeze
 
-Before Stage 1 scientific outcome generation, the following were fixed:
+Stage 1 scientific outcome生成前に次を固定しました。
 
 ```text
 source games = 3072
@@ -124,18 +132,18 @@ cross-validation = 5-fold by historicalTrajectoryHash
 Stage 1 rows reusable as Stage 2 formal evidence = false
 ```
 
-The source population used six prospectively fixed generation strata. Root selection was outcome-blind, RAW duplicate handling was fixed, and no phase replacement/reassignment was allowed if quotas were unavailable.
+source populationでは6つのprospectively fixed generation stratumを使用しました。root selectionはoutcome-blindで、RAW duplicate handlingも固定し、quota不足時のphase replacement / reassignmentは禁止しました。
 
-The Stage 1 scientific design SHA256 was:
+Stage 1 scientific design SHA256:
 
 ```text
 STAGE_1_DEVELOPMENT_SPEC.json = 813b99ed64cc3af1438119f513faf6be64e7c6b6d6015a0fff5c962b58ef1fbb
 STAGE_1_EXECUTION_ADDENDUM.json = e246f562735c72ccc29ea320021be7bb3cb0056f30cf063dca0e3d0366a89d64
 ```
 
-## Implementation, resource, and source-freeze validation
+## 8. implementation / resource / source-freeze validation
 
-Before scientific authorization, non-scientific validation established that the frozen pipeline was runnable and that the exact scientific source set was bound.
+scientific authorization前のnon-scientific validationで、frozen pipelineが実行可能であることと、exact scientific source setがbindingされていることを確認しました。
 
 ```text
 implementation smoke run = 33195723195 / success
@@ -147,24 +155,24 @@ source-freeze audit artifact = 9696075216
 source-freeze audit envelope SHA256 = 03c466fa075d95ee0a8aba8ba863e7236a9a1997e8b566e6725b0ba378476a2d
 ```
 
-The scientific source was frozen at:
+scientific sourceは次で固定しました。
 
 ```text
 a69ffce86cb278680ee676a2a9469aeb1d9ab1d4
 ```
 
-The source-freeze audit confirmed the exact Git blobs required by the scientific run before explicit authorization.
+source-freeze auditはexplicit authorization前にscientific runで必要となるexact Git blobを確認しました。
 
-## Explicit Stage 1 authorization and consumption
+## 9. explicit Stage 1 authorizationとconsumption
 
-Explicit authorization was committed as:
+Explicit authorization:
 
 ```text
 authorization ID = RCPR-S1-EXECUTE-2026-08-29-v1
 authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
 ```
 
-The authorization retained:
+authorizationは次を維持しました。
 
 ```text
 scientificInferenceAuthorized = false
@@ -172,11 +180,11 @@ confirmatoryReuseAllowed = false
 stage2Authorized = false
 ```
 
-It bound the fixed spec, execution addendum, exact source-blob map, fresh seed block, and fail-closed consume-once failure semantics.
+fixed spec、execution addendum、exact source-blob map、fresh seed block、fail-closed consume-once failure semanticsへbindingしました。
 
-Once the scientific Stage 1 execution crossed its start boundary, the seed block became permanently consumed for `RCPR-STUDY1`.
+scientific Stage 1 executionがexecution-start boundaryを越えた時点で、seed blockは`RCPR-STUDY1`に対して永久にconsumedとなりました。
 
-## Stage 1 execution
+## 10. Stage 1 execution
 
 Canonical workflow:
 
@@ -189,7 +197,7 @@ failed step = Independent full-corpus replay and recomputation
 
 ### Production-only development output
 
-Production completed the frozen development pipeline and reported:
+Productionはfrozen development pipelineを完了し、次を報告しました。
 
 ```text
 generated games = 3072
@@ -204,7 +212,7 @@ Mtaji AUROC = 0.6657646992502396
 balanced accuracy = 0.6684641309581127
 ```
 
-All frozen production readiness checks were true.
+frozen production readiness checkはすべてtrueでした。
 
 Production artifact provenance:
 
@@ -215,11 +223,11 @@ production result SHA256 = bc2ece4cb2df6f3cc5625324661c56fcaa6476c9921265f08fa13
 production development core SHA256 = 245c7e04421b1ef534edcb23d3048df1e2f1d556f9223f1eee84f054973f66b8
 ```
 
-These results are retained strictly as production-only unverified development provenance. They do not constitute an accepted scientific Stage 1 result and do not authorize Stage 2.
+これらは**production-only unverified development provenance**としてのみ保持します。accepted scientific Stage 1 resultではなく、Stage 2を承認しません。
 
-## Mandatory independent verification
+## 11. mandatory independent verification
 
-The independent verifier recomputed the corpus, root selection, representation, continuation outcomes, model development, and readiness without importing the production feature implementation or production Stage 1 classifier helper.
+Independent verifierはproduction feature implementationやproduction Stage 1 classifier helperをimportせず、corpus、root selection、representation、continuation outcome、model development、readinessを再計算しました。
 
 Verification outcome:
 
@@ -236,7 +244,9 @@ technicalPass = false
 finalDecision = STAGE1-TECHNICAL-INVALID
 ```
 
-Exactly four of 600 selected rows failed exact feature-vector hash equality. RAW state keys, continuation measurements, `D_range`, high-divergence labels, model development, and readiness otherwise agreed.
+600 selected rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。
+
+一方、RAW state key、continuation measurement、`D_range`、high-divergence label、model development、readinessは一致しました。
 
 Verification artifact provenance:
 
@@ -247,35 +257,39 @@ verification SHA256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4
 independent development core SHA256 = 5b2251ef1ac34295cd1d67412c9d7f09adbe55b5af81a8752d3cb639b036e22a
 ```
 
-## Technical postmortem
+## 12. technical postmortem
 
-A read-only post-failure audit localized all four mismatches to one feature:
+read-only post-failure auditで4 mismatchすべてが次のfeatureへ局在することを確認しました。
 
 ```text
 MOVE_SET_ENTROPY.indexEntropy
 ```
 
-Production accumulated Shannon entropy terms from a `Map` in encounter/insertion order. The independent implementation used a plain object; JavaScript enumeration numerically orders integer-like keys. Because floating-point addition is not exactly associative, the different summation order produced differences of approximately:
+Productionでは`Map`のencounter / insertion orderでShannon entropy termを加算していました。Independent implementationはplain objectを使用し、JavaScript enumerationによりinteger-like keyがnumeric orderへ並び替えられました。
+
+floating-point additionはexactにassociativeではないため、加算順序の違いによって次の程度の差が発生しました。
 
 ```text
 2.220446049250313e-16 .. 4.440892098500626e-16
 ```
 
-The prospectively frozen verifier required exact equality. Therefore the explanation does not authorize replacing exact equality with a tolerance, rounding the vectors after outcome observation, repairing the verifier and rerunning the consumed block, or treating the four mismatches as immaterial for the Study decision.
+しかし、prospectively frozen verifierはexact equalityを要求しています。
 
-The canonical postmortem is:
+したがって、この原因説明を根拠としてoutcome確認後にtoleranceへ置き換えること、vectorをroundすること、verifierを修復してconsumed blockを再実行すること、4 mismatchをimmaterialとしてdecisionから除外することは承認されません。
+
+Canonical postmortem:
 
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 
-## Fail-closed closure
+## 13. fail-closed closure
 
-The frozen execution contract maps a post-consumption technical or independent-verification failure to:
+frozen execution contractでは、post-consumption technical / independent-verification failureを次へmapします。
 
 ```text
 STAGE1-TECHNICAL-INVALID
 ```
 
-Therefore:
+したがって最終状態は次です。
 
 ```text
 Stage 1 = STAGE1-TECHNICAL-INVALID
@@ -287,36 +301,42 @@ confirmatoryReuseAllowed = false
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-No post-hoc rescue was applied.
+post-hoc rescueは一切適用していません。
 
-## Interpretation boundary
+## 14. interpretation boundary
 
-This closure does **not** establish that rich pre-root representation cannot identify machine-defined decision-critical structure. It also does not validate `RICH_ALL`, its production AUROC, or the production operating threshold as a reusable scientific classifier.
+このclosureは、rich pre-root representationがmachine-defined decision-critical structureを識別できないことを確立したものではありません。
 
-The Study establishes only that the prospectively frozen Stage 1 pipeline failed its mandatory exact independent representation-verification requirement after consuming its single fresh development block.
+同時に、`RICH_ALL`、production AUROC、production operating thresholdをreusable scientific classifierとしてvalidateしたものでもありません。
 
-The production observations may be preserved for provenance and future hypothesis generation, but they must not be promoted into accepted Stage 1 evidence, Stage 2 formal evidence, or a claim of validated critical-position classification.
+本Studyが確立したのは、**single fresh development blockをconsumeした後、prospectively frozen Stage 1 pipelineがmandatory exact independent representation-verification requirementを満たさなかった**ことだけです。
 
-## Workflow archival and repository closure
+production observationはprovenanceとfuture hypothesis generationのために保存できますが、accepted Stage 1 evidence、Stage 2 formal evidence、validated critical-position classification claimへ昇格してはいけません。
 
-After scientific closure and central-document synchronization, all RCPR technical/development/materialization workflows were converted to read-only archival stubs. The original executable blobs remain preserved in Git history and source-freeze records.
+## 15. workflow archive / repository closure
+
+scientific closureとcentral-document synchronization後、すべてのRCPR technical / development / materialization workflowをread-only archival stubへ変換しました。
+
+original executable blobはGit historyとsource-freeze recordに保持されています。
 
 Canonical archive checkpoint:
 
 - `checkpoints/2026-08-29-post-closure-workflow-archive.md`
 
-No further RCPR-STUDY1 technical, development, scientific, or automatic central-document execution is authorized.
+今後`RCPR-STUDY1`のtechnical、development、scientific、automatic central-document executionを行うことは承認されていません。
 
-## Program continuation
+## 16. Program continuation
 
-G2-06 is closed and is not reopened as a result-driven `RCPR-STUDY2` retry.
+G2-06はclosedであり、result-drivenな`RCPR-STUDY2` retryとして再開しません。
 
-The next uncompleted machine-only Research Generation 2 agenda item is:
+次の未完了machine-only Research Generation 2 agenda itemは次です。
 
 ```text
 G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
 ```
 
-G2-07 requires a fresh repository-state audit, new prospective Study/Stage IDs, its own representation/endpoint/source/seed contract, and explicit authorization. It does not inherit RCPR Stage 1 rows as formal evidence.
+G2-07はfresh repository-state audit、新しいprospective Study / Stage ID、独自のrepresentation / endpoint / source / seed contract、explicit authorizationを必要とします。RCPR Stage 1 rowをformal evidenceとして継承してはいけません。
 
-A future independent revisit of rich critical-position representation is possible only under a distinct prospective identity with deterministic entropy/numeric-hash semantics, fresh technical validation, fresh scientific evidence, and fresh authorization. It must not alter the final `RCPR-STUDY1` decision.
+将来rich critical-position representationを独立研究として再検討することは可能ですが、deterministic entropy / numeric-hash semantics、fresh technical validation、fresh scientific evidence、fresh authorizationを備えたdistinct prospective identityが必要です。
+
+最終`RCPR-STUDY1` decisionを変更してはいけません。

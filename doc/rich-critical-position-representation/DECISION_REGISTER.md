@@ -1,6 +1,6 @@
-# RCPR-STUDY1 — Decision Register
+# RCPR-STUDY1 — 判断台帳
 
-Updated: 2026-08-29
+更新日: 2026-08-29
 
 ## D01 — Study identity
 
@@ -10,7 +10,7 @@ Study ID = RCPR-STUDY1
 Formal title = Rich Critical-Position Representation Study 1
 ```
 
-Decision: prospectively frozen before G2-06 scientific outcome generation.
+判断: G2-06 scientific outcome生成前にprospectiveに固定しました。
 
 ## D02 — Stage architecture
 
@@ -20,11 +20,13 @@ Stage 1 = RCPR-S1-DEVELOPMENT-2026-08-28-v1
 Stage 2 = RCPR-S2-FORMAL-2026-08-28-v1
 ```
 
-Stage 0 is technical-only; Stage 1 is fresh development only; Stage 2 is fresh formal validation only and requires a separate explicit authorization.
+Stage 0はtechnical-only、Stage 1はfresh development only、Stage 2はfresh formal validation onlyで、別のexplicit authorizationを必要とします。
 
-## D03 — Upstream immutability
+## D03 — upstream immutability
 
-All Research Generation 1 and G2-01..G2-05 decisions remain immutable. The historical Critical Positions 600 roots, 139 high-divergence roots, 1,183 candidate audits and zero-promotion closure are not G2-06 training, tuning or formal evidence.
+Research Generation 1およびG2-01..G2-05の判断はすべてimmutableです。
+
+Historical Critical Positionsの600 roots、139 high-divergence roots、1,183 candidate audits、zero-promotion closureをG2-06のtraining、tuning、formal evidenceとして使用しません。
 
 ## D04 — RAW-only scientific identity
 
@@ -32,13 +34,13 @@ All Research Generation 1 and G2-01..G2-05 decisions remain immutable. The histo
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn` and `reason` are excluded. Missing `pending` fails closed. `validated transform set = []`; no canonicalization or symmetry reduction is authorized.
+`turn`と`reason`は除外します。`pending`欠落時はfail closedです。`validated transform set = []`であり、canonicalization / symmetry reductionは承認されていません。
 
-## D05 — Historical identity helper not authorized for RCPR identity
+## D05 — historical identity helperはRCPR identityとして未承認
 
-Historical helpers that construct seat-canonical or mirrored identities are not authorized as G2-06 scientific identity. RCPR uses dedicated RAW-only serialization/keying.
+seat-canonical / mirrored identityを作るhistorical helperはG2-06 scientific identityとして使用しません。RCPRはdedicated RAW-only serialization / keyingを使用します。
 
-## D06 — Leakage taxonomy
+## D06 — leakage taxonomy
 
 ```text
 A PRE_ROOT_OBSERVABLE
@@ -47,9 +49,9 @@ C SEARCH_DERIVED_OUTCOME_INDEPENDENT
 D CONTINUATION_OR_FUTURE_OUTCOME_DERIVED
 ```
 
-Only A-C are predictor eligible. D is forbidden.
+predictorとしてeligibleなのはA-Cだけです。Dは禁止します。
 
-## D07 — Prospectively declared representation families
+## D07 — prospectively declared representation families
 
 ```text
 LOCAL_PIT_TOPOLOGY
@@ -62,31 +64,37 @@ SEARCH_GAP_VECTOR
 LOCAL_TEMPORAL_CONTEXT
 ```
 
-No new family may be added after Stage 1 scientific outcomes are observed.
+Stage 1 scientific outcome確認後に新しいfamilyを追加してはいけません。
 
-## D08 — Criticality construct continuity
+## D08 — criticality construct continuity
 
-`D_range` across exact root moves under the frozen continuation policy is reused only as a measurement definition on fresh G2-06 evidence. The frozen high-divergence boundary is `D_range >= 0.30`. Historical measured roots/outcomes are prohibited.
+frozen continuation policy下のexact root move間`D_range`は、fresh G2-06 evidence上のmeasurement definitionとしてのみ再利用します。
 
-## D09 — Stage 1/2 identity firewall
+frozen high-divergence boundaryは`D_range >= 0.30`です。historical measured root / outcomeは使用禁止です。
 
-Stage 1 and Stage 2 must have zero overlap on source-game seed, historical trajectory, opening prefix where available, selected RAW state key, representation-row identity, and complete pre-root history-window hash when temporal context is used.
+## D09 — Stage 1 / 2 identity firewall
 
-## D10 — Independent verifier structure
+Stage 1とStage 2は、source-game seed、historical trajectory、利用可能な場合のopening prefix、selected RAW state key、representation-row identity、temporal context利用時のcomplete pre-root history-window hashでoverlap 0を要求します。
 
-The independent verifier may share the authoritative Bao rule engine but may not import the production RCPR feature extractor, classifier helper, or RAW serializer. It must recompute representation and endpoint independently from raw inputs.
+## D10 — independent verifier structure
+
+Independent verifierはauthoritative Bao rule engineを共有できますが、production RCPR feature extractor、classifier helper、RAW serializerをimportしてはいけません。
+
+raw inputからrepresentationとendpointを独立再計算します。
 
 ## D11 — G2-05 hardening applicability
 
-G2-06 adopts the relevant governance principles of pre-formal controls, fresh source identity/authorization after scientific source changes, and read-only closure auditing. Exact-enumeration rules are not claimed by this study.
+G2-06は、pre-formal control、scientific source変更後のfresh source identity / authorization、read-only closure auditingなどG2-05のrelevant governance principleを採用します。
 
-## D12 — Fail-closed formal behavior
+exact-enumeration ruleを本Studyへ主張するものではありません。
 
-No scientific threshold, feature family, classifier, distance, clustering, aggregation, interaction, phase population, primary endpoint, or verifier acceptance criterion may be repaired or changed after the relevant scientific outcome is observed to obtain a preferred result.
+## D12 — fail-closed formal behavior
 
-## D13 — Stage 1 seed block permanently consumed
+relevant scientific outcome確認後、望ましい結果を得る目的でscientific threshold、feature family、classifier、distance、clustering、aggregation、interaction、phase population、primary endpoint、verifier acceptance criterionを修復・変更してはいけません。
 
-The authorized workflow run `33196954082` crossed the frozen execution-start boundary. Archived `execution-start.json` records:
+## D13 — Stage 1 seed blockは永久にconsumed
+
+Authorized workflow run `33196954082`はfrozen execution-start boundaryを越えました。archived `execution-start.json`には次を記録しています。
 
 ```text
 scientificStage1SeedBlockConsumed = true
@@ -94,17 +102,21 @@ seedStart = 28610001
 seedEnd = 28613072
 ```
 
-Decision: this block is permanently consumed for `RCPR-STUDY1`. Same-block rerun, replacement and extension are not authorized.
+判断: このblockは`RCPR-STUDY1`に対して永久にconsumedです。same-block rerun、replacement、extensionは承認しません。
 
-## D14 — Production-only output is not an accepted Stage 1 result
+## D14 — production-only outputはaccepted Stage 1 resultではない
 
-Production job `98936414477` succeeded and all production readiness gates passed. The production output included 599 primary-estimable roots, 134 high-divergence roots, `RICH_ALL` as the selected family set and overall OOF AUROC `0.7093403948001926`.
+Production job `98936414477`は成功し、production readiness gateもすべてPASSしました。
 
-Decision: because independent verification did not pass, these values are retained as provenance-only **production-only unverified development output**. They cannot authorize Stage 2, establish a positive G2-06 scientific result, or be treated as confirmatory evidence.
+production outputには599 primary-estimable roots、134 high-divergence roots、selected family set=`RICH_ALL`、overall OOF AUROC=`0.7093403948001926`が含まれます。
 
-## D15 — Exact independent representation mismatch governs
+判断: independent verificationがPASSしなかったため、これらは**production-only unverified development output**としてprovenanceのためだけに保持します。
 
-Independent job `99007180273` recorded:
+Stage 2を承認せず、positive G2-06 scientific resultを確立せず、confirmatory evidenceとして扱いません。
+
+## D15 — exact independent representation mismatchを優先する
+
+Independent job `99007180273`の記録:
 
 ```text
 fullCorpusReplay = true
@@ -117,29 +129,31 @@ readinessRecomputation = true
 technicalPass = false
 ```
 
-Exactly four of 600 rows failed exact feature-vector hash equality. The prospectively frozen verifier required exact equality; therefore the technical gate fails regardless of the small numerical magnitude of those mismatches.
+600 rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。
+
+prospectively frozen verifierはexact equalityを要求しているため、数値差が小さくてもtechnical gateはFAILします。
 
 ## D16 — Stage 1 final decision
 
-Decision:
+判断:
 
 **`STAGE1-TECHNICAL-INVALID`**
 
-The technical postmortem localized the mismatch to `MOVE_SET_ENTROPY.indexEntropy`: production `Map` insertion-order accumulation and independent object integer-key enumeration produce IEEE-754 differences of approximately `2.22e-16` to `4.44e-16` on four rows.
+technical postmortemではmismatchを`MOVE_SET_ENTROPY.indexEntropy`へ局在させました。productionの`Map` insertion-order accumulationとindependent object integer-key enumerationの違いにより、4 rowsで約`2.22e-16`〜`4.44e-16`のIEEE-754差が生じました。
 
-This localization is explanatory only. No post-hoc tolerance, rounding rule, verifier replacement, or same-seed replay is authorized to rescue `RCPR-STUDY1`.
+この原因特定は説明のためだけです。`RCPR-STUDY1`を救済するためのpost-hoc tolerance、rounding rule、verifier replacement、same-seed replayは承認しません。
 
-## D17 — Stage 2 blocked and successor boundary
+## D17 — Stage 2 blockとsuccessor boundary
 
-`RCPR-S2-FORMAL-2026-08-28-v1` remains **`NOT-AUTHORIZED-NOT-EXECUTED`** and will not be authorized from the Stage 1 production-only output.
+`RCPR-S2-FORMAL-2026-08-28-v1`は**`NOT-AUTHORIZED-NOT-EXECUTED`**のままであり、Stage 1 production-only outputを根拠に承認しません。
 
-Any continuation must be a new prospective successor study. Before successor scientific evidence generation it must:
+continuationを行う場合は新しいprospective successor studyでなければなりません。successor scientific evidence生成前に最低限次を必要とします。
 
-1. freeze canonical entropy category-order/numeric-hash semantics;
-2. pass adversarial independent technical fixtures, including integer-like keys in nonnumeric encounter order;
-3. demonstrate exact equality for all 310 features;
-4. freeze a new study/spec/source commit;
-5. allocate a fresh consume-once scientific seed block; and
-6. obtain a new explicit authorization.
+1. canonical entropy category-order / numeric-hash semanticsを固定する。
+2. nonnumeric encounter orderのinteger-like keyを含むadversarial independent technical fixtureをPASSする。
+3. 310 featuresすべてでexact equalityを示す。
+4. 新しいstudy / spec / source commitを固定する。
+5. fresh consume-once scientific seed blockを割り当てる。
+6. 新しいexplicit authorizationを取得する。
 
-`RCPR-STUDY1` development rows are not successor formal evidence.
+`RCPR-STUDY1` development rowをsuccessor formal evidenceとして使用してはいけません。

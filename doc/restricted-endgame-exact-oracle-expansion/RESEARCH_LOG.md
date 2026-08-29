@@ -1,8 +1,8 @@
-# REEOE-STUDY1 — Research Log
+# REEOE-STUDY1 — 研究ログ
 
-## 2026-08-28 — Repository audit and Study start
+## 2026-08-28 — repository audit / Study開始
 
-Read-only repository audit completed before G2-04 modifications.
+G2-04 modification前にread-only repository auditを完了しました。
 
 ```text
 expected prior main = aba61596e6440e9d54be6f1e9520f65e983000b3
@@ -11,11 +11,11 @@ match = true
 open PRs = 0
 ```
 
-Residual Research Generation 2 branches had zero commits ahead of `main`; no competing active/unmerged G2 research was found.
+Residual Research Generation 2 branchはいずれも`main`よりahead commitが0であり、competing active / unmerged G2 researchはありませんでした。
 
-## 2026-08-28 — Upstream contract reconstruction
+## 2026-08-28 — upstream contract reconstruction
 
-Immutable boundaries were reconstructed and frozen:
+immutable boundaryを再構築し、固定しました。
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -27,7 +27,7 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-## 2026-08-28 — Formal identity and Study-start freeze
+## 2026-08-28 — formal identity / Study-start freeze
 
 ```text
 Program = G2-04
@@ -45,15 +45,17 @@ REEOE-S1-DEVELOPMENT-2026-08-28-v1
 REEOE-S2-FORMAL-2026-08-28-v1
 ```
 
-Authoritative identity was frozen as `pits,reserve,houseOwned,player,phase,winner,pending`; `turn/reason` excluded. Symmetry/canonicalization/quotient counting prohibited.
+Authoritative identityは`pits,reserve,houseOwned,player,phase,winner,pending`として固定し、`turn/reason`を除外しました。symmetry / canonicalization / quotient countingは禁止しました。
 
 ## 2026-08-28 — Stage 0 implementation audit
 
-The existing REWR exact-analysis lineage was inspected. Both old production/independent serializers contain a compatibility fallback that can synthesize `pending=[0,0]` when missing. G2-04 did not alter historical helpers; instead a strict G2-04 validation layer was implemented on both production and independent paths to reject missing `pending` before identity use.
+既存REWR exact-analysis lineageを監査しました。old production / independent serializerの双方に、missing field時に`pending=[0,0]`を合成するcompatibility fallbackがありました。
 
-A production Stage 0 runner, independent verifier, four corruption controls, and dedicated workflow were added.
+G2-04ではhistorical helperを変更せず、identity使用前にmissing `pending`をrejectするstrict G2-04 validation layerをproduction / independent双方へ実装しました。
 
-One simple production-runner root-result reference typo was found and corrected before any Stage 0 output was generated. No scientific definition or fixture changed.
+production Stage 0 runner、independent verifier、4 corruption control、dedicated workflowを追加しました。
+
+Stage 0 output生成前にproduction runner内の単純なroot-result reference typoを発見して修正しました。scientific definitionやfixtureは変更していません。
 
 ## 2026-08-28 — Stage 0 technical PASS
 
@@ -76,9 +78,9 @@ S0-G1..S0-G12 = PASS
 negative controls detected = 4/4
 ```
 
-Reconstructed terminal rows preserved `pending` and all eight represented 64 seeds. Stage 0 remained technical-only.
+再構築terminal rowでは`pending`を保持し、8 statesすべてでrepresented seedsは64でした。Stage 0はtechnical-onlyを維持しました。
 
-## 2026-08-28 — Stage 1 v1 prospective freeze and authorization
+## 2026-08-28 — Stage 1 v1 prospective freeze / authorization
 
 Fresh development block:
 
@@ -88,7 +90,7 @@ games = 512
 maxPly = 240
 ```
 
-Frozen structural/resource envelope:
+Frozen structural / resource envelope:
 
 ```text
 Mtaji / reserve [0,0] / houses false / pending [0,0] / 64 represented seeds
@@ -101,13 +103,13 @@ move microstates <= 1000000
 minimum complete closures = 3
 ```
 
-Retrograde values, DTF, cycles, optimal moves, and winner identity were prohibited development-selection inputs.
+retrograde value、DTF、cycle、optimal move、winner identityをdevelopment-selection inputとして使用することは禁止しました。
 
 ## 2026-08-28 — Stage 1 v1 fail-closed technical invalidation
 
-Workflow run `33150429724` completed production development, then the independent verifier failed at startup because it referenced `../public/engine.js` from the wrong relative location.
+workflow run `33150429724`ではproduction developmentが完了した後、wrong relative locationから`../public/engine.js`を参照したためindependent verifierがstartupで失敗しました。
 
-Because production output had already been generated, the same evidence was not repaired and rerun.
+production outputがすでに生成されていたため、同じevidenceを修復してrerunしていません。
 
 ```text
 Stage 1 v1 = TECHNICAL-INVALID-VERIFIER-NOT-EXECUTED
@@ -115,11 +117,11 @@ v1 outputs eligible for later design = false
 v1 identities consumed = true
 ```
 
-The v1 workflow was later converted to an archival stub to prevent duplicate production generation.
+その後v1 workflowをarchival stubへ変更し、duplicate production generationを防止しました。
 
 ## 2026-08-28 — Stage 1 v2 prospective freeze
 
-A fresh version was defined without relaxing the v1 structural/resource/acceptance design.
+v1のstructural / resource / acceptance designを緩和せずfresh versionを定義しました。
 
 ```text
 Stage = REEOE-S1-DEVELOPMENT-2026-08-28-v2
@@ -128,9 +130,9 @@ games = 512
 maxPly = 240
 ```
 
-The independent verifier was strengthened to regenerate all 512 trajectories, all encountered RAW roots, eligible roots, first-eight selected roots, and each closure before acceptance evaluation.
+Independent verifierは512 trajectoriesすべて、encountered RAW rootすべて、eligible root、first-eight selected root、各closureをacceptance evaluation前に再生成するよう強化しました。
 
-Source blobs were frozen and explicit v2 execution authorization issued. Stage 2 remained unauthorized.
+source blobを固定してexplicit v2 execution authorizationを発行しました。Stage 2は未承認のままです。
 
 ## 2026-08-28 — Stage 1 v2 execution
 
@@ -151,7 +153,7 @@ selected roots = 8
 complete closures = 0
 ```
 
-Closure stops:
+Closure stop:
 
 ```text
 STATE-LIMIT = 4
@@ -159,15 +161,15 @@ ADMIN-CUTOFF = 3
 MOVE-NONTERMINATION = 1
 ```
 
-The independent verifier independently reproduced the full population/selection and all selected closure classifications. It reached the frozen acceptance check and exited because `complete=0 < 3`.
+Independent verifierはfull population / selectionとselected closure classificationをすべて独立再現しました。frozen acceptance checkまで到達し、`complete=0 < 3`を理由にexitしました。
 
 ```text
 Stage 1 v2 = STAGE1-DEVELOPMENT-BLOCKED
 ```
 
-The workflow did not upload an artifact because the frozen acceptance failure occurred before the upload step.
+frozen acceptance failureがupload stepより前に発生したため、workflow artifactはuploadされていません。
 
-Canonical identities:
+Canonical identity:
 
 ```text
 allEncounteredRootSetSha256 = 36c8afe8eb06c268c80652d132d5149691b6d689c8f5729d31b05811d0e91107
@@ -180,7 +182,7 @@ independentVerificationCoreSha256 = b09c71350f990195d0b1e56ee267a615e11b7bfa9094
 
 ## 2026-08-28 — Stage 2 non-authorization
 
-The frozen Stage 1 v2 feasibility rule was not satisfied. No cap increase, domain shrinkage, root replacement, seed extension, solver substitution, partial-closure promotion, or symmetry/canonicalization rescue was performed.
+frozen Stage 1 v2 feasibility ruleを満たさなかったため、cap increase、domain shrinkage、root replacement、seed extension、solver substitution、partial-closure promotion、symmetry / canonicalization rescueを行っていません。
 
 ```text
 REEOE-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
@@ -190,12 +192,14 @@ fresh G2-04 exact oracle = none
 
 ## 2026-08-28 — Study closure
 
-The Study-level formal decision was frozen as:
+Study-level formal decisionを次で固定しました。
 
 ```text
 INCONCLUSIVE
 ```
 
-This closure states only that this Study's frozen development design did not establish the complete-closure feasibility required to authorize Stage 2. It does not imply that Bao endgames or other future restricted domains are unsolvable.
+このclosureが述べるのは、本Studyのfrozen development designではStage 2承認に必要なcomplete-closure feasibilityが成立しなかったことだけです。
 
-Canonical closure artifacts were created in `results/`, `STUDY_1_FINAL_REPORT.md`, `CURRENT_STATUS.md`, and the decision/reproducibility records.
+Bao endgameや他の将来restricted domainがunsolvableであることを意味しません。
+
+canonical closure artifactは`results/`、`STUDY_1_FINAL_REPORT.md`、`CURRENT_STATUS.md`、decision / reproducibility recordに保存しました。
