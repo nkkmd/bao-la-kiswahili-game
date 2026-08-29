@@ -23,7 +23,7 @@ function ms(fn){const t=performance.now(),value=fn();return{value,ms:performance
 function summarySelection(s){return{generatedGames:s.generatedGames,uniqueTrajectories:s.uniqueTrajectories,distinctOpeningPrefixes:s.distinctOpeningPrefixes,selectedRoots:s.selectedRoots,selectedNamua:s.selectedNamua,selectedMtaji:s.selectedMtaji,sourcePolicyCounts:s.sourcePolicyCounts,selectionHash:s.selectionHash}}
 function selectedIdentity(s){return s.selected.map(x=>({seed:x.seed,sourcePolicy:x.sourcePolicy,phase:x.phase,ply:x.ply,legalMoveCount:x.legalMoveCount,rawStateKey:x.rawStateKey,trajectoryHash:x.trajectoryHash,openingPrefixHash:x.openingPrefixHash,quotaRank:x.quotaRank}))}
 function project(observed,scale){return observed*scale}
-function makeProbe(size){const b=Buffer.allocUnsafe(size);let state=0x4d444654;for(let i=0;i<size;i++){state=(Math.imul(state^i,1664525)+1013904223)>>>0;b[i]=state&255}return b}
+function makeProbe(size){const b=Buffer.allocUnsafe(size);let offset=0,counter=0;while(offset<size){const block=crypto.createHash("sha256").update(`MDFT-STAGE1-TRANSFER-PROBE|${counter}`).digest();block.copy(b,offset,0,Math.min(block.length,size-offset));offset+=block.length;counter+=1}return b}
 fs.mkdirSync(OUT,{recursive:true});
 const spec=JSON.parse(fs.readFileSync(SPEC_PATH,"utf8"));
 const noHash=JSON.parse(JSON.stringify(spec));delete noHash.specSha256;
