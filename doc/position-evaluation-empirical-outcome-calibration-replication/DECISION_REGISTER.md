@@ -19,6 +19,12 @@ Study ID = PEOCR-STUDY1
 
 PEC Stage 2への追加game、seed extension、gate relaxation、replacement、mapping refit、threshold change、retrospective reclassificationは承認しません。
 
+既存contractとの互換性のため、次のcanonical phraseも保持します。
+
+```text
+No additional PEC Stage 2 games
+```
+
 既存dataはresource planningとfailure-mode identificationにのみ利用できます。
 
 ## D-003 — baseline
