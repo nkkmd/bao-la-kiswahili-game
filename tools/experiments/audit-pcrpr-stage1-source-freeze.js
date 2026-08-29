@@ -42,6 +42,12 @@ function gitText(args){return childProcess.execFileSync("git",args,{cwd:ROOT,enc
 function parseOut(){const at=process.argv.indexOf("--out");ensure(at>=0&&process.argv[at+1],"--out required");return path.resolve(process.argv[at+1]);}
 function writeJson(file,value){fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(value,null,2)+"\n","utf8");}
 
+function prerequisitePassed(relative,value){
+  if(relative.includes("STAGE_0_TECHNICAL_RESULT")) return value.finalDecision==="STAGE0-TECHNICAL-PASS" && value.production?.passed===true && value.independentVerification?.passed===true;
+  return value.passed===true;
+}
+function scientificSeedConsumed(value){return value.scientificSeedsConsumed===true||value.scientificSeedBlocksConsumed===true||value.scientificStage1SeedBlockConsumed===true;}
+
 function run(){
   ensure(gitText(["status","--porcelain"])==="","source-freeze audit requires clean tree");
   const sourceBlobHashes={},sourceSha256={};
@@ -51,9 +57,8 @@ function run(){
     ensure(fs.existsSync(abs(relative)),`missing prerequisite result ${relative}`);
     const value=JSON.parse(fs.readFileSync(abs(relative),"utf8"));
     ensure(value.studyId===STUDY_ID,"prerequisite study mismatch");
-    if(relative.includes("STAGE_0"))ensure(value.passed===true||value.decision==="STAGE0-TECHNICAL-PASS","Stage 0 prerequisite not passed");
-    else ensure(value.passed===true,"preauthorization prerequisite not passed");
-    ensure(value.scientificSeedsConsumed!==true,"preauthorization prerequisite consumed scientific seeds");
+    ensure(prerequisitePassed(relative,value),`prerequisite not passed: ${relative}`);
+    ensure(!scientificSeedConsumed(value),`preauthorization prerequisite consumed scientific seeds: ${relative}`);
     prerequisites[relative]={sha256:sha256File(relative),passed:true};
   }
   const spec=JSON.parse(fs.readFileSync(abs("doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json"),"utf8"));
