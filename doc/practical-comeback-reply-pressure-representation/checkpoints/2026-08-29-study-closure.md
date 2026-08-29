@@ -16,7 +16,7 @@ confirmatoryReuseAllowed = false
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
 Study = CLOSED ON RESEARCH BRANCH
-main integration = NOT PERFORMED
+main integration = PENDING FINAL PR MERGE
 ```
 
 ## Terminal incident
@@ -45,9 +45,13 @@ All PCRPR Stage 0/Stage 1 technical, preauthorization, source-freeze and scienti
 
 ## Shared central documents
 
-`doc/RESEARCH_INDEX.md` and `doc/FUTURE_RESEARCH_AGENDA.md` are shared, large program-level documents. At this checkpoint they are intentionally not rewritten through a full-file replacement solely to add the G2-07 closure entry. Their G2-07/G2-08 localized synchronization is reserved for the later explicit main-integration preparation step, where the final branch state can be incorporated without risking unrelated content loss.
+Final integration preparation synchronized the G2-07 closure into all three shared entry documents without rewriting unrelated study content:
 
-This deferment does not keep PCRPR-STUDY1 scientifically open: the Study's own canonical records above are terminal and authoritative.
+- repository root `README.md` now includes the G2-07 / `PCRPR-STUDY1` closure entry;
+- `doc/RESEARCH_INDEX.md` now includes a dedicated G2-07 Study 1 section and identifies G2-08 as the next unstarted machine-only agenda item;
+- `doc/FUTURE_RESEARCH_AGENDA.md` now marks G2-07 completed, records the technical-invalid closure, and advances the next unstarted machine-only agenda item to G2-08.
+
+The central-doc materializer used anchor-validated local replacements and passed its explicit reference checks before committing the synchronized documents.
 
 ## Next research boundary
 
