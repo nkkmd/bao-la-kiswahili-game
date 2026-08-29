@@ -1,7 +1,7 @@
-# DRSSE-STUDY1 — Reproducibility Index
+# DRSSE-STUDY1 — 再現性索引
 
-Updated: 2026-08-28  
-Status: **COMPLETE / EXACT WITHIN FROZEN DEPTH-9 DOMAIN / MAIN INTEGRATED**
+更新日: 2026-08-28  
+状態: **COMPLETE / EXACT WITHIN FROZEN DEPTH-9 DOMAIN / MAIN INTEGRATED**
 
 ## Study anchor
 
@@ -14,7 +14,7 @@ Branch = research/g2-05-deep-raw-state-space-enumeration
 Formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
 ```
 
-## Authoritative representation
+## authoritative representation
 
 ```text
 RAW identity include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -32,7 +32,7 @@ Exact move identity fields:
 type,phase,row,index,direction,side,houseChoice,houseTwo
 ```
 
-## Primary study files
+## primary Study files
 
 - `STUDY_1_PROTOCOL.md`
 - `STUDY_1_OVERVIEW.md`
@@ -65,14 +65,14 @@ Technical implementation:
 - `tools/experiments/verify-drsse-stage0-independent.js`
 - `.github/workflows/drsse-stage0-technical.yml`
 
-Relevant checkpoints:
+Relevant checkpoint:
 
 - `checkpoints/2026-08-28-stage0-implementation-freeze.md`
 - `checkpoints/2026-08-28-stage0-preoutput-workflow-failure.md`
 - `checkpoints/2026-08-28-stage0-fixture-hash-binding-block.md`
 - `checkpoints/2026-08-28-stage0-technical-acceptance.md`
 
-Stage 0 is technical-only and is not G2-05 scientific evidence.
+Stage 0はtechnical-onlyでありG2-05 scientific evidenceではありません。
 
 ## Stage 1
 
@@ -88,7 +88,7 @@ Artifact = 9679565765
 Artifact ZIP SHA256 = 47f83b614876a988495c8a68f8d63dda9bf9de105b967398178e6b4bc4fade04
 ```
 
-Canonical contract/result:
+Canonical contract / result:
 
 - `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
 - `authorizations/STAGE_1_EXECUTE.json`
@@ -102,7 +102,7 @@ Implementation:
 - `tools/experiments/verify-drsse-stage1-independent.js`
 - `.github/workflows/drsse-stage1-development.yml`
 
-Stage 1 rows and roots are explicitly not reusable as formal Stage 2 evidence.
+Stage 1 row / rootはformal Stage 2 evidenceとして明示的に再利用禁止です。
 
 ## Stage 2 prospective source freeze
 
@@ -148,13 +148,13 @@ Artifact name = drsse-stage2-formal-v1
 Artifact ZIP SHA256 = cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4ca4a71e
 ```
 
-Canonical repository results:
+Canonical repository result:
 
 - `results/STAGE_2_FORMAL_RESULT.json`
 - `results/STUDY_1_FINAL_RESULT.json`
 - `checkpoints/2026-08-28-stage2-formal-acceptance.md`
 
-Canonical artifact/file identities:
+Canonical artifact / file identity:
 
 ```text
 stage2-formal-result artifact file SHA256 = 3b6b0b194f79b4c768e0af775bca33ffa2e143c52f52b8f27db23c12a02c8545
@@ -165,7 +165,7 @@ independentCoreSha256 = 02e4a1fa865af977cb10c1f288c42886b32453e56a40bc85cbb0dc99
 decisionCoreSha256 = c1756994ceea3ea9b605805ddd6387f359aeb14e14d894bfc8a1e8b26122fa3f
 ```
 
-Exact cumulative state/edge identities:
+Exact cumulative state / edge identity:
 
 ```text
 cumulativeRawStateSetSha256 = 993c5056ca54521b7b124d8c5c97fa18d8ef04b860b5e4c6870df278d5944816
@@ -173,9 +173,9 @@ cumulativeGlobalRawGraphEdgeSetSha256 = da836a6a0b2e18c155f59de7617b4e72ab629554
 cumulativeDepthLabelledEdgeSetSha256 = 3453b457aee547c645be0ec3a3a5550656e9fcaa1917be13d5ac0bb0e7b69aed
 ```
 
-## Exact endpoint replay target
+## exact endpoint replay target
 
-A correct reproduction of the frozen formal domain must recover:
+frozen formal domainの正しいreproductionでは、次を再現する必要があります。
 
 ```text
 complete reachable layers = 0..9
@@ -188,28 +188,30 @@ tree edge occurrences = 136644
 tree / cumulative RAW-state ratio = 1.328494900687362
 ```
 
-and the exact set hashes above.
+あわせて上記exact set hashも一致する必要があります。
 
-## Independent verification contract
+## independent verification contract
 
-The independent path does not import the production enumerator or production serializer. It independently implements RAW representation serialization/keying and full-domain enumeration, while both paths necessarily invoke the same repository rule engine for Bao legal moves and state transition semantics.
+independent pathはproduction enumeratorやproduction serializerをimportしません。RAW representation serialization / keyingとfull-domain enumerationを独立実装します。ただしBao legal moveとstate transition semanticsについては、両pathとも同じrepository rule engineを必然的に使用します。
 
-Formal exactness required both:
+Formal exactnessには次の両方を要求しました。
 
-1. complete materialized state/edge verification; and
-2. independent full depth-9 re-enumeration agreement.
+1. complete materialized state / edge verification
+2. independent full depth-9 re-enumeration agreement
 
-Both passed in the canonical Stage 2 execution.
+canonical Stage 2 executionでは両方PASSしました。
 
 ## PR review disposition
 
-Two latent implementation concerns identified on PR #71 are preserved at:
+PR #71で確認された2つのlatent implementation concernは次に保存しています。
 
 - `checkpoints/2026-08-28-pr71-review-disposition.md`
 
-They do not alter the canonical result because the accepted run took the target-complete path with full independent depth-9 re-enumeration, and its final recorded resource use remained below every frozen cap. Frozen Stage 2 source blobs were not modified or rerun after outcome observation.
+accepted runはtarget-complete pathでfull independent depth-9 re-enumerationを実行し、final recorded resource useも全frozen cap未満だったため、canonical resultは変更されません。
 
-## Main integration provenance
+outcome確認後にfrozen Stage 2 source blobを変更・再実行していません。
+
+## main integration provenance
 
 ```text
 PR = #71
@@ -220,7 +222,7 @@ merge commit = 8d024c5a6b5114eefbab8fb23d54582d149b85f3
 integrated branch = main
 ```
 
-Final PR workflow runs on the research head:
+final research head上のPR workflow run:
 
 ```text
 DRSSE Study 1 Closure CI = 33167122626 / success
@@ -234,6 +236,8 @@ Post-merge integration checkpoint:
 
 - `checkpoints/2026-08-28-main-integration.md`
 
-## Interpretation boundary
+## interpretation boundary
 
-Reproduction of these values establishes only the frozen standard-root depth-9 RAW domain. It does not establish total Bao state-space size, total game-tree complexity, asymptotic growth, symmetry-reduced counts, game-theoretic value, or AI performance.
+これらの値を再現して確立できるのはfrozen standard-root depth-9 RAW domainだけです。
+
+Bao全体のstate-space size、total game-tree complexity、asymptotic growth、symmetry-reduced count、game-theoretic value、AI performanceを確立するものではありません。
