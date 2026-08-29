@@ -21,7 +21,9 @@ jobs:
         with:
           node-version: '22'
       - name: Materialize bounded central-document updates
-        run: python3 tools/experiments/materialize-g2-06-central-docs.py
+        run: |
+          python3 tools/experiments/materialize-g2-06-central-docs.py
+          sed -i 's/[[:space:]]\+$//' doc/RESEARCH_INDEX.md
       - name: Validate agenda and whitespace
         run: |
           node test/second-generation-research-agenda.test.js

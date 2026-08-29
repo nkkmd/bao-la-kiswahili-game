@@ -28,4 +28,10 @@ seed block = CONSUMED
 same-block rerun = NOT AUTHORIZED
 ```
 
+Administrative retry note:
+
+- first central-doc workflow attempt `33235620735` materialized the intended content and passed the Generation 2 agenda audit, but `git diff --check` rejected two trailing-space Markdown line endings in the generated `RESEARCH_INDEX.md` section;
+- no central-document commit was created by that failed attempt;
+- this retry authorizes whitespace normalization only and does not alter scientific content or closure semantics.
+
 This authorization exists only to synchronize repository navigation and program chronology before final pre-main integration audit.
