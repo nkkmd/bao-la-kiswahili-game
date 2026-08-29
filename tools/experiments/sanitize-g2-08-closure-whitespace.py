@@ -3,6 +3,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
+# This sanitizer only touches whitespace introduced by the G2-08 closure materializer.
+
 # Fully generated study overview: normalize all line endings/trailing whitespace.
 p = ROOT / "doc/machine-decision-failure-taxonomy/STUDY_1_OVERVIEW.md"
 lines = p.read_text(encoding="utf-8").splitlines()
