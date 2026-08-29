@@ -1,6 +1,6 @@
 # MDFT-STUDY1 — 現在の状態
 
-更新日: 2026-08-29
+更新日: 2026-08-30
 
 ## 研究識別
 
@@ -20,102 +20,76 @@ Stage 2 = MDFT-S2-FORMAL-2026-08-29-v1
 ```text
 Study = ACTIVE
 Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 1 = DESIGN/FREEZE IN PROGRESS / NOT YET AUTHORIZED
-Stage 1 seeds 28910001..28914096 = RESERVED / UNCONSUMED
+Stage 1 = AUTHORIZED / CURRENT CONSUME-ONCE RUN IN PROGRESS
+Stage 1 run = 33277102013
+Stage 1 seeds 28910001..28914096 = CONSUMED
+same-block rerun / repair / replacement / extension = NOT AUTHORIZED
 Stage 2 = NOT AUTHORIZED / NOT EXECUTED
 Stage 2 seeds 29010001..29018192 = RESERVED / UNCONSUMED
-scientificInferenceAuthorized = false
+scientificInferenceAuthorized = false until canonical Stage 1 result verification
 validated transform set = []
 canonicalization = false
 symmetry reduction = false
 ```
 
-Stage 0 canonical result:
+## Stage 0 closure
+
+Canonical Stage 0 disposition:
 
 ```text
-doc/machine-decision-failure-taxonomy/results/STAGE_0_TECHNICAL_RESULT.json
+STAGE0-TECHNICAL-PASS
 ```
 
-Stage 0 closure checkpoint:
+Technical eligibility fixed before Stage 1 evidence:
 
 ```text
-doc/machine-decision-failure-taxonomy/checkpoints/2026-08-29-stage0-technical-pass.md
-```
-
-## Stage 0 technical eligibility binding
-
-Scientific evidenceを確認する前に、candidate leafのtechnical eligibilityを次のとおり固定しました。
-
-```text
-MDFT-F01 = ELIGIBLE
-MDFT-F02 = ELIGIBLE
-MDFT-F03 = ELIGIBLE
-MDFT-F04 = ELIGIBLE
 MDFT-F05 = TECHNICALLY-ELIGIBLE
-MDFT-F06 = ELIGIBLE
-MDFT-F07 = ELIGIBLE
-MDFT-F08 = ELIGIBLE
 MDFT-F09 = TECHNICALLY-INELIGIBLE
 MDFT-F10 = TECHNICALLY-ELIGIBLE
 ```
 
-F09 exclusion reason:
+F09 is excluded because the historically frozen morphology classifier cannot be reconstructed exactly from currently preserved repository sources without refit or invention. This does not modify the historical Position Typology result.
+
+## Stage 1 preregistration / preflight
 
 ```text
-FROZEN_HISTORICAL_CLASSIFIER_NOT_EXACTLY_RECONSTRUCTIBLE_FROM_CURRENT_PRESERVED_REPOSITORY_SOURCES
+specSha256 = 85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203
+canonical technical preflight run = 33258188633
+preflight artifact = 9716460551
+preflight all gates = PASS
+preflight target distribution reported = false
+scientific runner readiness run = 33277031634 / success
+source freeze = preregistration/STAGE_1_SOURCE_FREEZE.json
+authorization = authorizations/STAGE_1_EXECUTION_AUTHORIZATION.json
 ```
 
-F09のreplacement/refitは許可しません。これはhistorical MTAJI-M1/MTAJI-M2 formal resultを変更しません。
+The canonical preflight exact-matched production/independent source generation, root selection, Stage 1 analysis and forced F10 on technical-only seeds. The 8 MiB transfer probe also succeeded.
 
-## Stage 0 technical evidence
+## Stage 1 consumption boundary
 
-Core canonical run:
+Execution-start gate for run `33277102013` passed. Therefore:
 
 ```text
-GitHub Actions run = 33256737040
-head = ad2a47401f38c58228d45270c94389d16c21dda9
-core SHA-256 = f5052e9c18b118a194c4a43c8964e789a2a81083ad72ebf259b18c699ed5d6f1
+28910001..28914096 = CONSUMED permanently
 ```
 
-Determinism replay run `33256767045`も同一core SHA-256を再現しました。
+This remains true even if later computation, verification, serialization or artifact transfer fails. The block must never be returned to `UNCONSUMED`.
 
-F10 canonical preflight:
+## Immutable upstream boundaries
 
-```text
-GitHub Actions run = 33256932295
-head = 04ffda12149ab73b4d4a2729eefbdc5ff4f4f225
-bounded continuation = 6 plies
-production/independent exact trace = PASS
-resource/artifact gates = PASS
-```
-
-Stage 0ではtechnical-only seed `8080001..8080032`の一部だけをfixture generationに使用し、Stage 1/2 scientific blockは消費していません。
-
-## remote main確認
-
-研究開始時のremote `main`は:
-
-```text
-cb660e166460e0f19d4ba16d5283fa880d55757f
-```
-
-直前G2-07統合後に記録されていた`24a0968e68c9eb0ed7462093d953f52b339a9d04`とは不一致でした。現在HEADはその後の日本語文書統合mergeを含み、`24a0968...`を祖先として保持しています。
-
-## Immutable boundaries
-
-Research Generation 2 `G2-01..G2-07`のcanonical decisionを変更しません。特に:
+Research Generation 2 `G2-01..G2-07` and Research Generation 1 canonical decisions remain unchanged. In particular:
 
 ```text
 STSCV validated transform set = []
 RCPR Stage 1 = STAGE1-TECHNICAL-INVALID
 PCRPR Stage 1 = STAGE1-TECHNICAL-INVALID
-PCRPR Stage 1 block = CONSUMED
+PCRPR Stage 1 seeds = CONSUMED
 PCRPR Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 BMP-STUDY1 = 0 CONFIRMED / 4 NOT-CONFIRMED
 TM-S2-C03 = CONFIRMED
 ```
 
-PCRPR production-only `F05_ALL` / `lambda=100` / OOF metricsはvalidated inputとして使用しません。
+PCRPR production-only `F05_ALL` / `lambda=100` / OOF metrics are not validated inputs to G2-08.
 
 ## RAW identity
 
@@ -124,13 +98,12 @@ pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
 ```
 
-## 次の許可された工程
+## 次の工程
 
-1. Stage 1 exact machine-readable specをoutcome-blindに固定する。
-2. source generation / root selection / dedup / leaf assignment / promotion / decision mappingを固定する。
-3. Stage 1 production / independent implementationsを作成しtechnical-only preflightする。
-4. source hashes、artifact ceiling、workflow timeout、runner-local comparer contractを固定する。
-5. source-freeze checkpointを作成する。
-6. 以上がすべてPASSした場合のみ、別のexplicit Stage 1 authorizationを作成する。
+Current authorized run `33277102013` alone is allowed to finish. After job completion:
 
-現在はStage 1/2 scientific generationを開始してはいけません。
+1. verify mandatory artifact upload;
+2. inspect `CONSUMPTION_RECORD.json`, `FINAL_EXACT_COMPARISON.json`, `HASH_MANIFEST.json`, full production/independent shards and `STAGE_1_DEVELOPMENT_RESULT.json`;
+3. bind the canonical Stage 1 disposition without threshold/leaf/seed rescue;
+4. if Stage 1 passes, freeze the Stage 2 target/spec but do **not** execute Stage 2 without a new explicit authorization;
+5. if Stage 1 is blocked/invalid/resource-censored, keep Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` according to the frozen rule.
