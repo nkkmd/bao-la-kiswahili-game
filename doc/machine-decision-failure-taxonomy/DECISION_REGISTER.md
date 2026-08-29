@@ -74,7 +74,7 @@ Status: **FROZEN**.
 
 D3_Q1 referenceとB1024_Q1_MAXD3がcomplete-depth条件を満たしてexact TopSet/canonical bestで一致したrootだけをREFERENCE-CONSENSUSとする。D2_Q1_BASE canonical bestがreference TopSet外ならREFERENCE-DISAGREEMENT-EVENT。reference間不一致はREFERENCE-AMBIGUOUSで、failure labelを強制しない。
 
-Status: **FROZEN STUDY-LEVEL RULE; exact implementation hash pending Stage 0**.
+Status: **FROZEN; Stage 0 exact search semantics validated and Stage 1 implementation hash still to be source-frozen**.
 
 ## D09 — Multi-label taxonomy
 
@@ -84,7 +84,7 @@ Status: **FROZEN**.
 
 ## D10 — Candidate leaf search space
 
-Stage 1で許可するcandidate leafは`MDFT-F01..MDFT-F10`のみ。Stage 1 outcome後のleaf追加は禁止する。
+Stage 1で許可するcandidate leafは初期search space `MDFT-F01..MDFT-F10`のみ。Stage 1 outcome後のleaf追加は禁止する。Stage 0 technical eligibility ruleによるoutcome-blind exclusionはD27-D29に従う。
 
 Status: **FROZEN SEARCH-SPACE BOUNDARY**.
 
@@ -181,7 +181,9 @@ Status: **FROZEN TECHNICAL REQUIREMENT**.
 
 full production/independent dataはtechnical preflight後にfreezeしたshard ceilingで分割し、ESSENTIAL_CORE、HASH_MANIFEST、runner-local FINAL_EXACT_COMPARISONも保存する。事前にmandatoryとしたartifact requirementをoutcome後に緩和しない。
 
-Status: **FROZEN DESIGN REQUIREMENT; exact ceiling pending technical preflight**.
+Stage 0 technical sharding successfully used a 131072-byte compressed-part ceiling. Stage 1のexact scientific shard ceilingとworkflow timeoutはStage 1 source freeze前に別途固定する。
+
+Status: **FROZEN DESIGN REQUIREMENT; Stage 0 transfer path validated**.
 
 ## D23 — Consume-once
 
@@ -210,3 +212,66 @@ scientificInferenceAuthorized = false
 ```
 
 Status: **CURRENT / FROZEN UNTIL EXPLICIT AUTHORIZATION RECORD**.
+
+## D27 — Stage 0 canonical disposition
+
+Canonical Stage 0 technical result:
+
+```text
+Stage = MDFT-S0-TECHNICAL-2026-08-29-v1
+Disposition = STAGE0-TECHNICAL-PASS
+Core run = 33256737040
+Determinism replay run = 33256767045
+Core SHA-256 = f5052e9c18b118a194c4a43c8964e789a2a81083ad72ebf259b18c699ed5d6f1
+F10 run = 33256932295
+```
+
+Stage 0 uses no Stage 1/2 scientific seed and authorizes no scientific inference.
+
+Status: **FROZEN CANONICAL TECHNICAL RESULT**.
+
+## D28 — F05 / F09 / F10 technical eligibility
+
+Before Stage 1 scientific evidence inspection:
+
+```text
+MDFT-F05 = TECHNICALLY-ELIGIBLE
+MDFT-F09 = TECHNICALLY-INELIGIBLE
+MDFT-F10 = TECHNICALLY-ELIGIBLE
+```
+
+F09 reason:
+
+```text
+FROZEN_HISTORICAL_CLASSIFIER_NOT_EXACTLY_RECONSTRUCTIBLE_FROM_CURRENT_PRESERVED_REPOSITORY_SOURCES
+```
+
+F09 replacement/refit is not authorized and the historical Position Typology result remains unchanged.
+
+Status: **FROZEN PRE-SCIENTIFIC ELIGIBILITY BINDING**.
+
+## D29 — Stage 1 eligible leaf set
+
+Stage 1 may assign/promote only:
+
+```text
+MDFT-F01
+MDFT-F02
+MDFT-F03
+MDFT-F04
+MDFT-F05
+MDFT-F06
+MDFT-F07
+MDFT-F08
+MDFT-F10
+```
+
+`MDFT-F09` is excluded. No replacement leaf is permitted.
+
+Status: **FROZEN BEFORE STAGE 1 CONSUMPTION**.
+
+## D30 — Stage 0 resource/artifact evidence is planning-only
+
+Observed Stage 0 core/F10 runtime, RSS, compression, artifact transfer and projection values may be used to set prospective Stage 1 engineering ceilings. They are not scientific target-distribution evidence and may not be used to tune taxonomy promotion toward a desired result.
+
+Status: **FROZEN INTERPRETATION BOUNDARY**.
