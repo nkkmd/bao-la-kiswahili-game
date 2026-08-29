@@ -1,12 +1,12 @@
-# SRDR-STUDY1 — Current Status
+# SRDR-STUDY1 — 現在の状態
 
 更新日: 2026-08-28
 
-## Status
+## 状態
 
 **STUDY COMPLETE / STAGE 0 PASS / STAGE 1 PROFILE-FROZEN-DEVELOPMENT / STAGE 2 COMPLETE / FORMAL DECISION `INCONCLUSIVE` / SCIENTIFIC CLOSURE COMPLETE / INTEGRATED IN `main`**
 
-## Identity
+## 研究識別子
 
 ```text
 Program = G2-02
@@ -22,7 +22,7 @@ Integration PR = #68
 Integration merge commit = ee5f0a5e769516d635fe8b70e42244a8dc8d9b34
 ```
 
-## Stage decisions
+## Stageごとの判断
 
 ```text
 Stage 0 = SRDR-S0-TECHNICAL-2026-08-27-v1 = PASS
@@ -32,9 +32,11 @@ Study formal decision = INCONCLUSIVE
 Repository integration = COMPLETE / main
 ```
 
-## Stage 2 reason
+## Stage 2が`INCONCLUSIVE`となった理由
 
-Independent verification passed with zero replay / selection / measurement mismatches and exact selection/measurement hash equality. The sole failed preregistered gate was:
+Independent verificationは、game replay / selection / measurement mismatchがすべて0で、selection / measurement hashもexactに一致しました。
+
+事前登録したgateのうち、FAILしたのは次の1条件だけです。
 
 ```text
 unique historical trajectories after Stage 1 firewall = 1040
@@ -42,9 +44,11 @@ required = 1050
 shortfall = 10
 ```
 
-Therefore `primaryFormalCriterion = null`. No seed extension, replacement or threshold relaxation is authorized.
+したがって`primaryFormalCriterion = null`です。
 
-## Canonical provenance
+seed extension、replacement、threshold relaxationは承認されていません。
+
+## canonical provenance
 
 ```text
 workflow run = 33124538584
@@ -53,7 +57,7 @@ artifact ZIP SHA-256 = c107773d7f7a7cd9ba05a875305486738e10268435730283d6aa46cb5
 canonical result hash = 7386f3efed01ba325bc3f03ed02e9cfc2d72ad48c356509987b5fcc8780f7d36
 ```
 
-## Main integration provenance
+## `main`統合provenance
 
 ```text
 integration PR = #68
@@ -65,12 +69,25 @@ primaryFormalCriterion unchanged = null
 scientific result changed by integration = false
 ```
 
-Before merge, the branch was `66` commits ahead and `0` behind `main`, had no unresolved review threads, and all five normal PR workflows were green. The idempotent G2-02 closure finalization workflow also passed against the immutable Stage 2 artifact.
+merge前には、research branchは`main`より66 commits ahead / 0 behindで、unresolved review threadは0、通常のPR workflow 5件はすべてgreenでした。
 
-## Immutable boundaries
+immutable Stage 2 artifactに対するidempotent G2-02 closure finalization workflowもPASSしました。
 
-`PEOCR-STUDY1 = INCONCLUSIVE` and Position Complexity / Difficulty Study 1 remain unchanged. G2-02 does not establish game-theoretic best moves, human difficulty, engine correctness or public-AI strength. Higher-resource search remains a frozen reference only.
+## 変更しない境界
 
-## Next
+`PEOCR-STUDY1 = INCONCLUSIVE`とPosition Complexity / Difficulty Study 1の既存判断は変更しません。
 
-`SRDR-STUDY1` is scientifically closed and integrated into `main`. No further G2-02 scientific generation is authorized. Any re-test of formal search-reliability confirmation requires a new prospective Study/version and fresh evidence.
+G2-02は次を確立していません。
+
+- game-theoretic best move
+- human difficulty
+- engine correctness
+- public-AI strength
+
+Higher-resource searchは引き続きfrozen referenceに限って扱います。
+
+## 今後
+
+`SRDR-STUDY1`は科学的に終了し、`main`へ統合済みです。
+
+追加のG2-02 scientific generationは承認されていません。formal search-reliability confirmationを再検証する場合は、新しいprospective Study / versionと新しい独立証拠が必要です。
