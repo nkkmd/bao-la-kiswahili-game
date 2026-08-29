@@ -110,6 +110,10 @@ Machine-readable closure and postmortem:
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 - `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
 
+Program-level closure record:
+
+- `doc/research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
+
 ## Scientific boundary
 
 ```text
@@ -125,8 +129,17 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 All Research Generation 1 and G2-01..G2-05 formal decisions remain immutable. Historical Critical Positions evidence remains excluded from G2-06 training, tuning, threshold selection, validation, and formal evidence.
 
-## Next valid work
+## Program continuation
 
 `RCPR-STUDY1` itself has no further scientific stage transition. Do not rerun or repair Stage 1 and do not authorize Stage 2.
 
-A future successor may be designed only as a new prospective study after technical hardening. It must freeze deterministic entropy ordering/numeric-hash semantics, pass adversarial independent representation fixtures, and use a fresh study/spec/source freeze, fresh scientific seed block, and new explicit authorization.
+Under the active Research Generation 2 program sequencing rule, the immediate next independent agenda item is:
+
+```text
+G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
+priority = P1
+```
+
+G2-07 must begin with a fresh repository-state audit and its own prospective Study ID, Stage IDs, scientific contract, source freeze, seed allocation, and explicit authorization. It must not consume `RCPR-STUDY1` rows as formal evidence.
+
+A future independent study may revisit rich critical-position representation after deterministic entropy/numeric-hash hardening, but it must have a distinct independent title/identity rather than reopening this closed Study as a generic “Study 2” retry.

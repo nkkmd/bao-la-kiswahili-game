@@ -30,14 +30,15 @@ Read in this order:
 2. `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
 3. `results/STAGE_1_DEVELOPMENT_RESULT.json`
 4. `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
-5. `authorizations/STAGE_1_EXECUTE.json`
-6. `preregistration/STAGE_1_EXECUTION_ADDENDUM.json`
-7. `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
-8. `DECISION_REGISTER.md`
-9. `REPRODUCIBILITY_INDEX.md`
-10. `RESEARCH_LOG.md`
-11. `STUDY_1_PROTOCOL.md`
-12. `preregistration/STUDY_START_FREEZE.md`
+5. `../../research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
+6. `authorizations/STAGE_1_EXECUTE.json`
+7. `preregistration/STAGE_1_EXECUTION_ADDENDUM.json`
+8. `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
+9. `DECISION_REGISTER.md`
+10. `REPRODUCIBILITY_INDEX.md`
+11. `RESEARCH_LOG.md`
+12. `STUDY_1_PROTOCOL.md`
+13. `preregistration/STUDY_START_FREEZE.md`
 
 ## 3. Terminal Stage 1 evidence
 
@@ -83,18 +84,30 @@ Do not:
 - reuse Stage 1 development rows as formal evidence;
 - modify prior G2-01..G2-05 or Research Generation 1 decisions.
 
-## 6. Next valid work
+## 6. Immediate program continuation
 
 There is no further scientific execution inside `RCPR-STUDY1`.
 
-If the research line is continued, start a **new prospective successor study**. Before any successor scientific outcome generation:
+The Research Generation 2 program decision avoids reopening closed studies as generic “Study 2” retries. The immediate next agenda item is:
+
+```text
+G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
+priority = P1
+status = planned / new prospective independent study
+```
+
+Before G2-07 outcome generation, start from a fresh repository-state audit and prospectively freeze its formal Study ID, title, Stage IDs, endpoints, representation, source semantics, seed blocks, technical controls and authorization barrier. `RCPR-STUDY1` rows must not become G2-07 formal evidence unless the G2-07 prospective design independently declares an allowed historical method-only reference boundary before any outcome generation.
+
+## 7. Future rich-representation replication boundary
+
+A future independent study may revisit deterministic rich critical-position representation only after technical hardening:
 
 1. freeze deterministic entropy category ordering and numeric/hash semantics;
-2. implement production and independent calculations separately under that common semantic contract;
+2. implement production and independent calculations separately under that semantic contract;
 3. add adversarial technical fixtures with integer-like category keys in nonnumeric encounter order;
 4. require exact equality for all 310 features;
-5. freeze a new study identity/spec/source commit;
-6. allocate a fresh consume-once scientific seed block;
-7. create a new explicit authorization.
+5. allocate fresh scientific evidence and authorization.
 
-Do not treat this document as successor-study authorization. The next chat should first verify the current branch/main state and then decide whether to open that new prospective successor.
+Such work must receive a distinct independent title/identity and must not be named or treated as a reopening/rescue of `RCPR-STUDY1`.
+
+The correct restart instruction is: **treat G2-06 / RCPR-STUDY1 as closed `STAGE1-TECHNICAL-INVALID`; do not rerun it; synchronize program closure as needed; then begin G2-07 only under a fresh prospective contract.**
