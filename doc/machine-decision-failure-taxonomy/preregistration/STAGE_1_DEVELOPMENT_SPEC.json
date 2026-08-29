@@ -1,0 +1,399 @@
+{
+  "ablationDiagnostics": {
+    "causalClaimAuthorized": false,
+    "houseAblation": {
+      "leaf": "MDFT-F08",
+      "phase": "namua",
+      "rule": "set bao namua houseValue evaluator weight to zero; all other weights unchanged"
+    },
+    "reserveAblation": {
+      "leaf": "MDFT-F07",
+      "phase": "namua",
+      "rule": "set bao namua reserveEfficiency evaluator weight to zero; all other weights unchanged"
+    },
+    "search": "D2_Q1 exact complete-root under same search semantics"
+  },
+  "artifactContract": {
+    "compressedShardCeilingBytes": 8388608,
+    "computationOrVerificationMismatchAfterConsumption": "STAGE1-TECHNICAL-INVALID",
+    "independentWallClockCeilingMs": 7200000,
+    "mandatory": [
+      "ESSENTIAL_CORE.json",
+      "FINAL_EXACT_COMPARISON.json",
+      "HASH_MANIFEST.json",
+      "production full compressed shards",
+      "independent full compressed shards"
+    ],
+    "peakRssCeilingKb": 4194304,
+    "productionWallClockCeilingMs": 7200000,
+    "resourceCeilingExceededAfterConsumption": "RESOURCE-CENSORED",
+    "runnerLocalExactComparisonBeforeUpload": true,
+    "serializationCeilingMs": 900000,
+    "totalCompressedArtifactCeilingBytes": 268435456,
+    "uploadFailureAfterConsumption": "RESOURCE-CENSORED"
+  },
+  "baselineMain": "cb660e166460e0f19d4ba16d5283fa880d55757f",
+  "confirmatoryReuseAllowed": false,
+  "eventEntry": {
+    "referenceAmbiguous": "reference consensus condition false",
+    "referenceConsensus": "D3_Q1_REFERENCE and B1024_Q1_MAXD3 both complete depth 3 and exact TopSet plus canonicalBest are identical",
+    "referenceDisagreementEvent": "reference consensus true and D2_Q1_BASE canonicalBest is outside reference TopSet"
+  },
+  "f10Continuation": {
+    "assignmentMinimumMaterialCoordinates": 2,
+    "branches": [
+      "baselineCanonicalBest",
+      "referenceCanonicalBest"
+    ],
+    "continuationPolicy": "at every nonterminal continuation state choose canonical D2_Q1 best for side to move",
+    "leaf": "MDFT-F10",
+    "materialThresholds": {
+      "boardSeedsDiff": 6,
+      "frontOccupiedDiff": 2,
+      "frontSeedsDiff": 4,
+      "houseOwnedDiff": 1,
+      "nyumbaSeedsDiff": 4,
+      "reserveDiff": 4
+    },
+    "postRootPlies": 6,
+    "structuralVector": [
+      "reserveDiff",
+      "boardSeedsDiff",
+      "frontSeedsDiff",
+      "nyumbaSeedsDiff",
+      "frontOccupiedDiff",
+      "houseOwnedDiff"
+    ],
+    "terminalBeforeHorizon": "F10_NON_ESTIMABLE_FOR_EVENT; terminal outcome not used for assignment"
+  },
+  "leafRules": {
+    "MDFT-F01": {
+      "applicable": "reference disagreement event",
+      "assign": "D1_Q1 canonicalBest equals D2_Q1_BASE canonicalBest and that move is outside reference TopSet"
+    },
+    "MDFT-F02": {
+      "applicable": "reference disagreement event",
+      "assign": "D2_Q0 canonicalBest outside reference TopSet AND D2_Q2 canonicalBest inside reference TopSet"
+    },
+    "MDFT-F03": {
+      "applicable": "reference disagreement event",
+      "assign": "B256 estimable AND completedDepth < 3 AND B256 canonicalBest outside reference TopSet while B1024 completedDepth = 3 and agrees with reference"
+    },
+    "MDFT-F04": {
+      "applicable": "reference disagreement event with at least 3 nonterminal replies after baselineCanonicalBest",
+      "assign": "the reply ranked most adverse by resolvedReplyScore has staticReplyScore adverse-rank strictly worse than ceil(N/2)",
+      "severity": "(static adverse rank - 1)/(N - 1)"
+    },
+    "MDFT-F05": {
+      "applicable": "reference disagreement event",
+      "assign": "baseline and reference search-consistent canonical line tactical signatures differ and at least one signature contains a capture move or forced-capture state within first 3 nominal plies",
+      "signature": [
+        "captureMoveCount",
+        "forcedCaptureStateCount",
+        "capturedSeedCount"
+      ]
+    },
+    "MDFT-F06": {
+      "applicable": "reference disagreement event with at least 4 legal root moves",
+      "assign": "D2-vs-D3 tie-aware Spearman rho <= 0.50 OR maximum normalized absolute rank displacement >= 0.50",
+      "severity": [
+        "1-rho",
+        "maxNormalizedRankDisplacement"
+      ]
+    },
+    "MDFT-F07": {
+      "applicable": "namua reference disagreement event",
+      "assign": "reserve-ablation D2_Q1 canonicalBest is inside reference TopSet"
+    },
+    "MDFT-F08": {
+      "applicable": "namua reference disagreement event",
+      "assign": "house-ablation D2_Q1 canonicalBest is inside reference TopSet"
+    },
+    "MDFT-F09": {
+      "assign": false,
+      "refitAuthorized": false,
+      "replacementAuthorized": false,
+      "status": "TECHNICALLY_INELIGIBLE"
+    },
+    "MDFT-F10": {
+      "applicable": "reference disagreement event with both 6-ply branches nonterminal through horizon",
+      "assign": "at least 2 structural coordinates meet their frozen material-difference thresholds"
+    }
+  },
+  "leakage": {
+    "classE_futureContinuationAllowedOnlyFor": "MDFT-F10",
+    "classF_terminalOrGameOutcomeAllowedForAssignmentOrPromotion": false,
+    "f10IsPreRootPrediction": false
+  },
+  "program": "G2-08",
+  "promotion": {
+    "bothPhaseLeaves": [
+      "MDFT-F01",
+      "MDFT-F02",
+      "MDFT-F03",
+      "MDFT-F04",
+      "MDFT-F05",
+      "MDFT-F06",
+      "MDFT-F10"
+    ],
+    "bothPhaseRule": {
+      "minimumApplicableEvents": 40,
+      "minimumAssigned": 20,
+      "minimumAssignedEachPhase": 5,
+      "minimumPrevalence": 0.08,
+      "minimumSourcePolicyStrata": 3
+    },
+    "leafNonEstimable": "applicable-event minimum not met; leaf not promoted and not counted as negative validation",
+    "learnedClassifier": false,
+    "multiLabel": true,
+    "namuaOnlyLeaves": [
+      "MDFT-F07",
+      "MDFT-F08"
+    ],
+    "namuaOnlyRule": {
+      "minimumApplicableEvents": 25,
+      "minimumAssigned": 15,
+      "minimumPrevalence": 0.08,
+      "minimumSourcePolicyStrata": 3
+    },
+    "zeroPromotionAllowed": true
+  },
+  "rawIdentity": {
+    "canonicalization": false,
+    "exclude": [
+      "turn",
+      "reason"
+    ],
+    "include": [
+      "pits",
+      "reserve",
+      "houseOwned",
+      "player",
+      "phase",
+      "winner",
+      "pending"
+    ],
+    "symmetryReduction": false,
+    "validatedTransformSet": []
+  },
+  "readinessGates": {
+    "exactDevelopmentCoreHashMatchRequired": true,
+    "independentFullRegenerationRequired": true,
+    "independentLeafAssignmentRequired": true,
+    "independentPromotionRequired": true,
+    "independentReplyDiagnosticRequired": true,
+    "independentRootReselectionRequired": true,
+    "independentSearchRecomputationRequired": true,
+    "maximumSingleSourcePolicyShare": 0.32,
+    "minimumDistinctOpeningPrefixesGenerated": 3000,
+    "minimumReferenceConsensusMtaji": 160,
+    "minimumReferenceConsensusNamua": 160,
+    "minimumReferenceConsensusRoots": 384,
+    "minimumReferenceDisagreementEvents": 80,
+    "minimumReferenceDisagreementMtaji": 25,
+    "minimumReferenceDisagreementNamua": 25,
+    "minimumSelectedRootsPerSourcePolicy": 80,
+    "minimumUniqueTrajectoriesGenerated": 3600,
+    "requiredMtajiRoots": 256,
+    "requiredNamuaRoots": 256,
+    "requiredSelectedRoots": 512
+  },
+  "replyDiagnostic": {
+    "forEachSelectedRootMove": [
+      "baselineCanonicalBest",
+      "referenceCanonicalBest"
+    ],
+    "ranking": "ascending score then exact reply key because lower is more adverse to root actor",
+    "replySet": "all exact legal opponent replies after selected root move",
+    "resolvedReplyScore": "exact D1_Q1 score from post-reply state from root actor perspective when nonterminal",
+    "scope": "REFERENCE_DISAGREEMENT_EVENT",
+    "staticReplyScore": "AI bao evaluation of post-reply state from root actor perspective; terminal reply rows retained only for replay flags and excluded from F04 rank assignment"
+  },
+  "rootSelection": {
+    "duplicateSelectedRawStateHandling": "retain minimum trajectoryHash then seed then ply",
+    "minimumLegalMoveCount": 2,
+    "minimumPlyInclusive": 8,
+    "phaseAssignment": {
+      "even": "namua",
+      "method": "SHA256 parity of salt|seed",
+      "odd": "mtaji",
+      "salt": "MDFT-S1-PHASE-v1",
+      "unavailableAssignedPhase": "NO_REASSIGNMENT"
+    },
+    "phaseQuota": {
+      "mtaji": 256,
+      "namua": 256,
+      "salt": "MDFT-S1-QUOTA-v1"
+    },
+    "quotaRankingFields": [
+      "phase",
+      "trajectoryHash",
+      "rawStateKey",
+      "seed",
+      "ply"
+    ],
+    "selectionMayNotUse": [
+      "winner",
+      "terminalOutcome",
+      "searchScore",
+      "referenceConsensus",
+      "referenceDisagreement",
+      "leafAssignment",
+      "futureContinuation"
+    ],
+    "selectionMayUse": [
+      "seed",
+      "gameIndex",
+      "sourcePolicy",
+      "phase",
+      "ply",
+      "legalMoveCount",
+      "rawStateKey",
+      "trajectoryHash",
+      "openingPrefixHash",
+      "frozenHashRanks"
+    ],
+    "terminalExcluded": true,
+    "withinTrajectoryOccurrence": {
+      "fields": [
+        "seed",
+        "trajectoryHash",
+        "rawStateKey",
+        "ply"
+      ],
+      "method": "minimum SHA256 rank",
+      "salt": "MDFT-S1-ROOT-v1"
+    }
+  },
+  "schemaVersion": "1.0.0",
+  "scientificInferenceAuthorizedBySpecAlone": false,
+  "searchGrid": {
+    "canonicalBest": "lexical minimum exact move key in TopSet",
+    "conditions": [
+      {
+        "depth": 1,
+        "id": "D1_Q1",
+        "quiescenceDepth": 1,
+        "type": "exact"
+      },
+      {
+        "depth": 2,
+        "id": "D2_Q1_BASE",
+        "quiescenceDepth": 1,
+        "type": "exact"
+      },
+      {
+        "depth": 3,
+        "id": "D3_Q1_REFERENCE",
+        "quiescenceDepth": 1,
+        "type": "exact"
+      },
+      {
+        "depth": 2,
+        "id": "D2_Q0",
+        "quiescenceDepth": 0,
+        "type": "exact"
+      },
+      {
+        "depth": 2,
+        "id": "D2_Q2",
+        "quiescenceDepth": 2,
+        "type": "exact"
+      },
+      {
+        "id": "B256_Q1_MAXD3",
+        "maxDepth": 3,
+        "nodeBudget": 256,
+        "quiescenceDepth": 1,
+        "type": "budget"
+      },
+      {
+        "id": "B1024_Q1_MAXD3",
+        "maxDepth": 3,
+        "nodeBudget": 1024,
+        "quiescenceDepth": 1,
+        "type": "budget"
+      }
+    ],
+    "evaluationProfile": "bao",
+    "higherResourceReferenceIsTruth": false,
+    "legalMoveOrdering": "canonical",
+    "semantics": "SRDR controlled complete-root search validated by MDFT Stage 0",
+    "tieTolerance": 0,
+    "topSet": "exact maximum-score set"
+  },
+  "seedBlock": {
+    "consumeRule": "CONSUMED_AT_SUCCESSFUL_EXECUTION_START_GATE",
+    "extension": false,
+    "games": 4096,
+    "repair": false,
+    "replacement": false,
+    "sameBlockRerun": false,
+    "seedEnd": 28914096,
+    "seedStart": 28910001,
+    "statusBeforeExecution": "RESERVED_UNCONSUMED"
+  },
+  "serialization": {
+    "binary64HexIdentityForScientificScalars": true,
+    "canonicalKeyOrderingRequired": true,
+    "canonicalRowOrderingRequired": true,
+    "explicitNullRequired": true,
+    "hashAfterJsonRoundtrip": true,
+    "undefinedAllowed": false
+  },
+  "sourceGeneration": {
+    "exactMoveOrdering": "lexical AI.moveKey-equivalent identity",
+    "maxPly": 80,
+    "openingPlies": 8,
+    "openingPolicy": "SEEDED_UNIFORM_EXACT_LEGAL",
+    "postOpeningPolicyByGameIndexModulo4": [
+      {
+        "id": "UNIFORM",
+        "mod": 0,
+        "rule": "seeded uniform over all exact legal moves"
+      },
+      {
+        "id": "CAPTURE_FIRST",
+        "mod": 1,
+        "rule": "seeded uniform over exact capture moves when any exist, else all legal"
+      },
+      {
+        "id": "HIGH_CAPTURE",
+        "mod": 2,
+        "rule": "seeded uniform over moves maximizing immediate captured-seed count"
+      },
+      {
+        "id": "LOW_CAPTURE",
+        "mod": 3,
+        "rule": "seeded uniform over moves minimizing immediate captured-seed count"
+      }
+    ],
+    "prng": "mulberry32-compatible",
+    "terminalOutcomeAllowedForSelectionOrTaxonomy": false,
+    "terminalOutcomeMayBeStoredForReplay": true
+  },
+  "specHashRule": "SHA256 of canonical JSON with sorted keys and compact separators after removing specSha256",
+  "specSha256": "cf25ebabd4109c0f901e45e4424b7ba3280d64cd9bfe2dc25e63a7dab3546109",
+  "stage0Disposition": "STAGE0-TECHNICAL-PASS",
+  "stage2AutomaticAuthorization": false,
+  "stage2TargetFreezeProcedure": {
+    "ifStage1BlockedOrInvalid": "Stage 2 remains NOT-AUTHORIZED-NOT-EXECUTED",
+    "ifStage1Pass": "freeze exactly the promoted leaf IDs with the existing assignment rules; do not add leaves; create separate Stage 2 spec, source freeze and authorization before consuming Stage 2 seeds",
+    "stage1DataReusableAsStage2Evidence": false
+  },
+  "stageDecision": {
+    "allReadinessPassAndAtLeastOnePromotedLeaf": "STAGE1-DEVELOPMENT-PASS-AND-TAXONOMY-FROZEN",
+    "allReadinessPassAndZeroPromotedLeaves": "STAGE1-DEVELOPMENT-BLOCKED-ZERO-PROMOTION",
+    "frozenResourceOrTransferFailure": "RESOURCE-CENSORED",
+    "readinessFailure": "STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE",
+    "technicalIntegrityFailure": "STAGE1-TECHNICAL-INVALID"
+  },
+  "stageId": "MDFT-S1-DEVELOPMENT-2026-08-29-v1",
+  "stageType": "FRESH_DEVELOPMENT_TAXONOMY_CONSTRUCTION",
+  "studyId": "MDFT-STUDY1",
+  "trajectoryIdentity": {
+    "duplicateTrajectoryHandling": "retain minimum seed then game index",
+    "openingPrefixHash": "SHA256 of explicit opening length and first 8 exact move keys",
+    "trajectoryHash": "SHA256 of ordered authoritative RAW identity keys from initial through final observed state"
+  }
+}
