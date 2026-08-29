@@ -1,0 +1,57 @@
+name: PCRPR Stage 1 Source Freeze Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-07-practical-comeback-reply-pressure-representation
+    paths:
+      - 'tools/experiments/audit-pcrpr-stage1-source-freeze.js'
+      - '.github/workflows/pcrpr-stage1-source-freeze.yml'
+      - '.github/workflows/pcrpr-stage1-development.yml'
+      - 'tools/experiments/run-pcrpr-stage1-authorized-gate.js'
+      - 'tools/experiments/run-pcrpr-stage1-development.js'
+      - 'tools/experiments/run-pcrpr-stage1-independent.js'
+      - 'tools/experiments/compare-pcrpr-stage1-development.js'
+      - 'tools/experiments/lib/pcrpr-stage1-production.js'
+      - 'tools/experiments/lib/pcrpr-stage1-model.js'
+      - 'tools/experiments/lib/pcrpr-stage1-independent.js'
+      - 'doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json'
+      - 'doc/practical-comeback-reply-pressure-representation/preregistration/STAGE_1_COMPUTATION_CONTRACT.json'
+      - 'doc/practical-comeback-reply-pressure-representation/FEATURE_DICTIONARY.md'
+      - 'doc/practical-comeback-reply-pressure-representation/results/STAGE_1_IMPLEMENTATION_SMOKE.json'
+      - 'doc/practical-comeback-reply-pressure-representation/results/STAGE_1_RESOURCE_PREFLIGHT.json'
+      - 'doc/practical-comeback-reply-pressure-representation/results/STAGE_1_INDEPENDENT_SMOKE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  source-freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks for frozen scientific execution sources
+        run: |
+          node --check tools/experiments/lib/pcrpr-stage1-production.js
+          node --check tools/experiments/lib/pcrpr-stage1-model.js
+          node --check tools/experiments/lib/pcrpr-stage1-independent.js
+          node --check tools/experiments/run-pcrpr-stage1-authorized-gate.js
+          node --check tools/experiments/run-pcrpr-stage1-development.js
+          node --check tools/experiments/run-pcrpr-stage1-independent.js
+          node --check tools/experiments/compare-pcrpr-stage1-development.js
+          node --check tools/experiments/audit-pcrpr-stage1-source-freeze.js
+      - name: Audit and dual-hash exact source envelope
+        run: |
+          node tools/experiments/audit-pcrpr-stage1-source-freeze.js \
+            --out artifacts/local/practical-comeback-reply-pressure-representation/stage1-source-freeze-audit-v1.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pcrpr-stage1-source-freeze-audit-v1
+          path: artifacts/local/practical-comeback-reply-pressure-representation/stage1-source-freeze-audit-v1.json
+          if-no-files-found: error
+          retention-days: 30
