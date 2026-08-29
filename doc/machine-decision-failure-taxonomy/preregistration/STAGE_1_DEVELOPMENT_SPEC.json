@@ -257,12 +257,12 @@
     "withinTrajectoryOccurrence": {
       "fields": [
         "seed",
-        "trajectoryHash",
         "rawStateKey",
         "ply"
       ],
       "method": "minimum SHA256 rank",
-      "salt": "MDFT-S1-ROOT-v1"
+      "salt": "MDFT-S1-ROOT-v1",
+      "trajectoryHashExcludedBecause": "trajectoryHash is not available until the trajectory has completed; it is intentionally not part of the within-trajectory occurrence rank"
     }
   },
   "schemaVersion": "1.0.0",
@@ -373,7 +373,7 @@
     "terminalOutcomeMayBeStoredForReplay": true
   },
   "specHashRule": "SHA256 of canonical JSON with sorted keys and compact separators after removing specSha256",
-  "specSha256": "cf25ebabd4109c0f901e45e4424b7ba3280d64cd9bfe2dc25e63a7dab3546109",
+  "specSha256": "85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203",
   "stage0Disposition": "STAGE0-TECHNICAL-PASS",
   "stage2AutomaticAuthorization": false,
   "stage2TargetFreezeProcedure": {
