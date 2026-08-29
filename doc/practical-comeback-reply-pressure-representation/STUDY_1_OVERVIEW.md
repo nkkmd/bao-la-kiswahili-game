@@ -1,9 +1,9 @@
-# Practical Comeback / Reply-Pressure Representation Study 1 — Overview
+# G2-07 / PCRPR-STUDY1 — 研究概要
 
-更新日: 2026-08-29
-Status: **CLOSED / STAGE1-TECHNICAL-INVALID / MAIN NOT INTEGRATED**
+更新日: 2026-08-29  
+状態: **CLOSED / STAGE1-TECHNICAL-INVALID / MAIN INTEGRATED**
 
-## Study identity
+## 研究識別
 
 ```text
 Program = G2-07 / Research Generation 2
@@ -15,23 +15,23 @@ Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 
 日本語研究題目:
 
-> **Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・prospective検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
+> **Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・事前規定検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
 
-## 研究目的
+## この研究は何を調べたのか
 
-`PCEM-STUDY1`のzero promotionを救済せず、reply-centeredな豊かなmachine representationによりpolicy-sensitive practical-comeback structureをfresh evidence上で再現可能に記述できるかを問う独立研究として実施した。
+`PCEM-STUDY1`の候補昇格0件という結果を救済せず、replyを中心とした豊かな機械表現によって、policy-sensitiveなpractical-comeback structureを新しい独立証拠上で再現可能に記述できるかを検討した。
 
-`RCPR-STUDY1`のtechnical-invalid resultも変更せず、そのfloating-point ordering failureだけをpre-outcome technical lessonとして取り込んだ。
+`RCPR-STUDY1`の`STAGE1-TECHNICAL-INVALID`も変更していない。G2-06で確認されたfloating-point ordering failureは、G2-07の科学的結果として再利用するのではなく、結果を見る前のtechnical lessonとしてのみ取り込んだ。
 
-## Representation
+## 表現設計
 
-Primary unit:
+主な分析単位は次のとおりである。
 
 ```text
 historically observed RAW root occurrence × exact root-move variant
 ```
 
-12 prospectively declared families:
+結果を見る前に、次の12 feature familyを固定した。
 
 ```text
 REPLY_SET_WIDTH
@@ -48,23 +48,27 @@ LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE
 LOCAL_TEMPORAL_CONTEXT
 ```
 
-Continuation/future outcomesはpredictorから除外した。
+continuationやfuture outcomeに由来する情報はpredictorから除外した。
 
-## RAW identity
+## RAW state identity
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn`、`reason`は除外。symmetry/canonicalizationは未承認。
+`turn`と`reason`は除外した。symmetry reductionとcanonicalizationは承認していない。
 
-## Stage 0
+## Stage 0 — 技術検証
 
-80-scalar representationについてproduction/independent exact equalityをtechnical fixturesで確認し、`STAGE0-TECHNICAL-PASS`。
+80-scalar representationについて、production実装と構造的に独立した実装とのexact equalityをtechnical fixtureで確認した。
 
-## Stage 1
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+```
 
-Fresh block:
+Stage 0はtechnical-onlyであり、G2-07の科学的outcomeを生成していない。
+
+## Stage 1 — 新規development block
 
 ```text
 3072 games
@@ -73,11 +77,11 @@ seeds 28710001..28713072
 1429 development rows
 ```
 
-Productionはsupport/performance gatesを通過し、`F05_ALL` / lambda `100`を選択した。
+production側ではsupport/performance gateを通過し、`F05_ALL`と`lambda=100`が選択された。
 
-独立replayの科学計算も完走し、productionと同一development-core SHA256を報告した。しかしfull independent artifactがGitHub Actions artifact transport timeoutで保存されず、frozen full final exact comparerを実行できなかった。
+独立replayの科学計算そのものも完走し、productionと同一のdevelopment-core SHA256をterminal stdoutで報告した。しかしfull independent result artifactがGitHub Actionsのartifact transport timeoutにより保存されず、事前に必須と定めたfull final exact comparerを実行できなかった。
 
-## Final decision
+## 最終判断
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -89,23 +93,34 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 ```
 
-これはrepresentationの科学的negative resultではない。またproduction-only metricsをvalidated scientific evidenceとして採用することもできない。
+これはreply-pressure representationの科学的なnegative resultではない。同時に、production-only metricsをvalidated scientific evidenceとして採用することもできない。
 
-## Human boundary
+## 人間への解釈境界
 
-machine reply pressureはhuman difficulty、deception、error probability、psychology、expert recognitionを意味しない。
+ここでいうmachine reply pressureは、人間にとっての難しさ、欺瞞、誤答確率、心理的圧力、expert recognitionを意味しない。
 
-## Closure records
+## main統合
+
+研究closureはPR #77で`main`へ統合済みである。
+
+```text
+research integration PR = #77
+research merge commit = 57f7cf2d58f0543082434cb4c3259e26e90fe02e
+```
+
+その後のpost-main closure文書整備もPR #78で統合済みであり、科学的判断には変更を加えていない。
+
+## 詳細記録
 
 - `STUDY_1_FINAL_REPORT.md`
 - `CURRENT_STATUS.md`
 - `DECISION_REGISTER.md`
 - `REPRODUCIBILITY_INDEX.md`
+- `RESEARCH_LOG.md`
+- `RESUME_HERE.md`
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 
-## Next program item
+## 次の研究
 
-次の独立machine-only agenda itemは`G2-08 — Machine Decision-Failure Taxonomy Study 1`。PCRPR Stage 1 rows/modelをformal evidenceとして継承しない。
-
-main integrationはまだ行っていない。
+次の独立machine-only agenda itemは`G2-08 — Machine Decision-Failure Taxonomy Study 1`である。PCRPR Stage 1のrows/modelをG2-08のformal evidenceとして継承してはならない。
