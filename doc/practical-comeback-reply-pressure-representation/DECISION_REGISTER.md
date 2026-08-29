@@ -240,7 +240,7 @@ PCRPR must distinguish scientific, estimability, resource, technical and authori
 
 Status: **FROZEN TAXONOMY BOUNDARY**.
 
-## D22 — Current authorization state
+## D22 — Study-start authorization state
 
 ```text
 scientificOutcomeGenerated = false
@@ -249,4 +249,164 @@ Stage 1 scientific generation = NOT AUTHORIZED
 Stage 2 scientific generation = NOT AUTHORIZED
 ```
 
-Status: **CURRENT**.
+Status at study start: **FROZEN**.
+
+## D23 — Stage 0 formal technical semantics
+
+Before execution, Stage 0 fixed:
+
+```text
+search = pcrpr-exact-full-window/bao/q0/v1
+reply quality perspective = replying player
+defense-maintaining reply = exact D2 top-set membership
+strong predictor distribution = uniform D2 top set
+medium predictor distribution = uniform first min(3,N) D1-ranked replies
+weak predictor distribution = uniform exact replies
+predictor policy sensitivity = expected D2 defense gap + total-variation distances only
+```
+
+Continuation outcomes are not predictor-side policy-sensitivity features.
+
+Status: **FROZEN PRE-EXECUTION**.
+
+## D24 — Stage 0 numeric/hash contract
+
+```text
+exact move/reply aggregation order = canonical lexical exact move identity
+float arithmetic = deterministic left-to-right IEEE-754 binary64 under frozen semantic order
+scalar hash encoding = big-endian binary64 lowercase hex
+feature-vector equality = EXACT
+tolerance = none
+```
+
+Integer-like key ordering and reply-list permutation are mandatory adversarial controls.
+
+Status: **FROZEN PRE-EXECUTION**.
+
+## D25 — Stage 0 canonical technical result
+
+Canonical execution:
+
+```text
+source commit = 19c70ba60c8b43858b01a01c5a448311660269c4
+workflow run = 33238931893 / success
+job = 99064778014 / success
+artifact = 9710763348
+artifact ZIP SHA256 = 408c778171973903f0f7a55ed9b468cea37a4f41e94dbfd677a682c4dadcd59b
+production gates = 18 / 18 PASS
+independent gates = 9 / 9 PASS
+rows = 9 technical rows
+feature width = 80 scalars
+```
+
+Decision: **`STAGE0-TECHNICAL-PASS`**.
+
+The technical seed menu `28700001..28700032` is outside both scientific blocks. No scientific outcome was generated and neither Stage 1 nor Stage 2 was authorized by this result.
+
+Status: **FROZEN TECHNICAL RESULT**.
+
+## D26 — Stage 1 source/population contract
+
+Before scientific generation, Stage 1 fixes:
+
+```text
+source games = 3072
+seeds = 28710001..28713072
+opening = 8-ply seeded uniform exact-move opening
+max observed ply = 100
+source strata = B-D1, B-D2, B-D3, LS-D2, V2-D2, LE-D2
+phase assignment = SHA256 parity of seed under PCRPR-S1-PHASE-v1
+occurrence selection = minimum hash rank inside assigned phase
+reference disadvantage = exact D3 bestScore < 0 after occurrence selection
+within-trajectory replacement after disadvantage failure = prohibited
+root quota = Namua 200 / Mtaji 200
+row unit = selected historical root occurrence × every exact legal root-move variant
+```
+
+Status: **FROZEN PROSPECTIVELY / NOT YET AUTHORIZED**.
+
+## D27 — Stage 1 continuation and target contract
+
+```text
+root actor policy = canonical exact D2 best
+strong opponent = canonical exact D2 best / deterministic 1 replicate
+medium opponent = seeded uniform over first min(3,N) D1-ranked replies / 16 replicates
+weak opponent = seeded uniform exact legal replies / 8 replicates
+maximum post-root horizon = 96 plies
+administrative exhaustion = recorded and boundedWin=0
+primary target = medium bounded-win rate - strong bounded-win indicator
+secondary = weak-minus-strong lift; full policy bounded-win span
+```
+
+All continuation targets are leakage class D and prohibited from predictor features.
+
+Status: **FROZEN PROSPECTIVELY / NOT YET AUTHORIZED**.
+
+## D28 — Stage 1 model-development contract
+
+Stage 1 uses deterministic ridge linear regression only, with five prospectively declared family sets, lambdas `0.1, 1, 10, 100`, no outcome-driven individual scalar feature selection and no interactions.
+
+Five-fold cross-validation is grouped by `historicalTrajectoryHash`. Primary model selection minimizes pooled OOF RMSE. Exact tie-breaking uses pooled OOF Spearman, active feature count, family-set ID and lambda in the frozen order.
+
+Status: **FROZEN PROSPECTIVELY**.
+
+## D29 — Pre-outcome Stage 1 family-set correction
+
+Immediately after the first Stage 1 spec commit, self-audit found that `F03_REPLY_POLICY` accidentally duplicated `F04_ALL_NO_TEMPORAL`.
+
+Before implementation validation, explicit authorization, scientific seed consumption or scientific outcome observation, `F03_REPLY_POLICY` was narrowed to its intended reply-quality/policy-distribution family set. The correction is recorded in the machine-readable Stage 1 spec.
+
+```text
+scientificSeedsConsumed = false
+scientificOutcomeObserved = false
+```
+
+Status: **VALID PRE-OUTCOME SPECIFICATION CORRECTION**.
+
+## D30 — Stage 1 deterministic computation contract
+
+The separate computation contract fixes exact row/feature ordering, target arithmetic, fold assignment, training means/population SD, normal-equation accumulation, unpenalized intercept, ridge Cholesky loop order, forward/back substitution, prediction order, RMSE, exact-tie average-rank Spearman, top-quintile enrichment, candidate selection and binary64 model serialization.
+
+Independent verification must reproduce OOF prediction and final-parameter/result hashes exactly. No numeric tolerance is authorized.
+
+Status: **FROZEN BEFORE IMPLEMENTATION VALIDATION AND SCIENTIFIC OUTCOME**.
+
+## D31 — Stage 1 readiness and disposition rules
+
+The complete machine-readable readiness gates are frozen in `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`. They include source diversity, exact 400-root quota, row support, phase support, target variance/range/class support, administrative-horizon ceilings, OOF Spearman, relative RMSE improvement, top-quintile lift enrichment, and mandatory full independent recomputation.
+
+Disposition mapping:
+
+```text
+all gates + independent verification PASS -> STAGE1-DEVELOPMENT-PASS-AND-FORMAL-TARGET-AVAILABLE
+population/root/target support failure -> STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+model/enrichment failure -> STAGE1-DEVELOPMENT-BLOCKED-ZERO-PROMOTION
+resource ceiling failure after consumption -> RESOURCE-CENSORED
+technical/integrity/independent-verification failure -> STAGE1-TECHNICAL-INVALID
+```
+
+Stage 2 is never automatically authorized.
+
+Status: **FROZEN PROSPECTIVELY**.
+
+## D32 — Stage 1 authorization barrier remains closed
+
+Stage 1 scientific generation requires all of the following before an authorization file may be committed:
+
+1. canonical Stage 0 PASS materialized;
+2. Stage 1 spec and computation contract frozen;
+3. production implementation smoke PASS;
+4. structurally separate independent verifier smoke PASS;
+5. technical-only resource preflight PASS;
+6. exact source/blob/hash envelope frozen and audited;
+7. explicit `authorizations/STAGE_1_EXECUTE.json` commit.
+
+At this decision entry, requirements 3-6 are not yet complete.
+
+```text
+Stage 1 seeds 28710001..28713072 = RESERVED / UNCONSUMED
+Stage 1 scientific generation = NOT AUTHORIZED
+Stage 2 scientific generation = NOT AUTHORIZED
+```
+
+Status: **CURRENT FAIL-CLOSED AUTHORIZATION BARRIER**.
