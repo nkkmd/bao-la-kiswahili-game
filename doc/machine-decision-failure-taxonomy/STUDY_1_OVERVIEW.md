@@ -1,110 +1,64 @@
 # G2-08 / MDFT-STUDY1 — 研究概要
 
-更新日: 2026-08-29  
-状態: **INITIATED / SCIENTIFIC SEEDS UNCONSUMED**
+更新日: 2026-08-30
+状態: **Study closed / `NON-ESTIMABLE`**
 
-## この研究は何を調べるのか
+## 何を調べたか
 
-本研究は、Baoのmachine/search decision failureを、単一の「悪手」classへ圧縮せず、複数の再現可能なmechanistic failure modeへ分解できるかを検証します。
+本研究は、Baoのmachine/search decision failureを単一の「悪手」classへ圧縮せず、depth/horizon、quiescence、budget、reply resolution、capture/forcing sequence、ranking、reserve/house valuation、morphology、long-horizon structureといった複数のmechanistic failure modeへprospectively分解できるかを調べたResearch Generation 2 `G2-08`の独立研究です。
 
-中心となる問いは次です。
+Higher-resource searchはgame-theoretic truthではなく、frozen machine referenceとしてのみ使用しました。Human difficulty、confusion、deception、error probability等は研究対象外です。
 
-> 同一RAW stateで生じるmachine decision disagreementを、depth/horizon、reply resolution、ranking instability、tactical forcing、evaluation component sensitivity、morphology context、long-horizon structureなどの異なるmechanistic signatureへ、結果後の都合のよい再定義なしに分解し、fresh evidence上で再現できるか。
+## 結果
 
-## なぜ新しい独立研究が必要か
+Stage 0は`STAGE0-TECHNICAL-PASS`でした。F09 morphology-context mismatchだけは、historically frozen classifierをcurrent preserved repositoryからexact再構築できなかったため、scientific evidenceを見る前に`TECHNICALLY-INELIGIBLE`として除外しました。
 
-`BMP-STUDY1`は4候補すべて`NOT-CONFIRMED`で閉じています。C01-C03のstructural/reply failure signatureが高率に再現したことは、新しい仮説を作る入力には使えますが、同じStage 2 evidenceを使って既存候補を救済することはできません。
+Stage 1はfresh seeds `28910001..28914096`の4,096 gamesをconsume-onceで実行し、512 roots（Namua 256 / Mtaji 256）をoutcome-blindに選択しました。Productionとstructurally independent implementationはsource generation、root selection、analysis rows、development coreをexact一致させ、full artifactsも正常に保存されました。
 
-`SRDR-STUDY1`はsearch-condition間のdecision instabilityを測定しましたが、formal decisionは`INCONCLUSIVE`です。higher-resource conditionはtruthではなく、frozen machine referenceにすぎません。
-
-`RCPR-STUDY1`と`PCRPR-STUDY1`はどちらもStage 1でtechnical-invalid closureとなっており、production-only representation/modelをvalidated inputとして本Studyへ持ち込みません。これらのtechnical incidentは、新しいStudyの事前engineering designにだけ利用します。
-
-## 基本設計
-
-研究は次の3段階を採用します。
+しかしprospectively frozen global readiness gateのうち2件が未達でした。
 
 ```text
-MDFT-S0-TECHNICAL-2026-08-29-v1
-  technical / instrument / verifier / resource / artifact validation only
-
-MDFT-S1-DEVELOPMENT-2026-08-29-v1
-  fresh development evidenceでtaxonomy construction
-
-MDFT-S2-FORMAL-2026-08-29-v1
-  fresh held-out evidenceでfrozen taxonomyをprospective validation
+distinct opening prefixes = 2836 < 3000
+LOW_CAPTURE share = 170 / 512 = 0.33203125 > 0.32
 ```
 
-Stage 1が成功してもStage 2は自動実行しません。
-
-## authoritative RAW identity
-
-Research Generation 2共通contractに従い、科学的population identityは次です。
+このためStage 1のformal dispositionは:
 
 ```text
-include = pits,reserve,houseOwned,player,phase,winner,pending
-exclude = turn,reason
-validated transform set = []
-canonicalization = false
-symmetry reduction = false
+STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
 ```
 
-`AI.stateKey`等の既存helperがこのcontractと一致しない場合、scientific deduplicationには使用せず、G2-08専用RAW serializerを使用します。
-
-## failure eventの入口
-
-単に「探索結果が違う」ことをfailureとは定義しません。
-
-Stage 1 scientific contractでは、少なくとも次を満たすrootのみをreference-consensus eligibleとします。
-
-1. D3+Q1 exact full-window referenceと、固定high-budget conditionが同じexact TopSet / canonical bestを与える。
-2. high-budget conditionが必要なcomplete depthを完了している。
-3. legal exact move set、RAW reconstruction、score-domain integrityがtechnical gateを通過している。
-
-そのうえでbaseline D2+Q1 canonical bestがreference TopSet外にある場合を、taxonomy分解対象の`REFERENCE-DISAGREEMENT-EVENT`とします。
-
-D3とhigh-budget referenceが一致しないrootは`REFERENCE-AMBIGUOUS`とし、mechanistic failure labelを強制しません。D3/high-budgetの一致はgame-theoretic truthの証明ではありません。
-
-## candidate family
-
-初期candidate search spaceは10 leaf familyに限定し、Stage 1 outcome後に新しいfamilyを追加しません。taxonomyは**multi-label**とし、1 eventが複数mechanismを同時に持つことを許します。
-
-- depth / horizon sensitivity
-- quiescence / tactical sensitivity
-- budget underresolution
-- reply-tail underresolution
-- capture / forcing-sequence misvaluation
-- ranking instability
-- reserve valuation sensitivity
-- house / nyumba valuation sensitivity
-- morphology-context mismatch
-- long-horizon structural misvaluation
-
-正式なleaf IDとoperational boundaryは`FAILURE_MODE_DICTIONARY.md`に記録します。
-
-## leakage boundary
-
-観測量を次の層へ分けます。
+Study 1のformal decisionは:
 
 ```text
-A = PRE_ROOT_OBSERVABLE
-B = BASE_SEARCH_DERIVED
-C = REPLY_SEARCH_DERIVED
-D = REFERENCE_SEARCH_DERIVED
-E = FUTURE_CONTINUATION_DERIVED
-F = TERMINAL_OR_GAME_OUTCOME_DERIVED
+NON-ESTIMABLE
 ```
 
-本Studyのtaxonomy assignmentはrule-basedであり、Stage 1で汎用learned classifierを訓練しません。Fはtaxonomy assignmentへ使用しません。Eを使う`LONG_HORIZON_STRUCTURAL`はpost-root diagnostic classとして明示し、pre-root predictionと混同しません。
+です。
 
-## fresh evidence
+## Leaf-level observationの扱い
+
+Frozen development promotion formula自体はF01/F02/F03/F05/F06/F10で`true`を返しました。一方F04/F07/F08は`false`、F09は事前technical exclusionでした。
+
+ただしglobal readiness gateが失敗しているため、F01/F02/F03/F05/F06/F10を「validated taxonomy」または「Stage 2 target」として救済しません。これらは将来の新しいprospective studyの仮説生成に使えるdevelopment observationに限られます。
+
+## Stage 2
+
+Stage 1がpassしなかったためStage 2は:
 
 ```text
-Stage 1 = seeds 28910001..28914096 / 4096 games / RESERVED / UNCONSUMED
-Stage 2 = seeds 29010001..29018192 / 8192 games / RESERVED / UNCONSUMED
+NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-reservationはauthorizationではありません。Stage 1/2ともconsume-once gateより前にtechnical validation、source freeze、independent verifier readiness、resource/artifact preflight、explicit authorizationを要求します。
+です。Reserved seeds `29010001..29018192`は未消費です。
 
-## 現在の正式状態
+同じStage 1 evidenceを見た後でopening-prefix floorを下げる、policy-share ceilingを緩和する、rootsを間引く、seedを追加する、populationを置換する等の救済は行いません。
 
-まだscientific outcomeは生成していません。現在は研究識別、immutable boundaries、candidate search space、Stage構成、fresh seed reservation、verification/artifact rulesを先に固定したinitiation checkpointです。
+## 詳細
+
+- `STUDY_1_FINAL_REPORT.md` — 最終科学的統合
+- `CURRENT_STATUS.md` — formal closure state
+- `DECISION_REGISTER.md` — immutable decisions / no-rescue boundary
+- `REPRODUCIBILITY_INDEX.md` — source / hash / artifact / Actions run
+- `results/STAGE_1_DEVELOPMENT_RESULT.json` — canonical Stage 1 result
+- `checkpoints/2026-08-30-stage1-development-blocked-non-estimable.md` — Stage 1 closure checkpoint

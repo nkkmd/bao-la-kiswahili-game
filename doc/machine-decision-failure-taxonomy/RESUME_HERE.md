@@ -1,75 +1,62 @@
 # MDFT-STUDY1 — Resume Here
 
-更新日: 2026-08-29
+更新日: 2026-08-30
 
 ## 現在地
 
-G2-08 / `MDFT-STUDY1`はStage 0 technical validationを完了し、Stage 1 scientific seedを消費する前のexact-spec / source-freeze段階にあります。
+G2-08 / `MDFT-STUDY1`は完了しています。
 
 ```text
 baseline main = cb660e166460e0f19d4ba16d5283fa880d55757f
 branch = research/g2-08-machine-decision-failure-taxonomy
-Stage 0 = MDFT-S0-TECHNICAL-2026-08-29-v1 / STAGE0-TECHNICAL-PASS
-Stage 1 seeds 28910001..28914096 = RESERVED / UNCONSUMED
-Stage 1 = DESIGN/FREEZE IN PROGRESS / NOT AUTHORIZED
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Stage 1 seeds 28910001..28914096 = CONSUMED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 29010001..29018192 = RESERVED / UNCONSUMED
-Stage 2 = NOT AUTHORIZED
-```
-
-Stage 0 leaf binding:
-
-```text
-eligible = F01,F02,F03,F04,F05,F06,F07,F08,F10
-F09 = TECHNICALLY-INELIGIBLE
-F09 replacement/refit = NOT AUTHORIZED
+Study = NON-ESTIMABLE
 ```
 
 ## 最初に読む
 
-1. `STUDY_1_PROTOCOL.md`
-2. `FAILURE_MODE_DICTIONARY.md`
-3. `DECISION_REGISTER.md`
-4. `CURRENT_STATUS.md`
-5. `results/STAGE_0_TECHNICAL_RESULT.json`
-6. `checkpoints/2026-08-29-stage0-technical-pass.md`
-7. `checkpoints/2026-08-29-stage0-f09-static-audit.md`
-8. `REPRODUCIBILITY_INDEX.md`
+1. `STUDY_1_OVERVIEW.md`
+2. `STUDY_1_FINAL_REPORT.md`
+3. `CURRENT_STATUS.md`
+4. `DECISION_REGISTER.md`
+5. `results/STAGE_1_DEVELOPMENT_RESULT.json`
+6. `results/STAGE_1_FINAL_EXACT_COMPARISON.json`
+7. `results/STAGE_1_ARTIFACT_MANIFEST.json`
+8. `checkpoints/2026-08-30-stage1-development-blocked-non-estimable.md`
+9. `REPRODUCIBILITY_INDEX.md`
 
-## Stage 0 anchors
+## Canonical Stage 1 anchors
 
 ```text
-core run = 33256737040
-core SHA-256 = f5052e9c18b118a194c4a43c8964e789a2a81083ad72ebf259b18c699ed5d6f1
-determinism replay = 33256767045
-F10 preflight run = 33256932295
+spec SHA-256 = 85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203
+scientific run = 33277102013
+artifact = 9722157483
+production/independent core = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
+full shard SHA-256 = 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
 ```
 
-No Stage 1/2 scientific seed was consumed by Stage 0.
+## Closure reason
 
-## 次に行うこと
+```text
+distinct opening prefixes = 2836 < 3000
+LOW_CAPTURE selected share = 170/512 = 0.33203125 > 0.32
+```
 
-Stage 1 scientific executionより前に、次を順番に固定する。
-
-1. `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
-2. exact source generation / root selection / dedup rule
-3. exact search/reply/evaluator/F10 measurement rule
-4. exact leaf assignment thresholds and promotion/support gates
-5. zero-promotion / non-estimable / technical-invalid / resource-censored mapping
-6. production and independent Stage 1 implementations
-7. technical-only resource/artifact preflight at projected scientific scale
-8. compressed shard ceiling / workflow timeout / upload contract
-9. source hash manifest and source-freeze checkpoint
-10. explicit Stage 1 authorization
-
-Only after all ten items are frozen may seeds `28910001..28914096` pass the consume-once execution-start gate.
+These are preregistered global readiness failures. F01/F02/F03/F05/F06/F10 had leaf-level promotion calculation `true`, but they are not a frozen taxonomy because the global gate failed.
 
 ## 禁止事項
 
-- G2-07 Stage 1 blockのrerun/repair
-- G2-07 `F05_ALL`等をvalidated inputとして採用
-- BMP Stage 2の再解析による救済
-- G2-03未validated transformによるcanonicalization
-- Stage 1/2 seedをauthorization前に消費
+- Stage 1 seed blockのsame-block rerun / repair / replacement / extension
+- opening-prefix floorのpost-hoc relaxation
+- source-policy maximum-share ceilingのpost-hoc relaxation
+- LOW_CAPTURE rootsのpost-hoc deletionによるrescue
+- leaf-level `promoted=true`をStage 2 targetへ直接昇格
 - F09のreplacement/refit
-- Stage 1 outcomeを見てleaf/threshold/population/reference conditionを変更
-- Stage 0 technical PASSをscientific evidenceとして解釈
+- G2-07やBMPの既存formal decisionの変更
+- G2-03未validated transformによるcanonicalization
+
+将来この問いを再検討する場合は、新しいStudy/version、fresh seeds、prospectively frozen population contractを使用してください。

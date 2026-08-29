@@ -52,6 +52,33 @@
 6. Stage 1 seeds `28910001..28914096`は引き続き`RESERVED / UNCONSUMED`である。
 7. Stage 2 seeds `29010001..29018192`も`RESERVED / UNCONSUMED`である。
 
-## Next
 
-Stage 1 exact machine-readable spec、production/independent implementation、technical-only scientific-scale resource/artifact preflight、source freeze、explicit Stage 1 authorizationをこの順で行う。authorization recordより前にStage 1 scientific blockを消費してはならない。
+## 2026-08-29 — Stage 1 preregistration / preflight / source freeze
+
+1. Stage 1 exact spec SHA-256 `85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203`をscientific outcome前に固定した。
+2. Production / independent Stage 1 implementationsを別実装として作成した。
+3. 初回technical preflightでanalysis comparison mismatchとworkflow `tee` exit-code maskingを検出し、scientific seed未消費のまま修正した。
+4. Corrected fail-closed preflight run `33258188633`がproduction/independent exact equality、resource projection、8 MiB artifact transfer probeをすべてPASSした。
+5. Scientific runner readiness run `33277031634`がPASSした。
+6. Source blobs、scientific runner/workflow、artifact/resource contractをsource freezeした。
+7. Explicit Stage 1 authorizationを別artifactとして発行した。
+
+## 2026-08-29 — Stage 1 consume-once execution
+
+1. Authorized run `33277102013`のexecution-start gateがPASSした。
+2. Seeds `28910001..28914096`を永久に`CONSUMED`とした。
+3. same-block rerun / repair / replacement / extensionを禁止した。
+4. Production / independent full development calculationを実行した。
+5. Mandatory artifact uploadを完了した。
+
+## 2026-08-30 — Stage 1 canonical result / Study closure
+
+1. Production / independent source generation、selection、selected-root identity、analysis rows、development coreがexact一致した。
+2. Development core SHA-256は双方`f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c`だった。
+3. Full production / independent gzip shardは双方665,093 bytes、SHA-256 `21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830`で一致した。
+4. Resource ceilingsとmandatory artifact preservationはPASSした。
+5. Fresh 4,096 gamesから4,068 unique trajectories、512 roots（Namua/Mtaji 256/256）を得た。
+6. Global readinessで`distinctOpeningPrefixes=2836 < 3000`と`LOW_CAPTURE=170/512 > 0.32`の2 gateがFAILした。
+7. Frozen promotion formulaはF01/F02/F03/F05/F06/F10でtrueだったが、global readiness failureのためtaxonomy/Stage 2 targetへ昇格させなかった。
+8. Stage 1を`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`、Studyを`NON-ESTIMABLE`として閉じた。
+9. Stage 2を`NOT-AUTHORIZED-NOT-EXECUTED`とし、seeds `29010001..29018192`は`RESERVED / UNCONSUMED`のまま保持した。

@@ -1,7 +1,7 @@
 # MDFT-STUDY1 — 再現性索引
 
-更新日: 2026-08-29  
-状態: **STAGE 0 TECHNICAL PASS / STAGE 1 RESERVED UNCONSUMED**
+更新日: 2026-08-30
+状態: **STUDY CLOSED / NON-ESTIMABLE**
 
 ## Study anchor
 
@@ -47,7 +47,7 @@ validated transform set = []
 ## Seed reservations
 
 ```text
-Stage 1 = 28910001..28914096 / 4096 / RESERVED / UNCONSUMED
+Stage 1 = 28910001..28914096 / 4096 / CONSUMED
 Stage 2 = 29010001..29018192 / 8192 / RESERVED / UNCONSUMED
 ```
 
@@ -185,3 +185,54 @@ production G2-08 helperと独立実装を分離する。exact comparisonの対�
 ## Artifact preservation requirement
 
 Scientific executionではrunner-local full comparisonをuploadより前に行い、その結果とfull production/independent shardsの双方をmandatory preservation対象とする。Stage 0でartifact transferが成功したことを、Stage 1/2 mandatory artifact requirementの緩和理由には使用しない。
+
+## Stage 1 canonical closure
+
+```text
+spec SHA-256 = 85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203
+technical preflight run = 33258188633 / PASS
+runner readiness run = 33277031634 / PASS
+scientific run = 33277102013 / success
+execution HEAD = dfb9bf316dc767ae5920aba5a3308aa5f05d3acf
+actions artifact id = 9722157483
+artifact ZIP SHA-256 = bb34d16874175dcb581ad8725983a3ed4778687c0f3a2965ae929daaffbfe921
+```
+
+Exact development core:
+
+```text
+production = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
+independent = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
+match = true
+```
+
+Full shards:
+
+```text
+production/full-shard-0001.json.gz = 665093 bytes / 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
+independent/full-shard-0001.json.gz = 665093 bytes / 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
+```
+
+Canonical repository outputs:
+
+```text
+results/STAGE_1_DEVELOPMENT_RESULT.json
+results/STAGE_1_FINAL_EXACT_COMPARISON.json
+results/STAGE_1_ARTIFACT_MANIFEST.json
+checkpoints/2026-08-30-stage1-development-blocked-non-estimable.md
+STUDY_1_FINAL_REPORT.md
+```
+
+Scientific closure:
+
+```text
+unique trajectories = 4068
+distinct opening prefixes = 2836 / required >= 3000 / FAIL
+selected roots = 512
+LOW_CAPTURE selected = 170/512 = 0.33203125 / required <= 0.32 / FAIL
+reference consensus = 473
+reference disagreement events = 110
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Study = NON-ESTIMABLE
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```

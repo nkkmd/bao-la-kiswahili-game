@@ -29,6 +29,7 @@ Stage 2 = MDFT-S2-FORMAL-2026-08-29-v1
 ## 文書
 
 - `STUDY_1_OVERVIEW.md` — 人間向け研究概要
+- `STUDY_1_FINAL_REPORT.md` — Study 1の科学的・技術的最終統合
 - `STUDY_1_PROTOCOL.md` — prospective scientific protocol
 - `FAILURE_MODE_DICTIONARY.md` — candidate failure-mode familyの機械的定義境界
 - `CURRENT_STATUS.md` — 現在の正式状態
@@ -44,12 +45,14 @@ Stage 2 = MDFT-S2-FORMAL-2026-08-29-v1
 ## 現在の実行状態
 
 ```text
-Stage 0 = DESIGNED / NOT YET EXECUTED
-Stage 1 seeds = RESERVED / UNCONSUMED
-Stage 1 scientific generation = NOT AUTHORIZED
-Stage 2 seeds = RESERVED / UNCONSUMED
-Stage 2 scientific generation = NOT AUTHORIZED
-scientificInferenceAuthorized = false
+Study = CLOSED / NON-ESTIMABLE
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Stage 1 seeds 28910001..28914096 = CONSUMED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29010001..29018192 = RESERVED / UNCONSUMED
 ```
 
-研究開始時点ではscientific seedを一切消費しません。まずStage 0 technical validation、independent verifier readiness、resource preflight、artifact-preservation preflightを完了し、その後にStage 1 source/spec/hashをfreezeして明示的にauthorizationします。
+Stage 1は4,096 fresh gamesから512 rootsを選択し、production / independent full recomputationとmandatory artifact preservationを完了しました。しかし、prospectively frozen global readiness gateのうちopening-prefix diversity (`2836 < 3000`) とmaximum single source-policy share (`170/512 > 0.32`) が未達でした。
+
+Leaf-level development計算ではF01/F02/F03/F05/F06/F10がpromotion formulaを満たしましたが、global readiness failureのためtaxonomyとしてfreezeせず、Stage 2 targetにも使用しません。詳細は`STUDY_1_FINAL_REPORT.md`を参照してください。

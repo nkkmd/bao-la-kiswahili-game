@@ -803,6 +803,32 @@ Production-only performanceはunverified provenanceとして保存するが、ac
 
 ---
 
+
+### 24. Machine Decision-Failure Taxonomy — Study 1
+
+**研究題目:** Baoにおける機械的意思決定失敗の構造分類 — horizon failure, reply undercoverage, ranking instability, tactical oversight, valuation failure, morphology mismatch, and long-horizon structural misvaluation のprospective分離・再現可能なtaxonomy構築
+**Program:** `G2-08` / **Study ID:** `MDFT-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / formal decision `NON-ESTIMABLE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+Stage 0は`STAGE0-TECHNICAL-PASS`。Fresh Stage 1では4,096 gamesから512 roots（Namua/Mtaji 256/256）を選択し、productionとstructurally independent implementationがsource generation、selection、analysis rows、development coreをexact一致させ、mandatory full artifactsも保存した。
+
+一方、prospectively frozen global readiness gateのうち、distinct opening prefixesが`2836 < 3000`、最大single source-policy shareがLOW_CAPTURE `170/512 = 0.33203125 > 0.32`で未達となった。このためStage 1は`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`、Studyは`NON-ESTIMABLE`で閉じた。
+
+F01/F02/F03/F05/F06/F10はleaf-level development promotion formulaを満たしたが、global readiness failureのためvalidated/frozen taxonomyまたはStage 2 targetへ昇格しない。F04/F07/F08はpromotion false、F09はscientific entry前にtechnical-ineligibleだった。Stage 2 seeds `29010001..29018192`は未消費である。
+
+**最初に読む:**
+
+- [`machine-decision-failure-taxonomy/STUDY_1_OVERVIEW.md`](machine-decision-failure-taxonomy/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`machine-decision-failure-taxonomy/STUDY_1_FINAL_REPORT.md`](machine-decision-failure-taxonomy/STUDY_1_FINAL_REPORT.md)
+- [`machine-decision-failure-taxonomy/CURRENT_STATUS.md`](machine-decision-failure-taxonomy/CURRENT_STATUS.md)
+- [`machine-decision-failure-taxonomy/DECISION_REGISTER.md`](machine-decision-failure-taxonomy/DECISION_REGISTER.md)
+- [`machine-decision-failure-taxonomy/REPRODUCIBILITY_INDEX.md`](machine-decision-failure-taxonomy/REPRODUCIBILITY_INDEX.md)
+
+---
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。

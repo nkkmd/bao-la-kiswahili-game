@@ -1,6 +1,6 @@
 # MDFT-STUDY1 — Decision Register
 
-更新日: 2026-08-29
+更新日: 2026-08-30
 
 ## D01 — Study identity
 
@@ -275,3 +275,70 @@ Status: **FROZEN BEFORE STAGE 1 CONSUMPTION**.
 Observed Stage 0 core/F10 runtime, RSS, compression, artifact transfer and projection values may be used to set prospective Stage 1 engineering ceilings. They are not scientific target-distribution evidence and may not be used to tune taxonomy promotion toward a desired result.
 
 Status: **FROZEN INTERPRETATION BOUNDARY**.
+
+## D31 — Stage 1 source/spec/preflight freeze
+
+Before scientific consumption, Stage 1 spec SHA-256 `85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203`, source blobs, runner/workflow, resource ceilings and artifact contract were frozen. Canonical technical preflight run `33258188633` and runner-readiness run `33277031634` both passed without reporting target distribution.
+
+Status: **FROZEN PRE-CONSUMPTION CONTRACT**.
+
+## D32 — Stage 1 authorization and consumption
+
+Explicit authorization triggered only run `33277102013` at execution HEAD `dfb9bf316dc767ae5920aba5a3308aa5f05d3acf`. Its execution-start gate passed at `2026-08-29T21:50:53.337Z`.
+
+```text
+Stage 1 seeds 28910001..28914096 = CONSUMED
+same-block rerun/repair/replacement/extension = NOT AUTHORIZED
+```
+
+This supersedes the earlier current-state entries in D13/D26 without altering their historical meaning at reservation time.
+
+Status: **FROZEN CONSUME-ONCE BOUNDARY**.
+
+## D33 — Stage 1 technical integrity
+
+Run `33277102013` completed successfully. Production and independent implementations exactly matched source generation, root selection, selected-root identity, all analysis rows and development core. Mandatory full artifacts were preserved.
+
+```text
+production core = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
+independent core = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
+production full shard = 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
+independent full shard = 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
+```
+
+Status: **TECHNICAL-INTEGRITY-PASS**.
+
+## D34 — Stage 1 global readiness failure
+
+Two prospectively frozen global readiness gates failed:
+
+```text
+distinct opening prefixes = 2836 < 3000
+maximum single source-policy share = LOW_CAPTURE 170/512 = 0.33203125 > 0.32
+```
+
+No threshold relaxation, root deletion, subgrouping, seed extension or replacement is authorized.
+
+Status: **STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE**.
+
+## D35 — Leaf-level promotion calculations are not taxonomy promotion
+
+The frozen formula returned `promoted=true` for F01/F02/F03/F05/F06/F10 and `false` for F04/F07/F08. F09 was prospectively technically ineligible.
+
+Because D34 failed globally, none of the six `true` calculations becomes a frozen taxonomy leaf or Stage 2 formal target in this Study 1. They remain development observations only.
+
+Status: **FROZEN INTERPRETATION BOUNDARY / NO RESCUE**.
+
+## D36 — Study closure and Stage 2
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29010001..29018192 = RESERVED / UNCONSUMED
+Study = NON-ESTIMABLE
+```
+
+A future taxonomy attempt must be a new prospective study/version with fresh population and seed contracts.
+
+Status: **FROZEN STUDY CLOSURE**.
