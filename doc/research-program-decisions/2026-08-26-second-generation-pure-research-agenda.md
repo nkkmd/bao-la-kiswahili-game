@@ -155,3 +155,24 @@ tree / cumulative RAW-state ratio = 1.328494900687362
 No G2-04 root/partial closure, G1 SSGTC partial depth-9 row, G2-05 Stage 1 root/row, symmetry transform, or canonicalization result entered formal Stage 2 evidence. `G2-04 / REEOE-STUDY1 = INCONCLUSIVE` and G1 `SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` remain unchanged.
 
 G2-05 does not estimate total Bao state-space size or total game-tree complexity. Those questions remain separate prospective work, including `G2-12 — State-Space / Game-Tree Growth Estimation Study 1`. The next uncompleted P0 agenda item is `G2-06 — Rich Critical-Position Representation Study 1`.
+
+
+## 2026-08-29 — G2-06 Rich Critical-Position Representation Study 1 closure
+
+Agenda label `G2-06` was instantiated as `RCPR-STUDY1` — **Rich Critical-Position Representation Study 1** — under a fresh prospective rich pre-root representation contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-TECHNICAL-INVALID
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+scientificInferenceAuthorized = false
+same-block rerun = NOT AUTHORIZED
+```
+
+Stage 0 independently validated eight declared representation families and a 310-scalar feature schema. Stage 1 then consumed the prospectively frozen fresh seed block `28610001..28613072` once. Production completed and its readiness checks passed, but the mandatory independent verifier failed the prospectively required exact representation equality gate on 4 of 600 rows.
+
+The verifier independently reproduced corpus generation, root selection, continuation measurement, divergence labels, model development, and readiness. A post-failure read-only diagnostic localized the four mismatches to floating-point summation order in `MOVE_SET_ENTROPY.indexEntropy`; the differences were last-bit scale. This diagnostic does not authorize changing the frozen exact-equality criterion, repairing and rerunning the consumed block, or promoting production-only readiness.
+
+Accordingly `RCPR-STUDY1` is closed as `STAGE1-TECHNICAL-INVALID`. Stage 2 was not authorized or executed. Research Generation 1 Critical Positions results, G2-01..G2-05 decisions, thresholds, endpoints, populations, and representation boundaries remain unchanged.
+
+The program does not reopen G2-06 as a result-driven "Study 2" rescue. The next uncompleted machine-only agenda item is `G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`, which requires a separate prospective contract and fresh evidence.
