@@ -1,7 +1,7 @@
-# STSCV-STUDY1 — Reproducibility Index
+# STSCV-STUDY1 — 再現性索引
 
-Updated: 2026-08-28
-Status: **STUDY COMPLETE / FORMAL `INCONCLUSIVE` / FAIL-CLOSED**
+更新日: 2026-08-28  
+状態: **STUDY COMPLETE / FORMAL `INCONCLUSIVE` / FAIL-CLOSED**
 
 ## Study anchor
 
@@ -13,25 +13,25 @@ Baseline main = a8493d2a50e11f15d16ef8348f2442b262ca275d
 Branch = research/g2-03-state-transformation-semantics-canonicalization-validation
 ```
 
-## Authoritative identity
+## authoritative identity
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
 exclude = turn,reason
 ```
 
-No transform is authorized for scientific population deduplication, canonicalization, or symmetry-reduced counting at Study closure.
+Study closure時点で、scientific population deduplication、canonicalization、symmetry-reduced countingに使用できるtransformは承認されていません。
 
-## Rule-engine binding
+## rule-engine binding
 
 ```text
 public/engine.js Git blob at Study start = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
 public/engine.js byte SHA-256 = e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c
 ```
 
-Stage 0 and later freezes independently recomputed source identities before accepting technical/formal execution.
+Stage 0およびそれ以降のfreezeでは、technical / formal executionをacceptする前にsource identityを独立再計算しました。
 
-## Stage identities
+## Stage identity
 
 ```text
 Stage 0 = STSCV-S0-TECHNICAL-2026-08-28-v1
@@ -39,14 +39,14 @@ Stage 1 = STSCV-S1-DEVELOPMENT-2026-08-28-v1
 Stage 2 = STSCV-S2-FORMAL-2026-08-28-v1
 ```
 
-## Controls
+## control
 
 ```text
 positive = STSCV-C00-IDENTITY
 negative = STSCV-C01-LR-NO-DIRECTION-FLIP
 ```
 
-## Machine-readable preregistration
+## machine-readable preregistration
 
 - `preregistration/STUDY_START_CONTRACT.json`
 - `preregistration/STAGE_0_TECHNICAL_SPEC.json`
@@ -58,14 +58,14 @@ negative = STSCV-C01-LR-NO-DIRECTION-FLIP
 - `preregistration/STAGE_2_DECISION_RULE.json`
 - `preregistration/STAGE_2_AUTHORIZATION.json`
 
-## Stage 0 canonical records
+## Stage 0 canonical record
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_0_WORKFLOW_PROVENANCE.json`
 
-Stage 0 was technical only and did not produce scientific candidate decisions.
+Stage 0はtechnical onlyであり、scientific candidate decisionを生成していません。
 
-## Stage 1 development records
+## Stage 1 development record
 
 - `results/STAGE_1_PREFREEZE_MANIFEST.json`
 - `results/STAGE_1_PREFREEZE_WORKFLOW_PROVENANCE.json`
@@ -83,11 +83,11 @@ measurementSha256 = bae92c61d3a9736130da6d80a3ea6a6a7597d8277cfe362b13127749b7b7
 formal candidate decisions authorized = false
 ```
 
-All Stage 1 selected trajectory seeds, opening-prefix identities, and RAW-state identities were consumed by the Stage 2 firewall.
+Stage 1で選択されたtrajectory seed、opening-prefix identity、RAW-state identityはすべてStage 2 firewallでconsumedとして扱いました。
 
 ## Stage 2 prefreeze
 
-Canonical prefreeze records:
+Canonical prefreeze record:
 
 - `results/STAGE_2_PREFREEZE_MANIFEST.json`
 - `results/STAGE_2_PREFREEZE_WORKFLOW_PROVENANCE.json`
@@ -106,9 +106,9 @@ scientificOutcomeGenerated = false
 superseded older prefreeze run = 33145557654
 ```
 
-The hardened prefreeze independently reconstructed the Stage 1 selected-roots selection hash for the firewall binding before Stage 2 outcome generation.
+hardened prefreezeではStage 2 outcome生成前に、firewall bindingのためStage 1 selected-root selection hashを独立再構築しました。
 
-## Stage 2 frozen contract hashes
+## Stage 2 frozen contract hash
 
 ```text
 specSha256 = 2afbef1faed32cf1a7fb71d8af924a01d721a6d8719057c68224732576a6f8f0
@@ -122,7 +122,7 @@ combined production runner SHA-256 = faf4e81c146e0c6564599fe7c4e357cd3b9afb32214
 combined independent verifier SHA-256 = 13b555e6ab34fda1d58213b583e8250d593a9f061c62ac403273265896cbaf93
 ```
 
-The full per-source SHA-256 set is in `results/STAGE_2_PREFREEZE_MANIFEST.json` and `preregistration/STAGE_2_AUTHORIZATION.json`.
+full per-source SHA-256 setは`results/STAGE_2_PREFREEZE_MANIFEST.json`と`preregistration/STAGE_2_AUTHORIZATION.json`に保存しています。
 
 ## Stage 2 explicit authorization
 
@@ -179,11 +179,13 @@ message = standardStartReachablePopulationDedupDecision is not defined
 class = POST-MEASUREMENT-INDEPENDENT-VERIFIER-RESULT-ASSEMBLY-IMPLEMENTATION-ERROR
 ```
 
-Because artifact upload was skipped, there is no Stage 2 formal workflow artifact ID or artifact ZIP SHA-256. The production result file existed only in the failed runner workspace; its compact summary printed to the immutable workflow log and is recorded as non-decisional provenance in the repository-facing formal closure.
+artifact uploadがskipされたため、Stage 2 formal workflow artifact IDやartifact ZIP SHA-256は存在しません。
 
-## Production-only held-out diagnostics
+production result fileはfailed runner workspace内にのみ存在しました。そのcompact summaryはimmutable workflow logへ出力され、repository-facing formal closureにはnon-decisional provenanceとして記録されています。
 
-The workflow log recorded:
+## Production-only held-out diagnostic
+
+workflow logの記録:
 
 ```text
 selected roots = 32 Namua + 32 Mtaji + 32 Mtaji-houseless
@@ -198,9 +200,9 @@ runtime guard hits = 0
 max orbit size = 4
 ```
 
-These values are production diagnostics only. They cannot be used as formal candidate decisions because the mandatory independent-verification gate was not established as a canonical result.
+これらはproduction diagnosticのみです。mandatory independent-verification gateがcanonical resultとして成立しなかったため、formal candidate decisionには使用できません。
 
-## Canonical formal closure
+## canonical formal closure
 
 - `results/STAGE_2_FORMAL_RESULT.json`
 - `STUDY_1_FINAL_REPORT.md`
@@ -218,29 +220,31 @@ standard-start reachable-population deduplication = NON-ESTIMABLE
 validated transform set = []
 ```
 
-## Why the closure is reproducible despite the failed scientific workflow
+## failed scientific workflowでもclosureを再現できる理由
 
-The final decision does not reconstruct a favorable candidate result from the production diagnostics. It applies the already-frozen `globalFailureRule` to the externally observable workflow fact that mandatory complete independent verification was not established and the canonical formal artifact was not materialized.
+final decisionはproduction diagnosticからfavorable candidate resultを再構築したものではありません。
 
-Thus the closure depends on:
+mandatory complete independent verificationが成立せずcanonical formal artifactがmaterializeされなかったという、外部から観測可能なworkflow factへ、既に固定済みの`globalFailureRule`を適用したものです。
 
-1. the immutable pre-outcome Stage 2 decision rule;
-2. the explicit authorization commit;
-3. the recorded workflow run/job conclusion and failure location;
-4. the absence of a complete canonical independent-verification/formal artifact;
-5. no post-outcome source repair or same-evidence rerun.
+したがってclosureは次に依存します。
 
-## Study-level canonical documents
+1. immutable pre-outcome Stage 2 decision rule
+2. explicit authorization commit
+3. recorded workflow run / job conclusionとfailure location
+4. complete canonical independent-verification / formal artifactが存在しないこと
+5. outcome後のsource repairやsame-evidence rerunを行っていないこと
+
+## Study-level canonical document
 
 - `STUDY_1_PROTOCOL.md` — prospective protocol / unchanged historical contract
 - `STUDY_1_OVERVIEW.md` — current-facing overview
-- `STUDY_1_FINAL_REPORT.md` — scientific/technical final integration
+- `STUDY_1_FINAL_REPORT.md` — scientific / technical final integration
 - `CURRENT_STATUS.md` — terminal status
 - `DECISION_REGISTER.md` — immutable decisions
 - `RESEARCH_LOG.md` — chronology
-- `REPRODUCIBILITY_INDEX.md` — this index
+- `REPRODUCIBILITY_INDEX.md` — 本索引
 
-## Upstream closure anchors
+## upstream closure anchor
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -251,4 +255,4 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-These remain immutable context and are not modified by G2-03.
+これらはimmutable contextであり、G2-03によって変更されません。
