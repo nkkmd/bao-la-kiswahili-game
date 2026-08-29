@@ -136,3 +136,11 @@ Research Generation 1 Critical Positions / Outcome Branching Study 1 remains clo
 `RCPR-STUDY1` establishes a technical failure of its frozen Stage 1 exact independent-verification contract. It does not establish game-theoretic turning points, human-perceived criticality, causality, universal Bao taxonomy, public-AI improvement, or a full-game solution.
 
 A future successor may harden deterministic entropy/numeric hashing and repeat the research question prospectively only with a new study identity, new technical validation, fresh scientific seed block and new explicit authorization. The consumed `RCPR-STUDY1` block may not be rerun or promoted.
+
+## Detailed records
+
+- `README.md` — study-directory navigation and closure summary
+- `STUDY_1_FINAL_REPORT.md` — integrated scientific/technical closure
+- `CURRENT_STATUS.md` — terminal operational state
+- `DECISION_REGISTER.md` — frozen decisions and no-rescue boundaries
+- `REPRODUCIBILITY_INDEX.md` — hashes, runs, artifacts, and provenance
