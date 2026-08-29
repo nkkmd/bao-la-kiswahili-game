@@ -6,6 +6,7 @@ on:
       - research/g2-08-machine-decision-failure-taxonomy
     paths:
       - 'tools/experiments/materialize-g2-08-closure-docs.py'
+      - 'tools/experiments/sanitize-g2-08-closure-whitespace.py'
       - '.github/workflows/g2-08-closure-docs.yml'
   workflow_dispatch:
 
@@ -24,6 +25,7 @@ jobs:
       - name: Materialize localized closure updates
         run: |
           python3 tools/experiments/materialize-g2-08-closure-docs.py
+          python3 tools/experiments/sanitize-g2-08-closure-whitespace.py
           git diff --check
           git diff -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/machine-decision-failure-taxonomy/
 
