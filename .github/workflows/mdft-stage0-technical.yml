@@ -1,5 +1,6 @@
 name: MDFT Stage 0 Technical
 
+# Technical-only preflight. This workflow never consumes MDFT scientific seed blocks.
 on:
   workflow_dispatch:
   push:
