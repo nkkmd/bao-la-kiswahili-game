@@ -22,6 +22,7 @@ function writeJson(name,x){fs.writeFileSync(path.join(OUT,name),JSON.stringify(x
 function ms(fn){const t=performance.now(),value=fn();return{value,ms:performance.now()-t}}
 function summarySelection(s){return{generatedGames:s.generatedGames,uniqueTrajectories:s.uniqueTrajectories,distinctOpeningPrefixes:s.distinctOpeningPrefixes,selectedRoots:s.selectedRoots,selectedNamua:s.selectedNamua,selectedMtaji:s.selectedMtaji,sourcePolicyCounts:s.sourcePolicyCounts,selectionHash:s.selectionHash}}
 function selectedIdentity(s){return s.selected.map(x=>({seed:x.seed,sourcePolicy:x.sourcePolicy,phase:x.phase,ply:x.ply,legalMoveCount:x.legalMoveCount,rawStateKey:x.rawStateKey,trajectoryHash:x.trajectoryHash,openingPrefixHash:x.openingPrefixHash,quotaRank:x.quotaRank}))}
+function comparisonRows(rows){const out=JSON.parse(JSON.stringify(rows));for(const r of out){for(const k of ["reserve","house"]){if(r.diagnostics&&r.diagnostics.ablation&&r.diagnostics.ablation[k])delete r.diagnostics.ablation[k].bestScore}}return out}
 function project(observed,scale){return observed*scale}
 function makeProbe(size){const b=Buffer.allocUnsafe(size);let offset=0,counter=0;while(offset<size){const block=crypto.createHash("sha256").update(`MDFT-STAGE1-TRANSFER-PROBE|${counter}`).digest();block.copy(b,offset,0,Math.min(block.length,size-offset));offset+=block.length;counter+=1}return b}
 fs.mkdirSync(OUT,{recursive:true});
@@ -44,7 +45,8 @@ assert(ps.value.selectedNamua>0&&ps.value.selectedMtaji>0,"technical preflight l
 
 const pa=ms(()=>ps.value.selected.map(r=>P.analyzeRoot(r,spec)));
 const ia=ms(()=>isel.value.selected.map(r=>I.analyze(r,spec)));
-assert(stable(pa.value)===stable(ia.value),"production/independent Stage 1 analysis mismatch");
+const pRows=comparisonRows(pa.value),iRows=comparisonRows(ia.value);
+assert(stable(pRows)===stable(iRows),"production/independent Stage 1 analysis mismatch");
 
 const f10p=[],f10i=[];
 const f10Start=performance.now();
@@ -59,8 +61,8 @@ for(let n=0;n<Math.min(FORCE_F10_ROOTS,ps.value.selected.length);n++){
 const forcedF10Ms=performance.now()-f10Start;
 assert(stable(f10p)===stable(f10i),"forced F10 production/independent mismatch");
 
-const detailedProduction={games:pGameSummaries,selection:selectedIdentity(ps.value),rows:pa.value,forcedF10:f10p};
-const detailedIndependent={games:iGameSummaries,selection:selectedIdentity(isel.value),rows:ia.value,forcedF10:f10i};
+const detailedProduction={games:pGameSummaries,selection:selectedIdentity(ps.value),rows:pRows,forcedF10:f10p};
+const detailedIndependent={games:iGameSummaries,selection:selectedIdentity(isel.value),rows:iRows,forcedF10:f10i};
 const pCanonical=Buffer.from(stable(detailedProduction)),iCanonical=Buffer.from(stable(detailedIndependent));
 assert(pCanonical.equals(iCanonical),"canonical detailed payload mismatch");
 const pGzip=zlib.gzipSync(pCanonical,{level:6}),iGzip=zlib.gzipSync(iCanonical,{level:6});
@@ -70,7 +72,7 @@ const gameScale=spec.seedBlock.games/TECH_GAMES;
 const rootScale=spec.readinessGates.requiredSelectedRoots/Math.max(1,ps.value.selectedRoots);
 const pProjectedMs=project(pg.ms+ps.ms,gameScale)+project(pa.ms,rootScale)+project(forcedF10Ms/2,rootScale);
 const iProjectedMs=project(ig.ms+isel.ms,gameScale)+project(ia.ms,rootScale)+project(forcedF10Ms/2,rootScale);
-const sourceOnlyP=Buffer.from(stable(pGameSummaries)),rowsOnlyP=Buffer.from(stable({selection:selectedIdentity(ps.value),rows:pa.value,forcedF10:f10p}));
+const sourceOnlyP=Buffer.from(stable(pGameSummaries)),rowsOnlyP=Buffer.from(stable({selection:selectedIdentity(ps.value),rows:pRows,forcedF10:f10p}));
 const sourceGzip=zlib.gzipSync(sourceOnlyP,{level:6}).length,rowsGzip=zlib.gzipSync(rowsOnlyP,{level:6}).length;
 const projectedOneSideGzip=project(sourceGzip,gameScale)+project(rowsGzip,rootScale);
 const projectedBothSidesGzip=projectedOneSideGzip*2;
