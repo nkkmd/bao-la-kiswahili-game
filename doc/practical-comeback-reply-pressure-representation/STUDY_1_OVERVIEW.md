@@ -1,7 +1,7 @@
 # Practical Comeback / Reply-Pressure Representation Study 1 — Overview
 
-Updated: 2026-08-29
-Status: **ACTIVE / STUDY START FROZEN / NO SCIENTIFIC OUTCOME YET**
+更新日: 2026-08-29
+Status: **CLOSED / STAGE1-TECHNICAL-INVALID / MAIN NOT INTEGRATED**
 
 ## Study identity
 
@@ -17,23 +17,21 @@ Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 
 > **Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・prospective検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述**
 
-## Why this Study exists
+## 研究目的
 
-The completed `PCEM-STUDY1` demonstrated that a fresh machine-only measurement system for practical comeback/error dependence could be executed and independently verified, but none of 55 candidates generated from the frozen `PCEM-T1..T8` grammar passed the full promotion conjunction. PCRPR does not widen that grammar or promote its near misses.
+`PCEM-STUDY1`のzero promotionを救済せず、reply-centeredな豊かなmachine representationによりpolicy-sensitive practical-comeback structureをfresh evidence上で再現可能に記述できるかを問う独立研究として実施した。
 
-Instead, PCRPR starts a fresh independent question: whether a richer reply-centered representation can reproducibly describe policy-sensitive practical-comeback structure on fresh evidence.
+`RCPR-STUDY1`のtechnical-invalid resultも変更せず、そのfloating-point ordering failureだけをpre-outcome technical lessonとして取り込んだ。
 
-The immediately preceding `RCPR-STUDY1` is also not reopened. Its Stage 1 exact independent representation verification failed because of a deterministic floating-point accumulation-order mismatch. PCRPR incorporates that technical lesson before its own scientific evidence generation.
+## Representation
 
-## Primary representation unit
+Primary unit:
 
 ```text
 historically observed RAW root occurrence × exact root-move variant
 ```
 
-Each row describes the reply landscape after one exact root move, not a human judgment of difficulty.
-
-## Prospectively declared families
+12 prospectively declared families:
 
 ```text
 REPLY_SET_WIDTH
@@ -50,13 +48,7 @@ LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE
 LOCAL_TEMPORAL_CONTEXT
 ```
 
-Continuation/future outcomes are excluded from predictor features.
-
-## Target family
-
-The fresh continuation target family separates strong, medium and weak machine opponent policies. The primary target family is medium-vs-strong bounded practical-comeback lift; weak-vs-strong lift and full policy span are secondary.
-
-Exact policy identities, replicate counts, horizon and endpoint semantics will be frozen after Stage 0 technical feasibility and before Stage 1 scientific generation.
+Continuation/future outcomesはpredictorから除外した。
 
 ## RAW identity
 
@@ -64,23 +56,56 @@ Exact policy identities, replicate counts, horizon and endpoint semantics will b
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn` and `reason` are excluded. No symmetry/canonicalization is authorized.
+`turn`、`reason`は除外。symmetry/canonicalizationは未承認。
 
-## Population firewall
+## Stage 0
 
-Study-start reserved blocks:
+80-scalar representationについてproduction/independent exact equalityをtechnical fixturesで確認し、`STAGE0-TECHNICAL-PASS`。
+
+## Stage 1
+
+Fresh block:
 
 ```text
-Stage 1 = 28710001..28713072 / 3072 games / development-only / unconsumed
-Stage 2 = 28810001..28816144 / 6144 games / formal-only / unconsumed
+3072 games
+seeds 28710001..28713072
+400 roots / Namua 200 / Mtaji 200
+1429 development rows
 ```
 
-Stage 1 rows cannot become Stage 2 evidence. Any Stage 2 execution requires a fresh explicit authorization and overlap firewall.
+Productionはsupport/performance gatesを通過し、`F05_ALL` / lambda `100`を選択した。
+
+独立replayの科学計算も完走し、productionと同一development-core SHA256を報告した。しかしfull independent artifactがGitHub Actions artifact transport timeoutで保存されず、frozen full final exact comparerを実行できなかった。
+
+## Final decision
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-TECHNICAL-INVALID
+Stage 1 block = CONSUMED
+same-block rerun/repair/replacement/extension = NOT AUTHORIZED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+scientificInferenceAuthorized = false
+confirmatoryReuseAllowed = false
+```
+
+これはrepresentationの科学的negative resultではない。またproduction-only metricsをvalidated scientific evidenceとして採用することもできない。
 
 ## Human boundary
 
-PCRPR does not establish human error probability, reply difficulty, deception, confusion, psychology or expert recognition. `OPPONENT_POLICY_SENSITIVITY` refers only to the frozen machine policy family.
+machine reply pressureはhuman difficulty、deception、error probability、psychology、expert recognitionを意味しない。
 
-## Current status
+## Closure records
 
-No G2-07 scientific outcome has been generated. Stage 0 technical design/validation is the next work item; Stage 1 and Stage 2 are not authorized.
+- `STUDY_1_FINAL_REPORT.md`
+- `CURRENT_STATUS.md`
+- `DECISION_REGISTER.md`
+- `REPRODUCIBILITY_INDEX.md`
+- `results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
+
+## Next program item
+
+次の独立machine-only agenda itemは`G2-08 — Machine Decision-Failure Taxonomy Study 1`。PCRPR Stage 1 rows/modelをformal evidenceとして継承しない。
+
+main integrationはまだ行っていない。
