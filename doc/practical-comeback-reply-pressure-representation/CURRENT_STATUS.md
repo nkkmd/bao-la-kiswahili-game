@@ -1,8 +1,8 @@
 # PCRPR-STUDY1 — Current Status
 
-Updated: 2026-08-29
+更新日: 2026-08-29
 
-## Study identity
+## 研究識別
 
 ```text
 Program = G2-07
@@ -15,24 +15,24 @@ Stage 1 = PCRPR-S1-DEVELOPMENT-2026-08-29-v1
 Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 ```
 
-## Current state
+## 現在の正式状態
 
-**STAGE 0 TECHNICAL PASS / STAGE 1 AUTHORIZED AND CONSUMED / CANONICAL PRODUCTION + REQUIRED INDEPENDENT REPLAY IN PROGRESS / STAGE 2 NOT AUTHORIZED**
+**STUDY CLOSED ON RESEARCH BRANCH / STAGE 1 TECHNICAL INVALID / STAGE 2 NOT AUTHORIZED / MAIN NOT INTEGRATED**
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 1 authorization = AUTHORIZED
-Stage 1 consume-once gate = SUCCESS
+Stage 1 = STAGE1-TECHNICAL-INVALID
 Stage 1 seeds 28710001..28713072 = CONSUMED
-Stage 1 same-block rerun/repair/replacement/extension = NOT AUTHORIZED
-Stage 1 final development decision = PENDING CANONICAL PRODUCTION + INDEPENDENT EXACT VERIFICATION
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
+Stage 1 same-block rerun = NOT AUTHORIZED
+Stage 1 repair/replacement/extension = NOT AUTHORIZED
 scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
 validated transform set = []
 canonicalization = false
 symmetry reduction = false
+main integration = NOT PERFORMED
 ```
 
 ## Stage 0 canonical technical result
@@ -49,90 +49,139 @@ scalar features per row = 80
 exact cross-implementation equality = PASS
 ```
 
-## Stage 1 preauthorization validation
+Stage 0はtechnical-onlyであり、scientific outcomeを生成していない。
 
-All required preauthorization gates passed before scientific seed consumption:
+## Stage 1 preauthorization
+
+scientific block消費前に以下をすべてPASSした。
 
 ```text
-production implementation smoke = PASS / run 33240901637
-resource preflight = PASS / run 33240989191
-independent exact smoke = PASS / run 33241110983
-source-freeze audit = PASS / run 33241372471
+production implementation smoke = run 33240901637 / PASS
+resource preflight = run 33240989191 / PASS
+independent exact smoke = run 33241110983 / PASS
+source-freeze audit = run 33241372471 / PASS
 source-freeze commit = eb48ecae8d5ae171175f7cc9f00c9bcc77b2c237
 spec SHA256 = 15aff7a35c7875c16a815ae0323b3726714b36941ce53ce4788f8947700b2f2c
 computation contract SHA256 = 7f6d2c9a928392c557f31f35cd0e912ba8396055c9535872b698f8085bc282e9
 feature dictionary SHA256 = 892624860ac22c722ad9877b8c93ba6c32536da98692fc6735cd86e43886ca4f
 ```
 
-Resource preflight used technical-only seeds and did not inspect Stage 1 target prevalence. Its conservative projection remained within the prospectively frozen resource ceiling.
-
-The independent smoke reproduced source corpus, root selection, row identity, all 80-feature representations, reduced continuation outcomes, development-model core and final fit exactly without importing PCRPR production feature/model helpers.
-
-## Stage 1 authorization and consume-once execution
-
-Explicit authorization:
-
-- `authorizations/STAGE_1_EXECUTE.json`
-- authorization commit `64f0352e7d8b26432e2a68c408e403859c3e71bf`
-- canonical workflow run `33241465899`
-
-Consume-once gate:
+## Stage 1 authorization / consumption
 
 ```text
-gate job = 99071430645 / success
+authorization commit = 64f0352e7d8b26432e2a68c408e403859c3e71bf
+canonical workflow = 33241465899
+authorize-and-consume job = 99071430645 / success
 execution-start artifact = 9711478864
-artifact ZIP SHA256 = cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e864f76a35fc120
-authorization SHA256 = 2040525664bb8601073b26e01afb6f8688cc2d5f4a7c3e9504cc745dfbbbca71
-Stage 1 block = CONSUMED
+execution-start ZIP SHA256 = cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e864f76a35fc120
+Stage 1 seed block = CONSUMED
 ```
 
-The gate completed the exact source/hash/auth validation and wrote `execution-start.json` before either scientific generation job began. From this point onward, failure of production, independent replay, resource execution, artifact transfer, or exact comparison does not restore the seed block.
+consume-once gate成功後は、後続のproduction、independent replay、artifact transfer、final comparisonが失敗してもseed blockを未消費へ戻さない。
 
-Current canonical jobs:
+## Stage 1 production-only provenance
+
+production jobは成功した。
 
 ```text
-production job = 99071451933 / IN PROGRESS
-independent replay job = 99071451969 / IN PROGRESS
-final exact comparison = pending both jobs
+job = 99071451933 / success
+artifact = 9714352893
+artifact ZIP SHA256 = 36f0fae32f3ca9deec842602b0dbe87e933fd589643820f192c90d379b2f3b5b
+production result SHA256 = dea825892090fe9b101a8bd25610c7f24b40c4aac79fd61faaff1d213a5cdf90
+development core SHA256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2
 ```
 
-The independent replay is a required verifier replay within the same canonical workflow, not a replacement or extension.
-
-## Frozen Stage 1 scientific design
+production summary:
 
 ```text
-source games = 3072
-fresh seeds = 28710001..28713072
-selected root target = 400 / Namua 200 / Mtaji 200
-root occurrence selected before D3 disadvantage screen
-D3 reference disadvantage = bestScore < 0
-rows = all exact root moves from selected disadvantaged roots
-actor continuation = canonical D2 best
-strong opponent = canonical D2 best / 1 deterministic replicate
-medium opponent = seeded D1 top3 / 16 replicates
-weak opponent = seeded uniform exact reply / 8 replicates
-maximum post-root horizon = 96 plies
-primary development target = medium bounded-win rate - strong bounded-win indicator
-development model = deterministic grouped ridge regression
-CV = 5-fold by historicalTrajectoryHash
+generated games = 3072
+unique historical trajectories = 2757
+selected roots = 400 / Namua 200 / Mtaji 200
+development rows = 1429 / Namua 733 / Mtaji 696
+selected family set = F05_ALL
+selected lambda = 100
+pooled OOF RMSE = 0.321056911294272
+baseline OOF RMSE = 0.40121860916118934
+relative RMSE improvement = 0.1997955629089787
+pooled OOF Spearman = 0.5456632009097375
+Namua OOF Spearman = 0.2897094224760121
+Mtaji OOF Spearman = 0.700040881756042
+top-quintile enrichment difference = 0.3337211308428414
+support gates = PASS
+performance gates = PASS
+production disposition = STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATION
 ```
 
-All continuation targets are leakage class D and prohibited from predictor features.
+これらはaccepted scientific resultではなく、**production-only unverified provenance**としてのみ保持する。
+
+## Independent replay incident
+
+```text
+independent replay job = 99071451969
+scientific replay step = success
+artifact upload step = failure
+final verification job = 99096549383 / skipped
+```
+
+replay計算はrunner teardown前に以下を報告した。
+
+```text
+generated games = 3072
+selected roots = 400
+rows = 1429
+selected family set = F05_ALL
+selected lambda = 100
+independent development core SHA256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2
+independent result SHA256 = db7358d1308481fd4d9645fbffd79a319603ea7debd263bcaa98d2fa9fe35395
+```
+
+productionとindependentのdevelopment-core stdout hashは一致した。しかし`actions/upload-artifact`の`CreateArtifact` requestが5回連続timeoutし、full `independent-result.json` artifactは保存されなかった。
+
+frozen final comparerはsource corpus、selection、rows、measurements、compact rows、model、final model、readinessまでfull objectsでexact比較することを必須としていたため、stdout一致だけを代替verificationとして採用できない。
+
+## Final Stage 1 decision
+
+事前固定したdecision mapping:
+
+```text
+technical/integrity/independent-verification failure
+-> STAGE1-TECHNICAL-INVALID
+```
+
+mandatory full independent verificationが完了しなかったため、最終決定は:
+
+```text
+STAGE1-TECHNICAL-INVALID
+```
+
+で固定した。
+
+このdecisionはreply-pressure representationの科学的否定を意味しない。同時に`F05_ALL`、`lambda=100`、production performanceをvalidated representation/modelとして採用することも禁止する。
+
+Canonical records:
+
+- `results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
+- `STUDY_1_FINAL_REPORT.md`
 
 ## Immutable boundaries
 
-`PCEM-STUDY1` remains closed with zero promoted candidates and Stage 2 not executed. `RCPR-STUDY1` remains `STAGE1-TECHNICAL-INVALID`; its consumed block cannot be repaired or re-adjudicated by PCRPR.
+`PCEM-STUDY1`のzero promotion / Stage 2 non-authorization、`RCPR-STUDY1`のStage 1 technical-invalidは変更しない。
 
-Machine reply pressure does not establish human difficulty, deception, human error probability, psychological pressure or expert-perceived complexity.
+machine reply pressureはhuman difficulty、deception、human error probability、psychological pressure、expert-perceived complexityを意味しない。
 
-RAW identity remains:
+RAW identity:
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn` and `reason` are excluded; no symmetry/canonicalization is authorized.
+`turn`と`reason`は除外し、symmetry/canonicalizationは未承認のままである。
 
-## Next permitted action
+## 次の許可された工程
 
-Do not alter scientific source, specification, thresholds, model, target, tolerance, or continuation policy. Observe the already-running canonical production and independent replay to completion, then apply the already-frozen exact comparer. No same-block rerun is permitted.
+PCRPR-STUDY1について新しいscientific executionは行わない。Stage 2は開始しない。
+
+研究branch上でclosure文書・workflow archival・関連indexの整合性を確認した後、main統合は**別途明示的な指示があるまで行わない**。
+
+次の独立研究候補は`G2-08 — Machine Decision-Failure Taxonomy Study 1`だが、本研究closureとは分離して開始する。
