@@ -53,14 +53,14 @@ legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索�
 
 ### `AI-GEN3` — 次に正式採用される公開系統の予約名
 
-`AI-GEN3`は、PBAI-P1または将来Programによって次に正式採用されるpublic lineageのために予約します。
+`AI-GEN3`は、PBAI-P1等による次の正式採用public lineageのために予約します。
 
 **candidateを作成したこと、development benchmarkを通過したこと、validationを通過したことだけでは`AI-GEN3`を付与しません。**
 
 `AI-GEN3`へのpromotionには最低限、次をすべて要求します。
 
-1. 対応するevidence auditが完了している。
-2. 現行public baselineがexactに固定されている。
+1. PBAI-P1 evidence auditが完了している。
+2. `AI-GEN2` public baselineがexactに固定されている。
 3. benchmark / non-regression / release gateがcandidate outcomeを見る前に固定されている。
 4. candidate mechanismがisolated ablationで評価されている。
 5. fresh validation / release benchmarkを通過している。
