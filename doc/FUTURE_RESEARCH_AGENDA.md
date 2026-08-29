@@ -935,7 +935,9 @@ Read-only postmortemでは4件の差は`MOVE_SET_ENTROPY.indexEntropy`におけ�
 
 #### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
 
-**状態:** planned / new prospective independent study
+**状態:** completed / `PCRPR-STUDY1` closed / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`
+
+**結果要約:** Stage 0 technical validationはPASS。Fresh Stage 1は3,072 games / 400 roots / 1,429 exact root-move rowsをproductionとstructurally independent replayで完走し、selected family `F05_ALL`、ridge `lambda=100`、development core hashまで一致した。一方、independent full artifactのGitHub Actions uploadが`CreateArtifact` timeoutで失敗し、prospectively必須だったfull final exact verificationをmaterializeできなかったため、frozen fail-closed ruleに従い`STAGE1-TECHNICAL-INVALID`で閉じた。Stage 1 blockは消費済みでsame-block rerun/repair/replacement/extensionは未承認。Stage 2は未承認・未実行でreserved seedsは未消費。Production-only性能値はunverified provenanceに限定する。
 
 中心課題:
 
@@ -1071,12 +1073,12 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07, G2-08, G2-09, G2-10
+P1: G2-07 (completed), G2-08, G2-09, G2-10
 P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`も`RCPR-STUDY1`として実行され、mandatory independent representation equality failureによりStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。G2-03のvalidated transform setは空のままで、G2-04/G2-06の未実行Stage 2を後続Studyで救済しない。P0 sequence G2-01..G2-06はclosure済みであり、次の未着手machine-only agenda itemは`G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`である。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-07`も`PCRPR-STUDY1`として実行され、mandatory full independent final verificationをartifact-transfer failureによりmaterializeできなかったためStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。G2-03のvalidated transform setは空のままで、G2-04/G2-06/G2-07の未実行Stage 2を後続Studyで救済しない。G2-01..G2-07はclosure済みであり、次の未着手machine-only agenda itemは`G2-08 — Machine Decision-Failure Taxonomy Study 1`である。
 
 ### 9.9 第二世代プログラムの完了条件
 
