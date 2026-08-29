@@ -7,6 +7,7 @@ on:
     paths:
       - 'tools/experiments/materialize-g2-08-closure-docs.py'
       - 'tools/experiments/sanitize-g2-08-closure-whitespace.py'
+      - 'tools/experiments/finalize-g2-08-closure-consistency.py'
       - '.github/workflows/g2-08-closure-docs.yml'
   workflow_dispatch:
 
@@ -24,8 +25,14 @@ jobs:
 
       - name: Materialize localized closure updates
         run: |
-          python3 tools/experiments/materialize-g2-08-closure-docs.py
+          if grep -q '### 24. Machine Decision-Failure Taxonomy — Study 1' doc/RESEARCH_INDEX.md && \
+             grep -q 'Study = CLOSED' doc/machine-decision-failure-taxonomy/CURRENT_STATUS.md; then
+            echo 'Primary G2-08 closure materialization already present; skipping non-idempotent first-pass materializer.'
+          else
+            python3 tools/experiments/materialize-g2-08-closure-docs.py
+          fi
           python3 tools/experiments/sanitize-g2-08-closure-whitespace.py
+          python3 tools/experiments/finalize-g2-08-closure-consistency.py
           git diff --check
           git diff -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/machine-decision-failure-taxonomy/
 
@@ -38,5 +45,5 @@ jobs:
           git config user.name 'Sawa'
           git config user.email '72678394+nkkmd@users.noreply.github.com'
           git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/machine-decision-failure-taxonomy/
-          git commit -m 'research(g2-08): synchronize Study 1 closure documentation'
+          git commit -m 'research(g2-08): finalize Study 1 closure consistency'
           git push origin HEAD:research/g2-08-machine-decision-failure-taxonomy
