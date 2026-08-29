@@ -605,8 +605,8 @@ Stage 1は2,048 fresh gamesで全readiness gateをPASSし、phase-stratified iso
 
 ### 18. Search Reliability / Decision Robustness — Study 1
 
-**研究題目:** Baoにおける探索信頼性と意思決定頑健性の定量化 — depth, node budget, quiescence等の探索条件変化に対するbest move・ranking・evaluation・principal variation安定性のprospective検証  
-**Program:** `G2-02` / **Study ID:** `SRDR-STUDY1` / **Research Generation 2**  
+**研究題目:** Baoにおける探索信頼性と意思決定頑健性の定量化 — depth, node budget, quiescence等の探索条件変化に対するbest move・ranking・evaluation・principal variation安定性のprospective検証
+**Program:** `G2-02` / **Study ID:** `SRDR-STUDY1` / **Research Generation 2**
 **状態:** **Study complete / formal decision `INCONCLUSIVE`**
 
 同一RAW stateに対するmachine search decisionの安定性を、depth / node budget / quiescenceのprospectively frozen gridで検証した。Stage 1は1,280 fresh gamesから1,018 statesを測定して`PROFILE-FROZEN-DEVELOPMENT`となった。Stage 2は1,536 fresh held-out games、1,007 selected statesを用い、独立verifierが全game replay・selection・measurementをzero mismatchで再構築した。
@@ -634,8 +634,8 @@ Descriptive secondary profileではD2→D3 canonical-best agreement `0.734856`�
 
 ### 19. State Transformation Semantics / Canonicalization Validation — Study 1
 
-**研究題目:** Baoにおける状態変換意味論とcanonicalizationの厳密検証 — rule-semantic validity, legal-move equivariance, successor binding, graph isomorphism, and prospective canonicalization authorization  
-**Program:** `G2-03` / **Study ID:** `STSCV-STUDY1` / **Research Generation 2**  
+**研究題目:** Baoにおける状態変換意味論とcanonicalizationの厳密検証 — rule-semantic validity, legal-move equivariance, successor binding, graph isomorphism, and prospective canonicalization authorization
+**Program:** `G2-03` / **Study ID:** `STSCV-STUDY1` / **Research Generation 2**
 **状態:** **Study complete / formal decision `INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`**
 
 SIP-STUDY1の5 `NON-ESTIMABLE`、ORISC Axis A `NOT-CONFIRMED` / Axis B未実行を変更せず、representation bindingを最初から明示したfresh RAW-state evidenceでstate transformationを検証した。Stage 1は72 fresh development rootsを使い、trajectory seed / opening prefix / RAW stateをStage 2からfirewallした。Stage 2はseeds `26032001..26032768`、Namua/Mtaji/Mtaji-houseless各32 roots、depth 3、zero mismatch toleranceをoutcome前にfreezeし、hardened prefreezeとexplicit authorizationを経て実行した。
@@ -675,8 +675,8 @@ Production-only zero-mismatch diagnosticsをformal validationへ救済せず、t
 
 ### 20. Restricted Endgame Exact Oracle Expansion — Study 1
 
-**研究題目:** Baoにおける限定終盤exact oracleの拡張 — prospectively selected RAW-state domains に対する complete forward closure, exact retrograde analysis, cycle structure, distance, and optimal-move multiplicity の厳密解析  
-**Program:** `G2-04` / **Study ID:** `REEOE-STUDY1` / **Research Generation 2**  
+**研究題目:** Baoにおける限定終盤exact oracleの拡張 — prospectively selected RAW-state domains に対する complete forward closure, exact retrograde analysis, cycle structure, distance, and optimal-move multiplicity の厳密解析
+**Program:** `G2-04` / **Study ID:** `REEOE-STUDY1` / **Research Generation 2**
 **状態:** **Study complete / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 このprospective independent RAW-only studyは、複数のrestricted endgame domainsをoutcome-blindに選び、complete forward closureを証明できたdomainだけをexact retrograde analysisへ進める設計を検証した。Stage 0ではREWR 8-state / 7-edge oracleをtechnical fixtureとしてproduction / independent双方で再構築し、4 negative controlsを検出した。
@@ -743,6 +743,34 @@ Depth 9では78,009 unique RAW states、105,704 tree occurrences、3,116 duplica
 - [`deep-raw-state-space-enumeration/DECISION_REGISTER.md`](deep-raw-state-space-enumeration/DECISION_REGISTER.md)
 
 **Boundary:** exact claimはprospectively frozen standard-root depth-9 RAW domainだけに限定される。G2-04を救済せず、G1 SSGTCのformal decisionも変更しない。full Bao state-space / game-tree complexity、unbounded growth、asymptotic extrapolationはG2-05のendpointではなく、G2-12等のnew prospective Studyを必要とする。
+
+---
+
+### 22. Rich Critical-Position Representation — Study 1
+
+**研究題目:** Baoにおける重要局面の豊かな構造表現の構築とprospective検証 — rich pre-root representationによるdecision-critical structureの再現可能な識別
+**Program:** `G2-06` / **Study ID:** `RCPR-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+Stage 0では8 representation families / 310 scalar featuresのproduction・independent exact agreementとmandatory controlsをPASSした。Stage 1はfresh 3,072-game blockと600-root targetをprospectively freezeし、consume-once authorizationの下でproductionを一度だけ実行した。
+
+Productionでは599 rootsがprimary-estimable、134 rootsが`D_range >= 0.30` high-divergenceで、`RICH_ALL`がselected family setとなった。Production readiness checksはPASSしたが、mandatory independent verifierで4/600 representation rowsのexact feature-vector hashが不一致となったため、production-only readinessをformal target formationへ昇格させなかった。
+
+Post-failure read-only postmortemでは4件すべての差分が`MOVE_SET_ENTROPY.indexEntropy`の浮動小数点加算順に由来する最下位bit級差と特定された。ただしこれは結果後のdiagnosticであり、frozen exact-equality gateをtoleranceへ変更してStudyを救済していない。
+
+**最初に読む:**
+
+- [`rich-critical-position-representation/STUDY_1_OVERVIEW.md`](rich-critical-position-representation/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`rich-critical-position-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`](rich-critical-position-representation/results/STAGE_1_DEVELOPMENT_RESULT.json)
+- [`rich-critical-position-representation/results/STAGE_1_TECHNICAL_POSTMORTEM.json`](rich-critical-position-representation/results/STAGE_1_TECHNICAL_POSTMORTEM.json)
+- [`rich-critical-position-representation/CURRENT_STATUS.md`](rich-critical-position-representation/CURRENT_STATUS.md)
+- [`rich-critical-position-representation/DECISION_REGISTER.md`](rich-critical-position-representation/DECISION_REGISTER.md)
+- [`rich-critical-position-representation/REPRODUCIBILITY_INDEX.md`](rich-critical-position-representation/REPRODUCIBILITY_INDEX.md)
+
+**Boundary:** Stage 1 seed block `28610001..28613072`は消費済みでsame-block repair/rerun、replacement、extensionは未承認。Stage 1 rowsはStage 2 formal evidenceへ再利用しない。G2-06を結果後に修正して再判定せず、次のindependent agenda itemはG2-07として別prospective contractで扱う。
 
 ---
 

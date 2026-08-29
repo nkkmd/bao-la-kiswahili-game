@@ -1,0 +1,18 @@
+name: RCPR Stage 1 Implementation Smoke — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-workflow notice
+        run: |
+          echo 'RCPR-STUDY1 implementation-smoke workflow is closed.'
+          echo 'Canonical successful run: 33195723195.'
+          echo 'Former executable workflow blob: d7d10fb1f4d1ec28e68a496133c1bc3fe4cc1c79.'
+          echo 'No additional RCPR-STUDY1 implementation-smoke execution is authorized.'

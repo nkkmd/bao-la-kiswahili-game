@@ -3,7 +3,7 @@
 Version: 2.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-08-28
+更新日: 2026-08-29
 
 ## 1. 目的
 
@@ -917,17 +917,21 @@ SSGTC-STUDY1のpartial depth-9 rows、G2-04 selected roots / partial closures、
 
 #### G2-06 — Rich Critical-Position Representation Study 1
 
-**状態:** planned / new prospective independent study
+**状態:** **完了 / `RCPR-STUDY1` / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 中心課題:
 
 > Critical Positions / Outcome Branching Study 1で139/600 high-divergence rootsが観測された一方simple one-to-two-token grammarでpromotion 0だったことを踏まえ、outcome前に固定したより豊かなrepresentationならfresh populationでdecision-critical structureを再現可能に識別できるか。
 
-候補representation familyにはlocal pit topology、capture graph、legal-move geometry、reply graph、reserve / house relation、move-set entropy、search-gap vector、local temporal context等を含め得るが、formal familyとfeature-selection ruleはoutcome前にfreezeする。
+Stage 0でlocal pit topology、capture graph、legal-move geometry、reply graph、reserve / house relation、move-set entropy、search-gap vector、local temporal contextの8 families / 310 scalar featuresをtechnical validationした。Stage 1はfresh 3,072-game block、600 roots、`D_range >= 0.30`、deterministic model-selection / readiness ruleをoutcome前にfreezeしてconsume-once実行した。
 
-第一世代1183 auditsのnear-miss promotion、threshold relaxation、manual Stage 2 target selectionは行わない。
+Productionでは599 primary-estimable roots、134 high-divergence rootsを得てproduction readiness checksをPASSした。一方、mandatory independent recomputationはcorpus / root selection / continuation / model / readinessを再現したものの、4/600 rowsでrepresentation exact hashが一致しなかった。frozen fail-closed ruleに従いStage 1は`STAGE1-TECHNICAL-INVALID`で閉じ、production-only readinessをformal targetへ昇格させなかった。
 
-**Priority:** P0
+Read-only postmortemでは4件の差は`MOVE_SET_ENTROPY.indexEntropy`における浮動小数点加算順の差と局所化されたが、outcome後にexact-equality gateをtoleranceへ変更して救済しない。Stage 1 seed blockは消費済みでsame-block rerun / replacement / extensionは禁止、Stage 2は未承認・未実行である。
+
+第一世代1183 auditsのnear-miss promotion、threshold relaxation、manual Stage 2 target selectionも行っていない。
+
+**Priority:** P0 / completed
 
 #### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
 
@@ -1072,7 +1076,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`として、それぞれprospective stop/global-failure/feasibility ruleに従い完了した。`G2-05`も`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`としてbounded exact enumerationを完了した。G2-03のvalidated transform setは空のままで、G2-04のStage 2未実行結果は変更されていない。次の未着手P0候補は`G2-06` Rich Critical-Position Representationである。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`も`RCPR-STUDY1`として実行され、mandatory independent representation equality failureによりStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。G2-03のvalidated transform setは空のままで、G2-04/G2-06の未実行Stage 2を後続Studyで救済しない。P0 sequence G2-01..G2-06はclosure済みであり、次の未着手machine-only agenda itemは`G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`である。
 
 ### 9.9 第二世代プログラムの完了条件
 

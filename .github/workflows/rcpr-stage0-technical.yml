@@ -1,0 +1,18 @@
+name: RCPR Stage 0 Technical — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-workflow notice
+        run: |
+          echo 'RCPR-STUDY1 Stage 0 technical workflow is closed.'
+          echo 'Canonical successful run: 33179301221.'
+          echo 'Former executable workflow blob: 680049f0e07a4bfdb90324ffe1bdab8047596c75.'
+          echo 'No additional RCPR-STUDY1 Stage 0 execution is authorized.'
