@@ -1,0 +1,44 @@
+name: RCPR Central Docs Materialize
+
+on:
+  push:
+    branches:
+      - research/g2-06-rich-critical-position-representation
+    paths:
+      - doc/rich-critical-position-representation/authorizations/CENTRAL_DOCS_MATERIALIZE.md
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Materialize bounded central-document updates
+        run: python3 tools/experiments/materialize-g2-06-central-docs.py
+      - name: Validate agenda and whitespace
+        run: |
+          node test/second-generation-research-agenda.test.js
+          git diff --check
+          grep -F 'G2-06` / `RCPR-STUDY1`' README.md
+          grep -F '### 22. Rich Critical-Position Representation — Study 1' doc/RESEARCH_INDEX.md
+          grep -F '**状態:** **完了 / `RCPR-STUDY1` / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -F 'G2-06 Rich Critical-Position Representation Study 1 closure' doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
+          grep -F 'G2-07 — Practical Comeback / Reply-Pressure Representation Study 1' doc/FUTURE_RESEARCH_AGENDA.md
+      - name: Commit central-document materialization
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
+          if git diff --cached --quiet; then
+            echo 'No central documentation changes to commit.'
+            exit 1
+          fi
+          git commit -m 'docs(g2-06): integrate closed study into central research indexes'
+          git push origin HEAD:research/g2-06-rich-critical-position-representation
