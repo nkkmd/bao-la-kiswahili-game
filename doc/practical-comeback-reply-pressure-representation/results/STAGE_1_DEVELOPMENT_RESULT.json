@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "program": "G2-07",
+  "studyId": "PCRPR-STUDY1",
+  "stageId": "PCRPR-S1-DEVELOPMENT-2026-08-29-v1",
+  "recordedDate": "2026-08-29",
+  "finalDecision": "STAGE1-TECHNICAL-INVALID",
+  "scientificInferenceAuthorized": false,
+  "confirmatoryReuseAllowed": false,
+  "stage2Authorized": false,
+  "stage2Decision": "NOT-AUTHORIZED-NOT-EXECUTED",
+  "scientificStage1SeedBlock": {
+    "seedStart": 28710001,
+    "seedEnd": 28713072,
+    "count": 3072,
+    "status": "CONSUMED",
+    "sameBlockRerunAuthorized": false,
+    "sameBlockRepairAuthorized": false,
+    "sameBlockReplacementAuthorized": false,
+    "sameBlockExtensionAuthorized": false
+  },
+  "canonicalWorkflow": {
+    "runId": 33241465899,
+    "executionCommit": "64f0352e7d8b26432e2a68c408e403859c3e71bf",
+    "authorizeAndConsumeJob": {
+      "jobId": 99071430645,
+      "conclusion": "success",
+      "executionStartArtifactId": 9711478864,
+      "executionStartArtifactZipSha256": "cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e864f76a35fc120"
+    },
+    "productionJob": {
+      "jobId": 99071451933,
+      "scientificComputationConclusion": "success",
+      "artifactUploadConclusion": "success",
+      "artifactId": 9714352893,
+      "artifactZipSha256": "36f0fae32f3ca9deec842602b0dbe87e933fd589643820f192c90d379b2f3b5b"
+    },
+    "independentReplayJob": {
+      "jobId": 99071451969,
+      "scientificComputationConclusion": "success",
+      "artifactUploadConclusion": "failure",
+      "artifactId": null,
+      "failureClass": "GITHUB-ACTIONS-ARTIFACT-TRANSPORT-FAILURE",
+      "failureDetail": "actions/upload-artifact CreateArtifact request timed out after 5 attempts",
+      "fullIndependentArtifactAvailableForFrozenFinalComparer": false
+    },
+    "finalVerificationJob": {
+      "jobId": 99096549383,
+      "conclusion": "skipped",
+      "reason": "required independent artifact was not materialized because the upstream independent-replay job concluded failure at artifact upload"
+    }
+  },
+  "productionOnlyUnverifiedProvenance": {
+    "acceptedScientificStage1Result": false,
+    "generatedGames": 3072,
+    "uniqueHistoricalTrajectories": 2757,
+    "generatedDistinctOpeningPrefixes": 2272,
+    "selectedRoots": 400,
+    "rootsByPhase": {
+      "namua": 200,
+      "mtaji": 200
+    },
+    "developmentRows": 1429,
+    "rowsByPhase": {
+      "namua": 733,
+      "mtaji": 696
+    },
+    "selectedDistinctOpeningPrefixes": 386,
+    "selectedFamilySetId": "F05_ALL",
+    "selectedLambda": 100,
+    "selectedPooledOofRmse": 0.321056911294272,
+    "baselineOofRmse": 0.40121860916118934,
+    "relativeRmseImprovement": 0.1997955629089787,
+    "selectedPooledOofSpearman": 0.5456632009097375,
+    "selectedNamuaOofSpearman": 0.2897094224760121,
+    "selectedMtajiOofSpearman": 0.700040881756042,
+    "topScoreQuintile": {
+      "topCount": 285,
+      "topMean": 0.6473684210526316,
+      "remainingMean": 0.3136472902097902,
+      "difference": 0.3337211308428414
+    },
+    "supportGatesPassed": true,
+    "performanceGatesPassed": true,
+    "productionDisposition": "STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATION",
+    "productionResultSha256": "dea825892090fe9b101a8bd25610c7f24b40c4aac79fd61faaff1d213a5cdf90",
+    "hashes": {
+      "sourceCorpusSha256": "558f2cc2c122cb738de4d345edfdd86f29d92acb787553e6beba77a066ae8e9e",
+      "selectionSha256": "deb43668e75ccf4a4f6897cd3629828e2fa77876cb80f46bdfa1d536b437324b",
+      "rowsSha256": "15fb799da64862fe70a04e4f1249060086dfd3527911702b116ca8f0310c12ea",
+      "measurementsSha256": "de18d69e3603cac80906656d1184b6d197695d47b1607af0d90542729ea5028f",
+      "compactRowsSha256": "b3fcd1a0484444c35ee3def141941ed743a6527a5647c8fd71f6c9692886f69c",
+      "developmentCoreSha256": "4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2"
+    }
+  },
+  "independentReplayTerminalStdoutProvenance": {
+    "acceptedAsFullIndependentVerification": false,
+    "generatedGames": 3072,
+    "selectedRoots": 400,
+    "rows": 1429,
+    "reportedDisposition": "STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATION",
+    "selectedFamilySetId": "F05_ALL",
+    "selectedLambda": 100,
+    "reportedDevelopmentCoreSha256": "4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2",
+    "reportedIndependentResultSha256": "db7358d1308481fd4d9645fbffd79a319603ea7debd263bcaa98d2fa9fe35395",
+    "developmentCoreMatchesProductionStdout": true,
+    "limitation": "The full independent-result.json was created transiently on the runner but was not uploaded. The frozen final comparer therefore could not inspect the full source, selection, row, measurement, compact-row, model, final-model and readiness objects required by the preregistered exact verification contract."
+  },
+  "mandatoryVerification": {
+    "required": true,
+    "fullIndependentArtifactAvailable": false,
+    "frozenFinalComparerExecuted": false,
+    "exactVerificationCompleted": false,
+    "passCriteriaSatisfied": false
+  },
+  "decisionBasis": "The consume-once Stage 1 block was permanently consumed. Production and the structurally independent replay both completed their scientific computation and reported the same development-core SHA256, but the independent full artifact failed to materialize because GitHub Actions artifact creation timed out. The prospectively frozen protocol required the full independent artifact and final exact comparer; no post-outcome relaxation or substitute verification is authorized. The frozen technical/integrity/independent-verification failure mapping therefore requires STAGE1-TECHNICAL-INVALID.",
+  "interpretationBoundary": "This technical-invalid closure is not scientific evidence that the reply-pressure representation is ineffective. Production-only metrics and the independent terminal stdout agreement are retained only as unverified provenance and future hypothesis-generation context. They do not validate F05_ALL, lambda 100, any predictive metric, any practical-comeback representation, or any human difficulty/deception/error claim, and they do not authorize Stage 2."
+}
