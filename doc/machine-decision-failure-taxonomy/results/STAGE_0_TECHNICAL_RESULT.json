@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "1.0.0",
+  "program": "G2-08",
+  "studyId": "MDFT-STUDY1",
+  "stageId": "MDFT-S0-TECHNICAL-2026-08-29-v1",
+  "stageType": "TECHNICAL_ONLY",
+  "disposition": "STAGE0-TECHNICAL-PASS",
+  "scientificInferenceAuthorized": false,
+  "scientificSeedUseAllowed": false,
+  "stage1ScientificGenerationAuthorized": false,
+  "stage2ScientificGenerationAuthorized": false,
+  "canonicalRuns": {
+    "core": {
+      "workflowRunId": 33256737040,
+      "headSha": "ad2a47401f38c58228d45270c94389d16c21dda9",
+      "conclusion": "success",
+      "artifactId": 9716030172,
+      "artifactDigest": "sha256:23f08a39891ba64015870ddf616e8d258619172b690aac88e9165ab864b62206",
+      "coreSha256": "f5052e9c18b118a194c4a43c8964e789a2a81083ad72ebf259b18c699ed5d6f1",
+      "essentialCoreSha256": "857dcdce7ce9abff86c8060809f66ece7f54b3a13d575cc598097fcd699cf2bb",
+      "fullTechnicalCoreSha256": "77f7fee6db8eb0ace645b42115182c9192c0ee68c50a7fd75df7bfead8e5e0f0",
+      "finalExactComparisonSha256": "77f23ef20f91d345b8d5c7811f63b92483dd674aa9a9d4baea142cf4c92c4c2f",
+      "fixtureCount": 4,
+      "namuaFixtures": 2,
+      "mtajiFixtures": 2,
+      "productionIndependentExact": true,
+      "referenceBudgetDepth3Completed": 4,
+      "runtimeWallMs": 6232.648148,
+      "maxRssKb": 94476,
+      "canonicalBytes": 71530,
+      "gzipBytes": 4166,
+      "shardCeilingBytes": 131072
+    },
+    "determinismReplay": {
+      "workflowRunId": 33256767045,
+      "headSha": "3fabb8ff33988cbdf2f050b0560aa914db087aaf",
+      "conclusion": "success",
+      "artifactId": 9716038368,
+      "artifactDigest": "sha256:0c845ccf69860b3a8108466f66c039d1056439d422b7d8430e83bb5b7977298b",
+      "coreSha256": "f5052e9c18b118a194c4a43c8964e789a2a81083ad72ebf259b18c699ed5d6f1",
+      "exactCoreHashMatchesCanonicalRun": true
+    },
+    "f10Preflight": {
+      "workflowRunId": 33256932295,
+      "headSha": "04ffda12149ab73b4d4a2729eefbdc5ff4f4f225",
+      "conclusion": "success",
+      "artifactId": 9716090090,
+      "artifactDigest": "sha256:8acf94307a0f12d42ef53580c1178249822f394a0e617f4f62dba33326a4e179",
+      "resultSha256": "59c22500c3748d85a131fc6e7340d59062ae3d56996714655bd9b207784a0f4d",
+      "traceSha256": "0e65c8ad18345723fc92cde4f445ff19f7e240a4cccc2d2a88d3a0cc1eea6f80",
+      "traceGzipSha256": "a0ee4067dfba768b9165d5147bded1f4fc3c83b58e824e427e7d1ad43e83c600",
+      "continuationPlies": 6,
+      "fixtureCount": 4,
+      "traceCount": 8,
+      "productionIndependentExact": true,
+      "runtimeWallMs": 25279.321986000003,
+      "maxRssKb": 97296,
+      "canonicalBytes": 75721,
+      "gzipBytes": 2570,
+      "allPredeclaredGatesPass": true
+    }
+  },
+  "controls": {
+    "positiveComparer": "PASS",
+    "negativeComparer": "PASS",
+    "deterministicReplay": "PASS",
+    "exactMoveIdentity": "PASS",
+    "rawStateReconstruction": "PASS",
+    "orderingPermutation": "PASS",
+    "leakageSentinel": "PASS",
+    "jsonRoundtripSerialization": "PASS",
+    "independentImplementationEquality": "PASS",
+    "artifactShardingTransfer": "PASS"
+  },
+  "technicalEligibility": {
+    "MDFT-F05": {
+      "status": "TECHNICALLY-ELIGIBLE",
+      "reason": "SEARCH_CONSISTENT_CANONICAL_LINE_TRACE_EXACT_ON_TECHNICAL_FIXTURES"
+    },
+    "MDFT-F09": {
+      "status": "TECHNICALLY-INELIGIBLE",
+      "reason": "FROZEN_HISTORICAL_CLASSIFIER_NOT_EXACTLY_RECONSTRUCTIBLE_FROM_CURRENT_PRESERVED_REPOSITORY_SOURCES",
+      "replacementAuthorized": false,
+      "refitAuthorized": false
+    },
+    "MDFT-F10": {
+      "status": "TECHNICALLY-ELIGIBLE",
+      "reason": "BOUNDED_CONTINUATION_EXACT_AND_WITHIN_PREDECLARED_RESOURCE_ARTIFACT_CEILINGS"
+    }
+  },
+  "stage1Binding": {
+    "eligibleLeafIds": [
+      "MDFT-F01",
+      "MDFT-F02",
+      "MDFT-F03",
+      "MDFT-F04",
+      "MDFT-F05",
+      "MDFT-F06",
+      "MDFT-F07",
+      "MDFT-F08",
+      "MDFT-F10"
+    ],
+    "technicallyExcludedLeafIds": ["MDFT-F09"],
+    "scientificSeedBlockStatus": "RESERVED_UNCONSUMED",
+    "scientificExecutionAuthorizedByThisResult": false
+  }
+}
