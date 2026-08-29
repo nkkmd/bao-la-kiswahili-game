@@ -1,12 +1,12 @@
-# STSCV-STUDY1 — Current Status
+# STSCV-STUDY1 — 現在の状態
 
-Updated: 2026-08-28
+更新日: 2026-08-28
 
-## Status
+## 状態
 
 **STUDY COMPLETE / FORMAL DECISION `INCONCLUSIVE` / 3 CANDIDATES `NON-ESTIMABLE` / CANONICALIZATION `NON-ESTIMABLE` / NO TRANSFORM VALIDATED**
 
-## Identity
+## 研究識別子
 
 ```text
 Program = G2-03
@@ -17,11 +17,11 @@ Baseline main = a8493d2a50e11f15d16ef8348f2442b262ca275d
 Research branch = research/g2-03-state-transformation-semantics-canonicalization-validation
 ```
 
-Japanese working title:
+日本語題目:
 
 **Baoにおける状態変換意味論とcanonicalizationの厳密検証 — rule-semantic validity, legal-move equivariance, successor binding, graph isomorphism, and prospective canonicalization authorization**
 
-## Final formal closure
+## 最終formal closure
 
 ```text
 Study = INCONCLUSIVE
@@ -33,7 +33,7 @@ standard-start reachable-population deduplication = NON-ESTIMABLE
 validated transform set = []
 ```
 
-This is a technical/reproducibility non-estimability closure, not a scientific rejection of the candidate transforms.
+これはtechnical / reproducibility上のnon-estimability closureであり、candidate transformを科学的に棄却した結果ではありません。
 
 ## Stage progression
 
@@ -43,13 +43,15 @@ Stage 1 = STSCV-S1-DEVELOPMENT-2026-08-28-v1 — completed / development only
 Stage 2 = STSCV-S2-FORMAL-2026-08-28-v1 — executed / fail-closed INCONCLUSIVE
 ```
 
-Stage 1 used 72 fresh development roots: 24 Namua + 24 Mtaji + 24 Mtaji-houseless. Those identities were prospectively firewalled from Stage 2 at trajectory-seed, opening-prefix, and RAW-state levels.
+Stage 1では72 fresh development rootsを使用しました。内訳はNamua 24 + Mtaji 24 + Mtaji-houseless 24です。
 
-Stage 2 prospectively froze seeds `26032001..26032768`, 32 roots per stratum, depth 3, zero mismatch tolerance, no replacement outside the seed block, and no seed extension after outcome.
+これらのidentityは、trajectory-seed、opening-prefix、RAW-stateの各levelでStage 2から事前に分離しました。
 
-## Stage 2 prefreeze and authorization
+Stage 2ではseed `26032001..26032768`、各stratum 32 roots、depth 3、mismatch tolerance 0、frozen seed block外へのreplacementなし、outcome後のseed extensionなしを事前固定しました。
 
-Hardened Stage 2 prefreeze:
+## Stage 2 prefreezeとauthorization
+
+強化済みStage 2 prefreeze:
 
 ```text
 workflow run = 33145713610
@@ -58,13 +60,13 @@ conclusion = success
 scientific outcome existed = false
 ```
 
-Explicit authorization commit:
+明示的authorization commit:
 
 ```text
 c7619ded9f682b499a02d023b40ac54ba4dc95ca
 ```
 
-The authorization was bound to the frozen spec, candidate contract, Stage 1 firewall, decision rule, RAW identity, source hashes, production runner, and independent verifier before Stage 2 outcome generation.
+Stage 2 outcome生成前に、authorizationをfrozen spec、candidate contract、Stage 1 firewall、decision rule、RAW identity、source hash、production runner、independent verifierへbindingしました。
 
 ## Stage 2 formal workflow
 
@@ -76,7 +78,7 @@ head = c7619ded9f682b499a02d023b40ac54ba4dc95ca
 conclusion = failure
 ```
 
-Successful steps:
+成功したstep:
 
 ```text
 engine regression = PASS
@@ -84,7 +86,7 @@ frozen source reconstruction = PASS
 fresh held-out production measurement = PASS
 ```
 
-Production selected the frozen target exactly:
+Productionは固定targetをexactに選択しました。
 
 ```text
 Namua = 32
@@ -92,19 +94,21 @@ Mtaji = 32
 Mtaji-houseless = 32
 ```
 
-Production-only diagnostics reported candidate mismatch count 0 for T01/T02/T03. These are not candidate decisions.
+Production-only diagnosticではT01 / T02 / T03のcandidate mismatch countはすべて0でした。ただし、これはcandidate decisionではありません。
 
-Mandatory independent verification then terminated during formal-result assembly with:
+その後、mandatory independent verificationがformal-result assembly中に次のerrorで停止しました。
 
 ```text
 ReferenceError: standardStartReachablePopulationDedupDecision is not defined
 ```
 
-The workflow-produced canonical independent-verification artifact, independently verified formal-result artifact, SHA256SUMS, and workflow artifact ZIP were therefore not materialized. A separate repository-facing fail-closed closure was subsequently recorded at `results/STAGE_2_FORMAL_RESULT.json` by applying the already-frozen global-failure rule; it is not the missing workflow-produced independently verified result.
+このため、workflow-produced canonical independent-verification artifact、independently verified formal-result artifact、SHA256SUMS、workflow artifact ZIPは生成・確定されませんでした。
 
-## Frozen global-rule application
+別途、既に固定済みのglobal-failure ruleを適用したrepository-facing fail-closed closureを`results/STAGE_2_FORMAL_RESULT.json`へ記録しています。これは欠落したworkflow-produced independently verified resultの代替ではありません。
 
-The Stage 2 decision rule requires all global gates to PASS before candidate mismatch is scientifically interpretable.
+## 固定済みglobal ruleの適用
+
+Stage 2 decision ruleでは、candidate mismatchを科学的に解釈する前にすべてのglobal gateをPASSすることを要求します。
 
 ```text
 S2-G1 = PASS
@@ -116,7 +120,7 @@ S2-G6 = PASS
 all global gates PASS = false
 ```
 
-Therefore the prospectively frozen global-failure rule requires:
+したがって、事前固定したglobal-failure ruleにより次となります。
 
 ```text
 study = INCONCLUSIVE
@@ -125,18 +129,18 @@ canonicalization = NON-ESTIMABLE
 scientific mismatch interpretation = not authorized
 ```
 
-## Authoritative representation
+## authoritative representation
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
 ```
 
-No transform is authorized for scientific population identity, canonicalization, or symmetry-reduced state counting.
+scientific population identity、canonicalization、symmetry-reduced state countingに使用できるtransformは1件も承認されていません。
 
-Production diagnostics additionally showed that none of T01/T02/T03 preserves the standard initial RAW state, and no independent standard-start reachability-closure proof was implemented.
+Production diagnosticではT01 / T02 / T03のいずれもstandard initial RAW stateを保存しないことも確認されました。また、independent standard-start reachability-closure proofは実装されていません。
 
-## Immutable upstream state
+## 変更しないupstream state
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE
@@ -150,15 +154,17 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-G2-03 changes none of these decisions.
+G2-03はこれらの判断を変更しません。
 
-## No-rescue closure
+## no-rescue closure
 
-The verifier defect became known after fresh held-out Stage 2 outcome generation. The verifier source is not repaired and the same Stage 2 evidence is not rerun to rescue the formal decision.
+Verifier defectはfresh held-out Stage 2 outcome生成後に判明しました。
 
-A new formal test of these hypotheses requires a new prospective Study or explicitly new versioned protocol with fresh authorization and fresh formal evidence.
+verifier sourceを修復して同じStage 2 evidenceを再実行し、formal decisionを救済することはしません。
 
-## Canonical closure documents
+これらのhypothesisをformalに再検証する場合は、新しいprospective Studyまたは明示的に新しいversioned protocol、新しいauthorization、新しいformal evidenceが必要です。
+
+## canonical closure documents
 
 - `STUDY_1_FINAL_REPORT.md`
 - `results/STAGE_2_FORMAL_RESULT.json`
@@ -167,9 +173,9 @@ A new formal test of these hypotheses requires a new prospective Study or explic
 - `DECISION_REGISTER.md`
 - `REPRODUCIBILITY_INDEX.md`
 
-## Repository state
+## repository state
 
-Integrated into `main` through PR #69 after the final documentation and CI audit.
+final documentationとCI auditの後、PR #69を通じて`main`へ統合済みです。
 
 ```text
 Final research head = c6f2fa750ce2e30a5ce359b9f3c594145c8e5a38
@@ -177,9 +183,9 @@ Merge commit = 2b5f297e09330348fdb2c42472aed50340eb0180
 Integrated branch = main
 ```
 
-Post-merge integration provenance is recorded in:
+Post-merge integration provenanceは次に記録しています。
 
 - `checkpoints/2026-08-28-main-integration.md`
 - `results/MAIN_INTEGRATION_PROVENANCE.json`
 
-Repository integration does not change the formal scientific closure, validated transform set, canonicalization boundary, or no-rescue rule.
+Repository integrationはformal scientific closure、validated transform set、canonicalization boundary、no-rescue ruleを変更しません。
