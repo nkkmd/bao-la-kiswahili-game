@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "programId": "G2-07",
+  "studyId": "PCRPR-STUDY1",
+  "stageId": "PCRPR-S1-DEVELOPMENT-2026-08-29-v1",
+  "status": "PROSPECTIVE-FROZEN-PENDING-IMPLEMENTATION-VALIDATION-SOURCE-FREEZE-AND-AUTHORIZATION",
+  "baselineMainSha": "e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5",
+  "stage0Decision": "STAGE0-TECHNICAL-PASS",
+  "scientificInferenceAuthorized": false,
+  "developmentOutcomeGenerationAuthorizedBySpecAlone": false,
+  "confirmatoryReuseAllowed": false,
+  "stage2AutomaticAuthorization": false,
+  "preOutcomeCorrections": [
+    {
+      "date": "2026-08-29",
+      "class": "SPECIFICATION-DUPLICATE-CANDIDATE-FAMILY-SET",
+      "defect": "Initial F03_REPLY_POLICY accidentally duplicated F04_ALL_NO_TEMPORAL.",
+      "resolution": "F03_REPLY_POLICY was narrowed to the prospectively intended reply-quality/policy-distribution family set before implementation validation, source freeze, authorization, scientific seed consumption, or scientific outcome observation.",
+      "scientificSeedsConsumed": false,
+      "scientificOutcomeObserved": false
+    }
+  ],
+  "rawIdentity": {
+    "include": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "exclude": ["turn", "reason"],
+    "validatedTransformSet": [],
+    "canonicalization": false,
+    "symmetryReduction": false
+  },
+  "representation": {
+    "schemaId": "PCRPR_FEATURES_STAGE0_V1",
+    "scalarFeatureCount": 80,
+    "stage0ExactEqualityRequired": true,
+    "numericEncoding": "IEEE-754-binary64-big-endian-lowercase-hex",
+    "candidateFamilies": [
+      "REPLY_SET_WIDTH",
+      "DEFENSE_MAINTAINING_REPLY_FRACTION",
+      "REPLY_QUALITY_DISTRIBUTION",
+      "PUNISHMENT_CONCENTRATION",
+      "BEST_REPLY_GAP_VECTOR",
+      "FORCING_REPLY_STRUCTURE",
+      "REPLY_BRANCH_ASYMMETRY",
+      "REPLY_SEARCH_STABILITY",
+      "OPPONENT_POLICY_SENSITIVITY",
+      "ROOT_MOVE_REFERENCE_CONTEXT",
+      "LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE",
+      "LOCAL_TEMPORAL_CONTEXT"
+    ],
+    "predictorLeakageClassesAllowed": ["A", "B", "C"],
+    "continuationOrFutureOutcomePredictorsAllowed": false,
+    "historyWindowMoves": 4,
+    "terminalRootMoveReplyDependentScalars": "ZERO_WITH_EXPLICIT_TERMINAL_INDICATOR"
+  },
+  "sourcePopulation": {
+    "games": 3072,
+    "seedStart": 28710001,
+    "seedEnd": 28713072,
+    "seedUse": "CONSUME-ONCE-DEVELOPMENT-ONLY",
+    "maxObservedPly": 100,
+    "opening": {
+      "plies": 8,
+      "policy": "SEEDED-UNIFORM-OVER-LEXICALLY-SORTED-EXACT-MOVE-VARIANTS",
+      "prng": "mulberry32-compatible tools/benchmark.js seededRandom semantics"
+    },
+    "conditionAssignment": {
+      "method": "GAME-INDEX-MODULO-6",
+      "strata": [
+        {"id":"B-D1","generator":{"level":"hard","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":1,"quiescenceDepth":1,"orderQuiescenceCaptures":false}},
+        {"id":"B-D2","generator":{"level":"hard","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":1,"orderQuiescenceCaptures":false}},
+        {"id":"B-D3","generator":{"level":"hard","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":3,"quiescenceDepth":1,"orderQuiescenceCaptures":false}},
+        {"id":"LS-D2","generator":{"level":"hard","evaluationProfile":"bao","searchProfile":"legacy","maxDepth":2,"quiescenceDepth":0,"orderQuiescenceCaptures":false}},
+        {"id":"V2-D2","generator":{"level":"hard","evaluationProfile":"bao-v2","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":1,"orderQuiescenceCaptures":false}},
+        {"id":"LE-D2","generator":{"level":"hard","evaluationProfile":"legacy","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":1,"orderQuiescenceCaptures":false}}
+      ],
+      "commonOptions": {"timeLimitMs":"Infinity","adaptive":false,"stableBestDepths":0,"aspirationWindow":0}
+    }
+  },
+  "trajectoryIdentity": {
+    "historicalTrajectoryHash": "SHA256 of explicit ordered RAW state-key sequence including initial and final observed state",
+    "openingPrefixPlies": 8,
+    "openingPrefixHash": "SHA256 of explicit prefix length plus ordered exact move keys",
+    "duplicateTrajectoryHandling": "RETAIN-MINIMUM-SEED-THEN-GAME-INDEX",
+    "supportUnit": "UNIQUE-HISTORICAL-RAW-TRAJECTORY"
+  },
+  "rootSelection": {
+    "targetOutcomeBlind": true,
+    "minimumPly": 8,
+    "minimumLegalMoveCount": 2,
+    "minimumPreRootHistoryMoves": 0,
+    "terminalIncluded": false,
+    "phaseAssignment": {
+      "method": "SHA256-PARITY-OF-SEED",
+      "salt": "PCRPR-S1-PHASE-v1",
+      "mapping": {"even":"namua","odd":"mtaji"}
+    },
+    "withinAssignedPhase": {
+      "method": "MINIMUM-SHA256-RANK",
+      "salt": "PCRPR-S1-ROOT-v1",
+      "fields": ["seed", "rawStateKey", "ply"]
+    },
+    "referenceDisadvantage": {
+      "searchId": "pcrpr-exact-full-window/bao/q0/v1",
+      "depth": 3,
+      "criterion": "bestScore < 0",
+      "evaluatedOnlyAfterOccurrenceSelection": true
+    },
+    "failureOfDisadvantageCriterion": "NO-WITHIN-TRAJECTORY-REPLACEMENT",
+    "duplicateSelectedRawStateHandling": "RETAIN-MINIMUM-HISTORICAL-TRAJECTORY-HASH-THEN-SEED-BEFORE-QUOTA",
+    "phaseQuota": {
+      "namua": 200,
+      "mtaji": 200,
+      "salt": "PCRPR-S1-QUOTA-v1",
+      "rankingFields": ["phase", "historicalTrajectoryHash", "rawStateKey", "seed"]
+    },
+    "unavailableAssignedPhase": "NO-REPLACEMENT-NO-REASSIGNMENT",
+    "insufficientPool": "FAIL-READINESS-NO-SEED-EXTENSION",
+    "selectionMayUse": ["seed","phase","ply","legalMoveCount","rawStateKey","historicalTrajectoryHash","openingPrefixHash","generationStratum","frozenHashRanks","D3ReferenceBestScoreSignAfterOccurrenceSelection"],
+    "selectionMayNotUse": ["sourceGameWinner","continuationOutcome","mediumVsStrongLift","weakVsStrongLift","fullPolicySpan","representationValues","modelScore","futureWinner","postRootSampledContinuationState"]
+  },
+  "rowConstruction": {
+    "unit": "SELECTED-HISTORICAL-ROOT-OCCURRENCE-X-EXACT-ROOT-MOVE-VARIANT",
+    "allExactLegalRootMovesIncluded": true,
+    "terminalRootMoveRowsIncluded": true,
+    "rowIdentity": "SHA256(stageId|historicalTrajectoryHash|rootPly|rawStateKey|exactRootMoveKey)",
+    "replicateInflationDoesNotIncreaseRootSupport": true
+  },
+  "continuationInstrument": {
+    "maximumPostRootPlies": 96,
+    "rootActorPolicy": {
+      "id": "PCRPR-ACTOR-D2-BEST-v1",
+      "semantics": "canonical lexical member of exact D2 top set under pcrpr-exact-full-window/bao/q0/v1"
+    },
+    "opponentPolicies": [
+      {
+        "id": "PCRPR-OPP-STRONG-D2-BEST-v1",
+        "role": "STRONG",
+        "semantics": "canonical lexical member of exact D2 top set",
+        "replicatesPerRootMove": 1,
+        "stochastic": false
+      },
+      {
+        "id": "PCRPR-OPP-MEDIUM-D1-TOP3-v1",
+        "role": "MEDIUM",
+        "semantics": "seeded uniform over first min(3,N) replies ranked by D1 score descending then exact move key ascending",
+        "replicatesPerRootMove": 16,
+        "stochastic": true
+      },
+      {
+        "id": "PCRPR-OPP-WEAK-UNIFORM-v1",
+        "role": "WEAK",
+        "semantics": "seeded uniform over lexically sorted exact legal replies",
+        "replicatesPerRootMove": 8,
+        "stochastic": true
+      }
+    ],
+    "replicateSeedDerivation": {
+      "algorithm": "SHA256-FIRST-32-BITS",
+      "salt": "PCRPR-S1-CONT-v1",
+      "fields": ["rowIdentity", "rootActor", "replicateIndex"],
+      "policyIdExcludedFromSeedMaterial": true,
+      "mediumWeakCommonRandomNumbersForReplicateIndices0Through7": true,
+      "separateRngInstancePerPolicyAndRootMove": true
+    },
+    "boundedWinIndicator": "1 iff root actor reaches terminal win within 96 post-root plies, otherwise 0",
+    "administrativeHorizonExhaustion": "EXPLICITLY-RECORDED-AND-COUNTED-AS-BOUNDED-WIN-0",
+    "technicalInvalidContinuation": "FAIL-CLOSED-NOT-A-MISSING-OUTCOME"
+  },
+  "targets": {
+    "primary": {
+      "id": "MEDIUM_MINUS_STRONG_BOUNDED_COMEBACK_LIFT",
+      "formula": "mean16(medium boundedWin) - strong boundedWin",
+      "range": [-1, 1]
+    },
+    "secondary": [
+      {
+        "id": "WEAK_MINUS_STRONG_BOUNDED_COMEBACK_LIFT",
+        "formula": "mean8(weak boundedWin) - strong boundedWin",
+        "range": [-1, 1]
+      },
+      {
+        "id": "FULL_OPPONENT_POLICY_BOUNDED_WIN_SPAN",
+        "formula": "max(strongWin,mediumWinRate,weakWinRate)-min(strongWin,mediumWinRate,weakWinRate)",
+        "range": [0, 1]
+      }
+    ],
+    "allTargetsAreClassD": true,
+    "targetsAllowedAsPredictorFeatures": false
+  },
+  "developmentModel": {
+    "target": "MEDIUM_MINUS_STRONG_BOUNDED_COMEBACK_LIFT",
+    "method": "DETERMINISTIC-RIDGE-LINEAR-REGRESSION",
+    "intercept": "UNPENALIZED",
+    "standardization": "TRAINING-FOLD-MEAN-AND-POPULATION-SD; CONSTANT-FEATURE-SD-REPLACED-BY-1",
+    "ridgeLambdas": [0.1, 1, 10, 100],
+    "individualScalarFeatureSelection": false,
+    "interactions": false,
+    "candidateFamilySets": {
+      "F01_REPLY_STRUCTURAL": ["REPLY_SET_WIDTH","FORCING_REPLY_STRUCTURE","REPLY_BRANCH_ASYMMETRY","LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE"],
+      "F02_REPLY_QUALITY": ["DEFENSE_MAINTAINING_REPLY_FRACTION","REPLY_QUALITY_DISTRIBUTION","PUNISHMENT_CONCENTRATION","BEST_REPLY_GAP_VECTOR","REPLY_SEARCH_STABILITY","ROOT_MOVE_REFERENCE_CONTEXT"],
+      "F03_REPLY_POLICY": ["REPLY_SET_WIDTH","DEFENSE_MAINTAINING_REPLY_FRACTION","REPLY_QUALITY_DISTRIBUTION","PUNISHMENT_CONCENTRATION","BEST_REPLY_GAP_VECTOR","REPLY_SEARCH_STABILITY","OPPONENT_POLICY_SENSITIVITY","ROOT_MOVE_REFERENCE_CONTEXT"],
+      "F04_ALL_NO_TEMPORAL": ["REPLY_SET_WIDTH","DEFENSE_MAINTAINING_REPLY_FRACTION","REPLY_QUALITY_DISTRIBUTION","PUNISHMENT_CONCENTRATION","BEST_REPLY_GAP_VECTOR","FORCING_REPLY_STRUCTURE","REPLY_BRANCH_ASYMMETRY","REPLY_SEARCH_STABILITY","OPPONENT_POLICY_SENSITIVITY","ROOT_MOVE_REFERENCE_CONTEXT","LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE"],
+      "F05_ALL": ["REPLY_SET_WIDTH","DEFENSE_MAINTAINING_REPLY_FRACTION","REPLY_QUALITY_DISTRIBUTION","PUNISHMENT_CONCENTRATION","BEST_REPLY_GAP_VECTOR","FORCING_REPLY_STRUCTURE","REPLY_BRANCH_ASYMMETRY","REPLY_SEARCH_STABILITY","OPPONENT_POLICY_SENSITIVITY","ROOT_MOVE_REFERENCE_CONTEXT","LOCAL_TACTICAL_GEOMETRY_RESERVE_HOUSE_PHASE","LOCAL_TEMPORAL_CONTEXT"]
+    },
+    "crossValidation": {
+      "folds": 5,
+      "unit": "historicalTrajectoryHash",
+      "assignment": "SHA256-FIRST-32-BITS-MODULO-5",
+      "salt": "PCRPR-S1-CV-v1",
+      "allRowsFromTrajectoryInSameFold": true
+    },
+    "primarySelectionMetric": "POOLED-OOF-RMSE-ASCENDING",
+    "secondarySelectionMetric": "POOLED-OOF-TIE-AWARE-SPEARMAN-DESCENDING",
+    "selectionTieBreak": ["activeScalarFeatureCountAscending","candidateFamilySetIdAscending","ridgeLambdaAscending"],
+    "baselineModel": "TRAINING-FOLD-MEAN-PREDICTION",
+    "finalFit": "REFIT-SELECTED-FAMILY-SET-AND-LAMBDA-ON-ALL-DEVELOPMENT-ELIGIBLE-ROWS-AFTER-SELECTION"
+  },
+  "readinessGates": {
+    "minimumUniqueHistoricalTrajectoriesGenerated": 2500,
+    "minimumDistinctOpeningPrefixesGenerated": 1800,
+    "requiredSelectedRoots": 400,
+    "requiredNamuaRoots": 200,
+    "requiredMtajiRoots": 200,
+    "minimumSelectedDistinctOpeningPrefixes": 320,
+    "minimumSelectedRootsPerGenerationStratum": 40,
+    "maximumSingleGenerationStratumShare": 0.30,
+    "minimumDevelopmentRows": 900,
+    "minimumDevelopmentRowsNamua": 350,
+    "minimumDevelopmentRowsMtaji": 350,
+    "minimumPrimaryTargetPopulationSd": 0.08,
+    "minimumPrimaryTargetPopulationSdEachPhase": 0.05,
+    "minimumRowsWithPrimaryLiftGreaterThanZero": 60,
+    "minimumRowsWithPrimaryLiftLessThanOrEqualZero": 300,
+    "minimumPrimaryTargetObservedRange": 0.50,
+    "maximumMediumAdministrativeHorizonFraction": 0.05,
+    "maximumWeakAdministrativeHorizonFraction": 0.05,
+    "maximumStrongAdministrativeHorizonFraction": 0.05,
+    "minimumSelectedModelPooledOofSpearman": 0.20,
+    "minimumSelectedModelNamuaOofSpearman": 0.10,
+    "minimumSelectedModelMtajiOofSpearman": 0.10,
+    "minimumRelativeRmseImprovementVersusFoldMeanBaseline": 0.05,
+    "minimumTopScoreQuintileMeanLiftMinusRemainingMeanLift": 0.08,
+    "independentFullCorpusReplayRequired": true,
+    "independentRootReselectionRequired": true,
+    "independentFeatureRecomputationRequired": true,
+    "independentContinuationRemeasurementRequired": true,
+    "independentTargetReconstructionRequired": true,
+    "independentModelDevelopmentRecomputationRequired": true,
+    "exactDevelopmentCoreHashMatchRequired": true
+  },
+  "developmentDecision": {
+    "allReadinessAndIndependentVerificationGatesPass": "STAGE1-DEVELOPMENT-PASS-AND-FORMAL-TARGET-AVAILABLE",
+    "populationRootOrTargetSupportInsufficient": "STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE",
+    "modelPerformanceOrEnrichmentBelowGate": "STAGE1-DEVELOPMENT-BLOCKED-ZERO-PROMOTION",
+    "resourceCeilingExceededAfterConsumption": "RESOURCE-CENSORED",
+    "technicalIntegrityOrIndependentVerificationFailure": "STAGE1-TECHNICAL-INVALID",
+    "stage2AutomaticAuthorization": false
+  },
+  "resourceCeilings": {
+    "workflowWallMinutes": 360,
+    "perJobMaxRSSGiB": 7,
+    "canonicalArtifactGiB": 4,
+    "preAuthorizationResourcePreflightRequired": true
+  },
+  "technicalPreflight": {
+    "technicalSeedMenu": "28701001..28701064",
+    "scientificEvidence": false,
+    "mayUseReducedGameRootReplicateCounts": true,
+    "mustNotInspectOrEstimateStage1ScientificTargetPrevalence": true
+  },
+  "consumeOnce": {
+    "consumptionBoundary": "after explicit authorization and source/spec/hash-envelope validation, execution-start record written immediately before first Stage1 scientific game generation",
+    "sameBlockRepairOrRerunAfterConsumption": false,
+    "seedReplacementAfterConsumption": false,
+    "seedExtensionAfterConsumption": false,
+    "favorableRootReplacement": false,
+    "postOutcomeToleranceThresholdModelOrPrimaryTargetSubstitution": false
+  },
+  "stage1Stage2Firewall": {
+    "stage1RowsReusableAsFormalEvidence": false,
+    "stage1TargetsReusableAsFormalEvidence": false,
+    "stage1FittedModelMayBeFrozenForStage2": true,
+    "requiredZeroOverlapLevels": ["sourceGameSeed","historicalTrajectoryHash","openingPrefixHash","rawStateKey","rootOccurrenceHistoryHash","rowIdentity"]
+  },
+  "authorization": {
+    "requiredFile": "doc/practical-comeback-reply-pressure-representation/authorizations/STAGE_1_EXECUTE.json",
+    "requiredBeforeScientificGeneration": [
+      "Stage0 canonical technical pass materialized",
+      "Stage1 spec byte/hash frozen",
+      "feature dictionary/schema frozen",
+      "production Stage1 implementation complete",
+      "independent Stage1 verifier complete",
+      "implementation smoke pass using technical-only inputs",
+      "resource preflight pass using technical-only inputs",
+      "exact production/verifier/workflow/source blob map frozen",
+      "source-freeze audit pass",
+      "explicit authorization commit"
+    ]
+  },
+  "failClosed": true,
+  "interpretationBoundary": "Development-only construction of a machine reply-pressure representation for the frozen primary policy-conditioned bounded comeback-lift target. Stage 1 cannot establish human difficulty, game-theoretic value, true Bao win probability, universal practical-comeback taxonomy, or change any upstream decision."
+}

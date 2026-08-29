@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PCRPR-STUDY1",
+  "stageId": "PCRPR-S1-DEVELOPMENT-2026-08-29-v1",
+  "classification": "PREAUTHORIZATION-RESOURCE-PREFLIGHT-TECHNICAL-ONLY",
+  "scientificInferenceAuthorized": false,
+  "scientificOutcomeGenerated": false,
+  "scientificSeedsConsumed": false,
+  "sourceCommit": "c09948b7a56f0ad1f39d7f64f18ff1b3a8a6bd6d",
+  "workflowRunId": 33240989191,
+  "jobId": 99070184941,
+  "artifactId": 9711379605,
+  "artifactZipSha256": "f05b93eba819a4b662bb31c5b3eeac2180281e2a68cf7f902dd647d989a97000",
+  "technicalSeedMenu": "28701001..28701064",
+  "sample": {
+    "games": 64,
+    "maxPly": 100,
+    "selectedRoots": 4,
+    "representationRows": 14,
+    "rowsPerRoot": 3.5,
+    "continuationRows": 2,
+    "continuationReplicatesPerRow": 25,
+    "continuationHorizon": 96
+  },
+  "measured": {
+    "sourceAndRootSelectionMs": 179369.217029,
+    "representationMs": 655.9493680000014,
+    "continuationMs": 6844.782168999984,
+    "maxRssGiB": 0.122802734375
+  },
+  "projected": {
+    "scientificGames": 3072,
+    "selectedRoots": 400,
+    "rows": 1400,
+    "productionJobMinutes": 224.44441454153315,
+    "independentJobMinutes": 258.11107672276313,
+    "parallelWorkflowWallMinutes": 268.11107672276313,
+    "workflowCeilingMinutes": 360
+  },
+  "targetDistributionInspected": false,
+  "passed": true,
+  "interpretationBoundary": "Resource feasibility only. The technical sample is not PCRPR scientific evidence and was not used to estimate Stage 1 target prevalence or scientific effect size."
+}

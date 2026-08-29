@@ -1,0 +1,19 @@
+name: PCRPR Stage 1 Preauthorization Smoke — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-workflow notice
+        run: |
+          echo 'PCRPR-STUDY1 is closed.'
+          echo 'Preauthorization validation is historical only.'
+          echo 'Canonical production smoke run: 33240901637.'
+          echo 'Former executable workflow blob: 488f03b9e54735c17198272fc8aa3b65578a5767.'
+          echo 'No further PCRPR-STUDY1 smoke execution is authorized.'

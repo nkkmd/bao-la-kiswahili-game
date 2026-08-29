@@ -1,0 +1,19 @@
+name: PCRPR Stage 0 Technical — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-workflow notice
+        run: |
+          echo 'PCRPR-STUDY1 is closed.'
+          echo 'Stage 0 final disposition: STAGE0-TECHNICAL-PASS.'
+          echo 'Canonical Stage 0 run: 33238931893.'
+          echo 'Former executable workflow blob: 0a7c83a0c658aba44633d88b7b3b434ebe7b80c3.'
+          echo 'No further PCRPR-STUDY1 technical execution is authorized.'

@@ -1,0 +1,19 @@
+name: PCRPR Stage 1 Development — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-workflow notice
+        run: |
+          echo 'PCRPR-STUDY1 is closed.'
+          echo 'Canonical consume-once run: 33241465899.'
+          echo 'Final Stage 1 disposition: STAGE1-TECHNICAL-INVALID.'
+          echo 'Former executable workflow blob: 70d7aaeb5234634e8460ab66911d9939cbf742f7.'
+          echo 'Seed block 28710001..28713072 is consumed; no rerun, repair, replacement, or extension is authorized.'

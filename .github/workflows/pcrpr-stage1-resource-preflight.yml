@@ -1,0 +1,18 @@
+name: PCRPR Stage 1 Resource Preflight — closed-study archival stub
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Closed-workflow notice
+        run: |
+          echo 'PCRPR-STUDY1 is closed.'
+          echo 'Canonical resource preflight run: 33240989191.'
+          echo 'Former executable workflow blob: d870762f06a86d447ad5b8a000cb7c4a7898faac.'
+          echo 'No further PCRPR-STUDY1 resource preflight is authorized.'

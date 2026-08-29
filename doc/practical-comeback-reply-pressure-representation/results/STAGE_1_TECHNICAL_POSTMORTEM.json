@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "program": "G2-07",
+  "studyId": "PCRPR-STUDY1",
+  "stageId": "PCRPR-S1-DEVELOPMENT-2026-08-29-v1",
+  "recordedDate": "2026-08-29",
+  "classification": "POST-CONSUMPTION-TECHNICAL-POSTMORTEM",
+  "formalDecision": "STAGE1-TECHNICAL-INVALID",
+  "scientificStage1SeedBlockConsumed": true,
+  "incident": {
+    "workflowRunId": 33241465899,
+    "independentReplayJobId": 99071451969,
+    "scientificReplayStepConclusion": "success",
+    "artifactUploadStepConclusion": "failure",
+    "failedComponent": "actions/upload-artifact@v4 CreateArtifact",
+    "attempts": 5,
+    "failureMessage": "Failed to CreateArtifact: Failed to make request after 5 attempts: Request timeout: /twirp/github.actions.results.api.v1.ArtifactService/CreateArtifact",
+    "classification": "EXTERNAL-ARTIFACT-TRANSPORT-FAILURE-AFTER-SUCCESSFUL-INDEPENDENT-COMPUTATION"
+  },
+  "observedBeforeRunnerTeardown": {
+    "generatedGames": 3072,
+    "selectedRoots": 400,
+    "rows": 1429,
+    "reportedDisposition": "STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATION",
+    "selectedFamilySetId": "F05_ALL",
+    "selectedLambda": 100,
+    "independentDevelopmentCoreSha256": "4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2",
+    "independentResultSha256": "db7358d1308481fd4d9645fbffd79a319603ea7debd263bcaa98d2fa9fe35395"
+  },
+  "productionComparisonAvailableFromLogs": {
+    "productionJobId": 99071451933,
+    "productionDevelopmentCoreSha256": "4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2",
+    "developmentCoreStdoutMatch": true,
+    "productionArtifactId": 9714352893,
+    "productionArtifactZipSha256": "36f0fae32f3ca9deec842602b0dbe87e933fd589643820f192c90d379b2f3b5b"
+  },
+  "whyStdoutMatchIsInsufficient": {
+    "fullIndependentArtifactMaterialized": false,
+    "finalVerificationJobId": 99096549383,
+    "finalVerificationConclusion": "skipped",
+    "frozenComparerRequiredChecks": [
+      "sameWorkflowRun",
+      "sourceCorpusExact",
+      "rootSelectionExact",
+      "rowsExact",
+      "measurementsExact",
+      "compactRowsExact",
+      "developmentCoreExact",
+      "modelExact",
+      "finalModelExact",
+      "readinessExact",
+      "productionAndIndependentDispositionMatch",
+      "stage2StillUnauthorized"
+    ],
+    "substituteLogOnlyVerificationAuthorized": false,
+    "postOutcomeVerificationRelaxationAuthorized": false
+  },
+  "failureSemanticsApplied": {
+    "frozenRule": "technical/integrity/independent-verification failure after consumption -> STAGE1-TECHNICAL-INVALID",
+    "sameBlockRerunAuthorized": false,
+    "sameBlockRepairAuthorized": false,
+    "sameBlockReplacementAuthorized": false,
+    "sameBlockExtensionAuthorized": false,
+    "artifactUploadOnlyRerunAuthorized": false,
+    "reason": "The execution addendum prospectively defines gate success as permanent consumption even if independent replay, artifact upload or final comparison later fails."
+  },
+  "scientificInterpretation": {
+    "representationRejected": false,
+    "representationValidated": false,
+    "selectedModelValidated": false,
+    "productionMetricsAcceptedAsScientificEvidence": false,
+    "stage2Authorized": false,
+    "humanClaimsAuthorized": false
+  },
+  "futureTechnicalLesson": "Future prospective studies using consume-once remote workflows should make preservation of mandatory verifier output robust to artifact-service failure, for example through a prospectively designed redundant immutable result channel or smaller independently hashed verification shards. Such hardening may inform a new study but cannot be retrofitted to PCRPR-STUDY1 or used to change its final decision."
+}

@@ -770,7 +770,36 @@ Post-failure read-only postmortemでは4件すべての差分が`MOVE_SET_ENTROP
 - [`rich-critical-position-representation/DECISION_REGISTER.md`](rich-critical-position-representation/DECISION_REGISTER.md)
 - [`rich-critical-position-representation/REPRODUCIBILITY_INDEX.md`](rich-critical-position-representation/REPRODUCIBILITY_INDEX.md)
 
-**Boundary:** Stage 1 seed block `28610001..28613072`は消費済みでsame-block repair/rerun、replacement、extensionは未承認。Stage 1 rowsはStage 2 formal evidenceへ再利用しない。G2-06を結果後に修正して再判定せず、次のindependent agenda itemはG2-07として別prospective contractで扱う。
+**Boundary:** Stage 1 seed block `28610001..28613072`は消費済みでsame-block repair/rerun、replacement、extensionは未承認。Stage 1 rowsはStage 2 formal evidenceへ再利用しない。G2-06を結果後に修正して再判定しない。G2-07は別prospective contractとして完了し、次の未着手機械研究はG2-08である。
+
+---
+
+### 23. Practical Comeback / Reply-Pressure Representation — Study 1
+
+**研究題目:** Baoにおける実戦的逆転可能性とreply pressureの豊かな機械表現の構築・prospective検証 — reply-set width, defense-maintaining reply fraction, reply-quality distribution, punishment concentration, and opponent-policy sensitivity によるpractical comeback structureの再現可能な記述
+**Program:** `G2-07` / **Study ID:** `PCRPR-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+G2-07は、閉鎖済み`PCEM-STUDY1`の55 candidate audits / promoted 0を救済せず、reply-centeredな80-scalar representationでmachine-operational practical comeback structureをfresh evidence上に記述できるかを検討した。Stage 0ではcanonical exact-move/reply ordering、deterministic binary64 arithmetic、exact cross-implementation feature equalityをtechnical validationした。
+
+Fresh Stage 1では3,072 gamesから400 disadvantaged roots（Namua/Mtaji 200/200）、1,429 exact root-move rowsを構築した。Productionとstructurally independent replayは双方で`F05_ALL` / ridge `lambda=100`を選択し、`developmentCoreSha256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2`まで一致した。しかしindependent full result artifactのGitHub Actions `CreateArtifact`が5回timeoutし、prospectively必須だったfull final exact comparerを実行できなかった。したがってfrozen fail-closed ruleに従いStage 1は`STAGE1-TECHNICAL-INVALID`で閉じた。
+
+Production-only performanceはunverified provenanceとして保存するが、accepted Stage 1 evidence、validated representation、formal target、Stage 2 evidenceへ昇格しない。Stage 1 seed block `28710001..28713072`は消費済みで、same-block rerun / repair / replacement / extensionは未承認。Stage 2 seeds `28810001..28816144`は未消費のまま`NOT-AUTHORIZED-NOT-EXECUTED`である。Machine reply pressureはhuman difficulty、deception、error probability、psychological pressureを意味しない。
+
+**最初に読む:**
+
+- [`practical-comeback-reply-pressure-representation/STUDY_1_OVERVIEW.md`](practical-comeback-reply-pressure-representation/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`practical-comeback-reply-pressure-representation/STUDY_1_FINAL_REPORT.md`](practical-comeback-reply-pressure-representation/STUDY_1_FINAL_REPORT.md)
+- [`practical-comeback-reply-pressure-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`](practical-comeback-reply-pressure-representation/results/STAGE_1_DEVELOPMENT_RESULT.json)
+- [`practical-comeback-reply-pressure-representation/results/STAGE_1_TECHNICAL_POSTMORTEM.json`](practical-comeback-reply-pressure-representation/results/STAGE_1_TECHNICAL_POSTMORTEM.json)
+- [`practical-comeback-reply-pressure-representation/CURRENT_STATUS.md`](practical-comeback-reply-pressure-representation/CURRENT_STATUS.md)
+- [`practical-comeback-reply-pressure-representation/DECISION_REGISTER.md`](practical-comeback-reply-pressure-representation/DECISION_REGISTER.md)
+- [`practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md`](practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md)
+
+**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖し、次のindependent agenda itemはG2-08として新規prospective contractで扱う。
 
 ---
 

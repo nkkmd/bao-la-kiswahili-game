@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "PCRPR-STUDY1",
+  "stageId": "PCRPR-S1-DEVELOPMENT-2026-08-29-v1",
+  "classification": "PREAUTHORIZATION-TECHNICAL-SMOKE-ONLY",
+  "scientificInferenceAuthorized": false,
+  "scientificOutcomeGenerated": false,
+  "scientificSeedsConsumed": false,
+  "canonicalSuccessfulAttempt": {
+    "sourceCommit": "f32ecfdac688abb834c4f7a727f263977c6d07e9",
+    "workflowRunId": 33240901637,
+    "jobId": 99069956735,
+    "artifactId": 9711354709,
+    "artifactZipSha256": "6d9e79c9d4a7c98f0d6255addb73576bd4755134d34c6d1137d496b0abc8a599"
+  },
+  "priorTechnicalAttempts": [
+    {"workflowRunId": 33239399107, "disposition": "FAILED-BEFORE-TECHNICAL-GAME-GENERATION", "reason": "MODEL-SOURCE-SYNTAX-ERROR"},
+    {"workflowRunId": 33239459359, "disposition": "FAILED-TECHNICAL-SMOKE", "reason": "SMALL-SYNTHETIC-SAMPLE-PHASE-COVERAGE-DEFECT-CAUSED-EMPTY-PHASE-SPEARMAN"}
+  ],
+  "technicalSeedMenu": "28701001..28701064",
+  "generatedGames": 64,
+  "selectedTechnicalRoots": 2,
+  "representationRows": 4,
+  "scalarFeaturesPerRow": 80,
+  "reducedContinuation": {"strongReplicates": 1, "mediumReplicates": 2, "weakReplicates": 2, "horizon": 16},
+  "modelSmokeRows": 20,
+  "modelCandidateGrid": 20,
+  "syntheticPhaseCounts": {"namua": 10, "mtaji": 10},
+  "syntheticFoldCounts": {"0": 1, "1": 8, "2": 3, "3": 3, "4": 5},
+  "passed": true,
+  "interpretationBoundary": "Technical implementation validation only. Synthetic model metrics are not scientific PCRPR evidence and may not be used to characterize practical-comeback prevalence or representation performance."
+}
