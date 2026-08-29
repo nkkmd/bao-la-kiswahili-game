@@ -7,7 +7,7 @@ Date: 2026-08-29
 ```text
 remote main at study-start / pre-merge baseline = e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5
 research branch closure audit = COMPLETE
-main integration = PENDING PR MERGE
+main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
 Remote `main` remained at the study-start baseline throughout scientific execution and research-branch closure. Central integration preparation was performed only on `research/g2-07-practical-comeback-reply-pressure-representation` before merge.
@@ -79,6 +79,6 @@ The materialization workflow verified these expected anchors before committing t
 ```text
 PCRPR-STUDY1 research-branch closure = COMPLETE
 central document synchronization = COMPLETE
-main integration = READY AFTER TEMPORARY MATERIALIZER CLEANUP AND PR AUDIT
+main integration = COMPLETE
 next scientific execution in PCRPR-STUDY1 = NOT AUTHORIZED
 ```

@@ -17,8 +17,8 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
-Study = CLOSED ON RESEARCH BRANCH
-main integration = NOT PERFORMED
+Study = CLOSED / MAIN INTEGRATED
+main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
 ## Read order
@@ -70,4 +70,4 @@ G2-08開始時はremote `main`を改めて取得し、新しいStudy/Stage ident
 
 ## Integration boundary
 
-現在のG2-07 closureはresearch branch上のみ。mainへの統合は明示的な指示があるまで行わない。
+G2-07 closureはPR #77でmainへ統合済み。merge commitは`57f7cf2d58f0543082434cb4c3259e26e90fe02e`。PCRPR-STUDY1を再開せず、次の研究はfresh main auditから開始する。

@@ -88,3 +88,11 @@
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`、`results/STAGE_1_TECHNICAL_POSTMORTEM.json`、`STUDY_1_FINAL_REPORT.md`をmaterialize。
 - PCRPR-STUDY1をresearch branch上でclosedとした。
 - main integrationは実施しない。
+
+## 2026-08-29 — Main integration closure
+
+- Final pre-main audit found three shared-document omissions and corrected root README, RESEARCH_INDEX, and FUTURE_RESEARCH_AGENDA with an anchor-validated one-shot materializer.
+- Temporary materialization tooling was removed before merge.
+- PR #77 merged the closed PCRPR-STUDY1 branch into main.
+- Merge commit: `57f7cf2d58f0543082434cb4c3259e26e90fe02e`.
+- Post-merge updates are documentation/provenance only; Stage 1 remains `STAGE1-TECHNICAL-INVALID`, Stage 1 seeds remain consumed, Stage 2 remains `NOT-AUTHORIZED-NOT-EXECUTED`, and no scientific decision was changed.

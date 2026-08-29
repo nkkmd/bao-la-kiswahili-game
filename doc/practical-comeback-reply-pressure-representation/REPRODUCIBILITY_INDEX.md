@@ -163,5 +163,7 @@ Artifact transportを改善した再研究は、別Study identity・fresh seeds�
 ## main integration
 
 ```text
-main integration = NOT PERFORMED
+main integration = COMPLETE
+merge PR = #77
+merge commit = 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```

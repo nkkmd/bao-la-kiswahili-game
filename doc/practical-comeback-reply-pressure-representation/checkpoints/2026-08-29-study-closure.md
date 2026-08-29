@@ -15,8 +15,8 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 28810001..28816144 = RESERVED / UNCONSUMED
-Study = CLOSED ON RESEARCH BRANCH
-main integration = PENDING FINAL PR MERGE
+Study = CLOSED / MAIN INTEGRATED
+main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
 ## Terminal incident

@@ -334,10 +334,12 @@ G2-08を開始する場合は、新しいチャットまたは新しい研究開
 
 ## main統合状態
 
-本報告作成時点では、G2-07 closureはresearch branch上にのみ存在する。
+G2-07 closureは最終整合性監査後、PR #77でmainへ統合された。
 
 ```text
-main integration = NOT PERFORMED
+main integration = COMPLETE
+merge PR = #77
+merge commit = 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
-mainへの統合は別途明示的な判断を待つ。
+このpost-merge記録はintegration provenanceのみを更新し、Stage 1 / Stage 2のscientific decisionを変更しない。
