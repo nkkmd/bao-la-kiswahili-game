@@ -6,7 +6,7 @@ Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
 ## Status
 
-**STUDY CLOSED AT STAGE 1 / STAGE 0 TECHNICAL PASS / STAGE 1 TECHNICAL INVALID / FRESH STAGE 1 BLOCK CONSUMED / NO SAME-BLOCK RERUN / STAGE 2 NOT-AUTHORIZED-NOT-EXECUTED**
+**STUDY CLOSED AT STAGE 1 / MAIN INTEGRATION COMPLETE / STAGE 0 TECHNICAL PASS / STAGE 1 TECHNICAL INVALID / FRESH STAGE 1 BLOCK CONSUMED / NO SAME-BLOCK RERUN / STAGE 2 NOT-AUTHORIZED-NOT-EXECUTED**
 
 ```text
 RCPR-S0-TECHNICAL-2026-08-28-v1 = COMPLETE / STAGE0-TECHNICAL-PASS
@@ -18,17 +18,32 @@ RCPR-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 
 ```text
 baseline remote main = 37480777246aa306c6ca3d0679d936b5e0107071
-research branch = research/g2-06-rich-critical-position-representation
 scientific source commit = a69ffce86cb278680ee676a2a9469aeb1d9ab1d4
 source-freeze checkpoint commit = 4366e439c2838dd7f2f388e834ecc93aed7efcb6
 authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
 Stage 1 workflow run = 33196954082 / completed / failure
 production job = 98936414477 / success
 independent verification job = 99007180273 / failure
-G2-06 pull request = none
+final research head = 374d25d2f09ba661aaa8ae8e2e0a06eb03536786
+integration PR = #73 / merged
+merge method = merge
+main integration commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
+integrated branch = main
 ```
 
-Remote `main` was rechecked after the workflow failure and remained exactly `37480777246aa306c6ca3d0679d936b5e0107071`.
+The original baseline `main` remained unchanged throughout scientific execution. PR #73 was merged only after final documentation/source-scope audit, all five PR CI workflows passed, the PR was mergeable, and no unresolved review thread existed.
+
+Canonical final PR CI:
+
+```text
+Second-generation research agenda audit = success / run 33235980651
+DRSSE Study 1 Closure CI = success / run 33235980612
+PCEM closure consistency audit = success / run 33235980641
+SSGTC closure consistency audit = success / run 33235980551
+Phase Transition Research CI = success / run 33235980568
+```
+
+Main-integration provenance is retained in `checkpoints/2026-08-29-main-integration.md`.
 
 ## Stage 1 consume-once state
 
@@ -129,6 +144,12 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 All Research Generation 1 and G2-01..G2-05 formal decisions remain immutable. Historical Critical Positions evidence remains excluded from G2-06 training, tuning, threshold selection, validation, and formal evidence.
 
+## Post-closure workflow state
+
+All RCPR technical/development/materialization workflows were converted to closed-study archival stubs before PR #73. They may be manually invoked only to display provenance notices and do not execute scientific or materialization code.
+
+- `checkpoints/2026-08-29-post-closure-workflow-archive.md`
+
 ## Program continuation
 
 `RCPR-STUDY1` itself has no further scientific stage transition. Do not rerun or repair Stage 1 and do not authorize Stage 2.
@@ -140,6 +161,6 @@ G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
 priority = P1
 ```
 
-G2-07 must begin with a fresh repository-state audit and its own prospective Study ID, Stage IDs, scientific contract, source freeze, seed allocation, and explicit authorization. It must not consume `RCPR-STUDY1` rows as formal evidence.
+G2-07 must begin from the integrated `main` state with a fresh repository-state audit and its own prospective Study ID, Stage IDs, scientific contract, source freeze, seed allocation, and explicit authorization. It must not consume `RCPR-STUDY1` rows as formal evidence.
 
 A future independent study may revisit rich critical-position representation after deterministic entropy/numeric-hash hardening, but it must have a distinct independent title/identity rather than reopening this closed Study as a generic “Study 2” retry.

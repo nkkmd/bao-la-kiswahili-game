@@ -6,11 +6,10 @@ Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
 ## 1. Authoritative restart point
 
-`RCPR-STUDY1` is closed at Stage 1.
+`RCPR-STUDY1` is closed at Stage 1 and integrated into `main`.
 
 ```text
-baseline remote main = 37480777246aa306c6ca3d0679d936b5e0107071
-research branch = research/g2-06-rich-critical-position-representation
+baseline main before Study = 37480777246aa306c6ca3d0679d936b5e0107071
 scientific source commit = a69ffce86cb278680ee676a2a9469aeb1d9ab1d4
 authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
 Stage 1 workflow run = 33196954082 / completed / failure
@@ -18,27 +17,31 @@ Stage 1 decision = STAGE1-TECHNICAL-INVALID
 Stage 1 seed block = CONSUMED
 same-block rerun = NOT AUTHORIZED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+final research head = 374d25d2f09ba661aaa8ae8e2e0a06eb03536786
+integration PR = #73 / merged
+main integration commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
 ```
 
-Do not dispatch, rerun, replace, extend, or reinterpret the consumed Stage 1 execution.
+Do not dispatch, rerun, replace, extend, or reinterpret the consumed Stage 1 execution. All RCPR workflows in integrated `main` are closed-study archival stubs.
 
 ## 2. Read order
 
 Read in this order:
 
-1. `CURRENT_STATUS.md`
-2. `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
-3. `results/STAGE_1_DEVELOPMENT_RESULT.json`
-4. `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
-5. `../../research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
-6. `authorizations/STAGE_1_EXECUTE.json`
-7. `preregistration/STAGE_1_EXECUTION_ADDENDUM.json`
-8. `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
-9. `DECISION_REGISTER.md`
-10. `REPRODUCIBILITY_INDEX.md`
-11. `RESEARCH_LOG.md`
-12. `STUDY_1_PROTOCOL.md`
-13. `preregistration/STUDY_START_FREEZE.md`
+1. `README.md`
+2. `STUDY_1_OVERVIEW.md`
+3. `STUDY_1_FINAL_REPORT.md`
+4. `CURRENT_STATUS.md`
+5. `checkpoints/2026-08-29-main-integration.md`
+6. `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
+7. `results/STAGE_1_DEVELOPMENT_RESULT.json`
+8. `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
+9. `../../research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
+10. `DECISION_REGISTER.md`
+11. `REPRODUCIBILITY_INDEX.md`
+12. `RESEARCH_LOG.md`
+13. `STUDY_1_PROTOCOL.md`
+14. `preregistration/STUDY_START_FREEZE.md`
 
 ## 3. Terminal Stage 1 evidence
 
@@ -70,7 +73,7 @@ independent: object integer-key enumeration order
 maximum observed absolute difference: 4.440892098500626e-16
 ```
 
-RAW states, continuation measurements, `D_range`, high-divergence labels, model development and readiness recomputation otherwise matched. This is a technical verifier/representation determinism defect, but the frozen exact-equality gate means the Stage 1 decision remains `STAGE1-TECHNICAL-INVALID`.
+RAW states, continuation measurements, `D_range`, high-divergence labels, model development and readiness recomputation otherwise matched. This is a technical representation-determinism failure, but the frozen exact-equality gate means the Stage 1 decision remains `STAGE1-TECHNICAL-INVALID`.
 
 ## 5. Immutable no-rescue boundary
 
@@ -84,11 +87,31 @@ Do not:
 - reuse Stage 1 development rows as formal evidence;
 - modify prior G2-01..G2-05 or Research Generation 1 decisions.
 
-## 6. Immediate program continuation
+## 6. Main integration
+
+PR #73 was merged only after the final branch audit, `mergeable=true`, no unresolved review threads, and all five PR workflows passed on head `374d25d2f09ba661aaa8ae8e2e0a06eb03536786`:
+
+```text
+Second-generation research agenda audit = 33235980651 / success
+DRSSE Study 1 Closure CI = 33235980612 / success
+PCEM closure consistency audit = 33235980641 / success
+SSGTC closure consistency audit = 33235980551 / success
+Phase Transition Research CI = 33235980568 / success
+```
+
+Merge semantics:
+
+```text
+PR = #73
+merge method = merge
+merge commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
+```
+
+## 7. Immediate program continuation
 
 There is no further scientific execution inside `RCPR-STUDY1`.
 
-The Research Generation 2 program decision avoids reopening closed studies as generic “Study 2” retries. The immediate next agenda item is:
+The immediate next agenda item is:
 
 ```text
 G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
@@ -96,9 +119,9 @@ priority = P1
 status = planned / new prospective independent study
 ```
 
-Before G2-07 outcome generation, start from a fresh repository-state audit and prospectively freeze its formal Study ID, title, Stage IDs, endpoints, representation, source semantics, seed blocks, technical controls and authorization barrier. `RCPR-STUDY1` rows must not become G2-07 formal evidence unless the G2-07 prospective design independently declares an allowed historical method-only reference boundary before any outcome generation.
+Before G2-07 outcome generation, reacquire the current remote `main` HEAD and prospectively freeze its formal Study ID, title, Stage IDs, endpoints, representation, source semantics, seed blocks, technical controls and authorization barrier. `RCPR-STUDY1` rows must not become G2-07 formal evidence.
 
-## 7. Future rich-representation replication boundary
+## 8. Future rich-representation replication boundary
 
 A future independent study may revisit deterministic rich critical-position representation only after technical hardening:
 
@@ -110,4 +133,4 @@ A future independent study may revisit deterministic rich critical-position repr
 
 Such work must receive a distinct independent title/identity and must not be named or treated as a reopening/rescue of `RCPR-STUDY1`.
 
-The correct restart instruction is: **treat G2-06 / RCPR-STUDY1 as closed `STAGE1-TECHNICAL-INVALID`; do not rerun it; synchronize program closure as needed; then begin G2-07 only under a fresh prospective contract.**
+The correct restart instruction is: **treat G2-06 / RCPR-STUDY1 as closed `STAGE1-TECHNICAL-INVALID` and integrated into main; do not rerun it; begin G2-07 only under a fresh prospective contract from the then-current main.**
