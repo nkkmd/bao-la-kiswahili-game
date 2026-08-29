@@ -242,6 +242,7 @@ function continuePolicy(row, role, replicateIndex, spec, options={}){
 }
 function measureRow(row,spec,options={}){
   const reps=options.replicates || {STRONG:1,MEDIUM:16,WEAK:8};
+  ensure(reps.STRONG === 1, "strong policy must have one deterministic replicate");
   const outcomes={};
   for(const role of ["STRONG","MEDIUM","WEAK"]){outcomes[role]=[];for(let r=0;r<reps[role];r+=1)outcomes[role].push(continuePolicy(row,role,r,spec,options));}
   const strongWin=outcomes.STRONG[0].boundedWin,mediumWinRate=mean(outcomes.MEDIUM.map((x)=>x.boundedWin)),weakWinRate=mean(outcomes.WEAK.map((x)=>x.boundedWin));
@@ -249,5 +250,9 @@ function measureRow(row,spec,options={}){
 }
 function measureRows(rows,spec,options={}){return rows.map((row)=>measureRow(row,spec,options));}
 
-function vectorFeatureMap(row){const map=new Map();for(const cell of row.representation.vector.rows)map.set(`${cell.family}.${cell.name}`,cell.value);return map;}
-function activeFeatureNames(rows,families){ensure(rows.length>0,"no rows");const allowed=new Set(families);return rows[0].representation.vector.rows.filter((r)=>allowed.has(r.family)).map((r)=>`${r.family}.${r.name`);}
+module.exports={
+  canonicalHash, clone, cmp, conditionForGame, continuationSeed, continuePolicy,
+  generateCorpus, historyHash, makeRows, mean, measureRow, measureRows, openingHash,
+  phaseForSeed, populationSd, quotaRank, representativeRecords, rootRank, rowIdentity,
+  runGame, selectRoots, sha256, trajectoryHash,
+};
