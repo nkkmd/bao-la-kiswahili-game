@@ -279,7 +279,7 @@ function crossValidate(rows, spec) {
         pooledOofRmse:rmse(actual,predictions),
         pooledOofSpearman:spearman(rows,predictions),
         predictions,
-        predictionHash:Core.canonicalHash(rows.map((row,index)=>({rowIdentity:row.rowIdentity,prediction, value:predictions[index], f64be:P0.f64be(predictions[index])}))),
+        predictionHash:Core.canonicalHash(rows.map((row,index)=>({rowIdentity:row.rowIdentity,prediction:predictions[index],f64be:P0.f64be(predictions[index])}))),
       });
     }
   }
@@ -292,10 +292,9 @@ function crossValidate(rows, spec) {
   const selected = candidates[0];
   const baseline = rows.map((row) => baselinePredictions.get(row.rowIdentity));
   const baselineRmse = rmse(rows.map((row)=>row.primaryLift), baseline);
-  const selectedRows = selected.predictions;
   const namuaRows = rows.filter((row)=>row.phase==="namua");
   const mtajiRows = rows.filter((row)=>row.phase==="mtaji");
-  const predMap = new Map(rows.map((row,index)=>[row.rowIdentity,selectedRows[index]]));
+  const predMap = new Map(rows.map((row,index)=>[row.rowIdentity,selected.predictions[index]]));
   const namuaPred = namuaRows.map((row)=>predMap.get(row.rowIdentity));
   const mtajiPred = mtajiRows.map((row)=>predMap.get(row.rowIdentity));
   return {
@@ -315,7 +314,7 @@ function crossValidate(rows, spec) {
     selectedNamuaOofSpearman:spearman(namuaRows,namuaPred),
     selectedMtajiOofSpearman:spearman(mtajiRows,mtajiPred),
     baselineOofRmse:baselineRmse,
-    relativeRmseImprovement:1-(selected.pooledOofRmse/baselineRmse),
+    relativeRmseImprovement:baselineRmse===0?0:1-(selected.pooledOofRmse/baselineRmse),
     topScoreQuintile:topQuintileEnrichment(rows,selected.predictions),
     selectedOofPredictions:rows.map((row,index)=>({rowIdentity:row.rowIdentity,prediction:selected.predictions[index],f64be:P0.f64be(selected.predictions[index])})),
   };
@@ -417,7 +416,7 @@ function develop(rows, measurements, selection, spec) {
     model,
     performance,
     finalModel:serializedFinalModel,
-    finalPredictionHash:Core.canonicalHash(prepared.map((row,index)=>({rowIdentity:row.rowIdentity,prediction:finalPredictions[index],f64be:P0.f64be(finalPredictions[index])})),
+    finalPredictionHash:Core.canonicalHash(prepared.map((row,index)=>({rowIdentity:row.rowIdentity,prediction:finalPredictions[index],f64be:P0.f64be(finalPredictions[index])}))),
     productionDisposition,
   };
   return { ...developmentCore, developmentCoreSha256:Core.canonicalHash(developmentCore) };
