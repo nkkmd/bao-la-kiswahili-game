@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "program": "G2-08",
+  "studyId": "MDFT-STUDY1",
+  "stageId": "MDFT-S1-DEVELOPMENT-2026-08-29-v1",
+  "freezeDateJst": "2026-08-30",
+  "sourceFreezeBaseCommit": "6a56b5ab0592704b5b78d68aa573ac63b2ef92d2",
+  "specSha256": "85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203",
+  "specGitBlobSha": "211430f8241e6100c74046a24206527e4501b21c",
+  "canonicalTechnicalPreflight": {
+    "runId": 33258188633,
+    "headSha": "652af9a82c81f1a886436e422b16ac8ce99e151f",
+    "artifactId": 9716460551,
+    "artifactDigestSha256": "b78428700889f24073c4cd0ada6c599dc34096fdd05d4e7139de3f07681cb2a9",
+    "allGatesPass": true,
+    "targetDistributionReported": false,
+    "productionProjectedScientificMs": 719257.2435359999,
+    "independentProjectedScientificMs": 666893.623536,
+    "maxRssKb": 101988,
+    "projectedBothSidesGzipBytes": 1441216,
+    "transferProbeBytes": 8388608
+  },
+  "scientificRunnerReadiness": {
+    "runId": 33277031634,
+    "headSha": "0c33b85325aca8065c79ee4b2e80de9d5322c490",
+    "conclusion": "success",
+    "scientificExecutionPerformed": false
+  },
+  "workflowTimeoutMinutes": 120,
+  "sourceBlobs": [
+    {"path":"doc/machine-decision-failure-taxonomy/preregistration/STAGE_1_DEVELOPMENT_SPEC.json","gitBlobSha":"211430f8241e6100c74046a24206527e4501b21c"},
+    {"path":"tools/experiments/run-mdft-stage1-development.js","gitBlobSha":"6fc479f1b37480a99f467eaa01e34c7fb6fd07a1"},
+    {"path":"tools/experiments/lib/mdft-stage1-production.js","gitBlobSha":"91d311c73121fba2fbf6b12130268eb7a1d0e2ef"},
+    {"path":"tools/experiments/lib/mdft-stage1-independent.js","gitBlobSha":"53cbd31ab9407b3de92b32187e8142cee9b0e02b"},
+    {"path":"tools/experiments/lib/mdft-stage0-production.js","gitBlobSha":"191ca3901e24a791651b2fa333c472e46b35b713"},
+    {"path":"tools/experiments/lib/mdft-stage0-independent.js","gitBlobSha":"5f33ba2614ee6b0ef2ce65f6e24f227123b5e3ce"},
+    {"path":"tools/experiments/lib/search-reliability-decision-robustness.js","gitBlobSha":"f3a6951fe711db62e164910cfb248a9cbc2cac1a"},
+    {"path":"public/engine.js","gitBlobSha":"2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"},
+    {"path":"public/ai.js","gitBlobSha":"8d472be415fac17e47a8e5e667cea9672e7a9ef5"},
+    {"path":"public/ai-weights.js","gitBlobSha":"98969eb4c8e1403beedcf5c139a07166aa78175c"},
+    {"path":"tools/benchmark.js","gitBlobSha":"88a2543157eacf15693b30c589b0fbcc616223a6"},
+    {"path":".github/workflows/mdft-stage1-development.yml","gitBlobSha":"f7870980253952472f188235e0a8eac576019fbd"}
+  ],
+  "scientificSeedBlockStatus": "RESERVED_UNCONSUMED",
+  "scientificExecutionAuthorized": false
+}
