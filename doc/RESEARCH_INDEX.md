@@ -799,7 +799,7 @@ Production-only performanceはunverified provenanceとして保存するが、ac
 - [`practical-comeback-reply-pressure-representation/DECISION_REGISTER.md`](practical-comeback-reply-pressure-representation/DECISION_REGISTER.md)
 - [`practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md`](practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md)
 
-**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖し、次のindependent agenda itemはG2-08として新規prospective contractで扱う。
+**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖する。G2-08も独立prospective studyとして完了済みであり、次の未着手機械研究はG2-09である。
 
 ---
 
