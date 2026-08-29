@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.0.1",
   "program": "G2-08",
   "studyId": "MDFT-STUDY1",
   "stageId": "MDFT-S0-TECHNICAL-2026-08-29-v1",
@@ -58,9 +58,32 @@
     "artifact-sharding-transfer-preflight"
   ],
   "technicalEligibilityGates": {
-    "MDFT-F05": "search-consistent canonical line tracer exact verification",
-    "MDFT-F09": "historically frozen morphology classifier exact reconstruction without refit",
-    "MDFT-F10": "bounded long-horizon diagnostic resource feasibility"
+    "MDFT-F05": {
+      "requirement": "search-consistent canonical line tracer exact verification",
+      "currentStatus": "TECHNICALLY_ELIGIBLE_ON_STAGE0_FIXTURES"
+    },
+    "MDFT-F09": {
+      "requirement": "historically frozen morphology classifier exact reconstruction without refit",
+      "currentStatus": "TECHNICALLY_INELIGIBLE",
+      "reason": "FROZEN_HISTORICAL_CLASSIFIER_NOT_EXACTLY_RECONSTRUCTIBLE_FROM_CURRENT_PRESERVED_REPOSITORY_SOURCES",
+      "replacementAuthorized": false,
+      "refitAuthorized": false
+    },
+    "MDFT-F10": {
+      "requirement": "bounded long-horizon diagnostic resource feasibility",
+      "currentStatus": "PENDING_TECHNICAL_PREFLIGHT",
+      "technicalProbe": {
+        "fixtureMinimum": 3,
+        "mustIncludePhases": ["namua", "mtaji"],
+        "continuationPlies": 6,
+        "productionIndependentExactTraceRequired": true,
+        "wallClockCeilingMs": 120000,
+        "maxRssCeilingKb": 524288,
+        "gzipArtifactCeilingBytes": 5242880,
+        "scientificOutcomeUseAllowed": false,
+        "terminalOrGameOutcomeAsAssignmentTargetAllowed": false
+      }
+    }
   },
   "serializationContract": {
     "undefinedAllowed": false,
