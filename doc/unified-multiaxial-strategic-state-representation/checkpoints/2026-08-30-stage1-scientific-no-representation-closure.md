@@ -1,6 +1,6 @@
 # UMSSR-STUDY1 — Stage 1 scientific closure
 
-日付: 2026-08-30  
+日付: 2026-08-30
 状態: **IMMUTABLE CLOSURE RECORD**
 
 ## 結論

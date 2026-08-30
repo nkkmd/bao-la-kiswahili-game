@@ -1,12 +1,12 @@
 # G2-10 / UMSSR-STUDY1 — 最終報告
 
-更新日: 2026-08-30  
+更新日: 2026-08-30
 正式判断: **`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`**
 
 ## 1. 研究
 
-**Study ID:** `UMSSR-STUDY1`  
-**Program:** Research Generation 2 `G2-10`  
+**Study ID:** `UMSSR-STUDY1`
+**Program:** Research Generation 2 `G2-10`
 **正式英語題目:** Unified Multiaxial Strategic State Representation Study 1
 
 日本語研究題目:
