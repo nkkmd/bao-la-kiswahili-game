@@ -176,3 +176,16 @@ The verifier independently reproduced corpus generation, root selection, continu
 Accordingly `RCPR-STUDY1` is closed as `STAGE1-TECHNICAL-INVALID`. Stage 2 was not authorized or executed. Research Generation 1 Critical Positions results, G2-01..G2-05 decisions, thresholds, endpoints, populations, and representation boundaries remain unchanged.
 
 The program does not reopen G2-06 as a result-driven "Study 2" rescue. The next uncompleted machine-only agenda item is `G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`, which requires a separate prospective contract and fresh evidence.
+
+
+## 2026-08-30 — Pre-G2-11 strategic representation prerequisite selection
+
+`G2-10 / UMSSR-STUDY1`はprospectively fixed Stage 1 development contractを正常に完遂したが、`K=2..6`の全candidateがfrozen promotion criteriaを満たさず、`selectedRepresentation = null`で閉じた。Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`であり、G2-11 candidate inputは未承認である。
+
+Program sequencingとして、G2-11を直接開始せず、その前に**new prospective independent strategic-representation prerequisite Study**を置くことを選択した。これはG2-10のthreshold relaxation、K range変更、feature/axis replacement、favorable subgroup、same-block rerun等による救済ではない。
+
+このprerequisite Studyは新しい`G2-xx` sequence labelを追加しない。`G2-01..G2-12`のprogram shapeは維持する。正式Study ID、最終題目、Stage IDs、population、representation family、eligibility thresholds、decision taxonomy、seed blocks、authorization protocolは次Study開始時にcurrent remote `main`とrepository naming rulesを監査したうえでprospectively固定する。
+
+G2-11のlong-horizon transition outcomeはprerequisite Studyのrepresentation選択に利用してはならない。Prerequisite Studyが自身のfrozen eligibility gateをPASSした場合にのみ、得られたfrozen representationをG2-11 candidate inputとして別途評価できる。
+
+Selection record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`.

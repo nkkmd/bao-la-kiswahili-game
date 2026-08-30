@@ -893,6 +893,10 @@ Stage 2はfrozen representationを検証する契約だったため、authorizat
 
 ## 将来研究
 
+**現在選択済みの次研究方向:** Pre-G2-11 strategic representation prerequisite
+
+`G2-10 / UMSSR-STUDY1`はeligible frozen representationを生成せず閉じたため、`G2-11`を直接開始しない。次はG2-10を救済・再定義しない**新しいprospective independent strategic-representation prerequisite Study**を実施し、G2-11へ入力可能なrepresentation eligibilityをfresh evidenceで検証する。正式Study ID・最終題目・Stage構成は研究開始時にcurrent remote `main`を再監査して固定する。詳細は[`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md)を参照。
+
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
 
 - [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)
