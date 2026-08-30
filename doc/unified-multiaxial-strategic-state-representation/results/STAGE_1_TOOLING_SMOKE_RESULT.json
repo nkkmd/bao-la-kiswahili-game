@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "UMSSR_STAGE1_TOOLING_SMOKE_RESULT_V1",
+  "studyId": "UMSSR-STUDY1",
+  "stageId": "UMSSR-S1-DEVELOPMENT-2026-08-30-v1",
+  "sourceCommit": "622dfc79aee5915f520c75a23e4123caa74ea865",
+  "technicalOnly": true,
+  "scientificInferenceAuthorized": false,
+  "scientificSeedsConsumed": false,
+  "technicalSeedRange": [29300001,29300064],
+  "games": 64,
+  "selectedRoots": 8,
+  "featureWidth": 40,
+  "activeFeatureCount": 36,
+  "sourceExact": true,
+  "selectionExact": true,
+  "featureExact": true,
+  "scalerExact": true,
+  "candidateExact": true,
+  "representationExact": true,
+  "readinessExact": true,
+  "fullExact": true,
+  "candidateK": [{"k":2,"eligible":false,"emptyCluster":false,"metricHex":{"minSupport":"3fd8000000000000","meanSilhouette":"3fc2b1eaac2800dd","fiveFoldAssignmentStability":"3fe4000000000000"}}],
+  "runtime": {
+    "productionMs": 9457.786764999999,
+    "independentMs": 8274.361248,
+    "productionProjectedScientificMs": 907947.52944,
+    "independentProjectedScientificMs": 794338.6798079999,
+    "productionWithinCeiling": true,
+    "independentWithinCeiling": true,
+    "maxRssKb": 101624
+  },
+  "bindings": {
+    "stage1SpecSha256": "0cc1debb44767357c7a26b14e8d48fa843fb197ec55e1dd36838a2a572b80b8d",
+    "featureDictionarySha256": "f23428d9f5c1d02e1176d773bc02e098b002cbfeb5e2652ecf0e107d62e2d61f",
+    "stage2ValidationContractSha256": "3f76a4ea54dabe5ac1a020fd7fc7b5a637d611f341c47a25fe73c6199aad3658",
+    "smokeSpecSha256": "7597e5d7c0880f3f588b27f82fcb51a879abd7183e73e0abfde086d8e66a2b7d"
+  },
+  "workflow": {
+    "runId": 33296341604,
+    "jobId": 99216540208,
+    "artifactId": 9727521248,
+    "artifactZipSha256": "39120244bb238aee19e5181104c33d7551c5b4b6eb0b11156011efe6085febef",
+    "artifactResultFileSha256": "1aa049ad47f307e243b8f85aae4cdf6a2fa4ecfc4ab6da3bc88e045d4e82944c",
+    "artifactExactComparisonFileSha256": "7ed78bb4a975353fdadb0d9cae52de5ec8232f97d0318ad7f55bf11560613b32"
+  },
+  "interpretationBoundary": {
+    "candidateKMetricsAreScientificEvidence": false,
+    "activeFeatureCountIsScientificPopulationEvidence": false,
+    "representationEligibilityInferenceAuthorized": false,
+    "resourceProjectionUse": "ENGINEERING-PREFLIGHT-ONLY"
+  },
+  "disposition": "STAGE1-TOOLING-SMOKE-PASS",
+  "resultSha256": "6d44be06b2c000b82b49f46f08bc616242357eac328cc2446bd5ca7bc11bfa24"
+}
