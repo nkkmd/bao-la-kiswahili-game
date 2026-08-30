@@ -1,0 +1,32 @@
+name: G2-09 Japanese Documentation Quality
+
+on:
+  push:
+    branches:
+      - research/g2-09-tactical-motif-generalization-counterexample
+    paths:
+      - 'doc/tactical-motif-generalization-counterexample/**.md'
+      - 'doc/research-program-decisions/2026-08-30-g2-09-tactical-motif-generalization-counterexample-closure.md'
+      - 'tools/experiments/audit-g2-09-japanese-docs.py'
+      - '.github/workflows/g2-09-japanese-doc-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit G2-09 human-facing Japanese documentation
+        run: |
+          set -o pipefail
+          python3 tools/experiments/audit-g2-09-japanese-docs.py | tee g2-09-japanese-doc-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g2-09-japanese-doc-audit-${{ github.sha }}
+          path: g2-09-japanese-doc-audit.json
+          if-no-files-found: error
+          retention-days: 30
