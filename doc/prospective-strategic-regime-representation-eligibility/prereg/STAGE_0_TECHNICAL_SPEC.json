@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "PSRRE_STAGE0_TECHNICAL_SPEC_V1",
+  "researchGeneration": "Research Generation 2",
+  "agendaLabel": null,
+  "studyId": "PSRRE-STUDY1",
+  "stageId": "PSRRE-S0-TECHNICAL-2026-08-30-v1",
+  "stageType": "TECHNICAL_ONLY",
+  "baselineRemoteMain": "3cad9527264c2ee7dfe49ec2258ab0d9d792ca9a",
+  "scientificInferenceAuthorized": false,
+  "scientificSeedUseAllowed": false,
+  "scientificOutcomeInspectionAuthorized": false,
+  "g2_11OutcomeInspectionAuthorized": false,
+  "technicalExecutionAuthorized": false,
+  "technicalSeedPolicy": {
+    "reservedRange": [29500001, 29500064],
+    "fixtureOnlyExecutionPreferred": true,
+    "forbiddenScientificRanges": [
+      [29510001, 29514096],
+      [29610001, 29618192],
+      [29310001, 29314096],
+      [29410001, 29418192]
+    ]
+  },
+  "rawIdentity": {
+    "includedFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "validatedTransformSet": [],
+    "canonicalizationAuthorized": false,
+    "symmetryReductionAuthorized": false
+  },
+  "candidateObservableFamilies": [
+    "RAW-STRUCTURAL",
+    "LEGAL-ACTION-STRUCTURE",
+    "ONE-PLY-SUCCESSOR-STRUCTURE",
+    "SEARCH-RELIABILITY-RAW",
+    "REPLY-PRESSURE-RAW",
+    "TACTICAL-C03-ORIGINAL-SCOPE-ONLY"
+  ],
+  "candidateRepresentationFamilies": {
+    "RF-A-ROBUST-PCA-WARD": {
+      "latentProjection": "DETERMINISTIC-PCA",
+      "partition": "WARD-HIERARCHICAL",
+      "heldOutAssignment": "FROZEN-REPRESENTATIVE-OR-CENTROID-RULE",
+      "stage0ScientificFitInspectionAuthorized": false
+    },
+    "RF-B-ROBUST-PCA-PAM": {
+      "latentProjection": "DETERMINISTIC-PCA",
+      "partition": "DETERMINISTIC-PAM-KMEDOIDS",
+      "heldOutAssignment": "FROZEN-NEAREST-MEDOID",
+      "stage0ScientificFitInspectionAuthorized": false
+    },
+    "RF-C-DIRECT-ROBUST-PAM": {
+      "latentProjection": "NONE",
+      "partition": "DETERMINISTIC-PAM-KMEDOIDS",
+      "heldOutAssignment": "FROZEN-NEAREST-MEDOID",
+      "stage0ScientificFitInspectionAuthorized": false
+    }
+  },
+  "familyQualificationPolicy": {
+    "stage0MayDropForScientificPerformance": false,
+    "stage0MayInspectSupportSilhouetteStabilityOrInterpretability": false,
+    "technicalDropReasons": [
+      "TECHNICAL-NONDETERMINISM",
+      "INDEPENDENT-RECONSTRUCTION-FAILURE",
+      "SERIALIZATION-FAILURE",
+      "RESOURCE-CEILING"
+    ],
+    "allTechnicallyPassingFamiliesMustRemainEligibleForStage1Prefreeze": true
+  },
+  "numericContract": {
+    "integerAndDiscreteEquality": "EXACT",
+    "floatingPointArithmetic": "IEEE-754-BINARY64",
+    "canonicalFloatingPointEncoding": "BIG-ENDIAN-BINARY64-LOWERCASE-HEX",
+    "categoryAggregationOrder": "LEXICAL-CANONICAL",
+    "missingNumericValue": null,
+    "zeroVarianceHandling": "EXPLICIT-FAMILY-PREFREEZE-REQUIRED",
+    "undefinedHandling": "EXPLICIT-FAMILY-PREFREEZE-REQUIRED",
+    "toleranceBasedRescueAuthorized": false,
+    "insertionOrderMayDefineNumericIdentity": false
+  },
+  "pcaTechnicalRequirements": {
+    "signOrientationRuleMustBeDeterministic": true,
+    "eigenvalueTieRuleMustBeDeterministic": true,
+    "componentOrderingMustBeDeterministic": true,
+    "componentCountSelectionInStage0Authorized": false,
+    "scientificVarianceExplainedInspectionInStage0Authorized": false
+  },
+  "wardTechnicalRequirements": {
+    "distanceMetricMustBeFrozenBeforeStage1": true,
+    "mergeTieBreakingMustBeDeterministic": true,
+    "clusterCountSelectionInStage0Authorized": false
+  },
+  "pamTechnicalRequirements": {
+    "initializationMustBeDeterministic": true,
+    "swapSearchOrderMustBeDeterministic": true,
+    "distanceTieBreakingMustBeDeterministic": true,
+    "medoidOrderingMustBeCanonical": true,
+    "clusterCountSelectionInStage0Authorized": false
+  },
+  "independentVerification": {
+    "productionIndependentModuleSeparationRequired": true,
+    "sameStudyHelperImportByIndependentPathAllowed": false,
+    "authoritativeGameEngineAndRuleSemanticsMayBeShared": true,
+    "rawKeyReconstructionIndependent": true,
+    "observableReconstructionIndependent": true,
+    "scalingReconstructionIndependent": true,
+    "pcaReconstructionIndependent": true,
+    "wardPamReconstructionIndependent": true,
+    "serializationReconstructionIndependent": true
+  },
+  "mandatoryGates": [
+    "BASELINE-REMOTE-MAIN-BINDING",
+    "G2-10-IMMUTABLE-CLOSURE-BINDING",
+    "UPSTREAM-ELIGIBILITY-BINDING",
+    "RAW-IDENTITY-PRODUCTION-INDEPENDENT-EXACT",
+    "VALIDATED-TRANSFORM-SET-EMPTY",
+    "NO-SCIENTIFIC-SEED-USE",
+    "NO-G2-11-OUTCOME-INSPECTION",
+    "OBSERVABLE-FAMILY-TECHNICAL-RECOMPUTATION",
+    "ROBUST-SCALING-DETERMINISM",
+    "PCA-SIGN-TIE-ORDER-DETERMINISM",
+    "WARD-TIEBREAK-SERIALIZATION-DETERMINISM",
+    "PAM-INIT-SWAP-TIEBREAK-DETERMINISM",
+    "FROZEN-ASSIGNMENT-SEMANTICS-IMPLEMENTABLE",
+    "ZERO-VARIANCE-MISSING-UNDEFINED-EXPLICIT",
+    "FLOAT-CANONICALIZATION-EXACT",
+    "INDEPENDENT-IMPLEMENTATION-SEPARATION",
+    "ARTIFACT-COMPLETENESS",
+    "RESOURCE-CEILING"
+  ],
+  "resourceCeilings": {
+    "runnerWallClockSeconds": 600,
+    "maxRssBytes": 536870912,
+    "uncompressedTechnicalArtifactBytes": 4194304,
+    "workflowTimeoutMinutes": 20
+  },
+  "decisionMapping": {
+    "allMandatoryGatesPass": "STAGE0-TECHNICAL-PASS",
+    "resourceCeilingFailureOnly": "STAGE0-RESOURCE-CENSORED",
+    "anyOtherMandatoryGateFailure": "STAGE0-TECHNICAL-INVALID"
+  },
+  "technicalRepairRule": {
+    "implementationRepairAfterTechnicalFailureAllowed": true,
+    "conditions": [
+      "NO-SCIENTIFIC-SEED-CONSUMED",
+      "NO-SCIENTIFIC-OUTCOME-GENERATED",
+      "SAME-FROZEN-TECHNICAL-FIXTURES-OR-TECHNICAL-SEEDS",
+      "NO-GATE-RELAXATION",
+      "NO-ELIGIBILITY-RELAXATION",
+      "NO-RESOURCE-CEILING-RELAXATION",
+      "NO-SCIENTIFIC-FAMILY-OR-THRESHOLD-CHANGE"
+    ],
+    "invalidTechnicalAttemptsMustRemainRecorded": true
+  },
+  "stage1AuthorizationConsequence": {
+    "stage0PassAutomaticallyAuthorizesStage1": false,
+    "stage1ScientificSeedConsumptionBeforeSeparatePrefreezeAndAuthorization": false,
+    "stage1ObservableDictionaryMustBeFrozenFirst": true,
+    "stage1FamilyHyperparametersAndSelectionRuleMustBeFrozenFirst": true,
+    "stage1EligibilityThresholdsMustBeFrozenFirst": true
+  },
+  "noRescue": true
+}

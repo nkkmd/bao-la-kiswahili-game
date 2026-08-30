@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "PSRRE_STUDY1_INITIAL_CONTRACT_V1",
+  "researchGeneration": "Research Generation 2",
+  "agendaLabel": null,
+  "programPosition": "DEPENDENCY-RESOLUTION-PREREQUISITE-BETWEEN-G2-10-AND-G2-11",
+  "studyId": "PSRRE-STUDY1",
+  "formalTitle": "Prospective Strategic-Regime Representation Eligibility Study 1",
+  "japaneseTitle": "Baoにおける戦略状態・regime表現の新規構築とprospective eligibility検証 — G2-11長期戦略遷移研究に先立つfresh evidenceベースの独立representation prerequisite",
+  "baselineRemoteMain": "3cad9527264c2ee7dfe49ec2258ab0d9d792ca9a",
+  "researchBranch": "research/pre-g2-11-strategic-regime-representation-eligibility",
+  "studyDirectory": "doc/prospective-strategic-regime-representation-eligibility",
+  "stages": {
+    "stage0": "PSRRE-S0-TECHNICAL-2026-08-30-v1",
+    "stage1": "PSRRE-S1-DEVELOPMENT-2026-08-30-v1",
+    "stage2": "PSRRE-S2-FORMAL-2026-08-30-v1"
+  },
+  "g2_10ImmutableBinding": {
+    "studyId": "UMSSR-STUDY1",
+    "stage0": "STAGE0-TECHNICAL-PASS",
+    "stage1": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+    "selectedRepresentation": null,
+    "formalStudyDecision": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "stage2": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "stage1SeedBlockStatus": "CONSUMED",
+    "stage2SeedBlockStatus": "RESERVED_UNCONSUMED",
+    "g2_11CandidateInputAuthorized": false,
+    "rescueAuthorized": false
+  },
+  "eligibilityVocabulary": [
+    "FORMALLY-ELIGIBLE",
+    "BOUNDED-EXACT-ELIGIBLE",
+    "TECHNICAL-REFERENCE-ONLY",
+    "DEVELOPMENT-CANDIDATE-ONLY",
+    "INELIGIBLE"
+  ],
+  "rawIdentity": {
+    "includedFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "validatedTransformSet": [],
+    "canonicalizationAuthorized": false,
+    "symmetryReductionAuthorized": false
+  },
+  "seedReservation": {
+    "stage0TechnicalOnly": {
+      "start": 29500001,
+      "end": 29500064,
+      "status": "NON-SCIENTIFIC-TECHNICAL-ONLY"
+    },
+    "stage1Scientific": {
+      "start": 29510001,
+      "end": 29514096,
+      "count": 4096,
+      "status": "RESERVED_UNCONSUMED",
+      "scientificUseAuthorized": false
+    },
+    "stage2Scientific": {
+      "start": 29610001,
+      "end": 29618192,
+      "count": 8192,
+      "status": "RESERVED_UNCONSUMED",
+      "scientificUseAuthorized": false
+    }
+  },
+  "developmentValidationFirewall": {
+    "stage1Stage2SeedOverlapRequired": 0,
+    "stage1Stage2HistoricalTrajectoryOverlapRequired": 0,
+    "stage1Stage2OpeningPrefixOverlapRequired": 0,
+    "stage1Stage2SelectedRawStateOverlapRequired": 0
+  },
+  "candidateObservableFamilies": [
+    "RAW-STRUCTURAL",
+    "LEGAL-ACTION-STRUCTURE",
+    "ONE-PLY-SUCCESSOR-STRUCTURE",
+    "SEARCH-RELIABILITY-RAW",
+    "REPLY-PRESSURE-RAW",
+    "TACTICAL-C03-ORIGINAL-SCOPE-ONLY"
+  ],
+  "candidateRepresentationFamiliesForTechnicalQualification": [
+    "RF-A-ROBUST-PCA-WARD",
+    "RF-B-ROBUST-PCA-PAM",
+    "RF-C-DIRECT-ROBUST-PAM"
+  ],
+  "familyQualificationRule": {
+    "stage0MayInspectScientificPerformance": false,
+    "stage0MayDropFamilyForScientificFit": false,
+    "stage0DropReasons": ["TECHNICAL-NONDETERMINISM", "INDEPENDENT-RECONSTRUCTION-FAILURE", "SERIALIZATION-FAILURE", "RESOURCE-CEILING"],
+    "allTechnicallyPassingFamiliesMustRemainEligibleForStage1Prefreeze": true,
+    "stage1ModelSelectionRuleMustBeFrozenBeforeScientificSeedUse": true
+  },
+  "upstreamDirectUseProhibitions": [
+    "G2-01-CALIBRATION-MAPPING",
+    "G2-02-FORMAL-SEARCH-RELIABILITY-CLASSIFIER",
+    "G2-03-TRANSFORM-OR-CANONICALIZATION",
+    "G2-06-RICH-CLASSIFIER-OR-PRODUCTION-METRICS",
+    "G2-07-F05-ALL-OR-LAMBDA-100-MODEL",
+    "G2-08-PROMOTED-TAXONOMY-LEAVES",
+    "G2-09-GENERALIZATION-OR-COUNTEREXAMPLE-BOUNDARY",
+    "G2-10-40-FEATURE-DICTIONARY-AS-FROZEN-REPRESENTATION-CONTRACT",
+    "G2-10-DETERMINISTIC-KMEANS-K2-K6-CONTRACT",
+    "G2-10-STAGE2-SEEDS"
+  ],
+  "g2_11Boundary": {
+    "transitionMatrixMaySelectRepresentation": false,
+    "longHorizonPersistenceMaySelectRepresentation": false,
+    "recurrenceMaySelectRepresentation": false,
+    "bottleneckTransientStructureMaySelectRepresentation": false,
+    "trajectoryFamilyPrevalenceMaySelectRepresentation": false,
+    "transitionAsymmetryMaySelectRepresentation": false,
+    "survivalHazardMaySelectRepresentation": false,
+    "timeToFirstMtajiMaySelectRepresentation": false,
+    "accelerationDelayMaySelectRepresentation": false,
+    "g2_11ScientificAuthorization": false
+  },
+  "verificationPolicy": {
+    "independentImplementationRequired": true,
+    "sameHelperRecallAloneSufficient": false,
+    "productionIndependentModuleSeparationRequired": true,
+    "discreteEquality": "EXACT",
+    "floatingPointCanonicalizationMustBeFrozenBeforeStage1": true
+  },
+  "authorization": {
+    "stage0TechnicalExecutionAuthorized": false,
+    "stage0ScientificInferenceAuthorized": false,
+    "stage1ScientificExecutionAuthorized": false,
+    "stage2ScientificExecutionAuthorized": false,
+    "g2_11Authorized": false
+  },
+  "noRescue": true,
+  "scientificEvidenceGeneratedAtFreeze": false
+}
