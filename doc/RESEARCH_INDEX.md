@@ -857,6 +857,40 @@ Prospectively frozen smoke failure mappingはsame-study repairを認めていな
 
 **Boundary:** `TM-S2-C03 = CONFIRMED`を取消さず、C01/C02/C04を救済しない。Stage 1 partial technical computationをgeneralization/counterexample evidenceへ昇格させない。実装修正版を検証する場合は、新しいprospective Studyまたは明示的新version、fresh technical-entry contract、fresh authorizationを必要とする。
 
+
+---
+
+### 26. Unified Multiaxial Strategic State Representation — Study 1
+
+**研究題目:** Baoにおける多軸戦略状態表現の統合的構築とprospective検証 — search reliability, structural state, reply pressure, decision-failure evidence, tactical structure等のevidence-eligible axesを用いた再現可能なstrategic-state / regime representationの構築
+**Program:** `G2-10` / **Study ID:** `UMSSR-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / formal decision `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+G2-01〜G2-09のformal closureを救済せず、upstream evidence eligibilityを先に固定したうえで、fresh population上に40-feature multiaxial strategic-state vectorを構築し、deterministic K-means `K=2..6`からStage 2へ昇格可能なregime representationを選択できるかをprospectively検証した。
+
+Stage 1 accepted run `33297178656`は4,096 gamesを生成し、4,068 unique trajectories、3,711 distinct opening prefixesを得た。8 phase/source-policy strataから各64 roots、計512 rootsを選択し、40/40 featuresがactiveだった。Production / independent implementationはsource records、selection、analysis rows、scaler、candidate K metrics、representation decision、readiness objectをすべてexact一致させ、scientific readiness gateとresource gateも全項目PASSした。
+
+一方、scientific seed消費前に固定したpromotion criteriaはminimum cluster support `>= 0.10`、mean silhouette `>= 0.05`、five-fold assignment stability `>= 0.80`を全て要求した。K=2はstability未達、K=3はsupport/stability未達、K=4とK=5はsupport未達、K=6はsupport/stability未達で、eligible candidateは0だった。このため`selectedRepresentation = null`とし、`FROZEN_REPRESENTATION.json`を生成しなかった。
+
+この結果はtechnical-invalidでもnon-estimableでもなく、凍結したStudy 1 contract内でStage 2へpromoteできるrepresentationが得られなかった正式なnegative development resultである。Threshold relaxation、K range変更、PCA等の事後追加、favorable subgroup、Stage 1 rerun / seed extensionによる救済は行わない。
+
+Stage 2はfrozen representationを検証する契約だったため、authorization prerequisiteを満たさず`NOT-AUTHORIZED-NOT-EXECUTED`で閉じた。Stage 2 seeds `29410001..29418192`は未消費である。`UMSSR-STUDY1`からG2-11へ渡せるvalidated / frozen representationはない。
+
+**最初に読む:**
+
+- [`unified-multiaxial-strategic-state-representation/STUDY_1_FINAL_REPORT.md`](unified-multiaxial-strategic-state-representation/STUDY_1_FINAL_REPORT.md)
+
+**詳細・正本:**
+
+- [`unified-multiaxial-strategic-state-representation/results/STUDY_1_FINAL_RESULT.json`](unified-multiaxial-strategic-state-representation/results/STUDY_1_FINAL_RESULT.json)
+- [`unified-multiaxial-strategic-state-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`](unified-multiaxial-strategic-state-representation/results/STAGE_1_DEVELOPMENT_RESULT.json)
+- [`unified-multiaxial-strategic-state-representation/CURRENT_STATUS.md`](unified-multiaxial-strategic-state-representation/CURRENT_STATUS.md)
+- [`unified-multiaxial-strategic-state-representation/DECISION_REGISTER.md`](unified-multiaxial-strategic-state-representation/DECISION_REGISTER.md)
+- [`unified-multiaxial-strategic-state-representation/REPRODUCIBILITY_INDEX.md`](unified-multiaxial-strategic-state-representation/REPRODUCIBILITY_INDEX.md)
+
+**Boundary:** 本StudyはBaoにstrategic regimeが存在しないことを示さない。凍結した40-feature / deterministic K-means `K=2..6` / promotion ruleの組合せではeligible representationが得られなかったことだけを示す。別representationを検証する場合はnew prospective Studyまたはexplicit versioned protocolとfresh evidenceを必要とし、G2-11へ本Studyのunvalidated representationを持ち込まない。
+
+
 ## 将来研究
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
