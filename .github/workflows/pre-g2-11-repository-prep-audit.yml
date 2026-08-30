@@ -27,3 +27,5 @@ jobs:
 
       - name: Run repository preparation audit
         run: python3 tools/experiments/audit-pre-g2-11-repository-prep.py
+
+# Final audit marker after program-progress backfill materialization.
