@@ -891,11 +891,40 @@ Stage 2はfrozen representationを検証する契約だったため、authorizat
 **Boundary:** 本StudyはBaoにstrategic regimeが存在しないことを示さない。凍結した40-feature / deterministic K-means `K=2..6` / promotion ruleの組合せではeligible representationが得られなかったことだけを示す。別representationを検証する場合はnew prospective Studyまたはexplicit versioned protocolとfresh evidenceを必要とし、G2-11へ本Studyのunvalidated representationを持ち込まない。
 
 
+---
+
+### 27. Prospective Strategic-Regime Representation Eligibility — Study 1
+
+**研究題目:** Baoにおける戦略状態・regime表現の新規構築とprospective eligibility検証 — G2-11長期戦略遷移研究に先立つfresh evidenceベースの独立representation prerequisite
+**Program position:** Pre-G2-11 dependency-resolution prerequisite / **Study ID:** `PSRRE-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / formal decision `NON-ESTIMABLE` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+G2-10を救済せず、fresh 28-feature contractと`RF-A-ROBUST-PCA-WARD` / `RF-B-ROBUST-PCA-PAM` / `RF-C-DIRECT-ROBUST-PAM`をprospectively固定し、G2-11へ渡せるheld-out-eligible strategic-state / regime representationを構築できるかを検証した。
+
+Stage 0では3 familyすべてtechnical exact PASS。Stage 1 accepted run `33308337738`は4,096 games / 4,066 unique trajectories / 3,734 distinct opening prefixesから、8 phase/source-policy strata各64、計512 unique RAW rootsを選択した。Production / independent implementationはsource generation、selection、28-feature analysis、scaler、readiness、final decisionをfull-exactで一致させ、resource gateもPASSした。
+
+一方、prospectively frozen readiness gate `minimumNonzeroMadFeatures >= 20`に対しobservedは15だった。active feature familiesは要求5/5を満たしたが、global feature-variation readinessを満たさないため、candidate family/Kの科学的promotionへ進まず`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`で閉じた。Stage 1 seeds `29510001..29514096`はconsume-onceで消費済み、same-block rerunは禁止。Stage 2 seeds `29610001..29618192`は未消費である。
+
+**最初に読む:**
+
+- [`prospective-strategic-regime-representation-eligibility/STUDY_1_OVERVIEW.md`](prospective-strategic-regime-representation-eligibility/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`prospective-strategic-regime-representation-eligibility/STUDY_1_FINAL_REPORT.md`](prospective-strategic-regime-representation-eligibility/STUDY_1_FINAL_REPORT.md)
+- [`prospective-strategic-regime-representation-eligibility/results/STUDY_1_FINAL_RESULT.json`](prospective-strategic-regime-representation-eligibility/results/STUDY_1_FINAL_RESULT.json)
+- [`prospective-strategic-regime-representation-eligibility/CURRENT_STATUS.md`](prospective-strategic-regime-representation-eligibility/CURRENT_STATUS.md)
+- [`prospective-strategic-regime-representation-eligibility/DECISION_REGISTER.md`](prospective-strategic-regime-representation-eligibility/DECISION_REGISTER.md)
+- [`prospective-strategic-regime-representation-eligibility/REPRODUCIBILITY_INDEX.md`](prospective-strategic-regime-representation-eligibility/REPRODUCIBILITY_INDEX.md)
+
+**Boundary:** 本StudyはBaoにstrategic regimeが存在しないことを示さない。結果後に20-feature floorを下げる、zero-MAD featureを除外して同seedを再解析する、family/Kを追加する、Stage 2をpost-hoc authorizeする、といったsame-Study rescueを行わない。frozen representationは生成されず、G2-11 candidate inputとG2-11 scientific executionはいずれも未承認である。
+
+
 ## 将来研究
 
-**現在選択済みの次研究方向:** Pre-G2-11 strategic representation prerequisite
+**現在のPre-G2-11 dependency state:** `PSRRE-STUDY1` completed / formal decision `NON-ESTIMABLE` / G2-11 remains `NOT-AUTHORIZED`.
 
-`G2-10 / UMSSR-STUDY1`はeligible frozen representationを生成せず閉じたため、`G2-11`を直接開始しない。次はG2-10を救済・再定義しない**新しいprospective independent strategic-representation prerequisite Study**を実施し、G2-11へ入力可能なrepresentation eligibilityをfresh evidenceで検証する。正式Study ID・最終題目・Stage構成は研究開始時にcurrent remote `main`を再監査して固定する。詳細は[`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md)を参照。
+G2-10後に選択したstrategic representation prerequisiteは`PSRRE-STUDY1`としてprospectively実施し、Stage 1をtechnical/resource/full-exact verification PASSのうえで完遂した。しかし、frozen readiness gate `nonzero-MAD features >= 20`に対し15だったためStudyは`NON-ESTIMABLE`で閉じ、frozen representationを生成しなかった。したがってG2-11へ入力可能なrepresentation dependencyは依然未解決であり、`UMSSR-STUDY1`または`PSRRE-STUDY1`のunvalidated representationを事後昇格させてG2-11を開始しない。Program-level closureは[`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md)を参照。
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
 

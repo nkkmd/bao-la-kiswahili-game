@@ -1015,25 +1015,42 @@ Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
 
 **Priority:** completed
 
-#### Pre-G2-11 prerequisite — new prospective strategic representation Study
+#### Pre-G2-11 prerequisite — Prospective Strategic-Regime Representation Eligibility Study 1
 
-**状態:** **selected next research direction / formal Study ID・最終題目・Stage IDは未固定 / scientific outcome generation未承認**
+**状態:** **完了 / `PSRRE-STUDY1` / formal decision `NON-ESTIMABLE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
-G2-10 `UMSSR-STUDY1`は`selectedRepresentation = null`で閉じ、G2-11へ渡せるvalidated / frozen representationを生成しなかった。この結果を受け、G2-11を直接開始するのではなく、G2-10とは別のfresh prospective independent Studyとしてstrategic-state / regime representationを新規構築し、そのdownstream eligibilityを検証する。
+G2-10 `UMSSR-STUDY1`がeligible frozen representationを生成しなかったため、G2-11を直接開始せず、新しいagenda labelを追加しないdependency-resolution prerequisiteとして`PSRRE-STUDY1`をprospectively実施した。
 
-このprerequisite Studyは`G2-10`の40-feature dictionary、deterministic K-means `K=2..6`、support / silhouette / five-fold assignment stability threshold、candidate-K result、Stage 1 seed blockを変更・再解析・救済するものではない。G2-10のnegative development resultとStudy closureはimmutableに保持する。
+Study開始時にformal identity、Stage IDs、fresh seed blocks、28-feature dictionary、RAW identity、3 representation families、`K=2..8`、support / silhouette / five-fold assignment-stability、source-policy concentration、Stage 1 readiness、Stage 2 held-out endpoint、production / independent exact verification、resource ceiling、consume-once / no-rescue ruleをoutcome生成前にfreezeした。
 
-また、このprerequisiteは新しい`G2-xx` agenda labelを追加するものではない。Research Generation 2のcore label `G2-01..G2-12`は維持し、正式Study ID、最終題目、directory、Stage構成、Stage ID、population、representation family、eligibility gate、seed block、authorization ruleは、新しいチャットでその時点のremote `main`と命名規則を再監査した後にprospectively固定する。
+Stage 0は3 familyすべてtechnical exact PASS。Stage 1はfresh 4,096 games / 512 rootsをproduction / independent full-exactで完遂し、population / resource / artifact gateもPASSした。しかし、frozen readiness `minimumNonzeroMadFeatures >= 20`に対してobserved 15だったため、candidate family/Kをscientific promotionする前に`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`で閉じた。
 
-Prerequisite Studyのprimary scientific questionは**representation eligibility**であり、transition matrix、long-horizon persistence / recurrence、bottleneck / transient structure、trajectory family、transition asymmetry等のG2-11 outcomeをrepresentation選択に使用しない。G2-11は、新Studyがprospectively frozen gateを通過してeligible frozen representationを生成した場合にのみ、そのrepresentationをcandidate inputとして別途開始できる。
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Study formal decision = NON-ESTIMABLE
+selectedRepresentation = null
+Stage 1 seeds 29510001..29514096 = CONSUMED
+same-block rerun = NOT AUTHORIZED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29610001..29618192 = RESERVED / UNCONSUMED
+G2-11 candidate input authorized = false
+G2-11 scientific execution authorized = false
+```
 
-**Program selection decision:** [`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md)
+20-feature floorを結果後に15へ下げる、zero-MAD featureを削除して同seedを再解析する、family/Kを追加する、favorable subgroupを抽出する、Stage 2をpost-hoc authorizeする、といったsame-Study rescueは行わない。
 
-**Priority:** P0 prerequisite before G2-11
+この結果は「Baoに有用なstrategic regimeがない」ことを示さない。`PSRRE-STUDY1`のprospectively fixed representation-readiness contractがformal validation entryへ到達できなかったことを示す。
+
+- 初見向け概要: [`prospective-strategic-regime-representation-eligibility/STUDY_1_OVERVIEW.md`](prospective-strategic-regime-representation-eligibility/STUDY_1_OVERVIEW.md)
+- 科学的正本: [`prospective-strategic-regime-representation-eligibility/STUDY_1_FINAL_REPORT.md`](prospective-strategic-regime-representation-eligibility/STUDY_1_FINAL_REPORT.md)
+- Program closure: [`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md)
+
+**Priority:** completed prerequisite; G2-11 dependency remains unresolved
 
 #### G2-11 — Long-Horizon Strategic Transition Structure Study 1
 
-**状態:** planned / downstream temporal study
+**状態:** **blocked / `NOT-AUTHORIZED` — required frozen representation unavailable after G2-10 and PSRRE-STUDY1 closures**
 
 中心課題:
 
@@ -1041,7 +1058,7 @@ Prerequisite Studyのprimary scientific questionは**representation eligibility*
 
 Namua→Mtaji Study 1で棄却した`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。transition matrix、regime persistence、trajectory family、transition asymmetry等を候補とするが、primary endpointはoutcome前にfreezeする。
 
-G2-10 `UMSSR-STUDY1`は実際にrepresentation gateを満たさず、`selectedRepresentation = null`で閉じた。したがって`UMSSR-STUDY1`由来representationをG2-11のinputとして使用しない。G2-11を開始する前に、long-horizon transitionへ入力可能なrepresentationを新しいprospective Studyまたは明示的versioned protocolで構築・freezeし、そのeligibilityをoutcome前に固定する必要がある。
+G2-10 `UMSSR-STUDY1`は`selectedRepresentation = null`で閉じ、その後のPre-G2-11 prerequisite `PSRRE-STUDY1`もfrozen readiness failureにより`NON-ESTIMABLE`で閉じ、representationをfreezeしなかった。したがって両Study由来のunvalidated representationをG2-11のinputとして使用しない。G2-11は現在`NOT-AUTHORIZED`であり、開始する場合はrepresentation dependencyの解決方法、input identity、endpoint、fresh population、authorizationを新しいprospective decisionでoutcome前に固定する必要がある。
 
 **Priority:** P2
 
@@ -1102,9 +1119,11 @@ G2-10 Unified Multiaxial Strategic State
         ↓
 NO ELIGIBLE FROZEN REPRESENTATION
         ↓
-new prospective representation protocol required before G2-11
+PSRRE-STUDY1 prospective prerequisite
         ↓
-G2-11 Long-Horizon Strategic Transitions
+NON-ESTIMABLE / NO FROZEN REPRESENTATION
+        ↓
+G2-11 remains NOT-AUTHORIZED; dependency resolution required
 
 G2-05 bounded exact enumeration
         ↓
@@ -1124,7 +1143,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。したがってG2-11へ`UMSSR-STUDY1`由来representationを持ち込まず、G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。その後のPre-G2-11 prerequisite `PSRRE-STUDY1`もStage 1 `STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE` / Study `NON-ESTIMABLE`で閉じ、frozen representationを生成しなかった。したがってG2-11へ`UMSSR-STUDY1`または`PSRRE-STUDY1`由来のunvalidated representationを持ち込まず、G2-11は`NOT-AUTHORIZED`のまま保持する。
 
 ### 9.9 第二世代プログラムの完了条件
 

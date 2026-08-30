@@ -251,3 +251,28 @@ Program sequencingとして、G2-11を直接開始せず、その前に**new pro
 G2-11のlong-horizon transition outcomeはprerequisite Studyのrepresentation選択に利用してはならない。Prerequisite Studyが自身のfrozen eligibility gateをPASSした場合にのみ、得られたfrozen representationをG2-11 candidate inputとして別途評価できる。
 
 Selection record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`.
+
+
+## 2026-08-30 — PSRRE-STUDY1 prerequisite closure
+
+The selected Pre-G2-11 dependency-resolution direction was prospectively instantiated as `PSRRE-STUDY1` — **Prospective Strategic-Regime Representation Eligibility Study 1**. This did not add a new `G2-xx` agenda label and did not modify the closed `G2-10 / UMSSR-STUDY1` contract or decision.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Study formal decision = NON-ESTIMABLE
+selectedRepresentation = null
+Stage 1 seeds 29510001..29514096 = CONSUMED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29610001..29618192 = RESERVED / UNCONSUMED
+G2-11 candidate input authorized = false
+G2-11 scientific execution authorized = false
+```
+
+Stage 1 completed the fresh 4,096-game / 512-root production and independent pipelines with full-exact agreement and all resource gates passing. The prospectively frozen development-readiness contract required at least 20 nonzero-MAD features; 15 were observed. Therefore the Study closed as non-estimable before a representation could be frozen or promoted to held-out validation.
+
+No same-Study threshold relaxation, zero-MAD feature deletion/re-analysis, family/K expansion, favorable-subgroup rescue, seed rerun/replacement/extension, or post-hoc Stage 2 authorization is permitted.
+
+Program consequence: `G2-11` remains not authorized because the representation dependency is still unresolved. Neither `UMSSR-STUDY1` nor `PSRRE-STUDY1` supplies an eligible frozen representation candidate.
+
+Canonical closure record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`.
