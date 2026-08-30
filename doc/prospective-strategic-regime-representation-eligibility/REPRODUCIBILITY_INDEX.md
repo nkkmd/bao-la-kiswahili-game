@@ -1,6 +1,6 @@
 # PSRRE-STUDY1 — 再現性索引
 
-## 1. Study baseline
+## 1. baseline
 
 ```text
 Repository = nkkmd/bao-la-kiswahili-game
@@ -9,106 +9,101 @@ Research branch = research/pre-g2-11-strategic-regime-representation-eligibility
 Study ID = PSRRE-STUDY1
 ```
 
-## 2. program / upstream binding
-
-- `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`
-- `doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`
-- `doc/FUTURE_RESEARCH_AGENDA.md`
-- `doc/RESEARCH_INDEX.md`
-- `doc/DOCUMENTATION_LANGUAGE_POLICY.md`
-- `doc/unified-multiaxial-strategic-state-representation/results/STUDY_1_FINAL_RESULT.json`
-
-G2-10 closureはimmutable historical provenanceとしてのみ参照する。
-
-## 3. prospective contract
+## 2. prospective contracts
 
 - `STUDY_1_PROTOCOL.md`
 - `UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`
 - `prereg/STUDY_1_INITIAL_CONTRACT.json`
 - `prereg/STAGE_0_TECHNICAL_SPEC.json`
-- `DECISION_REGISTER.md`
-- `CURRENT_STATUS.md`
-- `RESEARCH_LOG.md`
+- `prereg/STAGE_1_DEVELOPMENT_SPEC.json`
+- `prereg/STAGE_1_FEATURE_DICTIONARY.json`
+- `prereg/STAGE_2_VALIDATION_CONTRACT.json`
+- `prereg/STAGE_1_EXECUTION_CONTRACT.json`
 
-## 4. RAW identity
-
-```text
-included fields = pits,reserve,houseOwned,player,phase,winner,pending
-excluded fields = turn,reason
-validated transform set = []
-canonicalization = false
-symmetry reduction = false
-```
-
-## 5. seed registry
+## 3. Stage 0
 
 ```text
-29500001..29500064 = PSRRE Stage 0 technical-only
-29510001..29514096 = PSRRE Stage 1 scientific RESERVED_UNCONSUMED / NOT AUTHORIZED
-29610001..29618192 = PSRRE Stage 2 scientific RESERVED_UNCONSUMED / NOT AUTHORIZED
-```
-
-G2-10 blocks `29310001..29314096`および`29410001..29418192`は本Studyで使用しない。
-
-## 6. Stage 0 source / authorization provenance
-
-```text
-source freeze commit = 724e05ef6a730593aab2f9165a0d02216e372c6d
-authorization commit = 2c1dea4f7f5c98497333d9ec325931e9091ba0df
+source freeze = 724e05ef6a730593aab2f9165a0d02216e372c6d
+authorization = 2c1dea4f7f5c98497333d9ec325931e9091ba0df
 workflow run = 33304155488
-workflow job = 99237601518
-artifact id = 9729904359
-artifact ZIP SHA-256 = d861bc27c9fb273ac2d6f4c227bdaf9c01bd4d6e33c8ae2ca3370a836e357977
+job = 99237601518
+artifact = 9729904359
+disposition = STAGE0-TECHNICAL-PASS
 ```
 
-repo-facing result:
-
-- `results/STAGE_0_TECHNICAL_CLOSURE_RESULT.json`
-- `results/STAGE_0_SOURCE_HASHES.json`
-- `checkpoints/2026-08-30-stage0-technical-pass.md`
-
-artifact内部file hash:
+## 4. Stage 1 tooling / preflight
 
 ```text
-stage0-result.json = 0d5b831b753ebef4122bd2029f3639e68f19a707232f1ccdc078a5ee853cfb68
-technical-family-output.json = 8ec1eacf1c506756cb6d63486153b137399460ad060ea28b97491dda80f24c5b
-source-hashes.json = 6c89bc7c4b56d01efad6a47f72ceb72bd2836d6cde4eee2bad60a2414bd88f0b
+tooling smoke run = 33307611100
+tooling smoke disposition = TOOLING-SMOKE-PASS
+invalid packaging preflight runs = 33307852222, 33307879877
+repair PASS run = 33308028155
+final binding-manifest preflight run = 33308152033
+final source freeze = 41124069f89f0706cf943e18688c96a8c2db35d7
 ```
 
-Stage 0正式dispositionは`STAGE0-TECHNICAL-PASS`である。
+Invalid preflight attemptsはscientific seedを使用していない。修正はartifact projection estimatorのみで、scientific contract、threshold、feature、K、resource ceilingは変更していない。
 
-## 7. production / independent分離
-
-Stage 0 independent moduleはStudy-specific production moduleをimportしない。authoritative engine / rule semanticsは共有するが、RAW key、observable、robust scaling、PCA、Ward、PAM、assignment、serializationを別実装で再構築した。
-
-18 mandatory gateはfailure 0 / missing 0だった。
-
-## 8. Stage 0で確認していないもの
-
-Stage 0では次をscientific outcomeとして確認していない。
-
-- representation support
-- silhouette
-- assignment stability
-- long-horizon transition structure
-- G2-11 outcome
-- human strategic salience
-- game-theoretic truth
-
-3 familyのtechnical PASSはscientific優劣を意味しない。
-
-## 9. 今後のprovenance空欄
+## 5. Stage 1 scientific execution
 
 ```text
-Stage 1 prefreeze commit = null
-Stage 1 authorization commit = null
-Stage 1 workflow run = null
-Stage 1 scientific result hash = null
-Stage 2 authorization commit = null
-Stage 2 workflow run = null
-Stage 2 scientific result hash = null
-frozen representation artifact hash = null
-G2-11 input authorization = false
+authorization commit = 085c5df24baff44bb644c00eda91d6212caf5708
+workflow run = 33308337738
+job = 99248759871
+artifact id = 9731444105
+artifact size = 5399830 bytes
+artifact ZIP SHA-256 = c418bca917723eb9c07035c323431972ac541b4b58e286820657b0d1c7e40d7a
 ```
 
-Stage 1 scientific seedを消費する前に、feature dictionary、family hyperparameter / selection rule、numeric thresholds、Stage 2 held-out contractを新たに固定する。
+Artifact internal hashes:
+
+```text
+CONSUMPTION_RECORD.json = da80527be93597ee765a67e9b50bf7c8e2f7f170fda3243e342dcc618d20be44
+FINAL_EXACT_COMPARISON.json = f5e89ee04550f2f83a1c1848910aca8502cf5d3c53ba6b3d9906e1b7495382ae
+STAGE_1_DEVELOPMENT_RESULT.json = 1a198843dfe57b6b378e8e9aec3f1f60e5cf5424b4e76028894485863914539e
+ESSENTIAL_CORE.json = 1a198843dfe57b6b378e8e9aec3f1f60e5cf5424b4e76028894485863914539e
+HASH_MANIFEST.json = 3d6fd84963d4d89b8963ad5e657f7525c6f6891cee237faea5bb173576a33078
+production/full-shard-0001.json.gz = 1f00bf677de11899c38179c7a383676be753c1184c0010bd84d3b1fb26af6cd1
+independent/full-shard-0001.json.gz = 1f00bf677de11899c38179c7a383676be753c1184c0010bd84d3b1fb26af6cd1
+runner internal result = 42bbb556b96e35bef24044c9112d47508b5f6759718c582f278dd64cbd7db9a8
+```
+
+Production / independent full shards are byte-identical.
+
+## 6. seed registry
+
+```text
+29500001..29500064 = technical-only
+29510001..29514096 = Stage 1 CONSUMED / same-block rerun prohibited
+29610001..29618192 = Stage 2 RESERVED_UNCONSUMED / NOT AUTHORIZED
+```
+
+## 7. formal scientific closure
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study = NON-ESTIMABLE
+selected representation = null
+G2-11 candidate input authorized = false
+```
+
+Blocking gate:
+
+```text
+nonzero-MAD features observed = 15
+minimum required = 20
+```
+
+## 8. repo-facing closure artifacts
+
+- `STUDY_1_FINAL_REPORT.md`
+- `results/STUDY_1_FINAL_RESULT.json`
+- `checkpoints/2026-08-30-stage1-development-non-estimable-closure.md`
+- `CURRENT_STATUS.md`
+- `DECISION_REGISTER.md`
+- `RESEARCH_LOG.md`
+- `RESUME_HERE.md`
+
+No frozen representation artifact exists because Stage 1 did not pass the readiness gate.

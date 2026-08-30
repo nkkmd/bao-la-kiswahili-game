@@ -1,114 +1,59 @@
 # PSRRE-STUDY1 — 研究ログ
 
-## 2026-08-30 — repository開始監査
+## 2026-08-30 — Study start
 
-remote `main` HEADを再取得した。
+remote `main`=`3cad9527264c2ee7dfe49ec2258ab0d9d792ca9a`をbaselineとして固定し、G2-10 closure、upstream eligibility、RAW identity、G2-11 firewallを監査した。Study ID=`PSRRE-STUDY1`、branch=`research/pre-g2-11-strategic-regime-representation-eligibility`を固定した。
+
+## 2026-08-30 — Stage 0
+
+3 representation familyのtechnical qualificationをproduction/independentで検証。workflow run `33304155488`は18 mandatory gateをすべてPASSし、`STAGE0-TECHNICAL-PASS`。scientific outcomeは生成していない。
+
+## 2026-08-30 — Stage 1 prospective prefreeze
+
+scientific seed使用前に28-feature dictionary、median/MAD、PCA/Ward/PAM、`K=2..8`、candidate selection、readiness、Stage 2 held-out contract、resource ceiling、consume-once ruleを固定した。
+
+Stage 1 seeds=`29510001..29514096`、Stage 2 seeds=`29610001..29618192`。
+
+## 2026-08-30 — tooling smoke
+
+source commit `509c80bbf1d0f9855e61923a2fa3c722aeb3c492`をmaterializeし、authorization commit `1ae4dc02263a9c400f9f39f89f6105e9f80a79a2`からrun `33307611100`を実行。16 mandatory checkを全PASSした。technical seedsのみ使用し、scientific seeds used=`[]`。
+
+## 2026-08-30 — packaging preflight
+
+初回run `33307852222`とactivation run `33307879877`は、technical preflight payload全体へ一律scaleを掛けたartifact-size projection defectによりFAILした。scientific seedsは未使用。
+
+contract、threshold、feature、K、resource ceilingを変更せずcomponent-wise projectionへ修正した。repair run `33308028155`はPASS。authorization binding manifestを追加した最終preflight run `33308152033`もPASSした。
+
+最終scientific source freeze=`41124069f89f0706cf943e18688c96a8c2db35d7`。
+
+## 2026-08-30 — Stage 1 authorization / execution
+
+commit `085c5df24baff44bb644c00eda91d6212caf5708`でStage 1 scientific executionをexplicit authorize。GitHub Actions run `33308337738` / job `99248759871`を実行した。
+
+consume-once recordをseed generation前に保存後、4096 gamesを生成。seed block `29510001..29514096`は`CONSUMED`。
+
+## 2026-08-30 — Stage 1 result audit
+
+workflow全stepはsuccess。artifact=`9731444105`、ZIP SHA-256=`c418bca917723eb9c07035c323431972ac541b4b58e286820657b0d1c7e40d7a`。
+
+Production / independent full exact=true。populationは4096 games / 4066 unique trajectories / 3734 opening prefixes / 512 roots、8 strata各64。resource gateはPASS。
+
+Feature readinessは28 features中nonzero-MAD=15、active feature families=5。事前固定floor 20 nonzero-MAD featuresを満たさなかった。
+
+したがって:
 
 ```text
-current remote main = 3cad9527264c2ee7dfe49ec2258ab0d9d792ca9a
-reference SHA = 3cad9527264c2ee7dfe49ec2258ab0d9d792ca9a
-match = true
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+selected representation = null
 ```
 
-pre-G2-11 selection decision、Research Generation 2 program decision、`FUTURE_RESEARCH_AGENDA.md`、`RESEARCH_INDEX.md`、G2-10 final result / protocol / upstream eligibility contract、documentation language policyを監査した。
+## 2026-08-30 — Study closure
 
-## 2026-08-30 — G2-10 immutable closure確認
-
-`UMSSR-STUDY1`は次の状態でclosedであることを確認した。
+Stage 2 entry conditionを満たさないためStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。Stage 2 seedsは`RESERVED_UNCONSUMED`のまま。
 
 ```text
-Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
-selectedRepresentation = null
-formal decision = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 1 seeds = CONSUMED
-Stage 2 seeds = RESERVED_UNCONSUMED
+Study = NON-ESTIMABLE
 G2-11 candidate input authorized = false
 ```
 
-この結果をnegative development closureとして保持し、same-Study rescueを行わない。
-
-## 2026-08-30 — upstream eligibility / RAW identity監査
-
-G2-01..G2-10の重要なeligibility boundaryを再確認した。G2-06 / G2-07のtechnical-invalid model、G2-08 taxonomy、G2-09 generalization boundaryはdirect scientific inputとして使用しない。
-
-G2-03以降もvalidated transform setは空であり、RAW identityをauthoritativeとする。
-
-```text
-validated transform set = []
-canonicalization = false
-symmetry reduction = false
-```
-
-## 2026-08-30 — Study identity freeze
-
-新しいcore agenda labelを付けず、次をformal identityとして固定した。
-
-```text
-Study ID = PSRRE-STUDY1
-Formal title = Prospective Strategic-Regime Representation Eligibility Study 1
-Branch = research/pre-g2-11-strategic-regime-representation-eligibility
-Directory = doc/prospective-strategic-regime-representation-eligibility
-```
-
-Stage ID:
-
-```text
-PSRRE-S0-TECHNICAL-2026-08-30-v1
-PSRRE-S1-DEVELOPMENT-2026-08-30-v1
-PSRRE-S2-FORMAL-2026-08-30-v1
-```
-
-## 2026-08-30 — seed reservation
-
-repository searchで`29500001`、`29510001`、`29610001`の既存使用を検出しなかった。次を本Study用に予約した。
-
-```text
-29500001..29500064 = Stage 0 technical-only
-29510001..29514096 = Stage 1 scientific RESERVED_UNCONSUMED
-29610001..29618192 = Stage 2 scientific RESERVED_UNCONSUMED
-```
-
-Stage 1 / Stage 2 scientific useは未承認である。
-
-## 2026-08-30 — Stage 0 contract freeze
-
-Stage 0 technical qualification shortlistを次に固定した。
-
-```text
-RF-A-ROBUST-PCA-WARD
-RF-B-ROBUST-PCA-PAM
-RF-C-DIRECT-ROBUST-PAM
-```
-
-Stage 0ではscientific fit、support、silhouette、assignment stability、interpretabilityを使ってfamilyを選別しない。technical determinism、independent reconstruction、serialization、resource ceilingだけを確認する。
-
-## 2026-08-30 — Stage 0 source freeze / authorization
-
-Stage 0 toolingを次で固定した。
-
-```text
-source freeze commit = 724e05ef6a730593aab2f9165a0d02216e372c6d
-authorization commit = 2c1dea4f7f5c98497333d9ec325931e9091ba0df
-```
-
-workflowはauthorization fileの追加でのみ起動するようにし、source freeze commit自体では実行しない構造とした。authorizationはtechnical-onlyで、scientific seedとG2-11 outcome inspectionを明示的に禁止した。
-
-## 2026-08-30 — Stage 0 technical execution
-
-GitHub Actions run `33304155488` / job `99237601518`がsuccessで完了した。artifact IDは`9729904359`、artifact ZIP SHA-256は`d861bc27c9fb273ac2d6f4c227bdaf9c01bd4d6e33c8ae2ca3370a836e357977`である。
-
-結果:
-
-```text
-Stage 0 disposition = STAGE0-TECHNICAL-PASS
-mandatory gate failures = 0
-missing mandatory gates = 0
-scientific seeds used = []
-scientific performance inspected = false
-scientific outcome generated = false
-G2-11 authorized = false
-```
-
-3 representation familyはすべてtechnical exact PASSだった。これはscientific rankingではなく、Stage 1 prefreeze候補からfamilyを落とす根拠には使用しない。
+同Study rescueは行わない。G2-10 closure、G2-11 outcome、human/game-theoretic/public-AI claimには変更を加えない。
