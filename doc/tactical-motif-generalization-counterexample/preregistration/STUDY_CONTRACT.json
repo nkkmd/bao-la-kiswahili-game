@@ -42,20 +42,27 @@
     "symmetryReduction": false
   },
   "c03Exact": {
+    "candidateId": "TM-S2-C03",
     "phase": "mtaji",
-    "mtajiVariant": "mt-0",
-    "sourcePolicy": "coarse-no-index",
-    "moveClass": "takata-row1",
-    "direction": "right",
-    "reusablePitsMin": 0,
-    "reusablePitsMax": 2,
-    "actorNyumbaSeedsDeltaSign": 0,
-    "actorReserveDelta": 0,
-    "phaseAfter": "mtaji",
-    "minCandidateRoots": 20,
-    "minPairedRoots": 5,
-    "minStructuralSuccessRate": 0.95,
-    "minTacticalValueSuccessRate": 0.70
+    "moveAbstractionMode": "coarse-no-index",
+    "moveFamily": {
+      "type": "takata",
+      "phase": "mtaji",
+      "row": 1,
+      "direction": "right",
+      "side": null,
+      "houseChoice": null,
+      "houseTwo": false,
+      "indexIncludedInAbstraction": false
+    },
+    "preconditions": ["reusablePits=0-2"],
+    "consequence": "actorNyumbaSeedsDeltaSign=0",
+    "pairedDiagnosticDefinition": {
+      "preconditions": ["reusablePits=0-2"],
+      "consequence": "worstReplyActorCaptureMoveDeltaSign=0",
+      "formalDecisionUse": false,
+      "canonicalReplacementAllowed": false
+    }
   },
   "phaseTransportPolicy": "SEPARATE_G2_09_CONSTRUCT_ONLY_IF_STAGE0_TECHNICALLY_ELIGIBLE",
   "prohibitedInputs": [

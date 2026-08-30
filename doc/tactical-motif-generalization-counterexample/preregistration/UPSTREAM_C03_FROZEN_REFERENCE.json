@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "TMGC_UPSTREAM_C03_FROZEN_REFERENCE_V1",
+  "purpose": "Immutable Research Generation 1 source reference only; not a G2-09 scientific result or G2-09 acceptance rule.",
+  "candidateSource": {
+    "path": "doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json",
+    "sha256": "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8"
+  },
+  "specSource": {
+    "path": "doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json",
+    "sha256": "83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8"
+  },
+  "authorizationSource": {
+    "path": "doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json",
+    "sha256": "43381afe4b219cd7653f6177982df697c0cb3e8f1874a4ac3d217930dfab1e51"
+  },
+  "sourceCommits": {
+    "generation": "3082cd2132cdd572e43f5f78e8d662271a9ed492",
+    "measurement": "e6f5e9528d523e7710a953020b1719abf60a26e8",
+    "evaluation": "d41b061067ab2e5dbe65294d3860586d9d3c1454"
+  },
+  "candidate": {
+    "candidateId": "TM-S2-C03",
+    "supportIdentityHash": "94a5c3b8b80d054dfe35f1234994a89b5614ce07d7e727be8d3a4c23acc6bc5a",
+    "canonicalStage1Rank": 5,
+    "canonicalCandidateKey": "7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba",
+    "phase": "mtaji",
+    "moveAbstractionMode": "coarse-no-index",
+    "moveAbstractionToken": "move:coarse-no-index:{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+    "preconditions": ["reusablePits=0-2"],
+    "consequence": "actorNyumbaSeedsDeltaSign=0",
+    "pairedDiagnosticDefinition": {
+      "stage1Rank": 6,
+      "candidateKey": "9af775a38a9fa5267ade3fbedbc4c2fa8effdc950cb1018e8242f5dfae988b0b",
+      "preconditions": ["reusablePits=0-2"],
+      "consequence": "worstReplyActorCaptureMoveDeltaSign=0",
+      "sameStage1SupportIdentity": true,
+      "formalDecisionUse": false
+    }
+  },
+  "population": {
+    "games": 3072,
+    "seedStart": 22000001,
+    "seedEnd": 22003072,
+    "openingPolicy": "seeded-uniform-legal-moveVariants",
+    "openingPlies": 8,
+    "maxPly": 100,
+    "generationStrata": ["B-D1", "B-D2", "B-D3", "LS-D2", "V2-D2", "LE-D2"],
+    "gamesPerStratum": 512
+  },
+  "candidateSpecificRootSelection": {
+    "minimumPly": 8,
+    "minimumLegalMoveCount": 2,
+    "eligibilityUsesOnly": ["candidate-phase", "canonical-preconditions", "canonical-move-abstraction-available"],
+    "eligibilityExcludes": ["candidate-consequence", "D1-value", "D2-value", "D3-value", "reply-outcome", "game-outcome"],
+    "withinTrajectoryMethod": "minimum-sha256-rank",
+    "noReplacement": true,
+    "duplicateRuleStateHandling": "retain-lowest-historicalTrajectoryHash-then-seed-within-candidate"
+  },
+  "candidateMoveRepresentative": {
+    "population": "all exact E.moveVariants matching the frozen canonical move abstraction at the selected root",
+    "representative": "lexicographically-smallest-AI.moveKey",
+    "selectionUsesSearchValue": false,
+    "selectionUsesConsequence": false,
+    "allLegalMovesMeasuredForComparator": true
+  },
+  "measurement": {
+    "searchSemantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+    "depths": [1, 2, 3],
+    "evaluationProfile": "bao",
+    "quiescenceDepth": 1,
+    "orderQuiescenceCaptures": false,
+    "formalTacticalEndpointDepth": 3
+  },
+  "formalEndpoints": {
+    "structuralSuccess": {"nullProbability": 0.5, "alternative": "greater", "minimumObservedRate": 0.6, "test": "exact-one-sided-binomial"},
+    "tacticalValueSuccess": {"nullProbability": 0.5, "alternative": "greater", "minimumObservedRate": 0.6, "test": "exact-one-sided-binomial"},
+    "consistencyGates": {"minimumD3AtOrAboveStateMedianRate": 0.6, "maximumD3UniqueWorstRate": 0.15},
+    "multiplicity": {"family": "8-planned-co-primary-tests-4-candidates-x-2-endpoints", "alpha": 0.05, "method": "Holm-Bonferroni"}
+  },
+  "estimabilityAndTransferabilityGates": {
+    "minimumSelectedUniqueHistoricalTrajectoriesPerCandidate": 96,
+    "minimumSelectedUniqueRuleStatesPerCandidate": 96,
+    "minimumDistinctOpeningPrefixesPerCandidate": 48,
+    "maximumSingleOpeningPrefixShare": 0.1,
+    "minimumGenerationStrataPerCandidate": 4,
+    "maximumSingleGenerationStratumShare": 0.5
+  },
+  "formalResult": {
+    "selectedRoots": 1272,
+    "structuralSuccesses": 1245,
+    "structuralSuccessRate": 0.9787735849056604,
+    "d3TopSetSuccesses": 937,
+    "d3TopSetRate": 0.7366352201257862,
+    "d3AtOrAboveStateMedianSuccesses": 1106,
+    "d3AtOrAboveStateMedianRate": 0.8694968553459119,
+    "d3UniqueWorstCount": 90,
+    "d3UniqueWorstRate": 0.07075471698113207,
+    "distinctOpeningPrefixes": 1121,
+    "generationStrata": 6,
+    "decision": "CONFIRMED"
+  },
+  "interpretationBoundary": {
+    "machineReproducibleOnly": true,
+    "humanExpertTraditionalClaimAuthorized": false,
+    "pedagogicalClaimAuthorized": false,
+    "generalizationBeyondFrozenRulesAndSearchInstrumentAuthorized": false
+  }
+}

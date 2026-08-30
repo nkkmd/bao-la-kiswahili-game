@@ -32,9 +32,18 @@ G2-06のtechnical-invalid representation、G2-08のnon-estimable development lea
 
 ## C03 exact / phase-transport の分離
 
-元の`TM-S2-C03`は、Mtaji・`mt-0`・`coarse-no-index`・`reusablePits=0..2`・`takata-row1/right`を含む凍結済みのformal constructであり、Namuaを含む汎用constructではない。
+元の`TM-S2-C03` primary definitionは次の凍結済みmachine constructである。
+
+- phase: `mtaji`
+- move abstraction mode: `coarse-no-index`
+- move family: `takata`, row `1`, direction `right`, phase `mtaji`, `side=null`, `houseChoice=null`, `houseTwo=false`; pit indexはabstractionから除外
+- precondition: `reusablePits=0-2`
+- primary structural consequence: `actorNyumbaSeedsDeltaSign=0`
+- paired diagnostic consequence: `worstReplyActorCaptureMoveDeltaSign=0`（diagnostic-only、primary definitionの代替不可）
 
 したがってG2-09では、元定義をそのまま適用できるものを`C03-EXACT`として扱う。Namua等へのphase跨ぎは、Stage 0で意味論的に一意・再現可能に定義できると確認された場合に限り、G2-09専用の別constructとしてprospectively固定する。意味論的に一意に定義できない場合はfail-closedで`TECHNICALLY-INELIGIBLE`として扱い、元C03を変形して救済しない。
+
+上流の完全なmachine-readable referenceは`preregistration/UPSTREAM_C03_FROZEN_REFERENCE.json`を参照する。
 
 ## Stage構成
 

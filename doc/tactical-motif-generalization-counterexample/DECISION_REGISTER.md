@@ -30,7 +30,7 @@ RAW identityのみをauthoritativeとし、`pits/reserve/houseOwned/player/phase
 
 ## TMGC-D007 — Scientific seed reservation
 
-Stage 1 `29110001..29114096`、Stage 2 `29210001..29218192`をG2-09専用として予約する。両blockとも開始時点では`UNCONSUMED`である。
+Stage 1 `29110001..29114096`、Stage 2 `29210001..29218192`をG2-09専用として予約する。両blockとも開始時点では`UNCONSUMED`である。repository検索で開始時点に同一seed startの既存使用がないことを確認した。
 
 ## TMGC-D008 — Development / confirmation firewall
 
@@ -43,3 +43,9 @@ G2-08のleaf-level development observationsをG2-09のvalidated input、classifi
 ## TMGC-D010 — Decision vocabulary
 
 `STUDY_1_PROTOCOL.md`に記載したformal decision vocabularyをoutcome前に固定し、同Study内の結果を見た後に救済labelを追加しない。
+
+## TMGC-D011 — Upstream C03 provenance correction
+
+Stage 0 code-level auditでResearch Generation 1のcandidate/spec/authorization正本を再照合し、開始時prospective文書の一部にあったC03記述を正本準拠へ訂正した。primary consequenceは`actorNyumbaSeedsDeltaSign=0`単独であり、`coarse-no-index`はsource policyではなくmove abstraction modeである。上流formal endpointのminimum observed rateは各0.60であり、exact one-sided binomial + Holm-Bonferroni + consistency/estimability gatesがformal ruleである。
+
+この訂正はG2-09 scientific evidence生成前、reserved seed未消費、Stage 1/2未authorizedの状態で行われたprovenance correctionであり、scientific designのoutcome-driven変更ではない。

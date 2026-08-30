@@ -14,24 +14,31 @@
 
 元Studyのformal decision、candidate definition、population、threshold、seed、paired-family handling、search/evaluator condition、decision ruleをG2-09から変更しない。C01/C02/C04の救済も行わない。
 
-`TM-S2-C03`の凍結済みformal definitionの主要事項は以下である。
+### TM-S2-C03 primary definition
 
+- candidate ID: `TM-S2-C03`
 - phase: `mtaji`
-- observational family: `mt-0`
-- source policy: `coarse-no-index`
-- move class: `takata-row1`
-- direction: `right`
-- `reusablePitsMin = 0`
-- `reusablePitsMax = 2`
-- consequence: `actorNyumbaSeedsDeltaSign = 0`, `actorReserveDelta = 0`, `phaseAfter = mtaji`
-- minimum candidate roots: `20`
-- minimum paired roots: `5`
-- minimum structural success rate: `0.95`
-- minimum tactical-value success rate: `0.70`
+- move abstraction mode: `coarse-no-index`
+- move abstraction: `takata`, row `1`, direction `right`, phase `mtaji`, `side=null`, `houseChoice=null`, `houseTwo=false`; index omitted
+- precondition: `reusablePits=0-2`
+- consequence: `actorNyumbaSeedsDeltaSign=0`
+- paired diagnostic: same precondition + `worstReplyActorCaptureMoveDeltaSign=0`; diagnostic-only and never a canonical replacement
 
-Research Generation 1のformal resultは、1272 matched/comparable roots、structural success `1245/1272 = 0.9787735849`、D3 top-set success `937/1272 = 0.7366352201`、paired roots `474`、final `CONFIRMED`であった。
+### Research Generation 1 formal measurement / decision contract
 
-これらはG2-09の基準点であり、G2-09の新しいscientific resultではない。
+- fresh Stage 2 population: 3,072 games, seeds `22000001..22003072`, six trajectory-generation strata ×512, first 8 plies seeded-uniform exact `E.moveVariants`, max ply 100
+- candidate-specific root selection was consequence-blind, value-blind, outcome-blind, deterministic and no-replacement
+- canonical move representative: lexicographically smallest `AI.moveKey` among all legal exact moveVariants matching the frozen abstraction; no search value or consequence used for representative selection
+- root-search instrument: exact full-window root candidates, D1/D2/D3, `evaluationProfile=bao`, `quiescenceDepth=1`, `orderQuiescenceCaptures=false`
+- co-primary endpoints: structural consequence success and exact D3 top-set membership
+- each co-primary endpoint: exact one-sided binomial test against `p=0.50`, observed rate `>=0.60`
+- multiplicity: eight planned tests, Holm-Bonferroni FWER 0.05
+- consistency gates: D3 at-or-above-state-median rate `>=0.60`; D3 unique-worst rate `<=0.15`
+- estimability/transferability gates per candidate: at least 96 unique historical trajectories, 96 unique rule states, 48 opening prefixes, maximum single-prefix share 0.10, at least 4 generation strata, maximum single-stratum share 0.50
+
+Research Generation 1のformal C03 resultは、1,272 selected roots、structural success `1245/1272 = 0.9787735849`、D3 top-set success `937/1272 = 0.7366352201`、D3 at-or-above-median `1106/1272 = 0.8694968553`、D3 unique-worst `90/1272 = 0.0707547170`、final `CONFIRMED`であった。
+
+これらはG2-09のimmutable upstream referenceであり、G2-09の新しいscientific resultではない。
 
 ## 3. 新しく検証するconstruct
 
@@ -43,7 +50,7 @@ G2-09は以下を独立に扱う。
 - frozen generalization group / boundary
 - frozen counterexample group / boundary
 
-構造的成立とsearch-based tactical-value成立は別endpointとし、search disagreementをmotifの構造的不成立と同一視しない。
+構造的成立とsearch-based tactical-value成立は別endpointとし、search disagreementをmotifの構造的不成立と同一視しない。Research Generation 1の0.60等の閾値は上流Studyのformal ruleとして保持するが、G2-09のformal generalization/counterexample acceptance ruleを自動的に意味しない。G2-09固有ruleは科学的evidence生成前に別途凍結する。
 
 ## 4. Candidate axes
 
