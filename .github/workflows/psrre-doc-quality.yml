@@ -1,5 +1,6 @@
 name: PSRRE Final Documentation Quality
 
+# Archived after PSRRE-STUDY1 closure: no manual dispatch is exposed on main.
 on:
   push:
     branches:
@@ -8,7 +9,6 @@ on:
       - 'tools/experiments/finalize-psrre-doc-quality.py'
       - '.github/workflows/psrre-doc-quality.yml'
       - 'doc/prospective-strategic-regime-representation-eligibility/checkpoints/2026-08-30-final-documentation-quality-request.md'
-  workflow_dispatch:
 
 permissions:
   contents: write
