@@ -3,7 +3,7 @@
 Version: 2.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-08-29
+更新日: 2026-08-30
 
 ## 1. 目的
 
@@ -949,17 +949,19 @@ PCEM-STUDY1の55 audits / promoted 0 / Stage 2 non-authorizationはimmutable。m
 
 #### G2-08 — Machine Decision-Failure Taxonomy Study 1
 
-**状態:** planned / new research question
+**状態:** completed / `MDFT-STUDY1 = NON-ESTIMABLE`
 
 中心課題:
 
 > 「悪手class」を直接promotionするのではなく、machine/search decision failureを再現可能なmechanistic failure modesへ分解できるか。
 
-候補familyにはhorizon failure、reply-undercoverage、ranking instability、capture-sequence misvaluation、reserve / house valuation failure、morphology mismatch、tactical oversight、long-horizon structural misvaluation等を含め得る。
+Stage 0は`STAGE0-TECHNICAL-PASS`。Fresh Stage 1は4,096 games、4,068 unique trajectories、512 selected roots（Namua/Mtaji 256/256）を用い、production / independent full recomputationとmandatory artifact preservationをexact一致で完了した。しかしprospectively frozen global readiness gateのうち、distinct opening prefixes `2836 < 3000`とLOW_CAPTURE selected share `170/512 = 0.33203125 > 0.32`が未達となったため、Stage 1は`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`、Study formal decisionは`NON-ESTIMABLE`である。
 
-BMP Study 1の0 `CONFIRMED` / 4 `NOT-CONFIRMED`は変更しない。C01-C03のstructural/reply recurrenceはhypothesis-generation inputに限り使用可能とする。
+Leaf-level development promotion formulaはF01/F02/F03/F05/F06/F10でtrueだったが、global readiness failure後にこれらをtaxonomy/Stage 2 targetへ救済しない。F04/F07/F08はfalse、F09はhistorical morphology classifierをexact再構築できずscientific evidence前にtechnical-ineligibleだった。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、reserved seeds `29010001..29018192`は未消費である。
 
-**Priority:** P1
+BMP Study 1の0 `CONFIRMED` / 4 `NOT-CONFIRMED`、G2-07 technical-invalid closure、その他既存研究のformal decisionは変更しない。同じStage 1 evidenceへのthreshold relaxation、source-policy reweighting、root deletion、seed extension、replacement populationによる救済は禁止する。
+
+**Priority:** completed
 
 #### G2-09 — Tactical Motif Generalization / Counterexample Study 1
 
@@ -1073,12 +1075,12 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07 (completed), G2-08, G2-09, G2-10
+P1: G2-07 (completed), G2-08 (completed), G2-09, G2-10
 P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-07`も`PCRPR-STUDY1`として実行され、mandatory full independent final verificationをartifact-transfer failureによりmaterializeできなかったためStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。G2-03のvalidated transform setは空のままで、G2-04/G2-06/G2-07の未実行Stage 2を後続Studyで救済しない。G2-01..G2-07はclosure済みであり、次の未着手machine-only agenda itemは`G2-08 — Machine Decision-Failure Taxonomy Study 1`である。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-08はclosure済みであり、次の未着手machine-only agenda itemは`G2-09 — Motif Generalization / Counterexample Study 1`である。
 
 ### 9.9 第二世代プログラムの完了条件
 

@@ -799,7 +799,33 @@ Production-only performanceはunverified provenanceとして保存するが、ac
 - [`practical-comeback-reply-pressure-representation/DECISION_REGISTER.md`](practical-comeback-reply-pressure-representation/DECISION_REGISTER.md)
 - [`practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md`](practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md)
 
-**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖し、次のindependent agenda itemはG2-08として新規prospective contractで扱う。
+**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖する。G2-08も独立prospective studyとして完了済みであり、次の未着手機械研究はG2-09である。
+
+---
+
+
+### 24. Machine Decision-Failure Taxonomy — Study 1
+
+**研究題目:** Baoにおける機械的意思決定失敗の構造分類 — horizon failure, reply undercoverage, ranking instability, tactical oversight, valuation failure, morphology mismatch, and long-horizon structural misvaluation のprospective分離・再現可能なtaxonomy構築
+**Program:** `G2-08` / **Study ID:** `MDFT-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / formal decision `NON-ESTIMABLE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+Stage 0は`STAGE0-TECHNICAL-PASS`。Fresh Stage 1では4,096 gamesから512 roots（Namua/Mtaji 256/256）を選択し、productionとstructurally independent implementationがsource generation、selection、analysis rows、development coreをexact一致させ、mandatory full artifactsも保存した。
+
+一方、prospectively frozen global readiness gateのうち、distinct opening prefixesが`2836 < 3000`、最大single source-policy shareがLOW_CAPTURE `170/512 = 0.33203125 > 0.32`で未達となった。このためStage 1は`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`、Studyは`NON-ESTIMABLE`で閉じた。
+
+F01/F02/F03/F05/F06/F10はleaf-level development promotion formulaを満たしたが、global readiness failureのためvalidated/frozen taxonomyまたはStage 2 targetへ昇格しない。F04/F07/F08はpromotion false、F09はscientific entry前にtechnical-ineligibleだった。Stage 2 seeds `29010001..29018192`は未消費である。
+
+**最初に読む:**
+
+- [`machine-decision-failure-taxonomy/STUDY_1_OVERVIEW.md`](machine-decision-failure-taxonomy/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`machine-decision-failure-taxonomy/STUDY_1_FINAL_REPORT.md`](machine-decision-failure-taxonomy/STUDY_1_FINAL_REPORT.md)
+- [`machine-decision-failure-taxonomy/CURRENT_STATUS.md`](machine-decision-failure-taxonomy/CURRENT_STATUS.md)
+- [`machine-decision-failure-taxonomy/DECISION_REGISTER.md`](machine-decision-failure-taxonomy/DECISION_REGISTER.md)
+- [`machine-decision-failure-taxonomy/REPRODUCIBILITY_INDEX.md`](machine-decision-failure-taxonomy/REPRODUCIBILITY_INDEX.md)
 
 ---
 

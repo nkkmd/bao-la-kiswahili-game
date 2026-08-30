@@ -1,0 +1,50 @@
+name: MDFT Stage 0 F10 Preflight
+
+# Technical-only bounded-continuation feasibility. No MDFT scientific seed block is used.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-08-machine-decision-failure-taxonomy
+    paths:
+      - '.github/workflows/mdft-stage0-f10-preflight.yml'
+      - 'tools/experiments/run-mdft-stage0-f10-preflight.js'
+      - 'tools/experiments/lib/mdft-stage0-production.js'
+      - 'tools/experiments/lib/mdft-stage0-independent.js'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+      - 'tools/experiments/lib/search-reliability-decision-robustness.js'
+
+permissions:
+  contents: read
+
+jobs:
+  f10-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout frozen branch source
+        uses: actions/checkout@v4
+
+      - name: Environment
+        run: |
+          node --version
+          git rev-parse HEAD
+          uname -a
+
+      - name: Run MDFT F10 bounded-continuation technical preflight
+        run: |
+          /usr/bin/time -v node tools/experiments/run-mdft-stage0-f10-preflight.js artifacts/local/mdft-stage0-f10-preflight 2>&1 | tee artifacts-mdft-stage0-f10.log
+
+      - name: Preserve F10 technical artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdft-stage0-f10-${{ github.sha }}
+          path: |
+            artifacts/local/mdft-stage0-f10-preflight/**
+            artifacts-mdft-stage0-f10.log
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30
