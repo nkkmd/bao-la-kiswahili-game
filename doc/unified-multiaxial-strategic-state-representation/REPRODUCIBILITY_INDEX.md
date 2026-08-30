@@ -9,6 +9,8 @@ repository = nkkmd/bao-la-kiswahili-game
 baseline remote main = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
 baseline main tree = 462af8c1443ab6fa00dcadfb46b171f1c8673550
 research branch = research/g2-10-unified-multiaxial-strategic-state-representation
+initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
+pre-scientific tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
 ```
 
 ## 2. Study / Stage IDs
@@ -26,6 +28,7 @@ Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
 - `STUDY_1_OVERVIEW.md`
 - `STUDY_1_PROTOCOL.md`
 - `UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`
+- `UPSTREAM_STUDY_AUDIT.md`
 - `CANDIDATE_AXIS_INVENTORY.md`
 - `CURRENT_STATUS.md`
 - `DECISION_REGISTER.md`
@@ -33,27 +36,30 @@ Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
 - `RESEARCH_LOG.md`
 - `RESUME_HERE.md`
 - `prereg/STUDY_1_INITIAL_CONTRACT.json`
+- `authorizations/README.md`
+- `results/README.md`
 - `checkpoints/2026-08-30-study-start-freeze.md`
+- `checkpoints/2026-08-30-initial-freeze-audit.md`
 
-## 4. upstream canonical sources
+## 4. upstream central source
 
-開始時auditで最低限参照したcentral source:
+開始時auditで参照したcentral source:
 
-- `README.md`
-- `doc/FUTURE_RESEARCH_AGENDA.md`
-- `doc/RESEARCH_INDEX.md`
-- `doc/DOCUMENTATION_LANGUAGE_POLICY.md`
-- `doc/JAPANESE_DOCUMENTATION_QUALITY_GATE.md`
+- `/README.md`
+- `/doc/FUTURE_RESEARCH_AGENDA.md`
+- `/doc/RESEARCH_INDEX.md`
+- `/doc/DOCUMENTATION_LANGUAGE_POLICY.md`
+- `/doc/JAPANESE_DOCUMENTATION_QUALITY_GATE.md`
 
-G2-01..G2-09の`CURRENT_STATUS.md`を確認し、とくにG2-02およびG2-06〜G2-09ではcanonical machine-readable resultも確認した。
+G2-01..G2-09の`CURRENT_STATUS.md`を確認し、とくにG2-02およびG2-06〜G2-09ではFinal Report、Decision Register、Reproducibility Index、canonical machine-readable resultを必要な範囲でcross-checkした。
 
 主要machine-readable source:
 
-- `doc/search-reliability-decision-robustness/results/STAGE_2_FORMAL_RESULT.json`
-- `doc/rich-critical-position-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`
-- `doc/practical-comeback-reply-pressure-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`
-- `doc/machine-decision-failure-taxonomy/results/STAGE_1_DEVELOPMENT_RESULT.json`
-- `doc/tactical-motif-generalization-counterexample/results/STUDY_1_FINAL_RESULT.json`
+- `/doc/search-reliability-decision-robustness/results/STAGE_2_FORMAL_RESULT.json`
+- `/doc/rich-critical-position-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `/doc/practical-comeback-reply-pressure-representation/results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `/doc/machine-decision-failure-taxonomy/results/STAGE_1_DEVELOPMENT_RESULT.json`
+- `/doc/tactical-motif-generalization-counterexample/results/STUDY_1_FINAL_RESULT.json`
 
 ## 5. upstream state summary
 
@@ -68,6 +74,8 @@ PCRPR-STUDY1 Stage 1 = STAGE1-TECHNICAL-INVALID
 MDFT-STUDY1 = NON-ESTIMABLE
 TMGC-STUDY1 = TECHNICAL-INVALID
 ```
+
+G2-07 Decision Register D38のintegration provenanceだけにstale entryを確認したが、scientific closureはCURRENT_STATUS / Final Report / Reproducibility Index / machine-readable resultで一致している。詳細は`UPSTREAM_STUDY_AUDIT.md`。
 
 ## 6. RAW identity
 
@@ -91,13 +99,27 @@ validated transform set=`[]`。
 29410001..29418192 = Stage 2 / RESERVED-UNCONSUMED
 ```
 
+G2-10開始baseline `main`でStage 1 / Stage 2 start seedの既存記録は見つからず、G2-09未消費blockも再利用していない。
+
 seed consumption stateはscientific execution開始時にexecution-start artifactへmaterializeし、consume-once semanticsを適用する。
 
-## 8. future artifacts
+## 8. initial freeze audit
+
+```text
+checkpoint = checkpoints/2026-08-30-initial-freeze-audit.md
+result = PASS
+scientific evidence generated = false
+Stage 0 technical execution eligible = true
+Stage 1 scientific execution authorized = false
+Stage 2 scientific execution authorized = false
+```
+
+## 9. future artifacts
 
 Stage 0以降で次を追加する予定である。存在するまでcanonical resultとはみなさない。
 
 - machine-readable Stage 0 technical spec / result
+- Stage 0 production / independent technical comparison
 - Stage 1 source freeze / feature dictionary / development spec
 - Stage 1 explicit authorization
 - Stage 1 execution-start artifact
@@ -107,6 +129,6 @@ Stage 0以降で次を追加する予定である。存在するまでcanonical 
 - Stage 2 production / independent formal result
 - final Study result
 
-## 9. documentation quality
+## 10. documentation quality
 
 新規human-readable Markdownは作成時点から日本語主体とする。immutable化、hash固定、closure前に`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`の必須ゲートを適用する。

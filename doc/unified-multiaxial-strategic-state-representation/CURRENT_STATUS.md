@@ -17,9 +17,10 @@ Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
 
 ## 現在の正式状態
 
-**STUDY STARTED / INITIAL PROSPECTIVE FREEZE IN PROGRESS / NO SCIENTIFIC EVIDENCE GENERATED / STAGE 1 NOT AUTHORIZED / STAGE 2 NOT AUTHORIZED**
+**STUDY STARTED / INITIAL PROSPECTIVE FREEZE COMPLETE / INITIAL CONSISTENCY AUDIT PASS / NO SCIENTIFIC EVIDENCE GENERATED / STAGE 0 TECHNICAL EXECUTION NOT YET STARTED / STAGE 1 NOT AUTHORIZED / STAGE 2 NOT AUTHORIZED**
 
 ```text
+Initial freeze audit = PASS
 Stage 0 = NOT-YET-EXECUTED
 Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
@@ -41,7 +42,13 @@ user-provided expected = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
 match = true
 ```
 
-このcommitはG2-09 integration PR #85のmerge commitである。
+## initial freeze provenance
+
+```text
+initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
+pre-scientific eligibility/documentation tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
+scientific evidence generated before/through tightening = false
+```
 
 ## upstream auditの要点
 
@@ -57,7 +64,11 @@ G2-08 / MDFT-STUDY1 = NON-ESTIMABLE
 G2-09 / TMGC-STUDY1 = TECHNICAL-INVALID / scientific generalization evidence generated = false
 ```
 
-詳細な利用資格は`UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`に固定した。
+詳細な利用資格は`UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`、cross-document auditは`UPSTREAM_STUDY_AUDIT.md`に固定した。
+
+### non-blocking upstream documentation discrepancy
+
+G2-07 `DECISION_REGISTER.md` D38だけはhistorical `main integration = NOT PERFORMED`を残す一方、G2-07 `CURRENT_STATUS.md` / `REPRODUCIBILITY_INDEX.md`はPR #77によるintegration completeを記録する。scientific decision / seed / authorization stateには不一致がないため、G2-10 eligibilityには影響しない。
 
 ## RAW identity
 
@@ -66,12 +77,27 @@ pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
 ```
 
+## initial freeze audit
+
+```text
+Study / Stage IDs = PASS
+eligibility vocabulary = PASS
+upstream scientific status = PASS
+RAW identity = PASS
+validated transform set = [] / PASS
+seed internal overlap = 0 / PASS
+G2-09 seed reuse = none / PASS
+Japanese-first human documentation = PASS
+no-rescue / G2-11 / human-claim firewalls = PASS
+blocking inconsistency = none
+```
+
 ## 次に許可される工程
 
-1. 初期freeze文書とmachine-readable initial contractを同一commitへmaterializeする。
-2. freeze後の整合性監査を行う。
-3. Stage 0 technical-only tooling / fixturesを実装する。
-4. Stage 0 technical seedまたはhand-built fixtureだけでtechnical validationを実行する。
-5. Stage 0がPASSし、Stage 1 source/spec/feature/promotion contractを結果を見る前にfreezeできた場合だけ、別の明示的authorizationでStage 1 scientific seed消費を許可する。
+1. Stage 0 technical-only spec / fixtures / validatorを実装する。
+2. Stage 0 technical seed `29300001..29300064`またはhand-built fixtureだけを使用する。
+3. upstream construct reconstruction、RAW identity、candidate observable computation、deterministic floating-point / quantization / serialization、independent implementation、source/firewall/resource/artifact pathを検証する。
+4. Stage 0がPASSした場合にのみStage 1 source/spec/feature/promotion contractを完全freezeする。
+5. Stage 1 explicit authorization artifactが存在するまで`29310001..29314096`を消費しない。
 
-Stage 1 / Stage 2 scientific seedは現時点で消費しない。
+Stage 1 / Stage 2 scientific executionは現時点で承認していない。

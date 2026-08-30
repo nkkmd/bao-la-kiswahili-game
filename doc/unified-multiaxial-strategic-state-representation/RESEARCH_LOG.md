@@ -6,7 +6,7 @@ GitHub remote `main`を再取得し、HEADが`495c9a993278ffab03a6d2cfe2c9a7093c
 
 中央文書として`README.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、`doc/RESEARCH_INDEX.md`、`doc/DOCUMENTATION_LANGUAGE_POLICY.md`、`doc/JAPANESE_DOCUMENTATION_QUALITY_GATE.md`を確認した。
 
-Research Generation 2 `G2-01..G2-09`のcanonical statusを監査し、とくにG2-02、G2-06、G2-07、G2-08、G2-09ではmachine-readable canonical resultまで確認した。
+Research Generation 2 `G2-01..G2-09`のcanonical statusを監査し、とくにG2-02、G2-06、G2-07、G2-08、G2-09ではCURRENT_STATUS、Final Report、Decision Register、Reproducibility Index、canonical machine-readable resultを必要な範囲で照合した。
 
 主な監査結果:
 
@@ -72,6 +72,59 @@ Stage 2 scientific = 29410001..29418192 / RESERVED-UNCONSUMED
 
 G2-09の未消費scientific blockは再利用しない。
 
-## 現在の停止境界
+## 2026-08-30 — initial freeze materialization
 
-初期freezeと整合性監査が完了するまでStage 0 technical executionへ進まない。Stage 1 / Stage 2 scientific executionは明示的authorizationまで開始しない。
+initial Study documents、eligibility contract、candidate axis inventory、protocol、decision register、reproducibility index、machine-readable initial contract等を1つのatomic commitとして固定した。
+
+```text
+commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
+parent = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
+scientific evidence generated = false
+```
+
+## 2026-08-30 — pre-scientific表記精密化
+
+initial freezeの再読で、日本語品質とmachine-readable canonical categoryの表記だけを修正した。
+
+```text
+commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
+scientific evidence generated before correction = false
+scientific seed consumed = false
+```
+
+修正内容:
+
+- English-heavy human-facing titleを日本語主体へ変更。
+- Research Generation 1 eligibilityのcanonical category tokenとscopeをmachine-readable contract内で分離。
+- G2-02 fresh raw observable conceptの`DEVELOPMENT-CANDIDATE-ONLY`を明示。
+
+scientific boundary、seed、axis、endpoint、thresholdは変更していない。
+
+## 2026-08-30 — upstream cross-document audit
+
+G2-02 / G2-06 / G2-07 / G2-08 / G2-09のFinal Report、Decision Register、Reproducibility IndexをCURRENT_STATUS / machine-readable canonical resultと追加照合した。
+
+Scientific statusは一致した。
+
+G2-07 `DECISION_REGISTER.md` D38のみ、旧`main integration = NOT PERFORMED`を残している。一方、同Studyの`CURRENT_STATUS.md` / `REPRODUCIBILITY_INDEX.md`はPR #77 integration completeを記録する。これはrepository integration provenanceだけのstale entryで、scientific decision、seed state、Stage 2 non-authorizationには影響しない。
+
+G2-10ではこの非科学的upstream文書差を記録し、upstream scientific closureをretroactive editしない。
+
+## 2026-08-30 — initial consistency audit
+
+次をPASSと判定した。
+
+```text
+Study / Stage identity consistency
+upstream evidence eligibility consistency
+RAW identity
+validated transform set = []
+seed freshness / internal non-overlap
+G2-09 seed non-reuse
+Japanese-first documentation
+no-rescue rule
+G2-11 boundary
+human/game-theoretic claim firewall
+```
+
+Stage 0 technical executionを開始できるが、Stage 1 / Stage 2 scientific executionは未承認のままである。

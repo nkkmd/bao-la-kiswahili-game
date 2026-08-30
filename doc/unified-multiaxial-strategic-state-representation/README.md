@@ -6,18 +6,19 @@ Research Generation 2 `G2-10` の独立研究 **Unified Multiaxial Strategic Sta
 
 ## 現在地
 
-本Studyは2026-08-30にremote `main` `495c9a993278ffab03a6d2cfe2c9a7093c559fd5`から開始した。現在はscientific evidence生成前のprospective freeze段階であり、Stage 1 / Stage 2の科学用seedは未消費である。
+本Studyは2026-08-30にremote `main` `495c9a993278ffab03a6d2cfe2c9a7093c559fd5`から開始した。initial prospective freezeとcross-document consistency auditは完了し、G2-10 scientific evidenceはまだ生成していない。Stage 1 / Stage 2の科学用seedは未消費・未承認である。
 
 ## 読む順序
 
 1. `STUDY_1_OVERVIEW.md` — 研究の問いと境界
-2. `UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md` — upstream evidenceの利用資格
-3. `CANDIDATE_AXIS_INVENTORY.md` — 候補axisと直接再利用可否
-4. `STUDY_1_PROTOCOL.md` — Stage構成、firewall、seed、decision rule
-5. `CURRENT_STATUS.md` — 現在の正式状態
-6. `DECISION_REGISTER.md` — prospective decisionの台帳
-7. `REPRODUCIBILITY_INDEX.md` — source / hash / artifact入口
-8. `RESUME_HERE.md` — 再開位置
+2. `UPSTREAM_STUDY_AUDIT.md` — G2-01〜G2-09の開始時監査
+3. `UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md` — upstream evidenceの利用資格
+4. `CANDIDATE_AXIS_INVENTORY.md` — 候補axisと直接再利用可否
+5. `STUDY_1_PROTOCOL.md` — Stage構成、firewall、seed、decision rule
+6. `CURRENT_STATUS.md` — 現在の正式状態
+7. `DECISION_REGISTER.md` — prospective decisionの台帳
+8. `REPRODUCIBILITY_INDEX.md` — source / hash / artifact入口
+9. `RESUME_HERE.md` — 再開位置
 
 ## 不変の開始境界
 
