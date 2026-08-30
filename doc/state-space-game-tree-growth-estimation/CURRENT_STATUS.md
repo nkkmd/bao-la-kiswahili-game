@@ -15,8 +15,9 @@ Stage 0 v2 = STAGE0-TECHNICAL-PASS
 Stage 1 = STAGE1-TECHNICAL-INVALID / same-evidence rerun NOT AUTHORIZED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Canonical selectedEstimator = null
-Central documentation synchronization = COMPLETE ON RESEARCH BRANCH
-Main integration = NOT PERFORMED
+Central documentation synchronization = COMPLETE
+Main integration = COMPLETE
+Integrated research-branch head = 741ba02ffa944a9569b262841465bfc78db8220a
 G2-11 = NOT-AUTHORIZED / unchanged
 ```
 
@@ -87,7 +88,7 @@ full Bao state-space/game-tree estimate = NOT AUTHORIZED
 
 ## Central documentation synchronization
 
-Study-local closure was fixed in commit `4f63d615ef25702d99881aedf4a4054fbe7c275b`. The branch-only central-document synchronization was explicitly authorized with `mainIntegrationAuthorized=false` and completed successfully:
+Study-local closure was fixed in commit `4f63d615ef25702d99881aedf4a4054fbe7c275b`. Before main integration, the branch-only central-document synchronization was explicitly authorized with `mainIntegrationAuthorized=false` and completed successfully:
 
 ```text
 authorization commit = 57c813726e72486f38f3da86216523afbccdafd7
@@ -111,7 +112,18 @@ workflow removal commit = 9651f62c8f07605800b6a9103d9d6966c389870d
 maintenance-tool removal commit = 8ef6b0329d386db48c729ea5017cfe6f4e21eb10
 ```
 
-No integration to `main` was performed.
+## Main integration
+
+After a fresh final documentation and branch-divergence audit, the user explicitly authorized integration to `main`. Immediately before integration:
+
+```text
+remote main = c5efcdb7972d1bc775a2857c1b0641c35c9df622
+research branch = 741ba02ffa944a9569b262841465bfc78db8220a
+compare = ahead 16 / behind 0
+merge base = c5efcdb7972d1bc775a2857c1b0641c35c9df622
+```
+
+`main` was fast-forwarded without force to `741ba02ffa944a9569b262841465bfc78db8220a`. This integration changes no scientific decision, threshold, estimator status, authorization, or evidence boundary.
 
 ## Canonical closure records
 
@@ -125,4 +137,4 @@ No integration to `main` was performed.
 
 G2-05 remains exactly `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`. G2-11 remains `NOT-AUTHORIZED`. A corrected growth-estimator validation requires a new prospective Study or explicit new version; this Study is not reopened or rescued.
 
-This research branch is closed and centrally synchronized, but not merged to `main`.
+This Study is closed, centrally synchronized, and integrated into `main`.
