@@ -1,6 +1,6 @@
-# Repository documentation instructions
+# リポジトリ文書作成指示
 
-## Human-facing documentation language
+## 人間向け文書の言語
 
 Bao研究およびAI Engineeringの**人間向けMarkdown文書は日本語を主言語とする**。
 
