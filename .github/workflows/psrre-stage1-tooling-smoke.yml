@@ -1,8 +1,8 @@
 name: PSRRE Stage 1 Tooling Smoke
 
 # Technical-only pre-scientific smoke. Never consumes PSRRE Stage 1/2 scientific seeds.
+# Archived after PSRRE-STUDY1 closure: no manual dispatch is exposed on main.
 on:
-  workflow_dispatch:
   push:
     branches:
       - research/pre-g2-11-strategic-regime-representation-eligibility
