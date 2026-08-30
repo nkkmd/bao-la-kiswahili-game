@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-12",
+  "studyId": "SSGTGE-STUDY1",
+  "stageId": "SSGTGE-S0-TECHNICAL-2026-08-30-v1",
+  "stageRole": "TECHNICAL-ONLY",
+  "scientificInferenceAuthorized": false,
+  "maximumTechnicalEnumerationDepth": 2,
+  "realDevelopmentSourceReadAuthorized": true,
+  "realDevelopmentMaximumDepthRead": 9,
+  "realDevelopmentCandidateEvaluationAuthorized": false,
+  "freshHoldoutGenerationAuthorized": false,
+  "freshDepth10ReadAuthorized": false,
+  "freshDepth11ReadAuthorized": false,
+  "syntheticEstimatorFixturesOnly": true,
+  "crossImplementationRelativeTolerance": 1e-12,
+  "technicalEnumerationResourceProfile": {
+    "maxCumulativeDistinctRawStates": 10000,
+    "maxDepthLabelledEdges": 50000,
+    "maxParentStateExpansions": 10000,
+    "maxMoveEvaluations": 50000,
+    "maxCumulativeTreeNodeOccurrences": 1000000,
+    "maxResidentSetBytes": 2147483648,
+    "maxWallClockSeconds": 180,
+    "maxUncompressedArtifactBytes": 67108864
+  },
+  "formalResourceCeilingsReference": {
+    "maximumCumulativeDistinctRawStates": 2000000,
+    "maximumCumulativeDepthLabelledLegalEdges": 12000000,
+    "maximumUniqueParentStateExpansions": 600000,
+    "maximumLegalMoveEvaluations": 12000000,
+    "maximumCumulativeTreeNodeOccurrences": 50000000,
+    "maximumResidentSetBytes": 6442450944,
+    "maximumWallClockSeconds": 1200,
+    "maximumUncompressedScientificArtifactBytes": 1073741824
+  },
+  "requiredTechnicalChecks": [
+    "standard-root RAW exact enumeration completes through depth 2",
+    "production materialization and independent depth-2 reconstruction agree",
+    "G2-05 depth 0..9 development source schema is accepted without candidate evaluation",
+    "no layer deeper than 9 is read",
+    "all three frozen estimator implementations pass synthetic family fixtures",
+    "repeated production synthetic calculation is deterministic",
+    "production and independent synthetic predictions agree within frozen 1e-12 relative tolerance",
+    "resource-limit and administrative-cutoff mappings are deterministic",
+    "negative controls are detected",
+    "artifact package contains production and independent results"
+  ],
+  "successToken": "STAGE0-TECHNICAL-PASS",
+  "failureToken": "STAGE0-TECHNICAL-INVALID"
+}
