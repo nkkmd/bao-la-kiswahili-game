@@ -6,6 +6,7 @@ on:
       - research/g2-10-unified-multiaxial-strategic-state-representation
     paths:
       - 'tools/experiments/materialize-g2-10-closure-docs.py'
+      - 'tools/experiments/cleanup-g2-10-central-index.py'
       - '.github/workflows/g2-10-closure-docs.yml'
   workflow_dispatch:
 
@@ -24,6 +25,7 @@ jobs:
       - name: Materialize central closure updates
         run: |
           python3 tools/experiments/materialize-g2-10-closure-docs.py
+          python3 tools/experiments/cleanup-g2-10-central-index.py
           git diff --check
           git diff -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
 
