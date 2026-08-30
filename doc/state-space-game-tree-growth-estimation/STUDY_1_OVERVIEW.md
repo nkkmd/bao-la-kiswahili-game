@@ -2,52 +2,26 @@
 
 Program: **Research Generation 2 / G2-12**  
 Study ID: `SSGTGE-STUDY1`  
-状態: **開始済み / initial prospective freeze complete / fresh holdout未生成**  
-正式判断: **未確定**
+状態: **完了 / technical-invalid closure**  
+正式判断: **`TECHNICAL-INVALID`**
 
 正式英語名: **State-Space / Game-Tree Growth Estimation Study 1**
 
-## 1. 何を調べる研究か
+## 1. 何を調べた研究か
 
-この研究では、標準初期局面からのbounded exact enumerationで既に得られているdepth 0..9のRAW-state / game-tree成長系列だけをdevelopment evidenceとして使い、結果を見る前に有限のestimator候補・選択規則・uncertainty rule・formal acceptance criterionを固定します。
+G2-05 `DRSSE-STUDY1`でexactに得られた標準初期局面のdepth 0..9成長系列をdevelopment evidenceとして使い、事前固定した有限のestimator候補から1つを選び、その後fresh exact depth 10で検証できるかを研究した。
 
-その後、developmentに使っていないfresh exact depth 10を生成し、凍結済みestimatorがその層をどの程度予測できるかを検証します。depth 11は同じestimatorを一切変更せず試すsecondary stress-testです。
+重要なのは、G2-05のformal exact domainを後から拡張するのではなく、growth estimatorのdevelopmentとfresh deeper holdout validationを独立したStudyとして分離した点である。
 
-## 2. 既存研究との境界
+## 2. 凍結したcontract
 
-直接の基礎はG2-05 `DRSSE-STUDY1`です。
-
-```text
-formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-complete exact layers = 0..9
-cumulative RAW states through depth 9 = 102857
-```
-
-G2-12はG2-05にdepth 10以降を後付けしてformal domainを拡張する研究ではありません。G2-05のexact claimはimmutableです。
-
-また、G2-10とPre-G2-11 `PSRRE-STUDY1`はいずれもG2-11へ渡せるfrozen strategic representationを生成していません。したがってG2-11は引き続き`NOT-AUTHORIZED`であり、本研究のstate-space growthをstrategic regime evidenceとして使用しません。
-
-## 3. 状態表現
-
-authoritative RAW identityは次の7項目です。
+RAW identityは次を維持した。
 
 ```text
-pits, reserve, houseOwned, player, phase, winner, pending
+pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn`と`reason`は除外します。validated transform setは`[]`なので、canonicalization / symmetry reduction / seat swap / reflection reductionは使用しません。
-
-## 4. Developmentとholdout
-
-DevelopmentはG2-05のexact depth 0..9 summaryに限定します。
-
-Formal primary holdoutはfresh exact depth 10です。Stage 2 runnerは標準初期RAW rootからdepth 0より再列挙し、G2-05のmaterialized state/edge rowsを入力として読み込みません。
-
-Depth 11はsecondary stress-testです。depth 10を見た後にestimatorを変更することは禁止されています。
-
-## 5. 凍結したestimator候補
-
-候補は3つに限定しました。
+候補は:
 
 ```text
 E1-TRAILING-LOG-LINEAR-W5
@@ -55,28 +29,62 @@ E2-LOG-QUADRATIC-D2PLUS
 E3-LOCAL-LOG-INCREMENT-TREND-W4
 ```
 
-primary modeled seriesは、`newRawStateCount[d]`と`treeNodeOccurrences[d]`です。
+primary seriesは`newRawStateCount`と`treeNodeOccurrences`、development backtestは`5->6`, `6->7`, `7->8`, `8->9`、eligibilityは最大absolute natural-log error `<=0.15`とした。
 
-Stage 1では`5->6`, `6->7`, `7->8`, `8->9`のrolling-origin backtestを行い、最大absolute log error `<= 0.15`をpromotion条件とします。eligible候補のうちworst-cell error、mean error、固定candidate orderの順で唯一のestimatorを選びます。
+Fresh depth 10をprimary holdout、depth 11をsecondary stress-testとして予約し、Stage 1完了前の生成・readを禁止した。
 
-## 6. Formal validation
+## 3. Stage 0
 
-Fresh depth 10について、次をすべて満たした場合だけpositive validationとします。
+Stage 0 v1はsource-binding defectによりoutput前に`STAGE0-TECHNICAL-INVALID`となった。科学output前のtechnical failureだったため、科学contractを変更せず、新しいtechnical-entry v2としてsource bindingとworkflow fail-closed mechanicsだけをprospectively修正した。
+
+v2はproduction / independent双方でdepth-2 technical fixtureを一致して再現し:
 
 ```text
-depth 10 complete exact layer = true
-production / independent exact mismatch = 0
-joint max absolute log error across graph/tree primary series <= 0.20
-both exact counts covered by frozen development-calibrated envelope
-post-holdout refit/recalibration = false
+Stage 0 v2 = STAGE0-TECHNICAL-PASS
 ```
 
-Positive labelは`VALIDATED-WITHIN-FRESH-DEPTH-10-HOLDOUT`です。
+となった。
 
-予測精度が基準を満たさなければ`NOT-VALIDATED`、depth 10をresource ceiling内でcompleteできなければ`RESOURCE-CENSORED`、estimatorをfreezeできなければ`NON-ESTIMABLE`等で正常にcloseします。
+## 4. Stage 1
 
-## 7. 重要な解釈境界
+Stage 1は別source freeze・別authorizationで一度だけ実行した。
 
-この研究は、validationに成功した場合でも直ちに「Baoの全状態数はX」「full game treeはY」と断定するものではありません。まず検証するのは、凍結済みestimatorがfresh bounded holdoutへどこまで一般化できるかです。
+production pathではE1/E2/E3を実development seriesへ適用し、production-onlyではE2が最良となった。
 
-詳細な科学的契約は`STUDY_1_PROTOCOL.md`と`preregistration/STUDY_START_FREEZE.md`を参照してください。
+```text
+E1 max abs log error = 0.2813333110915206
+E2 max abs log error = 0.07917793679237395
+E3 max abs log error = 0.1129709359542721
+production proposed winner = E2-LOG-QUADRATIC-D2PLUS
+```
+
+しかしmandatory independent verifierはE2の`newRawStateCount` depth 7 predictionで、凍結済みcross-implementation relative tolerance `1e-12`を超える差を検出した。
+
+```text
+prediction mismatch: E2-LOG-QUADRATIC-D2PLUS/newRawStateCount/7
+```
+
+したがってproduction-only E2 proposalはcanonical estimatorへ昇格していない。
+
+## 5. 正式結論
+
+Stage 1 authorizationはsame-evidence rerunを明示的に禁止していた。real development outcomeがproduction pathで既に生成された後のfailureであるため、verifier修正、tolerance緩和、E2 special-case、failed cell除外等による救済を行わない。
+
+```text
+Stage 1 = STAGE1-TECHNICAL-INVALID
+canonical selectedEstimator = null
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+formal decision = TECHNICAL-INVALID
+```
+
+Fresh depth 10/11は生成もreadもしていない。したがってformal deeper holdout validationは行われていない。
+
+## 6. 解釈境界
+
+本Studyから「E2がvalidationされた」「depth 10は約34万RAW statesになる」「Bao全体の状態空間はこの規模である」とは主張しない。production-only予測値はfailure provenance / hypothesis-generation / resource-planning用diagnosticに限定する。
+
+G2-05は`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`のまま不変であり、G2-11も`NOT-AUTHORIZED`のままである。
+
+再検証する場合は、このStudyを救済せず、新しいprospective Studyまたは明示的new versionとしてnumerical equivalence contractを含めてoutcome前に再freezeする必要がある。
+
+詳細は`STUDY_1_FINAL_REPORT.md`、`results/STUDY_1_FINAL_RESULT.json`、`REPRODUCIBILITY_INDEX.md`を参照する。

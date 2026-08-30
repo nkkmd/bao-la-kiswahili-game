@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-12",
+  "studyId": "SSGTGE-STUDY1",
+  "formalTitle": "State-Space / Game-Tree Growth Estimation Study 1",
+  "researchGeneration": "Research Generation 2",
+  "formalDecision": "TECHNICAL-INVALID",
+  "closureDate": "2026-08-31",
+  "baselineMainSha": "c5efcdb7972d1bc775a2857c1b0641c35c9df622",
+  "stageDecisions": {
+    "stage0v1": "STAGE0-TECHNICAL-INVALID",
+    "stage0v2": "STAGE0-TECHNICAL-PASS",
+    "stage1": "STAGE1-TECHNICAL-INVALID",
+    "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "canonicalEstimatorFrozen": false,
+  "selectedEstimator": null,
+  "freshDepth10GeneratedOrRead": false,
+  "freshDepth11GeneratedOrRead": false,
+  "formalDepth10ValidationPerformed": false,
+  "formalWholeBaoStateSpaceEstimateAuthorized": false,
+  "formalWholeBaoGameTreeEstimateAuthorized": false,
+  "stage1Failure": {
+    "runId": 33324107667,
+    "jobId": 99291109199,
+    "artifactId": 9735723141,
+    "artifactZipSha256": "7b415b0fad9cadf92568d0b1103b44d9325d8b4c2a729edb40cb1f673e3af09f",
+    "classification": "INDEPENDENT-PREDICTION-MISMATCH",
+    "message": "prediction mismatch: E2-LOG-QUADRATIC-D2PLUS/newRawStateCount/7",
+    "productionProcessPassed": true,
+    "independentVerificationPassed": false,
+    "sameEvidenceRerunAuthorized": false
+  },
+  "productionOnlyDiagnostic": {
+    "acceptedAsFormalEstimator": false,
+    "proposedSelectedEstimator": "E2-LOG-QUADRATIC-D2PLUS",
+    "reasonNotAccepted": "mandatory independent verification failed under the frozen cross-implementation tolerance"
+  },
+  "upstreamBoundaries": {
+    "DRSSE-STUDY1": "EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN / unchanged",
+    "G2-11": "NOT-AUTHORIZED / unchanged"
+  },
+  "futureResearchBoundary": "A corrected estimator-validation attempt requires a new prospective Study or explicit new version with a newly frozen technical-entry contract. The production-only Stage 1 proposal from this Study is not an accepted frozen estimator and may not be retrospectively validated on depth 10/11 within SSGTGE-STUDY1."
+}
