@@ -32,15 +32,15 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-## Stage 0 closure
+## Stage 0 — 終了状態
 
-Canonical Stage 0 disposition:
+Stage 0の正式な技術判断:
 
 ```text
 STAGE0-TECHNICAL-PASS
 ```
 
-Technical eligibility fixed before Stage 1 evidence:
+Stage 1の科学的証拠を見る前に固定したleafのtechnical eligibility:
 
 ```text
 MDFT-F05 = TECHNICALLY-ELIGIBLE
@@ -48,9 +48,9 @@ MDFT-F09 = TECHNICALLY-INELIGIBLE
 MDFT-F10 = TECHNICALLY-ELIGIBLE
 ```
 
-F09 was excluded because the historically frozen morphology classifier could not be reconstructed exactly from currently preserved repository sources without refit or invention. This does not modify the historical Position Typology result.
+F09は、historically frozen morphology classifierを、現在repositoryに保存されているsourceだけからrefitや推測なしでexact再構築できなかったため除外した。この判断はhistorical Position Typology resultを変更しない。
 
-## Stage 1 integrity
+## Stage 1 — 技術的完全性
 
 ```text
 specSha256 = 85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203
@@ -61,7 +61,7 @@ execution HEAD = dfb9bf316dc767ae5920aba5a3308aa5f05d3acf
 actions artifact = 9722157483
 ```
 
-Production and structurally independent implementations matched exactly for source generation, root selection, selected-root identity, analysis rows and development core.
+Productionと構造的に独立したimplementationは、source generation、root selection、selected-root identity、analysis rows、development coreについてexact一致した。
 
 ```text
 production core SHA-256 = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
@@ -70,11 +70,11 @@ full production shard SHA-256 = 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683
 full independent shard SHA-256 = 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
 ```
 
-Mandatory artifact preservation and frozen resource ceilings passed. Stage 1 is therefore not technical-invalid and not resource-censored.
+必須artifactの保存と、結果を見る前に固定したresource ceilingはいずれもPASSした。したがってStage 1はtechnical-invalidでもresource-censoredでもない。
 
-## Stage 1 scientific readiness
+## Stage 1 — 科学的readiness
 
-Fresh Stage 1 population:
+新たに生成したStage 1 population:
 
 ```text
 games = 4096
@@ -88,23 +88,25 @@ reference consensus roots = 473
 reference disagreement events = 110
 ```
 
-Two frozen global readiness checks failed:
+結果を見る前に固定したglobal readiness checkのうち2件がFAILした。
 
 ```text
 opening-prefix diversity: 2836 < 3000
 maximum source-policy share: LOW_CAPTURE 170/512 = 0.33203125 > 0.32
 ```
 
-Therefore:
+そのため:
 
 ```text
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
 Study = NON-ESTIMABLE
 ```
 
-## Leaf-level development observations
+となった。
 
-The frozen promotion calculation returned `true` for:
+## Leaf-level development observation（開発観測）
+
+結果を見る前に固定したpromotion calculationは、次のleafで`true`を返した。
 
 ```text
 MDFT-F01
@@ -115,24 +117,24 @@ MDFT-F06
 MDFT-F10
 ```
 
-and `false` for `MDFT-F04`, `MDFT-F07`, `MDFT-F08`. `MDFT-F09` was already technically ineligible.
+`MDFT-F04`、`MDFT-F07`、`MDFT-F08`は`false`で、`MDFT-F09`はすでにtechnical-ineligibleだった。
 
-These values are development observations only. Because the global readiness gate failed, the six `true` calculations are **not** a frozen taxonomy and are **not** authorized Stage 2 targets.
+これらはdevelopment observationに限られる。global readiness gateがFAILしているため、6件の`true` calculationをfrozen taxonomyやauthorized Stage 2 targetへ昇格させない。
 
 ## Stage 2
 
-Preregistered consequence of Stage 1 blocked/non-estimable:
+Stage 1がblocked/non-estimableとなった場合の事前登録済みの帰結は次のとおりである。
 
 ```text
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 seeds 29010001..29018192 = RESERVED / UNCONSUMED
 ```
 
-No Stage 2 source/spec/target relaxation or scientific execution is authorized in this Study 1.
+このStudy 1では、Stage 2 source/spec/targetの緩和やscientific executionを承認しない。
 
-## Immutable upstream boundaries
+## 不変のupstream境界
 
-Research Generation 2 `G2-01..G2-07` and Research Generation 1 canonical decisions remain unchanged. In particular:
+Research Generation 2 `G2-01..G2-07`およびResearch Generation 1のcanonical decisionは変更しない。特に:
 
 ```text
 STSCV validated transform set = []
@@ -144,7 +146,7 @@ BMP-STUDY1 = 0 CONFIRMED / 4 NOT-CONFIRMED
 TM-S2-C03 = CONFIRMED
 ```
 
-PCRPR production-only `F05_ALL` / `lambda=100` / OOF metrics are not validated inputs to G2-08.
+PCRPRのproduction-only `F05_ALL` / `lambda=100` / OOF metricsは、G2-08のvalidated inputではない。
 
 ## RAW identity
 
@@ -153,7 +155,7 @@ pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
 ```
 
-## Closure artifacts
+## closure成果物
 
 1. `STUDY_1_FINAL_REPORT.md`
 2. `results/STAGE_1_DEVELOPMENT_RESULT.json`
@@ -161,4 +163,4 @@ excluded = turn,reason
 4. `results/STAGE_1_ARTIFACT_MANIFEST.json`
 5. `checkpoints/2026-08-30-stage1-development-blocked-non-estimable.md`
 
-A future decision-failure taxonomy study must be a new prospective study/version with fresh population and seed contracts. This Study 1 is not reopened or rescued.
+将来decision-failure taxonomyを再検討する場合は、新しいprospective study/versionとfresh population / seed contractが必要である。このStudy 1をreopenまたはrescueしない。

@@ -1,8 +1,8 @@
-# PCRPR-STUDY1 — Resume Here
+# PCRPR-STUDY1 — 再開位置
 
 更新日: 2026-08-29
 
-## Current safe state
+## 現在の安全な状態
 
 ```text
 Program = G2-07 / Research Generation 2
@@ -21,7 +21,7 @@ Study = CLOSED / MAIN INTEGRATED
 main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
-## Read order
+## 読む順序
 
 1. `STUDY_1_FINAL_REPORT.md`
 2. `CURRENT_STATUS.md`
@@ -31,7 +31,7 @@ main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 6. `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 7. `RESEARCH_LOG.md`
 
-## Closure fact pattern
+## 終了時の事実関係
 
 - production computation = success
 - independent scientific replay computation = success
@@ -41,7 +41,9 @@ main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 - mandatory final exact comparer = not executed / skipped
 - frozen decision mapping = technical/integrity/independent-verification failure → `STAGE1-TECHNICAL-INVALID`
 
-## Do not do
+上記のkey/value表記は実行状態を正確に保持するためcanonical termを残している。意味としては、productionと独立replayの科学計算自体は完走した一方、必須のfull independent artifactが保存されず、結果を見る前に固定した最終exact比較を実行できなかったため、Stage 1をfail-closedで`STAGE1-TECHNICAL-INVALID`として閉じた、という状態である。
+
+## 禁止事項
 
 PCRPR-STUDY1について以下を行わない。
 
@@ -56,7 +58,7 @@ PCRPR-STUDY1について以下を行わない。
 - PCEM/RCPR decisionの救済
 - human difficulty/error/deception claims
 
-## Next permitted research action
+## 次に許可される研究
 
 PCRPR-STUDY1の追加scientific workはない。
 
@@ -68,6 +70,6 @@ G2-08 — Machine Decision-Failure Taxonomy Study 1
 
 G2-08開始時はremote `main`を改めて取得し、新しいStudy/Stage identity、fresh evidence、fresh seeds、artifact-preservation contractをprospectively固定する。
 
-## Integration boundary
+## 統合境界
 
 G2-07 closureはPR #77でmainへ統合済み。merge commitは`57f7cf2d58f0543082434cb4c3259e26e90fe02e`。PCRPR-STUDY1を再開せず、次の研究はfresh main auditから開始する。

@@ -1,4 +1,4 @@
-# MDFT-STUDY1 — Resume Here
+# MDFT-STUDY1 — 再開位置
 
 更新日: 2026-08-30
 
@@ -29,7 +29,7 @@ Study = NON-ESTIMABLE
 8. `checkpoints/2026-08-30-stage1-development-blocked-non-estimable.md`
 9. `REPRODUCIBILITY_INDEX.md`
 
-## Canonical Stage 1 anchors
+## Stage 1の正式anchor
 
 ```text
 spec SHA-256 = 85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203
@@ -39,14 +39,14 @@ production/independent core = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b
 full shard SHA-256 = 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
 ```
 
-## Closure reason
+## closure理由
 
 ```text
 distinct opening prefixes = 2836 < 3000
 LOW_CAPTURE selected share = 170/512 = 0.33203125 > 0.32
 ```
 
-These are preregistered global readiness failures. F01/F02/F03/F05/F06/F10 had leaf-level promotion calculation `true`, but they are not a frozen taxonomy because the global gate failed.
+これらは事前登録済みのglobal readiness failureである。F01/F02/F03/F05/F06/F10はleaf-level promotion calculationで`true`だったが、global gateがFAILしたためfrozen taxonomyにはならない。
 
 ## 禁止事項
 

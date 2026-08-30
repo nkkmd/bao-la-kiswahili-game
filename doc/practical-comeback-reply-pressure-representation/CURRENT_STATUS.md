@@ -1,4 +1,4 @@
-# PCRPR-STUDY1 — Current Status
+# PCRPR-STUDY1 — 現在の状態
 
 更新日: 2026-08-29
 
@@ -35,7 +35,7 @@ symmetry reduction = false
 main integration = COMPLETE / PR #77 / 57f7cf2d58f0543082434cb4c3259e26e90fe02e
 ```
 
-## Stage 0 canonical technical result
+## Stage 0 — 正式な技術結果
 
 ```text
 source commit = 19c70ba60c8b43858b01a01c5a448311660269c4
@@ -49,11 +49,11 @@ scalar features per row = 80
 exact cross-implementation equality = PASS
 ```
 
-Stage 0はtechnical-onlyであり、scientific outcomeを生成していない。
+Stage 0はtechnical-onlyであり、科学的outcomeを生成していない。
 
-## Stage 1 preauthorization
+## Stage 1 — 事前承認前の検証
 
-scientific block消費前に以下をすべてPASSした。
+科学的blockを消費する前に、以下をすべてPASSした。
 
 ```text
 production implementation smoke = run 33240901637 / PASS
@@ -66,7 +66,7 @@ computation contract SHA256 = 7f6d2c9a928392c557f31f35cd0e912ba8396055c9535872b6
 feature dictionary SHA256 = 892624860ac22c722ad9877b8c93ba6c32536da98692fc6735cd86e43886ca4f
 ```
 
-## Stage 1 authorization / consumption
+## Stage 1 — 承認とseed消費
 
 ```text
 authorization commit = 64f0352e7d8b26432e2a68c408e403859c3e71bf
@@ -79,7 +79,7 @@ Stage 1 seed block = CONSUMED
 
 consume-once gate成功後は、後続のproduction、independent replay、artifact transfer、final comparisonが失敗してもseed blockを未消費へ戻さない。
 
-## Stage 1 production-only provenance
+## Stage 1 — production-onlyの出所記録
 
 production jobは成功した。
 
@@ -91,7 +91,7 @@ production result SHA256 = dea825892090fe9b101a8bd25610c7f24b40c4aac79fd61faaff1
 development core SHA256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2
 ```
 
-production summary:
+production概要:
 
 ```text
 generated games = 3072
@@ -114,7 +114,7 @@ production disposition = STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATIO
 
 これらはaccepted scientific resultではなく、**production-only unverified provenance**としてのみ保持する。
 
-## Independent replay incident
+## 独立replayで発生した事故
 
 ```text
 independent replay job = 99071451969
@@ -137,18 +137,18 @@ independent result SHA256 = db7358d1308481fd4d9645fbffd79a319603ea7debd263bcaa98
 
 productionとindependentのdevelopment-core stdout hashは一致した。しかし`actions/upload-artifact`の`CreateArtifact` requestが5回連続timeoutし、full `independent-result.json` artifactは保存されなかった。
 
-frozen final comparerはsource corpus、selection、rows、measurements、compact rows、model、final model、readinessまでfull objectsでexact比較することを必須としていたため、stdout一致だけを代替verificationとして採用できない。
+結果を見る前に固定したfinal comparerは、source corpus、selection、rows、measurements、compact rows、model、final model、readinessまでfull objectsでexact比較することを必須としていた。このため、stdout一致だけを代替verificationとして採用することはできない。
 
-## Final Stage 1 decision
+## Stage 1の最終判断
 
-事前固定したdecision mapping:
+結果を見る前に固定したdecision mapping:
 
 ```text
 technical/integrity/independent-verification failure
 -> STAGE1-TECHNICAL-INVALID
 ```
 
-mandatory full independent verificationが完了しなかったため、最終決定は:
+必須のfull independent verificationが完了しなかったため、最終判断は:
 
 ```text
 STAGE1-TECHNICAL-INVALID
@@ -158,13 +158,13 @@ STAGE1-TECHNICAL-INVALID
 
 このdecisionはreply-pressure representationの科学的否定を意味しない。同時に`F05_ALL`、`lambda=100`、production performanceをvalidated representation/modelとして採用することも禁止する。
 
-Canonical records:
+正式記録:
 
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 - `STUDY_1_FINAL_REPORT.md`
 
-## Immutable boundaries
+## 不変の境界
 
 `PCEM-STUDY1`のzero promotion / Stage 2 non-authorization、`RCPR-STUDY1`のStage 1 technical-invalidは変更しない。
 
@@ -178,7 +178,7 @@ pits,reserve,houseOwned,player,phase,winner,pending
 
 `turn`と`reason`は除外し、symmetry/canonicalizationは未承認のままである。
 
-## 次の許可された工程
+## 次に許可される工程
 
 PCRPR-STUDY1について新しいscientific executionは行わない。Stage 2は開始しない。
 
