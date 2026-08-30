@@ -177,6 +177,12 @@ No Stage 2 source freeze or execution authorization was issued.
 
 ## Study closure
 
+Study-local closure commit:
+
+```text
+4f63d615ef25702d99881aedf4a4054fbe7c275b
+```
+
 Canonical final files:
 
 - `STUDY_1_FINAL_REPORT.md`
@@ -192,4 +198,35 @@ selectedEstimator = null
 
 The production-only E2 proposal is retained only as diagnostic provenance and must not be used as the formal Stage 2 estimator within this Study.
 
-G2-05 remains unchanged; G2-11 remains `NOT-AUTHORIZED`. A corrected attempt requires a new prospective Study or explicit new version.
+## Central documentation synchronization provenance
+
+The four central documents were synchronized only on the G2-12 research branch after Study-local closure. The machine-readable synchronization authorization explicitly set `mainIntegrationAuthorized=false`.
+
+```text
+authorization path = authorizations/CENTRAL_DOC_SYNC_EXECUTE.json
+authorization commit = 57c813726e72486f38f3da86216523afbccdafd7
+workflow run = 33339370675
+job = 99332085365
+workflow conclusion = success
+central-doc sync commit = f69e4a7912e39bfd424969e5cd220ac36baa5d15
+```
+
+Synchronized files:
+
+```text
+README.md
+doc/RESEARCH_INDEX.md
+doc/FUTURE_RESEARCH_AGENDA.md
+doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
+```
+
+Direct post-sync inspection confirmed the G2-12 `TECHNICAL-INVALID` closure, `selectedEstimator=null`, Stage 2 not authorized, and fresh depth 10/11 untouched. The one-time write-capable helper files were subsequently removed:
+
+```text
+.github/workflows/ssgtge-central-doc-sync.yml removal = 9651f62c8f07605800b6a9103d9d6966c389870d
+tools/maintenance/sync-g2-12-central-docs.js removal = 8ef6b0329d386db48c729ea5017cfe6f4e21eb10
+```
+
+The authorization record remains as provenance only; its triggering workflow no longer exists.
+
+G2-05 remains unchanged; G2-11 remains `NOT-AUTHORIZED`. A corrected attempt requires a new prospective Study or explicit new version. `main` has not been integrated or modified by this closure work.

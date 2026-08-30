@@ -24,6 +24,8 @@ Stage 1 = STAGE1-TECHNICAL-INVALID / no same-evidence rerun
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 canonical selectedEstimator = null
 fresh depth 10/11 = not generated / not read
+central documentation = SYNCHRONIZED ON RESEARCH BRANCH
+main integration = NOT PERFORMED
 G2-11 = NOT-AUTHORIZED / unchanged
 ```
 
@@ -31,6 +33,6 @@ Stage 1 production proposed E2, but mandatory independent verification failed un
 
 Do not repair the Stage 1 verifier/tolerance and rerun the same development evidence within this Study. A corrected attempt requires a new prospective Study or explicit new version.
 
-Before any future main integration, synchronize and audit root `README.md`, `doc/RESEARCH_INDEX.md`, `doc/FUTURE_RESEARCH_AGENDA.md`, and Research Generation 2 program decision documents on this research branch.
+Central documentation synchronization is complete on the research branch. The synchronization run was branch-only and explicitly did not authorize `main` integration; the temporary synchronization workflow and maintenance tool have been removed. See `checkpoints/2026-08-31-central-documentation-sync-complete.md` and `REPRODUCIBILITY_INDEX.md` for provenance.
 
-Do not merge to `main` without explicit user instruction.
+No further scientific execution is authorized within this closed Study. Do not merge to `main` unless a future explicit user instruction authorizes integration after a fresh final audit.

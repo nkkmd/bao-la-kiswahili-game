@@ -15,6 +15,8 @@ Stage 0 v2 = STAGE0-TECHNICAL-PASS
 Stage 1 = STAGE1-TECHNICAL-INVALID / same-evidence rerun NOT AUTHORIZED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Canonical selectedEstimator = null
+Central documentation synchronization = COMPLETE ON RESEARCH BRANCH
+Main integration = NOT PERFORMED
 G2-11 = NOT-AUTHORIZED / unchanged
 ```
 
@@ -83,15 +85,44 @@ formal depth-10 validation = NOT PERFORMED
 full Bao state-space/game-tree estimate = NOT AUTHORIZED
 ```
 
+## Central documentation synchronization
+
+Study-local closure was fixed in commit `4f63d615ef25702d99881aedf4a4054fbe7c275b`. The branch-only central-document synchronization was explicitly authorized with `mainIntegrationAuthorized=false` and completed successfully:
+
+```text
+authorization commit = 57c813726e72486f38f3da86216523afbccdafd7
+workflow run = 33339370675
+job = 99332085365
+central-doc sync commit = f69e4a7912e39bfd424969e5cd220ac36baa5d15
+workflow conclusion = success
+```
+
+The synchronized central documents are:
+
+- root `README.md`;
+- `doc/RESEARCH_INDEX.md`;
+- `doc/FUTURE_RESEARCH_AGENDA.md`;
+- `doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`.
+
+The temporary write-capable workflow and maintenance script were then removed:
+
+```text
+workflow removal commit = 9651f62c8f07605800b6a9103d9d6966c389870d
+maintenance-tool removal commit = 8ef6b0329d386db48c729ea5017cfe6f4e21eb10
+```
+
+No integration to `main` was performed.
+
 ## Canonical closure records
 
 - `results/STAGE_1_TECHNICAL_INVALID_RESULT.json`
 - `results/STUDY_1_FINAL_RESULT.json`
 - `checkpoints/2026-08-31-stage1-technical-invalid.md`
+- `checkpoints/2026-08-31-central-documentation-sync-complete.md`
 - `STUDY_1_FINAL_REPORT.md`
 
 ## Interpretation boundary
 
 G2-05 remains exactly `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`. G2-11 remains `NOT-AUTHORIZED`. A corrected growth-estimator validation requires a new prospective Study or explicit new version; this Study is not reopened or rescued.
 
-Do not merge this branch to `main` without explicit user instruction.
+This research branch is closed and centrally synchronized, but not merged to `main`.

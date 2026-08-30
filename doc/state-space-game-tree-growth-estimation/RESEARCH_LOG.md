@@ -169,3 +169,37 @@ Study formal decision = TECHNICAL-INVALID
 ```
 
 G2-05 and G2-11 boundaries remain unchanged.
+
+## 2026-08-31 — Study-local closure and central documentation synchronization
+
+Study-local closure was committed at:
+
+```text
+4f63d615ef25702d99881aedf4a4054fbe7c275b
+```
+
+To update the four large central documents without replacing unrelated content manually, a branch-only fail-closed synchronization was separately authorized. The authorization explicitly fixed `mainIntegrationAuthorized=false`, limited the target to the research branch and the four central document paths, and did not authorize any scientific decision change, Stage 1 rerun, Stage 2 entry, or depth 10/11 generation.
+
+```text
+central-sync authorization commit = 57c813726e72486f38f3da86216523afbccdafd7
+workflow run = 33339370675
+job = 99332085365
+workflow conclusion = success
+central-doc sync commit = f69e4a7912e39bfd424969e5cd220ac36baa5d15
+```
+
+Direct post-run checks confirmed G2-12 closure in:
+
+- root `README.md`;
+- `doc/RESEARCH_INDEX.md` as section 28;
+- `doc/FUTURE_RESEARCH_AGENDA.md`, including completed/`TECHNICAL-INVALID` status and priority line;
+- `doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`.
+
+The temporary write-capable synchronization workflow and maintenance script were then removed from the branch:
+
+```text
+workflow removal commit = 9651f62c8f07605800b6a9103d9d6966c389870d
+maintenance-tool removal commit = 8ef6b0329d386db48c729ea5017cfe6f4e21eb10
+```
+
+No merge or ref update to `main` was performed. The authorization JSON is retained only as provenance.
