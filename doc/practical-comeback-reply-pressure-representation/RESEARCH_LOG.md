@@ -1,6 +1,6 @@
-# PCRPR-STUDY1 — Research Log
+# PCRPR-STUDY1 — 研究ログ
 
-## 2026-08-29 — Study start
+## 2026-08-29 — 研究開始
 
 - remote `main` HEAD `e5ad840520eb6c5bd0408f924c1f9a55c4cba6a5`を再取得し、G2-06 closure後の期待SHAと一致確認。
 - central research docs、PCEM-STUDY1、RCPR-STUDY1を監査。
@@ -9,7 +9,7 @@
 - 12-family reply-pressure representationを固定。
 - fresh Stage 1 seeds `28710001..28713072`、Stage 2 seeds `28810001..28816144`を予約。
 
-## 2026-08-29 — Stage 0 technical validation
+## 2026-08-29 — Stage 0 技術検証
 
 - G2-06のfloating-point ordering lessonをpre-outcome technical requirementとして取り込み、canonical lexical ordering、deterministic binary64 accumulation、big-endian binary64 encoding、integer-like-key/reply-permutation controlsを固定。
 - workflow `33238931893`成功。
@@ -17,7 +17,7 @@
 - Decision: `STAGE0-TECHNICAL-PASS`。
 - scientific blocksは未消費。
 
-## 2026-08-29 — Stage 1 prospective freeze
+## 2026-08-29 — Stage 1 事前固定
 
 - 3072 games、400 roots（Namua/Mtaji 200/200）、occurrence-first root selection、D3 `bestScore < 0`、all exact root-move rowsを固定。
 - strong/medium/weak continuationを1/16/8 replicates、96-ply horizonで固定。
@@ -26,7 +26,7 @@
 - initial specの`F03_REPLY_POLICY`重複をscientific outcome・authorization・seed consumption前に検出し、valid pre-outcome correctionとして修正。
 - exact computation contractを別途freeze。
 
-## 2026-08-29 — Preauthorization validation
+## 2026-08-29 — 事前承認前の検証
 
 - 初回smokeはsyntax defectでscientific execution前に停止。scientific seed消費なし。
 - corrected production smoke `33240901637` PASS。
@@ -36,7 +36,7 @@
 - source-freeze audit `33241372471` PASS。
 - source-freeze commit `eb48ecae8d5ae171175f7cc9f00c9bcc77b2c237`。
 
-## 2026-08-29 — Stage 1 authorization and consumption
+## 2026-08-29 — Stage 1 承認とseed消費
 
 - execution addendumでconsume-once semanticsを固定。
 - explicit authorization commit `64f0352e7d8b26432e2a68c408e403859c3e71bf`。
@@ -46,7 +46,7 @@
 - この時点でStage 1 seeds `28710001..28713072`を永久に`CONSUMED`とした。
 - same-block rerun/repair/replacement/extensionは以後禁止。
 
-## 2026-08-29 — Production completion
+## 2026-08-29 — Production完了
 
 - production job `99071451933`成功。
 - 3072 games、2757 unique historical trajectories、400 roots、1429 rows。
@@ -60,7 +60,7 @@
 - development core SHA256 `4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24c08cc409a2`。
 - このoutputは独立verification完了前なのでaccepted scientific resultではない。
 
-## 2026-08-29 — Independent replay completion and artifact incident
+## 2026-08-29 — 独立replay完了とartifact事故
 
 - independent replay job `99071451969`のscientific replay stepは成功。
 - terminal stdoutは3072 games / 400 roots / 1429 rows / `F05_ALL` / lambda `100`を報告。
@@ -69,14 +69,14 @@
 - 直後の`actions/upload-artifact@v4`で`CreateArtifact` timeoutが5回連続発生し、full independent artifactはmaterializeされなかった。
 - incident classを`EXTERNAL-ARTIFACT-TRANSPORT-FAILURE-AFTER-SUCCESSFUL-INDEPENDENT-COMPUTATION`とした。
 
-## 2026-08-29 — Final verification unavailable
+## 2026-08-29 — 最終検証不能
 
 - frozen final comparerはsource corpus、selection、rows、measurements、compact rows、model、final model、readiness等をfull production/independent objectsからexact比較する契約。
 - independent full artifact不在によりfinal-verification job `99096549383`はskipped。
 - stdout development-core matchをfull verificationの代替とするpost-outcome relaxationは採用しない。
 - artifact uploadだけのrerun、independent replay rerun、same-block repairも行わない。
 
-## 2026-08-29 — Terminal closure
+## 2026-08-29 — 最終closure
 
 - prospectively frozen rule `technical/integrity/independent-verification failure -> STAGE1-TECHNICAL-INVALID`を適用。
 - Final Stage 1 decision: `STAGE1-TECHNICAL-INVALID`。
@@ -89,10 +89,10 @@
 - PCRPR-STUDY1をresearch branch上でclosedとした。
 - main integrationは実施しない。
 
-## 2026-08-29 — Main integration closure
+## 2026-08-29 — main統合closure
 
-- Final pre-main audit found three shared-document omissions and corrected root README, RESEARCH_INDEX, and FUTURE_RESEARCH_AGENDA with an anchor-validated one-shot materializer.
-- Temporary materialization tooling was removed before merge.
-- PR #77 merged the closed PCRPR-STUDY1 branch into main.
-- Merge commit: `57f7cf2d58f0543082434cb4c3259e26e90fe02e`.
-- Post-merge updates are documentation/provenance only; Stage 1 remains `STAGE1-TECHNICAL-INVALID`, Stage 1 seeds remain consumed, Stage 2 remains `NOT-AUTHORIZED-NOT-EXECUTED`, and no scientific decision was changed.
+- 最終的なpre-main auditで、共有文書3件の記載漏れを検出し、anchor検証付きの一回限りのmaterializerでroot `README.md`、`RESEARCH_INDEX.md`、`FUTURE_RESEARCH_AGENDA.md`を修正した。
+- 一時的なmaterialization toolingはmerge前に削除した。
+- PR #77でclosed状態のPCRPR-STUDY1 research branchを`main`へ統合した。
+- merge commitは`57f7cf2d58f0543082434cb4c3259e26e90fe02e`。
+- merge後の更新はdocumentation/provenanceのみであり、Stage 1は`STAGE1-TECHNICAL-INVALID`、Stage 1 seedsは消費済み、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`のままで、科学的判断は変更していない。
