@@ -1,0 +1,73 @@
+name: UMSSR Stage 0 Technical
+
+# Technical-only. This workflow must not consume UMSSR Stage 1/2 scientific seeds.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-10-unified-multiaxial-strategic-state-representation
+    paths:
+      - '.github/workflows/umssr-stage0-technical.yml'
+      - 'tools/experiments/run-umssr-stage0-technical.js'
+      - 'tools/experiments/lib/umssr-stage0-production.js'
+      - 'tools/experiments/lib/umssr-stage0-independent.js'
+      - 'tools/experiments/lib/search-reliability-decision-robustness.js'
+      - 'tools/experiments/lib/position-complexity-search-diagnostic.js'
+      - 'tools/experiments/lib/tmgc-stage0-production.js'
+      - 'tools/experiments/lib/tmgc-stage0-independent.js'
+      - 'tools/experiments/lib/position-typology-features.js'
+      - 'tools/experiments/lib/tactical-motif-features.js'
+      - 'tools/experiments/lib/tactical-motif-stage2-formal.js'
+      - 'doc/unified-multiaxial-strategic-state-representation/prereg/STAGE_0_TECHNICAL_SPEC.json'
+      - 'doc/unified-multiaxial-strategic-state-representation/prereg/STUDY_1_INITIAL_CONTRACT.json'
+      - 'doc/unified-multiaxial-strategic-state-representation/authorizations/STAGE_0_TECHNICAL_EXECUTE.json'
+      - 'doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json'
+      - 'doc/deep-raw-state-space-enumeration/results/STUDY_1_FINAL_RESULT.json'
+      - 'doc/machine-decision-failure-taxonomy/checkpoints/2026-08-29-stage0-f09-static-audit.md'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout branch source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Environment
+        run: |
+          node --version
+          git rev-parse HEAD
+          git status --short
+          uname -a
+
+      - name: Syntax checks
+        run: |
+          node --check tools/experiments/run-umssr-stage0-technical.js
+          node --check tools/experiments/lib/umssr-stage0-production.js
+          node --check tools/experiments/lib/umssr-stage0-independent.js
+
+      - name: Run UMSSR Stage 0 technical core
+        run: |
+          mkdir -p artifacts/local/umssr-stage0-technical
+          /usr/bin/time -v node tools/experiments/run-umssr-stage0-technical.js artifacts/local/umssr-stage0-technical \
+            2>&1 | tee artifacts-umssr-stage0.log
+
+      - name: Preserve technical artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: umssr-stage0-technical-${{ github.sha }}
+          path: |
+            artifacts/local/umssr-stage0-technical/**
+            artifacts-umssr-stage0.log
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30
