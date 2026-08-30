@@ -84,4 +84,31 @@ RF-C-DIRECT-ROBUST-PAM
 
 Stage 0ではscientific fit、support、silhouette、assignment stability、interpretabilityを使ってfamilyを選別しない。technical determinism、independent reconstruction、serialization、resource ceilingだけを確認する。
 
-scientific evidenceはまだ生成していない。Stage 0 technical execution、Stage 1、Stage 2、G2-11はいずれも未承認である。
+## 2026-08-30 — Stage 0 source freeze / authorization
+
+Stage 0 toolingを次で固定した。
+
+```text
+source freeze commit = 724e05ef6a730593aab2f9165a0d02216e372c6d
+authorization commit = 2c1dea4f7f5c98497333d9ec325931e9091ba0df
+```
+
+workflowはauthorization fileの追加でのみ起動するようにし、source freeze commit自体では実行しない構造とした。authorizationはtechnical-onlyで、scientific seedとG2-11 outcome inspectionを明示的に禁止した。
+
+## 2026-08-30 — Stage 0 technical execution
+
+GitHub Actions run `33304155488` / job `99237601518`がsuccessで完了した。artifact IDは`9729904359`、artifact ZIP SHA-256は`d861bc27c9fb273ac2d6f4c227bdaf9c01bd4d6e33c8ae2ca3370a836e357977`である。
+
+結果:
+
+```text
+Stage 0 disposition = STAGE0-TECHNICAL-PASS
+mandatory gate failures = 0
+missing mandatory gates = 0
+scientific seeds used = []
+scientific performance inspected = false
+scientific outcome generated = false
+G2-11 authorized = false
+```
+
+3 representation familyはすべてtechnical exact PASSだった。これはscientific rankingではなく、Stage 1 prefreeze候補からfamilyを落とす根拠には使用しない。
