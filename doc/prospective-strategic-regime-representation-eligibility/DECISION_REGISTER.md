@@ -114,22 +114,48 @@ formal evidenceではproductionとindependent implementationを分離し、同�
 
 transition matrix、long-horizon persistence、recurrence、bottleneck / transient structure、trajectory-family prevalence、transition asymmetry、survival / hazard、time-to-first-Mtaji、acceleration / delayをrepresentation selectionに使用しない。
 
-## D-013 — authorization state
+## D-013 — authorization state at Study start
 
-**状態:** FIXED AT STUDY START
+**状態:** HISTORICAL START STATE
 
-```text
-Stage 0 technical execution = NOT AUTHORIZED
-Stage 1 scientific execution = NOT AUTHORIZED
-Stage 2 scientific execution = NOT AUTHORIZED
-G2-11 = NOT AUTHORIZED
-scientific evidence generated = false
-```
-
-Stage 0 implementationをsource/hash bindingした後、technical-only authorizationを別recordで行う。
+Study開始時点ではStage 0 / 1 / 2 / G2-11はいずれも未承認だった。Stage 0は後続のsource freezeと別authorizationを経てtechnical-only executionが承認された。
 
 ## D-014 — failureを正常なclosureとして扱う
 
 **状態:** FIXED
 
 eligible representationが得られない場合、`NOT-ELIGIBLE`、`NON-ESTIMABLE`、`TECHNICAL-INVALID`、`RESOURCE-CENSORED`、`NOT-AUTHORIZED-NOT-EXECUTED`等をprospectively fixed ruleに従って保存する。同じStudy内で結果後の救済をしない。
+
+## D-015 — Stage 0 source freeze / authorization
+
+**状態:** FIXED / EXECUTED
+
+```text
+source freeze commit = 724e05ef6a730593aab2f9165a0d02216e372c6d
+authorization commit = 2c1dea4f7f5c98497333d9ec325931e9091ba0df
+workflow run = 33304155488
+job = 99237601518
+artifact = 9729904359
+```
+
+Stage 0 authorizationはtechnical-onlyであり、scientific seed、scientific performance inspection、G2-11 outcome inspectionを許可しなかった。
+
+## D-016 — Stage 0 disposition
+
+**状態:** FIXED
+
+```text
+PSRRE-S0-TECHNICAL-2026-08-30-v1 = STAGE0-TECHNICAL-PASS
+mandatory gate failures = 0
+missing mandatory gates = 0
+```
+
+3 familyはいずれもtechnical exact reconstructionをPASSした。
+
+```text
+RF-A-ROBUST-PCA-WARD = PASS
+RF-B-ROBUST-PCA-PAM = PASS
+RF-C-DIRECT-ROBUST-PAM = PASS
+```
+
+これはscientific family selectionではない。Stage 1は自動承認しない。Stage 1 feature dictionary、hyperparameter、selection rule、numeric threshold、Stage 2 held-out contractを別prefreezeで固定する。
