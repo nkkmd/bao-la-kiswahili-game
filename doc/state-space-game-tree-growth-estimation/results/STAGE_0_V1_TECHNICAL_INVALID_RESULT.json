@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-12",
+  "studyId": "SSGTGE-STUDY1",
+  "stageId": "SSGTGE-S0-TECHNICAL-2026-08-30-v1",
+  "resultRole": "technical-invalid-closure",
+  "stageDisposition": "STAGE0-TECHNICAL-INVALID",
+  "scientificInferenceAuthorized": false,
+  "scientificEvidenceGenerated": false,
+  "freshDepth10Or11OutcomeGenerated": false,
+  "realDevelopmentCandidateEvaluationPerformed": false,
+  "workflow": {
+    "runId": 33315971968,
+    "jobId": 99269373670,
+    "headSha": "76afec9b0ba3d1c5ef84cb42bc3d205360da9b97",
+    "reportedActionsConclusion": "success",
+    "reportedActionsConclusionAcceptedAsStageDecision": false,
+    "artifactId": 9733443553,
+    "artifactZipSha256": "df9bb95a22bec49141bd45ac7baf0c6829f668e2c764b3b4668103ada208d7ac"
+  },
+  "failure": {
+    "classification": "SOURCE-HASH-BINDING-MISMATCH",
+    "phase": "PREOUTPUT-AUTHORIZATION-SOURCE-GATE",
+    "path": "tools/experiments/verify-ssgtge-stage0-independent.js",
+    "productionProcessExitCode": 1,
+    "productionResultGenerated": false,
+    "independentVerificationResultGenerated": false,
+    "secondaryWorkflowDefect": "PIPELINE-EXIT-CODE-MASKED-BY-TEE-WITHOUT-PIPEFAIL",
+    "technicalInterpretation": "The Node production process failed before depth-2 enumeration or estimator fixture execution. The workflow step and overall run nevertheless appeared successful because the shell pipeline returned tee's zero exit status. This UI conclusion is not accepted as technical evidence."
+  },
+  "evidenceFirewall": {
+    "depth2EnumerationFixtureGenerated": false,
+    "g2_05Depth0To9CandidateRankingPerformed": false,
+    "depth10GeneratedOrRead": false,
+    "depth11GeneratedOrRead": false,
+    "stage1EvidenceConsumed": false,
+    "stage2EvidenceConsumed": false
+  },
+  "sameV1RunRerunAuthorized": false,
+  "sameV1EvidenceRepairRerunAuthorized": false,
+  "prospectiveCorrectiveTechnicalVersionPermitted": true,
+  "correctiveVersionConstraint": "A new technical-entry version may change only source-binding/orchestration mechanics and version identity before any scientific outcome. The frozen Study scientific contract, estimator candidates, development evidence, holdout depths, validation thresholds, RAW identity, and resource ceilings must remain unchanged."
+}

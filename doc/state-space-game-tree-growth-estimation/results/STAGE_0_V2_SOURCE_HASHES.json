@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-12",
+  "studyId": "SSGTGE-STUDY1",
+  "stageId": "SSGTGE-S0-TECHNICAL-2026-08-30-v2",
+  "freezeRole": "STAGE0-V2-IMPLEMENTATION-SOURCE-FREEZE",
+  "scientificInferenceAuthorized": false,
+  "freshHoldoutGenerationAuthorized": false,
+  "sourceBindingMethod": "git-blob-identity",
+  "sources": [
+    {"path":"tools/experiments/lib/ssgtge-production.js","gitBlobSha":"71bc8a45d45df171edfde5d4882529c4a7e057fd","role":"production synthetic estimator implementation"},
+    {"path":"tools/experiments/lib/ssgtge-independent.js","gitBlobSha":"cf462806552e038e4c23d0eb1cdf0cb211187472","role":"independent synthetic estimator implementation"},
+    {"path":"tools/experiments/run-ssgtge-stage0-v2-technical.js","gitBlobSha":"83107c92f88ab1ee5230f5c96473bbd5fa01d484","role":"v2 production technical runner"},
+    {"path":"tools/experiments/verify-ssgtge-stage0-v2-independent.js","gitBlobSha":"dcc03568bf5ec10ad00383799e91841b4067f2fc","role":"v2 independent technical verifier"},
+    {"path":".github/workflows/ssgtge-stage0-v2-technical.yml","gitBlobSha":"ae66670e31bbfd10110a0c9a487fc44ad50f64d7","role":"v2 fail-closed workflow"},
+    {"path":"doc/state-space-game-tree-growth-estimation/preregistration/STAGE_0_V2_TECHNICAL_SPEC.json","gitBlobSha":"1210527f95949ad036f34272cd44bba41b1f0fbe","role":"v2 technical-only contract"}
+  ],
+  "technicalDependencies": [
+    {"path":"tools/experiments/lib/drsse-production.js","gitBlobSha":"e8fc23799415f566850c817c22cf658216bb98be","role":"depth-2 technical enumeration fixture only"},
+    {"path":"tools/experiments/lib/drsse-independent.js","gitBlobSha":"906e0412bcf47fe37d95ac29ad83f9c83bc52857","role":"independent depth-2 technical reconstruction only"},
+    {"path":"doc/deep-raw-state-space-enumeration/results/STAGE_2_FORMAL_RESULT.json","gitBlobSha":"b25c9f51bdecf95d249df65ddd9b27cd1268d573","role":"read-only depth-0..9 source-plumbing fixture; real candidate evaluation forbidden"},
+    {"path":"public/engine.js","gitBlobSha":"2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c","role":"Bao legal move and transition semantics"}
+  ],
+  "v1Disposition": {
+    "stageId":"SSGTGE-S0-TECHNICAL-2026-08-30-v1",
+    "disposition":"STAGE0-TECHNICAL-INVALID",
+    "sameV1RerunAuthorized":false
+  }
+}
