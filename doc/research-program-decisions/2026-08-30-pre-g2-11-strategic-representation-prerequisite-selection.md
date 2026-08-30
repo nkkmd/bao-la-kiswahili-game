@@ -5,9 +5,9 @@ Status: **HISTORICAL SELECTION DECISION / REALIZED AS `PSRRE-STUDY1` / CLOSED `N
 Scope: Research Generation 2 program sequencing after `G2-10 / UMSSR-STUDY1`
 Repository baseline at selection: `87d9ccf9825b9b9160dcab23202a17d66ef0d541`
 
-## Outcome of this selection
+## この選択の実施結果
 
-This historical selection was subsequently instantiated prospectively as:
+このhistorical selectionは、その後次のStudyとしてprospectively具体化された。
 
 ```text
 Study ID = PSRRE-STUDY1
@@ -19,7 +19,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G2-11 candidate input authorized = false
 ```
 
-The Study generated no frozen representation. Stage 1 completed technical/resource/full-exact verification but failed the prospectively frozen minimum-nonzero-MAD-feature readiness gate (`15 < 20`). This selection record remains as historical sequencing provenance; current closure state is recorded in [`2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md).
+Studyはfrozen representationを生成しなかった。Stage 1はtechnical / resource / full-exact verificationを完了したが、prospectively frozen minimum-nonzero-MAD-feature readiness gateを`15 < 20`で満たさなかった。本selection recordはhistorical sequencing provenanceとして保持し、現在のclosure stateは[`2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md)を正本とする。
 
 ## Decision
 
@@ -123,7 +123,7 @@ G2-11 authorized = false
 ```
 
 
-## Current closure state
+## 現在のclosure state
 
 ```text
 formal Study ID fixed = PSRRE-STUDY1

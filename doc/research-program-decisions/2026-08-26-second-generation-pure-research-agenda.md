@@ -255,7 +255,7 @@ Selection record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic
 
 ## 2026-08-30 — PSRRE-STUDY1 prerequisite closure
 
-The selected Pre-G2-11 dependency-resolution direction was prospectively instantiated as `PSRRE-STUDY1` — **Prospective Strategic-Regime Representation Eligibility Study 1**. This did not add a new `G2-xx` agenda label and did not modify the closed `G2-10 / UMSSR-STUDY1` contract or decision.
+Pre-G2-11のdependency-resolutionとして選択した研究方向は、`PSRRE-STUDY1` — **Prospective Strategic-Regime Representation Eligibility Study 1**としてprospectively実施した。本Studyは新しい`G2-xx` agenda labelを追加せず、closed済み`G2-10 / UMSSR-STUDY1`のcontract・formal decisionも変更していない。
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -269,10 +269,10 @@ G2-11 candidate input authorized = false
 G2-11 scientific execution authorized = false
 ```
 
-Stage 1 completed the fresh 4,096-game / 512-root production and independent pipelines with full-exact agreement and all resource gates passing. The prospectively frozen development-readiness contract required at least 20 nonzero-MAD features; 15 were observed. Therefore the Study closed as non-estimable before a representation could be frozen or promoted to held-out validation.
+Stage 1はfresh 4,096 games / 512 rootsのproduction / independent pipelineをfull-exact一致で完遂し、resource gateもすべてPASSした。一方、prospectively frozen development-readiness contractはnonzero-MAD featureを20以上要求していたが、observedは15だった。このためrepresentationをfreezeしてheld-out validationへpromoteする前に、Studyを`NON-ESTIMABLE`として閉じた。
 
-No same-Study threshold relaxation, zero-MAD feature deletion/re-analysis, family/K expansion, favorable-subgroup rescue, seed rerun/replacement/extension, or post-hoc Stage 2 authorization is permitted.
+同一Study内でのthreshold relaxation、zero-MAD featureの削除後再解析、family/K expansion、favorable subgroup rescue、seed rerun / replacement / extension、Stage 2のpost-hoc authorizationは認めない。
 
-Program consequence: `G2-11` remains not authorized because the representation dependency is still unresolved. Neither `UMSSR-STUDY1` nor `PSRRE-STUDY1` supplies an eligible frozen representation candidate.
+Program上の帰結として、representation dependencyは未解決であり、`G2-11`は引き続き`NOT-AUTHORIZED`である。`UMSSR-STUDY1`と`PSRRE-STUDY1`のいずれも、G2-11へ渡せるeligible frozen representation candidateを提供していない。
 
 Canonical closure record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`.
