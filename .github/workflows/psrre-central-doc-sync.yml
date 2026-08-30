@@ -1,5 +1,6 @@
 name: PSRRE Central Documentation Sync
 
+# Archived after PSRRE-STUDY1 closure: no manual dispatch is exposed on main.
 on:
   push:
     branches:
@@ -8,7 +9,6 @@ on:
       - 'tools/experiments/finalize-psrre-central-docs.py'
       - '.github/workflows/psrre-central-doc-sync.yml'
       - 'doc/prospective-strategic-regime-representation-eligibility/checkpoints/2026-08-30-central-documentation-sync-request.md'
-  workflow_dispatch:
 
 permissions:
   contents: write
