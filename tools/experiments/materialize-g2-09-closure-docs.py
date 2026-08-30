@@ -50,8 +50,8 @@ if heading not in t:
 
 ### 25. Tactical Motif Generalization / Counterexample — Study 1
 
-**研究題目:** Baoにおけるmachine-confirmed tactical motifの一般化可能範囲と反例領域のprospective検証 — phase, morphology, search condition, state familyを横断したTM-S2-C03のgeneralization boundary / counterexample boundaryの再現可能な特定  
-**Program:** `G2-09` / **Study ID:** `TMGC-STUDY1` / **Research Generation 2**  
+**研究題目:** Baoにおけるmachine-confirmed tactical motifの一般化可能範囲と反例領域のprospective検証 — phase, morphology, search condition, state familyを横断したTM-S2-C03のgeneralization boundary / counterexample boundaryの再現可能な特定
+**Program:** `G2-09` / **Study ID:** `TMGC-STUDY1` / **Research Generation 2**
 **状態:** **Study closed / formal decision `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 Research Generation 1で唯一machine-confirmedされた`TM-S2-C03`をimmutable upstreamとして、fresh evidence上のgeneralization domain / counterexample domainをprospectively検証する独立Studyとして開始した。Stage 0ではC03 exact semantics、RAW identity、historical source binding、independent technical reconstruction、source diversity/resource feasibilityを検証し、`STAGE0-TECHNICAL-PASS`となった。Direct Namua transportはfrozen C03 exactと同一constructにならないため`TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`とした。
