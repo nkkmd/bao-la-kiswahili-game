@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "UMSSR_STAGE1_PACKAGING_PREFLIGHT_RESULT_V1",
+  "studyId": "UMSSR-STUDY1",
+  "stageId": "UMSSR-S1-DEVELOPMENT-2026-08-30-v1",
+  "sourceCommit": "10801fbc1529902bf3f4c0aa6e464c1dc39f1267",
+  "technicalOnly": true,
+  "scientificInferenceAuthorized": false,
+  "scientificSeedsConsumed": false,
+  "technicalSeedRange": [
+    29300001,
+    29300064
+  ],
+  "games": 64,
+  "selectedRoots": 8,
+  "productionIndependentFullExact": true,
+  "productionFullShard": {
+    "rawBytes": 42696,
+    "gzipBytes": 10851,
+    "sha256": "935ff5fbf2367ed65d2bb70dc303cb16f6ea891a9b38faaa4aa208793db2e2e1"
+  },
+  "independentFullShard": {
+    "rawBytes": 42696,
+    "gzipBytes": 10851,
+    "sha256": "935ff5fbf2367ed65d2bb70dc303cb16f6ea891a9b38faaa4aa208793db2e2e1"
+  },
+  "projection": {
+    "scale": 64,
+    "projectedProductionGzipBytes": 694464,
+    "projectedIndependentGzipBytes": 694464,
+    "projectedTotalGzipBytes": 1388928,
+    "shardCeilingBytes": 16777216,
+    "totalCeilingBytes": 268435456,
+    "productionShardWithinCeiling": true,
+    "independentShardWithinCeiling": true,
+    "totalWithinCeiling": true,
+    "productionRuntimeProjectedMs": 930288.9481919999,
+    "independentRuntimeProjectedMs": 806657.608992,
+    "productionRuntimeWithinCeiling": true,
+    "independentRuntimeWithinCeiling": true,
+    "rssWithinCeiling": true
+  },
+  "maxRssKb": 97004,
+  "bindings": {
+    "stage1SpecSha256": "0cc1debb44767357c7a26b14e8d48fa843fb197ec55e1dd36838a2a572b80b8d",
+    "featureDictionarySha256": "f23428d9f5c1d02e1176d773bc02e098b002cbfeb5e2652ecf0e107d62e2d61f",
+    "executionContractSha256": "415463f304c9943a68e6dbaab7fdd5b5f79833f13b317d9e3c1c72a53e371531",
+    "smokeSpecSha256": "7597e5d7c0880f3f588b27f82fcb51a879abd7183e73e0abfde086d8e66a2b7d"
+  },
+  "disposition": "STAGE1-PACKAGING-PREFLIGHT-PASS",
+  "resultSha256": "41b49e5d2335fc00b63fb815641a278fc785a0ccf8c79160331d93d0db930168"
+}
