@@ -26,6 +26,20 @@ jobs:
       - name: Materialize central documentation
         run: python3 tools/experiments/finalize-psrre-central-docs.py
 
+      - name: Normalize generated index whitespace
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('doc/RESEARCH_INDEX.md')
+          lines = path.read_text(encoding='utf-8').splitlines()
+          prefixes = (
+              '**研究題目:** Baoにおける戦略状態・regime表現の新規構築とprospective eligibility検証',
+              '**Program position:** Pre-G2-11 dependency-resolution prerequisite',
+          )
+          lines = [line.rstrip() if line.startswith(prefixes) else line for line in lines]
+          path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+          PY
+
       - name: Documentation whitespace audit
         run: git diff --check
 
