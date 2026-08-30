@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "TMGC_STUDY_CONTRACT_V1",
+  "researchGeneration": "G2-09",
+  "studyId": "TMGC-STUDY1",
+  "title": "Tactical Motif Generalization / Counterexample Study 1",
+  "baselineSha": "bc1263b7076f0a3794da5fd0d4e07821b23e1db6",
+  "branch": "research/g2-09-tactical-motif-generalization-counterexample",
+  "stages": [
+    {
+      "stageId": "TMGC-S0-TECHNICAL-2026-08-30-v1",
+      "kind": "technical-feasibility-semantics-validation",
+      "authorization": "AUTHORIZED-TECHNICAL-ONLY",
+      "scientificSeedUse": false
+    },
+    {
+      "stageId": "TMGC-S1-DEVELOPMENT-2026-08-30-v1",
+      "kind": "fresh-development-boundary-construction",
+      "authorization": "NOT-AUTHORIZED",
+      "reservedSeedStart": 29110001,
+      "reservedSeedCount": 4096,
+      "seedState": "UNCONSUMED"
+    },
+    {
+      "stageId": "TMGC-S2-FORMAL-2026-08-30-v1",
+      "kind": "fresh-held-out-formal-validation",
+      "authorization": "NOT-AUTHORIZED",
+      "reservedSeedStart": 29210001,
+      "reservedSeedCount": 8192,
+      "seedState": "UNCONSUMED"
+    }
+  ],
+  "immutableUpstream": {
+    "TM-S2-C03": "CONFIRMED",
+    "TM-S2-C01": "NOT-CONFIRMED",
+    "TM-S2-C02": "NOT-CONFIRMED",
+    "TM-S2-C04": "NOT-CONFIRMED",
+    "humanAxis": "INCONCLUSIVE-NOT-ESTIMABLE-N0",
+    "rawStateIdentityIncluded": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "rawStateIdentityExcluded": ["turn", "reason"],
+    "validatedTransformSet": [],
+    "canonicalization": false,
+    "symmetryReduction": false
+  },
+  "c03Exact": {
+    "phase": "mtaji",
+    "mtajiVariant": "mt-0",
+    "sourcePolicy": "coarse-no-index",
+    "moveClass": "takata-row1",
+    "direction": "right",
+    "reusablePitsMin": 0,
+    "reusablePitsMax": 2,
+    "actorNyumbaSeedsDeltaSign": 0,
+    "actorReserveDelta": 0,
+    "phaseAfter": "mtaji",
+    "minCandidateRoots": 20,
+    "minPairedRoots": 5,
+    "minStructuralSuccessRate": 0.95,
+    "minTacticalValueSuccessRate": 0.70
+  },
+  "phaseTransportPolicy": "SEPARATE_G2_09_CONSTRUCT_ONLY_IF_STAGE0_TECHNICALLY_ELIGIBLE",
+  "prohibitedInputs": [
+    "G2-06 technical-invalid representation outputs as validated grouping inputs",
+    "G2-08 non-estimable leaf-level development observations as validated inputs",
+    "unvalidated symmetry or canonicalization"
+  ],
+  "firewall": {
+    "stage1ToStage2RootReuse": false,
+    "stage1ToStage2RawStateReuse": false,
+    "stage1ToStage2TrajectoryReuse": false,
+    "stage1ToStage2OpeningPrefixReuse": false,
+    "stage2AuthorizationRequiresStage1PreregisteredGate": true
+  }
+}
