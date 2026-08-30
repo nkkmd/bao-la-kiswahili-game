@@ -34,6 +34,7 @@ jobs:
 
       - name: Run source-only technical preflight
         run: |
+          set -o pipefail
           mkdir -p artifacts/local/tmgc-stage0-source-preflight
           /usr/bin/time -v node tools/experiments/run-tmgc-stage0-source-preflight.js artifacts/local/tmgc-stage0-source-preflight \
             2>&1 | tee artifacts-tmgc-stage0-source-preflight.log
