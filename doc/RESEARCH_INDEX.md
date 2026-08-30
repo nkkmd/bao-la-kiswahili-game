@@ -920,6 +920,33 @@ Stage 0では3 familyすべてtechnical exact PASS。Stage 1 accepted run `33308
 **Boundary:** 本StudyはBaoにstrategic regimeが存在しないことを示さない。結果後に20-feature floorを下げる、zero-MAD featureを除外して同seedを再解析する、family/Kを追加する、Stage 2をpost-hoc authorizeする、といったsame-Study rescueを行わない。frozen representationは生成されず、G2-11 candidate inputとG2-11 scientific executionはいずれも未承認である。
 
 
+### 28. State-Space / Game-Tree Growth Estimation — Study 1
+
+**研究題目:** Baoにおける状態空間・ゲーム木成長の推定 — bounded exact enumerationからのprospective growth estimator構築とfresh deeper exact holdoutによる検証
+**Program:** `G2-12` / **Study ID:** `SSGTGE-STUDY1` / **Research Generation 2**
+**状態:** **Study complete / formal decision `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+G2-05 `DRSSE-STUDY1`のimmutable depth 0..9 exact summariesだけをdevelopment evidenceとして用い、E1/E2/E3の有限estimator family、rolling-origin backtest、promotion threshold、uncertainty rule、fresh depth-10 primary holdoutをoutcome生成前に固定した。Stage 0 v1はsource-binding defectでtechnical-invalidとなったが、科学output前のfailureだったためtechnical mechanicsだけをversioned v2としてrefreezeし、v2はproduction / independent depth-2 fixtureとsynthetic estimator controlsを通過して`STAGE0-TECHNICAL-PASS`となった。
+
+Stage 1は別source freeze・別authorizationでG2-05 depth 0..9のreal development competitionを一度だけ実行した。Production-onlyではE2 `E2-LOG-QUADRATIC-D2PLUS`がproposalされたが、mandatory independent verifierがE2 / `newRawStateCount` / depth 7で凍結済みcross-implementation relative tolerance `1e-12`を超えるprediction mismatchを検出した。Stage 1 authorizationはsame-evidence rerunを禁止していたため、tolerance緩和やverifier修正による救済を行わず`STAGE1-TECHNICAL-INVALID`で閉じた。
+
+したがってcanonical `selectedEstimator = null`であり、production-only E2 proposalはdiagnostic provenanceに限定する。Fresh depth 10/11は生成もreadもしておらず、formal holdout validationは実施していない。G2-05の`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`とG2-11の`NOT-AUTHORIZED`は不変である。
+
+**最初に読む:**
+
+- [`state-space-game-tree-growth-estimation/STUDY_1_OVERVIEW.md`](state-space-game-tree-growth-estimation/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`state-space-game-tree-growth-estimation/STUDY_1_FINAL_REPORT.md`](state-space-game-tree-growth-estimation/STUDY_1_FINAL_REPORT.md)
+- [`state-space-game-tree-growth-estimation/results/STUDY_1_FINAL_RESULT.json`](state-space-game-tree-growth-estimation/results/STUDY_1_FINAL_RESULT.json)
+- [`state-space-game-tree-growth-estimation/results/STAGE_1_TECHNICAL_INVALID_RESULT.json`](state-space-game-tree-growth-estimation/results/STAGE_1_TECHNICAL_INVALID_RESULT.json)
+- [`state-space-game-tree-growth-estimation/REPRODUCIBILITY_INDEX.md`](state-space-game-tree-growth-estimation/REPRODUCIBILITY_INDEX.md)
+- [`state-space-game-tree-growth-estimation/CURRENT_STATUS.md`](state-space-game-tree-growth-estimation/CURRENT_STATUS.md)
+
+**Boundary:** 本StudyはE2をvalidated estimatorとして承認せず、depth 10の状態数・game-tree node数、full Bao state-space / game-tree sizeを推定結果として主張しない。再検証はnew prospective Studyまたはexplicit new versionを必要とする。
+
+
 ## 将来研究
 
 **現在のPre-G2-11 dependency state:** `PSRRE-STUDY1` completed / formal decision `NON-ESTIMABLE` / G2-11 remains `NOT-AUTHORIZED`.

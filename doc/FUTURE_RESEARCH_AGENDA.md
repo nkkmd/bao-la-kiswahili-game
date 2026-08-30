@@ -3,7 +3,7 @@
 Version: 2.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-08-30
+更新日: 2026-08-31
 
 ## 1. 目的
 
@@ -1064,7 +1064,7 @@ G2-10 `UMSSR-STUDY1`は`selectedRepresentation = null`で閉じ、その後のPr
 
 #### G2-12 — State-Space / Game-Tree Growth Estimation Study 1
 
-**状態:** planned / exact-enumerationとは別Study
+**状態:** completed / `SSGTGE-STUDY1` formal decision `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`
 
 中心課題:
 
@@ -1073,6 +1073,8 @@ G2-10 `UMSSR-STUDY1`は`selectedRepresentation = null`で閉じ、その後のPr
 G2-05等の完了済みbounded exact dataはestimator developmentやresource planningに利用できるが、formal validationに用いるdeeper exact holdoutの結果を見る前にestimator family、fitting rule、uncertainty method、acceptance criteriaをfreezeする。
 
 推定が不安定またはnon-estimableなら、その結果を正式closureとし、Bao全体のstate-space sizeを点推定として強制的に報告しない。
+
+2026-08-31に`SSGTGE-STUDY1`として実施・closureした。Stage 0 v2はtechnical PASS、Stage 1 production-onlyではE2をproposalしたが、mandatory independent verifierが凍結済み`1e-12` cross-implementation toleranceを超えるprediction mismatchを検出したためStage 1は`STAGE1-TECHNICAL-INVALID`、Study formal decisionは`TECHNICAL-INVALID`となった。same-evidence rerunやtolerance緩和による救済は行っていない。Canonical estimatorはfreezeされず`selectedEstimator = null`、fresh depth 10/11は未生成・未読、Stage 2は未承認・未実行である。
 
 **Priority:** P2
 
@@ -1139,7 +1141,7 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
 P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed)
-P2: G2-11 (blocked / `NOT-AUTHORIZED`), G2-12
+P2: G2-11 (blocked / `NOT-AUTHORIZED`), G2-12 (completed / `TECHNICAL-INVALID`)
 Separate / non-blocking: G2-H01
 ```
 

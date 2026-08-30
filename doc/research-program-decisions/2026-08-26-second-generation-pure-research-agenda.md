@@ -276,3 +276,26 @@ Stage 1はfresh 4,096 games / 512 rootsのproduction / independent pipelineをfu
 Program上の帰結として、representation dependencyは未解決であり、`G2-11`は引き続き`NOT-AUTHORIZED`である。`UMSSR-STUDY1`と`PSRRE-STUDY1`のいずれも、G2-11へ渡せるeligible frozen representation candidateを提供していない。
 
 Canonical closure record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`.
+
+
+## 2026-08-31 — G2-12 State-Space / Game-Tree Growth Estimation Study 1 closure
+
+Agenda label `G2-12` was instantiated as `SSGTGE-STUDY1` — **State-Space / Game-Tree Growth Estimation Study 1** — under a fresh prospective RAW-only growth-estimation contract.
+
+`G2-05 / DRSSE-STUDY1` depth 0..9 exact summaries were development evidence only. The estimator family, rolling-origin cells, eligibility threshold, winner rule, uncertainty rule, fresh depth-10 primary holdout, depth-11 secondary stress test, resource ceilings, and no-rescue rule were frozen before any fresh depth-10/11 outcome existed.
+
+Stage 0 v1 failed before technical output at a source-binding gate and remains permanently `STAGE0-TECHNICAL-INVALID`. Because that failure occurred before scientific output, a separately versioned technical-entry v2 corrected only source-binding/orchestration mechanics. v2 passed production and independent depth-2 technical reconstruction and synthetic estimator controls.
+
+Stage 1 was then source-frozen and separately authorized once using only immutable G2-05 depth 0..9 summaries. Production completed and proposed `E2-LOG-QUADRATIC-D2PLUS`, but the mandatory independent verifier detected a prediction mismatch at `E2 / newRawStateCount / depth 7` beyond the prospectively fixed cross-implementation relative tolerance `1e-12`. The Stage 1 authorization fixed `sameStage1EvidenceRerunAuthorized=false`; therefore no tolerance relaxation, verifier repair, special-case candidate handling, or same-evidence rerun was used.
+
+```text
+Stage 0 v1 = STAGE0-TECHNICAL-INVALID
+Stage 0 v2 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-TECHNICAL-INVALID
+canonical selectedEstimator = null
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+fresh depth 10/11 = NOT GENERATED / NOT READ
+Study formal decision = TECHNICAL-INVALID
+```
+
+The production-only E2 proposal is retained as diagnostic provenance only and is not an accepted Stage 2 input or a validated growth estimator. `DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN` remains unchanged. G2-11 remains `NOT-AUTHORIZED` because its strategic-representation dependency is still unresolved; G2-12 does not alter that dependency. A corrected growth-estimator attempt requires a new prospective Study or explicit new version.
