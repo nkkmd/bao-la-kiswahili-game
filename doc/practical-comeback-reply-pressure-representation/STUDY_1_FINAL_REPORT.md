@@ -68,7 +68,7 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-## Stage 0 — technical validation
+## Stage 0 — 技術検証
 
 Stage 0は科学outcomeを生成しないtechnical-only validationとして実施した。
 
@@ -86,7 +86,7 @@ scalar features per row = 80
 
 G2-06の浮動小数点順序問題を事前technical lessonとして取り込み、exact move/reply lexical ordering、deterministic binary64 accumulation、big-endian binary64 encoding、integer-like key adversarial controls、reply-order permutation controlsを固定した。productionとindependentのfeature/vector equalityはexactにPASSした。
 
-Decision:
+正式判断:
 
 ```text
 STAGE0-TECHNICAL-PASS
@@ -94,7 +94,7 @@ STAGE0-TECHNICAL-PASS
 
 これはG2-06のformal decisionを救済しない。
 
-## Stage 1 — prospective development freeze
+## Stage 1 — development設計の事前固定
 
 scientific outcome生成前に以下を固定した。
 
@@ -116,7 +116,7 @@ CV = 5-fold grouped by historicalTrajectoryHash
 
 80 scalar featuresは12のprospectively declared familyに属し、continuation/future outcome由来のclass-D情報はpredictorから禁止した。
 
-Stage 1 contract hashes:
+Stage 1のcontract hash:
 
 ```text
 STAGE_1_DEVELOPMENT_SPEC.json SHA256 = 15aff7a35c7875c16a815ae0323b3726714b36941ce53ce4788f8947700b2f2c
@@ -126,7 +126,7 @@ FEATURE_DICTIONARY.md SHA256 = 892624860ac22c722ad9877b8c93ba6c32536da98692fc673
 
 最初のspec commit直後に`F03_REPLY_POLICY`が`F04_ALL_NO_TEMPORAL`と重複している記述上の欠陥を検出した。これはimplementation validation、authorization、scientific seed consumption、scientific outcome観測のすべてより前に修正し、machine-readable specへpre-outcome correctionとして記録した。
 
-## preauthorization validation
+## 事前承認前の検証
 
 scientific blockを消費する前に以下がPASSした。
 
@@ -142,15 +142,15 @@ independent smokeではsource corpus、root selection、row identity、80-featur
 
 resource preflightはtechnical-only seedsを用い、target prevalenceを観測せずに実行時間とRSSを評価した。
 
-## explicit authorizationとconsume-once境界
+## 明示的authorizationとconsume-once境界
 
-Stage 1 authorization commit:
+Stage 1のauthorization commit:
 
 ```text
 64f0352e7d8b26432e2a68c408e403859c3e71bf
 ```
 
-canonical workflow:
+正式workflow:
 
 ```text
 run = 33241465899
@@ -166,7 +166,7 @@ artifact ZIP SHA256 = cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e864f76a3
 
 このgate成功時点で`28710001..28713072`は永久にCONSUMEDとなった。事前のexecution addendumは、gate後にproduction、independent replay、artifact upload、final comparisonのいずれが失敗してもblockを未消費へ戻さないことを明記している。
 
-## Stage 1 production
+## Stage 1 — production
 
 production job:
 
@@ -212,7 +212,7 @@ STAGE1-DEVELOPMENT-PASS-PENDING-INDEPENDENT-VERIFICATION
 
 これらは**production-only unverified provenance**であり、accepted scientific Stage 1 resultではない。
 
-## mandatory independent replay
+## 必須の独立replay
 
 independent replay job:
 
@@ -262,7 +262,7 @@ independent full artifactが存在しないため、final verification job `9909
 
 artifact upload failure後に、stdoutだけを代替verificationとして採用する、artifact uploadだけをrerunする、independent replayを再実行する、verification requirementを緩和する、といった処置は事前契約に存在しない。
 
-## technical postmortem
+## 技術postmortem
 
 事故の分類:
 
@@ -278,13 +278,13 @@ Failed to make request after 5 attempts:
 Request timeout: /twirp/github.actions.results.api.v1.ArtifactService/CreateArtifact
 ```
 
-canonical machine-readable postmortem:
+正式なmachine-readable postmortem:
 
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 
 将来の別prospective studyでは、mandatory verifier outputをartifact service単一経路へ依存させない冗長なimmutable保存経路や、小さな独立hash shardを事前設計することが技術的改善候補となる。ただしこの改善をPCRPR-STUDY1へ後付けして再判定することは認めない。
 
-## fail-closed closure
+## fail-closedによるclosure
 
 事前固定したStage 1 decision mappingは:
 
