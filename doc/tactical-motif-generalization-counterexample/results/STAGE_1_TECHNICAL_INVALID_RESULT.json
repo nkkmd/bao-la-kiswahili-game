@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "TMGC_STAGE1_TECHNICAL_INVALID_RESULT_V1",
+  "studyId": "TMGC-STUDY1",
+  "stageId": "TMGC-S1-DEVELOPMENT-2026-08-30-v1",
+  "formalStageDisposition": "STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID",
+  "studyFormalDecision": "TECHNICAL-INVALID",
+  "stage2Disposition": "NOT-AUTHORIZED-NOT-EXECUTED",
+  "scientificInferenceAuthorized": false,
+  "stage1ScientificGenerationAuthorized": false,
+  "stage1ScientificSeedsConsumed": false,
+  "stage2ScientificSeedsConsumed": false,
+  "stage0Disposition": "STAGE0-TECHNICAL-PASS",
+  "toolingSmoke": {
+    "workflowRun": 33287035754,
+    "sourceCommit": "65b2e3dee0994e1520ad9a3470feff4f3c9d98ae",
+    "artifactId": 9724782927,
+    "artifactZipSha256": "54c536eceb460d8734ba19e6e79bfc2e9e7c82838056338a4527e7d365e1d51c",
+    "syntaxChecksPassed": true,
+    "runnerExitCode": 1,
+    "canonicalSmokeResultJsonProduced": false,
+    "failureClass": "TECHNICAL-IMPLEMENTATION-ERROR",
+    "failureLocation": "tools/experiments/lib/tmgc-stage1-boundary-independent.js:83",
+    "failureType": "ReferenceError",
+    "failureMessage": "topSetRate is not defined",
+    "cause": "The independent search summary computed a local variable named topRate but attempted to return an undefined identifier named topSetRate.",
+    "scientificEvidenceGenerated": false,
+    "scientificSeedUse": false
+  },
+  "frozenFailureMapping": {
+    "smokeSpec": "doc/tactical-motif-generalization-counterexample/preregistration/STAGE_1_TOOLING_SMOKE_SPEC.json",
+    "contractChangeBasedOnSmokeOutcomeAllowed": false,
+    "toolingMismatchDisposition": "STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID",
+    "sameStudyRepairRerunAuthorized": false,
+    "thresholdOrAxisChangeAuthorized": false,
+    "seedExtensionAuthorized": false
+  },
+  "reservedScientificSeeds": {
+    "stage1": {"start": 29110001, "end": 29114096, "status": "RESERVED-UNCONSUMED"},
+    "stage2": {"start": 29210001, "end": 29218192, "status": "RESERVED-UNCONSUMED"}
+  },
+  "scientificEndpoints": {
+    "generalizationDomain": null,
+    "counterexampleDomain": null,
+    "mixedBoundary": null,
+    "searchConditionGeneralization": null,
+    "searchConditionCounterexample": null,
+    "reason": "Stage 1 scientific generation was never authorized or executed."
+  },
+  "upstreamBoundary": {
+    "TM-S2-C03": "CONFIRMED-IMMUTABLE",
+    "TM-S2-C01": "NOT-CONFIRMED-IMMUTABLE",
+    "TM-S2-C02": "NOT-CONFIRMED-IMMUTABLE",
+    "TM-S2-C04": "NOT-CONFIRMED-IMMUTABLE",
+    "humanAxis": "INCONCLUSIVE-NOT-ESTIMABLE-N0-IMMUTABLE"
+  },
+  "noRescueApplied": true,
+  "futureWorkBoundary": "A corrected implementation may be studied only under a new prospective study/version with a new preregistered technical-entry contract and fresh authorization; this Study 1 is not repaired after the frozen smoke failure."
+}

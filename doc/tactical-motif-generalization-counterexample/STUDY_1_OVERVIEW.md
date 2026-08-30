@@ -1,72 +1,61 @@
-# STUDY 1 OVERVIEW
+# G2-09 / TMGC-STUDY1 — 研究概要
 
-## 1. 研究目的
+更新日: 2026-08-30  
+状態: **Study closed / `TECHNICAL-INVALID`**
 
-`TMGC-STUDY1`は、Research Generation 1でmachine-confirmedされた`TM-S2-C03`について、fresh positions上でgeneralization domain、counterexample domain、non-estimable domainをprospectively分離する研究である。
+## 何を調べようとしたか
 
-中心的な問いは次である。
+Research Generation 1で唯一machine-confirmedされた`TM-S2-C03`について、fresh positions上でどこまでgeneralizeし、どこにcounterexample boundaryがあり、どこがnon-estimableかをphase、morphology、search condition、state familyを横断してprospectively検証する研究だった。
 
-> `TM-S2-C03`は、phase、morphology、search condition、state familyが変化したfresh positionsにおいて、どの範囲まで再現可能に成立し、どの領域で反例または推定不能境界が現れるか。
+目的はC03をuniversal motifと宣言することではなく、成立領域と反例領域を再現可能に分離することだった。
 
-本研究の目的は`universal motif`の宣言ではない。
+## Upstreamは変更していない
 
-## 2. Upstreamの固定事項
+```text
+TM-S2-C03 = CONFIRMED
+TM-S2-C01/C02/C04 = NOT-CONFIRMED
+human axis = INCONCLUSIVE-NOT-ESTIMABLE (N=0)
+```
 
-元Studyのformal decision、candidate definition、population、threshold、seed、paired-family handling、search/evaluator condition、decision ruleをG2-09から変更しない。C01/C02/C04の救済も行わない。
+RAW identityのみを使用し、未validated symmetry / canonicalizationは使用しない。
 
-### TM-S2-C03 primary definition
+## Stage 0
 
-- candidate ID: `TM-S2-C03`
-- phase: `mtaji`
-- move abstraction mode: `coarse-no-index`
-- move abstraction: `takata`, row `1`, direction `right`, phase `mtaji`, `side=null`, `houseChoice=null`, `houseTwo=false`; index omitted
-- precondition: `reusablePits=0-2`
-- consequence: `actorNyumbaSeedsDeltaSign=0`
-- paired diagnostic: same precondition + `worstReplyActorCaptureMoveDeltaSign=0`; diagnostic-only and never a canonical replacement
+C03 exact semantics、Research Generation 1 provenance、RAW identity、production/independent technical reconstruction、source diversity、resource/artifact feasibilityを検証し、`STAGE0-TECHNICAL-PASS`となった。
 
-### Research Generation 1 formal measurement / decision contract
+C03 exactはMtaji back-row takata constructであり、Namuaへphaseだけを変えて同一constructとしてtransportできないため、direct Namua transportは`TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`とした。
 
-- fresh Stage 2 population: 3,072 games, seeds `22000001..22003072`, six trajectory-generation strata ×512, first 8 plies seeded-uniform exact `E.moveVariants`, max ply 100
-- candidate-specific root selection was consequence-blind, value-blind, outcome-blind, deterministic and no-replacement
-- canonical move representative: lexicographically smallest `AI.moveKey` among all legal exact moveVariants matching the frozen abstraction; no search value or consequence used for representative selection
-- root-search instrument: exact full-window root candidates, D1/D2/D3, `evaluationProfile=bao`, `quiescenceDepth=1`, `orderQuiescenceCaptures=false`
-- co-primary endpoints: structural consequence success and exact D3 top-set membership
-- each co-primary endpoint: exact one-sided binomial test against `p=0.50`, observed rate `>=0.60`
-- multiplicity: eight planned tests, Holm-Bonferroni FWER 0.05
-- consistency gates: D3 at-or-above-state-median rate `>=0.60`; D3 unique-worst rate `<=0.15`
-- estimability/transferability gates per candidate: at least 96 unique historical trajectories, 96 unique rule states, 48 opening prefixes, maximum single-prefix share 0.10, at least 4 generation strata, maximum single-stratum share 0.50
+## Stage 1 entryで何が起きたか
 
-Research Generation 1のformal C03 resultは、1,272 selected roots、structural success `1245/1272 = 0.9787735849`、D3 top-set success `937/1272 = 0.7366352201`、D3 at-or-above-median `1106/1272 = 0.8694968553`、D3 unique-worst `90/1272 = 0.0707547170`、final `CONFIRMED`であった。
+Stage 1/2のpopulation、seed、axes、threshold、firewall、multiplicity、decision ruleをscientific seed消費前に固定し、Stage 1 scientific authorizationの前提としてtechnical-only tooling smokeを実行した。
 
-これらはG2-09のimmutable upstream referenceであり、G2-09の新しいscientific resultではない。
+smokeのsyntax checkはpassしたが、independent boundary aggregatorが次で停止した。
 
-## 3. 新しく検証するconstruct
+```text
+ReferenceError: topSetRate is not defined
+```
 
-G2-09は以下を独立に扱う。
+canonical smoke result JSONは生成されず、Stage 1 scientific authorizationも発行されなかった。
 
-- `generalization-supporting case`
-- `counterexample case`
-- `ambiguous / non-estimable case`
-- frozen generalization group / boundary
-- frozen counterexample group / boundary
+事前freezeしたsmoke contractはtooling failureを`STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID`へ写像し、outcome後のsame-study repairを認めていなかった。このため容易な変数名修正であってもrerunせず、Studyを`TECHNICAL-INVALID`で閉じた。
 
-構造的成立とsearch-based tactical-value成立は別endpointとし、search disagreementをmotifの構造的不成立と同一視しない。Research Generation 1の0.60等の閾値は上流Studyのformal ruleとして保持するが、G2-09のformal generalization/counterexample acceptance ruleを自動的に意味しない。G2-09固有ruleは科学的evidence生成前に別途凍結する。
+## 何が分からなかったか
 
-## 4. Candidate axes
+Stage 1 scientific evidenceは生成されていないため、次はすべて未推定である。
 
-Stage 0でprovenanceと計算可能性を確認したうえで、Stage 1開始前に正式axisを固定する。
+- C03 generalization domain
+- C03 counterexample domain
+- morphology/state-family boundary
+- search-condition boundary
+- mixed/non-estimable scientific boundary
 
-- phase: Mtaji `C03-EXACT`、および意味論的に適格な場合のみ別名のphase-transport construct
-- morphology / structural context: pre-root RAW stateまたは明示された局所legal contextからoutcome-independentに計算できるdescriptorのみ
-- search condition: upstream reference semanticsを保持し、追加instrumentはtruthではなくsensitivity instrumentとして固定
-- state family: capture availability、forced-capture context、reply-set size、reserve/material regime、house context、local pit geometry、root branching等
+「C03がgeneralizeしなかった」というnegative resultではない。
 
-G2-06/G2-08の未validated representation/classifierは正式axisに使用しない。
+## Scientific seed state
 
-## 5. Human evidence boundary
+```text
+Stage 1 29110001..29114096 = RESERVED / UNCONSUMED
+Stage 2 29210001..29218192 = RESERVED / UNCONSUMED
+```
 
-本研究はmachine evidenceのみを扱う。human recognition、expert recognition、human difficulty、教育的salience、traditional Bao terminologyとの一致、human error probabilityはformal inferenceの対象外である。
-
-## 6. State identity boundary
-
-state deduplicationはRAW identityのみを用いる。未validated symmetry、reflection、player swap、canonicalizationをdeduplication、group assignment、generalization unitに使用しない。
+将来の再検証は新しいprospective Study/versionとして行い、本Study 1をretroactiveにrepairしない。

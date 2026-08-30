@@ -8,67 +8,50 @@
 - Study ID: `TMGC-STUDY1`
 - branch: `research/g2-09-tactical-motif-generalization-counterexample`
 - baseline `main`: `bc1263b7076f0a3794da5fd0d4e07821b23e1db6`
+- Study: **CLOSED / `TECHNICAL-INVALID`**
 
 ## Formal stage state
 
-- Stage 0 `TMGC-S0-TECHNICAL-2026-08-30-v1`: **`STAGE0-TECHNICAL-PASS`**
-- Stage 1 `TMGC-S1-DEVELOPMENT-2026-08-30-v1`: `NOT-AUTHORIZED` — tooling smoke/source freeze待ち
-- Stage 2 `TMGC-S2-FORMAL-2026-08-30-v1`: `NOT-AUTHORIZED`
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study = TECHNICAL-INVALID
+```
 
 ## Scientific seed state
 
-- Stage 1 reserved `29110001..29114096`: `UNCONSUMED`
-- Stage 2 reserved `29210001..29218192`: `UNCONSUMED`
+- Stage 1 `29110001..29114096`: `RESERVED / UNCONSUMED`
+- Stage 2 `29210001..29218192`: `RESERVED / UNCONSUMED`
 
-**G2-09 scientific evidence has not yet been generated.**
+G2-09 scientific generalization/counterexample evidenceは生成されていない。
 
-## Stage 0 closure evidence
+## Terminal technical event
 
-### Core semantics / provenance
+Stage 1 scientific authorization前に必須としたtooling smoke:
 
-GitHub Actions run `33285277593`: `CORE-SEMANTICS-AND-PROVENANCE-PASS`。
+```text
+workflow run = 33287035754
+source commit = 65b2e3dee0994e1520ad9a3470feff4f3c9d98ae
+artifact id = 9724782927
+artifact ZIP SHA-256 = 54c536eceb460d8734ba19e6e79bfc2e9e7c82838056338a4527e7d365e1d51c
+syntax checks = PASS
+canonical result JSON = NOT PRODUCED
+failure = ReferenceError: topSetRate is not defined
+```
 
-- Research Generation 1 candidate/spec/authorizationと17 source-file SHA binding: exact pass
-- RAW identity、legal moves、canonical C03 move、successor: production/independent exact pass
-- primary structural consequence、paired diagnostic: exact pass
-- D1/D2/D3 instrumentation: technical fixture上でexact pass
-- direct Namua transport: `TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`
+`STAGE_1_TOOLING_SMOKE_SPEC.json`の事前failure mappingにより、same-study repair/rerunはauthorizeしない。
 
-### Contract validation
+## Immutable upstream
 
-GitHub Actions run `33285599766`: `passed=true`。
+- `TM-S2-C03 = CONFIRMED`
+- `TM-S2-C01/C02/C04 = NOT-CONFIRMED`
+- human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
+- RAW identity only
+- validated transform set `[]`
+- canonicalization / symmetry reduction false
+- G2-08 leaf development observations are not G2-09 validated inputs
 
-seed range、8 strata、phase boundary、RAW identity、Stage1→2 firewall、prospective axes、multiplicity、no-rescue、decision vocabularyの内部整合性を確認した。
+## Interpretation boundary
 
-### Source / diversity / resource preflight
-
-GitHub Actions run `33285761079`: **`SOURCE-PREFLIGHT-PASS`**。
-
-- technical seeds: `8090001..8090128`
-- 128 games / 8 strata × 16
-- unique RAW trajectories: 126
-- opening prefixes: 121
-- selected unique C03-exact roots: 66
-- selected-root opening prefixes: 64
-- 8/8 source strata、4/4 source familiesを確認
-- deterministic reruns 8/8 exact、全trajectory replay exact
-- projected 256-game source shard: 384.62 s
-- projected compact gzip: 647,088 bytes
-- max RSS: 140,164 KB
-- frozen checks: all pass
-
-初回run `33285427882`はtechnical implementation defectで`TECHNICAL-EXECUTION-INVALID-NO-PREFLIGHT-RESULT`として保存し、gate/population/technical seedを変更せずexact rerunした。
-
-## Upstream formal boundary
-
-- `TM-S2-C03 = CONFIRMED` — immutable
-- `TM-S2-C01/C02/C04 = NOT-CONFIRMED` — immutable
-- human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)` — immutable
-- RAW identity only; validated transform set empty
-- G2-08 leaf-level development observations are not validated G2-09 inputs
-
-## Prospective Stage 1/2 contract
-
-`preregistration/STAGE_1_2_BOUNDARY_CONTRACT.json`はscientific seed消費前にfreeze済み。
-
-次の安全な作業はStage 1 production/independent toolingのtechnical-only smoke、source hash freeze、Stage 1 authorizationである。Stage 1 authorization materialization前にreserved scientific seedを使用しない。
+本closureはC03の科学的generalization failureを意味しない。human/expert/game-theoretic claimもauthorizeしない。将来修正版は新しいprospective Study/versionとして扱う。

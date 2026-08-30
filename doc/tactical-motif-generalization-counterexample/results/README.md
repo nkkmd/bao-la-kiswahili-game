@@ -1,33 +1,40 @@
 # Results
 
-## 現在の結果状態
+## Study-level terminal result
 
-G2-09の**scientific generalization/counterexample resultはまだ存在しない**。
+```text
+Study = TECHNICAL-INVALID
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
 
-Stage 0 technical-onlyは **`STAGE0-TECHNICAL-PASS`** としてclosureした。
+Canonical result:
 
-### Stage 0 core
+- `STUDY_1_FINAL_RESULT.json`
 
-- `STAGE_0_CORE_TECHNICAL_RESULT.json`
-- workflow run: `33285277593`
-- source commit: `123b24049f6d12dbe529c5aecc7fc2ee78852deb`
-- disposition: `CORE-SEMANTICS-AND-PROVENANCE-PASS`
+## Stage 0
 
-### Stage 0 source preflight
+- `STAGE_0_CORE_TECHNICAL_RESULT.json` — technical core semantics/provenance
+- `STAGE_0_TECHNICAL_CLOSURE_RESULT.json` — `STAGE0-TECHNICAL-PASS`
 
-- workflow run: `33285761079`
-- source commit: `93396ec45619cf10a08726b5705b9a155bcb1c3b`
-- disposition: `SOURCE-PREFLIGHT-PASS`
-- 128 technical-only games、8 source strata、126 unique RAW trajectories、121 opening prefixes、66 selected unique C03-exact roots
-- deterministic rerun / exact replay / source balance / resource / artifact gates: all pass
+Accepted Stage 0 source preflight: run `33285761079`, `SOURCE-PREFLIGHT-PASS`。
 
-### Stage 0 closure
+## Stage 1
 
-- `STAGE_0_TECHNICAL_CLOSURE_RESULT.json`
-- formal disposition: `STAGE0-TECHNICAL-PASS`
+- `STAGE_1_TECHNICAL_INVALID_RESULT.json` — canonical Stage 1 terminal record
 
-このclosureは、上流C03 semantics、RAW identity、source diversity、workflow/resource feasibility、independent verification pathがG2-09のfresh studyを開始できるtechnical状態であることだけを示す。
+Stage 1 scientific authorization前のtooling smoke run `33287035754`でindependent boundary aggregatorが`ReferenceError`を発生させ、canonical smoke result JSONを生成できなかった。事前failure mappingに従いsame-study repairを行わず、Stage 1をtechnical-invalidで閉じた。
 
-TM-S2-C03がfresh populationでgeneralizeする、またはcounterexample boundaryが存在するという科学的claimはまだauthorizeされない。
+Stage 1 scientific populationは生成していないため、generalization/counterexample cell resultは存在しない。
 
-Stage 1 / Stage 2 reserved scientific seed blocksはStage 0 closure時点でunconsumedである。
+## Stage 2
+
+`NOT-AUTHORIZED-NOT-EXECUTED`。Stage 2 formal resultは存在しない。
+
+## Seed state
+
+```text
+Stage 1 29110001..29114096 = RESERVED / UNCONSUMED
+Stage 2 29210001..29218192 = RESERVED / UNCONSUMED
+```
