@@ -32,7 +32,7 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-## Stage 0 closure
+## Stage 0 — 終了状態
 
 Stage 0の正式な技術判断:
 
@@ -104,7 +104,7 @@ Study = NON-ESTIMABLE
 
 となった。
 
-## Leaf-level development observation
+## Leaf-level development observation（開発観測）
 
 結果を見る前に固定したpromotion calculationは、次のleafで`true`を返した。
 
@@ -155,7 +155,7 @@ pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
 ```
 
-## Closure artifact
+## closure成果物
 
 1. `STUDY_1_FINAL_REPORT.md`
 2. `results/STAGE_1_DEVELOPMENT_RESULT.json`
