@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-12",
+  "studyId": "SSGTGE-STUDY1",
+  "authorizationRole": "CENTRAL-DOC-SYNC-EXECUTE",
+  "authorizationDate": "2026-08-31",
+  "expectedParentSha": "9b3860aa4abcad72e60775c76f05be0e2cf38378",
+  "executionAuthorized": true,
+  "mainIntegrationAuthorized": false,
+  "allowedBranch": "research/g2-12-state-space-game-tree-growth-estimation",
+  "allowedPaths": [
+    "README.md",
+    "doc/RESEARCH_INDEX.md",
+    "doc/FUTURE_RESEARCH_AGENDA.md",
+    "doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md"
+  ],
+  "scientificDecisionChangeAuthorized": false,
+  "sameEvidenceRerunAuthorized": false,
+  "freshDepth10Or11GenerationAuthorized": false
+}
