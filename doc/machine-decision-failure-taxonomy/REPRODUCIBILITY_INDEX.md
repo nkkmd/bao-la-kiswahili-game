@@ -3,7 +3,7 @@
 更新日: 2026-08-30
 状態: **STUDY CLOSED / NON-ESTIMABLE**
 
-## Study anchor
+## Studyの基準anchor
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -44,7 +44,7 @@ excluded = turn,reason
 validated transform set = []
 ```
 
-## Seed reservation
+## Seed予約
 
 ```text
 Stage 1 = 28910001..28914096 / 4096 / CONSUMED
@@ -53,7 +53,7 @@ Stage 2 = 29010001..29018192 / 8192 / RESERVED / UNCONSUMED
 
 Stage 0 closure時点では、Stage 1/2のscientific authorizationは存在していなかった。
 
-## Stage 0 production / independent source
+## Stage 0 — production / independent source
 
 ```text
 tools/experiments/lib/mdft-stage0-production.js
@@ -84,7 +84,7 @@ FULL_TECHNICAL_CORE SHA-256 = 77f7fee6db8eb0ace645b42115182c9192c0ee68c50a7fd75d
 FINAL_EXACT_COMPARISON SHA-256 = 77f23ef20f91d345b8d5c7811f63b92483dd674aa9a9d4baea142cf4c92c4c2f
 ```
 
-Technical fixture:
+技術fixture:
 
 ```text
 4 total
@@ -94,7 +94,7 @@ production/independent exact equality = PASS
 B1024 depth-3 completion = 4/4
 ```
 
-Resource observation:
+Resource観測値:
 
 ```text
 wall clock = 6232.648148 ms
@@ -104,7 +104,7 @@ gzip bytes = 4166
 technical compressed-part ceiling = 131072 bytes
 ```
 
-## Stage 0 determinism replay
+## Stage 0 — determinism再現確認
 
 ```text
 GitHub Actions run = 33256767045
@@ -115,7 +115,7 @@ core SHA-256 = f5052e9c18b118a194c4a43c8964e789a2a81083ad72ebf259b18c699ed5d6f1
 canonical core hash match = true
 ```
 
-## F09 static audit
+## F09 — static監査
 
 Historically frozen Mtaji classifierのcandidate-definition hash:
 
@@ -132,7 +132,7 @@ replacement/refit = NOT AUTHORIZED
 
 詳細は`checkpoints/2026-08-29-stage0-f09-static-audit.md`を参照する。
 
-## F10 preflight
+## F10 — preflight
 
 ```text
 GitHub Actions run = 33256932295
@@ -151,7 +151,7 @@ gzip bytes = 2570
 all predeclared gates = PASS
 ```
 
-## Stage 0 disposition
+## Stage 0 — 正式disposition
 
 ```text
 STAGE0-TECHNICAL-PASS
