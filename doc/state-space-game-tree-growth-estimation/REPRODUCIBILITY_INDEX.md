@@ -1,7 +1,7 @@
 # SSGTGE-STUDY1 — Reproducibility Index
 
 更新日: 2026-08-31  
-状態: **COMPLETE / TECHNICAL-INVALID / NOT MERGED TO MAIN**
+状態: **COMPLETE / TECHNICAL-INVALID / MERGED TO MAIN**
 
 ## Canonical identity
 
@@ -200,7 +200,7 @@ The production-only E2 proposal is retained only as diagnostic provenance and mu
 
 ## Central documentation synchronization provenance
 
-The four central documents were synchronized only on the G2-12 research branch after Study-local closure. The machine-readable synchronization authorization explicitly set `mainIntegrationAuthorized=false`.
+The four central documents were synchronized only on the G2-12 research branch after Study-local closure. The machine-readable synchronization authorization explicitly set `mainIntegrationAuthorized=false`; that authorization governed only the earlier synchronization action and did not authorize integration at that time.
 
 ```text
 authorization path = authorizations/CENTRAL_DOC_SYNC_EXECUTE.json
@@ -229,4 +229,26 @@ tools/maintenance/sync-g2-12-central-docs.js removal = 8ef6b0329d386db48c729ea50
 
 The authorization record remains as provenance only; its triggering workflow no longer exists.
 
-G2-05 remains unchanged; G2-11 remains `NOT-AUTHORIZED`. A corrected attempt requires a new prospective Study or explicit new version. `main` has not been integrated or modified by this closure work.
+## Main integration provenance
+
+After the completed final documentation audit, the user explicitly authorized integration to `main`. A fresh immediate pre-write audit confirmed:
+
+```text
+remote main before integration = c5efcdb7972d1bc775a2857c1b0641c35c9df622
+research branch head = 741ba02ffa944a9569b262841465bfc78db8220a
+compare status = ahead
+research branch ahead_by = 16
+research branch behind_by = 0
+merge base = c5efcdb7972d1bc775a2857c1b0641c35c9df622
+```
+
+`main` was then fast-forwarded without force to `741ba02ffa944a9569b262841465bfc78db8220a`. Post-integration status synchronization began with:
+
+```text
+CURRENT_STATUS update commit = a440ac2308fb8e7305beeeb6cbb49446d9a9d08f
+RESUME_HERE update commit = 5fc9f00958d5215be2cd6e08e6ee6c67c485a70d
+```
+
+These integration-status edits are documentation/provenance only. They do not modify the canonical Study result, scientific thresholds, estimator selection, Stage 2 authorization, fresh-depth access state, G2-05 boundary, or G2-11 boundary.
+
+G2-05 remains unchanged; G2-11 remains `NOT-AUTHORIZED`. A corrected attempt requires a new prospective Study or explicit new version.
