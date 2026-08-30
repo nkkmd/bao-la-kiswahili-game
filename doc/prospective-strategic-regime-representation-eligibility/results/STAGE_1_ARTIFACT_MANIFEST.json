@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "PSRRE_STAGE1_REPO_ARTIFACT_MANIFEST_V1",
+  "studyId": "PSRRE-STUDY1",
+  "stageId": "PSRRE-S1-DEVELOPMENT-2026-08-30-v1",
+  "workflowRun": 33308337738,
+  "job": 99248759871,
+  "artifactId": 9731444105,
+  "artifactZipSha256": "c418bca917723eb9c07035c323431972ac541b4b58e286820657b0d1c7e40d7a",
+  "artifactSizeBytes": 5399830,
+  "files": {
+    "CONSUMPTION_RECORD.json": {"bytes": 1130, "sha256": "da80527be93597ee765a67e9b50bf7c8e2f7f170fda3243e342dcc618d20be44"},
+    "FINAL_EXACT_COMPARISON.json": {"bytes": 193, "sha256": "f5e89ee04550f2f83a1c1848910aca8502cf5d3c53ba6b3d9906e1b7495382ae"},
+    "STAGE_1_DEVELOPMENT_RESULT.json": {"bytes": 19684, "sha256": "1a198843dfe57b6b378e8e9aec3f1f60e5cf5424b4e76028894485863914539e"},
+    "ESSENTIAL_CORE.json": {"bytes": 19684, "sha256": "1a198843dfe57b6b378e8e9aec3f1f60e5cf5424b4e76028894485863914539e"},
+    "HASH_MANIFEST.json": {"bytes": 1054, "sha256": "3d6fd84963d4d89b8963ad5e657f7525c6f6891cee237faea5bb173576a33078"},
+    "production/full-shard-0001.json.gz": {"bytes": 2694038, "sha256": "1f00bf677de11899c38179c7a383676be753c1184c0010bd84d3b1fb26af6cd1"},
+    "independent/full-shard-0001.json.gz": {"bytes": 2694038, "sha256": "1f00bf677de11899c38179c7a383676be753c1184c0010bd84d3b1fb26af6cd1"}
+  },
+  "productionIndependentFullShardByteIdentical": true,
+  "runnerInternalResultSha256": "42bbb556b96e35bef24044c9112d47508b5f6759718c582f278dd64cbd7db9a8"
+}

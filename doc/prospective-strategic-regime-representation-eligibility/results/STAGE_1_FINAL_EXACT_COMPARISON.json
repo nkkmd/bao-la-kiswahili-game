@@ -1,0 +1,9 @@
+{
+  "sourceExact": true,
+  "selectionExact": true,
+  "featureExact": true,
+  "scalerExact": true,
+  "candidateEvaluationExact": true,
+  "frozenRepresentationExact": true,
+  "fullExact": true
+}
