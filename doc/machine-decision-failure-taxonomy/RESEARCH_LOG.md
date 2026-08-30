@@ -1,6 +1,6 @@
-# MDFT-STUDY1 — Research Log
+# MDFT-STUDY1 — 研究ログ
 
-## 2026-08-29 — Study initiation
+## 2026-08-29 — 研究開始
 
 1. remote `main`を再取得した。
 2. user-provided prior G2-07 integration HEAD `24a0968e68c9eb0ed7462093d953f52b339a9d04`ではなく、current remote `main`は`cb660e166460e0f19d4ba16d5283fa880d55757f`であることを確認した。
@@ -15,7 +15,7 @@
 11. Stage 0/1/2 identity、multi-label candidate search space、fresh seed reservation、no-rescue、independent verification、artifact-preservation designをscientific outcome前に記録した。
 12. Stage 1/2 scientific seedはまだ消費していない。
 
-## 2026-08-29 — Stage 0 core technical validation
+## 2026-08-29 — Stage 0 core技術検証
 
 1. G2-08専用production search wrapperと、production/SRDR helperをimportしないindependent alpha-beta/quiescence/budget implementationを作成した。
 2. authoritative RAW identityに`pending`を含め、`turn/reason`を除外するserializer/reconstructionを実装した。
@@ -27,7 +27,7 @@
 8. run `33256767045`で同じcore SHA-256を再現し、determinismを確認した。
 9. Stage 1/2 scientific seedは使用していない。
 
-## 2026-08-29 — F09 static historical-classifier audit
+## 2026-08-29 — F09 historical classifier静的監査
 
 1. closed Position Typology studyのfrozen Mtaji classifierが、repository外local artifact `mtaji-candidate-definition.json`のscaler/centroid等を必要とすることを確認した。
 2. current repositoryにexact candidate artifact、authoritative scaler/centroid copy、hash-bound replacement sourceが存在しないことを確認した。
@@ -52,8 +52,7 @@
 6. Stage 1 seeds `28910001..28914096`は引き続き`RESERVED / UNCONSUMED`である。
 7. Stage 2 seeds `29010001..29018192`も`RESERVED / UNCONSUMED`である。
 
-
-## 2026-08-29 — Stage 1 preregistration / preflight / source freeze
+## 2026-08-29 — Stage 1 事前登録 / preflight / source freeze
 
 1. Stage 1 exact spec SHA-256 `85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203`をscientific outcome前に固定した。
 2. Production / independent Stage 1 implementationsを別実装として作成した。
@@ -63,7 +62,7 @@
 6. Source blobs、scientific runner/workflow、artifact/resource contractをsource freezeした。
 7. Explicit Stage 1 authorizationを別artifactとして発行した。
 
-## 2026-08-29 — Stage 1 consume-once execution
+## 2026-08-29 — Stage 1 consume-once実行
 
 1. Authorized run `33277102013`のexecution-start gateがPASSした。
 2. Seeds `28910001..28914096`を永久に`CONSUMED`とした。
@@ -71,7 +70,7 @@
 4. Production / independent full development calculationを実行した。
 5. Mandatory artifact uploadを完了した。
 
-## 2026-08-30 — Stage 1 canonical result / Study closure
+## 2026-08-30 — Stage 1正式結果 / Study closure
 
 1. Production / independent source generation、selection、selected-root identity、analysis rows、development coreがexact一致した。
 2. Development core SHA-256は双方`f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c`だった。
