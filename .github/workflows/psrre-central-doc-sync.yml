@@ -1,0 +1,46 @@
+name: PSRRE Central Documentation Sync
+
+on:
+  push:
+    branches:
+      - research/pre-g2-11-strategic-regime-representation-eligibility
+    paths:
+      - 'tools/experiments/finalize-psrre-central-docs.py'
+      - '.github/workflows/psrre-central-doc-sync.yml'
+      - 'doc/prospective-strategic-regime-representation-eligibility/checkpoints/2026-08-30-central-documentation-sync-request.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  synchronize:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: research/pre-g2-11-strategic-regime-representation-eligibility
+
+      - name: Materialize central documentation
+        run: python3 tools/experiments/finalize-psrre-central-docs.py
+
+      - name: Documentation whitespace audit
+        run: git diff --check
+
+      - name: Commit synchronized documentation
+        run: |
+          if git diff --quiet; then
+            echo 'No central documentation changes required.'
+            exit 0
+          fi
+          git config user.name 'Sawa'
+          git config user.email '72678394+nkkmd@users.noreply.github.com'
+          git add README.md \
+            doc/RESEARCH_INDEX.md \
+            doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md \
+            doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md
+          git commit -m 'Synchronize PSRRE closure across central documentation [skip ci]'
+          git push origin HEAD:research/pre-g2-11-strategic-regime-representation-eligibility
