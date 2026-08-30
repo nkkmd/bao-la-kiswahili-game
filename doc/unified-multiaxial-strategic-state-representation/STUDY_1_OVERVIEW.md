@@ -1,5 +1,26 @@
 # UMSSR-STUDY1 — 研究概要
 
+## 0. 現在の結果
+
+本Studyはclosure済みである。
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study formal decision = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+```
+
+Stage 1ではfresh 4,096 gamesから512 rootsを選択し、40/40 featuresを用いたmultiaxial representation developmentをproduction / independent implementationで完全再構築した。Scientific readinessとresource gateは全項目PASSし、mandatory exact comparisonも`fullExact = true`だった。
+
+一方、scientific seed消費前に固定したdeterministic K-means `K=2..6`について、minimum cluster support `>= 0.10`、mean silhouette `>= 0.05`、five-fold assignment stability `>= 0.80`を全て満たす候補は0だった。このため`selectedRepresentation = null`とし、Stage 2へ渡す`FROZEN_REPRESENTATION.json`は生成しなかった。
+
+これはtechnical-invalidでもnon-estimableでもない。**凍結したG2-10 Study 1 contractの範囲で、Stage 2へ昇格可能なrepresentationを得られなかった正式なnegative development result**である。Threshold relaxation、K range変更、別clustering法、favorable subgroup、Stage 1 seed rerun / extensionによる同一Study内の救済は行わない。
+
+Stage 2 seeds `29410001..29418192`は`RESERVED / UNCONSUMED`のままである。`UMSSR-STUDY1`からG2-11へ渡せるvalidated / frozen representationはなく、G2-11で別representationが必要な場合はnew prospective Studyまたはexplicit versioned protocolを先に必要とする。
+
+詳細な結果とprovenanceは`STUDY_1_FINAL_REPORT.md`、`results/STUDY_1_FINAL_RESULT.json`、`REPRODUCIBILITY_INDEX.md`を正本とする。
+
 ## 1. 研究の問い
 
 本Studyは、Baoの局面を単一のevaluation scoreへ早期圧縮せず、複数の科学的に利用資格のある軸からなるstrategic-state vectorとして再現可能に記述できるか、さらにその表現からfresh evidence上で安定したstrategic regime / state familyを識別できるかを検証するResearch Generation 2 `G2-10`の新規・prospective・独立研究である。
