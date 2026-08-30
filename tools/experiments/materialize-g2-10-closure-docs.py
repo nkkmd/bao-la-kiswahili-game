@@ -35,12 +35,12 @@ t = insert_after_unique_line(
 write(p, t)
 
 
-# Central research index: append Study 26 before the future-research section.
+# Central research index: append Study 26 immediately before the future-research section.
 p = "doc/RESEARCH_INDEX.md"
 t = read(p)
 heading = "### 26. Unified Multiaxial Strategic State Representation — Study 1"
 if heading not in t:
-    anchor = "\n---\n\n## 将来研究\n"
+    anchor = "\n## 将来研究\n"
     idx = t.rfind(anchor)
     if idx < 0:
         raise SystemExit("RESEARCH_INDEX: future research anchor missing")
@@ -78,7 +78,7 @@ Stage 2はfrozen representationを検証する契約だったため、authorizat
 
 **Boundary:** 本StudyはBaoにstrategic regimeが存在しないことを示さない。凍結した40-feature / deterministic K-means `K=2..6` / promotion ruleの組合せではeligible representationが得られなかったことだけを示す。別representationを検証する場合はnew prospective Studyまたはexplicit versioned protocolとfresh evidenceを必要とし、G2-11へ本Studyのunvalidated representationを持ち込まない。
 '''
-    t = t[:idx] + block + t[idx + len("\n---\n"):]
+    t = t[:idx] + block + "\n" + t[idx:]
 write(p, t)
 
 
