@@ -22,6 +22,26 @@
 
 **G2-09 scientific evidence has not been generated.**
 
+## Stage 0 progress
+
+### Core semantics / provenance
+
+`CORE-SEMANTICS-AND-PROVENANCE-PASS`
+
+GitHub Actions run `33285277593`で次を確認した。
+
+- Research Generation 1のcandidate/spec/authorizationと17 source-file SHA binding: exact pass
+- RAW identity、legal moves、canonical C03 move、successor: production/independent exact pass
+- primary structural consequence、paired diagnostic: exact pass
+- D1/D2/D3 reference instrumentation: technical fixture上でexact pass
+- direct Namua transport: `TECHNICALLY-INELIGIBLE`
+
+Stage 0のformal terminal dispositionはまだ`PENDING`。
+
+### Source / diversity / resource preflight
+
+`STAGE_0_SOURCE_PREFLIGHT_SPEC.json`を結果前にfreeze済み。technical seeds `8090001..8090128`を使用するsource-only preflightを実行中/判定待ちであり、motif consequenceまたはtactical-value outcomeは計算しない。
+
 ## Upstream formal boundary
 
 - `TM-S2-C03 = CONFIRMED` — immutable
@@ -30,13 +50,6 @@
 - RAW identity only; validated transform set empty
 - G2-08 leaf-level development observations are not validated G2-09 inputs
 
-## 現在のtechnical重点
+## Prospective Stage 1/2 contract
 
-1. C03 exact definition / comparator / D3 semanticsのcode-level audit
-2. phase-transport constructの意味論的適格性判定
-3. production / independent pathの非共有実装設計
-4. fresh source generationとfirewall identity設計
-5. source-policy balance / opening-prefix diversity gateの事前設計
-6. runtime / memory / artifact-size / shard feasibility
-
-Stage 0のformal dispositionが確定するまでStage 1は開始しない。
+`STAGE_1_2_BOUNDARY_CONTRACT.json`をscientific seed消費前にfreeze済み。ただしStage 1 authorizationはStage 0 terminal passまで発行しない。

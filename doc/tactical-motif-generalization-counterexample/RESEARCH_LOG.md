@@ -21,3 +21,20 @@
 - generation source commit `3082cd2132cdd572e43f5f78e8d662271a9ed492`と現行`main`で`lib/tactical-motif-stage2-corpus.js`および`lib/tactical-motif-stage2-formal.js`のGit blob SHAが一致することを確認した。
 - `ruleState()`がG2-09のauthoritative RAW identity fieldsと一致することを確認した。`seatCanonicalKey`は旧観測に存在するが、G2-09 dedup/groupingには使用しない。
 - これらの訂正・監査はStage 1/2未authorized、reserved scientific seeds未消費の状態で実施した。
+
+## 2026-08-30 — Stage 0 core technical verification
+
+- G2-09専用production / independent technical implementationをmaterializeした。
+- GitHub Actions run `33285277593`、commit `123b24049f6d12dbe529c5aecc7fc2ee78852deb`がsuccessした。
+- candidate/spec/authorization document bindingと17 source-file bindingが全件exact passした。
+- RAW identity、legal move、candidate representative、successor、primary/paired classification、D1/D2/D3 instrumentがtechnical fixturesでproduction/independent exact一致した。
+- synthetic primary-positive / primary-counterexample controlが双方passした。
+- direct Namua transportを`TECHNICALLY-INELIGIBLE`と確定した。
+- Stage 0 terminal dispositionはまだ`PENDING`。
+
+## 2026-08-30 — Source preflight and scientific boundary contract freeze
+
+- technical seed `8090001..8090128`を使うsource-only preflightの8 strata、diversity/supply/resource gateをoutcome前に固定した。
+- preflightではprimary/paired consequenceとcandidate tactical searchを計算しないことを固定した。
+- Stage 1 / Stage 2 scientific population、RAW/trajectory/opening-prefix firewall、marginal axes、Stage 1 classification、Stage 2 formal tests、Holm family、terminal decision ruleをscientific seed消費前に固定した。
+- Stage 1 / Stage 2は引き続きnot authorized、reserved scientific seedsはunconsumed。
