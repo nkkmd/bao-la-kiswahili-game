@@ -16,7 +16,7 @@ Stage 1 = MDFT-S1-DEVELOPMENT-2026-08-29-v1
 Stage 2 = MDFT-S2-FORMAL-2026-08-29-v1
 ```
 
-## Canonical documents
+## 正式文書
 
 ```text
 README.md
@@ -44,16 +44,16 @@ excluded = turn,reason
 validated transform set = []
 ```
 
-## Seed reservations
+## Seed reservation
 
 ```text
 Stage 1 = 28910001..28914096 / 4096 / CONSUMED
 Stage 2 = 29010001..29018192 / 8192 / RESERVED / UNCONSUMED
 ```
 
-No Stage 1/2 scientific authorization exists at Stage 0 closure.
+Stage 0 closure時点では、Stage 1/2のscientific authorizationは存在していなかった。
 
-## Stage 0 production / independent sources
+## Stage 0 production / independent source
 
 ```text
 tools/experiments/lib/mdft-stage0-production.js
@@ -69,9 +69,9 @@ tools/experiments/run-mdft-stage0-f10-preflight.js
 workflow = .github/workflows/mdft-stage0-f10-preflight.yml
 ```
 
-Production and independent implementations share authoritative engine/AI semantics but do not share the G2-08 search/result-assembly helper.
+Productionとindependent implementationはauthoritative engine/AI semanticsを共有するが、G2-08専用のsearch/result-assembly helperは共有しない。
 
-## Stage 0 canonical core
+## Stage 0 正式core
 
 ```text
 GitHub Actions run = 33256737040
@@ -84,7 +84,7 @@ FULL_TECHNICAL_CORE SHA-256 = 77f7fee6db8eb0ace645b42115182c9192c0ee68c50a7fd75d
 FINAL_EXACT_COMPARISON SHA-256 = 77f23ef20f91d345b8d5c7811f63b92483dd674aa9a9d4baea142cf4c92c4c2f
 ```
 
-Technical fixtures:
+Technical fixture:
 
 ```text
 4 total
@@ -117,20 +117,20 @@ canonical core hash match = true
 
 ## F09 static audit
 
-Historical frozen Mtaji classifier candidate-definition hash:
+Historically frozen Mtaji classifierのcandidate-definition hash:
 
 ```text
 7a276a8c795efddaf9b9555e0fbb7fdc1e56563d30ebcb352b42b3f53ba0e75d
 ```
 
-The complete scaler/centroid artifact is not preserved in the current repository. Therefore:
+complete scaler/centroid artifactは現在のrepositoryに保存されていない。そのため:
 
 ```text
 MDFT-F09 = TECHNICALLY-INELIGIBLE
 replacement/refit = NOT AUTHORIZED
 ```
 
-See `checkpoints/2026-08-29-stage0-f09-static-audit.md`.
+詳細は`checkpoints/2026-08-29-stage0-f09-static-audit.md`を参照する。
 
 ## F10 preflight
 
@@ -161,9 +161,9 @@ MDFT-F10 = TECHNICALLY-ELIGIBLE
 scientific inference = NONE
 ```
 
-## Stage 1 pre-consumption requirements
+## Stage 1 seed消費前の要件
 
-Scientific seed consumption前に、少なくとも次を固定する。
+scientific seed consumption前に、少なくとも次を固定する。
 
 ```text
 Stage 1 exact machine-readable spec SHA-256
@@ -178,15 +178,15 @@ artifact-transfer failure mapping
 explicit authorization identity
 ```
 
-## Independent verification requirement
+## 独立検証要件
 
 production G2-08 helperと独立実装を分離する。exact comparisonの対象は、source/selection/RAW keys/moves/search tables/class labels/promotion/final decision inputを含む。
 
-## Artifact preservation requirement
+## Artifact保存要件
 
 Scientific executionではrunner-local full comparisonをuploadより前に行い、その結果とfull production/independent shardsの双方をmandatory preservation対象とする。Stage 0でartifact transferが成功したことを、Stage 1/2 mandatory artifact requirementの緩和理由には使用しない。
 
-## Stage 1 canonical closure
+## Stage 1 正式closure
 
 ```text
 spec SHA-256 = 85090d7820a1f3afcb8633b54d07aca408df648554f80262eb9e54ef9d8fe203
@@ -206,14 +206,14 @@ independent = f7e4e962f0a0c44e2466ed3d52b28c8c98b2a6e4aa0ee8c29b329c9afa5e305c
 match = true
 ```
 
-Full shards:
+Full shard:
 
 ```text
 production/full-shard-0001.json.gz = 665093 bytes / 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
 independent/full-shard-0001.json.gz = 665093 bytes / 21d55192d45a9b568d7cae01a367e20e39159bb8c7332683137863a926774830
 ```
 
-Canonical repository outputs:
+Repository上の正式output:
 
 ```text
 results/STAGE_1_DEVELOPMENT_RESULT.json
@@ -223,7 +223,7 @@ checkpoints/2026-08-30-stage1-development-blocked-non-estimable.md
 STUDY_1_FINAL_REPORT.md
 ```
 
-Scientific closure:
+科学的closure:
 
 ```text
 unique trajectories = 4068
