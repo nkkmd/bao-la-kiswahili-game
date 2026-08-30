@@ -1015,6 +1015,22 @@ Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
 
 **Priority:** completed
 
+#### Pre-G2-11 prerequisite — new prospective strategic representation Study
+
+**状態:** **selected next research direction / formal Study ID・最終題目・Stage IDは未固定 / scientific outcome generation未承認**
+
+G2-10 `UMSSR-STUDY1`は`selectedRepresentation = null`で閉じ、G2-11へ渡せるvalidated / frozen representationを生成しなかった。この結果を受け、G2-11を直接開始するのではなく、G2-10とは別のfresh prospective independent Studyとしてstrategic-state / regime representationを新規構築し、そのdownstream eligibilityを検証する。
+
+このprerequisite Studyは`G2-10`の40-feature dictionary、deterministic K-means `K=2..6`、support / silhouette / five-fold assignment stability threshold、candidate-K result、Stage 1 seed blockを変更・再解析・救済するものではない。G2-10のnegative development resultとStudy closureはimmutableに保持する。
+
+また、このprerequisiteは新しい`G2-xx` agenda labelを追加するものではない。Research Generation 2のcore label `G2-01..G2-12`は維持し、正式Study ID、最終題目、directory、Stage構成、Stage ID、population、representation family、eligibility gate、seed block、authorization ruleは、新しいチャットでその時点のremote `main`と命名規則を再監査した後にprospectively固定する。
+
+Prerequisite Studyのprimary scientific questionは**representation eligibility**であり、transition matrix、long-horizon persistence / recurrence、bottleneck / transient structure、trajectory family、transition asymmetry等のG2-11 outcomeをrepresentation選択に使用しない。G2-11は、新Studyがprospectively frozen gateを通過してeligible frozen representationを生成した場合にのみ、そのrepresentationをcandidate inputとして別途開始できる。
+
+**Program selection decision:** [`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md)
+
+**Priority:** P0 prerequisite before G2-11
+
 #### G2-11 — Long-Horizon Strategic Transition Structure Study 1
 
 **状態:** planned / downstream temporal study
@@ -1103,7 +1119,7 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed) (completed)
+P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed)
 P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```

@@ -176,3 +176,78 @@ The verifier independently reproduced corpus generation, root selection, continu
 Accordingly `RCPR-STUDY1` is closed as `STAGE1-TECHNICAL-INVALID`. Stage 2 was not authorized or executed. Research Generation 1 Critical Positions results, G2-01..G2-05 decisions, thresholds, endpoints, populations, and representation boundaries remain unchanged.
 
 The program does not reopen G2-06 as a result-driven "Study 2" rescue. The next uncompleted machine-only agenda item is `G2-07 — Practical Comeback / Reply-Pressure Representation Study 1`, which requires a separate prospective contract and fresh evidence.
+
+
+## 2026-08-30 — G2-07 through G2-10 program-progress backfill
+
+This section is a documentation synchronization backfill only. It records already-closed Studies in the Research Generation 2 program ledger and does not alter any Study-level formal decision, scientific artifact, seed state, threshold, endpoint, or interpretation boundary.
+
+### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
+
+Agenda label `G2-07` was instantiated as `PCRPR-STUDY1` under a separate prospective contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-TECHNICAL-INVALID
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 seed block = CONSUMED
+same-block rerun = NOT AUTHORIZED
+```
+
+Fresh Stage 1 production and independent replay completed the scientific computation and matched the development core, but the mandatory independent full artifact upload timed out before the prospectively required final exact verification artifact could be materialized. The frozen fail-closed rule therefore closed Stage 1 as technical-invalid. Production-only values were not promoted and the consumed block was not repaired/rerun.
+
+### G2-08 — Machine Decision-Failure Taxonomy Study 1
+
+Agenda label `G2-08` was instantiated as `MDFT-STUDY1` under a fresh prospective machine-only taxonomy contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Study formal decision = NON-ESTIMABLE
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+Production / independent Stage 1 recomputation completed exactly, but two prospectively frozen global readiness gates failed: distinct opening-prefix diversity and maximum source-policy share. Development leaf signals were not promoted to a validated taxonomy and no threshold/reweighting/root-deletion/seed-extension rescue was used.
+
+### G2-09 — Tactical Motif Generalization / Counterexample Study 1
+
+Agenda label `G2-09` was instantiated as `TMGC-STUDY1` under a fresh prospective C03 generalization-boundary contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID
+Study formal decision = TECHNICAL-INVALID
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1/2 scientific seed blocks = UNCONSUMED
+```
+
+The pre-scientific technical-only tooling smoke failed in the independent boundary aggregator. The frozen no-rescue rule did not authorize same-Study repair/rerun, so no C03 generalization/counterexample scientific result was generated. Research Generation 1 `TM-S2-C03 = CONFIRMED` remains unchanged within its original frozen scope.
+
+### G2-10 — Unified Multiaxial Strategic State Representation Study 1
+
+Agenda label `G2-10` was instantiated as `UMSSR-STUDY1` under a fresh prospective multiaxial representation contract.
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+selectedRepresentation = null
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 seeds = CONSUMED
+Stage 2 seeds = RESERVED / UNCONSUMED
+G2-11 candidate input authorized = false
+```
+
+Stage 1 completed 4,096 games / 512 roots / 40 active features with production / independent full-exact agreement and all scientific-readiness/resource gates passing. However none of the prospectively fixed deterministic K-means `K=2..6` candidates passed all support/silhouette/five-fold assignment-stability promotion criteria. No frozen representation was created and Stage 2 was not authorized. This is a valid negative development closure, not a technical failure or proof that Bao has no useful strategic representation.
+
+## 2026-08-30 — Pre-G2-11 strategic representation prerequisite selection
+
+`G2-10 / UMSSR-STUDY1`はprospectively fixed Stage 1 development contractを正常に完遂したが、`K=2..6`の全candidateがfrozen promotion criteriaを満たさず、`selectedRepresentation = null`で閉じた。Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`であり、G2-11 candidate inputは未承認である。
+
+Program sequencingとして、G2-11を直接開始せず、その前に**new prospective independent strategic-representation prerequisite Study**を置くことを選択した。これはG2-10のthreshold relaxation、K range変更、feature/axis replacement、favorable subgroup、same-block rerun等による救済ではない。
+
+このprerequisite Studyは新しい`G2-xx` sequence labelを追加しない。`G2-01..G2-12`のprogram shapeは維持する。正式Study ID、最終題目、Stage IDs、population、representation family、eligibility thresholds、decision taxonomy、seed blocks、authorization protocolは次Study開始時にcurrent remote `main`とrepository naming rulesを監査したうえでprospectively固定する。
+
+G2-11のlong-horizon transition outcomeはprerequisite Studyのrepresentation選択に利用してはならない。Prerequisite Studyが自身のfrozen eligibility gateをPASSした場合にのみ、得られたfrozen representationをG2-11 candidate inputとして別途評価できる。
+
+Selection record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`.
