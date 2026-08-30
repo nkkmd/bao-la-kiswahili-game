@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "TMGC_STAGE1_STAGE2_BOUNDARY_CONTRACT_V1",
+  "studyId": "TMGC-STUDY1",
+  "stage1Id": "TMGC-S1-DEVELOPMENT-2026-08-30-v1",
+  "stage2Id": "TMGC-S2-FORMAL-2026-08-30-v1",
+  "status": "PROSPECTIVELY-FROZEN-PENDING-STAGE0-PASS",
+  "stage1ScientificGenerationAuthorized": false,
+  "stage2ScientificGenerationAuthorized": false,
+  "purpose": "Freeze development classification, held-out validation, diversity, multiplicity, and no-rescue rules before any G2-09 scientific seed is consumed.",
+  "phaseBoundary": {
+    "c03ExactPhase": "mtaji",
+    "namuaDisposition": "TECHNICALLY-INELIGIBLE-FOR-C03-EXACT",
+    "namuaIsScientificCounterexample": false,
+    "newPhaseTransportConstructAuthorized": false,
+    "reason": "Frozen C03 exact move family is Mtaji row-1/back-row takata; Namua legal move construction is front-row only. Changing row would define a different construct."
+  },
+  "sourcePopulation": {
+    "openingPlies": 8,
+    "openingPolicy": "seeded-uniform-exact-E.moveVariants",
+    "maxPly": 100,
+    "conditionAssignment": "game-index-modulo-8",
+    "strata": [
+      {"id":"B-D1","family":"BASE-DEPTH","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":1,"quiescenceDepth":1},
+      {"id":"B-D2","family":"BASE-DEPTH","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":1},
+      {"id":"B-D3","family":"BASE-DEPTH","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":3,"quiescenceDepth":1},
+      {"id":"B-D2-Q0","family":"QUIESCENCE","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":0},
+      {"id":"B-D2-Q2","family":"QUIESCENCE","evaluationProfile":"bao","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":2},
+      {"id":"LS-D2","family":"LEGACY-SEARCH","evaluationProfile":"bao","searchProfile":"legacy","maxDepth":2,"quiescenceDepth":0},
+      {"id":"V2-D2","family":"ALT-EVALUATOR","evaluationProfile":"bao-v2","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":1},
+      {"id":"LE-D2","family":"ALT-EVALUATOR","evaluationProfile":"legacy","searchProfile":"phase2","maxDepth":2,"quiescenceDepth":1}
+    ],
+    "stage1": {"seedStart":29110001,"seedEnd":29114096,"games":4096,"gamesPerStratum":512,"shardGames":256,"shardCount":16},
+    "stage2": {"seedStart":29210001,"seedEnd":29218192,"games":8192,"gamesPerStratum":1024,"shardGames":256,"shardCount":32}
+  },
+  "identityAndSelection": {
+    "rawStateIncluded": ["pits","reserve","houseOwned","player","phase","winner","pending"],
+    "rawStateExcluded": ["turn","reason"],
+    "rawStateHash": "sha256(stable RAW identity object)",
+    "rawTrajectoryHash": "sha256(ordered rawStateHash sequence)",
+    "openingPrefixHash": "sha256(explicit prefix length plus first 8 exact AI.moveKey values)",
+    "symmetryReduction": false,
+    "canonicalization": false,
+    "minimumPly": 8,
+    "terminalIncluded": false,
+    "minimumLegalMoveCount": 2,
+    "eligibilityUsesOnly": ["phase=mtaji","reusablePits=0-2","frozen C03 coarse-no-index move family available"],
+    "eligibilityExcludes": ["primary consequence","paired consequence","search score/ranking","winner/game outcome","future motif occurrence"],
+    "withinTrajectoryRootSelection": "minimum-sha256(TMGC-ROOT-v1|TM-S2-C03|rawTrajectoryHash|rawStateHash|ply)",
+    "duplicateTrajectoryHandling": "retain-lowest-seed-no-replacement",
+    "duplicateSelectedRawStateHandling": "retain-lowest-rawTrajectoryHash-then-seed-no-replacement",
+    "candidateMoveRepresentative": "lexicographically-smallest-AI.moveKey among exact legal moves matching frozen C03 abstraction",
+    "candidateMoveSelectionUsesOutcomeOrSearch": false
+  },
+  "stage1ToStage2Firewall": {
+    "stage1SeedsReusable": false,
+    "stage1SelectedRawStateHashReusable": false,
+    "stage1RawTrajectoryHashReusable": false,
+    "stage1OpeningPrefixHashReusable": false,
+    "stage2OverlapHandling": "exclude-overlap-no-replacement",
+    "stage2SeedExtensionAllowed": false,
+    "stage2ReplacementPopulationAllowed": false
+  },
+  "rootLevelConstructs": {
+    "structuralSupport": "frozen primary consequence actorNyumbaSeedsDeltaSign=0",
+    "structuralCounterexample": "not structuralSupport",
+    "referenceTacticalSupport": "canonical C03 move is in exact D3_Q1_REFERENCE top set",
+    "referenceTacticalCounterexample": "not referenceTacticalSupport",
+    "generalizationSupportingCase": "structuralSupport AND referenceTacticalSupport",
+    "counterexampleCase": "structuralCounterexample OR referenceTacticalCounterexample",
+    "pairedDiagnostic": "worstReplyActorCaptureMoveDeltaSign=0; descriptive only"
+  },
+  "referenceAndSensitivitySearch": {
+    "semantics": "exact-full-window-root-candidates; higher resource is an instrument, not game-theoretic truth",
+    "evaluationProfile": "bao",
+    "orderQuiescenceCaptures": false,
+    "conditions": [
+      {"id":"D1_Q1","depth":1,"quiescenceDepth":1,"role":"sensitivity"},
+      {"id":"D2_Q1","depth":2,"quiescenceDepth":1,"role":"sensitivity"},
+      {"id":"D3_Q1_REFERENCE","depth":3,"quiescenceDepth":1,"role":"reference"},
+      {"id":"D2_Q0","depth":2,"quiescenceDepth":0,"role":"sensitivity"},
+      {"id":"D2_Q2","depth":2,"quiescenceDepth":2,"role":"sensitivity"}
+    ],
+    "nodeBudgetAxisAuthorized": false
+  },
+  "prospectiveBoundaryAxes": [
+    {"id":"candidatePitIndex","levels":["0","1","2","3","4","5","6","7"],"derivation":"exact canonical C03 move index"},
+    {"id":"actorHouseOwned","levels":["false","true"],"derivation":"RAW state actor houseOwned"},
+    {"id":"reusablePitsExact","levels":["1","2"],"derivation":"count actor pits with >=2 seeds; 0 is structurally impossible when C03 exact move is available"},
+    {"id":"legalMoveCountBin","levels":["2","3-4","5+"],"derivation":"exact E.moveVariants count"},
+    {"id":"actorFrontOccupiedBin","levels":["1-2","3-5","6-8"],"derivation":"count actor front pits with >0 seeds"},
+    {"id":"actorFrontConnectionsBin","levels":["0-1","2-4","5+"],"derivation":"adjacent actor front pairs both >0"},
+    {"id":"opponentFrontOccupiedBin","levels":["1-2","3-5","6-8"],"derivation":"count opponent front pits with >0 seeds"},
+    {"id":"sourceStratum","levels":["B-D1","B-D2","B-D3","B-D2-Q0","B-D2-Q2","LS-D2","V2-D2","LE-D2"],"derivation":"prospectively assigned source stratum"},
+    {"id":"sourceFamily","levels":["BASE-DEPTH","QUIESCENCE","LEGACY-SEARCH","ALT-EVALUATOR"],"derivation":"prospectively assigned source family"}
+  ],
+  "cellConstruction": {
+    "rule": "marginal cells only; no post-hoc cross-product or interaction subgroup creation",
+    "allListedLevelsReported": true,
+    "unobservedLevel": "NON-ESTIMABLE",
+    "manualCellDroppingAllowed": false
+  },
+  "stage1GlobalReadinessGates": {
+    "minimumGeneratedGames": 4096,
+    "minimumUniqueRawTrajectories": 3584,
+    "minimumDistinctOpeningPrefixes": 3584,
+    "maximumSingleOpeningPrefixShare": 0.02,
+    "requiredSourceStrata": 8,
+    "maximumSingleSourceStratumShareAmongSelectedRoots": 0.25,
+    "requiredSourceFamilies": 4,
+    "maximumSingleSourceFamilyShareAmongSelectedRoots": 0.50,
+    "minimumSelectedUniqueRawRoots": 768,
+    "minimumSelectedRootDistinctOpeningPrefixes": 512,
+    "minimumEstimableMarginalCells": 10,
+    "minimumAxesWithAtLeastTwoEstimableLevels": 5
+  },
+  "stage1CellEstimability": {
+    "minimumRoots": 48,
+    "minimumDistinctOpeningPrefixes": 32,
+    "maximumSingleOpeningPrefixShare": 0.10,
+    "minimumSourceStrata": 4,
+    "maximumSingleSourceStratumShare": 0.40,
+    "minimumSourceFamilies": 3,
+    "maximumSingleSourceFamilyShare": 0.60
+  },
+  "stage1CellClassification": {
+    "GENERALIZATION-CANDIDATE": "cell estimable AND structuralSuccessRate >= 0.90 AND D3_Q1_REFERENCE topSetRate >= 0.60",
+    "COUNTEREXAMPLE-CANDIDATE": "cell estimable AND (structuralFailureRate >= 0.15 OR D3_Q1_REFERENCE nonTopSetRate >= 0.55)",
+    "MIXED-CANDIDATE": "cell estimable and neither GENERALIZATION-CANDIDATE nor COUNTEREXAMPLE-CANDIDATE",
+    "NON-ESTIMABLE": "any cell estimability gate fails",
+    "precedence": ["COUNTEREXAMPLE-CANDIDATE","GENERALIZATION-CANDIDATE","MIXED-CANDIDATE","NON-ESTIMABLE"],
+    "counterexampleTriggersFrozenSeparately": true,
+    "allEstimableCellsCarriedToStage2": true,
+    "favorableCellOnlyPromotionAllowed": false
+  },
+  "stage1SearchConditionClassification": {
+    "population": "all selected unique C03-exact roots passing global Stage1 readiness",
+    "minimumRoots": 768,
+    "GENERALIZATION-CANDIDATE": "topSetRate >= 0.60",
+    "COUNTEREXAMPLE-CANDIDATE": "nonTopSetRate >= 0.55",
+    "MIXED-CANDIDATE": "otherwise",
+    "allFiveConditionsCarriedToStage2": true
+  },
+  "stage2GlobalEstimabilityGates": {
+    "minimumGeneratedGames": 8192,
+    "minimumUniqueRawTrajectoriesBeforeFirewall": 7168,
+    "minimumDistinctOpeningPrefixesBeforeFirewall": 7168,
+    "minimumSelectedUniqueRawRootsAfterFirewall": 1536,
+    "minimumSelectedRootDistinctOpeningPrefixesAfterFirewall": 1024,
+    "requiredSourceStrata": 8,
+    "maximumSingleSourceStratumShareAmongSelectedRoots": 0.25,
+    "requiredSourceFamilies": 4,
+    "maximumSingleSourceFamilyShareAmongSelectedRoots": 0.50,
+    "zeroStage1RawStateOverlap": true,
+    "zeroStage1TrajectoryOverlap": true,
+    "zeroStage1OpeningPrefixOverlap": true
+  },
+  "stage2CellEstimability": {
+    "minimumRoots": 96,
+    "minimumDistinctOpeningPrefixes": 48,
+    "maximumSingleOpeningPrefixShare": 0.10,
+    "minimumSourceStrata": 4,
+    "maximumSingleSourceStratumShare": 0.40,
+    "minimumSourceFamilies": 3,
+    "maximumSingleSourceFamilyShare": 0.60
+  },
+  "stage2FormalValidation": {
+    "GENERALIZATION-CANDIDATE": {
+      "structural": {"minimumObservedSuccessRate":0.90,"nullSuccessProbability":0.80,"alternative":"greater","test":"exact-one-sided-binomial"},
+      "referenceTactical": {"minimumObservedSuccessRate":0.60,"nullSuccessProbability":0.50,"alternative":"greater","test":"exact-one-sided-binomial"},
+      "requiresBothEndpoints": true
+    },
+    "COUNTEREXAMPLE-CANDIDATE": {
+      "structuralTrigger": {"minimumObservedFailureRate":0.10,"nullFailureProbability":0.05,"alternative":"greater","test":"exact-one-sided-binomial"},
+      "referenceTacticalTrigger": {"minimumObservedFailureRate":0.45,"nullFailureProbability":0.35,"alternative":"greater","test":"exact-one-sided-binomial"},
+      "onlyStage1FrozenTriggersAreTested": true,
+      "requiresAtLeastOneFrozenTriggerToValidate": true
+    },
+    "MIXED-CANDIDATE": {"formalPositiveOrCounterexampleClaimAuthorized":false,"reportDescriptiveReplicationOnly":true},
+    "NON-ESTIMABLE": {"formalClaimAuthorized":false}
+  },
+  "stage2SearchConditionValidation": {
+    "GENERALIZATION-CANDIDATE": {"minimumObservedTopSetRate":0.60,"nullTopSetProbability":0.50,"alternative":"greater","test":"exact-one-sided-binomial"},
+    "COUNTEREXAMPLE-CANDIDATE": {"minimumObservedNonTopSetRate":0.45,"nullNonTopSetProbability":0.35,"alternative":"greater","test":"exact-one-sided-binomial"},
+    "MIXED-CANDIDATE": {"formalClaimAuthorized":false,"reportDescriptiveReplicationOnly":true}
+  },
+  "multiplicity": {
+    "stage2Family": "all formal endpoint tests implied by all Stage1-frozen GENERALIZATION/COUNTEREXAMPLE labels and frozen counterexample triggers, including search-condition labels",
+    "alpha": 0.05,
+    "method": "Holm-Bonferroni",
+    "dependencyAssumptionRequired": false,
+    "nonEstimableTestPValueForAdjustment": 1.0,
+    "manualTestDroppingAllowed": false
+  },
+  "studyDecisionRule": {
+    "VALIDATED-WITHIN-FROZEN-GENERALIZATION-DOMAIN": "Stage2 global gates pass; at least one frozen marginal/search-condition GENERALIZATION-CANDIDATE validates; zero frozen COUNTEREXAMPLE-CANDIDATE validates",
+    "COUNTEREXAMPLE-BOUNDARY-VALIDATED": "Stage2 global gates pass; at least one frozen COUNTEREXAMPLE-CANDIDATE validates; zero frozen GENERALIZATION-CANDIDATE validates",
+    "MIXED-BOUNDARY-VALIDATED": "Stage2 global gates pass; at least one frozen GENERALIZATION-CANDIDATE and at least one frozen COUNTEREXAMPLE-CANDIDATE validate",
+    "NOT-GENERALIZED": "Stage2 is globally estimable but no frozen GENERALIZATION or COUNTEREXAMPLE candidate validates",
+    "NON-ESTIMABLE": "Stage1 readiness blocks Stage2 authorization, or Stage2 global estimability gate fails",
+    "TECHNICAL-INVALID": "provenance, independent verification, mandatory artifact, or exact reconstruction integrity fails",
+    "RESOURCE-CENSORED": "preregistered hard resource ceiling prevents mandatory work",
+    "NOT-AUTHORIZED-NOT-EXECUTED": "Stage2 not authorized because Stage1 preregistered authorization gate was not met"
+  },
+  "independentVerification": {
+    "fullSourceReplay": true,
+    "fullLegalMoveReconstruction": true,
+    "selectedRootIdentityReconstruction": true,
+    "candidateMatchingAndRepresentativeReconstruction": true,
+    "primaryAndPairedClassificationReconstruction": true,
+    "allFiveSearchConditionsRecomputed": true,
+    "cellAssignmentReconstruction": true,
+    "statisticsAndHolmReconstruction": true,
+    "productionIndependentMayShareEngineAndFrozenEvaluator": true,
+    "productionIndependentMayShareG2_09ClassifierOrBoundaryHelper": false,
+    "discreteQuantitiesRequireExactEquality": true
+  },
+  "noRescue": {
+    "thresholdRelaxationAllowed": false,
+    "postStage1AxisChangeAllowed": false,
+    "postStage1CellMergeSplitAllowed": false,
+    "unfavorableCellDeletionAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementPopulationAllowed": false,
+    "sourceReweightingAllowed": false,
+    "comparatorSubstitutionAllowed": false,
+    "motifDefinitionChangeAllowed": false,
+    "searchConditionSubstitutionAllowed": false,
+    "manualPromotionAllowed": false
+  }
+}
