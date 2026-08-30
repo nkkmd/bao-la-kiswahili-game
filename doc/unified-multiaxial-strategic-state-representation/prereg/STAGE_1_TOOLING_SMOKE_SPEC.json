@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "UMSSR_STAGE1_TOOLING_SMOKE_SPEC_V1",
+  "studyId": "UMSSR-STUDY1",
+  "stageId": "UMSSR-S1-DEVELOPMENT-2026-08-30-v1",
+  "technicalOnly": true,
+  "scientificInferenceAuthorized": false,
+  "scientificSeedUseAuthorized": false,
+  "seedStart": 29300001,
+  "seedEnd": 29300064,
+  "games": 64,
+  "quotaPerPhaseSourcePolicyStratum": 1,
+  "candidateK": [2],
+  "scientificThresholdEvaluationAuthorized": false,
+  "required": [
+    "production_and_independent_source_exact",
+    "production_and_independent_root_selection_exact",
+    "production_and_independent_40_feature_rows_exact",
+    "production_and_independent_scaler_exact",
+    "production_and_independent_kmeans_candidate_exact",
+    "production_and_independent_selected_representation_exact",
+    "no_scientific_seed_use",
+    "resource_projection_within_frozen_stage1_ceiling",
+    "artifact_transfer_success"
+  ],
+  "projection": {
+    "scientificToSmokeScale": 64,
+    "safetyFactor": 1.5,
+    "productionCeilingMs": 7200000,
+    "independentCeilingMs": 7200000
+  },
+  "technicalRepairRule": "IMPLEMENTATION-ONLY-REPAIR-UNDER-UNCHANGED-STAGE1-SCIENTIFIC-CONTRACT",
+  "contractChangeBasedOnSmokeOutcomeAllowed": false,
+  "sameScientificSeedBlockUse": false
+}

@@ -1,0 +1,10 @@
+{
+  "recordsExact": true,
+  "selectionExact": true,
+  "analysisRowsExact": true,
+  "scalerExact": true,
+  "candidateKExact": true,
+  "representationExact": true,
+  "readinessObjectExact": true,
+  "fullExact": true
+}

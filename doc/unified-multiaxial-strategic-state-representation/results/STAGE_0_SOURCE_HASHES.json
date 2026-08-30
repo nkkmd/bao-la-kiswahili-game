@@ -1,0 +1,21 @@
+{
+  "doc/unified-multiaxial-strategic-state-representation/prereg/STAGE_0_TECHNICAL_SPEC.json": "8e0f5c0cc0179f8660baa63826b6ace97022dee1ac59e980061ea63c794fe2d0",
+  "doc/unified-multiaxial-strategic-state-representation/prereg/STUDY_1_INITIAL_CONTRACT.json": "5e5d0afe358e227d6e29ac6e31a907a782e82c0791cba67174dfe7bd3e0bf739",
+  "doc/unified-multiaxial-strategic-state-representation/authorizations/STAGE_0_TECHNICAL_EXECUTE.json": "6e4a5a5cbd40c7553318ec2d20dbe76f6a46e03991e0aab8f45456e6e3a9ad02",
+  "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+  "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+  "tools/experiments/run-umssr-stage0-technical.js": "3476d4b7dd4d31d22f020b5775f64616f6ae262f4074a20664039b3bff6cf9b3",
+  "tools/experiments/lib/umssr-stage0-production.js": "36b63aa511f6260ba72be0b48af74b2ff0884b37404198c10f46b17b1e646363",
+  "tools/experiments/lib/umssr-stage0-independent.js": "42e5c92a0cf7a0d44b8109c41eb8382b6cd7d4fdaf86f8d31b617dcec16f9db6",
+  "tools/experiments/lib/search-reliability-decision-robustness.js": "b7db89afbdfda25f4394f9e7bf6f8b745b5c7d01cb7356e21a50e32d114013e4",
+  "tools/experiments/lib/position-complexity-search-diagnostic.js": "471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9",
+  "tools/experiments/lib/tmgc-stage0-production.js": "45e9510eeb6e964b792914febf295ae4baf22a3e8fb3d2671bb4bb8c7b18b0f5",
+  "tools/experiments/lib/tmgc-stage0-independent.js": "ee3a71cda8cf8a0303cba44b5916440a3027913cd222541b7a14b3e01fa3840c",
+  "tools/experiments/lib/position-typology-features.js": "94ec8283cdc9d8f75cbdb13215cc2acd95fd33a2ca3a14afccd3a26ca8644242",
+  "tools/experiments/lib/tactical-motif-features.js": "26fc334801c3cf879e41429ae011eb313cbb7a7f60184a7adfd5cb623eb31a42",
+  "tools/experiments/lib/tactical-motif-stage2-formal.js": "7b689b1933357ddc7758abd8e7f4dca69bb9d3614f811d149cbb48ef61a9b67d",
+  "doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json": "667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8",
+  "doc/deep-raw-state-space-enumeration/results/STUDY_1_FINAL_RESULT.json": "1346d29d97cac910ba84b9824791d20f62d2d170106766d4f8e2328a5520543f",
+  "doc/machine-decision-failure-taxonomy/checkpoints/2026-08-29-stage0-f09-static-audit.md": "45c5cd5ef18f618413724011742adcb478cb0b029836b5d5b0142fb2ceef0582"
+}

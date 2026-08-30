@@ -1,0 +1,34 @@
+name: UMSSR Closure Audit
+
+on:
+  push:
+    branches:
+      - research/g2-10-unified-multiaxial-strategic-state-representation
+    paths:
+      - 'README.md'
+      - 'doc/FUTURE_RESEARCH_AGENDA.md'
+      - 'doc/RESEARCH_INDEX.md'
+      - 'doc/unified-multiaxial-strategic-state-representation/**'
+      - 'tools/experiments/audit-g2-10-closure.py'
+      - '.github/workflows/umssr-closure-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch main baseline
+        run: git fetch origin main
+
+      - name: Run G2-10 closure audit
+        run: python3 tools/experiments/audit-g2-10-closure.py
+
+# Final taxonomy-normalized closure audit trigger.

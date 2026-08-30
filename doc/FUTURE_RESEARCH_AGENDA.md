@@ -987,17 +987,33 @@ Frozen smoke contractはtooling failure後のsame-study repairを認めていな
 
 #### G2-10 — Unified Multiaxial Strategic State Representation Study 1
 
-**状態:** planned / downstream integrative study
+**状態:** **完了 / `UMSSR-STUDY1 = NOT-AUTHORIZED-NOT-EXECUTED` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 中心課題:
 
-> phase、morphology、activity / concentration、material / reserve、search reliability、tactical pressure、criticality、reply structure等を単一clusterへ押し込まず、複数軸を同時保持するBao strategic-state coordinate systemとして再現可能に構成できるか。
+> phase、search reliability、structural state、legal branching、reply-pressure raw structure、tactical structure、decision raw observable、local graph等を単一scalarへ早期圧縮せず、複数軸を保持するBao strategic-state / regime representationとしてfresh evidence上で再現可能に構成できるか。
 
-本Study開始前に、どのupstream axisを`validated` / `exploratory` / `excluded`として含めるかのeligibility ruleをfreezeする。upstream negative/inconclusive resultを便宜的にvalidated axisへ昇格させない。
+開始前にG2-01〜G2-09を監査し、`FORMALLY-ELIGIBLE` / `BOUNDED-EXACT-ELIGIBLE` / `TECHNICAL-REFERENCE-ONLY` / `DEVELOPMENT-CANDIDATE-ONLY` / `INELIGIBLE`のupstream evidence eligibility contractをfreezeした。G2-06/07のtechnical-invalid representation、G2-08のnon-estimable taxonomy、G2-09の未生成generalization boundaryをvalidated inputへ昇格させず、validated transform set `[]`のためRAW identityを維持した。
 
-目標は「真の局面タイプ」を宣言することではなく、fresh positionsに対して再現性・安定性・解釈可能性を持つmultiaxial representationの採否を判断することである。
+Stage 1はfresh 4,096 gamesを生成し、4,068 unique trajectories / 3,711 distinct opening prefixesから、8 phase/source-policy strata各64、計512 unique RAW rootsをoutcome-blind ruleで選択した。40/40 featuresがactiveとなり、production / independent implementationはsource、selection、feature analysis、scaler、candidate K metrics、representation decision、readiness objectを全てexact一致させた。Scientific readinessとresource gateも全項目PASSした。
 
-**Priority:** P1
+Representation selectionはdimensionality reductionなし、deterministic K-means `K=2..6`とし、minimum cluster support `>= 0.10`、mean silhouette `>= 0.05`、five-fold assignment stability `>= 0.80`をscientific seed消費前に固定した。K=2はstability、K=3はsupport/stability、K=4/K=5はsupport、K=6はsupport/stabilityが未達となり、eligible candidateは0だった。
+
+したがってfrozen decision mappingをそのまま適用し:
+
+```text
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+selectedRepresentation = null
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
+```
+
+で閉じた。これはtechnical failureやnon-estimable resultではなく、凍結したStudy 1 contract内でStage 2へ昇格可能なrepresentationを得られなかったformal negative development resultである。
+
+このclosureをminimum support / stability threshold緩和、K range変更、PCA / latent representation /別clustering法の事後追加、favorable subgroup、Stage 1 seed rerun / extensionで救済しない。また`UMSSR-STUDY1`からG2-11へ渡せるvalidated / frozen representationは生成されなかった。
+
+**Priority:** completed
 
 #### G2-11 — Long-Horizon Strategic Transition Structure Study 1
 
@@ -1009,7 +1025,7 @@ Frozen smoke contractはtooling failure後のsame-study repairを認めていな
 
 Namua→Mtaji Study 1で棄却した`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。transition matrix、regime persistence、trajectory family、transition asymmetry等を候補とするが、primary endpointはoutcome前にfreezeする。
 
-G2-10が必要なrepresentation gateを満たさない場合、結果後に別representationへ差し替えて同じStudyを救済しない。新しいprotocolを必要とする。
+G2-10 `UMSSR-STUDY1`は実際にrepresentation gateを満たさず、`selectedRepresentation = null`で閉じた。したがって`UMSSR-STUDY1`由来representationをG2-11のinputとして使用しない。G2-11を開始する前に、long-horizon transitionへ入力可能なrepresentationを新しいprospective Studyまたは明示的versioned protocolで構築・freezeし、そのeligibilityをoutcome前に固定する必要がある。
 
 **Priority:** P2
 
@@ -1068,6 +1084,10 @@ G2-02 + G2-06..09 closures
         ↓
 G2-10 Unified Multiaxial Strategic State
         ↓
+NO ELIGIBLE FROZEN REPRESENTATION
+        ↓
+new prospective representation protocol required before G2-11
+        ↓
 G2-11 Long-Horizon Strategic Transitions
 
 G2-05 bounded exact enumeration
@@ -1083,12 +1103,12 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10
+P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed) (completed)
 P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-09はclosure済みである。`G2-09`は`TMGC-STUDY1 = TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、scientific generalization/counterexample evidenceは未生成である。次のdownstream machine-only agenda itemは`G2-10 — Unified Multiaxial Strategic State Representation Study 1`だが、開始時にはG2-06〜G2-09のtechnical-invalid/non-estimable closuresをvalidated axisへ昇格させないeligibility ruleを新たにfreezeする。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。したがってG2-11へ`UMSSR-STUDY1`由来representationを持ち込まず、G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする。
 
 ### 9.9 第二世代プログラムの完了条件
 

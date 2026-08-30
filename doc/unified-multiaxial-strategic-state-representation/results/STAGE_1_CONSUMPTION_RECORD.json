@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "UMSSR_STAGE1_CONSUMPTION_RECORD_V1",
+  "studyId": "UMSSR-STUDY1",
+  "stageId": "UMSSR-S1-DEVELOPMENT-2026-08-30-v1",
+  "executionHead": "d6487403dba9fa1de8895b473e5e662d90b1f13b",
+  "sourceFreezeCommit": "10801fbc1529902bf3f4c0aa6e464c1dc39f1267",
+  "seedStart": 29310001,
+  "seedEnd": 29314096,
+  "games": 4096,
+  "status": "CONSUMED",
+  "consumeOnce": true,
+  "sameBlockRerunAuthorized": false,
+  "scientificGenerationStartedAfterThisRecord": true,
+  "bindings": {
+    "stage1SpecSha256": "0cc1debb44767357c7a26b14e8d48fa843fb197ec55e1dd36838a2a572b80b8d",
+    "featureDictionarySha256": "f23428d9f5c1d02e1176d773bc02e098b002cbfeb5e2652ecf0e107d62e2d61f",
+    "stage2ValidationContractSha256": "3f76a4ea54dabe5ac1a020fd7fc7b5a637d611f341c47a25fe73c6199aad3658",
+    "executionContractSha256": "415463f304c9943a68e6dbaab7fdd5b5f79833f13b317d9e3c1c72a53e371531",
+    "toolingSmokeResultSha256": "2ba2ccc2382f867a417ac13a80c1caea107a901a4117f933b80c67ff849be5f6",
+    "packagingPreflightResultSha256": "7652628d0e6befc4e0d6a400c8b7d0e6b68cd70324cd8dbf575d12b63177f98f"
+  }
+}

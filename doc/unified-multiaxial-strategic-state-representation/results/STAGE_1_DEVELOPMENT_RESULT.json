@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "UMSSR_STAGE1_DEVELOPMENT_RESULT_V1",
+  "studyId": "UMSSR-STUDY1",
+  "stageId": "UMSSR-S1-DEVELOPMENT-2026-08-30-v1",
+  "executionHead": "d6487403dba9fa1de8895b473e5e662d90b1f13b",
+  "sourceFreezeCommit": "10801fbc1529902bf3f4c0aa6e464c1dc39f1267",
+  "seedBlock": {
+    "start": 29310001,
+    "end": 29314096,
+    "games": 4096,
+    "status": "CONSUMED"
+  },
+  "technicalVerification": {
+    "recordsExact": true,
+    "selectionExact": true,
+    "analysisRowsExact": true,
+    "scalerExact": true,
+    "candidateKExact": true,
+    "representationExact": true,
+    "readinessObjectExact": true,
+    "fullExact": true
+  },
+  "population": {
+    "generatedGames": 4096,
+    "uniqueTrajectories": 4068,
+    "distinctOpeningPrefixes": 3711,
+    "selectedRoots": 512,
+    "stratumCounts": {
+      "namua/UNIFORM": 64,
+      "namua/CAPTURE_FIRST": 64,
+      "namua/HIGH_CAPTURE": 64,
+      "namua/LOW_CAPTURE": 64,
+      "mtaji/UNIFORM": 64,
+      "mtaji/CAPTURE_FIRST": 64,
+      "mtaji/HIGH_CAPTURE": 64,
+      "mtaji/LOW_CAPTURE": 64
+    },
+    "selectedDistinctOpeningPrefixes": 504,
+    "maximumSingleSelectedOpeningPrefixShare": 0.005859375,
+    "selectionHash": "097baf62b9b1529e677ad302e035a71ce2b026198b3d49c88255348ab7b456cf"
+  },
+  "features": {
+    "featureWidth": 40,
+    "activeFeatureCount": 40,
+    "activeFeatures": [
+      "UMSSR-F01",
+      "UMSSR-F02",
+      "UMSSR-F03",
+      "UMSSR-F04",
+      "UMSSR-F05",
+      "UMSSR-F06",
+      "UMSSR-F07",
+      "UMSSR-F08",
+      "UMSSR-F09",
+      "UMSSR-F10",
+      "UMSSR-F11",
+      "UMSSR-F12",
+      "UMSSR-F13",
+      "UMSSR-F14",
+      "UMSSR-F15",
+      "UMSSR-F16",
+      "UMSSR-F17",
+      "UMSSR-F18",
+      "UMSSR-F19",
+      "UMSSR-F20",
+      "UMSSR-F21",
+      "UMSSR-F22",
+      "UMSSR-F23",
+      "UMSSR-F24",
+      "UMSSR-F25",
+      "UMSSR-F26",
+      "UMSSR-F27",
+      "UMSSR-F28",
+      "UMSSR-F29",
+      "UMSSR-F30",
+      "UMSSR-F31",
+      "UMSSR-F32",
+      "UMSSR-F33",
+      "UMSSR-F34",
+      "UMSSR-F35",
+      "UMSSR-F36",
+      "UMSSR-F37",
+      "UMSSR-F38",
+      "UMSSR-F39",
+      "UMSSR-F40"
+    ]
+  },
+  "candidateK": [
+    {
+      "k": 2,
+      "eligible": false,
+      "emptyCluster": false,
+      "minSupport": 0.142578125,
+      "meanSilhouette": 0.17337024701327378,
+      "fiveFoldAssignmentStability": 0.740234375,
+      "metricHex": {
+        "minSupport": "3fc2400000000000",
+        "meanSilhouette": "3fc630ff0a82bef5",
+        "fiveFoldAssignmentStability": "3fe7b00000000000"
+      },
+      "counts": [
+        73,
+        439
+      ]
+    },
+    {
+      "k": 3,
+      "eligible": false,
+      "emptyCluster": false,
+      "minSupport": 0.009765625,
+      "meanSilhouette": 0.18121647379388248,
+      "fiveFoldAssignmentStability": 0.744140625,
+      "metricHex": {
+        "minSupport": "3f84000000000000",
+        "meanSilhouette": "3fc73219f6387823",
+        "fiveFoldAssignmentStability": "3fe7d00000000000"
+      },
+      "counts": [
+        69,
+        438,
+        5
+      ]
+    },
+    {
+      "k": 4,
+      "eligible": false,
+      "emptyCluster": false,
+      "minSupport": 0.0078125,
+      "meanSilhouette": 0.20576375120521176,
+      "fiveFoldAssignmentStability": 0.916015625,
+      "metricHex": {
+        "minSupport": "3f80000000000000",
+        "meanSilhouette": "3fca567773107819",
+        "fiveFoldAssignmentStability": "3fed500000000000"
+      },
+      "counts": [
+        67,
+        11,
+        430,
+        4
+      ]
+    },
+    {
+      "k": 5,
+      "eligible": false,
+      "emptyCluster": false,
+      "minSupport": 0.0078125,
+      "meanSilhouette": 0.18309611515099047,
+      "fiveFoldAssignmentStability": 0.822265625,
+      "metricHex": {
+        "minSupport": "3f80000000000000",
+        "meanSilhouette": "3fc76fb1894c9051",
+        "fiveFoldAssignmentStability": "3fea500000000000"
+      },
+      "counts": [
+        65,
+        4,
+        11,
+        428,
+        4
+      ]
+    },
+    {
+      "k": 6,
+      "eligible": false,
+      "emptyCluster": false,
+      "minSupport": 0.001953125,
+      "meanSilhouette": 0.184310677873519,
+      "fiveFoldAssignmentStability": 0.69921875,
+      "metricHex": {
+        "minSupport": "3f60000000000000",
+        "meanSilhouette": "3fc7977e06e29afe",
+        "fiveFoldAssignmentStability": "3fe6600000000000"
+      },
+      "counts": [
+        65,
+        1,
+        4,
+        11,
+        428,
+        3
+      ]
+    }
+  ],
+  "scientificReadiness": {
+    "checks": {
+      "generatedGames": true,
+      "uniqueTrajectories": true,
+      "distinctOpeningPrefixes": true,
+      "selectedRoots": true,
+      "strata": true,
+      "rawUnique": true,
+      "selectedOpeningPrefixes": true,
+      "maxOpeningShare": true,
+      "activeFeatures": true,
+      "activeFamilies": true
+    },
+    "passed": true
+  },
+  "selectedRepresentation": null,
+  "resource": {
+    "productionMs": 402909.87754799996,
+    "independentMs": 345065.27055699995,
+    "maxRssKb": 164304,
+    "productionFullShard": {
+      "bytes": 563456,
+      "sha256": "66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595"
+    },
+    "independentFullShard": {
+      "bytes": 563456,
+      "sha256": "66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595"
+    },
+    "checks": {
+      "productionWall": true,
+      "independentWall": true,
+      "rss": true,
+      "productionShard": true,
+      "independentShard": true,
+      "totalCompressed": true
+    },
+    "passed": true
+  },
+  "disposition": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+  "scientificInferenceAuthorized": true,
+  "stage2AutomaticallyAuthorized": false,
+  "interpretationBoundary": {
+    "humanClaimAuthorized": false,
+    "gameTheoreticTruthAuthorized": false,
+    "longHorizonTransitionAuthorized": false,
+    "c03GeneralizationAuthorized": false,
+    "historicalMorphologyRescueAuthorized": false,
+    "stage1DevelopmentPopulationReusableAsStage2Evidence": false
+  },
+  "resultSha256": "985235180827db9d314b610baeb37cd2aec9427633ac518c270c938230060b9a"
+}
