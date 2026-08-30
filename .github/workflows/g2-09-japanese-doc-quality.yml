@@ -1,4 +1,5 @@
 name: G2-09 Japanese Documentation Quality
+# Post-localization verification trigger: 2026-08-30
 
 on:
   push:
