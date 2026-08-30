@@ -1,8 +1,8 @@
 name: PSRRE Stage 0 Technical
 
 # Technical-only prerequisite validation. No PSRRE Stage 1/2 scientific seed may be consumed.
+# Archived after PSRRE-STUDY1 closure: no manual dispatch is exposed on main.
 on:
-  workflow_dispatch:
   push:
     branches:
       - research/pre-g2-11-strategic-regime-representation-eligibility
