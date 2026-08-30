@@ -827,7 +827,35 @@ F01/F02/F03/F05/F06/F10はleaf-level development promotion formulaを満たし�
 - [`machine-decision-failure-taxonomy/DECISION_REGISTER.md`](machine-decision-failure-taxonomy/DECISION_REGISTER.md)
 - [`machine-decision-failure-taxonomy/REPRODUCIBILITY_INDEX.md`](machine-decision-failure-taxonomy/REPRODUCIBILITY_INDEX.md)
 
+
 ---
+
+### 25. Tactical Motif Generalization / Counterexample — Study 1
+
+**研究題目:** Baoにおけるmachine-confirmed tactical motifの一般化可能範囲と反例領域のprospective検証 — phase, morphology, search condition, state familyを横断したTM-S2-C03のgeneralization boundary / counterexample boundaryの再現可能な特定
+**Program:** `G2-09` / **Study ID:** `TMGC-STUDY1` / **Research Generation 2**
+**状態:** **Study closed / formal decision `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+
+Research Generation 1で唯一machine-confirmedされた`TM-S2-C03`をimmutable upstreamとして、fresh evidence上のgeneralization domain / counterexample domainをprospectively検証する独立Studyとして開始した。Stage 0ではC03 exact semantics、RAW identity、historical source binding、independent technical reconstruction、source diversity/resource feasibilityを検証し、`STAGE0-TECHNICAL-PASS`となった。Direct Namua transportはfrozen C03 exactと同一constructにならないため`TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`とした。
+
+Stage 1/2 population、seed、marginal axes、search instruments、firewall、multiplicity、decision ruleをscientific seed消費前に固定し、Stage 1 authorization前のtechnical-only tooling smokeをrun `33287035754`で実施した。syntax checksはPASSしたが、independent boundary aggregatorが`ReferenceError: topSetRate is not defined`で停止し、mandatory canonical smoke resultをmaterializeできなかった。
+
+Prospectively frozen smoke failure mappingはsame-study repairを認めていなかったため、変数名修正によるrerunを行わず、Stage 1を`STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID`、Studyを`TECHNICAL-INVALID`で閉じた。Stage 1 seeds `29110001..29114096`とStage 2 seeds `29210001..29218192`は未消費である。したがってC03 generalization / counterexampleについてscientific positive/negative resultは存在しない。
+
+**最初に読む:**
+
+- [`tactical-motif-generalization-counterexample/STUDY_1_OVERVIEW.md`](tactical-motif-generalization-counterexample/STUDY_1_OVERVIEW.md)
+
+**詳細・正本:**
+
+- [`tactical-motif-generalization-counterexample/STUDY_1_FINAL_REPORT.md`](tactical-motif-generalization-counterexample/STUDY_1_FINAL_REPORT.md)
+- [`tactical-motif-generalization-counterexample/results/STUDY_1_FINAL_RESULT.json`](tactical-motif-generalization-counterexample/results/STUDY_1_FINAL_RESULT.json)
+- [`tactical-motif-generalization-counterexample/results/STAGE_1_TECHNICAL_INVALID_RESULT.json`](tactical-motif-generalization-counterexample/results/STAGE_1_TECHNICAL_INVALID_RESULT.json)
+- [`tactical-motif-generalization-counterexample/CURRENT_STATUS.md`](tactical-motif-generalization-counterexample/CURRENT_STATUS.md)
+- [`tactical-motif-generalization-counterexample/DECISION_REGISTER.md`](tactical-motif-generalization-counterexample/DECISION_REGISTER.md)
+- [`tactical-motif-generalization-counterexample/REPRODUCIBILITY_INDEX.md`](tactical-motif-generalization-counterexample/REPRODUCIBILITY_INDEX.md)
+
+**Boundary:** `TM-S2-C03 = CONFIRMED`を取消さず、C01/C02/C04を救済しない。Stage 1 partial technical computationをgeneralization/counterexample evidenceへ昇格させない。実装修正版を検証する場合は、新しいprospective Studyまたは明示的新version、fresh technical-entry contract、fresh authorizationを必要とする。
 
 ## 将来研究
 
