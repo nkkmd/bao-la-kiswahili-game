@@ -61,6 +61,7 @@ require(consumption["sameBlockRerunAuthorized"] is False, "same-block rerun unex
 require(exact["fullExact"] is True and all(v is True for v in exact.values()), "exact comparison mismatch")
 
 require(final["formalStudyDecision"] == STUDY_TOKEN, "final Study decision mismatch")
+require(final["stage1DevelopmentDisposition"] == STAGE1_TOKEN, "final Stage 1 disposition mismatch")
 require(final["validatedStrategicRepresentation"] is False, "validated representation unexpectedly true")
 require(final["frozenRepresentationArtifactExists"] is False, "frozen representation flag mismatch")
 require(final["g2_11CandidateInputAuthorized"] is False, "G2-11 input unexpectedly authorized")
@@ -80,7 +81,7 @@ for rel, expected in hashes.items():
     actual = sha256(STUDY / rel)
     require(actual == expected, f"SHA-256 mismatch {rel}: {actual}")
 
-# Human-facing Study entry points must expose final decision, non-meaning, and Stage 2 consequence.
+# Human-facing Study entry points must expose Stage 1 disposition and Study/Stage 2 consequence.
 for rel in [
     "README.md",
     "STUDY_1_OVERVIEW.md",
@@ -109,6 +110,26 @@ require("G2-11へ渡せるvalidated / frozen representationはない" in index, 
 require("NO ELIGIBLE FROZEN REPRESENTATION" in agenda, "G2-11 dependency barrier missing from agenda")
 require("G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする" in agenda, "new prospective G2-11 representation prerequisite missing")
 
+# No explicit stale Study-level use of the Stage 1 token may remain in current entry points or generators.
+stale_patterns = [
+    f"Study formal decision = {STAGE1_TOKEN}",
+    f"Study final decision = {STAGE1_TOKEN}",
+    f'\"formalStudyDecision\": \"{STAGE1_TOKEN}\"',
+    f"Study = {STAGE1_TOKEN}",
+    f"formal decision `{STAGE1_TOKEN}`",
+    f"UMSSR-STUDY1 = {STAGE1_TOKEN}",
+]
+search_paths = ["README.md", "doc", "tools/experiments/materialize-g2-10-closure-docs.py"]
+for pattern in stale_patterns:
+    proc = subprocess.run(
+        ["git", "grep", "-n", "-F", pattern, "--", *search_paths],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    require(proc.returncode in (0, 1), f"git grep failed for stale taxonomy pattern: {pattern}\n{proc.stderr}")
+    require(proc.returncode == 1, f"stale Study-level taxonomy remains: {pattern}\n{proc.stdout}")
+
 print(json.dumps({
     "studyId": "UMSSR-STUDY1",
     "formalDecision": STUDY_TOKEN,
@@ -118,5 +139,6 @@ print(json.dumps({
     "stage2Seeds": "RESERVED_UNCONSUMED",
     "validatedRepresentation": False,
     "g2_11CandidateInputAuthorized": False,
+    "staleStudyTaxonomyReferences": 0,
     "audit": "PASS",
 }, ensure_ascii=False, indent=2))
