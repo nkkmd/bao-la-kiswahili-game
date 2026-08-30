@@ -21,6 +21,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Repair materializer-template anchor escaping
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tools/experiments/normalize-g2-10-study-taxonomy.py')
+          t = p.read_text(encoding='utf-8')
+          old = "\\\\n"
+          new = "\\n"
+          if old not in t:
+              raise SystemExit('double-escaped materializer anchor not found')
+          p.write_text(t.replace(old, new), encoding='utf-8')
+          PY
+
       - name: Normalize Study-level taxonomy
         run: |
           python3 tools/experiments/normalize-g2-10-study-taxonomy.py
@@ -48,6 +61,7 @@ jobs:
               'doc/unified-multiaxial-strategic-state-representation/checkpoints/2026-08-30-final-documentation-taxonomy-normalization.md',
               'tools/experiments/materialize-g2-10-closure-docs.py',
               'tools/experiments/audit-g2-10-closure.py',
+              'tools/experiments/normalize-g2-10-study-taxonomy.py',
           }
           changed = set(subprocess.check_output(['git','diff','--name-only'], text=True).splitlines())
           unexpected = sorted(changed - allowed)
@@ -70,6 +84,7 @@ jobs:
           git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md \
             doc/unified-multiaxial-strategic-state-representation \
             tools/experiments/materialize-g2-10-closure-docs.py \
-            tools/experiments/audit-g2-10-closure.py
+            tools/experiments/audit-g2-10-closure.py \
+            tools/experiments/normalize-g2-10-study-taxonomy.py
           git commit -m 'research(g2-10): normalize final Study decision taxonomy'
           git push origin HEAD:research/g2-10-unified-multiaxial-strategic-state-representation
