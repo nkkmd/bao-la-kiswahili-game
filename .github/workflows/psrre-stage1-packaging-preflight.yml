@@ -1,0 +1,70 @@
+name: PSRRE Stage 1 Packaging Preflight
+
+# Technical-only packaging/runtime preflight. Never consumes PSRRE scientific seeds.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pre-g2-11-strategic-regime-representation-eligibility
+    paths:
+      - 'doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_1_EXECUTION_CONTRACT.json'
+      - 'tools/experiments/run-psrre-stage1-packaging-preflight.js'
+      - 'tools/experiments/run-psrre-stage1-development.js'
+      - '.github/workflows/psrre-stage1-packaging-preflight.yml'
+      - '.github/workflows/psrre-stage1-development.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  packaging-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout frozen research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Environment and syntax
+        run: |
+          node --version
+          git rev-parse HEAD
+          git status --short
+          node --check tools/experiments/run-psrre-stage1-packaging-preflight.js
+          node --check tools/experiments/run-psrre-stage1-development.js
+          node --check tools/experiments/lib/psrre-stage1-production.js
+          node --check tools/experiments/lib/psrre-stage1-independent.js
+
+      - name: Verify scientific seed firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const spec = JSON.parse(fs.readFileSync('doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_1_DEVELOPMENT_SPEC.json','utf8'));
+          const exec = JSON.parse(fs.readFileSync('doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_1_EXECUTION_CONTRACT.json','utf8'));
+          if (exec.preflight.technicalSeedStart !== 29500001 || exec.preflight.technicalSeedEnd !== 29500064) throw new Error('technical preflight seed drift');
+          if (exec.preflight.scientificSeedUseAuthorized !== false) throw new Error('scientific seed use unexpectedly authorized');
+          if (!(exec.preflight.technicalSeedEnd < spec.seedBlock.seedStart)) throw new Error('technical/scientific seed overlap');
+          NODE
+
+      - name: Run PSRRE Stage 1 packaging preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/local/psrre-stage1-packaging-preflight
+          /usr/bin/time -v node tools/experiments/run-psrre-stage1-packaging-preflight.js artifacts/local/psrre-stage1-packaging-preflight \
+            2>&1 | tee artifacts-psrre-stage1-packaging-preflight.log
+
+      - name: Preserve preflight artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: psrre-stage1-packaging-preflight-${{ github.sha }}
+          path: |
+            artifacts/local/psrre-stage1-packaging-preflight/**
+            artifacts-psrre-stage1-packaging-preflight.log
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30
