@@ -6,6 +6,7 @@ on:
       - research/g2-09-tactical-motif-generalization-counterexample
     paths:
       - tools/experiments/materialize-g2-09-japanese-docs.py
+      - tools/experiments/finalize-g2-09-japanese-docs.py
       - .github/workflows/g2-09-japanese-doc-materialization.yml
   workflow_dispatch:
 
@@ -25,7 +26,17 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 tools/experiments/materialize-g2-09-japanese-docs.py
+          set +e
+          python3 tools/experiments/materialize-g2-09-japanese-docs.py > /tmp/g2-09-materialize.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/g2-09-materialize.log
+          if [ "$rc" -ne 0 ]; then
+            if ! grep -q '^unreplaced audited lines remain:' /tmp/g2-09-materialize.log; then
+              exit "$rc"
+            fi
+          fi
+          python3 tools/experiments/finalize-g2-09-japanese-docs.py
           python3 tools/experiments/audit-g2-09-japanese-docs.py | tee g2-09-japanese-doc-audit-after.json
           git diff --check
 
