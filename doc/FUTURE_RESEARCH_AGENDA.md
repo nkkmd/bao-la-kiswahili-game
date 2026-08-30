@@ -688,6 +688,8 @@ STSCV-STUDY1は`INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`で閉じた。Fresh
 
 State Space / Game Tree Complexity Studyを開始する場合、少なくともStudy 1ではauthoritative raw state identityをstate-count identityとし、ORISC/SIPでformal validationされていないtransformをcanonicalizationやdeduplicationへ使用しない。symmetry-reduced countは別のvalidated symmetry studyなしにformal primary resultとして主張しない。
 
+TMGC-STUDY1は`TECHNICAL-INVALID`で閉じ、Stage 1/2 scientific seedsは未消費である。同Study内でindependent boundary aggregatorを修正してtooling smokeをrerunし、Stage 1 authorizationを後付けしない。C03 generalization / counterexampleを再検証する場合はnew prospective Studyまたはexplicit new version、fresh technical-entry contract、fresh authorizationを使用する。
+
 Human evidenceなしではhuman error mechanismをformalに主張しない。
 
 ## 8. 到達目標
@@ -965,15 +967,21 @@ BMP Study 1の0 `CONFIRMED` / 4 `NOT-CONFIRMED`、G2-07 technical-invalid closur
 
 #### G2-09 — Tactical Motif Generalization / Counterexample Study 1
 
-**状態:** planned / new prospective independent study
+**状態:** **完了 / `TMGC-STUDY1 = TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 中心課題:
 
 > 第一世代でmachine-confirmedされた`TM-S2-C03`について、phase、morphology、search condition、state familyを変えたfresh evidenceで成立範囲とcounterexample domainをformalに特定できるか。
 
-目的はC03を普遍化することではなく、generalization boundaryとfailure boundaryを同時に確立することである。C01/C02/C04を救済しない。traditional / expert recognitionはHuman Trackの別evidenceとする。
+Stage 0はC03 exact semantics、RAW identity、historical source binding、independent technical reconstruction、source diversity/resource feasibilityをPASSし、`STAGE0-TECHNICAL-PASS`となった。Direct Namua transportはfrozen Mtaji back-row C03 exactと同一constructにならないため`TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`としてscientific counterexample populationから除外した。
 
-**Priority:** P1
+Stage 1/2 population、seed、marginal boundary axes、5 search instruments、identity firewall、multiplicity、decision ruleはscientific seed消費前にfreezeした。しかしStage 1 scientific authorization前のtechnical-only tooling smoke run `33287035754`で、independent boundary aggregatorが`ReferenceError: topSetRate is not defined`を発生させ、canonical smoke resultをmaterializeできなかった。
+
+Frozen smoke contractはtooling failure後のsame-study repairを認めていなかったため、変数名を修正してrerunせずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID`、Studyを`TECHNICAL-INVALID`として閉じた。Stage 1 scientific seeds `29110001..29114096`とStage 2 seeds `29210001..29218192`はともに未消費である。
+
+このclosureは`TM-S2-C03 = CONFIRMED`を変更せず、C03がgeneralizeしないこともcounterexample boundaryが存在することも示さない。修正版を検証する場合はnew prospective Studyまたはexplicit new versionとしてfresh technical-entry contractとauthorizationを固定する。
+
+**Priority:** completed
 
 ### 9.6 Wave C — Integration and Theory
 
@@ -1075,12 +1083,12 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07 (completed), G2-08 (completed), G2-09, G2-10
+P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10
 P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-08はclosure済みであり、次の未着手machine-only agenda itemは`G2-09 — Motif Generalization / Counterexample Study 1`である。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-09はclosure済みである。`G2-09`は`TMGC-STUDY1 = TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、scientific generalization/counterexample evidenceは未生成である。次のdownstream machine-only agenda itemは`G2-10 — Unified Multiaxial Strategic State Representation Study 1`だが、開始時にはG2-06〜G2-09のtechnical-invalid/non-estimable closuresをvalidated axisへ昇格させないeligibility ruleを新たにfreezeする。
 
 ### 9.9 第二世代プログラムの完了条件
 

@@ -1,0 +1,58 @@
+name: TMGC Stage 0 Technical
+
+# Technical-only. This workflow must not consume TMGC Stage 1/2 reserved scientific seeds.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g2-09-tactical-motif-generalization-counterexample
+    paths:
+      - '.github/workflows/tmgc-stage0-technical.yml'
+      - 'tools/experiments/run-tmgc-stage0-technical.js'
+      - 'tools/experiments/lib/tmgc-stage0-production.js'
+      - 'tools/experiments/lib/tmgc-stage0-independent.js'
+      - 'doc/tactical-motif-generalization-counterexample/preregistration/UPSTREAM_C03_FROZEN_REFERENCE.json'
+      - 'doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json'
+      - 'doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json'
+      - 'doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json'
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-weights.js'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout branch source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Environment
+        run: |
+          node --version
+          git rev-parse HEAD
+          git status --short
+          uname -a
+
+      - name: Run TMGC Stage 0 technical core
+        run: |
+          mkdir -p artifacts/local/tmgc-stage0-technical
+          /usr/bin/time -v node tools/experiments/run-tmgc-stage0-technical.js artifacts/local/tmgc-stage0-technical \
+            2>&1 | tee artifacts-tmgc-stage0.log
+
+      - name: Preserve technical artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tmgc-stage0-technical-${{ github.sha }}
+          path: |
+            artifacts/local/tmgc-stage0-technical/**
+            artifacts-tmgc-stage0.log
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30
