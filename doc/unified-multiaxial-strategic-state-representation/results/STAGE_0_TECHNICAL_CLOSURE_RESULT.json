@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "UMSSR_STAGE0_TECHNICAL_CLOSURE_RESULT_V1",
+  "researchGeneration": "Research Generation 2",
+  "program": "G2-10",
+  "studyId": "UMSSR-STUDY1",
+  "stageId": "UMSSR-S0-TECHNICAL-2026-08-30-v1",
+  "disposition": "STAGE0-TECHNICAL-PASS",
+  "scientificInferenceAuthorized": false,
+  "scientificSeedUseAllowed": false,
+  "scientificSeedsConsumed": false,
+  "stage1Authorized": false,
+  "stage2Authorized": false,
+  "sourceFreezeCommit": "78de03fde8e286f65d1544ad585e9337dad240a0",
+  "workflow": {
+    "runId": 33295423785,
+    "jobId": 99214144073,
+    "conclusion": "success",
+    "artifactId": 9727254008,
+    "artifactName": "umssr-stage0-technical-78de03fde8e286f65d1544ad585e9337dad240a0",
+    "artifactSizeBytes": 11525,
+    "artifactZipSha256": "d63883eb0ec188b23c673809d182bc5585459992a30f29892c6a1a86400b6309"
+  },
+  "artifactResultBinding": {
+    "runnerResultInternalSha256": "9599ba6993daff1f159037f8387e8dbbf5244150db585690d3b8ea0530b68fb9",
+    "runnerResultFileSha256": "a11a81989fde36ff1a5d5fd38fd124365ea301bbbbc9a03e6cef9b6657e63ad1",
+    "sourceHashesFileSha256": "0670489290a5ef193a67ee0355839efe79c5171497cf66e2ca5f9be903c2289a",
+    "internalResultHashRecomputedFromArtifact": true,
+    "internalResultHashMatched": true
+  },
+  "frozenInputBindings": {
+    "stage0SpecSha256": "8e0f5c0cc0179f8660baa63826b6ace97022dee1ac59e980061ea63c794fe2d0",
+    "initialContractSha256": "5e5d0afe358e227d6e29ac6e31a907a782e82c0791cba67174dfe7bd3e0bf739",
+    "technicalAuthorizationSha256": "6e4a5a5cbd40c7553318ec2d20dbe76f6a46e03991e0aab8f45456e6e3a9ad02",
+    "sourceHashesPath": "results/STAGE_0_SOURCE_HASHES.json"
+  },
+  "mandatoryGates": {
+    "count": 14,
+    "passed": 14,
+    "failed": [],
+    "initialContractBinding": true,
+    "sourcePathPresence": true,
+    "rawIdentityProductionIndependentExact": true,
+    "rawIdentityMetadataExclusion": true,
+    "rawIdentityPendingInclusion": true,
+    "freshTechnicalObservableExact": true,
+    "numericCanonicalizationExact": true,
+    "searchInstrumentReconstructionExact": true,
+    "tmS2C03OriginalScopeReconstructionExact": true,
+    "g2_05BoundedExactControlBinding": true,
+    "morphologyHistoricalExecutableAvailabilityAudit": true,
+    "independentHelperSeparation": true,
+    "noScientificSeedUse": true,
+    "resourceCeiling": true
+  },
+  "rawIdentity": {
+    "fields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "initialRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "validatedTransformSet": [],
+    "canonicalizationAuthorized": false,
+    "symmetryReductionAuthorized": false
+  },
+  "numericVerification": {
+    "productionInsertionOrderInvariant": true,
+    "independentInsertionOrderInvariant": true,
+    "productionIndependentExactBinary64Hex": true,
+    "canonicalEntropyHexControl": "3ff758ab7c7a895f"
+  },
+  "searchTechnicalReference": {
+    "namuaFixtureProductionIndependentExact": true,
+    "mtajiFixtureProductionIndependentExact": true,
+    "validatedAsStrategicAxis": false,
+    "eligibilityAfterStage0": "TECHNICAL-REFERENCE-ONLY",
+    "freshG2_10SearchObservableConceptEligibility": "DEVELOPMENT-CANDIDATE-ONLY"
+  },
+  "tacticalC03": {
+    "candidateId": "TM-S2-C03",
+    "originalScopeProductionIndependentExact": true,
+    "positiveControl": true,
+    "negativeControl": true,
+    "namuaDirectEligibility": false,
+    "generalizationAuthorized": false,
+    "directExecutableEligibilityAfterStage0": "FORMALLY-ELIGIBLE",
+    "scope": "ORIGINAL-FROZEN-TM-S2-C03-SCOPE-ONLY"
+  },
+  "morphology": {
+    "historicalFormalClaimChanged": false,
+    "historicalFrozenClassifierArtifactPresent": false,
+    "historicalReconstructionReasonConfirmed": true,
+    "historicalCandidateDefinitionHashConfirmed": true,
+    "directExecutableEligibilityAfterStage0": "INELIGIBLE",
+    "freshG2_10ConceptEligibility": "DEVELOPMENT-CANDIDATE-ONLY",
+    "refitOrReplacementPerformed": false
+  },
+  "g2_05BoundedExact": {
+    "formalDecision": "EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN",
+    "targetDepth": 9,
+    "rootRawStateKeyMatchedProduction": true,
+    "rootRawStateKeyMatchedIndependent": true,
+    "fullIndependentExactRecomputationRecorded": true,
+    "eligibilityAfterStage0": "BOUNDED-EXACT-ELIGIBLE",
+    "extrapolationAuthorized": false
+  },
+  "resources": {
+    "runnerWallSecondsBeforeResult": 0.07734332299999999,
+    "maxRssBytes": 63512576,
+    "predictedResultBytes": 25513,
+    "runnerWallClockCeilingSeconds": 600,
+    "maxRssCeilingBytes": 536870912,
+    "artifactCeilingBytes": 2097152
+  },
+  "stage0InterpretationBoundary": {
+    "scientificConclusionGenerated": false,
+    "representationValidated": false,
+    "regimeIdentified": false,
+    "g2_06OrG2_07TechnicalInvalidResultRescued": false,
+    "g2_08NonEstimableResultRewritten": false,
+    "g2_09GeneralizationEvidenceGenerated": false,
+    "g2_11TransitionEndpointEvaluated": false
+  },
+  "nextAuthorizationState": {
+    "stage0Complete": true,
+    "stage1AutomaticallyAuthorized": false,
+    "stage1ScientificSeeds": "RESERVED-UNCONSUMED",
+    "stage2ScientificSeeds": "RESERVED-UNCONSUMED",
+    "stage1ScientificSeedConsumptionAllowed": false,
+    "stage2ScientificSeedConsumptionAllowed": false
+  }
+}

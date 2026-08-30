@@ -17,11 +17,11 @@ Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
 
 ## 現在の正式状態
 
-**STUDY STARTED / INITIAL PROSPECTIVE FREEZE COMPLETE / INITIAL CONSISTENCY AUDIT PASS / NO SCIENTIFIC EVIDENCE GENERATED / STAGE 0 TECHNICAL EXECUTION NOT YET STARTED / STAGE 1 NOT AUTHORIZED / STAGE 2 NOT AUTHORIZED**
+**STAGE 0 TECHNICAL PASS / NO SCIENTIFIC EVIDENCE GENERATED / STAGE 1 NOT AUTHORIZED / STAGE 2 NOT AUTHORIZED**
 
 ```text
 Initial freeze audit = PASS
-Stage 0 = NOT-YET-EXECUTED
+Stage 0 = STAGE0-TECHNICAL-PASS
 Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 scientificInferenceAuthorized = false
@@ -32,9 +32,11 @@ canonicalization = false
 symmetry reduction = false
 ```
 
+Stage 0 PASSはtechnical-onlyであり、strategic-state representation、regime、axis effect、C03 generalization、human interpretationを科学的に確証しない。
+
 ## baseline確認
 
-2026-08-30開始時にGitHub remote `main`を再取得し、以下を確認した。
+開始時remote `main`:
 
 ```text
 observed remote main = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
@@ -42,62 +44,96 @@ user-provided expected = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
 match = true
 ```
 
-## initial freeze provenance
+## prospective freeze provenance
 
 ```text
 initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
-pre-scientific eligibility/documentation tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
-scientific evidence generated before/through tightening = false
+pre-scientific tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
+initial consistency audit commit = e3ff29277460d4d7e8529cef565448a6dfa3378d
+Stage 0 source/spec freeze commit = 78de03fde8e286f65d1544ad585e9337dad240a0
 ```
 
-## upstream auditの要点
+## Stage 0 canonical technical result
 
 ```text
-G2-01 / PEOCR-STUDY1 = INCONCLUSIVE
-G2-02 / SRDR-STUDY1 = INCONCLUSIVE / primaryFormalCriterion = null
-G2-03 / STSCV-STUDY1 = INCONCLUSIVE / validated transform set = []
-G2-04 / REEOE-STUDY1 = INCONCLUSIVE / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
-G2-05 / DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-G2-06 / RCPR-STUDY1 Stage 1 = STAGE1-TECHNICAL-INVALID
-G2-07 / PCRPR-STUDY1 Stage 1 = STAGE1-TECHNICAL-INVALID
-G2-08 / MDFT-STUDY1 = NON-ESTIMABLE
-G2-09 / TMGC-STUDY1 = TECHNICAL-INVALID / scientific generalization evidence generated = false
+workflow run = 33295423785
+job = 99214144073
+workflow conclusion = success
+artifact id = 9727254008
+artifact ZIP SHA-256 = d63883eb0ec188b23c673809d182bc5585459992a30f29892c6a1a86400b6309
+artifact result file SHA-256 = a11a81989fde36ff1a5d5fd38fd124365ea301bbbbc9a03e6cef9b6657e63ad1
+source hashes file SHA-256 = 0670489290a5ef193a67ee0355839efe79c5171497cf66e2ca5f9be903c2289a
+runner internal result SHA-256 = 9599ba6993daff1f159037f8387e8dbbf5244150db585690d3b8ea0530b68fb9
+mandatory gates = 14/14 PASS
 ```
 
-詳細な利用資格は`UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`、cross-document auditは`UPSTREAM_STUDY_AUDIT.md`に固定した。
+Stage 0はhand-built technical fixtureだけを使用し、scientific seedは消費していない。
 
-### non-blocking upstream documentation discrepancy
+## Stage 0後のeligibility boundary
 
-G2-07 `DECISION_REGISTER.md` D38だけはhistorical `main integration = NOT PERFORMED`を残す一方、G2-07 `CURRENT_STATUS.md` / `REPRODUCIBILITY_INDEX.md`はPR #77によるintegration completeを記録する。scientific decision / seed / authorization stateには不一致がないため、G2-10 eligibilityには影響しない。
+### search reliability / ranking stability
+
+G2-02由来search instrumentはNamua / Mtaji technical fixtureで独立再構築がexact一致した。ただしupstream formal resultは`INCONCLUSIVE`である。
+
+```text
+upstream search result = TECHNICAL-REFERENCE-ONLY
+fresh G2-10 search observable concept = DEVELOPMENT-CANDIDATE-ONLY
+validated strategic search axis = false
+```
+
+### tactical structure
+
+`TM-S2-C03`はoriginal frozen scope内でproduction / independent exact reconstructionに成功した。
+
+```text
+direct executable eligibility = FORMALLY-ELIGIBLE
+scope = ORIGINAL-FROZEN-TM-S2-C03-SCOPE-ONLY
+generalization authorized = false
+G2-09 generalization evidence generated = false
+```
+
+### morphology
+
+historical frozen morphology classifierの完全なexecutable artifactはrepositoryに保存されていないことを再確認した。
+
+```text
+historical morphology direct executable eligibility = INELIGIBLE
+historical formal morphology claim changed = false
+fresh G2-10 morphology concept = DEVELOPMENT-CANDIDATE-ONLY
+refit / replacement = not performed
+```
+
+### G2-05 bounded exact structure
+
+```text
+formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
+eligibility = BOUNDED-EXACT-ELIGIBLE
+allowed scope = frozen standard initial RAW root depth 0..9 only
+fresh-state extrapolation = false
+```
 
 ## RAW identity
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
+validated transform set = []
 ```
 
-## initial freeze audit
-
-```text
-Study / Stage IDs = PASS
-eligibility vocabulary = PASS
-upstream scientific status = PASS
-RAW identity = PASS
-validated transform set = [] / PASS
-seed internal overlap = 0 / PASS
-G2-09 seed reuse = none / PASS
-Japanese-first human documentation = PASS
-no-rescue / G2-11 / human-claim firewalls = PASS
-blocking inconsistency = none
-```
+Stage 0 production / independent双方でexact一致し、`turn/reason` exclusionと`pending` inclusionもPASSした。
 
 ## 次に許可される工程
 
-1. Stage 0 technical-only spec / fixtures / validatorを実装する。
-2. Stage 0 technical seed `29300001..29300064`またはhand-built fixtureだけを使用する。
-3. upstream construct reconstruction、RAW identity、candidate observable computation、deterministic floating-point / quantization / serialization、independent implementation、source/firewall/resource/artifact pathを検証する。
-4. Stage 0がPASSした場合にのみStage 1 source/spec/feature/promotion contractを完全freezeする。
-5. Stage 1 explicit authorization artifactが存在するまで`29310001..29314096`を消費しない。
+Stage 1 scientific executionそのものはまだ許可しない。次に行うのはpre-scientific Stage 1 freezeである。
 
-Stage 1 / Stage 2 scientific executionは現時点で承認していない。
+1. fresh development population generation / selection ruleを固定する。
+2. Stage 1 actual candidate axis setとfeature dictionaryを固定する。
+3. numeric scaling / transformation / missingness contractを固定する。
+4. representation-selection method、hyperparameter search space、dimension / regime-number selection ruleを固定する。
+5. readiness / promotion ruleとStage 2 formal endpoint / thresholdを固定する。
+6. Stage 1→Stage 2のseed / trajectory / opening-prefix / RAW-state firewallをmachine-readableに固定する。
+7. production / independent scientific implementationとartifact preservation contractを固定する。
+8. scientific evidenceを見ないtechnical smoke / resource preflightを完了する。
+9. 上記がすべてPASSした場合に限り、別commitでStage 1 explicit authorizationを発行する。
+
+`29310001..29314096`はexplicit authorization前に消費しない。

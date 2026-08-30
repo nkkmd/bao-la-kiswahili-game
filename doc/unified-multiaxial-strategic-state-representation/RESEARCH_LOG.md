@@ -2,49 +2,21 @@
 
 ## 2026-08-30 — Study開始
 
-GitHub remote `main`を再取得し、HEADが`495c9a993278ffab03a6d2cfe2c9a7093c559fd5`であることを確認した。ユーザーが提示したG2-09統合完了時SHAと一致した。
+GitHub remote `main`を再取得し、HEADが`495c9a993278ffab03a6d2cfe2c9a7093c559fd5`であることを確認した。ユーザー提示SHAと一致した。
 
-中央文書として`README.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、`doc/RESEARCH_INDEX.md`、`doc/DOCUMENTATION_LANGUAGE_POLICY.md`、`doc/JAPANESE_DOCUMENTATION_QUALITY_GATE.md`を確認した。
+中央文書とResearch Generation 2 `G2-01..G2-09`を監査し、とくにG2-02、G2-06〜G2-09ではCURRENT_STATUS、Final Report、Decision Register、Reproducibility Index、canonical machine-readable resultを照合した。
 
-Research Generation 2 `G2-01..G2-09`のcanonical statusを監査し、とくにG2-02、G2-06、G2-07、G2-08、G2-09ではCURRENT_STATUS、Final Report、Decision Register、Reproducibility Index、canonical machine-readable resultを必要な範囲で照合した。
-
-主な監査結果:
+## 2026-08-30 — prospective identity / eligibility / RAW / seed freeze
 
 ```text
-G2-01 = INCONCLUSIVE
-G2-02 = INCONCLUSIVE / primaryFormalCriterion = null
-G2-03 = INCONCLUSIVE / validated transform set = []
-G2-04 = INCONCLUSIVE
-G2-05 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-G2-06 Stage 1 = STAGE1-TECHNICAL-INVALID
-G2-07 Stage 1 = STAGE1-TECHNICAL-INVALID
-G2-08 = NON-ESTIMABLE
-G2-09 = TECHNICAL-INVALID / scientific evidence generated = false
+Study = UMSSR-STUDY1
+Stage 0 = UMSSR-S0-TECHNICAL-2026-08-30-v1
+Stage 1 = UMSSR-S1-DEVELOPMENT-2026-08-30-v1
+Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
+branch = research/g2-10-unified-multiaxial-strategic-state-representation
 ```
 
-## 2026-08-30 — prospective identity freeze
-
-Study IDを`UMSSR-STUDY1`、正式英語題目を`Unified Multiaxial Strategic State Representation Study 1`として固定した。
-
-Stage IDs:
-
-```text
-UMSSR-S0-TECHNICAL-2026-08-30-v1
-UMSSR-S1-DEVELOPMENT-2026-08-30-v1
-UMSSR-S2-FORMAL-2026-08-30-v1
-```
-
-research branch:
-
-```text
-research/g2-10-unified-multiaxial-strategic-state-representation
-```
-
-をbaseline `main`から作成した。
-
-## 2026-08-30 — eligibility / RAW / seed freeze
-
-upstream eligibility vocabularyを次の5区分に固定した。
+eligibility vocabulary:
 
 ```text
 FORMALLY-ELIGIBLE
@@ -58,9 +30,9 @@ RAW identity:
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
+excluded = turn,reason
+validated transform set = []
 ```
-
-validated transform set=`[]`、canonicalization / symmetry reduction未承認を維持した。
 
 seed reservation:
 
@@ -74,57 +46,76 @@ G2-09の未消費scientific blockは再利用しない。
 
 ## 2026-08-30 — initial freeze materialization
 
-initial Study documents、eligibility contract、candidate axis inventory、protocol、decision register、reproducibility index、machine-readable initial contract等を1つのatomic commitとして固定した。
-
 ```text
-commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
-parent = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
+initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
+pre-scientific tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
+initial consistency audit commit = e3ff29277460d4d7e8529cef565448a6dfa3378d
 scientific evidence generated = false
 ```
 
-## 2026-08-30 — pre-scientific表記精密化
+G2-07 `DECISION_REGISTER.md` D38だけにstale integration provenanceがあることを記録したが、scientific closureには不一致がないためupstream resultを変更しなかった。
 
-initial freezeの再読で、日本語品質とmachine-readable canonical categoryの表記だけを修正した。
+## 2026-08-30 — Stage 0 source/spec freeze
 
-```text
-commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
-scientific evidence generated before correction = false
-scientific seed consumed = false
-```
-
-修正内容:
-
-- English-heavy human-facing titleを日本語主体へ変更。
-- Research Generation 1 eligibilityのcanonical category tokenとscopeをmachine-readable contract内で分離。
-- G2-02 fresh raw observable conceptの`DEVELOPMENT-CANDIDATE-ONLY`を明示。
-
-scientific boundary、seed、axis、endpoint、thresholdは変更していない。
-
-## 2026-08-30 — upstream cross-document audit
-
-G2-02 / G2-06 / G2-07 / G2-08 / G2-09のFinal Report、Decision Register、Reproducibility IndexをCURRENT_STATUS / machine-readable canonical resultと追加照合した。
-
-Scientific statusは一致した。
-
-G2-07 `DECISION_REGISTER.md` D38のみ、旧`main integration = NOT PERFORMED`を残している。一方、同Studyの`CURRENT_STATUS.md` / `REPRODUCIBILITY_INDEX.md`はPR #77 integration completeを記録する。これはrepository integration provenanceだけのstale entryで、scientific decision、seed state、Stage 2 non-authorizationには影響しない。
-
-G2-10ではこの非科学的upstream文書差を記録し、upstream scientific closureをretroactive editしない。
-
-## 2026-08-30 — initial consistency audit
-
-次をPASSと判定した。
+Stage 0 technical spec、technical-only authorization、production / independent implementation、runner、workflowを同一commitへ固定した。
 
 ```text
-Study / Stage identity consistency
-upstream evidence eligibility consistency
-RAW identity
-validated transform set = []
-seed freshness / internal non-overlap
-G2-09 seed non-reuse
-Japanese-first documentation
-no-rescue rule
-G2-11 boundary
-human/game-theoretic claim firewall
+commit = 78de03fde8e286f65d1544ad585e9337dad240a0
+Stage 1 authorization = false
+Stage 2 authorization = false
+scientific seed consumption = false
 ```
 
-Stage 0 technical executionを開始できるが、Stage 1 / Stage 2 scientific executionは未承認のままである。
+Stage 0はhand-built fixtureを優先し、Stage 1/2 scientific seedを明示的に禁止した。
+
+## 2026-08-30 — Stage 0 technical execution
+
+push-triggered GitHub Actionsを実行した。
+
+```text
+workflow = UMSSR Stage 0 Technical
+run = 33295423785
+job = 99214144073
+source commit = 78de03fde8e286f65d1544ad585e9337dad240a0
+conclusion = success
+artifact id = 9727254008
+artifact ZIP SHA-256 = d63883eb0ec188b23c673809d182bc5585459992a30f29892c6a1a86400b6309
+```
+
+artifact内部を再検算した。
+
+```text
+STAGE_0_TECHNICAL_RESULT.json SHA-256 = a11a81989fde36ff1a5d5fd38fd124365ea301bbbbc9a03e6cef9b6657e63ad1
+SOURCE_HASHES.json SHA-256 = 0670489290a5ef193a67ee0355839efe79c5171497cf66e2ca5f9be903c2289a
+runner internal result SHA-256 = 9599ba6993daff1f159037f8387e8dbbf5244150db585690d3b8ea0530b68fb9
+internal hash recomputation = MATCH
+```
+
+mandatory technical gateは14/14 PASSだった。
+
+## 2026-08-30 — Stage 0 technical closure
+
+Stage 0を次でclosureする。
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+scientific inference = NONE
+scientific seed used = 0
+Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+Stage 0後のtechnical eligibilityを固定した。
+
+```text
+G2-02 search result = TECHNICAL-REFERENCE-ONLY
+fresh G2-10 search concept = DEVELOPMENT-CANDIDATE-ONLY
+TM-S2-C03 = FORMALLY-ELIGIBLE / ORIGINAL-FROZEN-SCOPE-ONLY
+historical morphology classifier = INELIGIBLE
+fresh G2-10 morphology concept = DEVELOPMENT-CANDIDATE-ONLY
+G2-05 depth-9 exact domain = BOUNDED-EXACT-ELIGIBLE / NO EXTRAPOLATION
+```
+
+C03 reconstruction成功はG2-09 generalization evidenceではない。morphology executable absenceはhistorical morphology formal claimの否定ではない。
+
+次はStage 1 scientific executionではなく、Stage 1 development contractのprospective freezeを行う。
