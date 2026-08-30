@@ -1,9 +1,9 @@
-# MDFT-STUDY1 Results
+# MDFT-STUDY1 — 結果
 
 更新日: 2026-08-30
 状態: **Study closed / `NON-ESTIMABLE`**
 
-このディレクトリにはResearch Generation 2 `G2-08` / `MDFT-STUDY1`のcanonical resultを保存します。
+このディレクトリにはResearch Generation 2 `G2-08` / `MDFT-STUDY1`の正式なresultを保存します。
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -15,7 +15,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 主要result:
 
 - `STAGE_0_TECHNICAL_RESULT.json` — Stage 0 technical result。scientific inferenceではありません。
-- `STAGE_1_DEVELOPMENT_RESULT.json` — Stage 1 canonical development result。
+- `STAGE_1_DEVELOPMENT_RESULT.json` — Stage 1の正式なdevelopment result。
 - `STAGE_1_FINAL_EXACT_COMPARISON.json` — production / independent exact comparison。
 - `STAGE_1_ARTIFACT_MANIFEST.json` — Actions artifact / full shard provenance。
 
