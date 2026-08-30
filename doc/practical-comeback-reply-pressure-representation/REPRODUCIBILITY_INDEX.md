@@ -3,7 +3,7 @@
 更新日: 2026-08-29  
 状態: **CLOSED / STAGE1-TECHNICAL-INVALID / MAIN INTEGRATED**
 
-## Study anchor
+## Studyの基準anchor
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -16,7 +16,7 @@ Stage 1 = PCRPR-S1-DEVELOPMENT-2026-08-29-v1
 Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 ```
 
-## canonical closure記録
+## 正式closure記録
 
 - `STUDY_1_FINAL_REPORT.md`
 - `CURRENT_STATUS.md`
@@ -40,7 +40,7 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-## Stage 0 — technical validation
+## Stage 0 — 技術検証
 
 ```text
 source commit = 19c70ba60c8b43858b01a01c5a448311660269c4
@@ -73,7 +73,7 @@ source-freeze commit = eb48ecae8d5ae171175f7cc9f00c9bcc77b2c237
 source-freeze workflow = 33241372471 / PASS
 ```
 
-scientific seed消費前のvalidation:
+scientific seed消費前の検証:
 
 ```text
 production smoke = 33240901637 / PASS
@@ -92,7 +92,7 @@ execution-start ZIP SHA256 = cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e8
 Stage 1 seeds 28710001..28713072 = CONSUMED
 ```
 
-## production artifact
+## production artifact記録
 
 ```text
 job = 99071451933 / success
@@ -109,7 +109,7 @@ development core SHA256 = 4a45d6f9d634510226922589d67f52919911fe40fa2a6a95ff8c24
 
 production outputは、独立検証を完了したscientific resultではなく、unverified provenanceとしてのみ保持する。
 
-## independent replay provenance
+## independent replayのprovenance
 
 ```text
 job = 99071451969
@@ -143,7 +143,7 @@ frozen final comparer executed = false
 STAGE1-TECHNICAL-INVALID
 ```
 
-## scientific / authorization state
+## scientific / authorization状態
 
 ```text
 scientificInferenceAuthorized = false
