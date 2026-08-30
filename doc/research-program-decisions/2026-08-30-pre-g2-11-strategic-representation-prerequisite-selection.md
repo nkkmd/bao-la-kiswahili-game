@@ -1,9 +1,25 @@
 # Pre-G2-11 Strategic Representation Prerequisite — Program Selection Decision
 
 Date: 2026-08-30
-Status: **SELECTED NEXT RESEARCH DIRECTION / NOT YET PREREGISTERED**
+Status: **HISTORICAL SELECTION DECISION / REALIZED AS `PSRRE-STUDY1` / CLOSED `NON-ESTIMABLE`**
 Scope: Research Generation 2 program sequencing after `G2-10 / UMSSR-STUDY1`
 Repository baseline at selection: `87d9ccf9825b9b9160dcab23202a17d66ef0d541`
+
+## この選択の実施結果
+
+このhistorical selectionは、その後次のStudyとしてprospectively具体化された。
+
+```text
+Study ID = PSRRE-STUDY1
+Formal title = Prospective Strategic-Regime Representation Eligibility Study 1
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Study = NON-ESTIMABLE
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G2-11 candidate input authorized = false
+```
+
+Studyはfrozen representationを生成しなかった。Stage 1はtechnical / resource / full-exact verificationを完了したが、prospectively frozen minimum-nonzero-MAD-feature readiness gateを`15 < 20`で満たさなかった。本selection recordはhistorical sequencing provenanceとして保持し、現在のclosure stateは[`2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md)を正本とする。
 
 ## Decision
 
@@ -94,7 +110,7 @@ G2-11 Long-Horizon Strategic Transition Structure Study 1
 G2-12 remains an independent RAW state-space / game-tree growth-estimation branch and is not blocked by this prerequisite.
 ```
 
-## Authorization state
+## Historical authorization state at selection
 
 ```text
 next research direction selected = true
@@ -104,4 +120,18 @@ scientific population fixed = false
 scientific seeds authorized = false
 outcome generation authorized = false
 G2-11 authorized = false
+```
+
+
+## 現在のclosure state
+
+```text
+formal Study ID fixed = PSRRE-STUDY1
+formal Stage IDs fixed = true
+Stage 1 scientific seeds = CONSUMED
+Stage 2 scientific seeds = RESERVED / UNCONSUMED
+Stage 2 authorized = false
+G2-11 candidate input authorized = false
+G2-11 authorized = false
+Study closed = NON-ESTIMABLE
 ```

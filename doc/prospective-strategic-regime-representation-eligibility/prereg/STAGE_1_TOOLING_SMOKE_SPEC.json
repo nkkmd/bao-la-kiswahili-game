@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "PSRRE_STAGE1_TOOLING_SMOKE_SPEC_V1",
+  "researchGeneration": "Research Generation 2",
+  "agendaLabel": null,
+  "studyId": "PSRRE-STUDY1",
+  "stageId": "PSRRE-S1-DEVELOPMENT-2026-08-30-v1",
+  "smokeId": "PSRRE-S1-TOOLING-SMOKE-2026-08-30-v1",
+  "stageType": "TECHNICAL_ONLY_PRE_SCIENTIFIC",
+  "scientificInferenceAuthorized": false,
+  "scientificSeedUseAuthorized": false,
+  "scientificOutcomeInspectionAuthorized": false,
+  "g2_11OutcomeInspectionAuthorized": false,
+  "technicalSeedStart": 29500001,
+  "technicalSeedEnd": 29500064,
+  "technicalGames": 64,
+  "scientificSeedForbiddenRanges": [[29510001,29514096],[29610001,29618192],[29310001,29314096],[29410001,29418192]],
+  "sourceSmoke": {
+    "quotaPerPhaseSourcePolicyStratum": 1,
+    "expectedSelectedRoots": 8,
+    "failureIsScientificEvidence": false,
+    "selectionOutcomeMayTuneScientificQuota": false
+  },
+  "familySmoke": {
+    "gameRootCandidateK": [2],
+    "allFamiliesRequired": ["RF-A-ROBUST-PCA-WARD","RF-B-ROBUST-PCA-PAM","RF-C-DIRECT-ROBUST-PAM"],
+    "syntheticMetricFixtureRequired": true,
+    "scientificSupportSilhouetteStabilityInterpretationAuthorized": false
+  },
+  "mandatoryChecks": [
+    "STAGE0-PASS-BINDING",
+    "STAGE1-CONTRACT-BINDING",
+    "STAGE2-CONTRACT-PRESENCE",
+    "NO-SCIENTIFIC-SEED-USE",
+    "TECHNICAL-SOURCE-GENERATION-PRODUCTION-INDEPENDENT-EXACT",
+    "TECHNICAL-ROOT-SELECTION-PRODUCTION-INDEPENDENT-EXACT",
+    "FEATURE-28-PRODUCTION-INDEPENDENT-EXACT",
+    "MEDIAN-MAD-PRODUCTION-INDEPENDENT-EXACT",
+    "PCA8-PRODUCTION-INDEPENDENT-EXACT",
+    "WARD-PRODUCTION-INDEPENDENT-EXACT",
+    "PAM-PRODUCTION-INDEPENDENT-EXACT",
+    "FROZEN-ASSIGNMENT-PRODUCTION-INDEPENDENT-EXACT",
+    "CANDIDATE-METRIC-PLUMBING-SYNTHETIC-EXACT",
+    "CANONICAL-SERIALIZATION-HASH-EXACT",
+    "INDEPENDENT-IMPLEMENTATION-SEPARATION",
+    "RESOURCE-CEILING"
+  ],
+  "resourceCeilings": {
+    "wallClockSeconds": 1200,
+    "maxRssBytes": 1073741824,
+    "uncompressedArtifactBytes": 16777216,
+    "workflowTimeoutMinutes": 30
+  },
+  "repairRule": {
+    "technicalRepairAllowed": true,
+    "conditions": ["NO-SCIENTIFIC-SEED-CONSUMED","NO-SCIENTIFIC-OUTCOME-GENERATED","NO-SCIENTIFIC-CONTRACT-RELAXATION","NO-THRESHOLD-RELAXATION","INVALID-ATTEMPTS-RETAINED"]
+  },
+  "stage1AuthorizationConsequence": {
+    "smokePassAutomaticallyAuthorizesScientificStage1": false,
+    "separateSourceFreezeRequired": true,
+    "separateScientificExecutionAuthorizationRequired": true
+  },
+  "noRescue": true
+}

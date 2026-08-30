@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "PSRRE_STAGE1_CONSUMPTION_RECORD_V1",
+  "studyId": "PSRRE-STUDY1",
+  "stageId": "PSRRE-S1-DEVELOPMENT-2026-08-30-v1",
+  "executionHead": "085c5df24baff44bb644c00eda91d6212caf5708",
+  "sourceFreezeCommit": "41124069f89f0706cf943e18688c96a8c2db35d7",
+  "seedStart": 29510001,
+  "seedEnd": 29514096,
+  "games": 4096,
+  "status": "CONSUMED",
+  "consumeOnce": true,
+  "sameBlockRerunAuthorized": false,
+  "scientificGenerationStartedAfterThisRecord": true,
+  "g2_11OutcomeInspected": false,
+  "bindings": {
+    "stage1SpecSha256": "b1df781656d6082c82c021bef3d26e42c519a81fd82668b5a4f0818f495441ac",
+    "featureDictionarySha256": "68fd710dcc58d2d0ee28086e20501eabff55265d782722cf0b8e19f41464e7ba",
+    "stage2ValidationContractSha256": "c361e914dcddf938ee7c4f07db613331925f0bf8b4d1a533618f54f4a5f617da",
+    "executionContractSha256": "4b7ac23c762c26321bfb4eff754411569c6df521635d32912d5a64199bef0b79",
+    "toolingSmokeResultSha256": "8fa0eecf5f926f519ba4dc4e1f9a7decc80ed17f14a590fb0ea90d74969d8863",
+    "packagingPreflightResultSha256": "0f21e0b401d9b123be41ef3af5b2f60498e41270ac36eea108d876f6f47a394a"
+  }
+}

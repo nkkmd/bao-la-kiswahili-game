@@ -251,3 +251,28 @@ Program sequencingとして、G2-11を直接開始せず、その前に**new pro
 G2-11のlong-horizon transition outcomeはprerequisite Studyのrepresentation選択に利用してはならない。Prerequisite Studyが自身のfrozen eligibility gateをPASSした場合にのみ、得られたfrozen representationをG2-11 candidate inputとして別途評価できる。
 
 Selection record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-selection.md`.
+
+
+## 2026-08-30 — PSRRE-STUDY1 prerequisite closure
+
+Pre-G2-11のdependency-resolutionとして選択した研究方向は、`PSRRE-STUDY1` — **Prospective Strategic-Regime Representation Eligibility Study 1**としてprospectively実施した。本Studyは新しい`G2-xx` agenda labelを追加せず、closed済み`G2-10 / UMSSR-STUDY1`のcontract・formal decisionも変更していない。
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
+Study formal decision = NON-ESTIMABLE
+selectedRepresentation = null
+Stage 1 seeds 29510001..29514096 = CONSUMED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29610001..29618192 = RESERVED / UNCONSUMED
+G2-11 candidate input authorized = false
+G2-11 scientific execution authorized = false
+```
+
+Stage 1はfresh 4,096 games / 512 rootsのproduction / independent pipelineをfull-exact一致で完遂し、resource gateもすべてPASSした。一方、prospectively frozen development-readiness contractはnonzero-MAD featureを20以上要求していたが、observedは15だった。このためrepresentationをfreezeしてheld-out validationへpromoteする前に、Studyを`NON-ESTIMABLE`として閉じた。
+
+同一Study内でのthreshold relaxation、zero-MAD featureの削除後再解析、family/K expansion、favorable subgroup rescue、seed rerun / replacement / extension、Stage 2のpost-hoc authorizationは認めない。
+
+Program上の帰結として、representation dependencyは未解決であり、`G2-11`は引き続き`NOT-AUTHORIZED`である。`UMSSR-STUDY1`と`PSRRE-STUDY1`のいずれも、G2-11へ渡せるeligible frozen representation candidateを提供していない。
+
+Canonical closure record: `doc/research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`.

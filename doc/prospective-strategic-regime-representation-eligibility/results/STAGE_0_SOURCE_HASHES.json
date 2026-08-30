@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "PSRRE_STAGE0_SOURCE_HASHES_V1",
+  "studyId": "PSRRE-STUDY1",
+  "stageId": "PSRRE-S0-TECHNICAL-2026-08-30-v1",
+  "head": "2c1dea4f7f5c98497333d9ec325931e9091ba0df",
+  "parent": "724e05ef6a730593aab2f9165a0d02216e372c6d",
+  "files": [
+    {"path":".github/workflows/psrre-stage0-technical.yml","gitBlobSha":"2cbf433674316b445dfdc11b26fc96377bd27072","sha256":"9bdb8ba12765003032ddeb901eba518c09cd9612765debd3e5108ec484512385"},
+    {"path":"tools/experiments/run-psrre-stage0-technical.js","gitBlobSha":"b7a9adde946819e95583fb4f8af183acf09ba351","sha256":"8a743ac832aa338173126cbe97a1be1c89b4d79358352a9889bc0f9a34aeb092"},
+    {"path":"tools/experiments/lib/psrre-stage0-production.js","gitBlobSha":"eb406279df365ee2f39a3644b458210c3b69a4c5","sha256":"6cb8aa24ac2f45817199645d8a8ebb36d611de90ed59abc6429abbd35727c518"},
+    {"path":"tools/experiments/lib/psrre-stage0-independent.js","gitBlobSha":"be3880f1405fed93a847ca1d8e32b21200d2bc84","sha256":"d9b418190075b5013e5c0e5b4d47d0fe67e40ec9ba9f4c1c5457533ba391317b"},
+    {"path":"doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_0_TECHNICAL_SPEC.json","gitBlobSha":"77af77ffe5913cd45c3a8a9de02d5483effbbd74","sha256":"7dcb5c90a0daca20c50a014043c89403c61881efb007ca1c08b445b8cda66118"},
+    {"path":"doc/prospective-strategic-regime-representation-eligibility/prereg/STUDY_1_INITIAL_CONTRACT.json","gitBlobSha":"1430f11327859f2d9255d54f23057de21aa6d072","sha256":"f3b24621a77e3c17180de6f5c7b813e1aa43cbe0146a24f375522d69e82bb97a"},
+    {"path":"doc/prospective-strategic-regime-representation-eligibility/UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md","gitBlobSha":"cc6ea46075b6708b60f5fd6ec49d677b571b6af0","sha256":"5dfdea3242d9c230e3fe714fee312288e8117c899fb88e09b37fb296d3fceed1"},
+    {"path":"public/engine.js","gitBlobSha":"2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c","sha256":"e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"},
+    {"path":"public/ai.js","gitBlobSha":"8d472be415fac17e47a8e5e667cea9672e7a9ef5","sha256":"2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"},
+    {"path":"public/ai-weights.js","gitBlobSha":"98969eb4c8e1403beedcf5c139a07166aa78175c","sha256":"7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8"},
+    {"path":"tools/experiments/lib/search-reliability-decision-robustness.js","gitBlobSha":"f3a6951fe711db62e164910cfb248a9cbc2cac1a","sha256":"b7db89afbdfda25f4394f9e7bf6f8b745b5c7d01cb7356e21a50e32d114013e4"},
+    {"path":"tools/experiments/lib/position-complexity-search-diagnostic.js","gitBlobSha":"72617e23ca143fac7bea35934815fd438d3e5be7","sha256":"471dace470d1d83651d75b2e239b35bbfd55fd65cccc562ac3b47c020988eda9"},
+    {"path":"tools/experiments/lib/tmgc-stage0-production.js","gitBlobSha":"cbe2bd87188700298d232c3683f28353236d1ee4","sha256":"45e9510eeb6e964b792914febf295ae4baf22a3e8fb3d2671bb4bb8c7b18b0f5"},
+    {"path":"tools/experiments/lib/tmgc-stage0-independent.js","gitBlobSha":"12f515fd3399a3e9f80a8998988af47b421e935e","sha256":"ee3a71cda8cf8a0303cba44b5916440a3027913cd222541b7a14b3e01fa3840c"},
+    {"path":"doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json","gitBlobSha":"e5ef64bc2b3840f8772c41c157400399b53951c8","sha256":"667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8"},
+    {"path":"doc/unified-multiaxial-strategic-state-representation/results/STUDY_1_FINAL_RESULT.json","gitBlobSha":"e990409a8f53c603f82c6cdda26cde68e93d4cd7","sha256":"c8c06a815137a4ff91c9e50e009baa36780370785776912ab14fb535424734ca"}
+  ]
+}
