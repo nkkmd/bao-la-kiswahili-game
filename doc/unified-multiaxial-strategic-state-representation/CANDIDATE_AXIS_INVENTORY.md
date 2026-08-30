@@ -1,4 +1,4 @@
-# UMSSR-STUDY1 — candidate axis inventory
+# UMSSR-STUDY1 — 候補axis inventory
 
 ## 1. 原則
 

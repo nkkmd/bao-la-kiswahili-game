@@ -59,7 +59,8 @@
     "G2-02/SRDR-STUDY1": {
       "canonicalStatus": "INCONCLUSIVE",
       "primaryFormalCriterion": null,
-      "eligibility": "TECHNICAL-REFERENCE-ONLY"
+      "eligibility": "TECHNICAL-REFERENCE-ONLY",
+      "freshRawObservableConceptEligibility": "DEVELOPMENT-CANDIDATE-ONLY"
     },
     "G2-03/STSCV-STUDY1": {
       "canonicalStatus": "INCONCLUSIVE",
@@ -100,14 +101,16 @@
   "researchGeneration1Boundaries": {
     "TM-S2-C03": {
       "canonicalDecision": "CONFIRMED",
-      "eligibility": "FORMALLY-ELIGIBLE-WITHIN-ORIGINAL-FROZEN-SCOPE-ONLY",
+      "eligibility": "FORMALLY-ELIGIBLE",
+      "scope": "original frozen TM-S2-C03 scope only",
       "generalizationBeyondOriginalScopeAuthorized": false,
       "directExecutableUseRequiresStage0ExactReconstruction": true
     },
     "MTAJI-M1/MTAJI-M2": {
       "historicalFormalClaimChanged": false,
+      "directEligibilityPendingStage0Reconstruction": "FORMALLY-ELIGIBLE",
       "directExecutableUseRequiresStage0ExactReconstruction": true,
-      "fallbackIfReconstructionFails": "DEVELOPMENT-CANDIDATE-ONLY-FRESH-G2-10-REPRESENTATION"
+      "fallbackEligibilityIfReconstructionFails": "DEVELOPMENT-CANDIDATE-ONLY"
     }
   },
   "representationPolicy": {

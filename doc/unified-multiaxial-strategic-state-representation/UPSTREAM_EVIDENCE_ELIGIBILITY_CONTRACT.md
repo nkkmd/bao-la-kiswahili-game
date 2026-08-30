@@ -1,4 +1,4 @@
-# UMSSR-STUDY1 — upstream evidence eligibility contract
+# UMSSR-STUDY1 — upstream evidence利用資格契約
 
 ## 1. 目的
 
