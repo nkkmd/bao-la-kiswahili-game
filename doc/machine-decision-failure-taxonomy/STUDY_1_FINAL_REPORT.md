@@ -134,9 +134,9 @@ all frozen resource ceilings = PASS
 
 したがってStage 1のoutcomeは`STAGE1-TECHNICAL-INVALID`ではなく、`RESOURCE-CENSORED`でもない。
 
-## 6. Development population
+## 6. Development population（開発用集団）
 
-Fresh Stage 1 source / selected population:
+新たに生成したStage 1 source / selected population:
 
 ```text
 generated games = 4096
@@ -156,7 +156,7 @@ HIGH_CAPTURE = 92
 LOW_CAPTURE = 170
 ```
 
-Reference diagnostics:
+Referenceの診断値:
 
 ```text
 REFERENCE-CONSENSUS roots = 473
@@ -167,7 +167,7 @@ Mtaji disagreement events = 45
 
 opening-prefix diversityとmaximum source-policy share以外の、結果を見る前に固定したreadiness条件はすべてPASSした。
 
-## 7. Leaf-level development observation
+## 7. Leaf-level development observation（開発観測）
 
 結果を見る前に固定したassignment / promotion計算から、次のdevelopment observationを得た。
 
@@ -255,7 +255,7 @@ artifact = 9722157483
 artifact zip digest = bb34d16874175dcb581ad8725983a3ed4778687c0f3a2965ae929daaffbfe921
 ```
 
-## 12. Study closure
+## 12. Study closure（研究終了）
 
 Study 1は次の状態でclosedとなった。
 
