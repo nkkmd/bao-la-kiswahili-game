@@ -1,72 +1,89 @@
 # UMSSR-STUDY1 — results管理
 
-## 現在の状態
+## 現在の正式状態
 
-Stage 0 technical resultは確定したが、G2-10のscientific resultはまだ存在しない。
+G2-10 Study 1はStage 1 scientific developmentまで完了し、事前固定したpromotion ruleに従って`NO-REPRESENTATION`で閉じた。
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 0 scientific inference = NONE
-Stage 1 development result = NOT YET PRODUCED
-Stage 2 formal result = NOT YET PRODUCED
-Study final result = NOT YET PRODUCED
-Stage 1 scientific evidence generated = false
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study final decision = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 1 scientific evidence generated = true
+Stage 2 scientific evidence generated = false
 ```
 
-Stage 1 / Stage 2はいずれも未承認・未実行である。
+## canonical machine-readable result
 
-## Stage 0 canonical result
+Stage 1 accepted artifactから同一バイト列でmaterializeした正本:
 
-repository上のcanonical closure:
+- `STAGE_1_DEVELOPMENT_RESULT.json`
+- `STAGE_1_CONSUMPTION_RECORD.json`
+- `STAGE_1_FINAL_EXACT_COMPARISON.json`
+- `STAGE_1_HASH_MANIFEST.json`
+
+Study-level closure summary:
+
+- `STUDY_1_FINAL_RESULT.json`
+
+Stage 0正本:
 
 - `STAGE_0_TECHNICAL_CLOSURE_RESULT.json`
 - `STAGE_0_SOURCE_HASHES.json`
 
-execution provenance:
+## accepted Stage 1 provenance
 
 ```text
-source freeze commit = 78de03fde8e286f65d1544ad585e9337dad240a0
-workflow run = 33295423785
-job = 99214144073
-artifact id = 9727254008
-artifact ZIP SHA-256 = d63883eb0ec188b23c673809d182bc5585459992a30f29892c6a1a86400b6309
-artifact STAGE_0_TECHNICAL_RESULT.json SHA-256 = a11a81989fde36ff1a5d5fd38fd124365ea301bbbbc9a03e6cef9b6657e63ad1
-artifact SOURCE_HASHES.json SHA-256 = 0670489290a5ef193a67ee0355839efe79c5171497cf66e2ca5f9be903c2289a
-mandatory gates = 14/14 PASS
-scientific seed use = 0
+source freeze commit = 10801fbc1529902bf3f4c0aa6e464c1dc39f1267
+authorization commit = d6487403dba9fa1de8895b473e5e662d90b1f13b
+workflow run = 33297178656
+job = 99218754656
+artifact id = 9727918107
+artifact ZIP SHA-256 = 8f2f92d88ccb040f53bae28acb7124f230d51b00ff4466835adfda6260934e86
 ```
 
-Stage 0 artifactのfull raw resultはGitHub Actions artifactに保存し、repository上ではclosure resultとsource hash ledgerをcanonical compact recordとして保持する。
+artifact file hashes:
 
-## Stage 0解釈境界
+```text
+CONSUMPTION_RECORD.json = c6f95fd2bab4c21fd4b99ee6a69590861a907a001e87e0d63e3af72a7661f522
+STAGE_1_DEVELOPMENT_RESULT.json = 21fb4cd60dbaa6761b177ad54cda5dd33c942ba3994a953ce5486917f0e440fd
+FINAL_EXACT_COMPARISON.json = 6746eb5d5213d278a7991b6613a0ebf95ed621cc1759d1128f164337583785fb
+HASH_MANIFEST.json = 9010f53c676b5e588e8e4553acd6ec680bd6ca366f31a68a6f53dbe8de90c823
+production full shard = 66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595
+independent full shard = 66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595
+```
 
-Stage 0 PASSは次を意味しない。
+full compressed shardはGitHub Actions artifactに保持し、repositoryにはcompact canonical recordsだけを保存する。
 
-- strategic-state representationがvalidatedされた。
-- stable regimeが存在する。
-- G2-02 search resultがvalidated axisになった。
-- C03がoriginal scope外へgeneralizeした。
-- historical morphology classifierが再構築された。
-- G2-05 exact countをfresh stateへ外挿できる。
+## scientific resultの意味
 
-## 将来のcanonical result
+scientific readinessとresource gateはPASSし、production / independentは`fullExact = true`だった。一方、`K=2..6`の全候補が事前固定したminimum support / assignment stability criterionの少なくとも1つを満たさず、eligible candidateは0だった。
 
-Stage progressionが承認された場合、少なくとも次を分離してmaterializeする。
+したがって:
 
-- Stage 1 development result
-- Stage 1 production / independent exact comparison
-- Stage 1 readiness / representation freeze result
-- Stage 2 production formal result
-- Stage 2 independent formal verification
-- Stage 2 canonical formal result
-- Study final result
+```text
+selectedRepresentation = null
+FROZEN_REPRESENTATION.json = NOT PRODUCED
+```
 
-file名、schema、hash bindingは各Stage source/spec freeze時に固定する。
+である。
 
-## 解釈上の禁止
+これはBaoにstrategic regimeが存在しないという一般命題ではない。凍結したG2-10 Study 1のrepresentation contract内でStage 2へ昇格可能なrepresentationを得られなかった、という限定されたnegative resultである。
 
-- production-only outputをaccepted scientific resultへ昇格しない。
-- artifact欠損やtechnical failureをscientific negativeへ読み替えない。
-- Stage 1 development observationをStage 2 formal evidenceとして再利用しない。
-- absent resultを`0`、`NOT-CONFIRMED`、`NON-ESTIMABLE`等へ自動変換しない。
-- Stage 0 technical PASSをStage 1 authorizationへ読み替えない。
+## Stage 2
+
+```text
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
+```
+
+Stage 2 result fileは存在せず、absenceを`0`や`NOT-VALIDATED`へ読み替えない。
+
+## 禁止
+
+- Stage 1 thresholdの結果後緩和
+- K rangeの結果後変更
+- Stage 1 seed blockのrerun / extension
+- Stage 1 development populationのStage 2 evidenceへの再利用
+- Stage 2でのrefit / reclustering / restandardization
+- favorable subgroupによる救済

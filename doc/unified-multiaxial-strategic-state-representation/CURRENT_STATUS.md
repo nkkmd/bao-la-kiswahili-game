@@ -17,123 +17,125 @@ Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
 
 ## 現在の正式状態
 
-**STAGE 0 TECHNICAL PASS / NO SCIENTIFIC EVIDENCE GENERATED / STAGE 1 NOT AUTHORIZED / STAGE 2 NOT AUTHORIZED**
+**STUDY CLOSED / STAGE 1 SCIENTIFIC DEVELOPMENT VALID / NO ELIGIBLE REPRESENTATION / STAGE 2 NOT AUTHORIZED**
 
 ```text
-Initial freeze audit = PASS
 Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-scientificInferenceAuthorized = false
-Stage 1 seeds 29310001..29314096 = RESERVED / UNCONSUMED
+Study formal decision = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 1 scientificInferenceAuthorized = true
+validated strategic representation = false
+selectedRepresentation = null
+Stage 1 seeds 29310001..29314096 = CONSUMED
 Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
 validated transform set = []
 canonicalization = false
 symmetry reduction = false
 ```
 
-Stage 0 PASSはtechnical-onlyであり、strategic-state representation、regime、axis effect、C03 generalization、human interpretationを科学的に確証しない。
+Stage 1の判断はtechnical failureや`NON-ESTIMABLE`ではない。scientific readiness、production / independent exact verification、resource gateをすべて通過したうえで、事前固定した`K=2..6`の全候補がpromotion criterionを満たさなかったため、eligible representationを凍結しなかった。
 
-## baseline確認
-
-開始時remote `main`:
+## accepted Stage 1 execution
 
 ```text
-observed remote main = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
-user-provided expected = 495c9a993278ffab03a6d2cfe2c9a7093c559fd5
-match = true
-```
-
-## prospective freeze provenance
-
-```text
-initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
-pre-scientific tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
-initial consistency audit commit = e3ff29277460d4d7e8529cef565448a6dfa3378d
-Stage 0 source/spec freeze commit = 78de03fde8e286f65d1544ad585e9337dad240a0
-```
-
-## Stage 0 canonical technical result
-
-```text
-workflow run = 33295423785
-job = 99214144073
+source freeze commit = 10801fbc1529902bf3f4c0aa6e464c1dc39f1267
+authorization commit = d6487403dba9fa1de8895b473e5e662d90b1f13b
+workflow run = 33297178656
+job = 99218754656
 workflow conclusion = success
-artifact id = 9727254008
-artifact ZIP SHA-256 = d63883eb0ec188b23c673809d182bc5585459992a30f29892c6a1a86400b6309
-artifact result file SHA-256 = a11a81989fde36ff1a5d5fd38fd124365ea301bbbbc9a03e6cef9b6657e63ad1
-source hashes file SHA-256 = 0670489290a5ef193a67ee0355839efe79c5171497cf66e2ca5f9be903c2289a
-runner internal result SHA-256 = 9599ba6993daff1f159037f8387e8dbbf5244150db585690d3b8ea0530b68fb9
-mandatory gates = 14/14 PASS
+artifact id = 9727918107
+artifact ZIP SHA-256 = 8f2f92d88ccb040f53bae28acb7124f230d51b00ff4466835adfda6260934e86
+Stage 1 result file SHA-256 = 21fb4cd60dbaa6761b177ad54cda5dd33c942ba3994a953ce5486917f0e440fd
+runner internal result SHA-256 = 985235180827db9d314b610baeb37cd2aec9427633ac518c270c938230060b9a
 ```
 
-Stage 0はhand-built technical fixtureだけを使用し、scientific seedは消費していない。
+accepted runより前の2回のscientific workflow attemptはconsume gate前に停止し、scientific seedを消費していない。accepted runだけがStage 1 seed blockをconsume-onceで消費した。
 
-## Stage 0後のeligibility boundary
-
-### search reliability / ranking stability
-
-G2-02由来search instrumentはNamua / Mtaji technical fixtureで独立再構築がexact一致した。ただしupstream formal resultは`INCONCLUSIVE`である。
+## Stage 1 population / verification
 
 ```text
-upstream search result = TECHNICAL-REFERENCE-ONLY
-fresh G2-10 search observable concept = DEVELOPMENT-CANDIDATE-ONLY
-validated strategic search axis = false
+generated games = 4096
+unique trajectories = 4068
+distinct opening prefixes = 3711
+selected roots = 512
+selected distinct opening prefixes = 504
+maximum single selected opening-prefix share = 0.005859375
+active features = 40 / 40
+scientific readiness = PASS
+resource gate = PASS
+production / independent full exact = true
 ```
 
-### tactical structure
+8 phase/source-policy strataはすべて64 rootsだった。
 
-`TM-S2-C03`はoriginal frozen scope内でproduction / independent exact reconstructionに成功した。
+production / independent compressed full shard SHA-256:
 
 ```text
-direct executable eligibility = FORMALLY-ELIGIBLE
-scope = ORIGINAL-FROZEN-TM-S2-C03-SCOPE-ONLY
-generalization authorized = false
-G2-09 generalization evidence generated = false
+66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595
 ```
 
-### morphology
+## representation結果
 
-historical frozen morphology classifierの完全なexecutable artifactはrepositoryに保存されていないことを再確認した。
+凍結したpromotion criteria:
 
 ```text
-historical morphology direct executable eligibility = INELIGIBLE
-historical formal morphology claim changed = false
-fresh G2-10 morphology concept = DEVELOPMENT-CANDIDATE-ONLY
-refit / replacement = not performed
+minimum cluster support fraction >= 0.10
+mean silhouette >= 0.05
+five-fold assignment stability >= 0.80
+candidate K = 2,3,4,5,6
 ```
 
-### G2-05 bounded exact structure
+結果:
 
 ```text
-formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-eligibility = BOUNDED-EXACT-ELIGIBLE
-allowed scope = frozen standard initial RAW root depth 0..9 only
-fresh-state extrapolation = false
+K=2 = ineligible / stability failure
+K=3 = ineligible / support + stability failure
+K=4 = ineligible / support failure
+K=5 = ineligible / support failure
+K=6 = ineligible / support + stability failure
+eligible K count = 0
+selectedRepresentation = null
 ```
 
-## RAW identity
+K=4はmean silhouetteとstability自体は基準を満たしたが、minimum supportが`0.0078125`であり、事前閾値`0.10`を満たさなかった。結果後のthreshold relaxationは行わない。
+
+## Stage 2
+
+Stage 2はStage 1で凍結したrepresentationだけをformal validationする契約だった。eligible representationが存在しないため、Stage 2 authorization prerequisiteを満たさない。
 
 ```text
-pits,reserve,houseOwned,player,phase,winner,pending
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds = RESERVED / UNCONSUMED
+```
+
+Stage 2 dataを使ったrefit、restandardization、reclustering、K変更、axis replacementは行わない。
+
+## upstream / RAW境界
+
+次は不変である。
+
+```text
+RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
 excluded = turn,reason
 validated transform set = []
 ```
 
-Stage 0 production / independent双方でexact一致し、`turn/reason` exclusionと`pending` inclusionもPASSした。
+- G2-06〜G2-09のtechnical-invalid / non-estimable outputをvalidated inputへ昇格していない。
+- `TM-S2-C03 = CONFIRMED`はoriginal frozen scope内で不変であり、G2-10からgeneralization claimを生成していない。
+- historical morphology classifierを救済していない。
+- G2-05 bounded exact claimをfresh stateへ外挿していない。
 
-## 次に許可される工程
+## G2-11境界
 
-Stage 1 scientific executionそのものはまだ許可しない。次に行うのはpre-scientific Stage 1 freezeである。
+`UMSSR-STUDY1`からG2-11へ渡せるvalidated / frozen regime representationはない。
 
-1. fresh development population generation / selection ruleを固定する。
-2. Stage 1 actual candidate axis setとfeature dictionaryを固定する。
-3. numeric scaling / transformation / missingness contractを固定する。
-4. representation-selection method、hyperparameter search space、dimension / regime-number selection ruleを固定する。
-5. readiness / promotion ruleとStage 2 formal endpoint / thresholdを固定する。
-6. Stage 1→Stage 2のseed / trajectory / opening-prefix / RAW-state firewallをmachine-readableに固定する。
-7. production / independent scientific implementationとartifact preservation contractを固定する。
-8. scientific evidenceを見ないtechnical smoke / resource preflightを完了する。
-9. 上記がすべてPASSした場合に限り、別commitでStage 1 explicit authorizationを発行する。
+```text
+G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
+```
 
-`29310001..29314096`はexplicit authorization前に消費しない。
+G2-11で別representationが必要な場合は、新しいprospective Studyまたはversioned protocolを必要とする。
+
+## repository状態
+
+Study closure、Stage 1 result canonicalization、関連文書同期をresearch branch上で行う。`main`への統合は明示的な統合指示があるまで行わない。

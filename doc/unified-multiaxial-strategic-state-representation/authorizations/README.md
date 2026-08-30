@@ -2,47 +2,76 @@
 
 ## 現在のauthorization状態
 
-2026-08-30のinitial prospective freeze時点では、G2-10のscientific executionはまだ承認していない。
+Study closure時点の状態は次である。
 
 ```text
-Stage 0 = technical-only / scientific inference not authorized
-Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 0 = technical-only / STAGE0-TECHNICAL-PASS
+Stage 1 = AUTHORIZED-AND-EXECUTED-ONCE
+Stage 1 result = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-scientificInferenceAuthorized = false
 ```
 
-Stage 0はscientific evidenceを生成しないtechnical / eligibility / feasibility段階である。initial freezeの整合性監査完了後、technical-only fixture / smoke / validatorを実行できる。
+Stage 1 scientific inferenceはaccepted consume-once executionについて有効であるが、これはStage 2 authorizationを意味しない。
 
-## Stage 1 authorizationの必要条件
+## Stage 1 authorization
 
-Stage 1 scientific seed `29310001..29314096`を消費する前に、少なくとも次を結果を見る前に固定し、明示的authorization artifactへbindingする。
+canonical authorization artifact:
 
-- Stage 0の`STAGE0-TECHNICAL-PASS`
-- scientific source commit / source hashes
-- engine / evaluator / search semantics
-- source generation / root selection contract
-- candidate axis set
-- feature dictionary
-- scaling / quantization / serialization
-- dimensionality reduction / clustering候補とselection rule
-- Stage 1 readiness gate
-- representation promotion rule
-- Stage 2 endpoint / threshold / decision mappingの事前定義
-- independent implementation / comparer
-- resource ceiling / artifact completeness policy
+- `STAGE_1_EXECUTION_AUTHORIZATION.json`
 
-これらが満たされる前にStage 1をauthorizeしない。
+accepted authorization:
 
-## Stage 2 authorizationの必要条件
+```text
+source freeze commit = 10801fbc1529902bf3f4c0aa6e464c1dc39f1267
+authorization commit = d6487403dba9fa1de8895b473e5e662d90b1f13b
+seed block = 29310001..29314096
+status before accepted execution = RESERVED_UNCONSUMED
+consume-once = true
+same-block rerun = false
+Stage 2 authorized = false
+```
 
-Stage 2 scientific seed `29410001..29418192`は、Stage 1が事前固定したglobal readiness / representation promotion gateをすべて満たし、representationが`STAGE1-DEVELOPMENT-PASS-REPRESENTATION-FROZEN`として固定された場合にのみ、別の明示的authorizationで消費できる。
+accepted workflow run `33297178656`でStage 1 seed blockは`CONSUMED`となった。以後、同じblockのrerun、replacement、extensionは未承認である。
 
-Stage 1がtechnical-invalid、non-estimable、resource-censored、またはno-representationで閉じた場合、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`のままとする。
+## pre-consumption rejected attempts
 
-## 禁止
+Stage 1 accepted runより前に2回のscientific workflow attemptが停止した。
 
-- authorization前のscientific seed消費
-- technical smokeへのscientific seed流用
-- outcome確認後のauthorization prerequisite緩和
-- G2-09の未消費seed blockの再利用
-- not-authorized Stageを実行済みとみなすこと
+```text
+run 33296879050 = authorization binding mismatch / seeds not consumed
+run 33296962144 = pre-consumption runner ReferenceError / seeds not consumed
+```
+
+どちらもconsume gate前で停止し、scientific dataを生成していない。runner修正後のsourceについてtechnical-only packaging preflight `33297055834`をPASSさせてから、final authorizationを発行した。
+
+## Stage 2をauthorizeしない理由
+
+Stage 2 contractはStage 1で凍結されたrepresentationをformal validationするためのものである。
+
+Stage 1 accepted resultは:
+
+```text
+selectedRepresentation = null
+eligible candidate K = 0
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+```
+
+だったため、Stage 2 authorization prerequisiteを満たさない。
+
+```text
+Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
+```
+
+Stage 2 authorization artifactは作成しない。
+
+## no-rescue boundary
+
+次を同じStudy内でauthorizationしない。
+
+- Stage 1 threshold relaxation後のrerun
+- K range変更後のrerun
+- axis / feature replacement後のrerun
+- Stage 1 seed extension
+- Stage 1 populationのStage 2 evidenceへの転用
+- Stage 2でのrefit / reclustering / restandardization
+- outcome確認後のStage 2 prerequisite緩和

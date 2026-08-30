@@ -2,11 +2,9 @@
 
 ## 2026-08-30 — Study開始
 
-GitHub remote `main`を再取得し、HEADが`495c9a993278ffab03a6d2cfe2c9a7093c559fd5`であることを確認した。ユーザー提示SHAと一致した。
+remote `main` HEADが`495c9a993278ffab03a6d2cfe2c9a7093c559fd5`であることを確認し、G2-01〜G2-09と中央文書を監査した。
 
-中央文書とResearch Generation 2 `G2-01..G2-09`を監査し、とくにG2-02、G2-06〜G2-09ではCURRENT_STATUS、Final Report、Decision Register、Reproducibility Index、canonical machine-readable resultを照合した。
-
-## 2026-08-30 — prospective identity / eligibility / RAW / seed freeze
+正式identity:
 
 ```text
 Study = UMSSR-STUDY1
@@ -16,106 +14,156 @@ Stage 2 = UMSSR-S2-FORMAL-2026-08-30-v1
 branch = research/g2-10-unified-multiaxial-strategic-state-representation
 ```
 
-eligibility vocabulary:
+RAW identity、upstream eligibility vocabulary、scientific firewall、seed block、no-rescue ruleをscientific evidence生成前に固定した。
 
-```text
-FORMALLY-ELIGIBLE
-BOUNDED-EXACT-ELIGIBLE
-TECHNICAL-REFERENCE-ONLY
-DEVELOPMENT-CANDIDATE-ONLY
-INELIGIBLE
-```
-
-RAW identity:
-
-```text
-pits,reserve,houseOwned,player,phase,winner,pending
-excluded = turn,reason
-validated transform set = []
-```
-
-seed reservation:
-
-```text
-Stage 0 technical-only = 29300001..29300064
-Stage 1 scientific = 29310001..29314096 / RESERVED-UNCONSUMED
-Stage 2 scientific = 29410001..29418192 / RESERVED-UNCONSUMED
-```
-
-G2-09の未消費scientific blockは再利用しない。
-
-## 2026-08-30 — initial freeze materialization
+## 2026-08-30 — initial prospective freeze
 
 ```text
 initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
 pre-scientific tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
 initial consistency audit commit = e3ff29277460d4d7e8529cef565448a6dfa3378d
-scientific evidence generated = false
 ```
 
-G2-07 `DECISION_REGISTER.md` D38だけにstale integration provenanceがあることを記録したが、scientific closureには不一致がないためupstream resultを変更しなかった。
+## 2026-08-30 — Stage 0
 
-## 2026-08-30 — Stage 0 source/spec freeze
+Stage 0 source/specを`78de03fde8e286f65d1544ad585e9337dad240a0`でfreezeした。
 
-Stage 0 technical spec、technical-only authorization、production / independent implementation、runner、workflowを同一commitへ固定した。
-
-```text
-commit = 78de03fde8e286f65d1544ad585e9337dad240a0
-Stage 1 authorization = false
-Stage 2 authorization = false
-scientific seed consumption = false
-```
-
-Stage 0はhand-built fixtureを優先し、Stage 1/2 scientific seedを明示的に禁止した。
-
-## 2026-08-30 — Stage 0 technical execution
-
-push-triggered GitHub Actionsを実行した。
+accepted technical run:
 
 ```text
-workflow = UMSSR Stage 0 Technical
 run = 33295423785
 job = 99214144073
-source commit = 78de03fde8e286f65d1544ad585e9337dad240a0
-conclusion = success
 artifact id = 9727254008
-artifact ZIP SHA-256 = d63883eb0ec188b23c673809d182bc5585459992a30f29892c6a1a86400b6309
+result = STAGE0-TECHNICAL-PASS
+mandatory gates = 14 / 14 PASS
+scientific seed use = 0
 ```
 
-artifact内部を再検算した。
+Stage 0後もStage 1 / 2は自動authorizeしなかった。
+
+## 2026-08-30 — Stage 1 pre-scientific freeze
+
+Stage 1 population、40-feature dictionary、scaling、deterministic K-means、`K=2..6`、promotion criteria、Stage 2 validation contractをscientific outcome前に固定した。
 
 ```text
-STAGE_0_TECHNICAL_RESULT.json SHA-256 = a11a81989fde36ff1a5d5fd38fd124365ea301bbbbc9a03e6cef9b6657e63ad1
-SOURCE_HASHES.json SHA-256 = 0670489290a5ef193a67ee0355839efe79c5171497cf66e2ca5f9be903c2289a
-runner internal result SHA-256 = 9599ba6993daff1f159037f8387e8dbbf5244150db585690d3b8ea0530b68fb9
-internal hash recomputation = MATCH
+pre-scientific freeze commit = fbfa65e774fa6bd6a509fb0b3ee903a463a86f17
+Stage 1 seeds = 29310001..29314096 / RESERVED-UNCONSUMED
+Stage 2 seeds = 29410001..29418192 / RESERVED-UNCONSUMED
 ```
 
-mandatory technical gateは14/14 PASSだった。
-
-## 2026-08-30 — Stage 0 technical closure
-
-Stage 0を次でclosureする。
+promotion criteria:
 
 ```text
-Stage 0 = STAGE0-TECHNICAL-PASS
-scientific inference = NONE
-scientific seed used = 0
-Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
+minimum cluster support fraction >= 0.10
+minimum mean silhouette >= 0.05
+minimum five-fold assignment stability >= 0.80
+```
+
+## 2026-08-30 — Stage 1 tooling smoke
+
+初回tooling smoke `33296234733`はproduction `graph()`の`const` counter incrementというimplementation defectで失敗した。scientific seedは未使用で、scientific contractを変更せず実装だけを修正した。
+
+```text
+repair commit = 622dfc79aee5915f520c75a23e4123caa74ea865
+accepted smoke run = 33296341604
+result = STAGE1-TOOLING-SMOKE-PASS
+artifact id = 9727521248
+artifact ZIP SHA-256 = 39120244bb238aee19e5181104c33d7551c5b4b6eb0b11156011efe6085febef
+```
+
+## 2026-08-30 — scientific runner / packaging preflight
+
+consume-once runnerとartifact contractをsource-freezeした後、technical-only packaging preflightを実行した。
+
+最初のsource-freezeは`b6550f9e79cb6f321500a432defd5c87f08867e8`だった。
+
+Stage 1 authorization後の最初のscientific workflow `33296879050`は`toolingSmokeResultSha256` binding mismatchでconsume gate前に停止した。次のworkflow `33296962144`はrunnerの`bindings`未定義参照でconsume gate前に停止した。
+
+```text
+scientific seeds consumed in rejected attempts = false
+scientific data generated in rejected attempts = false
+```
+
+runnerのpre-consumption記録参照だけを`bindings:binds`へ修正し、scientific contract、feature、K、threshold、populationを変更しなかった。
+
+```text
+repaired source freeze commit = 10801fbc1529902bf3f4c0aa6e464c1dc39f1267
+repaired-source packaging preflight run = 33297055834
+job = 99218441038
+result = STAGE1-PACKAGING-PREFLIGHT-PASS
+artifact id = 9727743959
+artifact ZIP SHA-256 = cf9591b02dee0d1cb1ce2e6aeb674522259be7d6266d1ee30dd586b23febb3ed
+```
+
+## 2026-08-30 — Stage 1 final authorization
+
+repaired sourceのpreflight PASS後、source-freezeの直接の子commitとしてfinal authorizationを固定した。
+
+```text
+authorization commit = d6487403dba9fa1de8895b473e5e662d90b1f13b
+Stage 1 seed before execution = RESERVED_UNCONSUMED
+consume-once = true
+same-block rerun = false
+Stage 2 authorized = false
+```
+
+## 2026-08-30 — accepted Stage 1 scientific execution
+
+```text
+workflow run = 33297178656
+job = 99218754656
+conclusion = success
+artifact id = 9727918107
+artifact ZIP SHA-256 = 8f2f92d88ccb040f53bae28acb7124f230d51b00ff4466835adfda6260934e86
+```
+
+Stage 1 seed blockはaccepted runのconsume gateで`CONSUMED`となった。
+
+population:
+
+```text
+generated games = 4096
+unique trajectories = 4068
+distinct opening prefixes = 3711
+selected roots = 512
+selected distinct opening prefixes = 504
+active features = 40 / 40
+```
+
+scientific readinessとresource gateは全項目PASSした。production / independent verificationも`fullExact = true`だった。
+
+## 2026-08-30 — representation decision
+
+候補結果:
+
+```text
+K=2 support=0.142578125 silhouette=0.17337024701327378 stability=0.740234375 eligible=false
+K=3 support=0.009765625 silhouette=0.18121647379388248 stability=0.744140625 eligible=false
+K=4 support=0.0078125 silhouette=0.20576375120521176 stability=0.916015625 eligible=false
+K=5 support=0.0078125 silhouette=0.18309611515099047 stability=0.822265625 eligible=false
+K=6 support=0.001953125 silhouette=0.184310677873519 stability=0.69921875 eligible=false
+```
+
+eligible candidateは0だったため、事前固定したdecision mappingに従い:
+
+```text
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+selectedRepresentation = null
+```
+
+とした。
+
+K=4はstabilityとsilhouetteを満たしたがminimum supportが0.10に達しなかった。結果後にsupport thresholdを緩和して採用しない。
+
+## 2026-08-30 — Study closure
+
+Stage 1でfrozen representationを得られなかったためStage 2 prerequisiteを満たさず、Stage 2をauthorize / executeしない。
+
+```text
+Study = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
+G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 ```
 
-Stage 0後のtechnical eligibilityを固定した。
-
-```text
-G2-02 search result = TECHNICAL-REFERENCE-ONLY
-fresh G2-10 search concept = DEVELOPMENT-CANDIDATE-ONLY
-TM-S2-C03 = FORMALLY-ELIGIBLE / ORIGINAL-FROZEN-SCOPE-ONLY
-historical morphology classifier = INELIGIBLE
-fresh G2-10 morphology concept = DEVELOPMENT-CANDIDATE-ONLY
-G2-05 depth-9 exact domain = BOUNDED-EXACT-ELIGIBLE / NO EXTRAPOLATION
-```
-
-C03 reconstruction成功はG2-09 generalization evidenceではない。morphology executable absenceはhistorical morphology formal claimの否定ではない。
-
-次はStage 1 scientific executionではなく、Stage 1 development contractのprospective freezeを行う。
+同じStudy内でthreshold relaxation、K range変更、axis / feature replacement、Stage 1 rerun / extension、favorable subgroup、Stage 2 post-hoc authorizationによる救済を行わない。

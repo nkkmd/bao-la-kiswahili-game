@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "UMSSR_STAGE1_HASH_MANIFEST_V1",
+  "files": {
+    "CONSUMPTION_RECORD.json": {
+      "bytes": 1096,
+      "sha256": "c6f95fd2bab4c21fd4b99ee6a69590861a907a001e87e0d63e3af72a7661f522"
+    },
+    "ESSENTIAL_CORE.json": {
+      "bytes": 6016,
+      "sha256": "21fb4cd60dbaa6761b177ad54cda5dd33c942ba3994a953ce5486917f0e440fd"
+    },
+    "FINAL_EXACT_COMPARISON.json": {
+      "bytes": 216,
+      "sha256": "6746eb5d5213d278a7991b6613a0ebf95ed621cc1759d1128f164337583785fb"
+    },
+    "STAGE_1_DEVELOPMENT_RESULT.json": {
+      "bytes": 6016,
+      "sha256": "21fb4cd60dbaa6761b177ad54cda5dd33c942ba3994a953ce5486917f0e440fd"
+    },
+    "independent/full-shard-0001.json.gz": {
+      "bytes": 563456,
+      "sha256": "66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595"
+    },
+    "production/full-shard-0001.json.gz": {
+      "bytes": 563456,
+      "sha256": "66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595"
+    }
+  }
+}

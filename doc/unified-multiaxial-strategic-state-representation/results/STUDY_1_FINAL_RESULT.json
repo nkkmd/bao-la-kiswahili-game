@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "UMSSR_STUDY1_FINAL_RESULT_V1",
+  "researchGeneration": "Research Generation 2",
+  "program": "G2-10",
+  "studyId": "UMSSR-STUDY1",
+  "formalTitle": "Unified Multiaxial Strategic State Representation Study 1",
+  "baselineRemoteMain": "495c9a993278ffab03a6d2cfe2c9a7093c559fd5",
+  "stages": {
+    "stage0": {
+      "stageId": "UMSSR-S0-TECHNICAL-2026-08-30-v1",
+      "disposition": "STAGE0-TECHNICAL-PASS"
+    },
+    "stage1": {
+      "stageId": "UMSSR-S1-DEVELOPMENT-2026-08-30-v1",
+      "disposition": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+      "scientificInferenceAuthorized": true,
+      "seedBlock": {
+        "start": 29310001,
+        "end": 29314096,
+        "games": 4096,
+        "status": "CONSUMED",
+        "sameBlockRerunAuthorized": false
+      },
+      "scientificReadinessPassed": true,
+      "productionIndependentFullExact": true,
+      "selectedRepresentation": null,
+      "eligibleCandidateK": [],
+      "candidateK": [
+        {
+          "k": 2,
+          "eligible": false,
+          "failedFrozenCriteria": ["minimumFiveFoldAssignmentStability"]
+        },
+        {
+          "k": 3,
+          "eligible": false,
+          "failedFrozenCriteria": ["minimumClusterSupportFraction", "minimumFiveFoldAssignmentStability"]
+        },
+        {
+          "k": 4,
+          "eligible": false,
+          "failedFrozenCriteria": ["minimumClusterSupportFraction"]
+        },
+        {
+          "k": 5,
+          "eligible": false,
+          "failedFrozenCriteria": ["minimumClusterSupportFraction"]
+        },
+        {
+          "k": 6,
+          "eligible": false,
+          "failedFrozenCriteria": ["minimumClusterSupportFraction", "minimumFiveFoldAssignmentStability"]
+        }
+      ]
+    },
+    "stage2": {
+      "stageId": "UMSSR-S2-FORMAL-2026-08-30-v1",
+      "disposition": "NOT-AUTHORIZED-NOT-EXECUTED",
+      "scientificInferenceAuthorized": false,
+      "seedBlock": {
+        "start": 29410001,
+        "end": 29418192,
+        "games": 8192,
+        "status": "RESERVED_UNCONSUMED"
+      },
+      "reason": "Stage 1 did not freeze an eligible representation."
+    }
+  },
+  "formalStudyDecision": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+  "validatedStrategicRepresentation": false,
+  "frozenRepresentationArtifactExists": false,
+  "stage1DevelopmentPopulationReusableAsStage2Evidence": false,
+  "g2_11CandidateInputAuthorized": false,
+  "noRescue": {
+    "sameStudyThresholdRelaxationAuthorized": false,
+    "sameStudyKRangeChangeAuthorized": false,
+    "sameStudyAxisOrFeatureReplacementAuthorized": false,
+    "sameStudyFavorableSubgroupRescueAuthorized": false,
+    "sameStage1SeedBlockRerunAuthorized": false,
+    "stage2PostHocAuthorizationAuthorized": false
+  },
+  "stage1ExecutionProvenance": {
+    "sourceFreezeCommit": "10801fbc1529902bf3f4c0aa6e464c1dc39f1267",
+    "authorizationCommit": "d6487403dba9fa1de8895b473e5e662d90b1f13b",
+    "workflowRun": 33297178656,
+    "job": 99218754656,
+    "artifactId": 9727918107,
+    "artifactZipSha256": "8f2f92d88ccb040f53bae28acb7124f230d51b00ff4466835adfda6260934e86",
+    "stage1ResultFileSha256": "21fb4cd60dbaa6761b177ad54cda5dd33c942ba3994a953ce5486917f0e440fd",
+    "stage1RunnerInternalResultSha256": "985235180827db9d314b610baeb37cd2aec9427633ac518c270c938230060b9a",
+    "consumptionRecordFileSha256": "c6f95fd2bab4c21fd4b99ee6a69590861a907a001e87e0d63e3af72a7661f522",
+    "finalExactComparisonFileSha256": "6746eb5d5213d278a7991b6613a0ebf95ed621cc1759d1128f164337583785fb",
+    "hashManifestFileSha256": "9010f53c676b5e588e8e4553acd6ec680bd6ca366f31a68a6f53dbe8de90c823",
+    "productionFullShardSha256": "66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595",
+    "independentFullShardSha256": "66bf5fbeda877235d76628b108398a0c88741d677f8079951668b62ee3366595"
+  },
+  "interpretationBoundary": {
+    "humanClaimAuthorized": false,
+    "gameTheoreticTruthAuthorized": false,
+    "longHorizonTransitionAuthorized": false,
+    "c03GeneralizationAuthorized": false,
+    "historicalMorphologyRescueAuthorized": false,
+    "absenceOfAnyUsefulFutureRepresentationClaimed": false
+  }
+}
