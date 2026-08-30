@@ -1,15 +1,15 @@
-# 2026-08-30 — Stage 0 source preflight attempt 1 technical-invalid execution
+# 2026-08-30 — Stage 0 source preflight第1試行のtechnical-invalid execution
 
 Study: `TMGC-STUDY1`  
 Stage: `TMGC-S0-TECHNICAL-2026-08-30-v1`
 
-## Execution identity
+## executionの識別情報
 
 - workflow run: `33285427882`
 - source commit: `0ac764e94408b4d286cb42ca031d5a54484848b2`
 - frozen technical seeds: `8090001..8090128`
 
-## Disposition
+## 判断
 
 **`TECHNICAL-EXECUTION-INVALID-NO-PREFLIGHT-RESULT`**
 
@@ -17,7 +17,7 @@ GitHub Actionsのworkflow結論は`success`だったが、job log監査でrunner
 
 したがってattempt 1から`SOURCE-PREFLIGHT-PASS`または`SOURCE-PREFLIGHT-FAIL`を宣言しない。Stage 0 terminal dispositionも変更しない。
 
-## Allowed corrective action
+## 許可する修正範囲
 
 scientific outcomeは生成しておらず、Stage 1 / Stage 2 scientific seedsも未消費である。technical seed block、technical population、8 strata、eligibility rule、diversity gates、resource gatesは一切変更しない。
 

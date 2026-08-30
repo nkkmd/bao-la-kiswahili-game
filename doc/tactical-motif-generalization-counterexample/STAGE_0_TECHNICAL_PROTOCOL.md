@@ -1,4 +1,4 @@
-# Stage 0 Technical Protocol
+# Stage 0 — 技術検証protocol
 
 Stage ID: `TMGC-S0-TECHNICAL-2026-08-30-v1`
 
@@ -15,7 +15,7 @@ Stage ID: `TMGC-S0-TECHNICAL-2026-08-30-v1`
 - C03 definitionの変更
 - result-driven threshold / subgroup / instrument選択
 
-## Technical checks
+## 技術検証項目
 
 1. repository正本から`TM-S2-C03`を完全再構築できること
 2. RAW identity included/excluded fieldsを再現できること
@@ -30,6 +30,6 @@ Stage ID: `TMGC-S0-TECHNICAL-2026-08-30-v1`
 11. source-policy balance / diversity floorをStage 1開始前に定義・監査できること
 12. resource/artifact preflightを完了できること
 
-## Pass principle
+## 合格原則
 
 mandatory項目のいずれかが曖昧、再構築不能、独立検証不能、resource上実行不能である場合はfail-closedとする。科学的seedを使ってtechnical feasibilityを推測しない。

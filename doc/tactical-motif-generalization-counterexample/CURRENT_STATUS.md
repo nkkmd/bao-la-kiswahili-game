@@ -1,8 +1,8 @@
-# CURRENT STATUS
+# 現在の状態
 
 更新日: 2026-08-30
 
-## Study
+## Studyの識別情報
 
 - G2: `G2-09`
 - Study ID: `TMGC-STUDY1`
@@ -10,7 +10,7 @@
 - baseline `main`: `bc1263b7076f0a3794da5fd0d4e07821b23e1db6`
 - Study: **CLOSED / `TECHNICAL-INVALID`**
 
-## Formal stage state
+## 各Stageの正式状態
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -19,14 +19,14 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Study = TECHNICAL-INVALID
 ```
 
-## Scientific seed state
+## 科学用seedの状態
 
 - Stage 1 `29110001..29114096`: `RESERVED / UNCONSUMED`
 - Stage 2 `29210001..29218192`: `RESERVED / UNCONSUMED`
 
 G2-09 scientific generalization/counterexample evidenceは生成されていない。
 
-## Terminal technical event
+## 終端となった技術的事象
 
 Stage 1 scientific authorization前に必須としたtooling smoke:
 
@@ -42,16 +42,16 @@ failure = ReferenceError: topSetRate is not defined
 
 `STAGE_1_TOOLING_SMOKE_SPEC.json`の事前failure mappingにより、same-study repair/rerunはauthorizeしない。
 
-## Immutable upstream
+## 変更しないupstream境界
 
 - `TM-S2-C03 = CONFIRMED`
 - `TM-S2-C01/C02/C04 = NOT-CONFIRMED`
 - human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
 - RAW identity only
 - validated transform set `[]`
-- canonicalization / symmetry reduction false
-- G2-08 leaf development observations are not G2-09 validated inputs
+- canonicalization / symmetry reductionは使用していない。
+- G2-08のleaf-level development observationsは、G2-09のvalidated inputとして扱わない。
 
-## Interpretation boundary
+## 解釈上の境界
 
 本closureはC03の科学的generalization failureを意味しない。human/expert/game-theoretic claimもauthorizeしない。将来修正版は新しいprospective Study/versionとして扱う。

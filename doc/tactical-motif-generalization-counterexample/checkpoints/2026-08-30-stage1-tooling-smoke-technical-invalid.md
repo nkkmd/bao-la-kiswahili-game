@@ -1,9 +1,9 @@
-# 2026-08-30 — Stage 1 tooling smoke technical-invalid closure
+# 2026-08-30 — Stage 1 tooling smokeをtechnical-invalidでclosure
 
 Study: `TMGC-STUDY1`  
 Stage: `TMGC-S1-DEVELOPMENT-2026-08-30-v1`
 
-## Formal disposition
+## 正式判断
 
 ```text
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID
@@ -11,7 +11,7 @@ Study = TECHNICAL-INVALID
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Triggering technical evidence
+## 判断を発生させた技術的証拠
 
 Stage 1 scientific authorizationを発行する前に、technical-only smokeをrun `33287035754`で実行した。
 
@@ -33,7 +33,7 @@ error = ReferenceError: topSetRate is not defined
 
 local variable `topRate`を計算した一方、return objectで未定義の`topSetRate` identifierを参照した実装上の欠陥だった。
 
-## Why this is technical-invalid, not scientific negative
+## scientific negativeではなくtechnical-invalidとする理由
 
 - Stage 1 authorization fileは存在しなかった。
 - reserved Stage 1 scientific seeds `29110001..29114096`は使用していない。
@@ -43,7 +43,7 @@ local variable `topRate`を計算した一方、return objectで未定義の`top
 
 したがって`NOT-GENERALIZED`、`COUNTEREXAMPLE-BOUNDARY-VALIDATED`、`NON-ESTIMABLE`等の科学的labelへ読み替えない。
 
-## Frozen no-rescue consequence
+## 凍結済みno-rescue規則の帰結
 
 `STAGE_1_TOOLING_SMOKE_SPEC.json`では、smoke outcomeを見た後のcontract変更を禁止し、tooling failureを`STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID`へ写像することを事前固定していた。
 

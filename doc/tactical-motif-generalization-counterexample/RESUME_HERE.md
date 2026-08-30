@@ -1,4 +1,4 @@
-# TMGC-STUDY1 — RESUME HERE
+# TMGC-STUDY1 — 再開・引継ぎ位置
 
 更新日: 2026-08-30
 
@@ -26,7 +26,7 @@ Stage 2 seeds = RESERVED / UNCONSUMED
 5. `REPRODUCIBILITY_INDEX.md`
 6. `results/STUDY_1_FINAL_RESULT.json`
 
-## Terminal event
+## 終端事象
 
 Stage 1 scientific authorization前のtechnical-only smoke run `33287035754`がindependent boundary aggregationの`ReferenceError`で失敗した。frozen smoke contractによりsame-study repairは認められていないため、Studyを`TECHNICAL-INVALID`で閉じた。
 

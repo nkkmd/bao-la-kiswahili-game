@@ -1,15 +1,15 @@
-# 2026-08-30 — Stage 0 source preflight freeze
+# 2026-08-30 — Stage 0 source preflightの凍結
 
 Study: `TMGC-STUDY1`  
 Stage: `TMGC-S0-TECHNICAL-2026-08-30-v1`
 
-## Freeze
+## 凍結内容
 
 source-only technical preflightの実行前に、`preregistration/STAGE_0_SOURCE_PREFLIGHT_SPEC.json`のtechnical population、8 generation strata、C03-exact eligibility supply rule、RAW/trajectory/opening-prefix identity、diversity gate、resource gateを固定した。
 
 Technical seedsは`8090001..8090128`であり、Stage 1/2 scientific seedとは完全に分離する。
 
-## Scientific leakage prohibition
+## scientific leakageの禁止
 
 このpreflightでは以下を計算・判定しない。
 

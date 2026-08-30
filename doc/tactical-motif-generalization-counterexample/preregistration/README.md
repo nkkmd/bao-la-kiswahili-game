@@ -1,4 +1,4 @@
-# Preregistration
+# Preregistration記録
 
 現時点で凍結済みなのはStudy contractとStage 0 technical specのみである。
 

@@ -1,4 +1,4 @@
-# 2026-08-30 — Stage 0 contract validator materialized
+# 2026-08-30 — Stage 0 contract validatorをmaterialize
 
 Stage 1 / Stage 2 scientific seedを使用せず、prospective contractの内部整合性を機械検証するvalidatorを追加した。
 

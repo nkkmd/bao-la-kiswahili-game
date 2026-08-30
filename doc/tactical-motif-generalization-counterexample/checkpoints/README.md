@@ -1,4 +1,4 @@
-# Checkpoints
+# Checkpoint記録
 
 このdirectoryには各Stageのprospective freeze、technical gate、scientific authorization、formal closureに対応するcheckpointを保存する。
 

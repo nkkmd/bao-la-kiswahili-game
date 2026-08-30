@@ -19,7 +19,7 @@ human axis = INCONCLUSIVE-NOT-ESTIMABLE (N=0)
 
 RAW identityのみを使用し、未validated symmetry / canonicalizationは使用しない。
 
-## Stage 0
+## Stage 0の状態
 
 C03 exact semantics、Research Generation 1 provenance、RAW identity、production/independent technical reconstruction、source diversity、resource/artifact feasibilityを検証し、`STAGE0-TECHNICAL-PASS`となった。
 
@@ -47,11 +47,11 @@ Stage 1 scientific evidenceは生成されていないため、次はすべて�
 - C03 counterexample domain
 - morphology/state-family boundary
 - search-condition boundary
-- mixed/non-estimable scientific boundary
+- mixed / non-estimableを含むscientific boundary
 
 「C03がgeneralizeしなかった」というnegative resultではない。
 
-## Scientific seed state
+## 科学用seedの状態
 
 ```text
 Stage 1 29110001..29114096 = RESERVED / UNCONSUMED

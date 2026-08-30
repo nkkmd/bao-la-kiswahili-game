@@ -1,6 +1,6 @@
-# Authorizations
+# Authorization記録
 
-## Terminal authorization state
+## 最終authorization状態
 
 | Stage | Stage ID | Authorization |
 |---|---|---|

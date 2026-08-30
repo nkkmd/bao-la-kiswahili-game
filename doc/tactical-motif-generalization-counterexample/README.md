@@ -3,7 +3,7 @@
 - Research Generation: `G2-09`
 - Study ID: `TMGC-STUDY1`
 - baseline remote `main`: `bc1263b7076f0a3794da5fd0d4e07821b23e1db6`
-- formal status: **Study closed / `TECHNICAL-INVALID`**
+- 正式状態: **Study closed / `TECHNICAL-INVALID`**
 
 ## 正式研究題目
 
@@ -33,12 +33,12 @@ Research Generation 1の`TM-S2-C03 = CONFIRMED`、C01/C02/C04の`NOT-CONFIRMED`�
 
 - `STUDY_1_PROTOCOL.md` — prospective protocol
 - `CURRENT_STATUS.md` — terminal state
-- `DECISION_REGISTER.md` — prospective decisions / no-rescue closure
-- `REPRODUCIBILITY_INDEX.md` — workflow / source / artifact provenance
-- `results/STAGE_1_TECHNICAL_INVALID_RESULT.json` — Stage 1 canonical technical-invalid result
+- `DECISION_REGISTER.md` — prospectiveな判断とno-rescue closureの記録
+- `REPRODUCIBILITY_INDEX.md` — workflow / source / artifact provenanceの再現性索引
+- `results/STAGE_1_TECHNICAL_INVALID_RESULT.json` — Stage 1のcanonicalなtechnical-invalid結果
 - `results/STUDY_1_FINAL_RESULT.json` — Study-level terminal result
 - `checkpoints/2026-08-30-stage1-tooling-smoke-technical-invalid.md` — failure closure checkpoint
 
-## State / human boundary
+## State / humanに関する境界
 
 Authoritative identityはRAW identityのみ。validated transform setは空で、canonicalization / symmetry reductionは使用しない。本Studyはmachine-onlyであり、人間/expert recognition、difficulty、error probability、traditional terminologyを推定しない。

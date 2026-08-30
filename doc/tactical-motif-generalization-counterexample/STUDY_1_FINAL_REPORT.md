@@ -7,7 +7,7 @@
 
 **Study ID:** `TMGC-STUDY1`  
 **Program:** Research Generation 2 `G2-09`  
-**Formal title:** Tactical Motif Generalization / Counterexample Study 1
+**正式英語題目:** Tactical Motif Generalization / Counterexample Study 1
 
 日本語研究題目:
 
@@ -36,7 +36,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 Stage 1 / Stage 2 scientific seedはどちらも未消費である。
 
-## 3. Immutable upstream boundary
+## 3. 変更しないupstream境界
 
 本StudyはResearch Generation 1の結果を変更しない。
 
@@ -52,11 +52,11 @@ C03 exact primary constructはMtaji `coarse-no-index`、back-row `takata` right�
 
 Stage 0ではdirect Namua transportがfrozen C03 exactと意味論的に同一にはならないことを確認し、`TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`とした。Namuaを人工的なcounterexampleへ数えていない。
 
-## 4. Stage 0
+## 4. Stage 0の結果
 
 Stage 0はscientific inferenceを行わず、technical feasibilityだけを評価した。
 
-### Core semantics / provenance
+### core semantics / provenanceの検証
 
 ```text
 workflow run = 33285277593
@@ -66,7 +66,7 @@ result = CORE-SEMANTICS-AND-PROVENANCE-PASS
 
 Research Generation 1 candidate/spec/authorization document binding、17 source-file SHA-256 binding、RAW identity、legal moves、candidate move、successor、primary/paired semantics、D1/D2/D3 instrumentはtechnical fixtures上でexact検証された。
 
-### Contract validation
+### contract validationの結果
 
 ```text
 workflow run = 33285599766
@@ -75,7 +75,7 @@ result = PASS
 
 Stage 1/2 seed非重複、8 source strata、RAW identity、Stage 1→2 firewall、prospective axes、Holm multiplicity、no-rescue、decision vocabularyの整合性を確認した。
 
-### Source/diversity/resource preflight
+### source / diversity / resource preflightの結果
 
 初回run `33285427882`はresult serializationのtechnical defectでinvalidとなった。scientific seed未消費かつoutcome未生成のStage 0 technical workだったため、事前gate/population/technical seedを変更せず実装修正し、同一technical blockをexact rerunした。
 
@@ -101,7 +101,7 @@ STAGE0-TECHNICAL-PASS
 
 でclosureした。
 
-## 5. Frozen Stage 1 / Stage 2 design
+## 5. 凍結済みStage 1 / Stage 2設計
 
 scientific evidence生成前に以下を固定した。
 
@@ -120,7 +120,7 @@ canonicalization = false
 
 Stage 1でestimableになった全cellをStage 2へ持ち越す設計とし、favorable subgroupだけを選択することを禁止した。
 
-## 6. Stage 1 tooling smoke
+## 6. Stage 1 tooling smokeの検証
 
 Stage 1 scientific authorization前に、production/independent full source reconstruction、root collapse、measurement、5 search conditions、boundary assignment、boundary aggregationをtechnical-only seeds `8090201..8090232`で検証するsmokeを固定した。
 
@@ -143,7 +143,7 @@ ReferenceError: topSetRate is not defined
 
 重要なのは、これはC03の成立・不成立を示すscientific resultではないという点である。canonical smoke result JSON自体が作られず、Stage 1 authorizationも発行されていない。
 
-## 7. No-rescue closure
+## 7. no-rescue規則によるclosure
 
 smoke開始前に固定した`STAGE_1_TOOLING_SMOKE_SPEC.json`は:
 
@@ -167,12 +167,12 @@ Stage 1 scientific generationはauthorizeもexecuteもされていないため�
 - mixed boundary
 - marginal-cell generalization label
 - marginal-cell counterexample label
-- search-condition generalization/counterexample label
-- Stage 2 Holm-adjusted formal test
+- search conditionごとのgeneralization / counterexample label
+- Stage 2で予定していたHolm補正済みformal test
 
 したがって「C03がgeneralizeしなかった」「counterexampleが見つかった」とは結論しない。
 
-## 9. Seed state
+## 9. seedの状態
 
 ```text
 Stage 1 scientific seeds 29110001..29114096 = RESERVED / UNCONSUMED
@@ -195,6 +195,6 @@ technical-only smoke seedsはscientific blocksと非重複である。
 
 第一世代`TM-S2-C03 = CONFIRMED`はその元claim domain内で不変である。
 
-## 11. Future work
+## 11. 将来の研究
 
 実装欠陥を修正したgeneralization/counterexample検証は、**新しいprospective Studyまたは明示的versioned protocol**として開始できる。その場合は、今回のtechnical-invalid closureを変更せず、新しいtechnical-entry contract、fresh authorization、fresh scientific seed contractをoutcome前に固定する必要がある。
