@@ -17,8 +17,11 @@ function abs(p) { return path.join(ROOT, p); }
 function readJson(p) { return JSON.parse(fs.readFileSync(abs(p), "utf8")); }
 function stable(v) { return P.stableStringify(v); }
 function exact(a, b) { return stable(a) === stable(b); }
-function sha(s) { return crypto.createHash("sha256").update(String(s), "utf8").digest("hex"); }
+function shaBuffer(b) { return crypto.createHash("sha256").update(b).digest("hex"); }
+function sha(s) { return shaBuffer(Buffer.from(String(s), "utf8")); }
+function fileSha256(p) { return shaBuffer(fs.readFileSync(abs(p))); }
 function git(...args) { return cp.execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim(); }
+function blobSha1(p) { return git("hash-object", p); }
 function gzipBytes(v) { return zlib.gzipSync(Buffer.from(JSON.stringify(v)), { level: 9 }); }
 function write(name, v) { fs.writeFileSync(path.join(OUT, name), JSON.stringify(v, null, 2) + "\n"); }
 function syntheticRows(dict, n) {
@@ -50,16 +53,30 @@ function stripRoots(records) {
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 
-const spec = readJson(`${DOC}/prereg/STAGE_1_DEVELOPMENT_SPEC.json`);
-const dict = readJson(`${DOC}/prereg/STAGE_1_FEATURE_DICTIONARY.json`);
-const execution = readJson(`${DOC}/prereg/STAGE_1_EXECUTION_CONTRACT.json`);
-const smoke = readJson(`${DOC}/results/STAGE_1_TOOLING_SMOKE_RESULT.json`);
+const specPath = `${DOC}/prereg/STAGE_1_DEVELOPMENT_SPEC.json`;
+const dictPath = `${DOC}/prereg/STAGE_1_FEATURE_DICTIONARY.json`;
+const stage2Path = `${DOC}/prereg/STAGE_2_VALIDATION_CONTRACT.json`;
+const executionPath = `${DOC}/prereg/STAGE_1_EXECUTION_CONTRACT.json`;
+const smokePath = `${DOC}/results/STAGE_1_TOOLING_SMOKE_RESULT.json`;
+const spec = readJson(specPath);
+const dict = readJson(dictPath);
+const execution = readJson(executionPath);
+const smoke = readJson(smokePath);
 const sourceCommit = git("rev-parse", "HEAD");
 const technicalStart = execution.preflight.technicalSeedStart;
 const technicalEnd = execution.preflight.technicalSeedEnd;
 if (smoke.disposition !== "TOOLING-SMOKE-PASS") throw new Error("tooling smoke not passed");
 if (technicalStart !== 29500001 || technicalEnd !== 29500064) throw new Error("technical seed contract drift");
 if (!(technicalEnd < spec.seedBlock.seedStart)) throw new Error("technical/scientific seed overlap");
+
+const authorizationBindingInputs = {
+  stage1SpecSha256: fileSha256(specPath),
+  featureDictionarySha256: fileSha256(dictPath),
+  stage2ValidationContractSha256: fileSha256(stage2Path),
+  executionContractSha256: fileSha256(executionPath),
+  toolingSmokeResultSha256: fileSha256(smokePath),
+  sourceBlobSha1: Object.fromEntries(execution.sourcePathsToBind.map((p) => [p, blobSha1(p)])),
+};
 
 let t = performance.now();
 const pg = P.generate(spec, { games: 64, seedStart: technicalStart, maxPly: spec.sourceGeneration.maxPly });
@@ -90,10 +107,6 @@ const iModel = I.evaluateAll(synth, dict, spec);
 const iModelMs = performance.now() - t;
 const modelExact = exact(pModel, iModel);
 
-// Preserve a combined technical artifact, but project scientific artifact size by component.
-// The source/root component is sampled at 64 games / 8 roots and scales by 64 to 4096 games / 512 roots.
-// The model component is already sampled at 128 rows and scales only by 512/128 = 4 in stored row volume.
-// The frozen artifact safety multiplier remains 2 for both components. No ceiling or multiplier is relaxed.
 const pSourcePayload = { records: pg, selection: ps, analyses: pa, scaler: pScaler };
 const iSourcePayload = { records: ig, selection: is, analyses: ia, scaler: iScaler };
 const pModelPayload = { syntheticModelStress: pModel };
@@ -144,6 +157,7 @@ const result = {
   projectionRepairOnly: true,
   scientificContractChangedByRepair: false,
   resourceCeilingChangedByRepair: false,
+  authorizationBindingInputs,
   disposition: passed ? "STAGE1-PACKAGING-PREFLIGHT-PASS" : "STAGE1-PACKAGING-PREFLIGHT-FAIL",
   checks,
   technicalSeedsUsed: [technicalStart, technicalEnd],
@@ -188,5 +202,6 @@ const result = {
   g2_11Authorized: false
 };
 write("preflight-result.json", result);
+write("authorization-binding-inputs.json", authorizationBindingInputs);
 console.log(JSON.stringify(result, null, 2));
 if (!passed) process.exitCode = 2;
