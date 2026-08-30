@@ -1,0 +1,41 @@
+name: SSGTGE Central Documentation Sync
+
+on:
+  push:
+    branches:
+      - research/g2-12-state-space-game-tree-growth-estimation
+    paths:
+      - doc/state-space-game-tree-growth-estimation/authorizations/CENTRAL_DOC_SYNC_EXECUTE.json
+
+permissions:
+  contents: write
+
+jobs:
+  sync-central-docs:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: research/g2-12-state-space-game-tree-growth-estimation
+
+      - name: Apply fail-closed central documentation synchronization
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/maintenance/sync-g2-12-central-docs.js
+          node tools/maintenance/sync-g2-12-central-docs.js
+          git diff --check
+          git diff -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
+
+      - name: Commit synchronization to research branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$(git status --porcelain -- README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
+          git commit -m "Synchronize G2-12 central research documentation"
+          git push origin HEAD:refs/heads/research/g2-12-state-space-game-tree-growth-estimation
