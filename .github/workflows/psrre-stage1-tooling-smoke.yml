@@ -1,0 +1,69 @@
+name: PSRRE Stage 1 Tooling Smoke
+
+# Technical-only pre-scientific smoke. Never consumes PSRRE Stage 1/2 scientific seeds.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/pre-g2-11-strategic-regime-representation-eligibility
+    paths:
+      - 'doc/prospective-strategic-regime-representation-eligibility/authorizations/STAGE_1_TOOLING_SMOKE_EXECUTE.json'
+
+permissions:
+  contents: read
+
+jobs:
+  tooling-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Environment and syntax
+        run: |
+          node --version
+          git rev-parse HEAD
+          git rev-parse HEAD^
+          git status --short
+          node --check tools/experiments/run-psrre-stage1-tooling-smoke.js
+          node --check tools/experiments/lib/psrre-stage1-production.js
+          node --check tools/experiments/lib/psrre-stage1-independent.js
+
+      - name: Verify scientific seed firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const spec = JSON.parse(fs.readFileSync('doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_1_DEVELOPMENT_SPEC.json','utf8'));
+          const smoke = JSON.parse(fs.readFileSync('doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_1_TOOLING_SMOKE_SPEC.json','utf8'));
+          if (spec.seedBlock.seedStart !== 29510001 || spec.seedBlock.seedEnd !== 29514096) throw new Error('Stage 1 scientific seed contract drift');
+          if (smoke.technicalSeedStart !== 29500001 || smoke.technicalSeedEnd !== 29500064) throw new Error('technical smoke seed contract drift');
+          if (smoke.scientificSeedUseAuthorized !== false) throw new Error('scientific seed use unexpectedly authorized');
+          for (const [a,b] of smoke.scientificSeedForbiddenRanges) {
+            if (!(smoke.technicalSeedEnd < a || smoke.technicalSeedStart > b)) throw new Error('technical/scientific seed overlap');
+          }
+          NODE
+
+      - name: Run PSRRE Stage 1 tooling smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/local/psrre-stage1-tooling-smoke
+          /usr/bin/time -v node tools/experiments/run-psrre-stage1-tooling-smoke.js artifacts/local/psrre-stage1-tooling-smoke \
+            2>&1 | tee artifacts-psrre-stage1-tooling-smoke.log
+
+      - name: Preserve tooling smoke artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: psrre-stage1-tooling-smoke-${{ github.sha }}
+          path: |
+            artifacts/local/psrre-stage1-tooling-smoke/**
+            artifacts-psrre-stage1-tooling-smoke.log
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 30
