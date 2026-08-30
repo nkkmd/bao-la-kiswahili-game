@@ -119,3 +119,77 @@ Only source-binding/orchestration mechanics change:
 - v2 has separate runner/verifier/workflow/spec/result/authorization paths.
 
 No scientific contract element changes. v2 remains depth-2 technical-only, synthetic-estimator-fixture-only, and prohibited from depth-10/depth-11 generation or real G2-05 candidate selection.
+
+## 2026-08-31 — Stage 0 v2 authorization and execution
+
+The v2 source/spec freeze was kept at commit:
+
+```text
+a699beb6afe7681227d0ecc8328d527ac34ff7f6
+```
+
+A separate authorization-only commit was created:
+
+```text
+6ed915304e4ec834ca9ff0dc7f115cdeb9988bcd
+```
+
+The authorization bound the frozen implementation/dependencies by repository Git blob identity and retained:
+
+```text
+scientificInferenceAuthorized = false
+realDevelopmentCandidateEvaluationAuthorized = false
+freshDepth10Or11GenerationAuthorized = false
+Stage 1 = unauthorized
+Stage 2 = unauthorized
+sameStage0EvidenceRerunAuthorized = false
+```
+
+This push triggered exactly one v2 workflow run:
+
+```text
+run = 33323689667
+job = 99289968446
+```
+
+## 2026-08-31 — Stage 0 v2 accepted technical PASS
+
+Direct job-log inspection confirmed the production and independent Node processes both exited 0 under fail-closed shell pipelines.
+
+Production:
+
+```text
+passed = true
+productionCoreSha256 = 6cc54143124c80e3cc4e2f4653b13840706a112ef6dfbcad5a81cba973848426
+standard-root technical depth = 2
+cumulative RAW states = 19
+depth-labelled legal edges = 18
+freshHoldoutOutcomeGenerated = false
+realDevelopmentCandidateEvaluationPerformed = false
+```
+
+Independent verification:
+
+```text
+passed = true
+resultCoreSha256 = f7bbd991ad61befc24d8164b90ae1e8fd8c254454a2fe96469013e1d1c898b5a
+materialized depth-2 verification = true
+full independent depth-2 recomputation = true
+all frozen negative controls = true
+```
+
+Artifact provenance:
+
+```text
+artifact = 9735609030
+artifact size = 13991 bytes
+artifact ZIP SHA256 = bdf0dac8359147c5efaa7b3d58c798a4336c78483d95176ea38ab9960bad07d6
+```
+
+Accepted Stage 0 v2 disposition:
+
+```text
+SSGTGE-S0-TECHNICAL-2026-08-30-v2 = STAGE0-TECHNICAL-PASS
+```
+
+This PASS is technical-only. It authorizes preparation of Stage 1 but does not select an estimator and does not authorize fresh depth 10/11 generation.

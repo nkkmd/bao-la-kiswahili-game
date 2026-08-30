@@ -174,3 +174,33 @@ Fresh depth 10 or 11 generation/read remains forbidden. Stage 1 and Stage 2 rema
 ## DR-019 — v2 requires separate freeze and separate authorization commit
 
 The v2 source/spec must be committed before execution. A subsequent authorization-only commit must bind the exact implementation-freeze parent and exact Git blob identities. v2 execution is not authorized by the v1 authorization or by the v2 source-freeze commit itself.
+
+## DR-020 — Stage 0 v2 execution is accepted
+
+Date: 2026-08-31  
+The separate v2 authorization commit `6ed915304e4ec834ca9ff0dc7f115cdeb9988bcd` correctly had implementation/source freeze commit `a699beb6afe7681227d0ecc8328d527ac34ff7f6` as its parent.
+
+Workflow run `33323689667` / job `99289968446` was inspected directly. Production and independent Node processes both returned exit status 0 under `set -euo pipefail`; the uploaded artifact was materialized successfully.
+
+Accepted disposition:
+
+```text
+SSGTGE-S0-TECHNICAL-2026-08-30-v2 = STAGE0-TECHNICAL-PASS
+```
+
+Canonical provenance:
+
+```text
+artifact = 9735609030
+artifact ZIP SHA256 = bdf0dac8359147c5efaa7b3d58c798a4336c78483d95176ea38ab9960bad07d6
+productionCoreSha256 = 6cc54143124c80e3cc4e2f4653b13840706a112ef6dfbcad5a81cba973848426
+independent resultCoreSha256 = f7bbd991ad61befc24d8164b90ae1e8fd8c254454a2fe96469013e1d1c898b5a
+```
+
+## DR-021 — Stage 0 PASS authorizes Stage 1 preparation only
+
+Stage 0 v2 PASS establishes that the frozen estimator implementations, source/schema plumbing, resource mapping, negative controls, depth-2 exact fixture, and independent verification path are technically operable.
+
+It does **not** establish estimator performance on the real G2-05 development series and does not authorize any fresh depth 10/11 generation.
+
+A Stage 1 development implementation/spec/source freeze may now be prepared using only immutable G2-05 depth 0..9 summaries. Stage 1 execution still requires a separate prospective authorization commit. Stage 2 remains `NOT-AUTHORIZED-NOT-EXECUTED`.

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SSGTGE-STUDY1",
+  "stageId": "SSGTGE-S0-TECHNICAL-2026-08-30-v2",
+  "correctiveVersionOf": "SSGTGE-S0-TECHNICAL-2026-08-30-v1",
+  "resultClass": "TECHNICAL-DIAGNOSTIC-ONLY",
+  "scientificInferenceAuthorized": false,
+  "stage0Decision": "STAGE0-TECHNICAL-PASS",
+  "passed": true,
+  "freshHoldoutOutcomeGenerated": false,
+  "realDevelopmentCandidateEvaluationPerformed": false,
+  "productionCoreSha256": "6cc54143124c80e3cc4e2f4653b13840706a112ef6dfbcad5a81cba973848426",
+  "independentEnumeration": {
+    "materializedPassed": true,
+    "fullIndependentDepth2RecomputationPassed": true,
+    "independentCoreSha256": "c1e5db4b98fcb1c7e406a67b0dd74aeff8c1ecf0ddfc43ad06200fc0a59af817"
+  },
+  "developmentSourceSummarySha256": "04debfa47516d0288d9baf5cf1ff0d761c83c27ada16d9ea43c02be66887659a",
+  "independentSyntheticCoreSha256": "fb2fbe8491aabc01a759831124fbacfc0cc178255032899b37c80dc6a24dd7c1",
+  "crossImplementationRelativeTolerance": 1e-12,
+  "negativeControls": {
+    "missingDepth": true,
+    "nonPositiveCount": true,
+    "transformLeakage": true,
+    "depthGap": true,
+    "numericMismatch": true
+  },
+  "importsProductionGrowthEstimator": false,
+  "importsProductionGrowthSerializer": false,
+  "resultCoreSha256": "f7bbd991ad61befc24d8164b90ae1e8fd8c254454a2fe96469013e1d1c898b5a"
+}
