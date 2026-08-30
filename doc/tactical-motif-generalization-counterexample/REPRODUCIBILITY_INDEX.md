@@ -14,7 +14,6 @@ G2-09開始時点のrepository contentはcommit `bc1263b7076f0a3794da5fd0d4e0782
 - `doc/tactical-motifs/preregistration/STAGE_2_FORMAL_CANDIDATES.json`
 - `doc/tactical-motifs/preregistration/STAGE_2_FORMAL_SPEC.json`
 - `doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`
-- `doc/tactical-motifs/STAGE_2_EXECUTION_RUNBOOK.md`
 
 ## First-generation Stage 2 source provenance
 
@@ -22,39 +21,53 @@ G2-09開始時点のrepository contentはcommit `bc1263b7076f0a3794da5fd0d4e0782
 - measurement source commit: `e6f5e9528d523e7710a953020b1719abf60a26e8`
 - evaluation source commit: `d41b061067ab2e5dbe65294d3860586d9d3c1454`
 
-Authorization-bound source SHA-256 mappingは`doc/tactical-motifs/preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`を正本とする。
+Authorization-bound source SHA-256 mappingはResearch Generation 1 `STAGE_2_FORMAL_AUTHORIZATION.json`を正本とする。
 
-## Relevant existing code subject to Stage 0 audit
-
-- `tools/experiments/run-tactical-motif-stage2-formal.js`
-- `tools/experiments/verify-tactical-motif-stage2-formal.js`
-- `tools/experiments/evaluate-tactical-motif-stage2-formal.js`
-- `tools/experiments/validate-tactical-motif-stage2-formal-spec.js`
-- `tools/experiments/lib/tactical-motif-stage2-formal.js`
-- `tools/experiments/lib/tactical-motif-stage2-corpus.js`
-- `tools/experiments/lib/tactical-motif-features.js`
-- `tools/experiments/lib/tactical-motif-discovery.js`
-- `tools/experiments/lib/position-typology-features.js`
-- `tools/experiments/lib/position-complexity-search-diagnostic.js`
-- `public/engine.js`
-- `public/ai.js`
-
-この一覧はG2-09でそのままscientific implementationとして再利用することの承認ではない。Stage 0で依存関係、shared-helper risk、state/move/evaluator semanticsを監査し、G2-09専用production/independent implementationを分離する。
-
-## G2 closure boundaries
-
-- `doc/rich-critical-position-representation/`
-- `doc/practical-comeback-reply-pressure-representation/`
-- `doc/machine-decision-failure-taxonomy/`
-
-## G2-09 prospective artifacts
+## G2-09 prospective freezes
 
 - `preregistration/STUDY_CONTRACT.json`
 - `preregistration/UPSTREAM_C03_FROZEN_REFERENCE.json`
 - `preregistration/STAGE_0_TECHNICAL_SPEC.json`
-- future Stage 1 spec: not yet authorized / not yet created as a scientific freeze
-- future Stage 2 spec: not yet authorized / not yet created as a scientific freeze
+- `preregistration/STAGE_0_SOURCE_PREFLIGHT_SPEC.json`
+- `preregistration/STAGE_1_2_BOUNDARY_CONTRACT.json`
 
-## Verification principle
+## Stage 0 evidence
 
-Stage 0以降、production pathとindependent pathがG2-09固有classification helperを共有しないことを必須監査項目とする。離散量はexact equality、浮動小数はStage 1前に固定したtoleranceまたはquantized equalityで照合する。
+### Core technical
+
+- workflow run: `33285277593`
+- source commit: `123b24049f6d12dbe529c5aecc7fc2ee78852deb`
+- result: `results/STAGE_0_CORE_TECHNICAL_RESULT.json`
+- disposition: `CORE-SEMANTICS-AND-PROVENANCE-PASS`
+
+### Contract validation
+
+- workflow run: `33285599766`
+- source commit: `59019e4fcefd02d231296cc87d9adcc0b9816f90`
+- `passed=true`
+
+### Source preflight
+
+- invalid attempt: run `33285427882`, `TECHNICAL-EXECUTION-INVALID-NO-PREFLIGHT-RESULT`
+- accepted run: `33285761079`
+- source commit: `93396ec45619cf10a08726b5705b9a155bcb1c3b`
+- artifact id: `9724412966`
+- artifact ZIP SHA-256: `dd0e3cd14f127d89240e7f34a612dab73bf5ae805731dfa7eb925c3281dd71ae`
+- disposition: `SOURCE-PREFLIGHT-PASS`
+
+### Closure
+
+- `results/STAGE_0_TECHNICAL_CLOSURE_RESULT.json`
+- `checkpoints/2026-08-30-stage0-technical-closure.md`
+- formal disposition: `STAGE0-TECHNICAL-PASS`
+
+## Verification principle for Stage 1+
+
+production pathとindependent pathがG2-09固有classification helperを共有しないことを必須とする。engine / AI implementationはinstrumentとして共通利用可能だが、C03 eligibility、candidate representative、structural consequence、boundary descriptors、decision aggregationのG2-09-specific reconstruction codeは共有しない。
+
+離散量はexact equalityを要求する。search scoreは同一engine・同一frozen instrumentで整数値が返る限りexact equalityを要求する。将来floating quantityを導入する場合はscientific generation前にtoleranceをfreezeする。
+
+## Scientific seed state at Stage 0 closure
+
+- Stage 1 `29110001..29114096`: `UNCONSUMED`
+- Stage 2 `29210001..29218192`: `UNCONSUMED`

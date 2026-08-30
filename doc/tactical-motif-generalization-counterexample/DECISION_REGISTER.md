@@ -57,3 +57,17 @@ GitHub Actions run `33285277593`をtechnical-only evidenceとして採用し、i
 ## TMGC-D013 — Source preflight and Stage 1/2 contract frozen before scientific evidence
 
 source-only technical preflight gateを`STAGE_0_SOURCE_PREFLIGHT_SPEC.json`に結果前freezeした。またStage 1 development classificationとStage 2 held-out validation / multiplicity / decision ruleを`STAGE_1_2_BOUNDARY_CONTRACT.json`にscientific seed消費前freezeした。Stage 0 terminal pass前にStage 1 authorizationは発行しない。
+
+## TMGC-D014 — Source preflight attempt 1 is technical-invalid, not scientific evidence
+
+run `33285427882`はresult serialization直前の`ReferenceError`とpipeline maskingにより`TECHNICAL-EXECUTION-INVALID-NO-PREFLIGHT-RESULT`とする。technical seed、population、strata、gateは変更せず、同一technical seedsでrerunすることだけを許可した。
+
+## TMGC-D015 — Frozen source preflight passed
+
+修正版run `33285761079`は同一technical seeds `8090001..8090128`で`SOURCE-PREFLIGHT-PASS`となった。全事前固定gateがpassし、scientific leakage guardも全falseだったため、このrunをStage 0 source/diversity/resource evidenceとして採用する。
+
+## TMGC-D016 — Stage 0 terminal closure
+
+core semantics/provenance、frozen contract validation、source/diversity/resource preflightがすべてpassしたため、Stage 0 `TMGC-S0-TECHNICAL-2026-08-30-v1`を**`STAGE0-TECHNICAL-PASS`**でclosureする。
+
+このdecisionはscientific generalization/counterexample inferenceではない。Stage 1 authorizationはproduction/independent tooling smokeとsource freezeの完了後にのみ発行できる。Stage 2はnot authorizedのままとする。
