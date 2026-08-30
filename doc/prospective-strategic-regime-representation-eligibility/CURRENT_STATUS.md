@@ -12,27 +12,30 @@ Research branch = research/pre-g2-11-strategic-regime-representation-eligibility
 Agenda label = none
 ```
 
-remote `main` HEADはStudy開始時reference SHAと完全一致した。
+本Studyは`G2-10`と`G2-11`の間に置かれたdependency-resolution prerequisite Studyであり、新しい`G2-xx` agenda labelではない。
 
 ## 2. Stage状態
 
 ```text
-PSRRE-S0-TECHNICAL-2026-08-30-v1 = CONTRACT-FROZEN / NOT-EXECUTED
+PSRRE-S0-TECHNICAL-2026-08-30-v1 = STAGE0-TECHNICAL-PASS
 PSRRE-S1-DEVELOPMENT-2026-08-30-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 PSRRE-S2-FORMAL-2026-08-30-v1 = NOT-AUTHORIZED-NOT-EXECUTED
+G2-11 = NOT-AUTHORIZED
 ```
 
-Stage 0はtechnical-onlyであり、scientific inferenceを生成しない。Stage 0 technical execution自体も、Study-start commit時点ではまだauthorizeしない。
+Stage 0 workflow runは`33304155488`、jobは`99237601518`、artifactは`9729904359`である。18 mandatory gateはfailure 0 / missing 0で、3 representation familyはいずれもtechnical qualificationをPASSした。
+
+これはscientific representation validationではない。Stage 0ではsupport、silhouette、assignment stability、long-horizon outcomeを用いたfamily選択を行っていない。
 
 ## 3. seed状態
 
 ```text
-29500001..29500064 = Stage 0 technical-only reservation
+29500001..29500064 = Stage 0 technical-only reservation / scientific evidenceには未使用
 29510001..29514096 = Stage 1 scientific RESERVED_UNCONSUMED / NOT AUTHORIZED
 29610001..29618192 = Stage 2 scientific RESERVED_UNCONSUMED / NOT AUTHORIZED
 ```
 
-G2-10 Stage 1 seeds `29310001..29314096`はCONSUMEDであり再利用しない。G2-10 Stage 2 seeds `29410001..29418192`はRESERVED_UNCONSUMEDだが、本Studyでは使用しない。
+G2-10 Stage 1 seeds `29310001..29314096`はCONSUMEDであり再利用しない。G2-10 Stage 2 seeds `29410001..29418192`も本Studyでは使用しない。
 
 ## 4. G2-10 closure binding
 
@@ -47,22 +50,9 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G2-11 candidate input authorized = false
 ```
 
-本StudyはG2-10の救済ではない。
+本StudyはG2-10 threshold、40-feature dictionary、deterministic K-means `K=2..6`、seed状態を変更しない。
 
-## 5. upstream eligibilityの重要点
-
-- G2-01: calibration mappingはvalidated axisとして使用しない
-- G2-02: formal search-reliability classifierとして使わない。raw observable conceptだけfresh candidate化可能
-- G2-03: validated transform set=`[]`; canonicalization / symmetry reductionは禁止
-- G2-04: fresh exact oracleなし。technical referenceのみ
-- G2-05: depth 0..9 bounded exact domainだけ限定利用可能
-- G2-06: rich classifier / modelは`INELIGIBLE`
-- G2-07: `F05_ALL`, `lambda=100`, modelは`INELIGIBLE`
-- G2-08: taxonomy / promoted leavesは`INELIGIBLE`
-- G2-09: generalization / counterexample boundaryは`INELIGIBLE`
-- G2-10: 40-feature / deterministic K-means contractは本Studyのfrozen representationとして再利用しない
-
-## 6. RAW identity / transform authorization
+## 5. RAW identity / transform authorization
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -72,22 +62,41 @@ canonicalization = false
 symmetry reduction = false
 ```
 
+## 6. Stage 0 technical qualification
+
+```text
+RF-A-ROBUST-PCA-WARD = technical exact PASS
+RF-B-ROBUST-PCA-PAM = technical exact PASS
+RF-C-DIRECT-ROBUST-PAM = technical exact PASS
+scientific performance inspected = false
+scientific outcome generated = false
+```
+
+production / independentはRAW identity、technical observables、bounded search raw diagnostic、C03 original-scope technical reconstruction、robust scaling、PCA、Ward、PAM、assignment、serializationでpreregistered exact gateを満たした。
+
 ## 7. 次に許可される工程
 
-1. Study-start commitのsource/hash audit
-2. Stage 0 runner / production implementation / independent verifierのmaterialization
-3. Stage 0 technical-only authorization artifactの作成
-4. Stage 0 technical execution
-5. Stage 0 PASSの場合のみ、Stage 1 prefreezeを別commitで作成
-6. Stage 1 observable dictionary、family hyperparameter space、selection rule、eligibility threshold、resource ceilingを固定
-7. その後にのみStage 1 scientific authorizationを検討
+Stage 1 scientific seedを使用する前に、次を新しいprospective prefreezeとして固定する。
+
+1. fresh Stage 1 feature dictionaryとexact formula
+2. zero-variance / missing / undefined handling
+3. representation-family hyperparameter space
+4. deterministic scaling / PCA / Ward / PAM semantics
+5. model-selection hierarchy
+6. support / separation / stability等のnumeric eligibility threshold
+7. source-policy / phase coverageとroot-selection contract
+8. Stage 1 → Stage 2 promotion rule
+9. Stage 2 held-out primary eligibility contract
+10. production / independent source binding、resource ceiling、consume-once rule
+
+これらを固定し、tooling smokeがPASSするまではStage 1 scientific authorizationを作成しない。
 
 ## 8. 現在禁止されている工程
 
 - Stage 1 / Stage 2 scientific seed消費
-- fresh scientific population generation
-- scientific support / silhouette / stability inspection
-- representation familyのscientific fitによる選別
+- fresh scientific outcome generation
+- unfrozen feature / hyperparameterによる探索
+- G2-10 same-Study rescue
 - G2-11 outcome inspection
 - G2-11 authorization
 - mainへのmerge
