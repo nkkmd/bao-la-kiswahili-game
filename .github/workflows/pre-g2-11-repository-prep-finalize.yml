@@ -53,3 +53,5 @@ jobs:
             doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
           git commit -m 'docs(research): complete pre-G2-11 program handoff state'
           git push origin HEAD:maintenance/pre-g2-11-strategic-representation-prerequisite
+
+# Rerun marker: latest-head finalization after audit-workflow installation.
