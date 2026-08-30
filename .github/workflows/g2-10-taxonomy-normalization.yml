@@ -1,0 +1,75 @@
+name: G2-10 Study Taxonomy Normalization
+
+on:
+  push:
+    branches:
+      - research/g2-10-unified-multiaxial-strategic-state-representation
+    paths:
+      - 'tools/experiments/normalize-g2-10-study-taxonomy.py'
+      - '.github/workflows/g2-10-taxonomy-normalization.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize Study-level taxonomy
+        run: |
+          python3 tools/experiments/normalize-g2-10-study-taxonomy.py
+          git diff --check
+
+      - name: Enforce documentation-only allowlist
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          allowed = {
+              'README.md',
+              'doc/RESEARCH_INDEX.md',
+              'doc/FUTURE_RESEARCH_AGENDA.md',
+              'doc/unified-multiaxial-strategic-state-representation/README.md',
+              'doc/unified-multiaxial-strategic-state-representation/CURRENT_STATUS.md',
+              'doc/unified-multiaxial-strategic-state-representation/STUDY_1_OVERVIEW.md',
+              'doc/unified-multiaxial-strategic-state-representation/STUDY_1_FINAL_REPORT.md',
+              'doc/unified-multiaxial-strategic-state-representation/DECISION_REGISTER.md',
+              'doc/unified-multiaxial-strategic-state-representation/REPRODUCIBILITY_INDEX.md',
+              'doc/unified-multiaxial-strategic-state-representation/RESEARCH_LOG.md',
+              'doc/unified-multiaxial-strategic-state-representation/RESUME_HERE.md',
+              'doc/unified-multiaxial-strategic-state-representation/authorizations/README.md',
+              'doc/unified-multiaxial-strategic-state-representation/results/README.md',
+              'doc/unified-multiaxial-strategic-state-representation/results/STUDY_1_FINAL_RESULT.json',
+              'doc/unified-multiaxial-strategic-state-representation/checkpoints/2026-08-30-final-documentation-taxonomy-normalization.md',
+              'tools/experiments/materialize-g2-10-closure-docs.py',
+              'tools/experiments/audit-g2-10-closure.py',
+          }
+          changed = set(subprocess.check_output(['git','diff','--name-only'], text=True).splitlines())
+          unexpected = sorted(changed - allowed)
+          if unexpected:
+              raise SystemExit('unexpected taxonomy-normalization paths: ' + ', '.join(unexpected))
+          protected = [p for p in changed if '/prereg/' in p or p.endswith('STAGE_1_DEVELOPMENT_RESULT.json') or p.endswith('STAGE_1_CONSUMPTION_RECORD.json') or p.endswith('STAGE_1_FINAL_EXACT_COMPARISON.json') or p.endswith('STAGE_1_HASH_MANIFEST.json')]
+          if protected:
+              raise SystemExit('protected scientific artifacts changed: ' + ', '.join(protected))
+          print('allowlist PASS')
+          PY
+
+      - name: Commit taxonomy normalization
+        run: |
+          if git diff --quiet; then
+            echo 'No taxonomy normalization changes required.'
+            exit 0
+          fi
+          git config user.name 'Sawa'
+          git config user.email '72678394+nkkmd@users.noreply.github.com'
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/unified-multiaxial-strategic-state-representation \
+            tools/experiments/materialize-g2-10-closure-docs.py \
+            tools/experiments/audit-g2-10-closure.py
+          git commit -m 'research(g2-10): normalize final Study decision taxonomy'
+          git push origin HEAD:research/g2-10-unified-multiaxial-strategic-state-representation
