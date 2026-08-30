@@ -1,8 +1,8 @@
 name: PSRRE Stage 1 Development
 
 # Consume-once scientific development. Triggered only by explicit Stage 1 authorization artifact.
+# Archived after PSRRE-STUDY1 closure: no manual dispatch is exposed on main.
 on:
-  workflow_dispatch:
   push:
     branches:
       - research/pre-g2-11-strategic-regime-representation-eligibility
