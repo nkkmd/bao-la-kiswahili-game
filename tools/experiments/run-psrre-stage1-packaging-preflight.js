@@ -90,15 +90,29 @@ const iModel = I.evaluateAll(synth, dict, spec);
 const iModelMs = performance.now() - t;
 const modelExact = exact(pModel, iModel);
 
-const pPayload = { records: pg, selection: ps, analyses: pa, scaler: pScaler, syntheticModelStress: pModel };
-const iPayload = { records: ig, selection: is, analyses: ia, scaler: iScaler, syntheticModelStress: iModel };
-const pGz = gzipBytes(pPayload), iGz = gzipBytes(iPayload);
-fs.writeFileSync(path.join(OUT, "production-preflight.json.gz"), pGz);
-fs.writeFileSync(path.join(OUT, "independent-preflight.json.gz"), iGz);
+// Preserve a combined technical artifact, but project scientific artifact size by component.
+// The source/root component is sampled at 64 games / 8 roots and scales by 64 to 4096 games / 512 roots.
+// The model component is already sampled at 128 rows and scales only by 512/128 = 4 in stored row volume.
+// The frozen artifact safety multiplier remains 2 for both components. No ceiling or multiplier is relaxed.
+const pSourcePayload = { records: pg, selection: ps, analyses: pa, scaler: pScaler };
+const iSourcePayload = { records: ig, selection: is, analyses: ia, scaler: iScaler };
+const pModelPayload = { syntheticModelStress: pModel };
+const iModelPayload = { syntheticModelStress: iModel };
+const pSourceGz = gzipBytes(pSourcePayload), iSourceGz = gzipBytes(iSourcePayload);
+const pModelGz = gzipBytes(pModelPayload), iModelGz = gzipBytes(iModelPayload);
+const pCombinedGz = gzipBytes({ ...pSourcePayload, ...pModelPayload });
+const iCombinedGz = gzipBytes({ ...iSourcePayload, ...iModelPayload });
+fs.writeFileSync(path.join(OUT, "production-preflight.json.gz"), pCombinedGz);
+fs.writeFileSync(path.join(OUT, "independent-preflight.json.gz"), iCombinedGz);
 
-const sizeMultiplier = execution.preflight.projectedRootScaleFactor * execution.preflight.artifactProjectionSafetyMultiplier;
-const pProjectedBytes = pGz.length * sizeMultiplier;
-const iProjectedBytes = iGz.length * sizeMultiplier;
+const artifactSafety = execution.preflight.artifactProjectionSafetyMultiplier;
+const sourceArtifactScale = execution.preflight.projectedRootScaleFactor * artifactSafety;
+const modelRowScale = spec.readinessGates.selectedRootsExact / execution.preflight.syntheticStressRows;
+if (!Number.isFinite(modelRowScale) || modelRowScale < 1) throw new Error("invalid model row scale");
+const modelArtifactScale = modelRowScale * artifactSafety;
+const pProjectedBytes = pSourceGz.length * sourceArtifactScale + pModelGz.length * modelArtifactScale;
+const iProjectedBytes = iSourceGz.length * sourceArtifactScale + iModelGz.length * modelArtifactScale;
+
 const modelScale = execution.preflight.modelCubicScaleFactorFrom128To512 * execution.preflight.runtimeProjectionSafetyMultiplier;
 const sourceScale = execution.preflight.projectedRootScaleFactor * execution.preflight.runtimeProjectionSafetyMultiplier;
 const pProjectedMs = pTechnicalMs * sourceScale + pModelMs * modelScale;
@@ -126,6 +140,10 @@ const result = {
   studyId: spec.studyId,
   stageId: spec.stageId,
   sourceCommit,
+  projectionImplementation: "COMPONENT-WISE-V2",
+  projectionRepairOnly: true,
+  scientificContractChangedByRepair: false,
+  resourceCeilingChangedByRepair: false,
   disposition: passed ? "STAGE1-PACKAGING-PREFLIGHT-PASS" : "STAGE1-PACKAGING-PREFLIGHT-FAIL",
   checks,
   technicalSeedsUsed: [technicalStart, technicalEnd],
@@ -141,19 +159,29 @@ const result = {
     syntheticStressRows: synth.length,
     productionModelStressMs: pModelMs,
     independentModelStressMs: iModelMs,
-    productionCompressedBytes: pGz.length,
-    independentCompressedBytes: iGz.length,
+    productionSourceCompressedBytes: pSourceGz.length,
+    independentSourceCompressedBytes: iSourceGz.length,
+    productionModelCompressedBytes: pModelGz.length,
+    independentModelCompressedBytes: iModelGz.length,
+    productionCombinedCompressedBytes: pCombinedGz.length,
+    independentCombinedCompressedBytes: iCombinedGz.length,
     maxRssKb: rssKb
   },
   projection: {
     sourceScaleFactorWithSafety: sourceScale,
-    modelScaleFactorWithSafety: modelScale,
-    artifactScaleFactorWithSafety: sizeMultiplier,
+    modelRuntimeScaleFactorWithSafety: modelScale,
+    sourceArtifactScaleFactorWithSafety: sourceArtifactScale,
+    modelRowScale: modelRowScale,
+    modelArtifactScaleFactorWithSafety: modelArtifactScale,
+    artifactProjectionSafetyMultiplier: artifactSafety,
     projectedProductionMs: pProjectedMs,
     projectedIndependentMs: iProjectedMs,
     projectedProductionShardBytes: pProjectedBytes,
     projectedIndependentShardBytes: iProjectedBytes,
-    projectedTotalCompressedBytes: pProjectedBytes + iProjectedBytes
+    projectedTotalCompressedBytes: pProjectedBytes + iProjectedBytes,
+    frozenProductionShardCeilingBytes: spec.artifactContract.compressedShardCeilingBytes,
+    frozenIndependentShardCeilingBytes: spec.artifactContract.compressedShardCeilingBytes,
+    frozenTotalCompressedCeilingBytes: spec.artifactContract.totalCompressedArtifactCeilingBytes
   },
   stage1ScientificExecutionAuthorized: false,
   stage2ScientificExecutionAuthorized: false,
