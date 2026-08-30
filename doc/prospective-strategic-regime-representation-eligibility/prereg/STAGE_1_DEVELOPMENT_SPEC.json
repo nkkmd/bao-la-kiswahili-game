@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "PSRRE_STAGE1_DEVELOPMENT_SPEC_V1",
+  "researchGeneration": "Research Generation 2",
+  "agendaLabel": null,
+  "studyId": "PSRRE-STUDY1",
+  "stageId": "PSRRE-S1-DEVELOPMENT-2026-08-30-v1",
+  "stageType": "SCIENTIFIC_DEVELOPMENT",
+  "stage0DispositionRequired": "STAGE0-TECHNICAL-PASS",
+  "scientificInferenceAuthorizedBySpecAlone": false,
+  "featureDictionaryPath": "doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_1_FEATURE_DICTIONARY.json",
+  "stage2ValidationContractPath": "doc/prospective-strategic-regime-representation-eligibility/prereg/STAGE_2_VALIDATION_CONTRACT.json",
+  "seedBlock": {
+    "seedStart": 29510001,
+    "seedEnd": 29514096,
+    "games": 4096,
+    "statusBeforeExecution": "RESERVED_UNCONSUMED",
+    "consumeRule": "CONSUMED-AT-SUCCESSFUL-SCIENTIFIC-EXECUTION-START-GATE",
+    "sameBlockRerunAuthorized": false,
+    "repairAuthorized": false,
+    "replacementAuthorized": false,
+    "extensionAuthorized": false
+  },
+  "sourceGeneration": {
+    "prng": "mulberry32-compatible",
+    "openingPlies": 10,
+    "openingPolicy": "SEEDED_UNIFORM_EXACT_LEGAL",
+    "maxPly": 96,
+    "postOpeningPolicyByGameIndexModulo4": [
+      {"mod":0,"id":"UNIFORM","rule":"seeded uniform over all exact legal moves"},
+      {"mod":1,"id":"CAPTURE_FIRST","rule":"seeded uniform over exact capture moves when any exist, else all exact legal moves"},
+      {"mod":2,"id":"HIGH_CAPTURE","rule":"seeded uniform among exact legal moves maximizing immediate captured-seed count"},
+      {"mod":3,"id":"LOW_CAPTURE","rule":"seeded uniform among exact legal moves minimizing immediate captured-seed count"}
+    ],
+    "exactMoveOrdering": "LEXICAL-CANONICAL-MOVE-KEY",
+    "terminalOutcomeMayBeStoredForReplay": true,
+    "terminalOutcomeAllowedForSelectionOrFeatures": false
+  },
+  "rootSelection": {
+    "phaseAssignment": {
+      "method": "SHA256_PARITY_OF_SALT_AND_SEED",
+      "salt": "PSRRE-S1-PHASE-v1",
+      "even": "namua",
+      "odd": "mtaji",
+      "unavailableAssignedPhase": "NO_REASSIGNMENT"
+    },
+    "minimumPlyInclusive": 10,
+    "minimumLegalMoveCount": 2,
+    "terminalExcluded": true,
+    "withinTrajectoryOccurrence": {
+      "method": "MINIMUM-SHA256-RANK",
+      "salt": "PSRRE-S1-ROOT-v1",
+      "fields": ["seed","rawStateKey","ply"]
+    },
+    "trajectoryDedup": "retain minimum seed for identical trajectoryHash",
+    "rawStateDedup": "global unique selected rawStateKey required",
+    "stratumQuota": {
+      "salt": "PSRRE-S1-STRATUM-v1",
+      "strata": [
+        "namua/UNIFORM","namua/CAPTURE_FIRST","namua/HIGH_CAPTURE","namua/LOW_CAPTURE",
+        "mtaji/UNIFORM","mtaji/CAPTURE_FIRST","mtaji/HIGH_CAPTURE","mtaji/LOW_CAPTURE"
+      ],
+      "quotaPerStratum": 64,
+      "selectedRoots": 512,
+      "fixedStratumOrder": [
+        "namua/UNIFORM","namua/CAPTURE_FIRST","namua/HIGH_CAPTURE","namua/LOW_CAPTURE",
+        "mtaji/UNIFORM","mtaji/CAPTURE_FIRST","mtaji/HIGH_CAPTURE","mtaji/LOW_CAPTURE"
+      ],
+      "rankingFields": ["phase","sourcePolicy","trajectoryHash","openingPrefixHash","rawStateKey","seed","ply"]
+    },
+    "selectionMayUse": ["seed","gameIndex","sourcePolicy","phase","ply","legalMoveCount","rawStateKey","trajectoryHash","openingPrefixHash","frozenHashRanks"],
+    "selectionMayNotUse": ["winner","terminalOutcome","searchScore","evaluationScore","C03Result","replyResult","clusterAssignment","futureContinuation","G2-11-outcome"]
+  },
+  "rawIdentity": {
+    "include": ["pits","reserve","houseOwned","player","phase","winner","pending"],
+    "exclude": ["turn","reason"],
+    "validatedTransformSet": [],
+    "canonicalization": false,
+    "symmetryReduction": false
+  },
+  "representationFamilies": {
+    "RF-A-ROBUST-PCA-WARD": {
+      "scaling": "FROZEN-MEDIAN-MAD",
+      "pca": {"componentCount":8,"componentCountSelectedFromOutcome":false,"algorithm":"DETERMINISTIC-SYMMETRIC-JACOBI","signRule":"largest-absolute loading positive; tie lowest feature index","eigenvalueTieRule":"lower anchor feature index then canonical loading-vector binary64-hex lexical","componentOrder":"descending eigenvalue then tie rule"},
+      "partition": {"method":"WARD-HIERARCHICAL","distance":"SQUARED-EUCLIDEAN","mergeCost":"nA*nB/(nA+nB)*squared-centroid-distance","tieBreak":"lexical ordered pair of cluster signatures","hierarchyFitOncePerDataset":true},
+      "prototypeForHeldOut":"FROZEN-CLUSTER-CENTROID-IN-PCA-SPACE"
+    },
+    "RF-B-ROBUST-PCA-PAM": {
+      "scaling": "FROZEN-MEDIAN-MAD",
+      "pca": {"componentCount":8,"componentCountSelectedFromOutcome":false,"algorithm":"DETERMINISTIC-SYMMETRIC-JACOBI","signRule":"largest-absolute loading positive; tie lowest feature index","eigenvalueTieRule":"lower anchor feature index then canonical loading-vector binary64-hex lexical","componentOrder":"descending eigenvalue then tie rule"},
+      "partition": {"method":"DETERMINISTIC-PAM-BUILD-SWAP","distance":"SQUARED-EUCLIDEAN","firstMedoid":"row minimizing total squared distance to all rows; tie rawStateKey lexical","build":"greedily add candidate giving minimum total assignment cost; tie rawStateKey lexical","swap":"choose strict cost-decreasing swap with largest decrease; ties resulting sorted medoid rawStateKey tuple lexical","swapIterationLimit":100,"assignmentTie":"medoid rawStateKey lexical"},
+      "prototypeForHeldOut":"FROZEN-MEDOID-IN-PCA-SPACE"
+    },
+    "RF-C-DIRECT-ROBUST-PAM": {
+      "scaling": "FROZEN-MEDIAN-MAD",
+      "pca": null,
+      "partition": {"method":"DETERMINISTIC-PAM-BUILD-SWAP","distance":"SQUARED-EUCLIDEAN","firstMedoid":"row minimizing total squared distance to all rows; tie rawStateKey lexical","build":"greedily add candidate giving minimum total assignment cost; tie rawStateKey lexical","swap":"choose strict cost-decreasing swap with largest decrease; ties resulting sorted medoid rawStateKey tuple lexical","swapIterationLimit":100,"assignmentTie":"medoid rawStateKey lexical"},
+      "prototypeForHeldOut":"FROZEN-MEDOID-IN-ROBUST-SCALED-SPACE"
+    }
+  },
+  "candidatePartitionComplexity": {
+    "candidateK": [2,3,4,5,6,7,8],
+    "reasonFixedBeforeOutcome": "512 selected roots with 0.10 minimum support gives a nominal 51.2-root minimum per regime; K>8 is excluded prospectively to limit complexity and avoid sparse regime families",
+    "postOutcomeKExpansionAuthorized": false
+  },
+  "canonicalRegimeLabels": {
+    "rule": "sort frozen prototype canonical binary64-hex vectors lexically; tie by cluster signature or medoid rawStateKey lexical; label R01..R0K",
+    "stage2RelabelAuthorized": false
+  },
+  "selectionMetrics": {
+    "minimumClusterSupportFraction": 0.10,
+    "minimumMeanSilhouette": 0.10,
+    "minimumFiveFoldAssignmentStability": 0.80,
+    "maximumSingleSourcePolicyShareWithinAnyRegime": 0.75,
+    "emptyRegimeAllowed": false,
+    "silhouetteDistance": "EUCLIDEAN-IN-FAMILY-REPRESENTATION-SPACE",
+    "supportDenominator": 512
+  },
+  "g2_10NonRescueThresholdNote": {
+    "g2_10MinimumClusterSupportFraction": 0.10,
+    "g2_10MinimumMeanSilhouette": 0.05,
+    "g2_10MinimumFiveFoldAssignmentStability": 0.80,
+    "psrreSupportThresholdWeakerThanG2_10": false,
+    "psrreSilhouetteThresholdWeakerThanG2_10": false,
+    "psrreStabilityThresholdWeakerThanG2_10": false,
+    "g2_10CandidateResultsUsedToTuneTheseThresholds": false
+  },
+  "fiveFoldStability": {
+    "foldAssignment": "SHA256(PSRRE-S1-FOLD-v1|rawStateKey) mod 5",
+    "refitPerFold": "fit complete frozen family pipeline on the four training folds, including scaler and PCA where applicable",
+    "sameKRequired": true,
+    "labelMapping": "one-to-one permutation maximizing agreement with full-data assignments on the fold-training rows; ties lexical permutation",
+    "heldOutMetric": "fraction of held-out-fold rows whose mapped fold assignment equals full-data assignment",
+    "aggregate": "unweighted mean across five folds",
+    "foldWithMissingRegime": "candidate ineligible"
+  },
+  "candidateEligibility": "all support, silhouette, five-fold stability, source-policy concentration and nonempty-regime criteria must pass",
+  "winnerRule": {
+    "eligibleCandidatesOnly": true,
+    "primary": "highest five-fold assignment stability",
+    "tie1": "highest mean silhouette",
+    "tie2": "highest minimum cluster support fraction",
+    "tie3": "smaller K",
+    "tie4FamilyPriority": ["RF-C-DIRECT-ROBUST-PAM","RF-B-ROBUST-PCA-PAM","RF-A-ROBUST-PCA-WARD"],
+    "familyPriorityRationale": "only an exact tie breaker; prefers no latent projection, then medoid latent model, then centroid hierarchical latent model",
+    "noEligibleCandidate": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION"
+  },
+  "frozenRepresentationArtifactRequiredFields": [
+    "studyId","stageId","featureDictionarySha256","familyId","K","trainingRawStateKeysHash","scalerMedianBinary64Hex","scalerMadBinary64Hex",
+    "pcaMeanBinary64Hex-if-applicable","pcaLoadingsBinary64Hex-if-applicable","prototypeBinary64Hex","canonicalRegimeLabels","trainingAssignmentHash",
+    "trainingSupportByRegime","meanSilhouette","fiveFoldAssignmentStability","sourcePolicyShareByRegime","trainingPrototypeDistanceP99ByRegime",
+    "assignmentRule","serializationContract"
+  ],
+  "trainingPrototypeDistanceP99": {
+    "distance": "squared Euclidean distance in final family representation space to assigned frozen prototype",
+    "quantile": "nearest-rank: sort ascending; index=max(0,ceil(0.99*n)-1)",
+    "purpose": "prospectively frozen Stage 2 domain-coverage threshold",
+    "stage2RecomputeThresholdAuthorized": false
+  },
+  "readinessGates": {
+    "generatedGamesExact": 4096,
+    "minimumUniqueTrajectoriesGenerated": 3800,
+    "minimumDistinctOpeningPrefixesGenerated": 3000,
+    "selectedRootsExact": 512,
+    "eachPhaseSourcePolicyStratumExact": 64,
+    "selectedRawStateKeysUnique": true,
+    "minimumDistinctSelectedOpeningPrefixes": 480,
+    "maximumSingleSelectedOpeningPrefixShare": 0.02,
+    "minimumNonzeroMadFeatures": 20,
+    "minimumFeatureFamiliesWithNonzeroMad": 5,
+    "productionIndependentSourceExact": true,
+    "productionIndependentSelectionExact": true,
+    "productionIndependentFeatureExact": true,
+    "productionIndependentScalerExact": true,
+    "productionIndependentPcaExact": true,
+    "productionIndependentWardPamExact": true,
+    "productionIndependentCandidateMetricExact": true,
+    "productionIndependentSelectedRepresentationExact": true,
+    "mandatoryArtifactCompleteness": true
+  },
+  "stageDecision": {
+    "sourceFeatureModelOrIndependentMismatch": "STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID",
+    "resourceOrMandatoryArtifactFailure": "STAGE1-RESOURCE-CENSORED",
+    "populationOrActiveFeatureReadinessFailure": "STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE",
+    "allReadinessPassButNoEligibleRepresentation": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+    "allReadinessPassAndRepresentationSelected": "STAGE1-DEVELOPMENT-PASS-REPRESENTATION-FROZEN"
+  },
+  "serialization": {
+    "canonicalKeyOrderingRequired": true,
+    "canonicalRowOrdering": "rawStateKey lexical",
+    "explicitNullRequired": true,
+    "undefinedAllowed": false,
+    "scientificScalarEncoding": "BIG-ENDIAN-IEEE754-BINARY64-LOWERCASE-HEX",
+    "integerAndDiscreteEquality": "EXACT",
+    "toleranceBasedRescueAuthorized": false,
+    "hashAfterCanonicalJsonRoundtrip": true
+  },
+  "artifactContract": {
+    "productionWallClockCeilingMs": 7200000,
+    "independentWallClockCeilingMs": 7200000,
+    "peakRssCeilingKb": 4194304,
+    "compressedShardCeilingBytes": 33554432,
+    "totalCompressedArtifactCeilingBytes": 268435456,
+    "workflowTimeoutMinutes": 300,
+    "runnerLocalExactComparisonBeforeUpload": true,
+    "mandatory": [
+      "CONSUMPTION_RECORD.json","FINAL_EXACT_COMPARISON.json","STAGE_1_DEVELOPMENT_RESULT.json","HASH_MANIFEST.json",
+      "FROZEN_REPRESENTATION.json when representation selected","production full compressed shard","independent full compressed shard"
+    ],
+    "resourceCeilingExceededAfterConsumption": "STAGE1-RESOURCE-CENSORED",
+    "uploadFailureAfterConsumption": "STAGE1-RESOURCE-CENSORED"
+  },
+  "stage2AutomaticAuthorization": false,
+  "g2_11AutomaticAuthorization": false,
+  "scientificSeedUseAuthorizedAtFreeze": false,
+  "noRescue": true
+}
