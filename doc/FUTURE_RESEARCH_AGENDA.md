@@ -1102,7 +1102,7 @@ G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完
 
 ```text
 P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed)
+P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed) (completed)
 P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```

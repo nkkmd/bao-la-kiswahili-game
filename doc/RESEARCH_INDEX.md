@@ -770,7 +770,7 @@ Post-failure read-only postmortemでは4件すべての差分が`MOVE_SET_ENTROP
 - [`rich-critical-position-representation/DECISION_REGISTER.md`](rich-critical-position-representation/DECISION_REGISTER.md)
 - [`rich-critical-position-representation/REPRODUCIBILITY_INDEX.md`](rich-critical-position-representation/REPRODUCIBILITY_INDEX.md)
 
-**Boundary:** Stage 1 seed block `28610001..28613072`は消費済みでsame-block repair/rerun、replacement、extensionは未承認。Stage 1 rowsはStage 2 formal evidenceへ再利用しない。G2-06を結果後に修正して再判定しない。G2-07以降も独立prospective contractとして進み、G2-08 / G2-09までclosure済みである。次のdownstream machine-only agenda itemはG2-10であり、詳細は`FUTURE_RESEARCH_AGENDA.md`を正本とする。
+**Boundary:** Stage 1 seed block `28610001..28613072`は消費済みでsame-block repair/rerun、replacement、extensionは未承認。Stage 1 rowsはStage 2 formal evidenceへ再利用しない。G2-06を結果後に修正して再判定しない。G2-07以降も独立prospective contractとして進み、G2-08〜G2-10までclosure済みである。G2-10は`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、G2-11へ渡せるvalidated / frozen representationを生成していない。次のdownstream transition研究にはnew prospective representation protocolが必要であり、詳細は`FUTURE_RESEARCH_AGENDA.md`を正本とする。
 
 ---
 
@@ -799,7 +799,7 @@ Production-only performanceはunverified provenanceとして保存するが、ac
 - [`practical-comeback-reply-pressure-representation/DECISION_REGISTER.md`](practical-comeback-reply-pressure-representation/DECISION_REGISTER.md)
 - [`practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md`](practical-comeback-reply-pressure-representation/REPRODUCIBILITY_INDEX.md)
 
-**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖する。G2-08 / G2-09はいずれも独立prospective studyとして完了済みであり、次のdownstream machine-only agenda itemはG2-10である。
+**Boundary:** G2-07のStage 1 blockは消費済みで、artifact-transfer failureを理由としたsame-block rerunや、development-core一致のみを根拠とするpost-hoc verification条件緩和は行わない。Stage 2は未承認のまま閉鎖する。G2-08〜G2-10はいずれも独立prospective Studyとして完了済みである。G2-10はeligible representation 0で閉じたため、G2-11へ本Study群のunvalidated representationを事後昇格させない。
 
 ---
 
