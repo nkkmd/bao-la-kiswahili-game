@@ -160,10 +160,24 @@ K=4はstabilityとsilhouetteを満たしたがminimum supportが0.10に達しな
 Stage 1でfrozen representationを得られなかったためStage 2 prerequisiteを満たさず、Stage 2をauthorize / executeしない。
 
 ```text
-Study = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
 G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 ```
 
 同じStudy内でthreshold relaxation、K range変更、axis / feature replacement、Stage 1 rerun / extension、favorable subgroup、Stage 2 post-hoc authorizationによる救済を行わない。
+
+
+## 2026-08-30 — final documentation taxonomy normalization
+
+最終関連文書監査で、Stage 1 dispositionとStudy-level terminal tokenの表記混同を検出した。凍結protocol §13に従い、科学結果を変更せず次のように分離した。
+
+```text
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+accepted Stage 1 artifact、preregistration、seed、threshold、K結果は変更していない。

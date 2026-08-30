@@ -864,7 +864,7 @@ Prospectively frozen smoke failure mappingはsame-study repairを認めていな
 
 **研究題目:** Baoにおける多軸戦略状態表現の統合的構築とprospective検証 — search reliability, structural state, reply pressure, decision-failure evidence, tactical structure等のevidence-eligible axesを用いた再現可能なstrategic-state / regime representationの構築
 **Program:** `G2-10` / **Study ID:** `UMSSR-STUDY1` / **Research Generation 2**
-**状態:** **Study closed / formal decision `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+**状態:** **Study closed / formal decision `NOT-AUTHORIZED-NOT-EXECUTED` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 G2-01〜G2-09のformal closureを救済せず、upstream evidence eligibilityを先に固定したうえで、fresh population上に40-feature multiaxial strategic-state vectorを構築し、deterministic K-means `K=2..6`からStage 2へ昇格可能なregime representationを選択できるかをprospectively検証した。
 

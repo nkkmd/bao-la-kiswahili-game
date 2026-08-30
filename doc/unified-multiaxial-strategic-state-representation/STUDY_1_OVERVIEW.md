@@ -8,7 +8,7 @@
 Stage 0 = STAGE0-TECHNICAL-PASS
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Study formal decision = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 Stage 1ではfresh 4,096 gamesから512 rootsを選択し、40/40 featuresを用いたmultiaxial representation developmentをproduction / independent implementationで完全再構築した。Scientific readinessとresource gateは全項目PASSし、mandatory exact comparisonも`fullExact = true`だった。

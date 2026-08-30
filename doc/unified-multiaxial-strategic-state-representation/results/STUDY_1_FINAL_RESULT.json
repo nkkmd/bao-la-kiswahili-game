@@ -29,27 +29,39 @@
         {
           "k": 2,
           "eligible": false,
-          "failedFrozenCriteria": ["minimumFiveFoldAssignmentStability"]
+          "failedFrozenCriteria": [
+            "minimumFiveFoldAssignmentStability"
+          ]
         },
         {
           "k": 3,
           "eligible": false,
-          "failedFrozenCriteria": ["minimumClusterSupportFraction", "minimumFiveFoldAssignmentStability"]
+          "failedFrozenCriteria": [
+            "minimumClusterSupportFraction",
+            "minimumFiveFoldAssignmentStability"
+          ]
         },
         {
           "k": 4,
           "eligible": false,
-          "failedFrozenCriteria": ["minimumClusterSupportFraction"]
+          "failedFrozenCriteria": [
+            "minimumClusterSupportFraction"
+          ]
         },
         {
           "k": 5,
           "eligible": false,
-          "failedFrozenCriteria": ["minimumClusterSupportFraction"]
+          "failedFrozenCriteria": [
+            "minimumClusterSupportFraction"
+          ]
         },
         {
           "k": 6,
           "eligible": false,
-          "failedFrozenCriteria": ["minimumClusterSupportFraction", "minimumFiveFoldAssignmentStability"]
+          "failedFrozenCriteria": [
+            "minimumClusterSupportFraction",
+            "minimumFiveFoldAssignmentStability"
+          ]
         }
       ]
     },
@@ -66,7 +78,7 @@
       "reason": "Stage 1 did not freeze an eligible representation."
     }
   },
-  "formalStudyDecision": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+  "formalStudyDecision": "NOT-AUTHORIZED-NOT-EXECUTED",
   "validatedStrategicRepresentation": false,
   "frozenRepresentationArtifactExists": false,
   "stage1DevelopmentPopulationReusableAsStage2Evidence": false,
@@ -101,5 +113,6 @@
     "c03GeneralizationAuthorized": false,
     "historicalMorphologyRescueAuthorized": false,
     "absenceOfAnyUsefulFutureRepresentationClaimed": false
-  }
+  },
+  "stage1DevelopmentDisposition": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION"
 }

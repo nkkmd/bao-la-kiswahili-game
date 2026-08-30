@@ -29,7 +29,7 @@ t = read(p)
 t = insert_after_unique_line(
     t,
     "doc/tactical-motif-generalization-counterexample/STUDY_1_OVERVIEW.md",
-    "- [`doc/unified-multiaxial-strategic-state-representation/STUDY_1_OVERVIEW.md`](doc/unified-multiaxial-strategic-state-representation/STUDY_1_OVERVIEW.md): Research Generation 2 `G2-10` / `UMSSR-STUDY1`。Fresh Stage 1は4,096 games / 512 roots / 40 active featuresをproduction / independent exact一致で完了し、scientific readinessとresource gateもPASSしたが、prospectively fixed `K=2..6`の全候補がminimum supportまたはfive-fold assignment stabilityを満たさず、`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`でclosed。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、reserved Stage 2 seedsは未消費で、G2-11へ渡せるvalidated / frozen representationは生成されなかった。",
+    "- [`doc/unified-multiaxial-strategic-state-representation/STUDY_1_OVERVIEW.md`](doc/unified-multiaxial-strategic-state-representation/STUDY_1_OVERVIEW.md): Research Generation 2 `G2-10` / `UMSSR-STUDY1`。Fresh Stage 1は4,096 games / 512 roots / 40 active featuresをproduction / independent exact一致で完了し、scientific readinessとresource gateもPASSしたが、prospectively fixed `K=2..6`の全候補がminimum supportまたはfive-fold assignment stabilityを満たさず、Stage 1は`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`でclosed。Study formal decisionは`NOT-AUTHORIZED-NOT-EXECUTED`。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、reserved Stage 2 seedsは未消費で、G2-11へ渡せるvalidated / frozen representationは生成されなかった。",
     "root README G2-10",
 )
 write(p, t)
@@ -52,7 +52,7 @@ if heading not in t:
 
 **研究題目:** Baoにおける多軸戦略状態表現の統合的構築とprospective検証 — search reliability, structural state, reply pressure, decision-failure evidence, tactical structure等のevidence-eligible axesを用いた再現可能なstrategic-state / regime representationの構築
 **Program:** `G2-10` / **Study ID:** `UMSSR-STUDY1` / **Research Generation 2**
-**状態:** **Study closed / formal decision `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+**状態:** **Study closed / formal decision `NOT-AUTHORIZED-NOT-EXECUTED` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 G2-01〜G2-09のformal closureを救済せず、upstream evidence eligibilityを先に固定したうえで、fresh population上に40-feature multiaxial strategic-state vectorを構築し、deterministic K-means `K=2..6`からStage 2へ昇格可能なregime representationを選択できるかをprospectively検証した。
 
@@ -91,7 +91,7 @@ if start < 0 or end < 0 or end <= start:
     raise SystemExit("FUTURE_RESEARCH_AGENDA: G2-10/G2-11 section anchors missing")
 replacement = r'''#### G2-10 — Unified Multiaxial Strategic State Representation Study 1
 
-**状態:** **完了 / `UMSSR-STUDY1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+**状態:** **完了 / `UMSSR-STUDY1 = NOT-AUTHORIZED-NOT-EXECUTED` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 中心課題:
 
@@ -109,6 +109,7 @@ Representation selectionはdimensionality reductionなし、deterministic K-mean
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 selectedRepresentation = null
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
 ```
 
@@ -140,7 +141,7 @@ if old_priority not in t and new_priority not in t:
 t = t.replace(old_priority, new_priority, 1)
 
 old_tail = "G2-01..G2-09はclosure済みである。`G2-09`は`TMGC-STUDY1 = TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、scientific generalization/counterexample evidenceは未生成である。次のdownstream machine-only agenda itemは`G2-10 — Unified Multiaxial Strategic State Representation Study 1`だが、開始時にはG2-06〜G2-09のtechnical-invalid/non-estimable closuresをvalidated axisへ昇格させないeligibility ruleを新たにfreezeする。"
-new_tail = "G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさず`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。したがってG2-11へ`UMSSR-STUDY1`由来representationを持ち込まず、G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする。"
+new_tail = "G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。したがってG2-11へ`UMSSR-STUDY1`由来representationを持ち込まず、G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする。"
 if old_tail not in t and new_tail not in t:
     raise SystemExit("FUTURE_RESEARCH_AGENDA: sequence-tail anchor missing")
 t = t.replace(old_tail, new_tail, 1)

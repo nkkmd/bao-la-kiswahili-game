@@ -1,7 +1,8 @@
 # G2-10 / UMSSR-STUDY1 — 最終報告
 
 更新日: 2026-08-30
-正式判断: **`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`**
+Study-level正式判断: **`NOT-AUTHORIZED-NOT-EXECUTED`**
+Stage 1 development disposition: **`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`**
 
 ## 1. 研究
 
@@ -17,10 +18,16 @@
 
 ## 2. 結論
 
-Study 1の正式判断は:
+Stage 1 development dispositionは:
 
 ```text
 STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+```
+
+である。Study-level formal decisionは、凍結protocol §13の`Stage 2 / Study` vocabularyに従い:
+
+```text
+NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 である。

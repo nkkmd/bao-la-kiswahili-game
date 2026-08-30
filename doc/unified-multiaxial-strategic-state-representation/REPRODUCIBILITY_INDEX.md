@@ -32,7 +32,7 @@ formal closure:
 Stage 0 = STAGE0-TECHNICAL-PASS
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Study = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Study = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 ## 3. 正本文書
@@ -61,6 +61,7 @@ Study = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 - `results/STAGE_1_HASH_MANIFEST.json`
 - `results/STUDY_1_FINAL_RESULT.json`
 - `checkpoints/2026-08-30-stage1-scientific-no-representation-closure.md`
+- `checkpoints/2026-08-30-final-documentation-taxonomy-normalization.md`
 
 ## 4. RAW identity
 

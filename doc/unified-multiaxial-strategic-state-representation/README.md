@@ -12,7 +12,7 @@ Study 1はclosure済みである。
 Stage 0 = STAGE0-TECHNICAL-PASS
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Study formal decision = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 Stage 1はscientific readiness、production / independent exact verification、resource gateをすべてPASSしたが、事前固定した`K=2..6`の全候補がpromotion criterionを満たさなかった。このためeligible representationを凍結せず、Stage 2を実行しない。

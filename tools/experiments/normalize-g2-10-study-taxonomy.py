@@ -191,8 +191,8 @@ replace_once(
 )
 replace_once(
     mat_rel,
-    f"Stage 1 = {STAGE1}\\nselectedRepresentation = null\\nStage 2 = {STUDY_DECISION}\\nStage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED",
-    f"Stage 1 = {STAGE1}\\nselectedRepresentation = null\\nStage 2 = {STUDY_DECISION}\\nStudy formal decision = {STUDY_DECISION}\\nStage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED",
+    f"Stage 1 = {STAGE1}\nselectedRepresentation = null\nStage 2 = {STUDY_DECISION}\nStage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED",
+    f"Stage 1 = {STAGE1}\nselectedRepresentation = null\nStage 2 = {STUDY_DECISION}\nStudy formal decision = {STUDY_DECISION}\nStage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED",
 )
 replace_once(
     mat_rel,

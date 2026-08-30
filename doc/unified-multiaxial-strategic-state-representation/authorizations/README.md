@@ -9,6 +9,7 @@ Stage 0 = technical-only / STAGE0-TECHNICAL-PASS
 Stage 1 = AUTHORIZED-AND-EXECUTED-ONCE
 Stage 1 result = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 Stage 1 scientific inferenceはaccepted consume-once executionについて有効であるが、これはStage 2 authorizationを意味しない。

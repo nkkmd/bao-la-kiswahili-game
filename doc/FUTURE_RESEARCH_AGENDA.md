@@ -987,7 +987,7 @@ Frozen smoke contractはtooling failure後のsame-study repairを認めていな
 
 #### G2-10 — Unified Multiaxial Strategic State Representation Study 1
 
-**状態:** **完了 / `UMSSR-STUDY1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+**状態:** **完了 / `UMSSR-STUDY1 = NOT-AUTHORIZED-NOT-EXECUTED` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
 
 中心課題:
 
@@ -1005,6 +1005,7 @@ Representation selectionはdimensionality reductionなし、deterministic K-mean
 Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 selectedRepresentation = null
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
 ```
 
@@ -1107,7 +1108,7 @@ P2: G2-11, G2-12
 Separate / non-blocking: G2-H01
 ```
 
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさず`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。したがってG2-11へ`UMSSR-STUDY1`由来representationを持ち込まず、G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする。
+`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。したがってG2-11へ`UMSSR-STUDY1`由来representationを持ち込まず、G2-11開始前にnew prospective representation Studyまたはexplicit versioned protocolを必要とする。
 
 ### 9.9 第二世代プログラムの完了条件
 

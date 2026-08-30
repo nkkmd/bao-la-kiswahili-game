@@ -309,10 +309,12 @@ Status: **FINAL STAGE 2 AUTHORIZATION CLOSURE**.
 
 ## D-032 — Study closure / G2-11 boundary
 
-Study 1のformal decisionは、prospectively fixed Stage 1 terminal tokenをそのまま使用する。
+Stage 1 development dispositionとStudy-level formal decisionを、凍結protocol §13のそれぞれのvocabularyに従って分離する。
 
 ```text
-Study = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study = NOT-AUTHORIZED-NOT-EXECUTED
 validated strategic representation = false
 G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 ```
@@ -322,3 +324,18 @@ G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 同じStudy内でthreshold relaxation、K range変更、PCA等の追加method、favorable subgroup、Stage 1 rerun / extension、Stage 2 post-hoc authorizationによる救済を行わない。別representationを検証する場合は新しいprospective Studyまたは明示的versioned protocolを必要とする。
 
 Status: **STUDY CLOSED**.
+
+
+## D-033 — final documentation taxonomy normalization
+
+最終文書監査で、closure文書の一部がStage 1 disposition `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`をStudy-level formal decisionとしても記載していたことを検出した。凍結protocol §13はStage 1 vocabularyと`Stage 2 / Study` vocabularyを分離しているため、Study-level tokenだけを次へ正規化する。
+
+```text
+Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Study = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+これはscientific resultの再判定ではない。accepted Stage 1 artifact、seed consumption、feature、K候補、threshold、promotion rule、Stage 2 non-authorization、G2-11 boundaryは一切変更していない。
+
+Status: **DOCUMENTATION-TAXONOMY-NORMALIZED / SCIENTIFIC-RESULT-UNCHANGED**.
