@@ -30,3 +30,5 @@ jobs:
 
       - name: Run G2-10 closure audit
         run: python3 tools/experiments/audit-g2-10-closure.py
+
+# Final taxonomy-normalized closure audit trigger.
