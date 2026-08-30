@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G2-12",
+  "studyId": "SSGTGE-STUDY1",
+  "stageId": "SSGTGE-S1-DEVELOPMENT-2026-08-30-v1",
+  "authorizationRole": "STAGE1-DEVELOPMENT-EXECUTE",
+  "authorizationDate": "2026-08-31",
+  "implementationFreezeCommitSha": "3d93b6cb228bc314819495e89c1521859bf258b6",
+  "sourceFreezePath": "doc/state-space-game-tree-growth-estimation/results/STAGE_1_SOURCE_HASHES.json",
+  "sourceBindingMethod": "git-blob-identity",
+  "executionAuthorized": true,
+  "formalScientificInferenceAuthorized": false,
+  "realDevelopmentCandidateEvaluationAuthorized": true,
+  "freshDepth10Or11GenerationAuthorized": false,
+  "freshDepth10ReadAuthorized": false,
+  "freshDepth11ReadAuthorized": false,
+  "stage2ExecutionAuthorized": false,
+  "sameStage1EvidenceRerunAuthorized": false,
+  "frozenSources": [
+    {"path":"tools/experiments/lib/ssgtge-production.js","gitBlobSha":"71bc8a45d45df171edfde5d4882529c4a7e057fd"},
+    {"path":"tools/experiments/lib/ssgtge-independent.js","gitBlobSha":"cf462806552e038e4c23d0eb1cdf0cb211187472"},
+    {"path":"tools/experiments/run-ssgtge-stage1-development.js","gitBlobSha":"ad2c60428bb098d0a7328ed99dfb61a5c730e732"},
+    {"path":"tools/experiments/verify-ssgtge-stage1-independent.js","gitBlobSha":"eed18650da2b6eb652cba97f7a714d7d6968d485"},
+    {"path":".github/workflows/ssgtge-stage1-development.yml","gitBlobSha":"45c50148e998011e876ec80830638e55e49c8c15"},
+    {"path":"doc/state-space-game-tree-growth-estimation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json","gitBlobSha":"f79d38637fd22e99419da26f4044783d471ef79f"},
+    {"path":"doc/state-space-game-tree-growth-estimation/results/STAGE_0_V2_TECHNICAL_RESULT.json","gitBlobSha":"85cec4cc7454eac4f1e1bce1cbc179f27e460f94"},
+    {"path":"doc/deep-raw-state-space-enumeration/results/STAGE_2_FORMAL_RESULT.json","gitBlobSha":"b25c9f51bdecf95d249df65ddd9b27cd1268d573"}
+  ],
+  "developmentBoundary": {
+    "maximumDepthRead": 9,
+    "expectedSourceSummarySha256": "04debfa47516d0288d9baf5cf1ff0d761c83c27ada16d9ea43c02be66887659a",
+    "candidateCount": 3,
+    "backtestCellCountPerCandidate": 8
+  },
+  "requiredOutcome": {
+    "successToken": "ESTIMATOR-FROZEN-DEVELOPMENT",
+    "noEligibleToken": "STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE",
+    "technicalFailureToken": "STAGE1-TECHNICAL-INVALID",
+    "freshHoldoutOutcomeGenerated": false,
+    "freshHoldoutRead": false
+  },
+  "g2_11AuthorizationChanged": false
+}
