@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "authorizationDate": "2026-08-31",
+  "centralDocumentSyncAuthorized": true,
+  "scientificStudyExecutionAuthorized": false,
+  "scientificOutcomeGenerationAuthorized": false,
+  "targetBranch": "research/g3-program-plan",
+  "baselineMainSha": "cd200b85c1eb24aa4419bd5a9573552f3682f00d",
+  "allowedPaths": [
+    "README.md",
+    "doc/FUTURE_RESEARCH_AGENDA.md",
+    "doc/RESEARCH_INDEX.md"
+  ]
+}
