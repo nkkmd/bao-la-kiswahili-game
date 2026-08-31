@@ -20,7 +20,7 @@ jobs:
           ref: research/g3-program-plan
           fetch-depth: 0
 
-      - name: Validate authorization and patch scope
+      - name: Validate authorization
         shell: bash
         run: |
           set -euo pipefail
@@ -33,11 +33,7 @@ jobs:
           assert a['scientificStudyExecutionAuthorized'] is False
           assert a['scientificOutcomeGenerationAuthorized'] is False
           assert a['targetBranch'] == 'research/g3-program-plan'
-          assert set(a['allowedPaths']) == {
-              'README.md',
-              'doc/FUTURE_RESEARCH_AGENDA.md',
-              'doc/RESEARCH_INDEX.md',
-          }
+          assert set(a['allowedPaths']) == {'README.md', 'doc/FUTURE_RESEARCH_AGENDA.md', 'doc/RESEARCH_INDEX.md'}
           PY
 
       - name: Synchronize central documents
@@ -48,14 +44,13 @@ jobs:
           from pathlib import Path
 
           def replace_once(text, old, new, label):
-              n = text.count(old)
-              if n != 1:
-                  raise RuntimeError(f'{label}: expected one anchor, found {n}')
+              count = text.count(old)
+              if count != 1:
+                  raise RuntimeError(f'{label}: expected one anchor, found {count}')
               return text.replace(old, new, 1)
 
-          # FUTURE_RESEARCH_AGENDA.md
-          p = Path('doc/FUTURE_RESEARCH_AGENDA.md')
-          text = p.read_text(encoding='utf-8')
+          agenda = Path('doc/FUTURE_RESEARCH_AGENDA.md')
+          text = agenda.read_text(encoding='utf-8')
           assert '## 10. 第三世代研究アジェンダ' not in text
           text = replace_once(text, 'Version: 2.0.0', 'Version: 3.0.0', 'agenda version')
           text = replace_once(
@@ -63,335 +58,30 @@ jobs:
               'Research Generation 2: **Closed (2026-08-31)**',
               'Research Generation 2: **Closed (2026-08-31)**\nResearch Generation 3: **Prospective plan / not yet started (2026-08-31)**',
               'agenda generation status')
-          appendix = r'''
-
-## 10. 第三世代研究アジェンダ
-
-### 10.1 位置づけ
-
-Research Generation 3の作業英語名は次とする。
-
-**Bao Third-Generation Research Program — Local Game-Tree Geometry, Effective Branching, Search Mechanisms, and Multiscale Structural Dynamics**
-
-日本語作業名:
-
-**Bao第三世代研究計画 — 局所ゲーム木幾何、実効分岐構造、探索機構、多尺度構造ダイナミクス**
-
-第三世代は、Research Generation 2で最も強く成立したRAW-only bounded exact analysisを基盤とし、局面を離散strategic regimeへ強制的に分類する前に、各RAW局面の周囲に存在するbounded local game tree / reachable RAW graphそのものを研究対象とする。
-
-第二世代の主要boundaryは次のとおりであり、第三世代で変更・救済しない。
-
-```text
-G2-05 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-RAW state identity = authoritative
-validated transform set = []
-validated strategic-regime representation = none
-G2-11 = NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED
-G2-12 = TECHNICAL-INVALID / selectedEstimator = null
-whole-Bao state-space estimate = NOT AUTHORIZED
-whole-Bao game-tree estimate = NOT AUTHORIZED
-```
-
-詳細なprogram正本は[`research-generation-3/PROGRAM_PLAN.md`](research-generation-3/PROGRAM_PLAN.md)、現在状態は[`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)、program-level decisionは[`research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`](research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md)を参照する。
-
-以下の`G3-01`〜`G3-12`および`G3-H01`はAgenda上の順序ラベルであり、正式Study IDではない。正式題目、Study ID、Stage ID、seed、population、endpoint、threshold、resource ceiling、estimability gate、停止条件は各Study開始時にoutcome生成前freezeする。
-
-### 10.2 中心科学課題
-
-> Baoの局所ゲーム木には、branch expansion、branch compression、reply narrowing、reconvergence、transposition concentration、tree/graph divergence等の再現可能な構造幾何が存在するか。また、それらはphase、root family、Bao固有ルールイベント、時間方向、search conditionを横断してどの範囲まで一般化可能か。
-
-ここでいうgeometryは盤面上の空間幾何ではなく、合法手branch、reply width、subtree growth、RAW-state reconvergence、duplicate encounter、multi-parent state、tree occurrenceとunique RAW graphの乖離等を記述するbounded computational structureである。
-
-### 10.3 第三世代共通科学contract
-
-各core Studyは原則として次を満たす。
-
-1. Research Generation 1 / 2のformal decision、threshold、population、endpoint、interpretation boundaryを変更・救済しない。
-2. authoritative state identityは、別のvalid formal transformation authorizationが成立するまでRAW identityとする。
-3. validated transform set `[]`のままsymmetry / canonicalizationをdeduplicationへ使用しない。
-4. tree occurrenceとunique RAW graph stateを別constructとして保持する。
-5. legal branching、effective branching、reply compression、transposition、search instability、evaluation、empirical outcome、game-theoretic value、human difficultyを分離する。
-6. structural forcingをgame-theoretic optimal forcingへ読み替えない。
-7. machine branching / reply pressureをhuman difficultyへ読み替えない。
-8. Study開始時のremote `main` HEAD、engine、rule semantics、serialization、RAW identity、move identityをfreezeする。
-9. source population、seed block、source policy、root selection ruleをoutcome前にfreezeし、seed blockはconsume-onceとする。
-10. development / formal evidence間にtrajectory・opening-prefix・RAW-root firewallを設ける。
-11. productionとindependent reconstructionを別実装とし、independent verifierはproductionのgeometry aggregation logicを無検証で共有しない。
-12. scientific primitiveは可能な限りinteger countまたはexact rational pairとし、float derived metricを用いる場合は一次artifact、deterministic arithmetic、rounding / toleranceを事前固定する。
-13. large artifact uploadだけを唯一のscientific verification経路としない。
-14. global gate failure後にthreshold relaxation、seed extension、root replacement、favorable subgroupによる救済を行わない。
-15. partial computation、resource cutoff、timeout、administrative cutoffをcomplete exact resultまたはscientific nullへ読み替えない。
-16. public AI strength、deployment、UX、latencyをscientific endpointへ混入させない。
-
-### 10.4 Evidence classとprotected holdout
-
-第三世代では少なくとも次を区別する。
-
-```text
-TECHNICAL-FIXTURE
-HISTORICAL-EXACT-REFERENCE
-FRESH-DEVELOPMENT
-FRESH-FORMAL-HELDOUT
-FRESH-DEEPER-EXACT-HOLDOUT
-DIAGNOSTIC-ONLY
-HUMAN-EVIDENCE
-```
-
-G2-05 depth 0..9は`HISTORICAL-EXACT-REFERENCE`としてmetric design、fixture、resource planningに利用できるが、新しいformal held-out confirmationへ無条件に混合しない。
-
-standard initial RAW rootのdepth 10 exact layerは`G3-11`用の`FRESH-DEEPER-EXACT-HOLDOUT`としてsealedに保護する。G3-01〜G3-10ではdepth-10 scientific counts / geometry outcomeを生成・readしない。G2-12のproduction-only estimator proposalをG3-11へ持ち込まない。
-
-### 10.5 Wave A — Local Geometry Foundations
-
-#### G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1
-
-中心課題:
-
-> 同一RAW rootと同一bounded horizonから、productionとstructurally independent implementationが完全に一致するlocal tree / graph geometry measurementを構築できるか。
-
-branching、reply width、duplicate encounter、transposition、reconvergence、tree/graph divergence等のmeasurement foundationをtechnical fixture → fresh development → fresh held-out validationの順で構築する。
-
-**Priority:** P0 / first recommended Study
-
-#### G3-02 — Effective Branching / Reply-Width Structure Study 1
-
-中心課題:
-
-> 単純なroot legal-move countでは捉えられない数plyのeffective branching / reply-width profileは、再現可能な局面特性として存在するか。
-
-Namua / Mtaji等のphase差、branch expansion / compression、transposition-adjusted branching、branch survivalをbounded exact measurementで検証する。
-
-**Priority:** P0
-
-#### G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1
-
-中心課題:
-
-> 見かけ上大きなgame treeがどの局面でRAW graphとして再収束し、tree occurrenceとunique RAW stateの乖離がどの程度局面依存となるか。
-
-実到達による同一RAW stateだけをtranspositionとし、symmetry quotientを使用しない。
-
-**Priority:** P0
-
-#### G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1
-
-中心課題:
-
-> reply widthが継続的に狭まるstructural corridorや、多数branchが少数RAW stateへ収束するdecision funnelを再現可能に識別できるか。
-
-`forcing`はstructural forcingのみを意味し、optimal move / forced winを意味しない。
-
-**Priority:** P0
-
-### 10.6 Wave B — Geometry Dynamics and Mechanisms
-
-#### G3-05 — Branch Expansion / Compression Transition Study 1
-
-trajectory上でlocal geometryが連続変化するのか、branch explosion / reply compression等の明確なgeometry transitionを形成するのかを検証する。Research Generation 1 phase-transition resultとは別constructとして扱う。
-
-**Priority:** P1
-
-#### G3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1
-
-capture、reserve、nyumba、Namua→Mtaji移行、front-row occupancy等のBao固有rule-semantic eventがlocal geometryへ与えるbounded move-conditioned structural effectを検証する。長期勝敗への一般的causal effectとはしない。
-
-**Priority:** P1
-
-#### G3-07 — Search Instability / Local Geometry Mechanism Study 1
-
-branching、reconvergence、corridor、tree/graph divergenceとbest-move agreement、ranking churn、score-gap change、PV stabilityの関連をfresh evidenceで検証する。`G2-02 = INCONCLUSIVE`を変更せず、higher-resource searchをtruthとしない。
-
-**Priority:** P1
-
-#### G3-08 — Local Geometry Persistence / Memory-Length Study 1
-
-branch-heavy / compressed / transposition-rich等のgeometry featureがtrajectory上で何ply持続し、いつ消失・反転・returnするかを検証する。strategic regimeを前提としない。
-
-**Priority:** P1
-
-### 10.7 Wave C — Representation and Longitudinal Theory
-
-#### G3-09 — Continuous Local-Geometry Representation Study 1
-
-G3-01〜G3-08でformal eligibilityを得たgeometry measuresを、discrete clusterを成功条件にせずcontinuous local-geometry representationとして統合できるかを検証する。G2-10 / PSRREの再実行ではない。
-
-**Priority:** P2
-
-#### G3-10 — Geometry-Conditioned Longitudinal Dynamics Study 1
-
-validated local-geometry coordinatesの時間変化としてdirectionality、persistence、return、hysteresis、path dependenceを検証する。G2-11のstrategic-regime transition Studyを再実行せず、別constructであるgeometry dynamicsを扱う。
-
-**Priority:** P2
-
-### 10.8 Wave D — Reserved Exact Holdout and Generalization
-
-#### G3-11 — Fresh Depth-10 Exact Geometry Holdout Validation Study 1
-
-standard initial RAW rootのdepth 10をsealed deeper exact holdoutとして、第三世代geometry findingsを独立検証する。
-
-```text
-RAW-only = required
-symmetry reduction = not authorized
-G2-12 estimator input = prohibited
-complete depth-10 layer = required for exact claim
-independent full enumeration = required
-```
-
-G3-11 outcome後に同Study内でdepth 11を追加して救済しない。
-
-**Priority:** P2 / protected holdout
-
-#### G3-12 — Local Game-Tree Geometry Generalization / Counterexample Study 1
-
-G3-02〜G3-11でformalにeligibleとなったgeometry claimだけを対象に、phase、root family、source policy、reserve / nyumba context、capture availability等を横断してgeneralization boundary / counterexample boundaryをfresh evidenceで確定する。
-
-**Priority:** P2 / capstone
-
-### 10.9 Human Track — independent / non-blocking
-
-#### G3-H01 — Human Perception of Local Branching / Decision Pressure Study 1
-
-human-perceived branching、forcing、criticality、candidate count、reply-width expectation、decision confidenceとmachine geometryの関係を扱う。
-
-qualified Bao participant accessがない場合は`DEFERRED / INDEPENDENT / NON-BLOCKING`のままとし、N=0をnegative evidenceへ読み替えない。
-
-### 10.10 Dependencyと推奨順序
-
-```text
-G3-01 Measurement Foundation
-        ↓
-G3-02 Effective Branching
-G3-03 Transposition / Tree-Graph Divergence
-G3-04 Corridor / Funnel
-        ↓
-G3-05 Geometry Transition
-        ├─ G3-06 Rule Mechanism
-        ├─ G3-07 Search Mechanism
-        └─ G3-08 Persistence / Memory
-        ↓
-G3-09 Continuous Geometry Representation
-        ↓
-G3-10 Longitudinal Geometry Dynamics
-
-G2-05 immutable depth 0..9 reference
-        +
-G3 geometry definitions frozen
-        ↓
-G3-11 Fresh Depth-10 Exact Holdout
-
-G3-02..G3-11 formal closures
-        ↓
-G3-12 Generalization / Counterexamples
-        ↓
-Research Generation 3 Final Synthesis
-
-G3-H01 = independent / non-blocking
-```
-
-```text
-P0: G3-01, G3-02, G3-03, G3-04
-P1: G3-05, G3-06, G3-07, G3-08
-P2: G3-09, G3-10, G3-11, G3-12
-Separate / non-blocking: G3-H01
-```
-
-### 10.11 第三世代プログラムの完了条件
-
-Research Generation 3はpositive resultの数で完了判定しない。
-
-1. G3-01〜G3-12がprospectively specified stop ruleに従ってformal closureしている。
-2. Research Generation 1 / 2のformal decisionを変更・救済していない。
-3. RAW identityとvalidated transform set `[]`のboundaryを独立authorizationなしに変更していない。
-4. local game-tree geometry measurementについてformal instrument eligibilityまたは明確なnon-estimable / technical-invalid decisionがある。
-5. effective branching、transposition、tree/graph divergence、corridor/funnelについてformal closureがある。
-6. branch expansion / compression dynamicsとBao rule mechanismについてformal closureがある。
-7. local geometryとsearch instabilityの関係についてformalな採否またはnon-estimable decisionがある。
-8. geometry persistence / memoryについてformal closureがある。
-9. continuous local-geometry representationとlongitudinal dynamicsについてformalな採否またはnon-estimable decisionがある。
-10. protected depth-10 exact holdoutがformalに実行・検証されるか、resource / technical reasonを含む明確なformal closureを持つ。
-11. local-geometry claimsのgeneralization / counterexample boundaryがformal closureしている。
-12. tree、graph、search、evaluation、game-theoretic value、human constructを分離している。
-13. public AI engineeringをscientific successへ読み替えていない。
-14. Research Generation 3全体のfinal synthesisが作成されている。
-
-第三世代の完了とは、**Baoの局所ゲーム木がどのような構造を持ち、その構造がどの程度再現可能・持続的・一般化可能であるかについて、positive・negative・non-estimableを含む明確なscientific boundaryを与えた状態**を意味する。
-
-### 10.12 現在の開始状態
-
-2026-08-31時点では第三世代はprogram planningのみ完了しており、scientific Studyは開始していない。
-
-```text
-Research Generation 3 = PROSPECTIVE PLAN / NOT YET STARTED
-G3-01 formal Study ID = NOT ASSIGNED
-scientific seed consumption = NONE
-protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-```
-
-最初の推奨Studyは`G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1`である。開始時にremote `main`を再監査し、正式Study ID、Stage ID、technical fixture、fresh seed blocks、local horizon、population、metric schema、independent verifier boundary、formal decision taxonomyをoutcome生成前にprospectively固定する。
-'''
-          p.write_text(text.rstrip() + appendix + '\n', encoding='utf-8')
-
-          # README.md
-          p = Path('README.md')
-          text = p.read_text(encoding='utf-8')
+          section = Path('doc/research-generation-3/sync/FUTURE_RESEARCH_AGENDA_SECTION.md').read_text(encoding='utf-8').strip()
+          agenda.write_text(text.rstrip() + '\n\n' + section + '\n', encoding='utf-8')
+
+          readme = Path('README.md')
+          text = readme.read_text(encoding='utf-8')
           assert 'doc/research-generation-3/PROGRAM_PLAN.md' not in text
           anchor = '- [`doc/research-generation-2/FINAL_SYNTHESIS.md`](doc/research-generation-2/FINAL_SYNTHESIS.md): Research Generation 2 final synthesis。Core `G2-01..G2-12`はformal closure。G2-11はrequired frozen representation不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`（Study ID未付与）で閉じ、G2-H01はindependent / non-blocking human trackとしてdeferred。'
           addition = anchor + '\n' + '- [`doc/research-generation-3/PROGRAM_PLAN.md`](doc/research-generation-3/PROGRAM_PLAN.md): Research Generation 3 prospective program plan。局所ゲーム木幾何、effective branching、reply width、transposition、tree/graph divergence、geometry dynamics、search mechanism、protected depth-10 exact holdout、generalization boundaryを`G3-01..G3-12`として計画。scientific Studyは未開始。\n' + '- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3の現在状態。G3-01 formal Study ID未付与、seed未消費、depth 10はG3-11用holdoutとしてsealed。'
-          text = replace_once(text, anchor, addition, 'README G2 synthesis bullet')
-          p.write_text(text, encoding='utf-8')
+          readme.write_text(replace_once(text, anchor, addition, 'README synthesis anchor'), encoding='utf-8')
 
-          # RESEARCH_INDEX.md
-          p = Path('doc/RESEARCH_INDEX.md')
-          text = p.read_text(encoding='utf-8')
+          index = Path('doc/RESEARCH_INDEX.md')
+          text = index.read_text(encoding='utf-8')
           assert '### 30. Research Generation 3 — Prospective Program Plan' not in text
-          section = r'''
-### 30. Research Generation 3 — Prospective Program Plan
-
-**Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **PROSPECTIVE PLAN / NOT YET STARTED / scientific Study execution 0**
-
-Research Generation 3は、第二世代で最も強く成立したRAW-only bounded exact analysisを基盤とし、Baoのlocal game-tree geometry / effective branching structureを中心研究対象とする。第二世代のstrategic clusteringやgrowth estimatorを救済せず、branching、reply width、transposition、reconvergence、tree/graph divergenceを局面周辺の直接的なbounded computational structureとして測定する。
-
-ProgramはWave A-Dで構成する。
-
-```text
-Wave A: G3-01..G3-04 = local geometry foundations
-Wave B: G3-05..G3-08 = geometry dynamics / mechanisms
-Wave C: G3-09..G3-10 = continuous representation / longitudinal theory
-Wave D: G3-11..G3-12 = protected depth-10 holdout / generalization
-Human:  G3-H01 = independent / non-blocking
-```
-
-standard initial RAW rootのdepth 10はG3-11用`FRESH-DEEPER-EXACT-HOLDOUT`としてsealedに保護する。G3-01〜G3-10ではdepth-10 scientific outcomeを生成・readせず、G2-12 production-only estimator proposalも持ち込まない。
-
-最初の推奨Agenda itemは`G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1`である。ただしformal Study ID、正式題目、Stage ID、seed、population、horizon、metric schema、threshold、decision taxonomyは未固定であり、G3-01開始時にcurrent `main`とrepository naming ruleを再監査してprospectively固定する。
-
-**最初に読む:**
-
-- [`research-generation-3/README.md`](research-generation-3/README.md) — 第三世代文書入口
-- [`research-generation-3/PROGRAM_PLAN.md`](research-generation-3/PROGRAM_PLAN.md) — 第三世代全体の詳細計画正本
-- [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md) — 現在状態とprotected evidence
-
-**Program decision:**
-
-- [`research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`](research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md)
-
-**Boundary:** G2-05 exact depth-9 result、validated transform set `[]`、G2-11 `NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED`、G2-12 `TECHNICAL-INVALID / selectedEstimator null`をimmutable upstreamとして扱う。第三世代program plan自体はscientific outcomeを生成せず、G3 Study executionを自動authorizeしない。
-
-
----
-
-'''
-          text = replace_once(text, '## 将来研究\n', section + '## 将来研究\n', 'RESEARCH_INDEX future section')
+          section = Path('doc/research-generation-3/sync/RESEARCH_INDEX_SECTION.md').read_text(encoding='utf-8').strip()
+          text = replace_once(text, '## 将来研究\n', section + '\n\n## 将来研究\n', 'research index section')
           text = replace_once(
               text,
               '## 将来研究\n\n**Research Generation 2 state:**',
               '## 将来研究\n\n**Research Generation 3 state:** prospective plan recorded on 2026-08-31; scientific Study execution has not started. G3-01 is the first recommended agenda item, and standard-root depth 10 is sealed for G3-11.\n\n**Research Generation 2 state:**',
-              'RESEARCH_INDEX G3 future status')
-          p.write_text(text, encoding='utf-8')
+              'research index future status')
+          index.write_text(text, encoding='utf-8')
           PY
 
-      - name: Verify central-document diff scope
+      - name: Verify diff scope
         shell: bash
         run: |
           set -euo pipefail
