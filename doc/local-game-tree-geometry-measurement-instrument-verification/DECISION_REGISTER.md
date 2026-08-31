@@ -72,3 +72,19 @@ A non-authorized downstream stage is recorded as `NOT-AUTHORIZED-NOT-EXECUTED`.
 ## D-013 — Downstream boundary
 
 Successful prerequisite closure does not automatically start G3-02. G3-02..G3-08 remain blocked until separate Research Generation 3 authorization review.
+
+## D-014 — Stage 0 technical disposition
+
+**Decision:** Accept `LGTGMIV-S0-TECHNICAL-2026-08-31-v1` as `STAGE0-PASS`.
+
+The formal workflow result was committed at `044b39cd414f208226c989c17aeb61ae412d80a2` after run `33386868192`. Production and structurally independent implementations agreed exactly on the reconstruction core, every family core and the deterministic stage scientific core. Telemetry-mutation invariance, the legacy failure-mode control, static independence and protected-evidence firewall all passed.
+
+This decision establishes technical instrument readiness only. It does not establish scientific eligibility for any family.
+
+## D-015 — Stage 1 development authorization
+
+**Decision:** Authorize `LGTGMIV-S1-DEVELOPMENT-2026-08-31-v1` for one formal execution under the frozen preregistration after Stage 0 PASS.
+
+The separate authorization artifact is `authorizations/2026-08-31-stage-1-development-authorization.md`. At authorization time Stage 1 and Stage 2 fresh seed consumption remains zero and the protected depth-10 holdout remains sealed/unread.
+
+No scientific contract term is changed by this authorization. The no-rescue boundary activates upon first Stage 1 fresh scientific evidence generation/read. Stage 2 remains `NOT-AUTHORIZED-NOT-EXECUTED`.
