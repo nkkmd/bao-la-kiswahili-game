@@ -1,0 +1,46 @@
+name: LGTGMIV Closure Central Docs Synchronization
+
+on:
+  push:
+    branches:
+      - research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+    paths:
+      - .github/workflows/lgtgmiv-closure-central-docs.yml
+      - tools/experiments/materialize-lgtgmiv-closure-central-docs.js
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lgtgmiv-closure-central-docs
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Capture historical program-plan blob
+        run: echo "PROGRAM_PLAN_BEFORE=$(git rev-parse HEAD:doc/research-generation-3/PROGRAM_PLAN.md)" >> "$GITHUB_ENV"
+      - name: Materialize bounded closure updates
+        run: node tools/experiments/materialize-lgtgmiv-closure-central-docs.js
+      - name: Verify historical program plan unchanged
+        run: test "$PROGRAM_PLAN_BEFORE" = "$(git rev-parse HEAD:doc/research-generation-3/PROGRAM_PLAN.md)"
+      - name: Verify expected closure markers
+        run: |
+          grep -q 'LGTGMIV-STUDY1.*FORMAL-ELIGIBLE-ALL' README.md
+          grep -q 'LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL`' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -q 'LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL' doc/RESEARCH_INDEX.md
+          grep -q 'G3-02 automatic start.*BLOCKED' doc/RESEARCH_INDEX.md
+      - name: Commit synchronized central docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md doc/FUTURE_RESEARCH_AGENDA.md doc/RESEARCH_INDEX.md
+          git commit -m "Sync central docs for LGTGMIV closure"
+          git push
