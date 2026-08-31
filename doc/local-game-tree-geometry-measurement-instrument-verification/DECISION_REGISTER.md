@@ -87,4 +87,42 @@ This decision establishes technical instrument readiness only. It does not estab
 
 The separate authorization artifact is `authorizations/2026-08-31-stage-1-development-authorization.md`. At authorization time Stage 1 and Stage 2 fresh seed consumption remains zero and the protected depth-10 holdout remains sealed/unread.
 
-No scientific contract term is changed by this authorization. The no-rescue boundary activates upon first Stage 1 fresh scientific evidence generation/read. Stage 2 remains `NOT-AUTHORIZED-NOT-EXECUTED`.
+No scientific contract term is changed by this authorization. The no-rescue boundary activates upon first Stage 1 fresh scientific evidence generation/read.
+
+## D-016 — Stage 1 formal disposition
+
+**Decision:** Accept `LGTGMIV-S1-DEVELOPMENT-2026-08-31-v1` as `STAGE1-PASS`.
+
+- formal run: `33450205296`
+- result commit: `52812f37197df74e90d1864720ad1b7e6f13d7fa`
+- read-only audit run: `33450472967 / success`
+- audit result commit: `c81b52d32b6c53dbb6eefb851663bfacbab05a6e`
+- population: 16/16 unique RAW roots, 8 Namua + 8 Mtaji
+- depth: 5
+- consumed block: `31110001..31110128`
+- global gate: PASS
+- exact production/independent reconstruction agreement: 16/16
+- promoted families: all five frozen LGTGMIV families
+
+The Stage 1 evidence and instrument are now immutable under the no-rescue rule. No same-block formal rerun or repair is authorized.
+
+## D-017 — Stage 2 formal authorization
+
+**Decision:** Authorize `LGTGMIV-S2-FORMAL-2026-08-31-v1` for one formal execution under the already-frozen Stage 2 preregistration.
+
+The prerequisites were prospectively satisfied by Stage 1 global PASS plus a non-empty promoted family set. The separate authorization artifact is `authorizations/2026-09-01-stage-2-formal-authorization.md`.
+
+The authorized holdout is exactly `31120001..31120192`, 12 Namua + 12 Mtaji, depth 5. Tested families are exactly the Stage 1 promoted family set, which contains all five frozen families. G3-01 and Stage 1 RAW root/full trajectory/first-16 prefix identities are exclusion-only firewalls.
+
+At authorization time the Stage 2 fresh block remained `NOT GENERATED / NOT READ` and the protected depth-10 holdout remained sealed/unread.
+
+## D-018 — Stage 2 non-scientific tooling smoke
+
+**Decision:** Accept the pre-holdout Stage 2 tooling smoke as PASS.
+
+- workflow commit: `ff6810176b396de0a5265567888ba3cb9449b204`
+- workflow run: `33451567682`
+- job: `99682401722 / success`
+- checkpoint: `checkpoints/2026-09-01-stage-2-tooling-smoke-pass.md`
+
+The smoke used only committed Stage 1 identities plus synthetic controls. It verified dual-firewall binding and production/independent selector separation without reading or generating any Stage 2 fresh holdout evidence. Stage 2 remains not yet executed at this decision point.
