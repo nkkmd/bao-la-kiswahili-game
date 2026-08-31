@@ -47,6 +47,6 @@ Main integration = COMPLETE
 
 ## Current dependency state
 
-G3-01のformal eligible measurement family setは空である。したがって、G3-02〜G3-08をこのinstrumentのまま自動開始してはならない。新しいprospective prerequisite StudyまたはResearch Generation 3 program-level dependency decisionが必要である。
+G3-01のformal eligible measurement family setは空である。したがって、G3-02〜G3-08をこのinstrumentのまま自動開始してはならない。2026-08-31のprogram-level dependency decisionにより、次のscientific directionとしてG3-01とは別の新しいpost-G3-01 / pre-G3-02 measurement-instrument prerequisite（working title: `Local Game-Tree Geometry Measurement Instrument Verification Study 1`）を選択した。formal Study ID、scientific execution、fresh seed consumptionはまだ開始していない。
 
 2026-08-31、userの明示的指示によりG3-01 scientific closureは`main`へ統合済みである。integrationはformal decision、seed consumption、Stage authorization、protected depth-10 holdoutを変更しない。

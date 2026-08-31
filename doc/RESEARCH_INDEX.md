@@ -974,10 +974,10 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — G3-01 closure / dependency reassessment
+### 30. Research Generation 3 — G3-01 closure / next measurement prerequisite selected
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / dependency reassessment required**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / post-G3-01 prerequisite selected / not started**
 
 Research Generation 3はRAW-only bounded exact analysisを基盤としてlocal game-tree geometryを扱うprogramである。最初のmeasurement foundation Study `G3-01`は正式に`LGTGMF-STUDY1`として開始・実行され、`TECHNICAL-INVALID`で閉じた。
 
@@ -992,7 +992,15 @@ Stage 2 seed consumption = NONE
 protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-Program contract上、G3-02〜G3-08は原則としてG3-01でformal eligibilityを得たmeasurement familyだけを利用する。本Studyのeligible setは空なので、同instrumentのまま後続Studyを自動開始しない。新しいprospective measurement prerequisite Studyまたはprogram-level dependency decisionが必要である。
+Program contract上、G3-02〜G3-08は原則としてG3-01でformal eligibilityを得たmeasurement familyだけを利用する。本Studyのeligible setは空なので、同instrumentのまま後続Studyを自動開始しない。
+
+2026-08-31のdependency reassessmentでは、次のscientific actionとして**G3-01とは別の新しいpost-G3-01 / pre-G3-02 measurement-instrument prerequisite Study**を置くことを選択した。
+
+Working title:
+
+**Local Game-Tree Geometry Measurement Instrument Verification Study 1**
+
+このworking titleは正式Study identityではない。formal Study ID、Stage、seed、population、horizon、metric schema、resource ceiling、gateは未固定で、scientific executionも未開始である。G3-01 failure modeはdesign informationとしてのみ用い、runtime telemetryをdeterministic scientific canonical hashから分離し、fresh evidenceでinstrument reproducibilityを新規検証する。G3-01 Stage 1 seed blockは再利用しない。
 
 **G3-01を最初に読む:**
 
@@ -1001,20 +1009,21 @@ Program contract上、G3-02〜G3-08は原則としてG3-01でformal eligibility�
 - [`local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md`](local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md)
 - [`local-game-tree-geometry-measurement-foundation/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-measurement-foundation/REPRODUCIBILITY_INDEX.md)
 
-**Program records:**
+**Program / next-direction records:**
 
 - [`research-generation-3/PROGRAM_PLAN.md`](research-generation-3/PROGRAM_PLAN.md)
 - [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 - [`research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`](research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md)
 - [`research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md`](research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md)
+- [`research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`](research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md)
 
-**Boundary:** G2-05 depth-9 exact result、validated transform set `[]`、G2-11 / G2-12 closureを変更しない。G3-01のStage 1 exact family agreementをformal eligibilityへ救済しない。standard-root depth 10はG3-11用にsealedしたまま維持する。
+**Boundary:** G3-01をreopen / rescueせず、Stage 1 exact family agreementをformal eligibilityへ昇格しない。G2-05 depth-9 exact result、validated transform set `[]`、G2-11 / G2-12 closureを変更しない。standard-root depth 10はG3-11用にsealedしたまま維持する。G3-02〜G3-08はnew prerequisite closure後のauthorization reviewまでblockedである。
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` is closed `TECHNICAL-INVALID`; formal eligible measurement families are empty and G3-02〜G3-08 automatic start is blocked pending a new prospective prerequisite or program-level dependency decision. Standard-root depth 10 remains sealed for G3-11.
+**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` is closed `TECHNICAL-INVALID`. Dependency reassessment selected a new post-G3-01 / pre-G3-02 measurement-instrument prerequisite as the next scientific direction (`Local Game-Tree Geometry Measurement Instrument Verification Study 1` working title), but formal Study ID, scientific execution and fresh seed consumption are not started. G3-02〜G3-08 remain blocked and standard-root depth 10 remains sealed for G3-11.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

@@ -104,7 +104,7 @@ G2-12 estimator used as depth-10 truth/input = false
 
 G3-01からformal eligible measurement familyは得られなかった。したがって、G3-02〜G3-08をこのinstrumentで自動的に開始してはならない。
 
-Research Generation 3のdependency graphを再評価し、measurement instrumentを再構築する新しいprospective prerequisite Studyを設けるか、program-level dispositionを別途決定する必要がある。G3-01のclosed resultを修正・救済することは、その新しいStudyの目的には含めない。
+2026-08-31のprogram-level dependency reassessmentにより、次のscientific directionとしてmeasurement instrumentを新規に再構築・検証するpost-G3-01 / pre-G3-02 prospective prerequisite Study（working title: `Local Game-Tree Geometry Measurement Instrument Verification Study 1`）を選択した。これはG3-01のStudy 2、corrected rerun、rescue、G3-02そのものではない。formal Study ID、scientific execution、fresh seed consumptionはまだ開始しておらず、G3-01のclosed resultは変更しない。
 
 ## Main integration
 
