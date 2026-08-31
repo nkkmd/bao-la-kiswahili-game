@@ -1,0 +1,46 @@
+name: LGTGMIV Stage 2 Pre-Execution Audit
+
+on:
+  push:
+    branches:
+      - research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+    paths:
+      - .github/workflows/lgtgmiv-stage2-preexecution.yml
+      - .github/workflows/lgtgmiv-stage2-formal.yml
+      - tools/experiments/run-lgtgmiv-stage2-formal.js
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lgtgmiv-stage2-preexecution-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify holdout remains unopened
+        run: |
+          test -e doc/local-game-tree-geometry-measurement-instrument-verification/authorizations/2026-09-01-stage-2-formal-authorization.md
+          test -e doc/local-game-tree-geometry-measurement-instrument-verification/checkpoints/2026-09-01-stage-2-tooling-smoke-pass.md
+          test ! -e doc/local-game-tree-geometry-measurement-instrument-verification/authorizations/2026-09-01-stage-2-execution-trigger.md
+          test ! -e doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-2/scientific-result.json
+      - name: Verify frozen Stage 1 instrument files are unchanged
+        run: |
+          test "$(git rev-parse 52812f37197df74e90d1864720ad1b7e6f13d7fa:tools/experiments/lib/lgtgmiv-stage1-production.js)" = "$(git rev-parse HEAD:tools/experiments/lib/lgtgmiv-stage1-production.js)"
+          test "$(git rev-parse 52812f37197df74e90d1864720ad1b7e6f13d7fa:tools/experiments/lib/lgtgmiv-stage1-independent.js)" = "$(git rev-parse HEAD:tools/experiments/lib/lgtgmiv-stage1-independent.js)"
+      - name: Syntax-check formal tooling
+        run: |
+          node --check tools/experiments/run-lgtgmiv-stage2-formal.js
+          node --check tools/experiments/lib/lgtgmiv-stage2-production.js
+          node --check tools/experiments/lib/lgtgmiv-stage2-independent.js
+          node --check tools/experiments/verify-lgtgmiv-stage2-tooling.js
+      - name: Re-run non-scientific Stage 2 tooling verification
+        run: node tools/experiments/verify-lgtgmiv-stage2-tooling.js
