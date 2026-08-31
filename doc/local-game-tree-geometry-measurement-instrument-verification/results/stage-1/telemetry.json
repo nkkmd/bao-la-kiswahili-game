@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMIV-STUDY1",
+  "stageId": "LGTGMIV-S1-DEVELOPMENT-2026-08-31-v1",
+  "scientificDigestExcluded": true,
+  "rootTelemetry": [
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110001,
+        "selectedPly": 24,
+        "rootRawSha256": "a26120c7ccd259b092634999d6dced1e12bd4459ced2376d46d5bc3da0ba5338",
+        "sourceTrajectorySha256": "4e19667f8c0fdd34d733dd7a25f422e3fb3226966c308303bdd3e0a27ca70593",
+        "openingPrefixSha256": "4ba32a1dc3d71f4ac08c665c8246482a97f45f37046a53cd676071576a871345",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 1175,
+        "uniqueTransitions": 1192,
+        "parentExpansions": 262,
+        "legalMoveEvaluations": 1192,
+        "treeNodeOccurrences": "1202",
+        "elapsedMs": 2120.265105,
+        "peakRssBytes": 79740928,
+        "artifactBytes": 47358,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 1175,
+        "uniqueTransitions": 1192,
+        "parentExpansions": 262,
+        "legalMoveEvaluations": 1192,
+        "treeNodeOccurrences": "1202",
+        "elapsedMs": 1466.282004,
+        "peakRssBytes": 102240256,
+        "artifactBytes": 47358,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110002,
+        "selectedPly": 24,
+        "rootRawSha256": "3bc74f2117512dc57733b469c32ff6f475a1b76866460240596baf1bb26bb247",
+        "sourceTrajectorySha256": "5e08cecef4967e94886d5cb481721046cab44021d2e25f50ae19abf60b882e24",
+        "openingPrefixSha256": "6285096bfb17399ef142e386ed86a80feffe363bca196730d9f3847cfbb35d9b",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 2248,
+        "uniqueTransitions": 2272,
+        "parentExpansions": 429,
+        "legalMoveEvaluations": 2272,
+        "treeNodeOccurrences": "2297",
+        "elapsedMs": 5150.502579,
+        "peakRssBytes": 107220992,
+        "artifactBytes": 43275,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 2248,
+        "uniqueTransitions": 2272,
+        "parentExpansions": 429,
+        "legalMoveEvaluations": 2272,
+        "treeNodeOccurrences": "2297",
+        "elapsedMs": 3163.886615,
+        "peakRssBytes": 114114560,
+        "artifactBytes": 43275,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110003,
+        "selectedPly": 24,
+        "rootRawSha256": "c0b74f288bca3565485a1d668a1df8727a0d228e7d823bcf7b49321162e05669",
+        "sourceTrajectorySha256": "158940996278c9bd5d5ff03d1298d881b2bd706dce97e0545d0875244b9ef8bf",
+        "openingPrefixSha256": "e5cc24b4ded672d5c7ae2ca0d1ccdef82aff8ef244a419cc1f85748278dcabb8",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 204,
+        "uniqueTransitions": 206,
+        "parentExpansions": 73,
+        "legalMoveEvaluations": 206,
+        "treeNodeOccurrences": "207",
+        "elapsedMs": 184.536988,
+        "peakRssBytes": 145199104,
+        "artifactBytes": 40540,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 204,
+        "uniqueTransitions": 206,
+        "parentExpansions": 73,
+        "legalMoveEvaluations": 206,
+        "treeNodeOccurrences": "207",
+        "elapsedMs": 149.767172,
+        "peakRssBytes": 145199104,
+        "artifactBytes": 40540,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110004,
+        "selectedPly": 24,
+        "rootRawSha256": "e30503699e43ecb02ebca7c833afa5c1b3d643e14a36ebd2fe552803b69c78ee",
+        "sourceTrajectorySha256": "9cad0fcb17be7d190e6554eb262ab4d2f97028f3a858c44712f78d56052811f0",
+        "openingPrefixSha256": "e5cd1d4d9c343e4163ff55a1f55e51a850242848b4c90dc9080bda2dfdbfa553",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 1707,
+        "uniqueTransitions": 1825,
+        "parentExpansions": 394,
+        "legalMoveEvaluations": 1825,
+        "treeNodeOccurrences": "2172",
+        "elapsedMs": 3088.269097,
+        "peakRssBytes": 145199104,
+        "artifactBytes": 62413,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 1707,
+        "uniqueTransitions": 1825,
+        "parentExpansions": 394,
+        "legalMoveEvaluations": 1825,
+        "treeNodeOccurrences": "2172",
+        "elapsedMs": 2157.732702,
+        "peakRssBytes": 148615168,
+        "artifactBytes": 62413,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110005,
+        "selectedPly": 24,
+        "rootRawSha256": "1e295b2af3329f374d980948981a2ebab0e0e3700bcc82ba0cddf12b126151c6",
+        "sourceTrajectorySha256": "f928c5a75e249f51fbcaa2dccb7fc20e7fa555d16845f1a9f0f848fed9c64837",
+        "openingPrefixSha256": "d59a07a6c498605f5864e1c000edace9d63508dec75831088b68484cac81ed6e",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 1981,
+        "uniqueTransitions": 2045,
+        "parentExpansions": 502,
+        "legalMoveEvaluations": 2045,
+        "treeNodeOccurrences": "2090",
+        "elapsedMs": 3079.652007,
+        "peakRssBytes": 149114880,
+        "artifactBytes": 104669,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 1981,
+        "uniqueTransitions": 2045,
+        "parentExpansions": 502,
+        "legalMoveEvaluations": 2045,
+        "treeNodeOccurrences": "2090",
+        "elapsedMs": 2183.598849,
+        "peakRssBytes": 163946496,
+        "artifactBytes": 104669,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110006,
+        "selectedPly": 24,
+        "rootRawSha256": "62682ab301c88ac98dd30c6aeaa8e9b8ec9ad171400de1c80ed16fd0d7a55259",
+        "sourceTrajectorySha256": "79be6814facdad04e57af4d38a64b0ccce82dd9176dd55c1b0f3b15fe9f0e2ee",
+        "openingPrefixSha256": "89fe7a290cb43eb66248eb012c4493e150745461602541f4e86e6dd03a92b401",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 58,
+        "uniqueTransitions": 57,
+        "parentExpansions": 22,
+        "legalMoveEvaluations": 57,
+        "treeNodeOccurrences": "58",
+        "elapsedMs": 61.872364,
+        "peakRssBytes": 163946496,
+        "artifactBytes": 31402,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 58,
+        "uniqueTransitions": 57,
+        "parentExpansions": 22,
+        "legalMoveEvaluations": 57,
+        "treeNodeOccurrences": "58",
+        "elapsedMs": 41.809302,
+        "peakRssBytes": 172019712,
+        "artifactBytes": 31402,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110007,
+        "selectedPly": 24,
+        "rootRawSha256": "2b9e5087cf3ca831f6fce35a3184a4ba0026620b55ea6e2272ae8da71da3c59a",
+        "sourceTrajectorySha256": "afbddc84345c32a00777ea19568aa0f9704c5d80ebc0b0cfefc2cce918c74930",
+        "openingPrefixSha256": "261c893fc079ade717ea752a45e9f0f941f1276c7b335e0ecad2731a0a227a7f",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 90,
+        "uniqueTransitions": 89,
+        "parentExpansions": 26,
+        "legalMoveEvaluations": 89,
+        "treeNodeOccurrences": "90",
+        "elapsedMs": 114.435964,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 28194,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 90,
+        "uniqueTransitions": 89,
+        "parentExpansions": 26,
+        "legalMoveEvaluations": 89,
+        "treeNodeOccurrences": "90",
+        "elapsedMs": 84.39434,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 28194,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31110008,
+        "selectedPly": 24,
+        "rootRawSha256": "88cf2edcd90e8067663dab96243037df913a7082c0de618802232f163e7779a6",
+        "sourceTrajectorySha256": "3afaabe2509a82695237979a2048f5f42891aa89daa10d89dc6ae8149cb4a804",
+        "openingPrefixSha256": "6abbe6d6019f4f18051d79866e501e91770ed9bcc4fb3d93ec28224b91945ecc",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 1883,
+        "uniqueTransitions": 1959,
+        "parentExpansions": 403,
+        "legalMoveEvaluations": 1959,
+        "treeNodeOccurrences": "2087",
+        "elapsedMs": 3528.95527,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 111721,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 1883,
+        "uniqueTransitions": 1959,
+        "parentExpansions": 403,
+        "legalMoveEvaluations": 1959,
+        "treeNodeOccurrences": "2087",
+        "elapsedMs": 2463.27157,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 111721,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110001,
+        "selectedPly": 44,
+        "rootRawSha256": "cb8d0789f7afce1d3838ba8280a69757fa79e4ae89ae8a2ba098922e3c05f4d6",
+        "sourceTrajectorySha256": "764c145cb9c2755d1957050cf95271604679fcc7792e123b03087c85d8a7e7bd",
+        "openingPrefixSha256": "4ba32a1dc3d71f4ac08c665c8246482a97f45f37046a53cd676071576a871345",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 245,
+        "uniqueTransitions": 244,
+        "parentExpansions": 72,
+        "legalMoveEvaluations": 244,
+        "treeNodeOccurrences": "245",
+        "elapsedMs": 61.857661,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 37232,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 245,
+        "uniqueTransitions": 244,
+        "parentExpansions": 72,
+        "legalMoveEvaluations": 244,
+        "treeNodeOccurrences": "245",
+        "elapsedMs": 82.309528,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 37232,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110003,
+        "selectedPly": 44,
+        "rootRawSha256": "616762dd8b4299cbe9c44aa3e967dc9db5ec7ec6ae0104760b906f35b6e64fab",
+        "sourceTrajectorySha256": "8f91128a6025eafff896edd9d09822cec303489f3f0b97c5415c4d4ee75d9059",
+        "openingPrefixSha256": "e5cc24b4ded672d5c7ae2ca0d1ccdef82aff8ef244a419cc1f85748278dcabb8",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 264,
+        "uniqueTransitions": 263,
+        "parentExpansions": 99,
+        "legalMoveEvaluations": 263,
+        "treeNodeOccurrences": "264",
+        "elapsedMs": 47.507026,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 65952,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 264,
+        "uniqueTransitions": 263,
+        "parentExpansions": 99,
+        "legalMoveEvaluations": 263,
+        "treeNodeOccurrences": "264",
+        "elapsedMs": 71.894194,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 65952,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110004,
+        "selectedPly": 44,
+        "rootRawSha256": "9886ea68a547674568e2e93df1d3c2d984b23316c8a26f3b9c1701171e3776f6",
+        "sourceTrajectorySha256": "79c25de62e4eb0ab5dab4b39d5f46b259b808e0c5b31a717f2b7cd4a419a009c",
+        "openingPrefixSha256": "e5cd1d4d9c343e4163ff55a1f55e51a850242848b4c90dc9080bda2dfdbfa553",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 150,
+        "uniqueTransitions": 149,
+        "parentExpansions": 44,
+        "legalMoveEvaluations": 149,
+        "treeNodeOccurrences": "150",
+        "elapsedMs": 26.778638,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 29916,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 150,
+        "uniqueTransitions": 149,
+        "parentExpansions": 44,
+        "legalMoveEvaluations": 149,
+        "treeNodeOccurrences": "150",
+        "elapsedMs": 39.810364,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 29916,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110006,
+        "selectedPly": 44,
+        "rootRawSha256": "60748fbe6db7d37c1b7dcd5111c297deb3b6e93ec5f2a2cd1e2d48fb719db420",
+        "sourceTrajectorySha256": "7c11ac484469800e48d2d0810f198123a46ede02f075dd642f07f5f9ec06fbb4",
+        "openingPrefixSha256": "89fe7a290cb43eb66248eb012c4493e150745461602541f4e86e6dd03a92b401",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 77,
+        "uniqueTransitions": 76,
+        "parentExpansions": 29,
+        "legalMoveEvaluations": 76,
+        "treeNodeOccurrences": "77",
+        "elapsedMs": 14.188614,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 32624,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 77,
+        "uniqueTransitions": 76,
+        "parentExpansions": 29,
+        "legalMoveEvaluations": 76,
+        "treeNodeOccurrences": "77",
+        "elapsedMs": 20.314168,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 32624,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110007,
+        "selectedPly": 44,
+        "rootRawSha256": "ff9b375162116edcbde88edfa3d0e3220cd1eb37e6b607bbd1b11e94436a2caf",
+        "sourceTrajectorySha256": "f51a35f22f43aa65b9ed94793ef2d640e65f07fd83a8574f28cce67a867f3c76",
+        "openingPrefixSha256": "261c893fc079ade717ea752a45e9f0f941f1276c7b335e0ecad2731a0a227a7f",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 2346,
+        "uniqueTransitions": 2345,
+        "parentExpansions": 624,
+        "legalMoveEvaluations": 2345,
+        "treeNodeOccurrences": "2346",
+        "elapsedMs": 461.11223,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 231078,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 2346,
+        "uniqueTransitions": 2345,
+        "parentExpansions": 624,
+        "legalMoveEvaluations": 2345,
+        "treeNodeOccurrences": "2346",
+        "elapsedMs": 652.028522,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 231078,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110009,
+        "selectedPly": 44,
+        "rootRawSha256": "e2a96b2b807f9947be6d120d614db07220438532aaa3615ffd3389dd5fb59483",
+        "sourceTrajectorySha256": "a8f6203cf73b7d90612450cd1ea95ea511dd8b57c1afd5ec2d775801a0b9c10e",
+        "openingPrefixSha256": "463e43a7565aa632fcbf2364fe95e5f44d53f8bc57cb568f56c17630912eea8d",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 112,
+        "uniqueTransitions": 111,
+        "parentExpansions": 36,
+        "legalMoveEvaluations": 111,
+        "treeNodeOccurrences": "112",
+        "elapsedMs": 21.705678,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 30504,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 112,
+        "uniqueTransitions": 111,
+        "parentExpansions": 36,
+        "legalMoveEvaluations": 111,
+        "treeNodeOccurrences": "112",
+        "elapsedMs": 31.702329,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 30504,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110010,
+        "selectedPly": 44,
+        "rootRawSha256": "dc9b3ca5b121ebbfbc2d65555d808c6959307f2f73da770c1443d065b57eebab",
+        "sourceTrajectorySha256": "8f9f20cf20628375d49c904fc7ae13fcfc634a2a38b1f7e95f2b65d2ee16640c",
+        "openingPrefixSha256": "a4e84d10954a1f42a4e44a9143cb5dad0b1fc3ff9b5f6af5dc36cf47966da38e",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 326,
+        "uniqueTransitions": 325,
+        "parentExpansions": 82,
+        "legalMoveEvaluations": 325,
+        "treeNodeOccurrences": "326",
+        "elapsedMs": 53.578717,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 44850,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 326,
+        "uniqueTransitions": 325,
+        "parentExpansions": 82,
+        "legalMoveEvaluations": 325,
+        "treeNodeOccurrences": "326",
+        "elapsedMs": 73.259415,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 44850,
+        "within": true
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31110011,
+        "selectedPly": 44,
+        "rootRawSha256": "855722ecc4acea041ed7982c64c68ead99b3e62af7201139bb72e44696247fb2",
+        "sourceTrajectorySha256": "d489a6834da355747fab699bbb9420f702b5b3ab92c11e8bed9389b32c13bd24",
+        "openingPrefixSha256": "7f3beb3f48a563db427c00b152b7f084cf44f60b37d4e1e90b24085a863a1dc6",
+        "openingPrefixLength": 16
+      },
+      "production": {
+        "uniqueRawStates": 347,
+        "uniqueTransitions": 347,
+        "parentExpansions": 96,
+        "legalMoveEvaluations": 347,
+        "treeNodeOccurrences": "348",
+        "elapsedMs": 58.614191,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 55290,
+        "within": true
+      },
+      "independent": {
+        "uniqueRawStates": 347,
+        "uniqueTransitions": 347,
+        "parentExpansions": 96,
+        "legalMoveEvaluations": 347,
+        "treeNodeOccurrences": "348",
+        "elapsedMs": 83.283027,
+        "peakRssBytes": 182956032,
+        "artifactBytes": 55290,
+        "within": true
+      }
+    }
+  ],
+  "stageElapsedMs": 62266.132983,
+  "stageArtifactBytes": 3389121,
+  "stageResourceCeilings": {
+    "elapsedMs": 5400000,
+    "artifactBytes": 805306368
+  }
+}
