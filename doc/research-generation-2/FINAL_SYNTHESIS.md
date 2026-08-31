@@ -217,12 +217,12 @@ qualified Bao participantへの現実的アクセスを確保できないため�
 
 ## 13. Research Generation 2完了条件の監査
 
-Agendaで定義したprogram closure条件を次のように評価する。
+Agenda Section 9.9で定義したprogram closure条件と同じ番号・意味で次のように評価する。
 
 1. `G2-01..G2-12`のformal closure: **PASS**。G2-11はdependency-gated agenda-level `NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED`としてclosure。
 2. negative / null / inconclusive / non-estimable resultを救済せず保存: **PASS**。
-3. fresh / held-out / identity firewall等のprospective separation: **PASS within each Study contract**。
-4. independent verificationとfail-closed handling: **PASS as program governance**。
+3. Research Generation 1のformal decisionsとinterpretation boundariesを変更していない: **PASS**。
+4. research engine / data identity / seed / artifact provenanceを各Studyで再現可能に保存: **PASS**。
 5. evaluation / empirical outcome / exact value / search reliability / machine failure / human constructの分離: **PASS**。
 6. multiaxial strategic-state representationについてformal decision: **PASS**。G2-10 no eligible frozen representation、PSRRE `NON-ESTIMABLE`。
 7. long-horizon transition structureについてformal disposition: **PASS**。G2-11 `NON-ESTIMABLE`、execution not authorized。
@@ -230,6 +230,8 @@ Agendaで定義したprogram closure条件を次のように評価する。
 9. state-space / game-tree growth estimationの明確なformal closure: **PASS**。G2-12 `TECHNICAL-INVALID`。
 10. 第二世代final synthesis文書: **PASS**。本書。
 11. public AI outcomeをscientific successへ読み替えない: **PASS**。
+
+fresh / held-out / identity firewall等のprospective separation、independent verification、fail-closed handlingもprogram governanceとして維持したが、これらはSection 9.9の11項目を置き換えるものではなく、その達成を支える追加的controlである。
 
 したがってResearch Generation 2 core programはformalにclosure可能である。
 
