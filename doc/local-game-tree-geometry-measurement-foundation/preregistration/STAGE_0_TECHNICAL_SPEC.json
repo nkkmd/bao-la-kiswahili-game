@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMF-STUDY1",
+  "stageId": "LGTGMF-S0-TECHNICAL-2026-08-31-v1",
+  "status": "FROZEN-BEFORE-TECHNICAL-EXECUTION",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "scientificInferenceAuthorized": false,
+  "scientificSeedConsumptionAuthorized": false,
+  "freshDevelopmentReadAuthorized": false,
+  "freshFormalReadAuthorized": false,
+  "standardRootDepth10GenerationAuthorized": false,
+  "standardRootDepth10ReadAuthorized": false,
+  "fixtures": [
+    {"id":"T00-RAW-SERIALIZATION","role":"RAW field presence, seed conservation, serialization and hash controls"},
+    {"id":"T01-IDENTITY-TRIVIAL","role":"single root / depth-0 identity control"},
+    {"id":"T02-NO-TRANSPOSITION-SYNTHETIC","role":"synthetic tree equals graph under no duplicate child relation"},
+    {"id":"T03-KNOWN-TRANSPOSITION-SYNTHETIC","role":"synthetic duplicate-arrival and arrival-multiplicity control"},
+    {"id":"T04-KNOWN-RECONVERGENCE-SYNTHETIC","role":"two root branches rejoin at prospectively known depth"},
+    {"id":"T05-BRANCH-EXPANSION-SYNTHETIC","role":"width increase / reopening control"},
+    {"id":"T06-BRANCH-COMPRESSION-SYNTHETIC","role":"width decrease / unit-width control"},
+    {"id":"T07-TERMINAL-SYNTHETIC","role":"genuine terminal occurrence and extinction control"},
+    {"id":"T08-TRAVERSAL-ORDER-PERTURBATION","role":"ascending, descending, deterministic-shuffled traversal invariance"},
+    {"id":"T09-G2-05-DEPTH2-HISTORICAL-REFERENCE","role":"standard initial root depth 0..2 read-only exact reference reproduction"}
+  ],
+  "requiredChecks": [
+    "authoritative RAW field binding",
+    "represented seed total = 64",
+    "exact move identity",
+    "successor binding",
+    "tree node occurrence counts",
+    "tree edge occurrence counts",
+    "unique RAW state sets",
+    "unique transition sets",
+    "duplicate encounter arithmetic",
+    "arrival multiplicity",
+    "parent multiplicity",
+    "root-branch label propagation",
+    "first reconvergence depth",
+    "reply-width histograms",
+    "width delta counts",
+    "rational pair normalization",
+    "traversal-order invariance",
+    "deterministic hashes",
+    "production / independent exact agreement"
+  ],
+  "historicalReference": {
+    "studyId": "DRSSE-STUDY1",
+    "maximumTechnicalDepth": 2,
+    "useAsFreshFormalEvidenceAuthorized": false
+  },
+  "passRule": {
+    "requiresAllFixtures": true,
+    "requiresZeroExactPrimitiveMismatch": true,
+    "requiresZeroCanonicalTupleMismatch": true,
+    "requiresZeroHashMismatch": true,
+    "requiresAllKnownSyntheticExpectations": true,
+    "requiresTraversalOrderInvariance": true,
+    "passLabel": "STAGE0-TECHNICAL-PASS",
+    "failLabel": "STAGE0-TECHNICAL-INVALID"
+  },
+  "independentBoundary": {
+    "productionSerializerImportAuthorized": false,
+    "productionMoveKeyImportAuthorized": false,
+    "productionTraversalImportAuthorized": false,
+    "productionDedupImportAuthorized": false,
+    "productionGeometryAggregationImportAuthorized": false,
+    "productionResultAssemblyImportAuthorized": false,
+    "sharedAuthoritativeEngineAuthorized": true
+  }
+}

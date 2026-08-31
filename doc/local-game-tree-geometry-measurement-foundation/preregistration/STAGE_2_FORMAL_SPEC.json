@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMF-STUDY1",
+  "stageId": "LGTGMF-S2-FORMAL-2026-08-31-v1",
+  "status": "FROZEN-BEFORE-FRESH-FORMAL-OUTCOME",
+  "evidenceClass": "FRESH-FORMAL-HELDOUT",
+  "executionAuthorizationPrerequisite": "Stage 0 technical pass and Stage 1 development pass with at least one frozen eligible metric family",
+  "freshTrajectoryBlock": {
+    "seedBase": 31020001,
+    "seedEnd": 31020096,
+    "seedCount": 96,
+    "maxPly": 240,
+    "prng": "tools/benchmark.js seededRandom",
+    "moveOrdering": "ascending LGTGMF exact move key",
+    "trajectoryPolicy": "uniform index from sorted exact legal move list using seed-specific PRNG",
+    "outcomeAwareSelectionAuthorized": false,
+    "geometryAwareSelectionAuthorized": false
+  },
+  "rootSelection": {
+    "namua": {
+      "requiredRoots": 8,
+      "rule": "first 8 eligible distinct nonterminal RAW states, ascending seed order, observed after exactly 24 applied plies and still Namua"
+    },
+    "mtaji": {
+      "requiredRoots": 8,
+      "rule": "first 8 eligible distinct nonterminal RAW states, ascending seed order, at the first Mtaji state encountered at or after ply 44"
+    },
+    "initialRawRootExcluded": true,
+    "duplicateRawRootsSkipped": true,
+    "replacementBeyondSeedBlockAuthorized": false,
+    "stage1IdentityOverlapSkippedWithinFrozenBlock": true
+  },
+  "stage1Firewall": {
+    "exactRawRootOverlapAllowed": false,
+    "fullTrajectoryHashOverlapAllowed": false,
+    "openingPrefixHashOverlapAllowed": false,
+    "openingPrefixLengthExactMoveKeys": 16,
+    "overlapCandidateDisposition": "skip within frozen Stage 2 seed block only",
+    "replacementBeyondSeedBlockAuthorized": false,
+    "stage1OutcomeMayChangeFirewall": false
+  },
+  "localEnumeration": {
+    "targetDepth": 5,
+    "completeLayersRequired": [0,1,2,3,4,5],
+    "maxCumulativeDistinctRawStatesPerRoot": 100000,
+    "maxDepthLabelledUniqueTransitionsPerRoot": 750000,
+    "maxUniqueParentStateExpansionsPerRoot": 100000,
+    "maxLegalMoveEvaluationsPerRoot": 750000,
+    "maxCumulativeTreeNodeOccurrencesPerRoot": 1000000000,
+    "maxResidentSetBytes": 4294967296,
+    "maxWallClockSecondsPerImplementationPerRoot": 180,
+    "maxCompactScientificArtifactBytesPerRoot": 67108864,
+    "maxWallClockSecondsPerImplementationStage": 4800,
+    "maxCompactScientificArtifactBytesPerImplementationStage": 536870912,
+    "partialLayerExactEvidenceAuthorized": false
+  },
+  "globalPopulationGate": {
+    "requiresSelectedNamuaRoots": 8,
+    "requiresSelectedMtajiRoots": 8,
+    "requiresAllSixteenRootsCompleteProduction": true,
+    "requiresAllSixteenRootsCompleteIndependent": true,
+    "requiresZeroRelayLimitMoveNontermination": true,
+    "requiresZeroResourceOrAdministrativeCensoring": true,
+    "requiresZeroRawIdentityMismatch": true,
+    "requiresZeroSuccessorBindingMismatch": true,
+    "requiresZeroFirewallOverlap": true,
+    "completeSubsetRescueAuthorized": false
+  },
+  "familyDecisionRule": {
+    "candidateFamiliesFrozenAtStudyStart": [
+      "F1-TREE-OCCURRENCE",
+      "F2-RAW-GRAPH",
+      "F3-TRANSPOSITION-RECONVERGENCE",
+      "F4-TREE-GRAPH-RELATION",
+      "F5-REPLY-GEOMETRY"
+    ],
+    "stage2FamiliesMustHavePassedStage1": true,
+    "newFamilyAdditionAuthorized": false,
+    "perFamilyEligibility": "exact zero mismatch across every required root, primitive, canonical tuple, rational pair and hash",
+    "floatingTolerancePrimaryGateAuthorized": false
+  },
+  "studyDecisionMapping": {
+    "allFrozenFormalFamiliesPass": "VALIDATED-ELIGIBLE",
+    "globalPopulationGatePassesAndStrictSubsetOfProspectivelyPartitionedFamiliesPass": "PARTIALLY-ELIGIBLE",
+    "nonScientificAdministrativeOrArtifactDeliveryPreventsDecision": "INCONCLUSIVE",
+    "frozenPopulationOrResourceCeilingPreventsRequiredCompleteFormalPopulation": "NON-ESTIMABLE",
+    "technicalIntegrityOrIndependentVerificationDefect": "TECHNICAL-INVALID",
+    "prerequisiteDoesNotAuthorizeExecution": "NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "independentVerification": {
+    "mandatory": true,
+    "fullReconstructionFromSelectedRootRawStateRequired": true,
+    "productionSerializerImportAuthorized": false,
+    "productionMoveKeyImportAuthorized": false,
+    "productionTraversalImportAuthorized": false,
+    "productionDedupImportAuthorized": false,
+    "productionTranspositionAggregationImportAuthorized": false,
+    "productionReconvergenceImportAuthorized": false,
+    "productionReplyGeometryAggregationImportAuthorized": false,
+    "productionResultAssemblyImportAuthorized": false,
+    "productionDecisionMappingImportAuthorized": false,
+    "sharedAuthoritativeEngineAuthorized": true
+  },
+  "protectedHoldout": {
+    "standardRootCompleteDepth10EnumerationAuthorized": false,
+    "standardRootDepth10ScientificOutcomeReadAuthorized": false,
+    "standardRootDepth10ScientificOutcomeWriteAuthorized": false,
+    "g2_12EstimatorInputAuthorized": false
+  },
+  "noRescue": {
+    "sameStage2EvidenceRerunAuthorized": false,
+    "toleranceRelaxationAuthorized": false,
+    "horizonChangeAuthorized": false,
+    "seedExtensionAuthorized": false,
+    "rootReplacementOutsideFrozenBlockAuthorized": false,
+    "failedMetricDeletionAuthorized": false,
+    "successfulFamilyOnlyRedefinitionAuthorized": false,
+    "postMismatchReDecisionAuthorized": false
+  }
+}

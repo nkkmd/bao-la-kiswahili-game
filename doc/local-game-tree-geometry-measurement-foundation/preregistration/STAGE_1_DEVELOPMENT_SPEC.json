@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMF-STUDY1",
+  "stageId": "LGTGMF-S1-DEVELOPMENT-2026-08-31-v1",
+  "status": "FROZEN-BEFORE-FRESH-DEVELOPMENT",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "scientificInferenceAuthorized": false,
+  "formalStage2EvidenceAuthorized": false,
+  "stage2ExecutionAuthorizedAtStudyStart": false,
+  "freshTrajectoryBlock": {
+    "seedBase": 31010001,
+    "seedEnd": 31010096,
+    "seedCount": 96,
+    "maxPly": 240,
+    "prng": "tools/benchmark.js seededRandom",
+    "moveOrdering": "ascending LGTGMF exact move key",
+    "trajectoryPolicy": "uniform index from sorted exact legal move list using seed-specific PRNG",
+    "outcomeAwareSelectionAuthorized": false,
+    "geometryAwareSelectionAuthorized": false
+  },
+  "rootSelection": {
+    "namua": {
+      "requiredRoots": 6,
+      "rule": "first 6 distinct nonterminal RAW states, ascending seed order, observed after exactly 24 applied plies and still Namua"
+    },
+    "mtaji": {
+      "requiredRoots": 6,
+      "rule": "first 6 distinct nonterminal RAW states, ascending seed order, at the first Mtaji state encountered at or after ply 44"
+    },
+    "initialRawRootExcluded": true,
+    "duplicateRawRootsSkipped": true,
+    "replacementBeyondSeedBlockAuthorized": false,
+    "selectionMayReadLocalGeometry": false,
+    "selectionMayReadSearchEvaluation": false,
+    "selectionMayReadGameOutcome": false
+  },
+  "localEnumeration": {
+    "targetDepth": 5,
+    "completeLayersRequired": [0,1,2,3,4,5],
+    "maxCumulativeDistinctRawStatesPerRoot": 100000,
+    "maxDepthLabelledUniqueTransitionsPerRoot": 750000,
+    "maxUniqueParentStateExpansionsPerRoot": 100000,
+    "maxLegalMoveEvaluationsPerRoot": 750000,
+    "maxCumulativeTreeNodeOccurrencesPerRoot": 1000000000,
+    "maxResidentSetBytes": 4294967296,
+    "maxWallClockSecondsPerImplementationPerRoot": 180,
+    "maxCompactScientificArtifactBytesPerRoot": 67108864,
+    "maxWallClockSecondsPerImplementationStage": 3600,
+    "maxCompactScientificArtifactBytesPerImplementationStage": 536870912,
+    "partialLayerExactEvidenceAuthorized": false
+  },
+  "candidateMetricFamilies": [
+    "F1-TREE-OCCURRENCE",
+    "F2-RAW-GRAPH",
+    "F3-TRANSPOSITION-RECONVERGENCE",
+    "F4-TREE-GRAPH-RELATION",
+    "F5-REPLY-GEOMETRY"
+  ],
+  "developmentPurpose": [
+    "confirm exact computability of frozen candidate families",
+    "confirm compact canonical artifact schema",
+    "characterize resource use under already-frozen depth and ceilings",
+    "freeze Stage 2 eligible family subset without adding new families"
+  ],
+  "readinessRule": {
+    "requiresSelectedNamuaRoots": 6,
+    "requiresSelectedMtajiRoots": 6,
+    "requiresAllTwelveCompleteThroughDepth": 5,
+    "requiresZeroRawIdentityMismatch": true,
+    "requiresZeroSuccessorBindingMismatch": true,
+    "requiresIndependentFullLocalReconstruction": true,
+    "requiresExactAgreementForFamilyPromotion": true,
+    "minimumFamiliesForStage2Authorization": 1,
+    "globalRootSubgroupRescueAuthorized": false,
+    "passLabel": "STAGE1-DEVELOPMENT-PASS",
+    "resourceFailureLabel": "STAGE1-DEVELOPMENT-NON-ESTIMABLE",
+    "technicalFailureLabel": "STAGE1-TECHNICAL-INVALID"
+  },
+  "firewall": {
+    "stage1RowsReusableInStage2": false,
+    "stage1RootsReusableInStage2": false,
+    "stage1OutcomeMayChangeStage2SeedBlock": false,
+    "stage1OutcomeMayChangeStage2RootRule": false,
+    "stage1OutcomeMayChangeStage2TargetDepth": false,
+    "stage1OutcomeMayIncreaseStage2ResourceCeilings": false,
+    "stage1OutcomeMayAddMetricFamily": false,
+    "sameStage1EvidenceRerunAuthorized": false
+  },
+  "protectedHoldout": {
+    "standardRootCompleteDepth10EnumerationAuthorized": false,
+    "standardRootDepth10ScientificOutcomeReadAuthorized": false,
+    "standardRootDepth10ScientificOutcomeWriteAuthorized": false
+  }
+}
