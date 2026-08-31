@@ -5,8 +5,9 @@
 ## Baseline / branch
 
 ```text
-remote main = 7a0e7ce618eedfa3bd1c8d11dfc2ba14bd3e390f
+remote main baseline = 7a0e7ce618eedfa3bd1c8d11dfc2ba14bd3e390f
 branch = research/g3-01-local-game-tree-geometry-measurement-foundation
+formal decision = TECHNICAL-INVALID
 ```
 
 ## Upstream scientific references
@@ -17,67 +18,112 @@ branch = research/g3-01-local-game-tree-geometry-measurement-foundation
 - `doc/research-generation-2/PROGRAM_FINAL_RESULT.json`
 - `doc/deep-raw-state-space-enumeration/STUDY_1_OVERVIEW.md`
 - `doc/deep-raw-state-space-enumeration/STUDY_1_FINAL_REPORT.md`
-- `doc/deep-raw-state-space-enumeration/preregistration/STAGE_2_FORMAL_SPEC.json`
-
-## Engine / identity references
-
-- `public/engine.js`
-- `tools/experiments/lib/drsse-production.js` — historical implementation reference only; importing its scientific aggregation into the new independent verifier is prohibited.
-- `tools/experiments/lib/drsse-independent.js` — historical independent implementation reference only.
 
 ## Prospective authority
 
 - `STUDY_1_PROTOCOL.md`
 - `preregistration/STUDY_START_SPEC.json`
 - `preregistration/STAGE_0_TECHNICAL_SPEC.json`
+- `preregistration/STAGE_0_TECHNICAL_SPEC_V2.json`
 - `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
 - `preregistration/STAGE_2_FORMAL_SPEC.json`
 - `DECISION_REGISTER.md`
 
-If Markdown prose and JSON disagree on a machine-checkable field, the conflict must be treated as a technical integrity defect and resolved only before the affected scientific evidence is generated/read. It must not be resolved outcome-aware.
+MarkdownとJSONのmachine-checkable fieldが矛盾する場合、affected evidence生成後にoutcome-aware修正してはならない。本Studyではこの原則をStage 1 canonical manifest defectにも適用した。
 
-## Planned implementation separation
+## Implementation separation
 
-Production implementation and structurally independent verifier must be separate modules and separate result assembly paths. The verifier must reconstruct each local domain from the selected root RAW state and authoritative engine semantics rather than merely rehash production rows.
+Production:
 
-Shared dependency is limited to authoritative `public/engine.js`, Node standard-library cryptographic primitives, and frozen schema constants. Production serializer, move key, traversal, deduplication, transposition aggregation, reconvergence logic, reply-width aggregation, metric assembly and decision mapping are not importable into the independent path.
+- `tools/experiments/lib/lgtgmf-production.js`
+- `tools/experiments/lib/lgtgmf-production-v2.js`
+- `tools/experiments/run-lgtgmf-stage0-technical.js`
+- `tools/experiments/run-lgtgmf-stage0-technical-v2.js`
+- `tools/experiments/run-lgtgmf-stage1-development.js`
 
-## Planned canonical artifacts
+Independent:
 
-Per root:
+- `tools/experiments/lib/lgtgmf-independent.js`
+- `tools/experiments/lib/lgtgmf-independent-v2.js`
+- `tools/experiments/verify-lgtgmf-stage0-independent.js`
+- `tools/experiments/verify-lgtgmf-stage0-independent-v2.js`
+- `tools/experiments/verify-lgtgmf-stage1-independent.js`
 
-```text
-root manifest
-selection identity
-per-depth integer primitives
-canonical histograms
-exact rational pairs
-state-set SHA256 per depth
-transition-set SHA256 per depth
-root-branch membership digest
-metric-family digests
-measurementCoreSha256
-resource / completeness record
-```
+両pathはauthoritative `public/engine.js`を共有するが、RAW serializer / key、move identity、tree traversal、graph deduplication、transposition / reconvergence aggregation、reply geometry、result assemblyをproductionからindependentへimportしない。
 
-Per Stage:
+## Stage 0 v1
 
 ```text
-selected-root manifest
-firewall audit
-root digest manifest
-stageCoreSha256
-production compact summary
-independent compact summary
-exact comparison report
+workflow run = 33358158087
+stage = LGTGMF-S0-TECHNICAL-2026-08-31-v1
+disposition = STAGE0-TECHNICAL-INVALID
+scientific seed consumption = NONE
 ```
 
-Full row dumps, if created, are supplemental and are not the only formal verification route.
+Cross-contract auditで`rootBranchPairOverlap`と`narrowPathRun`のformal materialization欠落を検出した。結果は`results/STAGE_0_V1_TECHNICAL_RESULT.json`に保存する。
+
+## Stage 0 v2
+
+```text
+workflow run = 33360528096
+workflow head = 3704cdf551c9ceb5b4d1740d299c054cff81fc5c
+artifact id = 9746522427
+artifact digest = sha256:c77bd33aaa23f1b98ba703f4f7c6244d2ddc8f07325978bfea704a8f7d322213
+measurementCoreSha256 = 6c3c4a2aef893c09804988ef0d61a64424d415ee6bd63ebedd59e4ae91fee555
+disposition = STAGE0-TECHNICAL-PASS
+```
+
+v2はfresh evidence生成前にprospectively refreezeしたcorrective technical versionである。結果は`results/STAGE_0_V2_TECHNICAL_RESULT.json`に保存する。
+
+## Stage 1 fresh development
+
+```text
+workflow run = 33370605540
+workflow head = 06e25c113be2b97602eb8a9e5bf783c868db0758
+artifact id = 9749942891
+artifact digest = sha256:d2fba425e60f2f8af9b821533628880be53c13b8e4af79266a1693ddd87370f4
+seed block consumed = 31010001..31010096
+selected roots = Namua 6 / Mtaji 6
+target depth = 5
+all 12 roots complete = true
+root selection agreement = true
+root measurement-core agreement = true
+F1..F5 family agreement = true
+production stageCoreSha256 = d9e06d4cd4830bb7aba9292351a7e1260decf98de9442cb27dfc88f44bbb3f50
+independent stageCoreSha256 = 3829928f93cba835f5120e6aa9bf903ac6a5570e91e547d76a2da90cfbb3a123
+stageCoreAgreement = false
+independent verification SHA256 = c4fb4285560e1db291da52267a280c34eec1276ba94e4dbddd044f999042968f
+disposition = STAGE1-TECHNICAL-INVALID
+```
+
+Stage-level hash mismatchは、stage manifest hash inputへelapsed / RSS等のnon-deterministic resource observationsを含めたimplementation defectによる。root-level scientific primitive / family digestはexact一致したが、prospectively frozen canonical artifact requirementを満たさない。
+
+結果は`results/STAGE_1_DEVELOPMENT_RESULT.json`に保存する。fresh evidence生成後のsame-evidence repair / rerunは禁止されているため、Stage 1を修正して再判定しない。
+
+## Stage 2
+
+```text
+stage = LGTGMF-S2-FORMAL-2026-08-31-v1
+disposition = NOT-AUTHORIZED-NOT-EXECUTED
+seed block 31020001..31020096 consumed = false
+formal held-out artifact = none
+```
 
 ## Protected evidence
 
-Standard initial RAW root complete exact depth-10 layer remains G3-11-only. No G3-01 file should contain its complete state set, exact layer count, geometry summary or layer hash.
+Standard initial RAW root complete exact depth-10 layer remains G3-11-only.
 
-## Current artifacts
+```text
+complete depth-10 enumeration generated by G3-01 = false
+depth-10 scientific geometry/count read by G3-01 = false
+G2-12 estimator used as depth-10 truth/input = false
+```
 
-At the initial prospective checkpoint there are no scientific result artifacts and no consumed scientific seeds. Result paths will be added only after the relevant Stage is separately authorized and executed.
+## Formal reproducibility boundary
+
+```text
+LGTGMF-STUDY1 = TECHNICAL-INVALID
+formal eligible measurement families = []
+```
+
+Stage 1のdevelopment-level exact agreementは将来の新規prospective instrument Studyの設計情報として利用可能だが、本Studyのformal eligibilityへ昇格させない。
