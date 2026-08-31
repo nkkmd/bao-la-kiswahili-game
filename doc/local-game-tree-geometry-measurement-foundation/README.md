@@ -2,42 +2,50 @@
 
 Research Generation 3 `G3-01` / `LGTGMF-STUDY1` の研究ディレクトリである。
 
-本Studyは、Baoの局面を戦略clusterへ分類したり、Bao全体のstate-space / game-tree sizeを推定したりする研究ではない。同一のauthoritative RAW rootとbounded local horizonから得られるlegal game tree / reachable RAW graphについて、branching、reply width、transposition、reconvergence、tree/graph divergence等をexactかつ再現可能に測定するinstrumentを構築し、downstream Research Generation 3で利用可能なformal eligibility boundaryを定める。
+本Studyは、同一のauthoritative RAW rootとbounded local horizonから得られるlegal game tree / reachable RAW graphについて、branching、reply width、transposition、reconvergence、tree/graph divergence等をexactかつ再現可能に測定するinstrumentのformal eligibility boundaryを検証した。
+
+正式判断は **`TECHNICAL-INVALID`**。Stage 1 fresh developmentでは全12 selected rootsについてproduction / independentのroot-level measurement coreとF1〜F5 family digestがexact一致したが、凍結済みcanonical stage-manifest contractを実装が満たさなかった。fresh evidence消費後のsame-evidence repairは禁止されていたためfail-closedで閉じ、Stage 2は実行していない。
 
 ## Formal identity
 
 ```text
 Program = Research Generation 3 G3-01
 Study ID = LGTGMF-STUDY1
-Stage 0 = LGTGMF-S0-TECHNICAL-2026-08-31-v1
+Stage 0 original = LGTGMF-S0-TECHNICAL-2026-08-31-v1
+Stage 0 corrective = LGTGMF-S0-TECHNICAL-2026-08-31-v2
 Stage 1 = LGTGMF-S1-DEVELOPMENT-2026-08-31-v1
 Stage 2 = LGTGMF-S2-FORMAL-2026-08-31-v1
 Baseline main = 7a0e7ce618eedfa3bd1c8d11dfc2ba14bd3e390f
 Branch = research/g3-01-local-game-tree-geometry-measurement-foundation
+Formal decision = TECHNICAL-INVALID
+Formal eligible measurement families = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 ## 重要な境界
 
 - authoritative identityはRAW-only: `pits,reserve,houseOwned,player,phase,winner,pending`。
-- validated transform setは`[]`。symmetry reduction / canonicalization / player swap / reflection dedupは行わない。
-- G2-05 depth 0..9は`HISTORICAL-EXACT-REFERENCE`としてtechnical useのみ可能。
-- G2-12は`TECHNICAL-INVALID`、`selectedEstimator = null`のまま変更しない。
-- standard initial RAW rootのcomplete exact depth-10 layerはG3-11用にsealedし、G3-01ではscientific counts / geometry outcomeを生成・readしない。
+- validated transform setは`[]`。symmetry reduction / canonicalization / player swap / reflection dedupは行っていない。
+- G2-05 depth 0..9は`HISTORICAL-EXACT-REFERENCE`としてtechnical useのみ行った。
+- G2-12は`TECHNICAL-INVALID`、`selectedEstimator = null`のまま変更していない。
+- standard initial RAW rootのcomplete exact depth-10 layerはG3-11用にsealedされ、本Studyでは生成・readしていない。
 - branch widthやreply widthの狭さを、game-theoretic forcing、best move、人間の難易度と同一視しない。
+- Stage 1 developmentのexact agreementをformal Stage 2 eligibilityへ昇格させていない。
 
 ## 文書
 
-- `STUDY_1_PROTOCOL.md`: scientific contractとconstruct semanticsの正本
-- `STUDY_1_OVERVIEW.md`: 初見向け概要
-- `CURRENT_STATUS.md`: current-facing state
-- `DECISION_REGISTER.md`: prospective / later formal decision記録
-- `REPRODUCIBILITY_INDEX.md`: source・spec・artifact・verifierへの索引
-- `preregistration/STUDY_START_SPEC.json`: Study共通freeze
-- `preregistration/STAGE_0_TECHNICAL_SPEC.json`: technical fixture freeze
-- `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`: fresh development freeze
-- `preregistration/STAGE_2_FORMAL_SPEC.json`: fresh held-out formal freeze
-- `checkpoints/`: immutable progress checkpoints
+- `STUDY_1_PROTOCOL.md`: prospective scientific contractとconstruct semanticsの正本
+- `STUDY_1_OVERVIEW.md`: 初見向けの日本語概要
+- `STUDY_1_FINAL_REPORT.md`: 最終科学報告
+- `CURRENT_STATUS.md`: current-facing closure state
+- `DECISION_REGISTER.md`: prospective freezeとformal disposition
+- `REPRODUCIBILITY_INDEX.md`: source・spec・workflow・artifact・verifier索引
+- `preregistration/`: Study / Stage freeze
+- `results/`: Stage result summary
+- `checkpoints/`: immutable progress / closure checkpoints
 
-## 現在状態
+## Current dependency state
 
-Study identityと全Stage contractはscientific outcome生成前にprospectively固定する。`main`への統合はuserの明示的指示があるまで行わない。
+G3-01のformal eligible measurement family setは空である。したがって、G3-02〜G3-08をこのinstrumentのまま自動開始してはならない。新しいprospective prerequisite StudyまたはResearch Generation 3 program-level dependency decisionが必要である。
+
+`main`への統合はuserの明示的指示があるまで行わない。
