@@ -1,0 +1,34 @@
+name: LGTGMIV Stage 1 Tooling Smoke
+
+on:
+  push:
+    branches:
+      - research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+    paths:
+      - tools/experiments/lib/lgtgmiv-stage1-production.js
+      - tools/experiments/lib/lgtgmiv-stage1-independent.js
+      - tools/experiments/verify-lgtgmiv-stage1-tooling.js
+      - tools/experiments/run-lgtgmiv-stage1-development.js
+      - .github/workflows/lgtgmiv-stage1-tooling.yml
+      - .github/workflows/lgtgmiv-stage1-development.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check tools/experiments/lib/lgtgmiv-stage1-production.js
+          node --check tools/experiments/lib/lgtgmiv-stage1-independent.js
+          node --check tools/experiments/verify-lgtgmiv-stage1-tooling.js
+          node --check tools/experiments/run-lgtgmiv-stage1-development.js
+      - name: Independent non-scientific tooling smoke
+        run: node tools/experiments/verify-lgtgmiv-stage1-tooling.js
