@@ -33,10 +33,12 @@ jobs:
         run: test "$PROGRAM_PLAN_BEFORE" = "$(git rev-parse HEAD:doc/research-generation-3/PROGRAM_PLAN.md)"
       - name: Verify expected closure markers
         run: |
-          grep -q 'LGTGMIV-STUDY1.*FORMAL-ELIGIBLE-ALL' README.md
-          grep -q 'LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL`' doc/FUTURE_RESEARCH_AGENDA.md
-          grep -q 'LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL' doc/RESEARCH_INDEX.md
-          grep -q 'G3-02 automatic start.*BLOCKED' doc/RESEARCH_INDEX.md
+          grep -Fq 'LGTGMIV-STUDY1' README.md
+          grep -Fq 'FORMAL-ELIGIBLE-ALL' README.md
+          grep -Fq 'LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL`' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -Fq 'LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL' doc/RESEARCH_INDEX.md
+          grep -Fq 'G3-02 automatic start' doc/RESEARCH_INDEX.md
+          grep -Fq 'BLOCKED' doc/RESEARCH_INDEX.md
       - name: Commit synchronized central docs
         run: |
           git config user.name "github-actions[bot]"
