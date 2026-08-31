@@ -24,7 +24,7 @@
     {"agendaLabel":"G2-07","studyId":"PCRPR-STUDY1","closure":"STAGE1-TECHNICAL-INVALID","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
     {"agendaLabel":"G2-08","studyId":"MDFT-STUDY1","closure":"NON-ESTIMABLE","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
     {"agendaLabel":"G2-09","studyId":"TMGC-STUDY1","closure":"TECHNICAL-INVALID","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
-    {"agendaLabel":"G2-10","studyId":"UMSSR-STUDY1","closure":"NO-ELIGIBLE-FROZEN-REPRESENTATION","selectedRepresentation":null,"stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
+    {"agendaLabel":"G2-10","studyId":"UMSSR-STUDY1","closure":"NOT-AUTHORIZED-NOT-EXECUTED","stage1":"STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION","selectedRepresentation":null,"stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
     {"agendaLabel":"G2-11","studyId":null,"closure":"NON-ESTIMABLE","execution":"NOT-AUTHORIZED-NOT-EXECUTED","dependencyReason":"NO-ELIGIBLE-FROZEN-STRATEGIC-REGIME-REPRESENTATION","scientificOutcomeGenerated":false},
     {"agendaLabel":"G2-12","studyId":"SSGTGE-STUDY1","closure":"TECHNICAL-INVALID","selectedEstimator":null,"stage2":"NOT-AUTHORIZED-NOT-EXECUTED"}
   ],
