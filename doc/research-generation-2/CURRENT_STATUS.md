@@ -10,6 +10,7 @@ Human track = G2-H01 / independent / non-blocking / deferred
 Closure branch = research/g2-final-program-closure
 Baseline main = 9f64aba1aa2364621196c1aeccda02bf74217f20
 Central documentation synchronization = COMPLETE ON CLOSURE BRANCH
+Final documentation consistency audit = COMPLETE
 Temporary write-capable synchronization/correction workflows = REMOVED
 Temporary maintenance helpers = REMOVED
 Main integration = NOT PERFORMED
@@ -54,6 +55,8 @@ Program closureはclosure branch上で次の中央文書へ同期済みである
 
 Initial branch-only synchronization produced commit `ecc0f7288b35d5bf7d4e54a65fc7caa8cbaace9b`。その後、READMEとRESEARCH_INDEXに残ったcurrent-facing G2-11旧状態2箇所をbranch-only correctionで同期し、commit `6d48fe54b49ef7769f23bb9283a79d0f36d31e23`で現在状態と一致させた。
 
+最終文書整合監査では、Agenda Section 9.9のcompletion conditions #3 / #4と`FINAL_SYNTHESIS.md` / program closure decisionの監査項目の番号対応不一致を検出した。科学的結論を変更せず、Section 9.9と同じ11条件へ揃え、`PROGRAM_FINAL_RESULT.json`にも11条件を一対一で明示した。詳細は`checkpoints/2026-08-31-final-document-consistency-audit.md`を参照する。
+
 同期・補正に用いた一時的なwrite-capable workflowおよびmaintenance helperはclosure branchから削除済みである。Authorization JSONはprovenanceとして保持するが、それらをtriggerする一時workflowは存在しない。
 
 ## Canonical closure records
@@ -61,9 +64,10 @@ Initial branch-only synchronization produced commit `ecc0f7288b35d5bf7d4e54a65fc
 - `FINAL_SYNTHESIS.md`
 - `PROGRAM_FINAL_RESULT.json`
 - `checkpoints/2026-08-31-program-closure-central-sync-complete.md`
+- `checkpoints/2026-08-31-final-document-consistency-audit.md`
 - `../research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`
 - `../research-program-decisions/2026-08-31-research-generation-2-program-closure.md`
 
 ## Main integration
 
-このstatusはclosure research branch上の状態である。`main`への統合は実施していない。最終監査後、明示的な統合指示がある場合にのみ統合する。
+このstatusはclosure research branch上の状態である。`main`への統合は実施していない。最終文書整合監査は完了しており、明示的な統合指示がある場合にのみfast-forward integrationを行う。
