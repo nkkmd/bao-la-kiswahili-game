@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMF-STUDY1",
+  "stageId": "LGTGMF-S1-DEVELOPMENT-2026-08-31-v1",
+  "implementationFreezeCommit": "7c09f42eebdbb8a4b9c84e2d64fc7ad1534be095",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "scientificInferenceAuthorized": false,
+  "seedBase": 31010001,
+  "seedEnd": 31010096,
+  "targetDepth": 5,
+  "stage1ScientificSeedConsumptionAuthorized": true,
+  "stage2SeedReadAuthorized": false,
+  "standardRootDepth10GenerationAuthorized": false,
+  "standardRootDepth10ReadAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
