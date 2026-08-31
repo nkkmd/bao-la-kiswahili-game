@@ -8,7 +8,8 @@
 Program = G3-01
 Study ID = LGTGMF-STUDY1
 Formal title = Local Game-Tree Geometry Measurement Foundation Study 1
-Stage 0 = LGTGMF-S0-TECHNICAL-2026-08-31-v1
+Stage 0 original = LGTGMF-S0-TECHNICAL-2026-08-31-v1
+Stage 0 corrective = LGTGMF-S0-TECHNICAL-2026-08-31-v2
 Stage 1 = LGTGMF-S1-DEVELOPMENT-2026-08-31-v1
 Stage 2 = LGTGMF-S2-FORMAL-2026-08-31-v1
 ```
@@ -39,7 +40,7 @@ Disposition: **FROZEN**.
 
 Stage 1はseed `31010001..31010096`、Namua 6 / Mtaji 6 roots。Stage 2はseed `31020001..31020096`、Namua 8 / Mtaji 8 roots。Stage 2はRAW root / full trajectory / first-16 exact move opening prefixでStage 1をfirewallする。
 
-Disposition: **FROZEN / UNCONSUMED**.
+Disposition: **FROZEN / UNCONSUMED AT STAGE 0 CLOSURE**.
 
 ## DR-005 — Horizon / resource
 
@@ -57,7 +58,7 @@ Disposition: **SEALED**.
 
 Stage 0はtechnical-only。scientific seed消費なし。Stage 0 PASS前のStage 1実行はauthorizeしない。
 
-Disposition: **FROZEN**.
+Disposition: **SATISFIED BY STAGE 0 v2**.
 
 ## DR-008 — Formal decision taxonomy
 
@@ -78,10 +79,44 @@ Disposition: **FROZEN**.
 
 fresh development / formal evidence生成・read前のtechnical defectに限り、旧versionをtechnical-invalidとして永久保存し、scientific contractを変更しない新technical versionを別IDでfreezeできる。scientific seed消費後のsame-evidence rerunは不可。
 
-Disposition: **FROZEN**.
+Disposition: **FROZEN / INVOKED ONCE FOR STAGE 0 v2**.
 
 ## DR-010 — Main integration
 
 本branchの`main`統合はuserの明示的指示まで行わない。
 
 Disposition: **NOT AUTHORIZED**.
+
+## DR-011 — Stage 0 v1 disposition
+
+Workflow run `33358158087`はexecution check、historical depth-2 reference、traversal-order invariance、production / independent agreementをpassした。しかしStudy-level cross-contract auditで凍結済み`rootBranchPairOverlap`と`narrowPathRun`がformal measurement coreにmaterializeされていないことを検出した。
+
+```text
+Stage 0 v1 = STAGE0-TECHNICAL-INVALID
+Stage 1 authorization from v1 = false
+Scientific contract changed = false
+Scientific seed consumption = NONE
+```
+
+Disposition: **IMMUTABLE TECHNICAL-INVALID**.
+
+## DR-012 — Stage 0 v2 corrective disposition
+
+Corrective workflow run `33360528096`、head `3704cdf551c9ceb5b4d1740d299c054cff81fc5c`はsuccess。production / independent measurement core SHA256は`6c3c4a2aef893c09804988ef0d61a64424d415ee6bd63ebedd59e4ae91fee555`でexact一致した。
+
+Required corrective gates:
+
+```text
+rootBranchPairOverlapAgreement = true
+narrowPathRunAgreement = true
+traversalOrderInvariance = true
+historicalDepth2ReferenceAgreement = true
+productionIndependentAgreement = true
+independentImportsProductionV2 = false
+protectedStandardRootDepth10Generated = false
+protectedStandardRootDepth10Read = false
+```
+
+Stage 0 v2はtechnical-onlyでありscientific findingではない。
+
+Disposition: **STAGE0-TECHNICAL-PASS / STAGE 1 PREREQUISITE SATISFIED**.
