@@ -6,29 +6,27 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / POST-G3-01 MEASUREMENT PREREQUISITE SELECTED / NOT STARTED
+Status = ACTIVE / LGTGMIV PREREQUISITE CLOSED / G3-02 AUTHORIZATION REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-01 formal eligible measurement families = []
-G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Next scientific direction = new post-G3-01 / pre-G3-02 measurement-instrument prerequisite
-Next Study working title = Local Game-Tree Geometry Measurement Instrument Verification Study 1
-Next Study formal Study ID = NOT ASSIGNED
-Next Study scientific execution = NOT STARTED
+post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
+LGTGMIV formal eligible measurement families = all five frozen families
+G3-02 automatic start = BLOCKED
 G3-02..G3-08 automatic start = BLOCKED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
 ## 最初に読む
 
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在のprogram state、G3-01 closure、選択済みnext prerequisite、protected evidence
-- [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したprospective program plan正本。current stateは`CURRENT_STATUS.md`を優先
-- [`../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`](../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md) — G3-01後のdependency reassessmentにより次のmeasurement prerequisiteを選択したprogram-level decision
-- [`../local-game-tree-geometry-measurement-foundation/STUDY_1_OVERVIEW.md`](../local-game-tree-geometry-measurement-foundation/STUDY_1_OVERVIEW.md) — G3-01の初見向け概要
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在のprogram state、G3-01 immutable closure、LGTGMIV closure、G3-02 authorization boundary、protected evidence
+- [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したprospective program plan正本。historical planであり、current stateは`CURRENT_STATUS.md`を優先
+- [`../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md`](../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md) — completed prerequisiteの初見向け概要
+- [`../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md) — `LGTGMIV-STUDY1`最終報告
+- [`../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`](../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md) — G3-01後に新しいmeasurement prerequisiteを選択したhistorical program decision
 - [`../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md) — G3-01最終報告
-- [`../research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`](../research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md) — 第三世代をlocal game-tree geometry方向として採用したprogram-level decision
-- [`../research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md`](../research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md) — G3-01 closureとdownstream dependency decision
+- [`../research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md`](../research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md) — G3-01 technical-invalid closure
 
 ## G3-01から確定したboundary
 
@@ -38,23 +36,43 @@ G3-01は`LGTGMF-STUDY1`としてprospectively実行した。Stage 1 fresh develo
 
 G3-01のformal eligible measurement family setは`[]`であり、この結果は変更しない。
 
-## 次の研究方向
+## Post-G3-01 prerequisiteの結果
 
-次のscientific actionとして、G3-01とは別の新しいprospective independent prerequisite Studyを置く。
+G3-01とは別の新しいprospective independent Studyとして、`LGTGMIV-STUDY1`を完遂した。
 
-**Working title:** Local Game-Tree Geometry Measurement Instrument Verification Study 1
+**Formal title:** Local Game-Tree Geometry Measurement Instrument Verification Study 1
 
-**日本語working title:** Baoにおける局所ゲーム木幾何測定instrumentの新規prospective再構築と独立検証 — deterministic canonical manifest、exact RAW tree/graph reconstruction、cross-implementation reproducibilityのfresh evidenceによる確立
+**日本語題目:** Baoにおける局所ゲーム木幾何測定instrumentのprospective再構築と独立検証 — deterministic scientific core、exact RAW tree/graph reconstruction、cross-implementation reproducibilityのfresh evidenceによる確立
 
-このStudyはG3-01の再実行・救済・Study 2ではなく、G3-02でもない。G3-01 failure modeはdesign informationとしてのみ利用し、fresh Study identity / fresh seeds / fresh evidenceで測定instrument eligibilityを新規に検証する。
+Final decision:
 
-最重要設計原則は、**deterministic scientific / verification canonical coreとruntime resource telemetryの完全分離**である。production / structurally independent implementation、RAW-only identity、no symmetry reduction、canonical serialization、traversal-order invariance、root/family/stage digest reproducibilityを新Study開始時のprospective contractへ組み込む。
+**`CLOSED / FORMAL-ELIGIBLE-ALL`**
 
-正式Study ID等はまだ付与しない。新Study開始時にcurrent `main`を再監査してprospectively固定する。
+Stage 0ではsynthetic/non-scientific controlsによりdeterministic scientific core、telemetry separation、ordering invariance、production / independent implementation independenceをtechnical validationした。
+
+Stage 1ではfresh `31110001..31110128`からNamua 8 / Mtaji 8の16 rootsをdepth 5までexact reconstructionし、全global gateをPASS、5 familyすべてをpromoteした。
+
+Stage 2ではfresh formal holdout `31120001..31120192`からNamua 12 / Mtaji 12の24 rootsをdepth 5まで測定した。production / independent root reconstructionは24/24 exact一致し、5 familyそれぞれで全24 rootsおよびstage digestがexact一致、resource gateもPASSした。
+
+Formal eligible families:
+
+- `LGTGMIV-F1-TREE-OCCURRENCE`
+- `LGTGMIV-F2-RAW-GRAPH`
+- `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
+- `LGTGMIV-F4-TREE-GRAPH-RELATION`
+- `LGTGMIV-F5-REPLY-GEOMETRY`
+
+このeligibilityはfrozen RAW-only depth-5 local reconstruction instrumentに限定される。whole-Bao state/game-tree size、deeper horizon、symmetry reduction、strategic/game-theoretic value、human difficultyを自動的に成立させない。
 
 ## Downstream boundary
 
-G3-02〜G3-08のautomatic startは引き続きblockedである。新prerequisiteがformal eligible measurement familyを成立させた場合も、closure後のprogram state確認なしにG3-02を自動開始しない。G3-11用depth-10 exact holdoutはsealedのまま維持する。
+LGTGMIV Stage 2 resultは`automaticG302StartAuthorized = false`を明示している。
+
+したがってG3-02〜G3-08のautomatic startは引き続きblockedである。次のscientific actionは、current repository stateとLGTGMIV formal eligible family setを確認する**別のpost-closure G3-02 authorization review**である。review完了前にG3-02 fresh scientific evidenceを生成しない。
+
+G3-11用standard initial RAW-root complete exact depth-10 holdoutは引き続き:
+
+`SEALED / NOT GENERATED / NOT READ`
 
 ## Upstream boundary
 
@@ -66,4 +84,7 @@ validated transform set = []
 validated strategic-regime representation = none
 G2-11 = NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED
 G2-12 = TECHNICAL-INVALID / selectedEstimator null
+G3-01 = TECHNICAL-INVALID / eligible families []
 ```
+
+Research Generation 3 historical `PROGRAM_PLAN.md`はretroactiveに変更しない。
