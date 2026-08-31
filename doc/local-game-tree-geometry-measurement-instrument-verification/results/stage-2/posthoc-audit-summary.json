@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMIV-STUDY1",
+  "stageId": "LGTGMIV-S2-FORMAL-2026-08-31-v1",
+  "passed": true,
+  "formalDecision": "FORMAL-ELIGIBLE-ALL",
+  "globalGatePass": true,
+  "testedFamilies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION",
+    "LGTGMIV-F5-REPLY-GEOMETRY"
+  ],
+  "formalEligibleFamilies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION",
+    "LGTGMIV-F5-REPLY-GEOMETRY"
+  ],
+  "rootCount": 24,
+  "phaseCounts": {
+    "namua": 12,
+    "mtaji": 12
+  },
+  "exactRootReconstructionCount": 24,
+  "exactFamilyRootCounts": {
+    "LGTGMIV-F1-TREE-OCCURRENCE": 24,
+    "LGTGMIV-F2-RAW-GRAPH": 24,
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": 24,
+    "LGTGMIV-F4-TREE-GRAPH-RELATION": 24,
+    "LGTGMIV-F5-REPLY-GEOMETRY": 24
+  },
+  "stageReconstructionCoreSha256": "307c907a90cd7239a617278a2378f4e048b10f16877428a3c886de5377b01a1d",
+  "stageFamilyCoreSha256": {
+    "LGTGMIV-F1-TREE-OCCURRENCE": "a9953979274fa8092053d5daed64c2284339728ed9d125d2143b246b2ac3dfe9",
+    "LGTGMIV-F2-RAW-GRAPH": "3b000e509ec19faefd6fd6c1161e503570373c47715e1de436cc4fdfb0343f39",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "2d787070c7f49936dcf11ed26d290caeacc76a0feab63ba075c362b6919120f9",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION": "b0cd2e8c1264df81472d8e354962ec15bb970dbec39d6d84926e25f778eabf8a",
+    "LGTGMIV-F5-REPLY-GEOMETRY": "75688449f5f86fb8c027aa8d7ab4b3a05a8e9ed18614f95d841d23161e31b5b2"
+  },
+  "stageScientificCoreSha256": "97ad7dc21e1758d31fa09e487389bf5d3935b1d98daf3eaa2f1b524d7169f9a4",
+  "scientificResultFileSha256": "9a28e629440a1d9212ad67ef78451deba869747d313dc75462693701074e1f96",
+  "telemetryFileSha256": "0db24cc1d1f59432a519dfaad88ffffe8d2217d1cebf4291b6361dc8f2778bc0",
+  "stageElapsedMs": 159574.533277,
+  "stageArtifactBytes": 6086521,
+  "resourceAuditPass": true,
+  "telemetryExcludedFromScientificDigest": true,
+  "scientificReexecutionPerformed": false,
+  "engineImported": false,
+  "protectedStandardRootDepth10Generated": false,
+  "protectedStandardRootDepth10Read": false,
+  "automaticG302StartAuthorized": false
+}
