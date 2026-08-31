@@ -125,4 +125,47 @@ At authorization time the Stage 2 fresh block remained `NOT GENERATED / NOT READ
 - job: `99682401722 / success`
 - checkpoint: `checkpoints/2026-09-01-stage-2-tooling-smoke-pass.md`
 
-The smoke used only committed Stage 1 identities plus synthetic controls. It verified dual-firewall binding and production/independent selector separation without reading or generating any Stage 2 fresh holdout evidence. Stage 2 remains not yet executed at this decision point.
+The smoke used only committed Stage 1 identities plus synthetic controls. It verified dual-firewall binding and production/independent selector separation without reading or generating any Stage 2 fresh holdout evidence.
+
+## D-019 — Stage 2 formal disposition
+
+**Decision:** Accept the single authorized Stage 2 fresh formal holdout execution as `FORMAL-ELIGIBLE-ALL`.
+
+- pre-execution checkpoint: `checkpoints/2026-09-01-stage-2-preexecution-pass.md`
+- execution trigger commit: `ba1358b39b30b042b7aedb5eaca819147d6d54ee`
+- formal workflow run: `33452082425 / success`
+- immutable result commit: `5fbdd72a8c0a8d34b1b74cf0829a6f972812a549`
+- population: 24/24 unique RAW roots, 12 Namua + 12 Mtaji
+- depth: 5
+- consumed block: `31120001..31120192`
+- global gate: PASS
+- resource gate: PASS
+- exact production/independent root reconstruction: 24/24
+- formal eligible families: all five frozen LGTGMIV families
+
+The Stage 2 no-rescue boundary is permanent. No same-block formal rerun or repair is authorized.
+
+## D-020 — Read-only post-result audit and Study closure
+
+**Decision:** Accept the Stage 2 read-only audit and close `LGTGMIV-STUDY1` as `CLOSED / FORMAL-ELIGIBLE-ALL`.
+
+- audit workflow run: `33452400324 / success`
+- audit result commit: `ad057e499e34f70493ac1d7332fe42332323d293`
+- audit passed: true
+- scientific re-execution: false
+- engine import by audit: false
+- exact reconstruction roots: 24/24
+- each family exact roots: 24/24
+- protected depth-10 generated/read: false/false
+
+Formal eligible family set is fixed to:
+
+- `LGTGMIV-F1-TREE-OCCURRENCE`
+- `LGTGMIV-F2-RAW-GRAPH`
+- `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
+- `LGTGMIV-F4-TREE-GRAPH-RELATION`
+- `LGTGMIV-F5-REPLY-GEOMETRY`
+
+This eligibility is bounded to the frozen RAW-only depth-5 local measurement instrument. It does not authorize whole-Bao geometry claims or deeper-horizon extrapolation.
+
+`automaticG302StartAuthorized` remains false. G3-02..G3-08 remain blocked pending a separate program-level post-closure authorization review. The protected standard-root complete depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
