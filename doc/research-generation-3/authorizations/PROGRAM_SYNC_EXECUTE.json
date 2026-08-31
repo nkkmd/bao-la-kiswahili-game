@@ -11,5 +11,10 @@
     "README.md",
     "doc/FUTURE_RESEARCH_AGENDA.md",
     "doc/RESEARCH_INDEX.md"
-  ]
+  ],
+  "initialWorkflowParseFailureRun": 33349507397,
+  "successfulWorkflowRun": 33349600721,
+  "centralDocumentSyncCommit": "29d60820f516aad73350d8b5cf63aaa3180025bd",
+  "temporaryWorkflowRemoved": true,
+  "temporarySyncFragmentsRemoved": true
 }
