@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "authorizedAt": "2026-08-31",
+  "purpose": "Correct two current-facing references that still described G2-11 as merely NOT-AUTHORIZED after the later agenda-level NON-ESTIMABLE closure.",
+  "targetBranch": "research/g2-final-program-closure",
+  "currentStateCorrectionAuthorized": true,
+  "scientificExecutionAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "allowedPaths": [
+    "README.md",
+    "doc/RESEARCH_INDEX.md"
+  ]
+}
