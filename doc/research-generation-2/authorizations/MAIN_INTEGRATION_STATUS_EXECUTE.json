@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "authorizationDate": "2026-08-31",
+  "retryNonce": 2,
   "mainIntegrationStatusSyncAuthorized": true,
   "scientificExecutionAuthorized": false,
   "scientificDecisionChangeAuthorized": false,
@@ -10,7 +11,6 @@
     "doc/research-generation-2/CURRENT_STATUS.md",
     "doc/research-generation-2/FINAL_SYNTHESIS.md",
     "doc/research-generation-2/PROGRAM_FINAL_RESULT.json",
-    "doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md",
-    "doc/research-generation-2/checkpoints/2026-08-31-main-integration-complete.md"
+    "doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md"
   ]
 }
