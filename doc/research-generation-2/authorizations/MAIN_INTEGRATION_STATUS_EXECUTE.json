@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "authorizationDate": "2026-08-31",
+  "mainIntegrationStatusSyncAuthorized": true,
+  "scientificExecutionAuthorized": false,
+  "scientificDecisionChangeAuthorized": false,
+  "targetBranch": "main",
+  "fastForwardIntegratedSha": "5210f70df6faca528fc1bd419808bc7664d7a447",
+  "allowedPaths": [
+    "doc/research-generation-2/CURRENT_STATUS.md",
+    "doc/research-generation-2/FINAL_SYNTHESIS.md",
+    "doc/research-generation-2/PROGRAM_FINAL_RESULT.json",
+    "doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md",
+    "doc/research-generation-2/checkpoints/2026-08-31-main-integration-complete.md"
+  ]
+}
