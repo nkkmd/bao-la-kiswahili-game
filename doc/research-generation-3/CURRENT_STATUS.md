@@ -13,10 +13,10 @@ G3-01 formal eligible measurement families = []
 G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G3-01 Stage 1 seed consumption = 31010001..31010096
 G3-01 Stage 2 seed consumption = NONE
+G3-01 main integration = COMPLETE
 G3-02..G3-08 automatic start = BLOCKED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 Current research branch = research/g3-01-local-game-tree-geometry-measurement-foundation
-Current branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
 ## Program direction
@@ -98,4 +98,4 @@ G3-01:
 - `../local-game-tree-geometry-measurement-foundation/DECISION_REGISTER.md`
 - `../local-game-tree-geometry-measurement-foundation/REPRODUCIBILITY_INDEX.md`
 
-Research Generation 3のprogram plan自体は`main`へ統合済みだが、G3-01のscientific branchはまだ`main`へ統合していない。
+Research Generation 3のprogram planとG3-01 scientific closureはいずれも`main`へ統合済みである。G3-01のintegrationはscientific dispositionを変更せず、次のscientific actionには引き続きdependency reassessmentが必要である。
