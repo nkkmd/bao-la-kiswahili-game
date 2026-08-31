@@ -4,19 +4,20 @@ Updated: 2026-08-31
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = PROSPECTIVE PLAN FROZEN ON RESEARCH BRANCH / NOT YET STARTED
+Program status = PROSPECTIVE PLAN INTEGRATED TO MAIN / NOT YET STARTED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Planning branch = research/g3-program-plan
 Baseline main = cd200b85c1eb24aa4419bd5a9573552f3682f00d
-Central documentation synchronization = COMPLETE ON PLANNING BRANCH
+Planning branch integration target = 6b1e022b3b2392071b5fd91088a9d83d2f7b2ed8
+Central documentation synchronization = COMPLETE / INTEGRATED TO MAIN
 Temporary write-capable synchronization workflow = REMOVED
 Temporary synchronization fragments = REMOVED
 Scientific Study execution = NOT STARTED
 Formal Study ID assignment = NOT STARTED
 Seed consumption = NONE
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Main integration = NOT PERFORMED
+Main integration = COMPLETE
 ```
 
 ## Program direction
@@ -63,7 +64,7 @@ G3-01〜G3-10では、depth-10 scientific counts / geometry outcomeを生成・r
 
 ## Central documentation synchronization
 
-第三世代program planはplanning branch上で次の中央文書へ同期済みである。
+第三世代program planはplanning branch上で次の中央文書へ同期し、その後`main`へfast-forward統合した。
 
 - root `README.md`
 - `doc/RESEARCH_INDEX.md`
@@ -72,6 +73,14 @@ G3-01〜G3-10では、depth-10 scientific counts / geometry outcomeを生成・r
 同期用temporary workflowの初版はYAML parse段階で停止し、repository contentまたはscientific stateを変更しなかった。workflow mechanicsのみを修正し、run `33349600721`で3中央文書への同期を完了した。同期commitは`29d60820f516aad73350d8b5cf63aaa3180025bd`である。
 
 同期完了後、temporary workflowと同期用fragmentはplanning branchから削除した。Authorization JSONはprovenanceとして保持するが、それをtriggerするtemporary workflowは存在しない。
+
+## Main integration
+
+2026-08-31、統合直前のremote `main`がplanning開始時baseline `cd200b85c1eb24aa4419bd5a9573552f3682f00d`から変更されていないことを再確認した。
+
+planning branch HEAD `6b1e022b3b2392071b5fd91088a9d83d2f7b2ed8`は`main`に対して`ahead 17 / behind 0`、merge baseはbaseline mainそのものだったため、`force = false`でfast-forward integrationを実施した。
+
+統合対象差分は第三世代program planning、中央文書、governance、provenanceに限定され、scientific Study result、scientific artifact、engine、experiment toolingは変更していない。
 
 ## Next Study candidate
 
@@ -86,8 +95,9 @@ G3-01〜G3-10では、depth-10 scientific counts / geometry outcomeを生成・r
 - `CURRENT_STATUS.md`
 - `authorizations/PROGRAM_SYNC_EXECUTE.json`
 - `checkpoints/2026-08-31-program-plan-central-sync-complete.md`
+- `checkpoints/2026-08-31-main-integration-complete.md`
 - `../research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`
 - `../FUTURE_RESEARCH_AGENDA.md` Section 10
 - `../RESEARCH_INDEX.md` Section 30
 
-本statusはplanning branch上の状態であり、`main`への統合はまだ実施していない。Research Generation 3のscientific Studyもまだ開始していない。
+Research Generation 3のprogram planは`main`へ統合済みだが、scientific Studyはまだ開始していない。
