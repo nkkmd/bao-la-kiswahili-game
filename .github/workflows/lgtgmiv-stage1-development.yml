@@ -1,0 +1,40 @@
+name: LGTGMIV Stage 1 Development Formal Execution
+
+on:
+  push:
+    branches:
+      - research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+    paths:
+      - doc/local-game-tree-geometry-measurement-instrument-verification/authorizations/2026-09-01-stage-1-execution-trigger.md
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lgtgmiv-stage1-development-one-shot
+  cancel-in-progress: false
+
+jobs:
+  formal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Refuse any rerun after result materialization
+        run: |
+          test ! -e doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/scientific-result.json
+      - name: Execute authorized one-shot fresh development stage
+        run: node tools/experiments/run-lgtgmiv-stage1-development.js
+      - name: Commit immutable Stage 1 result artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/scientific-result.json
+          git add doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/telemetry.json
+          git add doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/execution-summary.json
+          git commit -m "Record LGTGMIV Stage 1 development result"
+          git push
