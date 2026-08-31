@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMF-STUDY1",
+  "stageId": "LGTGMF-S0-TECHNICAL-2026-08-31-v1",
+  "workflowRunId": 33358158087,
+  "workflowHeadSha": "7f418730e9267d3dd74236f12ab0443e8ed3aca4",
+  "workflowConclusion": "success",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "scientificInferenceAuthorized": false,
+  "scientificSeedConsumption": "NONE",
+  "executionChecksPassed": true,
+  "productionSummarySha256": "c2af716aa501743fcdd10c7ac59f1d9ccb62ccc7ef21e86197de495b551558c9",
+  "productionIndependentMeasurementCoreSha256": "65cfd8b37503ea623a14f3ea1a8a47ac15732ce63877ae1017199a79bad4d121",
+  "independentVerificationSha256": "3a54ae1738a34b740f2f5a00e932930de32f53b88e2e689d9d2ea7253a3d6bf9",
+  "artifactZipSha256": "b1e4da7c0e798ab33323104690bdc15a38a3cb6d444f01014c11f61d8ccb4901",
+  "historicalDepth2ReferenceAgreement": true,
+  "traversalOrderInvariance": true,
+  "productionIndependentAgreement": true,
+  "protectedStandardRootDepth10Generated": false,
+  "protectedStandardRootDepth10Read": false,
+  "crossContractCompletenessAudit": {
+    "passed": false,
+    "defects": [
+      "frozen rootBranchPairOverlap primitive was not materialized by the v1 measurement core",
+      "frozen narrowPathRun exact records/histogram were not materialized by the v1 measurement core"
+    ]
+  },
+  "stageDisposition": "STAGE0-TECHNICAL-INVALID",
+  "stage1AuthorizationFromV1": false,
+  "correctiveTechnicalRefreezeAuthorized": true,
+  "correctiveRule": "fresh development/formal evidence has not been generated or read; preserve v1 and refreeze technical implementation without changing scientific contract"
+}
