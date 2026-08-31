@@ -56,6 +56,35 @@ whole-Bao game-tree estimate authorized = false
 
 既存G2 Studyのformal results、thresholds、population、seed、scientific artifacts、engine/toolingは変更していない。
 
+## Historical ledger interpretation
+
+`doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`のPSRRE closure節およびG2-12 closure節にある`G2-11 remains NOT-AUTHORIZED`は、それぞれのclosure時点を記録するchronological ledgerである。その直後に2026-08-31 G2-11 dependency-gate formal closure節とResearch Generation 2 program closure節が追記され、現在状態をsupersedeしている。
+
+したがって、これらの履歴記録を現在状態へ機械的に書き換えず、README / RESEARCH_INDEX / FUTURE_RESEARCH_AGENDA / CURRENT_STATUS等のcurrent-facing文書を最終状態へ同期する方針を維持する。
+
+## Final branch / integration audit
+
+最終文書補正後の再監査時点で次を確認した。
+
+```text
+remote main = 9f64aba1aa2364621196c1aeccda02bf74217f20
+last audited closure head before status finalization = 0a86822e0995562d63beb5e2c23d161bde869803
+compare status = ahead
+behind_by = 0
+merge base = 9f64aba1aa2364621196c1aeccda02bf74217f20
+```
+
+したがってclosure branchはremote `main`のfast-forward descendantであり、main-side divergenceはない。このcheckpointおよびCURRENT_STATUSのfinalizationは文書のみの追加commitであり、scientific contentを変更しない。
+
+一時的なwrite-capable synchronization / correction surfaceについても次の4 pathがすべて不存在（404）であることを確認した。
+
+- `.github/workflows/g2-final-program-central-sync.yml`
+- `.github/workflows/g2-final-current-state-correction.yml`
+- `tools/maintenance/sync-g2-final-program-docs.py`
+- `tools/maintenance/correct-g2-final-current-state.py`
+
+Authorization JSONはprovenanceとして残るが、それらをtriggerする一時workflowは存在しない。
+
 ## Integration state
 
-このcheckpoint作成時点で`main`統合は未実施である。closure branchはremote `main`のfast-forward descendantであることを最終確認してから統合判断を行う。
+`main`統合は未実施である。最終文書整合監査は完了しており、明示的な統合指示がある場合にのみfast-forward integrationを行う。
