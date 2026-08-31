@@ -930,7 +930,7 @@ G2-05 `DRSSE-STUDY1`のimmutable depth 0..9 exact summariesだけをdevelopment 
 
 Stage 1は別source freeze・別authorizationでG2-05 depth 0..9のreal development competitionを一度だけ実行した。Production-onlyではE2 `E2-LOG-QUADRATIC-D2PLUS`がproposalされたが、mandatory independent verifierがE2 / `newRawStateCount` / depth 7で凍結済みcross-implementation relative tolerance `1e-12`を超えるprediction mismatchを検出した。Stage 1 authorizationはsame-evidence rerunを禁止していたため、tolerance緩和やverifier修正による救済を行わず`STAGE1-TECHNICAL-INVALID`で閉じた。
 
-したがってcanonical `selectedEstimator = null`であり、production-only E2 proposalはdiagnostic provenanceに限定する。Fresh depth 10/11は生成もreadもしておらず、formal holdout validationは実施していない。G2-05の`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`とG2-11の`NOT-AUTHORIZED`は不変である。
+したがってcanonical `selectedEstimator = null`であり、production-only E2 proposalはdiagnostic provenanceに限定する。Fresh depth 10/11は生成もreadもしておらず、formal holdout validationは実施していない。G2-05の`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`は不変である。G2-11はG2-12 closure後のprogram decisionにより、agenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`としてformal closureした。
 
 **最初に読む:**
 
