@@ -40,7 +40,6 @@ jobs:
             'doc/research-generation-2/FINAL_SYNTHESIS.md',
             'doc/research-generation-2/PROGRAM_FINAL_RESULT.json',
             'doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md',
-            'doc/research-generation-2/checkpoints/2026-08-31-main-integration-complete.md',
           }
           assert set(d['allowedPaths']) == expected
           PY
@@ -70,6 +69,10 @@ jobs:
           text = replace_once(text,
               'Main integration = NOT PERFORMED',
               'Main integration = COMPLETE', 'CURRENT_STATUS main integration')
+          text = replace_once(text,
+              '- `checkpoints/2026-08-31-final-document-consistency-audit.md`',
+              '- `checkpoints/2026-08-31-final-document-consistency-audit.md`\n- `checkpoints/2026-08-31-main-integration-complete.md`',
+              'CURRENT_STATUS checkpoint list')
           old = 'このstatusはclosure research branch上の状態である。`main`への統合は実施していない。最終文書整合監査は完了しており、明示的な統合指示がある場合にのみfast-forward integrationを行う。'
           new = '`main`へのfast-forward integrationは2026-08-31に完了した。Research Generation 2 core programは中央文書・program-level正本・最終整合監査を含めて`main`上に統合済みである。'
           text = replace_once(text, old, new, 'CURRENT_STATUS final paragraph')
@@ -97,13 +100,6 @@ jobs:
           new = '中央文書同期と最終監査を完了後、明示的な統合指示に基づき2026-08-31に`main`へfast-forward integrationを完了した。科学的decision、claim boundary、G2-H01のdeferred / non-blocking状態は変更していない。'
           text = replace_once(text, old, new, 'program closure integration sentence')
           p.write_text(text, encoding='utf-8')
-
-          checkpoint = Path('doc/research-generation-2/checkpoints/2026-08-31-main-integration-complete.md')
-          if checkpoint.exists():
-              raise RuntimeError('integration checkpoint already exists')
-          checkpoint.write_text('''# 2026-08-31 — Research Generation 2 main integration complete\n\n## Integration\n\nResearch Generation 2 program closure branchをremote `main`へforceなしのfast-forwardで統合した。\n\n```text\npre-integration main = 9f64aba1aa2364621196c1aeccda02bf74217f20\nclosure branch audited head = 5210f70df6faca528fc1bd419808bc7664d7a447\ncompare before integration = ahead 26 / behind 0\nmerge base = 9f64aba1aa2364621196c1aeccda02bf74217f20\nfast-forward target = 5210f70df6faca528fc1bd419808bc7664d7a447\nforce = false\n```
-\n## Scientific state unchanged\n\n```text\nResearch Generation 2 core = CLOSED\nG2-11 = NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED / Study ID not assigned\nG2-11 scientific outcome generated = false\nG2-H01 = DEFERRED / INDEPENDENT / NON-BLOCKING\nvalidated transform set = []\nvalidated strategic-regime representation = none\nG2-12 = TECHNICAL-INVALID / selectedEstimator null\nfresh depth 10/11 = not generated / not read\nwhole-Bao state-space/game-tree estimate = not authorized\n```
-\n本integrationはrepository stateの統合であり、既存Studyのformal decision、threshold、population、seed、scientific artifactを変更しない。\n\n## Post-integration status synchronization\n\n`CURRENT_STATUS.md`、`FINAL_SYNTHESIS.md`、`PROGRAM_FINAL_RESULT.json`、program closure decisionのintegration-state表記だけをmain統合済みへ同期した。同期用temporary workflowは完了確認後に削除する。\n''', encoding='utf-8')
           PY
 
       - name: Verify diff scope
@@ -117,10 +113,9 @@ jobs:
             'doc/research-generation-2/FINAL_SYNTHESIS.md',
             'doc/research-generation-2/PROGRAM_FINAL_RESULT.json',
             'doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md',
-            'doc/research-generation-2/checkpoints/2026-08-31-main-integration-complete.md',
           }
-          changed = set(filter(None, subprocess.check_output(['git','status','--short'], text=True).splitlines()))
-          paths = {line[3:] for line in changed}
+          lines = subprocess.check_output(['git','status','--short'], text=True).splitlines()
+          paths = {line[3:] for line in lines if line}
           assert paths == expected, (paths, expected)
           PY
 
@@ -133,7 +128,6 @@ jobs:
           git add doc/research-generation-2/CURRENT_STATUS.md \
                   doc/research-generation-2/FINAL_SYNTHESIS.md \
                   doc/research-generation-2/PROGRAM_FINAL_RESULT.json \
-                  doc/research-generation-2/checkpoints/2026-08-31-main-integration-complete.md \
                   doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md
           git commit -m "Record Research Generation 2 main integration completion"
           git push origin HEAD:main
