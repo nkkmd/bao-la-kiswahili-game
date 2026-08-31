@@ -974,44 +974,47 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — Prospective Program Plan
+### 30. Research Generation 3 — G3-01 closure / dependency reassessment
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **PROSPECTIVE PLAN / NOT YET STARTED / scientific Study execution 0**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / dependency reassessment required**
 
-Research Generation 3は、第二世代で最も強く成立したRAW-only bounded exact analysisを基盤とし、Baoのlocal game-tree geometry / effective branching structureを中心研究対象とする。第二世代のstrategic clusteringやgrowth estimatorを救済せず、branching、reply width、transposition、reconvergence、tree/graph divergenceを局面周辺の直接的なbounded computational structureとして測定する。
+Research Generation 3はRAW-only bounded exact analysisを基盤としてlocal game-tree geometryを扱うprogramである。最初のmeasurement foundation Study `G3-01`は正式に`LGTGMF-STUDY1`として開始・実行され、`TECHNICAL-INVALID`で閉じた。
 
-ProgramはWave A-Dで構成する。
+Stage 0 corrective v2はtechnical pass。Fresh Stage 1ではNamua 6 / Mtaji 6の全12 rootsをdepth 5までproduction / independent双方でcomplete reconstructionし、root-level measurement coreとF1〜F5 family digestはすべてexact一致した。しかし、凍結済みcanonical stage manifestの`stageCoreSha256`へelapsed / RSS等のnon-deterministic resource observationsを含めたimplementation defectによりstage-level digestが一致しなかった。fresh seed消費後のsame-evidence repairは禁止されていたためfail-closedとした。
 
 ```text
-Wave A: G3-01..G3-04 = local geometry foundations
-Wave B: G3-05..G3-08 = geometry dynamics / mechanisms
-Wave C: G3-09..G3-10 = continuous representation / longitudinal theory
-Wave D: G3-11..G3-12 = protected depth-10 holdout / generalization
-Human:  G3-H01 = independent / non-blocking
+LGTGMF-STUDY1 = TECHNICAL-INVALID
+formal eligible measurement families = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 seed consumption = 31010001..31010096
+Stage 2 seed consumption = NONE
+protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-standard initial RAW rootのdepth 10はG3-11用`FRESH-DEEPER-EXACT-HOLDOUT`としてsealedに保護する。G3-01〜G3-10ではdepth-10 scientific outcomeを生成・readせず、G2-12 production-only estimator proposalも持ち込まない。
+Program contract上、G3-02〜G3-08は原則としてG3-01でformal eligibilityを得たmeasurement familyだけを利用する。本Studyのeligible setは空なので、同instrumentのまま後続Studyを自動開始しない。新しいprospective measurement prerequisite Studyまたはprogram-level dependency decisionが必要である。
 
-最初の推奨Agenda itemは`G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1`である。ただしformal Study ID、正式題目、Stage ID、seed、population、horizon、metric schema、threshold、decision taxonomyは未固定であり、G3-01開始時にcurrent `main`とrepository naming ruleを再監査してprospectively固定する。
+**G3-01を最初に読む:**
 
-**最初に読む:**
+- [`local-game-tree-geometry-measurement-foundation/STUDY_1_OVERVIEW.md`](local-game-tree-geometry-measurement-foundation/STUDY_1_OVERVIEW.md)
+- [`local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`](local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md)
+- [`local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md`](local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md)
+- [`local-game-tree-geometry-measurement-foundation/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-measurement-foundation/REPRODUCIBILITY_INDEX.md)
 
-- [`research-generation-3/README.md`](research-generation-3/README.md) — 第三世代文書入口
-- [`research-generation-3/PROGRAM_PLAN.md`](research-generation-3/PROGRAM_PLAN.md) — 第三世代全体の詳細計画正本
-- [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md) — 現在状態とprotected evidence
+**Program records:**
 
-**Program decision:**
-
+- [`research-generation-3/PROGRAM_PLAN.md`](research-generation-3/PROGRAM_PLAN.md)
+- [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 - [`research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`](research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md)
+- [`research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md`](research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md)
 
-**Boundary:** G2-05 exact depth-9 result、validated transform set `[]`、G2-11 `NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED`、G2-12 `TECHNICAL-INVALID / selectedEstimator null`をimmutable upstreamとして扱う。第三世代program plan自体はscientific outcomeを生成せず、G3 Study executionを自動authorizeしない。
+**Boundary:** G2-05 depth-9 exact result、validated transform set `[]`、G2-11 / G2-12 closureを変更しない。G3-01のStage 1 exact family agreementをformal eligibilityへ救済しない。standard-root depth 10はG3-11用にsealedしたまま維持する。
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** prospective plan recorded on 2026-08-31; scientific Study execution has not started. G3-01 is the first recommended agenda item, and standard-root depth 10 is sealed for G3-11.
+**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` is closed `TECHNICAL-INVALID`; formal eligible measurement families are empty and G3-02〜G3-08 automatic start is blocked pending a new prospective prerequisite or program-level dependency decision. Standard-root depth 10 remains sealed for G3-11.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

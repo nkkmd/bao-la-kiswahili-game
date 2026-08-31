@@ -1264,7 +1264,7 @@ standard initial RAW rootのdepth 10 exact layerは`G3-11`用`FRESH-DEEPER-EXACT
 
 ### 10.5 Wave A — Local Geometry Foundations
 
-- **G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1**: branching、reply width、transposition、reconvergence、tree/graph divergenceの再現可能なmeasurement foundationを構築する。**P0 / first recommended Study**
+- **G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1**: `LGTGMF-STUDY1`として実行・closure済み。Stage 1でroot-level / F1〜F5 exact agreementは得たがcanonical stage-manifest implementation defectによりformal decision `TECHNICAL-INVALID`、eligible family `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。同evidenceを修正rerunせず、新規prospective prerequisiteまたはdependency再設計が必要。**CLOSED / dependency-blocking**
 - **G3-02 — Effective Branching / Reply-Width Structure Study 1**: 数plyにわたるeffective branching / reply-width profileが再現可能な局面特性として存在するかを検証する。**P0**
 - **G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1**: tree occurrenceとunique RAW graphの乖離、multi-parent、reconvergenceをexactに測定する。symmetry quotientは使用しない。**P0**
 - **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: reply narrowingが持続するcorridorと、多数branchが少数RAW stateへ収束するfunnelを検証する。`forcing`はstructural forcingのみを意味する。**P0**
@@ -1342,15 +1342,21 @@ Research Generation 3はpositive resultの数で完了判定しない。
 13. public AI engineeringをscientific successへ読み替えていない。
 14. Research Generation 3全体のfinal synthesisが作成されている。
 
-### 10.12 現在の開始状態
+### 10.12 現在状態
 
-2026-08-31時点ではprogram planningのみ完了しており、scientific Studyは開始していない。
+2026-08-31、G3-01は`LGTGMF-STUDY1`としてprospectively開始され、Stage 1まで実行した後`TECHNICAL-INVALID`で閉じた。
 
 ```text
-Research Generation 3 = PROSPECTIVE PLAN / NOT YET STARTED
-G3-01 formal Study ID = NOT ASSIGNED
-scientific seed consumption = NONE
+Research Generation 3 = ACTIVE / DEPENDENCY REASSESSMENT REQUIRED
+G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-01 formal eligible measurement families = []
+G3-01 Stage 1 seed consumption = 31010001..31010096
+G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-01 Stage 2 seed consumption = NONE
+G3-02..G3-08 automatic start = BLOCKED
 protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-最初の推奨Studyは`G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1`である。開始時にremote `main`を再監査し、正式Study ID、Stage ID、technical fixture、fresh seed blocks、local horizon、population、metric schema、independent verifier boundary、formal decision taxonomyをoutcome生成前にprospectively固定する。
+G3-01 Stage 1では全12 selected rootsのproduction / independent root-level measurement coreとF1〜F5 family digestがexact一致したが、deterministic stage manifestを要求した凍結contractに対して、implementationがruntime-dependent resource observationsをstage hashへ含めたためtechnical integrity gateを満たさなかった。fresh evidence消費後のsame-evidence repairは禁止されているため、このdevelopment agreementをformal eligibilityへ昇格させない。
+
+次に進む場合は、G3-01をreopen / rescueせず、新しいprospective measurement-instrument prerequisite Studyを設計するか、Research Generation 3 dependency graphをprogram-level decisionとして再設計する。G3-02以降を通常順序で自動開始しない。
