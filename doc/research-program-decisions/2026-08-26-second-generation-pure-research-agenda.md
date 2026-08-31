@@ -299,3 +299,41 @@ Study formal decision = TECHNICAL-INVALID
 ```
 
 The production-only E2 proposal is retained as diagnostic provenance only and is not an accepted Stage 2 input or a validated growth estimator. `DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN` remains unchanged. G2-11 remains `NOT-AUTHORIZED` because its strategic-representation dependency is still unresolved; G2-12 does not alter that dependency. A corrected growth-estimator attempt requires a new prospective Study or explicit new version.
+
+## 2026-08-31 — G2-11 dependency-gate formal closure
+
+G2-10 `UMSSR-STUDY1`はeligible frozen strategic representationを生成せず、独立Pre-G2-11 prerequisite `PSRRE-STUDY1`も`NON-ESTIMABLE` / `selectedRepresentation = null`で閉じた。
+
+追加representation prerequisite StudyをResearch Generation 2内で繰り返さず、closed Studyのthreshold / feature / family / seedを結果後に救済しないprogram decisionを採用した。
+
+```text
+G2-11 formal Study ID = NOT ASSIGNED
+G2-11 scientific disposition = NON-ESTIMABLE
+G2-11 execution = NOT-AUTHORIZED-NOT-EXECUTED
+scientific outcome generated = false
+```
+
+これはlong-horizon transition structureへのnegative evidenceではなく、required input representation dependency不成立によるagenda-level estimability closureである。
+
+Canonical decision: `doc/research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`。
+
+## 2026-08-31 — Research Generation 2 program closure
+
+Core agenda `G2-01..G2-12`はprospective stop rule / dependency gateに従ってformal closureした。G2-11を上記dependency-gated `NON-ESTIMABLE` closureとし、G2-12 `SSGTGE-STUDY1 = TECHNICAL-INVALID`を含む全core agenda itemに明示的なterminal dispositionが存在する。
+
+Section 9.9のprogram completion conditionsを監査し、final synthesisを作成したためResearch Generation 2 core programを`CLOSED`とする。
+
+```text
+Research Generation 2 core = CLOSED
+G2-H01 = DEFERRED / INDEPENDENT / NON-BLOCKING
+RAW identity = authoritative
+validated transform set = []
+validated strategic-regime representation = none
+formal whole-Bao state-space/game-tree estimate = not authorized
+public AI engineering = separate from scientific success
+```
+
+Canonical synthesis: `doc/research-generation-2/FINAL_SYNTHESIS.md`。  
+Machine-readable closure: `doc/research-generation-2/PROGRAM_FINAL_RESULT.json`。  
+Program closure decision: `doc/research-program-decisions/2026-08-31-research-generation-2-program-closure.md`。
+

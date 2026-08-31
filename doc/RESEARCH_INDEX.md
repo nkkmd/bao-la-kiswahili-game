@@ -947,11 +947,38 @@ Stage 1は別source freeze・別authorizationでG2-05 depth 0..9のreal developm
 **Boundary:** 本StudyはE2をvalidated estimatorとして承認せず、depth 10の状態数・game-tree node数、full Bao state-space / game-tree sizeを推定結果として主張しない。再検証はnew prospective Studyまたはexplicit new versionを必要とする。
 
 
+### 29. Research Generation 2 — Program Closure / Final Synthesis
+
+**Program:** Bao Second-Generation Research Program / **Core:** `G2-01..G2-12`  
+**状態:** **PROGRAM CLOSED / G2-11 agenda-level `NON-ESTIMABLE` / G2-H01 deferred non-blocking**
+
+Research Generation 2は、positive resultの数ではなく、各agenda questionをprospective stop rule、dependency gate、independent verification、no-rescue ruleに従ってformal closureし、その解釈境界を保存することを完了条件としていた。
+
+G2-10 `UMSSR-STUDY1`はeligible frozen strategic representationを生成せず、独立Pre-G2-11 prerequisite `PSRRE-STUDY1`も`NON-ESTIMABLE` / `selectedRepresentation = null`で閉じた。追加representation prerequisite StudyをこのGeneration内で繰り返さないprogram decisionにより、G2-11はStudyを開始せず、formal Study IDも付与しないままagenda-level scientific disposition `NON-ESTIMABLE`、execution `NOT-AUTHORIZED-NOT-EXECUTED`として閉じた。これはlong-horizon transition structureのnegative resultではない。
+
+G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosure済みであり、fresh depth 10/11は未生成・未読である。これによりcore `G2-01..G2-12`は全てformal closureを持つ。
+
+**最初に読む:**
+
+- [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) — Research Generation 2全体の科学的統合とclaim boundary
+
+**Program closure records:**
+
+- [`research-generation-2/PROGRAM_FINAL_RESULT.json`](research-generation-2/PROGRAM_FINAL_RESULT.json) — machine-readable program closure
+- [`research-generation-2/CURRENT_STATUS.md`](research-generation-2/CURRENT_STATUS.md) — current closure state
+- [`research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`](research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md) — G2-11 dependency-gate closure
+- [`research-program-decisions/2026-08-31-research-generation-2-program-closure.md`](research-program-decisions/2026-08-31-research-generation-2-program-closure.md) — program closure decision
+
+**Boundary:** G2-11を実行済みStudyとして扱わない。G2-10 / PSRREのthresholdやrepresentationを結果後に救済しない。将来のstrategic representation、long-horizon transition、canonicalization、growth estimation等は新しい研究世代または独立prospective programとして扱う。
+
+
+---
+
 ## 将来研究
 
-**現在のPre-G2-11 dependency state:** `PSRRE-STUDY1` completed / formal decision `NON-ESTIMABLE` / G2-11 remains `NOT-AUTHORIZED`.
+**Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 
-G2-10後に選択したstrategic representation prerequisiteは`PSRRE-STUDY1`としてprospectively実施し、Stage 1をtechnical/resource/full-exact verification PASSのうえで完遂した。しかし、frozen readiness gate `nonzero-MAD features >= 20`に対し15だったためStudyは`NON-ESTIMABLE`で閉じ、frozen representationを生成しなかった。したがってG2-11へ入力可能なrepresentation dependencyは依然未解決であり、`UMSSR-STUDY1`または`PSRRE-STUDY1`のunvalidated representationを事後昇格させてG2-11を開始しない。Program-level closureは[`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md)を参照。
+第二世代の未成立課題を再検討する場合、closed G2 StudyやPSRRE-STUDY1をreopen / rescueせず、新しい研究世代または独立prospective programとしてfresh contract・fresh evidenceを用いる。Program final synthesisは[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)を参照。
 
 既存研究から切り出された独立課題や、新しい研究テーマは次に集約します。
 
