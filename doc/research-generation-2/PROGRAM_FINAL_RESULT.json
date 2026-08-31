@@ -57,15 +57,22 @@
     "futureRevisitRequiresNewProspectiveProgramOrResearchGeneration": true
   },
   "completionConditions": {
-    "coreAgendaFormalClosures": true,
-    "noOutcomeDrivenRescue": true,
+    "section9_9_1_coreAgendaFormalClosures": true,
+    "section9_9_2_noOutcomeDrivenRescue": true,
+    "section9_9_3_researchGeneration1BoundariesPreserved": true,
+    "section9_9_4_studyProvenanceReproduciblyPreserved": true,
+    "section9_9_5_constructSeparationPreserved": true,
+    "section9_9_6_strategicRepresentationDecisionPresent": true,
+    "section9_9_7_longHorizonTransitionDispositionPresent": true,
+    "section9_9_8_expandedExactAndDeepRawEnumerationClosed": true,
+    "section9_9_9_growthEstimationFormalClosurePresent": true,
+    "section9_9_10_finalSynthesisCreated": true,
+    "section9_9_11_engineeringSeparationPreserved": true
+  },
+  "additionalGovernanceChecks": {
+    "prospectivePopulationSeedIdentityEndpointSeparationPreserved": true,
     "independentVerificationBoundariesPreserved": true,
-    "strategicRepresentationDecisionPresent": true,
-    "longHorizonTransitionDispositionPresent": true,
-    "expandedExactAndDeepRawEnumerationClosed": true,
-    "growthEstimationFormalClosurePresent": true,
-    "finalSynthesisCreated": true,
-    "engineeringSeparationPreserved": true
+    "failClosedHandlingPreserved": true
   },
   "mainIntegration": "NOT-PERFORMED"
 }
