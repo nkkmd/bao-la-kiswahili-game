@@ -7,6 +7,7 @@ on:
     paths:
       - tools/experiments/audit-lgtgmiv-stage1-result.js
       - .github/workflows/lgtgmiv-stage1-result-audit.yml
+  workflow_dispatch:
 
 permissions:
   contents: write
