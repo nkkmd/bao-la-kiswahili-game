@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGMF-STUDY1",
+  "stageId": "LGTGMF-S0-TECHNICAL-2026-08-31-v2",
+  "status": "CORRECTIVE-TECHNICAL-REFREEZE-BEFORE-FRESH-EVIDENCE",
+  "supersedesForStage1Authorization": "LGTGMF-S0-TECHNICAL-2026-08-31-v1",
+  "v1Disposition": "STAGE0-TECHNICAL-INVALID",
+  "scientificContractChanged": false,
+  "scientificInferenceAuthorized": false,
+  "scientificSeedConsumptionAuthorized": false,
+  "stage1SeedReadAuthorized": false,
+  "stage2SeedReadAuthorized": false,
+  "protectedStandardRootDepth10GenerationAuthorized": false,
+  "protectedStandardRootDepth10ReadAuthorized": false,
+  "correctiveScope": [
+    "materialize frozen rootBranchPairOverlap exact rational primitives and root-branch membership digests",
+    "materialize frozen narrowPathRun exact records, length histogram, digest, and right-censor flag",
+    "retain all v1 Stage 0 RAW/move/transition/traversal/historical-reference controls"
+  ],
+  "narrowPathOperationalization": "maximal forward chain in the depth-labelled unique RAW graph; a start state has legalWidth=1 and no inbound transition from a legalWidth=1 state at the preceding depth; continuation follows the sole unique outgoing transition while legalWidth remains 1; horizon continuation is right-censored",
+  "rootBranchOverlapOperationalization": "for every unordered pair of exact root-move labels and relative depth, Jaccard intersection/union of descendant authoritative RAW-key sets stored as exact numerator/denominator",
+  "passRule": {
+    "requiresV1TechnicalControlsPass": true,
+    "requiresKnownSyntheticRootBranchOverlapExpectation": true,
+    "requiresKnownSyntheticNarrowPathExpectation": true,
+    "requiresTraversalOrderInvariance": true,
+    "requiresHistoricalDepth2ReferenceAgreement": true,
+    "requiresProductionIndependentExactCoreAgreement": true,
+    "requiresZeroMismatch": true,
+    "passLabel": "STAGE0-TECHNICAL-PASS",
+    "failLabel": "STAGE0-TECHNICAL-INVALID"
+  },
+  "technicalRefreezeEligibility": {
+    "freshDevelopmentGeneratedOrRead": false,
+    "freshFormalGeneratedOrRead": false,
+    "stage1SeedConsumed": false,
+    "stage2SeedConsumed": false,
+    "oldTechnicalVersionPreserved": true
+  }
+}
