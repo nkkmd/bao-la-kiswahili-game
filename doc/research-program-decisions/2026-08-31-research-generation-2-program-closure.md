@@ -54,13 +54,13 @@ G2-12 / SSGTGE-STUDY1 = TECHNICAL-INVALID / selectedEstimator null / Stage 2 NOT
 
 ## Completion-condition audit
 
-`doc/FUTURE_RESEARCH_AGENDA.md` Section 9.9のcompletion conditionsを次のように閉じる。
+`doc/FUTURE_RESEARCH_AGENDA.md` Section 9.9のcompletion conditionsと同じ番号・意味で次のように閉じる。
 
 1. G2-01〜G2-12のformal closure: **PASS**。
    - dependency gateによる未実行も事前program rule上closureとして許容されており、G2-11をagenda-level `NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED`で明示的に閉じた。
-2. negative / null / inconclusive / non-estimable resultをpositiveへ救済しない: **PASS**。
-3. prospective population / seed / identity / endpoint separation: **PASS within Study contracts**。
-4. independent verification / fail-closed governance: **PASS**。
+2. negative / null / inconclusive / non-estimable resultをpositiveへ救済せず保存: **PASS**。
+3. Research Generation 1のformal decisionsとinterpretation boundariesを変更していない: **PASS**。
+4. research engine / data identity / seed / artifact provenanceを各Studyで再現可能に保存: **PASS**。
 5. evaluation、empirical outcome、exact value、search reliability、machine failure、human constructの分離: **PASS**。
 6. multiaxial strategic-state representationのformal decision: **PASS**。
    - G2-10 no eligible representation、PSRRE `NON-ESTIMABLE`。
@@ -72,6 +72,8 @@ G2-12 / SSGTGE-STUDY1 = TECHNICAL-INVALID / selectedEstimator null / Stage 2 NOT
 10. final synthesis document: **PASS**。
    - `doc/research-generation-2/FINAL_SYNTHESIS.md`。
 11. public AI outcomeをscientific successへ読み替えない: **PASS**。
+
+独立verification、fail-closed handling、prospective population / seed / identity / endpoint separationもprogram governanceとして維持したが、これらは上記Section 9.9の11項目を置き換えるものではなく、各Study contractを支える追加的なgovernance controlである。
 
 ## Program-level scientific boundary
 
