@@ -1,7 +1,7 @@
 # Third-Generation Local Game-Tree Geometry Research Agenda — Program Decision
 
 Date: 2026-08-31  
-Status: **PROSPECTIVE PROGRAM DECISION / NOT YET STARTED**  
+Status: **PROSPECTIVE PROGRAM DECISION / INTEGRATED TO MAIN / NOT YET STARTED**  
 Scope: Bao research program governance
 
 ## Decision
@@ -136,15 +136,23 @@ Research Generation 3はpositive resultの数で完了判定しない。
 
 G3-01〜G3-12がprospective stopping ruleに従ってclosureし、local geometry instrument、branching / transposition / corridor、geometry dynamics / mechanism、search relation、persistence、continuous representation、longitudinal dynamics、protected depth-10 holdout、generalization boundaryについて明確なformal dispositionを持ち、Research Generation 1 / 2のboundaryとresearch / engineering separationを保持したfinal synthesisが作成された時点をcore program closureとする。
 
+## Main integration
+
+2026-08-31、統合直前のremote `main`がplanning baseline `cd200b85c1eb24aa4419bd5a9573552f3682f00d`のままであることを確認した。
+
+planning branch `research/g3-program-plan` HEAD `6b1e022b3b2392071b5fd91088a9d83d2f7b2ed8`は`main`に対して`ahead 17 / behind 0`、merge baseはbaseline mainそのものだったため、明示的なuser instructionに基づき`force = false`でfast-forward integrationを完了した。
+
+この統合は第三世代program planning、中央文書、governance、provenanceだけを対象とし、Research Generation 1 / 2のscientific decision、Study result、scientific artifact、engine、experiment toolingを変更していない。
+
 ## Current authorization state
 
 ```text
-Program planning = AUTHORIZED / RECORDED
+Program planning = AUTHORIZED / RECORDED / INTEGRATED TO MAIN
 Scientific Study execution = NOT STARTED
 G3-01 formal Study ID = NOT ASSIGNED
 G3-01 seed block = NOT ASSIGNED
 Depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-Main integration = NOT PERFORMED
+Main integration = COMPLETE
 ```
 
 このprogram decision自体はscientific outcomeを生成せず、Research Generation 3のprospective governance boundaryを固定するためのplanning recordである。
