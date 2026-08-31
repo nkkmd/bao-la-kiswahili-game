@@ -4,41 +4,26 @@ Updated: 2026-08-31
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = PROSPECTIVE PLAN INTEGRATED TO MAIN / NOT YET STARTED
+Program status = ACTIVE / DEPENDENCY REASSESSMENT REQUIRED AFTER G3-01
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
-Planning branch = research/g3-program-plan
-Baseline main = cd200b85c1eb24aa4419bd5a9573552f3682f00d
-Planning branch integration target = 6b1e022b3b2392071b5fd91088a9d83d2f7b2ed8
-Central documentation synchronization = COMPLETE / INTEGRATED TO MAIN
-Temporary write-capable synchronization workflow = REMOVED
-Temporary synchronization fragments = REMOVED
-Scientific Study execution = NOT STARTED
-Formal Study ID assignment = NOT STARTED
-Seed consumption = NONE
+Program plan main integration = COMPLETE
+G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-01 formal eligible measurement families = []
+G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-01 Stage 1 seed consumption = 31010001..31010096
+G3-01 Stage 2 seed consumption = NONE
+G3-02..G3-08 automatic start = BLOCKED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Main integration = COMPLETE
+Current research branch = research/g3-01-local-game-tree-geometry-measurement-foundation
+Current branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
 ## Program direction
 
 Research Generation 3は、Research Generation 2で最も強く成立したRAW-only bounded exact analysisを基盤とし、Baoの局所ゲーム木・局所到達グラフの構造幾何を中心研究対象とする。
 
-主題は次である。
-
-- effective branching
-- reply-width structure
-- transposition concentration
-- tree / graph divergence
-- structural forcing corridor / decision funnel
-- branch expansion / compression transition
-- Bao rule mechanismとlocal geometryの関係
-- search instabilityとlocal geometryの関係
-- geometry persistence / memory
-- continuous local-geometry representation
-- representation-free longitudinal dynamics
-- protected depth-10 exact holdout
-- generalization / counterexample boundary
+ただし、measurement foundationであるG3-01がformal eligible familyを生成せず`TECHNICAL-INVALID`で閉じたため、program planに定めたdependency ruleに従い、G3-02〜G3-08を同じinstrumentのまま自動開始しない。
 
 ## Immutable upstream boundaries
 
@@ -56,48 +41,61 @@ whole-Bao game-tree estimate = NOT AUTHORIZED
 
 Research Generation 3は、これらを修正・救済・再判定するprogramではない。
 
+## G3-01 closure
+
+G3-01の正式Study IDは`LGTGMF-STUDY1`としてscientific outcome前に固定した。
+
+Stage 0 v1は凍結済みconstructのmaterialization欠落により`STAGE0-TECHNICAL-INVALID`となったが、fresh evidence生成前だったため事前固定technical-refreeze ruleに従ってscientific contractを変更せずv2を作成し、v2はtechnical passした。
+
+Stage 1ではfresh seed `31010001..31010096`を使用し、Namua 6 / Mtaji 6の全12 rootsをproduction / structurally independent implementationでdepth 5までcomplete reconstructionした。root identity、root-level measurement core、F1〜F5 family digestはすべてexact一致した。
+
+しかし、凍結済みcanonical artifact designが要求したdeterministic stage-level manifest hashについて、implementationがelapsed time / RSS等のnon-deterministic resource observationsをhash inputへ含めたためproduction / independentで一致しなかった。
+
+fresh development evidence生成後のsame-evidence repairは禁止されていたため、Stage 1を`STAGE1-TECHNICAL-INVALID`としてfail-closedし、Stage 2はauthorizeしなかった。
+
+```text
+LGTGMF-STUDY1 = TECHNICAL-INVALID
+formal eligible measurement families = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+Stage 1で得られたroot-level / family-level exact agreementは、将来の新しいprospective prerequisite Studyを設計するためのfeasibility / failure-mode evidenceとして利用できるが、G3-01のformal eligibilityへ昇格させない。
+
 ## Protected evidence
 
-standard initial RAW rootのdepth 10 exact layerは、G3-11の`FRESH-DEEPER-EXACT-HOLDOUT`として保護する。
+standard initial RAW rootのdepth 10 exact layerは、G3-11の`FRESH-DEEPER-EXACT-HOLDOUT`として引き続き保護する。
 
-G3-01〜G3-10では、depth-10 scientific counts / geometry outcomeを生成・readしない。G2-12のproduction-only estimator proposalもdepth-10 holdoutのprediction contractまたはtruthとして使用しない。
+```text
+G3-01 complete depth-10 enumeration generated = false
+G3-01 depth-10 scientific counts / geometry outcome read = false
+G2-12 estimator input to depth-10 holdout = false
+```
 
-## Central documentation synchronization
+## Dependency state / next authorization boundary
 
-第三世代program planはplanning branch上で次の中央文書へ同期し、その後`main`へfast-forward統合した。
+Program planではG3-02〜G3-08は原則としてG3-01でformal eligibilityを得たmetric familyだけを使用する。G3-01のeligible family setは空なので、次のAgenda itemへ通常順序で進む条件は満たされていない。
 
-- root `README.md`
-- `doc/RESEARCH_INDEX.md`
-- `doc/FUTURE_RESEARCH_AGENDA.md` Version 3.0.0 / Section 10
+次の研究を開始するには、少なくとも次のいずれかをprospectively決定する必要がある。
 
-同期用temporary workflowの初版はYAML parse段階で停止し、repository contentまたはscientific stateを変更しなかった。workflow mechanicsのみを修正し、run `33349600721`で3中央文書への同期を完了した。同期commitは`29d60820f516aad73350d8b5cf63aaa3180025bd`である。
+1. G3-01を救済・再判定せず、今回のfailure modeを設計情報として用いる新しいmeasurement-instrument prerequisite Studyを設ける。
+2. Research Generation 3のdependency graphそのものをprogram-level decisionとして再設計する。
+3. measurement foundation不成立を受けてprogram-level closureまたは別方向への移行を決定する。
 
-同期完了後、temporary workflowと同期用fragmentはplanning branchから削除した。Authorization JSONはprovenanceとして保持するが、それをtriggerするtemporary workflowは存在しない。
+G3-01のsame Stage 1 seed blockを修正rerunする選択肢は含まれない。
 
-## Main integration
+## Canonical records
 
-2026-08-31、統合直前のremote `main`がplanning開始時baseline `cd200b85c1eb24aa4419bd5a9573552f3682f00d`から変更されていないことを再確認した。
-
-planning branch HEAD `6b1e022b3b2392071b5fd91088a9d83d2f7b2ed8`は`main`に対して`ahead 17 / behind 0`、merge baseはbaseline mainそのものだったため、`force = false`でfast-forward integrationを実施した。
-
-統合対象差分は第三世代program planning、中央文書、governance、provenanceに限定され、scientific Study result、scientific artifact、engine、experiment toolingは変更していない。
-
-## Next Study candidate
-
-次に開始する候補はAgenda label `G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1`である。
-
-ただし、現時点ではG3-01のformal Study ID、正式題目、Stage ID、seed range、population、horizon、metric schema、threshold、formal decision taxonomyは未固定である。これらはG3-01開始時にその時点のremote `main`とrepository naming ruleを再監査し、scientific outcome生成前にprospectively固定する。
-
-## Canonical program records
-
+Program:
 - `README.md`
 - `PROGRAM_PLAN.md`
 - `CURRENT_STATUS.md`
-- `authorizations/PROGRAM_SYNC_EXECUTE.json`
-- `checkpoints/2026-08-31-program-plan-central-sync-complete.md`
-- `checkpoints/2026-08-31-main-integration-complete.md`
 - `../research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`
-- `../FUTURE_RESEARCH_AGENDA.md` Section 10
-- `../RESEARCH_INDEX.md` Section 30
 
-Research Generation 3のprogram planは`main`へ統合済みだが、scientific Studyはまだ開始していない。
+G3-01:
+- `../local-game-tree-geometry-measurement-foundation/STUDY_1_PROTOCOL.md`
+- `../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`
+- `../local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md`
+- `../local-game-tree-geometry-measurement-foundation/DECISION_REGISTER.md`
+- `../local-game-tree-geometry-measurement-foundation/REPRODUCIBILITY_INDEX.md`
+
+Research Generation 3のprogram plan自体は`main`へ統合済みだが、G3-01のscientific branchはまだ`main`へ統合していない。
