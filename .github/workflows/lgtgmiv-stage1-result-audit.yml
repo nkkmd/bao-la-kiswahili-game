@@ -1,0 +1,41 @@
+name: LGTGMIV Stage 1 Read-Only Result Audit
+
+on:
+  push:
+    branches:
+      - research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+    paths:
+      - tools/experiments/audit-lgtgmiv-stage1-result.js
+      - .github/workflows/lgtgmiv-stage1-result-audit.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lgtgmiv-stage1-read-only-result-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert immutable Stage 1 result exists
+        run: |
+          test -e doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/scientific-result.json
+          test -e doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/telemetry.json
+          test -e doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/execution-summary.json
+      - name: Read-only post-result audit
+        run: node tools/experiments/audit-lgtgmiv-stage1-result.js
+      - name: Commit compact audit summary
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-1/posthoc-audit-summary.json
+          git commit -m "Record LGTGMIV Stage 1 post-result audit"
+          git push
