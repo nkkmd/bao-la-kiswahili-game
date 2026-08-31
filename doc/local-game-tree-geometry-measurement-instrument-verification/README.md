@@ -2,7 +2,7 @@
 
 ## Status
 
-`LGTGMIV-STUDY1` is an active, new, prospective, independent Research Generation 3 prerequisite Study positioned after G3-01 and before any G3-02 authorization.
+`LGTGMIV-STUDY1` is **closed** as a new, prospective, independent Research Generation 3 prerequisite Study positioned after G3-01 and before any G3-02 authorization.
 
 Formal title:
 
@@ -11,6 +11,12 @@ Formal title:
 日本語題目:
 
 **Baoにおける局所ゲーム木幾何測定instrumentのprospective再構築と独立検証 — deterministic scientific core、exact RAW tree/graph reconstruction、cross-implementation reproducibilityのfresh evidenceによる確立**
+
+Formal decision:
+
+**`FORMAL-ELIGIBLE-ALL`**
+
+All five prospectively frozen LGTGMIV measurement families are formally eligible within this Study's bounded RAW-only depth-5 local reconstruction contract.
 
 Research branch:
 
@@ -24,9 +30,47 @@ Study-start source baseline:
 
 G3-01 (`LGTGMF-STUDY1`) reconstructed its fresh bounded local trees/graphs exactly at root/family level in production and independent implementations, but its frozen stage-manifest contract incorrectly allowed implementation-dependent runtime/resource observations into the canonical stage digest. The resulting stage digest mismatch made G3-01 permanently `TECHNICAL-INVALID` after evidence read.
 
-This Study does not repair or rescue that result. It uses the failure mode only as design information and starts under a new identity, new prospective contract and new fresh evidence firewall.
+This Study did not repair or rescue that result. It used the failure mode only as design information and started under a new identity, new prospective contract and new fresh evidence firewall.
 
-## Immutable upstream boundary
+## Final evidence
+
+### Stage 0
+
+- technical instrument validation: `STAGE0-PASS`
+- workflow run: `33386868192`
+- fresh scientific seed use: none
+
+### Stage 1
+
+- fresh block: `31110001..31110128`
+- population: 8 Namua + 8 Mtaji = 16 roots
+- relative depth: 5
+- disposition: `STAGE1-PASS`
+- exact reconstruction: 16/16
+- promoted families: 5/5
+
+### Stage 2
+
+- fresh holdout: `31120001..31120192`
+- population: 12 Namua + 12 Mtaji = 24 roots
+- relative depth: 5
+- formal workflow run: `33452082425`
+- immutable result commit: `5fbdd72a8c0a8d34b1b74cf0829a6f972812a549`
+- exact reconstruction: 24/24
+- each family exact roots: 24/24
+- resource gate: PASS
+- formal decision: `FORMAL-ELIGIBLE-ALL`
+- read-only audit run: `33452400324 / success`
+
+Formal eligible families:
+
+- `LGTGMIV-F1-TREE-OCCURRENCE`
+- `LGTGMIV-F2-RAW-GRAPH`
+- `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
+- `LGTGMIV-F4-TREE-GRAPH-RELATION`
+- `LGTGMIV-F5-REPLY-GEOMETRY`
+
+## Immutable boundaries
 
 G3-01 remains:
 
@@ -37,23 +81,21 @@ G3-01 remains:
 
 Research Generation 2 remains closed. Scientific state identity remains RAW-only with fields `pits,reserve,houseOwned,player,phase,winner,pending`; validated transform set remains empty.
 
-## Stage plan
+The standard initial RAW-root exact depth-10 holdout remains:
 
-1. `LGTGMIV-S0-TECHNICAL-2026-08-31-v1` — technical instrument validation; no scientific seeds.
-2. `LGTGMIV-S1-DEVELOPMENT-2026-08-31-v1` — fresh development, seeds `31110001..31110128`, 8 Namua + 8 Mtaji roots, depth 5; not yet authorized at Study start.
-3. `LGTGMIV-S2-FORMAL-2026-08-31-v1` — fresh formal holdout, seeds `31120001..31120192`, 12 Namua + 12 Mtaji roots, depth 5; not authorized at Study start.
+`SEALED / NOT GENERATED / NOT READ`
 
-The standard initial RAW-root exact depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
+G3-02..G3-08 remain blocked. `automaticG302StartAuthorized = false`; a separate post-closure program authorization review is required.
 
 ## Documents
 
-- `STUDY_1_OVERVIEW.md` — purpose and claim boundary
+- `STUDY_1_OVERVIEW.md` — initial question, result and claim boundary
 - `STUDY_1_PROTOCOL.md` — frozen scientific/technical contract
-- `CURRENT_STATUS.md` — current execution state
-- `DECISION_REGISTER.md` — immutable decisions and later stage dispositions
+- `STUDY_1_FINAL_REPORT.md` — final integrated scientific report
+- `CURRENT_STATUS.md` — closed current state
+- `DECISION_REGISTER.md` — immutable decisions and stage dispositions
 - `REPRODUCIBILITY_INDEX.md` — specs, code, workflows, outputs and hashes
-- `STUDY_1_FINAL_REPORT.md` — intentionally remains a no-result placeholder until closure
 - `preregistration/` — machine-readable frozen contracts
-- `checkpoints/` — prospective and execution checkpoints
-- `authorizations/` — explicit stage progression authorizations
-- `results/` — only generated stage results
+- `checkpoints/` — prospective, stage and closure checkpoints
+- `authorizations/` — explicit stage progression and execution authorization artifacts
+- `results/` — immutable stage results and read-only audits
