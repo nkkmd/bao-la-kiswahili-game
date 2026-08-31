@@ -9,7 +9,7 @@ Formal title = Local Game-Tree Geometry Measurement Foundation Study 1
 Study status = CLOSED / TECHNICAL-INVALID
 Baseline remote main = 7a0e7ce618eedfa3bd1c8d11dfc2ba14bd3e390f
 Research branch = research/g3-01-local-game-tree-geometry-measurement-foundation
-Main integration = NOT AUTHORIZED / NOT PERFORMED
+Main integration = COMPLETE
 Stage 0 v1 = STAGE0-TECHNICAL-INVALID / IMMUTABLE
 Stage 0 v2 = STAGE0-TECHNICAL-PASS
 Stage 1 = STAGE1-TECHNICAL-INVALID / FRESH DEVELOPMENT CONSUMED
@@ -105,3 +105,9 @@ G2-12 estimator used as depth-10 truth/input = false
 G3-01からformal eligible measurement familyは得られなかった。したがって、G3-02〜G3-08をこのinstrumentで自動的に開始してはならない。
 
 Research Generation 3のdependency graphを再評価し、measurement instrumentを再構築する新しいprospective prerequisite Studyを設けるか、program-level dispositionを別途決定する必要がある。G3-01のclosed resultを修正・救済することは、その新しいStudyの目的には含めない。
+
+## Main integration
+
+2026-08-31、userの明示的指示により、documentation consistency audit後のresearch branch HEAD `fa7476ed764ac2ff1497774afead22698dbe76e4`を、remote `main` `7a0e7ce618eedfa3bd1c8d11dfc2ba14bd3e390f`から`force=false`でfast-forward統合した。
+
+このrepository integrationはStudyのformal scientific decision、seed consumption、Stage authorization、eligible family set、protected depth-10 holdoutを変更しない。統合前checkpointに保存された`main integration = NOT PERFORMED`等の表記は、そのcheckpoint作成時点の歴史的状態として保持する。
