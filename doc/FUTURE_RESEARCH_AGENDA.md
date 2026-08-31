@@ -5,7 +5,7 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-08-31
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Prospective plan / not yet started (2026-08-31)**
+Research Generation 3: **Active / dependency reassessment required after G3-01 (2026-08-31)**
 
 ## 1. 目的
 
