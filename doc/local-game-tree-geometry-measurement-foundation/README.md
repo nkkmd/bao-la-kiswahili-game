@@ -20,6 +20,7 @@ Branch = research/g3-01-local-game-tree-geometry-measurement-foundation
 Formal decision = TECHNICAL-INVALID
 Formal eligible measurement families = []
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Main integration = COMPLETE
 ```
 
 ## 重要な境界
@@ -48,4 +49,4 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 G3-01のformal eligible measurement family setは空である。したがって、G3-02〜G3-08をこのinstrumentのまま自動開始してはならない。新しいprospective prerequisite StudyまたはResearch Generation 3 program-level dependency decisionが必要である。
 
-`main`への統合はuserの明示的指示があるまで行わない。
+2026-08-31、userの明示的指示によりG3-01 scientific closureは`main`へ統合済みである。integrationはformal decision、seed consumption、Stage authorization、protected depth-10 holdoutを変更しない。
