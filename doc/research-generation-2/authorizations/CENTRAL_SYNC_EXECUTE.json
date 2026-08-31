@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "authorizedAt": "2026-08-31",
+  "purpose": "Synchronize Research Generation 2 program closure into central repository documentation after G2-11 dependency-gate closure and final synthesis creation.",
+  "targetBranch": "research/g2-final-program-closure",
+  "centralDocumentationSyncAuthorized": true,
+  "scientificExecutionAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "g2_11ScientificExecutionAuthorized": false,
+  "additionalRepresentationPrerequisiteAuthorized": false,
+  "allowedPaths": [
+    "README.md",
+    "doc/RESEARCH_INDEX.md",
+    "doc/FUTURE_RESEARCH_AGENDA.md",
+    "doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md"
+  ]
+}
