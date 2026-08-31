@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),crypto=require("node:crypto"),util=require("node:util");
+const E=require("../../public/engine.js");
+const P=require("./lib/lgtgmiv-stage1-production.js"),I=require("./lib/lgtgmiv-stage1-independent.js");
+const SP=require("./lib/lgtgmiv-stage2-production.js"),SI=require("./lib/lgtgmiv-stage2-independent.js");
+const ROOT=path.resolve(__dirname,"../.."),DOC=path.join(ROOT,"doc/local-game-tree-geometry-measurement-instrument-verification"),OUT=path.join(DOC,"results/stage-2");
+const spec=JSON.parse(fs.readFileSync(path.join(DOC,"preregistration/STAGE_2_FORMAL_SPEC.json"),"utf8"));
+const stage1=JSON.parse(fs.readFileSync(path.join(DOC,"results/stage-1/scientific-result.json"),"utf8"));
+const ID="LGTGMIV-S2-FORMAL-2026-08-31-v1",TRIGGER=path.join(DOC,"authorizations/2026-09-01-stage-2-execution-trigger.md");
+function ensure(x,m){if(!x)throw Error(m)}
+ensure(spec.studyId==="LGTGMIV-STUDY1"&&spec.stageId===ID,"Stage 2 spec identity mismatch");
+ensure(fs.existsSync(path.join(DOC,"authorizations/2026-09-01-stage-2-formal-authorization.md")),"Stage 2 authorization missing");
+ensure(fs.existsSync(path.join(DOC,"checkpoints/2026-09-01-stage-1-development-pass.md")),"Stage 1 PASS checkpoint missing");
+ensure(stage1.stageDisposition==="STAGE1-PASS"&&stage1.globalGatePass===true&&stage1.stage2AuthorizationEligible===true,"Stage 1 progression gate not satisfied");
+ensure(Array.isArray(stage1.promotedFamilies)&&stage1.promotedFamilies.length>0,"Stage 1 promoted family set empty");
+ensure(stage1.protectedStandardRootDepth10Generated===false&&stage1.protectedStandardRootDepth10Read===false,"protected evidence state invalid at Stage 1");
+ensure(fs.existsSync(TRIGGER),"Stage 2 one-shot execution trigger missing");
+ensure(!fs.existsSync(path.join(OUT,"scientific-result.json")),"Stage 2 result already exists; rerun prohibited");
+const promoted=stage1.promotedFamilies.slice();
+ensure(promoted.every(f=>P.FAMILIES.includes(f))&&util.isDeepStrictEqual(P.FAMILIES,I.FAMILIES),"promoted family identity mismatch");
+const S={seedStart:spec.seedStart,seedEnd:spec.seedEnd,maxSourcePly:spec.maxSourcePly,namuaPly:spec.rootSelection.namua.selectedPly,namuaCount:spec.rootSelection.namua.count,mtajiMinPly:spec.rootSelection.mtaji.minimumPly,mtajiCount:spec.rootSelection.mtaji.count,depth:spec.localHorizon};
+const C={...spec.perRootResourceCeilings,treeNodeOccurrences:BigInt(spec.perRootResourceCeilings.treeNodeOccurrences)},SC=spec.stageResourceCeilings;
+const deep=util.isDeepStrictEqual,hashText=t=>crypto.createHash("sha256").update(t,"utf8").digest("hex"),maxRss=()=>process.resourceUsage().maxRSS*1024;
+function sourceOnly(r){return{phase:r.phase,sourceSeed:r.sourceSeed,selectedPly:r.selectedPly,rootRawSha256:r.rootRawSha256,sourceTrajectorySha256:r.sourceTrajectorySha256,openingPrefixSha256:r.openingPrefixSha256,openingPrefixLength:r.openingPrefixLength}}
+function timed(fn){const t=process.hrtime.bigint(),v=fn(),ms=Number(process.hrtime.bigint()-t)/1e6;return{value:v,elapsedMs:ms,peakRssBytes:maxRss(),artifactBytes:Buffer.byteLength(JSON.stringify(v))}}
+function usage(rec,t){const r=rec.reconstructionCore,states=r.cumulative.distinctRawStates,trans=r.parentLayers.reduce((a,x)=>a+x.uniqueTransitionCount,0),parents=r.layers.slice(0,-1).reduce((a,x)=>a+x.uniqueRawStateCount,0),tree=r.layers.reduce((a,x)=>a+BigInt(x.treeNodeOccurrences),0n),within=states<=C.uniqueRawStates&&trans<=C.uniqueTransitions&&parents<=C.parentExpansions&&trans<=C.legalMoveEvaluations&&tree<=C.treeNodeOccurrences&&t.elapsedMs<=C.elapsedMs&&t.peakRssBytes<=C.peakRssBytes&&t.artifactBytes<=C.artifactBytes;return{uniqueRawStates:states,uniqueTransitions:trans,parentExpansions:parents,legalMoveEvaluations:trans,treeNodeOccurrences:String(tree),elapsedMs:t.elapsedMs,peakRssBytes:t.peakRssBytes,artifactBytes:t.artifactBytes,within}}
+const prodSrc=fs.readFileSync(path.join(__dirname,"lib/lgtgmiv-stage1-production.js"),"utf8"),indSrc=fs.readFileSync(path.join(__dirname,"lib/lgtgmiv-stage1-independent.js"),"utf8"),spSrc=fs.readFileSync(path.join(__dirname,"lib/lgtgmiv-stage2-production.js"),"utf8"),siSrc=fs.readFileSync(path.join(__dirname,"lib/lgtgmiv-stage2-independent.js"),"utf8");
+const staticIndependence=!prodSrc.includes("lgtgmiv-stage1-independent")&&!indSrc.includes("lgtgmiv-stage1-production")&&!prodSrc.includes("lgtgmiv-stage0")&&!indSrc.includes("lgtgmiv-stage0")&&!prodSrc.includes("lgtgmf-")&&!indSrc.includes("lgtgmf-")&&hashText(prodSrc)!==hashText(indSrc)&&!spSrc.includes("lgtgmiv-stage2-independent")&&!siSrc.includes("lgtgmiv-stage2-production")&&spSrc.includes("lgtgmiv-stage1-production")&&siSrc.includes("lgtgmiv-stage1-independent")&&hashText(spSrc)!==hashText(siSrc);
+const stageStart=process.hrtime.bigint();
+const psel=SP.selectRoots(E,S,stage1.sourceSelection.production.roots,stage1.sourceSelection.production.firewallIdentityDigestSha256),isel=SI.selectRoots(E,S,stage1.sourceSelection.independent.roots,stage1.sourceSelection.independent.firewallIdentityDigestSha256);
+const pSources=psel.roots.map(sourceOnly),iSources=isel.roots.map(sourceOnly);
+const sourceIdentityExact=deep(pSources,iSources)&&psel.g301FirewallDigestSha256===isel.g301FirewallDigestSha256&&psel.stage1FirewallDigestSha256===isel.stage1FirewallDigestSha256&&deep(psel.rejections,isel.rejections);
+const prod=[],ind=[],rootChecks=[],rootTelemetry=[];
+const n=Math.min(psel.roots.length,isel.roots.length);
+for(let idx=0;idx<n;idx++){
+  const ps=psel.roots[idx],is=isel.roots[idx],pt=timed(()=>P.measureRoot(E,ps,S.depth)),it=timed(()=>I.measureRoot(E,is,S.depth)),p=pt.value,i=it.value;
+  const rootRecon=p.rootReconstructionCoreSha256===i.rootReconstructionCoreSha256&&deep(p.reconstructionCore,i.reconstructionCore),family={};
+  for(const f of promoted)family[f]=p.rootFamilyCoreSha256[f]===i.rootFamilyCoreSha256[f]&&deep(p.families[f],i.families[f]);
+  prod.push(p);ind.push(i);rootChecks.push({source:p.source,rootReconstructionExact:rootRecon,familyExact:family});rootTelemetry.push({source:p.source,production:usage(p,pt),independent:usage(i,it)});
+}
+const pst=P.buildStage(prod,ID),ist=I.buildStage(ind,ID),stageReconstructionExact=pst.stageReconstructionCoreSha256===ist.stageReconstructionCoreSha256,stageFamilyExact=Object.fromEntries(promoted.map(f=>[f,pst.stageFamilyCoreSha256[f]===ist.stageFamilyCoreSha256[f]])),stageScientificExact=pst.stageScientificCoreSha256===ist.stageScientificCoreSha256;
+const populationComplete=psel.populationComplete&&isel.populationComplete&&prod.length===24&&ind.length===24,allDepthComplete=prod.every(r=>r.reconstructionCore.targetDepth===5&&r.reconstructionCore.layers.length===6)&&ind.every(r=>r.reconstructionCore.targetDepth===5&&r.reconstructionCore.layers.length===6),allRootRecon=rootChecks.length===24&&rootChecks.every(x=>x.rootReconstructionExact),protectedEvidenceSealed=true,resourceRootsPass=rootTelemetry.length===24&&rootTelemetry.every(x=>x.production.within&&x.independent.within);
+const formalEligibleFamilies=promoted.filter(f=>rootChecks.length===24&&rootChecks.every(x=>x.familyExact[f])&&stageFamilyExact[f]);
+const scientific={schemaVersion:1,studyId:"LGTGMIV-STUDY1",stageId:ID,evidenceClass:"FRESH-FORMAL-HOLDOUT",seedConsumption:`${spec.seedStart}..${spec.seedEnd}`,noRescueBoundaryCrossed:true,testedFamilies:promoted,sourceSelection:{production:{selectedCounts:psel.selectedCounts,g301FirewallIdentityDigestSha256:psel.g301FirewallDigestSha256,stage1FirewallIdentityDigestSha256:psel.stage1FirewallDigestSha256,firewallRejections:psel.rejections,roots:pSources},independent:{selectedCounts:isel.selectedCounts,g301FirewallIdentityDigestSha256:isel.g301FirewallDigestSha256,stage1FirewallIdentityDigestSha256:isel.stage1FirewallDigestSha256,firewallRejections:isel.rejections,roots:iSources},sourceIdentityExact},production:{roots:prod,stage:pst},independent:{roots:ind,stage:ist},verification:{populationComplete,allDepthComplete,sourceIdentityExact,allRootReconstructionExact:allRootRecon,stageReconstructionExact,stageScientificExact,staticIndependence,stageFamilyExact,rootChecks,protectedEvidenceSealed},formalEligibleFamilies,protectedStandardRootDepth10Generated:false,protectedStandardRootDepth10Read:false,automaticG302StartAuthorized:false};
+const stageElapsedMs=Number(process.hrtime.bigint()-stageStart)/1e6;const integrityPass=populationComplete&&allDepthComplete&&sourceIdentityExact&&allRootRecon&&stageReconstructionExact&&stageScientificExact&&staticIndependence&&protectedEvidenceSealed;
+let telemetry={schemaVersion:1,studyId:"LGTGMIV-STUDY1",stageId:ID,scientificDigestExcluded:true,rootTelemetry,stageElapsedMs,stageArtifactBytes:0,stageResourceCeilings:SC};let stageResourcePass=resourceRootsPass&&stageElapsedMs<=SC.elapsedMs,finalSci="",finalTel="";
+for(let pass=0;pass<3;pass++){
+  let decision;if(!integrityPass)decision="TECHNICAL-INVALID";else if(!stageResourcePass)decision="NON-ESTIMABLE";else if(formalEligibleFamilies.length===P.FAMILIES.length)decision="FORMAL-ELIGIBLE-ALL";else if(formalEligibleFamilies.length>0)decision="FORMAL-ELIGIBLE-PARTIAL";else decision="NO-FORMAL-ELIGIBLE-FAMILY";
+  scientific.stageResourcePass=stageResourcePass;scientific.globalGatePass=integrityPass&&stageResourcePass;scientific.stageDisposition=decision;scientific.formalDecision=decision;
+  finalSci=JSON.stringify(scientific,null,2)+"\n";for(let z=0;z<4;z++){finalTel=JSON.stringify(telemetry,null,2)+"\n";telemetry.stageArtifactBytes=Buffer.byteLength(finalSci)+Buffer.byteLength(finalTel)}finalTel=JSON.stringify(telemetry,null,2)+"\n";const actual=resourceRootsPass&&stageElapsedMs<=SC.elapsedMs&&telemetry.stageArtifactBytes<=SC.artifactBytes;if(actual===stageResourcePass)break;stageResourcePass=actual;
+}
+const summary={schemaVersion:1,studyId:"LGTGMIV-STUDY1",stageId:ID,stageDisposition:scientific.stageDisposition,formalDecision:scientific.formalDecision,globalGatePass:scientific.globalGatePass,testedFamilies:promoted,formalEligibleFamilies,stageReconstructionCoreSha256:pst.stageReconstructionCoreSha256,stageFamilyCoreSha256:Object.fromEntries(promoted.map(f=>[f,pst.stageFamilyCoreSha256[f]])),stageScientificCoreSha256:pst.stageScientificCoreSha256,scientificResultFileSha256:hashText(finalSci),telemetryFileSha256:hashText(finalTel),freshScientificSeedAccessed:true,protectedStandardRootDepth10Generated:false,protectedStandardRootDepth10Read:false,automaticG302StartAuthorized:false};
+fs.mkdirSync(OUT,{recursive:true});fs.writeFileSync(path.join(OUT,"scientific-result.json"),finalSci);fs.writeFileSync(path.join(OUT,"telemetry.json"),finalTel);fs.writeFileSync(path.join(OUT,"execution-summary.json"),JSON.stringify(summary,null,2)+"\n");console.log("LGTGMIV_STAGE2_RESULT="+JSON.stringify(summary));
