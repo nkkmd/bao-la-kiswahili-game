@@ -3,9 +3,9 @@
 Version: 3.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-08-31
+更新日: 2026-09-01
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / post-G3-01 measurement prerequisite selected / not started (2026-08-31)**
+Research Generation 3: **Active / LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL` / G3-02 authorization review required (2026-09-01)**
 
 ## 1. 目的
 
@@ -1344,30 +1344,27 @@ Research Generation 3はpositive resultの数で完了判定しない。
 
 ### 10.12 現在状態
 
-2026-08-31、G3-01は`LGTGMF-STUDY1`としてprospectively開始され、Stage 1まで実行した後`TECHNICAL-INVALID`で閉じた。G3-01 scientific closureは`main`へ統合済みである。
+2026-09-01、G3-01後の独立measurement-instrument prerequisite `LGTGMIV-STUDY1`は、prospectively frozen Stage 0/1/2を完遂し、`CLOSED / FORMAL-ELIGIBLE-ALL`で閉じた。G3-01 `LGTGMF-STUDY1`は従来どおり`TECHNICAL-INVALID`であり、この結果は変更しない。
+
+`LGTGMIV-STUDY1`ではscientific canonical coreからruntime/resource telemetryを分離し、RAW-only state identity、validated transform set `[]`、production / structurally independent implementation、fresh-evidence no-rescue firewallを維持した。
+
+Stage 1はfresh `31110001..31110128`からNamua 8 / Mtaji 8の16 rootsをdepth 5までexact reconstructionし、global gateをPASSして5 familyすべてをpromoteした。Stage 2はfresh formal holdout `31120001..31120192`からNamua 12 / Mtaji 12の24 rootsをdepth 5まで測定し、production / independent exact root reconstruction 24/24、各family exact roots 24/24、resource gate PASSを得た。
 
 ```text
-Research Generation 3 = ACTIVE / POST-G3-01 MEASUREMENT PREREQUISITE SELECTED / NOT STARTED
+Research Generation 3 = ACTIVE / POST-LGTGMIV PREREQUISITE CLOSED / G3-02 AUTHORIZATION REVIEW REQUIRED
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-01 formal eligible measurement families = []
-G3-01 Stage 1 seed consumption = 31010001..31010096
-G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-G3-01 Stage 2 seed consumption = NONE
-next scientific direction = new post-G3-01 / pre-G3-02 measurement-instrument prerequisite
-next Study working title = Local Game-Tree Geometry Measurement Instrument Verification Study 1
-next Study formal Study ID = NOT ASSIGNED
-next Study scientific execution = NOT STARTED
-next Study scientific seed consumption = NONE
+post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
+LGTGMIV formal eligible families = F1 TREE-OCCURRENCE / F2 RAW-GRAPH / F3 TRANSPOSITION-RECONVERGENCE / F4 TREE-GRAPH-RELATION / F5 REPLY-GEOMETRY
+LGTGMIV Stage 1 seed consumption = 31110001..31110128
+LGTGMIV Stage 2 seed consumption = 31120001..31120192
+G3-02 automatic start = BLOCKED
 G3-02..G3-08 automatic start = BLOCKED
-protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
+Protected standard-root depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-G3-01 Stage 1では全12 selected rootsのproduction / independent root-level measurement coreとF1〜F5 family digestがexact一致したが、deterministic stage manifestを要求した凍結contractに対して、implementationがruntime-dependent resource observationsをstage hashへ含めたためtechnical integrity gateを満たさなかった。fresh evidence消費後のsame-evidence repairは禁止されているため、このdevelopment agreementをformal eligibilityへ昇格させない。
+LGTGMIVのpositive resultは、frozen RAW-only depth-5 local game-tree/graph geometry measurement instrumentのbounded formal eligibilityを意味する。whole-Bao state/game-tree size、depth 5超への自動一般化、symmetry reduction、strategic/game-theoretic value、human difficultyは主張しない。
 
-Dependency reassessmentの結果、次のscientific actionはG3-01をreopen / rescueせず、**新しいprospective independent measurement-instrument prerequisite Study**とすることをprogram-levelで選択した。working titleは`Local Game-Tree Geometry Measurement Instrument Verification Study 1`であるが、正式Study title / Study ID / Stage IDではない。
+次のscientific actionはG3-02の自動開始ではなく、current repository state、formal eligible family set、G3-02 fresh population/evidence firewall、protected evidence dependencyを確認する別のpost-closure authorization reviewである。review完了前にG3-02 scientific evidenceを生成しない。
 
-新StudyではG3-01のfailure modeをdesign informationとしてのみ利用する。deterministic scientific / verification canonical coreとelapsed / RSS等のruntime resource telemetryを完全分離し、production / structurally independent implementation、RAW-only identity、canonical serialization、traversal-order invariance、root/family/stage deterministic digest reproducibilityをfresh evidenceで新規検証する。G3-01 Stage 1 seed blockは再利用せず、fresh seedは新Study開始時にprospectively固定する。
-
-新prerequisiteのformal eligibilityが成立するまでG3-02〜G3-08を開始しない。成立した場合もG3-02を自動開始せず、prerequisite closure後にdownstream authorizationを再確認する。standard-root complete exact depth-10 layerはG3-11用にsealedしたままとする。
-
-Program-level decisionは[`research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`](research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md)を参照する。
+standard initial RAW rootのcomplete exact depth-10 holdoutはG3-11向けに引き続きsealedとする。
