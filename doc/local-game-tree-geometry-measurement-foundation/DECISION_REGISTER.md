@@ -40,7 +40,7 @@ Disposition: **FROZEN**.
 
 Stage 1はseed `31010001..31010096`、Namua 6 / Mtaji 6 roots。Stage 2はseed `31020001..31020096`、Namua 8 / Mtaji 8 roots。Stage 2はRAW root / full trajectory / first-16 exact move opening prefixでStage 1をfirewallする。
 
-Disposition: **FROZEN / UNCONSUMED AT STAGE 0 CLOSURE**.
+Disposition: **STAGE 1 CONSUMED / STAGE 2 UNCONSUMED**.
 
 ## DR-005 — Horizon / resource
 
@@ -52,7 +52,7 @@ Disposition: **FROZEN**.
 
 G3-11用standard initial RAW root complete depth-10 exact layerはsealedする。G3-01ではcomplete layerのenumeration、scientific count / geometry outcome生成・readを禁止する。G2-12 estimatorはtruth/inputにしない。
 
-Disposition: **SEALED**.
+Disposition: **SEALED / NOT GENERATED / NOT READ**.
 
 ## DR-007 — Stage 0 authorization boundary
 
@@ -79,7 +79,7 @@ Disposition: **FROZEN**.
 
 fresh development / formal evidence生成・read前のtechnical defectに限り、旧versionをtechnical-invalidとして永久保存し、scientific contractを変更しない新technical versionを別IDでfreezeできる。scientific seed消費後のsame-evidence rerunは不可。
 
-Disposition: **FROZEN / INVOKED ONCE FOR STAGE 0 v2**.
+Disposition: **FROZEN / INVOKED ONCE FOR STAGE 0 v2 / NOT AVAILABLE AFTER STAGE 1 CONSUMPTION**.
 
 ## DR-010 — Main integration
 
@@ -117,6 +117,52 @@ protectedStandardRootDepth10Generated = false
 protectedStandardRootDepth10Read = false
 ```
 
-Stage 0 v2はtechnical-onlyでありscientific findingではない。
-
 Disposition: **STAGE0-TECHNICAL-PASS / STAGE 1 PREREQUISITE SATISFIED**.
+
+## DR-013 — Stage 1 fresh development disposition
+
+Workflow run `33370605540`は凍結済みseed `31010001..31010096`を消費し、Namua 6 / Mtaji 6の全12 selected rootsをproduction / independent双方でdepth 5までcomplete reconstructionした。
+
+root selection、root-level measurement core、F1〜F5 family digestはすべてexact一致し、全rootは凍結resource ceiling内だった。
+
+しかしcanonical stage manifestの`stageCoreSha256`は一致しなかった。
+
+```text
+production = d9e06d4cd4830bb7aba9292351a7e1260decf98de9442cb27dfc88f44bbb3f50
+independent = 3829928f93cba835f5120e6aa9bf903ac6a5570e91e547d76a2da90cfbb3a123
+```
+
+原因はimplementationがstage-level hash inputへelapsed time、RSS等のnon-deterministic resource observationsを含めたことにある。これはroot geometry primitiveの不一致ではないが、事前に固定したdeterministic stage manifest contractを満たさない。
+
+Disposition: **STAGE1-TECHNICAL-INVALID**.
+
+## DR-014 — No-rescue and Stage 2 authorization
+
+Stage 1 fresh evidenceはすでに生成・readされseed blockもconsume済みである。したがって、manifest hash implementationを修正して同一Stage 1 evidenceをrerunし、family promotionをやり直すことは認めない。
+
+```text
+eligibleFamiliesForStage2 = []
+Stage 2 authorization = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed consumption = NONE
+```
+
+Disposition: **FAIL-CLOSED / NO SAME-EVIDENCE REPAIR**.
+
+## DR-015 — Study-level formal decision
+
+G3-01は、formal held-out Stage 2へ進むためのvalid Stage 1 instrument qualificationを得られなかった。Stage 1のroot-level / family-level exact agreementはdevelopment上のfeasibility evidenceとして保存するが、formal eligibilityとは扱わない。
+
+```text
+LGTGMF-STUDY1 = TECHNICAL-INVALID
+formal eligible measurement families = []
+```
+
+Disposition: **CLOSED / TECHNICAL-INVALID**.
+
+## DR-016 — Research Generation 3 dependency
+
+G3-02〜G3-08は原則としてG3-01でformal eligibilityを得たfamilyだけを使用するprogram contractである。本Studyのeligible family setは空なので、同instrumentのまま後続Studyを自動開始しない。
+
+次の研究行為には、G3-01を再判定しない新規prospective prerequisite Study、またはResearch Generation 3 program-level dependency decisionが必要である。
+
+Disposition: **DOWNSTREAM AUTO-START BLOCKED / DEPENDENCY REASSESSMENT REQUIRED**.
