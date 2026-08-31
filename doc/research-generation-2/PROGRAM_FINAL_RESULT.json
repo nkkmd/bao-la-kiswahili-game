@@ -5,7 +5,7 @@
   "closureDate": "2026-08-31",
   "closureBranch": "research/g2-final-program-closure",
   "baselineMainSha": "9f64aba1aa2364621196c1aeccda02bf74217f20",
-  "programStatus": "CLOSED-PENDING-MAIN-INTEGRATION",
+  "programStatus": "CLOSED",
   "coreAgenda": "G2-01..G2-12",
   "humanTrack": {
     "agendaLabel": "G2-H01",
@@ -15,18 +15,79 @@
     "blocksCoreProgramClosure": false
   },
   "agendaItems": [
-    {"agendaLabel":"G2-01","studyId":"PEOCR-STUDY1","closure":"INCONCLUSIVE"},
-    {"agendaLabel":"G2-02","studyId":"SRDR-STUDY1","closure":"INCONCLUSIVE"},
-    {"agendaLabel":"G2-03","studyId":"STSCV-STUDY1","closure":"INCONCLUSIVE","validatedTransformSet":[]},
-    {"agendaLabel":"G2-04","studyId":"REEOE-STUDY1","closure":"INCONCLUSIVE"},
-    {"agendaLabel":"G2-05","studyId":"DRSSE-STUDY1","closure":"EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN"},
-    {"agendaLabel":"G2-06","studyId":"RCPR-STUDY1","closure":"STAGE1-TECHNICAL-INVALID","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
-    {"agendaLabel":"G2-07","studyId":"PCRPR-STUDY1","closure":"STAGE1-TECHNICAL-INVALID","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
-    {"agendaLabel":"G2-08","studyId":"MDFT-STUDY1","closure":"NON-ESTIMABLE","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
-    {"agendaLabel":"G2-09","studyId":"TMGC-STUDY1","closure":"TECHNICAL-INVALID","stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
-    {"agendaLabel":"G2-10","studyId":"UMSSR-STUDY1","closure":"NOT-AUTHORIZED-NOT-EXECUTED","stage1":"STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION","selectedRepresentation":null,"stage2":"NOT-AUTHORIZED-NOT-EXECUTED"},
-    {"agendaLabel":"G2-11","studyId":null,"closure":"NON-ESTIMABLE","execution":"NOT-AUTHORIZED-NOT-EXECUTED","dependencyReason":"NO-ELIGIBLE-FROZEN-STRATEGIC-REGIME-REPRESENTATION","scientificOutcomeGenerated":false},
-    {"agendaLabel":"G2-12","studyId":"SSGTGE-STUDY1","closure":"TECHNICAL-INVALID","selectedEstimator":null,"stage2":"NOT-AUTHORIZED-NOT-EXECUTED"}
+    {
+      "agendaLabel": "G2-01",
+      "studyId": "PEOCR-STUDY1",
+      "closure": "INCONCLUSIVE"
+    },
+    {
+      "agendaLabel": "G2-02",
+      "studyId": "SRDR-STUDY1",
+      "closure": "INCONCLUSIVE"
+    },
+    {
+      "agendaLabel": "G2-03",
+      "studyId": "STSCV-STUDY1",
+      "closure": "INCONCLUSIVE",
+      "validatedTransformSet": []
+    },
+    {
+      "agendaLabel": "G2-04",
+      "studyId": "REEOE-STUDY1",
+      "closure": "INCONCLUSIVE"
+    },
+    {
+      "agendaLabel": "G2-05",
+      "studyId": "DRSSE-STUDY1",
+      "closure": "EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN"
+    },
+    {
+      "agendaLabel": "G2-06",
+      "studyId": "RCPR-STUDY1",
+      "closure": "STAGE1-TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G2-07",
+      "studyId": "PCRPR-STUDY1",
+      "closure": "STAGE1-TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G2-08",
+      "studyId": "MDFT-STUDY1",
+      "closure": "NON-ESTIMABLE",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G2-09",
+      "studyId": "TMGC-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G2-10",
+      "studyId": "UMSSR-STUDY1",
+      "closure": "NOT-AUTHORIZED-NOT-EXECUTED",
+      "stage1": "STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION",
+      "selectedRepresentation": null,
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G2-11",
+      "studyId": null,
+      "closure": "NON-ESTIMABLE",
+      "execution": "NOT-AUTHORIZED-NOT-EXECUTED",
+      "dependencyReason": "NO-ELIGIBLE-FROZEN-STRATEGIC-REGIME-REPRESENTATION",
+      "scientificOutcomeGenerated": false
+    },
+    {
+      "agendaLabel": "G2-12",
+      "studyId": "SSGTGE-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "selectedEstimator": null,
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    }
   ],
   "dependencyPrerequisites": [
     {
@@ -74,5 +135,6 @@
     "independentVerificationBoundariesPreserved": true,
     "failClosedHandlingPreserved": true
   },
-  "mainIntegration": "NOT-PERFORMED"
+  "mainIntegration": "COMPLETE",
+  "mainIntegrationFastForwardSha": "5210f70df6faca528fc1bd419808bc7664d7a447"
 }

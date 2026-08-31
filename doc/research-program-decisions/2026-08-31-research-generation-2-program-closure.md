@@ -115,4 +115,4 @@ Program全体のscientific synthesisは次を正本とする。
 - 本program closure decision
 - G2-11 dependency closure decision
 
-このclosure branchの中央文書同期と最終監査後、明示的な指示がある場合にのみ`main`へ統合する。
+中央文書同期と最終監査を完了後、明示的な統合指示に基づき2026-08-31に`main`へfast-forward integrationを完了した。科学的decision、claim boundary、G2-H01のdeferred / non-blocking状態は変更していない。

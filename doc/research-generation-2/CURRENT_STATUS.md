@@ -4,16 +4,16 @@ Updated: 2026-08-31
 
 ```text
 Program = Bao Second-Generation Research Program
-Program status = CLOSED ON RESEARCH BRANCH / PENDING MAIN INTEGRATION
+Program status = CLOSED / INTEGRATED TO MAIN
 Core agenda = G2-01..G2-12
 Human track = G2-H01 / independent / non-blocking / deferred
 Closure branch = research/g2-final-program-closure
 Baseline main = 9f64aba1aa2364621196c1aeccda02bf74217f20
-Central documentation synchronization = COMPLETE ON CLOSURE BRANCH
+Central documentation synchronization = COMPLETE / INTEGRATED TO MAIN
 Final documentation consistency audit = COMPLETE
 Temporary write-capable synchronization/correction workflows = REMOVED
 Temporary maintenance helpers = REMOVED
-Main integration = NOT PERFORMED
+Main integration = COMPLETE
 ```
 
 ## Core agenda status
@@ -65,9 +65,10 @@ Initial branch-only synchronization produced commit `ecc0f7288b35d5bf7d4e54a65fc
 - `PROGRAM_FINAL_RESULT.json`
 - `checkpoints/2026-08-31-program-closure-central-sync-complete.md`
 - `checkpoints/2026-08-31-final-document-consistency-audit.md`
+- `checkpoints/2026-08-31-main-integration-complete.md`
 - `../research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`
 - `../research-program-decisions/2026-08-31-research-generation-2-program-closure.md`
 
 ## Main integration
 
-このstatusはclosure research branch上の状態である。`main`への統合は実施していない。最終文書整合監査は完了しており、明示的な統合指示がある場合にのみfast-forward integrationを行う。
+`main`へのfast-forward integrationは2026-08-31に完了した。Research Generation 2 core programは中央文書・program-level正本・最終整合監査を含めて`main`上に統合済みである。

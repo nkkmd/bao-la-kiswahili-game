@@ -3,7 +3,7 @@
 更新日: 2026-08-31  
 対象: Bao Second-Generation Research Program  
 Core agenda: `G2-01..G2-12`  
-状態: **PROGRAM CLOSED ON RESEARCH BRANCH / PENDING MAIN INTEGRATION**
+状態: **PROGRAM CLOSED / INTEGRATED TO MAIN**
 
 ## 1. 最終結論
 
