@@ -5,6 +5,7 @@ on:
     branches:
       - research/g3-02-effective-branching-reply-width-structure
     paths:
+      - ".github/workflows/ebrws-stage1-development.yml"
       - "doc/effective-branching-reply-width-structure/authorizations/2026-09-01-stage-1-execution-trigger.md"
 
 permissions:
