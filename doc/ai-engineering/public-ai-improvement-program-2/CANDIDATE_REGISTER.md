@@ -1,16 +1,14 @@
 # PBAI-P2 Candidate Register
 
-Status: **INITIAL INVENTORY FROZEN / C006-C007 CLOSED / C008 SUPPORT-PASS + DEVELOPMENT-CONTRACT-FROZEN**  
+Status: **FINAL / INITIAL INVENTORY EXHAUSTED / KEEP-AI-GEN2**  
 Program: `PBAI-P2`  
 Baseline: `AI-GEN2-BASELINE-2026-09-01-v1`  
 Global gates: `PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1`  
 Scientific evidence cutoff: `cd200b85c1eb24aa4419bd5a9573552f3682f00d`
 
-## 1. namespace / no-rescue rule
+## 1. Namespace / no-rescue rule
 
-Repository-wide candidate namespace `PBAI-Cxxx`を継続する。
-
-PBAI-P1で`PBAI-C001`〜`PBAI-C005`はclosedであり、same-version、threshold変更、seed追加、subgroup追加、mechanism微修正による救済を行わない。
+Repository-wide candidate namespace `PBAI-Cxxx`を継続する。PBAI-P1の`PBAI-C001`〜`PBAI-C005`はclosedのまま再利用しない。
 
 PBAI-P2 initial inventory:
 
@@ -21,25 +19,25 @@ PBAI-C008-v1
 PBAI-C009-v1
 ```
 
-## 2. inventory summary
+Candidate outcome確認後にsame-version、threshold変更、seed追加、subgroup追加、negative-control再定義、mechanism微修正で救済しない。
 
-| ID | Mechanism | G2 basis | Current status | Key distinction |
+## 2. Final inventory summary
+
+| ID | Mechanism | G2 basis | Final status | Validation |
 | --- | --- | --- | --- | --- |
-| `PBAI-C006-v1` | strict RAW-safe search/cache/Worker identity | Tier A: authoritative RAW identity | `WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED` | frozen support universeでactionable collision supportなし |
-| `PBAI-C007-v1` | depth-preserving same-key TT replacement | Tier A: bounded exact transpositions | `NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION` | frozen supportでshallower-over-deeper overwrite 0 |
-| `PBAI-C008-v1` | root-best-flip-triggered two-move confirmation re-search | Tier B: G2-02 bounded search-condition descriptors | `SUPPORT-PASS / DEVELOPMENT-CONTRACT-FROZEN / AUTHORIZED-FOR-DEVELOPMENT` | selective confirmation search; development benefit未測定 |
-| `PBAI-C009-v1` | exact single-reply forcing extension | Tier B: reply-width concept only | `PROPOSED / NOT AUTHORIZED` | exact legal-reply-count trigger; G2-07 invalid modelは不使用 |
+| `PBAI-C006-v1` | strict RAW-safe search/cache/Worker identity | Tier A authoritative RAW identity | `WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED` | NOT AUTHORIZED |
+| `PBAI-C007-v1` | depth-preserving same-key TT replacement | Tier A bounded exact transpositions | `NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION` | NOT AUTHORIZED |
+| `PBAI-C008-v1` | root-best-flip-triggered two-move confirmation re-search | Tier B G2-02 bounded secondary descriptors | `DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED` | NOT AUTHORIZED |
+| `PBAI-C009-v1` | exact single-reply forcing extension | Tier B reply-width concept only | `TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED` | NOT AUTHORIZED |
 
-Current authorization:
+Final authorization:
 
 ```text
-C006 implementation = false
-C007 implementation = false
-C008 implementation = authorized after frozen contract / not yet materialized
-C009 implementation = false
+AUTHORIZED-FOR-DEVELOPMENT = 0
 validation authorized = false
 release holdout authorized = false
 public deployment authorized = false
+AI-GEN3 promotion authorized = false
 ```
 
 ---
@@ -48,21 +46,19 @@ public deployment authorized = false
 
 ## Evidence basis
 
-Tier A direct constraint:
-
 ```text
 G2 authoritative RAW identity
 = pits,reserve,houseOwned,player,phase,winner,pending
 
-current AI.stateKey
+AI.stateKey at frozen baseline
 = pits,player,phase,reserve,houseOwned,winner
 ```
 
-field mismatchだけでcurrent public correctness bugやpractical collisionを断定しない。
+Field mismatchだけでcurrent public correctness bugを断定せず、candidate code前にbaseline-only supportを要求した。
 
 ## Canonical support result
 
-Canonical run `33485530125`。production / independent deterministic core exact一致。
+Canonical run `33485530125`:
 
 ```text
 semantic unique RAW states = 389148
@@ -74,35 +70,30 @@ localTranspositionCollisionEvents = 0
 practicalWitnessCount = 0
 ```
 
-Decision:
-
 ```text
 PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
-candidate implementation = NOT AUTHORIZED
+implementation = NOT AUTHORIZED
 ```
 
-この結果は`pending`をauthoritative RAW identityから除外できることや、全Bao到達状態でcollisionが存在しないことを意味しない。
+この結果はauthoritative RAW identityの変更や、全Bao到達状態でのcollision不存在を意味しない。
 
 ---
 
 # PBAI-C007-v1 — Depth-preserving same-key TT replacement
 
-## Evidence basis
+G2-05のbounded exact RAW graphでtranspositionが観測されたことだけをTier A engineering premiseとした。
 
-Tier A。G2-05 bounded depth-9 RAW graphではexact transpositionが観測された。これはbounded domain内でTT reuse opportunityを検討する根拠だが、Bao全体のtransposition rateやspeedupを意味しない。
-
-## Frozen support / result
+Frozen support:
 
 ```text
 source seeds = 43100001..43101024
-target roots = 256
-PASS floor = incoming shallower-over-deeper events >=32 AND roots >=16
+selected roots = 256
+PASS floor = shallower-over-deeper overwrite events >= 32 AND roots >= 16
 ```
 
 Canonical run `33486314298`:
 
 ```text
-selected roots = 256 (Namua 128 / Mtaji 128)
 sameKeyStoreEvents = 16512
 incomingShallowerThanExistingEvents = 0
 rootsWithIncomingShallowerEvent = 0
@@ -110,14 +101,12 @@ laterPotentialDepthBenefitHits = 0
 baselineEquivalenceMismatches = 0
 ```
 
-Decision:
-
 ```text
 PBAI-C007-v1 = NON-ESTIMABLE-HOLD
-candidate implementation = NOT AUTHORIZED
+implementation = NOT AUTHORIZED
 ```
 
-同じC007-v1へ結果後にseed、depth、search profile、thresholdを追加して救済しない。
+Support floor未達後にdepth、seed、profile、thresholdを追加して救済しない。
 
 ---
 
@@ -125,132 +114,60 @@ candidate implementation = NOT AUTHORIZED
 
 ## Evidence basis
 
-Tier B only。
+G2-02 `SRDR-STUDY1 = INCONCLUSIVE`を変更せず、事前指定secondary descriptorsに存在したbounded search-condition disagreementをTier B hypothesis形成にだけ使用した。Higher-resource searchをtrue best moveとは扱わない。
 
-`SRDR-STUDY1 = INCONCLUSIVE`でprimary formal criterionは`null`。G2-02の事前指定secondary descriptorsに存在するbounded search-condition disagreementをengineering hypothesis形成にのみ使用する。
+## Predevelopment support
 
-**禁止:** higher-resource searchをtrue best moveとみなすこと、search instabilityが科学的にconfirmedされたと扱うこと、人間のdifficultyへ読み替えること。
-
-## Canonical predevelopment support
-
-Frozen contract:
+Canonical run `33492849852`:
 
 ```text
-source seeds = 43200001..43201024
-minimum eligible roots = 64
-measurement = frozen baseline D2/D3 deterministic root-best flip
-candidate code = prohibited
-candidate benefit metrics = prohibited
-validation / release holdout = prohibited
-```
-
-Canonical run:
-
-```text
-workflow run = 33492849852
-job = 99808142315
-artifact = 9794730237
-artifact ZIP SHA-256 = 4a56952f7bdf034f472661314d9de29a824a6342a63df1230969dbbfd6f2c6a3
-deterministic core SHA-256 = 9010ffa1fbdfa33e854d1fafe3c652e2017a6b46f0902c7fe25de69e0b2411c9
 source seeds = 1024
 trajectory roots available = 870
-technical failures = 0
 eligible roots = 233
-eligible Namua = 177
-eligible Mtaji = 56
 selected eligible roots = 128
-independent core equality = true
+technical failures = 0
+deterministic core SHA-256 = 9010ffa1fbdfa33e854d1fafe3c652e2017a6b46f0902c7fe25de69e0b2411c9
 ```
-
-Decision:
 
 ```text
-PBAI-C008-v1 predevelopment = SUPPORT-PASS
+predevelopment = SUPPORT-PASS
 ```
 
-Support PASSはcandidate benefitを意味しない。development populationへ進むためのsupport sufficiencyだけを成立させる。
-
-## Frozen exact development contract
-
-Machine-readable正本:
-
-```text
-candidates/PBAI-C008-v1.json
-contract freeze commit = fe962416a5d76fe8ab5d47def384dd386acc222d
-```
-
-Exact mechanism:
+## Frozen mechanism
 
 ```text
 feature = pbaiC008RootFlipConfirmation
 default = false
-affected public code = public/ai.js only
-eligible = enhanced alpha-beta iterative deepening / hard or expert
 trigger = final nominal completed depth d>=3 AND best(d-1) != best(d)
-confirmation candidates = exactly previous-depth best and final nominal-depth best
-confirmation depth = d+1 root plies
-window = full window
-same evaluator / same quiescence / same existing deadline
-both candidates must complete
-if incomplete or timeout = retain nominal completed-depth move
-score tie = retain final nominal-depth move
-no added time budget
-no move-ordering change
-no TT key/store-policy change
-no rule-engine or Worker source change
+confirmation candidates = exactly previous-depth best + final nominal-depth best
+confirmation = full-window d+1 under existing deadline
+both candidates must complete; otherwise nominal move retained
+no extra wall-clock budget
+no evaluator/quiescence/move-ordering/TT-key/TT-store/rule-engine/Worker change
 ```
 
-Feature-off contract:
+## Development result
+
+Canonical result: [`candidates/PBAI-C008-v1-development-result.json`](candidates/PBAI-C008-v1-development-result.json)
 
 ```text
-feature false must reproduce frozen baseline
-selected move key exact equality required
-all pre-existing stats fields/values exact equality required
-stats.pbaiC008 must be absent
-exception/timeout behavior exact equality required
+eligible roots = 71
+TopSet agreement delta = +0.2957746478873239             PASS
+mean normalized rank-loss delta = -0.19413145539906107    PASS
+severe-loss-rate excess = -0.09859154929577464           PASS
+catastrophic new loss = 0                                PASS
+median node ratio = 2.1004464285714284                   FAIL <= 1.60
+p95 node ratio = 3.079245283018868                       FAIL <= 2.50
+negative-control failures = 0                            PASS
+technical failures = 0                                   PASS
 ```
-
-## Frozen development population / gate
-
-Development source:
 
 ```text
-42400001..42400512
-runtime-eligible target maximum = 128
-development minimum estimable = 64
-support roots 432xxxxx are not reused as development outcomes
-validation 425xxxxx = NOT AUTHORIZED
-release holdout 426xxxxx = NOT AUTHORIZED
+PBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED
+validation contract freeze = NOT AUTHORIZED
 ```
 
-Intended-benefit conjunction:
-
-```text
-D4 TopSet agreement delta >= +0.05
-mean normalized rank-loss delta <= -0.02
-severe-loss-rate excess <= 0
-catastrophic new loss = 0
-median fixed-depth node ratio <= 1.60
-p95 fixed-depth node ratio <= 2.50
-```
-
-Negative controls require trigger count 0 and exact feature-on/off equality on the frozen counter set。
-
-## Current C008 authorization
-
-```text
-exact contract = FROZEN
-implementation = AUTHORIZED
-feature default = MUST REMAIN OFF
-feature-off equivalence = REQUIRED BEFORE BENEFIT EXECUTION
-development benefit execution = AUTHORIZED ONLY AFTER IMPLEMENTATION + EQUIVALENCE PASS
-validation = NOT AUTHORIZED
-release holdout = NOT AUTHORIZED
-public deployment = NOT AUTHORIZED
-AI-GEN3 promotion = NOT AUTHORIZED
-```
-
-Post-outcome trigger、confirmation semantics、population、thresholdのretuningは禁止する。
+Quality/safety signalがpositiveでもfrozen cost gateを結果後に緩和しない。
 
 ---
 
@@ -258,48 +175,100 @@ Post-outcome trigger、confirmation semantics、population、thresholdのretunin
 
 ## Evidence basis
 
-Tier B hypothesis-forming only。G2-07は`STAGE1-TECHNICAL-INVALID`であり、`F05_ALL`、`lambda=100`、production performance、reply-pressure modelを使用しない。
+Tier B hypothesis-forming only。G2-07は`STAGE1-TECHNICAL-INVALID`であり、そのinvalid model、`F05_ALL`、`lambda=100`、production-only performanceを使用しない。
 
-## Frozen initial family
+## Predevelopment support
+
+Canonical run `33500775677`:
 
 ```text
-candidate feature = pbaiC009SingleReplyExtension
-feature default = off
-trigger = nonterminal opponent-to-move node with exact legal move count == 1 at nominal depth cutoff
+source seeds = 1024
+trajectory roots available = 864
+eligible roots = 639
+selected eligible roots = 128
+single-reply cutoff occurrences = 2201
+unique single-reply cutoff states = 1878
+technical failures = 0
+baseline equivalence mismatches = 0
+```
+
+```text
+predevelopment = SUPPORT-PASS
+```
+
+## Frozen mechanism
+
+```text
+feature = pbaiC009SingleReplyExtension
+default = false
+trigger = nonterminal opponent-to-root-player node at nominal depth cutoff with exact legal move count == 1
 extension = exactly +1 ply
-maximum extensions per root-to-leaf path = 1
-same evaluator / same quiescence / same wall-clock deadline
+maximum extensions per observed path = 1
+same evaluator / quiescence / existing deadline
 ```
 
-Predevelopment support:
+## Feature-off equivalence
+
+Canonical run `33503615979`:
 
 ```text
-source seeds = 43300001..43301024
-target eligible roots = 128
-minimum eligible roots = 64
-candidate code = prohibited
+selected roots = 32
+conditions per root = 8
+comparisons = 256
+comparison mismatches = 0
+candidate diagnostic presence = 0
+disposition = FEATURE-OFF-EQUIVALENCE-PASS
+deterministic core SHA-256 = c16c1a3a81a0c265d7f01f67da1b1106d098c421a3b313f221729f5b43cc462d
 ```
 
-C009はC008のformal development dispositionが確定する前に実装しない。
+## Development result
+
+Canonical result: [`candidates/PBAI-C009-v1-development-result.json`](candidates/PBAI-C009-v1-development-result.json)
+
+```text
+selected eligible roots = 128
+negative controls = 64
+TopSet agreement delta = +0.015625                       FAIL >= +0.03
+mean normalized rank-loss delta = +0.003924851190476197  FAIL <= -0.01
+severe-loss-rate excess = -0.015625                      PASS
+catastrophic new loss = 0                                PASS
+median node ratio = 1.0140845070422535                   PASS
+p95 node ratio = 1.3620689655172413                      PASS
+runtime trigger failures = 0                             PASS
+max-extension-path failures = 0                          PASS
+negative-control failures = 18                           FAIL = 0
+technical failures = 0                                   PASS
+```
+
+Production / independent verifierはstrict RAW population、eligibility、D4 reference、row-level metrics、aggregate decision、deterministic coreまでexact一致した。
+
+Frozen decision mappingに従い:
+
+```text
+PBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED
+validation contract freeze = NOT AUTHORIZED
+```
+
+Primary benefit gateも独立に未達であり、negative-controlだけを再設計してsame-version救済することも認めない。
 
 ---
 
-## 3. inventory addition rule
+## 3. Initial inventory addition rule / closure interpretation
 
-PBAI-P2 initial inventory外のcandidate追加には、cutoff以前のG2 provenance、既存candidateとのmaterial distinction、outcome非依存の追加理由、full pre-outcome contract freeze、Research Generation 3 influence `ZERO`の再監査を必要とする。
+PBAI-P2 initial inventory外candidate追加には、cutoff以前のG2 provenance、既存candidateとのmaterial distinction、outcome非依存の追加理由、full pre-outcome contract freeze、Research Generation 3 influence `ZERO`の再監査が必要だった。
 
-## 4. current authorization state
+Initial inventoryの全結果を確認した後に新candidateを発明するためのoutcome-independent追加理由はfreezeされていないため、PBAI-P2をC010等で延長しない。
+
+## 4. Final state
 
 ```text
-PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
-PBAI-C007-v1 = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
-PBAI-C008-v1 = SUPPORT-PASS / DEVELOPMENT-CONTRACT-FROZEN / AUTHORIZED-FOR-DEVELOPMENT
-PBAI-C009-v1 = PROPOSED / implementation not authorized
-AUTHORIZED-FOR-DEVELOPMENT count = 1
-candidate implementations materialized = 0
-predevelopment support outcomes = 3
-candidate development outcomes = 0
+PBAI-C006-v1 = CLOSED
+PBAI-C007-v1 = CLOSED
+PBAI-C008-v1 = CLOSED
+PBAI-C009-v1 = CLOSED
+initial inventory remaining = 0
 validation executions = 0
 release holdout executions = 0
 public deployments = 0
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 ```
