@@ -18,95 +18,46 @@
 
 正式な命名規則: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
 
-## 2. 進行中Program — `PBAI-P2`
+## 2. 完了済みProgram — `PBAI-P2`
 
-**正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2  
-**状態:** **ACTIVE / C006 CLOSED / C007 NON-ESTIMABLE-HOLD / C008 SUPPORT-PASS + DEVELOPMENT-CONTRACT-FROZEN**  
-**Research Generation 2 scientific evidence cutoff:** `cd200b85c1eb24aa4419bd5a9573552f3682f00d`  
+**正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2
+
+**状態:** **COMPLETE / KEEP-AI-GEN2**
+
+**Research Generation 2 scientific evidence cutoff:** `cd200b85c1eb24aa4419bd5a9573552f3682f00d`
+
 **Research Generation 3 influence:** **ZERO / EXCLUDED**
 
-PBAI-P2は、Research Generation 2で正式に成立したbounded evidenceと明示された不確実性・失敗境界だけをscientific/evidence inputとして、新しいpublic Bao AI engineering mechanismを独立評価するProgramです。PBAI-P1の再開・救済・延長ではありません。
-
-Program開始時のremote `main`は`2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972`です。Scientific evidence cutoffとは明確に分離し、post-cutoff research contentをPBAI-P2 candidate設計へ使用しません。
-
-### 2.1 現在の管理状態
+PBAI-P2はResearch Generation 2のbounded evidenceだけをscientific premiseとしてC006〜C009をprospectively評価した。Final dispositions:
 
 ```text
-PBAI-P2-A evidence audit / G3 firewall = COMPLETE
-PBAI-P2-B baseline re-freeze = COMPLETE
-PBAI-P2-C global gates / fresh split / inventory freeze = COMPLETE
-PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 SUPPORT-PASS + CONTRACT-FROZEN
-PBAI-P2-E = C008 DEVELOPMENT AUTHORIZED / NOT YET EXECUTED
-baseline = AI-GEN2-BASELINE-2026-09-01-v1
-global gates = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
-AUTHORIZED-FOR-DEVELOPMENT = 1
-candidate implementations = 0
-predevelopment support outcomes = 3
-candidate development outcomes = 0
+PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
+PBAI-C007-v1 = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+PBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED
+PBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED
+```
+
+C008はquality/safety gatesを通過したがfrozen cost gatesをFAIL。C009はnegative-control gateをFAILし、primary benefit gatesも未達。両candidateともvalidation authorizationへ進まなかった。
+
+```text
 validation executions = 0
 release holdout executions = 0
+formal ADOPT = none
 public deployments = 0
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-current public AIの`public/engine.js`、`public/ai.js`、`public/ai-weights.js`、`public/ai-config.js`、`public/ai-worker.js`、`public/main.js`、`public/index.html`、`public/service-worker.js`は、PBAI-P1 exact baseline sourceとGit blob identityが一致しました。そのため、G3期由来のpublic AI source changeは検出されていません。
+Canonical entry points:
 
-### 2.2 初期candidate inventoryと現在状態
-
-```text
-PBAI-C006-v1
-  = strict RAW-safe search/cache/Worker identity
-  = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
-  = semantic unique RAW states 389148
-  = all frozen collision categories 0
-  = implementation NOT AUTHORIZED
-
-PBAI-C007-v1
-  = depth-preserving same-key TT replacement
-  = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
-  = same-key stores 16512
-  = shallower-over-deeper overwrite events 0 / roots 0
-  = implementation NOT AUTHORIZED
-
-PBAI-C008-v1
-  = root-best-flip-triggered two-move confirmation re-search
-  = SUPPORT-PASS / DEVELOPMENT-CONTRACT-FROZEN
-  = eligible support roots 233 >= frozen minimum 64
-  = implementation AUTHORIZED / NOT YET MATERIALIZED
-  = feature-off equivalence REQUIRED before development benefit execution
-
-PBAI-C009-v1
-  = exact single-reply forcing extension
-  = PROPOSED
-  = implementation NOT AUTHORIZED
-```
-
-C008 support run `33492849852`はcandidate codeを使用せず、production / independent deterministic core exact一致で`SUPPORT-PASS`となりました。Exact development contractはcommit `fe962416a5d76fe8ab5d47def384dd386acc222d`でsource変更前にfreeze済みです。
-
-### 2.3 PBAI-P2 canonical文書
-
-- [`ai-engineering/public-ai-improvement-program-2/README.md`](ai-engineering/public-ai-improvement-program-2/README.md)
+- [`ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md)
 - [`ai-engineering/public-ai-improvement-program-2/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-2/CURRENT_STATUS.md)
-- [`ai-engineering/public-ai-improvement-program-2/RESUME_HERE.md`](ai-engineering/public-ai-improvement-program-2/RESUME_HERE.md)
-- [`ai-engineering/public-ai-improvement-program-2/EVIDENCE_FIREWALL.md`](ai-engineering/public-ai-improvement-program-2/EVIDENCE_FIREWALL.md)
-- [`ai-engineering/public-ai-improvement-program-2/GENERATION_2_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-2/GENERATION_2_EVIDENCE_AUDIT.md)
-- [`ai-engineering/public-ai-improvement-program-2/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-2/BASELINE_SPEC.md)
-- [`ai-engineering/public-ai-improvement-program-2/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-2/BENCHMARK_PROTOCOL.md)
 - [`ai-engineering/public-ai-improvement-program-2/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/CANDIDATE_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md)
-- [`ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md)
-- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C006-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C006-v1-predevelopment-support-result.json)
-- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C007-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C007-v1-predevelopment-support-result.json)
-- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-predevelopment-support-result.json)
-- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1.json)
-
-Machine-readable freeze:
-
-- `baselines/AI-GEN2-BASELINE-2026-09-01-v1.json`
-- `benchmark/PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1.json`
-- `candidates/PBAI-P2-INITIAL-CANDIDATE-INVENTORY-2026-09-01-v1.json`
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-development-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-development-result.json)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C009-v1-development-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C009-v1-development-result.json)
 
 ## 3. 完了済みProgram — `PBAI-P1`
 

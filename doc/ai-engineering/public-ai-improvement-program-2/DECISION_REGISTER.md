@@ -2,7 +2,7 @@
 
 Program: `PBAI-P2`  
 開始日: 2026-09-01  
-現在状態: **ACTIVE / C006 CLOSED / C007 CLOSED-HOLD / C008 SUPPORT-PASS + DEVELOPMENT-CONTRACT-FROZEN**
+現在状態: **COMPLETE / KEEP-AI-GEN2**
 
 この台帳は`PBAI-P2`のengineering判断だけを記録する。Research Generation 2の正式な科学判断は各研究の正本に従い、この台帳で変更しない。
 
@@ -265,3 +265,61 @@ AI-GEN3 promotion = NOT AUTHORIZED
 ```
 
 Feature-off equivalence failureは`TECHNICAL-INVALID / REJECT-OR-HOLD`。結果後にmechanism、trigger、population、thresholdをretuneしない。
+
+
+## D030 — C008 developmentはcost gate未達で閉じる
+
+Canonical development result `33497330874`はproduction / independent reconstruction一致。71 eligible rootsでquality/safety gatesはPASSしたが、median node ratio `2.1004464285714284 > 1.60`、p95 `3.079245283018868 > 2.50`でfrozen cost gateをFAILした。
+
+```text
+PBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED
+validation contract freeze = NOT AUTHORIZED
+```
+
+Quality signalを理由にcost thresholdを緩和しない。
+
+## D031 — C009はsupport PASSとfeature-off equivalence PASS後にdevelopmentを実行する
+
+C009 predevelopment run `33500775677`はeligible roots `639 >= 64`、technical failures 0で`SUPPORT-PASS`。Exact contractをsource変更前にfreezeし、candidate implementationはdefault-offとした。Feature-off run `33503615979`は256 comparisons、mismatch 0、diagnostic leakage 0で`FEATURE-OFF-EQUIVALENCE-PASS`。このPASSだけをdevelopment `424xxxxx`を開く許可とし、validationは未承認のままとした。
+
+## D032 — C009 developmentはnegative-control failureによりTECHNICAL-INVALIDで閉じる
+
+Canonical development run `33504482668` / independent reconstructionで128 eligible roots、64 negative controlsを再構成した。
+
+```text
+TopSet agreement delta = +0.015625 < +0.03 FAIL
+mean normalized rank-loss delta = +0.003924851190476197 > -0.01 FAIL
+severe-loss-rate excess = -0.015625 PASS
+catastrophic new loss = 0 PASS
+median node ratio = 1.0140845070422535 PASS
+p95 node ratio = 1.3620689655172413 PASS
+negative-control failures = 18 > 0 FAIL
+technical failures = 0
+```
+
+Frozen decision mappingに従い:
+
+```text
+PBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED
+validation contract freeze = NOT AUTHORIZED
+```
+
+Primary benefit gatesも独立に未達。同versionでnegative-control、trigger、population、thresholdを変更して救済しない。
+
+## D033 — Initial inventory外candidateをpost-outcomeで追加しない
+
+PBAI-C006-v1..PBAI-C009-v1の全結果確認後に、新candidateを追加するoutcome-independentな事前根拠はfreezeされていない。今回のoutcomeからC010等を発明してPBAI-P2を延長しない。将来の改善は新Programとしてprospective freezeする。
+
+## D034 — PBAI-P2をKEEP-AI-GEN2で正式closureする
+
+```text
+PBAI-P2 = COMPLETE
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
+validation executions = 0
+release holdout executions = 0
+formal ADOPT = none
+public deployments = 0
+public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT-PROMOTED
+Research Generation 3 influence = ZERO
+```

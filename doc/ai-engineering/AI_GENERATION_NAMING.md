@@ -139,22 +139,21 @@ final outcome = KEEP-AI-GEN2
 
 PBAI-P1によるpublic AI deploymentは発生せず、AI-GEN3は未昇格のままです。
 
-## 8. PBAI-P2で固定した対応関係
+## 8. PBAI-P2で確定した対応関係
 
-PBAI-P2開始時点で次を固定します。
+PBAI-P2 closureで次を確定する。
 
 ```text
 program = PBAI-P2
-current public lineage = AI-GEN2
-current exact comparator = AI-GEN2-BASELINE-2026-09-01-v1
 scientific evidence = Research Generation 2 only
 scientific evidence cutoff = cd200b85c1eb24aa4419bd5a9573552f3682f00d
 Research Generation 3 influence = ZERO
-initial candidate identifiers = PBAI-C006..PBAI-C009
-candidate implementation at initialization = 0
+baseline = AI-GEN2-BASELINE-2026-09-01-v1
+candidate identifiers consumed = PBAI-C006..PBAI-C009
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
+public AI code changed by PBAI-P2 = false
+current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-PBAI-P2でもcandidate validation PASSだけではgeneration promotionを行いません。`PBAI-P2-G`のprotected release holdoutとformal `ADOPT`を経て、さらに`PBAI-P2-H`でactual public-default deploymentが成立した場合にのみ`AI-GEN3`へpromotionできます。
-
-全candidateがgateを通過しない場合、`KEEP-AI-GEN2`を正常なProgram outcomeとして認めます。
+C006〜C009はいずれもvalidation authorizationへ到達しなかった。したがってPBAI-P2-F/G/Hによるvalidation、protected release holdout、public deployment、generation promotionは実行していない。Research Generation 3が進行していてもAI generationは自動的に進まず、`AI-GEN3`は次の正式採用public lineageの予約名のままである。
