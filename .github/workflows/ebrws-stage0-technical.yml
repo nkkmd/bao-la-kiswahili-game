@@ -1,0 +1,59 @@
+name: EBRWS Stage 0 technical
+
+on:
+  push:
+    branches:
+      - research/g3-02-effective-branching-reply-width-structure
+    paths:
+      - ".github/workflows/ebrws-stage0-technical.yml"
+      - "tools/experiments/run-ebrws-stage0-technical.js"
+      - "tools/experiments/lib/ebrws-stage0-production.js"
+      - "tools/experiments/lib/ebrws-stage0-independent.js"
+      - "doc/effective-branching-reply-width-structure/prereg/STAGE_0_TECHNICAL_SPEC.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-02-effective-branching-reply-width-structure
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Stage 0 technical validation
+        id: run
+        shell: bash
+        run: |
+          set +e
+          OUT="artifacts/local/effective-branching-reply-width-structure/stage0-technical-v1"
+          node tools/experiments/run-ebrws-stage0-technical.js "$OUT"
+          status=$?
+          mkdir -p doc/effective-branching-reply-width-structure/results/stage-0
+          cp "$OUT/technical-validation.json" doc/effective-branching-reply-width-structure/results/stage-0/technical-validation.json
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit Stage 0 result
+        shell: bash
+        run: |
+          git config user.name "Sawa"
+          git config user.email "72678394+nkkmd@users.noreply.github.com"
+          git add doc/effective-branching-reply-width-structure/results/stage-0/technical-validation.json
+          if git diff --cached --quiet; then
+            echo "No Stage 0 result change"
+          else
+            git commit -m "Record EBRWS Stage 0 technical result"
+            git push origin HEAD:research/g3-02-effective-branching-reply-width-structure
+          fi
+
+      - name: Enforce Stage 0 outcome
+        shell: bash
+        run: exit "${{ steps.run.outputs.status }}"
