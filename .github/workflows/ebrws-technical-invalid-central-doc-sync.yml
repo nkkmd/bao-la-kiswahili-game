@@ -5,7 +5,6 @@ on:
     branches:
       - research/g3-02-effective-branching-reply-width-structure
     paths:
-      - ".github/workflows/ebrws-technical-invalid-central-doc-sync.yml"
       - "tools/experiments/materialize-ebrws-technical-invalid-central-docs.js"
   workflow_dispatch:
 
@@ -29,9 +28,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Materialize final Actions-history audit addenda
-        run: node tools/experiments/materialize-ebrws-final-actions-audit-addenda.js
-
       - name: Materialize current-facing closure state
         run: node tools/experiments/materialize-ebrws-technical-invalid-central-docs.js
 
@@ -43,23 +39,15 @@ jobs:
             exit 1
           fi
 
-      - name: Commit synchronized closure documents
+      - name: Commit synchronized central documents
         shell: bash
         run: |
           git config user.name "Sawa"
           git config user.email "72678394+nkkmd@users.noreply.github.com"
-          git add README.md \
-                  doc/RESEARCH_INDEX.md \
-                  doc/FUTURE_RESEARCH_AGENDA.md \
-                  doc/effective-branching-reply-width-structure/README.md \
-                  doc/effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md \
-                  doc/effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md \
-                  doc/effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md \
-                  doc/research-generation-3/README.md \
-                  doc/research-generation-3/CURRENT_STATUS.md
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md
           if git diff --cached --quiet; then
-            echo "No closure document changes"
+            echo "No central document changes"
           else
-            git commit -m "Synchronize EBRWS final Actions-history audit"
+            git commit -m "Synchronize G3-02 final audited central docs"
             git push origin HEAD:research/g3-02-effective-branching-reply-width-structure
           fi
