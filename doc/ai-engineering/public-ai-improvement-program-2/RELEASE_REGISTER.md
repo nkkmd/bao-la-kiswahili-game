@@ -1,21 +1,30 @@
 # PBAI-P2 — リリース台帳
 
 Program: `PBAI-P2`  
-現在状態: **NO RELEASE / AI-GEN2 RETAINED**
+状態: **COMPLETE / NO RELEASE / KEEP-AI-GEN2**
 
-## 1. 公開系統
-
-開始時と現在のpublic lineageは:
+## 1. 最終公開系統
 
 ```text
-AI-GEN2
+public lineage before PBAI-P2 = AI-GEN2
+public lineage after PBAI-P2 = AI-GEN2
+AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-である。`AI-GEN3`は予約名のままであり、formal `ADOPT`とactual public-default deploymentが両方成立するまで付与しない。
+`AI-GEN3`はformal `ADOPT` + fresh validation + protected release holdout + actual public-default deploymentを必要とする。PBAI-P2ではその条件を満たすcandidateは成立しなかった。
 
-## 2. release holdoutの状態
+## 2. Candidate release state
 
-Program initialization時点:
+```text
+PBAI-C006-v1 = CLOSED / implementation not authorized
+PBAI-C007-v1 = CLOSED / implementation not authorized
+PBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / validation not authorized
+PBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / validation not authorized
+```
+
+C008/C009 candidate sourceはisolated development branchesでdefault-offとしてのみmaterializeした。失敗candidateの`public/ai.js`差分はpublic `main`へ採用しない。
+
+## 3. Validation / holdout state
 
 ```text
 validation executions = 0
@@ -26,52 +35,26 @@ public deployments caused by PBAI-P2 = 0
 generation promotion = NONE
 ```
 
-Release holdoutは`PBAI-P2-C`では`NOT-AUTHORIZED`である。
+Fresh validation `425xxxxx`とprotected release holdout `426xxxxx`は未アクセスのままclosureした。未実行をnegative resultとして解釈しない。
 
-実行には:
+## 4. Public source state
 
 ```text
-fresh independent validation PASS
-+ candidate source/config hash freeze
-+ explicit PBAI-P2-F holdout authorization
+public AI source changed by PBAI-P2 = false
+public default candidate feature = none
+PWA cache migration = not required
+rollback target = not required
 ```
 
-が必要である。
+Program開始時にfreezeした`AI-GEN2-BASELINE-2026-09-01-v1`をpublic comparatorとして維持する。
 
-## 3. release recordに必要な項目
-
-将来release candidateが成立した場合、最低限次を記録する。
+## 5. Final release decision
 
 ```text
-releaseId
-candidateId(s)
-baselineId
-generationLineageBefore
-generationLineageAfter
-candidate source/config hash
-public deployment commit/ref
-validation artifacts
-release holdout artifacts
-correctness/regression result
-operational result
-PWA cache version
-rollback target
-formal ADOPT / REJECT / HOLD decision
-actual public-default deployment status
-generationPromotionDecision
-```
-
-## 4. protected holdout rule
-
-release holdoutを見た後にmechanism、threshold、trigger、budget、populationを変更し、同じholdoutで救済しない。
-
-Holdout failure後に変更する場合は、新candidate/versionと未使用の新しいfuture holdoutが必要である。
-
-## 5. 現在のrelease state
-
-```text
-PBAI-P2 public release = none
+PBAI-P2 public release = NONE
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
-public AI source changed by PBAI-P2 = false
 ```
+
+このclosure後に同じcandidate/versionをthreshold緩和、seed追加、subgroup追加、mechanism微修正で救済しない。将来のAI改善は新しいProgram-level prospective freezeの下で行う。
