@@ -21,7 +21,7 @@
 ## 2. 進行中Program — `PBAI-P2`
 
 **正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2  
-**状態:** **ACTIVE / C006 CLOSED / C007 NON-ESTIMABLE-HOLD / C008 PREDEVELOPMENT NEXT**  
+**状態:** **ACTIVE / C006 CLOSED / C007 NON-ESTIMABLE-HOLD / C008 SUPPORT-PASS + DEVELOPMENT-CONTRACT-FROZEN**  
 **Research Generation 2 scientific evidence cutoff:** `cd200b85c1eb24aa4419bd5a9573552f3682f00d`  
 **Research Generation 3 influence:** **ZERO / EXCLUDED**
 
@@ -35,12 +35,13 @@ Program開始時のremote `main`は`2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972`で
 PBAI-P2-A evidence audit / G3 firewall = COMPLETE
 PBAI-P2-B baseline re-freeze = COMPLETE
 PBAI-P2-C global gates / fresh split / inventory freeze = COMPLETE
-PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 PREDEVELOPMENT NEXT
+PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 SUPPORT-PASS + CONTRACT-FROZEN
+PBAI-P2-E = C008 DEVELOPMENT AUTHORIZED / NOT YET EXECUTED
 baseline = AI-GEN2-BASELINE-2026-09-01-v1
 global gates = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
-AUTHORIZED-FOR-DEVELOPMENT = 0
+AUTHORIZED-FOR-DEVELOPMENT = 1
 candidate implementations = 0
-predevelopment support outcomes = 2
+predevelopment support outcomes = 3
 candidate development outcomes = 0
 validation executions = 0
 release holdout executions = 0
@@ -70,8 +71,10 @@ PBAI-C007-v1
 
 PBAI-C008-v1
   = root-best-flip-triggered two-move confirmation re-search
-  = PROPOSED / PREDEVELOPMENT SUPPORT NEXT
-  = implementation NOT AUTHORIZED
+  = SUPPORT-PASS / DEVELOPMENT-CONTRACT-FROZEN
+  = eligible support roots 233 >= frozen minimum 64
+  = implementation AUTHORIZED / NOT YET MATERIALIZED
+  = feature-off equivalence REQUIRED before development benefit execution
 
 PBAI-C009-v1
   = exact single-reply forcing extension
@@ -79,7 +82,7 @@ PBAI-C009-v1
   = implementation NOT AUTHORIZED
 ```
 
-C006/C007はいずれもcandidate code、validation、release holdoutへ進んでいません。次に許可されるcandidate-specific工程は、初期inventoryで結果前に固定済みのC008 baseline-only predevelopment supportだけです。
+C008 support run `33492849852`はcandidate codeを使用せず、production / independent deterministic core exact一致で`SUPPORT-PASS`となりました。Exact development contractはcommit `fe962416a5d76fe8ab5d47def384dd386acc222d`でsource変更前にfreeze済みです。
 
 ### 2.3 PBAI-P2 canonical文書
 
@@ -96,6 +99,8 @@ C006/C007はいずれもcandidate code、validation、release holdoutへ進ん�
 - [`ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md)
 - [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C006-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C006-v1-predevelopment-support-result.json)
 - [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C007-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C007-v1-predevelopment-support-result.json)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-predevelopment-support-result.json)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1.json)
 
 Machine-readable freeze:
 
@@ -267,9 +272,13 @@ C006 → WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
           ↓
 C007 → NON-ESTIMABLE-HOLD
           ↓
-C008 baseline-only predevelopment support = NEXT
+C008 baseline-only support → SUPPORT-PASS
+          ↓
+C008 exact development contract → FROZEN
+          ↓
+C008 implementation + feature-off equivalence → NEXT
 ```
 
-C006/C007のengineering support結果は、Research Generation 2のformal scientific decisionやidentity boundaryを変更しません。
+C006/C007/C008のengineering結果はResearch Generation 2のformal scientific decisionやidentity boundaryを変更しません。
 
 PBAI-P2のcandidateがすべて採用gateを通らない場合は、PBAI-P1と同様に`KEEP-AI-GEN2`を正常なProgram outcomeとして認めます。
