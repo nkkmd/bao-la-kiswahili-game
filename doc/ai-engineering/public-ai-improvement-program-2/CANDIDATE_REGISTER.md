@@ -1,6 +1,6 @@
 # PBAI-P2 Candidate Register
 
-Status: **INITIAL INVENTORY FROZEN / NO IMPLEMENTATION / NO OUTCOME**  
+Status: **INITIAL INVENTORY FROZEN / C006-C007 PREDEVELOPMENT CLOSED / NO IMPLEMENTATION**  
 Program: `PBAI-P2`  
 Baseline: `AI-GEN2-BASELINE-2026-09-01-v1`  
 Global gates: `PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1`  
@@ -40,20 +40,23 @@ TECHNICAL-INVALID
 
 ## 2. inventory summary
 
-| ID | Mechanism | G2 basis | Initial status | Key distinction |
+| ID | Mechanism | G2 basis | Current status | Key distinction |
 | --- | --- | --- | --- | --- |
-| `PBAI-C006-v1` | strict RAW-safe search/cache/Worker identity | Tier A: authoritative RAW identity | `PREDEVELOPMENT-AUDIT` | correctness identity mechanism; not an exact-oracle lookup candidate and not P1 C003 rescue |
-| `PBAI-C007-v1` | depth-preserving same-key TT replacement | Tier A: bounded exact transpositions | `PROPOSED / DEPENDENCY-GATED` | TT store policy only; not mate-score normalization, root ordering, or C004 rescue |
-| `PBAI-C008-v1` | root-best-flip-triggered two-move confirmation re-search | Tier B: G2-02 bounded search-condition descriptors | `PROPOSED` | selective confirmation search; not legacy routing, root ordering, or dormant stableBestDepths toggle |
+| `PBAI-C006-v1` | strict RAW-safe search/cache/Worker identity | Tier A: authoritative RAW identity | `WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED` | correctness identity mechanism; no actionable collision support in frozen universe |
+| `PBAI-C007-v1` | depth-preserving same-key TT replacement | Tier A: bounded exact transpositions | `NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION` | TT store policy only; frozen support found 0 shallower-over-deeper overwrite events |
+| `PBAI-C008-v1` | root-best-flip-triggered two-move confirmation re-search | Tier B: G2-02 bounded search-condition descriptors | `PROPOSED / PREDEVELOPMENT SUPPORT NEXT` | selective confirmation search; not legacy routing, root ordering, or dormant stableBestDepths toggle |
 | `PBAI-C009-v1` | exact single-reply forcing extension | Tier B: reply-width concept only | `PROPOSED` | exact legal-reply-count trigger; no G2-07 model/weights/thresholds |
 
-All four:
+Current authorization:
 
 ```text
-implementation authorized now = false
-validation authorized now = false
-release holdout authorized now = false
-public deployment authorized now = false
+C006 implementation = false
+C007 implementation = false
+C008 implementation = false
+C009 implementation = false
+validation authorized = false
+release holdout authorized = false
+public deployment authorized = false
 ```
 
 ---
@@ -82,38 +85,13 @@ Current baseline statically uses`AI.stateKey` in evaluation-cache identity、tra
 
 Engine-valid states that differ only in authoritative `pending` semantics can alias under the baseline AI key. If such aliasing reaches an actual search/cache/Worker identity decision, a strict RAW key may prevent invalid reuse/stale acceptance without material performance regression.
 
-## Prospective exact mechanism family
-
-Implementation authorizationが後で成立した場合のみ、feature-gated strict identityを追加する。
-
-```text
-candidate feature = pbaiC006StrictRawIdentity
-feature default before adoption = off
-strict identity fields = pits,reserve,houseOwned,player,phase,winner,pending
-canonicalization / symmetry = none
-rule engine changes = none
-evaluator changes = none
-search depth/time budget changes = none
-move ordering changes = none
-```
-
-Backward-compatibleなlegacy `AI.stateKey` APIを無条件に置換するのではなく、TT / evaluation cache / Worker stale-result guardが同一のstrict identity contractを選択できる専用identity surfaceを作る。exact code surfaceはsupport PASS後の`PBAI-P2-D` contractでfreezeする。
-
-## Baseline-only predevelopment support block
+## Frozen predevelopment support contract
 
 ```text
 source seeds = 43000001..43002048
 max game plies = 160
-selection = consequence-blind / RAW-key aware
 candidate code = prohibited during support measurement
 ```
-
-Support measurementは次を別々に記録する。
-
-1. **semantic collision witness** — engine-valid distinct authoritative RAW states with identical baseline AI key;
-2. **natural reachable collision witness** — frozen source trajectories内でdistinct RAW statesがbaseline keyへaliasするか;
-3. **search/cache operational witness** — single search invocationまたはevaluation-cache useでdistinct RAW stateへのsame-key reuse opportunityが発生するか;
-4. **Worker stale-identity witness** — strict RAW-distinct state pairをbaseline Worker position keyが区別できないか。
 
 Support PASSには最低限:
 
@@ -127,25 +105,32 @@ AND
 )
 ```
 
-engine-valid witnessを構成できない場合は`NON-ESTIMABLE / HOLD`ではなくstatic premise自体が成立しないため`WITHDRAWN / NO-ACTIONABLE-IDENTITY-DEFECT`とする。semantic witnessは成立するがpractical surface witnessが0の場合は`NON-ESTIMABLE-PRACTICAL-SUPPORT / HOLD`とする。
+engine-valid witnessを構成できない場合は`WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT`とすることを結果前に固定した。
 
-Support PASS前にimplementation、decision-quality benefit metric、validationを実行しない。
+## Canonical support result
 
-## Intended benefit / gates
-
-C006はcorrectness-first candidateであり、adoptionには次を要求する。
+Canonical run `33485530125`、production / independent deterministic core exact一致。
 
 ```text
-invalid strict-RAW alias reuse demonstrated in baseline support surface >= 1
-candidate invalid reuse on frozen regression/support fixtures = 0
-feature-off exact baseline equivalence = PASS
-feature-on legal move/state/terminal preservation = PASS
-global decision-quality non-regression = PASS
-global strength non-inferiority = PASS
-global operational gate = PASS
+semantic unique RAW states = 389148
+semanticCollisionWitnesses = 0
+naturalReachableCollisionWitnesses = 0
+workerStaleIdentityWitnesses = 0
+localEvaluationCacheCollisionEvents = 0
+localTranspositionCollisionEvents = 0
+practicalWitnessCount = 0
 ```
 
-「collisionを1件見つけた」だけでAI-GEN3へ昇格しない。
+Decision:
+
+```text
+PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
+candidate implementation = NOT AUTHORIZED
+validation = NOT AUTHORIZED
+release holdout = NOT AUTHORIZED
+```
+
+この結果は`pending`をauthoritative RAW identityから除外できることや、全Bao到達状態でcollisionが存在しないことを意味しない。
 
 ---
 
@@ -163,7 +148,7 @@ G2-05 bounded depth-9 RAW graphではexact transpositionが観測され、duplic
 
 同一TT keyへ複数回storeする際、既存のよりdeepなentryをshallower resultで上書きしないことが、semantic resultを変えずにcache usefulnessを維持し、search workを削減する可能性がある。
 
-## Exact mechanism family
+## Frozen mechanism family
 
 ```text
 candidate feature = pbaiC007DepthPreservingTtStore
@@ -184,53 +169,51 @@ C007はhistorical `normalizeTtMateScores` experimentの再評価ではない。P
 
 ## Dependency gate
 
-C006がpractical invalid identity reuseをformal engineering supportとして成立させた場合、unsafe baseline keyのままC007 implementationへ進まない。
+C006がpractical invalid identity reuseをformal engineering supportとして成立させた場合、unsafe baseline keyのままC007 implementationへ進まないというdependencyを結果前に固定した。
 
-```text
-C006 actionable practical identity defect established
--> C007-v1 development NOT-AUTHORIZED
--> strict identityを組み込む場合はcombined/new candidate identityが必要
-```
+C006は`WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT`で閉じたため、このstop条件は発動しなかった。
 
-C006がpractical support非成立でHOLD/WITHDRAWNとなった場合も、C007は既知のidentity boundaryを明記したまま独立support gateを通す。
-
-## Predevelopment support
+## Frozen predevelopment support
 
 ```text
 source seeds = 43100001..43101024
-target roots = 256 / Namua-Mtaji balanced target
+target roots = 256 / Namua-Mtaji balanced
 candidate code = prohibited
 measurement = baseline TT instrumentation only
 ```
 
-Count:
-
-- same-key TT stores;
-- incoming shallower than existing stores;
-- overwritten deeper-entry events;
-- later hits that would have benefited from retained depth。
-
 PASS:
 
 ```text
-overwritten deeper-entry events >= 32
+incoming shallower than existing events >= 32
 AND roots with >=1 such event >= 16
 ```
 
-未達なら`NON-ESTIMABLE / HOLD`。
+未達なら`NON-ESTIMABLE-HOLD`。
 
-## Intended benefit
+## Canonical support result
 
-Development target rootsで:
+Canonical run `33486314298`、production / independent selected-root identityとmeasurement core exact一致。
 
 ```text
-median nodes(candidate/baseline) <= 0.95
-fraction roots nodes(candidate) <= nodes(baseline) >= 0.60
-selected move mismatch versus baseline D3 caused solely by candidate = allowed only if global D4 quality gates pass
-catastrophic new loss = 0
+selected roots = 256 (Namua 128 / Mtaji 128)
+sameKeyStoreEvents = 16512
+incomingShallowerThanExistingEvents = 0
+rootsWithIncomingShallowerEvent = 0
+laterPotentialDepthBenefitHits = 0
+baselineEquivalenceMismatches = 0
 ```
 
-Global gates remain conjunctive。
+Decision:
+
+```text
+PBAI-C007-v1 = NON-ESTIMABLE-HOLD
+candidate implementation = NOT AUTHORIZED
+validation = NOT AUTHORIZED
+release holdout = NOT AUTHORIZED
+```
+
+同じC007-v1へ結果後にseed、depth、search profile、thresholdを追加して救済しない。0-event resultをfrozen support universe外へ一般化しない。
 
 ---
 
@@ -276,7 +259,7 @@ measurement = baseline D2/D3 root-best flip only
 candidate code = prohibited
 ```
 
-`<64`なら`NON-ESTIMABLE / HOLD`。
+`<64`なら`NON-ESTIMABLE-HOLD`。
 
 ## Intended benefit
 
@@ -297,6 +280,8 @@ p95 node ratio <= 2.50
 ```
 
 を要求する。
+
+**Current state:** predevelopment supportのみが次に許可される。implementation、benefit benchmark、validation、release holdoutは未承認。
 
 ---
 
@@ -339,7 +324,7 @@ candidate code = prohibited
 measurement = baseline exact legal-reply topology only
 ```
 
-`<64`なら`NON-ESTIMABLE / HOLD`。
+`<64`なら`NON-ESTIMABLE-HOLD`。
 
 ## Intended benefit
 
@@ -366,22 +351,24 @@ PBAI-P2 initial inventory外のcandidate追加は自動禁止ではないが、�
 
 1. PBAI-P2 cutoff以前のResearch Generation 2 evidence provenance;
 2. existing candidateとmaterially distinctなmechanism;
-3.追加理由が既存candidate outcomeに依存しないこと;
+3. 追加理由が既存candidate outcomeに依存しないこと;
 4. exact ID / support / mechanism / development / validation / holdout / gatesのpre-outcome freeze;
 5. Research Generation 3 influence `ZERO`の再監査;
 
 を必要とする。
 
-## 4. frozen authorization state
+## 4. current authorization state
 
 ```text
-PBAI-C006-v1 = PREDEVELOPMENT-AUDIT / implementation not authorized
-PBAI-C007-v1 = PROPOSED / dependency-gated / implementation not authorized
-PBAI-C008-v1 = PROPOSED / implementation not authorized
+PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
+PBAI-C007-v1 = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+PBAI-C008-v1 = PREDEVELOPMENT SUPPORT NEXT / implementation not authorized
 PBAI-C009-v1 = PROPOSED / implementation not authorized
 AUTHORIZED-FOR-DEVELOPMENT count = 0
 candidate implementations = 0
-candidate benchmark outcomes = 0
+predevelopment support outcomes = 2
+candidate development outcomes = 0
 validation executions = 0
 release holdout executions = 0
+public deployments = 0
 ```
