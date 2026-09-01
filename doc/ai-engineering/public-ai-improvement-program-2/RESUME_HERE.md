@@ -5,7 +5,7 @@ Program: `PBAI-P2`
 
 ## 1. 最初に読む順序
 
-再開時は、Research Generation 3の内容を読まず、次の順序で確認する。
+再開時は、Research Generation 3のscientific/development内容をcandidate設計へ取り込まず、次の順序で確認する。
 
 1. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
@@ -14,7 +14,10 @@ Program: `PBAI-P2`
 5. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
 6. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
 7. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
-8. [`candidates/PBAI-C006-v1-predevelopment-static-audit.md`](candidates/PBAI-C006-v1-predevelopment-static-audit.md)
+8. [`candidates/PBAI-C006-v1-predevelopment-support-result.json`](candidates/PBAI-C006-v1-predevelopment-support-result.json)
+9. [`candidates/PBAI-C007-v1-predevelopment-support-result.json`](candidates/PBAI-C007-v1-predevelopment-support-result.json)
+10. [`checkpoints/2026-09-01-c006-predevelopment-support-closure.md`](checkpoints/2026-09-01-c006-predevelopment-support-closure.md)
+11. [`checkpoints/2026-09-01-c007-predevelopment-support-closure.md`](checkpoints/2026-09-01-c007-predevelopment-support-closure.md)
 
 Machine-readable正本:
 
@@ -66,71 +69,72 @@ current `main`はrepository operational state / integration先確認には使え
 PBAI-P2-A = COMPLETE
 PBAI-P2-B = COMPLETE
 PBAI-P2-C = COMPLETE
-PBAI-P2-D = C006 PREDEVELOPMENT
+PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 PREDEVELOPMENT NEXT
 candidate implementation count = 0
-candidate outcome count = 0
+predevelopment support outcome count = 2
+candidate development outcome count = 0
 validation count = 0
 release holdout count = 0
 public deployment count = 0
 ```
 
-## 5. C006の確定済みstatic fact
+## 5. C006 canonical closure
 
 ```text
-G2 authoritative RAW fields
-= pits,reserve,houseOwned,player,phase,winner,pending
-
-current AI.stateKey fields
-= pits,player,phase,reserve,houseOwned,winner
-
-pending mismatch = true
-propagation to evaluation cache / TT base key / Worker stale identity = true
-practical correctness defect = NOT ESTABLISHED
+canonical run = 33485530125
+semantic unique RAW states = 389148
+semantic collision witnesses = 0
+practical witness count = 0
+production/independent deterministic core equality = true
+PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
+implementation = NOT AUTHORIZED
 ```
 
-このため、candidate implementationへ進んではならない。
+`pending`を含むauthoritative RAW identity contractは変更しない。
 
-## 6. 次に実行してよい工程
-
-**C006 baseline-only dynamic support measurement**だけが次に許可されている。
+## 6. C007 canonical closure
 
 ```text
-support seeds = 43000001..43002048
-max plies = 160
+canonical run = 33486314298
+selected roots = 256 (Namua 128 / Mtaji 128)
+same-key TT stores = 16512
+shallower-over-deeper overwrite events = 0
+roots with such event = 0
+baseline equivalence mismatches = 0
+production/independent measurement core equality = true
+PBAI-C007-v1 = NON-ESTIMABLE-HOLD
+implementation = NOT AUTHORIZED
+```
+
+Frozen floor `32 events / 16 roots`未達である。同じC007-v1へseed、depth、search profile、thresholdを追加して救済しない。
+
+## 7. 次に実行してよい工程
+
+**C008 baseline-only predevelopment support**だけが次のcandidate-specific工程として許可されている。
+
+Initial inventoryで既に固定済みのsupport boundary:
+
+```text
+support seeds = 43200001..43201024
+target eligible roots = 128
+minimum eligible roots = 64
+phase balance = Namua/Mtaji target
+measurement = baseline D2/D3 root-best flip only
 candidate code = prohibited
 benefit benchmark = prohibited
 validation = prohibited
 release holdout = prohibited
 ```
 
-測定対象:
-
-1. engine-valid semantic collision witness;
-2. natural reachable collision;
-3. same-search / evaluation-cache operational reuse witness;
-4. Worker stale-identity witness。
-
-## 7. Support結果の機械的処理
-
-```text
-semantic witness = 0
--> WITHDRAWN / NO-ACTIONABLE-IDENTITY-DEFECT
-
-semantic witness >= 1 AND practical witness = 0
--> NON-ESTIMABLE-PRACTICAL-SUPPORT / HOLD
-
-semantic witness >= 1 AND practical witness >= 1
--> SUPPORT-PASS
-```
-
-`SUPPORT-PASS`の場合だけ、candidate outcomeを見る前にexact implementation contractを新たにfreezeし、その後にdevelopment authorizationを判断する。
+`<64`なら`NON-ESTIMABLE-HOLD`。support floorを満たした場合でもcandidate implementationを自動承認せず、exact implementation contractの別freezeが必要である。
 
 ## 8. 再開時にしてはいけないこと
 
 - cutoffを変更する;
 - G3 document/resultをcandidate designへ使う;
 - PBAI-P1 C001〜C005を救済する;
-- static mismatchだけでC006をbug fixとして実装する;
+- C006/C007をsame-version追加supportで救済する;
+- C008 support前にconfirmation re-searchを実装する;
 - validation / holdoutを先に開く;
 - candidateをpublic defaultへ直接反映する;
 - AI-GEN3へ先に昇格する。
