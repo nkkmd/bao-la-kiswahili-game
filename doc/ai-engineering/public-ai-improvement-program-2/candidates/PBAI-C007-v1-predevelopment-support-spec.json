@@ -31,7 +31,10 @@
       "targetPerPhase": 128,
       "minimumLegalMoveCount": 2,
       "oneRootPerTrajectory": true,
-      "selection": "outcome/value/consequence-blind SHA-256 rank over candidateVersion, phase, seed, ply and strict RAW key"
+      "phaseAssignment": "seed offsets even from seedStart are assigned Namua; odd offsets are assigned Mtaji; only states in the assigned phase are eligible for that trajectory",
+      "withinTrajectorySelection": "choose the eligible state with minimum outcome/value/consequence-blind SHA-256 rank over candidateVersion, assigned phase, seed, ply and strict RAW key",
+      "withinPhasePopulationSelection": "rank one selected candidate per trajectory by the same SHA-256 rank and take the first targetPerPhase",
+      "selection": "outcome/value/consequence-blind; no replacement after support outcome inspection"
     }
   },
   "baselineSearch": {
