@@ -1,0 +1,51 @@
+name: PBAI-P2 C009 pre-outcome syntax correction
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p2-c009-v1-development
+    paths:
+      - '.github/workflows/pbai-p2-c009-preoutcome-syntax-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  correct-syntax-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p2-c009-v1-development
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Assert no development outcome exists and apply one syntax-only replacement
+        run: |
+          test ! -e artifacts/pbai-p2/c009/development/result.json
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "750678ec33c916da35844dc2d999cc3b996c1cc6ec79ad84e12030f0da84517f"
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('tools/engineering/run-pbai-p2-c009-v1-development.js')
+          s=p.read_text()
+          old='nodeRatio:c.stats.nodes/b.stats.nodes}}\nconst NEG='
+          new='nodeRatio:c.stats.nodes/b.stats.nodes}})}\nconst NEG='
+          if s.count(old)!=1:
+              raise SystemExit(f'expected exactly one syntax target, found {s.count(old)}')
+          s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          node --check tools/engineering/run-pbai-p2-c009-v1-development.js
+          node --check tools/engineering/verify-pbai-p2-c009-v1-development-independent.js
+          test "$(git diff --name-only)" = "tools/engineering/run-pbai-p2-c009-v1-development.js"
+
+      - name: Commit syntax-only correction
+        run: |
+          git config user.name Sawa
+          git config user.email 72678394+nkkmd@users.noreply.github.com
+          git add tools/engineering/run-pbai-p2-c009-v1-development.js
+          git commit -m "Fix pre-outcome C009 development runner syntax"
+          git push origin HEAD:engineering/pbai-p2-c009-v1-development
