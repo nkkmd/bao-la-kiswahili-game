@@ -54,7 +54,7 @@ jobs:
           grep -Fq 'CLOSED / FORMAL-ELIGIBLE-ALL' doc/local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md
           grep -Fq 'FORMAL-ELIGIBLE-ALL' doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md
           grep -Fq 'LGTGMIV-F5-REPLY-GEOMETRY' doc/local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md
-          grep -Fq 'G3-01 = TECHNICAL-INVALID' doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md
+          grep -Fq 'LGTGMF-STUDY1 = CLOSED / TECHNICAL-INVALID' doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md
           grep -Fq 'SEALED / NOT GENERATED / NOT READ' doc/local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md
       - name: Verify RG3 and central current-facing synchronization
         run: |
