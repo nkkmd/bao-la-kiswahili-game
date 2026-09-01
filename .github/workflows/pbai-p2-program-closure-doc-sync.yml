@@ -1,0 +1,86 @@
+name: PBAI-P2 closure documentation sync
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p2-program-initialization
+    paths:
+      - '.github/workflows/pbai-p2-program-closure-doc-sync.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-closure-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p2-program-initialization
+          fetch-depth: 0
+
+      - name: Verify public source remains untouched
+        run: |
+          git fetch origin main
+          test -z "$(git diff --name-only origin/main...HEAD -- public/)" || {
+            echo 'PBAI-P2 closure branch unexpectedly changes public/' >&2
+            git diff --name-only origin/main...HEAD -- public/ >&2
+            exit 1
+          }
+
+      - name: Synchronize closure-only documentation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p=Path(path); s=p.read_text()
+              if s.count(old)!=1:
+                  raise SystemExit(f'{path}: expected one replacement target, found {s.count(old)}')
+              p.write_text(s.replace(old,new,1))
+
+          # Append final decisions while preserving D001-D029 verbatim.
+          p=Path('doc/ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md')
+          s=p.read_text()
+          s=s.replace('現在状態: **ACTIVE / C006 CLOSED / C007 CLOSED-HOLD / C008 SUPPORT-PASS + DEVELOPMENT-CONTRACT-FROZEN**',
+                      '現在状態: **COMPLETE / KEEP-AI-GEN2**',1)
+          if '## D030 — C008 developmentはcost gate未達で閉じる' not in s:
+              s += '''\n\n## D030 — C008 developmentはcost gate未達で閉じる\n\nCanonical development result `33497330874`はproduction / independent reconstruction一致。71 eligible rootsでquality/safety gatesはPASSしたが、median node ratio `2.1004464285714284 > 1.60`、p95 `3.079245283018868 > 2.50`でfrozen cost gateをFAILした。\n\n```text\nPBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED\nvalidation contract freeze = NOT AUTHORIZED\n```\n\nQuality signalを理由にcost thresholdを緩和しない。\n\n## D031 — C009はsupport PASSとfeature-off equivalence PASS後にdevelopmentを実行する\n\nC009 predevelopment run `33500775677`はeligible roots `639 >= 64`、technical failures 0で`SUPPORT-PASS`。Exact contractをsource変更前にfreezeし、candidate implementationはdefault-offとした。Feature-off run `33503615979`は256 comparisons、mismatch 0、diagnostic leakage 0で`FEATURE-OFF-EQUIVALENCE-PASS`。このPASSだけをdevelopment `424xxxxx`を開く許可とし、validationは未承認のままとした。\n\n## D032 — C009 developmentはnegative-control failureによりTECHNICAL-INVALIDで閉じる\n\nCanonical development run `33504482668` / independent reconstructionで128 eligible roots、64 negative controlsを再構成した。\n\n```text\nTopSet agreement delta = +0.015625 < +0.03 FAIL\nmean normalized rank-loss delta = +0.003924851190476197 > -0.01 FAIL\nsevere-loss-rate excess = -0.015625 PASS\ncatastrophic new loss = 0 PASS\nmedian node ratio = 1.0140845070422535 PASS\np95 node ratio = 1.3620689655172413 PASS\nnegative-control failures = 18 > 0 FAIL\ntechnical failures = 0\n```\n\nFrozen decision mappingに従い:\n\n```text\nPBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED\nvalidation contract freeze = NOT AUTHORIZED\n```\n\nPrimary benefit gatesも独立に未達。同versionでnegative-control、trigger、population、thresholdを変更して救済しない。\n\n## D033 — Initial inventory外candidateをpost-outcomeで追加しない\n\nPBAI-C006-v1..PBAI-C009-v1の全結果確認後に、新candidateを追加するoutcome-independentな事前根拠はfreezeされていない。今回のoutcomeからC010等を発明してPBAI-P2を延長しない。将来の改善は新Programとしてprospective freezeする。\n\n## D034 — PBAI-P2をKEEP-AI-GEN2で正式closureする\n\n```text\nPBAI-P2 = COMPLETE\nFINAL PROGRAM OUTCOME = KEEP-AI-GEN2\nvalidation executions = 0\nrelease holdout executions = 0\nformal ADOPT = none\npublic deployments = 0\npublic lineage = AI-GEN2\nAI-GEN3 = RESERVED / NOT-PROMOTED\nResearch Generation 3 influence = ZERO\n```\n'''
+          p.write_text(s)
+
+          # AI generation naming: section 8 is the final section, so replace it atomically.
+          p=Path('doc/ai-engineering/AI_GENERATION_NAMING.md'); s=p.read_text()
+          marker='## 8. PBAI-P2で固定した対応関係'
+          if s.count(marker)!=1: raise SystemExit('AI_GENERATION_NAMING section 8 marker mismatch')
+          prefix=s.split(marker,1)[0]
+          section='''## 8. PBAI-P2で確定した対応関係\n\nPBAI-P2 closureで次を確定する。\n\n```text\nprogram = PBAI-P2\nscientific evidence = Research Generation 2 only\nscientific evidence cutoff = cd200b85c1eb24aa4419bd5a9573552f3682f00d\nResearch Generation 3 influence = ZERO\nbaseline = AI-GEN2-BASELINE-2026-09-01-v1\ncandidate identifiers consumed = PBAI-C006..PBAI-C009\nFINAL PROGRAM OUTCOME = KEEP-AI-GEN2\npublic AI code changed by PBAI-P2 = false\ncurrent public lineage = AI-GEN2\nAI-GEN3 = RESERVED / NOT-PROMOTED\n```\n\nC006〜C009はいずれもvalidation authorizationへ到達しなかった。したがってPBAI-P2-F/G/Hによるvalidation、protected release holdout、public deployment、generation promotionは実行していない。Research Generation 3が進行していてもAI generationは自動的に進まず、`AI-GEN3`は次の正式採用public lineageの予約名のままである。\n'''
+          p.write_text(prefix+section)
+
+          # AI engineering index: replace only the PBAI-P2 section.
+          p=Path('doc/AI_ENGINEERING_INDEX.md'); s=p.read_text()
+          start='## 2. 進行中Program — `PBAI-P2`'
+          end='## 3. 完了済みProgram — `PBAI-P1`'
+          if s.count(start)!=1 or s.count(end)!=1: raise SystemExit('AI_ENGINEERING_INDEX section markers mismatch')
+          before,rest=s.split(start,1); _,after=rest.split(end,1)
+          section='''## 2. 完了済みProgram — `PBAI-P2`\n\n**正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2  \n**状態:** **COMPLETE / KEEP-AI-GEN2**  \n**Research Generation 2 scientific evidence cutoff:** `cd200b85c1eb24aa4419bd5a9573552f3682f00d`  \n**Research Generation 3 influence:** **ZERO / EXCLUDED**\n\nPBAI-P2はResearch Generation 2のbounded evidenceだけをscientific premiseとしてC006〜C009をprospectively評価した。Final dispositions:\n\n```text\nPBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED\nPBAI-C007-v1 = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION\nPBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED\nPBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED\n```\n\nC008はquality/safety gatesを通過したがfrozen cost gatesをFAIL。C009はnegative-control gateをFAILし、primary benefit gatesも未達。両candidateともvalidation authorizationへ進まなかった。\n\n```text\nvalidation executions = 0\nrelease holdout executions = 0\nformal ADOPT = none\npublic deployments = 0\nFINAL PROGRAM OUTCOME = KEEP-AI-GEN2\ncurrent public lineage = AI-GEN2\nAI-GEN3 = RESERVED / NOT-PROMOTED\n```\n\nCanonical entry points:\n\n- [`ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md)\n- [`ai-engineering/public-ai-improvement-program-2/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-2/CURRENT_STATUS.md)\n- [`ai-engineering/public-ai-improvement-program-2/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/CANDIDATE_REGISTER.md)\n- [`ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md)\n- [`ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md)\n- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-development-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-development-result.json)\n- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C009-v1-development-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C009-v1-development-result.json)\n\n'''
+          p.write_text(before+section+end+after)
+
+          # Root README: replace only the PBAI-P2 AI Engineering bullet.
+          p=Path('README.md'); s=p.read_text()
+          old='- [`doc/ai-engineering/public-ai-improvement-program-2/README.md`](doc/ai-engineering/public-ai-improvement-program-2/README.md): `PBAI-P2` — Generation-2 Evidence-Informed Public Bao AI Improvement Program 2。Research Generation 2だけをscientific/evidence inputとし、Research Generation 3 influenceを`ZERO`に固定して開始した独立Program。`AI-GEN2-BASELINE-2026-09-01-v1`とglobal gates、C006〜C009 inventoryをcandidate outcome前にfreeze済みで、現時点のcandidate implementationは0、public lineageは`AI-GEN2`のまま'
+          new='- [`doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md): `PBAI-P2` — Generation-2 Evidence-Informed Public Bao AI Improvement Program 2 の最終報告。Research Generation 2だけをscientific/evidence inputとし、Research Generation 3 influenceを`ZERO`に維持してC006〜C009をprospectively評価した結果、validationへ進むcandidateはなく、最終engineering outcomeは`KEEP-AI-GEN2`。PBAI-P2によるpublic AI code変更・release・`AI-GEN3`昇格はなし'
+          if s.count(old)!=1: raise SystemExit(f'root README PBAI-P2 bullet mismatch: {s.count(old)}')
+          p.write_text(s.replace(old,new,1))
+          PY
+
+          test -z "$(git diff --name-only -- public/)"
+          git diff --check
+
+      - name: Commit closure documentation synchronization
+        run: |
+          git config user.name Sawa
+          git config user.email 72678394+nkkmd@users.noreply.github.com
+          git add README.md doc/AI_ENGINEERING_INDEX.md doc/ai-engineering/AI_GENERATION_NAMING.md doc/ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 4
+          git commit -m "Synchronize PBAI-P2 closure documentation"
+          git push origin HEAD:engineering/pbai-p2-program-initialization
