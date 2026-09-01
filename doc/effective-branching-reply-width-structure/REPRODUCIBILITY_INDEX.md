@@ -3,6 +3,8 @@
 ## Study identity
 
 - Study ID: `EBRWS-STUDY1`
+- agenda: Research Generation 3 `G3-02`
+- final disposition: `CLOSED / TECHNICAL-INVALID`
 - baseline remote main: `ca6a1e4a9b41d79d873fa71385972e402ffa5197`
 - research branch: `research/g3-02-effective-branching-reply-width-structure`
 - authoritative state identity: RAW-only
@@ -16,6 +18,9 @@
 - `DECISION_REGISTER.md`
 - `CURRENT_STATUS.md`
 
+Protocol blob frozen before scientific evidence: `cc367fe5315d1553f75cf3b95e629184070f05ac`.
+Preregistration blob frozen before scientific evidence: `bdf7d35bcf8554e5a29bd5f2e92b27bb7edc8498`.
+
 ## Upstream instrument dependency
 
 Formal eligible families only:
@@ -28,29 +33,86 @@ Formal eligible families only:
 
 Primary endpoint uses F1 + F5. F2-F4 are secondary context only.
 
-## Stage identities
-
-### Stage 0
+## Stage 0
 
 - ID: `EBRWS-S0-TECHNICAL-2026-09-01-v1`
-- evidence: technical fixture only
-- fresh seed consumption: forbidden
+- evidence: technical fixtures only
+- disposition: `STAGE0-PASS`
+- production / independent scientific core: `ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
+- fresh seed consumption: false
+- protected depth-10 access: false
 
-### Stage 1
+Records:
+
+- `results/stage-0/technical-validation.json`
+- `checkpoints/2026-09-01-stage-0-technical-pass.md`
+
+## Stage 1 pre-execution
 
 - ID: `EBRWS-S1-DEVELOPMENT-2026-09-01-v1`
 - seed block: `31210001..31210192`
-- roots: 12 Namua + 12 Mtaji
+- target roots: 12 Namua + 12 Mtaji
 - evidence class: `FRESH-DEVELOPMENT`
-- current disposition: `NOT-AUTHORIZED-NOT-EXECUTED`
+- authorization: `authorizations/2026-09-01-stage-1-development-authorization.md`
+- tooling smoke run: `33525232642 / success`
+- tooling job: `99914259137`
+- pre-execution checkpoint: `checkpoints/2026-09-02-stage-1-tooling-smoke-pass-and-preexecution.md`
 
-### Stage 2
+Tooling smoke reported no fresh scientific seed/root access and no protected depth-10 access.
+
+## Stage 1 one-shot execution
+
+GitHub Actions:
+
+- run: `33569323221`
+- job: `100059596453`
+- execution step: success
+- repository materialization step: failure
+
+The frozen runner reported before materialization failure:
+
+```text
+reported runner disposition = STAGE1-PASS
+globalGatePass = true
+selected roots = 12 Namua + 12 Mtaji
+productionStageScientificCoreSha256 = 4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e
+independentStageScientificCoreSha256 = 4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e
+candidateSetSha256 = 4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6
+scientificResultFileSha256 = 1c5444ab050e85735763231a7c5913489c1254017b9acbb6a286fdaf742ff30a
+telemetryFileSha256 = f13a71a7a219fc1978667c1b39120df709b163fd5250962e9f19310ca9f9c719
+```
+
+Runner-local diagnostic candidate summary:
+
+- `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` 12/12
+- `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` 9/12
+
+These are not formal promoted candidates.
+
+## Stage 1 materialization incident
+
+The runner generated the three canonical files and locally committed them as short SHA `709bc393`, but the push was rejected non-fast-forward because the remote branch advanced during execution. The ephemeral local commit is not recoverable from GitHub.
+
+No second Stage 1 execution is authorized after the no-rescue boundary. Therefore full canonical Stage 1 result/telemetry files are not regenerated.
+
+Authoritative closure records:
+
+- `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
+- `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md`
+
+Formal Stage 1 disposition: `TECHNICAL-INVALID`.
+Formal promoted candidate set: `[]`.
+
+## Stage 2
 
 - ID: `EBRWS-S2-FORMAL-2026-09-01-v1`
 - seed block: `31220001..31220288`
-- roots: 18 Namua + 18 Mtaji
+- target roots: 18 Namua + 18 Mtaji
 - evidence class: `FRESH-FORMAL-HELDOUT`
-- current disposition: `NOT-AUTHORIZED-NOT-EXECUTED`
+- disposition: `NOT-AUTHORIZED-NOT-EXECUTED`
+- seed consumed: false
+
+Stage 2 cannot use the runner-local diagnostic candidates because the prerequisite immutable Stage 1 canonical artifact was not durably materialized.
 
 ## Root policy
 
@@ -64,27 +126,26 @@ Primary endpoint uses F1 + F5. F2-F4 are secondary context only.
 
 ## Firewall identities
 
-Check exact collision against:
+Exact collision exclusion was defined against:
 
 - G3-01 roots / trajectories / first-16 prefixes
 - LGTGMIV Stage 1 roots / trajectories / first-16 prefixes
 - LGTGMIV Stage 2 roots / trajectories / first-16 prefixes
-- for Stage 2, G3-02 Stage 1 roots / trajectories / first-16 prefixes
 
-Only identity information may be read from upstream for overlap exclusion. Upstream geometry outcomes are not G3-02 fresh evidence.
+Only identity information was used for overlap exclusion; upstream geometry outcomes were not reused as G3-02 fresh evidence.
 
 ## Primary derived endpoint reproducibility
 
-Production and independent implementations must separately derive:
+Production and independent implementations separately derive:
 
 - `EB_tree(0..4)` exact rationals
 - `treeWidthShapeClass`
 - `replyDirection(0..4)`
 - `replyWidthShapeClass`
 - phase-level class counts
-- promoted candidate set / formal tested candidate set
+- candidate set
 
-No shared G3-02 derived-metric, class, promotion, or canonical-hash helper is allowed.
+No shared G3-02 derived-metric, class, promotion, or canonical-hash helper was permitted.
 
 ## Protected evidence
 
