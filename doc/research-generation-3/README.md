@@ -99,3 +99,9 @@ G3-02 closureはG3-03以降を自動authorizeしない。次のscientific action
 - `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
 
 Historical `PROGRAM_PLAN.md` remains unchanged.
+
+## G3-02 final Actions-history audit
+
+Final Actions-history audit found that G3-02 Stage 1 was scientifically executed twice despite an exactly-one-execution authorization. The second run `33569382663` was unintentionally queued by workflow arming before the first outcome was known, but executed after the no-rescue boundary and is therefore `INVALID-DO-NOT-USE`.
+
+This does not change G3-02's existing `CLOSED / TECHNICAL-INVALID` decision; it adds a second technical-integrity failure. Formal promoted candidate set remains `[]`, Stage 2 remains unexecuted, and the protected depth-10 holdout remains sealed.

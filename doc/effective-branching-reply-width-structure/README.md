@@ -102,3 +102,9 @@ branching width / reply width / multi-ply width profileはmachine-observed bound
 - `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md` — incident checkpoint
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains immutable and is not rewritten.
+
+## Final Actions-history audit
+
+最終Actions監査でStage 1 scientific executionがauthorized 1回に対してactual 2回だったことを確認した。2回目のrun `33569382663`はworkflow armingにより意図せずqueueされ、`UNAUTHORIZED-DUPLICATE-INVALID`として全scientific inferenceから除外する。
+
+この事実はStudyの`CLOSED / TECHNICAL-INVALID` closureを変更せず、technical-invalid根拠を追加する。Stage 1 execution workflowはdisabled、Stage 2は未実行、depth-10 holdoutはsealedのままである。

@@ -58,3 +58,9 @@ Stage 1はfresh seed `31210001..31210192`を一度だけ実行するprospective 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
 - [`results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`](results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json)
+
+## 最終Actions履歴監査
+
+最終監査で、workflow armingによりStage 1が意図せず2回目も実行されていたことを確認した。authorizationはexactly one executionであったため、2回目（run `33569382663`）は`INVALID-DO-NOT-USE`であり、scientific replicationやpositive resultの補強には使用しない。
+
+この追加事実はformal decisionを変更しない。`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`のままである。

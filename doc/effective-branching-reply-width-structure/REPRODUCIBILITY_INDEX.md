@@ -152,3 +152,24 @@ No shared G3-02 derived-metric, class, promotion, or canonical-hash helper was p
 standard initial RAW-root complete exact depth-10 holdout:
 
 `SEALED / NOT GENERATED / NOT READ`
+
+## Final Actions-history audit — duplicate execution
+
+Final workflow audit:
+
+```text
+authorized executions = 1
+actual scientific executions = 2
+run 33569323221 = authorized / canonical materialization failure
+run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
+```
+
+run #2 locally produced the same scientific core `4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e`, candidate set hash `4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6`, and scientific-result file hash `1c5444ab050e85735763231a7c5913489c1254017b9acbb6a286fdaf742ff30a`. These duplicate outputs are excluded from scientific inference.
+
+Audit records:
+
+- `checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`
+- `../research-generation-3/checkpoints/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
+- `../research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
+
+Stage 1 execution workflow is disabled after closure. No third run is authorized. Classical telemetry variation between the two invalid/local runs is not part of the scientific core. Protected depth-10 access remained false.

@@ -169,3 +169,18 @@ G3-02 closure does not automatically authorize G3-03 or later studies. The next 
 - `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
 
 Historical `PROGRAM_PLAN.md` remains unchanged.
+
+## Final Actions-history audit — G3-02 execution count
+
+Final audit established:
+
+```text
+G3-02 Stage 1 authorized scientific executions = 1
+G3-02 Stage 1 actual scientific executions = 2
+run 33569323221 = authorized one-shot / canonical materialization failure
+run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
+execution-count contract = violated
+Stage 1 execution workflow = CLOSED / DISABLED
+```
+
+The duplicate run is excluded from scientific inference and cannot be used as replication or rescue. G3-02 remains `CLOSED / TECHNICAL-INVALID`, formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`.

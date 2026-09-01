@@ -232,3 +232,27 @@ Runner-local evidenceは、fresh bounded depth-5 rootsにおいてreply-width co
 - historical `doc/research-generation-3/PROGRAM_PLAN.md` is not rewritten.
 
 Any future attempt to test the scientific question again must be a new prospective Study or explicitly new version with fresh evidence; it must not change the formal decision of `EBRWS-STUDY1`.
+
+## 15. Final Actions-history audit — unintended duplicate execution
+
+Closure後のGitHub Actions履歴監査で、Stage 1 scientific runnerが合計2回実行されていたことを確認した。prospective authorizationはexactly one executionだったため、これは追加のtechnical-integrity violationである。
+
+- authorized run: `33569323221` / job `100059596453`
+- unintended duplicate run: `33569382663` / job `100060967285`
+
+run #2をtriggerしたworkflow-arming commitはrun #1のscientific outcomeが判明する前に投入されていたため、結果を見て意図的にpositive resultを救済した操作ではない。一方、non-cancelling concurrencyによってrun #2の実計算はrun #1のscientific step完了後、すなわちno-rescue boundary成立後に開始された。そのためrun #2はfrozen exactly-one-execution authorizationに違反し、`INVALID-DO-NOT-USE`とする。
+
+run #2はrunner-localでrun #1と同一のscientific core / candidate-set / scientific-result file hashを生成したが、この一致をformal replication、confirmation、repair、rescueへ用いない。run #2のlocal result commit `24c57398`もpush failure後に回収不能である。
+
+このfinal auditによってformal dispositionは変更しない。むしろtechnical-invalid根拠を追加する。
+
+```text
+EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID
+authorized Stage 1 executions = 1
+actual Stage 1 scientific executions = 2
+execution-count contract = violated
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+Stage 1 execution workflowはclosure後にdisabledとし、第三の実行は許可しない。protected depth-10 holdoutは両runとも生成・readしておらず、`SEALED / NOT GENERATED / NOT READ`のままである。
