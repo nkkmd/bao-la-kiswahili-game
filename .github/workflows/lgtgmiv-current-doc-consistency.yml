@@ -41,7 +41,7 @@ jobs:
           test "$STAGE2_RESULT_BEFORE" = "$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-2/scientific-result.json)"
       - name: Verify bounded changed-file allowlist
         run: |
-          git diff --name-only > /tmp/changed.txt
+          { git diff --name-only; git ls-files --others --exclude-standard; } | sort -u > /tmp/changed.txt
           cat /tmp/changed.txt
           node - <<'NODE'
           const fs=require('fs'),assert=require('assert/strict');
