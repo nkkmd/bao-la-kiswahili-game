@@ -75,4 +75,45 @@ Production / independent stage scientific core:
 
 Fresh scientific evidence generated/read remained false. Protected depth-10 access remained false.
 
-Stage 0 PASS does not itself authorize Stage 1. Central current-facing documentation synchronization and a separate Stage 1 authorization are required first.
+Stage 0 PASS did not itself authorize Stage 1.
+
+## D-008 — 2026-09-01 — Stage 1 development authorization
+
+Decision: `AUTHORIZED`
+
+Stage: `EBRWS-S1-DEVELOPMENT-2026-09-01-v1`
+
+Exactly one fresh-development execution was authorized for seed block `31210001..31210192`, 12 Namua + 12 Mtaji, relative depth 5. Stage 2 remained `NOT-AUTHORIZED-NOT-EXECUTED`.
+
+## D-009 — 2026-09-02 — Stage 1 tooling and pre-execution gate
+
+Decision: `PASS`
+
+GitHub Actions tooling smoke run `33525232642`, job `99914259137`, passed without fresh scientific seed/root access. Production and independent G3-02 source hashes were distinct. Immediately before execution, no Stage 1 result artifact existed and the protected depth-10 holdout remained sealed.
+
+## D-010 — 2026-09-02 — Stage 1 one-shot materialization failure
+
+Decision: `TECHNICAL-INVALID`
+
+Formal Study disposition: `TECHNICAL-INVALID`.
+
+Stage 2: `NOT-AUTHORIZED-NOT-EXECUTED`.
+
+The authorized one-shot run `33569323221` / job `100059596453` completed the scientific execution step. The runner locally reported `STAGE1-PASS`, global mandatory gate PASS, 12 Namua + 12 Mtaji, and production / independent stage scientific core exact equality at `4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e`.
+
+The runner-local candidate summary contained:
+
+- `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
+- `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
+
+However, the canonical result files were committed only in the ephemeral runner workspace. Push of local commit `709bc393` was rejected non-fast-forward because the remote research branch advanced while the one-shot execution was running. That commit is not recoverable from GitHub after runner teardown.
+
+The no-rescue boundary had already been crossed. The one-shot authorization does not permit a same-evidence rerun to regenerate missing canonical artifacts. Because the frozen protocol requires an immutable Stage 1 candidate-set artifact and no technical-integrity violation before Stage 2 authorization, the runner-local positive computation is retained as diagnostic provenance only and is not a formal promoted candidate set.
+
+Formal promoted candidate set: `[]`.
+
+Authoritative technical-invalid result:
+
+`results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
+
+Protected standard-root depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
