@@ -16,12 +16,14 @@ LGTGMIV Stage 1 seed consumption = 31110001..31110128
 LGTGMIV Stage 2 seed consumption = 31120001..31120192
 LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5 / all five frozen families
 LGTGMIV research-branch closure = COMPLETE
-LGTGMIV main integration = PENDING
+LGTGMIV main integration = COMPLETE
+LGTGMIV integrated research-branch head = 1777ba717ced88be64cbaf981ce7096372046334
+LGTGMIV final closure audit = 33466581297 / success
 Next scientific action = separate post-closure G3-02 authorization review
 G3-02 automatic start = BLOCKED
 G3-02..G3-08 automatic start = BLOCKED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification / closure synchronization
+Active scientific research branch = none / G3-02 authorization review not yet started
 ```
 
 ## Program direction
@@ -30,7 +32,7 @@ Research Generation 3は、Research Generation 2で最も強く成立したRAW-o
 
 G3-01 `LGTGMF-STUDY1`は、fresh Stage 1のroot/family levelではproduction / independent exact agreementを得た一方、runtime telemetryをstage-level canonical digestへ混入させた凍結済みinstrument defectにより`TECHNICAL-INVALID`で閉じた。eligible familiesは`[]`、Stage 2は未実行であり、このformal decisionは永久に変更しない。
 
-その後のprogram-level dependency reassessmentに従い、G3-01とは別のpost-G3-01 / pre-G3-02 prerequisiteとして`LGTGMIV-STUDY1`をprospectively開始・完遂した。
+その後のprogram-level dependency reassessmentに従い、G3-01とは別のpost-G3-01 / pre-G3-02 prerequisiteとして`LGTGMIV-STUDY1`をprospectively開始・完遂し、`main`へのrepository integrationも完了した。
 
 ## Completed measurement-instrument prerequisite
 
@@ -52,6 +54,8 @@ Stage progression:
 - Stage 1 fresh development: 16 roots / depth 5 / `STAGE1-PASS` / five families promoted
 - Stage 2 fresh formal holdout: 24 roots / depth 5 / global gate PASS / `FORMAL-ELIGIBLE-ALL`
 - Stage 2 read-only post-result audit: PASS / scientific re-execution false
+- final cross-document closure audit: `33466581297 / success`
+- main integration: COMPLETE / integrated research-branch head `1777ba717ced88be64cbaf981ce7096372046334`
 
 Formal eligible family set:
 
@@ -74,6 +78,19 @@ stage scientific core SHA-256 = 97ad7dc21e1758d31fa09e487389bf5d3935b1d98daf3eaa
 ```
 
 この結果はbounded RAW-only depth-5 local geometry measurement instrumentのformal eligibilityを成立させる。whole-Bao game-tree size、depth 5を超えた自動一般化、symmetry reduction、strategic value、game-theoretic value、human difficultyを意味しない。
+
+## Main integration record
+
+Closed research branchは`main`へnon-force fast-forwardで統合した。
+
+```text
+pre-integration main = a53aabd26f78ac408445aff2d18ace3b21b827d7
+integrated research-branch head = 1777ba717ced88be64cbaf981ce7096372046334
+pre-integration relation = ahead_by 57 / behind_by 0
+main integration = COMPLETE
+```
+
+この統合はrepository synchronizationであり、scientific evidenceの再生成・再実行・再判定ではない。post-integration checkpointは`checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md`に記録する。
 
 ## Immutable upstream boundaries
 
@@ -121,8 +138,10 @@ Program:
 - `README.md`
 - `PROGRAM_PLAN.md` — Research Generation 3開始前に固定したhistorical prospective plan。retroactiveに書き換えない
 - `CURRENT_STATUS.md` — current-facing state
+- `checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md` — LGTGMIV main integration complete checkpoint
 - `../research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`
 - `../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`
+- `../research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md`
 
 G3-01:
 - `../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`
@@ -135,7 +154,8 @@ Completed prerequisite `LGTGMIV-STUDY1`:
 - `../local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md`
 - `../local-game-tree-geometry-measurement-instrument-verification/DECISION_REGISTER.md`
 - `../local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md`
+- `../local-game-tree-geometry-measurement-instrument-verification/checkpoints/2026-09-01-main-integration-complete.md`
 - `../local-game-tree-geometry-measurement-instrument-verification/results/stage-2/execution-summary.json`
 - `../local-game-tree-geometry-measurement-instrument-verification/results/stage-2/posthoc-audit-summary.json`
 
-Research Generation 3 historical `PROGRAM_PLAN.md` remains unchanged. LGTGMIV scientific closure is complete on its research branch; main integration is a repository integration step and does not alter the scientific decision.
+Research Generation 3 historical `PROGRAM_PLAN.md` remains unchanged. LGTGMIV scientific closure and main integration are complete. G3-02 remains blocked pending a separate authorization review.
