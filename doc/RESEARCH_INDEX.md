@@ -974,40 +974,49 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — G3-01 / LGTGMIV closure and G3-02 EBRWS start
+### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 closure
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1` protocol frozen / Stage 0 `STAGE0-PASS` / Stage 1 not yet authorized**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1 = TECHNICAL-INVALID` / Stage 2 not executed**
 
-G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`、Stage 2未実行のままimmutable closureとする。post-G3-01 prerequisite `LGTGMIV-STUDY1`は別のfresh Studyとして`CLOSED / FORMAL-ELIGIBLE-ALL`で完了し、RAW-only depth-5 local geometryの5 frozen measurement familiesをformal eligibleとした。
+G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`、Stage 2未実行のままimmutable closureとする。その後の独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 frozen measurement familiesをformal eligibleとした。
 
-その後、別のpost-LGTGMIV G3-02 authorization reviewを実施し`AUTHORIZED`とした。G3-02は正式Study `EBRWS-STUDY1`として開始し、scientific outcome前にStudy identity、depth 5、RAW identity、validated transform set `[]`、fresh populations、seed blocks、derived constructs、primary/secondary endpoints、resource ceilings、independent verification、no-rescue ruleをfreezeした。
+G3-02は別authorization reviewを`AUTHORIZED`で通過し、`EBRWS-STUDY1`としてprospectively開始した。Stage 0は`STAGE0-PASS`。Stage 1はfresh `31210001..31210192`から12 Namua + 12 Mtajiを一度だけ測定し、runner-localではproduction / independent stage core exact一致とglobal gate PASSを得た。
 
-Stage 1 developmentはseed `31210001..31210192`、12 Namua + 12 Mtaji。Stage 2 formal holdoutは`31220001..31220288`、18 + 18。いずれもこのcurrent stateでは未消費である。
+runner-local diagnostic summaryでは`REPLY-WIDTH-SHAPE / COMPRESSION-DOMINANT`がNamua 12/12、Mtaji 9/12だった。しかしcanonical Stage 1 filesのrepository pushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収不能となった。fresh evidence生成後のsame-evidence rerunを行わず、runner-local positive summaryをformal promotionへ救済しない。
 
-Primary systemsは`TREE-WIDTH-SHAPE` / `REPLY-WIDTH-SHAPE`、phase-level promotion/confirmationはexact 2/3 gate。technical-only Stage 0 `EBRWS-S0-TECHNICAL-2026-09-01-v1`はsynthetic fixturesで全mandatory controlをPASSし、production / independent stage scientific coreは`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`にexact一致した。
+Formal decision:
+
+**`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`**
+
+```text
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 seed = consumed
+Stage 2 seed = not consumed
+protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
+```
 
 **最初に読む:**
 
-- [`effective-branching-reply-width-structure/README.md`](effective-branching-reply-width-structure/README.md)
-- [`effective-branching-reply-width-structure/CURRENT_STATUS.md`](effective-branching-reply-width-structure/CURRENT_STATUS.md)
+- [`effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`](effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md)
 - [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 
 **詳細・正本:**
 
+- [`effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`](effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md)
 - [`effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md`](effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md)
-- [`effective-branching-reply-width-structure/prereg/STUDY_1_SPEC.json`](effective-branching-reply-width-structure/prereg/STUDY_1_SPEC.json)
-- [`effective-branching-reply-width-structure/DECISION_REGISTER.md`](effective-branching-reply-width-structure/DECISION_REGISTER.md)
+- [`effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`](effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json)
 - [`effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`](effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md)
-- [`research-program-decisions/2026-09-01-post-lgtgmiv-g3-02-authorization-review.md`](research-program-decisions/2026-09-01-post-lgtgmiv-g3-02-authorization-review.md)
+- [`research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md)
 
-**Boundary:** G3-02 claimはfresh bounded RAW local geometry / relative depth 5に限定する。Stage 1は別authorization前に実行しない。standard-root depth 10はsealed。branch width / reply widthをbest move、forcing、value、human difficultyへ読み替えない。
+**Boundary:** runner-local compression patternはdiagnostic provenanceのみでformal positive claimではない。G3-02をsame-evidence rerun/rescueしない。G3-03以降は別reviewまで自動開始しない。standard-root depth 10はG3-11用にsealed。
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` remains closed `TECHNICAL-INVALID` with eligible families `[]`; `LGTGMIV-STUDY1` remains closed `FORMAL-ELIGIBLE-ALL`. G3-02 is now `EBRWS-STUDY1`: authorization review `AUTHORIZED`, protocol/preregistration frozen, technical Stage 0 `STAGE0-PASS`, Stage 1 not yet authorized. Standard-root depth 10 remains sealed for G3-11.
+**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` remains closed `TECHNICAL-INVALID` with eligible families `[]`; `LGTGMIV-STUDY1` remains closed `FORMAL-ELIGIBLE-ALL`. G3-02 `EBRWS-STUDY1` is closed `TECHNICAL-INVALID` after a one-shot Stage 1 canonical-artifact materialization failure; formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, and standard-root depth 10 remains sealed for G3-11. Next scientific action requires a separate post-G3-02 program review.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 
