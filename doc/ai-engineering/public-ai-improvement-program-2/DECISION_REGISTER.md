@@ -2,7 +2,7 @@
 
 Program: `PBAI-P2`  
 開始日: 2026-09-01  
-現在状態: **INITIALIZED / PRE-OUTCOME FREEZE COMPLETE**
+現在状態: **ACTIVE / C006 CLOSED / C007 CLOSED-HOLD / C008 PREDEVELOPMENT NEXT**
 
 この台帳は`PBAI-P2`のengineering判断だけを記録する。Research Generation 2の正式な科学判断は各研究の正本に従い、この台帳で変更しない。
 
@@ -212,7 +212,7 @@ FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 
 を正常なformal engineering outcomeとして認める。
 
-## D022 — 現時点のauthorization
+## D022 — initial authorization state
 
 ```text
 PBAI-P2-A = COMPLETE
@@ -225,4 +225,65 @@ validation = NOT AUTHORIZED
 release holdout = NOT AUTHORIZED
 public deployment = NOT AUTHORIZED
 AI-GEN3 promotion = NOT AUTHORIZED
+```
+
+## D023 — C006はactionable identity defectを成立させず閉じる
+
+Canonical C006 support run `33485530125`では、389,148 unique semantic RAW statesを含むfrozen support universeにおいて、事前指定した全collision categoryが0だった。production / independent deterministic coreはexact一致した。
+
+事前固定ruleをそのまま適用し:
+
+```text
+PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
+candidate implementation = NOT AUTHORIZED
+```
+
+とする。これはauthoritative RAW identityから`pending`を除外する判断ではなく、C006-v1としてpublic AI変更を正当化するsupportが成立しなかったというengineering判断である。
+
+## D024 — C007 baseline-only supportを実行可能とする
+
+C006がactionable practical invalid identity reuseを成立させなかったため、D017のdependency stop条件は発動しない。
+
+C007のsupport contractはcandidate outcome前に固定し、candidate codeを使用せず、frozen baseline TT store behaviorだけを観測する。
+
+## D025 — C007はsupport floor未達のため`NON-ESTIMABLE-HOLD`で閉じる
+
+Canonical C007 support run `33486314298`では:
+
+```text
+selected roots = 256 (Namua 128 / Mtaji 128)
+same-key TT store events = 16512
+incoming shallower than existing deeper entry events = 0
+roots with such event = 0
+later potential depth-benefit hits = 0
+baseline equivalence mismatches = 0
+```
+
+を得た。production / independent selected-root identityとmeasurement coreはexact一致した。
+
+事前support floor `32 events / 16 roots`に対して`0 / 0`であるため:
+
+```text
+PBAI-C007-v1 = NON-ESTIMABLE-HOLD
+candidate implementation = NOT AUTHORIZED
+validation = NOT AUTHORIZED
+release holdout = NOT AUTHORIZED
+```
+
+とする。同じC007-v1へ結果後にseed、depth、search profile、thresholdを追加して救済しない。
+
+## D026 — 次にC008 baseline-only supportだけを許可する
+
+C006/C007はいずれもimplementationへ進まない。initial inventoryで結果前に固定済みの次candidate `PBAI-C008-v1`について、次に許可する工程はbaseline-only predevelopment supportだけである。
+
+```text
+C008 support seeds = 43200001..43201024
+target eligible roots = 128
+minimum eligible roots = 64
+candidate implementation = NOT AUTHORIZED
+validation = NOT AUTHORIZED
+release holdout = NOT AUTHORIZED
+public deployment = NOT AUTHORIZED
+AI-GEN3 promotion = NOT AUTHORIZED
+Research Generation 3 influence = ZERO
 ```
