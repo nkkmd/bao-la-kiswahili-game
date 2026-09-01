@@ -8,8 +8,16 @@ const ROOT = path.resolve(__dirname, "..");
 const agenda = fs.readFileSync(path.join(ROOT, "doc/FUTURE_RESEARCH_AGENDA.md"), "utf8");
 const index = fs.readFileSync(path.join(ROOT, "doc/RESEARCH_INDEX.md"), "utf8");
 
+// This is a Generation-2 content-preservation audit, not a pin on the
+// repository-wide agenda version. Later research generations may legitimately
+// advance FUTURE_RESEARCH_AGENDA.md beyond v2 while the frozen G2 section and
+// its research/engineering separation must remain intact.
+const versionMatch = agenda.match(/^Version:\s*(\d+)\.(\d+)\.(\d+)$/m);
+assert.ok(versionMatch, "FUTURE_RESEARCH_AGENDA.md missing semantic Version line");
+assert.ok(Number(versionMatch[1]) >= 2, "FUTURE_RESEARCH_AGENDA.md regressed below Generation-2 agenda version");
+
 const required = [
-  "Version: 2.0.0",
+  "Research Generation 2: **Closed (2026-08-31)**",
   "## 9. 第二世代研究アジェンダ",
   "第二世代は純粋な研究プログラムとして完結させる。",
   "G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1",
