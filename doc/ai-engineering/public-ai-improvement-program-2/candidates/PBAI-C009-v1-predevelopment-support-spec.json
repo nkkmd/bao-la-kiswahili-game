@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "stage": "PBAI-P2-D-PREDEVELOPMENT-SUPPORT",
+  "candidateVersion": "PBAI-C009-v1",
+  "supportSpecId": "PBAI-C009-v1-PREDEVELOPMENT-SUPPORT-2026-09-01-v1",
+  "status": "FROZEN-BEFORE-DYNAMIC-SUPPORT-OUTCOME",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-01-v1",
+  "scientificEvidenceCutoff": "cd200b85c1eb24aa4419bd5a9573552f3682f00d",
+  "researchGeneration3Influence": false,
+  "evidenceBoundary": {
+    "generation2Source": "G2-07 Practical Comeback / Reply-Pressure Representation Study 1",
+    "formalStudyDecision": "STAGE1-TECHNICAL-INVALID",
+    "use": "Tier-B exact reply-width concept only",
+    "g207RepresentationValidated": false,
+    "f05AllUsed": false,
+    "lambda100Used": false,
+    "productionPerformanceUsed": false,
+    "replyPressureModelUsed": false,
+    "opponentPolicyModelUsed": false,
+    "humanErrorInferenceAuthorized": false,
+    "pbaiP1CandidateOutcomeUsedToSetThisSupportContract": false
+  },
+  "candidateCodeAllowed": false,
+  "publicImplementationChangeAllowed": false,
+  "sourceBindings": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+  },
+  "population": {
+    "seedStart": 43300001,
+    "seedEnd": 43301024,
+    "seedCount": 1024,
+    "maximumGamePlies": 160,
+    "trajectoryPolicy": "seeded-uniform-over-exact-sorted-move-variants",
+    "rootSource": {
+      "oneRootMaximumPerTrajectory": true,
+      "desiredPhaseBySeedParity": "odd seed -> namua; even seed -> mtaji",
+      "minimumLegalMoveCount": 2,
+      "rootSelectionWithinTrajectory": "minimum SHA-256 rank over candidateVersion, desired phase, seed, ply and strict RAW key",
+      "outcomeValueConsequenceBlind": true,
+      "crossPhaseReplacement": false
+    },
+    "eligibleSelection": {
+      "eligibility": "frozen baseline hard/enhanced/bao D3 completes without timeout and its actual enhanced-search execution visits at least one depth-zero ply-3 cutoff state that is nonterminal, opponent-to-root-player, and has exact legal move variant count == 1",
+      "targetTotal": 128,
+      "targetPerPhase": 64,
+      "selectionWhenMoreThanTarget": "minimum SHA-256 rank over candidateVersion, phase, seed, ply, strict RAW key, single-reply occurrence count and unique single-reply cutoff digest",
+      "phaseBalanceIsTargetNotAdditionalEstimabilityGate": true
+    }
+  },
+  "strictRawIdentity": {
+    "fields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "serialization": "stable JSON object with exactly the frozen fields in listed order",
+    "hash": "SHA-256 UTF-8 JSON serialization",
+    "symmetryOrCanonicalization": false
+  },
+  "baselineSearch": {
+    "level": "hard",
+    "searchProfile": "enhanced",
+    "evaluationProfile": "bao",
+    "timeLimitMs": "Infinity",
+    "quiescenceDepth": 1,
+    "maxTableEntries": 50000,
+    "ttMoveFirst": false,
+    "orderQuiescenceCaptures": false,
+    "normalizeTtMateScores": false,
+    "evaluationCache": true,
+    "maxEvaluationCacheEntries": 2048,
+    "stableBestDepths": 0,
+    "aspirationWindow": 0,
+    "maxDepth": 3,
+    "measurementMethod": "observation-only VM instrumentation of the byte-identical frozen baseline public/ai.js; observer is invoked after terminal check and immediately before baseline depth-zero quiescence return; no candidate extension is executed"
+  },
+  "singleReplyCutoff": {
+    "requiredDepthRemaining": 0,
+    "requiredPly": 3,
+    "terminal": false,
+    "requiredActorRelation": "state.player != root player",
+    "exactLegalMoveVariantCount": 1,
+    "counting": "every actual enhanced-search depth-zero ply-3 occurrence is counted; unique cutoff RAW states are additionally deduplicated by strict RAW SHA-256",
+    "candidateExtensionExecuted": false,
+    "quiescenceSemanticsChanged": false
+  },
+  "measurements": {
+    "trajectoryRootsAvailable": "number of frozen trajectories contributing one consequence-blind source root",
+    "technicalFailures": "source roots where baseline D3 does not complete exactly, times out, returns no move, observer violates actor/depth invariants, or observation-only instrumentation changes baseline selected move or pre-existing stats",
+    "eligibleRoots": "valid source roots with at least one observed exact single-reply cutoff occurrence",
+    "eligibleNamua": "eligible roots in Namua",
+    "eligibleMtaji": "eligible roots in Mtaji",
+    "singleReplyCutoffOccurrences": "total observed eligible cutoff occurrences across valid source roots",
+    "uniqueSingleReplyCutoffStates": "strict RAW-distinct eligible cutoff states",
+    "selectedEligibleRoots": "up to 128 eligible roots retained as canonical support examples under frozen hash ranking",
+    "candidateBenefitMetrics": "PROHIBITED"
+  },
+  "gate": {
+    "minimumEligibleRoots": 64,
+    "maximumTechnicalFailures": 0,
+    "maximumBaselineEquivalenceMismatches": 0,
+    "decisionMapping": {
+      "technicalFailure": "TECHNICAL-INVALID-PREDEVELOPMENT-SUPPORT",
+      "eligibleBelowMinimum": "NON-ESTIMABLE-HOLD",
+      "eligibleAtOrAboveMinimum": "SUPPORT-PASS"
+    }
+  },
+  "independentVerification": {
+    "required": true,
+    "productionRunnerMayBeImportedByVerifier": false,
+    "productionSelectedRootsMayBeTrustedWithoutReconstruction": false,
+    "fullSourceRootIdentityEqualityRequired": true,
+    "perRootOccurrenceCountAndUniqueCutoffDigestEqualityRequired": true,
+    "selectedEligibleRootDigestEqualityRequired": true,
+    "aggregateDecisionEqualityRequired": true,
+    "sourceHashVerificationRequired": true
+  },
+  "firewall": {
+    "candidateImplementationMayBeLoaded": false,
+    "singleReplyExtensionMayBeExecuted": false,
+    "candidateBenefitMetricsMayBeEvaluated": false,
+    "developmentSeedsMayBeRead": false,
+    "validationSeedsMayBeRead": false,
+    "releaseHoldoutSeedsMayBeRead": false,
+    "c008DevelopmentOutcomesMayTuneThisContract": false,
+    "researchGeneration3ScientificOrDevelopmentArtifactsMayBeRead": false,
+    "supportPassMayAuthorizeImplementationDirectly": false,
+    "implementationAuthorizationRequiresSeparateExactCandidateContractAfterSupportPass": true
+  }
+}
