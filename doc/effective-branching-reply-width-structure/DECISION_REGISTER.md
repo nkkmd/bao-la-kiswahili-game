@@ -91,7 +91,7 @@ Decision: `PASS`
 
 GitHub Actions tooling smoke run `33525232642`, job `99914259137`, passed without fresh scientific seed/root access. Production and independent G3-02 source hashes were distinct. Immediately before execution, no Stage 1 result artifact existed and the protected depth-10 holdout remained sealed.
 
-## D-010 — 2026-09-02 — Stage 1 one-shot materialization failure
+## D-010 — 2026-09-02 — Stage 1 canonical materialization failure
 
 Decision: `TECHNICAL-INVALID`
 
@@ -99,21 +99,50 @@ Formal Study disposition: `TECHNICAL-INVALID`.
 
 Stage 2: `NOT-AUTHORIZED-NOT-EXECUTED`.
 
-The authorized one-shot run `33569323221` / job `100059596453` completed the scientific execution step. The runner locally reported `STAGE1-PASS`, global mandatory gate PASS, 12 Namua + 12 Mtaji, and production / independent stage scientific core exact equality at `4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e`.
+The authorized run `33569323221` / job `100059596453` completed the scientific execution step. The runner locally reported `STAGE1-PASS`, global mandatory gate PASS, 12 Namua + 12 Mtaji, and production / independent stage scientific core exact equality at `4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e`.
 
 The runner-local candidate summary contained:
 
 - `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
 - `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
 
-However, the canonical result files were committed only in the ephemeral runner workspace. Push of local commit `709bc393` was rejected non-fast-forward because the remote research branch advanced while the one-shot execution was running. That commit is not recoverable from GitHub after runner teardown.
+However, the canonical result files were committed only in the ephemeral runner workspace. Push of local commit `709bc393` was rejected non-fast-forward because the remote research branch advanced while execution was running. That commit is not recoverable from GitHub after runner teardown.
 
-The no-rescue boundary had already been crossed. The one-shot authorization does not permit a same-evidence rerun to regenerate missing canonical artifacts. Because the frozen protocol requires an immutable Stage 1 candidate-set artifact and no technical-integrity violation before Stage 2 authorization, the runner-local positive computation is retained as diagnostic provenance only and is not a formal promoted candidate set.
+The no-rescue boundary had already been crossed. Missing canonical artifacts are not regenerated. The runner-local positive computation is diagnostic provenance only and is not a formal promoted candidate set.
 
 Formal promoted candidate set: `[]`.
 
-Authoritative technical-invalid result:
+## D-011 — 2026-09-02 — Unintended duplicate Stage 1 execution discovered in final audit
 
-`results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
+Decision: `UNAUTHORIZED-DUPLICATE-INVALID / NO CHANGE TO FORMAL TECHNICAL-INVALID CLOSURE`
+
+Final Actions-history audit found run `33569382663`, job `100060967285`, which executed the same Stage 1 scientific runner a second time.
+
+Cause: while the first authorized run was still in progress, a technical workflow-arming commit added the Stage 1 workflow's own path as a push trigger because the first trigger run had not yet appeared in monitoring. That commit queued run #2 before the first scientific outcome was known. The concurrency group delayed actual run #2 computation until after run #1 had completed its scientific step and the no-rescue boundary had been crossed.
+
+The second computation therefore violated the frozen exactly-one-execution authorization. It is not a valid replication, repair, confirmation, or rescue.
+
+Run #2 locally reproduced the same scientific-result commitments:
+
+```text
+stage scientific core = 4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e
+candidateSetSha256 = 4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6
+scientificResultFileSha256 = 1c5444ab050e85735763231a7c5913489c1254017b9acbb6a286fdaf742ff30a
+```
+
+Its telemetry hash differed, as expected for runtime-dependent telemetry. Its local result commit `24c57398` was also rejected non-fast-forward and is not recoverable from GitHub.
+
+Formal handling:
+
+- authorized Stage 1 execution count = 1
+- actual Stage 1 scientific execution count = 2
+- execution-count contract = violated
+- run #1 = diagnostic provenance only after canonical materialization failure
+- run #2 = `INVALID-DO-NOT-USE`
+- formal promoted candidate set = `[]`
+- Stage 2 = `NOT-AUTHORIZED-NOT-EXECUTED`
+- no third execution authorized
+
+The Stage 1 execution workflow is disabled after closure. The authoritative machine-readable closure is `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`.
 
 Protected standard-root depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
