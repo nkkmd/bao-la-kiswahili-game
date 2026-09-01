@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "stage": "PBAI-P2-D",
+  "candidateId": "PBAI-C009",
+  "candidateVersion": "PBAI-C009-v1",
+  "status": "FROZEN-FOR-DEVELOPMENT",
+  "authorization": "AUTHORIZED-FOR-DEVELOPMENT-AFTER-CONTRACT-FREEZE",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-01-v1",
+  "globalGateSpecId": "PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1",
+  "scientificEvidenceCutoff": "cd200b85c1eb24aa4419bd5a9573552f3682f00d",
+  "researchGeneration3Influence": false,
+  "candidateImplementationObservedBeforeFreeze": false,
+  "candidateDevelopmentOutcomeObservedBeforeFreeze": false,
+  "c008DevelopmentOutcomeUsedToTuneThisContract": false,
+  "predevelopmentSupport": {
+    "spec": "PBAI-C009-v1-predevelopment-support-spec.json",
+    "result": "PBAI-C009-v1-predevelopment-support-result.json",
+    "verification": "PBAI-C009-v1-predevelopment-support-verification.json",
+    "workflowRunId": 33500775677,
+    "jobId": 99833350210,
+    "artifactId": 9797899989,
+    "artifactZipSha256": "c201034ccd982a6b6f15bc4d0e471aa4e8833aff7f82a9ea591a998f95e64178",
+    "deterministicCoreSha256": "114d71a5c981f3d87b3108d1d1082f92a60e051166ea19bf69d78f78163f19d5",
+    "eligibleRoots": 639,
+    "minimumEligibleRoots": 64,
+    "singleReplyCutoffOccurrences": 2201,
+    "uniqueSingleReplyCutoffStates": 1878,
+    "technicalFailures": 0,
+    "baselineEquivalenceMismatches": 0,
+    "supportPass": true,
+    "candidateCodeUsed": false,
+    "candidateBenefitMetricsObserved": false,
+    "developmentSeedsAccessed": false,
+    "validationSeedsAccessed": false,
+    "releaseHoldoutSeedsAccessed": false
+  },
+  "researchEvidence": {
+    "primaryStudy": "G2-07 Practical Comeback / Reply-Pressure Representation Study 1",
+    "formalDecision": "STAGE1-TECHNICAL-INVALID",
+    "evidenceTier": "B",
+    "engineeringUse": "exact legal reply-width concept only",
+    "f05AllUsed": false,
+    "lambda100Used": false,
+    "productionPerformanceUsed": false,
+    "replyPressureModelUsed": false,
+    "opponentPolicyModelUsed": false,
+    "humanDifficultyInferenceAuthorized": false,
+    "researchGeneration1ScientificEvidenceUsed": false,
+    "researchGeneration3EvidenceUsed": false,
+    "engineeringSuccessMayChangeScientificDecision": false
+  },
+  "engineeringClassification": "single-mechanism-exact-forced-reply-cutoff-extension-candidate",
+  "mechanism": {
+    "name": "exact single-reply opponent-cutoff one-ply extension",
+    "featureFlag": "pbaiC009SingleReplyExtension",
+    "defaultBeforeAdoption": false,
+    "affectedPublicCode": ["public/ai.js"],
+    "explicitlyUnaffectedPublicCodeDuringDevelopment": [
+      "public/engine.js",
+      "public/ai-weights.js",
+      "public/ai-config.js",
+      "public/main.js",
+      "public/index.html",
+      "public/ai-worker.js",
+      "public/service-worker.js"
+    ],
+    "eligibleSearchFamily": "enhanced alpha-beta iterative deepening only",
+    "eligibleLevels": ["hard", "expert"],
+    "nominalSearchDepthBudgetChangeAllowed": false,
+    "timeBudgetIncreaseAllowed": false,
+    "evaluationChangeAllowed": false,
+    "quiescenceParameterChangeAllowed": false,
+    "rootMoveOrderingChangeAllowed": false,
+    "internalMoveOrderingChangeAllowed": false,
+    "ttKeyChangeAllowed": false,
+    "ttStorePolicyChangeAllowed": false,
+    "persistentTableOrCacheAllowed": false,
+    "ruleEngineChangeAllowed": false,
+    "workerSourceChangeAllowed": false,
+    "lifetime": "candidate state exists only within one analyzeMove call"
+  },
+  "runtimeTrigger": {
+    "location": "enhancedSearch after terminal check and exactly when nominal depth remaining is 0, before baseline quiescence return",
+    "condition": "feature enabled AND state is nonterminal AND state.player differs from root player AND exact E.moveVariants(state).length == 1",
+    "requiredDepthRemaining": 0,
+    "requiredActorRelation": "opponent-to-root-player",
+    "exactLegalMoveVariantCount": 1,
+    "terminalStateAllowed": false,
+    "appliesToLegacySearch": false,
+    "appliesToMcts": false,
+    "appliesToEasyOrNormal": false,
+    "noCrossCallState": true
+  },
+  "extensionSemantics": {
+    "extensionLength": "exactly one ordinary legal move ply",
+    "forcedMove": "the sole exact legal move variant returned by E.moveVariants(state)",
+    "application": "apply the sole move with E.applyMove, then immediately evaluate the resulting child through the same quiescence function that baseline would use at the nominal cutoff",
+    "childQuiescencePly": "nominal cutoff ply + 1",
+    "alphaBetaWindow": "reuse current alpha and beta",
+    "evaluator": "same evaluator instance as nominal search",
+    "quiescenceDepth": "same configured quiescenceDepth as nominal search",
+    "orderQuiescenceCaptures": "same nominal setting",
+    "deadline": "same existing analyzeMove deadline; no added milliseconds",
+    "ttInteraction": "no additional TT lookup/store is introduced by the extension itself; the forced child is handed directly to quiescence",
+    "maximumExtensionsPerRootToLeafPath": 1,
+    "maximumEnforcement": "structural: the candidate cutoff branch returns directly from child quiescence and does not re-enter candidate enhancedSearch",
+    "timeoutBehavior": "quiescence uses the existing deadline and propagates the existing timeout behavior; no fallback budget is added",
+    "illegalOrAmbiguousReplyAction": "candidate trigger is false unless exact legal move variant count equals one"
+  },
+  "candidateDiagnostics": {
+    "surface": "stats.pbaiC009 only when feature flag is true",
+    "featureOffStatsShapeChangeAllowed": false,
+    "fields": [
+      "triggeredExtensions",
+      "forcedReplyCutoffVisits",
+      "forcedReplyChildQuiescenceNodes",
+      "maxExtensionsPerObservedPath"
+    ],
+    "requiredInvariants": {
+      "triggeredExtensionsEqualsForcedReplyCutoffVisits": true,
+      "maxExtensionsPerObservedPathMaximum": 1
+    }
+  },
+  "featureOffContract": {
+    "mustReproduceFrozenBaseline": true,
+    "publicDefaultFlagValue": false,
+    "requiredExactEquality": [
+      "selected move key",
+      "all pre-existing stats fields and values",
+      "absence of stats.pbaiC009",
+      "exception/timeout behavior"
+    ],
+    "publicEngineSha256MustRemain": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "baselineAiSha256": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+  },
+  "candidateSpecificPopulation": {
+    "developmentSourceSeedBlock": {"start": 42400001, "end": 42400512, "globalTargetRoots": 256},
+    "validationSourceSeedBlock": {"start": 42500001, "end": 42501024, "executionAuthorizedNow": false},
+    "releaseHoldoutSourceSeedBlock": {"start": 42600001, "end": 42602048, "executionAuthorizedNow": false},
+    "developmentReuseBoundary": "the common PBAI-P2 development block may be reused across candidates; C009 selection and gates are fixed independently of C008 per-root outcomes and no C008 row-level result is an input",
+    "runtimeEligibleTarget": {
+      "definition": "frozen baseline hard/enhanced/bao D3 completes and its actual nominal enhanced-search execution visits at least one nonterminal opponent-to-root-player depth-zero cutoff with exact legal move variant count == 1",
+      "developmentMaximum": 128,
+      "developmentTargetPerPhase": 64,
+      "developmentMinimumEstimable": 64,
+      "selection": "outcome/value/consequence-blind deterministic SHA-256 ranking from the frozen global development root universe, with phase balance as target and deterministic fallback fill",
+      "insufficientDevelopmentSupportAction": "DEVELOPMENT-NON-ESTIMABLE-HOLD; no replacement source block after inspection"
+    },
+    "negativeControl": {
+      "definition": "frozen baseline D3 completes and visits zero such single-reply opponent cutoff states",
+      "developmentMaximum": 64,
+      "selection": "deterministic SHA-256 rank, phase balance target with deterministic fallback fill",
+      "purpose": "trigger-zero and feature-on search-semantic no-op control"
+    }
+  },
+  "candidateSpecificBenefitGate": {
+    "reference": "PBAI-P2 frozen D4 engineering comparison reference; not game-theoretic truth",
+    "comparison": "feature-off baseline D3 versus feature-on candidate D3 on the same frozen eligible development roots",
+    "primaryEndpoints": {
+      "topSetAgreementDeltaMinimum": 0.03,
+      "meanNormalizedRankLossDeltaMaximum": -0.01
+    },
+    "safetyEndpoints": {
+      "severeLossRateExcessOverBaselineMaximum": 0.0,
+      "catastrophicNewLossCountMaximum": 0
+    },
+    "fixedDepthCostGate": {
+      "nodeRatioDefinition": "candidate cumulative stats.nodes / feature-off baseline cumulative stats.nodes for the D3 analyzeMove call",
+      "medianNodeRatioMaximum": 1.25,
+      "p95NodeRatioMaximum": 1.75
+    },
+    "runtimeCoverage": {
+      "featureOnTriggeredMinimumPerEligibleRoot": 1,
+      "maxExtensionsPerObservedPathMaximum": 1,
+      "featureOffCandidateDiagnosticPresenceMaximum": 0
+    },
+    "negativeControlGate": {
+      "featureOnTriggeredMaximumPerRoot": 0,
+      "exactEqualityRequiredFor": [
+        "selected move key",
+        "rootScore",
+        "nodes",
+        "quiescenceNodes",
+        "cutoffs",
+        "cacheHits",
+        "cacheStores",
+        "evaluationRequests",
+        "evaluations",
+        "evaluationCacheHits"
+      ]
+    },
+    "allConditionsConjunctive": true,
+    "globalCorrectnessHardGateStillMandatory": true,
+    "globalGateRelaxationAllowed": false
+  },
+  "operationalBudget": {
+    "additionalPersistentMemoryBytesMaximum": 0,
+    "additionalPublicAiJsBytesMaximum": 4096,
+    "newPublicAssetAllowed": false,
+    "existingDeadlineOnly": true,
+    "globalOperationalGateStillMandatoryBeforeValidation": true
+  },
+  "developmentExecution": {
+    "candidateImplementationAllowedAfterThisFreeze": true,
+    "candidateFeatureDefaultMustRemainOff": true,
+    "featureOffEquivalenceRequiredBeforeBenefitEvaluation": true,
+    "developmentBenefitEvaluationAuthorizedAfterImplementationAndFeatureOffEquivalencePass": true,
+    "validationExecutionAuthorizedNow": false,
+    "releaseHoldoutExecutionAuthorizedNow": false,
+    "developmentMayTuneMechanismAfterOutcome": false,
+    "maximumMechanismVersionsUnderThisContract": 1
+  },
+  "failureSemantics": {
+    "implementationViolatesExactContract": "TECHNICAL-INVALID / REJECT-OR-HOLD",
+    "featureOffEquivalenceFailure": "TECHNICAL-INVALID / REJECT-OR-HOLD",
+    "developmentEligibleRootsBelow64": "DEVELOPMENT-NON-ESTIMABLE-HOLD",
+    "developmentPrimaryBenefitFailure": "DEVELOPMENT-BENEFIT-FAIL / HOLD",
+    "developmentSafetyFailure": "REJECT / HOLD",
+    "developmentCostFailure": "DEVELOPMENT-BENEFIT-FAIL / HOLD",
+    "developmentPass": "VALIDATION-CONTRACT-FREEZE-AUTHORIZED; validation still not executable until separately frozen",
+    "postOutcomeRetuning": "PROHIBITED under PBAI-C009-v1"
+  },
+  "validationAndHoldoutFirewall": {
+    "developmentExecutionAllowed": true,
+    "validationExecutionAllowed": false,
+    "validationMayTuneCandidate": false,
+    "releaseHoldoutExecutionAllowed": false,
+    "releaseHoldoutMayTuneCandidate": false,
+    "researchGeneration3Influence": false
+  },
+  "rollback": {
+    "preAdoption": "feature flag false reproduces frozen AI-GEN2 behavior",
+    "publicDeploymentNotPartOfDevelopment": true,
+    "aiGenerationPromotionBeforeFormalAdoptionAndDeployment": false
+  }
+}
