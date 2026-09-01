@@ -1,0 +1,73 @@
+name: LGTGMIV Study 1 Final Closure Audit
+
+on:
+  push:
+    branches:
+      - research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+    paths:
+      - .github/workflows/lgtgmiv-study1-closure-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify immutable historical RG3 program plan
+        run: |
+          test "$(git rev-parse a53aabd26f78ac408445aff2d18ace3b21b827d7:doc/research-generation-3/PROGRAM_PLAN.md)" = "$(git rev-parse HEAD:doc/research-generation-3/PROGRAM_PLAN.md)"
+      - name: Verify formal Stage 2 result and read-only audit
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),assert=require('assert/strict');
+          const d='doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-2/';
+          const s=JSON.parse(fs.readFileSync(d+'execution-summary.json'));
+          const a=JSON.parse(fs.readFileSync(d+'posthoc-audit-summary.json'));
+          assert.equal(s.formalDecision,'FORMAL-ELIGIBLE-ALL');
+          assert.equal(s.globalGatePass,true);
+          assert.equal(s.formalEligibleFamilies.length,5);
+          assert.equal(s.protectedStandardRootDepth10Generated,false);
+          assert.equal(s.protectedStandardRootDepth10Read,false);
+          assert.equal(s.automaticG302StartAuthorized,false);
+          assert.equal(a.passed,true);
+          assert.equal(a.formalDecision,'FORMAL-ELIGIBLE-ALL');
+          assert.equal(a.rootCount,24);
+          assert.deepEqual(a.phaseCounts,{namua:12,mtaji:12});
+          assert.equal(a.exactRootReconstructionCount,24);
+          for(const n of Object.values(a.exactFamilyRootCounts)) assert.equal(n,24);
+          assert.equal(a.resourceAuditPass,true);
+          assert.equal(a.scientificReexecutionPerformed,false);
+          assert.equal(a.engineImported,false);
+          assert.equal(a.protectedStandardRootDepth10Generated,false);
+          assert.equal(a.protectedStandardRootDepth10Read,false);
+          assert.equal(a.automaticG302StartAuthorized,false);
+          NODE
+      - name: Verify Study closure documents
+        run: |
+          grep -Fq 'CLOSED / FORMAL-ELIGIBLE-ALL' doc/local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md
+          grep -Fq 'FORMAL-ELIGIBLE-ALL' doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md
+          grep -Fq 'LGTGMIV-F5-REPLY-GEOMETRY' doc/local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md
+          grep -Fq 'G3-01 = TECHNICAL-INVALID' doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md
+          grep -Fq 'SEALED / NOT GENERATED / NOT READ' doc/local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md
+      - name: Verify RG3 and central current-facing synchronization
+        run: |
+          grep -Fq 'LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL' doc/research-generation-3/CURRENT_STATUS.md
+          grep -Fq 'G3-02 automatic start = BLOCKED' doc/research-generation-3/CURRENT_STATUS.md
+          grep -Fq 'LGTGMIV-STUDY1' doc/research-generation-3/README.md
+          grep -Fq 'FORMAL-ELIGIBLE-ALL' README.md
+          grep -Fq 'LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL`' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -Fq 'LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL' doc/RESEARCH_INDEX.md
+          test -e doc/research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md
+          test -e doc/research-generation-3/checkpoints/2026-09-01-lgtgmiv-closed-g3-02-review-required.md
+      - name: Verify no automatic downstream scientific authorization
+        run: |
+          ! grep -Fq 'automaticG302StartAuthorized = true' doc/research-generation-3/CURRENT_STATUS.md
+          ! grep -Fq 'G3-02 automatic start = AUTHORIZED' doc/research-generation-3/CURRENT_STATUS.md
+          grep -Fq 'G3-02..G3-08 remain blocked' doc/research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md
