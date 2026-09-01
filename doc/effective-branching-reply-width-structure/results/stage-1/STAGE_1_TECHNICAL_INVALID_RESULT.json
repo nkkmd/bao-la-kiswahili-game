@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "studyId": "EBRWS-STUDY1",
+  "stageId": "EBRWS-S1-DEVELOPMENT-2026-09-01-v1",
+  "formalStageDisposition": "TECHNICAL-INVALID",
+  "formalStudyDisposition": "TECHNICAL-INVALID",
+  "stage2Disposition": "NOT-AUTHORIZED-NOT-EXECUTED",
+  "freshScientificSeedConsumed": "31210001..31210192",
+  "noRescueBoundaryCrossed": true,
+  "sourceRun": {
+    "githubActionsRunId": 33569323221,
+    "githubActionsJobId": 100059596453,
+    "executionStepConclusion": "success",
+    "repositoryMaterializationStepConclusion": "failure",
+    "failureReason": "non-fast-forward push rejection after canonical Stage 1 files were generated and locally committed in the ephemeral runner workspace",
+    "unpublishedLocalCommitShortSha": "709bc393",
+    "unpublishedLocalCommitRecoverableFromGitHub": false
+  },
+  "runnerDiagnosticSummary": {
+    "reportedStageDisposition": "STAGE1-PASS",
+    "globalGatePass": true,
+    "selectedCounts": {
+      "namua": 12,
+      "mtaji": 12
+    },
+    "reportedPromotedCandidates": [
+      {
+        "constructId": "REPLY-WIDTH-SHAPE",
+        "phase": "mtaji",
+        "class": "COMPRESSION-DOMINANT",
+        "classCount": 9,
+        "eligibleRootCount": 12
+      },
+      {
+        "constructId": "REPLY-WIDTH-SHAPE",
+        "phase": "namua",
+        "class": "COMPRESSION-DOMINANT",
+        "classCount": 12,
+        "eligibleRootCount": 12
+      }
+    ],
+    "reportedStage2AuthorizationEligible": true,
+    "productionStageScientificCoreSha256": "4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e",
+    "independentStageScientificCoreSha256": "4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e",
+    "candidateSetSha256": "4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6",
+    "scientificResultFileSha256": "1c5444ab050e85735763231a7c5913489c1254017b9acbb6a286fdaf742ff30a",
+    "telemetryFileSha256": "f13a71a7a219fc1978667c1b39120df709b163fd5250962e9f19310ca9f9c719",
+    "protectedStandardRootDepth10Generated": false,
+    "protectedStandardRootDepth10Read": false
+  },
+  "formalUseOfRunnerDiagnosticSummary": "DIAGNOSTIC-PROVENANCE-ONLY",
+  "formalPromotedCandidateSet": [],
+  "stage2AuthorizationEligible": false,
+  "technicalInvalidReason": "The frozen Stage 1 protocol requires the promoted primary candidate set to be frozen as an immutable artifact and requires no technical-integrity violation. The one-shot execution generated and verified canonical files but those files were not durably materialized in the repository; the ephemeral local commit was rejected by a non-fast-forward branch race and is not recoverable. Because a second execution is not authorized after the no-rescue boundary, the missing canonical Stage 1 evidence cannot be regenerated. Fail-closed TECHNICAL-INVALID therefore supersedes the runner-local STAGE1-PASS diagnostic for formal downstream use.",
+  "sameEvidenceRerunAuthorized": false,
+  "thresholdOrEndpointRescueAuthorized": false,
+  "protectedDepth10Holdout": "SEALED / NOT GENERATED / NOT READ"
+}
