@@ -5,7 +5,7 @@ Program: `PBAI-P2`
 
 ## 1. 最初に読む順序
 
-再開時は、Research Generation 3のscientific/development内容をcandidate設計へ取り込まず、次の順序で確認する。
+再開時はResearch Generation 3のscientific/development内容をcandidate設計へ取り込まず、次の順序で確認する。
 
 1. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
@@ -14,12 +14,12 @@ Program: `PBAI-P2`
 5. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
 6. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
 7. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
-8. [`candidates/PBAI-C006-v1-predevelopment-support-result.json`](candidates/PBAI-C006-v1-predevelopment-support-result.json)
-9. [`candidates/PBAI-C007-v1-predevelopment-support-result.json`](candidates/PBAI-C007-v1-predevelopment-support-result.json)
-10. [`checkpoints/2026-09-01-c006-predevelopment-support-closure.md`](checkpoints/2026-09-01-c006-predevelopment-support-closure.md)
-11. [`checkpoints/2026-09-01-c007-predevelopment-support-closure.md`](checkpoints/2026-09-01-c007-predevelopment-support-closure.md)
+8. [`candidates/PBAI-C008-v1-predevelopment-support-result.json`](candidates/PBAI-C008-v1-predevelopment-support-result.json)
+9. [`candidates/PBAI-C008-v1.json`](candidates/PBAI-C008-v1.json)
+10. [`checkpoints/2026-09-01-c008-predevelopment-support-pass.md`](checkpoints/2026-09-01-c008-predevelopment-support-pass.md)
+11. C006/C007 canonical closure artifacts as historical context
 
-Machine-readable正本:
+Machine-readable program freeze:
 
 - `baselines/AI-GEN2-BASELINE-2026-09-01-v1.json`
 - `benchmark/PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1.json`
@@ -36,21 +36,7 @@ baseline = AI-GEN2-BASELINE-2026-09-01-v1
 global gates = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
 current public lineage = AI-GEN2
 next lineage reserved = AI-GEN3
-```
-
-Stage:
-
-```text
-PBAI-P2-A..PBAI-P2-H
-```
-
-Initial candidates:
-
-```text
-PBAI-C006-v1
-PBAI-C007-v1
-PBAI-C008-v1
-PBAI-C009-v1
+C008 contract freeze commit = fe962416a5d76fe8ab5d47def384dd386acc222d
 ```
 
 ## 3. 絶対に維持するfirewall
@@ -61,96 +47,102 @@ Research Generation 3 influence on PBAI-P2 = ZERO
 
 G3のscientific evidence、development observation、result、diagnostic、hypothesis、measurement、candidate mechanism、documentation-derived ideaをPBAI-P2へ使用しない。
 
-current `main`はrepository operational state / integration先確認には使えるが、scientific evidence sourceとして使わない。
-
 ## 4. 現在のengineering状態
 
 ```text
 PBAI-P2-A = COMPLETE
 PBAI-P2-B = COMPLETE
 PBAI-P2-C = COMPLETE
-PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 PREDEVELOPMENT NEXT
+PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 SUPPORT-PASS + CONTRACT-FROZEN
+PBAI-P2-E = C008 DEVELOPMENT AUTHORIZED / NOT YET EXECUTED
 candidate implementation count = 0
-predevelopment support outcome count = 2
+predevelopment support outcome count = 3
 candidate development outcome count = 0
 validation count = 0
 release holdout count = 0
 public deployment count = 0
 ```
 
-## 5. C006 canonical closure
+## 5. C006 / C007 closure
 
 ```text
-canonical run = 33485530125
-semantic unique RAW states = 389148
-semantic collision witnesses = 0
-practical witness count = 0
-production/independent deterministic core equality = true
 PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
-implementation = NOT AUTHORIZED
-```
-
-`pending`を含むauthoritative RAW identity contractは変更しない。
-
-## 6. C007 canonical closure
-
-```text
-canonical run = 33486314298
-selected roots = 256 (Namua 128 / Mtaji 128)
-same-key TT stores = 16512
-shallower-over-deeper overwrite events = 0
-roots with such event = 0
-baseline equivalence mismatches = 0
-production/independent measurement core equality = true
 PBAI-C007-v1 = NON-ESTIMABLE-HOLD
-implementation = NOT AUTHORIZED
 ```
 
-Frozen floor `32 events / 16 roots`未達である。同じC007-v1へseed、depth、search profile、thresholdを追加して救済しない。
+両candidateともimplementation未実施。same-version追加supportによる救済は禁止。
 
-## 7. 次に実行してよい工程
-
-**C008 baseline-only predevelopment support**だけが次のcandidate-specific工程として許可されている。
-
-Initial inventoryで既に固定済みのsupport boundary:
+## 6. C008 canonical support
 
 ```text
-support seeds = 43200001..43201024
-target eligible roots = 128
+canonical run = 33492849852
+job = 99808142315
+artifact = 9794730237
+artifact ZIP SHA-256 = 4a56952f7bdf034f472661314d9de29a824a6342a63df1230969dbbfd6f2c6a3
+deterministic core SHA-256 = 9010ffa1fbdfa33e854d1fafe3c652e2017a6b46f0902c7fe25de69e0b2411c9
+source seeds = 1024
+trajectory roots available = 870
+eligible roots = 233
 minimum eligible roots = 64
-phase balance = Namua/Mtaji target
-measurement = baseline D2/D3 root-best flip only
-candidate code = prohibited
-benefit benchmark = prohibited
-validation = prohibited
-release holdout = prohibited
+technical failures = 0
+independent exact core equality = true
+PBAI-C008-v1 predevelopment = SUPPORT-PASS
 ```
 
-`<64`なら`NON-ESTIMABLE-HOLD`。support floorを満たした場合でもcandidate implementationを自動承認せず、exact implementation contractの別freezeが必要である。
+Support PASSはcandidate improvementを意味しない。
 
-## 8. 再開時にしてはいけないこと
-
-- cutoffを変更する;
-- G3 document/resultをcandidate designへ使う;
-- PBAI-P1 C001〜C005を救済する;
-- C006/C007をsame-version追加supportで救済する;
-- C008 support前にconfirmation re-searchを実装する;
-- validation / holdoutを先に開く;
-- candidateをpublic defaultへ直接反映する;
-- AI-GEN3へ先に昇格する。
-
-## 9. 正常な最終結果
-
-PBAI-P2はAI-GEN3を必ず作るProgramではない。
+## 7. C008 frozen implementation contract
 
 ```text
-ADOPT one or more candidates
+feature = pbaiC008RootFlipConfirmation
+default = false
+affected public source = public/ai.js only
+trigger = final nominal completed depth d>=3 AND best(d-1) != best(d)
+confirmation candidates = exactly previous-depth best + final nominal-depth best
+confirmation = full-window d+1 under existing deadline
+both candidates must complete; otherwise nominal move retained
+no time-budget increase
+no evaluator/quiescence/move-ordering/TT-key/TT-store/rule-engine/Worker change
 ```
 
-だけでなく:
+Development gates:
 
 ```text
-KEEP-AI-GEN2
+D4 TopSet agreement delta >= +0.05
+mean normalized rank-loss delta <= -0.02
+severe-loss-rate excess <= 0
+catastrophic new loss = 0
+median node ratio <= 1.60
+p95 node ratio <= 2.50
 ```
 
-も正常なclosure outcomeである。
+## 8. 次に実行してよい工程
+
+1. C008 isolated development branchをcontract freeze後のcurrent P2 branchから作る。
+2. `public/ai.js`だけにfeature-gated / default-off implementationを入れる。
+3. development outcomeを見る前にfeature-off exact baseline equivalenceを実行する。
+4. equivalence PASSの場合のみ`42400001..42400512`を使うdevelopment-only evaluationを実行する。
+
+Feature-off equivalence:
+
+```text
+selected move key = exact baseline equality
+all pre-existing stats fields/values = exact equality
+stats.pbaiC008 = absent when feature off
+exception/timeout behavior = exact equality
+```
+
+## 9. まだ禁止されること
+
+- G3 evidence利用;
+- C008 feature default ON;
+- C008 contractのpost-support変更;
+- validation seeds `425xxxxx` access;
+- release holdout seeds `426xxxxx` access;
+- C009 implementation;
+- public deployment;
+- AI-GEN3 promotion。
+
+## 10. 正常な最終結果
+
+PBAI-P2はAI-GEN3を必ず作るProgramではない。`ADOPT`だけでなく`KEEP-AI-GEN2`も正常なclosure outcomeである。
