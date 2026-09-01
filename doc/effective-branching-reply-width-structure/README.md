@@ -2,11 +2,9 @@
 
 ## Status
 
-`EBRWS-STUDY1` is the formally authorized Research Generation 3 `G3-02` Study.
+Research Generation 3 `G3-02` formal Study:
 
-Current state:
-
-`PROTOCOL-FROZEN / STAGE0-PASS / STAGE1-AUTHORIZATION-PENDING / NO-FRESH-SCIENTIFIC-EVIDENCE-GENERATED`
+`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`
 
 Formal English title:
 
@@ -16,9 +14,36 @@ Formal English title:
 
 **Baoにおけるeffective branching / reply-width構造のprospective検証 — bounded RAW局所ゲーム木におけるmulti-ply branching・reply-width profileが再現可能な局面特性として成立する範囲の検証**
 
+## Closure summary
+
+Stage 0 technical validationはsynthetic fixturesのみで`STAGE0-PASS`となり、production / independent stage scientific coreはexact一致した。
+
+Stage 1はfresh seed `31210001..31210192`、Namua 12 + Mtaji 12、relative depth 5として一度だけauthorized executionを行った。runner内部ではglobal mandatory gatesがPASSし、production / independent stage coreもexact一致した。
+
+ただしcanonical Stage 1 result filesを生成した後、repositoryへのpushがnon-fast-forwardでrejectされた。runner-local commitはephemeral環境終了後に回収不能となり、full canonical result artifactをrepositoryへimmutable materializeできなかった。
+
+fresh evidence生成後のsame-evidence rerunはauthorization/no-rescue boundaryに反するため実施しない。したがってfail-closedでStage 1およびStudyを`TECHNICAL-INVALID`として閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`とする。
+
+## Diagnostic-only Stage 1 observation
+
+GitHub Actions run `33569323221`のrunner logには次の候補が記録された。
+
+- `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
+- `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
+
+これらは**formal promoted candidatesではない**。canonical Stage 1 artifact materialization failure後にpositive resultへ救済せず、diagnostic provenanceとしてのみ保存する。
+
+Formal promoted candidate set:
+
+`[]`
+
 ## Scientific boundary
 
-本Studyは、LGTGMIVでformal eligibilityを得たRAW-only / relative depth 5のbounded local geometry instrumentだけを用いる。
+Authoritative representation:
+
+- RAW state identity: `pits,reserve,houseOwned,player,phase,winner,pending`
+- validated transform set: `[]`
+- relative local horizon: depth 5
 
 Primary dependency:
 
@@ -31,37 +56,28 @@ Secondary contextual dependency:
 - `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
 - `LGTGMIV-F4-TREE-GRAPH-RELATION`
 
-`effective branching`は新しいmeasurement instrumentではなく、F1 exact primitiveからprospectively定義したexact-rational derived constructである。
+`effective branching`は新しいvalidated instrumentではなく、eligible exact primitivesからprospectively定義したderived constructとして扱った。
 
 ## Frozen primary endpoint
 
-Primary construct systemsは次の2つだけである。
+Primary systems:
 
 1. `TREE-WIDTH-SHAPE`
 2. `REPLY-WIDTH-SHAPE`
 
-phase-level candidate / formal confirmation gateはexactに
+Candidate gate:
 
 `3 * classCount >= 2 * eligibleRootCount`
 
-とする。Stage 2はStage 1でpromoteされfreezeされた同一construct / phase / classだけを検証する。
+このthreshold、endpoint、family usage、phase、seed、root ruleはfresh evidence後に変更していない。
 
-## Stage plan and current state
+## Stage disposition
 
-1. `EBRWS-S0-TECHNICAL-2026-09-01-v1` — **`STAGE0-PASS`** / synthetic technical-only validation
-2. `EBRWS-S1-DEVELOPMENT-2026-09-01-v1` — **`NOT-AUTHORIZED-NOT-EXECUTED`** / fresh development, 12 Namua + 12 Mtaji, depth 5
-3. `EBRWS-S2-FORMAL-2026-09-01-v1` — **`NOT-AUTHORIZED-NOT-EXECUTED`** / fresh formal holdout, 18 Namua + 18 Mtaji, depth 5
+1. `EBRWS-S0-TECHNICAL-2026-09-01-v1` — `STAGE0-PASS`
+2. `EBRWS-S1-DEVELOPMENT-2026-09-01-v1` — `TECHNICAL-INVALID`
+3. `EBRWS-S2-FORMAL-2026-09-01-v1` — `NOT-AUTHORIZED-NOT-EXECUTED`
 
-Stage 0 production / independent scientific-core digest:
-
-`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
-
-Fresh seed blocks:
-
-- Stage 1: `31210001..31210192` — **not consumed**
-- Stage 2: `31220001..31220288` — **not consumed**
-
-Stage 1/2 seeds are not to be generated or read before their corresponding authorization gates.
+Stage 1 seed `31210001..31210192`は消費済み。Stage 2 seed `31220001..31220288`は未消費。
 
 ## Protected evidence
 
@@ -71,16 +87,18 @@ standard initial RAW root complete exact depth-10 holdout remains:
 
 ## Interpretation boundary
 
-branching width / reply width / multi-ply width profileはmachine-observed bounded RAW geometryであり、best move、search difficulty、game-theoretic forcing、win/value、human difficultyとは別constructである。
+branching width / reply width / multi-ply width profileはmachine-observed bounded RAW geometryであり、best move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。
 
 ## Canonical records
 
-- `STUDY_1_PROTOCOL.md` — frozen scientific protocol
+- `STUDY_1_OVERVIEW.md` — 初見向け成果概要
+- `STUDY_1_FINAL_REPORT.md` — scientific/technical closure正本
+- `STUDY_1_PROTOCOL.md` — frozen prospective protocol
 - `prereg/STUDY_1_SPEC.json` — machine-readable preregistration
 - `CURRENT_STATUS.md` — current-facing state
 - `DECISION_REGISTER.md` — formal decisions
 - `REPRODUCIBILITY_INDEX.md` — reproducibility map
-- `results/stage-0/technical-validation.json` — Stage 0 technical result
-- `checkpoints/2026-09-01-stage-0-technical-pass.md` — Stage 0 PASS checkpoint
+- `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — authoritative Stage 1 closure result
+- `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md` — incident checkpoint
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains immutable and is not rewritten.
