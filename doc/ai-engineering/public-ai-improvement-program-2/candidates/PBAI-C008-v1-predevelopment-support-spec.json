@@ -45,6 +45,7 @@
     }
   },
   "baselineSearch": {
+    "level": "hard",
     "searchProfile": "enhanced",
     "evaluationProfile": "bao",
     "timeLimitMs": "Infinity",
