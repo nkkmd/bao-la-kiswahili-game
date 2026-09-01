@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "candidateVersion": "PBAI-C009-v1",
+  "stage": "PBAI-P2-E-TECHNICAL-PREFLIGHT",
+  "specId": "PBAI-C009-v1-FEATURE-OFF-EQUIVALENCE-2026-09-01-v1",
+  "canonicalWorkflowRun": 33503615979,
+  "canonicalJob": 99842398129,
+  "workflowHeadSha": "9eebb1d702211fe881fb56c69c9c2df6df65f86c",
+  "implementationCommit": "89ec5e93",
+  "baselineAiSha256": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+  "candidateAiSha256": "750678ec33c916da35844dc2d999cc3b996c1cc6ec79ad84e12030f0da84517f",
+  "engineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "population": {
+    "sourceSeeds": 64,
+    "availableNamua": 32,
+    "availableMtaji": 25,
+    "selectedRoots": 32,
+    "selectedNamua": 16,
+    "selectedMtaji": 16,
+    "rootSelectionTechnicalFailures": 0,
+    "selectedRootDigest": "a8ab643fc9f79996f06b3ff1700df779452c8feddbb7c61e2560d3a577aba438"
+  },
+  "measurement": {
+    "conditionsPerRoot": 8,
+    "totalComparisons": 256,
+    "comparisonMismatches": 0,
+    "candidateDiagnosticPresence": 0
+  },
+  "productionResultSha256": "111047100c0e38d9a99c9bc13e566bb8bdce8930365f01b83b4007b0fdc5ca93",
+  "independentVerificationSha256": "8a13a8a2a817f7da21759624f9406c87b83d55f2b66d89124cf979311e7ad87c",
+  "deterministicCoreSha256": "c16c1a3a81a0c265d7f01f67da1b1106d098c421a3b313f221729f5b43cc462d",
+  "independentDeterministicCoreSha256": "c16c1a3a81a0c265d7f01f67da1b1106d098c421a3b313f221729f5b43cc462d",
+  "fullComparisonRowsEquality": true,
+  "artifact": {
+    "id": 9798710901,
+    "name": "pbai-p2-c009-feature-off-equivalence",
+    "zipSha256": "ebdc1ec354fbd7f25ec6b540443f574d7cdc6c7c0a1def0660d6aefe4d3e6735"
+  },
+  "firewall": {
+    "candidateBenefitMetricsComputed": false,
+    "developmentSeedsAccessed": false,
+    "validationSeedsAccessed": false,
+    "releaseHoldoutSeedsAccessed": false,
+    "researchGeneration3ArtifactsAccessed": false
+  },
+  "decision": {
+    "disposition": "FEATURE-OFF-EQUIVALENCE-PASS",
+    "developmentBenefitExecutionAuthorizedByThisResult": true,
+    "validationAuthorized": false,
+    "releaseHoldoutAuthorized": false
+  }
+}
