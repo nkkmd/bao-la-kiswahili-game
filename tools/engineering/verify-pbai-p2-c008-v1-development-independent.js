@@ -233,7 +233,7 @@ function minimax(state, depth, alpha, beta, actor, evaluate, ply, qdepth) {
   }
   return best;
 }
-function reference(state, baseline, spec) {
+function reference(state, baseline) {
   const actor = state.player;
   const evaluate = (position, player) => baseline.evaluateWithProfile(position, player, "bao");
   const candidates = moves(state).map((move) => {
@@ -277,7 +277,7 @@ function metric(state, selectedKey, ref) {
 function reconstructEligible(spec, baseline, candidate, roots) {
   return roots.map((row) => {
     const candidateD3 = runSearch(candidate, row.state, spec, 3, true);
-    const ref = reference(row.state, baseline, spec);
+    const ref = reference(row.state, baseline);
     const bm = metric(row.state, row.d3.moveKey, ref);
     const cm = metric(row.state, candidateD3.moveKey, ref);
     return {
@@ -325,15 +325,24 @@ function reconstructControls(spec, baseline, candidate, rows) {
 }
 
 function summarize(spec, eligible, controls, technicalFailures) {
+  const topBaseline = boolRate(eligible.map((row) => row.baselineMetrics.topSetAgreement));
+  const topCandidate = boolRate(eligible.map((row) => row.candidateMetrics.topSetAgreement));
+  const rankBaseline = avg(eligible.map((row) => row.baselineMetrics.normalizedRankLoss));
+  const rankCandidate = avg(eligible.map((row) => row.candidateMetrics.normalizedRankLoss));
+  const severeBaseline = boolRate(eligible.map((row) => row.baselineMetrics.severeLoss));
+  const severeCandidate = boolRate(eligible.map((row) => row.candidateMetrics.severeLoss));
   const ratios = eligible.map((row) => row.nodeRatio);
   const out = {
     eligibleRoots: eligible.length,
-    topSetAgreementBaseline: boolRate(eligible.map((row) => row.baselineMetrics.topSetAgreement)),
-    topSetAgreementCandidate: boolRate(eligible.map((row) => row.candidateMetrics.topSetAgreement)),
-    meanNormalizedRankLossBaseline: avg(eligible.map((row) => row.baselineMetrics.normalizedRankLoss)),
-    meanNormalizedRankLossCandidate: avg(eligible.map((row) => row.candidateMetrics.normalizedRankLoss)),
-    severeLossRateBaseline: boolRate(eligible.map((row) => row.baselineMetrics.severeLoss)),
-    severeLossRateCandidate: boolRate(eligible.map((row) => row.candidateMetrics.severeLoss)),
+    topSetAgreementBaseline: topBaseline,
+    topSetAgreementCandidate: topCandidate,
+    topSetAgreementDelta: topCandidate - topBaseline,
+    meanNormalizedRankLossBaseline: rankBaseline,
+    meanNormalizedRankLossCandidate: rankCandidate,
+    meanNormalizedRankLossDelta: rankCandidate - rankBaseline,
+    severeLossRateBaseline: severeBaseline,
+    severeLossRateCandidate: severeCandidate,
+    severeLossRateExcess: severeCandidate - severeBaseline,
     catastrophicNewLossCount: eligible.filter((row) => row.catastrophicNewLoss).length,
     medianNodeRatio: nrq(ratios, 0.5),
     p95NodeRatio: nrq(ratios, 0.95),
@@ -344,17 +353,14 @@ function summarize(spec, eligible, controls, technicalFailures) {
     negativeControlFailures: controls.filter((row) => !row.passed).length,
     technicalFailures,
   };
-  out.topSetAgreementDelta = out.topSetAgreementCandidate - out.topSetAgreementBaseline;
-  out.meanNormalizedRankLossDelta = out.meanNormalizedRankLossCandidate - out.meanNormalizedRankLossBaseline;
-  out.severeLossRateExcess = out.severeLossRateCandidate - out.severeLossRateBaseline;
   const gates = {
-    estimable: eligible.length >= 64,
-    primaryTopSet: out.topSetAgreementDelta >= 0.05,
-    primaryRankLoss: out.meanNormalizedRankLossDelta <= -0.02,
-    safetySevere: out.severeLossRateExcess <= 0,
-    safetyCatastrophic: out.catastrophicNewLossCount === 0,
-    costMedian: out.medianNodeRatio <= 1.60,
-    costP95: out.p95NodeRatio <= 2.50,
+    estimable: eligible.length >= spec.frozenDevelopmentGate.minimumEligibleRoots,
+    primaryTopSet: out.topSetAgreementDelta >= spec.frozenDevelopmentGate.primary.topSetAgreementDeltaMinimum,
+    primaryRankLoss: out.meanNormalizedRankLossDelta <= spec.frozenDevelopmentGate.primary.meanNormalizedRankLossDeltaMaximum,
+    safetySevere: out.severeLossRateExcess <= spec.frozenDevelopmentGate.safety.severeLossRateExcessOverBaselineMaximum,
+    safetyCatastrophic: out.catastrophicNewLossCount <= spec.frozenDevelopmentGate.safety.catastrophicNewLossCountMaximum,
+    costMedian: out.medianNodeRatio <= spec.frozenDevelopmentGate.cost.medianNodeRatioMaximum,
+    costP95: out.p95NodeRatio <= spec.frozenDevelopmentGate.cost.p95NodeRatioMaximum,
     runtimeCoverage: out.runtimeTriggerFailures === 0 && out.confirmationCompletionFailures === 0,
     negativeControl: out.negativeControlFailures === 0,
     technical: technicalFailures === 0,
@@ -392,13 +398,19 @@ function main(argv = process.argv.slice(2)) {
   const candidate = aiFromText(candidateText, "independent-candidate.js");
   const population = globalRoots(spec);
   const classified = classify(spec, baseline, population.roots);
-  const eligibleSelection = selectStrata(classified.rows, (row) => row.eligible, "eligibleRank", 64, 128);
-  const controlSelection = selectStrata(classified.rows, (row) => row.complete && !row.eligible, "negativeRank", 32, 64);
+  const eligibleSelection = selectStrata(
+    classified.rows, (row) => row.eligible, "eligibleRank",
+    spec.population.runtimeEligible.targetPerPhase, spec.population.runtimeEligible.maximumTotal,
+  );
+  const controlSelection = selectStrata(
+    classified.rows, (row) => row.complete && !row.eligible, "negativeRank",
+    spec.population.negativeControl.targetPerPhase, spec.population.negativeControl.maximumTotal,
+  );
 
   let eligibleRows = [];
   let controlRows = [];
   let summary;
-  if (eligibleSelection.selected.length < 64) {
+  if (eligibleSelection.selected.length < spec.population.runtimeEligible.minimumEstimableTotal) {
     summary = {
       metrics: { eligibleRoots: eligibleSelection.selected.length, technicalFailures: classified.failures },
       gates: { estimable: false, technical: classified.failures === 0 },
@@ -419,7 +431,7 @@ function main(argv = process.argv.slice(2)) {
       publicEngineSha256: digest(fs.readFileSync(path.join(ROOT, "public/engine.js"))),
     },
     population: {
-      sourceSeeds: 512,
+      sourceSeeds: spec.population.sourceSeedCount,
       trajectoryCandidates: population.onePerSeed.length,
       globalRoots: population.roots.length,
       globalNamua: population.roots.filter((row) => row.phase === "namua").length,
@@ -458,8 +470,8 @@ function main(argv = process.argv.slice(2)) {
     productionRunnerImported: false,
     productionPopulationTrustedWithoutReconstruction: false,
     baselineD2D3EligibilityReconstructed: true,
-    d4ReferenceReconstructed: eligibleSelection.selected.length >= 64,
-    candidateAndBaselineMetricsReconstructed: eligibleSelection.selected.length >= 64,
+    d4ReferenceReconstructed: eligibleSelection.selected.length >= spec.population.runtimeEligible.minimumEstimableTotal,
+    candidateAndBaselineMetricsReconstructed: eligibleSelection.selected.length >= spec.population.runtimeEligible.minimumEstimableTotal,
     productionDeterministicCoreSha256: productionCore,
     independentDeterministicCoreSha256: independentCore,
     deterministicCoreEquality: coreEquality,
