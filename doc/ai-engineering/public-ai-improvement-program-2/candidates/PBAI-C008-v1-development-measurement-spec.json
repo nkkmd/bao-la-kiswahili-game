@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "stage": "PBAI-P2-E-DEVELOPMENT",
+  "candidateVersion": "PBAI-C008-v1",
+  "measurementSpecId": "PBAI-C008-v1-DEVELOPMENT-MEASUREMENT-2026-09-01-v1",
+  "status": "FROZEN-BEFORE-DEVELOPMENT-OUTCOME",
+  "candidateContract": "PBAI-C008-v1.json",
+  "candidateContractFreezeCommit": "fe962416a5d76fe8ab5d47def384dd386acc222d",
+  "featureOffEquivalenceResult": "PBAI-C008-v1-feature-off-equivalence-result.json",
+  "featureOffEquivalenceDispositionRequired": "FEATURE-OFF-EQUIVALENCE-PASS",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-01-v1",
+  "baselineSourceCommit": "2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972",
+  "baselineAiSha256": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+  "candidateAiSha256": "cb4e8524964cc775782f66feab39f360be1f0b75d8505919c7bcc5ef85419c3a",
+  "publicEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+  "scientificEvidenceCutoff": "cd200b85c1eb24aa4419bd5a9573552f3682f00d",
+  "researchGeneration3Influence": false,
+  "population": {
+    "sourceSeedStart": 42400001,
+    "sourceSeedEnd": 42400512,
+    "sourceSeedCount": 512,
+    "maximumGamePlies": 160,
+    "trajectoryPolicy": "seeded-uniform-over-independent-canonical-move-sort",
+    "assignedPhaseBySourceOffsetParity": "even source offset -> namua; odd source offset -> mtaji",
+    "oneRootMaximumPerHistoricalTrajectory": true,
+    "rootEligibility": "assigned-phase nonterminal state with at least two exact legal move variants",
+    "rootSelectionWithinTrajectory": "minimum SHA-256 rank over measurementSpecId, assigned phase, seed, ply and strict RAW key",
+    "globalPopulationSelection": {
+      "uniqueHistoricalTrajectoryRequired": true,
+      "uniqueStrictRawStateRequired": true,
+      "targetPerPhase": 128,
+      "targetTotal": 256,
+      "selection": "minimum SHA-256 population rank within phase after one-root-per-trajectory materialization",
+      "noOutcomeOrSearchValueUsed": true
+    },
+    "runtimeEligible": {
+      "definition": "frozen baseline hard/enhanced/bao D2 and D3 both complete with deterministic selected move keys different",
+      "maximumTotal": 128,
+      "targetPerPhase": 64,
+      "minimumEstimableTotal": 64,
+      "selection": "minimum SHA-256 eligible rank within phase, then deterministic minimum-rank fallback fill across remaining eligible roots if a phase cannot reach 64",
+      "fallbackMayNotChangeMinimumEstimableTotal": true
+    },
+    "negativeControl": {
+      "definition": "frozen baseline hard/enhanced/bao D2 and D3 deterministic selected move keys equal",
+      "maximumTotal": 64,
+      "targetPerPhase": 32,
+      "selection": "minimum SHA-256 negative-control rank within phase, then deterministic fallback fill"
+    }
+  },
+  "strictRawIdentity": {
+    "fields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "serialization": "stable JSON object with exactly the frozen fields in listed order",
+    "hash": "SHA-256 UTF-8 JSON serialization",
+    "symmetryOrCanonicalization": false
+  },
+  "canonicalMoveIdentity": "type:phase:row:index:direction:side:houseChoice:Boolean(houseTwo)",
+  "baselineSearch": {
+    "level": "hard",
+    "searchProfile": "enhanced",
+    "evaluationProfile": "bao",
+    "timeLimitMs": "Infinity",
+    "quiescenceDepth": 1,
+    "maxTableEntries": 50000,
+    "ttMoveFirst": false,
+    "orderQuiescenceCaptures": false,
+    "normalizeTtMateScores": false,
+    "evaluationCache": true,
+    "maxEvaluationCacheEntries": 2048,
+    "stableBestDepths": 0,
+    "aspirationWindow": 0,
+    "eligibilityDepths": [2, 3],
+    "comparisonDepth": 3
+  },
+  "candidateSearch": {
+    "sameAsBaselineSearchExcept": {
+      "pbaiC008RootFlipConfirmation": true
+    },
+    "comparisonDepth": 3,
+    "confirmationDepthWhenTriggered": 4
+  },
+  "reference": {
+    "semanticId": "PBAI-P2-D4-EXACT-FULL-WINDOW-ROOT-REFERENCE-2026-09-01-v1",
+    "interpretation": "engineering comparison reference only; not game-theoretic truth",
+    "depth": 4,
+    "evaluationProfile": "bao",
+    "quiescenceDepth": 1,
+    "orderQuiescenceCaptures": false,
+    "rootCandidateUniverse": "all exact legal move variants",
+    "rootCandidateWindow": "each candidate independently full window [-Infinity,+Infinity]",
+    "internalSearch": "deterministic alpha-beta with frozen public evaluation and quiescence semantics, no TT dependence",
+    "topSet": "all root moves tied at maximum reference score",
+    "canonicalTieBreak": "ascending canonical move key only for deterministic presentation; TopSet remains tie-aware",
+    "higherResourceSearchIsTruth": false
+  },
+  "metrics": {
+    "topSetAgreement": "1 iff selected move key belongs to D4 reference TopSet",
+    "normalizedRankLoss": "(reference scoreRank - 1) / max(1, legalMoveCount - 1), where scoreRank = 1 + number of candidates with strictly greater reference score",
+    "severeLoss": "selected move is unique worst by D4 reference score OR selected move is root-loss-mate-domain while D4 best is not root-loss-mate-domain",
+    "catastrophicNewLoss": "candidate severe loss while baseline is not severe AND candidate is immediate terminal loss or root-loss-mate-domain while at least one D4 reference candidate is not a loss",
+    "nodeRatio": "candidate feature-on cumulative stats.nodes / baseline cumulative stats.nodes for the D3 analyzeMove call"
+  },
+  "frozenDevelopmentGate": {
+    "minimumEligibleRoots": 64,
+    "primary": {
+      "topSetAgreementDeltaMinimum": 0.05,
+      "meanNormalizedRankLossDeltaMaximum": -0.02
+    },
+    "safety": {
+      "severeLossRateExcessOverBaselineMaximum": 0.0,
+      "catastrophicNewLossCountMaximum": 0
+    },
+    "cost": {
+      "medianNodeRatioMaximum": 1.60,
+      "p95NodeRatioMaximum": 2.50,
+      "percentileMethod": "nearest-rank on ascending finite node ratios"
+    },
+    "runtimeCoverage": {
+      "eligibleRootFeatureTriggeredRequired": true,
+      "eligibleRootConfirmationCompletedRequired": true,
+      "eligibleRootConfirmationTimedOutAllowed": false
+    },
+    "negativeControl": {
+      "featureTriggeredMaximumPerRoot": 0,
+      "exactEqualityFields": [
+        "selectedMoveKey",
+        "rootScore",
+        "nodes",
+        "quiescenceNodes",
+        "cutoffs",
+        "cacheHits",
+        "cacheStores",
+        "evaluationRequests",
+        "evaluations",
+        "evaluationCacheHits"
+      ]
+    },
+    "allConditionsConjunctive": true
+  },
+  "decisionMapping": {
+    "technicalOrVerifierFailure": "TECHNICAL-INVALID-REJECT-OR-HOLD",
+    "eligibleBelow64": "DEVELOPMENT-NON-ESTIMABLE-HOLD",
+    "anySafetyFailure": "REJECT-HOLD",
+    "anyPrimaryOrCostFailure": "DEVELOPMENT-BENEFIT-FAIL-HOLD",
+    "allFrozenConditionsPass": "DEVELOPMENT-PASS-VALIDATION-CONTRACT-FREEZE-AUTHORIZED"
+  },
+  "independentVerification": {
+    "required": true,
+    "productionRunnerImportAllowed": false,
+    "productionPopulationTrustedWithoutReconstruction": false,
+    "strictRawPopulationReconstructionRequired": true,
+    "baselineD2D3EligibilityReconstructionRequired": true,
+    "D4ReferenceReconstructionRequired": true,
+    "candidateAndBaselineMetricReconstructionRequired": true,
+    "aggregateDecisionReconstructionRequired": true,
+    "sourceHashVerificationRequired": true
+  },
+  "firewall": {
+    "supportSeeds432MayBeUsedAsDevelopmentOutcomes": false,
+    "featureOffTechnicalSeeds434MayBeUsedAsDevelopmentOutcomes": false,
+    "validationSeeds425MayBeAccessed": false,
+    "releaseHoldoutSeeds426MayBeAccessed": false,
+    "strengthValidationOrHoldoutMayBeAccessed": false,
+    "researchGeneration3ArtifactsMayBeRead": false,
+    "developmentOutcomeMayTuneMechanism": false,
+    "developmentOutcomeMayTuneThresholds": false,
+    "developmentPassMayExecuteValidationDirectly": false,
+    "developmentPassOnlyAuthorizesSeparateValidationContractFreeze": true
+  }
+}

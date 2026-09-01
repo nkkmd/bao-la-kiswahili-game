@@ -9,22 +9,64 @@
 ## 1. AI世代の命名
 
 - 現在の公開系統: **`AI-GEN2`**
-- 完全固定した比較基準: **`AI-GEN2-BASELINE-2026-08-26-v1`**
+- PBAI-P2 exact baseline: **`AI-GEN2-BASELINE-2026-09-01-v1`**
+- PBAI-P1 historical baseline: **`AI-GEN2-BASELINE-2026-08-26-v1`**
 - 次に正式採用される公開系統の予約名: **`AI-GEN3`**
 - engineering candidate ID: `PBAI-Cxxx`
 - `legacy` / `bao` / `bao-v2`はprofile identifierであり、AI世代名ではない
-- `Research Generation 1` / `Research Generation 2`はAI世代とは別の研究namespaceである
+- `Research Generation 1` / `Research Generation 2` / `Research Generation 3`はAI世代とは別の研究namespaceである
 
 正式な命名規則: [`ai-engineering/AI_GENERATION_NAMING.md`](ai-engineering/AI_GENERATION_NAMING.md)
 
-## 2. 完了済みProgram — `PBAI-P1`
+## 2. 完了済みProgram — `PBAI-P2`
+
+**正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2
+
+**状態:** **COMPLETE / KEEP-AI-GEN2**
+
+**Research Generation 2 scientific evidence cutoff:** `cd200b85c1eb24aa4419bd5a9573552f3682f00d`
+
+**Research Generation 3 influence:** **ZERO / EXCLUDED**
+
+PBAI-P2はResearch Generation 2のbounded evidenceだけをscientific premiseとしてC006〜C009をprospectively評価した。Final dispositions:
+
+```text
+PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
+PBAI-C007-v1 = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+PBAI-C008-v1 = DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED
+PBAI-C009-v1 = TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED
+```
+
+C008はquality/safety gatesを通過したがfrozen cost gatesをFAIL。C009はnegative-control gateをFAILし、primary benefit gatesも未達。両candidateともvalidation authorizationへ進まなかった。
+
+```text
+validation executions = 0
+release holdout executions = 0
+formal ADOPT = none
+public deployments = 0
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
+current public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT-PROMOTED
+```
+
+Canonical entry points:
+
+- [`ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md)
+- [`ai-engineering/public-ai-improvement-program-2/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-2/CURRENT_STATUS.md)
+- [`ai-engineering/public-ai-improvement-program-2/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/CANDIDATE_REGISTER.md)
+- [`ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md)
+- [`ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-development-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-development-result.json)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C009-v1-development-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C009-v1-development-result.json)
+
+## 3. 完了済みProgram — `PBAI-P1`
 
 **正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
 **状態:** **COMPLETE / KEEP-AI-GEN2**  
 **科学的証拠のcutoff:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
 **Research Generation 2の結果:** 対象外
 
-### 2.1 最終管理状態
+### 3.1 最終管理状態
 
 ```text
 PBAI-B exact baseline = AI-GEN2-BASELINE-2026-08-26-v1
@@ -39,7 +81,7 @@ public releases = 0
 AI-GEN3 promotion = NOT-AUTHORIZED / NOT-PROMOTED
 ```
 
-### 2.2 各候補の最終状態
+### 3.2 各候補の最終状態
 
 ```text
 PBAI-C001-v1
@@ -73,7 +115,7 @@ PBAI-C005
   = closed without implementation
 ```
 
-### 2.3 Programの最終判断
+### 3.3 Programの最終判断
 
 ```text
 PBAI-P1 = COMPLETE
@@ -88,7 +130,7 @@ Research Generation 2 evidence included = false
 
 つまりPBAI-P1では、既存の公開AIを維持すること自体が正規の工学判断でした。
 
-## 3. Program文書
+## 4. PBAI-P1 Program文書
 
 - [`ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md)
 - [`ai-engineering/public-ai-improvement-program-1/RESUME_HERE.md`](ai-engineering/public-ai-improvement-program-1/RESUME_HERE.md)
@@ -104,7 +146,7 @@ Research Generation 2 evidence included = false
 - [`ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md)
 - [`ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](ai-engineering/public-ai-improvement-program-1/benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json)
 
-### 3.1 Candidate固有のcanonical artifact
+### 4.1 Candidate固有のcanonical artifact
 
 - `candidates/PBAI-C001-v1-predevelopment-support-spec.json`
 - `candidates/PBAI-C001-v1-predevelopment-support-result.json`
@@ -122,7 +164,7 @@ Research Generation 2 evidence included = false
 
 これらのmachine-readable artifactや固定結果は、文書日本語化のために書き換えません。
 
-## 4. C003の工学上の境界
+## 5. PBAI-P1 C003の工学上の境界
 
 REWR-STUDY1は、凍結した8-state domainの内部で引き続き`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`です。
 
@@ -132,7 +174,7 @@ C003-v1では、practical reachabilityを測定する前提として、保存済
 
 したがってC003-v1は「hitが0件だった」という結果を出していません。hit countは未測定です。また、candidate lookup implementationも作成していません。
 
-## 5. C005の工学上の境界
+## 6. PBAI-P1 C005の工学上の境界
 
 Position Evaluation / Win-Rate Calibration Study 1の正式判断は引き続き`INCONCLUSIVE`です。
 
@@ -146,7 +188,9 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 
 将来probability-likeな公開機能を追加する場合は、新しいprospective engineering candidateとして独立に評価する必要があります。C005は、その種の機能を包括的に許可するものではありません。
 
-## 6. 研究とAI Engineeringの分離
+## 7. 研究とAI Engineeringの分離
+
+PBAI-P1のhistorical flow:
 
 ```text
 completed Research Generation 1
@@ -164,10 +208,28 @@ C003 → STRICT RAW IDENTITY PRECONDITION FAIL / HOLD
 C005 → NO ACTIONABLE PRODUCTION SEMANTICS DEFECT / HOLD
           ↓
 PBAI-P1 COMPLETE → KEEP-AI-GEN2
-
-Research Generation 2 = separate pure research track
 ```
 
-現在の`AI.stateKey`は`pending`を含まないため、Research Generation 1で固定されたauthoritative RAW identityとは異なります。このため、研究由来のexact tablebase keyとして使用することは承認されていません。
+PBAI-P2ではResearch Generation 2だけをscientific/evidence inputとし、Research Generation 3はhard firewallで完全除外します。
 
-今後、内容が実質的に異なる公開AI改善を行う場合は、PBAI-P1を再開するのではなく、新しいprospective program / candidate identityと新しいevidence cutoffを設定します。
+PBAI-P2のcurrent flow:
+
+```text
+G2-only evidence cutoff / G3 firewall
+          ↓
+AI-GEN2 baseline + global gates freeze
+          ↓
+C006 → WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
+          ↓
+C007 → NON-ESTIMABLE-HOLD
+          ↓
+C008 baseline-only support → SUPPORT-PASS
+          ↓
+C008 exact development contract → FROZEN
+          ↓
+C008 implementation + feature-off equivalence → NEXT
+```
+
+C006/C007/C008のengineering結果はResearch Generation 2のformal scientific decisionやidentity boundaryを変更しません。
+
+PBAI-P2のcandidateがすべて採用gateを通らない場合は、PBAI-P1と同様に`KEEP-AI-GEN2`を正常なProgram outcomeとして認めます。

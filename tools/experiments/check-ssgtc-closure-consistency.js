@@ -121,8 +121,11 @@ includes("doc/RESEARCH_INDEX.md", [
   "`Bao state space = 24,848`",
 ]);
 
+// SSGTC closure must remain represented in the current repository-wide agenda,
+// but the agenda's global version may legitimately advance as later research
+// generations are added. Pin the G2 closure boundary, not historical v2.0.0.
 includes("doc/FUTURE_RESEARCH_AGENDA.md", [
-  "Version: 2.0.0",
+  "Research Generation 2: **Closed (2026-08-31)**",
   "### 4.12 状態空間とゲーム木複雑度 — Study 1完了",
   "**[完了] 状態空間とゲーム木複雑度 — Study 1",
   "`Bao state space = 24,848`",

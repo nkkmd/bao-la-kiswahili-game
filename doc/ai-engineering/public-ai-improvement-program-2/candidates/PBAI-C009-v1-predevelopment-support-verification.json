@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "stage": "PBAI-P2-D-PREDEVELOPMENT-SUPPORT-INDEPENDENT-VERIFICATION",
+  "candidateVersion": "PBAI-C009-v1",
+  "workflowRunId": 33500775677,
+  "jobId": 99833350210,
+  "artifactId": 9797899989,
+  "productionRunnerImported": false,
+  "productionSelectedRootsTrustedWithoutReconstruction": false,
+  "fullSourceAndPerRootRowsEquality": true,
+  "selectedEligibleRowsEquality": true,
+  "aggregateDecisionEquality": true,
+  "productionDeterministicCoreSha256": "114d71a5c981f3d87b3108d1d1082f92a60e051166ea19bf69d78f78163f19d5",
+  "independentDeterministicCoreSha256": "114d71a5c981f3d87b3108d1d1082f92a60e051166ea19bf69d78f78163f19d5",
+  "deterministicCoreEquality": true,
+  "verifiedDisposition": "SUPPORT-PASS",
+  "passed": true,
+  "candidateImplementationAuthorizedByThisVerification": false,
+  "validationAuthorized": false,
+  "releaseHoldoutAuthorized": false,
+  "researchGeneration3Influence": false
+}

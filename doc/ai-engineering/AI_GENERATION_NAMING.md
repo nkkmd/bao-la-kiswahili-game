@@ -2,6 +2,7 @@
 
 状態: **ACTIVE**  
 制定日: 2026-08-26  
+更新日: 2026-09-01  
 適用範囲: 公開Bao AIのengineering lineage命名
 
 人間向けの説明文は[`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)に従い、日本語を主言語とする。以下で定義するcanonical identifier自体は翻訳・改名しない。
@@ -10,7 +11,7 @@
 
 Bao AIの「世代」、evaluation / search profile、engineering program、candidate、research generationを混同しないためのcanonical naming ruleを定めます。
 
-この文書におけるAI世代名は、**公開AIのengineering lineage**を表します。Research Generation 1 / Research Generation 2とは別namespaceです。
+この文書におけるAI世代名は、**公開AIのengineering lineage**を表します。Research Generationとは別namespaceです。
 
 ## 2. canonical namespace
 
@@ -18,9 +19,9 @@ Bao AIの「世代」、evaluation / search profile、engineering program、cand
 | --- | --- | --- |
 | AI generation | `AI-GEN1`, `AI-GEN2`, `AI-GEN3`, ... | 公開Bao AIの工学的系統 |
 | evaluation/search profile | `legacy`, `bao`, `bao-v2`, etc. | code / config上のprofile identifier |
-| engineering program | `PBAI-P1`, ... | AI改善Program |
-| engineering candidate | `PBAI-C001`, `PBAI-C002`, ... | 独立candidate identifier |
-| research generation | `Research Generation 1`, `Research Generation 2` | Bao研究Programの世代 |
+| engineering program | `PBAI-P1`, `PBAI-P2`, ... | AI改善Program |
+| engineering candidate | `PBAI-C001`, `PBAI-C002`, ... | repository-wideの独立candidate identifier |
+| research generation | `Research Generation 1`, `Research Generation 2`, ... | Bao研究Programの世代 |
 | exact baseline | `AI-GEN2-BASELINE-...`等 | 完全固定した公開AI構成 |
 | release | `AI-GEN3-RELEASE-...`等 | 正式採用された公開release |
 
@@ -40,49 +41,58 @@ AIについては必ず`AI-GENn`、研究については必ず`Research Generati
 
 ### `AI-GEN2` — 現在公開中のBao AI系統
 
-PBAI-P1開始時点でpublicに使用されている現行Bao AI lineageを指します。
+現在publicに使用されているBao AI lineageを指します。
 
 legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索、transposition table、PVS、killer move、quiescence search、Web Worker、既存benchmark / regression infrastructureなどを持つ現行系統を含みます。
 
 重要な境界:
 
 - `AI-GEN2`は**lineage label**であり、exact binary / configurationそのものではありません。
-- exact public configurationはPBAI-Bで`AI-GEN2-BASELINE-...`として固定します。
+- exact public configurationは各AI Engineering Programで`AI-GEN2-BASELINE-...`として完全固定します。
+- PBAI-P1 historical baselineは`AI-GEN2-BASELINE-2026-08-26-v1`です。
+- PBAI-P2開始時のcurrent comparatorは`AI-GEN2-BASELINE-2026-09-01-v1`です。
 - `bao-v2`という既存experimental evaluation profile名は`AI-GEN2`を意味しません。
 - profile名に`v2`が含まれていてもAI世代番号とは無関係です。
 
 ### `AI-GEN3` — 次に正式採用される公開系統の予約名
 
-`AI-GEN3`は、PBAI-P1等による次の正式採用public lineageのために予約します。
+`AI-GEN3`は、将来のAI Engineering Programによる次の正式採用public lineageのために予約します。
 
-**candidateを作成したこと、development benchmarkを通過したこと、validationを通過したことだけでは`AI-GEN3`を付与しません。**
+**candidateを作成したこと、development benchmarkを通過したこと、validationを通過したこと、formal `ADOPT` decisionだけでは`AI-GEN3`を付与しません。**
 
 `AI-GEN3`へのpromotionには最低限、次をすべて要求します。
 
-1. PBAI-P1 evidence auditが完了している。
-2. `AI-GEN2` public baselineがexactに固定されている。
+1. 適用Programのscientific/evidence auditと情報遮断規則が完了している。
+2. 現行`AI-GEN2` public baselineがexactに固定されている。
 3. benchmark / non-regression / release gateがcandidate outcomeを見る前に固定されている。
 4. candidate mechanismがisolated ablationで評価されている。
-5. fresh validation / release benchmarkを通過している。
-6. rule correctness、tactical regression、operational qualityに重大なregressionがない。
-7. 明示的なengineering release decisionが`ADOPT`である。
-8. candidateまたはapproved candidate setがpublic default AIとして正式に採用・deploymentされている。
+5. fresh independent validationを通過している。
+6. protected release holdoutを通過している。
+7. rule correctness、tactical regression、operational qualityに重大なregressionがない。
+8. 明示的なengineering release decisionが`ADOPT`である。
+9. candidateまたはapproved candidate setが**実際にpublic default AIとしてdeployment済み**である。
 
-この条件を最初に満たしたresearch-informed public lineageを`AI-GEN3`とします。
+この条件を最初に満たしたpublic lineageを`AI-GEN3`とします。
+
+したがって、release候補や未deploymentの採用決定を`AI-GEN3`と先取りして呼んではいけません。
 
 ## 4. Candidate命名規則
 
-PBAI-P1のcandidateは世代名ではなく、常に既存のcandidate IDをcanonical identifierとして使用します。
+Engineering candidateはAI世代名ではなく、repository-wideの連番candidate IDをcanonical identifierとして使用します。
 
 ```text
 PBAI-C001
 PBAI-C002
 ...
+PBAI-C006
+...
 ```
 
-説明文として「Generation 3 candidate」と書くことはできますが、status / file / artifact / release IDとして`AI-GEN3`を先取りしてはいけません。
+Candidate IDはProgramを跨いで再利用しません。完了済みcandidateを別Programで救済・再評価する場合もsame IDを再利用せず、materially new mechanismに対して新しい未使用IDを付与します。
 
-release前のassemblyやrelease candidateが必要な場合は、`PBAI-P1-RC01`等のProgram内identifierを使用します。public adoption前に`AI-GEN3-RELEASE-*`を発行しません。
+説明文として「次世代候補」と書くことはできますが、status / file / artifact / release IDとして`AI-GEN3`を先取りしてはいけません。
+
+release前のassemblyやrelease candidateが必要な場合は、適用Program内identifierを使用します。public adoption前に`AI-GEN3-RELEASE-*`を発行しません。
 
 ## 5. Releaseとpatchの規則
 
@@ -101,7 +111,7 @@ AI-GEN3-RELEASE-002
 
 ## 6. Research Generationとの分離
 
-Research Generation 1 / 2 と `AI-GEN1` / `AI-GEN2` は、番号が一致していても意味上の対応関係を持ちません。
+Research Generationと`AI-GENn`は、番号が一致していても意味上の対応関係を持ちません。
 
 ```text
 Research Generation 1 = scientific research generation
@@ -111,7 +121,7 @@ Research Generation 2 = second pure research generation
 AI-GEN2               = current public AI engineering lineage
 ```
 
-したがって、Research Generation 2の開始・完了によってAIが自動的に`AI-GEN3`へ昇格することはありません。
+したがって、Research Generationの開始・完了によってAIが自動的に次世代へ昇格することはありません。
 
 ## 7. PBAI-P1で固定した対応関係
 
@@ -119,10 +129,31 @@ PBAI-P1では次を固定しました。
 
 ```text
 current public lineage at program establishment = AI-GEN2
+historical exact baseline = AI-GEN2-BASELINE-2026-08-26-v1
 next generation label reserved = AI-GEN3
-candidate identifiers = PBAI-Cxxx
+candidate identifiers consumed = PBAI-C001..PBAI-C005
 AI-GEN3 promotion before public adoption = prohibited
-Generation-2 research outcomes in PBAI-P1 = excluded by existing evidence cutoff
+Research Generation 2 outcomes in PBAI-P1 = excluded by PBAI-P1 evidence cutoff
+final outcome = KEEP-AI-GEN2
 ```
 
-PBAI-Bでbaselineを固定するときは`generationLineage = AI-GEN2`を明記し、PBAI-Hでpublic adoptionが成立した場合のみrelease registerへ`AI-GEN3` promotionを記録する、という規則です。
+PBAI-P1によるpublic AI deploymentは発生せず、AI-GEN3は未昇格のままです。
+
+## 8. PBAI-P2で確定した対応関係
+
+PBAI-P2 closureで次を確定する。
+
+```text
+program = PBAI-P2
+scientific evidence = Research Generation 2 only
+scientific evidence cutoff = cd200b85c1eb24aa4419bd5a9573552f3682f00d
+Research Generation 3 influence = ZERO
+baseline = AI-GEN2-BASELINE-2026-09-01-v1
+candidate identifiers consumed = PBAI-C006..PBAI-C009
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
+public AI code changed by PBAI-P2 = false
+current public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT-PROMOTED
+```
+
+C006〜C009はいずれもvalidation authorizationへ到達しなかった。したがってPBAI-P2-F/G/Hによるvalidation、protected release holdout、public deployment、generation promotionは実行していない。Research Generation 3が進行していてもAI generationは自動的に進まず、`AI-GEN3`は次の正式採用public lineageの予約名のままである。

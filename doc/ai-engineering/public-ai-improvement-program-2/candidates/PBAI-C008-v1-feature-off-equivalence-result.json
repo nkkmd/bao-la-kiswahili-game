@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "stage": "PBAI-P2-E-TECHNICAL-PREFLIGHT",
+  "candidateVersion": "PBAI-C008-v1",
+  "specId": "PBAI-C008-v1-FEATURE-OFF-EQUIVALENCE-2026-09-01-v1",
+  "specSha256": "c257242b02792342a634c3a66a3930e286766261165554b10cc45d1a5fe0300f",
+  "status": "FEATURE-OFF-EQUIVALENCE-PASS",
+  "candidateContractFreezeCommit": "fe962416a5d76fe8ab5d47def384dd386acc222d",
+  "candidateImplementationCommit": "0d69a3c1",
+  "pullRequest": 90,
+  "workflowRunId": 33496357823,
+  "jobId": 99819366496,
+  "artifactId": 9795901835,
+  "artifactZipSha256": "2554af154353f8cfda48dd214df5a6bd8296dbffea9ad73c3d0536121c9d5b45",
+  "fullResultJsonSha256": "f7b72fcf3e6ea0b4cc62894b04b9caa9b92882bbd857b2c8034f2850d84e3705",
+  "deterministicCoreSha256": "8e73873cb5ae2c98f89f2bbe437799e3ddbdca74c39cea176d8b490aa927c4b2",
+  "sourceHashes": {
+    "baselineAiSha256": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "candidateAiSha256": "cb4e8524964cc775782f66feab39f360be1f0b75d8505919c7bcc5ef85419c3a",
+    "publicEngineSha256": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+  },
+  "population": {
+    "sourceSeeds": 64,
+    "availableNamua": 32,
+    "availableMtaji": 23,
+    "selectedRoots": 32,
+    "selectedNamua": 16,
+    "selectedMtaji": 16,
+    "selectedRootDigest": "1a16b211cafcb73a7e93b61b8738b6d378f97572c327f46826efe5f548f8ada6",
+    "conditionsPerRoot": 8,
+    "totalComparisons": 256
+  },
+  "measurement": {
+    "comparisonMismatches": 0,
+    "candidateDiagnosticPresenceWhenFeatureOff": 0,
+    "selectedMoveAndPreExistingStatsExactEquality": true,
+    "timeout0ConditionsIncluded": true
+  },
+  "firewall": {
+    "candidateBenefitMetricsComputed": false,
+    "developmentSeedsAccessed": false,
+    "validationSeedsAccessed": false,
+    "releaseHoldoutSeedsAccessed": false,
+    "researchGeneration3ArtifactsAccessed": false
+  },
+  "decision": {
+    "passed": true,
+    "disposition": "FEATURE-OFF-EQUIVALENCE-PASS",
+    "developmentBenefitExecutionAuthorized": true,
+    "validationAuthorized": false,
+    "releaseHoldoutAuthorized": false,
+    "publicDeploymentAuthorized": false,
+    "aiGen3PromotionAuthorized": false
+  },
+  "interpretationBoundary": {
+    "candidateBenefitEstablished": false,
+    "candidateStrengthEstablished": false,
+    "validationEvidenceCreated": false,
+    "releaseEvidenceCreated": false,
+    "researchGeneration2DecisionChanged": false
+  }
+}

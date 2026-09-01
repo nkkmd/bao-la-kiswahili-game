@@ -153,6 +153,7 @@ node tools/diagnostic-to-fixture.js \
 本リポジトリでは、研究成果の科学的判断とは分離して、public Bao AI の品質向上作業を独立した engineering track として管理しています。研究結果そのものの formal decision を engineering outcome によって変更することはありません。
 
 - [`doc/AI_ENGINEERING_INDEX.md`](doc/AI_ENGINEERING_INDEX.md): public Bao AI の品質向上に関する engineering track の中央索引。AI generation naming、baseline、candidate disposition、release state への入口
+- [`doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md): `PBAI-P2` — Generation-2 Evidence-Informed Public Bao AI Improvement Program 2 の最終報告。Research Generation 2だけをscientific/evidence inputとし、Research Generation 3 influenceを`ZERO`に維持してC006〜C009をprospectively評価した結果、validationへ進むcandidateはなく、最終engineering outcomeは`KEEP-AI-GEN2`。PBAI-P2によるpublic AI code変更・release・`AI-GEN3`昇格はなし
 - [`doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md`](doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md): `PBAI-P1` — Generation-1 Evidence-Informed Public Bao AI Improvement Program 1 の最終報告。Research Generation 1 を evidence base として候補を検証した結果、public 採用候補はなく、最終 engineering outcome は `KEEP-AI-GEN2`。`AI-GEN3` は未昇格
 
 科学的研究成果の正本と将来研究課題は、以下の「研究成果」および [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md) を参照してください。
