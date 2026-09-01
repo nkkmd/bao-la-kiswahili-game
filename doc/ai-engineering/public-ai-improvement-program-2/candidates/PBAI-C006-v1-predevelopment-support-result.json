@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P2",
+  "stage": "PBAI-P2-D-PREDEVELOPMENT-SUPPORT",
+  "candidateVersion": "PBAI-C006-v1",
+  "supportSpecId": "PBAI-C006-v1-PREDEVELOPMENT-SUPPORT-2026-09-01-v1",
+  "supportSpecSha256": "a80b7cfe8aea2ebfc9bba11e0aad77c7bd2751b8f9c81c55171be361995bdebf",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-01-v1",
+  "scientificEvidenceCutoff": "cd200b85c1eb24aa4419bd5a9573552f3682f00d",
+  "researchGeneration3Influence": false,
+  "canonicalExecution": {
+    "workflowRunId": 33485530125,
+    "jobId": 99784603678,
+    "headSha": "8df643d951f1789db0495853d274e79207a62bd5",
+    "artifactId": 9791691699,
+    "artifactName": "pbai-p2-c006-predevelopment-support",
+    "artifactZipSha256": "c10944e38b424faa96269d583667d11f07c3e36391296dcb3571a95d2a30ce37",
+    "productionResultSha256": "8b8529d0524ba946c2706f4dbe2161ffa57cdff8f60cab13b6c862ae66f59ee2",
+    "independentVerificationSha256": "4f076d2730f10e5f272701b3e5b4e2d24e52d6a4e63f69957a04986203bff9ef"
+  },
+  "population": {
+    "seedStart": 43000001,
+    "seedEnd": 43002048,
+    "seedCount": 2048,
+    "completedTrajectories": 2048,
+    "terminalTrajectories": 2043,
+    "maximumObservedPly": 160,
+    "naturalStateObservations": 112995,
+    "semanticSuccessorObservations": 439731,
+    "semanticUniqueRawStates": 389148,
+    "naturalUniqueRawStates": 98262,
+    "localSearchRootsSelected": {
+      "namua": 128,
+      "mtaji": 128,
+      "total": 256
+    },
+    "localSearchRootDigest": "5daccce0931bb2c57c745beb9b28b886331086c37c57d245ef14385e2cad359b"
+  },
+  "measurement": {
+    "semanticCollisionWitnesses": 0,
+    "naturalReachableCollisionWitnesses": 0,
+    "workerStaleIdentityWitnesses": 0,
+    "localEvaluationCacheCollisionEvents": 0,
+    "localTranspositionCollisionEvents": 0,
+    "practicalWitnessCount": 0
+  },
+  "independentVerification": {
+    "productionRunnerImported": false,
+    "fullDeterministicCoreEquality": true,
+    "sourceHashMatch": true,
+    "productionDeterministicCoreSha256": "021ca3e2bdf169a4856202b47e6b460f97ff59f8e63c6d2e1066accfcde0eff5",
+    "independentDeterministicCoreSha256": "021ca3e2bdf169a4856202b47e6b460f97ff59f8e63c6d2e1066accfcde0eff5",
+    "passed": true
+  },
+  "decision": {
+    "semanticGatePass": false,
+    "practicalGatePass": false,
+    "supportPass": false,
+    "disposition": "WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT",
+    "candidateImplementationAuthorized": false,
+    "validationAuthorized": false,
+    "releaseHoldoutAuthorized": false,
+    "sameCandidateRescueAuthorized": false
+  },
+  "interpretationBoundary": {
+    "staticFieldMismatchStillExists": true,
+    "actionableCollisionDefectEstablished": false,
+    "absenceOfCollisionGeneralizedBeyondFrozenSupportUniverse": false,
+    "authoritativeRawIdentityChanged": false,
+    "researchGeneration2DecisionChanged": false,
+    "publicAiChanged": false
+  },
+  "nextAuthorizedAction": "Close PBAI-C006-v1 without implementation and perform PBAI-C007-v1 baseline-only predevelopment support under its already frozen inventory contract."
+}
