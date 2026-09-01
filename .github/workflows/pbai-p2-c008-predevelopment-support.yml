@@ -1,0 +1,116 @@
+name: PBAI-P2 C008 baseline-only root-flip support
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'doc/AI_ENGINEERING_INDEX.md'
+      - 'doc/ai-engineering/public-ai-improvement-program-2/**'
+      - 'tools/engineering/materialize-pbai-p2-c008-predevelopment-support.js'
+      - 'tools/engineering/verify-pbai-p2-c008-predevelopment-support-independent.js'
+      - '.github/workflows/pbai-p2-c008-predevelopment-support.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  baseline-only-root-flip-support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify no public implementation
+        run: |
+          changed="$(git diff --name-only origin/main...HEAD -- public/)"
+          test -z "$changed" || {
+            echo 'PBAI-C008 support must not modify public/.' >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          }
+
+      - name: Verify frozen source, prior dispositions, and C008 contract
+        run: |
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const base = 'doc/ai-engineering/public-ai-improvement-program-2/candidates/';
+          const c006 = JSON.parse(fs.readFileSync(`${base}PBAI-C006-v1-predevelopment-support-result.json`, 'utf8'));
+          const c007 = JSON.parse(fs.readFileSync(`${base}PBAI-C007-v1-predevelopment-support-result.json`, 'utf8'));
+          const spec = JSON.parse(fs.readFileSync(`${base}PBAI-C008-v1-predevelopment-support-spec.json`, 'utf8'));
+          if (c006.decision.disposition !== 'WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT') throw new Error('C006 disposition changed');
+          if (c007.decision.disposition !== 'NON-ESTIMABLE-HOLD') throw new Error('C007 disposition changed');
+          if (spec.program !== 'PBAI-P2' || spec.candidateVersion !== 'PBAI-C008-v1') throw new Error('C008 identity mismatch');
+          if (spec.status !== 'FROZEN-BEFORE-DYNAMIC-SUPPORT-OUTCOME') throw new Error('C008 spec not frozen');
+          if (spec.scientificEvidenceCutoff !== 'cd200b85c1eb24aa4419bd5a9573552f3682f00d') throw new Error('G2 cutoff changed');
+          if (spec.researchGeneration3Influence !== false) throw new Error('G3 firewall failed');
+          if (spec.population.seedStart !== 43200001 || spec.population.seedEnd !== 43201024 || spec.population.seedCount !== 1024) throw new Error('C008 seed block changed');
+          if (spec.population.eligibleSelection.targetTotal !== 128 || spec.gate.minimumEligibleRoots !== 64) throw new Error('C008 support floor changed');
+          if (spec.baselineSearch.level !== 'hard' || spec.baselineSearch.depth2 !== 2 || spec.baselineSearch.depth3 !== 3) throw new Error('C008 baseline search changed');
+          if (spec.candidateCodeAllowed !== false || spec.publicImplementationChangeAllowed !== false) throw new Error('candidate code authorization leaked');
+          if (spec.firewall.developmentSeedsMayBeRead !== false || spec.firewall.validationSeedsMayBeRead !== false || spec.firewall.releaseHoldoutSeedsMayBeRead !== false) throw new Error('protected split leaked');
+          NODE
+
+      - name: Verify support runners are support-only
+        run: |
+          node --check tools/engineering/materialize-pbai-p2-c008-predevelopment-support.js
+          node --check tools/engineering/verify-pbai-p2-c008-predevelopment-support-independent.js
+          for f in \
+            tools/engineering/materialize-pbai-p2-c008-predevelopment-support.js \
+            tools/engineering/verify-pbai-p2-c008-predevelopment-support-independent.js; do
+            ! grep -E '(^|[^0-9])(42[1-9][0-9]{5}|430[0-9]{5}|431[0-9]{5}|43[3-9][0-9]{5})([^0-9]|$)' "$f" || {
+              echo "Non-C008 support seed literal found in $f" >&2
+              exit 1
+            }
+            ! grep -E "require\(.*(experiments|research-generation-3|local-game-tree)" "$f" || {
+              echo "Forbidden research/tool import found in $f" >&2
+              exit 1
+            }
+          done
+
+      - name: Materialize C008 baseline-only support
+        run: |
+          mkdir -p artifacts/pbai-p2/c008
+          node tools/engineering/materialize-pbai-p2-c008-predevelopment-support.js \
+            --output artifacts/pbai-p2/c008/predevelopment-support.json
+
+      - name: Independently reproduce C008 support
+        run: |
+          node tools/engineering/verify-pbai-p2-c008-predevelopment-support-independent.js \
+            --production artifacts/pbai-p2/c008/predevelopment-support.json \
+            --output artifacts/pbai-p2/c008/predevelopment-support-verification.json
+
+      - name: Verify support firewalls and print canonical compact core
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('artifacts/pbai-p2/c008/predevelopment-support.json', 'utf8'));
+          const v = JSON.parse(fs.readFileSync('artifacts/pbai-p2/c008/predevelopment-support-verification.json', 'utf8'));
+          if (r.candidateCodeUsed !== false || r.candidateImplementationObserved !== false || r.candidateBenefitMetricsObserved !== false) throw new Error('candidate evidence leaked');
+          if (r.developmentSeedsAccessed !== false || r.validationSeedsAccessed !== false || r.releaseHoldoutSeedsAccessed !== false) throw new Error('protected evidence accessed');
+          if (r.researchGeneration3ArtifactsAccessed !== false) throw new Error('G3 artifact access reported');
+          if (r.core.decision.candidateImplementationAuthorized !== false || r.core.decision.validationAuthorized !== false || r.core.decision.releaseHoldoutAuthorized !== false) throw new Error('authorization leaked');
+          if (v.passed !== true || v.fullSourceRootD2D3AndEligibilityCoreEquality !== true) throw new Error('independent verification failed');
+          console.log(JSON.stringify({
+            deterministicCoreSha256: r.deterministicCoreSha256,
+            population: r.core.population,
+            measurement: r.core.measurement,
+            decision: r.core.decision,
+          }, null, 2));
+          NODE
+
+      - name: Record artifact hashes
+        run: sha256sum artifacts/pbai-p2/c008/*.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p2-c008-predevelopment-support
+          path: artifacts/pbai-p2/c008/*.json
+          if-no-files-found: error
