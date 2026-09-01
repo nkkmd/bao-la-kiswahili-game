@@ -816,6 +816,23 @@
   function analyzeMove(state, level = "normal", random = Math.random, options = {}) {
     const startedAt = performanceNow();
     const stats = emptyStats(level);
+    const pbaiC008Enabled = options.pbaiC008RootFlipConfirmation === true;
+    if (pbaiC008Enabled) {
+      stats.pbaiC008 = {
+        triggered: false,
+        nominalCompletedDepth: 0,
+        previousBestMoveKey: null,
+        nominalBestMoveKey: null,
+        confirmationDepth: null,
+        confirmationCompleted: false,
+        confirmationTimedOut: false,
+        confirmationCandidateCount: 0,
+        confirmationNodes: 0,
+        selectedMoveChanged: false,
+        nominalRootScore: null,
+        selectedConfirmationScore: null,
+      };
+    }
     const choices = movesFor(state);
     const rawEvaluator = evaluatorFor(
       options.evaluationProfile, options.evaluationWeights, options.evaluationAdjustments,
@@ -874,6 +891,9 @@
         normalizeTtMateScores: options.normalizeTtMateScores ?? false,
       };
       let previousBestKey = moveKey(bestMove);
+      let previousCompletedBestKey = null;
+      let finalPreviousBestKey = null;
+      let finalNominalBestKey = previousBestKey;
       let previousScore = null;
       let stableIterations = 0;
       const stableBestDepths = options.stableBestDepths ?? 0;
@@ -901,6 +921,9 @@
             bestMove = movesFor(state).find((move) => moveKey(move) === completed.bestMove) || bestMove;
           }
           const currentBestKey = moveKey(bestMove);
+          finalPreviousBestKey = previousCompletedBestKey;
+          previousCompletedBestKey = currentBestKey;
+          finalNominalBestKey = currentBestKey;
           if (currentBestKey === previousBestKey) stableIterations += 1;
           else {
             stableIterations = 0;
@@ -918,6 +941,64 @@
           if (error.message !== "timeout") throw error;
           stats.timedOut = true;
           break;
+        }
+      }
+      const nominalMove = bestMove;
+      const nominalRootScore = stats.rootScore;
+      if (pbaiC008Enabled) {
+        const diagnostics = stats.pbaiC008;
+        diagnostics.nominalCompletedDepth = stats.completedDepth;
+        diagnostics.previousBestMoveKey = finalPreviousBestKey;
+        diagnostics.nominalBestMoveKey = finalNominalBestKey;
+        diagnostics.nominalRootScore = nominalRootScore;
+        const trigger = (level === "hard" || level === "expert")
+          && stats.completedDepth === maxDepth
+          && maxDepth >= 3
+          && !stats.timedOut
+          && !stats.earlyStopped
+          && finalPreviousBestKey
+          && finalNominalBestKey
+          && finalPreviousBestKey !== finalNominalBestKey;
+        if (trigger) {
+          const rootMoves = movesFor(state);
+          const candidateMoves = [finalPreviousBestKey, finalNominalBestKey]
+            .map((key) => rootMoves.find((move) => moveKey(move) === key) || null)
+            .filter((move, index, array) => move
+              && array.findIndex((other) => moveKey(other) === moveKey(move)) === index)
+            .sort((a, b) => moveKey(a).localeCompare(moveKey(b)));
+          if (candidateMoves.length === 2) {
+            diagnostics.triggered = true;
+            diagnostics.confirmationDepth = stats.completedDepth + 1;
+            diagnostics.confirmationCandidateCount = 2;
+            const nodesBeforeConfirmation = stats.nodes;
+            const scored = [];
+            try {
+              for (const move of candidateMoves) {
+                const next = E.applyMove(state, move).state;
+                const score = enhancedSearch(
+                  next, stats.completedDepth, -Infinity, Infinity, player, context, 1,
+                );
+                scored.push({ move, score });
+              }
+              diagnostics.confirmationNodes = stats.nodes - nodesBeforeConfirmation;
+              diagnostics.confirmationCompleted = true;
+              let selected = scored.find((item) => moveKey(item.move) === finalNominalBestKey);
+              for (const item of scored) {
+                if (item.score > selected.score) selected = item;
+              }
+              bestMove = selected.move;
+              stats.rootScore = selected.score;
+              diagnostics.selectedConfirmationScore = selected.score;
+              diagnostics.selectedMoveChanged = moveKey(bestMove) !== finalNominalBestKey;
+            } catch (error) {
+              diagnostics.confirmationNodes = stats.nodes - nodesBeforeConfirmation;
+              if (error.message !== "timeout") throw error;
+              diagnostics.confirmationTimedOut = true;
+              stats.timedOut = true;
+              bestMove = nominalMove;
+              stats.rootScore = nominalRootScore;
+            }
+          }
         }
       }
       stats.elapsedMs = performanceNow() - startedAt;
