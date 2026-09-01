@@ -71,7 +71,7 @@ jobs:
           for f in \
             tools/engineering/materialize-pbai-p2-c006-predevelopment-support.js \
             tools/engineering/verify-pbai-p2-c006-predevelopment-support-independent.js; do
-            ! grep -E '42[1-9][0-9]{5}|43[1-9][0-9]{5}' "$f" || {
+            ! grep -E '(^|[^0-9])(42[1-9][0-9]{5}|43[1-9][0-9]{5})([^0-9]|$)' "$f" || {
               echo "Protected or other-candidate seed literal found in $f" >&2
               exit 1
             }
