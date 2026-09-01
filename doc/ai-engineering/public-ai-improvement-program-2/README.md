@@ -171,9 +171,16 @@ Initial inventory外candidateを今回のoutcomeから新規発明してPBAI-P2�
 - [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
 - [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)
+- [`candidates/PBAI-C008-v1-feature-off-equivalence-spec.json`](candidates/PBAI-C008-v1-feature-off-equivalence-spec.json)
+- [`candidates/PBAI-C008-v1-feature-off-equivalence-result.json`](candidates/PBAI-C008-v1-feature-off-equivalence-result.json)
+- [`candidates/PBAI-C008-v1-development-measurement-spec.json`](candidates/PBAI-C008-v1-development-measurement-spec.json)
 - [`candidates/PBAI-C008-v1-development-result.json`](candidates/PBAI-C008-v1-development-result.json)
+- [`candidates/PBAI-C009-v1-feature-off-equivalence-spec.json`](candidates/PBAI-C009-v1-feature-off-equivalence-spec.json)
 - [`candidates/PBAI-C009-v1-feature-off-equivalence-result.json`](candidates/PBAI-C009-v1-feature-off-equivalence-result.json)
+- [`candidates/PBAI-C009-v1-development-measurement-spec.json`](candidates/PBAI-C009-v1-development-measurement-spec.json)
 - [`candidates/PBAI-C009-v1-development-result.json`](candidates/PBAI-C009-v1-development-result.json)
+- [`checkpoints/2026-09-01-c008-feature-off-equivalence-pass.md`](checkpoints/2026-09-01-c008-feature-off-equivalence-pass.md)
+- [`checkpoints/2026-09-01-c009-feature-off-equivalence-pass.md`](checkpoints/2026-09-01-c009-feature-off-equivalence-pass.md)
 
 ```text
 FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
