@@ -8,8 +8,7 @@ Agenda position = G3-02
 Study ID = EBRWS-STUDY1
 Authorization review = AUTHORIZED
 Study protocol = FROZEN
-Scientific execution = NOT YET STARTED
-Stage 0 = AUTHORIZATION PREPARATION / technical-only
+Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
 Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Fresh scientific evidence generated = false
@@ -32,6 +31,25 @@ Study baseline remote main = ca6a1e4a9b41d79d873fa71385972e402ffa5197
 
 G3-02はG3-01の救済でもLGTGMIVの再実行でもない。
 
+## Stage 0 technical result
+
+Formal disposition:
+
+`STAGE0-PASS`
+
+Production / independent stage scientific core:
+
+`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
+
+All mandatory technical controls passed. Stage 0 used synthetic primitive fixtures only.
+
+```text
+Stage 1 seed consumed = false
+Stage 2 seed consumed = false
+Fresh scientific root generated = false
+Protected depth-10 access = false
+```
+
 ## Frozen G3-02 population
 
 Stage 1 development:
@@ -48,7 +66,7 @@ Stage 2 formal holdout:
 - depth 5
 - `FRESH-FORMAL-HELDOUT`
 
-Neither seed block has been consumed at this status checkpoint.
+Neither scientific seed block has been consumed at this status checkpoint.
 
 ## Primary endpoint
 
@@ -65,4 +83,6 @@ Stage 2 may test only Stage 1 promoted construct / phase / class identities.
 
 ## Next permitted action
 
-Technical-only Stage 0 may begin after its explicit authorization record is committed. Stage 0 may use synthetic primitive fixtures only. No Stage 1 trajectory or fresh root may be generated or read before Stage 0 PASS and a separate Stage 1 authorization.
+Current-facing central documentation must be synchronized to the authorized/frozen G3-02 state and Stage 0 PASS. After that synchronization, Stage 1 may be considered for a separate explicit authorization.
+
+No Stage 1 trajectory or fresh root may be generated or read before that Stage 1 authorization.
