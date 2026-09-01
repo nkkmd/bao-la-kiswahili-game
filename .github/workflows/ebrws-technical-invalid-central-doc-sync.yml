@@ -1,5 +1,6 @@
 name: EBRWS technical-invalid central document sync
 
+# One-shot arming update: current-facing documentation only; no scientific execution.
 on:
   push:
     branches:
