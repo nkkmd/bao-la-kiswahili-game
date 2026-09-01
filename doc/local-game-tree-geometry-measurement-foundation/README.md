@@ -47,6 +47,10 @@ Main integration = COMPLETE
 
 ## Current dependency state
 
-G3-01のformal eligible measurement family setは空である。したがって、G3-02〜G3-08をこのinstrumentのまま自動開始してはならない。2026-08-31のprogram-level dependency decisionにより、次のscientific directionとしてG3-01とは別の新しいpost-G3-01 / pre-G3-02 measurement-instrument prerequisite（working title: `Local Game-Tree Geometry Measurement Instrument Verification Study 1`）を選択した。formal Study ID、scientific execution、fresh seed consumptionはまだ開始していない。
+G3-01のformal eligible measurement family setは空である。このG3-01 formal decisionは現在も不変であり、本Study自体からG3-02〜G3-08を自動開始してはならない。
+
+その後、2026-08-31のprogram-level dependency decisionに従って、G3-01とは別のpost-G3-01 / pre-G3-02 prospective prerequisite `LGTGMIV-STUDY1`を新規に開始し、fresh Stage 1 / Stage 2 evidenceで独立検証した。`LGTGMIV-STUDY1`は2026-09-01に`CLOSED / FORMAL-ELIGIBLE-ALL`で閉じ、5つのfrozen RAW-only depth-5 local geometry measurement familiesすべてがformal eligibleとなり、research branchの`main`統合も完了した。これはG3-01のrepair / rescue / rerunではなく、G3-01の`TECHNICAL-INVALID`およびeligible family `[]`を変更しない。
+
+現在は`automaticG302StartAuthorized = false`であり、G3-02は別のpost-closure authorization review待ちである。review完了前にG3-02 fresh scientific evidenceを生成しない。standard initial RAW-root complete exact depth-10 holdoutは引き続き`SEALED / NOT GENERATED / NOT READ`である。
 
 2026-08-31、userの明示的指示によりG3-01 scientific closureは`main`へ統合済みである。integrationはformal decision、seed consumption、Stage authorization、protected depth-10 holdoutを変更しない。
