@@ -13,6 +13,9 @@ Updated: 2026-09-01
 - formal eligible measurement families: all five frozen LGTGMIV families
 - scientific execution: complete
 - Study-level scientific rerun authorization: none
+- main integration: **COMPLETE**
+- integrated research-branch head: `1777ba717ced88be64cbaf981ce7096372046334`
+- final closure audit: `33466581297 / success`
 
 Formal eligible families:
 
@@ -78,6 +81,18 @@ Canonical Stage 2 hashes:
 Read-only audit confirmed `stageElapsedMs = 159574.533277`, `stageArtifactBytes = 6086521`, resource PASS, no engine import and no scientific re-execution.
 
 Stage 2 evidence is immutable. Same-block formal rerun/repair is prohibited.
+
+## Main integration record
+
+The closed research branch was integrated into `main` by non-force fast-forward.
+
+- main before integration: `a53aabd26f78ac408445aff2d18ace3b21b827d7`
+- integrated research-branch head: `1777ba717ced88be64cbaf981ce7096372046334`
+- pre-integration relation: `ahead_by = 57 / behind_by = 0`
+- post-closure audit immediately before integration: `33466581297 / success`
+- checkpoint: `checkpoints/2026-09-01-main-integration-complete.md`
+
+This repository synchronization did not regenerate or reinterpret any scientific evidence.
 
 ## Scientific boundary
 
