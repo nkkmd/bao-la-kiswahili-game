@@ -1,0 +1,98 @@
+name: PBAI-P2 C008 feature-off equivalence
+
+on:
+  pull_request:
+    branches:
+      - engineering/pbai-p2-program-initialization
+    paths:
+      - 'public/ai.js'
+      - 'doc/ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1.json'
+      - 'doc/ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C008-v1-feature-off-equivalence-spec.json'
+      - 'tools/engineering/verify-pbai-p2-c008-feature-off-equivalence.js'
+      - '.github/workflows/pbai-p2-c008-v1-feature-off-equivalence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  feature-off-equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify contract and source surface
+        run: |
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          changed_public="$(git diff --name-only origin/engineering/pbai-p2-program-initialization...HEAD -- public/)"
+          test "$changed_public" = "public/ai.js" || {
+            echo 'C008 development may modify only public/ai.js under public/.' >&2
+            printf '%s\n' "$changed_public" >&2
+            exit 1
+          }
+          grep -q 'pbaiC008RootFlipConfirmation' public/ai.js
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const base = 'doc/ai-engineering/public-ai-improvement-program-2/candidates/';
+          const contract = JSON.parse(fs.readFileSync(`${base}PBAI-C008-v1.json`, 'utf8'));
+          const spec = JSON.parse(fs.readFileSync(`${base}PBAI-C008-v1-feature-off-equivalence-spec.json`, 'utf8'));
+          if (contract.status !== 'FROZEN-FOR-DEVELOPMENT') throw new Error('C008 development contract not frozen');
+          if (contract.authorization !== 'AUTHORIZED-FOR-DEVELOPMENT-AFTER-CONTRACT-FREEZE') throw new Error('C008 development not authorized');
+          if (contract.mechanism.featureFlag !== 'pbaiC008RootFlipConfirmation') throw new Error('feature flag mismatch');
+          if (contract.mechanism.defaultBeforeAdoption !== false) throw new Error('feature default changed');
+          if (spec.status !== 'FROZEN-BEFORE-CANDIDATE-SOURCE-CHANGE') throw new Error('feature-off spec not prefrozen');
+          if (spec.population.seedStart !== 43400001 || spec.population.seedEnd !== 43400064) throw new Error('technical equivalence seed block changed');
+          if (spec.firewall.developmentSeedBlockMayBeAccessed !== false || spec.firewall.validationSeedBlockMayBeAccessed !== false || spec.firewall.releaseHoldoutSeedBlockMayBeAccessed !== false) throw new Error('protected split leaked');
+          if (spec.researchGeneration3Influence !== false) throw new Error('G3 firewall changed');
+          NODE
+
+      - name: Materialize exact frozen baseline source
+        run: |
+          git show 2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972:public/ai.js > /tmp/pbai-c008-baseline-ai.js
+          test "$(sha256sum /tmp/pbai-c008-baseline-ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+
+      - name: Syntax check candidate and verifier
+        run: |
+          node --check public/ai.js
+          node --check tools/engineering/verify-pbai-p2-c008-feature-off-equivalence.js
+
+      - name: Run feature-off exact equivalence
+        run: |
+          mkdir -p artifacts/pbai-p2/c008
+          node tools/engineering/verify-pbai-p2-c008-feature-off-equivalence.js \
+            --baseline-ai /tmp/pbai-c008-baseline-ai.js \
+            --output artifacts/pbai-p2/c008/feature-off-equivalence.json
+
+      - name: Verify technical-only firewall and print compact result
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const r = JSON.parse(fs.readFileSync('artifacts/pbai-p2/c008/feature-off-equivalence.json', 'utf8'));
+          if (r.decision.passed !== true || r.decision.disposition !== 'FEATURE-OFF-EQUIVALENCE-PASS') throw new Error('equivalence did not pass');
+          if (r.measurement.comparisonMismatches !== 0 || r.measurement.candidateDiagnosticPresence !== 0) throw new Error('feature-off mismatch');
+          if (r.candidateBenefitMetricsComputed !== false || r.developmentSeedsAccessed !== false || r.validationSeedsAccessed !== false || r.releaseHoldoutSeedsAccessed !== false) throw new Error('protected evidence leaked');
+          if (r.researchGeneration3ArtifactsAccessed !== false) throw new Error('G3 artifact access reported');
+          if (r.decision.validationAuthorized !== false || r.decision.releaseHoldoutAuthorized !== false) throw new Error('authorization leaked');
+          console.log(JSON.stringify({
+            deterministicCoreSha256: r.deterministicCoreSha256,
+            population: r.population,
+            measurement: r.measurement,
+            decision: r.decision,
+          }, null, 2));
+          NODE
+
+      - name: Record artifact hash
+        run: sha256sum artifacts/pbai-p2/c008/feature-off-equivalence.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p2-c008-feature-off-equivalence
+          path: artifacts/pbai-p2/c008/feature-off-equivalence.json
+          if-no-files-found: error
