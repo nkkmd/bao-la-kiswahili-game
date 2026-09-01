@@ -1,0 +1,69 @@
+name: PBAI-P2 C009 apply candidate
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p2-c009-v1-development
+    paths:
+      - 'tools/engineering/apply-pbai-p2-c009-v1-candidate.js'
+      - '.github/workflows/pbai-p2-c009-v1-apply-candidate.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p2-c009-v1-development
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify frozen implementation boundary
+        run: |
+          test "$(sha256sum public/ai.js | awk '{print $1}')" = "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e"
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+          node --check tools/engineering/apply-pbai-p2-c009-v1-candidate.js
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const base = 'doc/ai-engineering/public-ai-improvement-program-2/candidates/';
+          const c = JSON.parse(fs.readFileSync(`${base}PBAI-C009-v1.json`, 'utf8'));
+          const e = JSON.parse(fs.readFileSync(`${base}PBAI-C009-v1-feature-off-equivalence-spec.json`, 'utf8'));
+          const d = JSON.parse(fs.readFileSync(`${base}PBAI-C009-v1-development-measurement-spec.json`, 'utf8'));
+          if (c.status !== 'FROZEN-FOR-DEVELOPMENT') throw new Error('C009 contract not frozen');
+          if (c.authorization !== 'AUTHORIZED-FOR-DEVELOPMENT-AFTER-CONTRACT-FREEZE') throw new Error('C009 development not authorized');
+          if (c.mechanism.featureFlag !== 'pbaiC009SingleReplyExtension' || c.mechanism.defaultBeforeAdoption !== false) throw new Error('C009 feature contract mismatch');
+          if (e.status !== 'FROZEN-BEFORE-CANDIDATE-SOURCE-CHANGE' || e.population.seedStart !== 43500001 || e.population.seedEnd !== 43500064) throw new Error('feature-off freeze missing');
+          if (d.status !== 'FROZEN-BEFORE-CANDIDATE-SOURCE-CHANGE-AND-DEVELOPMENT-OUTCOME') throw new Error('development measurement not prefrozen');
+          if (c.researchGeneration3Influence !== false || d.researchGeneration3Influence !== false) throw new Error('G3 firewall changed');
+          NODE
+
+      - name: Apply exact frozen candidate transform
+        run: node tools/engineering/apply-pbai-p2-c009-v1-candidate.js
+
+      - name: Verify candidate source surface
+        run: |
+          node --check public/ai.js
+          changed_public="$(git diff --name-only -- public/)"
+          test "$changed_public" = "public/ai.js" || {
+            echo 'C009 transformer modified unexpected public files' >&2
+            printf '%s\n' "$changed_public" >&2
+            exit 1
+          }
+          grep -q 'pbaiC009SingleReplyExtension' public/ai.js
+          grep -q 'stats.pbaiC009' public/ai.js
+          test "$(sha256sum public/engine.js | awk '{print $1}')" = "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c"
+
+      - name: Commit candidate source
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/ai.js
+          git commit -m 'Implement PBAI-P2 C009-v1 candidate'
+          git push origin HEAD:engineering/pbai-p2-c009-v1-development
