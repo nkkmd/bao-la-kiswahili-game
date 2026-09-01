@@ -11,9 +11,10 @@ Program = ACTIVE
 PBAI-P2-A = COMPLETE
 PBAI-P2-B = COMPLETE
 PBAI-P2-C = COMPLETE / PRE-OUTCOME FREEZE
-PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 PREDEVELOPMENT NEXT
+PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 SUPPORT-PASS + DEVELOPMENT-CONTRACT-FROZEN
+PBAI-P2-E = C008 DEVELOPMENT AUTHORIZED / NOT YET EXECUTED
 candidate implementations = 0
-candidate predevelopment support outcomes = 2
+candidate predevelopment support outcomes = 3
 candidate development outcomes = 0
 validation executions = 0
 release holdout executions = 0
@@ -30,10 +31,16 @@ Program開始時のremote `main`:
 2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972
 ```
 
-作業branch:
+Program initialization / predevelopment branch:
 
 ```text
 engineering/pbai-p2-program-initialization
+```
+
+C008 development contract freeze commit:
+
+```text
+fe962416a5d76fe8ab5d47def384dd386acc222d
 ```
 
 Scientific evidence cutoff:
@@ -54,21 +61,14 @@ Research Generation 3 influence = ZERO
 
 G3のscientific content、measurement、diagnostic、hypothesis、candidate mechanismはPBAI-P2のdecisionへ使用しない。
 
-## 4. baseline
+## 4. baseline / global gates
 
 ```text
 baselineId = AI-GEN2-BASELINE-2026-09-01-v1
-```
-
-current public AIの8 bound assetsはPBAI-P1 exact baseline source `f4ae3b11901180cbe417b3e643e2b357d8045d2d`とGit blob identityが一致した。
-
-したがってcurrent public AI sourceはbyte-identicalなAI-GEN2 comparatorであり、G3由来public AI変更は検出されていない。
-
-## 5. global gates
-
-```text
 gateSpecId = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
 ```
+
+current public AIの8 bound assetsはPBAI-P1 exact baseline source `f4ae3b11901180cbe417b3e643e2b357d8045d2d`とGit blob identityが一致している。
 
 Fresh split:
 
@@ -79,18 +79,21 @@ Fresh split:
 
 validation / release holdoutは未開封であり、現時点では実行未承認。
 
-## 6. candidate inventory / current disposition
+## 5. candidate inventory / current disposition
 
 ```text
 PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
 PBAI-C007-v1 = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
-PBAI-C008-v1 = PROPOSED / PREDEVELOPMENT SUPPORT NEXT
-PBAI-C009-v1 = PROPOSED
+PBAI-C008-v1 = SUPPORT-PASS / DEVELOPMENT-CONTRACT-FROZEN / AUTHORIZED-FOR-DEVELOPMENT
+PBAI-C009-v1 = PROPOSED / NOT AUTHORIZED
 ```
 
-`AUTHORIZED-FOR-DEVELOPMENT = 0`。
+```text
+AUTHORIZED-FOR-DEVELOPMENT count = 1
+candidate implementations currently materialized = 0
+```
 
-## 7. C006 closure
+## 6. C006 closure
 
 Frozen support block:
 
@@ -104,8 +107,6 @@ local evaluation-cache collision events = 0
 local TT collision events = 0
 ```
 
-Production / independent deterministic coreはexact一致した。
-
 Decision:
 
 ```text
@@ -113,9 +114,9 @@ PBAI-C006-v1 = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
 implementation = NOT AUTHORIZED
 ```
 
-`AI.stateKey`とauthoritative RAW identityのfield-level差は残るが、frozen support universeではactionable collision defectがmaterializeしなかった。この結果でResearch Generation 2のRAW identity contractを変更しない。
+`AI.stateKey`とauthoritative RAW identityのfield-level差は残るが、frozen support universeではactionable collision defectがmaterializeしなかった。
 
-## 8. C007 closure
+## 7. C007 closure
 
 Frozen support block:
 
@@ -129,51 +130,119 @@ later potential depth-benefit hits = 0
 baseline equivalence mismatches = 0
 ```
 
-Production / independent selected-root identityとmeasurement coreはexact一致した。
-
-事前support floor:
-
-```text
-incoming shallower events >= 32
-AND roots with event >= 16
-```
-
-に対して実測`0 / 0`だったため:
+事前support floor `32 events / 16 roots`に対して`0 / 0`だったため:
 
 ```text
 PBAI-C007-v1 = NON-ESTIMABLE-HOLD
 implementation = NOT AUTHORIZED
-validation = NOT AUTHORIZED
-release holdout = NOT AUTHORIZED
 ```
 
 同じC007-v1へ結果後にseed、depth、search profile、thresholdを追加して救済しない。
 
-## 9. protected boundary
+## 8. C008 canonical predevelopment support
+
+Frozen support contract:
+
+```text
+support seeds = 43200001..43201024
+minimum eligible roots = 64
+candidate code = prohibited
+benefit metrics = prohibited
+validation / release holdout = prohibited
+```
+
+Canonical run:
+
+```text
+workflow run = 33492849852
+job = 99808142315
+artifact = 9794730237
+artifact ZIP SHA-256 = 4a56952f7bdf034f472661314d9de29a824a6342a63df1230969dbbfd6f2c6a3
+deterministic core SHA-256 = 9010ffa1fbdfa33e854d1fafe3c652e2017a6b46f0902c7fe25de69e0b2411c9
+```
+
+Observed support:
+
+```text
+source seeds = 1024
+trajectory roots available = 870
+technical failures = 0
+root-best-flip eligible roots = 233
+  Namua = 177
+  Mtaji = 56
+selected eligible roots = 128
+production / independent deterministic core equality = true
+```
+
+Decision:
+
+```text
+PBAI-C008-v1 predevelopment = SUPPORT-PASS
+```
+
+これはC008のdecision-quality improvementを示す結果ではない。baseline D2/D3 root-best flip signalがdevelopment評価に必要な最低supportを満たしたことだけを意味する。
+
+## 9. C008 exact development contract
+
+Candidate source変更前に、commit `fe962416...`で次をfreezeした。
+
+```text
+candidate feature = pbaiC008RootFlipConfirmation
+default = false
+affected public source = public/ai.js only
+eligible search = enhanced alpha-beta iterative deepening / hard or expert
+trigger = final nominal completed depth d>=3 and best(d-1) != best(d)
+confirmation candidates = exactly previous-depth best + nominal final-depth best
+confirmation = full-window depth-plus-one comparison under existing deadline
+both candidates must complete; otherwise nominal move is retained
+no extra wall-clock budget
+no evaluation/quiescence/TT-key/TT-store/move-ordering/rule-engine/worker change
+```
+
+Development intended-benefit gates:
+
+```text
+D4 TopSet agreement delta >= +0.05
+mean normalized rank-loss delta <= -0.02
+severe-loss-rate excess <= 0
+catastrophic new loss = 0
+median fixed-depth node ratio <= 1.60
+p95 fixed-depth node ratio <= 2.50
+```
+
+Development source block:
+
+```text
+42400001..42400512
+eligible development roots minimum = 64
+```
+
+C008 implementationはこのcontract freeze後に許可される。ただしfeature defaultは`false`のまま、実装後のfeature-off exact equivalence PASSがdevelopment benefit executionの前提である。
+
+## 10. protected boundary
 
 現時点で禁止される操作:
 
 - scientific evidence cutoff変更;
 - Research Generation 3 evidence利用;
 - C006/C007 implementation;
-- C008/C009 implementation before support/contract authorization;
-- validation set実行;
-- protected release holdout開封;
+- C008 mechanism/trigger/thresholdのpost-support再設計;
+- C009 implementation;
+- C008 feature defaultをpublicで有効化すること;
+- validation set `425xxxxx`実行;
+- protected release holdout `426xxxxx`開封;
 - candidate結果を見た後のthreshold relaxation;
-- closed candidateへのsame-version seed/depth/population追加による救済;
+- closed candidateへのsame-version救済;
 - PBAI-P1 candidate救済;
 - public deployment;
 - AI-GEN3 promotion。
 
-## 10. 次の安全な作業
+## 11. 次の安全な作業
 
-initial inventoryで結果前に固定済みの`PBAI-C008-v1`について、candidate codeを一切使用しないbaseline-only predevelopment support contractを固定し、root-best flip supportがminimum eligible-root floorを満たすかだけを測定する。
+1. C008 contract freeze後のcentral documentation / CI consistencyを確認する。
+2. `fe962416...`以降からisolated C008 development branchを作成する。
+3. `public/ai.js`だけにexact C008 mechanismをfeature-gated / default-offで実装する。
+4. implementation後、candidate benefitを測る前にfeature-off exact baseline equivalenceを検証する。
+5. equivalence PASSの場合だけ、`42400001..42400512`のdevelopment-only populationを開き、frozen intended-benefit gateを評価する。
 
-```text
-C008 support seeds = 43200001..43201024
-target eligible roots = 128
-minimum eligible roots = 64
-candidate implementation = NOT AUTHORIZED
-validation / release holdout = NOT AUTHORIZED / NOT ACCESSED
-Research Generation 3 influence = ZERO
-```
+validation / release holdoutはdevelopment PASS後に別contractをfreezeするまで実行しない。
