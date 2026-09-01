@@ -1,0 +1,57 @@
+name: EBRWS Stage 1 development one-shot
+
+on:
+  push:
+    branches:
+      - research/g3-02-effective-branching-reply-width-structure
+    paths:
+      - "doc/effective-branching-reply-width-structure/authorizations/2026-09-01-stage-1-execution-trigger.md"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ebrws-stage1-development-one-shot
+  cancel-in-progress: false
+
+jobs:
+  stage1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-02-effective-branching-reply-width-structure
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Execute authorized Stage 1 exactly once
+        id: run
+        shell: bash
+        run: |
+          set +e
+          node tools/experiments/run-ebrws-stage1-development.js
+          status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Commit immutable Stage 1 result artifacts
+        shell: bash
+        run: |
+          git config user.name "Sawa"
+          git config user.email "72678394+nkkmd@users.noreply.github.com"
+          git add doc/effective-branching-reply-width-structure/results/stage-1/scientific-result.json \
+                  doc/effective-branching-reply-width-structure/results/stage-1/telemetry.json \
+                  doc/effective-branching-reply-width-structure/results/stage-1/execution-summary.json
+          if git diff --cached --quiet; then
+            echo "Stage 1 result artifacts were not materialized"
+          else
+            git commit -m "Record EBRWS Stage 1 fresh development result"
+            git push origin HEAD:research/g3-02-effective-branching-reply-width-structure
+          fi
+
+      - name: Enforce frozen Stage 1 disposition
+        shell: bash
+        run: exit "${{ steps.run.outputs.status }}"
