@@ -21,7 +21,7 @@
 ## 2. 進行中Program — `PBAI-P2`
 
 **正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2  
-**状態:** **ACTIVE / INITIALIZED / PRE-OUTCOME FREEZE COMPLETE**  
+**状態:** **ACTIVE / C006 CLOSED / C007 NON-ESTIMABLE-HOLD / C008 PREDEVELOPMENT NEXT**  
 **Research Generation 2 scientific evidence cutoff:** `cd200b85c1eb24aa4419bd5a9573552f3682f00d`  
 **Research Generation 3 influence:** **ZERO / EXCLUDED**
 
@@ -35,12 +35,13 @@ Program開始時のremote `main`は`2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972`で
 PBAI-P2-A evidence audit / G3 firewall = COMPLETE
 PBAI-P2-B baseline re-freeze = COMPLETE
 PBAI-P2-C global gates / fresh split / inventory freeze = COMPLETE
-PBAI-P2-D = C006 predevelopment
+PBAI-P2-D = C006 CLOSED / C007 CLOSED-HOLD / C008 PREDEVELOPMENT NEXT
 baseline = AI-GEN2-BASELINE-2026-09-01-v1
 global gates = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
 AUTHORIZED-FOR-DEVELOPMENT = 0
 candidate implementations = 0
-candidate outcomes = 0
+predevelopment support outcomes = 2
+candidate development outcomes = 0
 validation executions = 0
 release holdout executions = 0
 public deployments = 0
@@ -50,30 +51,35 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 
 current public AIの`public/engine.js`、`public/ai.js`、`public/ai-weights.js`、`public/ai-config.js`、`public/ai-worker.js`、`public/main.js`、`public/index.html`、`public/service-worker.js`は、PBAI-P1 exact baseline sourceとGit blob identityが一致しました。そのため、G3期由来のpublic AI source changeは検出されていません。
 
-### 2.2 初期candidate inventory
+### 2.2 初期candidate inventoryと現在状態
 
 ```text
 PBAI-C006-v1
   = strict RAW-safe search/cache/Worker identity
-  = PREDEVELOPMENT-AUDIT
-  = static field mismatch confirmed as code fact
-  = practical correctness defect NOT ESTABLISHED
-  = next: baseline-only support measurement
+  = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
+  = semantic unique RAW states 389148
+  = all frozen collision categories 0
+  = implementation NOT AUTHORIZED
 
 PBAI-C007-v1
   = depth-preserving same-key TT replacement
-  = PROPOSED / DEPENDENCY-GATED
+  = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+  = same-key stores 16512
+  = shallower-over-deeper overwrite events 0 / roots 0
+  = implementation NOT AUTHORIZED
 
 PBAI-C008-v1
   = root-best-flip-triggered two-move confirmation re-search
-  = PROPOSED
+  = PROPOSED / PREDEVELOPMENT SUPPORT NEXT
+  = implementation NOT AUTHORIZED
 
 PBAI-C009-v1
   = exact single-reply forcing extension
   = PROPOSED
+  = implementation NOT AUTHORIZED
 ```
 
-PBAI-C006ではResearch Generation 2 authoritative RAW identityに含まれる`pending`がcurrent `AI.stateKey`にないことを確認済みですが、これだけでpublic AI bugとは判定していません。Implementation前に`43000001..43002048`のbaseline-only support measurementを要求します。
+C006/C007はいずれもcandidate code、validation、release holdoutへ進んでいません。次に許可されるcandidate-specific工程は、初期inventoryで結果前に固定済みのC008 baseline-only predevelopment supportだけです。
 
 ### 2.3 PBAI-P2 canonical文書
 
@@ -88,6 +94,8 @@ PBAI-C006ではResearch Generation 2 authoritative RAW identityに含まれる`p
 - [`ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/DECISION_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-2/RELEASE_REGISTER.md)
 - [`ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C006-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C006-v1-predevelopment-support-result.json)
+- [`ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C007-v1-predevelopment-support-result.json`](ai-engineering/public-ai-improvement-program-2/candidates/PBAI-C007-v1-predevelopment-support-result.json)
 
 Machine-readable freeze:
 
@@ -248,6 +256,20 @@ PBAI-P1 COMPLETE → KEEP-AI-GEN2
 
 PBAI-P2ではResearch Generation 2だけをscientific/evidence inputとし、Research Generation 3はhard firewallで完全除外します。
 
-現在の`AI.stateKey`は`pending`を含まないため、Research Generation 2で維持されたauthoritative RAW identityとは異なります。PBAI-P2では、この差を最初からbugと断定せず、C006の新しいbaseline-only support contractでpractical engineering defectの有無を独立評価します。
+PBAI-P2のcurrent flow:
+
+```text
+G2-only evidence cutoff / G3 firewall
+          ↓
+AI-GEN2 baseline + global gates freeze
+          ↓
+C006 → WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT
+          ↓
+C007 → NON-ESTIMABLE-HOLD
+          ↓
+C008 baseline-only predevelopment support = NEXT
+```
+
+C006/C007のengineering support結果は、Research Generation 2のformal scientific decisionやidentity boundaryを変更しません。
 
 PBAI-P2のcandidateがすべて採用gateを通らない場合は、PBAI-P1と同様に`KEEP-AI-GEN2`を正常なProgram outcomeとして認めます。
