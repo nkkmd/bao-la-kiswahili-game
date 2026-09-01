@@ -457,10 +457,32 @@
     context.stats.nodes += 1;
     const terminal = terminalScore(state, player, ply);
     if (terminal !== null) return terminal;
-    if (depth === 0) return quiescence(
-      state, alpha, beta, player, context.deadline, context.stats,
-      context.evaluator, ply, context.quiescenceDepth, context.orderQuiescenceCaptures,
-    );
+    if (depth === 0) {
+      if (context.pbaiC009Enabled && state.player !== player) {
+        const forcedReplies = movesFor(state);
+        if (forcedReplies.length === 1) {
+          const diagnostics = context.stats.pbaiC009;
+          diagnostics.triggeredExtensions += 1;
+          diagnostics.forcedReplyCutoffVisits += 1;
+          diagnostics.maxExtensionsPerObservedPath = Math.max(
+            diagnostics.maxExtensionsPerObservedPath, 1,
+          );
+          const nodesBeforeExtension = context.stats.nodes;
+          const forcedChild = E.applyMove(state, forcedReplies[0]).state;
+          const value = quiescence(
+            forcedChild, alpha, beta, player, context.deadline, context.stats,
+            context.evaluator, ply + 1, context.quiescenceDepth,
+            context.orderQuiescenceCaptures,
+          );
+          diagnostics.forcedReplyChildQuiescenceNodes += context.stats.nodes - nodesBeforeExtension;
+          return value;
+        }
+      }
+      return quiescence(
+        state, alpha, beta, player, context.deadline, context.stats,
+        context.evaluator, ply, context.quiescenceDepth, context.orderQuiescenceCaptures,
+      );
+    }
 
     const key = transpositionKey(state, ply, context.normalizeTtMateScores);
     const originalAlpha = alpha;
@@ -816,6 +838,18 @@
   function analyzeMove(state, level = "normal", random = Math.random, options = {}) {
     const startedAt = performanceNow();
     const stats = emptyStats(level);
+    const pbaiC009Enabled = options.pbaiC009SingleReplyExtension === true
+      && (level === "hard" || level === "expert")
+      && options.searchProfile !== "legacy"
+      && options.searchProfile !== "mcts";
+    if (pbaiC009Enabled) {
+      stats.pbaiC009 = {
+        triggeredExtensions: 0,
+        forcedReplyCutoffVisits: 0,
+        forcedReplyChildQuiescenceNodes: 0,
+        maxExtensionsPerObservedPath: 0,
+      };
+    }
     const choices = movesFor(state);
     const rawEvaluator = evaluatorFor(
       options.evaluationProfile, options.evaluationWeights, options.evaluationAdjustments,
@@ -872,6 +906,7 @@
         ttMoveFirst: options.ttMoveFirst ?? false,
         orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
         normalizeTtMateScores: options.normalizeTtMateScores ?? false,
+        pbaiC009Enabled,
       };
       let previousBestKey = moveKey(bestMove);
       let previousScore = null;
