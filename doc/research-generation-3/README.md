@@ -24,6 +24,8 @@ Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したprospective program plan正本。historical planであり、current stateは`CURRENT_STATUS.md`を優先
 - [`../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md`](../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md) — completed prerequisiteの初見向け概要
 - [`../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md) — `LGTGMIV-STUDY1`最終報告
+- [`../research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md`](../research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md) — LGTGMIV formal closureとG3-02別authorization review requirementのcurrent program decision
+- [`checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md`](checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md) — LGTGMIV closed research branchの`main`統合完了記録
 - [`../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`](../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md) — G3-01後に新しいmeasurement prerequisiteを選択したhistorical program decision
 - [`../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md) — G3-01最終報告
 - [`../research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md`](../research-program-decisions/2026-08-31-g3-01-measurement-foundation-technical-invalid-closure.md) — G3-01 technical-invalid closure

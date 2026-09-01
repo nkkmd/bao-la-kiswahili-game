@@ -104,7 +104,9 @@ G2-12 estimator used as depth-10 truth/input = false
 
 G3-01からformal eligible measurement familyは得られなかった。したがって、G3-02〜G3-08をこのinstrumentで自動的に開始してはならない。
 
-2026-08-31のprogram-level dependency reassessmentにより、次のscientific directionとしてmeasurement instrumentを新規に再構築・検証するpost-G3-01 / pre-G3-02 prospective prerequisite Study（working title: `Local Game-Tree Geometry Measurement Instrument Verification Study 1`）を選択した。これはG3-01のStudy 2、corrected rerun、rescue、G3-02そのものではない。formal Study ID、scientific execution、fresh seed consumptionはまだ開始しておらず、G3-01のclosed resultは変更しない。
+2026-08-31のprogram-level dependency reassessmentにより選択したpost-G3-01 / pre-G3-02 prospective prerequisiteは、その後`LGTGMIV-STUDY1`として正式固定され、G3-01とは別のfresh evidenceを用いてStage 0/1/2を完遂した。2026-09-01のformal closureは`CLOSED / FORMAL-ELIGIBLE-ALL`で、5つのfrozen RAW-only depth-5 local geometry measurement familiesすべてがformal eligibleとなり、research branchの`main`統合も完了している。これはG3-01のStudy 2、corrected rerun、repair、rescue、same-evidence replicationではなく、G3-01のclosed resultは変更しない。
+
+現在のdownstream stateは`automaticG302StartAuthorized = false`であり、G3-02は別のpost-closure authorization review待ちである。review完了前にG3-02 fresh scientific evidenceを生成しない。protected standard-root depth-10 exact holdoutは`SEALED / NOT GENERATED / NOT READ`のままである。
 
 ## Main integration
 

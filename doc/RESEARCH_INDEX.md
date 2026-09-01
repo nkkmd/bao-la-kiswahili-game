@@ -1008,6 +1008,8 @@ formal eligible families:
 - [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md)
 - [`local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md)
 - [`local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md`](local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md)
+- [`research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md`](research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md) — LGTGMIV closure / G3-02 review requirementのprogram decision
+- [`research-generation-3/checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md`](research-generation-3/checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md) — `main` integration完了checkpoint
 
 **Boundary:** eligibilityはfrozen RAW-only depth-5 local measurement instrumentに限定する。G3-01を救済しない。G3-02はautomatic startせず、別authorization reviewまでblocked。standard-root depth 10はsealed。
 

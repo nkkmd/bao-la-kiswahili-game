@@ -26,6 +26,13 @@ Study-start source baseline:
 
 `a53aabd26f78ac408445aff2d18ace3b21b827d7`
 
+Repository integration:
+
+- scientific research-branch head: `1777ba717ced88be64cbaf981ce7096372046334`
+- `main` integration: **COMPLETE**
+- final closure audit: `33466581297 / success`
+- checkpoint: [`checkpoints/2026-09-01-main-integration-complete.md`](checkpoints/2026-09-01-main-integration-complete.md)
+
 ## Why this Study exists
 
 G3-01 (`LGTGMF-STUDY1`) reconstructed its fresh bounded local trees/graphs exactly at root/family level in production and independent implementations, but its frozen stage-manifest contract incorrectly allowed implementation-dependent runtime/resource observations into the canonical stage digest. The resulting stage digest mismatch made G3-01 permanently `TECHNICAL-INVALID` after evidence read.
