@@ -5,7 +5,7 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-01
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL` / G3-02 authorization review required (2026-09-01)**
+Research Generation 3: **Active / G3-02 `EBRWS-STUDY1` authorized and protocol-frozen / Stage 0 `STAGE0-PASS` / Stage 1 authorization pending (2026-09-01)**
 
 ## 1. 目的
 
@@ -1344,27 +1344,30 @@ Research Generation 3はpositive resultの数で完了判定しない。
 
 ### 10.12 現在状態
 
-2026-09-01、G3-01後の独立measurement-instrument prerequisite `LGTGMIV-STUDY1`は、prospectively frozen Stage 0/1/2を完遂し、`CLOSED / FORMAL-ELIGIBLE-ALL`で閉じた。G3-01 `LGTGMF-STUDY1`は従来どおり`TECHNICAL-INVALID`であり、この結果は変更しない。
+2026-09-01、post-LGTGMIV G3-02 authorization reviewをcurrent repository stateに対して別decisionとして実施し、`AUTHORIZED`とした。これによりG3-02は正式Study `EBRWS-STUDY1`としてprospective Study-definition / preregistrationへ進んだ。G3-01 `LGTGMF-STUDY1`の`TECHNICAL-INVALID` closureとeligible families `[]`は変更せず、`LGTGMIV-STUDY1`も`CLOSED / FORMAL-ELIGIBLE-ALL`のまま再実行・再判定しない。
 
-`LGTGMIV-STUDY1`ではscientific canonical coreからruntime/resource telemetryを分離し、RAW-only state identity、validated transform set `[]`、production / structurally independent implementation、fresh-evidence no-rescue firewallを維持した。
+`EBRWS-STUDY1`の正式題目は「Baoにおけるeffective branching / reply-width構造のprospective検証 — bounded RAW局所ゲーム木におけるmulti-ply branching・reply-width profileが再現可能な局面特性として成立する範囲の検証」。authoritative identityはRAW-only、validated transform setは`[]`、relative horizonはdepth 5に固定した。
 
-Stage 1はfresh `31110001..31110128`からNamua 8 / Mtaji 8の16 rootsをdepth 5までexact reconstructionし、global gateをPASSして5 familyすべてをpromoteした。Stage 2はfresh formal holdout `31120001..31120192`からNamua 12 / Mtaji 12の24 rootsをdepth 5まで測定し、production / independent exact root reconstruction 24/24、各family exact roots 24/24、resource gate PASSを得た。
+Primary dependencyはLGTGMIV F1 TREE-OCCURRENCE + F5 REPLY-GEOMETRY。F2 RAW-GRAPH、F3 TRANSPOSITION-RECONVERGENCE、F4 TREE-GRAPH-RELATIONはsecondary contextual characterizationだけに用いる。`effective branching`は新しいmeasurement instrumentではなく、eligible exact primitiveからprospectively fixed exact-rational quantityとして導出する。
+
+Primary construct systemsは`TREE-WIDTH-SHAPE`と`REPLY-WIDTH-SHAPE`の2つだけで、phase-level candidate / formal confirmation gateはfloating pointを用いず`3 * classCount >= 2 * eligibleRootCount`のexact 2/3とした。
 
 ```text
-Research Generation 3 = ACTIVE / POST-LGTGMIV PREREQUISITE CLOSED / G3-02 AUTHORIZATION REVIEW REQUIRED
-G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-01 formal eligible measurement families = []
-post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
-LGTGMIV formal eligible families = F1 TREE-OCCURRENCE / F2 RAW-GRAPH / F3 TRANSPOSITION-RECONVERGENCE / F4 TREE-GRAPH-RELATION / F5 REPLY-GEOMETRY
-LGTGMIV Stage 1 seed consumption = 31110001..31110128
-LGTGMIV Stage 2 seed consumption = 31120001..31120192
-G3-02 automatic start = BLOCKED
-G3-02..G3-08 automatic start = BLOCKED
+Research Generation 3 = ACTIVE / G3-02 EBRWS-STUDY1 ACTIVE
+G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID / eligible families []
+LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL / five eligible families
+G3-02 authorization review = AUTHORIZED
+G3-02 protocol / preregistration = FROZEN
+G3-02 Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
+G3-02 Stage 1 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-02 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-02 Stage 1 seed = 31210001..31210192 / not consumed
+G3-02 Stage 2 seed = 31220001..31220288 / not consumed
 Protected standard-root depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-LGTGMIVのpositive resultは、frozen RAW-only depth-5 local game-tree/graph geometry measurement instrumentのbounded formal eligibilityを意味する。whole-Bao state/game-tree size、depth 5超への自動一般化、symmetry reduction、strategic/game-theoretic value、human difficultyは主張しない。
+Stage 0はsynthetic primitive fixturesだけを使ったtechnical-only validationで、production / independent stage scientific coreは`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`にexact一致した。fresh scientific seed/root生成・readは行わず、protected depth-10 accessもfalseである。
 
-次のscientific actionはG3-02の自動開始ではなく、current repository state、formal eligible family set、G3-02 fresh population/evidence firewall、protected evidence dependencyを確認する別のpost-closure authorization reviewである。review完了前にG3-02 scientific evidenceを生成しない。
+次のscientific actionはStage 1の自動実行ではない。current-facing central documentation同期後に別のStage 1 authorizationを記録し、その後のみfresh `31210001..31210192`を使用できる。Stage 2はStage 1でprimary candidateがpromoteされた場合のみ別authorization対象となる。
 
-standard initial RAW rootのcomplete exact depth-10 holdoutはG3-11向けに引き続きsealedとする。
+standard initial RAW root complete exact depth-10 holdoutはG3-11向けに引き続きsealedとする。branching / reply widthをbest move、game-theoretic forcing、search difficulty、human difficultyへ読み替えない。

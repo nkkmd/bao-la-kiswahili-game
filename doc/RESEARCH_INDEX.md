@@ -974,50 +974,40 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — G3-01 closure / LGTGMIV prerequisite closure
+### 30. Research Generation 3 — G3-01 / LGTGMIV closure and G3-02 EBRWS start
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 authorization review required**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1` protocol frozen / Stage 0 `STAGE0-PASS` / Stage 1 not yet authorized**
 
-G3-01 `LGTGMF-STUDY1`は、Stage 1 fresh rootsのroot/family levelではproduction / independent exact一致を得たが、runtime telemetryをstage-level canonical digestへ含めた凍結済みinstrument defectにより`TECHNICAL-INVALID`で閉じた。eligible familiesは`[]`、Stage 2は未実行であり、このformal decisionは変更しない。
+G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`、Stage 2未実行のままimmutable closureとする。post-G3-01 prerequisite `LGTGMIV-STUDY1`は別のfresh Studyとして`CLOSED / FORMAL-ELIGIBLE-ALL`で完了し、RAW-only depth-5 local geometryの5 frozen measurement familiesをformal eligibleとした。
 
-その後、G3-01とは別のnew prospective independent prerequisiteとして`LGTGMIV-STUDY1`を実施した。scientific canonical coreとtelemetryを分離し、RAW-only identity、validated transform set `[]`、production / independent implementation、fresh evidence firewallを固定した。
+その後、別のpost-LGTGMIV G3-02 authorization reviewを実施し`AUTHORIZED`とした。G3-02は正式Study `EBRWS-STUDY1`として開始し、scientific outcome前にStudy identity、depth 5、RAW identity、validated transform set `[]`、fresh populations、seed blocks、derived constructs、primary/secondary endpoints、resource ceilings、independent verification、no-rescue ruleをfreezeした。
 
-Stage 1はfresh `31110001..31110128`から16 roots（Namua/Mtaji 8/8）をdepth 5までcomplete reconstructionし、5 familiesすべてをpromote。Stage 2はfresh holdout `31120001..31120192`から24 roots（12/12）をdepth 5まで測定し、root reconstruction 24/24 exact一致、全5 familiesで24/24 root exact agreement、stage digest exact agreement、resource gate PASSを得た。
+Stage 1 developmentはseed `31210001..31210192`、12 Namua + 12 Mtaji。Stage 2 formal holdoutは`31220001..31220288`、18 + 18。いずれもこのcurrent stateでは未消費である。
 
-Formal decision:
-
-**`LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`**
-
-formal eligible families:
-
-- `LGTGMIV-F1-TREE-OCCURRENCE`
-- `LGTGMIV-F2-RAW-GRAPH`
-- `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
-- `LGTGMIV-F4-TREE-GRAPH-RELATION`
-- `LGTGMIV-F5-REPLY-GEOMETRY`
+Primary systemsは`TREE-WIDTH-SHAPE` / `REPLY-WIDTH-SHAPE`、phase-level promotion/confirmationはexact 2/3 gate。technical-only Stage 0 `EBRWS-S0-TECHNICAL-2026-09-01-v1`はsynthetic fixturesで全mandatory controlをPASSし、production / independent stage scientific coreは`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`にexact一致した。
 
 **最初に読む:**
 
-- [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md)
+- [`effective-branching-reply-width-structure/README.md`](effective-branching-reply-width-structure/README.md)
+- [`effective-branching-reply-width-structure/CURRENT_STATUS.md`](effective-branching-reply-width-structure/CURRENT_STATUS.md)
 - [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 
 **詳細・正本:**
 
-- [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md)
-- [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md)
-- [`local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md)
-- [`local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md`](local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md)
-- [`research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md`](research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md) — LGTGMIV closure / G3-02 review requirementのprogram decision
-- [`research-generation-3/checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md`](research-generation-3/checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md) — `main` integration完了checkpoint
+- [`effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md`](effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md)
+- [`effective-branching-reply-width-structure/prereg/STUDY_1_SPEC.json`](effective-branching-reply-width-structure/prereg/STUDY_1_SPEC.json)
+- [`effective-branching-reply-width-structure/DECISION_REGISTER.md`](effective-branching-reply-width-structure/DECISION_REGISTER.md)
+- [`effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`](effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-01-post-lgtgmiv-g3-02-authorization-review.md`](research-program-decisions/2026-09-01-post-lgtgmiv-g3-02-authorization-review.md)
 
-**Boundary:** eligibilityはfrozen RAW-only depth-5 local measurement instrumentに限定する。G3-01を救済しない。G3-02はautomatic startせず、別authorization reviewまでblocked。standard-root depth 10はsealed。
+**Boundary:** G3-02 claimはfresh bounded RAW local geometry / relative depth 5に限定する。Stage 1は別authorization前に実行しない。standard-root depth 10はsealed。branch width / reply widthをbest move、forcing、value、human difficultyへ読み替えない。
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` remains closed `TECHNICAL-INVALID` with eligible families `[]`. The independent post-G3-01 prerequisite `LGTGMIV-STUDY1` is closed `FORMAL-ELIGIBLE-ALL`; all five frozen RAW-only depth-5 local geometry measurement families are formally eligible. G3-02 automatic start remains blocked pending a separate post-closure authorization review, and standard-root depth 10 remains sealed for G3-11.
+**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` remains closed `TECHNICAL-INVALID` with eligible families `[]`; `LGTGMIV-STUDY1` remains closed `FORMAL-ELIGIBLE-ALL`. G3-02 is now `EBRWS-STUDY1`: authorization review `AUTHORIZED`, protocol/preregistration frozen, technical Stage 0 `STAGE0-PASS`, Stage 1 not yet authorized. Standard-root depth 10 remains sealed for G3-11.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 
