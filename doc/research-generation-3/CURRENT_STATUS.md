@@ -1,49 +1,50 @@
 # Research Generation 3 — Current Status
 
-Updated: 2026-09-01
+Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-02 EBRWS-STUDY1 PROTOCOL FROZEN / STAGE0-PASS / STAGE1 AUTHORIZATION PENDING
+Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-01 formal eligible measurement families = []
 G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-G3-01 Stage 1 seed consumption = 31010001..31010096
 post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
-LGTGMIV Stage 1 seed consumption = 31110001..31110128
-LGTGMIV Stage 2 seed consumption = 31120001..31120192
 LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5
-LGTGMIV main integration = COMPLETE
-G3-02 authorization review = AUTHORIZED
-G3-02 = EBRWS-STUDY1 / PROTOCOL-FROZEN
-G3-02 baseline remote main = ca6a1e4a9b41d79d873fa71385972e402ffa5197
-G3-02 research branch = research/g3-02-effective-branching-reply-width-structure
+G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-02 Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
-G3-02 Stage 1 = EBRWS-S1-DEVELOPMENT-2026-09-01-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+G3-02 Stage 1 = EBRWS-S1-DEVELOPMENT-2026-09-01-v1 / TECHNICAL-INVALID
 G3-02 Stage 2 = EBRWS-S2-FORMAL-2026-09-01-v1 / NOT-AUTHORIZED-NOT-EXECUTED
-G3-02 Stage 1 seed = 31210001..31210192 / NOT CONSUMED
+G3-02 formal promoted candidate set = []
+G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
 G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
-G3-02 fresh scientific evidence generated = false
-G3-02 fresh scientific evidence read = false
+G3-02 no-rescue boundary = CROSSED / ACTIVE
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = research/g3-02-effective-branching-reply-width-structure
-Next scientific action = explicit G3-02 Stage 1 authorization review
+Active scientific research branch = research/g3-02-effective-branching-reply-width-structure / closure synchronization
+Next scientific action = separate post-G3-02 program review
 ```
-
-## Program direction
-
-Research Generation 3はResearch Generation 2で最も強く成立したRAW-only bounded exact analysisを基盤とし、Baoのbounded local game tree / reachable RAW graphの構造幾何を中心研究対象とする。
 
 ## Immutable upstream boundaries
 
-G3-01 `LGTGMF-STUDY1`は`CLOSED / TECHNICAL-INVALID`、formal eligible families `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`のまま永久に変更しない。Stage 1のroot/family level exact agreementを用いたrepair、corrected rerun、reclassificationを行わない。
+Research Generation 2 remains closed.
 
-G3-01とは別のpost-G3-01 prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で完了している。
+G3-01 `LGTGMF-STUDY1` remains permanently:
 
-Formal eligible family set:
+```text
+CLOSED / TECHNICAL-INVALID
+formal eligible measurement families = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+G3-01 Stage 1 root/family agreement is not used to rescue or reclassify it.
+
+The independent prerequisite `LGTGMIV-STUDY1` remains:
+
+`CLOSED / FORMAL-ELIGIBLE-ALL`
+
+Formal eligible families:
 
 1. `LGTGMIV-F1-TREE-OCCURRENCE`
 2. `LGTGMIV-F2-RAW-GRAPH`
@@ -51,19 +52,11 @@ Formal eligible family set:
 4. `LGTGMIV-F4-TREE-GRAPH-RELATION`
 5. `LGTGMIV-F5-REPLY-GEOMETRY`
 
-eligibilityはRAW-only / relative depth 5 / bounded local reconstruction / production-independent exact agreementのfrozen contractに限定される。
+Eligibility is limited to the frozen RAW-only / relative depth-5 bounded local reconstruction contract.
 
-## G3-02 authorization review
+## G3-02 formal Study
 
-LGTGMIV closure後の別reviewは`AUTHORIZED`と記録した。review baselineはremote `main`:
-
-`ca6a1e4a9b41d79d873fa71385972e402ffa5197`
-
-このdecisionはG3-01やLGTGMIVを変更せず、G3-02のprospective Study-definition / preregistrationを許可した。
-
-## G3-02 frozen Study
-
-Formal Study:
+G3-02 was separately authorized after LGTGMIV and prospectively frozen as:
 
 **`EBRWS-STUDY1` — Effective Branching and Reply-Width Structure Study 1**
 
@@ -79,115 +72,100 @@ validated transform set = []
 relative local horizon = 5
 ```
 
-Primary dependencyはLGTGMIV F1 + F5。F2-F4はsecondary contextual characterizationだけに使用する。
+Primary systems were `TREE-WIDTH-SHAPE` and `REPLY-WIDTH-SHAPE`, with exact phase-level gate `3 * classCount >= 2 * eligibleRootCount`.
 
-Primary construct systems:
+## Stage 0
 
-1. `TREE-WIDTH-SHAPE`
-2. `REPLY-WIDTH-SHAPE`
-
-phase-level candidate / formal confirmation gate:
-
-`3 * classCount >= 2 * eligibleRootCount`
-
-floating-point thresholdは使わない。
-
-## Frozen fresh population
-
-Stage 1 development:
+`EBRWS-S0-TECHNICAL-2026-09-01-v1` used only synthetic primitive fixtures and passed all mandatory controls.
 
 ```text
-stage = EBRWS-S1-DEVELOPMENT-2026-09-01-v1
+Stage 0 = STAGE0-PASS
+production / independent scientific core = ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd
+fresh scientific seed consumption = false
+protected depth-10 access = false
+```
+
+## Stage 1
+
+Stage 1 was separately authorized for exactly one fresh-development execution:
+
+```text
 seed = 31210001..31210192
-population = 12 Namua + 12 Mtaji
+target = 12 Namua + 12 Mtaji
 relative depth = 5
-evidence = FRESH-DEVELOPMENT
-seed consumed = false
 ```
 
-Stage 2 formal holdout:
+Tooling smoke run `33525232642` passed without fresh evidence access.
+
+Authorized one-shot run `33569323221`, job `100059596453`, completed the scientific execution step. The frozen runner locally reported:
 
 ```text
-stage = EBRWS-S2-FORMAL-2026-09-01-v1
-seed = 31220001..31220288
-population = 18 Namua + 18 Mtaji
-relative depth = 5
-evidence = FRESH-FORMAL-HELDOUT
-seed consumed = false
+reported runner disposition = STAGE1-PASS
+globalGatePass = true
+selected roots = 12 Namua + 12 Mtaji
+production / independent stage scientific core = 4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e
+candidateSetSha256 = 4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6
 ```
 
-G3-01 / LGTGMIV evidenceをG3-02 fresh evidenceとして再利用しない。root RAW identity、full trajectory identity、first-16-move prefix identityはprospectively fixed overlap exclusionに限り使用できる。
+Runner-local diagnostic candidates:
 
-## Stage 0 technical closure
+- `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
+- `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
 
-`EBRWS-S0-TECHNICAL-2026-09-01-v1`はsynthetic primitive fixturesだけで実行し、formal disposition:
+However, the generated canonical Stage 1 files were committed only in the ephemeral runner workspace. Push of local commit `709bc393` was rejected non-fast-forward because the remote branch advanced during execution, and the local commit is not recoverable after runner teardown.
 
-`STAGE0-PASS`
+Because fresh evidence had already crossed the no-rescue boundary and the Stage 1 authorization permitted exactly one execution, the same evidence was not re-run to rebuild the missing canonical files.
 
-Production / independent stage scientific core:
+The protocol requires no technical-integrity violation and an immutable promoted-candidate artifact before Stage 2 authorization. Therefore the runner-local positive summary is diagnostic provenance only.
 
-`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
+Formal disposition:
 
-全mandatory technical controlsがPASSした。Stage 0ではfresh scientific seed/root generation、fresh evidence read、protected depth-10 accessはいずれも行っていない。
+```text
+Stage 1 = TECHNICAL-INVALID
+Study = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+```
+
+## Stage 2
+
+`EBRWS-S2-FORMAL-2026-09-01-v1` is:
+
+`NOT-AUTHORIZED-NOT-EXECUTED`
+
+Stage 2 seed `31220001..31220288` remains unconsumed. Runner-local Stage 1 diagnostic candidates do not authorize Stage 2.
 
 ## Protected evidence
 
-standard initial RAW rootのcomplete exact depth-10 layerはG3-11用`FRESH-DEEPER-EXACT-HOLDOUT`として引き続き:
+G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
 `SEALED / NOT GENERATED / NOT READ`
 
-G3-02はこれをresource planningにも使用しない。G2-12 estimatorをdepth-10 truthとして利用しない。
+G3-02 did not generate/read it and did not use G2-12 as depth-10 truth.
 
 ## Claim boundary
 
-G3-02で観測可能なのはbounded machine geometryである。次を明確に分離する。
+G3-02 has no formal positive branching/reply-width structure claim. In particular, the diagnostic compression-dominant observations are not generalized to Bao, depth >5, best move, search difficulty, strategic/game-theoretic forcing, win/value, causal strategic effects, or human difficulty.
 
-- branching width
-- reply width
-- multi-ply width profile
-- structural narrowing / expansion
-- transposition / reconvergence
-- search difficulty
-- strategic forcing
-- best move
-- game-theoretic value
-- human difficulty
+## Next program boundary
 
-branch narrowingを「強制手」「最善手が明確」「人間に簡単」と読み替えない。
+G3-02 closure does not automatically authorize G3-03 or later studies. The next scientific action is a separate current-state program review that preserves:
 
-## Next authorization boundary
-
-Stage 0 PASSはStage 1を自動開始しない。Stage 1 scientific seed `31210001..31210192`を生成・readする前に、以下を確認する別authorizationが必要である。
-
-- current-facing documentation synchronization complete
-- frozen protocol / preregistration unchanged
-- Stage 0 `STAGE0-PASS`
-- Stage 1 / Stage 2 seed unconsumed
-- protected depth-10 holdout sealed
-- production / independent Stage 1 implementation boundary fixed
-
-Stage 1 authorization前はfresh scientific executionを行わない。
+- G3-01 immutable technical-invalid closure,
+- LGTGMIV formal eligible family boundary,
+- G3-02 technical-invalid closure and no-rescue boundary,
+- RAW-only identity and validated transform set `[]`,
+- protected depth-10 holdout.
 
 ## Canonical records
 
-Program:
-
 - `README.md`
-- `CURRENT_STATUS.md`
-- `PROGRAM_PLAN.md` — historical prospective plan; do not retrospectively rewrite
-- `checkpoints/2026-09-01-g3-02-authorization-review-authorized.md`
-- `checkpoints/2026-09-01-g3-02-preregistration-freeze.md`
-
-G3-02:
-
-- `../effective-branching-reply-width-structure/README.md`
-- `../effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md`
-- `../effective-branching-reply-width-structure/prereg/STUDY_1_SPEC.json`
+- `PROGRAM_PLAN.md` — historical prospective plan; do not rewrite
+- `../effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`
+- `../effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`
 - `../effective-branching-reply-width-structure/CURRENT_STATUS.md`
 - `../effective-branching-reply-width-structure/DECISION_REGISTER.md`
 - `../effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`
-- `../effective-branching-reply-width-structure/results/stage-0/technical-validation.json`
-- `../effective-branching-reply-width-structure/checkpoints/2026-09-01-stage-0-technical-pass.md`
-- `../research-program-decisions/2026-09-01-post-lgtgmiv-g3-02-authorization-review.md`
+- `../effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
+- `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
 
-G3-01 and LGTGMIV remain closed and immutable. Historical `PROGRAM_PLAN.md` remains unchanged.
+Historical `PROGRAM_PLAN.md` remains unchanged.
