@@ -70,4 +70,4 @@ jobs:
         run: |
           ! grep -Fq 'automaticG302StartAuthorized = true' doc/research-generation-3/CURRENT_STATUS.md
           ! grep -Fq 'G3-02 automatic start = AUTHORIZED' doc/research-generation-3/CURRENT_STATUS.md
-          grep -Fq 'G3-02..G3-08 remain blocked' doc/research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md
+          grep -Fq 'G3-02 and the downstream G3-02..G3-08 chain remain blocked' doc/research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md
