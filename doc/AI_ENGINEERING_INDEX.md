@@ -9,7 +9,7 @@
 ## 1. AI世代の命名
 
 - 現在の公開系統: **`AI-GEN2`**
-- 現在進行中のPBAI-P2比較基準: **`AI-GEN2-BASELINE-2026-09-01-v1`**
+- PBAI-P2 exact baseline: **`AI-GEN2-BASELINE-2026-09-01-v1`**
 - PBAI-P1 historical baseline: **`AI-GEN2-BASELINE-2026-08-26-v1`**
 - 次に正式採用される公開系統の予約名: **`AI-GEN3`**
 - engineering candidate ID: `PBAI-Cxxx`
