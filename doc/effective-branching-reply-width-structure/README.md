@@ -6,7 +6,7 @@
 
 Current state:
 
-`PROTOCOL-FROZEN / STAGE-0-TECHNICAL-NEXT / NO-FRESH-SCIENTIFIC-EVIDENCE-GENERATED`
+`PROTOCOL-FROZEN / STAGE0-PASS / STAGE1-AUTHORIZATION-PENDING / NO-FRESH-SCIENTIFIC-EVIDENCE-GENERATED`
 
 Formal English title:
 
@@ -33,16 +33,33 @@ Secondary contextual dependency:
 
 `effective branching`は新しいmeasurement instrumentではなく、F1 exact primitiveからprospectively定義したexact-rational derived constructである。
 
-## Stage plan
+## Frozen primary endpoint
 
-1. `EBRWS-S0-TECHNICAL-2026-09-01-v1` — technical-only validation
-2. `EBRWS-S1-DEVELOPMENT-2026-09-01-v1` — fresh development, 12 Namua + 12 Mtaji, depth 5
-3. `EBRWS-S2-FORMAL-2026-09-01-v1` — fresh formal holdout, 18 Namua + 18 Mtaji, depth 5; separate authorization required
+Primary construct systemsは次の2つだけである。
+
+1. `TREE-WIDTH-SHAPE`
+2. `REPLY-WIDTH-SHAPE`
+
+phase-level candidate / formal confirmation gateはexactに
+
+`3 * classCount >= 2 * eligibleRootCount`
+
+とする。Stage 2はStage 1でpromoteされfreezeされた同一construct / phase / classだけを検証する。
+
+## Stage plan and current state
+
+1. `EBRWS-S0-TECHNICAL-2026-09-01-v1` — **`STAGE0-PASS`** / synthetic technical-only validation
+2. `EBRWS-S1-DEVELOPMENT-2026-09-01-v1` — **`NOT-AUTHORIZED-NOT-EXECUTED`** / fresh development, 12 Namua + 12 Mtaji, depth 5
+3. `EBRWS-S2-FORMAL-2026-09-01-v1` — **`NOT-AUTHORIZED-NOT-EXECUTED`** / fresh formal holdout, 18 Namua + 18 Mtaji, depth 5
+
+Stage 0 production / independent scientific-core digest:
+
+`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
 
 Fresh seed blocks:
 
-- Stage 1: `31210001..31210192`
-- Stage 2: `31220001..31220288`
+- Stage 1: `31210001..31210192` — **not consumed**
+- Stage 2: `31220001..31220288` — **not consumed**
 
 Stage 1/2 seeds are not to be generated or read before their corresponding authorization gates.
 
@@ -52,6 +69,10 @@ standard initial RAW root complete exact depth-10 holdout remains:
 
 `SEALED / NOT GENERATED / NOT READ`
 
+## Interpretation boundary
+
+branching width / reply width / multi-ply width profileはmachine-observed bounded RAW geometryであり、best move、search difficulty、game-theoretic forcing、win/value、human difficultyとは別constructである。
+
 ## Canonical records
 
 - `STUDY_1_PROTOCOL.md` — frozen scientific protocol
@@ -59,5 +80,7 @@ standard initial RAW root complete exact depth-10 holdout remains:
 - `CURRENT_STATUS.md` — current-facing state
 - `DECISION_REGISTER.md` — formal decisions
 - `REPRODUCIBILITY_INDEX.md` — reproducibility map
+- `results/stage-0/technical-validation.json` — Stage 0 technical result
+- `checkpoints/2026-09-01-stage-0-technical-pass.md` — Stage 0 PASS checkpoint
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains immutable and is not rewritten.
