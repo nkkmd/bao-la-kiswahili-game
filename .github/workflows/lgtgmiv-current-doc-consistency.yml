@@ -1,0 +1,109 @@
+name: LGTGMIV Current Document Consistency
+
+on:
+  push:
+    branches:
+      - maintenance/lgtgmiv-current-doc-consistency-2026-09-01
+    paths:
+      - tools/experiments/materialize-lgtgmiv-current-doc-consistency.js
+      - .github/workflows/lgtgmiv-current-doc-consistency.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lgtgmiv-current-doc-consistency
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Capture immutable scientific and historical blobs
+        run: |
+          echo "PROGRAM_PLAN_BEFORE=$(git rev-parse HEAD:doc/research-generation-3/PROGRAM_PLAN.md)" >> "$GITHUB_ENV"
+          echo "LGTGMIV_PROTOCOL_BEFORE=$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md)" >> "$GITHUB_ENV"
+          echo "LGTGMIV_FINAL_BEFORE=$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md)" >> "$GITHUB_ENV"
+          echo "STAGE2_RESULT_BEFORE=$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-2/scientific-result.json)" >> "$GITHUB_ENV"
+      - name: Materialize bounded current-document synchronization
+        run: node tools/experiments/materialize-lgtgmiv-current-doc-consistency.js
+      - name: Verify immutable scientific and historical blobs unchanged
+        run: |
+          test "$PROGRAM_PLAN_BEFORE" = "$(git rev-parse HEAD:doc/research-generation-3/PROGRAM_PLAN.md)"
+          test "$LGTGMIV_PROTOCOL_BEFORE" = "$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md)"
+          test "$LGTGMIV_FINAL_BEFORE" = "$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md)"
+          test "$STAGE2_RESULT_BEFORE" = "$(git rev-parse HEAD:doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-2/scientific-result.json)"
+      - name: Verify bounded changed-file allowlist
+        run: |
+          git diff --name-only > /tmp/changed.txt
+          cat /tmp/changed.txt
+          node - <<'NODE'
+          const fs=require('fs'),assert=require('assert/strict');
+          const got=fs.readFileSync('/tmp/changed.txt','utf8').trim().split('\n').filter(Boolean).sort();
+          const allowed=[
+            'README.md',
+            'doc/FUTURE_RESEARCH_AGENDA.md',
+            'doc/RESEARCH_INDEX.md',
+            'doc/local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md',
+            'doc/local-game-tree-geometry-measurement-foundation/README.md',
+            'doc/local-game-tree-geometry-measurement-instrument-verification/README.md',
+            'doc/research-generation-3/README.md',
+            'doc/research-generation-3/checkpoints/2026-09-01-lgtgmiv-current-doc-consistency-sync.md'
+          ].sort();
+          assert.deepEqual(got,allowed);
+          NODE
+      - name: Verify synchronized current-facing markers
+        run: |
+          grep -Fq 'LGTGMIV-STUDY1`は2026-09-01に`CLOSED / FORMAL-ELIGIBLE-ALL`' doc/local-game-tree-geometry-measurement-foundation/README.md
+          grep -Fq 'その後`LGTGMIV-STUDY1`として正式固定され' doc/local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md
+          grep -Fq 'P0 / AUTHORIZATION REVIEW REQUIRED / NOT STARTED' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -Fq '2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md' README.md
+          grep -Fq '2026-09-01-lgtgmiv-main-integration-complete.md' README.md
+          grep -Fq '2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md' doc/research-generation-3/README.md
+          grep -Fq 'main` integration: **COMPLETE**' doc/local-game-tree-geometry-measurement-instrument-verification/README.md
+          grep -Fq '2026-09-01-lgtgmiv-main-integration-complete.md' doc/RESEARCH_INDEX.md
+          grep -Fq 'G3-02 automatic start = BLOCKED' doc/research-generation-3/CURRENT_STATUS.md
+          grep -Fq 'automaticG302StartAuthorized = false' doc/local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md
+          grep -Fq 'SEALED / NOT GENERATED / NOT READ' doc/research-generation-3/CURRENT_STATUS.md
+          ! grep -Fq 'formal Study ID、scientific execution、fresh seed consumptionはまだ開始していない' doc/local-game-tree-geometry-measurement-foundation/README.md
+          ! grep -Fq 'formal Study ID、scientific execution、fresh seed consumptionはまだ開始しておらず' doc/local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md
+      - name: Verify canonical Stage 2 closure remains unchanged
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),assert=require('assert/strict');
+          const d='doc/local-game-tree-geometry-measurement-instrument-verification/results/stage-2/';
+          const s=JSON.parse(fs.readFileSync(d+'execution-summary.json'));
+          const a=JSON.parse(fs.readFileSync(d+'posthoc-audit-summary.json'));
+          assert.equal(s.formalDecision,'FORMAL-ELIGIBLE-ALL');
+          assert.equal(s.globalGatePass,true);
+          assert.equal(s.formalEligibleFamilies.length,5);
+          assert.equal(s.automaticG302StartAuthorized,false);
+          assert.equal(s.protectedStandardRootDepth10Generated,false);
+          assert.equal(s.protectedStandardRootDepth10Read,false);
+          assert.equal(a.passed,true);
+          assert.equal(a.rootCount,24);
+          assert.equal(a.exactRootReconstructionCount,24);
+          assert.equal(a.scientificReexecutionPerformed,false);
+          assert.equal(a.engineImported,false);
+          NODE
+      - name: Commit synchronized current-facing docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            README.md \
+            doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/RESEARCH_INDEX.md \
+            doc/local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md \
+            doc/local-game-tree-geometry-measurement-foundation/README.md \
+            doc/local-game-tree-geometry-measurement-instrument-verification/README.md \
+            doc/research-generation-3/README.md \
+            doc/research-generation-3/checkpoints/2026-09-01-lgtgmiv-current-doc-consistency-sync.md
+          git commit -m "Synchronize current docs after LGTGMIV closure"
+          git push
