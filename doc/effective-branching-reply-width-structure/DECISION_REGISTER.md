@@ -54,3 +54,25 @@ The standard initial RAW-root complete exact depth-10 holdout remains reserved f
 Decision: `ACTIVE UPON FIRST STAGE-1 FRESH EVIDENCE GENERATION OR READ`
 
 After that boundary, thresholds, endpoint definitions, measurement-family usage, phase subsets, root selection, seed blocks, horizon, class rules, promotion gate, and decision taxonomy cannot be changed to rescue the same evidence.
+
+## D-006 — 2026-09-01 — Stage 0 technical authorization
+
+Decision: `AUTHORIZED`
+
+Stage: `EBRWS-S0-TECHNICAL-2026-09-01-v1`
+
+Only synthetic/non-scientific primitive fixtures were authorized. Fresh Stage 1/2 seed consumption and protected depth-10 access were prohibited.
+
+## D-007 — 2026-09-01 — Stage 0 technical result
+
+Decision: `STAGE0-PASS`
+
+All mandatory technical checks passed, including exact-rational arithmetic, class boundary cases, exact 2/3 promotion boundary, production / independent exact agreement, order invariance, telemetry separation, and static independence.
+
+Production / independent stage scientific core:
+
+`ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
+
+Fresh scientific evidence generated/read remained false. Protected depth-10 access remained false.
+
+Stage 0 PASS does not itself authorize Stage 1. Central current-facing documentation synchronization and a separate Stage 1 authorization are required first.
