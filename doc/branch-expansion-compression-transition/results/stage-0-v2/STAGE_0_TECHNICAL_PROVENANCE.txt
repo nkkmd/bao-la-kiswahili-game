@@ -1,0 +1,9 @@
+workflow_run_id=33632094597
+workflow_head_sha=9a2c4549f748085ec11b8f30263e97459b3caff4
+authorization_nonce=BECT-S0-AUTH-2026-09-02-V2-01
+technical_seed=31500001
+technical_seed_scientific_use_prohibited=true
+fresh_scientific_seed_access=false
+stage1_seed_access=false
+stage2_seed_access=false
+protected_depth10_access=false
