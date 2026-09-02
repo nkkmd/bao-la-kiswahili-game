@@ -1,0 +1,60 @@
+name: SFCDF Identity Firewall Materialize
+
+on:
+  push:
+    branches:
+      - research/g3-04-structural-forcing-corridor-decision-funnel
+    paths:
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/IDENTITY_FIREWALL_MATERIALIZE_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sfcdf-identity-firewall-materialize-v1
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-04-structural-forcing-corridor-decision-funnel
+          fetch-depth: 0
+      - name: Verify pre-fresh boundary and materializer source
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const s=require('./doc/structural-forcing-corridor-decision-funnel/prereg/STUDY_1_SPEC.json');
+          const r=require('./doc/structural-forcing-corridor-decision-funnel/results/stage-0/STAGE_0_TECHNICAL_RESULT.json');
+          if(r.stageDisposition!=='STAGE0-PASS') throw Error('Stage 0 PASS required');
+          if(s.stages[1].seedStart!==31410001||s.stages[2].seedStart!==31420001) throw Error('fresh seed contract changed');
+          if(s.protectedEvidence.standardInitialRawRootCompleteExactDepth10Holdout!=='SEALED / NOT GENERATED / NOT READ') throw Error('protected holdout changed');
+          NODE
+      - name: Materialize identity-only firewall
+        run: node tools/experiments/materialize-sfcdf-upstream-identity-firewall.js
+      - name: Verify manifest contains identity only
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const m=require('./doc/structural-forcing-corridor-decision-funnel/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          if(m.scientificOutcomeFieldsRetained!==false||m.g303ScientificOutcomesRetained!==false) throw Error('scientific outcome retained');
+          if(m.identityRecordCount!==104) throw Error(`expected 104 identities, got ${m.identityRecordCount}`);
+          for(const r of m.identityRecords){
+            const ks=Object.keys(r).sort().join(',');
+            if(ks!=='openingPrefixLength,openingPrefixSha256,origin,rootRawSha256,sourceTrajectorySha256') throw Error(`unexpected identity record fields: ${ks}`);
+          }
+          NODE
+          git diff --check
+      - name: Commit identity-only manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/structural-forcing-corridor-decision-funnel/prereg/UPSTREAM_IDENTITY_FIREWALL.json
+          git commit -m "Materialize G3-04 upstream identity-only firewall"
+          git push origin HEAD:research/g3-04-structural-forcing-corridor-decision-funnel
