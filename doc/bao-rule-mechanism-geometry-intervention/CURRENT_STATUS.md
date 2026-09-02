@@ -6,20 +6,21 @@
 Study = BRMGI-STUDY1
 Program position = Research Generation 3 / G3-06
 Program review = G3-06-AUTHORIZED
-Study status = PROSPECTIVE-FROZEN / STAGE0-PASS / PRE-STAGE1-AUTHORIZATION
+Study status = CLOSED / TECHNICAL-INVALID
 review baseline remote main = 5525700937f0ada1aec39634012e8ad623e228c4
 Study baseline remote main = b0cbd9f562bb803597acb313360c064dadd73299
 research branch = research/g3-06-bao-rule-mechanism-geometry-intervention
 Stage 0 v1 = BRMGI-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID / NO RERUN
 Stage 0 v2 = BRMGI-S0-TECHNICAL-2026-09-03-v2 / STAGE0-PASS
-Stage 1 = BRMGI-S1-DEVELOPMENT-2026-09-02-v1 / NOT AUTHORIZED / NOT EXECUTED
-Stage 2 = BRMGI-S2-FORMAL-2026-09-02-v1 / NOT AUTHORIZED / NOT EXECUTED
-technical namespace = 31609001..31609008 / scientific use prohibited
-Stage 1 seed = 31610001..31610256 / RESERVED / NOT CONSUMED
-Stage 2 seed = 31620001..31620384 / RESERVED / NOT CONSUMED
-fresh G3-06 scientific evidence generated = false
-fresh G3-06 scientific evidence read = false
-no-rescue boundary = NOT CROSSED
+Stage 1 = BRMGI-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
+Stage 1 authorized scientific executions = 1
+Stage 1 actual scientific executions = 1
+Stage 1 seed = 31610001..31610256 / CONSUMED
+formal promoted candidate set = []
+Stage 2 = BRMGI-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = 31620001..31620384 / NOT CONSUMED
+fresh G3-06 scientific evidence = ACCESSED / TECHNICAL-INVALID BEFORE GEOMETRY MEASUREMENT
+no-rescue boundary = CROSSED / ACTIVE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ
 main integration = NOT PERFORMED
 ```
@@ -34,9 +35,9 @@ English title:
 
 **Bao固有のrule-semantic eventに伴う局所ゲーム木幾何変化のprospective move-conditioned exact解析 — capture、nyumba選択、reserve枯渇／Namua→Mtaji移行を対象とするbounded RAW pre/post構造差の検証**
 
-Historical agendaの`Intervention`はcausal claim authorizationを意味しない。本Studyのclaim classは`move-conditioned structural change`、`event-conditioned geometry difference`、`association`に限定する。
+Historical agendaの`Intervention`はcausal claim authorizationを意味しない。本Studyのclaim classは`move-conditioned structural change`、`event-conditioned geometry difference`、`association`に限定していた。
 
-## Frozen instrument boundary
+## Frozen instrument / event boundary
 
 ```text
 representation = RAW-ONLY
@@ -48,146 +49,145 @@ canonicalization / symmetry quotient = NOT AUTHORIZED
 eligible families = LGTGMIV F1,F2,F3,F4,F5
 ```
 
-## Frozen event / source semantics
+Formal event familiesはE1 capture source move、E2 nyumba use-vs-stop、E3 linked reserve-exhaustion/Namua→Mtaji。E0 nontransition reserve decrementはcontrol/descriptive-only。Formal endpoint universeはM1 root legal width、M2 cumulative tree occurrence、M3 global distinct RAW states、M4 duplicate-transition fraction、M5 cumulative tree/RAW ratio、M6 unit-width occupancy fractionだった。
 
-Formal candidate families:
+Source trajectoryは`engine.legalMoves`をcanonical orderへ並べて選択し、`engine.moveVariants`はE2 same-root stop/use armsだけを列挙するというpre-fresh clarificationを固定した。
 
-1. `BRMGI-E1-CAPTURE-SOURCE-MOVE`
-   - actual source capture move
-   - capture is mandatory, so generic same-root capture/non-capture contrastは構成しない
-   - controlはsame trajectory / same pre-phaseのnearest earlier primary-eligible non-capture actual move
-2. `BRMGI-E2-NYUMBA-USE-VS-STOP`
-   - same RAW root / same physical opening moveの`houseChoice=use` vs `stop`
-   - useでmover nyumba ownershipを失い、stopで保持するcomparable rootのみ
-3. `BRMGI-E3-RESERVE-EXHAUSTION-NAMUA-TO-MTAJI`
-   - pre Namua / post Mtajiのlinked compound event
-   - controlは直前のNamua→Namua reserve-decrement actual move
-
-Control/descriptive only:
-
-- `BRMGI-E0-NAMUA-RESERVE-DECREMENT-NONTRANSITION`
-
-Source trajectoryはpreregisteredどおり`engine.legalMoves`をcanonical orderへ並べて選択する。`engine.moveVariants`はE2のsame-root stop/use armsを列挙するためだけに使用し、source trajectoryそのものの進行やE1/E3 actual-source bindingを変更しない。このpre-fresh clarificationは`prereg/STUDY_1_SPEC_CLARIFICATION_1.json`に固定した。
-
-## Frozen endpoint universe
-
-1. `BRMGI-M1-ROOT-LEGAL-WIDTH`
-2. `BRMGI-M2-CUMULATIVE-TREE-OCCURRENCE`
-3. `BRMGI-M3-GLOBAL-DISTINCT-RAW-STATES`
-4. `BRMGI-M4-DUPLICATE-TRANSITION-FRACTION`
-5. `BRMGI-M5-CUMULATIVE-TREE-RAW-RATIO`
-6. `BRMGI-M6-UNIT-WIDTH-OCCUPANCY-FRACTION`
-
-全metricはformal-eligible LGTGMIV primitiveまたはそのdeterministic exact integer/rational function。pre/post deltaとevent-control contrastはexact arithmeticで計算し、float toleranceやmagnitude thresholdを使用しない。
-
-## Stage 0 technical history
+## Stage 0 history
 
 ### v1 — TECHNICAL-INVALID / NO RERUN
 
-Exactly one authorized v1 execution `33677691455`は、synthetic nyumba fixtureが34 seedsしか表現していなかったため、LGTGMIVのfrozen RAW invariant `represented seed total == 64`でfail closedした。
-
-```text
-fresh Stage 1 seed access = false
-fresh Stage 2 seed access = false
-fresh scientific evidence = false
-protected depth-10 access = false
-```
-
-v1はrerunしていない。
+Run `33677691455`。34-seed synthetic nyumba fixtureがLGTGMIVの64-seed RAW invariantを満たさずfail closed。fresh scientific evidenceは0で、v1はrerunしていない。
 
 ### v2 — STAGE0-PASS
 
-fresh scientific evidence 0の状態で、科学contractを変更せずtechnical nyumba fixtureだけを64-seed invariantへ適合させた別version `BRMGI-S0-TECHNICAL-2026-09-03-v2`をprospectively refreezeした。
-
-Pre-execution static audit:
+科学contractを変更せずtechnical nyumba fixtureだけを64 seedsへ修正した別version。
 
 ```text
-run = 33677942576
-head = f8e9eec83ee041d11f2c028259367fc5530ad462
-artifact = 9865076199
-artifact ZIP SHA-256 = 3db1200db55181a96a2e74cfc6a1db4c3eceafb418159a4d1b42ee4134db3d76
-result = PASS
-```
-
-Exactly-one technical execution:
-
-```text
-authorization commit = 5ab33517c43ec11135488823e84c6c6859643415
-trigger commit = 9885e7fe470e82c58cf60cca91fdc4518499eb13
-run = 33678004793
-job = 100407435042
+static audit run = 33677942576
+formal run = 33678004793
 authorized executions = 1
 actual executions = 1
-Stage disposition = STAGE0-PASS
-```
-
-Durability:
-
-```text
-lease artifact = 9865100897
-lease ZIP SHA-256 = f5542580f85cf15c4d9250cb11c4df5daf98e1eaec766f89c25da5082e799a18
 result artifact = 9865102178
 result ZIP SHA-256 = 06015d340a3a0de4703af2755c1a265153fef08393dc43fcd38e1285fb1295ff
 result file SHA-256 = 4089bc0acd8b719e23a21a2605b34281d13992c2cc75dfd9dc5474c8bb2eade3
 deterministicCoreSha256 = 326d6fa89f1c53af2d33c0d0fddf5dfe15d197442921a5d02aa6254423ef5b63
+Stage disposition = STAGE0-PASS
 ```
 
-T1-T10はすべてPASS。production / independentのtechnical geometry reconstruction SHA-256は双方`ed70d0b1ed44a77813150a66709660e075271126a852452fa534f41b39fab90a`で完全一致した。
+T1-T10は全PASS。production / independent technical geometry reconstruction SHA-256は双方`ed70d0b1ed44a77813150a66709660e075271126a852452fa534f41b39fab90a`で一致した。
 
-Result artifactは再計算せずexact contentとして`results/stage-0-v2/STAGE_0_TECHNICAL_RESULT.json`へmirror済み。
+## Upstream identity firewall
 
-## Frozen fresh population
-
-Source trajectory:
+Stage 1前にidentity-only firewallをmaterializeした。
 
 ```text
-PRNG = Mulberry32
-source move set = engine.legalMoves
-legal move order = canonical identity ascending
-random index = floor(u * legalMoveCount)
-max source ply = 80
-event scan = plies 16..63 inclusive
-selection = seed ascending
+root RAW identities = 149
+source trajectory identities = 124
+opening-prefix identities = 67
+G3-05 partial root identities retained = 25
+scientificOutcomeFieldsRetained = false
+g305PartialScientificFieldsRetained = false
+identityCoreSha256 = a225b8c15d6da956dd1afbdc0a64c6d40b9c77add2e464d34f11dfc1278e2182
+materialization run = 33678555012
+artifact = 9865308337
+exact mirror commit = 6029679c7a218ca35bb1da343d86670285070d7a
 ```
 
-Stage 1:
+G3-03 diagnostic scientific fields、G3-04 C1/C6 values/directions、G3-05 partial geometry/resource valuesはselection inputへ保持していない。
+
+## Stage 1 preparation and authorization
+
+Preauthorization static audit:
 
 ```text
-seed = 31610001..31610256
-target = 8 comparable units / formal event family
-max one unit / event family / trajectory
-max distinct local reconstructions = 96
+run = 33679102557
+audited scientific-content HEAD = d90ab9e00eda1d52535ae72e44806fcfc443f2a9
+artifact = 9865516597
+result = PASS
 ```
 
-Stage 2:
+unarmed runner fail-closed、production/independent分離、actual `engine.legalMoves`、E2 variant分離、firewall、resource/fail-closed gates、single trigger/concurrency/artifact pathをPASSした。
+
+Scientific authorization:
 
 ```text
-seed = 31620001..31620384
-target = 12 comparable units / promoted event family
-Stage 1 identity firewall = mandatory
-max distinct local reconstructions = 144
+authorization commit = 1edc8886ffb0d2b65c7f4c1c8fb002be0abbe6e7
+trigger commit = 61cb2ed31c26151edf19b9c1eb49f6b22b935898
+authorization nonce = BRMGI-S1-AUTH-2026-09-03-V1-01
+max scientific executions = 1
 ```
 
-seed block内でtargetへ到達しないevent familyはnon-estimable。seed extensionしない。
+## Stage 1 formal disposition
 
-## Frozen Stage 1 promotion / Stage 2 formal rule
+Exactly one fresh Stage 1 execution `33679269612`はauthorization chainとsource blob bindingをPASSし、fresh computation前にdurable leaseを保存した。その後fresh seedへアクセスし、production / independent event-unit selection比較でfail closedした。
 
-Candidate universeはE1/E2/E3 × M1..M6の18組合せ。
+Canonical result:
 
-Stage 1 promotionにはtechnical global PASS、production / independent exact PASS、8/8 comparable units、nonzero exact contrasts >=6、nonzero contrastの少なくとも2/3が同一signを要求する。dominant signをStage 2へfreezeする。
+```text
+stageDisposition = TECHNICAL-INVALID
+technicalError = production/independent selection mismatch
+relayLimitInsideBoundedReconstruction = false
+formalPromotedCandidateSet = []
+```
 
-Stage 2はpromoted candidateだけを評価し、12/12 comparable units、nonzero >=10、exact two-sided sign test、Stage 1 frozen direction、Holm-Bonferroni、family-wise alpha=`1/20`を用いる。
+Failureはgeometry measurement開始前である。
 
-## Resource / relay-limit / firewall boundary
+```text
+unitTimings = []
+productionResources = null
+independentResources = null
+stageElapsedMs = 943.954495
+maxRssBytes = 103530496
+stageElapsedPass = true
+```
 
-G3-05のrelay-limit failureはtechnical risk情報にのみ使用する。Required depth-5 reconstruction内でrelay-limitを検出した場合はStage全体を`TECHNICAL-INVALID`としてfail closedし、root replacement、seed extension、same-evidence repair rerunは行わない。
+したがってM1-M6のfresh development summary、event-family direction、promotion decisionは成立していない。
 
-G3-03 diagnostic scientific fields、G3-04 C1/C6 values/directions、G3-05 partial telemetryをG3-06 selection/threshold/candidate inputへ使わない。Stage 2ではStage 1 source seed、trajectory、first-16 prefix、RAW pre/post roots、root pair、bound move、event window、same-root event/control pair identitiesを除外する。
+Durable provenance:
 
-## Next action
+```text
+lease artifact = 9865580015
+lease ZIP SHA-256 = 9308c696f221cfa760b288a725837b4566e82231ea955185bea1e6cf2a3bb082
+result artifact = 9865581198
+result ZIP SHA-256 = 3f43ff832afaae5fc0a1d6756dcc9fa0101eb5a67befc7f3cdc2d1536bdb5d2a
+scientific-result.json SHA-256 = a5a2f385699cd8bc629e1d1594005841778a82c7d1ca18bb7eb5bcfeb0d41452
+telemetry.json SHA-256 = 141f4687528ce62fe60052c4c9ecff217a6a929a43190e4f5a507f8d4abc77f0
+execution-summary.json SHA-256 = a3fdf314f12d6853e337f13b6c252eaebf27edb69c96dab53829b033ece5ca77
+exact-byte mirror workflow = 33679517438
+exact-byte mirror commit = b8f9fe0e2d5008be2d41b3b8271fa325144f82fc
+```
 
-Stage 0は**`STAGE0-PASS via v2`**としてtechnical closure済み。
+## No-rescue / scientific boundary
 
-次の許可されたactionはfresh-freeな**post-Stage-0 Stage 1 authorization review**である。fresh Stage 1 scientific executionはそのreviewで明示的にauthorizeされるまで`NOT AUTHORIZED`。
+Stage 1 seed `31610001..31610256`はconsume済み。no-rescue boundaryはactiveである。selector修正後のsame-evidence rerun、seed extension、event/root/control replacement、event/endpoint/control redesign、threshold/resource変更、partial selection provenanceからのcandidate promotionを行わない。
 
-Protected depth-10 holdoutは引き続き`SEALED / NOT GENERATED / NOT READ`。
+今回のtechnical-invalid resultから、capture / nyumba / reserve exhaustion / Namua→Mtajiがbounded geometryを変える／変えないというpositive・negative・null conclusionは導かない。G3-04 C1/C6やG3-05をrule mechanismで説明したとも解釈しない。
+
+## Stage 2 and protected evidence
+
+Valid Stage 1 completion + nonempty promoted candidate setがないため:
+
+```text
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = 31620001..31620384 / NOT CONSUMED
+```
+
+Protected standard initial RAW-root complete exact depth-10 holdout remains:
+
+**`SEALED / NOT GENERATED / NOT READ`**
+
+## Closure / next program action
+
+BRMGI-STUDY1は **`CLOSED / TECHNICAL-INVALID`**。unfinished研究として扱わない。
+
+Canonical closure records:
+
+- `STUDY_1_FINAL_REPORT.md`
+- `checkpoints/2026-09-03-stage-1-technical-invalid-study-closure.md`
+- `../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`
+- `../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`
+
+Historical agenda上のG3-07は自動authorizeしない。次に進む場合はseparate post-G3-06 current-state authorization reviewが必要で、BRMGI selection diagnosticsをvalidated scientific inputとして継承しない。
+
+Main integration is **NOT PERFORMED** until explicit user instruction.
