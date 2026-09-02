@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRMGI-STUDY1",
+  "stageId": "BRMGI-S0-TECHNICAL-2026-09-03-v2",
+  "predecessorStageId": "BRMGI-S0-TECHNICAL-2026-09-02-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "stageDisposition": "STAGE0-PASS",
+  "freshScientificEvidenceGenerated": false,
+  "freshStage1SeedAccess": false,
+  "freshStage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "technicalSeedBlock": "31609001..31609008",
+  "fixtures": {
+    "captureControl": {
+      "seed": 31609001,
+      "eventPly": 16,
+      "eventIndex": 15,
+      "controlIndex": 0,
+      "eventMoveKey": "{\"direction\":\"right\",\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+      "controlMoveKey": "{\"direction\":\"left\",\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"type\":\"takata\"}"
+    },
+    "nyumba": {
+      "representedSeedTotal": 64,
+      "productionPairCount": 1,
+      "independentPairCount": 1,
+      "productionKeys": [
+        "{\"direction\":\"right\",\"houseTwo\":false,\"index\":2,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}"
+      ],
+      "independentKeys": [
+        "{\"direction\":\"right\",\"houseTwo\":false,\"index\":2,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}"
+      ]
+    },
+    "phase": {
+      "moveKey": "{\"direction\":\"left\",\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"type\":\"takata\"}",
+      "productionLabels": [
+        "BRMGI-E3-RESERVE-EXHAUSTION-NAMUA-TO-MTAJI"
+      ],
+      "independentLabels": [
+        "BRMGI-E3-RESERVE-EXHAUSTION-NAMUA-TO-MTAJI"
+      ],
+      "postPhase": "mtaji"
+    },
+    "geometry": {
+      "rootRawSha256": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+      "productionReconstructionSha256": "ed70d0b1ed44a77813150a66709660e075271126a852452fa534f41b39fab90a",
+      "independentReconstructionSha256": "ed70d0b1ed44a77813150a66709660e075271126a852452fa534f41b39fab90a",
+      "productionEndpoint": {
+        "values": {
+          "BRMGI-M1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "1",
+            "defined": true
+          },
+          "BRMGI-M2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "586",
+            "denominator": "1",
+            "defined": true
+          },
+          "BRMGI-M3-GLOBAL-DISTINCT-RAW-STATES": {
+            "numerator": "560",
+            "denominator": "1",
+            "defined": true
+          },
+          "BRMGI-M4-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "9",
+            "denominator": "568",
+            "defined": true
+          },
+          "BRMGI-M5-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "293",
+            "denominator": "280",
+            "defined": true
+          },
+          "BRMGI-M6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "13",
+            "denominator": "279",
+            "defined": true
+          }
+        },
+        "primitiveTotals": {
+          "treeNodeOccurrences": "586",
+          "distinctRawStates": "560",
+          "duplicateEncounterCount": "9",
+          "uniqueTransitionCount": "568",
+          "unitWidthStateCount": "26",
+          "positiveReplyWidthStatePresence": "558"
+        }
+      },
+      "independentEndpoint": {
+        "values": {
+          "BRMGI-M1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "1",
+            "defined": true
+          },
+          "BRMGI-M2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "586",
+            "denominator": "1",
+            "defined": true
+          },
+          "BRMGI-M3-GLOBAL-DISTINCT-RAW-STATES": {
+            "numerator": "560",
+            "denominator": "1",
+            "defined": true
+          },
+          "BRMGI-M4-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "9",
+            "denominator": "568",
+            "defined": true
+          },
+          "BRMGI-M5-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "293",
+            "denominator": "280",
+            "defined": true
+          },
+          "BRMGI-M6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "13",
+            "denominator": "279",
+            "defined": true
+          }
+        },
+        "primitiveTotals": {
+          "treeNodeOccurrences": "586",
+          "distinctRawStates": "560",
+          "duplicateEncounterCount": "9",
+          "uniqueTransitionCount": "568",
+          "unitWidthStateCount": "26",
+          "positiveReplyWidthStatePresence": "558"
+        }
+      }
+    },
+    "arithmetic": {
+      "production": {
+        "delta": {
+          "numerator": "-1",
+          "denominator": "6",
+          "defined": true
+        },
+        "contrast": {
+          "numerator": "-5",
+          "denominator": "12",
+          "defined": true
+        }
+      },
+      "independent": {
+        "delta": {
+          "numerator": "-1",
+          "denominator": "6",
+          "defined": true
+        },
+        "contrast": {
+          "numerator": "-5",
+          "denominator": "12",
+          "defined": true
+        }
+      }
+    }
+  },
+  "gates": {
+    "t1CaptureMandatory": true,
+    "t2ControlSelection": true,
+    "t3NyumbaPair": true,
+    "t4PhaseTransition": true,
+    "t5CompoundLabels": true,
+    "t6ExactArithmetic": true,
+    "t7GeometryBinding": true,
+    "t8RawOnlyCacheSemantics": true,
+    "t9RelayLimitFailClosedSentinel": true,
+    "t10ExecutionIntegrityDeclared": true
+  },
+  "deterministicCoreSha256": "326d6fa89f1c53af2d33c0d0fddf5dfe15d197442921a5d02aa6254423ef5b63"
+}
