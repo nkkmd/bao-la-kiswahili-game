@@ -1,0 +1,64 @@
+name: BECT Stage 1 Tooling Smoke
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/STAGE1_TOOLING_SMOKE_TRIGGER
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bect-stage1-tooling-smoke-v1
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Verify frozen control-plane sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object .github/workflows/bect-stage1-development.yml)" = "dcb39d07420ad81db9e10d0ba08a10a9a3cb7cb7"
+          test "$(git hash-object tools/experiments/run-bect-stage1-development.js)" = "127cb10ea23d18f0a32c2adc2d8c499de4c19b04"
+          test "$(git hash-object doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json)" = "123430eb0cbe100bf50e068ee4c4ee7dc52c2ca8"
+          test ! -e doc/branch-expansion-compression-transition/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION.json
+          test ! -e doc/branch-expansion-compression-transition/authorizations/STAGE1_EXECUTION_TRIGGER
+          test ! -e doc/branch-expansion-compression-transition/executions/stage-1-execution-started.json
+      - name: Confirm unarmed scientific runner fails closed before fresh access
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf doc/branch-expansion-compression-transition/results/stage-1
+          set +e
+          node tools/experiments/run-bect-stage1-development.js > /tmp/bect-unarmed.out 2>&1
+          CODE=$?
+          set -e
+          test "$CODE" -ne 0
+          grep -q 'STAGE_1_DEVELOPMENT_AUTHORIZATION.json' /tmp/bect-unarmed.out
+          test ! -e doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json
+          test ! -e doc/branch-expansion-compression-transition/executions/stage-1-execution-started.json
+          printf '%s\n' \
+            'unarmed_runner_fail_closed=true' \
+            'scientific_computation_started=false' \
+            'stage1_seed_access=false' \
+            'stage2_seed_access=false' \
+            'protected_depth10_access=false'
+      - name: Confirm one dedicated scientific trigger path is declared
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(grep -c 'STAGE1_EXECUTION_TRIGGER' .github/workflows/bect-stage1-development.yml)" -eq 1
+          ! grep -q 'workflow_run:' .github/workflows/bect-stage1-development.yml
+          ! grep -q 'workflow_dispatch:' .github/workflows/bect-stage1-development.yml
+          grep -q 'cancel-in-progress: false' .github/workflows/bect-stage1-development.yml
+          grep -q 'stage-1-execution-started.json' .github/workflows/bect-stage1-development.yml
+          grep -q 'actions/upload-artifact@v4' .github/workflows/bect-stage1-development.yml
+          echo 'BECT_STAGE1_TOOLING_SMOKE=PASS'
