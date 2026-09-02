@@ -1,0 +1,44 @@
+name: BRMGI Stage 1 Exact Result Mirror
+on:
+  push:
+    branches:
+      - research/g3-06-bao-rule-mechanism-geometry-intervention
+    paths:
+      - doc/bao-rule-mechanism-geometry-intervention/checkpoints/brmgi-stage1-result-mirror-trigger.txt
+concurrency:
+  group: brmgi-stage1-result-mirror
+  cancel-in-progress: false
+permissions:
+  contents: write
+  actions: read
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-06-bao-rule-mechanism-geometry-intervention
+      - name: Download immutable Stage 1 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/brmgi-s1
+          mkdir -p /tmp/brmgi-s1
+          gh run download 33679269612 -n brmgi-stage1-development-result-33679269612 -D /tmp/brmgi-s1
+          test "$(sha256sum /tmp/brmgi-s1/scientific-result.json | awk '{print $1}')" = "a5a2f385699cd8bc629e1d1594005841778a82c7d1ca18bb7eb5bcfeb0d41452"
+          test "$(sha256sum /tmp/brmgi-s1/telemetry.json | awk '{print $1}')" = "141f4687528ce62fe60052c4c9ecff217a6a929a43190e4f5a507f8d4abc77f0"
+          test "$(sha256sum /tmp/brmgi-s1/execution-summary.json | awk '{print $1}')" = "a3fdf314f12d6853e337f13b6c252eaebf27edb69c96dab53829b033ece5ca77"
+      - name: Mirror exact artifact bytes without scientific recomputation
+        run: |
+          set -euo pipefail
+          mkdir -p doc/bao-rule-mechanism-geometry-intervention/results/stage-1
+          cp /tmp/brmgi-s1/scientific-result.json doc/bao-rule-mechanism-geometry-intervention/results/stage-1/scientific-result.json
+          cp /tmp/brmgi-s1/telemetry.json doc/bao-rule-mechanism-geometry-intervention/results/stage-1/telemetry.json
+          cp /tmp/brmgi-s1/execution-summary.json doc/bao-rule-mechanism-geometry-intervention/results/stage-1/execution-summary.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/bao-rule-mechanism-geometry-intervention/results/stage-1
+          git diff --cached --quiet && exit 0
+          git commit -m "Mirror exact BRMGI Stage 1 technical-invalid result"
+          git push origin HEAD:research/g3-06-bao-rule-mechanism-geometry-intervention
