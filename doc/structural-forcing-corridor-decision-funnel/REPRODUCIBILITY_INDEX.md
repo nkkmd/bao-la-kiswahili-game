@@ -16,6 +16,12 @@ Study ID = SFCDF-STUDY1
 - `prereg/STUDY_1_SPEC.json`
 - `STUDY_1_PROTOCOL.md`
 
+Corrected prereg blob after pre-fixture syntax-only correction:
+
+`3742a0b9ddbcf9c7b3534d22adb0e06d859410bf`
+
+The correction changed JSON syntax only and did not change the frozen scientific contract.
+
 ## Rule / upstream source bindings
 
 ```text
@@ -64,6 +70,8 @@ canonical sorted-key JSON scientific content
 
 JavaScript object prototypeはscientific identityへ含めない。prototype-sensitive deep object equalityはformal gateに使用しない。
 
+Stage 0 synthetic fixture explicitly verified canonical equality across an ordinary-object / null-prototype representation difference.
+
 ## Frozen fresh namespaces
 
 ```text
@@ -84,14 +92,46 @@ Stage ID:
 
 `SFCDF-S0-TECHNICAL-2026-09-02-v1`
 
-Current state: **NOT YET AUTHORIZED / NOT EXECUTED**
+v1 execution:
 
-Expected runner:
+```text
+run = 33616688284
+disposition = PRE-FIXTURE-TECHNICAL-ABORT
+synthetic fixture execution = false
+fresh scientific seed access = false
+```
 
-`tools/experiments/run-sfcdf-stage0-technical.js`
+v2 authorization:
 
-Stage 0 must not access Stage 1/2 seed blocks.
+```text
+authorizations/STAGE_0_TECHNICAL_AUTHORIZATION_V2.json
+blob = ccd8ef9f8b28799fe5ee666d2d2c7396ddf0efad
+maxAdditionalTechnicalExecutions = 1
+```
+
+v2 execution:
+
+```text
+run = 33620251552
+head = 3d9be40db559666e7e7c62fd69d98fa8c7d74419
+conclusion = success
+artifact ID = 9842597981
+artifact name = sfcdf-stage0-technical-v2
+artifact ZIP SHA-256 = 028ad7e5034cc4954003b081ca6f0c7ac2bc44a97db0f397fe78ea65f21b7021
+deterministic technical core = 14e7640dcd302c402c21a5acbe44bcbf004956670f467763faf7c301e545a295
+stage disposition = STAGE0-PASS
+```
+
+Canonical repository mirror:
+
+- `results/stage-0/STAGE_0_TECHNICAL_RESULT.json`
+- `results/stage-0/STAGE_0_TECHNICAL_PROVENANCE_V2.txt`
+- `checkpoints/2026-09-02-stage-0-v2-technical-pass.md`
 
 ## Stage 1 / Stage 2
 
-Stage 1 and Stage 2 scientific runner/workflow hashes are intentionally not yet frozen. They must be implemented, non-scientifically smoked and separately frozen before Stage 1 authorization. Their implementation must not change the already frozen scientific endpoints, population, seed blocks or formal gates.
+Stage 1 and Stage 2 scientific runner/workflow hashes are intentionally not yet frozen.
+
+Before Stage 1 authorization they must be implemented and non-scientifically smoked. The tooling smoke must exercise the actual scientific trigger/lease/result-durability/canonical-equality path while preventing all Stage 1/2 seed access.
+
+Their implementation must not change the already frozen scientific endpoints, population, seed blocks, formal gates, representation, relative horizon, or interpretation boundary.
