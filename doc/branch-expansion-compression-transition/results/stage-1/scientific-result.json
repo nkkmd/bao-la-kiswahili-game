@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BECT-STUDY1",
+  "stageId": "BECT-S1-DEVELOPMENT-2026-09-02-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "authorizedScientificExecutions": 1,
+  "actualScientificExecutions": 1,
+  "authorizationNonce": "BECT-S1-AUTH-2026-09-02-V1-01",
+  "leaseCommitSha": "bf1f8a5940bfb87f8c92d482728aa89ce398b749",
+  "noRescueBoundaryCrossed": true,
+  "seedBlockConsumed": true,
+  "stageDisposition": "TECHNICAL-INVALID",
+  "technicalError": {
+    "name": "Error",
+    "message": "relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529"
+  }
+}
