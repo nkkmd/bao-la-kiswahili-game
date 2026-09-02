@@ -22,7 +22,7 @@ Stage 2 seed = 31620001..31620384 / NOT CONSUMED
 fresh G3-06 scientific evidence = ACCESSED / TECHNICAL-INVALID BEFORE GEOMETRY MEASUREMENT
 no-rescue boundary = CROSSED / ACTIVE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ
-main integration = NOT PERFORMED
+main integration = COMPLETE / fast-forward / force=false
 ```
 
 ## Formal Study identity
@@ -177,6 +177,14 @@ Protected standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
+## Main integration
+
+2026-09-03、監査済みresearch branch `research/g3-06-bao-rule-mechanism-geometry-intervention` を、pre-integration `main` `b0cbd9f562bb803597acb313360c064dadd73299`からaudited head `f8eda131b81f0d6e3bc9f804ddfce875c9cd8d2b`へfast-forwardした。`force=false`で実施し、squash、rebase、history rewrite、scientific rerunは行っていない。
+
+Canonical integration checkpoint:
+
+- `../research-generation-3/checkpoints/2026-09-03-g3-06-main-integration-complete.md`
+
 ## Closure / next program action
 
 BRMGI-STUDY1は **`CLOSED / TECHNICAL-INVALID`**。unfinished研究として扱わない。
@@ -190,4 +198,4 @@ Canonical closure records:
 
 Historical agenda上のG3-07は自動authorizeしない。次に進む場合はseparate post-G3-06 current-state authorization reviewが必要で、BRMGI selection diagnosticsをvalidated scientific inputとして継承しない。
 
-Main integration is **NOT PERFORMED** until explicit user instruction.
+Main integration is **COMPLETE**. The next scientific action remains the separate post-G3-06 current-state authorization review for G3-07.
