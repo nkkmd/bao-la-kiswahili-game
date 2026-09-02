@@ -29,6 +29,34 @@
 | BECT-D023 | No-rescue | `FROZEN` | Activates at first fresh generation/read; same-evidence rescue prohibited. |
 | BECT-D024 | Protected depth-10 | `SEALED / NOT GENERATED / NOT READ` | No generation/read/peek/partial enumeration/resource peek. |
 | BECT-D025 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | Research branch is not merged automatically. |
+| BECT-D026 | M5 denominator clarification | `PROSPECTIVE / PRE-STAGE0` | M5 denominator is exactly `sum uniqueTransitionCount[d], d=0..4`; clarification occurred before any fixture or fresh evidence. |
+| BECT-D027 | Stage 0 v1 execution | `TECHNICAL-INVALID / NO RERUN` | Run `33631597307`; fixed technical pair 24->25 was unavailable because technical trajectory terminated early. No fresh scientific evidence was accessed. |
+| BECT-D028 | Stage 0 v2 technical refreeze | `AUTHORIZED AS NEW TECHNICAL VERSION` | Scientific contract unchanged; technical pair selection alone changed to latest consecutive nonterminal post-move root pair. |
+| BECT-D029 | Stage 0 v2 execution | `STAGE0-PASS` | Run `33632094597`; exactly one v2 execution; technical roots 22->23; all mandatory longitudinal/cross-implementation gates passed. |
+| BECT-D030 | Stage 0 artifact durability | `PASS` | Artifact `9847240252`, ZIP SHA-256 `ac0b114f40e610b2353c03757a3e69839fcea4674a035a5935e795d82571292f`; repository result mirror uses exact artifact bytes only. |
+| BECT-D031 | Stage 0 execution count | `PASS` | v1 = 1 authorized/1 actual; v2 = 1 authorized/1 actual; no same-version rerun. Static audits are non-computational and not Stage 0 fixture executions. |
+| BECT-D032 | Stage 0 closure | `COMPLETE / STAGE0-PASS VIA v2` | Longitudinal technical readiness established; Stage 1 remains separately gated. |
+
+## Stage 0 version history
+
+`BECT-S0-TECHNICAL-2026-09-02-v1` remains permanently `TECHNICAL-INVALID`. It was not retried after its one authorized execution.
+
+`BECT-S0-TECHNICAL-2026-09-02-v2` is a separate technical version created before any fresh scientific evidence. Its scientific Study contract, endpoint universe, transition grammar, Stage 1/2 seeds/populations/tests/resource ceilings and protected-evidence boundary are identical to the original prospective contract. Only the technical fixture root-selection rule changed.
+
+Stage 0 v2 formal result:
+
+```text
+run = 33632094597
+result = STAGE0-PASS
+technical seed = 31500001 / permanently prohibited from scientific use
+observed technical trajectory length = 24
+technical root pair = 22 -> 23
+canonical deterministic core = f446b41b33910071cdef310bedd53e734e19d38dca7083b6efe9504a6bdbe716
+fresh scientific evidence = false
+Stage 1 seed access = false
+Stage 2 seed access = false
+protected depth-10 access = false
+```
 
 ## Stage progression boundary
 
