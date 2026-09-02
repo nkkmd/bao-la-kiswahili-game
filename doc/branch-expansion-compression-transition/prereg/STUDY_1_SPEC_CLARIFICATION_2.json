@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BECT-STUDY1",
+  "status": "PROSPECTIVE-PRE-STAGE1-CLARIFICATION",
+  "date": "2026-09-02",
+  "freshScientificEvidenceGeneratedBeforeClarification": false,
+  "freshScientificEvidenceReadBeforeClarification": false,
+  "stage1SeedAccessBeforeClarification": false,
+  "stage2SeedAccessBeforeClarification": false,
+  "protectedDepth10AccessBeforeClarification": false,
+  "scientificContractChange": false,
+  "clarifications": {
+    "stage1CandidateCoverage": {
+      "rule": "A metric-direction candidate has complete trajectory coverage only when the metric level is defined at all 48 analysis roots (plies 16..63) for all 10 selected Stage 1 trajectories.",
+      "reason": "This gives the preregistered phrase 'defined level series ... over all primary-eligible windows needed for its observed onsets' a deterministic conservative implementation before fresh evidence.",
+      "postHocMissingValueRepairAllowed": false
+    },
+    "longitudinalIdentityDefinitions": {
+      "fullSourceTrajectoryIdentity": "SHA-256 of newline-joined canonical move identity keys for the complete deterministic replay through maxSourcePly=80 or earlier terminal state",
+      "openingPrefixIdentity": "SHA-256 of newline-joined first 16 canonical move identity keys",
+      "trajectorySegmentIdentity": "SHA-256 of newline-joined records 'ply|rootRawSha256' for analysis plies 16..63",
+      "adjacentRootPairIdentity": "SHA-256 of 'fromPly|fromRootRawSha256|toPly|toRootRawSha256' for each adjacent analysis-root pair",
+      "eventWindowIdentity": "SHA-256 of newline-joined 'ply|rootRawSha256' for each four-root window supporting previous/onset/next deltas",
+      "timeIndexRetained": true,
+      "canonicalizationOrSymmetryQuotient": false
+    },
+    "upstreamFirewallApplication": {
+      "rawRoot": "reject entire trajectory if any analysis rootRawSha256 occurs in upstream identity-only root set",
+      "sourceTrajectory": "reject entire trajectory if any analysis-root sourceTrajectorySha256 prefix identity occurs in upstream trajectory set or if full source trajectory identity duplicates another selected trajectory",
+      "openingPrefix": "reject entire trajectory if first-16 openingPrefixSha256 occurs in upstream identity-only prefix set",
+      "withinStageRawRootUniqueness": "reject entire candidate trajectory if any of its 48 RAW roots duplicates a RAW root already selected in Stage 1 or repeats within the candidate trajectory",
+      "outcomeFieldsUsed": false
+    },
+    "resourceMapping": {
+      "uniqueRawStates": "reconstructionCore.cumulative.distinctRawStates",
+      "uniqueTransitions": "sum parentLayers[d].uniqueTransitionCount for d=0..4",
+      "parentExpansions": "sum layers[d].uniqueRawStateCount for d=0..4",
+      "legalMoveEvaluations": "sum parentLayers[d].uniqueTransitionCount for d=0..4",
+      "treeNodeOccurrencesSummedAcrossLayers": "sum layers[d].treeNodeOccurrences for d=0..5",
+      "elapsedMs": "per-root wall-clock elapsed time measured by the Stage runner",
+      "peakRssBytes": "process max RSS observed at or immediately after each root measurement",
+      "rootArtifactBytes": "UTF-8 byte length of canonical root scientific output"
+    }
+  },
+  "unchanged": [
+    "M1..M8 endpoint definitions",
+    "exact sign transition grammar",
+    "no magnitude threshold",
+    "Stage 1 seeds 31510001..31510240",
+    "Stage 1 target 10 trajectories",
+    "48 analysis roots per trajectory at plies 16..63",
+    "Stage 1 promotion gates",
+    "Stage 2 seeds and formal test",
+    "RAW-only representation / depth 5 / transforms=[]",
+    "resource ceilings",
+    "no-rescue rule",
+    "protected depth-10 seal"
+  ]
+}
