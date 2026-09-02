@@ -1062,7 +1062,7 @@ Study lifecycleは`CLOSED / FORMAL-COMPLETE`。これはcandidate-level formal l
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` and G3-03 `TCTGD-STUDY1` remain `CLOSED / TECHNICAL-INVALID`. G3-04 `SFCDF-STUDY1` is now `CLOSED / FORMAL-COMPLETE`: C1 unit-width occupancy is `CONFIRMED / MTAJI-GREATER` and C6 cumulative tree/RAW ratio is `CONFIRMED / NAMUA-GREATER` on the frozen Stage 2 holdout. G3-05 is not automatically authorized; the next program-safe action is a separate post-G3-04 current-state authorization review. Protected depth-10 holdout remains sealed.
+**Research Generation 3 state:** G3-01 / G3-02 / G3-03 / G3-05 are `CLOSED / TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-04 `SFCDF-STUDY1` remains `CLOSED / FORMAL-COMPLETE` with C1 `CONFIRMED / MTAJI-GREATER` and C6 `CONFIRMED / NAMUA-GREATER`. G3-05 `BECT-STUDY1` has formal promoted candidate set `[]` and Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`. G3-06 is `NOT AUTHORIZED`; the next program-safe scientific action is a separate post-G3-05 current-state authorization review. Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

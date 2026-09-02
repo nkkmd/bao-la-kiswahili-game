@@ -1,7 +1,7 @@
 # G3-05 / BECT-STUDY1 — 研究概要
 
 更新日: 2026-09-02  
-状態: **PROSPECTIVE / STAGE 0 TECHNICAL PREPARATION**
+状態: **CLOSED / TECHNICAL-INVALID**
 
 ## 研究題目
 
@@ -64,20 +64,27 @@ geometry eventをNamua→Mtaji等のrule-semantic phase boundaryから独立に�
 ## Stage structure
 
 ```text
-BECT-S0-TECHNICAL-2026-09-02-v1
-BECT-S1-DEVELOPMENT-2026-09-02-v1
-BECT-S2-FORMAL-2026-09-02-v1
+BECT-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID
+BECT-S0-TECHNICAL-2026-09-02-v2 / STAGE0-PASS
+BECT-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
+BECT-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 Stage 0はtechnical fixtureのみ。Stage 1/2はそれぞれ別authorizationが必要です。
 
 Stage 1 reserved fresh block:
 
-`31510001..31510240` / target 10 trajectories / **NOT AUTHORIZED**
+`31510001..31510240` / target 10 trajectories / **CONSUMED / CLOSED TO SAME-EVIDENCE REUSE**
 
 Stage 2 reserved fresh block:
 
-`31520001..31520384` / target 16 trajectories / **NOT AUTHORIZED**
+`31520001..31520384` / target 16 trajectories / **NOT CONSUMED / NOT AUTHORIZED**
+
+## Formal closure
+
+Stage 0 v2でlongitudinal reconstructionのtechnical gateをPASSした後、fresh Stage 1をexactly one authorized executionで開始しました。しかしbounded RAW enumeration中に`relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`が発生し、10 trajectories全体のvalid development summaryへ到達しませんでした。
+
+Fresh access後であるためsame-evidence repair/rerunは行わず、formal closureは **`CLOSED / TECHNICAL-INVALID`** としました。formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`です。保存されたpartial telemetryはdiagnostic-onlyで、branch expansion/compression transitionの存在・不在を示すscientific evidenceへ格上げしません。
 
 ## Protected evidence
 

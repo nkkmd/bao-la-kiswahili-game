@@ -181,4 +181,4 @@ Partial telemetryに含まれる局所値や途中root系列を、branch expansi
 
 ## Next action
 
-BECT-STUDY1は **`CLOSED / TECHNICAL-INVALID`** として閉じます。Stage 2はauthorizeしません。次に必要なのはfinal report / reproducibility / research-program index類をこのimmutable closureへ同期することです。
+BECT-STUDY1は **`CLOSED / TECHNICAL-INVALID`** としてclosure済みで、final report / reproducibility / central research-program documentsの同期も完了しています。Study内の追加scientific executionはありません。次のprogram-level scientific actionはseparate post-G3-05 current-state G3-06 authorization reviewであり、G3-06は現時点で`NOT AUTHORIZED`です。`main`統合は明示的なユーザー指示があるまで実施しません。
