@@ -1,0 +1,140 @@
+name: SFCDF Stage 1 Tooling Smoke
+
+on:
+  push:
+    branches:
+      - research/g3-04-structural-forcing-corridor-decision-funnel
+    paths:
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/STAGE1_TOOLING_SMOKE_TRIGGER
+
+permissions:
+  contents: write
+
+env:
+  BRANCH: research/g3-04-structural-forcing-corridor-decision-funnel
+  DOC: doc/structural-forcing-corridor-decision-funnel
+
+concurrency:
+  group: sfcdf-stage1-tooling-smoke-single
+  cancel-in-progress: false
+
+jobs:
+  lease:
+    runs-on: ubuntu-24.04
+    outputs:
+      lease_sha: ${{ steps.lease.outputs.lease_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+      - id: lease
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -f "$DOC/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION.json"
+          test ! -f "$DOC/executions/stage-1-execution-started.json"
+          test ! -f "$DOC/results/stage-1/scientific-result.json"
+          test ! -f "$DOC/executions/stage-1-tooling-smoke-lease.json"
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const s=require('./doc/structural-forcing-corridor-decision-funnel/prereg/STUDY_1_SPEC.json');
+          const r=require('./doc/structural-forcing-corridor-decision-funnel/results/stage-0/STAGE_0_TECHNICAL_RESULT.json');
+          const fw=require('./doc/structural-forcing-corridor-decision-funnel/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          if(r.stageDisposition!=='STAGE0-PASS')throw Error('Stage 0 not PASS');
+          if(fw.scientificOutcomeFieldsRetained!==false||fw.g303ScientificOutcomesRetained!==false)throw Error('firewall not identity-only');
+          if(s.stages[1].seedStart!==31410001||s.stages[2].seedStart!==31420001)throw Error('seed contract changed');
+          if(s.protectedEvidence.standardInitialRawRootCompleteExactDepth10Holdout!=='SEALED / NOT GENERATED / NOT READ')throw Error('protected holdout changed');
+          const wf=fs.readFileSync('.github/workflows/sfcdf-stage1-development.yml','utf8');
+          const runner=fs.readFileSync('tools/experiments/run-sfcdf-stage1-development.js','utf8');
+          if(!wf.includes('STAGE1_EXECUTION_TRIGGER'))throw Error('scientific trigger path missing');
+          if(wf.includes('workflow_dispatch'))throw Error('scientific workflow must use dedicated path trigger');
+          if(!wf.includes('Acquire durable pre-computation lease'))throw Error('durable lease step missing');
+          if(wf.indexOf('Upload canonical result before repository mirror')>wf.indexOf('Mirror exact uploaded bytes without recomputation'))throw Error('artifact must precede mirror');
+          if(runner.includes('isDeepStrictEqual'))throw Error('prototype-sensitive scientific equality present');
+          if(!runner.includes('canonicalScientificContentExact'))throw Error('canonical scientific equality gate missing');
+          NODE
+          PARENT=$(git rev-parse HEAD)
+          mkdir -p "$DOC/executions"
+          cat > "$DOC/executions/stage-1-tooling-smoke-lease.json" <<EOF
+          {
+            "schemaVersion": 1,
+            "studyId": "SFCDF-STUDY1",
+            "stageId": "SFCDF-S1-DEVELOPMENT-2026-09-02-v1",
+            "workflowRunId": ${GITHUB_RUN_ID},
+            "leaseParentSha": "${PARENT}",
+            "freshScientificEvidence": false,
+            "stage1SeedAccess": false,
+            "stage2SeedAccess": false,
+            "protectedDepth10Access": false
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DOC/executions/stage-1-tooling-smoke-lease.json"
+          git commit -m "Acquire G3-04 Stage 1 tooling-smoke lease"
+          git push origin HEAD:"$BRANCH"
+          echo "lease_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  smoke:
+    needs: lease
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.lease.outputs.lease_sha }}
+          fetch-depth: 1
+      - name: Exercise canonical equality and durable-result path without seeds
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto'),util=require('node:util');
+          function canon(v){if(v===null||typeof v!=='object')return JSON.stringify(v);if(Array.isArray(v))return`[${v.map(canon).join(',')}]`;return`{${Object.keys(v).sort().map(k=>`${JSON.stringify(k)}:${canon(v[k])}`).join(',')}}`;}
+          function sha(s){return crypto.createHash('sha256').update(s,'utf8').digest('hex');}
+          const ordinary={corridor:{numerator:'2',denominator:'3',defined:true},funnel:{numerator:'1',denominator:'2',defined:true}};
+          const nullProto=Object.create(null);nullProto.funnel={numerator:'1',denominator:'2',defined:true};nullProto.corridor={numerator:'2',denominator:'3',defined:true};
+          if(util.isDeepStrictEqual(ordinary,nullProto))throw Error('prototype-sensitive negative control not exercised');
+          const a=sha(canon(ordinary)),b=sha(canon(nullProto));if(a!==b)throw Error('canonical content equality failed');
+          const result={schemaVersion:1,studyId:'SFCDF-STUDY1',stageId:'SFCDF-S1-DEVELOPMENT-2026-09-02-v1',evidenceClass:'TECHNICAL-FIXTURE',controlPlaneLeaseSha:process.env.LEASE_SHA,canonicalPrototypeInsensitiveEquality:true,canonicalContentSha256:a,freshScientificEvidence:false,stage1SeedAccess:false,stage2SeedAccess:false,protectedDepth10Access:false,disposition:'TOOLING-SMOKE-PASS'};
+          fs.mkdirSync('doc/structural-forcing-corridor-decision-funnel/results/tooling-smoke',{recursive:true});
+          fs.writeFileSync('doc/structural-forcing-corridor-decision-funnel/results/tooling-smoke/STAGE1_TOOLING_SMOKE_RESULT.json',JSON.stringify(result,null,2)+'\n');
+          NODE
+        env:
+          LEASE_SHA: ${{ needs.lease.outputs.lease_sha }}
+      - name: Upload smoke result before mirror
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdf-stage1-tooling-smoke-${{ github.run_id }}
+          path: doc/structural-forcing-corridor-decision-funnel/results/tooling-smoke/
+          if-no-files-found: error
+          retention-days: 90
+
+  mirror:
+    needs: [lease, smoke]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: sfcdf-stage1-tooling-smoke-${{ github.run_id }}
+          path: /tmp/sfcdf-smoke
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+      - name: Mirror exact smoke artifact bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "$DOC/executions/stage-1-tooling-smoke-lease.json"
+          test ! -f "$DOC/results/tooling-smoke/STAGE1_TOOLING_SMOKE_RESULT.json"
+          src=$(find /tmp/sfcdf-smoke -type f -name STAGE1_TOOLING_SMOKE_RESULT.json -print -quit)
+          test -n "$src"
+          mkdir -p "$DOC/results/tooling-smoke"
+          cp "$src" "$DOC/results/tooling-smoke/STAGE1_TOOLING_SMOKE_RESULT.json"
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DOC/results/tooling-smoke/STAGE1_TOOLING_SMOKE_RESULT.json"
+          git commit -m "Mirror G3-04 Stage 1 tooling-smoke result"
+          git push origin HEAD:"$BRANCH"
