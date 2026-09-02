@@ -5,20 +5,23 @@ Updated: 2026-09-02
 ```text
 Study = TCTGD-STUDY1
 Program position = Research Generation 3 / G3-03
-Status = ACTIVE / STAGE0-PASS / STAGE1-NOT-AUTHORIZED
+Status = CLOSED / TECHNICAL-INVALID
 Research branch = research/g3-03-transposition-tree-graph-divergence
 baseline remote main = 6b1457294666267c5a75c8516001acd1ef7d2fcd
 program review = G3-03-AUTHORIZED
 prospective Study/prereg freeze = COMPLETE
+technical execution v2 refreeze = COMPLETE / PRE-FRESH / SCIENTIFIC CONTRACT UNCHANGED
 Stage 0 = TCTGD-S0-TECHNICAL-2026-09-02-v1 / STAGE0-PASS
-Stage 1 = TCTGD-S1-DEVELOPMENT-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 = TCTGD-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
 Stage 2 = TCTGD-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
-Stage 1 seed = 31310001..31310192 / NOT CONSUMED
+Stage 1 authorized scientific executions = 1
+Stage 1 actual scientific executions = 1
+Stage 1 seed = 31310001..31310192 / CONSUMED
 Stage 2 seed = 31320001..31320288 / NOT CONSUMED
-fresh G3-03 scientific evidence generated/read = false / false
-no-rescue boundary = NOT YET CROSSED
+formal promoted candidate set = []
+no-rescue boundary = CROSSED / ACTIVE
 protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-next safe action = materialize Stage 1 workflow/runner and pass non-scientific execution-integrity tooling smoke; then conduct separate Stage 1 authorization review
+next scientific action = separate post-G3-03 current-state program review before any G3-04 or later Study authorization
 ```
 
 ## Formal scientific scope
@@ -43,7 +46,7 @@ state identity = pits,reserve,houseOwned,player,phase,winner,pending
 move identity = type,phase,row,index,direction,side,houseChoice,houseTwo
 ```
 
-G3-02 branching/reply-width diagnostic outcomes are not scientific inputs.
+G3-02 branching/reply-width diagnostic outcomes were not scientific inputs.
 
 ## Frozen endpoints
 
@@ -53,21 +56,24 @@ G3-02 branching/reply-width diagnostic outcomes are not scientific inputs.
 4. `TCTGD-C4-RECONVERGENCE-ONSET-SCORE`
 5. `TCTGD-C5-ROOT-BRANCH-OVERLAP-FRACTION`
 
-All ratios and formal comparisons use exact integer/rational arithmetic.
+All ratios and comparisons used exact integer/rational arithmetic.
 
 ## Frozen population
 
 Stage 1:
 
 - seeds `31310001..31310192`
-- 12 paired trajectories = 12 Namua + 12 Mtaji
+- target 12 paired trajectories = 12 Namua + 12 Mtaji
+- actual selected 12 paired trajectories = 24 roots
+- population complete = true
 
 Stage 2:
 
 - seeds `31320001..31320288`
-- 18 paired trajectories = 18 Namua + 18 Mtaji
+- target 18 paired trajectories = 18 Namua + 18 Mtaji
+- unexecuted / unconsumed
 
-Each pair is one fresh source trajectory with Namua at exact ply 24 and first nonterminal Mtaji at ply >=44. Selection is seed-ascending, geometry-blind and outcome-blind.
+Each pair was one fresh source trajectory with Namua at exact ply 24 and first nonterminal Mtaji at ply >=44. Selection was seed-ascending, geometry-blind and outcome-blind.
 
 ## Stage 0 result
 
@@ -85,29 +91,111 @@ Stage 0 deterministic core:
 
 All synthetic semantic, exact-agreement, order-invariance, exact sign/Holm and static-independence gates passed.
 
+## Pre-Stage-1 technical execution refreeze
+
+Initial non-scientific tooling smoke established that a branch-only `workflow_dispatch` target could not be resolved through GitHub REST and returned HTTP 404. No fresh scientific seed was accessed.
+
+Before Stage 1 authorization, the execution control plane was refrozen as technical v2 while preserving the prospective scientific contract:
+
+- path-filtered dedicated Stage 1 execution trigger;
+- durable pre-computation execution lease;
+- authorization-baseline ancestry + remote-advancement allowlist gate;
+- exact source blob binding;
+- durable artifact before repository mirror;
+- upstream identity-only firewall manifest;
+- no Stage 1/Stage 2 seed access during tooling/refreeze.
+
+Scientific-content baseline:
+
+`3b31c0e853b99d50e6e4cd924984342535c22547`
+
+## Stage 1 execution
+
+Stage 1 was separately authorized exactly once.
+
 ```text
-freshScientificSeedAccess = false
-protectedDepth10Access = false
+authorization = STAGE1-AUTHORIZED
+authorization nonce = TCTGD-S1-AUTH-2026-09-02-V2-01
+maxScientificExecutions = 1
+actualScientificExecutions = 1
 ```
 
-## Execution-integrity boundary before Stage 1
+GitHub Actions:
 
-Stage 1 is not yet authorized. Before authorization, a non-scientific tooling smoke must verify the prospective scientific execution path, including:
+```text
+run = 33592380079
+lease job = 100128827626 / success
+scientific job = 100128867042 / exit 2 after canonical TECHNICAL-INVALID result
+mirror job = 100129459563 / success
+execution trigger commit = 18cdade48db8f19e3b49615041630948dafb4e61
+lease commit = 2320d80424a48cbf72964d3910b90522c7936151
+result mirror commit = ce94af693386699a5b0cc6292d3ac817af034f19
+```
 
-- scientific workflow `workflow_dispatch` only;
-- no push-triggered scientific computation;
-- durable remote execution lease before seed/root generation;
-- fixed frozen-head binding;
-- duplicate queued run exits before scientific computation;
-- result artifact upload before repository mirror push;
-- push failure recoverable only from exact uploaded bytes, never recomputation;
-- execution-count / Actions-history audit path.
+Durable artifact:
 
-Stage 0 PASS alone does not authorize Stage 1.
+```text
+artifact ID = 9832258829
+name = tctgd-stage1-development-result-33592380079
+size = 27447 bytes
+ZIP SHA-256 = cb03924420df2b280398f5493283dc47fae01bb4e22afdd18560d42b5bf1139b
+```
 
-## G3-02 boundary
+Canonical Stage 1 result files are durably retained in both the Actions artifact and research branch.
 
-`EBRWS-STUDY1` remains permanently `CLOSED / TECHNICAL-INVALID`, formal promoted candidate set `[]`, Stage 2 unexecuted. Runner-local compression summaries and the unintended duplicate execution are diagnostic provenance only and are not used by TCTGD-STUDY1.
+## Stage 1 verification result
+
+Pass / agreement fields:
+
+```text
+populationComplete = true
+stageResourcePass = true
+sourceIdentityExact = true
+staticIndependence = true
+pairComparisonExact = true
+developmentExact = true
+```
+
+Failed mandatory integrity fields:
+
+```text
+allRootExact = false
+stageScientificExact = false
+stageDisposition = TECHNICAL-INVALID
+```
+
+Production / independent canonical stage scientific core SHA-256 were nevertheless identical:
+
+`d44393d6fe9902860d2b5fe3a5a3a3938f7165b40f46e694bd507cf231fcd62f`
+
+## Technical-invalid cause
+
+The frozen production endpoint implementation constructed its endpoint map as a normal JavaScript object. The frozen independent implementation constructed the equivalent endpoint map using `Object.create(null)`.
+
+The frozen runner compared in-memory objects with Node.js `util.isDeepStrictEqual`, which is prototype-sensitive. Therefore exact endpoint key/value content and canonical serialization could match while root-level `endpointExact` remained false solely because the endpoint-map prototypes differed.
+
+This defect propagated to `allRootExact=false` and `stageScientificExact=false`, causing the frozen integrity gate to fail.
+
+The defect was identified only after fresh Stage 1 evidence had been generated. Correcting the object prototype or replacing prototype-sensitive equality with canonical equality would be a same-evidence rescue. It is therefore prohibited for TCTGD-STUDY1.
+
+## Diagnostic candidate provenance
+
+The technical-invalid run produced the following promotion-like diagnostic directions:
+
+- `TCTGD-C1-CUMULATIVE-TREE-RAW-RATIO` — `NAMUA-GREATER`
+- `TCTGD-C2-DUPLICATE-UNIQUE-TRANSITION-FRACTION` — `NAMUA-GREATER`
+- `TCTGD-C3-LAYER-SUM-MULTIPARENT-FRACTION` — `NAMUA-GREATER`
+- `TCTGD-C4-RECONVERGENCE-ONSET-SCORE` — `MTAJI-GREATER`
+
+These are diagnostic provenance only. Formal promoted candidate set is `[]`.
+
+## Stage 2
+
+`TCTGD-S2-FORMAL-2026-09-02-v1` remains:
+
+**`NOT-AUTHORIZED-NOT-EXECUTED`**
+
+Stage 2 seed `31320001..31320288` remains unconsumed. A technical-invalid Stage 1 cannot authorize Stage 2.
 
 ## Protected evidence
 
@@ -115,4 +203,16 @@ Standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-No G3-03 action to date has generated, read or peeked at it.
+No G3-03 action generated, read, peeked at, or partially enumerated it.
+
+## Closure boundary
+
+Formal closure:
+
+```text
+TCTGD-STUDY1 = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
+
+No same-evidence rerun is authorized. Any future study must be a new, prospectively defined independent study after a separate program-level authorization review.
