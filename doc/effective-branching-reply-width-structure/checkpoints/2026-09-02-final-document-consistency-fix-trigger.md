@@ -13,3 +13,5 @@ Purpose:
 - leave historical `doc/research-generation-3/PROGRAM_PLAN.md` unchanged.
 
 This trigger authorizes no scientific runner, seed access, result regeneration, repair, replication, rescue, threshold change, or Stage 2 execution.
+
+Attempt 1 materialized the intended patch but stopped at `git diff --check` because the docs-only patch introduced Markdown trailing-space formatting. No document commit was made. Attempt 2 removes that formatting-only issue and re-runs the same documentation-only patch.
