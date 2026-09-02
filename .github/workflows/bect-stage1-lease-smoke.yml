@@ -1,0 +1,65 @@
+name: BECT Stage 1 Lease Path Smoke
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/STAGE1_LEASE_SMOKE_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bect-stage1-lease-smoke-v1
+  cancel-in-progress: false
+
+jobs:
+  lease-smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Verify unarmed state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e doc/branch-expansion-compression-transition/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION.json
+          test ! -e doc/branch-expansion-compression-transition/authorizations/STAGE1_EXECUTION_TRIGGER
+          test ! -e doc/branch-expansion-compression-transition/executions/stage-1-execution-started.json
+          test ! -e doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json
+      - name: Write and push durable technical lease-path marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Sawa"
+          git config user.email "72678394+nkkmd@users.noreply.github.com"
+          mkdir -p doc/branch-expansion-compression-transition/executions
+          cat > doc/branch-expansion-compression-transition/executions/stage-1-tooling-lease-smoke.json <<EOF
+          {
+            "schemaVersion": 1,
+            "studyId": "BECT-STUDY1",
+            "stageId": "BECT-S1-DEVELOPMENT-2026-09-02-v1",
+            "workflowRunId": ${GITHUB_RUN_ID},
+            "triggerCommit": "${GITHUB_SHA}",
+            "markerClass": "PREAUTH-TECHNICAL-LEASE-PATH-SMOKE",
+            "scientificAuthorization": false,
+            "scientificComputation": false,
+            "stage1SeedAccess": false,
+            "stage2SeedAccess": false,
+            "protectedDepth10Access": false
+          }
+          EOF
+          git add doc/branch-expansion-compression-transition/executions/stage-1-tooling-lease-smoke.json
+          git commit -m "Record BECT Stage 1 lease-path smoke"
+          git push origin HEAD:research/g3-05-branch-expansion-compression-transition
+          echo "lease_smoke_commit=$(git rev-parse HEAD)"
+      - name: Confirm scientific artifacts remain absent locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e doc/branch-expansion-compression-transition/executions/stage-1-execution-started.json
+          test ! -e doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json
+          echo 'BECT_STAGE1_LEASE_PATH_SMOKE=PASS'
