@@ -51,7 +51,7 @@ jobs:
           test "$(git hash-object doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC_CLARIFICATION_1.json)" = "90869977c1977bbc10f4834228ee69b9151ce250"
           test "$(git hash-object doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC_CLARIFICATION_2.json)" = "87e78b008024301a26f78d1ac488d8489f9bd02b"
           test "$(git hash-object doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json)" = "123430eb0cbe100bf50e068ee4c4ee7dc52c2ca8"
-          test "$(git hash-object doc/branch-expansion-compression-transition/results/stage-0-v2/STAGE_0_TECHNICAL_RESULT.json)" = "334fe04d85199f94bb3b64742e62f54e596b73e9"
+          test "$(git hash-object doc/branch-expansion-compression-transition/results/stage-0-v2/STAGE_0_TECHNICAL_RESULT.json)" = "1f3f74e437753741950329517dc574b0b27d7429"
           git fetch origin research/g3-05-branch-expansion-compression-transition
           if git show origin/research/g3-05-branch-expansion-compression-transition:doc/branch-expansion-compression-transition/executions/stage-1-execution-started.json >/dev/null 2>&1; then
             echo 'durable Stage 1 lease already exists' >&2; exit 1
