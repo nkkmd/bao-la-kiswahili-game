@@ -102,7 +102,7 @@ exact-rational arithmetic、class boundary、2/3 gate、production/independent e
 
 ## 7. Stage 1 pre-execution verification
 
-Stage 1は別authorizationでexactly one executionを許可した。
+Stage 1は別authorizationで**exactly one scientific execution**を許可した。
 
 Tooling smoke:
 
@@ -115,7 +115,7 @@ Tooling smoke:
 
 Production / independent G3-02 source hashesも別値であり、独立実装境界を維持していた。
 
-## 8. Stage 1 one-shot computation
+## 8. Authorized Stage 1 computation
 
 Authorized one-shot:
 
@@ -144,7 +144,7 @@ Runner-local diagnostic candidate summary:
 
 `TREE-WIDTH-SHAPE`についてrunner-local promoted candidateは記録されなかった。
 
-この表はformal positive scientific resultではなく、後述のtechnical-invalid incidentに付随するdiagnostic provenanceである。
+この表はformal positive scientific resultではなく、後述のtechnical-invalid incidentsに付随するdiagnostic provenanceである。
 
 ## 9. Repository materialization failure
 
@@ -156,7 +156,7 @@ Runnerはcanonical files:
 
 を生成し、ephemeral runner workspaceでlocal commit `709bc393`を作成した。
 
-しかしpushはnon-fast-forwardでrejectされた。one-shot execution中にremote research branchがtechnical workflow arming commitによって先行していたためである。
+しかしpushはnon-fast-forwardでrejectされた。authorized execution中にremote research branchがtechnical workflow arming commitによって先行していたためである。
 
 Logged commitments:
 
@@ -171,9 +171,11 @@ Job終了後、`709bc393`はGitHub repository objectとして回収不能であ�
 
 Frozen protocol §16はStage 1 global gatesにtechnical-integrity violationがないことを要求し、Stage 1終了時にpromoted primary candidate setをimmutable artifactとしてfreezeすることを要求する。
 
-またStage 1 authorizationはexactly one fresh-development executionだけを許可し、fresh evidence generation/read後はno-rescue boundaryが有効である。
+またStage 1 authorizationはexactly one fresh-development scientific executionだけを許可し、fresh evidence generation/read後はno-rescue boundaryが有効である。
 
-したがって、同じStage 1 seedを再実行して失われたcanonical filesを作り直すことはしない。threshold、endpoint、family、phase、root、seed、horizon、resource ceilingも変更しない。
+失われたcanonical filesを作り直す目的で、結果を知った後に同じStage 1 seedを**authorized / intentional repair rerun**することはしない。threshold、endpoint、family、phase、root、seed、horizon、resource ceilingも変更しない。
+
+後述するfinal Actions-history auditでは、outcome判明前のworkflow armingによって意図せず2回目のscientific executionがqueueされ、no-rescue boundary成立後に実計算されていたことが判明した。このrunはprospective exactly-one-execution authorizationに違反するため`INVALID-DO-NOT-USE`であり、missing artifactのrepair、scientific replication、confirmation、rescueとして扱わない。
 
 Runner-local computationのpositive summaryをformal promotionへ救済することも行わない。
 
@@ -193,7 +195,7 @@ Formal promoted candidate set:
 
 Frozen Stage 2 authorization prerequisiteは、Stage 1 global mandatory gates PASSに加えて、promoted candidate setのimmutable freezeを要求する。
 
-Canonical Stage 1 artifactをdurably materializeできなかったため、このprerequisiteはformalには満たされない。
+Canonical Stage 1 artifactをdurably materializeできず、さらにexactly-one-execution contractも破損したため、このprerequisiteはformalには満たされない。
 
 Stage 2:
 
@@ -215,7 +217,9 @@ G3-02はdepth-10 complete enumerationを生成・readせず、G2-12 estimatorを
 
 本Studyはformal positive conclusionを持たない。
 
-Runner-local evidenceは、fresh bounded depth-5 rootsにおいてreply-width compression-dominant profileがNamua 12/12、Mtaji 9/12として計算されたことをdiagnostic provenanceとして残す。しかしcanonical Stage 1 evidence materializationが失敗したため、これを「Baoに再現可能なeffective branching / reply-width structureが確認された」と解釈してはならない。
+Authorized runner-local evidenceは、fresh bounded depth-5 rootsにおいてreply-width compression-dominant profileがNamua 12/12、Mtaji 9/12として計算されたことをdiagnostic provenanceとして残す。しかしcanonical Stage 1 evidence materializationが失敗し、execution-count contractも破損したため、これを「Baoに再現可能なeffective branching / reply-width structureが確認された」と解釈してはならない。
+
+Unauthorized duplicate runで同じscientific core / candidate-set / scientific-result file hashが得られたことも、formal replicationやconfirmationとして扱わない。
 
 また、たとえ将来別Studyで同様のgeometry patternがformalに確認されても、それはsearch difficulty、best move、game-theoretic forcing、win/value、human difficultyを意味しない。
 
@@ -223,7 +227,8 @@ Runner-local evidenceは、fresh bounded depth-5 rootsにおいてreply-width co
 
 - G3-01 remains `CLOSED / TECHNICAL-INVALID`, eligible families `[]`.
 - LGTGMIV remains `CLOSED / FORMAL-ELIGIBLE-ALL`.
-- EBRWS-STUDY1 is not rerun or repaired with the same evidence.
+- EBRWS-STUDY1 has no valid or authorized same-evidence rerun / repair path.
+- The unintended duplicate execution is invalid and cannot alter or rescue the Study.
 - Stage 1 diagnostic candidates are not formal candidates.
 - Stage 2 remains unexecuted.
 - RAW identity remains authoritative.
@@ -256,3 +261,17 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 Stage 1 execution workflowはclosure後にdisabledとし、第三の実行は許可しない。protected depth-10 holdoutは両runとも生成・readしておらず、`SEALED / NOT GENERATED / NOT READ`のままである。
+
+## 16. Research workflow completion and integration boundary
+
+2026-09-02時点で、G3-02のscientific execution、fail-closed decision、Actions-history audit、Study-level closure documentation、Research Generation 3 current-facing synchronization、root README / research index / future agenda synchronizationはresearch branch上で完了した。
+
+```text
+G3-02 research workflow = COMPLETE ON RESEARCH BRANCH
+formal disposition = CLOSED / TECHNICAL-INVALID
+main integration = NOT PERFORMED
+main integration authorization = PENDING EXPLICIT USER INSTRUCTION
+G3-03 automatic start = NOT AUTHORIZED
+```
+
+このbranch-only completionはformal scientific decisionを変更しない。`main`への統合は別の明示的指示があるまで実施しない。
