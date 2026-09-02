@@ -974,10 +974,10 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 closure
+### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 closure
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1 = TECHNICAL-INVALID` / Stage 2 not executed**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TCTGD-STUDY1 = TECHNICAL-INVALID` / G3-03 Stage 2 not executed / next program review required**
 
 G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`のままimmutable closure。独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 familiesをformal eligibleとした。
 
@@ -1012,11 +1012,32 @@ protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 
 **Boundary:** both runner-local candidate summaries and the duplicate-run equality are non-formal. No same-evidence repair/further rerun. G3-03以降は別reviewまで自動開始しない。standard-root depth 10はsealed。
 
+### G3-03 — Transposition Concentration and Tree-to-Graph Divergence Study 1
+
+G3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration / reconvergence / tree-to-RAW-graph divergenceをprospectively検証した。Stage 0は`STAGE0-PASS`。Stage 1はfresh `31310001..31310192`から12 paired trajectories / 24 rootsをexactly one authorized executionで測定し、population/resource/source identity/static independence/pair comparison/development agreementを通過した。production / independent canonical stage scientific core SHA-256も`d44393d6fe9902860d2b5fe3a5a3a3938f7165b40f46e694bd507cf231fcd62f`で一致した。
+
+一方、independent endpoint mapが`Object.create(null)`、productionが通常objectであり、frozen runnerのprototype-sensitive `util.isDeepStrictEqual`がroot-level endpoint equalityをfalseと判定したため、mandatory `allRootExact` / `stageScientificExact` gateがfailした。fresh evidence後の修正再実行はno-rescue ruleで禁止されるため、formal decisionは **`TCTGD-STUDY1 = CLOSED / TECHNICAL-INVALID`**。diagnostic C1-C4方向はformal promotionせずcandidate set `[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedは未消費。protected depth-10 holdoutはsealedのままである。
+
+**最初に読む:**
+
+- [`transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)
+- [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
+
+**詳細・正本:**
+
+- [`transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`](transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md)
+- [`transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`](transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md)
+- [`transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)
+
+**Boundary:** canonical value equalityをpost hoc rescueとして用いず、同じStage 1 seedをprototype修正後に再実行しない。次のStudyにはseparate post-G3-03 program reviewが必要。
+
+
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`. G3-02 `EBRWS-STUDY1` is `CLOSED / TECHNICAL-INVALID` after canonical Stage 1 materialization failure and an unintended duplicate scientific execution violating its exactly-one-run authorization. Formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth 10 sealed. Next action requires a separate post-G3-02 program review.
+**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; G3-03 `TCTGD-STUDY1` is now `CLOSED / TECHNICAL-INVALID` after a prototype-sensitive cross-implementation verification defect in its single authorized Stage 1 execution. G3-03 formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth-10 holdout sealed. Next action requires a separate post-G3-03 program review.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

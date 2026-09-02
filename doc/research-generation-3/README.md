@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-02 EBRWS-STUDY1 CLOSED TECHNICAL-INVALID / G3-03 PROGRAM REVIEW AUTHORIZED / STUDY FREEZE PENDING
+Status = ACTIVE / G3-03 TCTGD-STUDY1 CLOSED TECHNICAL-INVALID / NEXT STUDY REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -22,10 +22,13 @@ G3-02 formal promoted candidate set = []
 G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
 G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
 G3-03 program review = G3-03-AUTHORIZED
-G3-03 additional prerequisite = NONE
-G3-03 principal upstream families = F2,F3,F4
-G3-03 Study freeze = PENDING
-G3-03 fresh scientific evidence = NOT AUTHORIZED / NOT GENERATED / NOT READ
+G3-03 = TCTGD-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-03 Stage 0 = STAGE0-PASS
+G3-03 Stage 1 = TECHNICAL-INVALID / authorized executions 1 / actual executions 1
+G3-03 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-03 formal promoted candidate set = []
+G3-03 Stage 1 seed = 31310001..31310192 / CONSUMED
+G3-03 Stage 2 seed = 31320001..31320288 / NOT CONSUMED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
@@ -92,6 +95,21 @@ G3-03はG3-02のpositive branching/reply-width resultを必要とせず、LGTGMI
 
 G3-02のStage 1 seed、reserved Stage 2 seed、selected roots、runner-local candidate summaries、unintended duplicate execution、failed canonical artifactはG3-03 formal evidenceへ再利用しない。
 
+
+## G3-03 closure
+
+G3-03は`TCTGD-STUDY1`としてprospectively freezeし、Stage 0 PASS後にfresh Stage 1をexactly one authorized executionで実施した。12 paired trajectories / 24 rootsを測定し、population/resource/source identity/static independence/pair/development agreementとcanonical production/independent stage SHA一致を得た。
+
+しかしindependent endpoint mapが`Object.create(null)`、productionが通常objectで、frozen runnerの`util.isDeepStrictEqual`がprototype差をscientific object inequalityとして扱ったため`allRootExact=false` / `stageScientificExact=false`となった。fresh evidence後に同一seedを修正再実行することはno-rescue ruleに反するため、formal decisionは`CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`である。
+
+Canonical records:
+
+- [`../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)
+- [`../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`](../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md)
+- [`../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`](../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md)
+- [`../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)
+- [`../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)
+
 ## Protected evidence
 
 standard initial RAW root complete exact depth-10 holdout remains:
@@ -108,9 +126,7 @@ G3-03で将来観測されるtransposition/reconvergenceやtree/graph divergence
 
 ## Next program boundary
 
-次の安全な作業は、新しいG3-03 research branchをcurrent remote `main`から作成し、prospective Study-definition / preregistration freezeを完了することである。
-
-Stage 0はseparate authorization後のsynthetic/non-scientific technical fixtureだけを使用する。Stage 0 PASSはStage 1を自動authorizeせず、Stage 1からStage 2も自動進行しない。
+次の安全な科学作業は、G3-03 closureを前提にした**separate post-G3-03 current-state program review**である。G3-04またはlater Studyは自動authorizeされない。新しいStudyを行う場合はreview後にnew prospective Study ID / protocol / seed / evidence firewallをoutcome前にfreezeする。
 
 ## Canonical records
 

@@ -5,7 +5,12 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-02
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-02 `EBRWS-STUDY1` closed `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / next program review required (2026-09-02)**
+Research Generation 3: **Active / G3-03 `TCTGD-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / post-G3-03 program review required (2026-09-02)**
+
+
+### 2026-09-02 Research Generation 3 current update
+
+G3-03 `TCTGD-STUDY1`はfresh Stage 1をexactly one authorized executionで完了したが、productionの通常objectとindependentの`Object.create(null)` endpoint mapをprototype-sensitive `util.isDeepStrictEqual`で比較したverification representation defectによりmandatory integrity gateがfailし、formal decision `CLOSED / TECHNICAL-INVALID`で閉じた。canonical production / independent stage scientific core SHAは一致したが、no-rescue boundary後にequality contractを変更して救済しない。formal promoted candidate setは`[]`、Stage 2は未承認・未実行、reserved Stage 2 seedとprotected depth-10 holdoutは未消費・sealedである。次のcore Studyを開始する前にseparate post-G3-03 program reviewを要求する。
 
 ## 1. 目的
 
