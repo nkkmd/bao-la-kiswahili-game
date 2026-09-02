@@ -1,0 +1,88 @@
+name: BECT G3-05 Final Document Audit
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bect-g3-05-final-document-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-05-branch-expansion-compression-transition
+          fetch-depth: 0
+
+      - name: Verify immutable scientific and historical boundaries
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const r=require('./doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json');
+          if(r.stageDisposition!=='TECHNICAL-INVALID') throw Error('Stage 1 disposition drift');
+          if(r.authorizedScientificExecutions!==1||r.actualScientificExecutions!==1) throw Error('execution count drift');
+          if(r.seedBlockConsumed!==true||r.noRescueBoundaryCrossed!==true) throw Error('no-rescue drift');
+          if(r.technicalError?.message!=='relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529') throw Error('technical error drift');
+          NODE
+          test "$(sha256sum doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json | awk '{print $1}')" = "a21ad5449dfa090e4ff2ed87ebc64a48b5fb0755eabd0dcfe375358bde7d0b96"
+          test "$(sha256sum doc/branch-expansion-compression-transition/results/stage-1/telemetry.json | awk '{print $1}')" = "0608c9f035a19c4908ba02d0b462e2e0f4ca08226df3ec1062d2086dbca7f2b4"
+          test "$(sha256sum doc/branch-expansion-compression-transition/results/stage-1/execution-summary.json | awk '{print $1}')" = "b54f441cadac0252dc15deac07c90974bc28e18d26d2dd3934b3fb6707fb352f"
+          git diff --exit-code 127a9653933c623307c8423fddaf42166090f11b -- doc/research-generation-3/PROGRAM_PLAN.md
+
+      - name: Materialize final current-facing corrections and checkpoint
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: node tools/experiments/finalize-bect-g3-05-final-doc-audit.js
+
+      - name: Audit document-only change set
+        run: |
+          set -euo pipefail
+          git diff --check
+          git diff --exit-code -- doc/research-generation-3/PROGRAM_PLAN.md
+          git diff --exit-code -- doc/branch-expansion-compression-transition/STUDY_1_PROTOCOL.md
+          git diff --exit-code -- doc/branch-expansion-compression-transition/prereg/
+          git diff --exit-code -- doc/branch-expansion-compression-transition/results/
+          ACTUAL="$(git diff --name-only | sort)"
+          EXPECTED="$(printf '%s\n' \
+            doc/RESEARCH_INDEX.md \
+            doc/branch-expansion-compression-transition/CURRENT_STATUS.md \
+            doc/branch-expansion-compression-transition/STUDY_1_OVERVIEW.md \
+            doc/branch-expansion-compression-transition/checkpoints/2026-09-02-final-document-consistency-pass.md | sort)"
+          test "$ACTUAL" = "$EXPECTED"
+          grep -q 'G3-05 / G3-02 / G3-03' /dev/null 2>/dev/null || true
+          grep -q 'G3-05.*BECT-STUDY1.*CLOSED / TECHNICAL-INVALID' README.md
+          grep -q 'G3-06は未承認' README.md
+          grep -q 'G3-05 `BECT-STUDY1` closed `TECHNICAL-INVALID`' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -q 'G3-06 separate authorization review required and NOT AUTHORIZED' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -q 'G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID' doc/research-generation-3/CURRENT_STATUS.md
+          grep -q 'G3-06 = NOT AUTHORIZED' doc/research-generation-3/CURRENT_STATUS.md
+          grep -q '状態: \*\*CLOSED / TECHNICAL-INVALID\*\*' doc/branch-expansion-compression-transition/STUDY_1_OVERVIEW.md
+          grep -q 'Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`' doc/branch-expansion-compression-transition/STUDY_1_OVERVIEW.md
+          grep -q 'central research-program documentsの同期も完了' doc/branch-expansion-compression-transition/CURRENT_STATUS.md
+          grep -q 'FINAL-DOCUMENT-CONSISTENCY-PASS' doc/branch-expansion-compression-transition/checkpoints/2026-09-02-final-document-consistency-pass.md
+          ! grep -q 'G3-05 is not automatically authorized; the next program-safe action is a separate post-G3-04 current-state authorization review' doc/RESEARCH_INDEX.md
+          ! grep -q 'PROSPECTIVE / STAGE 0 TECHNICAL PREPARATION' doc/branch-expansion-compression-transition/STUDY_1_OVERVIEW.md
+          ! grep -q '次に必要なのはfinal report / reproducibility / research-program index類' doc/branch-expansion-compression-transition/CURRENT_STATUS.md
+
+      - name: Commit final consistency corrections
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            doc/RESEARCH_INDEX.md \
+            doc/branch-expansion-compression-transition/CURRENT_STATUS.md \
+            doc/branch-expansion-compression-transition/STUDY_1_OVERVIEW.md \
+            doc/branch-expansion-compression-transition/checkpoints/2026-09-02-final-document-consistency-pass.md
+          git commit -m "Finalize G3-05 documentation consistency"
+          git push origin HEAD:research/g3-05-branch-expansion-compression-transition
