@@ -1,0 +1,45 @@
+name: BECT Stage 1 Identity Firewall Mirror
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/STAGE1_IDENTITY_FIREWALL_MIRROR_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bect-stage1-identity-firewall-mirror-v1
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Re-materialize and require exact artifact bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/experiments/materialize-bect-upstream-identity-firewall.js
+          test "$(sha256sum doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json | awk '{print $1}')" = "771297c0fa0f2c9de3f74f85ba1b52d58de9e4ab1ae19c7421643436c0156926"
+          node - <<'NODE'
+          const m=require('./doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          if(m.identityCoreSha256!=='5b8246baf0f0b13fdfbc40b55bf3298895e7f0da660ca6b1275880361c4b7417')throw Error('identity core mismatch');
+          if(m.scientificOutcomeFieldsRetained!==false||m.g303DiagnosticScientificFieldsRetained!==false||m.g304ScientificOutcomeFieldsRetained!==false)throw Error('outcome retention boundary failed');
+          NODE
+      - name: Commit exact identity-only firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Sawa"
+          git config user.email "72678394+nkkmd@users.noreply.github.com"
+          git add doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Freeze BECT Stage 1 identity firewall"
+          git push origin HEAD:research/g3-05-branch-expansion-compression-transition
