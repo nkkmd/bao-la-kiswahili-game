@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "studyId": "EBRWS-STUDY1",
+  "stageId": "EBRWS-S0-TECHNICAL-2026-09-01-v1",
+  "evidenceClass": "TECHNICAL-NON-SCIENTIFIC",
+  "checks": {
+    "canonicalSerializationDeterminism": true,
+    "exactRationalArithmetic": true,
+    "denominatorZeroHandling": true,
+    "treeWidthShapeBoundaryCases": true,
+    "replyWidthShapeBoundaryCases": true,
+    "exactTwoThirdsPromotionBoundary": true,
+    "productionIndependentCandidateAgreement": true,
+    "productionIndependentStageAgreement": true,
+    "rootOrderInvariance": true,
+    "telemetrySeparation": true,
+    "staticIndependenceAudit": true,
+    "freshScientificSeedConsumption": false,
+    "freshScientificRootGeneration": false,
+    "protectedDepth10Access": false
+  },
+  "allMandatoryPass": true,
+  "formalStageDisposition": "STAGE0-PASS",
+  "fixtureCount": 16,
+  "productionStageScientificCoreSha256": "ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd",
+  "independentStageScientificCoreSha256": "ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd",
+  "candidateSetSha256": "022c993b1c7174c8628cc7269a737e9672728b25106dc41a8dc345de51fc5a18",
+  "promotedTechnicalCandidates": [
+    {
+      "constructId": "REPLY-WIDTH-SHAPE",
+      "phase": "namua",
+      "class": "EXPANSION-DOMINANT",
+      "classCount": 2,
+      "eligibleRootCount": 3
+    },
+    {
+      "constructId": "TREE-WIDTH-SHAPE",
+      "phase": "namua",
+      "class": "EXPANSION-DOMINANT",
+      "classCount": 2,
+      "eligibleRootCount": 3
+    }
+  ],
+  "telemetry": {
+    "elapsedMs": 11
+  },
+  "scientificEvidenceGenerated": false,
+  "scientificEvidenceRead": false,
+  "protectedDepth10Holdout": "SEALED / NOT GENERATED / NOT READ"
+}

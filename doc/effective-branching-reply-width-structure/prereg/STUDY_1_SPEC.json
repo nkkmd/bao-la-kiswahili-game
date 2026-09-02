@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "studyId": "EBRWS-STUDY1",
+  "program": "Research Generation 3",
+  "agendaPosition": "G3-02",
+  "englishTitle": "Effective Branching and Reply-Width Structure Study 1 — Prospective validation of reproducible multi-ply branching and reply-width profiles as bounded RAW local game-tree position characteristics in Bao",
+  "japaneseTitle": "Baoにおけるeffective branching / reply-width構造のprospective検証 — bounded RAW局所ゲーム木におけるmulti-ply branching・reply-width profileが再現可能な局面特性として成立する範囲の検証",
+  "baselineRemoteMain": "ca6a1e4a9b41d79d873fa71385972e402ffa5197",
+  "researchBranch": "research/g3-02-effective-branching-reply-width-structure",
+  "authorizationOutcome": "AUTHORIZED",
+  "freshScientificEvidenceGeneratedBeforeFreeze": false,
+  "freshScientificEvidenceReadBeforeFreeze": false,
+  "representation": {
+    "stateIdentity": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "validatedTransforms": [],
+    "moveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"]
+  },
+  "relativeLocalHorizon": 5,
+  "eligibleMeasurementFamilies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION",
+    "LGTGMIV-F5-REPLY-GEOMETRY"
+  ],
+  "primaryDependencies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F5-REPLY-GEOMETRY"
+  ],
+  "secondaryDependencies": [
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION"
+  ],
+  "derivedConstructs": {
+    "treeEffectiveBranching": {
+      "depths": [0, 1, 2, 3, 4],
+      "formula": "treeNodeOccurrences[d+1] / (treeNodeOccurrences[d] - terminalOccurrenceCount[d])",
+      "arithmetic": "exact-rational",
+      "undefinedWhenDenominatorZero": true,
+      "comparison": "BigInt-cross-multiplication-zero-tolerance"
+    },
+    "treeWidthShapeClass": {
+      "comparisonDepthTransitions": 4,
+      "classes": {
+        "EXPANSION-DOMINANT": "at-least-3-of-4-E",
+        "COMPRESSION-DOMINANT": "at-least-3-of-4-C",
+        "FLAT-DOMINANT": "at-least-3-of-4-S",
+        "MIXED": "otherwise-with-all-ratios-defined",
+        "TERMINAL-TRUNCATED": "one-or-more-tree-effective-branching-ratios-undefined"
+      }
+    },
+    "replyWidthShapeClass": {
+      "depths": [0, 1, 2, 3, 4],
+      "directionRule": "compare-widthExpansionCount-to-widthCompressionCount",
+      "classes": {
+        "EXPANSION-DOMINANT": "at-least-3-of-5-E",
+        "COMPRESSION-DOMINANT": "at-least-3-of-5-C",
+        "BALANCED-MIXED": "otherwise"
+      }
+    }
+  },
+  "primaryConstructSystems": ["TREE-WIDTH-SHAPE", "REPLY-WIDTH-SHAPE"],
+  "phaseStrata": ["namua", "mtaji"],
+  "candidatePromotionGate": {
+    "rule": "3 * classCount >= 2 * eligibleRootCount",
+    "minimumFraction": "2/3",
+    "floatingPoint": false
+  },
+  "formalPositiveDecision": "CONFIRMED-BOUNDED-PROFILE-STRUCTURE",
+  "formalNegativeDecision": "NOT-CONFIRMED",
+  "stages": [
+    {
+      "stageId": "EBRWS-S0-TECHNICAL-2026-09-01-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificEvidence": false,
+      "seedConsumptionAllowed": false
+    },
+    {
+      "stageId": "EBRWS-S1-DEVELOPMENT-2026-09-01-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "seedStart": 31210001,
+      "seedEnd": 31210192,
+      "targetRoots": {"namua": 12, "mtaji": 12},
+      "phaseGateCounts": {"namua": 8, "mtaji": 8},
+      "authorizationRequired": true
+    },
+    {
+      "stageId": "EBRWS-S2-FORMAL-2026-09-01-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "seedStart": 31220001,
+      "seedEnd": 31220288,
+      "targetRoots": {"namua": 18, "mtaji": 18},
+      "phaseGateCounts": {"namua": 12, "mtaji": 12},
+      "authorizationRequired": true,
+      "testsOnlyStage1PromotedCandidateIdentities": true
+    }
+  ],
+  "trajectoryPolicy": {
+    "engine": "public/engine.js",
+    "prng": "Mulberry32",
+    "moveOrdering": "canonical-move-identity-key-ascending",
+    "moveSelection": "floor(u * legalMoveCount)",
+    "maxSourcePly": 240,
+    "namuaCandidate": "exact-ply-24-nonterminal-phase-namua",
+    "mtajiCandidate": "first-ply-ge-44-nonterminal-phase-mtaji",
+    "deduplicateBy": "RAW-root-identity",
+    "phaseSelection": "source-seed-ascending-first-N-after-fixed-firewall-exclusions"
+  },
+  "firewall": {
+    "forbiddenFreshEvidenceSeedBlocks": [
+      "31010001..31010096",
+      "31110001..31110128",
+      "31120001..31120192"
+    ],
+    "upstreamIdentityExclusion": [
+      "RAW-root-identity",
+      "full-source-trajectory-identity",
+      "first-16-move-prefix-identity"
+    ],
+    "stage2AlsoExcludesStage1": true,
+    "seedExtensionAllowed": false,
+    "geometryBlindSelection": true,
+    "outcomeBlindSelection": true
+  },
+  "resourceCeilings": {
+    "perRoot": {
+      "uniqueRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "treeNodeOccurrencesSummedAcrossLayers": 1000000000,
+      "elapsedMs": 180000,
+      "peakRssBytes": 4294967296,
+      "rootArtifactBytes": 67108864
+    },
+    "stage0": {
+      "totalElapsedMs": 120000,
+      "peakRssBytes": 1073741824,
+      "resultArtifactBytes": 33554432
+    },
+    "stage1": {
+      "totalElapsedMs": 7200000,
+      "totalArtifactBytes": 1073741824
+    },
+    "stage2": {
+      "totalElapsedMs": 10800000,
+      "totalArtifactBytes": 1610612736
+    }
+  },
+  "independence": {
+    "productionIndependentEndpointRecomputationRequired": true,
+    "sharedBaoRuleEngineContractAllowed": true,
+    "sharedG3DerivedMetricHelperAllowed": false,
+    "sharedG3ClassHelperAllowed": false,
+    "sharedG3PromotionHelperAllowed": false,
+    "sharedG3CanonicalHashHelperAllowed": false,
+    "exactAgreementRequired": true
+  },
+  "formalDecisionTaxonomy": [
+    "CONFIRMED-BOUNDED-PROFILE-STRUCTURE",
+    "NOT-CONFIRMED",
+    "NON-ESTIMABLE",
+    "INCONCLUSIVE",
+    "TECHNICAL-INVALID",
+    "NOT-AUTHORIZED-NOT-EXECUTED"
+  ],
+  "protectedEvidence": {
+    "standardInitialRawRootCompleteExactDepth10": "SEALED / NOT GENERATED / NOT READ",
+    "generationAuthorized": false,
+    "readAuthorized": false,
+    "g2_12EstimatorAsDepth10TruthAllowed": false
+  },
+  "claimExclusions": [
+    "whole-Bao-state-space-size",
+    "whole-Bao-game-tree-size",
+    "depth-greater-than-5-generalization",
+    "symmetry-reduction",
+    "strategic-regime",
+    "best-move",
+    "search-difficulty",
+    "game-theoretic-forcing",
+    "win-or-game-value",
+    "causal-strategic-claim",
+    "human-difficulty"
+  ],
+  "noRescueBoundary": "first-of-stage1-fresh-scientific-evidence-generation-or-read"
+}

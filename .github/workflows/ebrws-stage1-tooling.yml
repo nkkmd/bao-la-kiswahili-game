@@ -1,0 +1,14 @@
+name: EBRWS Stage 1 tooling — CLOSED / DISABLED
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closed:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "EBRWS-STUDY1 is CLOSED / TECHNICAL-INVALID; Stage 1 tooling is no longer active."

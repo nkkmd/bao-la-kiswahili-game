@@ -974,50 +974,49 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — G3-01 closure / LGTGMIV prerequisite closure
+### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 closure
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 authorization review required**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1 = TECHNICAL-INVALID` / Stage 2 not executed**
 
-G3-01 `LGTGMF-STUDY1`は、Stage 1 fresh rootsのroot/family levelではproduction / independent exact一致を得たが、runtime telemetryをstage-level canonical digestへ含めた凍結済みinstrument defectにより`TECHNICAL-INVALID`で閉じた。eligible familiesは`[]`、Stage 2は未実行であり、このformal decisionは変更しない。
+G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`のままimmutable closure。独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 familiesをformal eligibleとした。
 
-その後、G3-01とは別のnew prospective independent prerequisiteとして`LGTGMIV-STUDY1`を実施した。scientific canonical coreとtelemetryを分離し、RAW-only identity、validated transform set `[]`、production / independent implementation、fresh evidence firewallを固定した。
+G3-02 `EBRWS-STUDY1`は別authorization review後にprospectively開始。Stage 0は`STAGE0-PASS`。authorized Stage 1 run `33569323221`のrunner-local computationはglobal gate PASSとproduction / independent exact agreementを記録したが、canonical result artifactのrepository pushが失敗し回収不能となったためformal promotionしなかった。
 
-Stage 1はfresh `31110001..31110128`から16 roots（Namua/Mtaji 8/8）をdepth 5までcomplete reconstructionし、5 familiesすべてをpromote。Stage 2はfresh holdout `31120001..31120192`から24 roots（12/12）をdepth 5まで測定し、root reconstruction 24/24 exact一致、全5 familiesで24/24 root exact agreement、stage digest exact agreement、resource gate PASSを得た。
+Final Actions-history auditでは、workflow armingによるrun `33569382663`が同じStage 1を2回目もscientifically executeしていたことが判明した。prospective authorizationはexactly one executionであり、2回目は`INVALID-DO-NOT-USE`。このexecution-count violationもtechnical-invalid根拠として保存する。
 
-Formal decision:
+Formal decision: **`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
-**`LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`**
+Repository state: **G3-02 research workflow complete on research branch / `main` integration not performed / pending explicit user instruction**
 
-formal eligible families:
-
-- `LGTGMIV-F1-TREE-OCCURRENCE`
-- `LGTGMIV-F2-RAW-GRAPH`
-- `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
-- `LGTGMIV-F4-TREE-GRAPH-RELATION`
-- `LGTGMIV-F5-REPLY-GEOMETRY`
+```text
+authorized Stage 1 executions = 1
+actual Stage 1 scientific executions = 2 / contract violated
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = not consumed
+protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
+```
 
 **最初に読む:**
 
-- [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md)
+- [`effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`](effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md)
 - [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 
 **詳細・正本:**
 
-- [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md)
-- [`local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md`](local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md)
-- [`local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md)
-- [`local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md`](local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md)
-- [`research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md`](research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md) — LGTGMIV closure / G3-02 review requirementのprogram decision
-- [`research-generation-3/checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md`](research-generation-3/checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md) — `main` integration完了checkpoint
+- [`effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`](effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md)
+- [`effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`](effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json)
+- [`effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`](effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md)
+- [`research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`](research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md)
 
-**Boundary:** eligibilityはfrozen RAW-only depth-5 local measurement instrumentに限定する。G3-01を救済しない。G3-02はautomatic startせず、別authorization reviewまでblocked。standard-root depth 10はsealed。
+**Boundary:** both runner-local candidate summaries and the duplicate-run equality are non-formal. No same-evidence repair/further rerun. G3-03以降は別reviewまで自動開始しない。standard-root depth 10はsealed。
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` remains closed `TECHNICAL-INVALID` with eligible families `[]`. The independent post-G3-01 prerequisite `LGTGMIV-STUDY1` is closed `FORMAL-ELIGIBLE-ALL`; all five frozen RAW-only depth-5 local geometry measurement families are formally eligible. G3-02 automatic start remains blocked pending a separate post-closure authorization review, and standard-root depth 10 remains sealed for G3-11.
+**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`. G3-02 `EBRWS-STUDY1` is `CLOSED / TECHNICAL-INVALID` after canonical Stage 1 materialization failure and an unintended duplicate scientific execution violating its exactly-one-run authorization. Formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth 10 sealed. Next action requires a separate post-G3-02 program review.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

@@ -1,63 +1,55 @@
 # Research Generation 3 — Current Status
 
-Updated: 2026-09-01
+Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / POST-LGTGMIV PREREQUISITE CLOSED / G3-02 AUTHORIZATION REVIEW REQUIRED
+Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / G3-02 RESEARCH COMPLETE ON BRANCH / NEXT PROGRAM REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
+Research Generation 2 = CLOSED
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-01 formal eligible measurement families = []
 G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-G3-01 Stage 1 seed consumption = 31010001..31010096
 post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
-LGTGMIV Stage 1 seed consumption = 31110001..31110128
-LGTGMIV Stage 2 seed consumption = 31120001..31120192
-LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5 / all five frozen families
-LGTGMIV research-branch closure = COMPLETE
-LGTGMIV main integration = COMPLETE
-LGTGMIV integrated research-branch head = 1777ba717ced88be64cbaf981ce7096372046334
-LGTGMIV final closure audit = 33466581297 / success
-Next scientific action = separate post-closure G3-02 authorization review
-G3-02 automatic start = BLOCKED
-G3-02..G3-08 automatic start = BLOCKED
+LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5
+G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-02 research workflow = COMPLETE ON RESEARCH BRANCH
+G3-02 main integration = NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION
+G3-02 Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
+G3-02 Stage 1 = EBRWS-S1-DEVELOPMENT-2026-09-01-v1 / TECHNICAL-INVALID
+G3-02 Stage 1 authorized scientific executions = 1
+G3-02 Stage 1 actual scientific executions = 2 / execution-count contract violated
+G3-02 Stage 2 = EBRWS-S2-FORMAL-2026-09-01-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+G3-02 formal promoted candidate set = []
+G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
+G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
+G3-02 no-rescue boundary = CROSSED / ACTIVE
+G3-02 Stage 1 execution workflow = CLOSED / DISABLED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none / G3-02 authorization review not yet started
+Active scientific research branch = none; closed G3-02 branch awaits explicit integration instruction
+Next scientific action = separate post-G3-02 program review / NOT AUTOMATICALLY AUTHORIZED
 ```
 
-## Program direction
+## Immutable upstream boundaries
 
-Research Generation 3は、Research Generation 2で最も強く成立したRAW-only bounded exact analysisを基盤とし、Baoの局所ゲーム木・局所到達グラフの構造幾何を中心研究対象とする。
+Research Generation 2 remains closed.
 
-G3-01 `LGTGMF-STUDY1`は、fresh Stage 1のroot/family levelではproduction / independent exact agreementを得た一方、runtime telemetryをstage-level canonical digestへ混入させた凍結済みinstrument defectにより`TECHNICAL-INVALID`で閉じた。eligible familiesは`[]`、Stage 2は未実行であり、このformal decisionは永久に変更しない。
+G3-01 `LGTGMF-STUDY1` remains permanently:
 
-その後のprogram-level dependency reassessmentに従い、G3-01とは別のpost-G3-01 / pre-G3-02 prerequisiteとして`LGTGMIV-STUDY1`をprospectively開始・完遂し、`main`へのrepository integrationも完了した。
+```text
+CLOSED / TECHNICAL-INVALID
+formal eligible measurement families = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+```
 
-## Completed measurement-instrument prerequisite
+G3-01 Stage 1 root/family agreement is not used to rescue or reclassify it.
 
-Formal Study:
-
-**`LGTGMIV-STUDY1` — Local Game-Tree Geometry Measurement Instrument Verification Study 1**
-
-日本語題目:
-
-**Baoにおける局所ゲーム木幾何測定instrumentのprospective再構築と独立検証 — deterministic scientific core、exact RAW tree/graph reconstruction、cross-implementation reproducibilityのfresh evidenceによる確立**
-
-Formal closure:
+The independent prerequisite `LGTGMIV-STUDY1` remains:
 
 `CLOSED / FORMAL-ELIGIBLE-ALL`
 
-Stage progression:
-
-- Stage 0 technical controls: `STAGE0-PASS`
-- Stage 1 fresh development: 16 roots / depth 5 / `STAGE1-PASS` / five families promoted
-- Stage 2 fresh formal holdout: 24 roots / depth 5 / global gate PASS / `FORMAL-ELIGIBLE-ALL`
-- Stage 2 read-only post-result audit: PASS / scientific re-execution false
-- final cross-document closure audit: `33466581297 / success`
-- main integration: COMPLETE / integrated research-branch head `1777ba717ced88be64cbaf981ce7096372046334`
-
-Formal eligible family set:
+Formal eligible families:
 
 1. `LGTGMIV-F1-TREE-OCCURRENCE`
 2. `LGTGMIV-F2-RAW-GRAPH`
@@ -65,97 +57,154 @@ Formal eligible family set:
 4. `LGTGMIV-F4-TREE-GRAPH-RELATION`
 5. `LGTGMIV-F5-REPLY-GEOMETRY`
 
-Stage 2 exact verification:
+Eligibility is limited to the frozen RAW-only / relative depth-5 bounded local reconstruction contract.
+
+## G3-02 formal Study
+
+G3-02 was separately authorized after LGTGMIV and prospectively frozen as:
+
+**`EBRWS-STUDY1` — Effective Branching and Reply-Width Structure Study 1**
+
+正式日本語題目:
+
+**Baoにおけるeffective branching / reply-width構造のprospective検証 — bounded RAW局所ゲーム木におけるmulti-ply branching・reply-width profileが再現可能な局面特性として成立する範囲の検証**
+
+Frozen representation:
 
 ```text
-fresh holdout = 31120001..31120192
-population = 12 Namua + 12 Mtaji = 24 unique RAW roots
-relative depth = 5
-production / independent exact root reconstruction = 24/24
-each formal family exact roots = 24/24
-resource gate = PASS
-stage scientific core SHA-256 = 97ad7dc21e1758d31fa09e487389bf5d3935b1d98daf3eaa2f1b524d7169f9a4
-```
-
-この結果はbounded RAW-only depth-5 local geometry measurement instrumentのformal eligibilityを成立させる。whole-Bao game-tree size、depth 5を超えた自動一般化、symmetry reduction、strategic value、game-theoretic value、human difficultyを意味しない。
-
-## Main integration record
-
-Closed research branchは`main`へnon-force fast-forwardで統合した。
-
-```text
-pre-integration main = a53aabd26f78ac408445aff2d18ace3b21b827d7
-integrated research-branch head = 1777ba717ced88be64cbaf981ce7096372046334
-pre-integration relation = ahead_by 57 / behind_by 0
-main integration = COMPLETE
-```
-
-この統合はrepository synchronizationであり、scientific evidenceの再生成・再実行・再判定ではない。post-integration checkpointは`checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md`に記録する。
-
-## Immutable upstream boundaries
-
-```text
-Research Generation 2 = CLOSED
-G2-05 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-RAW state identity = authoritative
+state identity = pits,reserve,houseOwned,player,phase,winner,pending
 validated transform set = []
-validated strategic-regime representation = none
-G2-11 = NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED
-G2-12 = TECHNICAL-INVALID / selectedEstimator null
-whole-Bao state-space estimate = NOT AUTHORIZED
-whole-Bao game-tree estimate = NOT AUTHORIZED
-G3-01 = CLOSED / TECHNICAL-INVALID / eligible families []
+relative local horizon = 5
 ```
 
-LGTGMIVはこれらを修正・救済・再判定していない。
+Primary systems were `TREE-WIDTH-SHAPE` and `REPLY-WIDTH-SHAPE`, with exact phase-level gate `3 * classCount >= 2 * eligibleRootCount`.
+
+## Stage 0
+
+`EBRWS-S0-TECHNICAL-2026-09-01-v1` used only synthetic primitive fixtures and passed all mandatory controls.
+
+```text
+Stage 0 = STAGE0-PASS
+production / independent scientific core = ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd
+fresh scientific seed consumption = false
+protected depth-10 access = false
+```
+
+## Stage 1 authorization and authorized execution
+
+Stage 1 was separately authorized for exactly one fresh-development scientific execution:
+
+```text
+seed = 31210001..31210192
+target = 12 Namua + 12 Mtaji
+relative depth = 5
+authorized scientific executions = 1
+```
+
+Tooling smoke run `33525232642` passed without fresh evidence access.
+
+Authorized run `33569323221`, job `100059596453`, completed the scientific execution step. The frozen runner locally reported:
+
+```text
+reported runner disposition = STAGE1-PASS
+globalGatePass = true
+selected roots = 12 Namua + 12 Mtaji
+production / independent stage scientific core = 4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e
+candidateSetSha256 = 4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6
+```
+
+Runner-local diagnostic candidates:
+
+- `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
+- `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
+
+However, the generated canonical Stage 1 files were committed only in the ephemeral runner workspace. Push of local commit `709bc393` was rejected non-fast-forward because the remote branch advanced during execution, and the local commit is not recoverable after runner teardown.
+
+The frozen protocol does not permit a result-dependent authorized repair rerun after the no-rescue boundary. No such valid / intentional repair rerun was performed.
+
+## Final Actions-history audit — unintended duplicate execution
+
+Final Actions-history audit established that a second Stage 1 scientific execution occurred:
+
+```text
+run 33569323221 = authorized one-shot / canonical materialization failure
+run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
+authorized scientific executions = 1
+actual scientific executions = 2
+execution-count contract = violated
+```
+
+Run `33569382663`, job `100060967285`, was unintentionally queued by a workflow-arming commit before the first scientific outcome was known. Because the workflow used non-cancelling concurrency, its actual computation began only after the first run had completed the scientific step and crossed the no-rescue boundary.
+
+This run therefore violated the frozen exactly-one-execution authorization. It locally produced the same scientific core / candidate-set / scientific-result file hash as the authorized run, but this equality is **not** a valid replication, confirmation, repair, or rescue and is excluded from scientific inference.
+
+The duplicate run's local result commit `24c57398` was also rejected non-fast-forward and is not recoverable.
+
+## Formal fail-closed closure
+
+The Study has two recorded technical-integrity failures:
+
+1. canonical Stage 1 result materialization failure from the authorized execution;
+2. exactly-one-execution contract violation from the unintended duplicate run.
+
+Accordingly:
+
+```text
+Stage 1 = TECHNICAL-INVALID
+Study = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+```
+
+The runner-local positive summaries are diagnostic provenance only. The unauthorized duplicate execution has formal use `INVALID-DO-NOT-USE`.
+
+## Stage 2
+
+`EBRWS-S2-FORMAL-2026-09-01-v1` is:
+
+`NOT-AUTHORIZED-NOT-EXECUTED`
+
+Stage 2 seed `31220001..31220288` remains unconsumed. Neither runner-local Stage 1 summary authorizes Stage 2.
 
 ## Protected evidence
 
-standard initial RAW rootのdepth 10 exact layerはG3-11の`FRESH-DEEPER-EXACT-HOLDOUT`として引き続き保護する。
+G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
-```text
-complete depth-10 enumeration generated = false
-depth-10 scientific counts / geometry outcome read = false
-LGTGMIV input to depth-10 holdout = false
-Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-```
+`SEALED / NOT GENERATED / NOT READ`
 
-## Downstream authorization boundary
+Neither Stage 1 execution generated/read it and G2-12 was not used as depth-10 truth.
 
-LGTGMIVの成功はG3-02の自動開始条件ではない。Stage 2 resultにも`automaticG302StartAuthorized = false`を明示している。
+## Claim boundary
 
-```text
-G3-02 automatic start = BLOCKED
-G3-02..G3-08 automatic start = BLOCKED
-next action = separate Research Generation 3 post-closure authorization review
-```
+G3-02 has no formal positive branching/reply-width structure claim. In particular, the diagnostic compression-dominant observations and the duplicate-run equality are not generalized to Bao, depth >5, best move, search difficulty, strategic/game-theoretic forcing, win/value, causal strategic effects, or human difficulty.
 
-次のreviewでは、current repository state、LGTGMIV formal eligible family set、G3-02のprospective question、fresh population / evidence firewall、protected evidenceとのdependencyを確認し、G3-02を開始可能かを別decisionとして固定する。reviewが完了するまではG3-02 scientific evidenceを生成しない。
+## Next program boundary
+
+G3-02 closure does not automatically authorize G3-03 or later studies. The next scientific action is a separate current-state program review that preserves:
+
+- G3-01 immutable technical-invalid closure,
+- LGTGMIV formal eligible family boundary,
+- G3-02 technical-invalid closure and no-rescue boundary,
+- RAW-only identity and validated transform set `[]`,
+- protected depth-10 holdout.
+
+## Main integration boundary
+
+G3-02 research work is complete on `research/g3-02-effective-branching-reply-width-structure`.
+
+`main` integration has **not** been performed and remains pending explicit user instruction. No merge, fast-forward, or pull-request integration action is authorized by this completion state.
 
 ## Canonical records
 
-Program:
 - `README.md`
-- `PROGRAM_PLAN.md` — Research Generation 3開始前に固定したhistorical prospective plan。retroactiveに書き換えない
-- `CURRENT_STATUS.md` — current-facing state
-- `checkpoints/2026-09-01-lgtgmiv-main-integration-complete.md` — LGTGMIV main integration complete checkpoint
-- `../research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`
-- `../research-program-decisions/2026-08-31-post-g3-01-measurement-instrument-prerequisite-selected.md`
-- `../research-program-decisions/2026-09-01-lgtgmiv-closure-and-g3-02-review-required.md`
+- `PROGRAM_PLAN.md` — historical prospective plan; do not rewrite
+- `../effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`
+- `../effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`
+- `../effective-branching-reply-width-structure/CURRENT_STATUS.md`
+- `../effective-branching-reply-width-structure/DECISION_REGISTER.md`
+- `../effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`
+- `../effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
+- `../effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`
+- `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
+- `../research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
 
-G3-01:
-- `../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`
-- `../local-game-tree-geometry-measurement-foundation/CURRENT_STATUS.md`
-
-Completed prerequisite `LGTGMIV-STUDY1`:
-- `../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_OVERVIEW.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_PROTOCOL.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/CURRENT_STATUS.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/DECISION_REGISTER.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/REPRODUCIBILITY_INDEX.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/checkpoints/2026-09-01-main-integration-complete.md`
-- `../local-game-tree-geometry-measurement-instrument-verification/results/stage-2/execution-summary.json`
-- `../local-game-tree-geometry-measurement-instrument-verification/results/stage-2/posthoc-audit-summary.json`
-
-Research Generation 3 historical `PROGRAM_PLAN.md` remains unchanged. LGTGMIV scientific closure and main integration are complete. G3-02 remains blocked pending a separate authorization review.
+Historical `PROGRAM_PLAN.md` remains unchanged.

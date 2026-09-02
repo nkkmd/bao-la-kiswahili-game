@@ -3,9 +3,9 @@
 Version: 3.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-09-01
+更新日: 2026-09-02
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / LGTGMIV prerequisite closed `FORMAL-ELIGIBLE-ALL` / G3-02 authorization review required (2026-09-01)**
+Research Generation 3: **Active / G3-02 `EBRWS-STUDY1` closed `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / next program review required (2026-09-02)**
 
 ## 1. 目的
 
@@ -1265,7 +1265,7 @@ standard initial RAW rootのdepth 10 exact layerは`G3-11`用`FRESH-DEEPER-EXACT
 ### 10.5 Wave A — Local Geometry Foundations
 
 - **G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1**: `LGTGMF-STUDY1`として実行・closure済み。Stage 1でroot-level / F1〜F5 exact agreementは得たがcanonical stage-manifest implementation defectによりformal decision `TECHNICAL-INVALID`、eligible family `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。このformal decisionは不変。後続の独立prerequisite `LGTGMIV-STUDY1`はfresh evidenceで`CLOSED / FORMAL-ELIGIBLE-ALL`となり、5 familyすべてのbounded RAW-only depth-5 eligibilityを別Studyとして確立済み。**G3-01 CLOSED / immutable; prerequisite completed separately**
-- **G3-02 — Effective Branching / Reply-Width Structure Study 1**: 数plyにわたるeffective branching / reply-width profileが再現可能な局面特性として存在するかを検証する。LGTGMIV closure後もautomatic startは未承認で、別のpost-closure authorization reviewが必要。review完了前にfresh scientific evidenceを生成しない。**P0 / AUTHORIZATION REVIEW REQUIRED / NOT STARTED**
+- **G3-02 — Effective Branching / Reply-Width Structure Study 1**: LGTGMIV closure後の別authorization reviewを経て`EBRWS-STUDY1`としてprospectively開始。Stage 0は`STAGE0-PASS`。Stage 1はauthorized runのcanonical artifact materialization failureと、workflow armingに起因するunintended duplicate scientific executionによるexactly-one-execution contract違反のためfail-closedで`CLOSED / TECHNICAL-INVALID`。formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED**
 - **G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1**: tree occurrenceとunique RAW graphの乖離、multi-parent、reconvergenceをexactに測定する。symmetry quotientは使用しない。**P0**
 - **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: reply narrowingが持続するcorridorと、多数branchが少数RAW stateへ収束するfunnelを検証する。`forcing`はstructural forcingのみを意味する。**P0**
 
@@ -1344,27 +1344,35 @@ Research Generation 3はpositive resultの数で完了判定しない。
 
 ### 10.12 現在状態
 
-2026-09-01、G3-01後の独立measurement-instrument prerequisite `LGTGMIV-STUDY1`は、prospectively frozen Stage 0/1/2を完遂し、`CLOSED / FORMAL-ELIGIBLE-ALL`で閉じた。G3-01 `LGTGMF-STUDY1`は従来どおり`TECHNICAL-INVALID`であり、この結果は変更しない。
+2026-09-02、G3-02 `EBRWS-STUDY1`は**`CLOSED / TECHNICAL-INVALID`**でformal closureした。G3-01 `LGTGMF-STUDY1`の`TECHNICAL-INVALID` closure・eligible families `[]`、および独立prerequisite `LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`は変更しない。
 
-`LGTGMIV-STUDY1`ではscientific canonical coreからruntime/resource telemetryを分離し、RAW-only state identity、validated transform set `[]`、production / structurally independent implementation、fresh-evidence no-rescue firewallを維持した。
+G3-02はRAW-only identity、validated transform set `[]`、relative depth 5、primary `TREE-WIDTH-SHAPE` / `REPLY-WIDTH-SHAPE`、exact 2/3 gate、fresh populations、resource ceilings、production / independent verification、no-rescue ruleをscientific outcome前にfreezeした。Stage 0は`STAGE0-PASS`。
 
-Stage 1はfresh `31110001..31110128`からNamua 8 / Mtaji 8の16 rootsをdepth 5までexact reconstructionし、global gateをPASSして5 familyすべてをpromoteした。Stage 2はfresh formal holdout `31120001..31120192`からNamua 12 / Mtaji 12の24 rootsをdepth 5まで測定し、production / independent exact root reconstruction 24/24、各family exact roots 24/24、resource gate PASSを得た。
+Stage 1のauthorized one-shot run `33569323221`はfresh `31210001..31210192`からNamua 12 + Mtaji 12を計算し、runner-localではglobal gate PASS、production / independent exact stage-core agreement、reply-width `COMPRESSION-DOMINANT` Namua 12/12・Mtaji 9/12を記録した。しかしcanonical result filesのpushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収できなかったため、これらはformal promotionせずdiagnostic provenanceに限定した。
+
+さらにfinal Actions-history auditで、workflow armingによりrun `33569382663`が意図せずqueueされ、同じStage 1 scientific computationが2回目も実行されていたことを確認した。authorizationはexactly one executionであるため、この2回目は`UNAUTHORIZED-DUPLICATE-INVALID` / `INVALID-DO-NOT-USE`とし、replication・confirmation・repair・rescueに使用しない。
 
 ```text
-Research Generation 3 = ACTIVE / POST-LGTGMIV PREREQUISITE CLOSED / G3-02 AUTHORIZATION REVIEW REQUIRED
-G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-01 formal eligible measurement families = []
-post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
-LGTGMIV formal eligible families = F1 TREE-OCCURRENCE / F2 RAW-GRAPH / F3 TRANSPOSITION-RECONVERGENCE / F4 TREE-GRAPH-RELATION / F5 REPLY-GEOMETRY
-LGTGMIV Stage 1 seed consumption = 31110001..31110128
-LGTGMIV Stage 2 seed consumption = 31120001..31120192
-G3-02 automatic start = BLOCKED
-G3-02..G3-08 automatic start = BLOCKED
+Research Generation 3 = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED
+G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID / eligible families []
+LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5 eligible
+G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-02 research workflow = COMPLETE ON RESEARCH BRANCH
+G3-02 main integration = NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION
+G3-02 Stage 0 = STAGE0-PASS
+G3-02 Stage 1 = TECHNICAL-INVALID
+G3-02 Stage 1 authorized executions = 1
+G3-02 Stage 1 actual scientific executions = 2 / contract violated
+G3-02 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-02 formal promoted candidate set = []
+G3-02 Stage 1 seed = 31210001..31210192 / consumed
+G3-02 Stage 2 seed = 31220001..31220288 / not consumed
+Stage 1 execution workflow = CLOSED / DISABLED
 Protected standard-root depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-LGTGMIVのpositive resultは、frozen RAW-only depth-5 local game-tree/graph geometry measurement instrumentのbounded formal eligibilityを意味する。whole-Bao state/game-tree size、depth 5超への自動一般化、symmetry reduction、strategic/game-theoretic value、human difficultyは主張しない。
+runner-local compression patternもunauthorized duplicate runの一致もformal positive claimへ用いない。branching / reply widthをbest move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。
 
-次のscientific actionはG3-02の自動開始ではなく、current repository state、formal eligible family set、G3-02 fresh population/evidence firewall、protected evidence dependencyを確認する別のpost-closure authorization reviewである。review完了前にG3-02 scientific evidenceを生成しない。
+G3-02 closureはG3-03以降を自動authorizeしない。次のscientific actionは、G3-02のimmutable `TECHNICAL-INVALID` closure、LGTGMIV family boundary、RAW-only identity、protected depth-10 firewallを維持した別のpost-G3-02 program reviewである。
 
-standard initial RAW rootのcomplete exact depth-10 holdoutはG3-11向けに引き続きsealedとする。
+Research Generation 3開始前にfreezeした`research-generation-3/PROGRAM_PLAN.md`はhistorical prospective planとして変更しない。
