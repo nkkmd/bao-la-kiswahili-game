@@ -107,7 +107,7 @@ const decision = read(files.decision);
 mustInclude(decision, "| BECT-D053 | Study closure | `CLOSED / TECHNICAL-INVALID`", "decision register closure");
 const repro = read(files.repro);
 mustInclude(repro, "Stage 1 = 31510001..31510240 / CONSUMED / CLOSED TO SAME-EVIDENCE REUSE", "repro Stage 1 namespace");
-mustInclude(repro, "Study = CLOSED / TECHNICAL-INVALID", "repro closure");
+mustInclude(repro, "BECT-STUDY1 = CLOSED / TECHNICAL-INVALID", "repro closure");
 
 // Scientific result boundary guard.
 const result = JSON.parse(read(files.result));
