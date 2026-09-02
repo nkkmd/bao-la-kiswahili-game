@@ -78,6 +78,9 @@ function deriveFromMeasurement(measurement) {
 
   const treeOccurrences = sumIntegerFields(r.layers, "treeNodeOccurrences");
   const distinctRawStates = BigInt(r.cumulative.distinctRawStates);
+  const depthLabelledRawStatePresences = r.layers.reduce((a, row) => a + BigInt(row.uniqueRawStateCount), 0n);
+  const crossDepthRawStateRevisitPresenceExcess = depthLabelledRawStatePresences - distinctRawStates;
+  requireTrue(crossDepthRawStateRevisitPresenceExcess >= 0n, "cross-depth RAW-state presence excess must be nonnegative");
   const duplicateEncounters = sumIntegerFields(r.parentLayers, "duplicateEncounterCount");
   const depthLabelledUniqueTransitions = sumIntegerFields(r.parentLayers, "uniqueTransitionCount");
   const multiParentLayerCount = sumIntegerFields(r.parentLayers, "multiParentRawStateCount");
@@ -101,6 +104,8 @@ function deriveFromMeasurement(measurement) {
       rootExcludedFromC3Denominator: true,
       treeOccurrenceCountDepth0To5: String(treeOccurrences),
       distinctRawStatesDepth0To5: String(distinctRawStates),
+      depthLabelledUniqueRawStatePresenceCountDepth0To5: String(depthLabelledRawStatePresences),
+      crossDepthRawStateRevisitPresenceExcess: String(crossDepthRawStateRevisitPresenceExcess),
       duplicateEncounterCountParentDepth0To4: String(duplicateEncounters),
       depthLabelledUniqueTransitionCountParentDepth0To4: String(depthLabelledUniqueTransitions),
       multiParentRawStateCountLayerSumParentDepth0To4: String(multiParentLayerCount),
