@@ -1,16 +1,11 @@
 name: TCTGD Stage 1 Development
 
 on:
-  workflow_dispatch:
-    inputs:
-      authorization_nonce:
-        description: Frozen Stage 1 authorization nonce
-        required: true
-        type: string
-      dispatcher_run_id:
-        description: Non-scientific dispatcher workflow run ID
-        required: true
-        type: string
+  push:
+    branches:
+      - research/g3-03-transposition-tree-graph-divergence
+    paths:
+      - doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER
 
 permissions:
   contents: write
@@ -29,23 +24,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: research/g3-03-transposition-tree-graph-divergence
+          ref: ${{ github.sha }}
           fetch-depth: 0
       - id: lease
         name: Establish durable pre-computation execution lease
         env:
-          AUTH_NONCE: ${{ inputs.authorization_nonce }}
-          DISPATCHER_RUN_ID: ${{ inputs.dispatcher_run_id }}
           SCIENTIFIC_RUN_ID: ${{ github.run_id }}
+          TRIGGER_COMMIT_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           AUTH=doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION.json
+          TRIGGER=doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER
           MARKER=doc/transposition-concentration-tree-graph-divergence/executions/stage-1-execution-started.json
           RESULT=doc/transposition-concentration-tree-graph-divergence/results/stage-1/scientific-result.json
           test -f "$AUTH"
+          test -f "$TRIGGER"
           test ! -f "$RESULT"
-          EXPECTED_NONCE=$(node -e 'const x=require("./'"$AUTH"'"); process.stdout.write(x.authorizationNonce)')
-          test "$EXPECTED_NONCE" = "$AUTH_NONCE"
           if test -f "$MARKER"; then
             echo "Existing execution marker: duplicate scientific queue prevented before computation."
             echo "execute=false" >> "$GITHUB_OUTPUT"
@@ -55,24 +49,32 @@ jobs:
           node - <<'NODE'
           const fs=require('node:fs'),crypto=require('node:crypto');
           const auth=JSON.parse(fs.readFileSync('doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION.json','utf8'));
+          const trigger=JSON.parse(fs.readFileSync('doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER','utf8'));
+          if(auth.authorizationDecision!=='STAGE1-AUTHORIZED')throw new Error('Stage 1 authorization decision mismatch');
+          if(auth.maxScientificExecutions!==1)throw new Error('exactly-one authorization mismatch');
+          if(trigger.studyId!==auth.studyId||trigger.stageId!==auth.stageId||trigger.authorizationNonce!==auth.authorizationNonce)throw new Error('execution trigger authorization binding mismatch');
+          if(trigger.freshScientificEvidenceAuthorized!==true)throw new Error('execution trigger does not authorize fresh evidence');
+          if(trigger.protectedDepth10AccessAuthorized!==false)throw new Error('execution trigger violates protected depth-10 boundary');
           function blob(text){const b=Buffer.from(text,'utf8');return crypto.createHash('sha1').update(Buffer.from(`blob ${b.length}\0`,'utf8')).update(b).digest('hex')}
           for(const [p,e] of Object.entries(auth.sourceBlobBindings)){const a=blob(fs.readFileSync(p,'utf8'));if(a!==e)throw new Error(`source blob mismatch ${p}: ${a} != ${e}`)}
           NODE
           PRE_HEAD=$(git rev-parse HEAD)
+          test "$PRE_HEAD" = "$TRIGGER_COMMIT_SHA"
           AUTH_HEAD=$(node -e 'const x=require("./'"$AUTH"'"); process.stdout.write(x.authorizedScientificContentHead)')
           git cat-file -e "$AUTH_HEAD^{commit}"
           git merge-base --is-ancestor "$AUTH_HEAD" "$PRE_HEAD"
-          REMOTE_ADVANCEMENT_ALLOWLIST='^(doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION\.json|doc/transposition-concentration-tree-graph-divergence/authorizations/2026-09-02-stage-1-development-authorization\.md|doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER|doc/transposition-concentration-tree-graph-divergence/executions/stage-1-dispatch-ledger\.json)$'
+          REMOTE_ADVANCEMENT_ALLOWLIST='^(doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION\.json|doc/transposition-concentration-tree-graph-divergence/authorizations/2026-09-02-stage-1-development-authorization\.md|doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER)$'
           UNEXPECTED=$(git diff --name-only "$AUTH_HEAD..$PRE_HEAD" | grep -Ev "$REMOTE_ADVANCEMENT_ALLOWLIST" || true)
           if test -n "$UNEXPECTED"; then
             echo "Unexpected remote advancement after frozen scientific-content head:" >&2
             printf '%s\n' "$UNEXPECTED" >&2
             exit 1
           fi
+          AUTH_NONCE=$(node -e 'const x=require("./'"$AUTH"'"); process.stdout.write(x.authorizationNonce)')
           mkdir -p "$(dirname "$MARKER")"
           node - <<NODE
           const fs=require('node:fs');
-          const marker={schemaVersion:1,studyId:'TCTGD-STUDY1',stageId:'TCTGD-S1-DEVELOPMENT-2026-09-02-v1',workflowRunId:Number(process.env.SCIENTIFIC_RUN_ID),dispatcherRunId:Number(process.env.DISPATCHER_RUN_ID),authorizationNonce:process.env.AUTH_NONCE,authorizedScientificContentHead:'$AUTH_HEAD',preLeaseRemoteHead:'$PRE_HEAD',leaseCommitSha:null,freshScientificEvidenceGeneratedBeforeLease:false,protectedDepth10AccessBeforeLease:false};
+          const marker={schemaVersion:1,studyId:'TCTGD-STUDY1',stageId:'TCTGD-S1-DEVELOPMENT-2026-09-02-v1',workflowRunId:Number(process.env.SCIENTIFIC_RUN_ID),triggerCommitSha:process.env.TRIGGER_COMMIT_SHA,authorizationNonce:'$AUTH_NONCE',authorizedScientificContentHead:'$AUTH_HEAD',preLeaseRemoteHead:'$PRE_HEAD',freshScientificEvidenceGeneratedBeforeLease:false,protectedDepth10AccessBeforeLease:false};
           fs.writeFileSync('$MARKER',JSON.stringify(marker,null,2)+'\n');
           NODE
           git config user.name "github-actions[bot]"
