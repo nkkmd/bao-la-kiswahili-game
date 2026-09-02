@@ -126,7 +126,7 @@ G3-03で将来観測されるtransposition/reconvergenceやtree/graph divergence
 
 ## Next program boundary
 
-次の安全な科学作業は、G3-03 closureを前提にした**separate post-G3-03 current-state program review**である。G3-04またはlater Studyは自動authorizeされない。新しいStudyを行う場合はreview後にnew prospective Study ID / protocol / seed / evidence firewallをoutcome前にfreezeする。
+separate post-G3-03 current-state program reviewは完了し、formal decisionは **`G3-04-AUTHORIZED`** である。次の安全な科学作業はG3-04のnew prospective Study ID / protocol / seed / evidence firewallをfresh evidence前にfreezeすることである。このprogram authorization自体はfresh scientific executionをauthorizeしない。
 
 ## Canonical records
 

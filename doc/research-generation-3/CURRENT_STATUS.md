@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-03 CLOSED TECHNICAL-INVALID / NEXT STUDY REVIEW REQUIRED
+Program status = ACTIVE / G3-03 CLOSED TECHNICAL-INVALID / G3-04 AUTHORIZED / PREREG FREEZE REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -29,8 +29,8 @@ G3-03 Stage 1 seed = 31310001..31310192 / CONSUMED
 G3-03 Stage 2 seed = 31320001..31320288 / NOT CONSUMED
 G3-03 no-rescue boundary = CROSSED / ACTIVE
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = research/g3-03-transposition-tree-graph-divergence / CLOSURE DOCUMENTATION IN PROGRESS
-Next scientific action = separate post-G3-03 current-state program review; no G3-04 or later fresh evidence is authorized
+Active scientific research branch = none / G3-04 STUDY DEFINITION NOT YET FROZEN
+Next scientific action = prospective G3-04 Study-definition / preregistration freeze; no G3-04 fresh evidence is authorized before freeze and separate Stage authorization
 ```
 
 ## Immutable upstream boundaries
@@ -287,6 +287,6 @@ The technical observation that canonical scientific bytes matched while prototyp
 
 No G3-04 or later Study is automatically authorized.
 
-The next safe scientific action is a separate **post-G3-03 current-state program review**. Only if that review explicitly authorizes a next Study may a new prospective Study ID/protocol/seed block be frozen. No new fresh evidence may be generated before that authorization and freeze.
+The separate **post-G3-03 current-state program review** is complete and formally decided **`G3-04-AUTHORIZED`**. The next safe scientific action is a new prospective G3-04 Study-definition / preregistration freeze. This program authorization does not authorize fresh evidence; no G3-04 scientific evidence may be generated before the freeze and separate Stage authorization. Canonical review: `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`.
 
 Historical `PROGRAM_PLAN.md` remains unchanged.

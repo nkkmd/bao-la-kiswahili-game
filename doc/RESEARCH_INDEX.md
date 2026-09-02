@@ -1037,7 +1037,7 @@ G3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration /
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; G3-03 `TCTGD-STUDY1` is now `CLOSED / TECHNICAL-INVALID` after a prototype-sensitive cross-implementation verification defect in its single authorized Stage 1 execution. G3-03 formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth-10 holdout sealed. Next action requires a separate post-G3-03 program review.
+**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; G3-03 `TCTGD-STUDY1` is now `CLOSED / TECHNICAL-INVALID` after a prototype-sensitive cross-implementation verification defect in its single authorized Stage 1 execution. G3-03 formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth-10 holdout sealed. The separate post-G3-03 program review is complete: `G3-04-AUTHORIZED` for prospective Study-definition / preregistration only; fresh G3-04 evidence remains unauthorized until freeze and separate Stage authorization.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

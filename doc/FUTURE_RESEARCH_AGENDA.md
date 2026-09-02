@@ -5,12 +5,12 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-02
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-03 `TCTGD-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / post-G3-03 program review required (2026-09-02)**
+Research Generation 3: **Active / G3-03 `TCTGD-STUDY1` closed `TECHNICAL-INVALID` / G3-04 `AUTHORIZED` for prospective Study-definition only / fresh evidence not yet authorized (2026-09-02)**
 
 
 ### 2026-09-02 Research Generation 3 current update
 
-G3-03 `TCTGD-STUDY1`はfresh Stage 1をexactly one authorized executionで完了したが、productionの通常objectとindependentの`Object.create(null)` endpoint mapをprototype-sensitive `util.isDeepStrictEqual`で比較したverification representation defectによりmandatory integrity gateがfailし、formal decision `CLOSED / TECHNICAL-INVALID`で閉じた。canonical production / independent stage scientific core SHAは一致したが、no-rescue boundary後にequality contractを変更して救済しない。formal promoted candidate setは`[]`、Stage 2は未承認・未実行、reserved Stage 2 seedとprotected depth-10 holdoutは未消費・sealedである。次のcore Studyを開始する前にseparate post-G3-03 program reviewを要求する。
+G3-03 `TCTGD-STUDY1`はfresh Stage 1をexactly one authorized executionで完了したが、productionの通常objectとindependentの`Object.create(null)` endpoint mapをprototype-sensitive `util.isDeepStrictEqual`で比較したverification representation defectによりmandatory integrity gateがfailし、formal decision `CLOSED / TECHNICAL-INVALID`で閉じた。canonical production / independent stage scientific core SHAは一致したが、no-rescue boundary後にequality contractを変更して救済しない。formal promoted candidate setは`[]`、Stage 2は未承認・未実行、reserved Stage 2 seedとprotected depth-10 holdoutは未消費・sealedである。separate post-G3-03 program reviewは完了し、`G3-04-AUTHORIZED`となった。次はG3-04のprospective Study-definition / preregistration freezeであり、fresh evidenceはまだ未承認である。
 
 ## 1. 目的
 
@@ -1271,8 +1271,8 @@ standard initial RAW rootのdepth 10 exact layerは`G3-11`用`FRESH-DEEPER-EXACT
 
 - **G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1**: `LGTGMF-STUDY1`として実行・closure済み。Stage 1でroot-level / F1〜F5 exact agreementは得たがcanonical stage-manifest implementation defectによりformal decision `TECHNICAL-INVALID`、eligible family `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。このformal decisionは不変。後続の独立prerequisite `LGTGMIV-STUDY1`はfresh evidenceで`CLOSED / FORMAL-ELIGIBLE-ALL`となり、5 familyすべてのbounded RAW-only depth-5 eligibilityを別Studyとして確立済み。**G3-01 CLOSED / immutable; prerequisite completed separately**
 - **G3-02 — Effective Branching / Reply-Width Structure Study 1**: LGTGMIV closure後の別authorization reviewを経て`EBRWS-STUDY1`としてprospectively開始。Stage 0は`STAGE0-PASS`。Stage 1はauthorized runのcanonical artifact materialization failureと、workflow armingに起因するunintended duplicate scientific executionによるexactly-one-execution contract違反のためfail-closedで`CLOSED / TECHNICAL-INVALID`。formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED**
-- **G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1**: tree occurrenceとunique RAW graphの乖離、multi-parent、reconvergenceをexactに測定する。symmetry quotientは使用しない。**P0**
-- **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: reply narrowingが持続するcorridorと、多数branchが少数RAW stateへ収束するfunnelを検証する。`forcing`はstructural forcingのみを意味する。**P0**
+- **G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1**: `TCTGD-STUDY1`として実行・closure済み。single authorized Stage 1でcanonical scientific coreはcross-implementation一致したが、prototype-sensitive in-memory equality gateにより`TECHNICAL-INVALID`。formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID**
+- **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: reply narrowingが持続するcorridorと、多数branchが少数RAW stateへ収束するfunnelを検証する。`forcing`はstructural forcingのみを意味する。post-G3-03 reviewで**`G3-04-AUTHORIZED`**（prospective Study-definitionのみ）。fresh evidenceは未承認。**P0 / AUTHORIZED-FOR-PREREG**
 
 ### 10.6 Wave B — Geometry Dynamics and Mechanisms
 
