@@ -21,7 +21,7 @@ fresh scientific evidence generated = true
 fresh scientific evidence read = true
 no-rescue boundary = CROSSED / ACTIVE
 protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-main integration = NOT PERFORMED
+main integration = COMPLETE / fast-forward integrated research head 49f868103b186c8bc00a188afd185a620a797e55
 ```
 
 ## Formal scope
@@ -181,4 +181,4 @@ Partial telemetryに含まれる局所値や途中root系列を、branch expansi
 
 ## Next action
 
-BECT-STUDY1は **`CLOSED / TECHNICAL-INVALID`** としてclosure済みで、final report / reproducibility / central research-program documentsの同期も完了しています。Study内の追加scientific executionはありません。次のprogram-level scientific actionはseparate post-G3-05 current-state G3-06 authorization reviewであり、G3-06は現時点で`NOT AUTHORIZED`です。`main`統合は明示的なユーザー指示があるまで実施しません。
+BECT-STUDY1は **`CLOSED / TECHNICAL-INVALID`** としてclosure済みで、final report / reproducibility / central research-program documentsの同期と`main`へのfast-forward統合も完了しています。Study内の追加scientific executionはありません。次のprogram-level scientific actionはseparate post-G3-05 current-state G3-06 authorization reviewであり、G3-06は現時点で`NOT AUTHORIZED`です。
