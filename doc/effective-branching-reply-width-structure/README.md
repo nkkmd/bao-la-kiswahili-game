@@ -18,20 +18,26 @@ Formal English title:
 
 Stage 0 technical validationはsynthetic fixturesのみで`STAGE0-PASS`となり、production / independent stage scientific coreはexact一致した。
 
-Stage 1はfresh seed `31210001..31210192`、Namua 12 + Mtaji 12、relative depth 5として一度だけauthorized executionを行った。runner内部ではglobal mandatory gatesがPASSし、production / independent stage coreもexact一致した。
+Stage 1はfresh seed `31210001..31210192`、Namua 12 + Mtaji 12、relative depth 5として**exactly one scientific execution**をprospectively authorizationした。authorized run `33569323221`のrunner内部ではglobal mandatory gatesがPASSし、production / independent stage coreもexact一致した。
 
 ただしcanonical Stage 1 result filesを生成した後、repositoryへのpushがnon-fast-forwardでrejectされた。runner-local commitはephemeral環境終了後に回収不能となり、full canonical result artifactをrepositoryへimmutable materializeできなかった。
 
-fresh evidence生成後のsame-evidence rerunはauthorization/no-rescue boundaryに反するため実施しない。したがってfail-closedでStage 1およびStudyを`TECHNICAL-INVALID`として閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`とする。
+この時点でno-rescue boundaryはcross済みであり、失われたartifactを作り直すためのauthorized / intentional same-evidence repair rerunは行わない。
+
+さらにfinal Actions-history auditで、workflow armingによってrun `33569382663`が意図せずqueueされ、同じStage 1 scientific computationが2回目も実行されていたことが判明した。これはexactly-one-execution authorizationに違反するため`UNAUTHORIZED-DUPLICATE-INVALID` / `INVALID-DO-NOT-USE`とし、formal replication、confirmation、repair、rescueには使用しない。
+
+以上のtechnical-integrity failuresをfail-closedに適用し、Stage 1およびStudyを`TECHNICAL-INVALID`として閉じた。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
 
 ## Diagnostic-only Stage 1 observation
 
-GitHub Actions run `33569323221`のrunner logには次の候補が記録された。
+Authorized GitHub Actions run `33569323221`のrunner logには次の候補が記録された。
 
 - `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
 - `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
 
 これらは**formal promoted candidatesではない**。canonical Stage 1 artifact materialization failure後にpositive resultへ救済せず、diagnostic provenanceとしてのみ保存する。
+
+Unauthorized duplicate runでも同じscientific core / candidate-set / scientific-result file hashがrunner-localに得られたが、この一致もscientific inferenceへ使用しない。
 
 Formal promoted candidate set:
 
@@ -98,13 +104,22 @@ branching width / reply width / multi-ply width profileはmachine-observed bound
 - `CURRENT_STATUS.md` — current-facing state
 - `DECISION_REGISTER.md` — formal decisions
 - `REPRODUCIBILITY_INDEX.md` — reproducibility map
-- `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — authoritative Stage 1 closure result
-- `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md` — incident checkpoint
+- `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — authoritative Stage 1 closure result / execution audit
+- `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md` — materialization incident checkpoint
+- `checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md` — execution-count violation checkpoint
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains immutable and is not rewritten.
 
 ## Final Actions-history audit
 
-最終Actions監査でStage 1 scientific executionがauthorized 1回に対してactual 2回だったことを確認した。2回目のrun `33569382663`はworkflow armingにより意図せずqueueされ、`UNAUTHORIZED-DUPLICATE-INVALID`として全scientific inferenceから除外する。
+```text
+authorized Stage 1 scientific executions = 1
+actual Stage 1 scientific executions = 2
+run 33569323221 = authorized / canonical materialization failure
+run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 execution workflow = CLOSED / DISABLED
+```
 
-この事実はStudyの`CLOSED / TECHNICAL-INVALID` closureを変更せず、technical-invalid根拠を追加する。Stage 1 execution workflowはdisabled、Stage 2は未実行、depth-10 holdoutはsealedのままである。
+この事実はStudyの`CLOSED / TECHNICAL-INVALID` closureを変更せず、technical-invalid根拠を追加する。Stage 2は未実行、depth-10 holdoutはsealedのままである。
