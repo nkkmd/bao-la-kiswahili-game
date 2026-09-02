@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BECT-STUDY1",
+  "status": "PROSPECTIVE-PRE-STAGE0-CLARIFICATION",
+  "freshScientificEvidenceGeneratedBeforeClarification": false,
+  "freshScientificEvidenceReadBeforeClarification": false,
+  "stage0FixtureExecutedBeforeClarification": false,
+  "clarification": {
+    "path": "longitudinalLevelEndpoints.BECT-M5-DUPLICATE-TRANSITION-FRACTION.denominator",
+    "originalText": "sum tree edge/transition occurrences over parent depths 0..4",
+    "authoritativeMeaning": "sum uniqueTransitionCount[d] over parent depths d=0..4",
+    "rationale": "Remove wording ambiguity before any technical fixture or fresh scientific evidence. This binds M5 to the exact LGTGMIV F2/F3 unique-transition denominator used by the per-layer duplicateEncounterFraction primitive."
+  },
+  "allOtherScientificContractTermsChanged": false,
+  "stage1SeedAccess": false,
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false
+}
