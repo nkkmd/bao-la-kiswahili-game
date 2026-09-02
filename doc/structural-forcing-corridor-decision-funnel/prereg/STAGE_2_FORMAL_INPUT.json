@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDF-STUDY1",
+  "stageId": "SFCDF-S2-FORMAL-2026-09-02-v1",
+  "materializationClass": "STAGE2-PREAUTH-FORMAL-INPUT",
+  "freshStage2ScientificEvidenceGenerated": false,
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "sourceStage1Result": {
+    "path": "doc/structural-forcing-corridor-decision-funnel/results/stage-1/scientific-result.json",
+    "gitBlobSha": "049473e3130814382418fd15fe0c7991f7c08c21",
+    "stageScientificCoreSha256": "fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca",
+    "stageDisposition": "STAGE1-PASS"
+  },
+  "upstreamIdentityFirewall": {
+    "path": "doc/structural-forcing-corridor-decision-funnel/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+    "gitBlobSha": "9bc9debfa8df428eece243ca2ce49baf5707b9bf",
+    "identityCoreSha256": "0196f255aa152f343cb428ee048ab1570ccdf4661c5adba5a47f4356a974b086",
+    "scientificOutcomeFieldsRetained": false
+  },
+  "promotedCandidates": [
+    {
+      "candidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "direction": "MTAJI-GREATER"
+    },
+    {
+      "candidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "direction": "NAMUA-GREATER"
+    }
+  ],
+  "nonPromotedCandidatesExcluded": [
+    "SFCDF-C2-WIDTH-COMPRESSION-FRACTION",
+    "SFCDF-C3-LONGEST-UNIT-WIDTH-RUN",
+    "SFCDF-C4-RECONVERGENT-STATE-OCCUPANCY-FRACTION",
+    "SFCDF-C5-ROOT-BRANCH-OVERLAP-FRACTION"
+  ],
+  "stage1IdentitySets": {
+    "rootRawSha256": [
+      "09a2b81a23b3e2bc1379c6a22b5c0bcbf2f42fbb6f936f54f1fb850be0e9cfaf",
+      "11949277529c5984f33bf308eca419d3eefff0abf1fda7cca5172bb85ee3cb33",
+      "251a1eefab8f3f575ec0b0f01b42cb51f1268adc5bda5246a27c0d80c57ee1fd",
+      "26e2e37ab6267e1c3f576d8953a5bbece5791edf5316081c68c7081d26cf0c6b",
+      "28f87eb9ed01a92cb1a9ef9b72277ca1c6f7a1875fad706106a42bab9fb4e769",
+      "2dbc4a8fd503fa15de314da64e16959812a5f53ddc7743b10c8e87bd79b5dd2d",
+      "4147d03011160766e793e4d73b6f5055cf9b6b4857d3832193876af1e6e47ab8",
+      "45b8609e1332f6dc194f6cc03f68def918d19cd42c0e56ab1366a1cab73b2337",
+      "5387891cc0e33dd3ec64dca24f380f34826db272581c5e310483b820db5cdee2",
+      "6c685783b5b8e52dd52db21fb79972873e242a784e0fff241625c612961cf50c",
+      "71369ff422011c26819f53a452a44bb628cc4c742cc95c8da77fefbe48b0aa00",
+      "91ab32752afb38c407ec278bc70ad71c1ad660cb15247aaaa5d57b65eff572a5",
+      "93eb9aeed5ea662a038f4fc808dbf63c127bfd1a15a36c1902c6e71ebe3d4ae6",
+      "a0f9277fb471446502d597af97ea63bf36761b5b451ef1403b83d714a74906e9",
+      "aac4aeec61960aa13ca777e64e458ce1ffabc68d8475dd2425ed5cdd0b048dc7",
+      "ae8ad551dc1b240a89b51c3d9ea589c5a0b9a1ce8cac9a5efa488981cd5f34b1",
+      "afa0e73d3a90347f9fc8ced1fc9c313d65b425c5e984373ef0f42616c0c0cb8b",
+      "bbf9cec0094efb955e3b9b3ef77566a8cb9f8a3473a88ade60b8f22949adaad6",
+      "c15b8cc2f88d4cebb8dda6a09ff757e06d707702e1cd223ef2d0400dd3c4f00b",
+      "c7d4fedd04eed95fa22cb70aa6787c1b01c833e3ef65c95aa2320cc1e7cf6526",
+      "d9b8c40f8fc35cf56fc8dc987620900210833b7b2da358907edc13e725bcf702",
+      "d9e6fd70d9ddc40290acdb836ffc03345555935ab2cb27f26997246e2cfef0d2",
+      "e1bbb68d12aaeb9e889d9c544f113cdb96bb3fc276b1c1a935f22ad055f4e171",
+      "fc8a8613f25149ffad460ac42ce70f33f42fca5f1e1016924ca8bb8dcfef8108"
+    ],
+    "sourceTrajectorySha256": [
+      "25c446f60fa3c701825f9ae03efb6aed2ca5f2ccad004c470914fd4c57e2dcea",
+      "2b91d09c901f08a7c95dc1ea4ce711c0c6e0ca344c651c8d6d2d36c27ebac2ea",
+      "2ca0f810cc95fedb37d660b905096bc6f67bf1157fe8205877aa3c2cc0b35ccf",
+      "43a778f1bc24728f5d63225ed3a576b949ce494908e6f854586ead24f0a1e9bf",
+      "44180afcd2ea4f0a0ab5dafb2c7e741af5ed94c4b61f5e91343f758fd880d8cc",
+      "46335ee16215c2703a50d8fddfcca4a75dc789fec8897659cf224437a8fd8f41",
+      "4644aa9ca5f15e598d3313da7c697046bb6642dcbba3523d8018770d0e6b8f88",
+      "479b014962b565f6e09723c3d5596551d34699339af48e5432fd7e39f41354cb",
+      "5e90f306aae084d3e695913c97e48ab74b318fb0b950984ca27a7142409beed4",
+      "679ac12fdabf2e82e71b34d9612928ad5c666efb923e82a7babb7d13c45bf7fd",
+      "6dcb9986b68fef74837a7378b8d68107ecf05efa4a60bd20ebdeda7d88e57138",
+      "70153e4b2ffaf90f3f69ea813b4d5f6e2ac1b370a2176175aa064f44f22720b6",
+      "78a35eb43c4302f41a5a511a3938a082223fd303770e2b0045c7f3481215acae",
+      "8ced0d289b7f66cb4fda61106b2c0b1a15f896ec7dfdd80abd1fcfa055a04036",
+      "92b710788072c8744573c03de64526075eadcead15863d68560566f59d6ba8a8",
+      "9a3a9f4e728e8d559cedf8546aac424831766b4615ef621c691ca1a3103c2236",
+      "9a8672f25265a997cc5f00648dd916ddbf1bda5065bc49419305f26dcf41fe31",
+      "a48cdb133e16455a43d5cea34593c257abe5ffbaabcbe672f302b667bca24184",
+      "a97bacc5b54c5d52c5d39ae6236c27164d98e25f7ca6404849e027f00066a626",
+      "bd3779333165d63ef186a10e066cbbab1168ff44a39bbea850d390c6b2f7ba83",
+      "cbeaffe588fb961bc3bb02ce7e94bf3048bf6f760b83243982ba328c72d84a66",
+      "d31e90e80a9125927e9334e7e9770cc995e0421d7cb747960326a674e7685c17",
+      "f0b0b4cf6e843a557b5c42cfaa3060c9e5ca4ec6360fa540f9edec73e00efa3c",
+      "f95dff7ac6f6b0352b28ff53680ab9badf86e025bb9f28462d85370bc3602ad6"
+    ],
+    "openingPrefixSha256": [
+      "1490ccba87f3221c29b0d5dc18aec1306eaa0d5f5721dff6f7a2aa437fee0fec",
+      "29c70830f7e963d2a90041e3da068f2d9a2a62ffeea26d947e35c92e267333ef",
+      "31b3237ecba2747678d7d30791e3ebcc01eb75c56899adaf00e58e6ff9855f87",
+      "6e25a65a9601fb81ea011def1f122d4f9a0972906687c6c9e9c9dbf4fdbb0e2c",
+      "865803912736bf77c536455f4dbacc057d86fdf56cabb330f297a1750dc16fd1",
+      "8bcaa4e058cafc471444dab36091364ab157be29c3b1cfcadd12bef034218775",
+      "a9779fdb8d2044eb07210a2a6735c09e47af7c1fb898012e378af926244327a5",
+      "b4f75da804f7d6fd98ac092219fe7b67f1ab697fa957aad83430383e71511b68",
+      "c0f42155e18c3589070e5d30ae929a396f7cd9df591e1ca3d3e77d15a87f4c30",
+      "c224bd3dc5452eee8307ed784d6386aedba4935766c4a90dbeca43c2ee51f5cd",
+      "d9016580fbb4e464e7170d1a0a5ee33167a4f7d3c6b3602e696ba450899e6b0d",
+      "ece1aa47bf1e0195030fb625f8cc148e6561f46da020bea7e5d2de1ae4df6958"
+    ]
+  },
+  "stage1IdentityCounts": {
+    "rootRawSha256": 24,
+    "sourceTrajectorySha256": 24,
+    "openingPrefixSha256": 12
+  },
+  "stage1IdentityCoreSha256": "eca6d00a88def284644bdf59bc599e8faae7d09f3aaa2656fafd046c35fd4c0d",
+  "retainedStage1ScientificFields": [
+    "promotedCandidates"
+  ],
+  "discardedStage1ScientificOutcomes": true
+}
