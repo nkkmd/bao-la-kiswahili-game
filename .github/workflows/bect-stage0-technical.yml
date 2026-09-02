@@ -21,7 +21,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 1
+          fetch-depth: 0
+      - name: Verify branch advancement allowlist
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="77c9647826aad3c3086066931a0ae1b2c4c646fe"
+          git merge-base --is-ancestor "$BASE" "$GITHUB_SHA"
+          test "$(git rev-list --count "$BASE..$GITHUB_SHA")" -eq 2
+          git diff --name-only "$BASE" "$GITHUB_SHA" | while IFS= read -r p; do
+            case "$p" in
+              .github/workflows/bect-stage0-technical.yml) ;;
+              doc/branch-expansion-compression-transition/authorizations/STAGE0_EXECUTION_TRIGGER) ;;
+              *) echo "unauthorized branch advancement path: $p" >&2; exit 1 ;;
+            esac
+          done
       - name: Verify frozen source bindings and protected boundary
         shell: bash
         run: |
