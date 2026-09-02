@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDF-STUDY1",
+  "stageId": "SFCDF-S0-TECHNICAL-2026-09-02-v1",
+  "fixtureExact": true,
+  "constructSeparation": true,
+  "canonicalPrototypeInsensitiveEquality": true,
+  "productionIndependentCanonicalAgreement": true,
+  "endpointValues": {
+    "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+      "numerator": "9",
+      "denominator": "23",
+      "defined": true
+    },
+    "SFCDF-C2-WIDTH-COMPRESSION-FRACTION": {
+      "numerator": "6",
+      "denominator": "13",
+      "defined": true
+    },
+    "SFCDF-C3-LONGEST-UNIT-WIDTH-RUN": {
+      "numerator": "3",
+      "denominator": "1",
+      "defined": true
+    },
+    "SFCDF-C4-RECONVERGENT-STATE-OCCUPANCY-FRACTION": {
+      "numerator": "7",
+      "denominator": "25",
+      "defined": true
+    },
+    "SFCDF-C5-ROOT-BRANCH-OVERLAP-FRACTION": {
+      "numerator": "1",
+      "denominator": "2",
+      "defined": true
+    },
+    "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO": {
+      "numerator": "19",
+      "denominator": "10",
+      "defined": true
+    }
+  },
+  "protectedDepth10Access": false,
+  "freshScientificSeedAccess": false,
+  "deterministicCoreSha256": "14e7640dcd302c402c21a5acbe44bcbf004956670f467763faf7c301e545a295",
+  "stageDisposition": "STAGE0-PASS"
+}
