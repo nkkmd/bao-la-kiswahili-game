@@ -161,13 +161,30 @@ Canonical records:
 - `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
 - `../structural-forcing-corridor-decision-funnel/checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
 
+## G3-05 formal closure
+
+G3-05は`BECT-STUDY1`としてprospectively freezeし、Stage 0 v2を`STAGE0-PASS`として完了した。その後fresh Stage 1をexactly one authorized executionで開始したが、bounded RAW enumeration中の`relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`によりfail-closedした。
+
+Formal closureは`CLOSED / TECHNICAL-INVALID`。Stage 1 seed `31510001..31510240`はconsume済み、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。partial telemetryはdiagnostic-onlyで、branch expansion/compression transitionのpositive/negative scientific evidenceへ格上げしない。same-evidence rerunやrelay-limit repair-and-rescueは禁止する。
+
+Durable artifact `9849245665`はexact-byte mirror run `33637372364`でscientific recomputationなしにrepositoryへ保存された。
+
+Canonical records:
+
+- `../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`
+- `../branch-expansion-compression-transition/CURRENT_STATUS.md`
+- `../branch-expansion-compression-transition/DECISION_REGISTER.md`
+- `../branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
+- `checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
+
 ## Protected evidence
 
 standard initial RAW root complete exact depth-10 holdout remains:
 
 `SEALED / NOT GENERATED / NOT READ`
 
-G3-02 / G3-03 / G3-04はいずれもこれを生成・readしていない。G3-04 closure後も封印を維持する。
+G3-02 / G3-03 / G3-04 / G3-05はいずれもこれを生成・readしていない。G3-05 closure後も封印を維持する。
 
 ## Interpretation boundary
 
@@ -177,9 +194,9 @@ G3-03のtechnical-invalid runに残るdiagnostic transposition/reconvergenceやt
 
 ## Next program boundary
 
-G3-04は`SFCDF-STUDY1 = CLOSED / FORMAL-COMPLETE`。C1は`CONFIRMED / MTAJI-GREATER`、C6は`CONFIRMED / NAMUA-GREATER`。
+G3-05 / `BECT-STUDY1`は`CLOSED / TECHNICAL-INVALID`であり、formal promoted candidate setは`[]`、Stage 2は未実行である。
 
-Historical program plan上の次候補はG3-05 — Branch Expansion / Compression Transition Study 1だが、**G3-05はまだauthorizeされていない**。次はseparate post-G3-04 current-state authorization reviewを行う。review前にG3-05 fresh evidenceを生成・readしない。
+Historical program plan上の次候補はG3-06だが、**G3-06はまだauthorizeされていない**。次はseparate post-G3-05 current-state authorization reviewを行う。review前にG3-06 fresh evidenceを生成・readせず、G3-05 partial telemetryをvalidated transition/mechanism evidenceとして継承しない。
 
 ## Canonical records
 
@@ -194,6 +211,13 @@ Historical program plan上の次候補はG3-05 — Branch Expansion / Compressio
 - `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`
 - `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
 - `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
+- `../branch-expansion-compression-transition/STUDY_1_OVERVIEW.md`
+- `../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`
+- `../branch-expansion-compression-transition/CURRENT_STATUS.md`
+- `../branch-expansion-compression-transition/DECISION_REGISTER.md`
+- `../branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
+- `checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
 - `CURRENT_STATUS.md`
 - `PROGRAM_PLAN.md` — immutable historical prospective plan
 - `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`

@@ -352,7 +352,7 @@ G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-G3-02 / G3-03 / G3-04はいずれもこのholdoutを生成・read・peekしていない。G2-12はdepth-10 truthの代替として使用しない。
+G3-02 / G3-03 / G3-04 / G3-05はいずれもこのholdoutを生成・read・peekしていない。G2-12はdepth-10 truthの代替として使用しない。
 
 ## Claim boundary
 
@@ -366,13 +366,12 @@ G3-04のformal positive claimはC1/C6のfrozen candidate-level phase difference�
 
 ## Next program boundary
 
-G3-04はclosedであり、同Studyの追加seed、rerun、endpoint rescue、threshold変更は行わない。
+G3-05 / `BECT-STUDY1`は`CLOSED / TECHNICAL-INVALID`。Stage 1 seedはconsume済みでsame-evidence rescueは禁止、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
 
-Historical `PROGRAM_PLAN.md`では次のcore agenda itemはG3-05 — Branch Expansion / Compression Transition Study 1である。ただしG3-04のpositive resultはG3-05を自動authorizeしない。
+Historical `PROGRAM_PLAN.md`上の次候補はG3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1。ただしG3-05はvalid transition familyをpromotionしていないため、G3-06はBECT partial telemetry / transition directionをvalidated inputとして継承できない。
 
-次の安全なprogram actionは、**post-G3-04 current-state G3-05 authorization review**をread-onlyで実施し、G3-05が現在のformal evidence boundaryから独立に開始可能か、追加prerequisiteが必要か、またはnot-authorizedかを明示的に判定することである。authorization review完了前にG3-05 fresh scientific evidenceを生成・readしない。
+次の安全なprogram actionは、**post-G3-05 current-state G3-06 authorization review**をfresh-free / read-onlyで実施し、LGTGMIVのformal eligible RAW depth-5 geometryと独立に定義したrule-semantic eventsだけでG3-06を開始可能か、追加prerequisiteが必要か、またはnot-authorizedかを明示的に判定することである。review完了前にG3-06 fresh scientific evidenceを生成・readしない。
 
 Protected depth-10 holdoutは引き続き`SEALED / NOT GENERATED / NOT READ`。
 
-Historical `PROGRAM_PLAN.md` remains unchanged.
 Historical `PROGRAM_PLAN.md` remains unchanged.
