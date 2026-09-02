@@ -251,3 +251,125 @@ fresh Stage 2 executions = 0
 ## Stage 0 closure boundary
 
 `BECT-S0-TECHNICAL-2026-09-02-v2 = STAGE0-PASS` establishes technical eligibility for a separate Stage 1 authorization review. It does not itself authorize fresh Stage 1 seed access or execution.
+
+## Stage 1 prospective clarification 2
+
+`prereg/STUDY_1_SPEC_CLARIFICATION_2.json`
+
+```text
+blob = 87e78b008024301a26f78d1ac488d8489f9bd02b
+fresh evidence before clarification = false
+Stage 1 seed access before clarification = false
+coverage rule = metric defined at all 48 analysis roots on all 10 selected trajectories
+longitudinal identity rules = prospectively fixed before fresh evidence
+```
+
+This clarification resolves implementation ambiguity only. It does not change the endpoint universe, event grammar, population, seed block, horizon, representation, promotion gates, formal test or resource ceilings.
+
+## Stage 1 identity-only firewall
+
+Materialization:
+
+```text
+run = 33634116550
+job = 100260542549
+artifact = 9848023294
+artifact ZIP SHA-256 = da16c9103f80de82051b229239491535604f20b903e427d5b4898c7126d1418b
+identity file SHA-256 = 771297c0fa0f2c9de3f74f85ba1b52d58de9e4ab1ae19c7421643436c0156926
+identity core SHA-256 = 5b8246baf0f0b13fdfbc40b55bf3298895e7f0da660ca6b1275880361c4b7417
+root identities = 124
+trajectory identities = 124
+opening-prefix identities = 67
+scientific outcome fields retained = false
+```
+
+Exact-byte mirror:
+
+```text
+run = 33634259594
+job = 100261031754
+mirror commit = 229527b993012c8019ef782c62f4d2652ee0c7f9
+UPSTREAM_IDENTITY_FIREWALL.json blob = 123430eb0cbe100bf50e068ee4c4ee7dc52c2ca8
+```
+
+G3-03 diagnostic scientific fields and G3-04 scientific outcome fields are not retained by the BECT identity firewall.
+
+## Stage 1 frozen scientific implementation
+
+```text
+tools/experiments/lib/bect-stage1-production.js = 32995ed7e666b7cff7a6bb43946a30cdc86a7668
+tools/experiments/lib/bect-stage1-independent.js = fcc150bdfcfbb1727ea6e0fdd4f336d1ae36e1e6
+tools/experiments/run-bect-stage1-development.js = 127cb10ea23d18f0a32c2adc2d8c499de4c19b04
+.github/workflows/bect-stage1-development.yml = dcb39d07420ad81db9e10d0ba08a10a9a3cb7cb7
+```
+
+Production and independent selectors/aggregators are implementation-separated. The scientific workflow uses a dedicated trigger path, `cancel-in-progress: false`, durable pre-computation lease, exact source bindings, branch-advancement allowlist and artifact-before-repository-mirror boundary.
+
+## Stage 1 preauthorization validation
+
+Static audit:
+
+```text
+run = 33635090198
+job = 100263846393
+result = PASS
+scientific runner execution = false
+Stage 1 seed access = false
+```
+
+Initial tooling smoke `33635334088` proved the unarmed runner fail-closed before fresh access; its final static trigger-string count assertion was defective and failed without any scientific consequence.
+
+Corrected tooling smoke:
+
+```text
+run = 33635443176
+job = 100265043171
+result = PASS
+unarmed runner fail-closed = PASS
+single scientific trigger declaration = PASS
+concurrency/lease/artifact path gates = PASS
+Stage 1 seed access = false
+```
+
+Source validation:
+
+```text
+run = 33635524477
+job = 100265316151
+result = PASS
+exact source bindings = PASS
+scientific workflow execution = false
+Stage 1 seed access = false
+```
+
+Durable lease-path smoke:
+
+```text
+run = 33635710262
+job = 100265942917
+result = PASS
+technical trigger commit = bd7a7ef367b170e79d874d941bd0583513d02baa
+durable technical marker commit = a588dbbaf01d1c5a5d5191ef3f34b9e054ab8037
+scientific authorization = false
+scientific computation = false
+Stage 1 seed access = false
+```
+
+The lease smoke used the actual GitHub contents-write and branch-push path on a non-scientific marker and did not trigger the scientific workflow.
+
+## Stage 1 preauthorization checkpoint
+
+`checkpoints/2026-09-02-stage-1-preauthorization-tooling-pass.md`
+
+```text
+blob = 86df093e85d14fc1a9c931e818f4067cb8822949
+decision = BECT-STAGE1-AUTHORIZATION-ELIGIBLE / SCIENTIFIC-EXECUTION-NOT-YET-AUTHORIZED
+BECT Stage 1 Development workflow executions before authorization = 0
+Stage 1 seed = NOT CONSUMED
+Stage 2 seed = NOT CONSUMED
+fresh BECT scientific evidence generated/read = false
+no-rescue boundary = NOT CROSSED
+protected depth-10 = SEALED / NOT GENERATED / NOT READ
+```
+
+A separate machine-readable authorization must bind the post-preparation branch HEAD and permit exactly one Stage 1 scientific execution. Only the authorization artifact and one dedicated execution trigger may advance the branch between that baseline and computation.
