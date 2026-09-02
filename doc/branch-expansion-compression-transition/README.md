@@ -19,7 +19,7 @@ Stage 2 seed = 31520001..31520384 / NOT CONSUMED
 formal promoted candidate set = []
 no-rescue boundary = CROSSED / ACTIVE
 protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-main integration = NOT PERFORMED
+main integration = COMPLETE / fast-forward integrated research head 49f868103b186c8bc00a188afd185a620a797e55
 ```
 
 ## Formal title
