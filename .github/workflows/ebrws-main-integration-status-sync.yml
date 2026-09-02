@@ -1,60 +1,14 @@
-name: EBRWS main integration status sync
+name: EBRWS main integration status sync — CLOSED / DISABLED
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "doc/effective-branching-reply-width-structure/checkpoints/2026-09-02-main-integration-sync-trigger.md"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  docs-only:
+  closed:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Materialize post-integration status
-        run: node tools/experiments/materialize-ebrws-main-integration-status.js
-
-      - name: Validate documentation-only patch
-        run: |
-          git diff --check
-          git diff --exit-code -- doc/research-generation-3/PROGRAM_PLAN.md
-          git diff --exit-code -- public/ test/ artifacts/ || true
-
-      - name: Enforce no scientific or application changes
-        run: |
-          changed="$(git diff --name-only)"
-          if printf '%s\n' "$changed" | grep -E '^(public/|test/|artifacts/|doc/effective-branching-reply-width-structure/prereg/|doc/effective-branching-reply-width-structure/results/)' ; then
-            echo "Unexpected scientific/application change"
-            exit 1
-          fi
-
-      - name: Commit post-integration status
-        run: |
-          git config user.name "Sawa"
-          git config user.email "72678394+nkkmd@users.noreply.github.com"
-          git add README.md \
-            doc/FUTURE_RESEARCH_AGENDA.md \
-            doc/RESEARCH_INDEX.md \
-            doc/research-generation-3/README.md \
-            doc/research-generation-3/CURRENT_STATUS.md \
-            doc/research-generation-3/checkpoints/2026-09-02-g3-02-main-integration-complete.md \
-            doc/effective-branching-reply-width-structure/README.md \
-            doc/effective-branching-reply-width-structure/CURRENT_STATUS.md \
-            doc/effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md \
-            doc/effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md \
-            doc/effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md \
-            doc/effective-branching-reply-width-structure/checkpoints/2026-09-02-main-integration-complete.md
-          git commit -m "Record G3-02 main integration completion"
-          git push origin HEAD:main
+      - run: echo "G3-02 main integration status synchronization is complete; this workflow is disabled."
