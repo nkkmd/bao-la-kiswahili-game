@@ -1,6 +1,6 @@
 # BRMGI-STUDY1 — Decision Register
 
-更新日: 2026-09-02
+更新日: 2026-09-03
 
 | ID | Decision | Status | Scientific consequence |
 |---|---|---|---|
@@ -49,9 +49,15 @@
 | BRMGI-D043 | Execution integrity | `MAX 1 SCIENTIFIC EXECUTION PER FRESH STAGE` | Lease, source binding, single trigger, artifact-before-mirror, exact-byte recovery and audit required. |
 | BRMGI-D044 | No-rescue | `PROSPECTIVELY FROZEN` | Crosses at first fresh generation/read; post-cross repair-and-rerun or design rescue prohibited. |
 | BRMGI-D045 | Protected depth-10 | `SEALED / NOT GENERATED / NOT READ` | No generation/read/peek/trial enumeration/resource peek. |
-| BRMGI-D046 | Stage 0 | `TECHNICAL-ONLY / NOT YET EXECUTED` | Must validate event semantics, arithmetic, independent reconstruction, relay-limit fail-closed and execution controls. |
-| BRMGI-D047 | Fresh Stage 1 | `NOT AUTHORIZED` | Requires Stage 0 PASS and a separate current-state authorization. |
-| BRMGI-D048 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | Research branch will not be merged automatically. |
+| BRMGI-D046 | Stage 0 v1 | `TECHNICAL-INVALID / NO RERUN` | Exactly one authorized execution failed because a 34-seed synthetic nyumba fixture violated the frozen 64-seed RAW invariant; no fresh scientific evidence was accessed. |
+| BRMGI-D047 | Stage 0 v2 refreeze | `AUTHORIZED AS NEW TECHNICAL VERSION` | Only the technical nyumba fixture was corrected to 64 represented seeds; scientific Study contract unchanged. |
+| BRMGI-D048 | Stage 0 v2 static audit | `PASS` | Run `33677942576`, audited head `f8e9eec8...d462`; no fixture/scientific execution or fresh seed access. |
+| BRMGI-D049 | Stage 0 v2 execution | `STAGE0-PASS / 1 AUTHORIZED / 1 ACTUAL` | Run `33678004793`; all T1-T10 gates passed. |
+| BRMGI-D050 | Stage 0 v2 artifacts | `DURABLE / EXACT-BYTE MIRRORED` | Lease artifact `9865100897`; result artifact `9865102178`; result file SHA-256 `4089bc0a...eade3`. |
+| BRMGI-D051 | Source move vs E2 variant semantics | `CLARIFIED PRE-FRESH` | Source trajectories use frozen `engine.legalMoves`; `moveVariants` is used only to enumerate E2 same-root stop/use arms without altering trajectory evolution. |
+| BRMGI-D052 | Stage 0 closure | `COMPLETE / STAGE0-PASS VIA v2` | Technical readiness established; Stage 1 still needs a separate authorization review. |
+| BRMGI-D053 | Fresh Stage 1 | `NOT AUTHORIZED / REVIEW REQUIRED` | Stage 1 seeds remain unconsumed; no scientific execution until explicit post-Stage-0 decision. |
+| BRMGI-D054 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | Research branch will not be merged automatically. |
 
 ## Formal program decision
 
@@ -62,6 +68,13 @@ Canonical authorization review:
 RG3 checkpoint:
 
 `../research-generation-3/checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md`
+
+Stage 0 v1/v2 records:
+
+- `checkpoints/2026-09-03-stage-0-v1-technical-invalid.md`
+- `prereg/STAGE_0_V2_TECHNICAL_REFREEZE.json`
+- `checkpoints/2026-09-03-stage-0-v2-pass.md`
+- `prereg/STUDY_1_SPEC_CLARIFICATION_1.json`
 
 ## Permanent causal-language boundary
 
