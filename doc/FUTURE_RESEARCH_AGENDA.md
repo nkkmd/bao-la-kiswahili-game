@@ -5,12 +5,12 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-02
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-03 `TCTGD-STUDY1` closed `TECHNICAL-INVALID` / G3-04 `AUTHORIZED` for prospective Study-definition only / fresh evidence not yet authorized (2026-09-02)**
+Research Generation 3: **Active / G3-04 `SFCDF-STUDY1` closed `FORMAL-COMPLETE` / C1 `CONFIRMED / MTAJI-GREATER` / C6 `CONFIRMED / NAMUA-GREATER` / G3-05 separate authorization review required (2026-09-02)**
 
 
 ### 2026-09-02 Research Generation 3 current update
 
-G3-03 `TCTGD-STUDY1`はfresh Stage 1をexactly one authorized executionで完了したが、productionの通常objectとindependentの`Object.create(null)` endpoint mapをprototype-sensitive `util.isDeepStrictEqual`で比較したverification representation defectによりmandatory integrity gateがfailし、formal decision `CLOSED / TECHNICAL-INVALID`で閉じた。canonical production / independent stage scientific core SHAは一致したが、no-rescue boundary後にequality contractを変更して救済しない。formal promoted candidate setは`[]`、Stage 2は未承認・未実行、reserved Stage 2 seedとprotected depth-10 holdoutは未消費・sealedである。separate post-G3-03 program reviewは完了し、`G3-04-AUTHORIZED`となった。次はG3-04のprospective Study-definition / preregistration freezeであり、fresh evidenceはまだ未承認である。
+G3-04 `SFCDF-STUDY1`はRAW-only relative depth 5のcorridor / funnel structureをprospectively検証して完了した。Stage 1は12 paired trajectoriesで`STAGE1-PASS`となり、C1 unit-width occupancy（`MTAJI-GREATER`）とC6 cumulative tree/RAW ratio（`NAMUA-GREATER`）だけをpromotionした。fresh Stage 2 formal holdout 18 paired trajectoriesではC1が18/18でMtaji > Namua、C6が18/18でNamua > Mtajiとなり、両候補ともexact two-sided sign-test `p=1/131072`とprospectively fixed Holm-Bonferroni gateをPASSして`CONFIRMED`。production / independent formal Stage coreもexact一致した。Study lifecycleは`CLOSED / FORMAL-COMPLETE`。C1/C6をgame-theoretic forcing、search ease、value等へ拡張しない。Stage 1/2 seedはconsume済みでsame-evidence rerunを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`のまま。historical program plan上の次候補はG3-05だが、自動開始せず、次はseparate post-G3-04 G3-05 authorization reviewを行う。
 
 ## 1. 目的
 
@@ -1272,11 +1272,11 @@ standard initial RAW rootのdepth 10 exact layerは`G3-11`用`FRESH-DEEPER-EXACT
 - **G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1**: `LGTGMF-STUDY1`として実行・closure済み。Stage 1でroot-level / F1〜F5 exact agreementは得たがcanonical stage-manifest implementation defectによりformal decision `TECHNICAL-INVALID`、eligible family `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。このformal decisionは不変。後続の独立prerequisite `LGTGMIV-STUDY1`はfresh evidenceで`CLOSED / FORMAL-ELIGIBLE-ALL`となり、5 familyすべてのbounded RAW-only depth-5 eligibilityを別Studyとして確立済み。**G3-01 CLOSED / immutable; prerequisite completed separately**
 - **G3-02 — Effective Branching / Reply-Width Structure Study 1**: LGTGMIV closure後の別authorization reviewを経て`EBRWS-STUDY1`としてprospectively開始。Stage 0は`STAGE0-PASS`。Stage 1はauthorized runのcanonical artifact materialization failureと、workflow armingに起因するunintended duplicate scientific executionによるexactly-one-execution contract違反のためfail-closedで`CLOSED / TECHNICAL-INVALID`。formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED**
 - **G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1**: `TCTGD-STUDY1`として実行・closure済み。single authorized Stage 1でcanonical scientific coreはcross-implementation一致したが、prototype-sensitive in-memory equality gateにより`TECHNICAL-INVALID`。formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID**
-- **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: reply narrowingが持続するcorridorと、多数branchが少数RAW stateへ収束するfunnelを検証する。`forcing`はstructural forcingのみを意味する。post-G3-03 reviewで**`G3-04-AUTHORIZED`**（prospective Study-definitionのみ）。fresh evidenceは未承認。**P0 / AUTHORIZED-FOR-PREREG**
+- **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: `SFCDF-STUDY1`として完了。Stage 1からC1/C6だけをpromotionし、fresh Stage 2 holdout 18 pairsでC1 `MTAJI-GREATER`、C6 `NAMUA-GREATER`をそれぞれ18/18同方向・exact `p=1/131072`・Holm PASSで`CONFIRMED`。**P0 / CLOSED / FORMAL-COMPLETE**
 
 ### 10.6 Wave B — Geometry Dynamics and Mechanisms
 
-- **G3-05 — Branch Expansion / Compression Transition Study 1**: trajectory上のbranch explosion、reply compression、branch reopening等のgeometry transitionを検証する。Research Generation 1 phase-transition resultとは別construct。**P1**
+- **G3-05 — Branch Expansion / Compression Transition Study 1**: trajectory上のbranch explosion、reply compression、branch reopening等のgeometry transitionを検証する。Research Generation 1 phase-transition resultとは別construct。G3-04 closure後も自動authorizeしない。**P1 / NEXT PROGRAM AUTHORIZATION REVIEW REQUIRED / NOT AUTHORIZED**
 - **G3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1**: capture、reserve、nyumba、Namua→Mtaji等のrule-semantic eventとbounded local geometryの関係をmove-conditionedに検証する。**P1**
 - **G3-07 — Search Instability / Local Geometry Mechanism Study 1**: branching、reconvergence等とbest-move agreement、ranking churn、PV stabilityの関係をfresh evidenceで検証する。`G2-02 = INCONCLUSIVE`を変更しない。**P1**
 - **G3-08 — Local Geometry Persistence / Memory-Length Study 1**: local geometryがtrajectory上で何ply持続し、いつ消失・反転・returnするかを検証する。**P1**
