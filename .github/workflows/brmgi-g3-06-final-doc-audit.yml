@@ -20,6 +20,7 @@ jobs:
       - name: Synchronize and audit current-facing documents
         run: |
           node tools/experiments/finalize-brmgi-g3-06-final-doc-audit.js
+          node tools/experiments/finalize-brmgi-g3-06-final-doc-audit-v2.js
           sed -i 's/[[:space:]]\+$//' \
             README.md \
             doc/RESEARCH_INDEX.md \
@@ -57,5 +58,5 @@ jobs:
             doc/bao-rule-mechanism-geometry-intervention/checkpoints/2026-09-03-final-document-consistency-pass.md
           git diff --cached --check
           git diff --cached --name-only
-          git commit -m 'Synchronize G3-06 closure documentation after final audit'
+          git commit -m 'Finalize G3-06 closure documentation chronology'
           git push origin HEAD:research/g3-06-bao-rule-mechanism-geometry-intervention
