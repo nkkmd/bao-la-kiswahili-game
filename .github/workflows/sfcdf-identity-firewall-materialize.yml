@@ -1,17 +1,17 @@
-name: SFCDF Identity Firewall Materialize
+name: SFCDF Identity Firewall Materialize v2
 
 on:
   push:
     branches:
       - research/g3-04-structural-forcing-corridor-decision-funnel
     paths:
-      - doc/structural-forcing-corridor-decision-funnel/authorizations/IDENTITY_FIREWALL_MATERIALIZE_TRIGGER
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/IDENTITY_FIREWALL_MATERIALIZE_V2_TRIGGER
 
 permissions:
   contents: write
 
 concurrency:
-  group: sfcdf-identity-firewall-materialize-v1
+  group: sfcdf-identity-firewall-materialize-v2
   cancel-in-progress: false
 
 jobs:
@@ -41,11 +41,14 @@ jobs:
           set -euo pipefail
           node - <<'NODE'
           const m=require('./doc/structural-forcing-corridor-decision-funnel/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          if(m.schemaVersion!==2) throw Error('unexpected firewall schema');
           if(m.scientificOutcomeFieldsRetained!==false||m.g303ScientificOutcomesRetained!==false) throw Error('scientific outcome retained');
-          if(m.identityRecordCount!==104) throw Error(`expected 104 identities, got ${m.identityRecordCount}`);
-          for(const r of m.identityRecords){
-            const ks=Object.keys(r).sort().join(',');
-            if(ks!=='openingPrefixLength,openingPrefixSha256,origin,rootRawSha256,sourceTrajectorySha256') throw Error(`unexpected identity record fields: ${ks}`);
+          if(m.upstreamLgtgmivIdentityRecordCount!==80) throw Error('unexpected upstream identity count');
+          if(m.g303SourcePairCount!==12||m.g303RootIdentityRecordCount!==24||m.g303IdentityRecords.length!==24) throw Error('unexpected G3-03 identity count');
+          for(const k of ['rootRawSha256','sourceTrajectorySha256','openingPrefixSha256']) if(!Array.isArray(m.identitySets[k])||m.identitySets[k].length===0) throw Error(`missing identity set ${k}`);
+          for(const r of m.g303IdentityRecords){
+            const allowed=new Set(['pairId','phase','sourceSeed','selectedPly','rootRawSha256','sourceTrajectorySha256','openingPrefixSha256','openingPrefixLength']);
+            for(const k of Object.keys(r)) if(!allowed.has(k)) throw Error(`unexpected G3-03 identity field ${k}`);
           }
           NODE
           git diff --check
