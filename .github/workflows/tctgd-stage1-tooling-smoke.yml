@@ -1,0 +1,91 @@
+name: TCTGD Stage 1 Tooling Smoke
+
+on:
+  push:
+    branches:
+      - research/g3-03-transposition-tree-graph-divergence
+    paths:
+      - doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_TOOLING_SMOKE_TRIGGER
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: tctgd-stage1-tooling-smoke
+  cancel-in-progress: false
+
+jobs:
+  tooling-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-03-transposition-tree-graph-divergence
+          fetch-depth: 1
+      - name: Static audit Stage 1 execution integrity
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          function need(x,m){if(!x)throw new Error(m)}
+          const sci=fs.readFileSync('.github/workflows/tctgd-stage1-development.yml','utf8');
+          const disp=fs.readFileSync('.github/workflows/tctgd-stage1-dispatch.yml','utf8');
+          const smokeTarget=fs.readFileSync('.github/workflows/tctgd-workflow-dispatch-smoke-target.yml','utf8');
+          const prod=fs.readFileSync('tools/experiments/lib/tctgd-stage1-production.js','utf8');
+          const ind=fs.readFileSync('tools/experiments/lib/tctgd-stage1-independent.js','utf8');
+          const runner=fs.readFileSync('tools/experiments/run-tctgd-stage1-development.js','utf8');
+          need(/workflow_dispatch:/.test(sci),'scientific workflow missing workflow_dispatch');
+          const onBlock=sci.slice(sci.indexOf('on:'),sci.indexOf('\npermissions:'));
+          need(!/\bpush:/.test(onBlock),'scientific workflow has push trigger');
+          need(sci.includes('fetch-depth: 0'),'lease checkout is not full-history');
+          need(sci.indexOf('jobs:\n  lease:')>=0,'lease job missing');
+          need(sci.indexOf('  scientific:')>sci.indexOf('  lease:'),'scientific job not after lease');
+          need(sci.indexOf('Upload durable canonical Stage 1 bytes')<sci.indexOf('  mirror:'),'durable artifact is not before mirror');
+          need(sci.includes('Existing execution marker: duplicate scientific queue prevented before computation.'),'duplicate marker prevention missing');
+          need(sci.includes('git push origin HEAD:research/g3-03-transposition-tree-graph-divergence'),'durable lease push missing');
+          need(sci.includes('git merge-base --is-ancestor "$AUTH_HEAD" "$PRE_HEAD"'),'authorization ancestry gate missing');
+          need(sci.includes('REMOTE_ADVANCEMENT_ALLOWLIST'),'remote advancement allowlist missing');
+          need(sci.includes('git diff --name-only "$AUTH_HEAD..$PRE_HEAD"'),'remote advancement diff gate missing');
+          need(sci.includes('TCTGD_EXECUTION_LEASE_SHA'),'lease SHA not passed to scientific job');
+          need(disp.includes('stage-1-dispatch-ledger.json'),'dispatch ledger missing');
+          need(disp.indexOf('git push origin HEAD:research/g3-03-transposition-tree-graph-divergence')<disp.indexOf('/dispatches'),'ledger must be durably pushed before scientific dispatch');
+          need(!ind.includes('tctgd-stage1-production'),'independent selector imports production selector');
+          need(!prod.includes('tctgd-stage1-independent'),'production selector imports independent selector');
+          need(runner.includes('TCTGD_EXECUTION_LEASE_CONFIRMED'),'runner lease guard missing');
+          need(runner.includes('STAGE_1_DEVELOPMENT_AUTHORIZATION.json'),'runner authorization guard missing');
+          need(runner.includes('scientific-result.json'),'runner result guard missing');
+          need(!fs.existsSync('doc/transposition-concentration-tree-graph-divergence/results/stage-1/scientific-result.json'),'Stage 1 result already exists');
+          need(!fs.existsSync('doc/transposition-concentration-tree-graph-divergence/executions/stage-1-execution-started.json'),'Stage 1 execution marker already exists');
+          need(!fs.existsSync('doc/transposition-concentration-tree-graph-divergence/executions/stage-1-dispatch-ledger.json'),'Stage 1 dispatch ledger already exists');
+          need(/workflow_dispatch:/.test(smokeTarget),'dispatch smoke target missing workflow_dispatch');
+          need(!smokeTarget.includes('public/engine.js'),'dispatch smoke target imports engine');
+          need(!smokeTarget.includes('31310001'),'dispatch smoke target references Stage 1 seed');
+          need(!smokeTarget.includes('31320001'),'dispatch smoke target references Stage 2 seed');
+          need(!smokeTarget.includes('run-tctgd-stage1-development'),'dispatch smoke target references scientific runner');
+          const spec=JSON.parse(fs.readFileSync('doc/transposition-concentration-tree-graph-divergence/prereg/STUDY_1_SPEC.json','utf8'));
+          need(spec.protectedEvidence.standardInitialRawRootCompleteExactDepth10Holdout==='SEALED / NOT GENERATED / NOT READ','protected holdout not sealed');
+          console.log(JSON.stringify({staticAudit:'PASS',workflowDispatchRunsBeforeSmoke:0,freshScientificEvidence:false,protectedDepth10Access:false}));
+          NODE
+      - name: Dispatch non-scientific workflow_dispatch capability target
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SMOKE_NONCE: tctgd-stage1-tooling-capability-v1
+        run: |
+          set -euo pipefail
+          gh api --method POST \
+            repos/${GITHUB_REPOSITORY}/actions/workflows/tctgd-workflow-dispatch-smoke-target.yml/dispatches \
+            -f ref=research/g3-03-transposition-tree-graph-divergence \
+            -f inputs[smoke_nonce]="$SMOKE_NONCE"
+      - name: Record smoke sentinel
+        run: |
+          printf '%s\n' \
+            'TCTGD_STAGE1_TOOLING_SMOKE=PASS' \
+            'fresh_scientific_evidence=false' \
+            'protected_depth10_access=false' > tctgd-stage1-tooling-smoke.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tctgd-stage1-tooling-smoke
+          path: tctgd-stage1-tooling-smoke.txt
+          if-no-files-found: error
+          retention-days: 90

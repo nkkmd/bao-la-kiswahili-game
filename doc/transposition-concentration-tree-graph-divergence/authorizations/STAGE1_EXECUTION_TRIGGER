@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "studyId": "TCTGD-STUDY1",
+  "stageId": "TCTGD-S1-DEVELOPMENT-2026-09-02-v1",
+  "authorizationNonce": "TCTGD-S1-AUTH-2026-09-02-V2-01",
+  "freshScientificEvidenceAuthorized": true,
+  "maxScientificExecutions": 1,
+  "seedBlock": "31310001..31310192",
+  "protectedDepth10AccessAuthorized": false,
+  "stage2Authorized": false
+}
