@@ -1,0 +1,5 @@
+SFCDF_STAGE1_SOURCE_VALIDATION_TRIGGER=1
+fresh_scientific_evidence=false
+stage1_seed_access=false
+stage2_seed_access=false
+protected_depth10_access=false
