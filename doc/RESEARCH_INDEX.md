@@ -1121,3 +1121,32 @@ doc/<research-area>/
 - 科学的・技術的な正本
 
 これにより、研究成果が増えてもルートREADMEを個別実験リンクで肥大化させず、研究全体を一覧できます。
+
+---
+
+<!-- BECT-G3-05-CLOSURE:RESEARCH-INDEX -->
+### Research Generation 3 / G3-05 — Branch Expansion and Compression Transition Study 1
+
+**Study ID:** `BECT-STUDY1`
+**状態:** `CLOSED / TECHNICAL-INVALID`
+**formal promoted candidate set:** `[]`
+**Stage 2:** `NOT-AUTHORIZED-NOT-EXECUTED`
+
+同一trajectory上のRAW-only relative depth-5 local geometryをply-to-plyで測定し、branch expansion / compression、persistence、reversal、reopening等のtransition structureをprospectively検証する独立Study。Stage 0 v2はtechnical validationをPASSした。Stage 1はfresh seed block `31510001..31510240`をexactly one authorized executionで開始したが、bounded enumeration中の`relay-limit` technical errorでfail-closedし、valid 10-trajectory development summaryには到達しなかった。
+
+これはbranch expansion/compression transitionのnegative/null scientific findingではない。partial telemetry 25 rootsはdiagnostic provenanceに限定し、formal candidate promotionやsubstantive claimへ使用しない。同一seed/evidenceの修正再実行はno-rescue ruleにより禁止。Stage 2 seed `31520001..31520384`は未消費で、protected depth-10 holdoutも`SEALED / NOT GENERATED / NOT READ`。
+
+**最初に読む:**
+
+- [`branch-expansion-compression-transition/STUDY_1_OVERVIEW.md`](branch-expansion-compression-transition/STUDY_1_OVERVIEW.md)
+- [`branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`](branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md)
+
+**詳細・provenance:**
+
+- [`branch-expansion-compression-transition/CURRENT_STATUS.md`](branch-expansion-compression-transition/CURRENT_STATUS.md)
+- [`branch-expansion-compression-transition/DECISION_REGISTER.md`](branch-expansion-compression-transition/DECISION_REGISTER.md)
+- [`branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md`](branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md)
+- [`research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md)
+
+**Program boundary:** G3-06は`NOT AUTHORIZED`。開始前にseparate post-G3-05 current-state authorization reviewが必要であり、G3-05 partial telemetryをvalidated mechanism/transition inputとして継承しない。

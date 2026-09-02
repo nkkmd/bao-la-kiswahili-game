@@ -73,7 +73,7 @@ Stage 0 fixture before clarification = false
 ## Reserved fresh namespaces
 
 ```text
-Stage 1 = 31510001..31510240 / NOT CONSUMED / NOT AUTHORIZED
+Stage 1 = 31510001..31510240 / CONSUMED / CLOSED TO SAME-EVIDENCE REUSE
 Stage 2 = 31520001..31520384 / NOT CONSUMED / NOT AUTHORIZED
 ```
 
@@ -373,3 +373,77 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ
 ```
 
 A separate machine-readable authorization must bind the post-preparation branch HEAD and permit exactly one Stage 1 scientific execution. Only the authorization artifact and one dedicated execution trigger may advance the branch between that baseline and computation.
+
+## Stage 1 authorization and exactly-one execution
+
+Authorization baseline and control plane:
+
+```text
+authorized scientific content HEAD = 5ba3706193a06902650b82f1232d19bb2cee2c1e
+authorization commit = 5cceaeeece7c6d7949815a47b7ef918bbae72e59
+authorization nonce = BECT-S1-AUTH-2026-09-02-V1-01
+maxScientificExecutions = 1
+trigger commit = 75b29fd33215bd98652613975c5b0c900f065b9d
+workflow run = 33636606641
+lease job = 100268940443 / success
+scientific job = 100268996072 / exit 2 after canonical TECHNICAL-INVALID result
+lease commit = bf1f8a5940bfb87f8c92d482728aa89ce398b749
+authorized scientific executions = 1
+actual scientific executions = 1
+fresh access started = true
+Stage 1 seed consumed = true
+no-rescue boundary = CROSSED / ACTIVE
+```
+
+Canonical technical error:
+
+`relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`
+
+No Stage 1 rerun was performed or authorized.
+
+## Stage 1 durable artifact and exact-byte mirror
+
+```text
+artifact ID = 9849245665
+artifact name = bect-stage1-development-result-33636606641
+artifact size = 4081 bytes
+artifact ZIP SHA-256 = 0c99d05c1983a35996e283dee379e65848a8df98dda46989053ebd46873cfbcc
+scientific-result.json SHA-256 = a21ad5449dfa090e4ff2ed87ebc64a48b5fb0755eabd0dcfe375358bde7d0b96
+telemetry.json SHA-256 = 0608c9f035a19c4908ba02d0b462e2e0f4ca08226df3ec1062d2086dbca7f2b4
+execution-summary.json SHA-256 = b54f441cadac0252dc15deac07c90974bc28e18d26d2dd3934b3fb6707fb352f
+mirror workflow run = 33637372364
+mirror commit = ac2bd2ca101a9002c69131c2c39ebbfbb98368a1
+scientific recomputation for recovery = false
+```
+
+Repository blobs after exact-byte mirror:
+
+```text
+results/stage-1/scientific-result.json = c7daf6f7d2f4ea96fa0b752ff90216daff800482
+results/stage-1/telemetry.json = 378bab53d13b6bd27c961dffda1a2ec797a94009
+results/stage-1/execution-summary.json = 58281cb78e364947a32e0a8fbec05581a32ce11a
+```
+
+Partial telemetry contains 25 roots from the first selected trajectory (plies 16..40). Those rows are diagnostic provenance only; they do not constitute a valid Stage 1 development dataset and cannot be used for formal promotion.
+
+## Formal closure
+
+Canonical records:
+
+- `STUDY_1_FINAL_REPORT.md`
+- `CURRENT_STATUS.md`
+- `DECISION_REGISTER.md`
+- `checkpoints/2026-09-02-stage-1-technical-invalid-study-closure.md`
+- `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
+- `../research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
+
+```text
+BECT-STUDY1 = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = NOT CONSUMED
+protected depth-10 = SEALED / NOT GENERATED / NOT READ
+main integration = NOT PERFORMED
+```
+
+This closure is a technical validity result, not a negative/null scientific result for Bao geometry transitions. Same-evidence rescue is prohibited.

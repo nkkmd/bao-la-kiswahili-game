@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-04 SFCDF-STUDY1 CLOSED FORMAL-COMPLETE / POST-G3-04 G3-05 REVIEW REQUIRED
+Status = ACTIVE / G3-05 BECT-STUDY1 CLOSED TECHNICAL-INVALID / POST-G3-05 G3-06 REVIEW REQUIRED / G3-06 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -38,12 +38,25 @@ G3-04 C1 = CONFIRMED / MTAJI-GREATER
 G3-04 C6 = CONFIRMED / NAMUA-GREATER
 G3-04 Stage 1 seed = CONSUMED
 G3-04 Stage 2 seed = CONSUMED
+G3-05 program review = G3-05-AUTHORIZED
+G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-05 Stage 0 v2 = STAGE0-PASS
+G3-05 Stage 1 = TECHNICAL-INVALID / executions 1 authorized / 1 actual
+G3-05 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-05 formal promoted candidate set = []
+G3-05 Stage 1 seed = 31510001..31510240 / CONSUMED
+G3-05 Stage 2 seed = 31520001..31520384 / NOT CONSUMED
+G3-05 no-rescue boundary = CROSSED / ACTIVE
+G3-06 = NOT AUTHORIZED / separate post-G3-05 review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+- [`../branch-expansion-compression-transition/STUDY_1_OVERVIEW.md`](../branch-expansion-compression-transition/STUDY_1_OVERVIEW.md) — G3-05 prospective scope and frozen boundary
+- [`../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`](../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md) — G3-05 technical-invalid closure and no-rescue boundary
+- [`../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md) — G3-05 program closure / G3-06 not authorized
 - [`../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md) — G3-04初見向けformal overview
 - [`../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md) — completed G3-04 formal result and interpretation boundary
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したhistorical prospective plan。current stateに合わせて書き換えない

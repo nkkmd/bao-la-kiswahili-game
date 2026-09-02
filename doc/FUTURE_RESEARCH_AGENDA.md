@@ -5,10 +5,13 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-02
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-04 `SFCDF-STUDY1` closed `FORMAL-COMPLETE` / C1 `CONFIRMED / MTAJI-GREATER` / C6 `CONFIRMED / NAMUA-GREATER` / G3-05 separate authorization review required (2026-09-02)**
+Research Generation 3: **Active / G3-05 `BECT-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 not authorized / G3-06 separate authorization review required and NOT AUTHORIZED (2026-09-02)**
 
 
 ### 2026-09-02 Research Generation 3 current update
+
+<!-- BECT-G3-05-CLOSURE:FUTURE -->
+G3-05 `BECT-STUDY1`はStage 0 v2を`STAGE0-PASS`として完了後、fresh Stage 1をexactly one authorized executionで開始したが、bounded RAW enumeration中の`relay-limit` technical errorにより`TECHNICAL-INVALID`でfail-closedした。Stage 1 seed `31510001..31510240`はconsume済み、no-rescue boundaryはactive、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。partial telemetryはdiagnostic-onlyで、branch expansion/compression transitionのpositive/negative scientific evidenceへ格上げしない。G3-06は自動authorizeせず、次はseparate post-G3-05 current-state authorization reviewを行う。
 
 G3-04 `SFCDF-STUDY1`はRAW-only relative depth 5のcorridor / funnel structureをprospectively検証して完了した。Stage 1は12 paired trajectoriesで`STAGE1-PASS`となり、C1 unit-width occupancy（`MTAJI-GREATER`）とC6 cumulative tree/RAW ratio（`NAMUA-GREATER`）だけをpromotionした。fresh Stage 2 formal holdout 18 paired trajectoriesではC1が18/18でMtaji > Namua、C6が18/18でNamua > Mtajiとなり、両候補ともexact two-sided sign-test `p=1/131072`とprospectively fixed Holm-Bonferroni gateをPASSして`CONFIRMED`。production / independent formal Stage coreもexact一致した。Study lifecycleは`CLOSED / FORMAL-COMPLETE`。C1/C6をgame-theoretic forcing、search ease、value等へ拡張しない。Stage 1/2 seedはconsume済みでsame-evidence rerunを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`のまま。historical program plan上の次候補はG3-05だが、自動開始せず、次はseparate post-G3-04 G3-05 authorization reviewを行う。
 
@@ -1276,8 +1279,8 @@ standard initial RAW rootのdepth 10 exact layerは`G3-11`用`FRESH-DEEPER-EXACT
 
 ### 10.6 Wave B — Geometry Dynamics and Mechanisms
 
-- **G3-05 — Branch Expansion / Compression Transition Study 1**: trajectory上のbranch explosion、reply compression、branch reopening等のgeometry transitionを検証する。Research Generation 1 phase-transition resultとは別construct。G3-04 closure後も自動authorizeしない。**P1 / NEXT PROGRAM AUTHORIZATION REVIEW REQUIRED / NOT AUTHORIZED**
-- **G3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1**: capture、reserve、nyumba、Namua→Mtaji等のrule-semantic eventとbounded local geometryの関係をmove-conditionedに検証する。**P1**
+- **G3-05 — Branch Expansion / Compression Transition Study 1**: trajectory上のbranch explosion、reply compression、branch reopening等のgeometry transitionを検証する。Research Generation 1 phase-transition resultとは別construct。G3-04 closure後も自動authorizeしない。**P1 / CLOSED / TECHNICAL-INVALID**
+- **G3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1**: capture、reserve、nyumba、Namua→Mtaji等のrule-semantic eventとbounded local geometryの関係をmove-conditionedに検証する。G3-05 partial telemetry / transition directionをvalidated inputとして継承しない。**P1 / NEXT PROGRAM AUTHORIZATION REVIEW REQUIRED / NOT AUTHORIZED**
 - **G3-07 — Search Instability / Local Geometry Mechanism Study 1**: branching、reconvergence等とbest-move agreement、ranking churn、PV stabilityの関係をfresh evidenceで検証する。`G2-02 = INCONCLUSIVE`を変更しない。**P1**
 - **G3-08 — Local Geometry Persistence / Memory-Length Study 1**: local geometryがtrajectory上で何ply持続し、いつ消失・反転・returnするかを検証する。**P1**
 

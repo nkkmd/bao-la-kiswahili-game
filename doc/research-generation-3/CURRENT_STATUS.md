@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-04 CLOSED FORMAL-COMPLETE / POST-G3-04 G3-05 REVIEW REQUIRED
+Program status = ACTIVE / G3-05 CLOSED TECHNICAL-INVALID / POST-G3-05 G3-06 REVIEW REQUIRED / G3-06 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -37,9 +37,21 @@ G3-04 C6 = CONFIRMED / NAMUA-GREATER
 G3-04 Stage 1 seed = 31410001..31410192 / CONSUMED
 G3-04 Stage 2 seed = 31420001..31420288 / CONSUMED
 G3-04 no-rescue boundary = CROSSED / ACTIVE
+G3-05 program review = G3-05-AUTHORIZED
+G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-05 Stage 0 v2 = STAGE0-PASS
+G3-05 Stage 1 = BECT-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
+G3-05 Stage 1 authorized scientific executions = 1
+G3-05 Stage 1 actual scientific executions = 1
+G3-05 Stage 2 = BECT-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+G3-05 formal promoted candidate set = []
+G3-05 Stage 1 seed = 31510001..31510240 / CONSUMED
+G3-05 Stage 2 seed = 31520001..31520384 / NOT CONSUMED
+G3-05 no-rescue boundary = CROSSED / ACTIVE
+G3-06 = NOT AUTHORIZED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none / G3-04 CLOSED
-Next scientific action = separate post-G3-04 current-state authorization review for G3-05; G3-05 is NOT AUTHORIZED
+Active scientific research branch = none / G3-05 CLOSED on research/g3-05-branch-expansion-compression-transition
+Next scientific action = separate post-G3-05 current-state authorization review for G3-06; G3-06 is NOT AUTHORIZED
 ```
 
 ## Immutable upstream boundaries
@@ -307,6 +319,32 @@ Canonical records:
 - `../structural-forcing-corridor-decision-funnel/checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
 - `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
 - `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
+
+## G3-05 formal closure
+
+G3-05 was prospectively frozen as `BECT-STUDY1` — Branch Expansion and Compression Transition Study 1. Stage 0 v2 passed the longitudinal technical contract. Stage 1 was then authorized and executed exactly once on fresh seed namespace `31510001..31510240`.
+
+The execution entered fresh bounded RAW measurement and failed closed with `relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`. The canonical result is `TECHNICAL-INVALID`; Stage 1 seed is consumed and the no-rescue boundary is active. Partial telemetry is diagnostic-only and yields no formal promoted candidates.
+
+```text
+G3-05 = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = NOT CONSUMED
+```
+
+Durable artifact `9849245665` (ZIP SHA-256 `0c99d05c1983a35996e283dee379e65848a8df98dda46989053ebd46873cfbcc`) was mirrored exactly without scientific recomputation by run `33637372364`, commit `ac2bd2ca101a9002c69131c2c39ebbfbb98368a1`.
+
+G3-06 is not automatically authorized. The only next scientific program action is a separate post-G3-05 current-state authorization review; that review may not use G3-05 partial telemetry as validated transition evidence.
+
+Canonical closure records:
+
+- `../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`
+- `../branch-expansion-compression-transition/CURRENT_STATUS.md`
+- `../branch-expansion-compression-transition/DECISION_REGISTER.md`
+- `../branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
+- `checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
 
 ## Protected evidence
 

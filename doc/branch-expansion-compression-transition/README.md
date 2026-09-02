@@ -7,13 +7,19 @@ Research Generation 3 `G3-05` / `BECT-STUDY1` の研究ディレクトリです�
 ```text
 Study = BECT-STUDY1
 Program position = G3-05
+Study status = CLOSED / TECHNICAL-INVALID
 program review = G3-05-AUTHORIZED
-prospective preregistration = FROZEN
-Stage 0 = BECT-S0-TECHNICAL-2026-09-02-v1 / AUTHORIZED / PENDING EXECUTION
-Stage 1 = BECT-S1-DEVELOPMENT-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+prospective preregistration = FROZEN / IMMUTABLE
+Stage 0 v1 = BECT-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID
+Stage 0 v2 = BECT-S0-TECHNICAL-2026-09-02-v2 / STAGE0-PASS
+Stage 1 = BECT-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID / executions 1 authorized / 1 actual
 Stage 2 = BECT-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
-fresh scientific evidence generated/read = false/false
+Stage 1 seed = 31510001..31510240 / CONSUMED
+Stage 2 seed = 31520001..31520384 / NOT CONSUMED
+formal promoted candidate set = []
+no-rescue boundary = CROSSED / ACTIVE
 protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
+main integration = NOT PERFORMED
 ```
 
 ## Formal title
@@ -44,7 +50,8 @@ validated transforms = []
 
 ## Documents
 
-- `STUDY_1_OVERVIEW.md` — 研究目的と現時点の境界
+- `STUDY_1_OVERVIEW.md` — 研究目的とprospective boundary
+- `STUDY_1_FINAL_REPORT.md` — formal closure / technical-invalid result / interpretation boundary
 - `STUDY_1_PROTOCOL.md` — human-readable frozen protocol
 - `prereg/STUDY_1_SPEC.json` — machine-readable prospective contract
 - `CURRENT_STATUS.md` — current state
