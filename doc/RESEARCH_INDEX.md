@@ -979,20 +979,19 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
 **状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1 = TECHNICAL-INVALID` / Stage 2 not executed**
 
-G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`、Stage 2未実行のままimmutable closureとする。その後の独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 frozen measurement familiesをformal eligibleとした。
+G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`のままimmutable closure。独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 familiesをformal eligibleとした。
 
-G3-02は別authorization reviewを`AUTHORIZED`で通過し、`EBRWS-STUDY1`としてprospectively開始した。Stage 0は`STAGE0-PASS`。Stage 1はfresh `31210001..31210192`から12 Namua + 12 Mtajiを一度だけ測定し、runner-localではproduction / independent stage core exact一致とglobal gate PASSを得た。
+G3-02 `EBRWS-STUDY1`は別authorization review後にprospectively開始。Stage 0は`STAGE0-PASS`。authorized Stage 1 run `33569323221`のrunner-local computationはglobal gate PASSとproduction / independent exact agreementを記録したが、canonical result artifactのrepository pushが失敗し回収不能となったためformal promotionしなかった。
 
-runner-local diagnostic summaryでは`REPLY-WIDTH-SHAPE / COMPRESSION-DOMINANT`がNamua 12/12、Mtaji 9/12だった。しかしcanonical Stage 1 filesのrepository pushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収不能となった。fresh evidence生成後のsame-evidence rerunを行わず、runner-local positive summaryをformal promotionへ救済しない。
+Final Actions-history auditでは、workflow armingによるrun `33569382663`が同じStage 1を2回目もscientifically executeしていたことが判明した。prospective authorizationはexactly one executionであり、2回目は`INVALID-DO-NOT-USE`。このexecution-count violationもtechnical-invalid根拠として保存する。
 
-Formal decision:
-
-**`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`**
+Formal decision: **`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
 ```text
+authorized Stage 1 executions = 1
+actual Stage 1 scientific executions = 2 / contract violated
 formal promoted candidate set = []
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 1 seed = consumed
 Stage 2 seed = not consumed
 protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
@@ -1005,18 +1004,17 @@ protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 **詳細・正本:**
 
 - [`effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`](effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md)
-- [`effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md`](effective-branching-reply-width-structure/STUDY_1_PROTOCOL.md)
 - [`effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`](effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json)
-- [`effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`](effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md)
-- [`research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md)
+- [`effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`](effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md)
+- [`research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`](research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md)
 
-**Boundary:** runner-local compression patternはdiagnostic provenanceのみでformal positive claimではない。G3-02をsame-evidence rerun/rescueしない。G3-03以降は別reviewまで自動開始しない。standard-root depth 10はG3-11用にsealed。
+**Boundary:** both runner-local candidate summaries and the duplicate-run equality are non-formal. No same-evidence repair/further rerun. G3-03以降は別reviewまで自動開始しない。standard-root depth 10はsealed。
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 `LGTGMF-STUDY1` remains closed `TECHNICAL-INVALID` with eligible families `[]`; `LGTGMIV-STUDY1` remains closed `FORMAL-ELIGIBLE-ALL`. G3-02 `EBRWS-STUDY1` is closed `TECHNICAL-INVALID` after a one-shot Stage 1 canonical-artifact materialization failure; formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, and standard-root depth 10 remains sealed for G3-11. Next scientific action requires a separate post-G3-02 program review.
+**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`. G3-02 `EBRWS-STUDY1` is `CLOSED / TECHNICAL-INVALID` after canonical Stage 1 materialization failure and an unintended duplicate scientific execution violating its exactly-one-run authorization. Formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth 10 sealed. Next action requires a separate post-G3-02 program review.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

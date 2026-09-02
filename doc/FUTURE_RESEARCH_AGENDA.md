@@ -1344,13 +1344,13 @@ Research Generation 3はpositive resultの数で完了判定しない。
 
 ### 10.12 現在状態
 
-2026-09-02、Research Generation 3のG3-02 `EBRWS-STUDY1`は、prospective contractに従って**`CLOSED / TECHNICAL-INVALID`**で閉じた。G3-01 `LGTGMF-STUDY1`の`TECHNICAL-INVALID` closure・formal eligible families `[]`は変更せず、独立prerequisite `LGTGMIV-STUDY1`も`CLOSED / FORMAL-ELIGIBLE-ALL`のまま再実行・再判定しない。
+2026-09-02、G3-02 `EBRWS-STUDY1`は**`CLOSED / TECHNICAL-INVALID`**でformal closureした。G3-01 `LGTGMF-STUDY1`の`TECHNICAL-INVALID` closure・eligible families `[]`、および独立prerequisite `LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`は変更しない。
 
-G3-02はpost-LGTGMIV authorization reviewを`AUTHORIZED`で通過後、RAW-only identity、validated transform set `[]`、relative depth 5、primary `TREE-WIDTH-SHAPE` / `REPLY-WIDTH-SHAPE`、exact 2/3 gate、fresh population、resource ceiling、production / independent verification、no-rescue ruleをscientific outcome前にfreezeした。
+G3-02はRAW-only identity、validated transform set `[]`、relative depth 5、primary `TREE-WIDTH-SHAPE` / `REPLY-WIDTH-SHAPE`、exact 2/3 gate、fresh populations、resource ceilings、production / independent verification、no-rescue ruleをscientific outcome前にfreezeした。Stage 0は`STAGE0-PASS`。
 
-Stage 0はsynthetic fixturesだけで`STAGE0-PASS`。Stage 1はfresh `31210001..31210192`からNamua 12 + Mtaji 12を一度だけ実行した。frozen runner内部ではglobal gate PASSとproduction / independent stage scientific core exact一致を得て、diagnostic summaryとして`REPLY-WIDTH-SHAPE / COMPRESSION-DOMINANT`がNamua 12/12、Mtaji 9/12と記録された。
+Stage 1のauthorized one-shot run `33569323221`はfresh `31210001..31210192`からNamua 12 + Mtaji 12を計算し、runner-localではglobal gate PASS、production / independent exact stage-core agreement、reply-width `COMPRESSION-DOMINANT` Namua 12/12・Mtaji 9/12を記録した。しかしcanonical result filesのpushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収できなかったため、これらはformal promotionせずdiagnostic provenanceに限定した。
 
-ただし、生成済みcanonical Stage 1 result filesをrepositoryへ保存するpushがnon-fast-forwardでrejectされ、ephemeral runner終了後にfull canonical artifactを回収できなかった。fresh evidence生成後のsame-evidence rerunはno-rescue ruleに反するため実施していない。runner-local positive summaryをformal resultへ救済せず、technical-integrity / immutable candidate-artifact prerequisiteを満たさないものとしてfail-closedで閉じた。
+さらにfinal Actions-history auditで、workflow armingによりrun `33569382663`が意図せずqueueされ、同じStage 1 scientific computationが2回目も実行されていたことを確認した。authorizationはexactly one executionであるため、この2回目は`UNAUTHORIZED-DUPLICATE-INVALID` / `INVALID-DO-NOT-USE`とし、replication・confirmation・repair・rescueに使用しない。
 
 ```text
 Research Generation 3 = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED
@@ -1359,14 +1359,17 @@ LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5 eligible
 G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-02 Stage 0 = STAGE0-PASS
 G3-02 Stage 1 = TECHNICAL-INVALID
+G3-02 Stage 1 authorized executions = 1
+G3-02 Stage 1 actual scientific executions = 2 / contract violated
 G3-02 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G3-02 formal promoted candidate set = []
 G3-02 Stage 1 seed = 31210001..31210192 / consumed
 G3-02 Stage 2 seed = 31220001..31220288 / not consumed
+Stage 1 execution workflow = CLOSED / DISABLED
 Protected standard-root depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-runner-local Namua 12/12・Mtaji 9/12のcompression-dominant patternはdiagnostic provenanceであり、formal confirmation、Bao一般の構造則、best move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。
+runner-local compression patternもunauthorized duplicate runの一致もformal positive claimへ用いない。branching / reply widthをbest move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。
 
 G3-02 closureはG3-03以降を自動authorizeしない。次のscientific actionは、G3-02のimmutable `TECHNICAL-INVALID` closure、LGTGMIV family boundary、RAW-only identity、protected depth-10 firewallを維持した別のpost-G3-02 program reviewである。
 
