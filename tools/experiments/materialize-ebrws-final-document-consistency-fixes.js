@@ -77,7 +77,7 @@ replaceOnce(
 insertAfterOnce(
   "doc/effective-branching-reply-width-structure/README.md",
   "`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`\n",
-  "\nResearch workflow: `COMPLETE ON RESEARCH BRANCH`  \nMain integration: `NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION`\n",
+  "\nResearch workflow: `COMPLETE ON RESEARCH BRANCH`\nMain integration: `NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION`\n",
   "Main integration: `NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION`"
 );
 
