@@ -7,8 +7,8 @@ Program = Research Generation 3
 Agenda position = G3-02
 Study ID = EBRWS-STUDY1
 Study status = CLOSED / TECHNICAL-INVALID
-Research workflow = COMPLETE ON RESEARCH BRANCH
-Main integration = NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION
+Research workflow = COMPLETE / MAIN INTEGRATED
+Main integration = COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1
 Authorization review = AUTHORIZED
 Study protocol = FROZEN / unchanged after fresh evidence
 Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
@@ -175,8 +175,9 @@ G3-02の研究作業はresearch branch上で完了している。
 ```text
 research workflow = COMPLETE
 research branch = research/g3-02-effective-branching-reply-width-structure
-main integration = NOT PERFORMED
-main integration authorization = PENDING EXPLICIT USER INSTRUCTION
+main integration = COMPLETE
+integration PR = #92
+merge commit = b41c7eda74dd1002e98e4d82714fadb987d1f1e1
 ```
 
-`main`への統合は明示的な指示があるまで行わない。
+明示的な統合指示に基づき、PR #92を通常mergeして`main`統合を完了した。scientific closureとnext-program authorization boundaryは変更しない。

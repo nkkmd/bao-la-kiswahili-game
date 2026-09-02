@@ -81,3 +81,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
 この追加事実はformal decisionを変更しない。`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`のtechnical-invalid根拠を追加するものである。
+
+## Main統合
+
+2026-09-02、G3-02のclosed research branchはPR #92を通常mergeして`main`へ統合した（merge commit `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`）。統合はrepository stateの更新であり、formal decision `CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2未実行という科学的結論を変更しない。

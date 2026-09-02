@@ -275,3 +275,17 @@ G3-03 automatic start = NOT AUTHORIZED
 ```
 
 このbranch-only completionはformal scientific decisionを変更しない。`main`への統合は別の明示的指示があるまで実施しない。
+
+## 17. Main integration completion
+
+2026-09-02、final consistency audit済みresearch branch `research/g3-02-effective-branching-reply-width-structure`をPR #92で`main`へ通常mergeした。merge commitは`b41c7eda74dd1002e98e4d82714fadb987d1f1e1`。squash / rebaseは使用せず、prospective audit historyを保持した。
+
+このrepository-level integrationはscientific decisionを変更しない。
+
+```text
+EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
+G3-03 automatic authorization = false
+```

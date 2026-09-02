@@ -173,3 +173,14 @@ Audit records:
 - `../research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
 
 Stage 1 execution workflow is disabled after closure. No third run is authorized. Classical telemetry variation between the two invalid/local runs is not part of the scientific core. Protected depth-10 access remained false.
+
+## Repository main integration
+
+- integration PR: #92
+- merge method: normal merge commit
+- pre-merge research HEAD: `0c0fc7a28f5ffc65853265d58a041863f520cdb8`
+- pre-merge main: `ca6a1e4a9b41d79d873fa71385972e402ffa5197`
+- merge commit: `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`
+- scientific disposition after integration: `CLOSED / TECHNICAL-INVALID`
+- Stage 2 after integration: `NOT-AUTHORIZED-NOT-EXECUTED`
+- protected depth-10 holdout: `SEALED / NOT GENERATED / NOT READ`

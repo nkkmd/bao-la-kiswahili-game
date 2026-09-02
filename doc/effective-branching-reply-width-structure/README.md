@@ -6,8 +6,8 @@ Research Generation 3 `G3-02` formal Study:
 
 `EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`
 
-Research workflow: `COMPLETE ON RESEARCH BRANCH`
-Main integration: `NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION`
+Research workflow: `COMPLETE / MAIN INTEGRATED`
+Main integration: `COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1`
 
 Formal English title:
 
@@ -110,6 +110,7 @@ branching width / reply width / multi-ply width profileはmachine-observed bound
 - `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — authoritative Stage 1 closure result / execution audit
 - `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md` — materialization incident checkpoint
 - `checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md` — execution-count violation checkpoint
+- `checkpoints/2026-09-02-main-integration-complete.md` — repository main integration completion checkpoint
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains immutable and is not rewritten.
 

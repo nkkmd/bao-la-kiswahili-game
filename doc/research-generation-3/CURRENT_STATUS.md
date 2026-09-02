@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / G3-02 RESEARCH COMPLETE ON BRANCH / NEXT PROGRAM REVIEW REQUIRED
+Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / G3-02 MAIN INTEGRATION COMPLETE / NEXT PROGRAM REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -14,8 +14,8 @@ G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
 LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5
 G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-02 research workflow = COMPLETE ON RESEARCH BRANCH
-G3-02 main integration = NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION
+G3-02 research workflow = COMPLETE / MAIN INTEGRATED
+G3-02 main integration = COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1
 G3-02 Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
 G3-02 Stage 1 = EBRWS-S1-DEVELOPMENT-2026-09-01-v1 / TECHNICAL-INVALID
 G3-02 Stage 1 authorized scientific executions = 1
@@ -27,7 +27,7 @@ G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
 G3-02 no-rescue boundary = CROSSED / ACTIVE
 G3-02 Stage 1 execution workflow = CLOSED / DISABLED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none; closed G3-02 branch awaits explicit integration instruction
+Active scientific research branch = none; closed G3-02 record is integrated to main
 Next scientific action = separate post-G3-02 program review / NOT AUTOMATICALLY AUTHORIZED
 ```
 
@@ -189,9 +189,9 @@ G3-02 closure does not automatically authorize G3-03 or later studies. The next 
 
 ## Main integration boundary
 
-G3-02 research work is complete on `research/g3-02-effective-branching-reply-width-structure`.
+G3-02 research work is complete and has been integrated to `main` through PR #92 using a normal merge commit so the prospective research history is preserved.
 
-`main` integration has **not** been performed and remains pending explicit user instruction. No merge, fast-forward, or pull-request integration action is authorized by this completion state.
+Merge commit: `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`. This repository integration does not change the Study's `CLOSED / TECHNICAL-INVALID` decision and does not authorize G3-03 or later scientific work.
 
 ## Canonical records
 

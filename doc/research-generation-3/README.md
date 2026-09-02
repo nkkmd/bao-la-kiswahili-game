@@ -17,6 +17,7 @@ G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-02 Stage 0 = STAGE0-PASS
 G3-02 Stage 1 = TECHNICAL-INVALID
 G3-02 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-02 main integration = COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1
 G3-02 formal promoted candidate set = []
 G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
 G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
@@ -105,3 +106,7 @@ Historical `PROGRAM_PLAN.md` remains unchanged.
 Final Actions-history audit found that G3-02 Stage 1 was scientifically executed twice despite an exactly-one-execution authorization. The second run `33569382663` was unintentionally queued by workflow arming before the first outcome was known, but executed after the no-rescue boundary and is therefore `INVALID-DO-NOT-USE`.
 
 This does not change G3-02's existing `CLOSED / TECHNICAL-INVALID` decision; it adds a second technical-integrity failure. Formal promoted candidate set remains `[]`, Stage 2 remains unexecuted, and the protected depth-10 holdout remains sealed.
+
+## G3-02 main integration
+
+2026-09-02、completed G3-02 branch `research/g3-02-effective-branching-reply-width-structure`をPR #92の通常mergeで`main`へ統合した。merge commitは`b41c7eda74dd1002e98e4d82714fadb987d1f1e1`。このrepository integrationは`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、protected depth-10 holdout sealedというscientific stateを変更せず、G3-03以降を自動authorizeしない。
