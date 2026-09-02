@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-03 TCTGD-STUDY1 CLOSED TECHNICAL-INVALID / NEXT STUDY REVIEW REQUIRED
+Status = ACTIVE / G3-04 SFCDF-STUDY1 CLOSED FORMAL-COMPLETE / POST-G3-04 G3-05 REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -29,12 +29,23 @@ G3-03 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G3-03 formal promoted candidate set = []
 G3-03 Stage 1 seed = 31310001..31310192 / CONSUMED
 G3-03 Stage 2 seed = 31320001..31320288 / NOT CONSUMED
+G3-04 program review = G3-04-AUTHORIZED
+G3-04 = SFCDF-STUDY1 / CLOSED / FORMAL-COMPLETE
+G3-04 Stage 0 = STAGE0-PASS
+G3-04 Stage 1 = STAGE1-PASS / executions 1 authorized / 1 actual
+G3-04 Stage 2 = STAGE2-PASS / executions 1 authorized / 1 actual
+G3-04 C1 = CONFIRMED / MTAJI-GREATER
+G3-04 C6 = CONFIRMED / NAMUA-GREATER
+G3-04 Stage 1 seed = CONSUMED
+G3-04 Stage 2 seed = CONSUMED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+- [`../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md) — G3-04初見向けformal overview
+- [`../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md) — completed G3-04 formal result and interpretation boundary
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したhistorical prospective plan。current stateに合わせて書き換えない
 - [`../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`](../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md) — G3-03開始前のpost-G3-02 program authorization decision
 - [`../effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`](../effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md) — G3-02の初見向けclosure概要
@@ -110,26 +121,66 @@ Canonical records:
 - [`../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)
 - [`../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)
 
+## G3-04 formal closure
+
+G3-04は`SFCDF-STUDY1`としてprospectively freezeし、Stage 0 `STAGE0-PASS`、Stage 1 `STAGE1-PASS`、Stage 2 `STAGE2-PASS`まで完了した。
+
+Stage 1 fresh `31410001..31410192`では12 paired trajectoriesをexactly one authorized executionで測定し、C1 unit-width occupancyを`MTAJI-GREATER`、C6 cumulative tree/RAW ratioを`NAMUA-GREATER`としてpromotionした。C2–C5はpromotionされずStage 2へ進めていない。
+
+Stage 2ではStage 1 RAW-root 24、trajectory 24、first-16-prefix 12 identitiesをadditional firewallとしてmaterializeし、fresh `31420001..31420288`から18 paired trajectories / 36 rootsをexactly one authorized formal executionで測定した。
+
+Formal candidate decisions:
+
+- C1 `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION` = **`CONFIRMED / MTAJI-GREATER`**。18/18同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
+- C6 `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO` = **`CONFIRMED / NAMUA-GREATER`**。18/18同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
+
+Production / independent formal Stage scientific coreは`e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039`でexact一致した。Stage 2 durable artifactはID `9844368476`、ZIP SHA-256 `c4d10eb07eec6ed75510f344f5c06d13deabeb03210023cd541035f05bd5da0f`。
+
+Study lifecycleは`CLOSED / FORMAL-COMPLETE`。このlifecycle tokenは新しいscientific omnibus labelではなく、formal inferenceはcandidate-levelの`CONFIRMED` / `NOT-CONFIRMED`に限定する。
+
+C1/C6からgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、value/win probability、causal phase effect、depth >5 generalizationを導かない。
+
+Canonical records:
+
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
+- `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
+- `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
+- `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
+- `../structural-forcing-corridor-decision-funnel/checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
+
 ## Protected evidence
 
 standard initial RAW root complete exact depth-10 holdout remains:
 
 `SEALED / NOT GENERATED / NOT READ`
 
-G3-02もpost-G3-02 program reviewもこれを生成・readしていない。G3-03 Studyでもこのholdoutを開封しない。
+G3-02 / G3-03 / G3-04はいずれもこれを生成・readしていない。G3-04 closure後も封印を維持する。
 
 ## Interpretation boundary
 
 branching / reply-width geometryをbest move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。G3-02のdiagnostic patternをBao一般のformal structure claimへ昇格させない。
 
-G3-03で将来観測されるtransposition/reconvergenceやtree/graph divergenceも、strategic simplicity、tactical simplicity、search ease、best-move clarity、game-theoretic forcing、value、win probability、human difficulty、causal strategic effectへ自動的に読み替えない。
+G3-03のtechnical-invalid runに残るdiagnostic transposition/reconvergenceやtree/graph divergence方向を、strategic simplicity、tactical simplicity、search ease、best-move clarity、game-theoretic forcing、value、win probability、human difficulty、causal strategic effectへ読み替えない。G3-04のformal C1/C6も同様に、frozen bounded phase-difference claimを超えて解釈しない。
 
 ## Next program boundary
 
-separate post-G3-03 current-state program reviewは完了し、formal decisionは **`G3-04-AUTHORIZED`** である。次の安全な科学作業はG3-04のnew prospective Study ID / protocol / seed / evidence firewallをfresh evidence前にfreezeすることである。このprogram authorization自体はfresh scientific executionをauthorizeしない。
+G3-04は`SFCDF-STUDY1 = CLOSED / FORMAL-COMPLETE`。C1は`CONFIRMED / MTAJI-GREATER`、C6は`CONFIRMED / NAMUA-GREATER`。
+
+Historical program plan上の次候補はG3-05 — Branch Expansion / Compression Transition Study 1だが、**G3-05はまだauthorizeされていない**。次はseparate post-G3-04 current-state authorization reviewを行う。review前にG3-05 fresh evidenceを生成・readしない。
 
 ## Canonical records
 
+- `../transposition-concentration-tree-graph-divergence/README.md`
+- `../transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`
+- `../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
+- `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
+- `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
+- `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`
+- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
+- `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
 - `CURRENT_STATUS.md`
 - `PROGRAM_PLAN.md` — immutable historical prospective plan
 - `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`

@@ -974,10 +974,10 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ---
 
-### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 closure
+### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 / G3-04 closure
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TCTGD-STUDY1 = TECHNICAL-INVALID` / G3-03 Stage 2 not executed / next program review required**
+**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TECHNICAL-INVALID` / G3-04 `SFCDF-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C6 `CONFIRMED` / post-G3-04 review required**
 
 G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`のままimmutable closure。独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 familiesをformal eligibleとした。
 
@@ -1020,6 +1020,7 @@ G3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration /
 
 **最初に読む:**
 
+- [`transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`](transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md)
 - [`transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)
 - [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 
@@ -1030,14 +1031,38 @@ G3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration /
 - [`transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)
 - [`research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)
 
-**Boundary:** canonical value equalityをpost hoc rescueとして用いず、同じStage 1 seedをprototype修正後に再実行しない。次のStudyにはseparate post-G3-03 program reviewが必要。
+**Boundary:** canonical value equalityをpost hoc rescueとして用いず、同じStage 1 seedをprototype修正後に再実行しない。post-G3-03 program reviewはその後別途完了し、G3-04が独立Studyとして実施・closureされたが、これはTCTGD-STUDY1を救済・再分類するものではない。
 
+
+
+<!-- SFCDF-G3-04-CLOSURE:RESEARCH-INDEX -->
+### G3-04 — Structural Forcing-Corridor and Decision-Funnel Study 1
+
+G3-04 `SFCDF-STUDY1`は、RAW-only relative depth 5でsustained reply narrowing（corridor）とbranch-to-RAW convergence / tree-to-graph compression（funnel）をprospectively分離して検証した。Stage 0は`STAGE0-PASS`、Stage 1は12 paired trajectoriesで`STAGE1-PASS`。Stage 1からpromotionされたのはC1 unit-width occupancy（`MTAJI-GREATER`）とC6 cumulative tree/RAW ratio（`NAMUA-GREATER`）だけで、C2–C5はStage 2へ進めていない。
+
+Fresh Stage 2 formal holdoutは18 paired trajectories / 36 roots。Stage 1のRAW-root 24、trajectory 24、first-16-prefix 12 identitiesを追加firewallし、exactly one authorized formal executionを行った。production / independent Stage scientific coreは`e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039`でexact一致した。
+
+Formal result:
+
+- C1 `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION` — **`CONFIRMED` / `MTAJI-GREATER`**。18/18 pairで同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
+- C6 `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO` — **`CONFIRMED` / `NAMUA-GREATER`**。18/18 pairで同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
+
+Study lifecycleは`CLOSED / FORMAL-COMPLETE`。これはcandidate-level formal labelsとは別のrepository statusである。C1/C6をgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、value/win probability、causal phase effectへ読み替えない。standard initial RAW-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`のまま。
+
+**最初に読む:**
+
+- [`structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`](structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md)
+- [`structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md)
+- [`structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`](structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md)
+- [`structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`](structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`](research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md) — G3-04 program-level closure / G3-05未承認境界
+- [`research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`](research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md) — RG3 closure checkpoint
 
 ---
 
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; G3-03 `TCTGD-STUDY1` is now `CLOSED / TECHNICAL-INVALID` after a prototype-sensitive cross-implementation verification defect in its single authorized Stage 1 execution. G3-03 formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth-10 holdout sealed. The separate post-G3-03 program review is complete: `G3-04-AUTHORIZED` for prospective Study-definition / preregistration only; fresh G3-04 evidence remains unauthorized until freeze and separate Stage authorization.
+**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` and G3-03 `TCTGD-STUDY1` remain `CLOSED / TECHNICAL-INVALID`. G3-04 `SFCDF-STUDY1` is now `CLOSED / FORMAL-COMPLETE`: C1 unit-width occupancy is `CONFIRMED / MTAJI-GREATER` and C6 cumulative tree/RAW ratio is `CONFIRMED / NAMUA-GREATER` on the frozen Stage 2 holdout. G3-05 is not automatically authorized; the next program-safe action is a separate post-G3-04 current-state authorization review. Protected depth-10 holdout remains sealed.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

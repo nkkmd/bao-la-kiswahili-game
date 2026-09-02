@@ -234,9 +234,12 @@ No Stage 2 workflow execution or formal holdout read is authorized.
 
 ## Closure records
 
+- `README.md`
+- `STUDY_1_OVERVIEW.md`
 - `STUDY_1_FINAL_REPORT.md`
 - `CURRENT_STATUS.md`
 - `DECISION_REGISTER.md`
+- `../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`
 - `../research-generation-3/checkpoints/2026-09-02-g3-03-technical-invalid-closure.md`
 
 Formal Study decision:

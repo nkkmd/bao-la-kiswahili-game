@@ -1,0 +1,58 @@
+name: SFCDF final G3-03/G3-04 documentation audit
+
+on:
+  push:
+    branches:
+      - research/g3-04-structural-forcing-corridor-decision-funnel
+    paths:
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/FINAL_DOC_AUDIT_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sfcdf-final-doc-audit
+  cancel-in-progress: false
+
+jobs:
+  audit-and-fix:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-04-structural-forcing-corridor-decision-funnel
+          fetch-depth: 0
+      - name: Link program-level closure records
+        run: node tools/experiments/materialize-g3-03-g3-04-program-closure-links.js
+      - name: Audit changed paths and historical program plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git diff --exit-code -- doc/research-generation-3/PROGRAM_PLAN.md
+          mapfile -t changed < <(git diff --name-only | sort)
+          printf '%s\n' "${changed[@]}"
+          expected=(
+            doc/RESEARCH_INDEX.md
+            doc/research-generation-3/CURRENT_STATUS.md
+            doc/research-generation-3/README.md
+            doc/structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md
+            doc/structural-forcing-corridor-decision-funnel/README.md
+            doc/structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md
+            doc/transposition-concentration-tree-graph-divergence/README.md
+            doc/transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md
+          )
+          mapfile -t expected_sorted < <(printf '%s\n' "${expected[@]}" | sort)
+          test "${#changed[@]}" -eq "${#expected_sorted[@]}"
+          for i in "${!expected_sorted[@]}"; do
+            test "${changed[$i]}" = "${expected_sorted[$i]}"
+          done
+      - name: Commit program-closure navigation links
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/RESEARCH_INDEX.md doc/research-generation-3/CURRENT_STATUS.md doc/research-generation-3/README.md doc/structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md doc/structural-forcing-corridor-decision-funnel/README.md doc/structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md doc/transposition-concentration-tree-graph-divergence/README.md doc/transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md
+          git commit -m "Link G3-03 and G3-04 program closure records"
+          git push origin HEAD:research/g3-04-structural-forcing-corridor-decision-funnel

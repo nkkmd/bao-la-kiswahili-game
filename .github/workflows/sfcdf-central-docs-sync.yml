@@ -1,0 +1,55 @@
+name: SFCDF central documentation sync
+
+on:
+  push:
+    branches:
+      - research/g3-04-structural-forcing-corridor-decision-funnel
+    paths:
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/CENTRAL_DOCS_SYNC_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sfcdf-central-docs-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-04-structural-forcing-corridor-decision-funnel
+          fetch-depth: 0
+      - name: Materialize current-facing central documentation
+        run: node tools/experiments/materialize-sfcdf-central-docs.js
+      - name: Audit allowed changes and preserve historical plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git diff --exit-code -- doc/research-generation-3/PROGRAM_PLAN.md
+          mapfile -t changed < <(git diff --name-only | sort)
+          printf '%s\n' "${changed[@]}"
+          expected=(
+            README.md
+            doc/FUTURE_RESEARCH_AGENDA.md
+            doc/RESEARCH_INDEX.md
+            doc/research-generation-3/CURRENT_STATUS.md
+            doc/research-generation-3/README.md
+          )
+          mapfile -t expected_sorted < <(printf '%s\n' "${expected[@]}" | sort)
+          test "${#changed[@]}" -eq "${#expected_sorted[@]}"
+          for i in "${!expected_sorted[@]}"; do
+            test "${changed[$i]}" = "${expected_sorted[$i]}"
+          done
+      - name: Commit central-document sync on research branch only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-generation-3/README.md doc/research-generation-3/CURRENT_STATUS.md
+          git commit -m "Sync central documentation after G3-04 closure"
+          git push origin HEAD:research/g3-04-structural-forcing-corridor-decision-funnel

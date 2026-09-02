@@ -1,0 +1,89 @@
+name: SFCDF Stage 2 Source Validation
+
+on:
+  push:
+    branches:
+      - research/g3-04-structural-forcing-corridor-decision-funnel
+    paths:
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/STAGE2_SOURCE_VALIDATION_TRIGGER
+
+permissions:
+  contents: write
+
+env:
+  BRANCH: research/g3-04-structural-forcing-corridor-decision-funnel
+  DOC: doc/structural-forcing-corridor-decision-funnel
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+      - name: Validate final Stage 2 sources without Stage 2 seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -f "$DOC/authorizations/STAGE_2_FORMAL_AUTHORIZATION.json"
+          test ! -f "$DOC/authorizations/STAGE2_EXECUTION_TRIGGER"
+          test ! -f "$DOC/executions/stage-2-execution-started.json"
+          test ! -f "$DOC/results/stage-2/scientific-result.json"
+          node --check tools/experiments/lib/sfcdf-stage2-production.js
+          node --check tools/experiments/lib/sfcdf-stage2-independent.js
+          node --check tools/experiments/run-sfcdf-stage2-formal.js
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const P=require('./tools/experiments/lib/sfcdf-stage2-production.js');
+          const I=require('./tools/experiments/lib/sfcdf-stage2-independent.js');
+          const input=require('./doc/structural-forcing-corridor-decision-funnel/prereg/STAGE_2_FORMAL_INPUT.json');
+          const s1=require('./doc/structural-forcing-corridor-decision-funnel/results/stage-1/scientific-result.json');
+          const spec=require('./doc/structural-forcing-corridor-decision-funnel/prereg/STUDY_1_SPEC.json');
+          const need=(x,m)=>{if(!x)throw Error(m)};
+          const canon=v=>v===null||typeof v!=='object'?JSON.stringify(v):Array.isArray(v)?`[${v.map(canon).join(',')}]`:`{${Object.keys(v).sort().map(k=>`${JSON.stringify(k)}:${canon(v[k])}`).join(',')}}`;
+          need(s1.stageDisposition==='STAGE1-PASS'&&s1.stage2AuthorizationEligible===true,'Stage 1 gate failed');
+          need(input.stage2SeedAccess===false&&input.freshStage2ScientificEvidenceGenerated===false&&input.protectedDepth10Access===false,'formal input boundary failed');
+          need(input.stage1IdentityCounts.rootRawSha256===24&&input.stage1IdentityCounts.sourceTrajectorySha256===24&&input.stage1IdentityCounts.openingPrefixSha256===12,'Stage 1 firewall counts failed');
+          need(canon(input.promotedCandidates)===canon(P.EXPECTED_PROMOTED)&&canon(P.EXPECTED_PROMOTED)===canon(I.EXPECTED_PROMOTED),'promoted set mismatch');
+          need(spec.protectedEvidence.standardInitialRawRootCompleteExactDepth10Holdout==='SEALED / NOT GENERATED / NOT READ','protected depth10 boundary changed');
+          const rows=[];
+          for(let i=0;i<18;i++){
+            rows.push({pairId:`fixture-${i+1}`,candidates:{
+              'SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION':{sign:i===17?-1:1},
+              'SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO':{sign:i<16?-1:0}
+            }});
+          }
+          const pf=P.validateFormal(rows,input.promotedCandidates,18),inf=I.validateFormal(rows,input.promotedCandidates,18);
+          need(canon(pf)===canon(inf),'production/independent formal statistic mismatch');
+          need(pf.confirmedCandidates.length===2,'formal fixture should confirm both candidates');
+          const psrc=fs.readFileSync('tools/experiments/lib/sfcdf-stage2-production.js','utf8');
+          const isrc=fs.readFileSync('tools/experiments/lib/sfcdf-stage2-independent.js','utf8');
+          need(!psrc.includes('sfcdf-stage2-independent')&&!isrc.includes('sfcdf-stage2-production'),'Stage 2 cross-import detected');
+          const wf=fs.readFileSync('.github/workflows/sfcdf-stage2-formal.yml','utf8');
+          need(wf.includes('STAGE2_EXECUTION_TRIGGER'),'scientific trigger missing');
+          need(wf.includes('stage-2-execution-started.json'),'durable lease marker missing');
+          need(wf.indexOf('git push origin HEAD:"$BRANCH"')<wf.indexOf('Execute the single authorized fresh Stage 2 formal computation'),'lease push not before scientific job');
+          need(wf.includes('Upload canonical result before repository mirror')&&wf.includes('Download durable canonical artifact'),'artifact durability path missing');
+          const result={schemaVersion:1,studyId:'SFCDF-STUDY1',stageId:'SFCDF-S2-FORMAL-2026-09-02-v1',evidenceClass:'TECHNICAL-FIXTURE',formalInputBlobBound:true,stage1Gate:true,stage1FirewallCounts:input.stage1IdentityCounts,promotedCandidates:input.promotedCandidates,formalStatisticProductionIndependentExact:true,formalFixtureConfirmedCandidates:pf.confirmedCandidates,staticIndependence:true,oneShotLeaseGuard:true,durableArtifactBeforeMirror:true,freshStage2ScientificEvidence:false,stage2SeedAccess:false,protectedDepth10Access:false,disposition:'STAGE2-SOURCE-VALIDATION-PASS'};
+          fs.mkdirSync('./doc/structural-forcing-corridor-decision-funnel/results/tooling-smoke',{recursive:true});
+          fs.writeFileSync('./doc/structural-forcing-corridor-decision-funnel/results/tooling-smoke/STAGE2_SOURCE_VALIDATION_RESULT.json',JSON.stringify(result,null,2)+'\n');
+          console.log(`SFCDF_STAGE2_SOURCE_VALIDATION=${JSON.stringify(result)}`);
+          NODE
+      - name: Upload validation result before mirror
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdf-stage2-source-validation-${{ github.run_id }}
+          path: doc/structural-forcing-corridor-decision-funnel/results/tooling-smoke/STAGE2_SOURCE_VALIDATION_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Mirror validation result
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DOC/results/tooling-smoke/STAGE2_SOURCE_VALIDATION_RESULT.json"
+          git commit -m "Record G3-04 Stage 2 source validation"
+          git push origin HEAD:"$BRANCH"

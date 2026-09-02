@@ -1,0 +1,6 @@
+SFCDF_STAGE1_EXECUTION_TRIGGER=1
+authorization_nonce=SFCDF-S1-AUTH-2026-09-02-V1-01
+max_scientific_executions=1
+stage1_seed=31410001..31410192
+stage2_authorized=false
+protected_depth10_access=false

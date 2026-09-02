@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-03 CLOSED TECHNICAL-INVALID / G3-04 AUTHORIZED / PREREG FREEZE REQUIRED
+Program status = ACTIVE / G3-04 CLOSED FORMAL-COMPLETE / POST-G3-04 G3-05 REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -28,9 +28,18 @@ G3-03 formal promoted candidate set = []
 G3-03 Stage 1 seed = 31310001..31310192 / CONSUMED
 G3-03 Stage 2 seed = 31320001..31320288 / NOT CONSUMED
 G3-03 no-rescue boundary = CROSSED / ACTIVE
+G3-04 = SFCDF-STUDY1 / CLOSED / FORMAL-COMPLETE
+G3-04 Stage 0 = STAGE0-PASS
+G3-04 Stage 1 = STAGE1-PASS / authorized executions 1 / actual executions 1
+G3-04 Stage 2 = STAGE2-PASS / authorized executions 1 / actual executions 1
+G3-04 C1 = CONFIRMED / MTAJI-GREATER
+G3-04 C6 = CONFIRMED / NAMUA-GREATER
+G3-04 Stage 1 seed = 31410001..31410192 / CONSUMED
+G3-04 Stage 2 seed = 31420001..31420288 / CONSUMED
+G3-04 no-rescue boundary = CROSSED / ACTIVE
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none / G3-04 STUDY DEFINITION NOT YET FROZEN
-Next scientific action = prospective G3-04 Study-definition / preregistration freeze; no G3-04 fresh evidence is authorized before freeze and separate Stage authorization
+Active scientific research branch = none / G3-04 CLOSED
+Next scientific action = separate post-G3-04 current-state authorization review for G3-05; G3-05 is NOT AUTHORIZED
 ```
 
 ## Immutable upstream boundaries
@@ -260,6 +269,8 @@ Stage 2 seed = NOT CONSUMED
 
 Canonical closure records:
 
+- `../transposition-concentration-tree-graph-divergence/README.md`
+- `../transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`
 - `../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`
 - `../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`
 - `../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`
@@ -267,13 +278,43 @@ Canonical closure records:
 - `../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`
 - `checkpoints/2026-09-02-g3-03-technical-invalid-closure.md`
 
+## G3-04 formal closure
+
+G3-04は`SFCDF-STUDY1`としてprospectively freezeし、Stage 0 `STAGE0-PASS`、Stage 1 `STAGE1-PASS`、Stage 2 `STAGE2-PASS`まで完了した。
+
+Stage 1 fresh `31410001..31410192`では12 paired trajectoriesをexactly one authorized executionで測定し、C1 unit-width occupancyを`MTAJI-GREATER`、C6 cumulative tree/RAW ratioを`NAMUA-GREATER`としてpromotionした。C2–C5はpromotionされずStage 2へ進めていない。
+
+Stage 2ではStage 1 RAW-root 24、trajectory 24、first-16-prefix 12 identitiesをadditional firewallとしてmaterializeし、fresh `31420001..31420288`から18 paired trajectories / 36 rootsをexactly one authorized formal executionで測定した。
+
+Formal candidate decisions:
+
+- C1 `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION` = **`CONFIRMED / MTAJI-GREATER`**。18/18同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
+- C6 `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO` = **`CONFIRMED / NAMUA-GREATER`**。18/18同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
+
+Production / independent formal Stage scientific coreは`e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039`でexact一致した。Stage 2 durable artifactはID `9844368476`、ZIP SHA-256 `c4d10eb07eec6ed75510f344f5c06d13deabeb03210023cd541035f05bd5da0f`。
+
+Study lifecycleは`CLOSED / FORMAL-COMPLETE`。このlifecycle tokenは新しいscientific omnibus labelではなく、formal inferenceはcandidate-levelの`CONFIRMED` / `NOT-CONFIRMED`に限定する。
+
+C1/C6からgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、value/win probability、causal phase effect、depth >5 generalizationを導かない。
+
+Canonical records:
+
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
+- `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
+- `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
+- `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
+- `../structural-forcing-corridor-decision-funnel/checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
+- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
+- `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
+
 ## Protected evidence
 
 G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-Neither G3-02 nor G3-03 generated/read/peeked at it. G2-12 is not used as depth-10 truth.
+G3-02 / G3-03 / G3-04はいずれもこのholdoutを生成・read・peekしていない。G2-12はdepth-10 truthの代替として使用しない。
 
 ## Claim boundary
 
@@ -283,10 +324,17 @@ The diagnostic C1–C4 directions must not be generalized to Bao overall, depth 
 
 The technical observation that canonical scientific bytes matched while prototype-sensitive in-memory equality failed is a reproducibility/verification lesson only; it is not a scientific confirmation of the candidate effects.
 
+G3-04のformal positive claimはC1/C6のfrozen candidate-level phase differenceだけに限定する。C1/C6をgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、position value / win probability、causal phase effect、relative depth 5を超える一般化へ拡張しない。
+
 ## Next program boundary
 
-No G3-04 or later Study is automatically authorized.
+G3-04はclosedであり、同Studyの追加seed、rerun、endpoint rescue、threshold変更は行わない。
 
-The separate **post-G3-03 current-state program review** is complete and formally decided **`G3-04-AUTHORIZED`**. The next safe scientific action is a new prospective G3-04 Study-definition / preregistration freeze. This program authorization does not authorize fresh evidence; no G3-04 scientific evidence may be generated before the freeze and separate Stage authorization. Canonical review: `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`.
+Historical `PROGRAM_PLAN.md`では次のcore agenda itemはG3-05 — Branch Expansion / Compression Transition Study 1である。ただしG3-04のpositive resultはG3-05を自動authorizeしない。
 
+次の安全なprogram actionは、**post-G3-04 current-state G3-05 authorization review**をread-onlyで実施し、G3-05が現在のformal evidence boundaryから独立に開始可能か、追加prerequisiteが必要か、またはnot-authorizedかを明示的に判定することである。authorization review完了前にG3-05 fresh scientific evidenceを生成・readしない。
+
+Protected depth-10 holdoutは引き続き`SEALED / NOT GENERATED / NOT READ`。
+
+Historical `PROGRAM_PLAN.md` remains unchanged.
 Historical `PROGRAM_PLAN.md` remains unchanged.

@@ -1,0 +1,23 @@
+{
+  "studyId": "SFCDF-STUDY1",
+  "stageId": "SFCDF-S1-DEVELOPMENT-2026-09-02-v1",
+  "workflowRunId": 33621863279,
+  "stageDisposition": "STAGE1-PASS",
+  "selectedPairCount": 12,
+  "promotedCandidates": [
+    {
+      "candidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "direction": "MTAJI-GREATER"
+    },
+    {
+      "candidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "direction": "NAMUA-GREATER"
+    }
+  ],
+  "productionStageScientificCoreSha256": "fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca",
+  "independentStageScientificCoreSha256": "fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca",
+  "freshScientificEvidenceGenerated": true,
+  "seedBlockConsumed": true,
+  "noRescueBoundaryCrossed": true,
+  "protectedDepth10Access": false
+}

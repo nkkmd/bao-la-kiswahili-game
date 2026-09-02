@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDF-STUDY1",
+  "stageId": "SFCDF-S1-DEVELOPMENT-2026-09-02-v1",
+  "workflowRunId": 33621863279,
+  "authorizationNonce": "SFCDF-S1-AUTH-2026-09-02-V1-01",
+  "authorizedScientificContentHead": "140d5827fea9affee46aa15f08cbe15eb7775129",
+  "leaseParentSha": "75f2691c19533ce9300abfda88987ad3436d381e",
+  "freshScientificComputationStartedAtLeaseCreation": false,
+  "maxScientificExecutions": 1
+}

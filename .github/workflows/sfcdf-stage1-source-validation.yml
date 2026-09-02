@@ -1,0 +1,50 @@
+name: SFCDF Stage 1 Source Validation
+
+on:
+  push:
+    branches:
+      - research/g3-04-structural-forcing-corridor-decision-funnel
+    paths:
+      - doc/structural-forcing-corridor-decision-funnel/authorizations/STAGE1_SOURCE_VALIDATION_TRIGGER
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Validate final Stage 1 source without fresh seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/sfcdf-stage1-production.js
+          node --check tools/experiments/lib/sfcdf-stage1-independent.js
+          node --check tools/experiments/run-sfcdf-stage1-development.js
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const P=require('./tools/experiments/lib/sfcdf-stage1-production.js');
+          const I=require('./tools/experiments/lib/sfcdf-stage1-independent.js');
+          const spec=require('./doc/structural-forcing-corridor-decision-funnel/prereg/STUDY_1_SPEC.json');
+          const fw=require('./doc/structural-forcing-corridor-decision-funnel/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          const s0=require('./doc/structural-forcing-corridor-decision-funnel/results/stage-0/STAGE_0_TECHNICAL_RESULT.json');
+          if(P.STUDY_ID!=='SFCDF-STUDY1'||I.STUDY_ID!=='SFCDF-STUDY1'||P.HORIZON!==5||I.HORIZON!==5)throw Error('selector identity mismatch');
+          if(P.CANDIDATES.join('\n')!==I.CANDIDATES.join('\n')||P.CANDIDATES.length!==6)throw Error('candidate contract mismatch');
+          if(typeof P.selectPairedRoots!=='function'||typeof I.selectPairedRoots!=='function'||typeof P.measureRoot!=='function'||typeof I.measureRoot!=='function')throw Error('Stage1 selector API incomplete');
+          if(spec.trajectoryPolicy.maxSourcePly!==240)throw Error('source trajectory policy mismatch');
+          if(spec.stages[1].seedStart!==31410001||spec.stages[1].seedEnd!==31410192||spec.stages[1].targetPairs!==12)throw Error('Stage1 population changed');
+          if(spec.stages[2].seedStart!==31420001||spec.stages[2].seedEnd!==31420288)throw Error('Stage2 seed contract changed');
+          if(fw.scientificOutcomeFieldsRetained!==false||fw.g303ScientificOutcomesRetained!==false||fw.g303RootIdentityRecordCount!==24)throw Error('identity firewall invalid');
+          if(s0.stageDisposition!=='STAGE0-PASS')throw Error('Stage0 PASS missing');
+          const runner=fs.readFileSync('tools/experiments/run-sfcdf-stage1-development.js','utf8');
+          const wf=fs.readFileSync('.github/workflows/sfcdf-stage1-development.yml','utf8');
+          if(runner.includes('isDeepStrictEqual'))throw Error('prototype-sensitive equality found');
+          for(const token of ['canonicalScientificContentExact','sourceBlobBindings','SFCDF_EXECUTION_LEASE_CONFIRMED','SFCDF_LEASE_COMMIT_SHA'])if(!runner.includes(token))throw Error(`runner guard missing ${token}`);
+          for(const token of ['STAGE1_EXECUTION_TRIGGER','Acquire durable pre-computation lease','Upload canonical result before repository mirror','Mirror exact uploaded bytes without recomputation'])if(!wf.includes(token))throw Error(`workflow control missing ${token}`);
+          if(wf.includes('workflow_dispatch'))throw Error('scientific workflow trigger widened');
+          console.log(JSON.stringify({studyId:P.STUDY_ID,candidates:P.CANDIDATES,identityCoreSha256:fw.identityCoreSha256,stage0Core:s0.deterministicCoreSha256,freshScientificEvidence:false,stage1SeedAccess:false,stage2SeedAccess:false,protectedDepth10Access:false}));
+          NODE
