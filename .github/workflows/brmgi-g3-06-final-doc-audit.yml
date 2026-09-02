@@ -1,0 +1,50 @@
+name: BRMGI G3-06 Final Document Audit
+on:
+  push:
+    branches:
+      - research/g3-06-bao-rule-mechanism-geometry-intervention
+    paths:
+      - doc/bao-rule-mechanism-geometry-intervention/authorizations/final-document-audit-trigger.txt
+concurrency:
+  group: brmgi-g3-06-final-document-audit
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+      - name: Synchronize and audit current-facing documents
+        run: node tools/experiments/finalize-brmgi-g3-06-final-doc-audit.js
+      - name: Guard immutable scientific and historical files
+        run: |
+          set -euo pipefail
+          git diff --exit-code -- \
+            doc/research-generation-3/PROGRAM_PLAN.md \
+            doc/bao-rule-mechanism-geometry-intervention/STUDY_1_PROTOCOL.md \
+            doc/bao-rule-mechanism-geometry-intervention/prereg/STUDY_1_SPEC.json \
+            doc/bao-rule-mechanism-geometry-intervention/results/stage-1/scientific-result.json \
+            doc/bao-rule-mechanism-geometry-intervention/results/stage-1/telemetry.json \
+            doc/bao-rule-mechanism-geometry-intervention/results/stage-1/execution-summary.json
+      - name: Commit documentation-only synchronization
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            README.md \
+            doc/RESEARCH_INDEX.md \
+            doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/research-generation-3/README.md \
+            doc/research-generation-3/CURRENT_STATUS.md \
+            doc/bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md \
+            doc/bao-rule-mechanism-geometry-intervention/DECISION_REGISTER.md \
+            doc/bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md \
+            doc/bao-rule-mechanism-geometry-intervention/checkpoints/2026-09-03-final-document-consistency-pass.md
+          git diff --cached --check
+          git diff --cached --name-only
+          git commit -m 'Synchronize G3-06 closure documentation after final audit'
+          git push origin HEAD:research/g3-06-bao-rule-mechanism-geometry-intervention
