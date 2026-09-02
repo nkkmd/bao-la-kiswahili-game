@@ -5,7 +5,8 @@ on:
     branches:
       - research/g3-02-effective-branching-reply-width-structure
     paths:
-      - "tools/experiments/materialize-ebrws-technical-invalid-central-docs.js"
+      - ".github/workflows/ebrws-technical-invalid-central-doc-sync.yml"
+      - "tools/experiments/materialize-ebrws-duplicate-execution-central-audit.js"
   workflow_dispatch:
 
 permissions:
@@ -28,8 +29,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Materialize current-facing closure state
-        run: node tools/experiments/materialize-ebrws-technical-invalid-central-docs.js
+      - name: Materialize duplicate-execution central audit
+        run: node tools/experiments/materialize-ebrws-duplicate-execution-central-audit.js
 
       - name: Assert historical PROGRAM_PLAN unchanged in this sync
         shell: bash
@@ -48,6 +49,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No central document changes"
           else
-            git commit -m "Synchronize G3-02 final audited central docs"
+            git commit -m "Synchronize G3-02 duplicate-execution central audit"
             git push origin HEAD:research/g3-02-effective-branching-reply-width-structure
           fi
