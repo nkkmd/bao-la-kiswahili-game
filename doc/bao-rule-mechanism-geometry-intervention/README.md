@@ -16,40 +16,59 @@ Research Generation 3 / G3-06の独立prospective Study。
 
 ```text
 program review = G3-06-AUTHORIZED
-Study status = PROSPECTIVE-FROZEN / PRE-STAGE-0
-Stage 0 = BRMGI-S0-TECHNICAL-2026-09-02-v1 / NOT YET EXECUTED
-Stage 1 = BRMGI-S1-DEVELOPMENT-2026-09-02-v1 / NOT AUTHORIZED
-Stage 2 = BRMGI-S2-FORMAL-2026-09-02-v1 / NOT AUTHORIZED
-Stage 1 seed = 31610001..31610256 / NOT CONSUMED
+Study status = CLOSED / TECHNICAL-INVALID
+Stage 0 v1 = TECHNICAL-INVALID / NO RERUN
+Stage 0 v2 = STAGE0-PASS
+Stage 1 = TECHNICAL-INVALID / 1 authorized / 1 actual
+Stage 1 seed = 31610001..31610256 / CONSUMED
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seed = 31620001..31620384 / NOT CONSUMED
-fresh scientific evidence generated/read = false / false
+no-rescue boundary = CROSSED / ACTIVE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ
+main integration = NOT PERFORMED
 ```
+
+## 結論
+
+LGTGMIV F1-F5 / RAW-only / relative depth 5を用いるtechnical Stage 0 v2はPASSした。しかしfresh Stage 1のexactly-one authorized executionは、geometry measurementへ入る前のproduction / independent event-unit selection比較で:
+
+`production/independent selection mismatch`
+
+となり、mandatory verification gateを満たさなかった。
+
+Stage 1 fresh seedへアクセス済みであるため、selectorを修正して同じevidenceを再実行することはno-rescue ruleにより禁止される。したがってformal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Studyは**`CLOSED / TECHNICAL-INVALID`**として閉じる。
+
+これはcapture、nyumba、reserve exhaustion、Namua→Mtajiとbounded geometryの関係に対するnegative/null resultではない。
 
 ## Scientific boundary
 
 本StudyはG3-05を救済しない。G3-05 partial telemetryはscientific inputではない。
 
-LGTGMIV F1-F5のRAW-only relative depth-5 measurementだけを使用し、capture、nyumba `use/stop`、reserve exhaustion / Namua→Mtaji linked eventに伴うpre/post geometry changeを検証する。
+Historical labelの`Intervention`はgeneric causal claimを意味しない。本Studyが当初authorizeしていたformal interpretationもmove-conditioned / event-conditioned bounded structural differenceに限定されていた。
 
-Historical labelの`Intervention`はgeneric causal claimを意味しない。formal interpretationはmove-conditioned / event-conditioned bounded structural differenceに限定する。
+今回valid Stage 1 geometry resultへ到達していないため、capture / nyumba / reserve / Namua→Mtajiのgeometry direction、G3-04 C1/C6のrule mechanism、search/value/forcing/human difficultyについて新しいscientific claimを行わない。
 
 ## Canonical documents
 
 - [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
-- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — prospective frozen protocol
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
 - [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md)
-- [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
+- [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json) — prospective machine-readable contract
+- [`results/stage-1/scientific-result.json`](results/stage-1/scientific-result.json) — canonical Stage 1 technical-invalid result
+- [`checkpoints/2026-09-03-stage-1-technical-invalid-study-closure.md`](checkpoints/2026-09-03-stage-1-technical-invalid-study-closure.md)
 
-Program authorization:
+Program records:
 
 - [`../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md`](../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md)
-- [`../research-generation-3/checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md`](../research-generation-3/checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md)
+- [`../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md)
+- [`../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`](../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md)
 
-## Next action
+## Next program action
 
-Technical-only Stage 0の実装・static audit・別authorization下のexactly-one technical executionを行う。
+G3-07は自動authorizeしない。次に進む場合はseparate post-G3-06 current-state authorization reviewを行う。
 
-**Fresh Stage 1 evidenceはまだ生成・readしない。**
+BRMGI selection diagnosticsをG3-07のvalidated scientific inputとして利用しない。protected depth-10 holdoutは引き続きsealed。
