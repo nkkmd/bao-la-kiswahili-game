@@ -1,7 +1,7 @@
 BRMGI-STUDY1 final documentation consistency audit
 Date: 2026-09-03
-Attempt: 2
-Purpose: current-facing documentation synchronization and consistency audit only
+Attempt: 3
+Purpose: current-facing documentation synchronization, chronology clarification, and consistency audit only
 Scientific recomputation authorized: false
 Stage 1 rerun authorized: false
 Stage 2 authorized: false
