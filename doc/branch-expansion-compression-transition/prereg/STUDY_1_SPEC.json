@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BECT-STUDY1",
+  "program": "Research Generation 3",
+  "agendaPosition": "G3-05",
+  "englishTitle": "Branch Expansion and Compression Transition Study 1 — Prospective exact analysis of longitudinal bounded local game-tree geometry change, transition onset, persistence, reopening, and reversal along Bao trajectories",
+  "japaneseTitle": "Baoにおけるbranch expansion / compression転移のprospective exact解析 — 対局trajectory上のbounded局所ゲーム木幾何の変化、転移開始、持続、再開放、反転の再現可能な検証",
+  "baselineRemoteMain": "127a9653933c623307c8423fddaf42166090f11b",
+  "researchBranch": "research/g3-05-branch-expansion-compression-transition",
+  "authorizationReview": "doc/research-program-decisions/2026-09-02-post-g3-04-g3-05-authorization-review.md",
+  "authorizationOutcome": "G3-05-AUTHORIZED",
+  "freshScientificEvidenceGeneratedBeforeFreeze": false,
+  "freshScientificEvidenceReadBeforeFreeze": false,
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentity": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "moveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransforms": [],
+    "symmetryOrCanonicalQuotientAuthorized": false
+  },
+  "ruleSemantics": {
+    "enginePath": "public/engine.js",
+    "engineGitBlobSha": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c",
+    "baselineCommit": "127a9653933c623307c8423fddaf42166090f11b"
+  },
+  "canonicalSerialization": {
+    "upstreamBinding": "LGTGMIV-CANONICAL-v1",
+    "studyBinding": "BECT-CANONICAL-v1",
+    "hashAlgorithm": "SHA-256",
+    "scientificJson": "deterministic sorted-key canonical JSON",
+    "ratioRepresentation": {
+      "numerator": "reduced decimal integer string",
+      "denominator": "positive reduced decimal integer string",
+      "defined": "boolean"
+    },
+    "floatingPointScientificArithmeticAllowed": false,
+    "runtimeTelemetryInScientificHashAllowed": false,
+    "javascriptObjectPrototypeInScientificIdentityAllowed": false,
+    "prototypeSensitiveDeepStrictEqualityAsGate": false,
+    "crossImplementationEquality": "SHA-256 equality of canonical scientific content; incidental JavaScript prototype/insertion/runtime identity excluded"
+  },
+  "relativeLocalHorizon": 5,
+  "eligibleMeasurementFamilies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION",
+    "LGTGMIV-F5-REPLY-GEOMETRY"
+  ],
+  "sourceImplementations": {
+    "upstreamProduction": {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-production.js",
+      "gitBlobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"
+    },
+    "upstreamIndependent": {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-independent.js",
+      "gitBlobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"
+    }
+  },
+  "longitudinalLevelEndpoints": {
+    "BECT-M1-ROOT-LEGAL-WIDTH": {
+      "familyBinding": ["F5"],
+      "value": "rootLegalMoveCount",
+      "representation": "exact integer"
+    },
+    "BECT-M2-CUMULATIVE-TREE-OCCURRENCE": {
+      "familyBinding": ["F1"],
+      "value": "sum treeNodeOccurrences[d], d=0..5",
+      "representation": "exact integer"
+    },
+    "BECT-M3-GLOBAL-DISTINCT-RAW-STATES": {
+      "familyBinding": ["F2"],
+      "value": "global distinct RAW states over relative depths 0..5",
+      "representation": "exact integer"
+    },
+    "BECT-M4-CUMULATIVE-TREE-RAW-RATIO": {
+      "familyBinding": ["F1", "F2", "F4"],
+      "numerator": "sum treeNodeOccurrences[d], d=0..5",
+      "denominator": "global distinct RAW states over relative depths 0..5",
+      "zeroDenominatorRule": "undefined"
+    },
+    "BECT-M5-DUPLICATE-TRANSITION-FRACTION": {
+      "familyBinding": ["F2", "F3"],
+      "numerator": "sum duplicate encounter count over parent depths 0..4",
+      "denominator": "sum tree edge/transition occurrences over parent depths 0..4",
+      "zeroDenominatorRule": "undefined"
+    },
+    "BECT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+      "familyBinding": ["F5"],
+      "numerator": "sum unitWidthStateCount[d], d=0..5",
+      "denominator": "sum replyWidthHistogram[d][w] for w>0, d=0..5",
+      "zeroDenominatorRule": "undefined"
+    },
+    "BECT-M7-BRANCH-REOPENING-FRACTION": {
+      "familyBinding": ["F5"],
+      "numerator": "sum branchReopeningCount[d], parent depths 0..4",
+      "denominator": "sum classified reply-width transition counts, parent depths 0..4",
+      "zeroDenominatorRule": "undefined"
+    },
+    "BECT-M8-BRANCH-EXTINCTION-FRACTION": {
+      "familyBinding": ["F5"],
+      "numerator": "sum branchExtinctionCount[d], parent depths 0..4",
+      "denominator": "sum classified reply-width transition counts, parent depths 0..4",
+      "zeroDenominatorRule": "undefined"
+    }
+  },
+  "transitionGrammar": {
+    "level": "L_m(t) is the exact endpoint value at source trajectory ply t",
+    "adjacentDelta": "D_m(t)=L_m(t+1)-L_m(t) as an exact reduced rational",
+    "signedClasses": ["UP", "DOWN", "ZERO", "UNDEFINED"],
+    "onsetUp": "D_m(t)>0 and previous defined delta D_m(t-1)<=0",
+    "onsetDown": "D_m(t)<0 and previous defined delta D_m(t-1)>=0",
+    "persistenceUp": "an onsetUp at t followed by defined D_m(t+1)>0",
+    "persistenceDown": "an onsetDown at t followed by defined D_m(t+1)<0",
+    "reversalAfterUp": "an onsetUp at t followed by defined D_m(t+1)<0",
+    "reversalAfterDown": "an onsetDown at t followed by defined D_m(t+1)>0",
+    "stallAfterOnset": "onset followed by defined zero delta",
+    "recovery": "two consecutive nonzero deltas with opposite signs after an onset; reported separately from persistence",
+    "thresholdPolicy": "no magnitude threshold in the frozen Stage 1 grammar; exact sign only",
+    "phaseBoundaryPrimaryRule": "any delta or three-delta event window whose source states include more than one rule phase is excluded from primary transition inference",
+    "phaseContextRule": "rule phase may be attached only after geometry events are constructed; phase labels are contextual and not event ground truth"
+  },
+  "trajectoryPolicy": {
+    "engine": "public/engine.js",
+    "prng": "Mulberry32",
+    "legalMoveOrdering": "canonical move identity key ascending",
+    "moveSelection": "floor(u * legalMoveCount)",
+    "maxSourcePly": 80,
+    "analysisRootPlyStart": 16,
+    "analysisRootPlyEnd": 63,
+    "requiredNonterminalAtAllAnalysisRoots": true,
+    "selection": "source seed ascending; first N eligible trajectories",
+    "geometryBlind": true,
+    "endpointBlind": true,
+    "outcomeBlindExceptFixedSurvivalEligibility": true,
+    "postHocTrajectoryReplacementAllowed": false
+  },
+  "experimentalUnit": {
+    "primary": "source trajectory",
+    "withinTrajectoryRepeatedMeasures": "ordered roots, adjacent-root pairs and event windows are dependent repeated observations",
+    "independentSampleClaimForAdjacentWindows": false,
+    "formalAggregation": "candidate-specific persistence-minus-reversal balance is reduced to one sign per trajectory"
+  },
+  "stages": [
+    {
+      "stageId": "BECT-S0-TECHNICAL-2026-09-02-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificEvidence": false,
+      "seedConsumptionAllowed": false,
+      "separateAuthorizationRequired": true
+    },
+    {
+      "stageId": "BECT-S1-DEVELOPMENT-2026-09-02-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "seedStart": 31510001,
+      "seedEnd": 31510240,
+      "targetTrajectories": 10,
+      "analysisRootsPerEligibleTrajectory": 48,
+      "separateAuthorizationRequired": true,
+      "maxScientificExecutions": 1
+    },
+    {
+      "stageId": "BECT-S2-FORMAL-2026-09-02-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "seedStart": 31520001,
+      "seedEnd": 31520384,
+      "targetTrajectories": 16,
+      "analysisRootsPerEligibleTrajectory": 48,
+      "separateAuthorizationRequired": true,
+      "maxScientificExecutions": 1,
+      "requiresNonemptyFrozenStage1PromotedSet": true
+    }
+  ],
+  "firewall": {
+    "forbiddenSeedBlocks": [
+      "31010001..31010096",
+      "31110001..31110128",
+      "31120001..31120192",
+      "31210001..31210192",
+      "31220001..31220288",
+      "31310001..31310192",
+      "31320001..31320288",
+      "31410001..31410192",
+      "31420001..31420288"
+    ],
+    "g303DiagnosticScientificOutcomeUseAllowed": false,
+    "g304CandidateValuesOrFavorableOutcomeUseAllowed": false,
+    "g304C1C6MayBeCitedAsContextOnly": true,
+    "identityOnlyExclusionMaterializationAllowed": true,
+    "withinBectStage2Exclusions": [
+      "Stage 1 RAW root identities",
+      "Stage 1 full source trajectory identities",
+      "Stage 1 first-16 move-prefix identities",
+      "Stage 1 trajectory-segment identities",
+      "Stage 1 adjacent-root-pair identities",
+      "Stage 1 event-window identities"
+    ],
+    "seedExtensionAllowed": false,
+    "seedReplacementAllowed": false,
+    "unfavorableTrajectoryReplacementAllowed": false
+  },
+  "stage1Promotion": {
+    "candidateIdentity": "metric ID + onset direction (UP or DOWN)",
+    "expectedTrajectories": 10,
+    "coverage": "all 10 trajectories have defined level series for the candidate metric over all primary-eligible windows needed for its observed onsets",
+    "onsetPrevalenceGate": "at least 6 of 10 trajectories contain >=1 primary-eligible onset of the frozen direction",
+    "trajectoryBalance": "persistent event count minus reversal event count for that candidate/direction within one trajectory; stalls excluded from sign",
+    "nonZeroBalanceGate": "at least 6 trajectories have nonzero trajectory balance",
+    "dominantPersistenceGate": "at least two thirds of nonzero trajectory balances are positive",
+    "promotion": "coverage + onset prevalence + nonzero balance + dominant persistence gates all pass",
+    "noPromotionResult": "NO-PROMOTED-CANDIDATE; Stage 2 remains NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "stage2FormalValidation": {
+    "expectedTrajectories": 16,
+    "testsOnlyStage1FrozenPromotedMetricDirectionCandidates": true,
+    "onsetPrevalenceGate": "at least 10 of 16 trajectories contain >=1 primary-eligible onset of the frozen direction",
+    "nonZeroBalanceGate": "at least 10 trajectories have nonzero persistence-minus-reversal balance",
+    "directionGate": "positive trajectory balance must be the dominant nonzero sign",
+    "test": "exact two-sided sign test on nonzero trajectory-level persistence-minus-reversal balances",
+    "zeroBalances": "excluded from sign-test n",
+    "multiplicity": "Holm-Bonferroni family-wise alpha 1/20 across the frozen promoted set",
+    "candidateConfirmation": "coverage + onset prevalence + nonzero balance + persistence direction + sequential Holm gate all pass",
+    "arithmetic": "exact integer/rational only"
+  },
+  "resourceCeilings": {
+    "perRoot": {
+      "uniqueRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "treeNodeOccurrencesSummedAcrossLayers": 1000000000,
+      "elapsedMs": 180000,
+      "peakRssBytes": 4294967296,
+      "rootArtifactBytes": 67108864
+    },
+    "stage1": {
+      "maxRoots": 480,
+      "elapsedMs": 10800000,
+      "artifactBytes": 268435456
+    },
+    "stage2": {
+      "maxRoots": 768,
+      "elapsedMs": 16200000,
+      "artifactBytes": 402653184
+    },
+    "resourceFailure": "fail closed as NON-ESTIMABLE or TECHNICAL-INVALID according to whether the scientific content was validly measured before the frozen ceiling failure; no seed extension/root replacement"
+  },
+  "executionIntegrity": {
+    "maxAuthorizedScientificExecutionsPerFreshStage": 1,
+    "armingAndComputationSeparated": true,
+    "singleTriggerPath": true,
+    "concurrencyGuardRequired": true,
+    "durablePreComputationLeaseRequired": true,
+    "branchAdvancementAllowlistRequired": true,
+    "sourceBlobBindingRequired": true,
+    "artifactBeforeRepositoryMirrorRequired": true,
+    "exactByteRecoveryOnly": true,
+    "scientificRecomputationForArtifactRecoveryAllowed": false,
+    "actionsHistoryAuditRequired": true,
+    "executionCountAuditRequired": true
+  },
+  "noRescue": {
+    "boundary": "first fresh scientific generation or read, whichever is earlier",
+    "prohibitedAfterBoundary": [
+      "candidate change",
+      "threshold change",
+      "event definition change",
+      "endpoint change",
+      "population change",
+      "seed extension",
+      "root replacement",
+      "horizon change",
+      "representation change",
+      "resource ceiling change",
+      "statistical test change",
+      "favorable subgroup addition",
+      "same-seed rerun after implementation repair"
+    ]
+  },
+  "protectedDepth10Holdout": {
+    "status": "SEALED / NOT GENERATED / NOT READ",
+    "generationAllowed": false,
+    "partialGenerationAllowed": false,
+    "readAllowed": false,
+    "peekAllowed": false,
+    "resourcePeekAllowed": false
+  },
+  "stageProgression": {
+    "stage0PassDoesNotAuthorizeStage1": true,
+    "stage1CompletionRequiresSeparateStage2Review": true,
+    "mainIntegrationRequiresExplicitUserInstructionAfterClosure": true
+  }
+}
