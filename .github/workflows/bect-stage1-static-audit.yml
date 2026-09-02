@@ -1,0 +1,78 @@
+name: BECT Stage 1 Static Audit
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/STAGE1_STATIC_AUDIT_TRIGGER
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bect-stage1-static-audit-v1
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Verify frozen Stage 1 source blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object public/engine.js)" = "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"
+          test "$(git hash-object tools/experiments/lib/lgtgmiv-stage1-production.js)" = "a4664f01535d6abbf6f83821befbb2fafd55cde6"
+          test "$(git hash-object tools/experiments/lib/lgtgmiv-stage1-independent.js)" = "0c7239ac7acf146e9aee63dae66194681b8631d6"
+          test "$(git hash-object tools/experiments/lib/bect-production.js)" = "b8fa63e941b4da1fec0969155c09754eae151a56"
+          test "$(git hash-object tools/experiments/lib/bect-independent.js)" = "bb085c648d2f4f3d7d44f206f04036e95f94980b"
+          test "$(git hash-object tools/experiments/lib/bect-stage1-production.js)" = "32995ed7e666b7cff7a6bb43946a30cdc86a7668"
+          test "$(git hash-object tools/experiments/lib/bect-stage1-independent.js)" = "fcc150bdfcfbb1727ea6e0fdd4f336d1ae36e1e6"
+          test "$(git hash-object tools/experiments/run-bect-stage1-development.js)" = "127cb10ea23d18f0a32c2adc2d8c499de4c19b04"
+          test "$(git hash-object doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json)" = "123430eb0cbe100bf50e068ee4c4ee7dc52c2ca8"
+          test "$(git hash-object doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC_CLARIFICATION_2.json)" = "87e78b008024301a26f78d1ac488d8489f9bd02b"
+      - name: Syntax and implementation-separation audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/bect-stage1-production.js
+          node --check tools/experiments/lib/bect-stage1-independent.js
+          node --check tools/experiments/run-bect-stage1-development.js
+          grep -q 'bect-production.js' tools/experiments/lib/bect-stage1-production.js
+          grep -q 'lgtgmiv-stage1-production.js' tools/experiments/lib/bect-stage1-production.js
+          ! grep -q 'bect-independent.js' tools/experiments/lib/bect-stage1-production.js
+          ! grep -q 'lgtgmiv-stage1-independent.js' tools/experiments/lib/bect-stage1-production.js
+          grep -q 'bect-independent.js' tools/experiments/lib/bect-stage1-independent.js
+          grep -q 'lgtgmiv-stage1-independent.js' tools/experiments/lib/bect-stage1-independent.js
+          ! grep -q 'bect-production.js' tools/experiments/lib/bect-stage1-independent.js
+          ! grep -q 'lgtgmiv-stage1-production.js' tools/experiments/lib/bect-stage1-independent.js
+          ! grep -q 'bect-stage1-production.js' tools/experiments/lib/bect-stage1-independent.js
+      - name: Prereg and protected-evidence audit without scientific execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const spec=require('./doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC.json');
+          const c2=require('./doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC_CLARIFICATION_2.json');
+          const fw=require('./doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          const s0=require('./doc/branch-expansion-compression-transition/results/stage-0-v2/STAGE_0_TECHNICAL_RESULT.json');
+          if(spec.stages[1].stageId!=='BECT-S1-DEVELOPMENT-2026-09-02-v1')throw Error('Stage 1 ID changed');
+          if(spec.stages[1].seedStart!==31510001||spec.stages[1].seedEnd!==31510240)throw Error('Stage 1 seeds changed');
+          if(spec.stages[2].seedStart!==31520001||spec.stages[2].seedEnd!==31520384)throw Error('Stage 2 seeds changed');
+          if(spec.protectedDepth10Holdout.status!=='SEALED / NOT GENERATED / NOT READ')throw Error('protected holdout changed');
+          if(c2.stage1SeedAccessBeforeClarification!==false||c2.freshScientificEvidenceReadBeforeClarification!==false)throw Error('clarification chronology changed');
+          if(fw.identityCoreSha256!=='5b8246baf0f0b13fdfbc40b55bf3298895e7f0da660ca6b1275880361c4b7417')throw Error('firewall identity core changed');
+          if(fw.scientificOutcomeFieldsRetained!==false||fw.g304ScientificOutcomeFieldsRetained!==false)throw Error('outcome firewall violated');
+          if(s0.stageDisposition!=='STAGE0-PASS')throw Error('Stage 0 PASS missing');
+          console.log('BECT_STAGE1_STATIC_AUDIT=PASS');
+          NODE
+          printf '%s\n' \
+            'scientific_runner_executed=false' \
+            'stage1_seed_access=false' \
+            'stage2_seed_access=false' \
+            'protected_depth10_access=false'
