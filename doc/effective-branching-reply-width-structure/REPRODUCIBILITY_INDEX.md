@@ -60,7 +60,7 @@ Records:
 
 Tooling smoke reported no fresh scientific seed/root access and no protected depth-10 access.
 
-## Stage 1 one-shot execution
+## Authorized Stage 1 one-shot execution
 
 GitHub Actions:
 
@@ -93,7 +93,7 @@ These are not formal promoted candidates.
 
 The runner generated the three canonical files and locally committed them as short SHA `709bc393`, but the push was rejected non-fast-forward because the remote branch advanced during execution. The ephemeral local commit is not recoverable from GitHub.
 
-No second Stage 1 execution is authorized after the no-rescue boundary. Therefore full canonical Stage 1 result/telemetry files are not regenerated.
+No second Stage 1 execution was authorized after the no-rescue boundary. A later final Actions-history audit nevertheless discovered an unintended unauthorized duplicate execution; it is `INVALID-DO-NOT-USE` and cannot regenerate, replace, or repair the missing canonical Stage 1 evidence. Therefore full canonical Stage 1 result/telemetry files are not regenerated as valid evidence.
 
 Authoritative closure records:
 

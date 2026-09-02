@@ -987,6 +987,8 @@ Final Actions-history auditでは、workflow armingによるrun `33569382663`が
 
 Formal decision: **`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
+Repository state: **G3-02 research workflow complete on research branch / `main` integration not performed / pending explicit user instruction**
+
 ```text
 authorized Stage 1 executions = 1
 actual Stage 1 scientific executions = 2 / contract violated

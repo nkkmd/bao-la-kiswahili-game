@@ -6,6 +6,9 @@ Research Generation 3 `G3-02` formal Study:
 
 `EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`
 
+Research workflow: `COMPLETE ON RESEARCH BRANCH`
+Main integration: `NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION`
+
 Formal English title:
 
 **Effective Branching and Reply-Width Structure Study 1 — Prospective validation of reproducible multi-ply branching and reply-width profiles as bounded RAW local game-tree position characteristics in Bao**

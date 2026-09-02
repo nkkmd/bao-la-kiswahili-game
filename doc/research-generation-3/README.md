@@ -59,7 +59,7 @@ G3-02は`EBRWS-STUDY1`として、post-LGTGMIV authorization reviewを`AUTHORIZE
 
 Stage 0はsynthetic fixturesだけで`STAGE0-PASS`。
 
-Stage 1はfresh `31210001..31210192`から12 Namua + 12 Mtajiを一度だけ実行した。runner内部ではglobal gate PASSとproduction / independent exact stage-core agreementを得たが、生成済みcanonical Stage 1 filesのrepository pushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収できなかった。
+Stage 1はfresh `31210001..31210192`、12 Namua + 12 Mtajiについて**exactly one scientific execution**をprospectively authorizationし、authorized run `33569323221`を実行した。runner内部ではglobal gate PASSとproduction / independent exact stage-core agreementを得たが、生成済みcanonical Stage 1 filesのrepository pushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収できなかった。後のActions-history auditで判明した2回目の実行は、このauthorizationに含まれない`INVALID-DO-NOT-USE`である。
 
 fresh evidence生成後のsame-evidence rerunは許可されないため、runner-local positive summaryをformal resultへ救済せず、fail-closedで:
 
