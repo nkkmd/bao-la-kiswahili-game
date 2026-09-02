@@ -1,0 +1,47 @@
+name: BRMGI Stage 0 Technical
+on:
+  push:
+    branches:
+      - research/g3-06-bao-rule-mechanism-geometry-intervention
+    paths:
+      - doc/bao-rule-mechanism-geometry-intervention/authorizations/brmgi-stage0-trigger.txt
+concurrency:
+  group: brmgi-stage0-technical-v1
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+      - name: Verify authorization chain
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f doc/bao-rule-mechanism-geometry-intervention/authorizations/STAGE_0_AUTHORIZATION.json
+          node tools/experiments/verify-brmgi-stage0-authorization.js
+      - name: Materialize durable lease
+        shell: bash
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' "BRMGI-S0-TECHNICAL-2026-09-02-v1" > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+      - name: Upload lease before computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: brmgi-stage0-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute exactly one technical Stage 0 computation
+        shell: bash
+        run: node tools/experiments/run-brmgi-stage0-technical.js doc/bao-rule-mechanism-geometry-intervention/results/stage-0/STAGE_0_TECHNICAL_RESULT.json
+      - name: Upload technical result before any repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brmgi-stage0-result-${{ github.run_id }}
+          path: doc/bao-rule-mechanism-geometry-intervention/results/stage-0/STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
