@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRMGI-STUDY1",
+  "stageId": "BRMGI-S1-DEVELOPMENT-2026-09-02-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "stageDisposition": "TECHNICAL-INVALID",
+  "authorizedScientificExecutions": 1,
+  "actualScientificExecutions": 1,
+  "authorizationNonce": "BRMGI-S1-AUTH-2026-09-03-V1-01",
+  "seedBlockConsumed": true,
+  "noRescueBoundaryCrossed": true,
+  "technicalError": {
+    "name": "Error",
+    "message": "production/independent selection mismatch"
+  },
+  "relayLimitInsideBoundedReconstruction": false,
+  "formalPromotedCandidateSet": []
+}

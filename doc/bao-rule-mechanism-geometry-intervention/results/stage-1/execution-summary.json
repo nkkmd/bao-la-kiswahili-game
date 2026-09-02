@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRMGI-STUDY1",
+  "stageId": "BRMGI-S1-DEVELOPMENT-2026-09-02-v1",
+  "stageDisposition": "TECHNICAL-INVALID",
+  "scientificResultSha256": "a5a2f385699cd8bc629e1d1594005841778a82c7d1ca18bb7eb5bcfeb0d41452",
+  "telemetrySha256": "141f4687528ce62fe60052c4c9ecff217a6a929a43190e4f5a507f8d4abc77f0",
+  "freshStage1SeedAccess": true,
+  "freshStage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "seedBlockConsumed": true,
+  "noRescueBoundaryCrossed": true
+}
