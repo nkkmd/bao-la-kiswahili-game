@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / G3-02 MAIN INTEGRATION COMPLETE / NEXT PROGRAM REVIEW REQUIRED
+Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / G3-03 PROGRAM REVIEW AUTHORIZED / STUDY FREEZE PENDING
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -26,9 +26,14 @@ G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
 G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
 G3-02 no-rescue boundary = CROSSED / ACTIVE
 G3-02 Stage 1 execution workflow = CLOSED / DISABLED
+G3-03 program review = G3-03-AUTHORIZED
+G3-03 additional prerequisite = NONE
+G3-03 principal upstream families = LGTGMIV F2 + F3 + F4
+G3-03 Study identity/protocol = NOT YET FROZEN
+G3-03 fresh scientific evidence = NOT AUTHORIZED / NOT GENERATED / NOT READ
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none; closed G3-02 record is integrated to main
-Next scientific action = separate post-G3-02 program review / NOT AUTOMATICALLY AUTHORIZED
+Active scientific research branch = none; G3-03 research branch must be created from post-review current main
+Next scientific action = prospective G3-03 Study-definition / preregistration freeze on a new branch; Stage progression requires separate authorization
 ```
 
 ## Immutable upstream boundaries
@@ -165,33 +170,49 @@ The runner-local positive summaries are diagnostic provenance only. The unauthor
 
 Stage 2 seed `31220001..31220288` remains unconsumed. Neither runner-local Stage 1 summary authorizes Stage 2.
 
+## Post-G3-02 G3-03 program review
+
+The separate current-state review completed with formal decision:
+
+**`G3-03-AUTHORIZED`**
+
+The review confirms that G3-03 is scientifically independent of the invalid G3-02 branching/reply-width result and can be constructed from LGTGMIV's formally eligible graph/transposition families, principally F2/F3/F4, within the RAW-only relative depth-5 boundary.
+
+No additional representation, measurement-instrument, canonicalization, graph-identity, or separate resource-feasibility prerequisite is required before prospective Study definition. Canonicalization remains not authorized and validated transform set remains `[]`.
+
+This authorization permits only Study-definition / preregistration freeze. G3-03 fresh scientific evidence remains `NOT AUTHORIZED / NOT GENERATED / NOT READ` until the protocol is frozen and the applicable Stage receives separate authorization.
+
+G3-02 runner-local candidate summaries, the duplicate execution, G3-02 Stage 1 roots, and both G3-02 seed blocks are prohibited as G3-03 formal evidence inputs. Upstream identities may be used only for exclusion firewalls where prospectively declared.
+
+Canonical decision:
+
+`../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`
+
 ## Protected evidence
 
 G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
 `SEALED / NOT GENERATED / NOT READ`
 
-Neither Stage 1 execution generated/read it and G2-12 was not used as depth-10 truth.
+Neither G3-02 nor the G3-03 authorization review generated/read it. G2-12 is not used as depth-10 truth.
 
 ## Claim boundary
 
 G3-02 has no formal positive branching/reply-width structure claim. In particular, the diagnostic compression-dominant observations and the duplicate-run equality are not generalized to Bao, depth >5, best move, search difficulty, strategic/game-theoretic forcing, win/value, causal strategic effects, or human difficulty.
 
+G3-03 authorization likewise authorizes only a bounded RAW local tree/graph geometry Study. Transposition/reconvergence structure must not be automatically re-labelled as strategic simplicity, tactical simplicity, search ease, best-move clarity, value, win probability, forcing, causal effect, or human difficulty.
+
 ## Next program boundary
 
-G3-02 closure does not automatically authorize G3-03 or later studies. The next scientific action is a separate current-state program review that preserves:
+The next safe action is a new G3-03 research branch from the current remote `main`, followed by prospective Study-definition / preregistration freeze. No fresh G3-03 evidence may be generated or read before that freeze.
 
-- G3-01 immutable technical-invalid closure,
-- LGTGMIV formal eligible family boundary,
-- G3-02 technical-invalid closure and no-rescue boundary,
-- RAW-only identity and validated transform set `[]`,
-- protected depth-10 holdout.
+Stage 0 may use only technical/synthetic fixtures after its separate authorization. Stage 0 PASS does not automatically authorize Stage 1; Stage 1 does not automatically authorize Stage 2.
 
 ## Main integration boundary
 
-G3-02 research work is complete and has been integrated to `main` through PR #92 using a normal merge commit so the prospective research history is preserved.
+G3-02 research work is complete and integrated to `main` through PR #92 using a normal merge commit so the prospective research history is preserved.
 
-Merge commit: `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`. This repository integration does not change the Study's `CLOSED / TECHNICAL-INVALID` decision and does not authorize G3-03 or later scientific work.
+Merge commit: `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`. This repository integration does not change the Study's `CLOSED / TECHNICAL-INVALID` decision.
 
 ## Canonical records
 
@@ -203,8 +224,9 @@ Merge commit: `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`. This repository integr
 - `../effective-branching-reply-width-structure/DECISION_REGISTER.md`
 - `../effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`
 - `../effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
-- `../effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`
 - `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
 - `../research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
+- `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`
+- `checkpoints/2026-09-02-g3-03-authorization-review-authorized.md`
 
 Historical `PROGRAM_PLAN.md` remains unchanged.
