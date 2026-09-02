@@ -1,0 +1,62 @@
+name: BECT Stage 1 Result Mirror
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/STAGE1_RESULT_MIRROR_TRIGGER
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: bect-stage1-result-mirror-v1
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download durable Stage 1 artifact from the single authorized run
+        uses: actions/download-artifact@v4
+        with:
+          name: bect-stage1-development-result-33636606641
+          path: /tmp/bect-stage1-artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33636606641
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-05-branch-expansion-compression-transition
+          fetch-depth: 0
+      - name: Verify and mirror exact artifact bytes without recomputation
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOC=doc/branch-expansion-compression-transition
+          test -f "$DOC/executions/stage-1-execution-started.json"
+          test ! -f "$DOC/results/stage-1/scientific-result.json"
+          node - <<'NODE'
+          const m=require('./doc/branch-expansion-compression-transition/executions/stage-1-execution-started.json');
+          if(m.studyId!=='BECT-STUDY1'||m.stageId!=='BECT-S1-DEVELOPMENT-2026-09-02-v1')throw Error('lease identity mismatch');
+          if(m.workflowRunId!==33636606641)throw Error('lease run mismatch');
+          if(m.authorizationNonce!=='BECT-S1-AUTH-2026-09-02-V1-01')throw Error('lease nonce mismatch');
+          NODE
+          test "$(sha256sum /tmp/bect-stage1-artifact/scientific-result.json | awk '{print $1}')" = "a21ad5449dfa090e4ff2ed87ebc64a48b5fb0755eabd0dcfe375358bde7d0b96"
+          test "$(sha256sum /tmp/bect-stage1-artifact/telemetry.json | awk '{print $1}')" = "0608c9f035a19c4908ba02d0b462e2e0f4ca08226df3ec1062d2086dbca7f2b4"
+          test "$(sha256sum /tmp/bect-stage1-artifact/execution-summary.json | awk '{print $1}')" = "b54f441cadac0252dc15deac07c90974bc28e18d26d2dd3934b3fb6707fb352f"
+          mkdir -p "$DOC/results/stage-1"
+          cp /tmp/bect-stage1-artifact/scientific-result.json "$DOC/results/stage-1/scientific-result.json"
+          cp /tmp/bect-stage1-artifact/telemetry.json "$DOC/results/stage-1/telemetry.json"
+          cp /tmp/bect-stage1-artifact/execution-summary.json "$DOC/results/stage-1/execution-summary.json"
+          test "$(sha256sum "$DOC/results/stage-1/scientific-result.json" | awk '{print $1}')" = "a21ad5449dfa090e4ff2ed87ebc64a48b5fb0755eabd0dcfe375358bde7d0b96"
+          test "$(sha256sum "$DOC/results/stage-1/telemetry.json" | awk '{print $1}')" = "0608c9f035a19c4908ba02d0b462e2e0f4ca08226df3ec1062d2086dbca7f2b4"
+          test "$(sha256sum "$DOC/results/stage-1/execution-summary.json" | awk '{print $1}')" = "b54f441cadac0252dc15deac07c90974bc28e18d26d2dd3934b3fb6707fb352f"
+          git diff --check
+          git config user.name "Sawa"
+          git config user.email "72678394+nkkmd@users.noreply.github.com"
+          git add "$DOC/results/stage-1"
+          git commit -m "Mirror BECT Stage 1 canonical technical-invalid result"
+          git push origin HEAD:research/g3-05-branch-expansion-compression-transition
