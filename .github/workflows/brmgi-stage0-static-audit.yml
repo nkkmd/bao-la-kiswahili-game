@@ -1,0 +1,26 @@
+name: BRMGI Stage 0 Static Audit
+on:
+  push:
+    branches:
+      - research/g3-06-bao-rule-mechanism-geometry-intervention
+    paths:
+      - doc/bao-rule-mechanism-geometry-intervention/checkpoints/brmgi-stage0-static-audit-trigger.txt
+concurrency:
+  group: brmgi-stage0-static-audit-v1
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static audit only
+        shell: bash
+        run: node tools/experiments/audit-brmgi-stage0-static.js | tee BRMGI_STAGE0_STATIC_AUDIT.json
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: brmgi-stage0-static-audit-${{ github.run_id }}
+          path: BRMGI_STAGE0_STATIC_AUDIT.json
+          if-no-files-found: error
