@@ -1,0 +1,73 @@
+name: BECT G3-05 Final Document Sync
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/FINAL_DOC_SYNC_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bect-g3-05-final-doc-sync-v1
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-05-branch-expansion-compression-transition
+          fetch-depth: 0
+      - name: Verify immutable scientific closure before current-facing sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const r=require('./doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json');
+          if(r.stageDisposition!=='TECHNICAL-INVALID')throw Error('Stage 1 disposition drift');
+          if(r.actualScientificExecutions!==1||r.authorizedScientificExecutions!==1)throw Error('Stage 1 execution count drift');
+          if(r.seedBlockConsumed!==true||r.noRescueBoundaryCrossed!==true)throw Error('no-rescue boundary drift');
+          if(r.technicalError?.message!=='relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529')throw Error('technical error drift');
+          NODE
+          test "$(sha256sum doc/branch-expansion-compression-transition/results/stage-1/scientific-result.json | awk '{print $1}')" = "a21ad5449dfa090e4ff2ed87ebc64a48b5fb0755eabd0dcfe375358bde7d0b96"
+          test "$(sha256sum doc/branch-expansion-compression-transition/results/stage-1/telemetry.json | awk '{print $1}')" = "0608c9f035a19c4908ba02d0b462e2e0f4ca08226df3ec1062d2086dbca7f2b4"
+          test "$(sha256sum doc/branch-expansion-compression-transition/results/stage-1/execution-summary.json | awk '{print $1}')" = "b54f441cadac0252dc15deac07c90974bc28e18d26d2dd3934b3fb6707fb352f"
+      - name: Materialize closure-only current-facing consistency updates
+        run: node tools/experiments/finalize-bect-g3-05-doc-consistency.js
+      - name: Audit document-only boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git diff --exit-code -- doc/research-generation-3/PROGRAM_PLAN.md
+          git diff --exit-code -- doc/branch-expansion-compression-transition/STUDY_1_PROTOCOL.md
+          git diff --exit-code -- doc/branch-expansion-compression-transition/prereg/
+          git diff --exit-code -- doc/branch-expansion-compression-transition/results/
+          grep -q 'BECT-STUDY1 = CLOSED / TECHNICAL-INVALID' doc/branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md
+          grep -q 'G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID' doc/research-generation-3/CURRENT_STATUS.md
+          grep -q 'G3-06 = NOT AUTHORIZED' doc/research-generation-3/CURRENT_STATUS.md
+          grep -q 'BECT-G3-05-CLOSURE:RESEARCH-INDEX' doc/RESEARCH_INDEX.md
+          grep -q 'BECT-G3-05-CLOSURE:FUTURE' doc/FUTURE_RESEARCH_AGENDA.md
+      - name: Commit synchronized closure documents
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Sawa"
+          git config user.email "72678394+nkkmd@users.noreply.github.com"
+          git add README.md \
+            doc/RESEARCH_INDEX.md \
+            doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/research-generation-3/CURRENT_STATUS.md \
+            doc/research-generation-3/README.md \
+            doc/branch-expansion-compression-transition/README.md \
+            doc/branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md
+          if git diff --cached --quiet; then
+            echo 'No closure-document changes needed.'
+            exit 0
+          fi
+          git commit -m "Synchronize G3-05 technical-invalid closure documents"
+          git push origin HEAD:research/g3-05-branch-expansion-compression-transition
