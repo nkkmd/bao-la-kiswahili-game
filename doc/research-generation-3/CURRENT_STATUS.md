@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-05 CLOSED TECHNICAL-INVALID / POST-G3-05 G3-06 REVIEW REQUIRED / G3-06 NOT AUTHORIZED
+Program status = ACTIVE / G3-05 CLOSED TECHNICAL-INVALID / G3-06 AUTHORIZED FOR PROSPECTIVE DEFINITION / FRESH STAGE 1 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -48,10 +48,12 @@ G3-05 formal promoted candidate set = []
 G3-05 Stage 1 seed = 31510001..31510240 / CONSUMED
 G3-05 Stage 2 seed = 31520001..31520384 / NOT CONSUMED
 G3-05 no-rescue boundary = CROSSED / ACTIVE
-G3-06 = NOT AUTHORIZED
+G3-06 program review = G3-06-AUTHORIZED
+G3-06 = AUTHORIZED FOR PROSPECTIVE STUDY DEFINITION / TECHNICAL-ONLY STAGE 0
+G3-06 fresh Stage 1 = NOT AUTHORIZED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none / G3-05 CLOSED on research/g3-05-branch-expansion-compression-transition
-Next scientific action = separate post-G3-05 current-state authorization review for G3-06; G3-06 is NOT AUTHORIZED
+Active scientific research branch = none / G3-06 branch not yet created
+Next scientific action = create G3-06 research branch from post-decision main, freeze Study contract, then technical-only Stage 0
 ```
 
 ## Immutable upstream boundaries
@@ -335,7 +337,7 @@ Stage 2 seed = NOT CONSUMED
 
 Durable artifact `9849245665` (ZIP SHA-256 `0c99d05c1983a35996e283dee379e65848a8df98dda46989053ebd46873cfbcc`) was mirrored exactly without scientific recomputation by run `33637372364`, commit `ac2bd2ca101a9002c69131c2c39ebbfbb98368a1`.
 
-G3-06 is not automatically authorized. The only next scientific program action is a separate post-G3-05 current-state authorization review; that review may not use G3-05 partial telemetry as validated transition evidence.
+G3-06 was not automatically authorized by G3-05 closure; a separate fresh-free current-state review was required.
 
 Canonical closure records:
 
@@ -346,13 +348,33 @@ Canonical closure records:
 - `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
 - `checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
 
+## Post-G3-05 authorization of G3-06
+
+The required fresh-free current-state review concluded:
+
+**`G3-06-AUTHORIZED`**
+
+Canonical review:
+
+`../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md`
+
+RG3 checkpoint:
+
+`checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md`
+
+G3-06 is authorized only for a new prospective Study-definition/preregistration freeze and technical-only Stage 0. Fresh Stage 1 remains `NOT AUTHORIZED` pending a separate post-Stage-0 authorization review.
+
+The authorized scientific construct is non-causal move-conditioned/event-conditioned bounded structural change. Mandatory capture prevents a generic same-root capture/non-capture contrast, and generic Namua reserve decrement is phase-linked; final reserve depletion is mechanically linked to Namua→Mtaji transition. These identifiability facts must be frozen into the Study contract rather than hidden by post hoc control selection.
+
+No G3-03 diagnostic direction/value or G3-05 partial telemetry may enter G3-06 event/endpoint/threshold/candidate selection. G3-04 C1/C6 remain context only.
+
 ## Protected evidence
 
 G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-G3-02 / G3-03 / G3-04 / G3-05はいずれもこのholdoutを生成・read・peekしていない。G2-12はdepth-10 truthの代替として使用しない。
+G3-02 / G3-03 / G3-04 / G3-05はいずれもこのholdoutを生成・read・peekしていない。G3-06 authorization review also generated/read no fresh scientific evidence and did not access the protected holdout. G2-12はdepth-10 truthの代替として使用しない。
 
 ## Claim boundary
 
@@ -364,14 +386,14 @@ The technical observation that canonical scientific bytes matched while prototyp
 
 G3-04のformal positive claimはC1/C6のfrozen candidate-level phase differenceだけに限定する。C1/C6をgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、position value / win probability、causal phase effect、relative depth 5を超える一般化へ拡張しない。
 
+G3-06 authorization does not authorize causal-mechanism language. Until a formal Study produces valid heldout evidence, no substantive G3-06 rule-event/geometry claim exists.
+
 ## Next program boundary
 
-G3-05 / `BECT-STUDY1`は`CLOSED / TECHNICAL-INVALID`。Stage 1 seedはconsume済みでsame-evidence rescueは禁止、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
+G3-05 / `BECT-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; Stage 1 seed is consumed, same-evidence rescue is prohibited, formal promoted candidate set is `[]`, and Stage 2 is `NOT-AUTHORIZED-NOT-EXECUTED`.
 
-Historical `PROGRAM_PLAN.md`上の次候補はG3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1。ただしG3-05はvalid transition familyをpromotionしていないため、G3-06はBECT partial telemetry / transition directionをvalidated inputとして継承できない。
+G3-06 has now passed its required post-G3-05 authorization review as **`G3-06-AUTHORIZED`**. The next permitted scientific-program action is to create a dedicated G3-06 research branch from the post-decision `main`, freeze the formal Study identity/Stage structure/full prospective contract, and perform only technical Stage 0 work under separate authorization. Fresh Stage 1 scientific evidence remains blocked.
 
-次の安全なprogram actionは、**post-G3-05 current-state G3-06 authorization review**をfresh-free / read-onlyで実施し、LGTGMIVのformal eligible RAW depth-5 geometryと独立に定義したrule-semantic eventsだけでG3-06を開始可能か、追加prerequisiteが必要か、またはnot-authorizedかを明示的に判定することである。review完了前にG3-06 fresh scientific evidenceを生成・readしない。
-
-Protected depth-10 holdoutは引き続き`SEALED / NOT GENERATED / NOT READ`。
+Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
 
 Historical `PROGRAM_PLAN.md` remains unchanged.
