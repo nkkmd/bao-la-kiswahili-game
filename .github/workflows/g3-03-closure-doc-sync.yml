@@ -1,0 +1,122 @@
+name: G3-03 Closure Documentation Sync
+
+on:
+  push:
+    branches:
+      - research/g3-03-transposition-tree-graph-divergence
+    paths:
+      - doc/transposition-concentration-tree-graph-divergence/checkpoints/G3_03_CLOSURE_DOC_SYNC_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: g3-03-closure-doc-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-03-transposition-tree-graph-divergence
+          fetch-depth: 1
+      - name: Patch current-facing documentation only
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p=Path(path); s=p.read_text()
+              if old not in s:
+                  raise SystemExit(f'missing required marker in {path}: {old[:120]!r}')
+              if s.count(old) != 1:
+                  raise SystemExit(f'non-unique required marker in {path}: count={s.count(old)}')
+              p.write_text(s.replace(old,new,1))
+
+          def insert_before_once(path, marker, block, id_marker):
+              p=Path(path); s=p.read_text()
+              if id_marker in s:
+                  return
+              if s.count(marker) != 1:
+                  raise SystemExit(f'non-unique insert marker in {path}: count={s.count(marker)}')
+              p.write_text(s.replace(marker, block + marker, 1))
+
+          # Research index: current G3 section + future-state summary.
+          replace_once('doc/RESEARCH_INDEX.md',
+            '### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 closure',
+            '### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 closure')
+          replace_once('doc/RESEARCH_INDEX.md',
+            '**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `EBRWS-STUDY1 = TECHNICAL-INVALID` / Stage 2 not executed**',
+            '**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TCTGD-STUDY1 = TECHNICAL-INVALID` / G3-03 Stage 2 not executed / next program review required**')
+          g303_index='''\n### G3-03 — Transposition Concentration and Tree-to-Graph Divergence Study 1\n\nG3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration / reconvergence / tree-to-RAW-graph divergenceをprospectively検証した。Stage 0は`STAGE0-PASS`。Stage 1はfresh `31310001..31310192`から12 paired trajectories / 24 rootsをexactly one authorized executionで測定し、population/resource/source identity/static independence/pair comparison/development agreementを通過した。production / independent canonical stage scientific core SHA-256も`d44393d6fe9902860d2b5fe3a5a3a3938f7165b40f46e694bd507cf231fcd62f`で一致した。\n\n一方、independent endpoint mapが`Object.create(null)`、productionが通常objectであり、frozen runnerのprototype-sensitive `util.isDeepStrictEqual`がroot-level endpoint equalityをfalseと判定したため、mandatory `allRootExact` / `stageScientificExact` gateがfailした。fresh evidence後の修正再実行はno-rescue ruleで禁止されるため、formal decisionは **`TCTGD-STUDY1 = CLOSED / TECHNICAL-INVALID`**。diagnostic C1-C4方向はformal promotionせずcandidate set `[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedは未消費。protected depth-10 holdoutはsealedのままである。\n\n**最初に読む:**\n\n- [`transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)\n- [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)\n\n**詳細・正本:**\n\n- [`transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`](transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md)\n- [`transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`](transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md)\n- [`transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)\n- [`research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)\n\n**Boundary:** canonical value equalityをpost hoc rescueとして用いず、同じStage 1 seedをprototype修正後に再実行しない。次のStudyにはseparate post-G3-03 program reviewが必要。\n\n'''
+          insert_before_once('doc/RESEARCH_INDEX.md','\n---\n\n## 将来研究',g303_index,'### G3-03 — Transposition Concentration and Tree-to-Graph Divergence Study 1')
+          replace_once('doc/RESEARCH_INDEX.md',
+            '**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`. G3-02 `EBRWS-STUDY1` is `CLOSED / TECHNICAL-INVALID` after canonical Stage 1 materialization failure and an unintended duplicate scientific execution violating its exactly-one-run authorization. Formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth 10 sealed. Next action requires a separate post-G3-02 program review.',
+            '**Research Generation 3 state:** G3-01 remains `TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-02 `EBRWS-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; G3-03 `TCTGD-STUDY1` is now `CLOSED / TECHNICAL-INVALID` after a prototype-sensitive cross-implementation verification defect in its single authorized Stage 1 execution. G3-03 formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, depth-10 holdout sealed. Next action requires a separate post-G3-03 program review.')
+
+          # Future agenda: current program status + closure note.
+          replace_once('doc/FUTURE_RESEARCH_AGENDA.md',
+            'Research Generation 3: **Active / G3-02 `EBRWS-STUDY1` closed `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / next program review required (2026-09-02)**',
+            'Research Generation 3: **Active / G3-03 `TCTGD-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / post-G3-03 program review required (2026-09-02)**')
+          agenda_note='''\n### 2026-09-02 Research Generation 3 current update\n\nG3-03 `TCTGD-STUDY1`はfresh Stage 1をexactly one authorized executionで完了したが、productionの通常objectとindependentの`Object.create(null)` endpoint mapをprototype-sensitive `util.isDeepStrictEqual`で比較したverification representation defectによりmandatory integrity gateがfailし、formal decision `CLOSED / TECHNICAL-INVALID`で閉じた。canonical production / independent stage scientific core SHAは一致したが、no-rescue boundary後にequality contractを変更して救済しない。formal promoted candidate setは`[]`、Stage 2は未承認・未実行、reserved Stage 2 seedとprotected depth-10 holdoutは未消費・sealedである。次のcore Studyを開始する前にseparate post-G3-03 program reviewを要求する。\n\n'''
+          insert_before_once('doc/FUTURE_RESEARCH_AGENDA.md','## 1. 目的',agenda_note,'### 2026-09-02 Research Generation 3 current update')
+
+          # Research Generation 3 README: current-facing status and boundary.
+          replace_once('doc/research-generation-3/README.md',
+            'Status = ACTIVE / G3-02 EBRWS-STUDY1 CLOSED TECHNICAL-INVALID / G3-03 PROGRAM REVIEW AUTHORIZED / STUDY FREEZE PENDING',
+            'Status = ACTIVE / G3-03 TCTGD-STUDY1 CLOSED TECHNICAL-INVALID / NEXT STUDY REVIEW REQUIRED')
+          old_g303='''G3-03 program review = G3-03-AUTHORIZED\nG3-03 additional prerequisite = NONE\nG3-03 principal upstream families = F2,F3,F4\nG3-03 Study freeze = PENDING\nG3-03 fresh scientific evidence = NOT AUTHORIZED / NOT GENERATED / NOT READ'''
+          new_g303='''G3-03 program review = G3-03-AUTHORIZED\nG3-03 = TCTGD-STUDY1 / CLOSED / TECHNICAL-INVALID\nG3-03 Stage 0 = STAGE0-PASS\nG3-03 Stage 1 = TECHNICAL-INVALID / authorized executions 1 / actual executions 1\nG3-03 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED\nG3-03 formal promoted candidate set = []\nG3-03 Stage 1 seed = 31310001..31310192 / CONSUMED\nG3-03 Stage 2 seed = 31320001..31320288 / NOT CONSUMED'''
+          replace_once('doc/research-generation-3/README.md', old_g303, new_g303)
+          g303_readme='''\n## G3-03 closure\n\nG3-03は`TCTGD-STUDY1`としてprospectively freezeし、Stage 0 PASS後にfresh Stage 1をexactly one authorized executionで実施した。12 paired trajectories / 24 rootsを測定し、population/resource/source identity/static independence/pair/development agreementとcanonical production/independent stage SHA一致を得た。\n\nしかしindependent endpoint mapが`Object.create(null)`、productionが通常objectで、frozen runnerの`util.isDeepStrictEqual`がprototype差をscientific object inequalityとして扱ったため`allRootExact=false` / `stageScientificExact=false`となった。fresh evidence後に同一seedを修正再実行することはno-rescue ruleに反するため、formal decisionは`CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`である。\n\nCanonical records:\n\n- [`../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)\n- [`../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`](../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md)\n- [`../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`](../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md)\n- [`../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)\n- [`../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)\n\n'''
+          insert_before_once('doc/research-generation-3/README.md','## Protected evidence',g303_readme,'## G3-03 closure')
+          old_next='''次の安全な作業は、新しいG3-03 research branchをcurrent remote `main`から作成し、prospective Study-definition / preregistration freezeを完了することである。\n\nStage 0はseparate authorization後のsynthetic/non-scientific technical fixtureだけを使用する。Stage 0 PASSはStage 1を自動authorizeせず、Stage 1からStage 2も自動進行しない。'''
+          new_next='''次の安全な科学作業は、G3-03 closureを前提にした**separate post-G3-03 current-state program review**である。G3-04またはlater Studyは自動authorizeされない。新しいStudyを行う場合はreview後にnew prospective Study ID / protocol / seed / evidence firewallをoutcome前にfreezeする。'''
+          replace_once('doc/research-generation-3/README.md', old_next, new_next)
+
+          # Root README: central research bullets only.
+          old_current='''- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3のcurrent-facing状態。G3-01は`TECHNICAL-INVALID`、LGTGMIVは`FORMAL-ELIGIBLE-ALL`で不変。G3-02 / `EBRWS-STUDY1`はcanonical Stage 1 artifact materialization failureに加え、final Actions auditでauthorized 1回に対してactual 2回のscientific executionが判明したため`CLOSED / TECHNICAL-INVALID`。2回目は`INVALID-DO-NOT-USE`、formal promoted candidate set `[]`、Stage 2未実行、depth 10はG3-11用holdoutとしてsealed。'''
+          new_current='''- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3のcurrent-facing状態。G3-01は`TECHNICAL-INVALID`、LGTGMIVは`FORMAL-ELIGIBLE-ALL`、G3-02は`CLOSED / TECHNICAL-INVALID`で不変。G3-03 / `TCTGD-STUDY1`もsingle authorized Stage 1でprototype-sensitive verification defectにより`CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2未実行。depth-10 holdoutはsealedのままで、次のStudyにはpost-G3-03 program reviewが必要。'''
+          replace_once('README.md', old_current, new_current)
+          root_insert='''- [`doc/transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](doc/transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md): Research Generation 3 `G3-03` / `TCTGD-STUDY1`。RAW-only depth 5のtransposition/tree-graph geometryをfresh Stage 1で測定。canonical production/independent stage SHAは一致したが、independentの`Object.create(null)` endpoint mapとprototype-sensitive deep equalityのverification defectによりmandatory exact gateがfailし、formal decisionは`CLOSED / TECHNICAL-INVALID`。formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。\n'''
+          marker='- [`doc/effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`](doc/effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md): Research Generation 3 `G3-02` / `EBRWS-STUDY1`。'
+          p=Path('README.md'); s=p.read_text()
+          if 'doc/transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md' not in s:
+              i=s.find(marker)
+              if i < 0: raise SystemExit('root G3-02 marker missing')
+              line_end=s.find('\n', i)
+              if line_end < 0: raise SystemExit('root G3-02 line end missing')
+              s=s[:line_end+1]+root_insert+s[line_end+1:]
+              p.write_text(s)
+
+          # Guard: closure sync must not touch scientific execution/results.
+          forbidden=[
+              'doc/transposition-concentration-tree-graph-divergence/results/stage-1/scientific-result.json',
+              'doc/transposition-concentration-tree-graph-divergence/results/stage-1/telemetry.json',
+              'doc/transposition-concentration-tree-graph-divergence/results/stage-1/execution-summary.json',
+              'doc/transposition-concentration-tree-graph-divergence/prereg/STUDY_1_SPEC.json',
+              'doc/transposition-concentration-tree-graph-divergence/prereg/STUDY_1_SPEC_V2.json'
+          ]
+          import subprocess
+          changed=subprocess.check_output(['git','diff','--name-only']).decode().splitlines()
+          for f in forbidden:
+              if f in changed: raise SystemExit(f'forbidden scientific file changed: {f}')
+          allowed={'README.md','doc/RESEARCH_INDEX.md','doc/FUTURE_RESEARCH_AGENDA.md','doc/research-generation-3/README.md'}
+          unexpected=set(changed)-allowed
+          if unexpected: raise SystemExit(f'unexpected changed files: {sorted(unexpected)}')
+          print('G3_03_CLOSURE_DOC_SYNC=PASS')
+          print('changed=' + ','.join(changed))
+          print('fresh_scientific_evidence_generated=false')
+          print('protected_depth10_access=false')
+          PY
+      - name: Commit documentation synchronization
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-generation-3/README.md
+          git commit -m "Sync current documentation after G3-03 closure"
+          git push origin HEAD:research/g3-03-transposition-tree-graph-divergence
