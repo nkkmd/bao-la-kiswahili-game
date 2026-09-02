@@ -6,6 +6,7 @@ on:
       - research/g3-05-branch-expansion-compression-transition
     paths:
       - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER
+      - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER_V2
 
 permissions:
   contents: write
@@ -59,7 +60,6 @@ jobs:
             doc/branch-expansion-compression-transition/STUDY_1_OVERVIEW.md \
             doc/branch-expansion-compression-transition/checkpoints/2026-09-02-final-document-consistency-pass.md | sort)"
           test "$ACTUAL" = "$EXPECTED"
-          grep -q 'G3-05 / G3-02 / G3-03' /dev/null 2>/dev/null || true
           grep -q 'G3-05.*BECT-STUDY1.*CLOSED / TECHNICAL-INVALID' README.md
           grep -q 'G3-06は未承認' README.md
           grep -q 'G3-05 `BECT-STUDY1` closed `TECHNICAL-INVALID`' doc/FUTURE_RESEARCH_AGENDA.md
