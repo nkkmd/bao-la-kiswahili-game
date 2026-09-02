@@ -208,7 +208,7 @@
       "selectedRootOutcomeUsed": false,
       "diagnosticCandidateDirectionsUsed": false,
       "scientificOutcomesLoadedForSelection": false,
-      "canonical identities may be materialized only into identity-only exclusion manifest before Stage 1"
+      "identityOnlyMaterialization": "canonical identities may be materialized only into identity-only exclusion manifest before Stage 1"
     },
     "availableUpstreamIdentityOnlyExclusion": [
       "LGTGMIV Stage 1 canonical root/trajectory/first-16-prefix identities",
