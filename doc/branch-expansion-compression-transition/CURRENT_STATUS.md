@@ -11,12 +11,14 @@ research branch = research/g3-05-branch-expansion-compression-transition
 prospective Study/prereg freeze = COMPLETE
 Stage 0 v1 = BECT-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID
 Stage 0 v2 = BECT-S0-TECHNICAL-2026-09-02-v2 / STAGE0-PASS
-Stage 1 = BECT-S1-DEVELOPMENT-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 preparation = BECT-STAGE1-AUTHORIZATION-ELIGIBLE
+Stage 1 = BECT-S1-DEVELOPMENT-2026-09-02-v1 / NOT-YET-AUTHORIZED / NOT-EXECUTED
 Stage 2 = BECT-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 Stage 1 seed = 31510001..31510240 / NOT CONSUMED
 Stage 2 seed = 31520001..31520384 / NOT CONSUMED
 fresh scientific evidence generated = false
 fresh scientific evidence read = false
+no-rescue boundary = NOT CROSSED
 protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 main integration = NOT PERFORMED
 ```
@@ -40,6 +42,8 @@ Frozen level endpointsはM1-M8。adjacent deltaはexact rational。Stage 1 event
 
 M5 denominatorはfresh/fixture evidence前のprospective clarificationにより、`sum uniqueTransitionCount[d], d=0..4`へ一意化済みです。
 
+Stage 1 coverageとlongitudinal identityは`prereg/STUDY_1_SPEC_CLARIFICATION_2.json`でfresh evidence前に一意化済みです。candidate coverageは10 trajectoryすべての48 analysis rootで当該metricがdefinedであることを要求します。
+
 ## Stage 0 technical history
 
 ### v1 — TECHNICAL-INVALID
@@ -60,8 +64,6 @@ protected depth-10 access = false
 
 ### v2 — STAGE0-PASS
 
-v1 failure後、scientific contractを変更せず、technical fixture root selectionだけをversioned refreezeしました。v2は同じtechnical seedのreplayから、geometry/endpointを参照せず、最後の連続nonterminal post-move root pairを選びます。
-
 ```text
 Stage ID = BECT-S0-TECHNICAL-2026-09-02-v2
 workflow run = 33632094597
@@ -70,17 +72,54 @@ authorized executions = 1
 actual executions = 1
 artifact ID = 9847240252
 artifact ZIP SHA-256 = ac0b114f40e610b2353c03757a3e69839fcea4674a035a5935e795d82571292f
-result file SHA-256 = 8e3cb7631fcbdc3acee486f5b1495987b81624cea65746879824eac7328d25fe
-provenance file SHA-256 = 3f533544209763106d83548844505a482ee7dc9184813d79e1d88db195559453
 technical trajectory observed length = 24
 technical measured root plies = 22 -> 23
 deterministic technical core = f446b41b33910071cdef310bedd53e734e19d38dca7083b6efe9504a6bdbe716
 result = STAGE0-PASS
 ```
 
-Stage 0 v2で、synthetic level arithmetic、transition grammar、no-change / expansion / compression / persistence / reversal / stall / reopening / extinction controls、cross-phase exclusion、trajectory replay、adjacent successor binding、overlapping-window semantics、repeated RAW identityのtime-index semantics、production/independent reconstruction・family・BECT level equality、implementation separationをPASSしました。
+Stage 0 v2で、trajectory replay、adjacent successor binding、overlapping-window semantics、repeated RAW identityのtime-index semantics、production/independent reconstruction・family・BECT level equality等をPASSしました。
 
-scientific exactness gateはcanonical scientific contentのSHA-256 exact equalityです。prototype-sensitive runtime equalityはnegative controlに限定されています。
+## Stage 1 preauthorization preparation
+
+Post-Stage-0 review decision:
+
+**`BECT-STAGE1-PREPARATION-AUTHORIZED / SCIENTIFIC-EXECUTION-NOT-YET-AUTHORIZED`**
+
+Identity-only firewall:
+
+```text
+materialization run = 33634116550
+mirror run = 33634259594
+identity core SHA-256 = 5b8246baf0f0b13fdfbc40b55bf3298895e7f0da660ca6b1275880361c4b7417
+RAW root identities = 124
+trajectory identities = 124
+opening-prefix identities = 67
+scientific outcome fields retained = false
+```
+
+Frozen Stage 1 implementation blobs:
+
+```text
+production = 32995ed7e666b7cff7a6bb43946a30cdc86a7668
+independent = fcc150bdfcfbb1727ea6e0fdd4f336d1ae36e1e6
+runner = 127cb10ea23d18f0a32c2adc2d8c499de4c19b04
+scientific workflow = dcb39d07420ad81db9e10d0ba08a10a9a3cb7cb7
+```
+
+Fresh-free validation:
+
+```text
+static audit = 33635090198 / PASS
+tooling smoke v1 = 33635334088 / static-assertion failure after fail-closed gate PASS / no seed access
+tooling smoke v2 = 33635443176 / PASS
+source validation = 33635524477 / PASS
+durable lease-path smoke = 33635710262 / PASS
+lease-path technical marker commit = a588dbbaf01d1c5a5d5191ef3f34b9e054ab8037
+BECT Stage 1 Development scientific workflow executions before authorization = 0
+```
+
+Unarmed scientific runnerはauthorization artifact欠如でfresh access前にfail-closedすることを確認済みです。actual contents-write / branch-push経路もtechnical lease markerで検証しました。
 
 ## Upstream boundary
 
@@ -95,8 +134,8 @@ G3-03 diagnosticはscientific input禁止。G3-04 C1/C6はcontext-onlyです。
 
 ## Evidence firewall
 
-Stage 0完了時点でも、BECT fresh scientific evidenceは未生成・未readです。Stage 1/2 seed blockは未消費で、standard initial RAW-root complete exact depth-10 holdoutも`SEALED / NOT GENERATED / NOT READ`を維持しています。
+Stage 1 authorization eligibility到達時点でも、BECT fresh scientific evidenceは未生成・未readです。Stage 1/2 seed blockは未消費で、standard initial RAW-root complete exact depth-10 holdoutも`SEALED / NOT GENERATED / NOT READ`を維持しています。
 
 ## Next action
 
-Stage 0 PASSはStage 1を自動authorizeしません。次はseparate post-Stage-0 Stage 1 authorization reviewと、fresh seedへ触れないStage 1 technical preparation / identity firewall / control-plane validationです。Stage 1 fresh seed consumptionとscientific executionは、その別reviewと明示的authorization artifactの成立後にのみ可能です。
+Preauthorization tooling checkpointは`BECT-STAGE1-AUTHORIZATION-ELIGIBLE`です。次の唯一のscientific transitionは、exact preauthorization branch HEADとsource blobsをbindingした明示的な`STAGE1-AUTHORIZED / EXACTLY ONE EXECUTION` artifactの作成です。その後にのみ、単一triggerによるStage 1 fresh scientific executionが可能です。
