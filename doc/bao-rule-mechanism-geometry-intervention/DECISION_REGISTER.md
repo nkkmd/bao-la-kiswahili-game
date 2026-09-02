@@ -56,8 +56,16 @@
 | BRMGI-D050 | Stage 0 v2 artifacts | `DURABLE / EXACT-BYTE MIRRORED` | Lease artifact `9865100897`; result artifact `9865102178`; result file SHA-256 `4089bc0a...eade3`. |
 | BRMGI-D051 | Source move vs E2 variant semantics | `CLARIFIED PRE-FRESH` | Source trajectories use frozen `engine.legalMoves`; `moveVariants` is used only to enumerate E2 same-root stop/use arms without altering trajectory evolution. |
 | BRMGI-D052 | Stage 0 closure | `COMPLETE / STAGE0-PASS VIA v2` | Technical readiness established; Stage 1 still needs a separate authorization review. |
-| BRMGI-D053 | Fresh Stage 1 | `NOT AUTHORIZED / REVIEW REQUIRED` | Stage 1 seeds remain unconsumed; no scientific execution until explicit post-Stage-0 decision. |
+| BRMGI-D053 | Post-Stage-0 Stage 1 review | `BRMGI-STAGE1-PREPARATION-AUTHORIZED / FRESH-SCIENTIFIC-EXECUTION-NOT-AUTHORIZED` | Fresh-free tooling/firewall/control-plane preparation allowed; seed access remained blocked until separate exactly-one authorization. |
 | BRMGI-D054 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | Research branch will not be merged automatically. |
+| BRMGI-D055 | Stage 1 preauthorization static audit | `PASS` | Run `33679102557`; unarmed runner stopped before seed access and production/independent separation, firewall, resource/fail-closed and one-shot controls passed. |
+| BRMGI-D056 | Stage 1 scientific authorization | `EXACTLY ONE AUTHORIZED` | Authorization commit `1edc8886...e6e7`, trigger `61cb2ed3...5898`, seed `31610001..31610256`. |
+| BRMGI-D057 | Stage 1 execution | `TECHNICAL-INVALID / 1 AUTHORIZED / 1 ACTUAL` | Production/independent event-unit selection mismatch occurred before geometry measurement. |
+| BRMGI-D058 | Stage 1 seed / no-rescue | `CONSUMED / CROSSED` | Same-evidence selector repair/rerun, seed extension, replacement and redesign prohibited. |
+| BRMGI-D059 | Formal promoted candidate set | `[]` | No M1-M6 development candidate receives formal direction/promotion. |
+| BRMGI-D060 | Stage 2 | `NOT-AUTHORIZED-NOT-EXECUTED` | Stage 2 prerequisites failed; seed `31620001..31620384` remains unconsumed. |
+| BRMGI-D061 | Study closure | `CLOSED / TECHNICAL-INVALID` | Technical validity result only; no positive/negative/null rule-event/geometry scientific conclusion. |
+| BRMGI-D062 | Post-G3-06 program boundary | `G3-07 REVIEW REQUIRED / NOT AUTO-AUTHORIZED` | G3-07 requires a separate current-state authorization review. |
 
 ## Formal program decision
 

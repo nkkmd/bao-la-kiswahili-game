@@ -3,12 +3,14 @@
 Version: 3.0.0
 Status: Active
 作成日: 2026-07-21
-更新日: 2026-09-02
+更新日: 2026-09-03
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-05 `BECT-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 not authorized / G3-06 separate authorization review required and NOT AUTHORIZED (2026-09-02)**
+Research Generation 3: **Active / G3-06 `BRMGI-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED` / next action is separate post-G3-06 current-state G3-07 authorization review (2026-09-03)**
 
 
-### 2026-09-02 Research Generation 3 current update
+### 2026-09-03 Research Generation 3 current update
+
+G3-06 `BRMGI-STUDY1`は、LGTGMIV F1-F5 / RAW-only / relative depth 5のfrozen boundary内でcapture、nyumba stop/use、reserve exhaustion / Namua→Mtaji linked event周辺のmove-conditioned / event-conditioned geometry changeをprospectively検証する独立Studyとして実施した。Stage 0 v2は`STAGE0-PASS`。fresh Stage 1はexactly one authorized executionで開始したが、geometry measurement前のproduction / independent event-unit selection verificationで`production/independent selection mismatch`となり`TECHNICAL-INVALID`でfail-closedした。Stage 1 seed `31610001..31610256`はconsume済み、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`でseed `31620001..31620384`は未消費。これはcapture / nyumba / reserve / Namua→Mtajiとgeometryのpositive・negative・null scientific resultではない。same-evidence selector repair/rerunを行わず、G3-07を実施する場合はseparate post-G3-06 current-state authorization reviewを必要とする。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`のまま。
 
 <!-- BECT-G3-05-CLOSURE:FUTURE -->
 G3-05 `BECT-STUDY1`はStage 0 v2を`STAGE0-PASS`として完了後、fresh Stage 1をexactly one authorized executionで開始したが、bounded RAW enumeration中の`relay-limit` technical errorにより`TECHNICAL-INVALID`でfail-closedした。Stage 1 seed `31510001..31510240`はconsume済み、no-rescue boundaryはactive、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。partial telemetryはdiagnostic-onlyで、branch expansion/compression transitionのpositive/negative scientific evidenceへ格上げしない。G3-06は自動authorizeせず、次はseparate post-G3-05 current-state authorization reviewを行う。

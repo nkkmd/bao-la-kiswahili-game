@@ -1,7 +1,7 @@
 # G3-06 / BRMGI-STUDY1 — 研究概要
 
-更新日: 2026-09-02  
-状態: **Prospective / pre-Stage-0 / fresh scientific evidence未生成**
+更新日: 2026-09-03
+状態: **CLOSED / TECHNICAL-INVALID**
 
 ## 何を調べる研究か
 
@@ -89,19 +89,27 @@ Stage 2:
 
 required depth-5 reconstruction中に`relay-limit`へ到達した場合、Stageを`TECHNICAL-INVALID`として閉じ、root replacementやsame-evidence rerunを行わない。
 
-## 現在地
+## 現在地 / 最終結果
 
-Program-level authorization reviewは **`G3-06-AUTHORIZED`**。
+Program-level reviewは **`G3-06-AUTHORIZED`** としてStudy definitionとtechnical Stage 0を許可した。その後、Stage 0 v2 PASSとpreauthorization tooling auditを経てfresh Stage 1をexactly one authorized executionで実施した。
 
-ただしauthorization範囲は:
+最終状態:
 
-- Study definition / preregistration
-- technical-only Stage 0
+```text
+Stage 0 v1 = TECHNICAL-INVALID / NO RERUN
+Stage 0 v2 = STAGE0-PASS
+Stage 1 = TECHNICAL-INVALID
+technical error = production/independent selection mismatch
+Stage 1 seed = 31610001..31610256 / CONSUMED
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = 31620001..31620384 / NOT CONSUMED
+no-rescue boundary = CROSSED / ACTIVE
+Study = CLOSED / TECHNICAL-INVALID
+```
 
-までである。
+Stage 1 failureはgeometry measurement前のevent-unit selection agreement gateで発生したため、M1-M6のdevelopment candidate directionやrule-event/geometryのpositive・negative・null scientific resultは成立していない。同じseed/populationをselector修正後に再実行しない。
 
-Fresh Stage 1は **`NOT AUTHORIZED`**。Stage 0 PASS後に別authorization reviewが必要。
+Protected standard initial RAW depth-10 holdoutは引き続き **`SEALED / NOT GENERATED / NOT READ`**。
 
-Protected standard initial RAW depth-10 holdoutは引き続き:
-
-**`SEALED / NOT GENERATED / NOT READ`**
+詳細は`STUDY_1_FINAL_REPORT.md`を正本とする。

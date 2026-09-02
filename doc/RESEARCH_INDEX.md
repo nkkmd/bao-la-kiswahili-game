@@ -949,7 +949,7 @@ Stage 1は別source freeze・別authorizationでG2-05 depth 0..9のreal developm
 
 ### 29. Research Generation 2 — Program Closure / Final Synthesis
 
-**Program:** Bao Second-Generation Research Program / **Core:** `G2-01..G2-12`  
+**Program:** Bao Second-Generation Research Program / **Core:** `G2-01..G2-12`
 **状態:** **PROGRAM CLOSED / G2-11 agenda-level `NON-ESTIMABLE` / G2-H01 deferred non-blocking**
 
 Research Generation 2は、positive resultの数ではなく、各agenda questionをprospective stop rule、dependency gate、independent verification、no-rescue ruleに従ってformal closureし、その解釈境界を保存することを完了条件としていた。
@@ -976,7 +976,7 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 
 ### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 / G3-04 closure
 
-**Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`  
+**Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`
 **状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TECHNICAL-INVALID` / G3-04 `SFCDF-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C6 `CONFIRMED` / post-G3-04 review required**
 
 G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`のままimmutable closure。独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 familiesをformal eligibleとした。
@@ -1060,9 +1060,42 @@ Study lifecycleは`CLOSED / FORMAL-COMPLETE`。これはcandidate-level formal l
 
 ---
 
+### G3-05 — Branch Expansion and Compression Transition Study 1
+
+G3-05 `BECT-STUDY1`はStage 0 v2を`STAGE0-PASS`として完了後、fresh Stage 1をexactly one authorized executionで開始したが、bounded RAW enumeration中の`relay-limit` technical errorでfail-closedした。formal decisionは **`CLOSED / TECHNICAL-INVALID`**、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。partial telemetryはdiagnostic-onlyであり、branch expansion/compression transitionのpositive/negative scientific evidenceではない。
+
+**最初に読む:**
+
+- [`branch-expansion-compression-transition/STUDY_1_OVERVIEW.md`](branch-expansion-compression-transition/STUDY_1_OVERVIEW.md)
+- [`branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`](branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md)
+
+---
+
+### G3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1
+
+G3-06 `BRMGI-STUDY1`はLGTGMIV F1-F5 / RAW-only / relative depth 5だけを用いて、capture、nyumba stop/use、reserve exhaustion / Namua→Mtaji linked eventに伴うmove-conditioned / event-conditioned geometry changeをprospectively検証する独立Studyとして実施した。Stage 0 v1はsynthetic fixture invariantでtechnical-invalid、fresh-freeに別versionとしてrefreezeしたv2は`STAGE0-PASS`。その後fresh Stage 1をexactly one authorized executionで開始したが、geometry measurement前のproduction / independent event-unit selection agreement gateで`production/independent selection mismatch`となりfail-closedした。
+
+Formal decisionは **`BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID`**。Stage 1 seed `31610001..31610256`はconsume済み、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`でseed `31620001..31620384`は未消費。これはrule-event/geometryのnegative/null resultではない。same-evidence selector repair/rerun、seed extension、event/control/endpoint redesignによる救済を行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`。
+
+**最初に読む:**
+
+- [`bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md`](bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md)
+- [`bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md`](bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md)
+
+**詳細・正本:**
+
+- [`bao-rule-mechanism-geometry-intervention/CURRENT_STATUS.md`](bao-rule-mechanism-geometry-intervention/CURRENT_STATUS.md)
+- [`bao-rule-mechanism-geometry-intervention/DECISION_REGISTER.md`](bao-rule-mechanism-geometry-intervention/DECISION_REGISTER.md)
+- [`bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md`](bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md)
+
+**Boundary:** G3-06 technical-invalid provenanceをG3-07以降のpositive/negative mechanism evidenceへ昇格させない。G3-07を実施する場合はseparate post-G3-06 current-state authorization reviewを必要とする。
+
+---
+
 ## 将来研究
 
-**Research Generation 3 state:** G3-01 / G3-02 / G3-03 / G3-05 are `CLOSED / TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-04 `SFCDF-STUDY1` remains `CLOSED / FORMAL-COMPLETE` with C1 `CONFIRMED / MTAJI-GREATER` and C6 `CONFIRMED / NAMUA-GREATER`. G3-05 `BECT-STUDY1` has formal promoted candidate set `[]` and Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`. G3-06 is `NOT AUTHORIZED`; the next program-safe scientific action is a separate post-G3-05 current-state authorization review. Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
+**Research Generation 3 state:** G3-01 / G3-02 / G3-03 / G3-05 / G3-06 are `CLOSED / TECHNICAL-INVALID`; LGTGMIV remains `FORMAL-ELIGIBLE-ALL`; G3-04 `SFCDF-STUDY1` remains `CLOSED / FORMAL-COMPLETE` with C1 `CONFIRMED / MTAJI-GREATER` and C6 `CONFIRMED / NAMUA-GREATER`. G3-06 `BRMGI-STUDY1` has formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`, Stage 1 seed consumed and Stage 2 seed not consumed. The next program-safe scientific action, if pursued, is a separate post-G3-06 current-state authorization review for G3-07. Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
 
 **Research Generation 2 state:** core program `G2-01..G2-12` is formally closed as of 2026-08-31. G2-11はrequired strategic-regime representation dependency不成立によりagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じ、formal Study IDは付与していない。G2-H01はindependent / non-blocking human trackとしてdeferredのままである。
 

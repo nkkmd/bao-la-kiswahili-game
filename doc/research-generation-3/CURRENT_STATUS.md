@@ -1,59 +1,32 @@
 # Research Generation 3 — Current Status
 
-Updated: 2026-09-02
+Updated: 2026-09-03
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-05 CLOSED TECHNICAL-INVALID / G3-06 AUTHORIZED FOR PROSPECTIVE DEFINITION / FRESH STAGE 1 NOT AUTHORIZED
+Program status = ACTIVE / G3-06 CLOSED TECHNICAL-INVALID / POST-G3-06 G3-07 REVIEW REQUIRED / G3-07 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-01 formal eligible measurement families = []
-G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
-LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5
-G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-02 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-G3-02 formal promoted candidate set = []
-G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
-G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
-G3-03 = TCTGD-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-03 Stage 0 = TCTGD-S0-TECHNICAL-2026-09-02-v1 / STAGE0-PASS
-G3-03 Stage 1 = TCTGD-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
-G3-03 Stage 1 authorized scientific executions = 1
-G3-03 Stage 1 actual scientific executions = 1
-G3-03 Stage 2 = TCTGD-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
-G3-03 formal promoted candidate set = []
-G3-03 Stage 1 seed = 31310001..31310192 / CONSUMED
-G3-03 Stage 2 seed = 31320001..31320288 / NOT CONSUMED
-G3-03 no-rescue boundary = CROSSED / ACTIVE
-G3-04 = SFCDF-STUDY1 / CLOSED / FORMAL-COMPLETE
-G3-04 Stage 0 = STAGE0-PASS
-G3-04 Stage 1 = STAGE1-PASS / authorized executions 1 / actual executions 1
-G3-04 Stage 2 = STAGE2-PASS / authorized executions 1 / actual executions 1
-G3-04 C1 = CONFIRMED / MTAJI-GREATER
-G3-04 C6 = CONFIRMED / NAMUA-GREATER
-G3-04 Stage 1 seed = 31410001..31410192 / CONSUMED
-G3-04 Stage 2 seed = 31420001..31420288 / CONSUMED
-G3-04 no-rescue boundary = CROSSED / ACTIVE
-G3-05 program review = G3-05-AUTHORIZED
-G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-05 Stage 0 v2 = STAGE0-PASS
-G3-05 Stage 1 = BECT-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
-G3-05 Stage 1 authorized scientific executions = 1
-G3-05 Stage 1 actual scientific executions = 1
-G3-05 Stage 2 = BECT-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
-G3-05 formal promoted candidate set = []
-G3-05 Stage 1 seed = 31510001..31510240 / CONSUMED
-G3-05 Stage 2 seed = 31520001..31520384 / NOT CONSUMED
-G3-05 no-rescue boundary = CROSSED / ACTIVE
+post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5
+G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID / promoted [] / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
+G3-03 = TCTGD-STUDY1 / CLOSED / TECHNICAL-INVALID / promoted [] / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
+G3-04 = SFCDF-STUDY1 / CLOSED / FORMAL-COMPLETE / C1 CONFIRMED MTAJI-GREATER / C6 CONFIRMED NAMUA-GREATER
+G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID / promoted [] / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
 G3-06 program review = G3-06-AUTHORIZED
-G3-06 = AUTHORIZED FOR PROSPECTIVE STUDY DEFINITION / TECHNICAL-ONLY STAGE 0
-G3-06 fresh Stage 1 = NOT AUTHORIZED
+G3-06 = BRMGI-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-06 Stage 0 v1 = BRMGI-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID / NO RERUN
+G3-06 Stage 0 v2 = BRMGI-S0-TECHNICAL-2026-09-03-v2 / STAGE0-PASS
+G3-06 Stage 1 = BRMGI-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID / 1 authorized / 1 actual
+G3-06 Stage 1 seed = 31610001..31610256 / CONSUMED
+G3-06 formal promoted candidate set = []
+G3-06 Stage 2 = BRMGI-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+G3-06 Stage 2 seed = 31620001..31620384 / NOT CONSUMED
+G3-06 no-rescue boundary = CROSSED / ACTIVE
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none / G3-06 branch not yet created
-Next scientific action = create G3-06 research branch from post-decision main, freeze Study contract, then technical-only Stage 0
+Active scientific research branch = research/g3-06-bao-rule-mechanism-geometry-intervention / CLOSED STUDY DOCUMENTATION ONLY
+Next scientific action = separate post-G3-06 current-state authorization review for G3-07
 ```
 
 ## Immutable upstream boundaries
@@ -368,13 +341,54 @@ The authorized scientific construct is non-causal move-conditioned/event-conditi
 
 No G3-03 diagnostic direction/value or G3-05 partial telemetry may enter G3-06 event/endpoint/threshold/candidate selection. G3-04 C1/C6 remain context only.
 
+## G3-06 formal closure
+
+G3-06は`BRMGI-STUDY1`としてprospectively freezeし、LGTGMIV F1-F5 / RAW-only / relative depth 5のbounded instrumentだけでrule-semantic event周辺のgeometry changeを検証する契約とした。
+
+Stage 0 v1はtechnical fixture invariantで`TECHNICAL-INVALID / NO RERUN`。fresh scientific evidence 0の状態でtechnical fixtureだけを修正したv2を別versionとしてrefreezeし、v2は`STAGE0-PASS`。その後fresh Stage 1をexactly one authorized executionで開始した。
+
+Stage 1 authorization/source binding/durable leaseはPASSしたが、geometry measurement前にproduction / independent event-unit selectionが一致せず、canonical resultは:
+
+```text
+stageDisposition = TECHNICAL-INVALID
+technicalError = production/independent selection mismatch
+unitTimings = []
+formal promoted candidate set = []
+Stage 1 seed = CONSUMED
+no-rescue boundary = CROSSED / ACTIVE
+```
+
+Durable result artifactは`9865581198`、ZIP SHA-256は`3f43ff832afaae5fc0a1d6756dcc9fa0101eb5a67befc7f3cdc2d1536bdb5d2a`、exact-byte mirror commitは`b8f9fe0e2d5008be2d41b3b8271fa325144f82fc`。
+
+Formal closure:
+
+```text
+G3-06 / BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed = NOT CONSUMED
+same-evidence selector repair/rerun = PROHIBITED
+```
+
+これはcapture / nyumba / reserve / Namua→Mtajiのgeometry effectが「ない」というnegative/null resultではない。
+
+Canonical closure records:
+
+- `../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md`
+- `../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md`
+- `../bao-rule-mechanism-geometry-intervention/CURRENT_STATUS.md`
+- `../bao-rule-mechanism-geometry-intervention/DECISION_REGISTER.md`
+- `../bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`
+- `checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`
+
 ## Protected evidence
 
 G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-G3-02 / G3-03 / G3-04 / G3-05はいずれもこのholdoutを生成・read・peekしていない。G3-06 authorization review also generated/read no fresh scientific evidence and did not access the protected holdout. G2-12はdepth-10 truthの代替として使用しない。
+G3-02 / G3-03 / G3-04 / G3-05 / G3-06はいずれもこのholdoutを生成・read・peekしていない。G3-06 closure後もprotected holdoutはsealedのままである。G2-12はdepth-10 truthの代替として使用しない。
 
 ## Claim boundary
 
@@ -386,13 +400,13 @@ The technical observation that canonical scientific bytes matched while prototyp
 
 G3-04のformal positive claimはC1/C6のfrozen candidate-level phase differenceだけに限定する。C1/C6をgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、position value / win probability、causal phase effect、relative depth 5を超える一般化へ拡張しない。
 
-G3-06 authorization does not authorize causal-mechanism language. Until a formal Study produces valid heldout evidence, no substantive G3-06 rule-event/geometry claim exists.
+G3-06は`CLOSED / TECHNICAL-INVALID`であり、causal-mechanism languageはauthorizeされない。valid Stage 1 candidate evaluationへ到達していないため、G3-06からsubstantiveなrule-event/geometry positive・negative・null claimは存在しない。
 
 ## Next program boundary
 
-G3-05 / `BECT-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; Stage 1 seed is consumed, same-evidence rescue is prohibited, formal promoted candidate set is `[]`, and Stage 2 is `NOT-AUTHORIZED-NOT-EXECUTED`.
+G3-06 / `BRMGI-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; Stage 1 seed is consumed, same-evidence rescue is prohibited, formal promoted candidate set is `[]`, and Stage 2 is `NOT-AUTHORIZED-NOT-EXECUTED`.
 
-G3-06 has now passed its required post-G3-05 authorization review as **`G3-06-AUTHORIZED`**. The next permitted scientific-program action is to create a dedicated G3-06 research branch from the post-decision `main`, freeze the formal Study identity/Stage structure/full prospective contract, and perform only technical Stage 0 work under separate authorization. Fresh Stage 1 scientific evidence remains blocked.
+G3-07 is **NOT AUTHORIZED**. The next program-safe scientific action, if pursued, is a separate post-G3-06 current-state authorization review. G3-06 selection mismatch / technical-invalid provenance must not be promoted into a positive or negative G3-07 scientific prerequisite.
 
 Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
 
