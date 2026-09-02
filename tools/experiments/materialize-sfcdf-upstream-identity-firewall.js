@@ -21,28 +21,7 @@ function canon(v) {
 function sha(s) { return crypto.createHash("sha256").update(s, "utf8").digest("hex"); }
 function need(x, m) { if (!x) throw new Error(m); }
 function gitBlobSha(content) { return crypto.createHash("sha1").update(`blob ${Buffer.byteLength(content, "utf8")}\0`).update(content, "utf8").digest("hex"); }
-
-function identityRecord(x, origin) {
-  if (!x || typeof x !== "object") return null;
-  if (typeof x.rootRawSha256 !== "string" || typeof x.sourceTrajectorySha256 !== "string" || typeof x.openingPrefixSha256 !== "string") return null;
-  return {
-    origin,
-    rootRawSha256: x.rootRawSha256,
-    sourceTrajectorySha256: x.sourceTrajectorySha256,
-    openingPrefixSha256: x.openingPrefixSha256,
-    openingPrefixLength: Number.isInteger(x.openingPrefixLength) ? x.openingPrefixLength : null
-  };
-}
-function collectTriples(v, origin, out, seen = new Set()) {
-  if (!v || typeof v !== "object") return;
-  const r = identityRecord(v, origin);
-  if (r) {
-    const key = `${r.rootRawSha256}\u0000${r.sourceTrajectorySha256}\u0000${r.openingPrefixSha256}`;
-    if (!seen.has(key)) { seen.add(key); out.push(r); }
-  }
-  if (Array.isArray(v)) for (const x of v) collectTriples(x, origin, out, seen);
-  else for (const x of Object.values(v)) collectTriples(x, origin, out, seen);
-}
+function addIfString(set, value) { if (typeof value === "string" && value.length) set.add(value); }
 
 const lgtText = fs.readFileSync(LGTGMIV_FIREWALL, "utf8");
 const tctText = fs.readFileSync(TCTGD_RESULT, "utf8");
@@ -51,25 +30,44 @@ need(gitBlobSha(tctText) === EXPECTED[TCTGD_RESULT], "TCTGD Stage 1 result blob 
 const lgt = JSON.parse(lgtText);
 const tct = JSON.parse(tctText);
 need(lgt.scientificOutcomeFieldsRetained === false, "input LGTGMIV firewall is not identity-only");
+need(lgt.identityRecordCount === 80 && Array.isArray(lgt.identityRecords) && lgt.identityRecords.length === 80, "unexpected LGTGMIV identity record count");
 
-const records = [];
-const seen = new Set();
-for (const x of lgt.identityRecords || []) {
-  const r = identityRecord(x, "LGTGMIV-IDENTITY-ONLY");
-  need(r, "invalid upstream identity record");
-  const k = `${r.rootRawSha256}\u0000${r.sourceTrajectorySha256}\u0000${r.openingPrefixSha256}`;
-  if (!seen.has(k)) { seen.add(k); records.push(r); }
+const roots = new Set();
+const trajectories = new Set();
+const prefixes = new Set();
+for (const x of lgt.identityRecords) {
+  addIfString(roots, x.rootRawSha256);
+  addIfString(trajectories, x.sourceTrajectorySha256);
+  addIfString(prefixes, x.openingPrefixSha256);
 }
-collectTriples(tct, "G3-03-STAGE1-IDENTITY-EXTRACT", records, seen);
-records.sort((a,b) => a.rootRawSha256.localeCompare(b.rootRawSha256) || a.sourceTrajectorySha256.localeCompare(b.sourceTrajectorySha256) || a.openingPrefixSha256.localeCompare(b.openingPrefixSha256) || a.origin.localeCompare(b.origin));
 
-const counts = {};
-for (const r of records) counts[r.origin] = (counts[r.origin] || 0) + 1;
-need((counts["LGTGMIV-IDENTITY-ONLY"] || 0) === 80, `expected 80 LGTGMIV identity records, got ${counts["LGTGMIV-IDENTITY-ONLY"] || 0}`);
-need((counts["G3-03-STAGE1-IDENTITY-EXTRACT"] || 0) === 24, `expected 24 unique G3-03 Stage 1 identities, got ${counts["G3-03-STAGE1-IDENTITY-EXTRACT"] || 0}`);
+const pairs = tct && tct.sourceSelection && tct.sourceSelection.production && tct.sourceSelection.production.pairs;
+need(Array.isArray(pairs) && pairs.length === 12, "expected 12 G3-03 production source pairs");
+const g303IdentityRecords = [];
+for (const p of pairs) {
+  for (const phase of ["namua", "mtaji"]) {
+    const x = p[phase];
+    need(x && typeof x.rootRawSha256 === "string" && typeof x.sourceTrajectorySha256 === "string" && typeof x.openingPrefixSha256 === "string", `invalid G3-03 ${phase} source identity`);
+    g303IdentityRecords.push({
+      pairId: p.pairId,
+      phase,
+      sourceSeed: x.sourceSeed,
+      selectedPly: x.selectedPly,
+      rootRawSha256: x.rootRawSha256,
+      sourceTrajectorySha256: x.sourceTrajectorySha256,
+      openingPrefixSha256: x.openingPrefixSha256,
+      openingPrefixLength: x.openingPrefixLength
+    });
+    roots.add(x.rootRawSha256);
+    trajectories.add(x.sourceTrajectorySha256);
+    prefixes.add(x.openingPrefixSha256);
+  }
+}
+need(g303IdentityRecords.length === 24, "expected 24 G3-03 root identity records");
+g303IdentityRecords.sort((a,b) => a.sourceSeed-b.sourceSeed || a.selectedPly-b.selectedPly || a.rootRawSha256.localeCompare(b.rootRawSha256));
 
 const core = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   studyId: "SFCDF-STUDY1",
   purpose: "UPSTREAM-IDENTITY-ONLY-EXCLUSION-FIREWALL",
   scientificOutcomeFieldsRetained: false,
@@ -79,11 +77,22 @@ const core = {
     { path: LGTGMIV_FIREWALL, gitBlobSha: EXPECTED[LGTGMIV_FIREWALL], inputClass: "IDENTITY-ONLY" },
     { path: TCTGD_RESULT, gitBlobSha: EXPECTED[TCTGD_RESULT], inputClass: "READ-ONCE-FOR-IDENTITY-EXTRACTION" }
   ],
-  identityRecordCount: records.length,
-  countsByOrigin: counts,
-  identityRecords: records
+  upstreamLgtgmivIdentityRecordCount: 80,
+  g303SourcePairCount: 12,
+  g303RootIdentityRecordCount: 24,
+  identitySets: {
+    rootRawSha256: [...roots].sort(),
+    sourceTrajectorySha256: [...trajectories].sort(),
+    openingPrefixSha256: [...prefixes].sort()
+  },
+  identitySetCounts: {
+    root: roots.size,
+    trajectory: trajectories.size,
+    prefix: prefixes.size
+  },
+  g303IdentityRecords
 };
 const manifest = { ...core, identityCoreSha256: sha(canon(core)) };
 fs.mkdirSync("doc/structural-forcing-corridor-decision-funnel/prereg", { recursive: true });
 fs.writeFileSync(OUT, JSON.stringify(manifest, null, 2) + "\n");
-console.log(`SFCDF_IDENTITY_FIREWALL=${JSON.stringify({identityRecordCount:manifest.identityRecordCount,countsByOrigin:manifest.countsByOrigin,identityCoreSha256:manifest.identityCoreSha256,scientificOutcomeFieldsRetained:false})}`);
+console.log(`SFCDF_IDENTITY_FIREWALL=${JSON.stringify({identitySetCounts:manifest.identitySetCounts,g303RootIdentityRecordCount:manifest.g303RootIdentityRecordCount,identityCoreSha256:manifest.identityCoreSha256,scientificOutcomeFieldsRetained:false})}`);
