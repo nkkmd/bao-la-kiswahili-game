@@ -1,0 +1,41 @@
+name: BRMGI Upstream Firewall Exact Mirror
+on:
+  push:
+    branches:
+      - research/g3-06-bao-rule-mechanism-geometry-intervention
+    paths:
+      - doc/bao-rule-mechanism-geometry-intervention/checkpoints/brmgi-upstream-firewall-mirror-trigger.txt
+concurrency:
+  group: brmgi-upstream-firewall-mirror
+  cancel-in-progress: false
+permissions:
+  contents: write
+  actions: read
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/g3-06-bao-rule-mechanism-geometry-intervention
+      - name: Download frozen firewall artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/brmgi-fw
+          mkdir -p /tmp/brmgi-fw
+          gh run download 33678555012 -n brmgi-upstream-identity-firewall-33678555012 -D /tmp/brmgi-fw
+          test "$(sha256sum /tmp/brmgi-fw/UPSTREAM_IDENTITY_FIREWALL.json | awk '{print $1}')" = "7806b921b878cc3a54403cda360c06e148525f4d38b6af8007d4f5a9a3156c16"
+      - name: Mirror exact bytes
+        run: |
+          set -euo pipefail
+          mkdir -p doc/bao-rule-mechanism-geometry-intervention/prereg
+          cp /tmp/brmgi-fw/UPSTREAM_IDENTITY_FIREWALL.json doc/bao-rule-mechanism-geometry-intervention/prereg/UPSTREAM_IDENTITY_FIREWALL.json
+          test "$(sha256sum doc/bao-rule-mechanism-geometry-intervention/prereg/UPSTREAM_IDENTITY_FIREWALL.json | awk '{print $1}')" = "7806b921b878cc3a54403cda360c06e148525f4d38b6af8007d4f5a9a3156c16"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/bao-rule-mechanism-geometry-intervention/prereg/UPSTREAM_IDENTITY_FIREWALL.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Mirror exact BRMGI upstream identity firewall"
+          git push origin HEAD:research/g3-06-bao-rule-mechanism-geometry-intervention
