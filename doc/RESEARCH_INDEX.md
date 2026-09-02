@@ -1182,4 +1182,4 @@ doc/<research-area>/
 - [`research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md)
 - [`research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md)
 
-**Program boundary:** G3-06は`NOT AUTHORIZED`。開始前にseparate post-G3-05 current-state authorization reviewが必要であり、G3-05 partial telemetryをvalidated mechanism/transition inputとして継承しない。
+**Historical boundary at G3-05 closure:** このG3-05 closure時点ではG3-06は`NOT AUTHORIZED`で、separate post-G3-05 current-state authorization reviewが必要だった。その後このreviewを経てG3-06は独立に実施され、現在は`BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID`。G3-05 partial telemetryをvalidated mechanism/transition inputとして継承していない。

@@ -12,13 +12,13 @@ research branch = research/g3-06-bao-rule-mechanism-geometry-intervention
 Study ID = BRMGI-STUDY1
 ```
 
-## Program authorization
+## Initial program authorization (historical)
 
 - `../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md`
 - `../research-generation-3/checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md`
 - decision: `G3-06-AUTHORIZED`
 - authorization scope: prospective Study definition + technical-only Stage 0
-- fresh Stage 1: NOT AUTHORIZED
+- fresh Stage 1 at this initial review point: NOT AUTHORIZED; Stage 1 was later separately authorized exactly once after Stage 0 PASS and preauthorization tooling audit
 
 ## Prospective contract
 
@@ -203,7 +203,7 @@ No BRMGI action may generate, partially generate, read, peek, trial-enumerate or
 
 ## Execution-integrity contract
 
-Each future fresh scientific Stage requires:
+The frozen prospective execution-integrity contract required the following for any fresh scientific Stage:
 
 ```text
 max authorized scientific executions = 1

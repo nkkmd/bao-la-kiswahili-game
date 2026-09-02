@@ -77,6 +77,12 @@ RG3 checkpoint:
 
 `../research-generation-3/checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md`
 
+Study closure records:
+
+- `../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`
+- `../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`
+- `checkpoints/2026-09-03-stage-1-technical-invalid-study-closure.md`
+
 Stage 0 v1/v2 records:
 
 - `checkpoints/2026-09-03-stage-0-v1-technical-invalid.md`
@@ -86,6 +92,6 @@ Stage 0 v1/v2 records:
 
 ## Permanent causal-language boundary
 
-G3-06のformal resultが将来`CONFIRMED`になった場合でも、そのlabelが直接意味するのはprospectively frozen population / event-control contract / relative depth 5におけるmove-conditioned or event-conditioned geometry differenceのみである。
+Prospective contract上、仮にvalid Stage 2 candidateが`CONFIRMED`へ到達した場合でも、許可される意味はfrozen population / event-control contract / relative depth 5におけるmove-conditioned or event-conditioned geometry differenceだけだった。実際のBRMGI-STUDY1はStage 1で`TECHNICAL-INVALID`となりformal promoted candidate set `[]`で閉じたため、そのconfirmation pathには到達していない。
 
-Generic causal rule mechanism、長期勝敗、game-theoretic forcing、search ease/stability、human difficultyへの拡張は別Study/evidenceなしに行わない。
+Generic causal rule mechanism、長期勝敗、game-theoretic forcing、search ease/stability、human difficultyへの拡張は認めず、technical-invalid provenanceからそれらを推論しない。

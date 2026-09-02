@@ -29,3 +29,10 @@ Historical `doc/research-generation-3/PROGRAM_PLAN.md`, historical checkpoints/a
 
 Audit workflow run: `33685739339`
 Audit trigger HEAD: `771262d04af080d63e6a1c1a85150423ea3f1b87`
+
+## Final chronology clarification audit
+
+Current-facing historical-boundary wording was rechecked after the first consistency pass. G3-05-era statements that G3-06 was not yet authorized are now explicitly labeled as historical-at-that-time statements, while current state remains G3-06 closed and G3-07 not authorized. BRMGI reproducibility/decision prose was also changed from pending/future tense to historical prospective-contract wording. No scientific result, preregistration, protocol, or historical program plan was rewritten.
+
+Chronology audit workflow run: `33686212803`
+Chronology audit trigger HEAD: `d03d5873ce15be91df278b70d730fa583148051c`
