@@ -8,6 +8,7 @@ on:
       - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER
       - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER_V2
       - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER_V3
+      - doc/branch-expansion-compression-transition/authorizations/FINAL_DOCUMENT_AUDIT_TRIGGER_V4
 
 permissions:
   contents: write
@@ -54,7 +55,7 @@ jobs:
           git diff --exit-code -- doc/branch-expansion-compression-transition/STUDY_1_PROTOCOL.md
           git diff --exit-code -- doc/branch-expansion-compression-transition/prereg/
           git diff --exit-code -- doc/branch-expansion-compression-transition/results/
-          ACTUAL="$(git diff --name-only | sort)"
+          ACTUAL="$({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u)"
           EXPECTED="$(printf '%s\n' \
             doc/RESEARCH_INDEX.md \
             doc/branch-expansion-compression-transition/CURRENT_STATUS.md \
