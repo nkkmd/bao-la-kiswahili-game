@@ -179,6 +179,8 @@ Historical program plan上の次候補はG3-05 — Branch Expansion / Compressio
 - `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
 - `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
 - `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`
+- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
+- `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
 - `CURRENT_STATUS.md`
 - `PROGRAM_PLAN.md` — immutable historical prospective plan
 - `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`

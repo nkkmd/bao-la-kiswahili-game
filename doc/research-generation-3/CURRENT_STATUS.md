@@ -299,11 +299,14 @@ C1/C6からgame-theoretic forcing、best-move clarity、search ease、strategic 
 
 Canonical records:
 
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`
 - `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
 - `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
 - `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
 - `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
 - `../structural-forcing-corridor-decision-funnel/checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
+- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
+- `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
 
 ## Protected evidence
 

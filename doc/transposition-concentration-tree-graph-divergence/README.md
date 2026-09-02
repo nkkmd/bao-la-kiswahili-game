@@ -19,6 +19,7 @@ protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 
 - `STUDY_1_OVERVIEW.md` — 初見向けの研究概要とformal closure
 - `STUDY_1_FINAL_REPORT.md` — scientific/technical closureの正本
+- `../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md` — program-level closure decision
 - `CURRENT_STATUS.md` — 現在のclosure状態
 - `DECISION_REGISTER.md` — authorization / freeze / no-rescue / closure decisions
 - `REPRODUCIBILITY_INDEX.md` — source/hash/run/artifact provenance

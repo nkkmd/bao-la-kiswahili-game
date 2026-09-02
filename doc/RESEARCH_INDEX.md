@@ -1055,6 +1055,8 @@ Study lifecycleは`CLOSED / FORMAL-COMPLETE`。これはcandidate-level formal l
 - [`structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md)
 - [`structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`](structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md)
 - [`structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`](structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`](research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md) — G3-04 program-level closure / G3-05未承認境界
+- [`research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`](research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md) — RG3 closure checkpoint
 
 ---
 

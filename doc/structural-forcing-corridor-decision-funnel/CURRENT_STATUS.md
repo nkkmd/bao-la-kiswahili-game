@@ -112,6 +112,8 @@ G3-04のclosureによってこのholdoutの用途・封印状態は変更しな�
 
 ## Repository lifecycle
 
+program-level closure decision = RECORDED (`../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`)。RG3 closure checkpoint = `../research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`。
+
 Scientific executionとclosure/current-facing文書の整合性反映は完了した。`main`統合は未実施であり、明示的な統合指示があるまで行わない。program上の次科学作業はseparate post-G3-04 G3-05 authorization reviewであり、G3-05はまだauthorizeされていない。
 
 `CLOSED / FORMAL-COMPLETE`はrepository lifecycle statusであり、新しい科学的omnibus labelではない。formal inferential labelsはpreregistered candidate-level `CONFIRMED` / `NOT-CONFIRMED`のみを用いる。

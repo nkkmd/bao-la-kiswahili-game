@@ -22,6 +22,7 @@ protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 
 - `STUDY_1_FINAL_REPORT.md` — formal resultと解釈境界
 - `STUDY_1_OVERVIEW.md` — 研究全体の概要
+- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md` — program-level closure decision
 - `CURRENT_STATUS.md` — closure状態と主要provenance
 - `DECISION_REGISTER.md` — authorization / freeze / no-rescue / closure decisions
 - `REPRODUCIBILITY_INDEX.md` — source/hash/Stage/run/artifact provenance

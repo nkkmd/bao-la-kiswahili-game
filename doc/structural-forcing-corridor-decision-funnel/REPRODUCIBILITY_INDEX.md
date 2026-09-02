@@ -265,6 +265,8 @@ Canonical closure sources include:
 - `DECISION_REGISTER.md`
 - `STUDY_1_FINAL_REPORT.md`
 - `checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
+- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
+- `../research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
 - `results/stage-1/scientific-result.json`
 - `results/stage-2/scientific-result.json`
 - `results/stage-2/execution-summary.json`
