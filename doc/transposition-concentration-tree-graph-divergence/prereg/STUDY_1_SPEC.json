@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "studyId": "TCTGD-STUDY1",
+  "program": "Research Generation 3",
+  "agendaPosition": "G3-03",
+  "englishTitle": "Transposition Concentration and Tree-to-Graph Divergence Study 1 — Prospective exact validation of branch reconvergence, multi-parent RAW states, duplicate occurrences, and bounded local tree-to-RAW-graph divergence in Bao",
+  "japaneseTitle": "Baoにおけるtransposition集中とtree/graph乖離のprospective exact検証 — bounded RAW局所構造におけるbranch reconvergence、multi-parent state、duplicate occurrence、tree occurrence / RAW graph divergenceの再現可能なphase差の検証",
+  "baselineRemoteMain": "6b1457294666267c5a75c8516001acd1ef7d2fcd",
+  "researchBranch": "research/g3-03-transposition-tree-graph-divergence",
+  "authorizationReview": "doc/research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md",
+  "authorizationOutcome": "G3-03-AUTHORIZED",
+  "freshScientificEvidenceGeneratedBeforeFreeze": false,
+  "freshScientificEvidenceReadBeforeFreeze": false,
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentity": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "validatedTransforms": [],
+    "symmetryOrCanonicalQuotientAuthorized": false,
+    "moveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"]
+  },
+  "ruleSemantics": {
+    "enginePath": "public/engine.js",
+    "engineGitBlobSha": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c",
+    "baselineCommit": "6b1457294666267c5a75c8516001acd1ef7d2fcd"
+  },
+  "canonicalSerialization": {
+    "binding": "LGTGMIV-CANONICAL-v1",
+    "hashAlgorithm": "SHA-256",
+    "scientificJson": "deterministic-canonical-json",
+    "integerRepresentation": "decimal-integer-or-decimal-string",
+    "ratioRepresentation": {"numerator": "decimal-integer-string", "denominator": "decimal-integer-string", "defined": "boolean"},
+    "floatingPointScientificArithmeticAllowed": false,
+    "runtimeTelemetryInScientificHashAllowed": false
+  },
+  "relativeLocalHorizon": 5,
+  "eligibleMeasurementFamilies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION"
+  ],
+  "principalMeasurementFamilies": [
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION"
+  ],
+  "auxiliaryMeasurementFamilies": ["LGTGMIV-F1-TREE-OCCURRENCE"],
+  "replyGeometryFamilyUsed": false,
+  "morphologyStrataUsed": false,
+  "phaseStrata": ["namua", "mtaji"],
+  "sourceImplementations": {
+    "upstreamProduction": {"path": "tools/experiments/lib/lgtgmiv-stage1-production.js", "gitBlobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"},
+    "upstreamIndependent": {"path": "tools/experiments/lib/lgtgmiv-stage1-independent.js", "gitBlobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"},
+    "g303Production": {"path": "tools/experiments/lib/tctgd-production.js", "gitBlobSha": "782ec5e7140d0b8e410d2156dc765c8b2f0c1a5d"},
+    "g303Independent": {"path": "tools/experiments/lib/tctgd-independent.js", "gitBlobSha": "1435998dba938ecad15470370dd2ef096a046e83"},
+    "stage0Runner": {"path": "tools/experiments/run-tctgd-stage0-technical.js", "gitBlobSha": "8fe976990de7792926401334cfc0171599cd9059"}
+  },
+  "rawPrimitiveSemantics": {
+    "treeNodeOccurrence": "depth-labelled tree occurrence; root occurs once at depth 0",
+    "uniqueRawState": "RAW state identity only; depth layer state set deduplicates within that depth",
+    "globalDistinctRawState": "RAW identity deduplicated across all depth layers 0..5",
+    "duplicateEncounter": "for a child within one parent-depth layer, each distinct incoming RAW-parent/move/RAW-child transition beyond the first; same-parent different-move arrivals can contribute",
+    "multiParentRawState": "child RAW state with at least two distinct parent RAW state identities in the same parent-depth layer; same-parent different-move alone does not qualify",
+    "reconvergentRawState": "depth-labelled RAW state carrying at least two distinct root-move branch labels",
+    "crossDepthRawStateRevisitPresenceExcess": "sum(uniqueRawStateCount[d], d=0..5) minus global distinctRawStates; contextual repeated RAW-state presence across depths, not a cycle proof",
+    "firstReconvergenceDepth": "smallest depth with at least one reconvergent RAW state under root-branch-label semantics; null when none occurs through depth 5",
+    "rootBranchPairOverlap": "F3 exact descendant RAW-state overlap for unordered root-move pairs by depth"
+  },
+  "candidateEndpoints": {
+    "TCTGD-C1-CUMULATIVE-TREE-RAW-RATIO": {
+      "numerator": "sum treeNodeOccurrences[d] for d=0..5",
+      "denominator": "global distinctRawStates over depths 0..5",
+      "rootInNumerator": true,
+      "rootInDenominator": true,
+      "zeroDenominatorRule": "undefined; expected impossible for a valid root",
+      "interpretation": "cumulative tree-occurrence to unique-RAW-graph divergence"
+    },
+    "TCTGD-C2-DUPLICATE-UNIQUE-TRANSITION-FRACTION": {
+      "numerator": "sum duplicateEncounterCount[d] for parent depths 0..4",
+      "denominator": "sum uniqueTransitionCount[d] for parent depths 0..4",
+      "depthLabelling": "preserved; a transition identity appearing at different depths contributes once per depth layer",
+      "zeroDenominatorRule": "undefined",
+      "interpretation": "depth-labelled duplicate-arrival concentration; not identical to multi-parent concentration"
+    },
+    "TCTGD-C3-LAYER-SUM-MULTIPARENT-FRACTION": {
+      "numerator": "sum multiParentRawStateCount[d] for parent depths 0..4",
+      "denominator": "sum uniqueRawStateCount[d] for child depths 1..5",
+      "rootIncluded": false,
+      "crossDepthStatePresenceMayRepeat": true,
+      "zeroDenominatorRule": "undefined",
+      "interpretation": "layer-summed distinct-parent reconvergence concentration"
+    },
+    "TCTGD-C4-RECONVERGENCE-ONSET-SCORE": {
+      "value": "firstReconvergenceDepth when defined; otherwise horizon+1 = 6",
+      "arithmetic": "exact integer represented as rational denominator 1",
+      "directionMeaning": "smaller means earlier root-branch reconvergence; 6 means none observed through depth 5"
+    },
+    "TCTGD-C5-ROOT-BRANCH-OVERLAP-FRACTION": {
+      "numerator": "number of unordered root-move pairs with positive F3 descendant RAW-state overlap at any depth 1..5",
+      "denominator": "choose(rootLegalMoveCount,2)",
+      "zeroDenominatorRule": "undefined when rootLegalMoveCount < 2",
+      "pairCountedAtMostOnce": true,
+      "interpretation": "fraction of root branches that reconverge in descendant RAW-state membership within the bounded horizon"
+    }
+  },
+  "contextualExactPrimitives": [
+    "treeNodeOccurrencesByDepth",
+    "uniqueRawStateCountByDepth",
+    "globalDistinctRawStates",
+    "depthLabelledUniqueRawStatePresenceCount",
+    "crossDepthRawStateRevisitPresenceExcess",
+    "duplicateEncounterCountByParentDepth",
+    "multiParentRawStateCountByParentDepth",
+    "arrivalMultiplicityHistogramByParentDepth",
+    "parentMultiplicityHistogramByParentDepth",
+    "reconvergentRawStateCountByDepth",
+    "firstReconvergenceDepth",
+    "rootBranchPairOverlapByDepth"
+  ],
+  "pairedComparison": {
+    "unit": "source-seed trajectory pair",
+    "difference": "Mtaji endpoint minus Namua endpoint",
+    "rationalDifference": "exact reduced rational",
+    "comparison": "BigInt cross multiplication / zero tolerance",
+    "undefinedPairsExcludedOnlyForThatCandidate": true
+  },
+  "stage1Promotion": {
+    "expectedPairs": 12,
+    "candidateCoverage": {
+      "C1toC4": "12/12 defined comparable pairs",
+      "C5": "at least 10/12 defined comparable pairs"
+    },
+    "nonZeroGate": "3 * nonZeroPairCount >= 2 * comparablePairCount",
+    "dominantDirectionGate": "direction non-tied and 3 * dominantSignCount >= 2 * nonZeroPairCount",
+    "directionLabels": ["MTAJI-GREATER", "NAMUA-GREATER"],
+    "promotion": "all coverage, nonzero, and dominant-direction gates pass",
+    "noCandidateResult": "NO-PROMOTED-CANDIDATE; Stage 2 remains NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "stage2FormalValidation": {
+    "expectedPairs": 18,
+    "testsOnlyStage1PromotedCandidateIdentitiesAndDirections": true,
+    "candidateCoverage": {"C1toC4": "18/18", "C5": "at least 15/18"},
+    "nonZeroGate": "3 * nonZeroPairCount >= 2 * comparablePairCount",
+    "test": "exact two-sided sign test on nonzero paired differences",
+    "zeroDifferences": "excluded from sign-test n",
+    "multiplicity": "Holm-Bonferroni family-wise alpha 1/20 across the frozen promoted set",
+    "arithmetic": "exact integer/rational only; no floating point p-value decision",
+    "directionGate": "observed dominant direction must equal frozen Stage 1 direction",
+    "candidateConfirmation": "coverage + nonzero + direction + sequential Holm gate all pass"
+  },
+  "stages": [
+    {
+      "stageId": "TCTGD-S0-TECHNICAL-2026-09-02-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificEvidence": false,
+      "seedConsumptionAllowed": false,
+      "separateAuthorizationRequired": true
+    },
+    {
+      "stageId": "TCTGD-S1-DEVELOPMENT-2026-09-02-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "seedStart": 31310001,
+      "seedEnd": 31310192,
+      "targetPairs": 12,
+      "targetRoots": {"namua": 12, "mtaji": 12},
+      "separateAuthorizationRequired": true,
+      "maxScientificExecutions": 1
+    },
+    {
+      "stageId": "TCTGD-S2-FORMAL-2026-09-02-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "seedStart": 31320001,
+      "seedEnd": 31320288,
+      "targetPairs": 18,
+      "targetRoots": {"namua": 18, "mtaji": 18},
+      "separateAuthorizationRequired": true,
+      "maxScientificExecutions": 1,
+      "requiresNonemptyFrozenStage1PromotedSet": true
+    }
+  ],
+  "trajectoryPolicy": {
+    "engine": "public/engine.js",
+    "prng": "Mulberry32",
+    "legalMoveOrdering": "canonical move identity key ascending",
+    "moveSelection": "floor(u * legalMoveCount)",
+    "maxSourcePly": 240,
+    "namuaRoot": "exact ply 24, nonterminal, phase namua",
+    "mtajiRoot": "first nonterminal phase mtaji state at ply >= 44",
+    "pairEligibility": "both roots must exist and pass all prospective identity/firewall checks; otherwise reject entire source seed",
+    "selection": "source seed ascending, first N eligible pairs",
+    "geometryBlind": true,
+    "endpointBlind": true,
+    "outcomeBlind": true,
+    "postHocRootReplacementAllowed": false
+  },
+  "firewall": {
+    "forbiddenSeedBlocks": [
+      "31010001..31010096",
+      "31110001..31110128",
+      "31120001..31120192",
+      "31210001..31210192",
+      "31220001..31220288"
+    ],
+    "g302Handling": {
+      "stage1SelectedRootsUsed": false,
+      "stage1SelectedRootsReconstructed": false,
+      "reason": "canonical G3-02 root registry was not durably materialized; reconstructing it would violate the no-rescue boundary",
+      "freshnessProtection": "entire G3-02 Stage 1 and Stage 2 seed namespaces are forbidden; no G3-02 scientific outcome enters selection"
+    },
+    "availableUpstreamIdentityOnlyExclusion": [
+      "G3-01 identity records when already canonical and available",
+      "LGTGMIV Stage 1 canonical root/trajectory/first-16-prefix identities",
+      "LGTGMIV Stage 2 canonical root/trajectory/first-16-prefix identities"
+    ],
+    "withinG303": {
+      "globalRawRootDeduplication": true,
+      "stage2ExcludesStage1RawRootIdentity": true,
+      "stage2ExcludesStage1SourceTrajectoryIdentity": true,
+      "stage2ExcludesStage1First16MovePrefixIdentity": true
+    },
+    "seedExtensionAllowed": false,
+    "seedReplacementAllowed": false,
+    "unfavorablePairReplacementAllowed": false
+  },
+  "resourceCeilings": {
+    "perRoot": {
+      "uniqueRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "treeNodeOccurrencesSummedAcrossLayers": 1000000000,
+      "elapsedMs": 180000,
+      "peakRssBytes": 4294967296,
+      "rootArtifactBytes": 67108864
+    },
+    "stage0": {"totalElapsedMs": 120000, "peakRssBytes": 1073741824, "resultArtifactBytes": 33554432},
+    "stage1": {"totalElapsedMs": 7200000, "totalArtifactBytes": 1073741824},
+    "stage2": {"totalElapsedMs": 10800000, "totalArtifactBytes": 1610612736}
+  },
+  "independence": {
+    "productionUsesOnlyLgtgmivProduction": true,
+    "independentUsesOnlyLgtgmivIndependent": true,
+    "independentMayImportG303Production": false,
+    "sharedG303EndpointHelperAllowed": false,
+    "sharedG303PairComparisonHelperAllowed": false,
+    "sharedG303StatisticalHelperAllowed": false,
+    "productionIndependentRootLevelExactAgreementRequired": true,
+    "productionIndependentLayerPrimitiveExactAgreementRequired": true,
+    "productionIndependentEndpointExactAgreementRequired": true,
+    "productionIndependentPairComparisonExactAgreementRequired": true,
+    "productionIndependentStageScientificCoreExactAgreementRequired": true,
+    "tolerance": 0
+  },
+  "executionIntegrity": {
+    "scientificWorkflowTrigger": "workflow_dispatch only; push-triggered scientific computation prohibited",
+    "workflowArmingSeparateFromScientificComputation": true,
+    "concurrency": "single stage-specific concurrency group; queued duplicate must encounter durable execution lease and exit before scientific computation",
+    "preComputationExecutionLease": "remote execution-start marker must be committed successfully before any fresh seed/root generation; non-fast-forward or existing marker aborts before computation",
+    "authorizationBindsFrozenHead": true,
+    "researchBranchAdvancementBetweenAuthorizationAndLeaseAllowed": false,
+    "maxScientificExecutionsPerFreshStage": 1,
+    "duplicateQueuePrevention": true,
+    "resultDurability": "scientific-result, execution-summary, and telemetry bytes are uploaded as durable GitHub Actions artifact with hashes before repository mirror push",
+    "repositoryMirror": "commit/push after durable artifact upload; push failure does not authorize recomputation",
+    "pushFailureRecovery": "copy exact bytes from the already uploaded run artifact only, verify pre-recorded hashes, no engine import or scientific recomputation",
+    "artifactUploadFailureAfterScientificComputation": "TECHNICAL-INVALID",
+    "executionCountAuditRequired": true,
+    "actionsHistoryAuditRequired": true,
+    "rerunAuthorizationAfterFreshEvidence": false,
+    "runtimeMetadataInScientificIdentityHash": false
+  },
+  "failureRules": {
+    "integrityMismatch": "TECHNICAL-INVALID",
+    "representationOrSerializerMismatch": "TECHNICAL-INVALID",
+    "productionIndependentMismatch": "TECHNICAL-INVALID",
+    "firewallViolation": "TECHNICAL-INVALID",
+    "protectedEvidenceAccess": "TECHNICAL-INVALID",
+    "unauthorizedDuplicateScientificExecution": "TECHNICAL-INVALID",
+    "canonicalDurableArtifactFailureAfterScientificComputation": "TECHNICAL-INVALID",
+    "fixedPopulationIncompleteWithinSeedBlock": "NON-ESTIMABLE",
+    "resourceCeilingExceededWithoutIntegrityMismatch": "NON-ESTIMABLE",
+    "candidateCoverageGateFailure": "candidate non-promoted/non-confirmed as applicable; if no evaluable endpoint remains, NON-ESTIMABLE"
+  },
+  "formalDecisionTaxonomy": [
+    "CONFIRMED-BOUNDED-PHASE-DIFFERENCE",
+    "NOT-CONFIRMED",
+    "NO-PROMOTED-CANDIDATE",
+    "NON-ESTIMABLE",
+    "TECHNICAL-INVALID",
+    "NOT-AUTHORIZED-NOT-EXECUTED"
+  ],
+  "interpretationBoundary": [
+    "strategic simplicity",
+    "tactical simplicity",
+    "best-move clarity",
+    "human difficulty",
+    "search ease or search difficulty",
+    "evaluation stability",
+    "game-theoretic forcing",
+    "position value",
+    "win probability",
+    "causal strategic effect",
+    "cycle or recurrence claim from cross-depth presence excess alone"
+  ],
+  "noRescue": {
+    "activatesAt": "first generation or read of Stage 1 fresh scientific evidence, whichever occurs first",
+    "forbiddenAfterActivation": [
+      "threshold change",
+      "endpoint change",
+      "candidate addition or removal",
+      "seed addition or replacement",
+      "root replacement",
+      "favorable subgroup selection",
+      "representation change",
+      "horizon change",
+      "metric semantic redefinition",
+      "resource ceiling relaxation",
+      "formal test substitution",
+      "same-evidence rerun as rescue"
+    ]
+  },
+  "protectedEvidence": {
+    "standardInitialRawRootCompleteExactDepth10Holdout": "SEALED / NOT GENERATED / NOT READ",
+    "generationAllowed": false,
+    "readAllowed": false,
+    "peekAllowed": false,
+    "partialResourceEstimateGenerationAllowed": false,
+    "g212AsSubstituteTruthAllowed": false
+  },
+  "progression": {
+    "studyFreezeAuthorizesStage0Automatically": false,
+    "stage0RequiresSeparateAuthorization": true,
+    "stage0PassAuthorizesStage1Automatically": false,
+    "stage1RequiresSeparateAuthorization": true,
+    "stage1NonemptyPromotedSetRequiredForStage2": true,
+    "stage2RequiresSeparateAuthorization": true
+  }
+}
