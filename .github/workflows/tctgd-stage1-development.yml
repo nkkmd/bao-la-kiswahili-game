@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: research/g3-03-transposition-tree-graph-divergence
-          fetch-depth: 1
+          fetch-depth: 0
       - id: lease
         name: Establish durable pre-computation execution lease
         env:
@@ -60,6 +60,15 @@ jobs:
           NODE
           PRE_HEAD=$(git rev-parse HEAD)
           AUTH_HEAD=$(node -e 'const x=require("./'"$AUTH"'"); process.stdout.write(x.authorizedScientificContentHead)')
+          git cat-file -e "$AUTH_HEAD^{commit}"
+          git merge-base --is-ancestor "$AUTH_HEAD" "$PRE_HEAD"
+          REMOTE_ADVANCEMENT_ALLOWLIST='^(doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION\.json|doc/transposition-concentration-tree-graph-divergence/authorizations/2026-09-02-stage-1-development-authorization\.md|doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER|doc/transposition-concentration-tree-graph-divergence/executions/stage-1-dispatch-ledger\.json)$'
+          UNEXPECTED=$(git diff --name-only "$AUTH_HEAD..$PRE_HEAD" | grep -Ev "$REMOTE_ADVANCEMENT_ALLOWLIST" || true)
+          if test -n "$UNEXPECTED"; then
+            echo "Unexpected remote advancement after frozen scientific-content head:" >&2
+            printf '%s\n' "$UNEXPECTED" >&2
+            exit 1
+          fi
           mkdir -p "$(dirname "$MARKER")"
           node - <<NODE
           const fs=require('node:fs');
@@ -72,9 +81,6 @@ jobs:
           git commit -m "Establish TCTGD Stage 1 execution lease"
           git push origin HEAD:research/g3-03-transposition-tree-graph-divergence
           LEASE_SHA=$(git rev-parse HEAD)
-          node - <<NODE
-          const fs=require('node:fs'); const p='$MARKER'; const x=JSON.parse(fs.readFileSync(p,'utf8')); x.leaseCommitSha='$LEASE_SHA'; fs.writeFileSync('/tmp/lease-with-sha.json',JSON.stringify(x,null,2)+'\n');
-          NODE
           echo "execute=true" >> "$GITHUB_OUTPUT"
           echo "lease_sha=$LEASE_SHA" >> "$GITHUB_OUTPUT"
 
@@ -91,6 +97,7 @@ jobs:
       - name: Run exactly-once fresh development computation
         env:
           TCTGD_EXECUTION_LEASE_CONFIRMED: "true"
+          TCTGD_EXECUTION_LEASE_SHA: ${{ needs.lease.outputs.lease_sha }}
         run: |
           node tools/experiments/run-tctgd-stage1-development.js
       - name: Upload durable canonical Stage 1 bytes before repository mirror
