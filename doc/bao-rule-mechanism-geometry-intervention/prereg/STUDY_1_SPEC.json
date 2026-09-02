@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRMGI-STUDY1",
+  "programPosition": "Research Generation 3 / G3-06",
+  "programAuthorization": "G3-06-AUTHORIZED",
+  "studyStatusAtFreeze": "PROSPECTIVE-FROZEN-BEFORE-FRESH-SCIENTIFIC-EVIDENCE",
+  "englishTitle": "Bao Rule-Mechanism / Geometry Intervention Study 1 — Prospective move-conditioned exact analysis of bounded RAW local game-tree geometry change around capture, nyumba choice, reserve exhaustion, and Namua-to-Mtaji transition events",
+  "japaneseTitle": "Bao固有のrule-semantic eventに伴う局所ゲーム木幾何変化のprospective move-conditioned exact解析 — capture、nyumba選択、reserve枯渇／Namua→Mtaji移行を対象とするbounded RAW pre/post構造差の検証",
+  "reviewBaselineRemoteMain": "5525700937f0ada1aec39634012e8ad623e228c4",
+  "studyBaselineRemoteMain": "b0cbd9f562bb803597acb313360c064dadd73299",
+  "researchBranch": "research/g3-06-bao-rule-mechanism-geometry-intervention",
+  "freshScientificEvidenceGeneratedAtFreeze": false,
+  "freshScientificEvidenceReadAtFreeze": false,
+  "protectedDepth10AccessAtFreeze": false,
+  "historicalInterventionLabelCausalAuthorization": false,
+  "claimClass": [
+    "MOVE-CONDITIONED-STRUCTURAL-CHANGE",
+    "EVENT-CONDITIONED-GEOMETRY-DIFFERENCE",
+    "ASSOCIATION"
+  ],
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentityFields": [
+      "pits",
+      "reserve",
+      "houseOwned",
+      "player",
+      "phase",
+      "winner",
+      "pending"
+    ],
+    "moveIdentityFields": [
+      "type",
+      "phase",
+      "row",
+      "index",
+      "direction",
+      "side",
+      "houseChoice",
+      "houseTwo"
+    ],
+    "validatedTransforms": [],
+    "canonicalizationAuthorized": false,
+    "symmetryQuotientAuthorized": false,
+    "relativeLocalHorizon": 5
+  },
+  "authoritativeRuleSource": {
+    "runtimeSingleSourceOfTruth": "public/engine.js",
+    "humanReadableBaseline": "doc/RULES_BASELINE.md",
+    "knownImplementationConstraint": "relay-limit is a browser safety constraint and is never interpreted as a scientific game result"
+  },
+  "eligibleMeasurementFamilies": [
+    "LGTGMIV-F1-TREE-OCCURRENCE",
+    "LGTGMIV-F2-RAW-GRAPH",
+    "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+    "LGTGMIV-F4-TREE-GRAPH-RELATION",
+    "LGTGMIV-F5-REPLY-GEOMETRY"
+  ],
+  "stages": [
+    {
+      "stageId": "BRMGI-S0-TECHNICAL-2026-09-02-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificEvidenceAuthorized": false,
+      "purpose": "event semantics, pre-move-post binding, exact delta/control arithmetic, independent reconstruction, relay-limit fail-closed, resource accounting and execution-integrity validation"
+    },
+    {
+      "stageId": "BRMGI-S1-DEVELOPMENT-2026-09-02-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "freshScientificEvidenceAuthorized": false,
+      "authorizationPrerequisite": "STAGE0-PASS-PLUS-SEPARATE-STAGE1-AUTHORIZATION"
+    },
+    {
+      "stageId": "BRMGI-S2-FORMAL-2026-09-02-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "freshScientificEvidenceAuthorized": false,
+      "authorizationPrerequisite": "VALID-STAGE1-COMPLETION-PLUS-NONEMPTY-PROMOTED-CANDIDATE-SET-PLUS-SEPARATE-STAGE2-AUTHORIZATION"
+    }
+  ],
+  "seedNamespaces": {
+    "technical": {
+      "start": 31609001,
+      "end": 31609008,
+      "scientificUseProhibited": true
+    },
+    "stage1Development": {
+      "start": 31610001,
+      "end": 31610256,
+      "statusAtFreeze": "RESERVED-NOT-CONSUMED"
+    },
+    "stage2Formal": {
+      "start": 31620001,
+      "end": 31620384,
+      "statusAtFreeze": "RESERVED-NOT-CONSUMED"
+    },
+    "g305Stage1ReuseProhibited": "31510001..31510240",
+    "g305Stage2AutomaticReuseProhibited": "31520001..31520384"
+  },
+  "sourceTrajectoryPolicy": {
+    "prng": "Mulberry32",
+    "legalMoveSource": "engine.legalMoves",
+    "legalMoveOrdering": "canonical move identity ascending",
+    "randomMoveSelection": "floor(u * legalMoveCount)",
+    "maxSourcePly": 80,
+    "eventScanPlyStart": 16,
+    "eventScanPlyEndInclusive": 63,
+    "sourceTrajectorySelection": "seed ascending",
+    "sourceTrajectoryTechnicalExclusion": "exclude entire source trajectory if relay-limit occurs at or before eventScanPlyEndInclusive",
+    "geometryOutcomeUsedForSelection": false,
+    "gameOutcomeUsedForSelection": false,
+    "replacementAfterScientificTechnicalFailure": false
+  },
+  "preMovePostBinding": {
+    "preRoot": "authoritative RAW state immediately before canonical legal move m",
+    "move": "canonical legal move identity bound to preRoot",
+    "postRoot": "complete engine.applyMove(preRoot,m).state after all relay, finishTurn, player switch and any phase transition",
+    "primaryEligibility": [
+      "preRoot.winner is null",
+      "postRoot.winner is null",
+      "direct move application does not produce relay-limit",
+      "preRoot/move/postRoot binding is exact in production and independent event implementation"
+    ],
+    "terminalPostMoveHandling": "not a primary scientific unit; retained only as technical/source provenance",
+    "relayLimitHandling": "technical invalidity sentinel, never a game-theoretic outcome"
+  },
+  "eventFamilies": [
+    {
+      "eventId": "BRMGI-E1-CAPTURE-SOURCE-MOVE",
+      "role": "FORMAL-CANDIDATE-FAMILY",
+      "eventDefinition": "actual source move has move.type == capture",
+      "sameRootCounterfactualAvailable": false,
+      "identifiabilityReason": "capture is mandatory; roots with an available capture do not provide legal non-capture alternatives",
+      "controlDefinition": "nearest earlier primary-eligible actual source move in the same source trajectory and same pre-phase with move.type != capture; search backward only to eventScanPlyStart and never across a phase boundary",
+      "unitSelection": "earliest comparable capture event per source trajectory",
+      "claimBoundary": "association / move-conditioned structural change only"
+    },
+    {
+      "eventId": "BRMGI-E2-NYUMBA-USE-VS-STOP",
+      "role": "FORMAL-CANDIDATE-FAMILY",
+      "eventDefinition": "Namua capture root where engine.moveVariants exposes stop and use variants for the same physical opening move, the post RAW states differ, and use causes mover houseOwned true->false while stop retains mover houseOwned true",
+      "sameRootCounterfactualAvailable": true,
+      "eventArm": "houseChoice=use",
+      "controlArm": "houseChoice=stop",
+      "pairBinding": "same pre-root and same physical opening move fields except houseChoice",
+      "unitSelection": "earliest comparable root per source trajectory; if multiple physical moves qualify at that root, canonical-lowest physical move identity",
+      "claimBoundary": "same-root move-conditioned contrast; no general causal Bao mechanism claim"
+    },
+    {
+      "eventId": "BRMGI-E3-RESERVE-EXHAUSTION-NAMUA-TO-MTAJI",
+      "role": "FORMAL-CANDIDATE-FAMILY",
+      "eventDefinition": "actual source move with pre.phase == namua and post.phase == mtaji",
+      "mechanicalLink": "the current engine changes to mtaji when both reserves reach zero; reserve exhaustion and Namua-to-Mtaji are therefore one linked compound event here",
+      "controlDefinition": "immediately preceding actual source move in the same source trajectory, requiring control pre.phase == namua, control post.phase == namua, mover reserve decrement exactly 1, and both control/event units primary-eligible",
+      "unitSelection": "the unique first comparable Namua-to-Mtaji transition per source trajectory",
+      "claimBoundary": "event-conditioned structural change around the linked reserve-exhaustion/phase-transition boundary; no separable causal reserve effect"
+    },
+    {
+      "eventId": "BRMGI-E0-NAMUA-RESERVE-DECREMENT-NONTRANSITION",
+      "role": "CONTROL-AND-DESCRIPTIVE-ONLY",
+      "eventDefinition": "pre.phase == namua, post.phase == namua, mover reserve decreases by exactly 1",
+      "independentFormalCandidateAuthorized": false,
+      "reason": "generic Namua reserve decrement is phase-linked and lacks a same-root decrement/no-decrement contrast"
+    }
+  ],
+  "compoundEventPolicy": {
+    "eventLabelsAreNonExclusive": true,
+    "fullEventLabelVectorRetained": true,
+    "postHocCompoundEventRemovalProhibited": true,
+    "captureAndPhaseTransitionOverlapAllowed": true,
+    "reserveExhaustionAndNamuaToMtajiMustRemainLinked": true,
+    "compoundSubtypeMayBeReportedDescriptively": true,
+    "compoundSubtypePostHocFormalSubgroupAuthorized": false
+  },
+  "measurementEndpoints": [
+    {
+      "metricId": "BRMGI-M1-ROOT-LEGAL-WIDTH",
+      "family": "LGTGMIV-F5-REPLY-GEOMETRY",
+      "primitive": "integer root legal move count"
+    },
+    {
+      "metricId": "BRMGI-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "family": "LGTGMIV-F1-TREE-OCCURRENCE",
+      "primitive": "integer tree node occurrence sum over relative depths 0..5"
+    },
+    {
+      "metricId": "BRMGI-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "family": "LGTGMIV-F2-RAW-GRAPH",
+      "primitive": "integer global distinct RAW state count over relative depths 0..5"
+    },
+    {
+      "metricId": "BRMGI-M4-DUPLICATE-TRANSITION-FRACTION",
+      "family": "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+      "primitive": "exact reduced rational duplicate encounter count divided by bounded transition occurrence count; denominator is sum uniqueTransitionCount[d] for d=0..4 as fixed before G3-05 fresh evidence"
+    },
+    {
+      "metricId": "BRMGI-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "family": "LGTGMIV-F4-TREE-GRAPH-RELATION",
+      "primitive": "exact reduced rational cumulative tree node occurrence divided by global distinct RAW state count"
+    },
+    {
+      "metricId": "BRMGI-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "family": "LGTGMIV-F5-REPLY-GEOMETRY",
+      "primitive": "exact reduced rational count of depth-labelled nonterminal unique RAW-state presences with legal width exactly 1 divided by all depth-labelled nonterminal unique RAW-state presences"
+    }
+  ],
+  "exactArithmetic": {
+    "integerEndpoints": "signed integer arithmetic",
+    "rationalEndpoints": "reduced numerator/denominator integer pairs with positive denominator",
+    "prePostDelta": "D_m(s,m) = G_m(postRoot) - G_m(preRoot) exactly",
+    "eventControlContrast": "C_m = D_m(eventArm) - D_m(controlArm) exactly",
+    "floatTolerance": null,
+    "roundingForScientificDecision": null,
+    "undefinedDenominator": "candidate unit is non-comparable for that metric; no imputation"
+  },
+  "experimentalUnit": {
+    "primaryCluster": "source trajectory",
+    "maxUnitsPerEventFamilyPerTrajectory": 1,
+    "eventUnit": "prospectively selected event/control pair bound to one source trajectory",
+    "withinTrajectoryRootsIndependentSamples": false,
+    "crossEventReuseOfTrajectoryAllowed": true,
+    "candidateInferenceReduction": "one exact event-minus-control contrast sign per source trajectory/event/metric"
+  },
+  "stage1Population": {
+    "targetComparableUnitsPerFormalEventFamily": 8,
+    "maximumFormalEventFamilies": 3,
+    "selection": "seed ascending; earliest comparable event unit per event family per trajectory",
+    "seedExtension": false,
+    "ifTargetNotReachedWithinBlock": "event family is STAGE1-NON-ESTIMABLE and produces no promoted candidate",
+    "maximumDistinctLocalReconstructions": 96
+  },
+  "stage1CandidateUniverse": "all Cartesian products of formal event families E1,E2,E3 and metrics M1..M6; no event/metric may be added after fresh access",
+  "stage1PromotionGate": {
+    "technicalGlobalGateRequired": true,
+    "productionIndependentExactRequired": true,
+    "selectedComparableUnitsRequired": 8,
+    "minimumNonzeroExactContrasts": 6,
+    "directionFreeze": "sign with at least two-thirds of nonzero exact contrasts; ties or weaker dominance are not promoted",
+    "magnitudeThreshold": null,
+    "promotionIdentity": "eventId + metricId + frozen direction",
+    "zeroPromotedCandidatesConsequence": "Stage 2 NOT-AUTHORIZED-NOT-EXECUTED"
+  },
+  "stage2Population": {
+    "targetComparableUnitsPerPromotedEventFamily": 12,
+    "selection": "seed ascending using identical event/control rules, after Stage 1 identity exclusion",
+    "seedExtension": false,
+    "ifTargetNotReachedWithinBlock": "all promoted candidates in that event family are NON-ESTIMABLE",
+    "maximumDistinctLocalReconstructions": 144
+  },
+  "stage2FormalRule": {
+    "testedSet": "Stage 1 promoted candidate identities and frozen directions only",
+    "requiredSelectedComparableUnits": 12,
+    "minimumNonzeroExactContrasts": 10,
+    "test": "exact two-sided sign test on nonzero trajectory-level event-minus-control contrast signs",
+    "directionRequirement": "dominant sign must equal Stage 1 frozen direction",
+    "multiplicity": "Holm-Bonferroni over all promoted candidates",
+    "familyWiseAlpha": "1/20",
+    "confirmed": "all technical/estimability gates pass, frozen direction holds, and Holm-adjusted criterion passes",
+    "notConfirmed": "estimable candidate fails direction and/or multiplicity-aware test",
+    "nonEstimable": "required population, exactness, definition, or minimum-nonzero estimability gate fails without a global technical-invalid condition"
+  },
+  "identityFirewall": {
+    "upstreamIdentityOnlySources": [
+      "LGTGMIV-STUDY1",
+      "EBRWS-STUDY1",
+      "TCTGD-STUDY1",
+      "SFCDF-STUDY1",
+      "BECT-STUDY1"
+    ],
+    "upstreamScientificOutcomeFieldsRetained": false,
+    "stage2ExcludesStage1": [
+      "source seed",
+      "full source trajectory identity",
+      "first-16 opening-prefix identity",
+      "RAW pre-root identity",
+      "RAW post-root identity",
+      "pre/post root-pair identity",
+      "pre-root bound canonical move identity",
+      "source ply/event-window identity",
+      "same-root event/control pair identity"
+    ],
+    "g303DiagnosticScientificFieldsRetained": false,
+    "g304CandidateValuesOrDirectionsUsedForSelection": false,
+    "g305PartialTelemetryRetained": false
+  },
+  "resourceCeilings": {
+    "perLocalReconstruction": {
+      "uniqueRawStatesMax": 100000,
+      "uniqueTransitionsMax": 750000,
+      "parentExpansionsMax": 100000,
+      "legalMoveEvaluationsMax": 750000,
+      "summedTreeNodeOccurrencesMax": 1000000000,
+      "elapsedMsMax": 180000,
+      "peakRssBytesMax": 4294967296,
+      "artifactBytesMax": 33554432
+    },
+    "stage1": {
+      "elapsedMsMax": 7200000,
+      "artifactBytesMax": 268435456,
+      "distinctLocalReconstructionsMax": 96
+    },
+    "stage2": {
+      "elapsedMsMax": 10800000,
+      "artifactBytesMax": 402653184,
+      "distinctLocalReconstructionsMax": 144
+    },
+    "cacheKey": "authoritative RAW identity + relative horizon + implementation family",
+    "cacheMayUseSymmetry": false,
+    "resourceCeilingFailureReplacement": false
+  },
+  "relayLimitPolicy": {
+    "g305RelayLimitUsedAsScientificEvidence": false,
+    "g305RelayLimitUsedAsTechnicalRiskInformation": true,
+    "sourceTrajectoryRelayLimit": "source trajectory is technical-ineligible under the frozen source rule before geometry measurement",
+    "directSelectedMoveRelayLimit": "unit is primary-ineligible before geometry measurement",
+    "relayLimitEncounteredInsideRequiredBoundedReconstruction": "entire fresh Stage is TECHNICAL-INVALID and fails closed; no root replacement, seed extension or same-evidence rerun"
+  },
+  "executionIntegrity": {
+    "maxScientificExecutionsPerFreshStage": 1,
+    "armingSeparatedFromComputation": true,
+    "singleScientificTriggerPath": true,
+    "concurrencyGuardRequired": true,
+    "durablePreComputationLeaseRequired": true,
+    "sourceBlobBindingRequired": true,
+    "remoteAdvancementAllowlistRequired": true,
+    "artifactUploadBeforeRepositoryMirrorRequired": true,
+    "exactByteRecoveryOnly": true,
+    "scientificRecomputationForArtifactRecoveryProhibited": true,
+    "executionCountAuditRequired": true
+  },
+  "noRescue": {
+    "boundary": "first fresh scientific generation or read, whichever occurs first",
+    "afterBoundaryProhibited": [
+      "same-seed rerun after implementation repair",
+      "seed extension",
+      "root/event-unit replacement after scientific technical failure",
+      "event-family addition",
+      "compound-event favorable filtering",
+      "endpoint addition or substitution",
+      "threshold relaxation",
+      "control redesign",
+      "favorable subgroup creation",
+      "horizon change",
+      "representation change",
+      "resource-ceiling change",
+      "formal-test substitution"
+    ]
+  },
+  "stage0MandatoryControls": [
+    "deterministic source replay and canonical move ordering",
+    "pre-root / canonical move / complete post-root exact binding",
+    "capture-mandatory identifiability fixture",
+    "Namua reserve decrement and linked reserve-exhaustion/Namua-to-Mtaji fixture",
+    "nyumba stop/use same-physical-move variant binding fixture",
+    "nonexclusive compound-event label fixture",
+    "event-specific control selection invariance",
+    "exact integer/rational pre/post delta and event-control contrast arithmetic",
+    "undefined-denominator behavior",
+    "production / structurally independent implementation separation",
+    "canonical scientific JSON/UTF-8/SHA-256 equality",
+    "cache identity and no-symmetry behavior",
+    "relay-limit fail-closed sentinel without protected-evidence access",
+    "per-reconstruction and stage resource accounting",
+    "single-trigger, durable lease, source binding, artifact-before-mirror control path",
+    "protected depth-10 firewall"
+  ],
+  "interpretationBoundary": {
+    "causalEffectAuthorized": false,
+    "causalMechanismAuthorized": false,
+    "longHorizonOutcomeEffectAuthorized": false,
+    "gameTheoreticForcingAuthorized": false,
+    "bestMoveClarityAuthorized": false,
+    "searchEaseOrStabilityAuthorized": false,
+    "strategicValueAuthorized": false,
+    "winProbabilityAuthorized": false,
+    "humanDifficultyAuthorized": false,
+    "generalizationBeyondRelativeDepth5Authorized": false,
+    "publicBaoAIEngineeringOutcomeIsScientificEndpoint": false
+  },
+  "protectedEvidence": {
+    "name": "standard initial RAW root complete exact depth-10 holdout",
+    "status": "SEALED / NOT GENERATED / NOT READ",
+    "generationAuthorized": false,
+    "partialGenerationAuthorized": false,
+    "readAuthorized": false,
+    "peekAuthorized": false,
+    "trialEnumerationAuthorized": false,
+    "resourceEstimatePeekAuthorized": false
+  }
+}
