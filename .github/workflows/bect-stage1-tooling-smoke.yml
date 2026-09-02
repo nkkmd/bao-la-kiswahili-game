@@ -55,7 +55,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(grep -c 'STAGE1_EXECUTION_TRIGGER' .github/workflows/bect-stage1-development.yml)" -eq 1
+          test "$(grep -c '^      - doc/branch-expansion-compression-transition/authorizations/STAGE1_EXECUTION_TRIGGER$' .github/workflows/bect-stage1-development.yml)" -eq 1
           ! grep -q 'workflow_run:' .github/workflows/bect-stage1-development.yml
           ! grep -q 'workflow_dispatch:' .github/workflows/bect-stage1-development.yml
           grep -q 'cancel-in-progress: false' .github/workflows/bect-stage1-development.yml
