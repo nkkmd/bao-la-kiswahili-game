@@ -4,7 +4,7 @@ Updated: 2026-09-02
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED
+Program status = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / G3-02 RESEARCH COMPLETE ON BRANCH / NEXT PROGRAM REVIEW REQUIRED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -14,16 +14,21 @@ G3-01 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL
 LGTGMIV formal eligible measurement families = F1,F2,F3,F4,F5
 G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-02 research workflow = COMPLETE ON RESEARCH BRANCH
+G3-02 main integration = NOT PERFORMED / PENDING EXPLICIT USER INSTRUCTION
 G3-02 Stage 0 = EBRWS-S0-TECHNICAL-2026-09-01-v1 / STAGE0-PASS
 G3-02 Stage 1 = EBRWS-S1-DEVELOPMENT-2026-09-01-v1 / TECHNICAL-INVALID
+G3-02 Stage 1 authorized scientific executions = 1
+G3-02 Stage 1 actual scientific executions = 2 / execution-count contract violated
 G3-02 Stage 2 = EBRWS-S2-FORMAL-2026-09-01-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 G3-02 formal promoted candidate set = []
 G3-02 Stage 1 seed = 31210001..31210192 / CONSUMED
 G3-02 Stage 2 seed = 31220001..31220288 / NOT CONSUMED
 G3-02 no-rescue boundary = CROSSED / ACTIVE
+G3-02 Stage 1 execution workflow = CLOSED / DISABLED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = research/g3-02-effective-branching-reply-width-structure / closure synchronization
-Next scientific action = separate post-G3-02 program review
+Active scientific research branch = none; closed G3-02 branch awaits explicit integration instruction
+Next scientific action = separate post-G3-02 program review / NOT AUTOMATICALLY AUTHORIZED
 ```
 
 ## Immutable upstream boundaries
@@ -85,19 +90,20 @@ fresh scientific seed consumption = false
 protected depth-10 access = false
 ```
 
-## Stage 1
+## Stage 1 authorization and authorized execution
 
-Stage 1 was separately authorized for exactly one fresh-development execution:
+Stage 1 was separately authorized for exactly one fresh-development scientific execution:
 
 ```text
 seed = 31210001..31210192
 target = 12 Namua + 12 Mtaji
 relative depth = 5
+authorized scientific executions = 1
 ```
 
 Tooling smoke run `33525232642` passed without fresh evidence access.
 
-Authorized one-shot run `33569323221`, job `100059596453`, completed the scientific execution step. The frozen runner locally reported:
+Authorized run `33569323221`, job `100059596453`, completed the scientific execution step. The frozen runner locally reported:
 
 ```text
 reported runner disposition = STAGE1-PASS
@@ -114,11 +120,34 @@ Runner-local diagnostic candidates:
 
 However, the generated canonical Stage 1 files were committed only in the ephemeral runner workspace. Push of local commit `709bc393` was rejected non-fast-forward because the remote branch advanced during execution, and the local commit is not recoverable after runner teardown.
 
-Because fresh evidence had already crossed the no-rescue boundary and the Stage 1 authorization permitted exactly one execution, the same evidence was not re-run to rebuild the missing canonical files.
+The frozen protocol does not permit a result-dependent authorized repair rerun after the no-rescue boundary. No such valid / intentional repair rerun was performed.
 
-The protocol requires no technical-integrity violation and an immutable promoted-candidate artifact before Stage 2 authorization. Therefore the runner-local positive summary is diagnostic provenance only.
+## Final Actions-history audit — unintended duplicate execution
 
-Formal disposition:
+Final Actions-history audit established that a second Stage 1 scientific execution occurred:
+
+```text
+run 33569323221 = authorized one-shot / canonical materialization failure
+run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
+authorized scientific executions = 1
+actual scientific executions = 2
+execution-count contract = violated
+```
+
+Run `33569382663`, job `100060967285`, was unintentionally queued by a workflow-arming commit before the first scientific outcome was known. Because the workflow used non-cancelling concurrency, its actual computation began only after the first run had completed the scientific step and crossed the no-rescue boundary.
+
+This run therefore violated the frozen exactly-one-execution authorization. It locally produced the same scientific core / candidate-set / scientific-result file hash as the authorized run, but this equality is **not** a valid replication, confirmation, repair, or rescue and is excluded from scientific inference.
+
+The duplicate run's local result commit `24c57398` was also rejected non-fast-forward and is not recoverable.
+
+## Formal fail-closed closure
+
+The Study has two recorded technical-integrity failures:
+
+1. canonical Stage 1 result materialization failure from the authorized execution;
+2. exactly-one-execution contract violation from the unintended duplicate run.
+
+Accordingly:
 
 ```text
 Stage 1 = TECHNICAL-INVALID
@@ -126,13 +155,15 @@ Study = CLOSED / TECHNICAL-INVALID
 formal promoted candidate set = []
 ```
 
+The runner-local positive summaries are diagnostic provenance only. The unauthorized duplicate execution has formal use `INVALID-DO-NOT-USE`.
+
 ## Stage 2
 
 `EBRWS-S2-FORMAL-2026-09-01-v1` is:
 
 `NOT-AUTHORIZED-NOT-EXECUTED`
 
-Stage 2 seed `31220001..31220288` remains unconsumed. Runner-local Stage 1 diagnostic candidates do not authorize Stage 2.
+Stage 2 seed `31220001..31220288` remains unconsumed. Neither runner-local Stage 1 summary authorizes Stage 2.
 
 ## Protected evidence
 
@@ -140,11 +171,11 @@ G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains
 
 `SEALED / NOT GENERATED / NOT READ`
 
-G3-02 did not generate/read it and did not use G2-12 as depth-10 truth.
+Neither Stage 1 execution generated/read it and G2-12 was not used as depth-10 truth.
 
 ## Claim boundary
 
-G3-02 has no formal positive branching/reply-width structure claim. In particular, the diagnostic compression-dominant observations are not generalized to Bao, depth >5, best move, search difficulty, strategic/game-theoretic forcing, win/value, causal strategic effects, or human difficulty.
+G3-02 has no formal positive branching/reply-width structure claim. In particular, the diagnostic compression-dominant observations and the duplicate-run equality are not generalized to Bao, depth >5, best move, search difficulty, strategic/game-theoretic forcing, win/value, causal strategic effects, or human difficulty.
 
 ## Next program boundary
 
@@ -156,6 +187,12 @@ G3-02 closure does not automatically authorize G3-03 or later studies. The next 
 - RAW-only identity and validated transform set `[]`,
 - protected depth-10 holdout.
 
+## Main integration boundary
+
+G3-02 research work is complete on `research/g3-02-effective-branching-reply-width-structure`.
+
+`main` integration has **not** been performed and remains pending explicit user instruction. No merge, fast-forward, or pull-request integration action is authorized by this completion state.
+
 ## Canonical records
 
 - `README.md`
@@ -166,21 +203,8 @@ G3-02 closure does not automatically authorize G3-03 or later studies. The next 
 - `../effective-branching-reply-width-structure/DECISION_REGISTER.md`
 - `../effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`
 - `../effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
+- `../effective-branching-reply-width-structure/checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`
 - `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
+- `../research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
 
 Historical `PROGRAM_PLAN.md` remains unchanged.
-
-## Final Actions-history audit — G3-02 execution count
-
-Final audit established:
-
-```text
-G3-02 Stage 1 authorized scientific executions = 1
-G3-02 Stage 1 actual scientific executions = 2
-run 33569323221 = authorized one-shot / canonical materialization failure
-run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
-execution-count contract = violated
-Stage 1 execution workflow = CLOSED / DISABLED
-```
-
-The duplicate run is excluded from scientific inference and cannot be used as replication or rescue. G3-02 remains `CLOSED / TECHNICAL-INVALID`, formal promoted candidate set `[]`, Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`.
