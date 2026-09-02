@@ -234,6 +234,8 @@ No Stage 2 workflow execution or formal holdout read is authorized.
 
 ## Closure records
 
+- `README.md`
+- `STUDY_1_OVERVIEW.md`
 - `STUDY_1_FINAL_REPORT.md`
 - `CURRENT_STATUS.md`
 - `DECISION_REGISTER.md`

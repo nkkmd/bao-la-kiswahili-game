@@ -1020,6 +1020,7 @@ G3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration /
 
 **最初に読む:**
 
+- [`transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`](transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md)
 - [`transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)
 - [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
 
@@ -1030,7 +1031,7 @@ G3-03 `TCTGD-STUDY1`はRAW-only relative depth 5でtransposition concentration /
 - [`transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)
 - [`research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)
 
-**Boundary:** canonical value equalityをpost hoc rescueとして用いず、同じStage 1 seedをprototype修正後に再実行しない。次のStudyにはseparate post-G3-03 program reviewが必要。
+**Boundary:** canonical value equalityをpost hoc rescueとして用いず、同じStage 1 seedをprototype修正後に再実行しない。post-G3-03 program reviewはその後別途完了し、G3-04が独立Studyとして実施・closureされたが、これはTCTGD-STUDY1を救済・再分類するものではない。
 
 
 
@@ -1050,8 +1051,8 @@ Study lifecycleは`CLOSED / FORMAL-COMPLETE`。これはcandidate-level formal l
 
 **最初に読む:**
 
-- [`structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md)
 - [`structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`](structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md)
+- [`structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md)
 - [`structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`](structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md)
 - [`structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`](structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md)
 

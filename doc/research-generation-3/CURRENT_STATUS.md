@@ -269,6 +269,8 @@ Stage 2 seed = NOT CONSUMED
 
 Canonical closure records:
 
+- `../transposition-concentration-tree-graph-divergence/README.md`
+- `../transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`
 - `../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`
 - `../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`
 - `../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`
@@ -309,7 +311,7 @@ G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-Neither G3-02 nor G3-03 generated/read/peeked at it. G2-12 is not used as depth-10 truth.
+G3-02 / G3-03 / G3-04はいずれもこのholdoutを生成・read・peekしていない。G2-12はdepth-10 truthの代替として使用しない。
 
 ## Claim boundary
 
@@ -318,6 +320,8 @@ G3-03 has no formal positive transposition/tree-graph phase-difference claim.
 The diagnostic C1–C4 directions must not be generalized to Bao overall, depth >5, best move, search difficulty, strategic simplicity, tactical simplicity, value, win probability, forcing, causal effects, or human difficulty.
 
 The technical observation that canonical scientific bytes matched while prototype-sensitive in-memory equality failed is a reproducibility/verification lesson only; it is not a scientific confirmation of the candidate effects.
+
+G3-04のformal positive claimはC1/C6のfrozen candidate-level phase differenceだけに限定する。C1/C6をgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、position value / win probability、causal phase effect、relative depth 5を超える一般化へ拡張しない。
 
 ## Next program boundary
 

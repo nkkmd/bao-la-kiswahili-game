@@ -9,6 +9,7 @@ Status = CLOSED / TECHNICAL-INVALID
 Research branch = research/g3-03-transposition-tree-graph-divergence
 baseline remote main = 6b1457294666267c5a75c8516001acd1ef7d2fcd
 program review = G3-03-AUTHORIZED
+post-G3-03 program review = COMPLETED / G3-04-AUTHORIZED / separate downstream Study; no G3-03 rescue
 prospective Study/prereg freeze = COMPLETE
 technical execution v2 refreeze = COMPLETE / PRE-FRESH / SCIENTIFIC CONTRACT UNCHANGED
 Stage 0 = TCTGD-S0-TECHNICAL-2026-09-02-v1 / STAGE0-PASS
@@ -21,7 +22,7 @@ Stage 2 seed = 31320001..31320288 / NOT CONSUMED
 formal promoted candidate set = []
 no-rescue boundary = CROSSED / ACTIVE
 protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-next scientific action = separate post-G3-03 current-state program review before any G3-04 or later Study authorization
+next scientific action = none within TCTGD-STUDY1; Study remains closed. The separate post-G3-03 review later authorized G3-04, which subsequently closed independently.
 ```
 
 ## Formal scientific scope

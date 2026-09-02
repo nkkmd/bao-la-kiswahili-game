@@ -44,6 +44,7 @@ Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+- [`../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md) — G3-04初見向けformal overview
 - [`../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md) — completed G3-04 formal result and interpretation boundary
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したhistorical prospective plan。current stateに合わせて書き換えない
 - [`../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`](../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md) — G3-03開始前のpost-G3-02 program authorization decision
@@ -159,7 +160,7 @@ G3-02 / G3-03 / G3-04はいずれもこれを生成・readしていない。G3-0
 
 branching / reply-width geometryをbest move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。G3-02のdiagnostic patternをBao一般のformal structure claimへ昇格させない。
 
-G3-03で将来観測されるtransposition/reconvergenceやtree/graph divergenceも、strategic simplicity、tactical simplicity、search ease、best-move clarity、game-theoretic forcing、value、win probability、human difficulty、causal strategic effectへ自動的に読み替えない。
+G3-03のtechnical-invalid runに残るdiagnostic transposition/reconvergenceやtree/graph divergence方向を、strategic simplicity、tactical simplicity、search ease、best-move clarity、game-theoretic forcing、value、win probability、human difficulty、causal strategic effectへ読み替えない。G3-04のformal C1/C6も同様に、frozen bounded phase-difference claimを超えて解釈しない。
 
 ## Next program boundary
 
@@ -169,6 +170,15 @@ Historical program plan上の次候補はG3-05 — Branch Expansion / Compressio
 
 ## Canonical records
 
+- `../transposition-concentration-tree-graph-divergence/README.md`
+- `../transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`
+- `../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`
+- `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
+- `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
+- `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
+- `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`
 - `CURRENT_STATUS.md`
 - `PROGRAM_PLAN.md` — immutable historical prospective plan
 - `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`

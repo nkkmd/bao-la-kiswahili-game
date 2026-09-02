@@ -112,6 +112,6 @@ G3-04のclosureによってこのholdoutの用途・封印状態は変更しな�
 
 ## Repository lifecycle
 
-Scientific executionは完了した。次の作業はclosure文書の整合性確認、Research Generation 3 current-facing documentsへの反映、通常PRによる`main`統合である。
+Scientific executionとclosure/current-facing文書の整合性反映は完了した。`main`統合は未実施であり、明示的な統合指示があるまで行わない。program上の次科学作業はseparate post-G3-04 G3-05 authorization reviewであり、G3-05はまだauthorizeされていない。
 
 `CLOSED / FORMAL-COMPLETE`はrepository lifecycle statusであり、新しい科学的omnibus labelではない。formal inferential labelsはpreregistered candidate-level `CONFIRMED` / `NOT-CONFIRMED`のみを用いる。
