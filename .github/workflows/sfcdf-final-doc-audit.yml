@@ -23,7 +23,7 @@ jobs:
           ref: research/g3-04-structural-forcing-corridor-decision-funnel
           fetch-depth: 0
       - name: Apply final current-facing consistency pass
-        run: node tools/experiments/finalize-g3-03-g3-04-doc-consistency.js
+        run: node tools/experiments/finalize-g3-03-g3-04-doc-consistency-v2.js
       - name: Audit changed paths and historical program plan
         shell: bash
         run: |
