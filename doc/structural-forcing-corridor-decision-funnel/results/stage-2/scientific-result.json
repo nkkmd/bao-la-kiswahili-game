@@ -1,0 +1,1663 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDF-STUDY1",
+  "stageId": "SFCDF-S2-FORMAL-2026-09-02-v1",
+  "evidenceClass": "FRESH-FORMAL-HELDOUT",
+  "authorizedScientificExecutions": 1,
+  "executionLease": {
+    "workflowRunId": 33624399706,
+    "authorizationNonce": "SFCDF-S2-AUTH-2026-09-02-V1-01",
+    "authorizedScientificContentHead": "1d6ba1982855cc3ddf3abf9ebd9c9b8daa5c21c4",
+    "leaseCommitSha": "325366baedcd437f45991e2941bc38fc2e04bd1f"
+  },
+  "seedBlock": "31420001..31420288",
+  "seedBlockConsumed": true,
+  "noRescueBoundaryCrossed": true,
+  "formalInput": {
+    "path": "doc/structural-forcing-corridor-decision-funnel/prereg/STAGE_2_FORMAL_INPUT.json",
+    "gitBlobSha": "88563b39f2e9fec2bdf0e00eb40ec9debbba9ff0",
+    "stage1IdentityCoreSha256": "eca6d00a88def284644bdf59bc599e8faae7d09f3aaa2656fafd046c35fd4c0d",
+    "promotedCandidates": [
+      {
+        "candidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+        "direction": "MTAJI-GREATER"
+      },
+      {
+        "candidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+        "direction": "NAMUA-GREATER"
+      }
+    ]
+  },
+  "sourceSelection": {
+    "production": {
+      "populationComplete": true,
+      "selectedPairCount": 18,
+      "rejections": [
+        {
+          "sourceSeed": 31420006,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420008,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": false,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420013,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420021,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420022,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        }
+      ],
+      "pairs": [
+        {
+          "pairId": "seed-31420001",
+          "sourceSeed": 31420001,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420001,
+            "selectedPly": 24,
+            "rootRawSha256": "45394ec4a85de387bb4d53498e7e4487e6574f9cc087f35583cc7f6cb44ca749",
+            "sourceTrajectorySha256": "dec016e88e9bbec9d00c85c717b5436a41c4d2117c23e2a8735117d2dffb7556",
+            "openingPrefixSha256": "553b27abb1545880326e4ab17fad134d0b467c237b56a2ba7dd373fda37a328d",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420001,
+            "selectedPly": 44,
+            "rootRawSha256": "67674fbdcc9e3ea06109e65575d0eb06be6080ca174494bc7b32ab796792f6f3",
+            "sourceTrajectorySha256": "2d6ee7df90f4f8e275949ceef94c3db6902faf21662522c49819917b275a0dbe",
+            "openingPrefixSha256": "553b27abb1545880326e4ab17fad134d0b467c237b56a2ba7dd373fda37a328d",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420002",
+          "sourceSeed": 31420002,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420002,
+            "selectedPly": 24,
+            "rootRawSha256": "6240bf139f24ccb52e01b632c985bc02551503dd27393d05ab41fa15c66e467d",
+            "sourceTrajectorySha256": "4dd85f7928437438f073abc879d8ac906d0670131d66fd3c0c2536b87bf7def2",
+            "openingPrefixSha256": "abca1f18d3697499b28729a9af6c8140fae54e0db18e03bbdc5d94f7dcdd0bbc",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420002,
+            "selectedPly": 44,
+            "rootRawSha256": "569b56e3a729b5e1cd741d13fea8be4be7ffbcd7cd16cd30c377395997e35585",
+            "sourceTrajectorySha256": "64b54d70662939c8860cd7f13e3c293a6af2cabe4a29ff3d4be1cf3e7aac64d3",
+            "openingPrefixSha256": "abca1f18d3697499b28729a9af6c8140fae54e0db18e03bbdc5d94f7dcdd0bbc",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420003",
+          "sourceSeed": 31420003,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420003,
+            "selectedPly": 24,
+            "rootRawSha256": "b0a2984a4db96b133cec837d8f438c6427a1d6d6fe9ad6e34324365ce5db8a2f",
+            "sourceTrajectorySha256": "ff39ad4ef8ef82359e06c90fb6133c962864bb79495b2762cb4e8b23000e8af7",
+            "openingPrefixSha256": "69d878aee162f480ca622077eb0beffc721d01dbfdb3026ce354132fbbae6441",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420003,
+            "selectedPly": 44,
+            "rootRawSha256": "5c47a6e9320d98c8c84c293937d89c19b41b2e84c7e06ebce0cf95d7dd3c0c54",
+            "sourceTrajectorySha256": "1424af7984afa06b8625478ea844a8632bdaa74b746229d41f2002762fa74399",
+            "openingPrefixSha256": "69d878aee162f480ca622077eb0beffc721d01dbfdb3026ce354132fbbae6441",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420004",
+          "sourceSeed": 31420004,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420004,
+            "selectedPly": 24,
+            "rootRawSha256": "d53ecde605838e49992e2f79bf117932058db021fb3f0e0e6aed6b4f8d0ec5ad",
+            "sourceTrajectorySha256": "0b0fbcf96a0588375ae07fd71572ff8780cc8c62c790adaeabb18a202b6e710a",
+            "openingPrefixSha256": "a293d93d0b1309c77b0a73ec51e80fc4672527982529f1c336c2e743c95236e2",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420004,
+            "selectedPly": 44,
+            "rootRawSha256": "9c6971ccf5680ce74b9d095f03880ce246d069a030efe48962a446f6c8402089",
+            "sourceTrajectorySha256": "95b1c3d8b163c6530125903d591a348850f7445b0301b0d8f2665a52696d8524",
+            "openingPrefixSha256": "a293d93d0b1309c77b0a73ec51e80fc4672527982529f1c336c2e743c95236e2",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420005",
+          "sourceSeed": 31420005,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420005,
+            "selectedPly": 24,
+            "rootRawSha256": "b22682f5174e17f36aaae09bea77756ee8c35897962607c27fc27caf538bede7",
+            "sourceTrajectorySha256": "d1d1360b1dcfaea332e4efa85f39eaf47957d41507c9fe0b7a2d76fdccc7d27e",
+            "openingPrefixSha256": "01bcca834385261b9b9f89a8abee31f9f4deab0648bde76a56ac3ca07614cde8",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420005,
+            "selectedPly": 44,
+            "rootRawSha256": "7e145a9b91477db865adac063200f8476cd846355c62ebe496524f96499ca382",
+            "sourceTrajectorySha256": "d3e9dbd3b82a02c344b421de2041452ddee677dee3eb833414e76a36f8428924",
+            "openingPrefixSha256": "01bcca834385261b9b9f89a8abee31f9f4deab0648bde76a56ac3ca07614cde8",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420007",
+          "sourceSeed": 31420007,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420007,
+            "selectedPly": 24,
+            "rootRawSha256": "41cb49ecc9aa66acbb312f88b71c9dddc107b5eed9587cb426006c9f7d2f30e6",
+            "sourceTrajectorySha256": "5e62bb8ee62ece2220a797ac920b70ccbda78629bbf35e66f771c6a9ec4e184f",
+            "openingPrefixSha256": "72d09ef1173eee927884f067013b4d9802cad0b59e3d0f3b7781bf02d7d8b923",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420007,
+            "selectedPly": 44,
+            "rootRawSha256": "b90d5b9c003ebaf1b969723273971c0f61abced6874c1e91f652ba74db03c7c9",
+            "sourceTrajectorySha256": "cf4cc0318554381a243302868633911a3f1cc678661a012f223178f3c7b6c4e3",
+            "openingPrefixSha256": "72d09ef1173eee927884f067013b4d9802cad0b59e3d0f3b7781bf02d7d8b923",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420009",
+          "sourceSeed": 31420009,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420009,
+            "selectedPly": 24,
+            "rootRawSha256": "50464543b7395523225a488d4c918e571c6fcf42d4b707479f19898d25e28979",
+            "sourceTrajectorySha256": "f2e107677df83f727ad201a5f805a0518bd4460b29ae3ceb6a9410121d2be35d",
+            "openingPrefixSha256": "2e9289f28c71149bb0ddea63929f09f81b9f67b0da54da9589b4502a54f3e2bf",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420009,
+            "selectedPly": 44,
+            "rootRawSha256": "1a8aea957487d7b0264e36e3fe6969afbbde26b2cf61930530a8f8c67ffeb9e9",
+            "sourceTrajectorySha256": "15900bf73a9395f87b834aaf051fb8ad4e456afb38198c0d01add9233b03177a",
+            "openingPrefixSha256": "2e9289f28c71149bb0ddea63929f09f81b9f67b0da54da9589b4502a54f3e2bf",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420010",
+          "sourceSeed": 31420010,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420010,
+            "selectedPly": 24,
+            "rootRawSha256": "62cf9533fed8a4ec73a7117665c6d6088a72ebe33a362e6ef82025a833a37b70",
+            "sourceTrajectorySha256": "21ea24c493995f083f7e41951ac0bf1b4b5cd94070a7ab351f0f6555ed6ceb7f",
+            "openingPrefixSha256": "d4f88d8aba2255cfd7af80ec597bc9651572a08d3a927005f6bb85c2ef5b2b07",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420010,
+            "selectedPly": 44,
+            "rootRawSha256": "f224e60cccb1f0bc74f07d51b9bb15570a40698c88a35deadab6a05f81dc6433",
+            "sourceTrajectorySha256": "28a6ce3234267b0d94471bb44e9d23d9cb93b4c19fd3961af0e8e44d01107e53",
+            "openingPrefixSha256": "d4f88d8aba2255cfd7af80ec597bc9651572a08d3a927005f6bb85c2ef5b2b07",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420011",
+          "sourceSeed": 31420011,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420011,
+            "selectedPly": 24,
+            "rootRawSha256": "329845a119401bbffae1a9ffdcd5de4eef374bc3f3b4141acad8ec54b5ecf75f",
+            "sourceTrajectorySha256": "a7a423af56fa5cf939850bc098aeea3fc9556eb497862fbf827c4f500ce8cc47",
+            "openingPrefixSha256": "5096b24a34e85b209118ae18e10fe30d98579edaef837f685f7196dc24724e56",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420011,
+            "selectedPly": 44,
+            "rootRawSha256": "e5ea352b24557e0932171d92eed9050c587688f72974a2186779b42bf14fd34a",
+            "sourceTrajectorySha256": "9ca525d2ff4eb83ad920076295afcc0b5ce3508ba7d070f993de59b2a1dcbfdd",
+            "openingPrefixSha256": "5096b24a34e85b209118ae18e10fe30d98579edaef837f685f7196dc24724e56",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420012",
+          "sourceSeed": 31420012,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420012,
+            "selectedPly": 24,
+            "rootRawSha256": "65636d50eebae27662fdb8b1baa9928adb9b35daa4c81a1ab585b5d4589ca7dc",
+            "sourceTrajectorySha256": "b93b043049afb9eafa53c4bcf14a7cc345077e953cb322ffa805355a734023c5",
+            "openingPrefixSha256": "3eb97e74a6bef57be9f293323ca0fb66859d11dcc0340ce9e551a1ad84a5ec51",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420012,
+            "selectedPly": 44,
+            "rootRawSha256": "d34ad1a83b2008fc5e30399811e4a0afb5ebaa6f8354ef0107d0585147ec2d29",
+            "sourceTrajectorySha256": "70b95ebbb134d57f45cba133366470ac2cd317f850b076262f0576b89d06c9e2",
+            "openingPrefixSha256": "3eb97e74a6bef57be9f293323ca0fb66859d11dcc0340ce9e551a1ad84a5ec51",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420014",
+          "sourceSeed": 31420014,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420014,
+            "selectedPly": 24,
+            "rootRawSha256": "4783b927fe051f7664b6e666fe2c5f2291e8ae5610b78ff2fdefcd351775d1e0",
+            "sourceTrajectorySha256": "2fd8ab1a18edbf3f94e7cd4523bd0a2bb63c39d2fc6ca6ecbfd0804510996a40",
+            "openingPrefixSha256": "d6d9a250b091d403a3992368a2d81ce4f810934cc2c64953dfaaa93662f5561a",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420014,
+            "selectedPly": 44,
+            "rootRawSha256": "ef518e49392650a4d486f9a1cb82838f2741d9fa3c32a6da8dfcdd2e6d9b6246",
+            "sourceTrajectorySha256": "48541e5e061fae1d677e903bcb4bd3ec76fdd93ce3fb88f2ba610f214ae640f7",
+            "openingPrefixSha256": "d6d9a250b091d403a3992368a2d81ce4f810934cc2c64953dfaaa93662f5561a",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420015",
+          "sourceSeed": 31420015,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420015,
+            "selectedPly": 24,
+            "rootRawSha256": "06c6399c4d93f9fa01bc54b966aadbc51ec77c75d0627ac1cd2f5d7c3154329e",
+            "sourceTrajectorySha256": "c166f884ec31d3aba4eb44e9eac6365407c30c99e640d4a103f488fb1c01f1c3",
+            "openingPrefixSha256": "27538ac3d0f67b6af86619af27e98ec28a1d6dad50a4e459cd4f551bce782583",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420015,
+            "selectedPly": 44,
+            "rootRawSha256": "c799a59f816533a65e84fde80d04bf753802541f85329263922169f91367bfb2",
+            "sourceTrajectorySha256": "5643e3bdd8ca87e42b1be319c0e82bb3e11ce21366037f235eee851af3bacf35",
+            "openingPrefixSha256": "27538ac3d0f67b6af86619af27e98ec28a1d6dad50a4e459cd4f551bce782583",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420016",
+          "sourceSeed": 31420016,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420016,
+            "selectedPly": 24,
+            "rootRawSha256": "86869c3e18456245826c7a6d85c3f9317a887d21cbb0080b94dd54f1f72bc03c",
+            "sourceTrajectorySha256": "1bd9b11e70d609034a4ca9220b16b6673728029201d00c2a06837ee0220ba233",
+            "openingPrefixSha256": "aed84bd9782509cc1e2acab327f6c3f0cd0f7da5b9fc8445308ce46b7e5b8e45",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420016,
+            "selectedPly": 44,
+            "rootRawSha256": "b750f96d1d3121b4513af9b5ec6974a4739f544e267488176d3d65f589621ba4",
+            "sourceTrajectorySha256": "159843a9c45319323f7d3e3f231dc8536d5766c3a166ede93a4dd62057ba23e0",
+            "openingPrefixSha256": "aed84bd9782509cc1e2acab327f6c3f0cd0f7da5b9fc8445308ce46b7e5b8e45",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420017",
+          "sourceSeed": 31420017,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420017,
+            "selectedPly": 24,
+            "rootRawSha256": "43ec670f43897a30a9807019e9352ed5434687661228003c1d4d58399297522a",
+            "sourceTrajectorySha256": "4409be364d04ceb577bd17e195500a217992a504130c075784f42a4b4c932934",
+            "openingPrefixSha256": "7950c2ff6e47871fce3e0173defaeef5ccd0966c4dc949392d31e6b5ff9650f4",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420017,
+            "selectedPly": 44,
+            "rootRawSha256": "7c59e8a4301a46807382a92d992775894b8ece4d0c89d0528d8ffdd9566bffc5",
+            "sourceTrajectorySha256": "7e7e4892027cc4ad8d59bfbef3107edbb4982b9f2b72b61d03e4757b09424dde",
+            "openingPrefixSha256": "7950c2ff6e47871fce3e0173defaeef5ccd0966c4dc949392d31e6b5ff9650f4",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420018",
+          "sourceSeed": 31420018,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420018,
+            "selectedPly": 24,
+            "rootRawSha256": "0b4668a172fc807311b1ab04f913a3575016da72b8efd62954edf679459a9d11",
+            "sourceTrajectorySha256": "74588d7fea4cbce6f3ec1726322d4faef88afc8c932541e3232c379a29d57ba6",
+            "openingPrefixSha256": "0e8919326d6aafd7dbdbec8d79a450f80c3c73a964a61819922435503ed93c23",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420018,
+            "selectedPly": 44,
+            "rootRawSha256": "290c5ee2ada4372f6da4a2975a668ab368599c92f656fd7ffc8b1594fa6e0e84",
+            "sourceTrajectorySha256": "e72d16f708228cefe521fa9186b1c2178b57ba35b41b78f044f875c872ec7d15",
+            "openingPrefixSha256": "0e8919326d6aafd7dbdbec8d79a450f80c3c73a964a61819922435503ed93c23",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420019",
+          "sourceSeed": 31420019,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420019,
+            "selectedPly": 24,
+            "rootRawSha256": "dce34639762a386e4e2cf143e27beeecf4675061291a132ccbe24051ec64d0e5",
+            "sourceTrajectorySha256": "dc449c43d532089ff4de01c89f5fcb123a6dfb0b67955e679d74fad3ace2cd87",
+            "openingPrefixSha256": "34ba59e5bdb9e1146ec9a95fad667f34767fd56e752b33cad2b3cf25f2ca850d",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420019,
+            "selectedPly": 44,
+            "rootRawSha256": "f5d6ca45c0afe3dba2e240a9615cb6e241d1fffdbe2331b6b75069fd1084b78c",
+            "sourceTrajectorySha256": "a68b842aa67ce7597851618186d589b616b115ff384f35dcdbc0fdf1e1a57d46",
+            "openingPrefixSha256": "34ba59e5bdb9e1146ec9a95fad667f34767fd56e752b33cad2b3cf25f2ca850d",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420020",
+          "sourceSeed": 31420020,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420020,
+            "selectedPly": 24,
+            "rootRawSha256": "2323d4a6cef32c64163b4b4f86e2683bc1344e5dac9e659b6478e2467cb0800d",
+            "sourceTrajectorySha256": "b6b288f14d72922ab01cda6278841f5404351a017787934943346ec28b898cd7",
+            "openingPrefixSha256": "b7eedebabc20aa108fe5081dadc660ce8d9d41e47b2ed70bab89dce23f5f90fd",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420020,
+            "selectedPly": 44,
+            "rootRawSha256": "a3bc2582d86324e1e21c54acc77c60d3a5f11bd0337ef78f7fc3f930a8230ce6",
+            "sourceTrajectorySha256": "20e65a63530f021142c05dd477921215f83d44d148b1ec7d6cb05ea875bb317c",
+            "openingPrefixSha256": "b7eedebabc20aa108fe5081dadc660ce8d9d41e47b2ed70bab89dce23f5f90fd",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420023",
+          "sourceSeed": 31420023,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420023,
+            "selectedPly": 24,
+            "rootRawSha256": "6c0250c9a909414659401012bae65d67975723db38628a91f953070e2b4dd055",
+            "sourceTrajectorySha256": "897343c529a8c3dbfaf317e8d6bb0777edd71b14c80a54225fcac203d6f20c56",
+            "openingPrefixSha256": "c6fdc49116a6d74448d3ac9d8f8ec344d93207e36bf21f52a2dea6c0382652f7",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420023,
+            "selectedPly": 44,
+            "rootRawSha256": "bf4205713dc0adbee3d2f17c321821fc665bc800e160dd2bafeb2534ceb2a8ed",
+            "sourceTrajectorySha256": "2685f35cf0a0455017b0a3446e5f474909f8467361b8c6d208099b83500a8405",
+            "openingPrefixSha256": "c6fdc49116a6d74448d3ac9d8f8ec344d93207e36bf21f52a2dea6c0382652f7",
+            "openingPrefixLength": 16
+          }
+        }
+      ],
+      "firewallDigestSha256": "0021099a28dfc2ba73dd337c4ffde865cc8df16baa3a9166caa889210797bed4",
+      "firewallCounts": {
+        "root": 88,
+        "trajectory": 88,
+        "prefix": 49
+      }
+    },
+    "independent": {
+      "populationComplete": true,
+      "selectedPairCount": 18,
+      "rejections": [
+        {
+          "sourceSeed": 31420006,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420008,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": false,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420013,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420021,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        },
+        {
+          "sourceSeed": 31420022,
+          "reason": "PAIR-INCOMPLETE",
+          "namuaPresent": true,
+          "mtajiPresent": false
+        }
+      ],
+      "pairs": [
+        {
+          "pairId": "seed-31420001",
+          "sourceSeed": 31420001,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420001,
+            "selectedPly": 24,
+            "rootRawSha256": "45394ec4a85de387bb4d53498e7e4487e6574f9cc087f35583cc7f6cb44ca749",
+            "sourceTrajectorySha256": "dec016e88e9bbec9d00c85c717b5436a41c4d2117c23e2a8735117d2dffb7556",
+            "openingPrefixSha256": "553b27abb1545880326e4ab17fad134d0b467c237b56a2ba7dd373fda37a328d",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420001,
+            "selectedPly": 44,
+            "rootRawSha256": "67674fbdcc9e3ea06109e65575d0eb06be6080ca174494bc7b32ab796792f6f3",
+            "sourceTrajectorySha256": "2d6ee7df90f4f8e275949ceef94c3db6902faf21662522c49819917b275a0dbe",
+            "openingPrefixSha256": "553b27abb1545880326e4ab17fad134d0b467c237b56a2ba7dd373fda37a328d",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420002",
+          "sourceSeed": 31420002,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420002,
+            "selectedPly": 24,
+            "rootRawSha256": "6240bf139f24ccb52e01b632c985bc02551503dd27393d05ab41fa15c66e467d",
+            "sourceTrajectorySha256": "4dd85f7928437438f073abc879d8ac906d0670131d66fd3c0c2536b87bf7def2",
+            "openingPrefixSha256": "abca1f18d3697499b28729a9af6c8140fae54e0db18e03bbdc5d94f7dcdd0bbc",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420002,
+            "selectedPly": 44,
+            "rootRawSha256": "569b56e3a729b5e1cd741d13fea8be4be7ffbcd7cd16cd30c377395997e35585",
+            "sourceTrajectorySha256": "64b54d70662939c8860cd7f13e3c293a6af2cabe4a29ff3d4be1cf3e7aac64d3",
+            "openingPrefixSha256": "abca1f18d3697499b28729a9af6c8140fae54e0db18e03bbdc5d94f7dcdd0bbc",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420003",
+          "sourceSeed": 31420003,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420003,
+            "selectedPly": 24,
+            "rootRawSha256": "b0a2984a4db96b133cec837d8f438c6427a1d6d6fe9ad6e34324365ce5db8a2f",
+            "sourceTrajectorySha256": "ff39ad4ef8ef82359e06c90fb6133c962864bb79495b2762cb4e8b23000e8af7",
+            "openingPrefixSha256": "69d878aee162f480ca622077eb0beffc721d01dbfdb3026ce354132fbbae6441",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420003,
+            "selectedPly": 44,
+            "rootRawSha256": "5c47a6e9320d98c8c84c293937d89c19b41b2e84c7e06ebce0cf95d7dd3c0c54",
+            "sourceTrajectorySha256": "1424af7984afa06b8625478ea844a8632bdaa74b746229d41f2002762fa74399",
+            "openingPrefixSha256": "69d878aee162f480ca622077eb0beffc721d01dbfdb3026ce354132fbbae6441",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420004",
+          "sourceSeed": 31420004,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420004,
+            "selectedPly": 24,
+            "rootRawSha256": "d53ecde605838e49992e2f79bf117932058db021fb3f0e0e6aed6b4f8d0ec5ad",
+            "sourceTrajectorySha256": "0b0fbcf96a0588375ae07fd71572ff8780cc8c62c790adaeabb18a202b6e710a",
+            "openingPrefixSha256": "a293d93d0b1309c77b0a73ec51e80fc4672527982529f1c336c2e743c95236e2",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420004,
+            "selectedPly": 44,
+            "rootRawSha256": "9c6971ccf5680ce74b9d095f03880ce246d069a030efe48962a446f6c8402089",
+            "sourceTrajectorySha256": "95b1c3d8b163c6530125903d591a348850f7445b0301b0d8f2665a52696d8524",
+            "openingPrefixSha256": "a293d93d0b1309c77b0a73ec51e80fc4672527982529f1c336c2e743c95236e2",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420005",
+          "sourceSeed": 31420005,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420005,
+            "selectedPly": 24,
+            "rootRawSha256": "b22682f5174e17f36aaae09bea77756ee8c35897962607c27fc27caf538bede7",
+            "sourceTrajectorySha256": "d1d1360b1dcfaea332e4efa85f39eaf47957d41507c9fe0b7a2d76fdccc7d27e",
+            "openingPrefixSha256": "01bcca834385261b9b9f89a8abee31f9f4deab0648bde76a56ac3ca07614cde8",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420005,
+            "selectedPly": 44,
+            "rootRawSha256": "7e145a9b91477db865adac063200f8476cd846355c62ebe496524f96499ca382",
+            "sourceTrajectorySha256": "d3e9dbd3b82a02c344b421de2041452ddee677dee3eb833414e76a36f8428924",
+            "openingPrefixSha256": "01bcca834385261b9b9f89a8abee31f9f4deab0648bde76a56ac3ca07614cde8",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420007",
+          "sourceSeed": 31420007,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420007,
+            "selectedPly": 24,
+            "rootRawSha256": "41cb49ecc9aa66acbb312f88b71c9dddc107b5eed9587cb426006c9f7d2f30e6",
+            "sourceTrajectorySha256": "5e62bb8ee62ece2220a797ac920b70ccbda78629bbf35e66f771c6a9ec4e184f",
+            "openingPrefixSha256": "72d09ef1173eee927884f067013b4d9802cad0b59e3d0f3b7781bf02d7d8b923",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420007,
+            "selectedPly": 44,
+            "rootRawSha256": "b90d5b9c003ebaf1b969723273971c0f61abced6874c1e91f652ba74db03c7c9",
+            "sourceTrajectorySha256": "cf4cc0318554381a243302868633911a3f1cc678661a012f223178f3c7b6c4e3",
+            "openingPrefixSha256": "72d09ef1173eee927884f067013b4d9802cad0b59e3d0f3b7781bf02d7d8b923",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420009",
+          "sourceSeed": 31420009,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420009,
+            "selectedPly": 24,
+            "rootRawSha256": "50464543b7395523225a488d4c918e571c6fcf42d4b707479f19898d25e28979",
+            "sourceTrajectorySha256": "f2e107677df83f727ad201a5f805a0518bd4460b29ae3ceb6a9410121d2be35d",
+            "openingPrefixSha256": "2e9289f28c71149bb0ddea63929f09f81b9f67b0da54da9589b4502a54f3e2bf",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420009,
+            "selectedPly": 44,
+            "rootRawSha256": "1a8aea957487d7b0264e36e3fe6969afbbde26b2cf61930530a8f8c67ffeb9e9",
+            "sourceTrajectorySha256": "15900bf73a9395f87b834aaf051fb8ad4e456afb38198c0d01add9233b03177a",
+            "openingPrefixSha256": "2e9289f28c71149bb0ddea63929f09f81b9f67b0da54da9589b4502a54f3e2bf",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420010",
+          "sourceSeed": 31420010,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420010,
+            "selectedPly": 24,
+            "rootRawSha256": "62cf9533fed8a4ec73a7117665c6d6088a72ebe33a362e6ef82025a833a37b70",
+            "sourceTrajectorySha256": "21ea24c493995f083f7e41951ac0bf1b4b5cd94070a7ab351f0f6555ed6ceb7f",
+            "openingPrefixSha256": "d4f88d8aba2255cfd7af80ec597bc9651572a08d3a927005f6bb85c2ef5b2b07",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420010,
+            "selectedPly": 44,
+            "rootRawSha256": "f224e60cccb1f0bc74f07d51b9bb15570a40698c88a35deadab6a05f81dc6433",
+            "sourceTrajectorySha256": "28a6ce3234267b0d94471bb44e9d23d9cb93b4c19fd3961af0e8e44d01107e53",
+            "openingPrefixSha256": "d4f88d8aba2255cfd7af80ec597bc9651572a08d3a927005f6bb85c2ef5b2b07",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420011",
+          "sourceSeed": 31420011,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420011,
+            "selectedPly": 24,
+            "rootRawSha256": "329845a119401bbffae1a9ffdcd5de4eef374bc3f3b4141acad8ec54b5ecf75f",
+            "sourceTrajectorySha256": "a7a423af56fa5cf939850bc098aeea3fc9556eb497862fbf827c4f500ce8cc47",
+            "openingPrefixSha256": "5096b24a34e85b209118ae18e10fe30d98579edaef837f685f7196dc24724e56",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420011,
+            "selectedPly": 44,
+            "rootRawSha256": "e5ea352b24557e0932171d92eed9050c587688f72974a2186779b42bf14fd34a",
+            "sourceTrajectorySha256": "9ca525d2ff4eb83ad920076295afcc0b5ce3508ba7d070f993de59b2a1dcbfdd",
+            "openingPrefixSha256": "5096b24a34e85b209118ae18e10fe30d98579edaef837f685f7196dc24724e56",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420012",
+          "sourceSeed": 31420012,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420012,
+            "selectedPly": 24,
+            "rootRawSha256": "65636d50eebae27662fdb8b1baa9928adb9b35daa4c81a1ab585b5d4589ca7dc",
+            "sourceTrajectorySha256": "b93b043049afb9eafa53c4bcf14a7cc345077e953cb322ffa805355a734023c5",
+            "openingPrefixSha256": "3eb97e74a6bef57be9f293323ca0fb66859d11dcc0340ce9e551a1ad84a5ec51",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420012,
+            "selectedPly": 44,
+            "rootRawSha256": "d34ad1a83b2008fc5e30399811e4a0afb5ebaa6f8354ef0107d0585147ec2d29",
+            "sourceTrajectorySha256": "70b95ebbb134d57f45cba133366470ac2cd317f850b076262f0576b89d06c9e2",
+            "openingPrefixSha256": "3eb97e74a6bef57be9f293323ca0fb66859d11dcc0340ce9e551a1ad84a5ec51",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420014",
+          "sourceSeed": 31420014,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420014,
+            "selectedPly": 24,
+            "rootRawSha256": "4783b927fe051f7664b6e666fe2c5f2291e8ae5610b78ff2fdefcd351775d1e0",
+            "sourceTrajectorySha256": "2fd8ab1a18edbf3f94e7cd4523bd0a2bb63c39d2fc6ca6ecbfd0804510996a40",
+            "openingPrefixSha256": "d6d9a250b091d403a3992368a2d81ce4f810934cc2c64953dfaaa93662f5561a",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420014,
+            "selectedPly": 44,
+            "rootRawSha256": "ef518e49392650a4d486f9a1cb82838f2741d9fa3c32a6da8dfcdd2e6d9b6246",
+            "sourceTrajectorySha256": "48541e5e061fae1d677e903bcb4bd3ec76fdd93ce3fb88f2ba610f214ae640f7",
+            "openingPrefixSha256": "d6d9a250b091d403a3992368a2d81ce4f810934cc2c64953dfaaa93662f5561a",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420015",
+          "sourceSeed": 31420015,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420015,
+            "selectedPly": 24,
+            "rootRawSha256": "06c6399c4d93f9fa01bc54b966aadbc51ec77c75d0627ac1cd2f5d7c3154329e",
+            "sourceTrajectorySha256": "c166f884ec31d3aba4eb44e9eac6365407c30c99e640d4a103f488fb1c01f1c3",
+            "openingPrefixSha256": "27538ac3d0f67b6af86619af27e98ec28a1d6dad50a4e459cd4f551bce782583",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420015,
+            "selectedPly": 44,
+            "rootRawSha256": "c799a59f816533a65e84fde80d04bf753802541f85329263922169f91367bfb2",
+            "sourceTrajectorySha256": "5643e3bdd8ca87e42b1be319c0e82bb3e11ce21366037f235eee851af3bacf35",
+            "openingPrefixSha256": "27538ac3d0f67b6af86619af27e98ec28a1d6dad50a4e459cd4f551bce782583",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420016",
+          "sourceSeed": 31420016,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420016,
+            "selectedPly": 24,
+            "rootRawSha256": "86869c3e18456245826c7a6d85c3f9317a887d21cbb0080b94dd54f1f72bc03c",
+            "sourceTrajectorySha256": "1bd9b11e70d609034a4ca9220b16b6673728029201d00c2a06837ee0220ba233",
+            "openingPrefixSha256": "aed84bd9782509cc1e2acab327f6c3f0cd0f7da5b9fc8445308ce46b7e5b8e45",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420016,
+            "selectedPly": 44,
+            "rootRawSha256": "b750f96d1d3121b4513af9b5ec6974a4739f544e267488176d3d65f589621ba4",
+            "sourceTrajectorySha256": "159843a9c45319323f7d3e3f231dc8536d5766c3a166ede93a4dd62057ba23e0",
+            "openingPrefixSha256": "aed84bd9782509cc1e2acab327f6c3f0cd0f7da5b9fc8445308ce46b7e5b8e45",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420017",
+          "sourceSeed": 31420017,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420017,
+            "selectedPly": 24,
+            "rootRawSha256": "43ec670f43897a30a9807019e9352ed5434687661228003c1d4d58399297522a",
+            "sourceTrajectorySha256": "4409be364d04ceb577bd17e195500a217992a504130c075784f42a4b4c932934",
+            "openingPrefixSha256": "7950c2ff6e47871fce3e0173defaeef5ccd0966c4dc949392d31e6b5ff9650f4",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420017,
+            "selectedPly": 44,
+            "rootRawSha256": "7c59e8a4301a46807382a92d992775894b8ece4d0c89d0528d8ffdd9566bffc5",
+            "sourceTrajectorySha256": "7e7e4892027cc4ad8d59bfbef3107edbb4982b9f2b72b61d03e4757b09424dde",
+            "openingPrefixSha256": "7950c2ff6e47871fce3e0173defaeef5ccd0966c4dc949392d31e6b5ff9650f4",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420018",
+          "sourceSeed": 31420018,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420018,
+            "selectedPly": 24,
+            "rootRawSha256": "0b4668a172fc807311b1ab04f913a3575016da72b8efd62954edf679459a9d11",
+            "sourceTrajectorySha256": "74588d7fea4cbce6f3ec1726322d4faef88afc8c932541e3232c379a29d57ba6",
+            "openingPrefixSha256": "0e8919326d6aafd7dbdbec8d79a450f80c3c73a964a61819922435503ed93c23",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420018,
+            "selectedPly": 44,
+            "rootRawSha256": "290c5ee2ada4372f6da4a2975a668ab368599c92f656fd7ffc8b1594fa6e0e84",
+            "sourceTrajectorySha256": "e72d16f708228cefe521fa9186b1c2178b57ba35b41b78f044f875c872ec7d15",
+            "openingPrefixSha256": "0e8919326d6aafd7dbdbec8d79a450f80c3c73a964a61819922435503ed93c23",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420019",
+          "sourceSeed": 31420019,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420019,
+            "selectedPly": 24,
+            "rootRawSha256": "dce34639762a386e4e2cf143e27beeecf4675061291a132ccbe24051ec64d0e5",
+            "sourceTrajectorySha256": "dc449c43d532089ff4de01c89f5fcb123a6dfb0b67955e679d74fad3ace2cd87",
+            "openingPrefixSha256": "34ba59e5bdb9e1146ec9a95fad667f34767fd56e752b33cad2b3cf25f2ca850d",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420019,
+            "selectedPly": 44,
+            "rootRawSha256": "f5d6ca45c0afe3dba2e240a9615cb6e241d1fffdbe2331b6b75069fd1084b78c",
+            "sourceTrajectorySha256": "a68b842aa67ce7597851618186d589b616b115ff384f35dcdbc0fdf1e1a57d46",
+            "openingPrefixSha256": "34ba59e5bdb9e1146ec9a95fad667f34767fd56e752b33cad2b3cf25f2ca850d",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420020",
+          "sourceSeed": 31420020,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420020,
+            "selectedPly": 24,
+            "rootRawSha256": "2323d4a6cef32c64163b4b4f86e2683bc1344e5dac9e659b6478e2467cb0800d",
+            "sourceTrajectorySha256": "b6b288f14d72922ab01cda6278841f5404351a017787934943346ec28b898cd7",
+            "openingPrefixSha256": "b7eedebabc20aa108fe5081dadc660ce8d9d41e47b2ed70bab89dce23f5f90fd",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420020,
+            "selectedPly": 44,
+            "rootRawSha256": "a3bc2582d86324e1e21c54acc77c60d3a5f11bd0337ef78f7fc3f930a8230ce6",
+            "sourceTrajectorySha256": "20e65a63530f021142c05dd477921215f83d44d148b1ec7d6cb05ea875bb317c",
+            "openingPrefixSha256": "b7eedebabc20aa108fe5081dadc660ce8d9d41e47b2ed70bab89dce23f5f90fd",
+            "openingPrefixLength": 16
+          }
+        },
+        {
+          "pairId": "seed-31420023",
+          "sourceSeed": 31420023,
+          "namua": {
+            "phase": "namua",
+            "sourceSeed": 31420023,
+            "selectedPly": 24,
+            "rootRawSha256": "6c0250c9a909414659401012bae65d67975723db38628a91f953070e2b4dd055",
+            "sourceTrajectorySha256": "897343c529a8c3dbfaf317e8d6bb0777edd71b14c80a54225fcac203d6f20c56",
+            "openingPrefixSha256": "c6fdc49116a6d74448d3ac9d8f8ec344d93207e36bf21f52a2dea6c0382652f7",
+            "openingPrefixLength": 16
+          },
+          "mtaji": {
+            "phase": "mtaji",
+            "sourceSeed": 31420023,
+            "selectedPly": 44,
+            "rootRawSha256": "bf4205713dc0adbee3d2f17c321821fc665bc800e160dd2bafeb2534ceb2a8ed",
+            "sourceTrajectorySha256": "2685f35cf0a0455017b0a3446e5f474909f8467361b8c6d208099b83500a8405",
+            "openingPrefixSha256": "c6fdc49116a6d74448d3ac9d8f8ec344d93207e36bf21f52a2dea6c0382652f7",
+            "openingPrefixLength": 16
+          }
+        }
+      ],
+      "firewallDigestSha256": "0021099a28dfc2ba73dd337c4ffde865cc8df16baa3a9166caa889210797bed4",
+      "firewallCounts": {
+        "root": 88,
+        "trajectory": 88,
+        "prefix": 49
+      }
+    }
+  },
+  "verification": {
+    "sourceIdentityExact": true,
+    "staticIndependence": true,
+    "allRootExact": true,
+    "pairComparisonExact": true,
+    "formalValidationExact": true,
+    "stageScientificExact": true,
+    "rootChecks": [
+      {
+        "pairId": "seed-31420001",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "6cdb1bca6c660c8385d7a850df5e7c8a2beaf0ac9391ac3088f92a666bc41e1d",
+        "independentScientificSha256": "6cdb1bca6c660c8385d7a850df5e7c8a2beaf0ac9391ac3088f92a666bc41e1d",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420001",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "212ea5da145e9ad7212f05f910d9331bd5d61f68e39ac5f6b7122dbc422d0213",
+        "independentScientificSha256": "212ea5da145e9ad7212f05f910d9331bd5d61f68e39ac5f6b7122dbc422d0213",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420002",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "334fe20cb689e2e90dffce6931779143122e1f5c914861b48e09dfdead95344b",
+        "independentScientificSha256": "334fe20cb689e2e90dffce6931779143122e1f5c914861b48e09dfdead95344b",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420002",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "d29c3ef847a6b4bd7a2e1a2103ce57cd0301ebda3b6ac916170c0d24d404694e",
+        "independentScientificSha256": "d29c3ef847a6b4bd7a2e1a2103ce57cd0301ebda3b6ac916170c0d24d404694e",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420003",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "32f3af3dff8b4ead952eade96b46d17934c2a6aa1532fc511db02a0074924ff2",
+        "independentScientificSha256": "32f3af3dff8b4ead952eade96b46d17934c2a6aa1532fc511db02a0074924ff2",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420003",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "a331570f15971b2d51c08ac3d80ea6a7f37a72d42642a8dd01c3f06798168f78",
+        "independentScientificSha256": "a331570f15971b2d51c08ac3d80ea6a7f37a72d42642a8dd01c3f06798168f78",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420004",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "e4528e3787485cf84ebded3788e157211fc1836f94195384b483c70e3f82c89b",
+        "independentScientificSha256": "e4528e3787485cf84ebded3788e157211fc1836f94195384b483c70e3f82c89b",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420004",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "2f7929ba58920c7fe2cef8d3d587a551f2e80664c079f46a93a4a69d82726343",
+        "independentScientificSha256": "2f7929ba58920c7fe2cef8d3d587a551f2e80664c079f46a93a4a69d82726343",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420005",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "790217d5c4a41886c432195cb6877c6d3a47108eec6b30a7cfe08b955a1cbaed",
+        "independentScientificSha256": "790217d5c4a41886c432195cb6877c6d3a47108eec6b30a7cfe08b955a1cbaed",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420005",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "a0f32b3e5a81fdc7b7b74c3693317028e0f05170f4a0c441d0e986faec47943c",
+        "independentScientificSha256": "a0f32b3e5a81fdc7b7b74c3693317028e0f05170f4a0c441d0e986faec47943c",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420007",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "71d160a71d84a54a1daae2d0b116ead105a24a72a1ae733d775c95699c5c399a",
+        "independentScientificSha256": "71d160a71d84a54a1daae2d0b116ead105a24a72a1ae733d775c95699c5c399a",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420007",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "364394c938683291290b60177386d4911fe262fcf739154708a93867da059d69",
+        "independentScientificSha256": "364394c938683291290b60177386d4911fe262fcf739154708a93867da059d69",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420009",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "168873f37417601f7fe2001d65fe56ff4733d52c637f4ebe6c4899e9297b4633",
+        "independentScientificSha256": "168873f37417601f7fe2001d65fe56ff4733d52c637f4ebe6c4899e9297b4633",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420009",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "b9713268edbab85dac3fc2182dfc1a2522497f99daec31040f6072022de59b61",
+        "independentScientificSha256": "b9713268edbab85dac3fc2182dfc1a2522497f99daec31040f6072022de59b61",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420010",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "d783c37640d35858e932a5d0a2cca6a8fc54d449f64d1aad2d81ecaa2cb5d4f5",
+        "independentScientificSha256": "d783c37640d35858e932a5d0a2cca6a8fc54d449f64d1aad2d81ecaa2cb5d4f5",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420010",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "28824739867afb18ee39e963b0a4f4b9e8ea923de155bf92b06ff7876fed4241",
+        "independentScientificSha256": "28824739867afb18ee39e963b0a4f4b9e8ea923de155bf92b06ff7876fed4241",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420011",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "73bd41caec5550c48291387399cf260323afde466fc37026a0767a2363f42b25",
+        "independentScientificSha256": "73bd41caec5550c48291387399cf260323afde466fc37026a0767a2363f42b25",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420011",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "7a56ee556f0dbb8228e7198d85d4dc018a0bc7f6a4ce309945ac1a1b2940cdc3",
+        "independentScientificSha256": "7a56ee556f0dbb8228e7198d85d4dc018a0bc7f6a4ce309945ac1a1b2940cdc3",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420012",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "f365f541c8479aa6d84580b0050b6066d0af7a2a10344df7190fdb764280d234",
+        "independentScientificSha256": "f365f541c8479aa6d84580b0050b6066d0af7a2a10344df7190fdb764280d234",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420012",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "824fc0e8cdd6c1d5594bff52ca4a8ee40f1390c2403c6e3755d1ee72485f706c",
+        "independentScientificSha256": "824fc0e8cdd6c1d5594bff52ca4a8ee40f1390c2403c6e3755d1ee72485f706c",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420014",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "989c2cea0f9f56b9fb37f50a91bf43a49288bbab1e0040413263a16451a79ba5",
+        "independentScientificSha256": "989c2cea0f9f56b9fb37f50a91bf43a49288bbab1e0040413263a16451a79ba5",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420014",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "7e57c067d125f74d4a1611ae61b6ac4fe0f0c194f94e1c02a880aa749d246e65",
+        "independentScientificSha256": "7e57c067d125f74d4a1611ae61b6ac4fe0f0c194f94e1c02a880aa749d246e65",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420015",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "5d5400b5e8df3b6815531b8ba28a13db5c48975522d73f4e2e4594a3f56af9a3",
+        "independentScientificSha256": "5d5400b5e8df3b6815531b8ba28a13db5c48975522d73f4e2e4594a3f56af9a3",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420015",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "c61afe9e1786eebc04229447f5272588a75a13e3ebf56753a2116f2c8920b30b",
+        "independentScientificSha256": "c61afe9e1786eebc04229447f5272588a75a13e3ebf56753a2116f2c8920b30b",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420016",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "3b93f1b3097d4f70e721dd92f8479ab3f90b864ff0cc0ef859928f1325531525",
+        "independentScientificSha256": "3b93f1b3097d4f70e721dd92f8479ab3f90b864ff0cc0ef859928f1325531525",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420016",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "4bc7a848eaf16cb3c5163878dfa48a7223fbc4b825ac8ea214b4cb84d4d1614f",
+        "independentScientificSha256": "4bc7a848eaf16cb3c5163878dfa48a7223fbc4b825ac8ea214b4cb84d4d1614f",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420017",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "47125dac1ef24d930e22e1dc2e636efd62f8cf5a73b1236302cbfe28e5f6660b",
+        "independentScientificSha256": "47125dac1ef24d930e22e1dc2e636efd62f8cf5a73b1236302cbfe28e5f6660b",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420017",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "b620d01fc20a6879a46f216354fa59703e0caa0214dade21091476391035998b",
+        "independentScientificSha256": "b620d01fc20a6879a46f216354fa59703e0caa0214dade21091476391035998b",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420018",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "64c495144fbf76d25c18a6f9c4e9a02c21d2f1cbc1300c5f60dd1584e1ea2760",
+        "independentScientificSha256": "64c495144fbf76d25c18a6f9c4e9a02c21d2f1cbc1300c5f60dd1584e1ea2760",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420018",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "7a4bd80e8c2f29d6e85645ed836dba9f4fabf18e2a960bcfb53853da52b717bf",
+        "independentScientificSha256": "7a4bd80e8c2f29d6e85645ed836dba9f4fabf18e2a960bcfb53853da52b717bf",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420019",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "af880344f73fb934ab35a47b49c0dd302dac6f1423fdbd14630c42140657538c",
+        "independentScientificSha256": "af880344f73fb934ab35a47b49c0dd302dac6f1423fdbd14630c42140657538c",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420019",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "1889f1cf00d740e5d835f592ff141f9b5cc68131a70a37e83f69419feb63d376",
+        "independentScientificSha256": "1889f1cf00d740e5d835f592ff141f9b5cc68131a70a37e83f69419feb63d376",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420020",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "b9df98aa8b3e67568ee1bee8a6e3c23b18d936f4c08ccb3a426fe4bcbe063fe2",
+        "independentScientificSha256": "b9df98aa8b3e67568ee1bee8a6e3c23b18d936f4c08ccb3a426fe4bcbe063fe2",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420020",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "511863698a5b85cdf785e6286bafc6b47ee591923c6678383a0c96f60d60241c",
+        "independentScientificSha256": "511863698a5b85cdf785e6286bafc6b47ee591923c6678383a0c96f60d60241c",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420023",
+        "phase": "namua",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "7153ff2d2323578c1c5d5d602d729599010a51f54e0369266ec6b27531fd1d3b",
+        "independentScientificSha256": "7153ff2d2323578c1c5d5d602d729599010a51f54e0369266ec6b27531fd1d3b",
+        "resourceViewExact": true
+      },
+      {
+        "pairId": "seed-31420023",
+        "phase": "mtaji",
+        "sourceCanonicalExact": true,
+        "upstreamReconstructionExact": true,
+        "familyExact": {
+          "LGTGMIV-F1-TREE-OCCURRENCE": true,
+          "LGTGMIV-F2-RAW-GRAPH": true,
+          "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": true,
+          "LGTGMIV-F4-TREE-GRAPH-RELATION": true,
+          "LGTGMIV-F5-REPLY-GEOMETRY": true
+        },
+        "canonicalScientificContentExact": true,
+        "productionScientificSha256": "4c1e704cf3dabcf9103b27cdb20b9d9033de25ead347d7acd2edbb83c9b6dd11",
+        "independentScientificSha256": "4c1e704cf3dabcf9103b27cdb20b9d9033de25ead347d7acd2edbb83c9b6dd11",
+        "resourceViewExact": true
+      }
+    ]
+  },
+  "productionStageScientificCoreSha256": "e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039",
+  "independentStageScientificCoreSha256": "e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039",
+  "formalValidation": {
+    "expectedPairs": 18,
+    "alpha": {
+      "numerator": "1",
+      "denominator": "20",
+      "defined": true
+    },
+    "candidates": [
+      {
+        "candidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+        "frozenDirection": "MTAJI-GREATER",
+        "comparable": 18,
+        "positive": 18,
+        "negative": 0,
+        "zero": 0,
+        "nonZero": 18,
+        "observedDirection": "MTAJI-GREATER",
+        "coveragePass": true,
+        "nonZeroPass": true,
+        "directionPass": true,
+        "rawP": {
+          "numerator": "1",
+          "denominator": "131072",
+          "defined": true
+        },
+        "holmRank": 1,
+        "holmThreshold": {
+          "numerator": "1",
+          "denominator": "40",
+          "defined": true
+        },
+        "holmPass": true,
+        "confirmed": true
+      },
+      {
+        "candidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+        "frozenDirection": "NAMUA-GREATER",
+        "comparable": 18,
+        "positive": 0,
+        "negative": 18,
+        "zero": 0,
+        "nonZero": 18,
+        "observedDirection": "NAMUA-GREATER",
+        "coveragePass": true,
+        "nonZeroPass": true,
+        "directionPass": true,
+        "rawP": {
+          "numerator": "1",
+          "denominator": "131072",
+          "defined": true
+        },
+        "holmRank": 2,
+        "holmThreshold": {
+          "numerator": "1",
+          "denominator": "20",
+          "defined": true
+        },
+        "holmPass": true,
+        "confirmed": true
+      }
+    ],
+    "confirmedCandidates": [
+      "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO"
+    ]
+  },
+  "candidateDecisions": [
+    {
+      "candidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "frozenDirection": "MTAJI-GREATER",
+      "formalLabel": "CONFIRMED",
+      "comparable": 18,
+      "positive": 18,
+      "negative": 0,
+      "zero": 0,
+      "nonZero": 18,
+      "observedDirection": "MTAJI-GREATER",
+      "coveragePass": true,
+      "nonZeroPass": true,
+      "directionPass": true,
+      "rawP": {
+        "numerator": "1",
+        "denominator": "131072",
+        "defined": true
+      },
+      "holmRank": 1,
+      "holmThreshold": {
+        "numerator": "1",
+        "denominator": "40",
+        "defined": true
+      },
+      "holmPass": true
+    },
+    {
+      "candidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "frozenDirection": "NAMUA-GREATER",
+      "formalLabel": "CONFIRMED",
+      "comparable": 18,
+      "positive": 0,
+      "negative": 18,
+      "zero": 0,
+      "nonZero": 18,
+      "observedDirection": "NAMUA-GREATER",
+      "coveragePass": true,
+      "nonZeroPass": true,
+      "directionPass": true,
+      "rawP": {
+        "numerator": "1",
+        "denominator": "131072",
+        "defined": true
+      },
+      "holmRank": 2,
+      "holmThreshold": {
+        "numerator": "1",
+        "denominator": "20",
+        "defined": true
+      },
+      "holmPass": true
+    }
+  ],
+  "resourceStatus": {
+    "rootResourcePass": true,
+    "stageResourcePass": true
+  },
+  "stageDisposition": "STAGE2-PASS",
+  "formalInferenceValid": true
+}
