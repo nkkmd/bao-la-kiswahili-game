@@ -18,7 +18,18 @@ jobs:
         with:
           fetch-depth: 3
       - name: Synchronize and audit current-facing documents
-        run: node tools/experiments/finalize-brmgi-g3-06-final-doc-audit.js
+        run: |
+          node tools/experiments/finalize-brmgi-g3-06-final-doc-audit.js
+          sed -i 's/[[:space:]]\+$//' \
+            README.md \
+            doc/RESEARCH_INDEX.md \
+            doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/research-generation-3/README.md \
+            doc/research-generation-3/CURRENT_STATUS.md \
+            doc/bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md \
+            doc/bao-rule-mechanism-geometry-intervention/DECISION_REGISTER.md \
+            doc/bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md \
+            doc/bao-rule-mechanism-geometry-intervention/checkpoints/2026-09-03-final-document-consistency-pass.md
       - name: Guard immutable scientific and historical files
         run: |
           set -euo pipefail
