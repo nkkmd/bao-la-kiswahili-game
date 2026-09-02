@@ -1,29 +1,14 @@
-name: EBRWS Stage 1 tooling smoke
+name: EBRWS Stage 1 tooling — CLOSED / DISABLED
 
 on:
-  push:
-    branches:
-      - research/g3-02-effective-branching-reply-width-structure
-    paths:
-      - ".github/workflows/ebrws-stage1-tooling.yml"
-      - "tools/experiments/lib/ebrws-stage1-production.js"
-      - "tools/experiments/lib/ebrws-stage1-independent.js"
-      - "tools/experiments/run-ebrws-stage1-development.js"
-      - "tools/experiments/verify-ebrws-stage1-tooling.js"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  tooling:
+  closed:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: research/g3-02-effective-branching-reply-width-structure
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Verify Stage 1 tooling without fresh evidence
-        run: node tools/experiments/verify-ebrws-stage1-tooling.js
+      - run: echo "EBRWS-STUDY1 is CLOSED / TECHNICAL-INVALID; Stage 1 tooling is no longer active."
