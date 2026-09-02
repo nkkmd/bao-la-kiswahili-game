@@ -17,6 +17,7 @@ Stage 2 seed = 31420001..31420288 / CONSUMED
 fresh G3-04 scientific evidence = GENERATED / READ
 no-rescue boundary = CROSSED / ACTIVE
 protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT READ
+main integration = COMPLETE / PR #95 / merge ad3dc26e0e2b1ccf1179eda9fe1ebbfa2a61f9bf
 ```
 
 ## Formal candidate decisions
@@ -114,6 +115,6 @@ G3-04のclosureによってこのholdoutの用途・封印状態は変更しな�
 
 program-level closure decision = RECORDED (`../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`)。RG3 closure checkpoint = `../research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`。
 
-Scientific executionとclosure/current-facing文書の整合性反映は完了した。`main`統合は未実施であり、明示的な統合指示があるまで行わない。program上の次科学作業はseparate post-G3-04 G3-05 authorization reviewであり、G3-05はまだauthorizeされていない。
+`main`統合は通常PR #95により完了し、merge commitは`ad3dc26e0e2b1ccf1179eda9fe1ebbfa2a61f9bf`。post-merge記録は`../research-generation-3/checkpoints/2026-09-02-g3-03-g3-04-main-integration-complete.md`。program上の次科学作業はseparate post-G3-04 G3-05 authorization reviewであり、G3-05はまだauthorizeされていない。
 
 `CLOSED / FORMAL-COMPLETE`はrepository lifecycle statusであり、新しい科学的omnibus labelではない。formal inferential labelsはpreregistered candidate-level `CONFIRMED` / `NOT-CONFIRMED`のみを用いる。
