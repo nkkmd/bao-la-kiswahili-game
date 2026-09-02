@@ -1,0 +1,54 @@
+name: BECT Pre-Stage0 Static Audit
+
+on:
+  push:
+    branches:
+      - research/g3-05-branch-expansion-compression-transition
+    paths:
+      - doc/branch-expansion-compression-transition/authorizations/STAGE0_STATIC_AUDIT_TRIGGER
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bect-pre-stage0-static-audit-v1
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Static source and prereg audit only
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/bect-production.js
+          node --check tools/experiments/lib/bect-independent.js
+          node --check tools/experiments/run-bect-stage0-technical.js
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const s=JSON.parse(fs.readFileSync('doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC.json','utf8'));
+          const c=JSON.parse(fs.readFileSync('doc/branch-expansion-compression-transition/prereg/STUDY_1_SPEC_CLARIFICATION_1.json','utf8'));
+          if(s.studyId!=='BECT-STUDY1')throw Error('wrong Study ID');
+          if(s.stages[1].seedStart!==31510001||s.stages[1].seedEnd!==31510240)throw Error('Stage 1 seed mismatch');
+          if(s.stages[2].seedStart!==31520001||s.stages[2].seedEnd!==31520384)throw Error('Stage 2 seed mismatch');
+          if(s.protectedDepth10Holdout.status!=='SEALED / NOT GENERATED / NOT READ')throw Error('protected holdout changed');
+          if(c.freshScientificEvidenceGeneratedBeforeClarification!==false||c.stage0FixtureExecutedBeforeClarification!==false)throw Error('clarification chronology invalid');
+          console.log('BECT_STATIC_AUDIT=PASS');
+          NODE
+          test "$(git hash-object public/engine.js)" = "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"
+          test "$(git hash-object tools/experiments/lib/lgtgmiv-stage1-production.js)" = "a4664f01535d6abbf6f83821befbb2fafd55cde6"
+          test "$(git hash-object tools/experiments/lib/lgtgmiv-stage1-independent.js)" = "0c7239ac7acf146e9aee63dae66194681b8631d6"
+          test "$(git hash-object tools/experiments/lib/bect-production.js)" = "b8fa63e941b4da1fec0969155c09754eae151a56"
+          test "$(git hash-object tools/experiments/lib/bect-independent.js)" = "bb085c648d2f4f3d7d44f206f04036e95f94980b"
+          test "$(git hash-object tools/experiments/run-bect-stage0-technical.js)" = "9b8ad37b92596367b46825c0ffcc5bb84c0cbb5e"
+          printf '%s\n' \
+            'fixture_execution=false' \
+            'technical_seed_access=false' \
+            'stage1_seed_access=false' \
+            'stage2_seed_access=false' \
+            'protected_depth10_access=false'
