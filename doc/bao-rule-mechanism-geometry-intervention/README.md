@@ -26,7 +26,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seed = 31620001..31620384 / NOT CONSUMED
 no-rescue boundary = CROSSED / ACTIVE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ
-main integration = NOT PERFORMED
+main integration = COMPLETE / fast-forward / force=false
 ```
 
 ## 結論
@@ -66,6 +66,11 @@ Program records:
 - [`../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md`](../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md)
 - [`../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md)
 - [`../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`](../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md)
+- [`../research-generation-3/checkpoints/2026-09-03-g3-06-main-integration-complete.md`](../research-generation-3/checkpoints/2026-09-03-g3-06-main-integration-complete.md)
+
+## Main integration
+
+2026-09-03、監査済みresearch branch `research/g3-06-bao-rule-mechanism-geometry-intervention` を、`main` baseline `b0cbd9f562bb803597acb313360c064dadd73299`からaudited head `f8eda131b81f0d6e3bc9f804ddfce875c9cd8d2b`へ **fast-forward / `force=false`** で統合した。squash、rebase、history rewrite、scientific rerunは行っていない。
 
 ## Next program action
 
