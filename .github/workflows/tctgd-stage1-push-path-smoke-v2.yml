@@ -1,0 +1,55 @@
+name: TCTGD Stage 1 Push-Path Smoke V2
+
+on:
+  push:
+    branches:
+      - research/g3-03-transposition-tree-graph-divergence
+    paths:
+      - doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_PUSH_PATH_SMOKE_TRIGGER_V2
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tctgd-stage1-push-path-smoke-v2
+  cancel-in-progress: false
+
+jobs:
+  control-plane-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - name: Verify non-scientific one-shot path-trigger model
+        run: |
+          set -euo pipefail
+          test -f doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_PUSH_PATH_SMOKE_TRIGGER_V2
+          test ! -f doc/transposition-concentration-tree-graph-divergence/authorizations/STAGE1_EXECUTION_TRIGGER
+          test ! -f doc/transposition-concentration-tree-graph-divergence/results/stage-1/scientific-result.json
+          test ! -f doc/transposition-concentration-tree-graph-divergence/executions/stage-1-execution-started.json
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const science=fs.readFileSync('.github/workflows/tctgd-stage1-development.yml','utf8');
+          if(!science.includes('STAGE1_EXECUTION_TRIGGER'))throw new Error('scientific path trigger missing');
+          if(science.includes('workflow_dispatch:'))throw new Error('scientific workflow still uses workflow_dispatch');
+          if(science.includes('tctgd-stage1-dispatch.yml'))throw new Error('scientific workflow references retired dispatcher');
+          if(science.includes('STAGE1_PUSH_PATH_SMOKE_TRIGGER_V2'))throw new Error('smoke trigger can start science');
+          const spec=JSON.parse(fs.readFileSync('doc/transposition-concentration-tree-graph-divergence/prereg/STUDY_1_SPEC.json','utf8'));
+          if(spec.protectedEvidence.standardInitialRawRootCompleteExactDepth10Holdout!=='SEALED / NOT GENERATED / NOT READ')throw new Error('protected holdout boundary changed');
+          console.log(JSON.stringify({pushPathModel:'PASS',freshScientificEvidence:false,stage1SeedAccess:false,protectedDepth10Access:false}));
+          NODE
+      - name: Record durable smoke sentinel
+        run: |
+          printf '%s\n' \
+            'TCTGD_STAGE1_PUSH_PATH_SMOKE_V2=PASS' \
+            'fresh_scientific_evidence=false' \
+            'stage1_seed_access=false' \
+            'protected_depth10_access=false' > tctgd-stage1-push-path-smoke-v2.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tctgd-stage1-push-path-smoke-v2
+          path: tctgd-stage1-push-path-smoke-v2.txt
+          if-no-files-found: error
+          retention-days: 90
