@@ -1,0 +1,25 @@
+name: BRMGI Upstream Identity Firewall
+on:
+  push:
+    branches:
+      - research/g3-06-bao-rule-mechanism-geometry-intervention
+    paths:
+      - doc/bao-rule-mechanism-geometry-intervention/checkpoints/brmgi-upstream-firewall-trigger.txt
+concurrency:
+  group: brmgi-upstream-identity-firewall
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  firewall:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Materialize identity-only firewall
+        run: node tools/experiments/materialize-brmgi-upstream-identity-firewall.js
+      - name: Upload identity-only firewall
+        uses: actions/upload-artifact@v4
+        with:
+          name: brmgi-upstream-identity-firewall-${{ github.run_id }}
+          path: doc/bao-rule-mechanism-geometry-intervention/prereg/UPSTREAM_IDENTITY_FIREWALL.json
+          if-no-files-found: error
