@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "studyId": "TCTGD-STUDY1",
+  "stageId": "TCTGD-S0-TECHNICAL-2026-09-02-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "workflowRunId": 33589334375,
+  "workflowJobId": 100119933850,
+  "triggerCommit": "0c0a707bfa0baa64815dac0b826d2720e247ff52",
+  "workflowEvent": "push",
+  "workflowPurpose": "one-shot synthetic Stage 0 technical fixture execution only",
+  "workflowConclusion": "success",
+  "artifact": {
+    "id": 9831182022,
+    "name": "tctgd-stage0-technical-result",
+    "sizeBytes": 762,
+    "zipSha256": "efa3669c06a20b793d3f8feff80f71535fb582c0d1165fed38cf4dc0c3f78924",
+    "expiredAtRecording": false
+  },
+  "stageScientificCoreSha256": "e7e7831cf9503c94441a5dc9b30253485dc4b498e9b397408901186c914765d5",
+  "freshScientificSeedAccess": false,
+  "protectedDepth10Access": false,
+  "stageDisposition": "STAGE0-PASS",
+  "stage1AuthorizedByThisResult": false
+}
