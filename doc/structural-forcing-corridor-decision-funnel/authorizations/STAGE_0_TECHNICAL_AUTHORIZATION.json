@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDF-STUDY1",
+  "stageId": "SFCDF-S0-TECHNICAL-2026-09-02-v1",
+  "decision": "STAGE0-TECHNICAL-AUTHORIZED",
+  "authorizedAtDate": "2026-09-02",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "freshScientificEvidenceAuthorized": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "maxTechnicalExecutions": 1,
+  "runner": {
+    "path": "tools/experiments/run-sfcdf-stage0-technical.js",
+    "gitBlobSha": "d36b5a28ee55321faaa177a2a9e2c03a5f1724fd"
+  },
+  "production": {
+    "path": "tools/experiments/lib/sfcdf-production.js",
+    "gitBlobSha": "b6fca5d533ff4fdf906e64509185b480c6dc5818"
+  },
+  "independent": {
+    "path": "tools/experiments/lib/sfcdf-independent.js",
+    "gitBlobSha": "3bbc16d41c56f2eb00d7169ace2359f0fa9b9b53"
+  },
+  "mandatoryGates": [
+    "production-independent canonical endpoint content exact agreement",
+    "prototype-sensitive control demonstrates that prototype difference is excluded from scientific equality",
+    "corridor-only fixture separates reply narrowing from reconvergence",
+    "funnel-only fixture separates reconvergence from unit-width corridor",
+    "zero-denominator rule for root-branch overlap",
+    "exact endpoint arithmetic fixture",
+    "development summary exact agreement fixture",
+    "static production-independent import separation",
+    "freshScientificSeedAccess=false",
+    "protectedDepth10Access=false"
+  ],
+  "stage1AuthorizationConsequence": "none; Stage 0 PASS only permits later non-scientific execution-control smoke and a separate Stage 1 authorization review"
+}
