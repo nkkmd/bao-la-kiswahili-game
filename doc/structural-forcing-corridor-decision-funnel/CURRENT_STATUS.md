@@ -5,22 +5,19 @@ Updated: 2026-09-02
 ```text
 Study = SFCDF-STUDY1
 Program position = Research Generation 3 / G3-04
-Status = ACTIVE / STAGE0-PASS / STAGE1-PREAUTH-READY
+Status = ACTIVE / STAGE1-PASS / STAGE2-NOT-AUTHORIZED
 Research branch = research/g3-04-structural-forcing-corridor-decision-funnel
 baseline remote main = 49549e09fc7d8f1e76abe147fc8efcba967a8822
 program review = G3-04-AUTHORIZED
-Stage 0 = SFCDF-S0-TECHNICAL-2026-09-02-v1 / STAGE0-PASS via authorized v2 technical execution
-Stage 1 = SFCDF-S1-DEVELOPMENT-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
+Stage 0 = SFCDF-S0-TECHNICAL-2026-09-02-v1 / STAGE0-PASS
+Stage 1 = SFCDF-S1-DEVELOPMENT-2026-09-02-v1 / STAGE1-PASS
+Stage 1 authorized scientific executions = 1
+Stage 1 actual scientific executions = 1
+Stage 1 seed = 31410001..31410192 / CONSUMED
 Stage 2 = SFCDF-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
-Stage 1 seed = 31410001..31410192 / NOT CONSUMED
 Stage 2 seed = 31420001..31420288 / NOT CONSUMED
-fresh G3-04 scientific evidence = NOT GENERATED / NOT READ
-no-rescue boundary = NOT CROSSED
+no-rescue boundary = CROSSED / ACTIVE
 protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-Stage 1 scientific workflow runs = 0
-Stage 1 tooling smoke = PASS
-Stage 1 source validation = PASS
-next safe action = separate Stage 1 authorization review
 ```
 
 ## Frozen scientific boundary
@@ -33,93 +30,66 @@ principal families = LGTGMIV F5,F2,F3,F4
 auxiliary family = LGTGMIV F1
 ```
 
-Candidate endpoints:
+Candidate endpoints remain the prospectively frozen C1–C6 family. C1–C3 are corridor descriptors and C4–C6 are funnel descriptors; no combined class is defined.
 
-1. `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION`
-2. `SFCDF-C2-WIDTH-COMPRESSION-FRACTION`
-3. `SFCDF-C3-LONGEST-UNIT-WIDTH-RUN`
-4. `SFCDF-C4-RECONVERGENT-STATE-OCCUPANCY-FRACTION`
-5. `SFCDF-C5-ROOT-BRANCH-OVERLAP-FRACTION`
-6. `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO`
+## Stage 0
 
-C1–C3はcorridor、C4–C6はfunnel descriptorであり、combined corridor/funnel classは定義しない。
+Authorized v2 technical run `33620251552` passed. Canonical deterministic technical core:
 
-## Cross-implementation equality
+`14e7640dcd302c402c21a5acbe44bcbf004956670f467763faf7c301e545a295`
 
-Mandatory scientific equalityはcanonical sorted-key JSON scientific contentのUTF-8 bytes / SHA-256 exact equalityである。
+Stage 0 used no fresh scientific seed and did not access the protected depth-10 holdout.
 
-JavaScript object prototypeの違いはscientific identityではない。prototype-sensitive `util.isDeepStrictEqual`はmandatory gateとして使用しない。
+## Stage 1 execution
 
-Stage 0およびStage 1 tooling smokeは、production側ordinary objectとindependent側null-prototype objectのprototype-sensitive inequalityを保ったままcanonical content equalityをPASSさせた。
-
-## Stage 0 provenance
-
-v1 technical run `33616688284`はprereg JSON parse時にsynthetic fixture前でabortした。fresh seed accessは0。
-
-syntax-only correction後のauthorized v2:
+Exactly one authorized scientific run was performed:
 
 ```text
-run = 33620251552
-conclusion = success
-artifact = 9842597981
-artifact ZIP SHA-256 = 028ad7e5034cc4954003b081ca6f0c7ac2bc44a97db0f397fe78ea65f21b7021
-deterministic technical core = 14e7640dcd302c402c21a5acbe44bcbf004956670f467763faf7c301e545a295
-Stage disposition = STAGE0-PASS
-fresh scientific seed access = false
-protected depth-10 access = false
+run = 33621863279
+trigger SHA = 75f2691c19533ce9300abfda88987ad3436d381e
+lease commit = 923f890302e50a1ae19d184eb9120105559f8381
+scientific job = success
+artifact = 9843276993
+artifact ZIP SHA-256 = b3aeea3c1058d98b8b59fe0eaa69edc734f60e2ccb04223a464d842a78e33a56
+mirror commit = b7b2abfa
 ```
 
-## Identity-only upstream firewall
-
-Canonical G3-04 firewall:
+Integrity/estimability state:
 
 ```text
-path = prereg/UPSTREAM_IDENTITY_FIREWALL.json
-blob = 9bc9debfa8df428eece243ca2ce49baf5707b9bf
-identity core = 0196f255aa152f343cb428ee048ab1570ccdf4661c5adba5a47f4356a974b086
-LGTGMIV upstream identity records = 80
-G3-03 source pairs / root identities = 12 / 24
-scientific outcome fields retained = false
+selected pairs = 12
+selected roots = 24
+population complete = true
+root/stage resource gates = PASS
+source identity exact = true
+all roots exact = true
+pair comparison exact = true
+development exact = true
+stage scientific exact = true
+production stage scientific core = fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca
+independent stage scientific core = fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca
 ```
 
-G3-04 Stage 1 selectorはこのmanifestだけを過去identity exclusion inputとして使用する。
+## Frozen promoted candidate set
 
-## Stage 1 pre-authorization tooling
+Only the following two candidates are promoted to possible Stage 2 evaluation:
 
-Control-plane smoke:
+1. `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION` — **`MTAJI-GREATER`**
+2. `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO` — **`NAMUA-GREATER`**
+
+The four non-promoted candidates C2–C5 cannot be revived in Stage 2.
+
+Stage 1 development counts:
 
 ```text
-run = 33621353261 / success
-trigger-SHA workflow count = 1
-scientific workflow count = 0
-lease commit = 7a58189f8d5c776a7c249af0dc2a6b6e75d63212
-artifact = 9843024068
-artifact ZIP SHA-256 = 2a09ac45fef612dbc85c3bbeb5ea05fd57dfa04334d24b8840e22baaa4505d7b
-mirror commit = 4ffe10db
-fresh scientific evidence = false
-Stage 1/2 seed access = false/false
-protected depth-10 access = false
+C1: 11 Mtaji>Namua / 1 Namua>Mtaji / 0 ties
+C6: 0 Mtaji>Namua / 10 Namua>Mtaji / 2 ties
 ```
 
-Source validation:
+These development counts are not formal confirmation.
 
-```text
-run = 33621535038 / success
-fresh scientific evidence = false
-Stage 1/2 seed access = false/false
-```
+## Current boundary
 
-Frozen Stage 1 sources:
+Stage 1 reports `stage2AuthorizationEligible=true`, but Stage 2 is still **NOT AUTHORIZED**.
 
-```text
-production selector = 1cfbc58b2d670fa2bee0254c4ab8bb09c67d5a48
-independent selector = 9d39e13c7dd4d0d2d9dcb99500dfb07c92e48215
-runner = a4162e2dba356b2b4a2639ef320e87b7b567bb83
-scientific workflow = a0454e894c0d5e1709d7c79a3140aed58be95eaf
-```
-
-## Current authorization boundary
-
-Stage 1は**まだauthorizeされていない**。
-
-次はread-only Stage 1 authorization reviewを行う。Stage 0 PASS、identity-only firewall、tooling smoke PASS、source validation PASS、scientific run count 0、seed unconsumed、no-rescue未cross、depth-10 sealed、source blob freezeを再確認した場合にのみ、exactly one scientific executionを別artifactでauthorizeできる。
+The next safe action is a separate Stage 2 preparation/authorization review. Stage 2 may use only the frozen promoted set/directions and Stage 1 identity information needed for the formal firewall. No Stage 2 seed may be read until the formal runner/workflow/source bindings are frozen, non-scientifically validated, and a separate exactly-one Stage 2 execution authorization is committed.
