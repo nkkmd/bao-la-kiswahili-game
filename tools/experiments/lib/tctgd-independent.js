@@ -86,6 +86,9 @@ function project(measurement) {
 
   const allTreeNodes = sum(core.layers, row => row.treeNodeOccurrences);
   const uniqueGlobalRaw = BigInt(core.cumulative.distinctRawStates);
+  const depthLabelledRawStatePresences = sum(core.layers, row => row.uniqueRawStateCount);
+  const crossDepthRawStateRevisitPresenceExcess = depthLabelledRawStatePresences - uniqueGlobalRaw;
+  assert(crossDepthRawStateRevisitPresenceExcess >= 0n, "independent cross-depth RAW-state presence excess must be nonnegative");
   const duplicates = sum(core.parentLayers, row => row.duplicateEncounterCount);
   const transitionsByDepth = sum(core.parentLayers, row => row.uniqueTransitionCount);
   const multiParentByLayer = sum(core.parentLayers, row => row.multiParentRawStateCount);
@@ -107,6 +110,8 @@ function project(measurement) {
       rootExcludedFromC3Denominator: true,
       treeOccurrenceCountDepth0To5: String(allTreeNodes),
       distinctRawStatesDepth0To5: String(uniqueGlobalRaw),
+      depthLabelledUniqueRawStatePresenceCountDepth0To5: String(depthLabelledRawStatePresences),
+      crossDepthRawStateRevisitPresenceExcess: String(crossDepthRawStateRevisitPresenceExcess),
       duplicateEncounterCountParentDepth0To4: String(duplicates),
       depthLabelledUniqueTransitionCountParentDepth0To4: String(transitionsByDepth),
       multiParentRawStateCountLayerSumParentDepth0To4: String(multiParentByLayer),
