@@ -112,8 +112,42 @@ Decision: **FROZEN**
 
 fresh seed access後にendpoint、threshold、seed、root、representation、horizon、canonical equality ruleを変更しない。同じevidenceをimplementation修正後に再実行しない。
 
-## SFCDF-D010 — Next action
+## SFCDF-D010 — Stage 0 v1 pre-fixture abort
 
-Decision: **STAGE 0 TECHNICAL AUTHORIZATION REQUIRED**
+Decision: **TECHNICAL ABORT / NO SCIENTIFIC CONSEQUENCE**
 
-synthetic fixtureとexecution/equality/materializationのみを検証する。Stage 0ではfresh scientific seedを使用しない。
+GitHub Actions run `33616688284`はprereg JSON parse時に停止し、synthetic fixture runnerへ到達しなかった。
+
+```text
+fresh scientific evidence = false
+Stage 1 seed access = false
+Stage 2 seed access = false
+protected depth-10 access = false
+```
+
+原因はJSON objectのproperty-name欠落というserialization syntax defectのみ。科学契約を変更せずsyntax-only correctionを行い、同runをrerunせずStage 0 v2を別authorizationした。
+
+## SFCDF-D011 — Stage 0 v2 technical result
+
+Decision: **`STAGE0-PASS`**
+
+Authorized v2 run:
+
+```text
+run = 33620251552
+artifact = 9842597981
+artifact ZIP SHA-256 = 028ad7e5034cc4954003b081ca6f0c7ac2bc44a97db0f397fe78ea65f21b7021
+deterministic core = 14e7640dcd302c402c21a5acbe44bcbf004956670f467763faf7c301e545a295
+```
+
+synthetic controlsは、ordinary-objectとnull-prototype objectのprototype-sensitive inequalityを保ったままcanonical scientific content exact agreementをPASSした。corridor-only / funnel-only semantic separation、exact rational arithmetic、undefined denominator、development promotion boundary、static implementation independenceもPASSした。
+
+Stage 0ではfresh seed accessなし。
+
+## SFCDF-D012 — Stage 1 remains blocked
+
+Decision: **STAGE1-NOT-AUTHORIZED**
+
+Stage 0 PASSはStage 1を自動authorizeしない。
+
+Stage 1 authorizationの前に、実際に予定するscientific trigger / exactly-one lease / remote advancement fail-close / durable result / canonical-content equality pathを、Stage 1/2 seedを読まないnon-scientific tooling smokeでPASSさせる必要がある。
