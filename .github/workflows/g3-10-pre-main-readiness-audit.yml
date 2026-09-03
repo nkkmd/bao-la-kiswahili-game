@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: g3-10-pre-main-readiness-audit-v2
+  group: g3-10-pre-main-readiness-audit-v3
   cancel-in-progress: false
 
 jobs:
@@ -24,142 +24,128 @@ jobs:
           ref: research/g3-10-geometry-conditioned-longitudinal-dynamics
           fetch-depth: 0
 
-      - name: Repair final cross-document chronology and indexing gaps
+      - name: Repair final current-facing chronology and indexing gaps
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
+          import os
 
-          def replace_once(text, old, new, label):
-              n = text.count(old)
-              if n != 1:
-                  raise SystemExit(f"{label}: expected 1 match, got {n}")
+          def replace_required(text, old, new, label):
+              if old not in text:
+                  raise SystemExit(f"{label}: required text not found")
               return text.replace(old, new, 1)
 
-          # Root README: add prerequisite links and remove one stale "current" label.
+          def insert_after_prefix(text, prefix, addition_lines, marker, label):
+              if marker in text:
+                  return text
+              lines = text.splitlines()
+              hits = [i for i, line in enumerate(lines) if line.startswith(prefix)]
+              if len(hits) != 1:
+                  raise SystemExit(f"{label}: expected one prefix match, got {len(hits)}")
+              i = hits[0]
+              lines[i+1:i+1] = addition_lines
+              return '\n'.join(lines) + ('\n' if text.endswith('\n') else '')
+
+          # Root README: make the G3-10 prerequisite chain directly discoverable.
           p = Path('README.md')
           t = p.read_text(encoding='utf-8')
-          old = '- [`doc/geometry-conditioned-longitudinal-dynamics/README.md`](doc/geometry-conditioned-longitudinal-dynamics/README.md): Research Generation 3 `G3-10` / `GCLD-STUDY1`。formal-eligible continuous bounded RAW local geometryのfresh trajectory-level検証を`CLOSED / FORMAL-COMPLETE`で完了。C1 directionality、C2 persistence、C3 return fraction（ACTUAL-LESS）、C5 first-order path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。causal dynamics / physical hysteresis / strategic regimeを主張せず、protected depth-10は未開封'
-          new = old + '\n- [`doc/canonical-resource-robust-continuous-local-geometry-representation/README.md`](doc/canonical-resource-robust-continuous-local-geometry-representation/README.md): G3-10直前の独立prerequisite `CRCLGR-STUDY1`。`CRCLGR-R1-EXACT-SQUASHED-L1`を`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`として確立し、後続のseparate reviewでG3-10 dependencyを満たした。\n- [`doc/resource-robust-continuous-local-geometry-representation/README.md`](doc/resource-robust-continuous-local-geometry-representation/README.md): 先行prerequisite `RRCLGR-STUDY1`。fresh Stage 1でstructured digest type errorにより`CLOSED / TECHNICAL-INVALID`。同Studyを救済せず、後続CRCLGRを独立Studyとして実施した。'
-          t = replace_once(t, old, new, 'root G3-10 prerequisite links')
-          t = replace_once(
+          t = insert_after_prefix(
               t,
-              '`LGTGMIV-STUDY1`のformal closureを受理し、G3-02を自動開始せず別authorization reviewを要求するcurrent program decision。',
-              '`LGTGMIV-STUDY1`のformal closureを受理し、G3-02を自動開始せず別authorization reviewを要求したLGTGMIV closure時点のhistorical program decision。',
-              'root historical LGTGMIV decision label',
+              '- [`doc/geometry-conditioned-longitudinal-dynamics/README.md`]',
+              [
+                  '<!-- G3-10-PREREQUISITE-CHAIN-ROOT -->',
+                  '- [`doc/canonical-resource-robust-continuous-local-geometry-representation/README.md`](doc/canonical-resource-robust-continuous-local-geometry-representation/README.md): G3-10直前の独立prerequisite `CRCLGR-STUDY1`。`CRCLGR-R1-EXACT-SQUASHED-L1`を`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`として確立し、後続のseparate reviewでG3-10 dependencyを満たした。',
+                  '- [`doc/resource-robust-continuous-local-geometry-representation/README.md`](doc/resource-robust-continuous-local-geometry-representation/README.md): 先行prerequisite `RRCLGR-STUDY1`。fresh Stage 1でstructured digest type errorにより`CLOSED / TECHNICAL-INVALID`。同Studyを救済せず、後続CRCLGRを独立Studyとして実施した。',
+              ],
+              '<!-- G3-10-PREREQUISITE-CHAIN-ROOT -->',
+              'root prerequisite chain',
           )
+          stale = '`LGTGMIV-STUDY1`のformal closureを受理し、G3-02を自動開始せず別authorization reviewを要求するcurrent program decision。'
+          if stale in t:
+              t = t.replace(stale, '`LGTGMIV-STUDY1`のformal closureを受理し、G3-02を自動開始せず別authorization reviewを要求したLGTGMIV closure時点のhistorical program decision。', 1)
           p.write_text(t, encoding='utf-8')
 
-          # Central research index: make the prerequisite chain directly navigable.
+          # Central research index: link both prerequisites and the later authorization review.
           p = Path('doc/RESEARCH_INDEX.md')
           t = p.read_text(encoding='utf-8')
-          old = '- [`research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md)\n\n---'
-          new = '- [`research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md)\n\n**G3-10 prerequisite chain:**\n\n- [`resource-robust-continuous-local-geometry-representation/README.md`](resource-robust-continuous-local-geometry-representation/README.md) — `RRCLGR-STUDY1` / `CLOSED / TECHNICAL-INVALID`; first independent resource-robust prerequisite, no rescue\n- [`canonical-resource-robust-continuous-local-geometry-representation/README.md`](canonical-resource-robust-continuous-local-geometry-representation/README.md) — `CRCLGR-STUDY1` / `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`; formal G3-10 input representation\n- [`research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate current-state review that yielded `G3-10-AUTHORIZED`\n\n---'
-          t = replace_once(t, old, new, 'RESEARCH_INDEX prerequisite chain')
+          if '<!-- G3-10-PREREQUISITE-CHAIN-INDEX -->' not in t:
+              needle = '- [`research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md)'
+              block = needle + '\n\n<!-- G3-10-PREREQUISITE-CHAIN-INDEX -->\n**G3-10 prerequisite chain:**\n\n- [`resource-robust-continuous-local-geometry-representation/README.md`](resource-robust-continuous-local-geometry-representation/README.md) — `RRCLGR-STUDY1` / `CLOSED / TECHNICAL-INVALID`; first independent resource-robust prerequisite, no rescue\n- [`canonical-resource-robust-continuous-local-geometry-representation/README.md`](canonical-resource-robust-continuous-local-geometry-representation/README.md) — `CRCLGR-STUDY1` / `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`; formal G3-10 input representation\n- [`research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate current-state review that yielded `G3-10-AUTHORIZED`'
+              t = replace_required(t, needle, block, 'research index prerequisite chain')
           p.write_text(t, encoding='utf-8')
 
-          # RG3 entry page: add the prerequisite chain to the read-first navigation.
+          # RG3 entry page: put the prerequisite chain in read-first navigation.
           p = Path('doc/research-generation-3/README.md')
           t = p.read_text(encoding='utf-8')
-          old = '- [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`](checkpoints/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 RG3 closure checkpoint\n<!-- CLGR-G3-09-READ-FIRST -->'
-          new = '- [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`](checkpoints/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 RG3 closure checkpoint\n<!-- G3-10-PREREQUISITE-CHAIN-READ-FIRST -->\n- [`../canonical-resource-robust-continuous-local-geometry-representation/README.md`](../canonical-resource-robust-continuous-local-geometry-representation/README.md) — G3-10入力representationをformal eligibleとしたCRCLGR入口\n- [`../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — CRCLGR formal eligibilityとbounded claim boundary\n- [`../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate reviewによる`G3-10-AUTHORIZED` decision\n- [`../resource-robust-continuous-local-geometry-representation/README.md`](../resource-robust-continuous-local-geometry-representation/README.md) — predecessor RRCLGR technical-invalid closure入口\n- [`../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — RRCLGR no-rescue / successor boundary正本\n<!-- CLGR-G3-09-READ-FIRST -->'
-          t = replace_once(t, old, new, 'RG3 read-first prerequisite chain')
+          t = insert_after_prefix(
+              t,
+              '- [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`]',
+              [
+                  '<!-- G3-10-PREREQUISITE-CHAIN-READ-FIRST -->',
+                  '- [`../canonical-resource-robust-continuous-local-geometry-representation/README.md`](../canonical-resource-robust-continuous-local-geometry-representation/README.md) — G3-10入力representationをformal eligibleとしたCRCLGR入口',
+                  '- [`../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — CRCLGR formal eligibilityとbounded claim boundary',
+                  '- [`../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate reviewによる`G3-10-AUTHORIZED` decision',
+                  '- [`../resource-robust-continuous-local-geometry-representation/README.md`](../resource-robust-continuous-local-geometry-representation/README.md) — predecessor RRCLGR technical-invalid closure入口',
+                  '- [`../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — RRCLGR closure-time no-rescue / successor boundary正本',
+              ],
+              '<!-- G3-10-PREREQUISITE-CHAIN-READ-FIRST -->',
+              'RG3 prerequisite read-first chain',
+          )
           p.write_text(t, encoding='utf-8')
 
-          # CRCLGR current-facing status.
+          # CRCLGR current-facing status: distinguish closure-time gate from later chronology.
           p = Path('doc/canonical-resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md')
           t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'Updated: 2026-09-03', 'Updated: 2026-09-04', 'CRCLGR current date')
-          t = replace_once(t, 'G3-10 = NOT AUTHORIZED pending separate post-CRCLGR review', 'G3-10 downstream chronology = later separate post-CRCLGR review yielded G3-10-AUTHORIZED; GCLD-STUDY1 subsequently CLOSED / FORMAL-COMPLETE', 'CRCLGR current G3-10 chronology')
-          t = replace_once(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'repository integration = CRCLGR history carried into G3-10 research branch / combined main integration NOT AUTHORIZED / NOT PERFORMED', 'CRCLGR current integration')
-          t = replace_once(t, '```\n\nNo same-evidence rerun', '```\n\nCRCLGR closure時点ではG3-10を自動authorizeせずseparate reviewを要求した。そのreviewはその後完了して`G3-10-AUTHORIZED`となり、GCLD-STUDY1も`CLOSED / FORMAL-COMPLETE`まで完了した。この後続chronologyはCRCLGRのformal decisionやclaim boundaryを変更しない。\n\nNo same-evidence rerun', 'CRCLGR current chronology note')
+          if 'Updated: 2026-09-03' in t:
+              t = t.replace('Updated: 2026-09-03', 'Updated: 2026-09-04', 1)
+          t = replace_required(t, 'G3-10 = NOT AUTHORIZED pending separate post-CRCLGR review', 'G3-10 downstream chronology = later separate post-CRCLGR review yielded G3-10-AUTHORIZED; GCLD-STUDY1 subsequently CLOSED / FORMAL-COMPLETE', 'CRCLGR current G3-10')
+          t = replace_required(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'repository integration = CRCLGR history carried into G3-10 research branch / combined main integration NOT AUTHORIZED / NOT PERFORMED', 'CRCLGR current integration')
+          if 'CRCLGR closure時点ではG3-10を自動authorizeせず' not in t:
+              marker = 'No same-evidence rerun, seed extension, root replacement, representation redesign or resource-ceiling relaxation is authorized for CRCLGR-STUDY1.'
+              note = 'CRCLGR closure時点ではG3-10を自動authorizeせずseparate reviewを要求した。そのreviewはその後完了して`G3-10-AUTHORIZED`となり、GCLD-STUDY1も`CLOSED / FORMAL-COMPLETE`まで完了した。この後続chronologyはCRCLGRのformal decisionやclaim boundaryを変更しない。\n\n' + marker
+              t = replace_required(t, marker, note, 'CRCLGR current chronology note')
           p.write_text(t, encoding='utf-8')
 
-          # CRCLGR README: distinguish closure-time gate from subsequent chronology.
+          # CRCLGR README: current navigation note without rewriting historical final-report decisions.
           p = Path('doc/canonical-resource-robust-continuous-local-geometry-representation/README.md')
           t = p.read_text(encoding='utf-8')
-          t = replace_once(
-              t,
-              'G3-10はこのStudyのformal eligibilityによって自動的にはauthorizedされない。別のpost-prerequisite current-state authorization reviewが必要である。',
-              'CRCLGR closure時点では、G3-10はこのStudyのformal eligibilityだけでは自動authorizeせず、別のpost-prerequisite current-state authorization reviewを必要とした。そのreviewはその後独立に完了して`G3-10-AUTHORIZED`となり、後続`GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`まで完了した。これはCRCLGRのformal decisionを事後変更するものではない。',
-              'CRCLGR README downstream chronology',
-          )
-          t = replace_once(t, 'G3-10 = NOT AUTHORIZED pending separate review', 'G3-10 at CRCLGR closure = NOT AUTHORIZED pending separate review\nsubsequent G3-10 = AUTHORIZED by separate review / GCLD-STUDY1 CLOSED FORMAL-COMPLETE', 'CRCLGR README safety chronology')
-          t = replace_once(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED', 'CRCLGR README integration')
+          old = 'G3-10はこのStudyのformal eligibilityによって自動的にはauthorizedされない。別のpost-prerequisite current-state authorization reviewが必要である。'
+          new = 'CRCLGR closure時点では、G3-10はこのStudyのformal eligibilityだけでは自動authorizeせず、別のpost-prerequisite current-state authorization reviewを必要とした。そのreviewはその後独立に完了して`G3-10-AUTHORIZED`となり、後続`GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`まで完了した。これはCRCLGRのformal decisionを事後変更するものではない。'
+          t = replace_required(t, old, new, 'CRCLGR README chronology')
+          t = replace_required(t, 'G3-10 = NOT AUTHORIZED pending separate review', 'G3-10 at CRCLGR closure = NOT AUTHORIZED pending separate review\nsubsequent G3-10 = AUTHORIZED by separate review / GCLD-STUDY1 CLOSED FORMAL-COMPLETE', 'CRCLGR README safety chronology')
+          t = replace_required(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED', 'CRCLGR README integration')
           p.write_text(t, encoding='utf-8')
 
-          # CRCLGR decision register.
-          p = Path('doc/canonical-resource-robust-continuous-local-geometry-representation/DECISION_REGISTER.md')
-          t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'Updated: 2026-09-03', 'Updated: 2026-09-04', 'CRCLGR register date')
-          t = replace_once(
-              t,
-              '| G3-10 | `NOT AUTHORIZED` until separate post-CRCLGR review | No automatic downstream authorization |',
-              '| G3-10 at CRCLGR closure | `NOT AUTHORIZED` until separate post-CRCLGR review | No automatic downstream authorization |\n| Subsequent G3-10 chronology | `G3-10-AUTHORIZED` → `GCLD-STUDY1 CLOSED / FORMAL-COMPLETE` | Later separate post-CRCLGR review; CRCLGR decision unchanged |',
-              'CRCLGR register G3-10 chronology',
-          )
-          t = replace_once(t, '| main integration | `NOT AUTHORIZED / NOT PERFORMED` | Explicit user authorization required |', '| combined successor-branch main integration | `NOT AUTHORIZED / NOT PERFORMED` | Explicit user authorization required |', 'CRCLGR register integration')
-          p.write_text(t, encoding='utf-8')
-
-          # CRCLGR final report: preserve closure-time statement and append subsequent chronology.
-          p = Path('doc/canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md')
-          t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'Updated: 2026-09-03', 'Updated: 2026-09-04', 'CRCLGR report date')
-          t = replace_once(
-              t,
-              'However, G3-10 remains **NOT AUTHORIZED** until a separate current-state authorization review confirms that its historical dependency is satisfied without retroactive endpoint redesign and prospectively freezes the G3-10 scientific contract.',
-              'At CRCLGR closure, G3-10 remained **NOT AUTHORIZED** until a separate current-state authorization review confirmed that its historical dependency was satisfied without retroactive endpoint redesign and prospectively froze the G3-10 scientific contract. That separate review subsequently completed with `G3-10-AUTHORIZED`, and `GCLD-STUDY1` later closed `FORMAL-COMPLETE`; this later chronology does not alter the CRCLGR formal decision.',
-              'CRCLGR report downstream chronology',
-          )
-          t = replace_once(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'main integration at CRCLGR closure = NOT AUTHORIZED / NOT PERFORMED\ncurrent combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED', 'CRCLGR report integration')
-          p.write_text(t, encoding='utf-8')
-
-          # RRCLGR current-facing status.
+          # RRCLGR current-facing status: the successor is no longer hypothetical.
           p = Path('doc/resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md')
           t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'Updated: 2026-09-03', 'Updated: 2026-09-04', 'RRCLGR current date')
-          t = replace_once(t, 'G3-10 = NOT AUTHORIZED', 'G3-10 downstream chronology = successor CRCLGR later established formal eligibility; separate post-CRCLGR review then yielded G3-10-AUTHORIZED; GCLD-STUDY1 CLOSED / FORMAL-COMPLETE', 'RRCLGR current G3-10 chronology')
-          t = replace_once(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'repository integration = RRCLGR history carried into successor G3-10 branch / combined main integration NOT AUTHORIZED / NOT PERFORMED', 'RRCLGR current integration')
-          marker = '## Next permitted action\n'
-          if t.count(marker) != 1:
-              raise SystemExit('RRCLGR current next-action marker mismatch')
-          head, _ = t.split(marker, 1)
-          t = head + '''## Subsequent program chronology\n\nRRCLGR closure後、同Studyを修正・rerunするのではなく、fresh namespaceとcanonical structured-digest contractを持つ独立後継`CRCLGR-STUDY1`がprospectively開始された。CRCLGRは`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`で完了し、その後のseparate current-state reviewでG3-10がauthorizedされた。`GCLD-STUDY1`も現在は`CLOSED / FORMAL-COMPLETE`である。\n\nこの後続chronologyはRRCLGRの`CLOSED / TECHNICAL-INVALID`、Stage 2未実行、scientific summary非承認、no-rescue boundaryを一切変更しない。RRCLGR-STUDY1内に残るscientific actionはない。\n'''
+          if 'Updated: 2026-09-03' in t:
+              t = t.replace('Updated: 2026-09-03', 'Updated: 2026-09-04', 1)
+          t = replace_required(t, 'G3-10 = NOT AUTHORIZED', 'G3-10 downstream chronology = successor CRCLGR later established formal eligibility; separate post-CRCLGR review then yielded G3-10-AUTHORIZED; GCLD-STUDY1 CLOSED / FORMAL-COMPLETE', 'RRCLGR current G3-10')
+          t = replace_required(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'repository integration = RRCLGR history carried into successor G3-10 branch / combined main integration NOT AUTHORIZED / NOT PERFORMED', 'RRCLGR current integration')
+          if '## Next permitted action' in t:
+              t = t.split('## Next permitted action', 1)[0].rstrip() + '''\n\n## Subsequent program chronology\n\nRRCLGR closure後、同Studyを修正・rerunするのではなく、fresh namespaceとcanonical structured-digest contractを持つ独立後継`CRCLGR-STUDY1`がprospectively開始された。CRCLGRは`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`で完了し、その後のseparate current-state reviewでG3-10がauthorizedされた。`GCLD-STUDY1`も現在は`CLOSED / FORMAL-COMPLETE`である。\n\nこの後続chronologyはRRCLGRの`CLOSED / TECHNICAL-INVALID`、Stage 2未実行、scientific summary非承認、no-rescue boundaryを一切変更しない。RRCLGR-STUDY1内に残るscientific actionはない。\n'''
           p.write_text(t, encoding='utf-8')
 
-          # RRCLGR README.
+          # RRCLGR README: current downstream chronology while preserving the technical-invalid closure.
           p = Path('doc/resource-robust-continuous-local-geometry-representation/README.md')
           t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'G3-10 = NOT AUTHORIZED', 'G3-10 at RRCLGR closure = NOT AUTHORIZED\nsubsequent G3-10 chronology = CRCLGR formal eligible → separate review G3-10-AUTHORIZED → GCLD-STUDY1 CLOSED FORMAL-COMPLETE', 'RRCLGR README chronology')
-          t = replace_once(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED', 'RRCLGR README integration')
-          t = replace_once(
-              t,
-              '今後continuous representation prerequisiteを再検証する場合は、RRCLGR-STUDY1のrepairではなく、fresh seed namespaceと新たなprospective contractを持つ独立Study/versionとして開始しなければならない。',
-              'RRCLGR closure時点では、continuous representation prerequisiteを再検証する場合はRRCLGR-STUDY1のrepairではなく、fresh seed namespaceと新たなprospective contractを持つ独立Study/versionとして開始する必要があった。その条件を満たす後継`CRCLGR-STUDY1`がその後独立に実施されformal eligibleで閉じた。RRCLGR自体のdecisionは変更しない。',
-              'RRCLGR README successor chronology',
-          )
+          t = replace_required(t, 'G3-10 = NOT AUTHORIZED', 'G3-10 at RRCLGR closure = NOT AUTHORIZED\nsubsequent G3-10 chronology = CRCLGR formal eligible → separate review G3-10-AUTHORIZED → GCLD-STUDY1 CLOSED FORMAL-COMPLETE', 'RRCLGR README chronology')
+          t = replace_required(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED', 'RRCLGR README integration')
+          old = '今後continuous representation prerequisiteを再検証する場合は、RRCLGR-STUDY1のrepairではなく、fresh seed namespaceと新たなprospective contractを持つ独立Study/versionとして開始しなければならない。'
+          new = 'RRCLGR closure時点では、continuous representation prerequisiteを再検証する場合はRRCLGR-STUDY1のrepairではなく、fresh seed namespaceと新たなprospective contractを持つ独立Study/versionとして開始する必要があった。その条件を満たす後継`CRCLGR-STUDY1`がその後独立に実施されformal eligibleで閉じた。RRCLGR自体のdecisionは変更しない。'
+          t = replace_required(t, old, new, 'RRCLGR README successor chronology')
           p.write_text(t, encoding='utf-8')
 
-          # RRCLGR decision register.
-          p = Path('doc/resource-robust-continuous-local-geometry-representation/DECISION_REGISTER.md')
+          # GCLD current status: record this final doc-only audit run.
+          p = Path('doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md')
           t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'Updated: 2026-09-03', 'Updated: 2026-09-04', 'RRCLGR register date')
-          t = replace_once(t, 'Decision: G3-10 remains **`NOT AUTHORIZED`**.\n\nRRCLGR Stage 1 does not establish the coordinate dependency required for G3-10.', 'Decision at RRCLGR closure: G3-10 remained **`NOT AUTHORIZED`**.\n\nRRCLGR Stage 1 does not establish the coordinate dependency required for G3-10.', 'RRCLGR register historical G3-10')
-          suffix = '- no main integration without explicit user instruction.\n'
-          if t.count(suffix) != 1:
-              raise SystemExit('RRCLGR register successor suffix mismatch')
-          t = t.replace(suffix, suffix + '\n## D11 — Subsequent program chronology\n\nAfter RRCLGR closure, a new independent successor `CRCLGR-STUDY1` used fresh evidence and a prospectively frozen canonical structured-data digest contract. CRCLGR closed `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`; a later separate post-CRCLGR review yielded `G3-10-AUTHORIZED`, and `GCLD-STUDY1` subsequently closed `FORMAL-COMPLETE`. None of these later decisions rescues or reclassifies RRCLGR.\n', 1)
-          p.write_text(t, encoding='utf-8')
-
-          # RRCLGR final report: preserve formal closure while recording what happened next.
-          p = Path('doc/resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md')
-          t = p.read_text(encoding='utf-8')
-          t = replace_once(t, 'Updated: 2026-09-03', 'Updated: 2026-09-04', 'RRCLGR report date')
-          t = replace_once(t, 'G3-10 = NOT AUTHORIZED', 'G3-10 at RRCLGR closure = NOT AUTHORIZED', 'RRCLGR report historical G3-10')
-          t = replace_once(t, 'main integration = NOT AUTHORIZED / NOT PERFORMED', 'main integration at RRCLGR closure = NOT AUTHORIZED / NOT PERFORMED', 'RRCLGR report integration')
-          t = replace_once(t, 'The prerequisite needed by historical G3-10 remains unsatisfied. G3-10 cannot be authorized from RRCLGR-STUDY1.', 'At RRCLGR closure, the prerequisite needed by historical G3-10 remained unsatisfied. G3-10 could not be authorized from RRCLGR-STUDY1.', 'RRCLGR report downstream consequence')
-          t = t.rstrip() + '\n\n## 13. Subsequent program chronology\n\nA later independent successor, `CRCLGR-STUDY1`, used a fresh scientific namespace and prospectively fixed canonical structured-data digest contract and closed `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`. A separate post-CRCLGR current-state review then yielded `G3-10-AUTHORIZED`; `GCLD-STUDY1` subsequently closed `FORMAL-COMPLETE`. This chronology does not modify RRCLGR\'s `CLOSED / TECHNICAL-INVALID` decision, its non-authorized scientific summary, or its no-rescue boundary.\n'
+          run_id = os.environ.get('GITHUB_RUN_ID', 'UNKNOWN')
+          anchor = 'pre-main readiness audit run = 33817654425'
+          if 'final cross-document consistency audit run =' not in t:
+              t = replace_required(t, anchor, anchor + f'\nfinal cross-document consistency audit run = {run_id}', 'GCLD final audit provenance')
           p.write_text(t, encoding='utf-8')
           PY
 
@@ -173,17 +159,17 @@ jobs:
           grep -Fq 'C4-CHRONOLOGY-CONDITIONED-CIRCULATION = NOT-CONFIRMED' doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md
           grep -Fq 'repository readiness = PRE-MAIN-INTEGRATION-READY' doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md
           grep -Fq 'main integration = NOT AUTHORIZED / NOT PERFORMED' doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md
-          grep -Fq 'canonical-resource-robust-continuous-local-geometry-representation/README.md' README.md
-          grep -Fq 'resource-robust-continuous-local-geometry-representation/README.md' README.md
-          grep -Fq '**G3-10 prerequisite chain:**' doc/RESEARCH_INDEX.md
+          grep -Fq '<!-- G3-10-PREREQUISITE-CHAIN-ROOT -->' README.md
+          grep -Fq '<!-- G3-10-PREREQUISITE-CHAIN-INDEX -->' doc/RESEARCH_INDEX.md
           grep -Fq '<!-- G3-10-PREREQUISITE-CHAIN-READ-FIRST -->' doc/research-generation-3/README.md
           grep -Fq 'GCLD-STUDY1 subsequently CLOSED / FORMAL-COMPLETE' doc/canonical-resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md
           grep -Fq 'GCLD-STUDY1 CLOSED / FORMAL-COMPLETE' doc/resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md
           ! grep -Fq 'G3-10 = NOT AUTHORIZED pending separate post-CRCLGR review' doc/canonical-resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md
           ! grep -Fq '## Next permitted action' doc/resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md
           ! grep -Fq '別authorization reviewを要求するcurrent program decision。' README.md
+          grep -Fq 'Research Generation 3: **Active / G3-10 `GCLD-STUDY1` CLOSED `FORMAL-COMPLETE`' doc/FUTURE_RESEARCH_AGENDA.md
 
-      - name: Commit only final documentation consistency repairs
+      - name: Commit only final current-facing consistency repairs
         shell: bash
         run: |
           set -euo pipefail
@@ -193,12 +179,9 @@ jobs:
             doc/research-generation-3/README.md
             doc/canonical-resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md
             doc/canonical-resource-robust-continuous-local-geometry-representation/README.md
-            doc/canonical-resource-robust-continuous-local-geometry-representation/DECISION_REGISTER.md
-            doc/canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md
             doc/resource-robust-continuous-local-geometry-representation/CURRENT_STATUS.md
             doc/resource-robust-continuous-local-geometry-representation/README.md
-            doc/resource-robust-continuous-local-geometry-representation/DECISION_REGISTER.md
-            doc/resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md
+            doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md
           )
           git add "${files[@]}"
           git diff --cached --name-only | sort > /tmp/actual.txt
@@ -208,5 +191,5 @@ jobs:
           ! git diff --cached --name-only | grep -F '/results/'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Complete final G3-10 cross-document consistency pass"
+          git commit -m "Complete final G3-10 current-facing consistency pass"
           git push origin HEAD:research/g3-10-geometry-conditioned-longitudinal-dynamics
