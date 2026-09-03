@@ -246,3 +246,8 @@ main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
 LGPML-STUDY1は研究設計を遡及変更せず、technical-invalid outcomeをそのまま閉鎖記録として保持する。
+
+<!-- LGPML-G3-08-POST-CLOSURE-INTEGRATION -->
+## Post-closure repository integration addendum
+
+Study closure時点ではmain integrationは未承認だった。その後、2026-09-03の明示的ユーザー指示により、audited research branch tip `72bd208267359f461e9dbbde938bb952eb01b91c` をremote `main`へfast-forward / `force=false`で統合した。このrepository lifecycle eventは`CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 non-execution、no-rescue、protected depth-10 sealingを変更しない。

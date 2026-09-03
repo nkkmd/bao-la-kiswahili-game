@@ -43,10 +43,10 @@ G3-08 formal promoted candidate set = []
 G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G3-08 Stage 2 seed = 31820001..31820384 / NOT CONSUMED
 G3-08 no-rescue boundary = CROSSED / ACTIVE
-G3-08 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+G3-08 main integration = COMPLETE / FAST-FORWARD / source tip 72bd208267359f461e9dbbde938bb952eb01b91c / force=false
 G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state authorization review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active scientific research branch = none / research/g3-08-local-geometry-persistence-memory-length scientifically CLOSED and pending explicit user decision on main integration
+Active scientific research branch = none / G3-08 integrated to main; G3-09 remains NOT AUTHORIZED
 Next scientific action = separate post-G3-08 current-state G3-09 authorization review; do not auto-start G3-09
 ```
 

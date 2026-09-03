@@ -1407,3 +1407,6 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 このtechnical-invalid closureをgeometry persistenceのnegative/null evidenceとして扱わない。relay-limit-safeなlongitudinal studyが必要なら、新しいprospective independent Study/versionとして別途扱う。
 
 Historical program plan上の次候補は**G3-09 — Continuous Local-Geometry Representation Study 1**だが、G3-08 closureから自動authorizeされない。開始前にpost-G3-08 current-state authorization reviewが必要である。
+
+<!-- LGPML-G3-08-MAIN-INTEGRATION:FUTURE -->
+G3-08 `LGPML-STUDY1`のresearch branchは、研究closureと最終文書監査後、2026-09-03の明示的ユーザー指示によりtip `72bd208267359f461e9dbbde938bb952eb01b91c` からmainへfast-forward / `force=false`で統合された。scientific dispositionは`CLOSED / TECHNICAL-INVALID`のまま不変で、G3-09は引き続きseparate post-G3-08 current-state authorization reviewまで`NOT AUTHORIZED`である。

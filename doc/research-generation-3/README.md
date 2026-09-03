@@ -38,7 +38,7 @@ G3-08 technical error = relay-limit enumeration 74581ece7d29895d9727bb9cd507046f
 G3-08 formal promoted candidate set = []
 G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seeds NOT CONSUMED
 G3-08 no-rescue boundary = CROSSED / ACTIVE
-G3-08 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+G3-08 main integration = COMPLETE / FAST-FORWARD / source tip 72bd208267359f461e9dbbde938bb952eb01b91c / force=false
 G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```

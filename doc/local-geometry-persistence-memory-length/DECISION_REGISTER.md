@@ -34,7 +34,7 @@
 | LGPML-D028 | G3-05 reuse | `TECHNICAL PATTERN ONLY / NO SCIENTIFIC OUTPUT` | technical-invalid direction/telemetry禁止。 |
 | LGPML-D029 | Protected depth-10 | `SEALED / NOT GENERATED / NOT READ / NOT PEEKED` | 全Stageで使用禁止。 |
 | LGPML-D030 | No-rescue | `CROSSED AT FIRST STAGE 1 FRESH ACCESS` | seed/lag/metric/test/ceiling変更とsame-evidence rerun禁止。 |
-| LGPML-D031 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | Study closureでも自動統合しない。 |
+| LGPML-D031 | Main integration | `COMPLETE / FAST-FORWARD / FORCE=FALSE` | 明示的ユーザー指示後、source tip `72bd208267359f461e9dbbde938bb952eb01b91c` をmainへ統合。科学的closure/no-rescueは不変。 |
 | LGPML-D032 | Stage 0 authorization | `AUTHORIZED / EXECUTED ONCE` | trigger commit `830d1d9d...`; same-version rerun禁止。 |
 | LGPML-D033 | Stage 0 result | `STAGE0-PASS` | technical controls exact agreement。fresh scientific evidenceなし。 |
 | LGPML-D034 | Stage 0 technical seed | `31809002 USED` | scientific use永久禁止。 |
@@ -53,3 +53,5 @@
 | LGPML-D047 | Formal promoted candidate set | `[]` | Stage 2へ渡すscientific candidateなし。 |
 | LGPML-D048 | Study closure | `CLOSED / TECHNICAL-INVALID` | negative/null findingではなくtechnical validity closure。same-evidence rescue禁止。 |
 | LGPML-D049 | Stage 2 / protected evidence | `STAGE2 NOT EXECUTED / DEPTH10 SEALED` | Stage 2 seedsとprotected depth-10を未アクセスのまま保持。 |
+
+| LGPML-D050 | Post-closure repository integration | `COMPLETE` | 2026-09-03、mainを`72bd208267359f461e9dbbde938bb952eb01b91c`へfast-forward。squash/rebase/history rewrite/scientific rerunなし。 |

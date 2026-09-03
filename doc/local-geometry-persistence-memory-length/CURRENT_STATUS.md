@@ -38,7 +38,7 @@ technical seed actually used = 31809002
 lag set = 1,2,4,8
 geometry panel = G1..G6 / LGTGMIV F1-F5 / RAW-only / relative depth 5
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-main integration = NOT AUTHORIZED / NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+main integration = COMPLETE / FAST-FORWARD / source tip 72bd208267359f461e9dbbde938bb952eb01b91c / force=false
 ```
 
-LGPML-STUDY1はfresh Stage 1のexactly-one authorized execution中にrequired bounded RAW reconstructionで`relay-limit` technical errorへ到達し、complete 10-trajectory development populationを生成できなかったため、`CLOSED / TECHNICAL-INVALID`で閉鎖する。partial 9 trajectoriesはtechnical provenanceであり、formal persistence candidateやmemory-length claimへ使用しない。Stage 2はauthorizeせず、Stage 2 seed blockとprotected depth-10 holdoutは未アクセスのまま保持する。mainへの統合はユーザーの明示指示まで禁止する。
+LGPML-STUDY1はfresh Stage 1のexactly-one authorized execution中にrequired bounded RAW reconstructionで`relay-limit` technical errorへ到達し、complete 10-trajectory development populationを生成できなかったため、`CLOSED / TECHNICAL-INVALID`で閉鎖する。partial 9 trajectoriesはtechnical provenanceであり、formal persistence candidateやmemory-length claimへ使用しない。Stage 2はauthorizeせず、Stage 2 seed blockとprotected depth-10 holdoutは未アクセスのまま保持する。mainへの統合は2026-09-03の明示的ユーザー指示を受け、research branch tipからfast-forward / force=falseで完了した。

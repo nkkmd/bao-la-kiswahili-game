@@ -40,7 +40,7 @@ G3-07の3 CONFIRMED candidatesやG3-05 technical-invalid scientific outputをG3-
 
 Protected standard-initial RAW-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。
 
-mainへの統合はユーザーの明示指示があるまで行わない。
+mainへの統合は2026-09-03の明示的ユーザー指示を受け、research branch tip `72bd208267359f461e9dbbde938bb952eb01b91c` からfast-forward / `force=false`で完了した。
 
 主要文書:
 

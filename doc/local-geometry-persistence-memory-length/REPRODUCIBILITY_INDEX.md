@@ -190,3 +190,10 @@ Standard initial RAW-root complete exact depth-10 holdout = `SEALED / NOT GENERA
 A post-closure read-through found stale downstream/lifecycle wording in inherited G3-04..G3-07 current-facing documents and one duplicate obsolete G3-08 status line in the RG3 README. These are repository-documentation metadata only; no scientific content changed. The correction is recorded in `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`.
 
 Current authoritative program state remains: G3-08 / `LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID`; G3-09 `NOT AUTHORIZED`; protected depth-10 sealed; G3-08 main integration not performed.
+
+<!-- LGPML-G3-08-MAIN-INTEGRATION -->
+## Main integration
+
+2026-09-03、明示的ユーザー指示後にremote `main`をpre-integration SHA `9f6abd3c9b146bb88c11dd04963052300e4cdc3b`からaudited G3-08 research tip `72bd208267359f461e9dbbde938bb952eb01b91c`へfast-forwardした。`force=false`。squash、rebase、history rewrite、scientific recomputationは行っていない。
+
+Post-integration documentation finalizationはrepository-lifecycle metadataのみを更新し、scientific result、preregistration、seed、candidate set、protected evidenceを変更しない。

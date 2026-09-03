@@ -1239,4 +1239,4 @@ Stage 0はPASSし、fresh Stage 1はexactly one authorized executionで開始し
 - [`research-program-decisions/2026-09-03-g3-08-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-08-technical-invalid-closure.md)
 - [`research-generation-3/checkpoints/2026-09-03-g3-08-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-08-technical-invalid-closure.md)
 
-Stage 2 seed blockは未消費、protected depth-10 holdoutはsealedのまま。mainへの統合はユーザーの明示指示まで行わない。
+Stage 2 seed blockは未消費、protected depth-10 holdoutはsealedのまま。2026-09-03の明示的ユーザー指示後、G3-08 research tip `72bd208267359f461e9dbbde938bb952eb01b91c` はmainへfast-forward / `force=false`で統合済み。
