@@ -1,0 +1,65 @@
+name: SILGM Stage 2 Formal v1
+
+on:
+  push:
+    branches:
+      - research/g3-07-search-instability-local-geometry-mechanism
+    paths:
+      - doc/search-instability-local-geometry-mechanism/triggers/STAGE_2_FORMAL_EXECUTION_TRIGGER.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: silgm-stage2-formal-v1
+  cancel-in-progress: false
+
+jobs:
+  scientific:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+      - name: Syntax-check frozen Stage 2 tooling
+        run: |
+          node --check tools/experiments/lib/silgm-stage2-production.js
+          node --check tools/experiments/lib/silgm-stage2-independent.js
+          node --check tools/experiments/run-silgm-stage2-formal.js
+          node --check tools/experiments/verify-silgm-stage2-authorization.js
+      - name: Verify exact Stage 2 authorization and source binding
+        run: node tools/experiments/verify-silgm-stage2-authorization.js
+      - name: Materialize durable pre-computation lease
+        run: |
+          mkdir -p artifacts/lease-stage2
+          printf '%s\n' 'SILGM-S2-FORMAL-2026-09-03-v1' > artifacts/lease-stage2/stage.txt
+          git rev-parse HEAD > artifacts/lease-stage2/trigger-head.txt
+          git rev-parse HEAD^ > artifacts/lease-stage2/authorization-commit.txt
+          git rev-parse HEAD^^ > artifacts/lease-stage2/tooling-commit.txt
+          sha256sum doc/search-instability-local-geometry-mechanism/authorizations/STAGE_2_FORMAL_AUTHORIZATION.json > artifacts/lease-stage2/authorization.sha256
+          sha256sum doc/search-instability-local-geometry-mechanism/prereg/STAGE_2_FORMAL_SPEC.json > artifacts/lease-stage2/stage2-spec.sha256
+          sha256sum doc/search-instability-local-geometry-mechanism/prereg/STAGE_2_FORMAL_INPUT.json > artifacts/lease-stage2/formal-input.sha256
+          sha256sum doc/search-instability-local-geometry-mechanism/results/stage-2-preauthorization-v1/PREAUTH_AUDIT_RESULT.json > artifacts/lease-stage2/preauthorization.sha256
+      - name: Upload Stage 2 lease before scientific computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: silgm-stage2-v1-lease-${{ github.run_id }}
+          path: artifacts/lease-stage2
+          if-no-files-found: error
+          overwrite: false
+      - name: Execute exactly one authorized fresh Stage 2 computation
+        run: |
+          mkdir -p artifacts/local/search-instability-local-geometry-mechanism/stage2-formal-v1
+          node tools/experiments/run-silgm-stage2-formal.js \
+            --output artifacts/local/search-instability-local-geometry-mechanism/stage2-formal-v1
+      - name: Upload Stage 2 scientific result before repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: silgm-stage2-v1-result-${{ github.run_id }}
+          path: |
+            artifacts/local/search-instability-local-geometry-mechanism/stage2-formal-v1/scientific-result.json
+            artifacts/local/search-instability-local-geometry-mechanism/stage2-formal-v1/telemetry.json
+            artifacts/local/search-instability-local-geometry-mechanism/stage2-formal-v1/execution-summary.json
+          if-no-files-found: error
+          overwrite: false
