@@ -217,7 +217,7 @@ G3-10 remains not authorized and requires a separate post-G3-09 current-state re
 
 ## Main integration
 
-Main integration is **not authorized** and has **not been performed**. Explicit user instruction is required after final repository/document consistency audit.
+After explicit user instruction on 2026-09-03, `main` was fast-forwarded to the reviewed G3-09 closure tip `64ada67b058811c18d81e7286fd3b12df6964459` with `force=false`. No squash, rebase, history rewrite, scientific recomputation, seed reuse, or protected-holdout access occurred. The closed research branch is retained for provenance.
 <!-- CLGR-G3-09-FINAL-AUDIT:REPRO -->
 
 ## Final repository/document consistency audit

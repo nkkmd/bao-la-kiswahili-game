@@ -41,9 +41,9 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 final repository/document consistency audit v1 = DOCUMENTATION-AUDIT-ALLOWLIST-TOO-NARROW / NO SCIENTIFIC CONSEQUENCE / NO RERUN
 final repository/document consistency audit v2 = PASS / workflow run 33754250314
 final consistency checkpoint = checkpoints/2026-09-03-final-repository-document-consistency-pass.md
-research branch lifecycle = CLOSED / REVIEW-READY
+research branch lifecycle = CLOSED / RETAINED FOR PROVENANCE
 G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
 ```
 
 Stage 1 development passed all prospectively frozen exactness and nondegeneracy gates. This result was development evidence only and did not itself establish formal representation eligibility.
@@ -56,4 +56,4 @@ Because fresh Stage 2 evidence had already been accessed, `CLGR-STUDY1` cannot b
 
 Final repository/document consistency audit v2 passed after checking exact Stage 1/2 result identities, no-rescue state, protected depth-10 status, historical `PROGRAM_PLAN.md` immutability, current-facing document consistency, changed-path confinement, and remote `main` non-integration. Audit v1 had failed only because its documentation path allowlist omitted two valid CLGR authorization-review files; no scientific computation or evidence access occurred in either audit.
 
-The scientific Study and repository/document closure work are complete on the research branch. The branch is `CLOSED / REVIEW-READY`. Integration into `main` remains prohibited until explicit user instruction.
+The scientific Study and repository/document closure work are complete. After explicit user instruction on 2026-09-03, `main` was fast-forwarded to the reviewed source tip `64ada67b058811c18d81e7286fd3b12df6964459` with `force=false`. The closed research branch is retained for provenance; scientific closure and no-rescue boundaries are unchanged.

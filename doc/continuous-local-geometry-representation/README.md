@@ -90,9 +90,9 @@ G3-10 is **not automatically authorized**. A separate post-G3-09 current-state a
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains unchanged.
 
-## Main integration boundary
+## Main integration
 
-Main integration is prohibited until explicit user instruction after closure and final repository/document consistency audit.
+After explicit user instruction on 2026-09-03, the reviewed G3-09 closure tip `64ada67b058811c18d81e7286fd3b12df6964459` was fast-forward integrated to `main` with `force=false`. No squash, rebase, history rewrite, scientific recomputation, seed reuse, or protected-holdout access occurred. The closed research branch is retained for provenance.
 
 ## Read next
 

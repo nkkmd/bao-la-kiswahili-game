@@ -44,7 +44,7 @@ G3-09 = CLGR-STUDY1 / CLOSED / TECHNICAL-INVALID
 G3-09 Stage 1 = STAGE1-PASS / exactly one fresh execution / seeds CONSUMED
 G3-09 Stage 2 = TECHNICAL-INVALID / exactly one fresh execution / seeds CONSUMED / 61 of 72 roots completed before fail-closed
 G3-09 formal representation eligibility = NOT ESTABLISHED
-G3-09 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-09 main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
 G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```

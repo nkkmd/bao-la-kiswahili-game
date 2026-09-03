@@ -55,10 +55,10 @@ G3-09 Stage 2 selected = 72 / completed before fail-closed = 61
 G3-09 Stage 2 failure = mtaji / seed 31920066 / relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b
 G3-09 formal representation eligibility = NOT ESTABLISHED
 G3-09 no-rescue boundary = CROSSED / CLOSED
-G3-09 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-09 main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
 G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state authorization review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active scientific research branch = research/g3-09-continuous-local-geometry-representation / CLOSED / REVIEW-READY / main integration NOT AUTHORIZED
+Active scientific research branch = none / G3-09 integrated to main; G3-10 remains NOT AUTHORIZED
 Next scientific action = separate post-G3-09 current-state G3-10 authorization review; do not auto-start G3-10
 ```
 

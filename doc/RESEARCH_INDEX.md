@@ -1256,6 +1256,7 @@ Stage 2 seed blockは未消費、protected depth-10 holdoutはsealedのまま。
 - Final report: [`continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md)
 - Program closure: [`research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md)
 - Downstream: G3-10 is not authorized without separate post-G3-09 current-state review.
+- Main integration: COMPLETE / fast-forward / initial source tip `64ada67b058811c18d81e7286fd3b12df6964459` / `force=false` after explicit user instruction on 2026-09-03.
 <!-- CLGR-G3-09-CANONICAL-INDEX -->
 
 **最初に読む:**

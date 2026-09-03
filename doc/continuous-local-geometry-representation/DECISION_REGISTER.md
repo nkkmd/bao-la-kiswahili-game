@@ -61,4 +61,5 @@ Updated: 2026-09-03
 <!-- CLGR-G3-09-FINAL-AUDIT:DECISIONS -->
 | CLGR-D055 | Final repository/document consistency audit v1 | `DOCUMENTATION-AUDIT-ALLOWLIST-TOO-NARROW / NO SCIENTIFIC CONSEQUENCE / NO RERUN` | valid CLGR authorization-review pathsのallowlist漏れ。scientific computation/evidence accessなし。 |
 | CLGR-D056 | Final repository/document consistency audit v2 | `PASS / run 33754250314` | exact result identity、no-rescue、protected depth-10、historical PROGRAM_PLAN、current-facing docs、changed-path confinement、remote main不変を確認。 |
-| CLGR-D057 | Research branch lifecycle after final audit | `CLOSED / REVIEW-READY` | main integrationは依然`NOT AUTHORIZED / NOT PERFORMED`。 |
+| CLGR-D057 | Research branch lifecycle after final audit | `CLOSED / REVIEW-READY` | main integration前のreview-ready状態。 |
+| CLGR-D058 | Main integration | `COMPLETE / FAST-FORWARD / FORCE=FALSE` | 2026-09-03の明示的ユーザー指示後、review-ready tip `64ada67b058811c18d81e7286fd3b12df6964459` をmainへ統合。scientific closure/no-rescueは不変。 |
