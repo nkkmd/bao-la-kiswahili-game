@@ -1,0 +1,53 @@
+name: CRCLGR Stage 0 Technical
+on:
+  push:
+    branches:
+      - research/pre-g3-10-canonical-resource-robust-continuous-geometry
+    paths:
+      - doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/crclgr-stage0-trigger.txt
+concurrency:
+  group: crclgr-stage0-technical
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Syntax-check frozen CRCLGR Stage 0 tooling
+        run: |
+          node --check tools/experiments/lib/crclgr-production.js
+          node --check tools/experiments/lib/crclgr-independent.js
+          node --check tools/experiments/lib/crclgr-stage1-production.js
+          node --check tools/experiments/lib/crclgr-stage1-independent.js
+          node --check tools/experiments/run-crclgr-stage0-technical.js
+          node --check tools/experiments/verify-crclgr-stage0-authorization.js
+      - name: Verify exact Stage 0 authorization and source binding
+        run: node tools/experiments/verify-crclgr-stage0-authorization.js
+      - name: Materialize durable pre-computation lease
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' "CRCLGR-S0-TECHNICAL-2026-09-03-v1" > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+          git rev-parse HEAD^ > artifacts/lease/authorization-parent.txt
+          sha256sum doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json > artifacts/lease/authorization.sha256
+      - name: Upload lease before computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: crclgr-stage0-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute exactly one authorized technical computation
+        run: |
+          mkdir -p artifacts/local/canonical-resource-robust-continuous-local-geometry-representation/stage0
+          node tools/experiments/run-crclgr-stage0-technical.js --output artifacts/local/canonical-resource-robust-continuous-local-geometry-representation/stage0/STAGE_0_TECHNICAL_RESULT.json
+      - name: Upload technical result before repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crclgr-stage0-result-${{ github.run_id }}
+          path: artifacts/local/canonical-resource-robust-continuous-local-geometry-representation/stage0/STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
