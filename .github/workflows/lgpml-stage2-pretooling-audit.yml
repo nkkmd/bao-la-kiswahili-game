@@ -1,0 +1,22 @@
+name: LGPML Stage 2 Pretooling Audit
+on:
+  push:
+    branches: [research/g3-08-local-geometry-persistence-memory-length]
+    paths: [doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage2-pretooling-audit-trigger.txt]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 3}
+      - name: Verify trigger-only audit request
+        run: test "$(git diff --name-only HEAD^ HEAD)" = "doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage2-pretooling-audit-trigger.txt"
+      - name: Syntax check Stage 2 fresh-free tooling
+        run: |
+          node --check tools/experiments/lib/lgpml-stage2-production.js
+          node --check tools/experiments/lib/lgpml-stage2-independent.js
+          node --check tools/experiments/verify-lgpml-stage2-pretooling-audit.js
+      - name: Execute synthetic-only pretooling audit
+        run: node tools/experiments/verify-lgpml-stage2-pretooling-audit.js
