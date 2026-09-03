@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "stageId": "CLGR-S0-TECHNICAL-2026-09-03-v2",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "supersedesTechnicalVersion": "CLGR-S0-TECHNICAL-2026-09-03-v1 / TECHNICAL-INVALID / NO RERUN",
+  "scientificContractChanged": false,
+  "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+  "axisUniverse": [
+    "CLGR-A1-ROOT-LEGAL-WIDTH",
+    "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE",
+    "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES",
+    "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO",
+    "CLGR-A5-DUPLICATE-TRANSITION-FRACTION",
+    "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+  ],
+  "syntheticAxisExact": true,
+  "syntheticTransformExact": true,
+  "exactRationalArithmetic": true,
+  "exactL1Distance": true,
+  "k3TieInclusiveNeighborhood": true,
+  "rootOrderInvariance": true,
+  "relayLimitFailClosed": true,
+  "relaySentinelProduction": "relay-limit enumeration 409ce4e9f1034ab7d5172f059a50f9c51342b3889cf31e93953703d068070520",
+  "relaySentinelIndependent": "enum relay",
+  "technicalSeed": 31909002,
+  "technicalSeedScientificUseProhibited": true,
+  "technicalRoots": [
+    {
+      "phase": "namua",
+      "selectedPly": 24,
+      "rootRawSha256": "d3cf720a431b4680bdfccd9e723feba764c142d2fa763c8c592b07e5f53a8e67"
+    },
+    {
+      "phase": "mtaji",
+      "selectedPly": 44,
+      "rootRawSha256": "e061e59eeb1a1bfdb9d935f341c85af15a282c2b35714b7d596717ceb61b0c71"
+    }
+  ],
+  "productionIndependentDepth5Exact": true,
+  "productionIndependentAxisExact": true,
+  "productionIndependentCoordinateExact": true,
+  "productionIndependentDistanceExact": true,
+  "implementationSeparation": true,
+  "technicalTimings": [
+    {
+      "phase": "namua",
+      "ply": 24,
+      "productionMs": 5590,
+      "independentMs": 3500,
+      "combinedMs": 9090,
+      "resourceView": {
+        "distinctRawStates": "2643",
+        "uniqueTransitions": "2691",
+        "parentExpansions": "512",
+        "treeNodeOccurrences": "2697"
+      }
+    },
+    {
+      "phase": "mtaji",
+      "ply": 44,
+      "productionMs": 103,
+      "independentMs": 147,
+      "combinedMs": 250,
+      "resourceView": {
+        "distinctRawStates": "410",
+        "uniqueTransitions": "410",
+        "parentExpansions": "121",
+        "treeNodeOccurrences": "411"
+      }
+    }
+  ],
+  "maxCombinedRootMs": 9090,
+  "freshScientificSeedAccess": false,
+  "stage1SeedAccess": false,
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "deterministicCoreSha256": "77c735ecf25067e81e26fc8b243b2e7bbb2d64b69c665b20a7150f49e3ca0ce7",
+  "stageDisposition": "STAGE0-PASS"
+}
