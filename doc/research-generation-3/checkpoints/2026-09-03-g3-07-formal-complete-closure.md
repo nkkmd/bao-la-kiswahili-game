@@ -15,6 +15,7 @@ formal CONFIRMED = 3
 formal NOT-CONFIRMED = 4
 formal NON-ESTIMABLE = 1
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state authorization review required
 main integration = NOT PERFORMED
 ```
 
@@ -35,5 +36,7 @@ Canonical Study records:
 - `../../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md`
 - `../../search-instability-local-geometry-mechanism/results/stage-2/STAGE_2_RESULT_SUMMARY.json`
 - `../../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`
+
+G3-07 completion does not automatically authorize G3-08. Any G3-08 scientific execution requires a separate post-G3-07 current-state authorization review.
 
 No main integration is authorized by this checkpoint. Await explicit user instruction before any merge/integration to `main`.
