@@ -9,7 +9,8 @@ Study = LGPML-STUDY1
 Study status = PROSPECTIVE-FROZEN / NO FRESH SCIENTIFIC EVIDENCE
 review/main baseline = 9f6abd3c9b146bb88c11dd04963052300e4cdc3b
 research branch = research/g3-08-local-geometry-persistence-memory-length
-Stage 0 = LGPML-S0-TECHNICAL-2026-09-03-v1 / SPEC FROZEN / AUTHORIZATION MATERIALIZATION PENDING
+Study/tooling freeze commit = b293acc5943fab9100f512ed7008dd46583be763
+Stage 0 = LGPML-S0-TECHNICAL-2026-09-03-v1 / TECHNICAL-AUTHORIZED / NOT EXECUTED
 Stage 1 = LGPML-S1-DEVELOPMENT-2026-09-03-v1 / NOT AUTHORIZED / NOT EXECUTED
 Stage 2 = LGPML-S2-FORMAL-2026-09-03-v1 / NOT AUTHORIZED / NOT EXECUTED
 technical seeds = 31809001..31809008 / scientific use prohibited
@@ -22,4 +23,4 @@ fresh G3-08 scientific evidence = NONE
 main integration = NOT PERFORMED
 ```
 
-次工程はStage 0 technical authorizationをsource-boundでmaterializeし、exactly one technical-only executionを行うこと。Stage 0 PASS後もfresh Stage 1は別reviewまで禁止。
+次工程はsource-bound trigger commitによるexactly one technical-only Stage 0 execution。Stage 0 PASS後もfresh Stage 1は別reviewまで禁止。

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGPML-STUDY1",
+  "stageId": "LGPML-S0-TECHNICAL-2026-09-03-v1",
+  "authorizationDecision": "STAGE0-TECHNICAL-AUTHORIZED",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "scientificInferenceAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "stage1Authorized": false,
+  "stage2Authorized": false,
+  "toolingCommit": "b293acc5943fab9100f512ed7008dd46583be763",
+  "sourceBindings": {
+    "public/engine.js": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c",
+    "tools/experiments/lib/lgtgmiv-stage1-production.js": "a4664f01535d6abbf6f83821befbb2fafd55cde6",
+    "tools/experiments/lib/lgtgmiv-stage1-independent.js": "0c7239ac7acf146e9aee63dae66194681b8631d6",
+    "tools/experiments/lib/lgpml-production.js": "44f6f549badba294074b29e512c630ab450bec35",
+    "tools/experiments/lib/lgpml-independent.js": "71b6c85f0648087d3e6dd582b97d0601c1fb57d1",
+    "tools/experiments/run-lgpml-stage0-technical.js": "b9e18d9fb9cb8e7cefb6482cbbc50246630f8bb4",
+    "tools/experiments/verify-lgpml-stage0-authorization.js": "f5e370bacf3fb414330a27dae71605b7905ab3bd",
+    ".github/workflows/lgpml-stage0-technical.yml": "77df5feb8b7cad8cd553920be3d8fd34b4f2932d",
+    "doc/local-geometry-persistence-memory-length/prereg/STUDY_1_SPEC.json": "f11c9839e7bbfaa16e9474ba077b86b7efd66dac",
+    "doc/local-geometry-persistence-memory-length/prereg/STAGE_0_TECHNICAL_SPEC.json": "8beaa702defc0f358ef85b60f28dfb13e3df3817",
+    "doc/local-geometry-persistence-memory-length/prereg/STAGE_1_DEVELOPMENT_SPEC.json": "6bc12709d1fd66712ce4270f1656326bd98ee934",
+    "doc/local-geometry-persistence-memory-length/prereg/STAGE_2_FORMAL_SPEC.json": "b400e76ceaa88df1d4b1eab2ef7e719615a5fdfd"
+  },
+  "executionContract": {
+    "maxAuthorizedTechnicalExecutions": 1,
+    "triggerPath": "doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage0-v1-trigger.txt",
+    "triggerToken": "LGPML-S0-TECHNICAL-2026-09-03-V1-01",
+    "triggerCommitChangesOnlyTriggerPath": true,
+    "durablePreComputationLease": true,
+    "artifactBeforeMirror": true,
+    "repositoryMirrorByWorkflow": false,
+    "sameVersionRerun": false,
+    "concurrencyGuard": true
+  },
+  "technicalSeedBlock": {"start":31809001,"end":31809008,"scientificUse":false},
+  "scientificSeedBlocksRemainUnconsumed": true,
+  "protectedDepth10": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED"
+}

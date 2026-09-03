@@ -4,7 +4,7 @@ Research Generation 3 `G3-08` / `LGPML-STUDY1` の研究ディレクトリ。
 
 Current lifecycle status:
 
-**`PROSPECTIVE-FROZEN / STAGE 0 TECHNICAL-ONLY AUTHORIZATION PENDING MATERIALIZATION`**
+**`PROSPECTIVE-FROZEN / STAGE 0 TECHNICAL-ONLY AUTHORIZED / NOT EXECUTED`**
 
 Program authorization:
 
@@ -38,3 +38,4 @@ Protected standard-initial RAW-root complete exact depth-10 holdoutは`SEALED / 
 - `prereg/STAGE_0_TECHNICAL_SPEC.json`
 - `prereg/STAGE_1_DEVELOPMENT_SPEC.json`
 - `prereg/STAGE_2_FORMAL_SPEC.json`
+- `authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json`
