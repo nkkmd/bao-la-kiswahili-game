@@ -1,0 +1,42 @@
+# Search Instability / Local Geometry Mechanism Study 1
+
+Research Generation 3 `G3-07` / `SILGM-STUDY1` の研究ディレクトリ。
+
+Final lifecycle status:
+
+**`CLOSED / FORMAL-COMPLETE`**
+
+Formal candidate record:
+
+- depth × E3 ranking-preorder change × G1 root legal width = **CONFIRMED / HIGHER-IN-HIGH**
+- node-budget × E3 ranking-preorder change × G1 root legal width = **CONFIRMED / HIGHER-IN-HIGH**
+- quiescence × E3 ranking-preorder change × G1 root legal width = **CONFIRMED / HIGHER-IN-HIGH**
+- 4 promoted candidates = `NOT-CONFIRMED`
+- 1 promoted candidate = `NON-ESTIMABLE`
+
+This Study establishes bounded non-causal association only. It does not identify a correct search condition, game-theoretic difficulty, objective move quality, human difficulty or causal mechanism.
+
+## Canonical records
+
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md)
+- [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
+- [`prereg/STAGE_1_DEVELOPMENT_SPEC.json`](prereg/STAGE_1_DEVELOPMENT_SPEC.json)
+- [`prereg/STAGE_2_FORMAL_SPEC.json`](prereg/STAGE_2_FORMAL_SPEC.json)
+- [`prereg/STAGE_2_FORMAL_INPUT.json`](prereg/STAGE_2_FORMAL_INPUT.json)
+- [`results/stage-1/STAGE_1_RESULT_SUMMARY.json`](results/stage-1/STAGE_1_RESULT_SUMMARY.json)
+- [`results/stage-2/STAGE_2_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_RESULT_SUMMARY.json)
+- [`checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md`](checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md)
+
+## Protected evidence
+
+Standard initial RAW-root complete exact depth-10 holdout remains:
+
+**`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
+
+## Integration boundary
+
+This research branch is closed scientifically but **not integrated to `main`**. Integration requires a separate explicit user instruction.
