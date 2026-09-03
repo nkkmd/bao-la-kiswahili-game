@@ -9,11 +9,12 @@ repository = nkkmd/bao-la-kiswahili-game
 baseline remote main = 9f6abd3c9b146bb88c11dd04963052300e4cdc3b
 research branch = research/g3-08-local-geometry-persistence-memory-length
 Study ID = LGPML-STUDY1
-current status = PROSPECTIVE-FROZEN / STAGE0-PASS / STAGE1 EXACTLY-ONE EXECUTION IN PROGRESS
+current status = CLOSED / TECHNICAL-INVALID
 Study/tooling freeze commit = b293acc5943fab9100f512ed7008dd46583be763
 Stage 0 trigger commit = 830d1d9dce139deca08d91c94ba98da8a784c498
 Stage 1 authorization commit = a7904798de848fe8af3bd7e66b1b81741590ba95
 Stage 1 trigger commit = bfd0f7b0f754b4ffc14faae018a2ceb52647677f
+Stage 1 exact-result mirror commit = 79fb4c51940d255e05c8e1c5469f1f759b81bf26
 ```
 
 ## Frozen contracts
@@ -43,8 +44,8 @@ Stage 1 workflow = 117c44e853c184565425e7305bc35d957831cc20
 
 ```text
 technical = 31809001..31809008 / scientific use prohibited
-Stage 1 = 31810001..31810256 / fresh access started in exactly-one authorized execution / no rerun
-Stage 2 = 31820001..31820384 / not consumed
+Stage 1 = 31810001..31810256 / CONSUMED / same-evidence rerun prohibited
+Stage 2 = 31820001..31820384 / NOT CONSUMED
 ```
 
 ## Stage 0
@@ -84,7 +85,7 @@ protected depth-10 access = false
 
 Canonical manifest: `prereg/UPSTREAM_IDENTITY_FIREWALL.json`。
 
-## Stage 1 authorization / execution
+## Stage 1 authorization / exactly-one execution
 
 ```text
 Stage ID = LGPML-S1-DEVELOPMENT-2026-09-03-v1
@@ -97,20 +98,58 @@ trigger commit = bfd0f7b0f754b4ffc14faae018a2ceb52647677f
 workflow run = 33731577464
 job = 100572486927
 run attempt = 1
+workflow conclusion = failure after canonical STAGE1-TECHNICAL-INVALID result
 lease artifact = 9884042604
 lease ZIP SHA-256 = 61a50d3e5657dd8a84dc4e63780e9a715829db2daa8285e78d88dc3af22eda28
-scientific computation status = IN PROGRESS / RESULT NOT YET AVAILABLE
-no-rescue boundary = CROSSED
+authorized scientific executions = 1
+actual scientific executions = 1
+no-rescue boundary = CROSSED / ACTIVE
 same-evidence rerun = PROHIBITED
-result recovery = EXACT-BYTE ARTIFACT RECOVERY ONLY / NO RECOMPUTATION
 protected depth-10 access = false
 ```
 
-## Stage 2 fresh-free tooling state
+## Stage 1 canonical technical-invalid result
+
+```text
+stageDisposition = STAGE1-TECHNICAL-INVALID
+technical error = relay-limit enumeration 74581ece7d29895d9727bb9cd507046f98a158b51466abdeaa335eb9e60d510e
+formal promoted candidate set = []
+promoted candidate count = 0
+stage2AutomaticallyAuthorized = false
+```
+
+Workflow log recorded 9 complete trajectory aggregations before the technical error:
+
+`31810001, 31810003, 31810004, 31810010, 31810015, 31810016, 31810024, 31810025, 31810028`.
+
+These are technical provenance only and are not a valid complete Stage 1 scientific summary.
+
+Durable result artifact:
+
+```text
+artifact ID = 9886738874
+artifact name = lgpml-stage1-result-33731577464
+artifact size = 791 bytes (ZIP)
+artifact ZIP SHA-256 = ef2ed1d6c28b30461d03f3a294cb3cb3d11d9f951fa24b6e6f2a94f546d6f53c
+scientific-result.json = 1718 bytes
+scientific-result.json SHA-256 = e8bb384dd8ba526029ee62753836847f25b45546e013fb4b224f5ab02c68a46c
+```
+
+Canonical repository file:
+
+`results/stage-1/scientific-result.json`
+
+Exact mirror commit:
+
+`79fb4c51940d255e05c8e1c5469f1f759b81bf26`
+
+scientific recomputation during mirror = false。
+
+## Stage 2 fresh-free tooling and non-execution
 
 ```text
 Stage ID = LGPML-S2-FORMAL-2026-09-03-v1
-authorization = NOT AUTHORIZED
+authorization = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seed access = false
 pretooling audit v1 = TECHNICAL FIXTURE EXPECTATION FAILURE / no scientific consequence
 pretooling audit v2 run = 33732602250
@@ -118,12 +157,24 @@ pretooling audit v2 job = 100575749583
 pretooling audit v2 disposition = STAGE2-PRETOOLING-AUDIT-PASS
 lag-window identity fixture count = 173
 production/independent formal semantics = EXACT
-Stage 2 runner/verifier/workflow = PREPARED / UNARMED
-Stage 1 identity/formal input materializer = PREPARED / NOT TRIGGERED
+Stage 2 runner/verifier/workflow = PREPARED / UNARMED / UNUSED
 protected depth-10 access = false
 ```
 
-Stage 2 authorization is impossible until the canonical Stage 1 result is recovered and evaluated under the frozen Stage 1 disposition/promotion contract.
+Valid Stage 1 completionとnonempty promoted setがないため、Stage 2 authorization prerequisiteは満たさない。
+
+## Formal closure
+
+```text
+LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 seed block = CONSUMED
+Stage 2 seed block = NOT CONSUMED
+same-evidence rescue = PROHIBITED
+```
+
+Canonical scientific interpretationは`STUDY_1_FINAL_REPORT.md`を参照する。partial trajectory outputやtechnical error diagnosticをscientific geometry-persistence evidenceとして再利用しない。
 
 ## Main integration boundary
 
