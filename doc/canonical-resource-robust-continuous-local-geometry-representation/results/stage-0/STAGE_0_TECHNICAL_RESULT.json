@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CRCLGR-STUDY1",
+  "stageId": "CRCLGR-S0-TECHNICAL-2026-09-03-v1",
+  "evidenceClass": "TECHNICAL-ONLY",
+  "structuredCanonicalSerializationExact": true,
+  "structuredCanonicalDigestExact": true,
+  "lowLevelDigestTypeGuard": true,
+  "syntheticAxisExact": true,
+  "syntheticCoordinateExact": true,
+  "exactL1Distance": true,
+  "k3TieInclusiveNeighborhood": true,
+  "technicalCandidatePopulationComplete": true,
+  "technicalCandidateCounts": {
+    "namua": 4,
+    "mtaji": 4,
+    "total": 8
+  },
+  "technicalCandidateCoreSha256": "16f7ff9f461a47bbedade9d25e761408046fc8c32619ec8ae42214a8c0be12cb",
+  "technicalCandidateReferenceDigestExact": true,
+  "boundedPreflightExact": true,
+  "technicalPreflightRows": [
+    {
+      "rootRawSha256": "dad10c966fd1a6e7106cc72fd9f9d63b527fd10e36a8304cf8ce54ca18f1dc11",
+      "phase": "namua",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "7c91c950274978661dfd3f699dd4586522d92dbc0cf9cd1d79d34f64ef3ea343",
+      "phase": "namua",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "3b88b0d44f5a73f587810cd91a722424016a2988a0431091c28af8c98fdc27cc",
+      "phase": "namua",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "16e7c56dd8f5e3472140c95b7360741872270e40f598a3f3a699375f8eb35f9a",
+      "phase": "namua",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "a609cae9f941fdc3f4758060f073fe32aeb551f0527a0fd9c7774151ad4f5109",
+      "phase": "mtaji",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "f5c9b46e34eceb45583d90c9fcb9eb0cf3a7344686461959bc371f433ae1ed6e",
+      "phase": "mtaji",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "7c20df1af4a282d4876b969ffd1196a9384168d75192c3da60685dc9c7946043",
+      "phase": "mtaji",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    },
+    {
+      "rootRawSha256": "179f8f5be992a3da7a4ebb32d643d99388ba96ac2068d5aa38ddc05affd44919",
+      "phase": "mtaji",
+      "eligible": true,
+      "reasonCode": "ELIGIBLE"
+    }
+  ],
+  "eligibleTechnicalCounts": {
+    "namua": 4,
+    "mtaji": 4
+  },
+  "productionIndependentDepth5Exact": true,
+  "technicalMeasurements": [
+    {
+      "phase": "namua",
+      "sourceSeed": 32109001,
+      "selectedPly": 16,
+      "rootRawSha256": "dad10c966fd1a6e7106cc72fd9f9d63b527fd10e36a8304cf8ce54ca18f1dc11"
+    },
+    {
+      "phase": "mtaji",
+      "sourceSeed": 32109005,
+      "selectedPly": 62,
+      "rootRawSha256": "a609cae9f941fdc3f4758060f073fe32aeb551f0527a0fd9c7774151ad4f5109"
+    }
+  ],
+  "forcedRelayLimitFailClosed": true,
+  "deterministicCounterCeilingFailClosed": true,
+  "implementationSeparation": true,
+  "freshScientificSeedAccess": false,
+  "stage1SeedAccess": false,
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "technicalSeedsScientificUseProhibited": true,
+  "deterministicCoreSha256": "908fcbe033eae76ef007ce9f733033048498be341ca1191067a0d0fa8cdc683e",
+  "stageDisposition": "STAGE0-PASS",
+  "scientificInferenceAuthorized": false,
+  "stage1AutomaticallyAuthorized": false
+}
