@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "programPosition": "Research Generation 3 / G3-09",
+  "statusAtFreeze": "PROSPECTIVE-FROZEN-STAGE0-ONLY",
+  "reviewBaselineMain": "6c218b9cc3f492fb96d051768702682fef9bb66a",
+  "researchBranch": "research/g3-09-continuous-local-geometry-representation",
+  "titles": {
+    "english": "Continuous Local-Geometry Representation Study 1 — Prospective construction and fresh-holdout eligibility validation of an exact multiaxial bounded RAW local game-tree geometry representation in Bao",
+    "japanese": "Baoにおける局所ゲーム木幾何の連続多軸表現のprospective構築とfresh holdout eligibility検証 — bounded RAW depth-5 exact geometryを離散candidateへ早期縮約しない再現可能representationの確立"
+  },
+  "measurementFoundation": {
+    "studyId": "LGTGMIV-STUDY1",
+    "decision": "CLOSED / FORMAL-ELIGIBLE-ALL",
+    "families": [
+      "LGTGMIV-F1-TREE-OCCURRENCE",
+      "LGTGMIV-F2-RAW-GRAPH",
+      "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+      "LGTGMIV-F4-TREE-GRAPH-RELATION",
+      "LGTGMIV-F5-REPLY-GEOMETRY"
+    ],
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "validatedTransformSet": []
+  },
+  "identity": {
+    "state": ["pits","reserve","houseOwned","player","phase","winner","pending"],
+    "move": ["type","phase","row","index","direction","side","houseChoice","houseTwo"]
+  },
+  "representationFamily": {
+    "id": "CLGR-R1-EXACT-SQUASHED-L1",
+    "onlyPrimaryFamily": true,
+    "axes": [
+      "CLGR-A1-ROOT-LEGAL-WIDTH",
+      "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE",
+      "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES",
+      "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO",
+      "CLGR-A5-DUPLICATE-TRANSITION-FRACTION",
+      "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "transform": "for q=n/d >=0, S(q)=n/(n+d), reduced rational; integer q uses d=1",
+    "weighting": "equal weight 1 for all six axes",
+    "distance": "exact L1",
+    "neighborhoodK": 3,
+    "neighborhoodTies": "retain all exact ties at third-smallest ordered distance cutoff",
+    "phaseCoordinate": false,
+    "centering": false,
+    "zScore": false,
+    "minMaxFit": false,
+    "phaseSpecificScaling": false,
+    "learnedWeights": false,
+    "pca": false,
+    "spectralEmbedding": false,
+    "clustering": false,
+    "featureSelectionAfterFreshAccess": false
+  },
+  "axisDefinitions": {
+    "CLGR-A1-ROOT-LEGAL-WIDTH": "root legal move count",
+    "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": "sum tree node occurrences over relative depths 0..5",
+    "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": "global distinct RAW-state count reached over relative depths 0..5",
+    "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": "A2/A3 reduced rational",
+    "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": "sum duplicateEncounterCount parent depths 0..4 / sum uniqueTransitionCount parent depths 0..4",
+    "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": "depth-labelled unique nonterminal RAW-state presences with legal width=1 / all depth-labelled unique nonterminal RAW-state presences depths 0..5"
+  },
+  "stages": {
+    "stage0": "CLGR-S0-TECHNICAL-2026-09-03-v1",
+    "stage1": "CLGR-S1-DEVELOPMENT-2026-09-03-v1",
+    "stage2": "CLGR-S2-FORMAL-2026-09-03-v1"
+  },
+  "seedNamespaces": {
+    "technical": {"start":31909001,"end":31909008,"scientificUse":false},
+    "stage1": {"start":31910001,"end":31910256,"consumed":false,"authorized":false},
+    "stage2": {"start":31920001,"end":31920384,"consumed":false,"authorized":false}
+  },
+  "sourcePolicy": {
+    "maxSourcePly": 80,
+    "minSelectablePly": 16,
+    "oneRootPerSourceTrajectory": true,
+    "phaseAssignment": "SHA256 stage-specific seed parity",
+    "rootRank": "minimum SHA256(stageId|seed|ply|rootRawSha256)",
+    "relayLimitDuringSourceReplay": "trajectory ineligible; no seed extension",
+    "selectionInputsProhibited": ["local geometry measurement","representation coordinate","prior formal direction","search output","game outcome"]
+  },
+  "populations": {
+    "stage1": {"namua":24,"mtaji":24,"total":48},
+    "stage2": {"namua":36,"mtaji":36,"total":72}
+  },
+  "developmentGates": {
+    "populationComplete": true,
+    "allSixAxesDefined": true,
+    "productionIndependentCoordinateExact": true,
+    "pairwiseDistanceMatrixExact": true,
+    "neighborhoodExact": true,
+    "rootOrderInvariant": true,
+    "distinctCoordinateVectorsPerPhaseMin": 8,
+    "axesWithAtLeastFourDistinctValuesInBothPhasesMin": 4
+  },
+  "formalEndpoints": [
+    "CLGR-E1-ROOT-RECONSTRUCTION-EXACT",
+    "CLGR-E2-COORDINATE-EXACT",
+    "CLGR-E3-DISTANCE-MATRIX-EXACT",
+    "CLGR-E4-NEIGHBORHOOD-EXACT",
+    "CLGR-E5-ORDER-INVARIANT",
+    "CLGR-E6-DEFINEDNESS"
+  ],
+  "formalNondegeneracy": {
+    "distinctCoordinateVectorsNamuaMin": 12,
+    "distinctCoordinateVectorsMtajiMin": 12,
+    "axesWithAtLeastFourDistinctValuesInBothPhasesMin": 4
+  },
+  "formalDecisionLabels": [
+    "FORMAL-ELIGIBLE-CONTINUOUS-REPRESENTATION",
+    "FORMAL-NOT-ELIGIBLE",
+    "NON-ESTIMABLE",
+    "TECHNICAL-INVALID"
+  ],
+  "statistics": {
+    "formalNullHypothesisTest": null,
+    "pValue": null,
+    "multiplicity": "NOT-APPLICABLE-CONJUNCTIVE-EXACT-GATES",
+    "phaseDifferenceTest": false,
+    "descriptiveOnlyAssociationAllowed": true
+  },
+  "resourceCeilings": {
+    "perImplementationRootElapsedMs": 180000,
+    "combinedPerRootElapsedMs": 360000,
+    "uniqueRawStates": 100000,
+    "uniqueTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveEvaluations": 750000,
+    "treeNodeOccurrences": "1000000000",
+    "peakRssBytes": 4294967296,
+    "rootArtifactBytes": 67108864,
+    "stageResultArtifactBytes": 268435456,
+    "stage1ElapsedMs": 10800000,
+    "stage2ElapsedMs": 14400000
+  },
+  "executionIntegrity": {
+    "maxAuthorizedScientificExecutionsPerStage": 1,
+    "durablePrecomputationLeaseRequired": true,
+    "artifactBeforeRepositoryMirrorRequired": true,
+    "exactByteRecoveryRequired": true,
+    "sameEvidenceRerunAfterFreshAccess": false
+  },
+  "upstreamFirewalls": {
+    "g308PartialScientificMeasurementsAllowed": false,
+    "g308RelayFailureUse": "technical-design-only",
+    "g304G307FormalOutcomeSelectionAllowed": false,
+    "identityOnlyExclusionAllowed": true,
+    "stage2MustExcludeStage1": true
+  },
+  "protectedDepth10": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED",
+  "mainIntegration": "EXPLICIT-USER-INSTRUCTION-ONLY"
+}
