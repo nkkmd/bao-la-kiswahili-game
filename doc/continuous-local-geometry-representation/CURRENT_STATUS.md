@@ -6,34 +6,48 @@ Updated: 2026-09-03
 Program position = Research Generation 3 / G3-09
 Program review = G3-09-AUTHORIZED
 Study = CLGR-STUDY1
-Study status = PROSPECTIVE-FROZEN / POST-STAGE-0 / PRE-STAGE-1-AUTHORIZATION
+Study status = CLOSED / TECHNICAL-INVALID
 review baseline remote main = 6c218b9cc3f492fb96d051768702682fef9bb66a
 research branch = research/g3-09-continuous-local-geometry-representation
 representation = CLGR-R1-EXACT-SQUASHED-L1
 axis universe = CLGR-A1..A6 / FROZEN
 measurement foundation = LGTGMIV F1-F5 / RAW-only / relative depth 5
 validated transform set = []
-Stage 0 v1 = CLGR-S0-TECHNICAL-2026-09-03-v1 / TECHNICAL-INVALID / NO RERUN
-Stage 0 v1 fresh scientific access = false
-Stage 0 v2 = CLGR-S0-TECHNICAL-2026-09-03-v2 / STAGE0-PASS / exactly one technical execution
+Stage 0 v1 = TECHNICAL-INVALID / PRE-FRESH / NO RERUN
+Stage 0 v2 = STAGE0-PASS
 Stage 0 v2 workflow run = 33748876201
-Stage 0 v2 result artifact = 9890713293 / ZIP SHA-256 4f5b63b30146aa97b30f5adfa2b615eb360cba77236d6288042b2c320c72041b
-Stage 0 v2 result JSON SHA-256 = 5723938b5afc3e6b9f2d2fcad6c4f618a97e4b3e47e50d0e0d4204edbe207dee
-Stage 1 = CLGR-S1-DEVELOPMENT-2026-09-03-v1 / NOT AUTHORIZED / NOT EXECUTED
-Stage 1 seeds = 31910001..31910256 / NOT CONSUMED
-Stage 2 = CLGR-S2-FORMAL-2026-09-03-v1 / NOT AUTHORIZED / NOT EXECUTED
-Stage 2 seeds = 31920001..31920384 / NOT CONSUMED
+Stage 1 = STAGE1-PASS / EXACTLY ONE AUTHORIZED FRESH EXECUTION
+Stage 1 workflow run = 33750400172
+Stage 1 population = 24 Namua + 24 Mtaji = 48
+Stage 1 canonical result SHA-256 = 1e63937dc5967276f68253c9efa819554b0ea3b346f471c04dea92cbd90dc529
+Stage 1 seeds = 31910001..31910256 / CONSUMED
+Stage 2 = TECHNICAL-INVALID / EXACTLY ONE AUTHORIZED FRESH EXECUTION
+Stage 2 workflow run = 33751818456
+Stage 2 selected population = 36 Namua + 36 Mtaji = 72
+Stage 2 partial measurements = 61
+Stage 2 failing root index = 61
+Stage 2 failing phase = mtaji
+Stage 2 failing source seed = 31920066
+Stage 2 formal-result SHA-256 = 11cee4ab7d2fbd1105f69ff1592b01a3ebd651aa1bedbf79414e7b338935ef73
+Stage 2 seeds = 31920001..31920384 / CONSUMED
+formal representation eligibility = NOT ESTABLISHED
+Stage 2 scientific summary = NOT AUTHORIZED
+same-evidence rerun = PROHIBITED
 technical seeds = 31909001..31909008 / scientific use prohibited
-scientific no-rescue boundary = NOT CROSSED
 G3-08 partial Stage 1 scientific measurements = PROHIBITED INPUT
 G3-08 relay-limit knowledge = TECHNICAL-DESIGN-ONLY
 G3-04/G3-07 formal outcomes = CONTEXT ONLY / NOT REPRESENTATION-SELECTION INPUT
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-The complete Study identity, Stage structure, exact six-axis representation, data-independent rational transform, exact L1 distance, sampling rule, seed namespaces, development/formal gates, resource ceilings and no-rescue boundary were prospectively frozen before G3-09 fresh scientific access.
+Stage 1 development passed all prospectively frozen exactness and nondegeneracy gates. This result was development evidence only and did not itself establish formal representation eligibility.
 
-Stage 0 v1 stopped on a technical-only synthetic relay sentinel expectation and was not rerun. Because no fresh scientific evidence had been accessed, a fresh-free v2 technical correction was prospectively versioned without changing the scientific contract. Stage 0 v2 then passed all exact representation, production/independent, relay fail-closed, source-binding, durable-lease and artifact-before-mirror controls.
+The exactly-one Stage 2 formal execution selected the complete 72-root holdout and failed closed after 61 completed root measurements. The required depth-5 RAW reconstruction for formal root index 61 / Mtaji / source seed `31920066` raised:
 
-The next permitted work is fresh-free Stage 1 implementation, identity-firewall materialization, static/source-binding audit and the separate post-Stage-0 Stage 1 authorization review. Fresh Stage 1 remains blocked until that review explicitly authorizes exactly one execution.
+`relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b`
+
+Because fresh Stage 2 evidence had already been accessed, `CLGR-STUDY1` cannot be repaired or rerun. The 61 partial formal measurements are technical provenance only and cannot establish either formal eligibility or formal non-eligibility.
+
+The scientific Study is closed on the research branch. Final repository/document consistency work may proceed. Integration into `main` remains prohibited until explicit user instruction.
