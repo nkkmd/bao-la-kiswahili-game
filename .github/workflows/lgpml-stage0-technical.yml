@@ -1,0 +1,52 @@
+name: LGPML Stage 0 Technical v1
+on:
+  push:
+    branches:
+      - research/g3-08-local-geometry-persistence-memory-length
+    paths:
+      - doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage0-v1-trigger.txt
+concurrency:
+  group: lgpml-stage0-technical-v1
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 4
+      - name: Syntax-check frozen Stage 0 tooling
+        run: |
+          node --check tools/experiments/run-lgpml-stage0-technical.js
+          node --check tools/experiments/verify-lgpml-stage0-authorization.js
+          node --check tools/experiments/lib/lgpml-production.js
+          node --check tools/experiments/lib/lgpml-independent.js
+      - name: Verify exact Stage 0 authorization and source binding
+        run: node tools/experiments/verify-lgpml-stage0-authorization.js
+      - name: Materialize durable pre-computation lease
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' "LGPML-S0-TECHNICAL-2026-09-03-v1" > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+          git rev-parse HEAD^ > artifacts/lease/authorization-parent.txt
+          git rev-parse HEAD^^ > artifacts/lease/tooling-parent.txt
+          sha256sum doc/local-geometry-persistence-memory-length/authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json > artifacts/lease/authorization.sha256
+      - name: Upload lease before computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgpml-stage0-v1-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute exactly one authorized technical computation
+        run: |
+          mkdir -p artifacts/local/local-geometry-persistence-memory-length/stage0-v1
+          node tools/experiments/run-lgpml-stage0-technical.js --output artifacts/local/local-geometry-persistence-memory-length/stage0-v1/STAGE_0_TECHNICAL_RESULT.json
+      - name: Upload technical result before repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgpml-stage0-v1-result-${{ github.run_id }}
+          path: artifacts/local/local-geometry-persistence-memory-length/stage0-v1/STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error

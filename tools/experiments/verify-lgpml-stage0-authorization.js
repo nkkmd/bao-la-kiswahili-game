@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),cp=require("node:child_process");
+const ROOT=path.resolve(__dirname,"../.."),DOC=path.join(ROOT,"doc/local-geometry-persistence-memory-length");
+const AUTH=path.join(DOC,"authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json"),TRIGGER=path.join(DOC,"authorizations/lgpml-stage0-v1-trigger.txt");
+function need(x,m){if(!x)throw Error(m);}function git(...a){return cp.execFileSync("git",a,{cwd:ROOT,encoding:"utf8"}).trim();}
+const a=JSON.parse(fs.readFileSync(AUTH,"utf8")),trigger=fs.readFileSync(TRIGGER,"utf8").trim();need(a.studyId==="LGPML-STUDY1","study mismatch");need(a.stageId==="LGPML-S0-TECHNICAL-2026-09-03-v1","stage mismatch");need(a.authorizationDecision==="STAGE0-TECHNICAL-AUTHORIZED","authorization missing");need(a.scientificInferenceAuthorized===false,"scientific inference unexpectedly authorized");need(trigger===a.executionContract.triggerToken,"trigger token mismatch");need(git("rev-parse","HEAD^^")===a.toolingCommit,"tooling ancestry mismatch");const changed=git("diff","--name-only","HEAD^","HEAD").split("\n").filter(Boolean);need(changed.length===1&&changed[0]===a.executionContract.triggerPath,"trigger commit changed unexpected files");for(const [p,sha] of Object.entries(a.sourceBindings)){need(git("hash-object",p)===sha,`blob mismatch ${p}`);}console.log("LGPML_STAGE0_AUTHORIZATION_VERIFIED");

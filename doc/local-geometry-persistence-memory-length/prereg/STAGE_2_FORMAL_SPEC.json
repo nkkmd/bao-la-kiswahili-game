@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGPML-STUDY1",
+  "stageId": "LGPML-S2-FORMAL-2026-09-03-v1",
+  "statusAtFreeze": "PROSPECTIVE-FROZEN-GENERATION-NOT-AUTHORIZED",
+  "seedStart": 31820001,
+  "seedEnd": 31820384,
+  "seedExtension": false,
+  "targetTrajectories": 16,
+  "analysisPlyStart": 16,
+  "analysisPlyEnd": 63,
+  "lagSet": [1,2,4,8],
+  "formalCandidates": "exactly Stage 1 promoted candidate identities; no refit",
+  "stage1IdentityExclusions": ["full source trajectory","first-16 opening prefix","all analysis RAW roots","analysis segment","lag-window root identities"],
+  "stage1ScientificMeasurementRowsRetainedForSelection": false,
+  "candidateSupport": {"supportedTrajectoriesMin":12,"nonzeroBalanceTrajectoriesMin":10},
+  "formalTest": "exact two-sided sign test on nonzero source-trajectory balance signs",
+  "directionRequirement": "majority sign must match Stage 1 frozen direction",
+  "multiplicity": "Holm-Bonferroni FWER 1/20 over estimable promoted candidates; p ascending, lexical candidate identity tie, step-down",
+  "memoryLengthSummary": "largest contiguous confirmed lag from [1,2,4,8] per metric",
+  "resourceCeilings": {
+    "perImplementationRootElapsedMs":180000,
+    "combinedPerRootElapsedMs":360000,
+    "stageElapsedMs":16200000,
+    "stagePeakRssBytes":4294967296,
+    "stageResultArtifactBytes":402653184
+  },
+  "maxAuthorizedScientificExecutions": 1,
+  "sameEvidenceRerun": false,
+  "generationAuthorizedAtFreeze": false,
+  "protectedDepth10": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED"
+}
