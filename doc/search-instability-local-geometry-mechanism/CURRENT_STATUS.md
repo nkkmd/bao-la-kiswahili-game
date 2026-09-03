@@ -123,6 +123,7 @@ Thus, within the frozen Stage-2 population and search contract, high root legal 
 - `results/stage-2/STAGE_2_RESULT_SUMMARY.json`
 - `checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md`
 - `checkpoints/2026-09-03-final-document-consistency-pass.md`
+- `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`
 
 ## Next action
 
