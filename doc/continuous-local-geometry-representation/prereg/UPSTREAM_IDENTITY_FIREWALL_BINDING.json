@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "stageId": "CLGR-S1-DEVELOPMENT-2026-09-03-v1",
+  "purpose": "UPSTREAM-IDENTITY-ONLY-EXCLUSION-BINDING",
+  "scientificOutcomeFieldsRetained": false,
+  "g308PartialScientificMeasurementsLoaded": false,
+  "g308Stage1SeedNamespace": "31810001..31810256 / DISJOINT FROM CLGR",
+  "source": {
+    "path": "doc/local-geometry-persistence-memory-length/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+    "gitBlobSha": "03337de654c612ea48f42093a674d82cf267db43",
+    "inputClass": "IDENTITY-ONLY",
+    "includesPriorThrough": "G3-07 Stage 2 identity materialization"
+  },
+  "allowedFields": [
+    "identitySets.rootRawSha256",
+    "identitySets.sourceTrajectorySha256",
+    "identitySets.openingPrefixSha256"
+  ],
+  "prohibitedFields": [
+    "geometry measurements",
+    "candidate labels",
+    "formal directions",
+    "thresholds",
+    "search endpoints",
+    "p-values",
+    "persistence summaries",
+    "G3-08 partial Stage 1 measurements"
+  ]
+}
