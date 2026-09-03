@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "stageId": "CLGR-S1-DEVELOPMENT-2026-09-03-v1",
+  "authorizationCommit": "a133e60255aa22f1d47467a390aa92d85a064f15",
+  "authorizationNonce": "CLGR-S1-AUTH-2026-09-03-V1-01",
+  "expectedPreauthorizationAuditSha256": "14f4b8d68f727fd81d8f608817ef0c0838aa4d332a36039d2cc300a413c266ef",
+  "maxAuthorizedScientificExecutions": 1,
+  "sameEvidenceRerunAuthorized": false,
+  "stage2Authorized": false,
+  "protectedDepth10AccessAuthorized": false
+}
