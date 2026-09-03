@@ -1,0 +1,24 @@
+name: LGPML Stage 2 Preauthorization Audit
+on:
+  push:
+    branches: [research/g3-08-local-geometry-persistence-memory-length]
+    paths: [doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage2-preauthorization-audit-trigger.txt]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 3}
+      - name: Verify trigger-only request
+        run: test "$(git diff --name-only HEAD^ HEAD)" = "doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage2-preauthorization-audit-trigger.txt"
+      - name: Syntax check governed Stage 2 tooling
+        run: |
+          node --check tools/experiments/run-lgpml-stage2-formal.js
+          node --check tools/experiments/verify-lgpml-stage2-authorization.js
+          node --check tools/experiments/verify-lgpml-stage2-preauthorization.js
+      - name: Reconfirm synthetic-only formal semantics
+        run: node tools/experiments/verify-lgpml-stage2-pretooling-audit.js
+      - name: Verify bounded Stage 1 inputs and unarmed Stage 2
+        run: node tools/experiments/verify-lgpml-stage2-preauthorization.js
