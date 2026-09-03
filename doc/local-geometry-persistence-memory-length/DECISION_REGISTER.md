@@ -16,11 +16,11 @@
 | LGPML-D010 | Primary endpoint | `SAME vs OPPOSITE SIGN` | lag pairを独立sampleとしない。 |
 | LGPML-D011 | Experimental unit | `SOURCE TRAJECTORY` | overlapping roots/windowsの依存をtrajectory内集約。 |
 | LGPML-D012 | Secondary endpoints | `FIRST-EXIT / RETURN DESCRIPTIVE ONLY` | formal promotion/test family外。 |
-| LGPML-D013 | Stage 1 seeds | `31810001..31810256` | exactly-one authorized Stage 1 executionでfresh access開始。 |
-| LGPML-D014 | Stage 2 seeds | `31820001..31820384` | NOT CONSUMED。 |
+| LGPML-D013 | Stage 1 seeds | `31810001..31810256 / CONSUMED` | exactly-one authorized Stage 1 executionでfresh access済み。 |
+| LGPML-D014 | Stage 2 seeds | `31820001..31820384 / NOT CONSUMED` | Stage 2未実行。 |
 | LGPML-D015 | Technical seeds | `31809001..31809008` | scientific use永久禁止。 |
 | LGPML-D016 | Analysis segment | `PLIES 16..63` | 48 roots/eligible trajectory。 |
-| LGPML-D017 | Stage 1 target | `10 TRAJECTORIES` | max 480 roots。 |
+| LGPML-D017 | Stage 1 target | `10 TRAJECTORIES` | complete 10/10 populationが必要。 |
 | LGPML-D018 | Stage 2 target | `16 TRAJECTORIES` | max 768 roots。 |
 | LGPML-D019 | Stage 1 support | `8 supported / 6 nonzero balances / 2/3 direction` | promotion gate。 |
 | LGPML-D020 | Lag hierarchy | `CONTIGUOUS SAME-DIRECTION PROMOTION` | isolated favorable long lagを防止。 |
@@ -41,9 +41,15 @@
 | LGPML-D035 | Stage 0 resource observation | `MAX COMBINED ROOT 10877 ms` | frozen scientific ceilingsの緩和根拠には使用しない。 |
 | LGPML-D036 | Stage 1 preauthorization audit | `PASS` | run `33729048934`, job `100564565986`; source separation/resource wrapper/authorization gate確認。 |
 | LGPML-D037 | Stage 1 authorization | `STAGE1-AUTHORIZED / MAX EXECUTIONS=1` | authorization commit `a7904798...`; source-bound exactly-one executionのみ。 |
-| LGPML-D038 | Stage 1 execution | `RUNNING / ATTEMPT 1 / NO RERUN` | trigger `bfd0f7b0...`; run `33731577464`; lease `9884042604`。結果未確定。 |
-| LGPML-D039 | Stage 1 recovery | `EXACT-BYTE ONLY` | artifact loss対応でscientific recomputationは禁止。 |
+| LGPML-D038 | Stage 1 execution | `COMPLETED / ATTEMPT 1 / NO RERUN` | run `33731577464`; canonical technical-invalid resultをartifact保存。 |
+| LGPML-D039 | Stage 1 recovery | `EXACT-BYTE ONLY` | scientific recomputationなしでartifact bytesをrepositoryへmirror。 |
 | LGPML-D040 | Stage 2 pretooling audit v1 | `TECHNICAL FIXTURE FAILURE` | synthetic lag-window expected-count誤記。Stage 2 seed accessなし、scientific consequenceなし。 |
 | LGPML-D041 | Stage 2 pretooling audit v2 | `PASS` | 173 lag-window identities、sign-test、Holm、NON-ESTIMABLE、memory-lengthをproduction/independent exact確認。 |
-| LGPML-D042 | Stage 2 authorization | `NOT AUTHORIZED` | Stage 1 canonical disposition/promoted setと別preauthorization reviewが必要。 |
-| LGPML-D043 | Stage 2 tooling | `PREPARED / UNARMED` | runner/verifier/workflowは存在するがStage 2 triggerなし、seed accessなし。 |
+| LGPML-D042 | Stage 2 authorization | `NOT-AUTHORIZED-NOT-EXECUTED` | valid Stage 1 completion/nonempty promoted setなし。 |
+| LGPML-D043 | Stage 2 tooling | `PREPARED / UNARMED / UNUSED` | technical readinessのみ。Stage 2 triggerなし、seed accessなし。 |
+| LGPML-D044 | Stage 1 formal disposition | `STAGE1-TECHNICAL-INVALID` | required depth-5 RAW reconstructionで`relay-limit enumeration`発生。 |
+| LGPML-D045 | Stage 1 technical error identity | `74581ece7d29895d9727bb9cd507046f98a158b51466abdeaa335eb9e60d510e` | technical provenanceのみ。科学的方向・effectを意味しない。 |
+| LGPML-D046 | Partial Stage 1 data | `TECHNICAL PROVENANCE ONLY` | 9 complete trajectory logsをcandidate promotion/memory-length inferenceへ使用しない。 |
+| LGPML-D047 | Formal promoted candidate set | `[]` | Stage 2へ渡すscientific candidateなし。 |
+| LGPML-D048 | Study closure | `CLOSED / TECHNICAL-INVALID` | negative/null findingではなくtechnical validity closure。same-evidence rescue禁止。 |
+| LGPML-D049 | Stage 2 / protected evidence | `STAGE2 NOT EXECUTED / DEPTH10 SEALED` | Stage 2 seedsとprotected depth-10を未アクセスのまま保持。 |
