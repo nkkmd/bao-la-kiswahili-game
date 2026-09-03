@@ -1,0 +1,51 @@
+name: CLGR Stage 0 Technical v1
+on:
+  push:
+    branches:
+      - research/g3-09-continuous-local-geometry-representation
+    paths:
+      - doc/continuous-local-geometry-representation/authorizations/clgr-stage0-v1-trigger.txt
+concurrency:
+  group: clgr-stage0-technical-v1
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Syntax-check frozen Stage 0 tooling
+        run: |
+          node --check tools/experiments/run-clgr-stage0-technical.js
+          node --check tools/experiments/verify-clgr-stage0-authorization.js
+          node --check tools/experiments/lib/clgr-production.js
+          node --check tools/experiments/lib/clgr-independent.js
+      - name: Verify exact Stage 0 authorization and source binding
+        run: node tools/experiments/verify-clgr-stage0-authorization.js
+      - name: Materialize durable pre-computation lease
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' "CLGR-S0-TECHNICAL-2026-09-03-v1" > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+          git rev-parse HEAD^ > artifacts/lease/authorization-parent.txt
+          sha256sum doc/continuous-local-geometry-representation/authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json > artifacts/lease/authorization.sha256
+      - name: Upload lease before computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: clgr-stage0-v1-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute exactly one authorized technical computation
+        run: |
+          mkdir -p artifacts/local/continuous-local-geometry-representation/stage0-v1
+          node tools/experiments/run-clgr-stage0-technical.js --output artifacts/local/continuous-local-geometry-representation/stage0-v1/STAGE_0_TECHNICAL_RESULT.json
+      - name: Upload technical result before repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clgr-stage0-v1-result-${{ github.run_id }}
+          path: artifacts/local/continuous-local-geometry-representation/stage0-v1/STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
