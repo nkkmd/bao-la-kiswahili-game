@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S2-FORMAL-2026-09-03-v1",
+  "purpose": "STAGE2-FORMAL-INPUT-AUTHORITATIVE-COMPACT-BINDING",
+  "sourceMaterialization": {
+    "workflowRun": 33716060972,
+    "artifactId": 9878546389,
+    "artifactZipSha256": "26bb6355a589fe4d47efc6a2a111dc112f35cc95e114e1145f5f7fea8a578b97",
+    "exactArtifactJsonSha256": "fd85519e2aa0253ddc7322e82fccb4295e1ce03e5e886e7a2f8356d74f65162d",
+    "formalInputCoreSha256": "6c796df950f05df2b193ab0a5d2a6f74dfa179745a9953d337f72a745cc5d0b0"
+  },
+  "sourceStage1": {
+    "stageId": "SILGM-S1-DEVELOPMENT-2026-09-03-v1",
+    "canonicalScientificResultSha256": "20209db1b87bdf3e87f48f1968014154d6f2862820eabea40be645cd1f924470",
+    "selectionCoreSha256": "06a230341ea10fd20b60739061067240dd5696f155b2a25e3004619ffb27903c",
+    "developmentCoreSha256": "3017dbf4cf10736a8c9a5b923e0422a3e46867f06dd7a74c4545f684166567b7"
+  },
+  "formalPromotedCandidateSet": [
+    {
+      "contrastId": "SILGM-SC1-DEPTH",
+      "endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua":{"numerator":"4","denominator":"1","defined":true},"mtaji":{"numerator":"3","denominator":"1","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC1-DEPTH",
+      "endpointId": "SILGM-E5-PV-PREFIX2-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua":{"numerator":"3421","denominator":"2","defined":true},"mtaji":{"numerator":"883","denominator":"2","defined":true}},
+      "direction": "LOWER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC2-NODE-BUDGET",
+      "endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua":{"numerator":"4","denominator":"1","defined":true},"mtaji":{"numerator":"3","denominator":"1","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC2-NODE-BUDGET",
+      "endpointId": "SILGM-E4-BEST-SECOND-GAP-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua":{"numerator":"3421","denominator":"2","defined":true},"mtaji":{"numerator":"883","denominator":"2","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E1-CANONICAL-BEST-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua":{"numerator":"3421","denominator":"2","defined":true},"mtaji":{"numerator":"883","denominator":"2","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E2-TOPSET-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua":{"numerator":"3421","denominator":"2","defined":true},"mtaji":{"numerator":"883","denominator":"2","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua":{"numerator":"4","denominator":"1","defined":true},"mtaji":{"numerator":"3","denominator":"1","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E5-PV-PREFIX2-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua":{"numerator":"4","denominator":"1","defined":true},"mtaji":{"numerator":"3","denominator":"1","defined":true}},
+      "direction": "HIGHER-IN-HIGH"
+    }
+  ],
+  "promotedCandidateCount": 8,
+  "stage1IdentityExclusionManifest": {
+    "path": "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+    "gitBlobSha": "3c9c67def9925df85b14287ef4fd931f099dca2a",
+    "identityRowCount": 48,
+    "canonicalStage1ScientificResultSha256": "20209db1b87bdf3e87f48f1968014154d6f2862820eabea40be645cd1f924470"
+  },
+  "stage1MeasurementsRetained": false,
+  "stage1NonPromotedCandidateDetailsRetained": false,
+  "stage1PromotionStrengthRetained": false,
+  "stage2FreshSeedAccess": false,
+  "protectedDepth10Access": false
+}
