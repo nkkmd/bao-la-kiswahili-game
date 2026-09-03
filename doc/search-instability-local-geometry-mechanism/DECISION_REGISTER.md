@@ -4,8 +4,8 @@
 
 | ID | Decision | Status | Scientific consequence |
 |---|---|---|---|
-| SILGM-D001 | Post-G3-06 program review | `G3-07-AUTHORIZED` | Prospective Study definition + technical-only Stage 0 may proceed; fresh Stage 1 requires separate authorization. |
-| SILGM-D002 | Additional prerequisite Study | `NONE` | LGTGMIV F1-F5 plus Stage-0 revalidation of search/association semantics is sufficient. |
+| SILGM-D001 | Post-G3-06 program review | `G3-07-AUTHORIZED` | Prospective Study definition and governed scientific stages may proceed only after stage-specific authorization. |
+| SILGM-D002 | Additional prerequisite Study | `NONE` | LGTGMIV F1-F5 plus stage-specific technical validation is sufficient. |
 | SILGM-D003 | Formal Study ID | `SILGM-STUDY1` | Immutable after freeze. |
 | SILGM-D004 | Historical `Mechanism` label | `NON-CAUSAL` | Only bounded association/concentration/structural-relation claims are authorized. |
 | SILGM-D005 | Study baseline | `ba48c5c3643649655137d5d3c07988fdc84bee9d` | Post-authorization main is the branch baseline. |
@@ -21,37 +21,42 @@
 | SILGM-D015 | Canonical best | `DETERMINISTIC REPRESENTATIVE ONLY` | Does not imply objective unique best move. |
 | SILGM-D016 | Scientific Stage IDs | `S1/S2 FROZEN` | Development and formal stages remain separated from technical Stage 0 versions. |
 | SILGM-D017 | Technical namespace | `31709001..31709008` | Scientific use prohibited. |
-| SILGM-D018 | Stage 1 namespace | `31710001..31710256` | Reserved, not consumed. |
-| SILGM-D019 | Stage 2 namespace | `31720001..31720384` | Reserved, not consumed. |
+| SILGM-D018 | Stage 1 namespace | `31710001..31710256 / CONSUMED` | Exactly-one Stage 1 execution completed; cannot be reused. |
+| SILGM-D019 | Stage 2 namespace | `31720001..31720384 / RESERVED-NOT-CONSUMED` | Access prohibited until separate Stage 2 authorization. |
 | SILGM-D020 | Engineering collision | `31700001..31700512 PROHIBITED` | Existing public-AI engineering validation namespace is not reused. |
-| SILGM-D021 | Stage 1 population | `24 NAMUA + 24 MTAJI` | One selected root per distinct source trajectory; no seed extension. |
+| SILGM-D021 | Stage 1 population | `24 NAMUA + 24 MTAJI` | Achieved exactly; one selected root per trajectory, no seed extension. |
 | SILGM-D022 | Stage 2 population | `36 NAMUA + 36 MTAJI` | Fresh held-out roots; no seed extension. |
 | SILGM-D023 | Source selection | `HASH-ASSIGNED PHASE + MIN HASH RANK` | Geometry/search/outcome blind selection. |
-| SILGM-D024 | Development threshold | `PHASE-SPECIFIC EXACT MIDPOINT MEDIAN` | Stage 1 only; Stage 2 uses frozen thresholds. |
-| SILGM-D025 | Promotion support | `HIGH/LOW >=8; CHANGED/UNCHANGED >=4 PER PHASE` | Weak/degenerate Stage-1 candidates are not promoted. |
-| SILGM-D026 | Promotion direction | `NONZERO SAME SIGN IN BOTH PHASES` | Direction fixed before formal evidence. |
+| SILGM-D024 | Development threshold | `PHASE-SPECIFIC EXACT MIDPOINT MEDIAN` | Stage 1 thresholds now frozen into promoted identities; Stage 2 cannot refit them. |
+| SILGM-D025 | Promotion support | `HIGH/LOW >=8; CHANGED/UNCHANGED >=4 PER PHASE` | Weak/degenerate Stage-1 candidates were not promoted. |
+| SILGM-D026 | Promotion direction | `NONZERO SAME SIGN IN BOTH PHASES` | Direction frozen before formal evidence. |
 | SILGM-D027 | Metric competition | `MAX EXACT |RD| SUM; LEXICAL TIE` | At most one G1..G5 metric per contrast×endpoint slot. |
 | SILGM-D028 | Max promoted candidates | `15` | One candidate per 3×5 slot. |
-| SILGM-D029 | Stage 2 support | `HIGH/LOW >=10; CHANGED/UNCHANGED >=6 PER PHASE` | Failure yields candidate NON-ESTIMABLE. |
+| SILGM-D029 | Stage 2 support | `HIGH/LOW >=10; CHANGED/UNCHANGED >=6 PER PHASE` | Formal candidate failing support is NON-ESTIMABLE. |
 | SILGM-D030 | Formal test | `EXACT STRATIFIED CONDITIONAL HYPERGEOMETRIC CONVOLUTION` | Phase-stratified association, not causal inference. |
-| SILGM-D031 | Formal tail | `ONE-SIDED FROZEN STAGE-1 DIRECTION` | Direction cannot be changed after formal evidence. |
-| SILGM-D032 | Multiplicity | `HOLM / FWER 1/20` | Applies over estimable promoted candidates. |
+| SILGM-D031 | Formal tail | `ONE-SIDED FROZEN STAGE-1 DIRECTION` | Direction cannot change after Stage 1. |
+| SILGM-D032 | Multiplicity | `HOLM / FWER 1/20` | Applies over all estimable promoted candidates. |
 | SILGM-D033 | Exact arithmetic | `INTEGER / REDUCED RATIONAL / BIGINT` | No scientific float tolerance or rounding. |
 | SILGM-D034 | G2-02 reuse | `TECHNICAL PRECEDENT ONLY` | Scientific rows/results not reused; larger-resource search is not truth. |
-| SILGM-D035 | G3-04 reuse | `CONTEXT ONLY` | C1/C6 values/directions do not select G3-07 thresholds/candidates. |
+| SILGM-D035 | G3-04 reuse | `CONTEXT ONLY` | C1/C6 values/directions did not select G3-07 thresholds/candidates. |
 | SILGM-D036 | G3-06 reuse | `IDENTITY-EXCLUSION ONLY` | Selection mismatch diagnostics and event/mechanism directions are prohibited. |
 | SILGM-D037 | Production/independent separation | `MANDATORY` | Independent G3-07 search/aggregation may not import production G3-07 implementation. |
 | SILGM-D038 | Canonical equality | `SORTED JSON -> UTF-8 -> SHA-256 EXACT` | Runtime prototype identity is not a scientific equality primitive. |
 | SILGM-D039 | Resource probe | `TECHNICAL FIXTURES ONLY` | Fresh scientific roots cannot be used to choose ceilings. |
 | SILGM-D040 | Fresh execution integrity | `MAX 1 PER STAGE` | Lease, source binding, single trigger, concurrency guard, artifact-before-mirror, audit required. |
-| SILGM-D041 | No-rescue | `FROZEN` | Crosses at first fresh generation/read; no same-evidence repair/rerun or redesign. |
-| SILGM-D042 | Protected depth-10 | `SEALED / NOT GENERATED / NOT READ` | No generation/read/peek/trial enumeration/resource estimate. |
+| SILGM-D041 | No-rescue | `CROSSED AT STAGE 1` | Stage 1 evidence cannot be repaired/rerun; Stage 2 will have its own first-access boundary. |
+| SILGM-D042 | Protected depth-10 | `SEALED / NOT GENERATED / NOT READ / NOT PEEKED` | Remains unavailable to the Study. |
 | SILGM-D043 | Stage 0 v1 | `TECHNICAL-INVALID / NO RERUN` | Synthetic expected G5 fraction was wrong; no scientific evidence generated. |
 | SILGM-D044 | Stage 0 v2 | `TECHNICAL-INVALID / NO RERUN` | Fixed technical Mtaji seed unavailable; no scientific evidence generated. |
-| SILGM-D045 | Stage 0 v3 | `PRECOMPUTATION-TECHNICAL-INVALID` | Verifier self-reference; zero technical computation and zero lease. |
-| SILGM-D046 | Stage 0 v4 | `STAGE0-PASS` | Technical feasibility validated; does not itself authorize fresh Stage 1. |
+| SILGM-D045 | Stage 0 v3 | `PRECOMPUTATION-TECHNICAL-INVALID` | Verifier self-reference; zero computation and zero lease. |
+| SILGM-D046 | Stage 0 v4 | `STAGE0-PASS` | Technical feasibility validated. |
 | SILGM-D047 | Stage 0 v4 deterministic core | `fc44c69eb5c164143af821da872a1b2f9d842f1369e9dcd98a1cdd14b42ec076` | Frozen technical provenance. |
-| SILGM-D048 | Stage 1 current state | `NOT YET AUTHORIZED / NOT EXECUTED` | Must pass fresh-free preauthorization tooling audit first. |
-| SILGM-D049 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | No automatic merge after closure. |
+| SILGM-D048 | Stage 1 preauthorization audit | `PASS` | Fresh-free source binding, firewall, independence and unarmed fail-closed validated. |
+| SILGM-D049 | Stage 1 authorization | `STAGE1-AUTHORIZED / EXECUTED ONCE` | Authorization nonce `SILGM-S1-AUTH-2026-09-03-V1-01`; no rerun. |
+| SILGM-D050 | Stage 1 result | `STAGE1-PASS` | Valid 24+24 development population and exact production/independent agreement. |
+| SILGM-D051 | Stage 1 canonical result | `20209db1b87bdf3e87f48f1968014154d6f2862820eabea40be645cd1f924470` | Canonical raw scientific-result identity. |
+| SILGM-D052 | Stage 1 promoted set | `8 CANDIDATES` | Only these eight frozen identities may enter Stage 2; they are hypotheses, not confirmations. |
+| SILGM-D053 | Stage 2 current state | `NOT AUTHORIZED / NOT EXECUTED` | Requires fresh-free formal input, tooling audit and separate authorization review. |
+| SILGM-D054 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | No automatic merge after closure. |
 
-Canonical machine-readable Study contract: `prereg/STUDY_1_SPEC.json`.
+Canonical machine-readable Study contract: `prereg/STUDY_1_SPEC.json`. Stage-1 compact result identity: `results/stage-1/STAGE_1_RESULT_SUMMARY.json`.
