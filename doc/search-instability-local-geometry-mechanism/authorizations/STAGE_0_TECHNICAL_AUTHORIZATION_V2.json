@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S0-TECHNICAL-2026-09-03-v2",
+  "evidenceClass": "TECHNICAL-FIXTURE-NON-SCIENTIFIC",
+  "authorizationDecision": "AUTHORIZED-TECHNICAL-ONLY",
+  "authorizationBasis": "G3-07-AUTHORIZED plus Stage 0 v1 TECHNICAL-INVALID / NO RERUN closure and prospectively refrozen v2 technical-only contract",
+  "authorizationNonce": "SILGM-S0-AUTH-2026-09-03-V2-01",
+  "maxAuthorizedExecutions": 1,
+  "expectedToolingCommit": "c90455c8c9c8977e48ef1b567c253289b2896146",
+  "freshStage1Authorized": false,
+  "freshStage2Authorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "technicalSeedNamespace": "31709001..31709008 / SCIENTIFIC USE PROHIBITED",
+  "stage1SeedNamespace": "31710001..31710256 / RESERVED-NOT-CONSUMED / ACCESS-PROHIBITED",
+  "stage2SeedNamespace": "31720001..31720384 / RESERVED-NOT-CONSUMED / ACCESS-PROHIBITED",
+  "v1Execution": {
+    "stageId": "SILGM-S0-TECHNICAL-2026-09-03-v1",
+    "workflowRun": 33700545077,
+    "disposition": "STAGE0-TECHNICAL-INVALID-NO-RERUN",
+    "canonicalResultSha256": "7ccf7ed9f01ac60cc2973eeecdb4de34c76b06d5d7c5acf95d616d840d784aaa",
+    "sameV1RerunAuthorized": false
+  },
+  "permittedV2CorrectionsOnly": [
+    "synthetic G5 hand-derived expected fraction 7/23 -> 7/17",
+    "snapshot deterministic-core checks before telemetry/resource-only T14 bookkeeping"
+  ],
+  "boundGitBlobs": {
+    "public/engine.js": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c",
+    "public/ai.js": "8d472be415fac17e47a8e5e667cea9672e7a9ef5",
+    "doc/search-instability-local-geometry-mechanism/prereg/STUDY_1_SPEC.json": "04eeba3f536df846b66282b574009df06490a0bb",
+    "doc/search-instability-local-geometry-mechanism/prereg/STAGE_0_TECHNICAL_SPEC_V2.json": "c20cad65d9d1105dc3d8e349a40ceb7eda16f8e5",
+    "doc/search-instability-local-geometry-mechanism/checkpoints/2026-09-03-stage-0-v1-technical-invalid.md": "833cded1bbe0645efca9c3ae2ff8044fce1c717b",
+    "doc/search-instability-local-geometry-mechanism/checkpoints/2026-09-03-stage-0-v2-refreeze.md": "a80beb0ebdc4d29c83a8061098c447c6ebd0728d",
+    "tools/experiments/lib/lgtgmiv-stage1-production.js": "a4664f01535d6abbf6f83821befbb2fafd55cde6",
+    "tools/experiments/lib/lgtgmiv-stage1-independent.js": "0c7239ac7acf146e9aee63dae66194681b8631d6",
+    "tools/experiments/lib/search-reliability-decision-robustness.js": "f3a6951fe711db62e164910cfb248a9cbc2cac1a",
+    "tools/experiments/lib/silgm-production.js": "9712e897540b54ff5fe3aa6acd997d286b09331d",
+    "tools/experiments/lib/silgm-independent.js": "0bd60c96e5abfce9d1c99b474709177d52509138",
+    "tools/experiments/run-silgm-stage0-technical.js": "5fb33143829b93dc45fa7fd6acd3f48f5a38d4f7",
+    "tools/experiments/run-silgm-stage0-technical-v2.js": "3bd9b1e3074c07371efd11e81b25248b68f9e891",
+    "tools/experiments/verify-silgm-stage0-v2-authorization.js": "2b50d6525f5c4355baa7957ee25b49fe2d4f5712",
+    ".github/workflows/silgm-stage0-technical-v2.yml": "186641d41c64d67339ba153f2a89147931414d82"
+  },
+  "executionContract": {
+    "triggerPath": "doc/search-instability-local-geometry-mechanism/authorizations/silgm-stage0-v2-trigger.txt",
+    "triggerParentMustEqualExpectedToolingCommit": true,
+    "syntaxCheckBeforeComputation": true,
+    "v2MaterializationVerifyOnlyBeforeComputation": true,
+    "durableLeaseUploadedBeforeComputation": true,
+    "resultUploadedBeforeRepositoryMirror": true,
+    "concurrencyGroup": "silgm-stage0-technical-v2",
+    "cancelInProgress": false,
+    "workflowContentsPermission": "read"
+  },
+  "stage0PassDoesNotAuthorizeStage1": true,
+  "sameV2CompletedExecutionRerunAuthorized": false,
+  "protectedDepth10": "SEALED-NOT-GENERATED-NOT-READ"
+}
