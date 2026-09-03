@@ -1,0 +1,49 @@
+name: CLGR Stage 2 Exact Artifact Mirror v1
+
+on:
+  push:
+    branches:
+      - research/g3-09-continuous-local-geometry-representation
+    paths:
+      - doc/continuous-local-geometry-representation/executions/clgr-stage2-exact-mirror-v1-trigger.json
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: clgr-stage2-exact-mirror-v1
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Download immutable Stage 2 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: clgr-stage2-v1-result-33751818456
+          path: artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 33751818456
+      - name: Verify exact artifact file hashes and technical-invalid disposition
+        run: |
+          cd artifact
+          printf '%s  %s\n' '14c71dae0b21639ec502b80f4866f4be084e9470acc2dba2230f4189c25ca0b5' STAGE_2_SELECTION.json | sha256sum -c -
+          printf '%s  %s\n' '792fc758f95ab9cfc868cc6c09f4ebfc5cdac7bef00460f526293b6d0a3df665' STAGE_2_ROOT_MEASUREMENTS_PRODUCTION.json | sha256sum -c -
+          printf '%s  %s\n' '792fc758f95ab9cfc868cc6c09f4ebfc5cdac7bef00460f526293b6d0a3df665' STAGE_2_ROOT_MEASUREMENTS_INDEPENDENT.json | sha256sum -c -
+          printf '%s  %s\n' '11cee4ab7d2fbd1105f69ff1592b01a3ebd651aa1bedbf79414e7b338935ef73' STAGE_2_FORMAL_RESULT.json | sha256sum -c -
+          node -e 'const r=require("./STAGE_2_FORMAL_RESULT.json"); if(r.formalDecision!=="TECHNICAL-INVALID"||r.selectedCounts.total!==72||r.partialMeasurementCount!==61||r.freshStage2SeedAccess!==true||r.stage2SeedBlockConsumed!==true||r.scientificSummaryAuthorized!==false||r.sameEvidenceRerunAuthorized!==false||r.protectedDepth10Access!==false||r.technicalFailure.sourceSeed!==31920066) process.exit(1);'
+      - name: Mirror exact bytes into repository
+        run: |
+          mkdir -p doc/continuous-local-geometry-representation/results/stage-2
+          cp artifact/STAGE_2_*.json doc/continuous-local-geometry-representation/results/stage-2/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/continuous-local-geometry-representation/results/stage-2
+          git commit -m 'Mirror exact CLGR Stage 2 artifact bytes'
+          git push origin HEAD:research/g3-09-continuous-local-geometry-representation
