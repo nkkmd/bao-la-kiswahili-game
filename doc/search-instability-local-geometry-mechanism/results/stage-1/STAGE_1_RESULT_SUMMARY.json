@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S1-DEVELOPMENT-2026-09-03-v1",
+  "stageDisposition": "STAGE1-PASS",
+  "canonicalScientificResultSha256": "20209db1b87bdf3e87f48f1968014154d6f2862820eabea40be645cd1f924470",
+  "canonicalScientificResultBytes": 601348,
+  "gzipScientificResultSha256": "2f892821d1ceb2332d73b3c4bc4c6b61b297216d75a56bfa221c7133a66d0da2",
+  "selectionExact": true,
+  "selectionCoreSha256": "06a230341ea10fd20b60739061067240dd5696f155b2a25e3004619ffb27903c",
+  "selectedCounts": {"namua": 24, "mtaji": 24, "total": 48},
+  "measurementCoreSha256": "713c11f110f04f8bb82fd8dbde0873c4114728615383dcd701f0d10be7b60288",
+  "developmentCoreSha256": "3017dbf4cf10736a8c9a5b923e0422a3e46867f06dd7a74c4545f684166567b7",
+  "scientificCoreSha256": "e347099b3506f323351066ccc589942101fa48b1d8e0293dbf8a614f0063f74a",
+  "formalPromotedCandidateSet": [
+    {
+      "contrastId": "SILGM-SC1-DEPTH",
+      "endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua": {"numerator": "4", "denominator": "1", "defined": true}, "mtaji": {"numerator": "3", "denominator": "1", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "217", "denominator": "198", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC1-DEPTH",
+      "endpointId": "SILGM-E5-PV-PREFIX2-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua": {"numerator": "3421", "denominator": "2", "defined": true}, "mtaji": {"numerator": "883", "denominator": "2", "defined": true}},
+      "direction": "LOWER-IN-HIGH",
+      "strength": {"numerator": "1", "denominator": "6", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC2-NODE-BUDGET",
+      "endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua": {"numerator": "4", "denominator": "1", "defined": true}, "mtaji": {"numerator": "3", "denominator": "1", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "1411", "denominator": "990", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC2-NODE-BUDGET",
+      "endpointId": "SILGM-E4-BEST-SECOND-GAP-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua": {"numerator": "3421", "denominator": "2", "defined": true}, "mtaji": {"numerator": "883", "denominator": "2", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "4", "denominator": "3", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E1-CANONICAL-BEST-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua": {"numerator": "3421", "denominator": "2", "defined": true}, "mtaji": {"numerator": "883", "denominator": "2", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "1", "denominator": "2", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E2-TOPSET-CHANGE",
+      "metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "thresholds": {"namua": {"numerator": "3421", "denominator": "2", "defined": true}, "mtaji": {"numerator": "883", "denominator": "2", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "1", "denominator": "2", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua": {"numerator": "4", "denominator": "1", "defined": true}, "mtaji": {"numerator": "3", "denominator": "1", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "692", "denominator": "495", "defined": true}
+    },
+    {
+      "contrastId": "SILGM-SC3-QUIESCENCE",
+      "endpointId": "SILGM-E5-PV-PREFIX2-CHANGE",
+      "metricId": "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "thresholds": {"namua": {"numerator": "4", "denominator": "1", "defined": true}, "mtaji": {"numerator": "3", "denominator": "1", "defined": true}},
+      "direction": "HIGHER-IN-HIGH",
+      "strength": {"numerator": "46", "denominator": "165", "defined": true}
+    }
+  ],
+  "promotedCandidateCount": 8,
+  "authorizedScientificExecutions": 1,
+  "actualScientificExecutions": 1,
+  "seedBlockConsumed": true,
+  "noRescueBoundaryCrossed": true,
+  "freshScientificSeedAccess": true,
+  "protectedDepth10Access": false,
+  "stage2AuthorizedByThisResult": false,
+  "artifactProvenance": {
+    "workflowRun": 33714665861,
+    "job": 100521197935,
+    "leaseArtifactId": 9878071217,
+    "leaseZipSha256": "1266666a9c3583a38def48d5df8734e0dcc8a1cf0a0e7e53435d75e850db7888",
+    "resultArtifactId": 9878178694,
+    "resultZipSha256": "e6908832c5617cc3a015996d2ea59cee1ba247a6078b64cd408d85697d1fdc03"
+  },
+  "stage2Status": "NOT-AUTHORIZED / NOT-EXECUTED"
+}
