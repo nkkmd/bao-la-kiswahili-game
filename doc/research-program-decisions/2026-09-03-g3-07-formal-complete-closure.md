@@ -97,6 +97,12 @@ SILGM-STUDY1 is closed. No same-evidence rerun, seed extension, endpoint rescue,
 
 Any additional validation requires a new prospective Study/version and separate authorization.
 
+## Downstream G3-08 authorization boundary
+
+Historical program item G3-08 — Local Geometry Persistence / Memory-Length Study 1 — is **`NOT AUTHORIZED`** by this closure.
+
+G3-07 completion does not automatically authorize G3-08. Before any G3-08 scientific execution, a separate post-G3-07 current-state authorization review is required.
+
 ## Main integration boundary
 
 This formal closure applies to the research branch only. **It does not authorize merge/integration to `main`.** Main integration requires an explicit user instruction issued after this closure.
