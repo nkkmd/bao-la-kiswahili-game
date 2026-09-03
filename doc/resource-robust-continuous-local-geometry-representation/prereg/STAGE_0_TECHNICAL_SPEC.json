@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRCLGR-STUDY1",
+  "stageId": "RRCLGR-S0-TECHNICAL-2026-09-03-v1",
+  "evidenceClass": "TECHNICAL-ONLY",
+  "technicalSeedStart": 32009001,
+  "technicalSeedEnd": 32009016,
+  "technicalSeedScientificUse": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "scientificInferenceAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "relativeDepth": 5,
+  "requiredChecks": [
+    "production-independent bounded-preflight agreement",
+    "relay-limit becomes deterministic resource-ineligible reason rather than game outcome",
+    "deterministic resource ceiling checked during preflight",
+    "exact six-axis derivation",
+    "exact rational squashing",
+    "exact L1 distance",
+    "k=3 tie-inclusive neighborhood",
+    "root-order invariance",
+    "production-independent implementation separation",
+    "canonical scientific serialization excludes runtime metadata",
+    "stage1/stage2 seed guards",
+    "protected depth-10 guard"
+  ],
+  "preflightLimits": {
+    "globalDistinctRawStates": 100000,
+    "uniqueCanonicalTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveVariantsEnumerated": 750000,
+    "treeNodeOccurrences": 1000000000,
+    "relayLimitAllowed": false
+  },
+  "stage0PassRequires": {
+    "allRequiredChecks": true,
+    "oneTechnicalNamuaRoot": true,
+    "oneTechnicalMtajiRoot": true,
+    "technicalRootsPreflightEligible": true,
+    "technicalRootsProductionIndependentExact": true,
+    "freshScientificSeedAccess": false,
+    "protectedDepth10Access": false
+  },
+  "stage1AutomaticallyAuthorizedOnPass": false,
+  "sameVersionAutomaticRerunAuthorized": false
+}
