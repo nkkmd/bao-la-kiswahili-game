@@ -1,3 +1,0 @@
-SILGM-G3-07-MAIN-INTEGRATION-DOC-SYNC-2026-09-03-V2
-source-tip=7f14538aa0ec3edd2045649025715219ffea17ec
-control-plane-fix=untracked-checkpoint-count
