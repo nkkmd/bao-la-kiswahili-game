@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S1-DEVELOPMENT-2026-09-03-v1",
+  "auditId": "SILGM-S1-PREAUTH-STATIC-2026-09-03-v1",
+  "evidenceClass": "FRESH-FREE-STATIC-AUDIT",
+  "auditDisposition": "STAGE1-PREAUTH-STATIC-AUDIT-PASS",
+  "head": "6b75baa7203258482d41a5da4fad86eeb326c04f",
+  "parent": "a5ddd8f99407094fa12dbfc5a61bcb1140f07915",
+  "triggerBoundToolingParent": "a5ddd8f99407094fa12dbfc5a61bcb1140f07915",
+  "checkedBlobCount": 16,
+  "productionStage1Sha256": "199b92b3d4a0b0f67f9fae5939c20ba61c9a81da005da296c2c3ce262068bb8b",
+  "independentStage1Sha256": "57733ca0857e69df63ed28702e90dc227ef94b3a471376988db6d9e9de3eb7fa",
+  "runnerSha256": "d3ccb5151760327b12183ca023796c51eec4a918e9bf552cbfe5f9e843eef9ae",
+  "authorizationArtifactPresent": false,
+  "freshStage1SeedAccess": false,
+  "freshStage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "scientificEvidenceGenerated": false,
+  "scientificEvidenceRead": false,
+  "noRescueBoundaryCrossed": false,
+  "stage1AuthorizedByThisAudit": false
+}
