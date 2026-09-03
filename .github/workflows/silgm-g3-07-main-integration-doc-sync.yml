@@ -45,13 +45,15 @@ jobs:
         run: |
           set -euo pipefail
           mapfile -t changed < <(git diff --name-only)
-          test "${#changed[@]}" -eq 9
+          test "${#changed[@]}" -eq 8
           for f in "${changed[@]}"; do
             case "$f" in
-              README.md|doc/RESEARCH_INDEX.md|doc/FUTURE_RESEARCH_AGENDA.md|doc/research-generation-3/README.md|doc/research-generation-3/CURRENT_STATUS.md|doc/research-generation-3/checkpoints/2026-09-03-g3-07-main-integration-complete.md|doc/search-instability-local-geometry-mechanism/README.md|doc/search-instability-local-geometry-mechanism/CURRENT_STATUS.md|doc/search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md) ;;
+              README.md|doc/RESEARCH_INDEX.md|doc/FUTURE_RESEARCH_AGENDA.md|doc/research-generation-3/README.md|doc/research-generation-3/CURRENT_STATUS.md|doc/search-instability-local-geometry-mechanism/README.md|doc/search-instability-local-geometry-mechanism/CURRENT_STATUS.md|doc/search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md) ;;
               *) echo "Unexpected changed path: $f" >&2; exit 1 ;;
             esac
           done
+          test -f doc/research-generation-3/checkpoints/2026-09-03-g3-07-main-integration-complete.md
+          test "$(git status --porcelain --untracked-files=all | grep -c '^?? doc/research-generation-3/checkpoints/2026-09-03-g3-07-main-integration-complete.md$')" -eq 1
 
       - name: Commit synchronized documentation
         shell: bash
