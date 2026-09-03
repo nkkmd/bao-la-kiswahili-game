@@ -242,3 +242,8 @@ node tools/diagnostic-to-fixture.js \
 ## ライセンス
 
 このプロジェクトは MIT License のもとでライセンスされています。詳しくは [`LICENSE`](LICENSE) を参照してください。
+
+<!-- CLGR-G3-09-CLOSURE:ROOT-README -->
+## Research Generation 3 — G3-09 closure
+
+G3-09 [`CLGR-STUDY1`](doc/continuous-local-geometry-representation/README.md) は **`CLOSED / TECHNICAL-INVALID`**。prospectively固定した6-axis exact continuous representationはStage 1 development 48/48 rootsをPASSしたが、Stage 2 fresh formal holdoutは72 roots選定後61 roots完了時点のMtaji seed `31920066`でrequired depth-5 RAW enumerationが`relay-limit`となりfail-closedした。formal representation eligibilityは**確立していない**。same-evidence rerun / root replacement / seed extension / resource ceiling relaxation / representation rescueは禁止し、protected standard-initial RAW depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま保持する。G3-10は別のpost-G3-09 current-state authorization reviewまで`NOT AUTHORIZED`。G3-09 research branchの`main`統合はユーザー明示指示まで行わない。

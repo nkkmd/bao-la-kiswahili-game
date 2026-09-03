@@ -5,10 +5,13 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-03
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-08 `LGPML-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / next action is separate post-G3-08 current-state G3-09 authorization review / G3-09 NOT AUTHORIZED (2026-09-03)**
+Research Generation 3: **Active / G3-09 `CLGR-STUDY1` closed `TECHNICAL-INVALID` / Stage 1 PASS / Stage 2 TECHNICAL-INVALID after 61 of 72 formal roots / formal continuous-representation eligibility NOT ESTABLISHED / next action is separate post-G3-09 current-state G3-10 authorization review / G3-10 NOT AUTHORIZED (2026-09-03)**
 
 
 ### 2026-09-03 Research Generation 3 current update
+
+<!-- CLGR-G3-09-CLOSURE:FUTURE -->
+G3-09 `CLGR-STUDY1`はcontinuous local-geometry representationを単一のfrozen family `CLGR-R1-EXACT-SQUASHED-L1`としてprospectively構築・検証した。Stage 1 fresh development 24 Namua + 24 Mtajiは48/48でexactness/nondegeneracy gateをPASSした。一方、separate authorization下のStage 2 fresh formal holdout 36 Namua + 36 Mtajiは72 rootsの選定までは完了したが、61 root measurements後、Mtaji seed `31920066`でrequired depth-5 RAW enumerationが`relay-limit`となり`TECHNICAL-INVALID`でfail-closedした。したがってformal continuous-representation eligibilityは`NOT ESTABLISHED`であり、61 partial formal measurementsをpositive/negative/null formal evidenceとして再利用しない。Stage 1/2 seed blockはともにconsume済みでsame-evidence rerunやresource/representation rescueは禁止。protected depth-10は未開封。historical `PROGRAM_PLAN.md`は変更しない。G3-10はvalidated local-geometry coordinate dependencyを前提としていたため自動authorizeせず、separate post-G3-09 current-state reviewを必要とする。
 
 <!-- SILGM-G3-07-CLOSURE:FUTURE -->
 G3-07 `SILGM-STUDY1`はLGTGMIV F1-F5 / RAW-only / relative depth 5のformal-eligible geometryと、depth / node-budget / quiescenceの3 peer search-condition perturbationに対するE1–E5 search-output changeとのbounded non-causal associationをprospectively検証して完了した。Stage 1 fresh 24 Namua + 24 Mtajiから8 candidateをpromotionし、Stage 2 fresh 36 Namua + 36 Mtajiをexactly one authorized formal executionで測定した。Stage 2は`STAGE2-PASS`、7 estimable / 1 non-estimable。Holm-Bonferroni FWER 1/20後、depth・node-budget・quiescenceの各contrastでG1 root legal width × E3 ranking-preorder changeが`CONFIRMED / HIGHER-IN-HIGH`となった。残りは4 `NOT-CONFIRMED` / 1 `NON-ESTIMABLE`。これはroot legal widthがsearch instabilityを因果的に生む、より強いsearch条件が正しい、ranking changeが悪手を意味する、game-theoretic / human difficultyを示す、という結論ではない。Stage 1/2 seedはconsume済みでsame-evidence rerun / seed extension / candidate rescueを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。**G3-07 closure時点では**historical plan上のG3-08は自動authorizeされず、separate post-G3-07 current-state reviewが必要だった。そのreviewは後に完了し、G3-08 / `LGPML-STUDY1`も独立に実施され現在は`CLOSED / TECHNICAL-INVALID`である。G3-07のmain integrationは、その後の明示的ユーザー指示を受け、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` をfast-forwardして完了した。

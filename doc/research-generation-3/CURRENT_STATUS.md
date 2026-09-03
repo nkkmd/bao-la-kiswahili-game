@@ -4,7 +4,7 @@ Updated: 2026-09-03
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-08 LGPML-STUDY1 CLOSED TECHNICAL-INVALID / POST-G3-08 G3-09 REVIEW REQUIRED / G3-09 NOT AUTHORIZED
+Program status = ACTIVE / G3-09 CLGR-STUDY1 CLOSED TECHNICAL-INVALID / FORMAL REPRESENTATION ELIGIBILITY NOT ESTABLISHED / POST-G3-09 G3-10 REVIEW REQUIRED / G3-10 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -44,10 +44,22 @@ G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 G3-08 Stage 2 seed = 31820001..31820384 / NOT CONSUMED
 G3-08 no-rescue boundary = CROSSED / ACTIVE
 G3-08 main integration = COMPLETE / FAST-FORWARD / source tip 72bd208267359f461e9dbbde938bb952eb01b91c / force=false
-G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state authorization review required
+G3-09 program review = G3-09-AUTHORIZED
+G3-09 = CLGR-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-09 Stage 0 v1 = TECHNICAL-INVALID / PRE-FRESH / NO RERUN
+G3-09 Stage 0 v2 = STAGE0-PASS
+G3-09 Stage 1 = STAGE1-PASS / 1 authorized / 1 actual / seeds CONSUMED
+G3-09 Stage 1 canonical result = 1e63937dc5967276f68253c9efa819554b0ea3b346f471c04dea92cbd90dc529
+G3-09 Stage 2 = TECHNICAL-INVALID / 1 authorized / 1 actual / seeds CONSUMED
+G3-09 Stage 2 selected = 72 / completed before fail-closed = 61
+G3-09 Stage 2 failure = mtaji / seed 31920066 / relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b
+G3-09 formal representation eligibility = NOT ESTABLISHED
+G3-09 no-rescue boundary = CROSSED / CLOSED
+G3-09 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state authorization review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active scientific research branch = none / G3-08 integrated to main; G3-09 remains NOT AUTHORIZED
-Next scientific action = separate post-G3-08 current-state G3-09 authorization review; do not auto-start G3-09
+Active scientific research branch = research/g3-09-continuous-local-geometry-representation / CLOSED / REVIEW-READY / main integration NOT AUTHORIZED
+Next scientific action = separate post-G3-09 current-state G3-10 authorization review; do not auto-start G3-10
 ```
 
 ## Immutable upstream boundaries
@@ -512,3 +524,8 @@ Canonical records:
 - `checkpoints/2026-09-03-g3-08-technical-invalid-closure.md`
 
 Partial Stage 1 trajectory outputはscientific findingとして再利用しない。G3-09は別のcurrent-state authorization reviewなしに開始しない。
+
+<!-- CLGR-G3-09-CLOSURE:RG3-CURRENT -->
+## G3-09 technical-invalid closure
+
+G3-09 `CLGR-STUDY1`は、LGTGMIV F1-F5 / RAW-only / relative depth 5から6本のexact geometry axesを保持する`CLGR-R1-EXACT-SQUASHED-L1`をprospectively固定して実施した。Stage 1 fresh developmentは24 Namua + 24 Mtajiの48 rootsで`STAGE1-PASS`。しかしseparately authorizedなStage 2 fresh formal holdoutは36 Namua + 36 Mtajiの72 rootsを選定後、61 rootsを完了した時点でMtaji seed `31920066`のdepth-5 RAW reconstructionが`relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b`となりfail-closedした。final formal decisionは`TECHNICAL-INVALID`、formal representation eligibilityは`NOT ESTABLISHED`。Stage 2 partial measurementsはformal scientific evidenceへ格上げせず、same-evidence rerun / seed extension / root replacement / resource ceiling relaxation / representation redesignを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。G3-10は自動authorizeせずseparate post-G3-09 current-state reviewを必要とする。

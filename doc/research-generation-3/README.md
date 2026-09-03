@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-08 LGPML-STUDY1 CLOSED TECHNICAL-INVALID / POST-G3-08 G3-09 CURRENT-STATE REVIEW REQUIRED / G3-09 NOT AUTHORIZED
+Status = ACTIVE / G3-09 CLGR-STUDY1 CLOSED TECHNICAL-INVALID / FORMAL REPRESENTATION ELIGIBILITY NOT ESTABLISHED / POST-G3-09 G3-10 CURRENT-STATE REVIEW REQUIRED / G3-10 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -39,7 +39,13 @@ G3-08 formal promoted candidate set = []
 G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seeds NOT CONSUMED
 G3-08 no-rescue boundary = CROSSED / ACTIVE
 G3-08 main integration = COMPLETE / FAST-FORWARD / source tip 72bd208267359f461e9dbbde938bb952eb01b91c / force=false
-G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state review required
+G3-09 program review = G3-09-AUTHORIZED
+G3-09 = CLGR-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-09 Stage 1 = STAGE1-PASS / exactly one fresh execution / seeds CONSUMED
+G3-09 Stage 2 = TECHNICAL-INVALID / exactly one fresh execution / seeds CONSUMED / 61 of 72 roots completed before fail-closed
+G3-09 formal representation eligibility = NOT ESTABLISHED
+G3-09 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
 
@@ -301,3 +307,8 @@ main integration = NOT PERFORMED
 ## Post-G3-08 boundary
 
 Historical plan上の次候補G3-09 — Continuous Local-Geometry Representation Study 1 は**自動authorizeされない**。開始する場合はG3-08 closure後のcurrent repository stateを用いたseparate authorization reviewが必要である。
+
+<!-- CLGR-G3-09-CLOSURE:RG3-README -->
+## G3-09 technical-invalid closure
+
+G3-09 `CLGR-STUDY1`は`CLOSED / TECHNICAL-INVALID`。Stage 1 developmentは48/48 rootsでPASSしたが、Stage 2 formal holdoutは72 roots選定後、61 roots完了時点のMtaji seed `31920066`で`relay-limit`によりfail-closedしたためformal representation eligibilityは確立していない。正本は[`../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md)、program decisionは[`../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md)。G3-10は別のcurrent-state authorization reviewまで`NOT AUTHORIZED`。

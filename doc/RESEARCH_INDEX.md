@@ -1240,3 +1240,19 @@ Stage 0はPASSし、fresh Stage 1はexactly one authorized executionで開始し
 - [`research-generation-3/checkpoints/2026-09-03-g3-08-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-08-technical-invalid-closure.md)
 
 Stage 2 seed blockは未消費、protected depth-10 holdoutはsealedのまま。2026-09-03の明示的ユーザー指示後、G3-08 research tip `72bd208267359f461e9dbbde938bb952eb01b91c` はmainへfast-forward / `force=false`で統合済み。
+
+<!-- CLGR-G3-09-CLOSURE:RESEARCH-INDEX -->
+### G3-09 — Continuous Local-Geometry Representation Study 1
+
+- Study ID: `CLGR-STUDY1`
+- Status: **`CLOSED / TECHNICAL-INVALID`**
+- Formal representation: `CLGR-R1-EXACT-SQUASHED-L1`
+- Measurement foundation: `LGTGMIV F1-F5 / RAW-only / relative depth 5`
+- Stage 1: `STAGE1-PASS`, exactly one fresh execution, 24 Namua + 24 Mtaji
+- Stage 2: `TECHNICAL-INVALID`, exactly one fresh formal execution, 36 Namua + 36 Mtaji selected, 61 roots measured before fail-closed
+- Failure: Mtaji seed `31920066`, `relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b`
+- Formal continuous-representation eligibility: **NOT ESTABLISHED**
+- Protected depth-10: `SEALED / NOT GENERATED / NOT READ / NOT PEEKED`
+- Final report: [`continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md)
+- Program closure: [`research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md)
+- Downstream: G3-10 is not authorized without separate post-G3-09 current-state review.
