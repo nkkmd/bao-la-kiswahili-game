@@ -107,6 +107,7 @@ allowed_prefixes = (
     'doc/continuous-local-geometry-representation/',
     'doc/research-program-decisions/2026-09-03-post-g3-08-g3-09-',
     'doc/research-program-decisions/2026-09-03-g3-09-',
+    'doc/research-program-decisions/2026-09-03-clgr-',
     'doc/research-generation-3/checkpoints/2026-09-03-post-g3-08-g3-09-',
     'doc/research-generation-3/checkpoints/2026-09-03-g3-09-',
     '.github/workflows/clgr-',
