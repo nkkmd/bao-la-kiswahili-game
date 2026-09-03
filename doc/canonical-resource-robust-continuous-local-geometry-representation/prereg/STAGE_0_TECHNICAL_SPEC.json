@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CRCLGR-STUDY1",
+  "stageId": "CRCLGR-S0-TECHNICAL-2026-09-03-v1",
+  "evidenceClass": "TECHNICAL-ONLY",
+  "technicalSeedStart": 32109001,
+  "technicalSeedEnd": 32109064,
+  "technicalCandidateNamua": 4,
+  "technicalCandidateMtaji": 4,
+  "minimumSelectablePly": 16,
+  "maximumSourcePly": 80,
+  "scientificInferenceAuthorized": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "sameVersionAutomaticRerunAuthorized": false,
+  "mandatoryChecks": [
+    "structuredCanonicalSerializationProductionIndependentReference",
+    "structuredCandidateCoreDigestProductionIndependentReference",
+    "endToEndTechnicalCandidateSelection",
+    "technicalCandidatePopulationComplete",
+    "boundedPreflightAgreement",
+    "eligibleTechnicalRootEachPhase",
+    "exactSixAxisCoordinateAgreement",
+    "exactL1NeighborhoodAgreement",
+    "forcedRelayLimitFailClosed",
+    "deterministicCounterCeilingFailClosed",
+    "implementationSeparation",
+    "freshSeedGuards",
+    "protectedDepth10Guard"
+  ]
+}
