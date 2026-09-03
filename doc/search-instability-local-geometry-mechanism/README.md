@@ -30,12 +30,17 @@ This Study establishes bounded non-causal association only. It does not identify
 - [`results/stage-1/STAGE_1_RESULT_SUMMARY.json`](results/stage-1/STAGE_1_RESULT_SUMMARY.json)
 - [`results/stage-2/STAGE_2_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_RESULT_SUMMARY.json)
 - [`checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md`](checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md)
+- [`checkpoints/2026-09-03-final-document-consistency-followup-pass.md`](checkpoints/2026-09-03-final-document-consistency-followup-pass.md)
 
 ## Protected evidence
 
 Standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
+
+## Downstream boundary
+
+G3-08 — Local Geometry Persistence / Memory-Length Study 1 — remains **`NOT AUTHORIZED`**. A separate post-G3-07 current-state authorization review is required before any G3-08 scientific execution.
 
 ## Integration boundary
 
