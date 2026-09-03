@@ -218,3 +218,21 @@ G3-10 remains not authorized and requires a separate post-G3-09 current-state re
 ## Main integration
 
 Main integration is **not authorized** and has **not been performed**. Explicit user instruction is required after final repository/document consistency audit.
+<!-- CLGR-G3-09-FINAL-AUDIT:REPRO -->
+
+## Final repository/document consistency audit
+
+Final audit v1 stopped on a documentation allowlist omission before any scientific computation. It was not rerun. A fresh documentation-only v2 audit expanded only the valid CLGR program-decision path allowlist and otherwise retained the same checks.
+
+```text
+v2 workflow run = 33754250314
+disposition = FINAL-REPOSITORY-DOCUMENT-CONSISTENCY-PASS
+Stage 2 formal-result SHA-256 = 11cee4ab7d2fbd1105f69ff1592b01a3ebd651aa1bedbf79414e7b338935ef73
+historical PROGRAM_PLAN blob = 2bb90c11f1625f63f40a7eab8a3de7774505a1ac / UNCHANGED
+remote main at audit = 6c218b9cc3f492fb96d051768702682fef9bb66a / UNCHANGED
+protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+main integration = NOT AUTHORIZED / NOT PERFORMED
+research branch = CLOSED / REVIEW-READY
+```
+
+Canonical checkpoint: `checkpoints/2026-09-03-final-repository-document-consistency-pass.md`.

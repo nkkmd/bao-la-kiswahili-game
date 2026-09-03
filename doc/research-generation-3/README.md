@@ -52,6 +52,14 @@ Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKE
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+<!-- CLGR-G3-09-READ-FIRST -->
+- [`../continuous-local-geometry-representation/README.md`](../continuous-local-geometry-representation/README.md) — G3-09 technical-invalid closure入口 / current Study summary
+- [`../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — G3-09 scientific closure / interpretation boundary正本
+- [`../continuous-local-geometry-representation/REPRODUCIBILITY_INDEX.md`](../continuous-local-geometry-representation/REPRODUCIBILITY_INDEX.md) — G3-09 exact artifacts / source binding / final audit provenance
+- [`../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md) — G3-09 program closure / G3-10 not auto-authorized
+- [`../continuous-local-geometry-representation/checkpoints/2026-09-03-final-repository-document-consistency-pass.md`](../continuous-local-geometry-representation/checkpoints/2026-09-03-final-repository-document-consistency-pass.md) — G3-09 final repository/document consistency audit PASS
+- [`../local-geometry-persistence-memory-length/README.md`](../local-geometry-persistence-memory-length/README.md) — G3-08 technical-invalid closure入口
+- [`../local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md`](../local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md) — G3-08 scientific/technical closure正本
 <!-- SILGM-G3-07-CLOSURE:RG3-READ-FIRST -->
 - [`../search-instability-local-geometry-mechanism/README.md`](../search-instability-local-geometry-mechanism/README.md) — G3-07 formal-complete Study入口
 - [`../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md`](../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md) — G3-07 formal result / interpretation boundary正本

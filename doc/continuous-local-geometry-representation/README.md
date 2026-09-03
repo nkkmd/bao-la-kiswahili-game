@@ -5,6 +5,9 @@ Research Generation 3 `G3-09` / `CLGR-STUDY1` の研究ディレクトリ。
 Current lifecycle status:
 
 **`CLOSED / TECHNICAL-INVALID`**
+<!-- CLGR-G3-09-FINAL-AUDIT:README -->
+
+Repository/document closure status: **`FINAL CONSISTENCY AUDIT PASS / RESEARCH BRANCH REVIEW-READY`** (`33754250314`).
 
 ## Formal Study identity
 

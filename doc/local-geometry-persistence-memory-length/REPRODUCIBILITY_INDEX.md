@@ -176,9 +176,9 @@ same-evidence rescue = PROHIBITED
 
 Canonical scientific interpretationは`STUDY_1_FINAL_REPORT.md`を参照する。partial trajectory outputやtechnical error diagnosticをscientific geometry-persistence evidenceとして再利用しない。
 
-## Main integration boundary
+## Historical pre-integration boundary
 
-`main` integration is **NOT AUTHORIZED**. The user has explicitly required that integration must not occur until a later explicit instruction. Current remote `main` remains `9f6abd3c9b146bb88c11dd04963052300e4cdc3b`.
+At G3-08 scientific closure, `main` integration was **NOT AUTHORIZED** and remote `main` was `9f6abd3c9b146bb88c11dd04963052300e4cdc3b`. This is retained as closure-time provenance; the later authorized integration is recorded below.
 
 ## Protected evidence
 
@@ -189,7 +189,7 @@ Standard initial RAW-root complete exact depth-10 holdout = `SEALED / NOT GENERA
 
 A post-closure read-through found stale downstream/lifecycle wording in inherited G3-04..G3-07 current-facing documents and one duplicate obsolete G3-08 status line in the RG3 README. These are repository-documentation metadata only; no scientific content changed. The correction is recorded in `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`.
 
-Current authoritative program state remains: G3-08 / `LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID`; G3-09 `NOT AUTHORIZED`; protected depth-10 sealed; G3-08 main integration not performed.
+At that follow-up checkpoint, the then-current state was: G3-08 / `LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID`; G3-09 `NOT AUTHORIZED`; protected depth-10 sealed; G3-08 main integration not yet performed. Those statements are historical checkpoint provenance. Current program state is authoritative in `../research-generation-3/CURRENT_STATUS.md`; G3-08 integration is complete and G3-09 / `CLGR-STUDY1` is now `CLOSED / TECHNICAL-INVALID`.
 
 <!-- LGPML-G3-08-MAIN-INTEGRATION -->
 ## Main integration

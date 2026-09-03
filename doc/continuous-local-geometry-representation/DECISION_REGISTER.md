@@ -58,3 +58,7 @@ Updated: 2026-09-03
 | CLGR-D052 | G3-10 downstream | `NOT AUTHORIZED` | separate post-G3-09 current-state reviewでdependencyを再評価。 |
 | CLGR-D053 | Protected depth-10 at closure | `SEALED / NOT GENERATED / NOT READ / NOT PEEKED` | G3-11 protected evidenceを維持。 |
 | CLGR-D054 | Main integration at closure | `NOT AUTHORIZED / NOT PERFORMED` | user明示指示までresearch branchをreview-readyに保持。 |
+<!-- CLGR-G3-09-FINAL-AUDIT:DECISIONS -->
+| CLGR-D055 | Final repository/document consistency audit v1 | `DOCUMENTATION-AUDIT-ALLOWLIST-TOO-NARROW / NO SCIENTIFIC CONSEQUENCE / NO RERUN` | valid CLGR authorization-review pathsのallowlist漏れ。scientific computation/evidence accessなし。 |
+| CLGR-D056 | Final repository/document consistency audit v2 | `PASS / run 33754250314` | exact result identity、no-rescue、protected depth-10、historical PROGRAM_PLAN、current-facing docs、changed-path confinement、remote main不変を確認。 |
+| CLGR-D057 | Research branch lifecycle after final audit | `CLOSED / REVIEW-READY` | main integrationは依然`NOT AUTHORIZED / NOT PERFORMED`。 |

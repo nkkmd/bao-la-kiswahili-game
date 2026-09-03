@@ -1256,3 +1256,18 @@ Stage 2 seed blockは未消費、protected depth-10 holdoutはsealedのまま。
 - Final report: [`continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md)
 - Program closure: [`research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md)
 - Downstream: G3-10 is not authorized without separate post-G3-09 current-state review.
+<!-- CLGR-G3-09-CANONICAL-INDEX -->
+
+**最初に読む:**
+
+- [`continuous-local-geometry-representation/README.md`](continuous-local-geometry-representation/README.md) — G3-09 closure概要とcurrent boundary
+
+**詳細・正本:**
+
+- [`continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — scientific/technical final report
+- [`continuous-local-geometry-representation/CURRENT_STATUS.md`](continuous-local-geometry-representation/CURRENT_STATUS.md) — current lifecycle / final audit / main-integration boundary
+- [`continuous-local-geometry-representation/DECISION_REGISTER.md`](continuous-local-geometry-representation/DECISION_REGISTER.md) — authorization・execution・closure decisions
+- [`continuous-local-geometry-representation/REPRODUCIBILITY_INDEX.md`](continuous-local-geometry-representation/REPRODUCIBILITY_INDEX.md) — source binding・artifact・hash・Actions provenance
+- [`research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md) — program-level closure
+- [`research-generation-3/checkpoints/2026-09-03-g3-09-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-09-technical-invalid-closure.md) — RG3 closure checkpoint
+- [`continuous-local-geometry-representation/checkpoints/2026-09-03-final-repository-document-consistency-pass.md`](continuous-local-geometry-representation/checkpoints/2026-09-03-final-repository-document-consistency-pass.md) — final repository/document consistency audit PASS
