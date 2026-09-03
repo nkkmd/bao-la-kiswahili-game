@@ -183,3 +183,10 @@ Canonical scientific interpretationは`STUDY_1_FINAL_REPORT.md`を参照する�
 ## Protected evidence
 
 Standard initial RAW-root complete exact depth-10 holdout = `SEALED / NOT GENERATED / NOT READ / NOT PEEKED`。
+
+<!-- LGPML-FINAL-DOC-FOLLOWUP -->
+## Final document consistency follow-up
+
+A post-closure read-through found stale downstream/lifecycle wording in inherited G3-04..G3-07 current-facing documents and one duplicate obsolete G3-08 status line in the RG3 README. These are repository-documentation metadata only; no scientific content changed. The correction is recorded in `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`.
+
+Current authoritative program state remains: G3-08 / `LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID`; G3-09 `NOT AUTHORIZED`; protected depth-10 sealed; G3-08 main integration not performed.

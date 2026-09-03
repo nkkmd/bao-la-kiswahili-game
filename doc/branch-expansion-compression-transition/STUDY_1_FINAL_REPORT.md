@@ -250,7 +250,12 @@ BECT-STUDY1 = CLOSED / TECHNICAL-INVALID
 formal promoted candidate set = []
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 same-evidence rescue = PROHIBITED
-main integration = NOT PERFORMED
+main integration at scientific closure = NOT PERFORMED
 ```
 
 BECT-STUDY1のtechnical-invalid resultはnegative/null scientific findingではない。これはprospectively frozen execution contractの下でformal scientific evaluationへ到達できなかったことを示すtechnical validity resultである。
+
+<!-- BECT-POST-CLOSURE-INTEGRATION-ADDENDUM -->
+## Post-closure repository lifecycle addendum
+
+Scientific closure時点ではmain integrationは未実施だった。その後、明示的ユーザー指示を受けてresearch head `49f868103b186c8bc00a188afd185a620a797e55` のfast-forward統合が完了した。このrepository lifecycle更新はBECT-STUDY1のscientific result、technical-invalid disposition、formal promoted set、no-rescue boundaryを変更しない。

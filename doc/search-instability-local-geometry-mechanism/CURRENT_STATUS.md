@@ -130,7 +130,7 @@ Thus, within the frozen Stage-2 population and search contract, high root legal 
 
 G3-07 scientific execution and research-branch documentation consistency work are complete.
 
-Program-level next scientific action is a **separate post-G3-07 current-state G3-08 authorization review**. G3-08 remains **NOT AUTHORIZED** and must not start automatically.
+**Historical closure-time downstream boundary:** at G3-07 closure, the next program-level scientific action was a separate post-G3-07 current-state G3-08 authorization review, and G3-08 was not authorized automatically. That review was later completed. Current program state: G3-08 / `LGPML-STUDY1` is `CLOSED / TECHNICAL-INVALID`; G3-09 remains `NOT AUTHORIZED` pending a separate post-G3-08 current-state authorization review.
 
 Main integration is complete after explicit user instruction. The closed research branch is retained for provenance.
 

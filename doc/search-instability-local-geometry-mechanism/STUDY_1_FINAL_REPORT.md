@@ -447,4 +447,4 @@ Formal inferential record:
 
 今後このStudy自体のseed追加、rerun、candidate救済、threshold変更、direction変更、endpoint再定義は行わない。追加検証が必要な場合は、新しいprospective Study/versionとして独立にauthorizeする。
 
-本closureはresearch branch上の研究完了記録であり、**mainへの統合を意味しない**。main integrationはユーザーからの明示的指示があるまで実施しない。
+本closure作成時点ではresearch branch上の研究完了記録であり、**その時点ではmainへの統合を意味しなかった**。その後、ユーザーの明示的指示を受け、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` を`main`へfast-forward統合した。これはrepository lifecycleの後続更新であり、G3-07のscientific result、formal labels、threshold、seed、claim boundaryを変更しない。

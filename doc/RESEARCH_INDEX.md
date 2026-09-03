@@ -1212,7 +1212,7 @@ Canonical records:
 - [`research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`](research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md)
 - [`research-generation-3/checkpoints/2026-09-03-g3-07-formal-complete-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-07-formal-complete-closure.md)
 
-**Downstream boundary:** G3-08 — Local Geometry Persistence / Memory-Length Study 1 is not automatically authorized. A separate post-G3-07 current-state authorization review is required. Protected depth-10 remains sealed. A later explicit user instruction authorized integration, and G3-07 was fast-forward integrated to `main` from research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` on 2026-09-03; the research branch is retained for provenance.
+**Historical downstream boundary at G3-07 closure:** G3-08 — Local Geometry Persistence / Memory-Length Study 1 was not automatically authorized and required a separate post-G3-07 current-state authorization review. That review later completed; G3-08 / `LGPML-STUDY1` was independently executed and is now `CLOSED / TECHNICAL-INVALID`. Protected depth-10 remains sealed. A later explicit user instruction also authorized G3-07 integration, and G3-07 was fast-forward integrated to `main` from research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` on 2026-09-03; the research branch is retained for provenance.
 
 <!-- LGPML-G3-08-CLOSURE:RESEARCH-INDEX -->
 ### G3-08 — Local Geometry Persistence / Memory-Length Study 1

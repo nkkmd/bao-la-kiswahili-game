@@ -40,7 +40,6 @@ G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seeds NOT CONSUMED
 G3-08 no-rescue boundary = CROSSED / ACTIVE
 G3-08 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
 G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state review required
-G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
 

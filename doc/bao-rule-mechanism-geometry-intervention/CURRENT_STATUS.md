@@ -196,6 +196,6 @@ Canonical closure records:
 - `../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`
 - `../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`
 
-Historical agenda上のG3-07は自動authorizeしない。次に進む場合はseparate post-G3-06 current-state authorization reviewが必要で、BRMGI selection diagnosticsをvalidated scientific inputとして継承しない。
+**Historical closure-time downstream boundary:** G3-06 closure時点ではG3-07を自動authorizeせず、separate post-G3-06 current-state authorization reviewを必要とした。BRMGI selection diagnosticsをvalidated scientific inputとして継承しない。このreviewは後に完了し、G3-07も独立に実施・閉鎖された。
 
-Main integration is **COMPLETE**. The next scientific action remains the separate post-G3-06 current-state authorization review for G3-07.
+Main integration is **COMPLETE**. Current program-level next actionは`../research-generation-3/CURRENT_STATUS.md`を参照する。現在はG3-08までclosure済みで、G3-09はseparate post-G3-08 review前の`NOT AUTHORIZED`である。

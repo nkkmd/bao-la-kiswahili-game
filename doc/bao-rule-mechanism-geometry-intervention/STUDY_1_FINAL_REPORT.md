@@ -307,7 +307,12 @@ BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID
 formal promoted candidate set = []
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 same-evidence rescue = PROHIBITED
-main integration = NOT PERFORMED
+main integration at scientific closure = NOT PERFORMED
 ```
 
 G3-06はunfinished研究ではない。次のG3-07を実施する場合はseparate post-G3-06 current-state authorization reviewを必要とする。G3-06のtechnical-invalid resultはsearch-instability / geometry mechanismのpositive/negative scientific prerequisiteとして扱わない。
+
+<!-- BRMGI-POST-CLOSURE-INTEGRATION-ADDENDUM -->
+## Post-closure repository lifecycle addendum
+
+Scientific closure時点ではmain integrationは未実施だった。その後、明示的ユーザー指示を受けてaudited head `f8eda131b81f0d6e3bc9f804ddfce875c9cd8d2b` のfast-forward統合が完了した。このrepository lifecycle更新はBRMGI-STUDY1のscientific result、technical-invalid disposition、formal promoted set、no-rescue boundaryを変更しない。

@@ -69,7 +69,9 @@
 | SILGM-D063 | Other estimable promoted candidates | `4 NOT-CONFIRMED` | Frozen formal criteria were not satisfied after Holm; no rescue/refit. |
 | SILGM-D064 | Joint interpretation | `BOUNDED NON-CAUSAL ASSOCIATION` | Across three separate peer contrasts, formal confirmations consistently link high G1 root legal width with concentration of E3 ranking-preorder change; no new omnibus test is inferred. |
 | SILGM-D065 | Study lifecycle | `CLOSED / FORMAL-COMPLETE` | G3-07 scientific execution is complete; future validation requires a new prospective Study/version. |
-| SILGM-D066 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED / NOT PERFORMED` | Study closure does not authorize merge/integration to main. |
+| SILGM-D066 | Main integration at Study closure | `EXPLICIT USER INSTRUCTION REQUIRED / NOT PERFORMED AT CLOSURE` | Study closure itself did not authorize merge/integration to main. |
+| SILGM-D067 | Post-closure main integration | `COMPLETE / FAST-FORWARD` | Later explicit user instruction authorized integration of research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec`; scientific decisions unchanged. |
+| SILGM-D068 | Post-G3-07 downstream review | `COMPLETED / G3-08 CLOSED TECHNICAL-INVALID` | Separate review later authorized G3-08; `LGPML-STUDY1` subsequently closed technical-invalid. This does not modify G3-07 evidence or formal decisions. |
 
 Canonical machine-readable Study contract: `prereg/STUDY_1_SPEC.json`.
 

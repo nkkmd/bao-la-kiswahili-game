@@ -74,6 +74,6 @@ Program records:
 
 ## Next program action
 
-G3-07は自動authorizeしない。次に進む場合はseparate post-G3-06 current-state authorization reviewを行う。
+**Historical closure-time boundary:** G3-06 closure時点ではG3-07は自動authorizeされず、separate post-G3-06 current-state authorization reviewが必要だった。そのreviewは後に完了し、G3-07は独立に実施・閉鎖された。現在のprogram stateは`../research-generation-3/CURRENT_STATUS.md`を参照する。
 
-BRMGI selection diagnosticsをG3-07のvalidated scientific inputとして利用しない。protected depth-10 holdoutは引き続きsealed。
+BRMGI selection diagnosticsを後続Studyのvalidated scientific inputとして利用しない。protected depth-10 holdoutは引き続きsealed。
