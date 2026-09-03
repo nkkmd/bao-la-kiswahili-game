@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGPML-STUDY1",
+  "stageId": "LGPML-S1-DEVELOPMENT-2026-09-03-v1",
+  "authorizationDecision": "STAGE1-AUTHORIZED",
+  "authorizationClass": "FRESH-DEVELOPMENT-SCIENTIFIC",
+  "authorizedOn": "2026-09-03",
+  "preAuthorizationHead": "ae4e3c5638c3bfd5d2c58b689a8fadc35742a19c",
+  "toolingCommit": "4868bceefc592af6e6f29ba5ae089aec6e6ae36d",
+  "preauthorizationAudit": {
+    "runId": 33729048934,
+    "jobId": 100564565986,
+    "conclusion": "success",
+    "headSha": "ae4e3c5638c3bfd5d2c58b689a8fadc35742a19c",
+    "disposition": "STAGE1-PREAUTH-STATIC-AUDIT-PASS"
+  },
+  "stage0Prerequisite": {
+    "stageId": "LGPML-S0-TECHNICAL-2026-09-03-v1",
+    "disposition": "STAGE0-PASS",
+    "deterministicCoreSha256": "6e51e95ae7afa97fb8993e698dbe7f290454433f012bb24cbc17b6d1d1b8411d"
+  },
+  "upstreamFirewall": {
+    "class": "IDENTITY-ONLY",
+    "rootRawSha256Count": 269,
+    "sourceTrajectorySha256Count": 244,
+    "openingPrefixSha256Count": 187,
+    "identityCoreSha256": "d123435bb93d5746e7a1fee8b9b35d166a5bff57ce681c8df01d987a64f6a7d3",
+    "scientificOutcomeFieldsRetained": false
+  },
+  "seedBlock": {
+    "seedStart": 31810001,
+    "seedEnd": 31810256,
+    "consumedBeforeAuthorization": false,
+    "extensionAllowed": false
+  },
+  "maxAuthorizedScientificExecutions": 1,
+  "sameEvidenceRerunAllowed": false,
+  "triggerToken": "LGPML-STAGE1-EXECUTE-2026-09-03-V1-ONE-SHOT",
+  "triggerPath": "doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage1-trigger.txt",
+  "protectedDepth10": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED",
+  "mainIntegrationAuthorized": false,
+  "sourceBindings": {
+    "doc/local-geometry-persistence-memory-length/prereg/STAGE_1_DEVELOPMENT_SPEC.json": "6bc12709d1fd66712ce4270f1656326bd98ee934",
+    "doc/local-geometry-persistence-memory-length/prereg/UPSTREAM_IDENTITY_FIREWALL.json": "03337de654c612ea48f42093a674d82cf267db43",
+    "doc/local-geometry-persistence-memory-length/results/stage-0-v1/STAGE_0_TECHNICAL_RESULT.json": "fc1d0b84a67d812cf81eaa7ccd53b9160ab3ab9f",
+    "tools/experiments/lib/lgpml-production.js": "44f6f549badba294074b29e512c630ab450bec35",
+    "tools/experiments/lib/lgpml-independent.js": "71b6c85f0648087d3e6dd582b97d0601c1fb57d1",
+    "tools/experiments/lib/lgpml-stage1-production.js": "920c33f96e8e084531fd147e422082ca0c83ea33",
+    "tools/experiments/lib/lgpml-stage1-independent.js": "af463c78801f5546b3ab8b6baeef6153c33d2241",
+    "tools/experiments/lib/lgtgmiv-stage1-production.js": "a4664f01535d6abbf6f83821befbb2fafd55cde6",
+    "tools/experiments/lib/lgtgmiv-stage1-independent.js": "0c7239ac7acf146e9aee63dae66194681b8631d6",
+    "tools/experiments/run-lgpml-stage1-development.js": "bc3ff94b7f964f36503ec90c826c1ec854aad35c",
+    "tools/experiments/verify-lgpml-stage1-authorization.js": "bcb8476692f1b80776bb03381dc696e6be03a89c",
+    ".github/workflows/lgpml-stage1-development.yml": "117c44e853c184565425e7305bc35d957831cc20",
+    "public/engine.js": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"
+  }
+}
