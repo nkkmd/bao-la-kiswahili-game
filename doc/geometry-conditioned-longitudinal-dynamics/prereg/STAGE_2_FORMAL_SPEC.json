@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCLD-STUDY1",
+  "stageId": "GCLD-S2-FORMAL-2026-09-03-v1",
+  "seedStart": 32220001,
+  "seedEnd": 32220384,
+  "candidateTrajectories": 48,
+  "minimumFullyResourceEligibleTrajectories": 40,
+  "measuredTrajectories": 32,
+  "checkpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+  "minimumFormalNonzeroTrajectoriesPerEndpoint": 20,
+  "formalTest": "exact two-sided binomial sign test",
+  "multiplicity": "Holm across C1..C5 at exact family alpha 1/20",
+  "formalDecisionFamily": ["CONFIRMED","NOT-CONFIRMED","NON-ESTIMABLE","TECHNICAL-INVALID"],
+  "generationAuthorizedAtFreeze": false,
+  "protectedDepth10AccessAuthorized": false,
+  "sameEvidenceRerunAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
