@@ -1,0 +1,53 @@
+name: CRCLGR Stage 2 Formal
+on:
+  push:
+    branches:
+      - research/pre-g3-10-canonical-resource-robust-continuous-geometry
+    paths:
+      - doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/crclgr-stage2-trigger.txt
+concurrency:
+  group: crclgr-stage2-formal
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Syntax-check frozen CRCLGR Stage 2 tooling before fresh access
+        run: |
+          node --check tools/experiments/lib/crclgr-production.js
+          node --check tools/experiments/lib/crclgr-independent.js
+          node --check tools/experiments/lib/crclgr-stage1-production.js
+          node --check tools/experiments/lib/crclgr-stage1-independent.js
+          node --check tools/experiments/run-crclgr-stage2-formal.js
+          node --check tools/experiments/verify-crclgr-stage2-authorization.js
+      - name: Verify Stage 2 authorization and exact source binding
+        run: node tools/experiments/verify-crclgr-stage2-authorization.js
+      - name: Materialize durable pre-computation lease before Stage 2 fresh seed access
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' "CRCLGR-S2-FORMAL-2026-09-03-v1" > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+          git rev-parse HEAD^ > artifacts/lease/authorization-parent.txt
+          sha256sum doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/STAGE_2_FORMAL_AUTHORIZATION.json > artifacts/lease/authorization.sha256
+      - name: Upload lease before formal scientific computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: crclgr-stage2-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute exactly one authorized Stage 2 formal scientific computation
+        run: |
+          mkdir -p artifacts/local/canonical-resource-robust-continuous-local-geometry-representation/stage2
+          node tools/experiments/run-crclgr-stage2-formal.js --output-dir artifacts/local/canonical-resource-robust-continuous-local-geometry-representation/stage2
+      - name: Upload canonical Stage 2 artifact before repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crclgr-stage2-result-${{ github.run_id }}
+          path: artifacts/local/canonical-resource-robust-continuous-local-geometry-representation/stage2
+          if-no-files-found: error
