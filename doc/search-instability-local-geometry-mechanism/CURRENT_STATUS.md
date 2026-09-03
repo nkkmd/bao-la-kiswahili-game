@@ -122,9 +122,14 @@ Thus, within the frozen Stage-2 population and search contract, high root legal 
 - `results/stage-1/STAGE_1_RESULT_SUMMARY.json`
 - `results/stage-2/STAGE_2_RESULT_SUMMARY.json`
 - `checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md`
+- `checkpoints/2026-09-03-final-document-consistency-pass.md`
 
 ## Next action
 
-Scientific execution for G3-07 is complete. The next permitted work is documentation consistency/audit on the research branch.
+G3-07 scientific execution and research-branch documentation consistency work are complete.
+
+Program-level next scientific action is a **separate post-G3-07 current-state G3-08 authorization review**. G3-08 remains **NOT AUTHORIZED** and must not start automatically.
+
+This closed research branch remains pending an explicit user decision on integration.
 
 **Do not merge or integrate to `main` unless the user explicitly instructs it.**
