@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CRCLGR-STUDY1",
+  "stageId": "CRCLGR-S1-DEVELOPMENT-2026-09-03-v1",
+  "seedStart": 32110001,
+  "seedEnd": 32110256,
+  "candidateNamua": 32,
+  "candidateMtaji": 32,
+  "minimumSelectablePly": 16,
+  "maximumSourcePly": 80,
+  "phaseAssignment": "sha256(stageId|seed) parity",
+  "rootSelection": "minimum sha256(stageId|seed|ply|rootRawSha256)",
+  "seedOrder": "ascending",
+  "oneRootPerSourceTrajectory": true,
+  "selectionUsesGeometry": false,
+  "selectionUsesResourcePreflight": false,
+  "completeCandidateManifestBeforePreflight": true,
+  "completePreflightManifestBeforeCoordinateGeneration": true,
+  "postCoordinateRootReplacementAuthorized": false,
+  "freshEvidenceAccessAtFreeze": false,
+  "protectedDepth10AccessAuthorized": false
+}
