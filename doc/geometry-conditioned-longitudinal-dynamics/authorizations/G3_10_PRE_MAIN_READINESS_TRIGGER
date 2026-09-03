@@ -1,6 +1,7 @@
-G3-10-PRE-MAIN-READINESS-AUDIT-2026-09-04
+G3-10-PRE-MAIN-READINESS-AUDIT-2026-09-04-V2
 branch=research/g3-10-geometry-conditioned-longitudinal-dynamics
 programPlanBlob=2bb90c11f1625f63f40a7eab8a3de7774505a1ac
 stage2FormalResultSha256=08f31652fb599cf9db9b839cbc07f8aabe06aed69215208ec0556e6ec3a5bf7a
 mainIntegrationAuthorized=false
 scientificRecomputation=false
+scope=final-cross-document-consistency
