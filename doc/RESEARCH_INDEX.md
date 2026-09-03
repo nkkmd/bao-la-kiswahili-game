@@ -997,7 +997,9 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 ### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 / G3-04 closure
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`
-**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TECHNICAL-INVALID` / G3-04 `SFCDF-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C6 `CONFIRMED` / post-G3-04 review required**
+**状態:** **ACTIVE / current frontier G3-10 `GCLD-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C2+C3+C5 `CONFIRMED` / C4 `NOT-CONFIRMED` / protected depth-10 `SEALED` / main integration `NOT AUTHORIZED`**
+
+> この節にはG3-01以降のchronologyを保持する。以下に残る「次Study review required」等の記述は各closure時点のhistorical boundaryであり、現在状態は上記と文書冒頭のG3-10 current highlightを優先する。
 
 G3-01 `LGTGMF-STUDY1`は`TECHNICAL-INVALID`、formal eligible families `[]`のままimmutable closure。独立prerequisite `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`で、RAW-only depth-5 local geometryの5 familiesをformal eligibleとした。
 
