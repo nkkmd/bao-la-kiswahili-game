@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGPML-STUDY1",
+  "stageId": "LGPML-S1-DEVELOPMENT-2026-09-03-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "stageDisposition": "STAGE1-TECHNICAL-INVALID",
+  "authorizedScientificExecutions": 1,
+  "actualScientificExecutions": 1,
+  "freshScientificSeedAccess": true,
+  "seedBlockConsumed": true,
+  "noRescueBoundaryCrossed": true,
+  "stage2AutomaticallyAuthorized": false,
+  "protectedDepth10Access": false,
+  "formalPromotedCandidateSet": [],
+  "promotedCandidateCount": 0,
+  "error": "Error: relay-limit enumeration 74581ece7d29895d9727bb9cd507046f98a158b51466abdeaa335eb9e60d510e\n    at ensure (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/experiments/lib/lgtgmiv-stage1-production.js:7:34)\n    at Object.measureRoot (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/experiments/lib/lgtgmiv-stage1-production.js:24:1248)\n    at Object.measureOne (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/experiments/lib/lgpml-stage1-production.js:9:38)\n    at /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/experiments/run-lgpml-stage1-development.js:21:28\n    at timed (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/experiments/run-lgpml-stage1-development.js:6:625)\n    at Object.<anonymous> (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/experiments/run-lgpml-stage1-development.js:21:16)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)"
+}
