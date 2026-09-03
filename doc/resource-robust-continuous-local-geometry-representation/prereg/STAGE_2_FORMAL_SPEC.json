@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRCLGR-STUDY1",
+  "stageId": "RRCLGR-S2-FORMAL-2026-09-03-v1",
+  "evidenceClass": "FRESH-FORMAL-HOLDOUT",
+  "generationAuthorizedAtFreeze": false,
+  "seedStart": 32020001,
+  "seedEnd": 32020384,
+  "candidatePerPhase": 48,
+  "minimumResourceEligiblePerPhase": 42,
+  "measuredEligiblePerPhase": 36,
+  "candidateManifestMustCompleteBeforePreflight": true,
+  "eligibilityManifestMustCompleteBeforeCoordinateGeneration": true,
+  "stage1IdentityExclusionRequired": true,
+  "rootReplacementAfterCoordinateGeneration": false,
+  "phaseMetadataOnly": true,
+  "relativeDepth": 5,
+  "representationId": "RRCLGR-R1-EXACT-SQUASHED-L1",
+  "formalEndpoints": [
+    "E1 preflight exact agreement on all 96 candidates",
+    "E2 preflight support and complete frozen 72-root population",
+    "E3 depth-5 reconstruction exact on all 72 measured roots",
+    "E4 six-axis coordinate exact on all 72 roots",
+    "E5 exact 2556-pair L1 matrix",
+    "E6 exact k=3 tie-inclusive neighborhoods",
+    "E7 root-order invariance",
+    "E8 complete definedness"
+  ],
+  "nondegeneracy": {
+    "minimumDistinctCoordinateVectorsPerPhase": 12,
+    "minimumAxesWithAtLeastFourDistinctValuesInEachPhase": 4
+  },
+  "decisionFamily": [
+    "FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION",
+    "FORMAL-NOT-ELIGIBLE",
+    "NON-ESTIMABLE",
+    "TECHNICAL-INVALID"
+  ],
+  "sameEvidenceRerunAuthorized": false,
+  "protectedDepth10AccessAuthorized": false
+}
