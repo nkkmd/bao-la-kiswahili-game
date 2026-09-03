@@ -1,0 +1,62 @@
+name: CRCLGR Stage 2 Artifact Mirror
+on:
+  push:
+    branches:
+      - research/pre-g3-10-canonical-resource-robust-continuous-geometry
+    paths:
+      - doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/crclgr-stage2-mirror-trigger.txt
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: crclgr-stage2-artifact-mirror
+  cancel-in-progress: false
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ARTIFACT_ID: "9896703676"
+      EXPECTED_ZIP_SHA256: "614f6b7bb487473c92a609e48b3ecee21ba3d23223e28e425078744310b66787"
+      DEST: doc/canonical-resource-robust-continuous-local-geometry-representation/results/stage-2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify trigger-only mirror request
+        run: |
+          test "$(git diff --name-only HEAD^ HEAD | wc -l)" -eq 1
+          test "$(git diff --name-only HEAD^ HEAD)" = "doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/crclgr-stage2-mirror-trigger.txt"
+          test "$(cat doc/canonical-resource-robust-continuous-local-geometry-representation/authorizations/crclgr-stage2-mirror-trigger.txt)" = "CRCLGR-S2-MIRROR-33763404167-01"
+      - name: Download durable Stage 2 artifact only
+        run: |
+          gh api "/repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" > artifact.zip
+          echo "${EXPECTED_ZIP_SHA256}  artifact.zip" | sha256sum -c -
+          mkdir artifact
+          unzip -q artifact.zip -d artifact
+      - name: Verify exact artifact file set and bytes
+        run: |
+          cat > expected.sha256 <<'EOF'
+          f694dbd90c27a63416eb968a25d6dc55755667301ccfb459ed4101734b785ac2  artifact/STAGE_2_CANDIDATE_MANIFEST.json
+          770a1a518a2709057e612e1a5e1153d4ac0a81e8904e38f375e10e2c5ccd4a1d  artifact/STAGE_2_COORDINATES.json
+          048151951f63ac1f6d0cbbcc8154ce191e8b18dbbc83e2e15c3e8b54424c09c8  artifact/STAGE_2_DISTANCE_ROWS.json
+          59233becb3c40e80b415a51fca0a203df78133e216d60a651e32a2dbe49b370d  artifact/STAGE_2_FORMAL_RESULT.json
+          4c32d027335c4cf913fc1accf51cc2b5f8d7bef78455e49d6e49ffc010baf8cf  artifact/STAGE_2_MEASURED_POPULATION.json
+          77b60c991e068ff4a6f7c471727b404dded60b960c05032a72bcbcf847e82ae7  artifact/STAGE_2_NEIGHBORHOODS.json
+          a0688ff76645ec3310532e36040d36ceef6e6c218203313b21844a1688f72495  artifact/STAGE_2_PREFLIGHT_ELIGIBILITY.json
+          c6807443bfe9cf0b2a8c807ba50472535df77d33a2c3c705a75a6768f5ed650b  artifact/STAGE_2_ROOT_MEASUREMENTS_INDEPENDENT.json
+          c6807443bfe9cf0b2a8c807ba50472535df77d33a2c3c705a75a6768f5ed650b  artifact/STAGE_2_ROOT_MEASUREMENTS_PRODUCTION.json
+          EOF
+          sed -i 's/^          //' expected.sha256
+          sha256sum -c expected.sha256
+          test "$(find artifact -maxdepth 1 -type f | wc -l)" -eq 9
+      - name: Mirror exact bytes without scientific recomputation
+        run: |
+          mkdir -p "${DEST}"
+          cp artifact/*.json "${DEST}/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${DEST}"
+          git diff --cached --quiet && exit 1
+          git commit -m "Mirror exact CRCLGR Stage 2 artifact bytes"
+          git push origin HEAD:research/pre-g3-10-canonical-resource-robust-continuous-geometry
