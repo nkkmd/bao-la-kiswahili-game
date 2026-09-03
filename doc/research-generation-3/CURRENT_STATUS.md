@@ -4,7 +4,7 @@ Updated: 2026-09-03
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-06 CLOSED TECHNICAL-INVALID / POST-G3-06 G3-07 REVIEW REQUIRED / G3-07 NOT AUTHORIZED
+Program status = ACTIVE / G3-06 CLOSED TECHNICAL-INVALID / G3-07 AUTHORIZED FOR PROSPECTIVE DEFINITION + TECHNICAL-ONLY STAGE 0 / FRESH STAGE 1 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -24,9 +24,12 @@ G3-06 formal promoted candidate set = []
 G3-06 Stage 2 = BRMGI-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 G3-06 Stage 2 seed = 31620001..31620384 / NOT CONSUMED
 G3-06 no-rescue boundary = CROSSED / ACTIVE
+G3-07 program review = G3-07-AUTHORIZED
+G3-07 = AUTHORIZED FOR PROSPECTIVE STUDY DEFINITION / TECHNICAL-ONLY STAGE 0
+G3-07 fresh Stage 1 = NOT AUTHORIZED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = research/g3-06-bao-rule-mechanism-geometry-intervention / CLOSED STUDY DOCUMENTATION ONLY
-Next scientific action = separate post-G3-06 current-state authorization review for G3-07
+Active scientific research branch = none / G3-07 branch not yet created
+Next scientific action = create G3-07 research branch from post-decision main, freeze Study contract, then technical-only Stage 0
 ```
 
 ## Immutable upstream boundaries
@@ -382,13 +385,33 @@ Canonical closure records:
 - `../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`
 - `checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`
 
+## Post-G3-06 authorization of G3-07
+
+The required fresh-free current-state review concluded:
+
+**`G3-07-AUTHORIZED`**
+
+Canonical review:
+
+`../research-program-decisions/2026-09-03-post-g3-06-g3-07-authorization-review.md`
+
+RG3 checkpoint:
+
+`checkpoints/2026-09-03-post-g3-06-g3-07-authorization-review.md`
+
+G3-07 is authorized only for a new prospective Study-definition/preregistration freeze and technical-only Stage 0. Fresh Stage 1 remains `NOT AUTHORIZED` pending a separate post-Stage-0 Stage 1 authorization review.
+
+The minimum scientific foundation is LGTGMIV F1-F5 within RAW-only relative depth 5. No formal positive G3-02/G3-03/G3-05/G3-06 result is required or implied. Their technical-invalid diagnostics, partial telemetry and candidate-like directions are prohibited as G3-07 scientific inputs. G3-04 C1/C6 are context only. G2-02 remains `INCONCLUSIVE`; its scientific observations are not G3-07 evidence and higher-resource search is not truth.
+
+The authorized construct is a non-causal bounded association/concentration/structural relation between exact local geometry and search-output changes under prospectively frozen deterministic search-condition perturbations. Best-move identity, ranking, score, PV, game-theoretic value, empirical outcome and human difficulty remain separate constructs.
+
 ## Protected evidence
 
 G3-11 reserved standard initial RAW-root complete exact depth-10 holdout remains:
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-G3-02 / G3-03 / G3-04 / G3-05 / G3-06はいずれもこのholdoutを生成・read・peekしていない。G3-06 closure後もprotected holdoutはsealedのままである。G2-12はdepth-10 truthの代替として使用しない。
+G3-02 / G3-03 / G3-04 / G3-05 / G3-06はいずれもこのholdoutを生成・read・peekしていない。G3-07 authorization review also generated/read no fresh scientific evidence and did not access the protected holdout. G2-12はdepth-10 truthの代替として使用しない。
 
 ## Claim boundary
 
@@ -402,11 +425,13 @@ G3-04のformal positive claimはC1/C6のfrozen candidate-level phase difference�
 
 G3-06は`CLOSED / TECHNICAL-INVALID`であり、causal-mechanism languageはauthorizeされない。valid Stage 1 candidate evaluationへ到達していないため、G3-06からsubstantiveなrule-event/geometry positive・negative・null claimは存在しない。
 
+G3-07 authorization does not authorize causal-mechanism language, objective move correctness, deeper-search truth, game-theoretic difficulty, strategic/tactical difficulty, blunder propensity, win-probability inference or human-difficulty claims. Until valid fresh held-out evidence exists, no substantive G3-07 geometry/search association claim exists.
+
 ## Next program boundary
 
 G3-06 / `BRMGI-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; Stage 1 seed is consumed, same-evidence rescue is prohibited, formal promoted candidate set is `[]`, and Stage 2 is `NOT-AUTHORIZED-NOT-EXECUTED`.
 
-G3-07 is **NOT AUTHORIZED**. The next program-safe scientific action, if pursued, is a separate post-G3-06 current-state authorization review. G3-06 selection mismatch / technical-invalid provenance must not be promoted into a positive or negative G3-07 scientific prerequisite.
+G3-07 has passed its required post-G3-06 authorization review as **`G3-07-AUTHORIZED`**. The next permitted scientific-program action is to create a dedicated G3-07 research branch from the post-decision `main`, freeze the formal Study identity/Stage structure/full prospective search-instability/local-geometry contract, and execute only technical Stage 0. Fresh Stage 1 scientific evidence remains blocked pending a separate Stage 1 authorization review.
 
 Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
 
