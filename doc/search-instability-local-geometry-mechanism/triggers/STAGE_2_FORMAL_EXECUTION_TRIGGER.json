@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S2-FORMAL-2026-09-03-v1",
+  "purpose": "TRIGGER-EXACTLY-ONE-STAGE2-FORMAL-EXECUTION",
+  "authorizationNonce": "SILGM-S2-AUTH-2026-09-03-V1-01",
+  "toolingCommit": "ba35c4ad817795158424f577c51c1e689b1d29d8",
+  "authorizationCommit": "db439ed6ba74184b5f522c32116259ecbf76a005",
+  "authorizationGitBlobSha": "6d4df9ffe68b5736ad0b6e4e662416b5d4a16a22",
+  "authorizationContentSha256": "dd3f568d71f1e55ef09723d007fc740c3b6cf6e4e6615ff13b80926164ef8234",
+  "maxScientificExecutions": 1,
+  "seedStart": 31720001,
+  "seedEnd": 31720384,
+  "protectedDepth10AccessAuthorized": false,
+  "sameEvidenceRerunAuthorized": false
+}
