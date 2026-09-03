@@ -1,0 +1,92 @@
+name: GCLD Stage 1 Exact Artifact Mirror
+
+on:
+  push:
+    branches:
+      - research/g3-10-geometry-conditioned-longitudinal-dynamics
+    paths:
+      - doc/geometry-conditioned-longitudinal-dynamics/authorizations/STAGE1_RESULT_MIRROR_TRIGGER
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: gcld-stage1-exact-mirror-v1
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact trigger branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/g3-10-geometry-conditioned-longitudinal-dynamics
+          fetch-depth: 0
+
+      - name: Download and verify durable Stage 1 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARTIFACT_ID=9899355887
+          EXPECTED_ZIP_SHA=12a498f8da08adedb8dd8ab758790e3395927dd2580c9d9e8f45e89ac0270ed2
+          ZIP=/tmp/gcld-stage1.zip
+          OUT=/tmp/gcld-stage1
+
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" > "$ZIP"
+          ACTUAL_ZIP_SHA=$(sha256sum "$ZIP" | awk '{print $1}')
+          test "$ACTUAL_ZIP_SHA" = "$EXPECTED_ZIP_SHA"
+
+          rm -rf "$OUT"
+          mkdir -p "$OUT"
+          unzip -q "$ZIP" -d "$OUT"
+
+          cat > /tmp/expected.sha256 <<'EOF'
+          a314f54781fc8b30aa0b921595bec8dbcde2bbbc9b26a59eb31e82ffce76280f  STAGE_1_CANDIDATE_MANIFEST.json
+          182e3d1011d9394fea415a9cbf2f231400fa019856799bbb6915275d3290ce35  STAGE_1_CANDIDATE_PREFLIGHT_MANIFEST.json
+          37ea99e65738b410eba42ded148b7d5d3ef4115bcd6d446233dd8238abbc83e4  STAGE_1_MEASUREMENT_POPULATION.json
+          3c47e63125a21935918e972e0aa0ecce066c3d6c570fbc2778d4ff0c9dbe2012  STAGE_1_TRAJECTORY_MEASUREMENTS.json
+          4652fd41588817c12674061105483171768c602b451daebb948e72ee72091be7  STAGE_1_ENDPOINTS.json
+          90de1856eb052dae7fdbcf79ebb8ebb4ba4473b135fc799976e44b8a8aa7a45f  STAGE_1_DEVELOPMENT_RESULT.json
+          7f96bc2ad1b1fc1022efc2e0948a92c250334494d668bea353489390ee6c5f6a  UPSTREAM_IDENTITY_EXCLUSION.json
+          33663e5b8a23b5e1cb5053b973e3965a98f78d3c0f3b6a02b074cfae9d5eba10  GCLD_STAGE1_LEASE.json
+          EOF
+          sed -i 's/^          //' /tmp/expected.sha256
+
+          (cd "$OUT" && sha256sum -c /tmp/expected.sha256)
+
+          find "$OUT" -maxdepth 1 -type f -printf '%f\n' | sort > /tmp/actual-files.txt
+          cut -d' ' -f3 /tmp/expected.sha256 | sort > /tmp/expected-files.txt
+          diff -u /tmp/expected-files.txt /tmp/actual-files.txt
+
+      - name: Mirror exact artifact bytes into repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST=doc/geometry-conditioned-longitudinal-dynamics/results/stage-1
+          mkdir -p "$DEST"
+          cp /tmp/gcld-stage1/* "$DEST"/
+
+          git status --short
+          git add "$DEST"
+          git diff --cached --quiet && { echo 'No mirror changes detected'; exit 1; }
+
+          CHANGED=$(git diff --cached --name-only)
+          while IFS= read -r path; do
+            case "$path" in
+              doc/geometry-conditioned-longitudinal-dynamics/results/stage-1/*) ;;
+              *) echo "Unexpected staged path: $path" >&2; exit 1 ;;
+            esac
+          done <<< "$CHANGED"
+
+      - name: Commit exact-byte recovery only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Mirror exact GCLD Stage 1 canonical artifact"
+          git push origin HEAD:research/g3-10-geometry-conditioned-longitudinal-dynamics
