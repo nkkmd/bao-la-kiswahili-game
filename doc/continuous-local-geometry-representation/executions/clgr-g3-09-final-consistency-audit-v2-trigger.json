@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "purpose": "FINAL-REPOSITORY-DOCUMENT-CONSISTENCY-AUDIT-V2",
+  "supersedesAuditRun": 33754066530,
+  "v1FailureClass": "DOCUMENTATION-AUDIT-ALLOWLIST-TOO-NARROW",
+  "scientificConsequence": false,
+  "expectedRemoteMain": "6c218b9cc3f492fb96d051768702682fef9bb66a",
+  "historicalProgramPlanBlob": "2bb90c11f1625f63f40a7eab8a3de7774505a1ac",
+  "scientificComputationAuthorized": false,
+  "scientificRerunAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
