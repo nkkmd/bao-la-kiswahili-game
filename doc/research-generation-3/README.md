@@ -29,7 +29,7 @@ G3-07 Stage 1 = STAGE1-PASS / 1 authorized / 1 actual / seed CONSUMED
 G3-07 Stage 2 = STAGE2-PASS / 1 authorized / 1 actual / seed CONSUMED
 G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
 G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1 depth, SC2 node-budget, SC3 quiescence
-G3-07 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+G3-07 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
 G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
@@ -42,6 +42,7 @@ Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKE
 - [`../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md`](../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md) — G3-07 formal result / interpretation boundary正本
 - [`../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md`](../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md) — G3-07 reproducibility provenance
 - [`../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`](../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md) — G3-07 program closure / G3-08 not auto-authorized
+- [`checkpoints/2026-09-03-g3-07-main-integration-complete.md`](checkpoints/2026-09-03-g3-07-main-integration-complete.md) — G3-07 research branchのmain fast-forward統合完了checkpoint
 - [`../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md`](../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md) — G3-06初見向けclosure概要
 - [`../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md`](../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md) — G3-06 scientific/technical closure正本
 - [`../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md) — G3-06 program-level closure / G3-07 not auto-authorized

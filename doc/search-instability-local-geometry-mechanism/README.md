@@ -44,4 +44,4 @@ G3-08 — Local Geometry Persistence / Memory-Length Study 1 — remains **`NOT 
 
 ## Integration boundary
 
-This research branch is closed scientifically but **not integrated to `main`**. Integration requires a separate explicit user instruction.
+This Study was fast-forward integrated to `main` on 2026-09-03 after explicit user instruction, using research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec`. The research branch is retained for provenance; scientific closure and no-rescue boundaries are unchanged.

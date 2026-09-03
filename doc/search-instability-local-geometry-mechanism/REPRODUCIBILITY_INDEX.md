@@ -11,7 +11,7 @@ Study baseline remote main = ba48c5c3643649655137d5d3c07988fdc84bee9d
 research branch = research/g3-07-search-instability-local-geometry-mechanism
 Study ID = SILGM-STUDY1
 Study status = CLOSED / FORMAL-COMPLETE
-main integration = NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
 ```
 
 ## 2. Canonical Study contracts
@@ -227,4 +227,4 @@ Reproduction or downstream reuse must preserve these restrictions:
 
 ## 14. Main integration boundary
 
-This index describes the closed research branch state only. **No main merge/integration is authorized by Study closure.** Integration to `main` requires a separate explicit user instruction.
+Study closure itself did not authorize main integration. A later explicit user instruction did authorize it, and fast-forward integration from research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` completed on 2026-09-03. The research branch remains available for provenance.

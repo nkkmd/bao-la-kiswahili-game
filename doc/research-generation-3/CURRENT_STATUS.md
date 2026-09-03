@@ -32,9 +32,10 @@ G3-07 Stage 2 = STAGE2-PASS / 1 authorized / 1 actual / seeds CONSUMED
 G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
 G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1/SC2/SC3
 G3-07 no-rescue boundary = CROSSED / CLOSED
+G3-07 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
 G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state authorization review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active scientific research branch = none / research/g3-07-search-instability-local-geometry-mechanism scientifically CLOSED and pending explicit user decision on integration
+Active scientific research branch = none / G3-07 is integrated to main; research/g3-07-search-instability-local-geometry-mechanism retained for provenance
 Next scientific action = separate post-G3-07 current-state G3-08 authorization review; do not auto-start G3-08
 ```
 

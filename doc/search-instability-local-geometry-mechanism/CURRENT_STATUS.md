@@ -22,7 +22,7 @@ Stage 2 seeds = 31720001..31720384 / CONSUMED
 fresh G3-07 scientific evidence = Stage 1 + Stage 2 generated/read under separate exactly-one authorizations
 no-rescue boundary = CROSSED / CLOSED
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-main integration = EXPLICIT USER INSTRUCTION REQUIRED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
 ```
 
 ## Formal titles
@@ -124,6 +124,7 @@ Thus, within the frozen Stage-2 population and search contract, high root legal 
 - `checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md`
 - `checkpoints/2026-09-03-final-document-consistency-pass.md`
 - `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`
+- `../research-generation-3/checkpoints/2026-09-03-g3-07-main-integration-complete.md`
 
 ## Next action
 
@@ -131,6 +132,6 @@ G3-07 scientific execution and research-branch documentation consistency work ar
 
 Program-level next scientific action is a **separate post-G3-07 current-state G3-08 authorization review**. G3-08 remains **NOT AUTHORIZED** and must not start automatically.
 
-This closed research branch remains pending an explicit user decision on integration.
+Main integration is complete after explicit user instruction. The closed research branch is retained for provenance.
 
-**Do not merge or integrate to `main` unless the user explicitly instructs it.**
+No further G3-07 merge action is required. Any new scientific work still requires a separate prospective authorization.
