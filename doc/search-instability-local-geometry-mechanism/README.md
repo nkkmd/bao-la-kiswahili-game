@@ -40,7 +40,7 @@ Standard initial RAW-root complete exact depth-10 holdout remains:
 
 ## Downstream boundary
 
-**Historical closure-time boundary:** at G3-07 closure, G3-08 — Local Geometry Persistence / Memory-Length Study 1 — was **`NOT AUTHORIZED`** and required a separate post-G3-07 current-state authorization review. That review was later completed. Current program state is recorded in `../research-generation-3/CURRENT_STATUS.md`: G3-08 / `LGPML-STUDY1` is now **`CLOSED / TECHNICAL-INVALID`**, and G3-09 remains not authorized pending a separate post-G3-08 review.
+**Historical closure-time boundary:** at G3-07 closure, G3-08 — Local Geometry Persistence / Memory-Length Study 1 — was **`NOT AUTHORIZED`** and required a separate post-G3-07 current-state authorization review. That review was later completed. Current program state is recorded in `../research-generation-3/CURRENT_STATUS.md`: G3-08 / `LGPML-STUDY1` is **`CLOSED / TECHNICAL-INVALID`**; G3-09 / `CLGR-STUDY1` has also completed and is **`CLOSED / TECHNICAL-INVALID`**, with formal continuous-representation eligibility not established. G3-10 remains **`NOT AUTHORIZED`** pending a separate post-G3-09 current-state review.
 
 ## Integration boundary
 
