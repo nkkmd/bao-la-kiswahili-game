@@ -31,7 +31,7 @@ G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED /
 G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1 depth, SC2 node-budget, SC3 quiescence
 G3-07 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
 G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state review required
-Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
+Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
 
 ## 最初に読む

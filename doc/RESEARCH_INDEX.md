@@ -1089,7 +1089,7 @@ Formal decisionは **`BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID`**。Stage 1 see
 - [`bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md`](bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md)
 - [`research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md)
 
-**Boundary:** G3-06 technical-invalid provenanceをG3-07以降のpositive/negative mechanism evidenceへ昇格させない。G3-07を実施する場合はseparate post-G3-06 current-state authorization reviewを必要とする。
+**Boundary:** G3-06 technical-invalid provenanceをG3-07以降のpositive/negative mechanism evidenceへ昇格させない。**G3-06 closure時点では**G3-07の実施にseparate post-G3-06 current-state authorization reviewを必要とした。そのreviewは後に完了し、G3-07は独立Studyとして`CLOSED / FORMAL-COMPLETE`である。
 
 ---
 
