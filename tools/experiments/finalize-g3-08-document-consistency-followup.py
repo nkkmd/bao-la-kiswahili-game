@@ -115,7 +115,7 @@ replace_once(
 )
 replace_once(
     "doc/FUTURE_RESEARCH_AGENDA.md",
-    "Historical plan上のG3-08は自動authorizeされず、separate post-G3-07 current-state reviewが必要。G3-07のmain integrationは、その後の明示的ユーザー指示を受け、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` をfast-forwardして完了した。",
+    "historical plan上のG3-08は自動authorizeされず、separate post-G3-07 current-state reviewが必要。G3-07のmain integrationは、その後の明示的ユーザー指示を受け、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` をfast-forwardして完了した。",
     "**G3-07 closure時点では**historical plan上のG3-08は自動authorizeされず、separate post-G3-07 current-state reviewが必要だった。そのreviewは後に完了し、G3-08 / `LGPML-STUDY1`も独立に実施され現在は`CLOSED / TECHNICAL-INVALID`である。G3-07のmain integrationは、その後の明示的ユーザー指示を受け、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` をfast-forwardして完了した。",
 )
 
