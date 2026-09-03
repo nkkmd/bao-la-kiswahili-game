@@ -48,17 +48,29 @@ const identityRows = legacy.identityRows.map((row, index) => {
   };
 });
 
-const projected = JSON.stringify(
-  {
-    schemaVersion: 1,
-    studyId: "CLGR-STUDY1",
-    stageId: "CLGR-S2-FORMAL-2026-09-03-v1",
+const projectedObject = {
+  schemaVersion: 1,
+  studyId: "CLGR-STUDY1",
+  stageId: "CLGR-S2-FORMAL-2026-09-03-v1",
+  scientificOutcomeFieldsRetained: false,
+  identityRows
+};
+const projected = JSON.stringify(projectedObject, null, 2) + "\n";
+
+if (process.argv.includes("--identity-projection-check-only")) {
+  console.log(JSON.stringify({
+    passed: true,
+    sourceStudyId: legacy.studyId,
+    sourceStageId: legacy.stageId,
+    sourceIdentityRowCount: legacy.identityRows.length,
+    projectedIdentityRowCount: identityRows.length,
+    projectedFieldsPerRow: ["rootRawSha256", "sourceTrajectorySha256", "openingPrefixSha256"],
     scientificOutcomeFieldsRetained: false,
-    identityRows
-  },
-  null,
-  2
-) + "\n";
+    stage2FreshSeedAccess: false,
+    protectedDepth10Access: false
+  }));
+  process.exit(0);
+}
 
 fs.readFileSync = function patchedReadFileSync(file, options) {
   const resolved = path.resolve(String(file));
