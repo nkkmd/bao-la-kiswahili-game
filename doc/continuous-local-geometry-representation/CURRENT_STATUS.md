@@ -38,6 +38,10 @@ G3-08 partial Stage 1 scientific measurements = PROHIBITED INPUT
 G3-08 relay-limit knowledge = TECHNICAL-DESIGN-ONLY
 G3-04/G3-07 formal outcomes = CONTEXT ONLY / NOT REPRESENTATION-SELECTION INPUT
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+final repository/document consistency audit v1 = DOCUMENTATION-AUDIT-ALLOWLIST-TOO-NARROW / NO SCIENTIFIC CONSEQUENCE / NO RERUN
+final repository/document consistency audit v2 = PASS / workflow run 33754250314
+final consistency checkpoint = checkpoints/2026-09-03-final-repository-document-consistency-pass.md
+research branch lifecycle = CLOSED / REVIEW-READY
 G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
@@ -50,4 +54,6 @@ The exactly-one Stage 2 formal execution selected the complete 72-root holdout a
 
 Because fresh Stage 2 evidence had already been accessed, `CLGR-STUDY1` cannot be repaired or rerun. The 61 partial formal measurements are technical provenance only and cannot establish either formal eligibility or formal non-eligibility.
 
-The scientific Study is closed on the research branch. Final repository/document consistency work may proceed. Integration into `main` remains prohibited until explicit user instruction.
+Final repository/document consistency audit v2 passed after checking exact Stage 1/2 result identities, no-rescue state, protected depth-10 status, historical `PROGRAM_PLAN.md` immutability, current-facing document consistency, changed-path confinement, and remote `main` non-integration. Audit v1 had failed only because its documentation path allowlist omitted two valid CLGR authorization-review files; no scientific computation or evidence access occurred in either audit.
+
+The scientific Study and repository/document closure work are complete on the research branch. The branch is `CLOSED / REVIEW-READY`. Integration into `main` remains prohibited until explicit user instruction.
