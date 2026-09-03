@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-06 BRMGI-STUDY1 CLOSED TECHNICAL-INVALID / POST-G3-06 G3-07 REVIEW REQUIRED / G3-07 NOT AUTHORIZED
+Status = ACTIVE / G3-07 SILGM-STUDY1 CLOSED FORMAL-COMPLETE / POST-G3-07 G3-08 CURRENT-STATE REVIEW REQUIRED / G3-08 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -22,12 +22,26 @@ G3-06 Stage 1 = TECHNICAL-INVALID / 1 authorized / 1 actual / seed 31610001..316
 G3-06 formal promoted candidate set = []
 G3-06 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seed 31620001..31620384 NOT CONSUMED
 G3-06 no-rescue boundary = CROSSED / ACTIVE
+G3-07 program review = G3-07-AUTHORIZED
+G3-07 = SILGM-STUDY1 / CLOSED / FORMAL-COMPLETE
+G3-07 Stage 0 = STAGE0-PASS
+G3-07 Stage 1 = STAGE1-PASS / 1 authorized / 1 actual / seed CONSUMED
+G3-07 Stage 2 = STAGE2-PASS / 1 authorized / 1 actual / seed CONSUMED
+G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
+G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1 depth, SC2 node-budget, SC3 quiescence
+G3-07 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+<!-- SILGM-G3-07-CLOSURE:RG3-READ-FIRST -->
+- [`../search-instability-local-geometry-mechanism/README.md`](../search-instability-local-geometry-mechanism/README.md) — G3-07 formal-complete Study入口
+- [`../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md`](../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md) — G3-07 formal result / interpretation boundary正本
+- [`../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md`](../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md) — G3-07 reproducibility provenance
+- [`../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`](../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md) — G3-07 program closure / G3-08 not auto-authorized
 - [`../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md`](../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md) — G3-06初見向けclosure概要
 - [`../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md`](../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md) — G3-06 scientific/technical closure正本
 - [`../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md) — G3-06 program-level closure / G3-07 not auto-authorized
@@ -231,3 +245,26 @@ Historical `PROGRAM_PLAN.md` remains unchanged.
 ## G3-02 main integration
 
 2026-09-02、completed G3-02 branch `research/g3-02-effective-branching-reply-width-structure`をPR #92の通常mergeで`main`へ統合した。merge commitは`b41c7eda74dd1002e98e4d82714fadb987d1f1e1`。このrepository integrationは`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、protected depth-10 holdout sealedというscientific stateを変更しない。
+
+<!-- SILGM-G3-07-CLOSURE:RG3-README -->
+## G3-07 formal closure
+
+G3-07は`SILGM-STUDY1`として、Stage 0 `STAGE0-PASS`、fresh Stage 1 `STAGE1-PASS`、held-out Stage 2 `STAGE2-PASS`まで完了し、`CLOSED / FORMAL-COMPLETE`で閉じた。
+
+Stage 1は24 Namua + 24 Mtajiから8 formal hypothesesをpromotionした。Stage 2はfresh 36 Namua + 36 Mtajiでexactly one authorized executionを行い、7 estimable / 1 non-estimableとなった。Holm-Bonferroni FWER 1/20後、次の3 candidateが`CONFIRMED / HIGHER-IN-HIGH`となった。
+
+1. depth × E3 ranking-preorder change × G1 root legal width
+2. node-budget × E3 ranking-preorder change × G1 root legal width
+3. quiescence × E3 ranking-preorder change × G1 root legal width
+
+これはfrozen population / RAW-only relative depth 5 / frozen peer-search contrasts内のbounded non-causal associationである。root widthがsearch instabilityを因果的に生む、より深い/大きい/高quiescence searchが正しい、ranking changeが悪手を意味する、human/game-theoretic difficultyを示す、とは解釈しない。
+
+残るpromoted hypothesesは4 `NOT-CONFIRMED` / 1 `NON-ESTIMABLE`。救済・threshold変更・seed extension・same-evidence rerunは行わない。
+
+Protected standard-initial RAW-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のままである。
+
+## Post-G3-07 boundary
+
+Historical plan上の次候補G3-08 — Local Geometry Persistence / Memory-Length Study 1 は**自動authorizeされない**。G3-08を開始する場合は、G3-07 closure後のcurrent repository stateを用いたseparate authorization reviewが必要である。
+
+G3-07 research branchのmain integrationもStudy closureではauthorizeされない。ユーザーの明示的指示があるまで`main`へ統合しない。

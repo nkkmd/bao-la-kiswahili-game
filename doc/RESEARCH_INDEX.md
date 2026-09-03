@@ -1183,3 +1183,33 @@ doc/<research-area>/
 - [`research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-02-g3-05-technical-invalid-closure.md)
 
 **Historical boundary at G3-05 closure:** このG3-05 closure時点ではG3-06は`NOT AUTHORIZED`で、separate post-G3-05 current-state authorization reviewが必要だった。その後このreviewを経てG3-06は独立に実施され、現在は`BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID`。G3-05 partial telemetryをvalidated mechanism/transition inputとして継承していない。
+
+<!-- SILGM-G3-07-CLOSURE:RESEARCH-INDEX -->
+### G3-07 — Search Instability / Local Geometry Mechanism Study 1
+
+**Study ID:** `SILGM-STUDY1`  
+**Status:** `CLOSED / FORMAL-COMPLETE`
+
+G3-07はLGTGMIV F1-F5 / RAW-only / relative depth 5のbounded local geometryと、depth・node-budget・quiescenceのpeer search-condition perturbation間で生じるbest-move / TopSet / ranking / score-gap / PV変化のassociationをprospectively検証した。
+
+Stage 1はfresh 24 Namua + 24 Mtajiで`STAGE1-PASS`、15 contrast×endpoint slotsから8 candidateをpromotion。Stage 2はfresh 36 Namua + 36 Mtajiで`STAGE2-PASS`、7 estimable / 1 non-estimable、Holm-Bonferroni FWER 1/20後に3 candidateを`CONFIRMED`した。
+
+Confirmed:
+
+1. depth × E3 ranking-preorder change × G1 root legal width / `HIGHER-IN-HIGH`
+2. node-budget × E3 ranking-preorder change × G1 root legal width / `HIGHER-IN-HIGH`
+3. quiescence × E3 ranking-preorder change × G1 root legal width / `HIGHER-IN-HIGH`
+
+その他は4 `NOT-CONFIRMED` / 1 `NON-ESTIMABLE`。formal resultはcandidate-levelのbounded non-causal associationに限定し、root legal widthのcausal mechanism、objective-best correctness、game-theoretic difficulty、human difficulty、depth >5 generalizationへ拡張しない。
+
+Canonical records:
+
+- [`search-instability-local-geometry-mechanism/README.md`](search-instability-local-geometry-mechanism/README.md)
+- [`search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md`](search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md)
+- [`search-instability-local-geometry-mechanism/CURRENT_STATUS.md`](search-instability-local-geometry-mechanism/CURRENT_STATUS.md)
+- [`search-instability-local-geometry-mechanism/DECISION_REGISTER.md`](search-instability-local-geometry-mechanism/DECISION_REGISTER.md)
+- [`search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md`](search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`](research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md)
+- [`research-generation-3/checkpoints/2026-09-03-g3-07-formal-complete-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-07-formal-complete-closure.md)
+
+**Downstream boundary:** G3-08 — Local Geometry Persistence / Memory-Length Study 1 is not automatically authorized. A separate post-G3-07 current-state authorization review is required. Protected depth-10 remains sealed. G3-07 research branch is not integrated to `main` without explicit user instruction.

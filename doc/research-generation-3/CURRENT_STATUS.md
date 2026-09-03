@@ -4,7 +4,7 @@ Updated: 2026-09-03
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-06 CLOSED TECHNICAL-INVALID / G3-07 AUTHORIZED FOR PROSPECTIVE DEFINITION + TECHNICAL-ONLY STAGE 0 / FRESH STAGE 1 NOT AUTHORIZED
+Program status = ACTIVE / G3-07 SILGM-STUDY1 CLOSED FORMAL-COMPLETE / POST-G3-07 G3-08 REVIEW REQUIRED / G3-08 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -25,11 +25,17 @@ G3-06 Stage 2 = BRMGI-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 G3-06 Stage 2 seed = 31620001..31620384 / NOT CONSUMED
 G3-06 no-rescue boundary = CROSSED / ACTIVE
 G3-07 program review = G3-07-AUTHORIZED
-G3-07 = AUTHORIZED FOR PROSPECTIVE STUDY DEFINITION / TECHNICAL-ONLY STAGE 0
-G3-07 fresh Stage 1 = NOT AUTHORIZED
+G3-07 = SILGM-STUDY1 / CLOSED / FORMAL-COMPLETE
+G3-07 Stage 0 = STAGE0-PASS
+G3-07 Stage 1 = STAGE1-PASS / 1 authorized / 1 actual / seeds CONSUMED
+G3-07 Stage 2 = STAGE2-PASS / 1 authorized / 1 actual / seeds CONSUMED
+G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
+G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1/SC2/SC3
+G3-07 no-rescue boundary = CROSSED / CLOSED
+G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state authorization review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
-Active scientific research branch = none / G3-07 branch not yet created
-Next scientific action = create G3-07 research branch from post-decision main, freeze Study contract, then technical-only Stage 0
+Active scientific research branch = none / research/g3-07-search-instability-local-geometry-mechanism scientifically CLOSED and pending explicit user decision on integration
+Next scientific action = separate post-G3-07 current-state G3-08 authorization review; do not auto-start G3-08
 ```
 
 ## Immutable upstream boundaries
@@ -436,3 +442,35 @@ G3-07 has passed its required post-G3-06 authorization review as **`G3-07-AUTHOR
 Protected depth-10 holdout remains `SEALED / NOT GENERATED / NOT READ`.
 
 Historical `PROGRAM_PLAN.md` remains unchanged.
+
+<!-- SILGM-G3-07-CLOSURE:RG3-STATUS -->
+## G3-07 formal closure
+
+G3-07 `SILGM-STUDY1` is `CLOSED / FORMAL-COMPLETE`.
+
+```text
+Stage 1 = STAGE1-PASS / 24 Namua + 24 Mtaji / 8 promoted
+Stage 2 = STAGE2-PASS / 36 Namua + 36 Mtaji
+formal = 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
+Stage 2 canonical result SHA-256 = 05a87f0562a1e2e4ed8043107bd3212d2a223548b817d6922057668fb8cc49f9
+Stage 2 selection exact = true
+protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+```
+
+Confirmed candidate identities are separately retained, not combined into a new omnibus test:
+
+1. depth × E3 ranking-preorder change × G1 root legal width / `HIGHER-IN-HIGH`
+2. node-budget × E3 ranking-preorder change × G1 root legal width / `HIGHER-IN-HIGH`
+3. quiescence × E3 ranking-preorder change × G1 root legal width / `HIGHER-IN-HIGH`
+
+Canonical records:
+
+- `../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md`
+- `../search-instability-local-geometry-mechanism/CURRENT_STATUS.md`
+- `../search-instability-local-geometry-mechanism/DECISION_REGISTER.md`
+- `../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`
+- `checkpoints/2026-09-03-g3-07-formal-complete-closure.md`
+
+G3-08 remains `NOT AUTHORIZED`; a separate post-G3-07 current-state review is required.
