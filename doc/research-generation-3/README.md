@@ -64,6 +64,12 @@ Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKE
 - [`../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`](../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md) — G3-10 exact artifacts / execution provenance
 - [`../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 formal closure decision
 - [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`](checkpoints/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 RG3 closure checkpoint
+<!-- G3-10-PREREQUISITE-CHAIN-READ-FIRST -->
+- [`../canonical-resource-robust-continuous-local-geometry-representation/README.md`](../canonical-resource-robust-continuous-local-geometry-representation/README.md) — G3-10入力representationをformal eligibleとしたCRCLGR入口
+- [`../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — CRCLGR formal eligibilityとbounded claim boundary
+- [`../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate reviewによる`G3-10-AUTHORIZED` decision
+- [`../resource-robust-continuous-local-geometry-representation/README.md`](../resource-robust-continuous-local-geometry-representation/README.md) — predecessor RRCLGR technical-invalid closure入口
+- [`../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — RRCLGR closure-time no-rescue / successor boundary正本
 <!-- CLGR-G3-09-READ-FIRST -->
 - [`../continuous-local-geometry-representation/README.md`](../continuous-local-geometry-representation/README.md) — G3-09 technical-invalid closure入口 / current Study summary
 - [`../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — G3-09 scientific closure / interpretation boundary正本

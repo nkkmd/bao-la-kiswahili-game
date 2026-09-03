@@ -44,6 +44,13 @@ G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EX
 - [`geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json`](geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json)
 - [`research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md)
 
+<!-- G3-10-PREREQUISITE-CHAIN-INDEX -->
+**G3-10 prerequisite chain:**
+
+- [`resource-robust-continuous-local-geometry-representation/README.md`](resource-robust-continuous-local-geometry-representation/README.md) — `RRCLGR-STUDY1` / `CLOSED / TECHNICAL-INVALID`; first independent resource-robust prerequisite, no rescue
+- [`canonical-resource-robust-continuous-local-geometry-representation/README.md`](canonical-resource-robust-continuous-local-geometry-representation/README.md) — `CRCLGR-STUDY1` / `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`; formal G3-10 input representation
+- [`research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate current-state review that yielded `G3-10-AUTHORIZED`
+
 ---
 
 ### 1. 局面相転移点研究 — Study 1

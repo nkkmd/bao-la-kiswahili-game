@@ -32,7 +32,7 @@ Formal decision:
 
 これはwhole-game geometry、game-theoretic value、win probability、causal mechanism、human difficulty、AI quality、strategic regime、またはG3-10のpath dependence / directionality / persistence / return / hysteresisを直接確立しない。
 
-G3-10はこのStudyのformal eligibilityによって自動的にはauthorizedされない。別のpost-prerequisite current-state authorization reviewが必要である。
+CRCLGR closure時点では、G3-10はこのStudyのformal eligibilityだけでは自動authorizeせず、別のpost-prerequisite current-state authorization reviewを必要とした。そのreviewはその後独立に完了して`G3-10-AUTHORIZED`となり、後続`GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`まで完了した。これはCRCLGRのformal decisionを事後変更するものではない。
 
 ## Immutable upstream decisions
 
@@ -60,6 +60,7 @@ G3-10はこのStudyのformal eligibilityによって自動的にはauthorizedさ
 ```text
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 same-evidence rerun = NOT AUTHORIZED
-G3-10 = NOT AUTHORIZED pending separate review
-main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-10 at CRCLGR closure = NOT AUTHORIZED pending separate review
+subsequent G3-10 = AUTHORIZED by separate review / GCLD-STUDY1 CLOSED FORMAL-COMPLETE
+combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```

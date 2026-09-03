@@ -64,12 +64,13 @@ scientific positive result = NONE
 scientific negative result = NONE
 scientific null result = NONE
 scientific summary from Stage 1 = NOT AUTHORIZED
-G3-10 = NOT AUTHORIZED
+G3-10 at RRCLGR closure = NOT AUTHORIZED
+subsequent G3-10 chronology = CRCLGR formal eligible → separate review G3-10-AUTHORIZED → GCLD-STUDY1 CLOSED FORMAL-COMPLETE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-main integration = NOT AUTHORIZED / NOT PERFORMED
+combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-今後continuous representation prerequisiteを再検証する場合は、RRCLGR-STUDY1のrepairではなく、fresh seed namespaceと新たなprospective contractを持つ独立Study/versionとして開始しなければならない。
+RRCLGR closure時点では、continuous representation prerequisiteを再検証する場合はRRCLGR-STUDY1のrepairではなく、fresh seed namespaceと新たなprospective contractを持つ独立Study/versionとして開始する必要があった。その条件を満たす後継`CRCLGR-STUDY1`がその後独立に実施されformal eligibleで閉じた。RRCLGR自体のdecisionは変更しない。
 
 ## Canonical records
 

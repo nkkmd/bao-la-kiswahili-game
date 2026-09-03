@@ -1,6 +1,6 @@
 # RRCLGR-STUDY1 — Current Status
 
-Updated: 2026-09-03
+Updated: 2026-09-04
 
 ```text
 Study = RRCLGR-STUDY1
@@ -20,9 +20,9 @@ candidate manifest complete = false
 scientific summary authorized = false
 formal representation eligibility = NOT ESTABLISHED
 Stage 2 = NOT-AUTHORIZED / NOT-EXECUTED
-G3-10 = NOT AUTHORIZED
+G3-10 downstream chronology = successor CRCLGR later established formal eligibility; separate post-CRCLGR review then yielded G3-10-AUTHORIZED; GCLD-STUDY1 CLOSED / FORMAL-COMPLETE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-main integration = NOT AUTHORIZED / NOT PERFORMED
+repository integration = RRCLGR history carried into successor G3-10 branch / combined main integration NOT AUTHORIZED / NOT PERFORMED
 ```
 
 ## Stage 1 closure reason
@@ -37,6 +37,8 @@ No Stage 1 coordinate, distance, neighborhood, nondegeneracy or representation-e
 
 The Stage 1 seed namespace is consumed for `RRCLGR-STUDY1` and may not be reused by a successor Study. Stage 2 seeds remain unconsumed but belong to the closed Study and are not available for successor scientific reuse.
 
-## Next permitted action
+## Subsequent program chronology
 
-A new prospective independent prerequisite Study/version may be designed from the current repository state. It must use a fresh scientific seed namespace, independently frozen source bindings and a pre-fresh technical test that explicitly exercises candidate-manifest digest serialization. It may use the RRCLGR type defect only as technical design information; RRCLGR fresh scientific evidence is prohibited as successor scientific input.
+RRCLGR closure後、同Studyを修正・rerunするのではなく、fresh namespaceとcanonical structured-digest contractを持つ独立後継`CRCLGR-STUDY1`がprospectively開始された。CRCLGRは`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`で完了し、その後のseparate current-state reviewでG3-10がauthorizedされた。`GCLD-STUDY1`も現在は`CLOSED / FORMAL-COMPLETE`である。
+
+この後続chronologyはRRCLGRの`CLOSED / TECHNICAL-INVALID`、Stage 2未実行、scientific summary非承認、no-rescue boundaryを一切変更しない。RRCLGR-STUDY1内に残るscientific actionはない。
