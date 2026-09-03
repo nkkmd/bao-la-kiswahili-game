@@ -15,6 +15,7 @@ Stage 1 seed block = 32210001..32210256 / CONSUMED
 Stage 2 seed block = 32220001..32220384 / CONSUMED
 same-evidence rerun = NOT AUTHORIZED
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+repository readiness = PRE-MAIN-INTEGRATION-READY
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
@@ -60,8 +61,19 @@ exact-byte repository mirror commit = 622dae1ede85b3e8856a86a3b647a056f7ac08db
 
 Stage 2の最初のexecution wrapper run `33809894513`は、fresh seed selectionより前のidentity-firewall metadata checkで停止した。fresh seed readは0、scientific result artifactは0であり、`PRE-FRESH-ACCESS-TECHNICAL-ABORT / SCIENTIFIC-EXECUTION-NOT-CONSUMED`として別途固定済みである。同runのrerunは行わず、科学契約を変更しないtechnical execution V2で初回fresh scientific executionを実施した。
 
-## Remaining work
+## Repository readiness
 
-研究本体のscientific executionは完了した。残るrepository operationはcurrent-facing document consistency auditと、ユーザーが明示的に指示した場合に限る`main` integrationである。
+研究本体のscientific execution、Stage 2 canonical artifactのexact-byte mirror、study-local closure文書、root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、Research Generation 3の`README.md` / `CURRENT_STATUS.md`のcurrent-facing synchronization、およびpre-main consistency auditまで完了した。
+
+```text
+Stage 2 exact-byte mirror run = 33816914860
+current-facing documentation sync run = 33817487979
+pre-main readiness audit run = 33817654425
+historical PROGRAM_PLAN blob = 2bb90c11f1625f63f40a7eab8a3de7774505a1ac / UNCHANGED
+scientific recomputation during documentation/mirror work = false
+repository readiness = PRE-MAIN-INTEGRATION-READY
+```
+
+残るrepository operationは、ユーザーが明示的に指示した場合に限る`main` integrationだけである。
 
 `main` integrationの許可は本ファイルから推定してはならない。明示的なユーザー指示がない限り`NOT AUTHORIZED / NOT PERFORMED`を維持する。
