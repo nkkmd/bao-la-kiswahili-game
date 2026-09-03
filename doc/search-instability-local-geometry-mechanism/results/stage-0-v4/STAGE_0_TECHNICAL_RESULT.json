@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S0-TECHNICAL-2026-09-03-v4",
+  "evidenceClass": "TECHNICAL-FIXTURE-NON-SCIENTIFIC",
+  "checks": {
+    "T1_sourceAndSpecBinding": true,
+    "T3_syntheticGeometryHandDerived": true,
+    "T16_technicalMtajiFixtureSelection": true,
+    "T4_realDepth5GeometryExact": true,
+    "T2_identityExact": true,
+    "T6_allSearchConditionsEstimable": true,
+    "T7_searchOutputsExact": true,
+    "T8_searchEndpointsExact": true,
+    "T5_geometryMetricDerivationExact": true,
+    "T9_rationalPromotionPrimitivesExact": true,
+    "T10_exactFormalTestHandDerived": true,
+    "T13_failClosedNegativeControls": true,
+    "T11_staticIndependence": true,
+    "T12_repeatAndSerializationInvariant": true,
+    "T15_freshStage1SeedsAccessed": false,
+    "T15_freshStage2SeedsAccessed": false,
+    "T15_protectedDepth10Generated": false,
+    "T15_protectedDepth10Read": false,
+    "T15_protectedDepth10Peeked": false
+  },
+  "technicalFixtureSelection": {
+    "namuaSeed": 31709001,
+    "mtajiAttemptedSeeds": [
+      31709002,
+      31709003
+    ],
+    "mtajiSelectedSeed": 31709003
+  },
+  "technicalRoots": [
+    {
+      "seed": 31709001,
+      "ply": 24,
+      "phase": "namua",
+      "rawStateSha256": "471c1d0f5bf272f77fbb282e78cefee9111ab47048438c6b41196a3ef75b519c",
+      "geometryDigest": "23ff5c9586440b8ef42e4ed8fb805e1e1616be339e52558a3d98a1bbc5529bb9",
+      "searchDigest": "f2e88327980016413d3aa53454f9373f31d67f2e58f2f23f3c7064b1c3411287",
+      "endpointDigest": "6cb3cf5d7d4712030a3fd3f6b93794dcb52e3fc4501372b1fc0727f9fff7cafe"
+    },
+    {
+      "seed": 31709003,
+      "ply": 44,
+      "phase": "mtaji",
+      "rawStateSha256": "5bd33d93c52110872c0f5554d841b75f28e08667458d8088393fda1622b07505",
+      "geometryDigest": "7088d6ea6289d5ee7a2747461e1a3ac7ffaba129a3e279a9d603ca8e7f90dfcb",
+      "searchDigest": "b4ec87c874b0a78d5f8f4ea2d6268f94fdb9b7a062fb335d3aa1ff1d85401aae",
+      "endpointDigest": "4dccd53d9901de524f126bacf733f1cfe408b94a85be96a2d23d7780e16ab6f6"
+    }
+  ],
+  "staticAudit": {
+    "productionSha256": "7a4347257ee8046bb75cd49624f37b245adc71883b097b6bd684a60f2a0294f3",
+    "independentSha256": "6c57d0ad8bc3e09647ec7e1d9e05ad194ea5f6ea535aee91f34de45cb13ffeb4",
+    "productionGeometrySha256": "feec65ff6ecea7f764aa7046a4ae0a45bd9bc86f430a4d68b536c3fa858e28b8",
+    "independentGeometrySha256": "a4f0530636708c13db34b59c260bb23f15f3832ac9b092be6ee537cfe333bb6e"
+  },
+  "studySpecSha256": "1ada50863ced53e1d5d7c75d75fc3622427ca05fa5bb391de0e1f7230fc590a1",
+  "stage0SpecSha256": "84744fd0b746f93540ce2cdead1f72ca43e32e20e9f96830157bc4addce5f104",
+  "freshScientificSeedAccess": false,
+  "protectedDepth10Access": false,
+  "deterministicCoreSha256": "fc44c69eb5c164143af821da872a1b2f9d842f1369e9dcd98a1cdd14b42ec076",
+  "telemetry": {
+    "elapsedMs": 20603,
+    "peakRssBytes": 132632576,
+    "resultArtifactBytes": 3193
+  },
+  "resourceCeilings": {
+    "elapsedMs": 600000,
+    "peakRssBytes": 2147483648,
+    "resultArtifactBytes": 67108864
+  },
+  "stageDisposition": "STAGE0-PASS",
+  "freshStage1AuthorizedByThisResult": false,
+  "protectedStandardRootDepth10State": "SEALED-NOT-GENERATED-NOT-READ",
+  "resourceChecks": {
+    "T14_resourceCeilingsPass": true
+  }
+}
