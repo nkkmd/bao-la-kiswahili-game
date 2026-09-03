@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "stageId": "CLGR-S2-FORMAL-2026-09-03-v1",
+  "materializationClass": "POST-STAGE1-FRESH-FREE-FORMAL-INPUT",
+  "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+  "stage1Eligibility": {
+    "sourceStageId": "CLGR-S1-DEVELOPMENT-2026-09-03-v1",
+    "stageDisposition": "STAGE1-PASS",
+    "stage2Eligible": true,
+    "canonicalScientificResultSha256": "1e63937dc5967276f68253c9efa819554b0ea3b346f471c04dea92cbd90dc529",
+    "resultJsonSha256": "77d811f5d49996131f866029313ba1830ed2ad6a98d1ef12806abf3923d48e09",
+    "resultGitBlob": "3a3d808338161df618c8c1bebfee2bb9a403b3d9"
+  },
+  "stage1IdentityExclusion": {
+    "path": "doc/continuous-local-geometry-representation/results/stage-1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+    "inputClass": "IDENTITY-ONLY",
+    "identityRowCount": 48,
+    "fileSha256": "965f1a87ae97e7b7f81cc45f95040df3dde9a0be16d16be55c6c392e1ff33c17",
+    "gitBlob": "ffd866e12cca2b9ee7918a204f25e2a94a75ede0",
+    "scientificOutcomeFieldsRetained": false
+  },
+  "baseUpstreamFirewall": {
+    "path": "doc/local-geometry-persistence-memory-length/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+    "inputClass": "IDENTITY-ONLY",
+    "gitBlob": "03337de654c612ea48f42093a674d82cf267db43",
+    "scientificOutcomeFieldsRetained": false
+  },
+  "developmentValuesAllowedAsFormalSelectionInput": false,
+  "developmentCoordinatesAllowedAsFormalSelectionInput": false,
+  "representationRefitAllowed": false,
+  "axisSelectionChangeAllowed": false,
+  "weightChangeAllowed": false,
+  "distanceChangeAllowed": false,
+  "formalGateChangeAllowed": false,
+  "stage2SeedAccessDuringMaterialization": false,
+  "protectedDepth10Access": false
+}
