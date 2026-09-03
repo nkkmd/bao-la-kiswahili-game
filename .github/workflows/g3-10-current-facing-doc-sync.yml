@@ -1,0 +1,222 @@
+name: G3-10 Current-Facing Documentation Sync
+
+on:
+  push:
+    branches:
+      - research/g3-10-geometry-conditioned-longitudinal-dynamics
+    paths:
+      - doc/geometry-conditioned-longitudinal-dynamics/authorizations/G3_10_CURRENT_DOC_SYNC_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: g3-10-current-facing-doc-sync-v1
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out research branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/g3-10-geometry-conditioned-longitudinal-dynamics
+          fetch-depth: 0
+
+      - name: Verify historical PROGRAM_PLAN is unchanged before sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object doc/research-generation-3/PROGRAM_PLAN.md)" = "2bb90c11f1625f63f40a7eab8a3de7774505a1ac"
+
+      - name: Synchronize current-facing documents only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          BRANCH = "research/g3-10-geometry-conditioned-longitudinal-dynamics"
+          GCLD_SUMMARY = (
+              "G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。"
+              "formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、"
+              "frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。"
+              "5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、"
+              "C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、"
+              "C4 chronology-conditioned circulationは`NOT-CONFIRMED`。"
+              "これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。"
+              "protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。"
+              "same-evidence rerunは禁止。`main` integrationは明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`。"
+          )
+
+          def read(path):
+              return Path(path).read_text(encoding="utf-8")
+
+          def write(path, text):
+              Path(path).write_text(text, encoding="utf-8")
+
+          def replace_once(text, old, new, label):
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"{label}: expected exactly one match, got {count}")
+              return text.replace(old, new, 1)
+
+          # 1) Research Generation 3 README
+          p = "doc/research-generation-3/README.md"
+          t = read(p)
+          t = replace_once(
+              t,
+              "Status = ACTIVE / G3-09 CLGR-STUDY1 CLOSED TECHNICAL-INVALID / FORMAL REPRESENTATION ELIGIBILITY NOT ESTABLISHED / POST-G3-09 G3-10 CURRENT-STATE REVIEW REQUIRED / G3-10 NOT AUTHORIZED",
+              "Status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / 4 CONFIRMED + 1 NOT-CONFIRMED / CRCLGR FORMAL-ELIGIBLE / MAIN INTEGRATION PENDING EXPLICIT USER AUTHORIZATION",
+              "RG3 README status",
+          )
+          t = replace_once(
+              t,
+              "G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required",
+              "post-G3-09 representation prerequisite chain = RRCLGR-STUDY1 CLOSED TECHNICAL-INVALID / CRCLGR-STUDY1 CLOSED FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION\nG3-10 program review = G3-10-AUTHORIZED\nG3-10 = GCLD-STUDY1 / CLOSED / FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED\nG3-10 Stage 0 = STAGE0-PASS\nG3-10 Stage 1 = STAGE1-PASS / seeds CONSUMED\nG3-10 Stage 2 = FORMAL-COMPLETE / 48 candidates / 47 eligible / 32 measured / seeds CONSUMED\nG3-10 main integration = NOT AUTHORIZED / NOT PERFORMED",
+              "RG3 README G3-10 line",
+          )
+          if "<!-- GCLD-G3-10-READ-FIRST -->" not in t:
+              anchor = "- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state\n"
+              addition = (
+                  anchor
+                  + "<!-- GCLD-G3-10-READ-FIRST -->\n"
+                  + "- [`../geometry-conditioned-longitudinal-dynamics/README.md`](../geometry-conditioned-longitudinal-dynamics/README.md) — G3-10 formal-complete Study入口\n"
+                  + "- [`../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`](../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md) — G3-10 formal results / interpretation boundary正本\n"
+                  + "- [`../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`](../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md) — G3-10 exact artifacts / execution provenance\n"
+                  + "- [`../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 formal closure decision\n"
+                  + "- [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`](checkpoints/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 RG3 closure checkpoint\n"
+              )
+              t = replace_once(t, anchor, addition, "RG3 README read-first anchor")
+          write(p, t)
+
+          # 2) Research Generation 3 CURRENT_STATUS
+          p = "doc/research-generation-3/CURRENT_STATUS.md"
+          t = read(p)
+          t = replace_once(t, "Updated: 2026-09-03", "Updated: 2026-09-04", "RG3 CURRENT_STATUS date")
+          t = replace_once(
+              t,
+              "Program status = ACTIVE / G3-09 CLGR-STUDY1 CLOSED TECHNICAL-INVALID / FORMAL REPRESENTATION ELIGIBILITY NOT ESTABLISHED / POST-G3-09 G3-10 REVIEW REQUIRED / G3-10 NOT AUTHORIZED",
+              "Program status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED / MAIN INTEGRATION PENDING EXPLICIT USER AUTHORIZATION",
+              "RG3 CURRENT_STATUS program status",
+          )
+          t = replace_once(
+              t,
+              "G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state authorization review required",
+              "post-G3-09 prerequisite = RRCLGR-STUDY1 CLOSED TECHNICAL-INVALID\npost-RRCLGR prerequisite = CRCLGR-STUDY1 CLOSED / FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION\nG3-10 program review = G3-10-AUTHORIZED\nG3-10 = GCLD-STUDY1 / CLOSED / FORMAL-COMPLETE\nG3-10 Stage 0 = STAGE0-PASS\nG3-10 Stage 1 = STAGE1-PASS / seed 32210001..32210256 CONSUMED\nG3-10 Stage 2 = FORMAL-COMPLETE / seed 32220001..32220384 CONSUMED / candidates 48 / eligible 47 / measured 32\nG3-10 formal record = C1 CONFIRMED ACTUAL-GREATER / C2 CONFIRMED ACTUAL-GREATER / C3 CONFIRMED ACTUAL-LESS / C4 NOT-CONFIRMED / C5 CONFIRMED ACTUAL-GREATER\nG3-10 canonical scientific-result SHA-256 = c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f\nG3-10 main integration = NOT AUTHORIZED / NOT PERFORMED",
+              "RG3 CURRENT_STATUS G3-10 line",
+          )
+          t = replace_once(
+              t,
+              "Active scientific research branch = none / G3-09 integrated to main; G3-10 remains NOT AUTHORIZED",
+              f"Active research branch = {BRANCH} / G3-10 scientific execution CLOSED; documentation/pre-main readiness only",
+              "RG3 CURRENT_STATUS active branch",
+          )
+          t = replace_once(
+              t,
+              "Next scientific action = separate post-G3-09 current-state G3-10 authorization review; do not auto-start G3-10",
+              "Next scientific action = none within GCLD-STUDY1; do not rerun consumed Stage 1/2 evidence; post-G3-10 next-study review is separate and not auto-authorized",
+              "RG3 CURRENT_STATUS next action",
+          )
+          if "<!-- GCLD-G3-10-CURRENT-CLOSURE -->" not in t:
+              insertion = (
+                  "\n\n## G3-10 current formal closure\n\n"
+                  "<!-- GCLD-G3-10-CURRENT-CLOSURE -->\n"
+                  + GCLD_SUMMARY
+                  + "\n\nCanonical records:\n\n"
+                  "- `../geometry-conditioned-longitudinal-dynamics/README.md`\n"
+                  "- `../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`\n"
+                  "- `../geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md`\n"
+                  "- `../geometry-conditioned-longitudinal-dynamics/DECISION_REGISTER.md`\n"
+                  "- `../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`\n"
+                  "- `../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`\n"
+                  "- `checkpoints/2026-09-04-g3-10-formal-complete-closure.md`\n"
+              )
+              t += insertion
+          write(p, t)
+
+          # 3) Central RESEARCH_INDEX — add a current highlight without rewriting historical numbered sections.
+          p = "doc/RESEARCH_INDEX.md"
+          t = read(p)
+          if "<!-- GCLD-G3-10-RESEARCH-INDEX -->" not in t:
+              anchor = "## 研究成果\n"
+              block = (
+                  anchor
+                  + "\n<!-- GCLD-G3-10-RESEARCH-INDEX -->\n"
+                  + "### Research Generation 3 current highlight — G3-10 / GCLD-STUDY1\n\n"
+                  + "**状態:** `CLOSED / FORMAL-COMPLETE` — 4 `CONFIRMED` / 1 `NOT-CONFIRMED` / 0 `NON-ESTIMABLE`\n\n"
+                  + GCLD_SUMMARY
+                  + "\n\n**最初に読む:**\n\n"
+                  + "- [`geometry-conditioned-longitudinal-dynamics/README.md`](geometry-conditioned-longitudinal-dynamics/README.md)\n"
+                  + "- [`geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`](geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md)\n\n"
+                  + "**再現性・formal record:**\n\n"
+                  + "- [`geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`](geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md)\n"
+                  + "- [`geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json`](geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json)\n"
+                  + "- [`research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md)\n\n"
+                  + "---\n"
+              )
+              t = replace_once(t, anchor, block, "RESEARCH_INDEX research-results anchor")
+          write(p, t)
+
+          # 4) FUTURE_RESEARCH_AGENDA — current header + latest update; preserve older dated updates as history.
+          p = "doc/FUTURE_RESEARCH_AGENDA.md"
+          t = read(p)
+          t = replace_once(t, "更新日: 2026-09-03", "更新日: 2026-09-04", "FUTURE agenda date")
+          old_rg3 = "Research Generation 3: **Active / G3-09 `CLGR-STUDY1` closed `TECHNICAL-INVALID` / Stage 1 PASS / Stage 2 TECHNICAL-INVALID after 61 of 72 formal roots / formal continuous-representation eligibility NOT ESTABLISHED / next action is separate post-G3-09 current-state G3-10 authorization review / G3-10 NOT AUTHORIZED (2026-09-03)**"
+          new_rg3 = "Research Generation 3: **Active / G3-10 `GCLD-STUDY1` CLOSED `FORMAL-COMPLETE` / C1+C2+C3+C5 `CONFIRMED` / C4 `NOT-CONFIRMED` / protected depth-10 SEALED / post-G3-10 next-study review is separate and NOT AUTO-AUTHORIZED / main integration NOT AUTHORIZED (2026-09-04)**"
+          t = replace_once(t, old_rg3, new_rg3, "FUTURE agenda RG3 header")
+          if "<!-- GCLD-G3-10-CLOSURE:FUTURE -->" not in t:
+              anchor = "### 2026-09-03 Research Generation 3 current update\n"
+              block = (
+                  "### 2026-09-04 Research Generation 3 current update\n\n"
+                  "<!-- GCLD-G3-10-CLOSURE:FUTURE -->\n"
+                  + GCLD_SUMMARY
+                  + " G3-10 closure後の次Studyは自動authorizeしない。historical program sequenceを参照しつつ、別のpost-G3-10 current-state reviewでdependency・独立性・fresh populationを確認してから判断する。\n\n"
+                  + anchor
+              )
+              t = replace_once(t, anchor, block, "FUTURE agenda dated update anchor")
+          write(p, t)
+
+          # 5) Root README — add a concise G3-10 entry next to the central research index.
+          p = "README.md"
+          t = read(p)
+          if "<!-- GCLD-G3-10-ROOT-README -->" not in t:
+              anchor = "- [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md): 研究成果の中央索引。初見向け概要、科学的正本、研究運用文書への入口\n"
+              addition = (
+                  anchor
+                  + "<!-- GCLD-G3-10-ROOT-README -->\n"
+                  + "- [`doc/geometry-conditioned-longitudinal-dynamics/README.md`](doc/geometry-conditioned-longitudinal-dynamics/README.md): Research Generation 3 `G3-10` / `GCLD-STUDY1`。formal-eligible continuous bounded RAW local geometryのfresh trajectory-level検証を`CLOSED / FORMAL-COMPLETE`で完了。C1 directionality、C2 persistence、C3 return fraction（ACTUAL-LESS）、C5 first-order path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。causal dynamics / physical hysteresis / strategic regimeを主張せず、protected depth-10は未開封\n"
+              )
+              t = replace_once(t, anchor, addition, "root README RESEARCH_INDEX bullet")
+          write(p, t)
+          PY
+
+      - name: Verify only approved current-facing documents changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object doc/research-generation-3/PROGRAM_PLAN.md)" = "2bb90c11f1625f63f40a7eab8a3de7774505a1ac"
+          git add README.md doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md doc/research-generation-3/README.md doc/research-generation-3/CURRENT_STATUS.md
+          git diff --cached --name-only | sort > /tmp/actual.txt
+          cat > /tmp/expected.txt <<'EOF'
+          README.md
+          doc/FUTURE_RESEARCH_AGENDA.md
+          doc/RESEARCH_INDEX.md
+          doc/research-generation-3/CURRENT_STATUS.md
+          doc/research-generation-3/README.md
+          EOF
+          sed -i 's/^          //' /tmp/expected.txt
+          sort -o /tmp/expected.txt /tmp/expected.txt
+          diff -u /tmp/expected.txt /tmp/actual.txt
+          ! git diff --cached --name-only | grep -Fx 'doc/research-generation-3/PROGRAM_PLAN.md'
+
+      - name: Commit synchronized current-facing documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Synchronize current-facing documentation for G3-10 closure"
+          git push origin HEAD:research/g3-10-geometry-conditioned-longitudinal-dynamics
