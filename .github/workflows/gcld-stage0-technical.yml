@@ -1,0 +1,51 @@
+name: GCLD Stage 0 Technical
+on:
+  push:
+    branches:
+      - research/g3-10-geometry-conditioned-longitudinal-dynamics
+    paths:
+      - doc/geometry-conditioned-longitudinal-dynamics/authorizations/gcld-stage0-trigger.txt
+concurrency:
+  group: gcld-stage0-technical
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Syntax-check frozen GCLD Stage 0 tooling
+        run: |
+          node --check tools/experiments/lib/gcld-production.js
+          node --check tools/experiments/lib/gcld-independent.js
+          node --check tools/experiments/run-gcld-stage0-technical.js
+          node --check tools/experiments/verify-gcld-stage0-authorization.js
+      - name: Verify exact Stage 0 authorization and source binding
+        run: node tools/experiments/verify-gcld-stage0-authorization.js
+      - name: Materialize durable pre-computation lease
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' "GCLD-S0-TECHNICAL-2026-09-03-v1" > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+          git rev-parse HEAD^ > artifacts/lease/authorization-parent.txt
+          sha256sum doc/geometry-conditioned-longitudinal-dynamics/authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json > artifacts/lease/authorization.sha256
+      - name: Upload lease before computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcld-stage0-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute exactly one authorized technical computation
+        run: |
+          mkdir -p artifacts/local/geometry-conditioned-longitudinal-dynamics/stage0
+          node tools/experiments/run-gcld-stage0-technical.js --output artifacts/local/geometry-conditioned-longitudinal-dynamics/stage0/STAGE_0_TECHNICAL_RESULT.json
+      - name: Upload technical result before repository mirror
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcld-stage0-result-${{ github.run_id }}
+          path: artifacts/local/geometry-conditioned-longitudinal-dynamics/stage0/STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
