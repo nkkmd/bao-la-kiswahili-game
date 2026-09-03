@@ -1,0 +1,42 @@
+name: CLGR Stage 1 Preauthorization Audit v2
+
+on:
+  push:
+    branches:
+      - research/g3-09-continuous-local-geometry-representation
+    paths:
+      - doc/continuous-local-geometry-representation/authorizations/clgr-stage1-preauth-v2-trigger.txt
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clgr-stage1-preauth-v2
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Syntax-check Stage 1 frozen tooling
+        run: |
+          node --check tools/experiments/run-clgr-stage1-preauth-audit-v2.js
+          node --check tools/experiments/run-clgr-stage1-development.js
+          node --check tools/experiments/verify-clgr-stage1-authorization.js
+          node --check tools/experiments/lib/clgr-stage1-production.js
+          node --check tools/experiments/lib/clgr-stage1-independent.js
+      - name: Run fresh-free Stage 1 preauthorization audit v2
+        run: |
+          mkdir -p artifacts/local/continuous-local-geometry-representation/stage1-preauth-v2
+          node tools/experiments/run-clgr-stage1-preauth-audit-v2.js \
+            --output artifacts/local/continuous-local-geometry-representation/stage1-preauth-v2/PREAUTH_AUDIT_RESULT.json
+      - name: Upload audit result
+        uses: actions/upload-artifact@v4
+        with:
+          name: clgr-stage1-preauth-v2-${{ github.run_id }}
+          path: artifacts/local/continuous-local-geometry-representation/stage1-preauth-v2/PREAUTH_AUDIT_RESULT.json
+          if-no-files-found: error
+          overwrite: false
