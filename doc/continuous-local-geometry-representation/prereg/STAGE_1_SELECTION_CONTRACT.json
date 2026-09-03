@@ -31,6 +31,8 @@
     "prng": "mulberry32 seeded by decimal source seed",
     "choice": "floor(prng * legalMoveCount)",
     "pathIdentity": "canonical move identities joined by newline",
+    "sourceTrajectorySha256": "SHA-256 of the complete replay path through terminal or maxSourcePly, not a root-truncated path",
+    "openingPrefixSha256": "SHA-256 of the first min(16,pathLength) canonical move identities joined by newline",
     "openingPrefixLength": 16,
     "terminal": "source trajectory ineligible if assigned-phase root unavailable",
     "relayLimit": "source trajectory ineligible; continue within frozen seed block"
