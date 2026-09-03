@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "stageId": "SILGM-S0-TECHNICAL-2026-09-03-v3",
+  "evidenceClass": "TECHNICAL-FIXTURE-NON-SCIENTIFIC",
+  "statusAtFreeze": "PROSPECTIVELY-REFROZEN-AFTER-V2-TECHNICAL-INVALID-BEFORE-V3-COMPUTATION",
+  "parentStage": "SILGM-S0-TECHNICAL-2026-09-03-v2",
+  "parentDisposition": "STAGE0-TECHNICAL-INVALID-NO-RERUN",
+  "v2CanonicalResultSha256": "0061d99606faaaa3e4cba0a0b229d94e7b166a23aaf38e5a0452d6fd7f10b8f6",
+  "freshScientificEvidenceAtV3Freeze": false,
+  "scientificStudyContractChanged": false,
+  "permittedTechnicalCorrections": [
+    {
+      "id": "V3-C1-TECHNICAL-MTAJI-FIRST-ELIGIBLE-WITHIN-FROZEN-BLOCK",
+      "change": "replace fixed Mtaji technical seed 31709002 with deterministic seed-ascending first-eligible selection over technical-only seeds 31709002..31709008",
+      "reason": "v2 established that fixed technical seed 31709002 does not supply the frozen Mtaji fixture target; no scientific evidence was generated/read"
+    },
+    {
+      "id": "V2-C1-RETAINED",
+      "change": "synthetic G5 hand-derived expectation remains corrected from 7/23 to 7/17"
+    },
+    {
+      "id": "V2-C2-RETAINED",
+      "change": "deterministic-core checks remain snapshotted before telemetry/resource-only T14 bookkeeping"
+    }
+  ],
+  "unchangedScientificContract": [
+    "Study ID and titles",
+    "RAW state and move identity",
+    "relative local horizon 5",
+    "LGTGMIV F1-F5 geometry eligibility",
+    "G1..G5 geometry metrics",
+    "six search conditions and three peer contrasts",
+    "E1..E5 search-instability endpoints",
+    "Stage 1 and Stage 2 populations",
+    "Stage 1 and Stage 2 seed namespaces",
+    "development threshold/promotion rule",
+    "formal exact stratified hypergeometric-convolution test",
+    "Holm FWER 1/20",
+    "identity firewall",
+    "resource ceilings",
+    "no-rescue boundary",
+    "protected depth-10 firewall",
+    "main integration policy"
+  ],
+  "freshStage1SeedAccessAuthorized": false,
+  "freshStage2SeedAccessAuthorized": false,
+  "technicalSeeds": [31709001,31709002,31709003,31709004,31709005,31709006,31709007,31709008],
+  "scientificUseOfTechnicalSeedsProhibited": true,
+  "fixturePolicy": {
+    "geometrySyntheticFixture": "same v1/v2 synthetic fixture with corrected G5 expected fraction 7/17",
+    "namuaTechnicalRoot": {"seed":31709001,"target":"first nonterminal Namua state at or after ply 24 with >=2 legal moves","replacement":"none"},
+    "mtajiTechnicalRoot": {
+      "candidateSeedsAscending": [31709002,31709003,31709004,31709005,31709006,31709007,31709008],
+      "target": "first nonterminal Mtaji state at or after ply 44 with >=2 legal moves",
+      "maxSourcePly": 80,
+      "selection": "first eligible seed in ascending order",
+      "ifNoneEligible": "STAGE0-TECHNICAL-INVALID",
+      "seedExtension": false,
+      "recordAttemptedSeeds": true
+    },
+    "protectedStandardInitialDepth10Used": false
+  },
+  "mandatoryChecks": [
+    "T1 study/spec/stage/source binding exact",
+    "T2 RAW state identity and 8-field move identity production/independent exact",
+    "T3 corrected geometry synthetic hand-derived assertions and production/independent exact equality",
+    "T4 real technical-root LGTGMIV depth-5 reconstruction production/independent exact equality",
+    "T5 G1..G5 geometry derivation exact and order invariant",
+    "T6 all six frozen search conditions deterministic and estimable on required technical roots",
+    "T7 production/independent candidate scores, TopSet, canonical best, exact ranking preorder, best-second gap and PV exact agreement",
+    "T8 E1..E5 search-instability endpoint exact agreement for SC1..SC3",
+    "T9 exact rational comparison, phase-threshold midpoint, risk-difference and candidate-selection synthetic controls",
+    "T10 exact stratified hypergeometric convolution formal-test arithmetic against hand-enumerated synthetic tables",
+    "T11 static implementation independence",
+    "T12 repeated-run / serialization invariance",
+    "T13 fail-closed negative controls",
+    "T14 resource ceilings pass",
+    "T15 fresh scientific seeds not accessed and protected depth-10 holdout sealed",
+    "T16 technical Mtaji fixture selection remains inside frozen technical-only block and attempted-seed sequence is recorded"
+  ],
+  "resourceCeilings": {"elapsedMs":600000,"peakRssBytes":2147483648,"resultArtifactBytes":67108864},
+  "geometryPerRootCeilings": {"uniqueRawStates":100000,"uniqueTransitions":750000,"parentExpansions":100000,"legalMoveEvaluations":750000,"treeNodeOccurrences":"1000000000","elapsedMs":180000,"peakRssBytes":4294967296,"artifactBytes":67108864},
+  "executionIntegrity": {
+    "maxAuthorizedStage0ExecutionsV3":1,
+    "authorizationArtifactRequired":true,
+    "triggerArtifactRequired":true,
+    "sourceBindingBeforeComputation":true,
+    "durablePreComputationLease":true,
+    "concurrencyGuard":true,
+    "artifactBeforeMirror":true,
+    "workflowPermissions":"contents: read"
+  },
+  "stageDispositionRules": {
+    "pass":"all T1..T16 pass and resource ceilings pass",
+    "technicalInvalid":"any semantic/exactness/independence/source-binding/fail-closed/technical-fixture-selection mandatory check fails",
+    "nonEstimable":"technical computation is valid but a frozen resource ceiling alone prevents completion",
+    "freshStage1AuthorizedByPass":false
+  },
+  "sameV3CompletedExecutionRerunAuthorized": false,
+  "protectedDepth10":"SEALED-NOT-GENERATED-NOT-READ"
+}
