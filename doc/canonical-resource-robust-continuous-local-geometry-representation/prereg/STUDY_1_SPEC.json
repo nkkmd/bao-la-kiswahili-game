@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CRCLGR-STUDY1",
+  "programPosition": "Research Generation 3 / second pre-G3-10 independent prerequisite",
+  "reviewedMain": "0bcd1695b6dbd044acf2eed91740d282c63dbb07",
+  "branchAncestryBaseline": "27fa362fff7c1381a0c49dee8ff09e0cfc72df03",
+  "researchBranch": "research/pre-g3-10-canonical-resource-robust-continuous-geometry",
+  "representationFamily": {
+    "id": "CRCLGR-R1-EXACT-SQUASHED-L1",
+    "relativeDepth": 5,
+    "rawOnly": true,
+    "validatedTransformSet": [],
+    "axisIds": [
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "transform": "q/(1+q) exact reduced rational",
+    "distance": "equal-weight exact L1",
+    "neighborhoodK": 3,
+    "tieInclusive": true
+  },
+  "canonicalDigest": {
+    "contract": "SHA256(UTF8(CANONICAL_JSON(value)))",
+    "objectsRequireCanonicalSerialization": true,
+    "arraysRequireCanonicalSerialization": true,
+    "directObjectOrArrayToLowLevelDigestProhibited": true
+  },
+  "preflightEligibility": {
+    "depth": 5,
+    "limits": {
+      "distinctRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "treeNodeOccurrences": "1000000000"
+    },
+    "relayLimitEligible": false,
+    "coordinateGenerationBeforeEligibilityFreeze": false
+  },
+  "executionSafety": {
+    "perImplementationRootElapsedMs": 180000,
+    "combinedPerRootElapsedMs": 360000,
+    "peakRssBytes": 4294967296,
+    "rootArtifactBytes": 67108864,
+    "stageResultArtifactBytes": 268435456,
+    "stage1ElapsedMs": 14400000,
+    "stage2ElapsedMs": 21600000
+  },
+  "seedNamespaces": {
+    "technical": {"start":32109001,"end":32109064,"scientificUse":false},
+    "stage1": {"start":32110001,"end":32110256},
+    "stage2": {"start":32120001,"end":32120384}
+  },
+  "protectedDepth10": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED",
+  "g310ScientificExecutionAuthorizedAtFreeze": false,
+  "mainIntegrationAuthorizedAtFreeze": false
+}
