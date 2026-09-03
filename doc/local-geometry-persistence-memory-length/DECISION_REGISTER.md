@@ -35,3 +35,8 @@
 | LGPML-D029 | Protected depth-10 | `SEALED / NOT GENERATED / NOT READ / NOT PEEKED` | 全Stageで使用禁止。 |
 | LGPML-D030 | No-rescue | `CROSSES AT FIRST STAGE 1 FRESH ACCESS` | seed/lag/metric/test変更禁止。 |
 | LGPML-D031 | Main integration | `EXPLICIT USER INSTRUCTION REQUIRED` | Study closureでも自動統合しない。 |
+| LGPML-D032 | Stage 0 authorization | `AUTHORIZED / EXECUTED ONCE` | trigger commit `830d1d9d...`; same-version rerun禁止。 |
+| LGPML-D033 | Stage 0 result | `STAGE0-PASS` | technical controls exact agreement。fresh scientific evidenceなし。 |
+| LGPML-D034 | Stage 0 technical seed | `31809002 USED` | scientific use永久禁止。 |
+| LGPML-D035 | Stage 0 resource observation | `MAX COMBINED ROOT 10877 ms` | frozen scientific ceilingsの緩和根拠には使用しない。 |
+| LGPML-D036 | Stage 1 current authorization | `NOT AUTHORIZED` | fresh-free review/firewall/static audit required。 |
