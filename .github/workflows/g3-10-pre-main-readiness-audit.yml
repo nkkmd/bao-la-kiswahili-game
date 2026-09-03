@@ -1,0 +1,83 @@
+name: G3-10 Pre-Main Readiness Audit
+
+on:
+  push:
+    branches:
+      - research/g3-10-geometry-conditioned-longitudinal-dynamics
+    paths:
+      - doc/geometry-conditioned-longitudinal-dynamics/authorizations/G3_10_PRE_MAIN_READINESS_TRIGGER
+
+permissions:
+  contents: write
+
+concurrency:
+  group: g3-10-pre-main-readiness-audit-v1
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out research branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/g3-10-geometry-conditioned-longitudinal-dynamics
+          fetch-depth: 0
+
+      - name: Repair remaining stale current-facing references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(text, old, new, label):
+              n=text.count(old)
+              if n != 1:
+                  raise SystemExit(f"{label}: expected 1 match, got {n}")
+              return text.replace(old,new,1)
+
+          p=Path('README.md')
+          t=p.read_text(encoding='utf-8')
+          old='- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3のcurrent-facing状態。G3-09 / `CLGR-STUDY1`は`CLOSED / TECHNICAL-INVALID`。Stage 1は48/48 fresh rootsでPASSしたが、Stage 2は72 roots選定後61 roots完了時点の`relay-limit enumeration`でfail-closedし、formal continuous-representation eligibilityは`NOT ESTABLISHED`。protected depth-10はsealed。次のscientific actionはseparate post-G3-09 G3-10 current-state authorization reviewで、G3-10は未承認。'
+          new='- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3のcurrent-facing状態。G3-10 / `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`で、C1/C2/C3/C5が`CONFIRMED`、C4が`NOT-CONFIRMED`。前提representationは独立prerequisite `CRCLGR-STUDY1`でformal eligible。protected depth-10は`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`。G3-10 scientific executionは完了し、`main` integrationは明示的ユーザー指示待ち。'
+          t=replace_once(t,old,new,'root RG3 CURRENT_STATUS bullet')
+          p.write_text(t,encoding='utf-8')
+
+          p=Path('doc/RESEARCH_INDEX.md')
+          t=p.read_text(encoding='utf-8')
+          old='**状態:** **ACTIVE / G3-01 `TECHNICAL-INVALID` / LGTGMIV `FORMAL-ELIGIBLE-ALL` / G3-02 `TECHNICAL-INVALID` / G3-03 `TECHNICAL-INVALID` / G3-04 `SFCDF-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C6 `CONFIRMED` / post-G3-04 review required**'
+          new='**状態:** **ACTIVE / current frontier G3-10 `GCLD-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C2+C3+C5 `CONFIRMED` / C4 `NOT-CONFIRMED` / protected depth-10 `SEALED` / main integration `NOT AUTHORIZED`**\n\n> この節にはG3-01以降のchronologyを保持する。以下に残る「次Study review required」等の記述は各closure時点のhistorical boundaryであり、現在状態は上記と文書冒頭のG3-10 current highlightを優先する。'
+          t=replace_once(t,old,new,'RESEARCH_INDEX RG3 state')
+          p.write_text(t,encoding='utf-8')
+          PY
+
+      - name: Verify scientific and historical invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object doc/research-generation-3/PROGRAM_PLAN.md)" = "2bb90c11f1625f63f40a7eab8a3de7774505a1ac"
+          test "$(sha256sum doc/geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json | awk '{print $1}')" = "08f31652fb599cf9db9b839cbc07f8aabe06aed69215208ec0556e6ec3a5bf7a"
+          grep -Fq 'G3-10 = GCLD-STUDY1 / CLOSED / FORMAL-COMPLETE' doc/research-generation-3/CURRENT_STATUS.md
+          grep -Fq 'C4-CHRONOLOGY-CONDITIONED-CIRCULATION = NOT-CONFIRMED' doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md
+          grep -Fq 'main integration = NOT AUTHORIZED / NOT PERFORMED' doc/geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md
+          grep -Fq '<!-- GCLD-G3-10-ROOT-README -->' README.md
+          grep -Fq '<!-- GCLD-G3-10-RESEARCH-INDEX -->' doc/RESEARCH_INDEX.md
+          grep -Fq '<!-- GCLD-G3-10-CLOSURE:FUTURE -->' doc/FUTURE_RESEARCH_AGENDA.md
+          grep -Fq '<!-- GCLD-G3-10-READ-FIRST -->' doc/research-generation-3/README.md
+          ! grep -Fq '次のscientific actionはseparate post-G3-09 G3-10 current-state authorization reviewで、G3-10は未承認。' README.md
+          ! grep -Fq 'post-G3-04 review required**' doc/RESEARCH_INDEX.md
+
+      - name: Verify and commit only the two remaining current-facing repairs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add README.md doc/RESEARCH_INDEX.md
+          git diff --cached --name-only | sort > /tmp/actual.txt
+          printf '%s\n' README.md doc/RESEARCH_INDEX.md | sort > /tmp/expected.txt
+          diff -u /tmp/expected.txt /tmp/actual.txt
+          ! git diff --cached --name-only | grep -Fx 'doc/research-generation-3/PROGRAM_PLAN.md'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Complete G3-10 pre-main documentation consistency repairs"
+          git push origin HEAD:research/g3-10-geometry-conditioned-longitudinal-dynamics
