@@ -1,0 +1,21 @@
+name: LGPML Stage 1 Static Audit
+on:
+  push:
+    branches: [research/g3-08-local-geometry-persistence-memory-length]
+    paths: [doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage1-audit-trigger.txt]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 4}
+      - run: test "$(git diff --name-only HEAD^ HEAD)" = "doc/local-geometry-persistence-memory-length/authorizations/lgpml-stage1-audit-trigger.txt"
+      - run: |
+          node --check tools/experiments/lib/lgpml-stage1-production.js
+          node --check tools/experiments/lib/lgpml-stage1-independent.js
+          node --check tools/experiments/run-lgpml-stage1-development.js
+          node --check tools/experiments/verify-lgpml-stage1-authorization.js
+          node --check tools/experiments/verify-lgpml-stage1-static-audit.js
+      - run: node tools/experiments/verify-lgpml-stage1-static-audit.js
