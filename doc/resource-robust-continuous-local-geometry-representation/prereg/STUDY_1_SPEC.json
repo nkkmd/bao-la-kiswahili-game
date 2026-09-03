@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRCLGR-STUDY1",
+  "programPosition": "Research Generation 3 / Pre-G3-10 independent prerequisite",
+  "reviewedMain": "0bcd1695b6dbd044acf2eed91740d282c63dbb07",
+  "researchBranch": "research/pre-g3-10-resource-robust-continuous-local-geometry",
+  "titles": {
+    "english": "Resource-Robust Continuous Local-Geometry Representation Verification Study 1 — Prospective independent validation of an exact multiaxial bounded RAW local-game-tree geometry representation under deterministic pre-root reconstructibility eligibility in Bao",
+    "japanese": "Baoにおけるresource-robust連続局所ゲーム木幾何表現のprospective独立検証 — deterministic pre-root reconstructibility eligibilityによりbounded RAW depth-5 exact multiaxial representationをfail-closedで確立するG3-10 prerequisite"
+  },
+  "upstream": {
+    "measurementFoundation": "LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL",
+    "eligibleFamilies": ["F1", "F2", "F3", "F4", "F5"],
+    "representation": "RAW-only",
+    "relativeDepth": 5,
+    "validatedTransformSet": [],
+    "g308": "LGPML-STUDY1 / CLOSED / TECHNICAL-INVALID / scientific partial reuse prohibited",
+    "g309": "CLGR-STUDY1 / CLOSED / TECHNICAL-INVALID / formal continuous eligibility not established / scientific measurement reuse prohibited"
+  },
+  "representationFamily": {
+    "id": "RRCLGR-R1-EXACT-SQUASHED-L1",
+    "axes": [
+      "RRCLGR-A1-ROOT-LEGAL-WIDTH",
+      "RRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE",
+      "RRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES",
+      "RRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO",
+      "RRCLGR-A5-DUPLICATE-TRANSITION-FRACTION",
+      "RRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "transform": "S(n/d)=n/(n+d), exact reduced rational",
+    "distance": "equal-weight exact L1",
+    "neighborhoodK": 3,
+    "tieRule": "retain every exact tie at the third ordered cutoff",
+    "dataDependentScaling": false,
+    "learnedWeights": false,
+    "dimensionReduction": false
+  },
+  "preflightEligibility": {
+    "relativeDepth": 5,
+    "selectionOutputs": ["eligible", "reasonCode", "productionIndependentAgreement"],
+    "limits": {
+      "globalDistinctRawStates": 100000,
+      "uniqueCanonicalTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveVariantsEnumerated": 750000,
+      "treeNodeOccurrences": 1000000000,
+      "relayLimitAllowed": false
+    },
+    "counterChecksDuringReconstruction": true,
+    "elapsedTimeIsSelectionCriterion": false,
+    "rssIsSelectionCriterion": false,
+    "fullEligibilityManifestFrozenBeforeCoordinateGeneration": true,
+    "postMeasurementReplacementAllowed": false
+  },
+  "seedNamespaces": {
+    "stage0Technical": {"start": 32009001, "end": 32009016, "scientificUse": false},
+    "stage1": {"start": 32010001, "end": 32010256, "accessAuthorizedAtFreeze": false},
+    "stage2": {"start": 32020001, "end": 32020384, "accessAuthorizedAtFreeze": false}
+  },
+  "stages": {
+    "stage0": "RRCLGR-S0-TECHNICAL-2026-09-03-v1",
+    "stage1": "RRCLGR-S1-DEVELOPMENT-2026-09-03-v1",
+    "stage2": "RRCLGR-S2-FORMAL-2026-09-03-v1"
+  },
+  "populations": {
+    "stage1": {
+      "candidateCountPerPhase": 32,
+      "minimumEligiblePerPhase": 28,
+      "measuredEligibleCountPerPhase": 24
+    },
+    "stage2": {
+      "candidateCountPerPhase": 48,
+      "minimumEligiblePerPhase": 42,
+      "measuredEligibleCountPerPhase": 36
+    }
+  },
+  "executionSafety": {
+    "perImplementationRootElapsedMs": 180000,
+    "combinedPerRootElapsedMs": 360000,
+    "peakRssBytes": 4294967296,
+    "rootArtifactBytes": 67108864,
+    "stageResultArtifactBytes": 268435456,
+    "stage1ElapsedMs": 14400000,
+    "stage2ElapsedMs": 21600000,
+    "selectionUse": false
+  },
+  "protectedDepth10": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED",
+  "g310ScientificExecutionAuthorized": false,
+  "stage1ScientificExecutionAuthorizedAtFreeze": false,
+  "stage2ScientificExecutionAuthorizedAtFreeze": false,
+  "sameEvidenceRerunAfterFreshAccessAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
