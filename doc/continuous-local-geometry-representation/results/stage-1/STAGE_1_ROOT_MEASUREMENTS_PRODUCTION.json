@@ -1,0 +1,4904 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CLGR-STUDY1",
+  "stageId": "CLGR-S1-DEVELOPMENT-2026-09-03-v1",
+  "complete": true,
+  "rows": [
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910005,
+        "selectedPly": 25,
+        "rootRawSha256": "3f7ceab109881ead16c4e4ff090372199f83b716583c5f30b5b22ad2173a7082",
+        "sourceTrajectorySha256": "801758cb6113a3ea8874b93b1ee09b6d29147df13184348ae762d2ca713e1bc0",
+        "openingPrefixSha256": "26e7c0f43533aaab258857a1b69e920f71e1cdb5c965777350002d355ef9196f",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "9d83c03ad55f94ea7a6ee220c0e5bc70680c79520da687391ad5d7a6ad16c423",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "40a609f70b0b208e5b24bc6674cbfcca3091a27e86117411356d131559eec727",
+        "LGTGMIV-F2-RAW-GRAPH": "7cbb8583b4c6b07d1f81ffd5b36ba5be26699c4361f342a5fd23f7835dfe7276",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "c2354ee511a872ccbe8b773637b513342c80c6116758fc8152aca8857f3136b5",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "e964f8bb6db4cabc9238a496f101192413536ad9ccd86b808e5f8a37ed9cd1d6",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "69e09cb6406b488ed0d0eb0f58798132cefa74c73040df0ef7a0fb85e4a51f10"
+      },
+      "resourceView": {
+        "distinctRawStates": "5374",
+        "uniqueTransitions": "5498",
+        "parentExpansions": "1092",
+        "treeNodeOccurrences": "5830"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "7",
+        "treeNodeOccurrencesDepth0To5": "5830",
+        "distinctRawStatesDepth0To5": "5374",
+        "duplicateEncounterCountDepth0To4": "125",
+        "uniqueTransitionCountDepth0To4": "5498",
+        "unitWidthStatePresenceDepth0To5": "105",
+        "nonterminalRawStatePresenceDepth0To5": "5334"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "7",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "5830",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "5374",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "2915",
+          "denominator": "2687",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "125",
+          "denominator": "5498",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "5",
+          "denominator": "254",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "3f7ceab109881ead16c4e4ff090372199f83b716583c5f30b5b22ad2173a7082",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "7",
+            "denominator": "8",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "5830",
+            "denominator": "5831",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "5374",
+            "denominator": "5375",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "2915",
+            "denominator": "5602",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "125",
+            "denominator": "5623",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "5",
+            "denominator": "259",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910008,
+        "selectedPly": 23,
+        "rootRawSha256": "ec442d5f533b90d4fe038fc4f1299cca4ab770be7f7fd96fa031cd3e947dd598",
+        "sourceTrajectorySha256": "cdd1ef0a8df24fd212236bb8a2876919df776d8dde69d324e8d272800b48cf33",
+        "openingPrefixSha256": "0f32bafb6471e6e9aabe735d342e396d479fcac6e8d1dc7256f83cff9daefab9",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "6b7579ddfb00e822803f2c3aaab4c711a57634d935f468b62756065c3053c0ee",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "e6cb25cc53b66c0724a6b56d26df5362c501b39c58509dbc53ec8ff5d10cab94",
+        "LGTGMIV-F2-RAW-GRAPH": "e8870006a38340f9af6047fd77157784c8e833e57010cc125ce7727bf5f32de6",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "3919e2d9f3c19431706c0d2372ac4a8f3ba883077c628ac6171720c63f42c015",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "e6c0d69b13f16d9b6cdd10c84c2ec136c4cecfbb5c6792f69bab0c8b0edd993c",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "278e03c585018a20334cbfa83a8fe8ef2f66908a2a1db8ad9f0ddffc92f0b0ea"
+      },
+      "resourceView": {
+        "distinctRawStates": "2764",
+        "uniqueTransitions": "2892",
+        "parentExpansions": "662",
+        "treeNodeOccurrences": "2981"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "6",
+        "treeNodeOccurrencesDepth0To5": "2981",
+        "distinctRawStatesDepth0To5": "2764",
+        "duplicateEncounterCountDepth0To4": "129",
+        "uniqueTransitionCountDepth0To4": "2892",
+        "unitWidthStatePresenceDepth0To5": "149",
+        "nonterminalRawStatePresenceDepth0To5": "2716"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "6",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2981",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2764",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "2981",
+          "denominator": "2764",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "43",
+          "denominator": "964",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "149",
+          "denominator": "2716",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "ec442d5f533b90d4fe038fc4f1299cca4ab770be7f7fd96fa031cd3e947dd598",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "6",
+            "denominator": "7",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2981",
+            "denominator": "2982",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2764",
+            "denominator": "2765",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "2981",
+            "denominator": "5745",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "43",
+            "denominator": "1007",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "149",
+            "denominator": "2865",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910009,
+        "selectedPly": 16,
+        "rootRawSha256": "dfb93b6f0fba07cacb9c4af9c290c6848a08259917cc6b258f26a992135711fc",
+        "sourceTrajectorySha256": "ed6d0682702e111ba465229c014e8976bea46a4b4011aa2ba5ca10ca6d624de2",
+        "openingPrefixSha256": "c747cd6aae529ce4974b4209da51793281b15c4847bfc1a2bf913d8d14760de0",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "89b8da932301f30e36defd12825d1171919e9d36634f557293f419764bfcc7a4",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "25808f08ad18196aab45bcff4864f197b5927cfb2bd3190c5bbff807b691c165",
+        "LGTGMIV-F2-RAW-GRAPH": "74a259217becd5768b1119ef5cd88dfbba0702b2167cef98dd2006404502a89c",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "da8d9f70e1a205218a85db324c69380b28ca1bfc7abfb7257e7dd509a313b218",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "9c51d3016dfdac19c5b2af93428780932f299c65bbbc18c3909ee3486066dabb",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "75cc50b6446be33a079e5b4f2a43b8c61c92112e95bba7cdfc06574e80270d52"
+      },
+      "resourceView": {
+        "distinctRawStates": "9142",
+        "uniqueTransitions": "9316",
+        "parentExpansions": "1550",
+        "treeNodeOccurrences": "9858"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "7",
+        "treeNodeOccurrencesDepth0To5": "9858",
+        "distinctRawStatesDepth0To5": "9142",
+        "duplicateEncounterCountDepth0To4": "175",
+        "uniqueTransitionCountDepth0To4": "9316",
+        "unitWidthStatePresenceDepth0To5": "236",
+        "nonterminalRawStatePresenceDepth0To5": "9059"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "7",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "9858",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "9142",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "4929",
+          "denominator": "4571",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "175",
+          "denominator": "9316",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "236",
+          "denominator": "9059",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "dfb93b6f0fba07cacb9c4af9c290c6848a08259917cc6b258f26a992135711fc",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "7",
+            "denominator": "8",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "9858",
+            "denominator": "9859",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "9142",
+            "denominator": "9143",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "4929",
+            "denominator": "9500",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "175",
+            "denominator": "9491",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "236",
+            "denominator": "9295",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910012,
+        "selectedPly": 19,
+        "rootRawSha256": "438f46bc414851b4c0578ae3ee68e271a503c470c0913025d43aa672db6cd15a",
+        "sourceTrajectorySha256": "b0cb06237253f067aa206dc39197e6f357b7f51543827a06bd9f9ac57924ea3b",
+        "openingPrefixSha256": "a6f8a63c1d8217465b1a9c76273eedd5d29960ff681e1292e5397d0c5dde79f2",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "495db5c0cb541354e8b736f3f3c485e75716867bea1797e75a2782fc1e89b454",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "234c7c94006711695127556ea3bb4c7b723cf4e7a84fff4e768a5a278c1b388c",
+        "LGTGMIV-F2-RAW-GRAPH": "d5cb4bb36ae990a7dea0916cbe5b42ce81a8f10d8bf874a47a1fa6190cb6001f",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "5efafa03fd3c31ceff5e4ba525e4d5d0ab59b1c5a8b54e1a13d0f74a702c655f",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "d0a7de6198eec2e1d7e785f63c8febf48bae057f786be97c56bbeccb098b517d",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "4b1dc89561f2f00be1be0748987055bc4e6815acafed155ef1d01f4ac23cf887"
+      },
+      "resourceView": {
+        "distinctRawStates": "2444",
+        "uniqueTransitions": "2496",
+        "parentExpansions": "408",
+        "treeNodeOccurrences": "2587"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "2587",
+        "distinctRawStatesDepth0To5": "2444",
+        "duplicateEncounterCountDepth0To4": "53",
+        "uniqueTransitionCountDepth0To4": "2496",
+        "unitWidthStatePresenceDepth0To5": "39",
+        "nonterminalRawStatePresenceDepth0To5": "2419"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2587",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2444",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "199",
+          "denominator": "188",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "53",
+          "denominator": "2496",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "39",
+          "denominator": "2419",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "438f46bc414851b4c0578ae3ee68e271a503c470c0913025d43aa672db6cd15a",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2587",
+            "denominator": "2588",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2444",
+            "denominator": "2445",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "199",
+            "denominator": "387",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "53",
+            "denominator": "2549",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "39",
+            "denominator": "2458",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910015,
+        "selectedPly": 20,
+        "rootRawSha256": "073b402b64e416de6d739cdef7f6e2f96c57672dde76e767bae7f89ba644216f",
+        "sourceTrajectorySha256": "f56d184c6a7bd0dff0c4751020c7668b676f0f365e77e33181ec2ae1c2849c47",
+        "openingPrefixSha256": "21e5febfc0be5d2bdd253e3599ba08204d770d2539042d66a9c60f3ed26eafc8",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "c379987168a3a1f7e7fd7077edbbd56f047c659373f4df38d83be03db3a85cb1",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "d3f2ceadc6d55a0830c048c1773c08accc631f4ff1f02acd0037dc86425a094c",
+        "LGTGMIV-F2-RAW-GRAPH": "7b6961a232ec0ec12252e2b77a8e3577a4fb25e1a07d1829de014415d5175ec6",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "6d1f06e730ebbb51240bd89fffe87a5c2b7cd4ce30e120ae315b0eef9f385508",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "848358b8b6dd3027ee8684913ad2a81f4a738c400c5adfa8baec519e9bf79c6b",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "e2042ded3eb2ef68fde263e0902b447ae34e72ad0a60ffe2cdee8a9eab041e63"
+      },
+      "resourceView": {
+        "distinctRawStates": "335",
+        "uniqueTransitions": "347",
+        "parentExpansions": "83",
+        "treeNodeOccurrences": "358"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "358",
+        "distinctRawStatesDepth0To5": "335",
+        "duplicateEncounterCountDepth0To4": "13",
+        "uniqueTransitionCountDepth0To4": "347",
+        "unitWidthStatePresenceDepth0To5": "24",
+        "nonterminalRawStatePresenceDepth0To5": "335"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "358",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "335",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "358",
+          "denominator": "335",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "13",
+          "denominator": "347",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "24",
+          "denominator": "335",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "073b402b64e416de6d739cdef7f6e2f96c57672dde76e767bae7f89ba644216f",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "358",
+            "denominator": "359",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "335",
+            "denominator": "336",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "358",
+            "denominator": "693",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "13",
+            "denominator": "360",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "24",
+            "denominator": "359",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910017,
+        "selectedPly": 25,
+        "rootRawSha256": "8f9854c4dd701f5eb717f58994cf819b4dfe0a856994d1f3de079138958a3b10",
+        "sourceTrajectorySha256": "04dfebef5d2de242f19c3f6d6967abd301415e7f972aeef02dce75e35a42fea9",
+        "openingPrefixSha256": "235c87718e84597f38a8f023157842f785916d29e0477a7afd270324bfd7da6a",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "1c0ff9a653d70740faedb5151d290bd7eb3c567107ee00eab0bec617f0c32be6",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "21738dc473041bc9ed97d30944cdc3aed82c341737ddf16b6da7dcc733aed65e",
+        "LGTGMIV-F2-RAW-GRAPH": "d68535e725a819d816ecf8b9edbfd34263cdc9e480fd9c04334bf1bbbc4eea2b",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "2d0d54891112901142e4b016d95227124491017d2666ad3ac46a24b333567981",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "32c3ff465dbb32b06226c78a2330c148f18936c339aacaa8bb08c226cca95624",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "1d84a45d3e673a7ba7ad1f50dd8c07c518f891810fde6772a9c8be233cc866ac"
+      },
+      "resourceView": {
+        "distinctRawStates": "162",
+        "uniqueTransitions": "166",
+        "parentExpansions": "40",
+        "treeNodeOccurrences": "167"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "167",
+        "distinctRawStatesDepth0To5": "162",
+        "duplicateEncounterCountDepth0To4": "5",
+        "uniqueTransitionCountDepth0To4": "166",
+        "unitWidthStatePresenceDepth0To5": "8",
+        "nonterminalRawStatePresenceDepth0To5": "162"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "167",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "162",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "167",
+          "denominator": "162",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "5",
+          "denominator": "166",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "4",
+          "denominator": "81",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "8f9854c4dd701f5eb717f58994cf819b4dfe0a856994d1f3de079138958a3b10",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "167",
+            "denominator": "168",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "162",
+            "denominator": "163",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "167",
+            "denominator": "329",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "5",
+            "denominator": "171",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "4",
+            "denominator": "85",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910018,
+        "selectedPly": 35,
+        "rootRawSha256": "78d0c5eb3d64ed9031698b0f8a140e05cef5aeb38090c4ab35426210e1ebb088",
+        "sourceTrajectorySha256": "5e37a9e499d475be751f432a7110cd29960a3cd68b0b8b5d19d1b846e68f0009",
+        "openingPrefixSha256": "b3d6be4d18aa5258761fd0b173eebb06970dbf3b3ebcb5ec96d952e7fb299105",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "7e95f9a58e813f22eeeebdc88a2d25c2476923da191c265c36111fa70c2f4564",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "df4e240b54b0f7c3dd3e6c018a178efa8b4780b1b0d95458e852f1e56fed8537",
+        "LGTGMIV-F2-RAW-GRAPH": "bc9babcaec0a5a6c5dc2afc49e196bb5a810d8ed5a99e4424004d0b9d025cbea",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "f7a8c534a0dfd6e6ffdeca1265bf4bb95aad08b10154deb26d79e50c81c4b9c2",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "6ca614ab725803ada87fc463f1e5f7f52831f0b11a0f2891cbe89c333dd19fa1",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "e3753ecf3f8b6c555cf60b064502a4f0375c8cfc25a9b3cb9ecae938925386fb"
+      },
+      "resourceView": {
+        "distinctRawStates": "3203",
+        "uniqueTransitions": "3261",
+        "parentExpansions": "581",
+        "treeNodeOccurrences": "3310"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "3310",
+        "distinctRawStatesDepth0To5": "3203",
+        "duplicateEncounterCountDepth0To4": "59",
+        "uniqueTransitionCountDepth0To4": "3261",
+        "unitWidthStatePresenceDepth0To5": "76",
+        "nonterminalRawStatePresenceDepth0To5": "3149"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "3310",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "3203",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "3310",
+          "denominator": "3203",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "59",
+          "denominator": "3261",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "76",
+          "denominator": "3149",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "78d0c5eb3d64ed9031698b0f8a140e05cef5aeb38090c4ab35426210e1ebb088",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "3310",
+            "denominator": "3311",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "3203",
+            "denominator": "3204",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "3310",
+            "denominator": "6513",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "59",
+            "denominator": "3320",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "76",
+            "denominator": "3225",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910019,
+        "selectedPly": 27,
+        "rootRawSha256": "0f0a063093257d603fbb08d32054e564043cd7d23d42c412fd9d09f858987b9d",
+        "sourceTrajectorySha256": "d31d85cbbc15d36ec00e6e9908fd1c377a674ab929aaaf111cc38136ac371055",
+        "openingPrefixSha256": "09054a0aa5a5ea35adb8e087b49fa6097c5d24e8657d08d58645fa05524aa98e",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "3e1a46d82d859e7b9d364c053a4bede21351ddb71bfc3ad4601026ca3732e177",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "820da57c2654608f91a01db406be6b5413fa48e9b3d862d60dbebad9d8e752f9",
+        "LGTGMIV-F2-RAW-GRAPH": "f116c3e4d62a90d077a1f1f2d34a684ea4cae82d455e45d31fba19a59268cc43",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "5033bcd859d463328f03061a0f21ed0290cb7b92240ef0b5605162b7d0835a92",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "d2ca2d618246d80db9b73c9ef306f2381d5db8e3a62bf8d82e131de524b2c76f",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "a682cec6019c776a6210b5b463c71f51a3382a4bbcfa7bc63ab74ec82787bca0"
+      },
+      "resourceView": {
+        "distinctRawStates": "793",
+        "uniqueTransitions": "814",
+        "parentExpansions": "196",
+        "treeNodeOccurrences": "864"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "864",
+        "distinctRawStatesDepth0To5": "793",
+        "duplicateEncounterCountDepth0To4": "22",
+        "uniqueTransitionCountDepth0To4": "814",
+        "unitWidthStatePresenceDepth0To5": "49",
+        "nonterminalRawStatePresenceDepth0To5": "786"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "864",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "793",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "864",
+          "denominator": "793",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "1",
+          "denominator": "37",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "49",
+          "denominator": "786",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "0f0a063093257d603fbb08d32054e564043cd7d23d42c412fd9d09f858987b9d",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "864",
+            "denominator": "865",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "793",
+            "denominator": "794",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "864",
+            "denominator": "1657",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "1",
+            "denominator": "38",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "49",
+            "denominator": "835",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910023,
+        "selectedPly": 41,
+        "rootRawSha256": "d4b0c52ca3ad3bf47d67abd9bde23c72deda82b5dbfb4c90d5624f7c8f0b78b1",
+        "sourceTrajectorySha256": "343d571d86edcdce05e1c6da0602beaf46f6fae1112e0c0d9d96b9fcd6f60a4b",
+        "openingPrefixSha256": "1590abf86febae4a23f22dc5e0920b9fd4d199bc68f31a5e27174b1ee549e79c",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "6a5852a2b21f42adf9380fbd9b09e52512c0cb102e9d7eee9b1c9e910ae17133",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "2b1f88bc1f672cae6828cb1721dc649edd425df33e242312c1b8a0c5794899a9",
+        "LGTGMIV-F2-RAW-GRAPH": "6b30d1fe4fca23016c9b141416a4d2f8fba0f64fae3f1e85292a427d1af261e8",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "7fec1443160a79e7d97b232c41eaa6ef7fe50809513623f5a3d9dd7a7ecc100c",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "71526555c031ea91c3be7ff79975b1eb6e290c101c07a1bb5f8254cc977f3cee",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "6448cd202e7c60e5d01c63bd41ab8ac79843f6f5772c77bedd19f21e11281967"
+      },
+      "resourceView": {
+        "distinctRawStates": "368",
+        "uniqueTransitions": "367",
+        "parentExpansions": "122",
+        "treeNodeOccurrences": "368"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "368",
+        "distinctRawStatesDepth0To5": "368",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "367",
+        "unitWidthStatePresenceDepth0To5": "60",
+        "nonterminalRawStatePresenceDepth0To5": "362"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "368",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "368",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "30",
+          "denominator": "181",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "d4b0c52ca3ad3bf47d67abd9bde23c72deda82b5dbfb4c90d5624f7c8f0b78b1",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "368",
+            "denominator": "369",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "368",
+            "denominator": "369",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "30",
+            "denominator": "211",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910024,
+        "selectedPly": 42,
+        "rootRawSha256": "b26f4bd603ad6f1422416b7ff5c35c9c096a64821d56c2c95e8cbaf41c440e26",
+        "sourceTrajectorySha256": "b7f4a65e9ae191c8decbc2e63a2e520098678524dadfebed40b15847de47e5c2",
+        "openingPrefixSha256": "e89a49dcd88f49751003e7bac864f1022e72496754e0a376db68c9b85ba54285",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "1cda37e34188a12c1af169497ab6d44e2a87c8f388692e15a632159b8040e040",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "6dfbb9895ea47ec10832261db67872de8da4342900f24343927423c66d87f2ac",
+        "LGTGMIV-F2-RAW-GRAPH": "50bcf72b64a11775807967b84085d69f9ccb5f5d170fe4e48e760575573ed7c5",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "cefc8bb9ca58f57ed376d1ac3a807c47c79a641a8883cb4cc4f4c1333a873d3b",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "2e0196b37257803aaec9a766ce1596cd08ce1be30984060499c6f2a823dd0a8a",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "0ed560da638a55a30946213189f958320e57f36414d89d9ca6aa62cfddcbdd2f"
+      },
+      "resourceView": {
+        "distinctRawStates": "2163",
+        "uniqueTransitions": "2164",
+        "parentExpansions": "673",
+        "treeNodeOccurrences": "2165"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "7",
+        "treeNodeOccurrencesDepth0To5": "2165",
+        "distinctRawStatesDepth0To5": "2163",
+        "duplicateEncounterCountDepth0To4": "2",
+        "uniqueTransitionCountDepth0To4": "2164",
+        "unitWidthStatePresenceDepth0To5": "357",
+        "nonterminalRawStatePresenceDepth0To5": "2118"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "7",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2165",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2163",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "2165",
+          "denominator": "2163",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "1",
+          "denominator": "1082",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "119",
+          "denominator": "706",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "b26f4bd603ad6f1422416b7ff5c35c9c096a64821d56c2c95e8cbaf41c440e26",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "7",
+            "denominator": "8",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2165",
+            "denominator": "2166",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2163",
+            "denominator": "2164",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "2165",
+            "denominator": "4328",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "1",
+            "denominator": "1083",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "119",
+            "denominator": "825",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910029,
+        "selectedPly": 22,
+        "rootRawSha256": "3d54536c123d2ece7b7e8e1510e79cb27f585ccbafc1ca786890c0cafc811bb1",
+        "sourceTrajectorySha256": "321fd1a025d98477ab743a3d730348b7bbb7fbce6f5a9b9665e223528e589d87",
+        "openingPrefixSha256": "e83531041d688e5716b8b0aa171db71d571f47489ed9880974917e240b88f968",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "42a9401990e50566344531072c7b3d3e8df0fbff04256e808d6ef5a97c1486a5",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "a1a7a3ffa13941b083b1ecb25807b9666d34a25ee0fb3326d69044b56b300a3b",
+        "LGTGMIV-F2-RAW-GRAPH": "912fd3ecd27de27c5041bfdb84534479ea8c78107d3cd06f12289fedf2c498fe",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "dc5ce4594b7f4caf677ebcce7795322314cb4c78087e15837e8d50ae74a81d12",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "68bec2c9f45bc6bfa1c619dacaf784a6689b70812f85a11e907b3ec1d65fd1ed",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "4fd491f78dd3d9ecbeb405613d8e0d8a8b8b8f4f1cd14319d24e298d2bc2b368"
+      },
+      "resourceView": {
+        "distinctRawStates": "735",
+        "uniqueTransitions": "745",
+        "parentExpansions": "170",
+        "treeNodeOccurrences": "746"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "746",
+        "distinctRawStatesDepth0To5": "735",
+        "duplicateEncounterCountDepth0To4": "11",
+        "uniqueTransitionCountDepth0To4": "745",
+        "unitWidthStatePresenceDepth0To5": "36",
+        "nonterminalRawStatePresenceDepth0To5": "729"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "746",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "735",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "746",
+          "denominator": "735",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "11",
+          "denominator": "745",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "4",
+          "denominator": "81",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "3d54536c123d2ece7b7e8e1510e79cb27f585ccbafc1ca786890c0cafc811bb1",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "746",
+            "denominator": "747",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "735",
+            "denominator": "736",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "746",
+            "denominator": "1481",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "11",
+            "denominator": "756",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "4",
+            "denominator": "85",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910031,
+        "selectedPly": 23,
+        "rootRawSha256": "6bccd34530d58b7a44041681940876b61b3550445ae65ca49da6d3a7d511c7e9",
+        "sourceTrajectorySha256": "b90d0af189e9aced6b4608559c65c3564bd4f695e8776cbc554226ac548af375",
+        "openingPrefixSha256": "c80430f50404d26ac3969e3fc5c44b9f9bade81a09b4bc1798dc0a25b49e18d9",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "edd0fa010d65c5e36b96c1290f3940fac2620e44e4c37b459c92227e4b2145d9",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "56c94a9e35459d06d6ff37ccf63181ee3a48dae1659af4db0683352123c86841",
+        "LGTGMIV-F2-RAW-GRAPH": "1e85c339811e38d6a8784d8859a589bca8e6d548ac85bbc5f88e31356d189b12",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "61e012d831cf26e51181836b2860432e7889fcdd9abf1bdfa06c3e48dba8c755",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "a62a48126277fa2568389a3a8718b7ec0c69f69d6dcc3f913052a119745546b3",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "01cdf222f4829e3ca2c40c0e90be94bb1502f571f5b4235fe9505fb6c3d87f3c"
+      },
+      "resourceView": {
+        "distinctRawStates": "5856",
+        "uniqueTransitions": "6072",
+        "parentExpansions": "1184",
+        "treeNodeOccurrences": "6407"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "6",
+        "treeNodeOccurrencesDepth0To5": "6407",
+        "distinctRawStatesDepth0To5": "5856",
+        "duplicateEncounterCountDepth0To4": "217",
+        "uniqueTransitionCountDepth0To4": "6072",
+        "unitWidthStatePresenceDepth0To5": "156",
+        "nonterminalRawStatePresenceDepth0To5": "5790"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "6",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "6407",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "5856",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "6407",
+          "denominator": "5856",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "217",
+          "denominator": "6072",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "26",
+          "denominator": "965",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "6bccd34530d58b7a44041681940876b61b3550445ae65ca49da6d3a7d511c7e9",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "6",
+            "denominator": "7",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "6407",
+            "denominator": "6408",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "5856",
+            "denominator": "5857",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "6407",
+            "denominator": "12263",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "217",
+            "denominator": "6289",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "26",
+            "denominator": "991",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910032,
+        "selectedPly": 16,
+        "rootRawSha256": "273eff404ff1335e224cf107ae3627e67b5a5846a564a23eb87ef717e369d76f",
+        "sourceTrajectorySha256": "d47061bc71e06f0bf16ccf235c81e4c5298a5de3f00080adf2f0fbe82700d6b1",
+        "openingPrefixSha256": "a7339a065e9ecbe58bad577b498899f1a70a0cb1ff5745d5b37076113062ce38",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "ea64bc612c3c2a9517bafcc968b8e80f3c9817cadb1ead45654becd513195e1e",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "83b5e7e5a67f6251238ada41cb7689ef63495526e22db0792e71a2ef11d0f2ce",
+        "LGTGMIV-F2-RAW-GRAPH": "2a078e5b71396caad4bb9c2ebe60055bf19ee602d5ba98ee86fa85ee6c825118",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "9740e63a2a4ee3bc51e30548378cac442c41a084a9bb10b9f34c3ecc62a0138d",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "b2ff3831c658b511a35338153e5b6ffcf2eea6fc1ccc22e2e1a0ffe3316b3b3f",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "8943b0e7336697c3284ac79f7df9378ae57ff0d3e9de5419785dec6075416a14"
+      },
+      "resourceView": {
+        "distinctRawStates": "114",
+        "uniqueTransitions": "115",
+        "parentExpansions": "46",
+        "treeNodeOccurrences": "116"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "116",
+        "distinctRawStatesDepth0To5": "114",
+        "duplicateEncounterCountDepth0To4": "2",
+        "uniqueTransitionCountDepth0To4": "115",
+        "unitWidthStatePresenceDepth0To5": "22",
+        "nonterminalRawStatePresenceDepth0To5": "114"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "116",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "114",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "58",
+          "denominator": "57",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "2",
+          "denominator": "115",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "11",
+          "denominator": "57",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "273eff404ff1335e224cf107ae3627e67b5a5846a564a23eb87ef717e369d76f",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "116",
+            "denominator": "117",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "114",
+            "denominator": "115",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "58",
+            "denominator": "115",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "2",
+            "denominator": "117",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "11",
+            "denominator": "68",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910033,
+        "selectedPly": 33,
+        "rootRawSha256": "d1495a45d4d3c0e01656d1f654d48e009e8b47512b4ddce1c89bdfea3032fc95",
+        "sourceTrajectorySha256": "e388e64e48861fd6af9cb4234468389f4da20f59cb941b80ed04ecf50afd3315",
+        "openingPrefixSha256": "3fb806dd8a5061de8caa8ad55faf10e4dba8cfdbde7d99bfb5695655bcca2e52",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "4591ea350b4b72f1361cba5349a208ffb3f105ee9ec65fb0b774624a2c4d473b",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "ea4efd181947b1fba2adfa978d510d844d411eb2aa85470363e3e911a06181e7",
+        "LGTGMIV-F2-RAW-GRAPH": "43bb8711dfea8dcc0a57c775fa564aa482474d8f868f2b1914a5160168642cad",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "21e16f93d4b2d37e9b43a1de9bc70775ce0edeaa71339cf7bbe1738f745a9a1b",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "02c7c8f090fa95cde80a901798e81b62c5a8a65a6b9cfadf250c51feb662d9b9",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "6ea50579a0d779576ebdf0804bd0660a640828fb13c390381085a3fc89363c15"
+      },
+      "resourceView": {
+        "distinctRawStates": "682",
+        "uniqueTransitions": "703",
+        "parentExpansions": "161",
+        "treeNodeOccurrences": "710"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "710",
+        "distinctRawStatesDepth0To5": "682",
+        "duplicateEncounterCountDepth0To4": "22",
+        "uniqueTransitionCountDepth0To4": "703",
+        "unitWidthStatePresenceDepth0To5": "31",
+        "nonterminalRawStatePresenceDepth0To5": "666"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "710",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "682",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "355",
+          "denominator": "341",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "22",
+          "denominator": "703",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "31",
+          "denominator": "666",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "d1495a45d4d3c0e01656d1f654d48e009e8b47512b4ddce1c89bdfea3032fc95",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "710",
+            "denominator": "711",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "682",
+            "denominator": "683",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "355",
+            "denominator": "696",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "22",
+            "denominator": "725",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "31",
+            "denominator": "697",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910034,
+        "selectedPly": 16,
+        "rootRawSha256": "be2944cc21db467e3d1f3a1d6baa0c4c4fc0b4212a85851812b7a2d412f078c3",
+        "sourceTrajectorySha256": "05508d0a8e677cb47799b05fedf275ec7cb04612cd4922d2d38419f4e2a1f8bb",
+        "openingPrefixSha256": "d8dfaf5b0cfca4ec4d57b25ac655753ace8bf813d6dc93769d2745be660cb4af",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "1aa5eb017890860b476e6b06615d53ffe0143882c155a048c14c4c81efbf6b5c",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "2256bda55a4666d55515c65a5a50eb2554bc1856924a9cfcaa32631348b051d3",
+        "LGTGMIV-F2-RAW-GRAPH": "7ad6c7bd0fc3cc11f327d13bb733bb1549c945e117456f78bb85000020943f2a",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "dfc7b53dbbfe3827612065aa2dcef28aa0d7c865ab2018fc8fb84d38f408c3c1",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "5b02594ff5fd9a82689e21df6c66561cc8e6bd4c84097805248456394d227fca",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "98c833d6d77600db3ad99522030f582574bdd498d7cb1dfdf80c54ddce248809"
+      },
+      "resourceView": {
+        "distinctRawStates": "263",
+        "uniqueTransitions": "277",
+        "parentExpansions": "54",
+        "treeNodeOccurrences": "278"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "278",
+        "distinctRawStatesDepth0To5": "263",
+        "duplicateEncounterCountDepth0To4": "15",
+        "uniqueTransitionCountDepth0To4": "277",
+        "unitWidthStatePresenceDepth0To5": "9",
+        "nonterminalRawStatePresenceDepth0To5": "260"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "278",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "263",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "278",
+          "denominator": "263",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "15",
+          "denominator": "277",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "9",
+          "denominator": "260",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "be2944cc21db467e3d1f3a1d6baa0c4c4fc0b4212a85851812b7a2d412f078c3",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "278",
+            "denominator": "279",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "263",
+            "denominator": "264",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "278",
+            "denominator": "541",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "15",
+            "denominator": "292",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "9",
+            "denominator": "269",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910035,
+        "selectedPly": 16,
+        "rootRawSha256": "155209d058cc8654c1dcdf238550b47438a0f598b86af820b2b226a3d9c0e060",
+        "sourceTrajectorySha256": "aca96389d87ec62e518b0b52e3567e66e5389c0876393bf85fc16de55b7a1729",
+        "openingPrefixSha256": "30a7b33d76e86e385b82c8e5f5fa6ba308ab5205e8b399ebead77f69ac45b825",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "79d9550d7513ab3161d90b60afe96f05f7114ef9eb00e720b3054f2baadfca6b",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "1bb127f69c7b407c05623018033c56e8b96ad8aef53a5a45905c2cb02c470053",
+        "LGTGMIV-F2-RAW-GRAPH": "d143b88df40898c60dbb36cd8db7b1e0f255c2f98ccc657fd793a92b9076f7e4",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "c202fce3ce179fd9bdba4582acab0c341e7f906b1b83cb5288c6b2b821f708c3",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "2aa74980cfe543bf7981d91b692054c73dc85cd738394bb63599e2d3fb4ac1c8",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "4de055d391721c2014c2751aedd4ce4600d26322e3e4103cdb86f193b4741c88"
+      },
+      "resourceView": {
+        "distinctRawStates": "1390",
+        "uniqueTransitions": "1445",
+        "parentExpansions": "383",
+        "treeNodeOccurrences": "1524"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "4",
+        "treeNodeOccurrencesDepth0To5": "1524",
+        "distinctRawStatesDepth0To5": "1390",
+        "duplicateEncounterCountDepth0To4": "56",
+        "uniqueTransitionCountDepth0To4": "1445",
+        "unitWidthStatePresenceDepth0To5": "163",
+        "nonterminalRawStatePresenceDepth0To5": "1368"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "4",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "1524",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "1390",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "762",
+          "denominator": "695",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "56",
+          "denominator": "1445",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "163",
+          "denominator": "1368",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "155209d058cc8654c1dcdf238550b47438a0f598b86af820b2b226a3d9c0e060",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "5",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "1524",
+            "denominator": "1525",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "1390",
+            "denominator": "1391",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "762",
+            "denominator": "1457",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "56",
+            "denominator": "1501",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "163",
+            "denominator": "1531",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910036,
+        "selectedPly": 26,
+        "rootRawSha256": "7bab1f81a20dad401a2df25cae43c6328af06c5e998933c55a3b323599ddc35c",
+        "sourceTrajectorySha256": "8d67b91e4a7c193311a0e642572ccf85216159a571d89ec21ee0e22e48b2c2c9",
+        "openingPrefixSha256": "b57c92a33bfa91308a3e60b6302a2aca0df4a4d7d42e478d1740651a553eb730",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "44517a62f5bc6b7249c6ba1165a7c43cb03faa38e64099aa69c0f87bee7d165e",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "aa229e1d487f1761a5cd2892d60d656666dee7a2d1b895e3550f1784cb16bfec",
+        "LGTGMIV-F2-RAW-GRAPH": "0c93aab9ab73e71f6efeb567c1aa82f51d6fa2d285c2693a5b333366fd3c702b",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "5e74d1bc57d38dc1703fee454978f908c96d5c9ed0e41d4847855675db904ad8",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "fa6af5472b3e0937efc0f0ccfcd57a24694189344afe998b81fe6c4997ff8e87",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "b88de27ba841124445e9f30502743433541312e98f014773e02b10e460595f55"
+      },
+      "resourceView": {
+        "distinctRawStates": "9234",
+        "uniqueTransitions": "9507",
+        "parentExpansions": "1701",
+        "treeNodeOccurrences": "9651"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "9",
+        "treeNodeOccurrencesDepth0To5": "9651",
+        "distinctRawStatesDepth0To5": "9234",
+        "duplicateEncounterCountDepth0To4": "274",
+        "uniqueTransitionCountDepth0To4": "9507",
+        "unitWidthStatePresenceDepth0To5": "324",
+        "nonterminalRawStatePresenceDepth0To5": "9030"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "9",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "9651",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "9234",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "3217",
+          "denominator": "3078",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "274",
+          "denominator": "9507",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "54",
+          "denominator": "1505",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "7bab1f81a20dad401a2df25cae43c6328af06c5e998933c55a3b323599ddc35c",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "9",
+            "denominator": "10",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "9651",
+            "denominator": "9652",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "9234",
+            "denominator": "9235",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "3217",
+            "denominator": "6295",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "274",
+            "denominator": "9781",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "54",
+            "denominator": "1559",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910037,
+        "selectedPly": 26,
+        "rootRawSha256": "5fdf580774fb5e59c8c4728280fbb3e6985c24832921c55131acea7c6c60cd9b",
+        "sourceTrajectorySha256": "e0db3b1a34a5ff1514d968ec0a9a138f1d7742d76d013238839c1edd18ba5c0d",
+        "openingPrefixSha256": "d24e2acefad3be9aaab652cdaa1892b9c89c33c63573e4fd223831eee5e0e3ab",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "760976a40c48aaa596bbb9ce70de2dcc65ddc93171efe473e661d423f3dd1bd3",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "55497dd18df57a430b51c77879d0095769c5bb28a876947056bb2cdf5738b9f5",
+        "LGTGMIV-F2-RAW-GRAPH": "98187942a3d31e59643cfc9e522a7ddfb7030a628a7f9dda76d1172a3f27938d",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "e059383ee720a6765dfdcc62f4e32b2e54ca656ba58df867b86511daaceba75e",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "ed5f208f3abc9b7e5b0f7e2f26126a384a74a01dd52fe7362c01215bf4b64a04",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "bd69cab660d6198b87d4bc236a00216858ce0078c05ed97a13f0df816e6cb0fd"
+      },
+      "resourceView": {
+        "distinctRawStates": "16631",
+        "uniqueTransitions": "16894",
+        "parentExpansions": "2813",
+        "treeNodeOccurrences": "17319"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "9",
+        "treeNodeOccurrencesDepth0To5": "17319",
+        "distinctRawStatesDepth0To5": "16631",
+        "duplicateEncounterCountDepth0To4": "264",
+        "uniqueTransitionCountDepth0To4": "16894",
+        "unitWidthStatePresenceDepth0To5": "255",
+        "nonterminalRawStatePresenceDepth0To5": "16472"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "9",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "17319",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "16631",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "17319",
+          "denominator": "16631",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "132",
+          "denominator": "8447",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "255",
+          "denominator": "16472",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "5fdf580774fb5e59c8c4728280fbb3e6985c24832921c55131acea7c6c60cd9b",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "9",
+            "denominator": "10",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "17319",
+            "denominator": "17320",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "16631",
+            "denominator": "16632",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "17319",
+            "denominator": "33950",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "132",
+            "denominator": "8579",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "255",
+            "denominator": "16727",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910038,
+        "selectedPly": 25,
+        "rootRawSha256": "ea7451137e6d57c1202983199335759865dd4b7b8999a39d8952c8bec1b1f9bd",
+        "sourceTrajectorySha256": "8370b2a52f2c541a726a96280ca959d6a76043004e4992186d3bad6d219d8f65",
+        "openingPrefixSha256": "a2de043190be30de8a315989ac76e9d31fdfa90b203dbb3290780b4b8f48ccb8",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "97f2b98c74c33b6855d81a34fee3de12bbde75750e40612d51b9b0074ad62a5c",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "bd64d74244cce54fa3231d495002a0d446114366c21b20026f8676f8fcfeed14",
+        "LGTGMIV-F2-RAW-GRAPH": "72c4272ed94733c558c49db874ad6d719f556ab251d946e3255ad735b9d17321",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "510652d45a954a05f1dd71f812673ac3316086786202cd581eba56dfeaf99095",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "c42fc88c153ff31c243541f985218b21259068f855b30dcade3b6792b56cd7fd",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "429de04e438c188e997129e68bb760f626ddc31528fcb7192bfa279a4102073d"
+      },
+      "resourceView": {
+        "distinctRawStates": "7822",
+        "uniqueTransitions": "8018",
+        "parentExpansions": "1310",
+        "treeNodeOccurrences": "8386"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "5",
+        "treeNodeOccurrencesDepth0To5": "8386",
+        "distinctRawStatesDepth0To5": "7822",
+        "duplicateEncounterCountDepth0To4": "197",
+        "uniqueTransitionCountDepth0To4": "8018",
+        "unitWidthStatePresenceDepth0To5": "165",
+        "nonterminalRawStatePresenceDepth0To5": "7734"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "5",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "8386",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "7822",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "4193",
+          "denominator": "3911",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "197",
+          "denominator": "8018",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "55",
+          "denominator": "2578",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "ea7451137e6d57c1202983199335759865dd4b7b8999a39d8952c8bec1b1f9bd",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "5",
+            "denominator": "6",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "8386",
+            "denominator": "8387",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "7822",
+            "denominator": "7823",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "4193",
+            "denominator": "8104",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "197",
+            "denominator": "8215",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "55",
+            "denominator": "2633",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910042,
+        "selectedPly": 18,
+        "rootRawSha256": "2e47f906576d47185824775ec8d4212953d0c5ed34fddf95daddb87e3700b6f1",
+        "sourceTrajectorySha256": "bd891c21241f9194b7c31fcf6d70d283f5499997f13d1f78aa2b6acf3ebbc120",
+        "openingPrefixSha256": "b471ca9a1c475f983028ae2409bcf50fba75e67f648b66869c8e21b6d6ca0189",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "63479cecd6cc1c3dbc14d84d76c5bc49fb3133693b4cabb8e24e7a054f312b4a",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "e4f59dee292d66071c9ac55a6337baf8b8ea075c0cfa4eeeb1c025f22fb43f24",
+        "LGTGMIV-F2-RAW-GRAPH": "e7b0e6bab7d39e63446412be8ad1bb94edd57a4fc758615784d2ab95115675ae",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "831d252e8cdeb5dda35c24822041a770c0a14281c50dbccf53f190ca1ba7ed16",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "b9738e381027c6d91c92ed29798f7f12adec60ac28f1bbc82a6641f736e822a2",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "8bc8ae22cbd9294016984ec409cee834ac0be472e3abafba414828ccfc934f25"
+      },
+      "resourceView": {
+        "distinctRawStates": "516",
+        "uniqueTransitions": "534",
+        "parentExpansions": "138",
+        "treeNodeOccurrences": "546"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "546",
+        "distinctRawStatesDepth0To5": "516",
+        "duplicateEncounterCountDepth0To4": "19",
+        "uniqueTransitionCountDepth0To4": "534",
+        "unitWidthStatePresenceDepth0To5": "41",
+        "nonterminalRawStatePresenceDepth0To5": "508"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "546",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "516",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "91",
+          "denominator": "86",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "19",
+          "denominator": "534",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "41",
+          "denominator": "508",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "2e47f906576d47185824775ec8d4212953d0c5ed34fddf95daddb87e3700b6f1",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "546",
+            "denominator": "547",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "516",
+            "denominator": "517",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "91",
+            "denominator": "177",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "19",
+            "denominator": "553",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "41",
+            "denominator": "549",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910045,
+        "selectedPly": 30,
+        "rootRawSha256": "62f75e8cb2fd8f1882cad2ab4cefffa163a4c55cefefe3342e48d62465520ab2",
+        "sourceTrajectorySha256": "fc626715b46035841a66b16a680d231bdad53fa43373ee15cf7245b07ed96209",
+        "openingPrefixSha256": "fa5e017edb1353afe685a536db199291115620d0bdeb3640c388df4cf2af4736",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "cad63ebf49038e488eeccf977053d4ab1086185a069b311d05f4033b437c81df",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "89d61062374e8bfa22e8b283a4191a34885f88cfc517117769c779fddcf31565",
+        "LGTGMIV-F2-RAW-GRAPH": "9e29027ef4ac9347ff9d0bcbb4ce1136972af64a5a835ce66f289241baba53af",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "13ba12601ecbe29e3a3ea61764a059b8f3be9c7ac2d090bdc329faf672e3180d",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "a02b6f2d77470f7b8a3a9bbee7dd083cbd921d5b2c6fa6486446938d8cb02e9c",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "4e257ac7180de43f4d2c077b9ba52f3b27f7d102eb0ac625c95163c48eb95cd1"
+      },
+      "resourceView": {
+        "distinctRawStates": "4933",
+        "uniqueTransitions": "5003",
+        "parentExpansions": "925",
+        "treeNodeOccurrences": "5160"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "4",
+        "treeNodeOccurrencesDepth0To5": "5160",
+        "distinctRawStatesDepth0To5": "4933",
+        "duplicateEncounterCountDepth0To4": "71",
+        "uniqueTransitionCountDepth0To4": "5003",
+        "unitWidthStatePresenceDepth0To5": "162",
+        "nonterminalRawStatePresenceDepth0To5": "4811"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "4",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "5160",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "4933",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "5160",
+          "denominator": "4933",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "71",
+          "denominator": "5003",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "162",
+          "denominator": "4811",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "62f75e8cb2fd8f1882cad2ab4cefffa163a4c55cefefe3342e48d62465520ab2",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "5",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "5160",
+            "denominator": "5161",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "4933",
+            "denominator": "4934",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "5160",
+            "denominator": "10093",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "71",
+            "denominator": "5074",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "162",
+            "denominator": "4973",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910046,
+        "selectedPly": 36,
+        "rootRawSha256": "a845fc2998dfa4e3ed0e5cb1ae3727efd629c42ad8c31f264a9f91984ea4e079",
+        "sourceTrajectorySha256": "c0e3ac5e36cd567041cd167e3de0a6eb77c45f24c3133818660501dde4f9fc9c",
+        "openingPrefixSha256": "aa1741f9800e4e939b6cc515bc05455b26a4f8d65d7b32d672c9e90515cc99fd",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "00c4b9f0e39c6cbf1d4d1d23b446a7e6d3c911cc334f7bc041534dccad3a0ba7",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "79cc8fe71988f0654f46fea5a61b73bd7fbeb335cef3634625436cdb7be461cf",
+        "LGTGMIV-F2-RAW-GRAPH": "c43efba7fc9433c80ed42e58cdbe609873ff8a326fb4e4679e2715b51e6bbde6",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "a68fa67d4a6f30a3dc8432d5dbf7556da1ee0db13a3d637571fad71670f22751",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "12958db4d5ad0d988e767e63d78f79158bccdc0bdd5b9cdf641d78556794bbc5",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "05e8fca96304dce7b982c1c155f4f202239a05123be4db9c20166c233977b5a9"
+      },
+      "resourceView": {
+        "distinctRawStates": "841",
+        "uniqueTransitions": "874",
+        "parentExpansions": "189",
+        "treeNodeOccurrences": "875"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "875",
+        "distinctRawStatesDepth0To5": "841",
+        "duplicateEncounterCountDepth0To4": "34",
+        "uniqueTransitionCountDepth0To4": "874",
+        "unitWidthStatePresenceDepth0To5": "40",
+        "nonterminalRawStatePresenceDepth0To5": "830"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "875",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "841",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "875",
+          "denominator": "841",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "17",
+          "denominator": "437",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "4",
+          "denominator": "83",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "a845fc2998dfa4e3ed0e5cb1ae3727efd629c42ad8c31f264a9f91984ea4e079",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "875",
+            "denominator": "876",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "841",
+            "denominator": "842",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "875",
+            "denominator": "1716",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "17",
+            "denominator": "454",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "4",
+            "denominator": "87",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910052,
+        "selectedPly": 37,
+        "rootRawSha256": "8e184f56ba138435663f1444b8bd2d619ad05b7b5cb76c6a42a3aa65c22ca72e",
+        "sourceTrajectorySha256": "44421c39cf2bb6a14afc2cee782a963969f4323388ba07fa0ce52c26b41e3c45",
+        "openingPrefixSha256": "90a373a98ad1dcccd7e45172795a79b78981e60fe39d9394c0ea21db99c6dc7f",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "a233e3f33a5c87c7a4c03cee88355316e16032aeed72256501f289608d8bf371",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "9087a411013bc87fdce21bcb7f8375827edba215b1a50c423e0affc6512be5d6",
+        "LGTGMIV-F2-RAW-GRAPH": "beb04640a14eceff38fa1aa15d5d338e78b6e335980ee7f02f3eee479c5ec75d",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "85ee643868467086a5968546054a5f31480e7f6d856593bcf0ca85c816f0497c",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "159dac8663d0687260582d460d73e6534dbd6c47318d3661837d8bd8b82fbaf5",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "0d227beaa6d23b7904e0097158b86a146b896b11c5eb75413ab5b27f6392ed45"
+      },
+      "resourceView": {
+        "distinctRawStates": "7028",
+        "uniqueTransitions": "7093",
+        "parentExpansions": "1253",
+        "treeNodeOccurrences": "7541"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "5",
+        "treeNodeOccurrencesDepth0To5": "7541",
+        "distinctRawStatesDepth0To5": "7028",
+        "duplicateEncounterCountDepth0To4": "66",
+        "uniqueTransitionCountDepth0To4": "7093",
+        "unitWidthStatePresenceDepth0To5": "114",
+        "nonterminalRawStatePresenceDepth0To5": "6938"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "5",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "7541",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "7028",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "7541",
+          "denominator": "7028",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "66",
+          "denominator": "7093",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "57",
+          "denominator": "3469",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "8e184f56ba138435663f1444b8bd2d619ad05b7b5cb76c6a42a3aa65c22ca72e",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "5",
+            "denominator": "6",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "7541",
+            "denominator": "7542",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "7028",
+            "denominator": "7029",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "7541",
+            "denominator": "14569",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "66",
+            "denominator": "7159",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "57",
+            "denominator": "3526",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "namua",
+        "sourceSeed": 31910053,
+        "selectedPly": 33,
+        "rootRawSha256": "e7ae6cf9df91043112dd4b4ef32317ccdbca29d4932c7417c766e3fa0f2ff353",
+        "sourceTrajectorySha256": "0b9ffc5f8b2935efe5be376270abbc0fa1f8e8db7062a3abe0024502d1d4c7c5",
+        "openingPrefixSha256": "f668aec013c817338c646dad4ed7f434a8b9373cd5109f395e73221febdf4396",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "551005d3b8281522501a759beea1d53b3efd6e6482e80f000638e57de1a914e0",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "fbd8ffe705f0683e21120631e1343be65e4eb6e4f71b08afa65b5db557ed0f27",
+        "LGTGMIV-F2-RAW-GRAPH": "126137df9dbce0d18e56aa587618d6ddaafc392b40e5d83c14b537748e522a79",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "52b62cfad777ec02028e17040e8a29bd0b4ec735f25ff9c272ea0a9520be9b5e",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "185c322bad4be824debb01a48e241c83691e9e3c28d2fa60b494f5a566b81d10",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "104d036056e6778728a01d98cdc3485c7a6ae3481a439df5e2e9b53a44819196"
+      },
+      "resourceView": {
+        "distinctRawStates": "2102",
+        "uniqueTransitions": "2141",
+        "parentExpansions": "405",
+        "treeNodeOccurrences": "2230"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "4",
+        "treeNodeOccurrencesDepth0To5": "2230",
+        "distinctRawStatesDepth0To5": "2102",
+        "duplicateEncounterCountDepth0To4": "40",
+        "uniqueTransitionCountDepth0To4": "2141",
+        "unitWidthStatePresenceDepth0To5": "35",
+        "nonterminalRawStatePresenceDepth0To5": "2075"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "4",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2230",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2102",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1115",
+          "denominator": "1051",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "40",
+          "denominator": "2141",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "7",
+          "denominator": "415",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "e7ae6cf9df91043112dd4b4ef32317ccdbca29d4932c7417c766e3fa0f2ff353",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "5",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2230",
+            "denominator": "2231",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2102",
+            "denominator": "2103",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1115",
+            "denominator": "2166",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "40",
+            "denominator": "2181",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "7",
+            "denominator": "422",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910002,
+        "selectedPly": 57,
+        "rootRawSha256": "e94bd8718eb9de2270dc8f3346379bbb52bad1f6a350ce2fed577046f992cca8",
+        "sourceTrajectorySha256": "8ce5eb6352873d6a3a34a9a4cb549ab1c2c4eb3993adbd49147bfa416d1d3329",
+        "openingPrefixSha256": "252dfc7c27e05d8946971170175ba7bf9f5b83e01858bababdbfb42a861b84ac",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "1942033de0bdef760d6de81a0f5c3633a8ff7143b46b88681f203497993d48f9",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "ee8901e1d7e3c6d6d9b06e50f63bb16379c004201801acfd465ff6fd1156188a",
+        "LGTGMIV-F2-RAW-GRAPH": "6c1de5c9e24d07f4ff70a33d1233a4e290ddab2891a33e94af36962f700e0558",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "51e6e52bf0f49b80a7c82c97af135a4da5b58d1e7708fd295fb812f2695d1d59",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "4a0cb036ab3c1b59ac306b27904b931843c8d2779915624da48a74b7dbcc2c7a",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "a5a447668d3864b82144711513ffb2100bc8d8b115d698367133d078b0ee6bc2"
+      },
+      "resourceView": {
+        "distinctRawStates": "195",
+        "uniqueTransitions": "201",
+        "parentExpansions": "41",
+        "treeNodeOccurrences": "202"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "202",
+        "distinctRawStatesDepth0To5": "195",
+        "duplicateEncounterCountDepth0To4": "7",
+        "uniqueTransitionCountDepth0To4": "201",
+        "unitWidthStatePresenceDepth0To5": "38",
+        "nonterminalRawStatePresenceDepth0To5": "195"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "202",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "195",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "202",
+          "denominator": "195",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "7",
+          "denominator": "201",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "38",
+          "denominator": "195",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "e94bd8718eb9de2270dc8f3346379bbb52bad1f6a350ce2fed577046f992cca8",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "202",
+            "denominator": "203",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "195",
+            "denominator": "196",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "202",
+            "denominator": "397",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "7",
+            "denominator": "208",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "38",
+            "denominator": "233",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910004,
+        "selectedPly": 54,
+        "rootRawSha256": "f58827901fd8fe1e6f2af4a48336a6e677326550e1b4a3fbffe0d04efafc311b",
+        "sourceTrajectorySha256": "dfaadaccc90f69217b740950896e910ec0741ab21656228354fd9c200cdf9fdd",
+        "openingPrefixSha256": "507315d39ff8fb1184e9d2247bb26ff18448efcae32ded4879c6701da67cc127",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "facfecd75d2061022bc0e85d27ab475d7b17c37ddb809c4974cb2de4ce201389",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "f051984a107e7a98d4c2fd7b62f2146be0bc5b3635e87c6af4ccf6827411b347",
+        "LGTGMIV-F2-RAW-GRAPH": "ca5072cf0c772069373defa3aea89cc4876917e2166147b588790b4a16516553",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "4828a27ac372c6a4c5aafb990feb08dd2b894a027ad58020fc1e7f20eb603773",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "97b504d983af568290c3455cd84e7d7964c9629637367b168f0026cf9f7c2804",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "5cd287438a106dab94c830c749dc880d38fd6294daf1556976cef114973a6eee"
+      },
+      "resourceView": {
+        "distinctRawStates": "594",
+        "uniqueTransitions": "603",
+        "parentExpansions": "177",
+        "treeNodeOccurrences": "604"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "604",
+        "distinctRawStatesDepth0To5": "594",
+        "duplicateEncounterCountDepth0To4": "10",
+        "uniqueTransitionCountDepth0To4": "603",
+        "unitWidthStatePresenceDepth0To5": "158",
+        "nonterminalRawStatePresenceDepth0To5": "569"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "604",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "594",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "302",
+          "denominator": "297",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "10",
+          "denominator": "603",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "158",
+          "denominator": "569",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "f58827901fd8fe1e6f2af4a48336a6e677326550e1b4a3fbffe0d04efafc311b",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "604",
+            "denominator": "605",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "594",
+            "denominator": "595",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "302",
+            "denominator": "599",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "10",
+            "denominator": "613",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "158",
+            "denominator": "727",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910007,
+        "selectedPly": 46,
+        "rootRawSha256": "8b1bdbe4d9702cc96663903c8730c9072969e80260127a75f4eb9b9ae6be43dc",
+        "sourceTrajectorySha256": "d9cada37c3ddf8332909ccc5e240a63cad6d9e669c8fb2dbda61ea0b8159c36b",
+        "openingPrefixSha256": "ca5cc06eae387f8e619b9982e21c9ef10781abaf88e91622e68c90af5e945b07",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "c65ea37e13f48e2c2b5646af2c2a66ff8be4dbc59637ad220aaedebf804af6a0",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "aad82874f3a52d40e339d60a8d9a92cd8cf842c814a16057ac41a26e48483009",
+        "LGTGMIV-F2-RAW-GRAPH": "1e4c6466da039dab97c5b2bf6d953c7423fc656ebce2b2defcad83d23cd4deea",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "66d0a56b5116117bb49d0f12b0177eaf3fced44e2805c16e696737f933052b41",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "ca9a253f7d52360503ac2e949b1a2dac0cb144861bf6c15f045aa7ac1c1569a9",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "21b2a07f96f56b8aa306c3d0859f434f32c6d1a111698d84b87d5ab33e887c82"
+      },
+      "resourceView": {
+        "distinctRawStates": "426",
+        "uniqueTransitions": "428",
+        "parentExpansions": "162",
+        "treeNodeOccurrences": "434"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "434",
+        "distinctRawStatesDepth0To5": "426",
+        "duplicateEncounterCountDepth0To4": "3",
+        "uniqueTransitionCountDepth0To4": "428",
+        "unitWidthStatePresenceDepth0To5": "78",
+        "nonterminalRawStatePresenceDepth0To5": "414"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "434",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "426",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "217",
+          "denominator": "213",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "3",
+          "denominator": "428",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "13",
+          "denominator": "69",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "8b1bdbe4d9702cc96663903c8730c9072969e80260127a75f4eb9b9ae6be43dc",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "434",
+            "denominator": "435",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "426",
+            "denominator": "427",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "217",
+            "denominator": "430",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "3",
+            "denominator": "431",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "13",
+            "denominator": "82",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910013,
+        "selectedPly": 47,
+        "rootRawSha256": "8583a90f0190c611f211886a1022823a9f10eb65197545c5788bfe3f88be5368",
+        "sourceTrajectorySha256": "327ebf0032c48a3c98c69c7f20918b4533c909d9f16dfa799ffd1d5ec08fca6a",
+        "openingPrefixSha256": "e17da8c96819cac37689b0555ea41baac394e48af13f2f38bfda79e5256b1252",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "d08b91df367456097e59fa229ac2711795f06bc1eff6b1fd810e4680de6b9ab8",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "9a5972fd729e4b8e620b4d608aa21fc06a6f06d038074df38a0fad6321bf6075",
+        "LGTGMIV-F2-RAW-GRAPH": "b6582f82657911d9141b6bd9561c0bb7eb948851d4df095970e55f00a1accf07",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "d27d93957c6d63d554fca9430ad2b67921575657b0ba121b7a0b0def1acbaa4c",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "48c9e89b4f4f4d637db73e0a44f07014f58d4a5afc6c56b834a7fedd9fc4e759",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "b7201bea9a972b015a27ecd106a9ded3f28d1a4a5b8882fe4d62e5b95509a132"
+      },
+      "resourceView": {
+        "distinctRawStates": "96",
+        "uniqueTransitions": "95",
+        "parentExpansions": "39",
+        "treeNodeOccurrences": "96"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "96",
+        "distinctRawStatesDepth0To5": "96",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "95",
+        "unitWidthStatePresenceDepth0To5": "10",
+        "nonterminalRawStatePresenceDepth0To5": "65"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "96",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "96",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "2",
+          "denominator": "13",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "8583a90f0190c611f211886a1022823a9f10eb65197545c5788bfe3f88be5368",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "96",
+            "denominator": "97",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "96",
+            "denominator": "97",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "2",
+            "denominator": "15",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910014,
+        "selectedPly": 51,
+        "rootRawSha256": "b7fe9f2b892174d3802983d0c64391916c80a25e5a6caecfef12ab845dec8f7e",
+        "sourceTrajectorySha256": "8a12d4aa96955976c8aa2b7806d1f1e733a791dff7c954caf24f13801ee12041",
+        "openingPrefixSha256": "cc954926a2e919e260f0c42ed422221a763929b2ba2f26bd8a1b4c96efa44e6b",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "0e355e2b40c4d3bd6992399726cf0c21abb145cbef5e5be72adc1b7e6ba07a67",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "5ab3ef1e8dc031b8a7e1a10490a8a06056e76ef8ca3747497057cd79d36fd435",
+        "LGTGMIV-F2-RAW-GRAPH": "b027553c3ccd3ddc4fdc4f2d658418b399fe168944b2d1cf07a03fa667ca27f4",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "da20876acf2affd09d35c68687c0e3c56c855dac5c25017539ee7d32eebb125e",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "461f341e731d34b8d64e309ee313e355820a8bce39721814d3c18cc1ecd616ca",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "81c7c6c731ddfb471a1cff30b52e4b341c5e3d046fb59d7cabfefa9e873e5db5"
+      },
+      "resourceView": {
+        "distinctRawStates": "1443",
+        "uniqueTransitions": "1452",
+        "parentExpansions": "391",
+        "treeNodeOccurrences": "1478"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "8",
+        "treeNodeOccurrencesDepth0To5": "1478",
+        "distinctRawStatesDepth0To5": "1443",
+        "duplicateEncounterCountDepth0To4": "10",
+        "uniqueTransitionCountDepth0To4": "1452",
+        "unitWidthStatePresenceDepth0To5": "327",
+        "nonterminalRawStatePresenceDepth0To5": "1360"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "8",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "1478",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "1443",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1478",
+          "denominator": "1443",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "5",
+          "denominator": "726",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "327",
+          "denominator": "1360",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "b7fe9f2b892174d3802983d0c64391916c80a25e5a6caecfef12ab845dec8f7e",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "8",
+            "denominator": "9",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "1478",
+            "denominator": "1479",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "1443",
+            "denominator": "1444",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1478",
+            "denominator": "2921",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "5",
+            "denominator": "731",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "327",
+            "denominator": "1687",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910020,
+        "selectedPly": 44,
+        "rootRawSha256": "2c543e04b03bec2467ab84fe5be6868495132c1fb978d6f511a2e40b34ad54c9",
+        "sourceTrajectorySha256": "040302fa7720c6f5f553f357868c2e940a0dd281dc2ee2f478372bd2c5c506c3",
+        "openingPrefixSha256": "31321910fc8a49e989771fe076fe5a3f656a97134aa5cb9e6904193f5142ac3e",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "979cec876b6051ae72e7c6cc00ac21119ea52f92776c9a027bf991362440a81f",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "aaba3b79b13aa82715a4b2d275f5aca722dbe3edd7b140435b9596498c3a88d3",
+        "LGTGMIV-F2-RAW-GRAPH": "19bbc5f1dda8a24cbb26af3778eb206749eba7b4953bab9cc94930a724a57be6",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "961f705708159059a4a7adb3ff16e5a230a59a59ca23077f5179e0d49f2c273d",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "58edff8392d81490f4c3b7813ae51da45af2ad76f5beb7c354d388b8d694c91b",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "0126fdd40bc24a7fcbc4f7a8356b573b075aa578d145b2f8a941c2998050a4d7"
+      },
+      "resourceView": {
+        "distinctRawStates": "107",
+        "uniqueTransitions": "106",
+        "parentExpansions": "49",
+        "treeNodeOccurrences": "107"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "107",
+        "distinctRawStatesDepth0To5": "107",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "106",
+        "unitWidthStatePresenceDepth0To5": "29",
+        "nonterminalRawStatePresenceDepth0To5": "101"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "107",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "107",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "29",
+          "denominator": "101",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "2c543e04b03bec2467ab84fe5be6868495132c1fb978d6f511a2e40b34ad54c9",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "107",
+            "denominator": "108",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "107",
+            "denominator": "108",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "29",
+            "denominator": "130",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910022,
+        "selectedPly": 46,
+        "rootRawSha256": "04ef8585930beea88e72aa36d2cce587c6f5d66b2628130d967a9021b8e71c7f",
+        "sourceTrajectorySha256": "239d41df3b4500a8baa3a75a0984db98a5da7cfcf98650b7184806ea570220f7",
+        "openingPrefixSha256": "fc65de64458603a9e78e05598798cf4949c5af8885eef8c9deadc68c41fa0c5f",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "7d3652874ece701a1afb670ff66f905c7f9af849010162ed80aa27088e89ffa6",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "4a97c139701e9193e6d13a8c7dfe17b3e6742e441df457160e52edb633b59682",
+        "LGTGMIV-F2-RAW-GRAPH": "42d45221bf3c881c5e9ba506699cabe2359221551a682ad8db5e91427d4b3f85",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "f98d06e9b4592d00822b07e0f932e447d58193c7ff182029996461787091a0ef",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "1c74d894defa8c83b4a76601f1f210e2c66631df9270eda947ad84e9cb1d25a4",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "311f80c9b26a78fd0e0e52485b57e6eaa6db8c5ff65e9dd9dffcd0ed61257d3a"
+      },
+      "resourceView": {
+        "distinctRawStates": "2",
+        "uniqueTransitions": "1",
+        "parentExpansions": "2",
+        "treeNodeOccurrences": "2"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "2",
+        "distinctRawStatesDepth0To5": "2",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "1",
+        "unitWidthStatePresenceDepth0To5": "1",
+        "nonterminalRawStatePresenceDepth0To5": "1"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "04ef8585930beea88e72aa36d2cce587c6f5d66b2628130d967a9021b8e71c7f",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910025,
+        "selectedPly": 50,
+        "rootRawSha256": "563441781882b73b16f142b8b72dc82b0ae7a6f4b56a8f0fc956c5c7c9f63dcc",
+        "sourceTrajectorySha256": "3a7ef3aea22df3b5b502ade0f1720f6e9fe2a1d8a7ab25c1888de7e705f56865",
+        "openingPrefixSha256": "3d87c5874623efd6a4e817124f272acb972e0183d71759e807f9bcda60589c8e",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "aa2266aa1a68399c0a5f0b54d1a4c783d1bd244fa09de5d40bc758995fd6d4f4",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "f5608f867d0aa6177043be7afb434a591957cc3a65d0ce5eda609f66c366d1a1",
+        "LGTGMIV-F2-RAW-GRAPH": "f1a5436232a05ec79112f7b13f902bafa0cc3f39db6d7e2d67fbb6ecfe14b5bc",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "3f2e7b68d26bb5698c73ee756e4d12d6a3f4ceee88505252eeb9e92a19b8dd94",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "6818f7d3e4affdb7138a591592e942ffa81add8af87ced0407746207bb9e53b3",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "b255b1f2cf967fbfbfb67d2854adce9800e3487ddadceacc73a33724b91314b4"
+      },
+      "resourceView": {
+        "distinctRawStates": "1654",
+        "uniqueTransitions": "1667",
+        "parentExpansions": "426",
+        "treeNodeOccurrences": "1732"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "1732",
+        "distinctRawStatesDepth0To5": "1654",
+        "duplicateEncounterCountDepth0To4": "14",
+        "uniqueTransitionCountDepth0To4": "1667",
+        "unitWidthStatePresenceDepth0To5": "232",
+        "nonterminalRawStatePresenceDepth0To5": "1446"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "1732",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "1654",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "866",
+          "denominator": "827",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "14",
+          "denominator": "1667",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "116",
+          "denominator": "723",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "563441781882b73b16f142b8b72dc82b0ae7a6f4b56a8f0fc956c5c7c9f63dcc",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "1732",
+            "denominator": "1733",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "1654",
+            "denominator": "1655",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "866",
+            "denominator": "1693",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "14",
+            "denominator": "1681",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "116",
+            "denominator": "839",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910026,
+        "selectedPly": 62,
+        "rootRawSha256": "b9dbd827d0f615e2937b497e771bc648a928c6c7d40b4c2fdb9739841b965a84",
+        "sourceTrajectorySha256": "ff4b1e901ab399a7274031cdd3521c5dbe040c144eee58ebffb9f7b8943f1233",
+        "openingPrefixSha256": "13cbb7fa9c7e14d54a8851a24ee3a519a6ee6cc32369f0cbd90bca0c2e424375",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "4a2b693b75819f55adcd16bfad43b43059cfdba066e4a511e052242e7b5607a5",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "a1bf8c494b81c2d247727a8a8fc381ea58cbcffa8856d94c07f8fd68d07b0919",
+        "LGTGMIV-F2-RAW-GRAPH": "ccdd6a25c9ed96f947dc148895100ede63afd9e4f3f81a4dc4eaaa0decc86edf",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "eb7dba7aa8a459a60318a8eeabbcda67cebc6e82d676e52376d2fb42959a72f0",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "5764e071b79006695e56fd3c2527f1ec72056c92e83d7b3e749ddef6a6d05bb4",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "e0df0503320d5d1943947b9bf2f2b512a30378ec60c2022c595b49774c5913b0"
+      },
+      "resourceView": {
+        "distinctRawStates": "138",
+        "uniqueTransitions": "137",
+        "parentExpansions": "50",
+        "treeNodeOccurrences": "138"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "138",
+        "distinctRawStatesDepth0To5": "138",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "137",
+        "unitWidthStatePresenceDepth0To5": "34",
+        "nonterminalRawStatePresenceDepth0To5": "133"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "138",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "138",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "34",
+          "denominator": "133",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "b9dbd827d0f615e2937b497e771bc648a928c6c7d40b4c2fdb9739841b965a84",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "138",
+            "denominator": "139",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "138",
+            "denominator": "139",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "34",
+            "denominator": "167",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910027,
+        "selectedPly": 46,
+        "rootRawSha256": "545a909679524d7bdb2b4294404fabb50ae8576256570d6149dba06dcff2893d",
+        "sourceTrajectorySha256": "2c41e506dbde4f637f3e687eaec573f6988a081aed3dc7b81ed1dd5f06be120d",
+        "openingPrefixSha256": "2fc953b84a5fca0e71ad7cb44e9ffc8273b91a17a8bc486731a00944156b667d",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "c853ecb9b27377ade0fc722d773e764afc3b3a70c31024488b37a8504cf47c09",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "f52117b5bb73a39766a8bdfbcfa11b25bd2767bfc76d17819b681b8efa746259",
+        "LGTGMIV-F2-RAW-GRAPH": "119987e17ca593ef8a855bcfea031ec11356da7c34b1afbc4cafa21a5e1c1c2d",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "9a4cc04a1beddd035a4dba31cb3c381af10e2bf670311f753b10596ba6afdeab",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "3ffad17cd2acf36c19a144b302c91f6feed8bad7dd2edc12398a02cd1a03a90e",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "60863bd6141f2475d515bb4f968fefdb039b7925836d27c43364f043e5da7b87"
+      },
+      "resourceView": {
+        "distinctRawStates": "625",
+        "uniqueTransitions": "624",
+        "parentExpansions": "170",
+        "treeNodeOccurrences": "625"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "625",
+        "distinctRawStatesDepth0To5": "625",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "624",
+        "unitWidthStatePresenceDepth0To5": "95",
+        "nonterminalRawStatePresenceDepth0To5": "614"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "625",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "625",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "95",
+          "denominator": "614",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "545a909679524d7bdb2b4294404fabb50ae8576256570d6149dba06dcff2893d",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "625",
+            "denominator": "626",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "625",
+            "denominator": "626",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "95",
+            "denominator": "709",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910028,
+        "selectedPly": 49,
+        "rootRawSha256": "67465502a9f979f3c055a11ad3e9abc2509ea978d6132e437ce8f14af62d647a",
+        "sourceTrajectorySha256": "7359b66f63d63671f858660027a66d7267b74c7a75b69ed474c1b5fe18485195",
+        "openingPrefixSha256": "d15dbd42fe0ab28e8e909ed2cd08855f06d42d12a7eccfd3dcb2fe0dae2823c0",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "315f4bdfd30536bee8f6fa5367b54e72248949742df7053cb9740aa3bf782d1b",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "a26ba20c790f6eef63caad11a89e7a3201b03397290404ea9f65b86702046be5",
+        "LGTGMIV-F2-RAW-GRAPH": "540a4da5d2ff860c189d250d1617bbc8475bc825f098692e10e4f9458b79a863",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "96a9a35102412ee4711d47ea05907e131ab3da20fa1916ff6536c331a9babfb7",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "2d5c584719458877d56429c6f1d77aba7370ee883e40786f7c1fc6287e18632d",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "0dc20756cb935b999b1ba08431f035d91ba0a0b1c884473d96b9629342b393bc"
+      },
+      "resourceView": {
+        "distinctRawStates": "1051",
+        "uniqueTransitions": "1050",
+        "parentExpansions": "304",
+        "treeNodeOccurrences": "1051"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "5",
+        "treeNodeOccurrencesDepth0To5": "1051",
+        "distinctRawStatesDepth0To5": "1051",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "1050",
+        "unitWidthStatePresenceDepth0To5": "194",
+        "nonterminalRawStatePresenceDepth0To5": "974"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "5",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "1051",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "1051",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "97",
+          "denominator": "487",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "67465502a9f979f3c055a11ad3e9abc2509ea978d6132e437ce8f14af62d647a",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "5",
+            "denominator": "6",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "1051",
+            "denominator": "1052",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "1051",
+            "denominator": "1052",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "97",
+            "denominator": "584",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910030,
+        "selectedPly": 46,
+        "rootRawSha256": "135ef4385a47aa2e4041717ceb68e841a3805ee517c7010006240a66bdafde71",
+        "sourceTrajectorySha256": "8bf7ae3a8b1760ae6aba03a06628561734f7da3a7cbface195d4b0e68bd7e300",
+        "openingPrefixSha256": "260f1384515b9b42e468f3767516885b6853e6bae04f89381f0e12eaf4cfe6d6",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "289ee0763ffae45576301236a2285288babe3c4d89417b0e77ee2767b147ed4e",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "b80029cb4d6f0020ea12d2b1b4ba6b1e8d34b09785e28ff6c7110a654787783e",
+        "LGTGMIV-F2-RAW-GRAPH": "9f933e8dfd6ef318b2d0b1d03abee298180d529447caf2df8d9795ddf73e2b94",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "6a770f2e64e7c59c3bda54cf2b94a3a1186a07f8c3a70b17758545e4dfc46bbc",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "3a613563f4fa118bba801ff7dee30ade5c541afa2f1321abe88cf956eea78a82",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "619182688e78f1431d554336b9b19b27bda87fb5b8a7b74f373e766235e14b3d"
+      },
+      "resourceView": {
+        "distinctRawStates": "747",
+        "uniqueTransitions": "747",
+        "parentExpansions": "243",
+        "treeNodeOccurrences": "759"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "6",
+        "treeNodeOccurrencesDepth0To5": "759",
+        "distinctRawStatesDepth0To5": "747",
+        "duplicateEncounterCountDepth0To4": "1",
+        "uniqueTransitionCountDepth0To4": "747",
+        "unitWidthStatePresenceDepth0To5": "176",
+        "nonterminalRawStatePresenceDepth0To5": "720"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "6",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "759",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "747",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "253",
+          "denominator": "249",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "1",
+          "denominator": "747",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "11",
+          "denominator": "45",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "135ef4385a47aa2e4041717ceb68e841a3805ee517c7010006240a66bdafde71",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "6",
+            "denominator": "7",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "759",
+            "denominator": "760",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "747",
+            "denominator": "748",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "253",
+            "denominator": "502",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "1",
+            "denominator": "748",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "11",
+            "denominator": "56",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910039,
+        "selectedPly": 46,
+        "rootRawSha256": "5f72befecb77a3690015330c8a619a48875a8ee3dd3f9ae8f9a414ac3f29c7fd",
+        "sourceTrajectorySha256": "fa7cff6cae74ec5697a2ecf1b39ccb534e0c9d1ca75de77efdd8ede08ca785e4",
+        "openingPrefixSha256": "bf14866b093906c76275a69370cf5d30f34afd07252421d35d0452177e2a5a13",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "b735ac42f415be2e49857c23c0bde0b466e1f5d9c2d9ce52e06cf9e320d07cd7",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "2c212df22947802b7c711f50ff7750e74e5abdc50bc0b3c3f160924fb0b4e07b",
+        "LGTGMIV-F2-RAW-GRAPH": "34719320726f6292e46cb5d525b1095cd3a9c8810d941a22fe86c4ff75ffdbc9",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "88474a7f59634ef3949f6ab623e23f271c5b58ca2bab4b20ca10e7c14d324c35",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "234295a1f0dcc21b0284a5ced4dd3107abeea72a296d5642301e5cec7b6c173d",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "14488f29615c14e8d83afa793046673f0c4a0226162c4a0a04a40ad518e68421"
+      },
+      "resourceView": {
+        "distinctRawStates": "846",
+        "uniqueTransitions": "847",
+        "parentExpansions": "261",
+        "treeNodeOccurrences": "848"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "4",
+        "treeNodeOccurrencesDepth0To5": "848",
+        "distinctRawStatesDepth0To5": "846",
+        "duplicateEncounterCountDepth0To4": "2",
+        "uniqueTransitionCountDepth0To4": "847",
+        "unitWidthStatePresenceDepth0To5": "148",
+        "nonterminalRawStatePresenceDepth0To5": "806"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "4",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "848",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "846",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "424",
+          "denominator": "423",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "2",
+          "denominator": "847",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "74",
+          "denominator": "403",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "5f72befecb77a3690015330c8a619a48875a8ee3dd3f9ae8f9a414ac3f29c7fd",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "5",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "848",
+            "denominator": "849",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "846",
+            "denominator": "847",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "424",
+            "denominator": "847",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "2",
+            "denominator": "849",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "74",
+            "denominator": "477",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910043,
+        "selectedPly": 57,
+        "rootRawSha256": "21a0181d1dfdd4ec35a397cd656a2b5f31c7dc2ee65283246565d3344b3bc8f4",
+        "sourceTrajectorySha256": "75d8f8bebec744c5d57fccd2ee14328acf566b14a4f4f45c549b00a1253f7f8c",
+        "openingPrefixSha256": "e367f28d4f23268f7f2a01c8609d1f5075e4d3e29a95f20cc1925f88e358d6fa",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "6971c4e6d8efc262e48352fa68fe00364b8227e536c634db4b019906a99e4cac",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "36caa6e078c603613b15c6d1563a858a89adae5e3abb44651794a255dac7c765",
+        "LGTGMIV-F2-RAW-GRAPH": "61b97ef1187e1a3c768d3f91d01ca01b74275ae821b50e5b373072c8597d8267",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "ee5a1e0fda918ceea6a1daee80cecaf4dc4c2607015dc086329ce9bc973366c8",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "92f59cf9bbbffa9be5dce51d164b4b50c62da6dc0161c18b3a304a09f81e53e9",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "26848f11932021ed6888ad6429b0f8c9bf0130e138890006a221b595ba1277eb"
+      },
+      "resourceView": {
+        "distinctRawStates": "516",
+        "uniqueTransitions": "515",
+        "parentExpansions": "177",
+        "treeNodeOccurrences": "516"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "516",
+        "distinctRawStatesDepth0To5": "516",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "515",
+        "unitWidthStatePresenceDepth0To5": "74",
+        "nonterminalRawStatePresenceDepth0To5": "508"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "516",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "516",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "37",
+          "denominator": "254",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "21a0181d1dfdd4ec35a397cd656a2b5f31c7dc2ee65283246565d3344b3bc8f4",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "516",
+            "denominator": "517",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "516",
+            "denominator": "517",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "37",
+            "denominator": "291",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910047,
+        "selectedPly": 69,
+        "rootRawSha256": "8e96928854cdd91cdf81058fbdee424a8bca46007d4f15d9175c8547f8df8dd3",
+        "sourceTrajectorySha256": "51cd9f9bb1d944283c9c0611945e9a4a38e7150d7c38fc25e8443df292972cb1",
+        "openingPrefixSha256": "e6d25722e02545d4597f39ea5c0a0e124dc2f22d495a7fd6b79689fa67a21b71",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "18b067418345495ae5ef7a2f57b7b581681651ecf9ab4ef470f1be7b8a869f22",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "842703d60520b7dc429c122c718cd3f0b6b960d0f854037246365b7f16a5b871",
+        "LGTGMIV-F2-RAW-GRAPH": "67c30bfc7e2ddd38a6014ec83650a33488084ebc97d9daef65614f4fbcf5c281",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "afd33736291bb32c21615aeef66ecfef702ed6e3629cf4315637e1165af9263a",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "da5131e440ef1f184559530de2232f1eb08b12edfa446add6d798518f359b6bd",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "a002719539153a3ca0dcd60dad63a59d237cb08667bfb8b95376d97c7e0268cc"
+      },
+      "resourceView": {
+        "distinctRawStates": "238",
+        "uniqueTransitions": "237",
+        "parentExpansions": "86",
+        "treeNodeOccurrences": "238"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "238",
+        "distinctRawStatesDepth0To5": "238",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "237",
+        "unitWidthStatePresenceDepth0To5": "34",
+        "nonterminalRawStatePresenceDepth0To5": "229"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "238",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "238",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "34",
+          "denominator": "229",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "8e96928854cdd91cdf81058fbdee424a8bca46007d4f15d9175c8547f8df8dd3",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "238",
+            "denominator": "239",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "238",
+            "denominator": "239",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "34",
+            "denominator": "263",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910048,
+        "selectedPly": 45,
+        "rootRawSha256": "1988e88790512d0a19b3090941456735eb788bd8458d7126f14bcd5954bceb87",
+        "sourceTrajectorySha256": "5a9f24401dd95b2ec90041532aaa236c0d392c206aaa09d1e54dfed0038c9a0a",
+        "openingPrefixSha256": "f1d787f92977f8da3334be36ca238fd3cc2b5c44f2e621e0d9ad781a7dfa6bdb",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "a66e59374e9d9fbdbcdd3017e45cf9f06ca95b3f16fbfc9085b4af98a65a30c2",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "355057ab6a314403bb4c32f63b340b9e4a03658c621e34a7f9c84f7b4a9d684c",
+        "LGTGMIV-F2-RAW-GRAPH": "ff3f353585740fcb051439d85558bc2c5699d7ec7ddd00bba9afc20e55b4d3e0",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "66493d40b800a88bd8e55e7c67b3da6467fb05ee774cb2bb2c14faf5a80ce5c4",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "b57cf0d8d28fe02c813168b11cb72f22c147d2edcba62895e1cd71cd5af16e7f",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "1499b41cd01a2a1d45da501c9854af62be31e8777ea6c0f4703d65d931a6c3fd"
+      },
+      "resourceView": {
+        "distinctRawStates": "2204",
+        "uniqueTransitions": "2204",
+        "parentExpansions": "604",
+        "treeNodeOccurrences": "2205"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "4",
+        "treeNodeOccurrencesDepth0To5": "2205",
+        "distinctRawStatesDepth0To5": "2204",
+        "duplicateEncounterCountDepth0To4": "1",
+        "uniqueTransitionCountDepth0To4": "2204",
+        "unitWidthStatePresenceDepth0To5": "387",
+        "nonterminalRawStatePresenceDepth0To5": "2145"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "4",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2205",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2204",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "2205",
+          "denominator": "2204",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "1",
+          "denominator": "2204",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "129",
+          "denominator": "715",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "1988e88790512d0a19b3090941456735eb788bd8458d7126f14bcd5954bceb87",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "4",
+            "denominator": "5",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2205",
+            "denominator": "2206",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2204",
+            "denominator": "2205",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "2205",
+            "denominator": "4409",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "1",
+            "denominator": "2205",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "129",
+            "denominator": "844",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910049,
+        "selectedPly": 48,
+        "rootRawSha256": "acc341fc714b5c1d88dbdf912377ee9d1e7a6cd009b98cbbc252dc3c9e291e9e",
+        "sourceTrajectorySha256": "816bcefe2dfcd10458ea82ba1a53f774caa7e80458e42f29f2754ee25e08f1a3",
+        "openingPrefixSha256": "3828882614e446ad0bb6f3d67672ceca2f89cf58a25f4a029e57834e72c1c918",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "26eab46246ae29332889d8bd9d5d8cff42aaef4aec3a8622d9f4929c186ccaa3",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "886c87766a205300ccc566bf032032a62249d0f2a78b9b46e4f53db2903cd82e",
+        "LGTGMIV-F2-RAW-GRAPH": "9c33ddce823a7bead02f0bcaab0295355621e1c79d6d2212b4e4d760edb9bb30",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "a68ea971e4c6c9163070e5dae4fa3bf7cee18680f54e7f19ab93c70e91e66af0",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "e2a4ecf9c514af1f1e76adea55ea2add128e08c13be9da7f81ba6d274f03847f",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "c21d2fe41a6ab6dff7e16db05227f3bdcf2afa1f0e84253d6f38cb0044a31c54"
+      },
+      "resourceView": {
+        "distinctRawStates": "322",
+        "uniqueTransitions": "322",
+        "parentExpansions": "117",
+        "treeNodeOccurrences": "323"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "323",
+        "distinctRawStatesDepth0To5": "322",
+        "duplicateEncounterCountDepth0To4": "1",
+        "uniqueTransitionCountDepth0To4": "322",
+        "unitWidthStatePresenceDepth0To5": "65",
+        "nonterminalRawStatePresenceDepth0To5": "314"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "323",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "322",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "323",
+          "denominator": "322",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "1",
+          "denominator": "322",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "65",
+          "denominator": "314",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "acc341fc714b5c1d88dbdf912377ee9d1e7a6cd009b98cbbc252dc3c9e291e9e",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "323",
+            "denominator": "324",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "322",
+            "denominator": "323",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "323",
+            "denominator": "645",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "1",
+            "denominator": "323",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "65",
+            "denominator": "379",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910051,
+        "selectedPly": 46,
+        "rootRawSha256": "cfa09e342734f01d88f60fc8f6e0bac72cd79ac9a134a3d70f351e31e011a634",
+        "sourceTrajectorySha256": "121359c70ed7d0e7d1a879f10f75fc8046cee371a407284ccb6e67273fb1d589",
+        "openingPrefixSha256": "97e06c1a4bb87d65442ba7818c2af70e869c0515bc8fec1878f87099c4b777f1",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "13157502a05353c4d2613223e51c397c1853b5c5883dab93e7d272ccb2a6825d",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "a9189c6983f403f7e6f2dbbc87fd36dcc3171a3feb035e06f91a9632739c0d7b",
+        "LGTGMIV-F2-RAW-GRAPH": "c0124358490eec6d051c8f69b547c5ad95b2cef863b0a6503aa38781752794a0",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "d7622228858b6acee0d11bee1f4bcfa53b08771b09b3d937633995e3eeeb02dd",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "1ed3363cd7bfa56b6e6c9d54922762a76e485cb9e173b519278d37b6928b96a4",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "a4a199dfb523d01b1e7fc429e8bd5a1c1757b7833405ff95a7acae4133afa4df"
+      },
+      "resourceView": {
+        "distinctRawStates": "683",
+        "uniqueTransitions": "731",
+        "parentExpansions": "315",
+        "treeNodeOccurrences": "910"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "6",
+        "treeNodeOccurrencesDepth0To5": "910",
+        "distinctRawStatesDepth0To5": "683",
+        "duplicateEncounterCountDepth0To4": "49",
+        "uniqueTransitionCountDepth0To4": "731",
+        "unitWidthStatePresenceDepth0To5": "74",
+        "nonterminalRawStatePresenceDepth0To5": "598"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "6",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "910",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "683",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "910",
+          "denominator": "683",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "49",
+          "denominator": "731",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "37",
+          "denominator": "299",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "cfa09e342734f01d88f60fc8f6e0bac72cd79ac9a134a3d70f351e31e011a634",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "6",
+            "denominator": "7",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "910",
+            "denominator": "911",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "683",
+            "denominator": "684",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "910",
+            "denominator": "1593",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "49",
+            "denominator": "780",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "37",
+            "denominator": "336",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910058,
+        "selectedPly": 44,
+        "rootRawSha256": "a0cea791706a0f5ebec5f3d119acc5f6862c908837f0e7ec4efbb381ebd8bd07",
+        "sourceTrajectorySha256": "01895ce0b2bdea0da31ba037f735668a7d00e2f7e43d080d5d3e808252bd7f4b",
+        "openingPrefixSha256": "b733b538d6546efb70736b62cd7c6ef9c460ef506c09bf7b36821ece3eddf35b",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "f3c374c5c29dd75a2faa28882976e82df3730553592db79e8766e618c95e9770",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "ae30b5a37fbac7eb84736e49cd7c7377e710e1c39828ba5fa886efc078c7ba51",
+        "LGTGMIV-F2-RAW-GRAPH": "4ab5792d0c3375678eac78c2c93d2594b49569970f862ce1b710632dbf345f30",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "412d117699681e03d7b3195e9ddd38740e0b79c765c30d361945117e3840dc39",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "648b63e31dc91736bc199c26b26a498ccb4994beb7e19b0556272c0c6553f40d",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "2112d208590ce1db98bf92d20e9b4d363fc019d55ae05ec747c4f36873aec10b"
+      },
+      "resourceView": {
+        "distinctRawStates": "58",
+        "uniqueTransitions": "57",
+        "parentExpansions": "26",
+        "treeNodeOccurrences": "58"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "1",
+        "treeNodeOccurrencesDepth0To5": "58",
+        "distinctRawStatesDepth0To5": "58",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "57",
+        "unitWidthStatePresenceDepth0To5": "14",
+        "nonterminalRawStatePresenceDepth0To5": "57"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "58",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "58",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "14",
+          "denominator": "57",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "a0cea791706a0f5ebec5f3d119acc5f6862c908837f0e7ec4efbb381ebd8bd07",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "58",
+            "denominator": "59",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "58",
+            "denominator": "59",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "14",
+            "denominator": "71",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910059,
+        "selectedPly": 68,
+        "rootRawSha256": "85f5993c89f2ffeb6f781969ac8ae2942a56d93b9cc8c69569a186dce3d80648",
+        "sourceTrajectorySha256": "3053e0b0023931515bd6c9af8d5dce28cb3d84e24d61afc6c18401d4b10b3e36",
+        "openingPrefixSha256": "bb2331127a63f7969dbd01fa0b24dd8b1467e928c4d5d5515b5de50573e0f500",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "966014c01009a60c93f0d810ce97816b4c1e429b9870d741a261e5ddd2dfaf21",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "39d6d02f2b85ff90465ae2af774309c17b84b7f07dfbfacaf0dc91e6a43b9423",
+        "LGTGMIV-F2-RAW-GRAPH": "4977edc97a306c62e5c1ea61454a3d9dd70204f7fce3a76388cc3fe7d3318414",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "0de028387d4f850d6ee2404b612bf93d91bbcf41930814df5de6118966036e62",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "cdd53270315ae20fd035ff70428dfddb02c9f0c2c151f65d1bec099efafac2b3",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "0c93846baba0a98901fd7217cc01a96f96fc3b0eb974c7c1fa72b90a26a60c1d"
+      },
+      "resourceView": {
+        "distinctRawStates": "228",
+        "uniqueTransitions": "227",
+        "parentExpansions": "78",
+        "treeNodeOccurrences": "228"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "228",
+        "distinctRawStatesDepth0To5": "228",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "227",
+        "unitWidthStatePresenceDepth0To5": "51",
+        "nonterminalRawStatePresenceDepth0To5": "224"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "228",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "228",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "51",
+          "denominator": "224",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "85f5993c89f2ffeb6f781969ac8ae2942a56d93b9cc8c69569a186dce3d80648",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "228",
+            "denominator": "229",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "228",
+            "denominator": "229",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "51",
+            "denominator": "275",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910063,
+        "selectedPly": 64,
+        "rootRawSha256": "6bd374674685880a77aa1552ad8b09340a34323389e10cf250b1127de6c91c77",
+        "sourceTrajectorySha256": "dd9baa1f47f6e17d96b8b08ae1437f93b09efd81da7ba3890c09804fc7fe5c16",
+        "openingPrefixSha256": "41dfdd1c2b659ec4d3233df235010684df9f2d45187465a09ba77803a4f482d5",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "193d7d2562d0fec20ebfe85f0d4fe829d2fe48696f4077c12d97147ee85873ce",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "5987e53486ad3103f12683c24d37ee104aadfadeaf9f54c357fdac5b0ac8e149",
+        "LGTGMIV-F2-RAW-GRAPH": "b2966fccb42f4731f518555167cf4a2e36afe778c6d847e7b1272700f6cbbf41",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "f1ed63d679c9304263426c29a1d42bbc35d6e5ea641f18c09077f5817e7be3c0",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "eb78fb6d64d7b31f841a5094ab49cf977654a6b8c5ed8382fd526f9a46246075",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "3cd726e0a17b5bcd7caf0b441496b050bea978569e2d8c2d85904df5a2f57c8a"
+      },
+      "resourceView": {
+        "distinctRawStates": "2927",
+        "uniqueTransitions": "2935",
+        "parentExpansions": "766",
+        "treeNodeOccurrences": "2936"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "10",
+        "treeNodeOccurrencesDepth0To5": "2936",
+        "distinctRawStatesDepth0To5": "2927",
+        "duplicateEncounterCountDepth0To4": "9",
+        "uniqueTransitionCountDepth0To4": "2935",
+        "unitWidthStatePresenceDepth0To5": "410",
+        "nonterminalRawStatePresenceDepth0To5": "2322"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "10",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "2936",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "2927",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "2936",
+          "denominator": "2927",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "9",
+          "denominator": "2935",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "205",
+          "denominator": "1161",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "6bd374674685880a77aa1552ad8b09340a34323389e10cf250b1127de6c91c77",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "10",
+            "denominator": "11",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "2936",
+            "denominator": "2937",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "2927",
+            "denominator": "2928",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "2936",
+            "denominator": "5863",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "9",
+            "denominator": "2944",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "205",
+            "denominator": "1366",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910065,
+        "selectedPly": 45,
+        "rootRawSha256": "e3b555e492c314dd1fac2ac3f9673eb7cc4734a2d8cb74857683d2126e06b832",
+        "sourceTrajectorySha256": "c2ba7d7805623647c7de40dd9e0706f979a31c9276cac9aedbd37ca55d559be7",
+        "openingPrefixSha256": "111a12b36071ea258b4e49b1d425e368eaa28d92c630fd272db8adb13a7834da",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "b08bed7a071ef0ed26ffad477c8e57e0834de9e3711929e2133e026a40ea57cb",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "1139b7251d0d745138b44653c15c1a11fd3bd197a61aa16f1a51667e5b754212",
+        "LGTGMIV-F2-RAW-GRAPH": "3ea68a4a596bd7302ae403b91d3c4496f4ea928e477504cb8cc2fffc088dd726",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "1bd36cd7c9624e4634ba9d34ebbfd810bdd5f9d2438fa534567196b2857e70b9",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "fac84a1446b5af0cc37ec51bc94acaab468cf340d9fe34999df4a1e5d7f0854d",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "ba2a5ddb18d10ae7599c0ef951bc9aa8c3a173e8fafa848277883095674dd385"
+      },
+      "resourceView": {
+        "distinctRawStates": "875",
+        "uniqueTransitions": "874",
+        "parentExpansions": "307",
+        "treeNodeOccurrences": "875"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "6",
+        "treeNodeOccurrencesDepth0To5": "875",
+        "distinctRawStatesDepth0To5": "875",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "874",
+        "unitWidthStatePresenceDepth0To5": "121",
+        "nonterminalRawStatePresenceDepth0To5": "865"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "6",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "875",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "875",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "121",
+          "denominator": "865",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "e3b555e492c314dd1fac2ac3f9673eb7cc4734a2d8cb74857683d2126e06b832",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "6",
+            "denominator": "7",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "875",
+            "denominator": "876",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "875",
+            "denominator": "876",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "121",
+            "denominator": "986",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910066,
+        "selectedPly": 55,
+        "rootRawSha256": "fc7b7785ab7966e6f6e3785aa9f90c40ae20c9b296502bbf39d39be2c4b68158",
+        "sourceTrajectorySha256": "73c32b6d694ee6fca01916feb472f212023e9081b593aa5b64a0664a6ffe1bb6",
+        "openingPrefixSha256": "85a79a7a488d313dc1485c490a1781975ac37c7add9f587f5511d3256075fa6e",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "cf142279d8fe5f67ac2290b935c4b84e10386898addc50c2dba442b7c7f70864",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "6b657a17dfdf9739593a6bdb3dba78bb9250e377fb645f66109a22f9dd064a83",
+        "LGTGMIV-F2-RAW-GRAPH": "a04cfd1c4e703611f1f2f3921c80973583f8121b541ef64ab48e30d921192c7f",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "f90db1f1d736b5fbb40fa419910c7b1724078557b81f3204cceb62992fa517a8",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "1526eb36463ec4dab9a507bbd85d89071c73a4d3e09d536c270df803184033ca",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "926705581281727beeb696dd0fa5af056baa479d7f1e893188a0239d99414564"
+      },
+      "resourceView": {
+        "distinctRawStates": "788",
+        "uniqueTransitions": "793",
+        "parentExpansions": "221",
+        "treeNodeOccurrences": "802"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "3",
+        "treeNodeOccurrencesDepth0To5": "802",
+        "distinctRawStatesDepth0To5": "788",
+        "duplicateEncounterCountDepth0To4": "6",
+        "uniqueTransitionCountDepth0To4": "793",
+        "unitWidthStatePresenceDepth0To5": "154",
+        "nonterminalRawStatePresenceDepth0To5": "758"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "3",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "802",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "788",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "401",
+          "denominator": "394",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "6",
+          "denominator": "793",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "77",
+          "denominator": "379",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "fc7b7785ab7966e6f6e3785aa9f90c40ae20c9b296502bbf39d39be2c4b68158",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "3",
+            "denominator": "4",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "802",
+            "denominator": "803",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "788",
+            "denominator": "789",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "401",
+            "denominator": "795",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "6",
+            "denominator": "799",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "77",
+            "denominator": "456",
+            "defined": true
+          }
+        }
+      }
+    },
+    {
+      "source": {
+        "phase": "mtaji",
+        "sourceSeed": 31910067,
+        "selectedPly": 75,
+        "rootRawSha256": "ce7d89242cecd5dfb0f49d4d03a27ae24947581cf4c4747ba598f86ce61c5c68",
+        "sourceTrajectorySha256": "929bf5e699eeb133b844a2af92c17f0b7db50c09e82d0d5f2b3d5b29e7e0ccae",
+        "openingPrefixSha256": "08ca5173e327902b6f8735999f23705f91b7e659cc16ac9e3c77cabf6d9491e2",
+        "openingPrefixLength": 16
+      },
+      "upstreamRootReconstructionCoreSha256": "cd35649fb75739f435edfe7a5483e9dc9b9b0956fad21046788af9a7cade5116",
+      "upstreamFamilyCoreSha256": {
+        "LGTGMIV-F1-TREE-OCCURRENCE": "4fc8ffa707efeec49fa90085b882294baf49ffee0d8fd3fea028d406400071d6",
+        "LGTGMIV-F2-RAW-GRAPH": "d07122c156df00d23374579c10b2a7210b5710ad517357c91d4d7c913a81874d",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE": "f30696fcd792768293ab066238e745517ed4b3031219a834e11df6c74625923b",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION": "d9c5ef9cf73f0021d286c885098be119b7e17ce28c2aec3319e4c533bc844025",
+        "LGTGMIV-F5-REPLY-GEOMETRY": "643bdcdef6cd02929f9f19392ca3db1c98c9984a1ffbea4c60a777608fe74280"
+      },
+      "resourceView": {
+        "distinctRawStates": "241",
+        "uniqueTransitions": "240",
+        "parentExpansions": "79",
+        "treeNodeOccurrences": "241"
+      },
+      "rawPrimitives": {
+        "rootLegalMoveCount": "2",
+        "treeNodeOccurrencesDepth0To5": "241",
+        "distinctRawStatesDepth0To5": "241",
+        "duplicateEncounterCountDepth0To4": "0",
+        "uniqueTransitionCountDepth0To4": "240",
+        "unitWidthStatePresenceDepth0To5": "40",
+        "nonterminalRawStatePresenceDepth0To5": "200"
+      },
+      "axes": {
+        "CLGR-A1-ROOT-LEGAL-WIDTH": {
+          "numerator": "2",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+          "numerator": "241",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+          "numerator": "241",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+          "numerator": "1",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+          "numerator": "0",
+          "denominator": "1",
+          "defined": true
+        },
+        "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+          "numerator": "1",
+          "denominator": "5",
+          "defined": true
+        }
+      },
+      "representation": {
+        "representationId": "CLGR-R1-EXACT-SQUASHED-L1",
+        "rootRawSha256": "ce7d89242cecd5dfb0f49d4d03a27ae24947581cf4c4747ba598f86ce61c5c68",
+        "coordinates": {
+          "CLGR-A1-ROOT-LEGAL-WIDTH": {
+            "numerator": "2",
+            "denominator": "3",
+            "defined": true
+          },
+          "CLGR-A2-CUMULATIVE-TREE-OCCURRENCE": {
+            "numerator": "241",
+            "denominator": "242",
+            "defined": true
+          },
+          "CLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": {
+            "numerator": "241",
+            "denominator": "242",
+            "defined": true
+          },
+          "CLGR-A4-CUMULATIVE-TREE-RAW-RATIO": {
+            "numerator": "1",
+            "denominator": "2",
+            "defined": true
+          },
+          "CLGR-A5-DUPLICATE-TRANSITION-FRACTION": {
+            "numerator": "0",
+            "denominator": "1",
+            "defined": true
+          },
+          "CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": {
+            "numerator": "1",
+            "denominator": "6",
+            "defined": true
+          }
+        }
+      }
+    }
+  ]
+}
