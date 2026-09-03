@@ -30,7 +30,7 @@ const trigDiff=lines(git("diff-tree","--no-commit-id","--name-only","-r","HEAD")
 const authDiff=lines(git("diff-tree","--no-commit-id","--name-only","-r","HEAD^"));need(authDiff.length===1&&authDiff[0]===AUTH_PATH,"authorization commit must change only authorization artifact");
 for(const [p,blob] of Object.entries(a.boundGitBlobs||{})){const got=git("rev-parse",`HEAD:${p}`);need(got===blob,`bound blob mismatch ${p}: ${got} != ${blob}`);}
 const runner=fs.readFileSync(path.join(ROOT,"tools/experiments/run-clgr-stage1-development.js"),"utf8"),prod=fs.readFileSync(path.join(ROOT,"tools/experiments/lib/clgr-stage1-production.js"),"utf8"),ind=fs.readFileSync(path.join(ROOT,"tools/experiments/lib/clgr-stage1-independent.js"),"utf8");
-need(!runner.includes("results/stage-1/scientific-result.json")&&!runner.includes("STAGE_1_DEVELOPMENT_RESULT.json\"),"runner contains prohibited historical G3-08 scientific result path");
+need(!runner.includes("doc/local-geometry-persistence-memory-length/results/stage-1")&&!runner.includes("local-geometry-persistence-memory-length/results/stage-1"),"runner references prohibited G3-08 partial scientific results");
 need(!runner.includes("31920001")&&!runner.includes("31920384"),"runner contains Stage2 seed literals");
 need(prod.includes("./clgr-production.js")&&!prod.includes("clgr-independent.js")&&!prod.includes("lgtgmiv-stage1-independent.js"),"production separation invalid");
 need(ind.includes("./clgr-independent.js")&&!ind.includes("clgr-production.js")&&!ind.includes("lgtgmiv-stage1-production.js"),"independent separation invalid");
