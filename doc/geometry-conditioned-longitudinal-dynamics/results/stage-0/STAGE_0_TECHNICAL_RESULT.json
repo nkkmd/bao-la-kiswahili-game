@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCLD-STUDY1",
+  "stageId": "GCLD-S0-TECHNICAL-2026-09-03-v1",
+  "evidenceClass": "TECHNICAL-ONLY",
+  "representationId": "CRCLGR-R1-EXACT-SQUASHED-L1",
+  "checkpointCount": 15,
+  "syntheticEndpointsExact": true,
+  "syntheticExpectedValuesExact": true,
+  "controlPermutationCount": 32,
+  "endpointPreservingPermutationExact": true,
+  "exactControlMedian": true,
+  "exactSignTest": true,
+  "exactHolm": true,
+  "technicalCandidatePopulationComplete": true,
+  "technicalCandidateCount": 4,
+  "technicalCandidateCoreSha256": "ee8e4ff00a4747aa6be79f7ccb8f633ef02d3e8ac4eb882d6da9d770353a013e",
+  "technicalPreflightExact": true,
+  "fullyEligibleTechnicalTrajectories": 4,
+  "technicalMeasurements": [
+    {
+      "sourceSeed": 32209014,
+      "sourceTrajectorySha256": "d1abbd493b0a8fd7a45b5feda3b2853cc6c2df57cf3b4853fbf0db8aea2d22f0",
+      "checkpointCount": 15,
+      "allEndpointsDefined": true
+    },
+    {
+      "sourceSeed": 32209015,
+      "sourceTrajectorySha256": "e92e9af3724bc62e9d9a5aede153d7894369e7b52a0cac116c5cd27b67c25833",
+      "checkpointCount": 15,
+      "allEndpointsDefined": true
+    }
+  ],
+  "trajectoryLevelAggregationExact": true,
+  "terminalBefore72FailClosed": true,
+  "sourceRelayLimitFailClosed": true,
+  "resourcePreflightFailClosed": true,
+  "implementationSeparation": true,
+  "inferentialUnit": "trajectory",
+  "checkpointInferentialUnit": false,
+  "freshScientificSeedAccess": false,
+  "stage1SeedAccess": false,
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "technicalSeedsScientificUseProhibited": true,
+  "deterministicCoreSha256": "f5dfb2b8aa01929c99b1e8bfc39abf6e9ecbd41945314284654b181267ea3254",
+  "stageDisposition": "STAGE0-PASS",
+  "scientificInferenceAuthorized": false,
+  "stage1AutomaticallyAuthorized": false
+}
