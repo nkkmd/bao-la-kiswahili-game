@@ -1,0 +1,2 @@
+LGPML-STUDY1 FINAL-DOC-FOLLOWUP 2026-09-03
+main-integration=prohibited-until-explicit-user-instruction
