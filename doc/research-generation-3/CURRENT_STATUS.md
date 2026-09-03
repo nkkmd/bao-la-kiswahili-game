@@ -1,10 +1,10 @@
 # Research Generation 3 — Current Status
 
-Updated: 2026-09-03
+Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-09 CLGR-STUDY1 CLOSED TECHNICAL-INVALID / FORMAL REPRESENTATION ELIGIBILITY NOT ESTABLISHED / POST-G3-09 G3-10 REVIEW REQUIRED / G3-10 NOT AUTHORIZED
+Program status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED / MAIN INTEGRATION PENDING EXPLICIT USER AUTHORIZATION
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -56,10 +56,19 @@ G3-09 Stage 2 failure = mtaji / seed 31920066 / relay-limit enumeration 43481b84
 G3-09 formal representation eligibility = NOT ESTABLISHED
 G3-09 no-rescue boundary = CROSSED / CLOSED
 G3-09 main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
-G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state authorization review required
+post-G3-09 prerequisite = RRCLGR-STUDY1 CLOSED TECHNICAL-INVALID
+post-RRCLGR prerequisite = CRCLGR-STUDY1 CLOSED / FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION
+G3-10 program review = G3-10-AUTHORIZED
+G3-10 = GCLD-STUDY1 / CLOSED / FORMAL-COMPLETE
+G3-10 Stage 0 = STAGE0-PASS
+G3-10 Stage 1 = STAGE1-PASS / seed 32210001..32210256 CONSUMED
+G3-10 Stage 2 = FORMAL-COMPLETE / seed 32220001..32220384 CONSUMED / candidates 48 / eligible 47 / measured 32
+G3-10 formal record = C1 CONFIRMED ACTUAL-GREATER / C2 CONFIRMED ACTUAL-GREATER / C3 CONFIRMED ACTUAL-LESS / C4 NOT-CONFIRMED / C5 CONFIRMED ACTUAL-GREATER
+G3-10 canonical scientific-result SHA-256 = c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f
+G3-10 main integration = NOT AUTHORIZED / NOT PERFORMED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active scientific research branch = none / G3-09 integrated to main; G3-10 remains NOT AUTHORIZED
-Next scientific action = separate post-G3-09 current-state G3-10 authorization review; do not auto-start G3-10
+Active research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / G3-10 scientific execution CLOSED; documentation/pre-main readiness only
+Next scientific action = none within GCLD-STUDY1; do not rerun consumed Stage 1/2 evidence; post-G3-10 next-study review is separate and not auto-authorized
 ```
 
 ## Immutable upstream boundaries
@@ -529,3 +538,19 @@ Partial Stage 1 trajectory outputはscientific findingとして再利用しな�
 ## G3-09 technical-invalid closure
 
 G3-09 `CLGR-STUDY1`は、LGTGMIV F1-F5 / RAW-only / relative depth 5から6本のexact geometry axesを保持する`CLGR-R1-EXACT-SQUASHED-L1`をprospectively固定して実施した。Stage 1 fresh developmentは24 Namua + 24 Mtajiの48 rootsで`STAGE1-PASS`。しかしseparately authorizedなStage 2 fresh formal holdoutは36 Namua + 36 Mtajiの72 rootsを選定後、61 rootsを完了した時点でMtaji seed `31920066`のdepth-5 RAW reconstructionが`relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b`となりfail-closedした。final formal decisionは`TECHNICAL-INVALID`、formal representation eligibilityは`NOT ESTABLISHED`。Stage 2 partial measurementsはformal scientific evidenceへ格上げせず、same-evidence rerun / seed extension / root replacement / resource ceiling relaxation / representation redesignを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。G3-10は自動authorizeせずseparate post-G3-09 current-state reviewを必要とする。
+
+
+## G3-10 current formal closure
+
+<!-- GCLD-G3-10-CURRENT-CLOSURE -->
+G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。`main` integrationは明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`。
+
+Canonical records:
+
+- `../geometry-conditioned-longitudinal-dynamics/README.md`
+- `../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`
+- `../geometry-conditioned-longitudinal-dynamics/CURRENT_STATUS.md`
+- `../geometry-conditioned-longitudinal-dynamics/DECISION_REGISTER.md`
+- `../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`
+- `checkpoints/2026-09-04-g3-10-formal-complete-closure.md`

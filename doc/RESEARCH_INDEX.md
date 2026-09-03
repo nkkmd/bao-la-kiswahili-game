@@ -26,6 +26,26 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 ## 研究成果
 
+<!-- GCLD-G3-10-RESEARCH-INDEX -->
+### Research Generation 3 current highlight — G3-10 / GCLD-STUDY1
+
+**状態:** `CLOSED / FORMAL-COMPLETE` — 4 `CONFIRMED` / 1 `NOT-CONFIRMED` / 0 `NON-ESTIMABLE`
+
+G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。`main` integrationは明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`。
+
+**最初に読む:**
+
+- [`geometry-conditioned-longitudinal-dynamics/README.md`](geometry-conditioned-longitudinal-dynamics/README.md)
+- [`geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`](geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md)
+
+**再現性・formal record:**
+
+- [`geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`](geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md)
+- [`geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json`](geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_FORMAL_RESULT.json)
+- [`research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md)
+
+---
+
 ### 1. 局面相転移点研究 — Study 1
 
 **研究題目:** Baoにおける局面相転移点の発見と、`capture-branch-expansion`の確認

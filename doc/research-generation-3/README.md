@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-09 CLGR-STUDY1 CLOSED TECHNICAL-INVALID / FORMAL REPRESENTATION ELIGIBILITY NOT ESTABLISHED / POST-G3-09 G3-10 CURRENT-STATE REVIEW REQUIRED / G3-10 NOT AUTHORIZED
+Status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / 4 CONFIRMED + 1 NOT-CONFIRMED / CRCLGR FORMAL-ELIGIBLE / MAIN INTEGRATION PENDING EXPLICIT USER AUTHORIZATION
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -45,13 +45,25 @@ G3-09 Stage 1 = STAGE1-PASS / exactly one fresh execution / seeds CONSUMED
 G3-09 Stage 2 = TECHNICAL-INVALID / exactly one fresh execution / seeds CONSUMED / 61 of 72 roots completed before fail-closed
 G3-09 formal representation eligibility = NOT ESTABLISHED
 G3-09 main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
-G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
+post-G3-09 representation prerequisite chain = RRCLGR-STUDY1 CLOSED TECHNICAL-INVALID / CRCLGR-STUDY1 CLOSED FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION
+G3-10 program review = G3-10-AUTHORIZED
+G3-10 = GCLD-STUDY1 / CLOSED / FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED
+G3-10 Stage 0 = STAGE0-PASS
+G3-10 Stage 1 = STAGE1-PASS / seeds CONSUMED
+G3-10 Stage 2 = FORMAL-COMPLETE / 48 candidates / 47 eligible / 32 measured / seeds CONSUMED
+G3-10 main integration = NOT AUTHORIZED / NOT PERFORMED
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
 
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+<!-- GCLD-G3-10-READ-FIRST -->
+- [`../geometry-conditioned-longitudinal-dynamics/README.md`](../geometry-conditioned-longitudinal-dynamics/README.md) — G3-10 formal-complete Study入口
+- [`../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`](../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md) — G3-10 formal results / interpretation boundary正本
+- [`../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`](../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md) — G3-10 exact artifacts / execution provenance
+- [`../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 formal closure decision
+- [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`](checkpoints/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 RG3 closure checkpoint
 <!-- CLGR-G3-09-READ-FIRST -->
 - [`../continuous-local-geometry-representation/README.md`](../continuous-local-geometry-representation/README.md) — G3-09 technical-invalid closure入口 / current Study summary
 - [`../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — G3-09 scientific closure / interpretation boundary正本
