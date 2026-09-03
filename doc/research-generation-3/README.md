@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-07 SILGM-STUDY1 CLOSED FORMAL-COMPLETE / POST-G3-07 G3-08 CURRENT-STATE REVIEW REQUIRED / G3-08 NOT AUTHORIZED
+Status = ACTIVE / G3-08 LGPML-STUDY1 CLOSED TECHNICAL-INVALID / POST-G3-08 G3-09 CURRENT-STATE REVIEW REQUIRED / G3-09 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -30,6 +30,16 @@ G3-07 Stage 2 = STAGE2-PASS / 1 authorized / 1 actual / seed CONSUMED
 G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
 G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1 depth, SC2 node-budget, SC3 quiescence
 G3-07 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
+G3-08 program review = G3-08-AUTHORIZED
+G3-08 = LGPML-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-08 Stage 0 = STAGE0-PASS
+G3-08 Stage 1 = STAGE1-TECHNICAL-INVALID / 1 authorized / 1 actual / seeds CONSUMED
+G3-08 technical error = relay-limit enumeration 74581ece7d29895d9727bb9cd507046f98a158b51466abdeaa335eb9e60d510e
+G3-08 formal promoted candidate set = []
+G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seeds NOT CONSUMED
+G3-08 no-rescue boundary = CROSSED / ACTIVE
+G3-08 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state review required
 G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
@@ -269,3 +279,26 @@ Protected standard-initial RAW-root complete exact depth-10 holdoutは`SEALED / 
 Historical plan上の次候補G3-08 — Local Geometry Persistence / Memory-Length Study 1 は**自動authorizeされない**。G3-08を開始する場合は、G3-07 closure後のcurrent repository stateを用いたseparate authorization reviewが必要である。
 
 G3-07 research branchのmain integrationもStudy closureではauthorizeされない。ユーザーの明示的指示があるまで`main`へ統合しない。
+
+<!-- LGPML-G3-08-CLOSURE:RG3-README -->
+## G3-08 technical-invalid closure
+
+G3-08は`LGPML-STUDY1`としてprospectively freezeされ、LGTGMIV F1-F5 / RAW-only / relative depth 5のboundaryでtrajectory上のgeometry change-sign persistenceを検証する設計だった。
+
+Stage 0は`STAGE0-PASS`。fresh Stage 1はexactly one authorized executionで開始したが、10 trajectoryのcomplete frozen development populationを完遂する前にrequired bounded RAW reconstructionで`relay-limit enumeration`へ到達した。そのためcanonical Stage 1 dispositionは`STAGE1-TECHNICAL-INVALID`、formal promoted candidate setは`[]`である。
+
+このclosureはgeometry persistenceのnegative/null scientific findingではない。9 complete trajectory logsを含むpartial outputはtechnical provenanceのみであり、candidate promotion、phase-specific persistence、bounded memory-lengthのscientific claimへ使用しない。
+
+```text
+G3-08 / LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1 seed = CONSUMED
+Stage 2 seed = NOT CONSUMED
+same-evidence rescue = PROHIBITED
+protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+main integration = NOT PERFORMED
+```
+
+## Post-G3-08 boundary
+
+Historical plan上の次候補G3-09 — Continuous Local-Geometry Representation Study 1 は**自動authorizeされない**。開始する場合はG3-08 closure後のcurrent repository stateを用いたseparate authorization reviewが必要である。

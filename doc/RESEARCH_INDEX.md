@@ -1213,3 +1213,30 @@ Canonical records:
 - [`research-generation-3/checkpoints/2026-09-03-g3-07-formal-complete-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-07-formal-complete-closure.md)
 
 **Downstream boundary:** G3-08 — Local Geometry Persistence / Memory-Length Study 1 is not automatically authorized. A separate post-G3-07 current-state authorization review is required. Protected depth-10 remains sealed. A later explicit user instruction authorized integration, and G3-07 was fast-forward integrated to `main` from research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` on 2026-09-03; the research branch is retained for provenance.
+
+<!-- LGPML-G3-08-CLOSURE:RESEARCH-INDEX -->
+### G3-08 — Local Geometry Persistence / Memory-Length Study 1
+
+**Study ID:** `LGPML-STUDY1`  
+**Status:** `CLOSED / TECHNICAL-INVALID`
+
+G3-08はLGTGMIV F1-F5 / RAW-only / relative depth 5を用いて、trajectory上のone-ply geometry change signのlag `{1,2,4,8}`におけるpersistence / reversalとbounded memory lengthをprospectively検証するStudyとして開始した。
+
+Stage 0はPASSし、fresh Stage 1はexactly one authorized executionで開始した。しかしfrozen 10-trajectory development populationを完遂する前にrequired bounded RAW reconstructionで`relay-limit enumeration` technical errorが発生したため、Stage 1は`STAGE1-TECHNICAL-INVALID`、formal promoted candidate setは`[]`となった。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。
+
+これはlocal geometry persistenceのnegative/null scientific resultではない。partial 9 trajectory logsはtechnical provenanceのみで、candidate promotionやmemory-length claimへ使用しない。
+
+**最初に読む:**
+
+- [`local-geometry-persistence-memory-length/README.md`](local-geometry-persistence-memory-length/README.md)
+- [`local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md`](local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md)
+
+**詳細・正本:**
+
+- [`local-geometry-persistence-memory-length/CURRENT_STATUS.md`](local-geometry-persistence-memory-length/CURRENT_STATUS.md)
+- [`local-geometry-persistence-memory-length/DECISION_REGISTER.md`](local-geometry-persistence-memory-length/DECISION_REGISTER.md)
+- [`local-geometry-persistence-memory-length/REPRODUCIBILITY_INDEX.md`](local-geometry-persistence-memory-length/REPRODUCIBILITY_INDEX.md)
+- [`research-program-decisions/2026-09-03-g3-08-technical-invalid-closure.md`](research-program-decisions/2026-09-03-g3-08-technical-invalid-closure.md)
+- [`research-generation-3/checkpoints/2026-09-03-g3-08-technical-invalid-closure.md`](research-generation-3/checkpoints/2026-09-03-g3-08-technical-invalid-closure.md)
+
+Stage 2 seed blockは未消費、protected depth-10 holdoutはsealedのまま。mainへの統合はユーザーの明示指示まで行わない。

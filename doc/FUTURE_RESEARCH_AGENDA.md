@@ -5,7 +5,7 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-03
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-07 `SILGM-STUDY1` closed `FORMAL-COMPLETE` / 3 `CONFIRMED`, 4 `NOT-CONFIRMED`, 1 `NON-ESTIMABLE` formal candidates / next action is separate post-G3-07 current-state G3-08 authorization review / G3-08 NOT AUTHORIZED (2026-09-03)**
+Research Generation 3: **Active / G3-08 `LGPML-STUDY1` closed `TECHNICAL-INVALID` / formal promoted candidate set `[]` / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / next action is separate post-G3-08 current-state G3-09 authorization review / G3-09 NOT AUTHORIZED (2026-09-03)**
 
 
 ### 2026-09-03 Research Generation 3 current update
@@ -1389,3 +1389,21 @@ runner-local compression patternもunauthorized duplicate runの一致もformal 
 G3-02 closureはG3-03以降を自動authorizeしない。次のscientific actionは、G3-02のimmutable `TECHNICAL-INVALID` closure、LGTGMIV family boundary、RAW-only identity、protected depth-10 firewallを維持した別のpost-G3-02 program reviewである。
 
 Research Generation 3開始前にfreezeした`research-generation-3/PROGRAM_PLAN.md`はhistorical prospective planとして変更しない。
+
+<!-- LGPML-G3-08-CLOSURE:FUTURE -->
+### 2026-09-03 G3-08 closure update
+
+G3-08 `LGPML-STUDY1`は`CLOSED / TECHNICAL-INVALID`で閉鎖した。Stage 0はPASSしたが、fresh Stage 1のexactly-one authorized execution中にrequired depth-5 RAW reconstructionで`relay-limit enumeration`が発生し、complete 10-trajectory development populationへ到達しなかった。
+
+```text
+formal promoted candidate set = []
+Stage 1 seed block = CONSUMED
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+Stage 2 seed block = NOT CONSUMED
+same-evidence rescue = PROHIBITED
+protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+```
+
+このtechnical-invalid closureをgeometry persistenceのnegative/null evidenceとして扱わない。relay-limit-safeなlongitudinal studyが必要なら、新しいprospective independent Study/versionとして別途扱う。
+
+Historical program plan上の次候補は**G3-09 — Continuous Local-Geometry Representation Study 1**だが、G3-08 closureから自動authorizeされない。開始前にpost-G3-08 current-state authorization reviewが必要である。

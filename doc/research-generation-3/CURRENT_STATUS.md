@@ -4,7 +4,7 @@ Updated: 2026-09-03
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-07 SILGM-STUDY1 CLOSED FORMAL-COMPLETE / POST-G3-07 G3-08 REVIEW REQUIRED / G3-08 NOT AUTHORIZED
+Program status = ACTIVE / G3-08 LGPML-STUDY1 CLOSED TECHNICAL-INVALID / POST-G3-08 G3-09 REVIEW REQUIRED / G3-09 NOT AUTHORIZED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -33,10 +33,21 @@ G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED /
 G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1/SC2/SC3
 G3-07 no-rescue boundary = CROSSED / CLOSED
 G3-07 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
-G3-08 = NOT AUTHORIZED / separate post-G3-07 current-state authorization review required
+G3-08 program review = G3-08-AUTHORIZED
+G3-08 = LGPML-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-08 Stage 0 = STAGE0-PASS
+G3-08 Stage 1 = STAGE1-TECHNICAL-INVALID / 1 authorized / 1 actual
+G3-08 Stage 1 seed = 31810001..31810256 / CONSUMED
+G3-08 technical error = relay-limit enumeration 74581ece7d29895d9727bb9cd507046f98a158b51466abdeaa335eb9e60d510e
+G3-08 formal promoted candidate set = []
+G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+G3-08 Stage 2 seed = 31820001..31820384 / NOT CONSUMED
+G3-08 no-rescue boundary = CROSSED / ACTIVE
+G3-08 main integration = NOT PERFORMED / EXPLICIT USER INSTRUCTION REQUIRED
+G3-09 = NOT AUTHORIZED / separate post-G3-08 current-state authorization review required
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active scientific research branch = none / G3-07 is integrated to main; research/g3-07-search-instability-local-geometry-mechanism retained for provenance
-Next scientific action = separate post-G3-07 current-state G3-08 authorization review; do not auto-start G3-08
+Active scientific research branch = none / research/g3-08-local-geometry-persistence-memory-length scientifically CLOSED and pending explicit user decision on main integration
+Next scientific action = separate post-G3-08 current-state G3-09 authorization review; do not auto-start G3-09
 ```
 
 ## Immutable upstream boundaries
@@ -475,3 +486,29 @@ Canonical records:
 - `checkpoints/2026-09-03-g3-07-formal-complete-closure.md`
 
 G3-08 remains `NOT AUTHORIZED`; a separate post-G3-07 current-state review is required.
+
+<!-- LGPML-G3-08-CLOSURE:RG3-STATUS -->
+## G3-08 formal lifecycle closure
+
+```text
+Study = LGPML-STUDY1
+Stage 0 = STAGE0-PASS
+Stage 1 = STAGE1-TECHNICAL-INVALID / exactly one authorized execution
+Stage 1 run = 33731577464 / job 100572486927
+Stage 1 result artifact = 9886738874
+Stage 1 result ZIP SHA-256 = ef2ed1d6c28b30461d03f3a294cb3cb3d11d9f951fa24b6e6f2a94f546d6f53c
+formal promoted candidate set = []
+Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+```
+
+Canonical records:
+
+- `../local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md`
+- `../local-geometry-persistence-memory-length/CURRENT_STATUS.md`
+- `../local-geometry-persistence-memory-length/DECISION_REGISTER.md`
+- `../local-geometry-persistence-memory-length/REPRODUCIBILITY_INDEX.md`
+- `../research-program-decisions/2026-09-03-g3-08-technical-invalid-closure.md`
+- `checkpoints/2026-09-03-g3-08-technical-invalid-closure.md`
+
+Partial Stage 1 trajectory outputはscientific findingとして再利用しない。G3-09は別のcurrent-state authorization reviewなしに開始しない。
