@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SILGM-STUDY1",
+  "programPosition": "Research Generation 3 / G3-07",
+  "programAuthorization": "G3-07-AUTHORIZED",
+  "studyStatusAtFreeze": "PROSPECTIVE-FROZEN-BEFORE-FRESH-SCIENTIFIC-EVIDENCE",
+  "englishTitle": "Search Instability / Local Geometry Mechanism Study 1 — Prospective exact association analysis of bounded RAW local game-tree geometry with best-move, TopSet, ranking, score-gap, and principal-variation changes under deterministic search-condition perturbations in Bao",
+  "japaneseTitle": "Baoにおける探索不安定性と局所ゲーム木幾何のprospective exact関連解析 — bounded RAW branching・reconvergence・reply compressionとbest-move・TopSet・ranking・score-gap・PV変動の決定論的search-condition間集中関係の検証",
+  "reviewBaselineRemoteMain": "9e6ca03bbb36919b2fbf32d61639779c17b04932",
+  "studyBaselineRemoteMain": "ba48c5c3643649655137d5d3c07988fdc84bee9d",
+  "researchBranch": "research/g3-07-search-instability-local-geometry-mechanism",
+  "freshScientificEvidenceGeneratedAtFreeze": false,
+  "freshScientificEvidenceReadAtFreeze": false,
+  "protectedDepth10AccessAtFreeze": false,
+  "historicalMechanismLabelCausalAuthorization": false,
+  "primaryQuestion": "Within a prospectively frozen population and RAW relative-depth-5 geometry contract, are deterministic search-output changes across prespecified search-condition contrasts associated with or concentrated in particular bounded local-geometry regimes?",
+  "claimClass": ["ASSOCIATION", "CONCENTRATION", "BOUNDED-STRUCTURAL-RELATION"],
+  "constructSeparation": {
+    "separate": ["legal branching", "bounded local RAW tree/graph geometry", "transposition/reconvergence", "reply compression", "search instability", "best-move identity", "move ranking", "evaluation score", "principal variation", "game-theoretic value", "empirical outcome", "human difficulty"],
+    "higherResourceSearchIsTruth": false,
+    "causalSearchFailureClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "moveIdentityFields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransforms": [],
+    "canonicalizationAuthorized": false,
+    "symmetryQuotientAuthorized": false,
+    "relativeLocalHorizon": 5
+  },
+  "sourceBindingsAtFreeze": {
+    "public/engine.js": {"blobSha": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c", "role": "authoritative rule runtime"},
+    "public/ai.js": {"blobSha": "8d472be415fac17e47a8e5e667cea9672e7a9ef5", "role": "named evaluation profile and canonical move-key technical reference"},
+    "tools/experiments/lib/lgtgmiv-stage1-production.js": {"blobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6", "role": "eligible geometry production reference implementation"},
+    "tools/experiments/lib/lgtgmiv-stage1-independent.js": {"blobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6", "role": "eligible geometry independent reference implementation"},
+    "tools/experiments/lib/search-reliability-decision-robustness.js": {"blobSha": "f3a6951fe711db62e164910cfb248a9cbc2cac1a", "role": "technical search-semantics precedent only; G2-02 scientific rows prohibited"},
+    "tools/experiments/verify-search-reliability-stage2-independent.js": {"blobSha": "18b756f019902b80da2383ced1d148f4fe5d0760", "role": "technical independent-search precedent only; not a G3-07 verifier by itself"}
+  },
+  "eligibleGeometryFamilies": ["LGTGMIV-F1-TREE-OCCURRENCE", "LGTGMIV-F2-RAW-GRAPH", "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE", "LGTGMIV-F4-TREE-GRAPH-RELATION", "LGTGMIV-F5-REPLY-GEOMETRY"],
+  "geometryMetrics": [
+    {"metricId": "SILGM-G1-ROOT-LEGAL-WIDTH", "family": "LGTGMIV-F5-REPLY-GEOMETRY", "type": "INTEGER", "definition": "legal-move count at the selected RAW root"},
+    {"metricId": "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE", "family": "LGTGMIV-F1-TREE-OCCURRENCE", "type": "INTEGER", "definition": "sum of treeNodeOccurrences across relative depths 0..5"},
+    {"metricId": "SILGM-G3-DUPLICATE-TRANSITION-FRACTION", "family": "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE", "type": "REDUCED-RATIONAL", "definition": "sum duplicateEncounterCount[d] / sum uniqueTransitionCount[d], d=0..4"},
+    {"metricId": "SILGM-G4-CUMULATIVE-TREE-RAW-RATIO", "family": "LGTGMIV-F4-TREE-GRAPH-RELATION", "type": "REDUCED-RATIONAL", "definition": "sum treeNodeOccurrences[d], d=0..5 / global distinct RAW-state count through depth 5"},
+    {"metricId": "SILGM-G5-UNIT-WIDTH-OCCUPANCY-FRACTION", "family": "LGTGMIV-F5-REPLY-GEOMETRY", "type": "REDUCED-RATIONAL", "definition": "depth-labelled nonterminal unique RAW-state presences of legal width 1 / all depth-labelled nonterminal unique RAW-state presences"}
+  ],
+  "searchContract": {
+    "evaluationProfile": "bao",
+    "legalRootMoveOrder": "canonical move identity ascending",
+    "scoreTieTolerance": 0,
+    "topSet": "all legal root moves exactly tied at maximum score",
+    "canonicalBest": "canonical-lowest move identity within TopSet; deterministic representative only",
+    "principalVariation": "canonical exact nominal PV; quiescence affects leaf score only",
+    "timeLimitUsedAsScientificCondition": false,
+    "conditions": [
+      {"id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1},
+      {"id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1},
+      {"id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1, "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded"},
+      {"id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1, "budgetSemantics": "last completely evaluated all-root-candidates iterative-deepening depth only; partial depth discarded"},
+      {"id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0},
+      {"id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2}
+    ],
+    "contrasts": [
+      {"contrastId": "SILGM-SC1-DEPTH", "a": "D2_Q1", "b": "D3_Q1", "interpretation": "peer condition contrast; neither condition is truth"},
+      {"contrastId": "SILGM-SC2-NODE-BUDGET", "a": "B256_Q1_MAXD3", "b": "B1024_Q1_MAXD3", "interpretation": "peer deterministic budget contrast; larger budget is not truth"},
+      {"contrastId": "SILGM-SC3-QUIESCENCE", "a": "D2_Q0", "b": "D2_Q2", "interpretation": "peer quiescence contrast; neither condition is truth"}
+    ]
+  },
+  "searchInstabilityEndpoints": [
+    {"endpointId": "SILGM-E1-CANONICAL-BEST-CHANGE", "type": "BINARY", "definition": "1 iff canonical-best move identity differs between the two conditions"},
+    {"endpointId": "SILGM-E2-TOPSET-CHANGE", "type": "BINARY", "definition": "1 iff the exact sorted TopSet move-identity set differs"},
+    {"endpointId": "SILGM-E3-RANKING-PREORDER-CHANGE", "type": "BINARY", "definition": "1 iff any legal-move pair has a different exact score relation (<,=,>) between conditions"},
+    {"endpointId": "SILGM-E4-BEST-SECOND-GAP-CHANGE", "type": "BINARY", "definition": "1 iff exact best-minus-second score gap differs; requires at least two legal moves and finite integer scores"},
+    {"endpointId": "SILGM-E5-PV-PREFIX2-CHANGE", "type": "BINARY", "definition": "1 iff the canonical PV prefix signature through nominal ply 2 differs, with explicit termination marker for shorter PV"}
+  ],
+  "stages": [
+    {"stageId": "SILGM-S0-TECHNICAL-2026-09-03-v1", "evidenceClass": "TECHNICAL-FIXTURE", "freshScientificEvidenceAuthorized": false},
+    {"stageId": "SILGM-S1-DEVELOPMENT-2026-09-03-v1", "evidenceClass": "FRESH-DEVELOPMENT", "freshScientificEvidenceAuthorized": false, "authorizationPrerequisite": "STAGE0-PASS-PLUS-SEPARATE-STAGE1-AUTHORIZATION"},
+    {"stageId": "SILGM-S2-FORMAL-2026-09-03-v1", "evidenceClass": "FRESH-FORMAL-HELDOUT", "freshScientificEvidenceAuthorized": false, "authorizationPrerequisite": "VALID-STAGE1-COMPLETION-PLUS-NONEMPTY-PROMOTED-CANDIDATE-SET-PLUS-SEPARATE-STAGE2-AUTHORIZATION"}
+  ],
+  "seedNamespaces": {
+    "technical": {"start": 31709001, "end": 31709008, "scientificUseProhibited": true},
+    "stage1Development": {"start": 31710001, "end": 31710256, "statusAtFreeze": "RESERVED-NOT-CONSUMED"},
+    "stage2Formal": {"start": 31720001, "end": 31720384, "statusAtFreeze": "RESERVED-NOT-CONSUMED"},
+    "knownUnavailableEngineeringRange": "31700001..31700512"
+  },
+  "sourcePopulationPolicy": {
+    "prng": "Mulberry32",
+    "trajectoryMovePolicy": "uniform over canonical-sorted engine legal move universe",
+    "maxSourcePly": 80,
+    "minimumSelectablePly": 16,
+    "maximumSelectedRootsPerTrajectory": 1,
+    "minimumLegalMoves": 2,
+    "phaseAssignment": "SHA-256 parity of full trajectory identity with stage-specific salt",
+    "withinAssignedPhaseSelection": "minimum SHA-256 rank over trajectory identity + RAW identity + ply using stage-specific salt",
+    "duplicateRawRoot": "retain minimum rank only; no replacement",
+    "geometryOutcomeBlind": true,
+    "searchOutcomeBlind": true,
+    "gameOutcomeBlind": true,
+    "seedExtension": false
+  },
+  "stage1Population": {"targetNamuaRoots": 24, "targetMtajiRoots": 24, "targetTotalRoots": 48, "oneRootPerTrajectory": true, "seedExtension": false},
+  "stage2Population": {"targetNamuaRoots": 36, "targetMtajiRoots": 36, "targetTotalRoots": 72, "oneRootPerTrajectory": true, "seedExtension": false},
+  "developmentPromotion": {
+    "candidateSlots": "3 search contrasts x 5 search-instability endpoints = 15",
+    "geometryCompetitionPerSlot": "G1..G5 only",
+    "phaseSpecificThreshold": "exact rational midpoint of the two central ordered Stage-1 geometry values in each phase; values equal to threshold are excluded from HIGH/LOW for that metric",
+    "minimumSupportPerPhase": {"high": 8, "low": 8, "changed": 4, "unchanged": 4},
+    "eligibleDirection": "phase-specific HIGH-minus-LOW instability risk differences must both be nonzero and have the same sign",
+    "metricSelection": "among eligible G1..G5, maximize exact sum of absolute Namua and Mtaji risk differences; exact tie -> lexicographically smallest metricId",
+    "promotedIdentity": "contrastId + endpointId + selected metricId + two frozen phase thresholds + frozen direction",
+    "maximumPromotedCandidates": 15,
+    "zeroPromotedCandidatesConsequence": "Stage 2 NOT-AUTHORIZED-NOT-EXECUTED",
+    "magnitudeThreshold": null
+  },
+  "stage2FormalRule": {
+    "testedSet": "Stage-1 promoted candidate identities only",
+    "minimumSupportPerPhase": {"high": 10, "low": 10, "changed": 6, "unchanged": 6},
+    "test": "exact phase-stratified conditional association test: within each phase X=changed-in-HIGH is hypergeometric conditional on HIGH size and total changed; T=sum X across Namua and Mtaji; exact rational convolution across strata",
+    "tail": "one-sided in the Stage-1 frozen direction",
+    "multiplicity": "Holm-Bonferroni over all estimable promoted candidates",
+    "familyWiseAlpha": "1/20",
+    "confirmed": "all technical and estimability gates pass, effect direction matches the frozen Stage-1 direction, and Holm criterion passes",
+    "notConfirmed": "estimable candidate fails direction and/or multiplicity-aware test",
+    "nonEstimable": "frozen population/support/definition gate fails without global technical invalidity"
+  },
+  "exactArithmetic": {
+    "geometry": "integer or reduced rational with positive denominator",
+    "searchScores": "finite exact JavaScript integer values required for decision fields; Stage 0 must demonstrate safe-integer score domain for frozen conditions or fail closed",
+    "binaryEndpoints": "exact 0/1",
+    "riskDifferences": "reduced rational",
+    "formalProbability": "BigInt combinatorics and exact reduced rational",
+    "floatTolerance": null,
+    "scientificRounding": null
+  },
+  "identityFirewall": {
+    "upstreamIdentityOnlySources": ["LGTGMIV-STUDY1", "EBRWS-STUDY1", "TCTGD-STUDY1", "SFCDF-STUDY1", "BECT-STUDY1", "BRMGI-STUDY1"],
+    "upstreamScientificOutcomeFieldsRetained": false,
+    "g306SelectionDiagnosticsRetained": false,
+    "g304CandidateValuesOrDirectionsUsedForSelection": false,
+    "g202ScientificRowsRetained": false,
+    "stage2ExcludesStage1": ["source seed", "full trajectory identity", "opening-prefix identity", "selected RAW-root identity", "source ply/root-window identity"]
+  },
+  "productionIndependentContract": {
+    "geometry": "separate LGTGMIV-derived production and independent reconstruction paths",
+    "search": "separate G3-07 production and independent search implementations; independent may import public engine/evaluator but must not import production G3-07 search/aggregation module",
+    "selection": "production and independent population selection must be independently recomputed and canonical-exact before geometry/search measurement",
+    "scientificEquality": "canonical sorted JSON UTF-8 SHA-256 exact equality; runtime prototype identity is not a scientific equality primitive"
+  },
+  "resourceContract": {
+    "perGeometryRoot": {"uniqueRawStatesMax": 100000, "uniqueTransitionsMax": 750000, "parentExpansionsMax": 100000, "legalMoveEvaluationsMax": 750000, "treeNodeOccurrencesMax": "1000000000", "elapsedMsMax": 180000, "peakRssBytesMax": 4294967296, "artifactBytesMax": 67108864},
+    "stageGeometryReference": {"elapsedMsMax": 7200000, "artifactBytesMax": 1073741824},
+    "searchPerConditionNodeSemantics": "exact-depth has no node budget but is bounded by frozen depth; budget conditions are bounded by their explicit node budgets",
+    "stage0ElapsedMsMax": 600000,
+    "stage0PeakRssBytesMax": 2147483648,
+    "stage0ArtifactBytesMax": 67108864,
+    "freshStageCeilings": "must be materialized in the stage-specific authorization artifact from technical-only Stage-0 measurements without reading fresh scientific roots; no post-fresh relaxation"
+  },
+  "failureHandling": {
+    "relayLimitInsideRequiredGeometry": "TECHNICAL-INVALID / fail closed",
+    "searchExceptionOrNonfiniteScore": "TECHNICAL-INVALID / fail closed",
+    "mandatorySearchConditionNotEstimableAtSelectedRoot": "root endpoint non-estimable under frozen gate; no replacement",
+    "timeout": "infrastructure/resource failure only; never a scientific search condition",
+    "artifactFailureAfterFreshAccess": "no scientific recomputation; exact-byte recovery only where possible, otherwise fail closed",
+    "repairAndRerunSameFreshEvidence": false
+  },
+  "executionIntegrity": {
+    "maxAuthorizedScientificExecutionsPerFreshStage": 1,
+    "authorizationSeparatedFromComputation": true,
+    "durablePreComputationLease": true,
+    "sourceBlobBinding": true,
+    "singleTriggerPath": true,
+    "concurrencyGuard": true,
+    "artifactBeforeMirror": true,
+    "exactByteRecoveryOnly": true,
+    "executionCountAudit": true
+  },
+  "noRescue": {
+    "crossesAt": "first fresh G3-07 scientific seed/evidence generation or read",
+    "afterCrossProhibited": ["seed extension", "root replacement", "favorable subgroup selection", "threshold relaxation", "endpoint substitution", "candidate redesign", "search-condition redesign", "geometry family substitution", "verification relaxation", "resource ceiling relaxation", "repair-and-rerun", "partial-result promotion"]
+  },
+  "protectedEvidence": {"standardInitialRawRootCompleteExactDepth10": "SEALED-NOT-GENERATED-NOT-READ", "generationReadPeekTrialEnumerationResourceEstimationAuthorized": false},
+  "mainIntegrationPolicy": "No automatic main integration; explicit user instruction required after formal closure and final consistency audit"
+}
