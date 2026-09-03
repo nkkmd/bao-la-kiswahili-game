@@ -1,0 +1,35 @@
+name: SILGM Stage 2 Formal Input Materialization v2
+
+on:
+  push:
+    branches:
+      - research/g3-07-search-instability-local-geometry-mechanism
+    paths:
+      - doc/search-instability-local-geometry-mechanism/triggers/STAGE_2_INPUT_MATERIALIZATION_V2_TRIGGER.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: silgm-stage2-input-materialization-v2
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax-check materializer v2
+        run: node --check tools/experiments/materialize-silgm-stage2-formal-input-v2.js
+      - name: Materialize allowed Stage 2 input only
+        run: |
+          mkdir -p artifacts/local/search-instability-local-geometry-mechanism/stage2-input-v2
+          node tools/experiments/materialize-silgm-stage2-formal-input-v2.js \
+            --output artifacts/local/search-instability-local-geometry-mechanism/stage2-input-v2/STAGE_2_FORMAL_INPUT.json
+      - name: Upload Stage 2 input artifact before repository mirror
+        uses: actions/upload-artifact@v4
+        with:
+          name: silgm-stage2-input-v2-${{ github.run_id }}
+          path: artifacts/local/search-instability-local-geometry-mechanism/stage2-input-v2/STAGE_2_FORMAL_INPUT.json
+          if-no-files-found: error
+          overwrite: false
