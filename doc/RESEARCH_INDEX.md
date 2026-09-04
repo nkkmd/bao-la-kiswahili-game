@@ -108,7 +108,7 @@ tree edge occurrences = 136644
 | 12 | 限定終盤 | frozen 8-state domainをexact solve | [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md) |
 | 13 | 対称性・同型局面 | 5 candidateすべて`NON-ESTIMABLE` | [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md) |
 | 14 | Oracle表現整合性 | Axis A `NOT-CONFIRMED`、Axis B未実行 | [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md) |
-| 15 | 状態空間・ゲーム木 | depth 0〜8のRAW-only exact result | [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md) |
+| 15 | 状態空間・ゲーム木 | `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`。24,848 RAW states / 30,941 tree nodes | [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md) |
 | 16 | 実戦的な逆転可能性 | `EXPLORATORY-ONLY`、candidate 0件 | [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md) |
 
 ### 16. Practical Comeback / Error-Inducing Move — Study 1 — 結果

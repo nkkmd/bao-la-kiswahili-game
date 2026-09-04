@@ -125,7 +125,7 @@ PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じてお�
 
 ### 4.9 状態空間とゲーム木
 
-standard initial RAW rootでは、depth 8・9・10までのbounded exact resultsが世代をまたいで蓄積されました。これらはwhole-Bao sizeではなく、depthごとに限定されたexact resultです。
+standard initial RAW rootでは、depth 8・9・10までのbounded exact resultsが世代をまたいで蓄積されました。Study 1の正式判断は`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で、depth 0〜8のreachable RAW statesは24,848、tree node occurrencesは30,941です。これらはwhole-Bao sizeではなく、depthごとに限定されたexact resultです。
 
 ## 5. 推奨する研究プログラム
 
