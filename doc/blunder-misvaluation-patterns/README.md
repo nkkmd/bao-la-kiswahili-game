@@ -1,4 +1,4 @@
-# Blunder / Misvaluation Patterns Study 1
+# 悪手・誤評価パターンの機械検証 — `BMP-STUDY1`
 
 ## 研究題目
 
@@ -33,7 +33,7 @@ Study 1 = CLOSED
 - [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — Study-level decisions
 - [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md) — stage index
 
-## Study architecture
+## 研究の構成
 
 ```text
 Stage 0 — technical / construct audit                 COMPLETE
@@ -42,7 +42,7 @@ Stage 2 — fresh prospective formal confirmation      COMPLETE
 Study 1                                                CLOSED
 ```
 
-## Stage 1 result
+## Stage 1の結果
 
 ```text
 games = 2048
@@ -57,7 +57,7 @@ final promoted candidates = 4
 manual override = false
 ```
 
-Promoted exploratory candidates:
+exploratory Stageからpromotionしたcandidate:
 
 ```text
 BMP-S1-C01 — Namua / worstReplyActorFrontConnectionsDeltaNegative
@@ -66,7 +66,7 @@ BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
 BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
 ```
 
-## Stage 2 frozen identity
+## Stage 2で固定した識別情報
 
 ```text
 candidate freeze SHA-256 = 12ee81bac3ec669d39427cac3fe46e6657e89228284a0d8e6111653098dd955b
@@ -74,7 +74,7 @@ formal spec SHA-256 = 4260411338d01d19ea12c1b67379bc72f34427081677bbb4dbfd010962
 authorization SHA-256 = 0e5b29fcf64caf82c3e2106b85387eea5bb04ed66a0624f75f76518f13596a87
 ```
 
-Fresh Stage 2 population:
+fresh Stage 2 population:
 
 ```text
 games = 4096
@@ -84,7 +84,7 @@ distinct opening prefixes = 2827
 full replay/search verification = PASS
 ```
 
-Stage 1 identity firewall final overlap:
+Stage 1 identity firewallによる最終overlap:
 
 ```text
 historicalTrajectoryHash = 0
@@ -92,7 +92,7 @@ openingPrefixHash = 0
 ruleStateKey = 0
 ```
 
-Formal support and measurement:
+formal supportとmeasurement:
 
 ```text
 G01 Namua = 1868
@@ -102,25 +102,25 @@ measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681
 independent verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7382
 ```
 
-## Formal decision structure
+## 正式判断の構造
 
-Per candidate, two co-primary endpoints were preregistered:
+candidateごとに2つのco-primary endpointを事前登録しました。
 
 ```text
 failure-signature recurrence — exact one-sided binomial H0 p<=0.50; observed floor >=0.65
 D3-inferior recurrence       — exact one-sided binomial H0 p<=0.50; observed floor >=0.70
 ```
 
-Eight planned tests used Holm-Bonferroni FWER 0.05. Confirmation also required:
+予定した8検定にはHolm-Bonferroni FWER 0.05を適用しました。`CONFIRMED`には、さらに次の条件も要求しました。
 
 ```text
 D3 TopSet rate <= 0.20
 median normalized rank loss >= 0.50
 ```
 
-Zero confirmed candidates was explicitly valid.
+確認candidateが0件となる場合も、事前に有効な結果として規定していました。
 
-## Final formal result
+## 最終的な正式結果
 
 | Candidate | Failure recurrence | D3-inferior recurrence | Formal decision |
 | --- | ---: | ---: | --- |
@@ -129,11 +129,11 @@ Zero confirmed candidates was explicitly valid.
 | `BMP-S2-C03` | 0.794968 | 0.464668 | **NOT-CONFIRMED** |
 | `BMP-S2-C04` | 0.627160 | 0.507407 | **NOT-CONFIRMED** |
 
-C01-C03 reproduce their frozen structural failure signatures strongly but do not reproduce D3-inferior status at the preregistered rate. C04 also falls below the absolute failure-signature floor.
+C01〜C03は固定済みのstructural failure signatureを強く再現しましたが、D3-inferior statusは事前登録した率で再現しませんでした。C04はabsolute failure-signature floorにも到達しませんでした。
 
-All four candidates were estimable. No candidate was confirmed.
+4候補はすべてestimableでしたが、`CONFIRMED`となった候補はありません。
 
-## Canonical formal identity
+## 正式記録の識別情報
 
 ```text
 selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
@@ -143,19 +143,19 @@ formal embedded resultHash = 1de774ca5aac8a284ec5f78395050238fab93643e47fc47046c
 raw formal-result SHA-256 = e478d3fb29ad15508ddcaf6973d8eb8aa6bf4debd23921564ae08a1ac518293d
 ```
 
-## Interpretation boundary
+## 解釈上の境界
 
-`NOT-CONFIRMED` applies only to the frozen machine-operational confirmation definition. It is not a proof of game-theoretic soundness and does not establish absence of human misconception, expert/traditional rejection, lack of pedagogical importance, causal mechanism, or external validity.
+`NOT-CONFIRMED`が適用されるのは、固定済みmachine-operational confirmation definitionだけです。game-theoretic soundnessの証明ではなく、人間の誤解が存在しないこと、expert / traditionalな評価、教育上の重要性がないこと、因果mechanism、external validityのいずれも確立しません。
 
-D3 is a frozen machine reference, not ground truth.
+D3は固定済みのmachine referenceであり、ground truthではありません。
 
-## Artifact policy
+## 成果物の扱い
 
-Large scientific data remain local:
+大規模なscientific dataはlocalに保持します。
 
 ```text
 artifacts/local/blunder-misvaluation-patterns/stage1-exploratory-v1/
 artifacts/local/blunder-misvaluation-patterns/stage2-formal-v1/
 ```
 
-Compact machine-readable records and provenance are committed; large corpus/measurement/formal payloads are not.
+小規模なmachine-readable recordとprovenanceはcommitしていますが、大規模なcorpus・measurement・formal payloadはcommitしていません。

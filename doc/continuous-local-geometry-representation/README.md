@@ -1,15 +1,15 @@
-# Continuous Local-Geometry Representation Study 1
+# 連続的な局所ゲーム木幾何表現 — `CLGR-STUDY1`
 
 Research Generation 3 `G3-09` / `CLGR-STUDY1` の研究ディレクトリ。
 
-Current lifecycle status:
+現在のlifecycle状態:
 
 **`CLOSED / TECHNICAL-INVALID`**
 <!-- CLGR-G3-09-FINAL-AUDIT:README -->
 
-Repository/document closure status: **`FINAL CONSISTENCY AUDIT PASS / RESEARCH BRANCH REVIEW-READY`** (`33754250314`).
+リポジトリと文書のclosure状態は **`FINAL CONSISTENCY AUDIT PASS / RESEARCH BRANCH REVIEW-READY`**（`33754250314`）です。
 
-## Formal Study identity
+## 正式なStudy識別情報
 
 - Study ID: `CLGR-STUDY1`
 - English title: **Continuous Local-Geometry Representation Study 1 — Prospective construction and fresh-holdout eligibility validation of an exact multiaxial bounded RAW local game-tree geometry representation in Bao**
@@ -18,15 +18,15 @@ Repository/document closure status: **`FINAL CONSISTENCY AUDIT PASS / RESEARCH B
 - Reviewed baseline main: `6c218b9cc3f492fb96d051768702682fef9bb66a`
 - Research branch: `research/g3-09-continuous-local-geometry-representation`
 
-## Final decision
+## 最終判断
 
 **`G3-09 / CLGR-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
-Stage 1 development passed the prospectively frozen representation gates on 48 fresh roots. The separately authorized exactly-one Stage 2 formal holdout selected 72 roots but failed closed after 61 completed measurements because required depth-5 RAW enumeration raised a `relay-limit` error at Mtaji source seed `31920066`.
+Stage 1 developmentでは、48個のfresh rootについて事前固定したrepresentation gateを通過しました。別途承認した1回限りのStage 2 formal holdoutでは72 rootsを選択しましたが、61 rootsの測定完了後、Mtaji source seed `31920066`の必須depth-5 RAW enumerationで`relay-limit` errorが発生したため、fail-closedで停止しました。
 
-Therefore formal eligibility of the continuous representation was **not established**. The Stage 2 partial measurements are not a completed formal sample and are not reusable as positive, negative or null formal scientific evidence.
+したがって、このcontinuous representationのformal eligibilityは**確立していません**。Stage 2のpartial measurementは完成したformal sampleではなく、positive・negative・nullのformal scientific evidenceとして再利用できません。
 
-## Measurement foundation
+## 測定基盤
 
 ```text
 LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL
@@ -38,11 +38,11 @@ state identity = pits,reserve,houseOwned,player,phase,winner,pending
 move identity = type,phase,row,index,direction,side,houseChoice,houseTwo
 ```
 
-## Frozen primary representation
+## 固定済みの主要表現
 
-`CLGR-R1-EXACT-SQUASHED-L1` was the only primary representation family.
+主要representation familyは`CLGR-R1-EXACT-SQUASHED-L1`だけです。
 
-It retained six prospectively fixed exact geometry axes:
+この表現は、結果を見る前に固定した次の6つのexact geometry axisを保持します。
 
 1. `CLGR-A1-ROOT-LEGAL-WIDTH`
 2. `CLGR-A2-CUMULATIVE-TREE-OCCURRENCE`
@@ -51,16 +51,16 @@ It retained six prospectively fixed exact geometry axes:
 5. `CLGR-A5-DUPLICATE-TRANSITION-FRACTION`
 6. `CLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION`
 
-For any nonnegative exact rational `q=n/d`, the coordinate transform was fixed as `q/(1+q)=n/(n+d)` in reduced rational form. Integers use `d=1`. No centering, z-scoring, phase-specific standardization, learned weighting, PCA, spectral embedding, clustering or post-development feature selection was allowed.
+非負のexact rational `q=n/d`に対する座標変換は、既約分数の`q/(1+q)=n/(n+d)`に固定しました。整数では`d=1`を使用します。centering、z-scoring、phase別standardization、learned weighting、PCA、spectral embedding、clustering、development後のfeature selectionはいずれも認めていません。
 
-Distance was equal-weight exact L1 across the six transformed coordinates.
+距離は、変換後の6座標に対するequal-weight exact L1です。
 
-## Stage record
+## 各Stageの記録
 
 - `CLGR-S0-TECHNICAL-2026-09-03-v1` — `TECHNICAL-INVALID`, pre-fresh, no rerun
 - `CLGR-S0-TECHNICAL-2026-09-03-v2` — `STAGE0-PASS`
-- `CLGR-S1-DEVELOPMENT-2026-09-03-v1` — `STAGE1-PASS`, exactly one fresh execution, 24 Namua + 24 Mtaji
-- `CLGR-S2-FORMAL-2026-09-03-v1` — `TECHNICAL-INVALID`, exactly one fresh execution, 36 Namua + 36 Mtaji selected, 61 roots measured before fail-closed
+- `CLGR-S1-DEVELOPMENT-2026-09-03-v1` — `STAGE1-PASS`。1回限りのfresh executionでNamua 24 + Mtaji 24を測定
+- `CLGR-S2-FORMAL-2026-09-03-v1` — `TECHNICAL-INVALID`。1回限りのfresh executionでNamua 36 + Mtaji 36を選び、61 rootsの測定後にfail-closed
 
 Stage 1 canonical result SHA-256:
 
@@ -70,35 +70,35 @@ Stage 2 formal-result JSON SHA-256:
 
 `11cee4ab7d2fbd1105f69ff1592b01a3ebd651aa1bedbf79414e7b338935ef73`
 
-## No-rescue boundary
+## 結果確認後の救済を禁止する境界
 
-Because Stage 2 fresh evidence was accessed, `CLGR-STUDY1` may not be repaired through rerun, seed extension, root replacement, relay-limit handling change, resource-ceiling relaxation, representation redesign or formal-gate modification.
+Stage 2のfresh evidenceへアクセスしたため、`CLGR-STUDY1`をrerun、seed extension、root replacement、relay-limit処理変更、resource ceiling緩和、representation再設計、formal gate変更によって修正してはなりません。
 
-A future relay-limit-safe continuous-representation investigation must be a new prospective independent Study/version.
+relay-limitに耐えるcontinuous representationを将来再検証する場合は、新しい事前規定・独立Study/versionとして行う必要があります。
 
-## Protected evidence
+## 保護された証拠
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW rootのcomplete exact depth-10 holdoutは、次の状態を維持しました。
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
-It was never required or opened by this Study.
+本Studyでは必要とせず、開封もしていません。
 
-## Downstream boundary
+## 後続研究との境界
 
-G3-10 is **not automatically authorized**. A separate post-G3-09 current-state authorization review is required because the historical G3-10 design assumes validated local-geometry coordinates, while G3-09 formal representation eligibility was not established.
+G3-09のclosureだけでは、G3-10は**自動承認されません**でした。historical G3-10 designはvalidated local-geometry coordinatesを前提とする一方、G3-09ではformal representation eligibilityを確立できなかったため、別のpost-G3-09 current-state authorization reviewを必要としました。
 
-Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains unchanged.
+過去の計画を記録する`doc/research-generation-3/PROGRAM_PLAN.md`は変更していません。
 
-## Main integration
+## mainへの統合
 
-After explicit user instruction on 2026-09-03, the reviewed G3-09 closure tip `64ada67b058811c18d81e7286fd3b12df6964459` was fast-forward integrated to `main` with `force=false`. No squash, rebase, history rewrite, scientific recomputation, seed reuse, or protected-holdout access occurred. The closed research branch is retained for provenance.
+2026-09-03の明示的なユーザー指示に基づき、監査済みのG3-09 closure tip `64ada67b058811c18d81e7286fd3b12df6964459`を`force=false`のfast-forwardで`main`へ統合しました。squash、rebase、history rewrite、scientific recomputation、seed reuse、protected holdoutへのaccessは行っていません。終了済み研究ブランチはprovenanceのため保持しています。
 
-## Read next
+## 次に読む文書
 
-- `STUDY_1_FINAL_REPORT.md`
-- `CURRENT_STATUS.md`
-- `DECISION_REGISTER.md`
-- `REPRODUCIBILITY_INDEX.md`
-- `STUDY_1_PROTOCOL.md`
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 最終報告
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の状態
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 判断記録
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — 再現性索引
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
 - `prereg/STUDY_1_SPEC.json`

@@ -1,4 +1,4 @@
-# G3-11 / FDEGHV-STUDY1 — Fresh Depth-10 Exact Geometry Holdout Validation Study 1
+# depth 10のfresh exact geometry holdout検証 — `G3-11` / `FDEGHV-STUDY1`
 
 更新日: 2026-09-04
 
@@ -41,7 +41,7 @@ standard initial RAW rootからdepth 10までをRAW-onlyで完全列挙し、pro
 
 Cumulative through depth 10は**451,127 distinct RAW states / 466,768 depth-labelled legal edges / 631,101 tree-node occurrences**である。
 
-## Interpretation boundary
+## 解釈上の境界
 
 本Studyはstandard initial RAW rootのcomplete exact depth-10 domainだけを対象とする。Bao全状態空間・全ゲーム木、depth 11以深、symmetry-reduced count、causal mechanism、human difficulty、game-theoretic valueを確立しない。またG3-04、G3-07、G3-10等の既存formal decisionを再判定しない。
 

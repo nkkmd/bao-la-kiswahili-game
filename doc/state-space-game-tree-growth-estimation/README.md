@@ -1,4 +1,4 @@
-# State-Space / Game-Tree Growth Estimation Study 1
+# 状態空間・ゲーム木の成長推定 — `SSGTGE-STUDY1`
 
 Research Generation 2 `G2-12` / Study ID `SSGTGE-STUDY1` のStudy-local正本ディレクトリです。
 
@@ -23,18 +23,18 @@ Stage 1 productionはE2をproposalしましたが、mandatory independent verifi
 
 ## 主要文書
 
-- `STUDY_1_OVERVIEW.md` — 初見向け概要
-- `STUDY_1_PROTOCOL.md` — prospectively frozen protocol
-- `STUDY_1_FINAL_REPORT.md` — 最終報告
-- `CURRENT_STATUS.md` — closure状態
-- `DECISION_REGISTER.md` — prospective / closure decisions
-- `RESEARCH_LOG.md` — 進行ログ
-- `REPRODUCIBILITY_INDEX.md` — 再現性・provenance索引
-- `RESUME_HERE.md` — 再開時の入口
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向け概要
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — prospectively frozen protocol
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 最終報告
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — closure状態
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — prospective / closure decisions
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — 進行ログ
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — 再現性・provenance索引
+- [`RESUME_HERE.md`](RESUME_HERE.md) — 再開時の入口
 - `results/STUDY_1_FINAL_RESULT.json` — machine-readable final result
 - `results/STAGE_1_TECHNICAL_INVALID_RESULT.json` — Stage 1 fail-closed記録
 
-## Formal boundary
+## 正式結果の境界
 
 Fresh depth 10/11 scientific outcomeは本Studyでは未生成・未読である。production-only Stage 1予測をformal holdout predictionとして使用しない。
 

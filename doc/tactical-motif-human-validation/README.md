@@ -1,4 +1,4 @@
-# Tactical Motif Human / Expert Validation Study 1
+# tactical motifの人間・expert検証 — Study 1
 
 ## 研究題目
 
@@ -21,7 +21,7 @@
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 科学的最終統合
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — canonical closure state
 
-## Historical machine evidence
+## 既存の機械検証結果
 
 ```text
 TM-S2-C01 = NOT-CONFIRMED
@@ -32,9 +32,9 @@ TM-S2-C04 = NOT-CONFIRMED
 
 本研究のhuman outcomeはこれらを変更しない。
 
-## Machine / instrument result
+## 機械測定・instrumentの結果
 
-Fresh Stage 1 population:
+fresh Stage 1 population:
 
 ```text
 games = 1536
@@ -42,7 +42,7 @@ seeds = 22100001..22101536
 six generation strata × 256
 ```
 
-Independent verification:
+independent verification:
 
 ```text
 gamesVerified = 1536
@@ -50,7 +50,7 @@ fullSearchRecomputation = true
 mismatchCount = 0
 ```
 
-Prospective class counts:
+事前規定したclass別件数:
 
 ```text
 C03_TARGET = 687
@@ -59,9 +59,9 @@ M_ONLY     = 621
 MORPH_NEAR = 987
 ```
 
-All Stage 1 readiness gates passed.
+Stage 1のreadiness gateはすべてPASSしました。
 
-Exact formal machine stimulus set:
+exact formal machine stimulus set:
 
 ```text
 primary blocks = 12
@@ -72,11 +72,11 @@ secondary C03 move-choice targets = 6
 total unique formal positions = 42
 ```
 
-Private exact freeze SHA-256:
+private exact freezeのSHA-256:
 
 `2cd0794d838aa3a91c0b549f60c9763a8d75a66d6ecf16c490d46d681ab2fa22`
 
-## Human-axis closure
+## 人間検証軸の終了状態
 
 本研究は所属機関によらない独立研究として実施された。
 
@@ -92,13 +92,13 @@ formal human responses = 0
 
 Frozen minimum expertsは`10`であり、緩和していない。
 
-Final human-axis label:
+human axisの最終label:
 
 `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
 
 Zero participantsはnegative human evidenceではない。
 
-## Final evidence state
+## 最終的な証拠の状態
 
 ```text
 machineEvidence = CONFIRMED
@@ -108,22 +108,22 @@ humanExpertN = 0
 
 本研究はC03がhuman expertに認識されるとも、認識されないとも結論しない。
 
-## Canonical records
+## 正本となる記録
 
-- `STUDY_1_OVERVIEW.md`
-- `STUDY_1_FINAL_REPORT.md`
-- `CURRENT_STATUS.md`
-- `RESEARCH_PLAN.md`
-- `STATISTICAL_ANALYSIS_PLAN.md`
-- `ETHICS_AND_DATA_GOVERNANCE.md`
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
+- [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md)
+- [`STATISTICAL_ANALYSIS_PLAN.md`](STATISTICAL_ANALYSIS_PLAN.md)
+- [`ETHICS_AND_DATA_GOVERNANCE.md`](ETHICS_AND_DATA_GOVERNANCE.md)
 - `STAGE_1_ARTIFACT_AUDIT.json`
 - `STAGE_1_FORMAL_STIMULUS_FREEZE_AUDIT.json`
 - `STAGE_2A_RECRUITMENT_FEASIBILITY_RESULT.json`
-- `STAGE_2A_RECRUITMENT_FEASIBILITY_CLOSURE.md`
-- `DECISION_REGISTER.md`
-- `EXPERIMENT_INDEX.md`
-- `RESEARCH_LOG.md`
+- [`STAGE_2A_RECRUITMENT_FEASIBILITY_CLOSURE.md`](STAGE_2A_RECRUITMENT_FEASIBILITY_CLOSURE.md)
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
+- [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md)
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md)
 
-## Future-work boundary
+## 将来研究との境界
 
 将来qualified expertへアクセス可能になった場合、このclosed Study 1のhuman resultを上書きしない。新しいprospective independent study、またはnew human responses前に明示的にversionedされたprospective reopeningとして扱う。

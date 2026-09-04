@@ -1,4 +1,4 @@
-# Tactical Motifs / Tesuji Study 1
+# Baoのtactical motif・手筋研究 — Study 1
 
 ## 研究題目
 
@@ -10,7 +10,7 @@
 
 Stage 0 technical validation、Stage 1 prospective exploratory discovery、Stage 2 fresh prospective formal confirmationまで完了しました。
 
-Final Stage 2 decisions:
+Stage 2の最終判断:
 
 ```text
 TM-S2-C01 = NOT-CONFIRMED
@@ -28,15 +28,15 @@ Study 1は、**1つのmachine-reproducible transferable tactical motifをformal�
 - [`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) — Stage 2 formal result
 - [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — hash / artifact / tooling索引
 
-## Confirmed motif — TM-S2-C03
+## 確認されたmotif — `TM-S2-C03`
 
-Canonical Stage 1 rank: `5`
+canonical Stage 1 rank: `5`
 
-Canonical candidate key:
+canonical candidate key:
 
 `7a9ebacdc74234cf206b59696a92551b3e15f5e97336ef09a16e1efbf0042eba`
 
-Frozen machine definition:
+固定済みの機械定義:
 
 ```text
 phase = mtaji
@@ -45,7 +45,7 @@ move = takata / row 1 / direction right / coarse-no-index
 consequence = actorNyumbaSeedsDeltaSign=0
 ```
 
-Fresh formal corpus result:
+fresh formal corpusの結果:
 
 ```text
 n = 1272
@@ -58,7 +58,7 @@ formal decision = CONFIRMED
 
 Opening-prefix diversityは1,121種類、generation strataは6種類すべてに広がっています。
 
-## Other candidates
+## その他の候補
 
 - C01はstructural consequenceを69.44%で再現しましたが、D3 top-set率49.34%のため **NOT-CONFIRMED**。
 - C02はstructural success 9.28%、D3 top-set 30.72%で **NOT-CONFIRMED**。
@@ -66,7 +66,7 @@ Opening-prefix diversityは1,121種類、generation strataは6種類すべてに
 
 Negative resultsは追加game、subset、paired-definition substitution、閾値変更、endpoint変更などで救済しません。
 
-## Stage 1 summary
+## Stage 1の要約
 
 Stage ID:
 
@@ -83,17 +83,17 @@ promotion-gate pass = 948
 promoted definitions = 8
 ```
 
-The eight Stage 1 definitions form four exact support-identity pairs and remain immutable exploratory definitions.
+Stage 1の8定義は4組のexact support-identity pairを構成し、変更不可のexploratory definitionとして保持します。
 
-Stage 1 discovery artifact SHA-256:
+Stage 1 discovery artifactのSHA-256:
 
 `aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34`
 
-Stage 1 candidate-freeze SHA-256:
+Stage 1 candidate-freezeのSHA-256:
 
 `f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73`
 
-## Stage 2 summary
+## Stage 2の要約
 
 Stage ID:
 
@@ -109,7 +109,7 @@ formal measurements = 6,605
 confirmed candidates = 1 / 4
 ```
 
-Key hashes:
+主要hash:
 
 - candidates: `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
 - spec: `83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`
@@ -119,53 +119,53 @@ Key hashes:
 - measurement: `c912d0eb5e0d2a5957163b0bd1a17e85e4756ef693d1b3aef545aad65aaed2c9`
 - result core: `62719429fcca9de8b99309e2b8542a237184a91c29863db23d5aa8c0f4ad6748`
 
-## Interpretation boundary
+## 解釈上の境界
 
 C03の`CONFIRMED`は、frozen Bao engine/search operationalizationにおける**machine-reproducible transferable tactical motif**を意味します。
 
 以下はこのStudy 1では未確認です。
 
-- traditional / expert-recognized tesuji
-- human importance
-- beginner importance
-- pedagogical value
-- causal strategic benefit beyond the formal construct
+- 伝統的、またはexpert-recognizedなtesujiであること
+- 人間にとって重要であること
+- 初心者にとって重要であること
+- 教育上の価値
+- formal constructを超える因果的な戦略上の利益
 - other rules / engines / evaluators / search instrumentsへのgeneralization
 
 これらは新しいprospective studyとして扱います。
 
-## Scientific / operational documents
+## 科学・運用文書
 
-- `CURRENT_STATUS.md`
-- `RESEARCH_PLAN.md`
-- `HYPOTHESES.md`
-- `DECISION_REGISTER.md`
-- `EXPERIMENT_INDEX.md`
-- `RESEARCH_LOG.md`
-- `STAGE_0_TECHNICAL_AUDIT.md`
-- `STAGE_1_EXPLORATORY_PROTOCOL.md`
-- `STAGE_1_EXECUTION_RUNBOOK.md`
-- `STAGE_1_EXPLORATORY_RESULT.md`
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
+- [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md)
+- [`HYPOTHESES.md`](HYPOTHESES.md)
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
+- [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md)
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md)
+- [`STAGE_0_TECHNICAL_AUDIT.md`](STAGE_0_TECHNICAL_AUDIT.md)
+- [`STAGE_1_EXPLORATORY_PROTOCOL.md`](STAGE_1_EXPLORATORY_PROTOCOL.md)
+- [`STAGE_1_EXECUTION_RUNBOOK.md`](STAGE_1_EXECUTION_RUNBOOK.md)
+- [`STAGE_1_EXPLORATORY_RESULT.md`](STAGE_1_EXPLORATORY_RESULT.md)
 - `STAGE_1_CANDIDATE_FREEZE.json`
-- `STAGE_2_FORMAL_PROTOCOL.md`
-- `STAGE_2_EXECUTION_RUNBOOK.md`
+- [`STAGE_2_FORMAL_PROTOCOL.md`](STAGE_2_FORMAL_PROTOCOL.md)
+- [`STAGE_2_EXECUTION_RUNBOOK.md`](STAGE_2_EXECUTION_RUNBOOK.md)
 - `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
 - `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
 - `preregistration/STAGE_2_FORMAL_CANDIDATES.json`
 - `preregistration/STAGE_2_FORMAL_SPEC.json`
 - `preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`
-- `checkpoints/2026-08-15-stage2-corpus-full-verification.md`
-- `checkpoints/2026-08-15-stage2-selection-estimability-pass.md`
-- `checkpoints/2026-08-15-stage2-measurement-integrity-pass.md`
-- `checkpoints/2026-08-15-stage2-formal-completion.md`
+- [`checkpoints/2026-08-15-stage2-corpus-full-verification.md`](checkpoints/2026-08-15-stage2-corpus-full-verification.md)
+- [`checkpoints/2026-08-15-stage2-selection-estimability-pass.md`](checkpoints/2026-08-15-stage2-selection-estimability-pass.md)
+- [`checkpoints/2026-08-15-stage2-measurement-integrity-pass.md`](checkpoints/2026-08-15-stage2-measurement-integrity-pass.md)
+- [`checkpoints/2026-08-15-stage2-formal-completion.md`](checkpoints/2026-08-15-stage2-formal-completion.md)
 
-## Artifact policy
+## 成果物の扱い
 
-Large scientific artifacts remain local under:
+大規模なscientific artifactは次のlocal pathに保持します。
 
 ```text
 artifacts/local/tactical-motifs/stage1-exploratory-v1/
 artifacts/local/tactical-motifs/stage2-formal-v1/
 ```
 
-The scientific corpora and per-state/per-candidate measurements are not committed to GitHub.
+scientific corpusとstate別・candidate別のmeasurementはGitHubへcommitしません。

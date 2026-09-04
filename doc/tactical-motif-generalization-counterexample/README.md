@@ -1,8 +1,8 @@
-# Tactical Motif Generalization / Counterexample Study 1
+# tactical motifの一般化範囲と反例領域 — `TMGC-STUDY1`
 
-- Research Generation: `G2-09`
+- 研究世代: `G2-09`
 - Study ID: `TMGC-STUDY1`
-- baseline remote `main`: `bc1263b7076f0a3794da5fd0d4e07821b23e1db6`
+- 研究開始時のremote `main`: `bc1263b7076f0a3794da5fd0d4e07821b23e1db6`
 - 正式状態: **Study closed / `TECHNICAL-INVALID`**
 
 ## 正式研究題目
@@ -26,19 +26,19 @@ Research Generation 1の`TM-S2-C03 = CONFIRMED`、C01/C02/C04の`NOT-CONFIRMED`�
 
 ## 最初に読む
 
-- `STUDY_1_OVERVIEW.md` — 人間向け概要
-- `STUDY_1_FINAL_REPORT.md` — 科学的・技術的最終統合
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 人間向け概要
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 科学的・技術的最終統合
 
 ## 詳細・正本
 
-- `STUDY_1_PROTOCOL.md` — prospective protocol
-- `CURRENT_STATUS.md` — terminal state
-- `DECISION_REGISTER.md` — prospectiveな判断とno-rescue closureの記録
-- `REPRODUCIBILITY_INDEX.md` — workflow / source / artifact provenanceの再現性索引
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — prospective protocol
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — terminal state
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — prospectiveな判断とno-rescue closureの記録
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — workflow / source / artifact provenanceの再現性索引
 - `results/STAGE_1_TECHNICAL_INVALID_RESULT.json` — Stage 1のcanonicalなtechnical-invalid結果
 - `results/STUDY_1_FINAL_RESULT.json` — Study-level terminal result
-- `checkpoints/2026-08-30-stage1-tooling-smoke-technical-invalid.md` — failure closure checkpoint
+- [`checkpoints/2026-08-30-stage1-tooling-smoke-technical-invalid.md`](checkpoints/2026-08-30-stage1-tooling-smoke-technical-invalid.md) — failure closure checkpoint
 
-## State / humanに関する境界
+## state identity・人間検証に関する境界
 
 Authoritative identityはRAW identityのみ。validated transform setは空で、canonicalization / symmetry reductionは使用しない。本Studyはmachine-onlyであり、人間/expert recognition、difficulty、error probability、traditional terminologyを推定しない。

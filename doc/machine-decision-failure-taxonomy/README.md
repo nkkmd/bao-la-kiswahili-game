@@ -1,4 +1,4 @@
-# G2-08 / MDFT-STUDY1 — Machine Decision-Failure Taxonomy Study 1
+# 機械的意思決定失敗の構造分類 — `G2-08` / `MDFT-STUDY1`
 
 このディレクトリは、Research Generation 2 `G2-08` の新規・prospective・独立研究を管理します。
 
@@ -28,19 +28,19 @@ Stage 2 = MDFT-S2-FORMAL-2026-08-29-v1
 
 ## 文書
 
-- `STUDY_1_OVERVIEW.md` — 人間向け研究概要
-- `STUDY_1_FINAL_REPORT.md` — Study 1の科学的・技術的最終統合
-- `STUDY_1_PROTOCOL.md` — prospective scientific protocol
-- `FAILURE_MODE_DICTIONARY.md` — candidate failure-mode familyの機械的定義境界
-- `CURRENT_STATUS.md` — 現在の正式状態
-- `DECISION_REGISTER.md` — frozen decisions / no-rescue boundary
-- `REPRODUCIBILITY_INDEX.md` — seed / source / artifact / verifier索引
-- `RESEARCH_LOG.md` — chronology
-- `RESUME_HERE.md` — 再開地点
-- `preregistration/` — scientific seed消費前に固定するmachine-readable contract
-- `results/` — canonical result保存先
-- `checkpoints/` — immutable checkpoints
-- `authorizations/` — explicit authorization records
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 人間向け研究概要
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — Study 1の科学的・技術的最終統合
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — prospective scientific protocol
+- [`FAILURE_MODE_DICTIONARY.md`](FAILURE_MODE_DICTIONARY.md) — candidate failure-mode familyの機械的定義境界
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — frozen decisions / no-rescue boundary
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — seed / source / artifact / verifier索引
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — chronology
+- [`RESUME_HERE.md`](RESUME_HERE.md) — 再開地点
+- [`preregistration/`](preregistration/) — scientific seed消費前に固定するmachine-readable contract
+- [`results/`](results/) — canonical result保存先
+- [`checkpoints/`](checkpoints/) — immutable checkpoints
+- [`authorizations/`](authorizations/) — explicit authorization records
 
 ## 現在の実行状態
 
