@@ -1,0 +1,5 @@
+RG3 final program closure agenda-ordering polish
+scientific execution authorized: false
+scientific seed access authorized: false
+main integration authorized: false
+purpose: normalize current-facing G3-10/G3-11/G3-12 presentation order and re-audit final pre-main readiness
