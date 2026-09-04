@@ -1,0 +1,37 @@
+name: LGTGGC Stage 1 Pre-fresh Static Audit
+
+on:
+  push:
+    branches:
+      - research/g3-12-local-game-tree-geometry-generalization-counterexample
+    paths:
+      - .github/workflows/lgtggc-stage1-prefresh-static.yml
+
+permissions:
+  contents: read
+
+jobs:
+  static-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check Stage 1 JavaScript syntax
+        run: |
+          node --check tools/experiments/lib/lgtggc-stage1-production.js
+          node --check tools/experiments/lib/lgtggc-stage1-independent.js
+          node --check tools/experiments/run-lgtggc-stage1-sfcdf.js
+          node --check tools/experiments/run-lgtggc-stage1-silgm.js
+          node --check tools/experiments/run-lgtggc-stage1-gcld.js
+          node --check tools/experiments/finalize-lgtggc-stage1-development.js
+      - name: Parse frozen JSON contracts
+        run: |
+          node -e 'JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/prereg/STAGE_1_DEVELOPMENT_SPEC.json","utf8")); JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/prereg/STUDY_1_TECHNICAL_AMENDMENT_V2.json","utf8")); console.log("JSON contracts parse PASS")'
+      - name: Assert no scientific execution side effect
+        run: |
+          echo 'STATIC-AUDIT-PASS / no Stage 1 seed runner invoked'
