@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 1,
+  "programPosition": "Research Generation 3 / G3-12",
+  "studyId": "LGTGGC-STUDY1",
+  "titles": {
+    "ja": "Bao局所ゲーム木幾何の一般化可能範囲と反例領域のprospective検証 — formal-eligible upstream claimをphase、reachable-root family、source-policy、rule context横断のfresh evidenceで再検証し、bounded geometry claim boundaryを確立する",
+    "en": "Local Game-Tree Geometry Generalization / Counterexample Study 1 — Prospective fresh validation of generalization and counterexample boundaries for formally eligible bounded RAW local-game-tree geometry claims across phase, reachable-root family, source policy, and Bao rule context"
+  },
+  "authorizationDecision": "G3-12-AUTHORIZED",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-04-post-g3-11-g3-12-authorization-review.md",
+  "sourceMain": {
+    "repository": "nkkmd/bao-la-kiswahili-game",
+    "headSha": "5597ae696d9eb76d8395e114cdb4f83af1138a3d",
+    "researchBranch": "research/g3-12-local-game-tree-geometry-generalization-counterexample"
+  },
+  "stageStructure": [
+    {
+      "stageId": "LGTGGC-S0-TECHNICAL-2026-09-04-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "scientificOutcomeAuthorized": false,
+      "freshScientificSeedAccess": false
+    },
+    {
+      "stageId": "LGTGGC-S1-DEVELOPMENT-2026-09-04-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePreFreshAuthorization": true
+    },
+    {
+      "stageId": "LGTGGC-S2-FORMAL-2026-09-04-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage1Authorization": true
+    }
+  ],
+  "sourceIdentity": {
+    "engine": {
+      "path": "public/engine.js",
+      "gitBlobSha": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"
+    },
+    "aiTechnicalReference": {
+      "path": "public/ai.js",
+      "gitBlobSha": "8d472be415fac17e47a8e5e667cea9672e7a9ef5",
+      "scope": "canonical move identity and G3-07 search-condition module only"
+    },
+    "rawGeometryProductionReference": {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-production.js",
+      "gitBlobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"
+    },
+    "rawGeometryIndependentReference": {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-independent.js",
+      "gitBlobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"
+    },
+    "continuousGeometryProductionReference": {
+      "path": "tools/experiments/lib/crclgr-production.js",
+      "gitBlobSha": "f9d90792d729a42f738e7cd1c3b045bdd758ffa5"
+    },
+    "continuousGeometryIndependentReference": {
+      "path": "tools/experiments/lib/crclgr-independent.js",
+      "gitBlobSha": "77d3a91b2165019e4b50c195a1bb14147c35e6d2"
+    }
+  },
+  "identityContract": {
+    "rawStateFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedRawFields": ["turn", "reason"],
+    "moveFields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransformSet": [],
+    "symmetryCanonicalizationAuthorized": false,
+    "treeOccurrenceAndUniqueRawGraphStateAreDistinctConstructs": true
+  },
+  "eligibleUpstreamClaims": [
+    {
+      "claimId": "G3-04-C1",
+      "sourceStudy": "SFCDF-STUDY1",
+      "sourceCandidate": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "frozenDirection": "MTAJI-GREATER",
+      "module": "SFCDF-TRANSFER"
+    },
+    {
+      "claimId": "G3-04-C6",
+      "sourceStudy": "SFCDF-STUDY1",
+      "sourceCandidate": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "frozenDirection": "NAMUA-GREATER",
+      "module": "SFCDF-TRANSFER"
+    },
+    {
+      "claimId": "G3-07-SC1-E3-G1",
+      "sourceStudy": "SILGM-STUDY1",
+      "sourceCandidate": "SILGM-SC1-DEPTH|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH",
+      "frozenDirection": "HIGHER-IN-HIGH",
+      "module": "SILGM-TRANSFER"
+    },
+    {
+      "claimId": "G3-07-SC2-E3-G1",
+      "sourceStudy": "SILGM-STUDY1",
+      "sourceCandidate": "SILGM-SC2-NODE-BUDGET|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH",
+      "frozenDirection": "HIGHER-IN-HIGH",
+      "module": "SILGM-TRANSFER"
+    },
+    {
+      "claimId": "G3-07-SC3-E3-G1",
+      "sourceStudy": "SILGM-STUDY1",
+      "sourceCandidate": "SILGM-SC3-QUIESCENCE|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH",
+      "frozenDirection": "HIGHER-IN-HIGH",
+      "module": "SILGM-TRANSFER"
+    },
+    {
+      "claimId": "G3-10-C1",
+      "sourceStudy": "GCLD-STUDY1",
+      "sourceCandidate": "C1-DIRECTIONALITY-PATH-EFFICIENCY",
+      "frozenDirection": "ACTUAL-GREATER",
+      "module": "GCLD-TRANSFER"
+    },
+    {
+      "claimId": "G3-10-C2",
+      "sourceStudy": "GCLD-STUDY1",
+      "sourceCandidate": "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT",
+      "frozenDirection": "ACTUAL-GREATER",
+      "module": "GCLD-TRANSFER"
+    },
+    {
+      "claimId": "G3-10-C3",
+      "sourceStudy": "GCLD-STUDY1",
+      "sourceCandidate": "C3-RETURN-FRACTION",
+      "frozenDirection": "ACTUAL-LESS",
+      "module": "GCLD-TRANSFER"
+    },
+    {
+      "claimId": "G3-10-C5",
+      "sourceStudy": "GCLD-STUDY1",
+      "sourceCandidate": "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE",
+      "frozenDirection": "ACTUAL-GREATER",
+      "module": "GCLD-TRANSFER"
+    }
+  ],
+  "excludedUpstreamClaims": {
+    "technicalInvalidStudies": ["EBRWS-STUDY1", "TCTGD-STUDY1", "BECT-STUDY1", "BRMGI-STUDY1", "LGPML-STUDY1", "CLGR-STUDY1", "RRCLGR-STUDY1"],
+    "g3_04NonPromoted": ["SFCDF-C2", "SFCDF-C3", "SFCDF-C4", "SFCDF-C5"],
+    "g3_07NotConfirmedOrNonEstimable": "all SILGM promoted candidates other than the three E3 x G1 HIGHER-IN-HIGH candidates",
+    "g3_10NotConfirmed": ["C4-CHRONOLOGY-CONDITIONED-CIRCULATION"],
+    "g3_11PositiveGeneralizationTargets": [],
+    "g3_11Role": ["VALIDATION-ANCHOR", "BOUNDARY-REFERENCE", "HISTORICAL-EXACT-COMPARATOR"],
+    "g2_12EstimatorScientificInput": false
+  },
+  "geometryInstruments": {
+    "rawLocalGeometry": {
+      "contract": "LGTGMIV-CANONICAL-v1",
+      "relativeDepth": 5,
+      "families": [
+        "LGTGMIV-F1-TREE-OCCURRENCE",
+        "LGTGMIV-F2-RAW-GRAPH",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION",
+        "LGTGMIV-F5-REPLY-GEOMETRY"
+      ]
+    },
+    "continuousTrajectoryGeometry": {
+      "representationId": "CRCLGR-R1-EXACT-SQUASHED-L1",
+      "relativeDepth": 5,
+      "axes": [
+        "CRCLGR-A1-ROOT-LEGAL-WIDTH",
+        "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE",
+        "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES",
+        "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO",
+        "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION",
+        "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+      ],
+      "coordinateArithmetic": "EXACT-REDUCED-RATIONAL",
+      "distance": "EQUAL-WEIGHT-EXACT-L1",
+      "scope": "GCLD-TRANSFER only"
+    }
+  },
+  "sourcePolicies": [
+    {
+      "policyId": "LGTGGC-P1-UNIFORM-LEGAL",
+      "prng": "MULBERRY32",
+      "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+      "selection": "floor(u * legalMoveCount) from all legal moves at every ply"
+    },
+    {
+      "policyId": "LGTGGC-P2-CAPTURE-FIRST",
+      "prng": "MULBERRY32",
+      "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+      "selection": "if any legal move has type=capture, floor(u * captureMoveCount) among captures; otherwise floor(u * legalMoveCount) among all legal moves"
+    }
+  ],
+  "rootFamilies": [
+    {
+      "rootFamilyId": "LGTGGC-RF1-EARLY-ANCHOR",
+      "namuaRoot": "exact ply 24, nonterminal, phase=namua",
+      "mtajiRoot": "first nonterminal phase=mtaji state at ply >=44",
+      "pairedForSfcdf": true
+    },
+    {
+      "rootFamilyId": "LGTGGC-RF2-LATE-ANCHOR",
+      "namuaRoot": "exact ply 32, nonterminal, phase=namua",
+      "mtajiRoot": "exact ply 56, nonterminal, phase=mtaji",
+      "pairedForSfcdf": true
+    }
+  ],
+  "formalAxisApplicability": {
+    "SFCDF-TRANSFER": ["sourcePolicy", "rootFamily", "phase-paired-contrast"],
+    "SILGM-TRANSFER": ["sourcePolicy", "rootFamily", "phase-stratified-association"],
+    "GCLD-TRANSFER": ["sourcePolicy", "fixed-longitudinal-checkpoints"],
+    "notIndependentFormalAxes": [
+      "reserve as an independent factor because of structural phase coupling",
+      "root legal width as an independent transfer axis for SILGM because it is the claim predictor",
+      "G3-11 standard-root depth-10 as a fresh root-family cell"
+    ]
+  },
+  "secondaryRuleContextDescriptors": {
+    "formalRescueUseAuthorized": false,
+    "fields": [
+      "phase",
+      "selectedPly",
+      "rootLegalWidth",
+      "captureAvailable",
+      "actorReserve",
+      "opponentReserve",
+      "actorHouseOwned",
+      "opponentHouseOwned",
+      "actorPending",
+      "opponentPending"
+    ],
+    "definitions": {
+      "captureAvailable": "at least one canonical legal move has type=capture",
+      "actorReserve": "state.reserve[state.player]",
+      "opponentReserve": "state.reserve[1-state.player]",
+      "actorHouseOwned": "state.houseOwned[state.player] === true",
+      "opponentHouseOwned": "state.houseOwned[1-state.player] === true",
+      "actorPending": "state.pending[state.player]",
+      "opponentPending": "state.pending[1-state.player]"
+    },
+    "interpretation": "pre-specified boundary localization only; cannot rescue a failed primary domain test or create a post-hoc positive law"
+  },
+  "freshSeedBlocks": {
+    "stage1": {
+      "SFCDF-TRANSFER": {"seedStart": 32311001, "seedEnd": 32311384, "count": 384},
+      "SILGM-TRANSFER": {"seedStart": 32312001, "seedEnd": 32312768, "count": 768},
+      "GCLD-TRANSFER": {"seedStart": 32313001, "seedEnd": 32313384, "count": 384}
+    },
+    "stage2": {
+      "SFCDF-TRANSFER": {"seedStart": 32321001, "seedEnd": 32321768, "count": 768},
+      "SILGM-TRANSFER": {"seedStart": 32322001, "seedEnd": 32323536, "count": 1536},
+      "GCLD-TRANSFER": {"seedStart": 32324001, "seedEnd": 32324768, "count": 768}
+    },
+    "seedExtensionAuthorized": false
+  },
+  "populationContracts": {
+    "SFCDF-TRANSFER": {
+      "unit": "source-trajectory paired Namua/Mtaji roots",
+      "stage1TargetPairsPerPolicyRootFamilyCell": 10,
+      "stage2TargetPairsPerPolicyRootFamilyCell": 18,
+      "cellCount": 4,
+      "selection": "policy fixed by seed parity; root-family assignment by stage-specific SHA-256 parity; within cell eligible pairs ordered by stage-specific SHA-256 rank; no geometry/endpoint/outcome input",
+      "pairReject": "reject entire pair if either frozen root is unavailable or invalid"
+    },
+    "SILGM-TRANSFER": {
+      "unit": "one selected RAW root from one source trajectory",
+      "phaseAssignment": "stage-specific SHA-256 parity",
+      "rootFamilyAssignment": "independent stage-specific SHA-256 parity",
+      "widthThresholdsInheritedFromG3_07": {
+        "namua": {"numerator": "4", "denominator": "1"},
+        "mtaji": {"numerator": "3", "denominator": "1"}
+      },
+      "widthClasses": {
+        "HIGH": "rootLegalWidth > phase threshold",
+        "LOW": "rootLegalWidth < phase threshold",
+        "EQUAL": "excluded from HIGH/LOW association population"
+      },
+      "stage1TargetPerPolicyRootFamilyPhaseWidthClass": 8,
+      "stage2TargetPerPolicyRootFamilyPhaseWidthClass": 12,
+      "formalDomainRootCount": 48,
+      "formalDomainCount": 4,
+      "formalTotalRootTarget": 192,
+      "selection": "one root per trajectory; outcome/search blind; balanced prospectively on fixed predictor class only; stage-specific SHA-256 rank within frozen policy/root-family/phase/width class"
+    },
+    "GCLD-TRANSFER": {
+      "unit": "source trajectory",
+      "checkpointsAfterPly": [16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72],
+      "stage1MeasuredTargetPerPolicy": 16,
+      "stage2MeasuredTargetPerPolicy": 32,
+      "formalTotalTrajectoryTarget": 64,
+      "candidateRule": "nonterminal through ply72, no source relay-limit, complete 15-root CRCLGR preflight eligibility",
+      "selection": "complete geometry-blind candidate manifest first; then first resource-eligible trajectories in frozen stage-specific SHA-256 candidate order; no replacement after coordinates begin"
+    }
+  },
+  "developmentFormalFirewall": {
+    "stage2ExcludesAllStage1": [
+      "source seeds",
+      "full trajectory SHA-256 identities",
+      "first-16-move opening-prefix SHA-256 identities",
+      "selected RAW root SHA-256 identities",
+      "all GCLD checkpoint RAW root SHA-256 identities"
+    ],
+    "stage1EffectBasedPromotion": false,
+    "stage1DirectionBasedPromotion": false,
+    "stage1PValuesAuthorized": false,
+    "stage1MayCheck": ["population support", "endpoint definedness", "production/independent exactness", "resource readiness", "deterministic selection integrity"],
+    "formalClaimSetMutableAfterStage1": false,
+    "formalAxesMutableAfterStage1": false
+  },
+  "primaryEndpoints": {
+    "SFCDF-TRANSFER": [
+      {
+        "endpointId": "G3-04-C1",
+        "definition": "sum unitWidthStateCount over depth0..5 / sum depth-labelled unique RAW-state presences with reply width >0 over depth0..5",
+        "upstreamDirection": "MTAJI-GREATER"
+      },
+      {
+        "endpointId": "G3-04-C6",
+        "definition": "sum tree node occurrences depth0..5 / global distinct RAW states depth0..5",
+        "upstreamDirection": "NAMUA-GREATER"
+      }
+    ],
+    "SILGM-TRANSFER": [
+      {
+        "endpointId": "G3-07-SC1-E3-G1",
+        "searchContrast": "D2_Q1 vs D3_Q1",
+        "binaryEndpoint": "RANKING-PREORDER-CHANGE",
+        "predictor": "ROOT-LEGAL-WIDTH",
+        "upstreamDirection": "HIGHER-IN-HIGH"
+      },
+      {
+        "endpointId": "G3-07-SC2-E3-G1",
+        "searchContrast": "B256_Q1_MAXD3 vs B1024_Q1_MAXD3",
+        "binaryEndpoint": "RANKING-PREORDER-CHANGE",
+        "predictor": "ROOT-LEGAL-WIDTH",
+        "upstreamDirection": "HIGHER-IN-HIGH"
+      },
+      {
+        "endpointId": "G3-07-SC3-E3-G1",
+        "searchContrast": "D2_Q0 vs D2_Q2",
+        "binaryEndpoint": "RANKING-PREORDER-CHANGE",
+        "predictor": "ROOT-LEGAL-WIDTH",
+        "upstreamDirection": "HIGHER-IN-HIGH"
+      }
+    ],
+    "GCLD-TRANSFER": [
+      {"endpointId": "G3-10-C1", "definition": "d(z0,z14) / sum_t d(zt,z[t+1])", "upstreamDirection": "ACTUAL-GREATER"},
+      {"endpointId": "G3-10-C2", "definition": "mean lag4 exact L1 distance - mean lag1 exact L1 distance", "upstreamDirection": "ACTUAL-GREATER"},
+      {"endpointId": "G3-10-C3", "definition": "eligible anchor return count / eligible anchor count using immediate-departure-relative threshold", "upstreamDirection": "ACTUAL-LESS"},
+      {"endpointId": "G3-10-C5", "definition": "(same-sign adjacent informative axis-step count - opposite-sign count)/(same+opposite)", "upstreamDirection": "ACTUAL-GREATER"}
+    ]
+  },
+  "temporalControl": {
+    "module": "GCLD-TRANSFER",
+    "controlCountPerTrajectory": 32,
+    "endpointsFixed": true,
+    "internalCheckpoints": 13,
+    "permutationRule": "sort internal checkpoint plys by SHA-256(stageId|sourceSeed|permutationIndex|checkpointPly)",
+    "controlReference": "exact median of 32 control endpoint values",
+    "trajectoryContrast": "actual endpoint - control median"
+  },
+  "formalInference": {
+    "familyAlpha": {"numerator": "1", "denominator": "20"},
+    "multiplicityFamilies": {
+      "SFCDF-TRANSFER": 8,
+      "SILGM-TRANSFER": 12,
+      "GCLD-TRANSFER": 8
+    },
+    "crossModuleOmnibusPValue": false,
+    "SFCDF-TRANSFER": {
+      "perCellPairs": 18,
+      "test": "exact two-sided binomial sign test on paired Mtaji-Namua exact-rational differences; zeros removed from n and reported",
+      "minimumNonzero": 12,
+      "holmWithinModule": true
+    },
+    "SILGM-TRANSFER": {
+      "perPhaseSupport": {"HIGH": 12, "LOW": 12, "minimumChanged": 6, "minimumUnchanged": 6},
+      "conditionalNull": "within each phase X~Hypergeometric(N,K,n), convolve Namua and Mtaji T distributions",
+      "twoSidedP": "min(1, 2*min(P[T<=observed], P[T>=observed])) using exact rational arithmetic",
+      "directionRule": "compare 2*T with total changed K across both phase strata; greater=HIGHER-IN-HIGH, less=LOWER-IN-HIGH, equal=ZERO-DIRECTION",
+      "holmWithinModule": true
+    },
+    "GCLD-TRANSFER": {
+      "perPolicyTrajectories": 32,
+      "minimumNonzeroPerEndpoint": 20,
+      "test": "exact two-sided binomial sign test on trajectory-level actual-control-median contrasts",
+      "holmWithinModule": true
+    }
+  },
+  "formalDecisionLabels": {
+    "GENERALIZATION-CONFIRMED": "estimable, multiplicity-adjusted exact test passes, observed direction matches frozen upstream direction",
+    "COUNTEREXAMPLE-CONFIRMED": "estimable, multiplicity-adjusted exact test passes, observed direction is opposite the frozen upstream direction",
+    "NOT-GENERALIZED": "estimable but multiplicity-adjusted exact test does not establish either directional departure",
+    "NON-ESTIMABLE": "frozen support/definedness/resource gate not met without integrity failure",
+    "TECHNICAL-INVALID": "mandatory identity, execution, arithmetic, production/independent, serializer, resource-integrity, or provenance contract fails"
+  },
+  "secondaryEndpoints": {
+    "ruleContextLocalization": "pre-specified exact counts/distributions by captureAvailable, houseOwned, reserve, pending, root legal width and ply; no positive rescue claim",
+    "rootFamilySupport": "candidate/eligible/selected counts and exact rejection reasons",
+    "sourcePolicySupport": "trajectory completion, terminal-before-target, relay-limit, phase/root availability",
+    "g3_11HistoricalComparison": "read-only comparison of construct definitions and published exact depth-10 summary only; no rerun or pooled inference"
+  },
+  "resourceCeilings": {
+    "perDepth5Root": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000000,
+      "maxElapsedMs": 180000,
+      "maxPeakRssBytes": 4294967296,
+      "maxRootArtifactBytes": 67108864
+    },
+    "stage0": {"maxElapsedMs": 900000, "maxPeakRssBytes": 2147483648, "maxArtifactBytes": 134217728},
+    "stage1Modules": {
+      "SFCDF-TRANSFER": {"maxElapsedMs": 3600000, "maxArtifactBytes": 536870912},
+      "SILGM-TRANSFER": {"maxElapsedMs": 7200000, "maxArtifactBytes": 1073741824},
+      "GCLD-TRANSFER": {"maxElapsedMs": 7200000, "maxArtifactBytes": 1073741824}
+    },
+    "stage2Modules": {
+      "SFCDF-TRANSFER": {"maxElapsedMs": 7200000, "maxArtifactBytes": 1073741824},
+      "SILGM-TRANSFER": {"maxElapsedMs": 14400000, "maxArtifactBytes": 1610612736},
+      "GCLD-TRANSFER": {"maxElapsedMs": 14400000, "maxArtifactBytes": 1610612736}
+    },
+    "postFreshIncreaseAuthorized": false
+  },
+  "stoppingConditions": [
+    "mandatory production/independent scientific mismatch",
+    "RAW or move identity mismatch",
+    "nonterminal zero-legal-move anomaly",
+    "relay-limit in a required selected scientific unit where the frozen contract treats it as technical invalid",
+    "non-exact or undefined mandatory arithmetic outside a prospectively allowed NON-ESTIMABLE path",
+    "execution-count violation",
+    "source/blob authorization mismatch",
+    "durable pre-computation lease failure",
+    "resource ceiling violation without a prospectively defined NON-ESTIMABLE disposition"
+  ],
+  "independentVerificationContract": {
+    "productionIndependentSeparateImplementationsRequired": true,
+    "independentMayNotImportProductionAggregation": true,
+    "mustIndependentlyReconstruct": [
+      "source policy replay and candidate selection",
+      "RAW and move canonical identity",
+      "depth-5 local geometry",
+      "SFCDF endpoint arithmetic",
+      "SILGM deterministic search conditions and ranking-preorder-change endpoint",
+      "CRCLGR six-axis coordinates and exact L1",
+      "GCLD temporal controls and endpoints",
+      "formal exact-test arithmetic",
+      "Holm multiplicity decisions"
+    ],
+    "scientificEquality": "SHA-256 equality of canonical sorted scientific JSON content",
+    "tolerance": "0"
+  },
+  "executionIntegrity": {
+    "maxAuthorizedScientificExecutionsPerFreshStageVersion": 1,
+    "authorizationSeparateFromArmingAndComputation": true,
+    "durablePreComputationLeaseRequired": true,
+    "sourceBlobBindingRequired": true,
+    "singleTriggerPathRequired": true,
+    "concurrencyGuardRequired": true,
+    "artifactBeforeMirrorRequired": true,
+    "exactByteRecoveryOnly": true,
+    "sameEvidenceRepairRerunAuthorized": false
+  },
+  "protectedEvidenceFirewall": {
+    "g3_11Depth10": "OPENED / CONSUMED EXACTLY ONCE / HISTORICAL READ-ONLY RESULT ONLY",
+    "sameEvidenceDepth10RerunAuthorized": false,
+    "depth11Authorized": false,
+    "depth11Accessed": false,
+    "g2_12EstimatorScientificInputAuthorized": false
+  },
+  "noRescue": [
+    "no upstream decision modification",
+    "no threshold relaxation",
+    "no endpoint replacement",
+    "no favorable subgroup rescue",
+    "no post-fresh axis change",
+    "no post-fresh population or root replacement",
+    "no seed extension",
+    "no resource ceiling increase",
+    "no symmetry or canonicalization introduction",
+    "no G3-10 C4 revival",
+    "no technical-invalid upstream diagnostic promotion"
+  ],
+  "interpretationBoundary": [
+    "bounded local geometry only",
+    "not game-theoretic optimality",
+    "not forced win",
+    "not human difficulty or perception",
+    "not public Bao AI strength",
+    "not win rate",
+    "not strategic regime",
+    "not whole-Bao state-space size",
+    "not whole-Bao game-tree size",
+    "not causal mechanism",
+    "not universal Bao law"
+  ],
+  "mainIntegration": "NOT AUTHORIZED WITHOUT EXPLICIT USER INSTRUCTION"
+}
