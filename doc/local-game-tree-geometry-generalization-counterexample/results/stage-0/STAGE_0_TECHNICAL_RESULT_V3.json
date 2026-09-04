@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S0-TECHNICAL-2026-09-04-v3",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "technicalSeedStart": 32309001,
+  "technicalSeedEnd": 32309064,
+  "scientificSeedAccess": 0,
+  "controls": {
+    "RAW-STATE-IDENTITY-PRODUCTION-INDEPENDENT-EXACT": true,
+    "MOVE-IDENTITY-PRODUCTION-INDEPENDENT-EXACT": true,
+    "P1-DETERMINISTIC-REPLAY-PRODUCTION-INDEPENDENT-EXACT": true,
+    "P2-DETERMINISTIC-REPLAY-PRODUCTION-INDEPENDENT-EXACT": true,
+    "P1-P2-SOURCE-POLICY-DISTINGUISHABLE": true,
+    "RF1-RF2-ANCHOR-SELECTION-EXACT": true,
+    "SFCDF-C1-C6-EXACT-RATIONAL-AGREEMENT": true,
+    "SILGM-THRESHOLD-BOUNDARY-EXACT": true,
+    "SILGM-SC1-E3-EXACT": true,
+    "SILGM-SC2-E3-EXACT": true,
+    "SILGM-SC3-E3-EXACT": true,
+    "SILGM-TWO-SIDED-STRATIFIED-HYPERGEOMETRIC-EXACT": true,
+    "CRCLGR-SIX-AXIS-EXACT-AGREEMENT": true,
+    "CRCLGR-EXACT-L1-AGREEMENT": true,
+    "GCLD-C1-C2-C3-C5-EXACT": true,
+    "GCLD-32-CONTROL-CONSTRUCTION-EXACT": true,
+    "EXACT-TWO-SIDED-SIGN-TEST-AGREEMENT": true,
+    "HOLM-EXACT-RATIONAL-AGREEMENT": true,
+    "CANONICAL-CONTENT-ORDER-INVARIANCE": true,
+    "FORCED-FAIL-CLOSED-CONTROLS": true,
+    "PRODUCTION-INDEPENDENT-CANONICAL-CONTENT-AGREEMENT": true,
+    "G3-11-DEPTH10-ACCESS-FALSE": true,
+    "DEPTH11-ACCESS-FALSE": true,
+    "G2-12-ESTIMATOR-INPUT-FALSE": true
+  },
+  "details": {
+    "policyDistinguishability": {
+      "technicalSeeds": 64,
+      "differentSeeds": 64,
+      "firstDifferentSeed": 32309001,
+      "variableCapturePoints": 2882,
+      "replayCoreSha256": "fed8f5d28fc635b35e2621c586fa197226baa7f981a60148c454bf4659267b7e"
+    },
+    "sfcdfTechnical": {
+      "rootRawSha256": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+      "c1": {"numerator": "13", "denominator": "279", "defined": true},
+      "c6": {"numerator": "293", "denominator": "280", "defined": true}
+    },
+    "searchTechnical": {
+      "SC1": {"e3": 1, "productionCompletedDepth": [2,3], "independentCompletedDepth": [2,3]},
+      "SC2": {"e3": 0, "productionCompletedDepth": [3,3], "independentCompletedDepth": [3,3]},
+      "SC3": {"e3": 1, "productionCompletedDepth": [2,2], "independentCompletedDepth": [2,2]}
+    },
+    "hypergeomTechnical": {
+      "observed": 17,
+      "changedTotal": 22,
+      "pTwoSided": {"numerator": "51925219", "denominator": "40178349848", "defined": true},
+      "direction": "HIGHER-IN-HIGH"
+    },
+    "crclgrTechnical": {
+      "rootA": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+      "rootB": "bb74eafeb125561e896d2508b4d47dc23f87e2c24796b84733ebaa9fe719e436",
+      "distance": {"numerator": "1253207319929179247", "denominator": "18963929731377250620", "defined": true}
+    },
+    "gcldTechnical": {
+      "endpoints": {
+        "C1-DIRECTIONALITY-PATH-EFFICIENCY": {"numerator": "1", "denominator": "1", "defined": true},
+        "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT": {"numerator": "439245821997", "denominator": "565636468600", "defined": true},
+        "C3-RETURN-FRACTION": {"numerator": "0", "denominator": "1", "defined": true},
+        "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE": {"numerator": "1", "denominator": "1", "defined": true}
+      },
+      "controlCount": 32
+    },
+    "probabilityTechnical": {
+      "signTest": {
+        "positive": 24,
+        "negative": 8,
+        "ties": 2,
+        "nonzero": 32,
+        "pValue": {"numerator": "15033173", "denominator": "2147483648", "defined": true}
+      },
+      "holmAdjusted": {
+        "A": {"numerator": "3", "denominator": "1000", "defined": true},
+        "B": {"numerator": "1", "denominator": "50", "defined": true},
+        "C": {"numerator": "1", "denominator": "10", "defined": true}
+      }
+    }
+  },
+  "protectedDepth10Access": false,
+  "depth11Access": false,
+  "g2_12EstimatorScientificInput": false,
+  "stageDisposition": "STAGE0-PASS",
+  "technicalCoreSha256": "79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e493e8a834"
+}
