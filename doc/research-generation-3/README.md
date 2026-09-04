@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = CLOSED / core agenda G3-01..G3-12 complete / FINAL_SYNTHESIS materialized / MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION
+Status = CLOSED / core agenda G3-01..G3-12 complete / FINAL_SYNTHESIS materialized / MAIN INTEGRATION COMPLETE FAST-FORWARD
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / DEFERRED / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -84,6 +84,7 @@ G3-12 main integration = COMPLETE / FAST-FORWARD / source tip 146a51567183860603
 - [`../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md) — post-G3-12 closure authorization review
 - [`checkpoints/2026-09-04-program-closure-central-sync-complete.md`](checkpoints/2026-09-04-program-closure-central-sync-complete.md) — generation-level central documentation synchronization record
 - [`checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`](checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md) — final pre-main repository/document consistency audit after documentation polish
+- [`checkpoints/2026-09-04-research-generation-3-main-integration-complete.md`](checkpoints/2026-09-04-research-generation-3-main-integration-complete.md) — generation-level closure main fast-forward integration / post-integration bookkeeping record
 <!-- RG3-FINAL-CLOSURE-READ-FIRST:END -->
 
 <!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->

@@ -377,4 +377,4 @@ Canonical program-level records:
 - `../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`
 - `../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`
 
-`main` integrationは本synthesisでは実行しない。明示的ユーザー指示までclosure branch上で保持する。
+本synthesis materialization後、明示的ユーザー指示に基づきclosure branch tip `0feaab24efdd92c3e094aae0fcc60256e90bd1a6`をprevious main `fd6c8e2a4510d5937b47a87735854e8459b2646f`へforceなしfast-forwardし、generation-level `main` integrationを完了した。科学的synthesis・formal decision・protected evidence boundaryは変更していない。

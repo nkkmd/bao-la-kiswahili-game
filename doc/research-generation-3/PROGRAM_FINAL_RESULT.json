@@ -6,7 +6,7 @@
   "closureBranch": "research/g3-final-program-closure",
   "baselineMainSha": "fd6c8e2a4510d5937b47a87735854e8459b2646f",
   "programStatus": "CLOSED",
-  "mainIntegration": "PENDING-EXPLICIT-USER-AUTHORIZATION",
+  "mainIntegration": "COMPLETE-FAST-FORWARD",
   "coreAgenda": "G3-01..G3-12",
   "humanTrack": {
     "agendaLabel": "G3-H01",
@@ -202,12 +202,19 @@
   },
   "closureReview": "RG3-PROGRAM-CLOSURE-AUTHORIZED",
   "scientificExecutionAuthorizedByProgramClosure": false,
-  "mainIntegrationAuthorized": false,
+  "mainIntegrationAuthorized": true,
   "repositoryClosure": {
     "centralDocumentationSynchronization": "COMPLETE",
     "finalPreMainConsistencyAudit": "PASS",
     "finalAuditCheckpoint": "doc/research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md",
     "temporaryClosureWriteCapableToolingPresent": false,
-    "preMainIntegrationReady": true
-  }
+    "preMainIntegrationReady": true,
+    "mainIntegrationComplete": true,
+    "integrationMethod": "FAST-FORWARD",
+    "force": false,
+    "previousMainSha": "fd6c8e2a4510d5937b47a87735854e8459b2646f",
+    "integratedClosureTip": "0feaab24efdd92c3e094aae0fcc60256e90bd1a6",
+    "integrationCheckpoint": "doc/research-generation-3/checkpoints/2026-09-04-research-generation-3-main-integration-complete.md"
+  },
+  "mainIntegrationAuthorizationSource": "explicit-user-instruction-2026-09-04"
 }

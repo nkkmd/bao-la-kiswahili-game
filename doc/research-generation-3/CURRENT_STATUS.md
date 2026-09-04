@@ -4,7 +4,7 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = CLOSED / core agenda G3-01..G3-12 complete / final synthesis materialized / main integration pending explicit user instruction
+Program status = CLOSED / core agenda G3-01..G3-12 complete / final synthesis materialized / main integration COMPLETE / FAST-FORWARD
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / DEFERRED / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -111,7 +111,7 @@ Central documentation synchronization = COMPLETE
 Final pre-main documentation consistency audit = PASS
 Temporary closure write-capable tooling = REMOVED
 Scientific execution authorized by closure = none
-Main integration = NOT AUTHORIZED / NOT PERFORMED / explicit user instruction required
+Main integration = COMPLETE / FAST-FORWARD / source tip 0feaab24efdd92c3e094aae0fcc60256e90bd1a6 / previous main fd6c8e2a4510d5937b47a87735854e8459b2646f / force=false
 ```
 
 Generation-level canonical records:
@@ -122,6 +122,7 @@ Generation-level canonical records:
 - `../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`
 - `checkpoints/2026-09-04-program-closure-central-sync-complete.md`
 - `checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`
+- `checkpoints/2026-09-04-research-generation-3-main-integration-complete.md`
 
 Protected boundaries remain active: G3-11 depth-10 rerun prohibited; depth 11 not authorized; G3-12 Stage 1 same-evidence repair/replay prohibited; G3-12 Stage 2 not authorized and seeds unread; G2-12 estimator scientific reuse and symmetry/canonicalization rescue not authorized.
 <!-- RG3-FINAL-CLOSURE-CURRENT:END -->

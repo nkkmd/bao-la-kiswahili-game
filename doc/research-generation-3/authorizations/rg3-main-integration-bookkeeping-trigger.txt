@@ -1,8 +1,0 @@
-Research Generation 3 main integration bookkeeping
-explicit user authorization: received 2026-09-04
-integrated closure tip: 0feaab24efdd92c3e094aae0fcc60256e90bd1a6
-previous main: fd6c8e2a4510d5937b47a87735854e8459b2646f
-force: false
-scientific execution authorized: false
-bookkeeping audit order: corrected
-helper removal: force-removal enabled after runner-local audit patch

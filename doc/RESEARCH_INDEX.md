@@ -29,7 +29,7 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 <!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:BEGIN -->
 ### Research Generation 3 — program closure
 
-**状態:** `CLOSED / MAIN INTEGRATION PENDING`
+**状態:** `CLOSED / MAIN INTEGRATION COMPLETE / FAST-FORWARD`
 
 Research Generation 3 core agenda `G3-01..G3-12`は、prospective `PROGRAM_PLAN.md` Section 16の14 completion conditionsを満たしてprogram-level closureした。positive resultだけでなく、`TECHNICAL-INVALID`、`NOT-CONFIRMED`、`NON-ESTIMABLE`、formal-eligible prerequisite、protected exact holdoutを元の意味のまま保存する。主要なformal-complete結果はG3-04、G3-07、G3-10、G3-11。G3-12は`CLOSED / TECHNICAL-INVALID`でformal generalization/counterexample decisionなし。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。
 
@@ -45,8 +45,9 @@ Research Generation 3 core agenda `G3-01..G3-12`は、prospective `PROGRAM_PLAN.
 
 - [`research-generation-3/checkpoints/2026-09-04-program-closure-central-sync-complete.md`](research-generation-3/checkpoints/2026-09-04-program-closure-central-sync-complete.md)
 - [`research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`](research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md)
+- [`research-generation-3/checkpoints/2026-09-04-research-generation-3-main-integration-complete.md`](research-generation-3/checkpoints/2026-09-04-research-generation-3-main-integration-complete.md)
 
-`main` integrationは明示的ユーザー指示まで実行しない。
+`main` integrationは`COMPLETE / FAST-FORWARD / source tip 0feaab24efdd92c3e094aae0fcc60256e90bd1a6 / previous main fd6c8e2a4510d5937b47a87735854e8459b2646f / force=false`として完了した。
 <!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:END -->
 
 <!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->

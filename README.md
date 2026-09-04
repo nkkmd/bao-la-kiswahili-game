@@ -164,7 +164,7 @@ node tools/diagnostic-to-fixture.js \
 
 - [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md): 研究成果の中央索引。初見向け概要、科学的正本、研究運用文書への入口
 <!-- RG3-FINAL-CLOSURE-ROOT:BEGIN -->
-- [`doc/research-generation-3/FINAL_SYNTHESIS.md`](doc/research-generation-3/FINAL_SYNTHESIS.md): **Research Generation 3 core program final synthesis**。`G3-01..G3-12`はprospective stop ruleに従って全てclosureし、program statusは`CLOSED / MAIN INTEGRATION PENDING`。formal-completeな主要結果はG3-04 corridor/funnel、G3-07 geometry×search-instability association、G3-10 longitudinal geometry dynamics、G3-11 protected depth-10 exact holdout。technical-invalid Studyはnegative/null resultへ読み替えず、G3-12はformal generalization/counterexample Stage 2未実行のままtechnical-invalid closure。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。generation closureのmain統合は明示的指示待ち。
+- [`doc/research-generation-3/FINAL_SYNTHESIS.md`](doc/research-generation-3/FINAL_SYNTHESIS.md): **Research Generation 3 core program final synthesis**。`G3-01..G3-12`はprospective stop ruleに従って全てclosureし、program statusは`CLOSED / MAIN INTEGRATION COMPLETE`。formal-completeな主要結果はG3-04 corridor/funnel、G3-07 geometry×search-instability association、G3-10 longitudinal geometry dynamics、G3-11 protected depth-10 exact holdout。technical-invalid Studyはnegative/null resultへ読み替えず、G3-12はformal generalization/counterexample Stage 2未実行のままtechnical-invalid closure。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。generation-level closureは`research/g3-final-program-closure` tip `0feaab24efdd92c3e094aae0fcc60256e90bd1a6`から`main`へforceなしfast-forward統合済み。
 <!-- RG3-FINAL-CLOSURE-ROOT:END -->
 
 <!-- LGTGGC-G3-12-ROOT-README:BEGIN -->
