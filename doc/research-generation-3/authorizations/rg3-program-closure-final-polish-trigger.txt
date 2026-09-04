@@ -1,4 +1,5 @@
-RG3 final program closure documentation polish
+RG3 final program closure documentation polish v2
 scientific execution authorized: false
 main integration authorized: false
 purpose: remove duplicate navigation, expose closure checkpoints, normalize machine-readable completion-condition keys, and re-audit pre-main readiness
+technical correction: track final checkpoint path before diff-scope verification
