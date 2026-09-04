@@ -5,8 +5,18 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-04
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / core agenda G3-01..G3-12 execution reached G3-12 capstone / G3-12 `LGTGGC-STUDY1` CLOSED `TECHNICAL-INVALID` / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 main integration COMPLETE FAST-FORWARD (2026-09-04)**
+Research Generation 3: **Closed on closure branch / core agenda G3-01..G3-12 complete / final synthesis materialized / G3-H01 deferred non-blocking / main integration pending explicit instruction (2026-09-04)**
 
+
+<!-- RG3-FINAL-CLOSURE:FUTURE:BEGIN -->
+### 2026-09-04 Research Generation 3 final program closure
+
+Research Generation 3 core agenda `G3-01..G3-12`はprogram-levelに`CLOSED`。prospective `PROGRAM_PLAN.md` Section 16の14 completion conditionsは全てPASSした。Generation-level正本は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)、machine-readable final stateは[`research-generation-3/PROGRAM_FINAL_RESULT.json`](research-generation-3/PROGRAM_FINAL_RESULT.json)、closure decisionは[`research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](research-program-decisions/2026-09-04-research-generation-3-program-closure.md)。
+
+第三世代はbounded local-game-tree geometryについて、formal-eligible measurement foundation、限定的corridor/funnel phase structure、geometry×search-instability association、resource-bounded continuous longitudinal dynamics、standard-root depth-10 exact continuationを確立した。一方、universal branching/transposition/rule-mechanism/memory/generalization law、whole-Bao state/game-tree size、game-theoretic/human claimは確立していない。technical-invalid Studyはnegative/null resultへ読み替えない。G3-11 depth-10 same-evidence rerunとdepth 11、G3-12 Stage 1 repair/replayとStage 2 accessは禁止境界を維持する。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。
+
+Research Generation 3 closure branchの`main` integrationは明示的ユーザー指示まで行わない。次のResearch Generationまたは新規Studyは、このclosureを救済・completionするものではなく、別のprospective authorizationを必要とする。
+<!-- RG3-FINAL-CLOSURE:FUTURE:END -->
 
 ### 2026-09-04 Research Generation 3 current update
 

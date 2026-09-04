@@ -4,9 +4,9 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 main integration COMPLETE FAST-FORWARD
+Program status = CLOSED / core agenda G3-01..G3-12 complete / final synthesis materialized / main integration pending explicit user instruction
 Core agenda = G3-01..G3-12
-Human track = G3-H01 / independent / non-blocking
+Human track = G3-H01 / DEFERRED / independent / non-blocking
 Research Generation 2 = CLOSED
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
 post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5
@@ -94,6 +94,33 @@ G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9
 G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
 Next scientific action = none within LGTGGC-STUDY1; do not rerun Stage 1 evidence or authorize Stage 2; any renewed generalization/counterexample attempt requires a new prospective independent Study/version and separate authorization
 ```
+
+<!-- RG3-FINAL-CLOSURE-CURRENT:BEGIN -->
+## Research Generation 3 program closure
+
+```text
+Program lifecycle = CLOSED
+Closure review = RG3-PROGRAM-CLOSURE-AUTHORIZED
+Closure branch = research/g3-final-program-closure
+Baseline main = fd6c8e2a4510d5937b47a87735854e8459b2646f
+Core agenda = G3-01..G3-12 / all formally closed by prospective stop rules
+G3-H01 = DEFERRED / INDEPENDENT / NON-BLOCKING
+Section 16 completion conditions = 14 / 14 PASS
+Final synthesis = COMPLETE
+Program final result = COMPLETE
+Scientific execution authorized by closure = none
+Main integration = NOT AUTHORIZED / NOT PERFORMED / explicit user instruction required
+```
+
+Generation-level canonical records:
+
+- `FINAL_SYNTHESIS.md`
+- `PROGRAM_FINAL_RESULT.json`
+- `../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`
+- `../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`
+
+Protected boundaries remain active: G3-11 depth-10 rerun prohibited; depth 11 not authorized; G3-12 Stage 1 same-evidence repair/replay prohibited; G3-12 Stage 2 not authorized and seeds unread; G2-12 estimator scientific reuse and symmetry/canonicalization rescue not authorized.
+<!-- RG3-FINAL-CLOSURE-CURRENT:END -->
 
 <!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:BEGIN -->
 ## G3-12 capstone technical-invalid closure

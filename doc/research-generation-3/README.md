@@ -6,9 +6,9 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 MAIN INTEGRATION COMPLETE FAST-FORWARD
+Status = CLOSED / core agenda G3-01..G3-12 complete / FINAL_SYNTHESIS materialized / MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION
 Core agenda = G3-01..G3-12
-Human track = G3-H01 / independent / non-blocking
+Human track = G3-H01 / DEFERRED / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
 post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5
 G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
@@ -76,6 +76,14 @@ G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9
 ```
 
 ## 最初に読む
+
+<!-- RG3-FINAL-CLOSURE-READ-FIRST:BEGIN -->
+- [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md) — Research Generation 3 generation-level scientific synthesis / completion-condition record
+- [`PROGRAM_FINAL_RESULT.json`](PROGRAM_FINAL_RESULT.json) — machine-readable program final state
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing closure state / main integration boundary
+- [`../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](../research-program-decisions/2026-09-04-research-generation-3-program-closure.md) — formal program closure decision
+- [`../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md) — post-G3-12 closure authorization review
+<!-- RG3-FINAL-CLOSURE-READ-FIRST:END -->
 
 <!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->
 - [`../local-game-tree-geometry-generalization-counterexample/README.md`](../local-game-tree-geometry-generalization-counterexample/README.md) — G3-12 technical-invalid capstone closure入口

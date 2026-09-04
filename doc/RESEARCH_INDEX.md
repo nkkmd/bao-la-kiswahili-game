@@ -26,8 +26,26 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 ## 研究成果
 
+<!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:BEGIN -->
+### Research Generation 3 — program closure
+
+**状態:** `CLOSED / MAIN INTEGRATION PENDING`
+
+Research Generation 3 core agenda `G3-01..G3-12`は、prospective `PROGRAM_PLAN.md` Section 16の14 completion conditionsを満たしてprogram-level closureした。positive resultだけでなく、`TECHNICAL-INVALID`、`NOT-CONFIRMED`、`NON-ESTIMABLE`、formal-eligible prerequisite、protected exact holdoutを元の意味のまま保存する。主要なformal-complete結果はG3-04、G3-07、G3-10、G3-11。G3-12は`CLOSED / TECHNICAL-INVALID`でformal generalization/counterexample decisionなし。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。
+
+**Generation-level正本:**
+
+- [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)
+- [`research-generation-3/PROGRAM_FINAL_RESULT.json`](research-generation-3/PROGRAM_FINAL_RESULT.json)
+- [`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)
+- [`research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](research-program-decisions/2026-09-04-research-generation-3-program-closure.md)
+- [`research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md)
+
+`main` integrationは明示的ユーザー指示まで実行しない。
+<!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:END -->
+
 <!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->
-### Research Generation 3 current highlight — G3-12 / LGTGGC-STUDY1
+### Research Generation 3 final core Study — G3-12 / LGTGGC-STUDY1
 
 **状態:** `CLOSED / TECHNICAL-INVALID` — Stage 2 `NOT-AUTHORIZED / NOT-EXECUTED`、formal generalization / counterexample decisionなし
 
