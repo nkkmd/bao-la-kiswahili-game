@@ -17,7 +17,7 @@ protected depth-10 = OPENED / CONSUMED EXACTLY ONCE
 same-evidence rerun = NOT AUTHORIZED
 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 G2-12 estimator scientific input = NOT USED / NOT AUTHORIZED
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
 ## 正式研究題目
@@ -59,4 +59,4 @@ protected depth-10 evidenceは1回のauthorized executionでconsume済みであ�
 - [Formal result](results/stage-1/STAGE_1_FORMAL_RESULT.json)
 - [Artifact manifest](results/stage-1/ARTIFACT_MANIFEST.json)
 
-Historical `doc/research-generation-3/PROGRAM_PLAN.md`は変更しない。科学的closureと`main` integrationは別gateであり、main統合は未承認・未実施である。
+Historical `doc/research-generation-3/PROGRAM_PLAN.md`は変更しない。科学的closureと`main` integrationは別gateであり、2026-09-04の明示的ユーザー指示に基づきmain統合は`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`として完了した。

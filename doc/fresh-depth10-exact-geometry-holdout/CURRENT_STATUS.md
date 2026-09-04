@@ -18,7 +18,7 @@ Protected depth-10 = OPENED / CONSUMED EXACTLY ONCE
 Same-evidence rerun = NOT AUTHORIZED
 Depth-11 access = PROHIBITED / NOT ACCESSED
 G2-12 estimator scientific input = PROHIBITED / NOT USED
-Main integration = NOT AUTHORIZED / NOT PERFORMED
+Main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
 ## Formal result
@@ -60,4 +60,4 @@ scientific recomputation during documentation sync = false
 historical PROGRAM_PLAN Git blob = 2bb90c11f1625f63f40a7eab8a3de7774505a1ac / UNCHANGED
 ```
 
-`main` integrationは科学的closureとは別操作であり、明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`を維持する。
+`main` integrationは科学的closureとは別操作であり、2026-09-04の明示的ユーザー指示に基づき`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`として完了した。

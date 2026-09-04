@@ -269,4 +269,4 @@ Historical `doc/research-generation-3/PROGRAM_PLAN.md`は変更しない。
 - `results/stage-1/ARTIFACT_MANIFEST.json`
 - `../research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md`
 
-Scientific closureとrepository integrationは別操作である。**main integrationは未承認・未実施**である。
+Scientific closureとrepository integrationは別操作である。**main integrationは`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`**である。

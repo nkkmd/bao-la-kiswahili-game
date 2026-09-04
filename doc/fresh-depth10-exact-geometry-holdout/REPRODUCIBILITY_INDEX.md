@@ -13,7 +13,7 @@ Formal Stage = FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1
 Representation = RAW-ONLY
 Protected depth-10 = CONSUMED EXACTLY ONCE
 Depth 11 = NOT AUTHORIZED / NOT ACCESSED
-Main integration = NOT AUTHORIZED / NOT PERFORMED
+Main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md` is not a current-state document and remains unchanged.

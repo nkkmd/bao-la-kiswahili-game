@@ -31,7 +31,7 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 **状態:** `CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` — H1–H4すべて`DEEPER-CONFIRMED`
 
-G3-11は、Research Generation 3開始時から保護してきたstandard initial RAW rootのcomplete exact depth-10 holdoutを、outcome-blind authorization、RAW-only representation、事前固定resource ceiling、exactly-one protected execution、mandatory independent full re-enumerationの下で初めて開いた。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。H1 exact-depth novelty、H2 layer tree/RAW divergence、H3 cumulative tree/RAW inflation、H4 transposition persistenceはいずれも`DEEPER-CONFIRMED`。Bao全状態空間・全ゲーム木、depth 11、causal/game-theoretic claimや既存G3 decisionの再判定には拡張しない。protected evidenceは1回でconsume済み、same-evidence rerun禁止。G3-11 main integrationは未承認・未実施。
+G3-11は、Research Generation 3開始時から保護してきたstandard initial RAW rootのcomplete exact depth-10 holdoutを、outcome-blind authorization、RAW-only representation、事前固定resource ceiling、exactly-one protected execution、mandatory independent full re-enumerationの下で初めて開いた。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。H1 exact-depth novelty、H2 layer tree/RAW divergence、H3 cumulative tree/RAW inflation、H4 transposition persistenceはいずれも`DEEPER-CONFIRMED`。Bao全状態空間・全ゲーム木、depth 11、causal/game-theoretic claimや既存G3 decisionの再判定には拡張しない。protected evidenceは1回でconsume済み、same-evidence rerun禁止。G3-11 main integrationは`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`。
 
 **最初に読む:**
 

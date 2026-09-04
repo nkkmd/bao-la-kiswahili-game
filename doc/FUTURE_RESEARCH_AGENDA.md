@@ -5,13 +5,13 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-04
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-11 `FDEGHV-STUDY1` CLOSED `FORMAL-COMPLETE` / `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` / H1–H4 all `DEEPER-CONFIRMED` / protected depth-10 CONSUMED EXACTLY ONCE / G3-11 main integration NOT AUTHORIZED-NOT PERFORMED (2026-09-04)**
+Research Generation 3: **Active / G3-11 `FDEGHV-STUDY1` CLOSED `FORMAL-COMPLETE` / `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` / H1–H4 all `DEEPER-CONFIRMED` / protected depth-10 CONSUMED EXACTLY ONCE / G3-11 main integration COMPLETE FAST-FORWARD (2026-09-04)**
 
 
 ### 2026-09-04 Research Generation 3 current update
 
 <!-- FDEGHV-G3-11-CLOSURE:FUTURE -->
-G3-11 `FDEGHV-STUDY1`は`CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`。standard initial RAW rootをdepth 10までcomplete exact RAW enumerationし、materialized verificationとmaterially separate independent full re-enumerationはいずれもPASSした。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences / 11,725 duplicate arrivals / 10,383 multiple-predecessor states、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。prospectively frozen H1–H4はすべて`DEEPER-CONFIRMED`。protected depth-10は1回のauthorized executionでconsume済みで、same-evidence rerun、resource cap変更、target変更、subset/root rescue、symmetry/canonicalization rescue、G2-12 estimator入力、depth-11 extensionは禁止。G3-11は既存G3 formal decisionを再判定せず、Bao全状態空間・全ゲーム木・causal/game-theoretic claimへ拡張しない。G3-11のmain integrationは`NOT AUTHORIZED / NOT PERFORMED`。historical `PROGRAM_PLAN.md`は変更しない。
+G3-11 `FDEGHV-STUDY1`は`CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`。standard initial RAW rootをdepth 10までcomplete exact RAW enumerationし、materialized verificationとmaterially separate independent full re-enumerationはいずれもPASSした。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences / 11,725 duplicate arrivals / 10,383 multiple-predecessor states、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。prospectively frozen H1–H4はすべて`DEEPER-CONFIRMED`。protected depth-10は1回のauthorized executionでconsume済みで、same-evidence rerun、resource cap変更、target変更、subset/root rescue、symmetry/canonicalization rescue、G2-12 estimator入力、depth-11 extensionは禁止。G3-11は既存G3 formal decisionを再判定せず、Bao全状態空間・全ゲーム木・causal/game-theoretic claimへ拡張しない。G3-11のmain integrationは`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`として完了した。historical `PROGRAM_PLAN.md`は変更しない。
 
 <!-- GCLD-G3-10-CLOSURE:FUTURE -->
 G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`でmain integrationも`COMPLETE / FAST-FORWARD / force=false`。C1/C2/C3/C5は`CONFIRMED`、C4は`NOT-CONFIRMED`。G3-10 closure時点でprotected depth-10は未開封だったが、その後separate post-G3-10 reviewでG3-11がauthorizeされ、独立Studyとして開封・完了した。G3-10のformal decisionやinterpretation boundaryはG3-11によって変更されない。

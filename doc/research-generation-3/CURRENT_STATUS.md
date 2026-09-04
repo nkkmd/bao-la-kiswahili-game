@@ -4,7 +4,7 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-11 FDEGHV-STUDY1 CLOSED FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN / H1..H4 DEEPER-CONFIRMED / G3-11 MAIN INTEGRATION NOT AUTHORIZED-NOT PERFORMED
+Program status = ACTIVE / G3-11 FDEGHV-STUDY1 CLOSED FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN / H1..H4 DEEPER-CONFIRMED / G3-11 MAIN INTEGRATION COMPLETE / FAST-FORWARD
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -75,7 +75,7 @@ G3-11 cumulative through depth 10 = 451127 distinct RAW / 466768 depth-labelled 
 G3-11 scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
 Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAME-EVIDENCE RERUN NOT AUTHORIZED
 Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
-G3-11 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
 Next scientific action = none within FDEGHV-STUDY1; do not rerun consumed depth-10 evidence; any depth-11 work requires a separate prospective Study and authorization review
 ```
@@ -95,7 +95,7 @@ verified artifact ID = 9923817605
 canonical scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
 same-evidence rerun = NOT AUTHORIZED
 depth 11 = NOT AUTHORIZED
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
 G3-11はsingle standard-root depth-10 exact domainに限定され、upstream G3 decisions、whole-Bao state-space/game-tree size、causal/game-theoretic interpretationを変更しない。

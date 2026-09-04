@@ -14,7 +14,7 @@ H2 = DEEPER-CONFIRMED
 H3 = DEEPER-CONFIRMED
 H4 = DEEPER-CONFIRMED
 scientificResultCoreSha256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
 ## D-01 — Program authorization
