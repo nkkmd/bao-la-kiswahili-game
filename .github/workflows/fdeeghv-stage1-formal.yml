@@ -23,12 +23,12 @@ jobs:
         shell: bash
         run: |
           mkdir -p "$RUNNER_TEMP/fdeeghv-stage1-lease"
-          auth_sha=$(sha256sum doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_EXECUTE.json | awk '{print $1}')
           python3 - <<'PY'
-          import json, os
+          import hashlib, json, os
           from pathlib import Path
           root = Path(os.environ['GITHUB_WORKSPACE'])
-          auth = json.loads((root/'doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_EXECUTE.json').read_text())
+          auth_path = root/'doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_EXECUTE.json'
+          auth = json.loads(auth_path.read_text())
           out = Path(os.environ['RUNNER_TEMP'])/'fdeeghv-stage1-lease'/'PRECOMPUTATION_LEASE.json'
           lease = {
               'schemaVersion': 1,
@@ -41,7 +41,7 @@ jobs:
               'workflowRunId': os.environ['GITHUB_RUN_ID'],
               'workflowRunAttempt': os.environ['GITHUB_RUN_ATTEMPT'],
               'authorizationNonce': auth['authorizationNonce'],
-              'authorizationFileSha256': os.popen("sha256sum doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_EXECUTE.json").read().split()[0],
+              'authorizationFileSha256': hashlib.sha256(auth_path.read_bytes()).hexdigest(),
               'sameEvidenceRerunAuthorized': False,
               'depth11AccessAuthorized': False,
           }
@@ -92,12 +92,15 @@ jobs:
             node tools/experiments/verify-fdeeghv-stage1-independent.js
             ver_code=$?
           fi
+          echo "$ver_code" > "$RUNNER_TEMP/fdeeghv-verifier-exit-code"
           if [ ! -f "$RUNNER_TEMP/fdeeghv-stage1-formal/STAGE_1_FORMAL_RESULT.json" ]; then
             python3 - <<'PY'
           import json, os
           from pathlib import Path
-          out = Path(os.environ['RUNNER_TEMP'])/'fdeeghv-stage1-formal'
+          tmp = Path(os.environ['RUNNER_TEMP'])
+          out = tmp/'fdeeghv-stage1-formal'
           out.mkdir(parents=True, exist_ok=True)
+          code = int((tmp/'fdeeghv-verifier-exit-code').read_text().strip())
           result = {
               'schemaVersion': 1,
               'programLabel': 'G3-11',
@@ -105,9 +108,9 @@ jobs:
               'stageId': 'FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1',
               'evidenceClass': 'FRESH-DEEPER-EXACT-HOLDOUT',
               'formalDecisionEstablished': True,
-              'formalDecision': 'NON-ESTIMABLE' if int(os.environ.get('VER_CODE','124')) == 124 else 'TECHNICAL-INVALID',
+              'formalDecision': 'NON-ESTIMABLE' if code == 124 else 'TECHNICAL-INVALID',
               'integrityPassed': False,
-              'classification': 'INDEPENDENT-WALL-CLOCK-CAP' if int(os.environ.get('VER_CODE','124')) == 124 else 'INDEPENDENT-VERIFICATION-FAILED',
+              'classification': 'INDEPENDENT-WALL-CLOCK-CAP' if code == 124 else 'INDEPENDENT-VERIFICATION-FAILED',
               'sameEvidenceRerunAuthorized': False,
               'depth11AccessAuthorized': False,
               'partialFormalPromotionAuthorized': False,
@@ -115,10 +118,7 @@ jobs:
           (out/'STAGE_1_FORMAL_RESULT.json').write_text(json.dumps(result, indent=2) + '\n')
           PY
           fi
-          echo "$ver_code" > "$RUNNER_TEMP/fdeeghv-verifier-exit-code"
           exit 0
-        env:
-          VER_CODE: ${{ env.VER_CODE }}
       - name: Build exact artifact manifest
         if: always()
         shell: bash
@@ -156,11 +156,11 @@ jobs:
           git add "$dst"
           git commit -m "Mirror G3-11 Stage 1 formal result" || true
           git push origin HEAD:research/g3-11-fresh-depth10-exact-geometry-holdout
-      - name: Preserve formal failure status without rerun
+      - name: Preserve formal outcome without rerun
         if: always()
         shell: bash
         run: |
-          prod_code=$(cat "$RUNNER_TEMP/fdeeghv-production-exit-code" 2>/dev/null || echo 2)
+          prod_code=$(cat "$RUNNER_TEMP/fdeeghdv-production-exit-code" 2>/dev/null || cat "$RUNNER_TEMP/fdeeghv-production-exit-code" 2>/dev/null || echo 2)
           ver_code=$(cat "$RUNNER_TEMP/fdeeghv-verifier-exit-code" 2>/dev/null || echo 2)
           echo "production exit=$prod_code verifier exit=$ver_code"
           test -f "$RUNNER_TEMP/fdeeghv-stage1-formal/STAGE_1_FORMAL_RESULT.json"
