@@ -14,7 +14,7 @@
   "protectedDepth10AccessAuthorized": false,
   "depth11AccessAuthorized": false,
   "g2_12EstimatorScientificInputAuthorized": false,
-  "authorizedSourceHead": "f861274ffcc3dc5d54cd23a636e1fd9a0000a707",
+  "authorizedSourceHead": "4d4d5a0d5b3f506e2b635f6f5cc7c1335ea2b84a",
   "sourceMainHead": "5597ae696d9eb76d8395e114cdb4f83af1138a3d",
   "sourceBindings": {
     "public/engine.js": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c",
@@ -32,7 +32,7 @@
     "tools/experiments/lib/lgtggc-stage0-production.js": "c4d79334dca42ac3f98381ab0bcb6db1e6ec7c54",
     "tools/experiments/lib/lgtggc-stage0-independent.js": "e071fe803aeddac049a1688bd8425d4b12368758",
     "tools/experiments/run-lgtggc-stage0-technical-v2.js": "560f29ee4cbacfa42fe03ceb074245d7a0a3458e",
-    "tools/experiments/verify-lgtggc-stage0-v2-authorization.js": "909fc1e964e26d0a1c640e3ca0686d7ccd310d27",
+    "tools/experiments/verify-lgtggc-stage0-v2-authorization.js": "d211a8258aa2a5196ec6aa0d522d32abad3cf4f2",
     "doc/local-game-tree-geometry-generalization-counterexample/prereg/STUDY_1_SPEC.json": "097ac62b0e18eccc77b40c6342617002f2a8c4ec",
     "doc/local-game-tree-geometry-generalization-counterexample/prereg/STUDY_1_TECHNICAL_AMENDMENT_V2.json": "dd55ca2306b930e82f2936ed7ee4a5539d4d9e4e",
     "doc/local-game-tree-geometry-generalization-counterexample/prereg/STAGE_0_TECHNICAL_SPEC_V2.json": "c50ab7de0313f85ae5c44e9ea29570940861b785"
