@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S1-DEVELOPMENT-2026-09-04-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "workflowRunId": 33848876682,
+  "workflowJobId": 100946889620,
+  "triggerCommit": "013f3fd2f859ef1758674b6a53ac5a05cd14efc8",
+  "executionCountConsumed": 1,
+  "maximumAuthorizedScientificExecutions": 1,
+  "sameEvidenceRerunAuthorized": false,
+  "leaseArtifact": {
+    "artifactId": 9927555827,
+    "name": "lgtggc-stage1-lease-33848876682",
+    "zipSha256": "927759cb9f521a484479efec3a54df0db6f22f7262a936d2ee742d5a6a313231"
+  },
+  "resultArtifact": {
+    "artifactId": 9927866205,
+    "name": "lgtggc-stage1-result-33848876682",
+    "zipSha256": "b93e5401c3191979b35252eaa2003df0e8511db2bbfc1325396d298557b75cdb",
+    "files": {
+      "sfcdf.json": "2939007b9e95bc545ea29b048c9f7f35d230621252739cd3735ea1f0e3a63218",
+      "silgm.json": "b0c9947f6cb16ba9c7d615ec6c5c1d28fefdd9579bb821abd273b1ff9b61148d"
+    }
+  },
+  "modules": {
+    "SFCDF-TRANSFER": {
+      "execution": "COMPLETED",
+      "stageDisposition": "STAGE1-PASS",
+      "scientificSeedStart": 32311001,
+      "scientificSeedEnd": 32311384,
+      "scientificSeedsRead": 384,
+      "selectedPairs": 40,
+      "selectedRoots": 80,
+      "definedRoots": 80,
+      "productionIndependentExact": true,
+      "selectionCoreSha256": "a49491bd973ba2ef8807b09e88b17ba929cd97869add1c8f49dc1521d017eff5",
+      "measurementCoreSha256": "59667e24c250e74dc94746311ba23a448b0947fc40b3fe53e424cdf0054f3f3f",
+      "formalInferencePerformed": false,
+      "pValuesComputed": false,
+      "effectDirectionSummarized": false
+    },
+    "SILGM-TRANSFER": {
+      "execution": "INTERRUPTED-AFTER-FRESH-ACCESS",
+      "stageDisposition": "STAGE1-TECHNICAL-INVALID",
+      "scientificSeedStart": 32312001,
+      "scientificSeedEnd": 32312768,
+      "scientificSeedBlockConsumed": true,
+      "failure": "complete root ranking required",
+      "failureOrigin": "tools/experiments/lib/silgm-production.js conditionResult hard assertion",
+      "formalInferencePerformed": false,
+      "pValuesComputed": false,
+      "identityManifestMaterialized": false
+    },
+    "GCLD-TRANSFER": {
+      "execution": "NOT-EXECUTED-WORKFLOW-SKIPPED",
+      "stageDisposition": null,
+      "scientificSeedStart": 32313001,
+      "scientificSeedEnd": 32313384,
+      "scientificSeedAccess": false
+    }
+  },
+  "stageDisposition": "STAGE1-TECHNICAL-INVALID",
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "depth11Access": false,
+  "g2_12EstimatorScientificInput": false,
+  "formalInferencePerformed": false,
+  "scientificSummaryAuthorized": false,
+  "stage2AuthorizationEligible": false,
+  "mainIntegrationAuthorized": false
+}
