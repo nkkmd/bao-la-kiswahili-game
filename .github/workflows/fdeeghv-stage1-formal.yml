@@ -19,6 +19,58 @@ jobs:
         with:
           ref: ${{ github.sha }}
           fetch-depth: 0
+      - name: Validate release authorization before durable lease
+        shell: bash
+        run: |
+          test "$GITHUB_RUN_ATTEMPT" = "1"
+          git fetch origin research/g3-11-fresh-depth10-exact-geometry-holdout
+          if git cat-file -e origin/research/g3-11-fresh-depth10-exact-geometry-holdout:doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_CONSUMED.json 2>/dev/null; then
+            echo "Stage 1 authorization already consumed" >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root = Path.cwd()
+          spec_path = root/'doc/fresh-depth10-exact-geometry-holdout/prereg/STAGE_1_FORMAL_SPEC.json'
+          auth_path = root/'doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_EXECUTE.json'
+          s0_path = root/'doc/fresh-depth10-exact-geometry-holdout/results/stage-0/STAGE_0_TECHNICAL_RESULT.json'
+          spec = json.loads(spec_path.read_text())
+          auth = json.loads(auth_path.read_text())
+          s0 = json.loads(s0_path.read_text())
+          assert auth['authorizationDecision'] == 'RELEASE-TO-SCIENTIFIC-EVIDENCE'
+          assert auth['studyId'] == spec['studyId'] == 'FDEGHV-STUDY1'
+          assert auth['stageId'] == spec['stageId'] == 'FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1'
+          assert auth['executionAuthorized'] is True and auth['scientificInferenceAuthorized'] is True
+          assert auth['protectedDepth10AccessAuthorized'] is True
+          assert auth['executionCountAuthorized'] == 1 and auth['maximumScientificExecutionsAuthorized'] == 1
+          assert auth['authorizedDepth'] == 10
+          assert auth['stage0Decision'] == 'STAGE0-PASS'
+          assert auth['preFormalNegativeControlMatrix'] == 'PASS'
+          assert auth['preAccessDocumentationSync'] == 'PASS'
+          assert auth['protectedDepth10State'] == 'SEALED / NOT GENERATED / NOT READ / NOT PEEKED'
+          assert auth['g2_12EstimatorScientificInputAuthorized'] is False
+          assert auth['depth11AccessAuthorized'] is False
+          assert auth['sameEvidenceRerunAuthorized'] is False
+          assert auth['partialFormalPromotionAuthorized'] is False
+          assert s0['stageDisposition'] == 'STAGE0-PASS' and s0['protectedDepth10Access'] is False
+          spec_sha = hashlib.sha256(spec_path.read_bytes()).hexdigest()
+          s0_sha = hashlib.sha256(s0_path.read_bytes()).hexdigest()
+          assert auth['specSha256'] == spec_sha
+          assert auth['stage0ResultSha256'] == s0_sha
+          ceiling_keys = [
+              'maxCumulativeDistinctRawStates','maxDepthLabelledEdges','maxParentStateExpansions',
+              'maxMoveEvaluations','maxCumulativeTreeNodeOccurrences','maxResidentSetBytes',
+              'maxWallClockSeconds','maxUncompressedArtifactBytes'
+          ]
+          expected_ceiling = {k: spec['resourceProfile'][k] for k in ceiling_keys}
+          assert auth['resourceCeiling'] == expected_ceiling
+          assert auth['sourceGitBlobSha']
+          for rel, expected in auth['sourceGitBlobSha'].items():
+              actual = subprocess.check_output(['git','hash-object',rel], text=True).strip()
+              assert actual == expected, f'source freeze mismatch {rel}: {actual} != {expected}'
+          print('FDEGHV_STAGE1_RELEASE_VALIDATION=PASS')
+          PY
       - name: Materialize durable pre-computation lease
         shell: bash
         run: |
@@ -31,7 +83,7 @@ jobs:
           auth = json.loads(auth_path.read_text())
           out = Path(os.environ['RUNNER_TEMP'])/'fdeeghv-stage1-lease'/'PRECOMPUTATION_LEASE.json'
           lease = {
-              'schemaVersion': 1,
+              'schemaVersion': 2,
               'programLabel': 'G3-11',
               'studyId': 'FDEGHV-STUDY1',
               'stageId': 'FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1',
@@ -54,6 +106,36 @@ jobs:
           path: ${{ runner.temp }}/fdeeghv-stage1-lease/PRECOMPUTATION_LEASE.json
           if-no-files-found: error
           retention-days: 90
+      - name: Durably consume the one-shot authorization
+        shell: bash
+        run: |
+          marker="doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_CONSUMED.json"
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path.cwd()
+          auth = root/'doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_EXECUTE.json'
+          marker = root/'doc/fresh-depth10-exact-geometry-holdout/authorizations/STAGE_1_CONSUMED.json'
+          marker.write_text(json.dumps({
+              'schemaVersion': 1,
+              'studyId': 'FDEGHV-STUDY1',
+              'stageId': 'FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1',
+              'authorizationConsumed': True,
+              'scientificExecutionClaimed': True,
+              'scientificEvidenceAccessOccurredAtMarkerWrite': False,
+              'sourceCommit': os.environ['GITHUB_SHA'],
+              'workflowRunId': os.environ['GITHUB_RUN_ID'],
+              'workflowRunAttempt': os.environ['GITHUB_RUN_ATTEMPT'],
+              'authorizationFileSha256': hashlib.sha256(auth.read_bytes()).hexdigest(),
+              'sameEvidenceRerunAuthorized': False,
+              'depth11AccessAuthorized': False,
+          }, indent=2) + '\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$marker"
+          git commit -m "Consume G3-11 Stage 1 one-shot authorization"
+          git push origin HEAD:research/g3-11-fresh-depth10-exact-geometry-holdout
 
   scientific:
     needs: lease
@@ -75,7 +157,7 @@ jobs:
           set +e
           export FDEGHV_STAGE1_LEASE="$RUNNER_TEMP/fdeeghv-stage1-lease/PRECOMPUTATION_LEASE.json"
           export FDEGHV_STAGE1_OUT="$RUNNER_TEMP/fdeeghv-stage1-formal"
-          node tools/experiments/run-fdeeghv-stage1-formal.js
+          timeout --signal=TERM 5500s node tools/experiments/run-fdeeghv-stage1-formal.js
           echo "$?" > "$RUNNER_TEMP/fdeeghv-production-exit-code"
           exit 0
       - name: Upload canonical production artifact before independent verification
@@ -86,61 +168,78 @@ jobs:
           path: ${{ runner.temp }}/fdeeghv-stage1-formal/
           if-no-files-found: error
           retention-days: 90
-      - name: Independent verification and formal decision
+      - name: Independent verification and provisional formal decision
+        if: always()
         shell: bash
         run: |
           set +e
           export FDEGHV_STAGE1_LEASE="$RUNNER_TEMP/fdeeghv-stage1-lease/PRECOMPUTATION_LEASE.json"
           export FDEGHV_STAGE1_OUT="$RUNNER_TEMP/fdeeghv-stage1-formal"
-          prod_code=$(cat "$RUNNER_TEMP/fdeeghv-production-exit-code")
-          if [ "$prod_code" = "0" ]; then
-            timeout --signal=TERM 5500s node tools/experiments/verify-fdeeghv-stage1-independent.js
-            ver_code=$?
-          else
-            node tools/experiments/verify-fdeeghv-stage1-independent.js
-            ver_code=$?
-          fi
+          timeout --signal=TERM 5500s node tools/experiments/verify-fdeeghv-stage1-independent-v2.js
+          ver_code=$?
           echo "$ver_code" > "$RUNNER_TEMP/fdeeghv-verifier-exit-code"
           if [ ! -f "$RUNNER_TEMP/fdeeghv-stage1-formal/STAGE_1_FORMAL_RESULT.json" ]; then
             python3 - <<'PY'
           import json, os
           from pathlib import Path
-          tmp = Path(os.environ['RUNNER_TEMP'])
-          out = tmp/'fdeeghv-stage1-formal'
+          out = Path(os.environ['RUNNER_TEMP'])/'fdeeghv-stage1-formal'
           out.mkdir(parents=True, exist_ok=True)
-          code = int((tmp/'fdeeghv-verifier-exit-code').read_text().strip())
-          result = {
-              'schemaVersion': 1,
+          (out/'STAGE_1_FORMAL_RESULT.json').write_text(json.dumps({
+              'schemaVersion': 2,
               'programLabel': 'G3-11',
               'studyId': 'FDEGHV-STUDY1',
               'stageId': 'FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1',
               'evidenceClass': 'FRESH-DEEPER-EXACT-HOLDOUT',
               'formalDecisionEstablished': True,
-              'formalDecision': 'NON-ESTIMABLE' if code == 124 else 'TECHNICAL-INVALID',
+              'formalDecision': 'TECHNICAL-INVALID',
               'integrityPassed': False,
-              'classification': 'INDEPENDENT-WALL-CLOCK-CAP' if code == 124 else 'INDEPENDENT-VERIFICATION-FAILED',
+              'classification': 'INDEPENDENT-VERIFIER-NO-RESULT',
               'sameEvidenceRerunAuthorized': False,
               'depth11AccessAuthorized': False,
               'partialFormalPromotionAuthorized': False,
-          }
-          (out/'STAGE_1_FORMAL_RESULT.json').write_text(json.dumps(result, indent=2) + '\n')
+          }, indent=2) + '\n')
           PY
           fi
           exit 0
-      - name: Build exact artifact manifest
+      - name: Final resource gate and exact manifest
         if: always()
         shell: bash
         run: |
-          python3 - <<'PY'
+          set +e
+          export FDEGHV_STAGE1_OUT="$RUNNER_TEMP/fdeeghv-stage1-formal"
+          node tools/experiments/finalize-fdeeghv-stage1-artifact.js
+          final_code=$?
+          echo "$final_code" > "$RUNNER_TEMP/fdeeghv-finalizer-exit-code"
+          if [ "$final_code" != "0" ]; then
+            python3 - <<'PY'
           import hashlib, json, os
           from pathlib import Path
           root = Path(os.environ['RUNNER_TEMP'])/'fdeeghv-stage1-formal'
+          root.mkdir(parents=True, exist_ok=True)
+          result_path = root/'STAGE_1_FORMAL_RESULT.json'
+          prior = json.loads(result_path.read_text()) if result_path.exists() else {}
+          prior.update({
+              'schemaVersion': 2,
+              'programLabel': 'G3-11',
+              'studyId': 'FDEGHV-STUDY1',
+              'stageId': 'FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1',
+              'evidenceClass': 'FRESH-DEEPER-EXACT-HOLDOUT',
+              'formalDecisionEstablished': True,
+              'formalDecision': 'TECHNICAL-INVALID',
+              'integrityPassed': False,
+              'classification': 'FINAL-RESOURCE-MANIFEST-FAILURE',
+              'sameEvidenceRerunAuthorized': False,
+              'depth11AccessAuthorized': False,
+              'partialFormalPromotionAuthorized': False,
+          })
+          result_path.write_text(json.dumps(prior, indent=2) + '\n')
           rows=[]
-          for p in sorted(x for x in root.rglob('*') if x.is_file()):
-              data=p.read_bytes()
-              rows.append({'path':str(p.relative_to(root)),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
-          (root/'ARTIFACT_MANIFEST.json').write_text(json.dumps({'schemaVersion':1,'files':rows},indent=2)+'\n')
+          for p in sorted(x for x in root.rglob('*') if x.is_file() and x.name != 'ARTIFACT_MANIFEST.json'):
+              data=p.read_bytes(); rows.append({'path':str(p.relative_to(root)),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          (root/'ARTIFACT_MANIFEST.json').write_text(json.dumps({'schemaVersion':2,'manifestSelfExcluded':True,'files':rows},indent=2)+'\n')
           PY
+          fi
+          exit 0
       - name: Upload verified canonical protected-evidence artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -163,6 +262,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$dst"
           git commit -m "Mirror G3-11 Stage 1 formal result" || true
+          git fetch origin research/g3-11-fresh-depth10-exact-geometry-holdout
+          git rebase origin/research/g3-11-fresh-depth10-exact-geometry-holdout
           git push origin HEAD:research/g3-11-fresh-depth10-exact-geometry-holdout
       - name: Preserve formal outcome without rerun
         if: always()
@@ -170,5 +271,6 @@ jobs:
         run: |
           prod_code=$(cat "$RUNNER_TEMP/fdeeghv-production-exit-code" 2>/dev/null || echo 2)
           ver_code=$(cat "$RUNNER_TEMP/fdeeghv-verifier-exit-code" 2>/dev/null || echo 2)
-          echo "production exit=$prod_code verifier exit=$ver_code"
+          final_code=$(cat "$RUNNER_TEMP/fdeeghv-finalizer-exit-code" 2>/dev/null || echo 2)
+          echo "production exit=$prod_code verifier exit=$ver_code finalizer exit=$final_code"
           test -f "$RUNNER_TEMP/fdeeghv-stage1-formal/STAGE_1_FORMAL_RESULT.json"
