@@ -78,6 +78,14 @@ jobs:
           node tools/experiments/run-fdeeghv-stage1-formal.js
           echo "$?" > "$RUNNER_TEMP/fdeeghv-production-exit-code"
           exit 0
+      - name: Upload canonical production artifact before independent verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdeeghv-stage1-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdeeghv-stage1-formal/
+          if-no-files-found: error
+          retention-days: 90
       - name: Independent verification and formal decision
         shell: bash
         run: |
@@ -133,11 +141,11 @@ jobs:
               rows.append({'path':str(p.relative_to(root)),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
           (root/'ARTIFACT_MANIFEST.json').write_text(json.dumps({'schemaVersion':1,'files':rows},indent=2)+'\n')
           PY
-      - name: Upload canonical protected-evidence artifact
+      - name: Upload verified canonical protected-evidence artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fdeeghv-stage1-formal-${{ github.run_id }}
+          name: fdeeghv-stage1-verified-${{ github.run_id }}
           path: ${{ runner.temp }}/fdeeghv-stage1-formal/
           if-no-files-found: error
           retention-days: 90
@@ -160,7 +168,7 @@ jobs:
         if: always()
         shell: bash
         run: |
-          prod_code=$(cat "$RUNNER_TEMP/fdeeghdv-production-exit-code" 2>/dev/null || cat "$RUNNER_TEMP/fdeeghv-production-exit-code" 2>/dev/null || echo 2)
+          prod_code=$(cat "$RUNNER_TEMP/fdeeghv-production-exit-code" 2>/dev/null || echo 2)
           ver_code=$(cat "$RUNNER_TEMP/fdeeghv-verifier-exit-code" 2>/dev/null || echo 2)
           echo "production exit=$prod_code verifier exit=$ver_code"
           test -f "$RUNNER_TEMP/fdeeghv-stage1-formal/STAGE_1_FORMAL_RESULT.json"
