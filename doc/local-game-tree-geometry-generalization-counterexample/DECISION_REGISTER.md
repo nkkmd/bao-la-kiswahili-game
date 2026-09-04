@@ -211,3 +211,87 @@ This PASS establishes technical readiness only. Stage 1 remains separately gated
 ## LGTGGC-D021 — Post-Stage0 boundary
 
 Stage 0 PASS does not authorize Stage 1. A separate pre-fresh Stage 1 authorization review must be recorded before any Stage 1 scientific seed is generated/read.
+
+## LGTGGC-D022 — Stage 1 authorization
+
+**Decision:** `LGTGGC-STAGE1-AUTHORIZED` for exactly one fresh-development execution.
+
+```text
+authorization commit = 0522dfd245b9702fa9e0229af95caccf9a50e680
+execution token commit = 9cd7e40421d6a6e19518c67770393a7832b6f569
+formal inference = false
+p-values = false
+Stage 2 seed access = false
+same-evidence rerun = false
+```
+
+## LGTGGC-D023 — Stage 1 exactly-once execution
+
+**Decision:** the first-fresh Stage 1 execution at Actions run `33848876682` consumed the one authorized scientific execution.
+
+```text
+trigger commit = 013f3fd2f859ef1758674b6a53ac5a05cd14efc8
+lease artifact = 9927555827
+result artifact = 9927866205
+same-evidence rerun = NOT AUTHORIZED
+```
+
+## LGTGGC-D024 — SFCDF development disposition
+
+**Decision:** `SFCDF-TRANSFER = STAGE1-PASS` as development readiness evidence only.
+
+```text
+scientific seeds read = 384
+selected pairs = 40
+selected roots = 80
+defined roots = 80
+production/independent exact = true
+selection core SHA-256 = a49491bd973ba2ef8807b09e88b17ba929cd97869add1c8f49dc1521d017eff5
+measurement core SHA-256 = 59667e24c250e74dc94746311ba23a448b0947fc40b3fe53e424cdf0054f3f3f
+```
+
+No effect direction or p-value was produced; this does not establish G3-04 generalization.
+
+## LGTGGC-D025 — SILGM development disposition
+
+**Decision:** `SILGM-TRANSFER = STAGE1-TECHNICAL-INVALID`。
+
+Runtime failure: `complete root ranking required` in `silgm-production.js / conditionResult` after fresh Stage 1 access.
+
+Static audit confirms a compatibility gap: frozen LOW strata permit root legal width 1, while inherited production and independent SILGM helpers hard-require at least two ranked root candidates after an estimable search result. The runner could handle an ordinary `estimable:false` return, but not this hard assertion exception.
+
+The specific failing scientific root is not replayed or localized. No helper correction, eligibility change, seed extension, root replacement, or same-evidence rerun is authorized.
+
+## LGTGGC-D026 — GCLD development disposition
+
+**Decision:** `GCLD-TRANSFER = NOT EXECUTED / UNREAD`。
+
+SILGM failure stopped the exactly-once workflow before the GCLD step. Stage 1 GCLD seed range `32313001..32313384` remains unread.
+
+## LGTGGC-D027 — Stage 2 authorization
+
+**Decision:** `LGTGGC-STAGE2-NOT-AUTHORIZED`。
+
+Reasons:
+
+- Stage 1 SILGM is TECHNICAL-INVALID;
+- GCLD Stage 1 readiness is unestablished;
+- SILGM exception artifact did not materialize the selected identity manifest required for a complete Stage 2 identity-only exclusion firewall;
+- obtaining it by seed replay would violate same-evidence no-rerun;
+- dropping SILGM/GCLD or proceeding with SFCDF alone would alter the frozen formal module/claim set after fresh evidence.
+
+Stage 2 seed blocks remain unread.
+
+## LGTGGC-D028 — Study closure
+
+**Decision:** `LGTGGC-STUDY1 = CLOSED / TECHNICAL-INVALID`。
+
+The Study did not reach formal Stage 2 and therefore established no formal generalization/counterexample endpoint-domain decision. Partial Stage 1 development data are not promoted to formal evidence.
+
+Upstream G3-04/G3-07/G3-10 decisions remain unchanged. G3-10 C4 remains NOT-CONFIRMED. G3-11 remains bounded to its frozen single-root depth-10 exact domain.
+
+A future attempt requires a new prospective independent Study/version and separate authorization; it may not be described as repair or completion of `LGTGGC-STUDY1`.
+
+## LGTGGC-D029 — Final integration boundary
+
+Research closure may be completed on the research branch, including current-facing documentation and final consistency audit. `main` integration remains `NOT AUTHORIZED / NOT PERFORMED` until explicit user instruction.
