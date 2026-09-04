@@ -68,6 +68,19 @@ stage disposition = STAGE0-PASS
 
 Stage 0 V1/V2 are historical technical-invalid attempts and are not scientific evidence.
 
+## Non-adopted technical diagnostic Actions history
+
+GitHub Actions history also retains two later technical runs from a temporary, non-adopted `CAPTURE-FIRST` execution path:
+
+```text
+run 33847428204 = LGTGGC Stage 0 Technical / failure / NON-ADOPTED TECHNICAL DIAGNOSTIC
+run 33847684538 = LGTGGC Stage 0 Technical V4 / success / NON-ADOPTED TECHNICAL DIAGNOSTIC
+```
+
+These runs are **not** canonical Stage 0 revisions and are not scientific readiness evidence. They were produced after the active pre-fresh source-policy amendment had already established `P1-UNIFORM-LEGAL / P2-MAX-CAPTURE`. No Stage 1 or Stage 2 scientific seed block was accessed by these technical diagnostics.
+
+All workflow/authorization/result files belonging to this non-adopted path were removed from the active branch tree before the first-fresh Stage 1 execution. The active Stage 0 production/independent helpers were restored to the pre-contamination blobs bound by Stage 1 authorization, and the active tree was restored to the pre-contamination tree before the Stage 1 execution control plane was added. The two historical Actions entries remain visible only as technical provenance and must not be interpreted as canonical V1/V4 evidence.
+
 ## Stage 1 authorization and execution
 
 Authorization commit:
@@ -192,6 +205,21 @@ formal p-values = none
 formal generalization decisions = none
 formal counterexample decisions = none
 ```
+
+## Final central-document synchronization provenance
+
+Central current-facing documentation was synchronized by technical-only Actions run `33853805427`, which completed successfully and performed no scientific computation.
+
+Three earlier control-plane attempts failed before any job was created:
+
+```text
+33853619855 = failure / jobs 0
+33853641204 = failure / jobs 0
+33853781598 = failure / jobs 0
+33853805427 = success / documentation sync only
+```
+
+The three failed attempts modified no current-facing document through Actions execution and accessed no scientific seed. The one-time synchronization workflow, helper script, and trigger were removed from the final active branch tree after the successful sync.
 
 ## Closure documents
 
