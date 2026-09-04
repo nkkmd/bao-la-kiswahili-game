@@ -52,6 +52,12 @@ G3-11はG3-04/G3-07/G3-10等の既存formal decisionを変更しない。Depth 1
 
 ## Repository state
 
-Study-local final report、decision register、reproducibility index、program closure decision、RG3 closure checkpoint、およびcurrent-facing central documentationをresearch branch上で同期する。Historical `PROGRAM_PLAN.md`は変更しない。
+Study-local final report、decision register、reproducibility index、program closure decision、RG3 closure checkpoint、およびcurrent-facing central documentationはresearch branch上で同期済みである。
+
+```text
+final documentation sync run = 33839438986 / success
+scientific recomputation during documentation sync = false
+historical PROGRAM_PLAN Git blob = 2bb90c11f1625f63f40a7eab8a3de7774505a1ac / UNCHANGED
+```
 
 `main` integrationは科学的closureとは別操作であり、明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`を維持する。
