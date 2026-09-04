@@ -128,7 +128,10 @@ for (const text of [status, report, overview, decisions, reproducibility]) {
   assert.ok(text.includes(FINAL_DECISION));
   assert.ok(text.includes("DRSSE-STUDY1"));
 }
-assert.ok(rootReadme.includes("`G2-05` / `DRSSE-STUDY1`"));
+// The root README intentionally keeps only a generation-level summary. Exact
+// study markers belong in the human-facing research index it links to.
+assert.ok(rootReadme.includes("doc/RESEARCH_INDEX.md"));
+assert.ok(index.includes("`G2-05` / `DRSSE-STUDY1`"));
 assert.ok(index.includes("### 21. Deep RAW State-Space Enumeration — Study 1"));
 assert.ok(index.includes("cumulative RAW states = 102857"));
 assert.ok(agenda.includes("**状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**"));

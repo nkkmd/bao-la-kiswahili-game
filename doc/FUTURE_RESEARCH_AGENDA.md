@@ -1,1437 +1,274 @@
-# Bao 今後の研究課題
+# Bao今後の研究アジェンダ
 
-Version: 3.0.0
-Status: Active
-作成日: 2026-07-21
+Version: 4.0.0
+
 更新日: 2026-09-04
-Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Closed / core agenda G3-01..G3-12 complete / final synthesis materialized / G3-H01 deferred non-blocking / main integration COMPLETE FAST-FORWARD (2026-09-04)**
+Research Generation 2: **Closed (2026-08-31)**（2026-08-31に完了）
+Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・`main`へ統合済み）
 
+この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。ここに候補として記載しただけでは、Studyの開始、seedへのアクセス、計算実行、公開AIの変更は承認されません。
 
-<!-- RG3-FINAL-CLOSURE:FUTURE:BEGIN -->
-### 2026-09-04 Research Generation 3 final program closure
+## 1. 現在地
 
-Research Generation 3 core agenda `G3-01..G3-12`はprogram-levelに`CLOSED`。prospective `PROGRAM_PLAN.md` Section 16の14 completion conditionsは全てPASSした。Generation-level正本は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)、machine-readable final stateは[`research-generation-3/PROGRAM_FINAL_RESULT.json`](research-generation-3/PROGRAM_FINAL_RESULT.json)、closure decisionは[`research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](research-program-decisions/2026-09-04-research-generation-3-program-closure.md)。
+これまでの研究から、Baoについて限定された条件で再現可能に述べられる事実は増えました。一方で、全状態空間、全ゲーム木、普遍的な戦略類型、人間の難しさ、game-theoreticな最適性は確立していません。
 
-第三世代はbounded local-game-tree geometryについて、formal-eligible measurement foundation、限定的corridor/funnel phase structure、geometry×search-instability association、resource-bounded continuous longitudinal dynamics、standard-root depth-10 exact continuationを確立した。一方、universal branching/transposition/rule-mechanism/memory/generalization law、whole-Bao state/game-tree size、game-theoretic/human claimは確立していない。technical-invalid Studyはnegative/null resultへ読み替えない。G3-11 depth-10 same-evidence rerunとdepth 11、G3-12 Stage 1 repair/replayとStage 2 accessは禁止境界を維持する。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。
+現在の重要な境界は次のとおりです。
 
-Research Generation 3 closure branchは、明示的ユーザー指示に基づき`main`へ`COMPLETE / FAST-FORWARD / force=false`で統合した。次のResearch Generationまたは新規Studyは、このclosureを救済・completionするものではなく、別のprospective authorizationを必要とする。
-<!-- RG3-FINAL-CLOSURE:FUTURE:END -->
+```text
+authoritative scientific state identity = RAW
+validated transform set = []
+whole-Bao state-space / game-tree size = NOT ESTABLISHED
+validated Bao win-probability mapping = NOT ESTABLISHED
+human difficulty / expert-judgment law = NOT ESTABLISHED
+Research Generation 2 core = CLOSED
+Research Generation 3 core = CLOSED
+```
 
-### 2026-09-04 Research Generation 3 current update
+研究結果の索引は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)、第二・第三世代の統合結果はそれぞれ[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)と[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
 
-<!-- LGTGGC-G3-12-CLOSURE:FUTURE:BEGIN -->
-G3-12 `LGTGGC-STUDY1`はResearch Generation 3のcapstoneとして実施され、`CLOSED / TECHNICAL-INVALID`で終了した。Stage 0 v3は`STAGE0-PASS`、Stage 1 SFCDF transfer developmentは40 pairs / 80 rootsでPASSしproduction / independent exactだったが、同一exactly-once Stage 1 executionのSILGM transferで`complete root ranking required` technical failureが発生した。Static independent auditでは、prospectively frozen LOW root populationがlegal width 1を許容する一方、継承したproduction / independent SILGM helperがestimable search resultにroot candidates >=2をhard requirementとするcompatibility gapを確認した。Fresh access後のhelper修正、root replacement、seed replay、module dropはno-rescueに反するため行わず、GCLD developmentは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。したがってG3-04/G3-07/G3-10 claimsについて`GENERALIZATION-CONFIRMED` / `COUNTEREXAMPLE-CONFIRMED` / `NOT-GENERALIZED` / `NON-ESTIMABLE`のformal decisionは成立していない。将来再検証する場合は新しいprospective independent Study/versionとseparate authorizationを必要とし、`LGTGGC-STUDY1`のrepair/completionとは扱わない。G3-11 depth-10 rerun、depth 11、G2-12 estimator scientific inputは禁止境界を維持する。`main` integrationは`COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false`として完了した。
-<!-- LGTGGC-G3-12-CLOSURE:FUTURE:END -->
+## 2. 今後の優先課題
 
-<!-- FDEGHV-G3-11-CLOSURE:FUTURE -->
-G3-11 `FDEGHV-STUDY1`は`CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`。standard initial RAW rootをdepth 10までcomplete exact RAW enumerationし、materialized verificationとmaterially separate independent full re-enumerationはいずれもPASSした。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences / 11,725 duplicate arrivals / 10,383 multiple-predecessor states、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。prospectively frozen H1–H4はすべて`DEEPER-CONFIRMED`。protected depth-10は1回のauthorized executionでconsume済みで、same-evidence rerun、resource cap変更、target変更、subset/root rescue、symmetry/canonicalization rescue、G2-12 estimator入力、depth-11 extensionは禁止。G3-11は既存G3 formal decisionを再判定せず、Bao全状態空間・全ゲーム木・causal/game-theoretic claimへ拡張しない。G3-11のmain integrationは`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`として完了した。historical `PROGRAM_PLAN.md`は変更しない。
+以下は、現時点で科学的価値が高い候補です。優先順位は固定されたauthorizationではなく、新しいprogramを設計するときの判断材料です。
 
-<!-- GCLD-G3-10-CLOSURE:FUTURE -->
-G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`でmain integrationも`COMPLETE / FAST-FORWARD / force=false`。C1/C2/C3/C5は`CONFIRMED`、C4は`NOT-CONFIRMED`。G3-10 closure時点でprotected depth-10は未開封だったが、その後separate post-G3-10 reviewでG3-11がauthorizeされ、独立Studyとして開封・完了した。G3-10のformal decisionやinterpretation boundaryはG3-11によって変更されない。
+### 2.1 一般化と反例の境界を新しいStudyとして検証する
 
-### 2026-09-03 Research Generation 3 current update
+Research Generation 3では、G3-04・G3-07・G3-10に限定的なformal resultsが残りましたが、G3-12は`TECHNICAL-INVALID`で閉じたため、別populationへのgeneralizationやcounterexampleのformal decisionはありません。
 
-<!-- CLGR-G3-09-CLOSURE:FUTURE -->
-G3-09 `CLGR-STUDY1`はcontinuous local-geometry representationを単一のfrozen family `CLGR-R1-EXACT-SQUASHED-L1`としてprospectively構築・検証した。Stage 1 fresh development 24 Namua + 24 Mtajiは48/48でexactness/nondegeneracy gateをPASSした。一方、separate authorization下のStage 2 fresh formal holdout 36 Namua + 36 Mtajiは72 rootsの選定までは完了したが、61 root measurements後、Mtaji seed `31920066`でrequired depth-5 RAW enumerationが`relay-limit`となり`TECHNICAL-INVALID`でfail-closedした。したがってformal continuous-representation eligibilityは`NOT ESTABLISHED`であり、61 partial formal measurementsをpositive/negative/null formal evidenceとして再利用しない。Stage 1/2 seed blockはともにconsume済みでsame-evidence rerunやresource/representation rescueは禁止。protected depth-10は未開封。historical `PROGRAM_PLAN.md`は変更しない。G3-10はvalidated local-geometry coordinate dependencyを前提としていたため自動authorizeせず、separate post-G3-09 current-state reviewを必要とする。
+再検討する場合はG3-12をrepairまたは再開せず、新しいStudy ID、fresh population、fresh seeds、適合するroot contract、結果を見る前に固定したdecision mappingを用います。
 
-<!-- SILGM-G3-07-CLOSURE:FUTURE -->
-G3-07 `SILGM-STUDY1`はLGTGMIV F1-F5 / RAW-only / relative depth 5のformal-eligible geometryと、depth / node-budget / quiescenceの3 peer search-condition perturbationに対するE1–E5 search-output changeとのbounded non-causal associationをprospectively検証して完了した。Stage 1 fresh 24 Namua + 24 Mtajiから8 candidateをpromotionし、Stage 2 fresh 36 Namua + 36 Mtajiをexactly one authorized formal executionで測定した。Stage 2は`STAGE2-PASS`、7 estimable / 1 non-estimable。Holm-Bonferroni FWER 1/20後、depth・node-budget・quiescenceの各contrastでG1 root legal width × E3 ranking-preorder changeが`CONFIRMED / HIGHER-IN-HIGH`となった。残りは4 `NOT-CONFIRMED` / 1 `NON-ESTIMABLE`。これはroot legal widthがsearch instabilityを因果的に生む、より強いsearch条件が正しい、ranking changeが悪手を意味する、game-theoretic / human difficultyを示す、という結論ではない。Stage 1/2 seedはconsume済みでsame-evidence rerun / seed extension / candidate rescueを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。**G3-07 closure時点では**historical plan上のG3-08は自動authorizeされず、separate post-G3-07 current-state reviewが必要だった。そのreviewは後に完了し、G3-08 / `LGPML-STUDY1`も独立に実施され現在は`CLOSED / TECHNICAL-INVALID`である。G3-07のmain integrationは、その後の明示的ユーザー指示を受け、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` をfast-forwardして完了した。
+### 2.2 depth 11以深を扱うexact研究
 
-G3-06 `BRMGI-STUDY1`は、LGTGMIV F1-F5 / RAW-only / relative depth 5のfrozen boundary内でcapture、nyumba stop/use、reserve exhaustion / Namua→Mtaji linked event周辺のmove-conditioned / event-conditioned geometry changeをprospectively検証する独立Studyとして実施した。Stage 0 v2は`STAGE0-PASS`。fresh Stage 1はexactly one authorized executionで開始したが、geometry measurement前のproduction / independent event-unit selection verificationで`production/independent selection mismatch`となり`TECHNICAL-INVALID`でfail-closedした。Stage 1 seed `31610001..31610256`はconsume済み、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`でseed `31620001..31620384`は未消費。これはcapture / nyumba / reserve / Namua→Mtajiとgeometryのpositive・negative・null scientific resultではない。same-evidence selector repair/rerunを行わない。**G3-06 closure時点では**G3-07の実施にseparate post-G3-06 current-state authorization reviewを必要とした。そのreviewは後に完了し、G3-07も現在は独立Studyとして`CLOSED / FORMAL-COMPLETE`である。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。
+G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙し、H1〜H4を`DEEPER-CONFIRMED`としました。depth 11は未承認・未アクセスです。
 
-<!-- BECT-G3-05-CLOSURE:FUTURE -->
-G3-05 `BECT-STUDY1`はStage 0 v2を`STAGE0-PASS`として完了後、fresh Stage 1をexactly one authorized executionで開始したが、bounded RAW enumeration中の`relay-limit` technical errorにより`TECHNICAL-INVALID`でfail-closedした。Stage 1 seed `31510001..31510240`はconsume済み、no-rescue boundaryはactive、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。partial telemetryはdiagnostic-onlyで、branch expansion/compression transitionのpositive/negative scientific evidenceへ格上げしない。**G3-05 closure時点では**G3-06を自動authorizeせず、separate post-G3-05 current-state authorization reviewを次のactionとして要求した。そのreviewは後に完了し、G3-06も現在はclosure済みである。
+新しい研究では、必要資源、停止条件、partial resultの扱い、独立再列挙の方法を事前に固定する必要があります。depth 10のsame-evidence rerunや、depth 0〜10からの事後的なwhole-game extrapolationは行いません。
 
-G3-04 `SFCDF-STUDY1`はRAW-only relative depth 5のcorridor / funnel structureをprospectively検証して完了した。Stage 1は12 paired trajectoriesで`STAGE1-PASS`となり、C1 unit-width occupancy（`MTAJI-GREATER`）とC6 cumulative tree/RAW ratio（`NAMUA-GREATER`）だけをpromotionした。fresh Stage 2 formal holdout 18 paired trajectoriesではC1が18/18でMtaji > Namua、C6が18/18でNamua > Mtajiとなり、両候補ともexact two-sided sign-test `p=1/131072`とprospectively fixed Holm-Bonferroni gateをPASSして`CONFIRMED`。production / independent formal Stage coreもexact一致した。Study lifecycleは`CLOSED / FORMAL-COMPLETE`。C1/C6をgame-theoretic forcing、search ease、value等へ拡張しない。Stage 1/2 seedはconsume済みでsame-evidence rerunを行わない。protected depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`のまま。その後separate post-G3-04 reviewを経てG3-05が独立に実施されたが、G3-04のC1/C6を救済・再定義したものではない。
+### 2.3 state representationとlong-horizon transition
 
-## 1. 目的
+G2-10と`PSRRE-STUDY1`からG2-11へ渡せるeligible frozen strategic representationは得られませんでした。第三世代ではresource-bounded local geometry representationが成立しましたが、これはstrategic regimeそのものではありません。
 
-この文書は、先攻・後攻差研究および第一次定石研究の完了後に検討する、Bao la Kiswahili の新しい研究方向を整理した研究アジェンダである。
+今後は、representation-free descriptor、別のprospective representation family、または明示的に限定したlongitudinal questionを新規Studyとして設計できます。過去のthreshold、feature set、seedを結果後に調整して再判定してはいけません。
 
-ここで扱う課題は、既存研究の試行数追加、別seedによる追試、既存候補の結果後の救済ではない。囲碁・将棋で発展してきた局面分類、手筋、形勢判断、終盤解析、認知研究、計算複雑性研究などを参考にしつつ、Bao固有の構造へ置き換えた独立の研究領域を対象とする。
+### 2.4 RAW identityを保ったcanonicalization検証
 
-本書は実装ロードマップではない。各課題を実際に開始する際は、研究目的、仮説、測定方法、データ形式、判定基準、停止条件を個別の研究計画として定義する。
+validated transform setは現在も空です。visual symmetryや便宜的なstate compressionを、formal validationなしにscientific identityへ導入してはいけません。
 
-2026-08-26から、本書は第一世代研究のclosure記録に加えて**第二世代の純粋研究アジェンダ**を保持する。第二世代研究はBaoそのものについての再現可能な知識を増やすことを目的とし、publicで使用中のBao AIの棋力向上・製品品質・deployment結果をscientific endpointまたは成功基準に含めない。完了した研究成果をAI改善へ利用する工程は、研究プログラムとは独立したengineering trackとして別管理する。engineering側の結果によって既存Studyまたは第二世代Studyのformal decisionを変更しない。
+新しい検証では、terminal stateを含むfull identity fields、move equivariance、winner / pending semantics、independent reconstructionを事前に固定し、失敗した既存Studyの救済とは分離します。
 
-第一世代節に残るAI・教材・解説への言及は、研究成果の**潜在的downstream利用**を示す歴史的・構想上の記述であり、第二世代研究のendpointではない。各第二世代Studyでは研究用engine / evaluator / search semantics / population / seed / identity contractをprospectively freezeし、public AIがその後変更されても当該Studyのscientific instrumentをretroactiveに変更しない。
+### 2.5 人間・熟練者による判断研究
 
-2026-08-23時点で、第1段階の「局面の相転移点」「局面類型と棋風」「Namua→Mtaji移行前後の戦略的転移構造」「局面複雑度と難易度」「手筋の発見と体系化」のStudy 1はいずれも完了した。Tactical Motifs / Tesuji Study 1では、fresh Stage 2 formal corpusによる4 canonical candidateの検証まで完了し、`TM-S2-C03`のみ`CONFIRMED`、C01/C02/C04は`NOT-CONFIRMED`となった。
+過去のhuman trackは、qualified participantへの現実的なアクセスが確保できず、machine-only coreを妨げない形でdeferされました。`N=0`は人間に関するnegative evidenceではありません。
 
-C03のHuman / Expert Validation Study 1も完了した。machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。一方human側は、独立研究者としてfrozen expert criteriaを満たす対象へ現実的にアクセスする経路を確保できず、scientific recruitmentを開始しないまま`N=0`で閉じた。human axisのformal labelは`INCONCLUSIVE-NOT-ESTIMABLE`であり、これはC03へのnegative human evidenceではない。
+実施する場合は、参加資格、recruitment経路、minimum N、説明文、同意、匿名化、分析計画を回答収集前に固定します。machine geometryやsearch instabilityを人間の難しさの代用にしません。
 
-第2段階では、measurement dependencyを理由に先行させたPosition Evaluation / Win-Rate Calibration Study 1も完了した。Stage 1ではphase-stratified isotonic mappingをexploratoryに選択し、fresh Stage 2では全2,048局のindependent verificationとStage 1 identity overlap 0を達成した。しかしstrict identity firewallとno-replacement selection後に3つのpreregistered estimability gateが未達となったため、formal decisionは`INCONCLUSIVE`である。mappingはformalにvalidatedされたBao勝率ではない。
+### 2.6 評価・探索・実戦性の再検証
 
-Blunder / Misvaluation Patterns Study 1もStage 2 formal confirmationまで完了した。Stage 1では2,048 fresh games、1,200 selected roots、5,295 exact legal movesから4 exploratory candidatesをpromotionした。Stage 2ではfresh 4,096 games、3,559 unique historical trajectories、2,678 formal measurementsを用い、independent corpus/measurement verificationとStage 1 identity overlap `0 / 0 / 0`を達成した。4候補すべてestimableだったが、formal resultは**0 `CONFIRMED` / 4 `NOT-CONFIRMED`**である。C01-C03はstructural/reply failure signature自体を高率に再現したが、共通D3-inferior recurrenceがconfirmation floorを満たさず、C04はfailure recurrenceとD3-inferior recurrenceの両方が事前floorを満たさなかった。
+評価値、empirical outcome、search reliability、practical comebackは、過去のStudyでそれぞれ別の境界を持ちます。将来の研究でもこれらを単一の「強さ」へまとめず、測定対象とpopulationを明示します。
 
-Critical Positions / Outcome Branching Study 1も完了した。fresh 3,072-game Stage 1 corpusからoutcome-blindに600 roots（Namua/Mtaji 300/300）を選択し、2,666 exact root-move interventionsを測定・独立再測定した。全600 rootsがprimary-estimableで、`D_range >= 0.30`のhigh-divergence rootsは139/600（Namua 52、Mtaji 87）だった。一方、frozen one-to-two-token structural grammarから得た1,183 candidate auditsのうちpromotion gateをすべて通過したcandidateは0で、Stage 2 formal targetは形成されなかった。Stage 2 generationはauthorize/executeせず、reserved seeds `22700001..22706144`は未消費のままStudy 1をnegative exploratory resultとして閉じた。
+## 3. 新しいStudyに共通する必須条件
 
-Restricted Endgame / Winning Regions Study 1も完了した。outcome-blindなStage 0 technical selectionと独立graph reconstructionを経て、standard initial stateから到達証明を持つ1つのMtaji rootのcomplete forward closure（8 states / 7 legal edges）をprospectively freezeした。Stage 1ではproduction solverと別実装のindependent verifierが全state rows、state/edge hashes、value、DTF、optimal movesを完全一致させ、formal decisionは`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`となった。frozen rootはPlayer 0の`WIN`, DTF=3で、unique optimal moveは`capture:mtaji:1:4:left:::false`である。このexact claimは8-state bounded domainだけに限定される。
+新しいStudyは、結果を見る前に少なくとも次を固定します。
 
-Symmetry / Isomorphic Positions Study 1も完了した。technically invalidated v1 executionのfresh bounded-local diagnosticsでは3 scientific candidates・5 preregistered scopesすべてでproduction / independent双方がexact mismatch 0を再現したが、mandatory oracle reconstructionでIDENTITY positive controlがFAILしたためv1はcandidate-decision runとして無効化された。corrected v2はformal spec / authorization / independent verifier / resultを作成せず未承認・未実行で終了した。したがってvalid formal candidate-decision runは完成せず、Study-level resultは0 validated / 0 rejected / 5 `NON-ESTIMABLE`で閉じた。post-v1 read-only diagnosticで確認したoracle terminal-row identity limitationはRestricted Endgame Study 1のformal decisionを変更しない。
+1. Study ID、科学的な問い、対象population
+2. RAW identityを含むデータ同一性
+3. development / formal / holdoutの分離
+4. seed block、使用回数、アクセス条件
+5. endpoint、threshold、multiple-testing rule
+6. estimability・resource・verification gate
+7. technical failureとscientific resultの区別
+8. stopping ruleとno-rescue rule
+9. productionと独立実装の役割
+10. 人間・因果・game-theoretic claimの禁止境界
 
-Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 (`ORISC-STUDY1`)も完了した。Axis Aではproduction / independent別実装が凍結rootからimmutable 8-state / 7-edge raw graphを完全一致で再構成し、全stateの64-seed representation、terminal captured/pending accounting、transition successor bindingを確認した。一方、repository-facing oracleの3 terminal rowsがstored-row re-hash / reconstructed raw-state bindingをFAILし、差分fieldは`pending`のみだった。production / independentは同じfailureを再現したためformal decisionは`ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`である。Stage 2 symmetry candidate contractはAxis A outcome前にfreeze済みだったが、Axis A `CONFIRMED`とIDENTITY PASSがauthorization prerequisiteだったためAxis Bは`NOT-AUTHORIZED-NOT-EXECUTED`で閉じた。validated transformation setは引き続き空である。
+`INCONCLUSIVE`、`NON-ESTIMABLE`、`NOT-CONFIRMED`、`TECHNICAL-INVALID`、`NOT-AUTHORIZED-NOT-EXECUTED`は互いに置き換えません。
 
-完了済みStudyのformal decisionを後続研究で変更しない。Blunder / Misvaluation Patterns Study 1についても、同じStage 2 dataへの追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済を行わない。Critical Positions / Outcome Branching Study 1についても、Stage 1 outcomeを見た後のgrammar拡張、near-miss promotion、threshold relaxation、manual Stage 2 target selectionによる救済を行わない。ORISC-STUDY1についてもrepository rowの後付け修正によるAxis A再判定や、同Study内でのStage 2 authorization追加による救済を行わない。
+## 4. Research Generation 1から残る研究課題
 
-2026-08-25時点で、Baoに精通したhuman/expert participantへの現実的アクセスを確保できないため、「人間とAIの判断差」は当面保留とする。human claimをmachine-only evidenceで代替しない。machine-only sequenceでは限定終盤、Symmetry Study 1、ORISC-STUDY1に続き、State Space / Game Tree Complexity Study 1も完了した。
-
-State Space / Game Tree Complexity Study 1は、ORISCのRAW-ONLY downstream contractを維持してstandard initial stateからdepth 8までのbounded reachable raw-state graphとgame treeをprospectively freezeし、production / independent双方の全域再列挙一致により`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で閉じた。exact resultは24,848 raw states / 25,648 graph transition occurrences / 30,941 game-tree node occurrences / 30,940 tree edgesである。ただしこれはfrozen depth-8 domainだけのexact claimであり、Bao全体のstate-space sizeやfull game-tree complexityを解いたことを意味しない。canonicalization / symmetry-reduced state countingは引き続き未承認で、より深い列挙・full-game estimation・symmetry reductionは新しいprospective study/versioned protocolとして扱う。
-
-Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。RAW-ONLY identityを維持し、fresh 3,072-game Stage 1 corpusから300 disadvantaged roots（Namua/Mtaji 150/150）、1,065 exact root-move interventions、18,105 continuation rowsを測定し、independent verifierがsource generation、selection、measurement、discoveryを再構築して一致した。frozen `PCEM-T1..T8` grammarから55 candidate auditsを得たが、promotion gateを全て通過したcandidateは0だったため、Stage 1は`EXPLORATORY-ONLY`で閉じ、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`とした。reserved Stage 2 seeds `23300001..23306144`は未消費である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup、candidate grammar expansion、opponent-policy substitutionによる救済は行わない。
-
-## 2. 既存研究との境界
-
-既存の研究・開発基盤では、主に次を扱っている。
-
-- 先攻・後攻の有利差
-- 固定開局を共有するペア対局
-- 定石候補の抽出と検証
-- seed付き自己対局
-- 評価関数および探索方式の比較
-- 戦術局面回帰
-- 実対局由来の局面監査
-- 局面相転移点Study 1 — [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
-- 局面類型と棋風Study 1 — [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
-- Namua→Mtaji Strategic Temporal Transition Study 1 — [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
-- Position Complexity / Difficulty Study 1 — [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
-- Tactical Motifs / Tesuji Study 1 — [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
-- Tactical Motif Human / Expert Validation Study 1 — [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
-- Position Evaluation / Win-Rate Calibration Study 1 — [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
-- Blunder / Misvaluation Patterns Study 1 — [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)（Study 1 closed / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`）
-- Critical Positions / Outcome Branching Study 1 — [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md)（Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed）
-- Restricted Endgame / Winning Regions Study 1 — [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md)（Study 1 complete / `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` / 8 states / 7 edges）
-- Symmetry / Isomorphic Positions Study 1 — [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)（Study 1 complete / 0 validated / 0 rejected / 5 `NON-ESTIMABLE`; invalidated v1 fresh bounded-local mismatch 0、corrected v2未実行）
-- Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md)（Study complete / Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）
-- State Space / Game Tree Complexity Study 1 — [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)（Study complete / `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN` / standard-root depth 8で24,848 raw states / 30,941 game-tree node occurrences / RAW-ONLY）
-- Practical Comeback / Error-Inducing Move Study 1 — [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)（Study complete / Stage 1 `EXPLORATORY-ONLY` / 55 candidate audits / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）
-
-今後の研究では、単純な勝率比較から対象を広げ、次の問いを中心に置く。
-
-> Baoの局面にはどのような構造があり、どのような原理で戦略が変化し、それを人間が理解可能な知識として記述できるか。
-
-完了済みStudyのformal decision、事前登録条件、negative/null/inconclusive/non-estimable result、解釈境界は後続研究によって変更しない。後続研究は、既存Studyの救済や再定義ではなく、新しい研究課題または事前固定された次stageとして進める。
-
-## 3. 研究上の共通原則
-
-1. 自己対局AIの評価をBao上の絶対的正解とはみなさない。
-2. 機械的観測、統計的傾向、棋力判断、理論的証明を区別する。
-3. 局面番号や特定手順だけでなく、再利用可能な構造として知識を表現する。
-4. namuaとmtajiを必要に応じて分離して分析する。
-5. 人間向け概念と機械向け特徴量を安易に同一視しない。
-6. 研究結果には適用範囲、既知の反例、未解決点を残す。
-7. 研究用データは再現可能な局面形式、条件、seed、AI設定とともに保存する。
-8. exploratory mappingやdescriptive metricをformal confirmationへ昇格させない。
-9. downstream studyはupstream studyの未確認resultをconfirmed instrumentとして扱わない。
-10. exploratory stageで得たsupportを、fresh confirmation stageのevidenceとして再利用しない。
-
-## 4. 研究課題
+第一世代では、局面類型、戦術、評価、限定終盤、状態空間を記述する語彙と検証手順を構築しました。各結果の詳細は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)を参照してください。
 
 ### 4.1 局面の相転移点
 
-#### 現在の状態
-
-**Study 1完了。**
-
-- 初見向け概要: [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`phase-transition/STUDY_1_FINAL_REPORT.md`](phase-transition/STUDY_1_FINAL_REPORT.md)
-
-Study 1では`capture-branch-expansion`をboundedなstrategic-transition phenotypeとして保持し、固定条件でdepth2とdepth3のsearch-profile orderingが逆転することまで確認した。一方、universal Bao phase-transition law、一般的なsearch-profile × depth interaction、reserve・nyumba・front-row・mobilityを包含する一般理論は確立していない。
-
-#### 中心課題
-
-Baoの対局において、局面の価値基準や最善戦略が不可逆的に変化する地点を特定する。
-
-#### 主な対象
-
-- namuaからmtajiへの移行
-- nyumbaの消失または機能変化
-- reserveが特定範囲を下回る局面
-- 前列支配の崩壊または固定化
-- 捕獲重視から可動性重視への移行
-- 強制系列中心から自由選択中心への移行
-
-#### 期待成果
-
-手数によらないBao固有の序盤・中盤・終盤分類、および局面フェーズ判定基準。
-
----
+`capture-branch-expansion`は限定されたmachine scopeで確認されています。別の探索条件、phase、root familyへ広げる場合は、新しいprospective replicationが必要です。
 
 ### 4.2 局面類型と棋風
 
-#### 現在の状態
+Mtajiではbounded two-type morphologyが確認されましたが、普遍的なBao局面分類や人間の棋風分類は確立していません。別representationを用いる場合は、既存結果と混同しない新規Studyとして扱います。
 
-**Study 1完了。**
+### 4.3 局面複雑度と探索の不安定性
 
-- 初見向け概要: [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`position-typology/STUDY_1_FINAL_REPORT.md`](position-typology/STUDY_1_FINAL_REPORT.md)
+構造的複雑さ、search workload、decision ambiguity、prediction instabilityは別のconstructです。将来も一つのdifficulty scoreへ安易に統合しません。
 
-Study 1では、固定representation / population内でMtajiの`MTAJI-M1 / MTAJI-M2`二類型をformalにconfirmedした。Namuaでは離散typeをpromoteせず、`N-ACT / N-CON`をexploratory continuous coordinatesとして保持した。discrete playing-style cluster setは支持されず、探索で得たexact `STYLE-C1..C4` 4D geometryも独立確認では`NOT-CONFIRMED`となった。
+### 4.4 手筋・悪手・錯覚
 
-#### 中心課題
+machine-reproducible motifやerror patternは、traditional tesuji、人間の錯覚、教育上の重要性を自動的には意味しません。人間向けの主張には独立したhuman evidenceが必要です。
 
-Baoに繰り返し現れる局面構造と、対局者またはAIが選びやすい戦略傾向を分類する。
+### 4.5 形勢評価と勝率校正
 
-#### 類型候補
+既存のcalibration Studyは`INCONCLUSIVE`です。engine evaluationをvalidated Bao win probabilityとして表示または研究上のground truthとして使ってはいけません。
 
-- 捕獲重視型
-- nyumba維持型
-- 前列制圧型
-- reserve温存型
-- 早期mtaji移行型
-- 可動性重視型
-- 強制系列型
-- 持久型
+### 4.6 限定終盤と必勝圏
 
-これらは当初の候補語彙であり、Study 1の結果によって確認済み類型へ自動的に昇格したものではない。
-
-#### 期待成果
-
-Bao固有の棋風語彙、対局スタイル分類、異なる戦略傾向を持つAI、学習者向けスタイル診断。
-
----
-
-### 4.2.1 Namua→Mtaji移行前後の戦略的転移構造 — Study 1完了
-
-**研究題目:** BaoにおけるNamua→Mtaji移行前後の戦略的転移構造 — `capture-branch-expansion`からMtaji morphologyへの時間的接続
-**状態:** Study 1 closed / formal decision `NOT-CONFIRMED`
-
-- 初見向け概要: [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`namua-mtaji-transition/STUDY_1_FINAL_REPORT.md`](namua-mtaji-transition/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md`](namua-mtaji-transition/STAGE_2_FORMAL_RESULT.md)
-
-Stage 0/1で、現engineのstandard trajectoryではNamua→Mtaji移行がreserve exhaustionによるdeterministic clockであることが確立した。
-
-```text
-initial total reserve = 44
-Namua total reserve at ply t = 44 - t
-first Mtaji observation = ply 44
-```
-
-したがって`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic inferential endpointとして扱わない。
-
-Stage 2はP2-D2、4096 games、earliest fully ascertained Namua CBE exposure、exact-ply R3-M 1:20 matchingで実施した。
-
-```text
-morphology-eligible exposed trajectories = 30
-matched sets = 30
-unique controls = 600
-Exposed MTAJI-M1 = 26/30
-Matched-control MTAJI-M1 = 509/600
-p_two_sided = 1.0
-formal decision = NOT-CONFIRMED
-```
-
-同一corpusのsubgroup、alternative comparator、追加game、threshold変更、Mtaji classifier refitによる救済は行わない。
-
----
-
-### 4.3 局面複雑度と難易度 — Study 1完了
-
-**状態:** Study 1完了 / formal decision `INCONCLUSIVE`
-
-- 初見向け概要: [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`position-complexity/STUDY_1_FINAL_REPORT.md`](position-complexity/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`position-complexity/STAGE_2_FORMAL_RESULT.md`](position-complexity/STAGE_2_FORMAL_RESULT.md)
-
-Study 1ではstructural complexity、search workload、decision ambiguity、prediction instabilityを分離した。Fresh Stage 2は1024 games / 862 unique rule statesでcount/coverage gateをPASSしたが、primary logistic modelがBFGS precision lossによりfrozen convergence gateを満たさなかった。
-
-```text
-PCX-H1 = INCONCLUSIVE
-PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
-OVERALL FORMAL DECISION = INCONCLUSIVE
-```
-
-同じStage 2 corpusを別optimizer/toleranceで再解析してformal decisionを救済しない。再検証する場合は数値手法を事前固定したfresh prospective replicationとする。
-
-Human difficultyはmachine workload/ambiguity/instabilityとは別に独立検証する。
-
----
-
-### 4.4 手筋の発見と体系化 — Study 1完了
-
-**状態:** Study 1 closed / complete。Stage 2 formal decision: C03 `CONFIRMED`; C01/C02/C04 `NOT-CONFIRMED`。
-
-- 初見向け概要: [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`tactical-motifs/STUDY_1_FINAL_REPORT.md`](tactical-motifs/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`tactical-motifs/STAGE_2_FORMAL_RESULT.md`](tactical-motifs/STAGE_2_FORMAL_RESULT.md)
-
-Stage 1では768-game fresh corpusから715 unique rule states / 3,148 exact move recordsを測定し、105,501 detailed candidatesから8 exploratory definitionsをpromotionした。Stage 2ではfresh 3,072 gamesを用い、4 canonical candidates × 2 co-primary endpointsをformal評価した。
-
-`TM-S2-C03`のみ`CONFIRMED`。C01/C02/C04は`NOT-CONFIRMED`。
-
-Confirmed C03:
-
-```text
-phase = mtaji
-precondition = reusablePits=0-2
-move = takata / row 1 / direction right / coarse-no-index
-consequence = actorNyumbaSeedsDeltaSign=0
-```
-
-C01/C02/C04を追加game・paired-definition substitution・threshold変更で救済しない。C03のtraditional/expert recognition、human importance、pedagogical value、external validityは別studyを要する。
-
----
-
-### 4.4.1 C03 Human / Expert Validation — Study 1完了
-
-**状態:** machine/instrument stage complete / human axis `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`
-
-- 初見向け概要: [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md`](tactical-motif-human-validation/STUDY_1_FINAL_REPORT.md)
-
-Machine/instrument側ではfresh 1,536-game corpus、independent full recomputation、near-miss control matching、42 unique formal positionsのdeterministic freezeまで完了した。
-
-Human側はfrozen expert criteriaを満たす対象への現実的アクセス経路を確保できず、scientific recruitmentを開始しないまま閉じた。
-
-```text
-accessible eligible experts = 0
-scientific recruitment started = false
-persons contacted for scientific recruitment = 0
-formal human responses = 0
-minimum included experts required = 10
-humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
-```
-
-N=0はnegative human evidenceではない。将来再検証する場合は新規prospective studyまたはnew responses前にversionedされたprospective reopeningとする。
-
----
-
-### 4.5 悪手・誤評価パターン — Study 1完了
-
-#### 現在の状態
-
-**Study 1 closed / Stage 2 formal confirmation complete / 0 `CONFIRMED` / 4 `NOT-CONFIRMED`。**
-
-- 初見向け概要: [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md`](blunder-misvaluation-patterns/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json`](blunder-misvaluation-patterns/results/STAGE_2_FORMAL_RESULT.json)
-- Reproducibility: [`blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md`](blunder-misvaluation-patterns/REPRODUCIBILITY_INDEX.md)
-
-#### Stage 1 discovery
-
-Stage 1ではfresh 2,048 games / 1,884 unique historical trajectoriesを独立verificationし、1,200 unique rule statesと5,295 exact legal movesを測定した。
-
-```text
-matcherCount = 16421
-detailedCandidateCount = 123624
-promotionPassingAfterSupportEquivalence = 11
-promotedCandidateCount = 4
-manualOverridePerformed = false
-```
-
-Promoted candidates:
-
-```text
-BMP-S1-C01 — Namua / worstReplyActorFrontConnectionsDeltaNegative
-BMP-S1-C02 — Namua / actorCaptureMoveDeltaNegative
-BMP-S1-C03 — Namua / actorLegalMoveDeltaNegative
-BMP-S1-C04 — Mtaji / allRepliesActorCaptureMoveDeltaNegative
-```
-
-#### Stage 2 formal confirmation
-
-Fresh Stage 2:
-
-```text
-games = 4096
-seeds = 22500001..22504096
-unique historical trajectories = 3559
-independent full replay/search verification = PASS
-G01 Namua selected/measured states = 1868
-G02 Mtaji selected/measured states = 810
-total formal measurements = 2678
-final Stage 1 identity overlap = 0 / 0 / 0
-independent measurement verification = PASS
-```
-
-4候補すべてestimability gateをPASSし、4 candidates × 2 co-primary endpointsの8 testsをHolm-Bonferroni FWER 0.05で評価した。
-
-```text
-BMP-S2-C01 = NOT-CONFIRMED
-BMP-S2-C02 = NOT-CONFIRMED
-BMP-S2-C03 = NOT-CONFIRMED
-BMP-S2-C04 = NOT-CONFIRMED
-CONFIRMED = 0
-```
-
-C01-C03のfailure recurrenceはそれぞれ`0.923983 / 0.797645 / 0.794968`と高率だったが、共通D3-inferior recurrenceは`0.464668`でconfirmation floor `0.70`未満だった。C04はfailure recurrence `0.627160 < 0.65`、D3-inferior recurrence `0.507407 < 0.70`だった。
-
-#### Boundary / future use
-
-この結果は、exact frozen machine-operational candidate patternがformal confirmation ruleを通らなかったことを意味する。「その手はgame-theoretically悪手ではない」という証明ではない。
-
-C01-C03のstructural/reply failure signature再現性は新しいhypothesis generationには利用できるが、現Studyのformal resultをpositiveへ変更しない。同一Stage 2への追加game、seed extension、threshold/floor緩和、candidate再定義、alternate primary depth/evaluator、favorable subgroupによる救済は禁止する。新しく検証する場合はfresh prospective independent studyとする。
-
-Human misconception、expert recognition、pedagogical valueを扱う場合は対応するhuman/expert evidenceを別axisで収集する。
-
----
-
-### 4.6 形勢判断と勝率校正 — Study 1完了
-
-**状態:** Study 1 closed / formal decision `INCONCLUSIVE`
-
-- 初見向け概要: [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`position-evaluation-calibration/STUDY_1_FINAL_REPORT.md`](position-evaluation-calibration/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`position-evaluation-calibration/STAGE_2_FORMAL_RESULT.md`](position-evaluation-calibration/STAGE_2_FORMAL_RESULT.md)
-
-Stage 1ではfresh 1,024-game corpus / 830 selected statesを用い、phase-stratified isotonicをexploratoryに選択した。
-
-```text
-pooled CV Brier = 0.1532240986334561
-Namua CV Brier = 0.2296469061338478
-Mtaji CV Brier = 0.07106958057053532
-```
-
-Stage 2はfresh 2,048 gamesでindependent verificationとStage 1 overlap 0を達成したが、strict identity firewall/no-replacement後に3 estimability gatesが未達だった。
-
-```text
-unique historical trajectories after firewall = 1383 < 1600
-selected unique rule states = 1290 < 1500
-Mtaji selected states = 627 < 650
-OVERALL FORMAL DECISION = INCONCLUSIVE
-```
-
-同じStage 2 corpusへのadditional games、replacement、gate relaxation、mapping refitによる救済は行わない。formal calibrationを再検証する場合はidentity-firewall attritionを事前に見込んだfresh prospective replicationとする。
-
-「互角」「やや有利」「優勢」「勝勢」等のformal validated Bao勝率基準はStudy 1では確立していない。
-
----
+frozen 8-state domainではexact solutionが成立しましたが、全Mtaji、全終盤、Bao全体へ一般化できません。拡張する場合はreachable-root contractとresource ceilingを新たに固定します。
 
 ### 4.7 逆転可能性と勝負手 — Study 1完了
 
-#### 現在の状態
+Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`) complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`（CI互換の固定表現）
 
-**Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`) complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。**
+`PCEM-STUDY1`は、frozen imperfect-opponent policy下でpractical comebackを測定しました。55 candidate auditsのうちpromotion gateを通過した候補は0件でした。
 
-- 初見向け概要: [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md`](practical-comeback-error-inducing-moves/STUDY_1_FINAL_REPORT.md)
-- Canonical compact result: [`practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json`](practical-comeback-error-inducing-moves/results/STAGE_1_EXPLORATORY_RESULT.json)
-- Artifact provenance: [`practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json`](practical-comeback-error-inducing-moves/results/STAGE_1_ARTIFACT_PROVENANCE.json)
+PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じており、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
 
-Study 1では、reference-policy上のmove qualityとfrozen imperfect-opponent policy下のbounded-horizon empirical comebackを分離した。RAW-ONLY identityを維持し、D3 referenceでmachine-reference disadvantagedと判定したfresh rootsから、strict-reference-inferior move、reply-defense concentration、first-reply reference-error dependence、bounded comebackを測定した。
+これは勝負手の不存在、人間に対する錯誤誘発の否定、game-theoreticな最適性を意味しません。再検討する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
 
-```text
-generated games = 3072
-unique historical trajectories = 2764
-selected roots = 300 = 150 Namua + 150 Mtaji
-exact root-move interventions = 1065
-continuation rows = 18105
-candidate audits = 55
-candidates passing promotion gates = 0
-promoted candidates = 0
-scientificLabel = EXPLORATORY-ONLY
-```
+### 4.8 重要局面と勝敗分岐
 
-Productionとindependent verifierはsource generation、root selection、RAW identity、measurement、discoveryを独立に再構築して一致した。55 candidate definitionsはすべてfrozen promotion conjunctionを満たさず、特にminimum unique-root / trajectory / opening-prefix supportとerror-condition / defense-condition root supportを満たさなかった。
+高いempirical continuation divergenceを持つrootは観測されましたが、frozen grammarからpromotionされたcandidate classは0件でした。別grammarを試す場合は結果後の救済にせず、独立Studyとして固定します。
 
-Stage 1 promoted candidateが0件だったためStage 2はauthorize/executeせず、reserved seeds `23300001..23306144`は未消費である。
+### 4.9 状態空間とゲーム木
 
-#### Boundary / future use
-
-この結果は、「Baoに実戦的な勝負手が存在しない」「相手の誤りを誘発する手が存在しない」「人間に難しい応手を要求する構造が存在しない」という証明ではない。また、objective superiority、game-theoretic winning move、true Bao winning probability、human error probability、expert/traditional winning-try recognitionも確立しない。
-
-同じStage 1 outcomeを見た後にthresholdを緩和する、near-missをpromotionする、favorable subgroupを選ぶ、candidate grammarを拡張する、opponent policyを置換する、Stage 1 rowsをStage 2 evidenceとして再利用することは禁止する。
-
-より豊富なmove/reply representation、別のprospectively frozen imperfect-opponent family、human/expert response difficulty、traditional winning-try recognitionを検証する場合は、新しいprospective independent studyとfresh evidenceを使用する。
-
-#### 期待成果
-
-将来の独立研究では、PCEM-STUDY1を救済せず、machine-operational practical comeback structureとhuman/expert difficultyを別axisとして検証し、十分な再現性と外部妥当性が得られた場合に限って、劣勢時の実戦型AIや教材化へ接続する。
-
----
-
-### 4.8 限定終盤と必勝圏 — Study 1完了
-
-#### 現在の状態
-
-**Study 1 complete / formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`。**
-
-- 初見向け概要: [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`restricted-endgame-winning-regions/STUDY_1_FINAL_REPORT.md`](restricted-endgame-winning-regions/STUDY_1_FINAL_REPORT.md)
-- Canonical oracle: [`restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json`](restricted-endgame-winning-regions/results/STAGE_1_EXACT_RESULT.json)
-
-Study 1ではMtaji-only、historically reachable root、raw state identity、no symmetry reduction、complete legal forward closureを採用した。Outcome-blind Stage 0 selectionでfinal domainを固定し、Stage 1 exact solutionとindependent full verificationを完了した。
-
-```text
-roots = 1
-states = 8
-edges = 7
-TERMINAL = 4
-WIN = 3
-LOSS = 1
-RECURRENT = 0
-```
-
-Frozen rootはPlayer 0 to moveの`WIN`、absoluteWinner = 0、`DTF = 3`、unique optimal move = `capture:mtaji:1:4:left:::false`。より大きいone-shot candidateは423,733 states / 426,938 edgesまで展開したが、1着手が1,000,000 microstepsの`ADMIN-CUTOFF`へ達したためexact不適格となり、cutoffをdraw/lossへ読み替えず追加cap拡張も行わなかった。
-
-Exact claimはfrozen 8-state domainだけに限定する。Bao全体、全Mtaji、全終盤、cycle absence、engine evaluation correctness、symmetry成立は主張しない。
-
-#### 後続利用
-
-このraw exact oracleはSymmetry / Isomorphic Positions Study 1と、そのrepresentation contractを独立監査した`ORISC-STUDY1`のupstream anchorとして使用された。ORISCはraw 8-state / 7-edge graph自体を再構成したが、repository-facing state-row bindingを`NOT-CONFIRMED`とした。この結果はRestricted Endgame Study 1のexact decisionを変更しない。今後もStudy 1自体へsymmetry reductionをretrofitしない。
-
----
-
-### 4.9 重要局面と勝敗分岐点 — Study 1完了
-
-#### 現在の状態
-
-**Critical Positions / Outcome Branching Study 1 closed after Stage 1 negative exploratory result / promoted candidates 0 / Stage 2 not executed。**
-
-- 初見向け概要: [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`critical-positions-outcome-branching/STUDY_1_FINAL_REPORT.md`](critical-positions-outcome-branching/STUDY_1_FINAL_REPORT.md)
-- Compact summary: [`critical-positions-outcome-branching/results/STAGE_1_EXPLORATORY_SUMMARY.json`](critical-positions-outcome-branching/results/STAGE_1_EXPLORATORY_SUMMARY.json)
-
-Study 1では「評価値の急変」をvalidated win-probability changeとして扱わず、同一root stateの全exact legal movesをinterveneした後のfixed-policy empirical continuation outcome divergenceをprimary constructとした。
-
-Fresh Stage 1:
-
-```text
-games = 3072
-selected roots = 600 = 300 Namua + 300 Mtaji
-measured exact root-move interventions = 2666
-primary-estimable roots = 600 / 600
-high-divergence threshold = D_range >= 0.30
-Namua high-divergence roots = 52 / 300
-Mtaji high-divergence roots = 87 / 300
-overall high-divergence roots = 139 / 600
-```
-
-independent full corpus replay、outcome-blind selection、continuation/secondary/structural measurement、independent full remeasurement/recomputationはいずれもPASSした。
-
-Frozen deterministic discovery:
-
-```text
-candidateAuditCount = 1183
-candidatesPassingPromotionGates = 0
-supportEquivalenceRepresentativeCount = 0
-promotedCandidateCount = 0
-manualOverridePerformed = false
-zeroPromotedCandidatesAllowed = true
-```
-
-したがって、**高いfixed-policy empirical continuation divergenceを持つfresh rootsは観測されたが、今回のfrozen one-to-two-token pre-root structural grammarでは、support/diversity/recurrence/median-divergence条件をすべて満たす再現可能なstructural classをpromotionできなかった**、がStudy 1のbounded conclusionである。
-
-これはStage 2 `NOT-CONFIRMED`ではない。また「Baoに重要局面が存在しない」「true/game-theoretic turning pointがない」「human/expertにとって重要な局面がない」という証明でもない。
-
-Stage 2はexact Stage 1 promoted-candidate mappingを事前freezeする設計だったが、promoted candidateが0だったためformal targetが存在しなかった。Stage 2 generationはauthorize/executeせず、reserved seeds `22700001..22706144`は未消費である。
-
-#### 今後の研究候補
-
-今回の結果を救済せず、より豊富なstructural representation、interaction grammar、trajectory/context featureを用いてhigh-divergence rootの再現可能な分類を試みる場合は、新しいprospective independent studyとして実施する。
-
-Calibration Study 1のisotonic mappingをformal validated勝率変化として使わない。Blunder / Misvaluation Patterns Study 1のC01-C04もvalidated critical-position markerとして使用しない。
-
-#### 期待成果
-
-将来の独立研究では、勝着、敗着、疑問手、分岐点を中心とする自動棋譜解説、一局から少数問を生成する復習機能へ接続可能な、より再現性の高いcritical-position representationを目指す。
-
----
-
-### 4.10 人間とAIの判断差
-
-#### 現在の実行状態
-
-**当面保留。** Baoに精通したqualified human/expert participantへの現実的アクセスを確保できないため、human evidenceを必要とする本研究には着手しない。アクセス可能性が変化するまでmachine-only代替研究へ置換せず保留する。この運用判断はhuman/AI differenceについてのscientific resultではない。
-
-#### 中心課題
-
-初心者、熟練者、評価関数のみのAI、浅い探索AI、深い探索AIが、どの局面で異なる判断を行うかを調べる。
-
-#### 測定候補
-
-- 選択手
-- 判断時間
-- 候補手数
-- 形勢予測
-- 理由説明
-- 読み筋の長さ
-- 見落とした反撃
-
-#### 期待成果
-
-熟達過程のモデル、初心者が優先して学ぶべき概念、人間らしいAI、説明機能の改善。
-
-Human evidenceが必要なclaimをmachine self-playで代替しない。
-
----
-
-### 4.11 対称性と同型局面
-
-#### 現在の実行状態
-
-**Study 1完了 / formal result 0 validated / 0 rejected / 5 `NON-ESTIMABLE`.**
-
-- 初見向け概要: [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`symmetry-isomorphic-positions/STUDY_1_FINAL_REPORT.md`](symmetry-isomorphic-positions/STUDY_1_FINAL_REPORT.md)
-
-Technically invalidated v1のfresh historically reachable bounded-local diagnosticsではT01 seat swap、T02 houseless-Mtaji LR、T03 compositionの5 preregistered scopesすべてでexact mismatch 0だった。しかしmandatory exact-oracle reconstructionのIDENTITY positive control failureによりv1はcandidate-decision runとして無効化され、corrected v2は未承認・未実行で終了した。valid formal candidate-decision runは完成していないためvalidated transformは0件で、canonicalization / symmetry group / symmetry-reduced state countingは未承認である。
-
-Post-outcome read-only diagnosticで確認したterminal state-row identity limitationは、完了済みRestricted Endgame Study 1を変更・救済する根拠として使わない。
-
-#### Follow-up studyの完了
-
-このfollow-up requirementは、**Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 (`ORISC-STUDY1`)**として新しいprospective contractで実施済みである。
-
-```text
-Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
-Axis B = NOT-AUTHORIZED-NOT-EXECUTED
-validated symmetry transformation set = []
-```
-
-ORISC Axis Aではraw graphそのものはproduction / independent双方でexact reconstructionできたが、repository-facing oracleの3 terminal rowsがre-hash / raw-state bindingをFAILした。IDENTITYがmandatory repository reconstruction requirementを満たさなかったため、pre-outcome frozen symmetry candidate contractは実行されなかった。既存SIP-STUDY1の5 `NON-ESTIMABLE` decisionは変更しない。
-
-#### Downstream boundary
-
-State Space / Game Tree Complexity Studyはauthoritative raw state identityで進行できる。SIP-STUDY1またはORISC-STUDY1のT01/T02/T03をstate reductionに使用してはならない。symmetry reductionを再検証する場合は、closed ORISCを修正・救済せず、新しいprospective study/versioned protocolを必要とする。
-
----
-
-### 4.12 状態空間とゲーム木複雑度 — Study 1完了
-
-#### 現在の状態
-
-**State Space / Game Tree Complexity Study 1 complete / formal decision `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`.**
-
-- 初見向け概要: [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md`](state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md)
-- Formal result: [`state-space-game-tree-complexity/results/STAGE_2_FORMAL_RESULT.json`](state-space-game-tree-complexity/results/STAGE_2_FORMAL_RESULT.json)
-- Reproducibility: [`state-space-game-tree-complexity/REPRODUCIBILITY_INDEX.md`](state-space-game-tree-complexity/REPRODUCIBILITY_INDEX.md)
-
-Study 1はORISC-STUDY1のdownstream representation firewallを維持し、`pits,reserve,houseOwned,player,phase,winner,pending`のraw identityのみを使用した。`turn/reason`はidentityから除外し、missing `pending`はengine entry前にhard reject、全accepted stateで64-seed conservationを要求した。SIP/ORISC transform、seat swap、reflection、canonicalization、symmetry quotientは使用していない。
-
-Formal Stage 2はfresh evidenceでstandard rootからparent depth 0..7を完全展開し、raw-state depth 8までとnon-deduplicated tree depth 8までをexact enumerationした。
-
-```text
-reachable raw states through depth 8 = 24,848
-graph transition occurrences parent depth 0..7 = 25,648
-duplicate encounters = 801
-multi-parent states = 763
-
-game-tree node occurrences through depth 8 = 30,941
-game-tree edge occurrences through depth 8 = 30,940
-raw-state / tree-node ratio = 0.803076823632074
-```
-
-Independent verifierはproduction serializer/formal runner/Stage 1 artifact codeをimportせず、frozen graph/tree全域を再列挙し、countとset hashを完全一致させた。
-
-```text
-stateSetSha256 = 8215be574a04177710b479faffb70084920d79fd2449c56802d0584853c05ca9
-transitionSetSha256 = f0e57235a6611b1b4f265b51807a1943420f130d87e16e2bc367a0e2347f892e
-treeOccurrenceSetSha256 = 194695a4ddc7908c7ba46da2bbe09b46858aebf3cac3baa4ceedd6a32edc3f08
-```
-
-#### Boundary / future use
-
-このexact resultはfrozen standard-root depth-8 RAW-ONLY domainだけに限定する。`Bao state space = 24,848`とは主張しない。full Bao state-space / full game-tree exact count、global growth law、global transposition ratio、full-game estimator、symmetry-reduced count、validated canonicalizationは未解決である。
-
-Stage 1のpartial depth-9 rowsをestimateへ読み替えたり、結果後にcapを上げたりしない。より深いRAW-only exact enumeration、full-game estimation、またはsymmetry-reduced countingを検討する場合は、現Studyを延長・救済せず、新しいprospective study/versioned protocolとしてresource rule・estimatorまたはtransform authorizationを事前固定する。
+standard initial RAW rootでは、depth 8・9・10までのbounded exact resultsが世代をまたいで蓄積されました。これらはwhole-Bao sizeではなく、depthごとに限定されたexact resultです。
 
 ## 5. 推奨する研究プログラム
 
-### 第1段階: Baoを記述する語彙の構築
+次の順序は、将来programを設計する際の一案です。
 
-1. **[完了] 局面の相転移点 — Study 1**
-2. **[完了] 局面類型と棋風 — Study 1**
-3. **[完了] Namua→Mtaji移行前後の戦略的転移構造 — Study 1 (`NOT-CONFIRMED`)**
-4. **[完了] 局面複雑度と難易度 — Study 1 (`INCONCLUSIVE`)**
-5. **[完了] 手筋の発見と体系化 — Study 1（C03 `CONFIRMED` / C01,C02,C04 `NOT-CONFIRMED`）**
-
-第1段階の5 Studyは完了した。既存のnegative/inconclusive resultを別研究で救済しない。
-
-### 第2段階: 理解、教育、解説への展開
-
-現在の状態:
-
-1. **[完了] 形勢判断と勝率校正 — Study 1 (`INCONCLUSIVE`)**
-2. **[完了] 悪手・誤評価パターン — Study 1（0 `CONFIRMED` / 4 `NOT-CONFIRMED`）**
-3. **[完了] 重要局面と勝敗分岐点 — Study 1（139/600 high-divergence roots / promoted candidates 0 / Stage 2 not executed）**
-4. **[当面保留] 人間とAIの判断差 — qualified human/expert participantへのアクセス確保まで着手しない**
-
-Position Evaluation / Win-Rate Calibration Study 1によって、engine evaluationとempirical continuation outcomeを分離して扱うtechnical measurement foundationは得られたが、formal held-out validationはestimability failureで未解決である。
-
-Blunder / Misvaluation Patterns Study 1によって、exact search-based decision lossとstructural/response failureを用いたmachine-only discovery→fresh formal confirmation pipelineは実装・検証された。ただし4候補はいずれもfull confirmationを通過しなかった。C01-C03のstructural failure recurrenceは将来の新規仮説を動機づけうるが、現Studyのpositive resultへ昇格させない。
-
-Critical Positions / Outcome Branching Study 1によって、全exact legal root movesへのinterventionとfixed-policy continuation outcomeを用いるmachine-only criticality measurement pipelineはfull independent verificationまで実装・検証された。high-divergence roots自体は139/600観測されたが、frozen structural grammarからformal Stage 2 candidateへpromotionできるclassは0だった。これは新しいrepresentation研究を動機づけうるが、同Study内でのgrammar/threshold rescueは行わない。
-
-第2段階で残る「人間とAIの判断差」はhuman evidence依存であり、現状のparticipant access制約下では着手しない。human misconceptionを主張する段階では新しいhuman evidenceを必要とし、machine self-playを代替証拠として用いない。したがって、現在のmachine-only研究プログラムは第3段階へ進む。
-
-### 第3段階: 理論および完全解析への展開
-
-1. **[完了] 限定終盤と必勝圏 — Study 1 (`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`)**
-2. **[完了] 対称性と同型局面 — Study 1（5/5 `NON-ESTIMABLE`）**
-3. **[完了] Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation — Study 1（Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`）**
-4. **[完了] 状態空間とゲーム木複雑度 — Study 1 (`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`)**
+1. **[完了] Baoを記述する語彙とRAW identityの構築**
+2. **[完了] 限定domainにおけるexact analysisと独立検証**
+3. **[完了] Local game-tree geometryのbounded measurement**
+4. **[候補] 新しいgeneralization / counterexample Study**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
+6. **[候補] Qualified human / expert evidenceの収集**
+7. **[候補] 新規authorization下でのdepth 11以深のexact研究**
 
-限定終盤と必勝圏 Study 1のbounded exact solutionはそのformal boundaryのまま保持する。Symmetry Study 1ではinvalidated v1 fresh diagnosticsとしてzero-mismatchを観測した一方、valid formal candidate-decision runは完成せず5/5 `NON-ESTIMABLE`で閉じた。ORISC-STUDY1はそのoracle representation prerequisiteを独立に実施し、raw graph reconstruction自体はexact一致したがrepository-facing row bindingを`NOT-CONFIRMED`とし、conditional symmetry stageを未実行で閉じた。したがってcanonical representationやsymmetry reductionをState Space研究の前提にしない。State Space / Game Tree Complexity Study 1もRAW-ONLYで完了し、frozen depth-8 domainのbounded exact countを確立した。PCEM-STUDY1もfresh Stage 1 evidenceとfull independent reconstructionまで完了したが、55 candidate auditsからpromoted candidateは0で、Stage 2は未承認・未実行で閉じた。これらの完了研究を同一data・threshold変更・near-miss promotion・post-outcome再定義で救済せず、次のmachine-only研究はnew study IDまたはversioned prospective protocolとfresh evidenceを用いて設計する。
+## 6. 研究と公開AI改善の分離
 
-## 6. 特に優先する三本柱
+研究の目的は、Baoについて再現可能に言えることと、まだ言えないことを明確にすることです。公開AIの目的は、品質・安全性・計算コスト・後方互換性を満たす変更を選ぶことです。
 
-### 6.1 Bao局面分類学
+そのため、次を維持します。
 
-相転移、局面類型、棋風、複雑度を統合し、Baoの局面を体系的に記述する。局面相転移点Study 1、局面類型と棋風Study 1、Namua→Mtaji Study 1、Position Complexity / Difficulty Study 1は完了した。Position Complexity Study 1のformal `INCONCLUSIVE`を再検証する場合は、同一formal corpusの再解析ではなく、数値手法を事前固定したfresh prospective replicationとする。Human difficultyはmachine complexity layerとは別に独立検証する。
+- public AIの棋力、対局勝率、応答速度、ユーザー体験、deployment成否を研究endpointにしない。
+- research resultだけを根拠に公開AIの候補を自動採用しない。
+- engineering benchmarkの改善をscientific confirmationへ読み替えない。
+- 公開AIの履歴は[`AI_ENGINEERING_INDEX.md`](AI_ENGINEERING_INDEX.md)で管理する。
 
-Critical Positions / Outcome Branching Study 1ではfixed-policy high-divergence rootsを抽出するmeasurement基盤は成立したが、単純なstructural grammarによる再現可能class promotionは0だった。重要局面分類学を発展させる場合は、より豊富なrepresentationを新規prospective studyで検証する。
+## 7. 完了の定義
 
-### 6.2 Bao手筋・悪手・錯覚体系
+研究programの完了は、positive resultの数では決めません。各問いに対して、formal result、`NOT-CONFIRMED`、`INCONCLUSIVE`、`NON-ESTIMABLE`、`TECHNICAL-INVALID`、dependency-gated closureのいずれかを、根拠と境界を保ったまま記録できたときに完了とします。
 
-定石とは異なる局面横断的な手筋と、典型的な誤判断を対応付ける。
+## 8. 新しい世代を始める前の確認
 
-Tactical Motifs / Tesuji Study 1では4 canonical candidatesのうちC03がfresh Stage 2 formal confirmationを通過した。C03 Human / Expert Validation Study 1ではmachine/instrument pipelineとformal stimulus freezeまでは完了したが、human evidenceはN=0で非推定可能だった。
-
-Blunder / Misvaluation Patterns Study 1はfresh Stage 2まで完了し、4候補すべてestimableだったが0 `CONFIRMED` / 4 `NOT-CONFIRMED`で閉じた。C01-C03のstructural/reply failure signaturesは高率に再現した一方、D3-inferior co-primary endpointを満たさなかった。したがって、これらをconfirmed blunder patternとして教材・解説へ直接昇格させない。
-
-Calibration Study 1がformal `INCONCLUSIVE`だったため、bad-move severityをformal validated win-probability lossとして定義しない。Human misconception validationは別evidence axisとして分離する。
-
-### 6.3 Bao終盤科学
-
-限定局面の完全解析、必勝圏、勝利距離、終盤テーブルベースを扱う。
-
-ORISC-STUDY1によって、exact-solved raw graphとrepository-facing representationを別endpointとして扱う必要性がformalに確認された。今後のtablebase / exact-oracle研究では、solver output、archived workflow artifact、repository-facing projection、raw identity keyのbinding contractを明示的に保存し、downstream利用時にrepresentation integrityを別gateとして扱う。
-
-## 7. 個別研究を開始・継続する条件
-
-各研究課題または次stageを実施へ移す際は、最低限次を定義する。
-
-- 研究課題と既存研究との差
-- 検証可能な仮説
-- 対象とするphaseおよび局面集合
-- 使用するAI、探索深度、時間制限、seed
-- 収集する特徴量とデータ形式
-- 統計単位と相関の扱い
-- 人間レビューが必要な箇所
-- 成功基準、否定基準、estimability gate、停止条件
-- 成果物の保存先
-
-完了済み研究から派生する新研究では、既存Studyのformal decisionsを変更しないこと、endpoint・comparator・population・seed・decision ruleを結果を見る前に定義すること、confirmed/exploratory/descriptive vocabularyを同じ証拠水準として扱わないことを開始条件に含める。
-
-Namua→Mtajiを扱う場合、現engineではfirst-Mtaji timingがdeterministic progressionであるため、`time-to-first-Mtaji` / survival / hazard / acceleration / delayをstrategic endpointとして再利用しない。
-
-Position Complexity / Difficulty Study 1のH1を再検証する場合、既存Stage 2 corpusのoptimizer/tolerance変更による再判定は行わない。optimizer、収束基準、failure handling、fresh seed blockをprospective preregistrationで固定してから新規evidenceを生成する。
-
-Tactical Motifs / Tesuji Study 1のC01/C02/C04を既存Stage 2 dataの再解析、追加seed、paired-definition substitution、threshold変更で救済しない。C03についてhuman/expert recognitionを再検証する場合は、Human / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`を変更しない新規prospective studyまたはversioned prospective reopeningとする。
-
-Position Evaluation / Win-Rate Calibration Study 1を再検証する場合、既存Stage 2 corpusへ追加game、seed extension、identity-overlap replacement、readiness gate緩和、mapping refitを加えない。formal calibration generalizationはfresh prospective replicationとする。Study 1 isotonic mappingをformal validated probabilityとしてdownstream primary endpointに使用しない。
-
-Blunder / Misvaluation Patterns Study 1はStage 2まで完了しているため、同Studyの「次stage」として再開しない。C01-C04を再検証する場合も、既存Stage 2への追加game、seed extension、threshold/floor緩和、candidate edit、alternate primary depth/evaluator、favorable subgroupでformal decisionを変更しない。新しい問い、endpoint、population、seed、source identity、decision ruleをoutcome生成前に固定した**新規prospective independent study**としてのみ扱う。C01-C03のstructural failure recurrenceを新研究のhypothesis-generation inputに使うことはできるが、現Studyのconfirmation evidenceにはならない。
-
-Critical Positions / Outcome Branching Study 1はStage 1 negative exploratory resultとして閉じているため、同Studyの「Stage 2 target」を後から作らない。既存Stage 1 dataを見た後のcandidate grammar broadening/narrowing、near-miss promotion、support/divergence threshold relaxation、manual target selection、Stage 2 seed consumptionは行わない。より豊かなrepresentationを検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
-
-PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じており、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。同じStage 1 dataに対するthreshold relaxation、near-miss promotion、favorable subgroup selection、candidate grammar expansion、opponent-policy substitution、Stage 1 rowsのStage 2 evidenceへの再利用は行わない。practical comeback / error-inducing moveを再検証する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
-
-ORISC-STUDY1はcompleted studyであり、repository-facing rowsを修正して同一formal Axis Aを再実行したり、pre-outcome candidate contractを後からStage 2へ昇格させたりしない。representation repairやsymmetry re-confirmationを行う場合は、new study IDまたは明示的なnew version、fresh prospective authorization、outcome前のcontract freezeを必要とする。
-
-STSCV-STUDY1は`INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`で閉じた。Fresh Stage 2 production outcome後に判明したindependent verifier implementation defectを修正して同じevidenceを再実行し、candidate decisionを救済しない。state transformation / canonicalizationを再検証する場合は、new study IDまたは明示的なnew version、fresh prospective authorization、fresh formal evidenceを必要とする。STSCV production-only zero-mismatch diagnosticsをvalidated transformとしてdownstream state deduplicationへ使用しない。
-
-State Space / Game Tree Complexity Studyを開始する場合、少なくともStudy 1ではauthoritative raw state identityをstate-count identityとし、ORISC/SIPでformal validationされていないtransformをcanonicalizationやdeduplicationへ使用しない。symmetry-reduced countは別のvalidated symmetry studyなしにformal primary resultとして主張しない。
-
-TMGC-STUDY1は`TECHNICAL-INVALID`で閉じ、Stage 1/2 scientific seedsは未消費である。同Study内でindependent boundary aggregatorを修正してtooling smokeをrerunし、Stage 1 authorizationを後付けしない。C03 generalization / counterexampleを再検証する場合はnew prospective Studyまたはexplicit new version、fresh technical-entry contract、fresh authorizationを使用する。
-
-Human evidenceなしではhuman error mechanismをformalに主張しない。
-
-## 8. 到達目標
-
-長期的な目標は、Baoを単にプレイ可能なゲーム、または勝率を比較できるAI対象として扱うだけでなく、次の形へ発展させることである。
-
-- 局面を分類できる
-- 戦略転換を説明できる
-- 手筋と悪手・錯覚を証拠水準を分けて言語化できる
-- 形勢評価とempirical outcomeの関係を再現可能に検証できる
-- 重要局面を抽出できる
-- 限定終盤を証明できる
-- 人間の学習過程を支援できる
-
-中心となる研究方針は次のとおりである。
-
-> Baoの局面を分類し、局面間に共通する戦略原理を発見し、それを人間が理解できる知識へ変換する。
+- 既存世代のclosed Studyをrepairやreopenとして扱っていないか
+- fresh evidenceと既使用evidenceを分離できているか
+- protected holdoutへのアクセスが明示的に承認されているか
+- 実行資源とindependent verificationが現実的か
+- current-facing文書とmachine-readable artifactが一致しているか
+- [`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)を満たすか
 
 ## 9. 第二世代研究アジェンダ
 
 ### 9.1 位置づけ
 
-第一世代のmachine-only研究系列は一通りclosureした。human/expert evidenceを必要とする「人間とAIの判断差」はparticipant access制約のため当面保留であり、machine evidenceで代替しない。
+第二世代は純粋な研究プログラムとして完結させる。core `G2-01..G2-12`は2026-08-31に閉じ、すべてのformal dispositionを`main`へ統合しました。
 
-第二世代の作業英語名は次とする。
+以下の`G2-xx`はAgenda上の順序ラベルであり、正式Study IDではないものを含みます。正式IDと最終結果は各Studyのcanonical recordを優先します。
 
-**Bao Second-Generation Research Program — Robust Measurement, Strategic Representation, Temporal Structure, and Exact Analysis**
+G2-04はG2-03の成功を前提としない。G2-03でvalidated transformを得られなくても、G2-04はRAW identityを用いる独立研究として実行できる設計でした。
 
-日本語作業名:
+### 9.2 Wave A — 測定とexact基盤
 
-**Bao第二世代研究計画 — 測定の頑健化、戦略表現の高度化、時間構造の統合、exact解析の拡張**
+#### G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1 — 最終状態
 
-以下の`G2-01`〜`G2-12`および`G2-H01`は**Agenda上の順序ラベルであり、正式Study IDではない**。正式な研究題目、Study ID、stage ID、seed range、endpoint、threshold、estimability gate、停止条件は、各研究開始時に既存命名規則との整合を確認したうえでoutcome生成前にprospectively固定する。
+`PEOCR-STUDY1`は`INCONCLUSIVE`。strict identity firewall後のestimability gateが未達で、validated win-probability mappingは得られませんでした。
 
-第二世代の中心目的は、第一世代で確立したmeasurement boundary、negative / inconclusive / non-estimable result、bounded exact resultを保持したまま、より頑健な測定、より豊かな戦略表現、時間構造、exact knowledgeを新しいfresh evidenceで検証することである。
+#### G2-02 — Search Reliability / Decision Robustness Study 1 — 最終状態
 
-### 9.2 研究とAI改善の分離
+`SRDR-STUDY1`は`INCONCLUSIVE`。formal population gate未達のためprimary criterionを評価していません。
 
-第二世代は純粋な研究プログラムとして完結させる。
+#### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1 — 最終状態
 
-- public AIの棋力、対局勝率、応答速度、ユーザー体験、deployment成否を研究endpointにしない。
-- 研究結果をpublic AIへ実装したかどうかをStudyの成功条件にしない。
-- public AIの改善結果を用いて、既存Studyまたは第二世代Studyのformal decisionを変更しない。
-- public AIの新しいversionを将来の研究instrumentとして使用する場合は、そのversionを別のresearch instrumentとしてoutcome前にfreezeする。
-- 研究成果は完了後、独立したengineering trackへのinputになり得るが、そのtranslation / implementation / benchmark / deploymentは本Agendaの研究課題に含めない。
+`STSCV-STUDY1`は`INCONCLUSIVE`、candidate outcomesは`NON-ESTIMABLE`。validated transform setは`[]`です。
 
-したがって研究とengineeringの関係は原則として一方向とする。
+#### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1 — 最終状態
 
-```text
-completed research result
-        ↓
-separate AI engineering program
-```
+`REEOE-STUDY1`は`INCONCLUSIVE`。fresh selected rootsで必要なcomplete closure数を満たさず、Stage 2は未承認です。
 
-engineering上の観測から新しい科学的疑問が生じた場合は、既存Studyへ戻して結果を変更せず、新しいprospective research questionとして別Studyを開始する。
-
-### 9.3 第二世代共通科学contract
-
-各core Studyは少なくとも次を満たす。
-
-1. 第一世代のformal decision、threshold、classifier、endpoint、population、interpretation boundaryを変更・救済しない。
-2. 第一世代dataはhypothesis generation、resource planning、failure-mode identification、technical fixtureには利用できるが、第二世代のformal confirmation evidenceへ無条件に再利用しない。
-3. formal claimには原則fresh evidenceを用い、development / exploratory / confirmationのidentity firewallを明示する。
-4. research engine commit、evaluator、search semantics、depth / node budget、policy、seed rangeをoutcome生成前にfreezeする。
-5. authoritative state identityは、別のvalid formal transformation studyが成立するまでは`pits,reserve,houseOwned,player,phase,winner,pending`のRAW identityとする。`turn`と`reason`はidentityへ含めない。
-6. symmetry / reflection / seat swap / quotient identity / canonicalizationは、G2-03等の独立Studyでformal validationされるまでstate deduplicationへ使用しない。
-7. engine evaluation、empirical continuation outcome、game-theoretic value、search reliability、structural complexity、decision criticality、practical comeback、machine decision failure、human difficulty/errorを別constructとして保持する。
-8. resource cutoff、administrative cutoff、missing evidenceをwin/loss/drawまたはscientific nullへ読み替えない。
-9. independent verifierまたは同等のindependent reconstructionを原則として設け、productionと同じscientific logicを無検証で共有しない。
-10. solver output、workflow artifact、repository-facing projection、raw identity bindingを別々に追跡し、representation integrityをdownstream利用の独立gateとする。
-11. negative / null / inconclusive / non-estimable / not-authorized resultも正常なclosure outcomeとして保存する。
-12. AI実装・AI品質向上をscientific endpointに混入させない。
-
-### 9.4 Wave A — Measurement and Exact Foundations
-
-#### G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1
-
-**状態:** **完了 / `PEOCR-STUDY1` / formal decision `INCONCLUSIVE`**
-
-中心課題:
-
-> engine evaluationとfresh empirical continuation outcomeの対応を、第一世代Study 1のestimability failureを救済せず、identity-firewall attritionを事前に見込んだ十分なfresh populationでformalに検証できるか。
-
-第一世代Position Evaluation / Win-Rate Calibration Study 1の`INCONCLUSIVE`はimmutableとする。Study 1のisotonic mappingをvalidated Bao win probabilityとして使用しない。
-
-最低限、phase-aware calibration、held-out reliability、Brier / log loss、calibration slope / intercept、uncertainty、identity firewall、sample-count estimabilityをoutcome前に固定する。Study 1 mappingの単純な再判定ではなく、新しいreplication Studyとして設計する。
-
-Stage 2 formal replication result:
-
-```text
-games = 8192 / 8192
-all 8 shard independent replay = PASS
-final Stage 1 overlap = trajectory 0 / opening 0 / RAW state 0
-unique trajectories after firewall = 3898 < 4500
-selected unique RAW states = 3570 < 4000
-Mtaji selected states = 1747 < 1750
-formal decision = INCONCLUSIVE
-primary formal branch = not entered (`primary = null`)
-```
-
-この`INCONCLUSIVE`は第一世代resultの救済でもmodel failureの`NOT-CONFIRMED`でもない。strict identity firewall後のformal populationが3つのprospective estimability gateへ届かなかったためである。同じdataへの追加seed、replacement、gate relaxation、mapping refit、near-miss exceptionによる救済を行わない。
-
-**Priority:** P0
-
-#### G2-02 — Search Reliability / Decision Robustness Study 1
-
-**状態:** **完了 / `SRDR-STUDY1` / formal decision `INCONCLUSIVE`**
-
-中心課題:
-
-> 同一raw stateに対するbest move、TopSet、move ranking、score gap、principal variationは、depth、node budget、quiescence等のprospectively frozen探索条件を変えたときどの程度安定するか。
-
-Stage 0 technical validationを経て、Stage 1は1,280 fresh games / 1,018 selected RAW statesで全readiness gateをPASSし、`PROFILE-FROZEN-DEVELOPMENT`を固定した。Stage 2は1,536 fresh held-out games / seeds `25021001..25022536`、Stage 1 trajectory + opening-prefix + RAW-state firewall、同一8-condition search gridで実行した。
-
-```text
-Stage 2 games = 1536 / 1536
-independent game replay mismatches = 0
-selected RAW states = 1007
-Namua / Mtaji = 518 / 489
-selection mismatches = 0
-measurement mismatches = 0
-selection / measurement hashes = exact match
-Stage 1 overlap = trajectory 0 / opening 0 / RAW state 0
-unique trajectories after firewall = 1040 < 1050
-formal decision = INCONCLUSIVE
-primary formal criterion = null
-```
-
-唯一のfailed gateはunique trajectoriesのpreregistered minimumだった。10 trajectory不足でもseed extension、replacement、gate relaxation、near-miss exceptionを行わない。D3/B1024等のhigher-resource conditionはtruthではなくfrozen search referenceである。
-
-Descriptive secondary profileは今後のnew hypothesis / resource planning inputには利用できるが、G2-02のformal confirmationやhuman difficulty、engine correctness、public AI strengthへ読み替えない。
-
-**Priority:** P0 / completed
-
-#### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1
-
-**状態:** **完了 / `STSCV-STUDY1` / formal decision `INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`**
-
-中心課題:
-
-> representation bindingを最初から明示したfresh raw-state evidenceに対して、candidate state transformationsがrule-semantic validity、legal-move equivariance、successor binding、graph isomorphismを満たすか。
-
-SIP-STUDY1の5 `NON-ESTIMABLE`およびORISC-STUDY1 Axis A `NOT-CONFIRMED` / Axis B `NOT-AUTHORIZED-NOT-EXECUTED`を変更せず、新しいRAW-state development / held-out evidenceとrepresentation-first contractを用いた。
-
-Stage 1は72 fresh development roots（Namua/Mtaji/Mtaji-houseless各24）を使用し、trajectory seed / opening prefix / RAW state identityをStage 2からfirewallした。Stage 2はseeds `26032001..26032768`、各stratum 32 roots、depth 3、candidate mismatch tolerance 0をoutcome前にfreezeし、hardened prefreeze run `33145713610`とexplicit authorization commit `c7619ded9f682b499a02d023b40ac54ba4dc95ca`を経て実行した。
-
-Fresh held-out production measurementは96 rootsを凍結quotaどおり選択し、T01/T02/T03のproduction-only candidate mismatchをすべて0とした。しかしmandatory independent verifierがformal-result assembly時に次のtechnical errorで停止した。
-
-```text
-ReferenceError: standardStartReachablePopulationDedupDecision is not defined
-```
-
-そのためmandatory S2-G5をcomplete canonical independent-verification resultとして確立できず、canonical hashesとworkflow artifactもmaterializeされなかった。Prospectively frozen global-failure ruleに従い:
-
-```text
-STSCV-STUDY1 = INCONCLUSIVE
-STSCV-T01-SEAT-SWAP-LOCAL = NON-ESTIMABLE
-STSCV-T02-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
-STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS = NON-ESTIMABLE
-semantic-domain canonicalization = NON-ESTIMABLE
-standard-start reachable-population deduplication = NON-ESTIMABLE
-validated transform set = []
-```
-
-と閉じた。Production-only zero-mismatch diagnosticsをvalidationへ昇格させず、technical failureをscientific `NOT-VALIDATED`へも読み替えていない。Verifier defectはfresh Stage 2 outcome後に判明したため、同じevidenceへのsource repair / rerunを行わない。
-
-したがってG2-03完了後もcanonicalization / symmetry-reduced state countingは未承認であり、authoritative scientific state identityは引き続きRAW-onlyである。
-
-**Priority:** P0 / completed
-
-#### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1
-
-**状態:** **完了 / `REEOE-STUDY1` / formal decision `INCONCLUSIVE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
-
-中心課題:
-
-> prospectively selectedした複数のrestricted raw-state domainsについて、complete forward closureとexact retrograde analysisによりgame-theoretic value、cycle structure、distance、optimal-move multiplicityを完全解析できるか。
-
-第一世代8-state exact domainのformal decisionを拡張解釈せず、423,733-state historical candidateへ単純cap追加して再開しない新しいprospective RAW-only Studyとして実施した。
-
-Stage 0 technical controlはREWR 8-state / 7-edge graph、solution、predecessor relationを独立再構築してPASS。Stage 1 v1はproduction development後のindependent-verifier startup defectによりsame-evidence rerunをせずtechnical-invalidとして閉じた。Fresh Stage 1 v2はseeds `24041001..24041512`、同一のstructural/resource/acceptance designで再実施した。
-
-```text
-unique witness roots = 7055
-eligible roots = 141
-selected roots = 8
-complete closures = 0
-STATE-LIMIT = 4
-ADMIN-CUTOFF = 3
-MOVE-NONTERMINATION = 1
-```
-
-Production / independentはfull scan、eligible set、selected roots、closure classificationを一致させたが、frozen feasibility rule `complete closures >= 3`を満たさなかった。そのためStage 1 v2は`STAGE1-DEVELOPMENT-BLOCKED`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`となり、fresh G2-04 exact oracleは生成されなかった。
-
-**G2-04はG2-03の成功を前提としない。** 実際にvalidated transform set `[]`のままRAW-onlyで実施し、symmetry reduction / canonicalizationを使用しなかった。cap増加、domain shrinkage、root/seed replacement、partial-closure promotionによるsame-study rescueも行っていない。
-
-この`INCONCLUSIVE` closureは「Bao endgameのexact expansionが不可能」を意味しない。異なるstructural/resource contractを試す場合はnew prospective independent Study/versioned protocolとfresh evidenceを必要とする。
-
-**Priority:** P0 / completed
-
-#### G2-05 — Deep RAW State-Space Enumeration Study 1
+#### G2-05 — Deep RAW State-Space Enumeration Study 1 — 最終状態
 
 **状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
-中心課題:
+standard initial RAW rootからdepth 0〜9を完全列挙し、cumulative RAW states 102857を得ました。本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。
 
-> standard rootまたはprospectively fixed rootsから、第一世代depth-8 domainを超えるbounded depthまでRAW-only complete enumerationを行い、per-depth reachable-state growth、branching、transposition structure、tree/graph occurrence比をexactに記述できるか。
+### 9.3 Wave B — 戦略表現
 
-Study-start時点でstandard initial RAW root、target depth 9、resource ceilings、complete-layer rule、formal decision taxonomyをfreezeした。Stage 0 technical validationとfresh Stage 1 development readinessを通過後、Stage 2を一度だけauthorizeして実行し、productionとindependent full-domain re-enumerationが一致した。
+#### G2-06 — Rich Critical-Position Representation Study 1 — 最終状態
 
-```text
-complete layers = 0..9
-cumulative RAW states = 102857
-depth-labelled legal edges = 106773
-tree node occurrences = 136645
-tree edge occurrences = 136644
-formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-```
+`RCPR-STUDY1`は`STAGE1-TECHNICAL-INVALID`。exact representation equality gateのfailure後にsame-block rerunを行っていません。
 
-SSGTC-STUDY1のpartial depth-9 rows、G2-04 selected roots / partial closures、G2-05 Stage 1 rows / rootsはformal evidenceへ再利用しなかった。validated transform setは`[]`で、symmetry reduction / canonicalizationは未使用である。
+#### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1 — 最終状態
 
-本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。したがってfull Bao state-space / game-tree sizeの推定はG2-12へ残す。
+`PCRPR-STUDY1`は`STAGE1-TECHNICAL-INVALID`。mandatory independent full artifactが成立せず、Stage 2は未承認です。
 
-**Priority:** P0 / completed
+#### G2-08 — Machine Decision-Failure Taxonomy Study 1 — 最終状態
 
-### 9.5 Wave B — Rich Strategic Representation
+`MDFT-STUDY1`は`NON-ESTIMABLE`。global readiness gate未達のためtaxonomyをformal promotionしていません。
 
-#### G2-06 — Rich Critical-Position Representation Study 1
+#### G2-09 — Tactical Motif Generalization / Counterexample Study 1 — 最終状態
 
-**状態:** **完了 / `RCPR-STUDY1` / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
+`TMGC-STUDY1`は`TECHNICAL-INVALID`。scientific seed消費前にtechnical tooling gateで停止し、formal generalization evidenceはありません。
 
-中心課題:
+### 9.4 Wave C — 統合と理論
 
-> Critical Positions / Outcome Branching Study 1で139/600 high-divergence rootsが観測された一方simple one-to-two-token grammarでpromotion 0だったことを踏まえ、outcome前に固定したより豊かなrepresentationならfresh populationでdecision-critical structureを再現可能に識別できるか。
+#### G2-10 — Unified Multiaxial Strategic State Representation Study 1 — 最終状態
 
-Stage 0でlocal pit topology、capture graph、legal-move geometry、reply graph、reserve / house relation、move-set entropy、search-gap vector、local temporal contextの8 families / 310 scalar featuresをtechnical validationした。Stage 1はfresh 3,072-game block、600 roots、`D_range >= 0.30`、deterministic model-selection / readiness ruleをoutcome前にfreezeしてconsume-once実行した。
+`UMSSR-STUDY1`はeligible frozen representationを生成せず、`selectedRepresentation = null`。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`です。
 
-Productionでは599 primary-estimable roots、134 high-divergence rootsを得てproduction readiness checksをPASSした。一方、mandatory independent recomputationはcorpus / root selection / continuation / model / readinessを再現したものの、4/600 rowsでrepresentation exact hashが一致しなかった。frozen fail-closed ruleに従いStage 1は`STAGE1-TECHNICAL-INVALID`で閉じ、production-only readinessをformal targetへ昇格させなかった。
+#### G2-11 — Long-Horizon Strategic Transition Structure Study 1 — 最終状態
 
-Read-only postmortemでは4件の差は`MOVE_SET_ENTROPY.indexEntropy`における浮動小数点加算順の差と局所化されたが、outcome後にexact-equality gateをtoleranceへ変更して救済しない。Stage 1 seed blockは消費済みでsame-block rerun / replacement / extensionは禁止、Stage 2は未承認・未実行である。
+G2-10と独立前提Study `PSRRE-STUDY1`から必要なrepresentationが得られなかったため、正式Study IDを付与せず、scientific disposition `NON-ESTIMABLE`、execution `NOT-AUTHORIZED-NOT-EXECUTED`として閉じました。long-horizon transitionが存在しないという結果ではありません。
 
-第一世代1183 auditsのnear-miss promotion、threshold relaxation、manual Stage 2 target selectionも行っていない。
+#### G2-12 — State-Space / Game-Tree Growth Estimation Study 1 — 最終状態
 
-**Priority:** P0 / completed
+`SSGTGE-STUDY1`は`TECHNICAL-INVALID`。canonical `selectedEstimator = null`で、fresh depth 10/11は生成・読取とも行っていません。
 
-#### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1
+### 9.5 人間研究 — core machine programから独立
 
-**状態:** completed / `PCRPR-STUDY1` closed / Stage 1 `STAGE1-TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`
+#### G2-H01 — Human / Expert Strategic Judgment Study 1 — 最終状態
 
-**結果要約:** Stage 0 technical validationはPASS。Fresh Stage 1は3,072 games / 400 roots / 1,429 exact root-move rowsをproductionとstructurally independent replayで完走し、selected family `F05_ALL`、ridge `lambda=100`、development core hashまで一致した。一方、independent full artifactのGitHub Actions uploadが`CreateArtifact` timeoutで失敗し、prospectively必須だったfull final exact verificationをmaterializeできなかったため、frozen fail-closed ruleに従い`STAGE1-TECHNICAL-INVALID`で閉じた。Stage 1 blockは消費済みでsame-block rerun/repair/replacement/extensionは未承認。Stage 2は未承認・未実行でreserved seedsは未消費。Production-only性能値はunverified provenanceに限定する。
+qualified participantへのアクセスを確保できず、`DEFERRED / INDEPENDENT / NON-BLOCKING`です。`N=0`をnegative human evidenceとして扱いません。
 
-中心課題:
+### 9.6 第二世代の最終境界
 
-> PCEM-STUDY1の`PCEM-T1..T8` grammarを救済せず、reply-set width、defense-maintaining reply fraction、reply-quality distribution、punishment concentration、opponent-policy sensitivity等を明示した新しいreply representationによりmachine-operational practical comeback structureをfresh evidenceで記述できるか。
+第二世代ではRAW identity、fresh evidence、independent verification、fail-closed、no-rescueを維持しました。Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。
 
-PCEM-STUDY1の55 audits / promoted 0 / Stage 2 non-authorizationはimmutable。machine reply pressureをhuman difficulty、human deception、human error probabilityと同一視しない。
-
-**Priority:** P1
-
-#### G2-08 — Machine Decision-Failure Taxonomy Study 1
-
-**状態:** completed / `MDFT-STUDY1 = NON-ESTIMABLE`
-
-中心課題:
-
-> 「悪手class」を直接promotionするのではなく、machine/search decision failureを再現可能なmechanistic failure modesへ分解できるか。
-
-Stage 0は`STAGE0-TECHNICAL-PASS`。Fresh Stage 1は4,096 games、4,068 unique trajectories、512 selected roots（Namua/Mtaji 256/256）を用い、production / independent full recomputationとmandatory artifact preservationをexact一致で完了した。しかしprospectively frozen global readiness gateのうち、distinct opening prefixes `2836 < 3000`とLOW_CAPTURE selected share `170/512 = 0.33203125 > 0.32`が未達となったため、Stage 1は`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`、Study formal decisionは`NON-ESTIMABLE`である。
-
-Leaf-level development promotion formulaはF01/F02/F03/F05/F06/F10でtrueだったが、global readiness failure後にこれらをtaxonomy/Stage 2 targetへ救済しない。F04/F07/F08はfalse、F09はhistorical morphology classifierをexact再構築できずscientific evidence前にtechnical-ineligibleだった。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、reserved seeds `29010001..29018192`は未消費である。
-
-BMP Study 1の0 `CONFIRMED` / 4 `NOT-CONFIRMED`、G2-07 technical-invalid closure、その他既存研究のformal decisionは変更しない。同じStage 1 evidenceへのthreshold relaxation、source-policy reweighting、root deletion、seed extension、replacement populationによる救済は禁止する。
-
-**Priority:** completed
-
-#### G2-09 — Tactical Motif Generalization / Counterexample Study 1
-
-**状態:** **完了 / `TMGC-STUDY1 = TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
-
-中心課題:
-
-> 第一世代でmachine-confirmedされた`TM-S2-C03`について、phase、morphology、search condition、state familyを変えたfresh evidenceで成立範囲とcounterexample domainをformalに特定できるか。
-
-Stage 0はC03 exact semantics、RAW identity、historical source binding、independent technical reconstruction、source diversity/resource feasibilityをPASSし、`STAGE0-TECHNICAL-PASS`となった。Direct Namua transportはfrozen Mtaji back-row C03 exactと同一constructにならないため`TECHNICALLY-INELIGIBLE-FOR-C03-EXACT`としてscientific counterexample populationから除外した。
-
-Stage 1/2 population、seed、marginal boundary axes、5 search instruments、identity firewall、multiplicity、decision ruleはscientific seed消費前にfreezeした。しかしStage 1 scientific authorization前のtechnical-only tooling smoke run `33287035754`で、independent boundary aggregatorが`ReferenceError: topSetRate is not defined`を発生させ、canonical smoke resultをmaterializeできなかった。
-
-Frozen smoke contractはtooling failure後のsame-study repairを認めていなかったため、変数名を修正してrerunせずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-TECHNICAL-INVALID`、Studyを`TECHNICAL-INVALID`として閉じた。Stage 1 scientific seeds `29110001..29114096`とStage 2 seeds `29210001..29218192`はともに未消費である。
-
-このclosureは`TM-S2-C03 = CONFIRMED`を変更せず、C03がgeneralizeしないこともcounterexample boundaryが存在することも示さない。修正版を検証する場合はnew prospective Studyまたはexplicit new versionとしてfresh technical-entry contractとauthorizationを固定する。
-
-**Priority:** completed
-
-### 9.6 Wave C — Integration and Theory
-
-#### G2-10 — Unified Multiaxial Strategic State Representation Study 1
-
-**状態:** **完了 / `UMSSR-STUDY1 = NOT-AUTHORIZED-NOT-EXECUTED` / Stage 1 `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
-
-中心課題:
-
-> phase、search reliability、structural state、legal branching、reply-pressure raw structure、tactical structure、decision raw observable、local graph等を単一scalarへ早期圧縮せず、複数軸を保持するBao strategic-state / regime representationとしてfresh evidence上で再現可能に構成できるか。
-
-開始前にG2-01〜G2-09を監査し、`FORMALLY-ELIGIBLE` / `BOUNDED-EXACT-ELIGIBLE` / `TECHNICAL-REFERENCE-ONLY` / `DEVELOPMENT-CANDIDATE-ONLY` / `INELIGIBLE`のupstream evidence eligibility contractをfreezeした。G2-06/07のtechnical-invalid representation、G2-08のnon-estimable taxonomy、G2-09の未生成generalization boundaryをvalidated inputへ昇格させず、validated transform set `[]`のためRAW identityを維持した。
-
-Stage 1はfresh 4,096 gamesを生成し、4,068 unique trajectories / 3,711 distinct opening prefixesから、8 phase/source-policy strata各64、計512 unique RAW rootsをoutcome-blind ruleで選択した。40/40 featuresがactiveとなり、production / independent implementationはsource、selection、feature analysis、scaler、candidate K metrics、representation decision、readiness objectを全てexact一致させた。Scientific readinessとresource gateも全項目PASSした。
-
-Representation selectionはdimensionality reductionなし、deterministic K-means `K=2..6`とし、minimum cluster support `>= 0.10`、mean silhouette `>= 0.05`、five-fold assignment stability `>= 0.80`をscientific seed消費前に固定した。K=2はstability、K=3はsupport/stability、K=4/K=5はsupport、K=6はsupport/stabilityが未達となり、eligible candidateは0だった。
-
-したがってfrozen decision mappingをそのまま適用し:
-
-```text
-Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
-selectedRepresentation = null
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Study formal decision = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 2 seeds 29410001..29418192 = RESERVED / UNCONSUMED
-```
-
-で閉じた。これはtechnical failureやnon-estimable resultではなく、凍結したStudy 1 contract内でStage 2へ昇格可能なrepresentationを得られなかったformal negative development resultである。
-
-このclosureをminimum support / stability threshold緩和、K range変更、PCA / latent representation /別clustering法の事後追加、favorable subgroup、Stage 1 seed rerun / extensionで救済しない。また`UMSSR-STUDY1`からG2-11へ渡せるvalidated / frozen representationは生成されなかった。
-
-**Priority:** completed
-
-#### Pre-G2-11 prerequisite — Prospective Strategic-Regime Representation Eligibility Study 1
-
-**状態:** **完了 / `PSRRE-STUDY1` / formal decision `NON-ESTIMABLE` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`**
-
-G2-10 `UMSSR-STUDY1`がeligible frozen representationを生成しなかったため、G2-11を直接開始せず、新しいagenda labelを追加しないdependency-resolution prerequisiteとして`PSRRE-STUDY1`をprospectively実施した。
-
-Study開始時にformal identity、Stage IDs、fresh seed blocks、28-feature dictionary、RAW identity、3 representation families、`K=2..8`、support / silhouette / five-fold assignment-stability、source-policy concentration、Stage 1 readiness、Stage 2 held-out endpoint、production / independent exact verification、resource ceiling、consume-once / no-rescue ruleをoutcome生成前にfreezeした。
-
-Stage 0は3 familyすべてtechnical exact PASS。Stage 1はfresh 4,096 games / 512 rootsをproduction / independent full-exactで完遂し、population / resource / artifact gateもPASSした。しかし、frozen readiness `minimumNonzeroMadFeatures >= 20`に対してobserved 15だったため、candidate family/Kをscientific promotionする前に`STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE`で閉じた。
-
-```text
-Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 1 = STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
-Study formal decision = NON-ESTIMABLE
-selectedRepresentation = null
-Stage 1 seeds 29510001..29514096 = CONSUMED
-same-block rerun = NOT AUTHORIZED
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 2 seeds 29610001..29618192 = RESERVED / UNCONSUMED
-G2-11 candidate input authorized = false
-G2-11 scientific execution authorized = false
-```
-
-20-feature floorを結果後に15へ下げる、zero-MAD featureを削除して同seedを再解析する、family/Kを追加する、favorable subgroupを抽出する、Stage 2をpost-hoc authorizeする、といったsame-Study rescueは行わない。
-
-この結果は「Baoに有用なstrategic regimeがない」ことを示さない。`PSRRE-STUDY1`のprospectively fixed representation-readiness contractがformal validation entryへ到達できなかったことを示す。
-
-- 初見向け概要: [`prospective-strategic-regime-representation-eligibility/STUDY_1_OVERVIEW.md`](prospective-strategic-regime-representation-eligibility/STUDY_1_OVERVIEW.md)
-- 科学的正本: [`prospective-strategic-regime-representation-eligibility/STUDY_1_FINAL_REPORT.md`](prospective-strategic-regime-representation-eligibility/STUDY_1_FINAL_REPORT.md)
-- Program closure: [`research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md`](research-program-decisions/2026-08-30-pre-g2-11-strategic-representation-prerequisite-closure.md)
-
-**Priority:** completed prerequisite; G2-11 subsequently closed as agenda-level `NON-ESTIMABLE` without scientific execution
-
-#### G2-11 — Long-Horizon Strategic Transition Structure Study 1
-
-**状態:** **formal agenda closure / scientific disposition `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED` / formal Study ID not assigned**
-
-中心課題は、frozen strategic-state / regime representationを用いて、対局中のregime transition、persistence、transient structure、bottleneck、recurrent structure等を再現可能に記述することだった。
-
-しかしG2-10 `UMSSR-STUDY1`は`selectedRepresentation = null`で閉じ、その後の独立Pre-G2-11 prerequisite `PSRRE-STUDY1`もfrozen readiness failureにより`NON-ESTIMABLE` / `selectedRepresentation = null`で閉じた。したがってG2-11へ渡せるeligible / frozen representation inputは得られなかった。
-
-Research Generation 2を完了させる目的だけで追加representation prerequisite Studyを繰り返さず、G2-10またはPSRREのthreshold・feature・family・seedを結果後に救済しないことをprogram-levelに決定した。このためG2-11はscientific executionをauthorizeせず、Study IDも付与しないまま次でformal closureする。
-
-```text
-scientific disposition = NON-ESTIMABLE
-execution = NOT-AUTHORIZED-NOT-EXECUTED
-formal Study ID = NOT ASSIGNED
-scientific outcome generated = false
-```
-
-これはlong-horizon strategic transition structureが存在しないことを示すnegative resultではない。現Generationで要求したinput representationがformalに成立せず、追加prerequisite研究を行わないため、問いをformalに評価できなかったというclosureである。
-
-将来再検討する場合はResearch Generation 2の未完作業として再開せず、新しい研究世代または独立prospective programでrepresentation identity、fresh population、eligibility criteria、transition endpoint、authorizationをoutcome前に新規固定する。
-
-Program decision: [`research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`](research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md)
-
-**Priority:** completed by dependency-gate formal closure
-
-
-#### G2-12 — State-Space / Game-Tree Growth Estimation Study 1
-
-**状態:** completed / `SSGTGE-STUDY1` formal decision `TECHNICAL-INVALID` / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`
-
-中心課題:
-
-> bounded exact layersからfull-game state-space / game-tree growthを推定するprospectively specified estimatorを構築し、fresh deeper exact holdout layersに対してそのcalibration / coverage / errorを検証できるか。
-
-G2-05等の完了済みbounded exact dataはestimator developmentやresource planningに利用できるが、formal validationに用いるdeeper exact holdoutの結果を見る前にestimator family、fitting rule、uncertainty method、acceptance criteriaをfreezeする。
-
-推定が不安定またはnon-estimableなら、その結果を正式closureとし、Bao全体のstate-space sizeを点推定として強制的に報告しない。
-
-2026-08-31に`SSGTGE-STUDY1`として実施・closureした。Stage 0 v2はtechnical PASS、Stage 1 production-onlyではE2をproposalしたが、mandatory independent verifierが凍結済み`1e-12` cross-implementation toleranceを超えるprediction mismatchを検出したためStage 1は`STAGE1-TECHNICAL-INVALID`、Study formal decisionは`TECHNICAL-INVALID`となった。same-evidence rerunやtolerance緩和による救済は行っていない。Canonical estimatorはfreezeされず`selectedEstimator = null`、fresh depth 10/11は未生成・未読、Stage 2は未承認・未実行である。
-
-**Priority:** P2
-
-### 9.7 Human Track — core machine programから独立
-
-#### G2-H01 — Human / Expert Strategic Judgment Study 1
-
-**状態:** participant access確保まで保留可能 / core studiesのdependencyにしない
-
-中心課題候補:
-
-- human-perceived difficulty
-- human-perceived critical positions
-- misconception / oversight
-- expert tactical-motif recognition
-- practical winning-try recognition
-- instructional salience
-
-第一世代Human / Expert Validation Study 1の`INCONCLUSIVE-NOT-ESTIMABLE (N=0)`は変更しない。qualified participant accessが確保できない限りmachine-only proxyでformal human claimを代替しない。
-
-### 9.8 Dependencyと推奨実施順
-
-第二世代は1から12までを単純直列には実施しない。
-
-```text
-Second-Generation Common Scientific Contract
-        │
-        ├───────── G2-01 Calibration Replication
-        ├───────── G2-02 Search Reliability
-        ├───────── G2-03 State Transformation Validation
-        ├───────── G2-04 Exact Oracle Expansion (RAW-only可)
-        └───────── G2-05 Deep RAW Enumeration
-
-G2-02 ───────────────┐
-                     ├─ G2-06 Rich Critical Representation
-                     └─ G2-08 Decision-Failure Taxonomy
-
-PCEM-STUDY1 boundary ─── G2-07 Reply-Pressure Representation
-TM-S2-C03 boundary ───── G2-09 Motif Generalization / Counterexamples
-
-G2-02 + G2-06..09 closures
-        ↓
-G2-10 Unified Multiaxial Strategic State
-        ↓
-NO ELIGIBLE FROZEN REPRESENTATION
-        ↓
-PSRRE-STUDY1 prospective prerequisite
-        ↓
-NON-ESTIMABLE / NO FROZEN REPRESENTATION
-        ↓
-G2-11 = agenda-level NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED; Research Generation 2 closed
-
-G2-05 bounded exact enumeration
-        ↓
-G2-12 prospectively specified Growth Estimation + fresh exact holdout
-
-G2-H01 Human Track = independent / non-blocking
-```
-
-G2-03は`STSCV-STUDY1 = INCONCLUSIVE` / 3 candidates `NON-ESTIMABLE`として完了し、validated transform setは空のままである。したがってG2-04とG2-05は予定どおりRAW-onlyで進行可能であり、validated transformが得られない限りsymmetry reductionを導入しない。
-
-開始優先度は次を推奨する。
-
-```text
-P0: G2-01, G2-02, G2-03, G2-04, G2-05, G2-06
-P1: G2-07 (completed), G2-08 (completed), G2-09 (completed), G2-10 (completed)
-P2: G2-11 (closed / `NON-ESTIMABLE` / `NOT-AUTHORIZED-NOT-EXECUTED`), G2-12 (completed / `TECHNICAL-INVALID`)
-Separate / non-blocking: G2-H01
-```
-
-`G2-01`は`PEOCR-STUDY1 = INCONCLUSIVE`、`G2-02`は`SRDR-STUDY1 = INCONCLUSIVE`、`G2-03`は`STSCV-STUDY1 = INCONCLUSIVE`、`G2-04`は`REEOE-STUDY1 = INCONCLUSIVE`、`G2-05`は`DRSSE-STUDY1 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`として、それぞれprospective ruleに従い完了した。`G2-06`は`RCPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、`G2-07`は`PCRPR-STUDY1`としてStage 1 `STAGE1-TECHNICAL-INVALID`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`でclosedとなった。`G2-08`も`MDFT-STUDY1 = NON-ESTIMABLE`としてclosedとなり、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。G2-03のvalidated transform setは空のままで、既存Studyの未実行Stage 2を後続Studyで救済しない。G2-01..G2-10はclosure済みである。`G2-10`はscientific readiness、resource gate、production / independent exact verificationをPASSした一方、prospectively fixed `K=2..6`の全候補がpromotion criterionを満たさずStage 1を`STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION`で閉じ、Study formal decisionとStage 2は`NOT-AUTHORIZED-NOT-EXECUTED`、Stage 2 seedsは未消費である。その後のPre-G2-11 prerequisite `PSRRE-STUDY1`もStage 1 `STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE` / Study `NON-ESTIMABLE`で閉じ、frozen representationを生成しなかった。したがってG2-11へ`UMSSR-STUDY1`または`PSRRE-STUDY1`由来のunvalidated representationを持ち込まず、追加prerequisite研究をこのGeneration内では行わない。G2-11はagenda-level `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`としてformal closureする。
-
-### 9.9 第二世代プログラムの完了条件
-
-第二世代はpositive resultの数で完了判定しない。次を満たした時点をprogram closureの目安とする。
-
-1. G2-01〜G2-12が、それぞれprospectively specified stop ruleに従ってformal closureしている。dependency gateにより`NOT-AUTHORIZED-NOT-EXECUTED`となる場合も、事前規則に従ったclosureなら完了として扱える。
-2. negative / null / inconclusive / non-estimable resultをpositiveへ救済せず保存している。
-3. 第一世代のformal decisionsとinterpretation boundariesが変更されていない。
-4. research engine / data identity / seed / artifact provenanceが各Studyで再現可能に保存されている。
-5. evaluation、empirical outcome、exact value、search reliability、machine failure、human constructが分離されている。
-6. multiaxial strategic-state representationについてformalな採否またはnon-estimable decisionがある。
-7. long-horizon transition structureについてformalな採否またはnon-estimable decisionがある。
-8. expanded restricted exact-domain研究とdeeper RAW enumerationがそれぞれclosureしている。
-9. state-space / game-tree growth estimationがformal validationされるか、または推定不能性を含む明確なformal closureを持つ。
-10. 第二世代全体を統合するfinal synthesis文書が作成されている。
-11. public AIの棋力向上・deployment成否を第二世代Studyのscientific successへ読み替えていない。
-
-第二世代の完了とは「すべての仮説が確認された」ことではなく、**設定した研究課題に対して再現可能なscientific decisionを与え、その境界を保存したこと**を意味する。
-
-### 9.10 Research Generation 2 formal closure — 2026-08-31
-
-`G2-01..G2-12`のcore agendaはformal closureした。G2-11はrequired frozen strategic-regime representationが得られなかったため、Studyを開始せずformal Study IDも付与せず、agenda-level scientific disposition `NON-ESTIMABLE` / execution `NOT-AUTHORIZED-NOT-EXECUTED`で閉じた。これはtransition structureのnegative resultではない。
-
-Section 9.9のcompletion conditionsは、G2-11 dependency-gate closureとResearch Generation 2 final synthesisの作成により満たされた。Canonical synthesisは[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)、program closure decisionは[`research-program-decisions/2026-08-31-research-generation-2-program-closure.md`](research-program-decisions/2026-08-31-research-generation-2-program-closure.md)を参照する。
-
-G2-H01は当初からcore machine programに対してindependent / non-blockingであり、qualified participant accessがないためdeferredのままとする。human claimをmachine-only evidenceで代替しない。
-
-第二世代でformalに成立しなかった課題を将来再検討する場合、closed Studyのreopen / rescueではなく、新しい研究世代または独立prospective programとして扱う。
+第二世代の正本は[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)です。
 
 ## 10. 第三世代研究アジェンダ
 
-### 10.1 位置づけ
+第三世代 `G3-01..G3-12`は2026-09-04に完了し、`main`へ統合済みです。RAW-only bounded local game-tree geometryを中心に、測定器、branch / reply structure、tree / graph divergence、corridor / funnel、search instability、continuous representation、longitudinal dynamics、protected depth-10 exact holdout、generalization境界を検討しました。
 
-Research Generation 3の作業英語名は次とする。
+### 10.1 世代全体の最終状態
 
-**Bao Third-Generation Research Program — Local Game-Tree Geometry, Effective Branching, Search Mechanisms, and Multiscale Structural Dynamics**
+| 区分 | 最終状態 |
+| --- | --- |
+| G3-04 | C1・C6が`CONFIRMED` |
+| G3-07 | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE` |
+| G3-10 | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED` |
+| G3-11 | depth-10 exact、H1〜H4 `DEEPER-CONFIRMED` |
+| G3-01・02・03・05・06・08・09・12 | `TECHNICAL-INVALID` |
+| G3-H01 | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
 
-日本語作業名:
+### 10.2 何が分かり、何が未確定か
 
-**Bao第三世代研究計画 — 局所ゲーム木幾何、実効分岐構造、探索機構、多尺度構造ダイナミクス**
+限定されたpopulationとrelative depth 5の範囲では、local corridor / tree-graph structure、local widthとsearch-output changeの関連、continuous geometry trajectoryの一部、depth 10でのexact continuationが確認されました。
 
-第三世代は、Research Generation 2で最も強く成立したRAW-only bounded exact analysisを基盤とし、各RAW局面の周囲に存在するbounded local game tree / reachable RAW graphそのものを研究対象とする。
+一方、これらはwhole-Bao law、causal mechanism、game-theoretic value、人間の難しさ、普遍的なgeneralizationを示しません。G3-12がtechnical-invalidで閉じたため、formalなgeneralization / counterexample decisionもありません。
 
-第二世代の主要boundaryは次のとおりであり、第三世代で変更・救済しない。
-
-```text
-G2-05 = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-RAW state identity = authoritative
-validated transform set = []
-validated strategic-regime representation = none
-G2-11 = NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED
-G2-12 = TECHNICAL-INVALID / selectedEstimator = null
-whole-Bao state-space estimate = NOT AUTHORIZED
-whole-Bao game-tree estimate = NOT AUTHORIZED
-```
-
-詳細なprogram正本は[`research-generation-3/PROGRAM_PLAN.md`](research-generation-3/PROGRAM_PLAN.md)、現在状態は[`research-generation-3/CURRENT_STATUS.md`](research-generation-3/CURRENT_STATUS.md)、program-level decisionは[`research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md`](research-program-decisions/2026-08-31-third-generation-local-game-tree-geometry-agenda.md)を参照する。
-
-`G3-01`〜`G3-12`および`G3-H01`はAgenda上の順序ラベルであり、正式Study IDではない。正式題目、Study ID、Stage ID、seed、population、endpoint、threshold、resource ceiling、estimability gate、停止条件は各Study開始時にoutcome生成前freezeする。
-
-### 10.2 中心科学課題
-
-> Baoの局所ゲーム木には、branch expansion、branch compression、reply narrowing、reconvergence、transposition concentration、tree/graph divergence等の再現可能な構造幾何が存在するか。また、それらはphase、root family、Bao固有ルールイベント、時間方向、search conditionを横断してどの範囲まで一般化可能か。
-
-ここでいうgeometryは盤面上の空間幾何ではなく、合法手branch、reply width、subtree growth、RAW-state reconvergence、duplicate encounter、multi-parent state、tree occurrenceとunique RAW graphの乖離等を記述するbounded computational structureである。
-
-### 10.3 共通科学contract
-
-1. Research Generation 1 / 2のformal decisionを変更・救済しない。
-2. authoritative state identityは独立formal authorizationが成立するまでRAW identityとする。
-3. validated transform set `[]`のままsymmetry / canonicalizationをdeduplicationへ使用しない。
-4. tree occurrenceとunique RAW graph stateを別constructとして保持する。
-5. legal branching、effective branching、reply compression、transposition、search instability、evaluation、empirical outcome、game-theoretic value、human difficultyを分離する。
-6. structural forcingをgame-theoretic optimal forcingへ読み替えない。
-7. machine branching / reply pressureをhuman difficultyへ読み替えない。
-8. remote `main` HEAD、engine、rule semantics、serialization、RAW identity、move identityをStudy開始時にfreezeする。
-9. source population、seed、source policy、root selection ruleをoutcome前にfreezeし、seed blockはconsume-onceとする。
-10. development / formal evidence間にtrajectory・opening-prefix・RAW-root firewallを設ける。
-11. productionとindependent reconstructionを別実装とする。
-12. scientific primitiveは可能な限りinteger countまたはexact rational pairとする。
-13. float derived metricは一次artifact、deterministic arithmetic、rounding / toleranceを事前固定する。
-14. large artifact uploadだけを唯一のverification経路としない。
-15. gate failure後のthreshold relaxation、seed extension、root replacement、favorable subgroupによる救済を行わない。
-16. partial computation、resource cutoff、timeoutをcomplete exact resultまたはscientific nullへ読み替えない。
-17. public AI strength、deployment、UX、latencyをscientific endpointへ混入させない。
-
-### 10.4 Evidence classとprotected holdout
+### 10.3 保護された証拠と今後の扱い
 
 ```text
-TECHNICAL-FIXTURE
-HISTORICAL-EXACT-REFERENCE
-FRESH-DEVELOPMENT
-FRESH-FORMAL-HELDOUT
-FRESH-DEEPER-EXACT-HOLDOUT
-DIAGNOSTIC-ONLY
-HUMAN-EVIDENCE
+G3-11 depth 10 = OPENED / CONSUMED EXACTLY ONCE
+same-evidence rerun = NOT AUTHORIZED
+depth 11 = NOT AUTHORIZED / NOT ACCESSED
+G3-12 Stage 2 = NOT AUTHORIZED / NOT EXECUTED / seeds UNREAD
 ```
 
-G2-05 depth 0..9は`HISTORICAL-EXACT-REFERENCE`としてmetric design、fixture、resource planningに利用できるが、新しいformal held-out confirmationへ無条件に混合しない。
-
-standard initial RAW rootのdepth 10 exact layerは`G3-11`用`FRESH-DEEPER-EXACT-HOLDOUT`としてsealedに保護する。G3-01〜G3-10ではdepth-10 scientific counts / geometry outcomeを生成・readせず、G2-12のproduction-only estimator proposalも持ち込まない。
-
-### 10.5 Wave A — Local Geometry Foundations
-
-- **G3-01 — Local Game-Tree Geometry Measurement Foundation Study 1**: `LGTGMF-STUDY1`として実行・closure済み。Stage 1でroot-level / F1〜F5 exact agreementは得たがcanonical stage-manifest implementation defectによりformal decision `TECHNICAL-INVALID`、eligible family `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。このformal decisionは不変。後続の独立prerequisite `LGTGMIV-STUDY1`はfresh evidenceで`CLOSED / FORMAL-ELIGIBLE-ALL`となり、5 familyすべてのbounded RAW-only depth-5 eligibilityを別Studyとして確立済み。**G3-01 CLOSED / immutable; prerequisite completed separately**
-- **G3-02 — Effective Branching / Reply-Width Structure Study 1**: LGTGMIV closure後の別authorization reviewを経て`EBRWS-STUDY1`としてprospectively開始。Stage 0は`STAGE0-PASS`。Stage 1はauthorized runのcanonical artifact materialization failureと、workflow armingに起因するunintended duplicate scientific executionによるexactly-one-execution contract違反のためfail-closedで`CLOSED / TECHNICAL-INVALID`。formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID**
-- **G3-03 — Transposition Concentration / Tree-to-Graph Divergence Study 1**: `TCTGD-STUDY1`として実行・closure済み。single authorized Stage 1でcanonical scientific coreはcross-implementation一致したが、prototype-sensitive in-memory equality gateにより`TECHNICAL-INVALID`。formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`。**P0 / CLOSED / TECHNICAL-INVALID**
-- **G3-04 — Structural Forcing-Corridor / Decision-Funnel Study 1**: `SFCDF-STUDY1`として完了。Stage 1からC1/C6だけをpromotionし、fresh Stage 2 holdout 18 pairsでC1 `MTAJI-GREATER`、C6 `NAMUA-GREATER`をそれぞれ18/18同方向・exact `p=1/131072`・Holm PASSで`CONFIRMED`。**P0 / CLOSED / FORMAL-COMPLETE**
-
-### 10.6 Wave B — Geometry Dynamics and Mechanisms
-
-- **G3-05 — Branch Expansion / Compression Transition Study 1**: trajectory上のbranch explosion、reply compression、branch reopening等のgeometry transitionを検証する。Research Generation 1 phase-transition resultとは別construct。G3-04 closure後も自動authorizeしない。**P1 / CLOSED / TECHNICAL-INVALID**
-- **G3-06 — Bao Rule-Mechanism / Geometry Intervention Study 1**: capture、reserve、nyumba、Namua→Mtaji等のrule-semantic eventとbounded local geometryの関係をmove-conditionedに検証する。G3-05 partial telemetry / transition directionをvalidated inputとして継承しない。**P1 / NEXT PROGRAM AUTHORIZATION REVIEW REQUIRED / NOT AUTHORIZED**
-- **G3-07 — Search Instability / Local Geometry Mechanism Study 1**: branching、reconvergence等とbest-move agreement、ranking churn、PV stabilityの関係をfresh evidenceで検証する。`G2-02 = INCONCLUSIVE`を変更しない。**P1**
-- **G3-08 — Local Geometry Persistence / Memory-Length Study 1**: local geometryがtrajectory上で何ply持続し、いつ消失・反転・returnするかを検証する。**P1**
-
-### 10.7 Wave C — Representation and Longitudinal Theory
-
-- **G3-09 — Continuous Local-Geometry Representation Study 1**: discrete clusterを成功条件にせず、eligible geometry measuresをcontinuous representationとして統合できるかを検証する。G2-10 / PSRREの再実行ではない。**P2**
-- **G3-10 — Geometry-Conditioned Longitudinal Dynamics Study 1**: local-geometry coordinatesのdirectionality、persistence、return、hysteresis、path dependenceを検証する。G2-11のstrategic-regime transition Studyを再実行しない。**P2**
-
-### 10.8 Wave D — Reserved Exact Holdout and Generalization
-
-- **G3-11 — Fresh Depth-10 Exact Geometry Holdout Validation Study 1**: standard initial RAW rootのdepth 10をsealed deeper exact holdoutとして独立検証する。RAW-only、no symmetry reduction、no G2-12 estimator input、complete layer、independent full enumerationを必須とする。depth 11を同Study内で追加救済しない。**P2 / protected holdout**
-- **G3-12 — Local Game-Tree Geometry Generalization / Counterexample Study 1**: formalにeligibleとなったgeometry claimだけを対象にphase、root family、source policy、reserve / nyumba context等を横断したgeneralization / counterexample boundaryを確定する。**P2 / capstone**
-
-### 10.9 Human Track — independent / non-blocking
-
-- **G3-H01 — Human Perception of Local Branching / Decision Pressure Study 1**: human-perceived branching、forcing、criticality、reply-width expectation、decision confidence等を扱う。qualified Bao participant accessがない場合は`DEFERRED / INDEPENDENT / NON-BLOCKING`のままとし、N=0をnegative evidenceへ読み替えない。
-
-### 10.10 Dependencyと推奨順序
-
-```text
-G3-01 Measurement Foundation
-        ↓
-G3-02 Effective Branching
-G3-03 Transposition / Tree-Graph Divergence
-G3-04 Corridor / Funnel
-        ↓
-G3-05 Geometry Transition
-        ├─ G3-06 Rule Mechanism
-        ├─ G3-07 Search Mechanism
-        └─ G3-08 Persistence / Memory
-        ↓
-G3-09 Continuous Geometry Representation
-        ↓
-G3-10 Longitudinal Geometry Dynamics
-
-G2-05 immutable depth 0..9 reference
-        +
-G3 geometry definitions frozen
-        ↓
-G3-11 Fresh Depth-10 Exact Holdout
-
-G3-02..G3-11 formal closures
-        ↓
-G3-12 Generalization / Counterexamples
-        ↓
-Research Generation 3 Final Synthesis
-
-G3-H01 = independent / non-blocking
-```
-
-### 10.11 第三世代プログラムの完了条件
-
-Research Generation 3はpositive resultの数で完了判定しない。
-
-1. G3-01〜G3-12がprospective stop ruleに従ってformal closureしている。
-2. Research Generation 1 / 2のformal decisionsを変更・救済していない。
-3. RAW identityとvalidated transform set `[]`のboundaryを独立authorizationなしに変更していない。
-4. local geometry measurementについてformal instrument eligibilityまたは明確なnon-estimable / technical-invalid decisionがある。
-5. effective branching、transposition、tree/graph divergence、corridor/funnelについてformal closureがある。
-6. geometry transitionとBao rule mechanismについてformal closureがある。
-7. local geometryとsearch instabilityの関係についてformal dispositionがある。
-8. geometry persistence / memoryについてformal closureがある。
-9. continuous local-geometry representationとlongitudinal dynamicsについてformal dispositionがある。
-10. protected depth-10 exact holdoutがformalに検証されるか明確なformal closureを持つ。
-11. geometry claimのgeneralization / counterexample boundaryがformal closureしている。
-12. tree、graph、search、evaluation、game-theoretic value、human constructを分離している。
-13. public AI engineeringをscientific successへ読み替えていない。
-14. Research Generation 3全体のfinal synthesisが作成されている。
-
-### 10.12 現在状態
-
-2026-09-02、G3-02 `EBRWS-STUDY1`は**`CLOSED / TECHNICAL-INVALID`**でformal closureした。G3-01 `LGTGMF-STUDY1`の`TECHNICAL-INVALID` closure・eligible families `[]`、および独立prerequisite `LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`は変更しない。
-
-G3-02はRAW-only identity、validated transform set `[]`、relative depth 5、primary `TREE-WIDTH-SHAPE` / `REPLY-WIDTH-SHAPE`、exact 2/3 gate、fresh populations、resource ceilings、production / independent verification、no-rescue ruleをscientific outcome前にfreezeした。Stage 0は`STAGE0-PASS`。
-
-Stage 1のauthorized one-shot run `33569323221`はfresh `31210001..31210192`からNamua 12 + Mtaji 12を計算し、runner-localではglobal gate PASS、production / independent exact stage-core agreement、reply-width `COMPRESSION-DOMINANT` Namua 12/12・Mtaji 9/12を記録した。しかしcanonical result filesのpushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収できなかったため、これらはformal promotionせずdiagnostic provenanceに限定した。
-
-さらにfinal Actions-history auditで、workflow armingによりrun `33569382663`が意図せずqueueされ、同じStage 1 scientific computationが2回目も実行されていたことを確認した。authorizationはexactly one executionであるため、この2回目は`UNAUTHORIZED-DUPLICATE-INVALID` / `INVALID-DO-NOT-USE`とし、replication・confirmation・repair・rescueに使用しない。
-
-```text
-Research Generation 3 = ACTIVE / G3-02 CLOSED TECHNICAL-INVALID / NEXT PROGRAM REVIEW REQUIRED
-G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID / eligible families []
-LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5 eligible
-G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-02 research workflow = COMPLETE / MAIN INTEGRATED
-G3-02 main integration = COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1
-G3-02 Stage 0 = STAGE0-PASS
-G3-02 Stage 1 = TECHNICAL-INVALID
-G3-02 Stage 1 authorized executions = 1
-G3-02 Stage 1 actual scientific executions = 2 / contract violated
-G3-02 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-G3-02 formal promoted candidate set = []
-G3-02 Stage 1 seed = 31210001..31210192 / consumed
-G3-02 Stage 2 seed = 31220001..31220288 / not consumed
-Stage 1 execution workflow = CLOSED / DISABLED
-Protected standard-root depth-10 holdout = SEALED / NOT GENERATED / NOT READ
-```
-
-runner-local compression patternもunauthorized duplicate runの一致もformal positive claimへ用いない。branching / reply widthをbest move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。
-
-G3-02 closureはG3-03以降を自動authorizeしない。次のscientific actionは、G3-02のimmutable `TECHNICAL-INVALID` closure、LGTGMIV family boundary、RAW-only identity、protected depth-10 firewallを維持した別のpost-G3-02 program reviewである。
-
-Research Generation 3開始前にfreezeした`research-generation-3/PROGRAM_PLAN.md`はhistorical prospective planとして変更しない。
-
-<!-- LGPML-G3-08-CLOSURE:FUTURE -->
-### 2026-09-03 G3-08 closure update
-
-G3-08 `LGPML-STUDY1`は`CLOSED / TECHNICAL-INVALID`で閉鎖した。Stage 0はPASSしたが、fresh Stage 1のexactly-one authorized execution中にrequired depth-5 RAW reconstructionで`relay-limit enumeration`が発生し、complete 10-trajectory development populationへ到達しなかった。
-
-```text
-formal promoted candidate set = []
-Stage 1 seed block = CONSUMED
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 2 seed block = NOT CONSUMED
-same-evidence rescue = PROHIBITED
-protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-```
-
-このtechnical-invalid closureをgeometry persistenceのnegative/null evidenceとして扱わない。relay-limit-safeなlongitudinal studyが必要なら、新しいprospective independent Study/versionとして別途扱う。
-
-Historical program plan上の次候補は**G3-09 — Continuous Local-Geometry Representation Study 1**だが、G3-08 closureから自動authorizeされない。開始前にpost-G3-08 current-state authorization reviewが必要である。
-
-<!-- LGPML-G3-08-MAIN-INTEGRATION:FUTURE -->
-G3-08 `LGPML-STUDY1`のresearch branchは、研究closureと最終文書監査後、2026-09-03の明示的ユーザー指示によりtip `72bd208267359f461e9dbbde938bb952eb01b91c` からmainへfast-forward / `force=false`で統合された。scientific dispositionは`CLOSED / TECHNICAL-INVALID`のまま不変で、G3-09は引き続きseparate post-G3-08 current-state authorization reviewまで`NOT AUTHORIZED`である。
+後続研究は第三世代のrepairではなく、新しいprospective Studyまたは新しいResearch Generationとして計画します。詳細は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。

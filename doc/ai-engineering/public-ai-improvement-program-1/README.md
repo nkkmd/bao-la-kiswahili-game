@@ -1,60 +1,56 @@
-# Public Bao AI Improvement Program 1 (`PBAI-P1`)
+# 公開Bao AI改善Program 1（`PBAI-P1`）
 
-**正式作業名:** Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-**開始日:** 2026-08-26  
-**完了日:** 2026-08-26  
-**Program scientific evidence anchor:** `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-**Status:** **PROGRAM COMPLETE / KEEP-AI-GEN2**
+正式題目: `Generation-1 Evidence-Informed Public Bao AI Improvement Program 1`
+実施日: 2026-08-26
+研究証拠anchor: `2db7c4d65771066e914f32cbc4116fcc3e9e386a`
+状態: **PROGRAM COMPLETE / KEEP-AI-GEN2**
 
-## 1. Purpose and separation
+`PBAI-P1`は、完了済みResearch Generation 1をengineering inputとして、公開Bao AIの改善候補を設計・評価したProgramです。5 candidateを事前に固定したgateで順に評価しましたが、公開採用まで到達した候補はありませんでした。このため、公開系統`AI-GEN2`を維持して完了しています。
 
-PBAI-P1はcompleted **Research Generation 1**をengineering inputとしてpublic Bao AIのcandidateを設計・比較・検証するengineering programである。Engineering outcomeによって既存Studyのformal decision、threshold、classifier、endpoint、population、interpretation boundaryを変更しない。Research Generation 2 outcomeはPBAI-P1へ逐次流入させない。
+## 最初に読む
 
-## 2. Canonical identities
+1. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md) — Program全体の判断理由
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態
+3. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — candidate台帳
+4. [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 判断とno-rescueの記録
+5. [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md) — 公開・release状態
+
+## Programの結論
 
 ```text
+PBAI-P1 = COMPLETE
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 current public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT-PROMOTED
+public AI code changed by PBAI-P1 = false
+```
+
+`KEEP-AI-GEN2`は未決定状態ではありません。candidateが公開採用に必要なevidence sequenceとrelease sequenceを満たさなかった場合に、事前に認められていた正式なengineering resultです。
+
+## 固定した比較基準
+
+```text
 frozen exact comparator = AI-GEN2-BASELINE-2026-08-26-v1
 global gate spec = PBAI-C-GLOBAL-GATES-2026-08-26-v1
 scientific evidence cutoff = 2db7c4d65771066e914f32cbc4116fcc3e9e386a
 next adopted public lineage reserved = AI-GEN3
 ```
 
-`AI-GEN3`はexplicit `ADOPT` + actual public-default deployment後のみ付与する。PBAI-P1ではその条件は成立しなかったため、public lineageは`AI-GEN2`のままである。
+PBAI-AでResearch Generation 1のevidenceと禁止解釈を監査し、PBAI-Bで公開`AI-GEN2`をexact baselineとして固定し、PBAI-Cでcandidate outcomeを見る前にquality・safety・cost・release gateを固定しました。
 
-## 3. Completed prerequisites
+Research Generation 2の結果は、このProgramへ途中から追加していません。
 
-### PBAI-A — Research Generation 1 evidence audit
+## Candidateの最終状態
 
-14-Study evidence core、engineering-use tier、prohibited inference、Research Generation 2 exclusion、RAW identity boundaryをfreezeした。
+| Candidate | 最終状態 | 判断理由の要約 |
+| --- | --- | --- |
+| `PBAI-C001-v1` | `DEVELOPMENT-BENEFIT-FAIL / HOLD` | search workは減りましたが、3つのdecision-quality benefit gateを満たしませんでした。PR #61はmergeせずcloseしました。 |
+| `PBAI-C002-v1` | `NON-ESTIMABLE / HOLD` | eligible target 5件でminimum 48件に届きませんでした。PR #55はmergeせずcloseしました。 |
+| `PBAI-C003-v1` | `NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD` | RAW identity bindingがreachability測定前に失敗しました。PR #63はmergeせずcloseしました。 |
+| `PBAI-C004-v1` | `DEVELOPMENT-BENEFIT-FAIL / HOLD` | median node-ratioのintended-benefit gateを満たしませんでした。PR #58はmergeせずcloseしました。 |
+| `PBAI-C005` | `NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD` | 現行公開面に修正すべきscore→probability表示を確認できず、実装せずcloseしました。 |
 
-Canonical: [`GENERATION_1_EVIDENCE_AUDIT.md`](GENERATION_1_EVIDENCE_AUDIT.md)
-
-### PBAI-B — exact AI-GEN2 baseline
-
-```text
-baseline = AI-GEN2-BASELINE-2026-08-26-v1
-baseline public-source commit = f4ae3b11901180cbe417b3e643e2b357d8045d2d
-```
-
-Exact public source hashes、rules binding、evaluation/search/config、Worker/fallback、PWA/cache semanticsをfreezeした。
-
-### PBAI-C — global engineering gates
-
-Candidate implementation/outcomeが0の状態でstrength / decision-quality / operational / correctness / holdout gatesをfreezeした。
-
-Canonical:
-
-- [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
-- [`benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json)
-
-No candidate later reached release-candidate status, so release holdout was never authorized or executed.
-
-## 4. Final candidate outcomes
-
-### PBAI-C001-v1
-
-Phase/search-aware legacy-routing hypothesis. Baseline-only support and premetric safety passed. Search work fell strongly, but three prospectively frozen decision-quality benefit gates failed.
+### `PBAI-C001-v1` — 判断
 
 ```text
 TopSet delta = +0.015625 < +0.05 => FAIL
@@ -62,28 +58,21 @@ rank-loss delta = -0.01171875 > -0.02 => FAIL
 severe-loss excess = +0.015625 > 0 => FAIL
 catastrophic new losses = 0 => PASS
 median search-work ratio = 0.2772631455 => PASS
-PBAI-C001-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
-PR #61 = CLOSED WITHOUT MERGE
 ```
 
-Phase Transition Study 1 E-020/H18 remains unchanged.
+計算量の改善だけでquality gateのfailureを救済していません。
 
-### PBAI-C002-v1
-
-`TM-S2-C03` move-ordering candidate. Frozen target support was insufficient:
+### `PBAI-C002-v1` — 判断
 
 ```text
 eligible targets = 5
 minimum estimable = 48
-PBAI-C002-v1 = NON-ESTIMABLE / HOLD
-PR #55 = CLOSED WITHOUT MERGE
+candidate benefit metrics = NOT EXECUTED
 ```
 
-`TM-S2-C03 = CONFIRMED` remains unchanged.
+`TM-S2-C03 = CONFIRMED`という研究上の判断は変更していません。
 
-### PBAI-C003-v1
-
-Restricted exact-oracle plumbing was stopped before implementation by a prospectively required strict RAW identity gate.
+### `PBAI-C003-v1` — 判断
 
 ```text
 failure stage = STRICT-RAW-IDENTITY-BINDING
@@ -93,43 +82,33 @@ identity difference = pending
 reachability measurement executed = false
 hit count = unmeasured / null
 zero-hit conclusion = NOT AUTHORIZED
-PBAI-C003-v1 = NON-ESTIMABLE-PRACTICAL-REACHABILITY / HOLD
-PR #63 = CLOSED WITHOUT MERGE
 ```
 
-This remains consistent with ORISC-STUDY1 `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` and does not revise REWR-STUDY1 `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`.
+practical reachabilityは測定していないため、「hitが0件だった」とは結論できません。`REWR-STUDY1`と`ORISC-STUDY1`の研究判断も変更していません。
 
-### PBAI-C004-v1
-
-Search-instability-aware root ordering. Support and safety passed, but the frozen median-node benefit endpoint failed:
+### `PBAI-C004-v1` — 判断
 
 ```text
-median nodes(candidate/baseline) = 1.000 > 0.950
-PBAI-C004-v1 = DEVELOPMENT-BENEFIT-FAIL / HOLD
-PR #58 = CLOSED WITHOUT MERGE
+median nodes(candidate/baseline) = 1.000
+required <= 0.950
+result = FAIL
 ```
 
-Position Complexity / Difficulty Study 1 remains `INCONCLUSIVE`.
+Position Complexity / Difficulty Study 1の`INCONCLUSIVE`は不変です。
 
-### PBAI-C005
+### `PBAI-C005` — 判断
 
-Evaluation-semantics sanitation began with the required read-only current-production audit. No public surface was found that presents engine evaluation as validated win probability, win rate, winning chance, calibrated probability or confidence probability.
+現行UI・code・diagnostic surfaceをread-onlyで監査しました。engine evaluationをvalidated win probability、win rate、winning chance、confidence probabilityとして表示する箇所は確認されませんでした。
 
 ```text
 actionable current production semantics defect = false
 implementation = NOT CREATED
-PBAI-C005 = NO-ACTIONABLE-CURRENT-PRODUCTION-SEMANTICS-DEFECT / HOLD
-CLOSED WITHOUT IMPLEMENTATION
+engine score -> validated Bao win probability = NOT AUTHORIZED
 ```
 
-Canonical:
+詳細は[`C005_PRODUCTION_SURFACE_AUDIT.md`](C005_PRODUCTION_SURFACE_AUDIT.md)を参照してください。
 
-- [`C005_PRODUCTION_SURFACE_AUDIT.md`](C005_PRODUCTION_SURFACE_AUDIT.md)
-- [`candidates/PBAI-C005-production-surface-audit-result.json`](candidates/PBAI-C005-production-surface-audit-result.json)
-
-Position Evaluation / Win-Rate Calibration Study 1 remains `INCONCLUSIVE`; engine score→validated Bao win probability remains unauthorized.
-
-## 5. Final authorization boundary
+## 最終的なauthorization境界
 
 ```text
 PBAI-C001 authorized = false / HOLD
@@ -144,69 +123,25 @@ validation execution = NOT-AUTHORIZED / NOT-EXECUTED
 release holdout execution = NOT-AUTHORIZED / NOT-EXECUTED
 public deployments caused by PBAI-P1 = 0
 original candidate inventory remaining = 0
-AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-## 6. Final program outcome
+validationとrelease holdoutは、効果がなかったのではなく、実行条件が成立せず未承認・未実行です。
 
-All original candidate families have explicit final dispositions. None satisfied the sequence required for public adoption.
+## 研究との境界
 
-```text
-PBAI-P1 = COMPLETE
-FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
-current public implementation = frozen AI-GEN2
-public AI code changed by PBAI-P1 = false
-```
+- engineering resultによって既存Studyのformal decision、threshold、endpoint、populationを変更しません。
+- machine search complexityをhuman difficultyへ読み替えません。
+- machine reply pressureをhuman error inducementへ読み替えません。
+- unvalidated symmetry / canonicalizationをexact identityへ使いません。
+- Research Generation 1のauthoritative RAW identityは`pits,reserve,houseOwned,player,phase,winner,pending`です。
+- current `AI.stateKey`は研究上のauthoritative RAW identityと同一ではありません。
 
-`KEEP-AI-GEN2` is not a failure state; it is the prospectively authorized outcome when no candidate meets the engineering acceptance requirements.
+## 正本と再現資料
 
-Canonical final report: [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md).
+- [`GENERATION_1_EVIDENCE_AUDIT.md`](GENERATION_1_EVIDENCE_AUDIT.md) — 使用した研究証拠と禁止解釈
+- [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2` baseline
+- [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — 評価手順
+- [`benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json`](benchmark/PBAI-C-GLOBAL-GATES-2026-08-26-v1.json) — 固定済みgate
+- [`RESUME_HERE.md`](RESUME_HERE.md) — closure後の引き継ぎ
 
-## 7. Scientific boundaries retained
-
-```text
-Research Generation 2 evidence
-= NOT INCLUDED
-
-engine score -> validated Bao win probability
-= NOT AUTHORIZED
-
-machine search complexity -> human difficulty
-= NOT AUTHORIZED
-
-machine reply pressure -> human error inducement
-= NOT AUTHORIZED
-
-unvalidated symmetry / canonicalization
-= NOT AUTHORIZED
-
-current AI.stateKey
-= not Research Generation 1 authoritative RAW identity
-```
-
-Authoritative RAW identity remains:
-
-```text
-pits
-reserve
-houseOwned
-player
-phase
-winner
-pending
-```
-
-## 8. Canonical program documents
-
-- [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
-- [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
-- [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
-- [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)
-- [`RESUME_HERE.md`](RESUME_HERE.md)
-- [`GENERATION_1_EVIDENCE_AUDIT.md`](GENERATION_1_EVIDENCE_AUDIT.md)
-- [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
-- [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
-- [`C005_PRODUCTION_SURFACE_AUDIT.md`](C005_PRODUCTION_SURFACE_AUDIT.md)
-
-Future materially different AI engineering work should use a new prospective candidate/program identity and an explicitly new evidence cutoff rather than reopening PBAI-P1 candidate versions.
+将来のAI改善はPBAI-P1 candidateを暗黙に再開せず、新しいProgram ID、evidence cutoff、fresh split、candidate inventory、acceptance gateを事前に固定して開始します。

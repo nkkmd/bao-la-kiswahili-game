@@ -1,9 +1,9 @@
-# PBAI-P2 — Program最終報告
+# PBAI-P2 — 最終報告
 
-Program: `PBAI-P2`  
-正式題目: `Generation-2 Evidence-Informed Public Bao AI Improvement Program 2`  
-開始日: 2026-09-01  
-完了日: 2026-09-01  
+Program: `PBAI-P2`
+正式題目: `Generation-2 Evidence-Informed Public Bao AI Improvement Program 2`
+開始日: 2026-09-01
+完了日: 2026-09-01
 状態: **COMPLETE / KEEP-AI-GEN2**
 
 ## 1. 最終判断
@@ -40,9 +40,9 @@ Research Generation 3 influence
 
 Research Generation 3のscientific result、diagnostic、measurement、hypothesis、candidate ideaはPBAI-P2のcandidate設計、threshold、development、validation、interpretationへ使用していない。PBAI-P2のengineering outcomeによってResearch Generation 2のformal scientific decisionsも変更していない。
 
-## 3. Candidate最終結果
+## 3. Candidate別の最終結果
 
-### `PBAI-C006-v1` — strict RAW-safe search/cache identity
+### `PBAI-C006-v1` — RAW identityを守るsearch / cache identity
 
 Frozen support universeでは:
 
@@ -64,7 +64,7 @@ implementation = NOT AUTHORIZED
 
 これは`pending`をauthoritative RAW identityから除外してよいことや、全Bao到達状態でcollisionが存在しないことを意味しない。
 
-### `PBAI-C007-v1` — depth-preserving same-key TT replacement
+### `PBAI-C007-v1` — depthを保持するsame-key TT replacement
 
 Canonical support:
 
@@ -81,7 +81,7 @@ Frozen support floor `32 events / 16 roots`を満たさなかった。
 NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
 ```
 
-### `PBAI-C008-v1` — root-best-flip-triggered two-move confirmation re-search
+### `PBAI-C008-v1` — root best flipを契機とするtwo-move confirmation re-search
 
 Predevelopment supportは`SUPPORT-PASS`。Feature-off exact equivalenceもPASSした後、development-only 71 eligible rootsで凍結gateを評価した。
 
@@ -105,7 +105,7 @@ validation contract freeze = NOT AUTHORIZED
 
 D4 engineering referenceへのagreement改善は観測されたが、higher-resource searchをgame-theoretic truthとは扱わない。また、quality gateの改善を理由に凍結済みcost gateを緩和しない。
 
-### `PBAI-C009-v1` — exact single-reply forcing extension
+### `PBAI-C009-v1` — exact single-reply forcing extensionの評価
 
 Predevelopment supportは`SUPPORT-PASS`、feature-off exact equivalenceは256/256 comparisons一致でPASSした。Canonical development run `33504482668`では128 eligible rootsと64 negative controlsを独立再構成した。
 
@@ -131,7 +131,7 @@ validation contract freeze = NOT AUTHORIZED
 
 とする。Negative-control gateに加えてprimary benefit gateも2項目とも未達である。結果確認後にcontrol定義、trigger、population、thresholdを変更してsame-version救済しない。
 
-## 4. Independent verification
+## 4. 独立検証
 
 Mandatory independent reconstructionは、dynamic support / developmentを実施した各candidateでproduction runnerとは別実装として要求した。
 
@@ -151,7 +151,7 @@ deterministic core SHA-256 = b2bd6806c75307a49999c29743e919fe67a44b368e6d81e6e8a
 
 最初のC009 development workflow attempt `33504249360`は`node --check`でsyntax errorを検出してdevelopment seedsへ到達する前に停止した。修正は欠落した閉じ括弧1箇所だけであり、candidate mechanism、population、threshold、decision mappingは変更していない。
 
-## 5. Validation / holdout firewall
+## 5. Validation / holdoutの情報遮断
 
 初期fresh splitのうち実際に開いたのはdevelopment decision roots `424xxxxx`までである。
 
@@ -164,7 +164,7 @@ operational validation / holdout = NOT ACCESSED
 
 C008、C009ともvalidation contract freeze authorizationに到達しなかったため、PBAI-P2-F / Gの実行条件は成立しなかった。未使用のvalidation / holdoutを「結果0」と解釈しない。
 
-## 6. Public source / release state
+## 6. 公開sourceとreleaseの状態
 
 Candidate implementationはisolated development branchesでfeature-gated / default-offとしてのみmaterializeした。失敗candidateの`public/ai.js`差分をpublic `main`へ採用しない。
 
@@ -179,7 +179,7 @@ formal ADOPT = none
 
 したがってpublic lineageは開始時と同じ`AI-GEN2`である。
 
-## 7. AI generation decision
+## 7. AI世代の判断
 
 `AI-GEN3` promotionにはformal `ADOPT`だけでなくfresh validation、protected release holdout、actual public-default deploymentが必要である。PBAI-P2ではいずれも成立していない。
 
@@ -189,7 +189,7 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 
 Research Generation 3の番号とAI generation番号には対応関係を持たせない。
 
-## 8. Program closure boundary
+## 8. Programを閉じる境界
 
 PBAI-P2 initial inventory `PBAI-C006-v1..PBAI-C009-v1`は全件closedである。Initial inventory外candidateの追加は規則上可能だったが、Program outcome確認後に新candidateを追加するoutcome-independentな事前根拠はfreezeされていない。したがって、今回の結果を材料にC010等を発明してProgramを延長しない。
 

@@ -1,10 +1,10 @@
 # PBAI-P1 最終報告
 
-Date: 2026-08-26  
-Program: `PBAI-P1` — Generation-1 Evidence-Informed Public Bao AI Improvement Program 1  
-Scientific evidence cutoff: `2db7c4d65771066e914f32cbc4116fcc3e9e386a`  
-Frozen baseline: `AI-GEN2-BASELINE-2026-08-26-v1`  
-Frozen global gates: `PBAI-C-GLOBAL-GATES-2026-08-26-v1`  
+更新日: 2026-08-26
+Program: `PBAI-P1` — `Generation-1 Evidence-Informed Public Bao AI Improvement Program 1`（正式Program名）
+研究証拠cutoff: `2db7c4d65771066e914f32cbc4116fcc3e9e386a`
+固定済みbaseline: `AI-GEN2-BASELINE-2026-08-26-v1`
+固定済みglobal gate: `PBAI-C-GLOBAL-GATES-2026-08-26-v1`
 最終状態: **PROGRAM COMPLETE / KEEP-AI-GEN2**
 
 ## 1. 工学上の最終判断
@@ -27,7 +27,7 @@ public AI code changed by PBAI-P1 = false
 
 ## 2. 各candidateの最終状態
 
-### PBAI-C001-v1
+### `PBAI-C001-v1` — 最終判断
 
 ```text
 family = phase/search-aware root search routing
@@ -39,7 +39,7 @@ PR #61 = CLOSED WITHOUT MERGE
 
 探索workloadが大きく減少していても、品質条件のFAILを理由に後から救済することはしていません。
 
-### PBAI-C002-v1
+### `PBAI-C002-v1` — 最終判断
 
 ```text
 family = TM-S2-C03-aware move ordering
@@ -53,7 +53,7 @@ PR #55 = CLOSED WITHOUT MERGE
 
 `TM-S2-C03 = CONFIRMED`という既存の科学的判断は変更しません。
 
-### PBAI-C003-v1
+### `PBAI-C003-v1` — 最終判断
 
 ```text
 family = restricted exact-oracle lookup plumbing
@@ -67,7 +67,7 @@ Practical reachabilityを測定する前提として要求したstrict RAW ident
 
 そのためC003は0-hit resultを生成しておらず、restricted-endgame研究やORISCの科学的判断も変更していません。
 
-### PBAI-C004-v1
+### `PBAI-C004-v1` — 最終判断
 
 ```text
 family = search-instability-aware root ordering
@@ -81,7 +81,7 @@ PR #58 = CLOSED WITHOUT MERGE
 
 Position Complexity / Difficulty Study 1の正式判断は引き続き`INCONCLUSIVE`です。
 
-### PBAI-C005
+### `PBAI-C005` — 最終判断
 
 ```text
 family = evaluation semantics sanitation
@@ -98,7 +98,7 @@ Canonical audit:
 - `C005_PRODUCTION_SURFACE_AUDIT.md`
 - `candidates/PBAI-C005-production-surface-audit-result.json`
 
-## 3. 最終inventory
+## 3. Candidate一覧の最終状態
 
 ```text
 original candidate inventory = 5
@@ -143,7 +143,7 @@ unvalidated symmetry/canonicalization = NOT AUTHORIZED
 
 Research Generation 2は別個のpure-research trackであり、本Programへ途中から追加していません。
 
-## 5. 維持されたbaseline
+## 5. 維持したbaseline
 
 公開AIの比較基準として維持されるのは次です。
 
@@ -163,7 +163,7 @@ SHA-256 = 2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e
 
 PBAI-P1で作られたcandidate codeは、公開defaultへ採用されていません。
 
-## 6. releaseとAI世代の判断
+## 6. 公開とAI世代の判断
 
 validation-ready / release-candidate statusまで到達したcandidateが存在しなかったため、release sequenceには入りませんでした。
 
@@ -196,7 +196,7 @@ PBAI-P1は終了済みです。将来のAI Engineeringで、PBAI-P1のcandidate 
 
 Research Generation 2を将来のAI Engineeringへ利用することは可能ですが、その場合は**新しいProgramが新しいevidence cutoffを明示的に設定する必要があります**。Research Generation 2の結果をPBAI-P1へ遡及的に追加することはありません。
 
-## 8. canonical final state
+## 8. 正式な最終状態
 
 ```text
 PBAI-P1 = COMPLETE
@@ -208,4 +208,4 @@ public AI code changed by PBAI-P1 = false
 Research Generation 2 evidence included = false
 ```
 
-このcode blockに示したcanonical tokenと状態が、PBAI-P1の最終工学状態です。
+このcode blockに示したcanonical tokenと状態が、PBAI-P1の正式な最終工学状態です。

@@ -1,18 +1,22 @@
-# Public Bao AI Improvement Program 2 (`PBAI-P2`)
+# 公開Bao AI改善Program 2（`PBAI-P2`）
 
-**正式題目:** Generation-2 Evidence-Informed Public Bao AI Improvement Program 2  
-**日本語表記:** 第二世代研究の確定済み成果のみを用いたPublic Bao AI品質向上プログラム — Research Generation 2 evidenceからの新規engineering hypothesis構築、prospective candidate評価、独立validation、protected release holdoutによるAI-GEN3採用可否判定  
-**開始日:** 2026-09-01  
-**完了日:** 2026-09-01  
-**Status:** **COMPLETE / KEEP-AI-GEN2**
+正式題目: `Generation-2 Evidence-Informed Public Bao AI Improvement Program 2`
+実施日: 2026-09-01
+状態: **`COMPLETE / KEEP-AI-GEN2`**
 
-## 1. Program identity / final outcome
+`PBAI-P2`は、完了済みResearch Generation 2の確定済み証拠と不確実性だけを入力として、公開Bao AIの改善候補を評価した独立Programです。`PBAI-P1`の再開・延長ではありません。
 
-`PBAI-P2`は、完了済みResearch Generation 2の科学的正本と明示された不確実性・失敗境界だけをscientific/evidence inputとして、public Bao AIに実質的な改善をもたらすengineering mechanismが存在するかをprospectively評価した独立AI Engineering Programである。
+4 candidateを事前に固定したengineering gateで評価しましたが、validationへ進む候補はありませんでした。そのため公開系統`AI-GEN2`を維持し、Programを完了しています。
 
-PBAI-P1の再開・救済・延長ではない。PBAI-P1のResearch Generation 1 scientific evidenceを新candidateのscientific premiseとして再利用していない。
+## 最初に読む
 
-最終判断:
+1. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md) — Program全体の最終判断
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態
+3. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — candidate台帳
+4. [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 判断とno-rescueの記録
+5. [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md) — 公開・release状態
+
+## Programの結論
 
 ```text
 PBAI-P2 = COMPLETE
@@ -25,87 +29,64 @@ release holdout executions = 0
 public deployments = 0
 ```
 
-## 2. Immutable scientific evidence cutoff
+`KEEP-AI-GEN2`は、採用条件を満たす候補がない場合に事前に許可された正式結果です。結果確認後にthreshold、seed、control、subgroup、mechanismを変更して候補を救済していません。
+
+## 使用した証拠とhard firewall
 
 ```text
 G2 scientific evidence cutoff
 = cd200b85c1eb24aa4419bd5a9573552f3682f00d
 
-immediate child
-= c5e33524c32b9ce9994760bababa08a85b6570d8
-= Add Research Generation 3 program plan
+baseline
+= AI-GEN2-BASELINE-2026-09-01-v1
+
+global gates
+= PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
+
+Research Generation 3 influence
+= ZERO
 ```
 
-## 3. Research Generation 3 hard firewall
+Research Generation 3のresult、diagnostic、measurement、hypothesis、candidate ideaは、PBAI-P2のcandidate設計・selection・threshold・validation・interpretationへ使用していません。詳細は[`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)を参照してください。
 
-```text
-Research Generation 3 influence on PBAI-P2 = ZERO
-```
+## Candidateの最終状態
 
-Research Generation 3のscientific evidence、diagnostic、measurement、hypothesis、candidate mechanism、documentation-derived ideaをcandidate設計、selection、threshold、validation、interpretation、release decisionへ使用していない。
-
-Canonical firewall: [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
-
-## 4. Baseline / public lineage
-
-Program開始時およびclosure audit時のremote `main`:
-
-```text
-2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972
-```
-
-Frozen comparator:
-
-```text
-AI-GEN2-BASELINE-2026-09-01-v1
-```
-
-Current public lineage remains:
-
-```text
-AI-GEN2
-```
-
-Candidate implementationはisolated development branchだけでdefault-offとしてmaterializeし、失敗candidateの`public/ai.js`差分はpublic `main`へ採用しない。
-
-## 5. Stage closure
-
-| Stage ID | 役割 | Final state |
+| Candidate | 最終状態 | 判断理由の要約 |
 | --- | --- | --- |
-| `PBAI-P2-A` | G2 evidence audit / G3 firewall | COMPLETE |
-| `PBAI-P2-B` | public AI audit / baseline re-freeze | COMPLETE |
-| `PBAI-P2-C` | global gates / fresh split / inventory freeze | COMPLETE |
-| `PBAI-P2-D` | candidate-specific support / exact contract | COMPLETE |
-| `PBAI-P2-E` | isolated development / development-only evaluation | COMPLETE |
-| `PBAI-P2-F` | fresh independent validation | NOT-AUTHORIZED / NOT-EXECUTED |
-| `PBAI-P2-G` | protected release holdout / ADOPT decision | NOT-AUTHORIZED / NOT-EXECUTED |
-| `PBAI-P2-H` | public-default deployment / AI-GEN3 promotion | NO DEPLOYMENT |
+| `PBAI-C006-v1` | `WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED` | frozen support universeに、実装を正当化するidentity defectが見つかりませんでした。 |
+| `PBAI-C007-v1` | `NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION` | same-key TT eventのsupport floorを満たしませんでした。 |
+| `PBAI-C008-v1` | `DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED` | quality / safety gateはPASSしましたが、cost gateを2件ともFAILしました。 |
+| `PBAI-C009-v1` | `TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED` | negative-control gateとprimary benefit gateをFAILしました。 |
 
-## 6. Final candidate inventory
+### `PBAI-C006-v1` — 判断
 
 ```text
-PBAI-C006-v1
-= WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
-
-PBAI-C007-v1
-= NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
-
-PBAI-C008-v1
-= DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED
-= quality/safety gates PASS
-= cost gates FAIL
-
-PBAI-C009-v1
-= TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED
-= negative-control gate FAIL
-= primary benefit gates FAIL
+semantic unique RAW states = 389148
+semantic collision witnesses = 0
+natural reachable collision witnesses = 0
+Worker stale-identity witnesses = 0
+local evaluation-cache collision events = 0
+local TT collision events = 0
+implementation = NOT AUTHORIZED
 ```
 
-詳細: [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
+この結果は、`pending`をRAW identityから除外してよいことや、全Bao到達状態にcollisionが存在しないことを意味しません。
 
-## 7. C008 result boundary
+### `PBAI-C007-v1` — 判断
 
-C008はpredevelopment supportとfeature-off equivalenceを通過し、71 development eligible rootsでquality/safety metricsを改善したが、凍結済みcost gateを満たさなかった。
+```text
+same-key TT store events = 16512
+incoming shallower-than-existing overwrite events = 0
+roots with such event = 0
+later potential depth-benefit hits = 0
+required support floor = 32 events / 16 roots
+```
+
+対象事象が不足したため、candidate実装を作らず`NON-ESTIMABLE-HOLD`で閉じました。
+
+### `PBAI-C008-v1` — 判断
+
+predevelopment supportとfeature-off exact equivalenceを通過し、71 development eligible rootsで評価しました。quality / safety metricsはPASSしましたが、計算costが固定上限を超えました。
 
 ```text
 TopSet agreement delta = +0.2957746478873239 PASS
@@ -114,16 +95,11 @@ median node ratio = 2.1004464285714284 FAIL <= 1.60
 p95 node ratio = 3.079245283018868 FAIL <= 2.50
 ```
 
-```text
-DEVELOPMENT-BENEFIT-FAIL-HOLD
-validation = NOT AUTHORIZED
-```
+quality signalを理由にcost thresholdを緩和していません。
 
-Positive quality signalを理由にpost-outcomeでcost thresholdを緩和しない。
+### `PBAI-C009-v1` — 判断
 
-## 8. C009 result boundary
-
-C009はpredevelopment supportと256-comparison feature-off exact equivalenceを通過した。Developmentでは128 eligible roots / 64 negative controlsをproduction / independentの2実装で再構成した。
+predevelopment supportと256-comparison feature-off exact equivalenceを通過し、128 eligible rootsと64 negative controlsをproduction / independentの2実装で再構築しました。
 
 ```text
 TopSet agreement delta = +0.015625 FAIL >= +0.03
@@ -136,14 +112,22 @@ negative-control failures = 18 FAIL = 0
 technical failures = 0 PASS
 ```
 
-Frozen mapping:
+technical failureが0でも、negative controlとbenefitの必須条件が未達のためvalidationへ進めませんでした。
 
-```text
-TECHNICAL-INVALID-REJECT-OR-HOLD
-validation = NOT AUTHORIZED
-```
+## Stageの最終状態
 
-## 9. Protected split at closure
+| Stage ID | 役割 | 最終状態 |
+| --- | --- | --- |
+| `PBAI-P2-A` | G2 evidence監査とG3 firewall | `COMPLETE` |
+| `PBAI-P2-B` | 公開AI監査とbaseline再固定 | `COMPLETE` |
+| `PBAI-P2-C` | global gate・fresh split・inventory固定 | `COMPLETE` |
+| `PBAI-P2-D` | candidate-specific supportとexact contract | `COMPLETE` |
+| `PBAI-P2-E` | isolated development評価 | `COMPLETE` |
+| `PBAI-P2-F` | fresh independent validation | `NOT-AUTHORIZED / NOT-EXECUTED` |
+| `PBAI-P2-G` | protected release holdoutと`ADOPT`判断 | `NOT-AUTHORIZED / NOT-EXECUTED` |
+| `PBAI-P2-H` | public-default deploymentと`AI-GEN3`昇格 | `NO DEPLOYMENT` |
+
+## 保護されたsplit
 
 ```text
 development decision roots 424xxxxx = ACCESSED under frozen development contracts
@@ -151,37 +135,16 @@ validation decision roots 425xxxxx = NOT ACCESSED
 release holdout decision roots 426xxxxx = NOT ACCESSED
 ```
 
-Validation / holdoutを見ていないため、それらをnegative/null resultとは扱わない。
+validation / holdoutを見ていないため、それらをnegativeまたはnull resultとして扱いません。
 
-## 10. No-rescue closure
+## 正本と再現資料
 
-Initial inventory `PBAI-C006-v1..PBAI-C009-v1`は全件closed。結果後にthreshold緩和、seed追加、negative-control再定義、subgroup追加、mechanism微修正でsame-version救済しない。
+- [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 世代間の証拠分離
+- [`GENERATION_2_EVIDENCE_AUDIT.md`](GENERATION_2_EVIDENCE_AUDIT.md) — 使用したG2証拠
+- [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2` baseline
+- [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — 評価手順
+- [`candidates/PBAI-C008-v1-development-result.json`](candidates/PBAI-C008-v1-development-result.json) — C008 result
+- [`candidates/PBAI-C009-v1-development-result.json`](candidates/PBAI-C009-v1-development-result.json) — C009 result
+- [`RESUME_HERE.md`](RESUME_HERE.md) — closure後の引き継ぎ
 
-Initial inventory外candidateを今回のoutcomeから新規発明してPBAI-P2を延長しない。将来のAI改善は新しいAI Engineering Programとしてevidence cutoff、baseline、fresh split、candidate inventory、acceptance gateをprospectively freezeして開始する。
-
-## 11. Canonical documents
-
-- [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
-- [`RESUME_HERE.md`](RESUME_HERE.md)
-- [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
-- [`GENERATION_2_EVIDENCE_AUDIT.md`](GENERATION_2_EVIDENCE_AUDIT.md)
-- [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
-- [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
-- [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
-- [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
-- [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)
-- [`candidates/PBAI-C008-v1-feature-off-equivalence-spec.json`](candidates/PBAI-C008-v1-feature-off-equivalence-spec.json)
-- [`candidates/PBAI-C008-v1-feature-off-equivalence-result.json`](candidates/PBAI-C008-v1-feature-off-equivalence-result.json)
-- [`candidates/PBAI-C008-v1-development-measurement-spec.json`](candidates/PBAI-C008-v1-development-measurement-spec.json)
-- [`candidates/PBAI-C008-v1-development-result.json`](candidates/PBAI-C008-v1-development-result.json)
-- [`candidates/PBAI-C009-v1-feature-off-equivalence-spec.json`](candidates/PBAI-C009-v1-feature-off-equivalence-spec.json)
-- [`candidates/PBAI-C009-v1-feature-off-equivalence-result.json`](candidates/PBAI-C009-v1-feature-off-equivalence-result.json)
-- [`candidates/PBAI-C009-v1-development-measurement-spec.json`](candidates/PBAI-C009-v1-development-measurement-spec.json)
-- [`candidates/PBAI-C009-v1-development-result.json`](candidates/PBAI-C009-v1-development-result.json)
-- [`checkpoints/2026-09-01-c008-feature-off-equivalence-pass.md`](checkpoints/2026-09-01-c008-feature-off-equivalence-pass.md)
-- [`checkpoints/2026-09-01-c009-feature-off-equivalence-pass.md`](checkpoints/2026-09-01-c009-feature-off-equivalence-pass.md)
-
-```text
-FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
-```
+Initial inventory `PBAI-C006-v1..PBAI-C009-v1`は全件closedです。将来のAI改善はPBAI-P2を延長せず、新しいProgram ID、evidence cutoff、baseline、fresh split、candidate inventory、acceptance gateを事前に固定して開始します。
