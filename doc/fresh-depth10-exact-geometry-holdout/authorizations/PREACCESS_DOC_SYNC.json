@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G3-11",
+  "studyId": "FDEGHV-STUDY1",
+  "authorizationDecision": "PREACCESS-DOC-SYNC-AUTHORIZED",
+  "scientificInferenceAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "stage0ReexecutionAuthorized": false,
+  "allowedWrite": [
+    "doc/FUTURE_RESEARCH_AGENDA.md"
+  ],
+  "historicalProgramPlanModificationAuthorized": false,
+  "reason": "Repair post-artifact documentation synchronization after Stage 0 technical controls passed and the original workflow failed only in the documentation-sync step."
+}
