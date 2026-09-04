@@ -44,14 +44,14 @@ formal endpointは6つ。
 
 - root legal width
 - cumulative tree occurrence
-- global distinct RAW states
+- global distinct RAW stateの数
 - duplicate-transition fraction
-- cumulative tree/RAW ratio
+- cumulative tree / RAW ratio
 - unit-width occupancy fraction
 
 pre/post差とevent/control差はintegerまたはexact reduced rationalで保持し、float toleranceや結果後のmagnitude thresholdを使わない。
 
-## Fresh population
+## fresh population（新規評価対象）
 
 Stage 1:
 
@@ -75,7 +75,7 @@ Stage 2:
 
 - event-centered sparse sampling
 - bounded reconstruction数の明示上限
-- per-root / per-stage resource ceilings
+- root別 / Stage別のresource ceiling
 - `relay-limit`の明示検出
 - fail-closed
 - artifact-first recovery
@@ -85,7 +85,7 @@ Stage 2:
 - partial geometry values
 - transition direction
 - candidate event
-- positive/negative scientific interpretation
+- positive / negativeなscientific interpretation
 
 required depth-5 reconstruction中に`relay-limit`へ到達した場合、Stageを`TECHNICAL-INVALID`として閉じ、root replacementやsame-evidence rerunを行わない。
 

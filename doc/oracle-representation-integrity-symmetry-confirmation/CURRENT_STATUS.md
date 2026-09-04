@@ -1,9 +1,15 @@
-# CURRENT_STATUS — ORISC-STUDY1
+# CURRENT_STATUS — ORISC-STUDY1 （日本語の要点）
+
+## 日本語での要点
+
+Axis AはORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED、Axis BはNOT-AUTHORIZED-NOT-EXECUTEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-25  
 Status: **COMPLETED / AXIS A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / AXIS B `NOT-AUTHORIZED-NOT-EXECUTED`**
 
-## Repository state
+## Repository state （リポジトリ状態）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -15,9 +21,9 @@ studyId = ORISC-STUDY1
 
 Repository integration through PR `#48` was explicitly authorized by the user on 2026-08-25 after final documentation and CI review. The PR / `main` history is the authoritative record of the resulting merge state; the scientific closure recorded below does not depend on branch-lifecycle metadata.
 
-## Immutable upstream scientific state
+## Immutable upstream scientific state （日本語の要点）
 
-### REWR-STUDY1
+### REWR-STUDY1 （日本語の要点）
 
 ```text
 formalDecision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
@@ -31,7 +37,7 @@ solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c1
 
 No REWR state/edge/value/DTF/optimal-move claim or formal decision is changed.
 
-### SIP-STUDY1
+### SIP-STUDY1 （日本語の要点）
 
 ```text
 studyStatus = COMPLETED
@@ -45,7 +51,7 @@ corrected v2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 No SIP candidate is rescued, validated, or rejected by ORISC-STUDY1.
 
-## Stage 0A — complete
+## Stage 0A — complete （Stageの記録）
 
 The original REWR scientific workflow artifact was recovered read-only. Original production and independent verification rows were exactly equal, all eight raw states represented 64 seeds, and the three terminal keys later implicated in repository-row reconstruction contained `pending=[1,0]` in both original workflow files.
 
@@ -57,7 +63,7 @@ UNRESOLVED-PROVENANCE-GAP
 
 Stage 0A generated no ORISC formal decision.
 
-## Stage 0B — complete
+## Stage 0B — complete （Stageの記録）
 
 Before Stage 1 outcome generation, the following were frozen:
 
@@ -81,7 +87,7 @@ Final Stage 1 spec identity:
 
 A pre-authorization spec revision only added the already-defined formal workflow byte hash. It changed no endpoint, population, identity field, gate, candidate, seed block, threshold or decision rule.
 
-## Stage 1 — formal Axis A complete
+## Stage 1 — formal Axis A complete （Stageの記録）
 
 Authorization:
 
@@ -134,7 +140,7 @@ identity-field difference = pending only
 
 Because repository reconstruction was a mandatory part of `ORISC-C00-IDENTITY`, `A-G11=FAIL`. Because production and independent implementations agreed on all failure locations and gate classifications, `A-G12=PASS`; the result is therefore `NOT-CONFIRMED`, not `NON-ESTIMABLE`.
 
-## Axis B — closed without execution
+## Axis B — closed without execution （日本語の要点）
 
 The conditional Stage 2 contract required all of:
 
@@ -157,7 +163,7 @@ candidate non-estimable decisions = 0
 
 No Stage 2 authorization or result was created.
 
-## Stage 3 / downstream contract
+## Stage 3 / downstream contract （Stageの記録）
 
 ```text
 validated symmetry transformation set = []
@@ -170,7 +176,7 @@ State Space / Game Tree Complexity may proceed = RAW-ONLY
 
 A future study must not interpret the ORISC result as evidence that the frozen nontrivial symmetry candidates are false. They were not formally evaluated.
 
-## Post-closure execution lock
+## Post-closure execution lock （結論）
 
 During final documentation audit, GitHub PR `pull_request.paths` semantics caused a documentation-only PR synchronization to trigger the already-consumed Stage 1 formal workflow once more. The duplicate run was:
 
@@ -199,7 +205,7 @@ To enforce the closure firewall, all four ORISC GitHub Actions workflows were su
 
 Current workflow-file bytes are therefore intentionally post-closure archival state and are not expected to equal the frozen historical executable workflow hash.
 
-## Canonical conclusion documents
+## Canonical conclusion documents （結論）
 
 - `STUDY_1_OVERVIEW.md`
 - `STUDY_1_FINAL_REPORT.md`

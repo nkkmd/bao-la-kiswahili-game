@@ -1,8 +1,8 @@
-# LGTGGC-STUDY1 — Reproducibility Index
+# LGTGGC-STUDY1 — 再現性索引
 
-Date: 2026-09-04
+日付: 2026-09-04
 
-## Study identity
+## Study identity（研究識別情報）
 
 ```text
 Study = LGTGGC-STUDY1
@@ -12,7 +12,7 @@ Source main HEAD = 5597ae696d9eb76d8395e114cdb4f83af1138a3d
 Research branch = research/g3-12-local-game-tree-geometry-generalization-counterexample
 ```
 
-## Canonical contract documents
+## canonical contract文書
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
@@ -23,11 +23,11 @@ Research branch = research/g3-12-local-game-tree-geometry-generalization-counter
 - `../research-program-decisions/2026-09-04-post-g3-12-stage0-stage1-authorization-review.md`
 - `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
 
-Historical base protocol/spec retain the original pre-Stage0 `P2-CAPTURE-FIRST` provenance. Active scientific execution uses the pre-fresh versioned amendment `P2-MAX-CAPTURE`; the historical files are not retroactively rewritten.
+historical base protocol / specには、Stage 0前の`P2-CAPTURE-FIRST`のprovenanceを残している。実際のscientific executionではfresh evidence前にversioned amendmentとして固定した`P2-MAX-CAPTURE`を使用しており、historical fileを遡及的には書き換えていない。
 
-## Bound source identities for Stage 1
+## Stage 1にbindしたsource identity
 
-The Stage 1 authorization bound 24 files. Core scientific implementation bindings include:
+Stage 1 authorizationは24ファイルをbindした。主要なscientific implementation bindingは次のとおりである。
 
 ```text
 public/engine.js = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -56,7 +56,7 @@ STUDY_1_TECHNICAL_AMENDMENT_V2.json = dd55ca2306b930e82f2936ed7ee4a5539d4d9e4e
 STAGE_1_DEVELOPMENT_SPEC.json = f8e438dab42270ba86e09580e7b6064e5acf253e
 ```
 
-## Stage 0 canonical technical result
+## Stage 0のcanonical technical result
 
 ```text
 Active Stage 0 = LGTGGC-S0-TECHNICAL-2026-09-04-v3
@@ -66,40 +66,40 @@ technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e
 stage disposition = STAGE0-PASS
 ```
 
-Stage 0 V1/V2 are historical technical-invalid attempts and are not scientific evidence.
+Stage 0 V1 / V2はhistoricalなtechnical-invalid attemptであり、scientific evidenceではない。
 
-## Non-adopted technical diagnostic Actions history
+## 採用しなかったtechnical diagnostic Actionsの履歴
 
-GitHub Actions history also retains two later technical runs from a temporary, non-adopted `CAPTURE-FIRST` execution path:
+GitHub Actionsの履歴には、採用しなかった一時的な`CAPTURE-FIRST`実行経路による、後続のtechnical run 2件も残っている。
 
 ```text
 run 33847428204 = LGTGGC Stage 0 Technical / failure / NON-ADOPTED TECHNICAL DIAGNOSTIC
 run 33847684538 = LGTGGC Stage 0 Technical V4 / success / NON-ADOPTED TECHNICAL DIAGNOSTIC
 ```
 
-These runs are **not** canonical Stage 0 revisions and are not scientific readiness evidence. They were produced after the active pre-fresh source-policy amendment had already established `P1-UNIFORM-LEGAL / P2-MAX-CAPTURE`. No Stage 1 or Stage 2 scientific seed block was accessed by these technical diagnostics.
+これらのrunはcanonical Stage 0 revisionではなく、scientific readiness evidenceでもない。これらはfresh evidence前のsource-policy amendmentが`P1-UNIFORM-LEGAL / P2-MAX-CAPTURE`を確立した後に生成された。technical diagnosticではStage 1 / Stage 2のscientific seed blockへアクセスしていない。
 
-All workflow/authorization/result files belonging to this non-adopted path were removed from the active branch tree before the first-fresh Stage 1 execution. The active Stage 0 production/independent helpers were restored to the pre-contamination blobs bound by Stage 1 authorization, and the active tree was restored to the pre-contamination tree before the Stage 1 execution control plane was added. The two historical Actions entries remain visible only as technical provenance and must not be interpreted as canonical V1/V4 evidence.
+この非採用経路に属するworkflow / authorization / result fileは、最初のfresh Stage 1実行前にactive branch treeから除去した。active Stage 0のproduction / independent helperはStage 1 authorizationがbindしたpre-contamination blobへ戻し、active treeもStage 1 execution control planeの追加前にpre-contamination treeへ復元した。2件のhistorical Actions entryはtechnical provenanceとしてのみ残っており、canonical V1 / V4 evidenceと解釈してはならない。
 
-## Stage 1 authorization and execution
+## Stage 1のauthorizationと実行
 
-Authorization commit:
+実行を承認したcommit:
 
 `0522dfd245b9702fa9e0229af95caccf9a50e680`
 
-Execution token commit:
+execution tokenを記録したcommit:
 
 `9cd7e40421d6a6e19518c67770393a7832b6f569`
 
-Exactly-once trigger commit:
+exactly-once triggerを記録したcommit:
 
 `013f3fd2f859ef1758674b6a53ac5a05cd14efc8`
 
-Workflow:
+workflow:
 
 `.github/workflows/lgtggc-stage1-development-execute.yml`
 
-Execution:
+実行記録:
 
 ```text
 Actions run = 33848876682
@@ -109,7 +109,7 @@ scientific execution count consumed = 1
 same-evidence rerun = NOT AUTHORIZED
 ```
 
-## Durable lease artifact
+## durable lease artifactの記録
 
 ```text
 artifact ID = 9927555827
@@ -117,9 +117,9 @@ name = lgtggc-stage1-lease-33848876682
 ZIP SHA-256 = 927759cb9f521a484479efec3a54df0db6f22f7262a936d2ee742d5a6a313231
 ```
 
-The lease artifact was uploaded before first Stage 1 fresh access.
+lease artifactは、Stage 1で最初にfresh evidenceへアクセスする前にuploadした。
 
-## Stage 1 result artifact
+## Stage 1のresult artifact
 
 ```text
 artifact ID = 9927866205
@@ -127,20 +127,20 @@ name = lgtggc-stage1-result-33848876682
 ZIP SHA-256 = b93e5401c3191979b35252eaa2003df0e8511db2bbfc1325396d298557b75cdb
 ```
 
-Downloaded artifact file identities:
+downloadしたartifact fileのidentityは次のとおりである。
 
 ```text
 sfcdf.json SHA-256 = 2939007b9e95bc545ea29b048c9f7f35d230621252739cd3735ea1f0e3a63218
 silgm.json SHA-256 = b0c9947f6cb16ba9c7d615ec6c5c1d28fefdd9579bb821abd273b1ff9b61148d
 ```
 
-Repository provenance summary:
+repository内のprovenance summary:
 
 `results/stage-1/STAGE_1_EXECUTION_RECORD.json`
 
-The immutable Actions artifact remains authoritative for exact Stage 1 files. No scientific recomputation was used to create the repository execution record.
+exactなStage 1 fileについては、immutable Actions artifactを正本とする。repositoryのexecution record作成時にはscientific recomputationを行っていない。
 
-## SFCDF development core
+## SFCDF development coreの記録
 
 ```text
 stageDisposition = STAGE1-PASS
@@ -152,9 +152,9 @@ selectionCoreSha256 = a49491bd973ba2ef8807b09e88b17ba929cd97869add1c8f49dc1521d0
 measurementCoreSha256 = 59667e24c250e74dc94746311ba23a448b0947fc40b3fe53e424cdf0054f3f3f
 ```
 
-No effect-direction or p-value was computed.
+effect directionとp-valueは計算していない。
 
-## SILGM failure identity
+## SILGM failureのidentity
 
 ```text
 stageDisposition = STAGE1-TECHNICAL-INVALID
@@ -163,15 +163,15 @@ production helper blob = 9712e897540b54ff5fe3aa6acd997d286b09331d
 independent helper blob = 0bd60c96e5abfce9d1c99b474709177d52509138
 ```
 
-Independent static audit:
+独立したstatic audit:
 
 `STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
 
-Audit disposition:
+auditの最終判定:
 
 `INDEPENDENT-AUDIT-PASS / STAGE1-TECHNICAL-INVALID-CONFIRMED`
 
-## GCLD Stage 1
+## GCLD Stage 1の状態
 
 ```text
 execution = NOT EXECUTED / workflow skipped
@@ -179,9 +179,9 @@ seed range 32313001..32313384 = UNREAD
 artifact = NONE
 ```
 
-## Stage 2
+## Stage 2の状態
 
-Post-Stage1 authorization decision:
+Stage 1後のauthorization decision:
 
 `LGTGGC-STAGE2-NOT-AUTHORIZED`
 
@@ -192,9 +192,9 @@ Stage 2 SILGM seeds = UNREAD
 Stage 2 GCLD seeds = UNREAD
 ```
 
-No Stage 2 workflow run or result artifact exists.
+Stage 2のworkflow runおよびresult artifactは存在しない。
 
-## Protected evidence
+## 保護対象のevidence
 
 ```text
 G3-11 depth-10 rerun = false
@@ -206,11 +206,11 @@ formal generalization decisions = none
 formal counterexample decisions = none
 ```
 
-## Final central-document synchronization provenance
+## 中央文書を最終同期したprovenance
 
-Central current-facing documentation was synchronized by technical-only Actions run `33853805427`, which completed successfully and performed no scientific computation.
+current-facingな中央文書はtechnical-only Actions run `33853805427`で同期した。このrunは成功しており、scientific computationを行っていない。
 
-Three earlier control-plane attempts failed before any job was created:
+それ以前のcontrol-plane attempt 3件は、jobが作成される前に失敗した。
 
 ```text
 33853619855 = failure / jobs 0
@@ -219,9 +219,9 @@ Three earlier control-plane attempts failed before any job was created:
 33853805427 = success / documentation sync only
 ```
 
-The three failed attempts modified no current-facing document through Actions execution and accessed no scientific seed. The one-time synchronization workflow, helper script, and trigger were removed from the final active branch tree after the successful sync.
+失敗した3件はActions executionを通じてcurrent-facing documentを変更しておらず、scientific seedにもアクセスしていない。one-time synchronization workflow、helper script、triggerは、同期成功後にfinal active branch treeから除去した。
 
-## Closure documents
+## closure文書
 
 - `STUDY_1_FINAL_REPORT.md`
 - `STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
@@ -230,4 +230,4 @@ The three failed attempts modified no current-facing document through Actions ex
 - `results/stage-1/STAGE_1_EXECUTION_RECORD.json`
 - `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
 
-Main integration completed by non-forced fast-forward: `COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false`. The research branch is retained for provenance.
+`main`への統合はnon-forced fast-forwardで完了した。記録は`COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false`である。research branchはprovenanceのため保持している。

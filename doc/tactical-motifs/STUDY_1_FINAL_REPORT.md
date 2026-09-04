@@ -1,12 +1,18 @@
-# Tactical Motifs / Tesuji Study 1 — Final Report
+# Tactical Motifs / Tesuji Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+fresh formal corpusでTM-S2-C03だけをCONFIRMEDとし、残る3候補はNOT-CONFIRMEDとした。machine-reproducible motifの結果であり、伝統的・教育的な手筋としてのhuman validationは別課題である。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 Date: 2026-08-15
 
-## Study title
+## Study title （日本語の要点）
 
 **Baoにおける手筋の発見と体系化 — 局面横断的 tactical motifs と transferable move principles の抽出・検証**
 
-## Final status
+## Final status （結論）
 
 **CLOSED / COMPLETE**
 
@@ -21,7 +27,7 @@ Final Stage 2 candidate decisions:
 
 Therefore Study 1 closes with **one machine-reproducible transferable tactical motif confirmed under the frozen operationalization**.
 
-## Research question
+## Research question （日本語の要点）
 
 The study asked whether Bao contains recurring position-transferrable move patterns that can be expressed independently of a particular opening sequence as:
 
@@ -31,7 +37,7 @@ position structure → move abstraction → reply/downstream structural conseque
 
 The target was not an opening joseki and not simply an AI best-move list. The study separated structural recurrence, move abstraction, response structure, and search value.
 
-## Independence from earlier studies
+## Independence from earlier studies （日本語の要点）
 
 The study treated the following completed studies as immutable historical work:
 
@@ -43,7 +49,7 @@ The study treated the following completed studies as immutable historical work:
 
 No formal decision, threshold, endpoint, population, classifier, or interpretation boundary from those studies was altered.
 
-## Stage 0 — technical audit
+## Stage 0 — technical audit （Stageの記録）
 
 Stage 0 validated the representations needed for prospective motif research:
 
@@ -55,7 +61,7 @@ Stage 0 validated the representations needed for prospective motif research:
 - exact D1/D2/D3 root candidate tables and tie-aware top sets reuse the already validated Position Complexity search diagnostic as instrumentation only;
 - no search-consistent principal variation is claimed.
 
-## Stage 1 — prospective exploratory discovery
+## Stage 1 — prospective exploratory discovery （Stageの記録）
 
 Stage ID:
 
@@ -98,7 +104,7 @@ Candidate-freeze SHA-256:
 
 `f257f6e49d8b6856cc1b75222cb455506359520fcbfc8fb361adc3ad2db4cb73`
 
-## Stage 2 — prospective formal confirmation
+## Stage 2 — prospective formal confirmation （Stageの記録）
 
 Stage ID:
 
@@ -114,7 +120,7 @@ Formal spec SHA-256:
 
 `83ad5916b2f70846b493d9a4a87191c4a9d4bf667e27dcc624d4fe04014838d8`
 
-### Fresh population
+### Fresh population （日本語の要点）
 
 - 3,072 games
 - seeds `22000001–22003072`
@@ -134,7 +140,7 @@ Verification identity hash:
 
 `bec870b1bff4abe1d95b87a473e26b08343ada7c8f4b2ca1de44eb0473086c4d`
 
-### Candidate-specific selection
+### Candidate-specific selection （日本語の要点）
 
 Selection was consequence-blind, value-blind, outcome-blind, deterministic, and no-replacement.
 
@@ -151,7 +157,7 @@ Selection hash:
 
 `81a8d3a44f5ded622e953633d255f57ac63db41cc82a8bca76f28d2c10b84722`
 
-### Formal measurement
+### Formal measurement （日本語の要点）
 
 Measurements exactly matched the selected sets: 6,605 total candidate-root measurements.
 
@@ -161,7 +167,7 @@ Measurement hash:
 
 `c912d0eb5e0d2a5957163b0bd1a17e85e4756ef693d1b3aef545aad65aaed2c9`
 
-### Formal endpoints and multiplicity
+### Formal endpoints and multiplicity （日本語の要点）
 
 Each of the four candidates had two co-primary endpoints:
 
@@ -175,7 +181,7 @@ Additional consistency gates were:
 - D3 at-or-above-state-median rate `>=0.60`;
 - D3 unique-worst rate `<=0.15`.
 
-## Final results
+## Final results （結論）
 
 | candidate | structural | D3 top set | D3 >= median | D3 unique-worst | decision |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -184,7 +190,7 @@ Additional consistency gates were:
 | C03 | 0.9788 | 0.7366 | 0.8695 | 0.0708 | CONFIRMED |
 | C04 | 0.4142 | 0.3152 | 0.5587 | 0.1959 | NOT-CONFIRMED |
 
-### Confirmed motif: TM-S2-C03
+### Confirmed motif: TM-S2-C03 （日本語の要点）
 
 Frozen machine definition:
 
@@ -206,11 +212,11 @@ On 1,272 fresh selected roots:
 
 Both co-primary endpoints satisfy the observed-rate threshold and Holm-adjusted significance criterion, and both D3 consistency gates pass.
 
-### Negative formal results are retained
+### Negative formal results are retained （結果）
 
 C01 reproduced its structural consequence but failed tactical-value confirmation. C02 and C04 failed both co-primary patterns and additional D3 consistency gates. They remain formal `NOT-CONFIRMED` results and are not renamed, merged, substituted, or extended.
 
-## Scientific interpretation
+## Scientific interpretation （解釈）
 
 The study supports a narrow but positive conclusion:
 
@@ -220,13 +226,13 @@ This is stronger than Stage 1 recurrence because the candidate definition, fresh
 
 However, the study does not establish that C03 is a traditional, expert-recognized, pedagogically important, or universally valid Bao tesuji. Those are separate external/human-validation questions.
 
-## Numerical integrity note
+## Numerical integrity note （日本語の要点）
 
 Pre-generation audit identified possible underflow in a naive exact-binomial implementation. Authorization was suspended before any Stage 2 scientific generation, the computation was hardened in log space, and validation/authorization were repeated without changing any scientific design quantity.
 
 For C03 structural success, the final probability is so small that conversion to IEEE-754 double yields `0`; high-precision recomputation gives approximately `5.79 × 10^-328`. This does not affect the formal rejection decision.
 
-## Reproducibility anchors
+## Reproducibility anchors （再現性）
 
 - Stage 1 spec: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
 - Stage 1 discovery artifact: `aab251ffa583204dc0ff5162f1f39c8a96323aac9182da051f29eaa080b8cd34`
@@ -240,6 +246,6 @@ For C03 structural success, the final probability is so small that conversion to
 
 See `REPRODUCIBILITY_INDEX.md` for the complete document/artifact map.
 
-## Closure
+## Closure （結論）
 
 Tactical Motifs / Tesuji Study 1 is complete. Any replication, external-validity extension, human/expert validation, or pedagogical study must be a new prospective independent study and must not change the formal decisions recorded here.

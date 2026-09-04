@@ -1,4 +1,4 @@
-# G3-01 / LGTGMF-STUDY1 — Current Status
+# G3-01 / LGTGMF-STUDY1 — 現在の状態
 
 Updated: 2026-08-31
 
@@ -20,7 +20,7 @@ Formal eligible measurement families = []
 Protected standard-root depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ
 ```
 
-## Frozen identities
+## 固定済みidentity
 
 ```text
 Stage 0 original = LGTGMF-S0-TECHNICAL-2026-08-31-v1
@@ -29,7 +29,7 @@ Stage 1 = LGTGMF-S1-DEVELOPMENT-2026-08-31-v1
 Stage 2 = LGTGMF-S2-FORMAL-2026-08-31-v1
 ```
 
-## Immutable upstream boundary
+## immutable upstream boundary （適用範囲と制限）
 
 ```text
 Research Generation 2 = CLOSED
@@ -43,13 +43,13 @@ whole-Bao state-space estimate = NOT AUTHORIZED
 whole-Bao game-tree estimate = NOT AUTHORIZED
 ```
 
-## Stage 0
+## Stage 0の記録
 
 Stage 0 v1では、workflow自体は成功したものの、凍結済みconstruct `rootBranchPairOverlap` と `narrowPathRun` のformal materialization欠落をfresh scientific evidence生成前のcross-contract auditで検出した。そのためv1は`STAGE0-TECHNICAL-INVALID`として保存した。
 
 fresh evidence未生成・scientific seed未消費だったため、事前に固定していたtechnical-refreeze ruleに従い、scientific contractを変更せずv2を作成した。Stage 0 v2 workflow run `33360528096`は、production / independent reconstruction、2つの欠落construct、traversal-order invariance、G2-05 depth-2 historical referenceをすべてexactに再現し、`STAGE0-TECHNICAL-PASS`となった。
 
-## Stage 1 fresh development
+## Stage 1 fresh developmentの結果
 
 Stage 1 workflow run `33370605540`で、凍結済みseed block `31010001..31010096`を消費した。geometry-blind selectionによりNamua 6 roots / Mtaji 6 rootsを得て、全12 rootsをproduction / structurally independent implementationの双方でrelative depth 0..5までcomplete reconstructionした。
 
@@ -77,7 +77,7 @@ stageCoreAgreement = false
 
 これはgeometry primitiveそのものの不一致ではないが、凍結済みverification artifact contractを満たさないtechnical integrity defectである。
 
-## No-rescue disposition
+## no-rescue disposition （最終状態）
 
 Stage 1 fresh evidenceはすでに生成・readされ、seed blockもconsume済みである。したがって、`stageCoreSha256`だけを修正して同一Stage 1 evidenceをrerunし、scientific dispositionを変更することはno-rescue ruleに反する。
 
@@ -92,7 +92,7 @@ Study decision = TECHNICAL-INVALID
 
 Stage 1で観測されたroot-level / family-level exact agreementは、将来の新しいprospective prerequisite Studyを設計する際のfailure-mode / feasibility informationとして参照できるが、本Study内ではformal eligibilityへ昇格させない。
 
-## Protected holdout audit
+## protected holdoutのaudit
 
 ```text
 standard initial RAW root complete depth-10 enumeration generated = false
@@ -100,7 +100,7 @@ standard initial RAW root depth-10 scientific outcome read = false
 G2-12 estimator used as depth-10 truth/input = false
 ```
 
-## Research Generation 3 dependency
+## Research Generation 3のdependency
 
 G3-01からformal eligible measurement familyは得られなかった。したがって、G3-02〜G3-08をこのinstrumentで自動的に開始してはならない。
 
@@ -108,7 +108,7 @@ G3-01からformal eligible measurement familyは得られなかった。した�
 
 現在のdownstream stateは`automaticG302StartAuthorized = false`であり、G3-02は別のpost-closure authorization review待ちである。review完了前にG3-02 fresh scientific evidenceを生成しない。protected standard-root depth-10 exact holdoutは`SEALED / NOT GENERATED / NOT READ`のままである。
 
-## Main integration
+## `main`への統合
 
 2026-08-31、userの明示的指示により、documentation consistency audit後のresearch branch HEAD `fa7476ed764ac2ff1497774afead22698dbe76e4`を、remote `main` `7a0e7ce618eedfa3bd1c8d11dfc2ba14bd3e390f`から`force=false`でfast-forward統合した。
 

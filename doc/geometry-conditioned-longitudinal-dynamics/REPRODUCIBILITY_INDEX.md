@@ -1,8 +1,8 @@
-# GCLD-STUDY1 — REPRODUCIBILITY INDEX
+# GCLD-STUDY1 — 再現性索引
 
 更新日: 2026-09-04
 
-## 1. Source-of-truth
+## 1. 正本となる情報
 
 ```text
 Study = GCLD-STUDY1
@@ -12,7 +12,7 @@ Representation = CRCLGR-R1-EXACT-SQUASHED-L1
 Protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 ```
 
-Protocol/preregistration:
+protocol / preregistration:
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
@@ -24,7 +24,7 @@ Protocol/preregistration:
 - `prereg/STAGE_2_FORMAL_IMPLEMENTATION_CONTRACT.json`
 - `prereg/STAGE_2_TECHNICAL_EXECUTION_V2_CONTRACT.json`
 
-## 2. Stage 0 technical validation
+## 2. Stage 0のtechnical validation
 
 ```text
 Stage ID = GCLD-S0-TECHNICAL-2026-09-03-v1
@@ -39,11 +39,11 @@ Stage disposition = STAGE0-PASS
 fresh scientific access = false
 ```
 
-Deterministic technical core SHA-256:
+deterministic technical coreのSHA-256:
 
 `f5dfb2b8aa01929c99b1e8bfc39abf6e9ecbd41945314284654b181267ea3254`
 
-## 3. Stage 1 development
+## 3. Stage 1 developmentの記録
 
 ```text
 Stage ID = GCLD-S1-DEVELOPMENT-2026-09-03-v1
@@ -61,11 +61,11 @@ Stage disposition = STAGE1-PASS
 formal inference = false
 ```
 
-Canonical Stage 1 scientific-result SHA-256:
+canonical Stage 1 scientific-resultのSHA-256:
 
 `c2cd89d70f288b5d9abadf611edf494d784b025b3e4483e8d6794918cc4dac1d`
 
-Stage 1 artifact SHA-256:
+Stage 1 artifactのSHA-256:
 
 ```text
 STAGE_1_CANDIDATE_MANIFEST.json = c8496407f38ee2dbbf198bd40c0e74170d9a66dac370b2237d587bc8fdf0a798
@@ -77,9 +77,9 @@ STAGE_1_LONGITUDINAL_SUMMARIES.json = 492a11263c51a5f33941b2aa09c9108b3fa11a1801
 STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json = 9d869d2f1b967d9a34e7e9ef20e780f149d3a90d3dc430805e43f5f0a73e8d0f
 ```
 
-## 4. Stage 2 pre-fresh technical abort
+## 4. Stage 2のfresh evidence前technical abort
 
-Initial wrapper run:
+最初のwrapper run:
 
 ```text
 Actions run = 33809894513
@@ -93,9 +93,9 @@ classification = PRE-FRESH-ACCESS-TECHNICAL-ABORT / SCIENTIFIC-EXECUTION-NOT-CON
 rerun of this workflow = NOT PERFORMED
 ```
 
-Technical V2 introduced only an identity projection for the historical G3-09 Stage 2 selection artifact. It projects exactly `rootRawSha256`, `sourceTrajectorySha256`, `openingPrefixSha256`; scientific coordinate/measurement payloads are not loaded.
+technical V2が導入したのは、historical G3-09 Stage 2 selection artifactに対するidentity projectionだけである。projectionするfieldは`rootRawSha256`、`sourceTrajectorySha256`、`openingPrefixSha256`の3件に限り、scientific coordinate / measurement payloadはloadしない。
 
-## 5. Stage 2 formal execution
+## 5. Stage 2のformal execution
 
 ```text
 Stage ID = GCLD-S2-FORMAL-2026-09-03-v1
@@ -117,17 +117,17 @@ production / independent exact = true
 same-evidence rerun = false
 ```
 
-Canonical scientific-result SHA-256:
+canonical scientific-resultのSHA-256:
 
 `c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f`
 
-Canonical `STAGE_2_FORMAL_RESULT.json` SHA-256:
+canonical `STAGE_2_FORMAL_RESULT.json`のSHA-256:
 
 `08f31652fb599cf9db9b839cbc07f8aabe06aed69215208ec0556e6ec3a5bf7a`
 
-Stage 2 exact artifact files:
+Stage 2のexact artifact file:
 
-| File | SHA-256 | repository Git blob |
+| file | SHA-256 | repository Git blob |
 | --- | --- | --- |
 | `STAGE_2_CANDIDATE_MANIFEST.json` | `b46288a8c25c3d00d0cb84500bda8af9adea943cc372cfbde467e05f59a0fb97` | `988b2268850459bdfa9c3538bab430bb2e18106c` |
 | `STAGE_2_FORMAL_INFERENCE.json` | `21e287425efd7c58526e51dab8b9fe1867c8de86d6e4d32f8c3444f1a6aa2b76` | `f145872e92c4de3de2a7fc3708a0da48348dd6bf` |
@@ -138,7 +138,7 @@ Stage 2 exact artifact files:
 | `STAGE_2_TRAJECTORY_MEASUREMENTS_INDEPENDENT.json` | `2adcfe49dcc6b9c9cddd178a28455414e8464c53af59364d2d670cf8f7232e08` | `f0a8a05bda16f5586abe77ff2beb6f1f969bd85f` |
 | `STAGE_2_TRAJECTORY_MEASUREMENTS_PRODUCTION.json` | `2adcfe49dcc6b9c9cddd178a28455414e8464c53af59364d2d670cf8f7232e08` | `f0a8a05bda16f5586abe77ff2beb6f1f969bd85f` |
 
-Exact-byte repository mirror:
+repositoryに保存したexact-byte mirror:
 
 ```text
 mirror workflow run = 33816914860
@@ -146,7 +146,7 @@ mirror commit = 622dae1ede85b3e8856a86a3b647a056f7ac08db
 scientific recomputation during mirror = false
 ```
 
-## 6. Formal decisions
+## 6. formal decision（正式判断）
 
 ```text
 C1 = CONFIRMED / ACTUAL-GREATER
@@ -156,8 +156,8 @@ C4 = NOT-CONFIRMED
 C5 = CONFIRMED / ACTUAL-GREATER
 ```
 
-Formal inference artifact `results/stage-2/STAGE_2_FORMAL_INFERENCE.json` is the compact exact test record. `results/stage-2/STAGE_2_FORMAL_RESULT.json` is the canonical Stage-level result.
+formal inference artifactの`results/stage-2/STAGE_2_FORMAL_INFERENCE.json`はcompactなexact test recordである。`results/stage-2/STAGE_2_FORMAL_RESULT.json`はcanonical Stage-level resultである。
 
-## 7. Reproduction boundary
+## 7. 再現に関する境界
 
-Reproduction may reconstruct code paths and verify exact artifacts, but the consumed Stage 1/2 seed blocks must not be reused as a new prospective confirmation within this Study/version. Protected complete exact depth-10 data remain sealed. `main` integration is a repository operation and is not part of scientific reproduction.
+reproductionではcode pathの再構築とexact artifactの検証を行える。ただし、消費済みのStage 1 / Stage 2 seed blockを、このStudy / versionにおける新しいprospective confirmationとして再利用してはならない。protected complete exact depth-10 dataはsealedのままである。`main` integrationはrepository operationであり、scientific reproductionの一部ではない。

@@ -42,7 +42,7 @@ Frozen development promotion formula自体はF01/F02/F03/F05/F06/F10で`true`を
 
 ただしglobal readiness gateが失敗しているため、F01/F02/F03/F05/F06/F10を「validated taxonomy」または「Stage 2 target」として救済しません。これらは将来の新しいprospective studyの仮説生成に使えるdevelopment observationに限られます。
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 Stage 1がpassしなかったためStage 2は:
 

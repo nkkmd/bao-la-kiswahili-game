@@ -3,7 +3,7 @@
 更新日: 2026-08-29  
 状態: **CLOSED AT STAGE 1 / STAGE0-TECHNICAL-PASS / STAGE1-TECHNICAL-INVALID / STAGE2-NOT-AUTHORIZED-NOT-EXECUTED**
 
-## Study anchor
+## Study anchor （基準点）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -19,7 +19,7 @@ source-freeze checkpoint commit = 4366e439c2838dd7f2f388e834ecc93aed7efcb6
 authorization commit = a0d630df2ee5fbd943d306ab959ce509cbcc2330
 ```
 
-## frozen representation / design
+## frozen representation / design （表現）
 
 ```text
 RAW identity include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -41,7 +41,7 @@ high-divergence boundary = D_range >= 0.30
 CV = 5-fold by historicalTrajectoryHash
 ```
 
-## Stage 0 provenance
+## Stage 0 provenance （記録）
 
 ```text
 decision = STAGE0-TECHNICAL-PASS
@@ -53,7 +53,7 @@ artifact ZIP SHA256 = 442b7ba7dcaeab244e3ed35def5fa2e4508f999fecd7fdb1ea28951a3e
 Stage 0 result core SHA256 = d26401b6814b501589d1811f3f182ce731822f91bef2a203a5b874b285de05ac
 ```
 
-## Stage 1 pre-execution validation
+## Stage 1 pre-execution validation （実行記録）
 
 ```text
 implementation smoke run = 33195723195 / success
@@ -73,7 +73,7 @@ source-freeze ZIP SHA256 = fabb644c69d0f5efac48f3275a1e28a008a84832c7a7c4fd99a5f
 source-freeze envelope SHA256 = 03c466fa075d95ee0a8aba8ba863e7236a9a1997e8b566e6725b0ba378476a2d
 ```
 
-## Stage 1 terminal execution provenance
+## Stage 1 terminal execution provenance （記録）
 
 ```text
 workflow run = 33196954082 / completed / failure
@@ -84,7 +84,7 @@ failed verification step = Independent full-corpus replay and recomputation
 
 archived `execution-start.json`にはStage 1 seed blockがconsumedであることを記録しています。
 
-### Production artifact
+### Production artifact （証拠と成果物）
 
 ```text
 artifact ID = 9704250489
@@ -113,7 +113,7 @@ balancedAccuracy = 0.6684641309581127
 
 frozen production readiness gateはすべてtrueでした。ただし、これらの値はunverified production provenanceのみです。
 
-### Independent verification artifact
+### Independent verification artifact （独立検証）
 
 ```text
 artifact ID = 9708956844
@@ -141,7 +141,7 @@ finalDecision = STAGE1-TECHNICAL-INVALID
 
 600 rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。すべてのRAW keyとcontinuation-derived quantityは一致しました。
 
-## technical root cause
+## technical root cause （技術検証）
 
 4件のfeature mismatchはすべて`MOVE_SET_ENTROPY.indexEntropy`へ局在します。
 
@@ -157,7 +157,7 @@ Authoritative machine-readable record:
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 - `checkpoints/2026-08-29-stage1-technical-invalid-closure.md`
 
-## final disposition
+## final disposition （最終状態）
 
 ```text
 Stage 1 = STAGE1-TECHNICAL-INVALID

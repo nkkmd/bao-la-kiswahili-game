@@ -1,6 +1,6 @@
-# CRCLGR-STUDY1 — Current Status
+# CRCLGR-STUDY1 — 現在の状態
 
-Updated: 2026-09-04
+更新日: 2026-09-04
 
 ```text
 Study = CRCLGR-STUDY1
@@ -24,4 +24,4 @@ repository integration = COMPLETE via G3-10 combined fast-forward to main / sour
 
 CRCLGR closure時点ではG3-10を自動authorizeせずseparate reviewを要求した。そのreviewはその後完了して`G3-10-AUTHORIZED`となり、GCLD-STUDY1も`CLOSED / FORMAL-COMPLETE`まで完了した。この後続chronologyはCRCLGRのformal decisionやclaim boundaryを変更しない。
 
-No same-evidence rerun, seed extension, root replacement, representation redesign or resource-ceiling relaxation is authorized for CRCLGR-STUDY1.
+CRCLGR-STUDY1では、same-evidence rerun、seed extension、root replacement、representation redesign、resource-ceiling relaxationのいずれも承認されていない。

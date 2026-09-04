@@ -36,7 +36,7 @@ symmetry reduction = false
 
 Stage 1の判断はtechnical failureや`NON-ESTIMABLE`ではない。scientific readiness、production / independent exact verification、resource gateをすべて通過したうえで、事前固定した`K=2..6`の全候補がpromotion criterionを満たさなかったため、eligible representationを凍結しなかった。
 
-## accepted Stage 1 execution
+## accepted Stage 1 execution （実行記録）
 
 ```text
 source freeze commit = 10801fbc1529902bf3f4c0aa6e464c1dc39f1267
@@ -52,7 +52,7 @@ runner internal result SHA-256 = 985235180827db9d314b610baeb37cd2aec9427633ac518
 
 accepted runより前の2回のscientific workflow attemptはconsume gate前に停止し、scientific seedを消費していない。accepted runだけがStage 1 seed blockをconsume-onceで消費した。
 
-## Stage 1 population / verification
+## Stage 1 population / verification （Stageの記録）
 
 ```text
 generated games = 4096
@@ -100,7 +100,7 @@ selectedRepresentation = null
 
 K=4はmean silhouetteとstability自体は基準を満たしたが、minimum supportが`0.0078125`であり、事前閾値`0.10`を満たさなかった。結果後のthreshold relaxationは行わない。
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 Stage 2はStage 1で凍結したrepresentationだけをformal validationする契約だった。eligible representationが存在しないため、Stage 2 authorization prerequisiteを満たさない。
 

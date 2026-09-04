@@ -63,7 +63,7 @@ Stage 0は特徴表現が技術的に構築可能かを確認する段階、Stag
 
 Stage 2はStage 1の条件付き承認を必要としていましたが、その条件は成立しませんでした。
 
-## 4. authoritative scientific state identity
+## 4. authoritative scientific state identity （識別情報）
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -103,7 +103,7 @@ LOCAL_TEMPORAL_CONTEXT
 
 終了したStage 1を救済するために、新しいfamilyを事後追加することは認められません。
 
-## 7. Stage 1 production-only output
+## 7. Stage 1 production-only output （Stageの記録）
 
 Provenanceとしてのみ、production側では次の値が出力されました。
 

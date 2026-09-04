@@ -1,20 +1,20 @@
-# TCTGD-STUDY1 — Reproducibility Index
+# TCTGD-STUDY1 — 再現性索引
 
 Updated: 2026-09-02
 
-## Program authorization
+## program authorization （承認状態）
 
 - `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`
 - formal decision: `G3-03-AUTHORIZED`
-- authorization-review integration baseline: main `6b1457294666267c5a75c8516001acd1ef7d2fcd`
+- authorization reviewのintegration baselineはmain `6b1457294666267c5a75c8516001acd1ef7d2fcd`である
 
-## Prospective freeze
+## 結果を見る前のfreeze
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
 - `checkpoints/2026-09-02-study-preregistration-freeze.md`
 
-Frozen blobs at prereg freeze:
+prereg freeze時に固定したblob:
 
 ```text
 public/engine.js = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -35,11 +35,11 @@ Freeze checkpoint commit:
 
 `9a9b5f834bdef216f370dbec56279ac3ed6e105e`
 
-## Stage 0 authorization and execution
+## Stage 0のauthorizationと実行
 
 - authorization: `authorizations/2026-09-02-stage-0-technical-authorization.md`
 - authorization commit: `b725600730c4a876a6049a125ac3a07a1602b666`
-- one-shot technical trigger commit: `0c0a707bfa0baa64815dac0b826d2720e247ff52`
+- one-shot technical trigger commitは`0c0a707bfa0baa64815dac0b826d2720e247ff52`である
 - workflow: `.github/workflows/tctgd-stage0-technical.yml`
 - run: `33589334375`
 - job: `100119933850`
@@ -64,45 +64,45 @@ Deterministic Stage 0 core:
 
 `e7e7831cf9503c94441a5dc9b30253485dc4b498e9b397408901186c914765d5`
 
-Stage 0 explicitly records no scientific seed access and no protected depth-10 access.
+Stage 0ではscientific seedとprotected depth-10のいずれにもアクセスしていないことを明示的に記録した。
 
-## Pre-Stage-1 non-scientific tooling evidence
+## Stage 1前のnon-scientific tooling evidence
 
-### Initial dispatch-capability smoke
+### 最初のdispatch-capability smoke
 
 - tooling smoke run: `33591947107`
-- static integrity audit: PASS
-- non-scientific workflow-dispatch capability step: HTTP 404
-- fresh scientific evidence: false
-- Stage 1 seed access: false
-- protected depth-10 access: false
+- static integrity auditはPASSだった
+- non-scientific workflow-dispatch capability stepはHTTP 404だった
+- fresh scientific evidenceは生成していない
+- Stage 1 seedへアクセスしていない
+- protected depth-10へアクセスしていない
 
-This established that the original branch-only `workflow_dispatch` control plane was not operational through GitHub REST. The failure occurred before scientific authorization/execution.
+これにより、当初のbranch-only `workflow_dispatch` control planeがGitHub RESTではoperationできないことを確認した。failureはscientific authorization / execution前に発生した。
 
-### Push-path control smoke v2
+### push-path control smoke v2 （概要）
 
 - run: `33592075136`
 - conclusion: `success`
 - artifact: `9832086009`
 - artifact ZIP SHA-256: `995b566a2c73f8972052315a8b5edc34b15c33602836a028399e3b47f916303a`
-- fresh scientific evidence: false
-- Stage 1 seed access: false
-- protected depth-10 access: false
+- fresh scientific evidenceは生成していない
+- Stage 1 seedへアクセスしていない
+- protected depth-10へアクセスしていない
 
-The v2 smoke established a one-trigger / one-path-filtered-workflow control model without touching scientific evidence.
+v2 smokeはscientific evidenceに触れず、one-trigger / one-path-filtered-workflow control modelを確立した。
 
-## Technical execution v2 refreeze
+## technical execution v2のrefreeze
 
-The original prospective spec remains preserved as `prereg/STUDY_1_SPEC.json`.
+当初のprospective specは`prereg/STUDY_1_SPEC.json`として変更せず保存している。
 
-Pre-fresh technical execution correction artifacts:
+fresh evidence前のtechnical execution correction artifact:
 
 - `prereg/STUDY_1_SPEC_V2.json`
 - `prereg/UPSTREAM_IDENTITY_FIREWALL_V2.json`
-- technical refreeze workflow run `33592229434` / success
-- technical refreeze result commit `61139c0ed9e009b2142ff9b4a8b9b62128b54264`
+- technical refreeze workflow runは`33592229434` / success
+- technical refreeze result commitは`61139c0ed9e009b2142ff9b4a8b9b62128b54264`
 
-Relevant blobs after refreeze:
+refreeze後の関連blob:
 
 ```text
 STUDY_1_SPEC_V2.json = 1adabe8ce48004678a80f4f45ba4713e92711d8b
@@ -114,13 +114,13 @@ TCTGD independent endpoint = 1435998dba938ecad15470370dd2ef096a046e83
 Stage 1 runner v2 wrapper = bfb29927a5f6b1e5fd621f7ed72d0b29edac1907
 ```
 
-Identity-only firewall records `scientificOutcomeFieldsRetained=false`; G3-02 scientific outcome was not loaded and G3-02 selected roots were not reconstructed.
+identity-only firewallは`scientificOutcomeFieldsRetained=false`を記録する。G3-02 scientific outcomeをloadせず、G3-02 selected rootもreconstructしていない。
 
-Stage 1 scientific-content baseline after the final pre-fresh workflow binding:
+final pre-fresh workflow binding後のStage 1 scientific-content baseline:
 
 `3b31c0e853b99d50e6e4cd924984342535c22547`
 
-## Stage 1 authorization
+## Stage 1のauthorization
 
 - authorization decision: `STAGE1-AUTHORIZED`
 - authorization nonce: `TCTGD-S1-AUTH-2026-09-02-V2-01`
@@ -132,7 +132,7 @@ Execution trigger commit:
 
 `18cdade48db8f19e3b49615041630948dafb4e61`
 
-## Stage 1 execution
+## Stage 1の実行
 
 Workflow:
 
@@ -171,7 +171,7 @@ Canonical mirrored files:
 - `results/stage-1/telemetry.json`
 - `results/stage-1/execution-summary.json`
 
-Canonical file identities recorded by execution summary:
+execution summaryに記録したcanonical file identity:
 
 ```text
 scientificResultFileSha256 = cfb292bf5d51fa270f9c72391f82c05af7600ed63cd587281b074482c420f903
@@ -180,7 +180,7 @@ productionStageScientificCoreSha256 = d44393d6fe9902860d2b5fe3a5a3a3938f7165b40f
 independentStageScientificCoreSha256 = d44393d6fe9902860d2b5fe3a5a3a3938f7165b40f46e694bd507cf231fcd62f
 ```
 
-## Stage 1 formal verification state
+## Stage 1のformal verification state
 
 Pass / agreement:
 
@@ -196,7 +196,7 @@ developmentExact = true
 canonical production/independent stage SHA = identical
 ```
 
-Failed frozen integrity gates:
+FAILした固定済みintegrity gate:
 
 ```text
 allRootExact = false
@@ -204,13 +204,13 @@ stageScientificExact = false
 stageDisposition = TECHNICAL-INVALID
 ```
 
-Root/family reconstruction hashes agreed, but root-level `endpointExact` failed because the independent endpoint map used `Object.create(null)` whereas production used an ordinary object and the frozen runner used prototype-sensitive `util.isDeepStrictEqual`.
+root / family reconstruction hashは一致したが、independent endpoint mapが`Object.create(null)`、productionが通常のobjectを使い、固定済みrunnerがprototype-sensitiveな`util.isDeepStrictEqual`を使用したため、root-level `endpointExact`はFAILした。
 
-This is preserved as the causal technical defect. No same-evidence rerun or post hoc equality-rule correction is performed.
+これを直接原因となったtechnical defectとして保存する。same-evidence rerunまたはpost hocなequality-rule correctionは行わない。
 
-## Diagnostic candidate provenance
+## diagnostic candidateのprovenance
 
-The execution summary records promotion-like directions for:
+execution summaryには次のpromotion-like directionを記録している。
 
 ```text
 C1 = NAMUA-GREATER
@@ -219,9 +219,9 @@ C3 = NAMUA-GREATER
 C4 = MTAJI-GREATER
 ```
 
-Formal promoted candidate set is `[]` because Stage 1 is technical-invalid.
+Stage 1がtechnical-invalidであるため、formal promoted candidate setは`[]`である。
 
-## Stage 2
+## Stage 2の状態
 
 ```text
 TCTGD-S2-FORMAL-2026-09-02-v1
@@ -230,9 +230,9 @@ status = NOT-AUTHORIZED-NOT-EXECUTED
 seed consumption = false
 ```
 
-No Stage 2 workflow execution or formal holdout read is authorized.
+Stage 2 workflow executionまたはformal holdout readはauthorizeされていない。
 
-## Closure records
+## closure記録
 
 - `README.md`
 - `STUDY_1_OVERVIEW.md`
@@ -246,10 +246,10 @@ Formal Study decision:
 
 `CLOSED / TECHNICAL-INVALID`
 
-## Protected holdout
+## protected holdout （証拠の状態）
 
-Standard initial RAW-root complete exact depth-10 holdout:
+standard initial RAW-root complete exact depth-10 holdoutの状態:
 
 `SEALED / NOT GENERATED / NOT READ`
 
-It was not generated, read, peeked at, partially enumerated, or used for resource estimation by TCTGD-STUDY1.
+TCTGD-STUDY1からgenerate、read、peek、partial enumerate、resource estimationのいずれにも使用していない。

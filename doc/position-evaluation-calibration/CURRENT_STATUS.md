@@ -1,9 +1,15 @@
-# Current Status — Position Evaluation / Win-Rate Calibration Study 1
+# Current Status — Position Evaluation / Win-Rate Calibration Study 1 （現在の状態）
+
+## 日本語での要点
+
+formal decisionはINCONCLUSIVEで、校正modelをformalに確認したとは扱わない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-20  
 Status: **STUDY 1 CLOSED / FORMAL DECISION INCONCLUSIVE**
 
-## Repository identity
+## Repository identity （識別と表現）
 
 ```text
 baseline main HEAD = 8672ba4fafb896124df0c4728d41f7c3a6ed5056
@@ -15,7 +21,7 @@ Stage 2 generation source commit = a6f36a7cb86eab38897372680acd7eadc6f3436b
 
 No closed-study formal decision was changed.
 
-## Stage 1
+## Stage 1 （Stageの記録）
 
 ```text
 stageId = PEC-S1-EXPLORATORY-2026-08-18-v1
@@ -40,7 +46,7 @@ fullFit canonical SHA-256 = 94bad0adc157503a729709d138b973f99dd213ad7bd926ad6d52
 
 Stage 1 remains exploratory only.
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 ```text
 stageId = PEC-S2-FORMAL-2026-08-20-v1
@@ -96,13 +102,13 @@ exact log loss = non-finite; 7 boundary contradictions
 
 These values do not override the failed estimability gate.
 
-## Final interpretation boundary
+## Final interpretation boundary （結論）
 
 Study 1 supports a reproducible phase-aware calibration research pipeline and a frozen exploratory isotonic mapping. It does not formally validate or formally reject that mapping on held-out data.
 
 No claim is authorized for game-theoretic probability, human advantage perception, causal effect, generalization beyond the frozen population/policy, or revision of prior studies.
 
-## Closure / no rescue
+## Closure / no rescue （結論）
 
 ```text
 additional Stage 2 games = FORBIDDEN
@@ -115,7 +121,7 @@ formal relabeling from descriptive metrics = FORBIDDEN
 
 Any calibration re-evaluation requires a new prospective independent study with fresh data.
 
-## Canonical closure records
+## Canonical closure records （結論）
 
 - `STUDY_1_OVERVIEW.md`
 - `STUDY_1_FINAL_REPORT.md`

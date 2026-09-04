@@ -1,8 +1,14 @@
-# CURRENT_STATUS — Critical Positions / Outcome Branching Study 1
+# CURRENT_STATUS — Critical Positions / Outcome Branching Study 1 （結果）
+
+## 日本語での要点
+
+promotion candidateは0件で、Stage 2はNOT-AUTHORIZED-NOT-EXECUTEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-24
 
-## Repository identity
+## Repository identity （識別と表現）
 
 ```text
 studyId = CPOB-STUDY1
@@ -13,7 +19,7 @@ directory = doc/critical-positions-outcome-branching/
 artifact root = artifacts/local/critical-positions-outcome-branching/
 ```
 
-## Final scientific state
+## Final scientific state （結論）
 
 ```text
 Stage 0 construct / technical / feasibility = COMPLETE / PASS
@@ -40,7 +46,7 @@ scientificInferenceAuthorized = false
 confirmatoryReuseAllowed = false
 ```
 
-## Frozen Stage 1 identity
+## Frozen Stage 1 identity （Stageの記録）
 
 ```text
 stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
@@ -51,7 +57,7 @@ discovery resultHash = 565b6f1570aa20a8b239d9275109fcb6bad2ec9d6f583c359b205b37a
 uploaded discovery artifact SHA-256 = e1931c0f84b294bf8201e7732756bf156d688e4a38d55587e61b7303848d5024
 ```
 
-## Source corpus and selection
+## Source corpus and selection （日本語の要点）
 
 ```text
 source games = 3072
@@ -75,7 +81,7 @@ selection readiness = PASS
 
 Selection did not use winner, continuation outcome, `D_range`, D2/D3 score, candidate matcher or post-move consequence.
 
-## Measurement and independent verification
+## Measurement and independent verification （日本語の要点）
 
 Frozen primary measurement:
 
@@ -108,7 +114,7 @@ fullSecondaryRecomputation = true
 fullStructuralRecomputation = true
 ```
 
-## Stage 1 exploratory result
+## Stage 1 exploratory result （結果）
 
 The 600 selected roots contained high-divergence roots under the frozen policy:
 
@@ -135,7 +141,7 @@ Therefore the bounded scientific conclusion is:
 
 > High fixed-policy empirical continuation divergence occurs in fresh Stage 1 roots, but the prospectively frozen one-to-two-token pre-root structural grammar produced no candidate satisfying all support, diversity, recurrence and median-divergence promotion gates.
 
-## Why Stage 2 was not executed
+## Why Stage 2 was not executed （Stageの記録）
 
 Stage 2 required an exact Stage 1 promoted-candidate mapping to be frozen before any Stage 2 data generation. Because `promotedCandidateCount = 0`, there is no eligible candidate mapping.
 
@@ -151,7 +157,7 @@ formal candidate labels = NOT APPLICABLE
 
 This is not a `NOT-CONFIRMED` candidate result because no candidate entered formal confirmation.
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 This Study does **not** establish:
 
@@ -166,7 +172,7 @@ traditional Bao strategic importance
 
 Position Evaluation / Win-Rate Calibration Study 1 remains formal `INCONCLUSIVE`; its exploratory isotonic mapping was not used as a validated probability converter.
 
-## No-rescue closure
+## No-rescue closure （結論）
 
 ```text
 seed extension = false
@@ -182,7 +188,7 @@ near-miss promotion = false
 manual override = false
 ```
 
-## Seed state
+## Seed state （日本語の要点）
 
 ```text
 Stage 0 scientific seed block = NONE
@@ -190,7 +196,7 @@ Stage 1 = 22600001..22603072 -> CONSUMED
 Stage 2 = 22700001..22706144 -> RESERVED / NEVER AUTHORIZED / UNCONSUMED
 ```
 
-## Canonical closure documents
+## Canonical closure documents （結論）
 
 - [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — human-facing overview
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — scientific/technical final synthesis

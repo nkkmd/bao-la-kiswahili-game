@@ -12,7 +12,7 @@ P003のdepth 9〜10完了後、同じphase2・bao・quiescence depth 1でdepth 1
 | ---: | --- | --- | ---: | ---: | ---: | ---: |
 | 11 | timed-out | consensus | -45 | -257 | 33286 | 162706.2 |
 
-The depth-11 root and the focal consensus-versus-self-play-leader comparison completed, but one other fixed-child analysis timed out; the all-candidate comparison is incomplete.
+depth-11 rootと中心対象のconsensus-versus-self-play-leader比較は完了したが、別のfixed-child analysis 1件がtimeoutしたため、全candidate比較は未完了である。
 
 root探索はdepth 11を完了してconsensus手を維持した。自己対局勝数首位手とconsensus手の固定子解析もdepth 10を完了し、値差は-257だった。一方、別の非合意手1件がdepth 9完了後に60秒timeoutとなったため、4候補全体の値比較は完了していない。
 

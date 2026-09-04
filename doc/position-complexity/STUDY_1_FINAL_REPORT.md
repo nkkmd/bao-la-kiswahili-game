@@ -1,9 +1,15 @@
-# Position Complexity / Difficulty Study 1 — Final Report
+# Position Complexity / Difficulty Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+formal decisionはINCONCLUSIVEである。局面のstructural complexity、search workload、decision ambiguity、prediction instabilityを分離したが、人間の難しさや単一difficulty scoreを確認したものではない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 更新日: 2026-08-14  
 Status: **STUDY 1 CLOSED / FORMAL DECISION INCONCLUSIVE**
 
-## Executive summary
+## Executive summary （日本語の要点）
 
 This prospective study separated Bao position difficulty into machine-reproducible layers rather than assuming one global difficulty score.
 
@@ -25,7 +31,7 @@ No rescue analysis changes these labels.
 
 ---
 
-## 1. Research question
+## 1. Research question （日本語の要点）
 
 The study asked whether several machine-reproducible aspects of Bao position difficulty can be measured separately:
 
@@ -45,7 +51,7 @@ Human difficulty was excluded from Study 1.
 
 ---
 
-## 2. Inherited scientific boundaries
+## 2. Inherited scientific boundaries （日本語の要点）
 
 This study did not reopen or rescue completed research.
 
@@ -76,9 +82,9 @@ No prior formal archive was reused as fresh present-study confirmation evidence.
 
 ---
 
-## 3. Stage 0 — measurement validation
+## 3. Stage 0 — measurement validation （Stageの記録）
 
-### 3.1 Structural layer
+### 3.1 Structural layer （日本語の要点）
 
 Existing position-typology tooling supplied raw state-level quantities including:
 
@@ -100,7 +106,7 @@ legalMoveCount = E.moveVariants(state).length
 
 Single-choice roots were excluded from primary decision-instability inference.
 
-### 3.2 Search workload layer
+### 3.2 Search workload layer （日本語の要点）
 
 Fixed-search workload quantities included:
 
@@ -115,7 +121,7 @@ completedDepth
 
 Wall-clock time was descriptive/QA only.
 
-### 3.3 Exact ambiguity / instability instrumentation
+### 3.3 Exact ambiguity / instability instrumentation （日本語の要点）
 
 A dedicated diagnostic was implemented:
 
@@ -137,7 +143,7 @@ Stage 0 was technical only and contained no scientific confirmation.
 
 ---
 
-## 4. Stage 1 — exploratory design development
+## 4. Stage 1 — exploratory design development （方法と設計）
 
 Stage ID:
 
@@ -215,7 +221,7 @@ Stage 1 was permanently consumed and ineligible for Stage 2 confirmation reuse.
 
 ---
 
-## 5. Stage 2 — preregistered formal design
+## 5. Stage 2 — preregistered formal design （方法と設計）
 
 Stage ID:
 
@@ -236,7 +242,7 @@ max ply 100
 
 The formal tooling, verifier, analyzer and authorization firewall were technically validated before generation.
 
-### 5.1 Frozen state sampling
+### 5.1 Frozen state sampling （日本語の要点）
 
 ```text
 generated games
@@ -249,7 +255,7 @@ generated games
 -> collapse exact duplicate selected ruleStateKey
 ```
 
-### 5.2 PCX-H1
+### 5.2 PCX-H1 （日本語の要点）
 
 Outcome:
 
@@ -286,7 +292,7 @@ df = 1
 
 Formal H1 gates required adequate count coverage and both models finite/converged.
 
-### 5.3 PCX-H2
+### 5.3 PCX-H2 （日本語の要点）
 
 Among ordinary-domain D2 margins:
 
@@ -299,7 +305,7 @@ H2 was hierarchically confirmatory only after H1 confirmation.
 
 ---
 
-## 6. Stage 2 corpus validity
+## 6. Stage 2 corpus validity （Stageの記録）
 
 Generation:
 
@@ -329,7 +335,7 @@ The formal corpus is therefore technically valid under the frozen verifier.
 
 ---
 
-## 7. Stage 2 formal selection / measurement
+## 7. Stage 2 formal selection / measurement （Stageの記録）
 
 Selection:
 
@@ -369,7 +375,7 @@ H2 subset stable = 427                PASS >= 50
 
 ---
 
-## 8. PCX-H1 result
+## 8. PCX-H1 result （結果）
 
 Reduced primary model:
 
@@ -418,7 +424,7 @@ The result is not relabeled `not-confirmed` from the p-value because the model-c
 
 ---
 
-## 9. PCX-H2 result
+## 9. PCX-H2 result （結果）
 
 Secondary full model converged, but the secondary reduced model returned BFGS precision loss and `converged=false`.
 
@@ -450,7 +456,7 @@ The small computed p-value is not a confirmed secondary result.
 
 ---
 
-## 10. Final scientific conclusion
+## 10. Final scientific conclusion （結論）
 
 The study succeeded in constructing a technically validated multi-layer position-complexity measurement pipeline and in obtaining large, reproducible exploratory and fresh formal corpora with strong pseudoreplication controls.
 
@@ -471,7 +477,7 @@ This does not establish either presence or absence of the H1 association.
 
 ---
 
-## 11. Interpretation boundary
+## 11. Interpretation boundary （適用範囲と制限）
 
 The present study supports:
 
@@ -491,7 +497,7 @@ It does not support:
 
 ---
 
-## 12. Why no rescue is performed
+## 12. Why no rescue is performed （日本語の要点）
 
 After formal outcome inspection, changing the optimizer, tolerance, convergence definition, model family, phase structure, depth pair, predictor, endpoint, seed count or state-selection rule would alter the preregistered formal test.
 
@@ -501,7 +507,7 @@ Therefore the current study closes without rescue.
 
 ---
 
-## 13. Recommended next independent study
+## 13. Recommended next independent study （今後の課題）
 
 The highest-priority follow-up is a fresh prospective numerical-method replication:
 
@@ -515,7 +521,7 @@ The purpose would be to resolve the numerical estimability problem, not to rescu
 
 ---
 
-## 14. Canonical records
+## 14. Canonical records （日本語の要点）
 
 ```text
 doc/position-complexity/STUDY_1_OVERVIEW.md

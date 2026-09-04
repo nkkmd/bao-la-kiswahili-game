@@ -1,9 +1,15 @@
-# REPRODUCIBILITY_INDEX — Critical Positions / Outcome Branching Study 1
+# REPRODUCIBILITY_INDEX — Critical Positions / Outcome Branching Study 1 （再現性）
+
+## 日本語での要点
+
+promotion candidateは0件で、Stage 2はNOT-AUTHORIZED-NOT-EXECUTEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-24  
 Status: **STUDY 1 CLOSED / STAGE 1 EXPLORATORY COMPLETE / STAGE 2 NOT EXECUTED**
 
-## Repository baseline
+## Repository baseline （リポジトリ状態）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -12,7 +18,7 @@ baseline tree = 766eb3dea312669feec12f22ebe405b9d3bba78a
 branch = research/critical-positions-outcome-branching
 ```
 
-## Frozen scientific identities
+## Frozen scientific identities （日本語の要点）
 
 ```text
 studyId = CPOB-STUDY1
@@ -24,7 +30,7 @@ discovery embedded resultHash = 565b6f1570aa20a8b239d9275109fcb6bad2ec9d6f583c35
 uploaded discovery artifact SHA-256 = e1931c0f84b294bf8201e7732756bf156d688e4a38d55587e61b7303848d5024
 ```
 
-## Source implementation freeze
+## Source implementation freeze （日本語の要点）
 
 Final source-changing scientific implementation before authorization:
 
@@ -67,7 +73,7 @@ Exact-root diagnostic semantics:
 exact-full-window-root-candidates/phase2-value-semantics/v1
 ```
 
-## Identity model
+## Identity model （識別と表現）
 
 Source/root provenance:
 
@@ -89,7 +95,7 @@ AI.moveKey(E.moveVariants(root)[i])
 
 Stage 1 selection collapsed duplicate historical trajectories and duplicate selected rule states prospectively before quota. All final selected roots were unique on historical trajectory and rule state.
 
-## Seed model
+## Seed model （日本語の要点）
 
 ```text
 Stage 0 scientific source seeds = none
@@ -99,7 +105,7 @@ Stage 2 reserved seeds = 22700001..22706144 / NEVER AUTHORIZED / UNCONSUMED
 
 Continuation replicate RNG is deterministically derived from stage salt + root identity + replicate index. These values are nested measurement RNG seeds and do not enlarge the source-game population.
 
-## Stage 1 source corpus
+## Stage 1 source corpus （Stageの記録）
 
 ```text
 games = 3072
@@ -116,7 +122,7 @@ fullCorpusReplay = true
 passed = true
 ```
 
-## Stage 1 root selection
+## Stage 1 root selection （Stageの記録）
 
 ```text
 selected roots = 600
@@ -128,7 +134,7 @@ replacementPerformed = false
 phaseReassignmentPerformed = false
 ```
 
-## Stage 1 measurement
+## Stage 1 measurement （Stageの記録）
 
 Frozen continuation:
 
@@ -159,7 +165,7 @@ fullStructuralRecomputation = true
 passed = true
 ```
 
-## Stage 1 discovery
+## Stage 1 discovery （Stageの記録）
 
 Local large artifact:
 
@@ -195,7 +201,7 @@ Mtaji = 87 / 300
 overall = 139 / 600
 ```
 
-## Compact repository artifacts
+## Compact repository artifacts （証拠と成果物）
 
 ```text
 results/STAGE_0_TECHNICAL_RESULT.json
@@ -208,7 +214,7 @@ CURRENT_STATUS.md
 
 Large source games, selected-root payloads, per-root measurements and the full 1,183-candidate discovery audit remain under `artifacts/local/` and are not committed as repository-scale results.
 
-## Final reproducibility boundary
+## Final reproducibility boundary （再現性）
 
 Stage 1 demonstrates reproducible **machine-defined, policy-conditioned empirical continuation divergence**. It does not establish game-theoretic probabilities, human/expert criticality, or validated score-to-probability conversion.
 

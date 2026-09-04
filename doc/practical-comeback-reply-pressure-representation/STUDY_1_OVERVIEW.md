@@ -50,7 +50,7 @@ LOCAL_TEMPORAL_CONTEXT
 
 continuationやfuture outcomeに由来する情報はpredictorから除外した。
 
-## RAW state identity
+## RAW state identity （識別情報）
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending

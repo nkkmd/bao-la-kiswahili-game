@@ -13,7 +13,7 @@ depth 11の4候補比較で唯一timeoutした非注目候補だけを、同じs
 - nodes: 95786
 - elapsed ms: 72025.8
 
-This retry changes only the timed-out child limit from 60 to 120 seconds; the root and other child results remain the saved depth-11 results.
+このretryで変更したのは、timeoutしたchildのlimitを60秒から120秒へ延長した点だけである。rootと他のchild resultは、保存済みdepth-11 resultをそのまま使用する。
 
 ## 完全性
 

@@ -1,9 +1,15 @@
-# Position Evaluation / Win-Rate Calibration Study 1 — Final Report
+# Position Evaluation / Win-Rate Calibration Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+formal decisionはINCONCLUSIVEである。engine evaluation、empirical continuation win probability、game-theoretic value、人間の形勢認知を同一視せず、校正modelをformalに確認したとは扱わない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 更新日: 2026-08-20  
 Status: **STUDY 1 CLOSED / FORMAL DECISION INCONCLUSIVE**
 
-## Executive summary
+## Executive summary （日本語の要点）
 
 This prospective independent study tested whether actor-perspective static `bao` evaluation can be mapped to empirical continuation win probability under a frozen Bao state population and deterministic continuation policy.
 
@@ -21,7 +27,7 @@ Descriptive Brier performance was favorable, but it cannot rescue the formal res
 
 ---
 
-## 1. Research question
+## 1. Research question （日本語の要点）
 
 The study asked:
 
@@ -40,7 +46,7 @@ This is not a game-theoretic probability, human judgment probability, or causal 
 
 ---
 
-## 2. Inherited scientific boundaries
+## 2. Inherited scientific boundaries （日本語の要点）
 
 The study did not reopen completed Bao studies.
 
@@ -71,7 +77,7 @@ Calibration results cannot revise any of these labels.
 
 ---
 
-## 3. Stage 0 — construct and technical validation
+## 3. Stage 0 — construct and technical validation （Stageの記録）
 
 Primary score:
 
@@ -94,7 +100,7 @@ Stage 0 smoke validation passed deterministic replay, perspective antisymmetry, 
 
 ---
 
-## 4. Stage 1 — exploratory calibration development
+## 4. Stage 1 — exploratory calibration development （Stageの記録）
 
 Stage ID:
 
@@ -127,7 +133,7 @@ verification = PASS
 
 All Stage 1 readiness gates passed.
 
-### 4.1 Candidate families
+### 4.1 Candidate families （日本語の要点）
 
 Prospectively enumerated candidates:
 
@@ -138,7 +144,7 @@ Prospectively enumerated candidates:
 
 Five deterministic trajectory-level CV folds were used. Primary selection metric was pooled out-of-fold Brier score. Isotonic could displace logistic only under the frozen selection rule; technical candidate failure had a no-rescue policy.
 
-### 4.2 Logistic candidate
+### 4.2 Logistic candidate （日本語の要点）
 
 The logistic candidate became ineligible in CV fold 1, Mtaji:
 
@@ -151,7 +157,7 @@ reason = maximum-iterations-without-gradient-convergence
 
 No additional iterations, alternate optimizer, tolerance relaxation, or regularization was introduced after observing this result.
 
-### 4.3 Isotonic candidate
+### 4.3 Isotonic candidate （日本語の要点）
 
 The phase-stratified isotonic candidate remained eligible:
 
@@ -182,7 +188,7 @@ Stage 1 remained exploratory and could not itself support a formal calibration c
 
 ---
 
-## 5. Stage 2 — prospective formal design
+## 5. Stage 2 — prospective formal design （方法と設計）
 
 Stage ID:
 
@@ -203,7 +209,7 @@ max ply = 160
 
 The exact Stage 1 isotonic mapping was hash-bound before Stage 2 generation. Refit, smoothing, and primary probability clipping were prohibited.
 
-### 5.1 Cross-stage identity firewall
+### 5.1 Cross-stage identity firewall （Stageの記録）
 
 Stage 2 excluded Stage 1 overlap on:
 
@@ -215,7 +221,7 @@ ruleStateKey — all Stage 1 observations
 
 Exclusions used no replacement and no seed extension.
 
-### 5.2 Formal decision rule
+### 5.2 Formal decision rule （結論）
 
 Formal `CONFIRMED` required every estimability/identity/verification gate and all of:
 
@@ -232,7 +238,7 @@ If any estimability or identity gate failed, the result would be `INCONCLUSIVE` 
 
 ---
 
-## 6. Stage 2 corpus validity
+## 6. Stage 2 corpus validity （Stageの記録）
 
 Generation:
 
@@ -266,7 +272,7 @@ The formal corpus is therefore technically valid under the frozen verifier.
 
 ---
 
-## 7. Stage 2 selection and estimability
+## 7. Stage 2 selection and estimability （Stageの記録）
 
 Selection accounting:
 
@@ -303,7 +309,7 @@ formal estimability = FAIL
 
 ---
 
-## 8. Formal result
+## 8. Formal result （結果）
 
 Frozen rule application:
 
@@ -319,7 +325,7 @@ The result is inconclusive because the formal support population fell below prer
 
 ---
 
-## 9. Descriptive results after the gate decision
+## 9. Descriptive results after the gate decision （結論）
 
 For transparency, the frozen evaluator recorded descriptive performance on the 1,290 selected binary states:
 
@@ -361,7 +367,7 @@ These are descriptive observations only.
 
 ---
 
-## 10. Final scientific conclusion
+## 10. Final scientific conclusion （結論）
 
 The study established a reproducible calibration-development and held-out-evaluation pipeline and demonstrated that the frozen Stage 1 isotonic mapping can be transported technically to a fresh corpus without identity leakage.
 
@@ -380,7 +386,7 @@ This does not establish either formal calibration success or formal calibration 
 
 ---
 
-## 11. Interpretation boundary
+## 11. Interpretation boundary （適用範囲と制限）
 
 Supported:
 
@@ -402,7 +408,7 @@ Not supported:
 
 ---
 
-## 12. Why no rescue is performed
+## 12. Why no rescue is performed （日本語の要点）
 
 After Stage 2 data exist, adding games, extending seeds, replacing overlap exclusions, lowering minimum counts, changing phase assignment, modifying the mapping, clipping probabilities, changing the bootstrap, or using descriptive Brier thresholds to bypass the gate would alter the frozen formal study.
 
@@ -410,21 +416,21 @@ Those changes are not used to rewrite Study 1.
 
 ---
 
-## 13. Recommended next work
+## 13. Recommended next work （今後の課題）
 
 Two paths are scientifically distinct.
 
-### A. Fresh calibration replication
+### A. Fresh calibration replication （日本語の要点）
 
 If formal calibration validation is itself the goal, conduct a new prospective independent replication that anticipates Stage 1 identity-firewall attrition when setting initial game count and estimability thresholds. Use a fresh seed block and freeze the full design before new outcomes.
 
-### B. Bad-move / misconception research
+### B. Bad-move / misconception research （日本語の要点）
 
 The planned bad-move study may proceed as a new independent study, but this Study 1 isotonic mapping must not be described as a formally validated win-probability instrument. It may be retained as exploratory/descriptive context. Formal bad-move severity should preferably rely on fresh continuation outcomes or another prospectively valid endpoint rather than assuming the calibration question was confirmed.
 
 ---
 
-## 14. Canonical records
+## 14. Canonical records （日本語の要点）
 
 ```text
 doc/position-evaluation-calibration/STUDY_1_OVERVIEW.md

@@ -1,4 +1,10 @@
-# Namua→Mtaji Strategic Temporal Transition — RESUME HERE
+# Namua→Mtaji Strategic Temporal Transition — RESUME HERE （ここから再開）
+
+## 日本語での要点
+
+formal decisionはNOT-CONFIRMEDで、CBEとMtaji morphologyの普遍的な時間接続は確認していない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 更新日: 2026-08-12  
 Purpose: **新しいチャット・新しいローカルセッションからclosed studyの科学的状態を安全に復元するための入口**
@@ -55,7 +61,7 @@ afe1ca9e9021f5f391c2cedbf9c0fcf8330aafcb
 
 Always fetch the current branch tip. Historical source/unlock SHAs are provenance identities, not necessarily the current tip.
 
-## 1. Required read order
+## 1. Required read order （日本語の要点）
 
 Read these files in order before making any scientific decision about this closed study:
 
@@ -73,7 +79,7 @@ Read these files in order before making any scientific decision about this close
 
 Read the Stage 2 runbook, firewall-hardening checkpoint, Stage 1 result/protocol files, or Stage 0 records only when implementation chronology or provenance is required.
 
-## 2. Closed-study execution boundary
+## 2. Closed-study execution boundary （適用範囲と制限）
 
 This study is complete.
 
@@ -91,9 +97,9 @@ Do not:
 
 Any new confirmatory analysis requires a new independent prospective study and fresh evidence.
 
-## 3. Immutable inherited boundaries
+## 3. Immutable inherited boundaries （日本語の要点）
 
-### Phase-transition Study 1
+### Phase-transition Study 1 （日本語の要点）
 
 ```text
 E-010 = NOT-CONFIRMED
@@ -124,7 +130,7 @@ clusterMaxGap = 1
 non-forcing signal groups = reserve / mobility / capture / front
 ```
 
-### Position typology / playing style
+### Position typology / playing style （日本語の要点）
 
 Frozen Mtaji classifier:
 
@@ -140,7 +146,7 @@ Never refit, restandardize, relabel, change features, or use alternative-k rescu
 
 Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates only. STYLE-C1..C4 exact geometry remains formal `NOT-CONFIRMED`.
 
-## 4. Deterministic Namua clock — permanent boundary
+## 4. Deterministic Namua clock — permanent boundary （適用範囲と制限）
 
 For a standard trajectory surviving Namua:
 
@@ -166,7 +172,7 @@ Never claim:
 - CBE changes first-Mtaji hazard;
 - first-Mtaji timing is a survival endpoint.
 
-## 5. Stage 1 final state
+## 5. Stage 1 final state （結論）
 
 All Stage 1 corpora are exploratory and permanently consumed.
 
@@ -187,7 +193,7 @@ progression violations = 0
 
 Stage 1 data cannot enter a new confirmatory interpretation of the Stage 2 result.
 
-## 6. Frozen Stage 2 design
+## 6. Frozen Stage 2 design （方法と設計）
 
 ```text
 condition = P2-D2 only
@@ -228,7 +234,7 @@ two-sided alpha = 0.05
 one primary test
 ```
 
-## 7. Estimability and outcome firewall
+## 7. Estimability and outcome firewall （結果）
 
 ```text
 raw fully ascertained Namua CBE rows = 37
@@ -264,7 +270,7 @@ frozenMtajiClassifierLoaded = false
 
 Only then was the exact outcome unlock committed.
 
-## 8. Formal result — immutable
+## 8. Formal result — immutable （結果）
 
 ```text
 Exposed M1 = 26 / 30 = 0.8666666667
@@ -289,7 +295,7 @@ Decision:
 
 No direction label is assigned. The positive descriptive difference is not a confirmed trend or effect.
 
-## 9. Final artifact audit
+## 9. Final artifact audit （結論）
 
 ```text
 30 matched sets
@@ -309,7 +315,7 @@ Morphology assignment SHA-256:
 
 Primary counts, all stratum summaries, matched risk difference, MH OR, Poisson-binomial PMF, tail probabilities, and final p-value were independently recomputed and matched the machine result.
 
-## 10. Final interpretation boundary
+## 10. Final interpretation boundary （結論）
 
 Allowed conclusion:
 
@@ -323,7 +329,7 @@ Do not claim:
 - generalization beyond P2-D2;
 - subgroup/comparator/threshold/seed/sample-size rescue.
 
-## 11. Safe restore procedure
+## 11. Safe restore procedure （日本語の要点）
 
 If a later chat needs to inspect this closed study:
 

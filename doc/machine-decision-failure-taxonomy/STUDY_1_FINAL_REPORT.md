@@ -50,7 +50,7 @@ NOT-AUTHORIZED-NOT-EXECUTED
 
 であり、reserved seeds `29010001..29018192`は`RESERVED / UNCONSUMED`のままである。
 
-## 3. Stage 0
+## 3. Stage 0 （Stageの記録）
 
 Stage 0はscientific inferenceを行わず、search semantics、RAW identity、exact move identity、independent implementation、serialization、artifact transfer、F10 bounded continuation等をtechnical-only fixturesで検証した。
 
@@ -198,7 +198,7 @@ MDFT-F10
 
 ただし、これは**validated taxonomyでもStage 2 targetでもない**。Global readiness gateがfalseである以上、Stage 1全体はblocked/non-estimableであり、leaf-level promotion calculationを切り出してpositive resultとして救済しない。
 
-## 8. Stage 2
+## 8. Stage 2 （Stageの記録）
 
 Stage 1 pass conditionを満たさなかったため、Stage 2 taxonomy/endpointをfreezeしてformal validationへ進むことは認められない。
 

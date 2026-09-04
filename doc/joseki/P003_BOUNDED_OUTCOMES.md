@@ -19,7 +19,7 @@ AI評価器・alpha-beta・quiescenceを使わず、現ルールエンジンの�
 
 全4候補は11 plyでも13 plyでも`unresolved`だった。したがって、depth 11の評価値順位は短い強制終局の有無では説明できない。
 
-Unresolved means neither player can force a terminal win within the bounded horizon. It is not a draw, an equal-position judgment, or a move ranking.
+`unresolved`は、bounded horizon内でどちらのplayerもterminal winを強制できないことを示す。draw、互角という判定、move rankingを意味しない。
 
 ## 集計
 

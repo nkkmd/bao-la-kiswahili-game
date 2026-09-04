@@ -2,7 +2,7 @@
 
 更新日: 2026-09-04
 
-## 1. Formal status
+## 1. formal status（正式状態）
 
 ```text
 Study = GCLD-STUDY1
@@ -26,7 +26,7 @@ main integration = NOT AUTHORIZED / NOT PERFORMED
 
 **Baoにおける局所ゲーム木幾何の長期trajectory構造のprospective exact検証 — discrete strategic regimeに依存せず、formal-eligible continuous bounded RAW geometryを用いてdirectionality、persistence、return、chronology-conditioned circulation、first-order path dependenceをtrajectory-levelで検証する**
 
-## 3. Scientific background and dependency
+## 3. 科学的背景とdependency
 
 Historical G3-10は、局所ゲーム木幾何がtrajectory上で単なる独立なsnapshot集合ではなく、chronology-dependentな方向性・持続・回帰・履歴依存を持つかを検証する研究として計画されていた。
 
@@ -38,9 +38,9 @@ G3-09 `CLGR-STUDY1`はformal continuous representation eligibilityを確立で�
 
 本StudyはG3-08、G3-09、RRCLGRを救済・再分類していない。それらのpartial scientific measurementはGCLD scientific evidenceとして使用していない。過去Study由来の情報はidentity firewall用途に限定した。
 
-## 4. Representation and experimental unit
+## 4. representationと実験単位
 
-Geometry representation:
+geometry representationは次のとおりである。
 
 ```text
 representation = CRCLGR-R1-EXACT-SQUASHED-L1
@@ -62,7 +62,7 @@ validated transform set = []
 
 の15 checkpointを測定した。15 checkpointはrepeated measurementsであり、独立sampleとして数えていない。
 
-## 5. Temporal control
+## 5. temporal control（時間順序の対照）
 
 各measured trajectoryの実際の15-point順序を、32個のprospectively fixed endpoint-preserving order-destroyed controlsと比較した。
 
@@ -71,21 +71,21 @@ validated transform set = []
 - permutation rankは`stageId|sourceSeed|permutationIndex|checkpointPly`のSHA-256で決定
 - geometry coordinateやscientific outcomeはpermutation生成に不使用
 - control referenceは32 control値のexact median
-- trajectory-level contrast = actual endpoint − control median
+- trajectory-level contrastは、actual endpointからcontrol medianを引いた値とする
 
 したがってformal testは「観測trajectoryの時間順序が、同じcheckpoint集合を持つ順序破壊controlに対して系統的な差を持つか」を検証する。
 
-## 6. Primary endpoints
+## 6. 主要endpoint
 
-1. **C1 Directionality / path efficiency** — net displacement / total path length
-2. **C2 Persistence / lag-distance gradient** — mean lag-4 distance − mean lag-1 distance
+1. **C1 Directionality / path efficiency** — net displacementをtotal path lengthで割った値
+2. **C2 Persistence / lag-distance gradient** — mean lag-4 distanceからmean lag-1 distanceを引いた値
 3. **C3 Return fraction** — immediate departure後にanchor近傍へ相対的に戻るanchorの割合
 4. **C4 Chronology-conditioned circulation** — 6軸の全15 pairにおけるclosed ordered pathのabsolute signed shoelace circulation総和
 5. **C5 First-order directional path dependence** — 隣接step間のsame-sign / opposite-sign axis movement balance
 
 C4はoperational geometry-space circulation/hysteresis-like endpointであり、外部parameterを制御したphysical hysteresisではない。
 
-## 7. Stage 0 technical validation
+## 7. Stage 0のtechnical validation
 
 Stage 0はtechnical-only evidenceであり、scientific inferenceを行っていない。
 
@@ -104,19 +104,19 @@ fresh scientific seed access = false
 
 Stage 0で確認したもの:
 
-- C1..C5 exact endpoint arithmetic
+- C1〜C5のexact endpoint演算
 - endpoint-preserving permutation exactness
 - exact control median
-- exact sign test / Holm arithmetic
-- real source trajectory through ply 72
+- exact sign test / Holm演算
+- ply 72までの実source trajectory
 - 15-checkpoint preflight exactness
-- production / independent longitudinal aggregation exactness
+- production / independent longitudinal aggregationのexact一致
 - source terminal / relay-limit / resource failureのfail-closed動作
 - trajectoryをinferential unitとしcheckpointを独立sampleにしないこと
 
-## 8. Stage 1 development
+## 8. Stage 1 developmentの結果
 
-Fresh seed block:
+新規に使用したseed block:
 
 `32210001..32210256`
 
@@ -138,11 +138,11 @@ effect sizes used for promotion = false
 
 Stage 1の役割はformal effectを見つけることではなく、Stage 2のreadinessを検証することだった。promotionは24/24 complete manifest、resource support、16 measured trajectoryのexact reproducibility、C1..C5の定義可能性だけに基づいた。
 
-Canonical Stage 1 scientific-result SHA-256:
+canonical Stage 1 scientific-resultのSHA-256:
 
 `c2cd89d70f288b5d9abadf611edf494d784b025b3e4483e8d6794918cc4dac1d`
 
-## 9. Stage 2 authorization and pre-fresh abort
+## 9. Stage 2 authorizationとfresh evidence前のabort
 
 Stage 1 readinessを満たした後、別のfresh-free reviewで`GCLD-STAGE2-AUTHORIZED`を固定した。
 
@@ -166,9 +166,9 @@ classification = PRE-FRESH-ACCESS-TECHNICAL-ABORT / SCIENTIFIC-EXECUTION-NOT-CON
 
 G3-09のpartial geometry measurementsやscientific coordinate valuesは読み込んでいない。
 
-## 10. Stage 2 formal population and execution
+## 10. Stage 2のformal populationと実行
 
-Fresh seed block:
+新規に使用したseed block:
 
 `32220001..32220384`
 
@@ -193,20 +193,20 @@ Candidate search中、ply 72以前にterminalとなった294 source trajectory�
 
 唯一のresource-ineligible candidateはseed `32220258`であり、ply 68 checkpointが`RELAY_LIMIT`となった。frozen resource ruleに従ってtrajectory全体をineligibleとした。47 eligibleはminimum gate 40を上回ったため、frozen candidate orderの最初の32 eligible trajectoryをformal populationとした。replacementもseed extensionもない。
 
-## 11. Formal inference
+## 11. formal inference（正式な推論）
 
 各endpointで32 trajectoryのcontrastを作成した。contrast=0はsign test denominatorからのみ除外し、tiesとして報告した。
 
-- test: exact two-sided binomial sign test
+- testにはexact two-sided binomial sign testを用いる
 - null: positive / negative = 1/2
-- minimum nonzero trajectory count = 20
+- nonzero trajectoryの最小件数は20とする
 - family: C1..C5固定5 endpoint
 - multiplicity: Holm
 - family alpha: `1/20`
 
 全5 endpointがestimableだった。
 
-## 12. Formal results
+## 12. formal result（正式な結果）
 
 | Endpoint | + | − | ties | Exact raw p | Holm-adjusted exact p | Decision | Direction |
 | --- | ---: | ---: | ---: | --- | --- | --- | --- |
@@ -216,62 +216,62 @@ Candidate search中、ply 72以前にterminalとなった294 source trajectory�
 | C4 Chronology-conditioned circulation | 12 | 20 | 0 | `462411533/2147483648` | `462411533/2147483648` | NOT-CONFIRMED | — |
 | C5 First-order directional path dependence | 24 | 8 | 0 | `15033173/2147483648` | `15033173/1073741824` | **CONFIRMED** | ACTUAL-GREATER |
 
-Canonical Stage 2 scientific-result SHA-256:
+canonical Stage 2 scientific-resultのSHA-256:
 
 `c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f`
 
-## 13. Scientific interpretation
+## 13. 科学的解釈
 
-### C1 — directionality
+### C1 — directionalityの解釈
 
 Actual chronologyはorder-destroyed controlsより高いpath efficiencyを示した。これは、同じcheckpoint集合を無秩序に並べた場合より、実際のtrajectory順序がgeometry spaceをより方向的に進む構造を持つことと整合する。
 
-### C2 — persistence
+### C2 — persistenceの解釈
 
 Actual chronologyではlag-4とlag-1のdistance gradientがcontrolsより大きかった。これは近接checkpointほどgeometryが相対的に近いというshort-lag persistence structureと整合する。
 
-### C3 — return
+### C3 — returnの解釈
 
 Actual chronologyのreturn fractionはcontrolsより低かった。したがって「実trajectoryでは無秩序順序より頻繁に戻る」という単純なreturn-enhancementではなく、むしろorder-destroyed sequenceよりreturnが抑制された方向でformal confirmationされた。これはC1 directionalityとも整合的だが、両者を同一mechanismとみなす因果解釈はしない。
 
-### C4 — circulation
+### C4 — circulationの解釈
 
 Chronology-conditioned circulationは`NOT-CONFIRMED`だった。このendpointについてactual chronologyがcontrolsと系統的に異なるというformal evidenceは得られなかった。したがってGCLDからphysical hysteresisや強いloop/circulation structureを主張してはならない。
 
-### C5 — first-order path dependence
+### C5 — first-order path dependenceの解釈
 
 Actual chronologyでは隣接geometry stepのdirectional sign persistenceがcontrolsより高かった。これはfirst-order history dependenceに対応するprospectively fixed operational endpointについてformal confirmationを与える。
 
-## 14. What the Study establishes
+## 14. このStudyが確立したこと
 
 本Studyのbounded populationとrepresentation boundary内では、local geometry trajectoryが単なるcheckpoint集合ではなく、**時間順序そのものに依存する複数の構造を持つ**ことがformalに支持された。
 
 特に次の4点がconfirmationされた。
 
-1. directional path efficiency
-2. short-lag persistence
-3. reduced return relative to order-destroyed controls
-4. first-order directional path dependence
+1. directional path efficiencyの存在
+2. short-lag persistenceの存在
+3. order-destroyed controlと比べてreturnが少ないこと
+4. first-order directional path dependenceの存在
 
 一方、chronology-conditioned circulationはconfirmationされなかった。
 
-## 15. What the Study does not establish
+## 15. このStudyが確立していないこと
 
 本Studyは次を確立しない。
 
-- causal mechanism
+- 因果mechanism
 - physical hysteresis
-- strategic phase/regime classifier
-- human-perceived difficulty
-- search quality / best move correctness
-- winning probability / game-theoretic value
-- whole-game or unbounded geometry
+- strategic phase / regimeのclassifier
+- 人間が感じる難しさ
+- search qualityまたはbest moveの正しさ
+- 勝率またはgame-theoretic value
+- whole-gameまたはunbounded geometry
 - all Bao trajectoriesへの無条件一般化
-- protected standard-root complete exact depth-10 geometry
+- protected standard-rootのcomplete exact depth-10 geometry
 
 `CRCLGR-R1-EXACT-SQUASHED-L1`とdepth-5 resource eligibilityを通過したfresh trajectoriesに対するformal conclusionとして読む必要がある。
 
-## 16. Integrity and no-rescue
+## 16. integrityとno-rescue
 
 Stage 1 first fresh access以降、次を行っていない。
 
@@ -288,7 +288,7 @@ Stage 1 first fresh access以降、次を行っていない。
 
 Stage 2 initial wrapper failureはfresh access前であり、scientific evidenceは0だった。V2はtechnical identity projectionだけを修正し、scientific designは変更していない。
 
-## 17. Artifact preservation
+## 17. artifactの保存
 
 Stage 2 canonical artifactはActions artifact ID `9916587217`からZIP SHA-256と内部8ファイル全SHA-256を検証し、scientific recomputationなしでrepositoryへexact-byte mirrorした。
 
@@ -299,11 +299,11 @@ mirror commit = 622dae1ede85b3e8856a86a3b647a056f7ac08db
 
 production / independent measurement JSONはbyte-identicalで、同じGit blob identityを持つ。
 
-## 18. Final disposition
+## 18. 最終状態
 
 **`GCLD-STUDY1 = CLOSED / FORMAL-COMPLETE`**
 
-Formal endpoint disposition:
+formal endpointごとの最終判定:
 
 ```text
 CONFIRMED = C1, C2, C3, C5
@@ -313,4 +313,4 @@ NON-ESTIMABLE = none
 
 このclosureはG3-08、G3-09、RRCLGRの過去decisionを変更しない。Historical `doc/research-generation-3/PROGRAM_PLAN.md`も変更しない。
 
-`main` integrationは科学的closureとは別のrepository operationである。明示的なユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`を維持する。
+`main` integrationは科学的closureとは別のrepository operationである。scientific closure時点では明示的なユーザー指示を待って`NOT AUTHORIZED / NOT PERFORMED`に保ったが、その後の指示に基づき統合済みである。現在の状態は`CURRENT_STATUS.md`を正本とする。

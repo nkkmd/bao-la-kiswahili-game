@@ -2,7 +2,7 @@
 
 更新日: 2026-08-30
 
-## 1. repository anchor
+## 1. repository anchor （基準点）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -17,7 +17,7 @@ Stage 1 repaired scientific source freeze commit = 10801fbc1529902bf3f4c0aa6e464
 Stage 1 accepted authorization commit = d6487403dba9fa1de8895b473e5e662d90b1f13b
 ```
 
-## 2. Study / Stage IDs
+## 2. Study / Stage IDs （Stageの記録）
 
 ```text
 Study = UMSSR-STUDY1
@@ -63,7 +63,7 @@ Study = NOT-AUTHORIZED-NOT-EXECUTED
 - `checkpoints/2026-08-30-stage1-scientific-no-representation-closure.md`
 - `checkpoints/2026-08-30-final-documentation-taxonomy-normalization.md`
 
-## 4. RAW identity
+## 4. RAW identity （識別情報）
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
@@ -73,7 +73,7 @@ canonicalization = false
 symmetry reduction = false
 ```
 
-## 5. seed ledger
+## 5. seed ledger （seedの記録）
 
 ```text
 29300001..29300064 = Stage 0 technical-only / NON-SCIENTIFIC
@@ -83,7 +83,7 @@ symmetry reduction = false
 
 Stage 1 seed blockはaccepted run `33297178656`でconsume-onceとして消費された。同じblockのrerun、replacement、extensionは未承認である。
 
-## 6. Stage 0
+## 6. Stage 0 （Stageの記録）
 
 ```text
 workflow run = 33295423785
@@ -95,7 +95,7 @@ mandatory gates = 14 / 14 PASS
 scientific seed use = 0
 ```
 
-## 7. Stage 1 frozen scientific contract
+## 7. Stage 1 frozen scientific contract （固定した条件）
 
 ```text
 Stage 1 spec SHA-256 = 0cc1debb44767357c7a26b14e8d48fa843fb197ec55e1dd36838a2a572b80b8d
@@ -115,7 +115,7 @@ minimum mean silhouette = 0.05
 minimum five-fold assignment stability = 0.80
 ```
 
-## 8. pre-consumption technical history
+## 8. pre-consumption technical history （技術検証）
 
 Stage 1 tooling smokeの初回attemptはimplementation defectで失敗したがscientific seedを使用していない。修正後tooling smokeはPASSした。
 
@@ -145,7 +145,7 @@ artifact ZIP SHA-256 = cf9591b02dee0d1cb1ce2e6aeb674522259be7d6266d1ee30dd586b23
 preflight result file SHA-256 = 7652628d0e6befc4e0d6a400c8b7d0e6b68cd70324cd8dbf575d12b63177f98f
 ```
 
-## 9. accepted Stage 1 scientific execution
+## 9. accepted Stage 1 scientific execution （実行記録）
 
 ```text
 workflow = UMSSR Stage 1 Scientific Development
@@ -172,7 +172,7 @@ runner internal result SHA-256 = 985235180827db9d314b610baeb37cd2aec9427633ac518
 
 repositoryにはcompact canonical recordを保持し、full compressed shardはGitHub Actions artifactを正本transportとして保持する。
 
-## 10. population / readiness
+## 10. population / readiness （対象集団と準備状態）
 
 ```text
 generated games = 4096
@@ -188,7 +188,7 @@ resource gate = PASS
 
 8 strataはすべて64 rootsである。
 
-## 11. production / independent exact verification
+## 11. production / independent exact verification （日本語の要点）
 
 ```text
 recordsExact = true
@@ -201,7 +201,7 @@ readinessObjectExact = true
 fullExact = true
 ```
 
-## 12. candidate K result
+## 12. candidate K result （日本語の要点）
 
 ```text
 K=2: support=0.142578125 silhouette=0.17337024701327378 stability=0.740234375 eligible=false
@@ -213,7 +213,7 @@ K=6: support=0.001953125 silhouette=0.184310677873519 stability=0.69921875 eligi
 
 eligible candidateは0であり、`selectedRepresentation = null`である。
 
-## 13. Stage 2 / G2-11 boundary
+## 13. Stage 2 / G2-11 boundary （Stageの記録）
 
 ```text
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
@@ -223,6 +223,6 @@ G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 
 Stage 2でrefit / reclustering / threshold relaxationを行わない。別representationを将来検討する場合は新しいprospective Studyまたはversioned protocolを必要とする。
 
-## 14. documentation quality
+## 14. documentation quality （日本語の要点）
 
 human-readable Markdownは日本語主体とし、canonical token、Study/Stage ID、field名、hash、pathは原表記を維持する。closure commit後に`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`を再適用する。

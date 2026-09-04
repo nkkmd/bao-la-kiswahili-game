@@ -1,8 +1,8 @@
-# CRCLGR-STUDY1 — Reproducibility Index
+# CRCLGR-STUDY1 — 再現性索引
 
-Updated: 2026-09-03
+更新日: 2026-09-03
 
-## Canonical protocol and preregistration
+## canonical protocolとpreregistration
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
@@ -12,38 +12,38 @@ Updated: 2026-09-03
 - `prereg/STAGE_2_FORMAL_SPEC.json`
 - `prereg/STAGE_2_SELECTION_CONTRACT.json`
 
-## Authorization records
+## authorization記録
 
 - `authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json`
 - `authorizations/STAGE_1_DEVELOPMENT_AUTHORIZATION.json`
 - `authorizations/STAGE_2_FORMAL_AUTHORIZATION.json`
 
-Scientific trigger files are provenance records only and must not be replayed.
+scientific trigger fileはprovenance記録としてのみ保持し、replayしてはならない。
 
-## Stage 0
+## Stage 0の記録
 
-Actions run: `33761178143`
+Actions runは`33761178143`である。
 
-Canonical result:
+canonical result:
 
 - `results/stage-0/STAGE_0_TECHNICAL_RESULT.json`
 
-Disposition: `STAGE0-PASS`.
+最終状態は`STAGE0-PASS`である。
 
-## Stage 1
+## Stage 1の記録
 
-Actions run: `33761678941`
+Actions runは`33761678941`である。
 
-Durable Actions artifact:
+durable Actions artifact:
 
 - artifact ID `9895942440`
 - ZIP SHA-256 `b940b79fb4c541111b14756d51de43c069158c46d860e0f2df0fdbe7d48e78eb`
 
-Exact-byte mirror commit:
+exact-byte mirror commit:
 
 `8b3c7ca9c3fed220a40297d03a73b4b162708c3b`
 
-Canonical mirrored artifacts:
+canonical mirrored artifact:
 
 - `results/stage-1/STAGE_1_CANDIDATE_MANIFEST.json`
 - `results/stage-1/STAGE_1_PREFLIGHT_ELIGIBILITY.json`
@@ -56,26 +56,26 @@ Canonical mirrored artifacts:
 - `results/stage-1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json`
 - `results/stage-1/STAGE_1_DEVELOPMENT_RESULT.json`
 
-Stage 1 disposition: `STAGE1-PASS`.
+Stage 1の最終状態は`STAGE1-PASS`である。
 
-Canonical scientific result SHA-256:
+canonical scientific resultのSHA-256:
 
 `e964970c71b270aaee8857fdd99b5041abcdb2f43ba83b600aa7764b2dda613f`
 
-## Stage 2 formal validation
+## Stage 2のformal validation記録
 
-Actions run: `33763404167`
+Actions runは`33763404167`である。
 
-Durable Actions artifact:
+durable Actions artifact:
 
 - artifact ID `9896703676`
 - ZIP SHA-256 `614f6b7bb487473c92a609e48b3ecee21ba3d23223e28e425078744310b66787`
 
-Exact-byte mirror commit:
+exact-byte mirror commit:
 
 `d1083ca07986fdbe3ab78d6bd4c12850e1200ef8`
 
-Canonical mirrored artifacts:
+canonical mirrored artifact:
 
 - `results/stage-2/STAGE_2_CANDIDATE_MANIFEST.json`
 - `results/stage-2/STAGE_2_PREFLIGHT_ELIGIBILITY.json`
@@ -87,29 +87,29 @@ Canonical mirrored artifacts:
 - `results/stage-2/STAGE_2_NEIGHBORHOODS.json`
 - `results/stage-2/STAGE_2_FORMAL_RESULT.json`
 
-Formal decision:
+formal decision（正式判断）:
 
 `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`
 
-Canonical Stage 2 scientific result SHA-256:
+canonical Stage 2 scientific resultのSHA-256:
 
 `c43ba119dbbc91f4145129dc5b24e886b0f436b577185cfb54d5f44619e5b0f5`
 
-## Implementations
+## implementation（実装経路）
 
-Production path:
+production path:
 
 - `tools/experiments/lib/crclgr-production.js`
 - `tools/experiments/lib/crclgr-stage1-production.js`
-- corresponding LGTGMIV production implementation
+- 対応するLGTGMIV production implementation
 
-Independent path:
+independent path:
 
 - `tools/experiments/lib/crclgr-independent.js`
 - `tools/experiments/lib/crclgr-stage1-independent.js`
-- corresponding LGTGMIV independent implementation
+- 対応するLGTGMIV independent implementation
 
-Runners / verifiers:
+runner / verifier:
 
 - `tools/experiments/run-crclgr-stage0-technical.js`
 - `tools/experiments/verify-crclgr-stage0-authorization.js`
@@ -118,8 +118,8 @@ Runners / verifiers:
 - `tools/experiments/run-crclgr-stage2-formal.js`
 - `tools/experiments/verify-crclgr-stage2-authorization.js`
 
-## Reproduction boundary
+## 再現に関する境界
 
-The scientific executions are provenance-complete but are **not authorized for rerun**. Reproducibility means independent verification of frozen artifacts/source bindings and future new prospective studies, not replaying consumed scientific evidence under the same Study/version.
+scientific executionのprovenanceは完備しているが、**rerunは承認されていない**。ここでいうreproducibilityは、固定済みartifact / source bindingのindependent verificationと、将来の新しいprospective Studyを指す。同じStudy / versionで消費済みscientific evidenceをreplayすることではない。
 
-Protected depth-10 remains sealed. Main integration remains not authorized.
+protected depth-10はsealedのままである。ここにある`main integration remains not authorized`はCRCLGR単独closure時点の記録であり、その後G3-10とのcombined fast-forwardにより統合済みである。現在状態は`CURRENT_STATUS.md`を正本とする。

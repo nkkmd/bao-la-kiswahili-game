@@ -63,7 +63,7 @@ Research Generation 1およびG2-01..G2-05の判断はすべてimmutableです�
 
 Historical Critical Positionsのsource seed、selected root、high-divergence root、candidate audit、reserved Stage 2 evidenceはG2-06 scientific development / formal evidenceから除外しました。
 
-## 5. representation contract
+## 5. representation contract （表現）
 
 結果を見る前に次の8 feature familyを宣言しました。
 
@@ -88,7 +88,7 @@ Stage 0で310-scalar feature schemaを固定しました。
 feature schema SHA256 = 1d9dd5e0ea42dc7bcdb7a385077397e08385fcdb4eeb695fc5625501dbc8526b
 ```
 
-## 6. Stage 0 — technical representation validation
+## 6. Stage 0 — technical representation validation （表現）
 
 Stage 0はtechnical-onlyでscientific outcomeを生成していません。
 
@@ -111,7 +111,7 @@ Decision:
 STAGE0-TECHNICAL-PASS
 ```
 
-## 7. Stage 1 — prospective development freeze
+## 7. Stage 1 — prospective development freeze （固定した条件）
 
 Stage 1 scientific outcome生成前に次を固定しました。
 
@@ -141,7 +141,7 @@ STAGE_1_DEVELOPMENT_SPEC.json = 813b99ed64cc3af1438119f513faf6be64e7c6b6d6015a0f
 STAGE_1_EXECUTION_ADDENDUM.json = e246f562735c72ccc29ea320021be7bb3cb0056f30cf063dca0e3d0366a89d64
 ```
 
-## 8. implementation / resource / source-freeze validation
+## 8. implementation / resource / source-freeze validation （固定した条件）
 
 scientific authorization前のnon-scientific validationで、frozen pipelineが実行可能であることと、exact scientific source setがbindingされていることを確認しました。
 
@@ -184,7 +184,7 @@ fixed spec、execution addendum、exact source-blob map、fresh seed block、fai
 
 scientific Stage 1 executionがexecution-start boundaryを越えた時点で、seed blockは`RCPR-STUDY1`に対して永久にconsumedとなりました。
 
-## 10. Stage 1 execution
+## 10. Stage 1 execution （実行記録）
 
 Canonical workflow:
 
@@ -195,7 +195,7 @@ independent verification job = 99007180273 / failure
 failed step = Independent full-corpus replay and recomputation
 ```
 
-### Production-only development output
+### Production-only development output （日本語の要点）
 
 Productionはfrozen development pipelineを完了し、次を報告しました。
 
@@ -225,7 +225,7 @@ production development core SHA256 = 245c7e04421b1ef534edcb23d3048df1e2f1d556f92
 
 これらは**production-only unverified development provenance**としてのみ保持します。accepted scientific Stage 1 resultではなく、Stage 2を承認しません。
 
-## 11. mandatory independent verification
+## 11. mandatory independent verification （独立検証）
 
 Independent verifierはproduction feature implementationやproduction Stage 1 classifier helperをimportせず、corpus、root selection、representation、continuation outcome、model development、readinessを再計算しました。
 
@@ -257,7 +257,7 @@ verification SHA256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4
 independent development core SHA256 = 5b2251ef1ac34295cd1d67412c9d7f09adbe55b5af81a8752d3cb639b036e22a
 ```
 
-## 12. technical postmortem
+## 12. technical postmortem （技術検証）
 
 read-only post-failure auditで4 mismatchすべてが次のfeatureへ局在することを確認しました。
 
@@ -281,7 +281,7 @@ Canonical postmortem:
 
 - `results/STAGE_1_TECHNICAL_POSTMORTEM.json`
 
-## 13. fail-closed closure
+## 13. fail-closed closure （最終状態）
 
 frozen execution contractでは、post-consumption technical / independent-verification failureを次へmapします。
 
@@ -303,7 +303,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 post-hoc rescueは一切適用していません。
 
-## 14. interpretation boundary
+## 14. interpretation boundary （解釈上の境界）
 
 このclosureは、rich pre-root representationがmachine-defined decision-critical structureを識別できないことを確立したものではありません。
 
@@ -313,7 +313,7 @@ post-hoc rescueは一切適用していません。
 
 production observationはprovenanceとfuture hypothesis generationのために保存できますが、accepted Stage 1 evidence、Stage 2 formal evidence、validated critical-position classification claimへ昇格してはいけません。
 
-## 15. workflow archive / repository closure
+## 15. workflow archive / repository closure （最終状態）
 
 scientific closureとcentral-document synchronization後、すべてのRCPR technical / development / materialization workflowをread-only archival stubへ変換しました。
 
@@ -325,7 +325,7 @@ Canonical archive checkpoint:
 
 今後`RCPR-STUDY1`のtechnical、development、scientific、automatic central-document executionを行うことは承認されていません。
 
-## 16. Program continuation
+## 16. Program continuation （次の研究）
 
 G2-06はclosedであり、result-drivenな`RCPR-STUDY2` retryとして再開しません。
 

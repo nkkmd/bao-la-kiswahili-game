@@ -121,7 +121,7 @@ MDFT-F10
 
 これらはdevelopment observationに限られる。global readiness gateがFAILしているため、6件の`true` calculationをfrozen taxonomyやauthorized Stage 2 targetへ昇格させない。
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 Stage 1がblocked/non-estimableとなった場合の事前登録済みの帰結は次のとおりである。
 
@@ -148,7 +148,7 @@ TM-S2-C03 = CONFIRMED
 
 PCRPRのproduction-only `F05_ALL` / `lambda=100` / OOF metricsは、G2-08のvalidated inputではない。
 
-## RAW identity
+## RAW identity （識別情報）
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending

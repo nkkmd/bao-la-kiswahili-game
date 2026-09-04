@@ -1,4 +1,4 @@
-# LGTGGC-STUDY1 — Current Status
+# LGTGGC-STUDY1 — 現在の状態
 
 更新日: 2026-09-04
 
@@ -21,18 +21,18 @@ G2-12 estimator scientific input = NOT AUTHORIZED / NOT USED
 Main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
 ```
 
-## Active source-policy contract
+## 現在有効なsource-policy contract
 
-Pre-fresh amendment preserved as authoritative execution contract:
+fresh evidenceへアクセスする前に行ったamendmentを、正式な実行contractとして維持している。
 
 ```text
 P1 = LGTGGC-P1-UNIFORM-LEGAL
 P2 = LGTGGC-P2-MAX-CAPTURE
 ```
 
-The original `P2-CAPTURE-FIRST` remains historical preregistration provenance and was replaced before scientific access because authoritative legal-move generation already enforces capture priority, making it observationally identical to P1.
+当初の`P2-CAPTURE-FIRST`はhistorical preregistration provenanceとして残している。ただし、正式な合法手生成がすでにcapture priorityを強制するためP1と観測上区別できず、scientific access前に置き換えた。
 
-## Stage 0
+## Stage 0の状態
 
 ```text
 V1 = PRE-EXECUTION-TECHNICAL-INVALID / NOT EXECUTED / original P1-P2 non-identifiability
@@ -43,9 +43,9 @@ V3 artifact ID = 9925602227
 V3 technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e493e8a834
 ```
 
-Stage 0 PASS established technical readiness only. Stage 1 was separately authorized afterward.
+Stage 0のPASSが確立したのは技術的な実行準備だけである。その後、Stage 1を別のauthorization reviewで承認した。
 
-## Stage 1 exactly-once execution
+## Stage 1のexactly-once実行
 
 ```text
 Actions run = 33848876682
@@ -60,7 +60,7 @@ execution consumed = 1
 same-evidence rerun = NOT AUTHORIZED
 ```
 
-### SFCDF-TRANSFER
+### SFCDF-TRANSFERの状態
 
 ```text
 seed range = 32311001..32311384 / CONSUMED
@@ -76,9 +76,9 @@ p-values = false
 effect-direction summary = false
 ```
 
-This is development readiness only; it is not a G3-04 generalization result.
+これはdevelopment readinessだけを示し、G3-04のgeneralization resultではない。
 
-### SILGM-TRANSFER
+### SILGM-TRANSFERの状態
 
 ```text
 seed range = 32312001..32312768 / CONSUMED
@@ -88,11 +88,11 @@ formal inference = false
 p-values = false
 ```
 
-Static independent audit confirmed a compatibility gap between the frozen LOW root population, which does not exclude legal width 1, and inherited production/independent SILGM search helpers, which hard-require at least two root candidates after an estimable search result.
+static independent auditにより、legal width 1を除外していない固定済みLOW root populationと、estimableなsearch resultの後に2件以上のroot candidateを必須とする既存のproduction / independent SILGM search helperとの間にcompatibility gapがあることを確認した。
 
-The specific failing scientific root is not replayed or localized after fresh access.
+fresh access後には、failureを起こした具体的なscientific rootを再実行または特定していない。
 
-### GCLD-TRANSFER
+### GCLD-TRANSFERの状態
 
 ```text
 seed range = 32313001..32313384
@@ -100,21 +100,21 @@ execution = NOT EXECUTED / WORKFLOW SKIPPED
 seed access = 0 / UNREAD
 ```
 
-## Stage 2 boundary
+## Stage 2の境界
 
-Post-Stage1 review decision:
+Stage 1後のreview decisionは次のとおりである。
 
 **`LGTGGC-STAGE2-NOT-AUTHORIZED`**
 
-Reasons include:
+直接の理由は次のとおりである。
 
-- Stage 1 SILGM = TECHNICAL-INVALID;
-- Stage 1 GCLD readiness = unestablished;
-- complete Stage 1 identity-only exclusion firewall cannot be materialized without SILGM fresh replay;
-- same-evidence rerun/repair is prohibited;
-- module dropping after fresh evidence would be post-hoc rescue.
+- Stage 1 SILGMが`TECHNICAL-INVALID`だった。
+- Stage 1 GCLDのreadinessを確立できなかった。
+- SILGMのfresh replayなしには、完全なStage 1 identity-only exclusion firewallをmaterializeできない。
+- same-evidence rerun / repairは禁止されている。
+- fresh evidence確認後のmodule droppingはpost-hoc rescueになる。
 
-Frozen Stage 2 seeds remain unread:
+固定済みのStage 2 seedは、次のとおり未読のままである。
 
 ```text
 SFCDF = 32321001..32321768 / UNREAD
@@ -122,17 +122,17 @@ SILGM = 32322001..32323536 / UNREAD
 GCLD  = 32324001..32324768 / UNREAD
 ```
 
-## Scientific conclusion boundary
+## 科学的結論の境界
 
-`LGTGGC-STUDY1` did **not** establish any formal `GENERALIZATION-CONFIRMED`、`COUNTEREXAMPLE-CONFIRMED`、`NOT-GENERALIZED`、or `NON-ESTIMABLE` endpoint-domain decision.
+`LGTGGC-STUDY1`は、`GENERALIZATION-CONFIRMED`、`COUNTEREXAMPLE-CONFIRMED`、`NOT-GENERALIZED`、`NON-ESTIMABLE`のいずれについても、formalなendpoint-domain decisionを確立していない。
 
-The correct Study-level conclusion is only:
+Study-levelで正しく述べられる結論は、次の一点だけである。
 
-**the prospectively frozen G3-12 capstone execution did not reach formal Stage 2 because Stage 1 failed closed technically.**
+**結果を見る前に固定したG3-12 capstone executionは、Stage 1が技術的にfail closedしたため、formal Stage 2へ到達しなかった。**
 
-Upstream G3-04/G3-07/G3-10 formal results remain unchanged. G3-10 C4 remains NOT-CONFIRMED. G3-11 remains bounded to its single frozen depth-10 domain.
+上流のG3-04 / G3-07 / G3-10のformal resultは変更されない。G3-10 C4は`NOT-CONFIRMED`のままであり、G3-11の主張範囲は一度だけ実行した固定depth-10 domainに限られる。
 
-## Canonical closure records
+## canonical closure記録
 
 - `STUDY_1_FINAL_REPORT.md`
 - `STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
@@ -140,6 +140,6 @@ Upstream G3-04/G3-07/G3-10 formal results remain unchanged. G3-10 C4 remains NOT
 - `results/stage-1/STAGE_1_EXECUTION_RECORD.json`
 - `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
 
-## Main integration
+## `main`への統合
 
-`main` integration is **COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false**. The research branch is retained for provenance.
+`main`への統合は **COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false** で完了している。research branchはprovenanceのため保持している。

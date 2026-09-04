@@ -2,7 +2,7 @@
 
 更新日: 2026-09-02
 
-## 1. Formal decision
+## 1. formal decision（正式判断）
 
 ```text
 Study = BECT-STUDY1
@@ -24,7 +24,7 @@ Stage 0 v2はtechnical validationをPASSした。Stage 1はfresh development evi
 
 fresh scientific access後であるため、同一seed/evidenceをimplementation修正後に再実行して救済することはno-rescue ruleに反する。したがってformal decisionは **`CLOSED / TECHNICAL-INVALID`** とする。
 
-## 2. Prospective scope
+## 2. 結果を見る前に固定したscope
 
 Representation contract:
 
@@ -48,7 +48,7 @@ Frozen level endpoints:
 7. `BECT-M7-BRANCH-REOPENING-FRACTION`
 8. `BECT-M8-BRANCH-EXTINCTION-FRACTION`
 
-Adjacent deltas are exact rational. Event grammar uses exact sign only, with no magnitude threshold, and classifies onset / persistence / reversal / stall within phase-consistent windows.
+adjacent deltaはexact rationalである。event grammarはmagnitude thresholdを置かずexact signだけを使い、phase-consistent window内でonset / persistence / reversal / stallを分類する。
 
 Frozen Stage 1 population:
 
@@ -61,13 +61,13 @@ selection = seed-ascending first eligible trajectories
 replacement = prohibited
 ```
 
-## 3. Prospective clarifications and evidence firewall
+## 3. 結果を見る前のclarificationとevidence firewall
 
-Before fresh Stage 1 evidence, two implementation ambiguities were prospectively resolved without changing the scientific endpoint/test contract.
+fresh Stage 1 evidenceを見る前に、scientific endpoint / test contractを変えず、implementation上のambiguity 2件を解消した。
 
 - M5 denominator = `sum uniqueTransitionCount[d], d=0..4`
-- candidate coverage requires the metric to be defined at all 48 analysis roots of all 10 selected trajectories
-- full trajectory / opening prefix / trajectory segment / adjacent-root-pair / event-window identities were deterministically fixed before fresh access
+- candidate coverageでは、選択した10 trajectoryすべての48 analysis rootでmetricが定義可能であることを要求する
+- full trajectory / opening prefix / trajectory segment / adjacent-root-pair / event-window identityはfresh access前にdeterministicに固定した
 
 Upstream identity-only firewall:
 
@@ -83,7 +83,7 @@ G3-04 scientific outcome fields retained = false
 
 G3-03のtechnical-invalid diagnostic valuesおよびG3-04のconfirmed direction/valueはBECT candidate selectionやendpoint definitionへ使用していない。
 
-## 4. Stage 0 technical validation
+## 4. Stage 0のtechnical validation
 
 Stage 0 v1はfixed technical pair 24->25がtechnical trajectoryに存在しなかったためtechnical-invalidとなり、rerunしていない。
 
@@ -101,7 +101,7 @@ result = STAGE0-PASS
 
 Stage 0 v2ではtrajectory replay、adjacent successor binding、overlapping-window semantics、repeated RAW identityのtime-index semantics、production/independent reconstruction・eligible family・BECT level equality等をPASSした。
 
-## 5. Stage 1 authorization and exactly-one execution
+## 5. Stage 1のauthorizationとexactly-once実行
 
 Fresh-free preparation:
 
@@ -141,7 +141,7 @@ no-rescue boundary crossed = true
 
 Stage 1をrerunしていない。
 
-## 6. Stage 1 observed technical result
+## 6. Stage 1で観測したtechnical result
 
 Canonical Stage 1 result:
 
@@ -165,11 +165,11 @@ Stage elapsed before abort = 298359.133611 ms
 
 したがってpartial telemetryからformal candidateをpromotionしない。
 
-Formal promoted candidate set:
+formal stageへ昇格したcandidate set:
 
 **`[]`**
 
-## 7. Durable artifact and exact-byte mirror
+## 7. durable artifactとexact-byte mirror
 
 Durable Actions artifact:
 
@@ -198,7 +198,7 @@ scientific recomputation = false
 
 artifactはscientific process exit後もdurably preservedされ、repository mirrorでは同じscientific computationを再実行していない。
 
-## 8. Technical-invalid cause and interpretation
+## 8. technical-invalidの原因と解釈
 
 Observed failureは、depth-5 bounded RAW reconstructionを進めている途中でengine enumerationが`relay-limit` stateへ到達したことによる。
 
@@ -215,7 +215,7 @@ Observed failureは、depth-5 bounded RAW reconstructionを進めている途中
 
 25 rootsのpartial telemetryはtechnical provenanceとして保存するが、confirmatory/development evidenceとしてcandidate promotionへ使用しない。
 
-## 9. No-rescue closure
+## 9. no-rescue closure （最終状態）
 
 Stage 1 seed block `31510001..31510240`はconsume済みで、no-rescue boundaryはactiveである。
 
@@ -223,14 +223,14 @@ Stage 1 seed block `31510001..31510240`はconsume済みで、no-rescue boundary�
 
 - same Stage 1 evidenceのrerun
 - relay-limit handlingを修正した同一seed再評価
-- seed extension / root replacement / favorable subset selection
+- seed extension / root replacement / favorable subset selectionを行うこと
 - endpoint / event grammar / horizon / representation / resource ceiling / promotion gateの事後変更
 - partial telemetryをformal promoted candidateへ格上げすること
 - Stage 2を実行すること
 
 このmethodological failureは、将来の**別のprospective independent study**でrelay-limit handling / reachable-domain contractを再設計する理由にはなり得るが、BECT-STUDY1自体の救済許可ではない。
 
-## 10. Stage 2 and protected evidence
+## 10. Stage 2とprotected evidence
 
 Stage 2 authorization prerequisiteであるvalid Stage 1 completionとnonempty frozen promoted candidate setを満たさない。
 
@@ -239,11 +239,11 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seed = 31520001..31520384 / NOT CONSUMED
 ```
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-## 11. Final closure
+## 11. 最終closure
 
 ```text
 BECT-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -256,6 +256,6 @@ main integration at scientific closure = NOT PERFORMED
 BECT-STUDY1のtechnical-invalid resultはnegative/null scientific findingではない。これはprospectively frozen execution contractの下でformal scientific evaluationへ到達できなかったことを示すtechnical validity resultである。
 
 <!-- BECT-POST-CLOSURE-INTEGRATION-ADDENDUM -->
-## Post-closure repository lifecycle addendum
+## closure後のrepository lifecycle追記
 
 Scientific closure時点ではmain integrationは未実施だった。その後、明示的ユーザー指示を受けてresearch head `49f868103b186c8bc00a188afd185a620a797e55` のfast-forward統合が完了した。このrepository lifecycle更新はBECT-STUDY1のscientific result、technical-invalid disposition、formal promoted set、no-rescue boundaryを変更しない。

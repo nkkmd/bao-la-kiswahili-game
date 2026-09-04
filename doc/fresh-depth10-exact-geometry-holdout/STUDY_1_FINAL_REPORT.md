@@ -1,4 +1,4 @@
-# FDEGHV-STUDY1 — Study 1 Final Report
+# FDEGHV-STUDY1 — Study 1最終報告
 
 更新日: 2026-09-04
 
@@ -21,9 +21,9 @@ H4 transposition persistence = DEEPER-CONFIRMED
 
 これは、standard initial RAW rootからの**complete exact depth 10という凍結済み単一domain**におけるexact resultである。Bao全状態空間・全ゲーム木の推定、depth 11への一般化、causal mechanism、human difficulty、game-theoretic value、G3-04/G3-07/G3-10の既存formal decisionの再判定を意味しない。
 
-`main` integrationはこのscientific closureには含まれず、明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`である。
+scientific closure時点では、`main` integrationを別操作として`NOT AUTHORIZED / NOT PERFORMED`に保った。その後、明示的なユーザー指示に基づく統合が完了している。現在のrepository状態は`CURRENT_STATUS.md`を正本とする。
 
-## 2. Prospective contract
+## 2. 結果を見る前に固定したcontract
 
 Formal Stageは`FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1`である。
 
@@ -43,17 +43,17 @@ depth 11 = prohibited
 G2-12 estimator scientific input = prohibited
 ```
 
-Formal targets:
+formal targetは次のとおりである。
 
-- E0 — complete exact RAW domain through depth 10
+- E0 — depth 10までのcomplete exact RAW domain
 - H1 — `newRawStateCount[10] == uniqueRawStateCount[10]`
 - H2 — `treeNodeOccurrences[10] > uniqueRawStateCount[10]`
 - H3 — `treeThrough10 * rawThrough9 > treeThrough9 * rawThrough10`
 - H4 — `duplicateArrivalCount[10] > 0 AND statesWithMultiplePredecessors[10] > 0`
 
-No p-value sampling inference was introduced because the frozen target domain itself was completely enumerated.
+固定済みtarget domainそのものを完全列挙したため、p-valueを用いるsampling inferenceは導入していない。
 
-## 3. Authorization and protected-evidence opening
+## 3. authorizationとprotected evidenceの開封
 
 post-G3-10 current-state reviewはprotected depth-10 outcomeを開く前に`G3-11-AUTHORIZED`を固定した。その後、Stage 0 technical controls、pre-access documentation sync、source freeze、resource ceiling、Stage 1 authorization、durable pre-computation leaseを順にmaterializeした。
 
@@ -73,13 +73,13 @@ post-outcome resource-ceiling change = false
 
 Stage 1 Actions run `33837413663`はrun number 1で`success`となった。protected depth-10はこのauthorized executionで初めて開かれ、以後は「sealed」ではなく**consumed exactly once / no-rerun**として扱う。
 
-## 4. Exact domain result
+## 4. exact domainの結果
 
-Complete enumerationはdepth 10まで完了し、`stopReason = null`であった。
+complete enumerationはdepth 10まで完了し、`stopReason = null`であった。
 
 主要なexact totals:
 
-| Quantity | Exact value |
+| 項目 | exact value |
 | --- | ---: |
 | depth-10 unique RAW states | 348,270 |
 | depth-10 new RAW states | 348,270 |
@@ -102,29 +102,29 @@ cumulative global RAW graph-edge-set SHA-256 = f8ecc7f399994407c13dc76aedec013ee
 cumulative depth-labelled edge-set SHA-256 = f96a0750891c255f87fbb5692a7caae4afad23acaa24034a8bda3a18395b63f4
 ```
 
-## 5. Formal target decisions
+## 5. formal targetの判断
 
-### H1 — exact-depth novelty continuation
+### H1 — exact-depth noveltyの継続
 
 ```text
 348270 == 348270
 ```
 
-Decision: **`DEEPER-CONFIRMED`**
+判断: **`DEEPER-CONFIRMED`**
 
 depth 10で到達した348,270 RAW statesは、すべてdepth 0..9 cumulative setに対してnewであった。この結果はこのstandard-root depth-10 layerに限定される。
 
-### H2 — layer tree/RAW divergence continuation
+### H2 — layer tree / RAW divergenceの継続
 
 ```text
 494456 > 348270
 ```
 
-Decision: **`DEEPER-CONFIRMED`**
+判断: **`DEEPER-CONFIRMED`**
 
 同一depth layerでtree occurrenceがunique RAW state countを上回り、tree representationとRAW state graph representationの乖離がdepth 10でも継続した。
 
-### H3 — cumulative tree/RAW inflation continuation
+### H3 — cumulative tree / RAW inflationの継続
 
 Floating-point toleranceではなく、凍結済みexact integer cross-productで比較した。
 
@@ -134,22 +134,22 @@ right = 61644248915
 left > right
 ```
 
-Decision: **`DEEPER-CONFIRMED`**
+判断: **`DEEPER-CONFIRMED`**
 
 したがってcumulative tree/RAW ratioはdepth 9までよりdepth 10までで増加した。
 
-### H4 — transposition persistence
+### H4 — transpositionの持続
 
 ```text
 duplicateArrivalCount[10] = 11725 > 0
 statesWithMultiplePredecessors[10] = 10383 > 0
 ```
 
-Decision: **`DEEPER-CONFIRMED`**
+判断: **`DEEPER-CONFIRMED`**
 
 depth 10でもduplicate arrivalとmulti-predecessor RAW stateの双方が存在した。
 
-## 6. Independent verification
+## 6. independent verification（独立検証）
 
 Formal exact classificationの条件として、production materializationを読むだけの検査に加え、materially separate independent implementationによるfull exact depth-10 re-enumerationを必須とした。
 
@@ -167,11 +167,11 @@ canonical scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4
 
 Independent verificationはstate set、source-move-successor edge relation、tree occurrence propagation、branching distribution、duplicate arrival / predecessor multiplicity、per-layer/cumulative hashes、H1–H4の再計算を対象とした。
 
-## 7. Resource and integrity gates
+## 7. resource gateとintegrity gate
 
 凍結済みresource ceilingはoutcomeを見る前に固定し、結果後に変更していない。
 
-Production final gate:
+productionのfinal gate:
 
 ```text
 PASS
@@ -180,7 +180,7 @@ elapsed = 108.530371328 s
 peak RSS = 2269167616 bytes
 ```
 
-Independent final gate:
+independent implementationのfinal gate:
 
 ```text
 PASS
@@ -190,7 +190,7 @@ elapsed = 117.592820799 s
 peak RSS = 2460262400 bytes
 ```
 
-Final artifact gate:
+最終artifact gateの判定:
 
 ```text
 PASS
@@ -201,7 +201,7 @@ manifest included = true
 
 resource ceiling crossing、partial promotion、post-outcome cap increaseは発生していない。
 
-## 8. Stage 0 technical record
+## 8. Stage 0のtechnical record
 
 Stage 0のtechnical scientific-free controls自体は`STAGE0-PASS`である。最初のActions workflow全体は、PASS artifact upload後のcurrent-facing documentation syncが古いexact-string assumptionに依存して失敗したため`failure`となったが、これはdepth-10 scientific evidenceの生成・readより前のcontrol-plane defectであった。
 
@@ -215,7 +215,7 @@ Stage 0 result SHA-256 = cbe1a078568a4d1162c9703dc089c1f9413cb0c2f34dd4f0b292555
 protected depth-10 access during Stage 0 = false
 ```
 
-## 9. Interpretation boundary
+## 9. 解釈上の境界
 
 本Studyがformalに確立したのは、standard initial RAW rootからdepth 10までの凍結exact domainにおけるRAW game-tree/game-graph geometry primitiveと、H1–H4のprospective continuation checksである。
 
@@ -224,16 +224,16 @@ protected depth-10 access during Stage 0 = false
 - Bao全状態空間のサイズ
 - Bao全ゲーム木のサイズ
 - depth 11以深で同じ関係が必ず続くこと
-- symmetry-reduced / canonicalized state-space result
+- symmetry reduction / canonicalizationを適用した状態空間の結果
 - strategic regime representation
 - G3-10 trajectory-level chronology/path-dependence claimの再判定
 - G3-07 search-condition associationの再判定
 - G3-04 phase contrastの再判定
-- causal mechanism、human difficulty、game-theoretic value
+- 因果mechanism、人間にとっての難しさ、game-theoretic value
 
 特にG2-12 estimatorはscientific input、expected count、target、resource tuningのいずれにも使用していない。
 
-## 10. Closure / no-rescue boundary
+## 10. closureとno-rescue boundary
 
 protected depth-10 evidenceは1回のauthorized executionでconsume済みであり、同Study/versionでは再実行しない。
 
@@ -253,7 +253,7 @@ Depth 11を扱う場合は、G3-11の延長ではなく、別のfresh prospectiv
 
 Historical `doc/research-generation-3/PROGRAM_PLAN.md`は変更しない。
 
-## 11. Canonical records
+## 11. canonical record（正本となる記録）
 
 - `README.md`
 - `CURRENT_STATUS.md`

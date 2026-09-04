@@ -47,7 +47,7 @@ Mtaji selected states = 1747 < 1750
 
 したがって、`NOT-CONFIRMED`は本Studyで承認されたlabelではありません。
 
-## canonical evidence
+## canonical evidence （証拠と成果物）
 
 ```text
 artifact ID = 9636207301
@@ -57,7 +57,7 @@ selection hash = eb3e65fd388168e6440eee7c64675face828d285755992f01bcf4b8c8879dbe
 measurement hash = e3e6fe1d763f5ca2bf8b654ce39a4d3b3edda125e7e1eb92f9daee00c0f38294
 ```
 
-## no-rescue boundary
+## no-rescue boundary （解釈上の境界）
 
 `PEOCR-STUDY1`内では、additional Stage 2 game、seed extension、overlap replacement、gate relaxation、mapping refit、near-miss exception、favorable subgroup、alternate-primary relabelingを行うことは承認されていません。
 

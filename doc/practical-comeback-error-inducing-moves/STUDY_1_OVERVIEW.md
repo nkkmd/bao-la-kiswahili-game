@@ -1,4 +1,4 @@
-# Practical Comeback / Error-Inducing Move Study 1 — Overview
+# Practical Comeback / Error-Inducing Move Study 1 — Overview （概要）
 
 更新日: 2026-08-25  
 Status: **STUDY 1 COMPLETE**
@@ -26,7 +26,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 したがって、PCEM-STUDY1は「実用的な勝負手クラスを確認した」とは結論しない。
 
-## Stage 1 evidence
+## Stage 1 evidence （Stageの記録）
 
 ```text
 generatedGames = 3072
@@ -42,9 +42,9 @@ totalContinuationRows = 18105
 primaryAdministrativeHorizonExhaustions = 2
 ```
 
-All frozen readiness gates passed.
+固定済みreadiness gateはすべてPASSした。
 
-## Independent verification
+## Independent verification （日本語の要点）
 
 Canonical workflow run `32820391017` completed successfully. The independent implementation reproduced:
 
@@ -52,7 +52,7 @@ Canonical workflow run `32820391017` completed successfully. The independent imp
 - root selection;
 - RAW-ONLY state identity;
 - all selected-root measurements;
-- candidate discovery and promotion result.
+- candidate discoveryとpromotionの結果
 
 ```text
 independent decision = TECHNICAL-PASS
@@ -65,9 +65,9 @@ discovery = true
 stage1ResultHash = 4c9f7d9c88e6430bd9ec248b7360ba2894c6bfddc57516e7946a0d2d3192da08
 ```
 
-## Why no candidate was promoted
+## Why no candidate was promoted （日本語の要点）
 
-55 prospectively bounded candidate definitions were audited under templates `PCEM-T1..T8`. Every candidate failed at least one frozen promotion gate.
+結果を見る前に範囲を限定した55 candidate definitionsを、template `PCEM-T1..T8`の下で監査した。すべてのcandidateが、固定済みpromotion gateの少なくとも1つを満たさなかった。
 
 Most importantly, all 55 failed each of the following support requirements:
 
@@ -79,9 +79,9 @@ minimumUniqueRootsContributingErrorCondition
 minimumUniqueRootsContributingDefenseCondition
 ```
 
-Some candidate definitions passed individual machine-error-dependence or reply-concentration gates, but none passed the full conjunction of support, diversity, primary comeback-difference, and error-dependence requirements. Near-miss promotion is forbidden.
+一部のcandidate definitionは個別のmachine-error-dependenceまたはreply-concentration gateを通過したが、support、diversity、primary comeback-difference、error-dependenceの全条件を同時に満たすcandidateはなかった。near-missをpromotion扱いすることは禁止している。
 
-## Construct separation retained
+## Construct separation retained （日本語の要点）
 
 The study kept the following quantities separate:
 
@@ -94,15 +94,15 @@ E. machine-operational reply difficulty / punishment concentration
 F. move optimality gap
 ```
 
-## Representation boundary
+## Representation boundary （適用範囲と制限）
 
 Authoritative downstream state identity remained RAW-ONLY:
 
-`pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending`.
+RAW identityのfieldは`pits`、`reserve`、`houseOwned`、`player`、`phase`、`winner`、`pending`である。
 
-`turn` and `reason` were excluded. Missing `pending` was invalid before engine entry, seed conservation to 64 was mandatory, and no symmetry/canonicalization was used.
+`turn`と`reason`は除外した。`pending`がないstateはengine entry前にinvalidとし、seed total 64の保存を必須とした。symmetry / canonicalizationは使用していない。
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 This study does **not** establish:
 
@@ -111,15 +111,15 @@ This study does **not** establish:
 - true Bao winning probability;
 - effectiveness against all opponent strengths;
 - human difficulty, deception, pressure, or psychology;
-- expert/traditional recognition as a Bao “winning try”.
+- Baoの「勝負手」としてのexpert / traditional recognition
 
-The zero-promotion result is specific to the frozen population, D3/D2 reference semantics, `P_MEDIUM_D1_TOP3` primary opponent, 96-ply bounded endpoint, candidate grammar, and promotion requirements.
+promotion 0件という結果は、固定済みpopulation、D3 / D2 reference semantics、`P_MEDIUM_D1_TOP3` primary opponent、96-ply bounded endpoint、candidate grammar、promotion requirementsに限定される。
 
-## Upstream boundary
+## Upstream boundary （適用範囲と制限）
 
-No formal decision, negative/null/inconclusive/non-estimable result, threshold, classifier, endpoint, population, or interpretation boundary from any completed upstream Bao study was changed or rescued.
+完了済みupstream Bao Studyのformal decision、negative / null / inconclusive / non-estimable result、threshold、classifier、endpoint、population、interpretation boundaryは、変更も救済もしていない。
 
-## Canonical records
+## Canonical records （日本語の要点）
 
 - `STUDY_1_FINAL_REPORT.md`
 - `CURRENT_STATUS.md`

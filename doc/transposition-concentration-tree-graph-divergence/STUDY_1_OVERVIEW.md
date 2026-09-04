@@ -19,17 +19,17 @@ Principal measurement familiesはLGTGMIVのformal-eligible F2/F3/F4、F1は補�
 
 Frozen candidatesは次の5つでした。
 
-1. cumulative tree/RAW ratio
+1. cumulative tree / RAW ratio
 2. duplicate / unique-transition fraction
 3. layer-sum multi-parent fraction
 4. reconvergence-onset score
 5. root-branch overlap fraction
 
-## Stage 0
+## Stage 0の役割
 
 Synthetic fixturesだけを用いたtechnical stageは`STAGE0-PASS`でした。fresh scientific seedやprotected depth-10 holdoutには触れていません。
 
-## Stage 1
+## Stage 1の結果
 
 Fresh seed `31310001..31310192`から12 paired trajectories、計24 rootsをexactly one authorized scientific executionで測定しました。
 
@@ -68,7 +68,7 @@ Stage 1 = TECHNICAL-INVALID
 
 この欠陥はfresh evidence生成後に判明しました。同じseedをprototype修正後に再実行すること、またはequality contractを事後的にcanonical equalityへ置き換えることはsame-evidence rescueになるため行っていません。
 
-## Formal decision
+## formal decision（正式判断）
 
 ```text
 TCTGD-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -92,7 +92,7 @@ Formalに確定したのは、G3-03 Stage 1がfrozen cross-implementation integr
 - transposition-richな局面がsearchしやすい／戦略的に単純である
 - bounded depth-5 observationがdeeper game treeへ一般化する
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
 Standard initial RAW-root complete exact depth-10 holdoutは:
 

@@ -20,11 +20,11 @@ Study開始前に次を固定した。
 - Stage 1 seed: `31010001..31010096`
 - Stage 2 seed: `31020001..31020096`
 - local horizon: depth 5
-- root selection、resource ceiling、independent verification、no-rescue rule
+- root selection、resource ceiling、independent verification、no-rescue ruleの固定
 
 standard initial RAW rootのcomplete depth-10 exact layerはG3-11用にsealedし、本Studyでは生成・readしなかった。
 
-## Stage 0
+## Stage 0の役割
 
 最初のtechnical implementation v1は、多くのtechnical checkには通ったものの、凍結済みの`rootBranchPairOverlap`と`narrowPathRun`をformal measurement coreへ出力していない欠陥が見つかった。
 
@@ -39,7 +39,7 @@ fresh development seedからgeometryを見ずにNamua 6局面、Mtaji 6局面を
 次はすべてexactに一致した。
 
 - 12局面のroot identity
-- source trajectory / opening-prefix identity
+- source trajectory / opening-prefixのidentity
 - 各rootのmeasurement core hash
 - `F1-TREE-OCCURRENCE`
 - `F2-RAW-GRAPH`

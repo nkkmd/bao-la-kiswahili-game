@@ -48,7 +48,7 @@ shortfall = 10
 
 seed extension、replacement、threshold relaxationは承認されていません。
 
-## canonical provenance
+## canonical provenance （記録）
 
 ```text
 workflow run = 33124538584

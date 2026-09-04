@@ -1,12 +1,18 @@
-# Reproducibility Index — Tactical Motifs / Tesuji Study 1
+# Reproducibility Index — Tactical Motifs / Tesuji Study 1 （再現性）
+
+## 日本語での要点
+
+TM-S2-C03だけがCONFIRMEDで、残る3候補はNOT-CONFIRMEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-15
 
-## Study status
+## Study status （日本語の要点）
 
 **CLOSED / COMPLETE**
 
-## Stage 1 exploratory identity
+## Stage 1 exploratory identity （Stageの記録）
 
 - Stage ID: `TM-S1-EXPLORATORY-2026-08-14-v1`
 - spec SHA-256: `f2836ae6adb2278b70956242384945afda55c4ee209a2fefd0d0b4d553c2f76c`
@@ -21,7 +27,7 @@ Local artifact root:
 
 `artifacts/local/tactical-motifs/stage1-exploratory-v1/`
 
-## Stage 2 formal identity
+## Stage 2 formal identity （Stageの記録）
 
 - Stage ID: `TM-S2-FORMAL-2026-08-14-v1`
 - candidate-definition SHA-256: `667f4645fb7c0c704b1d3e49a1d7caefca54de2b9df2ddf0e542f7241aeb81e8`
@@ -38,7 +44,7 @@ Local artifact root:
 
 `artifacts/local/tactical-motifs/stage2-formal-v1/`
 
-## Stage 2 source provenance
+## Stage 2 source provenance （Stageの記録）
 
 Generation source commit:
 
@@ -54,7 +60,7 @@ Evaluation source commit:
 
 All recorded source trees were clean. Scientific source-file SHA-256 values matched the active source-hash-bound authorization.
 
-## Stage 2 compact artifacts
+## Stage 2 compact artifacts （Stageの記録）
 
 Expected local compact artifacts:
 
@@ -68,9 +74,9 @@ stage2-formal-result.json
 
 Large `games/` and `measurements/` directories remain local and are not committed.
 
-## Key repository documents
+## Key repository documents （リポジトリ状態）
 
-### Study overview / integration
+### Study overview / integration （概要）
 
 - `STUDY_1_OVERVIEW.md`
 - `STUDY_1_FINAL_REPORT.md`
@@ -78,7 +84,7 @@ Large `games/` and `measurements/` directories remain local and are not committe
 - `CURRENT_STATUS.md`
 - `README.md`
 
-### Scientific contract
+### Scientific contract （日本語の要点）
 
 - `preregistration/STAGE_1_EXPLORATORY_SPEC.json`
 - `preregistration/STAGE_1_EXPLORATORY_AUTHORIZATION.json`
@@ -86,7 +92,7 @@ Large `games/` and `measurements/` directories remain local and are not committe
 - `preregistration/STAGE_2_FORMAL_SPEC.json`
 - `preregistration/STAGE_2_FORMAL_AUTHORIZATION.json`
 
-### Protocol / execution
+### Protocol / execution （方法と設計）
 
 - `STAGE_0_TECHNICAL_AUDIT.md`
 - `STAGE_1_EXPLORATORY_PROTOCOL.md`
@@ -94,18 +100,18 @@ Large `games/` and `measurements/` directories remain local and are not committe
 - `STAGE_2_FORMAL_PROTOCOL.md`
 - `STAGE_2_EXECUTION_RUNBOOK.md`
 
-### Stage 1 result
+### Stage 1 result （結果）
 
 - `STAGE_1_EXPLORATORY_RESULT.md`
 - `STAGE_1_CANDIDATE_FREEZE.json`
 
-### Scientific governance
+### Scientific governance （日本語の要点）
 
 - `DECISION_REGISTER.md`
 - `EXPERIMENT_INDEX.md`
 - `RESEARCH_LOG.md`
 
-## Final formal decisions
+## Final formal decisions （結論）
 
 ```text
 TM-S2-C01 = NOT-CONFIRMED

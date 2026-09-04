@@ -2,7 +2,7 @@
 
 更新日: 2026-08-27
 
-## Study anchor
+## Study anchor （基準点）
 
 ```text
 Study ID = PEOCR-STUDY1
@@ -19,7 +19,7 @@ Stage 1 = 3b5262105de7a804cbbbb67e9ad111212bef6f4859f722fcaea42e5504e8eb99
 Stage 2 = 6ef20e20f639797c3d98673980e6e4b2c4c63a522e0c052ce523f6132a94ea60
 ```
 
-## Stage 0 canonical evidence
+## Stage 0 canonical evidence （証拠と成果物）
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `checkpoints/2026-08-26-stage0-technical-pass.md`
@@ -29,7 +29,7 @@ Stage 2 = 6ef20e20f639797c3d98673980e6e4b2c4c63a522e0c052ce523f6132a94ea60
 - artifact ZIP SHA-256: `645cd4925bc98c51ffead686a6a436a18c85771f11a3ceff999fdcc4153bcc6a`
 - `production.json` SHA-256: `d0a72cad4e1c4612d30674bc3bc700a768b1ef5a3402f82343ec7b2fe58ca698`
 
-### Stage 0 source hash
+### Stage 0 source hash （Stageの記録）
 
 ```text
 public/engine.js = e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c
@@ -60,7 +60,7 @@ Stage 2 scientific generation前に、verified Stage 1 result、exact calibratio
 
 Productionとindependent verification logicは、unverified shared scientific decision logicから分離しました。source-bound authorizationは以下に記録しています。
 
-## Stage 1 canonical evidence
+## Stage 1 canonical evidence （証拠と成果物）
 
 - successful recovery workflow run: `33017663172`
 - successful workflow artifact ID: `9632042234`
@@ -75,7 +75,7 @@ Productionとindependent verification logicは、unverified shared scientific de
 
 canonical mappingはsuccessful Stage 1 runのexact artifact bytesです。canonicalization時にrefitしていません。
 
-## Stage 2 technical smoke evidence
+## Stage 2 technical smoke evidence （証拠と成果物）
 
 - workflow run: `33037897038`
 - workflow artifact ID: `9632722463`
@@ -85,7 +85,7 @@ canonical mappingはsuccessful Stage 1 runのexact artifact bytesです。canoni
 - Stage 1 reference universe SHA-256: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
 - frozen Stage 1 mapping SHA-256: `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
 
-## Stage 2 formal evidence / closure
+## Stage 2 formal evidence / closure （最終状態）
 
 - formal authorization commit: `5d1b4a40ef95ac639787aa0abf040a455c3c2995`
 - formal workflow run: `33038132423`
@@ -113,7 +113,7 @@ shard 6: ID 9636005623 / 4612ac3ab7b3ae5e157f7c46c0e1c9b573f62efcc33ca297ccf3e9a
 shard 7: ID 9635949547 / 139219e0d8b483b0f68bc9ca169d07ed17719e21e4e5699e336e39d808a71d6b
 ```
 
-## repository integration
+## repository integration （リポジトリ状態）
 
 - integration PR: `#67`
 - expected research head: `6e64cd5bb252eab40c2608fc88562ba7371b2602`

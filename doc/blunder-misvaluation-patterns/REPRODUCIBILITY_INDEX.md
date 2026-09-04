@@ -1,9 +1,15 @@
-# REPRODUCIBILITY_INDEX — Blunder / Misvaluation Patterns Study 1
+# REPRODUCIBILITY_INDEX — Blunder / Misvaluation Patterns Study 1 （再現性）
+
+## 日本語での要点
+
+4候補のうち0件CONFIRMED、4件NOT-CONFIRMEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-23  
 Status: **STUDY 1 CLOSED / STAGE 1 + STAGE 2 COMPLETE**
 
-## Study identity
+## Study identity （識別と表現）
 
 ```text
 studyId = BMP-STUDY1
@@ -12,7 +18,7 @@ integrated Stage 1 main HEAD = 52f5635be7064b5016baf7cde82faebe60609d9e
 Stage 2 branch = research/blunder-misvaluation-patterns-stage2-formal
 ```
 
-## Stage 1 exploratory identity
+## Stage 1 exploratory identity （Stageの記録）
 
 ```text
 stageId = BMP-S1-EXPLORATORY-2026-08-20-v1
@@ -28,7 +34,7 @@ promoted exploratory candidates = 4
 
 Stage 1 support is not reused as Stage 2 confirmation evidence.
 
-## Stage 2 frozen identity
+## Stage 2 frozen identity （Stageの記録）
 
 ```text
 stageId = BMP-S2-FORMAL-2026-08-22-v1
@@ -41,7 +47,7 @@ scientific measurement source commit = 06ce63155c5b060a9ea3f80ba5a2dc48216e848b
 
 The historical pre-authorization spec-hash transcription error is documented in its own checkpoint. The canonical formal spec SHA is `426041...caab`.
 
-## Stage 2 execution chronology
+## Stage 2 execution chronology （Stageの記録）
 
 Key Stage 2 gate identities:
 
@@ -82,7 +88,7 @@ formal-result closure documentation branch tip before final cross-audit
 
 The branch-tip entries above are gate-boundary identities; compact result/checkpoint documents for the corresponding gates are indexed below. The final cross-audit checkpoint records the later documentation-only closure tip.
 
-## Stage 2 population and corpus verification
+## Stage 2 population and corpus verification （Stageの記録）
 
 ```text
 games = 4096
@@ -95,7 +101,7 @@ fullSearchRecomputation = true
 corpus verification = PASS
 ```
 
-## Stage 2 selection
+## Stage 2 selection （Stageの記録）
 
 ```text
 selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
@@ -108,7 +114,7 @@ alternateRootAfterRuleStateOverlapPerformed = false
 selectionIntegrityPassed = true
 ```
 
-## Stage 2 measurement and independent verification
+## Stage 2 measurement and independent verification （Stageの記録）
 
 ```text
 G01 measurements = 1868
@@ -130,7 +136,7 @@ stage1IdentityFirewallPassed = true
 passed = true
 ```
 
-## Stage 2 formal result identity
+## Stage 2 formal result identity （結果）
 
 Complete local formal artifact:
 
@@ -148,7 +154,7 @@ Canonical compact result:
 
 - [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
 
-## Formal decisions
+## Formal decisions （結論）
 
 ```text
 BMP-S2-C01 = NOT-CONFIRMED
@@ -160,7 +166,7 @@ confirmedCount = 0
 
 All four candidates were estimable and technically valid.
 
-## Stage 1 execution chain
+## Stage 1 execution chain （Stageの記録）
 
 Key Stage 1 commits:
 
@@ -181,7 +187,7 @@ discovery execution = 14c0d29683611ecd76771a213ce2380cb71fa18d
 discovery result = ffb9184d84c775e94f52b91f0c1621ea46061a93
 ```
 
-## Machine-readable records
+## Machine-readable records （日本語の要点）
 
 Stage 1:
 
@@ -204,7 +210,7 @@ Stage 2:
 - [`results/STAGE_2_MEASUREMENT_VERIFICATION_RESULT.json`](results/STAGE_2_MEASUREMENT_VERIFICATION_RESULT.json)
 - [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
 
-## Interpretation firewall
+## Interpretation firewall （解釈）
 
 Reproducibility establishes the exact machine procedure and formal candidate decisions only.
 

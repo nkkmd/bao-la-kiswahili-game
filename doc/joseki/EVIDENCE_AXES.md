@@ -23,8 +23,8 @@ P002は現ルール実装内の有界強制勝ちが最優先証拠となる。P
 ## 運用規則
 
 1. bounded terminal proof → deep common-depth search → cross-method stability → fixed-policy self-play
-2. A fixed-self-play win-count leader is not called terminal-best, minimax-best, or theoretically best.
-3. No row is promotion-eligible without a separate rules implementation or human-game validation, even when an engine-rules bounded win exists.
+2. fixed self-playのwin-count leaderを、terminal-best、minimax-best、theoretically bestとは呼ばない。
+3. engine rule内のbounded winが存在しても、別rule implementationまたはhuman-game validationがなければ、どのrowもpromotion-eligibleとはしない。
 
 ## 完全性
 

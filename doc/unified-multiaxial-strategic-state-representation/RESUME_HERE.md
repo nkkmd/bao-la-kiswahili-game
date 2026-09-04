@@ -51,7 +51,7 @@ eligible K = 0
 
 この結果をthreshold relaxation、K追加、PCA等の追加method、favorable subgroupで救済してはならない。
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 Stage 2で検証するfrozen representationが存在しないため、Stage 2は未承認・未実行で確定する。
 
@@ -61,7 +61,7 @@ Stage 2で検証するfrozen representationが存在しないため、Stage 2は
 
 Stage 2 scientific runnerを新規作成してこのStudyを続行してはならない。
 
-## G2-11
+## G2-11 （日本語の要点）
 
 `UMSSR-STUDY1`からG2-11へ渡せるvalidated / frozen representationはない。G2-11でrepresentationが必要な場合は、別のprospective Studyまたはversioned protocolを先に設計する。
 

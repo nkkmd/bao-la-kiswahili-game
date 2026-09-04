@@ -1,11 +1,17 @@
 # 局面類型と棋風研究 — 現在地
 
+## 日本語での要点
+
+Mtajiのbounded two-type morphologyを確認し、Namuaでは離散typeより連続座標を採用した。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
+
 更新日: 2026-08-10  
 Status: **RESEARCH COMPLETE / final integration complete**
 
 Branch: `research/position-typology-and-playing-style`
 
-## Current state
+## Current state （日本語の要点）
 
 研究 **「Baoにおける局面類型と棋風の発見・検証」** は、discovery、独立confirmation、negative-result retention、Study 1 cross-study bridge、最終統合まで完了した。
 
@@ -37,9 +43,9 @@ Reproducibility:
 doc/position-typology/REPRODUCIBILITY_INDEX.md
 ```
 
-## Final scientific decisions
+## Final scientific decisions （結論）
 
-### Mtaji position morphology
+### Mtaji position morphology （日本語の要点）
 
 Frozen classifier:
 
@@ -68,7 +74,7 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 
 These are state-level bounded morphologies, not playing styles, outcome classes, strength labels, or universal/final Bao ontology.
 
-### Namua
+### Namua （日本語の要点）
 
 ```text
 N-PROG = deterministic reserve-depletion progress context
@@ -90,7 +96,7 @@ Stage 3 audit:
 099f376fc3ab421165d9f04cb0544a78ea3170409e1a237dd7cb31f0a6cf9c0a
 ```
 
-### Actor-oriented old Mtaji k=2
+### Actor-oriented old Mtaji k=2 （日本語の要点）
 
 Final decision:
 
@@ -101,7 +107,7 @@ continuous relational-polarity coordinate
 
 It must not be resurrected as a confirmed/provisional discrete type from the existing corpus.
 
-### Playing style discovery
+### Playing style discovery （日本語の要点）
 
 Stage 4 discrete k=2..6 diagnostics did not support a coherent stable cluster set.
 
@@ -132,7 +138,7 @@ styleIngredientDefinitionHash
 = b7ac18a99228cd38a8a29580e5f852240c3b9e16a1d1f7bb45c779e4c599c3da
 ```
 
-### Stage 5 formal playing-style confirmation
+### Stage 5 formal playing-style confirmation （Stageの記録）
 
 ```text
 PTYP-S5-STYLE-CONTINUOUS-CONFIRM-2026-08-10-v1
@@ -160,7 +166,7 @@ STYLE-C1..C4
 
 Passing G1/G3/G4 does not rescue G2/G5.
 
-## Stage 6 — Study 1 cross-study bridge
+## Stage 6 — Study 1 cross-study bridge （Stageの記録）
 
 Closed phase-transition Study 1 formal decisions remain unchanged.
 
@@ -202,7 +208,7 @@ unique trajectory-ply units = 227
 duplicate rows collapsed = 530
 ```
 
-### Phase relation
+### Phase relation （日本語の要点）
 
 Across all six fixed conditions:
 
@@ -220,7 +226,7 @@ Correct bounded interpretation:
 
 Do not generalize this to universal impossibility of Mtaji expansion.
 
-### N-ACT relation
+### N-ACT relation （日本語の要点）
 
 Expansion-versus-comparator Cliff's delta was positive in all six conditions.
 
@@ -237,7 +243,7 @@ Bounded interpretation:
 
 This is secondary/hypothesis-generation evidence only.
 
-### N-CON relation
+### N-CON relation （日本語の要点）
 
 No universal direction was observed.
 
@@ -261,7 +267,7 @@ Stage 6 result document:
 doc/position-typology/STAGE_6_CROSS_STUDY_ASSOCIATION_RESULT.md
 ```
 
-## Final scientific synthesis
+## Final scientific synthesis （結論）
 
 ```text
 Bao position structure
@@ -287,7 +293,7 @@ Cross-study
 
 The study therefore supports a **phase-dependent asymmetric representation**, not one universal clustering scheme for all Bao states.
 
-## Negative / null results that must remain preserved
+## Negative / null results that must remain preserved （結果）
 
 - old actor-oriented Mtaji k=2 is not an intrinsic position type.
 - no discrete Namua type is promoted.
@@ -298,7 +304,7 @@ The study therefore supports a **phase-dependent asymmetric representation**, no
 
 None of these may be removed from the scientific synthesis because later results are more convenient.
 
-## Fixed global boundaries
+## Fixed global boundaries （日本語の要点）
 
 - position type = state-level structural object.
 - playing style = trajectory/policy-level pattern.
@@ -314,7 +320,7 @@ None of these may be removed from the scientific synthesis because later results
 - no confirmatory p-value or causal mediation claim is authorized from Stage 6.
 - no pooled new D2/D3 formal inference is authorized from Stage 6.
 
-## Stage 7 — final integration
+## Stage 7 — final integration （結論）
 
 Complete:
 
@@ -327,7 +333,7 @@ doc/position-typology/REPRODUCIBILITY_INDEX.md
 
 The original `RESEARCH_PLAN.md` called final integration Stage 6. During implementation, independent confirmation stages were inserted and the cross-study bridge became operational Stage 6; final integration is therefore recorded as Stage 7 without changing the original plan document retrospectively.
 
-## Future work
+## Future work （今後の課題）
 
 Any further empirical work starts as a new study with new prospective boundaries.
 

@@ -1,4 +1,4 @@
-# Critical Positions / Outcome Branching Study 1 — Overview
+# Critical Positions / Outcome Branching Study 1 — Overview （概要）
 
 更新日: 2026-08-24  
 状態: **Study 1 closed / Stage 1 exploratory complete / promoted candidates 0 / Stage 2 not executed**

@@ -1,8 +1,14 @@
-# CURRENT_STATUS — Blunder / Misvaluation Patterns Study 1
+# CURRENT_STATUS — Blunder / Misvaluation Patterns Study 1 （日本語の要点）
+
+## 日本語での要点
+
+4候補のうち0件CONFIRMED、4件NOT-CONFIRMEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-23
 
-## Research identity
+## Research identity （識別と表現）
 
 ```text
 studyId = BMP-STUDY1
@@ -24,7 +30,7 @@ scientific generation source commit = eecb2c8213fc71e518b0e96946e82790fd20961b
 scientific measurement source commit = 06ce63155c5b060a9ea3f80ba5a2dc48216e848b
 ```
 
-## Current scientific state
+## Current scientific state （日本語の要点）
 
 ```text
 Stage 0 technical / construct audit = COMPLETE
@@ -44,7 +50,7 @@ Study 1 = CLOSED
 Stage 2 integrated to main = COMPLETE
 ```
 
-## Corpus and verification
+## Corpus and verification （日本語の要点）
 
 ```text
 games = 4096
@@ -56,7 +62,7 @@ verificationIdentityHash = e2fab371ae09d18e7fed0aa979f72cb87ec4e2fdc67caacdb6129
 fullSearchRecomputation = true
 ```
 
-## Outcome-blind selection
+## Outcome-blind selection （結果）
 
 ```text
 selectionHash = 76069e7d9bc93d06e07f15d5ac94244c53321ee97a05911aeea5db88e15741bf
@@ -70,7 +76,7 @@ alternateRootAfterRuleStateOverlapPerformed = false
 selectionIntegrityPassed = true
 ```
 
-## Formal measurement and independent verification
+## Formal measurement and independent verification （日本語の要点）
 
 ```text
 BMP-S2-G01-NAMUA measurements = 1868
@@ -94,7 +100,7 @@ verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7
 passed = true
 ```
 
-## Formal result
+## Formal result （結果）
 
 ```text
 BMP-S2-C01 = NOT-CONFIRMED
@@ -124,17 +130,17 @@ raw stage2-formal-result.json SHA-256 = e478d3fb29ad15508ddcaf6973d8eb8aa6bf4deb
 
 The earlier wrapper-generated local result with `independentMeasurementVerificationHash = null` is superseded. The canonical result binds `e2a57675...7382`; endpoint values and decisions are unchanged.
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 `NOT-CONFIRMED` is a machine-operational formal decision under the frozen Stage 2 definition. It is not evidence that a move is game-theoretically sound or harmless to humans.
 
 No game-theoretic blunder, human misconception, expert/traditional recognition, pedagogical, causal-mechanism or external-validity claim is authorized. D3 remains a frozen machine reference, not ground truth.
 
-## No-rescue closure
+## No-rescue closure （結論）
 
 No seed extension, replacement, alternate-root rescue, candidate edit/merge/split, matcher/failure substitution, phase reassignment, endpoint/null/floor retuning, multiplicity/alpha change, favorable subgroup promotion, alternate primary depth/evaluator or manual override was used.
 
-## Repository closure state
+## Repository closure state （結論）
 
 The final cross-document audit updated only documentation and compact result/provenance records after the frozen scientific execution chain. No engine, AI, Stage 2 scientific tooling, candidate/spec, source-freeze or authorization artifact was modified after scientific execution.
 
@@ -150,7 +156,7 @@ post-merge status synchronization = COMPLETE
 
 Historical protocol/checkpoint status lines that describe their original freeze-time gate are intentionally preserved and are not current-status claims.
 
-## Final state
+## Final state （結論）
 
 Study 1 is scientifically and repository-wise closed on `main`. Any future investigation of these structural failure signatures, alternate search depths/evaluators, human judgement or game-theoretic status must be a new prospective study.
 

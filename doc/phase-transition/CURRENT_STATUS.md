@@ -85,7 +85,7 @@ pilot-v2:
 
 ## 新規seed・構造一般性
 
-### E-010
+### E-010 （日本語の要点）
 
 - candidate expansion 7/11 = 63.64%
 - control 249/8424 = 2.96%
@@ -93,7 +93,7 @@ pilot-v2:
 - trajectory-ply dedup: 2/5 vs 218/7061, RR 12.96
 - formal decision: `NOT-CONFIRMED`
 
-### E-017
+### E-017 （日本語の要点）
 
 - unique candidates 21
 - unique expansion trajectory-ply 9
@@ -106,9 +106,9 @@ pilot-v2:
 
 これらは濃縮方向と構造的一般性を支持するが、formal decisionを救済しない。
 
-## Search-profile boundary
+## Search-profile boundary （適用範囲と制限）
 
-### E-018 / H16 — depth2
+### E-018 / H16 — depth2 （日本語の要点）
 
 固定 `hard / bao / depth2`、P2 phase2 vs LG legacy、2000 paired games。
 
@@ -122,7 +122,7 @@ pilot-v2:
 - exact McNemar p `4.1812279092751445e-11`
 - formal: **`CONFIRMED`**
 
-### E-019 / H17 — generalization
+### E-019 / H17 — generalization （日本語の要点）
 
 D1 / D3 / V2の3 strata。
 
@@ -137,7 +137,7 @@ D3 reverse:
 - LG event 140/4500
 - exact McNemar p `4.614222568073049e-28`
 
-### E-020 / H18 — independent D3 replication
+### E-020 / H18 — independent D3 replication （日本語の要点）
 
 固定 `hard / bao / depth3`、independent seeds `20275001–20279500`、4500 paired games。
 
@@ -152,7 +152,7 @@ D3 reverse:
 
 H18 confirmationはこの固定条件だけに限定する。
 
-## Stage B mechanism synthesis
+## Stage B mechanism synthesis （Stageの記録）
 
 Stage Bはretrospective / secondaryであり、formal decisionsを変更しない。
 
@@ -175,7 +175,7 @@ Working structural explanation:
 
 Search-tree内部のPV、cutoff、leaf evaluation、horizon diagnosticsは現formal archiveに存在せず、「なぜdepth3でこの到達先が反転するか」はFuture Workへ分離する。
 
-## Stage C recognition scope
+## Stage C recognition scope （適用範囲と制限）
 
 原始マスター計画の6認定基準:
 
@@ -192,7 +192,7 @@ Search-tree内部のPV、cutoff、leaf evaluation、horizon diagnosticsは現for
 
 この評価はformal experiment decisionとは別の総合認定である。
 
-## Stage D vocabulary
+## Stage D vocabulary （Stageの記録）
 
 正本:
 
@@ -210,7 +210,7 @@ Search-tree内部のPV、cutoff、leaf evaluation、horizon diagnosticsは現for
 
 特に「forced-capture regime内」は経験的な強いscopeだが、結果後にclassifierの新しい必要条件へ追加しない。
 
-## Stage E final integration
+## Stage E final integration （結論）
 
 正本:
 
@@ -227,7 +227,7 @@ Search-tree内部のPV、cutoff、leaf evaluation、horizon diagnosticsは現for
 - reproducibility / archive index
 - Future Work
 
-## Formal archive index
+## Formal archive index （日本語の要点）
 
 Repository外final bundles:
 
@@ -240,7 +240,7 @@ Repository外final bundles:
 
 - `doc/phase-transition/FORMAL_EXPORT_INDEX.md`
 
-## Future Work
+## Future Work （今後の課題）
 
 第1研究のformal conclusionsを拡張せず、独立研究として扱う。
 

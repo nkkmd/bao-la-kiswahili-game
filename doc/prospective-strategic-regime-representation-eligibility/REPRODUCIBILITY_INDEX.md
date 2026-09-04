@@ -1,6 +1,6 @@
 # PSRRE-STUDY1 — 再現性索引
 
-## 1. baseline
+## 1. baseline （日本語の要点）
 
 ```text
 Repository = nkkmd/bao-la-kiswahili-game
@@ -9,7 +9,7 @@ Research branch = research/pre-g2-11-strategic-regime-representation-eligibility
 Study ID = PSRRE-STUDY1
 ```
 
-## 2. prospective contracts
+## 2. prospective contracts （固定した条件）
 
 - `STUDY_1_PROTOCOL.md`
 - `UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`
@@ -20,7 +20,7 @@ Study ID = PSRRE-STUDY1
 - `prereg/STAGE_2_VALIDATION_CONTRACT.json`
 - `prereg/STAGE_1_EXECUTION_CONTRACT.json`
 
-## 3. Stage 0
+## 3. Stage 0 （Stageの記録）
 
 ```text
 source freeze = 724e05ef6a730593aab2f9165a0d02216e372c6d
@@ -31,7 +31,7 @@ artifact = 9729904359
 disposition = STAGE0-TECHNICAL-PASS
 ```
 
-## 4. Stage 1 tooling / preflight
+## 4. Stage 1 tooling / preflight （Stageの記録）
 
 ```text
 tooling smoke run = 33307611100
@@ -44,7 +44,7 @@ final source freeze = 41124069f89f0706cf943e18688c96a8c2db35d7
 
 Invalid preflight attemptsはscientific seedを使用していない。修正はartifact projection estimatorのみで、scientific contract、threshold、feature、K、resource ceilingは変更していない。
 
-## 5. Stage 1 scientific execution
+## 5. Stage 1 scientific execution （実行記録）
 
 ```text
 authorization commit = 085c5df24baff44bb644c00eda91d6212caf5708
@@ -68,9 +68,9 @@ independent/full-shard-0001.json.gz = 1f00bf677de11899c38179c7a383676be753c1184c
 runner internal result = 42bbb556b96e35bef24044c9112d47508b5f6759718c582f278dd64cbd7db9a8
 ```
 
-Production / independent full shards are byte-identical.
+production / independent実装が生成したfull shardはbyte-identicalである。
 
-## 6. seed registry
+## 6. seed registry （seedの記録）
 
 ```text
 29500001..29500064 = technical-only
@@ -78,7 +78,7 @@ Production / independent full shards are byte-identical.
 29610001..29618192 = Stage 2 RESERVED_UNCONSUMED / NOT AUTHORIZED
 ```
 
-## 7. formal scientific closure
+## 7. formal scientific closure （最終状態）
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS
@@ -96,7 +96,7 @@ nonzero-MAD features observed = 15
 minimum required = 20
 ```
 
-## 8. repo-facing closure artifacts
+## 8. repo-facing closure artifacts （最終状態）
 
 - `STUDY_1_FINAL_REPORT.md`
 - `results/STUDY_1_FINAL_RESULT.json`
@@ -106,4 +106,4 @@ minimum required = 20
 - `RESEARCH_LOG.md`
 - `RESUME_HERE.md`
 
-No frozen representation artifact exists because Stage 1 did not pass the readiness gate.
+Stage 1がreadiness gateを通過しなかったため、固定済みrepresentation artifactは存在しない。

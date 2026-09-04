@@ -2,7 +2,7 @@
 
 更新日: 2026-09-02
 
-## 1. Formal status
+## 1. formal status（正式状態）
 
 ```text
 Study = SFCDF-STUDY1
@@ -33,7 +33,7 @@ SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO = CONFIRMED / NAMUA-GREATER
 
 **Baoにおけるstructural forcing corridorとdecision funnelのprospective exact検証 — sustained reply narrowingとbranch-to-RAW convergenceによるbounded局所経路構造の再現可能なphase差の検証**
 
-## 3. Scientific scope
+## 3. 科学的scope
 
 本Studyは、Baoのbounded RAW local geometryにおいて、次の2種類の構造を分離して検証した。
 
@@ -60,7 +60,7 @@ Auxiliary:
 
 - `LGTGMIV-F1-TREE-OCCURRENCE`
 
-## 4. Prospective candidate family
+## 4. 結果を見る前に固定したcandidate family
 
 Corridor candidates:
 
@@ -76,7 +76,7 @@ Funnel candidates:
 
 corridorとfunnelを一つのbinary classには統合していない。
 
-## 5. Stage 0 technical validation
+## 5. Stage 0のtechnical validation
 
 Stage 0 v1はprereg JSON syntax defectによりsynthetic fixture前に停止した。fresh seed accessは0であった。
 
@@ -92,7 +92,7 @@ Stage disposition = STAGE0-PASS
 
 ここでは、ordinary-object / null-prototype representation差があってもcanonical scientific contentがexact一致すること、corridor/funnel semantic separation、exact rational arithmetic、undefined denominator、promotion/formal boundary、implementation independenceを確認した。
 
-## 6. Stage 1 development
+## 6. Stage 1 developmentの結果
 
 Frozen population:
 
@@ -104,7 +104,7 @@ Mtaji root = first nonterminal Mtaji at ply >=44
 selection = seed ascending / geometry-blind / endpoint-blind / outcome-blind
 ```
 
-Exactly one authorized execution:
+authorizeされたexecutionは次の1回だけである。
 
 ```text
 workflow run = 33621863279
@@ -114,14 +114,14 @@ artifact ZIP SHA-256 = b3aeea3c1058d98b8b59fe0eaa69edc734f60e2ccb04223a464d842a7
 Stage disposition = STAGE1-PASS
 ```
 
-Production / independent Stage scientific core:
+production / independent Stage scientific core:
 
 ```text
 production = fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca
 independent = fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca
 ```
 
-### Stage 1 promotion
+### Stage 1でのpromotion
 
 | Candidate | Comparable | Positive (Mtaji>Namua) | Negative | Zero | Promotion |
 |---|---:|---:|---:|---:|---|
@@ -134,7 +134,7 @@ independent = fb8929e2a27802e46431deb79fcfafe78d9598301f6252f3ad6ffea485216cca
 
 したがってStage 2へ進んだのはC1/C6だけである。C2–C5を事後的に復活させていない。
 
-## 7. Stage 2 firewall and formal input
+## 7. Stage 2 firewallとformal input
 
 Stage 2はStage 1 result全体をselection inputとして再利用せず、次だけをminimal formal inputへmaterializeした。
 
@@ -151,7 +151,7 @@ Stage 1 identity core = eca6d00a88def284644bdf59bc599e8faae7d09f3aaa2656fafd046c
 
 C2–C5を含むStage 1 scientific outcomesはformal inputから除外した。
 
-## 8. Stage 2 formal execution
+## 8. Stage 2のformal execution
 
 Frozen population:
 
@@ -170,7 +170,7 @@ Stage 2 seed access = false
 protected depth-10 access = false
 ```
 
-Exactly one formal scientific execution:
+formal scientific executionは次の1回だけ行った。
 
 ```text
 workflow run = 33624399706
@@ -185,7 +185,7 @@ scientific-result blob = 099c45134e2816aac7bafdd5aab5ade03903c64a
 Stage disposition = STAGE2-PASS
 ```
 
-Production / independent formal Stage scientific core:
+production / independent formal Stage scientific core:
 
 ```text
 production = e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039
@@ -194,7 +194,7 @@ independent = e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039
 
 完全一致した。
 
-## 9. Formal result — C1
+## 9. formal result — C1の結果
 
 `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION`
 
@@ -220,7 +220,7 @@ Holm = PASS
 
 これはbounded local structural reply narrowingのphase差である。
 
-## 10. Formal result — C6
+## 10. formal result — C6の結果
 
 `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO`
 
@@ -246,7 +246,7 @@ Holm = PASS
 
 C6はtree/RAW compression descriptorであり、それ単独でtranspositionの存在や戦略的単純性を証明する指標ではない。
 
-## 11. Joint interpretation
+## 11. 全結果を合わせた解釈
 
 C1とC6は逆方向に確認された。
 
@@ -257,7 +257,7 @@ C1とC6は逆方向に確認された。
 
 しかし、本Studyはcombined corridor/funnel classを定義していないため、C1とC6を事後的に一つのlatent constructへ統合しない。
 
-## 12. Interpretation boundary
+## 12. 解釈上の境界
 
 本Studyからformalに主張できるのは、prospectively fixed paired populationとrelative depth 5のRAW local geometryにおけるC1/C6のphase差である。
 
@@ -274,15 +274,15 @@ C1とC6は逆方向に確認された。
 - Namua→Mtaji phase transitionがこの差を因果的に生む
 - depth 5のpatternがdeeper exact game treeでも維持される
 
-## 13. Protected deeper holdout
+## 13. protected deeper holdout （証拠の状態）
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
 本Studyはこのholdoutを生成・read・resource peekしていない。
 
-## 14. No-rescue / execution integrity
+## 14. no-rescue / execution integrity （実行記録）
 
 ```text
 Stage 1 = 1 authorized / 1 actual scientific execution
@@ -290,20 +290,20 @@ Stage 2 = 1 authorized / 1 actual scientific execution
 same-evidence scientific reruns after fresh access = 0
 ```
 
-Both scientific stages used:
+両scientific Stageは次を使用した。
 
 1. separate Stage authorization,
 2. durable pre-computation lease,
 3. frozen source-blob binding,
-4. canonical production/independent exact comparison,
-5. durable Actions artifact before repository mirror,
-6. no automatic rerun.
+4. canonical production / independent exact comparison
+5. repository mirror前のdurable Actions artifact
+6. 自動rerunは行わない。
 
-## 15. Closure
+## 15. closure（終了状態）
 
 G3-04 / SFCDF-STUDY1はscientific executionを完了した。
 
-Final repository lifecycle status:
+最終的なrepository lifecycle status:
 
 **`CLOSED / FORMAL-COMPLETE`**
 
@@ -311,6 +311,6 @@ Formal inferential record:
 
 - **C1 = CONFIRMED / MTAJI-GREATER**
 - **C6 = CONFIRMED / NAMUA-GREATER**
-- C2–C5 = not promoted at Stage 1; no Stage 2 label
+- C2〜C5はStage 1でpromoteせず、Stage 2 labelはない
 
 今後このStudy自体のseed追加、rerun、endpoint救済、threshold変更は行わない。追加検証が必要な場合は、新しいprospective Study/versionとして独立にauthorizeする。

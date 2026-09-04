@@ -43,7 +43,7 @@ validated transform set = []
 
 G2-03はこれらの終了済み研究を救済するものではなく、fresh historically reachable RAW statesと新しいrepresentation bindingを用いる独立研究として実施しました。
 
-## 3. authoritative state identity
+## 3. authoritative state identity （識別情報）
 
 本研究で状態同一性へ含めた項目は次のとおりです。
 

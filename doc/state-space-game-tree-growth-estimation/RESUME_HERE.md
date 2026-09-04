@@ -1,6 +1,6 @@
-# SSGTGE-STUDY1 — Resume Here
+# SSGTGE-STUDY1 — Resume Here （ここから再開）
 
-Resume order:
+再確認する場合は、次の順に読む。
 
 1. `CURRENT_STATUS.md`
 2. `STUDY_1_FINAL_REPORT.md`
@@ -11,7 +11,7 @@ Resume order:
 7. `RESEARCH_LOG.md`
 8. `STUDY_1_PROTOCOL.md`
 
-Current safe state:
+現在の安全な状態:
 
 ```text
 baseline main = c5efcdb7972d1bc775a2857c1b0641c35c9df622
@@ -29,10 +29,10 @@ main integration = COMPLETE
 G2-11 = NOT-AUTHORIZED / unchanged
 ```
 
-Stage 1 production proposed E2, but mandatory independent verification failed under the frozen `1e-12` tolerance. The proposal is diagnostic-only and may not be passed to Stage 2.
+Stage 1のproduction実装はE2を提案したが、必須のindependent verificationが固定済みtolerance `1e-12`の条件で失敗した。この提案は診断専用であり、Stage 2へ引き渡してはならない。
 
-Do not repair the Stage 1 verifier/tolerance and rerun the same development evidence within this Study. A corrected attempt requires a new prospective Study or explicit new version.
+このStudy内でStage 1 verifierやtoleranceを修正し、同じdevelopment evidenceを再実行してはならない。再検証には新しいprospective Studyまたは明示的なnew versionが必要である。
 
-Central documentation was synchronized on the research branch before integration. After a fresh final audit confirmed `main` at `c5efcdb7972d1bc775a2857c1b0641c35c9df622`, research branch at `741ba02ffa944a9569b262841465bfc78db8220a`, and compare state `ahead 16 / behind 0`, the user explicitly authorized integration. `main` was fast-forwarded without force to the research-branch head, and post-integration status documentation was then updated on `main`.
+中央文書は統合前にresearch branch上で同期した。最終監査で`main`が`c5efcdb7972d1bc775a2857c1b0641c35c9df622`、research branchが`741ba02ffa944a9569b262841465bfc78db8220a`、比較結果が`ahead 16 / behind 0`であることを確認した後、利用者が統合を明示的に承認した。`main`はforceを使わずresearch branch headへfast-forwardし、その後に統合済み状態を示す文書を`main`上で更新した。
 
-No further scientific execution is authorized within this closed Study. Any corrected growth-estimator validation must begin as a new prospective Study or explicit new version. G2-11 remains separately blocked by the unresolved strategic-representation dependency.
+closure済みのこのStudyでは、追加のscientific executionを承認していない。growth estimatorを再検証する場合は、新しいprospective Studyまたは明示的なnew versionとして開始する。G2-11は、未解決のstrategic representation dependencyにより別途blockされたままである。

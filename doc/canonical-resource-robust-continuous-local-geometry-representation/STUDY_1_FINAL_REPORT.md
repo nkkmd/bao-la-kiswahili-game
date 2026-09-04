@@ -1,18 +1,18 @@
-# CRCLGR-STUDY1 — Study 1 Final Report
+# CRCLGR-STUDY1 — Study 1最終報告
 
-Date: 2026-09-03
+日付: 2026-09-03
 
-## Formal status
+## formal status（正式状態）
 
 **`CLOSED / FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`**
 
-## 1. Research question
+## 1. 研究の問い
 
 本Studyは、LGTGMIVでformal-eligibleとなっているRAW-only relative depth-5 exact local-game-tree geometry primitivesから事前固定したcontinuous multiaxial representationを、resource workloadを事後的に都合よく除外せず、canonical structured-data digestとdeterministic pre-root reconstructibility eligibilityの下でfresh population上に再現可能に確立できるかを検証した。
 
 対象representationは `CRCLGR-R1-EXACT-SQUASHED-L1` であり、six exact axesを `q/(1+q)` にexact rational transformし、equal-weight exact L1を距離として用いる。
 
-## 2. Independence boundary
+## 2. 独立性の境界
 
 本Studyは`CLGR-STUDY1`および`RRCLGR-STUDY1`とは別のprospective Studyである。
 
@@ -24,174 +24,174 @@ Date: 2026-09-03
 
 RRCLGRで判明したstructured Arrayのlow-level digest type defectは、fresh scientific evidenceではなくtechnical hardening informationとしてStage 0設計にのみ反映した。
 
-## 3. Stage 0
+## 3. Stage 0の結果
 
-Stage ID: `CRCLGR-S0-TECHNICAL-2026-09-03-v1`
+Stage IDは`CRCLGR-S0-TECHNICAL-2026-09-03-v1`である。
 
-Actions run: `33761178143`
+Actions runは`33761178143`である。
 
-Disposition: **`STAGE0-PASS`**
+最終状態は**`STAGE0-PASS`**である。
 
 Stage 0はtechnical-onlyであり、Stage 1/2 scientific seed accessは行っていない。
 
-Mandatory controls included:
+必須controlには次を含めた。
 
-- structured canonical serialization production/independent/reference exactness;
-- structured canonical digest exactness;
-- low-level digest type guard;
-- synthetic six-axis / squash exactness;
-- exact L1 / k=3 tie-inclusive neighborhood agreement;
-- real technical candidate-selection path through candidate-core digest generation;
-- 4 Namua + 4 Mtaji technical candidate completion;
-- bounded preflight exact agreement;
-- at least one exact depth-5 technical measurement in each phase;
-- forced relay-limit fail-closed;
-- deterministic counter-ceiling fail-closed;
-- implementation separation.
+- structured canonical serializationについて、production / independent / referenceがexactに一致すること
+- structured canonical digestのexactness
+- low-level digestのtype guard
+- synthetic six-axis / squashのexactness
+- exact L1 / k=3 tie-inclusive neighborhoodの一致
+- candidate-core digest生成までを含む実technical candidate-selection path
+- 4 Namua + 4 Mtajiのtechnical candidate completion
+- bounded preflightのexact一致
+- 各phaseで少なくとも1件のexact depth-5 technical measurement
+- 強制relay-limit時のfail-closed動作
+- deterministic counter-ceiling時のfail-closed動作
+- implementationの分離
 
-## 4. Stage 1
+## 4. Stage 1の結果
 
-Stage ID: `CRCLGR-S1-DEVELOPMENT-2026-09-03-v1`
+Stage IDは`CRCLGR-S1-DEVELOPMENT-2026-09-03-v1`である。
 
-Fresh seed block: `32110001..32110256`
+fresh seed blockは`32110001..32110256`である。
 
-Actions run: `33761678941`
+Actions runは`33761678941`である。
 
-Disposition: **`STAGE1-PASS`**
+最終状態は**`STAGE1-PASS`**である。
 
-Exactly one authorized scientific execution was performed.
+承認されたscientific executionを1回だけ実行した。
 
-### Population and preflight
+### populationとpreflight
 
-- candidate manifest = 32 Namua + 32 Mtaji = 64/64 complete;
+- candidate manifestは32 Namua + 32 Mtajiで、64/64 completeだった
 - resource-eligible = Namua 31/32, Mtaji 32/32;
-- frozen minimum = 28/32 per phase;
-- measured population = 24 Namua + 24 Mtaji = 48/48.
+- 固定済みminimumはphaseごとに28/32だった
+- measured populationは24 Namua + 24 Mtajiで、48/48だった
 
-### Development gates
+### development gate（開発段階の判定条件）
 
-- canonical candidate digest exact = PASS;
-- all six axes defined = PASS;
-- production/independent exact = PASS;
-- pairwise L1 exact = PASS;
-- k=3 neighborhood exact = PASS;
+- canonical candidate digestのexactnessはPASSだった
+- 6 axisすべてが定義可能で、PASSだった
+- production / independentのexact一致はPASSだった
+- pairwise L1のexactnessはPASSだった
+- k=3 neighborhoodのexactnessはPASSだった
 - root-order invariance = PASS;
-- distinct coordinate vectors: Namua 24, Mtaji 23, minimum 8 = PASS;
-- axes with >=4 exact values in both phases: 6/6, minimum 4 = PASS.
+- distinct coordinate vectorはNamua 24、Mtaji 23で、minimum 8を満たしてPASSだった
+- 両phaseで4種類以上のexact valueを持つaxisは6/6で、minimum 4を満たしてPASSだった
 
-Canonical Stage 1 scientific result SHA-256:
+canonical Stage 1 scientific resultのSHA-256:
 
 `e964970c71b270aaee8857fdd99b5041abcdb2f43ba83b600aa7764b2dda613f`
 
-Durable artifact:
+durable artifact:
 
 - artifact ID `9895942440`;
 - ZIP SHA-256 `b940b79fb4c541111b14756d51de43c069158c46d860e0f2df0fdbe7d48e78eb`;
-- exact-byte mirror `8b3c7ca9c3fed220a40297d03a73b4b162708c3b`.
+- exact-byte mirror `8b3c7ca9c3fed220a40297d03a73b4b162708c3b`を保存した。
 
-## 5. Stage 2 formal validation
+## 5. Stage 2のformal validation
 
-Stage ID: `CRCLGR-S2-FORMAL-2026-09-03-v1`
+Stage IDは`CRCLGR-S2-FORMAL-2026-09-03-v1`である。
 
-Fresh seed block: `32120001..32120384`
+fresh seed blockは`32120001..32120384`である。
 
-Actions run: `33763404167`
+Actions runは`33763404167`である。
 
-Exactly one authorized formal scientific execution was performed.
+承認されたformal scientific executionを1回だけ実行した。
 
-### Candidate population
+### candidate populationの構成
 
-- candidate manifest = 48 Namua + 48 Mtaji = 96/96 complete;
-- candidate selection used geometry = false;
-- candidate selection used resource preflight = false;
-- Stage 1 scientific measurements loaded into Stage 2 selection = false.
+- candidate manifestは48 Namua + 48 Mtajiで、96/96 completeだった
+- candidate selectionにはgeometryを使用していない
+- candidate selectionにはresource preflightを使用していない
+- Stage 2 selectionではStage 1 scientific measurementをloadしていない
 
-### Preflight support
+### preflight supportの状態
 
 - Namua resource-eligible = 48/48;
 - Mtaji resource-eligible = 47/48;
-- frozen minimum = 42/48 per phase;
-- support gate = PASS.
+- 固定済みminimumはphaseごとに42/48だった
+- support gateはPASS。
 
-The complete 96-row preflight manifest was fixed before coordinate generation.
+coordinate生成前に、96行の完全なpreflight manifestを固定した。
 
-### Formal measured population
+### formal measured populationの構成
 
 - 36 Namua + 36 Mtaji = 72/72;
-- selected from the already frozen preflight manifest;
-- population frozen before coordinate generation = true;
-- post-coordinate root replacement = not authorized.
+- すでに固定したpreflight manifestから選択した
+- coordinate生成前にpopulationを固定した
+- coordinate生成後のroot replacementは承認していない
 
-### Exact integrity endpoints
+### exact integrity endpointの結果
 
-- production/independent depth-5 reconstruction exact = PASS;
-- six-axis coordinates exact = PASS;
-- all coordinates defined = PASS;
-- pairwise exact L1 count = 2556/2556;
-- pairwise L1 production/independent exact = PASS;
-- k=3 tie-inclusive neighborhoods exact = PASS;
-- canonical order invariance = PASS.
+- production / independent depth-5 reconstructionのexact一致はPASSだった
+- six-axis coordinateのexactnessはPASSだった
+- すべてのcoordinateが定義可能で、PASSだった
+- pairwise exact L1は2556/2556件だった
+- pairwise L1のproduction / independent exact一致はPASSだった
+- k=3 tie-inclusive neighborhoodのexact一致はPASSだった
+- canonical order invarianceはPASSだった
 
-### Formal nondegeneracy
+### formal nondegeneracyの結果
 
-Distinct coordinate vectors:
+異なるcoordinate vectorの件数は次のとおりである。
 
 - Namua = 36;
 - Mtaji = 36;
-- frozen minimum = 12 per phase;
-- PASS.
+- 固定済みminimumはphaseごとに12だった
+- 判定はPASS。
 
-Axis distinct exact values in Namua / Mtaji:
+各axisで得た異なるexact valueの数を、Namua / Mtajiの順で示す。
 
-- A1 root legal width = 9 / 9;
-- A2 cumulative tree occurrence = 36 / 35;
-- A3 cumulative distinct RAW states = 36 / 35;
-- A4 cumulative tree/RAW ratio = 33 / 9;
-- A5 duplicate-transition fraction = 33 / 9;
-- A6 unit-width occupancy fraction = 36 / 34.
+- A1 root legal widthは9 / 9だった
+- A2 cumulative tree occurrenceは36 / 35だった
+- A3 cumulative distinct RAW statesは36 / 35だった
+- A4 cumulative tree / RAW ratioは33 / 9だった
+- A5 duplicate-transition fractionは33 / 9だった
+- A6 unit-width occupancy fractionは36 / 34だった
 
-All six axes passed the frozen >=4-values-in-both-phases rule; minimum required was four axes.
+6 axisすべてが、両phaseで4種類以上のvalueを要求する固定済みruleをPASSした。最低条件は4 axisだった。
 
-## 6. Formal decision
+## 6. formal decision（正式判断）
 
 **`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`**
 
-Formal eligible representation:
+formal eligibleとなったrepresentation:
 
 **`CRCLGR-R1-EXACT-SQUASHED-L1`**
 
-Canonical Stage 2 scientific result SHA-256:
+canonical Stage 2 scientific resultのSHA-256:
 
 `c43ba119dbbc91f4145129dc5b24e886b0f436b577185cfb54d5f44619e5b0f5`
 
-Stage 2 durable artifact:
+Stage 2のdurable artifact:
 
 - artifact ID `9896703676`;
 - ZIP SHA-256 `614f6b7bb487473c92a609e48b3ecee21ba3d23223e28e425078744310b66787`;
-- exact-byte mirror `d1083ca07986fdbe3ab78d6bd4c12850e1200ef8`.
+- exact-byte mirror `d1083ca07986fdbe3ab78d6bd4c12850e1200ef8`を保存した。
 
-## 7. Interpretation boundary
+## 7. 解釈上の境界
 
-The formal decision means that the prospectively fixed CRCLGR coordinate system is eligible as a reproducible continuous representation instrument **within the resource-bounded population defined by the frozen deterministic pre-root reconstructibility contract**.
+このformal decisionは、結果を見る前に固定したCRCLGR coordinate systemが、**固定済みdeterministic pre-root reconstructibility contractで定義したresource-bounded population内で**、再現可能なcontinuous representation instrumentとしてeligibleであることを意味する。
 
-It does not imply:
+この判断は次を意味しない。
 
-- whole-game or unrestricted state-space coverage;
-- strategic-regime validity;
-- causal interpretation;
-- value or win-probability calibration;
-- human strategic meaning;
-- G3-10 longitudinal path dependence, directionality, persistence, return or hysteresis.
+- whole-gameまたはunrestricted state-spaceのcoverage
+- strategic regimeとしてのvalidity
+- 因果的な解釈
+- valueまたはwin probabilityのcalibration
+- 人間の戦略概念としての意味
+- G3-10のlongitudinal path dependence、directionality、persistence、return、hysteresis
 
-Those are separate scientific questions.
+これらはそれぞれ別の科学的な問いである。
 
-## 8. Consequence for G3-10
+## 8. G3-10への帰結
 
-Historical G3-10 required validated local-geometry coordinates. CRCLGR now provides a fresh formally eligible coordinate instrument within a clearly bounded resource-eligible domain. This removes the specific representation-eligibility deficiency identified after G3-09.
+historical G3-10にはvalidated local-geometry coordinateが必要だった。CRCLGRは、明確に限定したresource-eligible domain内で、freshかつformal-eligibleなcoordinate instrumentを提供した。これにより、G3-09後に特定されたrepresentation eligibilityの不足は解消された。
 
-However, G3-10 remains **NOT AUTHORIZED** until a separate current-state authorization review confirms that its historical dependency is satisfied without retroactive endpoint redesign and prospectively freezes the G3-10 scientific contract.
+ただし、CRCLGR closure時点のG3-10は、別のcurrent-state authorization reviewにより、endpointを遡及的にredesignせずhistorical dependencyを満たすことを確認し、G3-10 scientific contractを結果確認前に固定するまで**NOT AUTHORIZED**のままとした。そのreviewは後に完了しており、後続状態は`CURRENT_STATUS.md`を参照する。
 
-## 9. Protected evidence and integration
+## 9. protected evidenceと統合状態
 
 ```text
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED

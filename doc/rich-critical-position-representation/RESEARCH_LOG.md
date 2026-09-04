@@ -1,6 +1,6 @@
 # RCPR-STUDY1 — 研究ログ
 
-## 2026-08-28 — startup audit / prospective freeze
+## 2026-08-28 — startup audit / prospective freeze （固定した条件）
 
 - remote `main`が`37480777246aa306c6ca3d0679d936b5e0107071`であることを確認
 - verified baselineから`research/g2-06-rich-critical-position-representation`を作成
@@ -9,7 +9,7 @@
 
 Scientific outcome generated: **none**。
 
-## 2026-08-28 — Stage 0 source audit / technical acceptance
+## 2026-08-28 — Stage 0 source audit / technical acceptance （技術検証）
 
 - dedicated RAW-only production / independent representation pathを実装
 - Stage 0 source commit: `dca7a70e75fb1014b752f4549bd6d1164b1feecb`
@@ -22,7 +22,7 @@ Scientific outcome generated: **none**。
 
 Scientific outcome generated: **none**。
 
-## 2026-08-28 — Stage 1 development design freeze
+## 2026-08-28 — Stage 1 development design freeze （固定した条件）
 
 - `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`を固定
 - fresh source games: 3072。scientific seed block `28610001..28613072`、`CONSUME-ONCE-DEVELOPMENT-ONLY`
@@ -32,7 +32,7 @@ Scientific outcome generated: **none**。
 
 Scientific outcome generated: **none**。
 
-## 2026-08-29 — implementation validation / execution-contract freeze
+## 2026-08-29 — implementation validation / execution-contract freeze （固定した条件）
 
 - final implementation smoke: workflow `33195723195`, job `98932225577`, success
 - smoke artifact `9695647002`, ZIP SHA256 `9d87a3aba46e69952061aa3b30a628f41fe6525db69299634bf1386716273a11`
@@ -45,7 +45,7 @@ Scientific outcome generated: **none**。
 
 Scientific outcome generated: **none**。Fresh block consumed: **no**。
 
-## 2026-08-29 — exact source-freeze audit
+## 2026-08-29 — exact source-freeze audit （固定した条件）
 
 - source-freeze audit workflow `33196797865`, job `98935883477`, success
 - artifact `9696075216`, ZIP SHA256 `fabb644c69d0f5efac48f3275a1e28a008a84832c7a7c4fd99a5f199038dbd7c`
@@ -55,7 +55,7 @@ Scientific outcome generated: **none**。Fresh block consumed: **no**。
 
 Scientific outcome generated: **none**。Fresh block consumed: **no**。
 
-## 2026-08-29 — Stage 1 explicit authorization / execution start
+## 2026-08-29 — Stage 1 explicit authorization / execution start （承認状態）
 
 - authorization `RCPR-S1-EXECUTE-2026-08-29-v1`をcommit `a0d630df2ee5fbd943d306ab959ce509cbcc2330`で作成
 - authorizationは`scientificInferenceAuthorized=false`、`confirmatoryReuseAllowed=false`、`stage2Authorized=false`を維持
@@ -69,7 +69,7 @@ same-block rerun = NOT AUTHORIZED
 replacement/extension = NOT AUTHORIZED
 ```
 
-## 2026-08-29 — Stage 1 production completion
+## 2026-08-29 — Stage 1 production completion （Stageの記録）
 
 Production job `98936414477`は`success`で完了しました。
 
@@ -103,7 +103,7 @@ ZIP SHA256 = 00c210eb0fd9391c67e05b40daa3a85f66a1bc5ba2a460db40128f290e6d26d8
 
 この時点のinterpretationは引き続き**production-only / awaiting independent verification**です。
 
-## 2026-08-29 — independent verification failure
+## 2026-08-29 — independent verification failure （独立検証）
 
 Independent job `99007180273`は`Independent full-corpus replay and recomputation`で`failure`となりましたが、verification artifactはuploadされました。
 
@@ -136,7 +136,7 @@ artifactには`execution-start.json`、`production-result.json`、`independent-v
 
 600 rows中exactに4 rowsで`featureVectorMatch`がFAILしました。600 rowsすべて存在し、RAW state key、continuation measurement、`D_range`、high-divergence labelは一致しました。
 
-## 2026-08-29 — technical postmortem
+## 2026-08-29 — technical postmortem （技術検証）
 
 read-only artifact / source analysisにより、4件すべての差を`MOVE_SET_ENTROPY.indexEntropy`へ局在させました。
 
@@ -152,7 +152,7 @@ continuation remeasurement、`D_range`、high-divergence classification、model-
 
 しかし、このtechnical explanationはStage 1を救済しません。prospectively frozen verifierはexact feature-vector equalityを要求しています。
 
-## 2026-08-29 — Stage 1 fail-closed closure
+## 2026-08-29 — Stage 1 fail-closed closure （最終状態）
 
 Final decision:
 

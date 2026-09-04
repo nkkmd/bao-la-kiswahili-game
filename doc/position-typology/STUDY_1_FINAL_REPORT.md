@@ -1,9 +1,15 @@
 # Study 1 Final Report — Baoにおける局面類型と棋風の発見・検証
 
+## 日本語での結論と読み方
+
+fixed representationと研究populationの範囲で、MtajiのMTAJI-M1 / MTAJI-M2というbounded two-type morphologyを確認した。Namuaでは離散typeより連続座標が適切で、Bao全体の普遍的ontologyは主張しない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
+
 Date: 2026-08-10  
 Status: **complete / scientific record**
 
-## 1. Research purpose
+## 1. Research purpose （日本語の要点）
 
 This study examined whether recurrent Bao la Kiswahili game states can be described as reproducible structural position types and whether longer trajectories support stable playing-style descriptions.
 
@@ -18,40 +24,40 @@ Search implementation labels, evaluator names, depth, outcome and win/loss were 
 
 The study also preserved a strict exploratory/confirmatory boundary. Discovery data were not reused as independent confirmation, held-out thresholds were not relaxed after inspection, and negative/null results were retained.
 
-## 2. Research questions and final answers
+## 2. Research questions and final answers （結論）
 
-### RQ1 — Can recurrent position structures be extracted?
+### RQ1 — Can recurrent position structures be extracted? （日本語の要点）
 
 **Answer: yes, but not uniformly across phases.**
 
 Mtaji yielded a reproducible bounded two-type morphology under a fixed role-invariant representation. Namua did not support a stable discrete position-type candidate and was better described by continuous coordinates.
 
-### RQ2 — Are the extracted structures stable?
+### RQ2 — Are the extracted structures stable? （日本語の要点）
 
 **Mtaji: yes under the preregistered representation/population.**  
 **Namua discrete types: no candidate promoted.**
 
 The Mtaji two-type classifier was independently confirmed on a fresh 192-game held-out corpus.
 
-### RQ3 — Are there recurrent transitions between types?
+### RQ3 — Are there recurrent transitions between types? （日本語の要点）
 
 The strongest confirmed discrete typology exists only in Mtaji. Transition/dwell structure was therefore used mainly as trajectory descriptors rather than promoted as a separate confirmed transition ontology.
 
 No universal position-transition taxonomy is claimed.
 
-### RQ4 — Are stable playing styles identifiable?
+### RQ4 — Are stable playing styles identifiable? （日本語の要点）
 
 **No discrete playing-style typology was supported.**
 
 A four-dimensional continuous discovery geometry was found, but its exact PCA subspace failed preregistered independent confirmation. The discovered coordinates remain exploratory descriptors rather than a confirmed playing-style system.
 
-### RQ5 — How do search conditions relate to position/style structure?
+### RQ5 — How do search conditions relate to position/style structure? （日本語の要点）
 
 Search condition labels were used only as metadata diagnostics. Some condition-associated variation exists, but no implementation label was redefined as a style.
 
 The study does not claim a general search-profile × depth style interaction.
 
-### RQ6 — How does the independently derived representation relate to Study 1 capture-branch-expansion?
+### RQ6 — How does the independently derived representation relate to Study 1 capture-branch-expansion? （識別と表現）
 
 In the fixed E-018 D2 / E-019 D3 / E-020 D3 cross-study bridge, all 59 unique `capture-branch-expansion` units occurred in **Namua**, with zero in Mtaji.
 
@@ -59,9 +65,9 @@ Within Namua, expansion positions tended to occur toward higher N-ACT values. N-
 
 This is secondary hypothesis-generation evidence only.
 
-## 3. Study design
+## 3. Study design （方法と設計）
 
-### 3.1 Stage 0 — instrumentation and corpus audit
+### 3.1 Stage 0 — instrumentation and corpus audit （Stageの記録）
 
 The engine state and feature extraction were audited before discovery.
 
@@ -83,7 +89,7 @@ Features were divided conceptually into:
 
 Tier C variables were excluded from initial structural clustering.
 
-### 3.2 Stage 1 — exploratory discovery corpus
+### 3.2 Stage 1 — exploratory discovery corpus （Stageの記録）
 
 A fresh 96-game exploratory corpus was generated with six conditions and base seed `20270001`.
 
@@ -99,7 +105,7 @@ Primary eligible counts:
 
 No formal claim was made from this corpus alone.
 
-### 3.3 Dependence and representation audits
+### 3.3 Dependence and representation audits （識別と表現）
 
 The initial actor-oriented Mtaji k=2 solution was examined for role dependence.
 
@@ -109,7 +115,7 @@ A role-invariant Mtaji representation based on actor/opponent totals and absolut
 
 This representation yielded a robust provisional two-type morphology and was frozen before independent confirmation.
 
-## 4. Stage 2 — Mtaji independent confirmation
+## 4. Stage 2 — Mtaji independent confirmation （Stageの記録）
 
 Frozen candidate definition:
 
@@ -161,7 +167,7 @@ p10    = 0.89308
 median = 0.92048
 ```
 
-### Confirmed bounded ontology
+### Confirmed bounded ontology （日本語の要点）
 
 ```text
 MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
@@ -175,7 +181,7 @@ MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 
 This is a bounded empirical ontology under the frozen representation and study population, not a universal final ontology for all Bao states.
 
-## 5. Stage 3 — Namua continuous representation
+## 5. Stage 3 — Namua continuous representation （Stageの記録）
 
 No discrete Namua position-type candidate was promoted.
 
@@ -193,21 +199,21 @@ Stage 3 audit:
 099f376fc3ab421165d9f04cb0544a78ea3170409e1a237dd7cb31f0a6cf9c0a
 ```
 
-### N-PROG
+### N-PROG （日本語の要点）
 
 N-PROG was almost perfectly monotonic with ply within games and behaved as a deterministic progression clock. It was therefore retained only as context and excluded from playing-style features.
 
-### N-ACT
+### N-ACT （日本語の要点）
 
 N-ACT behaved as a continuous tactical capture-engagement coordinate rather than a discrete mode.
 
-### N-CON
+### N-CON （日本語の要点）
 
 N-CON behaved as a continuous role-invariant structural-contrast coordinate.
 
 The coordinate system is exploratory. No independent formal confirmation of the exact Namua coordinate system was claimed.
 
-## 6. Stage 4 — playing-style discovery
+## 6. Stage 4 — playing-style discovery （Stageの記録）
 
 The primary unit was one full-phase game trajectory. Eighty-nine Stage 1 games contained eligible states in both phases.
 
@@ -221,7 +227,7 @@ Excluded from the style definition:
 - winner/outcome
 - Mtaji classifier QA margin
 
-### 6.1 Discrete style clustering
+### 6.1 Discrete style clustering （日本語の要点）
 
 KMeans/GMM/Ward solutions for k=2..6 were diagnostic only.
 
@@ -233,7 +239,7 @@ Therefore:
 no discrete playing-style candidate promoted
 ```
 
-### 6.2 Continuous discovery geometry
+### 6.2 Continuous discovery geometry （日本語の要点）
 
 PCA of the ten trajectory descriptors produced four leading axes explaining approximately 76.78% cumulative discovery variance.
 
@@ -258,7 +264,7 @@ The underlying exact Namua state transform required for reproducibility was sepa
 styleIngredientDefinitionHash = b7ac18a99228cd38a8a29580e5f852240c3b9e16a1d1f7bb45c779e4c599c3da
 ```
 
-## 7. Stage 5 — independent playing-style confirmation
+## 7. Stage 5 — independent playing-style confirmation （Stageの記録）
 
 Preregistration:
 
@@ -307,7 +313,7 @@ STYLE-C1..C4
 
 No alternative dimension, clustering, threshold, descriptor set or preprocessing was fitted to the same held-out corpus to rescue this result.
 
-## 8. Stage 6 — cross-study relation to phase-transition Study 1
+## 8. Stage 6 — cross-study relation to phase-transition Study 1 （Stageの記録）
 
 Closed Study 1 formal archives were used read-only after position/style discovery and confirmation were complete.
 
@@ -336,7 +342,7 @@ unique trajectory-ply units = 227
 rows collapsed as duplicates = 530
 ```
 
-### 8.1 Phase localization
+### 8.1 Phase localization （日本語の要点）
 
 The fixed phenotype occurred as follows:
 
@@ -354,13 +360,13 @@ The correct bounded statement is:
 
 It is not a universal claim that Mtaji expansion is impossible.
 
-### 8.2 Mtaji bridge
+### 8.2 Mtaji bridge （日本語の要点）
 
 Because there were zero Mtaji expansion units, the association of expansion with MTAJI-M1 versus MTAJI-M2 is not estimable.
 
 This does not weaken the Stage 2 Mtaji confirmation; it shows that the Study 1 transition phenotype and the confirmed Mtaji morphology occupy different phase scopes in the observed bridge corpus.
 
-### 8.3 Namua N-ACT
+### 8.3 Namua N-ACT （日本語の要点）
 
 Cliff's delta for expansion versus the frozen non-precursor comparator was positive in all six conditions.
 
@@ -373,7 +379,7 @@ E-020 D3-LG = +0.6923
 
 This supports the secondary description that expansion positions tend to lie toward higher Namua capture activity within the bridge scope.
 
-### 8.4 Namua N-CON
+### 8.4 Namua N-CON （日本語の要点）
 
 N-CON did not show one universal direction.
 
@@ -391,13 +397,13 @@ phase2:
 
 This is hypothesis-generation evidence only. No general search-profile × depth interaction or causal mediation claim follows from it.
 
-## 9. Positive, negative and null results
+## 9. Positive, negative and null results （結果）
 
-### Positive formal result
+### Positive formal result （結果）
 
 - MTAJI-M1/MTAJI-M2 bounded two-type morphology: **confirmed**.
 
-### Negative / non-promoted results
+### Negative / non-promoted results （結果）
 
 - actor-oriented Mtaji k=2 as intrinsic position type: rejected; retained as relational polarity coordinate.
 - Namua discrete k=2/k=4 position types: not promoted.
@@ -407,7 +413,7 @@ This is hypothesis-generation evidence only. No general search-profile × depth 
 
 These are not failed side analyses to discard. They define the empirical boundaries of the study.
 
-## 10. Final scientific synthesis
+## 10. Final scientific synthesis （結論）
 
 The study does not support one simple global typology for all Bao positions.
 
@@ -432,7 +438,7 @@ A concise final statement is:
 
 > Bao position structure was not well described by a single universal clustering scheme. Under the fixed study representation, Mtaji showed a reproducible two-type morphology, whereas Namua was better represented by continuous coordinates. Stable discrete playing styles were not supported, and the exact discovery-derived four-dimensional style geometry was not independently confirmed. In the fixed Study 1 cross-study bridge, capture-branch-expansion occurred exclusively in Namua and tended toward higher Namua capture activity.
 
-## 11. Interpretation boundaries
+## 11. Interpretation boundaries （解釈）
 
 This study does not claim:
 
@@ -446,7 +452,7 @@ This study does not claim:
 - a general search-profile × depth interaction;
 - that negative Stage 5 evidence may be rescued by post-hoc redefinition.
 
-## 12. Future work
+## 12. Future work （今後の課題）
 
 The strongest next studies would be new, prospectively designed studies rather than re-analysis intended to rescue this dataset.
 
@@ -458,7 +464,7 @@ Priorities:
 4. **Human/expert validation** — compare confirmed MTAJI-M1/M2 representative boards against expert Bao interpretation.
 5. **External implementation validity** — test the bounded morphology under additional legal engines/search implementations without treating implementation labels as semantic types.
 
-## 13. Canonical companion documents
+## 13. Canonical companion documents （日本語の要点）
 
 Overview:
 

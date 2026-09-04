@@ -1,8 +1,8 @@
-# SFCDF-STUDY1 — Reproducibility Index
+# SFCDF-STUDY1 — 再現性索引
 
 更新日: 2026-09-02
 
-## Baseline
+## baseline（開始時点）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -12,7 +12,7 @@ Study ID = SFCDF-STUDY1
 Study status = CLOSED / FORMAL-COMPLETE
 ```
 
-## Canonical preregistration
+## canonical preregistration （概要）
 
 ```text
 prereg/STUDY_1_SPEC.json
@@ -22,9 +22,9 @@ STUDY_1_PROTOCOL.md
 blob = c7705b3ac80b68c2b69ce621bd1a534a32ffb408
 ```
 
-The prereg JSON received one syntax-only correction before any synthetic fixture or fresh scientific evidence. The scientific contract did not change.
+prereg JSONには、synthetic fixtureまたはfresh scientific evidenceより前にsyntax-only correctionを1件行った。scientific contractは変更していない。
 
-## Rule / upstream source bindings
+## rule / upstream source binding （概要）
 
 ```text
 public/engine.js
@@ -37,7 +37,7 @@ tools/experiments/lib/lgtgmiv-stage1-independent.js
 blob = 0c7239ac7acf146e9aee63dae66194681b8631d6
 ```
 
-## G3-04 endpoint bindings
+## G3-04 endpoint binding （概要）
 
 ```text
 tools/experiments/lib/sfcdf-production.js
@@ -47,7 +47,7 @@ tools/experiments/lib/sfcdf-independent.js
 blob = 3bbc16d41c56f2eb00d7169ace2359f0fa9b9b53
 ```
 
-## Scientific representation
+## scientific representation （概要）
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -56,9 +56,9 @@ validated transforms = []
 relative horizon = 5
 ```
 
-## Canonical equality
+## canonical equality （概要）
 
-Cross-implementation scientific equality is:
+cross-implementation scientific equalityは次のとおりである。
 
 ```text
 canonical sorted-key JSON scientific content
@@ -67,9 +67,9 @@ canonical sorted-key JSON scientific content
 → exact digest equality
 ```
 
-JavaScript object prototype, property insertion order, runtime identity, timestamps and memory telemetry are outside scientific identity.
+JavaScript object prototype、property insertion order、runtime identity、timestamp、memory telemetryはscientific identityの対象外である。
 
-## Upstream identity-only firewall
+## upstream identity-only firewall （証拠分離規則）
 
 ```text
 prereg/UPSTREAM_IDENTITY_FIREWALL.json
@@ -78,16 +78,16 @@ identity core SHA-256 = 0196f255aa152f343cb428ee048ab1570ccdf4661c5adba5a47f4356
 scientific outcome fields retained = false
 ```
 
-## Fresh namespaces
+## fresh namespace （概要）
 
 ```text
 Stage 1 = 31410001..31410192 / CONSUMED
 Stage 2 = 31420001..31420288 / CONSUMED
 ```
 
-No seed extension or replacement was used.
+seed extensionまたはreplacementは行っていない。
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
 ```text
 standard initial RAW-root complete exact depth-10 holdout
@@ -95,7 +95,7 @@ standard initial RAW-root complete exact depth-10 holdout
 reserved for = G3-11 FRESH-DEEPER-EXACT-HOLDOUT
 ```
 
-## Stage 0
+## Stage 0の記録
 
 Stage ID: `SFCDF-S0-TECHNICAL-2026-09-02-v1`
 
@@ -107,7 +107,7 @@ synthetic fixture execution = false
 fresh scientific seed access = false
 ```
 
-v2 valid technical execution:
+v2のvalid technical execution:
 
 ```text
 run = 33620251552
@@ -117,7 +117,7 @@ deterministic technical core = 14e7640dcd302c402c21a5acbe44bcbf004956670f467763f
 stage disposition = STAGE0-PASS
 ```
 
-## Stage 1 implementation
+## Stage 1のimplementation
 
 ```text
 tools/experiments/lib/sfcdf-stage1-production.js
@@ -169,7 +169,7 @@ C1 / MTAJI-GREATER
 C6 / NAMUA-GREATER
 ```
 
-## Stage 2 formal input
+## Stage 2のformal input
 
 ```text
 prereg/STAGE_2_FORMAL_INPUT.json
@@ -189,7 +189,7 @@ artifact ID = 9843933810
 artifact ZIP SHA-256 = 8b95129a24f46a8761227641292c04e29b317fb186b92f50f63613e211470b3e
 ```
 
-## Stage 2 implementation
+## Stage 2のimplementation
 
 ```text
 tools/experiments/lib/sfcdf-stage2-production.js
@@ -225,7 +225,7 @@ nonce = SFCDF-S2-AUTH-2026-09-02-V1-01
 max scientific executions = 1
 ```
 
-## Stage 2 formal execution
+## Stage 2のformal execution
 
 ```text
 workflow run = 33624399706
@@ -249,7 +249,7 @@ C1 = CONFIRMED / MTAJI-GREATER / 18 of 18 same-direction nonzero / p=1/131072 / 
 C6 = CONFIRMED / NAMUA-GREATER / 18 of 18 same-direction nonzero / p=1/131072 / Holm PASS
 ```
 
-## Execution-count audit
+## execution-count audit （実行記録）
 
 ```text
 Stage 1 = 1 authorized / 1 actual
@@ -257,9 +257,9 @@ Stage 2 = 1 authorized / 1 actual
 same-evidence reruns after fresh access = 0
 ```
 
-## Closure files
+## closure file （最終状態）
 
-Canonical closure sources include:
+canonical closure sourceは次を含む。
 
 - `CURRENT_STATUS.md`
 - `DECISION_REGISTER.md`
@@ -271,4 +271,4 @@ Canonical closure sources include:
 - `results/stage-2/scientific-result.json`
 - `results/stage-2/execution-summary.json`
 
-No G3-04 scientific execution is authorized after closure.
+closure後のG3-04 scientific executionはauthorizeされていない。

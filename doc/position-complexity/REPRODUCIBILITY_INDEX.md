@@ -1,9 +1,15 @@
-# Position Complexity / Difficulty Study 1 — Reproducibility Index
+# Position Complexity / Difficulty Study 1 — Reproducibility Index （再現性）
+
+## 日本語での要点
+
+formal decisionはINCONCLUSIVEで、人間の難しさや単一difficulty scoreを確認したものではない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 更新日: 2026-08-14  
 Status: **CLOSED STUDY / REPRODUCIBILITY INDEX**
 
-## Study identity
+## Study identity （識別と表現）
 
 ```text
 study = Position Complexity / Difficulty Study 1
@@ -12,7 +18,7 @@ base main = d681b4593242973fcb33805edca12eb3e8633653
 formal decision = INCONCLUSIVE
 ```
 
-## Stage 0
+## Stage 0 （Stageの記録）
 
 Canonical result:
 
@@ -34,7 +40,7 @@ workflow run = 31589325398
 validated branch head = 7bf6d801fc1f60ecf73d51c6be158f3f82b226d9
 ```
 
-## Stage 1 exploratory corpus
+## Stage 1 exploratory corpus （Stageの記録）
 
 Stage identity:
 
@@ -75,7 +81,7 @@ doc/position-complexity/STAGE_1_EXPLORATORY_RESULT.md
 
 Stage 1 is exploratory-consumed and cannot be reused as Stage 2 confirmation evidence.
 
-## Stage 2 formal corpus
+## Stage 2 formal corpus （Stageの記録）
 
 Stage identity:
 
@@ -127,7 +133,7 @@ Canonical formal result:
 doc/position-complexity/STAGE_2_FORMAL_RESULT.md
 ```
 
-## Frozen Stage 2 source fingerprint
+## Frozen Stage 2 source fingerprint （Stageの記録）
 
 ```text
 public/engine.js
@@ -167,7 +173,7 @@ test/position-complexity-stage2-formal-tooling.test.js
   a6c2c7551dcc466912d614b8a753388749dcddb630a0a5c1998c1c9e5e72a4b3
 ```
 
-## Formal tooling validation
+## Formal tooling validation （日本語の要点）
 
 ```text
 fingerprint CI run = 31673666993 / success
@@ -177,7 +183,7 @@ authorization preflight = success
 
 GitHub Actions was used only for technical validation and never generated the scientific Stage 1 or Stage 2 corpora.
 
-## Final decision
+## Final decision （結論）
 
 ```text
 PCX-H1 = INCONCLUSIVE

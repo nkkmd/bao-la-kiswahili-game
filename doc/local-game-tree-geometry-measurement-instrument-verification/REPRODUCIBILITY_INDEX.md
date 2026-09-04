@@ -1,6 +1,6 @@
-# Reproducibility Index — LGTGMIV-STUDY1
+# LGTGMIV-STUDY1 — 再現性索引
 
-## Formal identity and closure
+## formal identityとclosure
 
 - Study ID: `LGTGMIV-STUDY1`
 - baseline: `a53aabd26f78ac408445aff2d18ace3b21b827d7`
@@ -9,7 +9,7 @@
 - authoritative identity: RAW-only `pits,reserve,houseOwned,player,phase,winner,pending`
 - validated transform set: `[]`
 
-## Prospective contract documents
+## 結果を見る前に固定したcontract文書
 
 - `README.md`
 - `CURRENT_STATUS.md`
@@ -24,7 +24,7 @@
 - `authorizations/2026-08-31-stage-0-technical-authorization.md`
 - Study freeze commit: `1ffdfb631cd1f7f56a798fe62c6e0cd732547b17`
 
-## Stage 0 — technical validation
+## Stage 0 — technical validation （Stageの記録）
 
 Implementation:
 
@@ -47,9 +47,9 @@ Hashes:
 - `stageReconstructionCoreSha256 = 33c63d62cfaf9f38d81680f42e799a5084e2ef86686810bbe46f543a9fbe42b9`
 - `stageScientificCoreSha256 = 38871e544593fa4e0120fe77bbb48c47e643bb89d816acfde2dfd1dd9bdc0c0b`
 
-Stage 0 consumed no Stage 1/2 fresh scientific seeds and did not generate/read the protected depth-10 holdout.
+Stage 0はStage 1 / Stage 2 fresh scientific seedを消費せず、protected depth-10 holdoutをgenerateまたはreadしていない。
 
-## Stage 1 — fresh development
+## Stage 1 — fresh development （開発段階）
 
 Authorization:
 
@@ -66,9 +66,9 @@ Instrument:
 Fresh evidence:
 
 - seed block: `31110001..31110128`
-- population: 8 Namua + 8 Mtaji = 16 unique RAW roots
+- populationは8 Namua + 8 Mtajiで16 unique RAW root
 - depth: 5
-- one-shot execution trigger commit: `d45fa5e394a2ade36c18dc75a33eff68221e4889`
+- one-shot execution trigger commitは`d45fa5e394a2ade36c18dc75a33eff68221e4889`
 - workflow run: `33450205296`
 - result commit: `52812f37197df74e90d1864720ad1b7e6f13d7fa`
 - `results/stage-1/scientific-result.json`
@@ -83,16 +83,16 @@ Hashes:
 
 - `stageReconstructionCoreSha256 = 2f641919bf067428416afd65a9a502c30c2ad3261cfe6b1355499809076505ac`
 - `stageScientificCoreSha256 = 91c4ed0a23edbf12398ca644db7d6864011f4d26c88da93019095decf524f271`
-- scientific result file SHA-256: `ee2d2519d1f3c47c501719fed358afab0ce1638a7ff3264e8a60724c154e150b`
+- scientific result fileのSHA-256は`ee2d2519d1f3c47c501719fed358afab0ce1638a7ff3264e8a60724c154e150b`
 - telemetry file SHA-256: `c542a995c69a2606cd3b08dc6ed0121b88f708c461e08179c87e72c184756eb6`
 
-Promoted families: all five frozen LGTGMIV families.
+promoted familyは、固定済みLGTGMIV family 5件すべてである。
 
-Stage 1 evidence is immutable; formal same-block rerun is prohibited.
+Stage 1 evidenceはimmutableであり、formal same-block rerunは禁止する。
 
-## Stage 2 — fresh formal holdout
+## Stage 2 — fresh formal holdout （Stageの記録）
 
-Authorization and pre-execution verification:
+authorizationとpre-execution verification:
 
 - `authorizations/2026-09-01-stage-2-formal-authorization.md`
 - `checkpoints/2026-09-01-stage-2-tooling-smoke-pass.md`
@@ -121,7 +121,7 @@ Formal runner/workflow:
 Fresh evidence:
 
 - seed block: `31120001..31120192`
-- population: 12 Namua + 12 Mtaji = 24 unique RAW roots
+- populationは12 Namua + 12 Mtajiで24 unique RAW root
 - depth: 5
 - formal workflow run: `33452082425 / success`
 - immutable result commit: `5fbdd72a8c0a8d34b1b74cf0829a6f972812a549`
@@ -134,7 +134,7 @@ Canonical hashes:
 
 - `stageReconstructionCoreSha256 = 307c907a90cd7239a617278a2378f4e048b10f16877428a3c886de5377b01a1d`
 - `stageScientificCoreSha256 = 97ad7dc21e1758d31fa09e487389bf5d3935b1d98daf3eaa2f1b524d7169f9a4`
-- scientific result file SHA-256: `9a28e629440a1d9212ad67ef78451deba869747d313dc75462693701074e1f96`
+- scientific result fileのSHA-256は`9a28e629440a1d9212ad67ef78451deba869747d313dc75462693701074e1f96`
 - telemetry file SHA-256: `0db24cc1d1f59432a519dfaad88ffffe8d2217d1cebf4291b6361dc8f2778bc0`
 
 Family stage hashes:
@@ -145,7 +145,7 @@ Family stage hashes:
 - F4: `b0cd2e8c1264df81472d8e354962ec15bb970dbec39d6d84926e25f778eabf8a`
 - F5: `75688449f5f86fb8c027aa8d7ab4b3a05a8e9ed18614f95d841d23161e31b5b2`
 
-## Stage 2 read-only audit
+## Stage 2のread-only audit
 
 - `tools/experiments/audit-lgtgmiv-stage2-result.js`
 - `.github/workflows/lgtgmiv-stage2-result-audit.yml`
@@ -154,13 +154,13 @@ Family stage hashes:
 - `results/stage-2/posthoc-audit-summary.json`
 - audit: PASS
 - exact root reconstruction: 24/24
-- each family exact roots: 24/24
+- 各familyのexact rootは24/24
 - stage elapsed: `159574.533277 ms`
 - stage artifact bytes: `6086521`
-- scientific re-execution performed: false
-- engine imported by audit: false
+- scientific re-executionは行っていない
+- auditではengineをimportしていない
 
-## Final eligible family set
+## 最終eligible family set
 
 - `LGTGMIV-F1-TREE-OCCURRENCE`
 - `LGTGMIV-F2-RAW-GRAPH`
@@ -168,15 +168,15 @@ Family stage hashes:
 - `LGTGMIV-F4-TREE-GRAPH-RELATION`
 - `LGTGMIV-F5-REPLY-GEOMETRY`
 
-## Evidence consumption and protection
+## evidenceの消費状態と保護
 
-- G3-01 block `31010001..31010096`: historical consumed block; exclusion identity use only in this Study
-- Stage 1 `31110001..31110128`: consumed once; immutable
-- Stage 2 `31120001..31120192`: consumed once; immutable
-- protected standard-root exact depth-10 holdout: `SEALED / NOT GENERATED / NOT READ`
+- G3-01 block `31010001..31010096`はhistorical consumed blockであり、本Studyではexclusion identityに限って使用した
+- Stage 1 `31110001..31110128`は1回消費済みで、immutableである
+- Stage 2 `31120001..31120192`は1回消費済みで、immutableである
+- protected standard-root exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ`である
 
-## Hash policy and claim boundary
+## hash policyとclaim boundary
 
-Scientific canonical objects use SHA-256 lowercase hex over UTF-8 canonical JSON without trailing newline. Runtime/resource telemetry is never an input to root/stage scientific digests.
+scientific canonical objectには、末尾newlineのないUTF-8 canonical JSONに対するSHA-256 lowercase hexを使用する。runtime / resource telemetryをroot / Stage scientific digestのinputにしてはならない。
 
-The final eligibility claim is bounded to the frozen RAW-only depth-5 local reconstruction instrument and populations. It does not authorize whole-Bao state/game-tree estimates, canonicalization/symmetry reduction, deeper-horizon extrapolation, strategic-value claims, or G3-02 automatic start.
+final eligibility claimは、固定済みRAW-only depth-5 local reconstruction instrumentとpopulationに限られる。Bao全体のstate / game-tree estimate、canonicalization / symmetry reduction、deeper-horizon extrapolation、strategic-value claim、G3-02の自動開始をauthorizeしない。

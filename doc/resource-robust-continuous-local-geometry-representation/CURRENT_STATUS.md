@@ -1,6 +1,6 @@
-# RRCLGR-STUDY1 — Current Status
+# RRCLGR-STUDY1 — 現在の状態
 
-Updated: 2026-09-04
+更新日: 2026-09-04
 
 ```text
 Study = RRCLGR-STUDY1
@@ -25,19 +25,19 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 repository integration = COMPLETE via successor G3-10 combined fast-forward to main / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387
 ```
 
-## Stage 1 closure reason
+## Stage 1のclosure理由
 
-Frozen candidate-selection code called the inherited LGTGMIV low-level digest directly with an array of identity rows. The digest passes its input to `crypto.update`, which requires string/Buffer-like data. Stage 1 therefore fail-closed with an Array type error before candidate-manifest completion.
+固定済みcandidate-selection codeは、identity rowのarrayを引数として、既存のLGTGMIV low-level digestを直接呼び出した。このdigestは入力を`crypto.update`へ渡すが、同関数にはstringまたはBuffer互換dataが必要である。そのためStage 1はcandidate manifest完成前にArray type errorでfail closedした。
 
-Because fresh Stage 1 seed access had already occurred, changing the digest call, canonicalizing the array and rerunning the same seed block is prohibited same-evidence rescue.
+すでにfresh Stage 1 seedへアクセスした後だったため、digest呼び出しを変更し、arrayをcanonicalizeして同じseed blockを再実行することは、禁止されたsame-evidence rescueに該当する。
 
-## Evidence boundary
+## evidenceの境界
 
-No Stage 1 coordinate, distance, neighborhood, nondegeneracy or representation-eligibility summary is scientifically authorized. The Stage 1 result is purely a technical-invalid record.
+Stage 1のcoordinate、distance、neighborhood、nondegeneracy、representation-eligibility summaryは、いずれもscientificに承認されていない。Stage 1 resultはtechnical-invalid recordだけである。
 
-The Stage 1 seed namespace is consumed for `RRCLGR-STUDY1` and may not be reused by a successor Study. Stage 2 seeds remain unconsumed but belong to the closed Study and are not available for successor scientific reuse.
+Stage 1 seed namespaceは`RRCLGR-STUDY1`で消費済みであり、後続Studyで再利用してはならない。Stage 2 seedは未消費だが、閉じたStudyに属するため、後続のscientific reuseには使用できない。
 
-## Subsequent program chronology
+## 後続programの経過
 
 RRCLGR closure後、同Studyを修正・rerunするのではなく、fresh namespaceとcanonical structured-digest contractを持つ独立後継`CRCLGR-STUDY1`がprospectively開始された。CRCLGRは`FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`で完了し、その後のseparate current-state reviewでG3-10がauthorizedされた。`GCLD-STUDY1`も現在は`CLOSED / FORMAL-COMPLETE`である。
 

@@ -2,7 +2,7 @@
 
 更新日: 2026-08-28
 
-## Study anchor
+## Study anchor （基準点）
 
 ```text
 Program = G2-02
@@ -13,7 +13,7 @@ Branch = research/g2-02-search-reliability-decision-robustness
 Formal decision = INCONCLUSIVE
 ```
 
-## Stage identity
+## Stage identity （識別情報）
 
 ```text
 Stage 0 = SRDR-S0-TECHNICAL-2026-08-27-v1
@@ -21,7 +21,7 @@ Stage 1 = SRDR-S1-DEVELOPMENT-2026-08-27-v1
 Stage 2 = SRDR-S2-FORMAL-2026-08-27-v1
 ```
 
-## canonical repository result
+## canonical repository result （リポジトリ状態）
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_DEVELOPMENT_RESULT.json`
@@ -30,7 +30,7 @@ Stage 2 = SRDR-S2-FORMAL-2026-08-27-v1
 - `results/STAGE_2_VERIFICATION.json`
 - `results/STAGE_2_FORMAL_RESULT.json`
 
-## Stage 1 provenance
+## Stage 1 provenance （記録）
 
 ```text
 original workflow run = 33067208005
@@ -42,7 +42,7 @@ development profile hash = 665c284efeb0a9531ea49133ba313c0ed76cb09d888cbbe9324e2
 
 Stage 1 verification correctionではscientific rowを一切変更していません。1018 rowすべてが一致した後、representation-only hash semanticsだけをcorrectしました。
 
-## Stage 2 source / authorization
+## Stage 2 source / authorization （承認状態）
 
 ```text
 source-freeze commit = e176cafc15d2dde7b8767de6961959bb7ee9bb7b
@@ -51,7 +51,7 @@ formal spec SHA-256 = c4f4249896abc1a9b6c96c1782e4e3835cb395c1b436add3a8c90c1e02
 Node = 22.23.2
 ```
 
-## Stage 2 execution
+## Stage 2 execution （実行記録）
 
 ```text
 workflow run = 33124538584
@@ -63,7 +63,7 @@ selected unique RAW states = 1007
 Namua / Mtaji = 518 / 489
 ```
 
-## Stage 2 file hash
+## Stage 2 file hash （Stageの記録）
 
 ```text
 generation manifest = 64ee67538d1a07a77553c1cd83319a23bc07574a2cff6ad70a02afd8cb67f209
@@ -76,7 +76,7 @@ measurement hash = 13ca8825c250f038c510a2a7e7c0e8d1567f0d5027bd32ecb4dee0e34f64e
 canonical result hash = 7386f3efed01ba325bc3f03ed02e9cfc2d72ad48c356509987b5fcc8780f7d36
 ```
 
-## independent verification
+## independent verification （独立検証）
 
 ```text
 passed = true
@@ -89,7 +89,7 @@ measurement hash matches = true
 Stage 1 overlap = 0 / 0 / 0
 ```
 
-## formal result
+## formal result （最終状態）
 
 FAILした事前登録gateは1件だけです。
 
@@ -106,7 +106,7 @@ primaryFormalCriterion = null
 
 です。outcome確認後のrescueは承認されていません。
 
-## repository integration
+## repository integration （リポジトリ状態）
 
 ```text
 integration PR = #68

@@ -6,7 +6,7 @@
 ## 1. 研究
 
 **Study ID:** `SSGTGE-STUDY1`  
-**Program:** Research Generation 2 `G2-12`  
+**研究世代:** Research Generation 2 `G2-12`
 **正式英語題目:** State-Space / Game-Tree Growth Estimation Study 1
 
 日本語研究題目:
@@ -73,7 +73,7 @@ pits,reserve,houseOwned,player,phase,winner,pending
 
 `turn`と`reason`はidentityに含めず、canonicalization / symmetry reduction / seat swap / reflection reductionは使用していない。
 
-## 4. prospective estimator contract
+## 4. prospective estimator contract （固定した条件）
 
 Study開始時、fresh depth 10/11を生成する前にcandidate familyを次の3つに固定した。
 
@@ -113,7 +113,7 @@ maximum absolute natural-log error <= 0.15
 
 winner ruleはworst-cell error、mean error、固定candidate orderの順で決めることとした。uncertainty ruleも`q`, `R1=max(0.15,2q)`, `R2=2R1`としてoutcome前に固定した。
 
-## 5. Stage 0 v1
+## 5. Stage 0 v1 （Stageの記録）
 
 Stage 0 v1はtechnical-onlyで、fresh holdoutや実development competitionを消費しない設計だった。
 
@@ -140,7 +140,7 @@ STAGE0-TECHNICAL-INVALID
 
 として永久保存し、同versionをrepair/rerunしていない。
 
-## 6. Stage 0 v2
+## 6. Stage 0 v2 （Stageの記録）
 
 v1がscientific output生成前に停止したことから、source-bindingとshell orchestrationだけを変更したv2を別versionとして事前freezeした。
 
@@ -174,7 +174,7 @@ STAGE0-TECHNICAL-PASS
 
 として受理した。
 
-## 7. Stage 1 prospective freeze
+## 7. Stage 1 prospective freeze （固定した条件）
 
 Stage 0 PASS後、Stage 1を別commitでsource freezeした。
 
@@ -197,9 +197,9 @@ stage2ExecutionAuthorized = false
 
 を固定した。
 
-## 8. Stage 1 production-only diagnostic
+## 8. Stage 1 production-only diagnostic （Stageの記録）
 
-Stage 1 workflow:
+Stage 1のworkflow:
 
 ```text
 run = 33324107667
@@ -210,7 +210,7 @@ artifact ZIP SHA256 = 7b415b0fad9cadf92568d0b1103b44d9325d8b4c2a729edb40cb1f673e
 
 production processはexit 0となり、production-only計算では次のsummaryを出力した。
 
-| Candidate | max abs log error | mean abs log error | production eligibility |
+| candidate | 最大absolute log error | 平均absolute log error | production実装での適格性 |
 |---|---:|---:|---|
 | `E1-TRAILING-LOG-LINEAR-W5` | 0.2813333110915206 | 0.21758046269506714 | false |
 | `E2-LOG-QUADRATIC-D2PLUS` | 0.07917793679237395 | 0.027282797524651126 | true |
@@ -244,7 +244,7 @@ treeNodeOccurrences = 514303.0122194221
 
 ただし、これらは必須independent verificationを通過していないため**canonical estimator / formal predictionとして採用しない**。将来のStage 2 inputとして使用することも認めない。
 
-## 9. independent verification failure
+## 9. independent verification failure （独立検証）
 
 independent verifierはproductionのcandidate outputsを再計算し、凍結済みrelative tolerance `1e-12`で比較した。
 
@@ -300,7 +300,7 @@ STAGE1-TECHNICAL-INVALID
 
 で閉じる。
 
-## 11. Stage 2
+## 11. Stage 2 （Stageの記録）
 
 Stage 1でmandatory independent gateを満たしたcanonical estimatorが存在しないため、Stage 2をauthorizeしない。
 
@@ -330,12 +330,12 @@ G2-11 = NOT-AUTHORIZED
 
 必要であれば、新しいprospective Studyまたは明示的なnew versionとして:
 
-- numerical implementation contract
-- cross-implementation equivalence criterion
-- source identities
-- development evidence policy
+- 数値計算のimplementation contract
+- 実装間のequivalence criterion
+- sourceの識別情報
+- development evidenceの扱い
 - candidate set
-- holdout reservation
+- holdoutの予約状態
 - no-rescue rule
 
 をoutcome生成前に新たにfreezeして開始する。

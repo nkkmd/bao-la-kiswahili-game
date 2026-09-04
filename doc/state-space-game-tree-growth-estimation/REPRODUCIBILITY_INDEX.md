@@ -1,9 +1,9 @@
-# SSGTGE-STUDY1 — Reproducibility Index
+# SSGTGE-STUDY1 — Reproducibility Index （再現性索引）
 
 更新日: 2026-08-31  
 状態: **COMPLETE / TECHNICAL-INVALID / MERGED TO MAIN**
 
-## Canonical identity
+## Canonical identity （識別情報）
 
 ```text
 Program = G2-12 / Research Generation 2
@@ -15,7 +15,7 @@ canonical selectedEstimator = null
 fresh depth 10/11 = not generated / not read
 ```
 
-## Prospective authorities
+## Prospective authorities （承認状態）
 
 - `preregistration/STUDY_START_FREEZE.md`
 - `preregistration/STUDY_START_SPEC.json`
@@ -23,7 +23,7 @@ fresh depth 10/11 = not generated / not read
 - `preregistration/STAGE_0_V2_TECHNICAL_SPEC.json`
 - `preregistration/STAGE_1_DEVELOPMENT_SPEC.json`
 
-## Upstream immutable evidence
+## Upstream immutable evidence （証拠と成果物）
 
 ```text
 upstream Study = DRSSE-STUDY1
@@ -35,7 +35,7 @@ cumulative RAW states = 102857
 development source summary SHA256 = 04debfa47516d0288d9baf5cf1ff0d761c83c27ada16d9ea43c02be66887659a
 ```
 
-## Stage 0 v1 — permanently technical-invalid
+## Stage 0 v1 — permanently technical-invalid （技術検証）
 
 ```text
 Stage ID = SSGTGE-S0-TECHNICAL-2026-08-30-v1
@@ -48,9 +48,9 @@ artifact ZIP SHA256 = df9bb95a22bec49141bd45ac7baf0c6829f668e2c764b3b4668103ada2
 disposition = STAGE0-TECHNICAL-INVALID
 ```
 
-Failure: `SOURCE-HASH-BINDING-MISMATCH`; workflow also lacked `pipefail`. v1 produced no accepted technical result and consumed no real development/holdout outcome. Same-v1 rerun is not authorized.
+失敗理由は`SOURCE-HASH-BINDING-MISMATCH`で、workflowには`pipefail`もなかった。v1は受理可能なtechnical resultを生成せず、実development / holdout outcomeも消費していない。同じv1の再実行は承認されていない。
 
-## Stage 0 v2 — accepted technical PASS
+## Stage 0 v2 — accepted technical PASS （技術検証）
 
 ```text
 Stage ID = SSGTGE-S0-TECHNICAL-2026-08-30-v2
@@ -64,14 +64,14 @@ artifact ZIP SHA256 = bdf0dac8359147c5efaa7b3d58c798a4336c78483d95176ea38ab9960b
 disposition = STAGE0-TECHNICAL-PASS
 ```
 
-Canonical Stage 0 v2 files:
+Stage 0 v2のcanonical file:
 
 - `results/STAGE_0_V2_SOURCE_HASHES.json`
 - `authorizations/STAGE_0_V2_TECHNICAL_EXECUTE.json`
 - `results/STAGE_0_V2_TECHNICAL_RESULT.json`
 - `checkpoints/2026-08-31-stage0-v2-technical-acceptance.md`
 
-Result identities:
+resultの識別情報:
 
 ```text
 artifact STAGE_0_V2_TECHNICAL_RESULT.json SHA256 = 8b3f19a3a182133a46236abc979a11a93f8fd921053aa507333c566b7c5a5923
@@ -79,7 +79,7 @@ productionCoreSha256 = 6cc54143124c80e3cc4e2f4653b13840706a112ef6dfbcad5a81cba97
 independent resultCoreSha256 = f7bbd991ad61befc24d8164b90ae1e8fd8c254454a2fe96469013e1d1c898b5a
 ```
 
-Technical replay target:
+technical replayの対象:
 
 ```text
 depth = 2
@@ -89,21 +89,21 @@ cumulative tree occurrences = 19
 RAW-state-set SHA256 = 0a942b654f00265542c82b87f5dc53d685e96f3c0ef69a61fc574f90c6990a1f
 ```
 
-## Stage 1 — technical-invalid
+## Stage 1 — technical-invalid （技術検証）
 
-Source/spec freeze:
+source / specのfreeze:
 
 ```text
 3d93b6cb228bc314819495e89c1521859bf258b6
 ```
 
-Separate execution authorization:
+別commitで行った実行承認:
 
 ```text
 bba6d55b1a22e403976ced5ef05ed5b9d3c99f6e
 ```
 
-Frozen source blobs:
+固定したsource blob:
 
 ```text
 ssgtge-production.js = 71bc8a45d45df171edfde5d4882529c4a7e057fd
@@ -114,7 +114,7 @@ ssgtge-stage1-development.yml = 45c50148e998011e876ec80830638e55e49c8c15
 STAGE_1_DEVELOPMENT_SPEC.json = f79d38637fd22e99419da26f4044783d471ef79f
 ```
 
-Execution provenance:
+実行provenance:
 
 ```text
 run = 33324107667
@@ -125,7 +125,7 @@ artifact ZIP SHA256 = 7b415b0fad9cadf92568d0b1103b44d9325d8b4c2a729edb40cb1f673e
 workflow conclusion = failure
 ```
 
-Artifact file identities:
+artifact fileの識別情報:
 
 ```text
 stage1-production-result.json SHA256 = 673045090bd15eda1d27b46e413f506c685aef37f91fffc4f63a60458804a8e0
@@ -134,7 +134,7 @@ independent log SHA256 = 8004aa24b1271d22cf707769e09a46847439bbea5dc292c33150d59
 productionCoreSha256 = 0dde91343fd7ff1c7736eda2629d4c0f1c04c32b7aad0afee5613e6432cba194
 ```
 
-Production-only candidate summaries:
+production実装だけで得たcandidate summary:
 
 ```text
 E1: max=0.2813333110915206 mean=0.21758046269506714 eligible=false
@@ -143,9 +143,9 @@ E3: max=0.1129709359542721 mean=0.036062220843277815 eligible=true
 production proposed winner = E2-LOG-QUADRATIC-D2PLUS
 ```
 
-These are **not** canonical estimator-selection evidence because independent verification failed.
+independent verificationが失敗したため、これらはcanonical estimatorを選択するためのevidenceではない。
 
-Mandatory independent failure:
+必須のindependent verificationで検出した失敗:
 
 ```text
 prediction mismatch: E2-LOG-QUADRATIC-D2PLUS/newRawStateCount/7
@@ -153,7 +153,7 @@ frozen relative tolerance = 1e-12
 independent exit = 1
 ```
 
-Canonical closure files:
+closureを示すcanonical file:
 
 - `results/STAGE_1_TECHNICAL_INVALID_RESULT.json`
 - `checkpoints/2026-08-31-stage1-technical-invalid.md`
@@ -164,7 +164,7 @@ canonical selectedEstimator = null
 same Stage 1 evidence rerun = not authorized
 ```
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 ```text
 Stage ID = SSGTGE-S2-FORMAL-2026-08-30-v1
@@ -173,17 +173,17 @@ fresh depth 10 = not generated / not read
 fresh depth 11 = not generated / not read
 ```
 
-No Stage 2 source freeze or execution authorization was issued.
+Stage 2のsource freezeも実行authorizationも発行していない。
 
-## Study closure
+## Study closure （最終状態）
 
-Study-local closure commit:
+Study内のclosure commit:
 
 ```text
 4f63d615ef25702d99881aedf4a4054fbe7c275b
 ```
 
-Canonical final files:
+canonical final file:
 
 - `STUDY_1_FINAL_REPORT.md`
 - `results/STUDY_1_FINAL_RESULT.json`
@@ -196,11 +196,11 @@ formal decision = TECHNICAL-INVALID
 selectedEstimator = null
 ```
 
-The production-only E2 proposal is retained only as diagnostic provenance and must not be used as the formal Stage 2 estimator within this Study.
+production実装だけが示したE2 proposalは、診断用provenanceとしてのみ保存する。このStudyのformal Stage 2 estimatorとして使用してはならない。
 
-## Central documentation synchronization provenance
+## Central documentation synchronization provenance （記録）
 
-The four central documents were synchronized only on the G2-12 research branch after Study-local closure. The machine-readable synchronization authorization explicitly set `mainIntegrationAuthorized=false`; that authorization governed only the earlier synchronization action and did not authorize integration at that time.
+4件の中央文書は、Study内のclosure後にG2-12 research branch上だけで同期した。machine-readableな同期authorizationは`mainIntegrationAuthorized=false`を明示しており、その時点では同期だけを承認し、統合を承認していなかった。
 
 ```text
 authorization path = authorizations/CENTRAL_DOC_SYNC_EXECUTE.json
@@ -211,7 +211,7 @@ workflow conclusion = success
 central-doc sync commit = f69e4a7912e39bfd424969e5cd220ac36baa5d15
 ```
 
-Synchronized files:
+同期したfile:
 
 ```text
 README.md
@@ -220,18 +220,18 @@ doc/FUTURE_RESEARCH_AGENDA.md
 doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md
 ```
 
-Direct post-sync inspection confirmed the G2-12 `TECHNICAL-INVALID` closure, `selectedEstimator=null`, Stage 2 not authorized, and fresh depth 10/11 untouched. The one-time write-capable helper files were subsequently removed:
+同期直後の確認では、G2-12が`TECHNICAL-INVALID`でclosure済みであること、`selectedEstimator=null`、Stage 2未承認、fresh depth 10/11未使用を確認した。一度だけ使ったwrite-capable helper fileはその後削除した。
 
 ```text
 .github/workflows/ssgtge-central-doc-sync.yml removal = 9651f62c8f07605800b6a9103d9d6966c389870d
 tools/maintenance/sync-g2-12-central-docs.js removal = 8ef6b0329d386db48c729ea5017cfe6f4e21eb10
 ```
 
-The authorization record remains as provenance only; its triggering workflow no longer exists.
+authorization recordはprovenanceとしてだけ残している。対応するtrigger workflowはすでに存在しない。
 
-## Main integration provenance
+## Main integration provenance （記録）
 
-After the completed final documentation audit, the user explicitly authorized integration to `main`. A fresh immediate pre-write audit confirmed:
+最終文書監査の完了後、利用者が`main`への統合を明示的に承認した。write直前の再監査では次を確認した。
 
 ```text
 remote main before integration = c5efcdb7972d1bc775a2857c1b0641c35c9df622
@@ -242,13 +242,13 @@ research branch behind_by = 0
 merge base = c5efcdb7972d1bc775a2857c1b0641c35c9df622
 ```
 
-`main` was then fast-forwarded without force to `741ba02ffa944a9569b262841465bfc78db8220a`. Post-integration status synchronization began with:
+その後`main`をforceなしで`741ba02ffa944a9569b262841465bfc78db8220a`へfast-forwardした。統合後の状態同期は次のcommitから開始した。
 
 ```text
 CURRENT_STATUS update commit = a440ac2308fb8e7305beeeb6cbb49446d9a9d08f
 RESUME_HERE update commit = 5fc9f00958d5215be2cd6e08e6ee6c67c485a70d
 ```
 
-These integration-status edits are documentation/provenance only. They do not modify the canonical Study result, scientific thresholds, estimator selection, Stage 2 authorization, fresh-depth access state, G2-05 boundary, or G2-11 boundary.
+これらの統合状態editはdocumentation / provenanceだけを変更する。canonical Study result、科学的threshold、estimator selection、Stage 2 authorization、fresh-depth access state、G2-05 boundary、G2-11 boundaryは変更しない。
 
-G2-05 remains unchanged; G2-11 remains `NOT-AUTHORIZED`. A corrected attempt requires a new prospective Study or explicit new version.
+G2-05は不変で、G2-11は`NOT-AUTHORIZED`のままである。再検証には新しいprospective Studyまたは明示的なnew versionが必要になる。

@@ -53,7 +53,7 @@ Formal gateでは、次の完全一致・完全保存を要求しました。
 - frozen source identity
 - mandatory independent verification
 
-## 4. authoritative identity
+## 4. authoritative identity （識別情報）
 
 本Studyでは、scientific identityとして次のRAW identityを維持しました。
 
@@ -80,7 +80,7 @@ SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 
 特に、G2-03はrepository-facing oracle rowをretrospectiveに修復しておらず、過去のzero-mismatch diagnosticをvalid candidate decisionへ読み替えてもいません。
 
-## 6. Stage 0 — technical reconstruction
+## 6. Stage 0 — technical reconstruction （技術検証）
 
 Stage 0はtechnical onlyです。
 
@@ -90,7 +90,7 @@ Stage 0はtechnical onlyです。
 
 Stage 0ではscientific candidate decisionを生成していません。
 
-## 7. Stage 1 — development evidence
+## 7. Stage 1 — development evidence （証拠と成果物）
 
 Stage 1はfresh historically reachable RAW stateを用いたdevelopment-only Stageです。
 
@@ -261,7 +261,7 @@ standard-start population dedup = NON-ESTIMABLE
 
 failed global verification gateの下ではscientific mismatch decision自体が承認されないため、どのcandidateも`NOT-VALIDATED`にはしません。
 
-## 13. canonicalization boundary
+## 13. canonicalization boundary （日本語の要点）
 
 Production-only diagnosticで評価したbounded source graphは次です。
 
@@ -303,7 +303,7 @@ Independent standard-start reachability-closure proofも実装されていませ
 - G2-01 / G2-02の変更
 - public AI engineering change
 
-## 15. no-rescue closure
+## 15. no-rescue closure （解釈上の境界）
 
 fresh Stage 2 production outcomeが存在した後にverifier variable-name defectが判明しました。
 
@@ -313,7 +313,7 @@ fresh Stage 2 production outcomeが存在した後にverifier variable-name defe
 
 終了済みG2-03の結果は`INCONCLUSIVE`、3 candidateすべて`NON-ESTIMABLE`のままです。
 
-## 16. canonical records
+## 16. canonical records （記録）
 
 - `results/STAGE_2_FORMAL_RESULT.json` — repository-facing fail-closed formal closure
 - `results/STAGE_2_FORMAL_WORKFLOW_PROVENANCE.json` — failed workflow provenance

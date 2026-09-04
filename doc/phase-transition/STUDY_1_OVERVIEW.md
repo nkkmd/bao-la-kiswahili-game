@@ -80,7 +80,7 @@ Status: **Study 1 closed**
 
 探索データだけで現象が見える場合、過適合や偶然の可能性があります。そのため第1研究では未使用seed・独立seed・trajectory単位の重複除去を使って確認を続けました。
 
-### E-010 — unused-seed confirmation
+### E-010 — unused-seed confirmation （日本語の要点）
 
 新しい200局では、主要候補11件のうち7件、**63.64%** がexpansionでした。controlは249/8,424、**2.96%** で、risk ratioは **21.53** でした。
 
@@ -88,7 +88,7 @@ Status: **Study 1 closed**
 
 結果を見た後で12を11へ緩めることはしませんでした。
 
-### E-017 — independent structural confirmation
+### E-017 — independent structural confirmation （日本語の要点）
 
 同一の決定論的trajectoryを大量に数えてしまう問題を避けるため、`trajectoryHash + eventPly` を独立構造単位として1,000 independent-seed gamesを検証しました。
 
@@ -113,7 +113,7 @@ Status: **Study 1 closed**
 
 比較した主なsearch profileは、現在の`phase2`と旧`legacy`です。
 
-### E-018 / H16 — depth2
+### E-018 / H16 — depth2 （日本語の要点）
 
 固定条件 `hard / bao / depth2`、2,000 paired shared-seed gamesで直接比較した結果:
 
@@ -129,7 +129,7 @@ Status: **Study 1 closed**
 
 ただし、この確認は固定 `hard / bao / depth2` の範囲だけです。
 
-### E-019 / H17 — generalization test
+### E-019 / H17 — generalization test （日本語の要点）
 
 次に、同じphase2 > legacy方向が他の深度・evaluatorでも成立するかを調べました。
 

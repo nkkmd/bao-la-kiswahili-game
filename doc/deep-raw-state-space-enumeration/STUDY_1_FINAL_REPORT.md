@@ -26,7 +26,7 @@ Study ID: `DRSSE-STUDY1`
 
 G2-05は、これらのStudyに対するrescue、correction、reclassification、extension-success labelではありません。
 
-## 3. authoritative representation
+## 3. authoritative representation （表現）
 
 Scientific state identityはRAW-onlyです。
 
@@ -72,7 +72,7 @@ source RAW key -> exact move key -> successor RAW key
 
 ## 4. prospective Stage構成
 
-### Stage 0 — technical validation
+### Stage 0 — technical validation （技術検証）
 
 `DRSSE-S0-TECHNICAL-2026-08-28-v1`では、RAW identity、deterministic enumeration、layer accounting、tree-occurrence propagation、transposition accounting、hashing、materialization、independent verificationを検証しました。
 
@@ -88,7 +88,7 @@ artifact ZIP SHA256 = 7cd8dbb4e61acf113c0085b79bd298a7588994447750e0f7d4d8201e51
 
 Stage 0はscientific inferenceを承認しません。
 
-### Stage 1 — fresh development / resource characterization
+### Stage 1 — fresh development / resource characterization （Stageの記録）
 
 `DRSSE-S1-DEVELOPMENT-2026-08-28-v1`ではfresh deterministic seed block `28050001..28050064`を使用し、prospectiveにNamua 3 roots、Mtaji 3 rootsを選択しました。
 
@@ -105,7 +105,7 @@ complete depth-5 roots = 6/6
 
 Stage 1はdevelopment-onlyです。Stage 1 row、root、state count、transposition observation、artifactをformal Stage 2 evidenceとして使用することは禁止しました。
 
-### Stage 2 — formal bounded enumeration
+### Stage 2 — formal bounded enumeration （Stageの記録）
 
 formal domainはStage 1 outcomeを見る前から次のとおり固定されていました。
 
@@ -119,7 +119,7 @@ required complete parent expansion layers = 0..8
 
 Formal runはfrozen source blobとfrozen resource ceilingに対してexactly once承認しました。
 
-## 5. formal result
+## 5. formal result （最終状態）
 
 Production enumeratorはresource / administrative stopなしにすべてのfrozen layerを完了しました。
 
@@ -138,7 +138,7 @@ full independent exact recomputation = PASS
 
 > **`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
 
-## 6. exact reachable-state / tree structure
+## 6. exact reachable-state / tree structure （日本語の要点）
 
 | depth | unique RAW states | new RAW states | cumulative RAW states | tree occurrences | cumulative tree occurrences | tree / layer RAW | terminal |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -168,7 +168,7 @@ tree edge occurrences from parent depths 0..8 = 136644
 tree / cumulative RAW-state occurrence ratio = 1.328494900687362
 ```
 
-## 7. branching structure
+## 7. branching structure （測定結果）
 
 | parent depth | RAW parents | legal edges | mean branching | median | terminal parents |
 | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -184,7 +184,7 @@ tree / cumulative RAW-state occurrence ratio = 1.328494900687362
 
 完全列挙済みparent layerでは、legal move 0のnonterminal parentは観測されませんでした。full branching histogramとedge-set hashはStage 2 artifact / resultに保存しています。
 
-## 8. transposition structure
+## 8. transposition structure （測定結果）
 
 Transpositionはexact RAW state identityだけで定義しました。duplicate arrivalはdepth 4で初めて現れました。
 
@@ -220,13 +220,13 @@ exact arrival multiplicity histogram:
 
 したがってdepth 9までにgraph-state countとgame-tree occurrenceの差が明瞭になりますが、enumerated domain外へのextrapolationは承認しません。
 
-## 9. phase composition
+## 9. phase composition （測定結果）
 
 exact layer 0..9のすべてのnonterminal stateはNamuaでした。frozen depth-9 domainにはMtaji nonterminal stateは存在しませんでした。terminal stateはdepth 5で初めて現れ、depth 9では351 statesでした。
 
 これはMtajiがglobally absentまたはunreachableだという意味ではありません。事前固定したstandard rootから9 plies以内には存在しなかった、という限定された結果です。
 
-## 10. independent verification / exact identity
+## 10. independent verification / exact identity （独立検証）
 
 Canonical provenance:
 

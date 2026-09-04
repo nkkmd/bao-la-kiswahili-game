@@ -1,4 +1,4 @@
-# BECT-STUDY1 — Current Status
+# BECT-STUDY1 — 現在の状態
 
 更新日: 2026-09-02
 
@@ -24,11 +24,11 @@ protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT RE
 main integration = COMPLETE / fast-forward integrated research head 49f868103b186c8bc00a188afd185a620a797e55
 ```
 
-## Formal scope
+## formal scope （適用範囲と制限）
 
 BECT-STUDY1は同一trajectory上のbounded RAW local geometryを時間方向に測定し、branch expansion / compression / persistence / reversal等のtransition structureをprospectively検証する独立研究です。static phase differenceとtemporal transitionを分離し、geometry transitionをrule/search/value/tactical/strategic transitionと同一視しません。
 
-## Frozen measurement contract
+## 固定済みmeasurement contract
 
 ```text
 representation = RAW-ONLY
@@ -44,9 +44,9 @@ Frozen level endpointsはM1-M8。adjacent deltaはexact rational。event grammar
 
 M5 denominator、Stage 1 coverage、longitudinal identity rulesはすべてfresh Stage 1 evidence前にprospectively一意化済みです。
 
-## Stage 0 technical history
+## Stage 0のtechnical history
 
-### v1 — TECHNICAL-INVALID
+### v1 — `TECHNICAL-INVALID`となった経緯
 
 ```text
 workflow run = 33631597307
@@ -57,7 +57,7 @@ fresh scientific seed access = false
 
 Technical seed `31500001`が固定fixture pair 24->25より前に終局したためtechnical-invalid。v1はrerunしていません。
 
-### v2 — STAGE0-PASS
+### v2 — `STAGE0-PASS`となった結果
 
 ```text
 workflow run = 33632094597
@@ -70,7 +70,7 @@ result = STAGE0-PASS
 
 Stage 0 v2でtrajectory replay、adjacent successor binding、overlapping-window semantics、time-index semantics、production/independent reconstruction・family・BECT level equality等をPASSしました。
 
-## Stage 1 preauthorization preparation
+## Stage 1 preauthorizationの準備
 
 Fresh-free preparationはすべてStage 1 seed access前に完了しました。
 
@@ -87,7 +87,7 @@ scientific workflow executions before authorization = 0
 
 G3-03 diagnostic scientific fieldsおよびG3-04 scientific outcome fieldsはidentity firewallに保持していません。
 
-## Stage 1 authorization and execution
+## Stage 1のauthorizationと実行
 
 Authorization baseline:
 
@@ -111,7 +111,7 @@ seed block consumed = true
 no-rescue boundary crossed = true
 ```
 
-## Stage 1 formal disposition
+## Stage 1のformal disposition
 
 **`TECHNICAL-INVALID`**
 
@@ -125,7 +125,7 @@ relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d8
 
 Stage 1 runnerはprospectively fail-closedし、canonical resultを`TECHNICAL-INVALID`として書き出して終了しました。Stage 1 development summaryおよびformal promotion判定は成立していません。
 
-## Durable Stage 1 artifact
+## durable Stage 1 artifact （成果物）
 
 ```text
 artifact ID = 9849245665
@@ -145,7 +145,7 @@ mirror commit = ac2bd2ca101a9002c69131c2c39ebbfbb98368a1
 scientific recomputation = false
 ```
 
-## No-rescue closure
+## no-rescue closure （最終状態）
 
 Fresh Stage 1 generation/read後にtechnical errorが発生したため、同一Stage 1 evidenceをimplementation修正後に再実行することはprospective no-rescue ruleに反します。
 
@@ -153,14 +153,14 @@ Fresh Stage 1 generation/read後にtechnical errorが発生したため、同一
 
 - Stage 1 seed `31510001..31510240`のsame-evidence rerun
 - relay-limit handlingを変更して同一Stage 1を救済すること
-- seed extension / root replacement / favorable subset selection
+- seed extension / root replacement / favorable subset selectionを行うこと
 - endpoint / event grammar / horizon / representation / resource ceiling / promotion gateの事後変更
 - partial telemetryからformal candidateをpromotionすること
 - Stage 2を実行すること
 
 Formal promoted candidate setは **`[]`** です。
 
-## Stage 2 and protected evidence
+## Stage 2とprotected evidence
 
 Stage 2 authorization prerequisiteであるvalid Stage 1 completion + nonempty frozen promoted candidate setを満たしません。
 
@@ -169,16 +169,16 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seed 31520001..31520384 = NOT CONSUMED
 ```
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-## Interpretation boundary
+## 解釈上の境界
 
 今回formalに主張できるのは、BECT Stage 1がfrozen bounded enumeration contractの下でrelay-limit technical errorにより完遂できず、formal transition candidatesを評価・promotionできなかったことです。
 
 Partial telemetryに含まれる局所値や途中root系列を、branch expansion/compression transitionの存在、phase差、search difficulty、戦略的意味、人間難度などのformal evidenceとして再利用しません。
 
-## Next action
+## 次に許可されるaction
 
 BECT-STUDY1は **`CLOSED / TECHNICAL-INVALID`** としてclosure済みで、final report / reproducibility / central research-program documentsの同期と`main`へのfast-forward統合も完了しています。Study内の追加scientific executionはありません。**G3-05 closure時点では**次のprogram-level scientific actionはseparate post-G3-05 current-state G3-06 authorization reviewで、G3-06は当時`NOT AUTHORIZED`でした。そのreviewは後に完了し、G3-06以降も独立に進行しました。現在のprogram stateは`../research-generation-3/CURRENT_STATUS.md`を参照します。

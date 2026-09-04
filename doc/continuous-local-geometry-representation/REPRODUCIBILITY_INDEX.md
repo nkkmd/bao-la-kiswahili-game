@@ -1,8 +1,8 @@
-# CLGR-STUDY1 — Reproducibility Index
+# CLGR-STUDY1 — 再現性索引
 
-Updated: 2026-09-03
+更新日: 2026-09-03
 
-## Repository identity
+## repository identity（リポジトリ識別情報）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -13,18 +13,18 @@ current status = CLOSED / TECHNICAL-INVALID
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-## Program decisions
+## program decision（program上の判断）
 
 - `../research-program-decisions/2026-09-03-post-g3-08-g3-09-authorization-review.md`
 - `../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`
 - `../research-generation-3/checkpoints/2026-09-03-post-g3-08-g3-09-authorization-review.md`
 - `../research-generation-3/checkpoints/2026-09-03-g3-09-technical-invalid-closure.md`
 
-Final program decision:
+final program decision:
 
 **`G3-09 / CLGR-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
-## Frozen contracts
+## 固定済みcontract
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
@@ -35,7 +35,7 @@ Final program decision:
 - `prereg/STAGE_2_SELECTION_CONTRACT.json`
 - `prereg/STAGE_2_FORMAL_INPUT.json`
 
-## Measurement dependency
+## measurement dependency（測定上の依存関係）
 
 ```text
 LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL
@@ -46,11 +46,11 @@ relative depth = 5
 validated transforms = []
 ```
 
-Authoritative upstream report:
+正本となるupstream report:
 
 `../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`
 
-## Frozen representation
+## 固定済みrepresentation
 
 ```text
 representation = CLGR-R1-EXACT-SQUASHED-L1
@@ -64,7 +64,7 @@ data-dependent fitting = none
 PCA/clustering = none
 ```
 
-## Stage namespaces at closure
+## closure時点のStage namespace
 
 ```text
 technical = 31909001..31909008 / scientific use prohibited
@@ -73,9 +73,9 @@ Stage 2 = 31920001..31920384 / CONSUMED
 same-evidence rerun = PROHIBITED
 ```
 
-## Stage 0 provenance
+## Stage 0のprovenance
 
-Stage 0 v1 was technical-invalid before scientific access and was not rerun.
+Stage 0 v1はscientific access前にtechnical-invalidとなり、再実行していない。
 
 Stage 0 v2:
 
@@ -87,9 +87,9 @@ result JSON SHA-256 = 5723938b5afc3e6b9f2d2fcad6c4f618a97e4b3e47e50d0e0d4204edbe
 stage disposition = STAGE0-PASS
 ```
 
-## Stage 1 preauthorization provenance
+## Stage 1 preauthorizationのprovenance
 
-Preauthorization v1 stopped at syntax check before audit execution and before fresh access. It was not rerun.
+preauthorization v1はaudit実行前かつfresh access前のsyntax checkで停止した。再実行していない。
 
 Preauthorization v2:
 
@@ -102,13 +102,13 @@ audit disposition = STAGE1-PREAUTH-STATIC-AUDIT-PASS
 fresh Stage 1 seed access = false
 ```
 
-Authoritative mirror:
+正本となるmirror:
 
 `results/stage-1-preauthorization-v1/PREAUTH_AUDIT_RESULT.json`
 
-## Stage 1 scientific provenance
+## Stage 1のscientific provenance
 
-Exactly-one authorized fresh execution:
+authorizeされたexactly-onceのfresh execution:
 
 ```text
 workflow run = 33750400172
@@ -120,9 +120,9 @@ stage disposition = STAGE1-PASS
 canonical scientific result SHA-256 = 1e63937dc5967276f68253c9efa819554b0ea3b346f471c04dea92cbd90dc529
 ```
 
-The immutable artifact was exact-byte mirrored by workflow run `33750898317`.
+immutable artifactはworkflow run `33750898317`でexact-byte mirrorした。
 
-Authoritative Stage 1 mirrors:
+正本となるStage 1 mirror:
 
 - `results/stage-1/STAGE_1_SELECTION.json`
 - `results/stage-1/STAGE_1_ROOT_MEASUREMENTS_PRODUCTION.json`
@@ -133,9 +133,9 @@ Authoritative Stage 1 mirrors:
 - `results/stage-1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json`
 - `results/stage-1/STAGE_1_DEVELOPMENT_RESULT.json`
 
-Stage 1 is development evidence. Its PASS does not constitute formal representation eligibility.
+Stage 1はdevelopment evidenceである。このPASSはformal representation eligibilityを構成しない。
 
-## Stage 2 preauthorization provenance
+## Stage 2 preauthorizationのprovenance
 
 ```text
 workflow run = 33751580785
@@ -146,13 +146,13 @@ fresh Stage 2 seed access = false
 protected depth-10 access = false
 ```
 
-Authoritative mirror:
+正本となるmirror:
 
 `results/stage-2-preauthorization-v1/PREAUTH_AUDIT_RESULT.json`
 
-## Stage 2 formal provenance
+## Stage 2のformal provenance
 
-Exactly-one authorized fresh formal execution:
+authorizeされたexactly-onceのfresh formal execution:
 
 ```text
 workflow run = 33751818456
@@ -168,7 +168,7 @@ scientific summary authorized = false
 same-evidence rerun authorized = false
 ```
 
-Failure identity:
+failure identity:
 
 ```text
 root index = 61
@@ -178,51 +178,51 @@ root RAW SHA-256 = e2260d76b2f40fa24ebe2183ca0cc865f48dc7c951737414ef8c498143b80
 error = relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b
 ```
 
-The immutable Stage 2 artifact was exact-byte verified and mirrored by workflow run `33752894852`.
+immutable Stage 2 artifactはexact-byteで検証し、workflow run `33752894852`でmirrorした。
 
-Authoritative Stage 2 mirrors:
+正本となるStage 2 mirror:
 
 - `results/stage-2/STAGE_2_SELECTION.json`
 - `results/stage-2/STAGE_2_ROOT_MEASUREMENTS_PRODUCTION.json`
 - `results/stage-2/STAGE_2_ROOT_MEASUREMENTS_INDEPENDENT.json`
 - `results/stage-2/STAGE_2_FORMAL_RESULT.json`
 
-The repository blob SHA for `STAGE_2_FORMAL_RESULT.json` after exact mirror is `d0d577ede4bfe3c726500c9c521228576fdf8186`.
+exact mirror後の`STAGE_2_FORMAL_RESULT.json`のrepository blob SHAは`d0d577ede4bfe3c726500c9c521228576fdf8186`である。
 
-## Source binding and implementation separation
+## source bindingとimplementationの分離
 
-Fresh-free Stage 1 and Stage 2 preauthorization audits bound the engine, LGTGMIV production/independent implementations, CLGR production/independent implementations, stage selectors/runners/verifiers, frozen preregistration files and scientific workflows by Git blob SHA before fresh execution.
+fresh-free Stage 1 / Stage 2 preauthorization auditでは、fresh execution前に、engine、LGTGMIV production / independent implementation、CLGR production / independent implementation、Stage selector / runner / verifier、固定済みpreregistration file、scientific workflowをGit blob SHAでbindした。
 
-Production and independent CLGR paths did not import each other. Scientific equality was defined over canonical exact primitives rather than runtime object prototypes or floating tolerances.
+productionとindependent CLGR pathは相互にimportしていない。scientific equalityはruntime object prototypeまたはfloating toleranceではなく、canonical exact primitiveに対して定義した。
 
-## G3-08 and upstream firewall
+## G3-08とupstream firewall
 
-G3-08 partial Stage 1 measurements were not used as G3-09 scientific evidence. `doc/local-geometry-persistence-memory-length/prereg/UPSTREAM_IDENTITY_FIREWALL.json` supplied identity-only exclusions and retained no G3-07 scientific outcome fields.
+G3-08 partial Stage 1 measurementはG3-09 scientific evidenceとして使用していない。`doc/local-geometry-persistence-memory-length/prereg/UPSTREAM_IDENTITY_FIREWALL.json`はidentity-only exclusionを提供し、G3-07 scientific outcome fieldを保持していない。
 
-G3-08 relay-limit information was used only to motivate fail-closed technical controls and prospectively frozen resource ceilings.
+G3-08のrelay-limit情報は、fail-closed technical controlと結果を見る前に固定するresource ceilingの設計根拠に限って使用した。
 
-## Protected evidence
+## protected evidence（保護対象の証拠）
 
-Standard initial RAW-root complete exact depth-10 holdout:
+standard initial RAW-root complete exact depth-10 holdoutの状態:
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
-No partial generation, resource probe, state-count peek or scientific read occurred in G3-09.
+G3-09ではpartial generation、resource probe、state-count peek、scientific readのいずれも行っていない。
 
-## No-rescue and downstream boundary
+## no-rescueとdownstream boundary
 
-Because Stage 2 fresh evidence was accessed and the formal seed block was consumed, `CLGR-STUDY1` cannot be rerun or repaired on the same evidence. The 61 partial Stage 2 measurements are technical provenance only.
+Stage 2 fresh evidenceへアクセスし、formal seed blockも消費済みであるため、`CLGR-STUDY1`を同じevidenceで再実行または修復できない。61件のpartial Stage 2 measurementはtechnical provenanceに限られる。
 
-G3-10 remains not authorized and requires a separate post-G3-09 current-state review.
+この時点のG3-10はnot authorizedであり、別個のpost-G3-09 current-state reviewを必要とした。後続状態は`CURRENT_STATUS.md`を参照する。
 
-## Main integration
+## `main`への統合
 
-After explicit user instruction on 2026-09-03, `main` was fast-forwarded to the reviewed G3-09 closure tip `64ada67b058811c18d81e7286fd3b12df6964459` with `force=false`. No squash, rebase, history rewrite, scientific recomputation, seed reuse, or protected-holdout access occurred. The closed research branch is retained for provenance.
+2026-09-03の明示的なユーザー指示後、`main`をreview済みG3-09 closure tip `64ada67b058811c18d81e7286fd3b12df6964459`へ`force=false`でfast-forwardした。squash、rebase、history rewrite、scientific recomputation、seed reuse、protected holdout accessは行っていない。閉じたresearch branchはprovenanceのため保持している。
 <!-- CLGR-G3-09-FINAL-AUDIT:REPRO -->
 
-## Final repository/document consistency audit
+## repository / documentの最終consistency audit
 
-Final audit v1 stopped on a documentation allowlist omission before any scientific computation. It was not rerun. A fresh documentation-only v2 audit expanded only the valid CLGR program-decision path allowlist and otherwise retained the same checks.
+final audit v1は、scientific computation前にdocumentation allowlistの漏れで停止した。v1は再実行していない。freshなdocumentation-only v2 auditでは、有効なCLGR program-decision pathのallowlistだけを拡張し、その他のcheckは同一に保った。
 
 ```text
 v2 workflow run = 33754250314
@@ -235,4 +235,4 @@ main integration = NOT AUTHORIZED / NOT PERFORMED
 research branch = CLOSED / REVIEW-READY
 ```
 
-Canonical checkpoint: `checkpoints/2026-09-03-final-repository-document-consistency-pass.md`.
+canonical checkpointは`checkpoints/2026-09-03-final-repository-document-consistency-pass.md`である。

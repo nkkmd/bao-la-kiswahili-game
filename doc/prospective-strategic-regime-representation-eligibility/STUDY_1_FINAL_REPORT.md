@@ -44,7 +44,7 @@ STAGE1-DEVELOPMENT-BLOCKED-NON-ESTIMABLE
 
 となった。Stage 2は`STAGE1-DEVELOPMENT-PASS-REPRESENTATION-FROZEN`をentry条件としていたため、`NOT-AUTHORIZED-NOT-EXECUTED`である。
 
-## 3. Stage 1 scientific population
+## 3. Stage 1 scientific population （Stageの記録）
 
 ```text
 generated games = 4096
@@ -57,7 +57,7 @@ maximum single selected opening-prefix share = 0.00390625
 
 8 phase/source-policy strataはすべて64 rootsでexact quotaを満たした。
 
-## 4. feature readiness
+## 4. feature readiness （対象集団と準備状態）
 
 Feature widthは28だった。nonzero-MAD featureは15:
 
@@ -137,7 +137,7 @@ G2-10 closureは不変である。特に40-feature dictionary、deterministic K-
 
 本Studyのnon-estimable resultをG2-10の救済材料には使用しない。
 
-## 10. execution provenance
+## 10. execution provenance （記録）
 
 ```text
 source freeze = 41124069f89f0706cf943e18688c96a8c2db35d7
@@ -150,7 +150,7 @@ Stage 1 result SHA-256 = 1a198843dfe57b6b378e8e9aec3f1f60e5cf5424b4e760288944858
 runner internal result SHA-256 = 42bbb556b96e35bef24044c9112d47508b5f6759718c582f278dd64cbd7db9a8
 ```
 
-## 11. Study closure
+## 11. Study closure （最終状態）
 
 ```text
 Stage 0 = STAGE0-TECHNICAL-PASS

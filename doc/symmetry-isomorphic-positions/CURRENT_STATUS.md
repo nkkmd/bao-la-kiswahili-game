@@ -1,8 +1,14 @@
-# CURRENT_STATUS — Symmetry / Isomorphic Positions Study 1
+# CURRENT_STATUS — Symmetry / Isomorphic Positions Study 1 （日本語の要点）
+
+## 日本語での要点
+
+Study-level closureはNON-ESTIMABLEで、validated 0、rejected 0、non-estimable 5である。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-24
 
-## Scientific status
+## Scientific status （日本語の要点）
 
 **COMPLETED — formal result `NON-ESTIMABLE`; 0 formally validated transforms.**
 
@@ -19,7 +25,7 @@ NON-ESTIMABLE                  = 5
 
 The invalidated-v1 fresh zero-mismatch evidence is preserved as bounded diagnostic evidence only and is not promoted to formal validation.
 
-## Source identity recovered at study start
+## Source identity recovered at study start （識別と表現）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -31,7 +37,7 @@ historical transform-candidates.js blob = a9117f46643fc79fc3352771d684c4ac9f7a01
 
 The upstream Restricted Endgame Study 1 remains immutable and retains formal decision `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`. This Study does not revise its raw state count, hashes, solution, or interpretation boundary.
 
-## Frozen candidate set
+## Frozen candidate set （日本語の要点）
 
 Scientific candidates:
 
@@ -46,7 +52,7 @@ Controls:
 
 Candidate semantics were frozen before formal reachable-corpus outcomes. No post-outcome transform repair, failed-state/phase exclusion, root/depth shrinkage, or candidate rescue was performed.
 
-## Frozen Stage 1 population
+## Frozen Stage 1 population （Stageの記録）
 
 ```text
 formal seed block      = 22910001..22910064
@@ -58,7 +64,7 @@ strata                  = namua / mtaji / mtaji-houseless
 
 Domain materialization had shortage 0, witness replay failure 0, and trajectory runtime guard hit 0.
 
-## Fresh bounded-local evidence
+## Fresh bounded-local evidence （証拠と成果物）
 
 | Outcome | Roots | States | Edges | Tested states | Mismatches |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -70,7 +76,7 @@ Domain materialization had shortage 0, witness replay failure 0, and trajectory 
 
 The negative control produced 638 independent fresh mismatches; the identity control produced zero fresh mismatches.
 
-## Mandatory oracle-anchor limitation
+## Mandatory oracle-anchor limitation （限界）
 
 The identity positive control failed the immutable 8-state oracle integration. Production counted 19 oracle mismatches; the independent implementation counted 10, so `G12` failed.
 
@@ -87,7 +93,7 @@ successor escapes stored key set    = 0
 
 The three mismatching rows are terminal rows whose stored `stateKey` does not equal the hash recomputed from the stored `ruleState`. This is recorded only as a limitation of using that immutable artifact as this Study's transform anchor; it does not alter the upstream Study.
 
-## Reproducibility identities
+## Reproducibility identities （再現性）
 
 ```text
 specSha256 = ede4968d7702ffded73233cf05cbe10c94c4d3a1cb04ef850f85c727b56d2b0a
@@ -99,7 +105,7 @@ archive workflow run = 32728925376
 oracle diagnostic workflow run = 32728619101
 ```
 
-## Downstream authorization
+## Downstream authorization （日本語の要点）
 
 ```text
 validated transformation set = empty
@@ -110,7 +116,7 @@ State Space Study raw identity = AUTHORIZED
 use T01/T02/T03 for state reduction = NOT AUTHORIZED
 ```
 
-## Canonical conclusion documents
+## Canonical conclusion documents （結論）
 
 - [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)

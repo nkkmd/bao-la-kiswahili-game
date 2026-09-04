@@ -1,29 +1,29 @@
-# EBRWS-STUDY1 — Reproducibility Index
+# EBRWS-STUDY1 — 再現性索引
 
-## Study identity
+## Study identity（研究識別情報）
 
 - Study ID: `EBRWS-STUDY1`
 - agenda: Research Generation 3 `G3-02`
 - final disposition: `CLOSED / TECHNICAL-INVALID`
 - baseline remote main: `ca6a1e4a9b41d79d873fa71385972e402ffa5197`
 - research branch: `research/g3-02-effective-branching-reply-width-structure`
-- authoritative state identity: RAW-only
+- authoritative state identityはRAW-onlyである
 - validated transform set: `[]`
-- relative local horizon: depth 5
+- relative local horizonはdepth 5である
 
-## Canonical protocol records
+## canonical protocol記録
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
 - `DECISION_REGISTER.md`
 - `CURRENT_STATUS.md`
 
-Protocol blob frozen before scientific evidence: `cc367fe5315d1553f75cf3b95e629184070f05ac`.
-Preregistration blob frozen before scientific evidence: `bdf7d35bcf8554e5a29bd5f2e92b27bb7edc8498`.
+scientific evidence前に固定したprotocol blobは`cc367fe5315d1553f75cf3b95e629184070f05ac`である。
+scientific evidence前に固定したpreregistration blobは`bdf7d35bcf8554e5a29bd5f2e92b27bb7edc8498`である。
 
-## Upstream instrument dependency
+## upstream instrument dependency （概要）
 
-Formal eligible families only:
+formal eligible familyは次に限る。
 
 - `LGTGMIV-F1-TREE-OCCURRENCE`
 - `LGTGMIV-F2-RAW-GRAPH`
@@ -31,45 +31,45 @@ Formal eligible families only:
 - `LGTGMIV-F4-TREE-GRAPH-RELATION`
 - `LGTGMIV-F5-REPLY-GEOMETRY`
 
-Primary endpoint uses F1 + F5. F2-F4 are secondary context only.
+primary endpointはF1 + F5を使用する。F2〜F4はsecondary contextに限る。
 
-## Stage 0
+## Stage 0の記録
 
 - ID: `EBRWS-S0-TECHNICAL-2026-09-01-v1`
-- evidence: technical fixtures only
+- evidenceはtechnical fixtureに限る
 - disposition: `STAGE0-PASS`
-- production / independent scientific core: `ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
-- fresh seed consumption: false
-- protected depth-10 access: false
+- production / independent実装によるscientific core: `ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
+- fresh seedを消費していない
+- protected depth-10へアクセスしていない
 
 Records:
 
 - `results/stage-0/technical-validation.json`
 - `checkpoints/2026-09-01-stage-0-technical-pass.md`
 
-## Stage 1 pre-execution
+## Stage 1のpre-execution
 
 - ID: `EBRWS-S1-DEVELOPMENT-2026-09-01-v1`
 - seed block: `31210001..31210192`
-- target roots: 12 Namua + 12 Mtaji
+- target rootは12 Namua + 12 Mtajiである
 - evidence class: `FRESH-DEVELOPMENT`
 - authorization: `authorizations/2026-09-01-stage-1-development-authorization.md`
 - tooling smoke run: `33525232642 / success`
 - tooling job: `99914259137`
 - pre-execution checkpoint: `checkpoints/2026-09-02-stage-1-tooling-smoke-pass-and-preexecution.md`
 
-Tooling smoke reported no fresh scientific seed/root access and no protected depth-10 access.
+tooling smokeはfresh scientific seed / root accessおよびprotected depth-10 accessがないことを報告した。
 
-## Authorized Stage 1 one-shot execution
+## authorizeされたStage 1 one-shot execution
 
 GitHub Actions:
 
 - run: `33569323221`
 - job: `100059596453`
 - execution step: success
-- repository materialization step: failure
+- repository materialization stepはfailureだった
 
-The frozen runner reported before materialization failure:
+固定済みrunnerはmaterialization failure前に次を報告した。
 
 ```text
 reported runner disposition = STAGE1-PASS
@@ -82,61 +82,61 @@ scientificResultFileSha256 = 1c5444ab050e85735763231a7c5913489c1254017b9acbb6a28
 telemetryFileSha256 = f13a71a7a219fc1978667c1b39120df709b163fd5250962e9f19310ca9f9c719
 ```
 
-Runner-local diagnostic candidate summary:
+runner内だけに残った診断用candidateの要約:
 
 - `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` 12/12
 - `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` 9/12
 
-These are not formal promoted candidates.
+これらはformal promoted candidateではない。
 
-## Stage 1 materialization incident
+## Stage 1 materialization incident （Stageの記録）
 
-The runner generated the three canonical files and locally committed them as short SHA `709bc393`, but the push was rejected non-fast-forward because the remote branch advanced during execution. The ephemeral local commit is not recoverable from GitHub.
+runnerは3件のcanonical fileを生成し、short SHA `709bc393`としてlocal commitしたが、execution中にremote branchが進んだためpushはnon-fast-forwardとしてrejectされた。ephemeral local commitをGitHubから復元することはできない。
 
-No second Stage 1 execution was authorized after the no-rescue boundary. A later final Actions-history audit nevertheless discovered an unintended unauthorized duplicate execution; it is `INVALID-DO-NOT-USE` and cannot regenerate, replace, or repair the missing canonical Stage 1 evidence. Therefore full canonical Stage 1 result/telemetry files are not regenerated as valid evidence.
+no-rescue boundary後に2回目のStage 1 executionはauthorizeされていなかった。しかし後のfinal Actions-history auditで、意図しないunauthorized duplicate executionを発見した。これは`INVALID-DO-NOT-USE`であり、欠落したcanonical Stage 1 evidenceをregenerate、replace、repairできない。したがってfull canonical Stage 1 result / telemetry fileをvalid evidenceとして再生成しない。
 
 Authoritative closure records:
 
 - `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
 - `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md`
 
-Formal Stage 1 disposition: `TECHNICAL-INVALID`.
-Formal promoted candidate set: `[]`.
+Formal Stage 1 dispositionは`TECHNICAL-INVALID`である。
+formal promoted candidate setは`[]`である。
 
-## Stage 2
+## Stage 2の状態
 
 - ID: `EBRWS-S2-FORMAL-2026-09-01-v1`
 - seed block: `31220001..31220288`
-- target roots: 18 Namua + 18 Mtaji
+- target rootは18 Namua + 18 Mtajiである
 - evidence class: `FRESH-FORMAL-HELDOUT`
 - disposition: `NOT-AUTHORIZED-NOT-EXECUTED`
 - seed consumed: false
 
-Stage 2 cannot use the runner-local diagnostic candidates because the prerequisite immutable Stage 1 canonical artifact was not durably materialized.
+prerequisiteとなるimmutable Stage 1 canonical artifactをdurable materializeできなかったため、Stage 2はrunner-local diagnostic candidateを使用できない。
 
-## Root policy
+## root policy （概要）
 
-- deterministic Mulberry32 source trajectory
+- deterministic Mulberry32 source trajectoryを用いる
 - canonical legal-move ordering
-- Namua root at exact ply 24
-- Mtaji root = first nonterminal mtaji state at ply >= 44
-- phase-wise first-N by source seed after fixed identity firewall exclusions
+- Namua rootはexact ply 24とする
+- Mtaji rootはply 44以降で最初のnonterminal mtaji stateとする
+- 固定済みidentity firewall exclusion後、phaseごとにsource seed順のfirst-Nを選ぶ
 - max source ply 240
 - RAW-root deduplication
 
-## Firewall identities
+## firewall identity （証拠分離規則）
 
-Exact collision exclusion was defined against:
+exact collision exclusionは次を対象に定義した。
 
-- G3-01 roots / trajectories / first-16 prefixes
-- LGTGMIV Stage 1 roots / trajectories / first-16 prefixes
-- LGTGMIV Stage 2 roots / trajectories / first-16 prefixes
+- G3-01のroot / trajectory / first-16 prefix
+- LGTGMIV Stage 1のroot / trajectory / first-16 prefix
+- LGTGMIV Stage 2のroot / trajectory / first-16 prefix
 
-Only identity information was used for overlap exclusion; upstream geometry outcomes were not reused as G3-02 fresh evidence.
+overlap exclusionにはidentity情報だけを用い、upstream geometry outcomeをG3-02 fresh evidenceとして再利用していない。
 
-## Primary derived endpoint reproducibility
+## primary derived endpointのreproducibility
 
-Production and independent implementations separately derive:
+production / independent implementationは次を別々に導出する。
 
 - `EB_tree(0..4)` exact rationals
 - `treeWidthShapeClass`
@@ -145,15 +145,15 @@ Production and independent implementations separately derive:
 - phase-level class counts
 - candidate set
 
-No shared G3-02 derived-metric, class, promotion, or canonical-hash helper was permitted.
+共有のG3-02 derived-metric、class、promotion、canonical-hash helperは認めなかった。
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
-standard initial RAW-root complete exact depth-10 holdout:
+standard initial RAW-root complete exact depth-10 holdoutの状態:
 
 `SEALED / NOT GENERATED / NOT READ`
 
-## Final Actions-history audit — duplicate execution
+## 最終Actions-history audit — duplicate execution
 
 Final workflow audit:
 
@@ -164,7 +164,7 @@ run 33569323221 = authorized / canonical materialization failure
 run 33569382663 = unauthorized duplicate / INVALID-DO-NOT-USE
 ```
 
-run #2 locally produced the same scientific core `4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e`, candidate set hash `4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6`, and scientific-result file hash `1c5444ab050e85735763231a7c5913489c1254017b9acbb6a286fdaf742ff30a`. These duplicate outputs are excluded from scientific inference.
+run #2はlocalで同じscientific core `4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e`、candidate set hash `4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6`、scientific-result file hash `1c5444ab050e85735763231a7c5913489c1254017b9acbb6a286fdaf742ff30a`を生成した。これらのduplicate outputはscientific inferenceから除外する。
 
 Audit records:
 
@@ -172,15 +172,15 @@ Audit records:
 - `../research-generation-3/checkpoints/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
 - `../research-program-decisions/2026-09-02-g3-02-unintended-duplicate-execution-audit.md`
 
-Stage 1 execution workflow is disabled after closure. No third run is authorized. Classical telemetry variation between the two invalid/local runs is not part of the scientific core. Protected depth-10 access remained false.
+closure後、Stage 1 execution workflowはdisabledである。3回目のrunはauthorizeされていない。2件のinvalid / local run間のclassical telemetry variationはscientific coreに含まれない。protected depth-10 accessはfalseのままである。
 
-## Repository main integration
+## repositoryの`main` integration
 
 - integration PR: #92
-- merge method: normal merge commit
+- merge methodはnormal merge commitである
 - pre-merge research HEAD: `0c0fc7a28f5ffc65853265d58a041863f520cdb8`
 - pre-merge main: `ca6a1e4a9b41d79d873fa71385972e402ffa5197`
 - merge commit: `b41c7eda74dd1002e98e4d82714fadb987d1f1e1`
-- scientific disposition after integration: `CLOSED / TECHNICAL-INVALID`
+- integration後のscientific dispositionは`CLOSED / TECHNICAL-INVALID`である
 - Stage 2 after integration: `NOT-AUTHORIZED-NOT-EXECUTED`
 - protected depth-10 holdout: `SEALED / NOT GENERATED / NOT READ`

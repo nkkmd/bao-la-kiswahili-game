@@ -36,14 +36,14 @@ relative horizon = 5
 validated transforms = []
 ```
 
-## Longitudinal construct
+## longitudinal construct（trajectory上の測定概念）
 
 8つのexact level endpoint `L_m(t)`をprospectively固定しました。
 
 - root legal width
 - cumulative tree occurrence
-- global distinct RAW states
-- cumulative tree/RAW ratio
+- global distinct RAW stateの数
+- cumulative tree / RAW ratio
 - duplicate-transition fraction
 - unit-width occupancy fraction
 - branch-reopening fraction
@@ -51,7 +51,7 @@ validated transforms = []
 
 隣接ply差 `D_m(t)=L_m(t+1)-L_m(t)`をexact rationalで保持し、`UP / DOWN / ZERO / UNDEFINED`に分類します。Stage 1ではmagnitude thresholdを導入せず、符号だけでonset / persistence / reversal / stallを定義します。
 
-## Longitudinal dependence
+## longitudinal dependence（時間方向の依存性）
 
 Primary experimental unitは**source trajectory**です。
 
@@ -61,7 +61,7 @@ Primary experimental unitは**source trajectory**です。
 
 geometry eventをNamua→Mtaji等のrule-semantic phase boundaryから独立に定義します。primary transition inferenceではevent windowが複数rule phaseを跨ぐ場合は除外します。phaseとの関係はevent構築後のsecondary descriptive contextに限定します。
 
-## Stage structure
+## Stage構成
 
 ```text
 BECT-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID
@@ -72,21 +72,21 @@ BECT-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 
 Stage 0はtechnical fixtureのみ。Stage 1/2はそれぞれ別authorizationが必要です。
 
-Stage 1 reserved fresh block:
+Stage 1に予約したfresh block:
 
 `31510001..31510240` / target 10 trajectories / **CONSUMED / CLOSED TO SAME-EVIDENCE REUSE**
 
-Stage 2 reserved fresh block:
+Stage 2に予約したfresh block:
 
 `31520001..31520384` / target 16 trajectories / **NOT CONSUMED / NOT AUTHORIZED**
 
-## Formal closure
+## formal closure（正式な終了状態）
 
 Stage 0 v2でlongitudinal reconstructionのtechnical gateをPASSした後、fresh Stage 1をexactly one authorized executionで開始しました。しかしbounded RAW enumeration中に`relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`が発生し、10 trajectories全体のvalid development summaryへ到達しませんでした。
 
 Fresh access後であるためsame-evidence repair/rerunは行わず、formal closureは **`CLOSED / TECHNICAL-INVALID`** としました。formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`です。保存されたpartial telemetryはdiagnostic-onlyで、branch expansion/compression transitionの存在・不在を示すscientific evidenceへ格上げしません。
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
 standard initial RAW-root complete exact depth-10 holdoutは引き続き:
 

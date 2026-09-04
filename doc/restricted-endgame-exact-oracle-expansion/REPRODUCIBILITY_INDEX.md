@@ -3,7 +3,7 @@
 更新日: 2026-08-28  
 状態: **COMPLETED / INCONCLUSIVE / STAGE 2 NOT EXECUTED**
 
-## Study anchor
+## Study anchor （基準点）
 
 ```text
 Program = G2-04
@@ -15,7 +15,7 @@ PR = #70
 Formal decision = INCONCLUSIVE
 ```
 
-## authoritative RAW identity
+## authoritative RAW identity （識別情報）
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -31,7 +31,7 @@ Exact move identity:
 type,phase,row,index,direction,side,houseChoice,houseTwo
 ```
 
-## Stage lineage
+## Stage lineage （Stageの記録）
 
 ```text
 REEOE-S0-TECHNICAL-2026-08-28-v1 = STAGE0-TECHNICAL-PASS
@@ -40,7 +40,7 @@ REEOE-S1-DEVELOPMENT-2026-08-28-v2 = STAGE1-DEVELOPMENT-BLOCKED
 REEOE-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Study-start contract
+## Study-start contract （固定した条件）
 
 Canonical prospective contract:
 
@@ -50,7 +50,7 @@ Canonical prospective contract:
 
 このcontractではRAW identity、complete-forward-closure requirement、retrograde vocabulary、DTF rule、all-optimal-move requirement、positive / negative control、no-rescue policy、Stage 1 / Stage 2の別個authorization requirementを固定しました。
 
-## Stage 0 technical validation
+## Stage 0 technical validation （技術検証）
 
 Canonical compact result:
 
@@ -86,7 +86,7 @@ independentVerificationCoreSha256 = 284cc2c53035b0a614eae33c07282b78e5543540c061
 
 Stage 0ではmissing `pending`をrejectするG2-04 strict representation layerも確立しました。legacy REWR compatibility helperは変更していません。
 
-## Stage 1 v1 — invalidated lineage
+## Stage 1 v1 — invalidated lineage （Stageの記録）
 
 Preregistration:
 
@@ -118,7 +118,7 @@ Checkpoint:
 
 その後executable v1 workflowはarchival stubへ置換しました。historical executable sourceはGit historyに残しています。
 
-## Stage 1 v2 — fresh development contract
+## Stage 1 v2 — fresh development contract （固定した条件）
 
 Spec:
 
@@ -165,7 +165,7 @@ minimum independently verified complete closures = 3
 
 v1のstructural / resource conditionは緩和していません。変更したのはfresh scientific identityとverifier hardeningだけです。
 
-## Stage 1 v2 canonical execution
+## Stage 1 v2 canonical execution （実行記録）
 
 Workflow:
 
@@ -220,7 +220,7 @@ Checkpoint:
 
 - `checkpoints/2026-08-28-stage1-v2-block-stage2-not-authorized.md`
 
-## Stage 2 reproducibility state
+## Stage 2 reproducibility state （Stageの記録）
 
 次のものは意図的に存在しません。
 
@@ -235,7 +235,7 @@ Stage 2 artifact = NONE
 
 これはStage 1 v2 development gateのfail-closed consequenceであり、「formal workが欠落している」という意味ではありません。
 
-## Study-level canonical result
+## Study-level canonical result （日本語の要点）
 
 - `results/STUDY_1_FINAL_RESULT.json`
 - `STUDY_1_FINAL_REPORT.md`
@@ -250,7 +250,7 @@ freshExactOracleProduced = false
 formalStage2DomainsEvaluated = 0
 ```
 
-## no-rescue / interpretation boundary
+## no-rescue / interpretation boundary （解釈上の境界）
 
 結果確認後のcap increase、domain shrinkage、root replacement、seed extension、partial-closure promotion、alternate solver substitution、symmetry / canonicalizationは使用していません。
 

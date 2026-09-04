@@ -1,6 +1,12 @@
-# SSGTC-STUDY1 — Reproducibility Index
+# SSGTC-STUDY1 — Reproducibility Index （再現性）
 
-## Study identity
+## 日本語での要点
+
+exact claimはstandard initial RAW rootのfrozen depth-8 domainに限定される。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
+
+## Study identity （識別と表現）
 
 ```text
 studyId = SSGTC-STUDY1
@@ -10,7 +16,7 @@ representation = RAW-ONLY
 formalDecision = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-## Authoritative raw identity
+## Authoritative raw identity （識別と表現）
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -22,7 +28,7 @@ validatedSymmetryTransformations = []
 
 `public/engine.js` at the study-start baseline initializes `pending:[0,0]`, but compatibility code can synthesize missing `pending`. SSGTC therefore validates raw states before engine entry and rejects missing `pending` rather than allowing engine fallback to repair studied identity.
 
-## Core implementation
+## Core implementation （日本語の要点）
 
 Production representation:
 
@@ -49,7 +55,7 @@ Workflows:
 
 The independent formal verifier does not import the production serializer, production formal runner, or Stage 1 artifact code. It independently re-enumerates the entire frozen Stage 2 graph and tree domains.
 
-## Stage 0 — technical-only validation
+## Stage 0 — technical-only validation （Stageの記録）
 
 Canonical run:
 
@@ -76,7 +82,7 @@ Canonical compact record:
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 
-## Stage 1 — exploratory-only characterization
+## Stage 1 — exploratory-only characterization （Stageの記録）
 
 Frozen resource profile:
 
@@ -128,7 +134,7 @@ Canonical compact record:
 
 - `results/STAGE_1_EXPLORATORY_RESULT.json`
 
-## Stage 2 — formal bounded exact enumeration
+## Stage 2 — formal bounded exact enumeration （Stageの記録）
 
 Preregistration:
 
@@ -193,7 +199,7 @@ Canonical compact record:
 
 - `results/STAGE_2_FORMAL_RESULT.json`
 
-## Materialization chain
+## Materialization chain （日本語の要点）
 
 The study maintained the following responsibility separation:
 
@@ -206,7 +212,7 @@ scientific raw artifact
 
 Repository-facing projections never become raw-state identity authority merely because they are committed.
 
-## Reproduction commands
+## Reproduction commands （日本語の要点）
 
 From repository root with Node.js 22 or a compatible runtime:
 
@@ -223,6 +229,6 @@ node tools/experiments/verify-ssgtc-stage2-independent.js
 
 The canonical GitHub Actions workflows are preferred for provenance because they preserve the frozen environment, run IDs, and uploaded artifacts.
 
-## Claim boundary
+## Claim boundary （適用範囲と制限）
 
 The exact result is confined to the frozen depth-8 RAW-ONLY target. No global Bao state-space count, full game-tree count, symmetry-reduced count, canonicalization claim, or full-game estimator is authorized by this Study.

@@ -4,7 +4,7 @@
 Program: `G2-06` / Research Generation 2  
 Study: `RCPR-STUDY1` — Rich Critical-Position Representation Study 1
 
-## 1. authoritative restart point
+## 1. authoritative restart point （日本語の要点）
 
 `RCPR-STUDY1`はStage 1で終了し、`main`へ統合済みです。
 
@@ -43,7 +43,7 @@ consumed Stage 1 executionをdispatch、rerun、replace、extend、reinterpret�
 13. `STUDY_1_PROTOCOL.md`
 14. `preregistration/STUDY_START_FREEZE.md`
 
-## 3. terminal Stage 1 evidence
+## 3. terminal Stage 1 evidence （証拠と成果物）
 
 Production job `98936414477`は成功し、600 roots、599 primary-estimable roots、134 high-divergence roots、`RICH_ALL`、overall OOF AUROC `0.7093403948001926`を含むproduction-only readiness passを出力しました。
 
@@ -63,7 +63,7 @@ finalDecision = STAGE1-TECHNICAL-INVALID
 
 production valueはprovenance onlyであり、independently verified scientific resultとしてacceptしていません。
 
-## 4. root cause
+## 4. root cause （技術検証）
 
 600 rows中exactに4 rowsでfeature-vector hash equalityがFAILしました。mismatchは`MOVE_SET_ENTROPY.indexEntropy`とfloating-point addition orderへisolatedされました。
 
@@ -77,7 +77,7 @@ RAW state、continuation measurement、`D_range`、high-divergence label、model
 
 これはtechnical representation-determinism failureですが、frozen exact-equality gateによりStage 1 decisionは`STAGE1-TECHNICAL-INVALID`のままです。
 
-## 5. immutable no-rescue boundary
+## 5. immutable no-rescue boundary （解釈上の境界）
 
 次を行ってはいけません。
 
@@ -89,7 +89,7 @@ RAW state、continuation measurement、`D_range`、high-divergence label、model
 - Stage 1 development rowをformal evidenceとしてreuseする
 - prior G2-01..G2-05またはResearch Generation 1 decisionを変更する
 
-## 6. main integration
+## 6. main integration （リポジトリ状態）
 
 PR #73はfinal branch audit、`mergeable=true`、unresolved review thread 0、head `374d25d2f09ba661aaa8ae8e2e0a06eb03536786`上の5 PR workflowすべてのPASSを確認してからmergeしました。
 
@@ -109,7 +109,7 @@ merge method = merge
 merge commit = 28f888f9819605d2b19707067afc48f2a6d3ed27
 ```
 
-## 7. immediate program continuation
+## 7. immediate program continuation （次の研究）
 
 `RCPR-STUDY1`内にこれ以上のscientific executionはありません。
 
@@ -125,7 +125,7 @@ G2-07 outcome生成前にcurrent remote `main` HEADを再取得し、formal Stud
 
 `RCPR-STUDY1` rowをG2-07 formal evidenceとして使用してはいけません。
 
-## 8. future rich-representation replication boundary
+## 8. future rich-representation replication boundary （表現）
 
 将来の独立Studyでdeterministic rich critical-position representationを再検討する場合は、technical hardening後にのみ実施できます。
 

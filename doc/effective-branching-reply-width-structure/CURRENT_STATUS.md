@@ -1,4 +1,4 @@
-# EBRWS-STUDY1 — Current Status
+# EBRWS-STUDY1 — 現在の状態
 
 Updated: 2026-09-02
 
@@ -28,30 +28,30 @@ Research branch = research/g3-02-effective-branching-reply-width-structure
 Study baseline remote main = ca6a1e4a9b41d79d873fa71385972e402ffa5197
 ```
 
-## Upstream immutable state
+## upstreamのimmutable state
 
 - Research Generation 2 = CLOSED
 - G3-01 `LGTGMF-STUDY1` = `CLOSED / TECHNICAL-INVALID`
-- G3-01 formal eligible families = `[]`
+- G3-01 formal eligible familyは`[]`である
 - G3-01 Stage 2 = `NOT-AUTHORIZED-NOT-EXECUTED`
 - `LGTGMIV-STUDY1` = `CLOSED / FORMAL-ELIGIBLE-ALL`
-- LGTGMIV eligible families = F1..F5 exactly
+- LGTGMIV eligible familyはexactにF1〜F5である
 
-G3-02 does not alter or rescue G3-01 and does not re-run or re-decide LGTGMIV.
+G3-02はG3-01を変更またはrescueせず、LGTGMIVを再実行または再判定しない。
 
-## Stage 0
+## Stage 0の結果
 
 Formal disposition:
 
 `STAGE0-PASS`
 
-Production / independent stage scientific core:
+production / independent実装によるStage scientific core:
 
 `ad4ebd825b7fd63cd7b202686feff9155974d127f5e8e98ad4f2092ae42370fd`
 
-Stage 0 used synthetic primitive fixtures only and consumed no fresh scientific seed.
+Stage 0はsynthetic primitive fixtureだけを使用し、fresh scientific seedを消費していない。
 
-## Stage 1 frozen authorization
+## Stage 1の固定済みauthorization
 
 Authorized fresh block:
 
@@ -63,9 +63,9 @@ evidence class = FRESH-DEVELOPMENT
 authorized scientific executions = exactly 1
 ```
 
-## Authorized execution — run 33569323221
+## authorizeされたexecution — run 33569323221
 
-GitHub Actions run `33569323221`, job `100059596453`, completed the frozen scientific runner. The runner-local computation reported:
+GitHub Actions run `33569323221`、job `100059596453`は固定済みscientific runnerを完了した。runner-local computationは次を報告した。
 
 ```text
 reported runner disposition = STAGE1-PASS
@@ -82,9 +82,9 @@ Runner-local diagnostic candidates:
 - `REPLY-WIDTH-SHAPE / namua / COMPRESSION-DOMINANT` = 12/12
 - `REPLY-WIDTH-SHAPE / mtaji / COMPRESSION-DOMINANT` = 9/12
 
-These are **diagnostic provenance only**, not formal promoted candidates.
+これらは**diagnostic provenanceに限られ**、formal promoted candidateではない。
 
-After the scientific files were generated, local commit `709bc393` was created with `scientific-result.json`, `telemetry.json`, and `execution-summary.json`. Its push was rejected non-fast-forward because the remote branch had advanced during execution. The ephemeral commit is not recoverable from GitHub after runner teardown.
+scientific file生成後、`scientific-result.json`、`telemetry.json`、`execution-summary.json`を含むlocal commit `709bc393`を作成した。execution中にremote branchが進んだため、pushはnon-fast-forwardとしてrejectされた。runner teardown後、このephemeral commitをGitHubから復元することはできない。
 
 Logged commitments:
 
@@ -93,21 +93,21 @@ scientificResultFileSha256 = 1c5444ab050e85735763231a7c5913489c1254017b9acbb6a28
 telemetryFileSha256 = f13a71a7a219fc1978667c1b39120df709b163fd5250962e9f19310ca9f9c719
 ```
 
-This canonical materialization failure already requires fail-closed handling because the frozen protocol requires an immutable promoted-candidate artifact and no technical-integrity violation before Stage 2 authorization.
+固定済みprotocolはStage 2 authorization前にimmutable promoted-candidate artifactとtechnical-integrity violationがないことを要求するため、このcanonical materialization failureだけでfail-closed handlingが必要となる。
 
-## Unintended duplicate execution — run 33569382663
+## 意図しないduplicate execution — run 33569382663
 
-Final Actions-history audit found a second Stage 1 scientific execution:
+final Actions-history auditで2回目のStage 1 scientific executionを発見した。
 
 - run `33569382663`
 - job `100060967285`
 - formal status `UNAUTHORIZED-DUPLICATE-INVALID`
 
-While the first authorized run was still in progress, a technical workflow-arming commit added the Stage 1 workflow's own file path as a push trigger because the first trigger run had not yet appeared in monitoring. This queued run #2 before the first scientific outcome was known. Because the workflow used a non-cancelling concurrency group, its actual computation began only after run #1 had completed the scientific step and crossed the no-rescue boundary.
+最初のauthorized runが進行中、monitoringに最初のtrigger runがまだ表示されなかったため、technical workflow-arming commitがStage 1 workflow自身のfile pathをpush triggerへ追加した。これにより最初のscientific outcome判明前にrun #2がqueueへ入った。workflowがnon-cancelling concurrency groupを使用していたため、実際のcomputationはrun #1がscientific stepを完了し、no-rescue boundaryを越えた後に開始された。
 
-Run #2 therefore violated the frozen exactly-one-execution authorization. It is not a valid replication, repair, confirmation, or rescue and is excluded from scientific inference.
+したがってrun #2は、固定済みexactly-one-execution authorizationに違反した。有効なreplication、repair、confirmation、rescueではなく、scientific inferenceから除外する。
 
-It locally reproduced the same scientific-result commitments:
+run #2はlocalでは同じscientific-result commitmentを再現した。
 
 ```text
 stage scientific core = 4203300a9fc3648fd41fe05aaa6c555e6afa4c86537cef787fc748ae34b1f02e
@@ -116,48 +116,48 @@ scientificResultFileSha256 = 1c5444ab050e85735763231a7c5913489c1254017b9acbb6a28
 telemetryFileSha256 = 6f9c5323ff5cf95b9261a8b90dcfb2385702ca53329739cb87267a71e92f9da4
 ```
 
-Its local result commit `24c57398` was also rejected non-fast-forward and is not recoverable from GitHub.
+local result commit `24c57398`もnon-fast-forwardとしてrejectされ、GitHubから復元できない。
 
-The duplicate output has formal use `INVALID-DO-NOT-USE`.
+duplicate outputのformal useは`INVALID-DO-NOT-USE`である。
 
-## Formal technical-invalid closure
+## formal technical-invalid closure （最終状態）
 
-The no-rescue boundary was crossed by the first fresh evidence generation/read. No authorized or intentional same-evidence repair rerun is permitted or performed.
+最初のfresh evidence generation / readでno-rescue boundaryを越えた。authorizeされた、または意図的なsame-evidence repair rerunは許可も実施もしていない。
 
-The unintended duplicate execution described above is itself an additional technical-integrity violation; it is not a valid repair path.
+上記の意図しないduplicate execution自体が追加のtechnical-integrity violationであり、有効なrepair pathではない。
 
-The formal Stage 1 / Study disposition remains:
+formal Stage 1 / Study dispositionは次のとおりである。
 
 `TECHNICAL-INVALID`
 
 Reasons include both:
 
-1. canonical Stage 1 result materialization failure from the authorized execution;
-2. violation of the exactly-one-execution contract by the unintended duplicate run.
+1. authorized executionで発生したcanonical Stage 1 result materialization failure
+2. 意図しないduplicate runによるexactly-one-execution contract違反
 
-Formal promoted candidate set remains:
+formal promoted candidate setは次のとおりである。
 
 `[]`
 
-The Stage 1 execution workflow has been disabled. No third execution is authorized.
+Stage 1 execution workflowはdisabledである。3回目のexecutionはauthorizeされていない。
 
-## Stage 2
+## Stage 2の状態
 
-Stage 2 is permanently unexecuted for this Study closure:
+このStudy closureではStage 2を恒久的に未実行とする。
 
 `NOT-AUTHORIZED-NOT-EXECUTED`
 
-Neither runner-local candidate summary authorizes Stage 2. Stage 2 seed `31220001..31220288` remains unconsumed.
+いずれのrunner-local candidate summaryもStage 2をauthorizeしない。Stage 2 seed `31220001..31220288`は未消費のままである。
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 `SEALED / NOT GENERATED / NOT READ`
 
-Neither Stage 1 execution generated or inspected it, and G2-12 was not used as depth-10 truth.
+どちらのStage 1 executionもgenerateまたはinspectしておらず、G2-12をdepth-10 truthとして使用していない。
 
-## Canonical closure records
+## canonical closure記録
 
 - `STUDY_1_PROTOCOL.md` — immutable prospective protocol
 - `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — authoritative machine-readable disposition and execution audit
@@ -166,9 +166,9 @@ Neither Stage 1 execution generated or inspected it, and G2-12 was not used as d
 - `DECISION_REGISTER.md` — formal decisions
 - `STUDY_1_FINAL_REPORT.md` — integrated scientific/technical closure
 
-No same-evidence repair, further rerun, threshold change, endpoint change, seed extension, or favorable subgroup rescue is authorized.
+same-evidence repair、追加rerun、threshold change、endpoint change、seed extension、favorable subgroup rescueはauthorizeされていない。
 
-## Research completion / integration hold
+## 研究完了とintegrationの状態
 
 G3-02の研究作業はresearch branch上で完了している。
 

@@ -1,9 +1,15 @@
-# REPRODUCIBILITY_INDEX — Restricted Endgame / Winning Regions Study 1
+# REPRODUCIBILITY_INDEX — Restricted Endgame / Winning Regions Study 1 （再現性）
+
+## 日本語での要点
+
+frozen 8-state domainだけをEXACT-SOLVED-WITHIN-FROZEN-DOMAINとして扱う。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-24  
 Status: **EXACT SOLUTION COMPLETE / INDEPENDENT VERIFICATION PASS**
 
-## Baseline identities
+## Baseline identities （日本語の要点）
 
 ```text
 main HEAD at study start = 626480507710e0095ef8aec6a53c3e4e0318fa4f
@@ -12,7 +18,7 @@ branch = research/restricted-endgame-winning-regions
 Draft PR = #38
 ```
 
-## Identity conventions
+## Identity conventions （識別と表現）
 
 Primary state identity: direct stable serialization of `pits`, `reserve`, `houseOwned`, `player`, `phase`, `winner`, `pending` followed by SHA-256.
 
@@ -20,7 +26,7 @@ Primary move identity: exact key including `houseChoice` and `houseTwo`.
 
 Forbidden primary reduction: `seatCanonicalKey` or any symmetry/isomorphism canonicalization.
 
-## Stage 0 identities
+## Stage 0 identities （Stageの記録）
 
 Technical witness block:
 
@@ -70,7 +76,7 @@ stop = ADMIN-CUTOFF at 1000000 move microsteps
 additional expansion authorized = false
 ```
 
-## Stage 1 frozen contract
+## Stage 1 frozen contract （Stageの記録）
 
 ```text
 domainId = REWR-S1-DOMAIN-2026-08-24-v1
@@ -124,7 +130,7 @@ tools/experiments/verify-restricted-endgame-stage1-exact.js
 d0b3ccffa1dc9e1fdff6ed0f9cb4dbf3725397c892003f60c4d0c1b4d1a8e319
 ```
 
-## Pre-generation correction provenance
+## Pre-generation correction provenance （日本語の要点）
 
 ```text
 initial freeze commit = b2728585335549f5f35f9711f8320ff8a4a37b5c
@@ -137,7 +143,7 @@ authorization v2 commit = 87cd16b0d1b38ca1e7677fb94835424509386b1e
 scientific outcome generated before correction = false
 ```
 
-## Scientific exact run
+## Scientific exact run （日本語の要点）
 
 ```text
 workflow = Restricted endgame Stage 1 exact solution
@@ -176,7 +182,7 @@ recurrentSccs = true
 solutionSha256 = true
 ```
 
-## Canonical repository artifacts
+## Canonical repository artifacts （証拠と成果物）
 
 ```text
 preregistration/STAGE_1_DOMAIN.json

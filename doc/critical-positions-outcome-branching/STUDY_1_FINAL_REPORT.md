@@ -1,4 +1,10 @@
-# Critical Positions / Outcome Branching Study 1 — Final Report
+# Critical Positions / Outcome Branching Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+Stage 1でhigh-divergence rootは観測したが、promotion gateを通過したcandidateは0件で、Stage 2はNOT-AUTHORIZED-NOT-EXECUTEDである。game-theoreticな勝率分岐を否定した結果ではない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 更新日: 2026-08-24  
 Status: **STUDY 1 CLOSED / STAGE 1 EXPLORATORY COMPLETE / 0 PROMOTED CANDIDATES / STAGE 2 NOT EXECUTED**
@@ -41,7 +47,7 @@ manualOverridePerformed = false
 
 これは「Baoに重要局面が存在しない」ことを意味しない。また、より高次元・非線形なrepresentation、人間・expertが認識する重要局面、game-theoretic turning pointの不存在も意味しない。
 
-## Study architecture
+## Study architecture （日本語の要点）
 
 ```text
 Stage 0 — construct / technical / feasibility audit      COMPLETE / PASS
@@ -52,7 +58,7 @@ Study 1                                                   CLOSED
 
 Stage 2は「結果が弱かったため任意に省略」したのではない。Stage 2前提はexact Stage 1 promoted candidate mappingのprospective freezeであり、Stage 1のpromotion結果が0件だったためformal confirmation対象が存在しなかった。
 
-## Primary construct
+## Primary construct （日本語の要点）
 
 ```text
 fixed-policy empirical continuation divergence
@@ -78,7 +84,7 @@ common replicate seed across root moves at replicate index r
 
 `p_hat`はfrozen policy下のempirical continuation quantityであり、game-theoretic winning probabilityではない。
 
-## Source population
+## Source population （日本語の要点）
 
 Fresh Stage 1 source corpus:
 
@@ -108,7 +114,7 @@ gamesVerified = 3072
 fullCorpusReplay = true
 ```
 
-## Outcome-blind root selection
+## Outcome-blind root selection （結果）
 
 Selection was completed without winner, continuation outcome, `D_range`, D2/D3 score, candidate matcher or post-move consequence.
 
@@ -126,7 +132,7 @@ selectionHash = 702baa878354be14ca97a026b2e97b48521a769b983874fb657e2c6afe82d57d
 
 All preregistered selection-readiness gates passed.
 
-## Measurement and independent verification
+## Measurement and independent verification （日本語の要点）
 
 Initial measurement:
 
@@ -156,7 +162,7 @@ primaryEstimableRoots = 600
 
 したがってcandidate discoveryは、verified measurementを前提として実行された。
 
-## High-divergence root occurrence
+## High-divergence root occurrence （日本語の要点）
 
 Candidate audit内のsingle-token `legalMoveCount` binsは各phaseでselected rootsをdisjointにpartitionする。
 
@@ -186,7 +192,7 @@ Overall:
 
 これはStage 1 exploratory populationにおけるmachine/policy-conditioned occurrenceであり、population-universal prevalence estimateとして扱わない。
 
-## Frozen structural candidate grammar
+## Frozen structural candidate grammar （日本語の要点）
 
 Candidate object:
 
@@ -213,7 +219,7 @@ minimum median D_range = 0.35
 
 Manual promotion was forbidden and zero promoted candidates was explicitly valid.
 
-## Stage 1 discovery result
+## Stage 1 discovery result （結果）
 
 ```text
 candidateAuditCount = 1183
@@ -241,25 +247,25 @@ medianDRange = 54 / 1183
 
 このgate decompositionはnegative resultの構造を記録するためのdescriptive auditである。near-missを新candidateへ昇格させる根拠ではない。
 
-## Hypothesis-level interpretation
+## Hypothesis-level interpretation （解釈）
 
-### CPOB-H1 — exploratory existence
+### CPOB-H1 — exploratory existence （日本語の要点）
 
 Fresh Stage 1 rootsの中に`D_range >= 0.30`を満たすrootは観測された。したがってfrozen policy / population内では「material continuation divergenceを示すrootが存在する」というexploratory existence observationは得られた。
 
 これはformal confirmation labelではない。
 
-### CPOB-H2 — structural recurrence
+### CPOB-H2 — structural recurrence （日本語の要点）
 
 Frozen structural matcher grammarからpromotionされたcandidateは0件だった。
 
 したがって、**今回のgrammarとpromotion ruleの範囲では、Stage 2 confirmationへ送れるrecurrent structural classは得られなかった**。
 
-### CPOB-H3 / H4 / H5
+### CPOB-H3 / H4 / H5 （日本語の要点）
 
 D2/D3 search axes、TopSet instability、immediate structural transition、one-ply response envelopesはStage 1で測定・独立再計算されたが、これらはStudy 1ではsecondary / descriptive / hypothesis-generating axesであり、本closureで新しいformal claimへ昇格させない。
 
-## Why Stage 2 was not run
+## Why Stage 2 was not run （Stageの記録）
 
 Stage 2 boundary required:
 
@@ -286,7 +292,7 @@ Stage 2 generation = NOT AUTHORIZED / NOT EXECUTED
 
 Formal candidate labels `CONFIRMED` / `NOT-CONFIRMED` / `INCONCLUSIVE-NOT-ESTIMABLE` / `TECHNICAL-INCONCLUSIVE` は、formal candidateが存在しなかったため本Studyでは適用しない。
 
-## What is not authorized
+## What is not authorized （日本語の要点）
 
 本結果から次は主張しない。
 
@@ -303,7 +309,7 @@ expertsやtraditional Bao theoryが同じturning pointsを持つ／持たない
 
 Position Evaluation / Win-Rate Calibration Study 1は`INCONCLUSIVE`のままであり、そのexploratory isotonic mappingをvalidated probability converterとして使用していない。
 
-## No-rescue closure
+## No-rescue closure （結論）
 
 ```text
 seed extension = false
@@ -320,7 +326,7 @@ near-miss promotion = false
 manual override = false
 ```
 
-## Canonical identities
+## Canonical identities （日本語の要点）
 
 ```text
 stageId = CPOB-S1-EXPLORATORY-2026-08-23-v1
@@ -338,7 +344,7 @@ Closure checkpoint:
 
 - [`checkpoints/2026-08-24-stage1-discovery-zero-promoted-candidates-study-closure.md`](checkpoints/2026-08-24-stage1-discovery-zero-promoted-candidates-study-closure.md)
 
-## Final Study 1 state
+## Final Study 1 state （結論）
 
 ```text
 Stage 0 = COMPLETE / PASS
