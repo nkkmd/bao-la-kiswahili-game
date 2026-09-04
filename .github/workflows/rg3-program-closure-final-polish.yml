@@ -29,6 +29,11 @@ jobs:
           git rm .github/workflows/rg3-program-closure-final-polish.yml
           git rm tools/experiments/finalize-rg3-program-closure-polish.py
           git rm doc/research-generation-3/authorizations/rg3-program-closure-final-polish-trigger.txt
+      - name: Track final checkpoint path for diff-scope audit
+        run: |
+          mkdir -p doc/research-generation-3/checkpoints
+          : > doc/research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md
+          git add doc/research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md
       - name: Generate and verify final consistency checkpoint
         run: python3 /tmp/finalize-rg3-program-closure-polish.py --audit
       - name: Verify historical program plan unchanged
