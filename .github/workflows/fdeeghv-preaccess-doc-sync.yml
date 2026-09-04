@@ -1,0 +1,33 @@
+name: FDEGHV G3-11 preaccess documentation sync
+
+on:
+  push:
+    branches:
+      - research/g3-11-fresh-depth10-exact-geometry-holdout
+    paths:
+      - doc/fresh-depth10-exact-geometry-holdout/authorizations/PREACCESS_DOC_SYNC.json
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Synchronize current-facing preaccess wording only
+        shell: bash
+        run: |
+          before_plan=$(git hash-object doc/research-generation-3/PROGRAM_PLAN.md)
+          python3 tools/experiments/fdeeghv-preaccess-doc-sync.py
+          after_plan=$(git hash-object doc/research-generation-3/PROGRAM_PLAN.md)
+          test "$before_plan" = "$after_plan"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/FUTURE_RESEARCH_AGENDA.md
+          git commit -m "Synchronize G3-11 preaccess research agenda" || true
+          git push origin HEAD:research/g3-11-fresh-depth10-exact-geometry-holdout
