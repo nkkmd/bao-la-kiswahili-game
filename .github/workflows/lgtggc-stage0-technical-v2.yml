@@ -1,0 +1,64 @@
+name: LGTGGC Stage 0 Technical V2
+
+on:
+  push:
+    branches:
+      - research/g3-12-local-game-tree-geometry-generalization-counterexample
+    paths:
+      - .github/workflows/lgtggc-stage0-technical-v2.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lgtggc-stage0-technical-v2
+  cancel-in-progress: false
+
+jobs:
+  technical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact trigger commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Static syntax checks
+        run: |
+          node --check tools/experiments/lib/lgtggc-stage0-production.js
+          node --check tools/experiments/lib/lgtggc-stage0-independent.js
+          node --check tools/experiments/run-lgtggc-stage0-technical-v2.js
+          node --check tools/experiments/verify-lgtggc-stage0-v2-authorization.js
+
+      - name: Verify technical authorization and source bindings
+        run: node tools/experiments/verify-lgtggc-stage0-v2-authorization.js
+
+      - name: Run Stage 0 technical validation
+        run: |
+          mkdir -p artifacts/local/lgtggc-stage0-v2
+          node tools/experiments/run-lgtggc-stage0-technical-v2.js artifacts/local/lgtggc-stage0-v2/result.json
+
+      - name: Show canonical technical result
+        if: always()
+        run: |
+          if [ -f artifacts/local/lgtggc-stage0-v2/result.json ]; then
+            cat artifacts/local/lgtggc-stage0-v2/result.json
+          else
+            echo 'result.json missing'
+            exit 1
+          fi
+
+      - name: Upload durable technical artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgtggc-stage0-technical-v2
+          path: artifacts/local/lgtggc-stage0-v2/result.json
+          if-no-files-found: error
+          retention-days: 90
