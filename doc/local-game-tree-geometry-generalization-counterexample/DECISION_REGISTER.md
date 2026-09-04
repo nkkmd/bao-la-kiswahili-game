@@ -16,13 +16,15 @@ Study IDはrepository naming convention確認後、scientific outcome生成前�
 
 ## LGTGGC-D003 — Stage identities
 
+Base prospective identities:
+
 ```text
 LGTGGC-S0-TECHNICAL-2026-09-04-v1
 LGTGGC-S1-DEVELOPMENT-2026-09-04-v1
 LGTGGC-S2-FORMAL-2026-09-04-v1
 ```
 
-Stage 1/2 fresh scientific executionはprotocol freezeだけではauthorizeしない。
+Stage 0 technical executionはpre-fresh versioningによりv3がactive PASS versionとなった。Stage 1/2 scientific executionはStage 0 PASSだけではauthorizeしない。
 
 ## LGTGGC-D004 — Eligible upstream claims
 
@@ -38,16 +40,27 @@ Technical-invalid upstream Studies、G3-07 not-confirmed/non-estimable candidate
 
 G3-11 H1..H4はgeneralization targetにせず、historical exact anchor / boundary reference / comparatorに限定する。
 
-## LGTGGC-D006 — Source policies
+## LGTGGC-D006 — Active source policies
 
-Formal source-policy familyを2つに固定する。
+Original pre-Stage0 freeze had:
 
 ```text
-LGTGGC-P1-UNIFORM-LEGAL
-LGTGGC-P2-CAPTURE-FIRST
+P1 = LGTGGC-P1-UNIFORM-LEGAL
+P2 = LGTGGC-P2-CAPTURE-FIRST
 ```
 
-どちらもMulberry32 + canonical legal ordering。P2はcapture available時にcapture poolを使用する。
+Authoritative engine semantics enforce capture priority within legal-move generation in both phases, making original P2 observationally identical to P1. This was detected before Stage 0 execution and before any scientific seed access.
+
+The active pre-fresh versioned correction is therefore:
+
+```text
+P1 = LGTGGC-P1-UNIFORM-LEGAL
+P2 = LGTGGC-P2-MAX-CAPTURE
+```
+
+Both use Mulberry32 and canonical legal ordering. P2 evaluates the exact immediate authoritative capture-event seed count for all currently legal moves, keeps all moves at the exact maximum, then selects within that pool using the same PRNG rule. Geometry/search/outcome/prior scientific values are not used.
+
+The original P2 remains historical provenance and is not silently rewritten.
 
 ## LGTGGC-D007 — Reachable-root families
 
@@ -155,3 +168,46 @@ family alpha = 1/20 each
 ## LGTGGC-D017 — Main integration
 
 Research branch上でStudyを完結させる。明示的なuser instructionまで`main` integrationを行わない。
+
+## LGTGGC-D018 — Stage 0 V1 disposition
+
+**Decision:** `PRE-EXECUTION-TECHNICAL-INVALID / NOT EXECUTED`。
+
+Reason: original P1/P2 source-policy non-identifiability under authoritative capture-priority legal semantics. Scientific seed access = 0. This is not a scientific negative result.
+
+## LGTGGC-D019 — Stage 0 V2 disposition
+
+**Decision:** `PRECOMPUTATION-TECHNICAL-INVALID / SCIENTIFIC-EXECUTION-NOT-CONSUMED`。
+
+```text
+Actions run = 33842965132
+job = 100928827303
+failure point = static node --check
+technical seed access = 0
+scientific seed access = 0
+same V2 rerun = NOT AUTHORIZED
+```
+
+A missing closing parenthesis in the technical runner prevented authorization verification and all computation. V3 was a separately frozen syntax-only correction.
+
+## LGTGGC-D020 — Stage 0 V3 technical PASS
+
+**Decision:** `STAGE0-PASS`。
+
+```text
+Stage = LGTGGC-S0-TECHNICAL-2026-09-04-v3
+Actions run = 33843233392
+job = 100929620604
+artifact ID = 9925602227
+artifact ZIP digest = sha256:f3028a64a0eaaaa1060dfc2c7e20df190570aff9d559f068092cc4cbdd97f5c7
+result.json SHA-256 = 90bd98fb4f820fe362b1a4e10c9b1f3b9aeaa202f44533fda6283a67c5629e7b
+technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e493e8a834
+```
+
+All mandatory technical controls passed. The active P1/P2 policies produced different trajectories for all 64 technical seeds, with 2,882 observed choice points having nonconstant immediate capture counts. Production and independent replay were exact.
+
+This PASS establishes technical readiness only. Stage 1 remains separately gated.
+
+## LGTGGC-D021 — Post-Stage0 boundary
+
+Stage 0 PASS does not authorize Stage 1. A separate pre-fresh Stage 1 authorization review must be recorded before any Stage 1 scientific seed is generated/read.
