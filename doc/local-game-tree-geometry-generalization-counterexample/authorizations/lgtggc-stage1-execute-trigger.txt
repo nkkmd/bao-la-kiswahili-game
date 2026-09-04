@@ -1,0 +1,7 @@
+LGTGGC-S1-DEVELOPMENT-2026-09-04-v1
+execution=first-fresh
+maximum-scientific-executions=1
+formal-inference=false
+stage2-seed-access=false
+protected-depth10-access=false
+depth11-access=false
