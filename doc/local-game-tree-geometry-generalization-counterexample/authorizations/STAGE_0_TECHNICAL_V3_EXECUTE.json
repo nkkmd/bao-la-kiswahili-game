@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S0-TECHNICAL-2026-09-04-v3",
+  "executionAuthorized": true,
+  "maximumExecutions": 1,
+  "authorizationGitBlobSha": "4d42ac5392b484628e36fdf1e636f1217a893274",
+  "authorizationCommit": "e15b41ea979a76a851f5c6b42ba75c194886cde9",
+  "authorizationNonce": "LGTGGC-S0-V3-TECH-AUTH-2026-09-04-01",
+  "technicalSeedStart": 32309001,
+  "technicalSeedEnd": 32309064,
+  "v2TechnicalSeedReadCount": 0,
+  "freshScientificSeedAccessAuthorized": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "depth11AccessAuthorized": false,
+  "g2_12EstimatorScientificInputAuthorized": false,
+  "sameExecutionRerunAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
