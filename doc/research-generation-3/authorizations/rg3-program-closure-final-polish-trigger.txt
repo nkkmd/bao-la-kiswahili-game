@@ -1,0 +1,4 @@
+RG3 final program closure documentation polish
+scientific execution authorized: false
+main integration authorized: false
+purpose: remove duplicate navigation, expose closure checkpoints, normalize machine-readable completion-condition keys, and re-audit pre-main readiness
