@@ -92,7 +92,7 @@ Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAM
 Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
 G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
-Next scientific action = none within LGTGGC-STUDY1; do not rerun Stage 1 evidence or authorize Stage 2; any renewed generalization/counterexample attempt requires a new prospective independent Study/version and separate authorization
+Next scientific action = none within Research Generation 3; any new scientific work requires a separate prospective Study/Research Generation and separate authorization; closed G3 evidence must not be rerun or rescued
 ```
 
 <!-- RG3-FINAL-CLOSURE-CURRENT:BEGIN -->

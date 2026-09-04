@@ -67,7 +67,7 @@ G3-12はG3-04、G3-07、G3-10の9 formal-eligible bounded geometry claimsにつ�
 <!-- LGTGGC-G3-12-RESEARCH-INDEX:END -->
 
 <!-- FDEGHV-G3-11-RESEARCH-INDEX -->
-### Research Generation 3 current highlight — G3-11 / FDEGHV-STUDY1
+### Research Generation 3 formal core Study — G3-11 / FDEGHV-STUDY1
 
 **状態:** `CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` — H1–H4すべて`DEEPER-CONFIRMED`
 
@@ -86,7 +86,7 @@ G3-11は、Research Generation 3開始時から保護してきたstandard initia
 - [`research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md)
 
 <!-- GCLD-G3-10-RESEARCH-INDEX -->
-### Research Generation 3 current highlight — G3-10 / GCLD-STUDY1
+### Research Generation 3 formal core Study — G3-10 / GCLD-STUDY1
 
 **状態:** `CLOSED / FORMAL-COMPLETE` — 4 `CONFIRMED` / 1 `NOT-CONFIRMED` / 0 `NON-ESTIMABLE`
 
