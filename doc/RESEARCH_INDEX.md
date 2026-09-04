@@ -26,12 +26,31 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 ## 研究成果
 
+<!-- FDEGHV-G3-11-RESEARCH-INDEX -->
+### Research Generation 3 current highlight — G3-11 / FDEGHV-STUDY1
+
+**状態:** `CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` — H1–H4すべて`DEEPER-CONFIRMED`
+
+G3-11は、Research Generation 3開始時から保護してきたstandard initial RAW rootのcomplete exact depth-10 holdoutを、outcome-blind authorization、RAW-only representation、事前固定resource ceiling、exactly-one protected execution、mandatory independent full re-enumerationの下で初めて開いた。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。H1 exact-depth novelty、H2 layer tree/RAW divergence、H3 cumulative tree/RAW inflation、H4 transposition persistenceはいずれも`DEEPER-CONFIRMED`。Bao全状態空間・全ゲーム木、depth 11、causal/game-theoretic claimや既存G3 decisionの再判定には拡張しない。protected evidenceは1回でconsume済み、same-evidence rerun禁止。G3-11 main integrationは未承認・未実施。
+
+**最初に読む:**
+
+- [`fresh-depth10-exact-geometry-holdout/README.md`](fresh-depth10-exact-geometry-holdout/README.md)
+- [`fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md`](fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md)
+
+**再現性・formal record:**
+
+- [`fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md`](fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md)
+- [`fresh-depth10-exact-geometry-holdout/DECISION_REGISTER.md`](fresh-depth10-exact-geometry-holdout/DECISION_REGISTER.md)
+- [`fresh-depth10-exact-geometry-holdout/results/stage-1/STAGE_1_FORMAL_RESULT.json`](fresh-depth10-exact-geometry-holdout/results/stage-1/STAGE_1_FORMAL_RESULT.json)
+- [`research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md`](research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md)
+
 <!-- GCLD-G3-10-RESEARCH-INDEX -->
 ### Research Generation 3 current highlight — G3-10 / GCLD-STUDY1
 
 **状態:** `CLOSED / FORMAL-COMPLETE` — 4 `CONFIRMED` / 1 `NOT-CONFIRMED` / 0 `NON-ESTIMABLE`
 
-G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。`main` integrationは`COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387`。
+G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutはG3-10 closure時点では`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`であり、後続の独立G3-11でprospectively開封・formal検証された。same-evidence rerunは禁止。`main` integrationは`COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387`。
 
 **最初に読む:**
 

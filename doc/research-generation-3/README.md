@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / 4 CONFIRMED + 1 NOT-CONFIRMED / CRCLGR FORMAL-ELIGIBLE / MAIN INTEGRATION COMPLETE / FAST-FORWARD
+Status = ACTIVE / G3-11 FDEGHV-STUDY1 CLOSED FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN / H1..H4 DEEPER-CONFIRMED / G3-11 MAIN INTEGRATION NOT AUTHORIZED-NOT PERFORMED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -52,12 +52,24 @@ G3-10 Stage 0 = STAGE0-PASS
 G3-10 Stage 1 = STAGE1-PASS / seeds CONSUMED
 G3-10 Stage 2 = FORMAL-COMPLETE / 48 candidates / 47 eligible / 32 measured / seeds CONSUMED
 G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / force=false
-Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+G3-11 program review = G3-11-AUTHORIZED
+G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
+G3-11 Stage 0 = STAGE0-PASS
+G3-11 Stage 1 = FORMAL-COMPLETE / 1 authorized / 1 actual / full independent exact re-enumeration PASS
+G3-11 formal targets = H1 DEEPER-CONFIRMED / H2 DEEPER-CONFIRMED / H3 DEEPER-CONFIRMED / H4 DEEPER-CONFIRMED
+Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAME-EVIDENCE RERUN NOT AUTHORIZED
+Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
+G3-11 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
 ## 最初に読む
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
+- [`../fresh-depth10-exact-geometry-holdout/README.md`](../fresh-depth10-exact-geometry-holdout/README.md) — G3-11 formal-complete Study入口
+- [`../fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md`](../fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md) — G3-11 exact depth-10 result / interpretation boundary正本
+- [`../fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md`](../fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md) — G3-11 source binding / Actions / exact artifact provenance
+- [`../research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md`](../research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md) — G3-11 formal closure decision
+- [`checkpoints/2026-09-04-g3-11-formal-complete-closure.md`](checkpoints/2026-09-04-g3-11-formal-complete-closure.md) — G3-11 RG3 closure checkpoint
 <!-- GCLD-G3-10-READ-FIRST -->
 - [`../geometry-conditioned-longitudinal-dynamics/README.md`](../geometry-conditioned-longitudinal-dynamics/README.md) — G3-10 formal-complete Study入口
 - [`../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`](../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md) — G3-10 formal results / interpretation boundary正本

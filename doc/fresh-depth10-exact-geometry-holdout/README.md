@@ -8,10 +8,15 @@
 Study ID = FDEGHV-STUDY1
 Program position = Research Generation 3 / G3-11
 Program authorization = G3-11-AUTHORIZED
-Lifecycle = STARTED / PRE-HOLDOUT-FREEZE
-Stage 0 = FDEGHV-S0-TECHNICAL-2026-09-04-v1 / NOT YET EXECUTED
-Stage 1 = FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1 / NOT AUTHORIZED / NOT EXECUTED
-protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+Lifecycle = CLOSED / FORMAL-COMPLETE
+Stage 0 = FDEGHV-S0-TECHNICAL-2026-09-04-v1 / STAGE0-PASS
+Stage 1 = FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1 / FORMAL-COMPLETE / 1 authorized / 1 actual
+formal domain decision = EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
+H1..H4 = DEEPER-CONFIRMED / DEEPER-CONFIRMED / DEEPER-CONFIRMED / DEEPER-CONFIRMED
+protected depth-10 = OPENED / CONSUMED EXACTLY ONCE
+same-evidence rerun = NOT AUTHORIZED
+depth 11 = NOT AUTHORIZED / NOT ACCESSED
+G2-12 estimator scientific input = NOT USED / NOT AUTHORIZED
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
@@ -23,43 +28,35 @@ main integration = NOT AUTHORIZED / NOT PERFORMED
 
 **Bao standard root depth 10のfresh RAW exact enumerationによる局所ゲーム木幾何holdout検証 — sealed deeper exact domainによる第三世代geometry primitiveと事前固定continuation targetの独立検証**
 
-## 研究上の役割
+## 結論
 
-G3-11はResearch Generation 3開始時から保護してきたstandard initial RAW rootのcomplete exact depth-10 layer/domainを、初めてformal scientific evidenceとして開くための独立Studyである。
+standard initial RAW rootからdepth 10までをRAW-onlyで完全列挙し、production materializationとmaterially separate independent full re-enumerationがexactに一致した。frozen resource gatesもすべてPASSしたため、Study-level formal decisionは`EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`である。
 
-G3-04、G3-07、G3-10等の既存formal decisionを再判定するStudyではない。単一standard-root exact domainとconstruct-compatibleなRAW tree/graph/transposition primitive、およびdepth 0..9 historical exact referenceからoutcome前に固定した少数のcontinuation targetだけを扱う。
+4つのprospectively frozen continuation targetはすべて`DEEPER-CONFIRMED`となった。
 
-## Frozen scientific target
+- H1: depth-10 new RAW states = unique RAW states = **348,270**
+- H2: depth-10 tree-node occurrences **494,456** > unique RAW states **348,270**
+- H3: cumulative tree/RAW inflation exact cross-product **64,913,155,557 > 61,644,248,915**
+- H4: depth-10 duplicate arrivals **11,725**、multiple-predecessor states **10,383**
 
-- E0: complete exact RAW domain through depth 10
-- H1: `newRawStateCount[10] == uniqueRawStateCount[10]`
-- H2: `treeNodeOccurrences[10] > uniqueRawStateCount[10]`
-- H3: cumulative tree/RAW ratio through depth 10 > through depth 9, exact rational comparison
-- H4: depth-10 duplicate arrivals > 0 and multi-predecessor RAW states > 0
+Cumulative through depth 10は**451,127 distinct RAW states / 466,768 depth-labelled legal edges / 631,101 tree-node occurrences**である。
 
-## 核心境界
+## Interpretation boundary
 
-```text
-RAW-only = true
-validated transform set = []
-symmetry reduction = false
-canonicalization collapse = false
-complete reachable layers = 0..10
-complete parent expansion layers = 0..9
-depth 11 access = prohibited
-G2-12 estimator input = prohibited
-exactly one protected scientific execution = required
-full independent re-enumeration = required
-partial formal rescue = prohibited
-```
+本Studyはstandard initial RAW rootのcomplete exact depth-10 domainだけを対象とする。Bao全状態空間・全ゲーム木、depth 11以深、symmetry-reduced count、causal mechanism、human difficulty、game-theoretic valueを確立しない。またG3-04、G3-07、G3-10等の既存formal decisionを再判定しない。
+
+protected depth-10 evidenceは1回のauthorized executionでconsume済みであり、same-Study rerun、cap increase、target change、subset/root rescue、symmetry/canonicalization rescue、G2-12 estimator導入、depth-11 extensionはいずれも認めない。
 
 ## 文書
 
 - [Study protocol](STUDY_1_PROTOCOL.md)
+- [Final report](STUDY_1_FINAL_REPORT.md)
 - [Current status](CURRENT_STATUS.md)
+- [Decision register](DECISION_REGISTER.md)
+- [Reproducibility index](REPRODUCIBILITY_INDEX.md)
 - [Authorization review](../research-program-decisions/2026-09-04-post-g3-10-g3-11-authorization-review.md)
-- `prereg/STUDY_1_SPEC.json`
-- `prereg/STAGE_0_TECHNICAL_SPEC.json`
-- `prereg/STAGE_1_FORMAL_SPEC.json`
+- [Formal closure decision](../research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md)
+- [Formal result](results/stage-1/STAGE_1_FORMAL_RESULT.json)
+- [Artifact manifest](results/stage-1/ARTIFACT_MANIFEST.json)
 
-Historical `doc/research-generation-3/PROGRAM_PLAN.md`は変更しない。
+Historical `doc/research-generation-3/PROGRAM_PLAN.md`は変更しない。科学的closureと`main` integrationは別gateであり、main統合は未承認・未実施である。

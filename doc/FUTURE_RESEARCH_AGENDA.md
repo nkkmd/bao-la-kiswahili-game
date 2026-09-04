@@ -5,13 +5,16 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-04
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-10 `GCLD-STUDY1` CLOSED `FORMAL-COMPLETE` / main integration COMPLETE FAST-FORWARD / post-G3-10 review = `G3-11-AUTHORIZED` / G3-11 `FDEGHV-STUDY1` PRE-HOLDOUT-FREEZE / Stage 0 `STAGE0-PASS` / protected depth-10 SEALED (2026-09-04)**
+Research Generation 3: **Active / G3-11 `FDEGHV-STUDY1` CLOSED `FORMAL-COMPLETE` / `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` / H1–H4 all `DEEPER-CONFIRMED` / protected depth-10 CONSUMED EXACTLY ONCE / G3-11 main integration NOT AUTHORIZED-NOT PERFORMED (2026-09-04)**
 
 
 ### 2026-09-04 Research Generation 3 current update
 
+<!-- FDEGHV-G3-11-CLOSURE:FUTURE -->
+G3-11 `FDEGHV-STUDY1`は`CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`。standard initial RAW rootをdepth 10までcomplete exact RAW enumerationし、materialized verificationとmaterially separate independent full re-enumerationはいずれもPASSした。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences / 11,725 duplicate arrivals / 10,383 multiple-predecessor states、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。prospectively frozen H1–H4はすべて`DEEPER-CONFIRMED`。protected depth-10は1回のauthorized executionでconsume済みで、same-evidence rerun、resource cap変更、target変更、subset/root rescue、symmetry/canonicalization rescue、G2-12 estimator入力、depth-11 extensionは禁止。G3-11は既存G3 formal decisionを再判定せず、Bao全状態空間・全ゲーム木・causal/game-theoretic claimへ拡張しない。G3-11のmain integrationは`NOT AUTHORIZED / NOT PERFORMED`。historical `PROGRAM_PLAN.md`は変更しない。
+
 <!-- GCLD-G3-10-CLOSURE:FUTURE -->
-G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。G3-10のmain integrationは2026-09-04の明示的ユーザー指示に基づく`COMPLETE / FAST-FORWARD / force=false`として完了した。その後のseparate post-G3-10 current-state reviewはoutcome-blindに実施され、`G3-11-AUTHORIZED`を固定した。G3-11 `FDEGHV-STUDY1`はresearch branch上でPRE-HOLDOUT-FREEZEにあり、Stage 0 technical-only validationは`STAGE0-PASS`。Stage 1はsource/resource/authorization bindingとdurable pre-computation leaseが完了するまでprotected depth-10 access禁止。historical `PROGRAM_PLAN.md`は変更しない。
+G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`でmain integrationも`COMPLETE / FAST-FORWARD / force=false`。C1/C2/C3/C5は`CONFIRMED`、C4は`NOT-CONFIRMED`。G3-10 closure時点でprotected depth-10は未開封だったが、その後separate post-G3-10 reviewでG3-11がauthorizeされ、独立Studyとして開封・完了した。G3-10のformal decisionやinterpretation boundaryはG3-11によって変更されない。
 
 ### 2026-09-03 Research Generation 3 current update
 

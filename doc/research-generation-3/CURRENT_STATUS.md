@@ -4,7 +4,7 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED / MAIN INTEGRATION COMPLETE / FAST-FORWARD
+Program status = ACTIVE / G3-11 FDEGHV-STUDY1 CLOSED FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN / H1..H4 DEEPER-CONFIRMED / G3-11 MAIN INTEGRATION NOT AUTHORIZED-NOT PERFORMED
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -66,10 +66,39 @@ G3-10 Stage 2 = FORMAL-COMPLETE / seed 32220001..32220384 CONSUMED / candidates 
 G3-10 formal record = C1 CONFIRMED ACTUAL-GREATER / C2 CONFIRMED ACTUAL-GREATER / C3 CONFIRMED ACTUAL-LESS / C4 NOT-CONFIRMED / C5 CONFIRMED ACTUAL-GREATER
 G3-10 canonical scientific-result SHA-256 = c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f
 G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / previous main 0bcd1695b6dbd044acf2eed91740d282c63dbb07 / force=false
-Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
+G3-11 program review = G3-11-AUTHORIZED
+G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
+G3-11 Stage 0 = STAGE0-PASS
+G3-11 Stage 1 = FORMAL-COMPLETE / 1 authorized / 1 actual / full independent exact re-enumeration PASS
+G3-11 depth-10 exact = 348270 unique RAW / 494456 tree occurrences / 11725 duplicate arrivals / 10383 multi-predecessor states
+G3-11 cumulative through depth 10 = 451127 distinct RAW / 466768 depth-labelled legal edges / 631101 tree occurrences
+G3-11 scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
+Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAME-EVIDENCE RERUN NOT AUTHORIZED
+Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
+G3-11 main integration = NOT AUTHORIZED / NOT PERFORMED
 G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
-Next scientific action = none within GCLD-STUDY1; do not rerun consumed Stage 1/2 evidence; post-G3-10 next-study review is separate and not auto-authorized
+Next scientific action = none within FDEGHV-STUDY1; do not rerun consumed depth-10 evidence; any depth-11 work requires a separate prospective Study and authorization review
 ```
+
+## G3-11 formal closure
+
+G3-11 `FDEGHV-STUDY1`はstandard initial RAW rootのpreviously sealed exact depth-10 holdoutをprospectively開封し、complete enumerationとfull independent re-enumerationを完了した。
+
+```text
+formal decision = EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
+H1 = DEEPER-CONFIRMED
+H2 = DEEPER-CONFIRMED
+H3 = DEEPER-CONFIRMED
+H4 = DEEPER-CONFIRMED
+Stage 1 Actions run = 33837413663 / success / run number 1
+verified artifact ID = 9923817605
+canonical scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
+same-evidence rerun = NOT AUTHORIZED
+depth 11 = NOT AUTHORIZED
+main integration = NOT AUTHORIZED / NOT PERFORMED
+```
+
+G3-11はsingle standard-root depth-10 exact domainに限定され、upstream G3 decisions、whole-Bao state-space/game-tree size、causal/game-theoretic interpretationを変更しない。
 
 ## Immutable upstream boundaries
 
