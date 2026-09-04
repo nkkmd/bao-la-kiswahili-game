@@ -41,6 +41,11 @@ Research Generation 3 core agenda `G3-01..G3-12`は、prospective `PROGRAM_PLAN.
 - [`research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](research-program-decisions/2026-09-04-research-generation-3-program-closure.md)
 - [`research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md)
 
+**Repository closure / consistency:**
+
+- [`research-generation-3/checkpoints/2026-09-04-program-closure-central-sync-complete.md`](research-generation-3/checkpoints/2026-09-04-program-closure-central-sync-complete.md)
+- [`research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`](research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md)
+
 `main` integrationは明示的ユーザー指示まで実行しない。
 <!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:END -->
 

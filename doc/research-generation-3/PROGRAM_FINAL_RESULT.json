@@ -190,17 +190,24 @@
     "section16_3_rawIdentityAndTransformBoundaryPreserved": true,
     "section16_4_localGeometryInstrumentDispositionPresent": true,
     "section16_5_branchingTranspositionTreeGraphCorridorFunnelClosure": true,
-    "section16_6BranchTransitionAndBaoRuleMechanismClosure": true,
-    "section16_7GeometrySearchInstabilityDisposition": true,
-    "section16_8GeometryPersistenceMemoryClosure": true,
-    "section16_9ContinuousRepresentationAndLongitudinalDynamicsDisposition": true,
-    "section16_10ProtectedDepth10HoldoutClosure": true,
-    "section16_11GeneralizationCounterexampleAgendaClosure": true,
-    "section16_12ConstructSeparationPreserved": true,
-    "section16_13PublicAiEngineeringSeparationPreserved": true,
-    "section16_14FinalSynthesisCreated": true
+    "section16_6_branchTransitionAndBaoRuleMechanismClosure": true,
+    "section16_7_geometrySearchInstabilityDisposition": true,
+    "section16_8_geometryPersistenceMemoryClosure": true,
+    "section16_9_continuousRepresentationAndLongitudinalDynamicsDisposition": true,
+    "section16_10_protectedDepth10HoldoutClosure": true,
+    "section16_11_generalizationCounterexampleAgendaClosure": true,
+    "section16_12_constructSeparationPreserved": true,
+    "section16_13_publicAiEngineeringSeparationPreserved": true,
+    "section16_14_finalSynthesisCreated": true
   },
   "closureReview": "RG3-PROGRAM-CLOSURE-AUTHORIZED",
   "scientificExecutionAuthorizedByProgramClosure": false,
-  "mainIntegrationAuthorized": false
+  "mainIntegrationAuthorized": false,
+  "repositoryClosure": {
+    "centralDocumentationSynchronization": "COMPLETE",
+    "finalPreMainConsistencyAudit": "PASS",
+    "finalAuditCheckpoint": "doc/research-generation-3/checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md",
+    "temporaryClosureWriteCapableToolingPresent": false,
+    "preMainIntegrationReady": true
+  }
 }

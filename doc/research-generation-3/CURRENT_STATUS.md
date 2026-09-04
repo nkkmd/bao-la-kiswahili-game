@@ -108,6 +108,9 @@ G3-H01 = DEFERRED / INDEPENDENT / NON-BLOCKING
 Section 16 completion conditions = 14 / 14 PASS
 Final synthesis = COMPLETE
 Program final result = COMPLETE
+Central documentation synchronization = COMPLETE
+Final pre-main documentation consistency audit = PASS
+Temporary closure write-capable tooling = REMOVED
 Scientific execution authorized by closure = none
 Main integration = NOT AUTHORIZED / NOT PERFORMED / explicit user instruction required
 ```
@@ -118,6 +121,8 @@ Generation-level canonical records:
 - `PROGRAM_FINAL_RESULT.json`
 - `../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`
 - `../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`
+- `checkpoints/2026-09-04-program-closure-central-sync-complete.md`
+- `checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`
 
 Protected boundaries remain active: G3-11 depth-10 rerun prohibited; depth 11 not authorized; G3-12 Stage 1 same-evidence repair/replay prohibited; G3-12 Stage 2 not authorized and seeds unread; G2-12 estimator scientific reuse and symmetry/canonicalization rescue not authorized.
 <!-- RG3-FINAL-CLOSURE-CURRENT:END -->

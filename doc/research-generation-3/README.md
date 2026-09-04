@@ -83,6 +83,8 @@ G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing closure state / main integration boundary
 - [`../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](../research-program-decisions/2026-09-04-research-generation-3-program-closure.md) — formal program closure decision
 - [`../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md) — post-G3-12 closure authorization review
+- [`checkpoints/2026-09-04-program-closure-central-sync-complete.md`](checkpoints/2026-09-04-program-closure-central-sync-complete.md) — generation-level central documentation synchronization record
+- [`checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`](checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md) — final pre-main repository/document consistency audit after documentation polish
 <!-- RG3-FINAL-CLOSURE-READ-FIRST:END -->
 
 <!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->
@@ -92,7 +94,6 @@ G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9
 - [`../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md) — Stage 2 NOT-AUTHORIZED / Study technical-invalid closure decision
 <!-- LGTGGC-G3-12-RG3-READ-FIRST:END -->
 
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
 - [`../fresh-depth10-exact-geometry-holdout/README.md`](../fresh-depth10-exact-geometry-holdout/README.md) — G3-11 formal-complete Study入口
 - [`../fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md`](../fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md) — G3-11 exact depth-10 result / interpretation boundary正本
 - [`../fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md`](../fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md) — G3-11 source binding / Actions / exact artifact provenance
