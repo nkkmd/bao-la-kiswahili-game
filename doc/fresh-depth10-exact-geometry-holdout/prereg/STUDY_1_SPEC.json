@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G3-11",
+  "studyId": "FDEGHV-STUDY1",
+  "status": "FROZEN-BEFORE-PROTECTED-DEPTH10-ACCESS",
+  "reviewedMainSha": "e537199a959c0808cbef6cf8aaeb1caab91e3702",
+  "researchBranch": "research/g3-11-fresh-depth10-exact-geometry-holdout",
+  "authorizationDecision": "G3-11-AUTHORIZED",
+  "stages": [
+    "FDEGHV-S0-TECHNICAL-2026-09-04-v1",
+    "FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1"
+  ],
+  "evidenceClasses": {
+    "stage0": "TECHNICAL-FIXTURE/HISTORICAL-EXACT-REFERENCE",
+    "stage1": "FRESH-DEEPER-EXACT-HOLDOUT"
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "identityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedIdentityFields": ["turn", "reason"],
+    "moveIdentityFields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransformSet": [],
+    "symmetryReductionAuthorized": false,
+    "canonicalizationAuthorized": false
+  },
+  "protectedEvidence": {
+    "root": "standard initial RAW state",
+    "targetDepth": 10,
+    "preAccessState": "SEALED / NOT GENERATED / NOT READ / NOT PEEKED",
+    "depth11Authorized": false,
+    "g2_12EstimatorScientificInputAuthorized": false
+  },
+  "formalTargets": [
+    "E0-COMPLETE-EXACT-DEPTH10-DOMAIN",
+    "H1-EXACT-DEPTH-NOVELTY-CONTINUATION",
+    "H2-LAYER-TREE-RAW-DIVERGENCE-CONTINUATION",
+    "H3-CUMULATIVE-TREE-RAW-INFLATION-CONTINUATION",
+    "H4-TRANSPOSITION-PERSISTENCE"
+  ],
+  "decisionLabels": {
+    "exactDomain": "EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN",
+    "targetTrue": "DEEPER-CONFIRMED",
+    "targetFalse": "COUNTEREXAMPLE-BOUNDARY",
+    "resourceOrAdminIncomplete": "NON-ESTIMABLE",
+    "technicalIntegrityFailure": "TECHNICAL-INVALID"
+  },
+  "sameEvidenceRerunAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "historicalProgramPlanEditable": false
+}
