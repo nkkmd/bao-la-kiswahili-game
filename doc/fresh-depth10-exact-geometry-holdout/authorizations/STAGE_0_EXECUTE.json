@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G3-11",
+  "studyId": "FDEGHV-STUDY1",
+  "stageId": "FDEGHV-S0-TECHNICAL-2026-09-04-v1",
+  "authorizationDecision": "STAGE0-TECHNICAL-AUTHORIZED",
+  "executionAuthorized": true,
+  "executionCountAuthorized": 1,
+  "scientificInferenceAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "maximumRealFixtureDepthAuthorized": 2,
+  "depth11AccessAuthorized": false,
+  "g2_12EstimatorScientificInputAuthorized": false,
+  "reviewedSourceCommit": "e59123212bd3f18a97be99bed0e9092800385317",
+  "authorizationNonce": "fdeeghv-s0-20260904-b41c7f25",
+  "sourceGitBlobSha": {
+    ".github/workflows/fdeeghv-stage0-technical.yml": "b133ee9b7015431147404e718ef6c9519eae1474",
+    "doc/fresh-depth10-exact-geometry-holdout/prereg/STAGE_0_TECHNICAL_SPEC.json": "e4b020595ab5f7a9ba8a643588f794e2faceab91",
+    "tools/experiments/run-fdeeghv-stage0-technical.js": "82ef18130b655aace606fb1456aa648e7262c456",
+    "tools/experiments/lib/fdeeghv-contract.js": "4a9cf45b9abe6933c3949683038e5f3de7b9a518",
+    "tools/experiments/lib/drsse-production.js": "e8fc23799415f566850c817c22cf658216bb98be",
+    "tools/experiments/lib/drsse-independent.js": "906e0412bcf47fe37d95ac29ad83f9c83bc52857",
+    "tools/experiments/fdeeghv-preaccess-doc-sync.py": "2e55f1a818fc09fdabab3636b80e3bbcb218daea",
+    "tools/experiments/verify-fdeeghv-stage1-independent.js": "a1883f17aded2fd80ff7039f38d5b437138d2e5b",
+    "public/engine.js": "2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c"
+  }
+}
