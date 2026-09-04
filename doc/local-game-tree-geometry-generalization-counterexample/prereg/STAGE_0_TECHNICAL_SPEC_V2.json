@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S0-TECHNICAL-2026-09-04-v2",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "scientificInferenceAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "technicalSeedNamespace": {
+    "seedStart": 32309001,
+    "seedEnd": 32309064,
+    "scientificUseProhibited": true
+  },
+  "sourceMainHead": "5597ae696d9eb76d8395e114cdb4f83af1138a3d",
+  "activeAmendment": "prereg/STUDY_1_TECHNICAL_AMENDMENT_V2.json",
+  "sourcePolicies": [
+    "LGTGGC-P1-UNIFORM-LEGAL",
+    "LGTGGC-P2-MAX-CAPTURE"
+  ],
+  "rootFamilies": [
+    "LGTGGC-RF1-EARLY-ANCHOR",
+    "LGTGGC-RF2-LATE-ANCHOR"
+  ],
+  "mandatoryControls": [
+    "RAW-STATE-IDENTITY-PRODUCTION-INDEPENDENT-EXACT",
+    "MOVE-IDENTITY-PRODUCTION-INDEPENDENT-EXACT",
+    "P1-DETERMINISTIC-REPLAY-PRODUCTION-INDEPENDENT-EXACT",
+    "P2-DETERMINISTIC-REPLAY-PRODUCTION-INDEPENDENT-EXACT",
+    "P1-P2-SOURCE-POLICY-DISTINGUISHABLE",
+    "RF1-RF2-ANCHOR-SELECTION-EXACT",
+    "SFCDF-C1-C6-EXACT-RATIONAL-AGREEMENT",
+    "SILGM-THRESHOLD-BOUNDARY-EXACT",
+    "SILGM-SC1-E3-EXACT",
+    "SILGM-SC2-E3-EXACT",
+    "SILGM-SC3-E3-EXACT",
+    "SILGM-TWO-SIDED-STRATIFIED-HYPERGEOMETRIC-EXACT",
+    "CRCLGR-SIX-AXIS-EXACT-AGREEMENT",
+    "CRCLGR-EXACT-L1-AGREEMENT",
+    "GCLD-C1-C2-C3-C5-EXACT",
+    "GCLD-32-CONTROL-CONSTRUCTION-EXACT",
+    "EXACT-TWO-SIDED-SIGN-TEST-AGREEMENT",
+    "HOLM-EXACT-RATIONAL-AGREEMENT",
+    "CANONICAL-CONTENT-ORDER-INVARIANCE",
+    "FORCED-FAIL-CLOSED-CONTROLS",
+    "PRODUCTION-INDEPENDENT-CANONICAL-CONTENT-AGREEMENT",
+    "G3-11-DEPTH10-ACCESS-FALSE",
+    "DEPTH11-ACCESS-FALSE",
+    "G2-12-ESTIMATOR-INPUT-FALSE"
+  ],
+  "searchConditions": {
+    "SC1": [
+      {"kind":"exact-depth","depth":2,"quiescenceDepth":1},
+      {"kind":"exact-depth","depth":3,"quiescenceDepth":1}
+    ],
+    "SC2": [
+      {"kind":"node-budget","maxDepth":3,"nodeBudget":256,"quiescenceDepth":1},
+      {"kind":"node-budget","maxDepth":3,"nodeBudget":1024,"quiescenceDepth":1}
+    ],
+    "SC3": [
+      {"kind":"exact-depth","depth":2,"quiescenceDepth":0},
+      {"kind":"exact-depth","depth":2,"quiescenceDepth":2}
+    ]
+  },
+  "silgmThresholds": {
+    "namua": {"numerator":"4","denominator":"1","defined":true},
+    "mtaji": {"numerator":"3","denominator":"1","defined":true}
+  },
+  "gcldCheckpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+  "gcldTemporalControlCount": 32,
+  "perRootGeometryLimits": {
+    "distinctRawStates": 100000,
+    "uniqueTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveEvaluations": 750000,
+    "treeNodeOccurrences": 1000000000
+  },
+  "executionSafetyCeilings": {
+    "elapsedSeconds": 1200,
+    "peakResidentSetBytes": 4294967296,
+    "resultArtifactBytes": 67108864
+  },
+  "failClosed": true,
+  "stagePassRule": "all mandatory controls true and no technical seed outside 32309001..32309064 and no scientific seed/depth10/depth11/estimator access",
+  "stage1AuthorizationConsequence": "NONE; Stage 1 requires a separate post-Stage0 pre-fresh authorization"
+}
