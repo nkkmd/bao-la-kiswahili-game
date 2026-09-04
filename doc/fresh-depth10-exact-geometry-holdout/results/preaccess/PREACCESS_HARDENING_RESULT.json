@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G3-11",
+  "studyId": "FDEGHV-STUDY1",
+  "checkRole": "post-stage0-pre-stage1-source-hardening",
+  "disposition": "PREACCESS-HARDENING-PASS",
+  "scientificInferencePerformed": false,
+  "protectedDepth10Access": false,
+  "depth10Generated": false,
+  "depth10Read": false,
+  "depth10Peeked": false,
+  "checks": {
+    "independentLogicalResourceBoundary": true,
+    "independentParentExpansionNegativeControl": true,
+    "independentMoveEvaluationNegativeControl": true,
+    "independentAmbientBoundaryControls": true,
+    "finalizerLogicalResourceBoundary": true,
+    "staticImplementationSeparation": true,
+    "oneShotLeaseGuardsPresent": true,
+    "finalManifestFinalizerPresent": true,
+    "formalDepthAndFirewallsUnchanged": true
+  }
+}
