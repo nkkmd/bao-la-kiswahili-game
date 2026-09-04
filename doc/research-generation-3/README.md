@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION
+Status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 MAIN INTEGRATION COMPLETE FAST-FORWARD
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -62,7 +62,7 @@ G3-12 SILGM development = STAGE1-TECHNICAL-INVALID / complete root ranking requi
 G3-12 GCLD development = NOT EXECUTED / seeds unread
 G3-12 Stage 2 = LGTGGC-STAGE2-NOT-AUTHORIZED / NOT EXECUTED / all Stage 2 seeds unread
 G3-12 formal generalization-counterexample decisions = NONE
-G3-12 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-12 main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
 <!-- LGTGGC-G3-12-RG3-STATUS:END -->
 
 G3-11 program review = G3-11-AUTHORIZED

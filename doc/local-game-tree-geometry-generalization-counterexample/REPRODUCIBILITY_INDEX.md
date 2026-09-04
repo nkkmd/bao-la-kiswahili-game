@@ -230,4 +230,4 @@ The three failed attempts modified no current-facing document through Actions ex
 - `results/stage-1/STAGE_1_EXECUTION_RECORD.json`
 - `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
 
-Main integration remains outside this reproducibility record until explicit user authorization.
+Main integration completed by non-forced fast-forward: `COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false`. The research branch is retained for provenance.

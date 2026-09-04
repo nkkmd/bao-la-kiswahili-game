@@ -295,3 +295,10 @@ A future attempt requires a new prospective independent Study/version and separa
 ## LGTGGC-D029 — Final integration boundary
 
 Research closure may be completed on the research branch, including current-facing documentation and final consistency audit. `main` integration remains `NOT AUTHORIZED / NOT PERFORMED` until explicit user instruction.
+
+
+## LGTGGC-D030 — Main integration complete
+
+**Decision:** `MAIN-INTEGRATION-COMPLETE / FAST-FORWARD / force=false`.
+
+Explicit user authorization was received after the pre-main consistency audit. `main` was advanced from `5597ae696d9eb76d8395e114cdb4f83af1138a3d` to source research tip `146a515671838606034efd9d4c3120e9b4c597f2` by non-forced fast-forward. No scientific computation, Stage 1 replay, Stage 2 access, depth-10 rerun, depth-11 access, or G2-12 estimator input was performed as part of integration.

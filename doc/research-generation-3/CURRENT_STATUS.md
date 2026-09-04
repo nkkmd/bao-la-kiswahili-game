@@ -4,7 +4,7 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / main integration pending explicit user instruction
+Program status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 main integration COMPLETE FAST-FORWARD
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -78,7 +78,7 @@ G3-12 Stage 2 authorization = LGTGGC-STAGE2-NOT-AUTHORIZED
 G3-12 Stage 2 execution = NOT EXECUTED / all formal seeds UNREAD
 G3-12 formal generalization-counterexample decisions = NONE
 G3-12 same-evidence rerun = NOT AUTHORIZED
-G3-12 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-12 main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
 <!-- LGTGGC-G3-12-RG3-CURRENT:END -->
 
 G3-11 program review = G3-11-AUTHORIZED
@@ -109,7 +109,7 @@ Canonical records:
 - `../local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
 - `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
 
-`main` integrationは明示的ユーザー指示まで行わない。
+`main` integrationは`COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false`として完了した。
 <!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:END -->
 
 ## G3-11 formal closure

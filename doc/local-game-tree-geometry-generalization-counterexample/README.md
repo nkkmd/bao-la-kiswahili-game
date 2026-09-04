@@ -14,7 +14,7 @@ Formal generalization decisions = NONE
 Formal counterexample decisions = NONE
 source main = 5597ae696d9eb76d8395e114cdb4f83af1138a3d
 research branch = research/g3-12-local-game-tree-geometry-generalization-counterexample
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
 ```
 
 ## 研究目的

@@ -18,7 +18,7 @@ Formal counterexample decisions = NONE
 Protected G3-11 depth-10 rerun = false / NOT AUTHORIZED
 Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
 G2-12 estimator scientific input = NOT AUTHORIZED / NOT USED
-Main integration = NOT AUTHORIZED / NOT PERFORMED
+Main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
 ```
 
 ## Active source-policy contract
@@ -142,4 +142,4 @@ Upstream G3-04/G3-07/G3-10 formal results remain unchanged. G3-10 C4 remains NOT
 
 ## Main integration
 
-`main` integration is **NOT AUTHORIZED / NOT PERFORMED**. Explicit user instruction is required.
+`main` integration is **COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false**. The research branch is retained for provenance.

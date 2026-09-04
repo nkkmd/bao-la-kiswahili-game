@@ -45,7 +45,7 @@ G3-12はG3-04、G3-07、G3-10の9 formal-eligible bounded geometry claimsにつ�
 - [`local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`](local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md)
 - [`research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md)
 
-`main` integrationは未実施で、research branch上のclosureを明示的ユーザー指示まで保持する。
+`main` integrationは`COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false`として完了した。research branchはprovenanceのため保持する。
 <!-- LGTGGC-G3-12-RESEARCH-INDEX:END -->
 
 <!-- FDEGHV-G3-11-RESEARCH-INDEX -->
