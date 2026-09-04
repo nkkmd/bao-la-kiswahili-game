@@ -1,11 +1,12 @@
-# PBAI-P2 — 現在の状態
+# `PBAI-P2` — 現在の状態
 
-更新日: 2026-09-01  
-Program: `PBAI-P2`  
-正式題目: `Generation-2 Evidence-Informed Public Bao AI Improvement Program 2`  
-状態: **COMPLETE / KEEP-AI-GEN2**
+更新日: 2026-09-01
+Program: `Generation-2 Evidence-Informed Public Bao AI Improvement Program 2`（正式Program名）
+状態: **`COMPLETE / KEEP-AI-GEN2`**
 
-## 1. 最終Program state
+`PBAI-P2`は完了しています。initial inventory `PBAI-C006-v1..PBAI-C009-v1`は全件closedで、validation、release holdout、公開deploymentへ進んだ候補はありません。現在の公開系統は`AI-GEN2`です。
+
+## 最終状態
 
 ```text
 PBAI-P2-A = COMPLETE
@@ -25,100 +26,66 @@ current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-## 2. Repository / evidence boundary
-
-Program開始時およびclosure確認時のremote `main`:
+## 証拠とbaseline
 
 ```text
-2265fb7ccbf6cf6dde6ab08d5519e44e61b9e972
-```
-
-Scientific evidence cutoff:
-
-```text
-cd200b85c1eb24aa4419bd5a9573552f3682f00d
-```
-
-```text
+scientific evidence cutoff = cd200b85c1eb24aa4419bd5a9573552f3682f00d
+baselineId = AI-GEN2-BASELINE-2026-09-01-v1
+gateSpecId = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
 Research Generation 2 scientific evidence <= cutoff = INCLUDED
 Research Generation 1 scientific evidence as P2 candidate premise = EXCLUDED
 Research Generation 3 influence = ZERO
 ```
 
-Research Generation 3のscientific content、diagnostic、measurement、hypothesis、candidate ideaをPBAI-P2へ使用していない。
+Research Generation 3のresult、diagnostic、measurement、hypothesis、candidate ideaはPBAI-P2へ使用していません。PBAI-P2のengineering resultによって、Research Generation 2のformal decisionも変更していません。
 
-## 3. Baseline / global gates
+## Candidate別の最終状態
 
-```text
-baselineId = AI-GEN2-BASELINE-2026-09-01-v1
-gateSpecId = PBAI-P2-C-GLOBAL-GATES-2026-09-01-v1
-```
-
-Program開始時の8 bound public assetsはPBAI-P1 exact baseline sourceとGit blob identityが一致した。PBAI-P2からpublic `main`へのcandidate source採用は発生していない。
-
-## 4. Candidate final dispositions
+### `PBAI-C006-v1` — 最終判断
 
 ```text
-PBAI-C006-v1
-= WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
-= implementation NOT AUTHORIZED
-
-PBAI-C007-v1
-= NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
-= implementation NOT AUTHORIZED
-
-PBAI-C008-v1
-= DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED
-= quality/safety gates PASS
-= cost gates FAIL
-= validation NOT AUTHORIZED
-
-PBAI-C009-v1
-= TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED
-= negative-control gate FAIL (18/64)
-= primary TopSet gate FAIL
-= primary rank-loss gate FAIL
-= validation NOT AUTHORIZED
+result = WITHDRAWN-NO-ACTIONABLE-IDENTITY-DEFECT / CLOSED
+implementation = NOT AUTHORIZED
 ```
 
-## 5. C008 canonical development result
+frozen support universeで、実装を正当化するidentity defectを確認できませんでした。これは全Bao到達状態でcollisionが存在しないという証明ではありません。
+
+### `PBAI-C007-v1` — 最終判断
+
+```text
+result = NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+implementation = NOT AUTHORIZED
+same-key TT store events = 16512
+incoming shallower-than-existing overwrite events = 0
+required support floor = 32 events / 16 roots
+```
+
+candidate mechanismが対象とするeventのsupportを確保できず、benefitを推定していません。
+
+### `PBAI-C008-v1` — 最終判断
+
+quality / safety gateは通過しましたが、事前に固定したcost gateを2件とも満たしませんでした。
 
 ```text
 workflow run = 33497330874
 artifact = 9796432233
 deterministic core SHA-256 = 18e3a1d6e9cd7dff4b06da406e20ba17bdfb51a5b36a8f6f8620745cd32e0fa6
 eligible roots = 71
-TopSet agreement delta = +0.2957746478873239
-mean normalized rank-loss delta = -0.19413145539906107
-severe-loss-rate excess = -0.09859154929577464
-catastrophic new loss = 0
+TopSet agreement delta = +0.2957746478873239 PASS
+mean normalized rank-loss delta = -0.19413145539906107 PASS
+severe-loss-rate excess = -0.09859154929577464 PASS
+catastrophic new loss = 0 PASS
 median node ratio = 2.1004464285714284 > 1.60 FAIL
 p95 node ratio = 3.079245283018868 > 2.50 FAIL
 negative-control failures = 0
 technical failures = 0
 ```
 
-Formal disposition:
+正式状態は`DEVELOPMENT-BENEFIT-FAIL-HOLD / CLOSED`で、validationは未承認です。D4はengineering comparison referenceであり、game-theoretic truthではありません。
 
-```text
-DEVELOPMENT-BENEFIT-FAIL-HOLD
-```
+### `PBAI-C009-v1` — 最終判断
 
-Higher-resource D4 referenceはengineering comparison referenceであり、game-theoretic truthではない。
-
-## 6. C009 canonical development result
-
-Feature-off equivalence:
-
-```text
-workflow run = 33503615979
-comparisons = 256
-mismatches = 0
-candidate diagnostic presence = 0
-disposition = FEATURE-OFF-EQUIVALENCE-PASS
-```
-
-Canonical development:
+feature-off equivalenceは256 comparisons・mismatch 0でPASSしました。Canonical developmentではproductionとindependent verifierがpopulation、row-level metrics、decision、deterministic coreまで一致しました。
 
 ```text
 workflow run = 33504482668
@@ -138,17 +105,12 @@ negative-control failures = 18 FAIL
 technical failures = 0
 ```
 
-Production / independent verifierはfull eligible/control rows、population、summary、decision、deterministic coreまでexact一致した。
+正式状態は`TECHNICAL-INVALID-REJECT-OR-HOLD / CLOSED`で、validationは未承認です。technical failureが0でも、negative-control gateとprimary benefit gateが未達なら採用工程へ進めません。
 
-Formal disposition:
-
-```text
-TECHNICAL-INVALID-REJECT-OR-HOLD
-```
-
-## 7. Protected boundary at closure
+## 保護された工程
 
 ```text
+development decision roots 424xxxxx = ACCESSED
 validation decision roots 425xxxxx = NOT ACCESSED
 release holdout decision roots 426xxxxx = NOT ACCESSED
 validation contract freeze = none
@@ -157,25 +119,23 @@ formal ADOPT = none
 public deployment = none
 ```
 
-C008/C009のisolated candidate sourceはpublic `main`へ採用しない。
+未使用のvalidation / holdoutを、効果なしという測定結果へ読み替えません。C008とC009のisolated candidate sourceもpublic `main`へ採用しません。
 
-## 8. No-rescue / no-extension rule
+## No-rescueと今後の扱い
 
-PBAI-P2 initial inventory `PBAI-C006-v1..PBAI-C009-v1`は全件closed。結果確認後にthreshold緩和、seed追加、negative-control再定義、subgroup追加、mechanism微修正でsame-version救済しない。
+結果確認後のthreshold緩和、seed追加、negative-control再定義、subgroup追加、mechanism微修正によるsame-version救済は行いません。また、今回のoutcomeからinitial inventory外candidateを後付けしてPBAI-P2を延長しません。
 
-Initial inventory外candidateを今回のoutcomeから新規発明してPBAI-P2を延長しない。将来のAI改善は新しいProgram-level evidence cutoff、fresh split、candidate inventory、gate freezeをprospectively設定して開始する。
+将来の改善には、新しいProgram ID、evidence cutoff、baseline、fresh split、candidate inventory、gate freezeが必要です。
 
-## 9. Canonical closure
+## 正本
 
-詳細は次を参照する。
-
-- [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)
-- [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
-- [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
-- [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)
-- [`candidates/PBAI-C008-v1-development-result.json`](candidates/PBAI-C008-v1-development-result.json)
-- [`candidates/PBAI-C009-v1-development-result.json`](candidates/PBAI-C009-v1-development-result.json)
-- [`checkpoints/2026-09-01-c009-development-closure.md`](checkpoints/2026-09-01-c009-development-closure.md)
+- [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md) — 最終報告
+- [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — candidate台帳
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 判断記録
+- [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md) — release記録
+- [`candidates/PBAI-C008-v1-development-result.json`](candidates/PBAI-C008-v1-development-result.json) — C008 result
+- [`candidates/PBAI-C009-v1-development-result.json`](candidates/PBAI-C009-v1-development-result.json) — C009 result
+- [`checkpoints/2026-09-01-program-closure-documentation-audit.md`](checkpoints/2026-09-01-program-closure-documentation-audit.md) — closure文書監査
 
 ```text
 PBAI-P2 = COMPLETE

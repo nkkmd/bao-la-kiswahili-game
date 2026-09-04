@@ -73,7 +73,6 @@ const coreDocs = [
   `${ROOT}/DECISION_REGISTER.md`,
   `${ROOT}/REPRODUCIBILITY_INDEX.md`,
   `${ROOT}/results/README.md`,
-  "README.md",
   "doc/RESEARCH_INDEX.md",
   "doc/FUTURE_RESEARCH_AGENDA.md",
   "doc/research-program-decisions/2026-08-25-state-space-game-tree-complexity-study1-closure.md",
@@ -86,7 +85,6 @@ for (const path of [
   `${ROOT}/STUDY_1_FINAL_REPORT.md`,
   `${ROOT}/CURRENT_STATUS.md`,
   `${ROOT}/REPRODUCIBILITY_INDEX.md`,
-  "README.md",
   "doc/RESEARCH_INDEX.md",
   "doc/FUTURE_RESEARCH_AGENDA.md",
 ]) {
@@ -99,9 +97,11 @@ for (const path of [
   `${ROOT}/STUDY_1_FINAL_REPORT.md`,
   `${ROOT}/CURRENT_STATUS.md`,
   `${ROOT}/REPRODUCIBILITY_INDEX.md`,
-  "doc/RESEARCH_INDEX.md",
-  "doc/FUTURE_RESEARCH_AGENDA.md",
 ]) includes(path, [STATE_HASH, TRANSITION_HASH, TREE_HASH]);
+
+// The root README stays at generation-summary granularity. Exact Study
+// decisions and endpoints belong in the central index and agenda it links to.
+includes("README.md", ["doc/RESEARCH_INDEX.md"]);
 
 includes(`${ROOT}/CURRENT_STATUS.md`, [
   "studyStatus = COMPLETED",
@@ -116,9 +116,9 @@ excludes(`${ROOT}/CURRENT_STATUS.md`, [
 ]);
 
 includes("doc/RESEARCH_INDEX.md", [
-  "### 15. State Space / Game Tree Complexity — Study 1",
-  "**状態:** **COMPLETED",
-  "`Bao state space = 24,848`",
+  "SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN",
+  "24,848 RAW states",
+  "30,941 tree nodes",
 ]);
 
 // SSGTC closure must remain represented in the current repository-wide agenda,
@@ -126,9 +126,10 @@ includes("doc/RESEARCH_INDEX.md", [
 // generations are added. Pin the G2 closure boundary, not historical v2.0.0.
 includes("doc/FUTURE_RESEARCH_AGENDA.md", [
   "Research Generation 2: **Closed (2026-08-31)**",
-  "### 4.12 状態空間とゲーム木複雑度 — Study 1完了",
-  "**[完了] 状態空間とゲーム木複雑度 — Study 1",
-  "`Bao state space = 24,848`",
+  "### 4.9 状態空間とゲーム木",
+  "SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN",
+  "reachable RAW statesは24,848",
+  "tree node occurrencesは30,941",
 ]);
 excludes("doc/FUTURE_RESEARCH_AGENDA.md", [
   "**未着手 / RAW-ONLYで進行可能**",

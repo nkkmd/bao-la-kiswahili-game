@@ -114,7 +114,6 @@ assert.equal(stage2.reservedStage2SeedsConsumed, false);
 assert.ok(Object.values(stage2.rescueProhibited).every(Boolean));
 
 const centralCurrentFacing = [
-  "README.md",
   "doc/RESEARCH_INDEX.md",
   "doc/FUTURE_RESEARCH_AGENDA.md"
 ];
@@ -147,7 +146,9 @@ for (const rel of studyCurrentFacing) {
   containsAll(rel, ["PCEM"]);
 }
 
-containsAll("README.md", ["PCEM", "55 candidate audits", "promoted candidates 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
+// The root README intentionally stays at generation-summary granularity and
+// directs readers to the central research index for exact Study details.
+containsAll("README.md", ["doc/RESEARCH_INDEX.md"]);
 containsAll("doc/RESEARCH_INDEX.md", ["### 16. Practical Comeback / Error-Inducing Move — Study 1", "promotedCandidateCount = 0", "NOT-AUTHORIZED-NOT-EXECUTED"]);
 containsAll("doc/FUTURE_RESEARCH_AGENDA.md", ["Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。"]);
 containsAll("doc/practical-comeback-error-inducing-moves/REPRODUCIBILITY_INDEX.md", [

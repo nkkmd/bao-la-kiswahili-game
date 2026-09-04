@@ -1,74 +1,69 @@
-# Research Generation 2 — Current Status
+# Research Generation 2 — 現在の状態
 
-Updated: 2026-08-31
+更新日: 2026-08-31
+Program: `Bao Second-Generation Research Program`（正式Program名）
+状態: **`CLOSED / INTEGRATED TO MAIN`**
+
+Research Generation 2のcore `G2-01..G2-12`は、すべてformal closureを持ち、中央文書とともに`main`へ統合済みです。新たに実行できるStageや、同じ証拠を用いた再判定はありません。
+
+## Core agendaの最終状態
+
+| Agenda / Study | 最終状態 | 読み方 |
+| --- | --- | --- |
+| `G2-01` / `PEOCR-STUDY1` | `INCONCLUSIVE` | validated Bao win-probability mappingは得られていません。 |
+| `G2-02` / `SRDR-STUDY1` | `INCONCLUSIVE` | primary criterionはformalに評価されていません。 |
+| `G2-03` / `STSCV-STUDY1` | `INCONCLUSIVE` | validated transform setは`[]`です。 |
+| `G2-04` / `REEOE-STUDY1` | `INCONCLUSIVE` | Stage 2は承認されていません。 |
+| `G2-05` / `DRSSE-STUDY1` | `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN` | standard initial RAW rootのdepth 0〜9だけをexactに扱います。 |
+| `G2-06` / `RCPR-STUDY1` | `STAGE1-TECHNICAL-INVALID` | Stage 2は未承認です。 |
+| `G2-07` / `PCRPR-STUDY1` | `STAGE1-TECHNICAL-INVALID` | Stage 2は未承認です。 |
+| `G2-08` / `MDFT-STUDY1` | `NON-ESTIMABLE` | taxonomyはformal promotionされていません。 |
+| `G2-09` / `TMGC-STUDY1` | `TECHNICAL-INVALID` | formal generalization evidenceはありません。 |
+| `G2-10` / `UMSSR-STUDY1` | `STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION` | `selectedRepresentation = null`、StudyとStage 2は未承認・未実行です。 |
+| 前提Study / `PSRRE-STUDY1` | `NON-ESTIMABLE` | `selectedRepresentation = null`です。 |
+| `G2-11` | `NON-ESTIMABLE` | dependency gateで閉じ、正式Study IDは付与していません。 |
+| `G2-12` / `SSGTGE-STUDY1` | `TECHNICAL-INVALID` | `selectedEstimator = null`です。 |
+
+## G2-11を実行しなかった理由
+
+G2-11には、事前に適格化されたstrategic-regime representationが必要でした。しかしG2-10と独立前提Study `PSRRE-STUDY1`の双方でeligible frozen representationを得られませんでした。
+
+入力表現を結果後に選び直すと、上流Studyのclosureを事後的に救済することになります。そのため追加の前提Studyを同世代内で繰り返さず、次の状態で閉じました。
 
 ```text
-Program = Bao Second-Generation Research Program
-Program status = CLOSED / INTEGRATED TO MAIN
-Core agenda = G2-01..G2-12
-Human track = G2-H01 / independent / non-blocking / deferred
-Closure branch = research/g2-final-program-closure
-Baseline main = 9f64aba1aa2364621196c1aeccda02bf74217f20
-Central documentation synchronization = COMPLETE / INTEGRATED TO MAIN
-Final documentation consistency audit = COMPLETE
-Temporary write-capable synchronization/correction workflows = REMOVED
-Temporary maintenance helpers = REMOVED
-Main integration = COMPLETE
+Formal Study ID = NOT ASSIGNED
+Scientific disposition = NON-ESTIMABLE
+Execution disposition = NOT-AUTHORIZED-NOT-EXECUTED
+Scientific outcome generated = false
 ```
 
-## Core agenda status
+これはlong-horizon transition structureが存在しないというnegative resultではありません。
+
+## 人間を対象とする研究
+
+`G2-H01 — Human / Expert Strategic Judgment Study 1`は`DEFERRED / INDEPENDENT / NON-BLOCKING`です。qualified participantへのアクセスがない状態で、machine-only evidenceを人間の判断の代用にはしません。未実施であることはcore programの完了を妨げません。
+
+## 不変の境界
 
 ```text
-G2-01 = CLOSED / INCONCLUSIVE
-G2-02 = CLOSED / INCONCLUSIVE
-G2-03 = CLOSED / INCONCLUSIVE / validated transform set []
-G2-04 = CLOSED / INCONCLUSIVE
-G2-05 = CLOSED / EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
-G2-06 = CLOSED / STAGE1-TECHNICAL-INVALID / Stage 2 not authorized
-G2-07 = CLOSED / STAGE1-TECHNICAL-INVALID / Stage 2 not authorized
-G2-08 = CLOSED / NON-ESTIMABLE
-G2-09 = CLOSED / TECHNICAL-INVALID
-G2-10 = CLOSED / Stage 1 STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION / Study and Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / selectedRepresentation null
-Pre-G2-11 PSRRE-STUDY1 = CLOSED / NON-ESTIMABLE / selectedRepresentation null
-G2-11 = CLOSED AT DEPENDENCY GATE / NON-ESTIMABLE / NOT-AUTHORIZED-NOT-EXECUTED / Study ID not assigned
-G2-12 = CLOSED / TECHNICAL-INVALID / selectedEstimator null
+RAW state identity = authoritative
+validated transform set = []
+G2-11 execution = NOT-AUTHORIZED-NOT-EXECUTED
+whole-Bao state-space estimate = NOT AUTHORIZED
+whole-Bao game-tree estimate = NOT AUTHORIZED
+G2-12 fresh depth 10/11 = not generated / not read
 ```
 
-## Program closure interpretation
+`INCONCLUSIVE`、`NON-ESTIMABLE`、`TECHNICAL-INVALID`をnegative resultへ読み替えず、closed Studyを同じevidenceで再実行・再判定しません。
 
-Research Generation 2はpositive resultの数ではなく、prospective contract、fail-closed gate、no-rescue rule、independent verification、bounded interpretationを保持したまま各agenda questionへ再現可能なdecisionを与えることを完了条件としていた。
+## 読む順序
 
-G2-11はscientific Studyを実行していない。G2-10と独立prerequisite `PSRRE-STUDY1`の双方でG2-11入力用のeligible / frozen strategic-regime representationが得られず、追加prerequisite StudyをこのGeneration内では行わないprogram decisionを採用したため、agenda-level scientific dispositionを`NON-ESTIMABLE`、executionを`NOT-AUTHORIZED-NOT-EXECUTED`として閉じた。したがってlong-horizon transition structureについてpositive / negative / null scientific outcomeを生成したとは解釈しない。
+1. [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md) — 世代全体の結論と解釈境界
+2. [`PROGRAM_FINAL_RESULT.json`](PROGRAM_FINAL_RESULT.json) — machine-readableな最終状態
+3. [`../research-program-decisions/2026-08-31-research-generation-2-program-closure.md`](../research-program-decisions/2026-08-31-research-generation-2-program-closure.md) — program closureの正式記録
+4. [`../research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`](../research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md) — G2-11を実行しなかった判断
+5. [`checkpoints/2026-08-31-main-integration-complete.md`](checkpoints/2026-08-31-main-integration-complete.md) — `main`統合記録
 
-## Remaining non-blocking item
+## 統合状態
 
-`G2-H01 — Human / Expert Strategic Judgment Study 1`はqualified participant accessが確保できるまで保留する。Program開始時からcore machine programのdependencyではなく、human claimをmachine-only evidenceで代替しないため、G2-H01の未実施はResearch Generation 2 core program closureを妨げない。
-
-## Central documentation synchronization
-
-Program closureはclosure branch上で次の中央文書へ同期済みである。
-
-- root `README.md`
-- `doc/RESEARCH_INDEX.md`
-- `doc/FUTURE_RESEARCH_AGENDA.md`
-- `doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`
-
-Initial branch-only synchronization produced commit `ecc0f7288b35d5bf7d4e54a65fc7caa8cbaace9b`。その後、READMEとRESEARCH_INDEXに残ったcurrent-facing G2-11旧状態2箇所をbranch-only correctionで同期し、commit `6d48fe54b49ef7769f23bb9283a79d0f36d31e23`で現在状態と一致させた。
-
-最終文書整合監査では、Agenda Section 9.9のcompletion conditions #3 / #4と`FINAL_SYNTHESIS.md` / program closure decisionの監査項目の番号対応不一致を検出した。科学的結論を変更せず、Section 9.9と同じ11条件へ揃え、`PROGRAM_FINAL_RESULT.json`にも11条件を一対一で明示した。詳細は`checkpoints/2026-08-31-final-document-consistency-audit.md`を参照する。
-
-同期・補正に用いた一時的なwrite-capable workflowおよびmaintenance helperはclosure branchから削除済みである。Authorization JSONはprovenanceとして保持するが、それらをtriggerする一時workflowは存在しない。
-
-## Canonical closure records
-
-- `FINAL_SYNTHESIS.md`
-- `PROGRAM_FINAL_RESULT.json`
-- `checkpoints/2026-08-31-program-closure-central-sync-complete.md`
-- `checkpoints/2026-08-31-final-document-consistency-audit.md`
-- `checkpoints/2026-08-31-main-integration-complete.md`
-- `../research-program-decisions/2026-08-31-g2-11-dependency-blocked-closure.md`
-- `../research-program-decisions/2026-08-31-research-generation-2-program-closure.md`
-
-## Main integration
-
-`main`へのfast-forward integrationは2026-08-31に完了した。Research Generation 2 core programは中央文書・program-level正本・最終整合監査を含めて`main`上に統合済みである。
+`main`へのforceなしfast-forward integrationは2026-08-31に完了しました。closure用の一時的なwrite-capable workflowとmaintenance helperは削除済みで、authorization JSONとcheckpointはprovenanceとして保持しています。

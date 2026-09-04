@@ -1,381 +1,110 @@
-# Research Generation 3
+# Research Generation 3 — 文書案内
 
-Bao第三世代研究programの文書入口です。
+更新日: 2026-09-04
+Program: `Bao Third-Generation Research Program`（正式Program名）
+状態: **`CLOSED / G3-01..G3-12 COMPLETE / INTEGRATED TO MAIN`**
 
-## 現在の状態
+Research Generation 3は、Baoのbounded RAW local game-tree / reachable-graph geometryを中心に検証した純粋研究programです。core `G3-01..G3-12`はすべてformal closureを持ち、`main`への統合も完了しています。
 
-```text
-Program = Bao Third-Generation Research Program
-Status = CLOSED / core agenda G3-01..G3-12 complete / FINAL_SYNTHESIS materialized / MAIN INTEGRATION COMPLETE FAST-FORWARD
-Core agenda = G3-01..G3-12
-Human track = G3-H01 / DEFERRED / independent / non-blocking
-G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
-post-G3-01 prerequisite = LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL / F1..F5
-G3-02 = EBRWS-STUDY1 / CLOSED / TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
-G3-03 = TCTGD-STUDY1 / CLOSED / TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
-G3-04 = SFCDF-STUDY1 / CLOSED / FORMAL-COMPLETE / C1 CONFIRMED MTAJI-GREATER / C6 CONFIRMED NAMUA-GREATER
-G3-05 = BECT-STUDY1 / CLOSED / TECHNICAL-INVALID / promoted [] / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED
-G3-06 = BRMGI-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-06 Stage 0 v1 = TECHNICAL-INVALID / NO RERUN
-G3-06 Stage 0 v2 = STAGE0-PASS
-G3-06 Stage 1 = TECHNICAL-INVALID / 1 authorized / 1 actual / seed 31610001..31610256 CONSUMED
-G3-06 formal promoted candidate set = []
-G3-06 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seed 31620001..31620384 NOT CONSUMED
-G3-06 no-rescue boundary = CROSSED / ACTIVE
-G3-07 program review = G3-07-AUTHORIZED
-G3-07 = SILGM-STUDY1 / CLOSED / FORMAL-COMPLETE
-G3-07 Stage 0 = STAGE0-PASS
-G3-07 Stage 1 = STAGE1-PASS / 1 authorized / 1 actual / seed CONSUMED
-G3-07 Stage 2 = STAGE2-PASS / 1 authorized / 1 actual / seed CONSUMED
-G3-07 formal record = 8 promoted / 7 estimable / 3 CONFIRMED / 4 NOT-CONFIRMED / 1 NON-ESTIMABLE
-G3-07 confirmed family = G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1 depth, SC2 node-budget, SC3 quiescence
-G3-07 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
-G3-08 program review = G3-08-AUTHORIZED
-G3-08 = LGPML-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-08 Stage 0 = STAGE0-PASS
-G3-08 Stage 1 = STAGE1-TECHNICAL-INVALID / 1 authorized / 1 actual / seeds CONSUMED
-G3-08 technical error = relay-limit enumeration 74581ece7d29895d9727bb9cd507046f98a158b51466abdeaa335eb9e60d510e
-G3-08 formal promoted candidate set = []
-G3-08 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED / seeds NOT CONSUMED
-G3-08 no-rescue boundary = CROSSED / ACTIVE
-G3-08 main integration = COMPLETE / FAST-FORWARD / source tip 72bd208267359f461e9dbbde938bb952eb01b91c / force=false
-G3-09 program review = G3-09-AUTHORIZED
-G3-09 = CLGR-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-09 Stage 1 = STAGE1-PASS / exactly one fresh execution / seeds CONSUMED
-G3-09 Stage 2 = TECHNICAL-INVALID / exactly one fresh execution / seeds CONSUMED / 61 of 72 roots completed before fail-closed
-G3-09 formal representation eligibility = NOT ESTABLISHED
-G3-09 main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
-post-G3-09 representation prerequisite chain = RRCLGR-STUDY1 CLOSED TECHNICAL-INVALID / CRCLGR-STUDY1 CLOSED FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION
-G3-10 program review = G3-10-AUTHORIZED
-G3-10 = GCLD-STUDY1 / CLOSED / FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED
-G3-10 Stage 0 = STAGE0-PASS
-G3-10 Stage 1 = STAGE1-PASS / seeds CONSUMED
-G3-10 Stage 2 = FORMAL-COMPLETE / 48 candidates / 47 eligible / 32 measured / seeds CONSUMED
-G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / force=false
-G3-11 program review = G3-11-AUTHORIZED
-G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
-G3-11 Stage 0 = STAGE0-PASS
-G3-11 Stage 1 = FORMAL-COMPLETE / 1 authorized / 1 actual / full independent exact re-enumeration PASS
-G3-11 formal targets = H1 DEEPER-CONFIRMED / H2 DEEPER-CONFIRMED / H3 DEEPER-CONFIRMED / H4 DEEPER-CONFIRMED
-Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAME-EVIDENCE RERUN NOT AUTHORIZED
-Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
-G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
-<!-- LGTGGC-G3-12-RG3-STATUS:BEGIN -->
-G3-12 program review = G3-12-AUTHORIZED
-G3-12 = LGTGGC-STUDY1 / CLOSED / TECHNICAL-INVALID
-G3-12 Stage 0 active = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
-G3-12 Stage 1 = LGTGGC-S1-DEVELOPMENT-2026-09-04-v1 / 1 authorized / 1 actual / TECHNICAL-INVALID
-G3-12 SFCDF development = STAGE1-PASS / 40 pairs / 80 roots / production-independent exact
-G3-12 SILGM development = STAGE1-TECHNICAL-INVALID / complete root ranking required
-G3-12 GCLD development = NOT EXECUTED / seeds unread
-G3-12 Stage 2 = LGTGGC-STAGE2-NOT-AUTHORIZED / NOT EXECUTED / all Stage 2 seeds unread
-G3-12 formal generalization-counterexample decisions = NONE
-G3-12 main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
-<!-- LGTGGC-G3-12-RG3-STATUS:END -->
-```
+この世代は公開AIの改善programではありません。Research Generation 3の番号と`AI-GEN3`には対応関係がなく、研究結果だけで公開AIの変更を承認することもありません。
 
 ## 最初に読む
 
-<!-- RG3-FINAL-CLOSURE-READ-FIRST:BEGIN -->
-- [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md) — Research Generation 3 generation-level scientific synthesis / completion-condition record
-- [`PROGRAM_FINAL_RESULT.json`](PROGRAM_FINAL_RESULT.json) — machine-readable program final state
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing closure state / main integration boundary
-- [`../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](../research-program-decisions/2026-09-04-research-generation-3-program-closure.md) — formal program closure decision
-- [`../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md) — post-G3-12 closure authorization review
-- [`checkpoints/2026-09-04-program-closure-central-sync-complete.md`](checkpoints/2026-09-04-program-closure-central-sync-complete.md) — generation-level central documentation synchronization record
-- [`checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md`](checkpoints/2026-09-04-research-generation-3-final-polish-consistency-pass.md) — final pre-main repository/document consistency audit after documentation polish
-- [`checkpoints/2026-09-04-research-generation-3-main-integration-complete.md`](checkpoints/2026-09-04-research-generation-3-main-integration-complete.md) — generation-level closure main fast-forward integration / post-integration bookkeeping record
-<!-- RG3-FINAL-CLOSURE-READ-FIRST:END -->
+1. [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md) — 世代全体で分かったこと、分からなかったこと
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態と保護された証拠
+3. [`PROGRAM_FINAL_RESULT.json`](PROGRAM_FINAL_RESULT.json) — machine-readableな最終状態
+4. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — 開始前に固定したhistorical prospective plan。現在状態に合わせて書き換えません
+5. [`../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](../research-program-decisions/2026-09-04-research-generation-3-program-closure.md) — program closureの正式記録
 
-<!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->
-- [`../local-game-tree-geometry-generalization-counterexample/README.md`](../local-game-tree-geometry-generalization-counterexample/README.md) — G3-12 technical-invalid capstone closure入口
-- [`../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md) — G3-12 final decision / scientific interpretation boundary正本
-- [`../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`](../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md) — Stage 0/1 Actions / artifacts / source-binding provenance
-- [`../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md) — Stage 2 NOT-AUTHORIZED / Study technical-invalid closure decision
-<!-- LGTGGC-G3-12-RG3-READ-FIRST:END -->
+## 世代全体の結論
 
-- [`../fresh-depth10-exact-geometry-holdout/README.md`](../fresh-depth10-exact-geometry-holdout/README.md) — G3-11 formal-complete Study入口
-- [`../fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md`](../fresh-depth10-exact-geometry-holdout/STUDY_1_FINAL_REPORT.md) — G3-11 exact depth-10 result / interpretation boundary正本
-- [`../fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md`](../fresh-depth10-exact-geometry-holdout/REPRODUCIBILITY_INDEX.md) — G3-11 source binding / Actions / exact artifact provenance
-- [`../research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md`](../research-program-decisions/2026-09-04-g3-11-formal-complete-closure.md) — G3-11 formal closure decision
-- [`checkpoints/2026-09-04-g3-11-formal-complete-closure.md`](checkpoints/2026-09-04-g3-11-formal-complete-closure.md) — G3-11 RG3 closure checkpoint
-<!-- GCLD-G3-10-READ-FIRST -->
-- [`../geometry-conditioned-longitudinal-dynamics/README.md`](../geometry-conditioned-longitudinal-dynamics/README.md) — G3-10 formal-complete Study入口
-- [`../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md`](../geometry-conditioned-longitudinal-dynamics/STUDY_1_FINAL_REPORT.md) — G3-10 formal results / interpretation boundary正本
-- [`../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md`](../geometry-conditioned-longitudinal-dynamics/REPRODUCIBILITY_INDEX.md) — G3-10 exact artifacts / execution provenance
-- [`../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md`](../research-program-decisions/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 formal closure decision
-- [`checkpoints/2026-09-04-g3-10-formal-complete-closure.md`](checkpoints/2026-09-04-g3-10-formal-complete-closure.md) — G3-10 RG3 closure checkpoint
-<!-- G3-10-PREREQUISITE-CHAIN-READ-FIRST -->
-- [`../canonical-resource-robust-continuous-local-geometry-representation/README.md`](../canonical-resource-robust-continuous-local-geometry-representation/README.md) — G3-10入力representationをformal eligibleとしたCRCLGR入口
-- [`../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../canonical-resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — CRCLGR formal eligibilityとbounded claim boundary
-- [`../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md`](../research-program-decisions/2026-09-03-post-crclgr-g3-10-authorization-review.md) — separate reviewによる`G3-10-AUTHORIZED` decision
-- [`../resource-robust-continuous-local-geometry-representation/README.md`](../resource-robust-continuous-local-geometry-representation/README.md) — predecessor RRCLGR technical-invalid closure入口
-- [`../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../resource-robust-continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — RRCLGR closure-time no-rescue / successor boundary正本
-<!-- CLGR-G3-09-READ-FIRST -->
-- [`../continuous-local-geometry-representation/README.md`](../continuous-local-geometry-representation/README.md) — G3-09 technical-invalid closure入口 / current Study summary
-- [`../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md) — G3-09 scientific closure / interpretation boundary正本
-- [`../continuous-local-geometry-representation/REPRODUCIBILITY_INDEX.md`](../continuous-local-geometry-representation/REPRODUCIBILITY_INDEX.md) — G3-09 exact artifacts / source binding / final audit provenance
-- [`../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md) — G3-09 program closure / G3-10 not auto-authorized
-- [`../continuous-local-geometry-representation/checkpoints/2026-09-03-final-repository-document-consistency-pass.md`](../continuous-local-geometry-representation/checkpoints/2026-09-03-final-repository-document-consistency-pass.md) — G3-09 final repository/document consistency audit PASS
-- [`../local-geometry-persistence-memory-length/README.md`](../local-geometry-persistence-memory-length/README.md) — G3-08 technical-invalid closure入口
-- [`../local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md`](../local-geometry-persistence-memory-length/STUDY_1_FINAL_REPORT.md) — G3-08 scientific/technical closure正本
-<!-- SILGM-G3-07-CLOSURE:RG3-READ-FIRST -->
-- [`../search-instability-local-geometry-mechanism/README.md`](../search-instability-local-geometry-mechanism/README.md) — G3-07 formal-complete Study入口
-- [`../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md`](../search-instability-local-geometry-mechanism/STUDY_1_FINAL_REPORT.md) — G3-07 formal result / interpretation boundary正本
-- [`../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md`](../search-instability-local-geometry-mechanism/REPRODUCIBILITY_INDEX.md) — G3-07 reproducibility provenance
-- [`../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md`](../research-program-decisions/2026-09-03-g3-07-formal-complete-closure.md) — G3-07 program closure / G3-08 not auto-authorized
-- [`checkpoints/2026-09-03-g3-07-main-integration-complete.md`](checkpoints/2026-09-03-g3-07-main-integration-complete.md) — G3-07 research branchのmain fast-forward統合完了checkpoint
-- [`../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md`](../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md) — G3-06初見向けclosure概要
-- [`../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md`](../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md) — G3-06 scientific/technical closure正本
-- [`../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md) — G3-06 program-level closure / G3-07 not auto-authorized
-- [`../branch-expansion-compression-transition/STUDY_1_OVERVIEW.md`](../branch-expansion-compression-transition/STUDY_1_OVERVIEW.md) — G3-05 prospective scope and frozen boundary
-- [`../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`](../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md) — G3-05 technical-invalid closure and no-rescue boundary
-- [`../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md) — G3-05 program closure時点のhistorical boundary（当時G3-06 not authorized）
-- [`../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md) — G3-04初見向けformal overview
-- [`../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`](../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md) — completed G3-04 formal result and interpretation boundary
-- [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Research Generation 3開始前に固定したhistorical prospective plan。current stateに合わせて書き換えない
-- [`../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`](../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md) — G3-03開始前のpost-G3-02 program authorization decision
-- [`../effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md`](../effective-branching-reply-width-structure/STUDY_1_OVERVIEW.md) — G3-02の初見向けclosure概要
-- [`../effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`](../effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md) — G3-02 scientific/technical closure正本
-- [`../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md) — G3-02 program-level closure decision
-- [`../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-measurement-instrument-verification/STUDY_1_FINAL_REPORT.md) — completed LGTGMIV prerequisite
-- [`../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-measurement-foundation/STUDY_1_FINAL_REPORT.md) — immutable G3-01 closure
+第三世代でformalに強く残った結果は、次の5点です。
 
-## Immutable upstream boundary
+1. RAW-only・relative depth 5で、F1〜F5のlocal geometry measurementを再構築できる測定器が成立した。
+2. G3-04の限定populationで、Mtaji側のunit-width occupancyとNamua側のcumulative tree / RAW ratioの差が確認された。
+3. G3-07の限定populationで、root legal widthの高いstratumとranking-preorder changeの関連が3種類のsearch perturbationで確認された。
+4. G3-10で、resource-bounded continuous representation上のdirectionality、persistence gradient、低return、first-order path dependenceの一部が確認された。
+5. G3-11で、standard initial RAW rootのdepth 10におけるexact continuationが確認された。
 
-G3-01 `LGTGMF-STUDY1` remains:
+これらはwhole-Bao law、causal mechanism、game-theoretic value、人間の難しさを示しません。またG3-12が`TECHNICAL-INVALID`で閉じたため、formalなgeneralization / counterexample decisionはありません。
+
+## Study一覧
+
+| Agenda / Study | 最終状態 | 文書入口 |
+| --- | --- | --- |
+| `G3-01` / `LGTGMF-STUDY1` | `TECHNICAL-INVALID` | [`../local-game-tree-geometry-measurement-foundation/README.md`](../local-game-tree-geometry-measurement-foundation/README.md) |
+| 前提Study / `LGTGMIV-STUDY1` | `FORMAL-ELIGIBLE-ALL` | [`../local-game-tree-geometry-measurement-instrument-verification/README.md`](../local-game-tree-geometry-measurement-instrument-verification/README.md) |
+| `G3-02` / `EBRWS-STUDY1` | `TECHNICAL-INVALID` | [`../effective-branching-reply-width-structure/README.md`](../effective-branching-reply-width-structure/README.md) |
+| `G3-03` / `TCTGD-STUDY1` | `TECHNICAL-INVALID` | [`../transposition-concentration-tree-graph-divergence/README.md`](../transposition-concentration-tree-graph-divergence/README.md) |
+| `G3-04` / `SFCDF-STUDY1` | `FORMAL-COMPLETE` | [`../structural-forcing-corridor-decision-funnel/README.md`](../structural-forcing-corridor-decision-funnel/README.md) |
+| `G3-05` / `BECT-STUDY1` | `TECHNICAL-INVALID` | [`../branch-expansion-compression-transition/README.md`](../branch-expansion-compression-transition/README.md) |
+| `G3-06` / `BRMGI-STUDY1` | `TECHNICAL-INVALID` | [`../bao-rule-mechanism-geometry-intervention/README.md`](../bao-rule-mechanism-geometry-intervention/README.md) |
+| `G3-07` / `SILGM-STUDY1` | `FORMAL-COMPLETE` | [`../search-instability-local-geometry-mechanism/README.md`](../search-instability-local-geometry-mechanism/README.md) |
+| `G3-08` / `LGPML-STUDY1` | `TECHNICAL-INVALID` | [`../local-geometry-persistence-memory-length/README.md`](../local-geometry-persistence-memory-length/README.md) |
+| `G3-09` / `CLGR-STUDY1` | `TECHNICAL-INVALID` | [`../continuous-local-geometry-representation/README.md`](../continuous-local-geometry-representation/README.md) |
+| 前提Study / `RRCLGR-STUDY1` | `TECHNICAL-INVALID` | [`../resource-robust-continuous-local-geometry-representation/README.md`](../resource-robust-continuous-local-geometry-representation/README.md) |
+| 前提Study / `CRCLGR-STUDY1` | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | [`../canonical-resource-robust-continuous-local-geometry-representation/README.md`](../canonical-resource-robust-continuous-local-geometry-representation/README.md) |
+| `G3-10` / `GCLD-STUDY1` | `FORMAL-COMPLETE` | [`../geometry-conditioned-longitudinal-dynamics/README.md`](../geometry-conditioned-longitudinal-dynamics/README.md) |
+| `G3-11` / `FDEGHV-STUDY1` | `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` | [`../fresh-depth10-exact-geometry-holdout/README.md`](../fresh-depth10-exact-geometry-holdout/README.md) |
+| `G3-12` / `LGTGGC-STUDY1` | `TECHNICAL-INVALID` | [`../local-game-tree-geometry-generalization-counterexample/README.md`](../local-game-tree-geometry-generalization-counterexample/README.md) |
+
+## Formal-complete Studyの要約
+
+### G3-04 — Corridorとfunnel
+
+`SFCDF-STUDY1`では、frozen paired population・RAW-only relative depth 5の範囲で次を確認しました。
 
 ```text
-CLOSED / TECHNICAL-INVALID
-formal eligible measurement families = []
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
+C1 unit-width occupancy = CONFIRMED / MTAJI-GREATER
+C6 cumulative tree/RAW ratio = CONFIRMED / NAMUA-GREATER
 ```
 
-このformal decisionは変更しない。
+これはgame-theoretic forcing、best-move clarity、戦略的単純さを意味しません。
 
-G3-01後の別Study `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`であり、RAW-only / relative depth 5の次の5 familiesだけがformal eligibleである。
+### G3-07 — Local widthとsearch-output change
 
-1. `LGTGMIV-F1-TREE-OCCURRENCE`
-2. `LGTGMIV-F2-RAW-GRAPH`
-3. `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
-4. `LGTGMIV-F4-TREE-GRAPH-RELATION`
-5. `LGTGMIV-F5-REPLY-GEOMETRY`
+8 candidateのうち7件がestimableで、3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE`でした。確認された3件は、root legal widthの高いstratumでranking-preorder changeがより集中するというnon-causal associationです。
 
-## G3-02 closure
-
-G3-02は`EBRWS-STUDY1`として、post-LGTGMIV authorization reviewを`AUTHORIZED`で通過し、scientific outcome前にRAW-only、depth 5、fresh population、seed、derived endpoint、2/3 gate、resource ceiling、independent verification、no-rescue ruleをfreezeして開始した。
-
-Stage 0はsynthetic fixturesだけで`STAGE0-PASS`。
-
-Stage 1はfresh `31210001..31210192`、12 Namua + 12 Mtajiについて**exactly one scientific execution**をprospectively authorizationし、authorized run `33569323221`を実行した。runner内部ではglobal gate PASSとproduction / independent exact stage-core agreementを得たが、生成済みcanonical Stage 1 filesのrepository pushがnon-fast-forwardで失敗し、ephemeral runner終了後にfull canonical artifactを回収できなかった。後のActions-history auditで判明した2回目の実行は、このauthorizationに含まれない`INVALID-DO-NOT-USE`である。
-
-fresh evidence生成後のsame-evidence rerunは許可されないため、runner-local positive summaryをformal resultへ救済せず、fail-closedで:
-
-`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`
-
-とした。
-
-Runner logに残った`REPLY-WIDTH-SHAPE / COMPRESSION-DOMINANT` Namua 12/12、Mtaji 9/12はdiagnostic provenanceのみであり、formal promoted candidate setは`[]`である。
-
-Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。Stage 2 seedは未消費。
-
-## Post-G3-02 G3-03 authorization review
-
-2026-09-02、G3-02 closure後に要求されていたseparate current-state program reviewをread-onlyで実施し、formal decisionを:
-
-**`G3-03-AUTHORIZED`**
-
-として固定した。
-
-G3-03はG3-02のpositive branching/reply-width resultを必要とせず、LGTGMIVのformal eligible familiesのうち主としてF2/F3/F4だけで独立に構成できる。追加のrepresentation / measurement-instrument / canonicalization / graph-identity prerequisiteは不要であり、separate resource-feasibility prerequisiteも不要と判断した。G3-03は引き続きRAW-only、relative depth 5、validated transform set `[]`の境界に拘束される。
-
-このauthorizationは**Study-definition / preregistration freezeのみ**を許可する。G3-03 fresh scientific evidenceの生成・readはまだauthorizeされていない。新しいresearch branchをその時点のcurrent remote `main`から作成し、Study ID、Stage IDs、fresh seed/population、measurement binding、firewall、resource ceilings、independent verification、execution-integrity contract、decision rule、no-rescue ruleをoutcome前に固定する必要がある。
-
-G3-02のStage 1 seed、reserved Stage 2 seed、selected roots、runner-local candidate summaries、unintended duplicate execution、failed canonical artifactはG3-03 formal evidenceへ再利用しない。
-
-
-## G3-03 closure
-
-G3-03は`TCTGD-STUDY1`としてprospectively freezeし、Stage 0 PASS後にfresh Stage 1をexactly one authorized executionで実施した。12 paired trajectories / 24 rootsを測定し、population/resource/source identity/static independence/pair/development agreementとcanonical production/independent stage SHA一致を得た。
-
-しかしindependent endpoint mapが`Object.create(null)`、productionが通常objectで、frozen runnerの`util.isDeepStrictEqual`がprototype差をscientific object inequalityとして扱ったため`allRootExact=false` / `stageScientificExact=false`となった。fresh evidence後に同一seedを修正再実行することはno-rescue ruleに反するため、formal decisionは`CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`である。
-
-Canonical records:
-
-- [`../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`](../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md)
-- [`../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md`](../transposition-concentration-tree-graph-divergence/CURRENT_STATUS.md)
-- [`../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md`](../transposition-concentration-tree-graph-divergence/DECISION_REGISTER.md)
-- [`../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md`](../transposition-concentration-tree-graph-divergence/REPRODUCIBILITY_INDEX.md)
-- [`../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md`](../research-program-decisions/2026-09-02-g3-03-technical-invalid-closure.md)
-
-## G3-04 formal closure
-
-G3-04は`SFCDF-STUDY1`としてprospectively freezeし、Stage 0 `STAGE0-PASS`、Stage 1 `STAGE1-PASS`、Stage 2 `STAGE2-PASS`まで完了した。
-
-Stage 1 fresh `31410001..31410192`では12 paired trajectoriesをexactly one authorized executionで測定し、C1 unit-width occupancyを`MTAJI-GREATER`、C6 cumulative tree/RAW ratioを`NAMUA-GREATER`としてpromotionした。C2–C5はpromotionされずStage 2へ進めていない。
-
-Stage 2ではStage 1 RAW-root 24、trajectory 24、first-16-prefix 12 identitiesをadditional firewallとしてmaterializeし、fresh `31420001..31420288`から18 paired trajectories / 36 rootsをexactly one authorized formal executionで測定した。
-
-Formal candidate decisions:
-
-- C1 `SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION` = **`CONFIRMED / MTAJI-GREATER`**。18/18同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
-- C6 `SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO` = **`CONFIRMED / NAMUA-GREATER`**。18/18同方向、exact two-sided sign-test `p=1/131072`、Holm PASS。
-
-Production / independent formal Stage scientific coreは`e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039`でexact一致した。Stage 2 durable artifactはID `9844368476`、ZIP SHA-256 `c4d10eb07eec6ed75510f344f5c06d13deabeb03210023cd541035f05bd5da0f`。
-
-Study lifecycleは`CLOSED / FORMAL-COMPLETE`。このlifecycle tokenは新しいscientific omnibus labelではなく、formal inferenceはcandidate-levelの`CONFIRMED` / `NOT-CONFIRMED`に限定する。
-
-C1/C6からgame-theoretic forcing、best-move clarity、search ease、strategic simplicity、human difficulty、value/win probability、causal phase effect、depth >5 generalizationを導かない。
-
-Canonical records:
-
-- `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
-- `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
-- `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
-- `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
-- `../structural-forcing-corridor-decision-funnel/checkpoints/2026-09-02-stage-2-formal-pass-study-closure.md`
-
-## G3-05 formal closure
-
-G3-05は`BECT-STUDY1`としてprospectively freezeし、Stage 0 v2を`STAGE0-PASS`として完了した。その後fresh Stage 1をexactly one authorized executionで開始したが、bounded RAW enumeration中の`relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`によりfail-closedした。
-
-Formal closureは`CLOSED / TECHNICAL-INVALID`。Stage 1 seed `31510001..31510240`はconsume済み、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`。partial telemetryはdiagnostic-onlyで、branch expansion/compression transitionのpositive/negative scientific evidenceへ格上げしない。same-evidence rerunやrelay-limit repair-and-rescueは禁止する。
-
-Durable artifact `9849245665`はexact-byte mirror run `33637372364`でscientific recomputationなしにrepositoryへ保存された。
-
-Canonical records:
-
-- `../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`
-- `../branch-expansion-compression-transition/CURRENT_STATUS.md`
-- `../branch-expansion-compression-transition/DECISION_REGISTER.md`
-- `../branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md`
-- `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
-- `checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
-
-## G3-06 formal closure
-
-G3-06は`BRMGI-STUDY1`として、capture、nyumba stop/use、reserve exhaustion / Namua→Mtaji linked eventに伴うbounded RAW local geometry changeを、LGTGMIV F1-F5 / RAW-only / relative depth 5だけでprospectively検証した。
-
-Stage 0 v1は34-seed synthetic nyumba fixtureが64-seed RAW invariantを満たさず`TECHNICAL-INVALID / NO RERUN`。fresh scientific evidence 0の状態でtechnical fixtureだけを修正した別version v2をrefreezeし、v2は全technical gateを通過して`STAGE0-PASS`となった。
-
-Fresh Stage 1はseed `31610001..31610256`をexactly one authorized executionで開始したが、geometry measurement前のproduction / independent event-unit selection agreement gateで`production/independent selection mismatch`となりfail-closedした。Stage 1 seedはconsume済み、no-rescue boundaryはactive、formal promoted candidate setは`[]`。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`でseed `31620001..31620384`は未消費。
-
-Formal closureは **`BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID`**。これはcapture / nyumba / reserve / Namua→Mtajiとgeometryのpositive・negative・null scientific resultではない。selector修正後のsame-evidence rerun、seed extension、event/control/endpoint redesignによる救済は行わない。
-
-Canonical records:
-
-- `../bao-rule-mechanism-geometry-intervention/STUDY_1_OVERVIEW.md`
-- `../bao-rule-mechanism-geometry-intervention/STUDY_1_FINAL_REPORT.md`
-- `../bao-rule-mechanism-geometry-intervention/CURRENT_STATUS.md`
-- `../bao-rule-mechanism-geometry-intervention/DECISION_REGISTER.md`
-- `../bao-rule-mechanism-geometry-intervention/REPRODUCIBILITY_INDEX.md`
-- `../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`
-- `checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`
-
-## Protected evidence
-
-standard initial RAW root complete exact depth-10 holdout remains:
-
-`SEALED / NOT GENERATED / NOT READ`
-
-G3-02 / G3-03 / G3-04 / G3-05 / G3-06はいずれもこれを生成・readしていない。G3-06 closure後も封印を維持する。
-
-## Interpretation boundary
-
-branching / reply-width geometryをbest move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。G3-02のdiagnostic patternをBao一般のformal structure claimへ昇格させない。
-
-G3-03のtechnical-invalid runに残るdiagnostic transposition/reconvergenceやtree/graph divergence方向を、strategic simplicity、tactical simplicity、search ease、best-move clarity、game-theoretic forcing、value、win probability、human difficulty、causal strategic effectへ読み替えない。G3-04のformal C1/C6も同様に、frozen bounded phase-difference claimを超えて解釈しない。
-
-## Next program boundary
-
-G3-06 / `BRMGI-STUDY1`は`CLOSED / TECHNICAL-INVALID`であり、formal promoted candidate setは`[]`、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
-
-Historical program plan上の次候補はG3-07だが、**G3-07はまだauthorizeされていない**。次はseparate post-G3-06 current-state authorization reviewを行う。review前にG3-07 fresh evidenceを生成・readせず、G3-06 technical-invalid selection mismatchやpartial provenanceをpositive/negative scientific prerequisiteとして継承しない。
-
-## Canonical records
-
-- `../transposition-concentration-tree-graph-divergence/README.md`
-- `../transposition-concentration-tree-graph-divergence/STUDY_1_OVERVIEW.md`
-- `../transposition-concentration-tree-graph-divergence/STUDY_1_FINAL_REPORT.md`
-- `../structural-forcing-corridor-decision-funnel/STUDY_1_OVERVIEW.md`
-- `../structural-forcing-corridor-decision-funnel/STUDY_1_FINAL_REPORT.md`
-- `../structural-forcing-corridor-decision-funnel/CURRENT_STATUS.md`
-- `../structural-forcing-corridor-decision-funnel/DECISION_REGISTER.md`
-- `../structural-forcing-corridor-decision-funnel/REPRODUCIBILITY_INDEX.md`
-- `../research-program-decisions/2026-09-02-post-g3-03-g3-04-authorization-review.md`
-- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`
-- `checkpoints/2026-09-02-g3-04-formal-complete-closure.md`
-- `../branch-expansion-compression-transition/STUDY_1_OVERVIEW.md`
-- `../branch-expansion-compression-transition/STUDY_1_FINAL_REPORT.md`
-- `../branch-expansion-compression-transition/CURRENT_STATUS.md`
-- `../branch-expansion-compression-transition/DECISION_REGISTER.md`
-- `../branch-expansion-compression-transition/REPRODUCIBILITY_INDEX.md`
-- `../research-program-decisions/2026-09-02-g3-05-technical-invalid-closure.md`
-- `checkpoints/2026-09-02-g3-05-technical-invalid-closure.md`
-- `CURRENT_STATUS.md`
-- `PROGRAM_PLAN.md` — immutable historical prospective plan
-- `../research-program-decisions/2026-09-02-post-g3-02-g3-03-authorization-review.md`
-- `checkpoints/2026-09-02-g3-03-authorization-review-authorized.md`
-- `../effective-branching-reply-width-structure/STUDY_1_FINAL_REPORT.md`
-- `../effective-branching-reply-width-structure/CURRENT_STATUS.md`
-- `../effective-branching-reply-width-structure/DECISION_REGISTER.md`
-- `../effective-branching-reply-width-structure/REPRODUCIBILITY_INDEX.md`
-- `../effective-branching-reply-width-structure/results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json`
-- `../research-program-decisions/2026-09-02-g3-02-technical-invalid-closure.md`
-
-Historical `PROGRAM_PLAN.md` remains unchanged.
-
-## G3-02 main integration
-
-2026-09-02、completed G3-02 branch `research/g3-02-effective-branching-reply-width-structure`をPR #92の通常mergeで`main`へ統合した。merge commitは`b41c7eda74dd1002e98e4d82714fadb987d1f1e1`。このrepository integrationは`EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`、protected depth-10 holdout sealedというscientific stateを変更しない。
-
-<!-- SILGM-G3-07-CLOSURE:RG3-README -->
-## G3-07 formal closure
-
-G3-07は`SILGM-STUDY1`として、Stage 0 `STAGE0-PASS`、fresh Stage 1 `STAGE1-PASS`、held-out Stage 2 `STAGE2-PASS`まで完了し、`CLOSED / FORMAL-COMPLETE`で閉じた。
-
-Stage 1は24 Namua + 24 Mtajiから8 formal hypothesesをpromotionした。Stage 2はfresh 36 Namua + 36 Mtajiでexactly one authorized executionを行い、7 estimable / 1 non-estimableとなった。Holm-Bonferroni FWER 1/20後、次の3 candidateが`CONFIRMED / HIGHER-IN-HIGH`となった。
-
-1. depth × E3 ranking-preorder change × G1 root legal width
-2. node-budget × E3 ranking-preorder change × G1 root legal width
-3. quiescence × E3 ranking-preorder change × G1 root legal width
-
-これはfrozen population / RAW-only relative depth 5 / frozen peer-search contrasts内のbounded non-causal associationである。root widthがsearch instabilityを因果的に生む、より深い/大きい/高quiescence searchが正しい、ranking changeが悪手を意味する、human/game-theoretic difficultyを示す、とは解釈しない。
-
-残るpromoted hypothesesは4 `NOT-CONFIRMED` / 1 `NON-ESTIMABLE`。救済・threshold変更・seed extension・same-evidence rerunは行わない。
-
-Protected standard-initial RAW-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のままである。
-
-## Post-G3-07 boundary
-
-Historical plan上の次候補G3-08 — Local Geometry Persistence / Memory-Length Study 1 は**自動authorizeされない**。G3-08を開始する場合は、G3-07 closure後のcurrent repository stateを用いたseparate authorization reviewが必要である。
-
-G3-07 research branchのmain integrationもStudy closureではauthorizeされない。ユーザーの明示的指示があるまで`main`へ統合しない。
-
-<!-- LGPML-G3-08-CLOSURE:RG3-README -->
-## G3-08 technical-invalid closure
-
-G3-08は`LGPML-STUDY1`としてprospectively freezeされ、LGTGMIV F1-F5 / RAW-only / relative depth 5のboundaryでtrajectory上のgeometry change-sign persistenceを検証する設計だった。
-
-Stage 0は`STAGE0-PASS`。fresh Stage 1はexactly one authorized executionで開始したが、10 trajectoryのcomplete frozen development populationを完遂する前にrequired bounded RAW reconstructionで`relay-limit enumeration`へ到達した。そのためcanonical Stage 1 dispositionは`STAGE1-TECHNICAL-INVALID`、formal promoted candidate setは`[]`である。
-
-このclosureはgeometry persistenceのnegative/null scientific findingではない。9 complete trajectory logsを含むpartial outputはtechnical provenanceのみであり、candidate promotion、phase-specific persistence、bounded memory-lengthのscientific claimへ使用しない。
+### G3-10 — 時系列に沿ったgeometry dynamics
 
 ```text
-G3-08 / LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID
-Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
-Stage 1 seed = CONSUMED
-Stage 2 seed = NOT CONSUMED
-same-evidence rescue = PROHIBITED
-protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-main integration = NOT PERFORMED
+C1 = CONFIRMED / ACTUAL-GREATER
+C2 = CONFIRMED / ACTUAL-GREATER
+C3 = CONFIRMED / ACTUAL-LESS
+C4 = NOT-CONFIRMED
+C5 = CONFIRMED / ACTUAL-GREATER
 ```
 
-## Post-G3-08 boundary
+これはcausal dynamics、physical hysteresis、strategic regimeを確立しません。
 
-Historical plan上の次候補G3-09 — Continuous Local-Geometry Representation Study 1 は**自動authorizeされない**。開始する場合はG3-08 closure後のcurrent repository stateを用いたseparate authorization reviewが必要である。
+### G3-11 — Depth 10のexact holdout
 
-<!-- CLGR-G3-09-CLOSURE:RG3-README -->
-## G3-09 technical-invalid closure
+```text
+depth-10 unique RAW states = 348270
+depth-10 tree-node occurrences = 494456
+cumulative distinct RAW states through depth 10 = 451127
+cumulative tree-node occurrences through depth 10 = 631101
+H1..H4 = DEEPER-CONFIRMED
+```
 
-G3-09 `CLGR-STUDY1`は`CLOSED / TECHNICAL-INVALID`。Stage 1 developmentは48/48 rootsでPASSしたが、Stage 2 formal holdoutは72 roots選定後、61 roots完了時点のMtaji seed `31920066`で`relay-limit`によりfail-closedしたためformal representation eligibilityは確立していない。正本は[`../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md`](../continuous-local-geometry-representation/STUDY_1_FINAL_REPORT.md)、program decisionは[`../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-09-technical-invalid-closure.md)。G3-10は別のcurrent-state authorization reviewまで`NOT AUTHORIZED`。
+exact claimはstandard initial RAW rootのfrozen depth-10 domainに限られます。
+
+## 保護された証拠
+
+```text
+G3-11 depth 10 = OPENED / CONSUMED EXACTLY ONCE
+same-evidence rerun = NOT AUTHORIZED
+depth 11 = NOT AUTHORIZED / NOT ACCESSED
+G3-12 Stage 1 repair / replay = NOT AUTHORIZED
+G3-12 Stage 2 = NOT AUTHORIZED / NOT EXECUTED / seeds UNREAD
+```
+
+Program closureは新しい科学実行の承認ではありません。後続研究は、closed Studyのrepairではなく、新しいprospective StudyまたはResearch Generationとして別途承認する必要があります。
+
+## 人間を対象とする研究
+
+`G3-H01 — Human Perception of Local Branching / Decision Pressure Study 1`は`DEFERRED / INDEPENDENT / NON-BLOCKING`です。qualified participantへのアクセスがないため、人間に関する科学的結果は生成していません。`N=0`はnegative human evidenceではありません。
+
+## 統合記録
+
+Generation-level closureの`main`統合はforceなしfast-forwardで完了しました。詳細な時系列やcommit identityは、[`checkpoints/2026-09-04-research-generation-3-main-integration-complete.md`](checkpoints/2026-09-04-research-generation-3-main-integration-complete.md)と各StudyのReproducibility Indexを参照してください。
