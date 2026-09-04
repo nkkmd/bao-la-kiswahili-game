@@ -1,0 +1,152 @@
+from pathlib import Path
+import re
+
+TARGETS = {
+    'README.md',
+    'doc/RESEARCH_INDEX.md',
+    'doc/FUTURE_RESEARCH_AGENDA.md',
+    'doc/research-generation-3/README.md',
+    'doc/research-generation-3/CURRENT_STATUS.md',
+}
+
+
+def read(path):
+    return Path(path).read_text(encoding='utf-8')
+
+
+def write(path, text):
+    Path(path).write_text(text, encoding='utf-8')
+
+
+def upsert_before(text, begin, end, anchor, block):
+    if begin in text:
+        a = text.index(begin)
+        b = text.index(end, a) + len(end)
+        text = text[:a] + text[b:]
+    if anchor not in text:
+        raise RuntimeError(f'missing anchor: {anchor}')
+    return text.replace(anchor, block + '\n\n' + anchor, 1)
+
+
+def replace_line(text, prefix, new):
+    pattern = re.compile(r'^' + re.escape(prefix) + r'.*$', re.M)
+    if not pattern.search(text):
+        raise RuntimeError(f'missing line prefix: {prefix}')
+    return pattern.sub(new, text, count=1)
+
+
+root = 'README.md'
+t = read(root)
+root_block = '''<!-- LGTGGC-G3-12-ROOT-README:BEGIN -->
+- [`doc/local-game-tree-geometry-generalization-counterexample/README.md`](doc/local-game-tree-geometry-generalization-counterexample/README.md): Research Generation 3 capstone `G3-12` / `LGTGGC-STUDY1`。Stage 0 v3は`STAGE0-PASS`、Stage 1はexactly once実行されSFCDF developmentはPASSしたが、SILGM developmentが`complete root ranking required`で`STAGE1-TECHNICAL-INVALID`となりfail-closed。GCLD developmentは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`で全formal seedが未読。Study final decisionは`CLOSED / TECHNICAL-INVALID`で、generalization / counterexampleのformal endpoint-domain decisionは成立していない。same-evidence repair/rerun、module drop、seed extension、depth-10 rerun、depth-11 accessは行わない。research branchでclosure済み、`main` integrationは明示的指示待ち。
+<!-- LGTGGC-G3-12-ROOT-README:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-ROOT-README:BEGIN -->', '<!-- LGTGGC-G3-12-ROOT-README:END -->', '<!-- FDEGHV-G3-11-ROOT-README -->', root_block)
+write(root, t)
+
+idx = 'doc/RESEARCH_INDEX.md'
+t = read(idx)
+idx_block = '''<!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->
+### Research Generation 3 current highlight — G3-12 / LGTGGC-STUDY1
+
+**状態:** `CLOSED / TECHNICAL-INVALID` — Stage 2 `NOT-AUTHORIZED / NOT-EXECUTED`、formal generalization / counterexample decisionなし
+
+G3-12はG3-04、G3-07、G3-10の9 formal-eligible bounded geometry claimsについて、fresh source-policy / reachable-root-family transferでgeneralization / counterexample boundaryを検証するcapstone Studyとしてprospectively開始した。Pre-fresh amendment後のsource policiesは`UNIFORM-LEGAL / MAX-CAPTURE`。Stage 0 v3はtechnical readinessをPASSし、Stage 1 SFCDF transferは40 pairs / 80 rootsでdevelopment PASS、production / independent exact。だが同じexactly-once Stage 1 execution中、SILGM transferがfrozen LOW populationと継承search helperのroot-ranking前提のcompatibility gapにより`STAGE1-TECHNICAL-INVALID`でfail-closedした。GCLD transferは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。これはupstream claimsのnegative resultではなく、G3-12はformal held-out inferenceへ到達していない。Stage 2 seed、G3-11 depth-10 rerun、depth 11、G2-12 estimator inputは未使用。
+
+**最初に読む:**
+
+- [`local-game-tree-geometry-generalization-counterexample/README.md`](local-game-tree-geometry-generalization-counterexample/README.md)
+- [`local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`](local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md)
+
+**再現性・formal record:**
+
+- [`local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md)
+- [`local-game-tree-geometry-generalization-counterexample/DECISION_REGISTER.md`](local-game-tree-geometry-generalization-counterexample/DECISION_REGISTER.md)
+- [`local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`](local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md)
+- [`research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md)
+
+`main` integrationは未実施で、research branch上のclosureを明示的ユーザー指示まで保持する。
+<!-- LGTGGC-G3-12-RESEARCH-INDEX:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->', '<!-- LGTGGC-G3-12-RESEARCH-INDEX:END -->', '<!-- FDEGHV-G3-11-RESEARCH-INDEX -->', idx_block)
+write(idx, t)
+
+fut = 'doc/FUTURE_RESEARCH_AGENDA.md'
+t = read(fut)
+t = replace_line(t, 'Research Generation 3: ', 'Research Generation 3: **Active / core agenda G3-01..G3-12 execution reached G3-12 capstone / G3-12 `LGTGGC-STUDY1` CLOSED `TECHNICAL-INVALID` / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / main integration pending explicit instruction (2026-09-04)**')
+fut_block = '''<!-- LGTGGC-G3-12-CLOSURE:FUTURE:BEGIN -->
+G3-12 `LGTGGC-STUDY1`はResearch Generation 3のcapstoneとして実施され、`CLOSED / TECHNICAL-INVALID`で終了した。Stage 0 v3は`STAGE0-PASS`、Stage 1 SFCDF transfer developmentは40 pairs / 80 rootsでPASSしproduction / independent exactだったが、同一exactly-once Stage 1 executionのSILGM transferで`complete root ranking required` technical failureが発生した。Static independent auditでは、prospectively frozen LOW root populationがlegal width 1を許容する一方、継承したproduction / independent SILGM helperがestimable search resultにroot candidates >=2をhard requirementとするcompatibility gapを確認した。Fresh access後のhelper修正、root replacement、seed replay、module dropはno-rescueに反するため行わず、GCLD developmentは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。したがってG3-04/G3-07/G3-10 claimsについて`GENERALIZATION-CONFIRMED` / `COUNTEREXAMPLE-CONFIRMED` / `NOT-GENERALIZED` / `NON-ESTIMABLE`のformal decisionは成立していない。将来再検証する場合は新しいprospective independent Study/versionとseparate authorizationを必要とし、`LGTGGC-STUDY1`のrepair/completionとは扱わない。G3-11 depth-10 rerun、depth 11、G2-12 estimator scientific inputは禁止境界を維持する。`main` integrationは明示的ユーザー指示待ち。
+<!-- LGTGGC-G3-12-CLOSURE:FUTURE:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-CLOSURE:FUTURE:BEGIN -->', '<!-- LGTGGC-G3-12-CLOSURE:FUTURE:END -->', '<!-- FDEGHV-G3-11-CLOSURE:FUTURE -->', fut_block)
+write(fut, t)
+
+rg = 'doc/research-generation-3/README.md'
+t = read(rg)
+t = replace_line(t, 'Status = ', 'Status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION')
+rg_lines = '''<!-- LGTGGC-G3-12-RG3-STATUS:BEGIN -->
+G3-12 program review = G3-12-AUTHORIZED
+G3-12 = LGTGGC-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-12 Stage 0 active = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
+G3-12 Stage 1 = LGTGGC-S1-DEVELOPMENT-2026-09-04-v1 / 1 authorized / 1 actual / TECHNICAL-INVALID
+G3-12 SFCDF development = STAGE1-PASS / 40 pairs / 80 roots / production-independent exact
+G3-12 SILGM development = STAGE1-TECHNICAL-INVALID / complete root ranking required
+G3-12 GCLD development = NOT EXECUTED / seeds unread
+G3-12 Stage 2 = LGTGGC-STAGE2-NOT-AUTHORIZED / NOT EXECUTED / all Stage 2 seeds unread
+G3-12 formal generalization-counterexample decisions = NONE
+G3-12 main integration = NOT AUTHORIZED / NOT PERFORMED
+<!-- LGTGGC-G3-12-RG3-STATUS:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-RG3-STATUS:BEGIN -->', '<!-- LGTGGC-G3-12-RG3-STATUS:END -->', 'G3-11 program review = G3-11-AUTHORIZED', rg_lines)
+readfirst = '''<!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->
+- [`../local-game-tree-geometry-generalization-counterexample/README.md`](../local-game-tree-geometry-generalization-counterexample/README.md) — G3-12 technical-invalid capstone closure入口
+- [`../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md) — G3-12 final decision / scientific interpretation boundary正本
+- [`../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`](../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md) — Stage 0/1 Actions / artifacts / source-binding provenance
+- [`../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md) — Stage 2 NOT-AUTHORIZED / Study technical-invalid closure decision
+<!-- LGTGGC-G3-12-RG3-READ-FIRST:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->', '<!-- LGTGGC-G3-12-RG3-READ-FIRST:END -->', '- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state', readfirst)
+write(rg, t)
+
+cs = 'doc/research-generation-3/CURRENT_STATUS.md'
+t = read(cs)
+t = replace_line(t, 'Program status = ', 'Program status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / main integration pending explicit user instruction')
+cs_lines = '''<!-- LGTGGC-G3-12-RG3-CURRENT:BEGIN -->
+G3-12 program review = G3-12-AUTHORIZED
+G3-12 = LGTGGC-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-12 Stage 0 active = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
+G3-12 Stage 1 Actions run = 33848876682 / exactly one / result artifact 9927866205
+G3-12 SFCDF development = STAGE1-PASS / 40 pairs / 80 roots / production-independent exact
+G3-12 SILGM development = STAGE1-TECHNICAL-INVALID / complete root ranking required
+G3-12 GCLD development = NOT EXECUTED / seed range 32313001..32313384 UNREAD
+G3-12 Stage 2 authorization = LGTGGC-STAGE2-NOT-AUTHORIZED
+G3-12 Stage 2 execution = NOT EXECUTED / all formal seeds UNREAD
+G3-12 formal generalization-counterexample decisions = NONE
+G3-12 same-evidence rerun = NOT AUTHORIZED
+G3-12 main integration = NOT AUTHORIZED / NOT PERFORMED
+<!-- LGTGGC-G3-12-RG3-CURRENT:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-RG3-CURRENT:BEGIN -->', '<!-- LGTGGC-G3-12-RG3-CURRENT:END -->', 'G3-11 program review = G3-11-AUTHORIZED', cs_lines)
+t = replace_line(t, 'Next scientific action = ', 'Next scientific action = none within LGTGGC-STUDY1; do not rerun Stage 1 evidence or authorize Stage 2; any renewed generalization/counterexample attempt requires a new prospective independent Study/version and separate authorization')
+closure = '''<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:BEGIN -->
+## G3-12 capstone technical-invalid closure
+
+G3-12 `LGTGGC-STUDY1`はG3-04/G3-07/G3-10のformal-eligible bounded geometry claimsをfresh transfer matrixで一般化・反例検証するcapstone Studyとして開始した。Stage 0 v3はtechnical readinessを確立し、Stage 1 SFCDF transferはdevelopment PASSとなった。一方、同じexactly-once Stage 1 execution中のSILGM transferは、frozen LOW populationと継承search helperのroot-ranking前提が適合しないため`STAGE1-TECHNICAL-INVALID`でfail-closedした。GCLD transferは未実行で、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。
+
+このclosureはupstream claimsへのnegative/null evidenceではない。G3-12ではformal Stage 2を実行しておらず、generalization / counterexample endpoint-domain decisionは0件である。Stage 2 seedは全て未読、G3-11 depth-10 rerun・depth 11・G2-12 estimator scientific inputも未使用。fresh evidence後のsame-evidence repair/rerun、module drop、seed extension、root replacementは行わない。
+
+Canonical records:
+
+- `../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`
+- `../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`
+- `../local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
+- `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
+
+`main` integrationは明示的ユーザー指示まで行わない。
+<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:END -->'''
+t = upsert_before(t, '<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:BEGIN -->', '<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:END -->', '## G3-11 formal closure', closure)
+write(cs, t)
+
+for path in TARGETS:
+    text = read(path)
+    if 'LGTGGC-STUDY1' not in text or 'TECHNICAL-INVALID' not in text:
+        raise RuntimeError(f'closure token missing after sync: {path}')
+
+if Path('doc/research-generation-3/PROGRAM_PLAN.md').stat().st_size <= 0:
+    raise RuntimeError('historical PROGRAM_PLAN unexpectedly missing')
+
+print('G3-12 central documentation sync prepared successfully')
