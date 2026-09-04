@@ -6,106 +6,140 @@
 Program position = Research Generation 3 / G3-12
 Program authorization = G3-12-AUTHORIZED
 Study = LGTGGC-STUDY1
-Lifecycle = STARTED / STAGE0-PASS / PRE-STAGE1-SCIENTIFIC-EXECUTION
+Lifecycle = CLOSED / TECHNICAL-INVALID
 Source main HEAD = 5597ae696d9eb76d8395e114cdb4f83af1138a3d
 Research branch = research/g3-12-local-game-tree-geometry-generalization-counterexample
-Stage 0 v1 = PRE-EXECUTION-TECHNICAL-INVALID / NOT EXECUTED / P1-P2 non-identifiability
-Stage 0 v2 = PRECOMPUTATION-TECHNICAL-INVALID / technical seed access 0 / NO RERUN
-Stage 0 v3 = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
-Stage 0 v3 Actions run = 33843233392 / success
-Stage 0 v3 artifact ID = 9925602227
-Stage 0 v3 technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e493e8a834
-Stage 1 = LGTGGC-S1-DEVELOPMENT-2026-09-04-v1 / NOT AUTHORIZED / NOT EXECUTED
+Stage 0 active = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
+Stage 1 = LGTGGC-S1-DEVELOPMENT-2026-09-04-v1 / EXECUTED EXACTLY ONCE / TECHNICAL-INVALID
 Stage 2 = LGTGGC-S2-FORMAL-2026-09-04-v1 / NOT AUTHORIZED / NOT EXECUTED
-Fresh G3-12 Stage 1/2 scientific seed access = 0
-Fresh G3-12 scientific evidence generated/read/peeked = 0
+Stage 2 authorization review = LGTGGC-STAGE2-NOT-AUTHORIZED
+Formal generalization decisions = NONE
+Formal counterexample decisions = NONE
 Protected G3-11 depth-10 rerun = false / NOT AUTHORIZED
 Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
 G2-12 estimator scientific input = NOT AUTHORIZED / NOT USED
 Main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-## Active pre-fresh amendment
+## Active source-policy contract
 
-The base protocol/spec remains a historical prospective record. Before any Stage 0 execution, authoritative engine semantics showed that the original `P2-CAPTURE-FIRST` was observationally identical to `P1-UNIFORM-LEGAL` because capture priority is already enforced by legal-move generation.
-
-The active pre-fresh amendment therefore replaces only P2:
+Pre-fresh amendment preserved as authoritative execution contract:
 
 ```text
 P1 = LGTGGC-P1-UNIFORM-LEGAL
 P2 = LGTGGC-P2-MAX-CAPTURE
 ```
 
-P2 uses the exact immediate authoritative capture-event seed count for every legal move, retains the legal moves at the maximum count, and uses the same Mulberry32 draw over that pool. It does not use geometry, search, outcome, or prior scientific measurements.
+The original `P2-CAPTURE-FIRST` remains historical preregistration provenance and was replaced before scientific access because authoritative legal-move generation already enforces capture priority, making it observationally identical to P1.
 
-Stage 0 V3 established technical distinguishability:
-
-```text
-technical seeds = 32309001..32309064 / CONSUMED TECHNICAL-ONLY
-different P1/P2 trajectories = 64 / 64
-nonconstant immediate-capture-count choice points = 2882
-production/independent replay = EXACT
-```
-
-This is technical evidence only and is not a G3-12 scientific effect.
-
-## Frozen formal target set
+## Stage 0
 
 ```text
-G3-04 C1 = eligible / MTAJI-GREATER
-G3-04 C6 = eligible / NAMUA-GREATER
-G3-07 SC1×E3×G1 = eligible / HIGHER-IN-HIGH
-G3-07 SC2×E3×G1 = eligible / HIGHER-IN-HIGH
-G3-07 SC3×E3×G1 = eligible / HIGHER-IN-HIGH
-G3-10 C1 = eligible / ACTUAL-GREATER
-G3-10 C2 = eligible / ACTUAL-GREATER
-G3-10 C3 = eligible / ACTUAL-LESS
-G3-10 C5 = eligible / ACTUAL-GREATER
+V1 = PRE-EXECUTION-TECHNICAL-INVALID / NOT EXECUTED / original P1-P2 non-identifiability
+V2 = PRECOMPUTATION-TECHNICAL-INVALID / technical seed access 0 / NO RERUN
+V3 = STAGE0-PASS
+V3 Actions run = 33843233392
+V3 artifact ID = 9925602227
+V3 technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e493e8a834
 ```
 
-Excluded positive targets remain excluded:
+Stage 0 PASS established technical readiness only. Stage 1 was separately authorized afterward.
+
+## Stage 1 exactly-once execution
 
 ```text
-G3-02 = TECHNICAL-INVALID
-G3-03 = TECHNICAL-INVALID
-G3-05 = TECHNICAL-INVALID
-G3-06 = TECHNICAL-INVALID
-G3-08 = TECHNICAL-INVALID
-G3-09 = TECHNICAL-INVALID
-G3-10 C4 = NOT-CONFIRMED
-G3-07 non-confirmed/non-estimable candidates = excluded
+Actions run = 33848876682
+job = 100946889620
+trigger commit = 013f3fd2f859ef1758674b6a53ac5a05cd14efc8
+lease artifact = 9927555827
+lease ZIP SHA-256 = 927759cb9f521a484479efec3a54df0db6f22f7262a936d2ee742d5a6a313231
+result artifact = 9927866205
+result ZIP SHA-256 = b93e5401c3191979b35252eaa2003df0e8511db2bbfc1325396d298557b75cdb
+maximum scientific executions = 1
+execution consumed = 1
+same-evidence rerun = NOT AUTHORIZED
 ```
 
-G3-11 remains a historical exact anchor / boundary reference / comparator only.
-
-## Active formal axes
+### SFCDF-TRANSFER
 
 ```text
-source policy = LGTGGC-P1-UNIFORM-LEGAL / LGTGGC-P2-MAX-CAPTURE
-root family = LGTGGC-RF1-EARLY-ANCHOR / LGTGGC-RF2-LATE-ANCHOR
-phase = intrinsic to SFCDF paired contrast and SILGM stratification
-GCLD phase split = NOT AUTHORIZED
-rule-context fields = pre-specified secondary localization only / NO RESCUE
+seed range = 32311001..32311384 / CONSUMED
+stage disposition = STAGE1-PASS
+selected pairs = 40
+selected roots = 80
+defined roots = 80
+production/independent exact = true
+selection core SHA-256 = a49491bd973ba2ef8807b09e88b17ba929cd97869add1c8f49dc1521d017eff5
+measurement core SHA-256 = 59667e24c250e74dc94746311ba23a448b0947fc40b3fe53e424cdf0054f3f3f
+formal inference = false
+p-values = false
+effect-direction summary = false
 ```
 
-## Frozen Stage 1 seeds — UNREAD
+This is development readiness only; it is not a G3-04 generalization result.
+
+### SILGM-TRANSFER
 
 ```text
-SFCDF = 32311001..32311384
-SILGM = 32312001..32312768
-GCLD  = 32313001..32313384
+seed range = 32312001..32312768 / CONSUMED
+stage disposition = STAGE1-TECHNICAL-INVALID
+fatal error = complete root ranking required
+formal inference = false
+p-values = false
 ```
 
-## Frozen Stage 2 seeds — UNREAD
+Static independent audit confirmed a compatibility gap between the frozen LOW root population, which does not exclude legal width 1, and inherited production/independent SILGM search helpers, which hard-require at least two root candidates after an estimable search result.
+
+The specific failing scientific root is not replayed or localized after fresh access.
+
+### GCLD-TRANSFER
 
 ```text
-SFCDF = 32321001..32321768
-SILGM = 32322001..32323536
-GCLD  = 32324001..32324768
+seed range = 32313001..32313384
+execution = NOT EXECUTED / WORKFLOW SKIPPED
+seed access = 0 / UNREAD
 ```
 
-Seed extension is not authorized.
+## Stage 2 boundary
 
-## Next required action
+Post-Stage1 review decision:
 
-A separate post-Stage0 pre-fresh Stage 1 authorization review is required before any Stage 1 scientific seed is generated/read. Stage 0 PASS alone does not authorize Stage 1.
+**`LGTGGC-STAGE2-NOT-AUTHORIZED`**
+
+Reasons include:
+
+- Stage 1 SILGM = TECHNICAL-INVALID;
+- Stage 1 GCLD readiness = unestablished;
+- complete Stage 1 identity-only exclusion firewall cannot be materialized without SILGM fresh replay;
+- same-evidence rerun/repair is prohibited;
+- module dropping after fresh evidence would be post-hoc rescue.
+
+Frozen Stage 2 seeds remain unread:
+
+```text
+SFCDF = 32321001..32321768 / UNREAD
+SILGM = 32322001..32323536 / UNREAD
+GCLD  = 32324001..32324768 / UNREAD
+```
+
+## Scientific conclusion boundary
+
+`LGTGGC-STUDY1` did **not** establish any formal `GENERALIZATION-CONFIRMED`、`COUNTEREXAMPLE-CONFIRMED`、`NOT-GENERALIZED`、or `NON-ESTIMABLE` endpoint-domain decision.
+
+The correct Study-level conclusion is only:
+
+**the prospectively frozen G3-12 capstone execution did not reach formal Stage 2 because Stage 1 failed closed technically.**
+
+Upstream G3-04/G3-07/G3-10 formal results remain unchanged. G3-10 C4 remains NOT-CONFIRMED. G3-11 remains bounded to its single frozen depth-10 domain.
+
+## Canonical closure records
+
+- `STUDY_1_FINAL_REPORT.md`
+- `STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
+- `REPRODUCIBILITY_INDEX.md`
+- `results/stage-1/STAGE_1_EXECUTION_RECORD.json`
+- `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
+
+## Main integration
+
+`main` integration is **NOT AUTHORIZED / NOT PERFORMED**. Explicit user instruction is required.
