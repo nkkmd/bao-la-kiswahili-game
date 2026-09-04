@@ -62,5 +62,5 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 same-evidence rerun = NOT AUTHORIZED
 G3-10 at CRCLGR closure = NOT AUTHORIZED pending separate review
 subsequent G3-10 = AUTHORIZED by separate review / GCLD-STUDY1 CLOSED FORMAL-COMPLETE
-combined successor-branch main integration = NOT AUTHORIZED / NOT PERFORMED
+combined successor-branch main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387
 ```

@@ -22,7 +22,7 @@ formal representation eligibility = NOT ESTABLISHED
 Stage 2 = NOT-AUTHORIZED / NOT-EXECUTED
 G3-10 downstream chronology = successor CRCLGR later established formal eligibility; separate post-CRCLGR review then yielded G3-10-AUTHORIZED; GCLD-STUDY1 CLOSED / FORMAL-COMPLETE
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-repository integration = RRCLGR history carried into successor G3-10 branch / combined main integration NOT AUTHORIZED / NOT PERFORMED
+repository integration = COMPLETE via successor G3-10 combined fast-forward to main / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387
 ```
 
 ## Stage 1 closure reason

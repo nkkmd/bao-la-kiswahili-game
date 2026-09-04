@@ -31,7 +31,7 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 **状態:** `CLOSED / FORMAL-COMPLETE` — 4 `CONFIRMED` / 1 `NOT-CONFIRMED` / 0 `NON-ESTIMABLE`
 
-G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。`main` integrationは明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`。
+G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。`main` integrationは`COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387`。
 
 **最初に読む:**
 
@@ -1004,7 +1004,7 @@ G2-12 `SSGTGE-STUDY1`も`TECHNICAL-INVALID` / `selectedEstimator = null`でclosu
 ### 30. Research Generation 3 — G3-01 / LGTGMIV / G3-02 / G3-03 / G3-04 closure
 
 **Program:** Bao Third-Generation Research Program / **Core:** `G3-01..G3-12`
-**状態:** **ACTIVE / current frontier G3-10 `GCLD-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C2+C3+C5 `CONFIRMED` / C4 `NOT-CONFIRMED` / protected depth-10 `SEALED` / main integration `NOT AUTHORIZED`**
+**状態:** **ACTIVE / current frontier G3-10 `GCLD-STUDY1 = CLOSED / FORMAL-COMPLETE` / C1+C2+C3+C5 `CONFIRMED` / C4 `NOT-CONFIRMED` / protected depth-10 `SEALED` / main integration `COMPLETE / FAST-FORWARD`**
 
 > この節にはG3-01以降のchronologyを保持する。以下に残る「次Study review required」等の記述は各closure時点のhistorical boundaryであり、現在状態は上記と文書冒頭のG3-10 current highlightを優先する。
 

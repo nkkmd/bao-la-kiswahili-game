@@ -4,7 +4,7 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED / MAIN INTEGRATION PENDING EXPLICIT USER AUTHORIZATION
+Program status = ACTIVE / G3-10 GCLD-STUDY1 CLOSED FORMAL-COMPLETE / C1+C2+C3+C5 CONFIRMED / C4 NOT-CONFIRMED / MAIN INTEGRATION COMPLETE / FAST-FORWARD
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -65,9 +65,9 @@ G3-10 Stage 1 = STAGE1-PASS / seed 32210001..32210256 CONSUMED
 G3-10 Stage 2 = FORMAL-COMPLETE / seed 32220001..32220384 CONSUMED / candidates 48 / eligible 47 / measured 32
 G3-10 formal record = C1 CONFIRMED ACTUAL-GREATER / C2 CONFIRMED ACTUAL-GREATER / C3 CONFIRMED ACTUAL-LESS / C4 NOT-CONFIRMED / C5 CONFIRMED ACTUAL-GREATER
 G3-10 canonical scientific-result SHA-256 = c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f
-G3-10 main integration = NOT AUTHORIZED / NOT PERFORMED
+G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / previous main 0bcd1695b6dbd044acf2eed91740d282c63dbb07 / force=false
 Protected depth-10 exact holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-Active research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / G3-10 scientific execution CLOSED; documentation/pre-main readiness only
+G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
 Next scientific action = none within GCLD-STUDY1; do not rerun consumed Stage 1/2 evidence; post-G3-10 next-study review is separate and not auto-authorized
 ```
 

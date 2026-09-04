@@ -13,7 +13,7 @@ Stage 1 = STAGE1-PASS
 Stage 2 = FORMAL-COMPLETE
 formal endpoints = 4 CONFIRMED / 1 NOT-CONFIRMED / 0 NON-ESTIMABLE
 protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / force=false
 ```
 
 ## 研究題目

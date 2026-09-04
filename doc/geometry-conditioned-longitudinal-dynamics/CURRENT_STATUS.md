@@ -15,8 +15,8 @@ Stage 1 seed block = 32210001..32210256 / CONSUMED
 Stage 2 seed block = 32220001..32220384 / CONSUMED
 same-evidence rerun = NOT AUTHORIZED
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
-repository readiness = PRE-MAIN-INTEGRATION-READY
-main integration = NOT AUTHORIZED / NOT PERFORMED
+repository readiness = MAIN-INTEGRATION-COMPLETE
+main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / previous main 0bcd1695b6dbd044acf2eed91740d282c63dbb07 / force=false
 ```
 
 ## Stage 2 population
@@ -72,9 +72,7 @@ pre-main readiness audit run = 33817654425
 final cross-document consistency audit run = 33818470227
 historical PROGRAM_PLAN blob = 2bb90c11f1625f63f40a7eab8a3de7774505a1ac / UNCHANGED
 scientific recomputation during documentation/mirror work = false
-repository readiness = PRE-MAIN-INTEGRATION-READY
+repository readiness = MAIN-INTEGRATION-COMPLETE
 ```
 
-残るrepository operationは、ユーザーが明示的に指示した場合に限る`main` integrationだけである。
-
-`main` integrationの許可は本ファイルから推定してはならない。明示的なユーザー指示がない限り`NOT AUTHORIZED / NOT PERFORMED`を維持する。
+2026-09-04の明示的ユーザー指示に基づき、`main`はprevious headからG3-10 research tipへ`force=false`でfast-forward統合された。科学的closure、artifact identity、no-rescue boundaryは変更していない。

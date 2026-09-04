@@ -27,7 +27,7 @@
 | G3-09 partial scientific reuse | `PROHIBITED / NOT PERFORMED` | identity-only firewall projectionのみ使用 |
 | Protected standard-root depth-10 | `SEALED / NOT GENERATED / NOT READ / NOT PEEKED` | Study全期間でaccess false |
 | Historical RG3 PROGRAM_PLAN edit | `PROHIBITED / NOT PERFORMED` | historical recordを維持 |
-| Main integration | `NOT AUTHORIZED / NOT PERFORMED` | 明示的ユーザー指示があるまで禁止 |
+| Main integration | `COMPLETE / FAST-FORWARD` | explicit user authorization 2026-09-04; `0bcd1695b6dbd044acf2eed91740d282c63dbb07` → `28b64d1cb02904e0c57886ae2046cd681ab64387`; `force=false` |
 
 ## Interpretation boundary
 
