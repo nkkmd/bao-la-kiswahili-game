@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S0-TECHNICAL-2026-09-04-v3",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "technicalExecutionVersionOf": "LGTGGC-S0-TECHNICAL-2026-09-04-v2",
+  "predecessorDisposition": "PRECOMPUTATION-TECHNICAL-INVALID / SCIENTIFIC-EXECUTION-NOT-CONSUMED",
+  "correctionScope": "SYNTAX-ONLY",
+  "correction": "close Object.fromEntries(gIds.map(...)) before controlCount field in technical result assembly; update Stage ID/output path to V3",
+  "scientificInferenceAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "technicalSeedNamespace": {
+    "seedStart": 32309001,
+    "seedEnd": 32309064,
+    "v2ReadCount": 0,
+    "scientificUseProhibited": true
+  },
+  "inheritsUnchangedFrom": "prereg/STAGE_0_TECHNICAL_SPEC_V2.json",
+  "unchanged": [
+    "P1-UNIFORM-LEGAL",
+    "P2-MAX-CAPTURE",
+    "RF1/RF2",
+    "mandatory controls",
+    "SILGM thresholds",
+    "search conditions",
+    "GCLD checkpoints and control count",
+    "per-root geometry limits",
+    "execution safety ceilings",
+    "Stage 1/2 scientific seed blocks",
+    "upstream claims",
+    "multiplicity families",
+    "RAW identity",
+    "validated transform set []",
+    "depth10/depth11/G2-12 firewalls"
+  ],
+  "sameV2Rerun": false,
+  "stage1AuthorizationConsequence": "NONE; separate post-Stage0 pre-fresh authorization required"
+}
