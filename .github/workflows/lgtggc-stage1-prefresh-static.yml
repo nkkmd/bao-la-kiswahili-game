@@ -6,6 +6,7 @@ on:
       - research/g3-12-local-game-tree-geometry-generalization-counterexample
     paths:
       - .github/workflows/lgtggc-stage1-prefresh-static.yml
+      - doc/local-game-tree-geometry-generalization-counterexample/authorizations/STAGE_1_STATIC_AUDIT_ARM.json
 
 permissions:
   contents: read
@@ -31,7 +32,7 @@ jobs:
           node --check tools/experiments/finalize-lgtggc-stage1-development.js
       - name: Parse frozen JSON contracts
         run: |
-          node -e 'JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/prereg/STAGE_1_DEVELOPMENT_SPEC.json","utf8")); JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/prereg/STUDY_1_TECHNICAL_AMENDMENT_V2.json","utf8")); console.log("JSON contracts parse PASS")'
+          node -e 'JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/prereg/STAGE_1_DEVELOPMENT_SPEC.json","utf8")); JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/prereg/STUDY_1_TECHNICAL_AMENDMENT_V2.json","utf8")); JSON.parse(require("fs").readFileSync("doc/local-game-tree-geometry-generalization-counterexample/authorizations/STAGE_1_STATIC_AUDIT_ARM.json","utf8")); console.log("JSON contracts parse PASS")'
       - name: Assert no scientific execution side effect
         run: |
           echo 'STATIC-AUDIT-PASS / no Stage 1 seed runner invoked'
