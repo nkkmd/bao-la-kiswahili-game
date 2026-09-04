@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "amendmentId": "LGTGGC-PREFRESH-TECHNICAL-AMENDMENT-V2-2026-09-04",
+  "status": "ACTIVE-PREFRESH-AMENDMENT",
+  "baseSpec": "prereg/STUDY_1_SPEC.json",
+  "scientificEvidenceAccessBeforeFreeze": 0,
+  "reason": "P1-UNIFORM-LEGAL and P2-CAPTURE-FIRST are non-identifiable because authoritative legal-move generation already enforces capture priority in Namua and Mtaji",
+  "supersededStage0": {
+    "stageId": "LGTGGC-S0-TECHNICAL-2026-09-04-v1",
+    "disposition": "PRE-EXECUTION-TECHNICAL-INVALID",
+    "executed": false
+  },
+  "activeStage0": "LGTGGC-S0-TECHNICAL-2026-09-04-v2",
+  "sourcePolicyReplacement": {
+    "removed": {
+      "policyId": "LGTGGC-P2-CAPTURE-FIRST"
+    },
+    "active": [
+      {
+        "policyId": "LGTGGC-P1-UNIFORM-LEGAL",
+        "prng": "MULBERRY32",
+        "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+        "selection": "floor(u * legalMoveCount) over all legal moves"
+      },
+      {
+        "policyId": "LGTGGC-P2-MAX-CAPTURE",
+        "prng": "MULBERRY32",
+        "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+        "selection": "compute immediate authoritative capture-event seed count for every legal move; retain moves at the exact maximum; select floor(u * poolCount)",
+        "usesGeometry": false,
+        "usesSearch": false,
+        "usesOutcome": false,
+        "usesUpstreamScientificMeasurement": false
+      }
+    ]
+  },
+  "technicalSeedNamespace": {
+    "seedStart": 32309001,
+    "seedEnd": 32309064,
+    "scientificUseProhibited": true
+  },
+  "mandatoryDistinguishabilityGate": {
+    "productionIndependentP1ReplayExact": true,
+    "productionIndependentP2ReplayExact": true,
+    "reachableTechnicalStateWithNonconstantImmediateCaptureCounts": true,
+    "atLeastOneTechnicalSeedWithDifferentP1P2MoveSequence": true
+  },
+  "unchangedScientificContract": [
+    "eligible upstream claim set",
+    "excluded upstream claim set",
+    "RF1 and RF2 root families",
+    "Stage 1 scientific seed blocks",
+    "Stage 2 scientific seed blocks",
+    "SILGM thresholds",
+    "formal endpoints",
+    "multiplicity families",
+    "resource ceilings",
+    "RAW identity",
+    "validated transform set []",
+    "no-rescue boundary",
+    "interpretation boundary",
+    "G3-11 depth-10 same-evidence rerun prohibition",
+    "depth-11 prohibition",
+    "G2-12 estimator prohibition"
+  ]
+}
