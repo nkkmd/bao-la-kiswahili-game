@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S1-DEVELOPMENT-2026-09-04-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "authorizationReview": "doc/research-program-decisions/2026-09-04-post-g3-12-stage0-stage1-authorization-review.md",
+  "activeAmendment": "prereg/STUDY_1_TECHNICAL_AMENDMENT_V2.json",
+  "scientificInferenceRole": "READINESS-AND-EXACTNESS-ONLY",
+  "formalInferenceAuthorized": false,
+  "pValuesAuthorized": false,
+  "effectBasedPromotionAuthorized": false,
+  "directionSelectionAuthorized": false,
+  "thresholdLearningAuthorized": false,
+  "sourceMainHead": "5597ae696d9eb76d8395e114cdb4f83af1138a3d",
+  "sourcePolicies": {
+    "assignment": "actual source seed parity; even=P1, odd=P2",
+    "P1": "LGTGGC-P1-UNIFORM-LEGAL",
+    "P2": "LGTGGC-P2-MAX-CAPTURE"
+  },
+  "sourceReplay": {
+    "initialState": "authoritative public/engine.js initialState()",
+    "prng": "MULBERRY32",
+    "legalOrdering": "canonical move identity ascending",
+    "openingPrefixLength": 16,
+    "relayLimit": "fail/reject according to module contract; never reinterpret as scientific outcome",
+    "trajectoryIdentity": "SHA-256 of ordered canonical move-key sequence plus terminal/source metadata"
+  },
+  "rootFamilies": {
+    "RF1": {
+      "id": "LGTGGC-RF1-EARLY-ANCHOR",
+      "namua": "exact ply 24 / nonterminal / phase=namua",
+      "mtaji": "first nonterminal phase=mtaji at ply>=44"
+    },
+    "RF2": {
+      "id": "LGTGGC-RF2-LATE-ANCHOR",
+      "namua": "exact ply 32 / nonterminal / phase=namua",
+      "mtaji": "exact ply 56 / nonterminal / phase=mtaji"
+    }
+  },
+  "assignmentSalts": {
+    "sfcdfRootFamily": "LGTGGC-S1-SFCDF-RF-2026-09-04-v1",
+    "sfcdfSelection": "LGTGGC-S1-SFCDF-SELECT-2026-09-04-v1",
+    "silgmPhase": "LGTGGC-S1-SILGM-PHASE-2026-09-04-v1",
+    "silgmRootFamily": "LGTGGC-S1-SILGM-RF-2026-09-04-v1",
+    "silgmSelection": "LGTGGC-S1-SILGM-SELECT-2026-09-04-v1",
+    "gcldCandidate": "LGTGGC-S1-GCLD-CANDIDATE-2026-09-04-v1"
+  },
+  "modules": {
+    "SFCDF-TRANSFER": {
+      "seedStart": 32311001,
+      "seedEnd": 32311384,
+      "maxSourcePly": 80,
+      "cells": "2 policies x 2 root families",
+      "targetPairsPerCell": 10,
+      "totalTargetPairs": 40,
+      "rootFamilyAssignment": "SHA-256 salt parity",
+      "candidateEligibility": "assigned-family Namua and Mtaji anchors both exist, are nonterminal, phase-correct, source replay has no relay-limit",
+      "selection": "within cell ascending SHA-256 rank; skip duplicate full trajectory identity and any already-selected RAW root identity",
+      "measurement": "LGTGMIV depth-5 -> SFCDF C1/C6 production and independent exact",
+      "developmentOutput": "support counts, definedness counts, identity manifest, measurement core hash only; no paired effect direction summary or p-value",
+      "stagePass": "all 4 cells reach 10 pairs and all selected C1/C6 values are defined with production/independent canonical equality"
+    },
+    "SILGM-TRANSFER": {
+      "seedStart": 32312001,
+      "seedEnd": 32312768,
+      "maxSourcePly": 80,
+      "phaseAssignment": "independent SHA-256 salt parity / namua or mtaji",
+      "rootFamilyAssignment": "independent SHA-256 salt parity / RF1 or RF2",
+      "anchor": "phase-specific anchor from assigned root family",
+      "thresholds": {
+        "namua": {"numerator":"4","denominator":"1"},
+        "mtaji": {"numerator":"3","denominator":"1"}
+      },
+      "widthClass": "HIGH if rootLegalWidth>threshold; LOW if <; EQUAL rejected",
+      "cells": "2 policies x 2 root families x 2 phases x 2 width classes",
+      "targetRootsPerCell": 8,
+      "totalTargetRoots": 128,
+      "selection": "within cell ascending SHA-256 rank; one root per trajectory; skip duplicate full trajectory and RAW root identity",
+      "searchContrasts": {
+        "SC1": ["D2_Q1","D3_Q1"],
+        "SC2": ["B256_Q1_MAXD3","B1024_Q1_MAXD3"],
+        "SC3": ["D2_Q0","D2_Q2"]
+      },
+      "endpoint": "SILGM-E3-RANKING-PREORDER-CHANGE",
+      "developmentOutput": "cell support, exactness/estimability counts, identity manifest and measurement core hash only; no HIGH-vs-LOW risk difference, direction or p-value",
+      "stagePass": "all 16 cells reach 8 roots; all three contrasts estimable for every selected root; production/independent E3 exact"
+    },
+    "GCLD-TRANSFER": {
+      "seedStart": 32313001,
+      "seedEnd": 32313384,
+      "maxSourcePly": 72,
+      "checkpoints": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+      "candidateEligibilityBeforeGeometry": "nonterminal through ply72, no source relay-limit",
+      "candidateTargetPerPolicy": 24,
+      "candidateTotal": 48,
+      "candidateSelection": "per policy ascending SHA-256 candidate rank; skip duplicate full trajectory identity; candidate manifest frozen before any depth-5 preflight",
+      "preflight": "all 15 roots independently pass unchanged CRCLGR depth-5 deterministic reconstructibility limits in production and independent implementations with exact eligibility/reason agreement",
+      "measuredTargetPerPolicy": 16,
+      "measuredTotal": 32,
+      "measuredSelection": "first 16 eligible trajectories in each already-frozen candidate order; no replacement after coordinate generation begins",
+      "representation": "CRCLGR-R1-EXACT-SQUASHED-L1",
+      "temporalControls": 32,
+      "endpoints": ["G3-10-C1","G3-10-C2","G3-10-C3","G3-10-C5"],
+      "developmentOutput": "candidate/preflight/measured support, definedness/exactness counts, identity manifest and measurement core hash only; no actual-control sign summary or p-value",
+      "stagePass": "24 candidates per policy available; at least 16 per policy preflight eligible; 16 measured per policy exact across production/independent; all four endpoints defined"
+    }
+  },
+  "depth5Limits": {
+    "distinctRawStates": 100000,
+    "uniqueTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveEvaluations": 750000,
+    "treeNodeOccurrences": 1000000000
+  },
+  "developmentResultLabels": ["STAGE1-PASS","STAGE1-NON-ESTIMABLE","STAGE1-TECHNICAL-INVALID"],
+  "nonEstimableRule": "deterministic support/resource/definedness target not met without integrity mismatch; no seed extension or replacement beyond frozen selection",
+  "technicalInvalidRule": "identity, source replay, production/independent, serializer, exact arithmetic, execution-count, authorization, or mandatory provenance mismatch",
+  "identityFirewallForStage2": {
+    "materializeAfterStage1": ["sourceSeed","sourcePolicy","trajectorySha256","openingPrefixSha256","selectedRootRawSha256","all GCLD checkpointRawSha256"],
+    "retainScientificValues": false,
+    "retainEffectSigns": false,
+    "retainPValues": false
+  },
+  "execution": {
+    "maximumAuthorizedStageExecutions": 1,
+    "durablePreComputationLeaseRequired": true,
+    "sourceBlobBindingRequired": true,
+    "singleWorkflowTrigger": true,
+    "sameEvidenceRerunAuthorized": false,
+    "artifactBeforeRepositoryMirror": true
+  },
+  "firewalls": {
+    "stage2SeedAccess": false,
+    "g3_11Depth10Rerun": false,
+    "depth11Access": false,
+    "g2_12EstimatorScientificInput": false,
+    "symmetryCanonicalization": false
+  }
+}
