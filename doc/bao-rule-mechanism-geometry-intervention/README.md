@@ -1,4 +1,4 @@
-# Bao Rule-Mechanism / Geometry Intervention Study 1
+# Bao固有ルールと局所ゲーム木幾何 — `BRMGI-STUDY1`
 
 Research Generation 3 / G3-06の独立prospective Study。
 
@@ -12,7 +12,7 @@ Research Generation 3 / G3-06の独立prospective Study。
 
 **Bao固有のrule-semantic eventに伴う局所ゲーム木幾何変化のprospective move-conditioned exact解析 — capture、nyumba選択、reserve枯渇／Namua→Mtaji移行を対象とするbounded RAW pre/post構造差の検証**
 
-## Current state
+## 現在の状態
 
 ```text
 program review = G3-06-AUTHORIZED
@@ -41,7 +41,7 @@ Stage 1 fresh seedへアクセス済みであるため、selectorを修正して
 
 これはcapture、nyumba、reserve exhaustion、Namua→Mtajiとbounded geometryの関係に対するnegative/null resultではない。
 
-## Scientific boundary
+## 科学的な主張範囲
 
 本StudyはG3-05を救済しない。G3-05 partial telemetryはscientific inputではない。
 
@@ -49,7 +49,7 @@ Historical labelの`Intervention`はgeneric causal claimを意味しない。本
 
 今回valid Stage 1 geometry resultへ到達していないため、capture / nyumba / reserve / Namua→Mtajiのgeometry direction、G3-04 C1/C6のrule mechanism、search/value/forcing/human difficultyについて新しいscientific claimを行わない。
 
-## Canonical documents
+## 正本となる文書
 
 - [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
@@ -61,18 +61,18 @@ Historical labelの`Intervention`はgeneric causal claimを意味しない。本
 - [`results/stage-1/scientific-result.json`](results/stage-1/scientific-result.json) — canonical Stage 1 technical-invalid result
 - [`checkpoints/2026-09-03-stage-1-technical-invalid-study-closure.md`](checkpoints/2026-09-03-stage-1-technical-invalid-study-closure.md)
 
-Program records:
+program全体の記録:
 
 - [`../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md`](../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md)
 - [`../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md`](../research-program-decisions/2026-09-03-g3-06-technical-invalid-closure.md)
 - [`../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md`](../research-generation-3/checkpoints/2026-09-03-g3-06-technical-invalid-closure.md)
 - [`../research-generation-3/checkpoints/2026-09-03-g3-06-main-integration-complete.md`](../research-generation-3/checkpoints/2026-09-03-g3-06-main-integration-complete.md)
 
-## Main integration
+## mainへの統合
 
 2026-09-03、監査済みresearch branch `research/g3-06-bao-rule-mechanism-geometry-intervention` を、`main` baseline `b0cbd9f562bb803597acb313360c064dadd73299`からaudited head `f8eda131b81f0d6e3bc9f804ddfce875c9cd8d2b`へ **fast-forward / `force=false`** で統合した。squash、rebase、history rewrite、scientific rerunは行っていない。
 
-## Next program action
+## 次の研究工程
 
 **Historical closure-time boundary:** G3-06 closure時点ではG3-07は自動authorizeされず、separate post-G3-06 current-state authorization reviewが必要だった。そのreviewは後に完了し、G3-07は独立に実施・閉鎖された。現在のprogram stateは`../research-generation-3/CURRENT_STATUS.md`を参照する。
 

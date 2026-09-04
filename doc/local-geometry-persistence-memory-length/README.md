@@ -1,12 +1,12 @@
-# Local Geometry Persistence / Memory-Length Study 1
+# 局所ゲーム木幾何の持続時間とmemory length — `LGPML-STUDY1`
 
 Research Generation 3 `G3-08` / `LGPML-STUDY1` の研究ディレクトリ。
 
-Current lifecycle status:
+現在のlifecycle状態:
 
 **`CLOSED / TECHNICAL-INVALID`**
 
-Program authorization:
+program authorization:
 
 **`G3-08-AUTHORIZED`**
 
@@ -42,14 +42,14 @@ Protected standard-initial RAW-root complete exact depth-10 holdoutは`SEALED / 
 
 mainへの統合は2026-09-03の明示的ユーザー指示を受け、research branch tip `72bd208267359f461e9dbbde938bb952eb01b91c` からfast-forward / `force=false`で完了した。
 
-主要文書:
+## 主要文書
 
-- `STUDY_1_PROTOCOL.md`
-- `STUDY_1_FINAL_REPORT.md`
-- `CURRENT_STATUS.md`
-- `DECISION_REGISTER.md`
-- `REPRODUCIBILITY_INDEX.md`
-- `prereg/`
-- `authorizations/`
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — 固定済みprotocol
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 最終報告
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の状態
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 判断記録
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — 再現性索引
+- [`prereg/`](prereg/)
+- [`authorizations/`](authorizations/)
 - `results/stage-0-v1/STAGE_0_TECHNICAL_RESULT.json`
 - `results/stage-1/scientific-result.json`

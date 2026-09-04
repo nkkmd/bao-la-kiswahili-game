@@ -1,13 +1,13 @@
 # G2-01 — 形勢評価と実現勝敗の校正再検証
 
-Program label: `G2-01`  
-Study ID: `PEOCR-STUDY1`  
-状態: **完了 / 正式判断 `INCONCLUSIVE`**  
+program上の位置: `G2-01`
+Study ID: `PEOCR-STUDY1`
+状態: **完了 / 正式判断 `INCONCLUSIVE`**
 研究世代: **Research Generation 2**
 
 正式英語名: **Position Evaluation / Empirical Outcome Calibration Replication Study 1**
 
-## 結果
+## 結論
 
 Research Generation 1の`PEC-STUDY1 = INCONCLUSIVE`を変更・救済せず、新しいfresh populationを用いて、actor-relative static Bao evaluationとempirical continuation outcomeのheld-out calibration replicationを実施しました。
 

@@ -1,4 +1,4 @@
-# G3-10 / GCLD-STUDY1 — Geometry-Conditioned Longitudinal Dynamics Study 1
+# 局所ゲーム木幾何の長期trajectory構造 — `G3-10` / `GCLD-STUDY1`
 
 更新日: 2026-09-04
 
@@ -24,7 +24,7 @@ main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae
 
 **Baoにおける局所ゲーム木幾何の長期trajectory構造のprospective exact検証 — discrete strategic regimeに依存せず、formal-eligible continuous bounded RAW geometryを用いてdirectionality、persistence、return、chronology-conditioned circulation、first-order path dependenceをtrajectory-levelで検証する**
 
-## Formal result
+## 正式結果
 
 Stage 2では48本のgeometry-blind fresh candidate trajectoryを固定し、47/48が全15 checkpointでresource-eligibleとなった。事前固定順の最初の32本をformal populationとして測定し、production / independent実装はexact一致した。
 

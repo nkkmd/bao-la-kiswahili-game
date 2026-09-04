@@ -1,10 +1,10 @@
-# Namua→Mtaji Strategic Temporal Transition Study
+# NamuaからMtajiへの戦略的時間遷移
 
 Status: **Study 1 closed / repository closure complete / formal decision `NOT-CONFIRMED`**  
 開始日: 2026-08-10  
-Formal evaluation date: 2026-08-12  
-Closure date: 2026-08-12  
-Branch: `research/namua-mtaji-temporal-transition`  
+正式評価日: 2026-08-12
+closure日: 2026-08-12
+研究ブランチ: `research/namua-mtaji-temporal-transition`
 Base: `main@c7d06d485789e1ea96d6603802423951a88c1f87`
 
 ## 研究題目
@@ -24,7 +24,7 @@ Base: `main@c7d06d485789e1ea96d6603802423951a88c1f87`
 
 Fresh held-out Stage 2 formal corpusを使ったprimary formal analysisは完了しました。
 
-Formal condition:
+formal condition:
 
 ```text
 P2-D2 only
@@ -33,7 +33,7 @@ games = 4096
 seeds = 20280001..20284096
 ```
 
-Formal exposure/comparator:
+formal exposure / comparator:
 
 ```text
 exposure = earliest fully ascertained Namua CBE per unique historical trajectory
@@ -42,7 +42,7 @@ controls = 20 unique controls per exposure
 global control reuse = false
 ```
 
-Observed estimability:
+観測されたestimability:
 
 ```text
 unique earliest-CBE trajectories = 31
@@ -53,7 +53,7 @@ matched sets = 30
 unique controls = 600
 ```
 
-First-Mtaji morphology:
+first-Mtaji morphology:
 
 ```text
 Exposed MTAJI-M1 = 26 / 30 = 0.8667
@@ -62,7 +62,7 @@ mean within-stratum matched risk difference = +0.01833
 Mantel-Haenszel common OR = 1.1618
 ```
 
-Single preregistered primary test:
+事前登録した単一のprimary test:
 
 ```text
 matched-set exact conditional Poisson-binomial test
@@ -71,17 +71,17 @@ p_two_sided = 1.0
 alpha = 0.05
 ```
 
-Formal decision:
+正式判断:
 
 > **NOT-CONFIRMED**
 
-Within the frozen P2-D2, first-Mtaji-morphology-eligible target population, the preregistered analysis did not confirm an association between prior fully ascertained Namua `capture-branch-expansion` and first-Mtaji frozen morphology relative to exact-ply R3-M controls.
+固定済みのP2-D2・first-Mtaji-morphology-eligible対象集団では、完全に把握したNamua `capture-branch-expansion`の先行とfirst-Mtaji frozen morphologyとの関連は、exact-ply R3-M controlとの比較で確認されませんでした。
 
-The small positive descriptive difference is not treated as a trend or rescued positive result.
+小さな正方向のdescriptive differenceは、傾向または救済されたpositive resultとして扱いません。
 
-## Deterministic Namua clock
+## 決定論的なNamua進行時計
 
-A central design result became permanent before formal outcome analysis:
+formal outcome analysisより前に、設計上の重要な事実として次を確定しました。
 
 ```text
 initial total reserve = 44
@@ -89,9 +89,9 @@ first Mtaji observation = ply 44
 Namua total reserve at ply t = 44 - t
 ```
 
-Stage 2 again observed first Mtaji at ply 44 for all 3886 reached-Mtaji games, with zero violations.
+Stage 2でも、Mtajiへ到達した3,886局すべてでfirst Mtajiはply 44となり、違反は0件でした。
 
-Therefore first-Mtaji timing is not a survival/hazard endpoint in this engine. The study does not claim CBE accelerates or delays Mtaji.
+したがって、このengineにおけるfirst-Mtaji timingはsurvival / hazard endpointではありません。本Studyは、CBEがMtajiを早める・遅らせるとは主張しません。
 
 ## 最初に読む文書
 
@@ -102,23 +102,23 @@ Therefore first-Mtaji timing is not a survival/hazard endpoint in this engine. T
 5. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — closure状態とimmutable boundary
 6. [`RESUME_HERE.md`](RESUME_HERE.md) — closed studyの安全な復元入口
 
-## Formal design / preregistration
+## 正式設計・事前登録
 
 - [`STAGE_2_FORMAL_PROTOCOL.md`](STAGE_2_FORMAL_PROTOCOL.md) — frozen human-readable protocol
 - [`preregistration/STAGE_2_FORMAL_SPEC.json`](preregistration/STAGE_2_FORMAL_SPEC.json) — machine-readable preregistration
 - [`preregistration/STAGE_2_OUTCOME_UNLOCK.json`](preregistration/STAGE_2_OUTCOME_UNLOCK.json) — independently reviewed preoutcome identity binding
 - [`STAGE_2_RUNBOOK.md`](STAGE_2_RUNBOOK.md) — completed execution runbook
 
-## Key checkpoints
+## 主要checkpoint
 
 - [`checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md`](checkpoints/2026-08-11-stage1-complete-stage2-formal-freeze.md)
 - [`checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md`](checkpoints/2026-08-11-stage2-pre-generation-firewall-hardening.md)
 - [`checkpoints/2026-08-12-stage2-formal-not-confirmed.md`](checkpoints/2026-08-12-stage2-formal-not-confirmed.md)
 - [`checkpoints/2026-08-12-study1-formal-closure.md`](checkpoints/2026-08-12-study1-formal-closure.md)
 
-## Frozen inherited definitions
+## 上流研究から固定して引き継いだ定義
 
-### capture-branch-expansion
+### `capture-branch-expansion`の定義
 
 ```text
 before = 3
@@ -129,7 +129,7 @@ persistenceFraction = 0.5
 eventWindow = 8
 ```
 
-### Historical Category-A
+### 過去の`Category-A`
 
 ```text
 signalThreshold = 2.0
@@ -138,7 +138,7 @@ clusterMaxGap = 1
 non-forcing groups = reserve / mobility / capture / front
 ```
 
-### Mtaji morphology
+### Mtajiのmorphology
 
 ```text
 candidateDefinitionHash
@@ -148,28 +148,28 @@ MTAJI-M1 = Capture-Engaged Low-Contrast Morphology
 MTAJI-M2 = Capture-Sparse High-Contrast Morphology
 ```
 
-No classifier refit, restandardization, relabeling, threshold tuning, or alternative-k rescue was performed.
+classifier refit、restandardization、relabeling、threshold tuning、alternative-kによる救済は行っていません。
 
-Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory coordinates. STYLE-C1..C4 exact geometry remains formal `NOT-CONFIRMED`.
+Namuaのdiscrete typeは、引き続き支持されていません。N-ACT / N-CONはexploratory coordinateのままであり、STYLE-C1..C4のexact geometryもformal `NOT-CONFIRMED`のままです。
 
-## Outcome firewall and final audit
+## outcome情報の分離と最終監査
 
-Preoutcome matching completed before any M1/M2 label was read.
+M1 / M2 labelを読む前に、preoutcome matchingを完了しました。
 
 ```text
 morphologyLabelsRead during matching = false
 frozen Mtaji classifier loaded during matching = false
 ```
 
-Only after independent review passed was the exact matching/config/file identity bound in `preregistration/STAGE_2_OUTCOME_UNLOCK.json`.
+independent reviewがPASSした後に限り、exact matching / config / file identityを`preregistration/STAGE_2_OUTCOME_UNLOCK.json`へ固定しました。
 
-The evaluated morphology assignment preserved the frozen preoutcome assignment exactly. Independent post-evaluation review reproduced the primary counts, all matched-set summaries, Poisson-binomial test, risk difference, MH OR, and final decision.
+評価に使用したmorphology assignmentは、固定済みpreoutcome assignmentとexactに一致しました。評価後のindependent reviewは、primary count、すべてのmatched-set summary、Poisson-binomial test、risk difference、MH OR、最終判断を再現しました。
 
-## Stage 1 provenance
+## Stage 1の実行履歴
 
-All Stage 1 corpora are permanently consumed exploratory evidence and are excluded from Stage 2 formal inference.
+Stage 1 corpusはすべて消費済みのexploratory evidenceとして固定し、Stage 2 formal inferenceから除外しています。
 
-Final Stage 1 readiness:
+Stage 1の最終readiness:
 
 ```text
 unique CBE trajectory-ply units = 14
@@ -178,22 +178,22 @@ frozen gate = >=10 units / >=8 trajectories
 result = PASS
 ```
 
-## Interpretation boundary
+## 解釈上の境界
 
-This formal negative result does not authorize:
+このformal negative resultから、次の主張や変更は認められません。
 
 - proof of absence of all Namua→Mtaji temporal structure;
-- causal null claims;
-- Mtaji timing/hazard claims;
-- generalization beyond P2-D2;
-- universal ontology claims for MTAJI-M1/M2;
-- post-hoc candidate-ply subgroup, comparator, threshold, seed, or sample-size rescue;
-- reclassification of N-ACT/N-CON or STYLE-C1..C4.
+- causal nullの主張
+- Mtaji timing / hazardの主張
+- P2-D2を超える一般化
+- MTAJI-M1 / M2を普遍的ontologyとする主張
+- 結果確認後のcandidate-ply subgroup、comparator、threshold、seed、sample sizeによる救済
+- N-ACT / N-CONまたはSTYLE-C1..C4の再分類
 
-Any new confirmatory question must be a separate prospective study with fresh preregistration and fresh evidence.
+新しいconfirmatory questionは、fresh preregistrationとfresh evidenceを用いる別のprospective Studyとして扱う必要があります。
 
-## Closed-study rule
+## 終了済みStudyの扱い
 
-Study 1 is complete. Do not append Stage 2 games, seek a favorable seed block, change the comparator/control ratio, or reinterpret the primary result.
+Study 1は完了しています。Stage 2のgame追加、都合のよいseed blockの探索、comparator / control比の変更、primary resultの再解釈は行いません。
 
-Formal corpus and derived large artifacts remain under `artifacts/local/`, are gitignored, and must not be committed. Formal generation remains local-only; GitHub Actions was not used for the 4096-game corpus.
+formal corpusとそこから生成した大規模artifactは`artifacts/local/`に置き、gitignore対象としてcommitしません。formal generationはlocal-onlyであり、4,096-game corpusの生成にGitHub Actionsは使用していません。

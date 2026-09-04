@@ -1,4 +1,4 @@
-# Bao Position Complexity / Difficulty Study
+# Bao局面の複雑度・難しさの多層構造 — Study 1
 
 更新日: 2026-08-14  
 Status: **STUDY 1 CLOSED / FORMAL INCONCLUSIVE / REPOSITORY CLOSURE COMPLETE**
@@ -45,7 +45,7 @@ doc/position-complexity/STUDY_1_OVERVIEW.md
 doc/position-complexity/STUDY_1_FINAL_REPORT.md
 ```
 
-Stage 2 canonical formal result:
+Stage 2のcanonical formal result:
 
 ```text
 doc/position-complexity/STAGE_2_FORMAL_RESULT.md
@@ -80,9 +80,9 @@ Human difficultyはStudy 1のprimary対象外であり、将来の独立studyと
 - adaptive budget用`complexityScore()`はscientific complexity metricではない
 - Study 1では総合difficulty scoreを作らない
 
-## Stage 0 — exact measurement validation
+## Stage 0 — exact measurementの検証
 
-Research-specific diagnostic:
+本研究専用のdiagnostic:
 
 ```text
 tools/experiments/lib/position-complexity-search-diagnostic.js
@@ -91,7 +91,7 @@ search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
 
 Exact root candidate table、tie-aware TopSet、best-second gap、depth transitionsを測定できるようにし、technical gatesをPASSした。
 
-## Stage 1 — exploratory design development
+## Stage 1 — exploratory designの構築
 
 ```text
 Stage ID = PCX-S1-EXPLORATORY-2026-08-12-v1
@@ -108,7 +108,7 @@ all readiness gates = PASS
 
 Stage 1は探索専用で、Stage 2 confirmationには再利用していない。
 
-## Stage 2 — formal result
+## Stage 2 — 正式結果
 
 ```text
 Stage ID = PCX-S2-FORMAL-2026-08-13-v1
@@ -166,7 +166,7 @@ PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 
 数値収束問題を再検証する場合は、fresh corpusを用いた新しいprospective independent replicationとする。
 
-## Canonical documents
+## 正本となる文書
 
 ```text
 doc/position-complexity/README.md
@@ -189,7 +189,7 @@ doc/position-complexity/STAGE_2_FORMAL_RESULT.md
 doc/position-complexity/RESEARCH_LOG.md
 ```
 
-## Research tooling
+## 研究用ツール
 
 ```text
 tools/experiments/lib/position-complexity-search-diagnostic.js
@@ -205,14 +205,14 @@ tools/experiments/check-position-complexity-stage2-authorization.js
 
 GitHub Actionsはtechnical validation専用で、Stage 1/2 scientific corpusはローカル生成のみ。
 
-## Restart / audit procedure
+## 再開・監査の手順
 
 新しいチャットからこのclosed studyを復元するときは:
 
-1. `STUDY_1_OVERVIEW.md` を読む
-2. `STUDY_1_FINAL_REPORT.md` を読む
-3. `STAGE_2_FORMAL_RESULT.md` をformal decisionの正本として確認
-4. `REPRODUCIBILITY_INDEX.md` でhash/provenanceを確認
-5. `CURRENT_STATUS.md` と `DECISION_REGISTER.md` でimmutable boundariesを確認
+1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) を読む
+2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) を読む
+3. [`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) をformal decisionの正本として確認
+4. [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) でhash/provenanceを確認
+5. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) と `DECISION_REGISTER.md` でimmutable boundariesを確認
 
 Current Stage 2 dataはconsumed evidenceであり、future confirmationに再利用しない。

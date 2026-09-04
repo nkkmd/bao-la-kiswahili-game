@@ -1,15 +1,15 @@
-# Effective Branching / Reply-Width Structure Study 1
+# effective branching・reply-width構造 — `EBRWS-STUDY1`
 
-## Status
+## 現在の状態
 
-Research Generation 3 `G3-02` formal Study:
+Research Generation 3 `G3-02`のformal Studyです。
 
 `EBRWS-STUDY1 = CLOSED / TECHNICAL-INVALID`
 
-Research workflow: `COMPLETE / MAIN INTEGRATED`
-Main integration: `COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1`
+研究工程: `COMPLETE / MAIN INTEGRATED`
+mainへの統合: `COMPLETE / PR #92 / merge b41c7eda74dd1002e98e4d82714fadb987d1f1e1`
 
-Formal English title:
+正式英語題目:
 
 **Effective Branching and Reply-Width Structure Study 1 — Prospective validation of reproducible multi-ply branching and reply-width profiles as bounded RAW local game-tree position characteristics in Bao**
 
@@ -17,7 +17,7 @@ Formal English title:
 
 **Baoにおけるeffective branching / reply-width構造のprospective検証 — bounded RAW局所ゲーム木におけるmulti-ply branching・reply-width profileが再現可能な局面特性として成立する範囲の検証**
 
-## Closure summary
+## 終了結果の要約
 
 Stage 0 technical validationはsynthetic fixturesのみで`STAGE0-PASS`となり、production / independent stage scientific coreはexact一致した。
 
@@ -31,7 +31,7 @@ Stage 1はfresh seed `31210001..31210192`、Namua 12 + Mtaji 12、relative depth
 
 以上のtechnical-integrity failuresをfail-closedに適用し、Stage 1およびStudyを`TECHNICAL-INVALID`として閉じた。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
 
-## Diagnostic-only Stage 1 observation
+## 診断用途に限るStage 1観測
 
 Authorized GitHub Actions run `33569323221`のrunner logには次の候補が記録された。
 
@@ -42,24 +42,24 @@ Authorized GitHub Actions run `33569323221`のrunner logには次の候補が記
 
 Unauthorized duplicate runでも同じscientific core / candidate-set / scientific-result file hashがrunner-localに得られたが、この一致もscientific inferenceへ使用しない。
 
-Formal promoted candidate set:
+formalにpromotionされたcandidate set:
 
 `[]`
 
-## Scientific boundary
+## 科学的な主張範囲
 
-Authoritative representation:
+正本となるrepresentation:
 
 - RAW state identity: `pits,reserve,houseOwned,player,phase,winner,pending`
 - validated transform set: `[]`
 - relative local horizon: depth 5
 
-Primary dependency:
+主要dependency:
 
 - `LGTGMIV-F1-TREE-OCCURRENCE`
 - `LGTGMIV-F5-REPLY-GEOMETRY`
 
-Secondary contextual dependency:
+補助的なcontext dependency:
 
 - `LGTGMIV-F2-RAW-GRAPH`
 - `LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE`
@@ -67,20 +67,20 @@ Secondary contextual dependency:
 
 `effective branching`は新しいvalidated instrumentではなく、eligible exact primitivesからprospectively定義したderived constructとして扱った。
 
-## Frozen primary endpoint
+## 固定済みの主要endpoint
 
-Primary systems:
+主要system:
 
 1. `TREE-WIDTH-SHAPE`
 2. `REPLY-WIDTH-SHAPE`
 
-Candidate gate:
+candidate gate:
 
 `3 * classCount >= 2 * eligibleRootCount`
 
 このthreshold、endpoint、family usage、phase、seed、root ruleはfresh evidence後に変更していない。
 
-## Stage disposition
+## 各Stageの状態
 
 1. `EBRWS-S0-TECHNICAL-2026-09-01-v1` — `STAGE0-PASS`
 2. `EBRWS-S1-DEVELOPMENT-2026-09-01-v1` — `TECHNICAL-INVALID`
@@ -88,33 +88,33 @@ Candidate gate:
 
 Stage 1 seed `31210001..31210192`は消費済み。Stage 2 seed `31220001..31220288`は未消費。
 
-## Protected evidence
+## 保護された証拠
 
-standard initial RAW root complete exact depth-10 holdout remains:
+standard initial RAW rootのcomplete exact depth-10 holdoutは、次の状態を維持しました。
 
 `SEALED / NOT GENERATED / NOT READ`
 
-## Interpretation boundary
+## 解釈上の境界
 
 branching width / reply width / multi-ply width profileはmachine-observed bounded RAW geometryであり、best move、search difficulty、game-theoretic forcing、win/value、human difficultyへ読み替えない。
 
-## Canonical records
+## 正本となる記録
 
-- `STUDY_1_OVERVIEW.md` — 初見向け成果概要
-- `STUDY_1_FINAL_REPORT.md` — scientific/technical closure正本
-- `STUDY_1_PROTOCOL.md` — frozen prospective protocol
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向け成果概要
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — scientific/technical closure正本
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — frozen prospective protocol
 - `prereg/STUDY_1_SPEC.json` — machine-readable preregistration
-- `CURRENT_STATUS.md` — current-facing state
-- `DECISION_REGISTER.md` — formal decisions
-- `REPRODUCIBILITY_INDEX.md` — reproducibility map
-- `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — authoritative Stage 1 closure result / execution audit
-- `checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md` — materialization incident checkpoint
-- `checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md` — execution-count violation checkpoint
-- `checkpoints/2026-09-02-main-integration-complete.md` — repository main integration completion checkpoint
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing state
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — formal decisions
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — reproducibility map
+- `results/stage-1/STAGE_1_TECHNICAL_INVALID_RESULT.json` — Stage 1 closure result・実行監査の正本
+- [`checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md`](checkpoints/2026-09-02-stage-1-materialization-failure-technical-invalid.md) — materialization incident checkpoint
+- [`checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md`](checkpoints/2026-09-02-stage-1-unintended-duplicate-execution.md) — execution-count violation checkpoint
+- [`checkpoints/2026-09-02-main-integration-complete.md`](checkpoints/2026-09-02-main-integration-complete.md) — repository main integration completion checkpoint
 
-Historical `doc/research-generation-3/PROGRAM_PLAN.md` remains immutable and is not rewritten.
+過去の計画を記録する`doc/research-generation-3/PROGRAM_PLAN.md`は変更不可のまま保持し、書き換えていません。
 
-## Final Actions-history audit
+## GitHub Actions実行履歴の最終監査
 
 ```text
 authorized Stage 1 scientific executions = 1

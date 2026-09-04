@@ -3,7 +3,7 @@
 このディレクトリは、Bao la Kiswahili に反復して現れる局面構造と、対局trajectoryに現れる戦略傾向を分類・検証した研究を管理します。
 
 Status: **research complete**  
-Branch: `research/position-typology-and-playing-style`
+研究ブランチ: `research/position-typology-and-playing-style`
 
 ## 研究題目
 
@@ -23,7 +23,7 @@ Branch: `research/position-typology-and-playing-style`
 
 ## 最終主要結果
 
-### Mtaji — confirmed two-type morphology
+### Mtaji — 確認された二つのmorphology
 
 独立held-out confirmationにより、固定representation / preregistered population内で次の二つのstate-level morphologyをformalにconfirmedしました。
 
@@ -42,7 +42,7 @@ resultHash = 26b429e75f7a8ffd5681f3ba1f7b1915b8ad6f0470b1d3155f07381ffd6c5347
 
 これはuniversal/final Bao ontologyではなく、bounded empirical claimです。
 
-### Namua — continuous representation preferred
+### Namua — continuous representationを採用
 
 Namuaではstable discrete position typeをpromoteしませんでした。
 
@@ -54,11 +54,11 @@ N-CON  = exploratory continuous structural-contrast coordinate
 
 N-PROGは進行contextでありmorphology/style featureには使いません。N-ACT/N-CONはexploratoryです。
 
-### Playing style — discrete set unsupported / exact 4D geometry not confirmed
+### 棋風 — discrete setは支持されず、exact 4D geometryは未確認
 
 Stage 4ではk=2..6のcoherent discrete style setは得られませんでした。
 
-Discovery-derived coordinates:
+discoveryから得たcoordinate:
 
 ```text
 STYLE-C1 = Engagement-Persistence

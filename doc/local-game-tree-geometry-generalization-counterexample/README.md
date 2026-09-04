@@ -1,6 +1,6 @@
-# LGTGGC-STUDY1 — Local Game-Tree Geometry Generalization / Counterexample Study 1
+# 局所ゲーム木幾何の一般化範囲と反例領域 — `LGTGGC-STUDY1`
 
-## Current status
+## 現在の状態
 
 ```text
 Program position = Research Generation 3 / G3-12
@@ -23,7 +23,7 @@ G3-04、G3-07、G3-10でformal confirmationを得たbounded local-game-tree geom
 
 G3-12はupstream negative / null / technical-invalid resultを救済するStudyではない。
 
-## Formal upstream targets
+## 上流研究から引き継いだ正式対象
 
 - G3-04: C1 `MTAJI-GREATER`、C6 `NAMUA-GREATER`
 - G3-07: SC1 / SC2 / SC3の`G1 ROOT-LEGAL-WIDTH × E3 RANKING-PREORDER-CHANGE = HIGHER-IN-HIGH`
@@ -33,7 +33,7 @@ G3-10 C4、G3-02/03/05/06/08/09 technical-invalid family、G3-07 non-confirmed/n
 
 G3-11 `FDEGHV-STUDY1`はsingle standard-root depth-10 historical exact anchor / boundary referenceに限定し、generalization targetにしない。
 
-## Active transfer matrix
+## 実際に使用した転移条件
 
 Pre-fresh technical amendment後のsource policies:
 
@@ -51,9 +51,9 @@ RF2 = LATE-ANCHOR
 
 Historical base protocol/specに残る`P2-CAPTURE-FIRST`はpre-Stage0 provenanceであり、authoritative legal-move semanticsとのnon-identifiabilityがscientific access前に判明したためactive execution contractではない。
 
-## Execution summary
+## 実行結果の要約
 
-### Stage 0
+### Stage 0の結果
 
 ```text
 V3 Actions run = 33843233392
@@ -61,9 +61,9 @@ stage disposition = STAGE0-PASS
 technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e493e8a834
 ```
 
-### Stage 1
+### Stage 1の結果
 
-Exactly-once Actions run:
+1回限りの実行として承認したActions run:
 
 `33848876682`
 
@@ -86,7 +86,7 @@ fatal error = complete root ranking required
 formal inference = false
 ```
 
-The frozen LOW population permits legal-width-1 roots, while inherited SILGM production/independent helpers hard-require at least two ranked root candidates. The compatibility gap was not caught by Stage 0 fixtures. Fresh access had already occurred, so the helper is not corrected and the same evidence is not replayed.
+固定済みのLOW populationはlegal-width-1 rootを許容していましたが、SILGMから継承したproduction / independent helperは、順位づけ可能なroot candidateが最低2件あることを必須としていました。この互換性の欠落はStage 0 fixtureでは検出できませんでした。すでにfresh evidenceへアクセスしていたため、helperを修正せず、同じ証拠のreplayも行っていません。
 
 GCLD:
 
@@ -94,21 +94,21 @@ GCLD:
 NOT EXECUTED / Stage 1 seed block UNREAD
 ```
 
-### Stage 2
+### Stage 2の結果
 
 **`LGTGGC-STAGE2-NOT-AUTHORIZED`**
 
-Stage 2 seed blocks remain unread. No formal generalization/counterexample inference was performed.
+Stage 2 seed blockは未読のままです。generalization / counterexampleに関するformal inferenceは行っていません。
 
-## Final interpretation
+## 最終結果の読み方
 
 **`LGTGGC-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
-The prospectively frozen capstone execution did not reach formal held-out Stage 2, so G3-12 did not establish a formal boundary for generalization, non-generalization, or counterexample domains.
+結果を見る前に固定したcapstone executionはformal held-out Stage 2へ到達できませんでした。したがってG3-12は、generalization、non-generalization、counterexample domainのformal boundaryを確立していません。
 
-SFCDF Stage 1 PASS is development readiness evidence only and is not promoted to a formal G3-04 transfer result. Upstream G3-04/G3-07/G3-10 decisions remain unchanged.
+SFCDFのStage 1 PASSはdevelopment readiness evidenceに限られ、formalなG3-04 transfer resultへ昇格しません。上流のG3-04・G3-07・G3-10の判断も変更しません。
 
-## Protected boundary
+## 保護された境界
 
 ```text
 G3-11 depth-10 = CONSUMED EXACTLY ONCE / HISTORICAL READ-ONLY RESULT ONLY
@@ -119,7 +119,7 @@ validated transform set = []
 Stage 2 fresh access = 0
 ```
 
-## Canonical documents
+## 正本となる文書
 
 - [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
 - [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
@@ -134,4 +134,4 @@ Stage 2 fresh access = 0
 - [`../research-program-decisions/2026-09-04-post-g3-12-stage0-stage1-authorization-review.md`](../research-program-decisions/2026-09-04-post-g3-12-stage0-stage1-authorization-review.md)
 - [`../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md)
 
-Historical `doc/research-generation-3/PROGRAM_PLAN.md` is not retroactively modified.
+過去の計画を記録する`doc/research-generation-3/PROGRAM_PLAN.md`は、結果に合わせて遡及的に変更していません。

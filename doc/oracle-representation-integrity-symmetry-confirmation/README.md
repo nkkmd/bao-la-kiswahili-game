@@ -1,4 +1,4 @@
-# Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1
+# 限定終盤oracleの表現整合性・対称性確認 — Study 1
 
 **Study ID:** `ORISC-STUDY1`  
 **Status:** **COMPLETED**  
@@ -7,15 +7,15 @@
 **Branch:** `research/oracle-representation-integrity-symmetry-confirmation`  
 **Baseline main HEAD:** `e8f0a3c360d9e7c9f7f6882fb212a32921040912`
 
-## Purpose
+## 何を調べたか
 
-This prospective independent Bao study audited whether the immutable Restricted Endgame Study 1 repository-facing exact-oracle representation is suitable as a raw-state reconstruction anchor. A separate symmetry/isomorphism confirmation stage was allowed only if prospectively frozen representation-integrity gates passed.
+本Studyは、変更不可となったRestricted Endgame Study 1のrepository-facing exact-oracle representationが、raw-state reconstruction anchorとして使用可能かを監査した、事前規定・独立のBao研究です。別のsymmetry / isomorphism確認Stageへ進めるのは、結果を見る前に固定したrepresentation-integrity gateを通過した場合だけとしました。
 
-The study was not a continuation, corrected v2, rescue, or retrospective reanalysis of `SIP-STUDY1`, and it did not change `REWR-STUDY1`.
+本Studyは`SIP-STUDY1`の継続、corrected v2、救済、retrospective reanalysisではなく、`REWR-STUDY1`も変更していません。
 
-## Final result
+## 最終結果
 
-Axis A independently reconstructed the frozen raw graph exactly:
+Axis Aでは、固定済みraw graphを独立にexact reconstructionしました。
 
 ```text
 states = 8
@@ -27,9 +27,9 @@ terminal accounting mismatches = 0
 transition successor mismatches = 0
 ```
 
-However three immutable repository-facing terminal rows failed the prospectively frozen stored-row re-hash and reconstructed raw-state binding gates. In all three, the identity-field difference was `pending` only and the repository row represented 63 seeds rather than 64.
+一方、変更不可のrepository-facing terminal row 3件が、事前固定したstored-row re-hash gateとreconstructed raw-state binding gateを満たしませんでした。3件ともidentity fieldの差は`pending`だけであり、repository rowは64 seedsではなく63 seedsを表していました。
 
-Therefore:
+このため、正式判断は次のとおりです。
 
 ```text
 Axis A formal decision = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
@@ -39,14 +39,14 @@ A-G11 IDENTITY = FAIL
 A-G12 production/independent equality = PASS
 ```
 
-Because Axis A and IDENTITY did not satisfy the conditional Stage 2 authorization gate:
+Axis AとIDENTITYがconditional Stage 2 authorization gateを満たさなかったため、次のcandidateは実行していません。
 
 ```text
 Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 nontrivial symmetry candidate decisions = 0
 ```
 
-## Immutable upstream boundaries
+## 上流研究から変更しない境界
 
 `REWR-STUDY1` remains:
 
@@ -65,9 +65,9 @@ rejected = 0
 nonEstimable = 5
 ```
 
-No upstream oracle row was rewritten.
+上流研究のoracle rowは書き換えていません。
 
-## Final downstream contract
+## 後続研究へ引き継ぐ境界
 
 ```text
 raw state identity = authoritative
@@ -78,27 +78,27 @@ symmetry-reduced state counting = NOT AUTHORIZED
 State Space / Game Tree Complexity = may proceed RAW-ONLY
 ```
 
-The ORISC result does not show that the unexecuted T01/T02/T03 candidates are false symmetries.
+ORISCの結果は、未実行のT01 / T02 / T03 candidateがfalse symmetryであることを示しません。
 
-## Canonical documents
+## 正本となる文書
 
-- `STUDY_1_OVERVIEW.md` — human-readable result overview
-- `STUDY_1_FINAL_REPORT.md` — scientific and technical final integration
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — human-readable result overview
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — scientific and technical final integration
 - `results/STAGE_1_FORMAL_RESULT.json` — canonical Axis A formal result
 - `results/STUDY_1_FINAL_RESULT.json` — Study-level closure
-- `CURRENT_STATUS.md` — final status and downstream boundary
-- `DECISION_REGISTER.md` — prospective decisions, no-rescue rules and closure decisions
-- `REPRODUCIBILITY_INDEX.md` — source/hash/workflow identities
-- `RESEARCH_LOG.md` — chronology
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — final status and downstream boundary
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — prospective decisions, no-rescue rules and closure decisions
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — source/hash/workflow identities
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — chronology
 - `preregistration/STAGE_1_FORMAL_SPEC.json` — frozen Axis A spec
 - `preregistration/STAGE_1_AUTHORIZATION.json` — Axis A authorization
 - `preregistration/STAGE_2_CANDIDATE_CONTRACT.json` — pre-outcome conditional Stage 2 contract; **never authorized/executed**
 
-## Historical design documents
+## 過去の設計文書
 
-- `PROTOCOL_DRAFT.md` — prefreeze design draft, superseded by the frozen formal spec
-- `STAGE_0A_TECHNICAL_AUDIT_PLAN.md` — Stage 0A technical-only plan
-- `STAGE_0A_TECHNICAL_AUDIT.md` — completed technical/provenance audit
-- `STAGE_0A_CANDIDATE_POPULATION_PROPOSAL.md` — pre-outcome proposal later frozen in the Stage 2 candidate contract
+- [`PROTOCOL_DRAFT.md`](PROTOCOL_DRAFT.md) — prefreeze design draft, superseded by the frozen formal spec
+- [`STAGE_0A_TECHNICAL_AUDIT_PLAN.md`](STAGE_0A_TECHNICAL_AUDIT_PLAN.md) — Stage 0A technical-only plan
+- [`STAGE_0A_TECHNICAL_AUDIT.md`](STAGE_0A_TECHNICAL_AUDIT.md) — completed technical/provenance audit
+- [`STAGE_0A_CANDIDATE_POPULATION_PROPOSAL.md`](STAGE_0A_CANDIDATE_POPULATION_PROPOSAL.md) — pre-outcome proposal later frozen in the Stage 2 candidate contract
 
-No further scientific outcome generation is authorized within this completed Study 1.
+完了済みのStudy 1内で、これ以上のscientific outcomeを生成することは承認されていません。

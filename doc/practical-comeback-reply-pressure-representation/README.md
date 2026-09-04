@@ -1,4 +1,4 @@
-# G2-07 / PCRPR-STUDY1
+# 実戦的逆転可能性とreply pressureの表現 — `G2-07` / `PCRPR-STUDY1`
 
 Research Generation 2 `G2-07` — **Practical Comeback / Reply-Pressure Representation Study 1**。
 
@@ -43,15 +43,15 @@ human interpretation = NOT AUTHORIZED
 
 ## 読む順序
 
-1. `STUDY_1_OVERVIEW.md` — 初見向けの研究概要
-2. `STUDY_1_FINAL_REPORT.md` — canonical study closure
-3. `CURRENT_STATUS.md` — 現在の終了状態と実行anchor
-4. `DECISION_REGISTER.md` — 事前固定decisionとterminal decision
-5. `REPRODUCIBILITY_INDEX.md` — exact provenanceとhash
+1. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 初見向けの研究概要
+2. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — canonical study closure
+3. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の終了状態と実行anchor
+4. [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 事前固定decisionとterminal decision
+5. [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — exact provenanceとhash
 6. `results/STAGE_1_DEVELOPMENT_RESULT.json` — machine-readable final decision
 7. `results/STAGE_1_TECHNICAL_POSTMORTEM.json` — artifact transport incident
-8. `RESEARCH_LOG.md` — 時系列研究記録
-9. `RESUME_HERE.md` — closed-studyの再開禁止・次研究への境界
+8. [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — 時系列研究記録
+9. [`RESUME_HERE.md`](RESUME_HERE.md) — closed-studyの再開禁止・次研究への境界
 
 ## main統合
 

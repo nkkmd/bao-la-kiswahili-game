@@ -1,4 +1,4 @@
-# PSRRE-STUDY1 — 研究ディレクトリ案内
+# strategic-state / regime表現のeligibility検証 — `PSRRE-STUDY1`
 
 `PSRRE-STUDY1`はG2-10とG2-11の間に置かれた、新規・prospective・独立のstrategic representation prerequisite Studyである。新しいG2-xx labelは追加していない。
 
@@ -36,7 +36,7 @@ Prospective設計の正本:
 - [`UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`](UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md)
 - [`prereg/`](prereg/) — Stage 0 / Stage 1 / Stage 2のfrozen machine-readable contract
 
-Execution / result provenance:
+実行・結果のprovenance:
 
 - [`authorizations/`](authorizations/) — technical / scientific authorization ledger
 - [`results/`](results/) — repository-facing result indexとcanonical result
@@ -52,7 +52,7 @@ Execution / result provenance:
 
 G2-11を今後実施する場合は、本Studyのunvalidated representationを流用せず、representation dependencyを含む新しいprospective decisionが必要である。
 
-## no-rescue
+## 結果確認後の救済を禁止する境界
 
 Stage 1 seeds `29510001..29514096`はconsume-onceで消費済みであり、同block rerun / repair / replacement / extensionはしない。threshold緩和、feature差替え、family/K追加、favorable subgroupによる救済もしない。
 

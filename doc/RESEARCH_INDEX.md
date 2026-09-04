@@ -4,7 +4,9 @@
 対象: Research Generation 1〜3
 現在の状態: **Research Generation 2・3は完了し、`main`へ統合済み**
 
-この文書は、研究成果の入口を世代別にまとめた索引です。結論だけを知りたい場合は各世代の「全体像」を、根拠・再現方法・固定済み境界を確認したい場合は各StudyのFinal ReportやReproducibility Indexを参照してください。
+この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、そこから初見向け概要、Final Report、Current Status、Reproducibility Indexへ進める構成に統一しています。
+
+結論だけを知りたい場合は各世代の「全体像」を、根拠・再現方法・固定済み境界を確認したい場合は各Studyの入口READMEから正本を参照してください。
 
 ## はじめに読む文書
 
@@ -24,21 +26,21 @@
 
 | Agenda / Study | 最終状態 | 要点 |
 | --- | --- | --- |
-| `G3-01` / `LGTGMF-STUDY1` | `TECHNICAL-INVALID` | 当初の測定基盤からformal eligible familyは得られませんでした。 |
-| 前提Study / `LGTGMIV-STUDY1` | `FORMAL-ELIGIBLE-ALL` | RAW-only・relative depth 5のF1〜F5を測定器として適格化しました。 |
-| `G3-02` / `EBRWS-STUDY1` | `TECHNICAL-INVALID` | effective branching / reply-widthのformal claimには到達していません。 |
-| `G3-03` / `TCTGD-STUDY1` | `TECHNICAL-INVALID` | transposition / tree-graph divergenceのformal candidateは0件です。 |
-| `G3-04` / `SFCDF-STUDY1` | `FORMAL-COMPLETE` | C1は`MTAJI-GREATER`、C6は`NAMUA-GREATER`として`CONFIRMED`です。 |
-| `G3-05` / `BECT-STUDY1` | `TECHNICAL-INVALID` | branch expansion / compression transitionのformal resultはありません。 |
-| `G3-06` / `BRMGI-STUDY1` | `TECHNICAL-INVALID` | Bao固有rule eventとgeometryの関係はformalに評価できませんでした。 |
-| `G3-07` / `SILGM-STUDY1` | `FORMAL-COMPLETE` | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE`です。 |
-| `G3-08` / `LGPML-STUDY1` | `TECHNICAL-INVALID` | persistence / memory lengthのformal resultはありません。 |
-| `G3-09` / `CLGR-STUDY1` | `TECHNICAL-INVALID` | 当初のcontinuous representationはformal eligibilityに到達していません。 |
-| 前提Study / `RRCLGR-STUDY1` | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
-| 前提Study / `CRCLGR-STUDY1` | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
-| `G3-10` / `GCLD-STUDY1` | `FORMAL-COMPLETE` | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED`です。 |
-| `G3-11` / `FDEGHV-STUDY1` | `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` | H1〜H4が`DEEPER-CONFIRMED`。depth 10は一度だけ消費済みです。 |
-| `G3-12` / `LGTGGC-STUDY1` | `TECHNICAL-INVALID` | Stage 2は未実行で、generalization / counterexampleのformal decisionはありません。 |
+| `G3-01` / [`LGTGMF-STUDY1`](local-game-tree-geometry-measurement-foundation/) | `TECHNICAL-INVALID` | 当初の測定基盤からformal eligible familyは得られませんでした。 |
+| 前提Study / [`LGTGMIV-STUDY1`](local-game-tree-geometry-measurement-instrument-verification/) | `FORMAL-ELIGIBLE-ALL` | RAW-only・relative depth 5のF1〜F5を測定器として適格化しました。 |
+| `G3-02` / [`EBRWS-STUDY1`](effective-branching-reply-width-structure/) | `TECHNICAL-INVALID` | effective branching / reply-widthのformal claimには到達していません。 |
+| `G3-03` / [`TCTGD-STUDY1`](transposition-concentration-tree-graph-divergence/) | `TECHNICAL-INVALID` | transposition / tree-graph divergenceのformal candidateは0件です。 |
+| `G3-04` / [`SFCDF-STUDY1`](structural-forcing-corridor-decision-funnel/) | `FORMAL-COMPLETE` | C1は`MTAJI-GREATER`、C6は`NAMUA-GREATER`として`CONFIRMED`です。 |
+| `G3-05` / [`BECT-STUDY1`](branch-expansion-compression-transition/) | `TECHNICAL-INVALID` | branch expansion / compression transitionのformal resultはありません。 |
+| `G3-06` / [`BRMGI-STUDY1`](bao-rule-mechanism-geometry-intervention/) | `TECHNICAL-INVALID` | Bao固有rule eventとgeometryの関係はformalに評価できませんでした。 |
+| `G3-07` / [`SILGM-STUDY1`](search-instability-local-geometry-mechanism/) | `FORMAL-COMPLETE` | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE`です。 |
+| `G3-08` / [`LGPML-STUDY1`](local-geometry-persistence-memory-length/) | `TECHNICAL-INVALID` | persistence / memory lengthのformal resultはありません。 |
+| `G3-09` / [`CLGR-STUDY1`](continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | 当初のcontinuous representationはformal eligibilityに到達していません。 |
+| 前提Study / [`RRCLGR-STUDY1`](resource-robust-continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
+| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
+| `G3-10` / [`GCLD-STUDY1`](geometry-conditioned-longitudinal-dynamics/) | `FORMAL-COMPLETE` | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED`です。 |
+| `G3-11` / [`FDEGHV-STUDY1`](fresh-depth10-exact-geometry-holdout/) | `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` | H1〜H4が`DEEPER-CONFIRMED`。depth 10は一度だけ消費済みです。 |
+| `G3-12` / [`LGTGGC-STUDY1`](local-game-tree-geometry-generalization-counterexample/) | `TECHNICAL-INVALID` | Stage 2は未実行で、generalization / counterexampleのformal decisionはありません。 |
 
 G3-11のexact resultは、standard initial RAW rootのfrozen depth-10 domainに限られます。
 
@@ -94,22 +96,22 @@ tree edge occurrences = 136644
 
 | 番号 | テーマ | 結果の要約 | 最初に読む文書 |
 | ---: | --- | --- | --- |
-| 1 | 局面相転移点 | `capture-branch-expansion`を限定scopeで確認 | [`phase-transition/STUDY_1_OVERVIEW.md`](phase-transition/STUDY_1_OVERVIEW.md) |
+| 1 | 局面相転移点 | `capture-branch-expansion`を限定scopeで確認 | [`phase-transition/`](phase-transition/) |
 | 2 | 定石 | 一般定石として採用できる暫定候補は0件 | [`joseki/README.md`](joseki/README.md) |
 | 3 | 先攻・後攻差 | 条件依存の統合研究記録 | [`FIRST_PLAYER_ADVANTAGE_RESEARCH.md`](FIRST_PLAYER_ADVANTAGE_RESEARCH.md) |
-| 4 | 局面類型と棋風 | Mtajiのbounded two-type morphologyを確認 | [`position-typology/STUDY_1_OVERVIEW.md`](position-typology/STUDY_1_OVERVIEW.md) |
-| 5 | Namua→Mtaji transition | `NOT-CONFIRMED` | [`namua-mtaji-transition/STUDY_1_OVERVIEW.md`](namua-mtaji-transition/STUDY_1_OVERVIEW.md) |
-| 6 | 局面複雑度 | `INCONCLUSIVE` | [`position-complexity/STUDY_1_OVERVIEW.md`](position-complexity/STUDY_1_OVERVIEW.md) |
-| 7 | Tactical Motifs | C03のみ`CONFIRMED` | [`tactical-motifs/STUDY_1_OVERVIEW.md`](tactical-motifs/STUDY_1_OVERVIEW.md) |
-| 8 | Tactical Motifの人間検証 | `INCONCLUSIVE-NOT-ESTIMABLE (N=0)` | [`tactical-motif-human-validation/STUDY_1_OVERVIEW.md`](tactical-motif-human-validation/STUDY_1_OVERVIEW.md) |
-| 9 | 形勢評価と勝率校正 | `INCONCLUSIVE` | [`position-evaluation-calibration/STUDY_1_OVERVIEW.md`](position-evaluation-calibration/STUDY_1_OVERVIEW.md) |
-| 10 | 悪手・誤評価パターン | 0件`CONFIRMED`、4件`NOT-CONFIRMED` | [`blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md`](blunder-misvaluation-patterns/STUDY_1_OVERVIEW.md) |
-| 11 | 重要局面と勝敗分岐 | candidate 0件、Stage 2未実行 | [`critical-positions-outcome-branching/STUDY_1_OVERVIEW.md`](critical-positions-outcome-branching/STUDY_1_OVERVIEW.md) |
-| 12 | 限定終盤 | frozen 8-state domainをexact solve | [`restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md`](restricted-endgame-winning-regions/STUDY_1_OVERVIEW.md) |
-| 13 | 対称性・同型局面 | 5 candidateすべて`NON-ESTIMABLE` | [`symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md`](symmetry-isomorphic-positions/STUDY_1_OVERVIEW.md) |
-| 14 | Oracle表現整合性 | Axis A `NOT-CONFIRMED`、Axis B未実行 | [`oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`](oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md) |
-| 15 | 状態空間・ゲーム木 | `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`。24,848 RAW states / 30,941 tree nodes | [`state-space-game-tree-complexity/STUDY_1_OVERVIEW.md`](state-space-game-tree-complexity/STUDY_1_OVERVIEW.md) |
-| 16 | 実戦的な逆転可能性 | `EXPLORATORY-ONLY`、candidate 0件 | [`practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md`](practical-comeback-error-inducing-moves/STUDY_1_OVERVIEW.md) |
+| 4 | 局面類型と棋風 | Mtajiのbounded two-type morphologyを確認 | [`position-typology/`](position-typology/) |
+| 5 | Namua→Mtaji transition | `NOT-CONFIRMED` | [`namua-mtaji-transition/`](namua-mtaji-transition/) |
+| 6 | 局面複雑度 | `INCONCLUSIVE` | [`position-complexity/`](position-complexity/) |
+| 7 | Tactical Motifs | C03のみ`CONFIRMED` | [`tactical-motifs/`](tactical-motifs/) |
+| 8 | Tactical Motifの人間検証 | `INCONCLUSIVE-NOT-ESTIMABLE (N=0)` | [`tactical-motif-human-validation/`](tactical-motif-human-validation/) |
+| 9 | 形勢評価と勝率校正 | `INCONCLUSIVE` | [`position-evaluation-calibration/`](position-evaluation-calibration/) |
+| 10 | 悪手・誤評価パターン | 0件`CONFIRMED`、4件`NOT-CONFIRMED` | [`blunder-misvaluation-patterns/`](blunder-misvaluation-patterns/) |
+| 11 | 重要局面と勝敗分岐 | candidate 0件、Stage 2未実行 | [`critical-positions-outcome-branching/`](critical-positions-outcome-branching/) |
+| 12 | 限定終盤 | frozen 8-state domainをexact solve | [`restricted-endgame-winning-regions/`](restricted-endgame-winning-regions/) |
+| 13 | 対称性・同型局面 | 5 candidateすべて`NON-ESTIMABLE` | [`symmetry-isomorphic-positions/`](symmetry-isomorphic-positions/) |
+| 14 | Oracle表現整合性 | Axis A `NOT-CONFIRMED`、Axis B未実行 | [`oracle-representation-integrity-symmetry-confirmation/`](oracle-representation-integrity-symmetry-confirmation/) |
+| 15 | 状態空間・ゲーム木 | `SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`。24,848 RAW states / 30,941 tree nodes | [`state-space-game-tree-complexity/`](state-space-game-tree-complexity/) |
+| 16 | 実戦的な逆転可能性 | `EXPLORATORY-ONLY`、candidate 0件 | [`practical-comeback-error-inducing-moves/`](practical-comeback-error-inducing-moves/) |
 
 ### 16. Practical Comeback / Error-Inducing Move — Study 1 — 結果
 

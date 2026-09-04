@@ -1,4 +1,4 @@
-# Local Game-Tree Geometry Measurement Foundation Study 1
+# 局所ゲーム木幾何の測定基盤 — `LGTGMF-STUDY1`
 
 Research Generation 3 `G3-01` / `LGTGMF-STUDY1` の研究ディレクトリである。
 
@@ -6,7 +6,7 @@ Research Generation 3 `G3-01` / `LGTGMF-STUDY1` の研究ディレクトリで�
 
 正式判断は **`TECHNICAL-INVALID`**。Stage 1 fresh developmentでは全12 selected rootsについてproduction / independentのroot-level measurement coreとF1〜F5 family digestがexact一致したが、凍結済みcanonical stage-manifest contractを実装が満たさなかった。fresh evidence消費後のsame-evidence repairは禁止されていたためfail-closedで閉じ、Stage 2は実行していない。
 
-## Formal identity
+## 正式なStudy識別情報
 
 ```text
 Program = Research Generation 3 G3-01
@@ -35,17 +35,17 @@ Main integration = COMPLETE
 
 ## 文書
 
-- `STUDY_1_PROTOCOL.md`: prospective scientific contractとconstruct semanticsの正本
-- `STUDY_1_OVERVIEW.md`: 初見向けの日本語概要
-- `STUDY_1_FINAL_REPORT.md`: 最終科学報告
-- `CURRENT_STATUS.md`: current-facing closure state
-- `DECISION_REGISTER.md`: prospective freezeとformal disposition
-- `REPRODUCIBILITY_INDEX.md`: source・spec・workflow・artifact・verifier索引
-- `preregistration/`: Study / Stage freeze
-- `results/`: Stage result summary
-- `checkpoints/`: immutable progress / closure checkpoints
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md): prospective scientific contractとconstruct semanticsの正本
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md): 初見向けの日本語概要
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md): 最終科学報告
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md): current-facing closure state
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md): prospective freezeとformal disposition
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md): source・spec・workflow・artifact・verifier索引
+- [`preregistration/`](preregistration/): Study / Stage freeze
+- [`results/`](results/): Stage result summary
+- [`checkpoints/`](checkpoints/): immutable progress / closure checkpoints
 
-## Current dependency state
+## 現在のdependency状態
 
 G3-01のformal eligible measurement family setは空である。このG3-01 formal decisionは現在も不変であり、本Study自体からG3-02〜G3-08を自動開始してはならない。
 

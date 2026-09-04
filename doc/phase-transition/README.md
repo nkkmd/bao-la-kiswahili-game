@@ -33,7 +33,7 @@
 
 ---
 
-## 第1研究の最終formal decisions
+## 第1研究の最終判断
 
 | Experiment | Formal decision | 固定範囲 / 理由 |
 | --- | --- | --- |
@@ -66,7 +66,7 @@
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — append-only研究ログ
 - [`checkpoints/`](checkpoints/) — 工程・formal execution・completion checkpoint
 
-### formal execution / archiveを確認する
+### 正式実行・archiveを確認する
 
 - [`E011_FORMAL_EXECUTION.md`](E011_FORMAL_EXECUTION.md)
 - [`E017_FORMAL_EXECUTION.md`](E017_FORMAL_EXECUTION.md)
@@ -114,10 +114,10 @@ artifacts/phase-transition/pilot-v2/
 主な値:
 
 - study version: `0.4.1`
-- games: 100
-- observations: 5,650
-- forced-capture regimes: 421
-- Category-A candidate intervals: 15
+- 対局数: 100
+- 観測数: 5,650
+- forced-capture regime数: 421
+- Category-A candidate interval数: 15
 
 再生成:
 
@@ -140,7 +140,7 @@ node tools/experiments/verify-phase-transition-artifacts.js \
 
 Study 1 closure後も次を維持します。
 
-- `RESEARCH_LOG.md` はappend-only。
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md) はappend-only。
 - 過去formal corpusを再生成・上書きしない。
 - secondary / retrospective analysisでformal primary decisionを置換しない。
 - 新規formal experimentには新規hypothesis / experiment ID / seed block / preregistration / execution policy / explicit authorization / execution lockを要求する。
@@ -153,15 +153,15 @@ Study 1 closure後も次を維持します。
 
 Study 1から残った主な独立課題には次があります。
 
-- search-tree / PV / cutoff / leaf-evaluation / horizon mechanism
+- search-tree / PV / cutoff / leaf-evaluation / horizonのmechanism
 - second independent feature groupのprospective confirmation
-- reserve threshold
-- nyumba transition
-- front-row control
-- capture-to-mobility transition
-- non-terminal forcing-to-free-choice transition
+- reserveの閾値
+- nyumbaの転移
+- front-rowのcontrol
+- captureからmobilityへの転移
+- non-terminal forcingからfree-choiceへの転移
 - formal `namua -> mtaji` とstrategic transitionの時間関係
-- multiple transition taxonomy
-- broader evaluator / depth / search implementation external validity
+- 複数転移のtaxonomy
+- より広いevaluator / depth / search implementationへのexternal validity
 
 これらはStudy 1の未完了項目ではなく、今後の新規研究候補です。

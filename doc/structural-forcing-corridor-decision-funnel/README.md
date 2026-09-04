@@ -1,8 +1,8 @@
-# Structural Forcing-Corridor / Decision-Funnel Study 1
+# forcing corridor・decision funnelの構造 — `SFCDF-STUDY1`
 
 Research Generation 3 `G3-04` / `SFCDF-STUDY1` の研究ディレクトリ。
 
-## Formal status
+## 正式な状態
 
 ```text
 Study status = CLOSED / FORMAL-COMPLETE
@@ -20,16 +20,16 @@ protected depth-10 holdout = SEALED / NOT GENERATED / NOT READ
 
 ## 最初に読む文書
 
-- `STUDY_1_FINAL_REPORT.md` — formal resultと解釈境界
-- `STUDY_1_OVERVIEW.md` — 研究全体の概要
-- `../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md` — program-level closure decision
-- `CURRENT_STATUS.md` — closure状態と主要provenance
-- `DECISION_REGISTER.md` — authorization / freeze / no-rescue / closure decisions
-- `REPRODUCIBILITY_INDEX.md` — source/hash/Stage/run/artifact provenance
-- `STUDY_1_PROTOCOL.md` — frozen scientific contract
+- [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — formal resultと解釈境界
+- [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 研究全体の概要
+- [`../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`](../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md) — program-level closure decision
+- [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — closure状態と主要provenance
+- [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — authorization / freeze / no-rescue / closure decisions
+- [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — source/hash/Stage/run/artifact provenance
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — frozen scientific contract
 - `prereg/STUDY_1_SPEC.json` — machine-readable preregistration
 
-## Confirmed bounded findings
+## 固定範囲で確認された結果
 
 Stage 2の18 paired trajectoriesでは:
 
@@ -40,7 +40,7 @@ Stage 2の18 paired trajectoriesでは:
 
 C2–C5はStage 1でpromotionされず、Stage 2では検定していない。
 
-## Scientific scope
+## 科学的な対象範囲
 
 G3-04は、RAW-only relative depth-5 local geometryにおける次を分離して検証した。
 
@@ -51,11 +51,11 @@ Principal upstreamはLGTGMIV F5/F2/F3/F4、F1はauxiliaryである。
 
 `structural forcing`はbounded structural descriptorの呼称であり、optimal-play forcingやtactical inevitabilityを意味しない。
 
-## Interpretation boundary
+## 解釈上の境界
 
 C1/C6からbest-move clarity、search ease、strategic simplicity、human difficulty、position value、win probability、causal phase effect、deeper-tree generalizationを導かない。
 
-## Protected evidence
+## 保護された証拠
 
 standard initial RAW-root complete exact depth-10 holdoutは:
 

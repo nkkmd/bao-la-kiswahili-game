@@ -1,14 +1,14 @@
-# CRCLGR-STUDY1 — Canonical Resource-Robust Continuous Local-Geometry Representation Verification Study 1
+# resource制約に耐えるcanonical continuous representationの検証 — `CRCLGR-STUDY1`
 
-## Status
+## 現在の状態
 
 **`CLOSED / FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`**
 
-Formal representation:
+formal representation:
 
 **`CRCLGR-R1-EXACT-SQUASHED-L1`**
 
-This Study is the second independent pre-G3-10 prerequisite. It did not reopen or repair `CLGR-STUDY1` or `RRCLGR-STUDY1`.
+本Studyは、G3-10の前に実施した2番目の独立prerequisiteです。`CLGR-STUDY1`と`RRCLGR-STUDY1`を再開・修正したものではありません。
 
 ## 日本語題目
 
@@ -22,11 +22,11 @@ Stage 2ではfresh `32120001..32120384` seed blockから、geometry-blindなsour
 
 その後、完全に固定されたpreflight manifestから36 Namua + 36 Mtajiをformal measured populationとして選択し、72/72 rootsでproduction / independent exact RAW depth-5 reconstruction、six-axis coordinates、全2556 pairwise exact L1 distances、k=3 tie-inclusive neighborhoods、root-order invarianceを検証した。全formal integrity gateとnondegeneracy gateがPASSした。
 
-Formal decision:
+正式判断:
 
 `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION`
 
-## Claim boundary
+## 主張できる範囲
 
 このeligibilityは、formal-eligible LGTGMIV F1..F5、RAW-only、relative depth 5、validated transform set `[]`、CRCLGRのdeterministic pre-root reconstructibility eligibility contractで定義されたresource-eligible populationに限定される。
 
@@ -34,15 +34,15 @@ Formal decision:
 
 CRCLGR closure時点では、G3-10はこのStudyのformal eligibilityだけでは自動authorizeせず、別のpost-prerequisite current-state authorization reviewを必要とした。そのreviewはその後独立に完了して`G3-10-AUTHORIZED`となり、後続`GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`まで完了した。これはCRCLGRのformal decisionを事後変更するものではない。
 
-## Immutable upstream decisions
+## 上流研究から変更しない判断
 
-- `LGTGMIV-STUDY1` remains `CLOSED / FORMAL-ELIGIBLE-ALL`.
-- `LGPML-STUDY1` remains `CLOSED / TECHNICAL-INVALID`.
-- `CLGR-STUDY1` remains `CLOSED / TECHNICAL-INVALID`; its formal continuous-representation eligibility remains not established for that Study.
-- `RRCLGR-STUDY1` remains `CLOSED / TECHNICAL-INVALID`.
-- No prior technical-invalid decision is reclassified by CRCLGR.
+- `LGTGMIV-STUDY1`は`CLOSED / FORMAL-ELIGIBLE-ALL`のままです。
+- `LGPML-STUDY1`は`CLOSED / TECHNICAL-INVALID`のままです。
+- `CLGR-STUDY1`は`CLOSED / TECHNICAL-INVALID`であり、このStudy自身のformal continuous-representation eligibilityは未確立のままです。
+- `RRCLGR-STUDY1`は`CLOSED / TECHNICAL-INVALID`のままです。
+- CRCLGRは、先行Studyのtechnical-invalid判断を再分類しません。
 
-## Execution provenance
+## 実行履歴
 
 - Stage 0 run: `33761178143` / `STAGE0-PASS`
 - Stage 1 run: `33761678941` / `STAGE1-PASS`
@@ -55,7 +55,7 @@ CRCLGR closure時点では、G3-10はこのStudyのformal eligibilityだけで�
 - Stage 2 exact-byte mirror commit: `d1083ca07986fdbe3ab78d6bd4c12850e1200ef8`
 - Stage 2 canonical scientific result SHA-256: `c43ba119dbbc91f4145129dc5b24e886b0f436b577185cfb54d5f44619e5b0f5`
 
-## Safety boundaries
+## 安全上の境界
 
 ```text
 protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED

@@ -1,4 +1,4 @@
-# UMSSR-STUDY1 — 研究ディレクトリ
+# 多軸戦略状態表現の統合的構築 — `UMSSR-STUDY1`
 
 Research Generation 2 `G2-10` の独立研究 **Unified Multiaxial Strategic State Representation Study 1** の正本ディレクトリである。
 
@@ -19,19 +19,19 @@ Stage 1はscientific readiness、production / independent exact verification、r
 
 ## 読む順序
 
-1. `STUDY_1_FINAL_REPORT.md` — 結論、結果、解釈境界
-2. `CURRENT_STATUS.md` — 現在の正式状態
-3. `STUDY_1_OVERVIEW.md` — 研究の問いと開始時境界
-4. `STUDY_1_PROTOCOL.md` — prospective Stage構成とno-rescue rule
-5. `UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md` — upstream evidenceの利用資格
-6. `UPSTREAM_STUDY_AUDIT.md` — G2-01〜G2-09の開始時監査
-7. `CANDIDATE_AXIS_INVENTORY.md` — candidate axisの開始時inventory
-8. `DECISION_REGISTER.md` — prospective decisionとclosure判断の台帳
-9. `REPRODUCIBILITY_INDEX.md` — source / seed / run / artifact / hash
-10. `results/README.md` — canonical machine-readable result
-11. `RESUME_HERE.md` — closure後の引継ぎ位置
+1. [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md) — 結論、結果、解釈境界
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態
+3. [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md) — 研究の問いと開始時境界
+4. [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md) — prospective Stage構成とno-rescue rule
+5. [`UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md`](UPSTREAM_EVIDENCE_ELIGIBILITY_CONTRACT.md) — upstream evidenceの利用資格
+6. [`UPSTREAM_STUDY_AUDIT.md`](UPSTREAM_STUDY_AUDIT.md) — G2-01〜G2-09の開始時監査
+7. [`CANDIDATE_AXIS_INVENTORY.md`](CANDIDATE_AXIS_INVENTORY.md) — candidate axisの開始時inventory
+8. [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — prospective decisionとclosure判断の台帳
+9. [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — source / seed / run / artifact / hash
+10. [`results/README.md`](results/README.md) — canonical machine-readable result
+11. [`RESUME_HERE.md`](RESUME_HERE.md) — closure後の引継ぎ位置
 
-## accepted Stage 1 result
+## 採用されたStage 1結果
 
 ```text
 workflow run = 33297178656
@@ -56,6 +56,13 @@ selectedRepresentation = null
 - G2-11へ渡せるvalidated / frozen representationは本Studyから得られていない。
 - public AIの棋力向上をscientific endpointとしない。
 
-## repository境界
+## mainへの統合
 
-closureはresearch branch上で完了させる。`main`への統合は明示的な統合指示があるまで行わない。
+Study closureは`main`へ統合済みです。
+
+```text
+main integration = COMPLETE
+merge commit = 87d9ccf9
+```
+
+この統合は、Stage 1の判断、seed消費状態、Stage 2の未承認状態を変更していません。

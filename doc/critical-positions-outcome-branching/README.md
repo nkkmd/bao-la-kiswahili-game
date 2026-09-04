@@ -1,4 +1,4 @@
-# Critical Positions / Outcome Branching Study 1
+# 重要局面と勝敗分岐 — `CPOB-STUDY1`
 
 ## 研究題目
 
@@ -22,7 +22,7 @@ Stage 2 = NOT EXECUTED
 
 本Studyでは、同一root stateの全exact legal moveを別々にinterveneし、その後をprospectively frozenしたcontinuation policyで進めたときのroot-actor empirical continuation outcome divergenceを測定した。
 
-Primary construct:
+主要construct:
 
 ```text
 fixed-policy empirical continuation divergence
@@ -46,7 +46,7 @@ manual override = false
 
 したがって、**大きなfixed-policy continuation divergenceを持つ局面は存在したが、今回の単純なstructural matcher grammarでは再現性の高い重要局面classをpromotionできなかった**、がbounded conclusionである。
 
-## Study architecture
+## 研究の構成
 
 ```text
 Stage 0 — construct / technical / feasibility audit      COMPLETE / PASS
@@ -84,9 +84,9 @@ human-perceived criticality
 - [`REPRODUCIBILITY_INDEX.md`](REPRODUCIBILITY_INDEX.md) — source / artifact / hash索引
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — chronology
 
-## Artifact policy
+## 成果物の扱い
 
-Large scientific artifacts remain local:
+大規模なscientific artifactはlocalに保持します。
 
 ```text
 artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1/
@@ -94,16 +94,16 @@ artifacts/local/critical-positions-outcome-branching/stage1-exploratory-v1/
 
 Gitにはpreregistration、authorization、compact results、checkpoints、status、reproducibility records、final synthesisを保存する。
 
-## Interpretation boundary
+## 解釈上の境界
 
 Study 1はmachine-onlyで完結した。本結果から次は主張しない。
 
-- true/game-theoretic winning probability;
-- theoretically winning/losing states;
-- unique game-theoretic turning points;
-- human/expert-perceived importance;
-- traditional Bao strategic importance;
-- validated score-to-win-probability conversion;
+- true / game-theoreticなwinning probability
+- 理論上のwinning / losing state
+- 一意なgame-theoretic turning point
+- 人間・expertが感じる重要性
+- 伝統的なBao戦略上の重要性
+- 検証済みのscore-to-win-probability変換
 - 3特徴以上・nonlinear・representation-learning型classifierでも重要局面構造が存在しないこと;
 - completed Bao studiesのformal decisionの救済・変更。
 

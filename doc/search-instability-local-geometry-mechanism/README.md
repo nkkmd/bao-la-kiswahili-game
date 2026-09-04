@@ -1,12 +1,12 @@
-# Search Instability / Local Geometry Mechanism Study 1
+# 探索不安定性と局所ゲーム木幾何の関係 — `SILGM-STUDY1`
 
 Research Generation 3 `G3-07` / `SILGM-STUDY1` の研究ディレクトリ。
 
-Final lifecycle status:
+最終的なlifecycle状態:
 
 **`CLOSED / FORMAL-COMPLETE`**
 
-Formal candidate record:
+正式なcandidate別判断:
 
 - depth × E3 ranking-preorder change × G1 root legal width = **CONFIRMED / HIGHER-IN-HIGH**
 - node-budget × E3 ranking-preorder change × G1 root legal width = **CONFIRMED / HIGHER-IN-HIGH**
@@ -14,9 +14,9 @@ Formal candidate record:
 - 4 promoted candidates = `NOT-CONFIRMED`
 - 1 promoted candidate = `NON-ESTIMABLE`
 
-This Study establishes bounded non-causal association only. It does not identify a correct search condition, game-theoretic difficulty, objective move quality, human difficulty or causal mechanism.
+本Studyが確認したのは、固定範囲における非因果的な関連だけです。正しいsearch condition、game-theoretic difficulty、客観的な着手品質、人間にとっての難しさ、因果mechanismを特定したものではありません。
 
-## Canonical records
+## 正本となる記録
 
 - [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
@@ -32,16 +32,16 @@ This Study establishes bounded non-causal association only. It does not identify
 - [`checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md`](checkpoints/2026-09-03-stage-2-formal-complete-study-closure.md)
 - [`checkpoints/2026-09-03-final-document-consistency-followup-pass.md`](checkpoints/2026-09-03-final-document-consistency-followup-pass.md)
 
-## Protected evidence
+## 保護された証拠
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW rootのcomplete exact depth-10 holdoutは、本Studyでは開封していません。
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
-## Downstream boundary
+## 後続研究との境界
 
-**Historical closure-time boundary:** at G3-07 closure, G3-08 — Local Geometry Persistence / Memory-Length Study 1 — was **`NOT AUTHORIZED`** and required a separate post-G3-07 current-state authorization review. That review was later completed. Current program state is recorded in `../research-generation-3/CURRENT_STATUS.md`: G3-08 / `LGPML-STUDY1` is **`CLOSED / TECHNICAL-INVALID`**; G3-09 / `CLGR-STUDY1` has also completed and is **`CLOSED / TECHNICAL-INVALID`**, with formal continuous-representation eligibility not established. G3-10 remains **`NOT AUTHORIZED`** pending a separate post-G3-09 current-state review.
+**closure時点のhistorical boundary:** G3-07の終了時点では、G3-08（Local Geometry Persistence / Memory-Length Study 1）は**`NOT AUTHORIZED`**であり、別のpost-G3-07 current-state authorization reviewを必要としました。そのreviewは後に完了しています。現在のprogram stateは[`../research-generation-3/CURRENT_STATUS.md`](../research-generation-3/CURRENT_STATUS.md)を参照してください。後続Studyが実施されたことは、G3-07の判断を事後変更するものではありません。
 
-## Integration boundary
+## 統合に関する境界
 
-This Study was fast-forward integrated to `main` on 2026-09-03 after explicit user instruction, using research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec`. The research branch is retained for provenance; scientific closure and no-rescue boundaries are unchanged.
+本Studyは明示的なユーザー指示に基づき、2026-09-03にresearch branch tip `7f14538aa0ec3edd2045649025715219ffea17ec`からfast-forwardで`main`へ統合しました。研究ブランチはprovenanceのため保持し、scientific closureとno-rescue boundaryは変更していません。

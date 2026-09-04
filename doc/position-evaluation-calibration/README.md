@@ -1,4 +1,4 @@
-# Position Evaluation / Win-Rate Calibration Study 1
+# 形勢評価と実現勝率の校正 — `PEC-STUDY1`
 
 研究題目: **Baoにおける形勢評価値と実現勝率の校正 — phase-aware empirical win-probability calibration と評価値の解釈境界**
 
@@ -46,7 +46,7 @@ Descriptiveにはpooled Brier `0.155501...`、Namua `0.226781...`、Mtaji `0.080
 - [`EXPERIMENT_INDEX.md`](EXPERIMENT_INDEX.md) — stage/experiment index
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md) — chronology
 
-## Machine-readable records
+## 機械可読な記録
 
 ```text
 results/STAGE_1_READINESS_AUDIT.json
@@ -55,7 +55,7 @@ results/STAGE_2_READINESS_AUDIT.json
 results/STAGE_2_FORMAL_RESULT_SUMMARY.json
 ```
 
-## Frozen preregistration / authorization
+## 固定済みの事前登録・実行承認
 
 ```text
 preregistration/STAGE_1_EXPLORATORY_SPEC.json
@@ -65,13 +65,13 @@ preregistration/STAGE_2_FORMAL_SPEC.json
 preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
 ```
 
-## Historical status labels
+## 過去の状態表示
 
 `STAGE_0_TECHNICAL_PROTOCOL.md`、`STAGE_1_EXPLORATORY_PROTOCOL.md`、`STAGE_2_FORMAL_PROTOCOL.md`、`HYPOTHESES.md`、`STATISTICAL_ANALYSIS_PLAN.md`、`SEED_AUDIT.md`、`STAGE_1_RUNBOOK.md`、`STAGE_2_RUNBOOK.md`には、prospective freezeまたは実行時点の `PENDING` / `NOT AUTHORIZED` / `OPEN` 等の表記が意図的に残っている。これらは当時のauthorization chronologyとpreregistration provenanceを保存する履歴文書であり、現在状態を示すものではない。
 
 現在のscientific stateは [`CURRENT_STATUS.md`](CURRENT_STATUS.md)、[`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)、[`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md) を正本とする。freeze-time文書を結果判明後に現在形へ書き換えて、当時の事前状態を消去しない。
 
-## Interpretation boundary
+## 解釈上の境界
 
 本研究のcalibration mappingをformalにvalidatedされたBao勝率として扱わない。game-theoretic probability、human advantage perception、causal effect、別engine/search/populationへのgeneralizationも主張しない。
 

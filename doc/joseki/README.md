@@ -4,8 +4,18 @@
 
 第一次研究の状態: `completed-without-provisional-joseki`
 
+## 結論
+
+第一次研究は成功条件8/8を満たして完了した。標準初期局面の一般定石候補はなく、暫定定石0件、validated 0件である。P002は`bounded-forced-win-supported`だが外部未検証、P003は`deep-search-supported-bounded-unresolved`である。
+
+これは「Baoに定石が存在しない」という結論ではない。現在のルール実装、探索条件、固定した研究範囲では、一般定石として採用できる候補を確立できなかったことを意味する。
+
+## 最初に読む文書
+
 - [第一次研究の最終結論](JOSEKI_FIRST_STUDY_CONCLUSION.md)
 - [将来研究バックログ](JOSEKI_FUTURE_RESEARCH.md)
+
+## 詳細な研究記録
 
 - [初手・応手スクリーニング](OPENING_INDEX.md)
 - [8 ply候補系列](CANDIDATE_LINES.md)
@@ -38,6 +48,6 @@
 - [J001 — 6番穴・右（応手頑健性で反証）](openings/J001.md)
 - [未解決系列](UNRESOLVED_LINES.md)
 - [着手表記](JOSEKI_NOTATION.md)
-- 研究方法と解釈: `doc/JOSEKI_RESEARCH.md`
+- [研究方法と解釈](../JOSEKI_RESEARCH.md)
 
-第一次研究は成功条件8/8を満たして完了した。標準初期局面の一般定石候補はなく、暫定定石0件、validated 0件である。P002は`bounded-forced-win-supported`だが外部未検証、P003は`deep-search-supported-bounded-unresolved`である。将来課題は第一次研究の未完了作業ではなく、独立バックログとして管理する。
+将来課題は第一次研究の未完了作業ではなく、独立backlogとして管理する。
