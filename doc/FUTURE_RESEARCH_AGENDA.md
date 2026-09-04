@@ -5,13 +5,13 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-04
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-10 `GCLD-STUDY1` CLOSED `FORMAL-COMPLETE` / C1+C2+C3+C5 `CONFIRMED` / C4 `NOT-CONFIRMED` / protected depth-10 SEALED / post-G3-10 next-study review is separate and NOT AUTO-AUTHORIZED / main integration NOT AUTHORIZED (2026-09-04)**
+Research Generation 3: **Active / G3-10 `GCLD-STUDY1` CLOSED `FORMAL-COMPLETE` / main integration COMPLETE FAST-FORWARD / post-G3-10 review = `G3-11-AUTHORIZED` / G3-11 `FDEGHV-STUDY1` PRE-HOLDOUT-FREEZE / Stage 0 `STAGE0-PASS` / protected depth-10 SEALED (2026-09-04)**
 
 
 ### 2026-09-04 Research Generation 3 current update
 
 <!-- GCLD-G3-10-CLOSURE:FUTURE -->
-G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。`main` integrationは明示的ユーザー指示があるまで`NOT AUTHORIZED / NOT PERFORMED`。 G3-10 closure後の次Studyは自動authorizeしない。historical program sequenceを参照しつつ、別のpost-G3-10 current-state reviewでdependency・独立性・fresh populationを確認してから判断する。
+G3-10 `GCLD-STUDY1`は`CLOSED / FORMAL-COMPLETE`。formal-eligible `CRCLGR-R1-EXACT-SQUASHED-L1`を用いたfresh Stage 2では48 candidate trajectoryのうち47がresource-eligible、frozen orderの最初の32 trajectoryを測定し、production / independentはexact一致した。5 primary endpointはすべてestimableで、C1 directionality/path efficiency、C2 persistence/lag-distance gradient、C3 return fraction（`ACTUAL-LESS`）、C5 first-order directional path dependenceが`CONFIRMED`、C4 chronology-conditioned circulationは`NOT-CONFIRMED`。これはcausal dynamics、physical hysteresis、strategic regime、human difficulty、game-theoretic valueを確立しない。protected standard-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`のまま。same-evidence rerunは禁止。G3-10のmain integrationは2026-09-04の明示的ユーザー指示に基づく`COMPLETE / FAST-FORWARD / force=false`として完了した。その後のseparate post-G3-10 current-state reviewはoutcome-blindに実施され、`G3-11-AUTHORIZED`を固定した。G3-11 `FDEGHV-STUDY1`はresearch branch上でPRE-HOLDOUT-FREEZEにあり、Stage 0 technical-only validationは`STAGE0-PASS`。Stage 1はsource/resource/authorization bindingとdurable pre-computation leaseが完了するまでprotected depth-10 access禁止。historical `PROGRAM_PLAN.md`は変更しない。
 
 ### 2026-09-03 Research Generation 3 current update
 
