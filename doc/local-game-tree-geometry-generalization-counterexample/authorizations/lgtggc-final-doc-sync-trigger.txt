@@ -1,0 +1,6 @@
+study=LGTGGC-STUDY1
+purpose=final-central-doc-sync-only
+scientific-computation=false
+stage1-seed-access=false
+stage2-seed-access=false
+main-integration=false
