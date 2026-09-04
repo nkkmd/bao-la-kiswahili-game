@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G3-11",
+  "studyId": "FDEGHV-STUDY1",
+  "stageId": "FDEGHV-S1-FORMAL-HOLDOUT-2026-09-04-v1",
+  "status": "FROZEN-BEFORE-PROTECTED-DEPTH10-ACCESS",
+  "evidenceClass": "FRESH-DEEPER-EXACT-HOLDOUT",
+  "formalQuestion": "Can the sealed standard initial Bao RAW root be completely enumerated and independently reproduced through exact depth 10, and do the four prospectively frozen deeper exact continuation targets hold?",
+  "formalDomain": {
+    "root": "fresh reconstruction of public/engine.js initialState()",
+    "requiredRootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "targetDepth": 10,
+    "requiredCompleteReachableLayers": [0,1,2,3,4,5,6,7,8,9,10],
+    "requiredCompleteParentExpansionLayers": [0,1,2,3,4,5,6,7,8,9],
+    "completeForwardClosureToTerminalRequired": false,
+    "depth11AccessAuthorized": false
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "identityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedIdentityFields": ["turn", "reason"],
+    "pendingRequired": true,
+    "representedSeedInvariant": 64,
+    "validatedTransformSet": [],
+    "symmetryReductionAuthorized": false,
+    "canonicalizationAuthorized": false,
+    "quotientGraphAuthorized": false
+  },
+  "moveIdentity": {
+    "fields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "binding": "source RAW key -> exact move key -> successor RAW key"
+  },
+  "endpoints": {
+    "E0": "complete exact RAW domain through depth 10",
+    "H1": "newRawStateCount[10] == uniqueRawStateCount[10]",
+    "H2": "treeNodeOccurrences[10] > uniqueRawStateCount[10]",
+    "H3": "treeThrough10 * rawThrough9 > treeThrough9 * rawThrough10",
+    "H4": "duplicateArrivalCount[10] > 0 AND statesWithMultiplePredecessors[10] > 0"
+  },
+  "resourceProfile": {
+    "maxCumulativeDistinctRawStates": 2000000,
+    "maxDepthLabelledEdges": 12000000,
+    "maxParentStateExpansions": 2000000,
+    "maxMoveEvaluations": 12000000,
+    "maxCumulativeTreeNodeOccurrences": 50000000000,
+    "maxResidentSetBytes": 6442450944,
+    "maxWallClockSeconds": 5400,
+    "maxUncompressedArtifactBytes": 1073741824,
+    "artifactScope": "uncompressed production materialization plus compact production/independent/formal result files; temporary checkout/cache and compressed Actions transport archive excluded",
+    "restartRule": "no checkpoint resume; the single authorized scientific execution starts from depth 0"
+  },
+  "hardening": {
+    "independentEveryClaimedCompleteLayer": true,
+    "finalAmbientResourceRecheckBeforeExactClassification": true,
+    "preFormalNegativeControlMatrixRequired": true,
+    "newProspectiveSourceIdentityRequired": true,
+    "postClosureAuditReadOnly": true
+  },
+  "independentVerification": {
+    "mandatory": true,
+    "productionEnumeratorImportAuthorized": false,
+    "productionSerializerImportAuthorized": false,
+    "productionTargetEvaluatorImportAuthorized": false,
+    "sharedRuleEngineImportAuthorized": true,
+    "fullIndependentDepth10ReenumerationRequiredForExact": true,
+    "resourceCensoredPrefixMustBeIndependentlyCheckedBeforeAnyDiagnosticCompletePrefixRetention": true,
+    "requiredChecks": [
+      "root RAW identity",
+      "state set per depth 0..10",
+      "cumulative RAW state set",
+      "source-move-successor edge relation for parent depths 0..9",
+      "tree occurrence propagation",
+      "branching distribution",
+      "duplicate arrival and predecessor/multi-parent accounting",
+      "per-layer and cumulative hashes",
+      "H1-H4 independent target recomputation"
+    ]
+  },
+  "decisionRule": {
+    "exact": "EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN",
+    "targetTrue": "DEEPER-CONFIRMED",
+    "targetFalse": "COUNTEREXAMPLE-BOUNDARY",
+    "resourceOrAdminIncompleteWithValidIntegrity": "NON-ESTIMABLE",
+    "technicalOrVerificationDefect": "TECHNICAL-INVALID",
+    "partialFormalPromotionAuthorized": false
+  },
+  "firewall": {
+    "g2_12EstimatorScientificInputAuthorized": false,
+    "depth10PartialProbeBeforeAuthorizationAuthorized": false,
+    "depth10CachedOutcomeLookupAuthorized": false,
+    "outcomeDrivenCapIncreaseAuthorized": false,
+    "outcomeDrivenEndpointChangeAuthorized": false,
+    "outcomeDrivenDepth11ExtensionAuthorized": false,
+    "sameEvidenceRerunAuthorized": false,
+    "subsetRescueAuthorized": false,
+    "postOutcomeCanonicalizationAuthorized": false
+  },
+  "interpretationBoundary": {
+    "upstreamStudyDecisionRevisionAuthorized": false,
+    "wholeBaoStateSpaceEstimateAuthorized": false,
+    "wholeBaoGameTreeEstimateAuthorized": false,
+    "trajectoryLevelG3_10ClaimAuthorized": false,
+    "searchConditionG3_07ClaimAuthorized": false,
+    "phaseContrastG3_04ClaimAuthorized": false
+  }
+}
