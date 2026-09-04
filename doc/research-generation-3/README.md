@@ -6,7 +6,7 @@ Bao第三世代研究programの文書入口です。
 
 ```text
 Program = Bao Third-Generation Research Program
-Status = ACTIVE / G3-11 FDEGHV-STUDY1 CLOSED FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN / H1..H4 DEEPER-CONFIRMED / G3-11 MAIN INTEGRATION COMPLETE / FAST-FORWARD
+Status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 G3-01 = LGTGMF-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -52,6 +52,19 @@ G3-10 Stage 0 = STAGE0-PASS
 G3-10 Stage 1 = STAGE1-PASS / seeds CONSUMED
 G3-10 Stage 2 = FORMAL-COMPLETE / 48 candidates / 47 eligible / 32 measured / seeds CONSUMED
 G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / force=false
+<!-- LGTGGC-G3-12-RG3-STATUS:BEGIN -->
+G3-12 program review = G3-12-AUTHORIZED
+G3-12 = LGTGGC-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-12 Stage 0 active = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
+G3-12 Stage 1 = LGTGGC-S1-DEVELOPMENT-2026-09-04-v1 / 1 authorized / 1 actual / TECHNICAL-INVALID
+G3-12 SFCDF development = STAGE1-PASS / 40 pairs / 80 roots / production-independent exact
+G3-12 SILGM development = STAGE1-TECHNICAL-INVALID / complete root ranking required
+G3-12 GCLD development = NOT EXECUTED / seeds unread
+G3-12 Stage 2 = LGTGGC-STAGE2-NOT-AUTHORIZED / NOT EXECUTED / all Stage 2 seeds unread
+G3-12 formal generalization-counterexample decisions = NONE
+G3-12 main integration = NOT AUTHORIZED / NOT PERFORMED
+<!-- LGTGGC-G3-12-RG3-STATUS:END -->
+
 G3-11 program review = G3-11-AUTHORIZED
 G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
 G3-11 Stage 0 = STAGE0-PASS
@@ -63,6 +76,13 @@ G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9
 ```
 
 ## 最初に読む
+
+<!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->
+- [`../local-game-tree-geometry-generalization-counterexample/README.md`](../local-game-tree-geometry-generalization-counterexample/README.md) — G3-12 technical-invalid capstone closure入口
+- [`../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`](../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md) — G3-12 final decision / scientific interpretation boundary正本
+- [`../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`](../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md) — Stage 0/1 Actions / artifacts / source-binding provenance
+- [`../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md) — Stage 2 NOT-AUTHORIZED / Study technical-invalid closure decision
+<!-- LGTGGC-G3-12-RG3-READ-FIRST:END -->
 
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing program state
 - [`../fresh-depth10-exact-geometry-holdout/README.md`](../fresh-depth10-exact-geometry-holdout/README.md) — G3-11 formal-complete Study入口

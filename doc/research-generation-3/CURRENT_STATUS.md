@@ -4,7 +4,7 @@ Updated: 2026-09-04
 
 ```text
 Program = Bao Third-Generation Research Program
-Program status = ACTIVE / G3-11 FDEGHV-STUDY1 CLOSED FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN / H1..H4 DEEPER-CONFIRMED / G3-11 MAIN INTEGRATION COMPLETE / FAST-FORWARD
+Program status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / main integration pending explicit user instruction
 Core agenda = G3-01..G3-12
 Human track = G3-H01 / independent / non-blocking
 Research Generation 2 = CLOSED
@@ -66,6 +66,21 @@ G3-10 Stage 2 = FORMAL-COMPLETE / seed 32220001..32220384 CONSUMED / candidates 
 G3-10 formal record = C1 CONFIRMED ACTUAL-GREATER / C2 CONFIRMED ACTUAL-GREATER / C3 CONFIRMED ACTUAL-LESS / C4 NOT-CONFIRMED / C5 CONFIRMED ACTUAL-GREATER
 G3-10 canonical scientific-result SHA-256 = c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f
 G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / previous main 0bcd1695b6dbd044acf2eed91740d282c63dbb07 / force=false
+<!-- LGTGGC-G3-12-RG3-CURRENT:BEGIN -->
+G3-12 program review = G3-12-AUTHORIZED
+G3-12 = LGTGGC-STUDY1 / CLOSED / TECHNICAL-INVALID
+G3-12 Stage 0 active = LGTGGC-S0-TECHNICAL-2026-09-04-v3 / STAGE0-PASS
+G3-12 Stage 1 Actions run = 33848876682 / exactly one / result artifact 9927866205
+G3-12 SFCDF development = STAGE1-PASS / 40 pairs / 80 roots / production-independent exact
+G3-12 SILGM development = STAGE1-TECHNICAL-INVALID / complete root ranking required
+G3-12 GCLD development = NOT EXECUTED / seed range 32313001..32313384 UNREAD
+G3-12 Stage 2 authorization = LGTGGC-STAGE2-NOT-AUTHORIZED
+G3-12 Stage 2 execution = NOT EXECUTED / all formal seeds UNREAD
+G3-12 formal generalization-counterexample decisions = NONE
+G3-12 same-evidence rerun = NOT AUTHORIZED
+G3-12 main integration = NOT AUTHORIZED / NOT PERFORMED
+<!-- LGTGGC-G3-12-RG3-CURRENT:END -->
+
 G3-11 program review = G3-11-AUTHORIZED
 G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
 G3-11 Stage 0 = STAGE0-PASS
@@ -77,8 +92,25 @@ Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAM
 Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
 G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
-Next scientific action = none within FDEGHV-STUDY1; do not rerun consumed depth-10 evidence; any depth-11 work requires a separate prospective Study and authorization review
+Next scientific action = none within LGTGGC-STUDY1; do not rerun Stage 1 evidence or authorize Stage 2; any renewed generalization/counterexample attempt requires a new prospective independent Study/version and separate authorization
 ```
+
+<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:BEGIN -->
+## G3-12 capstone technical-invalid closure
+
+G3-12 `LGTGGC-STUDY1`はG3-04/G3-07/G3-10のformal-eligible bounded geometry claimsをfresh transfer matrixで一般化・反例検証するcapstone Studyとして開始した。Stage 0 v3はtechnical readinessを確立し、Stage 1 SFCDF transferはdevelopment PASSとなった。一方、同じexactly-once Stage 1 execution中のSILGM transferは、frozen LOW populationと継承search helperのroot-ranking前提が適合しないため`STAGE1-TECHNICAL-INVALID`でfail-closedした。GCLD transferは未実行で、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。
+
+このclosureはupstream claimsへのnegative/null evidenceではない。G3-12ではformal Stage 2を実行しておらず、generalization / counterexample endpoint-domain decisionは0件である。Stage 2 seedは全て未読、G3-11 depth-10 rerun・depth 11・G2-12 estimator scientific inputも未使用。fresh evidence後のsame-evidence repair/rerun、module drop、seed extension、root replacementは行わない。
+
+Canonical records:
+
+- `../local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`
+- `../local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`
+- `../local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`
+- `../research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`
+
+`main` integrationは明示的ユーザー指示まで行わない。
+<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:END -->
 
 ## G3-11 formal closure
 

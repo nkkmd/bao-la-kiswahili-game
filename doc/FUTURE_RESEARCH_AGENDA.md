@@ -5,10 +5,14 @@ Status: Active
 作成日: 2026-07-21
 更新日: 2026-09-04
 Research Generation 2: **Closed (2026-08-31)**
-Research Generation 3: **Active / G3-11 `FDEGHV-STUDY1` CLOSED `FORMAL-COMPLETE` / `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` / H1–H4 all `DEEPER-CONFIRMED` / protected depth-10 CONSUMED EXACTLY ONCE / G3-11 main integration COMPLETE FAST-FORWARD (2026-09-04)**
+Research Generation 3: **Active / core agenda G3-01..G3-12 execution reached G3-12 capstone / G3-12 `LGTGGC-STUDY1` CLOSED `TECHNICAL-INVALID` / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / main integration pending explicit instruction (2026-09-04)**
 
 
 ### 2026-09-04 Research Generation 3 current update
+
+<!-- LGTGGC-G3-12-CLOSURE:FUTURE:BEGIN -->
+G3-12 `LGTGGC-STUDY1`はResearch Generation 3のcapstoneとして実施され、`CLOSED / TECHNICAL-INVALID`で終了した。Stage 0 v3は`STAGE0-PASS`、Stage 1 SFCDF transfer developmentは40 pairs / 80 rootsでPASSしproduction / independent exactだったが、同一exactly-once Stage 1 executionのSILGM transferで`complete root ranking required` technical failureが発生した。Static independent auditでは、prospectively frozen LOW root populationがlegal width 1を許容する一方、継承したproduction / independent SILGM helperがestimable search resultにroot candidates >=2をhard requirementとするcompatibility gapを確認した。Fresh access後のhelper修正、root replacement、seed replay、module dropはno-rescueに反するため行わず、GCLD developmentは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。したがってG3-04/G3-07/G3-10 claimsについて`GENERALIZATION-CONFIRMED` / `COUNTEREXAMPLE-CONFIRMED` / `NOT-GENERALIZED` / `NON-ESTIMABLE`のformal decisionは成立していない。将来再検証する場合は新しいprospective independent Study/versionとseparate authorizationを必要とし、`LGTGGC-STUDY1`のrepair/completionとは扱わない。G3-11 depth-10 rerun、depth 11、G2-12 estimator scientific inputは禁止境界を維持する。`main` integrationは明示的ユーザー指示待ち。
+<!-- LGTGGC-G3-12-CLOSURE:FUTURE:END -->
 
 <!-- FDEGHV-G3-11-CLOSURE:FUTURE -->
 G3-11 `FDEGHV-STUDY1`は`CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`。standard initial RAW rootをdepth 10までcomplete exact RAW enumerationし、materialized verificationとmaterially separate independent full re-enumerationはいずれもPASSした。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences / 11,725 duplicate arrivals / 10,383 multiple-predecessor states、累積depth 0..10は451,127 distinct RAW states / 631,101 tree-node occurrences。prospectively frozen H1–H4はすべて`DEEPER-CONFIRMED`。protected depth-10は1回のauthorized executionでconsume済みで、same-evidence rerun、resource cap変更、target変更、subset/root rescue、symmetry/canonicalization rescue、G2-12 estimator入力、depth-11 extensionは禁止。G3-11は既存G3 formal decisionを再判定せず、Bao全状態空間・全ゲーム木・causal/game-theoretic claimへ拡張しない。G3-11のmain integrationは`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`として完了した。historical `PROGRAM_PLAN.md`は変更しない。

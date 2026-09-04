@@ -163,6 +163,10 @@ node tools/diagnostic-to-fixture.js \
 本リポジトリでは、AI自己対局・固定seed・paired openingなどを用いたBaoの実験研究も行っています。研究成果が増えても辿りやすいよう、**研究全体の中央索引**を用意しています。
 
 - [`doc/RESEARCH_INDEX.md`](doc/RESEARCH_INDEX.md): 研究成果の中央索引。初見向け概要、科学的正本、研究運用文書への入口
+<!-- LGTGGC-G3-12-ROOT-README:BEGIN -->
+- [`doc/local-game-tree-geometry-generalization-counterexample/README.md`](doc/local-game-tree-geometry-generalization-counterexample/README.md): Research Generation 3 capstone `G3-12` / `LGTGGC-STUDY1`。Stage 0 v3は`STAGE0-PASS`、Stage 1はexactly once実行されSFCDF developmentはPASSしたが、SILGM developmentが`complete root ranking required`で`STAGE1-TECHNICAL-INVALID`となりfail-closed。GCLD developmentは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`で全formal seedが未読。Study final decisionは`CLOSED / TECHNICAL-INVALID`で、generalization / counterexampleのformal endpoint-domain decisionは成立していない。same-evidence repair/rerun、module drop、seed extension、depth-10 rerun、depth-11 accessは行わない。research branchでclosure済み、`main` integrationは明示的指示待ち。
+<!-- LGTGGC-G3-12-ROOT-README:END -->
+
 <!-- FDEGHV-G3-11-ROOT-README -->
 - [`doc/fresh-depth10-exact-geometry-holdout/README.md`](doc/fresh-depth10-exact-geometry-holdout/README.md): Research Generation 3 `G3-11` / `FDEGHV-STUDY1`。standard initial RAW rootをfresh complete exact depth 10までRAW-onlyで列挙し、materially separate independent full re-enumerationもPASS。formal decisionは`EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN`、H1–H4は全て`DEEPER-CONFIRMED`。depth 10は348,270 unique RAW states / 494,456 tree-node occurrences、累積は451,127 distinct RAW states / 631,101 tree-node occurrences。protected depth-10は1回のauthorized executionでconsume済みでrerun禁止。depth 11は未承認。main integrationは`COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false`
 <!-- GCLD-G3-10-ROOT-README -->

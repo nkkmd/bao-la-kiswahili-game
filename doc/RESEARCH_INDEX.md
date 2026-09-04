@@ -26,6 +26,28 @@ Current-facingな人間向け文書でformal decision / evidence labelを明示�
 
 ## 研究成果
 
+<!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->
+### Research Generation 3 current highlight — G3-12 / LGTGGC-STUDY1
+
+**状態:** `CLOSED / TECHNICAL-INVALID` — Stage 2 `NOT-AUTHORIZED / NOT-EXECUTED`、formal generalization / counterexample decisionなし
+
+G3-12はG3-04、G3-07、G3-10の9 formal-eligible bounded geometry claimsについて、fresh source-policy / reachable-root-family transferでgeneralization / counterexample boundaryを検証するcapstone Studyとしてprospectively開始した。Pre-fresh amendment後のsource policiesは`UNIFORM-LEGAL / MAX-CAPTURE`。Stage 0 v3はtechnical readinessをPASSし、Stage 1 SFCDF transferは40 pairs / 80 rootsでdevelopment PASS、production / independent exact。だが同じexactly-once Stage 1 execution中、SILGM transferがfrozen LOW populationと継承search helperのroot-ranking前提のcompatibility gapにより`STAGE1-TECHNICAL-INVALID`でfail-closedした。GCLD transferは未実行、Stage 2は`LGTGGC-STAGE2-NOT-AUTHORIZED`。これはupstream claimsのnegative resultではなく、G3-12はformal held-out inferenceへ到達していない。Stage 2 seed、G3-11 depth-10 rerun、depth 11、G2-12 estimator inputは未使用。
+
+**最初に読む:**
+
+- [`local-game-tree-geometry-generalization-counterexample/README.md`](local-game-tree-geometry-generalization-counterexample/README.md)
+- [`local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md`](local-game-tree-geometry-generalization-counterexample/STUDY_1_FINAL_REPORT.md)
+
+**再現性・formal record:**
+
+- [`local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md`](local-game-tree-geometry-generalization-counterexample/REPRODUCIBILITY_INDEX.md)
+- [`local-game-tree-geometry-generalization-counterexample/DECISION_REGISTER.md`](local-game-tree-geometry-generalization-counterexample/DECISION_REGISTER.md)
+- [`local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md`](local-game-tree-geometry-generalization-counterexample/STAGE_1_FAILURE_INDEPENDENT_AUDIT.md)
+- [`research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md`](research-program-decisions/2026-09-04-post-g3-12-stage1-stage2-authorization-review.md)
+
+`main` integrationは未実施で、research branch上のclosureを明示的ユーザー指示まで保持する。
+<!-- LGTGGC-G3-12-RESEARCH-INDEX:END -->
+
 <!-- FDEGHV-G3-11-RESEARCH-INDEX -->
 ### Research Generation 3 current highlight — G3-11 / FDEGHV-STUDY1
 
