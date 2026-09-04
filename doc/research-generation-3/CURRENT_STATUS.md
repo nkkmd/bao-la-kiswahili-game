@@ -66,6 +66,16 @@ G3-10 Stage 2 = FORMAL-COMPLETE / seed 32220001..32220384 CONSUMED / candidates 
 G3-10 formal record = C1 CONFIRMED ACTUAL-GREATER / C2 CONFIRMED ACTUAL-GREATER / C3 CONFIRMED ACTUAL-LESS / C4 NOT-CONFIRMED / C5 CONFIRMED ACTUAL-GREATER
 G3-10 canonical scientific-result SHA-256 = c5ec84cecb4e540ce7ad9f52548dac14deecde3423b2f4d10e1c39e1000ae09f
 G3-10 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / previous main 0bcd1695b6dbd044acf2eed91740d282c63dbb07 / force=false
+G3-11 program review = G3-11-AUTHORIZED
+G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
+G3-11 Stage 0 = STAGE0-PASS
+G3-11 Stage 1 = FORMAL-COMPLETE / 1 authorized / 1 actual / full independent exact re-enumeration PASS
+G3-11 depth-10 exact = 348270 unique RAW / 494456 tree occurrences / 11725 duplicate arrivals / 10383 multi-predecessor states
+G3-11 cumulative through depth 10 = 451127 distinct RAW / 466768 depth-labelled legal edges / 631101 tree occurrences
+G3-11 scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
+Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAME-EVIDENCE RERUN NOT AUTHORIZED
+Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
+G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 <!-- LGTGGC-G3-12-RG3-CURRENT:BEGIN -->
 G3-12 program review = G3-12-AUTHORIZED
 G3-12 = LGTGGC-STUDY1 / CLOSED / TECHNICAL-INVALID
@@ -80,17 +90,6 @@ G3-12 formal generalization-counterexample decisions = NONE
 G3-12 same-evidence rerun = NOT AUTHORIZED
 G3-12 main integration = COMPLETE / FAST-FORWARD / source tip 146a515671838606034efd9d4c3120e9b4c597f2 / previous main 5597ae696d9eb76d8395e114cdb4f83af1138a3d / force=false
 <!-- LGTGGC-G3-12-RG3-CURRENT:END -->
-
-G3-11 program review = G3-11-AUTHORIZED
-G3-11 = FDEGHV-STUDY1 / CLOSED / FORMAL-COMPLETE / EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
-G3-11 Stage 0 = STAGE0-PASS
-G3-11 Stage 1 = FORMAL-COMPLETE / 1 authorized / 1 actual / full independent exact re-enumeration PASS
-G3-11 depth-10 exact = 348270 unique RAW / 494456 tree occurrences / 11725 duplicate arrivals / 10383 multi-predecessor states
-G3-11 cumulative through depth 10 = 451127 distinct RAW / 466768 depth-labelled legal edges / 631101 tree occurrences
-G3-11 scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
-Protected depth-10 exact holdout = OPENED / CONSUMED EXACTLY ONCE BY G3-11 / SAME-EVIDENCE RERUN NOT AUTHORIZED
-Depth-11 access = NOT AUTHORIZED / NOT ACCESSED
-G3-11 main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 G3-10 research branch = research/g3-10-geometry-conditioned-longitudinal-dynamics / scientific execution CLOSED / integrated to main; retained for provenance
 Next scientific action = none within Research Generation 3; any new scientific work requires a separate prospective Study/Research Generation and separate authorization; closed G3 evidence must not be rerun or rescued
 ```

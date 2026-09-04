@@ -24,6 +24,7 @@ main integration = NOT AUTHORIZED / NOT PERFORMED
 2. Added the central-sync and final pre-main consistency records to the generation-level read-first / canonical closure navigation in RG3 README, RG3 CURRENT_STATUS, and RESEARCH_INDEX.
 3. Normalized `PROGRAM_FINAL_RESULT.json` Section 16 completion-condition key naming so every key uses `section16_<number>_...` form.
 4. Added a machine-readable `repositoryClosure` block recording central sync completion, final pre-main audit PASS, temporary tooling absence, and pre-main readiness.
+5. Normalized the generation status presentation to agenda order `G3-10 → G3-11 → G3-12` in RG3 README and RG3 CURRENT_STATUS.
 
 These changes are documentation / repository-governance only. They do not alter any scientific decision or interpretation boundary.
 
@@ -63,3 +64,16 @@ The intended final branch-vs-main diff is restricted to central documentation an
 The repository is **pre-main-integration ready**. This checkpoint does not authorize or perform integration.
 
 `main` must remain unchanged until an explicit user instruction authorizes integration.
+
+## Final agenda-order follow-up
+
+```text
+Committed branch HEAD before ordering commit = 5e81a1ee6d6b112ff12450e5cbcdaefd08584879
+Current main HEAD = fd6c8e2a4510d5937b47a87735854e8459b2646f
+G3-10/G3-11/G3-12 status order = PASS
+scientific decision changes = NONE
+scientific seed access = NONE
+main integration = NOT AUTHORIZED / NOT PERFORMED
+```
+
+This final presentation-only correction preserves all previously audited scientific and repository boundaries.
