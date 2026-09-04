@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGGC-STUDY1",
+  "stageId": "LGTGGC-S1-DEVELOPMENT-2026-09-04-v1",
+  "executionAuthorized": true,
+  "maximumScientificExecutions": 1,
+  "authorizationGitBlobSha": "5d7182ab0243d75f12a76920e31e1d78a1618794",
+  "authorizationCommit": "0522dfd245b9702fa9e0229af95caccf9a50e680",
+  "authorizationNonce": "LGTGGC-S1-DEV-AUTH-2026-09-04-01",
+  "formalInferenceAuthorized": false,
+  "pValuesAuthorized": false,
+  "effectBasedPromotionAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "protectedDepth10AccessAuthorized": false,
+  "depth11AccessAuthorized": false,
+  "g2_12EstimatorScientificInputAuthorized": false,
+  "sameEvidenceRerunAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
