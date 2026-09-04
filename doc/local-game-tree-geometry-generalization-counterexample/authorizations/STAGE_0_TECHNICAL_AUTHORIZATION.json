@@ -18,6 +18,7 @@
     "tools/experiments/lib/lgtgmiv-stage1-production.js": "a4664f01535d6abbf6f83821befbb2fafd55cde6",
     "tools/experiments/lib/lgtgmiv-stage1-independent.js": "0c7239ac7acf146e9aee63dae66194681b8631d6",
     "tools/experiments/lib/sfcdf-production.js": "b6fca5d533ff4fdf906e64509185b480c6dc5818",
+    "tools/experiments/lib/sfcdf-independent.js": "3bbc16d41c56f2eb00d7169ace2359f0fa9b9b53",
     "tools/experiments/lib/silgm-production.js": "9712e897540b54ff5fe3aa6acd997d286b09331d",
     "tools/experiments/lib/silgm-independent.js": "0bd60c96e5abfce9d1c99b474709177d52509138",
     "tools/experiments/lib/crclgr-production.js": "f9d90792d729a42f738e7cd1c3b045bdd758ffa5",
