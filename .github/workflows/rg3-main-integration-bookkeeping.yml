@@ -24,6 +24,19 @@ jobs:
           git merge-base --is-ancestor 0feaab24efdd92c3e094aae0fcc60256e90bd1a6 HEAD
       - name: Preserve helper for post-removal bookkeeping
         run: cp tools/experiments/finalize-rg3-main-integration-bookkeeping.py /tmp/finalize-rg3-main-integration-bookkeeping.py
+      - name: Defer diff-scope audit until temporary tooling removal
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('tools/experiments/finalize-rg3-main-integration-bookkeeping.py')
+          s=p.read_text(encoding='utf-8')
+          start=s.index('    names = set(filter(None, git("diff", "--name-only", SOURCE_TIP).splitlines()))')
+          check='    subprocess.check_call(["git", "diff", "--check", SOURCE_TIP])'
+          end=s.index(check, start)
+          line_end=s.index('\n', end)+1
+          s=s[:start] + check + '\n' + s[line_end:]
+          p.write_text(s, encoding='utf-8')
+          PY
       - name: Apply post-integration bookkeeping
         run: python3 tools/experiments/finalize-rg3-main-integration-bookkeeping.py
       - name: Remove one-time write-capable tooling
@@ -33,6 +46,7 @@ jobs:
           git rm doc/research-generation-3/authorizations/rg3-main-integration-bookkeeping-trigger.txt
       - name: Verify final bookkeeping diff scope and historical plan
         run: |
+          git add -N doc/research-generation-3/checkpoints/2026-09-04-research-generation-3-main-integration-complete.md
           python3 - <<'PY'
           import subprocess
           expected = {
