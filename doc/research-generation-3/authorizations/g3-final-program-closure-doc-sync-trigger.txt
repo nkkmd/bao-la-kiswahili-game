@@ -1,0 +1,4 @@
+G3 final program closure documentation sync
+source main fd6c8e2a4510d5937b47a87735854e8459b2646f
+scientific execution authorized: false
+main integration authorized: false
