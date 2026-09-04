@@ -1,0 +1,63 @@
+name: FDEGHV G3-11 Stage 1 preaccess hardening
+
+on:
+  push:
+    branches:
+      - research/g3-11-fresh-depth10-exact-geometry-holdout
+    paths:
+      - doc/fresh-depth10-exact-geometry-holdout/authorizations/PREACCESS_HARDENING_EXECUTE.json
+
+permissions:
+  contents: write
+
+jobs:
+  hardening:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Verify technical-only authorization
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('doc/fresh-depth10-exact-geometry-holdout/authorizations/PREACCESS_HARDENING_EXECUTE.json')
+          a=json.loads(p.read_text())
+          assert a['authorizationDecision']=='PREACCESS-HARDENING-AUTHORIZED'
+          assert a['scientificInferenceAuthorized'] is False
+          assert a['protectedDepth10AccessAuthorized'] is False
+          assert a['maximumRealDepthAuthorized']==0
+          assert a['depth10GeneratedAuthorized'] is False
+          assert a['depth10ReadAuthorized'] is False
+          assert a['depth10PeekAuthorized'] is False
+          PY
+      - name: Run synthetic and static hardening matrix
+        shell: bash
+        run: |
+          export FDEGHV_PREACCESS_HARDENING_OUT="$RUNNER_TEMP/fdeeghv-preaccess-hardening"
+          node --check tools/experiments/verify-fdeeghv-stage1-independent-v2.js
+          node --check tools/experiments/finalize-fdeeghv-stage1-artifact.js
+          node --check tools/experiments/run-fdeeghv-stage1-preaccess-hardening.js
+          node tools/experiments/run-fdeeghv-stage1-preaccess-hardening.js
+      - name: Upload preaccess hardening artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdeeghv-stage1-preaccess-hardening-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdeeghv-preaccess-hardening/PREACCESS_HARDENING_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Mirror durable preaccess hardening result
+        shell: bash
+        run: |
+          dst="doc/fresh-depth10-exact-geometry-holdout/results/preaccess"
+          mkdir -p "$dst"
+          cp "$RUNNER_TEMP/fdeeghv-preaccess-hardening/PREACCESS_HARDENING_RESULT.json" "$dst/PREACCESS_HARDENING_RESULT.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dst/PREACCESS_HARDENING_RESULT.json"
+          git commit -m "Mirror G3-11 Stage 1 preaccess hardening PASS"
+          git push origin HEAD:research/g3-11-fresh-depth10-exact-geometry-holdout
