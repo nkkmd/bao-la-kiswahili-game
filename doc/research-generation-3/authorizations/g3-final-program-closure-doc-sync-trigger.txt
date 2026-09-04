@@ -1,5 +1,5 @@
-G3 final program closure documentation sync v2
+G3 final program closure documentation sync v3
 source main fd6c8e2a4510d5937b47a87735854e8459b2646f
 scientific execution authorized: false
 main integration authorized: false
-technical correction: tolerant idempotent document replacement
+technical correction: post-G3-12 integration current-state matching
