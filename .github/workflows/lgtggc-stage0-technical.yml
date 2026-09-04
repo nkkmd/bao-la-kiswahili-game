@@ -1,0 +1,64 @@
+name: LGTGGC Stage 0 Technical
+on:
+  push:
+    branches:
+      - research/g3-12-local-game-tree-geometry-generalization-counterexample
+    paths:
+      - doc/local-game-tree-geometry-generalization-counterexample/authorizations/lgtggc-stage0-trigger.txt
+concurrency:
+  group: lgtggc-stage0-technical
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Syntax-check frozen Stage 0 tooling
+        run: |
+          node --check tools/experiments/lib/lgtggc-stage0-production.js
+          node --check tools/experiments/lib/lgtggc-stage0-independent.js
+          node --check tools/experiments/run-lgtggc-stage0-technical.js
+          node --check tools/experiments/verify-lgtggc-stage0-authorization.js
+      - name: Verify exact technical authorization and source binding
+        run: node tools/experiments/verify-lgtggc-stage0-authorization.js
+      - name: Materialize durable pre-computation lease
+        run: |
+          mkdir -p artifacts/lease
+          printf '%s\n' 'LGTGGC-S0-TECHNICAL-2026-09-04-v1' > artifacts/lease/stage.txt
+          git rev-parse HEAD > artifacts/lease/trigger-head.txt
+          sha256sum doc/local-game-tree-geometry-generalization-counterexample/authorizations/STAGE_0_TECHNICAL_AUTHORIZATION.json > artifacts/lease/authorization.sha256
+          printf '%s\n' 'freshScientificSeedAccess=false' 'protectedDepth10Access=false' 'depth11Access=false' > artifacts/lease/firewall.txt
+      - name: Upload lease before technical computation
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgtggc-stage0-lease-${{ github.run_id }}
+          path: artifacts/lease
+          if-no-files-found: error
+      - name: Execute authorized technical fixture
+        run: |
+          mkdir -p artifacts/local/local-game-tree-geometry-generalization-counterexample/stage0
+          node tools/experiments/run-lgtggc-stage0-technical.js --output artifacts/local/local-game-tree-geometry-generalization-counterexample/stage0/STAGE_0_TECHNICAL_RESULT.json
+      - name: Enforce Stage 0 resource ceilings
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const p='artifacts/local/local-game-tree-geometry-generalization-counterexample/stage0/STAGE_0_TECHNICAL_RESULT.json';
+          const x=JSON.parse(fs.readFileSync(p,'utf8'));
+          const bytes=fs.statSync(p).size;
+          if(x.stageDisposition!=='STAGE0-PASS') throw new Error('Stage 0 not PASS');
+          if(x.telemetry.elapsedMs>900000) throw new Error('elapsed ceiling');
+          if(x.telemetry.peakRssBytes>2147483648) throw new Error('RSS ceiling');
+          if(bytes>134217728) throw new Error('artifact ceiling');
+          console.log(JSON.stringify({resourceGate:'PASS',bytes,elapsedMs:x.telemetry.elapsedMs,peakRssBytes:x.telemetry.peakRssBytes}));
+          NODE
+      - name: Upload technical result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgtggc-stage0-result-${{ github.run_id }}
+          path: artifacts/local/local-game-tree-geometry-generalization-counterexample/stage0/STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
