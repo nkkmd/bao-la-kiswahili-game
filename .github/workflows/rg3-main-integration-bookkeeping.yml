@@ -42,7 +42,7 @@ jobs:
       - name: Remove one-time write-capable tooling
         run: |
           git rm .github/workflows/rg3-main-integration-bookkeeping.yml
-          git rm tools/experiments/finalize-rg3-main-integration-bookkeeping.py
+          git rm -f tools/experiments/finalize-rg3-main-integration-bookkeeping.py
           git rm doc/research-generation-3/authorizations/rg3-main-integration-bookkeeping-trigger.txt
       - name: Verify final bookkeeping diff scope and historical plan
         run: |
