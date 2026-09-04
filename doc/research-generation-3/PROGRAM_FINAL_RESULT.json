@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "program": "Bao Third-Generation Research Program",
+  "researchGeneration": "Research Generation 3",
+  "closureDate": "2026-09-04",
+  "closureBranch": "research/g3-final-program-closure",
+  "baselineMainSha": "fd6c8e2a4510d5937b47a87735854e8459b2646f",
+  "programStatus": "CLOSED",
+  "mainIntegration": "PENDING-EXPLICIT-USER-AUTHORIZATION",
+  "coreAgenda": "G3-01..G3-12",
+  "humanTrack": {
+    "agendaLabel": "G3-H01",
+    "status": "DEFERRED-INDEPENDENT-NON-BLOCKING",
+    "humanScientificOutcomeGenerated": false,
+    "machineProxyAuthorized": false,
+    "nZeroIsNegativeEvidence": false,
+    "blocksCoreProgramClosure": false
+  },
+  "agendaItems": [
+    {
+      "agendaLabel": "G3-01",
+      "studyId": "LGTGMF-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "formalEligibleMeasurementFamilies": []
+    },
+    {
+      "agendaLabel": "G3-02",
+      "studyId": "EBRWS-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G3-03",
+      "studyId": "TCTGD-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "formalPromotedCandidateSet": [],
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G3-04",
+      "studyId": "SFCDF-STUDY1",
+      "closure": "FORMAL-COMPLETE",
+      "formalDecisions": {
+        "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION": "CONFIRMED-MTAJI-GREATER",
+        "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO": "CONFIRMED-NAMUA-GREATER"
+      }
+    },
+    {
+      "agendaLabel": "G3-05",
+      "studyId": "BECT-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G3-06",
+      "studyId": "BRMGI-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "formalPromotedCandidateSet": [],
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G3-07",
+      "studyId": "SILGM-STUDY1",
+      "closure": "FORMAL-COMPLETE",
+      "formalSummary": {
+        "promoted": 8,
+        "estimable": 7,
+        "confirmed": 3,
+        "notConfirmed": 4,
+        "nonEstimable": 1,
+        "confirmedFamily": "G1 ROOT-LEGAL-WIDTH x E3 RANKING-PREORDER-CHANGE / HIGHER-IN-HIGH under SC1 DEPTH, SC2 NODE-BUDGET, SC3 QUIESCENCE"
+      }
+    },
+    {
+      "agendaLabel": "G3-08",
+      "studyId": "LGPML-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "agendaLabel": "G3-09",
+      "studyId": "CLGR-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "formalRepresentationEligibilityEstablished": false
+    },
+    {
+      "agendaLabel": "G3-10",
+      "studyId": "GCLD-STUDY1",
+      "closure": "FORMAL-COMPLETE",
+      "formalDecisions": {
+        "C1-DIRECTIONALITY-PATH-EFFICIENCY": "CONFIRMED-ACTUAL-GREATER",
+        "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT": "CONFIRMED-ACTUAL-GREATER",
+        "C3-RETURN-FRACTION": "CONFIRMED-ACTUAL-LESS",
+        "C4-CHRONOLOGY-CONDITIONED-CIRCULATION": "NOT-CONFIRMED",
+        "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE": "CONFIRMED-ACTUAL-GREATER"
+      }
+    },
+    {
+      "agendaLabel": "G3-11",
+      "studyId": "FDEGHV-STUDY1",
+      "closure": "FORMAL-COMPLETE-EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN",
+      "formalDecisions": {
+        "H1-EXACT-DEPTH-NOVELTY-CONTINUATION": "DEEPER-CONFIRMED",
+        "H2-LAYER-TREE-RAW-DIVERGENCE-CONTINUATION": "DEEPER-CONFIRMED",
+        "H3-CUMULATIVE-TREE-RAW-INFLATION-CONTINUATION": "DEEPER-CONFIRMED",
+        "H4-TRANSPOSITION-PERSISTENCE": "DEEPER-CONFIRMED"
+      },
+      "exactDomain": {
+        "root": "standard initial RAW root",
+        "completeDepth": 10,
+        "depth10UniqueRawStates": 348270,
+        "depth10TreeNodeOccurrences": 494456,
+        "depth10DuplicateArrivals": 11725,
+        "depth10MultiPredecessorStates": 10383,
+        "cumulativeDistinctRawStatesThroughDepth10": 451127,
+        "cumulativeTreeNodeOccurrencesThroughDepth10": 631101,
+        "depthLabelledLegalEdgesThroughParentDepth9": 466768
+      }
+    },
+    {
+      "agendaLabel": "G3-12",
+      "studyId": "LGTGGC-STUDY1",
+      "closure": "TECHNICAL-INVALID",
+      "stage1": "EXECUTED-EXACTLY-ONCE-TECHNICAL-INVALID",
+      "stage2": "NOT-AUTHORIZED-NOT-EXECUTED",
+      "formalGeneralizationDecisions": 0,
+      "formalCounterexampleDecisions": 0
+    }
+  ],
+  "dependencyPrerequisites": [
+    {
+      "position": "post-G3-01/pre-G3-02",
+      "studyId": "LGTGMIV-STUDY1",
+      "closure": "FORMAL-ELIGIBLE-ALL",
+      "representation": "RAW-ONLY",
+      "relativeLocalHorizon": 5,
+      "eligibleFamilies": [
+        "LGTGMIV-F1-TREE-OCCURRENCE",
+        "LGTGMIV-F2-RAW-GRAPH",
+        "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+        "LGTGMIV-F4-TREE-GRAPH-RELATION",
+        "LGTGMIV-F5-REPLY-GEOMETRY"
+      ]
+    },
+    {
+      "position": "post-G3-09/pre-G3-10 prerequisite 1",
+      "studyId": "RRCLGR-STUDY1",
+      "closure": "TECHNICAL-INVALID"
+    },
+    {
+      "position": "post-RRCLGR/pre-G3-10 prerequisite 2",
+      "studyId": "CRCLGR-STUDY1",
+      "closure": "FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION",
+      "formalRepresentation": "CRCLGR-R1-EXACT-SQUASHED-L1"
+    }
+  ],
+  "programLevelConclusions": {
+    "rawIdentityRemainsAuthoritative": true,
+    "validatedTransformSet": [],
+    "boundedLocalGeometryInstrumentAvailable": true,
+    "boundedContinuousLocalGeometryRepresentationAvailable": true,
+    "formalCorridorFunnelPhaseContrastsAvailable": true,
+    "formalSearchInstabilityAssociationAvailable": true,
+    "formalLongitudinalGeometryDynamicsAvailable": true,
+    "protectedDepth10ExactValidationCompleted": true,
+    "formalGeneralizationCounterexampleBoundaryEstablished": false,
+    "wholeBaoStateSpaceSizeEstablished": false,
+    "wholeBaoGameTreeSizeEstablished": false,
+    "depth11Authorized": false,
+    "gameTheoreticLawEstablished": false,
+    "causalGeometryLawEstablished": false,
+    "humanDifficultyLawEstablished": false,
+    "strategicRegimeValidated": false,
+    "publicAiEngineeringSeparatedFromScientificSuccess": true,
+    "technicalInvalidResultsPreservedWithoutScientificReinterpretation": true
+  },
+  "protectedEvidence": {
+    "g3_11Depth10": "OPENED-CONSUMED-EXACTLY-ONCE",
+    "g3_11SameEvidenceRerunAuthorized": false,
+    "depth11": "NOT-AUTHORIZED-NOT-ACCESSED",
+    "g3_12Stage1SameEvidenceRepairReplayAuthorized": false,
+    "g3_12Stage2": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "g3_12Stage2SeedsUnread": true,
+    "g2_12EstimatorScientificReuseAuthorized": false,
+    "symmetryCanonicalizationRescueAuthorized": false
+  },
+  "completionConditions": {
+    "section16_1_coreAgendaFormalClosures": true,
+    "section16_2_priorGenerationDecisionsPreserved": true,
+    "section16_3_rawIdentityAndTransformBoundaryPreserved": true,
+    "section16_4_localGeometryInstrumentDispositionPresent": true,
+    "section16_5_branchingTranspositionTreeGraphCorridorFunnelClosure": true,
+    "section16_6BranchTransitionAndBaoRuleMechanismClosure": true,
+    "section16_7GeometrySearchInstabilityDisposition": true,
+    "section16_8GeometryPersistenceMemoryClosure": true,
+    "section16_9ContinuousRepresentationAndLongitudinalDynamicsDisposition": true,
+    "section16_10ProtectedDepth10HoldoutClosure": true,
+    "section16_11GeneralizationCounterexampleAgendaClosure": true,
+    "section16_12ConstructSeparationPreserved": true,
+    "section16_13PublicAiEngineeringSeparationPreserved": true,
+    "section16_14FinalSynthesisCreated": true
+  },
+  "closureReview": "RG3-PROGRAM-CLOSURE-AUTHORIZED",
+  "scientificExecutionAuthorizedByProgramClosure": false,
+  "mainIntegrationAuthorized": false
+}
