@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 root = Path('.')
 
@@ -11,42 +12,47 @@ def write(path, text):
     (root / path).write_text(text, encoding='utf-8')
 
 
-def replace_expected(path, old, new):
-    text = read(path)
-    if new in text:
-        return
-    if old not in text:
-        raise RuntimeError(f'{path}: expected source text not found: {old!r}')
-    write(path, text.replace(old, new, 1))
-
-
-def insert_before_once(path, marker, block):
+def insert_before(path, marker, block):
     text = read(path)
     if block.strip() in text:
         return
     if marker not in text:
-        raise RuntimeError(f'{path}: marker not found: {marker!r}')
+        raise RuntimeError(f'{path}: marker not found: {marker}')
     write(path, text.replace(marker, block.rstrip() + '\n\n' + marker, 1))
 
 
+def regex_replace(path, pattern, replacement, expected_new):
+    text = read(path)
+    if expected_new in text:
+        return
+    text2, n = re.subn(pattern, replacement, text, count=1, flags=re.MULTILINE)
+    if n != 1:
+        raise RuntimeError(f'{path}: regex replacement failed: {pattern}')
+    write(path, text2)
+
+
+# Root README
 root_block = '''<!-- RG3-FINAL-CLOSURE-ROOT:BEGIN -->
 - [`doc/research-generation-3/FINAL_SYNTHESIS.md`](doc/research-generation-3/FINAL_SYNTHESIS.md): **Research Generation 3 core program final synthesis**。`G3-01..G3-12`はprospective stop ruleに従って全てclosureし、program statusは`CLOSED / MAIN INTEGRATION PENDING`。formal-completeな主要結果はG3-04 corridor/funnel、G3-07 geometry×search-instability association、G3-10 longitudinal geometry dynamics、G3-11 protected depth-10 exact holdout。technical-invalid Studyはnegative/null resultへ読み替えず、G3-12はformal generalization/counterexample Stage 2未実行のままtechnical-invalid closure。G3-H01は`DEFERRED / INDEPENDENT / NON-BLOCKING`。generation closureのmain統合は明示的指示待ち。
 <!-- RG3-FINAL-CLOSURE-ROOT:END -->'''
-insert_before_once('README.md', '<!-- LGTGGC-G3-12-ROOT-README:BEGIN -->', root_block)
+insert_before('README.md', '<!-- LGTGGC-G3-12-ROOT-README:BEGIN -->', root_block)
 
 p = 'README.md'
 text = read(p)
 lines = text.splitlines()
-replacement = '- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3のcurrent-facing closure state。core agenda `G3-01..G3-12`は`CLOSED`、closure branchは`research/g3-final-program-closure`、final synthesis / machine-readable final result / program closure decisionをmaterialize済み。G3-H01はdeferred non-blocking。`main` integrationは明示的ユーザー指示待ち。'
-if replacement not in lines:
+new_line = '- [`doc/research-generation-3/CURRENT_STATUS.md`](doc/research-generation-3/CURRENT_STATUS.md): Research Generation 3のcurrent-facing closure state。core agenda `G3-01..G3-12`は`CLOSED`、closure branchは`research/g3-final-program-closure`、final synthesis / machine-readable final result / program closure decisionをmaterialize済み。G3-H01はdeferred non-blocking。`main` integrationは明示的ユーザー指示待ち。'
+if new_line not in lines:
+    found = False
     for i, line in enumerate(lines):
         if line.startswith('- [`doc/research-generation-3/CURRENT_STATUS.md`]'):
-            lines[i] = replacement
+            lines[i] = new_line
+            found = True
             break
-    else:
+    if not found:
         raise RuntimeError('README.md: RG3 CURRENT_STATUS index line not found')
 write(p, '\n'.join(lines) + ('\n' if text.endswith('\n') else ''))
 
+# Research Index
 index_block = '''<!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:BEGIN -->
 ### Research Generation 3 — program closure
 
@@ -64,14 +70,21 @@ Research Generation 3 core agenda `G3-01..G3-12`は、prospective `PROGRAM_PLAN.
 
 `main` integrationは明示的ユーザー指示まで実行しない。
 <!-- RG3-FINAL-CLOSURE-RESEARCH-INDEX:END -->'''
-insert_before_once('doc/RESEARCH_INDEX.md', '<!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->', index_block)
-replace_expected('doc/RESEARCH_INDEX.md', '### Research Generation 3 current highlight — G3-12 / LGTGGC-STUDY1', '### Research Generation 3 final core Study — G3-12 / LGTGGC-STUDY1')
-replace_expected('doc/RESEARCH_INDEX.md', '`main` integrationは未実施で、research branch上のclosureを明示的ユーザー指示まで保持する。', '`LGTGGC-STUDY1`自体のmain integrationは完了済み。後続のResearch Generation 3 program closureは`research/g3-final-program-closure`上にあり、generation-level main integrationは明示的ユーザー指示待ち。')
+insert_before('doc/RESEARCH_INDEX.md', '<!-- LGTGGC-G3-12-RESEARCH-INDEX:BEGIN -->', index_block)
+regex_replace(
+    'doc/RESEARCH_INDEX.md',
+    r'^### Research Generation 3 current highlight — G3-12 / LGTGGC-STUDY1$',
+    '### Research Generation 3 final core Study — G3-12 / LGTGGC-STUDY1',
+    '### Research Generation 3 final core Study — G3-12 / LGTGGC-STUDY1'
+)
 
-replace_expected(
+# Future agenda
+future_status = 'Research Generation 3: **Closed on closure branch / core agenda G3-01..G3-12 complete / final synthesis materialized / G3-H01 deferred non-blocking / main integration pending explicit instruction (2026-09-04)**'
+regex_replace(
     'doc/FUTURE_RESEARCH_AGENDA.md',
-    'Research Generation 3: **Active / core agenda G3-01..G3-12 execution reached G3-12 capstone / G3-12 `LGTGGC-STUDY1` CLOSED `TECHNICAL-INVALID` / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / main integration pending explicit instruction (2026-09-04)**',
-    'Research Generation 3: **Closed on closure branch / core agenda G3-01..G3-12 complete / final synthesis materialized / G3-H01 deferred non-blocking / main integration pending explicit instruction (2026-09-04)**'
+    r'^Research Generation 3: \*\*Active / core agenda G3-01\.\.G3-12.*$',
+    future_status,
+    future_status
 )
 future_block = '''<!-- RG3-FINAL-CLOSURE:FUTURE:BEGIN -->
 ### 2026-09-04 Research Generation 3 final program closure
@@ -82,29 +95,45 @@ Research Generation 3 core agenda `G3-01..G3-12`はprogram-levelに`CLOSED`。pr
 
 Research Generation 3 closure branchの`main` integrationは明示的ユーザー指示まで行わない。次のResearch Generationまたは新規Studyは、このclosureを救済・completionするものではなく、別のprospective authorizationを必要とする。
 <!-- RG3-FINAL-CLOSURE:FUTURE:END -->'''
-insert_before_once('doc/FUTURE_RESEARCH_AGENDA.md', '### 2026-09-04 Research Generation 3 current update', future_block)
+insert_before('doc/FUTURE_RESEARCH_AGENDA.md', '### 2026-09-04 Research Generation 3 current update', future_block)
 
-replace_expected(
+# RG3 README
+rg3_status = 'Status = CLOSED / core agenda G3-01..G3-12 complete / FINAL_SYNTHESIS materialized / MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION'
+regex_replace(
     'doc/research-generation-3/README.md',
-    'Status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION',
-    'Status = CLOSED / core agenda G3-01..G3-12 complete / FINAL_SYNTHESIS materialized / MAIN INTEGRATION PENDING EXPLICIT USER INSTRUCTION'
+    r'^Status = ACTIVE / core agenda G3-01\.\.G3-12.*$',
+    rg3_status,
+    rg3_status
 )
-replace_expected('doc/research-generation-3/README.md', 'Human track = G3-H01 / independent / non-blocking', 'Human track = G3-H01 / DEFERRED / independent / non-blocking')
-rg3_read_block = '''<!-- RG3-FINAL-CLOSURE-READ-FIRST:BEGIN -->
+regex_replace(
+    'doc/research-generation-3/README.md',
+    r'^Human track = G3-H01 / independent / non-blocking$',
+    'Human track = G3-H01 / DEFERRED / independent / non-blocking',
+    'Human track = G3-H01 / DEFERRED / independent / non-blocking'
+)
+rg3_read = '''<!-- RG3-FINAL-CLOSURE-READ-FIRST:BEGIN -->
 - [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md) — Research Generation 3 generation-level scientific synthesis / completion-condition record
 - [`PROGRAM_FINAL_RESULT.json`](PROGRAM_FINAL_RESULT.json) — machine-readable program final state
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — current-facing closure state / main integration boundary
 - [`../research-program-decisions/2026-09-04-research-generation-3-program-closure.md`](../research-program-decisions/2026-09-04-research-generation-3-program-closure.md) — formal program closure decision
 - [`../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md`](../research-program-decisions/2026-09-04-post-g3-12-research-generation-3-closure-review.md) — post-G3-12 closure authorization review
 <!-- RG3-FINAL-CLOSURE-READ-FIRST:END -->'''
-insert_before_once('doc/research-generation-3/README.md', '<!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->', rg3_read_block)
+insert_before('doc/research-generation-3/README.md', '<!-- LGTGGC-G3-12-RG3-READ-FIRST:BEGIN -->', rg3_read)
 
-replace_expected(
+# RG3 CURRENT_STATUS
+current_status = 'Program status = CLOSED / core agenda G3-01..G3-12 complete / final synthesis materialized / main integration pending explicit user instruction'
+regex_replace(
     'doc/research-generation-3/CURRENT_STATUS.md',
-    'Program status = ACTIVE / core agenda G3-01..G3-12 reached capstone / G3-12 LGTGGC-STUDY1 CLOSED TECHNICAL-INVALID / Stage 2 NOT-AUTHORIZED-NOT-EXECUTED / G3-12 main integration COMPLETE FAST-FORWARD',
-    'Program status = CLOSED / core agenda G3-01..G3-12 complete / final synthesis materialized / main integration pending explicit user instruction'
+    r'^Program status = ACTIVE / core agenda G3-01\.\.G3-12.*$',
+    current_status,
+    current_status
 )
-replace_expected('doc/research-generation-3/CURRENT_STATUS.md', 'Human track = G3-H01 / independent / non-blocking', 'Human track = G3-H01 / DEFERRED / independent / non-blocking')
+regex_replace(
+    'doc/research-generation-3/CURRENT_STATUS.md',
+    r'^Human track = G3-H01 / independent / non-blocking$',
+    'Human track = G3-H01 / DEFERRED / independent / non-blocking',
+    'Human track = G3-H01 / DEFERRED / independent / non-blocking'
+)
 closure_section = '''<!-- RG3-FINAL-CLOSURE-CURRENT:BEGIN -->
 ## Research Generation 3 program closure
 
@@ -131,6 +160,20 @@ Generation-level canonical records:
 
 Protected boundaries remain active: G3-11 depth-10 rerun prohibited; depth 11 not authorized; G3-12 Stage 1 same-evidence repair/replay prohibited; G3-12 Stage 2 not authorized and seeds unread; G2-12 estimator scientific reuse and symmetry/canonicalization rescue not authorized.
 <!-- RG3-FINAL-CLOSURE-CURRENT:END -->'''
-insert_before_once('doc/research-generation-3/CURRENT_STATUS.md', '<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:BEGIN -->', closure_section)
+insert_before('doc/research-generation-3/CURRENT_STATUS.md', '<!-- LGTGGC-G3-12-RG3-CLOSURE-SECTION:BEGIN -->', closure_section)
+
+# Assertions.
+checks = {
+    'README.md': ['RG3-FINAL-CLOSURE-ROOT:BEGIN', 'research/g3-final-program-closure'],
+    'doc/RESEARCH_INDEX.md': ['RG3-FINAL-CLOSURE-RESEARCH-INDEX:BEGIN', 'Research Generation 3 — program closure'],
+    'doc/FUTURE_RESEARCH_AGENDA.md': ['RG3-FINAL-CLOSURE:FUTURE:BEGIN', 'Research Generation 3: **Closed on closure branch'],
+    'doc/research-generation-3/README.md': ['Status = CLOSED / core agenda G3-01..G3-12 complete', 'RG3-FINAL-CLOSURE-READ-FIRST:BEGIN'],
+    'doc/research-generation-3/CURRENT_STATUS.md': ['Program status = CLOSED / core agenda G3-01..G3-12 complete', 'RG3-FINAL-CLOSURE-CURRENT:BEGIN'],
+}
+for path, needles in checks.items():
+    text = read(path)
+    for needle in needles:
+        if needle not in text:
+            raise RuntimeError(f'{path}: post-sync assertion missing {needle!r}')
 
 print('RG3 final program closure central document sync complete')
