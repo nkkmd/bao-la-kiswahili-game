@@ -1,0 +1,7 @@
+LGTGGC-S0-TECHNICAL-2026-09-04-v4
+technical-only
+v1-run-id=33847428204
+v1-fresh-scientific-seed-access=false
+fresh-scientific-seed-access=false
+protected-depth10-access=false
+depth11-access=false
