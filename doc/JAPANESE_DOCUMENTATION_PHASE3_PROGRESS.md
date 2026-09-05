@@ -94,7 +94,6 @@ PR: [#101](https://github.com/nkkmd/bao-la-kiswahili-game/pull/101)
 
 immutable record等の正当な英語残存は原文を保持するが、その役割、意味、例外理由を周囲の人間向け文書で日本語説明する。将来の文書品質をこの整備以前の状態へ戻してはならない。
 
-
 ## 再開手順
 
 1. この文書を読む。
