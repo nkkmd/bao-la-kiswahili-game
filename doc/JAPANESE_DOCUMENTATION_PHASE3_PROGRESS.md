@@ -1,8 +1,10 @@
 # 第3段階：詳細な人間向け研究文書の整備状況
 
-状態: **整備・検証完了 / PR #101作成済み**
-基準となる`main`: `426518850d5a794f6a43603b600a3a3756b41cd9`  
-作業ブランチ: `docs/japanese-human-docs-phase3`
+状態: **整備・検証・`main`統合完了**  
+作業開始時の`main`: `426518850d5a794f6a43603b600a3a3756b41cd9`  
+作業ブランチ: `docs/japanese-human-docs-phase3`  
+PR: [#101](https://github.com/nkkmd/bao-la-kiswahili-game/pull/101)  
+`main`統合コミット: `68159b1dcdf1c9e0042b5933e4f88aca5dcec995`
 
 ## 目的
 
@@ -41,7 +43,7 @@
 | Research Generation 2の詳細文書 | 完了 | 12 Study・67文書を横断監査済み |
 | Research Generation 1の詳細文書 | 完了 | 現行文書を整備し、固定英語原文の例外を明示 |
 | 全体検証 | 完了 | 164変更文書、相対リンク、exact block、関連testを確認 |
-| PR作成 | 完了 | PR #101。`main`への統合は別途明示指示を待つ |
+| PR作成・`main`統合 | 完了 | PR #101を`main`へ統合済み。統合コミットは`68159b1dcdf1c9e0042b5933e4f88aca5dcec995` |
 
 ## 完了した小単位
 
@@ -79,6 +81,19 @@
 - Current Status、Reproducibility Index、Resume文書では、日本語の要点と原文保持理由を明示した。
 - 人間向け見出しは日本語の説明を補い、canonical ID、token、数値、seed、hash、pathは変更していない。
 - 初見向けの現行説明は、各Studyの`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
+
+## 将来文書へ継承する基準
+
+この整備で到達した品質を、今後新規作成・更新する人間向け文書の最低基準とする。適用規則は次の文書に恒久化する。
+
+- [`../AGENTS.md`](../AGENTS.md)
+- [`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md)
+- [`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)
+
+今後の文書は、初稿から日本語で目的・状態・結論・判断理由・意味・限界・読む順序を追えるようにする。英語だけの人間向け見出し、説明のない英語完全文、壊れた相対リンク、意図しないfenced code blockまたはcanonical情報の変更を残したままclosureや`main`統合へ進めない。
+
+immutable record等の正当な英語残存は原文を保持するが、その役割、意味、例外理由を周囲の人間向け文書で日本語説明する。将来の文書品質をこの整備以前の状態へ戻してはならない。
+
 
 ## 再開手順
 
