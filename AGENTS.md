@@ -4,6 +4,22 @@
 
 Bao研究およびAI Engineeringの**人間向けMarkdown文書は日本語を主言語とする**。
 
+## 2026年9月5日に固定した基準品質
+
+第1〜第3段階の日本語文書整備を`main`へ統合した時点の品質を、今後の人間向け文書の最低基準とする。監査根拠は[`doc/JAPANESE_DOCUMENTATION_PHASE3_PROGRESS.md`](doc/JAPANESE_DOCUMENTATION_PHASE3_PROGRESS.md)、基準コミットは`68159b1dcdf1c9e0042b5933e4f88aca5dcec995`である。
+
+新規作成または実質的に更新する人間向け文書は、次を必須とする。
+
+- 初稿から本リポジトリの日本語品質を満たし、「後で日本語化する」前提で英語本文を作らない。
+- 読者が文書の目的、現在状態、結論、意味、限界、読む順序を日本語だけで追える構成にする。
+- 英語だけの人間向け見出しを0件とする。
+- canonical / immutable / exact-output等の明示的例外を除き、英語の完全な通常説明文を0件とする。
+- 相対リンク切れを0件とし、fenced code block、ID、数値、hash、authorization状態へ意図しない変更を加えない。
+- Study / Program単位で、入口、概要、最終報告、現在状態、再現性、研究ログ、再開文書、中央索引の品質を横断確認する。
+- closure、PR完成、`main`統合の前に品質ゲートを実施し、対象範囲、例外、検証結果をPR本文または監査記録へ残す。
+
+この基準より低い品質への後退は認めない。既存のimmutable recordに英語原文を残す場合は原文を保持し、その役割、意味、例外理由を周囲の人間向け文書で日本語説明する。
+
 新規作成・更新時は、必ず次の2文書を参照すること。
 
 - [`doc/DOCUMENTATION_LANGUAGE_POLICY.md`](doc/DOCUMENTATION_LANGUAGE_POLICY.md)
