@@ -182,6 +182,18 @@ node tools/diagnostic-to-fixture.js \
 
 G3-12は技術的不成立で終了したため、局所幾何の一般化可能範囲と反例領域は確立していません。研究第3世代のcore programはG3-01〜G3-12を閉じ、mainへの統合も完了しています。詳しくは[研究第3世代の最終統合報告](doc/research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
 
+### 研究第4世代 — 局所幾何の意味・移送可能性・exact帰結
+
+第四世代は、第三世代で測定可能になったbounded RAW local game-tree geometryについて、別のphase・root family・source policyへの移送可能性、完全解析可能な限定domainでのgame-theoretic consequence、時間・ルール・探索条件との関係を検証する計画です。
+
+core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instrumentを科学的effectから分離して構築し、claim別の一般化・反例検証、fresh exact microdomain、geometryとexact valueのbridge、多時間尺度memory、rule-semantic transition、search reliability、depth 11 exact topologyへ進む構成です。
+
+現時点で固定されているのはProgram計画だけです。個別Studyの科学実行、scientific seedへのアクセス、depth 11、公開AI変更は承認されていません。次に行える研究作業は、G4-01についてのcurrent-state authorization reviewです。
+
+- [第四世代研究の入口](doc/research-generation-4/README.md)
+- [第四世代Program計画](doc/research-generation-4/PROGRAM_PLAN.md)
+- [第四世代の現在状態](doc/research-generation-4/CURRENT_STATUS.md)
+
 新しい独立研究を追加するときは、初見向け概要と科学的・技術的な正本を分け、[研究成果の中央索引](doc/RESEARCH_INDEX.md)から参照できるようにします。
 
 ## ドキュメント
