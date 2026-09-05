@@ -2,7 +2,7 @@
 
 更新日: 2026-09-05  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`PROGRAM PLAN FROZEN / SCIENTIFIC EXECUTION NOT AUTHORIZED`**
+状態: **`PROGRAM PLAN FROZEN / INTEGRATED TO MAIN / SCIENTIFIC EXECUTION NOT AUTHORIZED`**
 
 ## このProgramが調べること
 
@@ -17,7 +17,9 @@ Program: `Bao Fourth-Generation Research Program`
 ## 現在の状態
 
 ```text
-Program plan = FROZEN
+Program plan = FROZEN / INTEGRATED TO MAIN
+Planning PR = #103
+Planning merge commit = 692bcb40f52c097ca89bf7fea842b6f77fbdf19e
 Core agenda = G4-01..G4-10
 Independent tracks = G4-P01, G4-H01
 Scientific execution authorized = none
