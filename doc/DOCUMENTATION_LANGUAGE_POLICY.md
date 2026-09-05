@@ -36,7 +36,6 @@ Research Generation 1および日本語整備後のResearch Generation 2文書�
 
 この基準はMarkdownを主対象とするが、将来追加される人間向けのテキスト文書、テンプレート、生成文書にも、形式上適用できる範囲で同じ原則を適用する。machine-readable artifact、source code、exact outputは対象外とする。
 
-
 ## 2. 基本原則
 
 ### 2.1 人間向け本文は日本語を主とする
