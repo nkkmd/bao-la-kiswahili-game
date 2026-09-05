@@ -64,6 +64,8 @@ candidate benefit metrics read = false
 
 production resultは独立検証前の状態を意図的に保持し、最終dispositionは`independent-verification.json`と本書で確定します。
 
+`compact result`の`compact`は、numeric root score、tie groupの内部表現、全state payloadを保存対象から外したscore-redacted schemaを意味します。ファイルのbyte sizeが小さいことを保証する名称ではありません。凍結済みの`result.json`とartifact hashは変更していません。
+
 ## 4. 情報遮断
 
 ```text

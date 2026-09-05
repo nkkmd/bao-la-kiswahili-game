@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/README.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/CANDIDATE_REGISTER.md'
@@ -16,7 +15,6 @@ on:
       - 'tools/engineering/validate-pbai-c004-predevelopment-support-spec.js'
       - 'tools/engineering/validate-pbai-c004-contract.js'
       - 'test/public-ai-improvement-program1-contract.test.js'
-      - '.github/workflows/pbai-p1-c004-predevelopment.yml'
   workflow_dispatch:
 
 permissions:

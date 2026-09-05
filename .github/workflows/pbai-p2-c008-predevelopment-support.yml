@@ -4,11 +4,9 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
       - 'doc/ai-engineering/public-ai-improvement-program-2/**'
       - 'tools/engineering/materialize-pbai-p2-c008-predevelopment-support.js'
       - 'tools/engineering/verify-pbai-p2-c008-predevelopment-support-independent.js'
-      - '.github/workflows/pbai-p2-c008-predevelopment-support.yml'
   workflow_dispatch:
 
 permissions:

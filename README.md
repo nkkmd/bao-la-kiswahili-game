@@ -157,7 +157,7 @@ node tools/diagnostic-to-fixture.js \
 Research Generation 3の正式成果を設計入力とした`PBAI-P3`は、`AI-GEN2` baselineと、`PBAI-C010-v1`だけからなるinitial candidate inventory、fresh split、prospective gate、baseline-only support protocolを結果確認前に固定しました。`PBAI-P3-D` support / reachability auditではtop-3 probe completionが凍結gateを満たさず、候補を実装せず`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`としました。Programは`COMPLETE / KEEP-AI-GEN2`で終了し、candidate実装、benefit benchmark、validation、release holdout、公開変更は行っていません。Research Generation 4とは別のAI Engineering Programです。
 
 - [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — 現在の世代、評価済み候補、公開状態への入口
-- [第3回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-3/README.md) — `PBAI-P3`の現在状態、証拠境界、次の認可位置
+- [第3回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-3/README.md) — `PBAI-P3`の最終判断、証拠境界、終了条件
 - [第2回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md) — `PBAI-P2`の評価結果
 - [第1回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md) — `PBAI-P1`の評価結果
 

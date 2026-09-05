@@ -23,7 +23,7 @@ Research Generation 4 scientific evidence
 
 - Research Generation 3のformal conclusionはimmutableです。
 - engineering benchmarkのPASS / FAILで過去Studyを再判定しません。
-- scientific benchmarkとpublic-product decisionを別のdecision recordへ記録します。
+- scientific benchmarkとpublic-product decisionを別のdecision recordへ記録します。PBAI-P3の工学判断は[`DECISION_REGISTER.md`](DECISION_REGISTER.md)、公開系統とリリース判断は[`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)の管轄です。
 - fresh engineering evidenceにはsource commit、contract、seed/root identity、artifact hashを付与します。
 
 ## 3. 過去Programの完了状態

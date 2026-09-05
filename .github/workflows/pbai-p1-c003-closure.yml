@@ -4,12 +4,10 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/**'
       - 'tools/engineering/validate-pbai-c003-predevelopment-support-spec.js'
       - 'tools/engineering/materialize-pbai-c003-predevelopment-support.js'
       - 'test/public-ai-improvement-program1-contract.test.js'
-      - '.github/workflows/pbai-p1-c003-closure.yml'
   workflow_dispatch:
 
 permissions:

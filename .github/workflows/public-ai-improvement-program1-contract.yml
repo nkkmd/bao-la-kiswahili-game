@@ -14,13 +14,10 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
-      - 'doc/ai-engineering/AI_GENERATION_NAMING.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/**'
       - 'doc/engineering-program-decisions/2026-08-26-public-ai-improvement-program-1.md'
       - 'doc/engineering-program-decisions/2026-08-26-ai-generation-naming-convention.md'
       - 'test/public-ai-improvement-program1-contract.test.js'
-      - '.github/workflows/public-ai-improvement-program1-contract.yml'
 
 permissions:
   contents: read

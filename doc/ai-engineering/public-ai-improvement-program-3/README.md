@@ -14,16 +14,19 @@ Program開始認可、科学証拠cutoff、現在の公開用source、baseline�
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態と次に許可される作業
 2. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md) — Programの最終判断
-3. [`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md) — P3-Dの件数、gate、artifact hash
-4. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Programの工程と判断境界
-5. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — 1件に閉じたinitial candidate inventory
-6. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md) — 実装前baseline-only監査契約
-7. [`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md) — exact実行手順と成果物
-8. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — fresh splitとprospective global gate
-9. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md) — 使用可能なResearch Generation 3証拠
-10. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 科学研究とAI Engineeringの分離規則
-11. [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2`のexact source identity
-12. [`RESUME_HERE.md`](RESUME_HERE.md) — 終了後の境界
+3. [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — supportとProgramの工学判断
+4. [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md) — 公開系統とリリース判断
+5. [`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md) — P3-Dの件数、gate、artifact hash
+6. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Programの工程と判断境界
+7. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — 1件に閉じたinitial candidate inventory
+8. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md) — 実装前baseline-only監査契約
+9. [`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md) — exact実行手順と成果物
+10. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — fresh splitとprospective global gate
+11. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md) — 使用可能なResearch Generation 3証拠
+12. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 科学研究とAI Engineeringの分離規則
+13. [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2`のexact source identity
+14. [`RESUME_HERE.md`](RESUME_HERE.md) — 終了後の境界
+15. [`checkpoints/2026-09-05-pre-main-documentation-and-workflow-readiness.md`](checkpoints/2026-09-05-pre-main-documentation-and-workflow-readiness.md) — main統合前の文書・workflow最終監査
 
 ## 固定したProgram identity
 

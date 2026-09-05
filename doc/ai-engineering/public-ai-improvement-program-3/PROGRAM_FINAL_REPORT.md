@@ -26,6 +26,8 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 
 初期inventoryは1件に閉じ、結果確認後の追加を禁止しています。したがって後続Stageへ進む候補はなく、formal `ADOPT`なしのProgram closure mappingにより`KEEP-AI-GEN2`を確定します。
 
+工学判断の時系列は[`DECISION_REGISTER.md`](DECISION_REGISTER.md)、公開系統とリリース判断は[`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)に分離して記録しています。
+
 ## 2. PBAI-P3-Dの技術完全性
 
 - production support runは凍結済みcommit `3015ca39346901de8172677383331e4965871b68`から1回だけ実行した。

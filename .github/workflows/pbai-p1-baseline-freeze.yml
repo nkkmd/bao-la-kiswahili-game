@@ -7,14 +7,12 @@ on:
       - 'tools/engineering/inspect-pbai-ai-gen2-baseline.js'
       - 'tools/engineering/measure-pbai-ai-gen2-operational.js'
       - 'tools/engineering/verify-pbai-ai-gen2-baseline-freeze.js'
-      - 'doc/AI_ENGINEERING_INDEX.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/README.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/BASELINE_SPEC.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/DECISION_REGISTER.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/baselines/**'
       - 'test/public-ai-improvement-program1-contract.test.js'
-      - '.github/workflows/pbai-p1-baseline-freeze.yml'
   workflow_dispatch:
 
 permissions:

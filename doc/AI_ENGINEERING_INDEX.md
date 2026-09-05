@@ -63,13 +63,15 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 1. [`ai-engineering/public-ai-improvement-program-3/README.md`](ai-engineering/public-ai-improvement-program-3/README.md) — Programの入口と停止境界
 2. [`ai-engineering/public-ai-improvement-program-3/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-3/CURRENT_STATUS.md) — 現在の正式状態
 3. [`ai-engineering/public-ai-improvement-program-3/PROGRAM_FINAL_REPORT.md`](ai-engineering/public-ai-improvement-program-3/PROGRAM_FINAL_REPORT.md) — 最終報告
-4. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_RESULT.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_RESULT.md) — support結果とartifact hash
-5. [`ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md) — `PBAI-C010-v1` inventory
-6. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md) — baseline-only support契約
-7. [`ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md) — fresh splitとprospective gate
-8. [`ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md) — Research Generation 3証拠の利用範囲
-9. [`ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md) — `AI-GEN2` baseline
-10. [`ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md`](ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md) — prospective工程
+4. [`ai-engineering/public-ai-improvement-program-3/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/DECISION_REGISTER.md) — supportとProgramの工学判断
+5. [`ai-engineering/public-ai-improvement-program-3/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/RELEASE_REGISTER.md) — 公開系統とリリース判断
+6. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_RESULT.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_RESULT.md) — support結果とartifact hash
+7. [`ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md) — `PBAI-C010-v1` inventory
+8. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md) — baseline-only support契約
+9. [`ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md) — fresh splitとprospective gate
+10. [`ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md) — Research Generation 3証拠の利用範囲
+11. [`ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md) — `AI-GEN2` baseline
+12. [`ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md`](ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md) — prospective工程
 
 ## 4. `PBAI-P2` — 第二世代研究を使った改善Program
 

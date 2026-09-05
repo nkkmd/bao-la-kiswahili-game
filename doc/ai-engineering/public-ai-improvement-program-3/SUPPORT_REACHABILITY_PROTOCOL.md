@@ -1,6 +1,10 @@
 # `PBAI-C010-v1` — 実装前support / reachability監査protocol
 
-状態: **`FROZEN / EXECUTION AUTHORIZED BY SEPARATE ARTIFACT / PRE-GENERATION`**
+凍結時状態: **`FROZEN / EXECUTION AUTHORIZED BY SEPARATE ARTIFACT / PRE-GENERATION`**
+
+現在状態: **`COMPLETE / HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`**
+
+このprotocolは実行前に凍結した契約です。実行結果とProgramの終了判断は[`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)と[`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)に分離して記録しています。以下の数値、seed、gate、failure semanticsは終了後も変更しません。
 
 Spec ID: `PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1`
 
@@ -174,7 +178,7 @@ production support harnessとindependent verifierは、次を共有実装にし�
 
 ## 9. 情報遮断と実行境界
 
-次は`PBAI-P3-C`でspecを凍結した時点のauthorization fieldです。現在の`PBAI-P3-D`実行認可は[`authorizations/2026-09-05-p3-d-execution-authorization.md`](authorizations/2026-09-05-p3-d-execution-authorization.md)に分離して記録し、凍結済みspec自体は書き換えません。
+次は`PBAI-P3-C`でspecを凍結した時点のauthorization fieldです。後に与えられた`PBAI-P3-D`の限定的な実行認可は[`authorizations/2026-09-05-p3-d-execution-authorization.md`](authorizations/2026-09-05-p3-d-execution-authorization.md)に分離して記録しており、凍結済みspec自体は書き換えません。
 
 ```text
 support execution authorized now = false
@@ -184,4 +188,4 @@ validation seeds accessible = false
 release holdout seeds accessible = false
 ```
 
-`PBAI-P3-D`は現在明示的に認可されていますが、support runnerはcandidate codeを含めません。Support PASS後は結果を固定し、`PBAI-P3-E`のcandidate contract freeze認可を別に求めます。
+`PBAI-P3-D`はこの別認可により1回だけ実行されました。support runnerはcandidate codeを含まず、凍結済みgateのFAILにより`PBAI-P3-E`以降は`NOT-AUTHORIZED / NOT-EXECUTED`のままです。

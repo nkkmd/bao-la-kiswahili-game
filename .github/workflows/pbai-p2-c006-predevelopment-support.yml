@@ -4,14 +4,10 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
-      - 'doc/ai-engineering/AI_GENERATION_NAMING.md'
       - 'doc/ai-engineering/public-ai-improvement-program-2/**'
       - 'doc/engineering-program-decisions/2026-09-01-public-ai-improvement-program-2.md'
       - 'tools/engineering/materialize-pbai-p2-c006-predevelopment-support.js'
       - 'tools/engineering/verify-pbai-p2-c006-predevelopment-support-independent.js'
-      - '.github/workflows/pbai-p2-c006-predevelopment-support.yml'
-      - 'README.md'
   workflow_dispatch:
 
 permissions:

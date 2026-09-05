@@ -1,6 +1,10 @@
 # `PBAI-P3` — prospective benchmark・判断protocol
 
-状態: **`FROZEN / P3-D SUPPORT EXECUTION AUTHORIZED`**
+凍結時状態: **`FROZEN / P3-D SUPPORT EXECUTION AUTHORIZED`**
+
+現在状態: **`PBAI-P3 COMPLETE / KEEP-AI-GEN2`**
+
+P3-Dは凍結済みsupport gateを満たさず、candidateを実装せずに終了しました。現在の判断は[`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)と[`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)を参照してください。以下の数値、seed、decision mappingは凍結済みのprospective contractであり、終了後も変更しません。
 
 Gate spec: `PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1`
 
@@ -12,9 +16,9 @@ Gate spec: `PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1`
 
 数値、seed、decision tokenに相違がある場合は機械可読正本を優先し、相違自体をtechnical failureとして記録します。
 
-## 1. 現在の実行境界
+## 1. 凍結時の実行境界
 
-この文書は`PBAI-P3-C`で、candidate outcomeを見る前に評価設計を固定するものです。
+この文書は`PBAI-P3-C`で、candidate outcomeを見る前に評価設計を固定した記録です。次のblockは凍結時のauthorizationをそのまま保存しており、現在の実行認可を示しません。
 
 ```text
 candidate = PBAI-C010-v1 only

@@ -17,7 +17,10 @@
 9. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
 10. [`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)
 11. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)
-12. [`checkpoints/2026-09-05-p3-d-support-closure.md`](checkpoints/2026-09-05-p3-d-support-closure.md)
+12. [`DECISION_REGISTER.md`](DECISION_REGISTER.md)
+13. [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md)
+14. [`checkpoints/2026-09-05-p3-d-support-closure.md`](checkpoints/2026-09-05-p3-d-support-closure.md)
+15. [`checkpoints/2026-09-05-pre-main-documentation-and-workflow-readiness.md`](checkpoints/2026-09-05-pre-main-documentation-and-workflow-readiness.md)
 
 ## 2. 固定済み状態
 

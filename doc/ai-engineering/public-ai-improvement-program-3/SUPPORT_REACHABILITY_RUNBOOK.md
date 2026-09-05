@@ -1,6 +1,10 @@
 # `PBAI-P3-D` — support / reachability実行runbook
 
-状態: **`FROZEN / PRE-GENERATION`**
+凍結時状態: **`FROZEN / PRE-GENERATION`**
+
+現在状態: **`EXECUTED ONCE / P3-D COMPLETE / PROGRAM CLOSED`**
+
+このrunbookは実行前に凍結した手順を保存するもので、再実行認可を示しません。実行結果と終了境界は[`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)と[`checkpoints/2026-09-05-p3-d-support-closure.md`](checkpoints/2026-09-05-p3-d-support-closure.md)を参照してください。
 
 Run manifest:
 
