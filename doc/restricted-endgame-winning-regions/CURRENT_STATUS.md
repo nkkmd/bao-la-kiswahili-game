@@ -1,9 +1,15 @@
-# CURRENT_STATUS — Restricted Endgame / Winning Regions Study 1
+# CURRENT_STATUS — Restricted Endgame / Winning Regions Study 1 （日本語の要点）
+
+## 日本語での要点
+
+frozen 8-state domainだけをEXACT-SOLVED-WITHIN-FROZEN-DOMAINとして扱う。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-24  
 Status: **STUDY 1 COMPLETE / EXACT-SOLVED-WITHIN-FROZEN-DOMAIN / REPOSITORY CLOSURE COMPLETE**
 
-## Repository identity
+## Repository identity （識別と表現）
 
 ```text
 studyId = REWR-STUDY1
@@ -14,7 +20,7 @@ merge commit = c31756ad4d236704c8cc237be5190eac432d67dc
 directory = doc/restricted-endgame-winning-regions/
 ```
 
-## Scientific state
+## Scientific state （日本語の要点）
 
 ```text
 Rule/engine semantic audit = COMPLETE
@@ -32,7 +38,7 @@ Formal decision = EXACT-SOLVED-WITHIN-FROZEN-DOMAIN
 Repository integration = COMPLETE
 ```
 
-## Frozen exact domain
+## Frozen exact domain （リポジトリ状態）
 
 ```text
 domainId = REWR-S1-DOMAIN-2026-08-24-v1
@@ -47,7 +53,7 @@ stateSetSha256 = 95717c07495b19c55bdadd62d067354de0a5ee58d18cd62d1e4783fb279a130
 transitionSetSha256 = 33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c189860cc11
 ```
 
-## Formal exact result
+## Formal exact result （結果）
 
 ```text
 TERMINAL = 4
@@ -73,7 +79,7 @@ Canonical state-level result:
 results/STAGE_1_EXACT_RESULT.json
 ```
 
-## Independent verification
+## Independent verification （日本語の要点）
 
 Scientific workflow:
 
@@ -107,13 +113,13 @@ RECURRENT SCCs
 solution hash
 ```
 
-## Pre-generation correction record
+## Pre-generation correction record （日本語の要点）
 
 Authorization v1 was revoked before any scientific outcome was generated because a runner/verifier resource-limit field name did not match the frozen spec. Only the field reference was corrected; domain, classification, DTF, selection rule and scientific endpoint were unchanged. Source hashes were re-frozen and authorization v2 was issued before the first scientific run.
 
 This is a pre-generation technical correction, not post-outcome rescue.
 
-## Permanent semantic boundaries
+## Permanent semantic boundaries （日本語の要点）
 
 ```text
 relay-limit != normative Bao terminal
@@ -126,7 +132,7 @@ bounded exact solution != full-Bao solution
 
 The observed `RECURRENT = 0` applies only to the frozen 8-state domain.
 
-## Final claim boundary
+## Final claim boundary （結論）
 
 Allowed:
 
@@ -143,7 +149,7 @@ Not allowed:
 
 No further domain retuning, Stage 0 cap expansion or outcome-dependent root replacement is authorized within Study 1.
 
-## Repository closure
+## Repository closure （結論）
 
 PR #38 was merged to `main` after the complete final CI set passed on study HEAD `81828598430d3bb31f9284d23b7afb4ccabba6b1`. The merge commit is `c31756ad4d236704c8cc237be5190eac432d67dc`.
 

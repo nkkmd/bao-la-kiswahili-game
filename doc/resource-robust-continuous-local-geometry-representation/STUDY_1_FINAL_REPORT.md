@@ -1,26 +1,26 @@
-# RRCLGR-STUDY1 — Final Report
+# RRCLGR-STUDY1 — 最終報告
 
-Updated: 2026-09-03
+更新日: 2026-09-03
 
-## 1. Study identity
+## 1. Study identity（研究識別情報）
 
 **Study ID:** `RRCLGR-STUDY1`
 
-**English title:** Resource-Robust Continuous Local-Geometry Representation Verification Study 1 — Prospective independent validation of an exact multiaxial bounded RAW local-game-tree geometry representation under deterministic pre-root reconstructibility eligibility in Bao
+**英語題目:** Resource-Robust Continuous Local-Geometry Representation Verification Study 1 — Prospective independent validation of an exact multiaxial bounded RAW local-game-tree geometry representation under deterministic pre-root reconstructibility eligibility in Bao
 
 **日本語題目:** Baoにおけるresource-robust連続局所ゲーム木幾何表現のprospective独立検証 — deterministic pre-root reconstructibility eligibilityによりbounded RAW depth-5 exact multiaxial representationをfail-closedで確立するG3-10 prerequisite
 
-Program position: Research Generation 3 / pre-G3-10 independent prerequisite.
+program内の位置づけはResearch Generation 3 / pre-G3-10 independent prerequisiteである。
 
-Reviewed `main` baseline: `0bcd1695b6dbd044acf2eed91740d282c63dbb07`.
+reviewした`main` baselineは`0bcd1695b6dbd044acf2eed91740d282c63dbb07`である。
 
-## 2. Scientific purpose
+## 2. 科学的目的
 
 G3-09 `CLGR-STUDY1`はStage 2でtechnical-invalidとなり、continuous local-geometry representationのformal eligibilityを確立できなかった。G3-10はvalidated local-geometry coordinatesを必要とするため、そのままの開始はpost-G3-09 reviewで認められなかった。
 
 RRCLGR-STUDY1はG3-09をrepairまたはrerunせず、fresh populationとfresh seed namespaceを用い、deterministic bounded-workload eligibilityをcoordinate生成前に分離する新しい独立prospective prerequisiteとして設計された。
 
-## 3. Frozen representation contract
+## 3. 固定したrepresentation contract
 
 `RRCLGR-R1-EXACT-SQUASHED-L1`
 
@@ -28,7 +28,7 @@ Representationはformal-eligibleなLGTGMIV F1–F5 RAW depth-5 primitivesから�
 
 距離はequal-weight exact L1、neighborhoodはk=3 tie-inclusiveとした。observed-data normalization、phase-specific scaling、learned weight、PCA、clustering、feature dropping、outcome-dependent redesignは許可しなかった。
 
-## 4. Resource-robust design
+## 4. resource-robust設計
 
 候補rootのscientific identity selectionとresource eligibilityを分離した。
 
@@ -40,17 +40,17 @@ Representationはformal-eligibleなLGTGMIV F1–F5 RAW depth-5 primitivesから�
 
 wall-clockやRSSはcandidate選別には使わず、execution safety ceilingとしてのみ扱う設計とした。
 
-## 5. Stage 0
+## 5. Stage 0の結果
 
 `RRCLGR-S0-TECHNICAL-2026-09-03-v1`
 
-Disposition: **`STAGE0-PASS`**
+最終状態は**`STAGE0-PASS`**である。
 
 Stage 0ではsynthetic exact arithmetic、six-axis derivation、exact transform、exact L1、k=3 tie-inclusive neighborhood、root-order invariance、forced relay-limit fail-closed、deterministic preflight ceiling、production/independent implementation separationおよびreal Bao technical roots上のdepth-5 exact agreementを確認した。
 
 Stage 0ではfresh scientific seedsおよびprotected depth-10へアクセスしていない。
 
-## 6. Stage 1 authorization
+## 6. Stage 1のauthorization
 
 Stage 0 pass後、別reviewにより`RRCLGR-STAGE1-AUTHORIZED`を固定した。
 
@@ -58,7 +58,7 @@ Stage 1:
 
 `RRCLGR-S1-DEVELOPMENT-2026-09-03-v1`
 
-Fresh seed namespace:
+fresh seed namespace:
 
 `32010001..32010256`
 
@@ -66,9 +66,9 @@ Exactly-one execution、durable pre-computation lease、source binding、artifac
 
 Stage 2、G3-10、protected depth-10はauthorization対象外のまま維持した。
 
-## 7. Stage 1 execution
+## 7. Stage 1の実行
 
-Trigger commit:
+trigger commit:
 
 `00cbdb11c3310ea7a529c320ee03273c80dc8c7f`
 
@@ -80,7 +80,7 @@ workflow control-plane自体はsuccessで終了した。authorization verificati
 
 しかしscientific runnerはfresh Stage 1 seed access後、candidate manifest完成前にfail-closedした。
 
-Canonical result:
+canonical result:
 
 ```text
 stageDisposition = STAGE1-TECHNICAL-INVALID
@@ -92,13 +92,13 @@ sameEvidenceRerunAuthorized = false
 protectedDepth10Access = false
 ```
 
-Canonical technical error:
+canonical technical error:
 
 ```text
 The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Array
 ```
 
-## 8. Technical diagnosis
+## 8. technical diagnosis（技術的原因）
 
 Frozen Stage 1 candidate-selection implementationは、candidate identity rowsのarrayに対する`candidateCoreSha256`を、inherited LGTGMIV `digest`を直接呼び出して計算しようとした。
 
@@ -108,26 +108,26 @@ LGTGMIV側でexportされる`digest`はcanonical object digest helperではな�
 
 したがって、implementationを修正して同じStage 1 evidenceをrerunすることはno-rescue contractに違反する。修正rerunは実施していない。
 
-## 9. Scientific result boundary
+## 9. scientific resultの境界
 
 Stage 1はcandidate manifest完成前に停止したため、次のscientific evidenceは成立していない。
 
-- complete candidate population;
-- complete preflight eligibility population;
-- formal resource-support estimate;
-- 48-root coordinate population;
-- exact pairwise distance matrix;
-- neighborhood structure;
-- nondegeneracy gates;
-- representation eligibility decision.
+- complete candidate population
+- complete preflight eligibility populationの確立
+- formal resource-support estimate
+- 48-root coordinate population
+- exact pairwise distance matrixの確立
+- neighborhood structure
+- nondegeneracy gate
+- representation eligibility decision
 
 したがって本Studyのformal scientific conclusionはpositive / negative / nullではない。
 
-**Formal representation eligibility = NOT ESTABLISHED.**
+**formal representation eligibilityは`NOT ESTABLISHED`である。**
 
 `STAGE1-TECHNICAL-INVALID`はrepresentationが不適格であることを意味しない。
 
-## 10. Formal closure
+## 10. formal closure（正式な終了状態）
 
 ```text
 RRCLGR-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -140,9 +140,9 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-Stage 1 seed namespace is consumed for this Study version. Stage 2 seed namespace remains unconsumed but belongs to the closed Study and is not a successor seed source.
+Stage 1 seed namespaceはこのStudy versionで消費済みである。Stage 2 seed namespaceは未消費だが、閉じたStudyに属しており、後続Studyのseed sourceではない。
 
-## 11. Artifact integrity
+## 11. artifact integrity（成果物の完全性）
 
 Stage 1 Actions artifact:
 
@@ -150,28 +150,28 @@ Stage 1 Actions artifact:
 - name: `rrclgr-stage1-result-33759611989`
 - ZIP SHA-256: `7b8a44a9e4873731d813e68b51755be39495980588564da8d4a504afad3c9b78`
 
-Canonical JSON:
+canonical JSON:
 
 - bytes: `523`
 - SHA-256: `c9d3d3d3f987a88a90a27f6c0c118e15e584e778ad3234eafb5ab36130dcebd0`
 - repository Git blob: `5a1c7949578dae70e1299b849ec4957030c0a85f`
 
-The artifact was mirrored from exact downloaded bytes without scientific recomputation.
+artifactはdownloadしたexact byteからmirrorし、scientific recomputationは行っていない。
 
-## 12. Downstream consequence
+## 12. 下流への帰結
 
-The prerequisite needed by historical G3-10 remains unsatisfied. G3-10 cannot be authorized from RRCLGR-STUDY1.
+historical G3-10が必要としたprerequisiteは、RRCLGRでは満たされなかった。RRCLGR-STUDY1の結果からG3-10をauthorizeすることはできない。
 
-A further attempt is permissible only as a new prospective independent prerequisite Study/version with:
+追加の試行は、次の条件を持つ新しいprospective independent prerequisite Study / versionとしてのみ許される。
 
-- fresh scientific seed namespace;
-- no RRCLGR Stage 1 scientific evidence reuse;
-- no RRCLGR seed reuse;
-- no favorable root targeting based on RRCLGR fresh access;
-- newly frozen source bindings and execution contract;
-- pre-fresh technical coverage explicitly exercising candidate-core canonical serialization with structured arrays/objects;
-- materially independent production / verifier implementations;
-- no protected depth-10 access;
-- fail-closed no-rescue behavior.
+- fresh scientific seed namespaceを使用する
+- RRCLGR Stage 1 scientific evidenceを再利用しない
+- RRCLGR seedを再利用しない
+- RRCLGR fresh accessに基づいてfavorable rootをtargetにしない
+- source bindingとexecution contractを新たに固定する
+- structured array / objectを用いるcandidate-core canonical serializationを、fresh evidence前のtechnical coverageで明示的に実行する
+- production / verifier implementationを実質的に独立させる
+- protected depth-10へアクセスしない
+- fail-closed no-rescue behaviorを維持する
 
-The RRCLGR implementation defect may be used only as technical design information for that new Study.
+RRCLGR implementation defectは、その新しいStudyのtechnical design informationとしてのみ使用できる。

@@ -1,4 +1,10 @@
-# SSGTC-STUDY1 — Current Status
+# SSGTC-STUDY1 — Current Status （現在の状態）
+
+## 日本語での要点
+
+exact claimはstandard initial RAW rootのfrozen depth-8 domainに限定される。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-25
 
@@ -16,7 +22,7 @@ stage2 = FORMAL-STAGE-COMPLETE
 mergeToMain = PERFORMED
 ```
 
-## Baseline
+## Baseline （日本語の要点）
 
 ```text
 remoteMainAtStudyStart = 9e5cd1a4f48114bb0a8f13a8a58eb7a117cb5901
@@ -26,7 +32,7 @@ integrationPR = 49
 integrationMergeCommit = ced3751f2c063a0e5e801a3c0f59afbdbae7922d
 ```
 
-## Formal result
+## Formal result （結果）
 
 The prospectively frozen Stage 2 domain was the standard engine initial state, complete raw-state reachability through depth 8 with all parent states at depths 0..7 expanded, and a separate non-deduplicated game tree through depth 8.
 
@@ -60,7 +66,7 @@ artifactZipSha256 = 713e258847a98e9b01866bae248f0986708f8ef90df803157514c63469b5
 independentVerification = PASS
 ```
 
-## Frozen upstream boundaries
+## Frozen upstream boundaries （日本語の要点）
 
 Restricted Endgame / Winning Regions Study 1 remains `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN` for its frozen 8-state / 7-edge domain only.
 
@@ -68,7 +74,7 @@ Symmetry / Isomorphic Positions Study 1 remains 0 validated / 0 rejected / 5 `NO
 
 ORISC-STUDY1 remains Axis A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` and Axis B `NOT-AUTHORIZED-NOT-EXECUTED`. The validated symmetry transformation set remains empty.
 
-## Representation boundary
+## Representation boundary （適用範囲と制限）
 
 Authoritative identity remains:
 
@@ -81,7 +87,7 @@ sum(pits)+sum(reserve)+sum(pending) = 64
 
 No symmetry reduction, canonicalization, or estimator was used.
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 Authorized:
 
@@ -98,6 +104,6 @@ Not authorized:
 - a full-game state-space estimator;
 - reinterpretation or rescue of upstream studies.
 
-## Integration state
+## Integration state （リポジトリ状態）
 
 Repository-wide documentation/CI audit completed successfully on the final PR head `5847268c9fcf8f9262aa102be5df5bc09f4bbe98`. PR #49 was merged to `main` on 2026-08-25 as merge commit `ced3751f2c063a0e5e801a3c0f59afbdbae7922d`. The Study 1 integration is complete. Future deeper enumeration, estimation, or symmetry-reduced counting requires a new prospective study/versioned protocol and must not reinterpret this bounded exact result.

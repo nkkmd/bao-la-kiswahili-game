@@ -2,7 +2,7 @@
 
 更新日: 2026-09-03
 
-## 1. Formal decision
+## 1. formal decision（正式判断）
 
 ```text
 Study = BRMGI-STUDY1
@@ -25,7 +25,7 @@ Technical Stage 0 v2はPASSしたが、fresh Stage 1のexactly-one authorized ex
 
 したがってStudyは **`CLOSED / TECHNICAL-INVALID`** として閉じる。これはrule eventとgeometryの関係に対するnegative/null scientific resultではない。
 
-## 2. Formal scientific scope
+## 2. formal scientific scope （適用範囲と制限）
 
 Representation contract:
 
@@ -58,7 +58,7 @@ Formal endpoint universe:
 
 Candidate universeはE1/E2/E3 × M1..M6の18候補。fresh evidence後のevent/metric追加やthreshold探索を認めない設計だった。
 
-## 3. Interpretation / causal boundary
+## 3. 解釈と因果主張の境界
 
 Historical agenda titleの`Intervention`はgeneric causal claimをauthorizeしない。
 
@@ -74,18 +74,18 @@ Historical agenda titleの`Intervention`はgeneric causal claimをauthorizeし�
 
 以下は最初からauthorizeしていない。
 
-- generic causal effect / causal rule mechanism
+- 一般的なcausal effect / causal rule mechanism
 - long-horizon outcome effect
 - game-theoretic forcing
 - best-move clarity
 - search ease / stability
-- strategic value / win probability
+- strategic value / win probabilityとの関係
 - human difficulty
 - relative depth 5を超える一般化
 
-## 4. Stage 0 technical validation
+## 4. Stage 0のtechnical validation
 
-### 4.1 v1 — TECHNICAL-INVALID / NO RERUN
+### 4.1 v1 — `TECHNICAL-INVALID / NO RERUN`となった経緯
 
 Stage 0 v1はexactly one authorized technical executionで開始したが、synthetic nyumba fixtureが34 seedsしか表現しておらず、LGTGMIVのRAW representation invariant `represented seed total == 64`を満たさなかった。
 
@@ -99,7 +99,7 @@ fresh scientific evidence = false
 
 同じv1をrerunせず、fresh-freeでtechnical fixtureだけを修正した別version v2をprospectively refreezeした。
 
-### 4.2 v2 — STAGE0-PASS
+### 4.2 v2 — `STAGE0-PASS`となった結果
 
 v2ではnyumba fixtureを64-seed invariantへ適合させ、科学contract・Stage 1/2 seed・event family・endpoint・population・formal ruleは変更していない。
 
@@ -139,7 +139,7 @@ T1-T10 technical gatesは全てPASS。production / independent technical geometr
 
 で完全一致した。
 
-## 5. Pre-Stage-1 clarification and freshness firewall
+## 5. Stage 1前のclarificationとfreshness firewall
 
 Fresh Stage 1前に、actual source trajectoryのmove universeとE2 nyumba variant enumerationを明確に分離した。
 
@@ -174,7 +174,7 @@ firewall file SHA-256 = 7806b921b878cc3a54403cda360c06e148525f4d38b6af8007d4f5a9
 exact mirror commit = 6029679c7a218ca35bb1da343d86670285070d7a
 ```
 
-## 6. Stage 1 preparation and authorization
+## 6. Stage 1の準備とauthorization
 
 Stage 1 production / independent source replay・event unit construction・measurement aggregationを別実装した。
 
@@ -200,9 +200,9 @@ max scientific executions = 1
 seed = 31610001..31610256
 ```
 
-## 7. Stage 1 formal technical result
+## 7. Stage 1のformal technical result
 
-Exactly one fresh Stage 1 execution:
+fresh Stage 1 executionは次の1回だけ行った。
 
 ```text
 workflow run = 33679269612
@@ -243,7 +243,7 @@ stageElapsedPass = true
 
 したがってfresh M1-M6 development summary、candidate direction、promotion gateをformalに評価できなかった。
 
-## 8. Durable Stage 1 result
+## 8. durable Stage 1 result （Stageの記録）
 
 ```text
 result artifact = 9865581198
@@ -256,24 +256,24 @@ exact-byte mirror commit = b8f9fe0e2d5008be2d41b3b8271fa325144f82fc
 scientific recomputation for recovery = false
 ```
 
-## 9. No-rescue consequence
+## 9. no-rescueの帰結
 
 Stage 1 seedはfresh accessによりconsume済みである。以下は禁止する。
 
-- same Stage 1 seed/evidence rerun
+- 同じStage 1 seed / evidenceを用いるrerun
 - production/independent selectorを修正して同じpopulationを再評価
 - seed extension
-- event/root/control replacement
+- event / root / controlのreplacement
 - source move policy変更
 - E1/E2/E3 definition変更
 - endpoint M1-M6追加・置換
-- favorable subgroup / event family selection
+- favorable subgroup / event familyのselection
 - promotion threshold/resource ceiling変更
 - partial selection provenanceからscientific candidateをpromotion
 
 Formal promoted candidate setは **`[]`**。
 
-## 10. Stage 2
+## 10. Stage 2の状態
 
 Stage 2 authorization prerequisiteであるvalid Stage 1 completion + nonempty promoted candidate setを満たさない。
 
@@ -284,7 +284,7 @@ Stage 2 seed 31620001..31620384 = NOT CONSUMED
 
 Stage 2を実行しない。
 
-## 11. Scientific conclusion
+## 11. 科学的結論
 
 BRMGI-STUDY1はrule-conditioned geometryのpositive/negative scientific conclusionへ到達していない。
 
@@ -292,15 +292,15 @@ Formalに言えるのは、prospectively frozen G3-06 designのStage 1がproduct
 
 このtechnical-invalid resultを、capture / nyumba / reserve / Namua→Mtajiのgeometry effectが「ない」というnullへ読み替えない。同様に、candidate selection mismatchの診断をG3-07以降のscientific outcomeへpromotionしない。
 
-## 12. Protected deeper evidence
+## 12. protected deeper evidence （証拠の状態）
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
 本Studyはこのholdoutを生成・partial generation・read・peek・trial enumerate・resource estimateしていない。
 
-## 13. Closure
+## 13. closure（終了状態）
 
 ```text
 BRMGI-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -313,6 +313,6 @@ main integration at scientific closure = NOT PERFORMED
 G3-06はunfinished研究ではない。次のG3-07を実施する場合はseparate post-G3-06 current-state authorization reviewを必要とする。G3-06のtechnical-invalid resultはsearch-instability / geometry mechanismのpositive/negative scientific prerequisiteとして扱わない。
 
 <!-- BRMGI-POST-CLOSURE-INTEGRATION-ADDENDUM -->
-## Post-closure repository lifecycle addendum
+## closure後のrepository lifecycle追記
 
 Scientific closure時点ではmain integrationは未実施だった。その後、明示的ユーザー指示を受けてaudited head `f8eda131b81f0d6e3bc9f804ddfce875c9cd8d2b` のfast-forward統合が完了した。このrepository lifecycle更新はBRMGI-STUDY1のscientific result、technical-invalid disposition、formal promoted set、no-rescue boundaryを変更しない。

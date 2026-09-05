@@ -1,11 +1,17 @@
-# Reproducibility Index — Bao Position Typology and Playing Style Study
+# Reproducibility Index — Bao Position Typology and Playing Style Study （再現性）
+
+## 日本語での要点
+
+Mtajiのbounded two-type morphologyを確認し、Namuaでは離散typeより連続座標を採用した。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Date: 2026-08-10  
 Status: **final index**
 
 This index records the principal definitions, result hashes, local artifact paths and repository documents required to reconstruct the scientific state of the study without changing its formal decisions.
 
-## 1. Canonical repository documents
+## 1. Canonical repository documents （リポジトリ状態）
 
 ```text
 doc/position-typology/CURRENT_STATUS.md
@@ -16,7 +22,7 @@ doc/position-typology/RESEARCH_PLAN.md
 doc/position-typology/REPRODUCIBILITY_INDEX.md
 ```
 
-## 2. Stage 0 — instrumentation / identity
+## 2. Stage 0 — instrumentation / identity （Stageの記録）
 
 Primary feature extractor:
 
@@ -52,7 +58,7 @@ doc/position-typology/STAGE_0_RUNBOOK.md
 doc/position-typology/STAGE_0_SMOKE_RESULT.md
 ```
 
-## 3. Stage 1 — exploratory discovery
+## 3. Stage 1 — exploratory discovery （Stageの記録）
 
 Exploratory pilot source hash:
 
@@ -110,7 +116,7 @@ doc/position-typology/STAGE_1_INVARIANT_MORPHOLOGY_RESULT.md
 doc/position-typology/STAGE_1_MTAJI_CANDIDATE_DEFINITION_RESULT.md
 ```
 
-## 4. Stage 2 — Mtaji formal confirmation
+## 4. Stage 2 — Mtaji formal confirmation （Stageの記録）
 
 Preregistration:
 
@@ -154,7 +160,7 @@ doc/position-typology/STAGE_2_MTAJI_CONFIRMATION_RUNBOOK.md
 doc/position-typology/STAGE_2_MTAJI_CONFIRMATION_RESULT.md
 ```
 
-## 5. Stage 3 — Namua continuous representation
+## 5. Stage 3 — Namua continuous representation （Stageの記録）
 
 Audit hash:
 
@@ -189,7 +195,7 @@ exploratory continuous representation
 no discrete Namua position type promoted
 ```
 
-## 6. Stage 4 — playing-style discovery
+## 6. Stage 4 — playing-style discovery （Stageの記録）
 
 Trajectory audit hash:
 
@@ -237,7 +243,7 @@ doc/position-typology/STAGE_4_STYLE_COORDINATE_DEFINITION_RESULT.md
 doc/position-typology/STAGE_5_STYLE_INGREDIENT_DEFINITION_RESULT.md
 ```
 
-## 7. Stage 5 — formal independent playing-style confirmation
+## 7. Stage 5 — formal independent playing-style confirmation （Stageの記録）
 
 Preregistration:
 
@@ -283,9 +289,9 @@ No post-hoc coordinate count / descriptor / preprocessing / threshold / cluster 
 on the Stage 5 held-out corpus.
 ```
 
-## 8. Stage 6 — Study 1 cross-study bridge
+## 8. Stage 6 — Study 1 cross-study bridge （Stageの記録）
 
-### Fixed Study 1 formal archives
+### Fixed Study 1 formal archives （日本語の要点）
 
 ```text
 E-018
@@ -367,7 +373,7 @@ Result document:
 doc/position-typology/STAGE_6_CROSS_STUDY_ASSOCIATION_RESULT.md
 ```
 
-## 9. Closed phase-transition Study 1 dependency
+## 9. Closed phase-transition Study 1 dependency （日本語の要点）
 
 Stage 6 depends on but does not modify the closed phase-transition study.
 
@@ -390,7 +396,7 @@ E-019 / H17 = global not-confirmed
 E-020 / H18 = confirmed only at hard / bao / depth3, legacy > phase2
 ```
 
-## 10. Reproduction rules
+## 10. Reproduction rules （日本語の要点）
 
 When reproducing any stage:
 

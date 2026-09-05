@@ -34,7 +34,7 @@
 3. prospectively frozen no-refit ruleに従い、`MDFT-F09 = TECHNICALLY-INELIGIBLE`とした。
 4. historical MTAJI-M1/MTAJI-M2 formal resultは変更していない。
 
-## 2026-08-29 — F10 bounded-continuation preflight
+## 2026-08-29 — F10 bounded-continuation preflight （次の研究）
 
 1. scientific evidenceを見る前に、6-ply continuation、minimum 3 fixtures、Namua/Mtaji coverage、120 s、512 MB、gzip 5 MB ceilingをStage 0 specへ固定した。
 2. GitHub Actions run `33256932295`がsuccessした。
@@ -42,7 +42,7 @@
 4. observed wall clock 25279.321986 ms、max RSS 97296 KB、gzip 2570 bytesで全predeclared gateをPASSした。
 5. `MDFT-F10 = TECHNICALLY-ELIGIBLE`とした。
 
-## 2026-08-29 — Stage 0 closure
+## 2026-08-29 — Stage 0 closure （最終状態）
 
 1. `results/STAGE_0_TECHNICAL_RESULT.json`を作成した。
 2. `checkpoints/2026-08-29-stage0-technical-pass.md`を作成した。

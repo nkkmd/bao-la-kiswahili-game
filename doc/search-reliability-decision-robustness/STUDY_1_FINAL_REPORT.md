@@ -66,7 +66,7 @@ Stage 0 `SRDR-S0-TECHNICAL-2026-08-27-v1`はtechnical PASSでした。
 
 Technical-only resource auditではD3 cumulative node cost distributionを測定し、Stage 1 gridを科学的outcomeを見る前に有限な形で固定しました。technical fixtureはscientific evidenceから永久に除外しました。
 
-## 5. Stage 1 — development
+## 5. Stage 1 — development （Stageの記録）
 
 Stage 1 `SRDR-S1-DEVELOPMENT-2026-08-27-v1`では1,280 fresh games、seed `25011001..25012280`を使用しました。
 
@@ -179,7 +179,7 @@ Namua B1024→D3 agreementは0.889961、Mtajiは0.995910でした。
 
 これらはbounded machine-search descriptorであり、true optimality、human difficulty、engine correctnessへ昇格させません。
 
-## 11. provenance
+## 11. provenance （記録）
 
 ```text
 Stage 2 artifact ID = 9672561139

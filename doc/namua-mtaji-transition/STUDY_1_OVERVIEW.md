@@ -1,4 +1,4 @@
-# Namua→Mtaji Strategic Temporal Transition — Study 1 Overview
+# Namua→Mtaji Strategic Temporal Transition — Study 1 Overview （概要）
 
 更新日: 2026-08-12  
 Status: **STUDY 1 COMPLETE / FORMAL RESULT = NOT-CONFIRMED**
@@ -27,7 +27,7 @@ first Mtaji observation = ply 44
 
 この結果は研究途中で得られたdesign constraintであり、formal outcomeを見た後の再解釈ではありません。研究はその境界を固定し、Stage 2ではfirst-Mtaji **morphology association**だけをprimary formal questionとして事前固定しました。
 
-## Formal design
+## Formal design （方法と設計）
 
 正式検証は次の単一条件に限定しました。
 
@@ -92,7 +92,7 @@ PASS
 
 30 matched sets × 20 controls = 600 controlsで、control trajectoryのglobal reuseは0でした。
 
-## Primary result
+## Primary result （結果）
 
 Frozen classifier:
 

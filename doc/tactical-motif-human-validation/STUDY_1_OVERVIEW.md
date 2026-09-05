@@ -1,4 +1,4 @@
-# Tactical Motif Human / Expert Validation — Study 1 Overview
+# Tactical Motif Human / Expert Validation — Study 1 Overview （概要）
 
 Updated: 2026-08-18  
 Status: **Study 1 complete**

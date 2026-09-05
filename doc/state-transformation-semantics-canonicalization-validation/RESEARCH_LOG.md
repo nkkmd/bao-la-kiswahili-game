@@ -1,6 +1,6 @@
 # STSCV-STUDY1 — 研究ログ
 
-## 2026-08-28 — Study-start repository audit
+## 2026-08-28 — Study-start repository audit （リポジトリ状態）
 
 observed remote `main`:
 
@@ -22,7 +22,7 @@ research/g2-02-search-reliability-decision-robustness: ahead 0 / behind 7
 
 結論: active / unmergedなcompeting Research Generation 2 workはありませんでした。
 
-## 2026-08-28 — required scientific-state reconstruction
+## 2026-08-28 — required scientific-state reconstruction （日本語の要点）
 
 Research Generation 2 agenda / governance、G2-01 / G2-02 closure document、SIP-STUDY1、ORISC-STUDY1、REWR-STUDY1、SSGTC-STUDY1、root README、RULES_BASELINEを読み、整合を確認しました。
 
@@ -37,7 +37,7 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 validated transform set = []
 ```
 
-## 2026-08-28 — Study identity / Stage freeze
+## 2026-08-28 — Study identity / Stage freeze （識別情報）
 
 Formal Study identityをprospectiveに固定:
 
@@ -57,7 +57,7 @@ STSCV-S2-FORMAL-2026-08-28-v1
 
 この時点ではscientific outcomeは存在していませんでした。
 
-## 2026-08-28 — representation design decision
+## 2026-08-28 — representation design decision （表現）
 
 Authoritative state identityはRAW-onlyを維持:
 
@@ -67,7 +67,7 @@ pits,reserve,houseOwned,player,phase,winner,pending
 
 G2-03で重要なdesign distinctionをprospectiveに固定しました。exact rule-semantic isomorphismが成立しても、fixed-start reachable-population canonicalizationが自動的に承認されるわけではありません。domain / reachability closureを別途示す必要があります。
 
-## 2026-08-28 — Stage 0 technical validation
+## 2026-08-28 — Stage 0 technical validation （技術検証）
 
 Stage 0ではcurrent engine representation / transformation semanticsを再構築し、productionとindependentのtechnical pathを分離しました。
 
@@ -84,7 +84,7 @@ technical instrument contract:
 
 Stage 0はnon-scientificでありcandidate decisionを生成していません。
 
-## 2026-08-28 — Stage 1 prospective development freeze / execution
+## 2026-08-28 — Stage 1 prospective development freeze / execution （固定した条件）
 
 candidate contract、population / selection rule、source hash、development roleを固定した後にのみStage 1を承認しました。
 
@@ -118,7 +118,7 @@ STSCV-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS
 
 72件すべてのStage 1 selected trajectory identity、opening-prefix identity、RAW-state identityをStage 2 firewall用にprospectiveにconsumedとしました。Stage 1 outcomeはformal validation evidenceではありません。
 
-## 2026-08-28 — Stage 2 prospective freeze
+## 2026-08-28 — Stage 2 prospective freeze （固定した条件）
 
 Stage 2 scientific outcomeが存在する前にformal contractを固定しました。
 
@@ -165,7 +165,7 @@ scientificOutcomeGenerated = false
 
 older run `33145557654`はhardened prefreezeによりsupersededされました。
 
-## 2026-08-28 — explicit Stage 2 authorization
+## 2026-08-28 — explicit Stage 2 authorization （承認状態）
 
 Stage 2 formal scientific generationを次のcommitで明示的に承認しました。
 
@@ -177,7 +177,7 @@ authorizationはexact frozen spec、candidate contract、firewall、decision rul
 
 authorization前にcandidate outcomeは確認しておらず、Stage 2 scientific outcomeも存在していませんでした。
 
-## 2026-08-28 — fresh held-out Stage 2 production measurement
+## 2026-08-28 — fresh held-out Stage 2 production measurement （Stageの記録）
 
 Authorized workflow:
 
@@ -214,7 +214,7 @@ max generated orbit size = 4
 
 mandatory independent verification前に、これらをcandidate decisionとして解釈していません。
 
-## 2026-08-28 — mandatory independent verifier failure
+## 2026-08-28 — mandatory independent verifier failure （日本語の要点）
 
 independent verification stepはformal-result assembly中に次のerrorで停止しました。
 
@@ -235,7 +235,7 @@ complete canonical `STAGE_2_INDEPENDENT_VERIFICATION.json`、workflow-produced `
 
 これはfresh outcome生成後のtechnical / reproducibility failureであり、scientific candidate mismatchではありません。
 
-## 2026-08-28 — fail-closed formal decision
+## 2026-08-28 — fail-closed formal decision （日本語の要点）
 
 mandatory global gate S2-G5をcomplete canonical independent-verification resultとして成立確認できなかったため、pre-outcome frozen global-failure ruleを変更せず適用しました。
 
@@ -268,7 +268,7 @@ independent standard-start reachability-closure proof implemented = false
 
 したがってG2-03はscientific-population canonicalizationもsymmetry-reduced state countingも承認しません。
 
-## 2026-08-28 — no-rescue closure
+## 2026-08-28 — no-rescue closure （解釈上の境界）
 
 verifier variable-name defectはfresh held-out Stage 2 production outcome生成後に判明しました。同じevidenceを使うrerunのために修復していません。
 

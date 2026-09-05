@@ -1,4 +1,4 @@
-# Restricted Endgame / Winning Regions Study 1 — Overview
+# Restricted Endgame / Winning Regions Study 1 — Overview （概要）
 
 **研究題目:** Baoにおける限定終盤と必勝圏の完全解析 — constrained endgame state spaces における exact game-theoretic value, cycle structure, and distance-to-win の列挙・後退解析  
 **Formal decision:** `EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`  
@@ -59,7 +59,7 @@ stop = ADMIN-CUTOFF
 
 となった。このcutoffはBaoの引き分けや敗北ではなくtechnical failureである。事前規則に従って追加cap拡張や結果依存のdomain変更は行わず、すでに独立完全検証を通過していた8-state domainへfallbackした。
 
-## verification
+## verification （日本語の要点）
 
 Production solverとindependent verifierは、legal-move generator、guard-free transition、state serialization、closure traversal、retrograde algorithmを別実装としている。
 

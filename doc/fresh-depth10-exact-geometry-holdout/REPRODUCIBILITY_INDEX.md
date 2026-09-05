@@ -1,8 +1,8 @@
-# FDEGHV-STUDY1 — REPRODUCIBILITY INDEX
+# FDEGHV-STUDY1 — 再現性索引
 
 更新日: 2026-09-04
 
-## 1. Source-of-truth
+## 1. 正本となる状態
 
 ```text
 Program = Research Generation 3 / G3-11
@@ -16,9 +16,9 @@ Depth 11 = NOT AUTHORIZED / NOT ACCESSED
 Main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
-Historical `doc/research-generation-3/PROGRAM_PLAN.md` is not a current-state document and remains unchanged.
+historicalな`doc/research-generation-3/PROGRAM_PLAN.md`はcurrent-state文書ではないため、変更せず保持している。
 
-## 2. Protocol and preregistration
+## 2. protocolとpreregistration
 
 - `STUDY_1_PROTOCOL.md`
 - `prereg/STUDY_1_SPEC.json`
@@ -26,15 +26,15 @@ Historical `doc/research-generation-3/PROGRAM_PLAN.md` is not a current-state do
 - `prereg/STAGE_1_FORMAL_SPEC.json`
 - `../research-program-decisions/2026-09-04-post-g3-10-g3-11-authorization-review.md`
 
-Frozen Stage 1 spec SHA-256:
+固定済みStage 1 specのSHA-256:
 
 `6d5a15091f5d4f28abc2a880dcf372ff85aff83be016b8abce7e1921268a8c01`
 
-## 3. Source binding
+## 3. source binding（実行sourceの固定）
 
-Stage 1 authorization froze the following Git blob identities before protected evidence was opened:
+Stage 1 authorizationでは、protected evidenceを開く前に次のGit blob identityを固定した。
 
-| Path | Git blob SHA |
+| path | Git blob SHA |
 | --- | --- |
 | `.github/workflows/fdeeghv-stage1-formal.yml` | `312185db5e1f2dee2e7abe7275ef764ad4700297` |
 | `doc/fresh-depth10-exact-geometry-holdout/prereg/STAGE_1_FORMAL_SPEC.json` | `10ce4beace984fd3381f734b3a838eb05ce0fff7` |
@@ -46,11 +46,11 @@ Stage 1 authorization froze the following Git blob identities before protected e
 | `tools/experiments/lib/drsse-production.js` | `e8fc23799415f566850c817c22cf658216bb98be` |
 | `tools/experiments/lib/drsse-independent.js` | `906e0412bcf47fe37d95ac29ad83f9c83bc52857` |
 
-Stage 1 source commit:
+Stage 1のsource commit:
 
 `852c3ec1003b8acb501610ecbb24fed11438d379`
 
-## 4. Stage 0 technical validation
+## 4. Stage 0のtechnical validation
 
 ```text
 Stage = FDEGHV-S0-TECHNICAL-2026-09-04-v1
@@ -62,19 +62,19 @@ technical result = STAGE0-PASS
 protected depth-10 access = false
 ```
 
-The enclosing workflow later reported failure only in a post-artifact documentation-sync step. The technical Stage 0 execution was not rerun.
+workflow全体は後続のpost-artifact documentation-sync stepだけでfailureを報告した。technical Stage 0 executionは再実行していない。
 
-## 5. Formal authorization and durable lease
+## 5. formal authorizationとdurable lease
 
-Canonical authorization:
+canonical authorization:
 
 `authorizations/STAGE_1_EXECUTE.json`
 
-Authorization SHA-256:
+authorizationのSHA-256:
 
 `5dd1174eec4034c33a9d6d4c97c1c2169e8e2fdf79a053685c24196e0bc6e9ed`
 
-Authorization fixed:
+authorizationで固定した内容は次のとおりである。
 
 ```text
 executionAuthorized = true
@@ -87,7 +87,7 @@ sameEvidenceRerunAuthorized = false
 g2_12EstimatorScientificInputAuthorized = false
 ```
 
-Stage 1 pre-computation lease:
+Stage 1のpre-computation lease:
 
 ```text
 Actions run = 33837413663
@@ -96,9 +96,9 @@ lease artifact digest = sha256:ed2ff24a146a5d22b3597cd9ab9ffaa7b09c086ee5c3e0463
 lease file SHA-256 = 8edf6e7e4dbedade15caef96b394e84af17dd816b0925c8dbf08f4b65f06d6a9
 ```
 
-The lease artifact was uploaded before scientific access.
+lease artifactはscientific access前にuploadした。
 
-## 6. Stage 1 production and verified artifacts
+## 6. Stage 1のproduction artifactとverified artifact
 
 ```text
 Actions run = 33837413663
@@ -111,18 +111,18 @@ verified artifact digest = sha256:d7c5b87954fdc472e989f27ef30389fcda7fe6196e8ab8
 exact-byte compact mirror commit = 498cd3a0210169f8a692c52d6961c317d20ae81e
 ```
 
-The production artifact was durably uploaded before independent verification. The verified artifact was then uploaded after independent verification/finalization.
+production artifactはindependent verification前にdurable uploadした。その後、independent verificationとfinalizationを終えてからverified artifactをuploadした。
 
-## 7. Canonical result files
+## 7. canonical result file（正本となる結果ファイル）
 
-Repository compact mirror:
+repository内のcompact mirror:
 
 - `results/stage-1/STAGE_1_FORMAL_RESULT.json`
 - `results/stage-1/STAGE_1_PRODUCTION_SUMMARY.json`
 - `results/stage-1/result-core.json`
 - `results/stage-1/ARTIFACT_MANIFEST.json`
 
-Important SHA-256 identities:
+主要なSHA-256 identity:
 
 ```text
 scientific result core = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4bab5dd48b8cae8b50ef42162bd9
@@ -133,9 +133,9 @@ STAGE_1_FORMAL_RESULT.json file = 4b7c283cef58aeba24759711d71bd59378e7b4e39bfc5c
 STAGE_1_PRODUCTION_SUMMARY.json file = 6d2e8d17ffaa3275ff5a604263b21a8c5f8e6e80ffb2a7664ede51ce7f7e226d
 ```
 
-`ARTIFACT_MANIFEST.json` contains the exact per-file SHA-256 values for all production materialization files in the verified artifact, including layer state/edge JSONL and depth checkpoints.
+`ARTIFACT_MANIFEST.json`には、layer state / edge JSONLとdepth checkpointを含むverified artifact内の全production materialization fileについて、exactなfile別SHA-256を記録している。
 
-## 8. Exact scientific result
+## 8. exact scientific result（厳密な科学的結果）
 
 ```text
 formalDecision = EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN
@@ -145,7 +145,7 @@ firstIncompleteDepth = null
 stopReason = null
 ```
 
-Depth-10 exact values:
+depth 10のexact value:
 
 ```text
 unique RAW states = 348270
@@ -156,7 +156,7 @@ duplicate arrivals = 11725
 states with multiple predecessors = 10383
 ```
 
-Cumulative through depth 10:
+depth 10までのcumulative value:
 
 ```text
 distinct RAW states = 451127
@@ -167,7 +167,7 @@ tree-edge occurrences = 631100
 tree/RAW ratio = 1.3989430914132828
 ```
 
-## 9. Independent verification
+## 9. independent verification（独立検証）
 
 ```text
 materialized verification = PASS
@@ -176,11 +176,11 @@ verified parent-layer count = 10
 full independent exact depth-10 re-enumeration = PERFORMED / PASS
 ```
 
-The independent verifier did not import the production enumerator, production serializer, or production target evaluator. It shared only the study-bound Bao rule engine and independently reconstructed RAW keys, exact enumeration summaries, resource checks, and H1–H4 target calculations.
+independent verifierはproduction enumerator、production serializer、production target evaluatorをimportしていない。StudyにbindしたBao rule engineだけを共有し、RAW key、exact enumeration summary、resource check、H1〜H4のtarget計算を独立に再構築した。
 
-## 10. Resource gates
+## 10. resource gate（計算資源の判定条件）
 
-Frozen ceilings:
+固定済みceiling:
 
 ```text
 max cumulative distinct RAW states = 2000000
@@ -193,12 +193,12 @@ max wall-clock seconds = 5400
 max uncompressed artifact bytes = 1073741824
 ```
 
-Observed final gates all passed. No ceiling was changed after protected evidence was opened.
+観測されたfinal gateはすべてPASSした。protected evidenceを開いた後にceilingを変更していない。
 
-## 11. Reproduction boundary
+## 11. 再現に関する境界
 
-The exact artifacts may be audited read-only and the code path may be independently studied. However, the protected depth-10 evidence has already been consumed exactly once for this Study/version.
+exact artifactはread-onlyで監査でき、code pathも独立に調査できる。ただし、protected depth-10 evidenceは、このStudy / versionですでにexactly onceとして消費済みである。
 
-A new execution over the same protected evidence is **not** a new prospective confirmation and is not authorized by this Study. Depth 11 requires a separate prospective Study. G2-12 estimator output must not be introduced retroactively as an expected count, tuning input, or interpretation aid for FDEGHV-STUDY1.
+同じprotected evidenceに対する新しい実行は、新規のprospective confirmationにはならず、このStudyでは承認されていない。depth 11には別のprospective Studyが必要である。G2-12 estimator outputを、expected count、tuning input、FDEGHV-STUDY1のinterpretation aidとして遡及導入してはならない。
 
-`main` integration is a repository operation, not part of scientific reproduction, and remains unperformed until explicit user instruction.
+`main` integrationはscientific reproductionの一部ではなくrepository operationである。scientific closure時点では明示的なユーザー指示を待って未実行だったが、その後の指示に基づき統合済みである。現在の状態は`CURRENT_STATUS.md`を参照する。

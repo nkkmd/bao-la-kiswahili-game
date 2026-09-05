@@ -1,9 +1,15 @@
-# Position Complexity / Difficulty Study — Current Status
+# Position Complexity / Difficulty Study — Current Status （現在の状態）
+
+## 日本語での要点
+
+formal decisionはINCONCLUSIVEで、人間の難しさや単一difficulty scoreを確認したものではない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 更新日: 2026-08-14  
 Status: **STUDY 1 CLOSED / FORMAL DECISION INCONCLUSIVE / REPOSITORY CLOSURE COMPLETE**
 
-## Research identity
+## Research identity （識別と表現）
 
 ```text
 research title = Baoにおける局面複雑度の多層構造 — structural complexity, search instability, and decision ambiguity の分離
@@ -19,7 +25,7 @@ PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 OVERALL FORMAL DECISION = INCONCLUSIVE
 ```
 
-## Immutable inherited boundaries
+## Immutable inherited boundaries （日本語の要点）
 
 No completed study is reopened or rescued.
 
@@ -48,7 +54,7 @@ Namua->Mtaji:
 
 No first-Mtaji timing/survival/hazard/acceleration/delay endpoint is authorized.
 
-## Stage 0 — COMPLETE
+## Stage 0 — COMPLETE （Stageの記録）
 
 Validated exact-search diagnostic:
 
@@ -59,7 +65,7 @@ search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
 
 Technical gates G0-1..G0-9 passed. The diagnostic provides exhaustive root candidate values, exact TopSet, best-second gap, score-domain handling, and depth-transition diagnostics without modifying normal game search behavior.
 
-## Stage 1 — COMPLETE / EXPLORATORY / CONSUMED
+## Stage 1 — COMPLETE / EXPLORATORY / CONSUMED （Stageの記録）
 
 ```text
 Stage ID = PCX-S1-EXPLORATORY-2026-08-12-v1
@@ -80,9 +86,9 @@ resultHash = 51e6a0f7352e553f6a66e4e1db7c867148424cdbf7954b818bf7667bfd3c2eec
 
 All preregistered Stage 2 readiness gates passed. Stage 1 remains exploratory only and cannot serve as formal confirmation evidence.
 
-## Stage 2 — COMPLETE / FORMAL
+## Stage 2 — COMPLETE / FORMAL （Stageの記録）
 
-### Frozen identity
+### Frozen identity （識別と表現）
 
 ```text
 Stage ID = PCX-S2-FORMAL-2026-08-13-v1
@@ -103,7 +109,7 @@ max ply 100
 
 No Stage 1 seed/state was reused.
 
-### Generation / full verification
+### Generation / full verification （日本語の要点）
 
 ```text
 gamesVerified = 1024
@@ -117,7 +123,7 @@ verificationIdentityHash = 27d4de0818033226f23e1a806a85457d71d8c05beaaf20a596e27
 
 The formal corpus is technically valid under the frozen verifier.
 
-### Selection / measurement
+### Selection / measurement （日本語の要点）
 
 ```text
 unique historical trajectories = 891
@@ -134,7 +140,7 @@ completedMeasurements = 862
 measurementHash = c7ad1762aad979513e12da2d83278f8d2de30888318aa9215749c0c7fdd8d105
 ```
 
-### Formal population gates
+### Formal population gates （日本語の要点）
 
 ```text
 selected unique rule states >= 500   862 PASS
@@ -149,7 +155,7 @@ H2 subset stable >= 50               427 PASS
 
 Coverage/counts were not the limiting factor.
 
-## PCX-H1 — FINAL FORMAL DECISION = INCONCLUSIVE
+## PCX-H1 — FINAL FORMAL DECISION = INCONCLUSIVE （結論）
 
 Frozen primary comparison:
 
@@ -188,7 +194,7 @@ PCX-H1 = INCONCLUSIVE
 
 Do not relabel this as `NOT-CONFIRMED` from p=0.0867 and do not claim confirmation from the positive coefficient.
 
-## PCX-H2 — FINAL STATUS = NOT-CONFIRMATORILY-EVALUATED
+## PCX-H2 — FINAL STATUS = NOT-CONFIRMATORILY-EVALUATED （結論）
 
 Computed secondary quantities:
 
@@ -215,7 +221,7 @@ PCX-H2 = NOT-CONFIRMATORILY-EVALUATED
 
 The small computed p-value is not a confirmed secondary result.
 
-## Final result identity
+## Final result identity （結論）
 
 ```text
 resultHash = f20b51ec05b7c02e33dd77f8ce27b85c1b9671f6d8046dc6104f2e01946f5b75
@@ -229,7 +235,7 @@ Canonical result:
 doc/position-complexity/STAGE_2_FORMAL_RESULT.md
 ```
 
-## Study 1 closure
+## Study 1 closure （結論）
 
 Study 1 closes here without rescue.
 
@@ -244,7 +250,7 @@ doc/position-complexity/checkpoints/2026-08-14-stage2-formal-result-and-study1-c
 
 No within-study extension, reseeding, optimizer/tolerance change, endpoint substitution, phase interaction, phase-stratified rescue or H2 promotion is authorized.
 
-## Future work boundary
+## Future work boundary （適用範囲と制限）
 
 If the H1 scientific question is revisited, the preferred next step is a **new prospective numerical-method replication** with:
 
@@ -254,7 +260,7 @@ If the H1 scientific question is revisited, the preferred next step is a **new p
 
 Human difficulty validation also remains a separate future independent study.
 
-## Repository state
+## Repository state （リポジトリ状態）
 
 ```text
 Study 1 scientific work = CLOSED

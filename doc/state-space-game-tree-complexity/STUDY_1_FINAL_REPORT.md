@@ -1,4 +1,10 @@
-# State Space / Game Tree Complexity Study 1 — Final Report
+# State Space / Game Tree Complexity Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+standard initial RAW rootのfrozen depth-8 domainで24,848 RAW statesと30,941 tree nodesをexactに数えた。formal decisionはSSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAINで、Bao全体の規模推定ではない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 **Study ID:** `SSGTC-STUDY1`  
 **Status:** COMPLETED  
@@ -6,7 +12,7 @@
 **Representation:** RAW-ONLY  
 **Study-start baseline `main`:** `9e5cd1a4f48114bb0a8f13a8a58eb7a117cb5901`
 
-## 1. Question and scope
+## 1. Question and scope （適用範囲と制限）
 
 This prospective independent study asked whether Bao reachable-state growth and bounded game-tree complexity could be quantified reproducibly from authoritative raw rule-state identity without using unvalidated symmetry reduction or canonicalization.
 
@@ -14,7 +20,7 @@ The study did **not** attempt to produce one global number for “the Bao state 
 
 The study does not reopen or change the formal decisions of Restricted Endgame / Winning Regions Study 1, Symmetry / Isomorphic Positions Study 1, ORISC-STUDY1, Position Complexity / Difficulty Study 1, or any other completed Bao study.
 
-## 2. Representation firewall
+## 2. Representation firewall （識別と表現）
 
 Authoritative raw identity was fixed as:
 
@@ -54,9 +60,9 @@ symmetry-group quotient counting
 
 The validated downstream transformation set was `[]`.
 
-## 3. Study sequence
+## 3. Study sequence （日本語の要点）
 
-### Stage 0 — technical representation validation
+### Stage 0 — technical representation validation （Stageの記録）
 
 The frozen depth-2 technical graph passed all `S0-G1` through `S0-G12` gates and a separate-process independent verifier in GitHub Actions run `32803985808`.
 
@@ -68,7 +74,7 @@ SSGTC-STAGE0-PASS
 
 Its 19-state / 18-transition shallow diagnostic is not scientific evidence about global Bao complexity and was not reused as Stage 1 or Stage 2 evidence.
 
-### Stage 1 — exploratory characterization
+### Stage 1 — exploratory characterization （Stageの記録）
 
 Numeric resource caps were frozen before outcome generation. Several early executions were retained as non-canonical technical failures rather than rescued:
 
@@ -88,7 +94,7 @@ Stage 1 remained `EXPLORATORY-ONLY` and `scientificInferenceAuthorized=false`. I
 
 No Stage 1 row was reused as formal Stage 2 evidence.
 
-### Stage 2 — prospective formal bounded quantification
+### Stage 2 — prospective formal bounded quantification （Stageの記録）
 
 Before formal outcome generation, Stage 2 froze a fresh target:
 
@@ -107,7 +113,7 @@ The formal evidence was freshly regenerated under namespace `SSGTC-S2-FORMAL-202
 
 Production enumeration and a separate-process independent verifier both succeeded in GitHub Actions run `32805975114`, job `97676042161`. The independent verifier did not import the production serializer, production formal runner, or Stage 1 artifact code, and independently re-enumerated the entire frozen graph and tree domains.
 
-## 4. Formal result
+## 4. Formal result （結果）
 
 The frozen target completed with no resource censoring. Therefore the formal decision is:
 
@@ -115,7 +121,7 @@ The frozen target completed with no resource censoring. Therefore the formal dec
 SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-### 4.1 Reachable raw-state graph
+### 4.1 Reachable raw-state graph （日本語の要点）
 
 ```text
 reachable raw states through depth 8 = 24,848
@@ -156,7 +162,7 @@ All 24,848 states in this frozen depth-8 domain were Namua states. This means on
 
 There were 97 terminal and 24,751 nonterminal states in the depth-8 state set. Winner counts were Player 0 = 31, Player 1 = 66, none = 24,751.
 
-### 4.2 Branching structure for completely expanded parent depths 0..7
+### 4.2 Branching structure for completely expanded parent depths 0..7 （日本語の要点）
 
 ```text
 expanded nonterminal states = 6,516
@@ -171,7 +177,7 @@ mixed-move-type proportion = 0
 
 These branching summaries apply only to the completely expanded parent-depth domain and must not be generalized to all Bao positions.
 
-### 4.3 Bounded game tree
+### 4.3 Bounded game tree （日本語の要点）
 
 The non-deduplicated game tree was separately counted through depth 8:
 
@@ -211,7 +217,7 @@ unique raw states / game-tree node occurrences = 0.803076823632074
 
 quantifies deduplication/transposition effect only inside the frozen depth-8 target. It is not an estimator for the full Bao state space or full game tree.
 
-## 5. Independent verification and artifact integrity
+## 5. Independent verification and artifact integrity （証拠と成果物）
 
 Production gates `S2-G1` through `S2-G10` all passed, covering raw shape, missing-`pending` rejection, seed conservation, unique raw keys, deterministic replay, depth boundary, raw/report separation, post-write reopen, forbidden-import checks, and no-estimator enforcement.
 
@@ -238,7 +244,7 @@ artifactZipSha256 = 713e258847a98e9b01866bae248f0986708f8ef90df803157514c63469b5
 
 The downloaded ZIP was independently re-hashed after retrieval and matched the GitHub artifact digest.
 
-## 6. Exactness boundary
+## 6. Exactness boundary （適用範囲と制限）
 
 The formal claim is exactly:
 
@@ -260,7 +266,7 @@ an estimator of the full state space is validated
 
 A deeper exact count, a full-game estimate, or a symmetry-reduced count requires a new prospective study/versioned protocol with its own resource and representation authorization.
 
-## 7. Upstream scientific state preserved
+## 7. Upstream scientific state preserved （日本語の要点）
 
 Nothing in SSGTC-STUDY1 changes:
 
@@ -271,7 +277,7 @@ Nothing in SSGTC-STUDY1 changes:
 
 The validated symmetry transformation set remains empty.
 
-## 8. Closure
+## 8. Closure （結論）
 
 SSGTC-STUDY1 is complete. Its scientific contribution is a reproducible, independently verified **bounded exact** raw-state and game-tree count, not a global Bao state-space solution. Technical failures encountered before the accepted Stage 1 run were preserved as technical failures and were not converted into scientific evidence. No estimator or symmetry reduction was introduced after outcome inspection.
 

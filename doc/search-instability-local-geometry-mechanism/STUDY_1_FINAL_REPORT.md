@@ -2,7 +2,7 @@
 
 更新日: 2026-09-03
 
-## 1. Formal status
+## 1. formal status（正式状態）
 
 ```text
 Study = SILGM-STUDY1
@@ -39,7 +39,7 @@ NON-ESTIMABLE = 1
 
 題目中の`Mechanism`は歴史的program labelであり、causal mechanismを意味しない。本Studyが許可したのはbounded association / concentration / structural relationの検証である。
 
-## 3. Scientific scope
+## 3. 科学的scope
 
 本Studyは、LGTGMIVでformal eligibilityが確認されたrelative depth 5のRAW local geometryと、決定論的search-condition perturbation間の探索出力変化との関連をprospectively検証した。
 
@@ -75,7 +75,7 @@ Search contrastsはすべてpeer contrastであり、右側条件をtruth/refere
 - `SILGM-SC2-NODE-BUDGET`: `B256_Q1_MAXD3` vs `B1024_Q1_MAXD3`
 - `SILGM-SC3-QUIESCENCE`: `D2_Q0` vs `D2_Q2`
 
-## 4. Stage 0 technical validation
+## 4. Stage 0のtechnical validation
 
 Stage 0 v1/v2はtechnical fixture expectation / fixture availabilityの問題で`TECHNICAL-INVALID`、v3はscientific computation前のverifier self-referenceで`PRECOMPUTATION-TECHNICAL-INVALID`となった。いずれもfresh scientific evidenceは生成しておらず、同一versionをrerunしていない。
 
@@ -96,7 +96,7 @@ Stage disposition = STAGE0-PASS
 
 Stage 0は技術的実現可能性のみを検証し、G3-07 scientific associationのpositive/negative/null evidenceを生成していない。
 
-## 5. Stage 1 development
+## 5. Stage 1 developmentの結果
 
 Frozen population:
 
@@ -137,14 +137,14 @@ Stage disposition = STAGE1-PASS
 
 Stage 1は15 contrast×endpoint slotのうち8 candidateをpromotionした。promotionはformal confirmationではなく、Stage 2へ持ち込むprospectively frozen hypothesis identityの選択である。
 
-## 6. Stage 2 firewall and formal input
+## 6. Stage 2 firewallとformal input
 
 Stage 2はStage 1のmeasurement rowsやnon-promoted candidate detailsをselection inputとして再利用しなかった。formal inputには次のみを持ち込んだ。
 
 - Stage 1でpromotionされた8 candidateのcontrast / endpoint / metric / phase-specific threshold / direction
 - Stage 1 selected root identity 48件のidentity-only exclusion manifest
 
-Stage 1 identity exclusion manifest:
+Stage 1 identity exclusion manifestは次のとおりである。
 
 ```text
 path = prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
@@ -172,9 +172,9 @@ v2 artifact ID = 9878546389
 v2 artifact ZIP SHA-256 = 26bb6355a589fe4d47efc6a2a111dc112f35cc95e114e1145f5f7fea8a578b97
 ```
 
-## 7. Stage 2 authorization and execution
+## 7. Stage 2のauthorizationと実行
 
-Stage 2 preauthorization static audit:
+Stage 2 preauthorization static auditの記録:
 
 ```text
 workflow run = 33716437350
@@ -198,7 +198,7 @@ execution trigger commit = 872da6b0507b91845516ca54da0da8058844d893
 authorization nonce = SILGM-S2-AUTH-2026-09-03-V1-01
 ```
 
-Exactly one formal scientific execution:
+formal scientific executionは次の1回だけ行った。
 
 ```text
 workflow run = 33716884975
@@ -235,7 +235,7 @@ max observed per-root combined elapsedMs = 109569.391294
 result bytes = 733559
 ```
 
-## 8. Formal test
+## 8. formal test（正式検定）
 
 Stage 2ではStage 1でfrozenされたphase-specific thresholdを変更せず、各candidate・各phaseでgeometryを`HIGH` / `LOW`へ分類した。
 
@@ -256,7 +256,7 @@ Estimable candidateは、phase別marginを固定したhypergeometric distributio
 
 Multiplicityはestimable 7 candidateに対するHolm-Bonferroni、FWER=`1/20`である。
 
-## 9. Formal results
+## 9. formal result（正式な結果）
 
 | # | Contrast | Endpoint | Geometry | Frozen direction | Formal label | Exact p | Holm rank / threshold |
 |---|---|---|---|---|---|---|---|
@@ -269,7 +269,7 @@ Multiplicityはestimable 7 candidateに対するHolm-Bonferroni、FWER=`1/20`で
 | 7 | quiescence | ranking preorder change | G1 root legal width | HIGHER-IN-HIGH | **CONFIRMED** | `96013549/4043768323725` | `2 / 1/120` |
 | 8 | quiescence | PV prefix2 change | G1 root legal width | HIGHER-IN-HIGH | NOT-CONFIRMED | `9283557/59446375` | `6 / 1/40` |
 
-### 9.1 CONFIRMED — depth × ranking preorder × root legal width
+### 9.1 `CONFIRMED` — depth × ranking preorder × root legal widthの結果
 
 Candidate:
 
@@ -301,7 +301,7 @@ label = CONFIRMED
 
 したがって、frozen formal populationでは、G1 root legal widthがphase-specific thresholdより高い局面に、`D2_Q1`と`D3_Q1`の間のranking preorder changeがformalに集中した。
 
-### 9.2 CONFIRMED — node budget × ranking preorder × root legal width
+### 9.2 `CONFIRMED` — node budget × ranking preorder × root legal widthの結果
 
 Candidate:
 
@@ -326,7 +326,7 @@ label = CONFIRMED
 
 したがって、frozen formal populationでは、G1 root legal widthがphase-specific thresholdより高い局面に、`B256_Q1_MAXD3`と`B1024_Q1_MAXD3`の間のranking preorder changeがformalに集中した。
 
-### 9.3 CONFIRMED — quiescence × ranking preorder × root legal width
+### 9.3 `CONFIRMED` — quiescence × ranking preorder × root legal widthの結果
 
 Candidate:
 
@@ -351,7 +351,7 @@ label = CONFIRMED
 
 したがって、frozen formal populationでは、G1 root legal widthがphase-specific thresholdより高い局面に、`D2_Q0`と`D2_Q2`の間のranking preorder changeがformalに集中した。
 
-## 10. NOT-CONFIRMED candidates
+## 10. `NOT-CONFIRMED`となったcandidate
 
 4 candidateはestimableであったがHolm familywise criterionを満たさず`NOT-CONFIRMED`となった。
 
@@ -359,7 +359,7 @@ label = CONFIRMED
 
 Depth × E5、quiescence × E5も`NOT-CONFIRMED`である。これらをpost-hocに別threshold・別metric・別directionで救済しない。
 
-## 11. NON-ESTIMABLE candidate
+## 11. `NON-ESTIMABLE`となったcandidate
 
 `SILGM-SC2-NODE-BUDGET | SILGM-E4-BEST-SECOND-GAP-CHANGE | SILGM-G2-CUMULATIVE-TREE-OCCURRENCE | HIGHER-IN-HIGH`
 
@@ -376,7 +376,7 @@ unchanged = 31
 
 観測されたcount patternを理由にgateを緩和したりseedを追加したりしない。
 
-## 12. Joint interpretation
+## 12. 全結果を合わせた解釈
 
 3件のCONFIRMED candidateはすべて、同じgeometry descriptor `G1 root legal width` と同じsearch endpoint `E3 ranking preorder change` の組合せであり、depth・node-budget・quiescenceという3種類のpeer perturbationそれぞれで`HIGHER-IN-HIGH`方向が確認された。
 
@@ -386,7 +386,7 @@ unchanged = 31
 
 また、G2 cumulative tree occurrenceについてStage 1からformalに持ち込まれた複数candidateは、formal confirmationに至らなかったか、1件はnon-estimableであった。これはG2が一般に無関係であることを証明するものではなく、本Studyのfrozen hypothesesがformal criteriaを満たさなかったという結論に限定される。
 
-## 13. Interpretation boundary
+## 13. 解釈上の境界
 
 本Studyからformalに主張できるのは、prospectively fixed Stage 2 population、RAW-only relative depth-5 geometry、frozen search-condition contrastsにおけるcandidate-level associationである。
 
@@ -407,15 +407,15 @@ unchanged = 31
 - relative depth 5のgeometry patternがdeeper exact game treeでも維持される
 - standard initial RAW-root complete exact depth-10 holdoutについて何らかの結論が得られた
 
-## 14. Protected deeper holdout
+## 14. protected deeper holdoutの状態
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
 本Studyはこのholdoutを生成・read・partial generate・resource probeしていない。
 
-## 15. No-rescue / execution integrity
+## 15. no-rescue / execution integrityの確認
 
 ```text
 Stage 1 = 1 authorized / 1 actual scientific execution
@@ -429,19 +429,19 @@ Stage 2 seed extension = 0
 
 Stage 2ではfirst fresh generation/read時点でno-rescue boundaryをcrossしており、その後candidate、threshold、direction、support gate、formal test、multiplicity ruleを変更していない。
 
-## 16. Closure
+## 16. closure（終了状態）
 
 G3-07 / SILGM-STUDY1のscientific executionは完了した。
 
-Final repository lifecycle status:
+最終的なrepository lifecycle status:
 
 **`CLOSED / FORMAL-COMPLETE`**
 
 Formal inferential record:
 
-- **depth × E3 ranking preorder × G1 root legal width = CONFIRMED / HIGHER-IN-HIGH**
-- **node-budget × E3 ranking preorder × G1 root legal width = CONFIRMED / HIGHER-IN-HIGH**
-- **quiescence × E3 ranking preorder × G1 root legal width = CONFIRMED / HIGHER-IN-HIGH**
+- **depth × E3 ranking preorder × G1 root legal widthは`CONFIRMED / HIGHER-IN-HIGH`**
+- **node-budget × E3 ranking preorder × G1 root legal widthは`CONFIRMED / HIGHER-IN-HIGH`**
+- **quiescence × E3 ranking preorder × G1 root legal widthは`CONFIRMED / HIGHER-IN-HIGH`**
 - 4 candidates = NOT-CONFIRMED
 - 1 candidate = NON-ESTIMABLE
 

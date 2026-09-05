@@ -1,11 +1,17 @@
-# Namua→Mtaji Strategic Temporal Transition — Current Status
+# Namua→Mtaji Strategic Temporal Transition — Current Status （現在の状態）
+
+## 日本語での要点
+
+formal decisionはNOT-CONFIRMEDで、CBEとMtaji morphologyの普遍的な時間接続は確認していない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 更新日: 2026-08-12  
 Status: **STUDY 1 CLOSED / REPOSITORY CLOSURE COMPLETE / FORMAL DECISION = NOT-CONFIRMED**  
 Branch: `research/namua-mtaji-temporal-transition`  
 Base main head at study start: `c7d06d485789e1ea96d6603802423951a88c1f87`
 
-## Current state
+## Current state （日本語の要点）
 
 研究題目:
 
@@ -33,7 +39,7 @@ research status = CLOSED
 
 No further Stage 2 sampling, primary analysis, rescue analysis, or outcome-dependent redesign is authorized.
 
-## 1. Canonical closure records
+## 1. Canonical closure records （結論）
 
 First-read overview:
 
@@ -65,11 +71,11 @@ Formal closure checkpoint:
 doc/namua-mtaji-transition/checkpoints/2026-08-12-study1-formal-closure.md
 ```
 
-## 2. Immutable inherited boundaries
+## 2. Immutable inherited boundaries （日本語の要点）
 
 No closed-study decision is reopened.
 
-### Phase-transition Study 1
+### Phase-transition Study 1 （日本語の要点）
 
 ```text
 E-010 = NOT-CONFIRMED
@@ -100,7 +106,7 @@ clusterMaxGap = 1
 non-forcing groups = reserve / mobility / capture / front
 ```
 
-### Position-typology / playing-style Study 1
+### Position-typology / playing-style Study 1 （日本語の要点）
 
 Frozen Mtaji classifier:
 
@@ -116,7 +122,7 @@ No refit, restandardization, relabeling, feature change, or alternative-k rescue
 
 Namua discrete type remains unsupported. N-ACT/N-CON remain exploratory only. STYLE-C1..C4 exact geometry remains formal `NOT-CONFIRMED`.
 
-## 3. Deterministic Namua clock — permanent boundary
+## 3. Deterministic Namua clock — permanent boundary （適用範囲と制限）
 
 For standard trajectories surviving Namua:
 
@@ -143,7 +149,7 @@ Permanent unauthorized interpretations:
 - CBE changes first-Mtaji hazard;
 - first-Mtaji timing is a survival endpoint.
 
-## 4. Stage 1 — complete and consumed
+## 4. Stage 1 — complete and consumed （Stageの記録）
 
 All Stage 1 corpora are exploratory and permanently excluded from Stage 2 formal inference.
 
@@ -165,7 +171,7 @@ progression violations = 0
 364 / 364 structural-range comparisons in-range
 ```
 
-## 5. Frozen Stage 2 design
+## 5. Frozen Stage 2 design （方法と設計）
 
 Formal condition:
 
@@ -215,7 +221,7 @@ two-sided alpha = 0.05
 one primary test
 ```
 
-## 6. Formal corpus integrity — PASS
+## 6. Formal corpus integrity — PASS （日本語の要点）
 
 Formal source commit:
 
@@ -237,7 +243,7 @@ administrative truncation games = 3
 
 Full replay, provenance, move legality, state identity, temporal outcome recomputation, seed range, single-condition, aggregate-view, and trajectory-hash checks all passed.
 
-## 7. Preoutcome matching — PASS
+## 7. Preoutcome matching — PASS （結果）
 
 ```text
 raw Namua CBE rows = 37
@@ -285,7 +291,7 @@ Independent review passed before outcome unlock commit:
 afe1ca9e9021f5f391c2cedbf9c0fcf8330aafcb
 ```
 
-## 8. Frozen Mtaji artifact — PASS
+## 8. Frozen Mtaji artifact — PASS （証拠と成果物）
 
 ```text
 expected candidateDefinitionHash
@@ -298,7 +304,7 @@ restandardization = false
 relabeling = false
 ```
 
-## 9. Primary formal result — NOT-CONFIRMED
+## 9. Primary formal result — NOT-CONFIRMED （結果）
 
 Observed first-Mtaji morphology:
 
@@ -337,7 +343,7 @@ Frozen decision:
 
 No direction label is assigned. The positive descriptive difference is not a confirmed association and is not a rescue signal.
 
-## 10. Final artifact audit — PASS
+## 10. Final artifact audit — PASS （結論）
 
 ```text
 matched sets = 30
@@ -356,7 +362,7 @@ Morphology assignment SHA-256:
 
 Primary counts, all stratum summaries, matched risk difference, MH OR, Poisson-binomial PMF, tail probabilities, and two-sided p-value were independently recomputed and matched the formal result exactly.
 
-## 11. Final interpretation boundary
+## 11. Final interpretation boundary （結論）
 
 Allowed conclusion:
 
@@ -371,7 +377,7 @@ Do not reinterpret as:
 - generalization beyond P2-D2;
 - justification for subgroup/comparator/seed/threshold rescue.
 
-## 12. Closed-study rule
+## 12. Closed-study rule （日本語の要点）
 
 Study 1 is closed.
 

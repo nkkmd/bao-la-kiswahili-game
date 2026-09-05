@@ -13,7 +13,7 @@ G3-01はResearch Generation 3のmeasurement foundationとして、同一のautho
 
 対象としたのは、tree occurrence、distinct RAW state、legal transition、duplicate encounter、parent multiplicity、root branch reconvergence、tree / graph relation、reply-width geometryなどである。本Studyは戦略cluster、game-theoretic value、best move、人間の難易度、Bao全体のstate-space / game-tree sizeを推定する研究ではない。
 
-## 2. Prospective identity
+## 2. 結果を見る前に固定したidentity
 
 ```text
 Research Generation = Research Generation 3
@@ -47,7 +47,7 @@ whole-Bao game-tree estimate = NOT AUTHORIZED
 
 RAW identityは`pits,reserve,houseOwned,player,phase,winner,pending`であり、`turn`と`reason`はidentityへ含めなかった。reflection、rotation、player swap、symmetry quotient、canonicalizationはstate reductionへ使用していない。
 
-## 4. Frozen measurement family
+## 4. 固定済みmeasurement family
 
 次の5 familyをStudy開始時に固定した。
 
@@ -61,9 +61,9 @@ F5-REPLY-GEOMETRY
 
 一次measurementはinteger count、canonical set / tuple、exact numerator / denominator、SHA-256 digestを中心に構成した。floating-point toleranceをformal primary gateには用いなかった。
 
-## 5. Stage 0 — Technical entry
+## 5. Stage 0 — technical entry （Stageの記録）
 
-### 5.1 v1
+### 5.1 v1 （概要）
 
 Stage 0 v1 workflow run `33358158087`では、RAW serialization、move binding、synthetic transposition / reconvergence、traversal-order invariance、G2-05 depth 0..2 historical exact referenceとの照合など、実行上のtechnical check自体はpassした。
 
@@ -78,7 +78,7 @@ Stage 1 authorization from v1 = false
 
 とした。
 
-### 5.2 corrective v2
+### 5.2 corrective v2の結果
 
 この欠陥はfresh development / formal evidenceを一切生成・readしておらず、scientific seed consumptionも`NONE`の時点で見つかった。Study開始時に固定していたtechnical-refreeze ruleに従い、scientific contractを変更せずcorrective v2を別Stage versionとして固定した。
 
@@ -102,7 +102,7 @@ Stage 0 v2 = STAGE0-TECHNICAL-PASS
 
 とし、Stage 1 execution prerequisiteを満たした。
 
-## 6. Stage 1 — Fresh development
+## 6. Stage 1 — fresh development （開発段階）
 
 Stage 1はformal scientific inferenceを行わない`FRESH-DEVELOPMENT`である。
 
@@ -134,7 +134,7 @@ F5-REPLY-GEOMETRY family digests
 
 これは、bounded local tree / RAW graphの主要primitiveについて、fresh development population上でproductionとindependent implementationが同じmeasurement coreを再構築できたことを示す。ただしStage 1はdevelopment evidenceであり、この一致だけでformal eligibilityを主張することはできない。
 
-### 6.2 Stage-level canonical manifest defect
+### 6.2 Stage-level canonical manifestのdefect
 
 Study開始時のartifact contractでは、root digestをcanonical orderで並べたdeterministic `stageCoreSha256`を持つことを要求していた。
 
@@ -168,7 +168,7 @@ eligibleFamiliesForStage2 = []
 
 このfail-closed handlingは、実質的に良好だったroot-level agreementを無視するためではなく、outcomeを見た後にverification contractを有利に修正しないためのものだ。
 
-## 8. Stage 2
+## 8. Stage 2の状態
 
 Stage 2はStage 0 technical passとStage 1 development passをprerequisiteとしていた。Stage 1がtechnical-invalidで閉じたため、Stage 2を実行していない。
 
@@ -189,7 +189,7 @@ formal eligible measurement families = []
 
 この判断は「局所ゲーム木幾何を測定できない」ことや「F1〜F5の定義が科学的に否定された」ことを意味しない。Stage 1 developmentでは全familyのroot-level exact agreementを観測したが、事前固定したformal verification chainを最後まで満たせなかったため、本Studyからdownstream利用可能なformal eligibilityを付与できない、という境界である。
 
-## 10. Protected depth-10 holdout
+## 10. protected depth-10 holdout （証拠の状態）
 
 standard initial RAW rootのcomplete depth-10 exact layerはG3-11用にsealedされたままである。
 
@@ -209,7 +209,7 @@ Stage 1のtrajectory source generationは単一legal pathを進めたもので�
 - Bao全体のgame-tree size
 - asymptotic growth law
 - strategic regime
-- best move / winning move / forced win
+- best move / winning move / forced winとの関係
 - search reliability
 - human difficulty
 - game-theoretic value
@@ -244,6 +244,6 @@ Stage 1 independent verification SHA256 = c4fb4285560e1db291da52267a280c34eec127
 
 詳細は`REPRODUCIBILITY_INDEX.md`、`DECISION_REGISTER.md`、`results/`、`checkpoints/`を参照する。
 
-## 14. Repository state
+## 14. repositoryの状態
 
 本Studyはresearch branch上で閉じる。`main`への統合はuserから明示的な指示があるまで行わない。

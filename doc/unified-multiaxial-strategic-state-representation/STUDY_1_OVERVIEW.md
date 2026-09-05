@@ -46,19 +46,19 @@ G2-01〜G2-09では、search reliability、RAW state-space、rich representation
 
 ## 3. 基本設計
 
-### Stage 0 — technical / eligibility / feasibility
+### Stage 0 — technical / eligibility / feasibility （技術検証）
 
 `UMSSR-S0-TECHNICAL-2026-08-30-v1`
 
 科学的結論を出さず、upstream evidence eligibility、source binding、RAW identity、engine / evaluator / search semantics、candidate observableの実装可能性、独立再構築、resource ceiling、leakage防止を確認する。
 
-### Stage 1 — representation development
+### Stage 1 — representation development （表現）
 
 `UMSSR-S1-DEVELOPMENT-2026-08-30-v1`
 
 fresh development populationだけを使用し、candidate axis generation、feature construction、scaling、必要な場合のdimensionality reduction、clustering / regime discovery、stability analysis、representation selectionを行う。Stage 1 evidenceをStage 2 formal evidenceへ再利用しない。
 
-### Stage 2 — formal validation
+### Stage 2 — formal validation （Stageの記録）
 
 `UMSSR-S2-FORMAL-2026-08-30-v1`
 
@@ -79,7 +79,7 @@ Stage 2では、少なくとも次を区別する。
 
 具体的なnumeric thresholdはStage 1科学用seed消費前のmachine-readable Stage 1 specで固定し、その後は変更しない。
 
-## 6. RAW-state identity
+## 6. RAW-state identity （識別情報）
 
 validated transformationが存在しないため、G2-10はRAW-state distinctnessを維持する。
 
@@ -95,7 +95,7 @@ pending
 
 `turn`と`reason`はauthoritative RAW identityから除外する。validated transform setは`[]`であり、canonicalization / symmetry reductionを導入しない。
 
-## 7. negative / null / non-estimable result
+## 7. negative / null / non-estimable result （日本語の要点）
 
 validated unified representationが得られないことも正式な成果である。technical gate failure、support不足、assignment instability、independent verifier不一致、Stage 1 readiness failure等が起きた場合は、同じStudy内でthreshold、axis、cluster数、search depth、populationを結果後に救済変更せず、事前固定したterminal vocabularyに従ってclosureする。
 

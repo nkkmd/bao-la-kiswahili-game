@@ -1,9 +1,15 @@
-# REPRODUCIBILITY_INDEX — ORISC-STUDY1
+# REPRODUCIBILITY_INDEX — ORISC-STUDY1 （再現性）
+
+## 日本語での要点
+
+Axis AはORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED、Axis BはNOT-AUTHORIZED-NOT-EXECUTEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-25  
 Status: **COMPLETED / AXIS A `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED` / AXIS B NOT EXECUTED**
 
-## Study-start repository identity
+## Study-start repository identity （識別と表現）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -13,7 +19,7 @@ draft PR = #48
 open PRs at study start = 0
 ```
 
-## Current rule-engine identity bound by the formal spec
+## Current rule-engine identity bound by the formal spec （識別と表現）
 
 ```text
 public/engine.js Git blob = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -22,7 +28,7 @@ public/engine.js byte SHA-256 = e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f
 
 The engine exposes `FRONT=0`, `BACK=1`, `HOUSE=4`; facing opponent front index is `7-index`. Terminal capture accounting places a removed captured quantity in `pending[player]` before winner assignment on the relevant terminal path.
 
-## Immutable REWR identities
+## Immutable REWR identities （日本語の要点）
 
 ```text
 studyId = REWR-STUDY1
@@ -43,7 +49,7 @@ Git blob = 811eb78806813d236dc91c776e1e408d4feac22e
 byte SHA-256 = e8ddff92818f6192cbfdaec3cac6fed79114df377582b11bf0374cb11fd81e0d
 ```
 
-## Original REWR scientific workflow provenance
+## Original REWR scientific workflow provenance （日本語の要点）
 
 ```text
 workflow = Restricted endgame Stage 1 exact solution
@@ -79,7 +85,7 @@ sum(pits) + sum(reserve) + sum(pending) = 64
 
 The three later-affected terminal keys contain `pending=[1,0]` in both original files.
 
-## Repository-facing materialization provenance
+## Repository-facing materialization provenance （リポジトリ状態）
 
 The repository-facing result first appears in commit:
 
@@ -96,7 +102,7 @@ UNRESOLVED-PROVENANCE-GAP
 
 This does not modify REWR-STUDY1.
 
-## Stage 0A technical audit
+## Stage 0A technical audit （Stageの記録）
 
 Canonical technical-only CI used for the Stage 0A audit record:
 
@@ -125,7 +131,7 @@ outcome-field differences = 0
 
 No formal ORISC Axis A result was generated in Stage 0A.
 
-## Pre-outcome Stage 2 candidate contract
+## Pre-outcome Stage 2 candidate contract （結果）
 
 The conditional Stage 2 contract was frozen before Axis A outcome generation:
 
@@ -142,7 +148,7 @@ strata = namua / mtaji / mtaji-houseless
 
 No Stage 1 result existed when this contract was frozen.
 
-## Stage 0B technical prefreeze
+## Stage 0B technical prefreeze （Stageの記録）
 
 Final workflow-bound prefreeze evidence:
 
@@ -157,7 +163,7 @@ result JSON SHA-256 = ce37364ad472903bc6449ff402b527e2a5a193a28f2196c3ec2b2ebc17
 
 Both independent tracks reproduced the same immutable raw graph and all represented seed totals were 64. Repository-facing semantic gates A-G8/A-G9/A-G11 were intentionally not evaluated in prefreeze.
 
-## Stage 1 frozen formal contract
+## Stage 1 frozen formal contract （Stageの記録）
 
 A first spec freeze was never authorized and produced no scientific outcome. It was superseded before authorization solely to bind the already-defined formal workflow by byte SHA-256.
 
@@ -187,7 +193,7 @@ sourceChecksPassed = true
 scientificOutcomeGenerated = false
 ```
 
-## Stage 1 authorization
+## Stage 1 authorization （Stageの記録）
 
 ```text
 authorizationId = ORISC-S1-REPRESENTATION-INTEGRITY-AUTH-2026-08-25-v1
@@ -198,7 +204,7 @@ upstreamOracleMutationAuthorized = false
 
 The authorization permitted only the frozen Axis A Stage 1 endpoint.
 
-## Canonical Formal Stage 1 workflow
+## Canonical Formal Stage 1 workflow （Stageの記録）
 
 ```text
 runId = 32753073798
@@ -242,7 +248,7 @@ Axis A = ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED
 Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Post-closure automatic duplicate — non-canonical
+## Post-closure automatic duplicate — non-canonical （結論）
 
 During final documentation audit, PR synchronization automatically reran the consumed formal workflow because the PR-wide changed-file set continued to match the historical `pull_request.paths` filter.
 
@@ -269,7 +275,7 @@ stage2ExecutionAuthorizedByThisResult = false
 
 This run is excluded from the canonical evidence set. It does not replace or supplement run `32753073798` and does not reopen Stage 1.
 
-## Post-closure workflow archival lock
+## Post-closure workflow archival lock （結論）
 
 After the duplicate was detected, the four ORISC workflow definitions were changed only as a post-closure execution lock:
 
@@ -290,7 +296,7 @@ formal workflow SHA-256 = 0f5e5da13e84e9511a477a8fdfc01133e3a36cc08e908e16a31b71
 
 Reproducibility of the completed formal result uses that historical source identity plus the canonical workflow run/artifact, not the post-closure archival stub bytes.
 
-## Axis B / Stage 2 reproducibility state
+## Axis B / Stage 2 reproducibility state （再現性）
 
 The candidate contract exists because it was frozen before Axis A outcome, but the following intentionally do not exist:
 
@@ -303,7 +309,7 @@ Stage 2 candidate decisions = NONE
 
 This is the required result of the frozen authorization gate, not missing experimental work.
 
-## Final downstream boundary
+## Final downstream boundary （結論）
 
 ```text
 validated symmetry transformation set = []

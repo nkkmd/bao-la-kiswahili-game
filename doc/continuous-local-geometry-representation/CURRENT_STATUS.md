@@ -1,6 +1,6 @@
-# CLGR-STUDY1 — Current Status
+# CLGR-STUDY1 — 現在の状態
 
-Updated: 2026-09-03
+更新日: 2026-09-03
 
 ```text
 Program position = Research Generation 3 / G3-09
@@ -46,14 +46,14 @@ G3-10 = NOT AUTHORIZED / separate post-G3-09 current-state review required
 main integration = COMPLETE / FAST-FORWARD / initial source tip 64ada67b058811c18d81e7286fd3b12df6964459 / force=false
 ```
 
-Stage 1 development passed all prospectively frozen exactness and nondegeneracy gates. This result was development evidence only and did not itself establish formal representation eligibility.
+Stage 1 developmentは、結果を見る前に固定したexactness gateとnondegeneracy gateをすべてPASSした。ただし、これはdevelopment evidenceに限られ、それ自体ではformal representation eligibilityを確立しない。
 
-The exactly-one Stage 2 formal execution selected the complete 72-root holdout and failed closed after 61 completed root measurements. The required depth-5 RAW reconstruction for formal root index 61 / Mtaji / source seed `31920066` raised:
+exactly-onceのStage 2 formal executionでは、72 rootからなる完全なholdoutを選択し、61 rootのmeasurement完了後にfail closedした。formal root index 61 / Mtaji / source seed `31920066`に必要なdepth-5 RAW reconstructionで、次のerrorが発生した。
 
 `relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b`
 
-Because fresh Stage 2 evidence had already been accessed, `CLGR-STUDY1` cannot be repaired or rerun. The 61 partial formal measurements are technical provenance only and cannot establish either formal eligibility or formal non-eligibility.
+すでにfresh Stage 2 evidenceへアクセスしていたため、`CLGR-STUDY1`を修復または再実行することはできない。61件のpartial formal measurementはtechnical provenanceに限られ、formal eligibilityもformal non-eligibilityも確立できない。
 
-Final repository/document consistency audit v2 passed after checking exact Stage 1/2 result identities, no-rescue state, protected depth-10 status, historical `PROGRAM_PLAN.md` immutability, current-facing document consistency, changed-path confinement, and remote `main` non-integration. Audit v1 had failed only because its documentation path allowlist omitted two valid CLGR authorization-review files; no scientific computation or evidence access occurred in either audit.
+final repository / document consistency audit v2は、exact Stage 1 / Stage 2 result identity、no-rescue state、protected depth-10 status、historical `PROGRAM_PLAN.md`のimmutability、current-facing documentの一貫性、changed-path confinement、remote `main`の非統合状態を確認してPASSした。audit v1のfailureはdocumentation path allowlistから有効なCLGR authorization-review file 2件が漏れていたことだけが原因で、どちらのauditでもscientific computationまたはevidence accessは行っていない。
 
-The scientific Study and repository/document closure work are complete. After explicit user instruction on 2026-09-03, `main` was fast-forwarded to the reviewed source tip `64ada67b058811c18d81e7286fd3b12df6964459` with `force=false`. The closed research branch is retained for provenance; scientific closure and no-rescue boundaries are unchanged.
+scientific Studyとrepository / document closure作業は完了している。2026-09-03の明示的なユーザー指示後、`main`をreview済みsource tip `64ada67b058811c18d81e7286fd3b12df6964459`へ`force=false`でfast-forwardした。閉じたresearch branchはprovenanceのため保持しており、scientific closureとno-rescue boundaryは変更していない。

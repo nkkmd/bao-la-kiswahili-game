@@ -18,7 +18,7 @@ Research branch = research/g2-04-restricted-endgame-exact-oracle-expansion
 Integration PR = #70
 ```
 
-## Stage progression
+## Stage progression （Stageの記録）
 
 ```text
 Stage 0 = REEOE-S0-TECHNICAL-2026-08-28-v1
@@ -46,7 +46,7 @@ domainLevelFormalDecisionsGenerated = 0
 
 valid fresh Stage 1 v2 development runが、結果を見る前に固定したfeasibility / acceptance gateを満たさなかったため、本StudyはStage 2へ進む前に終了しました。
 
-## Stage 0 technical result
+## Stage 0 technical result （技術検証）
 
 immutable REWR 8-state / 7-edge exact domainをtechnical positive controlとしてのみ再構築しました。
 
@@ -63,7 +63,7 @@ negative controls detected = 4/4
 
 Stage 0ではfresh G2-04 scientific evidenceを生成していません。
 
-## Stage 1 v1 failure boundary
+## Stage 1 v1 failure boundary （Stageの記録）
 
 最初のfresh development executionではproduction-only development outputが生成された後、module-path defectによりindependent verifierが起動できませんでした。
 
@@ -76,7 +76,7 @@ v1 seed/RAW identities consumed = true
 
 defect判明後に同じblockを再実行していません。
 
-## Stage 1 v2 valid development result
+## Stage 1 v2 valid development result （Stageの記録）
 
 Fresh identities:
 
@@ -131,13 +131,13 @@ Productionとindependent verificationは、population、selection、closure clas
 
 workflowがnonzero終了した理由は、`0 < 3` complete closuresという事前登録済みacceptance failureだけです。
 
-## Stage 2 non-authorization
+## Stage 2 non-authorization （承認状態）
 
 Stage 1 v2 feasibility gateがFAILしたため、本StudyではStage 2 formal-domain contractを作成・実行していません。
 
 結果確認後のcap increase、structural restriction追加、favorable root replacement、seed extension、symmetry reduction、partial-graph promotionも行っていません。
 
-## authoritative representation
+## authoritative representation （表現）
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -162,7 +162,7 @@ SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 
 本Studyはこれらを変更しません。
 
-## canonical result files
+## canonical result files （証拠と成果物）
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_DEVELOPMENT_V2_RESULT.json`

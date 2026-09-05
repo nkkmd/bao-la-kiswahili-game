@@ -30,7 +30,7 @@ Stage 2 = PCRPR-S2-FORMAL-2026-08-29-v1
 - `preregistration/STAGE_1_EXECUTION_ADDENDUM.json`
 - `authorizations/STAGE_1_EXECUTE.json`
 
-## RAW identity
+## RAW identity （識別情報）
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending

@@ -1,4 +1,4 @@
-# SILGM-STUDY1 — Current Status
+# SILGM-STUDY1 — 現在の状態
 
 更新日: 2026-09-03
 
@@ -25,7 +25,7 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
 ```
 
-## Formal titles
+## formal title（正式題目）
 
 English:
 
@@ -35,11 +35,11 @@ English:
 
 **Baoにおける探索不安定性と局所ゲーム木幾何のprospective exact関連解析 — bounded RAW branching・reconvergence・reply compressionとbest-move・TopSet・ranking・score-gap・PV変動の決定論的search-condition間集中関係の検証**
 
-## Stage 0 technical closure
+## Stage 0のtechnical closure
 
 Stage 0 v4はexactly-one technical executionで`STAGE0-PASS`。canonical result SHA-256は`c33f3979f068879913123447c66ae2d81146724d87db2b5f72f021bbe36348c8`、deterministic coreは`fc44c69eb5c164143af821da872a1b2f9d842f1369e9dcd98a1cdd14b42ec076`。
 
-## Stage 1 development closure
+## Stage 1 developmentのclosure
 
 ```text
 workflow run = 33714665861
@@ -53,11 +53,11 @@ Stage 1 = STAGE1-PASS
 promoted candidates = 8
 ```
 
-The 8 promoted candidates were development-selected formal hypotheses only and were frozen before Stage 2 evidence.
+promoteした8 candidateは、development段階で選択したformal hypothesisに限られ、Stage 2 evidenceを見る前に固定した。
 
-## Stage 2 formal closure
+## Stage 2のformal closure
 
-Stage 2 formal input retained only the 8 promoted candidate identities and Stage-1 identity exclusions. Stage-1 measurement rows and non-promoted candidate details were not formal selection inputs.
+Stage 2 formal inputが保持したのは、promoteした8 candidateのidentityとStage 1 identity exclusionだけである。Stage 1 measurement rowと非promoted candidateのdetailはformal selection inputに使用していない。
 
 ```text
 formal input core = 6c796df950f05df2b193ab0a5d2a6f74dfa179745a9953d337f72a745cc5d0b0
@@ -98,23 +98,23 @@ Confirmed candidate identities:
 2. `SILGM-SC2-NODE-BUDGET|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH`
 3. `SILGM-SC3-QUIESCENCE|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH`
 
-Thus, within the frozen Stage-2 population and search contract, high root legal width was formally associated with concentration of ranking-preorder change under each of the three peer search-condition perturbation families. This is a bounded non-causal association and does not identify an objectively correct search condition or game-theoretic difficulty.
+したがって、固定済みStage 2 populationとsearch contractの範囲では、3種類のpeer search-condition perturbation familyすべてにおいて、high root legal widthとranking-preorder changeの集中とのformalなassociationが確認された。これはboundedかつnon-causalなassociationであり、客観的に正しいsearch conditionまたはgame-theoretic difficultyを特定するものではない。
 
-## Scientific boundary
+## 科学的な境界
 
-- geometry = LGTGMIV F1-F5 / RAW-only / relative depth 5 only
-- search contrasts = depth / node-budget / quiescence, all peer contrasts
-- deeper or larger-budget search = NOT TRUTH
-- G2-02 scientific rows = NOT REUSED
-- G3-02/G3-03/G3-05/G3-06 technical-invalid diagnostics = NOT SCIENTIFIC INPUT
-- G3-04 C1/C6 = context only
-- causal mechanism / objective move correctness / game-theoretic difficulty / human difficulty = NOT AUTHORIZED
-- NOT-CONFIRMED does not mean universal absence of association
-- NON-ESTIMABLE does not mean null
-- Stage 1 and Stage 2 evidence cannot be repaired, extended or rerun within this Study
-- protected depth-10 remains sealed
+- geometryはLGTGMIV F1〜F5 / RAW-only / relative depth 5に限る
+- search contrastはdepth / node-budget / quiescenceで、すべてpeer contrastとする
+- deeperまたはlarger-budget searchを真値とはみなさない
+- G2-02 scientific rowは再利用していない
+- G3-02 / G3-03 / G3-05 / G3-06のtechnical-invalid diagnosticはscientific inputではない
+- G3-04 C1 / C6はcontextに限る
+- causal mechanism、客観的なmove correctness、game-theoretic difficulty、人間にとっての難しさの解釈は承認していない
+- `NOT-CONFIRMED`はassociationが普遍的に存在しないことを意味しない
+- `NON-ESTIMABLE`はnullを意味しない
+- Stage 1 / Stage 2 evidenceをこのStudy内でrepair、extend、rerunできない
+- protected depth-10はsealedのままである
 
-## Closure artifacts
+## closure artifact（終了記録）
 
 - `STUDY_1_FINAL_REPORT.md`
 - `REPRODUCIBILITY_INDEX.md`
@@ -126,12 +126,12 @@ Thus, within the frozen Stage-2 population and search contract, high root legal 
 - `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`
 - `../research-generation-3/checkpoints/2026-09-03-g3-07-main-integration-complete.md`
 
-## Next action
+## 次に許可されるaction
 
-G3-07 scientific execution and research-branch documentation consistency work are complete.
+G3-07 scientific executionとresearch branch上のdocumentation consistency作業は完了している。
 
-**Historical closure-time downstream boundary:** at G3-07 closure, the next program-level scientific action was a separate post-G3-07 current-state G3-08 authorization review, and G3-08 was not authorized automatically. That review was later completed. Current program state: G3-08 / `LGPML-STUDY1` is `CLOSED / TECHNICAL-INVALID`; G3-09 / `CLGR-STUDY1` has subsequently completed as `CLOSED / TECHNICAL-INVALID`, with formal continuous-representation eligibility not established; G3-10 remains `NOT AUTHORIZED` pending a separate post-G3-09 current-state authorization review.
+**historical closure時点のdownstream boundary:** G3-07 closure時点で次に許可されたprogram-level scientific actionは、別個のpost-G3-07 current-state G3-08 authorization reviewだった。G3-08は自動的にはauthorizeされなかった。そのreviewは後に完了した。現在のprogram状態は中央の`research-generation-3/CURRENT_STATUS.md`を正本とする。
 
-Main integration is complete after explicit user instruction. The closed research branch is retained for provenance.
+明示的なユーザー指示後に`main` integrationは完了した。閉じたresearch branchはprovenanceのため保持している。
 
-No further G3-07 merge action is required. Any new scientific work still requires a separate prospective authorization.
+G3-07について追加のmerge actionは不要である。新しいscientific workには、引き続き別個のprospective authorizationが必要となる。

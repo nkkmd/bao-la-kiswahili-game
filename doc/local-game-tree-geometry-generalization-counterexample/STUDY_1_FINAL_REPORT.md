@@ -1,22 +1,22 @@
-# LGTGGC-STUDY1 — Final Report
+# LGTGGC-STUDY1 — 最終報告
 
-Date: 2026-09-04
+日付: 2026-09-04
 
-## 1. Final decision
+## 1. 最終判断
 
 **`LGTGGC-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
-Research Generation 3 program position: **G3-12 — Local Game-Tree Geometry Generalization / Counterexample Study 1**.
+Research Generation 3における位置づけ: **G3-12 — Local Game-Tree Geometry Generalization / Counterexample Study 1**。
 
 G3-12のformal generalization / counterexample boundaryは確立されなかった。Stage 0はtechnical readinessを確立し、Stage 1のSFCDF transfer developmentはPASSしたが、同じexactly-once Stage 1 execution中にSILGM transferがhard technical failureでfail closedした。GCLD transferはその後実行されず、Stage 2は`NOT AUTHORIZED`のまま未実行である。
 
 このclosureはupstream geometry claimsへのnegative scientific resultではない。
 
-## 2. Study question
+## 2. 研究の問い
 
 本Studyは、G3-04、G3-07、G3-10でformal confirmationを得た9個のbounded local-game-tree geometry claimsについて、新しいsource policyとreachable-root familyへ移したときのgeneralization boundary / counterexample boundaryをfresh held-out evidenceで検証することを目的とした。
 
-Formal targets:
+formal targetは次のとおりである。
 
 ```text
 G3-04: C1, C6
@@ -28,21 +28,21 @@ G3-10 C4、G3-02/03/05/06/08/09 technical-invalid families、G3-07 non-confirmed
 
 G3-11 depth-10 exact resultはhistorical anchor / boundary referenceだけに限定し、rerunしなかった。depth 11とG2-12 estimator scientific inputも使用しなかった。
 
-## 3. Prospective contract
+## 3. 結果を見る前に固定したcontract
 
-Source main HEAD:
+開始時点の`main` HEAD:
 
 `5597ae696d9eb76d8395e114cdb4f83af1138a3d`
 
-Research branch:
+研究に使用したbranch:
 
 `research/g3-12-local-game-tree-geometry-generalization-counterexample`
 
-Formal Study ID:
+formal StudyのID:
 
 `LGTGGC-STUDY1`
 
-Stages:
+Stage構成:
 
 ```text
 Stage 0 active PASS version = LGTGGC-S0-TECHNICAL-2026-09-04-v3
@@ -50,7 +50,7 @@ Stage 1 = LGTGGC-S1-DEVELOPMENT-2026-09-04-v1
 Stage 2 = LGTGGC-S2-FORMAL-2026-09-04-v1
 ```
 
-## 4. Pre-fresh source-policy amendment
+## 4. fresh evidence前のsource-policy amendment
 
 Original P2 `CAPTURE-FIRST`はauthoritative Bao legal-move semanticsによりP1 `UNIFORM-LEGAL`とobservationally non-identifiableであることがscientific access前に判明した。
 
@@ -67,9 +67,9 @@ P2は現在合法な各moveのimmediate authoritative capture-event seed count�
 
 Stage 0 V3は64 technical seedsすべてでP1/P2 trajectory distinguishabilityを確認し、production/independent replay exactを確立した。このamendmentはfresh scientific evidence前であり、scientific target、threshold、root family、seed blockを変更しなかった。
 
-## 5. Stage 0
+## 5. Stage 0の結果
 
-Stage 0 chronology:
+Stage 0の経過は次のとおりである。
 
 ```text
 V1 = PRE-EXECUTION-TECHNICAL-INVALID / original P1-P2 non-identifiability / no execution
@@ -77,7 +77,7 @@ V2 = PRECOMPUTATION-TECHNICAL-INVALID / static syntax failure / technical seed a
 V3 = STAGE0-PASS
 ```
 
-Canonical V3:
+canonical artifactのV3:
 
 ```text
 Actions run = 33843233392
@@ -87,9 +87,9 @@ technical core SHA-256 = 79a34669df5e5d80c179dbb40e2a8e6b8b3e58e05747ef0c1b21d7e
 
 Stage 0 PASS後にseparate post-Stage0 authorization reviewを行い、Stage 1だけをexactly one executionとしてauthorizeした。Stage 2はauthorizeしなかった。
 
-## 6. Stage 1 execution integrity
+## 6. Stage 1の実行完全性
 
-Exactly-one fresh Stage 1 execution:
+fresh Stage 1は、次の1回だけ実行した。
 
 ```text
 Actions run = 33848876682
@@ -105,7 +105,7 @@ Authorization/source-binding verificationとdurable pre-computation lease upload
 
 Stage 1 scientific execution countは1回を消費した。同じevidenceのrerunはauthorizeされない。
 
-## 7. SFCDF development result
+## 7. SFCDF developmentの結果
 
 SFCDF transferはdevelopment gateをPASSした。
 
@@ -121,7 +121,7 @@ selection core SHA-256 = a49491bd973ba2ef8807b09e88b17ba929cd97869add1c8f49dc152
 measurement core SHA-256 = 59667e24c250e74dc94746311ba23a448b0947fc40b3fe53e424cdf0054f3f3f
 ```
 
-Cell support:
+cellごとのsupportは次のとおりである。
 
 ```text
 P1 × RF1 eligible 65 / selected 10
@@ -134,7 +134,7 @@ Stage 1 contractに従い、C1/C6のpaired effect direction、effect magnitude�
 
 したがってSFCDF development PASSからG3-04 C1/C6のgeneralizationを主張してはならない。
 
-## 8. SILGM technical failure
+## 8. SILGMのtechnical failure
 
 SILGM transferはfresh development execution中にfail closedした。
 
@@ -146,14 +146,14 @@ formal inference = false
 p-values = false
 ```
 
-Fatal error:
+fatal errorは次のとおりである。
 
 ```text
 Error: complete root ranking required
 origin = tools/experiments/lib/silgm-production.js / conditionResult
 ```
 
-Frozen G3-12 SILGM population allows:
+固定済みのG3-12 SILGM populationは、次の条件を許容していた。
 
 ```text
 Namua LOW = rootLegalWidth < 4
@@ -168,7 +168,7 @@ Stage 1 runnerは通常の`estimable:false`であればdevelopment `NON-ESTIMABL
 
 Specific failing seed/root/contrastはfresh seed replayせず、特定しない。fresh access後のhelper correction、eligibility変更、root replacement、seed extension、same-evidence rerunは行わない。
 
-## 9. GCLD development result
+## 9. GCLD developmentの結果
 
 SILGM step failure後にworkflowが停止したためGCLD transferは実行されなかった。
 
@@ -180,9 +180,9 @@ result = NONE
 
 したがってG3-10 C1/C2/C3/C5 transfer readinessもG3-12 Stage 1では確立されていない。
 
-## 10. Stage 2 authorization review
+## 10. Stage 2のauthorization review
 
-Post-Stage1 review:
+Stage 1後のreview decision:
 
 **`LGTGGC-STAGE2-NOT-AUTHORIZED`**
 
@@ -202,18 +202,18 @@ SILGM Stage 2 32322001..32323536 = UNREAD
 GCLD Stage 2 32324001..32324768 = UNREAD
 ```
 
-## 11. Independent audit
+## 11. independent auditの結果
 
 `STAGE_1_FAILURE_INDEPENDENT_AUDIT.md` はscientific recomputationなしで:
 
-- immutable Actions run provenance
-- lease/result artifact digests
-- downloaded artifact file SHA-256
-- runner control flow
-- production helper hard precondition
-- independent helper hard precondition
-- Stage 1 population compatibility gap
-- protected-evidence firewall
+- immutable Actions runのprovenance
+- lease / result artifactのdigest
+- downloadしたartifact fileのSHA-256
+- runnerのcontrol flow
+- production helperのhard precondition
+- independent helperのhard precondition
+- Stage 1 populationのcompatibility gap
+- protected evidenceを隔離するfirewall
 
 を監査し:
 
@@ -223,9 +223,9 @@ GCLD Stage 2 32324001..32324768 = UNREAD
 
 SFCDF artifact内のproduction/independent exactnessは保持するが、SILGM scientific measurement自体を再実行していない。
 
-## 12. Scientific interpretation
+## 12. 科学的解釈
 
-Correct Study-level interpretation:
+Study-levelで正しく述べられる解釈は次のとおりである。
 
 **G3-12のprospectively frozen capstone protocolはformal held-out Stage 2へ到達できず、bounded local-game-tree geometry claimsのgeneralization boundary / counterexample boundaryを確立できなかった。**
 
@@ -241,9 +241,9 @@ Correct Study-level interpretation:
 
 Partial Stage 1 development measurementsをformal effect evidenceとして用いない。
 
-## 13. Protected evidence and no-rescue closure
+## 13. 保護対象のevidenceとno-rescue closure
 
-At closure:
+closure時点の状態は次のとおりである。
 
 ```text
 G3-11 protected depth-10 rerun = false
@@ -254,28 +254,28 @@ symmetry/canonicalization = NOT USED
 Stage 2 fresh access = 0
 ```
 
-For `LGTGGC-STUDY1`, permanently prohibited:
+`LGTGGC-STUDY1`では、次の操作を恒久的に禁止する。
 
-- same-evidence Stage 1 rerun
-- SILGM seed replay after helper correction
-- seed extension
-- root replacement
-- threshold change/relearning
-- endpoint substitution
-- source-policy replacement
-- root-family replacement
-- module dropping to rescue formal completion
-- resource ceiling increase
-- verification relaxation
-- favorable subgroup rescue
-- G3-10 C4 revival
-- G3-11 depth-10 rerun
-- depth 11 access
-- G2-12 estimator scientific input
+- same-evidenceを使ったStage 1の再実行
+- helper修正後のSILGM seed replay
+- seedの拡張
+- rootの置換
+- thresholdの変更または再学習
+- endpointの置換
+- source policyの置換
+- root familyの置換
+- formal completionを救済するためのmodule dropping
+- resource ceilingの引き上げ
+- verification条件の緩和
+- favorable subgroupによる救済
+- G3-10 C4の復活
+- G3-11 depth-10の再実行
+- depth 11へのアクセス
+- G2-12 estimatorのscientific input利用
 
-A future attempt requires a new prospective independent Study/version and separate authorization. It must not be represented as completion or repair of `LGTGGC-STUDY1`.
+将来再試行する場合は、新しいprospective independent Study / versionと別個のauthorizationが必要である。その試行を`LGTGGC-STUDY1`の完遂または修復として扱ってはならない。
 
-## 14. Final status
+## 14. 最終状態
 
 ```text
 G3-12 = LGTGGC-STUDY1
@@ -289,4 +289,4 @@ Formal counterexample decisions = NONE
 Main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-The research branch remains separate from `main` pending explicit user instruction.
+この時点では明示的な指示を待つためresearch branchを`main`から分離していた。その後の`main`統合状態は`CURRENT_STATUS.md`のcurrent-facing記録を正本とする。

@@ -1,4 +1,10 @@
-# Symmetry / Isomorphic Positions Study 1 — Final Report
+# Symmetry / Isomorphic Positions Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+Study-level closureはNON-ESTIMABLEで、validated 0、rejected 0、non-estimable 5である。技術的にinvalidatedとなったv1のzero-mismatch診断をformal symmetry validationへ昇格しない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 Updated: 2026-08-24  
 Study ID: `SIP-STUDY1`  
@@ -9,7 +15,7 @@ Status: **COMPLETED**
 > **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
 
 
-## 1. Final decision
+## 1. Final decision （結論）
 
 本Studyの**Study-level closure decision**は、5つのpreregistered scientific outcomeすべてについて
 
@@ -27,7 +33,7 @@ NON-ESTIMABLE                  = 5
 
 v1をcandidate-decision runとしてtechnical invalidationしたのは、prospectively mandatoryとしたRestricted Endgame 8-state exact-oracle reconstructionがIDENTITY positive controlを満たさず、state-row identity integrityとproduction / independent equalityを保証できなかったためである。補正v2は設計草案に留まり、spec / authorization / independent verifier / formal outcomeを作成せず終了した。そのためStudy-levelで`NON-ESTIMABLE`としてcloseした。
 
-## 2. Prospective framework
+## 2. Prospective framework （日本語の要点）
 
 candidate transformationはformal outcome生成前に、
 
@@ -58,9 +64,9 @@ G12 production / independent equality
 
 0.998等の近似率はvalidationに使用せず、applicable exact gateは0 mismatchを必要条件とした。
 
-## 3. Candidate definitions
+## 3. Candidate definitions （日本語の要点）
 
-### T01 — `SIP-T01-SEAT-SWAP-LOCAL`
+### T01 — `SIP-T01-SEAT-SWAP-LOCAL` （日本語の要点）
 
 player-indexed state componentsをswapする。
 
@@ -75,7 +81,7 @@ winner 0 <-> 1
 
 engine coordinateがplayer-localであるため、row、pit index、side、directionは保持する。
 
-### T02 — `SIP-T02-LR-MTAJI-HOUSELESS`
+### T02 — `SIP-T02-LR-MTAJI-HOUSELESS` （日本語の要点）
 
 prospectively `phase=mtaji`, `reserve=[0,0]`, `houseOwned=[false,false]` に限定し、
 
@@ -87,13 +93,13 @@ side left <-> right
 
 を適用する。
 
-### T03 — `SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS`
+### T03 — `SIP-T03-SEAT-SWAP-LR-MTAJI-HOUSELESS` （日本語の要点）
 
 T01とT02のcompositionとしてfreezeした。
 
 全Baoのplain LR reflectionは`HOUSE=4`をindex 3へ写すため、outcomeを見る前にscientific candidateから除外した。
 
-## 4. Frozen formal population
+## 4. Frozen formal population （日本語の要点）
 
 Stage 0ではsymmetry success/failureを一切計算せず、graph size・runtime・guard hit・phase coverageだけを使ってformal populationを決めた。
 
@@ -114,9 +120,9 @@ mtaji-houseless
 
 Stage 1 domain materializationはcandidate transformを呼ばず、initial stateからのdeterministic witnessをreplayし、shortage 0 / replay failure 0 / trajectory runtime guard hit 0でfreezeされた。
 
-## 5. Fresh bounded-local results
+## 5. Fresh bounded-local results （結果）
 
-### 5.1 T01 / Namua
+### 5.1 T01 / Namua （日本語の要点）
 
 ```text
 roots         = 8
@@ -129,7 +135,7 @@ G1-G8         = PASS
 
 transformed historical witness replayも8/8 PASS。
 
-### 5.2 T01 / Mtaji
+### 5.2 T01 / Mtaji （日本語の要点）
 
 ```text
 roots         = 8
@@ -140,7 +146,7 @@ mismatches    = 0
 G1-G8         = PASS
 ```
 
-### 5.3 T01 / Namua + Mtaji pooled scope
+### 5.3 T01 / Namua + Mtaji pooled scope （適用範囲と制限）
 
 ```text
 roots         = 16
@@ -151,7 +157,7 @@ mismatches    = 0
 G1-G8         = PASS
 ```
 
-### 5.4 T02 / Mtaji-houseless
+### 5.4 T02 / Mtaji-houseless （日本語の要点）
 
 ```text
 roots         = 8
@@ -165,7 +171,7 @@ G8            = N/A prospectively
 
 T02はstandard-initial Namua witness全体にapplicableでないため、G8は結果後除外ではなくpreregistered N/Aである。
 
-### 5.5 T03 / Mtaji-houseless
+### 5.5 T03 / Mtaji-houseless （日本語の要点）
 
 ```text
 roots         = 8
@@ -177,7 +183,7 @@ G1-G7         = PASS
 G8            = N/A prospectively
 ```
 
-### 5.6 Controls
+### 5.6 Controls （日本語の要点）
 
 IDENTITY positive controlはfresh Namua+Mtaji bounded graphsで0 mismatch。
 
@@ -185,7 +191,7 @@ IDENTITY positive controlはfresh Namua+Mtaji bounded graphsで0 mismatch。
 
 これによりfresh-domain transformation/move/transition machineryは、少なくともpositive/negative controlを識別できている。
 
-## 6. Exact-oracle anchor failure
+## 6. Exact-oracle anchor failure （日本語の要点）
 
 Stage 1はRestricted Endgame Study 1の8-state raw oracleをread-only anchorとして必須化していた。
 
@@ -207,7 +213,7 @@ IDENTITY mismatch count = 10
 
 この時点でcandidateを変更したりoracle gateを除外したりすればpost-outcome rescueになるため、行っていない。
 
-## 7. Read-only oracle integrity diagnostic
+## 7. Read-only oracle integrity diagnostic （日本語の要点）
 
 formal outcome確定後、原因切り分けだけを目的にread-only diagnosticを実施した。これはformal decisionを変更しない。
 
@@ -238,7 +244,7 @@ df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55
 
 重要: この診断はRestricted Endgame Study 1のformal decision、8 raw statesというfrozen count、solution hash、WIN/LOSS/DTF resultを変更しない。本Studyのread-only anchor利用可能性に関する新しいlimitationとしてのみ扱う。
 
-## 8. Independent verification and formal decision
+## 8. Independent verification and formal decision （結論）
 
 Independent verifierは、
 
@@ -265,7 +271,7 @@ finalDecision = NON-ESTIMABLE
 
 `NOT-VALIDATED`にしない理由は、candidate semantic mismatchそのものがfresh formal domainで観測されたのではなく、必須anchor/integrationをdeterministically完了・一致できなかったためである。
 
-## 9. Canonicalization and group structure
+## 9. Canonicalization and group structure （日本語の要点）
 
 formalにvalidatedされたscientific transformは0件である。
 
@@ -282,7 +288,7 @@ composition table          = NOT RUN AS SCIENTIFIC RESULT
 
 fresh zero-mismatch candidatesを使って事後的にcanonical keyを作ることは、preregistered G9-G12を回避するrescueになるため禁止した。
 
-## 10. Reachability interpretation
+## 10. Reachability interpretation （解釈）
 
 T01のtransformed witnessは、`T(initialState)`を始点としてfresh rootsへ合法replayできた。これはtransformed-initial reachability evidenceである。
 
@@ -298,7 +304,7 @@ historical reachability from fixed raw initial
 
 T02/T03はstandard-initial witness全体にapplicableでないため、full witness preservation claimは行わない。
 
-## 11. Implication for State Space / Game Tree Complexity Study
+## 11. Implication for State Space / Game Tree Complexity Study （日本語の要点）
 
 次Studyは本Studyのcandidateをsymmetry reductionに使用してはならない。
 
@@ -313,7 +319,7 @@ no symmetry reduction
 
 State Space Studyでvalidated symmetry-reduced countも扱いたい場合は、Restricted Endgame Study 1をretrofitせず、oracle-anchor integrityとsymmetry confirmationを新しいprospective independent Studyとして先に解決する必要がある。
 
-## 12. Reproducibility identities
+## 12. Reproducibility identities （再現性）
 
 ```text
 specSha256
@@ -338,7 +344,7 @@ read-only diagnostic workflow run
 32728619101
 ```
 
-## 13. Final interpretation boundary
+## 13. Final interpretation boundary （結論）
 
 このStudyから言えること:
 

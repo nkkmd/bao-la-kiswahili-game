@@ -1,9 +1,15 @@
-# Namua→Mtaji Strategic Temporal Transition — Reproducibility Index
+# Namua→Mtaji Strategic Temporal Transition — Reproducibility Index （再現性）
+
+## 日本語での要点
+
+formal decisionはNOT-CONFIRMEDで、CBEとMtaji morphologyの普遍的な時間接続は確認していない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 更新日: 2026-08-12  
 Status: **CLOSED / Study 1 reproducibility record**
 
-## 1. Purpose
+## 1. Purpose （日本語の要点）
 
 This document is the reproducibility and provenance index for:
 
@@ -13,7 +19,7 @@ It records the frozen protocol/spec, source identity, formal corpus identity, pr
 
 The large generated corpus remains under `artifacts/local/` and is gitignored. It is not committed to the repository.
 
-## 2. Canonical scientific documents
+## 2. Canonical scientific documents （日本語の要点）
 
 ```text
 doc/namua-mtaji-transition/STUDY_1_OVERVIEW.md
@@ -36,7 +42,7 @@ Outcome firewall:
 doc/namua-mtaji-transition/preregistration/STAGE_2_OUTCOME_UNLOCK.json
 ```
 
-## 3. Frozen source identity
+## 3. Frozen source identity （識別と表現）
 
 Formal generation source commit:
 
@@ -65,7 +71,7 @@ Formal instrumentation hash:
 fc8ebad0d26fd501a116e78c14e82aa416c06b3b00aa34a9bb722df0a34d0f23
 ```
 
-## 4. Frozen formal spec identity
+## 4. Frozen formal spec identity （識別と表現）
 
 Formal spec path:
 
@@ -94,7 +100,7 @@ opening plies = 8
 max ply = 100
 ```
 
-## 5. Frozen inherited definitions
+## 5. Frozen inherited definitions （日本語の要点）
 
 CBE:
 
@@ -130,7 +136,7 @@ artifacts/local/position-typology/stage1-pilot-v1/
 
 This artifact must not be regenerated, refit, restandardized, or relabeled for reproduction of this study.
 
-## 6. Formal local artifact root
+## 6. Formal local artifact root （証拠と成果物）
 
 ```text
 artifacts/local/namua-mtaji-transition/stage2-formal-v1/
@@ -154,7 +160,7 @@ stage2-formal-result.json
 
 The generated per-game corpus under this local root remains gitignored.
 
-## 7. Aggregate corpus identity
+## 7. Aggregate corpus identity （識別と表現）
 
 From the frozen formal manifest:
 
@@ -188,7 +194,7 @@ terminal before Mtaji games = 210
 administrative truncation games = 3
 ```
 
-## 8. Verification identity
+## 8. Verification identity （識別と表現）
 
 Full verification result:
 
@@ -222,7 +228,7 @@ summaryRecomputation
 sourceProvenance
 ```
 
-## 9. Deterministic clock identity
+## 9. Deterministic clock identity （識別と表現）
 
 ```text
 reached Mtaji games = 3886
@@ -238,7 +244,7 @@ candidate-to-Mtaji distance = deterministic clock distance
 not survival time
 ```
 
-## 10. Event and preoutcome identities
+## 10. Event and preoutcome identities （結果）
 
 Stage 2 event table SHA-256:
 
@@ -281,7 +287,7 @@ morphologyLabelsRead = false
 frozenMtajiClassifierLoaded = false
 ```
 
-## 11. Outcome unlock identity
+## 11. Outcome unlock identity （結果）
 
 Unlock path:
 
@@ -312,7 +318,7 @@ formalSpecSha256
 eventTableSha256
 ```
 
-## 12. Outcome artifact identity
+## 12. Outcome artifact identity （結果）
 
 Morphology assignment CSV SHA-256:
 
@@ -344,7 +350,7 @@ p_two_sided = 1.0
 formal decision = not-confirmed
 ```
 
-## 13. Frozen analysis tooling
+## 13. Frozen analysis tooling （日本語の要点）
 
 ```text
 tools/experiments/run-namua-mtaji-stage2-formal.js
@@ -381,7 +387,7 @@ audit-namua-mtaji-mtaji-artifact.py
 f4dffc6da11e93d0358aef20f9674115d414ff33fe94defa0426a9aa57c2a3a2
 ```
 
-## 14. Execution sequence
+## 14. Execution sequence （日本語の要点）
 
 The completed formal execution sequence was:
 
@@ -406,7 +412,7 @@ python3 tools/experiments/audit-namua-mtaji-mtaji-artifact.py \
 python3 tools/experiments/analyze-namua-mtaji-stage2-formal.py --phase evaluate
 ```
 
-## 15. Reproduction boundary
+## 15. Reproduction boundary （適用範囲と制限）
 
 A reproduction of the already-frozen result must not be converted into a new inferential run by changing:
 
@@ -422,7 +428,7 @@ A reproduction of the already-frozen result must not be converted into a new inf
 
 Any run with such changes is a new study or exploratory analysis, not a reproduction of this formal result.
 
-## 16. Local artifact policy
+## 16. Local artifact policy （証拠と成果物）
 
 `artifacts/local/` remains gitignored.
 

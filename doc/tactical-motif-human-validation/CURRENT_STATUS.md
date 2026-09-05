@@ -1,8 +1,14 @@
-# CURRENT_STATUS — Tactical Motif Human / Expert Validation Study 1
+# CURRENT_STATUS — Tactical Motif Human / Expert Validation Study 1 （日本語の要点）
+
+## 日本語での要点
+
+formal decisionはINCONCLUSIVE-NOT-ESTIMABLE (N=0)で、人間側のnegative resultではない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-18
 
-## Current state
+## Current state （日本語の要点）
 
 **STUDY 1 COMPLETE — MACHINE/INSTRUMENT STAGE COMPLETE / HUMAN AXIS `INCONCLUSIVE-NOT-ESTIMABLE (N=0)`**
 
@@ -10,7 +16,7 @@ The machine/instrument side of the study was completed through exact formal stim
 
 This is not a failed recruitment campaign and not a negative human result. Scientific recruitment was never started and formal human responses collected = `0`.
 
-## Repository baseline
+## Repository baseline （リポジトリ状態）
 
 Study-start `main` HEAD:
 
@@ -20,7 +26,7 @@ Study branch:
 
 `research/tactical-motif-human-validation`
 
-## Historical evidence boundary
+## Historical evidence boundary （適用範囲と制限）
 
 Immutable Tactical Motifs Study 1 decisions remain:
 
@@ -41,7 +47,7 @@ humanExpertEvidence = INCONCLUSIVE-NOT-ESTIMABLE
 humanExpertN = 0
 ```
 
-## Stage 1 machine execution
+## Stage 1 machine execution （Stageの記録）
 
 Stage ID:
 
@@ -78,7 +84,7 @@ Independent verification:
 - mismatch count: `0`
 - verification identity hash: `225e603e5fc60970901c89431a0155a83ffad2ed1de0ede83941cd2fc955c397`
 
-## Stage 1 stimulus pool
+## Stage 1 stimulus pool （Stageの記録）
 
 Class counts:
 
@@ -103,7 +109,7 @@ Pool hash:
 
 `6e36f9b23d489138979047c54e6ef83b8839efec3b4a4ecc9430645bfb4849b1`
 
-## Compact artifact audit
+## Compact artifact audit （証拠と成果物）
 
 Audit ID:
 
@@ -115,7 +121,7 @@ Bundle SHA-256:
 
 All 1,554 stored target-control matches passed independent recurrence/matching audit.
 
-## Exact formal machine stimulus freeze
+## Exact formal machine stimulus freeze （日本語の要点）
 
 Freeze ID:
 
@@ -143,7 +149,7 @@ total unique formal states  = 42
 
 All 42 formal positions passed unique rule-state / historical-trajectory / opening-prefix constraints. Exact identities remain private and were not reselected after materialization.
 
-## Stage 2A recruitment-feasibility closure
+## Stage 2A recruitment-feasibility closure （結論）
 
 Stage ID:
 
@@ -187,7 +193,7 @@ Reason code:
 
 No human p-value, participant-level score distribution, or median primary score exists.
 
-## Ethics/data-governance closure
+## Ethics/data-governance closure （結論）
 
 No institutional ethics approval or exemption is claimed.
 
@@ -200,7 +206,7 @@ No human-facing scientific procedure was initiated:
 
 This closure does not imply that a future human study would not require its own applicable ethics determination.
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 The final result does **not** authorize any conclusion that experts accepted or rejected C03.
 
@@ -215,7 +221,7 @@ Not authorized:
 - substitution of novices/general users for experts;
 - substitution of AI for human experts.
 
-## No-rescue
+## No-rescue （適用範囲と制限）
 
 The study was not rescued by:
 
@@ -225,7 +231,7 @@ The study was not rescued by:
 - reselecting the frozen 42 positions;
 - treating N=0 as a negative human outcome.
 
-## Canonical closure records
+## Canonical closure records （結論）
 
 - `STUDY_1_OVERVIEW.md`
 - `STUDY_1_FINAL_REPORT.md`
@@ -237,6 +243,6 @@ The study was not rescued by:
 - `EXPERIMENT_INDEX.md`
 - `RESEARCH_LOG.md`
 
-## Future-work boundary
+## Future-work boundary （適用範囲と制限）
 
 If qualified expert access becomes feasible later, this closed Study 1 is not retroactively rewritten. Future human validation requires a new prospective independent study or an explicitly prospective, versioned reopening established before any new human response.

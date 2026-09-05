@@ -14,7 +14,7 @@ RCPR-S1-DEVELOPMENT-2026-08-28-v1 = COMPLETE / STAGE1-TECHNICAL-INVALID / SEED-B
 RCPR-S2-FORMAL-2026-08-28-v1 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## repository / execution anchor
+## repository / execution anchor （リポジトリ状態）
 
 ```text
 baseline remote main = 37480777246aa306c6ca3d0679d936b5e0107071
@@ -45,7 +45,7 @@ Phase Transition Research CI = success / run 33235980568
 
 main-integration provenanceは`checkpoints/2026-08-29-main-integration.md`に保存しています。
 
-## Stage 1 consume-once state
+## Stage 1 consume-once state （Stageの記録）
 
 ```text
 source games = 3072
@@ -60,7 +60,7 @@ archived `execution-start.json`には`scientificStage1SeedBlockConsumed = true`�
 
 このblockを`RCPR-STUDY1`内で再実行・修復することはできません。
 
-## terminal artifact / hash
+## terminal artifact / hash （証拠と成果物）
 
 ```text
 production artifact = 9704250489
@@ -74,7 +74,7 @@ verification SHA256 = 6ca0257e4d2064afa177937f881ec13a1843fd98bc133cc5c94522fdd4
 independent development core SHA256 = 5b2251ef1ac34295cd1d67412c9d7f09adbe55b5af81a8752d3cb639b036e22a
 ```
 
-## production-only development output
+## production-only development output （日本語の要点）
 
 Productionは正常完了し、すべてのfrozen production readiness gateがPASSしました。
 
@@ -93,7 +93,7 @@ balanced accuracy = 0.6684641309581127
 
 これらは**production-only unverified development output**としてprovenanceのためだけに保持します。accepted Stage 1 scientific resultではなく、Stage 2を承認せず、confirmatory evidenceでもありません。
 
-## independent verification failure
+## independent verification failure （独立検証）
 
 ```text
 fullCorpusReplay = true
@@ -112,7 +112,7 @@ finalDecision = STAGE1-TECHNICAL-INVALID
 
 全rowは存在し、RAW state identity、continuation measurement、`D_range`、high-divergence labelは一致しました。
 
-## technical postmortem
+## technical postmortem （技術検証）
 
 root causeは`MOVE_SET_ENTROPY.indexEntropy`におけるdeterministic floating-point accumulation-order discrepancyです。
 
@@ -133,7 +133,7 @@ Program-level closure record:
 
 - `doc/research-program-decisions/2026-08-29-g2-06-rich-critical-position-representation-closure.md`
 
-## scientific boundary
+## scientific boundary （解釈上の境界）
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -148,7 +148,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 Research Generation 1およびG2-01..G2-05のformal decisionはすべてimmutableです。Historical Critical Positions evidenceはG2-06のtraining、tuning、threshold selection、validation、formal evidenceから引き続き除外します。
 
-## post-closure workflow state
+## post-closure workflow state （最終状態）
 
 PR #73前に、すべてのRCPR technical / development / materialization workflowをclosed-study archival stubへ変換しました。
 
@@ -156,7 +156,7 @@ manual invocationが可能な場合もprovenance noticeを表示するだけで�
 
 - `checkpoints/2026-08-29-post-closure-workflow-archive.md`
 
-## Program continuation
+## Program continuation （次の研究）
 
 `RCPR-STUDY1`にはこれ以上のscientific stage transitionはありません。Stage 1を再実行・修復せず、Stage 2を承認しません。
 

@@ -1,8 +1,8 @@
-# FDEGHV-STUDY1 — CURRENT STATUS
+# FDEGHV-STUDY1 — 現在の状態
 
 更新日: 2026-09-04
 
-## Current state
+## 現在の正式状態
 
 ```text
 Program = Research Generation 3 / G3-11
@@ -21,7 +21,7 @@ G2-12 estimator scientific input = PROHIBITED / NOT USED
 Main integration = COMPLETE / FAST-FORWARD / source tip 03d1b5bf28ed45aaa9480f0a7c5efc6d394fcbae / previous main e537199a959c0808cbef6cf8aaeb1caab91e3702 / force=false
 ```
 
-## Formal result
+## formal result（正式な結果）
 
 ```text
 H1 = DEEPER-CONFIRMED / 348270 == 348270
@@ -30,7 +30,7 @@ H3 = DEEPER-CONFIRMED / 64913155557 > 61644248915
 H4 = DEEPER-CONFIRMED / duplicate arrivals 11725 / multi-predecessor states 10383
 ```
 
-Exact cumulative domain through depth 10:
+depth 10までのexact cumulative domainは次のとおりである。
 
 ```text
 distinct RAW states = 451127
@@ -44,13 +44,13 @@ canonical scientific-result-core SHA-256 = 5cfaffe66b8b2a2bf710c6acbc28cfa714bc4
 
 Materialized verificationは11 reachable layers / 10 parent layersでPASSし、materially separate independent full exact depth-10 re-enumerationもPASSした。Production、independent、final artifact resource gatesはいずれもfrozen ceiling内でPASSした。
 
-## No-rescue boundary
+## no-rescue boundary（救済的変更を禁止する境界）
 
 Protected evidence opening後のno-rescue boundaryはactiveである。same-Study rerun、resource ceiling increase、endpoint change、subset promotion、root replacement、symmetry/canonicalization rescue、G2-12 prediction use、depth-11 extensionを行わない。
 
 G3-11はG3-04/G3-07/G3-10等の既存formal decisionを変更しない。Depth 11が必要なら別のfresh prospective Studyとして新しいauthorization reviewを要する。
 
-## Repository state
+## repositoryの状態
 
 Study-local final report、decision register、reproducibility index、program closure decision、RG3 closure checkpoint、およびcurrent-facing central documentationはresearch branch上で同期済みである。
 

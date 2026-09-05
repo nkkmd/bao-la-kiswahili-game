@@ -42,7 +42,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 で閉じる。
 
-## 3. upstream scientific firewall
+## 3. upstream scientific firewall （日本語の要点）
 
 G2-10は、G2-06〜G2-09のclosureを救済する研究として扱わなかった。
 
@@ -68,7 +68,7 @@ symmetry reduction = false
 
 単一のstrategic scoreへ早期圧縮せず、Stage 1では40-feature standardized vectorをそのまま保持した。dimensionality reductionは`NONE-IN-STUDY1`として凍結した。
 
-## 5. Stage 0
+## 5. Stage 0 （Stageの記録）
 
 Stage 0はtechnical / eligibility / feasibilityだけを評価し、scientific inferenceを行わなかった。
 
@@ -115,7 +115,7 @@ STAGE1-DEVELOPMENT-BLOCKED-NO-REPRESENTATION
 
 とすることをscientific outcome前に固定した。
 
-## 7. Stage 1 accepted scientific execution
+## 7. Stage 1 accepted scientific execution （実行記録）
 
 accepted consume-once runは次である。
 
@@ -149,7 +149,7 @@ active features = 40 / 40
 
 8 strataはすべて64 rootsで一致した。
 
-## 8. independent verification
+## 8. independent verification （独立検証）
 
 production / independent implementationは、accepted scientific runで次をすべてexact一致させた。
 
@@ -228,7 +228,7 @@ G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 
 G2-11を実施する場合、G2-10のK range、threshold、feature setを結果後に変更して同じStudyを救済してはならない。long-horizon strategic transitionを扱うためのrepresentationが必要なら、**新しいprospective Studyまたは明示的versioned protocol**として、representation source、population、seed、selection / validation ruleを新たにoutcome前に固定する必要がある。
 
-## 13. no-rescue closure
+## 13. no-rescue closure （解釈上の境界）
 
 次は同じ`UMSSR-STUDY1`では行わない。
 

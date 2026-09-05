@@ -41,7 +41,7 @@ artifact = 9679860509
 artifact ZIP SHA256 = cca193ec27e4b2dc170266a13395248e93625bdb93ca7e3a669a5cde4ca4a71e
 ```
 
-## repository integration
+## repository integration （リポジトリ状態）
 
 ```text
 PR = #71

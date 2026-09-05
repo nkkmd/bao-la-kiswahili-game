@@ -1,6 +1,6 @@
-# SSGTGE-STUDY1 — Current Status
+# SSGTGE-STUDY1 — Current Status （現在の状態）
 
-Updated: 2026-08-31
+更新日: 2026-08-31
 
 ```text
 Program = G2-12 / Research Generation 2
@@ -21,21 +21,21 @@ Integrated research-branch head = 741ba02ffa944a9569b262841465bfc78db8220a
 G2-11 = NOT-AUTHORIZED / unchanged
 ```
 
-## Scientific identity
+## Scientific identity （識別情報）
 
-Authoritative state identity remains RAW-only:
+正式な局面同一性は、引き続きRAW stateだけで判定する。
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
 ```
 
-`turn,reason` are excluded. Validated transform set remains `[]`; no canonicalization or symmetry reduction is authorized.
+`turn,reason`は同一性に含めない。検証済みtransform setは引き続き`[]`であり、canonicalizationやsymmetry reductionは承認されていない。
 
-## Stage 0
+## Stage 0 （Stageの記録）
 
-Stage 0 v1 failed before output at a source-binding gate and remains permanently `STAGE0-TECHNICAL-INVALID`.
+Stage 0 v1はsource-binding gateでoutput生成前に失敗し、恒久的に`STAGE0-TECHNICAL-INVALID`である。
 
-A separately versioned corrective v2 changed only technical source-binding/orchestration mechanics. It passed production and independent depth-2 technical validation:
+別versionとして作成したcorrective v2は、technicalなsource bindingとorchestrationだけを変更した。production / independent双方によるdepth-2 technical validationをPASSした。
 
 ```text
 v2 source freeze = a699beb6afe7681227d0ecc8328d527ac34ff7f6
@@ -47,9 +47,9 @@ artifact ZIP SHA256 = bdf0dac8359147c5efaa7b3d58c798a4336c78483d95176ea38ab9960b
 Stage 0 v2 = STAGE0-TECHNICAL-PASS
 ```
 
-## Stage 1
+## Stage 1 （Stageの記録）
 
-Stage 1 was prospectively frozen and separately authorized:
+Stage 1は結果を見る前に固定し、別commitで実行を承認した。
 
 ```text
 source freeze = 3d93b6cb228bc314819495e89c1521859bf258b6
@@ -60,13 +60,13 @@ artifact = 9735723141
 artifact ZIP SHA256 = 7b415b0fad9cadf92568d0b1103b44d9325d8b4c2a729edb40cb1f673e3af09f
 ```
 
-Production completed the real G2-05 depth 0..9 candidate competition and proposed `E2-LOG-QUADRATIC-D2PLUS`. Mandatory independent verification then failed under the frozen `1e-12` cross-implementation relative tolerance:
+production実装はG2-05 depth 0..9を使ったcandidate比較を完了し、`E2-LOG-QUADRATIC-D2PLUS`を提案した。しかし必須のindependent verificationは、固定済みcross-implementation relative tolerance `1e-12`を超える差を検出して失敗した。
 
 ```text
 prediction mismatch: E2-LOG-QUADRATIC-D2PLUS/newRawStateCount/7
 ```
 
-Therefore:
+したがって、最終状態は次のとおりである。
 
 ```text
 Stage 1 = STAGE1-TECHNICAL-INVALID
@@ -74,11 +74,11 @@ canonical selectedEstimator = null
 production-only E2 proposal = diagnostic only / not authorized for Stage 2
 ```
 
-The authorization fixed `sameStage1EvidenceRerunAuthorized=false`; no post-outcome verifier repair, tolerance relaxation, or same-evidence rerun is permitted.
+authorizationでは`sameStage1EvidenceRerunAuthorized=false`を固定している。結果確認後のverifier修正、tolerance緩和、同一evidenceの再実行は認められない。
 
-## Stage 2 and holdout
+## Stage 2 and holdout （Stageの記録）
 
-No canonical estimator survived Stage 1. Stage 2 was never authorized and no fresh depth 10/11 exact scientific count was generated or read.
+Stage 1を通過したcanonical estimatorはない。Stage 2は承認されず、fresh depth 10/11のexact scientific countは生成もreadもしていない。
 
 ```text
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
@@ -86,9 +86,9 @@ formal depth-10 validation = NOT PERFORMED
 full Bao state-space/game-tree estimate = NOT AUTHORIZED
 ```
 
-## Central documentation synchronization
+## Central documentation synchronization （日本語の要点）
 
-Study-local closure was fixed in commit `4f63d615ef25702d99881aedf4a4054fbe7c275b`. Before main integration, the branch-only central-document synchronization was explicitly authorized with `mainIntegrationAuthorized=false` and completed successfully:
+Study内のclosureはcommit `4f63d615ef25702d99881aedf4a4054fbe7c275b`で固定した。`main`統合前には、`mainIntegrationAuthorized=false`を明示したbranch限定の中央文書同期だけを承認し、正常に完了した。
 
 ```text
 authorization commit = 57c813726e72486f38f3da86216523afbccdafd7
@@ -98,23 +98,23 @@ central-doc sync commit = f69e4a7912e39bfd424969e5cd220ac36baa5d15
 workflow conclusion = success
 ```
 
-The synchronized central documents are:
+同期した中央文書は次の4件である。
 
-- root `README.md`;
-- `doc/RESEARCH_INDEX.md`;
-- `doc/FUTURE_RESEARCH_AGENDA.md`;
-- `doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`.
+- ルートの`README.md`
+- `doc/RESEARCH_INDEX.md`
+- `doc/FUTURE_RESEARCH_AGENDA.md`
+- `doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md`
 
-The temporary write-capable workflow and maintenance script were then removed:
+同期後、一時的にwrite権限を持たせたworkflowとmaintenance scriptは削除した。
 
 ```text
 workflow removal commit = 9651f62c8f07605800b6a9103d9d6966c389870d
 maintenance-tool removal commit = 8ef6b0329d386db48c729ea5017cfe6f4e21eb10
 ```
 
-## Main integration
+## Main integration （リポジトリ状態）
 
-After a fresh final documentation and branch-divergence audit, the user explicitly authorized integration to `main`. Immediately before integration:
+最終文書とbranch divergenceを改めて監査した後、利用者が`main`への統合を明示的に承認した。統合直前の状態は次のとおりである。
 
 ```text
 remote main = c5efcdb7972d1bc775a2857c1b0641c35c9df622
@@ -123,9 +123,9 @@ compare = ahead 16 / behind 0
 merge base = c5efcdb7972d1bc775a2857c1b0641c35c9df622
 ```
 
-`main` was fast-forwarded without force to `741ba02ffa944a9569b262841465bfc78db8220a`. This integration changes no scientific decision, threshold, estimator status, authorization, or evidence boundary.
+`main`はforceを使わず`741ba02ffa944a9569b262841465bfc78db8220a`へfast-forwardした。この統合は、科学的判断、threshold、estimatorの状態、authorization、evidence boundaryを変更しない。
 
-## Canonical closure records
+## Canonical closure records （最終状態）
 
 - `results/STAGE_1_TECHNICAL_INVALID_RESULT.json`
 - `results/STUDY_1_FINAL_RESULT.json`
@@ -133,8 +133,8 @@ merge base = c5efcdb7972d1bc775a2857c1b0641c35c9df622
 - `checkpoints/2026-08-31-central-documentation-sync-complete.md`
 - `STUDY_1_FINAL_REPORT.md`
 
-## Interpretation boundary
+## Interpretation boundary （解釈上の境界）
 
-G2-05 remains exactly `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`. G2-11 remains `NOT-AUTHORIZED`. A corrected growth-estimator validation requires a new prospective Study or explicit new version; this Study is not reopened or rescued.
+G2-05は`EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`のままである。G2-11も`NOT-AUTHORIZED`から変わらない。growth estimatorを再検証するには、新しいprospective Studyまたは明示的なnew versionが必要であり、このStudyを再開・救済してはならない。
 
-This Study is closed, centrally synchronized, and integrated into `main`.
+このStudyはclosure、中央文書の同期、`main`への統合まで完了している。

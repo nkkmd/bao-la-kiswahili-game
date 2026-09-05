@@ -1,8 +1,14 @@
-# PCEM-STUDY1 — Current Status
+# PCEM-STUDY1 — Current Status （現在の状態）
+
+## 日本語での要点
+
+Stage 1はEXPLORATORY-ONLY、promotion 0件、Stage 2はNOT-AUTHORIZED-NOT-EXECUTEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-25
 
-## Study identity
+## Study identity （識別と表現）
 
 ```text
 studyId = PCEM-STUDY1
@@ -11,7 +17,7 @@ branch = research/practical-comeback-error-inducing-moves
 studyStartMainHead = 587472b7e1a3f6e390cdfea6ed0d8e0971d5711d
 ```
 
-## Terminal study state
+## Terminal study state （日本語の要点）
 
 ```text
 study = COMPLETE
@@ -26,7 +32,7 @@ scientificOutcomeGenerated = true
 
 The terminal result is a valid zero-promotion exploratory result, not a technical failure. No upstream completed-study decision is reopened or rescued.
 
-## Stage 0 canonical record
+## Stage 0 canonical record （Stageの記録）
 
 ```text
 stageId = PCEM-S0-TECHNICAL-2026-08-25-v1
@@ -54,7 +60,7 @@ max RSS = 94.82421875 MiB
 
 The first workflow run `32813015855` remains an invalidated technical attempt. Its verifier independence audit self-matched its own forbidden-module literals; no scientific outcome was used in the correction.
 
-## Stage 1 frozen design
+## Stage 1 frozen design （方法と設計）
 
 ```text
 stageId = PCEM-S1-EXPLORATORY-2026-08-25-v1
@@ -73,7 +79,7 @@ zeroPromotedCandidatesAllowed = true
 
 The disadvantaged-root rule was outcome-blind at selection time: one state was hash-ranked within the assigned phase before reference disadvantage was inspected; it was eligible only if the frozen D3 reference best score was `< 0`. No replacement within trajectory was permitted after reference failure.
 
-## Stage 1 execution and verification
+## Stage 1 execution and verification （Stageの記録）
 
 Canonical run:
 
@@ -106,7 +112,7 @@ primaryAdministrativeHorizonExhaustions = 2
 
 All frozen readiness gates passed. The independent verifier independently regenerated all 3072 source games and reproduced selection, RAW identity, measurement, and discovery.
 
-## Stage 1 result
+## Stage 1 result （結果）
 
 ```text
 scientificLabel = EXPLORATORY-ONLY
@@ -118,7 +124,7 @@ manualPromotionPerformed = false
 
 All 55 audited candidate definitions failed the frozen minimum unique-root, unique-historical-trajectory, distinct-opening-prefix, unique error-condition root, and unique defense-condition root support requirements. Some other individual effect/error-dependence gates passed for subsets, but no candidate passed the full preregistered conjunction and no near-miss promotion is authorized.
 
-## Stage 2 disposition
+## Stage 2 disposition （Stageの記録）
 
 ```text
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
@@ -129,13 +135,13 @@ reserved seeds consumed = false
 
 Threshold relaxation, favorable subgroup rescue, candidate grammar expansion, opponent-policy substitution, and reuse of Stage 1 rows as Stage 2 evidence are prohibited.
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 The study does not establish objective move superiority, game-theoretic optimality, true Bao winning probability, all-opponent-strength effectiveness, human difficulty/error inducement, or expert/traditional recognition as a Bao winning try.
 
 Machine-only reply structure remains machine-operational. RAW-ONLY identity remains authoritative. No symmetry/canonicalization is authorized.
 
-## Canonical repository records
+## Canonical repository records （リポジトリ状態）
 
 - `STUDY_1_FINAL_REPORT.md`
 - `results/STAGE_1_EXPLORATORY_RESULT.json`
@@ -143,6 +149,6 @@ Machine-only reply structure remains machine-operational. RAW-ONLY identity rema
 - `results/STAGE_2_NON_AUTHORIZATION.json`
 - `checkpoints/2026-08-25-stage1-exploratory-complete-stage2-not-authorized.md`
 
-## Git boundary
+## Git boundary （適用範囲と制限）
 
 No merge to `main`, auto-merge, or branch deletion is authorized without explicit user instruction.

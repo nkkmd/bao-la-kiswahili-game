@@ -1,75 +1,75 @@
-# CLGR-STUDY1 — Final Report
+# CLGR-STUDY1 — 最終報告
 
-Date: 2026-09-03
+日付: 2026-09-03
 
-## 1. Final decision
+## 1. 最終判断
 
 **`CLGR-STUDY1 = CLOSED / TECHNICAL-INVALID`**
 
-Research Generation 3 program position: **G3-09 — Continuous Local-Geometry Representation Study 1**.
+Research Generation 3における位置づけ: **G3-09 — Continuous Local-Geometry Representation Study 1**。
 
-Formal representation eligibility was **not established**. Stage 1 development passed its prospectively frozen gates, but the exactly-one fresh Stage 2 formal execution failed closed during required depth-5 RAW enumeration. Because the failure occurred after fresh Stage 2 evidence access, the Study is closed without rerun or rescue.
+formal representation eligibilityは**確立されなかった**。Stage 1 developmentは結果を見る前に固定したgateをPASSしたが、exactly-onceのfresh Stage 2 formal executionは、必須のdepth-5 RAW enumeration中にfail closedした。fresh Stage 2 evidenceへのアクセス後にfailureが発生したため、rerunやrescueを行わずStudyを閉じた。
 
-## 2. Study question and claim boundary
+## 2. 研究の問いとclaim boundary
 
-The Study asked whether bounded RAW local game-tree geometry could be retained as a reproducible continuous multiaxial representation rather than prematurely reduced to binary candidates or discrete event classes.
+本Studyは、bounded RAW local game-tree geometryをbinary candidateまたはdiscrete event classへ早期に縮約せず、再現可能なcontinuous multiaxial representationとして保持できるかを検証した。
 
-The only primary representation was prospectively fixed as:
+唯一のprimary representationは、結果を見る前に次のとおり固定した。
 
 `CLGR-R1-EXACT-SQUASHED-L1`
 
-with six exact axes derived from the formally eligible `LGTGMIV-STUDY1` F1-F5 measurement foundation at RAW-only relative depth 5. Each nonnegative exact rational axis value `q=n/d` was transformed data-independently to `n/(n+d)`, with equal axis weight and exact L1 distance. No learned weights, PCA, clustering, z-score, phase-specific scaling, post-development feature selection or other data-dependent representation family selection was allowed.
+このrepresentationは、formal-eligibleな`LGTGMIV-STUDY1`のF1〜F5 measurement foundationから、RAW-only relative depth 5で導出した6 exact axisを用いる。各非負exact rational axis value `q=n/d`はdata-independentに`n/(n+d)`へ変換し、axis weightを等しくしてexact L1 distanceを使用した。learned weight、PCA、clustering、z-score、phase-specific scaling、development後のfeature selection、その他のdata-dependentなrepresentation family selectionは認めなかった。
 
-The Study did **not** test or claim win probability, human difficulty, best-move correctness, causal mechanism, strategic regime validity or game-theoretic forcing.
+本Studyは、win probability、人間にとっての難しさ、best moveの正しさ、causal mechanism、strategic regime validity、game-theoretic forcingを検証または主張していない。
 
-## 3. Upstream and protected-evidence boundary
+## 3. upstreamとprotected evidenceの境界
 
-Immutable upstream state was preserved:
+immutable upstream stateとして次を維持した。
 
 - `LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`
-- eligible measurement families = F1-F5
+- eligible measurement familyはF1〜F5である
 - representation = RAW-only
 - relative depth = 5
 - validated transform set = `[]`
-- G3-08 partial Stage 1 measurements = prohibited as G3-09 scientific input
+- G3-08 partial Stage 1 measurementをG3-09 scientific inputとして使用することは禁止した
 - G3-08 `relay-limit` knowledge = technical-design-only
-- G3-04/G3-07 formal outcomes = context only, not representation-selection input
+- G3-04 / G3-07 formal outcomeはcontextに限り、representation-selection inputには使用しない
 
-The standard-initial complete exact RAW depth-10 holdout remained:
+standard-initial complete exact RAW depth-10 holdoutは、次の状態を維持した。
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
-throughout the Study.
+この状態はStudy全体を通じて変わらなかった。
 
-## 4. Prospective Study contract
+## 4. 結果を見る前に固定したStudy contract
 
-Reviewed baseline remote `main`:
+reviewしたbaseline remote `main`:
 
 `6c218b9cc3f492fb96d051768702682fef9bb66a`
 
-Research branch:
+research branch:
 
 `research/g3-09-continuous-local-geometry-representation`
 
-Formal stages:
+formal Stage:
 
 - `CLGR-S0-TECHNICAL-2026-09-03-v1` / technical-only
-- `CLGR-S0-TECHNICAL-2026-09-03-v2` / technical-only replacement version after pre-fresh v1 technical failure
+- `CLGR-S0-TECHNICAL-2026-09-03-v2` / fresh evidence前のv1 technical failure後に作成したtechnical-only replacement version
 - `CLGR-S1-DEVELOPMENT-2026-09-03-v1`
 - `CLGR-S2-FORMAL-2026-09-03-v1`
 
-Scientific seed namespaces:
+scientific seed namespace:
 
 - Stage 1 = `31910001..31910256`
 - Stage 2 = `31920001..31920384`
 
-Technical seeds `31909001..31909008` were permanently excluded from scientific use.
+technical seed `31909001..31909008`はscientific useから恒久的に除外した。
 
-## 5. Stage 0
+## 5. Stage 0の結果
 
-Stage 0 v1 failed before any fresh scientific access because the synthetic relay-limit negative-control expectation was over-specific to an implementation error string. v1 was not rerun.
+Stage 0 v1は、synthetic relay-limit negative-controlの期待値がimplementation error stringへ過度に依存していたため、fresh scientific access前にfailedした。v1は再実行していない。
 
-Because the scientific contract had not been crossed and no Stage 1/2 seed had been read, a separately versioned fresh-free technical v2 was allowed without changing the representation, feature universe, scientific population, seed namespaces, gates or resource ceilings.
+scientific contractの境界を越えておらず、Stage 1 / Stage 2 seedも未読だったため、representation、feature universe、scientific population、seed namespace、gate、resource ceilingを変更せず、別versionのfresh-free technical v2を許可した。
 
 Stage 0 v2:
 
@@ -83,13 +83,13 @@ fresh Stage 2 access = false
 protected depth-10 access = false
 ```
 
-Production and independent implementations agreed exactly on bounded depth-5 reconstruction, six axes, transformed coordinates and exact L1 distance for the technical fixtures.
+technical fixtureについて、bounded depth-5 reconstruction、6 axis、transformed coordinate、exact L1 distanceがproduction / independent implementation間でexactに一致した。
 
-## 6. Stage 1 development
+## 6. Stage 1 developmentの結果
 
-Fresh Stage 1 was separately authorized only after a fresh-free static preauthorization audit passed. The authorization permitted exactly one execution and explicitly prohibited seed extension, root replacement, same-evidence rerun, Stage 2 access and protected depth-10 access.
+fresh Stage 1は、fresh-free static preauthorization auditがPASSした後にだけ別途authorizeした。authorizationはexactly one executionだけを許可し、seed extension、root replacement、same-evidence rerun、Stage 2 access、protected depth-10 accessを明示的に禁止した。
 
-Exactly-one Stage 1 execution:
+exactly-onceのStage 1 execution:
 
 ```text
 workflow run = 33750400172
@@ -102,27 +102,27 @@ stage2Eligible = true
 canonical scientific result SHA-256 = 1e63937dc5967276f68253c9efa819554b0ea3b346f471c04dea92cbd90dc529
 ```
 
-Prospectively frozen development gates passed:
+結果を見る前に固定したdevelopment gateは次のとおりPASSした。
 
-- population complete: 48/48
-- all six axes defined
-- production/independent RAW reconstruction exact
-- production/independent coordinates exact
-- full pairwise exact L1 distance matrix exact
-- `k=3` tie-inclusive neighborhood exact
-- root-order invariance exact
-- distinct coordinate vectors: Namua 24 / Mtaji 24, each above minimum 8
-- axes with at least four distinct values in both phases: 6/6, above minimum 4
+- populationは48/48 completeだった
+- 6 axisすべてを定義できた
+- production / independent RAW reconstructionがexactに一致した
+- production / independent coordinateがexactに一致した
+- full pairwise exact L1 distance matrixがexactに一致した
+- `k=3` tie-inclusive neighborhoodがexactに一致した
+- root-order invarianceがexactだった
+- distinct coordinate vectorはNamua 24 / Mtaji 24で、それぞれminimum 8を上回った
+- 両phaseで少なくとも4種類のvalueを持つaxisは6/6で、minimum 4を上回った
 
-Stage 1 was development evidence only. Passing Stage 1 did not itself establish a formal eligible representation and did not automatically authorize Stage 2.
+Stage 1はdevelopment evidenceに限られる。Stage 1のPASS自体はformal eligible representationを確立せず、Stage 2を自動的にauthorizeもしない。
 
-## 7. Stage 2 formal authorization
+## 7. Stage 2のformal authorization
 
-Stage 2 was separately reviewed after Stage 1 exact-byte mirroring and identity-only exclusion materialization.
+Stage 1のexact-byte mirroringとidentity-only exclusion materializationの後、Stage 2を別途reviewした。
 
-The Stage 2 formal input did not retain Stage 1 coordinate values, favorable axis directions, learned weights or any refitted representation family. Stage 1 contributed only its prospectively allowed formal eligibility gate result and 48-root identity exclusion needed to prevent evidence overlap.
+Stage 2 formal inputには、Stage 1 coordinate value、favorable axis direction、learned weight、refitしたrepresentation familyを残していない。Stage 1から引き継いだのは、結果を見る前に許可したformal eligibility gate resultと、evidence overlapを防ぐために必要な48-root identity exclusionだけである。
 
-Fresh-free Stage 2 preauthorization audit:
+fresh-free Stage 2 preauthorization auditの記録:
 
 ```text
 workflow run = 33751580785
@@ -132,11 +132,11 @@ fresh Stage 2 seed access = false
 protected depth-10 access = false
 ```
 
-The formal population was frozen at 36 Namua + 36 Mtaji = 72 roots and the execution ceiling remained exactly one.
+formal populationは36 Namua + 36 Mtaji = 72 rootで固定し、execution ceilingはexactly oneのまま維持した。
 
-## 8. Stage 2 formal result
+## 8. Stage 2のformal result
 
-Exactly-one fresh Stage 2 execution:
+exactly-onceのfresh Stage 2 execution:
 
 ```text
 workflow run = 33751818456
@@ -152,7 +152,7 @@ same-evidence rerun authorized = false
 protected depth-10 access = false
 ```
 
-The required exact depth-5 RAW reconstruction failed at formal root index 61:
+必須のexact depth-5 RAW reconstructionはformal root index 61でfailedした。
 
 ```text
 phase = mtaji
@@ -161,72 +161,72 @@ root RAW SHA-256 = e2260d76b2f40fa24ebe2183ca0cc865f48dc7c951737414ef8c498143b80
 technical error = relay-limit enumeration 43481b84d17d064573c13acb90c12e55be710ead276c61a5763ea9dea64be86b
 ```
 
-This is a technical execution failure, not evidence that the continuous representation is scientifically eligible or not eligible.
+これはtechnical execution failureであり、continuous representationがscientifically eligibleまたはnot eligibleであることのevidenceではない。
 
-No formal nondegeneracy summary, phase comparison, downstream usefulness claim or representation-level scientific inference may be derived from the 61 partial formal measurements.
+61件のpartial formal measurementからformal nondegeneracy summary、phase comparison、downstream usefulness claim、representation-level scientific inferenceを導出してはならない。
 
-## 9. Exact artifact preservation
+## 9. exact artifactの保存
 
-The Stage 2 immutable Actions artifact was verified by exact hashes and mirrored to:
+Stage 2のimmutable Actions artifactはexact hashで検証し、次へmirrorした。
 
 `results/stage-2/`
 
-through technical-only mirror run `33752894852`. The mirror workflow did not authorize or execute scientific recomputation.
+technical-only mirror run `33752894852`を用いた。mirror workflowはscientific recomputationをauthorizeまたはexecuteしていない。
 
-Authoritative Stage 2 files include:
+正本となるStage 2 fileは次を含む。
 
 - `results/stage-2/STAGE_2_SELECTION.json`
 - `results/stage-2/STAGE_2_ROOT_MEASUREMENTS_PRODUCTION.json`
 - `results/stage-2/STAGE_2_ROOT_MEASUREMENTS_INDEPENDENT.json`
 - `results/stage-2/STAGE_2_FORMAL_RESULT.json`
 
-The formal-result repository blob SHA at closure is recorded in `REPRODUCIBILITY_INDEX.md` together with workflow/artifact provenance.
+closure時点のformal-result repository blob SHAは、workflow / artifact provenanceとともに`REPRODUCIBILITY_INDEX.md`へ記録した。
 
-## 10. Scientific interpretation
+## 10. 科学的解釈
 
-The correct Study-level interpretation is:
+Study-levelで正しく述べられる解釈は次のとおりである。
 
-**The prospectively fixed continuous representation passed the fresh development gate but did not complete the fresh formal holdout; therefore formal eligibility remains unestablished.**
+**結果を見る前に固定したcontinuous representationはfresh development gateをPASSしたが、fresh formal holdoutを完了できなかった。したがってformal eligibilityは未確立のままである。**
 
-The following conclusions are prohibited:
+次の結論を導くことは禁止する。
 
-- `CLGR-R1-EXACT-SQUASHED-L1` is formally eligible
-- `CLGR-R1-EXACT-SQUASHED-L1` is formally not eligible
-- the 61 partial Stage 2 roots validate or invalidate any axis
-- Stage 2 partial measurements establish phase differences or neighborhood stability
-- the failure may be repaired inside `CLGR-STUDY1`
+- `CLGR-R1-EXACT-SQUASHED-L1`がformally eligibleである
+- `CLGR-R1-EXACT-SQUASHED-L1`がformally not eligibleである
+- 61件のpartial Stage 2 rootがいずれかのaxisをvalidateまたはinvalidateする
+- Stage 2 partial measurementがphase differenceまたはneighborhood stabilityを確立する
+- `CLGR-STUDY1`内でfailureをrepairできる
 
-Stage 1 development PASS remains part of immutable Study provenance, but it is not a substitute for the failed formal holdout.
+Stage 1 development PASSはimmutable Study provenanceの一部として残るが、failedしたformal holdoutの代わりにはならない。
 
-## 11. No-rescue boundary
+## 11. no-rescue boundary（救済的変更を禁止する境界）
 
-Stage 2 fresh access occurred and the seed block is consumed. For `CLGR-STUDY1`, the following are permanently prohibited:
+Stage 2 fresh accessは実施済みで、seed blockも消費済みである。`CLGR-STUDY1`では次を恒久的に禁止する。
 
 - same-evidence rerun
-- rerunning seed `31920066` after changing relay-limit handling
-- seed extension or replacement
+- relay-limit handlingを変更した後のseed `31920066`再実行
+- seedのextensionまたはreplacement
 - root replacement
-- resource ceiling relaxation
-- feature addition or deletion
-- normalization or transform change
-- weighting change
-- distance metric change
-- representation-family change
-- formal endpoint or nondegeneracy-gate change
+- resource ceilingのrelaxation
+- featureの追加または削除
+- normalizationまたはtransformの変更
+- weightingの変更
+- distance metricの変更
+- representation familyの変更
+- formal endpointまたはnondegeneracy gateの変更
 - favorable subgroup selection
-- using the 61 partial formal measurements as a completed formal sample
+- 61件のpartial formal measurementをcomplete formal sampleとして使用すること
 
-A future relay-limit-safe continuous-representation study would require a new prospective independent Study/version and separate authorization. It must not be described as completion or repair of `CLGR-STUDY1`.
+将来relay-limit-safeなcontinuous-representation Studyを行う場合は、新しいprospective independent Study / versionと別個のauthorizationが必要である。これを`CLGR-STUDY1`のcompletionまたはrepairとして説明してはならない。
 
-## 12. Downstream program boundary
+## 12. downstream programの境界
 
-Historical `PROGRAM_PLAN.md` is unchanged.
+historical `PROGRAM_PLAN.md`は変更していない。
 
-Because G3-09 did not establish a formally validated continuous representation, G3-10 is **not automatically authorized** by this closure. Any G3-10 action requires a separate post-G3-09 current-state authorization review that considers whether its stated dependency on validated local-geometry coordinates is satisfied or whether a new prerequisite is required.
+G3-09はformally validated continuous representationを確立しなかったため、このclosureによってG3-10が**自動的にauthorizeされることはない**。G3-10のactionには、validated local-geometry coordinateへのdependencyを満たしたか、新しいprerequisiteが必要かを検討する、別個のpost-G3-09 current-state authorization reviewが必要である。
 
-No decision on G3-10 scientific execution is made by this report.
+このreportはG3-10 scientific executionについてdecisionを行わない。
 
-## 13. Final closure
+## 13. 最終closure
 
 ```text
 G3-09 / CLGR-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -240,4 +240,4 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ / NOT PEEKED
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-This closes the scientific Study on the research branch. Repository/document consistency review may proceed, but integration into `main` requires explicit user instruction.
+これによりresearch branch上でscientific Studyを閉じた。repository / document consistency reviewは進められるが、`main`へのintegrationには明示的なユーザー指示を必要とした。その指示に基づく統合は後に完了しており、現在状態は`CURRENT_STATUS.md`を参照する。

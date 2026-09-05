@@ -1,4 +1,4 @@
-# Blunder / Misvaluation Patterns Study 1 — Overview
+# Blunder / Misvaluation Patterns Study 1 — Overview （概要）
 
 更新日: 2026-08-23  
 Status: **STUDY 1 CLOSED / STAGE 2 FORMAL COMPLETE / 0 CONFIRMED / 4 NOT-CONFIRMED**
@@ -43,7 +43,7 @@ human misconception
 
 Primary machine referenceは`bao` evaluation / exact full-window root candidate search / D3 + Q1 / root-actor perspectiveである。D3はground truthではない。
 
-## Stage 1 — exploratory discovery
+## Stage 1 — exploratory discovery （Stageの記録）
 
 ```text
 games = 2048
@@ -67,7 +67,7 @@ Frozen grammar / promotion ruleから4件をpromotionした。
 
 Stage 1 dataはStage 2 confirmation evidenceとして再利用していない。
 
-## Stage 2 — fresh formal confirmation
+## Stage 2 — fresh formal confirmation （Stageの記録）
 
 Fresh formal corpus:
 
@@ -96,7 +96,7 @@ G02 Mtaji = 810 unique roots
 total formal measurements = 2678
 ```
 
-Independent measurement verification independently reproduced D3 candidate tables, matcher/failure classification and exact measurement hash.
+独立measurement verifierは、D3 candidate table、matcher / failure classification、exact measurement hashを別実装で再現した。
 
 ```text
 measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
@@ -104,7 +104,7 @@ verificationHash = e2a57675ecfd19ab00da3f1c4bafbacae7194b6be40d4644c87144c077cd7
 passed = true
 ```
 
-## Frozen confirmation rule
+## Frozen confirmation rule （日本語の要点）
 
 Per candidate, two co-primary endpoints were required:
 
@@ -113,7 +113,7 @@ failure-signature recurrence: H0 p <= 0.50; observed floor >= 0.65
 D3-inferior recurrence:       H0 p <= 0.50; observed floor >= 0.70
 ```
 
-4 candidates × 2 endpoints = 8 tests were controlled by Holm-Bonferroni at FWER 0.05.
+4 candidates × 2 endpoints = 8 testsについて、FWER 0.05でHolm-Bonferroni補正を行った。
 
 Additional gates:
 
@@ -122,9 +122,9 @@ D3 TopSet rate <= 0.20
 median normalized rank loss >= 0.50
 ```
 
-Zero confirmed candidates was a valid preregistered outcome.
+confirmed candidateが0件となる可能性も、preregistrationで認めた有効なoutcomeだった。
 
-## Final candidate results
+## Final candidate results （結論）
 
 | Candidate | Failure recurrence | D3 inferior | D3 TopSet | Median rank loss | Formal decision |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -137,7 +137,7 @@ C01-C03ではfrozen structural failure signatureは強く再現したが、fresh
 
 C04ではfailure-signature recurrence自体がabsolute floor 0.65を下回り、D3-inferior recurrenceも0.70を大きく下回った。
 
-## Study 1 conclusion
+## Study 1 conclusion （結論）
 
 ```text
 Stage 1 exploratory candidates = 4
@@ -149,7 +149,7 @@ Study 1 = CLOSED
 
 これは「Baoの悪手パターンが存在しない」ことを意味しない。今回の4つのexploratory candidatesが、凍結済みengine/search/populationとprospective ruleの下でmachine-confirmed blunder/misvaluation patternにならなかった、という限定されたformal resultである。
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 次の主張は認可されない。
 
@@ -162,7 +162,7 @@ causal mechanism
 external validity beyond the frozen system
 ```
 
-## Canonical records
+## Canonical records （日本語の要点）
 
 - [`STUDY_1_FINAL_REPORT.md`](STUDY_1_FINAL_REPORT.md)
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)

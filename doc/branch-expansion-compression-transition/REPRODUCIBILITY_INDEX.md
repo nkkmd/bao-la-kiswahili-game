@@ -1,8 +1,8 @@
-# BECT-STUDY1 — Reproducibility Index
+# BECT-STUDY1 — 再現性索引
 
 更新日: 2026-09-02
 
-## Baseline
+## baseline（開始時点）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -12,13 +12,13 @@ research branch = research/g3-05-branch-expansion-compression-transition
 Study ID = BECT-STUDY1
 ```
 
-## Program authorization
+## program authorization （承認状態）
 
 - `../research-program-decisions/2026-09-02-post-g3-04-g3-05-authorization-review.md`
 - `../research-generation-3/checkpoints/2026-09-02-post-g3-04-g3-05-authorization-review.md`
 - decision: `G3-05-AUTHORIZED`
 
-## Prospective contract
+## 結果を見る前に固定したcontract
 
 - `README.md`
 - `STUDY_1_OVERVIEW.md`
@@ -27,7 +27,7 @@ Study ID = BECT-STUDY1
 - `DECISION_REGISTER.md`
 - `prereg/STUDY_1_SPEC.json`
 
-Initial prospective freeze commits:
+最初のprospective freeze commit:
 
 ```text
 machine prereg initial commit = c20fca50881c2f385cdf9f0e5065258fdbf66310
@@ -38,7 +38,7 @@ current-status initial commit = 33faf7c40dcf7aa71e4185fca25715f1c5b977a3
 decision-register initial commit = 16ee2127d6b09128fc4b335dfb309d2383e6e0d1
 ```
 
-## Frozen upstream source bindings
+## 固定済みupstream source binding
 
 ```text
 public/engine.js = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -48,7 +48,7 @@ tools/experiments/lib/bect-production.js = b8fa63e941b4da1fec0969155c09754eae151
 tools/experiments/lib/bect-independent.js = bb085c648d2f4f3d7d44f206f04036e95f94980b
 ```
 
-## Representation and equality
+## representationとequality
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -59,7 +59,7 @@ cross-implementation scientific equality = canonical sorted-key JSON -> UTF-8 ->
 prototype-sensitive runtime equality = NOT A SCIENTIFIC GATE
 ```
 
-## Prospective pre-Stage-0 clarification
+## Stage 0前に固定したclarification
 
 `prereg/STUDY_1_SPEC_CLARIFICATION_1.json`
 
@@ -70,23 +70,23 @@ fresh evidence before clarification = false
 Stage 0 fixture before clarification = false
 ```
 
-## Reserved fresh namespaces
+## 予約済みfresh namespace
 
 ```text
 Stage 1 = 31510001..31510240 / CONSUMED / CLOSED TO SAME-EVIDENCE REUSE
 Stage 2 = 31520001..31520384 / NOT CONSUMED / NOT AUTHORIZED
 ```
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
 ```text
 standard initial RAW-root complete exact depth-10 holdout
 = SEALED / NOT GENERATED / NOT READ
 ```
 
-No BECT action may use this holdout for generation, partial generation, read, peek, trial enumeration or resource estimation.
+BECT actionから、このholdoutをgeneration、partial generation、read、peek、trial enumeration、resource estimationに使用してはならない。
 
-## Pre-Stage-0 static audit v1
+## Stage 0前のstatic audit v1
 
 ```text
 workflow = .github/workflows/bect-stage0-static-audit.yml
@@ -99,7 +99,7 @@ Stage 2 seed access = false
 protected depth-10 access = false
 ```
 
-## Stage 0 v1 — TECHNICAL-INVALID
+## Stage 0 v1 — `TECHNICAL-INVALID`となった経緯
 
 Stage ID:
 
@@ -122,28 +122,28 @@ actual formal executions = 1
 result = TECHNICAL-INVALID
 ```
 
-The branch-advancement allowlist and frozen source-binding gate passed. The fixture step failed before bounded measurement because technical seed `31500001` terminated before the runner's fixed root pair 24->25 existed.
+branch-advancement allowlistと固定済みsource-binding gateはPASSした。technical seed `31500001`がrunnerの固定root pair 24->25より前にterminalとなったため、fixture stepはbounded measurement前にfailedした。
 
-No fresh scientific seed, Stage 1 seed, Stage 2 seed or protected depth-10 evidence was accessed. v1 was not rerun.
+fresh scientific seed、Stage 1 seed、Stage 2 seed、protected depth-10 evidenceにはアクセスしていない。v1は再実行していない。
 
-## Stage 0 v2 technical refreeze
+## Stage 0 v2のtechnical refreeze
 
-After v1 failure, a new technical version was frozen:
+v1 failure後、新しいtechnical versionを次のとおり固定した。
 
 - `prereg/STAGE_0_V2_TECHNICAL_REFREEZE.json`
 - blob `e59e82c6e73ee241b48d6106377805857cb11588`
 - Stage ID `BECT-S0-TECHNICAL-2026-09-02-v2`
 
-The scientific Study contract did not change. The only technical change was:
+scientific Study contractは変更していない。technical changeは次の一点に限る。
 
 ```text
 fixed root pair 24->25
 => latest consecutive nonterminal post-move root pair in the fixed technical replay
 ```
 
-The same v1 execution was not retried.
+同じv1 executionは再試行していない。
 
-## Pre-Stage-0 v2 static audit
+## Stage 0前のv2 static audit
 
 ```text
 run = 33631962037
@@ -156,9 +156,9 @@ Stage 2 seed access = false
 protected depth-10 access = false
 ```
 
-The audit checked v2 syntax, refreeze identity, frozen Stage 1/2 seed blocks and the protected-evidence boundary without executing fixtures.
+auditはfixtureを実行せず、v2 syntax、refreeze identity、固定済みStage 1 / Stage 2 seed block、protected-evidence boundaryを確認した。
 
-## Stage 0 v2 — STAGE0-PASS
+## Stage 0 v2 — `STAGE0-PASS`となった結果
 
 Authorization:
 
@@ -205,7 +205,7 @@ results/stage-0-v2/STAGE_0_TECHNICAL_PROVENANCE.txt
 SHA-256 = 3f533544209763106d83548844505a482ee7dc9184813d79e1d88db195559453
 ```
 
-Repository mirror was created from the downloaded artifact bytes; no technical result was recomputed for recovery.
+repository mirrorはdownloadしたartifact byteから作成し、recoveryのためにtechnical resultを再計算していない。
 
 Deterministic technical result:
 
@@ -230,14 +230,14 @@ Stage 2 seed access = false
 protected depth-10 access = false
 ```
 
-## Stage 0 execution-count audit
+## Stage 0のexecution-count audit
 
-Branch Actions history after Stage 0 contains four BECT push runs:
+Stage 0後のbranch Actions historyには、次のBECT push run 4件がある。
 
-1. static audit v1 `33631463838` — non-computational audit;
-2. Stage 0 v1 `33631597307` — one authorized formal technical execution;
-3. static audit v2 `33631962037` — non-computational audit;
-4. Stage 0 v2 `33632094597` — one authorized formal technical execution.
+1. static audit v1 `33631463838` — 非computational audit
+2. Stage 0 v1 `33631597307` — authorizeされたformal technical execution 1回
+3. static audit v2 `33631962037` — 非computational audit
+4. Stage 0 v2 `33632094597` — authorizeされたformal technical execution 1回
 
 Therefore:
 
@@ -248,11 +248,11 @@ fresh Stage 1 executions = 0
 fresh Stage 2 executions = 0
 ```
 
-## Stage 0 closure boundary
+## Stage 0のclosure boundary
 
-`BECT-S0-TECHNICAL-2026-09-02-v2 = STAGE0-PASS` establishes technical eligibility for a separate Stage 1 authorization review. It does not itself authorize fresh Stage 1 seed access or execution.
+`BECT-S0-TECHNICAL-2026-09-02-v2 = STAGE0-PASS`は、別個のStage 1 authorization reviewへ進むtechnical eligibilityを確立する。fresh Stage 1 seed accessまたはexecution自体をauthorizeするものではない。
 
-## Stage 1 prospective clarification 2
+## Stage 1のprospective clarification 2
 
 `prereg/STUDY_1_SPEC_CLARIFICATION_2.json`
 
@@ -264,9 +264,9 @@ coverage rule = metric defined at all 48 analysis roots on all 10 selected traje
 longitudinal identity rules = prospectively fixed before fresh evidence
 ```
 
-This clarification resolves implementation ambiguity only. It does not change the endpoint universe, event grammar, population, seed block, horizon, representation, promotion gates, formal test or resource ceilings.
+このclarificationが解消するのはimplementation ambiguityだけである。endpoint universe、event grammar、population、seed block、horizon、representation、promotion gate、formal test、resource ceilingは変更しない。
 
-## Stage 1 identity-only firewall
+## Stage 1 identity-only firewall （証拠分離規則）
 
 Materialization:
 
@@ -292,9 +292,9 @@ mirror commit = 229527b993012c8019ef782c62f4d2652ee0c7f9
 UPSTREAM_IDENTITY_FIREWALL.json blob = 123430eb0cbe100bf50e068ee4c4ee7dc52c2ca8
 ```
 
-G3-03 diagnostic scientific fields and G3-04 scientific outcome fields are not retained by the BECT identity firewall.
+BECT identity firewallは、G3-03 diagnostic scientific fieldとG3-04 scientific outcome fieldを保持しない。
 
-## Stage 1 frozen scientific implementation
+## Stage 1の固定済みscientific implementation
 
 ```text
 tools/experiments/lib/bect-stage1-production.js = 32995ed7e666b7cff7a6bb43946a30cdc86a7668
@@ -303,9 +303,9 @@ tools/experiments/run-bect-stage1-development.js = 127cb10ea23d18f0a32c2adc2d8c4
 .github/workflows/bect-stage1-development.yml = dcb39d07420ad81db9e10d0ba08a10a9a3cb7cb7
 ```
 
-Production and independent selectors/aggregators are implementation-separated. The scientific workflow uses a dedicated trigger path, `cancel-in-progress: false`, durable pre-computation lease, exact source bindings, branch-advancement allowlist and artifact-before-repository-mirror boundary.
+production / independent selectorとaggregatorはimplementationを分離している。scientific workflowはdedicated trigger path、`cancel-in-progress: false`、durable pre-computation lease、exact source binding、branch-advancement allowlist、artifact-before-repository-mirror boundaryを使用する。
 
-## Stage 1 preauthorization validation
+## Stage 1 preauthorization validation （承認状態）
 
 Static audit:
 
@@ -317,7 +317,7 @@ scientific runner execution = false
 Stage 1 seed access = false
 ```
 
-Initial tooling smoke `33635334088` proved the unarmed runner fail-closed before fresh access; its final static trigger-string count assertion was defective and failed without any scientific consequence.
+最初のtooling smoke `33635334088`は、fresh access前にunarmed runnerがfail closedすることを確認した。最後のstatic trigger-string count assertionにdefectがありfailedしたが、scientific consequenceはない。
 
 Corrected tooling smoke:
 
@@ -355,9 +355,9 @@ scientific computation = false
 Stage 1 seed access = false
 ```
 
-The lease smoke used the actual GitHub contents-write and branch-push path on a non-scientific marker and did not trigger the scientific workflow.
+lease smokeはnon-scientific markerに対して実際のGitHub contents-write / branch-push pathを使用し、scientific workflowをtriggerしなかった。
 
-## Stage 1 preauthorization checkpoint
+## Stage 1 preauthorization checkpoint （承認状態）
 
 `checkpoints/2026-09-02-stage-1-preauthorization-tooling-pass.md`
 
@@ -372,11 +372,11 @@ no-rescue boundary = NOT CROSSED
 protected depth-10 = SEALED / NOT GENERATED / NOT READ
 ```
 
-A separate machine-readable authorization must bind the post-preparation branch HEAD and permit exactly one Stage 1 scientific execution. Only the authorization artifact and one dedicated execution trigger may advance the branch between that baseline and computation.
+別個のmachine-readable authorizationでpreparation後のbranch HEADをbindし、Stage 1 scientific executionをexactly oneだけ許可しなければならない。そのbaselineからcomputationまでの間にbranchを進められるのは、authorization artifactとdedicated execution trigger 1件だけである。
 
-## Stage 1 authorization and exactly-one execution
+## Stage 1のauthorizationとexactly-once実行
 
-Authorization baseline and control plane:
+authorization baselineとcontrol plane:
 
 ```text
 authorized scientific content HEAD = 5ba3706193a06902650b82f1232d19bb2cee2c1e
@@ -399,9 +399,9 @@ Canonical technical error:
 
 `relay-limit enumeration c948b9e00d1e8b4bd711528eda7a7441e4e40ffe369e52a9ada6e7d86963f529`
 
-No Stage 1 rerun was performed or authorized.
+Stage 1 rerunは実施もauthorizeもしていない。
 
-## Stage 1 durable artifact and exact-byte mirror
+## Stage 1のdurable artifactとexact-byte mirror
 
 ```text
 artifact ID = 9849245665
@@ -416,7 +416,7 @@ mirror commit = ac2bd2ca101a9002c69131c2c39ebbfbb98368a1
 scientific recomputation for recovery = false
 ```
 
-Repository blobs after exact-byte mirror:
+exact-byte mirror後のrepository blob:
 
 ```text
 results/stage-1/scientific-result.json = c7daf6f7d2f4ea96fa0b752ff90216daff800482
@@ -424,9 +424,9 @@ results/stage-1/telemetry.json = 378bab53d13b6bd27c961dffda1a2ec797a94009
 results/stage-1/execution-summary.json = 58281cb78e364947a32e0a8fbec05581a32ce11a
 ```
 
-Partial telemetry contains 25 roots from the first selected trajectory (plies 16..40). Those rows are diagnostic provenance only; they do not constitute a valid Stage 1 development dataset and cannot be used for formal promotion.
+partial telemetryには最初に選択したtrajectoryの25 root（ply 16..40）が含まれる。これらのrowはdiagnostic provenanceに限られ、有効なStage 1 development datasetを構成せず、formal promotionに使用できない。
 
-## Formal closure
+## formal closure（正式な終了状態）
 
 Canonical records:
 
@@ -446,4 +446,4 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ
 main integration = NOT PERFORMED
 ```
 
-This closure is a technical validity result, not a negative/null scientific result for Bao geometry transitions. Same-evidence rescue is prohibited.
+このclosureはtechnical validity resultであり、Bao geometry transitionに対するnegative / null scientific resultではない。same-evidence rescueは禁止する。

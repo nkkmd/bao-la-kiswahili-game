@@ -1,4 +1,4 @@
-# BRMGI-STUDY1 — Current Status
+# BRMGI-STUDY1 — 現在の状態
 
 更新日: 2026-09-03
 
@@ -25,7 +25,7 @@ protected depth-10 = SEALED / NOT GENERATED / NOT READ
 main integration = COMPLETE / fast-forward / force=false
 ```
 
-## Formal Study identity
+## formal Study identity（研究識別情報）
 
 English title:
 
@@ -37,7 +37,7 @@ English title:
 
 Historical agendaの`Intervention`はcausal claim authorizationを意味しない。本Studyのclaim classは`move-conditioned structural change`、`event-conditioned geometry difference`、`association`に限定していた。
 
-## Frozen instrument / event boundary
+## 固定済みinstrument / event boundary
 
 ```text
 representation = RAW-ONLY
@@ -53,13 +53,13 @@ Formal event familiesはE1 capture source move、E2 nyumba use-vs-stop、E3 link
 
 Source trajectoryは`engine.legalMoves`をcanonical orderへ並べて選択し、`engine.moveVariants`はE2 same-root stop/use armsだけを列挙するというpre-fresh clarificationを固定した。
 
-## Stage 0 history
+## Stage 0の履歴
 
-### v1 — TECHNICAL-INVALID / NO RERUN
+### v1 — `TECHNICAL-INVALID / NO RERUN`となった経緯
 
 Run `33677691455`。34-seed synthetic nyumba fixtureがLGTGMIVの64-seed RAW invariantを満たさずfail closed。fresh scientific evidenceは0で、v1はrerunしていない。
 
-### v2 — STAGE0-PASS
+### v2 — `STAGE0-PASS`となった結果
 
 科学contractを変更せずtechnical nyumba fixtureだけを64 seedsへ修正した別version。
 
@@ -77,7 +77,7 @@ Stage disposition = STAGE0-PASS
 
 T1-T10は全PASS。production / independent technical geometry reconstruction SHA-256は双方`ed70d0b1ed44a77813150a66709660e075271126a852452fa534f41b39fab90a`で一致した。
 
-## Upstream identity firewall
+## upstream identity firewall （証拠分離規則）
 
 Stage 1前にidentity-only firewallをmaterializeした。
 
@@ -96,7 +96,7 @@ exact mirror commit = 6029679c7a218ca35bb1da343d86670285070d7a
 
 G3-03 diagnostic scientific fields、G3-04 C1/C6 values/directions、G3-05 partial geometry/resource valuesはselection inputへ保持していない。
 
-## Stage 1 preparation and authorization
+## Stage 1の準備とauthorization
 
 Preauthorization static audit:
 
@@ -118,7 +118,7 @@ authorization nonce = BRMGI-S1-AUTH-2026-09-03-V1-01
 max scientific executions = 1
 ```
 
-## Stage 1 formal disposition
+## Stage 1のformal disposition
 
 Exactly one fresh Stage 1 execution `33679269612`はauthorization chainとsource blob bindingをPASSし、fresh computation前にdurable leaseを保存した。その後fresh seedへアクセスし、production / independent event-unit selection比較でfail closedした。
 
@@ -158,13 +158,13 @@ exact-byte mirror workflow = 33679517438
 exact-byte mirror commit = b8f9fe0e2d5008be2d41b3b8271fa325144f82fc
 ```
 
-## No-rescue / scientific boundary
+## no-rescue / scientific boundary （適用範囲と制限）
 
 Stage 1 seed `31610001..31610256`はconsume済み。no-rescue boundaryはactiveである。selector修正後のsame-evidence rerun、seed extension、event/root/control replacement、event/endpoint/control redesign、threshold/resource変更、partial selection provenanceからのcandidate promotionを行わない。
 
 今回のtechnical-invalid resultから、capture / nyumba / reserve exhaustion / Namua→Mtajiがbounded geometryを変える／変えないというpositive・negative・null conclusionは導かない。G3-04 C1/C6やG3-05をrule mechanismで説明したとも解釈しない。
 
-## Stage 2 and protected evidence
+## Stage 2とprotected evidence
 
 Valid Stage 1 completion + nonempty promoted candidate setがないため:
 
@@ -173,11 +173,11 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 Stage 2 seed = 31620001..31620384 / NOT CONSUMED
 ```
 
-Protected standard initial RAW-root complete exact depth-10 holdout remains:
+protected standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-## Main integration
+## `main`への統合
 
 2026-09-03、監査済みresearch branch `research/g3-06-bao-rule-mechanism-geometry-intervention` を、pre-integration `main` `b0cbd9f562bb803597acb313360c064dadd73299`からaudited head `f8eda131b81f0d6e3bc9f804ddfce875c9cd8d2b`へfast-forwardした。`force=false`で実施し、squash、rebase、history rewrite、scientific rerunは行っていない。
 
@@ -185,7 +185,7 @@ Canonical integration checkpoint:
 
 - `../research-generation-3/checkpoints/2026-09-03-g3-06-main-integration-complete.md`
 
-## Closure / next program action
+## closureと次のprogram action
 
 BRMGI-STUDY1は **`CLOSED / TECHNICAL-INVALID`**。unfinished研究として扱わない。
 

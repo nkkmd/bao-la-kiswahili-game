@@ -1,4 +1,4 @@
-# LGPML-STUDY1 — Current Status
+# LGPML-STUDY1 — 現在の状態
 
 更新日: 2026-09-03
 

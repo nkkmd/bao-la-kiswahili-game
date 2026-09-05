@@ -29,29 +29,29 @@ Principal:
 - F5 reply geometry
 - F2 RAW graph
 - F3 transposition / reconvergence
-- F4 tree/graph relation
+- F4 tree / graph relation
 
 Auxiliary:
 
 - F1 tree occurrence
 
-## Prospective candidates
+## 結果を見る前に固定したcandidate
 
 Corridor:
 
-1. C1 unit-width occupancy fraction
+1. C1 unit-width occupancy fraction（幅1が占める割合）
 2. C2 width-compression fraction
-3. C3 longest unit-width run
+3. C3 longest unit-width run（幅1が連続する最長区間）
 
 Funnel:
 
-4. C4 reconvergent-state occupancy fraction
-5. C5 root-branch overlap fraction
-6. C6 cumulative tree/RAW ratio
+4. C4 reconvergent-state occupancy fraction（再合流stateの占有率）
+5. C5 root-branch overlap fraction（root branch間の重複率）
+6. C6 cumulative tree / RAW ratio（累積tree / RAW比）
 
 corridorとfunnelを一つのcombined classへ統合しなかった。
 
-## Stage 1 development
+## Stage 1 developmentの結果
 
 Fresh seed `31410001..31410192`から12 paired trajectoriesをprospectively選択した。
 
@@ -59,11 +59,11 @@ Stage 1 promotion result:
 
 - C1 → **PROMOTED / MTAJI-GREATER**
 - C6 → **PROMOTED / NAMUA-GREATER**
-- C2–C5 → not promoted
+- C2〜C5はpromoteしなかった
 
 Stage 1は`STAGE1-PASS`で、production / independent scientific coreはexact一致した。
 
-## Stage 2 formal validation
+## Stage 2のformal validation
 
 Fresh held-out seed `31420001..31420288`から18 paired trajectoriesを選択した。Stage 1のRAW-root / trajectory / first-16-prefix identityをprospective firewallで除外した。
 
@@ -97,14 +97,14 @@ C1とC6が逆方向でconfirmされたことは、reply narrowingとtree-to-RAW 
 - Namuaがtacticallyより複雑
 - one-reply occupancyがbest-move clarityを示す
 - C6がtransposition concentrationそのものを証明する
-- search stability / search ease
+- search stability / search easeとの関係
 - strategic simplicity
 - human difficulty
-- position value / win probability
+- position value / win probabilityとの関係
 - phaseの因果効果
 - depth 5より深いgame treeへの一般化
 
-## Execution integrity
+## execution integrity （実行記録）
 
 ```text
 Stage 1 scientific executions = 1 authorized / 1 actual
@@ -114,7 +114,7 @@ Stage 2 artifact ID = 9844368476
 Stage 2 artifact ZIP SHA-256 = c4d10eb07eec6ed75510f344f5c06d13deabeb03210023cd541035f05bd5da0f
 ```
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
 standard initial RAW root complete exact depth-10 holdoutは:
 

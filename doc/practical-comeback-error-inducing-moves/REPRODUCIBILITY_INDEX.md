@@ -1,8 +1,14 @@
-# PCEM-STUDY1 — Reproducibility Index
+# PCEM-STUDY1 — Reproducibility Index （再現性）
+
+## 日本語での要点
+
+Stage 1はEXPLORATORY-ONLY、promotion 0件、Stage 2はNOT-AUTHORIZED-NOT-EXECUTEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-25
 
-## Study baseline
+## Study baseline （日本語の要点）
 
 ```text
 studyId = PCEM-STUDY1
@@ -11,7 +17,7 @@ branch = research/practical-comeback-error-inducing-moves
 terminalState = COMPLETE
 ```
 
-## Required upstream scientific records
+## Required upstream scientific records （日本語の要点）
 
 - `doc/FUTURE_RESEARCH_AGENDA.md`
 - `doc/RESEARCH_INDEX.md`
@@ -25,7 +31,7 @@ terminalState = COMPLETE
 - `doc/oracle-representation-integrity-symmetry-confirmation/STUDY_1_OVERVIEW.md`
 - `doc/state-space-game-tree-complexity/STUDY_1_FINAL_REPORT.md`
 
-## Study-owned protocol records
+## Study-owned protocol records （方法と設計）
 
 - `preregistration/STUDY_START_FIREWALL.md`
 - `protocol/CONSTRUCT_MEASUREMENT_DEPENDENCIES.md`
@@ -39,7 +45,7 @@ terminalState = COMPLETE
 
 Historical preregistration/status fields are preserved as records of their freeze points. They are not rewritten to terminal status after outcome generation. Current study state is carried by `CURRENT_STATUS.md`, the final report, compact result records, and the program closure decision.
 
-## Authoritative representation
+## Authoritative representation （識別と表現）
 
 ```text
 identityFields = pits,reserve,houseOwned,player,phase,winner,pending
@@ -50,7 +56,7 @@ symmetryReduction = false
 canonicalization = false
 ```
 
-## Stage 0 implementation
+## Stage 0 implementation （Stageの記録）
 
 ```text
 tools/experiments/lib/practical-comeback-stage0-production.js
@@ -92,7 +98,7 @@ scientificEvidenceAuthorized = false
 
 Its sole verifier failure was a self-matching independence audit; the run is retained only as provenance.
 
-## Stage 1 frozen inputs
+## Stage 1 frozen inputs （Stageの記録）
 
 ```text
 stageId = PCEM-S1-EXPLORATORY-2026-08-25-v1
@@ -121,7 +127,7 @@ artifactId = 9550850177
 artifactDigest = sha256:86d78ce3a88e65361aeae17bc0bae7d8d2f9b8c887a0e54b184f571f8d5ff270
 ```
 
-## Stage 1 execution-only amendment provenance
+## Stage 1 execution-only amendment provenance （Stageの記録）
 
 The first authorized serial workflow proved too slow operationally. Before an interpretable Stage 1 result artifact existed, execution was prospectively amended to deterministic chunking without changing scientific evidence, seeds, population, thresholds, policies, endpoint, grammar or promotion rules.
 
@@ -142,7 +148,7 @@ Pre-seed parallel gate failures were retained in `STAGE_1_EXECUTION_AMENDMENT_1.
 
 None changed the frozen scientific contract.
 
-## Stage 1 canonical execution code
+## Stage 1 canonical execution code （Stageの記録）
 
 The canonical scientific execution is identified by the **exact source commit and frozen Git blobs**, not merely by current repository paths.
 
@@ -175,7 +181,7 @@ tools/experiments/lib/practical-comeback-stage1-independent-discovery.js
 
 The independent verifier does not import the production Stage 1 corpus, measurement, or discovery modules.
 
-### Post-closure workflow-path distinction
+### Post-closure workflow-path distinction （結論）
 
 After canonical Stage 1 completion, the file at `.github/workflows/pcem-stage1-parallel.yml` was intentionally replaced by a lightweight **closure guard** so PR synchronization cannot regenerate the completed 3,072-game scientific evidence. The current closure-guard workflow is therefore **not** the workflow blob frozen in `STAGE_1_EXECUTION_AMENDMENT_1.json`.
 
@@ -187,7 +193,7 @@ same blob = false
 
 This is an intentional post-outcome operational hardening, not a change to the scientific execution. A scientific reproduction must check out the canonical source commit `f4b336ee...` (or otherwise restore the exact frozen blobs) rather than invoking the production binding check against the current closure-guard workflow.
 
-## Canonical Stage 1 workflow
+## Canonical Stage 1 workflow （Stageの記録）
 
 ```text
 workflowRunId = 32820391017
@@ -225,7 +231,7 @@ parallel-control.json = 67a3cc16d841a35ee9ee496e1b6852657e441f0e80e3de75b6192e4a
 
 The machine-readable provenance clarification is `results/STAGE_1_ARTIFACT_PROVENANCE.json`.
 
-## Stage 1 evidence accounting
+## Stage 1 evidence accounting （Stageの記録）
 
 ```text
 generatedGames = 3072
@@ -246,7 +252,7 @@ promotedCandidateCount = 0
 
 All frozen readiness gates passed.
 
-## Stage 1 independent verification
+## Stage 1 independent verification （Stageの記録）
 
 ```text
 decision = TECHNICAL-PASS
@@ -264,7 +270,7 @@ candidateAuditCountVerified = 55
 promotedCandidateCountVerified = 0
 ```
 
-## Repository-owned compact result records
+## Repository-owned compact result records （結果）
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_1_EXPLORATORY_RESULT.json`
@@ -275,7 +281,7 @@ promotedCandidateCountVerified = 0
 - `checkpoints/2026-08-25-stage1-exploratory-complete-stage2-not-authorized.md`
 - `doc/research-program-decisions/2026-08-25-practical-comeback-error-inducing-move-study1-closure.md`
 
-## Terminal scientific boundary
+## Terminal scientific boundary （適用範囲と制限）
 
 ```text
 Stage 1 scientificLabel = EXPLORATORY-ONLY
@@ -288,7 +294,7 @@ reservedStage2SeedsConsumed = false
 
 No threshold relaxation, candidate near-miss promotion, favorable subgroup rescue, altered opponent policy, expanded grammar, or reuse of Stage 1 rows as Stage 2 evidence is authorized.
 
-## Reproduction rule after closure
+## Reproduction rule after closure （結論）
 
 For scientific reproduction or verification of the completed Stage 1:
 

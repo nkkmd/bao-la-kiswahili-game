@@ -3,7 +3,7 @@
 更新日: 2026-08-28  
 状態: **STUDY COMPLETE / FORMAL `INCONCLUSIVE` / FAIL-CLOSED**
 
-## Study anchor
+## Study anchor （基準点）
 
 ```text
 Program = G2-03
@@ -13,7 +13,7 @@ Baseline main = a8493d2a50e11f15d16ef8348f2442b262ca275d
 Branch = research/g2-03-state-transformation-semantics-canonicalization-validation
 ```
 
-## authoritative identity
+## authoritative identity （識別情報）
 
 ```text
 include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -22,7 +22,7 @@ exclude = turn,reason
 
 Study closure時点で、scientific population deduplication、canonicalization、symmetry-reduced countingに使用できるtransformは承認されていません。
 
-## rule-engine binding
+## rule-engine binding （日本語の要点）
 
 ```text
 public/engine.js Git blob at Study start = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -31,7 +31,7 @@ public/engine.js byte SHA-256 = e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f
 
 Stage 0およびそれ以降のfreezeでは、technical / formal executionをacceptする前にsource identityを独立再計算しました。
 
-## Stage identity
+## Stage identity （識別情報）
 
 ```text
 Stage 0 = STSCV-S0-TECHNICAL-2026-08-28-v1
@@ -39,14 +39,14 @@ Stage 1 = STSCV-S1-DEVELOPMENT-2026-08-28-v1
 Stage 2 = STSCV-S2-FORMAL-2026-08-28-v1
 ```
 
-## control
+## control （対照条件）
 
 ```text
 positive = STSCV-C00-IDENTITY
 negative = STSCV-C01-LR-NO-DIRECTION-FLIP
 ```
 
-## machine-readable preregistration
+## machine-readable preregistration （日本語の要点）
 
 - `preregistration/STUDY_START_CONTRACT.json`
 - `preregistration/STAGE_0_TECHNICAL_SPEC.json`
@@ -58,14 +58,14 @@ negative = STSCV-C01-LR-NO-DIRECTION-FLIP
 - `preregistration/STAGE_2_DECISION_RULE.json`
 - `preregistration/STAGE_2_AUTHORIZATION.json`
 
-## Stage 0 canonical record
+## Stage 0 canonical record （記録）
 
 - `results/STAGE_0_TECHNICAL_RESULT.json`
 - `results/STAGE_0_WORKFLOW_PROVENANCE.json`
 
 Stage 0はtechnical onlyであり、scientific candidate decisionを生成していません。
 
-## Stage 1 development record
+## Stage 1 development record （記録）
 
 - `results/STAGE_1_PREFREEZE_MANIFEST.json`
 - `results/STAGE_1_PREFREEZE_WORKFLOW_PROVENANCE.json`
@@ -85,7 +85,7 @@ formal candidate decisions authorized = false
 
 Stage 1で選択されたtrajectory seed、opening-prefix identity、RAW-state identityはすべてStage 2 firewallでconsumedとして扱いました。
 
-## Stage 2 prefreeze
+## Stage 2 prefreeze （固定した条件）
 
 Canonical prefreeze record:
 
@@ -108,7 +108,7 @@ superseded older prefreeze run = 33145557654
 
 hardened prefreezeではStage 2 outcome生成前に、firewall bindingのためStage 1 selected-root selection hashを独立再構築しました。
 
-## Stage 2 frozen contract hash
+## Stage 2 frozen contract hash （固定した条件）
 
 ```text
 specSha256 = 2afbef1faed32cf1a7fb71d8af924a01d721a6d8719057c68224732576a6f8f0
@@ -124,7 +124,7 @@ combined independent verifier SHA-256 = 13b555e6ab34fda1d58213b583e8250d593a9f06
 
 full per-source SHA-256 setは`results/STAGE_2_PREFREEZE_MANIFEST.json`と`preregistration/STAGE_2_AUTHORIZATION.json`に保存しています。
 
-## Stage 2 explicit authorization
+## Stage 2 explicit authorization （承認状態）
 
 ```text
 authorization commit = c7619ded9f682b499a02d023b40ac54ba4dc95ca
@@ -143,7 +143,7 @@ replacement outside frozen seed block = false
 seed extension after outcome = false
 ```
 
-## Stage 2 formal workflow provenance
+## Stage 2 formal workflow provenance （記録）
 
 Repository-facing provenance:
 
@@ -183,7 +183,7 @@ artifact uploadがskipされたため、Stage 2 formal workflow artifact IDやar
 
 production result fileはfailed runner workspace内にのみ存在しました。そのcompact summaryはimmutable workflow logへ出力され、repository-facing formal closureにはnon-decisional provenanceとして記録されています。
 
-## Production-only held-out diagnostic
+## Production-only held-out diagnostic （日本語の要点）
 
 workflow logの記録:
 
@@ -202,7 +202,7 @@ max orbit size = 4
 
 これらはproduction diagnosticのみです。mandatory independent-verification gateがcanonical resultとして成立しなかったため、formal candidate decisionには使用できません。
 
-## canonical formal closure
+## canonical formal closure （最終状態）
 
 - `results/STAGE_2_FORMAL_RESULT.json`
 - `STUDY_1_FINAL_REPORT.md`
@@ -234,7 +234,7 @@ mandatory complete independent verificationが成立せずcanonical formal artif
 4. complete canonical independent-verification / formal artifactが存在しないこと
 5. outcome後のsource repairやsame-evidence rerunを行っていないこと
 
-## Study-level canonical document
+## Study-level canonical document （日本語の要点）
 
 - `STUDY_1_PROTOCOL.md` — prospective protocol / unchanged historical contract
 - `STUDY_1_OVERVIEW.md` — current-facing overview
@@ -244,7 +244,7 @@ mandatory complete independent verificationが成立せずcanonical formal artif
 - `RESEARCH_LOG.md` — chronology
 - `REPRODUCIBILITY_INDEX.md` — 本索引
 
-## upstream closure anchor
+## upstream closure anchor （基準点）
 
 ```text
 PEOCR-STUDY1 = INCONCLUSIVE

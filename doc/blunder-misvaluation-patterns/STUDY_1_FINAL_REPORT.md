@@ -1,4 +1,10 @@
-# Blunder / Misvaluation Patterns Study 1 — Final Report
+# Blunder / Misvaluation Patterns Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+Stage 2で4候補をformal evaluationし、0件CONFIRMED、4件NOT-CONFIRMEDとなった。search-based decision lossの結果であり、game-theoretic blunderや人間の誤解を直接示すものではない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 更新日: 2026-08-23  
 Status: **STUDY 1 CLOSED / 4 FORMAL CANDIDATES EVALUATED / 0 CONFIRMED / 4 NOT-CONFIRMED**
@@ -24,7 +30,7 @@ TECHNICAL-INCONCLUSIVE = 0
 
 これは「4候補がgame-theoretically悪手ではない」という意味ではない。また、人間にとって錯覚しにくい、expert/traditional knowledgeに存在しない、教育価値がない、とも結論しない。
 
-## Study architecture
+## Study architecture （日本語の要点）
 
 ```text
 Stage 0 — technical / construct audit                 COMPLETE
@@ -35,7 +41,7 @@ Study 1                                                CLOSED
 
 Stage 1 supportはStage 2 confirmation evidenceとして再利用していない。
 
-## Stage 1 exploratory result
+## Stage 1 exploratory result （結果）
 
 Fresh Stage 1 corpus:
 
@@ -58,7 +64,7 @@ BMP-S1-C04
 
 これらはStage 1時点ではexploratory candidatesであり、confirmation claimはなかった。
 
-## Stage 2 formal population
+## Stage 2 formal population （Stageの記録）
 
 ```text
 games = 4096
@@ -79,7 +85,7 @@ ruleStateKey overlap = 0
 
 No replacement, seed extension, or alternate-root rescue was used.
 
-## Outcome-blind formal support
+## Outcome-blind formal support （結果）
 
 ```text
 BMP-S2-G01-NAMUA selected/measured roots = 1868
@@ -91,7 +97,7 @@ C01/C02/C03 share the same G01 support and exact candidate move. They differ onl
 
 All four candidates passed all preregistered estimability gates.
 
-## Independent measurement verification
+## Independent measurement verification （日本語の要点）
 
 ```text
 measurementHash = 6eb5da3219cdef80907e3f0b1053a1c113db9b97951b1d7c2487ccd0521681eb
@@ -103,7 +109,7 @@ stage1IdentityFirewallPassed = true
 passed = true
 ```
 
-## Frozen formal decision rule
+## Frozen formal decision rule （結論）
 
 Each candidate had two co-primary endpoints:
 
@@ -128,7 +134,7 @@ median normalized rank loss >= 0.50
 
 A candidate required all formal conditions to be `CONFIRMED`.
 
-## Candidate-level formal results
+## Candidate-level formal results （結果）
 
 | Candidate | Failure recurrence | D3-inferior recurrence | D3 TopSet | Median rank loss | Formal decision |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -137,7 +143,7 @@ A candidate required all formal conditions to be `CONFIRMED`.
 | `BMP-S2-C03` | 0.794968 | 0.464668 | 0.152034 | 0.500000 | **NOT-CONFIRMED** |
 | `BMP-S2-C04` | 0.627160 | 0.507407 | 0.193827 | 0.500000 | **NOT-CONFIRMED** |
 
-### C01
+### C01 （日本語の要点）
 
 The frozen response-envelope failure signature reproduced strongly:
 
@@ -157,7 +163,7 @@ floor 0.70 = FAIL
 
 Therefore `NOT-CONFIRMED`.
 
-### C02
+### C02 （日本語の要点）
 
 The immediate structural failure signature reproduced strongly:
 
@@ -169,7 +175,7 @@ floor 0.65 = PASS
 
 But the shared G01 D3-inferior recurrence remained 0.464668 and failed the D3 co-primary endpoint. Therefore `NOT-CONFIRMED`.
 
-### C03
+### C03 （日本語の要点）
 
 The immediate structural failure signature also reproduced strongly:
 
@@ -181,7 +187,7 @@ floor 0.65 = PASS
 
 Again, the shared G01 D3-inferior recurrence was 0.464668. Therefore `NOT-CONFIRMED`.
 
-### C04
+### C04 （日本語の要点）
 
 C04 showed:
 
@@ -192,7 +198,7 @@ D3-inferior recurrence       = 411 / 810 = 0.507407
 
 The failure-signature endpoint is statistically above the `p=0.50` null after Holm adjustment, but the preregistered absolute confirmation floor 0.65 is not met. The D3-inferior endpoint also fails both the 0.70 floor and the adjusted significance criterion. Therefore `NOT-CONFIRMED`.
 
-## Scientific interpretation
+## Scientific interpretation （解釈）
 
 The most important result is the separation between **structural failure recurrence** and **D3 search-based inferiority recurrence**.
 
@@ -202,7 +208,7 @@ C04 is weaker still: its structural failure recurrence itself falls below the ab
 
 Thus Stage 1's small exploratory support correctly remained exploratory; the larger fresh confirmation population did not sustain the combined confirmation rule.
 
-## What is not authorized
+## What is not authorized （日本語の要点）
 
 The result does not authorize claims that:
 
@@ -218,7 +224,7 @@ results generalize to different engines/search settings/populations
 
 D3 remains a frozen machine reference, not ground truth.
 
-## No-rescue closure
+## No-rescue closure （結論）
 
 No post-outcome change is authorized or performed:
 
@@ -239,7 +245,7 @@ manual override = false
 
 Zero confirmed candidates was an explicitly valid preregistered outcome.
 
-## Canonical identities
+## Canonical identities （日本語の要点）
 
 ```text
 stageId = BMP-S2-FORMAL-2026-08-22-v1
@@ -256,7 +262,7 @@ Canonical compact record:
 
 - [`results/STAGE_2_FORMAL_RESULT.json`](results/STAGE_2_FORMAL_RESULT.json)
 
-## Final Study 1 state
+## Final Study 1 state （結論）
 
 ```text
 Stage 1 exploratory candidates = 4

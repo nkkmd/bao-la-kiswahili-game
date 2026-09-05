@@ -1,4 +1,4 @@
-# Position Complexity / Difficulty Study 1 — Overview
+# Position Complexity / Difficulty Study 1 — Overview （概要）
 
 更新日: 2026-08-14  
 Status: **CLOSED / FORMAL INCONCLUSIVE**
@@ -47,7 +47,7 @@ search semantics = exact-full-window-root-candidates/phase2-value-semantics/v1
 
 既存AIのrootScoreとのcross-check、非破壊性、determinism、replay validityなどのtechnical gatesをPASSした。
 
-## Stage 1 — exploratory design development
+## Stage 1 — exploratory design development （方法と設計）
 
 Fresh exploratory corpus:
 
@@ -82,7 +82,7 @@ legalMoveCount vs D3 nodes: moderately strong positive association
 
 が観測されたが、Stage 1は探索専用でconfirmationには使用していない。
 
-## Stage 2 — fresh formal confirmation
+## Stage 2 — fresh formal confirmation （Stageの記録）
 
 Fresh formal corpus:
 
@@ -106,7 +106,7 @@ ordinary-domain D2 margins = 630
 
 サンプル数・phase coverage・event countのformal gatesはすべて十分に満たした。
 
-## Primary PCX-H1
+## Primary PCX-H1 （日本語の要点）
 
 Formal question:
 
@@ -139,7 +139,7 @@ PCX-H1 = INCONCLUSIVE
 
 計算上のLRTは `p = 0.0866762390` だったが、convergence gate failure後にこのp値だけを使って`not-confirmed`へ変更することはしない。
 
-## Secondary PCX-H2
+## Secondary PCX-H2 （日本語の要点）
 
 D2 ordinary-domain best-second gapについては計算上強いincremental signalが得られたが、H2はH1 confirmation後だけconfirmatory labelを持てるhierarchical designだった。
 

@@ -25,7 +25,7 @@
 
 次のscientific actionはStage 0 technical implementation / validationです。Stage 0 failureを理由にformal Study contractを緩和してはいけません。material contract changeが必要な場合はscientific generation前に新しいprospective versionを必要とします。
 
-## 2026-08-27 — Stage 1 complete development run
+## 2026-08-27 — Stage 1 complete development run （実行記録）
 
 - 最初のauthorized run `32971272256`は120-minute administrative Actions ceilingだけを理由として1536/2048で停止。partial artifactはprovenance用にのみ保持
 - scientific source hashやcontract elementを変更せずexecution ceilingだけを360 minutesへ変更
@@ -41,7 +41,7 @@
 - frozen PAVA mapping SHA-256 = `b7e99d4e3237be65309b2359d33c3fe650343f130bad6780eb10152922278eac`
 - Stage 2は独自technical smokeとexact authorization freezeが完了するまで未承認
 
-## 2026-08-27 — Stage 2 technical smoke
+## 2026-08-27 — Stage 2 technical smoke （技術検証）
 
 - formal outcome前にStage 2 production、independent verifier、formal evaluator implementationを完了
 - Stage 1 reference universe manifestを固定: `5138525eb554639a68c3234f567c17e04a7c86686554917039ce9918d9938063`
@@ -51,7 +51,7 @@
 - Stage 2 scientific seedは未使用、formal inferenceも未実施
 - explicit source-bound authorizationまでStage 2 scientific generationは未承認
 
-## 2026-08-27 — Stage 2 formal replication / closure
+## 2026-08-27 — Stage 2 formal replication / closure （最終状態）
 
 - source-bound formal authorization commit `5d1b4a40ef95ac639787aa0abf040a455c3c2995`
 - formal workflow run `33038132423`が成功
@@ -68,7 +68,7 @@
 - rescue / extension / replacement / refit / threshold relaxationは未実施
 - Study scientific closure完了
 
-## 2026-08-27 — Repository integration
+## 2026-08-27 — Repository integration （リポジトリ状態）
 
 - final cross-document / CI audit完了
 - G2-01 calibration replication contract: PASS

@@ -1,11 +1,11 @@
-# EBRWS-STUDY1 — Study 1 Final Report
+# EBRWS-STUDY1 — Study 1最終報告
 
-## 1. Formal identity
+## 1. formal identity（研究識別情報）
 
 - Program: Research Generation 3
 - Agenda position: `G3-02`
 - Study ID: `EBRWS-STUDY1`
-- English title: **Effective Branching and Reply-Width Structure Study 1 — Prospective validation of reproducible multi-ply branching and reply-width profiles as bounded RAW local game-tree position characteristics in Bao**
+- 英語題目: **Effective Branching and Reply-Width Structure Study 1 — Prospective validation of reproducible multi-ply branching and reply-width profiles as bounded RAW local game-tree position characteristics in Bao**
 - 日本語題目: **Baoにおけるeffective branching / reply-width構造のprospective検証 — bounded RAW局所ゲーム木におけるmulti-ply branching・reply-width profileが再現可能な局面特性として成立する範囲の検証**
 - baseline remote `main`: `ca6a1e4a9b41d79d873fa71385972e402ffa5197`
 - research branch: `research/g3-02-effective-branching-reply-width-structure`
@@ -18,13 +18,13 @@ Stage 2:
 
 `NOT-AUTHORIZED-NOT-EXECUTED`
 
-## 2. Scientific question
+## 2. 科学的な問い
 
 本Studyは、単純なroot legal-move countだけでは表現できない数plyのbranching / reply-width profileが、LGTGMIVでformal eligibilityを得たbounded RAW-only depth-5 measurement instrumentの範囲で、prospectively定義した再現可能な局面特性として成立するかを検証するために開始した。
 
 G3-01の`TECHNICAL-INVALID` resultを救済せず、別のmeasurement prerequisite `LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`を経た後に、独立authorization reviewを`AUTHORIZED`として開始した。
 
-## 3. Frozen representation and measurement boundary
+## 3. 固定済みrepresentationとmeasurement boundary
 
 Scientific state identityはRAW-only:
 
@@ -45,7 +45,7 @@ Secondary contextual dependencies:
 
 `effective branching`を新しいvalidated instrumentとして扱わず、eligible exact primitivesからprospectively固定したexact-rational derived quantityとして定義した。
 
-## 4. Frozen primary endpoints
+## 4. 固定済みprimary endpoint
 
 Primary construct systemsは2つだけに固定した。
 
@@ -62,9 +62,9 @@ Floating pointを使用せず、gateは:
 
 Stage 1はphase各12 rootsのため8/12以上、Stage 2は各18 rootsのため12/18以上を必要とする。
 
-## 5. Population and firewall
+## 5. populationとfirewall
 
-### Stage 1
+### Stage 1のpopulation
 
 ```text
 seed = 31210001..31210192
@@ -73,7 +73,7 @@ relative depth = 5
 evidence = FRESH-DEVELOPMENT
 ```
 
-### Stage 2
+### Stage 2のpopulation
 
 ```text
 seed = 31220001..31220288
@@ -86,7 +86,7 @@ Root selectionはgeometry-blind / outcome-blindとし、G3-01、LGTGMIV Stage 1�
 
 Stage 2はさらにG3-02 Stage 1 identitiesをrejectする予定だったが、Stage 2は未承認・未実行である。
 
-## 6. Stage 0 result
+## 6. Stage 0の結果
 
 `EBRWS-S0-TECHNICAL-2026-09-01-v1`はsynthetic primitive fixturesだけを用い、fresh scientific seedを消費しなかった。
 
@@ -100,7 +100,7 @@ Production / independent stage scientific core:
 
 exact-rational arithmetic、class boundary、2/3 gate、production/independent endpoint agreement、order invariance、telemetry separation、static independenceが全てPASSした。
 
-## 7. Stage 1 pre-execution verification
+## 7. Stage 1のpre-execution verification
 
 Stage 1は別authorizationで**exactly one scientific execution**を許可した。
 
@@ -109,13 +109,13 @@ Tooling smoke:
 - GitHub Actions run `33525232642`
 - job `99914259137`
 - conclusion `success`
-- fresh scientific seed accessed = false
-- fresh scientific root generated = false
-- protected depth-10 access = false
+- fresh scientific seedへアクセスしていない
+- fresh scientific rootを生成していない
+- protected depth-10へアクセスしていない
 
 Production / independent G3-02 source hashesも別値であり、独立実装境界を維持していた。
 
-## 8. Authorized Stage 1 computation
+## 8. authorizeされたStage 1 computation
 
 Authorized one-shot:
 
@@ -135,7 +135,7 @@ independentStageScientificCoreSha256 = 4203300a9fc3648fd41fe05aaa6c555e6afa4c865
 candidateSetSha256 = 4f18c50b5fdab6452d9f3ccc9ae97f2277dfc94ba9e210a7e6c36b919d6155f6
 ```
 
-Runner-local diagnostic candidate summary:
+runner内だけに残った診断用candidateの要約:
 
 | Construct | Phase | Class | Count |
 | --- | --- | --- | ---: |
@@ -146,7 +146,7 @@ Runner-local diagnostic candidate summary:
 
 この表はformal positive scientific resultではなく、後述のtechnical-invalid incidentsに付随するdiagnostic provenanceである。
 
-## 9. Repository materialization failure
+## 9. repository materialization failure （概要）
 
 Runnerはcanonical files:
 
@@ -167,7 +167,7 @@ telemetryFileSha256 = f13a71a7a219fc1978667c1b39120df709b163fd5250962e9f19310ca9
 
 Job終了後、`709bc393`はGitHub repository objectとして回収不能であることを確認した。このため、full canonical Stage 1 evidence objectをrepositoryへimmutable materializeできなかった。
 
-## 10. Fail-closed decision
+## 10. fail-closed decision （最終状態）
 
 Frozen protocol §16はStage 1 global gatesにtechnical-integrity violationがないことを要求し、Stage 1終了時にpromoted primary candidate setをimmutable artifactとしてfreezeすることを要求する。
 
@@ -187,11 +187,11 @@ Formal Study disposition:
 
 `TECHNICAL-INVALID`
 
-Formal promoted candidate set:
+formal stageへ昇格したcandidate set:
 
 `[]`
 
-## 11. Stage 2 disposition
+## 11. Stage 2 disposition （最終状態）
 
 Frozen Stage 2 authorization prerequisiteは、Stage 1 global mandatory gates PASSに加えて、promoted candidate setのimmutable freezeを要求する。
 
@@ -203,7 +203,7 @@ Stage 2:
 
 Stage 2 seed `31220001..31220288`は未消費のまま保持する。
 
-## 12. Protected evidence
+## 12. protected evidence （証拠の状態）
 
 G3-11用standard initial RAW-root complete exact depth-10 holdoutはStudy全期間を通して:
 
@@ -213,7 +213,7 @@ G3-11用standard initial RAW-root complete exact depth-10 holdoutはStudy全期�
 
 G3-02はdepth-10 complete enumerationを生成・readせず、G2-12 estimatorをdepth-10 truthとして使用しなかった。
 
-## 13. Scientific interpretation
+## 13. 科学的解釈
 
 本Studyはformal positive conclusionを持たない。
 
@@ -223,22 +223,22 @@ Unauthorized duplicate runで同じscientific core / candidate-set / scientific-
 
 また、たとえ将来別Studyで同様のgeometry patternがformalに確認されても、それはsearch difficulty、best move、game-theoretic forcing、win/value、human difficultyを意味しない。
 
-## 14. Immutable boundaries after closure
+## 14. closure後のimmutable boundary
 
-- G3-01 remains `CLOSED / TECHNICAL-INVALID`, eligible families `[]`.
-- LGTGMIV remains `CLOSED / FORMAL-ELIGIBLE-ALL`.
-- EBRWS-STUDY1 has no valid or authorized same-evidence rerun / repair path.
-- The unintended duplicate execution is invalid and cannot alter or rescue the Study.
-- Stage 1 diagnostic candidates are not formal candidates.
-- Stage 2 remains unexecuted.
-- RAW identity remains authoritative.
-- validated transform set remains `[]`.
-- protected depth-10 holdout remains sealed.
-- historical `doc/research-generation-3/PROGRAM_PLAN.md` is not rewritten.
+- G3-01は`CLOSED / TECHNICAL-INVALID`、eligible family `[]`のままである。
+- LGTGMIVは`CLOSED / FORMAL-ELIGIBLE-ALL`を維持する。
+- EBRWS-STUDY1には、有効またはauthorizeされたsame-evidence rerun / repair pathがない。
+- 意図しないduplicate executionはinvalidであり、Studyを変更またはrescueできない。
+- Stage 1 diagnostic candidateはformal candidateではない。
+- Stage 2は未実行のままである。
+- RAW identityを引き続き正本とする。
+- validated transform setは`[]`のままである。
+- protected depth-10 holdoutはsealedのままである。
+- historical `doc/research-generation-3/PROGRAM_PLAN.md`は書き換えない。
 
-Any future attempt to test the scientific question again must be a new prospective Study or explicitly new version with fresh evidence; it must not change the formal decision of `EBRWS-STUDY1`.
+将来このscientific questionを再検証する場合は、fresh evidenceを用いる新しいprospective Studyまたは明示的なnew versionでなければならない。`EBRWS-STUDY1`のformal decisionを変更してはならない。
 
-## 15. Final Actions-history audit — unintended duplicate execution
+## 15. 最終Actions-history audit — 意図しないduplicate execution
 
 Closure後のGitHub Actions履歴監査で、Stage 1 scientific runnerが合計2回実行されていたことを確認した。prospective authorizationはexactly one executionだったため、これは追加のtechnical-integrity violationである。
 
@@ -262,7 +262,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 Stage 1 execution workflowはclosure後にdisabledとし、第三の実行は許可しない。protected depth-10 holdoutは両runとも生成・readしておらず、`SEALED / NOT GENERATED / NOT READ`のままである。
 
-## 16. Research workflow completion and integration boundary
+## 16. research workflow完了とintegration boundary
 
 2026-09-02時点で、G3-02のscientific execution、fail-closed decision、Actions-history audit、Study-level closure documentation、Research Generation 3 current-facing synchronization、root README / research index / future agenda synchronizationはresearch branch上で完了した。
 
@@ -276,7 +276,7 @@ G3-03 automatic start = NOT AUTHORIZED
 
 このbranch-only completionはformal scientific decisionを変更しない。`main`への統合は別の明示的指示があるまで実施しない。
 
-## 17. Main integration completion
+## 17. `main` integrationの完了
 
 2026-09-02、final consistency audit済みresearch branch `research/g3-02-effective-branching-reply-width-structure`をPR #92で`main`へ通常mergeした。merge commitは`b41c7eda74dd1002e98e4d82714fadb987d1f1e1`。squash / rebaseは使用せず、prospective audit historyを保持した。
 

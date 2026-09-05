@@ -1,4 +1,4 @@
-# Position Evaluation / Win-Rate Calibration Study 1 — Overview
+# Position Evaluation / Win-Rate Calibration Study 1 — Overview （概要）
 
 更新日: 2026-08-20  
 Status: **CLOSED / FORMAL INCONCLUSIVE**
@@ -28,7 +28,7 @@ Primary scoreはactor-perspectiveのstatic `bao` evaluationである。
 
 Stage 1とStage 2はfresh seed blockを使い、Stage 1の結果をStage 2 confirmation evidenceとして再利用しない設計とした。
 
-## Stage 1 — exploratory calibration development
+## Stage 1 — exploratory calibration development （Stageの記録）
 
 Fresh exploratory corpus:
 
@@ -68,7 +68,7 @@ Stage 1 status = MODEL-SELECTED-EXPLORATORY
 
 となった。
 
-## Stage 2 — fresh formal evaluation
+## Stage 2 — fresh formal evaluation （Stageの記録）
 
 Fresh formal corpus:
 
@@ -105,7 +105,7 @@ OVERALL FORMAL DECISION = INCONCLUSIVE
 
 これはcalibrationが失敗したことを意味しない。formal questionを判定するための凍結済みminimum-support条件を満たせなかったため、確認も棄却もできなかったという結果である。
 
-## Descriptive performance
+## Descriptive performance （日本語の要点）
 
 Formal gate failure後の値は記述的参考のみである。
 

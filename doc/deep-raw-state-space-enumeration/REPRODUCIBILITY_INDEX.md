@@ -3,7 +3,7 @@
 更新日: 2026-08-28  
 状態: **COMPLETE / EXACT WITHIN FROZEN DEPTH-9 DOMAIN / MAIN INTEGRATED**
 
-## Study anchor
+## Study anchor （基準点）
 
 ```text
 Program = G2-05
@@ -14,7 +14,7 @@ Branch = research/g2-05-deep-raw-state-space-enumeration
 Formal decision = EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN
 ```
 
-## authoritative representation
+## authoritative representation （表現）
 
 ```text
 RAW identity include = pits,reserve,houseOwned,player,phase,winner,pending
@@ -32,7 +32,7 @@ Exact move identity fields:
 type,phase,row,index,direction,side,houseChoice,houseTwo
 ```
 
-## primary Study files
+## primary Study files （日本語の要点）
 
 - `STUDY_1_PROTOCOL.md`
 - `STUDY_1_OVERVIEW.md`
@@ -42,7 +42,7 @@ type,phase,row,index,direction,side,houseChoice,houseTwo
 - `RESEARCH_LOG.md`
 - `results/STUDY_1_FINAL_RESULT.json`
 
-## Stage 0
+## Stage 0 （Stageの記録）
 
 ```text
 Stage ID = DRSSE-S0-TECHNICAL-2026-08-28-v1
@@ -74,7 +74,7 @@ Relevant checkpoint:
 
 Stage 0はtechnical-onlyでありG2-05 scientific evidenceではありません。
 
-## Stage 1
+## Stage 1 （Stageの記録）
 
 ```text
 Stage ID = DRSSE-S1-DEVELOPMENT-2026-08-28-v1
@@ -104,7 +104,7 @@ Implementation:
 
 Stage 1 row / rootはformal Stage 2 evidenceとして明示的に再利用禁止です。
 
-## Stage 2 prospective source freeze
+## Stage 2 prospective source freeze （固定した条件）
 
 Formal spec:
 
@@ -134,7 +134,7 @@ Checkpoint:
 
 - `checkpoints/2026-08-28-stage2-formal-source-freeze.md`
 
-## Stage 2 canonical execution
+## Stage 2 canonical execution （実行記録）
 
 ```text
 Stage ID = DRSSE-S2-FORMAL-2026-08-28-v1
@@ -173,7 +173,7 @@ cumulativeGlobalRawGraphEdgeSetSha256 = da836a6a0b2e18c155f59de7617b4e72ab629554
 cumulativeDepthLabelledEdgeSetSha256 = 3453b457aee547c645be0ec3a3a5550656e9fcaa1917be13d5ac0bb0e7b69aed
 ```
 
-## exact endpoint replay target
+## exact endpoint replay target （日本語の要点）
 
 frozen formal domainの正しいreproductionでは、次を再現する必要があります。
 
@@ -190,7 +190,7 @@ tree / cumulative RAW-state ratio = 1.328494900687362
 
 あわせて上記exact set hashも一致する必要があります。
 
-## independent verification contract
+## independent verification contract （独立検証）
 
 independent pathはproduction enumeratorやproduction serializerをimportしません。RAW representation serialization / keyingとfull-domain enumerationを独立実装します。ただしBao legal moveとstate transition semanticsについては、両pathとも同じrepository rule engineを必然的に使用します。
 
@@ -201,7 +201,7 @@ Formal exactnessには次の両方を要求しました。
 
 canonical Stage 2 executionでは両方PASSしました。
 
-## PR review disposition
+## PR review disposition （日本語の要点）
 
 PR #71で確認された2つのlatent implementation concernは次に保存しています。
 
@@ -211,7 +211,7 @@ accepted runはtarget-complete pathでfull independent depth-9 re-enumerationを
 
 outcome確認後にfrozen Stage 2 source blobを変更・再実行していません。
 
-## main integration provenance
+## main integration provenance （記録）
 
 ```text
 PR = #71
@@ -236,7 +236,7 @@ Post-merge integration checkpoint:
 
 - `checkpoints/2026-08-28-main-integration.md`
 
-## interpretation boundary
+## interpretation boundary （解釈上の境界）
 
 これらの値を再現して確立できるのはfrozen standard-root depth-9 RAW domainだけです。
 

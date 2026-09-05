@@ -16,7 +16,7 @@ G2-11 = NOT-AUTHORIZED
 
 本Studyはclosedである。G2-10とG2-11の間のdependency-resolution prerequisiteとして実施され、新しいG2-xx labelは追加していない。
 
-## Stage 1 formal blocking reason
+## Stage 1 formal blocking reason （Stageの記録）
 
 Stage 1 scientific runは技術的にvalidで、production / independent full exact、population quota、opening diversity、resource gateをPASSした。しかしprospectively fixed readiness floor:
 
@@ -35,7 +35,7 @@ observed nonzero-MAD features = 15
 29610001..29618192 = Stage 2 RESERVED_UNCONSUMED / NOT AUTHORIZED
 ```
 
-## scientific run provenance
+## scientific run provenance （記録）
 
 ```text
 source freeze = 41124069f89f0706cf943e18688c96a8c2db35d7
@@ -46,7 +46,7 @@ artifact = 9731444105
 artifact ZIP SHA-256 = c418bca917723eb9c07035c323431972ac541b4b58e286820657b0d1c7e40d7a
 ```
 
-## interpretation boundary
+## interpretation boundary （解釈上の境界）
 
 本結果はhuman-perceived regime、human difficulty、game-theoretic truth、public Bao AI qualityを検証していない。G2-11のlong-horizon outcomeも検査していない。G2-10 closureも変更しない。
 

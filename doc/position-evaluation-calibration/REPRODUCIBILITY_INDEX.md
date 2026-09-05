@@ -1,16 +1,22 @@
-# Position Evaluation / Win-Rate Calibration Study 1 — Reproducibility Index
+# Position Evaluation / Win-Rate Calibration Study 1 — Reproducibility Index （再現性）
+
+## 日本語での要点
+
+formal decisionはINCONCLUSIVEで、校正modelをformalに確認したとは扱わない。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 更新日: 2026-08-20  
 Status: **CLOSED / FORMAL INCONCLUSIVE**
 
-## Repository / branch identity
+## Repository / branch identity （識別と表現）
 
 ```text
 baseline main = 8672ba4fafb896124df0c4728d41f7c3a6ed5056
 research branch = research/position-evaluation-winrate-calibration
 ```
 
-## Stage 1
+## Stage 1 （Stageの記録）
 
 ```text
 stageId = PEC-S1-EXPLORATORY-2026-08-18-v1
@@ -46,7 +52,7 @@ selected family = phase-stratified-isotonic
 fullFit canonical JSON SHA-256 = 94bad0adc157503a729709d138b973f99dd213ad7bd926ad6d525e207060e343
 ```
 
-## Stage 2
+## Stage 2 （Stageの記録）
 
 ```text
 stageId = PEC-S2-FORMAL-2026-08-20-v1
@@ -86,7 +92,7 @@ canonical local result SHA-256 = 94602023bdf8e9086703cbff44a68a9a070ada85c0bdbb2
 formalDecision = INCONCLUSIVE
 ```
 
-## Canonical machine-readable repository summaries
+## Canonical machine-readable repository summaries （リポジトリ状態）
 
 ```text
 results/STAGE_1_READINESS_AUDIT.json
@@ -95,7 +101,7 @@ results/STAGE_2_READINESS_AUDIT.json
 results/STAGE_2_FORMAL_RESULT_SUMMARY.json
 ```
 
-## Core preregistration / authorization records
+## Core preregistration / authorization records （日本語の要点）
 
 ```text
 preregistration/STAGE_0_DESIGN_FREEZE.json
@@ -106,7 +112,7 @@ preregistration/STAGE_2_FORMAL_SPEC.json
 preregistration/STAGE_2_FORMAL_AUTHORIZATION.json
 ```
 
-## Core tooling
+## Core tooling （日本語の要点）
 
 ```text
 tools/experiments/lib/position-evaluation-calibration-common.js
@@ -122,7 +128,7 @@ tools/experiments/verify-position-evaluation-calibration-stage2.js
 tools/experiments/evaluate-position-evaluation-calibration-stage2.js
 ```
 
-## Contract tests
+## Contract tests （日本語の要点）
 
 ```text
 test/position-evaluation-calibration-stage0.test.js
@@ -130,6 +136,6 @@ test/position-evaluation-calibration-stage1-analysis.test.js
 test/position-evaluation-calibration-stage2.test.js
 ```
 
-## Final interpretation boundary
+## Final interpretation boundary （結論）
 
 The archived Stage 2 result is `INCONCLUSIVE` because frozen estimability gates failed. Reproduction should reproduce that gate state and decision; descriptive performance values are not a substitute for the formal decision.

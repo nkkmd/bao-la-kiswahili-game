@@ -1,6 +1,6 @@
 # SRDR-STUDY1 — 研究ログ
 
-## 2026-08-27 — Study-start audit
+## 2026-08-27 — Study-start audit （日本語の要点）
 
 - remote `main`を再取得し、`db6980bffb7e6853751914da628db8936c76d81e`がhandoffで示されたpost-G2-01 provenance anchorとexactに一致することを確認
 - open pull request 0を確認
@@ -9,7 +9,7 @@
 - `PEOCR-STUDY1 = INCONCLUSIVE`とstrict no-rescue boundaryを再構築
 - Position Complexity / Difficulty Study 1を`INCONCLUSIVE`、PCX-H1=`INCONCLUSIVE`、PCX-H2=`NOT-CONFIRMATORILY-EVALUATED`として再確認
 
-## 2026-08-27 — Search implementation audit
+## 2026-08-27 — Search implementation audit （日本語の要点）
 
 現在の`public/ai.js::analyzeMove()`は`maxDepth`、`timeLimitMs`、quiescence depth / order control、TT / history ordering control、aspiration setting、stable-best / adaptive controlをsupportしています。
 
@@ -17,7 +17,7 @@
 
 Dedicated deterministic node-budget semanticsとreproducible PV reconstructionは、既知のscientific capabilityと仮定せずStage 0 technical feasibility questionとして扱いました。
 
-## 2026-08-27 — Prospective Study freeze
+## 2026-08-27 — Prospective Study freeze （固定した条件）
 
 固定内容:
 
@@ -33,7 +33,7 @@ Stage 2 = SRDR-S2-FORMAL-2026-08-27-v1
 
 このfreeze時点ではG2-02 scientific outcomeは存在していませんでした。
 
-## 2026-08-27 — Stage 0 technical validation
+## 2026-08-27 — Stage 0 technical validation （技術検証）
 
 - technical execution前にStage 0 source hashを固定
 - controlled search instrumentがfrozen fixture上で既存exact-root diagnosticと一致
@@ -42,7 +42,7 @@ Stage 2 = SRDR-S2-FORMAL-2026-08-27-v1
 - complete-depth scoreが同じでもmove orderingによりnode consumptionが変わることを確認したため、scientific move orderingは固定必須とした
 - Stage 0 decision: `PASS`
 
-## 2026-08-27 — Stage 1 prospective freeze / authorization
+## 2026-08-27 — Stage 1 prospective freeze / authorization （承認状態）
 
 scientific generation前に固定:
 
@@ -62,7 +62,7 @@ final preauthorization / source-freeze commitは`753425610573354ae6394ae414666c3
 
 Stage 1 authorizationは`eed7c6adbc234f5c3bf95b6bcd35b67d68b0eada`でcommitし、run `33067208005`がreserved Stage 1 seed blockをexactにconsumeしました。
 
-## 2026-08-27 — Stage 1 generation / independent-verifier fail-closed event
+## 2026-08-27 — Stage 1 generation / independent-verifier fail-closed event （Stageの記録）
 
 Stage 1 production完了:
 
@@ -87,7 +87,7 @@ independent canonical measurement hash = 76225f2d76176ab13bfa34566874b13e14b97c5
 
 この時点ではreadiness analysisをskipしました。
 
-## 2026-08-28 — Stage 1 verification serialization defect investigation
+## 2026-08-28 — Stage 1 verification serialization defect investigation （Stageの記録）
 
 original Stage 1 artifactを保持したまま、新しいscientific trajectory生成やscientific state remeasurementを行わず調査しました。
 
@@ -108,7 +108,7 @@ Correction ID:
 
 `SRDR-S1-VERIFICATION-HASH-CORRECTION-2026-08-28-v1`
 
-## 2026-08-28 — Stage 1 corrected verification / development profile
+## 2026-08-28 — Stage 1 corrected verification / development profile （Stageの記録）
 
 Correction workflow run `33123555267`はstrict forensic preconditionをすべてPASSした後、既にfrozenなStage 1 analyzerを適用しました。
 
@@ -132,7 +132,7 @@ development profile hash = 665c284efeb0a9531ea49133ba313c0ed76cb09d888cbbe9324e2
 
 Stage 1 rowはnon-confirmatory development evidenceのままで、Stage 2 formal rowとして使用禁止です。
 
-## 2026-08-28 — Stage 2 formal rule freeze
+## 2026-08-28 — Stage 2 formal rule freeze （固定した条件）
 
 Stage 2 scientific outcomeより前に次を固定しました。
 
@@ -165,7 +165,7 @@ formal gateをすべてPASSした後、3条件すべて成立で`CONFIRMED`で�
 
 Stage 1 undefined-field splitの再発を防ぐため、Stage 2 measurement hashingではstable serialization前にmeasurement coreをJSON roundtripすることもprospectiveに固定しました。
 
-## 2026-08-28 — Stage 2 preauthorization / explicit authorization
+## 2026-08-28 — Stage 2 preauthorization / explicit authorization （承認状態）
 
 Stage 2 formal workflow追加後、preauthorization workflow trigger coverageに新しいStage 2 workflow fileが含まれていないことを発見しました。
 
@@ -192,7 +192,7 @@ Formal workflow run `33124538584`はexplicit authorization gateをPASSし、immu
 
 この時点ではformal resultはまだ宣言しておらず、Stage 2 outcomeに応じたrescue modificationも承認していません。
 
-## 2026-08-28 — Stage 1 verification correction
+## 2026-08-28 — Stage 1 verification correction （Stageの記録）
 
 - new scientific seedをconsumeせずoriginal Stage 1 artifactをrecover
 - 1280/1280 replay、1018/1018 selected-state measurements、row mismatch 0を確認
@@ -200,7 +200,7 @@ Formal workflow run `33124538584`はexplicit authorization gateをPASSし、immu
 - representation-only correctionを実行。scientific row、grid、seed、criterion変更なし
 - Stage 1 decisionを`PROFILE-FROZEN-DEVELOPMENT`へ固定
 
-## 2026-08-28 — Stage 2 formal closure
+## 2026-08-28 — Stage 2 formal closure （最終状態）
 
 - Source-freeze commit: `e176cafc15d2dde7b8767de6961959bb7ee9bb7b`
 - Explicit authorization commit: `bec87d54540c96c24353f2eeadc25338c53e54eb`
@@ -212,7 +212,7 @@ Formal workflow run `33124538584`はexplicit authorization gateをPASSし、immu
 - Formal decision=`INCONCLUSIVE`; `primaryFormalCriterion = null`
 - rescue、extension、replacement、threshold relaxation未実施
 
-## 2026-08-28 — Repository closure / main integration
+## 2026-08-28 — Repository closure / main integration （最終状態）
 
 - deterministic closure finalizationがimmutable Stage 2 artifactをvalidateし、canonical compact result recordをmaterialize
 - root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、Study overview / final report / status / decision register / reproducibility indexをcanonical resultと照合

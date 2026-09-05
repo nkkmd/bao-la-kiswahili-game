@@ -56,7 +56,7 @@ RCPR Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 PCEM grammarの拡張、near-miss promotion、threshold relaxation、favorable subgroup、opponent-policy substitution、RCPR consumed blockの救済はいずれも行っていない。
 
-## RAW state identity
+## RAW state identity （識別情報）
 
 authoritative state identityはRAW-onlyを維持した。
 
@@ -166,7 +166,7 @@ artifact ZIP SHA256 = cf80f4b24ef9cf8996bcaa09ea4569c2030daa9640eacc0a9e864f76a3
 
 このgate成功時点で`28710001..28713072`は永久にCONSUMEDとなった。事前のexecution addendumは、gate後にproduction、independent replay、artifact upload、final comparisonのいずれが失敗してもblockを未消費へ戻さないことを明記している。
 
-## Stage 1 — production
+## Stage 1 — production （Stageの記録）
 
 production job:
 

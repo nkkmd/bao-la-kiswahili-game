@@ -1,4 +1,10 @@
-# Practical Comeback / Error-Inducing Move Study 1 — Final Report
+# Practical Comeback / Error-Inducing Move Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+Stage 1はEXPLORATORY-ONLYとして完了し、55 candidate auditsのうちpromotion 0件、Stage 2はNOT-AUTHORIZED-NOT-EXECUTEDである。勝負手や人間へのerror inductionを確認・否定した結果ではない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 更新日: 2026-08-25  
 Study ID: `PCEM-STUDY1`  
@@ -49,7 +55,7 @@ F. move optimality gap
 
 特に、reference best moveと、frozen imperfect opponentに対して実現するbounded comeback frequencyは別の量として扱った。
 
-## 4. Authoritative state identity
+## 4. Authoritative state identity （識別と表現）
 
 下流state identityはRAW-ONLYとし、次の7 fieldsのみをidentityに含めた。
 
@@ -73,7 +79,7 @@ sum(pits) + sum(reserve) + sum(pending) = 64
 
 Symmetry reduction、seat swap、reflection canonicalization、quotient identity、transform-based deduplicationは使用していない。
 
-## 5. Stage 0
+## 5. Stage 0 （Stageの記録）
 
 Stage 0はtechnical-only feasibility validationとして実行した。
 
@@ -90,7 +96,7 @@ independent verifier gates = 8 / 8 PASS
 
 Stage 0はrepresentation、exact legal root move、first reply enumeration、D2/D3 reference search、seeded imperfect policy、asymmetric continuation、CRN binding、outcome accounting、independent verifier feasibilityを技術的に確認しただけであり、scientific effect/candidate evidenceとしては使用していない。
 
-## 6. Stage 1 frozen design
+## 6. Stage 1 frozen design （方法と設計）
 
 Stage 1は`PCEM-S1-EXPLORATORY-2026-08-25-v1`としてoutcome inspection前に固定した。
 
@@ -115,7 +121,7 @@ manualPromotionAllowed = false
 
 Root candidateは各trajectory内でassigned phaseにおけるhash rankによってreference score inspection前に1局面だけ選び、その後D3 `bestScore < 0`を満たす場合のみdisadvantaged root poolへ入れた。reference failure後のtrajectory内replacementは禁止した。
 
-## 7. Stage 1 evidence accounting
+## 7. Stage 1 evidence accounting （Stageの記録）
 
 Canonical run:
 
@@ -161,7 +167,7 @@ totalContinuationRows = 18105
 primaryAdministrativeHorizonExhaustions = 2
 ```
 
-## 8. Independent verification
+## 8. Independent verification （日本語の要点）
 
 Independent verifierはproduction PCEM measurement coreをimportせず、source generation、root selection、RAW identity、measurement、discoveryを再計算した。
 
@@ -201,7 +207,7 @@ Discovery hash:
 3cd0df252036aa5794a7699b21d833e1f68b854cb8b5ec25ec59d65a314b81e8
 ```
 
-## 9. Candidate promotion result
+## 9. Candidate promotion result （結果）
 
 55 candidate definitions were audited under the frozen `PCEM-T1..T8` grammar. None passed all promotion gates.
 
@@ -234,7 +240,7 @@ minimumPooledBoundedComebackDifferenceErrorMinusDefense: 35 / 55
 
 一部candidateではconditional error/dependence metric自体は大きかった。しかしsupport・diversity・primary comeback-difference requirementsを同時に満たしていないため、post-outcomeに「near miss」「promising class」としてpromotionすることはしない。
 
-## 10. Scientific interpretation
+## 10. Scientific interpretation （解釈）
 
 本Studyから許可される解釈は限定的である。
 
@@ -244,7 +250,7 @@ minimumPooledBoundedComebackDifferenceErrorMinusDefense: 35 / 55
 
 したがって、PCEM-STUDY1は「実用的勝負手クラスを確認した」とは結論しない。
 
-## 11. Unauthorized interpretations
+## 11. Unauthorized interpretations （解釈）
 
 本Studyは以下を示さない。
 
@@ -257,7 +263,7 @@ minimumPooledBoundedComebackDifferenceErrorMinusDefense: 35 / 55
 - expert/traditional recognition as a Bao winning try;
 - existence/nonexistence of practical comeback structures outside the frozen population, policies, horizons, grammar, and support rules.
 
-## 12. Stage 2 disposition
+## 12. Stage 2 disposition （Stageの記録）
 
 Frozen promotion resultが0件なので、Stage 2は実行しない。
 
@@ -276,7 +282,7 @@ reserved seeds 23300001..23306144 consumed = false
 - replacement of the frozen imperfect-opponent policy to obtain favorable results;
 - reuse of Stage 1 rows as Stage 2 formal evidence.
 
-## 13. Final study state
+## 13. Final study state （結論）
 
 ```text
 PCEM-STUDY1 = COMPLETE

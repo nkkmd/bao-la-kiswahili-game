@@ -1,9 +1,15 @@
-# Namua→Mtaji Strategic Temporal Transition — Study 1 Final Report
+# Namua→Mtaji Strategic Temporal Transition — Study 1 Final Report （結論）
+
+## 日本語での結論と読み方
+
+formal decisionはNOT-CONFIRMEDである。first-Mtaji morphology associationの事前固定条件を満たさず、CBEとMtaji morphologyの普遍的な時間接続を確認した結果ではない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 更新日: 2026-08-12  
 Status: **RESEARCH COMPLETE / FINAL INTEGRATION / PRIMARY FORMAL RESULT = NOT-CONFIRMED**
 
-## 1. Study identity
+## 1. Study identity （識別と表現）
 
 研究題目:
 
@@ -18,9 +24,9 @@ Status: **RESEARCH COMPLETE / FINAL INTEGRATION / PRIMARY FORMAL RESULT = NOT-CO
 
 既存Studyのformal decision、classifier、threshold、negative/null/inconclusive result、interpretation boundaryを変更・救済することを目的としない。
 
-## 2. Inherited scientific boundaries
+## 2. Inherited scientific boundaries （日本語の要点）
 
-### 2.1 Phase-transition Study 1
+### 2.1 Phase-transition Study 1 （日本語の要点）
 
 以下をimmutableとして継承した。
 
@@ -53,7 +59,7 @@ clusterMaxGap = 1
 non-forcing groups = reserve / mobility / capture / front
 ```
 
-### 2.2 Position-typology / playing-style Study 1
+### 2.2 Position-typology / playing-style Study 1 （日本語の要点）
 
 Frozen Mtaji classifier:
 
@@ -69,7 +75,7 @@ No refit, restandardization, relabeling, feature change, or alternative-k rescue
 
 Namua discrete type remained unsupported. `N-ACT/N-CON` remained exploratory coordinates only. `STYLE-C1..C4` exact geometry remained formal not-confirmed.
 
-## 3. Initial research question and Stage 0 correction
+## 3. Initial research question and Stage 0 correction （Stageの記録）
 
 The initial research agenda considered temporal distance from CBE to first Mtaji as a possible endpoint. Stage 0 established that, for a standard trajectory surviving Namua, first Mtaji timing is mechanically determined by reserve exhaustion:
 
@@ -87,7 +93,7 @@ The formal research question therefore became:
 
 > Within a fixed P2-D2 population that reaches an eligible first Mtaji state, is frozen first-Mtaji morphology associated with a previously ascertained Namua CBE relative to exact-ply structurally eligible controls with no Namua CBE?
 
-## 4. Stage 0 — technical feasibility
+## 4. Stage 0 — technical feasibility （Stageの記録）
 
 Stage 0 verified that the study could reconstruct and audit:
 
@@ -103,11 +109,11 @@ Stage 0 closed PASS.
 
 The central scientific consequence was the deterministic-clock boundary described above.
 
-## 5. Stage 1 — exploratory design development
+## 5. Stage 1 — exploratory design development （方法と設計）
 
 All Stage 1 data were prospectively designated exploratory and permanently consumed before Stage 2 formal inference.
 
-### 5.1 Primary pilot
+### 5.1 Primary pilot （日本語の要点）
 
 ```text
 paired openings = 32
@@ -120,7 +126,7 @@ unique CBE historical trajectories = 1
 
 This was insufficient for formal design freeze.
 
-### 5.2 Exact-ply risk-set development
+### 5.2 Exact-ply risk-set development （限界）
 
 Prospective nested comparator families were audited without morphology labels:
 
@@ -133,7 +139,7 @@ R3 = R2 + no Namua CBE anywhere in control trajectory
 
 At the primary-pilot CBE clock position, strict R3 retained 31 unique trajectories in each P2-D2 and V2-D2 condition and had no deterministic progression violation.
 
-### 5.3 Exposure-support extension #1
+### 5.3 Exposure-support extension #1 （日本語の要点）
 
 ```text
 conditions = P2-D2 + V2-D2
@@ -146,7 +152,7 @@ unique CBE historical trajectories = 4
 
 R3 support at observed plies 24/26/27 was 331..334 unique controls per exposure-condition stratum, with zero progression violations.
 
-### 5.4 Final exposure-support extension
+### 5.4 Final exposure-support extension （結論）
 
 ```text
 conditions = P2-D2 + V2-D2
@@ -177,7 +183,7 @@ Direct structural positivity review:
 out-of-R3-range exposure values = 0
 ```
 
-### 5.5 Stage 1 readiness decision
+### 5.5 Stage 1 readiness decision （結論）
 
 Combined Stage 1:
 
@@ -202,11 +208,11 @@ PASS
 
 No CBE-vs-control M1/M2 contrast was inspected to reach this decision.
 
-## 6. Stage 2 prospective formal design
+## 6. Stage 2 prospective formal design （方法と設計）
 
 Stage 2 was frozen before held-out generation.
 
-### 6.1 Formal condition
+### 6.1 Formal condition （日本語の要点）
 
 ```text
 condition = P2-D2 only
@@ -218,7 +224,7 @@ maxDepth = 2
 
 This scope was outcome-independent and inherited from the bounded context in which phase-transition Study 1 E-018/H16 supported CBE.
 
-### 6.2 Formal corpus
+### 6.2 Formal corpus （日本語の要点）
 
 ```text
 games = 4096
@@ -237,7 +243,7 @@ Prohibited:
 - threshold relaxation;
 - comparator relaxation.
 
-### 6.3 Exposure unit
+### 6.3 Exposure unit （日本語の要点）
 
 ```text
 unique historicalTrajectoryHash
@@ -245,7 +251,7 @@ earliest fully ascertained Namua CBE
 maximum one exposure per trajectory
 ```
 
-### 6.4 Target population
+### 6.4 Target population （日本語の要点）
 
 ```text
 firstMtajiMorphologyEligible == true
@@ -253,7 +259,7 @@ firstMtajiMorphologyEligible == true
 
 CBE trajectories terminating before Mtaji were not assigned M1/M2 values.
 
-### 6.5 Formal comparator R3-M
+### 6.5 Formal comparator R3-M （日本語の要点）
 
 A control was required to satisfy:
 
@@ -282,7 +288,7 @@ control rank = frozen SHA-256 ranking
 
 No matching on capture/front-row quantities that could constitute or mediate the phenotype was allowed.
 
-### 6.6 Estimability gates
+### 6.6 Estimability gates （日本語の要点）
 
 ```text
 G1: morphology-eligible unique exposed trajectories >= 20
@@ -296,7 +302,7 @@ G1 fail -> inconclusive-insufficient-exposure
 G2 fail -> inconclusive-comparator-shortage
 ```
 
-### 6.7 Primary outcome and test
+### 6.7 Primary outcome and test （結果）
 
 ```text
 Y = 1 : MTAJI-M1
@@ -340,7 +346,7 @@ p >= .05 -> not-confirmed
 
 Direction labels were permitted only after significance.
 
-## 7. Outcome firewall
+## 7. Outcome firewall （結果）
 
 Stage 2 used the following frozen execution order:
 
@@ -368,7 +374,7 @@ effectTestingPerformed = false
 
 The exact preoutcome assignment was independently reviewed before the outcome unlock was committed.
 
-## 8. Formal corpus integrity
+## 8. Formal corpus integrity （日本語の要点）
 
 Formal source commit:
 
@@ -421,7 +427,7 @@ first Mtaji at ply 44 = 3886 / 3886
 violations = 0
 ```
 
-## 9. Formal exposure and matching result
+## 9. Formal exposure and matching result （結果）
 
 Inherited Category-A pipeline used the frozen thresholds unchanged and read no morphology labels.
 
@@ -492,7 +498,7 @@ Outcome unlock commit:
 afe1ca9e9021f5f391c2cedbf9c0fcf8330aafcb
 ```
 
-## 10. Frozen Mtaji classifier integrity
+## 10. Frozen Mtaji classifier integrity （日本語の要点）
 
 Final classifier audit:
 
@@ -509,7 +515,7 @@ relabeling = false
 
 All 630 matched units were classified at first eligible Mtaji ply 44.
 
-## 11. Primary formal result
+## 11. Primary formal result （結果）
 
 Observed first-Mtaji morphology:
 
@@ -554,7 +560,7 @@ none / null
 
 The small positive descriptive risk difference is not a confirmed association and does not receive a directional formal label.
 
-## 12. Independent post-evaluation audit
+## 12. Independent post-evaluation audit （日本語の要点）
 
 The morphology assignment artifact was independently audited after evaluation.
 
@@ -588,15 +594,15 @@ The following were independently recomputed from the uploaded morphology assignm
 - `p_upper`;
 - `p_two_sided`.
 
-## 13. Scientific interpretation
+## 13. Scientific interpretation （解釈）
 
-### 13.1 Supported conclusion
+### 13.1 Supported conclusion （結論）
 
 Within the frozen P2-D2, first-Mtaji-morphology-eligible target population:
 
 > Prior fully ascertained Namua `capture-branch-expansion` was **not confirmed** to be associated with first-Mtaji frozen `MTAJI-M1 / MTAJI-M2` morphology relative to exact-ply R3-M controls.
 
-### 13.2 Not supported
+### 13.2 Not supported （日本語の要点）
 
 The result does not support claims that:
 
@@ -608,7 +614,7 @@ The result does not support claims that:
 - the result generalizes beyond P2-D2;
 - M1/M2 are universal Bao strategic types.
 
-### 13.3 Negative-result boundary
+### 13.3 Negative-result boundary （適用範囲と制限）
 
 The formal `not-confirmed` decision is immutable for this frozen Stage 2 analysis.
 
@@ -626,7 +632,7 @@ It must not be rescued by:
 
 Any new confirmatory question requires a separately preregistered fresh corpus.
 
-## 14. What this study contributed despite the negative primary result
+## 14. What this study contributed despite the negative primary result （結果）
 
 The study produced several durable scientific and methodological results independent of the primary null confirmation decision.
 
@@ -648,7 +654,7 @@ The study produced several durable scientific and methodological results indepen
 6. **Clean negative result.**  
    The formal association was allowed to remain `not-confirmed` without outcome-dependent extension or redesign.
 
-## 15. Limitations
+## 15. Limitations （限界）
 
 The formal claim is deliberately bounded.
 
@@ -661,7 +667,7 @@ The formal claim is deliberately bounded.
 - the formal sample contains 30 exposure strata, adequate for the frozen estimability gate but not evidence of broad external validity;
 - no candidate-ply subgroup was preregistered as a separate primary hypothesis.
 
-## 16. Future research boundary
+## 16. Future research boundary （適用範囲と制限）
 
 Potential future work must be new work, not Stage 2 rescue.
 
@@ -675,7 +681,7 @@ Scientifically distinct possibilities include:
 
 `time-to-first-Mtaji`, first-Mtaji hazard, acceleration, and delay are not viable endpoints in the current frozen engine unless the underlying rule/engine semantics themselves change and a new study is explicitly defined around that different system.
 
-## 17. Closure
+## 17. Closure （結論）
 
 Study 1 is complete.
 
@@ -698,7 +704,7 @@ research integration = COMPLETE
 
 No additional Stage 2 formal sampling or primary analysis is authorized.
 
-## 18. Canonical records
+## 18. Canonical records （日本語の要点）
 
 - [`STUDY_1_OVERVIEW.md`](STUDY_1_OVERVIEW.md)
 - [`STAGE_2_FORMAL_RESULT.md`](STAGE_2_FORMAL_RESULT.md)

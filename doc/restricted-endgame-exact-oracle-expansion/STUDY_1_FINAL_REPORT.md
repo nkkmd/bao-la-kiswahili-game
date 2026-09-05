@@ -12,7 +12,7 @@ Study ID: `REEOE-STUDY1`
 
 本Studyでは、**complete forward closureが成立したdomainだけをexact oracleと呼べる**ように設計しました。
 
-## 2. representation contract
+## 2. representation contract （表現）
 
 Authoritative state identityは次を維持しました。
 
@@ -50,7 +50,7 @@ upstream G2-03から利用可能なvalidated non-identity transformation setは�
 
 歴史的REWR 423,733-state candidateは`ADMIN-CUTOFF`というtechnical historyのままであり、capを増やして続きを実行していません。
 
-## 4. Stage 0 — technical instrument validation
+## 4. Stage 0 — technical instrument validation （技術検証）
 
 Stage 0はtechnical onlyです。
 
@@ -79,7 +79,7 @@ S0-G1..S0-G12 = PASS
 
 これはinstrument validationであり、新しいG2-04 exact-oracle evidenceではありません。
 
-## 5. Stage 1 v1 — technical invalidation
+## 5. Stage 1 v1 — technical invalidation （技術検証）
 
 最初のfresh development versionでは、事前固定したfresh blockを使用しました。Production development outputは生成されましたが、その後independent verifierが誤ったmodule pathにより起動時に失敗しました。
 
@@ -95,7 +95,7 @@ v1 seed/RAW identities = consumed
 
 invalidated v1 workflowは、その後PR更新などでproduction generationが繰り返されないようarchival stubへ変更しました。
 
-## 6. Stage 1 v2 — fresh development
+## 6. Stage 1 v2 — fresh development （Stageの記録）
 
 v1のstructural envelope、resource ceiling、selection order、maximum root count、acceptance ruleを変更せず、新しい非重複blockを用いたv2を結果を見る前に固定しました。
 
@@ -217,7 +217,7 @@ domain-level formal decisions = 0
 fresh G2-04 exact oracle = none
 ```
 
-## 10. no-rescue closure
+## 10. no-rescue closure （解釈上の境界）
 
 v2 result確認後、本Studyでは次を行っていません。
 
@@ -261,7 +261,7 @@ canonicalization is valid
 
 また、exact 8-state REWR resultも変更しません。
 
-## 13. canonical artifact
+## 13. canonical artifact （証拠と成果物）
 
 Repository-facing canonical record:
 

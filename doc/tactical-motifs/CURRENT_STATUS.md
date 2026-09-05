@@ -1,8 +1,14 @@
-# CURRENT_STATUS — Tactical Motifs / Tesuji Study 1
+# CURRENT_STATUS — Tactical Motifs / Tesuji Study 1 （日本語の要点）
+
+## 日本語での要点
+
+TM-S2-C03だけがCONFIRMEDで、残る3候補はNOT-CONFIRMEDである。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-15
 
-## Current state
+## Current state （日本語の要点）
 
 **CLOSED / COMPLETE — Stage 0 technical validation, Stage 1 prospective exploratory discovery, and Stage 2 fresh prospective formal confirmation are complete.**
 
@@ -25,7 +31,7 @@ Study branch:
 
 `research/tactical-motif-discovery`
 
-## Scientific state
+## Scientific state （日本語の要点）
 
 - Stage 0 technical inspection: **COMPLETE / VALIDATED**
 - Stage 1 exploratory discovery: **COMPLETE**
@@ -41,7 +47,7 @@ Study branch:
 - confirmed candidates: **1 / 4 — C03**
 - human/expert/traditional/pedagogical claim: **NOT ESTABLISHED / OUT OF SCOPE**
 
-## Final formal identity
+## Final formal identity （結論）
 
 Stage ID:
 
@@ -57,7 +63,7 @@ Stage ID:
 - evaluation source commit: `d41b061067ab2e5dbe65294d3860586d9d3c1454`
 - source tree dirty: `false`
 
-## Confirmed candidate — TM-S2-C03
+## Confirmed candidate — TM-S2-C03 （日本語の要点）
 
 Canonical Stage 1 rank: `5`
 
@@ -89,29 +95,29 @@ formal decision = CONFIRMED
 
 Both co-primary endpoints passed the frozen `>=0.60` observed-rate requirement and Holm-adjusted significance criterion. Both D3 consistency gates also passed.
 
-## Negative formal results
+## Negative formal results （結果）
 
-### C01 — NOT-CONFIRMED
+### C01 — NOT-CONFIRMED （日本語の要点）
 
 Structural consequence reproduced (`0.694427`) but D3 top-set rate was `0.493425`. The tactical-value co-primary endpoint failed, so the candidate is not confirmed.
 
-### C02 — NOT-CONFIRMED
+### C02 — NOT-CONFIRMED （日本語の要点）
 
 Structural success `0.092791`, D3 top-set `0.307209`, D3 median consistency `0.597043`, and unique-worst `0.230314` do not satisfy the frozen decision rule.
 
-### C04 — NOT-CONFIRMED
+### C04 — NOT-CONFIRMED （日本語の要点）
 
 Structural success `0.414161`, D3 top-set `0.315228`, D3 median consistency `0.558681`, and unique-worst `0.195926` do not satisfy the frozen decision rule.
 
 No result is rescued by extra seeds, paired-definition substitution, subset selection, threshold change, endpoint change, depth selection, candidate merging, or renaming.
 
-## Numerical audit
+## Numerical audit （日本語の要点）
 
 The Stage 2 result-core SHA-256 was independently recomputed from the final artifact and matched exactly.
 
 Independent exact-binomial recalculation reproduced the endpoint p-values within numerical precision. For `C03:structuralSuccess`, the exact probability is approximately `5.79 × 10^-328`, below IEEE-754 double range; the stored `0` therefore reflects representational underflow after a scientifically valid log-space computation and cannot change the decision.
 
-## Interpretation boundary
+## Interpretation boundary （適用範囲と制限）
 
 C03 may now be described only as a **machine-reproducible transferable tactical motif under the frozen Study 1 operationalization**.
 
@@ -126,7 +132,7 @@ Study 1 does not establish:
 
 These require separate prospective studies.
 
-## Canonical closure documents
+## Canonical closure documents （結論）
 
 - `STUDY_1_OVERVIEW.md` — 初見向け成果概要
 - `STUDY_1_FINAL_REPORT.md` — Study 1 scientific integration
@@ -135,6 +141,6 @@ These require separate prospective studies.
 - `checkpoints/2026-08-15-stage2-formal-completion.md` — closure checkpoint
 - `DECISION_REGISTER.md` — immutable scientific decisions
 
-## Closure rule
+## Closure rule （結論）
 
 This study is closed. Any replication, human/expert validation, external-validity study, pedagogical study, or alternative motif formalization must be a new prospective independent study using a separately frozen contract. The final decisions above are immutable historical results.

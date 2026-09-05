@@ -1,10 +1,16 @@
-# REPRODUCIBILITY_INDEX — Symmetry / Isomorphic Positions Study 1
+# REPRODUCIBILITY_INDEX — Symmetry / Isomorphic Positions Study 1 （再現性）
+
+## 日本語での要点
+
+Study-level closureはNON-ESTIMABLEで、validated 0、rejected 0、non-estimable 5である。
+
+この文書に残る英語の説明は、closure時に固定したrepository / execution provenanceの原文である。canonical token、数値、hash、authorizationを変えずに保持しており、現在向けの説明は`README.md`と`STUDY_1_OVERVIEW.md`を優先する。
 
 Updated: 2026-08-24  
 Study: `SIP-STUDY1`  
 Status: **COMPLETED / 5 formal outcomes `NON-ESTIMABLE`**
 
-## Study-start source bindings
+## Study-start source bindings （日本語の要点）
 
 ```text
 main HEAD
@@ -20,7 +26,7 @@ historical symmetry transform Git blob (context only)
 a9117f46643fc79fc3352771d684c4ac9f7a01f6
 ```
 
-## Immutable upstream exact-oracle identities
+## Immutable upstream exact-oracle identities （日本語の要点）
 
 ```text
 domainSha256 = acfc25413f9c237569884f166ed971ad9ee9395665ce96ec6d094d8ed4a6c56a
@@ -31,7 +37,7 @@ solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c1
 
 These identities and the upstream formal decision remain unchanged by `SIP-STUDY1`.
 
-## Candidate firewall chronology
+## Candidate firewall chronology （日本語の要点）
 
 ```text
 initial design / candidate-freeze commit
@@ -49,7 +55,7 @@ b349a34c28824ee54770329a516fd0cf7a7c2cc6488e874b02fe5800ee75c9f0
 
 Historical `tools/symmetry/transform-candidates.js` was context only and was not imported by the new formal transform implementation.
 
-## Stage 0 technical verification
+## Stage 0 technical verification （Stageの記録）
 
 ```text
 technical stage = SIP-STAGE0-TECHNICAL-2026-08-24-v2
@@ -71,7 +77,7 @@ strata = namua / mtaji / mtaji-houseless
 
 The choice used graph size, edge count, branching, runtime/memory and guard status only; no candidate mismatch rate was an input.
 
-## Stage 1 prefreeze verification
+## Stage 1 prefreeze verification （Stageの記録）
 
 ```text
 prefreeze verification run = 32727669985
@@ -82,7 +88,7 @@ prefreeze artifact ZIP SHA256 = 0a580f8e7dca3731253caeea6ea5fc46661cb93e1e3f3184
 
 The domain materializer used no candidate transform. It produced shortage 0, witness replay failure 0, and trajectory runtime guard hit 0.
 
-## Frozen Stage 1 scientific contract
+## Frozen Stage 1 scientific contract （Stageの記録）
 
 ```text
 stageId = SIP-S1-FORMAL-2026-08-24-v1
@@ -102,7 +108,7 @@ runner = 28b2355bc2f223c06f5d7be9be975cdfde79cd7b4f318b8ae1980970e2082b85
 verifier = c1bbf2377a6b7214caa9cd023c31ab136c3e9072acec24e03ff46c53151ba854
 ```
 
-## v1 technical invalidation and unexecuted v2 correction
+## v1 technical invalidation and unexecuted v2 correction （日本語の要点）
 
 The archived v1 production/independent files are preserved byte-for-byte for traceability, but `results/STAGE_1_V1_INVALIDATION.json` marks that run `TECHNICALLY-INVALIDATED-NO-CANDIDATE-DECISION`. The root cause is the oracle reconstruction from terminal `stateRows.ruleState`, for which three snapshots do not re-hash to their stored raw keys and represent 63 seeds.
 
@@ -110,7 +116,7 @@ A corrected v2 production runner was drafted prospectively around raw oracle gra
 
 Accordingly, the final 0 validated / 0 rejected / 5 `NON-ESTIMABLE` status is a Study-level closure decision. Fresh v1 zero-mismatch counts are reproducible diagnostics from an invalidated run, not formal positive findings.
 
-## Formal outcome artifacts
+## Formal outcome artifacts （結果）
 
 Canonical repository files:
 
@@ -138,7 +144,7 @@ formal artifact archive commit = 0b021de1138b07e2b64619fc80a507b9effaf9b2
 
 The archive rerun did not change any scientific input. It reproduced and committed the already observed verification failure rather than attempting to rescue it.
 
-## Independent-verification result
+## Independent-verification result （結果）
 
 ```text
 formal validated = 0
@@ -148,7 +154,7 @@ formal nonEstimable = 5
 
 For each scientific candidate scope, the fresh graph had zero mismatch. Production and independent implementations disagreed on mandatory exact-oracle mismatch accounting; therefore `G12=FAIL` and final decision is `NON-ESTIMABLE` for all five outcomes.
 
-## Control behavior
+## Control behavior （日本語の要点）
 
 ```text
 IDENTITY fresh mismatch count = 0
@@ -157,7 +163,7 @@ negative-control independent fresh mismatch count = 638
 
 The IDENTITY control also failed the exact-oracle anchor, so the oracle failure cannot be interpreted as candidate-specific negative evidence.
 
-## Post-outcome read-only oracle diagnostic
+## Post-outcome read-only oracle diagnostic （結果）
 
 ```text
 workflow run = 32728619101
@@ -186,7 +192,7 @@ df0077b343b09d6f66d45159eead1be244479677b5fb75275b1ce76f5021db55
 
 This diagnostic cannot revise the upstream Study and is used only to document why its immutable artifact was not a usable symmetry-transform anchor under the frozen Stage 1 contract.
 
-## Final downstream boundary
+## Final downstream boundary （結論）
 
 ```text
 validated transformation set = []

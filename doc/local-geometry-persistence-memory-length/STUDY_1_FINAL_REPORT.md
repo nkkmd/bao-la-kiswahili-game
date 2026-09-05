@@ -2,7 +2,7 @@
 
 更新日: 2026-09-03
 
-## 1. Formal decision
+## 1. formal decision（正式判断）
 
 ```text
 Study = LGPML-STUDY1
@@ -24,7 +24,7 @@ Stage 0 technical validationはPASSした。その後、fresh Stage 1をexactly 
 
 fresh scientific access後であり、同一seed block / same evidenceをengine・enumeration handling修正後に再実行することはfrozen no-rescue ruleに反する。したがってLGPML-STUDY1のformal lifecycle decisionは **`CLOSED / TECHNICAL-INVALID`** とする。
 
-## 2. Prospective scope
+## 2. 結果を見る前に固定したscope
 
 Representation / measurement boundary:
 
@@ -49,7 +49,7 @@ Frozen geometry panel:
 
 Primary processは各metricのone-ply exact rational change signで、lag setはprospectively `{1,2,4,8}` に固定した。phase crossingはundefined、ZEROをformal SAME/OPPOSITE比較から除外した。first-exit / returnはsecondary descriptiveのみで、formal promotion family外とした。
 
-## 3. Fresh-evidence firewall
+## 3. fresh-evidence firewall（証拠分離規則）
 
 Stage 1 selection前に、upstream studiesのscientific outcomeを保持しないidentity-only firewallをmaterializeした。
 
@@ -64,7 +64,7 @@ G3-07 Stage 2 deterministic selection core = c78f561bb6fdeadad50c968313073f8d0b6
 
 G3-07の3 CONFIRMED candidatesのdirection / threshold / p-valueをLGPML candidate selectionへ使用していない。G3-05 technical-invalid scientific outputもscientific inputにしていない。
 
-## 4. Stage 0 technical validation
+## 4. Stage 0のtechnical validation
 
 Stage 0はtechnical seed namespaceのみを使用し、scientific useを禁止した。
 
@@ -85,7 +85,7 @@ protected depth-10 access = false
 
 production / independent relative-depth-5 reconstruction、G1..G6 level derivation、exact rational arithmetic、lag semantics、ZERO exclusion、cross-phase censoring、first-exit / return、canonical equalityをtechnical fixture上で確認した。
 
-## 5. Stage 1 authorization and exactly-one execution
+## 5. Stage 1のauthorizationとexactly-once実行
 
 Fresh-free preauthorization audit:
 
@@ -117,7 +117,7 @@ no-rescue boundary crossed = true
 
 Stage 1をrerunしていない。
 
-## 6. Stage 1 observed technical result
+## 6. Stage 1で観測したtechnical result
 
 Canonical result:
 
@@ -132,7 +132,7 @@ protectedDepth10Access = false
 
 Workflow log上、9 trajectoriesがcomplete trajectory aggregationまで進んだ後、次のrequired root reconstructionでtechnical errorが発生した。
 
-Complete trajectory log provenance:
+complete trajectory logのprovenance:
 
 ```text
 31810001
@@ -150,11 +150,11 @@ Complete trajectory log provenance:
 
 したがって9 trajectoriesの途中情報からpersistence direction、candidate prevalence、memory lengthその他のscientific conclusionを導かない。formal candidateをpromotionしない。
 
-Formal promoted candidate set:
+formal promoted candidate set:
 
 **`[]`**
 
-## 7. Durable artifact and exact-byte mirror
+## 7. durable artifactとexact-byte mirror
 
 Stage 1 failure後もcanonical resultはdurable artifactへ保存された。
 
@@ -176,7 +176,7 @@ Mirror commit:
 
 repository mirrorではscientific computationを再実行していない。
 
-## 8. Technical-invalid interpretation
+## 8. technical-invalidの解釈
 
 Observed failureは、frozen eligible trajectoryのlocal geometryをrelative depth 5までexact RAW reconstructionしている途中で、upstream LGTGMIV enumerationが`relay-limit` conditionへ到達したことによる。
 
@@ -195,7 +195,7 @@ Formalに言えるのは、prospectively frozen Stage 1 execution contractの下
 
 これはnegative/null scientific findingではなく、**technical validity result**である。
 
-## 9. No-rescue closure
+## 9. no-rescue closure（救済的変更を行わない終了）
 
 Stage 1 seed block `31810001..31810256`はconsume済みで、no-rescue boundaryはactiveである。
 
@@ -203,14 +203,14 @@ Stage 1 seed block `31810001..31810256`はconsume済みで、no-rescue boundary�
 
 - same Stage 1 evidenceのrerun
 - relay-limit handlingを修正した同一seed再評価
-- seed extension / root replacement / favorable subset selection
+- seed extension / root replacement / favorable subset selectionを行うこと
 - lag / metric / endpoint / phase treatment / support gate / promotion hierarchy / resource ceilingの事後変更
 - partial trajectoriesをformal promoted candidateへ格上げすること
 - LGPML-STUDY1としてStage 2を実行すること
 
 relay-limit-safeなlongitudinal geometry designを将来検討する場合は、LGPML-STUDY1の救済ではなく、**新しいprospective independent Study/version**として扱う必要がある。
 
-## 10. Stage 2 and protected evidence
+## 10. Stage 2とprotected evidence
 
 Stage 2の前提であるvalid Stage 1 completionとnonempty frozen promoted setを満たさない。
 
@@ -231,11 +231,11 @@ Stage 2 seed access = false
 
 このtechnical readinessはStage 2 scientific authorizationを意味しない。
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
-## 11. Final closure
+## 11. 最終closure
 
 ```text
 G3-08 / LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -248,6 +248,6 @@ main integration = NOT AUTHORIZED / NOT PERFORMED
 LGPML-STUDY1は研究設計を遡及変更せず、technical-invalid outcomeをそのまま閉鎖記録として保持する。
 
 <!-- LGPML-G3-08-POST-CLOSURE-INTEGRATION -->
-## Post-closure repository integration addendum
+## closure後のrepository integration追記
 
 Study closure時点ではmain integrationは未承認だった。その後、2026-09-03の明示的ユーザー指示により、audited research branch tip `72bd208267359f461e9dbbde938bb952eb01b91c` をremote `main`へfast-forward / `force=false`で統合した。このrepository lifecycle eventは`CLOSED / TECHNICAL-INVALID`、formal promoted candidate set `[]`、Stage 2 non-execution、no-rescue、protected depth-10 sealingを変更しない。

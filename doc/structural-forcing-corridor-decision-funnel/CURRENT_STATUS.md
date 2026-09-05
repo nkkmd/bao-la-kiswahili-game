@@ -1,4 +1,4 @@
-# SFCDF-STUDY1 — Current Status
+# SFCDF-STUDY1 — 現在の状態
 
 更新日: 2026-09-02
 
@@ -20,7 +20,7 @@ protected standard-root exact depth-10 holdout = SEALED / NOT GENERATED / NOT RE
 main integration = COMPLETE / PR #95 / merge ad3dc26e0e2b1ccf1179eda9fe1ebbfa2a61f9bf
 ```
 
-## Formal candidate decisions
+## formal candidate decision（正式判断）
 
 | Candidate | Construct | Frozen direction | Stage 2 result |
 |---|---|---|---|
@@ -29,7 +29,7 @@ main integration = COMPLETE / PR #95 / merge ad3dc26e0e2b1ccf1179eda9fe1ebbfa2a6
 
 C2–C5はStage 1 promotion gateを満たさなかったため、Stage 2では検定していない。
 
-### C1
+### C1 （概要）
 
 ```text
 comparable = 18/18
@@ -42,7 +42,7 @@ Holm = PASS
 formal label = CONFIRMED
 ```
 
-### C6
+### C6 （概要）
 
 ```text
 comparable = 18/18
@@ -55,7 +55,7 @@ Holm = PASS
 formal label = CONFIRMED
 ```
 
-## Stage 2 execution integrity
+## Stage 2のexecution integrity
 
 ```text
 workflow run = 33624399706
@@ -70,7 +70,7 @@ scientific-result blob = 099c45134e2816aac7bafdd5aab5ade03903c64a
 execution-summary blob = d2e4db04a5f2b35cc3da573fd9ab82ec6131f03a
 ```
 
-Production / independent Stage scientific core:
+production / independent Stage scientific core:
 
 ```text
 production = e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039
@@ -79,7 +79,7 @@ independent = e9c3a70cba8e7341bcda33fcc7c5083bb24147d32f3ccfc024ed0f6c551b7039
 
 完全一致している。
 
-## Scientific boundary
+## 科学的な境界
 
 ```text
 representation = RAW-ONLY
@@ -93,27 +93,27 @@ C1–C3はcorridor descriptors、C4–C6はfunnel descriptorsとしてprospectiv
 
 今回CONFIRMEDされたC1/C6から、次を主張してはならない。
 
-- game-theoretic forcing / tactical inevitability
+- game-theoretic forcing / tactical inevitabilityとの関係
 - optimal moveの一意性
 - best-move clarity
-- search stability / search ease
+- search stability / search easeとの関係
 - strategic simplicity
 - human difficulty / ease
-- position value / win probability
+- position value / win probabilityとの関係
 - phaseの因果効果
 - relative depth 5を超える一般化
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
 G3-04のclosureによってこのholdoutの用途・封印状態は変更しない。
 
-## Repository lifecycle
+## repository lifecycle （リポジトリ上の状態）
 
-program-level closure decision = RECORDED (`../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`)。RG3 closure checkpoint = `../research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`。
+program-level closure decisionは`../research-program-decisions/2026-09-02-g3-04-formal-complete-closure.md`に記録済みである。RG3 closure checkpointは`../research-generation-3/checkpoints/2026-09-02-g3-04-formal-complete-closure.md`である。
 
 `main`統合は通常PR #95により完了し、merge commitは`ad3dc26e0e2b1ccf1179eda9fe1ebbfa2a61f9bf`。post-merge記録は`../research-generation-3/checkpoints/2026-09-02-g3-03-g3-04-main-integration-complete.md`。**G3-04 closure時点では**次科学作業はseparate post-G3-04 G3-05 authorization reviewで、G3-05は当時未authorizeだった。そのreviewは後に完了し、G3-05以降も独立に進行した。現在のprogram stateは`../research-generation-3/CURRENT_STATUS.md`を参照する。
 

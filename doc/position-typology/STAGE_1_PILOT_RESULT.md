@@ -1,4 +1,4 @@
-# Stage 1 Exploratory Pilot Result
+# Stage 1 Exploratory Pilot Result （結果）
 
 更新日: 2026-08-09  
 Status: **pilot complete / integrity passed / exploratory only / no formal confirmation authorized**
@@ -20,7 +20,7 @@ Branch: `research/position-typology-and-playing-style`
 
 Pilotの目的は、Python exploratory analysisへ進む前にcorpus integrity、eligible population、phase balance、duplicate structure、generation-condition coverageを確認することである。
 
-## 2. Provenance
+## 2. Provenance （日本語の要点）
 
 - source commit: `cb5376145a8aeddf5ca42bc9c74e6a0efdb0e114`
 - source tree: clean
@@ -35,7 +35,7 @@ Pilotの目的は、Python exploratory analysisへ進む前にcorpus integrity�
 - raw summary hash: `f6704d4bb1d662b576f31a62dc0e96ce78bb226a508af7aacdc39f692b0fa52c`
 - pilot audit hash: `7b159ba847e153e65deaffed9402325e52ddf5968d24fd4c2c4f09cc0537248d`
 
-## 3. Integrity result
+## 3. Integrity result （結果）
 
 Full verificationはpassした。
 
@@ -54,7 +54,7 @@ Full verificationはpassした。
 
 したがって、Stage 1 pilotはexploratory feature analysisに使用可能と判断する。
 
-## 4. Raw corpus
+## 4. Raw corpus （日本語の要点）
 
 - games: 96
 - observations: 5,694
@@ -73,7 +73,7 @@ Full verificationはpassした。
 
 Raw corpusの393 duplicate slotsは、primary discovery populationへ制限すると消失した。したがって、このpilotではduplicate slotsはすべてprimary対象外のopening / terminal領域に存在する。
 
-## 5. Game completion / truncation
+## 5. Game completion / truncation （日本語の要点）
 
 - terminal games: 95 / 96
 - max-ply truncated games: 1 / 96
@@ -85,7 +85,7 @@ Max-ply truncationは1局のみである。Position typologyのstatic discovery�
 
 一方、将来のplaying-style、dwell-time、terminal-outcome analysisではcensoringとして別途扱う。
 
-## 6. Primary eligible population
+## 6. Primary eligible population （日本語の要点）
 
 Primary definition:
 
@@ -107,7 +107,7 @@ Primary definition:
 
 これはseat canonicalizationが不要であることを意味しない。単に、この96-game eligible populationにはSouth/North mirror pairが同時出現しなかったことを意味する。
 
-## 7. Phase distribution
+## 7. Phase distribution （日本語の要点）
 
 Primary eligible population:
 
@@ -120,7 +120,7 @@ Primary analysisはprotocolどおりphase-separatedを維持する。
 
 Joint phase analysisはsecondary diagnosticとする。
 
-## 8. Generation-condition coverage
+## 8. Generation-condition coverage （日本語の要点）
 
 Eligible positions by condition:
 

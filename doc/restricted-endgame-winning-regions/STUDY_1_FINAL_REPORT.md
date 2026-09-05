@@ -1,19 +1,25 @@
-# Restricted Endgame / Winning Regions Study 1 — Final Report
+# Restricted Endgame / Winning Regions Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+frozen 8-state / 7-edge Mtaji domainをexact solveし、formal decisionはEXACT-SOLVED-WITHIN-FROZEN-DOMAINである。このexact claimをBao全体の終盤へ一般化しない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 Updated: 2026-08-24  
 Status: **STUDY 1 COMPLETE / EXACT-SOLVED-WITHIN-FROZEN-DOMAIN**
 
-## 1. Research question
+## 1. Research question （日本語の要点）
 
 本Studyは、Bao全体の完全解析ではなく、prospectively frozenで有限・legal-transition-closedな終盤subspaceについて、全状態・全合法遷移とnormative terminal semanticsだけからexact game-theoretic valueを再現可能に求められるかを検証した。
 
 扱うquantityはengine evaluation、search value、empirical continuation win rateではなく、**frozen bounded domain内のdeterministic exact value**である。
 
-## 2. Independence from prior studies
+## 2. Independence from prior studies （日本語の要点）
 
 `REWR-STUDY1`は新規prospective independent studyである。Position Evaluation / Win-Rate Calibration、Blunder / Misvaluation、Critical Positions / Outcome Branching、Position Complexity、Tactical Motifs、Namua→Mtajiその他のclosed Studyのformal decision、threshold、classifier、endpoint、population、interpretation boundaryは変更していない。
 
-## 3. Rule and terminal semantics
+## 3. Rule and terminal semantics （日本語の要点）
 
 Primary exact solverはMtaji-onlyとした。rootでは:
 
@@ -30,7 +36,7 @@ Normative terminalとして使用したのは`front-empty`と`no-move`のみで�
 
 `public/engine.js`の`MAX_RELAY=512` / `relay-limit`はimplementation safety guardであり、terminal WIN/LOSSとして使用していない。formal repetition/draw ruleも凍結ルール基準から確定できなかったため、retrograde fixed point後に未解決stateが生じた場合は`RECURRENT`として扱い、formal `DRAW`とは呼ばない設計を事前固定した。
 
-## 4. State, move, and symmetry identity
+## 4. State, move, and symmetry identity （識別と表現）
 
 State identityはraw/direct rule state:
 
@@ -63,7 +69,7 @@ houseTwo
 
 Primary solutionではreflection、player swap、seat canonicalization、pit renumbering等のsymmetry reductionを一切使用していない。
 
-## 5. Reachability and domain construction
+## 5. Reachability and domain construction （リポジトリ状態）
 
 Primary populationは任意構成stateではなく、standard initial stateからの合法trajectoryで到達証明を持つrootと、その完全forward closureとした。
 
@@ -86,7 +92,7 @@ Domain definition:
 
 Feature capはroot候補のtechnical selectionだけに使い、closure boundaryには使っていない。
 
-## 6. Stage 0 feasibility and outcome firewall
+## 6. Stage 0 feasibility and outcome firewall （結果）
 
 Technical-only seed block:
 
@@ -115,7 +121,7 @@ transition-set SHA-256 = 33703e84a47db7a2149542fe74db88702a6b57faaac6f1c86a9f5c1
 
 Production closureと別実装verifierは全state/edge/hashで一致した。
 
-### One-shot v3 expansion
+### One-shot v3 expansion （日本語の要点）
 
 Stage 1 freeze前に、より大きい技術候補へ1回だけcapを拡張することをprospectively許可した。
 
@@ -130,7 +136,7 @@ stop reason = ADMIN-CUTOFF
 
 これはgame-theoretic resultではない。事前規則に従い追加拡張を禁止し、独立検証済みv2 8-state domainへfallbackした。科学outcomeを見てdomainを変更したものではない。
 
-## 7. Stage 1 prospective freeze
+## 7. Stage 1 prospective freeze （Stageの記録）
 
 Stage 1はdomain、source files、terminal semantics、classification、DTF、optimal-move recurrence、resource limits、failure rulesをfreezeし、authorizationを別commitで発行するpre-generation firewallを採用した。
 
@@ -142,7 +148,7 @@ spec SHA-256 = ec20df4621b7d8e50fd979bee4681c7eadb5bf2138c14911cb6ab97acd0738cc
 authorization SHA-256 = d3fe788e95606c6641ad4c33a396a2c02b21138b9b80bef2522f85cd124f282c
 ```
 
-### Pre-generation correction
+### Pre-generation correction （日本語の要点）
 
 最初のauthorization後、scientific runnerを一度も実行する前のmanual contract inspectionで、spec field `administrativeMaximumMoveMicrostates` とrunner側参照名の不一致を発見した。
 
@@ -156,7 +162,7 @@ authorization SHA-256 = d3fe788e95606c6641ad4c33a396a2c02b21138b9b80bef2522f85cd
 
 した。domain、classification、DTF、outcome endpointは変更しておらず、このcorrection以前にscientific outcomeは生成していない。
 
-## 8. Retrograde semantics
+## 8. Retrograde semantics （日本語の要点）
 
 Terminal stateは`TERMINAL + absoluteWinner`としてbase caseにした。終局後のruntime `state.player`に依存してterminal WIN/LOSSを定義しない。
 
@@ -179,7 +185,7 @@ RECURRENT = null
 
 WIN側は最短terminal、LOSS側は最大抵抗を選ぶ。
 
-## 9. Independent solver design
+## 9. Independent solver design （方法と設計）
 
 Production:
 
@@ -201,7 +207,7 @@ predecessor propagation + unresolved-successor counting
 
 reachability witness regenerationだけは同じfrozen witness-generation infrastructureを共有した。
 
-## 10. Formal exact result
+## 10. Formal exact result （結果）
 
 Graph identityはStage 0 freezeと完全一致した。
 
@@ -249,7 +255,7 @@ maximum-resistance moves = {
 
 全8 state rowは`results/STAGE_1_EXACT_RESULT.json`をcanonical state-level resultとする。
 
-## 11. Independent exact verification
+## 11. Independent exact verification （日本語の要点）
 
 Scientific workflow run `32702596730` でproduction generation後にindependent reconstruction/recomputationを実施した。
 
@@ -276,13 +282,13 @@ production result SHA-256 = e581236b94ca74f6e681a363c15e0c6f8ef6851dcadf4856b063
 verification result SHA-256 = 87ab7d7fa44820d1c6b524481da1f1faa377c38a1d2509d172044d35028dad52
 ```
 
-## 12. Formal decision
+## 12. Formal decision （結論）
 
 > **`EXACT-SOLVED-WITHIN-FROZEN-DOMAIN`**
 
 Frozen `REWR-S1-DOMAIN-2026-08-24-v1`について、全state・全legal edge・terminal winner・WIN/LOSS/RECURRENT value・optimal move set・DTFがproduction solverとindependent verifierで完全一致したため、bounded exact oracleとして承認する。
 
-## 13. Interpretation boundary
+## 13. Interpretation boundary （適用範囲と制限）
 
 許可されるclaim:
 
@@ -300,7 +306,7 @@ Frozen `REWR-S1-DOMAIN-2026-08-24-v1`について、全state・全legal edge・t
 
 RECURRENT=0は、この8-state domainについてのみexactである。
 
-## 14. Scientific value despite small domain
+## 14. Scientific value despite small domain （リポジトリ状態）
 
 Domainは小さいが、Study 1の目的は最大規模tablebaseを作ることではなく、Bao engine/rules上で**bounded exact oracleをprospectively選択・freeze・二重実装で完全検証できる研究手順**を確立することだった。
 

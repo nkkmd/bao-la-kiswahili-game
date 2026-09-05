@@ -1,10 +1,16 @@
-# Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — Final Report
+# Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — Final Report （結論）
+
+## 日本語での結論と読み方
+
+Axis AはORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED、Axis BはNOT-AUTHORIZED-NOT-EXECUTEDである。upstream REWR / SIPの既存formal decisionは変更しない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 Updated: 2026-08-25  
 Study ID: `ORISC-STUDY1`  
 Status: **COMPLETED**
 
-## 1. Research question
+## 1. Research question （日本語の要点）
 
 This prospective independent study separated two questions that had previously become entangled in downstream symmetry validation:
 
@@ -13,11 +19,11 @@ This prospective independent study separated two questions that had previously b
 
 Axis B was explicitly conditional. It was not permitted to repair or bypass an Axis A failure.
 
-## 2. Immutable upstream boundary
+## 2. Immutable upstream boundary （適用範囲と制限）
 
 This study does not alter either completed upstream study.
 
-### Restricted Endgame / Winning Regions Study 1
+### Restricted Endgame / Winning Regions Study 1 （日本語の要点）
 
 Remains:
 
@@ -33,7 +39,7 @@ solutionSha256 = 4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c1
 
 The existing state/edge set, exact values, DTF, optimal moves, and formal decision are unchanged.
 
-### Symmetry / Isomorphic Positions Study 1
+### Symmetry / Isomorphic Positions Study 1 （日本語の要点）
 
 Remains:
 
@@ -50,7 +56,7 @@ corrected v2 = NOT-AUTHORIZED-NOT-EXECUTED
 
 No previous SIP candidate is rescued, validated, or rejected by this study.
 
-## 3. Representation layers
+## 3. Representation layers （識別と表現）
 
 The study treated the following as distinct objects:
 
@@ -67,7 +73,7 @@ reporting/display representation
 
 Nominally describing the same Bao position is insufficient for raw identity. Exact field equality is required under the frozen contract.
 
-## 4. Frozen raw identity contract
+## 4. Frozen raw identity contract （識別と表現）
 
 Raw state identity includes exactly:
 
@@ -107,7 +113,7 @@ houseTwo
 
 so distinct Namua `houseChoice` variants cannot collapse into one move identity.
 
-## 5. Frozen seed-conservation semantics
+## 5. Frozen seed-conservation semantics （日本語の要点）
 
 The represented-seed quantity was fixed before the formal result as:
 
@@ -119,7 +125,7 @@ For the standard 64-seed game ancestry used here, the required total is exactly 
 
 Current engine semantics show that when a capture empties the opponent front row, the captured quantity removed from the board is added to `pending[player]` before winner assignment. Thus terminal `pending` is part of raw rule-state accounting, not merely a display field.
 
-## 6. Stage 0A — Technical / semantic / provenance audit
+## 6. Stage 0A — Technical / semantic / provenance audit （Stageの記録）
 
 Stage 0A was explicitly technical-only and generated no formal ORISC decision.
 
@@ -180,7 +186,7 @@ artifactId = 9529232934
 artifact ZIP SHA-256 = ceeeeb7190a17784708d8e20f7d7d5a71910add8417b1effb2c561864b5d41af
 ```
 
-## 7. Pre-outcome symmetry candidate freeze
+## 7. Pre-outcome symmetry candidate freeze （結果）
 
 Before any ORISC Stage 1 formal outcome, the conditional Stage 2 contract was frozen:
 
@@ -217,7 +223,7 @@ No Stage 1 result was available when these definitions were fixed.
 
 Unlike SIP-STUDY1, this study proposed only three candidate-level decisions. T01 would require all prospectively required Namua, Mtaji, and exact-oracle scopes to pass rather than treating a pooled scope as a separate fourth-style outcome.
 
-## 8. Stage 0B — Technical prefreeze
+## 8. Stage 0B — Technical prefreeze （Stageの記録）
 
 Stage 0B deliberately did **not** evaluate repository-facing oracle semantic gates. Its purpose was to establish that the formal machinery could independently reconstruct the frozen raw graph before authorization.
 
@@ -254,7 +260,7 @@ specSha256 = 5a766ec900c1f76c5b832f2c76153b9426b3970316b31806d377c497d1e585e5
 formal workflow SHA-256 = 0f5e5da13e84e9511a477a8fdfc01133e3a36cc08e908e16a31b71517e3b429f
 ```
 
-## 9. Stage 1 authorization
+## 9. Stage 1 authorization （Stageの記録）
 
 Authorization was issued only after final source-hash validation:
 
@@ -265,7 +271,7 @@ authorizationSha256 = b8bc9c65510c2f4ea0909e269af7945d7ae5d3d32b595224519b1549a2
 
 The authorization explicitly permitted only Axis A Stage 1 and explicitly did not authorize Stage 2.
 
-## 10. Formal Stage 1 gates
+## 10. Formal Stage 1 gates （Stageの記録）
 
 The prospective gates were:
 
@@ -292,7 +298,7 @@ Decision rule:
 - A-G12 PASS with at least one interpretable mandatory gate failure -> `ORACLE-REPRESENTATION-INTEGRITY-NOT-CONFIRMED`;
 - cross-implementation disagreement, incomplete reconstruction, source drift, or technical failure -> `NON-ESTIMABLE`.
 
-## 11. Formal Stage 1 result
+## 11. Formal Stage 1 result （結果）
 
 Authorized workflow:
 
@@ -326,7 +332,7 @@ A-G11 FAIL
 A-G12 PASS
 ```
 
-### What passed
+### What passed （日本語の要点）
 
 The raw graph itself was reconstructed exactly and independently:
 
@@ -342,7 +348,7 @@ repository transition mismatches = 0
 
 Thus the study did **not** find a disagreement in the frozen raw graph identity, legal successor graph, or terminal captured/pending semantics generated from the frozen root.
 
-### What failed
+### What failed （日本語の要点）
 
 Exactly three immutable repository-facing terminal rows failed both the stored-row re-hash gate and reconstructed raw-state binding gate.
 
@@ -381,7 +387,7 @@ A-G12 = PASS
 
 This is therefore an interpretable formal representation-integrity failure rather than a technical non-estimability result.
 
-## 12. Why this does not invalidate REWR-STUDY1
+## 12. Why this does not invalidate REWR-STUDY1 （日本語の要点）
 
 `REWR-STUDY1` asked whether the frozen restricted graph could be exactly solved and independently verified. Its scientific workflow production and independent files agreed, and this new study again reconstructs the same raw 8-state/7-edge graph exactly.
 
@@ -398,7 +404,7 @@ REWR state/edge/value/DTF/optimal-move claims remain unchanged
 
 No upstream row was rewritten to make ORISC pass.
 
-## 13. Axis B — Independent Symmetry Confirmation
+## 13. Axis B — Independent Symmetry Confirmation （日本語の要点）
 
 The frozen authorization rule required all of:
 
@@ -435,7 +441,7 @@ The zeros do not mean the candidates failed. They mean the conditional scientifi
 
 The old SIP fresh zero-mismatch diagnostics remain old diagnostic evidence only and are not imported as ORISC formal findings.
 
-## 14. Stage 3 / downstream authorization
+## 14. Stage 3 / downstream authorization （Stageの記録）
 
 Because no valid Stage 2 symmetry confirmation exists:
 
@@ -451,7 +457,7 @@ State Space / Game Tree Complexity research may now proceed **raw-only**, withou
 
 A future symmetry study would require a new prospective representation source contract that does not bypass this closed result. It cannot simply rewrite the old repository rows and relabel the current study as passed.
 
-## 15. Study-level closure
+## 15. Study-level closure （結論）
 
 `ORISC-STUDY1` is complete with:
 
@@ -463,7 +469,7 @@ validated symmetry transformation set = empty
 raw state identity = authoritative downstream representation
 ```
 
-## 16. Final interpretation boundary
+## 16. Final interpretation boundary （結論）
 
 This study supports the following statement:
 

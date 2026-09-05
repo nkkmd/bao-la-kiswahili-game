@@ -1,4 +1,4 @@
-# Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — Overview
+# Restricted Endgame Oracle Representation Integrity / Symmetry Confirmation Study 1 — Overview （概要）
 
 **Study ID:** `ORISC-STUDY1`  
 **Status:** **COMPLETED**  
@@ -45,7 +45,7 @@ repository-facing rows: pending = [0,0], represented seeds = 63
 
 この差がどのmaterialization mechanismで導入されたかは確定できないため、原因は`UNRESOLVED-PROVENANCE-GAP`として残した。
 
-## Formal Stage 1 result
+## Formal Stage 1 result （結果）
 
 production / independentの別実装は、凍結rootから同じraw graphを再構成した。
 
@@ -108,7 +108,7 @@ Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 
 したがって今回のStudyでは、T01/T02/T03をformalにvalidateもrejectもしていない。
 
-## Downstream contract
+## Downstream contract （日本語の要点）
 
 Study 1完了時点の契約は:
 

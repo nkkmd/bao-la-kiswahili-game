@@ -1,8 +1,8 @@
-# SILGM-STUDY1 — Reproducibility Index
+# SILGM-STUDY1 — 再現性索引
 
 更新日: 2026-09-03
 
-## 1. Repository identity
+## 1. repository identity（リポジトリ識別情報）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -14,7 +14,7 @@ Study status = CLOSED / FORMAL-COMPLETE
 main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2045649025715219ffea17ec
 ```
 
-## 2. Canonical Study contracts
+## 2. canonical Study contract（正本となる研究契約）
 
 | Artifact | Git blob |
 |---|---|
@@ -26,11 +26,11 @@ main integration = COMPLETE / FAST-FORWARD / source branch tip 7f14538aa0ec3edd2
 | `prereg/STAGE_2_FORMAL_INPUT.json` | `70c7d841cf71183e6733565bf36a76e4a62047d4` |
 | `prereg/UPSTREAM_IDENTITY_FIREWALL.json` | `c1878ccd0739aacc7a0158e541e6e153723fef8e` |
 
-Stage 2 formal input core:
+Stage 2 formal input coreは次のとおりである。
 
 `6c796df950f05df2b193ab0a5d2a6f74dfa179745a9953d337f72a745cc5d0b0`
 
-## 3. Frozen upstream source bindings
+## 3. 固定済みupstream source binding
 
 ```text
 public/engine.js = Git blob 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -41,9 +41,9 @@ tools/experiments/lib/search-reliability-decision-robustness.js = f3a6951fe711db
 tools/experiments/verify-search-reliability-stage2-independent.js = 18b756f019902b80da2383ced1d148f4fe5d0760
 ```
 
-The G2-02 sources are technical precedent/bindings only. G2-02 scientific rows and conclusions are not reused.
+G2-02 sourceはtechnical precedent / bindingに限る。G2-02 scientific rowとconclusionは再利用していない。
 
-## 4. Geometry and search contract
+## 4. geometryとsearch contract
 
 ```text
 representation = RAW-only
@@ -57,9 +57,9 @@ score tie tolerance = exact zero
 canonical best = deterministic TopSet representative only
 ```
 
-No search condition is a truth/reference oracle.
+いずれのsearch conditionもtruth / reference oracleとはみなさない。
 
-## 5. Stage 0
+## 5. Stage 0の記録
 
 Final technical version:
 
@@ -77,9 +77,9 @@ deterministic core = fc44c69eb5c164143af821da872a1b2f9d842f1369e9dcd98a1cdd14b42
 disposition = STAGE0-PASS
 ```
 
-Earlier v1/v2/v3 failures are retained as technical provenance and were not rerun as the same version/trigger.
+先行するv1 / v2 / v3のfailureはtechnical provenanceとして保持し、同じversion / triggerでは再実行していない。
 
-## 6. Stage 1
+## 6. Stage 1の記録
 
 ```text
 Stage ID = SILGM-S1-DEVELOPMENT-2026-09-03-v1
@@ -108,7 +108,7 @@ Repository compact record:
 
 - `results/stage-1/STAGE_1_RESULT_SUMMARY.json`
 
-## 7. Stage 2 input firewall
+## 7. Stage 2 input firewall（入力分離規則）
 
 Input materialization v2:
 
@@ -123,9 +123,9 @@ Stage 2 fresh seed access = false
 protected depth-10 access = false
 ```
 
-Input materialization v1 failed before Stage 2 seed access due to gzip transport encoding and is retained as control-plane provenance. No same-trigger rerun was used.
+input materialization v1は、gzip transport encodingが原因でStage 2 seed access前にfailedし、control-plane provenanceとして保持している。same-trigger rerunは行っていない。
 
-## 8. Stage 2 preauthorization
+## 8. Stage 2 preauthorizationの記録
 
 ```text
 workflow run = 33716437350
@@ -138,9 +138,9 @@ Stage 2 fresh seed access = false
 protected depth-10 access = false
 ```
 
-The audit checked 17 frozen bindings, 8 promoted candidate identities, 48 Stage-1 exclusions, production/independent separation, exact-test/Holm contract, resource ceilings and unarmed fail-closed behavior.
+auditでは、17件のfrozen binding、8件のpromoted candidate identity、48件のStage 1 exclusion、production / independent separation、exact-test / Holm contract、resource ceiling、unarmed fail-closed behaviorを確認した。
 
-## 9. Stage 2 formal execution
+## 9. Stage 2のformal execution
 
 ```text
 Stage ID = SILGM-S2-FORMAL-2026-09-03-v1
@@ -172,9 +172,9 @@ Repository compact records:
 - `results/stage-2/telemetry.json`
 - `results/stage-2/execution-summary.json`
 
-The durable GitHub Actions result artifact is the canonical full-row evidence record. The repository summary preserves all formal candidate labels, exact p-values, support counts and core hashes without duplicating full measurement rows.
+durable GitHub Actions result artifactをcanonical full-row evidence recordとする。repository summaryはfull measurement rowを複製せず、すべてのformal candidate label、exact p-value、support count、core hashを保持する。
 
-## 10. Formal candidate record
+## 10. formal candidateの記録
 
 ```text
 8 promoted
@@ -190,9 +190,9 @@ Confirmed candidate keys:
 2. `SILGM-SC2-NODE-BUDGET|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH`
 3. `SILGM-SC3-QUIESCENCE|SILGM-E3-RANKING-PREORDER-CHANGE|SILGM-G1-ROOT-LEGAL-WIDTH|HIGHER-IN-HIGH`
 
-Exact candidate-level values are in `results/stage-2/STAGE_2_RESULT_SUMMARY.json` and `STUDY_1_FINAL_REPORT.md`.
+exact candidate-level valueは`results/stage-2/STAGE_2_RESULT_SUMMARY.json`と`STUDY_1_FINAL_REPORT.md`に記録している。
 
-## 11. Execution integrity
+## 11. execution integrityの確認
 
 ```text
 Stage 1 authorized scientific executions = 1
@@ -204,27 +204,27 @@ Stage 1 seed extension = 0
 Stage 2 seed extension = 0
 ```
 
-## 12. Protected evidence
+## 12. protected evidenceの状態
 
-Standard initial RAW-root complete exact depth-10 holdout:
+standard initial RAW-root complete exact depth-10 holdoutの状態:
 
 **`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`**
 
-No Stage of SILGM-STUDY1 used it for measurement, selection, debugging, resource probing or interpretation.
+SILGM-STUDY1のいずれのStageでも、measurement、selection、debugging、resource probing、interpretationに使用していない。
 
-## 13. Interpretation and reuse boundary
+## 13. 解釈と再利用の境界
 
-Reproduction or downstream reuse must preserve these restrictions:
+reproductionまたはdownstream reuseでは、次の制限を維持しなければならない。
 
-- no validated transforms or canonical quotient;
-- no use of deeper/larger search as truth;
-- no causal interpretation of `Mechanism`;
-- no objective-best/game-theoretic/human-difficulty interpretation;
-- no rescue of NOT-CONFIRMED or NON-ESTIMABLE candidates;
+- validated transformまたはcanonical quotientは存在しない
+- deeper / larger searchをtruthとして使用しない
+- `Mechanism`を因果的に解釈しない
+- objective-best / game-theoretic / human-difficultyとして解釈しない
+- `NOT-CONFIRMED`または`NON-ESTIMABLE` candidateをrescueしない
 - no same-evidence rerun;
-- protected depth-10 remains sealed;
-- any new validation must be a separately authorized prospective Study/version.
+- protected depth-10はsealedのまま維持する
+- 新しいvalidationには、別途authorizeしたprospective Study / versionが必要である
 
-## 14. Main integration boundary
+## 14. `main` integrationの境界
 
-Study closure itself did not authorize main integration. A later explicit user instruction did authorize it, and fast-forward integration from research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec` completed on 2026-09-03. The research branch remains available for provenance.
+Study closure自体は`main` integrationをauthorizeしなかった。後の明示的なユーザー指示によってauthorizeされ、research branch tip `7f14538aa0ec3edd2045649025715219ffea17ec`からのfast-forward integrationが2026-09-03に完了した。research branchはprovenanceのため保持している。

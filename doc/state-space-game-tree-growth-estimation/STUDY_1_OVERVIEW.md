@@ -1,6 +1,6 @@
 # G2-12 第1研究概要 — 状態空間・ゲーム木成長の推定
 
-Program: **Research Generation 2 / G2-12**  
+研究世代: **Research Generation 2 / G2-12**
 Study ID: `SSGTGE-STUDY1`  
 状態: **完了 / technical-invalid closure**  
 正式判断: **`TECHNICAL-INVALID`**
@@ -33,7 +33,7 @@ primary seriesは`newRawStateCount`と`treeNodeOccurrences`、development backte
 
 Fresh depth 10をprimary holdout、depth 11をsecondary stress-testとして予約し、Stage 1完了前の生成・readを禁止した。
 
-## 3. Stage 0
+## 3. Stage 0 （Stageの記録）
 
 Stage 0 v1はsource-binding defectによりoutput前に`STAGE0-TECHNICAL-INVALID`となった。科学output前のtechnical failureだったため、科学contractを変更せず、新しいtechnical-entry v2としてsource bindingとworkflow fail-closed mechanicsだけをprospectively修正した。
 
@@ -45,7 +45,7 @@ Stage 0 v2 = STAGE0-TECHNICAL-PASS
 
 となった。
 
-## 4. Stage 1
+## 4. Stage 1 （Stageの記録）
 
 Stage 1は別source freeze・別authorizationで一度だけ実行した。
 

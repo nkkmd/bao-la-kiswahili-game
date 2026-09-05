@@ -173,7 +173,7 @@ Mtaji: n=1747, bias=-0.0052727836, ECE=0.0274862636,
        raw-score AUC=0.9722287380
 ```
 
-## 11. canonical evidence
+## 11. canonical evidence （証拠と成果物）
 
 ```text
 workflow run = 33038132423

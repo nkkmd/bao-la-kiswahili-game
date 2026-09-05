@@ -1,8 +1,8 @@
-# GCLD-STUDY1 — CURRENT STATUS
+# GCLD-STUDY1 — 現在の状態
 
 更新日: 2026-09-04
 
-## Formal state
+## formal state（正式状態）
 
 ```text
 Study = GCLD-STUDY1
@@ -19,7 +19,7 @@ repository readiness = MAIN-INTEGRATION-COMPLETE
 main integration = COMPLETE / FAST-FORWARD / source tip 28b64d1cb02904e0c57886ae2046cd681ab64387 / previous main 0bcd1695b6dbd044acf2eed91740d282c63dbb07 / force=false
 ```
 
-## Stage 2 population
+## Stage 2のpopulation
 
 ```text
 fresh candidate trajectories = 48 / 48 complete
@@ -35,7 +35,7 @@ production / independent = exact agreement
 
 1本だけresource-ineligibleとなったcandidateはseed `32220258`で、ply 68 checkpointのdepth-5 preflightが`RELAY_LIMIT`となった。これはscientific outcomeではなく、prospectively固定されたresource eligibility ruleによる除外である。root replacementやseed extensionは行っていない。
 
-## Formal decisions
+## formal decision（正式判断）
 
 ```text
 C1-DIRECTIONALITY-PATH-EFFICIENCY = CONFIRMED / ACTUAL-GREATER
@@ -47,7 +47,7 @@ C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE = CONFIRMED / ACTUAL-GREATER
 
 全5 endpointはestimable。exact two-sided sign testをtrajectory levelで実行し、5 endpointを固定したHolm family、FWER=`1/20`を適用した。
 
-## Formal evidence identity
+## formal evidenceのidentity
 
 ```text
 Stage 2 Actions run = 33810395545
@@ -61,7 +61,7 @@ exact-byte repository mirror commit = 622dae1ede85b3e8856a86a3b647a056f7ac08db
 
 Stage 2の最初のexecution wrapper run `33809894513`は、fresh seed selectionより前のidentity-firewall metadata checkで停止した。fresh seed readは0、scientific result artifactは0であり、`PRE-FRESH-ACCESS-TECHNICAL-ABORT / SCIENTIFIC-EXECUTION-NOT-CONSUMED`として別途固定済みである。同runのrerunは行わず、科学契約を変更しないtechnical execution V2で初回fresh scientific executionを実施した。
 
-## Repository readiness
+## repositoryの準備状態
 
 研究本体のscientific execution、Stage 2 canonical artifactのexact-byte mirror、study-local closure文書、root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、Research Generation 3の`README.md` / `CURRENT_STATUS.md`のcurrent-facing synchronization、およびpre-main consistency auditまで完了した。
 

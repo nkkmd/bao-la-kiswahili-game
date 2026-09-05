@@ -35,7 +35,7 @@ validated transform set = []
 
 これはtechnical / reproducibility上のnon-estimability closureであり、candidate transformを科学的に棄却した結果ではありません。
 
-## Stage progression
+## Stage progression （Stageの記録）
 
 ```text
 Stage 0 = STSCV-S0-TECHNICAL-2026-08-28-v1 — completed / technical
@@ -68,7 +68,7 @@ c7619ded9f682b499a02d023b40ac54ba4dc95ca
 
 Stage 2 outcome生成前に、authorizationをfrozen spec、candidate contract、Stage 1 firewall、decision rule、RAW identity、source hash、production runner、independent verifierへbindingしました。
 
-## Stage 2 formal workflow
+## Stage 2 formal workflow （実行記録）
 
 ```text
 workflow = STSCV Stage 2 Formal
@@ -129,7 +129,7 @@ canonicalization = NON-ESTIMABLE
 scientific mismatch interpretation = not authorized
 ```
 
-## authoritative representation
+## authoritative representation （表現）
 
 ```text
 RAW identity = pits,reserve,houseOwned,player,phase,winner,pending
@@ -156,7 +156,7 @@ SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 
 G2-03はこれらの判断を変更しません。
 
-## no-rescue closure
+## no-rescue closure （解釈上の境界）
 
 Verifier defectはfresh held-out Stage 2 outcome生成後に判明しました。
 
@@ -164,7 +164,7 @@ verifier sourceを修復して同じStage 2 evidenceを再実行し、formal dec
 
 これらのhypothesisをformalに再検証する場合は、新しいprospective Studyまたは明示的に新しいversioned protocol、新しいauthorization、新しいformal evidenceが必要です。
 
-## canonical closure documents
+## canonical closure documents （最終状態）
 
 - `STUDY_1_FINAL_REPORT.md`
 - `results/STAGE_2_FORMAL_RESULT.json`
@@ -173,7 +173,7 @@ verifier sourceを修復して同じStage 2 evidenceを再実行し、formal dec
 - `DECISION_REGISTER.md`
 - `REPRODUCIBILITY_INDEX.md`
 
-## repository state
+## repository state （リポジトリ状態）
 
 final documentationとCI auditの後、PR #69を通じて`main`へ統合済みです。
 

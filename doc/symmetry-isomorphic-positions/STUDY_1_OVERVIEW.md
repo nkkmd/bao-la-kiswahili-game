@@ -1,17 +1,17 @@
-# Symmetry / Isomorphic Positions Study 1 — Overview
+# Symmetry / Isomorphic Positions Study 1 — Overview （概要）
 
 Updated: 2026-08-24  
 Study ID: `SIP-STUDY1`  
 Status: **COMPLETED — FORMAL OUTCOMES NON-ESTIMABLE**
 
-> **Closure provenance clarification:** the executed Stage 1 v1 candidate-decision run was technically invalidated after the IDENTITY positive control exposed an exact-oracle reconstruction defect. Its fresh zero-mismatch observations are retained only as reproducible diagnostics. A corrected v2 path was drafted, but v2 was not authorized or executed. The canonical `NON-ESTIMABLE` result is therefore a **Study-level closure decision because no valid formal candidate-decision run was completed**, not a candidate validation or rejection.
+> **closure provenanceの注意:** 実行済みStage 1 v1 candidate-decision runは、IDENTITY positive controlがexact-oracle reconstruction defectを検出したため、technical-invalidとなった。fresh zero-mismatch observationは再現可能な診断情報としてのみ保存する。corrective v2 pathは設計したが、承認も実行もしていない。したがってcanonical `NON-ESTIMABLE`は、**有効なformal candidate-decision runを完了できなかったことによるStudy-level closure decision**であり、candidateのvalidationやrejectionではない。
 
 
 ## 研究課題
 
 Bao の盤面・player・move transformation が、visual similarity ではなく、state validity、exact legal-move set、transition、terminal/winner semantics を保存する rule-semantic graph isomorphism であるかを、prospectively frozen bounded domains で検証した。
 
-## Formal candidate set
+## Formal candidate set （日本語の要点）
 
 - `SIP-T01-SEAT-SWAP-LOCAL`
 - `SIP-T02-LR-MTAJI-HOUSELESS`
@@ -19,7 +19,7 @@ Bao の盤面・player・move transformation が、visual similarity ではな�
 
 candidate semantics はformal outcome生成前にfreezeされ、outcome後の修正、phase除外、root/depth縮小、direction mapping変更等は行っていない。
 
-## Fresh historically reachable bounded graphs
+## Fresh historically reachable bounded graphs （日本語の要点）
 
 Stage 0のoutcome-blind technical sizingにより、fresh formal seed block `22910001..22910064`、各stratum 8 roots、local depth 3をfreezeした。
 
@@ -35,7 +35,7 @@ Technically invalidated v1 executionのfresh-domain diagnosticではproduction�
 
 したがってinvalidated v1のfresh bounded-local source graphsだけを見れば、全candidateはG1–G8相当のprospective scopeでzero mismatchだった。ただしv1はcandidate-decision runとして無効であり、この観測をformal validationへ使わない。
 
-## Mandatory exact-oracle anchor
+## Mandatory exact-oracle anchor （日本語の要点）
 
 しかしpreregistered Stage 1は、Restricted Endgame Study 1のimmutable 8-state raw oracleをG9–G11 anchorとして必須化し、さらにproduction / independent equalityをG12として要求した。
 
@@ -43,7 +43,7 @@ IDENTITY positive control自身がoracle anchorでFAILしたため、nontrivial 
 
 この診断はRestricted Endgame Study 1のartifactやformal decisionを変更しない。本Studyがそのartifactをstate-transform anchorとして利用する際のintegrity limitationとしてのみ記録する。
 
-## Formal result
+## Formal result （結果）
 
 v1ではproduction / independent oracle accountingが一致せずG12相当のequality requirementを満たさなかったうえ、IDENTITY failureによりrun自体がtechnical invalidationされた。corrected v2は未承認・未実行である。したがってStudy-level closureとして5 preregistered outcomesすべてを
 
@@ -59,7 +59,7 @@ NON-ESTIMABLE = 5
 
 fresh zero-mismatch evidenceをformal validationへ昇格させるrescueは行わない。
 
-## Downstream boundary
+## Downstream boundary （適用範囲と制限）
 
 本Study 1からformalにvalidatedされたtransformは0件である。したがって、
 
@@ -72,7 +72,7 @@ fresh zero-mismatch evidenceをformal validationへ昇格させるrescueは行�
 
 次のState Space Studyを直ちに行う場合はraw state identityで進める必要がある。symmetry reductionを使いたい場合は、immutable upstream oracleを変更せず、anchor-integrity問題を独立に扱う新しいprospective Studyを先に設計する必要がある。
 
-## Canonical artifacts
+## Canonical artifacts （証拠と成果物）
 
 - `preregistration/CANDIDATE_TRANSFORMS.json`
 - `preregistration/STAGE_1_FORMAL_SPEC.json`

@@ -1,8 +1,8 @@
-# BRMGI-STUDY1 — Reproducibility Index
+# BRMGI-STUDY1 — 再現性索引
 
 更新日: 2026-09-03
 
-## Baseline
+## baseline（開始時点）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -12,15 +12,15 @@ research branch = research/g3-06-bao-rule-mechanism-geometry-intervention
 Study ID = BRMGI-STUDY1
 ```
 
-## Initial program authorization (historical)
+## 最初のprogram authorization（historical）
 
 - `../research-program-decisions/2026-09-02-post-g3-05-g3-06-authorization-review.md`
 - `../research-generation-3/checkpoints/2026-09-02-post-g3-05-g3-06-authorization-review.md`
 - decision: `G3-06-AUTHORIZED`
-- authorization scope: prospective Study definition + technical-only Stage 0
-- fresh Stage 1 at this initial review point: NOT AUTHORIZED; Stage 1 was later separately authorized exactly once after Stage 0 PASS and preauthorization tooling audit
+- authorization scopeはprospective Study definitionとtechnical-only Stage 0に限った
+- 最初のreview時点のfresh Stage 1は`NOT AUTHORIZED`だった。その後、Stage 0 PASSとpreauthorization tooling auditを経て、Stage 1を別途exactly onceとしてauthorizeした
 
-## Prospective contract
+## 結果を見る前に固定したcontract
 
 Canonical human-readable documents:
 
@@ -34,7 +34,7 @@ Machine-readable preregistration:
 
 - `prereg/STUDY_1_SPEC.json`
 
-Initial machine preregistration commit:
+最初のmachine preregistration commit:
 
 `9ab2f7bb79c446df1431175686383271f341edd3`
 
@@ -58,9 +58,9 @@ README initial commit:
 
 `503f46dd82f00cea1555cac704ae1c16f17211b5`
 
-All of these were committed before G3-06 fresh scientific evidence generation/read.
+これらはすべて、G3-06 fresh scientific evidenceを生成またはreadする前にcommitした。
 
-## Representation / rule binding
+## representation / rule binding （概要）
 
 ```text
 rule runtime source = public/engine.js
@@ -72,9 +72,9 @@ validated transforms = []
 canonicalization = NOT AUTHORIZED
 ```
 
-## Eligible instrument
+## eligible instrument （概要）
 
-Formal measurement source is LGTGMIV F1-F5 only.
+formal measurement sourceはLGTGMIV F1〜F5に限る。
 
 Canonical upstream records:
 
@@ -85,7 +85,7 @@ Formal status:
 
 `LGTGMIV-STUDY1 = CLOSED / FORMAL-ELIGIBLE-ALL`
 
-## Frozen event / endpoint contract
+## 固定済みevent / endpoint contract
 
 Formal event families:
 
@@ -106,9 +106,9 @@ Formal metric universe:
 - `BRMGI-M5-CUMULATIVE-TREE-RAW-RATIO`
 - `BRMGI-M6-UNIT-WIDTH-OCCUPANCY-FRACTION`
 
-Candidate universe at freeze = `3 × 6 = 18` event/metric combinations.
+freeze時点のcandidate universeは`3 × 6 = 18`件のevent / metric combinationである。
 
-## Stage IDs
+## Stage ID （Stageの記録）
 
 ```text
 BRMGI-S0-TECHNICAL-2026-09-02-v1 / TECHNICAL-INVALID / NO RERUN
@@ -117,7 +117,7 @@ BRMGI-S1-DEVELOPMENT-2026-09-02-v1 / TECHNICAL-INVALID
 BRMGI-S2-FORMAL-2026-09-02-v1 / NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## Seed namespaces
+## seed namespace （概要）
 
 ```text
 technical-only = 31609001..31609008 / scientific use prohibited
@@ -125,11 +125,11 @@ Stage 1 = 31610001..31610256 / CONSUMED / CLOSED TO SAME-EVIDENCE REUSE
 Stage 2 = 31620001..31620384 / NOT CONSUMED / NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-Repository search before freeze confirmed Stage 1 / Stage 2 namespaces were not already used. `31600001..31600256` was already present in the independent public-AI engineering track, so G3-06 technical-only seeds were deliberately moved to `31609001..31609008` rather than reusing that range.
+freeze前のrepository searchにより、Stage 1 / Stage 2 namespaceが未使用であることを確認した。`31600001..31600256`は独立したpublic-AI engineering trackですでに使用されていたため、その範囲を再利用せず、G3-06 technical-only seedを意図的に`31609001..31609008`へ移した。
 
-## Freshness firewall
+## freshness firewall （証拠分離規則）
 
-Upstream identity-only exclusions were materialized before Stage 1 scientific authorization from:
+upstream identity-only exclusionは、Stage 1 scientific authorization前に次からmaterializeした。
 
 - LGTGMIV-STUDY1
 - EBRWS-STUDY1
@@ -137,13 +137,13 @@ Upstream identity-only exclusions were materialized before Stage 1 scientific au
 - SFCDF-STUDY1
 - BECT-STUDY1
 
-Outcome fields retained = false. Final identity-only manifest counts: root RAW identities 149, source trajectory identities 124, opening-prefix identities 67; G3-05 retained only 25 `rootRawSha256` identities and no partial scientific fields. `identityCoreSha256 = a225b8c15d6da956dd1afbdc0a64c6d40b9c77add2e464d34f11dfc1278e2182`.
+outcome fieldは保持していない。final identity-only manifestはroot RAW identity 149件、source trajectory identity 124件、opening-prefix identity 67件である。G3-05からは25件の`rootRawSha256` identityだけを保持し、partial scientific fieldは保持していない。`identityCoreSha256 = a225b8c15d6da956dd1afbdc0a64c6d40b9c77add2e464d34f11dfc1278e2182`である。
 
-G3-03 diagnostic values/directions, G3-04 candidate values/directions and G3-05 partial telemetry are not scientific selection inputs.
+G3-03 diagnostic value / direction、G3-04 candidate value / direction、G3-05 partial telemetryはscientific selection inputではない。
 
-Stage 2 must exclude Stage 1 source seed, full trajectory, first-16 prefix, RAW pre/post root, root pair, bound move, event-window and same-root event/control pair identities.
+Stage 2では、Stage 1 source seed、full trajectory、first-16 prefix、RAW pre / post root、root pair、bound move、event-window、same-root event / control pair identityを除外しなければならない。
 
-## Actual Stage 0 / Stage 1 provenance
+## 実際のStage 0 / Stage 1 provenance
 
 Stage 0 v1:
 
@@ -192,18 +192,18 @@ execution-summary SHA-256 = a3fdf314f12d6853e337f13b6c252eaebf27edb69c96dab53829
 exact-byte mirror commit = b8f9fe0e2d5008be2d41b3b8271fa325144f82fc
 ```
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
 ```text
 standard initial RAW-root complete exact depth-10 holdout
 = SEALED / NOT GENERATED / NOT READ
 ```
 
-No BRMGI action may generate, partially generate, read, peek, trial-enumerate or resource-estimate this holdout without separate explicit authorization.
+別途明示的なauthorizationがない限り、BRMGI actionからこのholdoutをgenerate、partially generate、read、peek、trial-enumerate、resource-estimateしてはならない。
 
-## Execution-integrity contract
+## execution-integrity contract （実行記録）
 
-The frozen prospective execution-integrity contract required the following for any fresh scientific Stage:
+固定済みprospective execution-integrity contractは、すべてのfresh scientific Stageに次を要求する。
 
 ```text
 max authorized scientific executions = 1
@@ -219,17 +219,17 @@ scientific recomputation for recovery prohibited
 execution-count audit mandatory
 ```
 
-## Relay-limit boundary
+## relay-limitの境界
 
-BECT-STUDY1 relay-limit partial telemetry is not read or reused as BRMGI scientific evidence.
+BECT-STUDY1のrelay-limit partial telemetryは、BRMGI scientific evidenceとしてreadまたはreuseしていない。
 
-Only the technical failure class is carried forward as design information:
+technical failure classだけをdesign informationとして引き継ぐ。
 
-- source/direct selected move relay-limit -> frozen technical ineligibility before geometry;
-- relay-limit inside a required depth-5 reconstruction -> Stage `TECHNICAL-INVALID` fail-closed;
-- no root replacement / seed extension / repair-and-same-evidence rerun.
+- source / direct selected moveのrelay-limitは、geometry測定前に固定済みtechnical ineligibilityとして扱う
+- 必須depth-5 reconstruction内のrelay-limitは、Stageを`TECHNICAL-INVALID`としてfail closedする
+- root replacement / seed extension / repair後のsame-evidence rerunは行わない
 
-## Current protected state
+## 現在のprotected state
 
 ```text
 fresh Stage 1 authorized executions = 1

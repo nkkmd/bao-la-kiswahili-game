@@ -36,7 +36,7 @@ checkpoints/2026-08-29-stage0-f09-static-audit.md
 checkpoints/2026-08-29-stage0-technical-pass.md
 ```
 
-## RAW identity
+## RAW identity （識別情報）
 
 ```text
 pits,reserve,houseOwned,player,phase,winner,pending
@@ -53,7 +53,7 @@ Stage 2 = 29010001..29018192 / 8192 / RESERVED / UNCONSUMED
 
 Stage 0 closure時点では、Stage 1/2のscientific authorizationは存在していなかった。
 
-## Stage 0 — production / independent source
+## Stage 0 — production / independent source （Stageの記録）
 
 ```text
 tools/experiments/lib/mdft-stage0-production.js
@@ -132,7 +132,7 @@ replacement/refit = NOT AUTHORIZED
 
 詳細は`checkpoints/2026-08-29-stage0-f09-static-audit.md`を参照する。
 
-## F10 — preflight
+## F10 — preflight （日本語の要点）
 
 ```text
 GitHub Actions run = 33256932295

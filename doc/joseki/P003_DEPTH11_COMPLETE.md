@@ -15,7 +15,7 @@
 
 consensus手がSouth値-45で首位を維持した。自己対局勝数首位手は-257点下であり、depth 11でも推奨切替はない。
 
-The retry changes the time limit for one child only. All searches otherwise use the same phase2, bao, quiescence-depth-1 configuration and deterministic seed scheme.
+retryで変更したのは1件のchildに対するtime limitだけである。その他のsearchは、同じphase2、bao、quiescence-depth-1 configurationとdeterministic seed schemeを使用する。
 
 ## 完全性
 

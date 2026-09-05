@@ -2,7 +2,7 @@
 
 更新日: 2026-09-02
 
-## 1. Formal decision
+## 1. formal decision（正式判断）
 
 ```text
 Study = TCTGD-STUDY1
@@ -23,7 +23,7 @@ Stage 1ではfresh development evidenceをexactly one authorized executionで生
 
 したがってformal decisionは **`CLOSED / TECHNICAL-INVALID`** とする。
 
-## 2. Prospective scope
+## 2. 結果を見る前に固定したscope
 
 Representation contract:
 
@@ -48,9 +48,9 @@ Frozen Stage 1 population:
 
 - seed block `31310001..31310192`
 - 12 paired trajectories
-- 12 Namua roots at exact ply 24
-- 12 first nonterminal Mtaji roots at ply >=44
-- geometry-blind / endpoint-blind / outcome-blind seed-ascending selection
+- exact ply 24のNamua root 12件
+- ply 44以降で最初のnonterminal Mtaji root 12件
+- geometry-blind / endpoint-blind / outcome-blindなseed-ascending selection
 
 Frozen candidate endpoints:
 
@@ -60,7 +60,7 @@ Frozen candidate endpoints:
 4. `TCTGD-C4-RECONVERGENCE-ONSET-SCORE`
 5. `TCTGD-C5-ROOT-BRANCH-OVERLAP-FRACTION`
 
-## 3. Pre-Stage-1 technical correction boundary
+## 3. Stage 1前のtechnical correction boundary
 
 Stage 1 fresh evidence生成前に、branch-only `workflow_dispatch` がGitHub REST上でHTTP 404となるcontrol-plane limitationをnon-scientific tooling smokeで確認した。
 
@@ -68,13 +68,13 @@ fresh evidenceに触れず、旧prospective specを保存したままtechnical-e
 
 - scientific execution triggerを専用path-filtered push triggerへ変更
 - trigger commit以外のbranch advancementを許可しないpre-computation lease gate
-- durable artifact upload before repository mirror
+- repository mirror前のdurable artifact upload
 - upstream scientific outcomeを直接selectionへ渡さないidentity-only firewall manifest
-- Stage 1 scientific content baseline `3b31c0e853b99d50e6e4cd924984342535c22547`
+- Stage 1 scientific contentのbaselineは`3b31c0e853b99d50e6e4cd924984342535c22547`
 
 この変更ではseed、population、relative horizon、candidate endpoint、promotion gate、Stage 2 formal test、resource ceiling、claim boundaryを変更していない。
 
-## 4. Stage 1 authorized execution
+## 4. authorizeされたStage 1 execution
 
 Authorization:
 
@@ -107,9 +107,9 @@ ZIP SHA-256 = cb03924420df2b280398f5493283dc47fae01bb4e22afdd18560d42b5bf1139b
 
 Canonical files were durably uploaded before repository mirror and then materialized to the research branch. G3-02で生じた「fresh resultはrunner内に存在したがpush failure後にcanonical bytesが失われた」というfailure modeは再発していない。
 
-## 5. Stage 1 observed result
+## 5. Stage 1で観測した結果
 
-Population and resource boundary:
+populationとresource boundary:
 
 ```text
 selectedPairCount = 12
@@ -122,7 +122,7 @@ pairComparisonExact = true
 developmentExact = true
 ```
 
-Production / independent canonical stage scientific core SHA-256:
+production / independent canonical Stage scientific coreのSHA-256:
 
 ```text
 production = d44393d6fe9902860d2b5fe3a5a3a3938f7165b40f46e694bd507cf231fcd62f
@@ -140,7 +140,7 @@ Runnerがdiagnostically算出したpromotion相当の候補は次の4つだっ�
 
 ただしこれらはformal promoted candidateではない。Stage 1 global integrity gateがfailしたため、formal promoted candidate setは **`[]`** とする。
 
-## 6. Technical-invalid cause
+## 6. technical-invalidの原因
 
 Frozen runnerはroot-level agreementについて、production / independentの`pm.tctgd`と`im.tctgd`をNode.js `util.isDeepStrictEqual`で比較した。
 
@@ -165,7 +165,7 @@ canonical production / independent stage scientific core SHA = identical
 
 しかし、frozen protocolは`allRootExact`および`stageScientificExact`をmandatory integrity gateとしていた。fresh scientific seed access後にこの比較方法を変更すればsame-evidence rescueになるため、修正して再判定しない。
 
-## 7. No-rescue closure
+## 7. no-rescue closure （最終状態）
 
 Stage 1 seed block `31310001..31310192`はconsume済みであり、no-rescue boundaryはactiveである。
 
@@ -187,17 +187,17 @@ formal promoted candidate set = []
 Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ```
 
-## 8. Stage 2 and protected evidence
+## 8. Stage 2とprotected evidence
 
 Stage 2 seed block `31320001..31320288`は未消費である。
 
 Stage 2 authorization requirementであるvalid Stage 1 + nonempty frozen promoted setを満たさないため、Stage 2はauthorizeしない。
 
-Standard initial RAW-root complete exact depth-10 holdout remains:
+standard initial RAW-root complete exact depth-10 holdoutは、次の状態を維持する。
 
 **`SEALED / NOT GENERATED / NOT READ`**
 
-## 9. Scientific interpretation boundary
+## 9. 科学的な解釈の境界
 
 このclosureからformalに主張できるのは、G3-03 Stage 1がfrozen technical verification gateを通過しなかったことだけである。
 
@@ -211,7 +211,7 @@ Diagnostic bytesから、Bao一般について以下をformalに結論しては�
 
 C1–C4の方向は、technical-invalid runに付随するdiagnostic provenanceとして保存するのみで、confirmatory evidenceではない。
 
-## 10. Future methodological lesson
+## 10. 将来に向けたmethodological lesson
 
 将来の独立研究では、cross-implementation exact agreementを判定するとき、scientific identityをprototype-sensitive runtime object equalityに依存させず、prospectively fixed canonical scientific serializationまたは明示的schema projection同士で比較することが望ましい。
 

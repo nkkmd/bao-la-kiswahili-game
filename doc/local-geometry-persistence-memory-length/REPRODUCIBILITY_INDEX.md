@@ -1,8 +1,8 @@
-# LGPML-STUDY1 — Reproducibility Index
+# LGPML-STUDY1 — 再現性索引
 
 更新日: 2026-09-03
 
-## Repository identity
+## repository identity（リポジトリ識別情報）
 
 ```text
 repository = nkkmd/bao-la-kiswahili-game
@@ -17,7 +17,7 @@ Stage 1 trigger commit = bfd0f7b0f754b4ffc14faae018a2ceb52647677f
 Stage 1 exact-result mirror commit = 79fb4c51940d255e05c8e1c5469f1f759b81bf26
 ```
 
-## Frozen contracts
+## 固定済みcontract
 
 - `prereg/STUDY_1_SPEC.json`
 - `prereg/STAGE_0_TECHNICAL_SPEC.json`
@@ -25,7 +25,7 @@ Stage 1 exact-result mirror commit = 79fb4c51940d255e05c8e1c5469f1f759b81bf26
 - `prereg/STAGE_2_FORMAL_SPEC.json`
 - `STUDY_1_PROTOCOL.md`
 
-## Frozen upstream bindings
+## 固定済みupstream binding
 
 ```text
 public/engine.js = 2f7885fa1ae38ddef5f14bbe2fecd4ca4fb84c7c
@@ -40,7 +40,7 @@ Stage 1 authorization verifier = bcb8476692f1b80776bb03381dc696e6be03a89c
 Stage 1 workflow = 117c44e853c184565425e7305bc35d957831cc20
 ```
 
-## Stage namespaces
+## Stage namespace （Stageの記録）
 
 ```text
 technical = 31809001..31809008 / scientific use prohibited
@@ -48,7 +48,7 @@ Stage 1 = 31810001..31810256 / CONSUMED / same-evidence rerun prohibited
 Stage 2 = 31820001..31820384 / NOT CONSUMED
 ```
 
-## Stage 0
+## Stage 0の記録
 
 ```text
 Stage ID = LGPML-S0-TECHNICAL-2026-09-03-v1
@@ -69,7 +69,7 @@ protected depth-10 access = false
 
 Canonical compact result: `results/stage-0-v1/STAGE_0_TECHNICAL_RESULT.json`。
 
-## Upstream identity-only firewall
+## upstream identity-only firewall （証拠分離規則）
 
 ```text
 materialization = PASS
@@ -85,7 +85,7 @@ protected depth-10 access = false
 
 Canonical manifest: `prereg/UPSTREAM_IDENTITY_FIREWALL.json`。
 
-## Stage 1 authorization / exactly-one execution
+## Stage 1 authorization / exactly-once実行
 
 ```text
 Stage ID = LGPML-S1-DEVELOPMENT-2026-09-03-v1
@@ -108,7 +108,7 @@ same-evidence rerun = PROHIBITED
 protected depth-10 access = false
 ```
 
-## Stage 1 canonical technical-invalid result
+## Stage 1のcanonical technical-invalid result
 
 ```text
 stageDisposition = STAGE1-TECHNICAL-INVALID
@@ -118,11 +118,11 @@ promoted candidate count = 0
 stage2AutomaticallyAuthorized = false
 ```
 
-Workflow log recorded 9 complete trajectory aggregations before the technical error:
+workflow logには、technical error前に完了したtrajectory aggregation 9件が記録されている。
 
-`31810001, 31810003, 31810004, 31810010, 31810015, 31810016, 31810024, 31810025, 31810028`.
+対象seedは`31810001, 31810003, 31810004, 31810010, 31810015, 31810016, 31810024, 31810025, 31810028`である。
 
-These are technical provenance only and are not a valid complete Stage 1 scientific summary.
+これらはtechnical provenanceに限られ、有効かつ完全なStage 1 scientific summaryではない。
 
 Durable result artifact:
 
@@ -145,7 +145,7 @@ Exact mirror commit:
 
 scientific recomputation during mirror = false。
 
-## Stage 2 fresh-free tooling and non-execution
+## Stage 2のfresh-free toolingと未実行状態
 
 ```text
 Stage ID = LGPML-S2-FORMAL-2026-09-03-v1
@@ -163,7 +163,7 @@ protected depth-10 access = false
 
 Valid Stage 1 completionとnonempty promoted setがないため、Stage 2 authorization prerequisiteは満たさない。
 
-## Formal closure
+## formal closure（正式な終了状態）
 
 ```text
 LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID
@@ -176,23 +176,23 @@ same-evidence rescue = PROHIBITED
 
 Canonical scientific interpretationは`STUDY_1_FINAL_REPORT.md`を参照する。partial trajectory outputやtechnical error diagnosticをscientific geometry-persistence evidenceとして再利用しない。
 
-## Historical pre-integration boundary
+## 統合前のhistorical boundary
 
-At G3-08 scientific closure, `main` integration was **NOT AUTHORIZED** and remote `main` was `9f6abd3c9b146bb88c11dd04963052300e4cdc3b`. This is retained as closure-time provenance; the later authorized integration is recorded below.
+G3-08 scientific closure時点では`main` integrationは**NOT AUTHORIZED**であり、remote `main`は`9f6abd3c9b146bb88c11dd04963052300e4cdc3b`だった。これはclosure時点のprovenanceとして保持し、その後authorizeされたintegrationを下記に記録する。
 
-## Protected evidence
+## protected evidence （証拠の状態）
 
-Standard initial RAW-root complete exact depth-10 holdout = `SEALED / NOT GENERATED / NOT READ / NOT PEEKED`。
+standard initial RAW-root complete exact depth-10 holdoutは`SEALED / NOT GENERATED / NOT READ / NOT PEEKED`である。
 
 <!-- LGPML-FINAL-DOC-FOLLOWUP -->
-## Final document consistency follow-up
+## 文書一貫性の最終follow-up
 
-A post-closure read-through found stale downstream/lifecycle wording in inherited G3-04..G3-07 current-facing documents and one duplicate obsolete G3-08 status line in the RG3 README. These are repository-documentation metadata only; no scientific content changed. The correction is recorded in `checkpoints/2026-09-03-final-document-consistency-followup-pass.md`.
+closure後のread-throughで、既存G3-04〜G3-07のcurrent-facing文書に残る古いdownstream / lifecycle表現と、RG3 README内のobsoleteなG3-08 status line 1件の重複を発見した。これらはrepository-documentation metadataだけの問題であり、scientific contentは変更していない。修正は`checkpoints/2026-09-03-final-document-consistency-followup-pass.md`へ記録した。
 
-At that follow-up checkpoint, the then-current state was: G3-08 / `LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID`; G3-09 `NOT AUTHORIZED`; protected depth-10 sealed; G3-08 main integration not yet performed. Those statements are historical checkpoint provenance. Current program state is authoritative in `../research-generation-3/CURRENT_STATUS.md`; G3-08 integration is complete and G3-09 / `CLGR-STUDY1` is now `CLOSED / TECHNICAL-INVALID`.
+そのfollow-up checkpoint時点の状態は、G3-08 / `LGPML-STUDY1 = CLOSED / TECHNICAL-INVALID`、G3-09 `NOT AUTHORIZED`、protected depth-10 sealed、G3-08 main integration未実行だった。これらはhistorical checkpoint provenanceである。current program stateは`../research-generation-3/CURRENT_STATUS.md`を正本とし、現在G3-08 integrationは完了し、G3-09 / `CLGR-STUDY1`も`CLOSED / TECHNICAL-INVALID`である。
 
 <!-- LGPML-G3-08-MAIN-INTEGRATION -->
-## Main integration
+## `main`への統合
 
 2026-09-03、明示的ユーザー指示後にremote `main`をpre-integration SHA `9f6abd3c9b146bb88c11dd04963052300e4cdc3b`からaudited G3-08 research tip `72bd208267359f461e9dbbde938bb952eb01b91c`へfast-forwardした。`force=false`。squash、rebase、history rewrite、scientific recomputationは行っていない。
 

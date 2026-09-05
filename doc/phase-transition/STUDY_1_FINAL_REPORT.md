@@ -1,4 +1,10 @@
-# Study 1 Final Report
+# Study 1 Final Report （結論）
+
+## 日本語での結論と読み方
+
+中心現象はcapture-branch-expansionである。fixed hard / bao / depth 2ではphase2 > legacy、depth 3ではlegacy > phase2をそれぞれCONFIRMEDとしたが、universal Bao phase transitionは主張しない。
+
+以下には、Study closure時に固定した英語の詳細記録が含まれる。canonical decision token、数値、seed、hash、実行ID、authorization、evidence boundaryを再解釈しないため原文を保持している。初めて読む場合は`STUDY_1_OVERVIEW.md`と`CURRENT_STATUS.md`を先に参照する。
 
 ## Baoにおける局面相転移点の発見と、capture-branch-expansionの確認
 
@@ -8,7 +14,7 @@ Branch: `research/forced-capture-regime-analysis`
 
 ---
 
-## 1. Executive summary
+## 1. Executive summary （日本語の要点）
 
 Study 1 investigated whether Bao la Kiswahili games contain reproducible strategic-transition candidates that can be detected from board/legal-move structure, distinguished from transient fluctuations and formal rule-state transitions, and reproduced under new seeds and controlled AI search conditions.
 
@@ -33,7 +39,7 @@ No Stage B–E interpretation changes or rescues these decisions.
 
 ---
 
-## 2. Study scope
+## 2. Study scope （適用範囲と制限）
 
 The original master plan `doc/PHASE_TRANSITION_RESEARCH_PLAN.md` defined broad RQ1–RQ10 covering formal phase, reserve, nyumba, front-row structure, mobility, forcing, and state classification.
 
@@ -49,7 +55,7 @@ The Study 1 completion plan is:
 
 ---
 
-## 3. Data and analysis hierarchy
+## 3. Data and analysis hierarchy （日本語の要点）
 
 The dependency hierarchy used throughout the later study is:
 
@@ -61,9 +67,9 @@ Formal search-profile comparisons E-018/E-019/E-020 use paired game-level endpoi
 
 ---
 
-## 4. Exploratory discovery and phenotype construction
+## 4. Exploratory discovery and phenotype construction （日本語の要点）
 
-### 4.1 Pilot corpus
+### 4.1 Pilot corpus （日本語の要点）
 
 The pilot-v2 corpus contained:
 
@@ -75,13 +81,13 @@ The pilot-v2 corpus contained:
 
 Category A was constructed after forcing ablation so that candidate candidacy required at least two non-forcing signal groups rather than relying on the forced-capture indicator itself.
 
-### 4.2 Forced-capture regime analysis
+### 4.2 Forced-capture regime analysis （日本語の要点）
 
 A forced-capture regime was defined as a maximal contiguous sequence of observations with `forcedCapture === true`.
 
 All exploratory Category-A archetypes were found inside such regimes, making regime lifecycle structure the central frame for later interpretation.
 
-### 4.3 Candidate phenotype classification
+### 4.3 Candidate phenotype classification （日本語の要点）
 
 Candidate analysis separated:
 
@@ -101,7 +107,7 @@ The expansion classifier was fixed before later confirmation experiments with:
 
 Precursor gates have precedence over expansion classification.
 
-### 4.4 Candidate/control enrichment
+### 4.4 Candidate/control enrichment （日本語の要点）
 
 In the exploratory control analysis:
 
@@ -111,7 +117,7 @@ In the exploratory control analysis:
 
 This established `capture-branch-expansion` as the main candidate-side phenotype for confirmation work.
 
-### 4.5 Terminal-near forcing-release confound
+### 4.5 Terminal-near forcing-release confound （日本語の要点）
 
 Forcing-release precursors were found to be concentrated near terminal positions; the earlier interpretation of forcing release as an independent strategic transition was withdrawn for Study 1.
 
@@ -119,7 +125,7 @@ This was an important negative result: not every visually sharp local transition
 
 ---
 
-## 5. Formation-process evidence
+## 5. Formation-process evidence （証拠と成果物）
 
 The initial formation analysis of five exploratory expansion intervals found:
 
@@ -140,9 +146,9 @@ This is why Stage C treats the second-independent-feature-group criterion as onl
 
 ---
 
-## 6. Confirmation chronology
+## 6. Confirmation chronology （日本語の要点）
 
-### E-010 — unused-seed confirmation
+### E-010 — unused-seed confirmation （日本語の要点）
 
 Design:
 
@@ -172,7 +178,7 @@ Trajectory-ply sensitivity:
 
 The effect direction survived deduplication but did not alter the formal decision.
 
-### E-011 — evaluator/depth/search robustness screen
+### E-011 — evaluator/depth/search robustness screen （日本語の要点）
 
 Five fixed conditions, 400 games each:
 
@@ -188,7 +194,7 @@ The phase2 family preserved candidate enrichment direction after trajectory-ply 
 
 This motivated a new direct paired experiment rather than reinterpretation of E-011.
 
-### E-017 — independent structural confirmation
+### E-017 — independent structural confirmation （日本語の要点）
 
 Design:
 
@@ -213,9 +219,9 @@ Again, the formal threshold was not altered post hoc.
 
 ---
 
-## 7. Search-profile dependence
+## 7. Search-profile dependence （日本語の要点）
 
-### 7.1 E-018 / H16 — fixed depth2 direct comparison
+### 7.1 E-018 / H16 — fixed depth2 direct comparison （日本語の要点）
 
 Condition:
 
@@ -259,7 +265,7 @@ Trajectory-ply secondary:
 
 The secondary contrast is smaller than the raw/game-level contrast but retains the P2 > LG direction.
 
-### 7.2 E-019 / H17 — generalization test
+### 7.2 E-019 / H17 — generalization test （日本語の要点）
 
 Preregistered strata:
 
@@ -283,7 +289,7 @@ Formal global decision: **`not-confirmed`**.
 
 The D3 result was strongly opposite to the preregistered direction. It was not re-labeled as a confirmatory legacy > phase2 result inside E-019.
 
-### 7.3 E-020 / H18 — prospective independent D3 reversal replication
+### 7.3 E-020 / H18 — prospective independent D3 reversal replication （日本語の要点）
 
 Condition:
 
@@ -320,11 +326,11 @@ This confirmation does not turn E-019/H17 into a confirmed global interaction hy
 
 ---
 
-## 8. Stage B — mechanism decomposition
+## 8. Stage B — mechanism decomposition （Stageの記録）
 
 Stage B used only fixed formal corpora and archived secondary outputs. No games were generated and no formal decision was changed.
 
-### 8.1 Candidate availability versus manifestation
+### 8.1 Candidate availability versus manifestation （日本語の要点）
 
 The observed game-level expansion contrast can be descriptively factored as:
 
@@ -339,7 +345,7 @@ The larger multiplicative component was manifestation rather than candidate avai
 
 This factorization is descriptive, not causal mediation.
 
-### 8.2 Forced-capture morphology
+### 8.2 Forced-capture morphology （日本語の要点）
 
 The profile with the higher expansion-game rate consistently occupied a more expansion-compatible morphology:
 
@@ -354,7 +360,7 @@ At D2 these properties favor phase2; at D3 they favor legacy.
 
 Instantaneous candidate capture-option count and capture delta alone do not track the favored profile across depths and therefore do not explain the reversal.
 
-### 8.3 Fixed categorical context
+### 8.3 Fixed categorical context （日本語の要点）
 
 Restricting to the common recorded context `namua × inside-regime` did not eliminate the reversal:
 
@@ -364,7 +370,7 @@ Restricting to the common recorded context `namua × inside-regime` did not elim
 
 Therefore coarse phase composition and simple regime membership do not explain the profile reversal.
 
-### 8.4 Fixed classifier-gate decomposition
+### 8.4 Fixed classifier-gate decomposition （日本語の要点）
 
 Using only pre-existing classifier defaults, the largest profile separation appears in:
 
@@ -376,7 +382,7 @@ The fixed capture-delta gate contributes comparatively little after earlier gate
 
 Because these are components of the phenotype classifier, this is a decision-path decomposition rather than independent predictor validation.
 
-### 8.5 Trajectory-ply deduplication
+### 8.5 Trajectory-ply deduplication （日本語の要点）
 
 Final Stage B sensitivity:
 
@@ -390,7 +396,7 @@ Deduplication attenuates effect magnitude but preserves the D2/D3 ordering rever
 
 Large repeated trajectory groups therefore amplify raw candidate-row contrasts but cannot explain the reversal itself.
 
-### 8.6 Stage B structural explanation
+### 8.6 Stage B structural explanation （Stageの記録）
 
 The strongest explanation supported by existing data is:
 
@@ -400,7 +406,7 @@ The remaining question — why depth changes which search profile reaches this s
 
 ---
 
-## 9. Stage C — original recognition criteria
+## 9. Stage C — original recognition criteria （Stageの記録）
 
 The original master plan required six criteria for strong phase-transition recognition.
 
@@ -413,7 +419,7 @@ The original master plan required six criteria for strong phase-transition recog
 | explainability as game-position structure | `satisfied` |
 | counterexamples and applicability boundaries | `satisfied` |
 
-### Why criterion 2 remains partial
+### Why criterion 2 remains partial （リポジトリ状態）
 
 The legal capture-option structure is strongly established.
 
@@ -421,7 +427,7 @@ A distinct second feature group — maximum capturable seed asymmetry — was ob
 
 Study 1 therefore does not upgrade this criterion to fully satisfied after the fact.
 
-### Recognition consequence
+### Recognition consequence （日本語の要点）
 
 Preferred final wording:
 
@@ -438,7 +444,7 @@ Avoid unqualified:
 
 ---
 
-## 10. Stage D — fixed vocabulary
+## 10. Stage D — fixed vocabulary （Stageの記録）
 
 The canonical Study 1 terminology is defined in:
 
@@ -455,7 +461,7 @@ Key distinctions:
 
 ---
 
-## 11. Formal decision table
+## 11. Formal decision table （結論）
 
 | Experiment | Question | Formal decision | Main boundary |
 |---|---|---|---|
@@ -470,7 +476,7 @@ These decisions are final for Study 1 and are not modified by the integrative in
 
 ---
 
-## 12. Reproducibility and final archives
+## 12. Reproducibility and final archives （再現性）
 
 Formal final-export storage is indexed in:
 
@@ -478,13 +484,13 @@ Formal final-export storage is indexed in:
 
 Key archives:
 
-### E-011
+### E-011 （日本語の要点）
 
 - archive: `e011-final-formal-evaluation.tar.gz`
 - SHA-256: `367d3543d2f404582adce07ac863c90bd11534826ef36528b25376228bef2bbc`
 - directory: `/home/oruorane/bao-e011-exports/`
 
-### E-018
+### E-018 （日本語の要点）
 
 - archive: `e018-final-formal-evaluation.tar.gz`
 - SHA-256: `bc9b5ae8423628e499b97285d6a56a7abde558d29efe7fb47d9c5a550cee3bc5`
@@ -492,7 +498,7 @@ Key archives:
 - audited member count: 4046
 - unsafe paths: 0
 
-### E-019
+### E-019 （日本語の要点）
 
 - archive: `e019-final-formal-evaluation.tar.gz`
 - SHA-256: `6a43fa611997049462a14a4ef4ba4816f6469f7c9931b3920e50f7eef866da75`
@@ -500,7 +506,7 @@ Key archives:
 - audited member count: 26120
 - unsafe paths: 0
 
-### E-020
+### E-020 （日本語の要点）
 
 - archive: `e020-final-formal-evaluation.tar.gz`
 - SHA-256: `37d54414778c075069ab9ba2a80b73e6f9eefccbc944db8abf867da7d2800bd2`
@@ -513,7 +519,7 @@ The repository-local E-020 analysis-root lifecycle anomaly is recorded separatel
 
 ---
 
-## 13. Negative results and interpretation discipline
+## 13. Negative results and interpretation discipline （結果）
 
 Study 1 deliberately preserves negative and inconclusive outcomes.
 
@@ -531,7 +537,7 @@ This decision discipline is part of the Study 1 result, not merely an implementa
 
 ---
 
-## 14. What Study 1 establishes
+## 14. What Study 1 establishes （日本語の要点）
 
 Within its bounded operational scope, Study 1 establishes that:
 
@@ -549,7 +555,7 @@ Within its bounded operational scope, Study 1 establishes that:
 
 ---
 
-## 15. What Study 1 does not establish
+## 15. What Study 1 does not establish （日本語の要点）
 
 Study 1 does **not** establish:
 
@@ -563,9 +569,9 @@ Study 1 does **not** establish:
 
 ---
 
-## 16. Future Work
+## 16. Future Work （今後の課題）
 
-### 16.1 Internal search mechanism
+### 16.1 Internal search mechanism （日本語の要点）
 
 If pursued, a new preregistered study should instrument:
 
@@ -578,11 +584,11 @@ If pursued, a new preregistered study should instrument:
 
 The goal would be to explain why depth changes which search profile reaches the sustained-forcing window.
 
-### 16.2 Second independent feature group
+### 16.2 Second independent feature group （日本語の要点）
 
 A future confirmation study may preregister maximum-capturable-seed asymmetry or another genuinely independent board feature group before data generation and test it across unique trajectory-ply structures.
 
-### 16.3 Original RQs carried forward
+### 16.3 Original RQs carried forward （日本語の要点）
 
 Additional independent research remains for:
 
@@ -600,7 +606,7 @@ These questions were not failed by Study 1; they were outside its final confirma
 
 ---
 
-## 17. Final Study 1 conclusion
+## 17. Final Study 1 conclusion （結論）
 
 Study 1 successfully moved from broad exploratory change-point detection to a bounded, reproducible strategic-transition phenotype with explicit formal and structural limits.
 
@@ -618,7 +624,7 @@ Accordingly, Study 1 closes with a **strong but bounded recognition claim**, not
 
 ---
 
-## 18. Study 1 completion state
+## 18. Study 1 completion state （日本語の要点）
 
 Scientific stages:
 

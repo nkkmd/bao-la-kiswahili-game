@@ -16,7 +16,7 @@ branch = research/g2-10-unified-multiaxial-strategic-state-representation
 
 RAW identity、upstream eligibility vocabulary、scientific firewall、seed block、no-rescue ruleをscientific evidence生成前に固定した。
 
-## 2026-08-30 — initial prospective freeze
+## 2026-08-30 — initial prospective freeze （固定した条件）
 
 ```text
 initial freeze commit = d5e5237a6678442cb5f0e72b3430b93e4526c1d4
@@ -24,7 +24,7 @@ pre-scientific tightening commit = 54cc0661d283f3740b9fd8f665730ed84eb01bcb
 initial consistency audit commit = e3ff29277460d4d7e8529cef565448a6dfa3378d
 ```
 
-## 2026-08-30 — Stage 0
+## 2026-08-30 — Stage 0 （Stageの記録）
 
 Stage 0 source/specを`78de03fde8e286f65d1544ad585e9337dad240a0`でfreezeした。
 
@@ -41,7 +41,7 @@ scientific seed use = 0
 
 Stage 0後もStage 1 / 2は自動authorizeしなかった。
 
-## 2026-08-30 — Stage 1 pre-scientific freeze
+## 2026-08-30 — Stage 1 pre-scientific freeze （固定した条件）
 
 Stage 1 population、40-feature dictionary、scaling、deterministic K-means、`K=2..6`、promotion criteria、Stage 2 validation contractをscientific outcome前に固定した。
 
@@ -59,7 +59,7 @@ minimum mean silhouette >= 0.05
 minimum five-fold assignment stability >= 0.80
 ```
 
-## 2026-08-30 — Stage 1 tooling smoke
+## 2026-08-30 — Stage 1 tooling smoke （Stageの記録）
 
 初回tooling smoke `33296234733`はproduction `graph()`の`const` counter incrementというimplementation defectで失敗した。scientific seedは未使用で、scientific contractを変更せず実装だけを修正した。
 
@@ -71,7 +71,7 @@ artifact id = 9727521248
 artifact ZIP SHA-256 = 39120244bb238aee19e5181104c33d7551c5b4b6eb0b11156011efe6085febef
 ```
 
-## 2026-08-30 — scientific runner / packaging preflight
+## 2026-08-30 — scientific runner / packaging preflight （実行記録）
 
 consume-once runnerとartifact contractをsource-freezeした後、technical-only packaging preflightを実行した。
 
@@ -95,7 +95,7 @@ artifact id = 9727743959
 artifact ZIP SHA-256 = cf9591b02dee0d1cb1ce2e6aeb674522259be7d6266d1ee30dd586b23febb3ed
 ```
 
-## 2026-08-30 — Stage 1 final authorization
+## 2026-08-30 — Stage 1 final authorization （承認状態）
 
 repaired sourceのpreflight PASS後、source-freezeの直接の子commitとしてfinal authorizationを固定した。
 
@@ -107,7 +107,7 @@ same-block rerun = false
 Stage 2 authorized = false
 ```
 
-## 2026-08-30 — accepted Stage 1 scientific execution
+## 2026-08-30 — accepted Stage 1 scientific execution （実行記録）
 
 ```text
 workflow run = 33297178656
@@ -132,7 +132,7 @@ active features = 40 / 40
 
 scientific readinessとresource gateは全項目PASSした。production / independent verificationも`fullExact = true`だった。
 
-## 2026-08-30 — representation decision
+## 2026-08-30 — representation decision （表現）
 
 候補結果:
 
@@ -155,7 +155,7 @@ selectedRepresentation = null
 
 K=4はstabilityとsilhouetteを満たしたがminimum supportが0.10に達しなかった。結果後にsupport thresholdを緩和して採用しない。
 
-## 2026-08-30 — Study closure
+## 2026-08-30 — Study closure （最終状態）
 
 Stage 1でfrozen representationを得られなかったためStage 2 prerequisiteを満たさず、Stage 2をauthorize / executeしない。
 
@@ -170,7 +170,7 @@ G2-11 candidate input from UMSSR-STUDY1 = NOT AUTHORIZED
 同じStudy内でthreshold relaxation、K range変更、axis / feature replacement、Stage 1 rerun / extension、favorable subgroup、Stage 2 post-hoc authorizationによる救済を行わない。
 
 
-## 2026-08-30 — final documentation taxonomy normalization
+## 2026-08-30 — final documentation taxonomy normalization （日本語の要点）
 
 最終関連文書監査で、Stage 1 dispositionとStudy-level terminal tokenの表記混同を検出した。凍結protocol §13に従い、科学結果を変更せず次のように分離した。
 

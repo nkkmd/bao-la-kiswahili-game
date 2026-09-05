@@ -15,7 +15,7 @@
 証明書hash: `6f137936fabc3282809f711b603eade69f47e8f1ffdfc1a8653c771ad33878fb`
 総石数: 64
 
-## 1. South — `capture:namua:0:2:right:left::false`
+## 1. Southの着手 — `capture:namua:0:2:right:left::false`
 
 手番開始: turn 9、namua、合法手2通り
 
@@ -62,7 +62,7 @@ state hash: `7458a8af1fed8e937f3cda0c64fadd9e06cb5523db4a30fdb72c1dd6d7162ec5`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 2. North — `capture:namua:0:0:right:left::false`
+## 2. Northの着手 — `capture:namua:0:0:right:left::false`
 
 手番開始: turn 10、namua、合法手1通り（1択）
 
@@ -109,7 +109,7 @@ state hash: `eb76f6eaa6b2a78b4bbae44857a71c12e90b46cbcf94b88295a08a376acb55ab`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 3. South — `capture:namua:0:4:right:left::false`
+## 3. Southの着手 — `capture:namua:0:4:right:left::false`
 
 手番開始: turn 11、namua、合法手5通り
 
@@ -156,7 +156,7 @@ state hash: `07a0294223c3bfa94ef7e914f94d44f982de46b427c8b4e4c2f19694538b89b1`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 4. North — `capture:namua:0:1:right:left::false`
+## 4. Northの着手 — `capture:namua:0:1:right:left::false`
 
 手番開始: turn 12、namua、合法手1通り（1択）
 
@@ -203,7 +203,7 @@ state hash: `67e2f40d329b50713a3df3a5f497178359c17accab6ccec1c49567f96cd43448`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 5. South — `takata:namua:0:1:right:::false`
+## 5. Southの着手 — `takata:namua:0:1:right:::false`
 
 手番開始: turn 13、namua、合法手8通り
 
@@ -250,7 +250,7 @@ state hash: `a327d584c0b90aa3e0d8b5b7a62677dd12493052f4d495fbe9de77d7c3b5bab2`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 6. North — `capture:namua:0:1:right:left::false`
+## 6. Northの着手 — `capture:namua:0:1:right:left::false`
 
 手番開始: turn 14、namua、合法手1通り（1択）
 
@@ -297,7 +297,7 @@ state hash: `1f16d05e87c8a21af455029e05fdae546e78e792a78d06fc3c5f3b6ecae9d996`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 7. South — `capture:namua:0:5:right:left::false`
+## 7. Southの着手 — `capture:namua:0:5:right:left::false`
 
 手番開始: turn 15、namua、合法手2通り
 
@@ -344,7 +344,7 @@ state hash: `377782b622ffc7aeba74f9f6d0967b352aeb0e96c852db78ce287252d724ae68`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 8. North — `capture:namua:0:1:right:left::false`
+## 8. Northの着手 — `capture:namua:0:1:right:left::false`
 
 手番開始: turn 16、namua、合法手1通り（1択）
 
@@ -391,7 +391,7 @@ state hash: `6ad463c380a53b620c12521a5e4239c588a237684a3cc370feeb6bd8119ce608`
 - [ ] 捕獲元、播種方向、relayがイベント要約と一致する
 - [ ] 着手後盤面と石数台帳が一致する
 
-## 9. South — `capture:namua:0:7:left:right::false`
+## 9. Southの着手 — `capture:namua:0:7:left:right::false`
 
 手番開始: turn 17、namua、合法手1通り（1択）
 

@@ -13,7 +13,7 @@ open PRs = 0
 
 Residual Research Generation 2 branchはいずれも`main`よりahead commitが0であり、competing active / unmerged G2 researchはありませんでした。
 
-## 2026-08-28 — upstream contract reconstruction
+## 2026-08-28 — upstream contract reconstruction （固定した条件）
 
 immutable boundaryを再構築し、固定しました。
 
@@ -27,7 +27,7 @@ ORISC Axis B = NOT-AUTHORIZED-NOT-EXECUTED
 SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN
 ```
 
-## 2026-08-28 — formal identity / Study-start freeze
+## 2026-08-28 — formal identity / Study-start freeze （識別情報）
 
 ```text
 Program = G2-04
@@ -47,7 +47,7 @@ REEOE-S2-FORMAL-2026-08-28-v1
 
 Authoritative identityは`pits,reserve,houseOwned,player,phase,winner,pending`として固定し、`turn/reason`を除外しました。symmetry / canonicalization / quotient countingは禁止しました。
 
-## 2026-08-28 — Stage 0 implementation audit
+## 2026-08-28 — Stage 0 implementation audit （Stageの記録）
 
 既存REWR exact-analysis lineageを監査しました。old production / independent serializerの双方に、missing field時に`pending=[0,0]`を合成するcompatibility fallbackがありました。
 
@@ -57,7 +57,7 @@ production Stage 0 runner、independent verifier、4 corruption control、dedica
 
 Stage 0 output生成前にproduction runner内の単純なroot-result reference typoを発見して修正しました。scientific definitionやfixtureは変更していません。
 
-## 2026-08-28 — Stage 0 technical PASS
+## 2026-08-28 — Stage 0 technical PASS （技術検証）
 
 Canonical workflow:
 
@@ -80,7 +80,7 @@ negative controls detected = 4/4
 
 再構築terminal rowでは`pending`を保持し、8 statesすべてでrepresented seedsは64でした。Stage 0はtechnical-onlyを維持しました。
 
-## 2026-08-28 — Stage 1 v1 prospective freeze / authorization
+## 2026-08-28 — Stage 1 v1 prospective freeze / authorization （承認状態）
 
 Fresh development block:
 
@@ -105,7 +105,7 @@ minimum complete closures = 3
 
 retrograde value、DTF、cycle、optimal move、winner identityをdevelopment-selection inputとして使用することは禁止しました。
 
-## 2026-08-28 — Stage 1 v1 fail-closed technical invalidation
+## 2026-08-28 — Stage 1 v1 fail-closed technical invalidation （技術検証）
 
 workflow run `33150429724`ではproduction developmentが完了した後、wrong relative locationから`../public/engine.js`を参照したためindependent verifierがstartupで失敗しました。
 
@@ -119,7 +119,7 @@ v1 identities consumed = true
 
 その後v1 workflowをarchival stubへ変更し、duplicate production generationを防止しました。
 
-## 2026-08-28 — Stage 1 v2 prospective freeze
+## 2026-08-28 — Stage 1 v2 prospective freeze （固定した条件）
 
 v1のstructural / resource / acceptance designを緩和せずfresh versionを定義しました。
 
@@ -134,7 +134,7 @@ Independent verifierは512 trajectoriesすべて、encountered RAW rootすべて
 
 source blobを固定してexplicit v2 execution authorizationを発行しました。Stage 2は未承認のままです。
 
-## 2026-08-28 — Stage 1 v2 execution
+## 2026-08-28 — Stage 1 v2 execution （実行記録）
 
 Canonical workflow:
 
@@ -180,7 +180,7 @@ developmentCoreSha256 = 1d21c1c29355556e1a2ba25c20bf8a29b156b86cc9cbe4216aa243bf
 independentVerificationCoreSha256 = b09c71350f990195d0b1e56ee267a615e11b7bfa90942bdbcb2dcd94db7ea003
 ```
 
-## 2026-08-28 — Stage 2 non-authorization
+## 2026-08-28 — Stage 2 non-authorization （承認状態）
 
 frozen Stage 1 v2 feasibility ruleを満たさなかったため、cap increase、domain shrinkage、root replacement、seed extension、solver substitution、partial-closure promotion、symmetry / canonicalization rescueを行っていません。
 
@@ -190,7 +190,7 @@ formal Stage 2 domains = 0
 fresh G2-04 exact oracle = none
 ```
 
-## 2026-08-28 — Study closure
+## 2026-08-28 — Study closure （最終状態）
 
 Study-level formal decisionを次で固定しました。
 
