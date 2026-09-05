@@ -1,9 +1,10 @@
 # 文書言語・用語表記方針
 
 Status: **ACTIVE POLICY**  
-適用範囲: Bao研究文書、AI Engineering文書、中央索引、今後新規作成する人間向けMarkdown文書  
+適用範囲: Bao研究文書、AI Engineering文書、中央索引、今後新規作成・更新する人間向け文書  
 制定日: 2026-08-29  
-強化日: 2026-08-30
+強化日: 2026-08-30  
+基準品質固定日: 2026-09-05
 
 ## 1. 目的
 
@@ -14,6 +15,26 @@ Research Generation 1および日本語整備後のResearch Generation 2文書�
 この方針は翻訳のために既存の科学的判断、工学的判断、事前登録、閾値、分類器、endpoint、population、representation boundary、authorization、provenanceを変更するものではない。
 
 **「日本語を主言語とする」は、英語の通常説明文や英語だけの見出しを大量に残してよいという意味ではない。** 人間向け文書の論理、状態説明、読者案内は日本語で完結できなければならない。
+
+### 1.1 2026年9月5日の基準品質
+
+第1〜第3段階の文書整備を`main`へ統合した状態を、今後の人間向け文書の最低品質として固定する。
+
+- 基準コミット: `68159b1dcdf1c9e0042b5933e4f88aca5dcec995`
+- 監査記録: [`JAPANESE_DOCUMENTATION_PHASE3_PROGRESS.md`](JAPANESE_DOCUMENTATION_PHASE3_PROGRESS.md)
+- 対象範囲: ファイル名や配置場所を問わず、リポジトリ利用者、研究者、開発者が説明として読む文書
+- 基準の性質: 参考例ではなく、将来の新規作成・更新時に後退を認めない必須品質
+
+同等品質とは、単に日本語文字を含むことではない。少なくとも次の状態をいう。
+
+1. 文書の目的、現在状態、結論、判断理由、意味、限界、読む順序を日本語で追える。
+2. 人間向け見出しと通常説明文の論理が日本語で完結している。
+3. technical / canonical termを正確に保持し、日本語の文脈へ自然に組み込んでいる。
+4. 正式判断について、直接理由、意味すること、意味しないこと、authorizationや再利用への帰結を日本語で説明している。
+5. 同一Study / Programの入口から詳細・再現・再開文書、中央索引まで、文書横断で同じ品質を保っている。
+6. 相対リンク、fenced code block、ID、数値、hash、authorization状態を検証し、読みやすさの改善によって再現性を損なっていない。
+
+この基準はMarkdownを主対象とするが、将来追加される人間向けのテキスト文書、テンプレート、生成文書にも、形式上適用できる範囲で同じ原則を適用する。machine-readable artifact、source code、exact outputは対象外とする。
 
 ## 2. 基本原則
 
@@ -300,7 +321,9 @@ STUDY COMPLETE / MAIN INTEGRATION COMPLETE
 
 ## 11. 今後の新規文書
 
-今後新しく作る人間向けMarkdown文書は、特別な理由がない限りこの方針を初稿から適用する。
+今後新しく作る人間向け文書は、この方針を初稿から適用する。
+
+**これは推奨ではなく必須要件である。** 小規模な追記でも既存部分の品質を下げてはならず、新規Study / Programでは入口文書だけでなく詳細文書・状態文書・再開文書も初稿から同じ品質にする。「研究完了後にまとめて翻訳する」運用を標準化しない。
 
 対象には少なくとも次を含む。
 
@@ -332,6 +355,19 @@ STUDY COMPLETE / MAIN INTEGRATION COMPLETE
 - formal decision tokenだけを示し、日本語で意味を説明していない主要結果
 - no-rescue / authorization / interpretation boundaryを英語tokenだけで済ませた説明
 - README / Overviewだけ日本語で、Final Report / Current Status / Reproducibility / Research Log / Resume等が英語中心の状態
+
+### 12.1 最低限記録する検証結果
+
+新規作成・大幅更新のclosure、PR完成、または`main`統合前には、対象範囲とともに少なくとも次を確認し、PR本文または監査記録へ残す。
+
+- 英語だけの人間向け見出し: 0件
+- canonical / immutable / exact-output等の説明済み例外を除く英語の完全な通常説明文: 0件
+- 壊れた相対リンク: 0件
+- 意図しないfenced code block変更: 0件
+- canonical identifier、decision token、数値、hash、authorization状態の意図しない変更: 0件
+- 関連する文書整合性test / validator: すべてPASS
+
+自動検出だけでは意味の正確さを保証できないため、formal decision、interpretation boundary、no-rescue、authorizationの説明は人間向けの意味監査も行う。許容例外がある場合は、該当箇所、理由、代替の日本語説明を記録する。
 
 品質ゲートは英単語の数を減らす作業ではない。technical/canonical termを正確に保持しながら、**文書の論理と説明責任を日本語へ置くこと**を確認する。
 
