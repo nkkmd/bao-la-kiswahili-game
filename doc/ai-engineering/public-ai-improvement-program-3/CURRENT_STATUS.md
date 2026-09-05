@@ -4,24 +4,25 @@
 
 Program: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 
-状態: **`INITIALIZED / PRE-CANDIDATE / KEEP-AI-GEN2`**
+状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
 
-`PBAI-P3`はProgram初期化まで完了しています。Research Generation 3の証拠cutoffと`AI-GEN2` baselineを固定しましたが、candidate inventory以降は未承認です。
+`PBAI-P3`はprospective contract凍結まで完了しています。Research Generation 3の証拠cutoff、`AI-GEN2` baseline、1件のinitial candidate inventory、fresh split、global gate、baseline-only support protocolを固定しました。support実行以降は未承認です。
 
 ## 現在の正式状態
 
 ```text
 PBAI-P3-A = COMPLETE / EVIDENCE CUTOFF FROZEN
 PBAI-P3-B = COMPLETE / BASELINE FROZEN
-PBAI-P3-C = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-C = COMPLETE / CONTRACT FROZEN
 PBAI-P3-D = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-E = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-F = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-G = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-H = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-I = NOT-AUTHORIZED / NOT-EXECUTED
-candidate identifiers issued = 0
+candidate identifiers issued = 1 / PBAI-C010-v1
 candidate implementations = 0
+support executions = 0
 benchmark executions = 0
 validation executions = 0
 release holdout executions = 0
@@ -37,11 +38,12 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 ```text
 Program ID = PBAI-P3
 formal title = Generation-3 Evidence-Informed Public Bao AI Improvement Program 3
-authorization decision = AUTHORIZED-FOR-PROGRAM-INITIALIZATION-ONLY
+initial authorization decision = AUTHORIZED-FOR-PROGRAM-INITIALIZATION-ONLY
+latest completed stage = PBAI-P3-C / CONTRACT FROZEN
 scientific evidence cutoff = 479bc3d3a9b6c745e37a88529732180e8690d6b3
 initialization main = 1d57e7e1877c6ad00f45230d52c528a426abe25d
 baselineId = AI-GEN2-BASELINE-2026-09-05-v1
-working branch = engineering/pbai-p3-program-initialization
+working branch = engineering/pbai-p3-c-contract-freeze
 ```
 
 `initialization main`と`scientific evidence cutoff`は異なる役割を持ちます。前者は開始時点の運用・source状態、後者はcandidate設計へ利用できる科学証拠の上限です。
@@ -61,15 +63,17 @@ working branch = engineering/pbai-p3-program-initialization
 - validated transform setは`[]`であり、未検証のsymmetry / canonicalizationを使用しません。
 - `G3-12`からformal generalizationまたはcounterexample decisionを導きません。
 
+## 凍結済み契約
+
+```text
+candidate inventory = PBAI-P3-INITIAL-CANDIDATE-INVENTORY-2026-09-05-v1
+candidate = PBAI-C010-v1 only
+support spec = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1
+global gate = PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1
+```
+
 ## 次に許可できる最小工程
 
-次の明示的認可がある場合に限り、`PBAI-P3-C`を開始できます。許可範囲は、結果を見ない状態での次の固定です。
+次の明示的認可がある場合に限り、`PBAI-P3-D`として凍結済み[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)に従うbaseline-only auditを実行できます。
 
-1. initial candidate inventoryとcandidate ID
-2. candidateごとのmechanism、trigger、介入、期待される因果経路
-3. development、validation、protected release holdoutのfresh split
-4. quality、safety、cost、compatibilityのglobal gate
-5. negative control、独立再構成、rollback、feature-off equivalenceの要件
-6. baseline-only support / reachability audit protocol
-
-`PBAI-P3-C`の認可だけでは、support測定、candidate実装、benchmark実行を認可しません。固定後に停止し、`PBAI-P3-D`の実行認可を別に判断します。
+その認可はcandidate実装、development benchmark、validation、release holdoutを含みません。Support PASS後も停止し、`PBAI-P3-E`のcandidate-specific contract freezeとdevelopment authorizationを別に判断します。

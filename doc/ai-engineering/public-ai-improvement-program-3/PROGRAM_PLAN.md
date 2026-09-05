@@ -1,6 +1,6 @@
 # `PBAI-P3` — Program計画
 
-状態: **`FROZEN FOR INITIALIZATION / PRE-CANDIDATE`**
+状態: **`P3-C CONTRACT FROZEN / PRE-SUPPORT`**
 
 固定日: 2026-09-05
 
@@ -18,7 +18,7 @@ Research Generation 3の正式成果を、意味を拡張せず工学的な設�
 | --- | --- | --- |
 | `PBAI-P3-A` | 開始認可、RG3 evidence audit、cutoff固定 | `COMPLETE` |
 | `PBAI-P3-B` | 現在の公開AI監査とexact baseline固定 | `COMPLETE` |
-| `PBAI-P3-C` | candidate inventory、fresh split、global gate、support protocol固定 | `NOT-AUTHORIZED / NOT-EXECUTED` |
+| `PBAI-P3-C` | candidate inventory、fresh split、global gate、support protocol固定 | `COMPLETE / CONTRACT FROZEN` |
 | `PBAI-P3-D` | baseline-only support / reachability audit | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-E` | candidate別development認可とexact contract固定 | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-F` | isolated feature-gated developmentとfresh benchmark | `NOT-AUTHORIZED / NOT-EXECUTED` |
@@ -40,7 +40,7 @@ development、validation、protected release holdoutはseedだけでなく、tra
 
 ## 4. prospective gateの必須領域
 
-`PBAI-P3-C`では、candidate outcomeを見る前に次を固定します。
+`PBAI-P3-C`で、candidate outcomeを見る前に次を固定しました。
 
 - 品質: unchanged `AI-GEN2`との差、reference searchとのTopSet / rank-loss等
 - 安全性: illegal move、state corruption、crash、terminal mismatch、新規重大劣化
@@ -59,7 +59,7 @@ development、validation、protected release holdoutはseedだけでなく、tra
 
 ## 6. candidateの識別
 
-candidate inventoryは未固定です。正式なcandidateはrepository-wideで未使用の`PBAI-Cxxx-v1`とfeature flagにより識別します。正式採用と公開default配備が完了するまで`AI-GEN3`と呼びません。
+initial candidate inventoryは`PBAI-C010-v1`の1件に固定しました。feature flag proposalは`pbaiC010SelectiveRootReverification`で、candidate implementationとdevelopment authorizationは未発行です。正式採用と公開default配備が完了するまで`AI-GEN3`と呼びません。
 
 ## 7. 実行環境
 
@@ -67,4 +67,4 @@ candidate inventoryは未固定です。正式なcandidateはrepository-wideで�
 
 ## 8. 判断語彙
 
-Programは最終的に、凍結済みmappingに従って`ADOPT`、`HOLD`、`REJECT`、`KEEP-AI-GEN2`のいずれかを記録します。現時点ではfinal decision mappingもcandidate-specific dispositionも未固定であり、現在の公開状態として`KEEP-AI-GEN2`を維持しています。
+Programは最終的に、凍結済みfailure semanticsと後続candidate-specific mappingに従って`ADOPT`、`HOLD`、`REJECT`、`KEEP-AI-GEN2`のいずれかを記録します。candidate-specific dispositionは未固定であり、現在の公開状態として`KEEP-AI-GEN2`を維持しています。

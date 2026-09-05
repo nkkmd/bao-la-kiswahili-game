@@ -3,9 +3,9 @@
 更新日: 2026-09-05
 現在の公開AI系統: **`AI-GEN2`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`**
-進行中Program: **`PBAI-P3 / INITIALIZED / PRE-CANDIDATE`**
+進行中Program: **`PBAI-P3 / CONTRACT-FROZEN / PRE-SUPPORT`**
 
-この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`と`PBAI-P2`は候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programとして初期化されましたが、candidate inventory以降は未承認です。
+この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`と`PBAI-P2`は候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programとして、1件のinitial candidate inventoryとprospective gateを固定しましたが、support実行以降は未承認です。
 
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
@@ -26,7 +26,7 @@
 | --- | --- | --- | --- | --- |
 | `PBAI-P1` | Research Generation 1まで | `PBAI-C001..C005` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P2` | Research Generation 2まで。Research Generation 3は除外 | `PBAI-C006..C009` | `KEEP-AI-GEN2` | なし |
-| `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | 未固定 | `INITIALIZED / PRE-CANDIDATE` | なし |
+| `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `CONTRACT-FROZEN / PRE-SUPPORT` | なし |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
@@ -34,19 +34,22 @@
 
 正式題目: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 
-状態: **`INITIALIZED / PRE-CANDIDATE / KEEP-AI-GEN2`**
+状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
 
 研究証拠cutoff: `479bc3d3a9b6c745e37a88529732180e8690d6b3`
 
 baseline: `AI-GEN2-BASELINE-2026-09-05-v1`
 
-Program開始認可、Research Generation 3 evidence audit、現在の公開用source監査、baseline固定まで完了しています。candidate ID、candidate inventory、support / reachability contract、global gate、fresh splitはまだ固定していません。
+Program開始認可、Research Generation 3 evidence audit、現在の公開用source監査、baseline固定に加え、initial candidate inventory、support / reachability contract、global gate、fresh splitを結果確認前に固定しました。support測定とcandidate実装はまだ行っていません。
 
 ```text
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
-PBAI-P3-C and later = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-C = COMPLETE / CONTRACT FROZEN
+PBAI-P3-D and later = NOT-AUTHORIZED / NOT-EXECUTED
+candidate identifiers issued = 1 / PBAI-C010-v1
 candidate implementations = 0
+support executions = 0
 benchmark executions = 0
 public deployments = 0
 current public lineage = AI-GEN2
@@ -57,9 +60,12 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 
 1. [`ai-engineering/public-ai-improvement-program-3/README.md`](ai-engineering/public-ai-improvement-program-3/README.md) — Programの入口と停止境界
 2. [`ai-engineering/public-ai-improvement-program-3/CURRENT_STATUS.md`](ai-engineering/public-ai-improvement-program-3/CURRENT_STATUS.md) — 現在の正式状態
-3. [`ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md) — Research Generation 3証拠の利用範囲
-4. [`ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md) — `AI-GEN2` baseline
-5. [`ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md`](ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md) — prospective工程
+3. [`ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md) — `PBAI-C010-v1` inventory
+4. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md) — baseline-only support契約
+5. [`ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md) — fresh splitとprospective gate
+6. [`ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md) — Research Generation 3証拠の利用範囲
+7. [`ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md) — `AI-GEN2` baseline
+8. [`ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md`](ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md) — prospective工程
 
 ## 4. `PBAI-P2` — 第二世代研究を使った改善Program
 
@@ -180,7 +186,7 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 
 ## 7. `PBAI-P3`の次の認可境界
 
-`PBAI-P1`と`PBAI-P2`には次のcandidate taskはありません。`PBAI-P3`で次に許可できるのは、`PBAI-P3-C`として次を結果を見る前に固定する作業です。
+`PBAI-P1`と`PBAI-P2`には次のcandidate taskはありません。`PBAI-P3-C`では、結果を見る前に次を固定しました。
 
 1. candidate inventoryとmechanism
 2. development / validation / release holdoutのfresh split
@@ -189,6 +195,6 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 5. `ADOPT`・`HOLD`・`REJECT`・`KEEP-AI-GEN2`のdecision mapping
 6. baseline-only support / reachability audit protocol
 
-この固定作業だけでは、support測定、candidate実装、benchmark、validation、release holdout、公開変更を認可しません。
+次に許可できる最小作業単位は、凍結済みprotocolに従う`PBAI-P3-D` baseline-only support / reachability auditです。別の明示的認可があるまで、support seedを読まず、candidate実装、benefit benchmark、validation、release holdout、公開変更を行いません。
 
 人間向け文書は[`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md)と[`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従い、固定ID・数値・decision tokenを変えずに日本語で説明します。

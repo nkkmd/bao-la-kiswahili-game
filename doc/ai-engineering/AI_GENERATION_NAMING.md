@@ -159,9 +159,9 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 
 C006〜C009はいずれもvalidation authorizationへ到達しなかった。したがってPBAI-P2-F/G/Hによるvalidation、protected release holdout、public deployment、generation promotionは実行していない。Research Generation 3が進行していてもAI generationは自動的に進まず、`AI-GEN3`は次の正式採用public lineageの予約名のままである。
 
-## 9. PBAI-P3開始時に固定した対応関係
+## 9. PBAI-P3で固定した対応関係
 
-PBAI-P3のProgram初期化で次を固定しました。
+PBAI-P3のProgram初期化とprospective contract freezeで次を固定しました。
 
 ```text
 program = PBAI-P3
@@ -169,8 +169,9 @@ scientific evidence = Research Generation 3 canonical evidence at or before cuto
 scientific evidence cutoff = 479bc3d3a9b6c745e37a88529732180e8690d6b3
 Research Generation 4 scientific influence = ZERO / EXCLUDED
 baseline = AI-GEN2-BASELINE-2026-09-05-v1
-candidate identifiers issued = 0
-current program state = INITIALIZED / PRE-CANDIDATE
+candidate identifiers issued = PBAI-C010-v1
+candidate feature flag proposal = pbaiC010SelectiveRootReverification
+current program state = CONTRACT-FROZEN / PRE-SUPPORT
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```

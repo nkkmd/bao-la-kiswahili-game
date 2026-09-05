@@ -1,6 +1,6 @@
 # `PBAI-P3` — 証拠分離規則
 
-状態: **`FROZEN / PRE-CANDIDATE`**
+状態: **`ACTIVE / CONTRACT-FROZEN / PRE-SUPPORT`**
 
 Program: `PBAI-P3`
 
@@ -60,8 +60,9 @@ candidate、development実装、validation通過版、未配備の`ADOPT`版を`
 
 ```text
 firewall status = ACTIVE / PASS
-candidate inventory = NOT FROZEN
+candidate inventory = PBAI-C010-v1 ONLY / FROZEN
 candidate implementation = NOT AUTHORIZED
+support execution = NOT AUTHORIZED
 development evidence = NONE
 validation evidence = NONE
 release holdout evidence = NONE

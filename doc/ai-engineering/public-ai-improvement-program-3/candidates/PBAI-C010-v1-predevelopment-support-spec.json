@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P3",
+  "stage": "PBAI-P3-D",
+  "candidateVersion": "PBAI-C010-v1",
+  "specId": "PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1",
+  "freezeDate": "2026-09-05",
+  "status": "FROZEN-EXECUTION-NOT-AUTHORIZED",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-05-v1",
+  "globalGateSpecId": "PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1",
+  "inventoryId": "PBAI-P3-INITIAL-CANDIDATE-INVENTORY-2026-09-05-v1",
+  "scientificEvidenceCutoff": "479bc3d3a9b6c745e37a88529732180e8690d6b3",
+  "purpose": "baseline-only support, trigger reachability, and bounded top-3 probe feasibility before candidate implementation",
+  "prohibitedOutputs": [
+    "candidate feature-on move selection",
+    "candidate benefit metric",
+    "D5 TopSet agreement",
+    "normalized reference rank loss",
+    "game outcome or win-rate inference",
+    "candidate development decision"
+  ],
+  "sourcePopulation": {
+    "seedStart": 44000001,
+    "seedEnd": 44004096,
+    "maximumTrajectories": 4096,
+    "maximumPliesPerTrajectory": 160,
+    "independentUnit": "trajectory",
+    "maximumSelectedRootsPerTrajectory": 1,
+    "phaseAssignment": "deterministic SHA-256 assignment before trajectory inspection",
+    "phaseTargets": {
+      "Namua": 2048,
+      "Mtaji": 2048
+    },
+    "minimumLegalMoveCount": 2,
+    "selectionWithinAssignedPhase": "outcome-blind SHA-256 root ranking",
+    "replacementForUnavailableAssignedPhaseAllowed": false,
+    "uniqueAuthoritativeRawStateRequired": true,
+    "authoritativeRawFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "symmetryCanonicalizationAllowed": false
+  },
+  "instrumentation": {
+    "location": "isolated support harness outside public/",
+    "candidateCodeAllowed": false,
+    "baselineSearchSemanticsMustRemainExact": true,
+    "perCompletedIterationFields": [
+      "depth",
+      "all root legal move keys",
+      "search-return score for every root legal move",
+      "completed status",
+      "nodes"
+    ],
+    "runtimeRankingDefinition": "pairwise <,=,> preorder from baseline search-return scores; deterministic display ties by canonical move key",
+    "formalSilgmE3IdentityClaimAllowed": false,
+    "telemetryMayAddSearch": false,
+    "featureOffSelectedMoveMismatchMaximum": 0,
+    "featureOffRootScoreMismatchMaximum": 0,
+    "featureOffPreExistingDeterministicStatMismatchMaximum": 0
+  },
+  "trigger": {
+    "allConditionsRequired": true,
+    "rootLegalWidth": {
+      "NamuaStrictlyGreaterThan": 4,
+      "MtajiStrictlyGreaterThan": 3,
+      "equalWidthIncludedInHigh": false
+    },
+    "rankingChurn": "at least one pairwise preorder relation changes between two consecutive fully completed iterations",
+    "partialOrTimedOutIterationMayBeCompared": false,
+    "maximumActivationsPerAnalyzeMove": 1,
+    "candidateSetMaximum": 3,
+    "candidateSetSource": "later completed iteration top three; score preorder then ascending canonical move key"
+  },
+  "conditions": {
+    "deterministicFixedDepth": {
+      "level": "hard",
+      "evaluationProfile": "bao",
+      "maxDepth": 3,
+      "timeLimitMs": "Infinity",
+      "quiescenceDepth": 1,
+      "requiredCompletedDepths": [2, 3]
+    },
+    "publicBudgetReachability": [
+      {"level": "hard", "maxDepth": 8, "timeLimitMs": 500},
+      {"level": "expert", "maxDepth": 12, "timeLimitMs": 2000}
+    ]
+  },
+  "boundedTop3Probe": {
+    "candidateSource": "later completed iteration top three",
+    "probeDepth": "later completed depth + 1",
+    "window": "full window for each root candidate",
+    "nodeReserve": "min(floor(nodes consumed through trigger * 0.50), 32768)",
+    "wallClockExtensionMs": 0,
+    "allThreeMustComplete": true,
+    "partialProbeScoresMayAffectMoveSelection": false,
+    "reportedFields": [
+      "root identity digest",
+      "phase",
+      "root legal width",
+      "pairwise preorder change count",
+      "completed depths",
+      "baseline node count",
+      "probe node count",
+      "probe completion",
+      "reserve exhaustion"
+    ],
+    "benefitOutputsReported": false
+  },
+  "supportGate": {
+    "allConditionsConjunctive": true,
+    "selectedUniqueTrajectoriesMinimum": 2048,
+    "selectedRootsPerPhaseMinimum": 768,
+    "d2D3CompleteRootsPerPhaseMinimum": 640,
+    "eligibleTriggerRootsMinimum": 128,
+    "eligibleTriggerRootsPerPhaseMinimum": 48,
+    "probeCompleteTriggerRootsMinimum": 96,
+    "probeCompleteTriggerRootsPerPhaseMinimum": 32,
+    "highWidthNoChurnControlsMinimum": 64,
+    "lowOrEqualWidthChurnControlsMinimum": 64,
+    "lowOrEqualWidthNoChurnControlsMinimum": 64,
+    "publicHardReachableTriggersMinimum": 64,
+    "publicHardReachableTriggersPerPhaseMinimum": 24,
+    "publicExpertReachableTriggersMinimum": 64,
+    "publicExpertReachableTriggersPerPhaseMinimum": 24,
+    "technicalFailureMaximum": 0,
+    "instrumentationSemanticMismatchMaximum": 0,
+    "productionIndependentRowClassificationMismatchMaximum": 0
+  },
+  "negativeControls": [
+    "high-width/no-churn",
+    "low-or-equal-width/churn",
+    "low-or-equal-width/no-churn",
+    "incomplete-D3-or-timeout fixture",
+    "feature-off instrumentation equivalence"
+  ],
+  "independentReconstruction": {
+    "required": true,
+    "sharedImplementationProhibitedFor": [
+      "root ranking preorder construction",
+      "pairwise churn classification",
+      "phase-specific width classification",
+      "top-3 selection",
+      "support gate aggregation"
+    ],
+    "rowClassificationExactMatchRequired": true,
+    "aggregateDecisionExactMatchRequired": true
+  },
+  "failureSemantics": {
+    "technicalOrVerifierFailure": "HOLD / TECHNICAL-INVALID-EVIDENCE / CLOSED-WITHOUT-IMPLEMENTATION",
+    "supportGateFailure": "HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION",
+    "supportPass": "PBAI-P3-E CONTRACT-FREEZE REVIEW ALLOWED; IMPLEMENTATION STILL NOT AUTHORIZED",
+    "seedExtensionAfterFailureAllowed": false,
+    "thresholdRelaxationAfterFailureAllowed": false,
+    "phasePoolingToRescueAllowed": false,
+    "negativeControlRemovalAllowed": false
+  },
+  "authorization": {
+    "supportExecutionAuthorizedNow": false,
+    "candidateImplementationAuthorizedNow": false,
+    "developmentBenchmarkAuthorizedNow": false,
+    "validationSeedAccessAuthorizedNow": false,
+    "releaseHoldoutSeedAccessAuthorizedNow": false
+  }
+}

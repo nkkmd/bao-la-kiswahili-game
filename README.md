@@ -154,7 +154,7 @@ node tools/diagnostic-to-fixture.js \
 
 現在の公開AIは **`AI-GEN2`を継続採用**しています。Research Generation 1を用いた`PBAI-P1`と、Research Generation 2を用いた`PBAI-P2`では、いずれも公開版へ進める候補が得られなかったため、`AI-GEN3`への更新や公開AIコードの変更は行っていません。
 
-Research Generation 3の正式成果を設計入力とする新しい`PBAI-P3`は、Program初期化と`AI-GEN2` baseline固定まで完了しました。candidate inventory、実装、benchmark、validation、release holdout、公開変更はまだ承認されていません。Research Generation 4とは別のAI Engineering Programです。
+Research Generation 3の正式成果を設計入力とする新しい`PBAI-P3`は、`AI-GEN2` baselineと、`PBAI-C010-v1`だけからなるinitial candidate inventory、fresh split、prospective gate、baseline-only support protocolを結果確認前に固定しました。support実行、実装、benchmark、validation、release holdout、公開変更はまだ承認されていません。Research Generation 4とは別のAI Engineering Programです。
 
 - [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — 現在の世代、評価済み候補、公開状態への入口
 - [第3回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-3/README.md) — `PBAI-P3`の現在状態、証拠境界、次の認可位置

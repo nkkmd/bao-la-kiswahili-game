@@ -2,16 +2,19 @@
 
 更新日: 2026-09-05
 
-状態: **`INITIALIZED / PRE-CANDIDATE / KEEP-AI-GEN2`**
+状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
 
 ## 1. 最初に読む
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
-3. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md)
-4. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
-5. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
-6. [`checkpoints/2026-09-05-program-initialization-freeze.md`](checkpoints/2026-09-05-program-initialization-freeze.md)
+3. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
+4. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)
+5. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
+6. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md)
+7. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
+8. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
+9. [`checkpoints/2026-09-05-p3-c-contract-freeze.md`](checkpoints/2026-09-05-p3-c-contract-freeze.md)
 
 ## 2. 固定済み状態
 
@@ -23,22 +26,22 @@ initialization main = 1d57e7e1877c6ad00f45230d52c528a426abe25d
 baseline = AI-GEN2-BASELINE-2026-09-05-v1
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
-PBAI-P3-C and later = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-C = COMPLETE / CONTRACT FROZEN
+PBAI-P3-D and later = NOT-AUTHORIZED / NOT-EXECUTED
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-## 3. まだ存在しないもの
+## 3. 凍結済み契約
 
 ```text
-candidate inventory = NONE / NOT FROZEN
-candidate IDs = NONE
-global gate spec = NONE
-support / reachability contract = NONE
-development split = NONE
-validation split = NONE
-release holdout split = NONE
+candidate inventory = PBAI-P3-INITIAL-CANDIDATE-INVENTORY-2026-09-05-v1
+candidate = PBAI-C010-v1 only
+global gate spec = PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1
+support contract = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1
+development / validation / release holdout split = FROZEN / UNREAD
 candidate source = NONE
+support result = NONE
 benchmark result = NONE
 ```
 
@@ -46,9 +49,9 @@ benchmark result = NONE
 
 ## 4. 次の認可判断
 
-次の作業候補は`PBAI-P3-C`の事前固定です。明示的な指示があった場合だけ、initial candidate inventory、fresh split、prospective global gate、support / reachability audit protocolを作成します。
+次の作業候補は`PBAI-P3-D`のbaseline-only support / reachability auditです。明示的な実行指示があった場合だけ、凍結済みprotocolでsupport seedを読み、隔離support harnessを作成して測定します。
 
-この次の作業でもcandidate implementation、support measurement、benchmark execution、validation、release holdout、公開変更、`main`統合は行いません。
+`PBAI-P3-D`でもcandidate implementation、benefit benchmark、validation、release holdout、公開変更、`main`統合は行いません。
 
 ## 5. 変更禁止事項
 
