@@ -122,7 +122,7 @@ G3-04、G3-07、G3-10、G3-11、LGTGMIV、CRCLGRのformal recordは、問い、i
 
 ## 6. Wave A — 移送可能性の基盤とclaim別検証
 
-### G4-01 — Claim-Transfer Compatibility Instrument Foundation Study 1
+### G4-01 — claim移送用compatibility instrument基盤
 
 日本語作業名:
 
@@ -138,7 +138,7 @@ G3-04、G3-07、G3-10、G3-11、LGTGMIV、CRCLGRのformal recordは、問い、i
 
 **Priority: P0 / first candidate**
 
-### G4-02 — Corridor / Tree-Graph Phase-Structure Generalization and Counterexample Study 1
+### G4-02 — corridor・tree/graph phase structureの一般化と反例
 
 日本語作業名:
 
@@ -152,7 +152,7 @@ G3-04の正式判断は変更しない。C1とC6は別endpointとして扱い、
 
 **Priority: P0**
 
-### G4-03 — Local Width / Search-Ranking Stability Transportability Study 1
+### G4-03 — local width・search-ranking stabilityの移送可能性
 
 日本語作業名:
 
@@ -166,7 +166,7 @@ ranking changeはbad move、評価失敗、game-theoretic error、人間の迷�
 
 **Priority: P0**
 
-### G4-04 — Geometry-Trajectory Dynamics Transportability Study 1
+### G4-04 — geometry trajectory dynamicsの移送可能性
 
 日本語作業名:
 
@@ -182,7 +182,7 @@ ranking changeはbad move、評価失敗、game-theoretic error、人間の迷�
 
 ## 7. Wave B — Exact microdomainとgame-theoretic帰結
 
-### G4-05 — Exact Microdomain Oracle Foundation and Expansion Study 1
+### G4-05 — exact microdomain oracleの基盤と拡張
 
 日本語作業名:
 
@@ -196,7 +196,7 @@ Research Generation 1の8-state exact domainやG2-04を拡張・救済するStud
 
 **Priority: P0 / exact-consequence prerequisite**
 
-### G4-06 — Local Geometry / Exact Game-Theoretic Consequence Bridge Study 1
+### G4-06 — 局所幾何とexact game-theoretic consequenceの接続
 
 日本語作業名:
 
@@ -212,7 +212,7 @@ G4-05がformal-eligible exact oracle domainを生成した場合だけ実行す�
 
 ## 8. Wave C — 時間・ルール・探索への接続
 
-### G4-07 — Multiscale Geometry Memory and Return Study 1
+### G4-07 — 多時間尺度geometry memoryと回帰
 
 日本語作業名:
 
@@ -226,7 +226,7 @@ G3-08の再実行ではない。G3-10のformal resultを仮説生成にだけ用
 
 **Priority: P1**
 
-### G4-08 — Bao Rule-Semantic Geometry Transition Decomposition Study 1
+### G4-08 — Bao rule-semantic geometry transitionの分解
 
 日本語作業名:
 
@@ -240,7 +240,7 @@ G3-06をrepairしない。capture、nyumba、reserve decrement、Namua→Mtaji�
 
 **Priority: P1**
 
-### G4-09 — Geometry-Conditioned Search Reliability and Exact Agreement Study 1
+### G4-09 — geometry-conditioned search reliabilityとexact agreement
 
 日本語作業名:
 
@@ -256,7 +256,7 @@ G3-06をrepairしない。capture、nyumba、reserve decrement、Namua→Mtaji�
 
 ## 9. Wave D — 保護されたdeeper exact研究
 
-### G4-10 — Fresh Depth-11 Exact Reachability Topology Study 1
+### G4-10 — fresh depth-11 exact reachability topology
 
 日本語作業名:
 
@@ -272,13 +272,13 @@ G3-06をrepairしない。capture、nyumba、reserve decrement、Namua→Mtaji�
 
 ## 10. 独立・非阻害track
 
-### G4-P01 — State-Transformation Semantics / Canonicalization Re-foundation Study 1
+### G4-P01 — state-transformation semantics・canonicalizationの再基礎化
 
 validated transform setは現在`[]`である。canonicalization研究を行う場合は、G2-03や既存symmetry Studyの救済ではなく、full identity fields、legal-move bijection、transition commutation、terminal / winner / pending equivariance、inverse、独立再構築を新しく固定する。
 
 このtrackはcoreの開始条件ではない。G4-P01が成立しない場合もcoreはRAW identityで進行できる。formal validation前にG4-10等のstate deduplicationへ使用しない。
 
-### G4-H01 — Human Perception / Expert Judgment Study 1
+### G4-H01 — 人間の知覚・熟練判断
 
 machine geometryとhuman-perceived difficulty、criticality、confidence、candidate move recognitionの関係を扱う独立trackとする。
 
@@ -358,7 +358,7 @@ G4-05はG4-01と並行してauthorization reviewを検討できるが、scientif
 - technical failureをnull resultへ読み替えること
 - research resultから公開AI候補を自動採用すること
 
-## 14. Program completion conditions
+## 14. Programの完了条件
 
 Research Generation 4はpositive resultの数で完了判定しない。次の条件を満たした時点をcore program closureとする。
 
