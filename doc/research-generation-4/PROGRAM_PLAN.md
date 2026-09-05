@@ -256,7 +256,7 @@ G3-06をrepairしない。capture、nyumba、reserve decrement、Namua→Mtaji�
 
 ## 9. Wave D — 保護されたdeeper exact研究
 
-### G4-10 — fresh depth-11 exact reachability topology
+### G4-10 — fresh depth-11 exact reachability topologyの検証
 
 日本語作業名:
 
