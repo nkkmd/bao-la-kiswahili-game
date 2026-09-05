@@ -1,6 +1,6 @@
 # `PBAI-P3` — prospective benchmark・判断protocol
 
-状態: **`FROZEN / EXECUTION NOT AUTHORIZED`**
+状態: **`FROZEN / P3-D SUPPORT EXECUTION AUTHORIZED`**
 
 Gate spec: `PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1`
 
@@ -18,7 +18,7 @@ Gate spec: `PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1`
 
 ```text
 candidate = PBAI-C010-v1 only
-support execution = NOT AUTHORIZED
+support execution = AUTHORIZED / PRE-GENERATION
 candidate implementation = NOT AUTHORIZED
 development benchmark = NOT AUTHORIZED
 validation = NOT AUTHORIZED

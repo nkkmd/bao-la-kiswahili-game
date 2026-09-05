@@ -1,6 +1,6 @@
 # `PBAI-P3` — candidate台帳
 
-状態: **`INITIAL INVENTORY FROZEN / PRE-SUPPORT`**
+状態: **`INITIAL INVENTORY FROZEN / P3-D AUTHORIZED / PRE-GENERATION`**
 
 固定日: 2026-09-05
 
@@ -26,7 +26,7 @@ inventory additions after outcome inspection = PROHIBITED
 
 優先度: **第一候補 / 唯一のinitial candidate**
 
-状態: **`INVENTORY-FROZEN / PREDEVELOPMENT-SUPPORT-NOT-AUTHORIZED`**
+状態: **`INVENTORY-FROZEN / PREDEVELOPMENT-SUPPORT-AUTHORIZED / PRE-GENERATION`**
 
 ### 2.1 目的
 
@@ -103,6 +103,6 @@ C010はC004またはC008のsame-version rescueではありません。過去のs
 
 ## 4. 次の認可境界
 
-次に許可できるのは、[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)に固定したbaseline-only auditの実行だけです。
+現在許可されているのは、[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)と[`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md)に固定したbaseline-only auditの実行だけです。
 
 SupportがPASSしてもcandidate実装は自動承認されません。`PBAI-P3-E`でexact candidate contract、source surface、feature-off test、development authorizationを別に固定します。

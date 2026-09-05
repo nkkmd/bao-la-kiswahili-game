@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P3",
+  "stage": "PBAI-P3-D",
+  "candidateVersion": "PBAI-C010-v1",
+  "manifestId": "PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-RUN-2026-09-05-v1",
+  "status": "FROZEN-BEFORE-SUPPORT-OUTCOME",
+  "freezeDate": "2026-09-05",
+  "contractCommit": "59bfd70ccd9cd0733237c7152679e68cdc622af2",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-05-v1",
+  "supportSpecId": "PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1",
+  "executionAuthorized": true,
+  "authorizationArtifact": "doc/ai-engineering/public-ai-improvement-program-3/authorizations/2026-09-05-p3-d-execution-authorization.md",
+  "candidateCodeAllowed": false,
+  "candidateBenefitMetricsAllowed": false,
+  "sourceBindings": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75"
+  },
+  "phaseAssignment": {
+    "algorithm": "sort all frozen support seeds by SHA-256(salt|seed), then assign the first 2048 to namua and the remaining 2048 to mtaji",
+    "salt": "PBAI-C010-v1|P3-D|phase-assignment|v1",
+    "tieBreak": "ascending numeric seed",
+    "assignedCounts": {"namua": 2048, "mtaji": 2048},
+    "performedBeforeTrajectoryInspection": true
+  },
+  "trajectoryGeneration": {
+    "initialState": "public/engine.js E.initialState()",
+    "policy": "uniform random over E.moveVariants sorted by ascending AI.moveKey",
+    "prng": "mulberry32-v1 initialized with the unsigned 32-bit seed",
+    "maximumPlies": 160,
+    "statesInspected": "ply 0 through ply 160 inclusive until terminal",
+    "trajectoryDigest": "SHA-256 of canonical JSON array of authoritative RAW identity digests",
+    "gameOutcomePersisted": false
+  },
+  "rootSelection": {
+    "eligible": "nonterminal state in assigned phase with at least 2 E.moveVariants",
+    "authoritativeRawSerialization": "JSON.stringify({pits,reserve,houseOwned,player,phase,winner,pending}) in field order shown",
+    "authoritativeRawDigest": "SHA-256 of authoritativeRawSerialization UTF-8 bytes",
+    "rank": "SHA-256(salt|seed|ply|authoritativeRawDigest)",
+    "salt": "PBAI-C010-v1|P3-D|root-selection|v1",
+    "selection": "minimum rank within assigned phase; tie by lower ply",
+    "maximumRootsPerTrajectory": 1,
+    "duplicateTrajectoryHandling": "keep lowest numeric seed; no replacement",
+    "duplicateRawRootHandling": "keep lowest root-selection rank, then lowest numeric seed; no replacement",
+    "symmetryCanonicalization": false
+  },
+  "baselineInstrumentation": {
+    "method": "load the exact bound public/ai.js text in an isolated Node vm and inject a passive root-return trace sink in memory",
+    "publicSourceFileModified": false,
+    "extraSearchFromTelemetry": false,
+    "trace": "root moveKey and search-return score for each completed nominal root iteration; numeric scores remain transient",
+    "persistedTrace": "ordered tie groups only; numeric root scores are not persisted",
+    "fixedCondition": {"level": "hard", "maxDepth": 3, "timeLimitMs": "Infinity", "evaluationProfile": "bao", "quiescenceDepth": 1},
+    "featureOffComparator": "ordinary require(public/ai.js) analyzeMove on the identical RAW root",
+    "deterministicStatsExcluded": ["elapsedMs"],
+    "requiredCompletedDepths": [2, 3]
+  },
+  "ranking": {
+    "preorder": "descending search-return score with equal numeric scores in one tie group; keys ascending inside each group",
+    "changeCount": "number of unordered root-move pairs whose <,=,> relation differs between D2 and D3",
+    "churn": "changeCount greater than zero",
+    "top3": "flatten D3 tie groups in order and take first three move keys",
+    "numericScoresPersisted": false
+  },
+  "boundedTop3Probe": {
+    "semantics": "support-only conservative exact full-window alpha-beta per selected root move",
+    "rootMoves": "D3 top3",
+    "nominalDepth": 4,
+    "childDepth": 3,
+    "quiescenceDepth": 1,
+    "evaluationProfile": "bao",
+    "legalMoveOrder": "E.moveVariants engine order",
+    "transpositionTable": false,
+    "evaluationCache": false,
+    "sharedReserve": "min(floor(fixed D3 cumulative baseline nodes * 0.50), 32768)",
+    "allThreeMustComplete": true,
+    "numericScoresPersisted": false,
+    "candidateMoveSelectionPerformed": false
+  },
+  "publicBudgetSubset": {
+    "eligiblePopulation": "fixed-condition trigger roots only",
+    "rank": "SHA-256(salt|authoritativeRawDigest)",
+    "salt": "PBAI-C010-v1|P3-D|public-budget-subset|v1",
+    "maximumPerPhase": 48,
+    "selection": "lowest ranks per phase; no replacement",
+    "executionOrder": "hard then expert; inside each condition ascending public-budget rank",
+    "conditions": [
+      {"id": "standard-hard", "level": "hard", "maxDepth": 8, "timeLimitMs": 500},
+      {"id": "standard-expert", "level": "expert", "maxDepth": 12, "timeLimitMs": 2000}
+    ],
+    "reachable": "D2 and D3 both completed and the independently reconstructed frozen trigger is true"
+  },
+  "artifacts": {
+    "directory": "artifacts/pbai-p3/c010/predevelopment-support",
+    "fullTrace": "full-trace.jsonl",
+    "compactResult": "result.json",
+    "independentVerification": "independent-verification.json",
+    "environment": "environment.json"
+  },
+  "commands": {
+    "test": "node test/public-ai-improvement-program3-support.test.js",
+    "run": "node tools/engineering/run-pbai-p3-c010-predevelopment-support.js",
+    "verify": "node tools/engineering/verify-pbai-p3-c010-predevelopment-support-independent.js"
+  },
+  "informationFirewall": {
+    "supportSeedsAccessible": true,
+    "developmentSeedsAccessible": false,
+    "validationSeedsAccessible": false,
+    "releaseHoldoutSeedsAccessible": false,
+    "researchGeneration4ScientificEvidenceAccessible": false,
+    "d5ReferenceAllowed": false,
+    "gameOutcomeMetricAllowed": false
+  }
+}

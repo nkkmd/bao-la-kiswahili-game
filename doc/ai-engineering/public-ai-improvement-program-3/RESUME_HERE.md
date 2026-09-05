@@ -2,7 +2,7 @@
 
 更新日: 2026-09-05
 
-状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
+状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
 
 ## 1. 最初に読む
 
@@ -10,11 +10,12 @@
 2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 3. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md)
 4. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)
-5. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
-6. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md)
-7. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
-8. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
-9. [`checkpoints/2026-09-05-p3-c-contract-freeze.md`](checkpoints/2026-09-05-p3-c-contract-freeze.md)
+5. [`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md)
+6. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md)
+7. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md)
+8. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
+9. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
+10. [`checkpoints/2026-09-05-p3-d-pre-generation-freeze.md`](checkpoints/2026-09-05-p3-d-pre-generation-freeze.md)
 
 ## 2. 固定済み状態
 
@@ -27,7 +28,8 @@ baseline = AI-GEN2-BASELINE-2026-09-05-v1
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D and later = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-D = AUTHORIZED / PRE-GENERATION
+PBAI-P3-E and later = NOT-AUTHORIZED / NOT-EXECUTED
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
@@ -41,7 +43,8 @@ global gate spec = PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1
 support contract = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1
 development / validation / release holdout split = FROZEN / UNREAD
 candidate source = NONE
-support result = NONE
+support run manifest = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-RUN-2026-09-05-v1
+support result = NONE / PRE-GENERATION
 benchmark result = NONE
 ```
 
@@ -49,7 +52,7 @@ benchmark result = NONE
 
 ## 4. 次の認可判断
 
-次の作業候補は`PBAI-P3-D`のbaseline-only support / reachability auditです。明示的な実行指示があった場合だけ、凍結済みprotocolでsupport seedを読み、隔離support harnessを作成して測定します。
+次の作業は、pre-generation commitをexact sourceとして固定した後、凍結済みrunbookで`PBAI-P3-D` baseline-only support / reachability auditを実行することです。
 
 `PBAI-P3-D`でもcandidate implementation、benefit benchmark、validation、release holdout、公開変更、`main`統合は行いません。
 

@@ -4,9 +4,9 @@
 
 Program: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 
-状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
+状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
 
-`PBAI-P3`はprospective contract凍結まで完了しています。Research Generation 3の証拠cutoff、`AI-GEN2` baseline、1件のinitial candidate inventory、fresh split、global gate、baseline-only support protocolを固定しました。support実行以降は未承認です。
+`PBAI-P3`はprospective contract凍結を完了し、`PBAI-P3-D` baseline-only support / reachability auditだけが明示的に認可されました。exact run manifest、隔離runner、独立verifierを結果生成前に固定し、support seedを読む直前で停止しています。
 
 ## 現在の正式状態
 
@@ -14,7 +14,7 @@ Program: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 PBAI-P3-A = COMPLETE / EVIDENCE CUTOFF FROZEN
 PBAI-P3-B = COMPLETE / BASELINE FROZEN
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-D = AUTHORIZED / PRE-GENERATION
 PBAI-P3-E = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-F = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-G = NOT-AUTHORIZED / NOT-EXECUTED
@@ -43,7 +43,7 @@ latest completed stage = PBAI-P3-C / CONTRACT FROZEN
 scientific evidence cutoff = 479bc3d3a9b6c745e37a88529732180e8690d6b3
 initialization main = 1d57e7e1877c6ad00f45230d52c528a426abe25d
 baselineId = AI-GEN2-BASELINE-2026-09-05-v1
-working branch = engineering/pbai-p3-c-contract-freeze
+working branch = engineering/pbai-p3-d-support-audit
 ```
 
 `initialization main`と`scientific evidence cutoff`は異なる役割を持ちます。前者は開始時点の運用・source状態、後者はcandidate設計へ利用できる科学証拠の上限です。
@@ -72,8 +72,8 @@ support spec = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1
 global gate = PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1
 ```
 
-## 次に許可できる最小工程
+## 現在許可されている最小工程
 
-次の明示的認可がある場合に限り、`PBAI-P3-D`として凍結済み[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)に従うbaseline-only auditを実行できます。
+凍結済み[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)と[`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md)に従い、support seed `44000001..44004096`からbaseline-only auditを実行します。
 
-その認可はcandidate実装、development benchmark、validation、release holdoutを含みません。Support PASS後も停止し、`PBAI-P3-E`のcandidate-specific contract freezeとdevelopment authorizationを別に判断します。
+この認可はcandidate実装、development benchmark、validation、release holdoutを含みません。Support結果と独立検証を固定した後に停止します。Support PASSでも、`PBAI-P3-E`のcandidate-specific contract freezeとdevelopment authorizationを別に判断します。

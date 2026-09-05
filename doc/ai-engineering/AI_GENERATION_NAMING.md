@@ -171,7 +171,7 @@ Research Generation 4 scientific influence = ZERO / EXCLUDED
 baseline = AI-GEN2-BASELINE-2026-09-05-v1
 candidate identifiers issued = PBAI-C010-v1
 candidate feature flag proposal = pbaiC010SelectiveRootReverification
-current program state = CONTRACT-FROZEN / PRE-SUPPORT
+current program state = P3-D AUTHORIZED / PRE-GENERATION
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```

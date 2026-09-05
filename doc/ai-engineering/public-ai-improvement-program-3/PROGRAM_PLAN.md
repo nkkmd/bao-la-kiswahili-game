@@ -1,6 +1,6 @@
 # `PBAI-P3` — Program計画
 
-状態: **`P3-C CONTRACT FROZEN / PRE-SUPPORT`**
+状態: **`P3-D AUTHORIZED / PRE-GENERATION`**
 
 固定日: 2026-09-05
 
@@ -19,7 +19,7 @@ Research Generation 3の正式成果を、意味を拡張せず工学的な設�
 | `PBAI-P3-A` | 開始認可、RG3 evidence audit、cutoff固定 | `COMPLETE` |
 | `PBAI-P3-B` | 現在の公開AI監査とexact baseline固定 | `COMPLETE` |
 | `PBAI-P3-C` | candidate inventory、fresh split、global gate、support protocol固定 | `COMPLETE / CONTRACT FROZEN` |
-| `PBAI-P3-D` | baseline-only support / reachability audit | `NOT-AUTHORIZED / NOT-EXECUTED` |
+| `PBAI-P3-D` | baseline-only support / reachability audit | `AUTHORIZED / PRE-GENERATION` |
 | `PBAI-P3-E` | candidate別development認可とexact contract固定 | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-F` | isolated feature-gated developmentとfresh benchmark | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-G` | 独立再構成とfresh validation | `NOT-AUTHORIZED / NOT-EXECUTED` |

@@ -4,11 +4,11 @@
 
 開始日: 2026-09-05
 
-状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
+状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
 
 `PBAI-P3`は、完了済みResearch Generation 3の正式成果を設計入力として、現在公開中の`AI-GEN2`を改善できるかを工学的に評価する独立Programです。Research Generation 4とは別であり、`PBAI-P1`または`PBAI-P2`の再開・延長・救済ではありません。
 
-Program開始認可、科学証拠cutoff、現在の公開用source、baselineに加え、initial candidate inventory、fresh split、prospective global gate、support / reachability protocolを結果確認前に固定しました。support測定、candidate-specific development contract、実装、benchmark、validation、release holdout、公開変更はまだ承認されていません。
+Program開始認可、科学証拠cutoff、現在の公開用source、baselineに加え、initial candidate inventory、fresh split、prospective global gate、support / reachability protocolを結果確認前に固定しました。現在は`PBAI-P3-D` baseline-only support auditだけが認可され、run manifestとtoolingをpre-generation状態で固定しています。
 
 ## 最初に読む
 
@@ -16,11 +16,12 @@ Program開始認可、科学証拠cutoff、現在の公開用source、baseline�
 2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Programの工程と判断境界
 3. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — 1件に閉じたinitial candidate inventory
 4. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md) — 実装前baseline-only監査契約
-5. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — fresh splitとprospective global gate
-6. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md) — 使用可能なResearch Generation 3証拠
-7. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 科学研究とAI Engineeringの分離規則
-8. [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2`のexact source identity
-9. [`RESUME_HERE.md`](RESUME_HERE.md) — 中断後の再開位置
+5. [`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md) — exact実行手順と成果物
+6. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — fresh splitとprospective global gate
+7. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md) — 使用可能なResearch Generation 3証拠
+8. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 科学研究とAI Engineeringの分離規則
+9. [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2`のexact source identity
+10. [`RESUME_HERE.md`](RESUME_HERE.md) — 中断後の再開位置
 
 ## 固定したProgram identity
 
@@ -44,7 +45,8 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D and later = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-D = AUTHORIZED / PRE-GENERATION
+PBAI-P3-E and later = NOT-AUTHORIZED / NOT-EXECUTED
 candidate identifiers issued = 1 / PBAI-C010-v1
 candidate implementations = 0
 support executions = 0
@@ -77,15 +79,13 @@ ranking変化は誤りの証明ではなく、高resource探索もground truth�
 
 新候補は、Research Generation 3の新しい正式証拠から独立して定義し、過去候補と異なるmechanism、trigger、介入、期待される因果経路を結果を見る前に明示しなければなりません。
 
-## 現在の停止境界
+## 現在の実行境界
 
-次の作業は未承認です。
+`PBAI-P3-D`として、support seed / rootの生成、隔離support harness、独立verifier、support gate判定だけが承認されています。次の作業は未承認です。
 
-- support / reachability用seedまたはrootの読取り・生成
-- support / reachability監査の実行
 - candidate-specific development contractとsource surfaceの固定
-- 公開用source、test、benchmark harnessの変更
+- 公開用sourceとbenefit benchmark harnessの変更
 - candidate実装、benchmark、validation、release holdout
 - 公開default変更、deployment、`main`統合、`AI-GEN3`昇格
 
-次に進むには、凍結済みprotocolに従うbaseline-only `PBAI-P3-D` support / reachability auditの明示的な実行認可が必要です。Support PASSでもcandidate実装は自動認可されません。
+凍結済みprotocolとrun manifestでsupport結果と独立検証を生成し、結果にかかわらず停止します。Support PASSでもcandidate実装は自動認可されません。

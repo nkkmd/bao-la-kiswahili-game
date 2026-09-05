@@ -3,9 +3,9 @@
 更新日: 2026-09-05
 現在の公開AI系統: **`AI-GEN2`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`**
-進行中Program: **`PBAI-P3 / CONTRACT-FROZEN / PRE-SUPPORT`**
+進行中Program: **`PBAI-P3 / P3-D AUTHORIZED / PRE-GENERATION`**
 
-この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`と`PBAI-P2`は候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programとして、1件のinitial candidate inventoryとprospective gateを固定しましたが、support実行以降は未承認です。
+この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`と`PBAI-P2`は候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programとして、1件のinitial candidate inventoryとprospective gateを固定し、現在はbaseline-only support auditだけを認可しています。
 
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
@@ -26,7 +26,7 @@
 | --- | --- | --- | --- | --- |
 | `PBAI-P1` | Research Generation 1まで | `PBAI-C001..C005` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P2` | Research Generation 2まで。Research Generation 3は除外 | `PBAI-C006..C009` | `KEEP-AI-GEN2` | なし |
-| `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `CONTRACT-FROZEN / PRE-SUPPORT` | なし |
+| `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `P3-D AUTHORIZED / PRE-GENERATION` | なし |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
@@ -34,7 +34,7 @@
 
 正式題目: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 
-状態: **`CONTRACT-FROZEN / PRE-SUPPORT / KEEP-AI-GEN2`**
+状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
 
 研究証拠cutoff: `479bc3d3a9b6c745e37a88529732180e8690d6b3`
 
@@ -46,7 +46,8 @@ Program開始認可、Research Generation 3 evidence audit、現在の公開用s
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D and later = NOT-AUTHORIZED / NOT-EXECUTED
+PBAI-P3-D = AUTHORIZED / PRE-GENERATION
+PBAI-P3-E and later = NOT-AUTHORIZED / NOT-EXECUTED
 candidate identifiers issued = 1 / PBAI-C010-v1
 candidate implementations = 0
 support executions = 0
@@ -195,6 +196,6 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 5. `ADOPT`・`HOLD`・`REJECT`・`KEEP-AI-GEN2`のdecision mapping
 6. baseline-only support / reachability audit protocol
 
-次に許可できる最小作業単位は、凍結済みprotocolに従う`PBAI-P3-D` baseline-only support / reachability auditです。別の明示的認可があるまで、support seedを読まず、candidate実装、benefit benchmark、validation、release holdout、公開変更を行いません。
+現在許可されている最小作業単位は、凍結済みprotocolとrun manifestに従う`PBAI-P3-D` baseline-only support / reachability auditです。結果と独立検証を固定した後に停止し、candidate実装、benefit benchmark、validation、release holdout、公開変更は行いません。
 
 人間向け文書は[`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md)と[`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従い、固定ID・数値・decision tokenを変えずに日本語で説明します。
