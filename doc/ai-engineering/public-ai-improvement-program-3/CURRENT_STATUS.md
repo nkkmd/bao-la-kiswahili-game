@@ -4,9 +4,9 @@
 
 Program: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 
-状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
+状態: **`COMPLETE / KEEP-AI-GEN2`**
 
-`PBAI-P3`はprospective contract凍結を完了し、`PBAI-P3-D` baseline-only support / reachability auditだけが明示的に認可されました。exact run manifest、隔離runner、独立verifierを結果生成前に固定し、support seedを読む直前で停止しています。
+`PBAI-P3`はprospective contractを凍結した後、`PBAI-P3-D` baseline-only support / reachability auditを1回実行しました。独立再構成は完全一致しましたが、top-3 probe completionが凍結gateを満たさなかったため、唯一の候補`PBAI-C010-v1`を実装せず閉じました。Program outcomeは`KEEP-AI-GEN2`です。
 
 ## 現在の正式状態
 
@@ -14,7 +14,7 @@ Program: `Generation-3 Evidence-Informed Public Bao AI Improvement Program 3`
 PBAI-P3-A = COMPLETE / EVIDENCE CUTOFF FROZEN
 PBAI-P3-B = COMPLETE / BASELINE FROZEN
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D = AUTHORIZED / PRE-GENERATION
+PBAI-P3-D = COMPLETE / SUPPORT-FAIL
 PBAI-P3-E = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-F = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-G = NOT-AUTHORIZED / NOT-EXECUTED
@@ -22,16 +22,17 @@ PBAI-P3-H = NOT-AUTHORIZED / NOT-EXECUTED
 PBAI-P3-I = NOT-AUTHORIZED / NOT-EXECUTED
 candidate identifiers issued = 1 / PBAI-C010-v1
 candidate implementations = 0
-support executions = 0
+support executions = 1
 benchmark executions = 0
 validation executions = 0
 release holdout executions = 0
 public deployments = 0
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-`KEEP-AI-GEN2`は現時点の公開状態を表し、PBAI-P3の最終判断ではありません。Program final outcome、`ADOPT`、`HOLD`、`REJECT`はまだ存在しません。
+`KEEP-AI-GEN2`はPBAI-P3の最終判断です。`PBAI-C010-v1`のformal dispositionは`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`で、formal `ADOPT`はありません。
 
 ## 固定済みidentity
 
@@ -39,7 +40,7 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 Program ID = PBAI-P3
 formal title = Generation-3 Evidence-Informed Public Bao AI Improvement Program 3
 initial authorization decision = AUTHORIZED-FOR-PROGRAM-INITIALIZATION-ONLY
-latest completed stage = PBAI-P3-C / CONTRACT FROZEN
+latest completed stage = PBAI-P3-D / SUPPORT-FAIL / CLOSED
 scientific evidence cutoff = 479bc3d3a9b6c745e37a88529732180e8690d6b3
 initialization main = 1d57e7e1877c6ad00f45230d52c528a426abe25d
 baselineId = AI-GEN2-BASELINE-2026-09-05-v1
@@ -63,17 +64,23 @@ working branch = engineering/pbai-p3-d-support-audit
 - validated transform setは`[]`であり、未検証のsymmetry / canonicalizationを使用しません。
 - `G3-12`からformal generalizationまたはcounterexample decisionを導きません。
 
-## 凍結済み契約
+## 最終support結果
 
 ```text
 candidate inventory = PBAI-P3-INITIAL-CANDIDATE-INVENTORY-2026-09-05-v1
 candidate = PBAI-C010-v1 only
 support spec = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1
 global gate = PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1
+execution commit = 3015ca39346901de8172677383331e4965871b68
+trigger roots = 1164 / PASS
+probe-complete roots = 23 total / Namua 6 / Mtaji 17 / FAIL
+independent verification = PASS / exact aggregate match
+candidate disposition = HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 ```
 
-## 現在許可されている最小工程
+詳細は[`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)と[`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)を参照してください。
 
-凍結済み[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)と[`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md)に従い、support seed `44000001..44004096`からbaseline-only auditを実行します。
+## 現在の作業境界
 
-この認可はcandidate実装、development benchmark、validation、release holdoutを含みません。Support結果と独立検証を固定した後に停止します。Support PASSでも、`PBAI-P3-E`のcandidate-specific contract freezeとdevelopment authorizationを別に判断します。
+PBAI-P3内の次作業はありません。candidate実装、development benchmark、validation、release holdout、公開変更、deployment、`main`統合は認可されていません。新しいProgramを検討する場合は、新しいIDとevidence cutoffによる開始認可レビューから始めます。

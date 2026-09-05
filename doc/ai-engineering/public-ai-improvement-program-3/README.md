@@ -4,24 +4,26 @@
 
 開始日: 2026-09-05
 
-状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
+状態: **`COMPLETE / KEEP-AI-GEN2`**
 
 `PBAI-P3`は、完了済みResearch Generation 3の正式成果を設計入力として、現在公開中の`AI-GEN2`を改善できるかを工学的に評価する独立Programです。Research Generation 4とは別であり、`PBAI-P1`または`PBAI-P2`の再開・延長・救済ではありません。
 
-Program開始認可、科学証拠cutoff、現在の公開用source、baselineに加え、initial candidate inventory、fresh split、prospective global gate、support / reachability protocolを結果確認前に固定しました。現在は`PBAI-P3-D` baseline-only support auditだけが認可され、run manifestとtoolingをpre-generation状態で固定しています。
+Program開始認可、科学証拠cutoff、現在の公開用source、baselineに加え、initial candidate inventory、fresh split、prospective global gate、support / reachability protocolを結果確認前に固定しました。`PBAI-P3-D` baseline-only support auditではtop-3 probe completionが未達となり、`PBAI-C010-v1`を実装せず閉じました。
 
 ## 最初に読む
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在の正式状態と次に許可される作業
-2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Programの工程と判断境界
-3. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — 1件に閉じたinitial candidate inventory
-4. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md) — 実装前baseline-only監査契約
-5. [`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md) — exact実行手順と成果物
-6. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — fresh splitとprospective global gate
-7. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md) — 使用可能なResearch Generation 3証拠
-8. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 科学研究とAI Engineeringの分離規則
-9. [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2`のexact source identity
-10. [`RESUME_HERE.md`](RESUME_HERE.md) — 中断後の再開位置
+2. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md) — Programの最終判断
+3. [`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md) — P3-Dの件数、gate、artifact hash
+4. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — Programの工程と判断境界
+5. [`CANDIDATE_REGISTER.md`](CANDIDATE_REGISTER.md) — 1件に閉じたinitial candidate inventory
+6. [`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md) — 実装前baseline-only監査契約
+7. [`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md) — exact実行手順と成果物
+8. [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) — fresh splitとprospective global gate
+9. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md) — 使用可能なResearch Generation 3証拠
+10. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md) — 科学研究とAI Engineeringの分離規則
+11. [`BASELINE_SPEC.md`](BASELINE_SPEC.md) — `AI-GEN2`のexact source identity
+12. [`RESUME_HERE.md`](RESUME_HERE.md) — 終了後の境界
 
 ## 固定したProgram identity
 
@@ -29,7 +31,7 @@ Program開始認可、科学証拠cutoff、現在の公開用source、baseline�
 Program ID = PBAI-P3
 formal title = Generation-3 Evidence-Informed Public Bao AI Improvement Program 3
 initial authorization decision = AUTHORIZED-FOR-PROGRAM-INITIALIZATION-ONLY
-latest completed stage = PBAI-P3-C / CONTRACT FROZEN
+latest completed stage = PBAI-P3-D / SUPPORT-FAIL / CLOSED
 scientific evidence cutoff = 479bc3d3a9b6c745e37a88529732180e8690d6b3
 initialization main = 1d57e7e1877c6ad00f45230d52c528a426abe25d
 baseline = AI-GEN2-BASELINE-2026-09-05-v1
@@ -45,15 +47,16 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D = AUTHORIZED / PRE-GENERATION
+PBAI-P3-D = COMPLETE / SUPPORT-FAIL
 PBAI-P3-E and later = NOT-AUTHORIZED / NOT-EXECUTED
 candidate identifiers issued = 1 / PBAI-C010-v1
 candidate implementations = 0
-support executions = 0
+support executions = 1
 benchmark executions = 0
 validation executions = 0
 release holdout executions = 0
 public deployments = 0
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 ```
 
 Programが初期化されたことは、候補の有効性、公開AIの改善、`ADOPT`、または`AI-GEN3`への昇格を意味しません。正式採用と実際の公開default配備が完了するまでは、実験候補を`AI-GEN3`と呼びません。
@@ -79,13 +82,15 @@ ranking変化は誤りの証明ではなく、高resource探索もground truth�
 
 新候補は、Research Generation 3の新しい正式証拠から独立して定義し、過去候補と異なるmechanism、trigger、介入、期待される因果経路を結果を見る前に明示しなければなりません。
 
-## 現在の実行境界
+## 最終判断と実行境界
 
-`PBAI-P3-D`として、support seed / rootの生成、隔離support harness、独立verifier、support gate判定だけが承認されています。次の作業は未承認です。
+`PBAI-C010-v1`はtop-3 probe completionが合計23件、Namua 6件、Mtaji 17件となり、必要な合計96件、phase別32件を満たしませんでした。独立verifierはproduction結果を完全再構成し、technical failureとsemantic mismatchはいずれも0件でした。formal dispositionは`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。
+
+次の作業は未承認です。
 
 - candidate-specific development contractとsource surfaceの固定
 - 公開用sourceとbenefit benchmark harnessの変更
 - candidate実装、benchmark、validation、release holdout
 - 公開default変更、deployment、`main`統合、`AI-GEN3`昇格
 
-凍結済みprotocolとrun manifestでsupport結果と独立検証を生成し、結果にかかわらず停止します。Support PASSでもcandidate実装は自動認可されません。
+PBAI-P3内の候補追加、候補実装、再測定は行いません。別の改善を検討するには、新しいProgramのoutcome非依存な開始認可レビューが必要です。

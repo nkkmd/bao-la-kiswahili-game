@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P3",
+  "stage": "PBAI-P3-D",
+  "candidateVersion": "PBAI-C010-v1",
+  "supportSpecId": "PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1",
+  "supportSpecSha256": "a44287577c57e601e6a9010498264a7a737e3f14036354bd5ca54588e3f9fcb4",
+  "runManifestId": "PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-RUN-2026-09-05-v1",
+  "runManifestSha256": "b8af71b684c5d02e9fa1a5316323abeab0aafb05c65ff5643e17ac44392ffbd3",
+  "productionResult": {
+    "path": "artifacts/pbai-p3/c010/predevelopment-support/result.json",
+    "sha256": "582a7e23ccda6b195c73e48a4ee3360605a5ca035fd14d5b9f4cb69b77e138df"
+  },
+  "fullTrace": {
+    "path": "artifacts/pbai-p3/c010/predevelopment-support/full-trace.jsonl",
+    "sha256": "39e5d1649808eb8aae631e2839b6d5706e8cfc6c0187debe8a73842e6942f373",
+    "hashMatchesProduction": true
+  },
+  "productionRunnerImported": false,
+  "productionTriggerImplementationImported": false,
+  "productionTop3ImplementationImported": false,
+  "productionProbeImplementationImported": false,
+  "sourceRootSelectionReconstructed": true,
+  "rootRankingPreorderReconstructedFromScoreFreeTieGroups": true,
+  "numericRootScoresRead": false,
+  "candidateBenefitMetricsRead": false,
+  "sourceIdentityMismatches": 0,
+  "rowClassificationMismatches": 0,
+  "probeMismatches": 0,
+  "productionIndependentRowClassificationMismatches": 0,
+  "aggregateMatchesProduction": true,
+  "counts": {
+    "selectedUniqueTrajectories": 3223,
+    "selectedRoots": {
+      "namua": 1808,
+      "mtaji": 1415
+    },
+    "d2D3Complete": {
+      "namua": 1808,
+      "mtaji": 1415
+    },
+    "trigger": {
+      "total": 1164,
+      "namua": 731,
+      "mtaji": 433
+    },
+    "probeComplete": {
+      "total": 23,
+      "namua": 6,
+      "mtaji": 17
+    },
+    "controls": {
+      "highWidthNoChurn": 336,
+      "lowOrEqualWidthChurn": 660,
+      "lowOrEqualWidthNoChurn": 1063
+    },
+    "publicReachable": {
+      "standard-hard": {
+        "total": 88,
+        "namua": 40,
+        "mtaji": 48,
+        "attempted": 96
+      },
+      "standard-expert": {
+        "total": 96,
+        "namua": 48,
+        "mtaji": 48,
+        "attempted": 96
+      }
+    },
+    "technicalFailures": 0,
+    "instrumentationSemanticMismatches": 0,
+    "source": {
+      "frozenSeeds": 4096,
+      "phaseAssigned": {
+        "namua": 2048,
+        "mtaji": 2048
+      },
+      "uniqueTrajectories": 4064,
+      "duplicateTrajectories": 32,
+      "trajectoriesWithAssignedPhaseRoot": 3446,
+      "unavailableAssignedPhaseRoots": 618,
+      "duplicateRawRoots": 223
+    }
+  },
+  "checks": {
+    "selectedUniqueTrajectories": true,
+    "selectedRootsNamua": true,
+    "selectedRootsMtaji": true,
+    "d2D3CompleteNamua": true,
+    "d2D3CompleteMtaji": true,
+    "triggerTotal": true,
+    "triggerNamua": true,
+    "triggerMtaji": true,
+    "probeCompleteTotal": false,
+    "probeCompleteNamua": false,
+    "probeCompleteMtaji": false,
+    "highWidthNoChurnControl": true,
+    "lowOrEqualWidthChurnControl": true,
+    "lowOrEqualWidthNoChurnControl": true,
+    "publicHardTotal": true,
+    "publicHardNamua": true,
+    "publicHardMtaji": true,
+    "publicExpertTotal": true,
+    "publicExpertNamua": true,
+    "publicExpertMtaji": true,
+    "technicalFailures": true,
+    "instrumentationSemanticMismatches": true,
+    "independentReconstruction": true
+  },
+  "verificationPassed": true,
+  "supportPass": false,
+  "disposition": "HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION",
+  "candidateImplementationAuthorized": false,
+  "developmentBenchmarkAuthorized": false,
+  "validationAuthorized": false,
+  "releaseHoldoutAuthorized": false,
+  "publicDeploymentAuthorized": false
+}

@@ -171,9 +171,10 @@ Research Generation 4 scientific influence = ZERO / EXCLUDED
 baseline = AI-GEN2-BASELINE-2026-09-05-v1
 candidate identifiers issued = PBAI-C010-v1
 candidate feature flag proposal = pbaiC010SelectiveRootReverification
-current program state = P3-D AUTHORIZED / PRE-GENERATION
+current program state = COMPLETE / KEEP-AI-GEN2
+PBAI-C010-v1 = HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
-PBAI-P3の開始またはcandidate作成だけでは`AI-GEN3`へ昇格しません。formal `ADOPT`に加え、実際のpublic default deploymentが完了するまで、candidateはProgram candidate IDとfeature flagで識別します。
+PBAI-P3ではformal `ADOPT`もpublic default deploymentもなく、`AI-GEN3`へ昇格しませんでした。`AI-GEN3`は次に正式採用・配備されるpublic lineageの予約名のままです。

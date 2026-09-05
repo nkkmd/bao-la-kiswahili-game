@@ -1,6 +1,6 @@
 # `PBAI-P3` — candidate台帳
 
-状態: **`INITIAL INVENTORY FROZEN / P3-D AUTHORIZED / PRE-GENERATION`**
+状態: **`INITIAL INVENTORY CLOSED / PROGRAM COMPLETE`**
 
 固定日: 2026-09-05
 
@@ -16,7 +16,7 @@ Program: `PBAI-P3`
 initial candidate inventory = PBAI-C010-v1 only
 candidate identifiers issued = 1
 candidate implementation authorization = NONE
-support / reachability execution authorization = NONE
+support / reachability executions = 1 / COMPLETE
 inventory additions after outcome inspection = PROHIBITED
 ```
 
@@ -26,7 +26,7 @@ inventory additions after outcome inspection = PROHIBITED
 
 優先度: **第一候補 / 唯一のinitial candidate**
 
-状態: **`INVENTORY-FROZEN / PREDEVELOPMENT-SUPPORT-AUTHORIZED / PRE-GENERATION`**
+状態: **`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`**
 
 ### 2.1 目的
 
@@ -101,8 +101,8 @@ C010はC004またはC008のsame-version rescueではありません。過去のs
 
 この除外方針は、C010失敗後にこれらをPBAI-P3へ追加する余地を予約するものではありません。新しいProgramで扱うには、新しいevidence cutoffとoutcome非依存の認可レビューが必要です。
 
-## 4. 次の認可境界
+## 4. 最終判定
 
-現在許可されているのは、[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)と[`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md)に固定したbaseline-only auditの実行だけです。
+[`SUPPORT_REACHABILITY_PROTOCOL.md`](SUPPORT_REACHABILITY_PROTOCOL.md)と[`SUPPORT_REACHABILITY_RUNBOOK.md`](SUPPORT_REACHABILITY_RUNBOOK.md)に固定したbaseline-only auditを1回実行しました。triggerは1164件でしたが、top-3 probe completionは23件（Namua 6、Mtaji 17）で、必要な合計96件、phase別32件を満たしませんでした。
 
-SupportがPASSしてもcandidate実装は自動承認されません。`PBAI-P3-E`でexact candidate contract、source surface、feature-off test、development authorizationを別に固定します。
+formal dispositionは`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。candidate実装、development benchmark、validation、release holdoutは認可しません。結果確認後のinventory追加も禁止されているため、PBAI-P3内の次候補はありません。詳細は[`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)を参照してください。

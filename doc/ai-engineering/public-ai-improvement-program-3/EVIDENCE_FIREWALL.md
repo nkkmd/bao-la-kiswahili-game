@@ -1,6 +1,6 @@
 # `PBAI-P3` — 証拠分離規則
 
-状態: **`ACTIVE / P3-D AUTHORIZED / PRE-GENERATION`**
+状態: **`COMPLETE / PASS / P3-D CLOSED`**
 
 Program: `PBAI-P3`
 
@@ -59,10 +59,10 @@ candidate、development実装、validation通過版、未配備の`ADOPT`版を`
 ## 7. 現在状態
 
 ```text
-firewall status = ACTIVE / PASS
+firewall status = COMPLETE / PASS
 candidate inventory = PBAI-C010-v1 ONLY / FROZEN
 candidate implementation = NOT AUTHORIZED
-support execution = AUTHORIZED / PRE-GENERATION
+support execution = COMPLETE / 1
 development evidence = NONE
 validation evidence = NONE
 release holdout evidence = NONE

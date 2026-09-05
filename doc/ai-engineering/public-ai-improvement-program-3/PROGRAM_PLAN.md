@@ -1,6 +1,6 @@
 # `PBAI-P3` — Program計画
 
-状態: **`P3-D AUTHORIZED / PRE-GENERATION`**
+状態: **`COMPLETE / KEEP-AI-GEN2`**
 
 固定日: 2026-09-05
 
@@ -19,14 +19,14 @@ Research Generation 3の正式成果を、意味を拡張せず工学的な設�
 | `PBAI-P3-A` | 開始認可、RG3 evidence audit、cutoff固定 | `COMPLETE` |
 | `PBAI-P3-B` | 現在の公開AI監査とexact baseline固定 | `COMPLETE` |
 | `PBAI-P3-C` | candidate inventory、fresh split、global gate、support protocol固定 | `COMPLETE / CONTRACT FROZEN` |
-| `PBAI-P3-D` | baseline-only support / reachability audit | `AUTHORIZED / PRE-GENERATION` |
+| `PBAI-P3-D` | baseline-only support / reachability audit | `COMPLETE / SUPPORT-FAIL` |
 | `PBAI-P3-E` | candidate別development認可とexact contract固定 | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-F` | isolated feature-gated developmentとfresh benchmark | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-G` | 独立再構成とfresh validation | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-H` | protected release holdoutと正式判断 | `NOT-AUTHORIZED / NOT-EXECUTED` |
 | `PBAI-P3-I` | rollback確認、公開default配備、lineage昇格 | `NOT-AUTHORIZED / NOT-EXECUTED` |
 
-各Stageは明示的な認可を必要とします。前Stageの完了は後Stageの自動認可になりません。
+各Stageは明示的な認可を必要とします。`PBAI-P3-D`のsupport不足で唯一の候補を閉じたため、後続Stageは認可せず未実行のままProgramを終了しました。
 
 ## 3. 評価単位とsplit
 
@@ -67,4 +67,4 @@ initial candidate inventoryは`PBAI-C010-v1`の1件に固定しました。featu
 
 ## 8. 判断語彙
 
-Programは最終的に、凍結済みfailure semanticsと後続candidate-specific mappingに従って`ADOPT`、`HOLD`、`REJECT`、`KEEP-AI-GEN2`のいずれかを記録します。candidate-specific dispositionは未固定であり、現在の公開状態として`KEEP-AI-GEN2`を維持しています。
+Programは凍結済みfailure semanticsに従い、candidate dispositionを`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`、最終Program outcomeを`KEEP-AI-GEN2`と記録しました。

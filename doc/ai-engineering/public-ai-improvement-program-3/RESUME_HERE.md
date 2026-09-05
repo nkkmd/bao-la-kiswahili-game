@@ -2,7 +2,7 @@
 
 更新日: 2026-09-05
 
-状態: **`P3-D AUTHORIZED / PRE-GENERATION / KEEP-AI-GEN2`**
+状態: **`COMPLETE / KEEP-AI-GEN2`**
 
 ## 1. 最初に読む
 
@@ -15,7 +15,9 @@
 7. [`GENERATION_3_EVIDENCE_AUDIT.md`](GENERATION_3_EVIDENCE_AUDIT.md)
 8. [`EVIDENCE_FIREWALL.md`](EVIDENCE_FIREWALL.md)
 9. [`BASELINE_SPEC.md`](BASELINE_SPEC.md)
-10. [`checkpoints/2026-09-05-p3-d-pre-generation-freeze.md`](checkpoints/2026-09-05-p3-d-pre-generation-freeze.md)
+10. [`SUPPORT_REACHABILITY_RESULT.md`](SUPPORT_REACHABILITY_RESULT.md)
+11. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md)
+12. [`checkpoints/2026-09-05-p3-d-support-closure.md`](checkpoints/2026-09-05-p3-d-support-closure.md)
 
 ## 2. 固定済み状態
 
@@ -28,8 +30,9 @@ baseline = AI-GEN2-BASELINE-2026-09-05-v1
 PBAI-P3-A = COMPLETE
 PBAI-P3-B = COMPLETE
 PBAI-P3-C = COMPLETE / CONTRACT FROZEN
-PBAI-P3-D = AUTHORIZED / PRE-GENERATION
+PBAI-P3-D = COMPLETE / SUPPORT-FAIL
 PBAI-P3-E and later = NOT-AUTHORIZED / NOT-EXECUTED
+FINAL PROGRAM OUTCOME = KEEP-AI-GEN2
 current public lineage = AI-GEN2
 AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
@@ -44,7 +47,7 @@ support contract = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-2026-09-05-v1
 development / validation / release holdout split = FROZEN / UNREAD
 candidate source = NONE
 support run manifest = PBAI-C010-v1-PREDEVELOPMENT-SUPPORT-RUN-2026-09-05-v1
-support result = NONE / PRE-GENERATION
+support result = HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
 benchmark result = NONE
 ```
 
@@ -52,9 +55,9 @@ benchmark result = NONE
 
 ## 4. 次の認可判断
 
-次の作業は、pre-generation commitをexact sourceとして固定した後、凍結済みrunbookで`PBAI-P3-D` baseline-only support / reachability auditを実行することです。
+PBAI-P3は終了しており、Program内の次作業はありません。唯一の候補はsupport不足で実装せず閉じ、Program outcomeは`KEEP-AI-GEN2`です。
 
-`PBAI-P3-D`でもcandidate implementation、benefit benchmark、validation、release holdout、公開変更、`main`統合は行いません。
+新しいAI Engineering Programを検討する場合は、新しいProgram ID、evidence cutoff、fresh evidence、outcome非依存の開始認可レビューを必要とします。PBAI-P3のcandidate implementation、benefit benchmark、validation、release holdout、公開変更、`main`統合は行いません。
 
 ## 5. 変更禁止事項
 
