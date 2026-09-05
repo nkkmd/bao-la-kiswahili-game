@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/README.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/CURRENT_STATUS.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/BENCHMARK_PROTOCOL.md'
@@ -13,7 +12,6 @@ on:
       - 'doc/ai-engineering/public-ai-improvement-program-1/benchmark/**'
       - 'tools/engineering/validate-pbai-p1-gate-spec.js'
       - 'test/public-ai-improvement-program1-contract.test.js'
-      - '.github/workflows/pbai-p1-gate-freeze.yml'
   workflow_dispatch:
 
 permissions:

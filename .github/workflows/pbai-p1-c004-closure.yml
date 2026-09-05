@@ -4,10 +4,8 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'doc/AI_ENGINEERING_INDEX.md'
       - 'doc/ai-engineering/public-ai-improvement-program-1/**'
       - 'test/public-ai-improvement-program1-contract.test.js'
-      - '.github/workflows/pbai-p1-c004-closure.yml'
   workflow_dispatch:
 
 permissions:

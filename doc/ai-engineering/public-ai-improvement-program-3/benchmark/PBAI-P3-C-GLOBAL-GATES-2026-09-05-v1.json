@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "program": "PBAI-P3",
+  "stage": "PBAI-P3-C",
+  "gateSpecId": "PBAI-P3-C-GLOBAL-GATES-2026-09-05-v1",
+  "freezeDate": "2026-09-05",
+  "status": "FROZEN-BEFORE-SUPPORT-OR-CANDIDATE-OUTCOME",
+  "baselineId": "AI-GEN2-BASELINE-2026-09-05-v1",
+  "scientificEvidenceCutoff": "479bc3d3a9b6c745e37a88529732180e8690d6b3",
+  "contractBaseCommit": "2a9d5aa2381c863f47124d3131cff1faf22a8204",
+  "inventoryId": "PBAI-P3-INITIAL-CANDIDATE-INVENTORY-2026-09-05-v1",
+  "candidateVersions": ["PBAI-C010-v1"],
+  "candidateImplementationsObservedBeforeFreeze": 0,
+  "supportResultsObservedBeforeFreeze": 0,
+  "candidateOutcomesObservedBeforeFreeze": 0,
+  "researchGeneration4Influence": false,
+  "principles": {
+    "singleCandidateAblation": true,
+    "hardGatesCannotBeOffset": true,
+    "candidateSpecificIntendedBenefitRequired": true,
+    "validationMayTuneCandidate": false,
+    "releaseHoldoutMayTuneCandidate": false,
+    "engineeringSuccessMayRewriteResearchDecision": false,
+    "authoritativeRawIdentityRequired": true,
+    "unvalidatedSymmetryAllowed": false,
+    "higherResourceSearchIsGameTheoreticTruth": false,
+    "engineScoreIsValidatedBaoWinProbability": false,
+    "rawPlyIsIndependentSample": false
+  },
+  "authoritativeRawIdentity": {
+    "fields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedFields": ["turn", "reason"],
+    "symmetryCanonicalizationAllowed": false
+  },
+  "fixedDepthStrength": {
+    "level": "hard",
+    "timeLimitMs": "Infinity",
+    "maxDepth": 4,
+    "maxTurns": 160,
+    "pairing": "two games share one seeded opening; candidate and baseline swap South/North",
+    "independentUnit": "openingPair",
+    "score": {
+      "win": 1.0,
+      "drawOrAdministrativeUnresolved": 0.5,
+      "loss": 0.0,
+      "administrativeUnresolvedIsScientificDrawClaim": false
+    },
+    "openingStrata": {
+      "namuaCore": {"openingPhase": "namua", "openingPlies": 8},
+      "mtajiCore": {"openingPhase": "mtaji", "openingPlies": 4},
+      "namuaEarlyChallenge": {"openingPhase": "namua", "openingPlies": 4},
+      "namuaLateChallenge": {"openingPhase": "namua", "openingPlies": 12},
+      "mtajiEntryChallenge": {"openingPhase": "mtaji", "openingPlies": 0},
+      "mtajiLaterChallenge": {"openingPhase": "mtaji", "openingPlies": 8}
+    },
+    "seedBlocks": {
+      "development": {
+        "namuaCore": {"start": 44100001, "end": 44100128, "openingPairs": 128, "games": 256},
+        "mtajiCore": {"start": 44101001, "end": 44101128, "openingPairs": 128, "games": 256}
+      },
+      "validation": {
+        "namuaCore": {"start": 44200001, "end": 44200256, "openingPairs": 256, "games": 512},
+        "mtajiCore": {"start": 44201001, "end": 44201256, "openingPairs": 256, "games": 512},
+        "namuaEarlyChallenge": {"start": 44202001, "end": 44202064, "openingPairs": 64, "games": 128},
+        "namuaLateChallenge": {"start": 44203001, "end": 44203064, "openingPairs": 64, "games": 128},
+        "mtajiEntryChallenge": {"start": 44204001, "end": 44204064, "openingPairs": 64, "games": 128},
+        "mtajiLaterChallenge": {"start": 44205001, "end": 44205064, "openingPairs": 64, "games": 128}
+      },
+      "releaseHoldout": {
+        "namuaCore": {"start": 44300001, "end": 44300512, "openingPairs": 512, "games": 1024},
+        "mtajiCore": {"start": 44301001, "end": 44301512, "openingPairs": 512, "games": 1024},
+        "namuaEarlyChallenge": {"start": 44302001, "end": 44302128, "openingPairs": 128, "games": 256},
+        "namuaLateChallenge": {"start": 44303001, "end": 44303128, "openingPairs": 128, "games": 256},
+        "mtajiEntryChallenge": {"start": 44304001, "end": 44304128, "openingPairs": 128, "games": 256},
+        "mtajiLaterChallenge": {"start": 44305001, "end": 44305128, "openingPairs": 128, "games": 256}
+      }
+    },
+    "bootstrap": {
+      "replicates": 20000,
+      "analysisSeed": 45999991,
+      "unit": "openingPair",
+      "lowerConfidenceBound": "one-sided 95% percentile lower bound"
+    },
+    "gate": {
+      "development": {
+        "coreObservedScoreMinimum": 0.50,
+        "eachCorePhaseObservedScoreMinimum": 0.48,
+        "eachSeatObservedScoreMinimum": 0.47
+      },
+      "validation": {
+        "coreObservedScoreMinimum": 0.50,
+        "coreOneSided95LowerBoundMinimum": 0.47,
+        "eachCorePhaseObservedScoreMinimum": 0.48,
+        "eachSeatObservedScoreMinimum": 0.47,
+        "eachChallengeStratumObservedScoreMinimum": 0.45
+      },
+      "releaseHoldout": {
+        "coreObservedScoreMinimum": 0.50,
+        "coreOneSided95LowerBoundMinimum": 0.47,
+        "eachCorePhaseObservedScoreMinimum": 0.48,
+        "eachSeatObservedScoreMinimum": 0.47,
+        "eachChallengeStratumObservedScoreMinimum": 0.45
+      },
+      "lockedValidationPlusHoldout": {
+        "coreObservedScoreMinimum": 0.50,
+        "coreOneSided95LowerBoundMinimum": 0.48,
+        "eachCorePhaseObservedScoreMinimum": 0.49,
+        "eachSeatObservedScoreMinimum": 0.48
+      }
+    }
+  },
+  "decisionQuality": {
+    "independentUnit": "authoritativeRawRoot with one selected root per source trajectory",
+    "rootPopulation": {
+      "minimumLegalMoveCount": 2,
+      "targetDevelopment": 256,
+      "targetValidation": 512,
+      "targetReleaseHoldout": 1024,
+      "phaseBalance": "50% Namua / 50% Mtaji target",
+      "uniqueAuthoritativeRawStateRequired": true,
+      "uniqueHistoricalTrajectoryRequired": true,
+      "selection": "outcome/value/consequence-blind deterministic hash ranking; no replacement after outcome inspection"
+    },
+    "sourceSeedBlocks": {
+      "development": {"start": 44400001, "end": 44401024},
+      "validation": {"start": 44500001, "end": 44502048},
+      "releaseHoldout": {"start": 44600001, "end": 44604096}
+    },
+    "reference": {
+      "source": "frozen AI-GEN2 baseline process",
+      "semantics": "exact-full-window-root-candidates/phase2-value-semantics/v1",
+      "evaluationProfile": "bao",
+      "depth": 5,
+      "quiescenceDepth": 1,
+      "timeLimitMs": "Infinity",
+      "candidateCodeMayDefineReference": false,
+      "interpretation": "engineering comparison reference only; not game-theoretic truth, validated best move, position value, or win probability"
+    },
+    "candidateComparisonBudget": {
+      "level": "hard",
+      "maxDepth": 4,
+      "timeLimitMs": "Infinity"
+    },
+    "metrics": {
+      "topSetAgreement": "selected move belongs to frozen D5 reference top set",
+      "normalizedRankLoss": "(reference scoreRank - 1) / max(1, legalMoveCount - 1)",
+      "severeLoss": "selected move is unique worst under reference or is in root-loss-mate-domain while a non-loss reference move exists",
+      "catastrophicNewLoss": "candidate creates a new immediate terminal or root-loss-mate-domain loss on a root where baseline is not severe"
+    },
+    "gate": {
+      "development": {
+        "topSetAgreementDeltaMinimum": 0.03,
+        "meanNormalizedRankLossDeltaMaximum": -0.01,
+        "severeLossRateExcessOverBaselineMaximum": 0.0,
+        "catastrophicNewLossCountMaximum": 0,
+        "eachPhaseTopSetAgreementDeltaMinimum": -0.01,
+        "eachPhaseMeanNormalizedRankLossDeltaMaximum": 0.01
+      },
+      "validation": {
+        "topSetAgreementDeltaMinimum": 0.02,
+        "meanNormalizedRankLossDeltaMaximum": -0.005,
+        "severeLossRateExcessOverBaselineMaximum": 0.0,
+        "catastrophicNewLossCountMaximum": 0,
+        "eachPhaseTopSetAgreementDeltaMinimum": -0.01,
+        "eachPhaseMeanNormalizedRankLossDeltaMaximum": 0.01
+      },
+      "releaseHoldout": {
+        "topSetAgreementDeltaMinimum": 0.01,
+        "meanNormalizedRankLossDeltaMaximum": 0.0,
+        "severeLossRateExcessOverBaselineMaximum": 0.0,
+        "catastrophicNewLossCountMaximum": 0,
+        "eachPhaseTopSetAgreementDeltaMinimum": -0.01,
+        "eachPhaseMeanNormalizedRankLossDeltaMaximum": 0.01
+      },
+      "lockedValidationPlusHoldout": {
+        "topSetAgreementDeltaMinimum": 0.015,
+        "meanNormalizedRankLossDeltaMaximum": -0.0025,
+        "severeLossRateExcessOverBaselineMaximum": 0.0,
+        "catastrophicNewLossCountMaximum": 0
+      },
+      "allConditionsConjunctive": true
+    }
+  },
+  "fixedDepthCost": {
+    "comparison": "candidate D4 cumulative analyzeMove nodes divided by feature-off baseline D4 nodes on identical roots",
+    "gate": {
+      "allRootMedianNodeRatioMaximum": 1.10,
+      "allRootP95NodeRatioMaximum": 1.60,
+      "triggeredRootMedianNodeRatioMaximum": 1.50,
+      "triggeredRootP95NodeRatioMaximum": 2.00,
+      "negativeControlMedianNodeRatioRequired": 1.0,
+      "negativeControlP95NodeRatioRequired": 1.0
+    }
+  },
+  "operationalQuality": {
+    "independentUnit": "authoritativeRawRoot with paired AB/BA execution order",
+    "sourceSeedBlocks": {
+      "development": {"start": 44700001, "end": 44700512, "targetRoots": 256},
+      "validation": {"start": 44800001, "end": 44801024, "targetRoots": 512},
+      "releaseHoldout": {"start": 44900001, "end": 44902048, "targetRoots": 1024}
+    },
+    "rootBalance": "phase and root-width/churn strata balanced where frozen support permits",
+    "comparison": "same root and host; AB/BA execution order alternates by root; environment and warmup recorded",
+    "standardHard": {"maxDepth": 8, "timeLimitMs": 500},
+    "standardExpert": {"maxDepth": 12, "timeLimitMs": 2000},
+    "gate": {
+      "crashOrUnhandledExceptionCountMaximum": 0,
+      "illegalMoveCountMaximum": 0,
+      "invalidStateGenerationCountMaximum": 0,
+      "medianElapsedRatioCandidateOverBaselineMaximum": 1.05,
+      "p95ElapsedRatioCandidateOverBaselineMaximum": 1.10,
+      "medianCompletedDepthDeltaMinimum": -1,
+      "fractionRootsWithCompletedDepthDeficitAtLeast2Maximum": 0.05,
+      "timeoutRateIncreaseMaximum": 0.03,
+      "directWorkerDeterministicMismatchCountMaximum": 0,
+      "normalAndEasyExactBehaviorChangeMaximum": 0,
+      "additionalPublicAiJsBytesMaximum": 8192,
+      "newPublicAssetAllowed": false,
+      "additionalPersistentMemoryBytesMaximum": 0
+    }
+  },
+  "trajectoryStress": {
+    "sourceSeedBlocks": {
+      "development": {"start": 45000001, "end": 45000512, "targetTrajectories": 256},
+      "validation": {"start": 45100001, "end": 45101024, "targetTrajectories": 512},
+      "releaseHoldout": {"start": 45200001, "end": 45202048, "targetTrajectories": 1024}
+    },
+    "stratificationInputs": [
+      "G3-10 directionality",
+      "G3-10 persistence-lag gradient",
+      "G3-10 return fraction",
+      "G3-10 first-order path dependence",
+      "G3-11 exact depth-10 transposition continuation stress fixtures"
+    ],
+    "useBoundary": "regression and stress only; not candidate trigger, evaluation feature, or value oracle",
+    "gate": {
+      "moveGenerationMismatchMaximum": 0,
+      "rawIdentityMismatchMaximum": 0,
+      "illegalTranspositionReuseMaximum": 0,
+      "terminalMismatchMaximum": 0,
+      "stateCorruptionMaximum": 0
+    }
+  },
+  "correctnessAndRegression": {
+    "hardGate": true,
+    "publicEngineSha256MustRemain": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "publicRuleEngineChangeWithinCandidate": "REJECT-AND-SEPARATE-RULES-WORK",
+    "legalMoveErrorMaximum": 0,
+    "stateCorruptionMaximum": 0,
+    "invalidCacheReuseMaximum": 0,
+    "terminalResultPreservationRequired": true,
+    "deterministicFixedDepthBehaviorRequired": true,
+    "directWorkerMismatchMaximum": 0,
+    "existingTacticalSuiteFailureMaximum": 0,
+    "candidateSpecificRegressionFailureMaximum": 0,
+    "allRelevantTestFailuresMaximum": 0,
+    "unvalidatedSymmetryCanonicalizationAllowed": false,
+    "scientificallyProhibitedInferenceInImplementationOrUiAllowed": false
+  },
+  "featureOffEquivalence": {
+    "requiredBeforeAnyFeatureOnBenefitRun": true,
+    "publicDefaultFlagValue": false,
+    "comparisonRootsMinimum": 512,
+    "requiredExactEquality": [
+      "selected move key",
+      "root score",
+      "completed depth",
+      "nodes",
+      "quiescence nodes",
+      "cutoffs",
+      "cache hits and stores",
+      "evaluation requests and evaluations",
+      "all other pre-existing deterministic stats",
+      "exception and timeout behavior",
+      "absence of candidate diagnostic surface"
+    ],
+    "mismatchMaximum": 0
+  },
+  "negativeControls": {
+    "required": true,
+    "strata": [
+      "high-width/no-churn",
+      "low-or-equal-width/churn",
+      "low-or-equal-width/no-churn",
+      "partial-or-timed-out-ranking",
+      "easy/normal level",
+      "legacy or non-eligible profile",
+      "feature flag off"
+    ],
+    "triggerMaximumPerRoot": 0,
+    "semanticMismatchMaximum": 0,
+    "nodeCountMismatchMaximum": 0
+  },
+  "regressionStrata": [
+    "Namua",
+    "Mtaji",
+    "opening",
+    "middle",
+    "closing-or-terminal-near",
+    "historically-reachable",
+    "tactical",
+    "low-width",
+    "high-width",
+    "ranking-churn",
+    "no-ranking-churn",
+    "G3-10-trajectory-stress",
+    "G3-11-transposition-stress"
+  ],
+  "overlapFirewall": {
+    "supportDevelopmentValidationReleaseMustBeDisjoint": true,
+    "identityDimensions": ["seed", "gameOrOpeningPair", "fullTrajectory", "openingPrefix", "authoritativeRawState"],
+    "selectionMustPrecedeOutcomeInspection": true,
+    "outcomeDrivenReplacementAllowed": false,
+    "validationSetMayChangeAfterDevelopmentOutcome": false,
+    "releaseHoldoutMayChangeAfterValidationOutcome": false,
+    "rawPlyMayBeCountedAsIndependent": false
+  },
+  "independentVerification": {
+    "requiredForSupport": true,
+    "requiredForDevelopmentDecision": true,
+    "requiredForValidation": true,
+    "requiredForReleaseHoldout": true,
+    "minimumRequirements": [
+      "candidate source and config hash verification",
+      "independent trigger and top-3 reconstruction without importing production trigger code",
+      "independent row metric and aggregate decision reconstruction",
+      "artifact hash verification",
+      "feature-off baseline equivalence verification"
+    ],
+    "redundantMandatoryEvidence": {
+      "fullArtifactPathRequired": true,
+      "compactCanonicalSummaryAndHashPathRequired": true,
+      "singleArtifactTransportFailureMayBeSilentlyWaived": false
+    }
+  },
+  "candidateSpecificGateFloor": {
+    "mustBeFrozenBeforeDevelopmentAuthorization": true,
+    "mustSpecify": [
+      "exact trigger depth pair and ranking proxy",
+      "exact top-3 re-verification semantics",
+      "feature flag and affected source surface",
+      "support result identity and eligibility mapping",
+      "candidate-local intended benefit and cost gates",
+      "feature-off test matrix",
+      "negative controls",
+      "rollback",
+      "failure semantics"
+    ],
+    "globalNonRegressionAloneCanAdoptCandidate": false,
+    "mayRelaxGlobalGate": false
+  },
+  "failureSemantics": {
+    "technicalOrVerifierFailure": "evidence-generation-only: HOLD / TECHNICAL-INVALID-EVIDENCE; candidate-semantic: REJECT / TECHNICAL-INVALID-CANDIDATE",
+    "predevelopmentSupportBelowFrozenMinimum": "NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION",
+    "featureOffEquivalenceFailure": "TECHNICAL-INVALID-CANDIDATE / REJECT",
+    "developmentIntendedBenefitFailure": "DEVELOPMENT-BENEFIT-FAIL / HOLD",
+    "developmentCostFailure": "DEVELOPMENT-BENEFIT-FAIL / HOLD",
+    "developmentHardSafetyFailure": "REJECT / CANDIDATE-CLOSED",
+    "validationFailure": "VALIDATION-FAIL / HOLD; no same-version tuning against validation",
+    "releaseHoldoutFailure": "RELEASE-HOLDOUT-FAIL / REJECT",
+    "stageWithoutPrerequisite": "NOT-AUTHORIZED-NOT-EXECUTED",
+    "postOutcomeThresholdOrEndpointChange": "PROHIBITED",
+    "postOutcomeCandidateAdditionOrRenameRescue": "PROHIBITED"
+  },
+  "decisionMapping": {
+    "supportPass": "PBAI-P3-E CONTRACT-FREEZE REVIEW ALLOWED; NO IMPLEMENTATION AUTHORIZATION",
+    "supportGateFailure": "HOLD / CLOSED-WITHOUT-IMPLEMENTATION",
+    "supportTechnicalFailure": "HOLD / TECHNICAL-INVALID-EVIDENCE",
+    "featureOffEquivalenceFailure": "REJECT / TECHNICAL-INVALID-CANDIDATE",
+    "developmentBenefitOrCostFailure": "HOLD / DEVELOPMENT-BENEFIT-FAIL",
+    "developmentHardSafetyFailure": "REJECT / CANDIDATE-CLOSED",
+    "developmentAllGatesPass": "VALIDATION-CONTRACT-REVIEW-ALLOWED; VALIDATION NOT AUTOMATICALLY AUTHORIZED",
+    "validationFailure": "HOLD / CANDIDATE-CLOSED; SAME-VERSION TUNING PROHIBITED",
+    "validationAllGatesPass": "RELEASE-HOLDOUT-REVIEW-ALLOWED; HOLDOUT NOT AUTOMATICALLY AUTHORIZED",
+    "releaseHoldoutFailure": "REJECT / CANDIDATE-CLOSED",
+    "allEngineeringGatesPass": "ADOPT-ELIGIBLE / SEPARATE PUBLIC-PRODUCT DECISION REQUIRED",
+    "formalAdopt": "EXPLICIT DECISION REQUIRED AFTER ALL GATES, INDEPENDENT VERIFICATION, ROLLBACK, AND COMPATIBILITY PASS",
+    "programClosureWithoutFormalAdopt": "KEEP-AI-GEN2",
+    "formalAdoptWithoutDeployment": "AI-GEN2 REMAINS CURRENT; AI-GEN3 NOT-PROMOTED",
+    "formalAdoptAndActualPublicDefaultDeployment": "AI-GEN3 PROMOTION ELIGIBLE"
+  },
+  "rollback": {
+    "featureFlagDefaultOffUntilDeployment": true,
+    "featureOffMustReproduceBaseline": true,
+    "priorPublicAssetHashesMustBeRetained": true,
+    "serviceWorkerCacheRollbackRunbookRequiredBeforeRelease": true,
+    "savedDataMigrationMustBeVerifiedBeforeRelease": true,
+    "deploymentReversalMustBeDocumentedBeforeRelease": true
+  },
+  "releaseAndGeneration": {
+    "validationExecutionAuthorizedNow": false,
+    "releaseHoldoutExecutionAuthorizedNow": false,
+    "publicDeploymentAuthorizedNow": false,
+    "formalAdoptAloneCreatesAiGen3": false,
+    "aiGen3RequiresFormalAdoptAndActualPublicDefaultDeployment": true,
+    "currentPublicLineage": "AI-GEN2",
+    "aiGen3Status": "RESERVED-NOT-PROMOTED"
+  }
+}

@@ -24,12 +24,10 @@ on:
       - "doc/FUTURE_RESEARCH_AGENDA.md"
       - "doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md"
       - "doc/research-program-decisions/2026-08-28-post-g2-05-raw-enumeration-hardening.md"
-      - "README.md"
       - "tools/experiments/*drsse*"
       - "test/drsse-study1-closure.test.js"
       - "test/raw-enumeration-hardening-policy.test.js"
       - "test/second-generation-research-agenda.test.js"
-      - ".github/workflows/drsse-*.yml"
   workflow_dispatch:
 
 permissions:

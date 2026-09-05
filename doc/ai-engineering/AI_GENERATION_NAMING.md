@@ -2,7 +2,7 @@
 
 状態: **ACTIVE**  
 制定日: 2026-08-26  
-更新日: 2026-09-01  
+更新日: 2026-09-05
 適用範囲: 公開Bao AIのengineering lineage命名
 
 人間向けの説明文は[`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)に従い、日本語を主言語とする。以下で定義するcanonical identifier自体は翻訳・改名しない。
@@ -51,6 +51,7 @@ legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索�
 - exact public configurationは各AI Engineering Programで`AI-GEN2-BASELINE-...`として完全固定します。
 - PBAI-P1 historical baselineは`AI-GEN2-BASELINE-2026-08-26-v1`です。
 - PBAI-P2開始時のcurrent comparatorは`AI-GEN2-BASELINE-2026-09-01-v1`です。
+- PBAI-P3開始時のcurrent comparatorは`AI-GEN2-BASELINE-2026-09-05-v1`です。
 - `bao-v2`という既存experimental evaluation profile名は`AI-GEN2`を意味しません。
 - profile名に`v2`が含まれていてもAI世代番号とは無関係です。
 
@@ -157,3 +158,23 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 ```
 
 C006〜C009はいずれもvalidation authorizationへ到達しなかった。したがってPBAI-P2-F/G/Hによるvalidation、protected release holdout、public deployment、generation promotionは実行していない。Research Generation 3が進行していてもAI generationは自動的に進まず、`AI-GEN3`は次の正式採用public lineageの予約名のままである。
+
+## 9. PBAI-P3で固定した対応関係
+
+PBAI-P3のProgram初期化とprospective contract freezeで次を固定しました。
+
+```text
+program = PBAI-P3
+scientific evidence = Research Generation 3 canonical evidence at or before cutoff
+scientific evidence cutoff = 479bc3d3a9b6c745e37a88529732180e8690d6b3
+Research Generation 4 scientific influence = ZERO / EXCLUDED
+baseline = AI-GEN2-BASELINE-2026-09-05-v1
+candidate identifiers issued = PBAI-C010-v1
+candidate feature flag proposal = pbaiC010SelectiveRootReverification
+current program state = COMPLETE / KEEP-AI-GEN2
+PBAI-C010-v1 = HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION
+current public lineage = AI-GEN2
+AI-GEN3 = RESERVED / NOT-PROMOTED
+```
+
+PBAI-P3ではformal `ADOPT`もpublic default deploymentもなく、`AI-GEN3`へ昇格しませんでした。`AI-GEN3`は次に正式採用・配備されるpublic lineageの予約名のままです。
