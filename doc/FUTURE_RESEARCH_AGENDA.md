@@ -1,10 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 4.0.0
+Version: 5.0.0
 
-更新日: 2026-09-04
+更新日: 2026-09-05
 Research Generation 2: **Closed (2026-08-31)**（2026-08-31に完了）
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・`main`へ統合済み）
+Research Generation 4: **Program plan frozen / scientific execution not authorized (2026-09-05)**（計画固定済み・科学実行未承認）
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。ここに候補として記載しただけでは、Studyの開始、seedへのアクセス、計算実行、公開AIの変更は承認されません。
 
@@ -22,9 +23,25 @@ validated Bao win-probability mapping = NOT ESTABLISHED
 human difficulty / expert-judgment law = NOT ESTABLISHED
 Research Generation 2 core = CLOSED
 Research Generation 3 core = CLOSED
+Research Generation 4 program plan = FROZEN
+Research Generation 4 scientific execution = NOT AUTHORIZED
 ```
 
 研究結果の索引は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)、第二・第三世代の統合結果はそれぞれ[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)と[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
+
+## Research Generation 4 — 計画済みの次世代Program
+
+第四世代は、第三世代で測定可能になった局所ゲーム木幾何について、**意味、移送可能性、exact帰結**を検証するProgramとして計画を固定した。計画の正本は[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)である。
+
+| Wave | Agenda | 研究方向 |
+| --- | --- | --- |
+| A | `G4-01..G4-04` | compatibility instrumentと、G3-04・G3-07・G3-10由来claimの一般化・反例境界 |
+| B | `G4-05..G4-06` | fresh exact microdomainとgeometry / game-theoretic consequence bridge |
+| C | `G4-07..G4-09` | multiscale memory、rule-semantic transition、search reliability |
+| D | `G4-10` | protected fresh depth-11 exact reachability topology |
+| 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究。coreを阻害しない |
+
+G4-01は最初の候補だが、まだscientific executionを承認していない。次に必要なのはpost-RG3 / pre-G4-01 current-state authorization reviewである。G3-12のrepair、G3-12 Stage 2 seedの流用、G3-11 depth 10の再実行、authorization前のdepth 11 accessは行わない。
 
 ## 2. 今後の優先課題
 
@@ -134,10 +151,10 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[候補] 新しいgeneralization / counterexample Study**
+4. **[計画済み・未承認] Research Generation 4によるclaim別generalization / counterexample Study**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
-6. **[候補] Qualified human / expert evidenceの収集**
-7. **[候補] 新規authorization下でのdepth 11以深のexact研究**
+6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
+7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**
 
 ## 6. 研究と公開AI改善の分離
 
