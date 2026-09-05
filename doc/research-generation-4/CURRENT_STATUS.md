@@ -2,7 +2,7 @@
 
 更新日: 2026-09-05  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`PROGRAM PLAN FROZEN / MAIN INTEGRATION PENDING / SCIENTIFIC EXECUTION NOT AUTHORIZED`**
+状態: **`PROGRAM PLAN FROZEN / INTEGRATED TO MAIN / SCIENTIFIC EXECUTION NOT AUTHORIZED`**
 
 ## Program全体
 
@@ -11,13 +11,14 @@ Program: `Bao Fourth-Generation Research Program`
 ```text
 Baseline main = ed30395d98e4dd43cbbc5435752b9ba1943d789e
 Planning branch = research/g4-program-plan
+Planning PR = #103
 Core agenda = G4-01..G4-10
 Independent tracks = G4-P01, G4-H01
 Program plan = FROZEN
 Scientific execution authorized = none
 Scientific evidence generated = none
 Scientific seeds accessed = none
-Main integration = PENDING
+Main integration = COMPLETE / merge commit 692bcb40f52c097ca89bf7fea842b6f77fbdf19e
 ```
 
 ## Agenda別の開始状態
@@ -59,6 +60,7 @@ reviewが明示的に`AUTHORIZED`を示すまで、Study ID、scientific seed bl
 - [`README.md`](README.md) — 初見向け入口
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — prospective program contract
 - [`RESUME_HERE.md`](RESUME_HERE.md) — 再開手順
+- [`checkpoints/2026-09-05-research-generation-4-program-plan-main-integration-complete.md`](checkpoints/2026-09-05-research-generation-4-program-plan-main-integration-complete.md) — 計画の`main`統合完了記録
 - [`../research-program-decisions/2026-09-05-research-generation-4-program-planning-and-integration-authorization.md`](../research-program-decisions/2026-09-05-research-generation-4-program-planning-and-integration-authorization.md) — 計画策定と統合のauthorization境界
 
-`main`統合後は、統合完了checkpointとこの現在状態を別の整合更新で同期する。
+Program計画はPR #103を通じて`main`へ統合済みである。この統合完了は個別Studyのscientific executionを承認しない。
