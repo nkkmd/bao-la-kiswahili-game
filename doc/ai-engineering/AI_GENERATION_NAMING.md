@@ -185,6 +185,12 @@ PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`
 
 [最終報告](public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。
 
-## PBAI-P5の再検証準備
+## PBAI-P5の再検証
 
-PBAI-P5は同じPBAI-C011-v1の独立した再検証を準備した。状態はPREPARATION-COMPLETE / NOT-STARTED。新規seedは未使用で、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開AIはAI-GEN2、候補既定無効のままである。[準備の入口](public-ai-improvement-program-5/README.md)を参照する。
+PBAI-P5は同じPBAI-C011-v1の独立した再検証を準備した。検証は完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開AIはAI-GEN2、候補既定無効のままである。[準備の入口](public-ai-improvement-program-5/README.md)を参照する。
+
+## PBAI-P5の最終結果
+
+PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開AIはAI-GEN2、候補既定無効、main未統合のままである。
+
+[最終報告](public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。

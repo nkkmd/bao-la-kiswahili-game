@@ -1,6 +1,6 @@
 # PBAI-P5 — 軽量な局面遷移の再検証準備
 
-状態: `PREPARATION-COMPLETE / NOT-STARTED`。同じPBAI-C011-v1を新規データで再検証するための条件と実行基盤を準備した。P4のHOLDは維持し、公開AIはAI-GEN2、候補は既定無効のままである。改善効果はまだ確認していない。
+状態: `COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持し、公開AIはAI-GEN2、候補は既定無効のままである。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)を参照する。
 
 ## 読む順序
 
@@ -19,4 +19,6 @@
 
 ## チャットに依存しない実行
 
-[実行の追補契約](EXECUTION_CONTRACT.md)で外部runner、途中保存、遠隔の重複起動防止を準備した。[会話中断時の確認位置](RESUME_HERE.md)から同じrunを読み取り確認できる。今回の準備では正式試験を開始していない。
+[実行の追補契約](EXECUTION_CONTRACT.md)で外部runner、途中保存、遠隔の重複起動防止を準備した。[会話中断時の確認位置](RESUME_HERE.md)から同じrunを読み取り確認できる。正式試験は約40分17秒で完了し、外部保存と独立検算も通過した。
+
+開始レビュー・PROTOCOL・実行追補契約の未開始という表記は、開始前に凍結した時点の記録である。現在の状態はCURRENT_STATUSと最終報告を正本とする。

@@ -55,3 +55,6 @@ artifacts/*-local.json
 /artifacts/pbai-p4/development/
 /artifacts/pbai-p4/validation/
 /artifacts/pbai-p4/holdout/
+
+# PBAI-P5 complete raw observations are stored in final-evidence.tar.gz.
+/artifacts/pbai-p5/run/
