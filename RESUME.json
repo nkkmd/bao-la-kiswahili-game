@@ -74,21 +74,28 @@
     },
     "preparationLockSha256": "ca0fc85d594f23aa0c0ccb96457544556a48d0bbf2c87889034a324d3ad08036"
   },
-  "checkpointAt": 1788707706.3490329,
+  "checkpointAt": 1788707708.9439971,
   "completedGames": {
     "development": 0,
     "validation": 0,
     "holdout": 0
   },
   "final": null,
-  "archiveSha256": "e5cc9db1ddbf8cb252291a28c51e4798e72a8518b79e9b96a731513e1013eab6",
-  "archiveBytes": 6190,
+  "archiveSha256": "a3d546a4db767753ffb61bc7bc6d9ceb55602b09c18415e51bc3c772fbee9bb1",
+  "archiveBytes": 19367,
   "files": {
+    "CHECKPOINT_REQUEST.json": "e08d4a8a2ac7cc6a0ebd0ddb8c870c4a48f5fc94970e21dadc53fe6e12f0fa30",
     "RUN_STARTED.json": "b24841580f64fa190d90e43a72bfc82ac7094283d0176503fbfa14594564008b",
     "command-0.complete.json": "cfb10a7c7285a3e6821634cab18732d12d4e9da541ae98ca7fa21810f0bef1cb",
     "command-0.log": "92c622fe777e7ba7e3bedb21d5c936d7c805bf22cfda45d7208f6eb0a0134755",
     "command-0.started.json": "d1106f3c989c3153bbf091347e8549bd83d2a3fd670e14d425bd06e20b325421",
-    "correctness.json": "969c058f51df105d482967896902a414129af687c44cee73c59085fb16a3bf47"
+    "command-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command-1.started.json": "313e43159754d54862b369c276e28753e0523f79c8924897e8d3778205c9af0b",
+    "correctness.json": "969c058f51df105d482967896902a414129af687c44cee73c59085fb16a3bf47",
+    "development/manifest.json": "b5fd3e34b89ec33aeec79f949f0344d9088cd7e06a16ac59c17c930015dce89e",
+    "development/roots-seeds.jsonl": "8175c28e5a66487aa99de7a1dbc28abf8b961cad20e8b1044fcb534d069717a0",
+    "development/roots-source.json": "bab1b6169d7832eadf93425a8c75115b940047cf153fec46ceac0840c517035d",
+    "development/roots-source.json.started": "a3d22dd3b3d8ef1ad0da3214c39701a489917fad9573cbf2ad0e62b2d296f699"
   },
   "restartAllowed": false,
   "meaning": "Recorded evidence only; incomplete data never establish strength."
