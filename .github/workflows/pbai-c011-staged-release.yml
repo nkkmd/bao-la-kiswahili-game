@@ -1,0 +1,56 @@
+name: PBAI-C011 staged release verification
+on:
+  pull_request:
+    paths:
+      - 'public/engine.js'
+      - 'public/ai.js'
+      - 'public/ai-config.js'
+      - 'public/ai-worker.js'
+      - 'public/main.js'
+      - 'public/service-worker.js'
+      - 'test/ai-config.test.js'
+      - 'doc/ai-engineering/public-ai-improvement-program-5/**'
+      - 'tools/engineering/audit-pbai-p5-results.py'
+      - '.github/workflows/pbai-c011-staged-release.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Verify current engine, AI, config, UI and Worker behavior
+        run: |
+          for test_file in \
+            test/engine.test.js \
+            test/ai-config.test.js \
+            test/ai.test.js \
+            test/search.test.js \
+            test/tactical.test.js \
+            test/ai-worker.test.js \
+            test/worker-integration.test.js \
+            test/pbai-p4-transitions.test.js \
+            test/diagnostics-ui.test.js \
+            test/namua-mtaji-transition-engine.test.js \
+            test/benchmark.test.js
+          do
+            node "$test_file"
+          done
+      - name: Verify completed evidence against its execution commit
+        run: python3 tools/engineering/audit-pbai-p5-results.py
+      - name: Verify planned public asset hashes
+        run: |
+          cat <<'HASHES' | sha256sum -c -
+          2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3  public/engine.js
+          aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498  public/ai.js
+          2c5122317a857aa6548d52803f25d20063fa5e80a41b50b8444458ba5861673b  public/ai-config.js
+          346a1b1451558518dc1162dce2e3582cafc56ac02d579a48c40cddd658f13f8f  public/service-worker.js
+          cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4  public/ai-worker.js
+          ef11527a94de975945b861f3cd034f42c1f8eef1165b660659831f64be8b7830  public/main.js
+          HASHES
