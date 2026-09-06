@@ -1,7 +1,0 @@
-SFCDF-STUDY1 central documentation synchronization trigger.
-
-Purpose: update current-facing documentation only after formal Study closure.
-Scientific evidence generation: false.
-Seed access: false.
-Protected depth-10 access: false.
-Main-branch integration: not authorized by this trigger.

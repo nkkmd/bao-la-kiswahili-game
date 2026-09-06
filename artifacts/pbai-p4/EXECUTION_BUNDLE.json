@@ -1,9 +1,0 @@
-{
-  "path": "artifacts/pbai-p4/execution-commits.bundle",
-  "sha256": "399e23ff28de3e9f284d1b7872adf9d30106574a350ac723e5a9b34e670feed0",
-  "bytes": 1323516,
-  "prerequisite": "f260b252c8f5f00a9a1b5124748c7303d75b252d",
-  "head": "99fa21704fc599afd180ecb819a6d780c309cf99",
-  "refs": "99fa21704fc599afd180ecb819a6d780c309cf99 HEAD",
-  "purpose": "Preserve exact local execution commits; GitHub connector compact commits have equivalent trees."
-}

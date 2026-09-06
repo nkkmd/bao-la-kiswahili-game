@@ -1,3 +1,0 @@
-PBAI-C009-v1 isolated development branch must be created from this or a descendant documentation-only commit after all pre-source freezes.
-Canonical pre-source freeze head before branch creation: fb4a0e3901424beb9ad0acd81dfbc3ef70f356b9
-Public candidate source changed at this checkpoint: false

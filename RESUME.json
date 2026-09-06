@@ -1,0 +1,91 @@
+{
+  "program": "PBAI-P5",
+  "run": {
+    "wallStart": 1788707686.4453099,
+    "wallDeadline": 1788722086.4453099,
+    "limitSeconds": 14400,
+    "pid": 2410,
+    "commit": "b7ec229a7b34eb9266d4bc19506f3e0cd550004b",
+    "commands": [
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/verify-pbai-p5-correctness.js"
+      ],
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/run-pbai-p5-stage.js",
+        "development"
+      ],
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/verify-pbai-p5-stage-independent.js",
+        "development"
+      ],
+      [
+        "python3",
+        "tools/engineering/verify-pbai-p5-metrics-independent.py",
+        "development"
+      ],
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/run-pbai-p5-stage.js",
+        "validation"
+      ],
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/verify-pbai-p5-stage-independent.js",
+        "validation"
+      ],
+      [
+        "python3",
+        "tools/engineering/verify-pbai-p5-metrics-independent.py",
+        "validation"
+      ],
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/run-pbai-p5-stage.js",
+        "holdout"
+      ],
+      [
+        "node",
+        "--max-old-space-size=2048",
+        "tools/engineering/verify-pbai-p5-stage-independent.js",
+        "holdout"
+      ],
+      [
+        "python3",
+        "tools/engineering/verify-pbai-p5-metrics-independent.py",
+        "holdout"
+      ]
+    ],
+    "githubRunId": "34041683075",
+    "githubRunUrl": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34041683075",
+    "environment": {
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 7763 64-Core Processor\nCPU family:                              25\nModel:                                   1\nThread(s) per core:                      2\nCore(s) per socket:                      2\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                4890.85\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves user_shstk clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               64 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                1 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Vulnerable: No microcode\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n",
+      "node": "v24.19.0",
+      "runnerImage": "20260831.293.1"
+    },
+    "preparationLockSha256": "ca0fc85d594f23aa0c0ccb96457544556a48d0bbf2c87889034a324d3ad08036"
+  },
+  "checkpointAt": 1788707687.3221083,
+  "completedGames": {
+    "development": 0,
+    "validation": 0,
+    "holdout": 0
+  },
+  "final": null,
+  "archiveSha256": "2f4289e52925d5095e8f97c7b62bac7c52b266891c4a5c2c97005380f6d4d332",
+  "archiveBytes": 1887,
+  "files": {
+    "RUN_STARTED.json": "b24841580f64fa190d90e43a72bfc82ac7094283d0176503fbfa14594564008b"
+  },
+  "restartAllowed": false,
+  "meaning": "Recorded evidence only; incomplete data never establish strength."
+}

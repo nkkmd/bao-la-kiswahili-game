@@ -1,7 +1,0 @@
-TCTGD-STUDY1
-stage=TCTGD-S1-DEVELOPMENT-2026-09-02-v1
-purpose=NON-SCIENTIFIC-TOOLING-SMOKE-ONLY
-fresh_scientific_evidence_authorized=false
-stage1_seed_access_authorized=false
-protected_depth10_access_authorized=false
-trigger_nonce=tctgd-stage1-tooling-smoke-v1
