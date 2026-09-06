@@ -29,6 +29,17 @@ for(const kind of ["roots","games"]){
   assert.equal(reason,log.reason);
  }
  assert.deepEqual(selected,data.rows);assert.equal(selected.length,data.n*2);sourceRoots+=selected.length;
+ if(kind==="roots")for(let i=0;i<data.rows.length;i++){
+  const op=dir+`/operation-${i}.json`;if(!fs.existsSync(op))continue;
+  for(const row of read(op)){
+   assert.equal(row.seed,data.rows[i].seed);assert.equal(row.phase,data.rows[i].phase);
+   for(const mode of ["baseline","candidate"]){
+    const move=row[mode].analysis.move;
+    assert(B.E.moveVariants(data.rows[i].state).some(m=>B.A.moveKey(m)===B.A.moveKey(move)));
+    B.E.applyMove(data.rows[i].state,move);
+   }
+  }
+ }
  if(kind==="games")for(let i=0;i<data.rows.length;i++){
   const f=dir+`/pair-${i}.json`;if(!fs.existsSync(f))continue;
   const pair=read(f),root=data.rows[i];assert.equal(pair.seed,root.seed);assert.deepEqual(pair.games.map(g=>g.candidateSeat).sort(),[0,1]);

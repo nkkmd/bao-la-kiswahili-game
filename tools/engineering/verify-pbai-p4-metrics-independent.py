@@ -13,6 +13,11 @@ for row in speed:
  for eq in row['equality']:
   assert eq['baseline']==eq['off']==eq['candidate']
   assert not eq['baseline']['stats']['timedOut']
+ reference=next(e['baseline'] for e in row['equality'] if e['level']=='hard' and e['maxDepth']==3)
+ for mode in ['baseline','candidate']:
+  for measurement in row['times'][mode]:
+   a=measurement['analysis']; cleaned={'move':a['move'],'stats':{k:v for k,v in a['stats'].items() if k!='elapsedMs'}}
+   assert cleaned==reference, 'Timed sample changed deterministic work'
  ts={m:[x['elapsed'] for x in row['times'][m]] for m in rss}
  for m in rss:
   assert len(ts[m])==6

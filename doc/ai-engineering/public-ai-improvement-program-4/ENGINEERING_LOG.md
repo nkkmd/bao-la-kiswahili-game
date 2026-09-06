@@ -25,3 +25,5 @@ Program、candidate、対象phase、予算、sample数、seed block、次段階g
 ## 現行設定の文書確認
 
 AI_DEVELOPMENT_LOGの現在設定に、ブラウザーの設定とanalyzeMove単体の既定値の混同が残っていた。標準hard 500ms/D8、expert 2000ms/D12と、直接APIの450ms/D4を分けて説明し、重みの正本もai-weights.jsへ明記した。過去の測定値や歴史的な結果は変更していない。
+
+独立検算では、最初の固定深度比較だけでなく、保存済みの速度測定全反復の選択手・elapsedMs以外の全statsも同じD3結果へ照合する。運用比較で返された全着手も固定baselineの合法variantへ照合する。追加測定や事後の閾値変更は行わない。
