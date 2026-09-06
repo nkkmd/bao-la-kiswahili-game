@@ -28,7 +28,7 @@
 | `PBAI-P2` | Research Generation 2まで。Research Generation 3は除外 | `PBAI-C006..C009` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P4` | 新規工学検証、baseline 2026-09-06 | `PBAI-C011-v1` | `STRENGTH-NON-ESTIMABLE / HOLD` | なし |
-| `PBAI-P5` | P4と独立した新規工学再検証 | `PBAI-C011-v1` | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` | 統合前 |
+| `PBAI-P5` | P4と独立した新規工学再検証 | `PBAI-C011-v1` | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` | 段階的反映を準備中 |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
@@ -221,6 +221,6 @@ PBAI-P5は[チャット非依存の実行準備](ai-engineering/public-ai-improv
 
 ## PBAI-P5の最終結果
 
-PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開AIはAI-GEN2、候補既定無効、main未統合のままである。
+PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。結果確認後の明示的指示によりmain統合と段階的な公開反映を準備中であり、AI-GEN3への正式昇格は別判断として保留している。
 
 [最終報告](ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
