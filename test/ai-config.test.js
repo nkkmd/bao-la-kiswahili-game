@@ -25,8 +25,10 @@ assert.deepEqual(Config.searchOptions("normal", { hardwareConcurrency: 8 }), {},
   const hard = Config.searchOptions("hard", { hardwareConcurrency: 4, deviceMemory: 4 }, state);
   const expert = Config.searchOptions("expert", { hardwareConcurrency: 4, deviceMemory: 4 }, state);
   const adaptive = Config.adaptiveSearchOptions("expert", expertFixed, state);
-  assert.deepEqual(hard, fixed, "hard keeps the fixed UI budget by default");
-  assert.deepEqual(expert, expertFixed, "expert keeps the fixed UI budget by default");
+  assert.deepEqual(hard, { ...fixed, pbaiC011LightweightTransitions: true },
+    "hard enables lightweight transitions without changing the fixed UI budget");
+  assert.deepEqual(expert, { ...expertFixed, pbaiC011LightweightTransitions: true },
+    "expert enables lightweight transitions without changing the fixed UI budget");
   assert.equal(adaptive.adaptive.enabled, true, "expert experiments can include position-aware budget data");
   assert.equal(adaptive.adaptive.baseTimeLimitMs, 2000,
     "adaptive config records the fixed budget it adjusted");
