@@ -21,6 +21,8 @@ jobs:
           node-version: '24.19.0'
       - name: Verify archived evidence and immutable execution conditions
         run: python3 tools/engineering/audit-pbai-p5-results.py
+      - name: Verify browser-style and Worker transition boundaries
+        run: node --test test/pbai-p4-transitions.test.js
       - name: Reconstruct recorded sources and games without timed experiments
         run: |
           for stage in development validation holdout; do
