@@ -1,0 +1,31 @@
+name: PBAI-P5 completed evidence verification
+on:
+  pull_request:
+    paths:
+      - 'artifacts/pbai-p5/final-*'
+      - 'doc/ai-engineering/public-ai-improvement-program-5/**'
+      - 'tools/engineering/audit-pbai-p5-results.py'
+      - '.github/workflows/pbai-p5-result-verification.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Verify archived evidence and immutable execution conditions
+        run: python3 tools/engineering/audit-pbai-p5-results.py
+      - name: Verify browser-style and Worker transition boundaries
+        run: node --test test/pbai-p4-transitions.test.js
+      - name: Reconstruct recorded sources and games without timed experiments
+        run: |
+          for stage in development validation holdout; do
+            node tools/engineering/verify-pbai-p5-stage-independent.js "$stage" --check
+            python3 tools/engineering/verify-pbai-p5-metrics-independent.py "$stage" --check
+          done

@@ -1,0 +1,60 @@
+name: PBAI-P5 external single-use verification
+on:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: pbai-p5-scientific-run-once
+  cancel-in-progress: false
+jobs:
+  formal:
+    if: >-
+      github.repository == 'nkkmd/bao-la-kiswahili-game' &&
+      github.event.label.name == 'pbai-p5-start-once' &&
+      github.event.pull_request.number == 108 &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.head.ref == 'engineering/pbai-p5-reverification-preparation' &&
+      github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 270
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Validate preparation before claiming any scientific run
+        run: |
+          python3 tools/engineering/supervise-pbai-p5.py --self-test
+          python3 tools/engineering/test-pbai-p5-checkpoints.py
+          python3 tools/engineering/supervise-pbai-p5.py --preflight
+      - name: Run the whole frozen pipeline without chat intervention
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PBAI_P5_EXTERNAL: '1'
+        run: python3 tools/engineering/supervise-pbai-p5.py --start
+      - name: Save remaining evidence even when a gate stops the run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p5-run-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: artifacts/pbai-p5/run/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Show a concise final location
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import os,pathlib
+          p=pathlib.Path('artifacts/pbai-p5/run/RUN_FINAL.json')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('PBAI-P5の保存先: https://github.com/nkkmd/bao-la-kiswahili-game/tree/engineering/pbai-p5-evidence\n\n')
+              f.write('未完了・停止は再試行せず、証拠と固定gateを確認してください。\n\n')
+              if p.exists():f.write('```json\n'+p.read_text()+'\n```\n')
+          PY

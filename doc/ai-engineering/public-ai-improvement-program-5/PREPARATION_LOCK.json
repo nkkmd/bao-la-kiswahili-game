@@ -1,0 +1,20 @@
+{
+  "files": {
+    ".github/workflows/pbai-p5-external.yml": "78a09fc000c86f12f7d866412a1c06f1f4ce9fafd17c68d881789ec9b9fad85f",
+    ".github/workflows/pbai-p5-preparation.yml": "f2b42afe1c2c92b950bf56febd2b78a5b195da5b02256b0f09991ce85bc2eafb",
+    "doc/ai-engineering/public-ai-improvement-program-5/AUTHORIZATION_REVIEW.md": "59a83253ecdfc78a4705736e96e7a193ff48e67df96cc22eb53cf9e36c65a8cb",
+    "doc/ai-engineering/public-ai-improvement-program-5/BASELINE.json": "0f68cba56dc277c865c3b11ccbf0afdacb79fb365f2e1e7baed955b7de91f3c3",
+    "doc/ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md": "32f2e853870b8d95d834515d2deb8a1e3c8e136585ec6617883692d6731aa727",
+    "doc/ai-engineering/public-ai-improvement-program-5/HARNESS_PROVENANCE.json": "d1182db291b2e6ed1192a3763e11dcd7401e42b31049eec62c89856ea6dbcba8",
+    "doc/ai-engineering/public-ai-improvement-program-5/PROTOCOL.md": "fa08d4878390fb463d2ba09b34c4eb967133cc2fe604a1caefcc582cafdd9de6",
+    "doc/ai-engineering/public-ai-improvement-program-5/SOURCE_LOCK.json": "b06601007d53fdcdc515d287e6858d32b8bde4f487bb5f8974d7eaa508f6d815",
+    "tools/engineering/lib/pbai-p5-common.js": "b37e7b7cc6ef15d965729b700cda78e65eb3e7b557736f07aaf74efa4ceb8357",
+    "tools/engineering/pbai-p5-checkpoints.py": "b95f5ef94af5793d2c83c5a185ce1d089dcf5b625f3ede936482768509cee3f5",
+    "tools/engineering/run-pbai-p5-stage.js": "b7a4530d8704bb08f705881dc35cbac534b03b3d57e4b59d6d9de30781920da2",
+    "tools/engineering/supervise-pbai-p5.py": "0b81b8fefc724dd2cea52e46861822a67bc76b29a1d732a4c0198d72dfaa411e",
+    "tools/engineering/test-pbai-p5-checkpoints.py": "0cd8cb0e18299c31db72d7465d29f5c6f39e2fb589c55f4b3e1a4bde0f56de4e",
+    "tools/engineering/verify-pbai-p5-correctness.js": "ee05d7570fe0df99bf2152a1c809410c097441d6313bb08b488df4a5ede962e2",
+    "tools/engineering/verify-pbai-p5-metrics-independent.py": "9752a3689d480664cd6453e80b6429620e89ecab26ec2bf2e8a541f5838a75b3",
+    "tools/engineering/verify-pbai-p5-stage-independent.js": "e238aedb6d8f35393f1cf0a988717b43d83e3ebf1b05dec48afe495d1c6521d2"
+  }
+}

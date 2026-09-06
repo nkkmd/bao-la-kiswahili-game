@@ -1,0 +1,445 @@
+{
+  "program": "PBAI-P5",
+  "candidate": "PBAI-C011-v1",
+  "status": "COMPLETE",
+  "decision": "STRENGTH-IMPROVED-IN-FROZEN-DOMAIN",
+  "computationDecision": "EQUIVALENT-COMPUTATION-SPEEDUP",
+  "correctness": {
+    "passed": true,
+    "baseline": "548ccead3965fa98602d99c8b3e2a49fbeeed093",
+    "sourceHashes": {
+      "engine": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+      "ai": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498"
+    },
+    "states": 3669,
+    "transitions": 14869,
+    "eventCount": 756988,
+    "coverage": {
+      "reserve": 11330,
+      "lift": 4725,
+      "sow": 681989,
+      "turn": 14654,
+      "capture": 23035,
+      "relay": 20784,
+      "captureChain": 5421,
+      "win": 214,
+      "front-empty": 186,
+      "phase": 256,
+      "house-stop": 206,
+      "house-use": 206,
+      "no-move": 28,
+      "pass": 1,
+      "limit": 1,
+      "relay-limit": 1
+    },
+    "seedRows": [
+      {
+        "seed": 825000001,
+        "plies": 33,
+        "finalRaw": "53d63517816a14fbc1b261108416357e42fc532f492be6af1b202d72da106946"
+      },
+      {
+        "seed": 825000002,
+        "plies": 64,
+        "finalRaw": "010dec149f4a9e71ec62c6a291a2583d4dc30591470e2ffbe09386eb8d03882e"
+      },
+      {
+        "seed": 825000003,
+        "plies": 71,
+        "finalRaw": "dffc3e6e6ef1ef249533976cc062dc6b5173c14c5507d896e24b39d33b58d8a2"
+      },
+      {
+        "seed": 825000004,
+        "plies": 55,
+        "finalRaw": "02fe2487f86e5e3a72295ab8b045b023b88b91dd3ca2c07b742d9983c02ce3a9"
+      },
+      {
+        "seed": 825000005,
+        "plies": 64,
+        "finalRaw": "b008c4a14606004c796b0c5ddeedb08185e354021a4adc026e1a7f73793ca60f"
+      },
+      {
+        "seed": 825000006,
+        "plies": 15,
+        "finalRaw": "f27b055cd0f39e099e964be1fadd58362fd3f8762813284687627c3f9ad71cce"
+      },
+      {
+        "seed": 825000007,
+        "plies": 11,
+        "finalRaw": "ec57c69adb8b200ea6cf20c3daafaa36bad02257c6a4f7f2247d47718d7dd461"
+      },
+      {
+        "seed": 825000008,
+        "plies": 78,
+        "finalRaw": "587880e5678939ff59ac6129a1c66195f2c0206871a1ea45013a9352cd8e7dbd"
+      },
+      {
+        "seed": 825000009,
+        "plies": 29,
+        "finalRaw": "cdb86bce0933e293f95369643d1fe44804471aa0dd3e82388de88a03468564ce"
+      },
+      {
+        "seed": 825000010,
+        "plies": 52,
+        "finalRaw": "67d9658cc94f73e795e501f6ea0e3d0e19a6eca1c6c3e3fff2e83ae5fefc372d"
+      },
+      {
+        "seed": 825000011,
+        "plies": 60,
+        "finalRaw": "4bd44b3f1c0a64d275e82a97d8a031224838965b3ebf8be55a5771c6d73be1a7"
+      },
+      {
+        "seed": 825000012,
+        "plies": 89,
+        "finalRaw": "562c2c89f17cd4ee463ef06a791f25d006d5a283b6b5c0bf59aefb67b11dc599"
+      },
+      {
+        "seed": 825000013,
+        "plies": 59,
+        "finalRaw": "d73b72136459916403de8c1dc62caf6b820bb4000b31def6dafc6b62ca3dd019"
+      },
+      {
+        "seed": 825000014,
+        "plies": 96,
+        "finalRaw": "241a6d5f2beadbf3989e67bd852aa76c427133b240865b6d1d110d61f50012e8"
+      },
+      {
+        "seed": 825000015,
+        "plies": 49,
+        "finalRaw": "fdc57f65c9e8a5d57eee079d508c430227fb00243c931a028e5f4d2b0d093dfe"
+      },
+      {
+        "seed": 825000016,
+        "plies": 51,
+        "finalRaw": "55a3c987648ef1b5f8e1dbc1a607df397a3c40db855faec72959206f59d9e025"
+      },
+      {
+        "seed": 825000017,
+        "plies": 31,
+        "finalRaw": "1ca3bec84051406f18295776e9f9647f8fe216321c85d748471edd3fc0014fe1"
+      },
+      {
+        "seed": 825000018,
+        "plies": 44,
+        "finalRaw": "f4867c35e5c2c12a02a0a28d93f21ac0f2f79a0bdb8b9fdf89006d668c5c84e4"
+      },
+      {
+        "seed": 825000019,
+        "plies": 53,
+        "finalRaw": "c917bc0f38b1ccb4443ef673407c8dc20b662a7925dce28f9fe99427f5809096"
+      },
+      {
+        "seed": 825000020,
+        "plies": 49,
+        "finalRaw": "497e6ef931f11f8a11cd228ef516637aece255f27e59490e863ae483a5dfcd10"
+      },
+      {
+        "seed": 825000021,
+        "plies": 63,
+        "finalRaw": "c98948b63a6b673d7c1e959bcd2fc6ee2e6eae918196f11c3c8f2b9e45ff2d2a"
+      },
+      {
+        "seed": 825000022,
+        "plies": 58,
+        "finalRaw": "bfc443cd20141c2f17fe0702290507bfc9d1be873a0fe63e05d33588e72e0031"
+      },
+      {
+        "seed": 825000023,
+        "plies": 70,
+        "finalRaw": "6841fdc6c8cba5cda894d485c5986b76902d6544a5b927dbb5de8a3e409ea6f7"
+      },
+      {
+        "seed": 825000024,
+        "plies": 36,
+        "finalRaw": "89044742dd2209278c44d99eb529c26cfa00cc4096f03f5b64a167214e5248a1"
+      },
+      {
+        "seed": 825000025,
+        "plies": 42,
+        "finalRaw": "267c800b7cbbf442440f2531ef4c9b84c8a92751d3b1460a31e7dfbbbaa16f3a"
+      },
+      {
+        "seed": 825000026,
+        "plies": 65,
+        "finalRaw": "cc986207c3778d577b441483901ee133dde44bde64f0e59fa4169d7910e2ad14"
+      },
+      {
+        "seed": 825000027,
+        "plies": 70,
+        "finalRaw": "be2aaf16864f23947cb9060b1e5726aa1a699e62087cd93f102933dd99bec9f3"
+      },
+      {
+        "seed": 825000028,
+        "plies": 51,
+        "finalRaw": "339d57620cc876c6173b3632dce4779b9b42531c998f8fd8e87bcaf63d3be1ea"
+      },
+      {
+        "seed": 825000029,
+        "plies": 67,
+        "finalRaw": "ceb9eeddb3019157713606fcef74f6474ac18e60e3c2d96fe7d2d04f522f3455"
+      },
+      {
+        "seed": 825000030,
+        "plies": 64,
+        "finalRaw": "852dffd63df9fae7ac76c0d6bd08df9d4fb2764bb06bd76203be5a1bb45cfd9e"
+      },
+      {
+        "seed": 825000031,
+        "plies": 60,
+        "finalRaw": "773f474a2ef3aee325b6caa0c50d689a70bcc05732954e02b036cc7f5306aae0"
+      },
+      {
+        "seed": 825000032,
+        "plies": 96,
+        "finalRaw": "7bc2eeba36faa487a8ad79ccb0cbc34fbd17bb52af18e10e518554fdf783ee64"
+      },
+      {
+        "seed": 825000033,
+        "plies": 70,
+        "finalRaw": "9e1bc7eacec33c6cb0e3efd91a51aa003a14ca49c60c0e273c36d7363002e137"
+      },
+      {
+        "seed": 825000034,
+        "plies": 55,
+        "finalRaw": "2ce6aa3c523e1c4ca23c154adfccc06333489f35e13732fdf9de7f33cc4a5829"
+      },
+      {
+        "seed": 825000035,
+        "plies": 71,
+        "finalRaw": "d2718e71abc37a262adfbc4e1896ac51db43ac117a8edefa02741fa551584838"
+      },
+      {
+        "seed": 825000036,
+        "plies": 28,
+        "finalRaw": "bcd810097372f27c89d07a946e09d4282f24abe9f7bfa21274b345c6dd3b10e0"
+      },
+      {
+        "seed": 825000037,
+        "plies": 73,
+        "finalRaw": "db1e26fd547919526563f3faa91d3646bab6c84dd41fd439643f803cccf5c8db"
+      },
+      {
+        "seed": 825000038,
+        "plies": 37,
+        "finalRaw": "32489a6aad359115aebd1dc6fa9674703c25a8803c833175d4c2cf66129ad032"
+      },
+      {
+        "seed": 825000039,
+        "plies": 96,
+        "finalRaw": "1c0332b9094bbcc8b283b6cbcd53168b853d1ce3cbeae3ebe6a851a50ecaa7f6"
+      },
+      {
+        "seed": 825000040,
+        "plies": 94,
+        "finalRaw": "e30616d31e8ad1e3982bbbfe42b72e0b013c93354dbf2f6d583967adac0636b1"
+      },
+      {
+        "seed": 825000041,
+        "plies": 96,
+        "finalRaw": "d9ecc7d3e0283e441223cbf26ecef37f8b392f4cd42a9593658106089ecd8ad0"
+      },
+      {
+        "seed": 825000042,
+        "plies": 51,
+        "finalRaw": "f2847f5c18556179203a265499d33beb6e9d30a97e93ed74f6329a00c9086002"
+      },
+      {
+        "seed": 825000043,
+        "plies": 81,
+        "finalRaw": "22750d1638655dd7d8141690ee82b79fd9ad3b61a8827dd82a87f61a985ad015"
+      },
+      {
+        "seed": 825000044,
+        "plies": 64,
+        "finalRaw": "e89c76d3c0ed11171bdcb576a4ade007bd007b617298e284ebd7247bc4cee41d"
+      },
+      {
+        "seed": 825000045,
+        "plies": 50,
+        "finalRaw": "25e9ba673bc3fa536e4217f041ade8bd25423cd20a23c3def223737b376840da"
+      },
+      {
+        "seed": 825000046,
+        "plies": 57,
+        "finalRaw": "964027b3d2a3883ced100917e8422cc2cef744bf2a1498eb4f3ae13c4123fa45"
+      },
+      {
+        "seed": 825000047,
+        "plies": 66,
+        "finalRaw": "23d402129ff1857701a646158c12805c28d222b6951791ad7c67d59e3135ebe2"
+      },
+      {
+        "seed": 825000048,
+        "plies": 45,
+        "finalRaw": "bf5b752d046f23d8b9df513cd3ba84b082d7a23b2b7418b161cbcef461ad0012"
+      },
+      {
+        "seed": 825000049,
+        "plies": 50,
+        "finalRaw": "a8dc3094101783504d12d5cb5756f9669a7ff23fcf4dce860c7703c5ea2d202b"
+      },
+      {
+        "seed": 825000050,
+        "plies": 69,
+        "finalRaw": "7c008348cb1747b68fd760b19bfa8f20837a3f7cf94f635cc3263ff8bc952eea"
+      },
+      {
+        "seed": 825000051,
+        "plies": 35,
+        "finalRaw": "c98101b1efddfa3b815533a08ef1135a99f40f07f3b1251b845c724a955906c0"
+      },
+      {
+        "seed": 825000052,
+        "plies": 50,
+        "finalRaw": "4841006168f441bdd07ca8b3a9f4f49e3d331e6ae2572b1ba0b877bd4d16789f"
+      },
+      {
+        "seed": 825000053,
+        "plies": 28,
+        "finalRaw": "d25a70e240f8ca72a48891047bfa2e570447f69aaac50892f1652b2fbe7fd2e0"
+      },
+      {
+        "seed": 825000054,
+        "plies": 44,
+        "finalRaw": "d0beae267c71b93e72a156ac9c5379cc68ceaf1e079c30f13cc340b13aa9ade7"
+      },
+      {
+        "seed": 825000055,
+        "plies": 80,
+        "finalRaw": "5f70892efcfcdb1fce68dc612fd69b285e160ed1e037df420cb27f366a232d1a"
+      },
+      {
+        "seed": 825000056,
+        "plies": 58,
+        "finalRaw": "90469f9fc8b80754cda0355b73dcb11099edb4b1536210a0652bd5fcc2d8597f"
+      },
+      {
+        "seed": 825000057,
+        "plies": 25,
+        "finalRaw": "6daa945d54a87fa70ef6fc462fa7764021cd6aa6a7661382eb828dd3e0d6924d"
+      },
+      {
+        "seed": 825000058,
+        "plies": 17,
+        "finalRaw": "708871fd8e7b8ef9c7ec45c01349449edf9f9bed983c4375372932ac843e36cb"
+      },
+      {
+        "seed": 825000059,
+        "plies": 26,
+        "finalRaw": "83d0b465a1b822ee4871cd3a6b570fc943e016d44bbd22749fbffe0e27cedb19"
+      },
+      {
+        "seed": 825000060,
+        "plies": 74,
+        "finalRaw": "7708752de46c35ef7c817c7a87f743d40c9dbaadff03be7e528495506e1a919b"
+      },
+      {
+        "seed": 825000061,
+        "plies": 68,
+        "finalRaw": "41cb80600446f5997b56bacfacd15bf8ec00424493a97bc107b69041662bf612"
+      },
+      {
+        "seed": 825000062,
+        "plies": 90,
+        "finalRaw": "819bb5842a48e127a253dc09aaf3b71769cff4d35b085cf0458aecbe4480d7f9"
+      },
+      {
+        "seed": 825000063,
+        "plies": 71,
+        "finalRaw": "777e84f87b9d6b1edadfe821a8221f81283745d4fce88072b6be7f6b9a21e3ef"
+      },
+      {
+        "seed": 825000064,
+        "plies": 43,
+        "finalRaw": "0308bf763c0ac786b732b0ce3fbb2db34bedae86098f021e4ec01c17fc57272a"
+      }
+    ],
+    "transitionDigest": "7b5de51a9428af72765ac822a01e58fcafdaa8114e3793d6a66ee273099396ce",
+    "mismatches": 0,
+    "independentEventReplay": true,
+    "negativeControlDetected": true,
+    "relayLimitSynthetic": true
+  },
+  "holdout": {
+    "pairs": 256,
+    "games": 512,
+    "score": 0.640625,
+    "phases": {
+      "namua": 0.7421875,
+      "mtaji": 0.5390625
+    },
+    "clusters": 256,
+    "duplicateAcrossPairTrajectories": 0,
+    "clusterBootstrap95": [
+      0.611328125,
+      0.669921875
+    ],
+    "wins": 328,
+    "losses": 184,
+    "draws": 0,
+    "decisiveGamesWilson95": [
+      0.5981582836545334,
+      0.6809972544234058
+    ],
+    "readiness": true,
+    "strengthPassed": true
+  },
+  "speed": {
+    "passed": true,
+    "phases": {
+      "namua": 0.15109589924988232,
+      "mtaji": 0.2352011918002833
+    },
+    "medianRatio": 0.20603865103998775,
+    "p95Ratio": 0.3004167402614047,
+    "rssRatio": 1.0
+  },
+  "operational": {
+    "passed": true,
+    "levels": {
+      "hard": {
+        "baseline": {
+          "meanDepth": 5.421875,
+          "meanNodes": 1334.140625,
+          "p95Ms": 507.49600799998734,
+          "timeoutRate": 0.90625,
+          "overrunRate": 0
+        },
+        "candidate": {
+          "meanDepth": 7.234375,
+          "meanNodes": 4645.453125,
+          "p95Ms": 501.3779809999978,
+          "timeoutRate": 0.421875,
+          "overrunRate": 0
+        },
+        "passed": true
+      },
+      "expert": {
+        "baseline": {
+          "meanDepth": 7.453125,
+          "meanNodes": 5277.390625,
+          "p95Ms": 2007.6350959999982,
+          "timeoutRate": 0.953125,
+          "overrunRate": 0
+        },
+        "candidate": {
+          "meanDepth": 9.734375,
+          "meanNodes": 22547.78125,
+          "p95Ms": 2001.7388720000163,
+          "timeoutRate": 0.78125,
+          "overrunRate": 0
+        },
+        "passed": true
+      }
+    }
+  },
+  "elapsedSeconds": 2417.182976961136,
+  "runId": 34041683075,
+  "sourceCommit": "b7ec229a7b34eb9266d4bc19506f3e0cd550004b",
+  "evidenceCommit": "4c3b2687343153436c00b9546b6fb6223be939d1",
+  "publicDefaultChanged": false,
+  "mainIntegrated": false,
+  "lineage": "AI-GEN2",
+  "promoted": false,
+  "releaseDecision": "NO-RELEASE / KEEP-AI-GEN2 / AWAITING-USER-INSTRUCTION"
+}
