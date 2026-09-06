@@ -74,15 +74,15 @@
     },
     "preparationLockSha256": "ca0fc85d594f23aa0c0ccb96457544556a48d0bbf2c87889034a324d3ad08036"
   },
-  "checkpointAt": 1788708253.2977185,
+  "checkpointAt": 1788708256.51061,
   "completedGames": {
     "development": 16,
     "validation": 32,
     "holdout": 0
   },
   "final": null,
-  "archiveSha256": "dbb0e3f11a2af1c83e1acde93193647bcfabd7ddb3f0e5833b25610afab8279d",
-  "archiveBytes": 476740,
+  "archiveSha256": "84d29fa1fe6cb57d5bf439e7482f9f78404d91b9b069b79844418657d195d099",
+  "archiveBytes": 477142,
   "files": {
     "RUN_STARTED.json": "b24841580f64fa190d90e43a72bfc82ac7094283d0176503fbfa14594564008b",
     "command-0.complete.json": "cfb10a7c7285a3e6821634cab18732d12d4e9da541ae98ca7fa21810f0bef1cb",
@@ -100,6 +100,9 @@
     "command-4.complete.json": "4e7bb45d117872c074ee2904a9b0f92cf66bc9d91fb230f5ec110f5dddaf9607",
     "command-4.log": "cea65aa394b43209adf1c13fe60c12ffa5297f4046662a2c7e3f937cb09cfe79",
     "command-4.started.json": "b38e04a4ea7c68ad87e3e0f78453d6d7eeaaa9845a7e9e075c784840a39ec4a8",
+    "command-5.complete.json": "8e13ddab9badcc46b656a919f0fda18fa6f8b25560fa77e80d243493aaa16733",
+    "command-5.log": "1108075f6817119a5d0e8916e97a26813458744ba5c981a70b1576cf61d40042",
+    "command-5.started.json": "b50b65a81cc3b2a6f39f7b39e2e8f6aaf4851bf33e6f79f826117cafd5926e61",
     "correctness.json": "969c058f51df105d482967896902a414129af687c44cee73c59085fb16a3bf47",
     "development/games-seeds.jsonl": "536d4712fe4a49632cb44db39202b7306d8abda3f15fbc22a4a125f165cfc6e5",
     "development/games-source.json": "cab7e54a8696e09013e24d19036ee732ca3bc23cab611de16ed11d82121ebebf",
@@ -265,6 +268,7 @@
     "validation/games-source.json": "aaeb58318c4302e8e02e19b352db728dcbb1a2fd6dc9a214ec8fb70ba34a46c3",
     "validation/games-source.json.started": "0505f1f6b882ec151c28479432fd97b57e910e4fb1f6ecca56b5663953a91a9a",
     "validation/gate.json": "346e9ab5ff8a3dbd74e4ae090125bd87e7064b8b0b28f0575b18d0bc5b02e6a1",
+    "validation/independent-replay.json": "7ade784980942e736a838d36b026fb21bda8ece53343666cdc5d58ed1ba163db",
     "validation/manifest.json": "dd60b8e13487dceb7a2f1dcdf5ca8331d8ba91c311a0394a7d9c5b935dc8d09d",
     "validation/operation-0.json": "ea8b35333fdb254146dab18ff73dfd3b88aaeacb61dc4657f687a8862e11d94d",
     "validation/operation-0.json.started": "d34ad9ea38ec8d7a2f302187940766e63abc12c89ab88cdd24aa6bbe6bae1e1a",
