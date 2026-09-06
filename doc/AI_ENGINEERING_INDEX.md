@@ -1,11 +1,11 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-05
+更新日: 2026-09-06
 現在の公開AI系統: **`AI-GEN2`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`**
 進行中Program: **なし**
 
-この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`、`PBAI-P2`、`PBAI-P3`はいずれも候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programで、唯一の候補を実装前support不足により閉じました。
+この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
 
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
@@ -13,7 +13,7 @@
 
 - `AI-GEN2`は現在の公開AI系統です。
 - `AI-GEN3`は、将来正式採用される系統の予約名です。現時点では`NOT-PROMOTED`です。
-- `PBAI-P1`、`PBAI-P2`、`PBAI-P3`は、候補を評価するengineering programのIDです。
+- `PBAI-P1`から`PBAI-P5`までは、候補を評価するengineering programのIDです。
 - `PBAI-Cxxx`は個別candidateのIDです。
 - `Research Generation 1..3`は研究世代であり、AI世代とは別です。
 - `legacy`、`bao`、`bao-v2`はprofile identifierであり、AI世代名ではありません。
@@ -28,6 +28,7 @@
 | `PBAI-P2` | Research Generation 2まで。Research Generation 3は除外 | `PBAI-C006..C009` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P4` | 新規工学検証、baseline 2026-09-06 | `PBAI-C011-v1` | `STRENGTH-NON-ESTIMABLE / HOLD` | なし |
+| `PBAI-P5` | P4と独立した新規工学再検証 | `PBAI-C011-v1` | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` | 統合前 |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
