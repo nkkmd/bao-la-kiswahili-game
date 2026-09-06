@@ -54,7 +54,7 @@ Cloudflare Pagesの公開ディレクトリは`bao-la-kiswahili/public`に設定
 | normal | 1手後の評価上位3手からランダム選択 |
 | hard | 反復深化、Minimax、Alpha-Beta枝刈り |
 
-hardのブラウザ既定値は最大深度4、時間制限450msである。時間切れ時は最後に完了した反復深化の着手を返す。
+現在のブラウザー設定は`public/ai-config.js`を正本とし、標準端末のhardは最大深度8・500ms、expertは最大深度12・2000msである。低性能／高性能端末では別の上限を使う。`analyzeMove`をoptionsなしで直接呼ぶ場合の既定値は深度4・450msであり、ブラウザー設定とは区別する。時間切れ時は最後に完了した反復深化の着手を返す。
 
 ### 評価プロファイル
 
@@ -137,7 +137,7 @@ Bao評価 = legacy評価 + Σ((自分の特徴量 - 相手の特徴量) × フ�
 | transitionShape | 2 | 0 |
 | tempo | 2 | 3 |
 
-重みの正本は`ai.js`の`EVALUATION_WEIGHTS`である。この表は説明用の写しなので、変更時は両方を更新する。
+重みの正本は`public/ai-weights.js`であり、`ai.js`は`EVALUATION_WEIGHTS`として参照・公開する。この表は説明用の写しなので、変更時は両方を更新する。
 
 ## 5. 測定方法
 

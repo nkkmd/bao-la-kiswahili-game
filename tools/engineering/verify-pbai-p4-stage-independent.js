@@ -45,4 +45,5 @@ for(const kind of ["roots","games"]){
  }
 }
 const result={passed:true,stage,sourceSeeds,sourceRoots,games,gameMoves,baselineOnlyReplay:true,productionSelectionImported:false,productionGatesImported:false,sourceIdentityMismatches:0,gameReplayMismatches:0};
-C.write(dir+"/independent-replay.json",result);console.log(JSON.stringify(result));
+if(process.argv.includes("--check"))assert.deepEqual(read(dir+"/independent-replay.json"),result);
+else C.write(dir+"/independent-replay.json",result);console.log(JSON.stringify(result));

@@ -1,0 +1,194 @@
+{
+  "manifest.json": {
+    "stage": "validation",
+    "commit": "fdfe9e8582aa8c1036a2de2a15847026e6921180",
+    "protocolSha": "15846f00d6cd53d3713e86bac7b92623db242f0108a565800e24dffb9a35547d",
+    "sourceHashes": {
+      "engine": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+      "ai": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498"
+    },
+    "node": "v24.19.0",
+    "started": "2026-09-06T05:26:56.209Z",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/c4b791928de3/bao-la-kiswahili-game/tools/engineering/run-pbai-p4-stage.js",
+      "validation"
+    ]
+  },
+  "gate.json": {
+    "passed": true,
+    "stage": "validation",
+    "reason": "PASS",
+    "speed": {
+      "passed": true,
+      "phases": {
+        "namua": 0.16835075101361455,
+        "mtaji": 0.23805539167471457
+      },
+      "p95Ratio": 0.3546515331310655,
+      "rssRatio": 1,
+      "maxRss": {
+        "baseline": 197521408,
+        "candidate": 197521408
+      },
+      "medianRatio": 0.22274868200791337,
+      "maxRSS": 194092
+    },
+    "operational": {
+      "passed": true,
+      "levels": {
+        "hard": {
+          "baseline": {
+            "meanDepth": 5.96875,
+            "meanNodes": 1630.875,
+            "p95Ms": 506.5986949999933,
+            "timeoutRate": 0.8125,
+            "overrunRate": 0
+          },
+          "candidate": {
+            "meanDepth": 7.3125,
+            "meanNodes": 4262.78125,
+            "p95Ms": 501.29549899999984,
+            "timeoutRate": 0.3125,
+            "overrunRate": 0
+          },
+          "passed": true
+        },
+        "expert": {
+          "baseline": {
+            "meanDepth": 8.15625,
+            "meanNodes": 6412.375,
+            "p95Ms": 2006.541885000006,
+            "timeoutRate": 0.9375,
+            "overrunRate": 0
+          },
+          "candidate": {
+            "meanDepth": 10.21875,
+            "meanNodes": 25187.75,
+            "p95Ms": 2001.430720000004,
+            "timeoutRate": 0.65625,
+            "overrunRate": 0
+          },
+          "passed": true
+        }
+      }
+    },
+    "games": {
+      "score": 0.6875,
+      "phases": {
+        "namua": 0.8125,
+        "mtaji": 0.5625
+      },
+      "passed": true
+    },
+    "tacticalPassed": true
+  },
+  "independent-replay.json": {
+    "passed": true,
+    "stage": "validation",
+    "sourceSeeds": 57,
+    "sourceRoots": 48,
+    "games": 32,
+    "gameMoves": 912,
+    "baselineOnlyReplay": true,
+    "productionSelectionImported": false,
+    "productionGatesImported": false,
+    "sourceIdentityMismatches": 0,
+    "gameReplayMismatches": 0
+  },
+  "independent-metrics.json": {
+    "stage": "validation",
+    "verified": true,
+    "speed": {
+      "passed": true,
+      "phases": {
+        "namua": 0.16835075101361455,
+        "mtaji": 0.23805539167471457
+      },
+      "medianRatio": 0.22274868200791337,
+      "p95Ratio": 0.3546515331310655,
+      "rssRatio": 1.0
+    },
+    "productionRunnerImported": false,
+    "operational": {
+      "passed": true,
+      "levels": {
+        "hard": {
+          "baseline": {
+            "meanDepth": 5.96875,
+            "meanNodes": 1630.875,
+            "p95Ms": 506.5986949999933,
+            "timeoutRate": 0.8125,
+            "overrunRate": 0
+          },
+          "candidate": {
+            "meanDepth": 7.3125,
+            "meanNodes": 4262.78125,
+            "p95Ms": 501.29549899999984,
+            "timeoutRate": 0.3125,
+            "overrunRate": 0
+          },
+          "passed": true
+        },
+        "expert": {
+          "baseline": {
+            "meanDepth": 8.15625,
+            "meanNodes": 6412.375,
+            "p95Ms": 2006.541885000006,
+            "timeoutRate": 0.9375,
+            "overrunRate": 0
+          },
+          "candidate": {
+            "meanDepth": 10.21875,
+            "meanNodes": 25187.75,
+            "p95Ms": 2001.430720000004,
+            "timeoutRate": 0.65625,
+            "overrunRate": 0
+          },
+          "passed": true
+        }
+      }
+    },
+    "games": {
+      "pairs": 16,
+      "games": 32,
+      "score": 0.6875,
+      "phases": {
+        "namua": 0.8125,
+        "mtaji": 0.5625
+      },
+      "clusters": 16,
+      "duplicateAcrossPairTrajectories": 0,
+      "clusterBootstrap95": [
+        0.59375,
+        0.78125
+      ],
+      "wins": 22,
+      "losses": 10,
+      "draws": 0,
+      "decisiveGamesWilson95": [
+        0.5143332169904459,
+        0.8204745836639026
+      ],
+      "passed": true
+    },
+    "replay": {
+      "passed": true,
+      "stage": "validation",
+      "sourceSeeds": 57,
+      "sourceRoots": 48,
+      "games": 32,
+      "gameMoves": 912,
+      "baselineOnlyReplay": true,
+      "productionSelectionImported": false,
+      "productionGatesImported": false,
+      "sourceIdentityMismatches": 0,
+      "gameReplayMismatches": 0
+    }
+  },
+  "archive": {
+    "path": "artifacts/pbai-p4/validation-evidence.tar.gz",
+    "sha256": "d4a6f5f06e8af1a1a9d0e5783f7487ba1d27e6f3572560534a53e07d876abeee",
+    "files": 176
+  }
+}

@@ -88,5 +88,8 @@ if list(d.glob('pair-*.json')):
  else:g['passed']=score>=.45 and all(v>=.35 for v in phases.values())
  out['games']=g
 out['replay']=read(d/'independent-replay.json')
-with (d/'independent-metrics.json').open('x') as f:json.dump(out,f,indent=2,ensure_ascii=False);f.write('\n')
+if '--check' in sys.argv:
+ assert read(d/'independent-metrics.json')==out
+else:
+ with (d/'independent-metrics.json').open('x') as f:json.dump(out,f,indent=2,ensure_ascii=False);f.write('\n')
 print(json.dumps(out,ensure_ascii=False))

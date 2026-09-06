@@ -1,13 +1,21 @@
 # PBAI-P4 — 現在状態
 
-PBAI-P4-Aは開始認可・baseline固定済み、Bはbaseline-only診断完了・契約固定済み。候補改善の結果は未観測。次はCの隔離実装と正確性検証である。[検証条件](PROTOCOL.md)を正本とし、後段は前段gate成立時だけ開く。公開系統はAI-GEN2のままである。
+更新日: 2026-09-06。状態: `HOLDOUT-AUTHORIZED / IN-PROGRESS`。
 
-## 正確性検証の完了
+[事前固定条件](PROTOCOL.md)に基づき、開始認可、baseline固定、実装、正確性、development、validationが完了した。次は最終holdoutの測定・独立検証である。公開AIは引き続きAI-GEN2であり、main統合・公開変更・世代昇格は未認可である。
 
-CはPASS。3,620状態・14,222遷移・741,774イベントで、通常baseline／変更後通常／軽量経路が指定項目で一致した。独立した数量再生も一致した。指定した全境界を通過し、relay-limitは1穴1024個の到達可能性を主張しない人工盤面で実際の512上限を検証した。
+| Stage | 状態 | 根拠 |
+| --- | --- | --- |
+| PBAI-P4-A | COMPLETE | 開始認可とbaseline source固定 |
+| PBAI-P4-B | COMPLETE | baseline-only診断と契約固定 |
+| PBAI-P4-C | PASS | 3,620状態、14,222遷移、741,774イベントの同等性と独立数量再生 |
+| PBAI-P4-D | PASS | developmentの速度・運用・既知戦術、先後交換16局、独立検算 |
+| PBAI-P4-E | PASS | validationの速度・運用・既知戦術、先後交換32局、独立検算 |
+| PBAI-P4-F | IN-PROGRESS | 未使用holdoutへ進む条件が成立 |
+| PBAI-P4-G | PENDING | 最終文書とレビュー可能なPR |
 
-既存engine、AI、search、tactical、AI Worker、Worker integration、AI config、diagnostics UI、Namua→Mtajiの回帰と、新規global-script／Worker／flag対象外の回帰がPASS。実Chromiumは利用環境に見つからず、実端末の検証はしていない。次はDのdevelopment測定である。
+正確性では指定した全境界を通過した。relay-limitは1穴1024個の人工盤面で実際の512上限を検証したが、この盤面の到達可能性は主張しない。
 
-## developmentの判定
+既存engine、AI、search、tactical、AI Worker、Worker integration、AI config、diagnostics UI、Namua→Mtajiの回帰と、新規global-script／Worker／flag対象外の回帰がPASS。実Chromiumは利用環境に見つからず、実端末では検証していない。
 
-DはPASS。固定深度の全stats・選択手が一致し、速度・運用・既知戦術のgateが成立した。先後交換16局の候補勝点率は0.75。別実装が54 source seed・40採用rootを再構成し、全450着手を固定baselineでreplayした。独立集計も一致した。これは少数のdevelopment観測であり、正式な棋力改善の根拠にはしない。次はEの未使用validationを開く。
+独立検算はdevelopmentで54 source seed・40採用root・450着手、validationで57 source seed・48採用root・912着手を再構成し、一致した。少数の前段対局を最終棋力証拠へ混ぜない。
