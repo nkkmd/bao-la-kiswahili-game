@@ -1,6 +1,6 @@
 # PBAI-P5 — 軽量な局面遷移の再検証準備
 
-状態: `COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持し、公開AIはAI-GEN2、候補は既定無効のままである。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)を参照する。
+状態: `COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN / STAGED-ACTIVATION-READY`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configではhard/expertの候補を既定有効にし、main統合と実サイト配信の確認を待っている。公開AI系統はAI-GEN2、AI-GEN3への正式昇格は別判断として保留する。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)を参照する。
 
 ## 読む順序
 
