@@ -115,7 +115,8 @@
 
   function searchOptions(level, capabilities = {}, state = null) {
     const base = baseSearchOptions(level, capabilities);
-    return base;
+    if (level !== "hard" && level !== "expert") return base;
+    return { ...base, pbaiC011LightweightTransitions: true };
   }
 
   const api = {
