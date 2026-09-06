@@ -2,6 +2,19 @@
 import pathlib,json,hashlib,tarfile,subprocess,re
 R=pathlib.Path(__file__).resolve().parents[2];D=R/'doc/ai-engineering/public-ai-improvement-program-5';O=R/'artifacts/pbai-p5'
 read=lambda p:json.loads(p.read_text());sha=lambda b:hashlib.sha256(b).hexdigest()
+historical_dependencies={
+ 'public/engine.js':'2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3',
+ 'public/ai.js':'aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498',
+ 'tools/engineering/lib/pbai-p4-common.js':'2e78220b7f4cd8e2b93ec53f456a07efc131c93f9a542e06721acdb1a156b44d',
+ 'tools/engineering/lib/pbai-p4-event-verifier.js':'e35272063b5e50675982ea71a3b92a045ff029b0b8d9760678f74016f4159839',
+ 'test/tactical.test.js':'14af832389a31f441c8ba0dc6f70cceb57fcd65d9c11ed27af5e93de7ef980bf',
+ 'test/pbai-p4-transitions.test.js':'fc57e768dde3116398e4c7591cf76bb1ae29f7771ca8393482a813c749238062',
+}
+for ref in ('2d77792220af80ca2700bd0b3c0ab8e45197c24e','b7ec229a7b34eb9266d4bc19506f3e0cd550004b'):
+ for p,h in historical_dependencies.items():
+  data=subprocess.check_output(['git','show',f'{ref}:{p}'],cwd=R)
+  assert sha(data)==h,(ref,p)
+for p,h in historical_dependencies.items():assert sha((R/p).read_bytes())==h,p
 index=read(O/'final-evidence-index.json');archive=O/'final-evidence.tar.gz'
 assert sha(archive.read_bytes())==index['archiveSha256']
 with tarfile.open(archive) as t:
