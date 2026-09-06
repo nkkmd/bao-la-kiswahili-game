@@ -10,6 +10,7 @@
 4. [再現手順](REPRODUCIBILITY_INDEX.md) — 事前点検、監視器、成果物
 5. [判断・公開台帳](DECISION_REGISTER.md) — 未実行と公開境界
 6. [品質監査](QUALITY_AUDIT.md) — 文書とsourceの監査
+7. [main統合前の追加監査](INTEGRATION_READINESS_AUDIT.md) — レビュー指摘、追加認可、公開前gate
 
 ## 前回との違い
 
