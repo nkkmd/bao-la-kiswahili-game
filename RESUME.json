@@ -74,15 +74,15 @@
     },
     "preparationLockSha256": "ca0fc85d594f23aa0c0ccb96457544556a48d0bbf2c87889034a324d3ad08036"
   },
-  "checkpointAt": 1788710097.2593195,
+  "checkpointAt": 1788710101.6555884,
   "completedGames": {
     "development": 16,
     "validation": 32,
     "holdout": 512
   },
   "final": null,
-  "archiveSha256": "fde2dc95265b05349602b539fc51e09b3036871865ae8acf0e6a73726875e20f",
-  "archiveBytes": 3338137,
+  "archiveSha256": "6ceb8f0f87165301bcf37a13e83f07c25548014a0bfc302e734caef5371b07a5",
+  "archiveBytes": 3339187,
   "files": {
     "RUN_STARTED.json": "b24841580f64fa190d90e43a72bfc82ac7094283d0176503fbfa14594564008b",
     "command-0.complete.json": "cfb10a7c7285a3e6821634cab18732d12d4e9da541ae98ca7fa21810f0bef1cb",
@@ -112,6 +112,9 @@
     "command-8.complete.json": "3a1aa006b697165515e33fa19ab122f55d0ea81b6915475f5d6fc53111651dba",
     "command-8.log": "e681c04eb7d28a3826a8235ca4e21900eaa2772e181e2535c4e299ef5296fb1f",
     "command-8.started.json": "f73f00bfd4080ef5c2a46b37e0f73655bc4ff3a4cedc401bbfb1f7fc5b27d1d9",
+    "command-9.complete.json": "ef8d309595a6b1593f5ab6bbc05894c5b7b25d0cbab5c3054bdd3e7b77eb7a05",
+    "command-9.log": "ba8ea56c58413faeef1ba08a58e51098c9fd84882c07b688e8f65b6958395c07",
+    "command-9.started.json": "27ef29b7806f3f10d023d684293ebe7fb17832dd23c992c6bfb568209f86a581",
     "correctness.json": "969c058f51df105d482967896902a414129af687c44cee73c59085fb16a3bf47",
     "development/games-seeds.jsonl": "536d4712fe4a49632cb44db39202b7306d8abda3f15fbc22a4a125f165cfc6e5",
     "development/games-source.json": "cab7e54a8696e09013e24d19036ee732ca3bc23cab611de16ed11d82121ebebf",
@@ -277,6 +280,7 @@
     "holdout/games-source.json": "92d2b9bb2a60510ead2cfd2e336e795674931aebf6339f21e9e9ca8571ee1138",
     "holdout/games-source.json.started": "7516753f2df77c987c6e9bc8512ead17b46379eaf8a3c86a38db20d5f819e62e",
     "holdout/gate.json": "d18301e824b0a8b6c0de40f038f5b80ffbc0d2b3b1541ba8c4eb45aac385d06d",
+    "holdout/independent-metrics.json": "3b15cdfd015a07722fd3704770c31eab2a5bf4cb6797f1d8619dd350bfb93681",
     "holdout/independent-replay.json": "b6caa6a3c9c519c8e1ee35f4f3dafe74ec1cd4278cc511b8019f89359b496f57",
     "holdout/manifest.json": "b3ddfc39bdff67f9116970aaf2c535523a57d439f443ec1906ee646d91d90e91",
     "holdout/operation-0.json": "db4819f430017998292d8e4b68109f107f5224eaa48b83f0fa56146a75be3c05",
