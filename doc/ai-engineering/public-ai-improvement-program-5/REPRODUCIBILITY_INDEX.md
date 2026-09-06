@@ -13,7 +13,7 @@ python3 tools/engineering/supervise-pbai-p5.py --preflight
 
 ## 正式開始の窓口
 
-次のコマンドは準備では実行しない。開始指示後の1回限りの窓口である。実行前にCPU競合、node version、永続保存先へのアクセスと空き容量を確認し、4時間連続実行可能な環境を用意する。
+次のコマンドは外部workflowの内部窓口であり、準備やローカル環境からは実行しない。開始指示後はPR #108にpbai-p5-start-once labelを付ける。実行前にCPU競合、node version、永続保存先へのアクセスと空き容量を確認し、固定したGitHub-hosted ubuntu-24.04環境を使用する。
 
 ```sh
 python3 tools/engineering/supervise-pbai-p5.py --start
@@ -28,3 +28,7 @@ python3 tools/engineering/supervise-pbai-p5.py --start
 各stageの全JSON、seed監査、開始marker、log、独立結果、監視器の開始・終了記録をarchiveに保存しSHA-256を付ける。チャット中断でもプロセスが生存していれば同じrunを監視する。強制的な環境消失後に再試行する仕組みではない。実行中は成果物をcheckpointとして保存し、完了済みseedを再測定しない。
 
 実機ブラウザーと公開配信は未確認である。VM/worker_threadsの既知互換性はP4の証拠であり、新しい速度や棋力の証拠へ混ぜない。
+
+## 自動保存と短い状態照会
+
+[追補契約](EXECUTION_CONTRACT.md)と[再開文書](RESUME_HERE.md)を参照する。正式jobは開始labelのlabeledイベントに限る。workflowはmain未統合のまま準備する。claimと保存先への初回書込みが失敗した場合、新規seedを開かず停止する。準備CIの人工試験は実通信・実際の保存権限を検証したという意味ではない。

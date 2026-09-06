@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "programMarkdownFiles": 9,
+  "brokenLinks": 0,
+  "englishOnlyHeadings": 0,
+  "candidateChanged": false,
+  "oldProtocolChanged": false,
+  "pastProgramChanged": false,
+  "scientificSeedsOpened": 0,
+  "externalClaimCreated": false,
+  "newEnvironmentContract": "EXECUTION_CONTRACT.md",
+  "syntheticCheckpointTest": {
+    "passed": true,
+    "actualNodeHandshake": true,
+    "completedRecordsSavedBeforeResume": true,
+    "archiveHashesVerified": true,
+    "remoteDuplicateClaimRejected": true,
+    "storageFailureStopsBeforeMeasurement": true,
+    "scientificSeedsOpened": 0,
+    "remoteWrites": 0
+  }
+}

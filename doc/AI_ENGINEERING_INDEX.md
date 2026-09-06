@@ -215,3 +215,5 @@ PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`
 ## PBAI-P5の再検証準備
 
 PBAI-P5は同じPBAI-C011-v1の独立した再検証を準備した。状態はPREPARATION-COMPLETE / NOT-STARTED。新規seedは未使用で、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開AIはAI-GEN2、候補既定無効のままである。[準備の入口](ai-engineering/public-ai-improvement-program-5/README.md)を参照する。
+
+PBAI-P5は[チャット非依存の実行準備](ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md)も整備した。外部runnerの自動進行・途中保存・重複起動防止を用意し、正式試験はまだ開始していない。

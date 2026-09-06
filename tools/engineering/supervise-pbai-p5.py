@@ -1,5 +1,5 @@
 """Single-use PBAI-P5 orchestration. Preparation/self-test never opens scientific seeds."""
-import os,sys,json,time,signal,subprocess,pathlib,hashlib,tempfile
+import os,sys,json,time,signal,subprocess,pathlib,hashlib,tempfile,platform,importlib.util
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 DOC=ROOT/'doc/ai-engineering/public-ai-improvement-program-5'
 OUT=ROOT/'artifacts/pbai-p5/run'
@@ -23,27 +23,41 @@ def stop_group(p):
  try:os.killpg(p.pid,signal.SIGKILL)
  except ProcessLookupError:pass
  p.wait()
-def supervise(commands,out,seconds,gate=None):
+def supervise(commands,out,seconds,gate=None,publisher=None):
  out.mkdir(parents=True,exist_ok=True)
  start=time.time();mono=time.monotonic();deadline=start+seconds
- write(out/'RUN_STARTED.json',{'wallStart':start,'wallDeadline':deadline,'limitSeconds':seconds,'pid':os.getpid(),'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'commands':commands})
+ write(out/'RUN_STARTED.json',{'wallStart':start,'wallDeadline':deadline,'limitSeconds':seconds,'pid':os.getpid(),'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'commands':commands,'githubRunId':os.environ.get('GITHUB_RUN_ID'),'githubRunUrl':('https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/'+os.environ['GITHUB_RUN_ID']) if os.environ.get('GITHUB_RUN_ID') else None,'environment':{'platform':platform.platform(),'cpu':subprocess.check_output(['lscpu'],text=True),'node':subprocess.check_output(['node','--version'],text=True).strip(),'runnerImage':os.environ.get('ImageVersion')},'preparationLockSha256':hashlib.sha256((DOC/'PREPARATION_LOCK.json').read_bytes()).hexdigest()})
  child=None;previous={}
  def interrupt(signum,frame):raise InterruptedError('signal '+str(signum))
  for s in [signal.SIGINT,signal.SIGTERM,signal.SIGHUP]:previous[s]=signal.signal(s,interrupt)
  status='COMPLETE';reason=None;decision=None
  try:
+  if publisher:publisher.publish(out,(deadline,mono+seconds))
   for i,cmd in enumerate(commands):
    if time.time()>=deadline or time.monotonic()-mono>=seconds:raise TimeoutError('GLOBAL-WALL-CLOCK-CAP')
    write(out/f'command-{i}.started.json',{'command':cmd,'time':time.time()})
+   acknowledged=None
    with (out/f'command-{i}.log').open('x') as log:
-    child=subprocess.Popen(cmd,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,env={**os.environ,'PBAI_P5_SUPERVISED':'1'})
+    child=subprocess.Popen(cmd,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,start_new_session=True,env={**os.environ,'PBAI_P5_SUPERVISED':'1','PBAI_P5_CHECKPOINTS':'1' if publisher else '0'})
     while child.poll() is None:
      if time.time()>=deadline or time.monotonic()-mono>=seconds:raise TimeoutError('GLOBAL-WALL-CLOCK-CAP')
+     request=out/'CHECKPOINT_REQUEST.json';ack=out/'CHECKPOINT_ACK.json'
+     if publisher and request.exists() and not ack.exists():
+      try:pending=read(request)
+      except json.JSONDecodeError:time.sleep(.01);continue
+      if pending['id']!=acknowledged:
+       publisher.publish(out,(deadline,mono+seconds))
+       temporary=out/'CHECKPOINT_ACK.pending'
+       write(temporary,{'id':pending['id']})
+       os.link(temporary,ack);temporary.unlink()
+       acknowledged=pending['id']
      time.sleep(.05)
     if child.returncode:raise RuntimeError('COMMAND-FAILED '+str(i)+' exit '+str(child.returncode))
    if time.time()>=deadline or time.monotonic()-mono>=seconds:raise TimeoutError('GLOBAL-WALL-CLOCK-CAP')
    if gate:decision=gate(i,cmd)
+   if time.time()>=deadline or time.monotonic()-mono>=seconds:raise TimeoutError('GLOBAL-WALL-CLOCK-CAP')
    write(out/f'command-{i}.complete.json',{'time':time.time(),'exitCode':0})
+   if publisher:publisher.publish(out,(deadline,mono+seconds))
  except (Exception,KeyboardInterrupt) as e:
   status='HOLD';reason=str(e)
  finally:
@@ -52,6 +66,9 @@ def supervise(commands,out,seconds,gate=None):
  result={'status':status,'reason':reason,'decision':decision,'finished':time.time(),'elapsedWallSeconds':time.time()-start,'elapsedMonotonicSeconds':time.monotonic()-mono,'deadline':deadline,'retryAuthorized':False}
  if status!='COMPLETE':result['decision']='STRENGTH-NON-ESTIMABLE / HOLD'
  write(out/'RUN_FINAL.json',result)
+ if publisher and publisher.parent is not None:
+  try:publisher.publish(out,time.time()+120)
+  except Exception as e:write(out/'FINAL_UPLOAD_FAILED.json',{'reason':type(e).__name__,'resultRemains':result})
  return result
 
 def commands():
@@ -88,5 +105,12 @@ if __name__=='__main__':
  if mode=='--self-test':print(json.dumps(self_test()))
  elif mode=='--preflight':print(json.dumps(preflight()))
  elif mode=='--start':
-  preflight();print(json.dumps(supervise(commands(),OUT,4*3600,gate)))
+  preflight()
+  assert os.environ.get('GITHUB_ACTIONS')=='true' and os.environ.get('PBAI_P5_EXTERNAL')=='1','Use the prepared external workflow'
+  assert os.environ.get('GITHUB_RUN_ATTEMPT')=='1','Workflow retries are forbidden'
+  spec=importlib.util.spec_from_file_location('checkpoints',ROOT/'tools/engineering/pbai-p5-checkpoints.py')
+  module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+  head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+  result=supervise(commands(),OUT,4*3600,gate,module.Publisher(head))
+  print(json.dumps(result));sys.exit(0 if result['status']=='COMPLETE' else 1)
  else:raise SystemExit('Use --preflight, --self-test or --start')

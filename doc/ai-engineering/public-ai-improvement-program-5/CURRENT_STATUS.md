@@ -20,10 +20,14 @@ source hashはSOURCE_LOCK.json、計画・監視器・測定器のhashはPREPARA
 
 ## 次にできること
 
-今回の依頼は準備までであり、--startは実行していない。開始する指示があれば、[再現手順](REPRODUCIBILITY_INDEX.md)の点検を実施し、同じ監視器を1回だけ開始する。通常のstage間確認を待たずに固定gateで進む。
+今回の依頼は準備までであり、--startは実行していない。開始する指示があれば、[再現手順](REPRODUCIBILITY_INDEX.md)の点検を実施し、PR #108に開始labelを1回だけ付け、外部監視器を起動する。通常のstage間確認を待たずに固定gateで進む。
 
 開始後はartifacts/pbai-p5/runを正本とする。RUN_STARTED.json、RUN_FINAL.json、command別log/marker、stage別のseeds.jsonl・source・pair・gate・independent結果を確認する。生きたプロセスを再起動しない。プロセスが消えて開始markerだけならINCOMPLETEで止め、同じseedや未完了ペアを再実行しない。期限超過を敗北・引分に置換しない。
 
 ## 未使用データ
 
 正確性825000001..825000064、局面822/823/824 block、対局826/827/828 block、bootstrap829000001はすべて未使用。821の診断予約も未使用。正確な終端・採用数はPROTOCOL.mdを正本とする。P4の旧81x blockを未使用holdoutに戻さない。
+
+## 外部実行の準備追補
+
+実行環境と保存は[追補契約](EXECUTION_CONTRACT.md)を優先する。会話のトークンを試験進行に使わず、GitHub runnerが全工程を実行する。途中成果物は専用refへ保存し、会話が切れたら[再開文書](RESUME_HERE.md)から同じrunを確認する。正式開始labelは未付与であり、測定未開始の状態は変わらない。

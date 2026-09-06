@@ -6,6 +6,7 @@ on:
       - 'tools/engineering/lib/pbai-p5*'
       - 'doc/ai-engineering/public-ai-improvement-program-5/**'
       - '.github/workflows/pbai-p5-preparation.yml'
+      - '.github/workflows/pbai-p5-external.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,6 +23,8 @@ jobs:
           node-version: '24.19.0'
       - name: Test supervisor without scientific data
         run: python3 tools/engineering/supervise-pbai-p5.py --self-test
+      - name: Test checkpoint handshake and remote claim with synthetic data
+        run: python3 tools/engineering/test-pbai-p5-checkpoints.py
       - name: Validate fixed sources and unused run
         run: python3 tools/engineering/supervise-pbai-p5.py --preflight
       - name: Check adapted scripts without executing measurements
