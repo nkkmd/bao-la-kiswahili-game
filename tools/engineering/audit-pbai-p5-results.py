@@ -33,7 +33,9 @@ assert end['finished']<=start['wallDeadline'] and end['elapsedMonotonicSeconds']
 assert not end['retryAuthorized'] and end['decision']=='STRENGTH-IMPROVED-IN-FROZEN-DOMAIN'
 assert sha((D/'PREPARATION_LOCK.json').read_bytes())==start['preparationLockSha256']
 for p,h in read(D/'PREPARATION_LOCK.json')['files'].items():assert sha((R/p).read_bytes())==h,p
-for p,h in read(D/'SOURCE_LOCK.json')['sourceHashes'].items():assert sha((R/p).read_bytes())==h,p
+for p,h in read(D/'SOURCE_LOCK.json')['sourceHashes'].items():
+ data=subprocess.check_output(['git','show',f'b7ec229a7b34eb9266d4bc19506f3e0cd550004b:{p}'],cwd=R)
+ assert sha(data)==h,p
 for i in range(10):
  a=read(run/f'command-{i}.started.json');b=read(run/f'command-{i}.complete.json')
  assert a['command']==start['commands'][i] and a['time']<=b['time']<=start['wallDeadline'] and b['exitCode']==0
