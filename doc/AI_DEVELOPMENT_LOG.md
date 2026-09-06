@@ -54,7 +54,7 @@ Cloudflare Pagesの公開ディレクトリは`bao-la-kiswahili/public`に設定
 | normal | 1手後の評価上位3手からランダム選択 |
 | hard | 反復深化、Minimax、Alpha-Beta枝刈り |
 
-hardのブラウザ既定値は最大深度4、時間制限450msである。時間切れ時は最後に完了した反復深化の着手を返す。
+現在のブラウザー設定は`public/ai-config.js`を正本とし、標準端末のhardは最大深度8・500ms、expertは最大深度12・2000msである。低性能／高性能端末では別の上限を使う。`analyzeMove`をoptionsなしで直接呼ぶ場合の既定値は深度4・450msであり、ブラウザー設定とは区別する。時間切れ時は最後に完了した反復深化の着手を返す。
 
 ### 評価プロファイル
 
@@ -137,7 +137,7 @@ Bao評価 = legacy評価 + Σ((自分の特徴量 - 相手の特徴量) × フ�
 | transitionShape | 2 | 0 |
 | tempo | 2 | 3 |
 
-重みの正本は`ai.js`の`EVALUATION_WEIGHTS`である。この表は説明用の写しなので、変更時は両方を更新する。
+重みの正本は`public/ai-weights.js`であり、`ai.js`は`EVALUATION_WEIGHTS`として参照・公開する。この表は説明用の写しなので、変更時は両方を更新する。
 
 ## 5. 測定方法
 
@@ -1885,3 +1885,9 @@ cache容量:
 - Phase 10の収集、export、fixture化の実装基盤は完了した
 - 実対局由来の反例はまだないため、Phase 10自体は進行中とする
 - 最低3件を探索不足、評価不足、期待手の誤認へ分類してからPhase 12の開始可否を判断する
+
+## 2026-09-06: PBAI-P4の独立工学検証
+
+PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`で終了した。正確性と前段の速度改善は観測したが、全体wall-clock上限4時間の監視漏れにより最終対局を354/512局で停止した。部分成績を棋力改善の正式証拠にしない。公開AIはAI-GEN2、候補は既定無効で、main統合・公開変更・世代昇格は行っていない。
+
+[最終報告](ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。

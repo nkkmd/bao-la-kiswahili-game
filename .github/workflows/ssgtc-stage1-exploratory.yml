@@ -3,12 +3,10 @@ name: SSGTC Stage 1 exploratory characterization
 on:
   pull_request:
     paths:
-      - "public/engine.js"
       - "tools/experiments/run-ssgtc-stage1-exploratory.js"
       - "tools/experiments/verify-ssgtc-stage1-independent.js"
       - "tools/experiments/lib/ssgtc-representation-*.js"
       - "doc/state-space-game-tree-complexity/**"
-      - ".github/workflows/ssgtc-stage1-exploratory.yml"
   workflow_dispatch:
 
 permissions:

@@ -3,13 +3,11 @@ name: SSGTC Stage 2 formal bounded quantification
 on:
   pull_request:
     paths:
-      - "public/engine.js"
       - "tools/experiments/run-ssgtc-stage2-formal.js"
       - "tools/experiments/verify-ssgtc-stage2-independent.js"
       - "tools/experiments/lib/ssgtc-representation-*.js"
       - "doc/state-space-game-tree-complexity/preregistration/STAGE_2_FORMAL_SPEC.json"
       - "doc/state-space-game-tree-complexity/checkpoints/**"
-      - ".github/workflows/ssgtc-stage2-formal.yml"
   workflow_dispatch:
 
 permissions:

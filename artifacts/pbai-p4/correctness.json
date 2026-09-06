@@ -1,0 +1,356 @@
+{
+  "passed": true,
+  "baseline": "548ccead3965fa98602d99c8b3e2a49fbeeed093",
+  "sourceHashes": {
+    "engine": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "ai": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498"
+  },
+  "states": 3620,
+  "transitions": 14222,
+  "eventCount": 741774,
+  "coverage": {
+    "reserve": 10633,
+    "lift": 5012,
+    "sow": 671746,
+    "turn": 13997,
+    "capture": 20912,
+    "relay": 19010,
+    "house-stop": 222,
+    "house-use": 222,
+    "captureChain": 4919,
+    "phase": 239,
+    "win": 224,
+    "front-empty": 165,
+    "no-move": 59,
+    "pass": 1,
+    "limit": 1,
+    "relay-limit": 1
+  },
+  "seedRows": [
+    {
+      "seed": 815000001,
+      "plies": 96,
+      "finalRaw": "e66340d723db2f289f642be225b69817ecf563d1840a7f93d6599c451c4474e3"
+    },
+    {
+      "seed": 815000002,
+      "plies": 65,
+      "finalRaw": "dc3790eabd214183f3ff5f9935e39d18ded4b5a8772f1e81017c172948e4fb1b"
+    },
+    {
+      "seed": 815000003,
+      "plies": 51,
+      "finalRaw": "4224e3ac7f6b569fac251c95d18d8642885f4ca756f76ca4b3cd3d90ac9a933f"
+    },
+    {
+      "seed": 815000004,
+      "plies": 35,
+      "finalRaw": "c7984523c20a5277f267abe433c3fe88902a2ea9896c8c0b6d6b40d5d705db12"
+    },
+    {
+      "seed": 815000005,
+      "plies": 60,
+      "finalRaw": "cde234859e9c307cacfaeac21b17f7f40d3c83a2a8789ca4c603522838798333"
+    },
+    {
+      "seed": 815000006,
+      "plies": 55,
+      "finalRaw": "de3e235909531eaf76b51a5448f21bed535c376ac70cb983668206cb64f8fc15"
+    },
+    {
+      "seed": 815000007,
+      "plies": 54,
+      "finalRaw": "b34888bf3dc19c5e55a01fb1ae1fa1b705a3394cbff4c4c705a27308d21e7357"
+    },
+    {
+      "seed": 815000008,
+      "plies": 26,
+      "finalRaw": "1e2471edbeb8eb5d47b3ffdcb24e3ab5baa061f97822697d7062eb3187192c63"
+    },
+    {
+      "seed": 815000009,
+      "plies": 42,
+      "finalRaw": "6bc36bf3c2f7c66cfbd67b0282102e1756d640c5dcc0cb91b1790bae3683f649"
+    },
+    {
+      "seed": 815000010,
+      "plies": 53,
+      "finalRaw": "1d43ea994e35520bebc07576ae8f01320b807b90ea08386defd7d09bf24c9039"
+    },
+    {
+      "seed": 815000011,
+      "plies": 96,
+      "finalRaw": "8ef326ae13c16492eebeec4a13163fe5fa3cb00d1803c387d278f23d085129a7"
+    },
+    {
+      "seed": 815000012,
+      "plies": 96,
+      "finalRaw": "acf340c574c24d393752535b911abcb7dcf780447b82974f5683f148986ce0b0"
+    },
+    {
+      "seed": 815000013,
+      "plies": 42,
+      "finalRaw": "6d048393f821d2d285ca002fcbdb19a318c2c45cbf7a1386637f3b3bc7f4affd"
+    },
+    {
+      "seed": 815000014,
+      "plies": 51,
+      "finalRaw": "e7af9c4fb0c8ce488c6afee3c6f682d6e122cc139877c51436b58a93750bce3f"
+    },
+    {
+      "seed": 815000015,
+      "plies": 48,
+      "finalRaw": "7f23478e0c22449bc899e99ed3fba630dec109a673168a1b3b58b168ce2ebf2d"
+    },
+    {
+      "seed": 815000016,
+      "plies": 65,
+      "finalRaw": "cadc31e5850c894ae697b4c84dd8a4d38f4e4766b4227a1d133d882a01dafbb7"
+    },
+    {
+      "seed": 815000017,
+      "plies": 26,
+      "finalRaw": "c69cd47361769191338fbb97e3e8d8733c1c5b351371acfaa2da9890f2d714a2"
+    },
+    {
+      "seed": 815000018,
+      "plies": 61,
+      "finalRaw": "21d764bfb2cc675296adf8a2bc9912f5fdf72182fd94143d0b62e99e77c1ccbb"
+    },
+    {
+      "seed": 815000019,
+      "plies": 48,
+      "finalRaw": "7588e51f3d0d76c00ca855735b6528a4a891f66c0c622319387ecc2b257a7793"
+    },
+    {
+      "seed": 815000020,
+      "plies": 67,
+      "finalRaw": "122fe4e2d96f9b4ebc468f59cbc0b154e2f174b2a4ce2079efcb6c6c5f8ad3e7"
+    },
+    {
+      "seed": 815000021,
+      "plies": 57,
+      "finalRaw": "1cc85aba9dab7bc5a8d619b9acb030a026a5fec986ea1de01057c917424ec5c4"
+    },
+    {
+      "seed": 815000022,
+      "plies": 61,
+      "finalRaw": "317da0a4cc4deca0993c2072538b99730d5e46c9ea7c8939f85e2579b390b985"
+    },
+    {
+      "seed": 815000023,
+      "plies": 70,
+      "finalRaw": "c49d1b4faeae44bbc4396d4fffd20ec667d8f8a3ca10fee3a2c2eecbb185a767"
+    },
+    {
+      "seed": 815000024,
+      "plies": 13,
+      "finalRaw": "6dae952afdbba13dbf4d11b1bc6d90e179c66327f92abfbf251ef14b4effabcf"
+    },
+    {
+      "seed": 815000025,
+      "plies": 60,
+      "finalRaw": "37587a179d313dade3d24422bba83ad5ea0eb2a26604262f38cd499b80d4ef40"
+    },
+    {
+      "seed": 815000026,
+      "plies": 49,
+      "finalRaw": "d16620badc82d0dc00d82d296651db0983c68466a171f731f870766531816c6f"
+    },
+    {
+      "seed": 815000027,
+      "plies": 89,
+      "finalRaw": "1c0a7d582ce54872ce47b1e65963a3e8d934af3145bfd81ad46087a6f1a4be4f"
+    },
+    {
+      "seed": 815000028,
+      "plies": 89,
+      "finalRaw": "a937c6c8520697214eed84f0caf9d9920b6d45f908d10d4e1349ae95ed605180"
+    },
+    {
+      "seed": 815000029,
+      "plies": 79,
+      "finalRaw": "4ba15761c49f37507a9b68d6c13e3ecedc8ff7ed61cda505fd4e8d9a48786f11"
+    },
+    {
+      "seed": 815000030,
+      "plies": 78,
+      "finalRaw": "250273ebc0e7ce955576523674e6ff943ed103228d6bc88f68f126d5785001a4"
+    },
+    {
+      "seed": 815000031,
+      "plies": 52,
+      "finalRaw": "c17930c77c168085c5d28ac7a1ce82d9613eb18b7647696e91413c6da7c7085c"
+    },
+    {
+      "seed": 815000032,
+      "plies": 45,
+      "finalRaw": "05d2fee2c9b09a6579fba1c443db6e8b73c1e3e1545add8ce42a55f8501ee2fd"
+    },
+    {
+      "seed": 815000033,
+      "plies": 47,
+      "finalRaw": "e0d56a26a12b8658c48ed85c206eada91a67f7bb46634ce7ce45b6f042640f0b"
+    },
+    {
+      "seed": 815000034,
+      "plies": 19,
+      "finalRaw": "7961aafe104815199769ec2998402fbdbb5026e21a48c73f374676b2d0f67ea9"
+    },
+    {
+      "seed": 815000035,
+      "plies": 84,
+      "finalRaw": "e94c6332141c86ea918bbc2703b7f90b61dfb7334fb8d9233325f0f3c094b75a"
+    },
+    {
+      "seed": 815000036,
+      "plies": 59,
+      "finalRaw": "5a0927225a260a6135d364c7534b383880da42fb39001ca763f71e38b4ba7936"
+    },
+    {
+      "seed": 815000037,
+      "plies": 64,
+      "finalRaw": "a533ed8c557e2530c153583a9f4765aeb26826b57ef75915e539f8dca2daa746"
+    },
+    {
+      "seed": 815000038,
+      "plies": 69,
+      "finalRaw": "84d11f08136fe48befb51cd4bbcfb2f9511c7df7f4ad843e74f7a85d2c07677f"
+    },
+    {
+      "seed": 815000039,
+      "plies": 22,
+      "finalRaw": "e21992269dd37cd30c18389cdfcf210d6fc0b27b93e8ac61ef1ebf17cd89049c"
+    },
+    {
+      "seed": 815000040,
+      "plies": 95,
+      "finalRaw": "342ab40c85021609ffac8cfb5bb6127397737a8db2baa70b270d22f4bc1d09b5"
+    },
+    {
+      "seed": 815000041,
+      "plies": 89,
+      "finalRaw": "ce519d79474b4e89f8e607974d8d28019bb83e67d4584c332ac07cca457df6cf"
+    },
+    {
+      "seed": 815000042,
+      "plies": 94,
+      "finalRaw": "cf00fe2c892d8ddfe6640d609a212a1aa971c4f91d72a34de6c5b3d8d65918c8"
+    },
+    {
+      "seed": 815000043,
+      "plies": 69,
+      "finalRaw": "5dbf8d1e19915ac9cd1548c6341f9af5868549ff1c062bc496f09b0ca21bd430"
+    },
+    {
+      "seed": 815000044,
+      "plies": 26,
+      "finalRaw": "2c1efe714d57ebbab50d7eb77678ae27b7fdfe38bd67068610d182c3f41bfd2c"
+    },
+    {
+      "seed": 815000045,
+      "plies": 52,
+      "finalRaw": "8d4d8c49971b75fab9faa7a4f46724ebb4daa8ab64c069d953bbbe67ef27da1d"
+    },
+    {
+      "seed": 815000046,
+      "plies": 63,
+      "finalRaw": "cb41d6e26d33f13184d7bde4ae9300e390591d68e6b08d4a4ca47ce5ce14a244"
+    },
+    {
+      "seed": 815000047,
+      "plies": 60,
+      "finalRaw": "c948e8f165ae523878e80c67b6a6e37dfee877834d2419b9e7f1bb5e4fa77409"
+    },
+    {
+      "seed": 815000048,
+      "plies": 63,
+      "finalRaw": "e139f06e377cc4574cdb271cbbee151aca051745d68e69155d8a16f3a038df39"
+    },
+    {
+      "seed": 815000049,
+      "plies": 55,
+      "finalRaw": "dee9984afc98793da5eaf7f4f4e33f5eb57ed4339d441230d52c75fc0f4db266"
+    },
+    {
+      "seed": 815000050,
+      "plies": 58,
+      "finalRaw": "e0f618bb47bef67c80aafdd3e9e5c2cfe3e70902368d0ce10639ed6bec69cb85"
+    },
+    {
+      "seed": 815000051,
+      "plies": 58,
+      "finalRaw": "e16c01a703767414cdcda62efd6d3abcbffcac2144911dcb4ea4e2a22177b42c"
+    },
+    {
+      "seed": 815000052,
+      "plies": 62,
+      "finalRaw": "71e6cec9e686208a8132d5ac4ef90bbad68c6d5acb7c8f7b639c285c82bb818b"
+    },
+    {
+      "seed": 815000053,
+      "plies": 24,
+      "finalRaw": "42574beda88a150bae3fc8d08fb5be05c69f439d572fe0db53724c8e7be9aa63"
+    },
+    {
+      "seed": 815000054,
+      "plies": 11,
+      "finalRaw": "9a4e6f5463bde149c2bc51c792012376cde60ae508e3f70ef4021a981a468690"
+    },
+    {
+      "seed": 815000055,
+      "plies": 22,
+      "finalRaw": "560d27c843abecfcc8cf3cc28abc6b070724bb1299e6df39246718d772628545"
+    },
+    {
+      "seed": 815000056,
+      "plies": 86,
+      "finalRaw": "f401246f69bc681d9476c5bfa0745ba56ffcfbbf40a959d411a3b2f5756a3415"
+    },
+    {
+      "seed": 815000057,
+      "plies": 73,
+      "finalRaw": "1e6636d5837a22676c6fa70af45b5eb1fedf420c216f60ffe28fe2ba13f8f932"
+    },
+    {
+      "seed": 815000058,
+      "plies": 25,
+      "finalRaw": "6c8fd0128985d9b339260350ac2bc2456c59278aa12860c8659304ffe49d39bd"
+    },
+    {
+      "seed": 815000059,
+      "plies": 47,
+      "finalRaw": "5c4e595df9ddf9b43ee2c9a7c499abcbae99ef9063a9adeb8fa264def0f65693"
+    },
+    {
+      "seed": 815000060,
+      "plies": 75,
+      "finalRaw": "7f5c60f3af41bc23d995cfea6c0a00acd6350b464751c8d5688e931a74792be5"
+    },
+    {
+      "seed": 815000061,
+      "plies": 37,
+      "finalRaw": "1dc2e8371157aac0d64e79302342d60031ce9ad08909dd523508ebb1767f425c"
+    },
+    {
+      "seed": 815000062,
+      "plies": 48,
+      "finalRaw": "207da67d29e8b6e6c93c21119b956f4a4d81015fba1cdfac754030c6b1e50b57"
+    },
+    {
+      "seed": 815000063,
+      "plies": 31,
+      "finalRaw": "bd5d33fd29f67d481ad64181c1c6472ef53d2b1bdb52928e89895f59efcf2e0e"
+    },
+    {
+      "seed": 815000064,
+      "plies": 42,
+      "finalRaw": "a082eeb08e72cae2735330b936e3c04883471860d79e7505a817963f94a6064d"
+    }
+  ],
+  "transitionDigest": "41556156e25c96367146427426fcb17135d4f0df0176ee403e79eef965a46818",
+  "mismatches": 0,
+  "independentEventReplay": true,
+  "negativeControlDetected": true,
+  "relayLimitSynthetic": true
+}
