@@ -23,6 +23,8 @@
 
 完了済みの研究testには、当時の公開source hashとの一致自体を確認するものがあるため、現在sourceへ変更が入れば意図どおり停止する。これらを現行公開回帰として再実行せず、固定commit上の履歴証拠として扱う。公開前gateは上記の現行engine・AI・config・Worker・候補境界testを対象とする。P5の証拠監査も、測定時sourceは実行HEADから復元して照合し、公開configだけを測定時と同じに戻さない。
 
+P5準備workflowは科学run開始前の専用branchだけで動くよう制限する。完了後の公開config変更やmanual dispatchで、使用済みseed向けpreflightを再実行しない。保存済み証拠の検算はP5完了証拠workflowを使う。
+
 この段階的反映は正式な`ADOPT`または`AI-GEN3`昇格を先取りしない。配信確認に失敗した場合は、feature flagをfalseへ戻し、PWA cacheを再更新する。科学的結果はrollbackの成否によって変更しない。
 
 ## 状態更新規則
