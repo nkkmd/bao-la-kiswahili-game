@@ -74,16 +74,26 @@
     },
     "preparationLockSha256": "ca0fc85d594f23aa0c0ccb96457544556a48d0bbf2c87889034a324d3ad08036"
   },
-  "checkpointAt": 1788710101.6555884,
+  "checkpointAt": 1788710103.9261115,
   "completedGames": {
     "development": 16,
     "validation": 32,
     "holdout": 512
   },
-  "final": null,
-  "archiveSha256": "6ceb8f0f87165301bcf37a13e83f07c25548014a0bfc302e734caef5371b07a5",
-  "archiveBytes": 3339187,
+  "final": {
+    "status": "COMPLETE",
+    "reason": null,
+    "decision": "STRENGTH-IMPROVED-IN-FROZEN-DOMAIN",
+    "finished": 1788710103.6282861,
+    "elapsedWallSeconds": 2417.182976961136,
+    "elapsedMonotonicSeconds": 2417.182977002,
+    "deadline": 1788722086.4453099,
+    "retryAuthorized": false
+  },
+  "archiveSha256": "5881a422ebd0613f4378b28da1d8c5b9ed7a8f326d0ad07a81bba7e7ef75128c",
+  "archiveBytes": 3339495,
   "files": {
+    "RUN_FINAL.json": "f14a3483cfc9579d7a85f6d6461ba2e7c786883b6c5e9b9888035ddf5d763f93",
     "RUN_STARTED.json": "b24841580f64fa190d90e43a72bfc82ac7094283d0176503fbfa14594564008b",
     "command-0.complete.json": "cfb10a7c7285a3e6821634cab18732d12d4e9da541ae98ca7fa21810f0bef1cb",
     "command-0.log": "92c622fe777e7ba7e3bedb21d5c936d7c805bf22cfda45d7208f6eb0a0134755",
