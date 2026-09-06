@@ -19,3 +19,9 @@
 ## 最終判断
 
 全stageのgateと独立検算が成立し、EQUIVALENT-COMPUTATION-SPEEDUPおよびSTRENGTH-IMPROVED-IN-FROZEN-DOMAINと判断した。最終512局、256cluster、勝点率0.640625、cluster bootstrap 95％区間[0.611328125, 0.669921875]。全体2,417.183秒で資源条件も成立した。数値条件の事後変更はない。公開判断はNO-RELEASE / KEEP-AI-GEN2 / AWAITING-USER-INSTRUCTIONのままである。[最終報告](PROGRAM_FINAL_REPORT.md)を正本とする。
+
+## 結果確認後の公開認可
+
+2026年9月6日、ユーザーは結果確認後に、PRレビュー、main統合、公開AIへの反映を進めるよう明示した。これにより`AWAITING-USER-INSTRUCTION`は解消し、`PUBLIC-INTEGRATION-AUTHORIZED / STAGED-ACTIVATION-AUTHORIZED`へ進む。事前固定した科学的判断や数値を変更する認可ではない。
+
+`AI-GEN3`への正式昇格は別判断として未認可である。公開defaultへの反映後も、配信assetとブラウザー動作を確認し、正式な`ADOPT`および世代昇格を先取りしない。詳細は[main統合前の追加監査](INTEGRATION_READINESS_AUDIT.md)を参照する。
