@@ -5,6 +5,8 @@
   const BACK = 1;
   const HOUSE = 4;
   const MAX_RELAY = 512;
+  const compactEventLists = new WeakSet();
+  const SEARCH_RECORDING = Object.freeze({ snapshots: false });
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
@@ -110,14 +112,14 @@
   // A nyumba reached during a capturing namua move may either stop the move or
   // be emptied and continue.  Both choices share the same physical opening
   // move, so expand them here for UI and AI consumers.
-  function moveVariants(state, moves = legalMoves(state)) {
+  function moveVariants(state, moves = legalMoves(state), recording) {
     return moves.flatMap((move) => {
       if (move.phase !== "namua" || move.type !== "capture") return [move];
       const stop = { ...move, houseChoice: "stop" };
       const use = { ...move, houseChoice: "use" };
       try {
-        const a = applyMove(state, stop).state;
-        const b = applyMove(state, use).state;
+        const a = applyMove(state, stop, recording).state;
+        const b = applyMove(state, use, recording).state;
         return JSON.stringify(a) === JSON.stringify(b) ? [move] : [stop, use];
       } catch {
         return [move];
@@ -183,7 +185,9 @@
   }
 
   function snapshotEvent(events, state, kind, data = {}) {
-    events.push({ kind, ...data, state: clone(state) });
+    events.push(compactEventLists.has(events)
+      ? { kind, ...data }
+      : { kind, ...data, state: clone(state) });
   }
 
   function sow(state, player, start, seeds, direction, includeStart, events) {
@@ -198,9 +202,10 @@
     return { cursor, wasEmpty };
   }
 
-  function applyMove(source, move) {
+  function applyMove(source, move, recording) {
     const state = clone(source);
     const events = [];
+    if (recording?.snapshots === false) compactEventLists.add(events);
     if (!legalMoves(source).some((candidate) => sameMove(candidate, move))) {
       throw new Error("Illegal move");
     }
@@ -351,7 +356,16 @@
       && a.direction === b.direction && a.side === b.side && Boolean(a.houseTwo) === Boolean(b.houseTwo);
   }
 
-  const api = { initialState, legalMoves, moveVariants, applyMove, ring, nextPit, clone, FRONT, BACK, HOUSE };
+  // Search uses the same rules and event metadata, without display snapshots.
+  function applyMoveForSearch(source, move) {
+    return applyMove(source, move, SEARCH_RECORDING);
+  }
+
+  function moveVariantsForSearch(state, moves = legalMoves(state)) {
+    return moveVariants(state, moves, SEARCH_RECORDING);
+  }
+
+  const api = { applyMoveForSearch, moveVariantsForSearch, initialState, legalMoves, moveVariants, applyMove, ring, nextPit, clone, FRONT, BACK, HOUSE };
   root.BaoEngine = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 }(typeof window !== "undefined" ? window : globalThis));

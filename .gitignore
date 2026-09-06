@@ -50,3 +50,8 @@ artifacts/*-local.json
 /artifacts/phase-transition/search-profile-generalization-v2/
 /artifacts/phase-transition/d3-reversal-replication-v1/
 /artifacts/phase-transition/archive/
+
+# PBAI-P4 full observations are preserved in versioned evidence archives.
+/artifacts/pbai-p4/development/
+/artifacts/pbai-p4/validation/
+/artifacts/pbai-p4/holdout/

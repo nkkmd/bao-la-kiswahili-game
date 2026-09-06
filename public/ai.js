@@ -4,6 +4,9 @@
   const E = root.BaoEngine || (typeof require !== "undefined" ? require("./engine.js") : null);
   const WeightConfig = root.BaoAIWeights
     || (typeof require !== "undefined" ? require("./ai-weights.js") : null);
+  // Each instance binds its transition recording policy; rules stay in engine.js.
+  function createAI(E, lightweight = false) {
+  let searchAI = null;
   const WIN = 1_000_000;
   const EVALUATION_WEIGHTS = WeightConfig.DEFAULT_WEIGHTS;
 
@@ -814,6 +817,15 @@
   }
 
   function analyzeMove(state, level = "normal", random = Math.random, options = {}) {
+    if (!lightweight && options.pbaiC011LightweightTransitions === true
+      && (level === "hard" || level === "expert")
+      && (!options.evaluationProfile || options.evaluationProfile === "bao")
+      && (!options.searchProfile || options.searchProfile === "phase2")) {
+      searchAI ||= createAI({ ...E,
+        applyMove: E.applyMoveForSearch, moveVariants: E.moveVariantsForSearch,
+      }, true);
+      return searchAI.analyzeMove(state, level, random, options);
+    }
     const startedAt = performanceNow();
     const stats = emptyStats(level);
     const choices = movesFor(state);
@@ -967,6 +979,10 @@
     moveKey,
     EVALUATION_WEIGHTS,
   };
+  return api;
+  }
+
+  const api = createAI(E);
   root.BaoAI = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 }(typeof window !== "undefined" ? window : globalThis));
