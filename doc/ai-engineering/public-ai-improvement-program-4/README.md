@@ -4,7 +4,7 @@
 
 このProgramは、AIが思考中に作っていた表示用の盤面スナップショットを省くことで、同じ計算結果をより短時間で得られ、同じ持ち時間での対局成績も改善するかを調べる独立したAI Engineering検証である。唯一の候補は `PBAI-C011-v1`。Research Generation 4とは別の活動である。
 
-現時点では正確性、development、validationが完了し、最終holdoutを実行している。公開AIは引き続き `AI-GEN2` で、候補の既定値はfalse。main統合・公開配備・AI世代昇格は行わない。
+検証は `COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD` で終了した。正確性と前段の速度改善は確認したが、全体時間上限の監視漏れにより最終対局を354/512局で停止した。公開AIは引き続き `AI-GEN2` で、候補の既定値はfalse。main統合・公開配備・AI世代昇格は行わない。
 
 ## 読む順序
 
@@ -18,3 +18,5 @@
 8. [公開判断](RELEASE_REGISTER.md) — 公開系統と未認可の操作
 
 [AI開発の中央索引](../../AI_ENGINEERING_INDEX.md)へ戻る。
+
+[最終報告](PROGRAM_FINAL_REPORT.md)と[文書品質監査](QUALITY_AUDIT.md)を参照する。

@@ -1,46 +1,41 @@
 # PBAI-P4 — 再開位置
 
-更新日: 2026-09-06。ブランチは `engineering/pbai-p4-c011-lightweight-transitions`。main統合・公開変更・世代昇格は未認可。
+更新日: 2026-09-06。状態は `COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`。ブランチは `engineering/pbai-p4-c011-lightweight-transitions`。進行中測定はない。次に可能なのは保存済み証拠の検算とPRレビューであり、対局の継続ではない。
 
-## 最初に確認すること
+## HEADと実行履歴
 
-1. CURRENT_STATUS.md、PROTOCOL.md、BASELINE.jsonを読む。
-2. `git status --short` と `git rev-parse HEAD` を確認する。他ブランチや他作業を上書きしない。
-3. `artifacts/pbai-p4/holdout/gate.json`、holdout.log、各開始markerと完了JSONを確認する。完了JSONを持つ測定は再実行しない。開始markerだけの場合は、進行中処理の有無を確認し、停止済みなら勝手に再試行しない。
-4. 前段の独立検証がすべてPASSであることを確認する。
+開始mainは `548ccead3965fa98602d99c8b3e2a49fbeeed093`、契約固定は `f260b252c8f5f00a9a1b5124748c7303d75b252d`。現在HEADはブランチをGitHubから取得して `git rev-parse HEAD` で確認する。文書自身のcommit SHAは自己参照になるため、実行時の固定SHAは以下と各manifestを正本とする。
 
-## commitと証拠
+| 用途 | ローカル実行commit |
+| --- | --- |
+| 正確性・development | fe1ff9aa1911a1a753349fe9c648e38d2bdf3644 |
+| validation | fdfe9e8582aa8c1036a2de2a15847026e6921180 |
+| holdout | e064c4b10fb751f5897011fb908bda69c1739211 |
 
-- 開始main: `548ccead3965fa98602d99c8b3e2a49fbeeed093`
-- 契約固定: `f260b252c8f5f00a9a1b5124748c7303d75b252d`
-- 正確性・development実装commit: `fe1ff9aa1911a1a753349fe9c648e38d2bdf3644`
-- validation実行commit: `fdfe9e8582aa8c1036a2de2a15847026e6921180`
-- GitHub保存済みのdevelopment checkpoint: `5a9245c351e2e220183ee3e2b566dd0c24039070`
+shellのpush認証がないため、GitHub connectorへ同じtreeを保存した。公開保存commitとローカル実行commitの違いをsource hashで追跡する。ローカル実行履歴はexecution-commits.bundleとEXECUTION_BUNDLE.jsonへ保存する。freezeを持つcloneでbundleをverifyし、記録されたrefをfetchすれば元の実行SHAを復元できる。
 
-shellでのpush認証がないため、GitHub connectorで同一treeを保存した。ローカルの実行commitとGitHubの保存commitが異なる場合は、source hashとtreeで対応を検証する。履歴を隠すためのSHA置換は行わない。
+## 実行済みコマンド
 
-診断はbaseline-diagnostic.json、正確性はcorrectness.json、前段の全観測はdevelopment-evidence.tar.gzとvalidation-evidence.tar.gz、索引とhashは各summary.jsonに保存した。archive内のroot/source/対局/探索行と開始markerを維持する。
-
-## 実行済みと次のコマンド
-
-次を各1回実行済み。
+診断・正確性・各stage測定は次を各1回だけ開始した。holdoutは354局完了後に停止した。これらは再実行コマンドの推奨ではなく履歴である。
 
 ```sh
 node tools/engineering/diagnose-pbai-p4-baseline.js
 node --max-old-space-size=2048 tools/engineering/verify-pbai-p4-correctness.js
-node test/pbai-p4-transitions.test.js
 node --max-old-space-size=2048 tools/engineering/run-pbai-p4-stage.js development
-node tools/engineering/verify-pbai-p4-stage-independent.js development
-python3 tools/engineering/verify-pbai-p4-metrics-independent.py development
 node --max-old-space-size=2048 tools/engineering/run-pbai-p4-stage.js validation
-node tools/engineering/verify-pbai-p4-stage-independent.js validation
-python3 tools/engineering/verify-pbai-p4-metrics-independent.py validation
+node --max-old-space-size=2048 tools/engineering/run-pbai-p4-stage.js holdout
 ```
 
-次に許可されたコマンドは `node --max-old-space-size=2048 tools/engineering/run-pbai-p4-stage.js holdout`。開始後の正確な実行commit・時刻はholdout/manifest.jsonを正本とする。最終測定の完了後はholdoutに対する独立replayと独立集計へ進む。
+各stageの独立source・棋譜再生とPython集計も実行済み。[再現手順](REPRODUCIBILITY_INDEX.md)の --check は保存済み観測の検算であり、測定の再試行ではない。通常回帰とVM・Workerの検証は専用CIに列挙する。
 
-## seedの状態
+## 成果物・seed・未完了境界
 
-診断811000001..811000008、正確性815000001..815000064は消費済み。developmentは812/816 block、validationは813/817 blockのseeds.jsonlに列挙したseedを消費した。未使用seedの追加や、同一測定の再試行は禁止する。
+artifacts/pbai-p4のbaseline-diagnostic.json、correctness.json、3組のevidence.tar.gzとsummary.jsonを正本とし、summary記載のSHA-256を照合する。途中97ペアのcheckpointは履歴資料であり、最終holdout archiveを優先する。RESOURCE_STOP.jsonは停止時刻・上限・未完了markerを記録する。
 
-最終holdoutは814/818 blockであり、このcheckpoint時点では開く条件だけが成立した。開始後はmanifest、seeds.jsonl、各pairの開始markerと完了JSONを参照し、全block未使用とはみなさない。再標本化seed819000001は固定済みの統計集計用であり、対局生成用ではない。
+診断811000001..811000008、正確性815000001..815000064は消費済み。developmentの812/816 block、validationの813/817 block、holdoutの814/818 blockについて、各archiveのseeds.jsonlとsource auditが消費済みseedの正本である。最終holdoutの320採用rootと全候補sourceは既に開いており、未使用holdoutとは扱わない。対局未実行openingも新しい独立holdoutへ転用しない。統計seed819000001は既知データ集計に使用済み。
+
+pair-177.json.startedだけが残る次ペアは未完了で、勝敗を付与しない。完了177ペア354局を再実行しない。残りblockの未採用seedへ拡張せず、本Programを閉じる。
+
+## 再開条件
+
+誤実行防止guardにより測定runnerはRESOURCE_STOP.jsonがあれば停止する。このguardは監視漏れ発見後の変更であり、過去の測定条件を修復したものではない。新しい検証を行うには別途明示的指示と、資源監視・新規ID・新規データ・結果を見る前の開始認可が必要である。main統合、公開デプロイ、default切替、世代昇格は未認可のままである。

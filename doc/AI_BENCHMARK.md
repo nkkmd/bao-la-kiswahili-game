@@ -772,3 +772,9 @@ mtajiは1手で終局する短い2局のため勝率根拠には使わないが�
 | `mtaji-depth-trap`、深度7 | 一致 | 1,073 | 1,073 | 21／21 |
 
 即時勝利の回帰も通過したが、異なるply間のTT共有増加を1件も観測できなかった。終局距離の正確性に関わる変更を利益なしに採用しないため、`normalizeTtMateScores`の既定値は`false`を維持し、不採用とする。
+
+## 2026-09-06: PBAI-P4の独立工学検証
+
+PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`で終了した。正確性と前段の速度改善は観測したが、全体wall-clock上限4時間の監視漏れにより最終対局を354/512局で停止した。部分成績を棋力改善の正式証拠にしない。公開AIはAI-GEN2、候補は既定無効で、main統合・公開変更・世代昇格は行っていない。
+
+[最終報告](ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。

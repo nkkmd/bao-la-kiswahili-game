@@ -2,7 +2,7 @@
 
 更新日: 2026-09-05
 現在の公開AI系統: **`AI-GEN2`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`**
 進行中Program: **なし**
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`、`PBAI-P2`、`PBAI-P3`はいずれも候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programで、唯一の候補を実装前support不足により閉じました。
@@ -27,6 +27,7 @@
 | `PBAI-P1` | Research Generation 1まで | `PBAI-C001..C005` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P2` | Research Generation 2まで。Research Generation 3は除外 | `PBAI-C006..C009` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `KEEP-AI-GEN2` | なし |
+| `PBAI-P4` | 新規工学検証、baseline 2026-09-06 | `PBAI-C011-v1` | `STRENGTH-NON-ESTIMABLE / HOLD` | なし |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
@@ -204,3 +205,9 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 `PBAI-P3`内の次作業はありません。唯一の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。新しい改善Programを検討する場合は、新しいID、evidence cutoff、fresh evidenceによるoutcome非依存の開始認可レビューから始めます。
 
 人間向け文書は[`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md)と[`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従い、固定ID・数値・decision tokenを変えずに日本語で説明します。
+
+## 2026-09-06: PBAI-P4の独立工学検証
+
+PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`で終了した。正確性と前段の速度改善は観測したが、全体wall-clock上限4時間の監視漏れにより最終対局を354/512局で停止した。部分成績を棋力改善の正式証拠にしない。公開AIはAI-GEN2、候補は既定無効で、main統合・公開変更・世代昇格は行っていない。
+
+[最終報告](ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。

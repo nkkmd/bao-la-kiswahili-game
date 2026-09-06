@@ -14,6 +14,11 @@ for name in ['PROTOCOL.md','BASELINE.json','AUTHORIZATION_REVIEW.md']:
  assert (doc/name).read_bytes()==expected, name+' frozen content changed'
 correct=read(out/'correctness.json');assert correct['passed'] and correct['mismatches']==0
 for name,h in correct['sourceHashes'].items():assert sha((root/'public'/(name+'.js')).read_bytes())==h
+bundle=read(out/'EXECUTION_BUNDLE.json')
+assert sha((root/bundle['path']).read_bytes())==bundle['sha256']
+subprocess.run(['git','bundle','verify',bundle['path']],cwd=root,check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+stop=read(out/'RESOURCE_STOP.json')
+assert stop['processStopped'] and not stop['retryAuthorized'] and not stop['finalEvidenceEligible']
 archives=[];all_roots=[]
 for stage in ['development','validation','holdout']:
  summary=out/(stage+'-summary.json')

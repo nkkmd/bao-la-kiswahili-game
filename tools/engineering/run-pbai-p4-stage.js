@@ -2,6 +2,7 @@
 const C=require("./lib/pbai-p4-common.js");
 const fs=require("node:fs"),assert=require("node:assert/strict"),cp=require("node:child_process");
 const {performance}=require("node:perf_hooks");
+if(fs.existsSync(C.OUT+"/RESOURCE_STOP.json"))throw Error("PBAI-P4 closed by resource HOLD; measurement restart is not authorized");
 const flag="pbaiC011LightweightTransitions";
 const configs={development:{rootBase:812000001,roots:16,gameBase:816000001,pairs:4},validation:{rootBase:813000001,roots:16,gameBase:817000001,pairs:8},holdout:{rootBase:814000001,roots:32,gameBase:818000001,pairs:128}};
 const order=Object.keys(configs);

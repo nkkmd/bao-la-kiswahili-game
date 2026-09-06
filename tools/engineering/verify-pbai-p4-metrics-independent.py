@@ -92,7 +92,18 @@ if list(d.glob('pair-*.json')):
   out['decision']=decision
  else:g['passed']=score>=.45 and all(v>=.35 for v in phases.values())
  out['games']=g
-out['replay']=read(d/'independent-replay.json')
+if stage=='holdout' and (d.parent/'RESOURCE_STOP.json').exists():
+ stop=read(d.parent/'RESOURCE_STOP.json')
+ assert stop['processStopped'] and not stop['retryAuthorized']
+ assert stop['completedPairs']==len(pairs) and stop['completedGames']==len(games)
+ from datetime import datetime,timedelta
+ assert datetime.fromisoformat(stop['stoppedAt'])>datetime.fromisoformat(stop['latestPossibleMeasurementStart'])+timedelta(hours=4)
+ out['decision']='STRENGTH-NON-ESTIMABLE / HOLD'
+ out['games']['strengthPassed']=False
+ out['resourceHold']=True
+ out['finalEvidenceEligible']=False
+ out['replay']=read(d/'independent-replay.json')
+else:out['replay']=read(d/'independent-replay.json')
 if '--check' in sys.argv:
  assert read(d/'independent-metrics.json')==out
 else:

@@ -27,3 +27,7 @@ Program、candidate、対象phase、予算、sample数、seed block、次段階g
 AI_DEVELOPMENT_LOGの現在設定に、ブラウザーの設定とanalyzeMove単体の既定値の混同が残っていた。標準hard 500ms/D8、expert 2000ms/D12と、直接APIの450ms/D4を分けて説明し、重みの正本もai-weights.jsへ明記した。過去の測定値や歴史的な結果は変更していない。
 
 独立検算では、最初の固定深度比較だけでなく、保存済みの速度測定全反復の選択手・elapsedMs以外の全statsも同じD3結果へ照合する。運用比較で返された全着手も固定baselineの合法variantへ照合する。追加測定や事後の閾値変更は行わない。
+
+## 同日: 全体時間上限の監視漏れと終了
+
+最終監査でrunnerに全体4時間の監視がないことを発見した。チャット中断を含むwall-clockが超過していたため、進行中測定を停止した。354局の全棋譜とsourceを独立再生し、部分成績と最終readiness不足を検算した。条件を変更せずHOLDで閉じ、再実行防止guardを測定後に追加した。全体上限を守った実験だったとは主張しない。

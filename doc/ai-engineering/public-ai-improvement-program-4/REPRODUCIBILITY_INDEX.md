@@ -24,7 +24,7 @@ node tools/engineering/verify-pbai-p4-stage-independent.js validation --check
 python3 tools/engineering/verify-pbai-p4-metrics-independent.py validation --check
 ```
 
-最終holdoutの保存完了後は、同じ2コマンドのstage引数をholdoutにして検算する。測定runnerを再実行して、消費済みseedの新しい成績に置換してはいけない。
+最終holdoutも保存済みである。同じ2コマンドのstage引数をholdoutにして検算できる。停止記録を含めてHOLDと一致することを確認する。測定runnerを再実行して、消費済みseedの新しい成績に置換してはいけない。
 
 ## 数値の読み方
 

@@ -11,7 +11,7 @@
 | 対象 | hard/expert、bao評価、phase2探索 |
 | 機構 | 共通ルール処理のイベントから表示用stateのみを省く |
 | 保持する情報 | 全eventの順序・kind・position・count、最終状態の全field |
-| 現在状態 | VALIDATION-PASS / HOLDOUT-IN-PROGRESS |
+| 現在状態 | CLOSED / STRENGTH-NON-ESTIMABLE / HOLD |
 
 記録方式は探索インスタンスへ束縛し、一時的なグローバル切替を使わない。評価内のcapture/relay集計とmoveVariantsのhouseChoice比較も、同じ軽量窓口を使う。通常APIの詳細出力は維持する。
 
