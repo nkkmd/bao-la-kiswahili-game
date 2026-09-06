@@ -1,0 +1,32 @@
+name: PBAI-P5 preparation only
+on:
+  pull_request:
+    paths:
+      - 'tools/engineering/*pbai-p5*'
+      - 'tools/engineering/lib/pbai-p5*'
+      - 'doc/ai-engineering/public-ai-improvement-program-5/**'
+      - '.github/workflows/pbai-p5-preparation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Test supervisor without scientific data
+        run: python3 tools/engineering/supervise-pbai-p5.py --self-test
+      - name: Validate fixed sources and unused run
+        run: python3 tools/engineering/supervise-pbai-p5.py --preflight
+      - name: Check adapted scripts without executing measurements
+        run: |
+          node --check tools/engineering/run-pbai-p5-stage.js
+          node --check tools/engineering/verify-pbai-p5-correctness.js
+          node --check tools/engineering/verify-pbai-p5-stage-independent.js
+          python3 -c "import ast,pathlib; ast.parse(pathlib.Path('tools/engineering/verify-pbai-p5-metrics-independent.py').read_text())"

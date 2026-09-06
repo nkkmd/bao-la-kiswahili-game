@@ -3,7 +3,7 @@
 更新日: 2026-09-05
 現在の公開AI系統: **`AI-GEN2`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`**
-進行中Program: **なし**
+進行中Program: **PBAI-P5（準備完了・測定未開始）**
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`、`PBAI-P2`、`PBAI-P3`はいずれも候補を事前に固定したgateで評価し、公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P3`はResearch Generation 3の正式成果を設計入力とする独立Programで、唯一の候補を実装前support不足により閉じました。
 
@@ -211,3 +211,7 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`で終了した。正確性と前段の速度改善は観測したが、全体wall-clock上限4時間の監視漏れにより最終対局を354/512局で停止した。部分成績を棋力改善の正式証拠にしない。公開AIはAI-GEN2、候補は既定無効で、main統合・公開変更・世代昇格は行っていない。
 
 [最終報告](ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。
+
+## PBAI-P5の再検証準備
+
+PBAI-P5は同じPBAI-C011-v1の独立した再検証を準備した。状態はPREPARATION-COMPLETE / NOT-STARTED。新規seedは未使用で、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開AIはAI-GEN2、候補既定無効のままである。[準備の入口](ai-engineering/public-ai-improvement-program-5/README.md)を参照する。

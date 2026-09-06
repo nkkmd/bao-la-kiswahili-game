@@ -1,0 +1,21 @@
+{
+  "id": "AI-GEN2-BASELINE-2026-09-06-v1",
+  "commit": "548ccead3965fa98602d99c8b3e2a49fbeeed093",
+  "sources": {
+    "public/engine.js": "e6acf1fe4d97db67dbcfadc3a785e802342ae0b0cbaec35f53eb8e77424cfc1c",
+    "public/ai.js": "2823dbcf96c7a47489301ecd768a63975aa8b4e12b62cc4629fc8283ef5dff9e",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "10d9ea331ad8fc485dca9f77e2bb327e36850142d28c948e66377dd347877f75",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "public/main.js": "ef11527a94de975945b861f3cd034f42c1f8eef1165b660659831f64be8b7830",
+    "public/index.html": "e96eb85b535886290eedff869d775fb06d2a71ab263a0badf100a3a5595afd32",
+    "public/service-worker.js": "6049176f0137d07a199023751e176bcdfc323be9a75da664290b728066171f83"
+  },
+  "node": "v24.19.0",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "platform": "linux",
+  "arch": "x64",
+  "release": "6.18.35",
+  "diagnosticSha256": "42d34c6e38da582b211d64a23cbaa43b1b5ca3bde04aaf973e58f938b5414a7f",
+  "liveDeploymentVerified": false
+}

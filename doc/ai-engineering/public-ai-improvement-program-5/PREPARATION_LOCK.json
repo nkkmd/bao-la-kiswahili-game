@@ -1,0 +1,16 @@
+{
+  "files": {
+    "tools/engineering/verify-pbai-p5-correctness.js": "ee05d7570fe0df99bf2152a1c809410c097441d6313bb08b488df4a5ede962e2",
+    "tools/engineering/run-pbai-p5-stage.js": "b7a4530d8704bb08f705881dc35cbac534b03b3d57e4b59d6d9de30781920da2",
+    "tools/engineering/verify-pbai-p5-stage-independent.js": "e238aedb6d8f35393f1cf0a988717b43d83e3ebf1b05dec48afe495d1c6521d2",
+    "tools/engineering/verify-pbai-p5-metrics-independent.py": "9752a3689d480664cd6453e80b6429620e89ecab26ec2bf2e8a541f5838a75b3",
+    "tools/engineering/supervise-pbai-p5.py": "591970ae84374942b14b062a1259e3050978291c34cab6caa98742e158ad9628",
+    "tools/engineering/lib/pbai-p5-common.js": "105358ce5d79629bf2117c6f454f7d3ffc8e986a2c2e39d881a73702dc82a5c6",
+    "doc/ai-engineering/public-ai-improvement-program-5/PROTOCOL.md": "fa08d4878390fb463d2ba09b34c4eb967133cc2fe604a1caefcc582cafdd9de6",
+    "doc/ai-engineering/public-ai-improvement-program-5/SOURCE_LOCK.json": "b06601007d53fdcdc515d287e6858d32b8bde4f487bb5f8974d7eaa508f6d815",
+    "doc/ai-engineering/public-ai-improvement-program-5/HARNESS_PROVENANCE.json": "d1182db291b2e6ed1192a3763e11dcd7401e42b31049eec62c89856ea6dbcba8",
+    "doc/ai-engineering/public-ai-improvement-program-5/BASELINE.json": "0f68cba56dc277c865c3b11ccbf0afdacb79fb365f2e1e7baed955b7de91f3c3",
+    "doc/ai-engineering/public-ai-improvement-program-5/AUTHORIZATION_REVIEW.md": "59a83253ecdfc78a4705736e96e7a193ff48e67df96cc22eb53cf9e36c65a8cb",
+    ".github/workflows/pbai-p5-preparation.yml": "1427bc14690119f26444c50c6f7d33ac70d67b52718160288745420855931787"
+  }
+}
