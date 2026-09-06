@@ -11,6 +11,8 @@
 5. [判断・公開台帳](DECISION_REGISTER.md) — 未実行と公開境界
 6. [品質監査](QUALITY_AUDIT.md) — 文書とsourceの監査
 7. [main統合前の追加監査](INTEGRATION_READINESS_AUDIT.md) — レビュー指摘、追加認可、公開前gate
+8. [公開リリース台帳](RELEASE_REGISTER.md) — 段階的反映、rollback、世代昇格の境界
+9. [公開リリース計画](PUBLIC_RELEASE_PLAN.md) — source、設定、確認手順
 
 ## 前回との違い
 
