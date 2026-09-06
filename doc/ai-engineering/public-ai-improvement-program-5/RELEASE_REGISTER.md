@@ -21,6 +21,8 @@
 
 公開前に、全Node test、候補の正確性・固定深度・VM/global script・実`worker_threads`回帰、hard/expertだけのconfig有効化、通常の詳細event維持を確認する。実サイト反映後に、配信assetのhash、ページ読み込み、Worker対応、console error、難易度optionsを実ブラウザーで確認する。
 
+公開用PRでは専用の`PBAI-C011 staged release verification`を必須gateとして実行し、現行回帰、完了済みP5証拠の実行HEAD照合、配信予定asset hashをまとめて確認する。
+
 完了済みの研究testには、当時の公開source hashとの一致自体を確認するものがあるため、現在sourceへ変更が入れば意図どおり停止する。これらを現行公開回帰として再実行せず、固定commit上の履歴証拠として扱う。公開前gateは上記の現行engine・AI・config・Worker・候補境界testを対象とする。P5の証拠監査も、測定時sourceは実行HEADから復元して照合し、公開configだけを測定時と同じに戻さない。
 
 P5準備workflowは科学run開始前の専用branchだけで動くよう制限する。完了後の公開config変更やmanual dispatchで、使用済みseed向けpreflightを再実行しない。保存済み証拠の検算はP5完了証拠workflowを使う。
