@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "AI-GEN3-RELEASE-001",
+  "programId": "PBAI-P5",
+  "candidateId": "PBAI-C011-v1",
+  "decision": "ADOPT",
+  "decisionDate": "2026-09-07",
+  "status": "ADOPTED / PROMOTED",
+  "generationLineageBefore": "AI-GEN2",
+  "generationLineageAfter": "AI-GEN3",
+  "publicScope": {
+    "enabled": [
+      "hard/default-bao/phase2",
+      "expert/default-bao/phase2"
+    ],
+    "excluded": [
+      "easy",
+      "normal",
+      "explicit-legacy",
+      "explicit-mcts",
+      "explicit-bao-v2"
+    ]
+  },
+  "engineeringDecisions": [
+    "EQUIVALENT-COMPUTATION-SPEEDUP",
+    "STRENGTH-IMPROVED-IN-FROZEN-DOMAIN"
+  ],
+  "verifiedPublicDeployment": {
+    "sourceCommit": "650b4312ed9cd318d9981523533dd692bdce6125",
+    "url": "https://bao-la-kiswahili.cultivationdata.net/",
+    "verifiedDate": "2026-09-07",
+    "assets": {
+      "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+      "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+      "public/ai-config.js": "2c5122317a857aa6548d52803f25d20063fa5e80a41b50b8444458ba5861673b",
+      "public/service-worker.js": "346a1b1451558518dc1162dce2e3582cafc56ac02d579a48c40cddd658f13f8f",
+      "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+      "public/main.js": "ef11527a94de975945b861f3cd034f42c1f8eef1165b660659831f64be8b7830"
+    }
+  },
+  "promotionRecord": {
+    "recordingBaseCommit": "6bf05fc1431cae755d046c23b47cd4048b97771c",
+    "explicitUserAuthorization": true,
+    "publicDefaultAlreadyDeployed": true,
+    "uiDisclosureDeploymentStatus": "PENDING-MANUAL-CLOUDFLARE-DEPLOYMENT"
+  },
+  "promotionDisclosureAssets": {
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "public/main.js": "81651055bef7c1f9037d3c8fa83216976139fb25c4054433cde2529ec8d0484f",
+    "public/index.html": "04356257951e74ac81090860c0265cb754bf0f2de05d31db820d09e480430c86",
+    "public/style.css": "9e769acb665fa6163a1f08507c7cef83325e7123a37649637c40f224b7ee0ce7",
+    "public/service-worker.js": "7484699249e58022a009b49b85d7efbe02f0682192abdab6c3e17228d014c087"
+  },
+  "rollback": {
+    "procedure": "disable pbaiC011LightweightTransitions for hard/expert, advance the service-worker cache name, and deploy main/public",
+    "changesScientificDecision": false
+  }
+}

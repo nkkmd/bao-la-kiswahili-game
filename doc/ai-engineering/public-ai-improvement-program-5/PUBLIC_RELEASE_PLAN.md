@@ -48,3 +48,5 @@ main merge SHA、公開asset SHA-256、確認時刻、実ブラウザー種別�
 ## 実行結果
 
 この凍結計画に従い、PR #107、#108、#109をmainへ統合し、main `650b4312ed9cd318d9981523533dd692bdce6125`の`public/`を手動配信した。6 assetのbyte一致とChrome相当経路の初回動作を確認し、`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`へ進んだ。実測値、未確認範囲、rollback条件は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を正本とする。
+
+その後、2026年9月7日の明示的指示により、正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、`AI-GEN3`昇格を[別の判断記録](PROMOTION_DECISION.md)として確定した。この後続判断は、本計画を結果確認前の計画だったかのように遡及変更しない。

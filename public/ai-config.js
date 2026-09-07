@@ -2,6 +2,8 @@
 
 (function exposeBaoAIConfig(root) {
   const E = root.BaoEngine || (typeof require !== "undefined" ? require("./engine.js") : null);
+  const GENERATION = "AI-GEN3";
+  const RELEASE_ID = "AI-GEN3-RELEASE-001";
 
   function deviceTier(capabilities = {}) {
     const cores = capabilities.hardwareConcurrency || 4;
@@ -120,6 +122,8 @@
   }
 
   const api = {
+    GENERATION,
+    RELEASE_ID,
     deviceTier,
     searchOptions,
     baseSearchOptions,

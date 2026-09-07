@@ -1,6 +1,6 @@
 # PBAI-P5 — 公開配信検証
 
-状態: `PASS / STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`。
+状態: `PASS / STAGED-PUBLIC-ACTIVE / PROMOTED-AS-AI-GEN3`。
 
 ## 確認対象
 
@@ -12,7 +12,8 @@
 | 候補 | `PBAI-C011-v1` |
 | 公開範囲 | hard / expertの既定`bao`・`phase2`探索 |
 | 公開対象外 | easy、normal、明示的`legacy`・`mcts`・`bao-v2` |
-| 公開AI系統 | `AI-GEN2` |
+| 確認時点の公開AI系統 | `AI-GEN2` |
+| 後続の正式release | `AI-GEN3-RELEASE-001` |
 
 PR #107で候補実装、PR #108で独立再検証と追加監査、PR #109でhard/expertの段階的有効化とPWA cache v25をmainへ統合した。PR #109の`PBAI-C011 staged release verification`と`PBAI-P5 completed evidence verification`は成功した。Cloudflareの配信操作は手動で行われた。provider deployment IDは取得していないため発明しない。
 
@@ -47,6 +48,8 @@ cache-busting queryを付けて公開URLから取得した6 assetをSHA-256で�
 
 ## 判断と限界
 
-公開asset一致と初回運用確認のgateはPASSしたため、公開状態を`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`とする。この単一観測を新しい速度比較や棋力比較には使わず、P5の事前固定試験結果を置き換えない。スマートフォン実機、複数ブラウザー、端末横断のメモリと速度、標準500ms対局棋力は未確認である。
+公開asset一致と初回運用確認のgateはPASSしたため、確認時点の公開状態を`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`とした。この単一観測を新しい速度比較や棋力比較には使わず、P5の事前固定試験結果を置き換えない。スマートフォン実機、複数ブラウザー、端末横断のメモリと速度、標準500ms対局棋力は未確認である。
 
-正式な`ADOPT`、release ID発行、`AI-GEN3`昇格は行っていない。公開AI系統は`AI-GEN2`のままである。問題が確認された場合は、hard/expertのfeature flagをfalseへ戻し、service workerのcache名をv25より先へ更新したmainの`public/`を再配信する。科学的結果とP4のHOLDはrollbackの有無で変更しない。
+この配信確認の完了後、2026年9月7日の明示的指示に基づいて正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、公開AI系統`AI-GEN3`への昇格を記録した。これは確認時点の観測値やasset hashを変更しない後続判断である。詳細は[AI-GEN3正式昇格判断](PROMOTION_DECISION.md)を参照する。
+
+問題が確認された場合は、hard/expertのfeature flagをfalseへ戻し、service workerのcache名をv25より先へ更新したmainの`public/`を再配信する。科学的結果とP4のHOLDはrollbackの有無で変更しない。

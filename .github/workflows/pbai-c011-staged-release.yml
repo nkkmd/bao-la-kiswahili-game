@@ -1,4 +1,4 @@
-name: PBAI-C011 staged release verification
+name: AI-GEN3 release verification
 on:
   pull_request:
     paths:
@@ -7,8 +7,11 @@ on:
       - 'public/ai-config.js'
       - 'public/ai-worker.js'
       - 'public/main.js'
+      - 'public/index.html'
+      - 'public/style.css'
       - 'public/service-worker.js'
       - 'test/ai-config.test.js'
+      - 'test/ai-generation-release.test.js'
       - 'doc/ai-engineering/public-ai-improvement-program-5/**'
       - 'tools/engineering/audit-pbai-p5-results.py'
       - '.github/workflows/pbai-c011-staged-release.yml'
@@ -30,6 +33,7 @@ jobs:
           for test_file in \
             test/engine.test.js \
             test/ai-config.test.js \
+            test/ai-generation-release.test.js \
             test/ai.test.js \
             test/search.test.js \
             test/tactical.test.js \
@@ -44,13 +48,16 @@ jobs:
           done
       - name: Verify completed evidence against its execution commit
         run: python3 tools/engineering/audit-pbai-p5-results.py
-      - name: Verify planned public asset hashes
+      - name: Verify AI-GEN3 disclosure asset hashes
         run: |
           cat <<'HASHES' | sha256sum -c -
           2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3  public/engine.js
           aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498  public/ai.js
-          2c5122317a857aa6548d52803f25d20063fa5e80a41b50b8444458ba5861673b  public/ai-config.js
-          346a1b1451558518dc1162dce2e3582cafc56ac02d579a48c40cddd658f13f8f  public/service-worker.js
+          7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8  public/ai-weights.js
+          ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc  public/ai-config.js
           cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4  public/ai-worker.js
-          ef11527a94de975945b861f3cd034f42c1f8eef1165b660659831f64be8b7830  public/main.js
+          81651055bef7c1f9037d3c8fa83216976139fb25c4054433cde2529ec8d0484f  public/main.js
+          04356257951e74ac81090860c0265cb754bf0f2de05d31db820d09e480430c86  public/index.html
+          9e769acb665fa6163a1f08507c7cef83325e7123a37649637c40f224b7ee0ce7  public/style.css
+          7484699249e58022a009b49b85d7efbe02f0682192abdab6c3e17228d014c087  public/service-worker.js
           HASHES

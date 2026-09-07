@@ -6,6 +6,14 @@ const fs = require("node:fs");
 const html = fs.readFileSync("public/index.html", "utf8");
 const serviceWorker = fs.readFileSync("public/service-worker.js", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
+const main = fs.readFileSync("public/main.js", "utf8");
+
+assert.match(html, /id="ai-generation-badge"[^>]*>[\s\S]*?AI · AI-GEN3<\/span>/,
+  "the game header identifies the AI-GEN3 lineage");
+assert.match(html, /title="AI-GEN3-RELEASE-001"/,
+  "the AI badge exposes the exact release ID");
+assert.match(main, /aiGenerationBadge\.hidden = !isComputerGame\(\)/,
+  "the AI generation badge is hidden for local two-player games");
 
 for (const id of ["copy-position", "mark-ai-move", "copy-marked", "clear-marked"]) {
   assert.match(html, new RegExp(`id="${id}"`), `diagnostic UI includes ${id}`);

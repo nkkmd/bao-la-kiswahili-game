@@ -1,6 +1,6 @@
 # PBAI-P5 — 公開リリース台帳
 
-状態: `STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`。
+状態: `ADOPTED / PROMOTED / AI-GEN3-RELEASE-001 / UI-DISCLOSURE-DEPLOYMENT-PENDING`。
 
 ## リリース対象
 
@@ -13,7 +13,9 @@
 | 公開対象 | hard / expertの既定`bao`・`phase2`探索 |
 | 公開対象外 | easy、normal、明示的`legacy`・`mcts`・`bao-v2` |
 | ルール・評価・探索方式 | 変更なし |
-| AI世代 | `AI-GEN2`を維持。`AI-GEN3`昇格は別判断 |
+| 正式判断 | `ADOPT` |
+| Release ID | `AI-GEN3-RELEASE-001` |
+| AI世代 | `AI-GEN2`から`AI-GEN3`へ昇格 |
 | 公開source | main `650b4312ed9cd318d9981523533dd692bdce6125` |
 | 公開URL | `https://bao-la-kiswahili.cultivationdata.net/` |
 
@@ -40,3 +42,9 @@ PR #107、#108、#109を依存順にmainへ統合した。PR #109のmain SHAは`
 ## 状態更新規則
 
 main統合前は`NOT-YET-DEPLOYED`、main統合後で配信確認前は`DEPLOYMENT-PENDING`、配信assetとブラウザーgate通過後は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`と記録する。正式な`ADOPT`、release ID発行、`AI-GEN3`昇格には別の明示的判断を必要とする。
+
+## 正式release
+
+2026年9月7日の明示的判断により、`PBAI-C011-v1`を`ADOPT`し、`AI-GEN3-RELEASE-001`を発行し、公開AI系統を`AI-GEN3`へ昇格した。機械可読の正本は[release manifest](releases/AI-GEN3-RELEASE-001.json)、判断根拠は[AI-GEN3正式昇格判断](PROMOTION_DECISION.md)とする。
+
+正式判断時点で候補の公開default配備と実サイト確認は完了している。ゲーム画面の「AI · AI-GEN3」表示とPWA cache v26は、昇格を利用者へ明示する追加配信であり、AI本体の計算内容を変更しない。この追加配信が確認されるまでは`UI-DISCLOSURE-DEPLOYMENT-PENDING`とする。

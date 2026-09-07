@@ -4,6 +4,9 @@ const assert = require("node:assert/strict");
 const E = require("../public/engine.js");
 const Config = require("../public/ai-config.js");
 
+assert.equal(Config.GENERATION, "AI-GEN3", "public AI generation is explicit");
+assert.equal(Config.RELEASE_ID, "AI-GEN3-RELEASE-001", "public AI release ID is explicit");
+
 assert.equal(Config.deviceTier({ hardwareConcurrency: 2, deviceMemory: 8 }), "low");
 assert.equal(Config.deviceTier({ hardwareConcurrency: 4, deviceMemory: 4 }), "standard");
 assert.equal(Config.deviceTier({ hardwareConcurrency: 8, deviceMemory: 8 }), "high");

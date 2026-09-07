@@ -781,6 +781,6 @@ PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`
 
 ## PBAI-P5の最終結果
 
-PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。main `650b4312ed9cd318d9981523533dd692bdce6125`の公開asset一致とChrome相当経路のhard AI着手完了を確認し、状態は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`である。AI-GEN3への正式昇格は保留している。
+PBAI-P5は`COMPLETE / ADOPTED / AI-GEN3`。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。main `650b4312ed9cd318d9981523533dd692bdce6125`の公開asset一致とChrome相当経路のhard AI着手完了を確認後、release `AI-GEN3-RELEASE-001`として正式採用した。
 
 [最終報告](ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
