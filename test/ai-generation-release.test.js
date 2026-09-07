@@ -48,6 +48,6 @@ assert.match(html, /id="ai-generation-badge"/);
 assert.match(html, /AI · AI-GEN3/);
 assert.match(main, /AIConfig\.GENERATION/);
 assert.match(main, /AIConfig\.RELEASE_ID/);
-assert.match(serviceWorker, /bao-la-kiswahili-v27/);
+assert.match(serviceWorker, /bao-la-kiswahili-v28/);
 
 console.log("AI-GEN3 release tests passed");
