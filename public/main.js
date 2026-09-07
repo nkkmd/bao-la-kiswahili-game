@@ -380,7 +380,15 @@ function drawPit(player, row, index) {
     ctx.strokeStyle = displayState.houseOwned[player] ? C.pale : C.red; ctx.lineWidth = 2; ctx.strokeRect(x - 31, y - 31, 62, 62);
   }
   label(String(count), x, y - 1, count > 99 ? Math.min(24, 19 * cueScale()) : Math.min(31, 23 * cueScale()), "center", isSelected ? C.ink : C.pale);
-  label(pitName({ player, row, index }), x, y + 36, Math.min(20, 12 * cueScale()), "center", C.ink);
+  const nameOffset = player === 0 ? -1 : 1;
+  label(
+    pitName({ player, row, index }),
+    x + nameOffset * 21,
+    y + nameOffset * 26,
+    Math.min(16, 11 * cueScale()),
+    "center",
+    C.ink,
+  );
 }
 
 function drawAnimationCue(now) {
