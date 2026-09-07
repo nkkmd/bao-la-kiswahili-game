@@ -152,11 +152,28 @@ node tools/diagnostic-to-fixture.js \
 
 本リポジトリでは、公開ゲームのコンピューター対戦を改善する開発作業と、Baoに関する科学的研究を別系統で管理しています。AIの採用・非採用によって、研究の結論を書き換えることはありません。
 
-現在の公開AI系統は **`AI-GEN2`を継続**しています。Research Generation 1を用いた`PBAI-P1`と、Research Generation 2を用いた`PBAI-P2`では、いずれも公開版へ進める候補が得られませんでした。その後の独立工学再検証`PBAI-P5`で探索専用の軽量な局面遷移を固定範囲内で確認し、hard/expertへ段階的に公開しました。ただし正式な`ADOPT`、release ID発行、`AI-GEN3`への昇格は行っていません。
+### 現在の公開AI
 
-Research Generation 3の正式成果を設計入力とした`PBAI-P3`は、`AI-GEN2` baselineと、`PBAI-C010-v1`だけからなるinitial candidate inventory、fresh split、prospective gate、baseline-only support protocolを結果確認前に固定しました。`PBAI-P3-D` support / reachability auditではtop-3 probe completionが凍結gateを満たさず、候補を実装せず`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`としました。Programは`COMPLETE / KEEP-AI-GEN2`で終了し、candidate実装、benefit benchmark、validation、release holdout、公開変更は行っていません。Research Generation 4とは別のAI Engineering Programです。
+現在の公開AI系統は **`AI-GEN3`**、正式release IDは **`AI-GEN3-RELEASE-001`** です。`PBAI-P5`で検証した`PBAI-C011-v1`を正式に`ADOPT`し、hard/expertの既定Bao探索で探索専用の軽量な局面遷移を使用します。easy、normal、明示的な`legacy`・`mcts`・`bao-v2`は対象外です。ルール、評価関数、探索方式の意味は変更していません。
+
+### 改善Programの経緯
+
+- `PBAI-P1`と`PBAI-P2`は採用条件を満たす候補がなく、`KEEP-AI-GEN2`で完了しました。
+- Research Generation 3の成果を設計入力にした`PBAI-P3`は、候補`PBAI-C010-v1`のsupport gateが成立せず、実装前に`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`で終了しました。
+- `PBAI-P4`は`PBAI-C011-v1`の正確性と速度改善を観測しましたが、全体時間上限の監視不成立により最終対局を354/512局で停止し、`STRENGTH-NON-ESTIMABLE / HOLD`としました。この判断は変更していません。
+- `PBAI-P5`は同じ候補を新しいseedと連続4時間監視の下で独立再検証し、すべてのgateと独立検算を完了しました。
+
+### `AI-GEN3`の採用根拠
+
+PBAI-P5の新規最終holdoutは512局、328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％でした。固定した100ms/D8の範囲で`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`、同等計算結果の速度比較で`EQUIVALENT-COMPUTATION-SPEEDUP`と判断しました。段階的公開後は6 assetのbyte一致とChrome相当経路のhard AI着手を確認し、2026年9月7日に正式判断`ADOPT`と`AI-GEN3`昇格を記録しました。
+
+この結論は固定した試験範囲に限られます。スマートフォン実機、端末横断の速度、標準500ms対局棋力を新たに証明したものではありません。P4のHOLDやP1〜P3、PBAI-C001〜C010の正式結果は変更していません。
 
 - [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — 現在の世代、評価済み候補、公開状態への入口
+- [第5回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-5/README.md) — 検証、公開、正式採用の全記録
+- [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md) — `ADOPT`、release ID、昇格根拠
+- [公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md) — 配信assetとブラウザー確認
+- [第4回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md) — P4のHOLDと停止理由
 - [第3回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-3/README.md) — `PBAI-P3`の最終判断、証拠境界、終了条件
 - [第2回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md) — `PBAI-P2`の評価結果
 - [第1回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md) — `PBAI-P1`の評価結果
@@ -218,21 +235,3 @@ core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instr
 ## ライセンス
 
 このプロジェクトは MIT License のもとでライセンスされています。詳しくは [`LICENSE`](LICENSE) を参照してください。
-
-## 2026-09-06: PBAI-P4の独立工学検証
-
-PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`で終了した。正確性と前段の速度改善は観測したが、全体wall-clock上限4時間の監視漏れにより最終対局を354/512局で停止した。部分成績を棋力改善の正式証拠にしない。公開AIはAI-GEN2、候補は既定無効で、main統合・公開変更・世代昇格は行っていない。
-
-[最終報告](doc/ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。
-
-## PBAI-P5の再検証
-
-PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開用configではhard/expertの候補を既定有効にし、main `650b4312ed9cd318d9981523533dd692bdce6125`から実サイトへ配信した。公開AI系統はAI-GEN2のままである。[入口](doc/ai-engineering/public-ai-improvement-program-5/README.md)を参照する。
-
-PBAI-P5は[チャット非依存の実行準備](doc/ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md)も整備した。外部runnerの自動進行・途中保存・重複起動防止を用意し、正式試験は完了し、固定範囲の改善を確認した。
-
-## PBAI-P5の最終結果
-
-PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開assetのbyte一致とChrome相当経路のhard AI着手完了を確認し、状態は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`である。AI-GEN3への正式昇格は保留している。
-
-[最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件を、[公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)に配信一致と未確認範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。

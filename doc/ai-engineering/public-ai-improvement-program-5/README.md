@@ -1,6 +1,6 @@
 # PBAI-P5 — 軽量な局面遷移の独立再検証
 
-状態: `COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN / STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configはmain `650b4312ed9cd318d9981523533dd692bdce6125`から配信され、hard/expertで候補を既定有効にしている。公開assetのbyte一致とChrome相当経路の初回動作を確認済みである。公開AI系統はAI-GEN2を維持し、正式な`ADOPT`、release ID発行、AI-GEN3への昇格は別判断として保留する。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)、配信確認は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照する。
+状態: `COMPLETE / ADOPTED / AI-GEN3 / AI-GEN3-RELEASE-001`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configはmain `650b4312ed9cd318d9981523533dd692bdce6125`から配信され、hard/expertで候補を既定有効にしている。公開assetのbyte一致とChrome相当経路の初回動作を確認後、2026年9月7日の明示的指示に基づいて正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、公開AI系統`AI-GEN3`への昇格を記録した。画面の世代表示とPWA cache v26は手動Cloudflare配信を待つ。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)、配信確認は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)、正式判断は[AI-GEN3昇格判断](PROMOTION_DECISION.md)を参照する。
 
 ## 読む順序
 
@@ -14,6 +14,7 @@
 8. [公開リリース台帳](RELEASE_REGISTER.md) — 段階的反映、rollback、世代昇格の境界
 9. [公開リリース計画](PUBLIC_RELEASE_PLAN.md) — source、設定、確認手順
 10. [公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md) — 配信byte、実ブラウザー確認、未確認範囲
+11. [AI-GEN3正式昇格判断](PROMOTION_DECISION.md) — `ADOPT`、release ID、昇格根拠
 
 ## 前回との違い
 

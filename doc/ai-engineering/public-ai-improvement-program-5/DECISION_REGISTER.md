@@ -31,3 +31,9 @@
 PR #107、#108、#109をmainへ統合し、2026年9月7日にmain `650b4312ed9cd318d9981523533dd692bdce6125`の公開assetと実サイトのbyte一致、Chrome相当経路のhard AI着手完了、サイト由来console errorなしを確認した。状態を`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`とする。
 
 これは認可済みの段階的公開を完了した記録であり、正式な`ADOPT`、release ID発行、`AI-GEN3`昇格の判断ではない。公開AI系統は`AI-GEN2`を維持する。科学的判断、P4のHOLD、P1〜P3およびC001〜C010の既存結果は変更しない。[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を公開後確認の正本とする。
+
+## 正式採用とAI-GEN3昇格
+
+2026年9月7日、ユーザーは正式`ADOPT`、release ID発行、`AI-GEN3`昇格を明示的に指示した。命名規則の9条件を再確認し、すべて成立したため、`PBAI-C011-v1`を正式に`ADOPT`し、`AI-GEN3-RELEASE-001`を発行し、公開AI系統を`AI-GEN2`から`AI-GEN3`へ昇格する。
+
+この後続判断は、上記の履歴時点における未認可・保留状態を書き換えない。段階的公開と配信確認が完了した後に、新しい明示的認可として追加したものである。詳細な条件、適用範囲、一般化しない事項は[AI-GEN3正式昇格判断](PROMOTION_DECISION.md)を正本とする。

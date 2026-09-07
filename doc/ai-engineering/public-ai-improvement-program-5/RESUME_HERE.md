@@ -1,6 +1,6 @@
 # PBAI-P5 — 完了後の確認位置
 
-現在はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。測定は終了しており、label再追加、ActionsのRe-run、同一seedの対局再実行はしない。
+現在は`COMPLETE / ADOPTED / AI-GEN3 / AI-GEN3-RELEASE-001`。測定は終了しており、label再追加、ActionsのRe-run、同一seedの対局再実行はしない。
 
 ## 固定した実行と証拠
 
@@ -23,4 +23,6 @@ git status --shortを確認して他作業を上書きせず、artifacts/pbai-p5
 
 結果確認、レビュー指摘の追加監査、PR #107、#108、#109のmain統合、公開用configとPWA cacheの配信、実サイトのasset・Chrome相当動作確認は完了した。公開用configではhard/expertの候補を既定有効にしている。[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)に照合結果を保存した。
 
-進行中の作業や再開すべき科学試験はない。次に許される作業は、公開障害時のrollback、通常の運用監視、またはユーザーが別途明示した場合の正式な`ADOPT`・release ID・AI-GEN3昇格判断である。公開AI系統はAI-GEN2のままである。追加対局、使用済みseedの再利用、AI世代の自動昇格を行わない。
+進行中の科学試験はない。正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、`AI-GEN3`昇格は[正式昇格判断](PROMOTION_DECISION.md)に記録した。次の作業は、昇格表示を含むmainの`public/`を手動Cloudflare配信し、表示とassetを確認することである。
+
+追加対局、使用済みseedの再利用、過去判断の変更は行わない。公開障害時はrelease記録のrollback手順を使う。昇格表示の配信確認が完了するまで`UI-DISCLOSURE-DEPLOYMENT-PENDING`であり、AI本体の正式採用を未実行へ戻して解釈しない。

@@ -2,7 +2,7 @@
 
 状態: **ACTIVE**  
 制定日: 2026-08-26  
-更新日: 2026-09-05
+更新日: 2026-09-07
 適用範囲: 公開Bao AIのengineering lineage命名
 
 人間向けの説明文は[`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)に従い、日本語を主言語とする。以下で定義するcanonical identifier自体は翻訳・改名しない。
@@ -13,7 +13,7 @@ Bao AIの「世代」、evaluation / search profile、engineering program、cand
 
 この文書におけるAI世代名は、**公開AIのengineering lineage**を表します。Research Generationとは別namespaceです。
 
-## 2. canonical namespace
+## 2. canonical namespace（正式な名前空間）
 
 | Namespace | Canonical form | 意味 |
 | --- | --- | --- |
@@ -39,11 +39,11 @@ AIについては必ず`AI-GENn`、研究については必ず`Research Generati
 - 現時点では、この命名規則だけを根拠として厳密な最初・最後のcommit boundaryを主張しません。
 - 将来history auditが必要になった場合は、別のversioned archival recordでexact boundaryを固定します。
 
-### `AI-GEN2` — 現在公開中のBao AI系統
+### `AI-GEN2` — 直前の公開Bao AI系統
 
-現在publicに使用されているBao AI lineageを指します。
+2026年9月7日の`AI-GEN3`昇格までpublicに使用されていたBao AI lineageを指します。
 
-legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索、transposition table、PVS、killer move、quiescence search、Web Worker、既存benchmark / regression infrastructureなどを持つ現行系統を含みます。
+legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索、transposition table、PVS、killer move、quiescence search、Web Worker、既存benchmark / regression infrastructureなどを持つ当時の系統を含みます。
 
 重要な境界:
 
@@ -55,11 +55,13 @@ legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索�
 - `bao-v2`という既存experimental evaluation profile名は`AI-GEN2`を意味しません。
 - profile名に`v2`が含まれていてもAI世代番号とは無関係です。
 
-### `AI-GEN3` — 次に正式採用される公開系統の予約名
+### `AI-GEN3` — 現在の公開Bao AI系統
 
-`AI-GEN3`は、将来のAI Engineering Programによる次の正式採用public lineageのために予約します。
+`AI-GEN3`は、PBAI-P5で正式採用した現在のpublic lineageです。最初の正式releaseは`AI-GEN3-RELEASE-001`です。
 
-**candidateを作成したこと、development benchmarkを通過したこと、validationを通過したこと、formal `ADOPT` decisionだけでは`AI-GEN3`を付与しません。**
+`AI-GEN2`の探索・評価・ルール処理を継承し、hard/expertの既定Bao探索に`PBAI-C011-v1`の探索専用軽量局面遷移を加えた系統です。
+
+候補作成、development benchmark、validation、formal `ADOPT`だけでは世代を付与せず、次の条件をすべて満たしたときに限って昇格する規則は維持します。
 
 `AI-GEN3`へのpromotionには最低限、次をすべて要求します。
 
@@ -73,9 +75,9 @@ legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索�
 8. 明示的なengineering release decisionが`ADOPT`である。
 9. candidateまたはapproved candidate setが**実際にpublic default AIとしてdeployment済み**である。
 
-この条件を最初に満たしたpublic lineageを`AI-GEN3`とします。
+PBAI-P5の`PBAI-C011-v1`はこの条件を最初にすべて満たしたため、2026年9月7日に`AI-GEN3`へ昇格しました。
 
-したがって、release候補や未deploymentの採用決定を`AI-GEN3`と先取りして呼んではいけません。
+今後もrelease候補や未deploymentの採用決定を次世代名で先取りして呼んではいけません。
 
 ## 4. Candidate命名規則
 
@@ -179,18 +181,36 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 
 PBAI-P3ではformal `ADOPT`もpublic default deploymentもなく、`AI-GEN3`へ昇格しませんでした。`AI-GEN3`は次に正式採用・配備されるpublic lineageの予約名のままです。
 
-## 2026-09-06: PBAI-P4の独立工学検証
+## 10. PBAI-P4とPBAI-P5の昇格前記録
+
+### PBAI-P4の独立工学検証
 
 PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`COMPLETE / STRENGTH-NON-ESTIMABLE / HOLD`で終了した。正確性と前段の速度改善は観測したが、全体wall-clock上限4時間の監視漏れにより最終対局を354/512局で停止した。部分成績を棋力改善の正式証拠にしない。公開AIはAI-GEN2、候補は既定無効で、main統合・公開変更・世代昇格は行っていない。
 
 [最終報告](public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md)に固定条件、実測値、停止理由、独立検算、再開境界をまとめた。Research Generation 4とは独立であり、過去PBAI-P1〜P3とC001〜C010の正式判断は変更しない。小型の学習型評価関数、学習による着手順予測、手番間の計算結果再利用は後続構想のままである。
 
-## PBAI-P5の再検証
+### PBAI-P5の再検証
 
 PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。公開用configではhard/expertの候補を既定有効にし、main `650b4312ed9cd318d9981523533dd692bdce6125`から実サイトへ配信した。公開AI系統はAI-GEN2を維持し、正式な`ADOPT`とAI-GEN3昇格は別判断とする。[入口](public-ai-improvement-program-5/README.md)を参照する。
 
-## PBAI-P5の最終結果
+### PBAI-P5の昇格前最終結果
 
 PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開assetのbyte一致とChrome相当経路のhard AI着手完了を確認し、状態は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`である。正式な世代昇格は未実行である。
 
 [最終報告](public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
+
+## 11. PBAI-P5によるAI-GEN3正式昇格
+
+段階的公開と実サイト確認の完了後、2026年9月7日の明示的指示に基づいて次を確定しました。
+
+```text
+program = PBAI-P5
+candidate = PBAI-C011-v1
+formal release decision = ADOPT
+release = AI-GEN3-RELEASE-001
+public lineage before promotion = AI-GEN2
+public lineage after promotion = AI-GEN3
+deployment evidence = PASS
+```
+
+この後続判断により、`AI-GEN3`は予約名から現在の公開AI系統へ移りました。P1〜P4の当時の記録にある`AI-GEN2`、`NOT-PROMOTED`、`HOLD`等は履歴として維持し、遡及変更しません。正式な根拠は[PBAI-P5の昇格判断](public-ai-improvement-program-5/PROMOTION_DECISION.md)を参照してください。

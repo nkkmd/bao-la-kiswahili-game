@@ -21,6 +21,8 @@ body {
 h1 { margin: 1px 0 0; font-size: clamp(20px, 4vw, 34px); line-height: 1; letter-spacing: .04em; }
 .kicker { color: #78998a; font-size: 10px; letter-spacing: .18em; }
 .prototype-badge { display: inline-block; margin-top: 6px; padding: 3px 7px; color: #071011; background: #e2c36b; font-size: 10px; font-weight: bold; letter-spacing: .08em; }
+.ai-generation-badge { display: inline-block; margin-top: 6px; padding: 3px 7px; border: 1px solid #78998a; color: #d3e4a5; background: #172c2b; font-size: 10px; font-weight: bold; letter-spacing: .08em; }
+.ai-generation-badge[hidden] { display: none; }
 .toolbar { display: flex; flex-wrap: wrap; justify-content: end; gap: 5px; }
 button, summary, select {
   color: #d3e4a5; background: #172c2b; border: 1px solid #78998a;

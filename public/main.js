@@ -12,6 +12,7 @@ const soundButton = document.querySelector("#sound");
 const speedButton = document.querySelector("#speed");
 const difficultySelect = document.querySelector("#difficulty");
 const difficultyField = document.querySelector("#difficulty-field");
+const aiGenerationBadge = document.querySelector("#ai-generation-badge");
 const gameModeSelect = document.querySelector("#game-mode");
 const startScreen = document.querySelector("#start-screen");
 const startButton = document.querySelector("#start-game");
@@ -47,6 +48,11 @@ let humanPlayer = 0;
 let lastAIDiagnostic = null;
 
 function isComputerGame() { return gameModeSelect.value === "computer"; }
+function updateAIGenerationBadge() {
+  aiGenerationBadge.textContent = `AI · ${AIConfig.GENERATION}`;
+  aiGenerationBadge.title = AIConfig.RELEASE_ID;
+  aiGenerationBadge.hidden = !isComputerGame();
+}
 function isHumanTurn() { return !isComputerGame() || state.player === humanPlayer; }
 function isAIActive() { return aiThinking || aiTimer !== null; }
 function setAIThinking(value) {
@@ -531,12 +537,14 @@ difficultySelect.addEventListener("change", () => save("bao_ai_level", difficult
 gameModeSelect.value = load("bao_game_mode", "computer");
 difficultyField.hidden = !isComputerGame();
 sideField.hidden = !isComputerGame();
+updateAIGenerationBadge();
 playerSideSelect.value = load("bao_player_side", "first");
 playerSideSelect.addEventListener("change", () => save("bao_player_side", playerSideSelect.value));
 gameModeSelect.addEventListener("change", () => {
   save("bao_game_mode", gameModeSelect.value);
   difficultyField.hidden = !isComputerGame();
   sideField.hidden = !isComputerGame();
+  updateAIGenerationBadge();
 });
 startButton.addEventListener("click", () => {
   save("bao_game_mode", gameModeSelect.value);
