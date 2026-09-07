@@ -12,6 +12,7 @@ permissions:
   contents: read
 jobs:
   prepare:
+    if: github.event_name == 'pull_request' && github.head_ref == 'engineering/pbai-p5-reverification-preparation'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
