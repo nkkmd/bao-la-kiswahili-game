@@ -129,7 +129,10 @@ footer { margin-top: 22px; font-size: 12px; line-height: 1.9; color: #9ab3a5; }
  .reserves > span { gap: 5px; }
  .reserves strong { font-size: 18px; }
  .hand-label { font-size: 12px; }
- .screen-frame:has(.start-screen:not([hidden])) { min-height: 364px; }
+ .start-screen:not([hidden]) { position: relative; inset: auto; padding: 12px; }
+ .start-screen:not([hidden]) ~ .game-info,
+ .start-screen:not([hidden]) ~ canvas,
+ .start-screen:not([hidden]) ~ .move-choices { display: none; }
  .start-panel { padding: 20px; }
  .move-choices { gap: 8px; padding: 10px; }
  .move-choices button { font-size: 14px; padding: 10px 6px; overflow-wrap: anywhere; }
