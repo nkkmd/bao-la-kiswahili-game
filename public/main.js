@@ -24,6 +24,13 @@ const copyMarkedButton = document.querySelector("#copy-marked");
 const clearMarkedButton = document.querySelector("#clear-marked");
 const diagnosticStatus = document.querySelector("#diagnostic-status");
 ctx.imageSmoothingEnabled = false;
+const directionPanel = document.querySelector("#move-choices");
+let renderedChoices = null;
+const turnNumber = document.querySelector("#turn-number");
+const turnNameNode = document.querySelector("#turn-name");
+const phaseNode = document.querySelector("#phase-name");
+const northHand = document.querySelector("#north-hand");
+const southHand = document.querySelector("#south-hand");
 
 const C = { night: "#071011", ink: "#172c2b", mid: "#34544a", soft: "#78998a", sky: "#a8c98b", pale: "#d3e4a5", gold: "#e2c36b", red: "#b95f5f" };
 const PIT_X = Array.from({ length: 8 }, (_, i) => 76 + i * 70);
@@ -314,21 +321,22 @@ function cueScale() {
 }
 
 function draw(now) {
-  rect(0, 0, 640, 430, C.sky);
-  drawHeader(); drawBoard(); drawChoices();
+  rect(0, 0, 640, 330, C.sky);
+  drawHeader();
+  ctx.save(); ctx.translate(0, -66);
+  drawBoard();
   if (animation?.current) drawAnimationCue(now);
   if (state.winner !== null && !animation) drawWinner();
+  ctx.restore();
+  drawChoices();
 }
 
 function drawHeader() {
-  rect(0, 0, 640, 66, C.ink);
-  const phase = displayState.phase.toUpperCase();
-  label(`TURN ${displayState.turn}`, 20, 18, 11, "left", C.soft);
-  label(phase, 320, 18, 12, "center", C.gold);
-  label(`NORTH  HAND:${displayState.reserve[1]}`, 620, 18, 11, "right", C.pale);
-  label(`SOUTH  HAND:${displayState.reserve[0]}`, 620, 43, 11, "right", C.pale);
-  const turnName = displayState.player === 0 ? "▼ SOUTH" : "▲ NORTH";
-  label(turnName, 20, 43, 14, "left", C.pale);
+  turnNumber.textContent = `TURN ${displayState.turn}`;
+  turnNameNode.textContent = displayState.player === 0 ? "▼ SOUTH" : "▲ NORTH";
+  phaseNode.textContent = displayState.phase.toUpperCase();
+  northHand.textContent = displayState.reserve[1];
+  southHand.textContent = displayState.reserve[0];
 }
 
 function drawBoard() {
@@ -336,14 +344,14 @@ function drawBoard() {
   rect(32, 82, 576, 266, C.gold);
   rect(38, 88, 564, 254, "#78905e");
   rect(38, 211, 564, 8, C.ink);
-  label("NORTH", 14, 140, 10, "center", C.ink);
-  label("SOUTH", 626, 290, 10, "center", C.ink);
+
+
   for (let player = 0; player < 2; player += 1) for (let row = 0; row < 2; row += 1) {
     for (let index = 0; index < 8; index += 1) drawPit(player, row, index);
   }
-  label("KICHWA", PIT_X[0], 372, 9, "center", C.ink);
-  label("NYUMBA", PIT_X[4], 372, 9, "center", C.ink);
-  label("KICHWA", PIT_X[7], 372, 9, "center", C.ink);
+  label("KICHWA", PIT_X[0], 373, Math.min(18, 11 * cueScale()), "center", C.ink);
+  label("NYUMBA", PIT_X[4], 373, Math.min(18, 11 * cueScale()), "center", C.ink);
+  label("KICHWA", PIT_X[7], 373, Math.min(18, 11 * cueScale()), "center", C.ink);
 }
 
 function drawPit(player, row, index) {
@@ -355,8 +363,8 @@ function drawPit(player, row, index) {
   const isActive = samePosition(animation?.current?.position, { player, row, index });
   ctx.beginPath(); ctx.arc(x, y, index === E.HOUSE && row === E.FRONT ? 29 : 25, 0, Math.PI * 2);
   ctx.fillStyle = isSelected ? C.pale : C.ink; ctx.fill();
-  ctx.lineWidth = isActive ? 5 : isLegal ? 4 : 2;
-  ctx.strokeStyle = isActive ? C.red : isLegal ? C.gold : C.soft;
+  ctx.lineWidth = isActive ? 5 : isSelected ? 5 : isLegal ? 4 : 2;
+  ctx.strokeStyle = isActive ? C.red : isSelected ? C.pale : isLegal ? C.gold : C.soft;
   ctx.stroke();
   if (isActive) {
     const scale = cueScale();
@@ -371,8 +379,8 @@ function drawPit(player, row, index) {
   if (row === E.FRONT && index === E.HOUSE) {
     ctx.strokeStyle = displayState.houseOwned[player] ? C.pale : C.red; ctx.lineWidth = 2; ctx.strokeRect(x - 31, y - 31, 62, 62);
   }
-  label(String(count), x, y - 1, count > 99 ? 13 : 17, "center", isSelected ? C.ink : C.pale);
-  label(pitName({ player, row, index }), x, y + 37, 8, "center", C.ink);
+  label(String(count), x, y - 1, count > 99 ? Math.min(24, 19 * cueScale()) : Math.min(31, 23 * cueScale()), "center", isSelected ? C.ink : C.pale);
+  label(pitName({ player, row, index }), x, y + 36, Math.min(20, 12 * cueScale()), "center", C.ink);
 }
 
 function drawAnimationCue(now) {
@@ -412,16 +420,17 @@ function drawAnimationCue(now) {
 }
 
 function drawChoices() {
-  choiceBoxes = [];
-  if (!choices.length || animation) return;
-  const count = choices.length;
-  const width = Math.min(200, (600 - (count - 1) * 8) / count);
-  const total = count * width + (count - 1) * 8;
-  choices.forEach((move, i) => {
-    const x = 320 - total / 2 + i * (width + 8), y = 385;
-    rect(x, y, width, 34, C.ink); ctx.strokeStyle = C.pale; ctx.strokeRect(x + .5, y + .5, width - 1, 33);
-    label(moveLabel(move), x + width / 2, y + 17, count > 2 ? 8 : 10, "center", C.pale);
-    choiceBoxes.push({ x, y, w: width, h: 34, move });
+  if (renderedChoices === choices) return;
+  renderedChoices = choices;
+  directionPanel.replaceChildren();
+  choices.forEach(move => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = moveLabel(move);
+    button.addEventListener("click", () => {
+      if (!animation && !isAIActive() && choices.includes(move)) playMove(move);
+    });
+    directionPanel.append(button);
   });
 }
 
@@ -492,7 +501,7 @@ canvas.addEventListener("pointerdown", (event) => {
   event.preventDefault(); canvas.focus();
   const bounds = canvas.getBoundingClientRect();
   const x = (event.clientX - bounds.left) * canvas.width / bounds.width;
-  const y = (event.clientY - bounds.top) * canvas.height / bounds.height;
+  const y = (event.clientY - bounds.top) * canvas.height / bounds.height + 66;
   const box = choiceBoxes.find((item) => x >= item.x && x <= item.x + item.w && y >= item.y && y <= item.y + item.h);
   if (box) { playMove(box.move); return; }
   const position = positionFromPoint(x, y); if (position) choosePit(position);
@@ -593,7 +602,9 @@ clearMarkedButton.addEventListener("click", () => {
 soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`;
 soundButton.setAttribute("aria-pressed", String(sound));
 if ("serviceWorker" in navigator && location.protocol !== "file:") window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+
 helpNode.textContent = "対局設定を選んでSTART GAMEを押してください";
 setAIThinking(false);
 updateDiagnosticStatus();
 requestAnimationFrame(loop);
+
