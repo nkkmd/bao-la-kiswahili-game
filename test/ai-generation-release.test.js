@@ -24,6 +24,11 @@ assert.equal(manifest.status, "ADOPTED / PROMOTED");
 assert.equal(manifest.verifiedPublicDeployment.sourceCommit,
   "650b4312ed9cd318d9981523533dd692bdce6125");
 assert.equal(manifest.promotionRecord.publicDefaultAlreadyDeployed, true);
+assert.equal(manifest.promotionRecord.uiDisclosureDeploymentStatus, "VERIFIED-PUBLIC-ACTIVE");
+assert.equal(manifest.promotionRecord.uiDisclosureDeployment.sourceCommit,
+  "e6a3936ee6285d606be83987b5ae3aa2ee61ec25");
+assert.equal(manifest.promotionRecord.uiDisclosureDeployment.indexVerification,
+  "LIVE-DOM-BADGE-AND-RELEASE-ID-MATCH");
 
 for (const [path, expected] of Object.entries(manifest.promotionDisclosureAssets)) {
   assert.equal(sha256(path), expected, path + " matches the release manifest");

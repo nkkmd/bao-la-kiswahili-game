@@ -50,3 +50,5 @@ main merge SHA、公開asset SHA-256、確認時刻、実ブラウザー種別�
 この凍結計画に従い、PR #107、#108、#109をmainへ統合し、main `650b4312ed9cd318d9981523533dd692bdce6125`の`public/`を手動配信した。6 assetのbyte一致とChrome相当経路の初回動作を確認し、`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`へ進んだ。実測値、未確認範囲、rollback条件は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を正本とする。
 
 その後、2026年9月7日の明示的指示により、正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、`AI-GEN3`昇格を[別の判断記録](PROMOTION_DECISION.md)として確定した。この後続判断は、本計画を結果確認前の計画だったかのように遡及変更しない。
+
+さらに、main `e6a3936ee6285d606be83987b5ae3aa2ee61ec25`の世代表示とPWA cache v26を手動Cloudflare配信し、公開画面の「AI · AI-GEN3」、release ID、主要asset、hardのAI着手を確認した。昇格表示の配信状態は`VERIFIED-PUBLIC-ACTIVE`である。確認方法と未確認範囲は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)へ記録した。

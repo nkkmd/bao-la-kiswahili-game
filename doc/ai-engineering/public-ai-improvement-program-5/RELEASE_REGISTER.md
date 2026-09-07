@@ -1,6 +1,6 @@
 # PBAI-P5 — 公開リリース台帳
 
-状態: `ADOPTED / PROMOTED / AI-GEN3-RELEASE-001 / UI-DISCLOSURE-DEPLOYMENT-PENDING`。
+状態: `ADOPTED / PROMOTED / AI-GEN3-RELEASE-001 / VERIFIED-PUBLIC-ACTIVE`。
 
 ## リリース対象
 
@@ -16,10 +16,11 @@
 | 正式判断 | `ADOPT` |
 | Release ID | `AI-GEN3-RELEASE-001` |
 | AI世代 | `AI-GEN2`から`AI-GEN3`へ昇格 |
-| 公開source | main `650b4312ed9cd318d9981523533dd692bdce6125` |
+| 初期公開runtime source | main `650b4312ed9cd318d9981523533dd692bdce6125` |
+| 現行公開source | main `e6a3936ee6285d606be83987b5ae3aa2ee61ec25` |
 | 公開URL | `https://bao-la-kiswahili.cultivationdata.net/` |
 
-`public/ai-config.js`はhardとexpertの既定optionsへ`pbaiC011LightweightTransitions: true`を追加する。`public/ai.js`側の既存gateにより、既定のBao評価・phase2探索以外では軽量経路を使わない。`public/service-worker.js`はcacheを`bao-la-kiswahili-v25`へ更新し、旧assetの混在を避ける。
+初期段階的公開の`public/ai-config.js`はhardとexpertの既定optionsへ`pbaiC011LightweightTransitions: true`を追加した。`public/ai.js`側の既存gateにより、既定のBao評価・phase2探索以外では軽量経路を使わない。初期公開時の`public/service-worker.js`はcacheを`bao-la-kiswahili-v25`へ更新し、AI-GEN3表示追加配信ではv26へ更新した。
 
 ## 公開前と公開後のgate
 
@@ -47,4 +48,6 @@ main統合前は`NOT-YET-DEPLOYED`、main統合後で配信確認前は`DEPLOYME
 
 2026年9月7日の明示的判断により、`PBAI-C011-v1`を`ADOPT`し、`AI-GEN3-RELEASE-001`を発行し、公開AI系統を`AI-GEN3`へ昇格した。機械可読の正本は[release manifest](releases/AI-GEN3-RELEASE-001.json)、判断根拠は[AI-GEN3正式昇格判断](PROMOTION_DECISION.md)とする。
 
-正式判断時点で候補の公開default配備と実サイト確認は完了している。ゲーム画面の「AI · AI-GEN3」表示とPWA cache v26は、昇格を利用者へ明示する追加配信であり、AI本体の計算内容を変更しない。この追加配信が確認されるまでは`UI-DISCLOSURE-DEPLOYMENT-PENDING`とする。
+正式判断時点で候補の公開default配備と実サイト確認は完了していた。ゲーム画面の「AI · AI-GEN3」表示とPWA cache v26は、昇格を利用者へ明示する追加配信であり、AI本体の計算内容を変更しない。追加配信前の状態は`UI-DISCLOSURE-DEPLOYMENT-PENDING`として記録した。
+
+同日、main `e6a3936ee6285d606be83987b5ae3aa2ee61ec25`の`public/`を手動Cloudflare配信し、実サイトで「AI · AI-GEN3」と`AI-GEN3-RELEASE-001`、PWA cache v26、hardのAI着手完了を確認した。昇格表示の配信状態を`VERIFIED-PUBLIC-ACTIVE`へ更新する。Cloudflareのprovider deployment IDは取得していないため記録しない。

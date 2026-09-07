@@ -1,6 +1,6 @@
 # PBAI-P5 — 軽量な局面遷移の独立再検証
 
-状態: `COMPLETE / ADOPTED / AI-GEN3 / AI-GEN3-RELEASE-001`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configはmain `650b4312ed9cd318d9981523533dd692bdce6125`から配信され、hard/expertで候補を既定有効にしている。公開assetのbyte一致とChrome相当経路の初回動作を確認後、2026年9月7日の明示的指示に基づいて正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、公開AI系統`AI-GEN3`への昇格を記録した。画面の世代表示とPWA cache v26は手動Cloudflare配信を待つ。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)、配信確認は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)、正式判断は[AI-GEN3昇格判断](PROMOTION_DECISION.md)を参照する。
+状態: `COMPLETE / ADOPTED / AI-GEN3 / AI-GEN3-RELEASE-001 / PUBLIC-ACTIVE`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configはmain `650b4312ed9cd318d9981523533dd692bdce6125`から配信され、hard/expertで候補を既定有効にしている。公開assetのbyte一致とChrome相当経路の初回動作を確認後、2026年9月7日の明示的指示に基づいて正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、公開AI系統`AI-GEN3`への昇格を記録した。さらにmain `e6a3936ee6285d606be83987b5ae3aa2ee61ec25`の画面世代表示とPWA cache v26を手動Cloudflare配信し、実サイトで表示、主要asset、hardのAI着手を確認した。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)、配信確認は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)、正式判断は[AI-GEN3昇格判断](PROMOTION_DECISION.md)を参照する。
 
 ## 読む順序
 

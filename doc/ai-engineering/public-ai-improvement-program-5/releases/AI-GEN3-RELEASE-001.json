@@ -42,7 +42,26 @@
     "recordingBaseCommit": "6bf05fc1431cae755d046c23b47cd4048b97771c",
     "explicitUserAuthorization": true,
     "publicDefaultAlreadyDeployed": true,
-    "uiDisclosureDeploymentStatus": "PENDING-MANUAL-CLOUDFLARE-DEPLOYMENT"
+    "uiDisclosureDeploymentStatus": "VERIFIED-PUBLIC-ACTIVE",
+    "uiDisclosureDeployment": {
+      "sourceCommit": "e6a3936ee6285d606be83987b5ae3aa2ee61ec25",
+      "url": "https://bao-la-kiswahili.cultivationdata.net/",
+      "verifiedDate": "2026-09-07",
+      "exactByteMatchAssets": [
+        "public/engine.js",
+        "public/ai.js",
+        "public/ai-weights.js",
+        "public/ai-config.js",
+        "public/ai-worker.js",
+        "public/main.js",
+        "public/style.css",
+        "public/service-worker.js"
+      ],
+      "indexVerification": "LIVE-DOM-BADGE-AND-RELEASE-ID-MATCH",
+      "hardMoveCompleted": true,
+      "siteOriginConsoleErrors": 0,
+      "providerDeploymentId": null
+    }
   },
   "promotionDisclosureAssets": {
     "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
