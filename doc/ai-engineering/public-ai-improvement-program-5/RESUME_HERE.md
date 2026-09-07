@@ -21,4 +21,6 @@ git status --shortを確認して他作業を上書きせず、artifacts/pbai-p5
 
 ## 次の作業と公開境界
 
-結果確認、レビュー指摘の追加監査、公開用configとPWA cacheの準備は完了した。次はPR #107、#108、公開設定PRの依存順main統合と、実サイトの配信asset・ブラウザー動作確認であり、追加対局ではない。公開用configではhard/expertの候補を既定有効にした。公開AI系統はAI-GEN2のまま、正式な`ADOPT`とAI-GEN3昇格は別判断として未実行である。
+結果確認、レビュー指摘の追加監査、PR #107、#108、#109のmain統合、公開用configとPWA cacheの配信、実サイトのasset・Chrome相当動作確認は完了した。公開用configではhard/expertの候補を既定有効にしている。[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)に照合結果を保存した。
+
+進行中の作業や再開すべき科学試験はない。次に許される作業は、公開障害時のrollback、通常の運用監視、またはユーザーが別途明示した場合の正式な`ADOPT`・release ID・AI-GEN3昇格判断である。公開AI系統はAI-GEN2のままである。追加対局、使用済みseedの再利用、AI世代の自動昇格を行わない。
