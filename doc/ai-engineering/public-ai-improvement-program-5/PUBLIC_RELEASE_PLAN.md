@@ -44,3 +44,7 @@ PR競合、必須Actions失敗、configがeasy/normalへ波及、詳細eventの�
 ## 公開後に残す記録
 
 main merge SHA、公開asset SHA-256、確認時刻、実ブラウザー種別、Worker対応、未確認端末、rollback targetを台帳へ追記する。スマートフォン実機の速度や標準500ms対局棋力は、今回確認できない限り未確認と明記する。
+
+## 実行結果
+
+この凍結計画に従い、PR #107、#108、#109をmainへ統合し、main `650b4312ed9cd318d9981523533dd692bdce6125`の`public/`を手動配信した。6 assetのbyte一致とChrome相当経路の初回動作を確認し、`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`へ進んだ。実測値、未確認範囲、rollback条件は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を正本とする。
