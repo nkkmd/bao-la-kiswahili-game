@@ -150,33 +150,42 @@ node tools/diagnostic-to-fixture.js \
 
 ## 公開AIの開発・改善
 
-本リポジトリでは、公開ゲームのコンピューター対戦を改善する開発作業と、Baoに関する科学的研究を別系統で管理しています。AIの採用・非採用によって、研究の結論を書き換えることはありません。
+公開ゲームのコンピューター対戦を改善する開発作業（AI Engineering）は、Baoに関する科学的研究とは別系統で管理しています。`AI-GENx`は公開AIの世代、`PBAI-Px`は改善プログラムのIDであり、いずれも研究世代（Research Generation）の番号とは対応しません。全体像は[AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md)を参照してください。
 
 ### 現在の公開AI
 
-現在の公開AI系統は **`AI-GEN3`**、正式release IDは **`AI-GEN3-RELEASE-001`** です。`PBAI-P5`で検証した`PBAI-C011-v1`を正式に`ADOPT`し、hard/expertの既定Bao探索で探索専用の軽量な局面遷移を使用します。easy、normal、明示的な`legacy`・`mcts`・`bao-v2`は対象外です。ルール、評価関数、探索方式の意味は変更していません。
+現在の公開AI系統は **`AI-GEN3`**、正式リリースIDは **`AI-GEN3-RELEASE-001`** です。2026年9月7日に`PBAI-P5`の候補`PBAI-C011-v1`を正式採用（`ADOPT`）し、公開配信を確認しています。画面では「AI · AI-GEN3」と表示します。
 
-### 改善Programの経緯
+採用した改善は、探索中に表示用の盤面スナップショット生成を省く「探索専用の軽量な局面遷移」です。捕獲量や連鎖数などAIに必要な情報、通常の着手処理、画面のアニメーションを維持し、ルール・評価関数・探索方式の意味は変えていません。
 
-- `PBAI-P1`と`PBAI-P2`は採用条件を満たす候補がなく、`KEEP-AI-GEN2`で完了しました。
-- Research Generation 3の成果を設計入力にした`PBAI-P3`は、候補`PBAI-C010-v1`のsupport gateが成立せず、実装前に`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`で終了しました。
-- `PBAI-P4`は`PBAI-C011-v1`の正確性と速度改善を観測しましたが、全体時間上限の監視不成立により最終対局を354/512局で停止し、`STRENGTH-NON-ESTIMABLE / HOLD`としました。この判断は変更していません。
-- `PBAI-P5`は同じ候補を新しいseedと連続4時間監視の下で独立再検証し、すべてのgateと独立検算を完了しました。
+軽量経路を使うのは「むずかしい」（hard）と「ムタアラム」（expert）の既定Bao探索です。「やさしい」（easy）、「ふつう」（normal）、明示的な`legacy`・`mcts`・`bao-v2`はこの改善の対象外です。
 
 ### `AI-GEN3`の採用根拠
 
-PBAI-P5の新規最終holdoutは512局、328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％でした。固定した100ms/D8の範囲で`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`、同等計算結果の速度比較で`EQUIVALENT-COMPUTATION-SPEEDUP`と判断しました。段階的公開後は6 assetのbyte一致とChrome相当経路のhard AI着手を確認し、2026年9月7日に正式判断`ADOPT`と`AI-GEN3`昇格を記録しました。
+PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固定基準構成と先後交換して512局を比較し、328勝184敗、勝点率64.0625％でした。先後ペアの相関を考慮したcluster bootstrapの95％区間は61.1328125〜66.9921875％です。Node/Linux上の持ち時間100ms・最大深度8（D8）という固定条件で、棋力改善を示す`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`と判断しました。同等計算結果の速度比較でも`EQUIVALENT-COMPUTATION-SPEEDUP`を確認しています。条件と独立検算は[第5回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)にまとめています。
 
-この結論は固定した試験範囲に限られます。スマートフォン実機、端末横断の速度、標準500ms対局棋力を新たに証明したものではありません。P4のHOLDやP1〜P3、PBAI-C001〜C010の正式結果は変更していません。
+この結論は固定した試験範囲に限られます。スマートフォン実機での効果、端末横断の速度、標準500msでの対局棋力を証明したものではありません。また、公開配信後の表示・着手確認は運用確認であり、追加の棋力試験ではありません。配信ファイルの照合方法と未確認事項は[公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照してください。
 
-- [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — 現在の世代、評価済み候補、公開状態への入口
-- [第5回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-5/README.md) — 検証、公開、正式採用の全記録
-- [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md) — `ADOPT`、release ID、昇格根拠
-- [公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md) — 配信assetとブラウザー確認
-- [第4回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md) — P4のHOLDと停止理由
-- [第3回改善プログラムの入口](doc/ai-engineering/public-ai-improvement-program-3/README.md) — `PBAI-P3`の最終判断、証拠境界、終了条件
-- [第2回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md) — `PBAI-P2`の評価結果
-- [第1回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md) — `PBAI-P1`の評価結果
+### 改善プログラムの経緯
+
+PBAI-P1〜P5はすべて完了しており、進行中の改善プログラムはありません。
+
+| プログラム | 検証内容と結果 | 公開AIへの反映 |
+| --- | --- | --- |
+| [PBAI-P1](doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md) | 研究第1世代までの証拠を利用。採用条件を満たす候補がなく、`KEEP-AI-GEN2`で完了 | 変更なし |
+| [PBAI-P2](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md) | 研究第2世代までの証拠を利用。採用条件を満たす候補がなく、`KEEP-AI-GEN2`で完了 | 変更なし |
+| [PBAI-P3](doc/ai-engineering/public-ai-improvement-program-3/README.md) | 研究第3世代の証拠を利用。候補`PBAI-C010-v1`の適用対象が事前条件を満たさず、実装前に終了。Programは`KEEP-AI-GEN2` | 変更なし |
+| [PBAI-P4](doc/ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md) | 軽量な局面遷移の正確性と速度改善を観測。全体時間上限の監視不成立で最終対局を354/512局で停止し、`STRENGTH-NON-ESTIMABLE / HOLD` | 採用せず |
+| [PBAI-P5](doc/ai-engineering/public-ai-improvement-program-5/README.md) | 同じ`PBAI-C011-v1`を新規seedと連続4時間監視の下で独立再検証。事前の採用条件と独立検算を通過 | `ADOPT`、`AI-GEN3`へ昇格 |
+
+PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。
+
+### 詳細資料
+
+- [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md) — 正式採用・世代昇格の根拠と適用範囲
+- [公開リリース台帳](doc/ai-engineering/public-ai-improvement-program-5/RELEASE_REGISTER.md) — 配信履歴、現在の公開状態、問題発生時の対応
+- [再現手順](doc/ai-engineering/public-ai-improvement-program-5/REPRODUCIBILITY_INDEX.md) — 保存済み証拠の検算方法と再実行の制限
+- [AI世代の命名規則](doc/ai-engineering/AI_GENERATION_NAMING.md) — AI世代、改善プログラム、候補IDの区別
 
 ## 研究成果
 
