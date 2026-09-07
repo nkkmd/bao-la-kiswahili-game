@@ -25,3 +25,9 @@
 2026年9月6日、ユーザーは結果確認後に、PRレビュー、main統合、公開AIへの反映を進めるよう明示した。これにより`AWAITING-USER-INSTRUCTION`は解消し、`PUBLIC-INTEGRATION-AUTHORIZED / STAGED-ACTIVATION-AUTHORIZED`へ進む。事前固定した科学的判断や数値を変更する認可ではない。
 
 `AI-GEN3`への正式昇格は別判断として未認可である。公開defaultへの反映後も、配信assetとブラウザー動作を確認し、正式な`ADOPT`および世代昇格を先取りしない。詳細は[main統合前の追加監査](INTEGRATION_READINESS_AUDIT.md)を参照する。
+
+## 段階的公開後の判断
+
+PR #107、#108、#109をmainへ統合し、2026年9月7日にmain `650b4312ed9cd318d9981523533dd692bdce6125`の公開assetと実サイトのbyte一致、Chrome相当経路のhard AI着手完了、サイト由来console errorなしを確認した。状態を`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`とする。
+
+これは認可済みの段階的公開を完了した記録であり、正式な`ADOPT`、release ID発行、`AI-GEN3`昇格の判断ではない。公開AI系統は`AI-GEN2`を維持する。科学的判断、P4のHOLD、P1〜P3およびC001〜C010の既存結果は変更しない。[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を公開後確認の正本とする。
