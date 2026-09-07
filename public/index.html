@@ -66,8 +66,20 @@
             <button id="start-game" class="start-button" type="button">START GAME</button>
           </div>
         </section>
-        <canvas id="game" width="640" height="430" tabindex="0" role="application"
+        <div class="game-info" aria-label="対局状況">
+          <div class="turn-info">
+            <span id="turn-number">TURN 1</span>
+            <strong id="turn-name">▼ SOUTH</strong>
+          </div>
+          <strong id="phase-name">NAMUA</strong>
+          <div class="reserves">
+            <span>NORTH <span class="hand-label">HAND</span> <strong id="north-hand">22</strong></span>
+            <span>SOUTH <span class="hand-label">HAND</span> <strong id="south-hand">22</strong></span>
+          </div>
+        </div>
+        <canvas id="game" width="640" height="330" tabindex="0" role="application"
           aria-label="Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。"></canvas>
+        <div id="move-choices" class="move-choices" aria-label="蒔く方向"></div>
       </div>
       <p id="visible-help" class="controls">光っている穴を選んでください</p>
       <p id="status" class="visually-hidden" aria-live="polite"></p>
@@ -110,6 +122,8 @@
         Created by
         <a href="https://bsky.app/profile/cultivationdata.net" target="_blank" rel="noopener noreferrer">@cultivationdata.net</a>
         <br>
+        <a href="https://github.com/nkkmd/bao-la-kiswahili-game" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span aria-hidden="true"> · </span>
         <a href="./privacy">Privacy Policy</a>
       </footer>
     </main>
