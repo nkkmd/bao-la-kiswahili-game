@@ -49,7 +49,9 @@ P4の`STRENGTH-NON-ESTIMABLE / HOLD`は変更しない。P1〜P3およびPBAI-C0
 
 ゲーム画面にはコンピュータ対戦時だけ「AI · AI-GEN3」を表示し、title属性で`AI-GEN3-RELEASE-001`を確認できるようにする。この表示更新は正式判断を利用者へ明示するためのもので、AIの計算内容を変更しない。
 
-正式昇格の判断時点で候補の公開default配備は完了しているため、AI系統の状態は`ADOPTED / PROMOTED`である。一方、画面表示とPWA cache v26は手動Cloudflare配信を必要とする。配信前は`UI-DISCLOSURE-DEPLOYMENT-PENDING`として区別し、AI本体の採用を未実行へ戻して解釈しない。
+正式昇格の判断時点で候補の公開default配備は完了していたため、AI系統の状態は`ADOPTED / PROMOTED`とした。一方、画面表示とPWA cache v26は手動Cloudflare配信を必要とした。配信前の状態は`UI-DISCLOSURE-DEPLOYMENT-PENDING`として区別し、AI本体の採用を未実行へ戻して解釈しなかった。
+
+2026年9月7日、main `e6a3936ee6285d606be83987b5ae3aa2ee61ec25`の`public/`を手動Cloudflare配信し、公開画面の世代表示、release ID、主要asset、hardのAI着手を確認した。これにより昇格表示の配信状態は`VERIFIED-PUBLIC-ACTIVE`となった。この後続確認は、正式判断や科学的結果を遡及変更しない。
 
 ## Releaseの正本
 
