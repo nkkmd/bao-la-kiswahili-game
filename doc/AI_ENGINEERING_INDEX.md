@@ -1,11 +1,11 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-06
+更新日: 2026-09-07
 現在の公開AI系統: **`AI-GEN2`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`**
 進行中Program: **なし**
 
-この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
+この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補はhard/expertへ段階的に公開済みですが、正式な世代昇格は行わず`AI-GEN2`を維持しています。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
 
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
@@ -28,7 +28,7 @@
 | `PBAI-P2` | Research Generation 2まで。Research Generation 3は除外 | `PBAI-C006..C009` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P4` | 新規工学検証、baseline 2026-09-06 | `PBAI-C011-v1` | `STRENGTH-NON-ESTIMABLE / HOLD` | なし |
-| `PBAI-P5` | P4と独立した新規工学再検証 | `PBAI-C011-v1` | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` | 段階的反映を準備中 |
+| `PBAI-P5` | P4と独立した新規工学再検証 | `PBAI-C011-v1` | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` | hard/expertへ段階的公開中、昇格保留 |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
@@ -215,12 +215,12 @@ PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`
 
 ## PBAI-P5の再検証
 
-PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開用configではhard/expertの候補を既定有効にし、main統合と実サイト配信の確認を待っている。公開AI系統はAI-GEN2のままである。[入口](ai-engineering/public-ai-improvement-program-5/README.md)を参照する。
+PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開用configではhard/expertの候補を既定有効にし、main `650b4312ed9cd318d9981523533dd692bdce6125`から実サイトへ配信した。公開AI系統はAI-GEN2のままである。[入口](ai-engineering/public-ai-improvement-program-5/README.md)を参照する。
 
 PBAI-P5は[チャット非依存の実行準備](ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md)も整備した。外部runnerの自動進行・途中保存・重複起動防止を用意し、正式試験は完了し、固定範囲の改善を確認した。
 
 ## PBAI-P5の最終結果
 
-PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。結果確認後の明示的指示によりmain統合と段階的な公開反映を準備中であり、AI-GEN3への正式昇格は別判断として保留している。
+PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開assetのbyte一致とChrome相当経路のhard AI着手完了を確認し、状態は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`である。AI-GEN3への正式昇格は別判断として保留している。
 
-[最終報告](ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
+[最終報告](ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件を、[公開配信検証](ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)に配信一致と未確認範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。

@@ -187,10 +187,10 @@ PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`
 
 ## PBAI-P5の再検証
 
-PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。公開用configではhard/expertの候補を既定有効にし、main統合と実サイト配信の確認を待っている。公開AI系統はAI-GEN2を維持し、正式な`ADOPT`とAI-GEN3昇格は別判断とする。[入口](public-ai-improvement-program-5/README.md)を参照する。
+PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。公開用configではhard/expertの候補を既定有効にし、main `650b4312ed9cd318d9981523533dd692bdce6125`から実サイトへ配信した。公開AI系統はAI-GEN2を維持し、正式な`ADOPT`とAI-GEN3昇格は別判断とする。[入口](public-ai-improvement-program-5/README.md)を参照する。
 
 ## PBAI-P5の最終結果
 
-PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開設定は段階的反映の準備を終えたが、実配信と正式な世代昇格は未確認である。
+PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開assetのbyte一致とChrome相当経路のhard AI着手完了を確認し、状態は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`である。正式な世代昇格は未実行である。
 
 [最終報告](public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。

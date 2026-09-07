@@ -152,7 +152,7 @@ node tools/diagnostic-to-fixture.js \
 
 本リポジトリでは、公開ゲームのコンピューター対戦を改善する開発作業と、Baoに関する科学的研究を別系統で管理しています。AIの採用・非採用によって、研究の結論を書き換えることはありません。
 
-現在の公開AIは **`AI-GEN2`を継続採用**しています。Research Generation 1を用いた`PBAI-P1`と、Research Generation 2を用いた`PBAI-P2`では、いずれも公開版へ進める候補が得られなかったため、`AI-GEN3`への更新や公開AIコードの変更は行っていません。
+現在の公開AI系統は **`AI-GEN2`を継続**しています。Research Generation 1を用いた`PBAI-P1`と、Research Generation 2を用いた`PBAI-P2`では、いずれも公開版へ進める候補が得られませんでした。その後の独立工学再検証`PBAI-P5`で探索専用の軽量な局面遷移を固定範囲内で確認し、hard/expertへ段階的に公開しました。ただし正式な`ADOPT`、release ID発行、`AI-GEN3`への昇格は行っていません。
 
 Research Generation 3の正式成果を設計入力とした`PBAI-P3`は、`AI-GEN2` baselineと、`PBAI-C010-v1`だけからなるinitial candidate inventory、fresh split、prospective gate、baseline-only support protocolを結果確認前に固定しました。`PBAI-P3-D` support / reachability auditではtop-3 probe completionが凍結gateを満たさず、候補を実装せず`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`としました。Programは`COMPLETE / KEEP-AI-GEN2`で終了し、candidate実装、benefit benchmark、validation、release holdout、公開変更は行っていません。Research Generation 4とは別のAI Engineering Programです。
 
@@ -227,12 +227,12 @@ PBAI-P4は探索専用の軽量な局面遷移PBAI-C011-v1を独立検証し、`
 
 ## PBAI-P5の再検証
 
-PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開用configではhard/expertの候補を既定有効にし、main統合と実サイト配信の確認を待っている。公開AI系統はAI-GEN2のままである。[入口](doc/ai-engineering/public-ai-improvement-program-5/README.md)を参照する。
+PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲で改善を確認した。新規seedは消費済みで、P4のHOLDは維持する。全工程の連続実行と外側の4時間監視を追加した。公開用configではhard/expertの候補を既定有効にし、main `650b4312ed9cd318d9981523533dd692bdce6125`から実サイトへ配信した。公開AI系統はAI-GEN2のままである。[入口](doc/ai-engineering/public-ai-improvement-program-5/README.md)を参照する。
 
 PBAI-P5は[チャット非依存の実行準備](doc/ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md)も整備した。外部runnerの自動進行・途中保存・重複起動防止を用意し、正式試験は完了し、固定範囲の改善を確認した。
 
 ## PBAI-P5の最終結果
 
-PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開設定は段階的反映の準備を終え、main統合と配信確認を待っている。AI-GEN3への正式昇格は保留している。
+PBAI-P5はCOMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開assetのbyte一致とChrome相当経路のhard AI着手完了を確認し、状態は`STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`である。AI-GEN3への正式昇格は保留している。
 
-[最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
+[最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件を、[公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)に配信一致と未確認範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。

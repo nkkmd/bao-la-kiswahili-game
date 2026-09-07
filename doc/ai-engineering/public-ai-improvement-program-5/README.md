@@ -1,6 +1,6 @@
-# PBAI-P5 — 軽量な局面遷移の再検証準備
+# PBAI-P5 — 軽量な局面遷移の独立再検証
 
-状態: `COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN / STAGED-ACTIVATION-READY`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configではhard/expertの候補を既定有効にし、main統合と実サイト配信の確認を待っている。公開AI系統はAI-GEN2、AI-GEN3への正式昇格は別判断として保留する。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)を参照する。
+状態: `COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN / STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`。同じPBAI-C011-v1を新規データで再検証し、最終512局で328勝184敗、固定範囲の棋力改善を確認した。P4のHOLDは維持する。公開用configはmain `650b4312ed9cd318d9981523533dd692bdce6125`から配信され、hard/expertで候補を既定有効にしている。公開assetのbyte一致とChrome相当経路の初回動作を確認済みである。公開AI系統はAI-GEN2を維持し、正式な`ADOPT`、release ID発行、AI-GEN3への昇格は別判断として保留する。結果の根拠と適用範囲は[最終報告](PROGRAM_FINAL_REPORT.md)、配信確認は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照する。
 
 ## 読む順序
 
@@ -13,6 +13,7 @@
 7. [main統合前の追加監査](INTEGRATION_READINESS_AUDIT.md) — レビュー指摘、追加認可、公開前gate
 8. [公開リリース台帳](RELEASE_REGISTER.md) — 段階的反映、rollback、世代昇格の境界
 9. [公開リリース計画](PUBLIC_RELEASE_PLAN.md) — source、設定、確認手順
+10. [公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md) — 配信byte、実ブラウザー確認、未確認範囲
 
 ## 前回との違い
 
