@@ -1,6 +1,6 @@
 # PBAI-P5 — 公開リリース台帳
 
-状態: `STAGED-ACTIVATION-READY / NOT-YET-DEPLOYED`。
+状態: `STAGED-PUBLIC-ACTIVE / PROMOTION-PENDING`。
 
 ## リリース対象
 
@@ -14,6 +14,8 @@
 | 公開対象外 | easy、normal、明示的`legacy`・`mcts`・`bao-v2` |
 | ルール・評価・探索方式 | 変更なし |
 | AI世代 | `AI-GEN2`を維持。`AI-GEN3`昇格は別判断 |
+| 公開source | main `650b4312ed9cd318d9981523533dd692bdce6125` |
+| 公開URL | `https://bao-la-kiswahili.cultivationdata.net/` |
 
 `public/ai-config.js`はhardとexpertの既定optionsへ`pbaiC011LightweightTransitions: true`を追加する。`public/ai.js`側の既存gateにより、既定のBao評価・phase2探索以外では軽量経路を使わない。`public/service-worker.js`はcacheを`bao-la-kiswahili-v25`へ更新し、旧assetの混在を避ける。
 
@@ -28,6 +30,12 @@
 P5準備workflowは科学run開始前の専用branchだけで動くよう制限する。完了後の公開config変更やmanual dispatchで、使用済みseed向けpreflightを再実行しない。保存済み証拠の検算はP5完了証拠workflowを使う。
 
 この段階的反映は正式な`ADOPT`または`AI-GEN3`昇格を先取りしない。配信確認に失敗した場合は、feature flagをfalseへ戻し、PWA cacheを再更新する。科学的結果はrollbackの成否によって変更しない。
+
+## 公開結果
+
+PR #107、#108、#109を依存順にmainへ統合した。PR #109のmain SHAは`650b4312ed9cd318d9981523533dd692bdce6125`で、専用の段階的公開検証とP5完了証拠検証は成功した。2026年9月7日、手動Cloudflare配信後に6 assetのSHA-256が公開予定byteと全件一致することを確認した。Chrome相当環境では設定画面、hardのAI先手着手、診断表示、サイト由来console errorなしを確認した。
+
+この確認は公開sourceの一致と単一の運用経路の健全性を示す。スマートフォン実機、端末横断の速度、標準500ms対局棋力を追加で証明するものではない。Cloudflareのprovider deployment IDは取得していないため記録しない。詳細は[公開配信検証](PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照する。
 
 ## 状態更新規則
 
