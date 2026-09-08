@@ -9,6 +9,8 @@ on:
       - 'public/main.js'
       - 'public/index.html'
       - 'public/privacy.html'
+      - 'public/robots.txt'
+      - 'public/sitemap.xml'
       - 'public/style.css'
       - 'public/locale.js'
       - 'public/review-suggestion.js'
@@ -17,6 +19,7 @@ on:
       - 'test/ai-config.test.js'
       - 'test/ai-generation-release.test.js'
       - 'test/locale.test.js'
+      - 'test/seo.test.js'
       - 'doc/ai-engineering/public-ai-improvement-program-5/**'
       - 'tools/engineering/audit-pbai-p5-results.py'
       - '.github/workflows/pbai-c011-staged-release.yml'
@@ -40,6 +43,7 @@ jobs:
             test/ai-config.test.js \
             test/ai-generation-release.test.js \
             test/locale.test.js \
+            test/seo.test.js \
             test/ai.test.js \
             test/search.test.js \
             test/tactical.test.js \
