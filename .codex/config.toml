@@ -1,0 +1,11 @@
+# このリポジトリではCodexのサブエージェント／マルチエージェント機能を使用しない。
+# AGENTS.mdの運用方針と併用し、legacyおよびV2の両系統を明示的に無効化する。
+
+[agents]
+enabled = false
+
+[features]
+multi_agent = false
+
+[features.multi_agent_v2]
+enabled = false
