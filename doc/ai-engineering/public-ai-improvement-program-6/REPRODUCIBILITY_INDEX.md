@@ -22,7 +22,9 @@ node test/ai.test.js
 node test/pbai-p4-transitions.test.js
 ```
 
-## 一回限りの実行
+## 過去の一回限りの実行
+
+現在は終了済みであり、以下は実行時の記録である。再実行しない。
 
 ソース固定・開始前保存を確認し、開始markerが存在しない場合のみ次を実行する。
 
@@ -41,3 +43,17 @@ python tools/engineering/supervise-pbai-p6.py
 ## 証拠の保存
 
 実行中は`artifacts/pbai-p6/run/`へ開始marker、seedアクセス、source、教師、モデル、Python期待値、測定行、検算、終了判断を保存する。終了後に全ファイルのSHA-256索引と圧縮archiveを作成し、作業ブランチへ保存する。未完了の測定を完成済みとして扱わない。
+
+## 保存完了の記録
+
+実行ソースcommitは`a47d6391a40005e034a6193be1fbb7a2a57518db`。全22ファイルを[archive](../../../artifacts/pbai-p6/final-evidence.tar.gz)へまとめ、[索引](../../../artifacts/pbai-p6/final-evidence-index.json)と[別経路での照合結果](../../../artifacts/pbai-p6/archive-audit.json)を保存した。開始markerもGitへ保持し、新しいcheckoutでの誤った再実行を防止する。
+
+## 終了後の読み取り専用検算
+
+次のコマンドはarchiveの全byteと集計ファイル、終了判断、再実行防止markerを照合する。局面生成・学習・時間測定は行わない。
+
+```sh
+python tools/engineering/verify-pbai-p6-archive.py
+```
+
+この検算器は終了後の保存確認用であり、固定した実験ソースへの変更ではない。

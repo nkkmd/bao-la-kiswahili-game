@@ -2,13 +2,14 @@
 
 論理ゲートを学習する評価器が、AI-GEN3を同じ持ち時間で強化できるかを検証する。現行の探索とルールエンジンを使い、評価器を実験環境だけで差し替える。学習した線形評価器・小型ニューラルネットも同じデータで比較する。
 
-現在は開始レビューと契約を整備した段階であり、棋力改善は未確認。公開系統は`AI-GEN3 / AI-GEN3-RELEASE-001`である。
+検証は開発段階で完了し、判断は`DEVELOPMENT-GATE-FAIL / HOLD`。論理ゲート型は教師への誤差と既知戦術の条件を通過したが、速度条件を満たさなかった。対局は未実施であり、棋力改善は未確認。公開系統は`AI-GEN3 / AI-GEN3-RELEASE-001`を維持する。
 
 ## 読む順序
 
 1. [現在の状態](CURRENT_STATUS.md)
-2. [開始レビュー](AUTHORIZATION_REVIEW.md)
-3. [検証条件](PROTOCOL.md)と[機械可読設定](SPEC.json)
-4. [再開手順](RESUME_HERE.md)
+2. [最終報告](PROGRAM_FINAL_REPORT.md)
+3. [開始レビュー](AUTHORIZATION_REVIEW.md)
+4. [検証条件](PROTOCOL.md)と[機械可読設定](SPEC.json)
+5. [再開手順](RESUME_HERE.md)
 
 候補IDは論理ゲート型が`PBAI-C012-v1`、線形が`PBAI-C013-v1`、小型ニューラルネットが`PBAI-C014-v1`。新しい公開AI世代を先取りして命名しない。
