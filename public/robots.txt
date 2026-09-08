@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bao-la-kiswahili.cultivationdata.net/sitemap.xml
