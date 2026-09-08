@@ -13,11 +13,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#172c2b">
-    <meta name="description" content="Pixel-art Bao la Kiswahili with computer and local two-player modes" data-ja-content="コンピュータ対戦と2人対戦を選べるドット絵風Bao la Kiswahili">
+    <meta name="description" content="Play Bao la Kiswahili online, a traditional East African mancala strategy board game associated especially with Zanzibar and Tanzania. Play against AI or locally with two players." data-ja-content="東アフリカの伝統的なマンカラ系戦略ボードゲーム「バオ（Bao la Kiswahili）」をブラウザで遊べます。AI対戦と2人対戦に対応。">
+    <link rel="canonical" href="https://bao-la-kiswahili.cultivationdata.net/">
     <link rel="icon" href="./icon.svg" type="image/svg+xml">
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="stylesheet" href="./style.css">
-    <title>Bao la Kiswahili</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Bao la Kiswahili",
+        "alternateName": ["Bao"],
+        "url": "https://bao-la-kiswahili.cultivationdata.net/",
+        "description": "Play Bao la Kiswahili online, a traditional East African mancala strategy board game associated especially with Zanzibar and Tanzania.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "JavaScript-enabled modern web browser",
+        "isAccessibleForFree": true,
+        "inLanguage": ["en", "ja"],
+        "genre": ["Mancala", "Board game", "Strategy game", "Traditional game"],
+        "keywords": "Bao la Kiswahili, Bao, mancala, East African board game, Tanzania, Zanzibar, strategy game, traditional game"
+      }
+    </script>
+    <title data-ja="バオ（Bao la Kiswahili）｜東アフリカのマンカラ・ボードゲーム">Bao la Kiswahili Online – East African Mancala Board Game</title>
   </head>
   <body>
     <main class="game-shell">
@@ -84,6 +102,13 @@
       </div>
       <p id="visible-help" class="controls" data-ja="光っている穴を選んでください">Choose a highlighted pit</p>
       <p id="status" class="visually-hidden" aria-live="polite"></p>
+      <details class="about-bao">
+        <summary data-ja="バオについて">About Bao</summary>
+        <div class="rules">
+          <p data-ja="バオ（Bao la Kiswahili）は、東アフリカの伝統的なマンカラ系戦略ボードゲームで、特にザンジバルとタンザニア本土との結びつきが深いゲームです。プレイヤーは穴の列にkete（石）を蒔き、相手の石を捕獲しながら、相手の前列を空にするか合法手をなくすことを目指します。">Bao la Kiswahili, commonly called Bao, is a traditional East African mancala strategy board game especially associated with Zanzibar and mainland Tanzania. Players sow kete (seeds or pieces) through rows of pits, capture opposing pieces, and try to empty the opponent's front row or leave the opponent without a legal move.</p>
+          <p data-ja="この無料ブラウザ版では、バオをコンピュータAIとの対戦または同じ端末での2人対戦として遊べます。一度ゲームファイルがキャッシュされればオフラインでも利用できます。">This free browser version lets you play Bao online against the computer AI or as a local two-player board game on the same device. Once the game files are cached, it also works offline.</p>
+        </div>
+      </details>
       <details>
         <summary data-ja="遊び方・採用ルール">How to Play / Rules Used</summary>
         <div class="rules">
