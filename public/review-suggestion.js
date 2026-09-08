@@ -5,6 +5,8 @@
   const ELIGIBLE_LEVELS = new Set(["hard", "expert"]);
   const MIN_DEPTH = { hard: 3, expert: 4 };
   const HISTORY_LIMIT = 10;
+  const Locale = root.BaoLocale;
+  const t = (english, japanese) => Locale?.t ? Locale.t(english, japanese) : english;
 
   function finite(value) {
     return Number.isFinite(value) ? value : null;
@@ -142,7 +144,19 @@
   }
 
   function formatNumber(value) {
-    return Number.isFinite(value) ? value.toLocaleString("ja-JP") : "—";
+    const locale = Locale?.isJapanese ? "ja-JP" : "en-US";
+    return Number.isFinite(value) ? value.toLocaleString(locale) : "—";
+  }
+
+  function signalLabel(signal) {
+    if (Locale?.isJapanese) return signal.label;
+    if (signal.type === "timeout") return "The search timed out";
+    if (signal.type === "shallow-depth") return `Completed depth was below the guideline of ${signal.threshold}`;
+    if (signal.type === "depth-below-recent-median") return "Completed depth fell well below recent searches";
+    if (signal.type === "opponent-capture-options-increase") return "The opponent gained more capture options";
+    if (signal.type === "front-occupancy-drop") return "Your occupied front-row pits dropped substantially";
+    if (signal.type === "immediate-loss") return "The move immediately resulted in a loss";
+    return signal.label;
   }
 
   function render(analysis) {
@@ -157,28 +171,34 @@
       return;
     }
 
-    const levelName = analysis.level === "expert" ? "ムタアラム" : "むずかしい";
+    const levelName = analysis.level === "expert" ? t("Mtaalamu", "ムタアラム") : t("Hard", "むずかしい");
     statsNode.textContent = [
-      `難易度: ${levelName}`,
-      `完了深度: ${formatNumber(analysis.stats.completedDepth)}`,
-      `探索時間: ${formatNumber(analysis.stats.elapsedMs)} ms`,
-      `探索局面数: ${formatNumber(analysis.stats.nodes)}`,
-      `時間切れ: ${analysis.stats.timedOut ? "あり" : "なし"}`,
+      t(`Difficulty: ${levelName}`, `難易度: ${levelName}`),
+      t(`Completed depth: ${formatNumber(analysis.stats.completedDepth)}`, `完了深度: ${formatNumber(analysis.stats.completedDepth)}`),
+      t(`Search time: ${formatNumber(analysis.stats.elapsedMs)} ms`, `探索時間: ${formatNumber(analysis.stats.elapsedMs)} ms`),
+      t(`Nodes: ${formatNumber(analysis.stats.nodes)}`, `探索局面数: ${formatNumber(analysis.stats.nodes)}`),
+      t(`Timed out: ${analysis.stats.timedOut ? "yes" : "no"}`, `時間切れ: ${analysis.stats.timedOut ? "あり" : "なし"}`),
     ].join(" / ");
 
     reasonsNode.replaceChildren();
     if (analysis.recommendation === "save") {
-      messageNode.textContent = "調査候補の局面です。AIの手の記録を推奨します。";
+      messageNode.textContent = t(
+        "This position is a review candidate. Recording the AI move is recommended.",
+        "調査候補の局面です。AIの手の記録を推奨します。",
+      );
       for (const signal of analysis.signals) {
         const item = document.createElement("li");
-        item.textContent = signal.label;
+        item.textContent = signalLabel(signal);
         reasonsNode.append(item);
       }
       panel.dataset.recommendation = "save";
       const details = panel.closest("details");
       if (details) details.open = true;
     } else {
-      messageNode.textContent = "直前のAI探索結果です。保存推奨条件には該当しませんでした。";
+      messageNode.textContent = t(
+        "Most recent AI search result. It did not meet the save-recommendation criteria.",
+        "直前のAI探索結果です。保存推奨条件には該当しませんでした。",
+      );
       panel.dataset.recommendation = "none";
     }
     panel.hidden = false;
