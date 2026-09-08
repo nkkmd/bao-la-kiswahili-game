@@ -1,0 +1,16 @@
+{
+  "program": "PBAI-P7",
+  "formalDecision": "TECHNICAL-INVALID / HOLD",
+  "diagnosticOnly": true,
+  "failureLocation": "tools/engineering/verify-pbai-p7.js:78",
+  "failure": "AssertionError: actual 0, expected -0, strictEqual",
+  "cause": "JSON serialization drops negative-zero sign; strict assertion uses Object.is semantics",
+  "signedZeroDifferences": 2,
+  "newTimedMatches": 0,
+  "newTimingMeasurements": 0,
+  "formalResultRewritten": false,
+  "diagnosticSources": {
+    "tools/engineering/diagnose-pbai-p7-json-zero.js": "2ec5a150f5f40b230b78554fd23e1f9bd8d483d38d091a3710a3229f0be2dfea",
+    "tools/engineering/audit-pbai-p7-postclosure.py": "3a05db0dfa451dc9223bbee68f11b901db79a1aefabff488bbaa48ea36103a98"
+  }
+}

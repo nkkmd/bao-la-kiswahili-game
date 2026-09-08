@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "diagnosticOnly": true,
+  "formalDecisionUnchanged": true,
+  "checks": [
+    "development-evaluation",
+    "validation-evaluation",
+    "development-matches",
+    "validation-matches",
+    "holdout-matches"
+  ],
+  "final": {
+    "points": 0.5859375,
+    "phasePoints": {
+      "namua": 0.640625,
+      "mtaji": 0.53125
+    },
+    "clusters": 256,
+    "interval95": [
+      0.5546875,
+      0.615234375
+    ],
+    "passed": true,
+    "decision": "STRENGTH-IMPROVED-IN-FROZEN-DOMAIN"
+  }
+}

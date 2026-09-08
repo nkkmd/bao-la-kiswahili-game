@@ -1,0 +1,10 @@
+{
+  "program": "PBAI-P7",
+  "decision": "TECHNICAL-INVALID / HOLD",
+  "error": "RuntimeError(\"Child failed: ['node', '--max-old-space-size=2048', 'tools/engineering/verify-pbai-p7.js'] / 1\")",
+  "elapsedSeconds": 1814.2890362290002,
+  "finishedUnix": 1788878362.6091459,
+  "release": "NO-RELEASE / KEEP-AI-GEN3",
+  "validationGenerated": true,
+  "holdoutGenerated": true
+}
