@@ -9,9 +9,13 @@ on:
       - 'public/main.js'
       - 'public/index.html'
       - 'public/style.css'
+      - 'public/locale.js'
+      - 'public/review-suggestion.js'
+      - 'public/manifest.webmanifest'
       - 'public/service-worker.js'
       - 'test/ai-config.test.js'
       - 'test/ai-generation-release.test.js'
+      - 'test/locale.test.js'
       - 'doc/ai-engineering/public-ai-improvement-program-5/**'
       - 'tools/engineering/audit-pbai-p5-results.py'
       - '.github/workflows/pbai-c011-staged-release.yml'
@@ -34,6 +38,7 @@ jobs:
             test/engine.test.js \
             test/ai-config.test.js \
             test/ai-generation-release.test.js \
+            test/locale.test.js \
             test/ai.test.js \
             test/search.test.js \
             test/tactical.test.js \
