@@ -3,6 +3,7 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 
+const readme = fs.readFileSync("README.md", "utf8");
 const html = fs.readFileSync("public/index.html", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
 const robots = fs.readFileSync("public/robots.txt", "utf8");
@@ -10,6 +11,16 @@ const sitemap = fs.readFileSync("public/sitemap.xml", "utf8");
 
 const canonicalHome = "https://bao-la-kiswahili.cultivationdata.net/";
 const canonicalPrivacy = "https://bao-la-kiswahili.cultivationdata.net/privacy";
+
+assert.match(readme,
+  /公式公開サイトは \[https:\/\/bao-la-kiswahili\.cultivationdata\.net\/\]/,
+  "README identifies the official public game site");
+assert.match(html,
+  /<span data-ja="公式公開サイト: ">Official site: <\/span>/,
+  "the footer identifies the canonical host as the official site");
+assert.match(html,
+  /href="https:\/\/bao-la-kiswahili\.cultivationdata\.net\/">bao-la-kiswahili\.cultivationdata\.net<\/a>/,
+  "the footer links to the official public site");
 
 assert.match(html,
   /<title[^>]*>Bao la Kiswahili Online – East African Mancala Board Game<\/title>/,
