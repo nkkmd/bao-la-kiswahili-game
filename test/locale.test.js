@@ -22,6 +22,9 @@ assert.match(html, /data-ja="対局設定"/);
 assert.match(html, /src="\.\/locale\.js"/);
 assert.ok(html.indexOf("./locale.js") < html.indexOf("./engine.js"),
   "locale initialization runs before game scripts");
+assert.match(html, /AI-GEN3 \/ Normal/);
+assert.match(html, /data-ja="AI-GEN3 \/ ふつう"/);
+assert.match(html, /window\.BaoLocale\.t\(english, japanese\)/);
 assert.match(privacy, /<html lang="en">/);
 assert.match(privacy, /data-ja="プライバシーポリシー"/);
 assert.match(privacy, /Privacy Policy \| Bao la Kiswahili/);
@@ -31,6 +34,6 @@ assert.match(main, /window\.BaoLocale/);
 assert.equal(manifest.lang, "en");
 assert.match(serviceWorker, /\.\/locale\.js/);
 assert.match(serviceWorker, /"\.\/privacy"/);
-assert.match(serviceWorker, /bao-la-kiswahili-v31/);
+assert.match(serviceWorker, /bao-la-kiswahili-v32/);
 
 console.log("locale.test.js: ok");
