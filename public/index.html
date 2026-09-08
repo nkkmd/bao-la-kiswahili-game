@@ -27,7 +27,7 @@
           <h1>BAO LA KISWAHILI</h1>
           <span class="prototype-badge" data-ja="試作版">PROTOTYPE</span>
           <span id="ai-generation-badge" class="ai-generation-badge"
-            title="AI-GEN3-RELEASE-001">AI · AI-GEN3</span>
+            title="AI-GEN3-RELEASE-001" data-ja="AI-GEN3 / ふつう">AI-GEN3 / Normal</span>
         </div>
         <div class="toolbar">
           <button id="sound" type="button" aria-pressed="true">SOUND ON</button>
@@ -138,5 +138,27 @@
     <script src="./review-suggestion.js"></script>
     <script src="./diagnostic-download.js"></script>
     <script src="./main.js"></script>
+    <script>
+      (() => {
+        const badge = document.querySelector("#ai-generation-badge");
+        const difficulty = document.querySelector("#difficulty");
+        const mode = document.querySelector("#game-mode");
+        const labels = {
+          easy: ["Easy", "やさしい"],
+          normal: ["Normal", "ふつう"],
+          hard: ["Hard", "むずかしい"],
+          expert: ["Mtaalamu", "ムタアラム"],
+        };
+        const updateBadge = () => {
+          const [english, japanese] = labels[difficulty.value] || labels.normal;
+          badge.textContent = `${window.BaoAIConfig.GENERATION} / ${window.BaoLocale.t(english, japanese)}`;
+          badge.title = window.BaoAIConfig.RELEASE_ID;
+          badge.hidden = mode.value !== "computer";
+        };
+        difficulty.addEventListener("change", updateBadge);
+        mode.addEventListener("change", updateBadge);
+        updateBadge();
+      })();
+    </script>
   </body>
 </html>
