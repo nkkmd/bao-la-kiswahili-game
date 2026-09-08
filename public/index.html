@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTMWEF1XC4"></script>
@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#172c2b">
-    <meta name="description" content="コンピュータ対戦と2人対戦を選べるドット絵風Bao la Kiswahili">
+    <meta name="description" content="Pixel-art Bao la Kiswahili with computer and local two-player modes" data-ja-content="コンピュータ対戦と2人対戦を選べるドット絵風Bao la Kiswahili">
     <link rel="icon" href="./icon.svg" type="image/svg+xml">
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="stylesheet" href="./style.css">
@@ -25,7 +25,7 @@
         <div>
           <span class="kicker">ZANZIBAR BOARD GAME</span>
           <h1>BAO LA KISWAHILI</h1>
-          <span class="prototype-badge">試作版</span>
+          <span class="prototype-badge" data-ja="試作版">PROTOTYPE</span>
           <span id="ai-generation-badge" class="ai-generation-badge"
             title="AI-GEN3-RELEASE-001">AI · AI-GEN3</span>
         </div>
@@ -39,34 +39,34 @@
         <section id="start-screen" class="start-screen" aria-labelledby="start-title">
           <div class="start-panel">
             <span class="kicker">GAME SETUP</span>
-            <h2 id="start-title">対局設定</h2>
+            <h2 id="start-title" data-ja="対局設定">Game Setup</h2>
             <label class="setup-field">
               <span>MODE</span>
-              <select id="game-mode" aria-label="対戦モード">
-                <option value="computer" selected>コンピュータ対戦</option>
-                <option value="local">2人対戦</option>
+              <select id="game-mode" aria-label="Game mode" data-ja-aria-label="対戦モード">
+                <option value="computer" selected data-ja="コンピュータ対戦">Computer</option>
+                <option value="local" data-ja="2人対戦">Local 2-player</option>
               </select>
             </label>
             <label id="difficulty-field" class="setup-field">
               <span>COM</span>
-              <select id="difficulty" aria-label="コンピュータの強さ">
-                <option value="easy">やさしい</option>
-                <option value="normal" selected>ふつう</option>
-                <option value="hard">むずかしい</option>
-                <option value="expert">ムタアラム</option>
+              <select id="difficulty" aria-label="Computer difficulty" data-ja-aria-label="コンピュータの強さ">
+                <option value="easy" data-ja="やさしい">Easy</option>
+                <option value="normal" selected data-ja="ふつう">Normal</option>
+                <option value="hard" data-ja="むずかしい">Hard</option>
+                <option value="expert" data-ja="ムタアラム">Mtaalamu</option>
               </select>
             </label>
             <label id="side-field" class="setup-field">
-              <span>手番</span>
-              <select id="player-side" aria-label="先手または後手">
-                <option value="first" selected>先手（SOUTH）</option>
-                <option value="second">後手（NORTH）</option>
+              <span data-ja="手番">SIDE</span>
+              <select id="player-side" aria-label="Play first or second" data-ja-aria-label="先手または後手">
+                <option value="first" selected data-ja="先手（SOUTH）">First (SOUTH)</option>
+                <option value="second" data-ja="後手（NORTH）">Second (NORTH)</option>
               </select>
             </label>
             <button id="start-game" class="start-button" type="button">START GAME</button>
           </div>
         </section>
-        <div class="game-info" aria-label="対局状況">
+        <div class="game-info" aria-label="Game status" data-ja-aria-label="対局状況">
           <div class="turn-info">
             <span id="turn-number">TURN 1</span>
             <strong id="turn-name">▼ SOUTH</strong>
@@ -78,42 +78,43 @@
           </div>
         </div>
         <canvas id="game" width="640" height="330" tabindex="0" role="application"
-          aria-label="Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。"></canvas>
-        <div id="move-choices" class="move-choices" aria-label="蒔く方向"></div>
+          aria-label="Bao la Kiswahili board against the computer. Tap a highlighted pit, then choose a sowing direction."
+          data-ja-aria-label="Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。"></canvas>
+        <div id="move-choices" class="move-choices" aria-label="Sowing direction" data-ja-aria-label="蒔く方向"></div>
       </div>
-      <p id="visible-help" class="controls">光っている穴を選んでください</p>
+      <p id="visible-help" class="controls" data-ja="光っている穴を選んでください">Choose a highlighted pit</p>
       <p id="status" class="visually-hidden" aria-live="polite"></p>
       <details>
-        <summary>遊び方・採用ルール</summary>
+        <summary data-ja="遊び方・採用ルール">How to Play / Rules Used</summary>
         <div class="rules">
-          <p>コンピュータ対戦では先手（SOUTH）または後手（NORTH）を選べます。2人対戦では同じ端末でSOUTHとNORTHを交互に操作します。光っている穴を選び、次に蒔く方向を選んでください。</p>
-          <p>前半のnamuaでは手元から1個を加え、両者の手元がなくなるとmtajiへ移ります。相手の前列を空にするか、相手が合法手を失うと勝利です。</p>
-          <p>用語: keteは石、KICHWAは左右端の入口、NYUMBAは中央寄りの家です。CAPTUREでは向かい合う前列の相手のketeを取り、左右どちらかのKICHWA側から入れて蒔きます。</p>
-          <p>選択肢: LEFT/RIGHTは選んだ穴から蒔く向きです。LEFT CAPTURE/RIGHT CAPTUREは、捕獲したketeを左/右のKICHWA側から入れる意味です。NYUMBA STOPは家で止まり、NYUMBA USEは家のketeを使ってrelay sowingを続けます。</p>
-          <p><strong>このゲームは試作版です。</strong>ルールや画面、動作は今後変更される可能性があります。</p>
-          <p><a href="https://github.com/nkkmd/bao-la-kiswahili-ja" target="_blank" rel="noopener noreferrer">Bao la Kiswahili 日本語完全ガイド</a>の公開ドラフト <code>v0.1.0-draft</code> における <code>R-002</code> を実装上の基準としています。未検証のtakasiaは適用していません。終わらないrelay sowingには安全上限を設けています。</p>
+          <p data-ja="コンピュータ対戦では先手（SOUTH）または後手（NORTH）を選べます。2人対戦では同じ端末でSOUTHとNORTHを交互に操作します。光っている穴を選び、次に蒔く方向を選んでください。">In computer mode, choose whether to play first (SOUTH) or second (NORTH). In local two-player mode, SOUTH and NORTH take turns on the same device. Choose a highlighted pit, then choose a sowing direction.</p>
+          <p data-ja="前半のnamuaでは手元から1個を加え、両者の手元がなくなるとmtajiへ移ります。相手の前列を空にするか、相手が合法手を失うと勝利です。">During namua, one kete is added from hand on each move. When both players' hands are empty, the game enters mtaji. You win by emptying the opponent's front row or leaving the opponent with no legal move.</p>
+          <p data-ja="用語: keteは石、KICHWAは左右端の入口、NYUMBAは中央寄りの家です。CAPTUREでは向かい合う前列の相手のketeを取り、左右どちらかのKICHWA側から入れて蒔きます。">Terms: kete are the playing pieces, KICHWA are the entry pits at the two ends, and NYUMBA is the house near the center. On a CAPTURE, the opponent's kete in the facing front-row pit are taken and sown from either the left or right KICHWA side.</p>
+          <p data-ja="選択肢: LEFT/RIGHTは選んだ穴から蒔く向きです。LEFT CAPTURE/RIGHT CAPTUREは、捕獲したketeを左/右のKICHWA側から入れる意味です。NYUMBA STOPは家で止まり、NYUMBA USEは家のketeを使ってrelay sowingを続けます。">Choices: LEFT/RIGHT are the sowing directions from the selected pit. LEFT CAPTURE/RIGHT CAPTURE mean entering captured kete from the left/right KICHWA side. NYUMBA STOP stops at the house; NYUMBA USE uses the house kete and continues relay sowing.</p>
+          <p><strong data-ja="このゲームは試作版です。">This game is a prototype.</strong><span data-ja="ルールや画面、動作は今後変更される可能性があります。"> Rules, presentation, and behavior may change in future versions.</span></p>
+          <p><a href="https://github.com/nkkmd/bao-la-kiswahili-ja" target="_blank" rel="noopener noreferrer" data-ja="Bao la Kiswahili 日本語完全ガイド">Bao la Kiswahili Complete Guide (Japanese)</a><span data-ja="の公開ドラフト "> uses public draft </span><code>v0.1.0-draft</code><span data-ja=" における ">, rule baseline </span><code>R-002</code><span data-ja=" を実装上の基準としています。未検証のtakasiaは適用していません。終わらないrelay sowingには安全上限を設けています。">. Unverified takasia is not applied. A safety limit is used for relay sowing that does not terminate.</span></p>
         </div>
       </details>
       <details class="diagnostic-panel">
-        <summary>AI改善用診断</summary>
+        <summary data-ja="AI改善用診断">AI Improvement Diagnostics</summary>
         <div class="rules">
-          <p>現在局面や端末内に蓄積したAI診断記録をJSONファイルとして保存できます。「AIの手を記録」は直前のAI着手と探索統計をこの端末だけに保存します。自動保存や外部送信は行いません。</p>
+          <p data-ja="現在局面や端末内に蓄積したAI診断記録をJSONファイルとして保存できます。「AIの手を記録」は直前のAI着手と探索統計をこの端末だけに保存します。自動保存や外部送信は行いません。">You can save the current position or AI diagnostic records stored on this device as JSON files. “Record AI move” stores the most recent AI move and search statistics only on this device. Nothing is saved automatically or sent externally.</p>
           <section id="ai-review-suggestion" class="ai-review-suggestion" aria-live="polite" hidden>
             <div class="ai-review-heading">
-              <strong id="ai-review-message">直前のAI探索結果です。</strong>
-              <button id="dismiss-ai-review" type="button" aria-label="探索結果を閉じる">閉じる</button>
+              <strong id="ai-review-message" data-ja="直前のAI探索結果です。">Most recent AI search result.</strong>
+              <button id="dismiss-ai-review" type="button" aria-label="Close search result" data-ja="閉じる" data-ja-aria-label="探索結果を閉じる">Close</button>
             </div>
             <p id="ai-review-stats"></p>
             <ul id="ai-review-reasons"></ul>
-            <p class="ai-review-note">これは悪手の断定ではなく、Phase 10Aの機械的な調査候補判定です。</p>
+            <p class="ai-review-note" data-ja="これは悪手の断定ではなく、Phase 10Aの機械的な調査候補判定です。">This does not declare the move a blunder; it is a mechanical Phase 10A flag for possible review.</p>
           </section>
           <div class="diagnostic-actions">
-            <button id="copy-position" type="button">現在局面を保存</button>
-            <button id="mark-ai-move" type="button">AIの手を記録</button>
-            <button id="copy-marked" type="button">記録を保存</button>
-            <button id="clear-marked" type="button">記録を削除</button>
+            <button id="copy-position" type="button" data-ja="現在局面を保存">Save current position</button>
+            <button id="mark-ai-move" type="button" data-ja="AIの手を記録">Record AI move</button>
+            <button id="copy-marked" type="button" data-ja="記録を保存">Save records</button>
+            <button id="clear-marked" type="button" data-ja="記録を削除">Delete records</button>
           </div>
-          <p id="diagnostic-status" aria-live="polite">端末内の記録: 0件</p>
+          <p id="diagnostic-status" aria-live="polite" data-ja="端末内の記録: 0件">Records on this device: 0</p>
         </div>
       </details>
       <footer>
@@ -127,6 +128,8 @@
         <a href="./privacy">Privacy Policy</a>
       </footer>
     </main>
+    <script src="./locale.js"></script>
+    <script>window.BaoLocale.localize(document);</script>
     <script src="./engine.js"></script>
     <script src="./ai-weights.js"></script>
     <script src="./ai.js"></script>

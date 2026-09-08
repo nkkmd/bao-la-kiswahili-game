@@ -82,6 +82,10 @@
     if (!node) return;
     const rewrite = () => {
       const next = node.textContent
+        .replaceAll("Could not copy the diagnostic JSON.", "Could not save the diagnostic JSON.")
+        .replaceAll("Could not copy.", "Could not save.")
+        .replaceAll("records to copy", "records to save")
+        .replaceAll("Copied ", "Saved ")
         .replaceAll("コピーしました", "保存しました")
         .replaceAll("コピーできませんでした", "保存できませんでした")
         .replaceAll("コピーする記録", "保存する記録")

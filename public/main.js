@@ -4,6 +4,8 @@ const E = window.BaoEngine;
 const AI = window.BaoAI;
 const AIConfig = window.BaoAIConfig;
 const Diagnostics = window.BaoDiagnostics;
+const Locale = window.BaoLocale;
+const t = (english, japanese) => Locale?.t ? Locale.t(english, japanese) : english;
 const canvas = document.querySelector("#game");
 const ctx = canvas.getContext("2d");
 const statusNode = document.querySelector("#status");
@@ -69,7 +71,7 @@ function setAIThinking(value) {
 function playerName(player) {
   if (!isComputerGame()) return player === 0 ? "SOUTH" : "NORTH";
   const side = player === 0 ? "SOUTH" : "NORTH";
-  return player === humanPlayer ? `${side}（あなた）` : `${side}（COM）`;
+  return player === humanPlayer ? t(`${side} (YOU)`, `${side}（あなた）`) : t(`${side} (COM)`, `${side}（COM）`);
 }
 
 function load(key, fallback) { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } }
@@ -78,7 +80,7 @@ function announce(message) { statusNode.textContent = ""; setTimeout(() => { sta
 function diagnosticRecords() { return Diagnostics.readMarked(localStorage); }
 function updateDiagnosticStatus(message = "") {
   const count = diagnosticRecords().length;
-  diagnosticStatus.textContent = message || `端末内の記録: ${count}件`;
+  diagnosticStatus.textContent = message || t(`Records on this device: ${count}`, `端末内の記録: ${count}件`);
 }
 async function copyText(text) {
   if (navigator.clipboard?.writeText) {
@@ -102,8 +104,8 @@ async function copyDiagnostic(value, successMessage) {
     updateDiagnosticStatus(successMessage);
     announce(successMessage);
   } catch {
-    updateDiagnosticStatus("コピーできませんでした");
-    announce("診断JSONをコピーできませんでした");
+    updateDiagnosticStatus(t("Could not copy.", "コピーできませんでした"));
+    announce(t("Could not copy the diagnostic JSON.", "診断JSONをコピーできませんでした"));
   }
 }
 function tone(freq = 300, duration = .05) {
@@ -169,8 +171,10 @@ function choosePit(position) {
   selected = position;
   choices = expandedChoices(found);
   tone(340);
-  helpNode.textContent = choices.length === 1 ? "選択を確定してください" : "蒔く方向を選んでください";
-  announce(`${pitName(position)}を選択。蒔く方向を選んでください`);
+  helpNode.textContent = choices.length === 1
+    ? t("Confirm this move", "選択を確定してください")
+    : t("Choose a sowing direction", "蒔く方向を選んでください");
+  announce(t(`${pitName(position)} selected. Choose a sowing direction.`, `${pitName(position)}を選択。蒔く方向を選んでください`));
 }
 
 function stopWorker() {
@@ -194,7 +198,7 @@ function acceptAIMove(request, result) {
   }
   if (AI.stateKey(state) !== request.positionKey || result.positionKey !== request.positionKey) {
     setAIThinking(false);
-    helpNode.textContent = "古いCOMの思考結果を破棄しました";
+    helpNode.textContent = t("Discarded a stale COM search result", "古いCOMの思考結果を破棄しました");
     return;
   }
   setAIThinking(false);
@@ -212,8 +216,8 @@ function acceptAIMove(request, result) {
     });
     playMove(result.move);
   } catch {
-    helpNode.textContent = "COMの着手を検証できませんでした";
-    announce("COMの着手エラーです");
+    helpNode.textContent = t("Could not verify the COM move", "COMの着手を検証できませんでした");
+    announce(t("COM move error", "COMの着手エラーです"));
   }
 }
 
@@ -233,7 +237,7 @@ function runAIFallback(request) {
       });
     } catch {
       setAIThinking(false);
-      helpNode.textContent = "COMの思考処理でエラーが発生しました";
+      helpNode.textContent = t("An error occurred while COM was thinking", "COMの思考処理でエラーが発生しました");
     }
   }, 0);
 }
@@ -283,7 +287,7 @@ function playMove(move) {
     current: null,
     lastPosition: null,
   };
-  helpNode.textContent = "KETEを蒔いています…";
+  helpNode.textContent = t("Sowing KETE…", "KETEを蒔いています…");
   tone(move.type === "capture" ? 520 : 300, .08);
 }
 
@@ -294,12 +298,12 @@ function afterMove() {
   if (state.winner !== null) {
     const name = state.winner === 0 ? "SOUTH" : "NORTH";
     helpNode.textContent = `${name} WINS!`;
-    announce(`${name}の勝ちです`); tone(740, .18);
+    announce(t(`${name} wins.`, `${name}の勝ちです`)); tone(740, .18);
   } else if (moves.length === 1 && moves[0].type === "pass") {
     playMove(moves[0]);
   } else if (isComputerGame() && state.player !== humanPlayer) {
-    helpNode.textContent = `${playerName(state.player)}が考えています…`;
-    announce("COMが考えています");
+    helpNode.textContent = t(`${playerName(state.player)} is thinking…`, `${playerName(state.player)}が考えています…`);
+    announce(t("COM is thinking", "COMが考えています"));
     setAIThinking(true);
     aiTimer = setTimeout(() => {
       aiTimer = null;
@@ -307,8 +311,8 @@ function afterMove() {
     }, fast ? 40 : 350);
   } else {
     const name = playerName(state.player);
-    helpNode.textContent = `${name}の手番 — 光っている穴を選んでください`;
-    announce(`${name}の手番。選べる穴を選んでください`);
+    helpNode.textContent = t(`${name}'s turn — choose a highlighted pit`, `${name}の手番 — 光っている穴を選んでください`);
+    announce(t(`${name}'s turn. Choose an available pit.`, `${name}の手番。選べる穴を選んでください`));
   }
 }
 
@@ -447,7 +451,7 @@ function drawWinner() {
   label(state.winner === 0 ? "SOUTH WINS!" : "NORTH WINS!", 320, 190, 28, "center", C.pale);
   const reason = state.reason === "front-empty" ? "OPPONENT FRONT ROW IS EMPTY" : state.reason === "no-move" ? "OPPONENT HAS NO LEGAL MOVE" : "RELAY SAFETY LIMIT";
   label(reason, 320, 231, 10, "center", C.gold);
-  label("NEW GAMEボタンでもう一度", 320, 258, 10, "center", C.soft);
+  label(t("PRESS NEW GAME TO PLAY AGAIN", "NEW GAMEボタンでもう一度"), 320, 258, 10, "center", C.soft);
 }
 
 function animationDelay(eventCount, event) {
@@ -516,7 +520,7 @@ canvas.addEventListener("pointerdown", (event) => {
 });
 
 canvas.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") { selected = null; choices = []; helpNode.textContent = "選択を取り消しました"; }
+  if (event.key === "Escape") { selected = null; choices = []; helpNode.textContent = t("Selection cancelled", "選択を取り消しました"); }
   if ((event.key === "Enter" || event.key === " ") && choices.length === 1) { event.preventDefault(); playMove(choices[0]); return; }
   if ((event.key === "Enter" || event.key === " ") && selected && !choices.length) { event.preventDefault(); choosePit(selected); return; }
   if (event.key === "ArrowLeft" && choices.length) { event.preventDefault(); const move = choices.find((m) => choiceDirection(m) === "left"); if (move) playMove(move); }
@@ -529,8 +533,8 @@ canvas.addEventListener("keydown", (event) => {
     const current = selected ? available.findIndex((p) => p.row === selected.row && p.index === selected.index) : -1;
     const step = event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 1;
     selected = available[(current + step + available.length) % available.length];
-    helpNode.textContent = `${pitName(selected)} — Enterで選択`;
-    announce(`${pitName(selected)}を選択中。Enterで決定`);
+    helpNode.textContent = t(`${pitName(selected)} — Press Enter to select`, `${pitName(selected)} — Enterで選択`);
+    announce(t(`${pitName(selected)} selected. Press Enter to confirm.`, `${pitName(selected)}を選択中。Enterで決定`));
     tone(300);
   }
 });
@@ -543,11 +547,13 @@ function resetGame() {
 }
 
 document.querySelector("#new-game").addEventListener("click", () => {
-  if (animation || state.turn > 1) { if (!confirm("現在の対局を終了して、新しい対局を始めますか？")) return; }
+  if (animation || state.turn > 1) {
+    if (!confirm(t("End the current game and start a new one?", "現在の対局を終了して、新しい対局を始めますか？"))) return;
+  }
   cancelAI(); animation = null; started = false;
   selected = null; choices = []; choiceBoxes = [];
   startScreen.hidden = false;
-  helpNode.textContent = "対局設定を選んでSTART GAMEを押してください";
+  helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んでSTART GAMEを押してください");
 });
 difficultySelect.value = load("bao_ai_level", "normal");
 difficultySelect.addEventListener("change", () => save("bao_ai_level", difficultySelect.value));
@@ -577,42 +583,41 @@ soundButton.addEventListener("click", () => { sound = !sound; save("bao_sound", 
 speedButton.addEventListener("click", () => { fast = !fast; speedButton.textContent = `FAST ${fast ? "ON" : "OFF"}`; speedButton.setAttribute("aria-pressed", String(fast)); });
 copyPositionButton.addEventListener("click", () => {
   const snapshot = Diagnostics.createSnapshot(state, { mode: gameModeSelect.value });
-  copyDiagnostic(snapshot, "現在局面をコピーしました");
+  copyDiagnostic(snapshot, t("Copied current position.", "現在局面をコピーしました"));
 });
 markAIMoveButton.addEventListener("click", () => {
   if (!lastAIDiagnostic) {
-    updateDiagnosticStatus("記録できるAI着手がまだありません");
-    announce("直前のAI着手がありません");
+    updateDiagnosticStatus(t("No AI move is available to record yet", "記録できるAI着手がまだありません"));
+    announce(t("There is no previous AI move", "直前のAI着手がありません"));
     return;
   }
   const marked = { ...lastAIDiagnostic, reason: "unexpected-ai-move" };
   const records = Diagnostics.markSnapshot(localStorage, marked);
-  updateDiagnosticStatus(`AI着手を保存しました（端末内: ${records.length}件）`);
-  announce("直前のAI着手をこの端末に保存しました");
+  updateDiagnosticStatus(t(`AI move saved (on this device: ${records.length})`, `AI着手を保存しました（端末内: ${records.length}件）`));
+  announce(t("Saved the previous AI move on this device", "直前のAI着手をこの端末に保存しました"));
 });
 copyMarkedButton.addEventListener("click", () => {
   const records = diagnosticRecords();
   if (!records.length) {
-    updateDiagnosticStatus("コピーする記録がありません");
-    announce("端末内のAI診断記録はありません");
+    updateDiagnosticStatus(t("There are no records to copy", "コピーする記録がありません"));
+    announce(t("There are no AI diagnostic records on this device", "端末内のAI診断記録はありません"));
     return;
   }
-  copyDiagnostic(records, `${records.length}件の記録をコピーしました`);
+  copyDiagnostic(records, t(`Copied ${records.length} record(s).`, `${records.length}件の記録をコピーしました`));
 });
 clearMarkedButton.addEventListener("click", () => {
   const count = diagnosticRecords().length;
   if (!count) { updateDiagnosticStatus(); return; }
-  if (!confirm(`${count}件の端末内AI診断記録を削除しますか？`)) return;
+  if (!confirm(t(`Delete ${count} AI diagnostic record(s) from this device?`, `${count}件の端末内AI診断記録を削除しますか？`))) return;
   Diagnostics.clearMarked(localStorage);
-  updateDiagnosticStatus("端末内の記録を削除しました");
-  announce("端末内のAI診断記録を削除しました");
+  updateDiagnosticStatus(t("Deleted records from this device", "端末内の記録を削除しました"));
+  announce(t("Deleted AI diagnostic records from this device", "端末内のAI診断記録を削除しました"));
 });
 soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`;
 soundButton.setAttribute("aria-pressed", String(sound));
 if ("serviceWorker" in navigator && location.protocol !== "file:") window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
 
-helpNode.textContent = "対局設定を選んでSTART GAMEを押してください";
+helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んでSTART GAMEを押してください");
 setAIThinking(false);
 updateDiagnosticStatus();
 requestAnimationFrame(loop);
-
