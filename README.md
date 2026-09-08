@@ -170,7 +170,7 @@ PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固�
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P7は完了しており、進行中の改善プログラムはありません。[PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/README.md)では論理ゲート推論の高速化と最終512局で300勝212敗を観測しましたが、保存済み数値の検算が0／−0の差で停止し、正式判断は`TECHNICAL-INVALID / HOLD`です。終了後の原因調査で数値ゼロの符号差以外の照合は通過したものの、正式な棋力改善認定には変更していません。公開AIはAI-GEN3を維持しています。
+PBAI-P1〜P7は完了しています。現在は[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)で、JSON保存後の数値比較を修正し、新規データによる独立再検証を進めています。[PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/README.md)では論理ゲート推論の高速化と最終512局で300勝212敗を観測しましたが、保存済み数値の検算が0／−0の差で停止し、正式判断は`TECHNICAL-INVALID / HOLD`です。終了後の原因調査で数値ゼロの符号差以外の照合は通過したものの、正式な棋力改善認定には変更していません。公開AIはAI-GEN3を維持しています。
 
 | プログラム | 検証内容と結果 | 公開AIへの反映 |
 | --- | --- | --- |
