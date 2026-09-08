@@ -8,8 +8,14 @@ const serviceWorker = fs.readFileSync("public/service-worker.js", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
 const main = fs.readFileSync("public/main.js", "utf8");
 
-assert.match(html, /id="ai-generation-badge"[^>]*>[\s\S]*?AI · AI-GEN3<\/span>/,
-  "the game header identifies the AI-GEN3 lineage");
+assert.match(html, /id="ai-generation-badge"[^>]*>[\s\S]*?AI-GEN3 \/ Normal<\/span>/,
+  "the game header identifies the AI-GEN3 lineage and selected difficulty");
+assert.match(html, /data-ja="AI-GEN3 \/ ふつう"/,
+  "the default AI badge has a Japanese difficulty label");
+assert.match(html, /difficulty\.addEventListener\("change", updateBadge\)/,
+  "the AI badge follows difficulty changes");
+assert.match(html, /mode\.addEventListener\("change", updateBadge\)/,
+  "the AI badge stays in sync with game mode changes");
 assert.match(html, /title="AI-GEN3-RELEASE-001"/,
   "the AI badge exposes the exact release ID");
 assert.match(main, /aiGenerationBadge\.hidden = !isComputerGame\(\)/,
