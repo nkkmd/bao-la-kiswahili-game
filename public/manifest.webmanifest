@@ -1,8 +1,8 @@
 {
-  "name": "Bao la Kiswahili / コンピュータ・2人対戦",
+  "name": "Bao la Kiswahili / Computer & Local 2-Player",
   "short_name": "Bao",
-  "description": "コンピュータ対戦と2人対戦を選べるドット絵風Bao la Kiswahili",
-  "lang": "ja",
+  "description": "Pixel-art Bao la Kiswahili with computer and local two-player modes",
+  "lang": "en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
