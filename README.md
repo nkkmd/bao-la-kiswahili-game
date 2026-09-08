@@ -170,7 +170,7 @@ PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固�
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P5はすべて完了しており、進行中の改善プログラムはありません。
+PBAI-P1〜P5はすべて完了しています。現在は[PBAI-P6](doc/ai-engineering/public-ai-improvement-program-6/README.md)で、論理ゲート型評価器によるAI-GEN3強化の検証を開始しています。棋力改善は未確認で、公開AIはAI-GEN3を維持しています。
 
 | プログラム | 検証内容と結果 | 公開AIへの反映 |
 | --- | --- | --- |
