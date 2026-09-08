@@ -15,7 +15,7 @@ assert.match(html,
   /<title[^>]*>Bao la Kiswahili Online – East African Mancala Board Game<\/title>/,
   "home title describes Bao, mancala, region and online play");
 assert.match(html,
-  /<meta name="description" content="[^"]*East African mancala strategy board game[^"]*Zanzibar and Tanzania[^"]*">/,
+  /<meta name="description" content="[^"]*East African mancala strategy board game[^"]*Zanzibar and Tanzania[^"]*"[^>]*>/,
   "meta description contains a natural English summary");
 assert.match(html,
   new RegExp(`<link rel="canonical" href="${canonicalHome.replaceAll(".", "\\.")}">`),
