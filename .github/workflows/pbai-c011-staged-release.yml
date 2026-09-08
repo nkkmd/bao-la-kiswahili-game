@@ -8,6 +8,7 @@ on:
       - 'public/ai-worker.js'
       - 'public/main.js'
       - 'public/index.html'
+      - 'public/privacy.html'
       - 'public/style.css'
       - 'public/locale.js'
       - 'public/review-suggestion.js'
