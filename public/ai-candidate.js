@@ -829,7 +829,7 @@
     const startedAt = performanceNow();
     const stats = emptyStats(level);
     const choices = movesFor(state);
-    const rawEvaluator = evaluatorFor(
+    const rawEvaluator = options.pbaiC015LogicGate === true ? root.BaoLogicGate.evaluate : evaluatorFor(
       options.evaluationProfile, options.evaluationWeights, options.evaluationAdjustments,
     );
     const useEvaluationCache = options.evaluationCache
@@ -983,6 +983,6 @@
   }
 
   const api = createAI(E);
-  root.BaoAI = api;
+  root.BaoCandidateAI = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 }(typeof window !== "undefined" ? window : globalThis));

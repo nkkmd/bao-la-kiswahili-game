@@ -1,8 +1,8 @@
 "use strict";
 
 const E = window.BaoEngine;
-const AI = window.BaoAI;
-const AIConfig = window.BaoAIConfig;
+const AI = window.BaoReleaseAI;
+const AIConfig = window.BaoReleaseConfig;
 const Diagnostics = window.BaoDiagnostics;
 const Locale = window.BaoLocale;
 const t = (english, japanese) => Locale?.t ? Locale.t(english, japanese) : english;
@@ -254,7 +254,7 @@ function startAI() {
   setAIThinking(true);
   if (typeof Worker === "undefined") { runAIFallback(request); return; }
   try {
-    aiWorker = new Worker("./ai-worker.js");
+    aiWorker = new Worker("./ai-release-worker.js");
     aiWorker.addEventListener("message", (event) => {
       if (event.data?.id !== request.id) return;
       stopWorker();

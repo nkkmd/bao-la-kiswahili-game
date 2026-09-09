@@ -4,8 +4,6 @@
   const E = root.BaoEngine || (typeof require !== "undefined" ? require("./engine.js") : null);
   const GENERATION = "AI-GEN3";
   const RELEASE_ID = "AI-GEN3-RELEASE-001";
-  // 公開採用前は無効。検証用コピーでのみ有効化する。
-  const PBAI_C015_ENABLED = false;
 
   function deviceTier(capabilities = {}) {
     const cores = capabilities.hardwareConcurrency || 4;
@@ -120,9 +118,7 @@
   function searchOptions(level, capabilities = {}, state = null) {
     const base = baseSearchOptions(level, capabilities);
     if (level !== "hard" && level !== "expert") return base;
-    return { ...base, pbaiC011LightweightTransitions: true,
-      ...(level === "hard" && PBAI_C015_ENABLED ? { pbaiC015LogicGate: true } : {}),
-    };
+    return { ...base, pbaiC011LightweightTransitions: true };
   }
 
   const api = {

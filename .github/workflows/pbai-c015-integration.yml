@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: '24'
       - name: 既知局面と公開経路の回帰確認
-        run: node --test test/pbai-c015-integration.test.cjs test/ai-worker.test.js test/worker-integration.test.js test/ai-config.test.js test/diagnostics-ui.test.js test/engine.test.js test/ai.test.js
+        run: node --test test/pbai-c015-integration.test.cjs test/ai-worker.test.js test/worker-integration.test.js test/ai-config.test.js test/ai-generation-release.test.js test/diagnostics-ui.test.js test/engine.test.js test/ai.test.js
       - name: ブラウザを準備
         run: |
           npm install --prefix "$RUNNER_TEMP/pbai-c015" playwright@1.62.1

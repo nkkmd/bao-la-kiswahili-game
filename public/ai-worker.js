@@ -1,10 +1,6 @@
 "use strict";
 
-if (typeof importScripts === "function") {
-  importScripts("./engine.js", "./ai-weights.js", "./ai.js");
-  // 任意の評価器が取得できない場合は、AI側で基準評価器を使用する。
-  try { importScripts("./logic-evaluator.js"); } catch { /* 基準評価器へ切戻す。 */ }
-}
+if (typeof importScripts === "function") importScripts("./engine.js", "./ai-weights.js", "./ai.js");
 
 function runSearch(message, engine = globalThis.BaoEngine, ai = globalThis.BaoAI) {
   if (!message || message.type !== "search") throw new Error("Invalid worker request");

@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
   const file = path.join(dir, name === 'privacy' ? 'privacy.html' : name);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return res.writeHead(404).end();
   let body = fs.readFileSync(file);
-  if (name === 'ai-config.js' && mode === 'candidate') body = Buffer.from(body.toString().replace('const PBAI_C015_ENABLED = false;', 'const PBAI_C015_ENABLED = true;'));
+  if (name === 'ai-release.js' && mode === 'candidate') body = Buffer.from(body.toString().replace('const PBAI_C015_ENABLED = false;', 'const PBAI_C015_ENABLED = true;'));
   if (name === 'service-worker.js' && mode === 'rollback') body = Buffer.from(body.toString().replace('bao-la-kiswahili-v34', 'bao-la-kiswahili-v35'));
   const mime = name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.webmanifest') ? 'application/manifest+json' : 'text/html';
   res.writeHead(200, { 'Content-Type': mime, 'Cache-Control': 'no-store' }); res.end(body);
@@ -86,13 +86,13 @@ async function start(page, level = 'hard') {
     await check('設定無効化とキャッシュ更新で基準AIへ切戻す', async () => {
       mode = 'rollback';
       await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
-      await page.waitForFunction(async () => (await caches.keys()).includes('bao-la-kiswahili-v35') && !(await caches.keys()).includes('bao-la-kiswahili-v34'));
+      await page.waitForFunction(async () => (await caches.keys()).includes('bao-la-kiswahili-v35') && !(await caches.keys()).includes('bao-la-kiswahili-v34') && !(await caches.keys()).includes('bao-la-kiswahili-v33'));
       assert.equal(await page.evaluate(async () => (await caches.keys()).includes('bao-la-kiswahili-v33')), false);
       await page.reload();
-      assert.equal(await page.evaluate(() => BaoAIConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
+      assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, undefined);
       await context.setOffline(true); await page.reload();
-      assert.equal(await page.evaluate(() => BaoAIConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
+      assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
       await context.setOffline(false);
     });
     assert.deepEqual(errors, []); await context.close(); mode = 'candidate';

@@ -53,6 +53,6 @@ assert.match(html, /BaoAIConfig\.GENERATION/);
 assert.match(html, /BaoAIConfig\.RELEASE_ID/);
 assert.match(main, /AIConfig\.GENERATION/);
 assert.match(main, /AIConfig\.RELEASE_ID/);
-assert.match(serviceWorker, /bao-la-kiswahili-v33/);
+assert.match(serviceWorker, /bao-la-kiswahili-v34/);
 
 console.log("AI-GEN3 release tests passed");
