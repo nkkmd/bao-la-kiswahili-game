@@ -182,8 +182,9 @@
         };
         const updateBadge = () => {
           const [english, japanese] = labels[difficulty.value] || labels.normal;
-          badge.textContent = `${window.BaoAIConfig.GENERATION} / ${window.BaoLocale.t(english, japanese)}`;
-          badge.title = window.BaoAIConfig.RELEASE_ID;
+          const identity = window.BaoReleaseConfig.displayIdentity(difficulty.value);
+          badge.textContent = `${window.BaoLocale.t(identity.label, identity.labelJa)} / ${window.BaoLocale.t(english, japanese)}`;
+          badge.title = identity.releaseId;
           badge.hidden = mode.value !== "computer";
         };
         difficulty.addEventListener("change", updateBadge);

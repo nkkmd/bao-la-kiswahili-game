@@ -1,7 +1,7 @@
 "use strict";
 (function exposeReleaseAdapter(root) {
-  // 公開採用前は無効。検証用コピーでのみ有効化する。
-  const PBAI_C015_ENABLED = false;
+  // hard限定の正式採用。配備状況は採用記録で管理する。
+  const PBAI_C015_ENABLED = true;
   const baseline = root.BaoAI;
   const config = root.BaoAIConfig;
   function searchOptions(level, capabilities = {}, state = null) {
@@ -22,7 +22,15 @@
     result.stats.evaluationFallback = !available;
     return result;
   }
-  root.BaoReleaseConfig = { ...config, searchOptions };
+  function displayIdentity(level, stats = null) {
+    if (PBAI_C015_ENABLED && level === "hard" && !stats?.evaluationFallback
+      && typeof root.BaoLogicGate?.evaluate === "function"
+      && typeof root.BaoCandidateAI?.analyzeMove === "function") {
+      return { label: "Logic Gate AI", labelJa: "論理ゲートAI", releaseId: "PBAI-C015-HARD-ADOPTION-001" };
+    }
+    return { label: config.GENERATION, labelJa: config.GENERATION, releaseId: config.RELEASE_ID };
+  }
+  root.BaoReleaseConfig = { ...config, searchOptions, displayIdentity };
   root.BaoReleaseAI = { ...baseline, analyzeMove,
     chooseMove: (state, level, random, options) => analyzeMove(state, level, random, options).move,
   };

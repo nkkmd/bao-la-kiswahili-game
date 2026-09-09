@@ -10,7 +10,7 @@ function load({ model = true, enabled = false } = {}) {
   const script = name => {
     if (name === './logic-evaluator.js' && !model) throw Error('model unavailable');
     let text = fs.readFileSync(path.join(root, 'public', name), 'utf8');
-    if (enabled && name.endsWith('ai-release.js')) text = text.replace('const PBAI_C015_ENABLED = false;', 'const PBAI_C015_ENABLED = true;');
+    if (name.endsWith('ai-release.js')) text = text.replace('const PBAI_C015_ENABLED = true;', `const PBAI_C015_ENABLED = ${enabled};`);
     vm.runInContext(text, ctx, { filename: name });
   };
   ctx.importScripts = (...names) => names.forEach(script);
@@ -26,7 +26,7 @@ test('候補探索は凍結したP9実装の公開名だけを変更する', () 
   const old = fs.readFileSync(path.join(root, 'tools/engineering/browser/pbai-p9/candidate-ai.js'), 'utf8');
   assert.equal(fs.readFileSync(path.join(root, 'public/ai-candidate.js'), 'utf8'), old.replace('root.BaoAI = api;', 'root.BaoCandidateAI = api;'));
 });
-test('既定は無効、有効時もhardだけ。切戻し後は元の設定', () => {
+test('有効時もhardだけ。無効化による切戻し後は元の設定', () => {
   const off = load().ctx, on = load({ enabled: true }).ctx;
   for (const level of ['easy', 'normal', 'hard', 'expert']) {
     const a = off.BaoReleaseConfig.searchOptions(level), b = on.BaoReleaseConfig.searchOptions(level);
@@ -71,4 +71,12 @@ test('別難易度・profile・独自重みでは誤って有効にならない'
   for (const [level, extra] of [['easy', {}], ['normal', {}], ['expert', {}], ['hard', { evaluationProfile: 'legacy' }], ['hard', { evaluationProfile: 'bao-v2' }], ['hard', { searchProfile: 'legacy' }], ['hard', { evaluationAdjustments: {} }]]) {
     assert.doesNotThrow(() => ctx.BaoReleaseAI.analyzeMove(fixtures[0].state, level, rng(1), { maxDepth: 1, timeLimitMs: 10, pbaiC015LogicGate: true, ...extra }));
   }
+});
+
+test('正式設定と難易度別表示、復帰時の表示を確認', () => {
+  assert.match(fs.readFileSync(path.join(root, 'public/ai-release.js'), 'utf8'), /const PBAI_C015_ENABLED = true;/);
+  const { ctx } = load({ enabled: true });
+  assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard').labelJa, '論理ゲートAI');
+  assert.equal(ctx.BaoReleaseConfig.displayIdentity('expert').label, 'AI-GEN3');
+  assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard', { evaluationFallback: true }).label, 'AI-GEN3');
 });

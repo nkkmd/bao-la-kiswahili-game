@@ -49,10 +49,8 @@ assert.match(html, /AI-GEN3 \/ Normal/);
 assert.match(html, /data-ja="AI-GEN3 \/ ふつう"/);
 assert.match(html, /easy: \["Easy", "やさしい"\]/);
 assert.match(html, /expert: \["Mtaalamu", "ムタアラム"\]/);
-assert.match(html, /BaoAIConfig\.GENERATION/);
-assert.match(html, /BaoAIConfig\.RELEASE_ID/);
-assert.match(main, /AIConfig\.GENERATION/);
-assert.match(main, /AIConfig\.RELEASE_ID/);
-assert.match(serviceWorker, /bao-la-kiswahili-v34/);
+assert.match(html, /BaoReleaseConfig\.displayIdentity/);
+assert.match(main, /AIConfig\.displayIdentity/);
+assert.match(serviceWorker, /bao-la-kiswahili-v35/);
 
 console.log("AI-GEN3 release tests passed");
