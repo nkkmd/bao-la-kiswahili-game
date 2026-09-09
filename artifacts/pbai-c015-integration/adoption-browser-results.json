@@ -1,0 +1,92 @@
+{
+  "sourceCommit": "a8e1d416fe68a666d68e6e1d51a4b093a0665ab0",
+  "runId": 34356146841,
+  "releaseVerificationRunId": 34356146842,
+  "source": "JSON reports extracted from GitHub Actions job logs",
+  "reports": [
+    {
+      "jobId": 102481208756,
+      "report": {
+        "engine": "webkit",
+        "sourceCommit": "a8e1d416fe68a666d68e6e1d51a4b093a0665ab0",
+        "physicalDeviceVerified": false,
+        "strengthInferenceAuthorized": false,
+        "networkFailureMode": "origin-connection-closed",
+        "passed": true,
+        "checks": [
+          "公開画面でhard候補が着手し診断に識別子を保存",
+          "継続する3応答でも候補を維持",
+          "新規対局と難易度変更でexpertは基準AI",
+          "思考開始後の新規対局で古い応答を適用しない",
+          "配信元への通信不能時に候補資産をキャッシュから利用",
+          "設定無効化とキャッシュ更新で基準AIへ切戻す",
+          "Worker unavailable時の直接実行も候補を使用",
+          "Worker error時の直接実行も候補を使用",
+          "モデル未取得時の公開画面は基準AIで着手"
+        ],
+        "transformations": [
+          "candidate: public assets unchanged",
+          "rollback: PBAI_C015_ENABLED true -> false; Service Worker v35 -> v36"
+        ],
+        "origin": "http://127.0.0.1:36459/",
+        "browserVersion": "26.5"
+      }
+    },
+    {
+      "jobId": 102481209041,
+      "report": {
+        "engine": "chromium",
+        "sourceCommit": "a8e1d416fe68a666d68e6e1d51a4b093a0665ab0",
+        "physicalDeviceVerified": false,
+        "strengthInferenceAuthorized": false,
+        "networkFailureMode": "origin-connection-closed",
+        "passed": true,
+        "checks": [
+          "公開画面でhard候補が着手し診断に識別子を保存",
+          "継続する3応答でも候補を維持",
+          "新規対局と難易度変更でexpertは基準AI",
+          "思考開始後の新規対局で古い応答を適用しない",
+          "配信元への通信不能時に候補資産をキャッシュから利用",
+          "設定無効化とキャッシュ更新で基準AIへ切戻す",
+          "Worker unavailable時の直接実行も候補を使用",
+          "Worker error時の直接実行も候補を使用",
+          "モデル未取得時の公開画面は基準AIで着手"
+        ],
+        "transformations": [
+          "candidate: public assets unchanged",
+          "rollback: PBAI_C015_ENABLED true -> false; Service Worker v35 -> v36"
+        ],
+        "origin": "http://127.0.0.1:37431/",
+        "browserVersion": "151.0.7922.34"
+      }
+    },
+    {
+      "jobId": 102481209186,
+      "report": {
+        "engine": "firefox",
+        "sourceCommit": "a8e1d416fe68a666d68e6e1d51a4b093a0665ab0",
+        "physicalDeviceVerified": false,
+        "strengthInferenceAuthorized": false,
+        "networkFailureMode": "origin-connection-closed",
+        "passed": true,
+        "checks": [
+          "公開画面でhard候補が着手し診断に識別子を保存",
+          "継続する3応答でも候補を維持",
+          "新規対局と難易度変更でexpertは基準AI",
+          "思考開始後の新規対局で古い応答を適用しない",
+          "配信元への通信不能時に候補資産をキャッシュから利用",
+          "設定無効化とキャッシュ更新で基準AIへ切戻す",
+          "Worker unavailable時の直接実行も候補を使用",
+          "Worker error時の直接実行も候補を使用",
+          "モデル未取得時の公開画面は基準AIで着手"
+        ],
+        "transformations": [
+          "candidate: public assets unchanged",
+          "rollback: PBAI_C015_ENABLED true -> false; Service Worker v35 -> v36"
+        ],
+        "origin": "http://127.0.0.1:42287/",
+        "browserVersion": "153.0"
+      }
+    }
+  ]
+}

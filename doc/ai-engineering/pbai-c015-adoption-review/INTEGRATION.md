@@ -1,6 +1,10 @@
 # PBAI-C015-v1：hard向け組込みと公開前確認
 
-## 現在の状態
+## 後続の正式採用
+
+実機報告を受け[hard限定のADOPT](ADOPTION.md)を決定し、候補の既定設定を有効にした。以下の既定無効、v34、実機未確認は組込み確認時点の履歴である。正式配信に向けた現在のキャッシュはv35で、配信照合は未完了。実機用コピー作成器は有効・無効のどちらの設定にも対応する。
+
+## 組込み確認時点の状態
 
 採用レビューを受け、hard向けの組込みを[PR #127](https://github.com/nkkmd/bao-la-kiswahili-game/pull/127)へ用意した。依存先は採用レビューの[PR #126](https://github.com/nkkmd/bao-la-kiswahili-game/pull/126)。候補は**既定無効**であり、正式採用、main統合、公開配備、AI世代更新は行っていない。公開AIは`AI-GEN3 / AI-GEN3-RELEASE-001`を維持する。
 
