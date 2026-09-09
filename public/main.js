@@ -1,8 +1,8 @@
 "use strict";
 
 const E = window.BaoEngine;
-const AI = window.BaoAI;
-const AIConfig = window.BaoAIConfig;
+const AI = window.BaoReleaseAI;
+const AIConfig = window.BaoReleaseConfig;
 const Diagnostics = window.BaoDiagnostics;
 const Locale = window.BaoLocale;
 const t = (english, japanese) => Locale?.t ? Locale.t(english, japanese) : english;
@@ -58,8 +58,12 @@ let lastAIDiagnostic = null;
 
 function isComputerGame() { return gameModeSelect.value === "computer"; }
 function updateAIGenerationBadge() {
-  aiGenerationBadge.textContent = `AI · ${AIConfig.GENERATION}`;
-  aiGenerationBadge.title = AIConfig.RELEASE_ID;
+  const identity = AIConfig.displayIdentity(difficultySelect.value,
+    lastAIDiagnostic?.ai.level === difficultySelect.value ? lastAIDiagnostic.ai.stats : null);
+  const labels = { easy: ["Easy", "やさしい"], normal: ["Normal", "ふつう"], hard: ["Hard", "むずかしい"], expert: ["Mtaalamu", "ムタアラム"] };
+  const label = labels[difficultySelect.value] || labels.normal;
+  aiGenerationBadge.textContent = `${t(identity.label, identity.labelJa)} / ${t(...label)}`;
+  aiGenerationBadge.title = identity.releaseId;
   aiGenerationBadge.hidden = !isComputerGame();
 }
 function isHumanTurn() { return !isComputerGame() || state.player === humanPlayer; }
@@ -214,6 +218,7 @@ function acceptAIMove(request, result) {
         stats: result.stats,
       },
     });
+    updateAIGenerationBadge();
     playMove(result.move);
   } catch {
     helpNode.textContent = t("Could not verify the COM move", "COMの着手を検証できませんでした");
@@ -254,7 +259,7 @@ function startAI() {
   setAIThinking(true);
   if (typeof Worker === "undefined") { runAIFallback(request); return; }
   try {
-    aiWorker = new Worker("./ai-worker.js");
+    aiWorker = new Worker("./ai-release-worker.js");
     aiWorker.addEventListener("message", (event) => {
       if (event.data?.id !== request.id) return;
       stopWorker();

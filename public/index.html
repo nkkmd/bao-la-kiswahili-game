@@ -160,8 +160,11 @@
     <script>window.BaoLocale.localize(document);</script>
     <script src="./engine.js"></script>
     <script src="./ai-weights.js"></script>
+    <script src="./logic-evaluator.js"></script>
     <script src="./ai.js"></script>
     <script src="./ai-config.js"></script>
+    <script src="./ai-candidate.js"></script>
+    <script src="./ai-release.js"></script>
     <script src="./diagnostics.js"></script>
     <script src="./review-suggestion.js"></script>
     <script src="./diagnostic-download.js"></script>
@@ -179,8 +182,9 @@
         };
         const updateBadge = () => {
           const [english, japanese] = labels[difficulty.value] || labels.normal;
-          badge.textContent = `${window.BaoAIConfig.GENERATION} / ${window.BaoLocale.t(english, japanese)}`;
-          badge.title = window.BaoAIConfig.RELEASE_ID;
+          const identity = window.BaoReleaseConfig.displayIdentity(difficulty.value);
+          badge.textContent = `${window.BaoLocale.t(identity.label, identity.labelJa)} / ${window.BaoLocale.t(english, japanese)}`;
+          badge.title = identity.releaseId;
           badge.hidden = mode.value !== "computer";
         };
         difficulty.addEventListener("change", updateBadge);

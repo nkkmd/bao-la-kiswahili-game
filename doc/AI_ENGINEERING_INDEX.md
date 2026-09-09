@@ -5,6 +5,7 @@
 現在の正式release: **`AI-GEN3-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`**
 進行中Program: **なし**
+公開準備: [PBAI-C015-v1のhard限定採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)（`ADOPT`、正式配信の照合前）
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
 
@@ -14,7 +15,7 @@
 
 - `AI-GEN2`は直前の公開AI系統です。
 - `AI-GEN3`は現在の公開AI系統で、最初の正式releaseは`AI-GEN3-RELEASE-001`です。
-- `PBAI-P1`から`PBAI-P6`までは、候補を評価するengineering programのIDです。
+- `PBAI-P1`から`PBAI-P9`までは、候補を評価するengineering programのIDです。
 - `PBAI-Cxxx`は個別candidateのIDです。
 - `Research Generation 1..3`は研究世代であり、AI世代とは別です。
 - `legacy`、`bao`、`bao-v2`はprofile identifierであり、AI世代名ではありません。
@@ -262,3 +263,9 @@ Chromiumの既知試験78件は互換性確認として合格した。低設定6
 P6〜P9のmain統合後、[公開採用レビュー](ai-engineering/pbai-c015-adoption-review/README.md)を実施した。固定条件内の棋力改善は採用準備を進める根拠になるが、公開用組込みと実環境確認が未完了のため、現時点の正式採用は保留（`HOLD`）、公開状態は`NO-RELEASE / KEEP-AI-GEN3`を維持する。
 
 expertの3設定と高設定hardについて、Nodeで既知9局面・両構成の計72要求を追加確認し、すべて成功した。これはP9終了後の動作確認であり、ブラウザ・実機・expertの棋力が確認済みになったという意味ではない。P8・P9の正式結果とP6・P7のHOLDは保持する。まずhardを対象に公開用組込みを準備し、expertは確認後に対象へ加える案と、保留解除に必要な確認をレビューへ記録した。
+
+採用レビュー後、[hard向け組込み](ai-engineering/pbai-c015-adoption-review/INTEGRATION.md)をPR #127へ用意した。候補は既定無効。既存の正式AI資産5ファイルを保持し、Node回帰18件、Chromium・Firefox・WebKit各9項目の公開画面確認と切戻し確認が成功した。スマートフォン実機、長時間の使用感、実サイト配備は未確認であり、正式採用は保留を維持する。
+
+## hard限定の正式採用
+
+ユーザーの正式切替指示とmoto g52j 5G／Android 12／Chromeで約20分の実機確認報告に基づき、[PBAI-C015-v1をhard限定でADOPT](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)とした。expertはAI-GEN3を維持する。候補有効化と難易度別表示、キャッシュv35を用意した。採用判断と実サイト配信を区別し、配信状態は`DEPLOYMENT-PENDING`である。新世代名は発行していない。
