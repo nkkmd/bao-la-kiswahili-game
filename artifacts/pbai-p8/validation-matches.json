@@ -1,0 +1,1 @@
+{"name":"validation","pairs":64,"games":128,"points":0.6015625,"phasePoints":{"namua":0.6875,"mtaji":0.515625},"overrun":{"logic":0,"baseline":0},"gates":{"points":true,"phasePoints":true,"operation":true},"passed":true}

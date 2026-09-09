@@ -1,0 +1,10 @@
+{
+  "program": "PBAI-P8",
+  "decision": "STRENGTH-IMPROVED-IN-FROZEN-DOMAIN",
+  "error": null,
+  "elapsedSeconds": 1797.287211503,
+  "finishedUnix": 1788905028.608929,
+  "release": "NO-RELEASE / KEEP-AI-GEN3",
+  "validationGenerated": true,
+  "holdoutGenerated": true
+}

@@ -1,0 +1,66 @@
+{
+  "name": "validation",
+  "summary": {
+    "baseline": {
+      "mse": 0.12787817418575287,
+      "phaseMse": {
+        "namua": 0.034948691725730896,
+        "mtaji": 0.22080765664577484
+      },
+      "timingMedianMs": 0.06790757500000383,
+      "phaseMedianRatio": {
+        "namua": 1,
+        "mtaji": 1
+      },
+      "p95Ratio": 1,
+      "tacticalFailures": 0
+    },
+    "previous": {
+      "mse": 0.07153411209583282,
+      "phaseMse": {
+        "namua": 0.039359286427497864,
+        "mtaji": 0.10370893776416779
+      },
+      "timingMedianMs": 0.020244512499994014,
+      "phaseMedianRatio": {
+        "namua": 0.4061686711133619,
+        "mtaji": 0.21026365942858605
+      },
+      "p95Ratio": 1.0982291509009356,
+      "tacticalFailures": 0
+    },
+    "logic": {
+      "mse": 0.07153411209583282,
+      "phaseMse": {
+        "namua": 0.039359286427497864,
+        "mtaji": 0.10370893776416779
+      },
+      "timingMedianMs": 0.00207665000000361,
+      "phaseMedianRatio": {
+        "namua": 0.041447403874230626,
+        "mtaji": 0.02232908585342551
+      },
+      "p95Ratio": 0.10765300534573331,
+      "tacticalFailures": 0
+    }
+  },
+  "gates": {
+    "mse": true,
+    "phaseSpeed": true,
+    "p95Speed": true,
+    "tactical": true,
+    "baselineTactical": true,
+    "equivalence": true,
+    "previousSpeed": true
+  },
+  "passed": true,
+  "modelSha256": "565147bdc4c62ddc2888af2cc7bb43c7ef192d68c8c8beb76054c8c738a2c637",
+  "compiler": {
+    "originalGates": 1536,
+    "constructedNodes": 1090,
+    "liveNodes": 589,
+    "usedInputs": 327,
+    "readoutTerms": 329,
+    "codeBytes": 27742
+  }
+}

@@ -3,8 +3,8 @@
 更新日: 2026-09-08
 現在の公開AI系統: **`AI-GEN3`**
 現在の正式release: **`AI-GEN3-RELEASE-001`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`**
-進行中Program: **`PBAI-P8` — 論理ゲート評価器の独立再検証**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`**
+進行中Program: **なし**
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
 
@@ -235,6 +235,6 @@ PBAI-P5は`COMPLETE / ADOPTED / AI-GEN3`。新規最終holdout512局で328勝184
 
 [PBAI-P7](ai-engineering/public-ai-improvement-program-7/README.md)は、P6の固定モデルの出力を保持した推論軽量化を候補`PBAI-C015-v1`として検証した。同じ測定環境で旧推論実装に対し約10倍の評価速度を観測し、最終512局は300勝212敗だった。しかし、JSON保存で失われる0／−0の符号差により正式検算が停止したため、正式状態は`COMPLETE / TECHNICAL-INVALID / HOLD`である。終了後の原因調査ではゼロ符号差2件以外の全件照合を通過し、記述的な95％区間は55.46875〜61.5234375％となったが、正式な棋力改善認定には変更しない。P6のHOLDと公開AIのAI-GEN3を維持する。[最終報告](ai-engineering/public-ai-improvement-program-7/PROGRAM_FINAL_REPORT.md)を参照する。
 
-## PBAI-P8の開始
+## PBAI-P8の検証結果
 
-[PBAI-P8](ai-engineering/public-ai-improvement-program-8/README.md)はP7の同じモデル・同じ推論コードを用い、JSON保存時の0／−0比較を修正して新規データで独立再検証する。候補は`PBAI-C015-v1`。P7の無効判定は維持し、既知の局面を除外する。現在は契約と回帰試験を整備した段階で、新規の測定結果はない。公開AIはAI-GEN3を維持する。
+[PBAI-P8](ai-engineering/public-ai-improvement-program-8/README.md)はP7の同じモデル・同じ推論コードを用い、JSON保存時の0／−0比較を修正して新規データで独立再検証した。候補は`PBAI-C015-v1`。最終512局は295勝217敗、勝点率57.6171875％、95％区間54.6875〜60.546875％で、事前条件と正式検算を通過した。正式判断は`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`、Programは`COMPLETE`。Node/Linux、100ms・最大深度8に限る結論であり、公開判断は`NO-RELEASE / KEEP-AI-GEN3`。P6・P7のHOLDを維持し、main統合・公開切替・正式採用は行っていない。[最終報告](ai-engineering/public-ai-improvement-program-8/PROGRAM_FINAL_REPORT.md)を参照する。

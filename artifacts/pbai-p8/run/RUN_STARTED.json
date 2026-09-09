@@ -1,0 +1,12 @@
+{
+  "startedUnix": 1788903231.32172,
+  "pid": 2,
+  "limitSeconds": 14400,
+  "sourceLockSha256": "3d1fd16b4a80465aeb4c91c8a9adfc4dd192a4e9d21174264cebaa8ffa3374f9",
+  "executionCommit": "4b0cf7a662744ce1dd945213f44a1680f8d4bed5",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+  "cpu": "x86_64",
+  "node": "v24.19.0",
+  "consumedOnce": true
+}
