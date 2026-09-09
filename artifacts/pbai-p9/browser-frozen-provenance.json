@@ -1,0 +1,10 @@
+{
+  "runId": 34321929496,
+  "jobId": 102370298061,
+  "artifactId": 10092201931,
+  "checkedOutCommit": "003b91095d93f94e03b53ea9c65a433a1f525590",
+  "archiveSha256": "af8a7b35331558235ab20ad29e2589f89db9d24ebe4a7c76ac1212757013c521",
+  "reportSha256": "9eea12fcec3a09d78395466dcdeb5eb91830e92902cd7f07b82b65d7fab57103",
+  "knownFixturesOnly": true,
+  "physicalDeviceVerified": false
+}

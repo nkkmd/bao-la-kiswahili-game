@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "summaries": {
+    "pilot": {
+      "games": 32,
+      "wins": 17,
+      "losses": 15,
+      "draws": 0,
+      "points": 0.53125,
+      "phasePoints": {
+        "namua": 0.5625,
+        "mtaji": 0.5
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 478,
+          "medianMs": 278.4677610000217,
+          "p95Ms": 563.2332069999975,
+          "maxMs": 646.3973739999929
+        },
+        "baseline": {
+          "requests": 477,
+          "medianMs": 450.4119190000056,
+          "p95Ms": 566.5522020000001,
+          "maxMs": 685.1559159999888
+        }
+      }
+    },
+    "holdout": {
+      "games": 256,
+      "wins": 151,
+      "losses": 105,
+      "draws": 0,
+      "points": 0.58984375,
+      "phasePoints": {
+        "namua": 0.65625,
+        "mtaji": 0.5234375
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 3832,
+          "medianMs": 264.27640600001905,
+          "p95Ms": 560.6539599997923,
+          "maxMs": 714.5387379999738
+        },
+        "baseline": {
+          "requests": 3809,
+          "medianMs": 425.3547330000438,
+          "p95Ms": 563.0223220000044,
+          "maxMs": 687.7873909999616
+        }
+      }
+    },
+    "low": {
+      "games": 64,
+      "wins": 39,
+      "losses": 25,
+      "draws": 0,
+      "points": 0.609375,
+      "phasePoints": {
+        "namua": 0.6875,
+        "mtaji": 0.53125
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 870,
+          "medianMs": 148.5538824999967,
+          "p95Ms": 455.6870409999974,
+          "maxMs": 1268.3594509999966
+        },
+        "baseline": {
+          "requests": 863,
+          "medianMs": 194.19588000001386,
+          "p95Ms": 457.7581629999986,
+          "maxMs": 4000.7454470000084
+        }
+      }
+    }
+  },
+  "final": {
+    "games": 256,
+    "wins": 151,
+    "losses": 105,
+    "draws": 0,
+    "points": 0.58984375,
+    "phasePoints": {
+      "namua": 0.65625,
+      "mtaji": 0.5234375
+    },
+    "operation": true,
+    "latency": {
+      "logic": {
+        "requests": 3832,
+        "medianMs": 264.27640600001905,
+        "p95Ms": 560.6539599997923,
+        "maxMs": 714.5387379999738
+      },
+      "baseline": {
+        "requests": 3809,
+        "medianMs": 425.3547330000438,
+        "p95Ms": 563.0223220000044,
+        "maxMs": 687.7873909999616
+      }
+    },
+    "clusters": 128,
+    "interval95": [
+      0.55078125,
+      0.62890625
+    ],
+    "passed": true,
+    "decision": "STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN"
+  },
+  "lowDescriptiveScreen": true,
+  "physicalDeviceVerified": false
+}

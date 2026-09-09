@@ -1,0 +1,10 @@
+{
+  "program": "PBAI-P9",
+  "decision": "STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN",
+  "error": null,
+  "elapsedSeconds": 3507.2033353459997,
+  "finishedUnix": 1788940919.5723593,
+  "release": "NO-RELEASE / KEEP-AI-GEN3",
+  "lowGenerated": true,
+  "holdoutGenerated": true
+}
