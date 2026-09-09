@@ -1,0 +1,1 @@
+{"name":"pilot","pairs":16,"games":32,"points":0.53125,"phasePoints":{"namua":0.5625,"mtaji":0.5},"overrun":{"logic":0,"baseline":0},"latency":{"logic":{"requests":478,"medianMs":278.4677610000217,"p95Ms":563.2332069999975,"maxMs":646.3973739999929},"baseline":{"requests":477,"medianMs":450.4119190000056,"p95Ms":566.5522020000001,"maxMs":685.1559159999888}},"operation":true}
