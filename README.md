@@ -170,7 +170,7 @@ PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固�
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P6はすべて完了しており、進行中の改善プログラムはありません。[PBAI-P6](doc/ai-engineering/public-ai-improvement-program-6/README.md)の論理ゲート型評価器は開発用の速度条件を満たさず、対局試験へ進まずに終了しました。公開AIはAI-GEN3を維持しています。
+PBAI-P1〜P7は完了しており、進行中の改善プログラムはありません。[PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/README.md)では論理ゲート推論の高速化と最終512局で300勝212敗を観測しましたが、保存済み数値の検算が0／−0の差で停止し、正式判断は`TECHNICAL-INVALID / HOLD`です。終了後の原因調査で数値ゼロの符号差以外の照合は通過したものの、正式な棋力改善認定には変更していません。公開AIはAI-GEN3を維持しています。
 
 | プログラム | 検証内容と結果 | 公開AIへの反映 |
 | --- | --- | --- |
@@ -180,6 +180,7 @@ PBAI-P1〜P6はすべて完了しており、進行中の改善プログラム�
 | [PBAI-P4](doc/ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md) | 軽量な局面遷移の正確性と速度改善を観測。全体時間上限の監視不成立で最終対局を354/512局で停止し、`STRENGTH-NON-ESTIMABLE / HOLD` | 採用せず |
 | [PBAI-P5](doc/ai-engineering/public-ai-improvement-program-5/README.md) | 同じ`PBAI-C011-v1`を新規seedと連続4時間監視の下で独立再検証。事前の採用条件と独立検算を通過 | `ADOPT`、`AI-GEN3`へ昇格 |
 | [PBAI-P6](doc/ai-engineering/public-ai-improvement-program-6/PROGRAM_FINAL_REPORT.md) | 論理ゲート型・線形・小型ニューラルネットを比較。主候補は誤差と既知戦術の条件を通過したが、速度条件未達で`HOLD` | 変更なし、`KEEP-AI-GEN3` |
+| [PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/PROGRAM_FINAL_REPORT.md) | P6の固定モデルを軽量化。高速化と良好な対局成績を観測したが、正式検算が停止し`TECHNICAL-INVALID / HOLD` | 変更なし、`KEEP-AI-GEN3` |
 
 PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。
 
