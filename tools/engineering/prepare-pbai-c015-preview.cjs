@@ -11,10 +11,13 @@ const original = fs.readFileSync(path.join(source, 'ai-release.js'), 'utf8');
 const flag = 'const PBAI_C015_ENABLED = false;';
 if (original.split(flag).length !== 2) throw Error('既定無効の設定が一意に見つかりません');
 fs.cpSync(source, target, { recursive: true, errorOnExist: true, force: false });
+// 簡易HTTPサーバーでも拡張子なしの保存対象を取得できるようにする。
+fs.copyFileSync(path.join(target, 'privacy.html'), path.join(target, 'privacy'));
 fs.writeFileSync(path.join(target, 'ai-release.js'), original.replace(flag, 'const PBAI_C015_ENABLED = true;'));
 const sha = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const files = Object.fromEntries(fs.readdirSync(target).filter(name => fs.statSync(path.join(target, name)).isFile()).map(name => [name, sha(path.join(target, name))]));
 const manifest = { purpose: 'PBAI-C015-v1 hard-only preview', sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
-  createdAt: new Date().toISOString(), physicalDeviceVerified: false, adopted: false, transformation: 'ai-release.js: PBAI_C015_ENABLED false -> true', files };
+  sourceTreeDirty: Boolean(execFileSync('git', ['status', '--porcelain', '--', 'public'], { cwd: root, encoding: 'utf8' }).trim()),
+  createdAt: new Date().toISOString(), physicalDeviceVerified: false, adopted: false, transformations: ['ai-release.js: PBAI_C015_ENABLED false -> true', 'privacy.html copied to extensionless privacy for local HTTP serving'], files };
 fs.writeFileSync(path.join(target, 'PREVIEW.json'), JSON.stringify(manifest, null, 2) + '\n');
 console.log(JSON.stringify({ directory: target, files: Object.keys(files).length, sourceCommit: manifest.sourceCommit, adopted: false }));

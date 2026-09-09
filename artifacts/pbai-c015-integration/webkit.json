@@ -1,0 +1,33 @@
+{
+  "provenance": {
+    "runId": 34350899680,
+    "jobId": 102463634782,
+    "source": "GitHub Actions job log JSON report",
+    "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34350899680/job/102463634782"
+  },
+  "report": {
+    "engine": "webkit",
+    "sourceCommit": "4666df0c605f7a17727c2a2793e632fae097710f",
+    "physicalDeviceVerified": false,
+    "strengthInferenceAuthorized": false,
+    "networkFailureMode": "origin-connection-closed",
+    "passed": true,
+    "checks": [
+      "公開画面でhard候補が着手し診断に識別子を保存",
+      "継続する3応答でも候補を維持",
+      "新規対局と難易度変更でexpertは基準AI",
+      "思考開始後の新規対局で古い応答を適用しない",
+      "配信元への通信不能時に候補資産をキャッシュから利用",
+      "設定無効化とキャッシュ更新で基準AIへ切戻す",
+      "Worker unavailable時の直接実行も候補を使用",
+      "Worker error時の直接実行も候補を使用",
+      "モデル未取得時の公開画面は基準AIで着手"
+    ],
+    "transformations": [
+      "candidate: PBAI_C015_ENABLED false -> true",
+      "rollback: Service Worker v34 -> v35; candidate flag remains false"
+    ],
+    "origin": "http://127.0.0.1:36177/",
+    "browserVersion": "26.5"
+  }
+}

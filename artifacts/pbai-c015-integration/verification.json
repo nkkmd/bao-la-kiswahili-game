@@ -1,0 +1,42 @@
+{
+  "testedCommit": "4666df0c605f7a17727c2a2793e632fae097710f",
+  "browserRun": 34350899680,
+  "releaseVerificationRun": 34350899679,
+  "localNodeTests": 18,
+  "localNodeFailures": 0,
+  "browserChecks": 27,
+  "physicalDeviceVerified": false,
+  "adopted": false,
+  "sourceSha256": {
+    "public/ai-release.js": "7cc0f269129cbe992c5f7e4eaef084b5a0dca1e47d5539b40dc86803228e7c2c",
+    "public/diagnostics.js": "0cc6b5b39f3a86f1b16e4b7d03779b3d27372c25a87f3c32baad7945fea10d7a",
+    "public/index.html": "8daf16756ffa6c280400d9dc133a5a10bfa4b579169f6f324230e0ff30b1e286",
+    "public/manifest.webmanifest": "fd19dfdffa9ec36ac1defbf79748e13db11086138f0936597c88c9a9b96fe8c8",
+    "public/sitemap.xml": "d4d8abeb7a57d9b83f1ef62d84546fba9bf2a332ad92d0cdc01f2e96d2d8913c",
+    "public/logic-evaluator.js": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348",
+    "public/service-worker.js": "36f92a6425777936abe9dd2d19732c9f83f430706e1e697aae92a51a5b8bd531",
+    "public/main.js": "d59c826249bc5bd2297b3d3b7f79e62c3ab00de60bfad97ab50904df0f92101d",
+    "public/icon.svg": "d3728936dd816059dc02f33cc571084d89c798d2afbab88fb806c22beb861f10",
+    "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+    "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+    "public/style.css": "e2c3167f21b2167740089163b26d5f496a1225249c726847096872e8010eb501",
+    "public/diagnostic-download.js": "d1fd0591e6651ef3d6202813a666d31412799ce5455349081b3c3f1f586ee723",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-release-worker.js": "84aaf2b2c2faa3aed066959ce6ee07d048a86c42bdfc0e6c29af6516c60c0a76",
+    "public/locale.js": "16e7d540a018bff2977561d047d647d309610645627c5d0037246991eb2d60ee",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "public/robots.txt": "31b76fbdd9a0521bd9b82a657792322a9739198b944ebbb53c182f8ac10aad52",
+    "public/privacy.html": "92c72f523f2fa774c9ad8e2d4733993f667438463ca337df8e2761ed30c8c53d",
+    "public/ai-candidate.js": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f",
+    "public/review-suggestion.js": "e4264edae8022ae2680b3b0258c064a25dcddc7c3e3922351fd5d3bfab64a170",
+    "test/pbai-c015-integration.test.cjs": "5b0fb56cbadf144b11da9f716b9075f83d8ec33ae90756ab45bd0520bb9bab2d",
+    "tools/engineering/test-pbai-c015-browser.cjs": "c92d43bfd447c5af000c5c037f3c3e6c664834c15c736c4abb486d598443bddd",
+    ".github/workflows/pbai-c015-integration.yml": "0661e8975644260380937c9be4acf921aa459651ed582d3efb74fb67322787fe"
+  },
+  "reportsSha256": {
+    "artifacts/pbai-c015-integration/chromium.json": "5e884600c688ed3e5ff95205b9889e69b8cb0faf54c20133e009e7a7d878647b",
+    "artifacts/pbai-c015-integration/webkit.json": "73d1c76b8206a14dea931f564cd864f6ff3611922c0710382d5c5ca8bd0c6427",
+    "artifacts/pbai-c015-integration/firefox.json": "ef74e980305e50116f64927a72f9159fd48fee3bf9f0015aa7472a8fcda33355"
+  }
+}

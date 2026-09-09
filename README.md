@@ -186,6 +186,8 @@ PBAI-P1〜P9は完了しており、進行中の改善プログラムはあり�
 
 PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8・P9の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
 
+[論理ゲート候補の公開準備](doc/ai-engineering/pbai-c015-adoption-review/INTEGRATION.md)では、hard向け組込みを既定無効で用意し、3種類のブラウザで着手・代替実行・キャッシュ利用・切戻しを確認しました。スマートフォン実機の確認と正式採用は未完了で、公開AIはAI-GEN3を維持しています。
+
 ### 詳細資料
 
 - [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md) — 正式採用・世代昇格の根拠と適用範囲
