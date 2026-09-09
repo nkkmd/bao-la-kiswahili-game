@@ -10,8 +10,9 @@
     "elapsedMs", "nodes", "quiescenceNodes", "cutoffs", "cacheHits", "cacheStores",
     "completedDepth", "timedOut", "evaluationRequests", "evaluations",
     "evaluationCacheHits", "evaluationCachePeak", "evaluationCacheEvictions",
+    "evaluationCandidate", "evaluationFallback",
   ];
-  const NUMERIC_STAT_FIELDS = STAT_FIELDS.filter((field) => field !== "timedOut");
+  const NUMERIC_STAT_FIELDS = STAT_FIELDS.filter((field) => !["timedOut", "evaluationCandidate", "evaluationFallback"].includes(field));
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));

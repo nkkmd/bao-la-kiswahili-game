@@ -829,7 +829,16 @@
     const startedAt = performanceNow();
     const stats = emptyStats(level);
     const choices = movesFor(state);
-    const rawEvaluator = evaluatorFor(
+    const logicRequested = options.pbaiC015LogicGate === true && level === "hard"
+      && (!options.evaluationProfile || options.evaluationProfile === "bao")
+      && (!options.searchProfile || options.searchProfile === "phase2")
+      && !options.evaluationWeights && !options.evaluationAdjustments;
+    const logicAvailable = typeof root.BaoLogicGate?.evaluate === "function";
+    if (logicRequested) {
+      stats.evaluationCandidate = logicAvailable ? "PBAI-C015-v1" : "AI-GEN3-baseline";
+      stats.evaluationFallback = !logicAvailable;
+    }
+    const rawEvaluator = logicRequested && logicAvailable ? root.BaoLogicGate.evaluate : evaluatorFor(
       options.evaluationProfile, options.evaluationWeights, options.evaluationAdjustments,
     );
     const useEvaluationCache = options.evaluationCache

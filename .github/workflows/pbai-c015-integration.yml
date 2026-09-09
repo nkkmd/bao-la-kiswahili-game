@@ -1,0 +1,39 @@
+name: PBAI-C015 公開用組込み確認
+on:
+  pull_request:
+    paths:
+      - 'public/**'
+      - 'test/pbai-c015-integration.test.cjs'
+      - 'tools/engineering/test-pbai-c015-browser.cjs'
+      - '.github/workflows/pbai-c015-integration.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 既知局面と公開経路の回帰確認
+        run: node --test test/pbai-c015-integration.test.cjs test/ai-worker.test.js test/worker-integration.test.js test/ai-config.test.js test/diagnostics-ui.test.js test/engine.test.js test/ai.test.js
+      - name: ブラウザを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pbai-c015" playwright@1.62.1
+          node "$RUNNER_TEMP/pbai-c015/node_modules/playwright/cli.js" install --with-deps ${{ matrix.engine }}
+      - name: 公開画面・代替実行・オフライン・切戻しを確認
+        run: NODE_PATH="$RUNNER_TEMP/pbai-c015/node_modules" node tools/engineering/test-pbai-c015-browser.cjs ${{ matrix.engine }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-c015-${{ matrix.engine }}
+          path: artifacts/local/pbai-c015-browser/
+          if-no-files-found: warn
