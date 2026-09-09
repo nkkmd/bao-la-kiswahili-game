@@ -166,11 +166,11 @@ node tools/diagnostic-to-fixture.js \
 
 PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固定基準構成と先後交換して512局を比較し、328勝184敗、勝点率64.0625％でした。先後ペアの相関を考慮したcluster bootstrapの95％区間は61.1328125〜66.9921875％です。Node/Linux上の持ち時間100ms・最大深度8（D8）という固定条件で、棋力改善を示す`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`と判断しました。同等計算結果の速度比較でも`EQUIVALENT-COMPUTATION-SPEEDUP`を確認しています。条件と独立検算は[第5回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)にまとめています。
 
-この結論は固定した試験範囲に限られます。スマートフォン実機での効果、端末横断の速度、標準500msでの対局棋力を証明したものではありません。また、公開配信後の表示・着手確認は運用確認であり、追加の棋力試験ではありません。配信ファイルの照合方法と未確認事項は[公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照してください。
+公開AIのP5での結論は固定した試験範囲に限られます。スマートフォン実機での効果、端末横断の速度、標準500msでの対局棋力を証明したものではありません。また、公開配信後の表示・着手確認は運用確認であり、追加の棋力試験ではありません。配信ファイルの照合方法と未確認事項は[公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照してください。
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P8は完了しており、進行中の改善プログラムはありません。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。
+PBAI-P1〜P9は完了しており、進行中の改善プログラムはありません。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。 [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/README.md)では、標準500ms・毎手Worker起動のNode条件でも256局151勝105敗となり、棋力改善と独立検算を確認しました。Chromiumの互換性78件も通過しましたが、スマートフォン実機は未確認です。
 
 | プログラム | 検証内容と結果 | 公開AIへの反映 |
 | --- | --- | --- |
@@ -182,8 +182,9 @@ PBAI-P1〜P8は完了しており、進行中の改善プログラムはあり�
 | [PBAI-P6](doc/ai-engineering/public-ai-improvement-program-6/PROGRAM_FINAL_REPORT.md) | 論理ゲート型・線形・小型ニューラルネットを比較。主候補は誤差と既知戦術の条件を通過したが、速度条件未達で`HOLD` | 変更なし、`KEEP-AI-GEN3` |
 | [PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/PROGRAM_FINAL_REPORT.md) | P6の固定モデルを軽量化。高速化と良好な対局成績を観測したが、正式検算が停止し`TECHNICAL-INVALID / HOLD` | 変更なし、`KEEP-AI-GEN3` |
 | [PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/PROGRAM_FINAL_REPORT.md) | 同じ論理ゲート評価器を新規データで独立再検証。295勝217敗、正式検算と固定条件での棋力改善判定を通過 | 未採用・未配備、`KEEP-AI-GEN3` |
+| [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/PROGRAM_FINAL_REPORT.md) | 同じ候補を標準500ms・毎手WorkerのNode条件で追加検証。151勝105敗、正式検算と主要条件を通過。ブラウザ互換性78件も合格 | 未採用・未配備、`KEEP-AI-GEN3` |
 
-PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
+PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8・P9の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
 
 ### 詳細資料
 

@@ -1,0 +1,150 @@
+{
+  "baselineCommit": "5caa1216a891b5b78f63a81bb559029d482c0181",
+  "baselineLineage": "AI-GEN3",
+  "baselineRelease": "AI-GEN3-RELEASE-001",
+  "sourceHashes": {
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "test/tactical.test.js": "14af832389a31f441c8ba0dc6f70cceb57fcd65d9c11ed27af5e93de7ef980bf"
+  },
+  "population": {
+    "policy": "uniform-legal-variant",
+    "maxSourcePlies": 96,
+    "prefixLength": 12,
+    "namuaRange": [
+      12,
+      40
+    ],
+    "mtajiRange": [
+      44,
+      88
+    ],
+    "oneRootPerTrajectory": true,
+    "minLegalVariants": 2,
+    "blockSize": 8192
+  },
+  "encoding": {
+    "pitBits": 7,
+    "pitThresholds": [
+      1,
+      2,
+      4
+    ],
+    "reserveBits": 5,
+    "pendingBits": 32,
+    "dimensions": 399,
+    "orientation": "own then opponent; original pit order; absolute perspective bit; no geometric transform",
+    "antisymmetrize": true
+  },
+  "resources": {
+    "wallClockSeconds": 14400,
+    "childHeapMiB": 2048,
+    "threads": 1,
+    "restart": "deny after RUN_STARTED",
+    "partialGame": "HOLD, no replay measurement",
+    "workerHeapMiB": 256,
+    "requestDeadlineMs": 10000
+  },
+  "search": {
+    "level": "hard",
+    "evaluationProfile": "bao",
+    "searchProfile": "phase2",
+    "pbaiC011LightweightTransitions": true,
+    "timeLimitMs": 500,
+    "maxDepth": 8,
+    "maxMatchPlies": 160,
+    "wallTimeOverrunAllowanceMs": 500,
+    "overrunRateIncreaseMax": 0.05
+  },
+  "program": "PBAI-P9",
+  "version": 1,
+  "candidate": "PBAI-C015-v1",
+  "modelOrigin": "PBAI-C012-v1 from PBAI-P6, unchanged PBAI-C015-v1 inference from PBAI-P7; no retraining",
+  "modelSha256": "565147bdc4c62ddc2888af2cc7bb43c7ef192d68c8c8beb76054c8c738a2c637",
+  "parentCommit": "6155fd6fda2e90ad1783ed44db774898a3499916",
+  "matches": {
+    "pilot": {
+      "seedBase": 861000001,
+      "pairsPerPhase": 8,
+      "timeLimitMs": 500,
+      "maxDepth": 8
+    },
+    "holdout": {
+      "seedBase": 862000001,
+      "pairsPerPhase": 64,
+      "timeLimitMs": 500,
+      "maxDepth": 8
+    },
+    "low": {
+      "seedBase": 863000001,
+      "pairsPerPhase": 16,
+      "timeLimitMs": 400,
+      "maxDepth": 6
+    }
+  },
+  "bootstrapSeed": 864000001,
+  "technicalBooleanSeed": 865000001,
+  "technicalBooleanVectors": 4096,
+  "gates": {
+    "holdoutPointsMin": 0.53,
+    "holdoutLower95StrictMin": 0.5,
+    "holdoutPhasePointsMin": 0.45,
+    "holdoutClustersMin": 100,
+    "bootstrapReplicates": 10000,
+    "overrunRateIncreaseMax": 0.05,
+    "lowDescriptivePointsMin": 0.45,
+    "lowDescriptivePhasePointsMin": 0.35
+  },
+  "optimization": [
+    "truth-table-specific expressions",
+    "constant folding",
+    "unary alias and double-negation removal",
+    "commuted common subexpression merging",
+    "unused node and zero/cancelled readout elimination",
+    "direct used-input extraction",
+    "validate nonterminal state once for both perspectives"
+  ],
+  "forbidden": [
+    "retraining",
+    "weight or bias changes other than exact integer collection",
+    "corpus-dependent constants",
+    "quantization changes",
+    "search mechanism changes"
+  ],
+  "publication": {
+    "mainMerge": false,
+    "publicDefaultChange": false,
+    "release": false
+  },
+  "savedNumberComparison": {
+    "finiteOnly": true,
+    "signedZerosEqual": true,
+    "tolerance": 0,
+    "rawInMemoryEquivalenceUnchanged": true
+  },
+  "priorArchiveSha256": "f86937ee9058bb3446cd70b05278bd2d3578fdbb9ffc4695beba4fcb628866ac",
+  "execution": "fresh-worker-per-move",
+  "browser": {
+    "knownFixtureCount": 9,
+    "freshWorkerRequests": 60,
+    "fallbackRequests": 18,
+    "physicalDevice": false,
+    "playwrightVersion": "1.62.1",
+    "timeoutMinutes": 15,
+    "latencyIsDescriptive": true,
+    "fixtureTieSeedBase": 866000001,
+    "purpose": "known-fixture compatibility only; no new strength population"
+  },
+  "order": [
+    "pilot",
+    "holdout",
+    "low",
+    "replay",
+    "audit"
+  ],
+  "pilotGate": "operation only; no score selection",
+  "lowGate": "descriptive only; does not alter primary strength decision"
+}

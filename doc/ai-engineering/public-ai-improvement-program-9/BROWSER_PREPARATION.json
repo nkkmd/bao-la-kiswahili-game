@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "runId": 34304877114,
+  "jobId": 102319377494,
+  "artifactId": 10086283634,
+  "checkedOutCommit": "1c1d8bdeb9c250f9137b61075abcc77b75371e4b",
+  "reportedGithubEventCommit": "de5d3ced3520b401be7e962f53c2a6768475350b",
+  "reportSha256": "928f851ff576ff0fd9c54b78e4fdc40370730b42dd48b16bc753e9e04c5962c2",
+  "archiveSha256": "a00a8e5e1ec234174d85e018734c35acfc7fbf1fe109fb81dab5d3e94602665f",
+  "physicalDeviceVerified": false,
+  "knownFixturesOnly": true
+}

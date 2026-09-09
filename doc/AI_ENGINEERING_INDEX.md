@@ -1,9 +1,9 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-08
+更新日: 2026-09-09
 現在の公開AI系統: **`AI-GEN3`**
 現在の正式release: **`AI-GEN3-RELEASE-001`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`**
 進行中Program: **なし**
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
@@ -70,11 +70,11 @@ AI-GEN3 = RESERVED / NOT-PROMOTED
 4. [`ai-engineering/public-ai-improvement-program-3/DECISION_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/DECISION_REGISTER.md) — supportとProgramの工学判断
 5. [`ai-engineering/public-ai-improvement-program-3/RELEASE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/RELEASE_REGISTER.md) — 公開系統とリリース判断
 6. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_RESULT.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_RESULT.md) — support結果とartifact hash
-7. [`ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md) — `PBAI-C010-v1` inventory
+7. [`ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md`](ai-engineering/public-ai-improvement-program-3/CANDIDATE_REGISTER.md) — `PBAI-C010-v1`の一覧
 8. [`ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/SUPPORT_REACHABILITY_PROTOCOL.md) — baseline-only support契約
 9. [`ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md`](ai-engineering/public-ai-improvement-program-3/BENCHMARK_PROTOCOL.md) — fresh splitとprospective gate
 10. [`ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md`](ai-engineering/public-ai-improvement-program-3/GENERATION_3_EVIDENCE_AUDIT.md) — Research Generation 3証拠の利用範囲
-11. [`ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md) — `AI-GEN2` baseline
+11. [`ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md`](ai-engineering/public-ai-improvement-program-3/BASELINE_SPEC.md) — `AI-GEN2`の基準構成
 12. [`ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md`](ai-engineering/public-ai-improvement-program-3/PROGRAM_PLAN.md) — prospective工程
 
 ## 4. `PBAI-P2` — 第二世代研究を使った改善Program
@@ -200,10 +200,10 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 
 1. candidate inventoryとmechanism
 2. development / validation / release holdoutのfresh split
-3. quality・safety・cost・compatibility gate
+3. 品質・安全性・コスト・互換性の判定条件
 4. independent verificationとno-rescue rule
 5. `ADOPT`・`HOLD`・`REJECT`・`KEEP-AI-GEN2`のdecision mapping
-6. baseline-only support / reachability audit protocol
+6. 基準構成だけを使うsupport・reachability監査の手順
 
 `PBAI-P3`内の次作業はありません。唯一の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。新しい改善Programを検討する場合は、新しいID、evidence cutoff、fresh evidenceによるoutcome非依存の開始認可レビューから始めます。
 
@@ -237,4 +237,22 @@ PBAI-P5は`COMPLETE / ADOPTED / AI-GEN3`。新規最終holdout512局で328勝184
 
 ## PBAI-P8の検証結果
 
-[PBAI-P8](ai-engineering/public-ai-improvement-program-8/README.md)はP7の同じモデル・同じ推論コードを用い、JSON保存時の0／−0比較を修正して新規データで独立再検証した。候補は`PBAI-C015-v1`。最終512局は295勝217敗、勝点率57.6171875％、95％区間54.6875〜60.546875％で、事前条件と正式検算を通過した。正式判断は`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`、Programは`COMPLETE`。Node/Linux、100ms・最大深度8に限る結論であり、公開判断は`NO-RELEASE / KEEP-AI-GEN3`。P6・P7のHOLDを維持し、main統合・公開切替・正式採用は行っていない。[最終報告](ai-engineering/public-ai-improvement-program-8/PROGRAM_FINAL_REPORT.md)を参照する。
+[PBAI-P8](ai-engineering/public-ai-improvement-program-8/README.md)はP7の同じモデル・同じ推論コードを用い、JSON保存時の0／−0比較を修正して新規データで独立再検証した。候補は`PBAI-C015-v1`。最終512局は295勝217敗、勝点率57.6171875％、95％区間54.6875〜60.546875％で、事前条件と正式検算を通過した。正式判断は`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`、Programは`COMPLETE`。Node/Linux、100ms・最大深度8に限る結論であり、公開判断は`NO-RELEASE / KEEP-AI-GEN3`。P6・P7のHOLDを維持する。検証終了時点ではmain統合・公開切替・正式採用は行っていない。[最終報告](ai-engineering/public-ai-improvement-program-8/PROGRAM_FINAL_REPORT.md)を参照する。
+
+## PBAI-P9の検証結果
+
+[PBAI-P9](ai-engineering/public-ai-improvement-program-9/README.md)は、同じ候補PBAI-C015-v1を静的JavaScriptとして毎手Workerで起動し、標準500ms・最大深さ8のNode条件で独立した追加検証を行った。主要256局は151勝105敗、勝点率58.984375%、95%区間55.078125〜62.890625%で、事前条件と全352局10329手の独立検算を通過した。正式判断は `STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN`、プログラムは完了である。
+
+Chromiumの既知試験78件は互換性確認として合格した。低設定64局は39勝25敗で参考基準を通過したが、スマートフォン実機の性能やブラウザ上の勝率を証明する結果ではない。公開判断は `NO-RELEASE / KEEP-AI-GEN3` とする。検証終了時点ではmain統合・公開切替・正式採用・世代更新は行っていない。P6・P7のHOLDとP8の結果を保持する。[最終報告](ai-engineering/public-ai-improvement-program-9/PROGRAM_FINAL_REPORT.md)と[実機確認の入口](ai-engineering/public-ai-improvement-program-9/RESUME_HERE.md)を参照する。
+
+## PBAI-P6〜P9のmain統合前確認（2026年9月9日）
+
+ユーザーの明示指示に基づき、PR #122、#123、#124、#125を依存順にmainへ統合するための確認を実施した。統合の実績は各PRのマージ記録を正本とする。各プログラムの「main統合を行っていない」という記述は検証終了時点の履歴であり、今回の統合手続きとは区別する。公開判断は引き続き`NO-RELEASE / KEEP-AI-GEN3`である。
+
+- 保存証拠の読取専用検算：P6の22件、P7の382件、P8の381件、P9の195件、合計980ファイルを照合し、全件通過した。凍結ソースも一致し、正式対局の再実行は行っていない。
+- 回帰試験：`node --test test/pbai-p6.test.js test/pbai-p7.test.js test/pbai-p8.test.js test/pbai-p9.test.js test/engine.test.js test/ai.test.js test/pbai-p4-transitions.test.js`の9件が成功した。
+- GitHub上の各PR最終コミットに対応するCIは全件成功し、レビュー提出と未解決スレッドは0件だった。P9のブラウザ互換性CIも成功した。
+- 文書品質：差分に含まれる人間向けMarkdown50件を対象に確認し、壊れた相対リンク、説明済み例外を除く英語だけの見出し・英語の完全な通常説明文は0件だった。正式名称Bao la Kiswahiliと基準構成の識別子は許容例外として保持する。各プログラムの品質監査記録も参照した。
+- 今回の文書補足によるコードブロック、数値、hash、正式判断、凍結記録の意図しない変更は0件。`git diff --check`は通過し、public配下の差分は0件だった。
+
+スマートフォン実機、他ブラウザ、expert設定、継続操作の確認は公開採用に向けた残事項として保持する。
