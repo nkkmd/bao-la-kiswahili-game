@@ -4,7 +4,7 @@
 現在の公開AI系統: **`AI-GEN3`**
 現在の正式release: **`AI-GEN3-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`**
-進行中Program: **なし**
+進行中Program: **`PBAI-P10`（expertへの適用検証）**
 公開準備: [PBAI-C015-v1のhard限定採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)（`ADOPT`、正式配信の照合前）
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
@@ -15,7 +15,7 @@
 
 - `AI-GEN2`は直前の公開AI系統です。
 - `AI-GEN3`は現在の公開AI系統で、最初の正式releaseは`AI-GEN3-RELEASE-001`です。
-- `PBAI-P1`から`PBAI-P9`までは、候補を評価するengineering programのIDです。
+- `PBAI-P1`から`PBAI-P10`までは、候補を評価するengineering programのIDです。
 - `PBAI-Cxxx`は個別candidateのIDです。
 - `Research Generation 1..3`は研究世代であり、AI世代とは別です。
 - `legacy`、`bao`、`bao-v2`はprofile identifierであり、AI世代名ではありません。

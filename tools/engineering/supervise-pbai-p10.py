@@ -1,5 +1,5 @@
 """PBAI-P10 consume-once orchestration with an external process-group deadline."""
-import os, sys, time, json, signal, hashlib, pathlib, subprocess, platform
+import os, sys, time, json, signal, hashlib, pathlib, subprocess, platform, tarfile
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 DOC=ROOT/'doc/ai-engineering/public-ai-improvement-program-10'
 OUT=ROOT/'artifacts/pbai-p10/run'
@@ -60,6 +60,12 @@ def main():
     except BaseException as e:
         outcome='TECHNICAL-INVALID / HOLD';details=repr(e)
     write(OUT/'FINAL_RESULT.json',{'program':'PBAI-P10','decision':outcome,'error':details,'elapsedSeconds':time.monotonic()-start,'finishedUnix':time.time(),'release':'NO-RELEASE / KEEP-AI-GEN3','lowGenerated':(OUT/'low-matches-source.json').exists(),'highGenerated':(OUT/'high-matches-source.json').exists()})
+    archive=OUT.parent/'final-evidence.tar.gz'
+    if archive.exists():raise RuntimeError('Do not overwrite prior archive')
+    entries={p.name:{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size} for p in OUT.iterdir() if p.is_file()}
+    with tarfile.open(archive,'x:gz') as tar:
+        for name in sorted(entries):tar.add(OUT/name,arcname=name)
+    write(OUT.parent/'final-evidence-index.json',{'files':entries,'archiveSha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'measurementFinished':True})
     print(json.dumps(read(OUT/'FINAL_RESULT.json')),flush=True)
     return 1 if details else 0
 if __name__=='__main__':sys.exit(main())

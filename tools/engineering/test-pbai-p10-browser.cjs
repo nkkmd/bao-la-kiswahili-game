@@ -64,6 +64,7 @@ async function start(page, level = 'expert') {
     await check('公開画面でexpert候補が着手し診断に識別子を保存', async () => {
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, 'PBAI-C015-v1');
       assert.equal(d.ai.stats.evaluationFallback, false);
+      assert.equal(await page.evaluate(() => BaoReleaseConfig.displayIdentity('expert').releaseId), 'PBAI-P10-EXPERT-PREVIEW');
       assert.match(await page.locator('#ai-generation-badge').textContent(), /Logic Gate AI|論理ゲートAI/);
     });
     await check('継続する3応答でも候補を維持', async () => {
