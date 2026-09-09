@@ -10,11 +10,13 @@ const dir = path.resolve(__dirname, '../../public');
 const out = path.resolve(__dirname, '../../artifacts/local/pbai-c015-browser', engine);
 fs.mkdirSync(out, { recursive: true });
 let mode = 'candidate';
+let originUnavailable = false;
 const report = { engine, sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  physicalDeviceVerified: false, strengthInferenceAuthorized: false, passed: false, checks: [],
+  physicalDeviceVerified: false, strengthInferenceAuthorized: false, networkFailureMode: 'origin-connection-closed', passed: false, checks: [],
   transformations: ['candidate: PBAI_C015_ENABLED false -> true', 'rollback: Service Worker v34 -> v35; candidate flag remains false'],
 };
 const server = http.createServer((req, res) => {
+  if (originUnavailable) { req.socket.destroy(); return; }
   const name = req.url.split('?')[0] === '/' ? 'index.html' : req.url.split('?')[0].slice(1);
   if (!/^[\w.-]+$/.test(name)) return res.writeHead(404).end();
   const file = path.join(dir, name === 'privacy' ? 'privacy.html' : name);
@@ -70,18 +72,18 @@ async function start(page, level = 'hard') {
     await check('思考開始後の新規対局で古い応答を適用しない', async () => {
       await page.click('#new-game');
       await page.selectOption('#difficulty', 'hard'); await page.click('#start-game');
-      await page.waitForFunction(() => isAIActive()); await page.click('#new-game');
+      await page.waitForFunction(() => aiThinking && aiWorker !== null); await page.click('#new-game');
       const key = await page.evaluate(() => AI.stateKey(state));
       await page.waitForTimeout(1200);
       assert.deepEqual(await page.evaluate(() => ({ started, active: isAIActive(), key: AI.stateKey(state) })), { started: false, active: false, key });
     });
-    await check('旧キャッシュを整理し候補資産をオフラインで利用', async () => {
+    await check('配信元への通信不能時に候補資産をキャッシュから利用', async () => {
       await page.evaluate(async () => { await navigator.serviceWorker.ready; await caches.open('bao-la-kiswahili-v33'); });
       await page.reload(); await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
       assert(await page.evaluate(async () => !!(await (await caches.open('bao-la-kiswahili-v34')).match('./logic-evaluator.js'))));
-      await context.setOffline(true); await page.reload();
+      originUnavailable = true; await page.reload();
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, 'PBAI-C015-v1');
-      await context.setOffline(false);
+      originUnavailable = false;
     });
     await check('設定無効化とキャッシュ更新で基準AIへ切戻す', async () => {
       mode = 'rollback';
@@ -91,9 +93,9 @@ async function start(page, level = 'hard') {
       await page.reload();
       assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, undefined);
-      await context.setOffline(true); await page.reload();
+      originUnavailable = true; await page.reload();
       assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
-      await context.setOffline(false);
+      originUnavailable = false;
     });
     assert.deepEqual(errors, []); await context.close(); mode = 'candidate';
     for (const failure of ['unavailable', 'error']) await check('Worker ' + failure + '時の直接実行も候補を使用', async () => {
