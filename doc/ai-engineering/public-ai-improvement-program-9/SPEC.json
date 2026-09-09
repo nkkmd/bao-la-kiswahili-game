@@ -10,13 +10,6 @@
     "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
     "test/tactical.test.js": "14af832389a31f441c8ba0dc6f70cceb57fcd65d9c11ed27af5e93de7ef980bf"
   },
-  "teacher": {
-    "depth": 3,
-    "timeLimit": "Infinity",
-    "scale": 1024,
-    "target": "clip(rootScore / 1024, -1, 1)",
-    "notGroundTruth": true
-  },
   "population": {
     "policy": "uniform-legal-variant",
     "maxSourcePlies": 96,
@@ -72,7 +65,6 @@
   "modelOrigin": "PBAI-C012-v1 from PBAI-P6, unchanged PBAI-C015-v1 inference from PBAI-P7; no retraining",
   "modelSha256": "565147bdc4c62ddc2888af2cc7bb43c7ef192d68c8c8beb76054c8c738a2c637",
   "parentCommit": "6155fd6fda2e90ad1783ed44db774898a3499916",
-  "splits": {},
   "matches": {
     "pilot": {
       "seedBase": 861000001,
@@ -96,11 +88,6 @@
   "bootstrapSeed": 864000001,
   "technicalBooleanSeed": 865000001,
   "technicalBooleanVectors": 4096,
-  "diagnostics": {
-    "timingWarmups": 2,
-    "timingRepetitions": 6,
-    "timingCallsPerRoot": 20
-  },
   "gates": {
     "holdoutPointsMin": 0.53,
     "holdoutLower95StrictMin": 0.5,
@@ -110,16 +97,6 @@
     "overrunRateIncreaseMax": 0.05,
     "lowDescriptivePointsMin": 0.45,
     "lowDescriptivePhasePointsMin": 0.35
-  },
-  "equivalence": {
-    "scoreMismatchesMax": 0,
-    "searchStatsMismatchesMax": 0,
-    "fixedDepths": [
-      2,
-      3
-    ],
-    "previousEvaluatorSpeedMedianRatioMax": 0.9,
-    "previousEvaluatorSpeedP95RatioMax": 1.1
   },
   "optimization": [
     "truth-table-specific expressions",
@@ -157,6 +134,17 @@
     "physicalDevice": false,
     "playwrightVersion": "1.62.1",
     "timeoutMinutes": 15,
-    "latencyIsDescriptive": true
-  }
+    "latencyIsDescriptive": true,
+    "fixtureTieSeedBase": 866000001,
+    "purpose": "known-fixture compatibility only; no new strength population"
+  },
+  "order": [
+    "pilot",
+    "holdout",
+    "low",
+    "replay",
+    "audit"
+  ],
+  "pilotGate": "operation only; no score selection",
+  "lowGate": "descriptive only; does not alter primary strength decision"
 }

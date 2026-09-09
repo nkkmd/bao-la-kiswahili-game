@@ -27,8 +27,6 @@ jobs:
           npm install --prefix "$RUNNER_TEMP/pbai-p9" playwright@1.62.1
           node "$RUNNER_TEMP/pbai-p9/node_modules/playwright/cli.js" install --with-deps chromium --only-shell
       - name: Chromiumで78件を検証
-        env:
-          GITHUB_SHA: ${{ github.event.pull_request.head.sha }}
         run: NODE_PATH="$RUNNER_TEMP/pbai-p9/node_modules" node tools/engineering/test-pbai-p9-browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
