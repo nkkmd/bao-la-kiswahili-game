@@ -58,3 +58,6 @@ artifacts/*-local.json
 
 # PBAI-P5 complete raw observations are stored in final-evidence.tar.gz.
 /artifacts/pbai-p5/run/
+
+# PBAI-P6 raw execution is archived with a SHA-256 inventory after completion.
+/artifacts/pbai-p6/run/

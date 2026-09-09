@@ -1,0 +1,24 @@
+{
+  "program": "PBAI-P6",
+  "state": "FROZEN-BEFORE-NEW-DATA",
+  "files": {
+    "tools/engineering/lib/pbai-p6-common.js": "290fed78a905cdce4ffa0e4bf83647fcabd080a62d62be182ca360ef550999b9",
+    "tools/engineering/run-pbai-p6-stage.js": "d788ed716b1eda686565b0327e7659334db2a8f01be4e6676f8f8be03100da41",
+    "tools/engineering/train-pbai-p6.py": "9c6162505fca34dc0cf2b354e394b88aa5660248dc3342df095a3cbe64d5ba25",
+    "tools/engineering/supervise-pbai-p6.py": "640ee08e9aa67a74c7e327bbbf49a6595e754d3a25c2d4683045707073bc7b24",
+    "tools/engineering/verify-pbai-p6.js": "62734e57d245541eb65f71cf60b7f6be3f61342a6e2eb0e46d9a75697d12d754",
+    "tools/engineering/audit-pbai-p6.py": "4f9bf5ef5a50fcc012e24777668cf5df2a48a1c84335880159858b2515e6e9f2",
+    "tools/engineering/test-pbai-p6-training.py": "147fd791e9673b03f83a3a61d16e7b534d76b8559f7ce7b9d7d4f5089d812e05",
+    "test/pbai-p6.test.js": "20014485c926a2cc0123c68fc0a20a708f82174c47520af06be7c85466bc8b84",
+    "doc/ai-engineering/public-ai-improvement-program-6/SPEC.json": "8cf15ee0eb683b7a9a4225f383a3790f26438a4ad01cecf304c21251868e3f1d",
+    "doc/ai-engineering/public-ai-improvement-program-6/KNOWN_IDENTITIES.json": "8d66a0030e4a918b7fd0c9ab170af98a44d442774c558c41e90fcd6e50321e9c",
+    "doc/ai-engineering/public-ai-improvement-program-6/PROTOCOL.md": "0ee1506972911f18189bc0f7e58e1244042cee5d17eb601666843aaf8a76b678",
+    "doc/ai-engineering/public-ai-improvement-program-6/AUTHORIZATION_REVIEW.md": "8a67a57f7853739c5084e2c296e0a8d38ef8d6070be9a016018d1168cc56f0dc",
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "test/tactical.test.js": "14af832389a31f441c8ba0dc6f70cceb57fcd65d9c11ed27af5e93de7ef980bf"
+  }
+}

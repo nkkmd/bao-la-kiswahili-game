@@ -1,9 +1,9 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-07
+更新日: 2026-09-08
 現在の公開AI系統: **`AI-GEN3`**
 現在の正式release: **`AI-GEN3-RELEASE-001`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`**
 進行中Program: **なし**
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
@@ -14,7 +14,7 @@
 
 - `AI-GEN2`は直前の公開AI系統です。
 - `AI-GEN3`は現在の公開AI系統で、最初の正式releaseは`AI-GEN3-RELEASE-001`です。
-- `PBAI-P1`から`PBAI-P5`までは、候補を評価するengineering programのIDです。
+- `PBAI-P1`から`PBAI-P6`までは、候補を評価するengineering programのIDです。
 - `PBAI-Cxxx`は個別candidateのIDです。
 - `Research Generation 1..3`は研究世代であり、AI世代とは別です。
 - `legacy`、`bao`、`bao-v2`はprofile identifierであり、AI世代名ではありません。
@@ -30,6 +30,7 @@
 | `PBAI-P3` | Research Generation 3まで。cutoff `479bc3d...` | `PBAI-C010-v1` | `KEEP-AI-GEN2` | なし |
 | `PBAI-P4` | 新規工学検証、baseline 2026-09-06 | `PBAI-C011-v1` | `STRENGTH-NON-ESTIMABLE / HOLD` | なし |
 | `PBAI-P5` | P4と独立した新規工学再検証 | `PBAI-C011-v1` | `ADOPT / AI-GEN3-RELEASE-001` | hard/expertへ正式採用 |
+| `PBAI-P6` | 新規教師データによる学習評価器の工学検証 | `PBAI-C012..C014` | `DEVELOPMENT-GATE-FAIL / HOLD` | なし、`KEEP-AI-GEN3` |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
@@ -225,3 +226,7 @@ PBAI-P5は[チャット非依存の実行準備](ai-engineering/public-ai-improv
 PBAI-P5は`COMPLETE / ADOPTED / AI-GEN3`。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開assetのbyte一致とChrome相当経路のhard AI着手完了を確認後、2026年9月7日に`AI-GEN3-RELEASE-001`を発行した。
 
 [最終報告](ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件を、[公開配信検証](ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)に配信一致と未確認範囲を、[AI-GEN3正式昇格判断](ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md)に`ADOPT`とrelease IDをまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
+
+## PBAI-P6の検証結果
+
+[PBAI-P6](ai-engineering/public-ai-improvement-program-6/README.md)は、AI-GEN3の探索へ学習した論理ゲート型評価器を組み込み、同じ持ち時間での棋力改善を検証する新規Programである。比較対象として学習した線形評価器と小型ニューラルネットを同じデータで評価する。候補IDはPBAI-C012〜C014。学習用1,024 root、開発用128 rootで評価し、主候補の論理ゲート型は教師への誤差と既知戦術8件を通過したが、速度条件未達のため開発段階で終了した。正式判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / HOLD`。対局・validation・holdoutは未実行であり、棋力改善は未確認。独立検算は通過し、公開AIはAI-GEN3を維持する。[最終報告](ai-engineering/public-ai-improvement-program-6/PROGRAM_FINAL_REPORT.md)を参照する。

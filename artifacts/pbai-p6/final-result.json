@@ -1,0 +1,10 @@
+{
+  "program": "PBAI-P6",
+  "decision": "DEVELOPMENT-GATE-FAIL / HOLD",
+  "error": null,
+  "elapsedSeconds": 138.16642972400018,
+  "finishedUnix": 1788859053.897091,
+  "release": "NO-RELEASE / KEEP-AI-GEN3",
+  "validationGenerated": false,
+  "holdoutGenerated": false
+}

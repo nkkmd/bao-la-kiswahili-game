@@ -1,0 +1,167 @@
+{
+  "program": "PBAI-P6",
+  "version": 1,
+  "baselineCommit": "5caa1216a891b5b78f63a81bb559029d482c0181",
+  "baselineLineage": "AI-GEN3",
+  "baselineRelease": "AI-GEN3-RELEASE-001",
+  "candidateIds": {
+    "logic": "PBAI-C012-v1",
+    "linear": "PBAI-C013-v1",
+    "mlp": "PBAI-C014-v1"
+  },
+  "sourceHashes": {
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "test/tactical.test.js": "14af832389a31f441c8ba0dc6f70cceb57fcd65d9c11ed27af5e93de7ef980bf"
+  },
+  "teacher": {
+    "depth": 3,
+    "timeLimit": "Infinity",
+    "scale": 1024,
+    "target": "clip(rootScore / 1024, -1, 1)",
+    "notGroundTruth": true
+  },
+  "population": {
+    "policy": "uniform-legal-variant",
+    "maxSourcePlies": 96,
+    "prefixLength": 12,
+    "namuaRange": [
+      12,
+      40
+    ],
+    "mtajiRange": [
+      44,
+      88
+    ],
+    "oneRootPerTrajectory": true,
+    "minLegalVariants": 2,
+    "blockSize": 8192
+  },
+  "splits": {
+    "train": {
+      "seedBase": 831000001,
+      "rootsPerPhase": 512
+    },
+    "development": {
+      "seedBase": 832000001,
+      "rootsPerPhase": 64
+    },
+    "validation": {
+      "seedBase": 833000001,
+      "rootsPerPhase": 64
+    }
+  },
+  "matches": {
+    "development": {
+      "seedBase": 834000001,
+      "pairsPerPhase": 16
+    },
+    "validation": {
+      "seedBase": 835000001,
+      "pairsPerPhase": 32
+    },
+    "holdout": {
+      "seedBase": 836000001,
+      "pairsPerPhase": 128
+    }
+  },
+  "bootstrapSeed": 839000001,
+  "initializationSeeds": {
+    "logic": 837000001,
+    "mlp": 838000001
+  },
+  "encoding": {
+    "pitBits": 7,
+    "pitThresholds": [
+      1,
+      2,
+      4
+    ],
+    "reserveBits": 5,
+    "pendingBits": 32,
+    "dimensions": 399,
+    "orientation": "own then opponent; original pit order; absolute perspective bit; no geometric transform",
+    "antisymmetrize": true
+  },
+  "training": {
+    "epochs": 150,
+    "batchSize": 128,
+    "learningRate": 0.01,
+    "adamBetas": [
+      0.9,
+      0.999
+    ],
+    "adamEpsilon": 1e-08,
+    "logicWidth": 512,
+    "logicLayers": 3,
+    "logicGateChoices": 16,
+    "logicInitializationBias": 2,
+    "logicReadoutRidge": 0.01,
+    "linearRidge": 0.01,
+    "mlpWidth": 32,
+    "mlpLearningRate": 0.001,
+    "readoutQuantization": 4096,
+    "checkpoint": "final epoch only",
+    "tuningTrialsPerFamily": 1
+  },
+  "diagnostics": {
+    "profileRootsPerPhase": 16,
+    "timingWarmups": 2,
+    "timingRepetitions": 6,
+    "timingCallsPerRoot": 20
+  },
+  "gates": {
+    "developmentMseRatioMax": 1.1,
+    "validationMseRatioMax": 1.1,
+    "evaluationMedianRatioMax": 0.9,
+    "evaluationP95RatioMax": 1.1,
+    "tacticalFailuresMax": 0,
+    "developmentPointsMin": 0.45,
+    "developmentPhasePointsMin": 0.35,
+    "validationPointsMin": 0.45,
+    "validationPhasePointsMin": 0.35,
+    "holdoutPointsMin": 0.53,
+    "holdoutLower95StrictMin": 0.5,
+    "holdoutPhasePointsMin": 0.45,
+    "holdoutClustersMin": 200,
+    "bootstrapReplicates": 10000
+  },
+  "search": {
+    "level": "hard",
+    "evaluationProfile": "bao",
+    "searchProfile": "phase2",
+    "pbaiC011LightweightTransitions": true,
+    "timeLimitMs": 100,
+    "maxDepth": 8,
+    "maxMatchPlies": 160,
+    "wallTimeOverrunAllowanceMs": 50,
+    "overrunRateIncreaseMax": 0.05
+  },
+  "resources": {
+    "wallClockSeconds": 14400,
+    "childHeapMiB": 2048,
+    "threads": 1,
+    "restart": "deny after RUN_STARTED",
+    "partialGame": "HOLD, no replay measurement"
+  },
+  "stageOrder": [
+    "generate-train",
+    "generate-development",
+    "train-all",
+    "verify-export",
+    "development-evaluation-and-tactical",
+    "development-matches",
+    "validation",
+    "holdout",
+    "independent-replay-and-statistics"
+  ],
+  "publication": {
+    "mainMerge": false,
+    "publicDefaultChange": false,
+    "release": false
+  },
+  "failureMeaning": "candidate-specific; does not reject logic gate networks as a family"
+}

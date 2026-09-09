@@ -1,0 +1,25 @@
+{
+  "documents": [
+    "doc/ai-engineering/public-ai-improvement-program-6/README.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/QUALITY_AUDIT.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/CURRENT_STATUS.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/ENGINEERING_LOG.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/PROGRAM_FINAL_REPORT.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/PROTOCOL.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/AUTHORIZATION_REVIEW.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/RESUME_HERE.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/DECISION_REGISTER.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/REPRODUCIBILITY_INDEX.md",
+    "doc/ai-engineering/public-ai-improvement-program-6/RELEASE_REGISTER.md",
+    "README.md",
+    "doc/AI_ENGINEERING_INDEX.md",
+    "artifacts/pbai-p6/README.md"
+  ],
+  "documentCount": 14,
+  "brokenRelativeLinks": [],
+  "englishOnlyExplanatoryHeadings": [],
+  "englishProseHeuristicFindings": [],
+  "manualProseReview": "PASS",
+  "canonicalProjectTitleException": "Bao la Kiswahili",
+  "publicChanges": 0
+}
