@@ -1,0 +1,38 @@
+name: PBAI-P9 ブラウザ互換性
+on:
+  pull_request:
+    paths:
+      - 'tools/engineering/browser/pbai-p9/**'
+      - 'tools/engineering/*pbai-p9*'
+      - 'tools/engineering/lib/pbai-p9*'
+      - 'test/pbai-p9.test.js'
+      - '.github/workflows/pbai-p9-browser.yml'
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 既知局面でNode実装を検証
+        run: node --test test/pbai-p9.test.js
+      - name: ブラウザ依存関係を準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pbai-p9" playwright@1.62.1
+          node "$RUNNER_TEMP/pbai-p9/node_modules/playwright/cli.js" install --with-deps chromium --only-shell
+      - name: Chromiumで78件を検証
+        env:
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha }}
+        run: NODE_PATH="$RUNNER_TEMP/pbai-p9/node_modules" node tools/engineering/test-pbai-p9-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p9-browser
+          path: artifacts/pbai-p9/browser-ci/
+          if-no-files-found: warn
