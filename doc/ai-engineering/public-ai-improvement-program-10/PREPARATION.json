@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "browserRunId": 34416487728,
+  "browserCommit": "a980878a3cf773856f08afe07f1a568ada59ff63",
+  "browserChecks": 27,
+  "knownNodeRequests": 72,
+  "regressionTests": 15,
+  "externalDeadlineSelfTest": true,
+  "physicalDeviceVerified": false,
+  "strengthSeedsConsumedBeforeFreeze": false,
+  "sourceTransform": "expert allowlist plus preview identity only; public unchanged"
+}
