@@ -11,6 +11,7 @@ const out = path.resolve(__dirname, '../../artifacts/local/pbai-c015-browser', e
 fs.mkdirSync(out, { recursive: true });
 let mode = 'candidate';
 let originUnavailable = false;
+let modelUnavailable = false;
 const report = { engine, sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   physicalDeviceVerified: false, strengthInferenceAuthorized: false, networkFailureMode: 'origin-connection-closed', passed: false, checks: [],
   transformations: ['candidate: PBAI_C015_ENABLED false -> true', 'rollback: Service Worker v34 -> v35; candidate flag remains false'],
@@ -19,6 +20,7 @@ const server = http.createServer((req, res) => {
   if (originUnavailable) { req.socket.destroy(); return; }
   const name = req.url.split('?')[0] === '/' ? 'index.html' : req.url.split('?')[0].slice(1);
   if (!/^[\w.-]+$/.test(name)) return res.writeHead(404).end();
+  if (modelUnavailable && name === 'logic-evaluator.js') return res.writeHead(404).end();
   const file = path.join(dir, name === 'privacy' ? 'privacy.html' : name);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return res.writeHead(404).end();
   let body = fs.readFileSync(file);
@@ -28,6 +30,13 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': mime, 'Cache-Control': 'no-store' }); res.end(body);
 });
 let browser;
+async function eventually(predicate) {
+  const deadline = Date.now() + 30000;
+  while (!(await predicate())) {
+    if (Date.now() >= deadline) throw Error('非同期状態の待機期限');
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+}
 async function check(name, fn) { await fn(); report.checks.push(name); console.log(engine + ': ' + name); }
 async function pageFor(options = {}, init) {
   const context = await browser.newContext({ reducedMotion: 'reduce', ...options });
@@ -88,7 +97,7 @@ async function start(page, level = 'hard') {
     await check('設定無効化とキャッシュ更新で基準AIへ切戻す', async () => {
       mode = 'rollback';
       await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
-      await page.waitForFunction(async () => (await caches.keys()).includes('bao-la-kiswahili-v35') && !(await caches.keys()).includes('bao-la-kiswahili-v34') && !(await caches.keys()).includes('bao-la-kiswahili-v33'));
+      await eventually(() => page.evaluate(async () => { const names = await caches.keys(); return names.includes('bao-la-kiswahili-v35') && !names.includes('bao-la-kiswahili-v34') && !names.includes('bao-la-kiswahili-v33'); }));
       assert.equal(await page.evaluate(async () => (await caches.keys()).includes('bao-la-kiswahili-v33')), false);
       await page.reload();
       assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('hard').pbaiC015LogicGate), undefined);
@@ -106,10 +115,10 @@ async function start(page, level = 'hard') {
     });
     await check('モデル未取得時の公開画面は基準AIで着手', async () => {
       const c = await browser.newContext({ reducedMotion: 'reduce', serviceWorkers: 'block' });
-      const p = await c.newPage(); await c.route('**/logic-evaluator.js', route => route.abort());
+      const p = await c.newPage(); modelUnavailable = true;
       await p.goto(report.origin);
       const d = await start(p); assert.equal(d.ai.stats.evaluationCandidate, 'AI-GEN3-baseline'); assert.equal(d.ai.stats.evaluationFallback, true);
-      await c.close();
+      modelUnavailable = false; await c.close();
     });
     report.passed = true;
   } catch (e) { report.error = String(e.stack || e); process.exitCode = 1; }
