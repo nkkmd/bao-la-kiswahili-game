@@ -269,3 +269,8 @@ expertの3設定と高設定hardについて、Nodeで既知9局面・両構成�
 ## hard限定の正式採用
 
 ユーザーの正式切替指示とmoto g52j 5G／Android 12／Chromeで約20分の実機確認報告に基づき、[PBAI-C015-v1をhard限定でADOPT](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)とした。expertはAI-GEN3を維持する。候補有効化と難易度別表示、キャッシュv35を用意した。採用判断と実サイト配信を区別し、配信状態は`DEPLOYED-ASSETS-VERIFIED`である。[配信確認記録](ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)に22ファイルの照合結果と配信後の再対局が未実施であることを記録した。新世代名は発行していない。
+
+
+## PBAI-P10：expertへの適用検証
+
+[PBAI-P10](ai-engineering/public-ai-improvement-program-10/README.md)で、PBAI-C015-v1を低・標準・高のexpert実設定に適用できるか検証する。各設定の棋力を別々に判定し、P8・P9の成績は加算しない。準備中であり、hardのADOPTと配信確認、expertのAI-GEN3を維持する。main統合・公開切替・AI-GEN4昇格は結果報告後の明示指示待ちである。

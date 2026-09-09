@@ -1,0 +1,37 @@
+name: PBAI-P10 expert公開経路の事前確認
+on:
+  pull_request:
+    paths:
+      - 'tools/engineering/*pbai-p10*'
+      - 'tools/engineering/lib/pbai-p10*'
+      - '.github/workflows/pbai-p10-browser.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 公開資産と既知挙動の回帰確認
+        run: node --test test/pbai-c015-integration.test.cjs test/ai-generation-release.test.js test/ai-config.test.js test/tactical.test.js test/engine.test.js test/ai.test.js test/ai-worker.test.js test/worker-integration.test.js test/diagnostics-ui.test.js
+      - name: ブラウザを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pbai-p10" playwright@1.62.1
+          node "$RUNNER_TEMP/pbai-p10/node_modules/playwright/cli.js" install --with-deps ${{ matrix.engine }}
+      - name: expert候補の画面と切戻しを確認
+        run: NODE_PATH="$RUNNER_TEMP/pbai-p10/node_modules" node tools/engineering/test-pbai-p10-browser.cjs ${{ matrix.engine }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p10-${{ matrix.engine }}
+          path: artifacts/local/pbai-p10-browser/
