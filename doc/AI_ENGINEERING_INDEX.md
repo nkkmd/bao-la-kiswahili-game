@@ -273,4 +273,4 @@ expertの3設定と高設定hardについて、Nodeで既知9局面・両構成�
 
 ## PBAI-P10：expertへの適用検証
 
-[PBAI-P10](ai-engineering/public-ai-improvement-program-10/README.md)で、PBAI-C015-v1を低・標準・高のexpert実設定に適用できるか検証する。各設定の棋力を別々に判定し、P8・P9の成績は加算しない。準備中であり、hardのADOPTと配信確認、expertのAI-GEN3を維持する。main統合・公開切替・AI-GEN4昇格は結果報告後の明示指示待ちである。
+[PBAI-P10](ai-engineering/public-ai-improvement-program-10/README.md)で、PBAI-C015-v1を低・標準・高のexpert実設定に適用できるか検証する。各設定の棋力を別々に判定し、P8・P9の成績は加算しない。正式試験を実行中であり、hardのADOPTと配信確認、expertのAI-GEN3を維持する。main統合・公開切替・AI-GEN4昇格は結果報告後の明示指示待ちである。
