@@ -64,3 +64,6 @@ artifacts/*-local.json
 
 # PBAI-P7 raw evidence is archived after the consume-once execution.
 /artifacts/pbai-p7/run/
+
+# PBAI-P8 consume-once raw execution is archived after completion.
+/artifacts/pbai-p8/run/

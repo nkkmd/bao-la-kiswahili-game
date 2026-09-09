@@ -1,0 +1,1 @@
+{"name":"holdout","pairs":256,"games":512,"points":0.576171875,"phasePoints":{"namua":0.62109375,"mtaji":0.53125},"overrun":{"logic":0.00013473457289140393,"baseline":0},"gates":{"points":true,"phasePoints":true,"operation":true},"passed":true}
