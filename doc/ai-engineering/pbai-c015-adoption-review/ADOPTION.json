@@ -15,7 +15,7 @@
   "expertCandidateEnabled": false,
   "baselineReleaseId": "AI-GEN3-RELEASE-001",
   "newGenerationIssued": false,
-  "deploymentStatus": "DEPLOYMENT-PENDING",
+  "deploymentStatus": "DEPLOYED-ASSETS-VERIFIED",
   "deviceEvidence": {
     "source": "user report in conversation",
     "device": "moto g52j 5G",
@@ -51,5 +51,21 @@
     "public/service-worker.js": "e83f8c88b157a044d7f26bdcd600a1d23a6d1acfb885ede19563375106c307ae",
     "public/sitemap.xml": "d4d8abeb7a57d9b83f1ef62d84546fba9bf2a332ad92d0cdc01f2e96d2d8913c",
     "public/style.css": "e2c3167f21b2167740089163b26d5f496a1225249c726847096872e8010eb501"
+  },
+  "deploymentVerification": {
+    "url": "https://bao-la-kiswahili.cultivationdata.net/",
+    "verifiedDateUtc": "2026-09-09",
+    "verifiedDateJapan": "2026-09-10",
+    "referenceCommit": "84f5c259c24b61c29ed0d1ae613442e489bcb455",
+    "deployedCommitMetadataVerified": false,
+    "filesChecked": 22,
+    "byteIdenticalFiles": 19,
+    "edgeModifiedFiles": [
+      "public/index.html",
+      "public/privacy.html",
+      "public/robots.txt"
+    ],
+    "postDeploymentBrowserGameVerified": false,
+    "record": "DEPLOYMENT.md"
   }
 }

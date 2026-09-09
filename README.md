@@ -186,7 +186,7 @@ PBAI-P1〜P9は完了しており、進行中の改善プログラムはあり�
 
 PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8・P9の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
 
-[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。このツリーではhardを有効化し、expertはAI-GEN3を維持します。実サイトへの正式配信の照合は未完了で、配信状態は`DEPLOYMENT-PENDING`です。
+[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。このツリーではhardを有効化し、expertはAI-GEN3を維持します。実サイトへの配信内容を照合し、配信状態は`DEPLOYED-ASSETS-VERIFIED`です。[配信確認記録](doc/ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)に結果と未確認範囲をまとめています。
 
 ### 詳細資料
 
