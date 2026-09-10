@@ -4,7 +4,7 @@
 
 チャットの実行セッションを長時間試験の唯一の実行基盤にしない。独立したGitHub Actionsの2ジョブで、保存点の生成、外部成果物への保存、別ジョブでの取得、SHA-256と出自コミットの照合を行う事前確認を追加した。
 
-実装は`tools/engineering/test-expert-durable-runner.cjs`と`.github/workflows/expert-durable-runner-preflight.yml`である。既知初期局面の合法な1手だけを用い、棋力用seedは消費しない。改ざんと出自コミット不一致を拒否する。ローカルの生成・検証は成功した。GitHubのジョブ間確認結果は後続のCI記録に保存する。
+実装は`tools/engineering/test-expert-durable-runner.cjs`と`.github/workflows/expert-durable-runner-preflight.yml`である。既知初期局面の合法な1手だけを用い、棋力用seedは消費しない。改ざんと出自コミット不一致を拒否する。ローカルの生成・検証は成功した。GitHubのrun `34423611222`（commit `19e12e41af1108075bc08b931e8c88a185360019`）で2ジョブとも成功し、[確認記録](../../../artifacts/pbai-p10/incident/DURABLE_RUNNER_PREFLIGHT.json)へ保存した。
 
 これは実行基盤の小規模な確認であり、12時間の耐久試験や新しいexpert棋力試験の完了ではない。GitHub側の障害や上限をなくすものでもない。
 

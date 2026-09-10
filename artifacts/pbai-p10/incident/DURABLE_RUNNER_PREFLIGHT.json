@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "runId": 34423611222,
+  "sourceCommit": "19e12e41af1108075bc08b931e8c88a185360019",
+  "jobs": [
+    {
+      "jobId": 102704076593,
+      "result": {
+        "produced": true,
+        "sourceCommit": "19e12e41af1108075bc08b931e8c88a185360019",
+        "strengthSeedsConsumed": false
+      }
+    },
+    {
+      "jobId": 102704118776,
+      "result": {
+        "passed": true,
+        "sourceCommit": "19e12e41af1108075bc08b931e8c88a185360019",
+        "strengthSeedsConsumed": false
+      }
+    }
+  ],
+  "longDurationEnduranceVerified": false,
+  "newStrengthTrialStarted": false,
+  "scope": "separate GitHub jobs: artifact upload/download, hash, provenance, known transition and negative controls"
+}
