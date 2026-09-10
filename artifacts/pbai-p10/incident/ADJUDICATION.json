@@ -1,0 +1,19 @@
+{
+  "program": "PBAI-P10",
+  "decision": "TECHNICAL-INVALID / HOLD",
+  "adjudication": "post-interruption adjudication under the unchanged frozen protocol; not a recovered supervisor output",
+  "dateUtc": "2026-09-10T00:55:16.333163+00:00",
+  "reason": "lost execution session; incomplete primary sample; mandatory final verification absent",
+  "supervisorFinalResultProduced": false,
+  "strengthInferenceAuthorized": false,
+  "expertCandidateAdopted": false,
+  "generationPromoted": false,
+  "hardAdoptionUnchanged": true,
+  "publicChanged": false,
+  "sameSeedRestartAuthorized": false,
+  "rawFilesPreserved": true,
+  "diagnosticReplayPassed": true,
+  "completePairedGames": 36,
+  "completeGamesIncludingUnpairedLog": 37,
+  "partialGames": 1
+}

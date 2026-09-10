@@ -1,0 +1,51 @@
+name: expert長時間試験の独立実行基盤確認
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/expert-durable-runner-preflight.yml'
+      - 'tools/engineering/test-expert-durable-runner.cjs'
+permissions:
+  contents: read
+jobs:
+  produce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 既知局面だけで保存点を作る
+        run: node tools/engineering/test-expert-durable-runner.cjs produce
+      - uses: actions/upload-artifact@v4
+        with:
+          name: expert-runner-checkpoint
+          path: artifacts/local/expert-runner-preflight/checkpoint.json
+          if-no-files-found: error
+          retention-days: 30
+  consume:
+    needs: produce
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          name: expert-runner-checkpoint
+          path: artifacts/local/expert-runner-preflight
+      - name: 別ジョブで復元と改ざん拒否を確認
+        run: node tools/engineering/test-expert-durable-runner.cjs consume
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: expert-runner-verification
+          path: artifacts/local/expert-runner-preflight/
+          if-no-files-found: error
+          retention-days: 30

@@ -2,7 +2,7 @@
 
 ## 目的と現在の状態
 
-PBAI-C015-v1を公開expertの実設定へ適用できるか、新しい対局集団で検証する。現在は正式試験の実行中で、expertの正式採用、main統合、公開切替、AI-GEN4昇格は行っていない。hardの正式採用と配信確認は維持する。
+PBAI-C015-v1を公開expertの実設定へ適用できるか、新しい対局集団で検証する。正式試験は中断し、`TECHNICAL-INVALID / HOLD`で終了した。expertの正式採用、main統合、公開切替、AI-GEN4昇格は行っていない。hardの正式採用と配信確認は維持する。中断の詳細は[最終報告](PROGRAM_FINAL_REPORT.md)、対策は[実行基盤の対策](EXECUTION_RECOVERY.md)を参照する。
 
 最新mainはGitHubから取得した`c062dd739216a914defac7ace8836b429c44fa02`。作業ブランチは`engineering/pbai-p10-expert-validation`である。サブエージェントは使用しない。
 

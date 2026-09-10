@@ -5,3 +5,5 @@
 正式実行の生記録は`run/`へ一度だけ書き込み、終了時に監視器が`final-evidence.tar.gz`とSHA-256索引を作成する。実行前・実行中を完了済みと扱わない。過去P6〜P9の正式結果は変更しない。
 
 [固定計画](../../doc/ai-engineering/public-ai-improvement-program-10/PROTOCOL.md)と[再開手順](../../doc/ai-engineering/public-ai-improvement-program-10/RESUME_HERE.md)を参照する。時間付き対局の再実行ではなく、保存状態の確認から再開する。
+
+実行は途中で止まり、監視器による最終アーカイブは生成されなかった。[中断時の保全と診断](incident/README.md)を正本とする。技術的無効の判断を保存し、部分成績から採用しない。
