@@ -1,0 +1,12 @@
+{
+  "program": "PBAI-P11",
+  "runId": 34439270384,
+  "sourceCommit": "0dd3bb6daf19bf00803d43c91bc832fb38d0213f",
+  "sourceLockSha256": "d2d73a9ac04c6901ed978829d375a548a31e99b3a398df68800a8368e9def9e5",
+  "specSha256": "4a04b4b226ceb6d1c35ac797784f52e66e404164e79231494e1218beb9b2e2ea",
+  "attempt": 1,
+  "boundBeforeSeedAccess": true,
+  "outcomeIndependent": true,
+  "runUrl": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34439270384",
+  "pullRequest": 129
+}

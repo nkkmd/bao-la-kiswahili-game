@@ -4,7 +4,7 @@
 現在の公開AI系統: **`AI-GEN3`**
 現在の正式release: **`AI-GEN3-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`**
-進行中Program: **`PBAI-P11`（expertの独立再試験・開始準備）**
+進行中Program: **`PBAI-P11`（expertの独立再試験・GitHub実行34439270384）**
 公開準備: [PBAI-C015-v1のhard限定採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)（`ADOPT`、正式配信の照合前）
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
@@ -279,4 +279,4 @@ expertの3設定と高設定hardについて、Nodeで既知9局面・両構成�
 
 ## PBAI-P11：expertの独立再試験
 
-[PBAI-P11](ai-engineering/public-ai-improvement-program-11/README.md)は、新しいseedで公開expertの低・標準・高の全設定を検証する。P10の中断判断と証拠を保持し、候補・棋力条件を変えず、対局8ペアごとのGitHub保存点と単一実行IDによってチャット終了後も継続する。開始準備中であり結果は未確定。正式採用・main統合・公開切替・AI-GEN4昇格は未実施である。
+[PBAI-P11](ai-engineering/public-ai-improvement-program-11/README.md)は、新しいseedで公開expertの低・標準・高の全設定を検証する。P10の中断判断と証拠を保持し、候補・棋力条件を変えず、対局8ペアごとのGitHub保存点と単一実行IDによってチャット終了後も継続する。GitHub実行34439270384へ開始前に結び付け、結果は未確定。正式採用・main統合・公開切替・AI-GEN4昇格は未実施である。
