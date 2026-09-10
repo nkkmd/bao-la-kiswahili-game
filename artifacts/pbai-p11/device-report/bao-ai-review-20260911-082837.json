@@ -1,0 +1,244 @@
+[
+  {
+    "format": "bao-ai-diagnostic",
+    "version": 1,
+    "position": {
+      "pits": [
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            6,
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            2,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            6,
+            2,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "reserve": [
+        20,
+        21
+      ],
+      "houseOwned": [
+        true,
+        true
+      ],
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "turn": 4,
+      "pending": [
+        0,
+        0
+      ]
+    },
+    "mode": "computer",
+    "ai": {
+      "level": "hard",
+      "profile": "bao",
+      "move": {
+        "type": "takata",
+        "phase": "namua",
+        "row": 0,
+        "index": 5,
+        "direction": "left"
+      },
+      "stats": {
+        "elapsedMs": 605.4000000059605,
+        "nodes": 7914,
+        "quiescenceNodes": 3926,
+        "cutoffs": 2276,
+        "cacheHits": 323,
+        "cacheStores": 2072,
+        "completedDepth": 8,
+        "timedOut": true,
+        "evaluationRequests": 5070,
+        "evaluations": 3281,
+        "evaluationCacheHits": 1789,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 1233,
+        "evaluationCandidate": "PBAI-C015-v1",
+        "evaluationFallback": false
+      }
+    },
+    "review": {
+      "status": "unreviewed",
+      "recommendation": "save",
+      "score": 4,
+      "recentMedianDepth": 9,
+      "signals": [
+        {
+          "type": "timeout",
+          "label": "探索が時間切れになりました",
+          "weight": 2,
+          "value": true
+        },
+        {
+          "type": "opponent-capture-options-increase",
+          "label": "相手の捕獲可能手が増加しました",
+          "weight": 2,
+          "before": 0,
+          "after": 2
+        }
+      ]
+    },
+    "reason": "unexpected-ai-move"
+  },
+  {
+    "format": "bao-ai-diagnostic",
+    "version": 1,
+    "position": {
+      "pits": [
+        [
+          [
+            1,
+            2,
+            1,
+            0,
+            7,
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      ],
+      "reserve": [
+        18,
+        19
+      ],
+      "houseOwned": [
+        true,
+        true
+      ],
+      "player": 1,
+      "phase": "namua",
+      "winner": null,
+      "reason": "",
+      "turn": 8,
+      "pending": [
+        0,
+        0
+      ]
+    },
+    "mode": "computer",
+    "ai": {
+      "level": "expert",
+      "profile": "bao",
+      "move": {
+        "type": "capture",
+        "phase": "namua",
+        "row": 0,
+        "index": 7,
+        "direction": "left",
+        "side": "right",
+        "houseChoice": "use"
+      },
+      "stats": {
+        "elapsedMs": 3009.5,
+        "nodes": 32882,
+        "quiescenceNodes": 19874,
+        "cutoffs": 8439,
+        "cacheHits": 651,
+        "cacheStores": 5957,
+        "completedDepth": 9,
+        "timedOut": true,
+        "evaluationRequests": 14175,
+        "evaluations": 13096,
+        "evaluationCacheHits": 1079,
+        "evaluationCachePeak": 2048,
+        "evaluationCacheEvictions": 11048,
+        "evaluationCandidate": "PBAI-C015-v1",
+        "evaluationFallback": false
+      }
+    },
+    "review": {
+      "status": "unreviewed",
+      "recommendation": "save",
+      "score": 4,
+      "recentMedianDepth": 10,
+      "signals": [
+        {
+          "type": "timeout",
+          "label": "探索が時間切れになりました",
+          "weight": 2,
+          "value": true
+        },
+        {
+          "type": "opponent-capture-options-increase",
+          "label": "相手の捕獲可能手が増加しました",
+          "weight": 2,
+          "before": 1,
+          "after": 7
+        }
+      ]
+    },
+    "reason": "unexpected-ai-move"
+  }
+]
