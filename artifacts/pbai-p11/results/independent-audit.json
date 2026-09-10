@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "summaries": {
+    "pilot": {
+      "games": 16,
+      "wins": 8,
+      "losses": 8,
+      "draws": 0,
+      "points": 0.5,
+      "phasePoints": {
+        "namua": 0.5,
+        "mtaji": 0.5
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 225,
+          "medianMs": 1166.4671610000078,
+          "p95Ms": 2024.6048190000001,
+          "maxMs": 2041.703668000002
+        },
+        "baseline": {
+          "requests": 225,
+          "medianMs": 2022.8237530000042,
+          "p95Ms": 2027.3870270000189,
+          "maxMs": 2034.433606000035
+        }
+      }
+    },
+    "low": {
+      "games": 256,
+      "wins": 146,
+      "losses": 110,
+      "draws": 0,
+      "points": 0.5703125,
+      "phasePoints": {
+        "namua": 0.640625,
+        "mtaji": 0.5
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 3668,
+          "medianMs": 782.9993545000034,
+          "p95Ms": 1539.3099060000095,
+          "maxMs": 1552.65409
+        },
+        "baseline": {
+          "requests": 3650,
+          "medianMs": 1484.2464120000222,
+          "p95Ms": 1542.6875419999997,
+          "maxMs": 1560.6779990000068
+        }
+      }
+    },
+    "standard": {
+      "games": 256,
+      "wins": 146,
+      "losses": 110,
+      "draws": 0,
+      "points": 0.5703125,
+      "phasePoints": {
+        "namua": 0.640625,
+        "mtaji": 0.5
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 3691,
+          "medianMs": 1971.8820940000005,
+          "p95Ms": 2039.9443749999627,
+          "maxMs": 2132.170287
+        },
+        "baseline": {
+          "requests": 3673,
+          "medianMs": 2036.8464270000113,
+          "p95Ms": 2043.1472160000121,
+          "maxMs": 2075.4828589999815
+        }
+      }
+    },
+    "high": {
+      "games": 256,
+      "wins": 141,
+      "losses": 115,
+      "draws": 0,
+      "points": 0.55078125,
+      "phasePoints": {
+        "namua": 0.578125,
+        "mtaji": 0.5234375
+      },
+      "operation": true,
+      "latency": {
+        "logic": {
+          "requests": 3737,
+          "medianMs": 3036.1999469999864,
+          "p95Ms": 3040.4299619999947,
+          "maxMs": 3107.179728
+        },
+        "baseline": {
+          "requests": 3724,
+          "medianMs": 3038.127050000003,
+          "p95Ms": 3043.3543439999994,
+          "maxMs": 3095.670682
+        }
+      }
+    }
+  },
+  "final": {
+    "passed": true,
+    "tiers": {
+      "low": {
+        "games": 256,
+        "wins": 146,
+        "losses": 110,
+        "draws": 0,
+        "points": 0.5703125,
+        "phasePoints": {
+          "namua": 0.640625,
+          "mtaji": 0.5
+        },
+        "operation": true,
+        "latency": {
+          "logic": {
+            "requests": 3668,
+            "medianMs": 782.9993545000034,
+            "p95Ms": 1539.3099060000095,
+            "maxMs": 1552.65409
+          },
+          "baseline": {
+            "requests": 3650,
+            "medianMs": 1484.2464120000222,
+            "p95Ms": 1542.6875419999997,
+            "maxMs": 1560.6779990000068
+          }
+        },
+        "clusters": 128,
+        "interval95": [
+          0.53125,
+          0.60546875
+        ],
+        "passed": true,
+        "decision": "STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN"
+      },
+      "standard": {
+        "games": 256,
+        "wins": 146,
+        "losses": 110,
+        "draws": 0,
+        "points": 0.5703125,
+        "phasePoints": {
+          "namua": 0.640625,
+          "mtaji": 0.5
+        },
+        "operation": true,
+        "latency": {
+          "logic": {
+            "requests": 3691,
+            "medianMs": 1971.8820940000005,
+            "p95Ms": 2039.9443749999627,
+            "maxMs": 2132.170287
+          },
+          "baseline": {
+            "requests": 3673,
+            "medianMs": 2036.8464270000113,
+            "p95Ms": 2043.1472160000121,
+            "maxMs": 2075.4828589999815
+          }
+        },
+        "clusters": 128,
+        "interval95": [
+          0.5390625,
+          0.6015625
+        ],
+        "passed": true,
+        "decision": "STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN"
+      },
+      "high": {
+        "games": 256,
+        "wins": 141,
+        "losses": 115,
+        "draws": 0,
+        "points": 0.55078125,
+        "phasePoints": {
+          "namua": 0.578125,
+          "mtaji": 0.5234375
+        },
+        "operation": true,
+        "latency": {
+          "logic": {
+            "requests": 3737,
+            "medianMs": 3036.1999469999864,
+            "p95Ms": 3040.4299619999947,
+            "maxMs": 3107.179728
+          },
+          "baseline": {
+            "requests": 3724,
+            "medianMs": 3038.127050000003,
+            "p95Ms": 3043.3543439999994,
+            "maxMs": 3095.670682
+          }
+        },
+        "clusters": 128,
+        "interval95": [
+          0.515625,
+          0.5859375
+        ],
+        "passed": true,
+        "decision": "STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN"
+      }
+    },
+    "decision": "EXPERT-STRENGTH-PASS / ADOPTION-PENDING"
+  },
+  "physicalDeviceVerified": false
+}

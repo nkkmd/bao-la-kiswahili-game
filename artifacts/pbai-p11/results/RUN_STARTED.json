@@ -1,0 +1,13 @@
+{
+  "program": "PBAI-P11",
+  "runId": 34439270384,
+  "executionCommit": "0dd3bb6daf19bf00803d43c91bc832fb38d0213f",
+  "sourceLockSha256": "d2d73a9ac04c6901ed978829d375a548a31e99b3a398df68800a8368e9def9e5",
+  "authorizationSha256": "ac9bb267777181ab6e9c132f53a5bd09de414be4a6db0f3d0c3c4144c8b56600",
+  "startedUnix": 1789016413.3626106,
+  "deadlineUnix": 1789102813.3626106,
+  "node": "v24.20.0",
+  "python": "3.12.14",
+  "logicalCpus": 4,
+  "consumedOnce": true
+}

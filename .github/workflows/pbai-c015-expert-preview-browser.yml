@@ -1,0 +1,40 @@
+name: PBAI-C015 expert実機用コピーの公開経路確認
+on:
+  pull_request:
+    paths:
+      - 'tools/engineering/*pbai-c015-expert-preview*'
+      - 'tools/engineering/lib/pbai-p11-adapter.cjs'
+      - 'test/pbai-c015-expert-preview.test.cjs'
+      - '.github/workflows/pbai-c015-expert-preview-browser.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 公開資産と既知挙動の回帰確認
+        run: node --test test/pbai-c015-integration.test.cjs test/ai-generation-release.test.js test/ai-config.test.js test/tactical.test.js test/engine.test.js test/ai.test.js test/ai-worker.test.js test/worker-integration.test.js test/diagnostics-ui.test.js
+      - name: 生成済みコピーのWorker・直接実行・回帰確認
+        run: node --test test/pbai-c015-expert-preview.test.cjs
+      - name: ブラウザを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pbai-c015-expert-preview" playwright@1.62.1
+          node "$RUNNER_TEMP/pbai-c015-expert-preview/node_modules/playwright/cli.js" install --with-deps ${{ matrix.engine }}
+      - name: expert候補の画面と切戻しを確認
+        run: NODE_PATH="$RUNNER_TEMP/pbai-c015-expert-preview/node_modules" node tools/engineering/test-pbai-c015-expert-preview-browser.cjs ${{ matrix.engine }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-c015-expert-preview-${{ matrix.engine }}
+          path: artifacts/local/pbai-c015-expert-preview-browser/
