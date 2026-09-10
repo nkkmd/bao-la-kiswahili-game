@@ -1,5 +1,9 @@
 # PBAI-P11：進捗照会と引継ぎ
 
+## 実機所見確認後の現在状態
+
+ユーザーから約20分の実機確認で全項目に問題なしとの回答を受け、[expert正式採用](ADOPTION.md)を`PBAI-C015-EXPERT-ADOPTION-001 / ADOPT`として記録した。本番用組込み・main統合・本番配信・AI-GEN4昇格は未実施。以下の採用保留・所見待ちは本判断前の履歴として保持する。
+
 ## 最初に確認すること
 
 正式対局・検算は完了し、`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`である。証拠は`artifacts/pbai-p11/results`へ保全済み。実機用コピーの3ブラウザ確認も完了した。約20分の実機報告とhard・expert各1件の診断を受領した。次は[実機手順](DEVICE_CHECK.md)に記録した使用感・各操作の所見の確認であり、対局の再実行ではない。[最終報告](PROGRAM_FINAL_REPORT.md)と[組込み準備](INTEGRATION_PREPARATION.md)を先に読む。以下の実行照会手順は出自確認のために保持する。

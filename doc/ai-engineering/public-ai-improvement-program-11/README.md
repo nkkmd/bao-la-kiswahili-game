@@ -2,7 +2,7 @@
 
 ## 目的と現在状態
 
-PBAI-C015-v1のexpert独立再試験は、低・標準・高の全設定で合格し、全棋譜再生と独立集計も完了した。判断は`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`。実機用コピーの3ブラウザ確認も通過し、現在は約20分のスマートフォン実機報告と診断JSONを受領し、使用感・各操作の所見を確認中である。[最終報告](PROGRAM_FINAL_REPORT.md)に結果と限界をまとめた。
+PBAI-C015-v1はexpertの全3設定で棋力・運用・独立検算に合格し、3ブラウザ確認と約20分の実機で問題なしとの報告を受けた。[正式採用判断](ADOPTION.md)は`PBAI-C015-EXPERT-ADOPTION-001 / ADOPT`。本番用組込み・main統合・本番配信・AI-GEN4昇格は未実施である。[最終報告](PROGRAM_FINAL_REPORT.md)の実験終了時判断と固定証拠は保持する。
 
 P10は中断により`TECHNICAL-INVALID / HOLD`で終了した。[P10最終報告](../public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md)と凍結証拠を保持し、部分結果をP11へ合算しない。hardの正式採用・配信確認状態を維持し、expertはAI-GEN3のままである。
 
