@@ -4,7 +4,7 @@
 現在の公開AI系統: **`AI-GEN3`**
 現在の正式release: **`AI-GEN3-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`**
-進行中Program: **`PBAI-P11`（expertの独立再試験・GitHub実行34439270384）**
+進行中Program: **`PBAI-P11`（expert棋力合格・実機確認と採用準備）**
 公開準備: [PBAI-C015-v1のhard限定採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)（`ADOPT`、正式配信の照合前）
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
@@ -275,8 +275,8 @@ expertの3設定と高設定hardについて、Nodeで既知9局面・両構成�
 
 [PBAI-P10](ai-engineering/public-ai-improvement-program-10/README.md)で、PBAI-C015-v1を低・標準・高のexpert実設定に適用できるか検証する。各設定の棋力を別々に判定し、P8・P9の成績は加算しない。実行中断により`TECHNICAL-INVALID / HOLD`となった。棋力改善は未判定であり、hardのADOPTと配信確認、expertのAI-GEN3を維持する。main統合・公開切替・AI-GEN4昇格は結果報告後の明示指示待ちである。
 
-[中断調査と最終報告](ai-engineering/public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md)に、環境喪失の疑い、未確定の原因、保存棋譜の診断検算と再実行禁止を記録した。長時間実行の基盤確認を別途進め、新しい棋力試験は未開始である。
+[中断調査と最終報告](ai-engineering/public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md)に、環境喪失の疑い、未確定の原因、保存棋譜の診断検算と再実行禁止を記録した。長時間実行の基盤確認を通過し、新しい棋力試験はPBAI-P11として実施・検算を完了した。P10の終了判断は変更していない。
 
 ## PBAI-P11：expertの独立再試験
 
-[PBAI-P11](ai-engineering/public-ai-improvement-program-11/README.md)は、新しいseedで公開expertの低・標準・高の全設定を検証する。P10の中断判断と証拠を保持し、候補・棋力条件を変えず、対局8ペアごとのGitHub保存点と単一実行IDによってチャット終了後も継続する。GitHub実行34439270384へ開始前に結び付け、結果は未確定。正式採用・main統合・公開切替・AI-GEN4昇格は未実施である。
+[PBAI-P11](ai-engineering/public-ai-improvement-program-11/README.md)は、新しいseedで公開expertの低・標準・高の全設定を検証する。P10の中断判断と証拠を保持し、候補・棋力条件を変えず、対局8ペアごとのGitHub保存点と単一実行IDによってチャット終了後も継続する。GitHub実行34439270384で各256局を完了し、3設定すべてで棋力・運用条件と独立検算に合格した。終了証拠510ファイルを保全し、生成した実機用コピーの3ブラウザ各10項目も通過した。スマートフォン実機確認待ちである。正式採用・main統合・公開切替・AI-GEN4昇格は未実施である。

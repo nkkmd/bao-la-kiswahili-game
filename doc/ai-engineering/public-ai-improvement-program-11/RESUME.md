@@ -2,6 +2,8 @@
 
 ## 最初に確認すること
 
+正式対局・検算は完了し、`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`である。証拠は`artifacts/pbai-p11/results`へ保全済み。実機用コピーの3ブラウザ確認も完了した。次は[実機手順](DEVICE_CHECK.md)に沿ったユーザー報告の確認であり、対局の再実行ではない。[最終報告](PROGRAM_FINAL_REPORT.md)と[組込み準備](INTEGRATION_PREPARATION.md)を先に読む。以下の実行照会手順は出自確認のために保持する。
+
 GitHubの`engineering/pbai-p11-expert-validation`ブランチに保存した実行結付けファイル`AUTHORIZATION.json`を読み、run ID、凍結commit、SPECとSOURCE_LOCKのhashを照合する。未作成なら正式試験は未結付けである。結付け後は対象runだけを確認し、後続commitによる対局未許可の別runを本試験と混同しない。
 
 実行一覧とジョブ状態を読み、最後に成功したバッチ、実行中バッチ、終了ジョブを確認する。8ペア単位の途中保存を正式な進捗根拠とし、実行中ジョブから未保存の局数を推測しない。開始記録は`pbai-p11-checkpoint-initial`にある。

@@ -2,7 +2,7 @@
 
 ## 目的と現在状態
 
-PBAI-C015-v1が公開expertの低・標準・高の全設定で現在のAI-GEN3を改善するか、新しいseedで検証する。固定条件を公開し、[GitHub実行34439270384](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34439270384)へ開始前に結び付けた。結果は未確定。チャットを終了してもGitHub側で対局と検算を継続する。
+PBAI-C015-v1のexpert独立再試験は、低・標準・高の全設定で合格し、全棋譜再生と独立集計も完了した。判断は`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`。実機用コピーの3ブラウザ確認も通過し、現在はスマートフォン実機の確認待ちである。[最終報告](PROGRAM_FINAL_REPORT.md)に結果と限界をまとめた。
 
 P10は中断により`TECHNICAL-INVALID / HOLD`で終了した。[P10最終報告](../public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md)と凍結証拠を保持し、部分結果をP11へ合算しない。hardの正式採用・配信確認状態を維持し、expertはAI-GEN3のままである。
 
@@ -12,8 +12,9 @@ P10は中断により`TECHNICAL-INVALID / HOLD`で終了した。[P10最終報�
 2. [機械定義](SPEC.json)で新しいseed、49バッチ、資源枠を確認する。
 3. [再開・照会手順](RESUME.md)で実行IDと保存証拠の確認方法を確認する。
 4. [品質監査](QUALITY_AUDIT.md)で準備確認と文書監査の範囲を確認する。
+5. [組込み準備](INTEGRATION_PREPARATION.md)と[実機手順](DEVICE_CHECK.md)で、生成するコピーと確認項目を確認する。
 
-pilot16局の運用確認後、3設定それぞれ256局、計768局を試す。勝率の良い設定だけを選ばず、全設定が事前条件を満たすことを要求する。完了時の`pbai-p11-final-evidence` artifactには日本語報告、判断JSON、棋譜・検算の圧縮証拠を保存する。棋力合格でも実機確認と正式採用は別工程である。
+pilot16局の運用確認後、3設定それぞれ256局、計768局を完了した。低・標準は各146勝110敗、高は141勝115敗。全設定が事前条件を満たした。終了証拠510ファイルはリポジトリへ保全済みであり、棋力合格でも実機確認と正式採用は別工程である。
 
 ## 採用と世代の境界
 
