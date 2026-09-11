@@ -4,7 +4,25 @@
 
 expertは[正式採用済み](../public-ai-improvement-program-11/ADOPTION.md)である。ユーザーから本番組込み・main統合・配信・AI-GEN4昇格を進める明示指示を受け、本番用publicへの接続を行う。Cloudflareの配信操作はユーザーが担当する。
 
-本番用コードを用意し、関連Node21試験が合格した。3ブラウザで本番用publicそのものの確認を実施し、合格後にmainへ統合する。ここでは配信前の状態を記録しており、本番配信確認・AI-GEN4昇格・新しいAI世代release ID発行は未実施である。
+本番用コードと関連Node21試験、3ブラウザの各10項目が合格し、[PR #130](https://github.com/nkkmd/bao-la-kiswahili-game/pull/130)をmainへ統合した。統合commitは`b0d76af2c446c032b455a597df2232c25681e78b`。現在はユーザーによる本番配信待ちである。本番配信確認・AI-GEN4昇格・新しいAI世代release ID発行は未実施である。[機械可読の状態記録](DEPLOYMENT.json)と[公開22ファイルの照合一覧](PUBLIC_MANIFEST.json)を併記する。
+
+## 本番組込みの検証結果
+
+検証対象commitは`f90e05c5d2665305082fd4c9b374328b5d531170`。[本番組込み確認](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34546157560)と[AI-GEN3正式資産検証](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34546157394)はともに成功した。公開画面・連続応答・取消・難易度変更・通信不能時のキャッシュ・expertだけの切戻し・Worker代替実行・候補とモデルの取得失敗を確認した。
+
+| 自動ブラウザ | バージョン | 結果 |
+| --- | --- | --- |
+| Chromium | 151.0.7922.34 | [10項目合格](../../../artifacts/pbai-c015-expert-production/chromium.json) |
+| Firefox | 153.0 | [10項目合格](../../../artifacts/pbai-c015-expert-production/firefox.json) |
+| WebKit | 26.5 | [10項目合格](../../../artifacts/pbai-c015-expert-production/webkit.json) |
+
+これは今回の本番用publicに対する自動確認であり、新しい棋力改善の証拠や本番サイトでの実機対局報告ではない。スマートフォンについてはP11で受領した実機用コピーの約20分の報告を引き継ぐ。本番での再対局、実機のピークメモリ、実機オフライン操作は確認済みとは扱わない。
+
+## ユーザーによる配信と再開手順
+
+Cloudflareの本番プロジェクトで、mainの上記統合commit（またはpublicの内容が同一と確認された後続commit）を配信する。配信対象ディレクトリは`public`一式、全22ファイル。既存のビルド設定を使い、実機用ZIPや実機コピー生成器は使わない。配信先は`https://bao-la-kiswahili.cultivationdata.net/`である。
+
+配信完了の連絡を受けたら、PUBLIC_MANIFEST.jsonの全ファイルを取得して照合する。CloudflareがHTML等へ追加する部分は、完全一致と区別して内容を確認する。候補有効化・expert採用判断ID・キャッシュv36が反映されたことを記録してから、承認済みのAI-GEN4正式化へ進む。表示更新を含む次の配信もユーザーへ依頼する。現在のAI-GEN3表示は、配信確認前に昇格を記録しないための意図した状態である。
 
 ## 本番用の変更
 
