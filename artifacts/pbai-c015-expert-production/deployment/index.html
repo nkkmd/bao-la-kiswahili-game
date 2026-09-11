@@ -45,7 +45,7 @@
           <h1>BAO LA KISWAHILI</h1>
           <span class="prototype-badge" data-ja="試作版">PROTOTYPE</span>
           <span id="ai-generation-badge" class="ai-generation-badge"
-            title="AI-GEN4-RELEASE-001" data-ja="AI-GEN4 / ふつう">AI-GEN4 / Normal</span>
+            title="AI-GEN3-RELEASE-001" data-ja="AI-GEN3 / ふつう">AI-GEN3 / Normal</span>
         </div>
         <div class="toolbar">
           <button id="sound" type="button" aria-pressed="true">SOUND ON</button>
@@ -184,7 +184,7 @@
           const [english, japanese] = labels[difficulty.value] || labels.normal;
           const identity = window.BaoReleaseConfig.displayIdentity(difficulty.value);
           badge.textContent = `${window.BaoLocale.t(identity.label, identity.labelJa)} / ${window.BaoLocale.t(english, japanese)}`;
-          badge.title = [identity.releaseId, identity.adoptionId].filter(Boolean).join(" / ");
+          badge.title = identity.releaseId;
           badge.hidden = mode.value !== "computer";
         };
         difficulty.addEventListener("change", updateBadge);
@@ -192,5 +192,5 @@
         updateBadge();
       })();
     </script>
-  </body>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a393eb3d081118f0',t:'MTc4OTEwMDgzNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

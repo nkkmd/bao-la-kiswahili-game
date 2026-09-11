@@ -45,12 +45,12 @@ for (const path of immutableAIAssets) {
 // The release manifest records the bytes deployed at promotion time. The current
 // UI shell may evolve as long as it keeps the generation disclosure contract.
 assert.match(html, /id="ai-generation-badge"/);
-assert.match(html, /AI-GEN3 \/ Normal/);
-assert.match(html, /data-ja="AI-GEN3 \/ ふつう"/);
+assert.match(html, /AI-GEN4 \/ Normal/);
+assert.match(html, /data-ja="AI-GEN4 \/ ふつう"/);
 assert.match(html, /easy: \["Easy", "やさしい"\]/);
 assert.match(html, /expert: \["Mtaalamu", "ムタアラム"\]/);
 assert.match(html, /BaoReleaseConfig\.displayIdentity/);
 assert.match(main, /AIConfig\.displayIdentity/);
-assert.match(serviceWorker, /bao-la-kiswahili-v36/);
+assert.match(serviceWorker, /bao-la-kiswahili-v37/);
 
 console.log("AI-GEN3 release tests passed");

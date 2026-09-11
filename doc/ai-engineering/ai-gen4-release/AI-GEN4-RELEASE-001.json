@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "AI-GEN4-RELEASE-001",
+  "decisionDate": "2026-09-11",
+  "decision": "ADOPT",
+  "status": "ADOPTED / PROMOTED",
+  "generationLineageBefore": "AI-GEN3",
+  "generationLineageAfter": "AI-GEN4",
+  "candidateId": "PBAI-C015-v1",
+  "programIds": [
+    "PBAI-P8",
+    "PBAI-P9",
+    "PBAI-P11"
+  ],
+  "adoptionIds": {
+    "hard": "PBAI-C015-HARD-ADOPTION-001",
+    "expert": "PBAI-C015-EXPERT-ADOPTION-001"
+  },
+  "publicScope": {
+    "enabled": [
+      "hard/default-bao/phase2",
+      "expert/default-bao/phase2"
+    ],
+    "retainedBaseline": [
+      "easy",
+      "normal"
+    ],
+    "excluded": [
+      "explicit-legacy",
+      "explicit-mcts",
+      "explicit-bao-v2",
+      "custom-weights",
+      "custom-adjustments"
+    ]
+  },
+  "verifiedPublicDeployment": {
+    "sourceCommit": "2078f4c93c18c56e013ef525d4d84b35746c7437",
+    "url": "https://bao-la-kiswahili.cultivationdata.net/",
+    "status": "DEPLOYED-ASSETS-VERIFIED",
+    "evidence": "artifacts/pbai-c015-expert-production/deployment/verification.json",
+    "exactMatchCount": 19,
+    "providerAdditionReviewedCount": 3
+  },
+  "promotionRecord": {
+    "explicitUserAuthorization": true,
+    "publicDefaultAlreadyDeployed": true,
+    "uiDisclosureDeploymentStatus": "PREPARED / NOT-DEPLOYED",
+    "uiDisclosureMainIntegrated": false
+  },
+  "applicationVersionTagIssued": false,
+  "postDeploymentBrowserGameVerified": false,
+  "productionPhysicalDeviceVerified": false
+}

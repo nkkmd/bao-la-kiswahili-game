@@ -76,8 +76,13 @@ test('別難易度・profile・独自重みでは誤って有効にならない'
 test('正式設定と難易度別表示、復帰時の表示を確認', () => {
   assert.match(fs.readFileSync(path.join(root, 'public/ai-release.js'), 'utf8'), /const PBAI_C015_ENABLED = true;/);
   const { ctx } = load({ enabled: true });
-  assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard').labelJa, '論理ゲートAI');
-  assert.equal(ctx.BaoReleaseConfig.displayIdentity('expert').releaseId, 'PBAI-C015-EXPERT-ADOPTION-001');
+  assert.equal(ctx.BaoReleaseConfig.GENERATION, 'AI-GEN4');
+  assert.equal(ctx.BaoReleaseConfig.RELEASE_ID, 'AI-GEN4-RELEASE-001');
+  for (const level of ['easy', 'normal', 'hard', 'expert']) {
+    assert.equal(ctx.BaoReleaseConfig.displayIdentity(level).releaseId, 'AI-GEN4-RELEASE-001');
+  }
+  assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard').labelJa, 'AI-GEN4');
+  assert.equal(ctx.BaoReleaseConfig.displayIdentity('expert').adoptionId, 'PBAI-C015-EXPERT-ADOPTION-001');
   assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard', { evaluationFallback: true }).label, 'AI-GEN3');
 });
 
@@ -86,5 +91,5 @@ test('expertだけの切戻しでhardを維持する', () => {
   assert.equal(ctx.BaoReleaseConfig.searchOptions('expert').pbaiC015LogicGate, undefined);
   assert.equal(ctx.BaoReleaseConfig.searchOptions('hard').pbaiC015LogicGate, true);
   assert.equal(ctx.BaoReleaseConfig.displayIdentity('expert').releaseId, 'AI-GEN3-RELEASE-001');
-  assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard').releaseId, 'PBAI-C015-HARD-ADOPTION-001');
+  assert.equal(ctx.BaoReleaseConfig.displayIdentity('hard').adoptionId, 'PBAI-C015-HARD-ADOPTION-001');
 });

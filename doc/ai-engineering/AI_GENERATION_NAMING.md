@@ -2,7 +2,7 @@
 
 状態: **ACTIVE**  
 制定日: 2026-08-26  
-更新日: 2026-09-07
+更新日: 2026-09-11
 適用範囲: 公開Bao AIのengineering lineage命名
 
 人間向けの説明文は[`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)に従い、日本語を主言語とする。以下で定義するcanonical identifier自体は翻訳・改名しない。
@@ -55,9 +55,9 @@ legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索�
 - `bao-v2`という既存experimental evaluation profile名は`AI-GEN2`を意味しません。
 - profile名に`v2`が含まれていてもAI世代番号とは無関係です。
 
-### `AI-GEN3` — 現在の公開Bao AI系統
+### `AI-GEN3` — 継承元の公開Bao AI系統
 
-`AI-GEN3`は、PBAI-P5で正式採用した現在のpublic lineageです。最初の正式releaseは`AI-GEN3-RELEASE-001`です。
+`AI-GEN3`は、PBAI-P5で正式採用したpublic lineageです。最初の正式releaseは`AI-GEN3-RELEASE-001`です。
 
 `AI-GEN2`の探索・評価・ルール処理を継承し、hard/expertの既定Bao探索に`PBAI-C011-v1`の探索専用軽量局面遷移を加えた系統です。
 
@@ -78,6 +78,14 @@ legacy-only構成から発展し、Bao固有評価、強化Alpha-Beta系探索�
 PBAI-P5の`PBAI-C011-v1`はこの条件を最初にすべて満たしたため、2026年9月7日に`AI-GEN3`へ昇格しました。
 
 今後もrelease候補や未deploymentの採用決定を次世代名で先取りして呼んではいけません。
+
+### `AI-GEN4` — 現在の公開Bao AI系統
+
+2026年9月11日、hard・expertに論理ゲート型評価器PBAI-C015-v1を正式採用した公開AI世代として昇格しました。正式release IDは`AI-GEN4-RELEASE-001`です。AI-GEN3の探索・ルール・軽量局面遷移を継承します。easy・normalは従来構成を維持し、論理ゲート評価器の適用範囲に含めません。
+
+P8・P9に基づくhard採用と、独立seed・3端末設定のP11に基づくexpert採用、実機報告、回帰確認、実際の既定構成の本番配信内容確認を経て、明示的な昇格判断を行いました。事後に合格条件を緩和していません。P6・P7・P10のHOLD等は保持します。画面表示の再配信は別の状態として管理します。詳細は[正式昇格記録](ai-gen4-release/README.md)を参照してください。
+
+採用判断ID、AI世代release ID、アプリのバージョンタグを分けて管理します。この昇格は評価器の実質的な更新に基づき、表示修正だけによる世代更新ではありません。
 
 ## 4. Candidate命名規則
 

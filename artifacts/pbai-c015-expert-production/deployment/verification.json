@@ -1,0 +1,226 @@
+{
+  "verifiedAt": "2026-09-11T04:27:36.577607+00:00",
+  "site": "https://bao-la-kiswahili.cultivationdata.net/",
+  "sourceCommit": "f90e05c5d2665305082fd4c9b374328b5d531170",
+  "files": [
+    {
+      "path": "ai-candidate.js",
+      "success": true,
+      "sha256": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f",
+      "expectedSha256": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f",
+      "exactMatch": true,
+      "bytes": 38425,
+      "error": ""
+    },
+    {
+      "path": "ai-config.js",
+      "success": true,
+      "sha256": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+      "expectedSha256": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+      "exactMatch": true,
+      "bytes": 5120,
+      "error": ""
+    },
+    {
+      "path": "ai-release-worker.js",
+      "success": true,
+      "sha256": "84aaf2b2c2faa3aed066959ce6ee07d048a86c42bdfc0e6c29af6516c60c0a76",
+      "expectedSha256": "84aaf2b2c2faa3aed066959ce6ee07d048a86c42bdfc0e6c29af6516c60c0a76",
+      "exactMatch": true,
+      "bytes": 904,
+      "error": ""
+    },
+    {
+      "path": "ai-release.js",
+      "success": true,
+      "sha256": "595ed9d1becffbbb80c48022076d61b75864dab777c402132cf36728bc5eb6c8",
+      "expectedSha256": "595ed9d1becffbbb80c48022076d61b75864dab777c402132cf36728bc5eb6c8",
+      "exactMatch": true,
+      "bytes": 2311,
+      "error": ""
+    },
+    {
+      "path": "ai-weights.js",
+      "success": true,
+      "sha256": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "expectedSha256": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+      "exactMatch": true,
+      "bytes": 3269,
+      "error": ""
+    },
+    {
+      "path": "ai-worker.js",
+      "success": true,
+      "sha256": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+      "expectedSha256": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+      "exactMatch": true,
+      "bytes": 1204,
+      "error": ""
+    },
+    {
+      "path": "ai.js",
+      "success": true,
+      "sha256": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+      "expectedSha256": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+      "exactMatch": true,
+      "bytes": 38350,
+      "error": ""
+    },
+    {
+      "path": "diagnostic-download.js",
+      "success": true,
+      "sha256": "d1fd0591e6651ef3d6202813a666d31412799ce5455349081b3c3f1f586ee723",
+      "expectedSha256": "d1fd0591e6651ef3d6202813a666d31412799ce5455349081b3c3f1f586ee723",
+      "exactMatch": true,
+      "bytes": 3154,
+      "error": ""
+    },
+    {
+      "path": "diagnostics.js",
+      "success": true,
+      "sha256": "0cc6b5b39f3a86f1b16e4b7d03779b3d27372c25a87f3c32baad7945fea10d7a",
+      "expectedSha256": "0cc6b5b39f3a86f1b16e4b7d03779b3d27372c25a87f3c32baad7945fea10d7a",
+      "exactMatch": true,
+      "bytes": 3618,
+      "error": ""
+    },
+    {
+      "path": "engine.js",
+      "success": true,
+      "sha256": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+      "expectedSha256": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+      "exactMatch": true,
+      "bytes": 14106,
+      "error": ""
+    },
+    {
+      "path": "icon.svg",
+      "success": true,
+      "sha256": "d3728936dd816059dc02f33cc571084d89c798d2afbab88fb806c22beb861f10",
+      "expectedSha256": "d3728936dd816059dc02f33cc571084d89c798d2afbab88fb806c22beb861f10",
+      "exactMatch": true,
+      "bytes": 841,
+      "error": ""
+    },
+    {
+      "path": "index.html",
+      "success": true,
+      "sha256": "3c04ba4910bef7c9af9b745b47dc3ba182a5b3e55a52c1e7c387ca71faf199e7",
+      "expectedSha256": "72caf07ef5e03d9d9da22286f356168338bd3a617b13c21dc8fc30c1c9ac133c",
+      "exactMatch": false,
+      "bytes": 15779,
+      "error": "",
+      "providerAdditionReviewed": true,
+      "originalBytesPreserved": true,
+      "additionOffset": 14827,
+      "additionBytes": 938,
+      "additionSha256": "c469a3ffbd5b441606a1a7bdd6eb05eee3fbe98eddfb4b0ec971e6ac9aac18d0"
+    },
+    {
+      "path": "locale.js",
+      "success": true,
+      "sha256": "16e7d540a018bff2977561d047d647d309610645627c5d0037246991eb2d60ee",
+      "expectedSha256": "16e7d540a018bff2977561d047d647d309610645627c5d0037246991eb2d60ee",
+      "exactMatch": true,
+      "bytes": 1456,
+      "error": ""
+    },
+    {
+      "path": "logic-evaluator.js",
+      "success": true,
+      "sha256": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348",
+      "expectedSha256": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348",
+      "exactMatch": true,
+      "bytes": 28835,
+      "error": ""
+    },
+    {
+      "path": "main.js",
+      "success": true,
+      "sha256": "dc0f2d660c897ae751fa75eb505f3c2068addb943e1eb2abff4277726a5393ba",
+      "expectedSha256": "dc0f2d660c897ae751fa75eb505f3c2068addb943e1eb2abff4277726a5393ba",
+      "exactMatch": true,
+      "bytes": 27580,
+      "error": ""
+    },
+    {
+      "path": "manifest.webmanifest",
+      "success": true,
+      "sha256": "fd19dfdffa9ec36ac1defbf79748e13db11086138f0936597c88c9a9b96fe8c8",
+      "expectedSha256": "fd19dfdffa9ec36ac1defbf79748e13db11086138f0936597c88c9a9b96fe8c8",
+      "exactMatch": true,
+      "bytes": 444,
+      "error": ""
+    },
+    {
+      "path": "privacy.html",
+      "success": true,
+      "sha256": "afc0ad90d24f24b80e9e5dacf37defd3c38a77ea997c9794328b44e14388999e",
+      "expectedSha256": "92c72f523f2fa774c9ad8e2d4733993f667438463ca337df8e2761ed30c8c53d",
+      "exactMatch": false,
+      "bytes": 7494,
+      "error": "",
+      "providerAdditionReviewed": true,
+      "originalBytesPreserved": true,
+      "additionOffset": 6541,
+      "additionBytes": 938,
+      "additionSha256": "89694a38c18992d2fff75d13a67b0f26b7982838a993c46b5daa9b07016fb0a8"
+    },
+    {
+      "path": "review-suggestion.js",
+      "success": true,
+      "sha256": "e4264edae8022ae2680b3b0258c064a25dcddc7c3e3922351fd5d3bfab64a170",
+      "expectedSha256": "e4264edae8022ae2680b3b0258c064a25dcddc7c3e3922351fd5d3bfab64a170",
+      "exactMatch": true,
+      "bytes": 9610,
+      "error": ""
+    },
+    {
+      "path": "robots.txt",
+      "success": true,
+      "sha256": "a3822bb15d7514e75e2729c279a1d40c5de435fcf644935079857dd5cf95f2f6",
+      "expectedSha256": "31b76fbdd9a0521bd9b82a657792322a9739198b944ebbb53c182f8ac10aad52",
+      "exactMatch": false,
+      "bytes": 1926,
+      "error": "",
+      "providerAdditionReviewed": true,
+      "originalBytesPreserved": true,
+      "additionOffset": 0,
+      "additionBytes": 1836,
+      "additionSha256": "842b34303164ead41bccb7c05d1707422e98d108753b397b6dcc19683eb02101"
+    },
+    {
+      "path": "service-worker.js",
+      "success": true,
+      "sha256": "f92d38b363c7ca73624a6b19d90e241258e2faec4298beaa0c39f2ae976a902a",
+      "expectedSha256": "f92d38b363c7ca73624a6b19d90e241258e2faec4298beaa0c39f2ae976a902a",
+      "exactMatch": true,
+      "bytes": 1016,
+      "error": ""
+    },
+    {
+      "path": "sitemap.xml",
+      "success": true,
+      "sha256": "d4d8abeb7a57d9b83f1ef62d84546fba9bf2a332ad92d0cdc01f2e96d2d8913c",
+      "expectedSha256": "d4d8abeb7a57d9b83f1ef62d84546fba9bf2a332ad92d0cdc01f2e96d2d8913c",
+      "exactMatch": true,
+      "bytes": 341,
+      "error": ""
+    },
+    {
+      "path": "style.css",
+      "success": true,
+      "sha256": "e2c3167f21b2167740089163b26d5f496a1225249c726847096872e8010eb501",
+      "expectedSha256": "e2c3167f21b2167740089163b26d5f496a1225249c726847096872e8010eb501",
+      "exactMatch": true,
+      "bytes": 9361,
+      "error": ""
+    }
+  ],
+  "status": "DEPLOYED-ASSETS-VERIFIED",
+  "deploymentMainCommit": "2078f4c93c18c56e013ef525d4d84b35746c7437",
+  "exactMatchCount": 19,
+  "providerAdditionReviewedCount": 3,
+  "postDeploymentBrowserGameVerified": false,
+  "productionPhysicalDeviceVerified": false
+}
