@@ -171,7 +171,7 @@
       return;
     }
 
-    const levelName = analysis.level === "expert" ? t("Mtaalamu", "ムタアラム") : t("Hard", "むずかしい");
+    const levelName = analysis.level === "expert" ? t("Mtaalamu", "ビングワ") : t("Hard", "むずかしい");
     statsNode.textContent = [
       t(`Difficulty: ${levelName}`, `難易度: ${levelName}`),
       t(`Completed depth: ${formatNumber(analysis.stats.completedDepth)}`, `完了深度: ${formatNumber(analysis.stats.completedDepth)}`),
