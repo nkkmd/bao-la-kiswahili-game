@@ -1,0 +1,30 @@
+{
+  "jobId": 103148454120,
+  "report": {
+    "browserVersion": "26.5",
+    "checks": [
+      "公開画面でexpert候補が着手し診断に識別子を保存",
+      "継続する3応答でも候補を維持",
+      "新規対局と難易度変更でnormalは基準AI",
+      "思考開始後の新規対局で古い応答を適用しない",
+      "配信元への通信不能時に候補資産をキャッシュから利用",
+      "設定無効化とキャッシュ更新で基準AIへ切戻す",
+      "Worker unavailable時の直接実行も候補を使用",
+      "Worker error時の直接実行も候補を使用",
+      "model未取得時の公開画面は基準AIで着手",
+      "candidate未取得時の公開画面は基準AIで着手"
+    ],
+    "engine": "webkit",
+    "networkFailureMode": "origin-connection-closed",
+    "origin": "http://127.0.0.1:35439/",
+    "passed": true,
+    "physicalDeviceVerified": false,
+    "sourceCommit": "718d83c22b08e76651ab5427ccaefa8f8b4c5a74",
+    "strengthInferenceAuthorized": false,
+    "transformations": [
+      "candidate: production public bytes unchanged",
+      "rollback: expert flag disabled; v38 cache; hard retained"
+    ]
+  },
+  "runId": 34562679198
+}

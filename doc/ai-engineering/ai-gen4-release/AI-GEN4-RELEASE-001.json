@@ -44,8 +44,11 @@
   "promotionRecord": {
     "explicitUserAuthorization": true,
     "publicDefaultAlreadyDeployed": true,
-    "uiDisclosureDeploymentStatus": "PREPARED / NOT-DEPLOYED",
-    "uiDisclosureMainIntegrated": false
+    "uiDisclosureDeploymentStatus": "MAIN-INTEGRATED / AWAITING-USER-DEPLOYMENT",
+    "uiDisclosureMainIntegrated": true,
+    "uiDisclosureMainCommit": "1a8135fa2ef9dc951fbb73599269bbb1b92bba9f",
+    "browserVerificationRunId": 34562679198,
+    "baselineVerificationRunId": 34562679219
   },
   "applicationVersionTagIssued": false,
   "postDeploymentBrowserGameVerified": false,
