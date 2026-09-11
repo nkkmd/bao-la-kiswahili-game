@@ -1,9 +1,9 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-09
-現在の公開AI系統: **`AI-GEN3`**
-現在の正式release: **`AI-GEN3-RELEASE-001`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`**
+更新日: 2026-09-11
+現在の公開AI系統: **`AI-GEN4`**
+現在の正式release: **`AI-GEN4-RELEASE-001`**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`**
 進行中作業: **hard・expertの本番配信内容確認済み、AI-GEN4正式昇格済み、世代表示の再配信確認待ち**。[正式判断と再開手順](ai-engineering/ai-gen4-release/README.md)を参照する。release IDは`AI-GEN4-RELEASE-001`。easy・normalは従来構成を維持する。以下のProgram別記録は各終了時点の証拠を保持する。
 公開状態: [hardの正式採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)は`DEPLOYED-ASSETS-VERIFIED`。[expertの正式採用](ai-engineering/public-ai-improvement-program-11/ADOPTION.md)は`ADOPT`、本番配信状態は`DEPLOYED-ASSETS-VERIFIED`。
 
