@@ -170,7 +170,7 @@ PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固�
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P10は完了しています。[PBAI-P11](doc/ai-engineering/public-ai-improvement-program-11/README.md)では、新しいseedと独立したGitHub実行基盤によるexpert再試験を完了し、低・標準・高の全設定で棋力・運用条件と独立検算に合格しました。実機用コピーの3ブラウザ確認と約20分の実機確認を経て、expertへの正式採用を決定しました（PBAI-C015-EXPERT-ADOPTION-001）。本番用組込み・main統合・配信・AI-GEN4昇格は未実施です。[PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/README.md)のexpert検証は実行中断により`TECHNICAL-INVALID / HOLD`となり、棋力改善は未判定です。公開expertはAI-GEN3を維持し、AI-GEN4への昇格は未実施です。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。 [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/README.md)では、標準500ms・毎手Worker起動のNode条件でも256局151勝105敗となり、棋力改善と独立検算を確認しました。Chromiumの互換性78件も通過しましたが、スマートフォン実機は未確認です。
+PBAI-P1〜P10は完了しています。[PBAI-P11](doc/ai-engineering/public-ai-improvement-program-11/README.md)では、新しいseedと独立したGitHub実行基盤によるexpert再試験を完了し、低・標準・高の全設定で棋力・運用条件と独立検算に合格しました。実機用コピーの3ブラウザ確認と約20分の実機確認を経て、expertへの正式採用を決定しました（PBAI-C015-EXPERT-ADOPTION-001）。本番用組込み以降の現在状態は[本番組込み・配信記録](doc/ai-engineering/pbai-c015-expert-production/README.md)で管理します。[PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/README.md)のexpert検証は実行中断により`TECHNICAL-INVALID / HOLD`となり、棋力改善は未判定です。公開expertはAI-GEN3を維持し、AI-GEN4への昇格は未実施です。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。 [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/README.md)では、標準500ms・毎手Worker起動のNode条件でも256局151勝105敗となり、棋力改善と独立検算を確認しました。Chromiumの互換性78件も通過しましたが、スマートフォン実機は未確認です。
 
 | プログラム | 検証内容と結果 | 公開AIへの反映 |
 | --- | --- | --- |
@@ -186,7 +186,7 @@ PBAI-P1〜P10は完了しています。[PBAI-P11](doc/ai-engineering/public-ai-
 
 PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8・P9の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
 
-[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。このツリーではhardを有効化し、expertはAI-GEN3を維持します。実サイトへの配信内容を照合し、配信状態は`DEPLOYED-ASSETS-VERIFIED`です。[配信確認記録](doc/ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)に結果と未確認範囲をまとめています。
+[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。その配信状態は`DEPLOYED-ASSETS-VERIFIED`です。[配信確認記録](doc/ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)は当時の結果と未確認範囲を保持しています。今回のツリーでは、別途正式採用したexpertも有効化しました。本番配信とAI-GEN4昇格は後続工程です。[最新の組込み状態と配信手順](doc/ai-engineering/pbai-c015-expert-production/README.md)を参照してください。上記のProgram概要は各終了時点の経過です。
 
 ### 詳細資料
 

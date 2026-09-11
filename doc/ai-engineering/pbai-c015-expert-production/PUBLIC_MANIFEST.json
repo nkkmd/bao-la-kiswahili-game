@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "f90e05c5d2665305082fd4c9b374328b5d531170",
+  "publicDirectory": "public",
+  "site": "https://bao-la-kiswahili.cultivationdata.net/",
+  "cacheName": "bao-la-kiswahili-v36",
+  "expertAdoptionId": "PBAI-C015-EXPERT-ADOPTION-001",
+  "generation": "AI-GEN3",
+  "generationReleaseId": "AI-GEN3-RELEASE-001",
+  "fileCount": 22,
+  "files": [
+    {
+      "path": "ai-candidate.js",
+      "bytes": 38425,
+      "sha256": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f"
+    },
+    {
+      "path": "ai-config.js",
+      "bytes": 5120,
+      "sha256": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc"
+    },
+    {
+      "path": "ai-release-worker.js",
+      "bytes": 904,
+      "sha256": "84aaf2b2c2faa3aed066959ce6ee07d048a86c42bdfc0e6c29af6516c60c0a76"
+    },
+    {
+      "path": "ai-release.js",
+      "bytes": 2311,
+      "sha256": "595ed9d1becffbbb80c48022076d61b75864dab777c402132cf36728bc5eb6c8"
+    },
+    {
+      "path": "ai-weights.js",
+      "bytes": 3269,
+      "sha256": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8"
+    },
+    {
+      "path": "ai-worker.js",
+      "bytes": 1204,
+      "sha256": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4"
+    },
+    {
+      "path": "ai.js",
+      "bytes": 38350,
+      "sha256": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498"
+    },
+    {
+      "path": "diagnostic-download.js",
+      "bytes": 3154,
+      "sha256": "d1fd0591e6651ef3d6202813a666d31412799ce5455349081b3c3f1f586ee723"
+    },
+    {
+      "path": "diagnostics.js",
+      "bytes": 3618,
+      "sha256": "0cc6b5b39f3a86f1b16e4b7d03779b3d27372c25a87f3c32baad7945fea10d7a"
+    },
+    {
+      "path": "engine.js",
+      "bytes": 14106,
+      "sha256": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 841,
+      "sha256": "d3728936dd816059dc02f33cc571084d89c798d2afbab88fb806c22beb861f10"
+    },
+    {
+      "path": "index.html",
+      "bytes": 14841,
+      "sha256": "72caf07ef5e03d9d9da22286f356168338bd3a617b13c21dc8fc30c1c9ac133c"
+    },
+    {
+      "path": "locale.js",
+      "bytes": 1456,
+      "sha256": "16e7d540a018bff2977561d047d647d309610645627c5d0037246991eb2d60ee"
+    },
+    {
+      "path": "logic-evaluator.js",
+      "bytes": 28835,
+      "sha256": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348"
+    },
+    {
+      "path": "main.js",
+      "bytes": 27580,
+      "sha256": "dc0f2d660c897ae751fa75eb505f3c2068addb943e1eb2abff4277726a5393ba"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 444,
+      "sha256": "fd19dfdffa9ec36ac1defbf79748e13db11086138f0936597c88c9a9b96fe8c8"
+    },
+    {
+      "path": "privacy.html",
+      "bytes": 6556,
+      "sha256": "92c72f523f2fa774c9ad8e2d4733993f667438463ca337df8e2761ed30c8c53d"
+    },
+    {
+      "path": "review-suggestion.js",
+      "bytes": 9610,
+      "sha256": "e4264edae8022ae2680b3b0258c064a25dcddc7c3e3922351fd5d3bfab64a170"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 90,
+      "sha256": "31b76fbdd9a0521bd9b82a657792322a9739198b944ebbb53c182f8ac10aad52"
+    },
+    {
+      "path": "service-worker.js",
+      "bytes": 1016,
+      "sha256": "f92d38b363c7ca73624a6b19d90e241258e2faec4298beaa0c39f2ae976a902a"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 341,
+      "sha256": "d4d8abeb7a57d9b83f1ef62d84546fba9bf2a332ad92d0cdc01f2e96d2d8913c"
+    },
+    {
+      "path": "style.css",
+      "bytes": 9361,
+      "sha256": "e2c3167f21b2167740089163b26d5f496a1225249c726847096872e8010eb501"
+    }
+  ]
+}
