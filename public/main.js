@@ -60,7 +60,7 @@ function isComputerGame() { return gameModeSelect.value === "computer"; }
 function updateAIGenerationBadge() {
   const identity = AIConfig.displayIdentity(difficultySelect.value,
     lastAIDiagnostic?.ai.level === difficultySelect.value ? lastAIDiagnostic.ai.stats : null);
-  const labels = { easy: ["Easy", "やさしい"], normal: ["Normal", "ふつう"], hard: ["Hard", "むずかしい"], expert: ["Mtaalamu", "ビングワ"] };
+  const labels = { easy: ["Easy", "やさしい"], normal: ["Normal", "ふつう"], hard: ["Hard", "むずかしい"], expert: ["Bingwa", "ビングワ"] };
   const label = labels[difficultySelect.value] || labels.normal;
   aiGenerationBadge.textContent = `${t(identity.label, identity.labelJa)} / ${t(...label)}`;
   aiGenerationBadge.title = [identity.releaseId, identity.adoptionId].filter(Boolean).join(" / ");
