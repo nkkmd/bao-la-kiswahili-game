@@ -22,8 +22,8 @@ assert.match(html, /data-ja="対局設定"/);
 assert.match(html, /src="\.\/locale\.js"/);
 assert.ok(html.indexOf("./locale.js") < html.indexOf("./engine.js"),
   "locale initialization runs before game scripts");
-assert.match(html, /AI-GEN3 \/ Normal/);
-assert.match(html, /data-ja="AI-GEN3 \/ ふつう"/);
+assert.match(html, /AI-GEN4 \/ Normal/);
+assert.match(html, /data-ja="AI-GEN4 \/ ふつう"/);
 assert.match(html, /window\.BaoLocale\.t\(english, japanese\)/);
 assert.match(html, /data-ja="バオ（Bao la Kiswahili）｜東アフリカのマンカラ・ボードゲーム"/);
 assert.match(privacy, /<html lang="en">/);
@@ -35,6 +35,6 @@ assert.match(main, /window\.BaoLocale/);
 assert.equal(manifest.lang, "en");
 assert.match(serviceWorker, /\.\/locale\.js/);
 assert.match(serviceWorker, /"\.\/privacy"/);
-assert.match(serviceWorker, /bao-la-kiswahili-v36/);
+assert.match(serviceWorker, /bao-la-kiswahili-v37/);
 
 console.log("locale.test.js: ok");

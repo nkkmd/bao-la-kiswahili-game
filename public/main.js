@@ -63,7 +63,7 @@ function updateAIGenerationBadge() {
   const labels = { easy: ["Easy", "やさしい"], normal: ["Normal", "ふつう"], hard: ["Hard", "むずかしい"], expert: ["Mtaalamu", "ムタアラム"] };
   const label = labels[difficultySelect.value] || labels.normal;
   aiGenerationBadge.textContent = `${t(identity.label, identity.labelJa)} / ${t(...label)}`;
-  aiGenerationBadge.title = identity.releaseId;
+  aiGenerationBadge.title = [identity.releaseId, identity.adoptionId].filter(Boolean).join(" / ");
   aiGenerationBadge.hidden = !isComputerGame();
 }
 function isHumanTurn() { return !isComputerGame() || state.player === humanPlayer; }

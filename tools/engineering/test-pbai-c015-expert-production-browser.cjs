@@ -15,7 +15,7 @@ let modelUnavailable = false;
 let candidateUnavailable = false;
 const report = { engine, sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   physicalDeviceVerified: false, strengthInferenceAuthorized: false, networkFailureMode: 'origin-connection-closed', passed: false, checks: [],
-  transformations: ['candidate: production public bytes unchanged', 'rollback: expert flag disabled; v37 cache; hard retained'],
+  transformations: ['candidate: production public bytes unchanged', 'rollback: expert flag disabled; v38 cache; hard retained'],
 };
 const server = http.createServer((req, res) => {
   if (originUnavailable) { req.socket.destroy(); return; }
@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return res.writeHead(404).end();
   let body = fs.readFileSync(file);
   if (name === 'ai-release.js' && mode === 'rollback') body = Buffer.from(body.toString().replace('const PBAI_C015_EXPERT_ENABLED = true;', 'const PBAI_C015_EXPERT_ENABLED = false;'));
-  if (name === 'service-worker.js' && mode === 'rollback') body = Buffer.from(body.toString().replace('bao-la-kiswahili-v36', 'bao-la-kiswahili-v37'));
+  if (name === 'service-worker.js' && mode === 'rollback') body = Buffer.from(body.toString().replace('bao-la-kiswahili-v37', 'bao-la-kiswahili-v38'));
   const mime = name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.webmanifest') ? 'application/manifest+json' : 'text/html';
   res.writeHead(200, { 'Content-Type': mime, 'Cache-Control': 'no-store' }); res.end(body);
 });
@@ -65,8 +65,8 @@ async function start(page, level = 'expert') {
     await check('公開画面でexpert候補が着手し診断に識別子を保存', async () => {
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, 'PBAI-C015-v1');
       assert.equal(d.ai.stats.evaluationFallback, false);
-      assert.equal(await page.evaluate(() => BaoReleaseConfig.displayIdentity('expert').releaseId), 'PBAI-C015-EXPERT-ADOPTION-001');
-      assert.match(await page.locator('#ai-generation-badge').textContent(), /Logic Gate AI|論理ゲートAI/);
+      assert.equal(await page.evaluate(() => BaoReleaseConfig.displayIdentity('expert').releaseId), 'AI-GEN4-RELEASE-001');
+      assert.match(await page.locator('#ai-generation-badge').textContent(), /AI-GEN4/);
     });
     await check('継続する3応答でも候補を維持', async () => {
       for (let i = 0; i < 3; i++) {
@@ -79,7 +79,7 @@ async function start(page, level = 'expert') {
     page.on('dialog', dialog => dialog.accept());
     await check('新規対局と難易度変更でnormalは基準AI', async () => {
       await page.click('#new-game'); const d = await start(page, 'normal');
-      assert.match(await page.locator('#ai-generation-badge').textContent(), /AI-GEN3/);
+      assert.match(await page.locator('#ai-generation-badge').textContent(), /AI-GEN4/);
       assert.equal(d.ai.stats.evaluationCandidate, undefined);
     });
     await check('思考開始後の新規対局で古い応答を適用しない', async () => {
@@ -93,7 +93,7 @@ async function start(page, level = 'expert') {
     await check('配信元への通信不能時に候補資産をキャッシュから利用', async () => {
       await page.evaluate(async () => { await navigator.serviceWorker.ready; await caches.open('bao-la-kiswahili-v35'); });
       await page.reload(); await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
-      assert(await page.evaluate(async () => !!(await (await caches.open('bao-la-kiswahili-v36')).match('./logic-evaluator.js'))));
+      assert(await page.evaluate(async () => !!(await (await caches.open('bao-la-kiswahili-v37')).match('./logic-evaluator.js'))));
       originUnavailable = true; await page.reload();
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, 'PBAI-C015-v1');
       originUnavailable = false;
@@ -101,7 +101,7 @@ async function start(page, level = 'expert') {
     await check('設定無効化とキャッシュ更新で基準AIへ切戻す', async () => {
       mode = 'rollback';
       await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
-      await eventually(() => page.evaluate(async () => { const names = await caches.keys(); return names.includes('bao-la-kiswahili-v37') && !names.includes('bao-la-kiswahili-v36') && !names.includes('bao-la-kiswahili-v35'); }));
+      await eventually(() => page.evaluate(async () => { const names = await caches.keys(); return names.includes('bao-la-kiswahili-v38') && !names.includes('bao-la-kiswahili-v37') && !names.includes('bao-la-kiswahili-v35'); }));
       assert.equal(await page.evaluate(async () => (await caches.keys()).includes('bao-la-kiswahili-v35')), false);
       await page.reload();
       assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('expert').pbaiC015LogicGate), undefined);

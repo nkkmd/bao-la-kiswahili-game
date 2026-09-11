@@ -7,6 +7,8 @@
     || (level === "expert" && PBAI_C015_EXPERT_ENABLED);
   const baseline = root.BaoAI;
   const config = root.BaoAIConfig;
+  const GENERATION = "AI-GEN4";
+  const RELEASE_ID = "AI-GEN4-RELEASE-001";
   function searchOptions(level, capabilities = {}, state = null) {
     return { ...config.searchOptions(level, capabilities, state),
       ...(enabledFor(level) ? { pbaiC015LogicGate: true } : {}),
@@ -29,12 +31,17 @@
     if (enabledFor(level) && !stats?.evaluationFallback
       && typeof root.BaoLogicGate?.evaluate === "function"
       && typeof root.BaoCandidateAI?.analyzeMove === "function") {
-      return { label: "Logic Gate AI", labelJa: "論理ゲートAI", releaseId: level === "expert"
-        ? "PBAI-C015-EXPERT-ADOPTION-001" : "PBAI-C015-HARD-ADOPTION-001" };
+      return { label: GENERATION, labelJa: GENERATION, releaseId: RELEASE_ID,
+        adoptionId: level === "expert" ? "PBAI-C015-EXPERT-ADOPTION-001" : "PBAI-C015-HARD-ADOPTION-001",
+        evaluator: "PBAI-C015-v1" };
+    }
+    if (level === "easy" || level === "normal") {
+      return { label: GENERATION, labelJa: GENERATION, releaseId: RELEASE_ID,
+        evaluator: "AI-GEN3-baseline" };
     }
     return { label: config.GENERATION, labelJa: config.GENERATION, releaseId: config.RELEASE_ID };
   }
-  root.BaoReleaseConfig = { ...config, searchOptions, displayIdentity };
+  root.BaoReleaseConfig = { ...config, GENERATION, RELEASE_ID, searchOptions, displayIdentity };
   root.BaoReleaseAI = { ...baseline, analyzeMove,
     chooseMove: (state, level, random, options) => analyzeMove(state, level, random, options).move,
   };
