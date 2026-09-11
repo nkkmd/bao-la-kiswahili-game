@@ -1,0 +1,147 @@
+{
+  "baselineCommit": "c062dd739216a914defac7ace8836b429c44fa02",
+  "baselineLineage": "AI-GEN3",
+  "baselineRelease": "AI-GEN3-RELEASE-001",
+  "sourceHashes": {
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+    "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+    "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+    "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+    "public/ai-worker.js": "cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4",
+    "test/tactical.test.js": "14af832389a31f441c8ba0dc6f70cceb57fcd65d9c11ed27af5e93de7ef980bf"
+  },
+  "population": {
+    "policy": "uniform-legal-variant",
+    "maxSourcePlies": 96,
+    "prefixLength": 12,
+    "namuaRange": [
+      12,
+      40
+    ],
+    "mtajiRange": [
+      44,
+      88
+    ],
+    "oneRootPerTrajectory": true,
+    "minLegalVariants": 2,
+    "blockSize": 8192
+  },
+  "encoding": {
+    "pitBits": 7,
+    "pitThresholds": [
+      1,
+      2,
+      4
+    ],
+    "reserveBits": 5,
+    "pendingBits": 32,
+    "dimensions": 399,
+    "orientation": "own then opponent; original pit order; absolute perspective bit; no geometric transform",
+    "antisymmetrize": true
+  },
+  "resources": {
+    "wallClockSeconds": 43200,
+    "childHeapMiB": 2048,
+    "threads": 1,
+    "restart": "deny after RUN_STARTED",
+    "partialGame": "HOLD, no replay measurement",
+    "workerHeapMiB": 256,
+    "requestDeadlineMs": 10000
+  },
+  "search": {
+    "level": "expert",
+    "evaluationProfile": "bao",
+    "searchProfile": "phase2",
+    "pbaiC011LightweightTransitions": true,
+    "maxMatchPlies": 160,
+    "wallTimeOverrunAllowanceMs": 500,
+    "overrunRateIncreaseMax": 0.05
+  },
+  "program": "PBAI-P10",
+  "version": 1,
+  "candidate": "PBAI-C015-v1",
+  "modelOrigin": "PBAI-C012-v1 from PBAI-P6, unchanged PBAI-C015-v1 inference from PBAI-P7; no retraining",
+  "modelSha256": "565147bdc4c62ddc2888af2cc7bb43c7ef192d68c8c8beb76054c8c738a2c637",
+  "parentCommit": "c062dd739216a914defac7ace8836b429c44fa02",
+  "matches": {
+    "pilot": {
+      "seedBase": 870000001,
+      "pairsPerPhase": 4,
+      "timeLimitMs": 2000,
+      "maxDepth": 12
+    },
+    "low": {
+      "seedBase": 871000001,
+      "pairsPerPhase": 64,
+      "timeLimitMs": 1500,
+      "maxDepth": 10
+    },
+    "standard": {
+      "seedBase": 872000001,
+      "pairsPerPhase": 64,
+      "timeLimitMs": 2000,
+      "maxDepth": 12
+    },
+    "high": {
+      "seedBase": 873000001,
+      "pairsPerPhase": 64,
+      "timeLimitMs": 3000,
+      "maxDepth": 14
+    }
+  },
+  "bootstrapSeed": 874000001,
+  "gates": {
+    "holdoutPointsMin": 0.53,
+    "holdoutLower95StrictMin": 0.5,
+    "holdoutPhasePointsMin": 0.45,
+    "holdoutClustersMin": 100,
+    "bootstrapReplicates": 10000,
+    "overrunRateIncreaseMax": 0.05,
+    "overrunRateAbsoluteMax": 0.01
+  },
+  "optimization": [
+    "truth-table-specific expressions",
+    "constant folding",
+    "unary alias and double-negation removal",
+    "commuted common subexpression merging",
+    "unused node and zero/cancelled readout elimination",
+    "direct used-input extraction",
+    "validate nonterminal state once for both perspectives"
+  ],
+  "forbidden": [
+    "retraining",
+    "weight or bias changes other than exact integer collection",
+    "corpus-dependent constants",
+    "quantization changes",
+    "search mechanism changes"
+  ],
+  "publication": {
+    "mainMerge": false,
+    "publicDefaultChange": false,
+    "release": false,
+    "physicalDeviceRequiredBeforeAdoption": true
+  },
+  "savedNumberComparison": {
+    "finiteOnly": true,
+    "signedZerosEqual": true,
+    "tolerance": 0,
+    "rawInMemoryEquivalenceUnchanged": true
+  },
+  "priorArchiveSha256": "df78cb5b91c4e4e474313b81adb6153ab04c53a8b5b9e8c4c781ea7f9545f58c",
+  "execution": "fresh-worker-per-move",
+  "order": [
+    "pilot",
+    "low",
+    "standard",
+    "high",
+    "replay",
+    "audit"
+  ],
+  "pilotGate": "operation only; no strength selection",
+  "decision": "All three tier primary gates must pass; no pooling or subset adoption",
+  "memory": {
+    "measurement": "worker end-of-request heapUsed and process.memoryUsage; not browser/phone peak",
+    "workerHeapMiB": 256
+  },
+  "tieSeed": "(880000001 + stageIndex*10000000 + rootIndex*1000 + side*200 + ply) unsigned 32; independent from source seed"
+}

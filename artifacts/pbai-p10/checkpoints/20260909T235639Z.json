@@ -1,0 +1,23 @@
+{
+  "createdUtc": "20260909T235639Z",
+  "status": "RUNNING / NO-DECISION",
+  "completedPairs": 1,
+  "partialLogsIncluded": false,
+  "files": {
+    "RUN_STARTED.json": {
+      "bytes": 413,
+      "sha256": "f59a4eeed71337be493b18a66bc6d12c27c044ae847d331ba39234a219f4df89"
+    },
+    "pilot-matches-source.json": {
+      "bytes": 46536,
+      "sha256": "f1a1032605fa0ab1cf7d5ca2db252d97c91b163953de186ccc899775a7a8e088"
+    },
+    "pilot-pair-000.json": {
+      "bytes": 79386,
+      "sha256": "1967cfdd6bc5214307d7c622b774bdb0301a80f673ef15147fbb041d561d0b60"
+    }
+  },
+  "archive": "20260909T235639Z.tar.gz",
+  "archiveSha256": "542c1ee1ec38a0efc19f8d877624b8991c0b99e449433d515c4ae8cf9db26abb",
+  "notARestartPoint": true
+}

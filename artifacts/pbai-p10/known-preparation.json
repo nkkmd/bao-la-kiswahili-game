@@ -1,0 +1,800 @@
+{
+  "passed": true,
+  "knownOnly": true,
+  "timedMatchSeedsConsumed": false,
+  "physicalDeviceVerified": false,
+  "results": [
+    {
+      "actor": "baseline",
+      "fixture": 866000001,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000002,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000003,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000004,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000005,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000006,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000007,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000008,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000009,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000001,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000002,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000003,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000004,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000005,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000006,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000007,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000008,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000009,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1550.440124,
+      "memory": {
+        "rss": 143040512,
+        "heapTotal": 63569920,
+        "heapUsed": 29288912,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 46.876678000000084,
+      "memory": {
+        "rss": 141209600,
+        "heapTotal": 19132416,
+        "heapUsed": 10901968,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1550.892655,
+      "memory": {
+        "rss": 148516864,
+        "heapTotal": 69337088,
+        "heapUsed": 34939536,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1553.1085569999996,
+      "memory": {
+        "rss": 150315008,
+        "heapTotal": 71172096,
+        "heapUsed": 50746096,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1553.126322000001,
+      "memory": {
+        "rss": 150245376,
+        "heapTotal": 57016320,
+        "heapUsed": 37968632,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 169.79298999999992,
+      "memory": {
+        "rss": 148414464,
+        "heapTotal": 63696896,
+        "heapUsed": 41676128,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1549.4310409999998,
+      "memory": {
+        "rss": 149192704,
+        "heapTotal": 69337088,
+        "heapUsed": 36038528,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 86.23133100000086,
+      "memory": {
+        "rss": 146894848,
+        "heapTotal": 23851008,
+        "heapUsed": 16596488,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 380.9176299999999,
+      "memory": {
+        "rss": 123359232,
+        "heapTotal": 64745472,
+        "heapUsed": 44928432,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1547.0271319999993,
+      "memory": {
+        "rss": 124174336,
+        "heapTotal": 66162688,
+        "heapUsed": 44529016,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 48.21509800000058,
+      "memory": {
+        "rss": 121090048,
+        "heapTotal": 19132416,
+        "heapUsed": 11432792,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1551.334902999999,
+      "memory": {
+        "rss": 132022272,
+        "heapTotal": 56492032,
+        "heapUsed": 33659888,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1552.2192950000008,
+      "memory": {
+        "rss": 130916352,
+        "heapTotal": 73269248,
+        "heapUsed": 38213232,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1548.513962000001,
+      "memory": {
+        "rss": 130457600,
+        "heapTotal": 65404928,
+        "heapUsed": 31078848,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 163.07906999999977,
+      "memory": {
+        "rss": 127819776,
+        "heapTotal": 55308288,
+        "heapUsed": 35839800,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1551.9172330000001,
+      "memory": {
+        "rss": 128712704,
+        "heapTotal": 66191360,
+        "heapUsed": 34311592,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 66.42020000000048,
+      "memory": {
+        "rss": 126054400,
+        "heapTotal": 22540288,
+        "heapUsed": 16424896,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "low",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 326.99463999999716,
+      "memory": {
+        "rss": 125300736,
+        "heapTotal": 64745472,
+        "heapUsed": 43218720,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2052.0258969999995,
+      "memory": {
+        "rss": 125554688,
+        "heapTotal": 65404928,
+        "heapUsed": 45293104,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 48.60317700000087,
+      "memory": {
+        "rss": 122687488,
+        "heapTotal": 19656704,
+        "heapUsed": 11731080,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2058.0969560000012,
+      "memory": {
+        "rss": 124559360,
+        "heapTotal": 66191360,
+        "heapUsed": 43655816,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2051.6626620000025,
+      "memory": {
+        "rss": 136458240,
+        "heapTotal": 77725696,
+        "heapUsed": 41076344,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2053.6551849999996,
+      "memory": {
+        "rss": 135135232,
+        "heapTotal": 67239936,
+        "heapUsed": 32161344,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 253.12980099999913,
+      "memory": {
+        "rss": 133382144,
+        "heapTotal": 59764736,
+        "heapUsed": 35974512,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2053.024841999999,
+      "memory": {
+        "rss": 133398528,
+        "heapTotal": 68026368,
+        "heapUsed": 32998800,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 70.17465200000152,
+      "memory": {
+        "rss": 131227648,
+        "heapTotal": 23588864,
+        "heapUsed": 17725880,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1070.6143389999997,
+      "memory": {
+        "rss": 140169216,
+        "heapTotal": 82046976,
+        "heapUsed": 58382888,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2058.0197289999996,
+      "memory": {
+        "rss": 140599296,
+        "heapTotal": 65114112,
+        "heapUsed": 32278856,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 51.80191999999806,
+      "memory": {
+        "rss": 136978432,
+        "heapTotal": 18870272,
+        "heapUsed": 10924792,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2054.2179970000034,
+      "memory": {
+        "rss": 141701120,
+        "heapTotal": 69308416,
+        "heapUsed": 36803176,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2051.2570510000005,
+      "memory": {
+        "rss": 138006528,
+        "heapTotal": 74579968,
+        "heapUsed": 44941856,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2048.388761000002,
+      "memory": {
+        "rss": 132313088,
+        "heapTotal": 68550656,
+        "heapUsed": 47489592,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 215.7265750000006,
+      "memory": {
+        "rss": 130170880,
+        "heapTotal": 51113984,
+        "heapUsed": 38184944,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2048.7934999999998,
+      "memory": {
+        "rss": 130211840,
+        "heapTotal": 70094848,
+        "heapUsed": 38056096,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 65.59158500000194,
+      "memory": {
+        "rss": 127168512,
+        "heapTotal": 24113152,
+        "heapUsed": 17651992,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "standard",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 749.3759439999994,
+      "memory": {
+        "rss": 140533760,
+        "heapTotal": 82046976,
+        "heapUsed": 55075720,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3059.404067999996,
+      "memory": {
+        "rss": 140611584,
+        "heapTotal": 67997696,
+        "heapUsed": 39428224,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 59.229362000005494,
+      "memory": {
+        "rss": 137322496,
+        "heapTotal": 20443136,
+        "heapUsed": 11846976,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3060.492158000001,
+      "memory": {
+        "rss": 138657792,
+        "heapTotal": 69570560,
+        "heapUsed": 50203448,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3050.7298949999968,
+      "memory": {
+        "rss": 136851456,
+        "heapTotal": 77725696,
+        "heapUsed": 47712344,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3050.3457970000018,
+      "memory": {
+        "rss": 137216000,
+        "heapTotal": 72454144,
+        "heapUsed": 45393000,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 395.4035409999997,
+      "memory": {
+        "rss": 133734400,
+        "heapTotal": 59502592,
+        "heapUsed": 38812456,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3050.6661260000037,
+      "memory": {
+        "rss": 134299648,
+        "heapTotal": 69570560,
+        "heapUsed": 44996208,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 63.82368599999609,
+      "memory": {
+        "rss": 131190784,
+        "heapTotal": 24637440,
+        "heapUsed": 18926664,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "baseline",
+      "kind": "known-actual-budget",
+      "elapsedMs": 2713.6634810000032,
+      "memory": {
+        "rss": 180850688,
+        "heapTotal": 122126336,
+        "heapUsed": 80249560,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3050.903477,
+      "memory": {
+        "rss": 182206464,
+        "heapTotal": 69832704,
+        "heapUsed": 35479408,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 51.49721499999578,
+      "memory": {
+        "rss": 177082368,
+        "heapTotal": 20443136,
+        "heapUsed": 11023424,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3053.2975349999906,
+      "memory": {
+        "rss": 179859456,
+        "heapTotal": 70295552,
+        "heapUsed": 51693080,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3054.708350999994,
+      "memory": {
+        "rss": 130961408,
+        "heapTotal": 71696384,
+        "heapUsed": 46993672,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3049.2777379999898,
+      "memory": {
+        "rss": 131395584,
+        "heapTotal": 72192000,
+        "heapUsed": 45861960,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 271.16470200000913,
+      "memory": {
+        "rss": 129220608,
+        "heapTotal": 54784000,
+        "heapUsed": 40123456,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 3051.403728999998,
+      "memory": {
+        "rss": 131637248,
+        "heapTotal": 72916992,
+        "heapUsed": 46261992,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 66.47391900001094,
+      "memory": {
+        "rss": 128176128,
+        "heapTotal": 24637440,
+        "heapUsed": 18843912,
+        "external": 5015109,
+        "arrayBuffers": 81051
+      }
+    },
+    {
+      "tier": "high",
+      "actor": "logic",
+      "kind": "known-actual-budget",
+      "elapsedMs": 1682.8375289999967,
+      "memory": {
+        "rss": 180375552,
+        "heapTotal": 121339904,
+        "heapUsed": 76104256,
+        "external": 4995660,
+        "arrayBuffers": 81051
+      }
+    }
+  ]
+}

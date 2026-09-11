@@ -170,7 +170,7 @@ PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固�
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P9は完了しており、進行中の改善プログラムはありません。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。 [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/README.md)では、標準500ms・毎手Worker起動のNode条件でも256局151勝105敗となり、棋力改善と独立検算を確認しました。Chromiumの互換性78件も通過しましたが、スマートフォン実機は未確認です。
+PBAI-P1〜P10は完了しています。[PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/README.md)のexpert検証は実行中断により`TECHNICAL-INVALID / HOLD`となり、棋力改善は未判定です。公開expertはAI-GEN3を維持し、AI-GEN4への昇格は未実施です。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。 [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/README.md)では、標準500ms・毎手Worker起動のNode条件でも256局151勝105敗となり、棋力改善と独立検算を確認しました。Chromiumの互換性78件も通過しましたが、スマートフォン実機は未確認です。
 
 | プログラム | 検証内容と結果 | 公開AIへの反映 |
 | --- | --- | --- |

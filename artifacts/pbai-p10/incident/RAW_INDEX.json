@@ -1,0 +1,148 @@
+{
+  "recordedUtc": "2026-09-10T00:53:58.995422+00:00",
+  "files": {
+    "RUN_STARTED.json": {
+      "sha256": "f59a4eeed71337be493b18a66bc6d12c27c044ae847d331ba39234a219f4df89",
+      "bytes": 413,
+      "mtimeUtc": "2026-09-09T23:52:53.656254+00:00"
+    },
+    "low-matches-progress.jsonl": {
+      "sha256": "ff114009795565bcbd380f2f899600a433688e65db92f37c7bdbde5a366ad7d7",
+      "bytes": 724322,
+      "mtimeUtc": "2026-09-10T00:04:39.273664+00:00"
+    },
+    "low-matches-source.json": {
+      "sha256": "90a18d28b1e8f11d9545b17850fcb2c13cfa3b5cac88be6392d94c02e23973b1",
+      "bytes": 721824,
+      "mtimeUtc": "2026-09-10T00:04:39.277664+00:00"
+    },
+    "low-pair-000.json": {
+      "sha256": "a6a37adb02c1abcb5c986dffead6a8be030f1fdff791f3406af471be4ad8f231",
+      "bytes": 89622,
+      "mtimeUtc": "2026-09-10T00:06:35.571927+00:00"
+    },
+    "low-pair-001.json": {
+      "sha256": "3e5f86fa64a170abbc67c039a050cdf1e56610634bb95e533882e3f0afc69e6b",
+      "bytes": 86910,
+      "mtimeUtc": "2026-09-10T00:08:26.642229+00:00"
+    },
+    "low-pair-002.json": {
+      "sha256": "c6404f6df2ad959861217bdd1fcc2dd41257d9b1386fe54fd00a2f96786eda98",
+      "bytes": 76428,
+      "mtimeUtc": "2026-09-10T00:10:02.428242+00:00"
+    },
+    "low-pair-003.json": {
+      "sha256": "1e3df2f35b6efdbeb7ba3725e67e44dd0104120f1c04badfb1438832b0a8dd92",
+      "bytes": 34382,
+      "mtimeUtc": "2026-09-10T00:10:32.244932+00:00"
+    },
+    "low-pair-004.json": {
+      "sha256": "bd52b5228cd38723effab690bfc0520dfb1937a2a4001350041c1b80aff9978b",
+      "bytes": 77231,
+      "mtimeUtc": "2026-09-10T00:12:04.818878+00:00"
+    },
+    "low-pair-005.json": {
+      "sha256": "2ffe005d23e5c1657529321ba8e1cc04ecbcb73e5c0e9dd9c6773056725884b0",
+      "bytes": 82600,
+      "mtimeUtc": "2026-09-10T00:13:50.313022+00:00"
+    },
+    "low-pair-006.json": {
+      "sha256": "7ef5080986d9003f2b08ff7767e49477fd70494bb7d09a0e767dca0841499c30",
+      "bytes": 16832,
+      "mtimeUtc": "2026-09-10T00:14:01.217244+00:00"
+    },
+    "low-pair-007.json": {
+      "sha256": "8e7e255ab0121043c134c57b1d9f0b43d9f4199d219aa1d861e0173879b8f912",
+      "bytes": 73756,
+      "mtimeUtc": "2026-09-10T00:15:34.071104+00:00"
+    },
+    "low-pair-008.json": {
+      "sha256": "b0f91409e9f0ed6c21cfab9cbdd858e8f941c8a9a4456c188532908f3e480c63",
+      "bytes": 86129,
+      "mtimeUtc": "2026-09-10T00:17:31.397418+00:00"
+    },
+    "low-pair-009.json": {
+      "sha256": "ddcbd9770018d80659e65c5fec1d9835712ca5e9bc59866aece6c583f543e168",
+      "bytes": 9847,
+      "mtimeUtc": "2026-09-10T00:17:38.109549+00:00"
+    },
+    "match-access.jsonl": {
+      "sha256": "1c472d0e6c4b96a3c7a82a36b2252571c951cb13537653ad24b87fd56d698eab",
+      "bytes": 1972,
+      "mtimeUtc": "2026-09-10T00:18:08.382146+00:00"
+    },
+    "pilot-matches-progress.jsonl": {
+      "sha256": "9013a3fc86154de52f0d8e561f8b6ef679864be21c05ea1e0b44ce6a232ae7f5",
+      "bytes": 46527,
+      "mtimeUtc": "2026-09-09T23:52:54.091850+00:00"
+    },
+    "pilot-matches-source.json": {
+      "sha256": "f1a1032605fa0ab1cf7d5ca2db252d97c91b163953de186ccc899775a7a8e088",
+      "bytes": 46536,
+      "mtimeUtc": "2026-09-09T23:52:54.091850+00:00"
+    },
+    "pilot-matches.json": {
+      "sha256": "9e6e523ad760436f194ba5c3a5871bde2fa2e0be90fe30c315bfd5063d8c3ca7",
+      "bytes": 371,
+      "mtimeUtc": "2026-09-10T00:04:36.510153+00:00"
+    },
+    "pilot-pair-000.json": {
+      "sha256": "1967cfdd6bc5214307d7c622b774bdb0301a80f673ef15147fbb041d561d0b60",
+      "bytes": 79386,
+      "mtimeUtc": "2026-09-09T23:55:20.962774+00:00"
+    },
+    "pilot-pair-001.json": {
+      "sha256": "d2aa672e20a66217d2163dce5daaa79f9d205553b8786d17c51e8740847b8941",
+      "bytes": 86477,
+      "mtimeUtc": "2026-09-09T23:58:12.050136+00:00"
+    },
+    "pilot-pair-002.json": {
+      "sha256": "41b5ce49509dd5862957240b18a41c2e29776f4779a1e65b1cef2160b77f8153",
+      "bytes": 44779,
+      "mtimeUtc": "2026-09-09T23:58:42.986734+00:00"
+    },
+    "pilot-pair-003.json": {
+      "sha256": "23c963e217d03d81425d0891af425ccfed32e43e570e6ea2069148e52e724b44",
+      "bytes": 74040,
+      "mtimeUtc": "2026-09-10T00:00:56.425337+00:00"
+    },
+    "pilot-pair-004.json": {
+      "sha256": "3439066ef30c4136058013a23bf080f64305e2eaa3e5ff9d36011a52de576e88",
+      "bytes": 27597,
+      "mtimeUtc": "2026-09-10T00:01:43.110235+00:00"
+    },
+    "pilot-pair-005.json": {
+      "sha256": "a78e6bc53271c40457a02d937478f3eebf3479b0ebdfbf9e68f577fb8fdb8acd",
+      "bytes": 82937,
+      "mtimeUtc": "2026-09-10T00:04:18.265250+00:00"
+    },
+    "pilot-pair-006.json": {
+      "sha256": "3eaf843c6ef1c54c011414b27f99fa88b3249e643538cbd03d7e72d4c933346f",
+      "bytes": 6255,
+      "mtimeUtc": "2026-09-10T00:04:21.365312+00:00"
+    },
+    "pilot-pair-007.json": {
+      "sha256": "c90a44464915407ad6043fbaeedc869ce63d16f7c0dc8e5878467f8071effd19",
+      "bytes": 20318,
+      "mtimeUtc": "2026-09-10T00:04:36.505610+00:00"
+    },
+    "ply-access.jsonl": {
+      "sha256": "77b98f80bec34634f7bd01ebbf4d5958f589d1d42d82ab1db24f9262ca35293d",
+      "bytes": 1147170,
+      "mtimeUtc": "2026-09-10T00:18:34.122653+00:00"
+    },
+    "seed-access.jsonl": {
+      "sha256": "b8af430525a778d55bf5c5e723c8b4cddc5d0adb0396a2ee667b39e86acdb0d4",
+      "bytes": 6658,
+      "mtimeUtc": "2026-09-10T00:04:39.261664+00:00"
+    }
+  },
+  "archiveSha256": "9e80cdf6ff08435af665b196b58ccf310f941d818c7ab910cfca20aed589da70",
+  "rawFinalResultPresent": false,
+  "sourceLockFilesVerified": 112,
+  "supervisorSessionRecovery": "exec-server transport disconnected; recovery timed out",
+  "runningTrialProcessObserved": false,
+  "causeConfirmed": false,
+  "suspectedCause": "execution environment recreation or loss",
+  "processListObservation": "current supervisor and exec server start later than trial; original trial process absent; exact host cause unavailable"
+}

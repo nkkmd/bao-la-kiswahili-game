@@ -1,0 +1,30 @@
+{
+  "engine": "chromium",
+  "sourceCommit": "a980878a3cf773856f08afe07f1a568ada59ff63",
+  "physicalDeviceVerified": false,
+  "strengthInferenceAuthorized": false,
+  "networkFailureMode": "origin-connection-closed",
+  "passed": true,
+  "checks": [
+    "公開画面でexpert候補が着手し診断に識別子を保存",
+    "継続する3応答でも候補を維持",
+    "新規対局と難易度変更でnormalは基準AI",
+    "思考開始後の新規対局で古い応答を適用しない",
+    "配信元への通信不能時に候補資産をキャッシュから利用",
+    "設定無効化とキャッシュ更新で基準AIへ切戻す",
+    "Worker unavailable時の直接実行も候補を使用",
+    "Worker error時の直接実行も候補を使用",
+    "モデル未取得時の公開画面は基準AIで着手"
+  ],
+  "transformations": [
+    "candidate: isolated expert adapter; test cache name",
+    "rollback: original hard-only adapter; different test cache; hard retained"
+  ],
+  "origin": "http://127.0.0.1:37305/",
+  "browserVersion": "151.0.7922.34",
+  "provenance": {
+    "runId": 34416487728,
+    "jobId": 102682405796,
+    "source": "GitHub job stdout, report fields preserved"
+  }
+}

@@ -71,3 +71,5 @@ artifacts/*-local.json
 # PBAI-P9 complete raw evidence is archived after execution.
 /artifacts/pbai-p9/run/
 /artifacts/pbai-p9/browser-ci/
+
+/artifacts/pbai-p10/run/
