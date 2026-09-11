@@ -48,9 +48,10 @@ assert.match(html, /id="ai-generation-badge"/);
 assert.match(html, /AI-GEN4 \/ Normal/);
 assert.match(html, /data-ja="AI-GEN4 \/ ふつう"/);
 assert.match(html, /easy: \["Easy", "やさしい"\]/);
-assert.match(html, /expert: \["Mtaalamu", "ムタアラム"\]/);
+assert.match(html, /data-ja="ビングワ">Mtaalamu<\/option>/);
+assert.match(html, /expert: \["Mtaalamu", "ビングワ"\]/);
 assert.match(html, /BaoReleaseConfig\.displayIdentity/);
 assert.match(main, /AIConfig\.displayIdentity/);
-assert.match(serviceWorker, /bao-la-kiswahili-v37/);
+assert.match(serviceWorker, /bao-la-kiswahili-v38/);
 
 console.log("AI-GEN3 release tests passed");
