@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "knownOnly": true,
+  "timedMatchSeedsConsumed": false,
+  "physicalDeviceVerified": false,
+  "results": [
+    {
+      "actor": "baseline",
+      "fixture": 866000001,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000002,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000003,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000004,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000005,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000006,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000007,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000008,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "baseline",
+      "fixture": 866000009,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000001,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000002,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000003,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000004,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000005,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000006,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000007,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000008,
+      "kind": "fixed-depth-equivalence"
+    },
+    {
+      "actor": "logic",
+      "fixture": 866000009,
+      "kind": "fixed-depth-equivalence"
+    }
+  ]
+}

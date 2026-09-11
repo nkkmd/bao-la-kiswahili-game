@@ -73,3 +73,6 @@ artifacts/*-local.json
 /artifacts/pbai-p9/browser-ci/
 
 /artifacts/pbai-p10/run/
+
+/artifacts/pbai-p11/run/
+/artifacts/pbai-p11/final/

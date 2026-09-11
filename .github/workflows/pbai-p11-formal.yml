@@ -1,0 +1,1452 @@
+name: PBAI-P11 expert正式再試験
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/pbai-p11-formal.yml'
+      - 'doc/ai-engineering/public-ai-improvement-program-11/**'
+      - 'tools/engineering/*pbai-p11*'
+      - 'tools/engineering/lib/pbai-p11*'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authorize:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      allowed: ${{ steps.authorize.outputs.allowed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 既知データによる事前確認
+        run: |
+          python tools/engineering/test-pbai-p11-control.py
+          node tools/engineering/test-pbai-p11-known.cjs
+      - name: 単一の実行IDへの事前結付けを待つ
+        id: authorize
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node tools/engineering/authorize-pbai-p11.cjs
+      - name: 一度限りの開始記録
+        if: steps.authorize.outputs.allowed == 'true'
+        run: python tools/engineering/control-pbai-p11.py init
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.authorize.outputs.allowed == 'true'
+        with:
+          name: pbai-p11-checkpoint-initial
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b000:
+    needs: authorize
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-initial
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-000
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b001:
+    needs: [authorize, b000]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-000
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-001
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b002:
+    needs: [authorize, b001]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-001
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-002
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b003:
+    needs: [authorize, b002]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-002
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 3
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-003
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b004:
+    needs: [authorize, b003]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-003
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-004
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b005:
+    needs: [authorize, b004]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-004
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 5
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-005
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b006:
+    needs: [authorize, b005]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-005
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 6
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-006
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b007:
+    needs: [authorize, b006]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-006
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-007
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b008:
+    needs: [authorize, b007]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-007
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 8
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-008
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b009:
+    needs: [authorize, b008]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-008
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 9
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-009
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b010:
+    needs: [authorize, b009]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-009
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 10
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-010
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b011:
+    needs: [authorize, b010]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-010
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 11
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-011
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b012:
+    needs: [authorize, b011]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-011
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 12
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-012
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b013:
+    needs: [authorize, b012]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-012
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 13
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-013
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b014:
+    needs: [authorize, b013]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-013
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-014
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b015:
+    needs: [authorize, b014]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-014
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 15
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-015
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b016:
+    needs: [authorize, b015]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-015
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 16
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-016
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b017:
+    needs: [authorize, b016]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-016
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 17
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-017
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b018:
+    needs: [authorize, b017]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-017
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 18
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-018
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b019:
+    needs: [authorize, b018]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-018
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 19
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-019
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b020:
+    needs: [authorize, b019]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-019
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 20
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-020
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b021:
+    needs: [authorize, b020]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-020
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 21
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-021
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b022:
+    needs: [authorize, b021]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-021
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 22
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-022
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b023:
+    needs: [authorize, b022]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-022
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 23
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-023
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b024:
+    needs: [authorize, b023]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-023
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 24
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-024
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b025:
+    needs: [authorize, b024]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-024
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 25
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-025
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b026:
+    needs: [authorize, b025]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-025
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 26
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-026
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b027:
+    needs: [authorize, b026]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-026
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 27
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-027
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b028:
+    needs: [authorize, b027]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-027
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 28
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-028
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b029:
+    needs: [authorize, b028]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-028
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 29
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-029
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b030:
+    needs: [authorize, b029]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-029
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-030
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b031:
+    needs: [authorize, b030]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-030
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 31
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-031
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b032:
+    needs: [authorize, b031]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-031
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 32
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-032
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b033:
+    needs: [authorize, b032]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-032
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 33
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-033
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b034:
+    needs: [authorize, b033]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-033
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 34
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-034
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b035:
+    needs: [authorize, b034]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-034
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 35
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-035
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b036:
+    needs: [authorize, b035]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-035
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 36
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-036
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b037:
+    needs: [authorize, b036]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-036
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 37
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-037
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b038:
+    needs: [authorize, b037]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-037
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 38
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-038
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b039:
+    needs: [authorize, b038]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-038
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 39
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-039
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b040:
+    needs: [authorize, b039]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-039
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 40
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-040
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b041:
+    needs: [authorize, b040]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-040
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 41
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-041
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b042:
+    needs: [authorize, b041]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-041
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 42
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-042
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b043:
+    needs: [authorize, b042]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-042
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 43
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-043
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b044:
+    needs: [authorize, b043]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-043
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 44
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-044
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b045:
+    needs: [authorize, b044]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-044
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 45
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-045
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b046:
+    needs: [authorize, b045]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-045
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 46
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-046
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b047:
+    needs: [authorize, b046]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-046
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 47
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-047
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  b048:
+    needs: [authorize, b047]
+    if: needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 165
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pbai-p11-checkpoint-047
+          path: artifacts/pbai-p11/run/
+      - name: 保存点の検証と未消費8ペアの対局
+        run: python tools/engineering/control-pbai-p11.py batch 48
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-checkpoint-048
+          path: artifacts/pbai-p11/run/
+          if-no-files-found: error
+          retention-days: 7
+  finalize:
+    needs: [authorize, b000, b001, b002, b003, b004, b005, b006, b007, b008, b009, b010, b011, b012, b013, b014, b015, b016, b017, b018, b019, b020, b021, b022, b023, b024, b025, b026, b027, b028, b029, b030, b031, b032, b033, b034, b035, b036, b037, b038, b039, b040, b041, b042, b043, b044, b045, b046, b047, b048]
+    if: always() && needs.authorize.outputs.allowed == 'true' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 独立検算用の固定依存を用意
+        run: python -m pip install numpy==2.3.5
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pbai-p11-checkpoint-*
+          path: artifacts/local/pbai-p11-checkpoints/
+      - name: 保存棋譜の再生・独立検算・終了報告
+        if: always()
+        env:
+          PBAI_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: python tools/engineering/control-pbai-p11.py finalize
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p11-final-evidence
+          path: artifacts/pbai-p11/final/
+          if-no-files-found: error
+          retention-days: 30

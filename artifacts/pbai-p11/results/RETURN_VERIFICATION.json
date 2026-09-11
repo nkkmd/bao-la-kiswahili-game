@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "zipSha256": "657d1bc28455cf43e72a73043767402212a5c0042d924e31a3e64ae4d504f638",
+  "artifactId": 10161465587,
+  "runId": 34439270384,
+  "sourceCommit": "0dd3bb6daf19bf00803d43c91bc832fb38d0213f",
+  "rawFiles": 510,
+  "archiveSha256": "dacdc6b57986022a4622950d20cfa853ebe786b722ef21101b2fca59d1a46076",
+  "elapsedSeconds": 40049.09773516655,
+  "replay": {
+    "passed": true,
+    "sourceRoots": 392,
+    "matchGames": 784,
+    "matchPlies": 22593,
+    "timedMatchesRerun": false,
+    "scope": "source regeneration, all saved moves and outcomes; same frozen rules engine"
+  },
+  "performance": {
+    "low": {
+      "overrun": {
+        "logic": 0,
+        "baseline": 0
+      },
+      "latency": {
+        "logic": {
+          "requests": 3668,
+          "medianMs": 782.9993545000034,
+          "p95Ms": 1539.3099060000095,
+          "maxMs": 1552.65409
+        },
+        "baseline": {
+          "requests": 3650,
+          "medianMs": 1484.2464120000222,
+          "p95Ms": 1542.6875419999997,
+          "maxMs": 1560.6779990000068
+        }
+      },
+      "endOfRequestMemoryMaxBytes": {
+        "logic": {
+          "heapUsed": 48659472,
+          "rss": 206548992,
+          "external": 3148744
+        },
+        "baseline": {
+          "heapUsed": 47676504,
+          "rss": 204378112,
+          "external": 3148744
+        }
+      }
+    },
+    "standard": {
+      "overrun": {
+        "logic": 0,
+        "baseline": 0
+      },
+      "latency": {
+        "logic": {
+          "requests": 3691,
+          "medianMs": 1971.8820940000005,
+          "p95Ms": 2039.9443749999627,
+          "maxMs": 2132.170287
+        },
+        "baseline": {
+          "requests": 3673,
+          "medianMs": 2036.8464270000113,
+          "p95Ms": 2043.1472160000121,
+          "maxMs": 2075.4828589999815
+        }
+      },
+      "endOfRequestMemoryMaxBytes": {
+        "logic": {
+          "heapUsed": 55361272,
+          "rss": 253661184,
+          "external": 3148744
+        },
+        "baseline": {
+          "heapUsed": 48828296,
+          "rss": 243847168,
+          "external": 3148744
+        }
+      }
+    },
+    "high": {
+      "overrun": {
+        "logic": 0,
+        "baseline": 0
+      },
+      "latency": {
+        "logic": {
+          "requests": 3737,
+          "medianMs": 3036.1999469999864,
+          "p95Ms": 3040.4299619999947,
+          "maxMs": 3107.179728
+        },
+        "baseline": {
+          "requests": 3724,
+          "medianMs": 3038.127050000003,
+          "p95Ms": 3043.3543439999994,
+          "maxMs": 3095.670682
+        }
+      },
+      "endOfRequestMemoryMaxBytes": {
+        "logic": {
+          "heapUsed": 107406760,
+          "rss": 275623936,
+          "external": 3148744
+        },
+        "baseline": {
+          "heapUsed": 65522392,
+          "rss": 273043456,
+          "external": 3148744
+        }
+      }
+    }
+  },
+  "timedMatchesRerun": false,
+  "scope": "returned evidence integrity; original CI replay/audit preserved; no new timed search"
+}

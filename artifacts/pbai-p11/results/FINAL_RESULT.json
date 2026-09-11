@@ -1,0 +1,13 @@
+{
+  "program": "PBAI-P11",
+  "runId": "34439270384",
+  "sourceCommit": "0dd3bb6daf19bf00803d43c91bc832fb38d0213f",
+  "decision": "EXPERT-STRENGTH-PASS / ADOPTION-PENDING",
+  "error": null,
+  "verificationPassed": true,
+  "finishedUnix": 1789056462.4603457,
+  "newGenerationIssued": false,
+  "expertAdopted": false,
+  "physicalDeviceVerified": false,
+  "publicChanged": false
+}

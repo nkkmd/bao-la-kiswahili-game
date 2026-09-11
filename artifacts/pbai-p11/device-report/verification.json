@@ -1,0 +1,79 @@
+{
+  "allCheckedFilesMatch": true,
+  "checkedAt": "2026-09-10T23:38:08.289Z",
+  "diagnostic": [
+    {
+      "candidate": "PBAI-C015-v1",
+      "completedDepth": 8,
+      "elapsedMs": 605.4000000059605,
+      "fallback": false,
+      "legal": true,
+      "level": "hard",
+      "timedOut": true,
+      "transitionValid": true
+    },
+    {
+      "candidate": "PBAI-C015-v1",
+      "completedDepth": 9,
+      "elapsedMs": 3009.5,
+      "fallback": false,
+      "legal": true,
+      "level": "expert",
+      "timedOut": true,
+      "transitionValid": true
+    }
+  ],
+  "files": [
+    {
+      "actualSha256": "0e095ae387428a4952852e7e6b24986db1a88c7416ef86ef2c958d23def259b3",
+      "expectedSha256": "0e095ae387428a4952852e7e6b24986db1a88c7416ef86ef2c958d23def259b3",
+      "match": true,
+      "name": "PREVIEW.json"
+    },
+    {
+      "actualSha256": "e0fd1300df891887816a0b3b0f9243b45460584d260adb1671b278704506d6b1",
+      "expectedSha256": "e0fd1300df891887816a0b3b0f9243b45460584d260adb1671b278704506d6b1",
+      "match": true,
+      "name": "ai-release.js"
+    },
+    {
+      "actualSha256": "84aaf2b2c2faa3aed066959ce6ee07d048a86c42bdfc0e6c29af6516c60c0a76",
+      "expectedSha256": "84aaf2b2c2faa3aed066959ce6ee07d048a86c42bdfc0e6c29af6516c60c0a76",
+      "match": true,
+      "name": "ai-release-worker.js"
+    },
+    {
+      "actualSha256": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+      "expectedSha256": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+      "match": true,
+      "name": "ai-config.js"
+    },
+    {
+      "actualSha256": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f",
+      "expectedSha256": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f",
+      "match": true,
+      "name": "ai-candidate.js"
+    },
+    {
+      "actualSha256": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348",
+      "expectedSha256": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348",
+      "match": true,
+      "name": "logic-evaluator.js"
+    },
+    {
+      "actualSha256": "dc0f2d660c897ae751fa75eb505f3c2068addb943e1eb2abff4277726a5393ba",
+      "expectedSha256": "dc0f2d660c897ae751fa75eb505f3c2068addb943e1eb2abff4277726a5393ba",
+      "match": true,
+      "name": "main.js"
+    },
+    {
+      "actualSha256": "217dd76e86e850ab37d0d83f838139b609e997a1469c899386d607478abe2409",
+      "expectedSha256": "217dd76e86e850ab37d0d83f838139b609e997a1469c899386d607478abe2409",
+      "match": true,
+      "name": "service-worker.js"
+    }
+  ],
+  "fullSiteVerified": false,
+  "previewUrl": "https://cdn-ts.pages.dev/",
+  "sourceCommit": "9167a420a1ea6362bf67e182c0f040607406f71b"
+}
