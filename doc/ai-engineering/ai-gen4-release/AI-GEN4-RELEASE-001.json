@@ -44,11 +44,21 @@
   "promotionRecord": {
     "explicitUserAuthorization": true,
     "publicDefaultAlreadyDeployed": true,
-    "uiDisclosureDeploymentStatus": "MAIN-INTEGRATED / AWAITING-USER-DEPLOYMENT",
+    "uiDisclosureDeploymentStatus": "DEPLOYED-ASSETS-VERIFIED",
     "uiDisclosureMainIntegrated": true,
     "uiDisclosureMainCommit": "1a8135fa2ef9dc951fbb73599269bbb1b92bba9f",
     "browserVerificationRunId": 34562679198,
-    "baselineVerificationRunId": 34562679219
+    "baselineVerificationRunId": 34562679219,
+    "uiDisclosureDeployment": {
+      "sourceCommit": "82241a05932b14c8e0383a3e1ff61155da8f8965",
+      "verifiedAt": "2026-09-11T04:45:36.491280+00:00",
+      "evidence": "artifacts/ai-gen4-release/deployment/verification.json",
+      "identityEvidence": "artifacts/ai-gen4-release/deployment/identity-verification.json",
+      "exactMatchCount": 19,
+      "providerAdditionReviewedCount": 3,
+      "cacheName": "bao-la-kiswahili-v37",
+      "liveBrowserRendered": false
+    }
   },
   "applicationVersionTagIssued": false,
   "postDeploymentBrowserGameVerified": false,

@@ -2,9 +2,9 @@
 
 ## 現在の判断
 
-2026年9月11日、正式release IDを`AI-GEN4-RELEASE-001`として発行し、公開AIをAI-GEN4へ正式昇格する。ユーザーの明示指示、hard・expertの正式採用、両難易度を既定有効にした本番配信と全22ファイルの照合を根拠とする。採用済み候補の配信を確認してから昇格する既存規則に従う。
+2026年9月11日、正式release IDを`AI-GEN4-RELEASE-001`として発行し、公開AIをAI-GEN4へ正式昇格した。ユーザーの明示指示、hard・expertの正式採用、両難易度を既定有効にした本番配信と全22ファイルの照合を根拠とする。採用済み候補の配信を確認してから昇格する既存規則に従う。
 
-本番の評価器は配信内容確認済みである。**AI-GEN4の画面表示更新もmainへ統合済みで、ユーザーによる再配信を待つ。表示まで配信確認済みとは記録しない。** アプリのバージョンタグは発行・変更しない。
+本番の評価器は配信内容確認済みである。**AI-GEN4の画面表示更新もmain統合・本番配信・配信内容確認が完了した。** アプリのバージョンタグは発行・変更しない。
 
 ## 世代の適用範囲
 
@@ -31,13 +31,17 @@ hardの正式採用は[P8・P9と実機確認に基づく採用判断](../pbai-c
 
 [照合結果](../../../artifacts/pbai-c015-expert-production/deployment/verification.json)に取得hash・元hash・追加位置と追加部分のhashを記録する。異なる3ファイルの取得内容は同じディレクトリに保存した。これは配信時の原文証拠であり、英語のCloudflare付加文や機械的scriptを翻訳しない。配信状態は`DEPLOYED-ASSETS-VERIFIED`である。
 
-## 表示更新・検証・再開手順
+## 表示更新の検証と完了状態
 
 AI-GEN3の正式5資産とそのhash検証を保持し、公開アダプターにAI-GEN4の世代定数と採用判断IDを分けて追加した。画面初期表示と動的表示を更新し、キャッシュをv37へ更新する。探索条件や候補内部のコードは変更しない。Node21試験は合格した。画面表示を検査する既存試験のみ新しい世代名へ更新し、固定AI資産の検証は弱めていない。
 
 検証commitは`718d83c22b08e76651ab5427ccaefa8f8b4c5a74`。[3ブラウザ確認](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34562679198)と[AI-GEN3正式資産検証](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/34562679219)は成功した。Chromium 151.0.7922.34、Firefox 153.0、WebKit 26.5の各10項目が合格し、[取得した結果](../../../artifacts/ai-gen4-release/)を保存した。表示確認と運用確認であり、新しい棋力試験や実機試験ではない。
 
-[PR #132](https://github.com/nkkmd/bao-la-kiswahili-game/pull/132)で、main `1a8135fa2ef9dc951fbb73599269bbb1b92bba9f`へ統合した。ユーザーがこのmain、または公開ファイルが同一の後続mainのpublic全22ファイルを本番へ再配信し、[表示更新用照合一覧](PUBLIC_MANIFEST.json)と照合する。キャッシュは`bao-la-kiswahili-v37`。正式判断は[release記録](AI-GEN4-RELEASE-001.json)を参照する。再配信完了後に表示配信の状態を更新し、本番での対局を確認した場合は別途記録する。
+[PR #132](https://github.com/nkkmd/bao-la-kiswahili-game/pull/132)で、main `1a8135fa2ef9dc951fbb73599269bbb1b92bba9f`へ統合した。ユーザーが後続main `82241a05932b14c8e0383a3e1ff61155da8f8965`のpublic全22ファイルを本番へ再配信し、[表示更新用照合一覧](PUBLIC_MANIFEST.json)との照合が完了した。キャッシュは`bao-la-kiswahili-v37`。正式判断は[release記録](AI-GEN4-RELEASE-001.json)を参照する。2026年9月11日04:45 UTCの確認でも19ファイルが完全一致、3ファイルはCloudflareの追加のみだった。[再配信の照合結果](../../../artifacts/ai-gen4-release/deployment/verification.json)と差分対象3ファイルの原文を保存した。
+
+取得した配信JavaScriptをNodeの隔離コンテキストで評価し、全難易度のAI-GEN4正式ID、hard・expertだけの候補有効化、採用判断IDを確認した。HTML初期表示とキャッシュv37も確認した。[表示識別の確認結果](../../../artifacts/ai-gen4-release/deployment/identity-verification.json)に方法を記録する。これは本番ブラウザの描画・再対局を実施した記録ではない。
+
+今回依頼された正式採用から表示配信確認までの工程は完了した。追加の配信操作は不要である。今後、本番での再対局・実機確認を行った場合は、その報告を別途記録する。
 
 ## 切戻し
 

@@ -4,7 +4,7 @@
 
 expertは[正式採用済み](../public-ai-improvement-program-11/ADOPTION.md)である。ユーザーから本番組込み・main統合・配信・AI-GEN4昇格を進める明示指示を受け、本番用publicへの接続を行う。Cloudflareの配信操作はユーザーが担当する。
 
-本番用コードはPR #130でmainへ統合し、ユーザーによる配信後、全22ファイルの内容を確認した。状態は`DEPLOYED-ASSETS-VERIFIED`。その後、AI-GEN4へ正式昇格し、世代表示の更新・再配信を進めている。[最新の正式判断と再開手順](../ai-gen4-release/README.md)を参照する。[機械可読の状態記録](DEPLOYMENT.json)と[評価器配信時の照合一覧](PUBLIC_MANIFEST.json)を保持する。以下のv36配信手順と検証結果は、世代表示更新前の記録である。
+本番用コードはPR #130でmainへ統合し、ユーザーによる配信後、全22ファイルの内容を確認した。状態は`DEPLOYED-ASSETS-VERIFIED`。その後、AI-GEN4へ正式昇格し、世代表示を含む再配信内容の確認も完了した。[最新の正式判断と再開手順](../ai-gen4-release/README.md)を参照する。[機械可読の状態記録](DEPLOYMENT.json)と[評価器配信時の照合一覧](PUBLIC_MANIFEST.json)を保持する。以下のv36配信手順と検証結果は、世代表示更新前の記録である。
 
 ## 本番組込みの検証結果
 

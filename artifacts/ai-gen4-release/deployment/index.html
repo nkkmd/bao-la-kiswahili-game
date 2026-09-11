@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HTMWEF1XC4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HTMWEF1XC4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#172c2b">
+    <meta name="description" content="Play Bao la Kiswahili online, a traditional East African mancala strategy board game associated especially with Zanzibar and Tanzania. Play against AI or locally with two players." data-ja-content="東アフリカの伝統的なマンカラ系戦略ボードゲーム「バオ（Bao la Kiswahili）」をブラウザで遊べます。AI対戦と2人対戦に対応。">
+    <link rel="canonical" href="https://bao-la-kiswahili.cultivationdata.net/">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="stylesheet" href="./style.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Bao la Kiswahili",
+        "alternateName": ["Bao"],
+        "url": "https://bao-la-kiswahili.cultivationdata.net/",
+        "description": "Play Bao la Kiswahili online, a traditional East African mancala strategy board game associated especially with Zanzibar and Tanzania.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "JavaScript-enabled modern web browser",
+        "isAccessibleForFree": true,
+        "inLanguage": ["en", "ja"],
+        "genre": ["Mancala", "Board game", "Strategy game", "Traditional game"],
+        "keywords": "Bao la Kiswahili, Bao, mancala, East African board game, Tanzania, Zanzibar, strategy game, traditional game"
+      }
+    </script>
+    <title data-ja="バオ（Bao la Kiswahili）｜東アフリカのマンカラ・ボードゲーム">Bao la Kiswahili Online – East African Mancala Board Game</title>
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="titlebar">
+        <div>
+          <span class="kicker">ZANZIBAR BOARD GAME</span>
+          <h1>BAO LA KISWAHILI</h1>
+          <span class="prototype-badge" data-ja="試作版">PROTOTYPE</span>
+          <span id="ai-generation-badge" class="ai-generation-badge"
+            title="AI-GEN4-RELEASE-001" data-ja="AI-GEN4 / ふつう">AI-GEN4 / Normal</span>
+        </div>
+        <div class="toolbar">
+          <button id="sound" type="button" aria-pressed="true">SOUND ON</button>
+          <button id="speed" type="button" aria-pressed="false">FAST OFF</button>
+          <button id="new-game" type="button">NEW GAME</button>
+        </div>
+      </header>
+      <div class="screen-frame">
+        <section id="start-screen" class="start-screen" aria-labelledby="start-title">
+          <div class="start-panel">
+            <span class="kicker">GAME SETUP</span>
+            <h2 id="start-title" data-ja="対局設定">Game Setup</h2>
+            <label class="setup-field">
+              <span>MODE</span>
+              <select id="game-mode" aria-label="Game mode" data-ja-aria-label="対戦モード">
+                <option value="computer" selected data-ja="コンピュータ対戦">Computer</option>
+                <option value="local" data-ja="2人対戦">Local 2-player</option>
+              </select>
+            </label>
+            <label id="difficulty-field" class="setup-field">
+              <span>COM</span>
+              <select id="difficulty" aria-label="Computer difficulty" data-ja-aria-label="コンピュータの強さ">
+                <option value="easy" data-ja="やさしい">Easy</option>
+                <option value="normal" selected data-ja="ふつう">Normal</option>
+                <option value="hard" data-ja="むずかしい">Hard</option>
+                <option value="expert" data-ja="ムタアラム">Mtaalamu</option>
+              </select>
+            </label>
+            <label id="side-field" class="setup-field">
+              <span data-ja="手番">SIDE</span>
+              <select id="player-side" aria-label="Play first or second" data-ja-aria-label="先手または後手">
+                <option value="first" selected data-ja="先手（SOUTH）">First (SOUTH)</option>
+                <option value="second" data-ja="後手（NORTH）">Second (NORTH)</option>
+              </select>
+            </label>
+            <button id="start-game" class="start-button" type="button">START GAME</button>
+          </div>
+        </section>
+        <div class="game-info" aria-label="Game status" data-ja-aria-label="対局状況">
+          <div class="turn-info">
+            <span id="turn-number">TURN 1</span>
+            <strong id="turn-name">▼ SOUTH</strong>
+          </div>
+          <strong id="phase-name">NAMUA</strong>
+          <div class="reserves">
+            <span>NORTH <span class="hand-label">HAND</span> <strong id="north-hand">22</strong></span>
+            <span>SOUTH <span class="hand-label">HAND</span> <strong id="south-hand">22</strong></span>
+          </div>
+        </div>
+        <canvas id="game" width="640" height="330" tabindex="0" role="application"
+          aria-label="Bao la Kiswahili board against the computer. Tap a highlighted pit, then choose a sowing direction."
+          data-ja-aria-label="Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。"></canvas>
+        <div id="move-choices" class="move-choices" aria-label="Sowing direction" data-ja-aria-label="蒔く方向"></div>
+      </div>
+      <p id="visible-help" class="controls" data-ja="光っている穴を選んでください">Choose a highlighted pit</p>
+      <p id="status" class="visually-hidden" aria-live="polite"></p>
+      <details class="about-bao">
+        <summary data-ja="バオについて">About Bao</summary>
+        <div class="rules">
+          <p data-ja="バオ（Bao la Kiswahili）は、東アフリカの伝統的なマンカラ系戦略ボードゲームで、特にザンジバルとタンザニア本土との結びつきが深いゲームです。プレイヤーは穴の列にkete（石）を蒔き、相手の石を捕獲しながら、相手の前列を空にするか合法手をなくすことを目指します。">Bao la Kiswahili, commonly called Bao, is a traditional East African mancala strategy board game especially associated with Zanzibar and mainland Tanzania. Players sow kete (seeds or pieces) through rows of pits, capture opposing pieces, and try to empty the opponent's front row or leave the opponent without a legal move.</p>
+          <p data-ja="この無料ブラウザ版では、バオをコンピュータAIとの対戦または同じ端末での2人対戦として遊べます。一度ゲームファイルがキャッシュされればオフラインでも利用できます。">This free browser version lets you play Bao online against the computer AI or as a local two-player board game on the same device. Once the game files are cached, it also works offline.</p>
+        </div>
+      </details>
+      <details>
+        <summary data-ja="遊び方・採用ルール">How to Play / Rules Used</summary>
+        <div class="rules">
+          <p data-ja="コンピュータ対戦では先手（SOUTH）または後手（NORTH）を選べます。2人対戦では同じ端末でSOUTHとNORTHを交互に操作します。光っている穴を選び、次に蒔く方向を選んでください。">In computer mode, choose whether to play first (SOUTH) or second (NORTH). In local two-player mode, SOUTH and NORTH take turns on the same device. Choose a highlighted pit, then choose a sowing direction.</p>
+          <p data-ja="前半のnamuaでは手元から1個を加え、両者の手元がなくなるとmtajiへ移ります。相手の前列を空にするか、相手が合法手を失うと勝利です。">During namua, one kete is added from hand on each move. When both players' hands are empty, the game enters mtaji. You win by emptying the opponent's front row or leaving the opponent with no legal move.</p>
+          <p data-ja="用語: keteは石、KICHWAは左右端の入口、NYUMBAは中央寄りの家です。CAPTUREでは向かい合う前列の相手のketeを取り、左右どちらかのKICHWA側から入れて蒔きます。">Terms: kete are the playing pieces, KICHWA are the entry pits at the two ends, and NYUMBA is the house near the center. On a CAPTURE, the opponent's kete in the facing front-row pit are taken and sown from either the left or right KICHWA side.</p>
+          <p data-ja="選択肢: LEFT/RIGHTは選んだ穴から蒔く向きです。LEFT CAPTURE/RIGHT CAPTUREは、捕獲したketeを左/右のKICHWA側から入れる意味です。NYUMBA STOPは家で止まり、NYUMBA USEは家のketeを使ってrelay sowingを続けます。">Choices: LEFT/RIGHT are the sowing directions from the selected pit. LEFT CAPTURE/RIGHT CAPTURE mean entering captured kete from the left/right KICHWA side. NYUMBA STOP stops at the house; NYUMBA USE uses the house kete and continues relay sowing.</p>
+          <p><strong data-ja="このゲームは試作版です。">This game is a prototype.</strong><span data-ja="ルールや画面、動作は今後変更される可能性があります。"> Rules, presentation, and behavior may change in future versions.</span></p>
+          <p><a href="https://github.com/nkkmd/bao-la-kiswahili-ja" target="_blank" rel="noopener noreferrer" data-ja="Bao la Kiswahili 日本語完全ガイド">Bao la Kiswahili Complete Guide (Japanese)</a><span data-ja="の公開ドラフト "> uses public draft </span><code>v0.1.0-draft</code><span data-ja=" における ">, rule baseline </span><code>R-002</code><span data-ja=" を実装上の基準としています。未検証のtakasiaは適用していません。終わらないrelay sowingには安全上限を設けています。">. Unverified takasia is not applied. A safety limit is used for relay sowing that does not terminate.</span></p>
+        </div>
+      </details>
+      <details class="diagnostic-panel">
+        <summary data-ja="AI改善用診断">AI Improvement Diagnostics</summary>
+        <div class="rules">
+          <p data-ja="現在局面や端末内に蓄積したAI診断記録をJSONファイルとして保存できます。「AIの手を記録」は直前のAI着手と探索統計をこの端末だけに保存します。自動保存や外部送信は行いません。">You can save the current position or AI diagnostic records stored on this device as JSON files. “Record AI move” stores the most recent AI move and search statistics only on this device. Nothing is saved automatically or sent externally.</p>
+          <section id="ai-review-suggestion" class="ai-review-suggestion" aria-live="polite" hidden>
+            <div class="ai-review-heading">
+              <strong id="ai-review-message" data-ja="直前のAI探索結果です。">Most recent AI search result.</strong>
+              <button id="dismiss-ai-review" type="button" aria-label="Close search result" data-ja="閉じる" data-ja-aria-label="探索結果を閉じる">Close</button>
+            </div>
+            <p id="ai-review-stats"></p>
+            <ul id="ai-review-reasons"></ul>
+            <p class="ai-review-note" data-ja="これは悪手の断定ではなく、Phase 10Aの機械的な調査候補判定です。">This does not declare the move a blunder; it is a mechanical Phase 10A flag for possible review.</p>
+          </section>
+          <div class="diagnostic-actions">
+            <button id="copy-position" type="button" data-ja="現在局面を保存">Save current position</button>
+            <button id="mark-ai-move" type="button" data-ja="AIの手を記録">Record AI move</button>
+            <button id="copy-marked" type="button" data-ja="記録を保存">Save records</button>
+            <button id="clear-marked" type="button" data-ja="記録を削除">Delete records</button>
+          </div>
+          <p id="diagnostic-status" aria-live="polite" data-ja="端末内の記録: 0件">Records on this device: 0</p>
+        </div>
+      </details>
+      <footer>
+        Computer or local two-player · Works offline
+        <br>
+        Created by
+        <a href="https://bsky.app/profile/cultivationdata.net" target="_blank" rel="noopener noreferrer">@cultivationdata.net</a>
+        <br>
+        <a href="https://github.com/nkkmd/bao-la-kiswahili-game" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./privacy">Privacy Policy</a>
+        <br>
+        <span data-ja="公式公開サイト: ">Official site: </span>
+        <a href="https://bao-la-kiswahili.cultivationdata.net/">bao-la-kiswahili.cultivationdata.net</a>
+      </footer>
+    </main>
+    <script src="./locale.js"></script>
+    <script>window.BaoLocale.localize(document);</script>
+    <script src="./engine.js"></script>
+    <script src="./ai-weights.js"></script>
+    <script src="./logic-evaluator.js"></script>
+    <script src="./ai.js"></script>
+    <script src="./ai-config.js"></script>
+    <script src="./ai-candidate.js"></script>
+    <script src="./ai-release.js"></script>
+    <script src="./diagnostics.js"></script>
+    <script src="./review-suggestion.js"></script>
+    <script src="./diagnostic-download.js"></script>
+    <script src="./main.js"></script>
+    <script>
+      (() => {
+        const badge = document.querySelector("#ai-generation-badge");
+        const difficulty = document.querySelector("#difficulty");
+        const mode = document.querySelector("#game-mode");
+        const labels = {
+          easy: ["Easy", "やさしい"],
+          normal: ["Normal", "ふつう"],
+          hard: ["Hard", "むずかしい"],
+          expert: ["Mtaalamu", "ムタアラム"],
+        };
+        const updateBadge = () => {
+          const [english, japanese] = labels[difficulty.value] || labels.normal;
+          const identity = window.BaoReleaseConfig.displayIdentity(difficulty.value);
+          badge.textContent = `${window.BaoLocale.t(identity.label, identity.labelJa)} / ${window.BaoLocale.t(english, japanese)}`;
+          badge.title = [identity.releaseId, identity.adoptionId].filter(Boolean).join(" / ");
+          badge.hidden = mode.value !== "computer";
+        };
+        difficulty.addEventListener("change", updateBadge);
+        mode.addEventListener("change", updateBadge);
+        updateBadge();
+      })();
+    </script>
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a394057abac418f0',t:'MTc4OTEwMTkxMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
