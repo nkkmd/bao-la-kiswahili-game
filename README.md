@@ -156,7 +156,7 @@ node tools/diagnostic-to-fixture.js \
 
 ### 現在の公開AI
 
-現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの論理ゲート型評価器PBAI-C015-v1の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。easy・normalは従来構成を維持します。AI-GEN4の画面表示は更新を準備しており、再配信の確認待ちです。[正式判断・適用範囲・現在状態](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
+現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの論理ゲート型評価器PBAI-C015-v1の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。easy・normalは従来構成を維持します。AI-GEN4の画面表示更新もmainへ統合済みで、再配信の確認待ちです。[正式判断・適用範囲・現在状態](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
 
 採用した改善は、探索中に表示用の盤面スナップショット生成を省く「探索専用の軽量な局面遷移」です。捕獲量や連鎖数などAIに必要な情報、通常の着手処理、画面のアニメーションを維持し、ルール・評価関数・探索方式の意味は変えていません。
 

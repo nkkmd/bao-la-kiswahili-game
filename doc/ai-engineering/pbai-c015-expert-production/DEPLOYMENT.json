@@ -21,6 +21,6 @@
   "deploymentDirectory": "public",
   "deploymentManifest": "PUBLIC_MANIFEST.json",
   "productionUrl": "https://bao-la-kiswahili.cultivationdata.net/",
-  "nextAction": "VERIFY-GENERATION-DISCLOSURE-THEN-USER-DEPLOY",
+  "nextAction": "USER-DEPLOY-GENERATION-DISCLOSURE-THEN-VERIFY",
   "verificationEvidence": "artifacts/pbai-c015-expert-production/deployment/verification.json"
 }
