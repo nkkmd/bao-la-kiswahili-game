@@ -1,16 +1,19 @@
 "use strict";
 (function exposeReleaseAdapter(root) {
-  // hard限定の正式採用。配備状況は採用記録で管理する。
+  // hard・expertの正式採用。世代昇格と配信確認は別の記録で管理する。
   const PBAI_C015_ENABLED = true;
+  const PBAI_C015_EXPERT_ENABLED = true;
+  const enabledFor = level => (level === "hard" && PBAI_C015_ENABLED)
+    || (level === "expert" && PBAI_C015_EXPERT_ENABLED);
   const baseline = root.BaoAI;
   const config = root.BaoAIConfig;
   function searchOptions(level, capabilities = {}, state = null) {
     return { ...config.searchOptions(level, capabilities, state),
-      ...(PBAI_C015_ENABLED && level === "hard" ? { pbaiC015LogicGate: true } : {}),
+      ...(enabledFor(level) ? { pbaiC015LogicGate: true } : {}),
     };
   }
   function analyzeMove(state, level, random = Math.random, options = {}) {
-    const requested = options.pbaiC015LogicGate === true && level === "hard"
+    const requested = options.pbaiC015LogicGate === true && (level === "hard" || level === "expert")
       && (!options.evaluationProfile || options.evaluationProfile === "bao")
       && (!options.searchProfile || options.searchProfile === "phase2")
       && !options.evaluationWeights && !options.evaluationAdjustments;
@@ -23,10 +26,11 @@
     return result;
   }
   function displayIdentity(level, stats = null) {
-    if (PBAI_C015_ENABLED && level === "hard" && !stats?.evaluationFallback
+    if (enabledFor(level) && !stats?.evaluationFallback
       && typeof root.BaoLogicGate?.evaluate === "function"
       && typeof root.BaoCandidateAI?.analyzeMove === "function") {
-      return { label: "Logic Gate AI", labelJa: "論理ゲートAI", releaseId: "PBAI-C015-HARD-ADOPTION-001" };
+      return { label: "Logic Gate AI", labelJa: "論理ゲートAI", releaseId: level === "expert"
+        ? "PBAI-C015-EXPERT-ADOPTION-001" : "PBAI-C015-HARD-ADOPTION-001" };
     }
     return { label: config.GENERATION, labelJa: config.GENERATION, releaseId: config.RELEASE_ID };
   }

@@ -51,6 +51,6 @@ assert.match(html, /easy: \["Easy", "やさしい"\]/);
 assert.match(html, /expert: \["Mtaalamu", "ムタアラム"\]/);
 assert.match(html, /BaoReleaseConfig\.displayIdentity/);
 assert.match(main, /AIConfig\.displayIdentity/);
-assert.match(serviceWorker, /bao-la-kiswahili-v35/);
+assert.match(serviceWorker, /bao-la-kiswahili-v36/);
 
 console.log("AI-GEN3 release tests passed");
