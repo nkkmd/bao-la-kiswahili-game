@@ -1,0 +1,50 @@
+{
+  "method": "downloaded-assets-node-vm",
+  "passed": true,
+  "liveBrowserRendered": false,
+  "cacheName": "bao-la-kiswahili-v37",
+  "rows": [
+    {
+      "level": "easy",
+      "identity": {
+        "label": "AI-GEN4",
+        "labelJa": "AI-GEN4",
+        "releaseId": "AI-GEN4-RELEASE-001",
+        "evaluator": "AI-GEN3-baseline"
+      },
+      "candidateEnabled": false
+    },
+    {
+      "level": "normal",
+      "identity": {
+        "label": "AI-GEN4",
+        "labelJa": "AI-GEN4",
+        "releaseId": "AI-GEN4-RELEASE-001",
+        "evaluator": "AI-GEN3-baseline"
+      },
+      "candidateEnabled": false
+    },
+    {
+      "level": "hard",
+      "identity": {
+        "label": "AI-GEN4",
+        "labelJa": "AI-GEN4",
+        "releaseId": "AI-GEN4-RELEASE-001",
+        "adoptionId": "PBAI-C015-HARD-ADOPTION-001",
+        "evaluator": "PBAI-C015-v1"
+      },
+      "candidateEnabled": true
+    },
+    {
+      "level": "expert",
+      "identity": {
+        "label": "AI-GEN4",
+        "labelJa": "AI-GEN4",
+        "releaseId": "AI-GEN4-RELEASE-001",
+        "adoptionId": "PBAI-C015-EXPERT-ADOPTION-001",
+        "evaluator": "PBAI-C015-v1"
+      },
+      "candidateEnabled": true
+    }
+  ]
+}

@@ -156,7 +156,7 @@ node tools/diagnostic-to-fixture.js \
 
 ### 現在の公開AI
 
-現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの論理ゲート型評価器PBAI-C015-v1の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。easy・normalは従来構成を維持します。AI-GEN4の画面表示更新もmainへ統合済みで、再配信の確認待ちです。[正式判断・適用範囲・現在状態](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
+現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの論理ゲート型評価器PBAI-C015-v1の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。easy・normalは従来構成を維持します。AI-GEN4の画面表示を含む本番配信内容も確認済みです。[正式判断・適用範囲・現在状態](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
 
 採用した改善は、探索中に表示用の盤面スナップショット生成を省く「探索専用の軽量な局面遷移」です。捕獲量や連鎖数などAIに必要な情報、通常の着手処理、画面のアニメーションを維持し、ルール・評価関数・探索方式の意味は変えていません。
 
@@ -186,7 +186,7 @@ PBAI-P1〜P10は完了しています。[PBAI-P11](doc/ai-engineering/public-ai-
 
 PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8・P9の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
 
-[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。その配信状態は`DEPLOYED-ASSETS-VERIFIED`です。[配信確認記録](doc/ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)は当時の結果と未確認範囲を保持しています。今回のツリーでは、別途正式採用したexpertも有効化しました。本番配信内容の確認後にAI-GEN4へ昇格し、世代表示の再配信は確認待ちです。[最新の組込み状態と配信手順](doc/ai-engineering/pbai-c015-expert-production/README.md)を参照してください。上記のProgram概要は各終了時点の経過です。
+[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。その配信状態は`DEPLOYED-ASSETS-VERIFIED`です。[配信確認記録](doc/ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)は当時の結果と未確認範囲を保持しています。今回のツリーでは、別途正式採用したexpertも有効化しました。本番配信内容の確認後にAI-GEN4へ昇格し、世代表示を含む配信内容も確認済みです。[最新の組込み状態と配信手順](doc/ai-engineering/pbai-c015-expert-production/README.md)を参照してください。上記のProgram概要は各終了時点の経過です。
 
 ### 詳細資料
 

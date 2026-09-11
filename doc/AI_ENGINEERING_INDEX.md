@@ -4,7 +4,7 @@
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`**
-進行中作業: **hard・expertの本番配信内容確認済み、AI-GEN4正式昇格済み、世代表示の再配信確認待ち**。[正式判断と再開手順](ai-engineering/ai-gen4-release/README.md)を参照する。release IDは`AI-GEN4-RELEASE-001`。easy・normalは従来構成を維持する。以下のProgram別記録は各終了時点の証拠を保持する。
+現在状態: **hard・expertの正式採用・本番配信内容確認・AI-GEN4正式昇格・世代表示の配信内容確認が完了**。[正式判断と再開手順](ai-engineering/ai-gen4-release/README.md)を参照する。release IDは`AI-GEN4-RELEASE-001`。easy・normalは従来構成を維持する。以下のProgram別記録は各終了時点の証拠を保持する。
 公開状態: [hardの正式採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)は`DEPLOYED-ASSETS-VERIFIED`。[expertの正式採用](ai-engineering/public-ai-improvement-program-11/ADOPTION.md)は`ADOPT`、本番配信状態は`DEPLOYED-ASSETS-VERIFIED`。
 
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
