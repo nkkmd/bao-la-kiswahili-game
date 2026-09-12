@@ -2,9 +2,9 @@
 
 ## 実機所見確認後の現在状態
 
-ユーザーから約20分の実機確認で全項目に問題なしとの回答を受け、[expert正式採用](ADOPTION.md)を`PBAI-C015-EXPERT-ADOPTION-001 / ADOPT`として記録した。本番用組込み・main統合・本番配信・AI-GEN4昇格は未実施。以下の採用保留・所見待ちは本判断前の履歴として保持する。
+ユーザーから約20分の実機確認で全項目に問題なしとの回答を受け、[expert正式採用](ADOPTION.md)を`PBAI-C015-EXPERT-ADOPTION-001 / ADOPT`として記録した。後続の[本番組込み・main統合・配信](../pbai-c015-expert-production/README.md)と[AI-GEN4正式昇格・表示配信確認](../ai-gen4-release/README.md)も完了した。以下の採用保留・所見待ちは、実験終了時点の判断と採用前の履歴として保持する。
 
-## 結論と現在状態
+## 実験終了時点の結論
 
 正式判断は`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`。PBAI-C015-v1は、公開expertの低・標準・高に対応する予算と深さの全設定で、事前の棋力・運用条件を満たした。全棋譜再生とPython独立集計も通過した。これはNodeの毎手Worker条件での改善証拠であり、スマートフォン実機の合格や正式採用を意味しない。
 
@@ -49,6 +49,6 @@ GitHub実行は開始から検算終了まで40049.10秒（約11時間8分）。
 
 受領検証は保存証拠の整合確認であり、新たな棋力実験ではない。元の終了報告・JSON・圧縮証拠はbyteを保持し、説明は本書へ追加する。
 
-## 次の工程
+## 実験終了後に進めた工程
 
-[実機確認手順](DEVICE_CHECK.md)に従って生成したexpertコピーを確認する。採用準備の適用範囲、切戻し、世代昇格の順序は[組込み準備](INTEGRATION_PREPARATION.md)を参照する。
+[実機確認手順](DEVICE_CHECK.md)に従って生成したexpertコピーの確認を完了し、[正式採用](ADOPTION.md)へ進んだ。採用準備の適用範囲、切戻し、世代昇格の順序は[組込み準備](INTEGRATION_PREPARATION.md)を参照する。

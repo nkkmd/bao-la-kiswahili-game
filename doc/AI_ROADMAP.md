@@ -1,5 +1,7 @@
 # Bao la Kiswahili コンピュータ強化ロードマップ
 
+現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。本書のPhase別計画・結果とP4・P5の追記は各時点の開発記録であり、最新の採用・配信状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を参照してください。P6〜P11を通じた学習済み論理ゲート型評価器の検証・正式採用は、初期Phase計画とは別の改善プログラムとして完了しています。
+
 Version: 0.1.0  
 Status: Completed
 

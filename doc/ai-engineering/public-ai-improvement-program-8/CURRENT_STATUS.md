@@ -1,5 +1,7 @@
 # PBAI-P8 — 現在の状態
 
+現在の公開AIは[AI-GEN4](../ai-gen4-release/README.md)（`AI-GEN4-RELEASE-001`）です。本書の公開系統・配信状態・未確認事項は、このプログラムと当時の確認範囲の記録です。後続の採用・配信によって、このプログラムの正式結果や凍結証拠は変更しません。
+
 Programは`COMPLETE`。正式判断は`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`で、公開判断は`NO-RELEASE / KEEP-AI-GEN3`である。
 
 新規最終512局は295勝217敗、勝点率57.6171875％、95％区間54.6875〜60.546875％。Namuaは62.109375％、Mtajiは53.125％で、事前の棋力・運用条件と正式検算を通過した。根拠はNode/Linuxの100ms・最大深度8という固定試験範囲に限る。

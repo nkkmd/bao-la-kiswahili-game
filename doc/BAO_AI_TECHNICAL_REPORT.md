@@ -1,4 +1,6 @@
-# Bao AI Technical Report
+# Bao AI 技術レポート
+
+本書は初期PhaseのAI強化を対象とする技術レポートです。以下の「現時点」「既定AI」「将来」は記載した試験当時の状態を表します。後続の学習評価器の検証・採用は扱っていません。現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)であり、[AI開発の中央索引](AI_ENGINEERING_INDEX.md)からP1〜P11の結果と採用根拠を確認できます。
 
 Version: 0.1.1  
 Status: Draft  

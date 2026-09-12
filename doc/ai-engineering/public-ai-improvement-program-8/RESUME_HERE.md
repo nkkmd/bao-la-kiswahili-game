@@ -1,5 +1,7 @@
 # PBAI-P8 — 再開位置
 
+現在の公開AIは[AI-GEN4](../ai-gen4-release/README.md)（`AI-GEN4-RELEASE-001`）です。本書の公開系統・配信状態・未確認事項は、このプログラムと当時の確認範囲の記録です。後続の採用・配信によって、このプログラムの正式結果や凍結証拠は変更しません。
+
 P8は`COMPLETE / STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`で終了している。公開判断は`NO-RELEASE / KEEP-AI-GEN3`。
 
 ## 最初に確認する記録

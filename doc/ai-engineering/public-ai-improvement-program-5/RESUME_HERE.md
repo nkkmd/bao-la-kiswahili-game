@@ -1,5 +1,7 @@
 # PBAI-P5 — 完了後の確認位置
 
+現在の公開AIは[AI-GEN4](../ai-gen4-release/README.md)（`AI-GEN4-RELEASE-001`）です。本書の公開系統・配信状態・未確認事項は、このプログラムと当時の確認範囲の記録です。後続の採用・配信によって、このプログラムの正式結果や凍結証拠は変更しません。
+
 現在は`COMPLETE / ADOPTED / AI-GEN3 / AI-GEN3-RELEASE-001`。測定は終了しており、label再追加、ActionsのRe-run、同一seedの対局再実行はしない。
 
 ## 固定した実行と証拠
@@ -25,4 +27,4 @@ git status --shortを確認して他作業を上書きせず、artifacts/pbai-p5
 
 進行中の科学試験はない。正式判断`ADOPT`、release ID `AI-GEN3-RELEASE-001`、`AI-GEN3`昇格は[正式昇格判断](PROMOTION_DECISION.md)に記録した。昇格表示を含むmain `e6a3936ee6285d606be83987b5ae3aa2ee61ec25`の`public/`は手動Cloudflare配信と実サイト確認まで完了した。
 
-追加対局、使用済みseedの再利用、過去判断の変更は行わない。公開障害時はrelease記録のrollback手順を使う。昇格表示の配信状態は`VERIFIED-PUBLIC-ACTIVE`であり、次に必須の公開作業はない。
+追加対局、使用済みseedの再利用、過去判断の変更は行わない。P5のrollback手順は当時の構成向けである。現在の公開障害では[AI-GEN4の切戻し手順](../ai-gen4-release/README.md#切戻し)を参照する。昇格表示の配信状態は`VERIFIED-PUBLIC-ACTIVE`であり、次に必須の公開作業はない。
