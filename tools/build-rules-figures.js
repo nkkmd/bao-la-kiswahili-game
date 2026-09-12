@@ -79,6 +79,10 @@ function board(state, { half = false, labelsOnly = false, focus = [], arrows = [
     if (curve) {
       const y = Math.min(a.y, b.y) - 39;
       body += `<path d="M ${a.x} ${a.y - 28} Q ${(a.x + b.x) / 2} ${y - 20} ${b.x} ${b.y - 28}" fill="none" stroke="#a54824" stroke-width="3" marker-end="url(#arrow)"/>`;
+    } else if (a.x === b.x) {
+      // 前列から後列への折返しは穴の外側を回し、下の穴番号と重ねない。
+      const side = a.x > 330 ? 1 : -1;
+      body += `<path d="M ${a.x + side * 29} ${a.y} C ${a.x + side * 55} ${a.y} ${b.x + side * 55} ${b.y} ${b.x + side * 29} ${b.y}" fill="none" stroke="#a54824" stroke-width="3" marker-end="url(#arrow)"/>`;
     } else {
       const dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy), ux = dx / len, uy = dy / len;
       body += `<path d="M ${a.x + ux * 29} ${a.y + uy * 29} L ${b.x - ux * 31} ${b.y - uy * 31}" fill="none" stroke="#a54824" stroke-width="3" marker-end="url(#arrow)"/>`;
