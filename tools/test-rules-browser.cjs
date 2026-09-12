@@ -12,10 +12,12 @@ assert.ok(["chromium", "firefox", "webkit"].includes(engine));
 const root = path.resolve(__dirname, "../public");
 const out = path.resolve(__dirname, "../artifacts/local/rules-browser", engine);
 fs.mkdirSync(out, { recursive: true });
-const report = { engine, passed: false, physicalDeviceVerified: false, checks: [] };
+const report = { engine, passed: false, physicalDeviceVerified: false, networkFailureMode: "origin-connection-closed", checks: [] };
 let serveOld = false;
+let originUnavailable = false;
 const oldWorker = require("node:child_process").execFileSync("git", ["show", "109bac01a44b40a3c3a1d1408ddc956b607eeae4:public/service-worker.js"], { encoding: "utf8" });
 const server = http.createServer((req, res) => {
+  if (originUnavailable) { req.socket.destroy(); return; }
   const url = new URL(req.url, "http://localhost");
   // Cloudflare Pagesと同じ、HTMLからclean URLへのリダイレクトを再現する。
   if (["/rules.html", "/privacy.html", "/index.html"].includes(url.pathname)) {
@@ -36,6 +38,10 @@ async function cacheReady(page, version = "v40") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
+  await page.waitForFunction(async () => {
+    const r = await navigator.serviceWorker.getRegistration();
+    return r?.active?.state === "activated" && navigator.serviceWorker.controller === r.active;
+  });
 }
 async function allImages(page) {
   await page.locator("figure img").evaluateAll(images => images.forEach(img => { img.loading = "eager"; }));
@@ -78,6 +84,7 @@ let browser;
     await check("英語への明示切替と節の位置の維持", async () => {
       await page.locator('#contents a[href="#capture"]').click();
       await page.locator('[data-language="en"]').click();
+      await page.waitForLoadState("load");
       assert.ok(page.url().endsWith("?lang=en#capture"));
       assert.equal(await page.locator("html").getAttribute("lang"), "en");
       assert.equal(await page.locator("#capture-title").textContent(), "Capture and choose an entry side");
@@ -96,15 +103,16 @@ let browser;
     });
     await check("オフラインで言語指定・HTML別名・未閲覧の図版・ゲームへ戻る", async () => {
       await cacheReady(page);
-      await context.setOffline(true);
+      originUnavailable = true;
       for (const suffix of ["/rules?lang=en", "/rules?lang=ja", "/rules.html?lang=en"]) {
+        console.log("通信遮断中のURL: " + suffix);
         await page.goto(origin + suffix); await allImages(page);
         assert.equal(await page.locator("html").getAttribute("lang"), suffix.includes("lang=ja") ? "ja" : "en");
       }
       await page.locator(".rules-topbar [data-locale-link]").click();
       assert.equal(await page.locator("html").getAttribute("lang"), "en");
       await page.waitForFunction(() => !!window.BaoEngine);
-      await context.setOffline(false);
+      originUnavailable = false;
     });
     await check("対局中の導線は同じ言語の別タブを開き、元の盤面を保つ", async () => {
       await page.goto(origin + "/?lang=ja");
@@ -137,12 +145,14 @@ let browser;
       await p.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
       await cacheReady(p, "v40");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
-      await upgrade.setOffline(true);
+      originUnavailable = true;
       await p.goto(origin + "/rules?lang=ja"); await allImages(p);
       assert.equal(await p.locator("html").getAttribute("lang"), "ja");
       await p.locator('[data-language="en"]').click();
+      await p.waitForLoadState("load");
       assert.equal(await p.locator("html").getAttribute("lang"), "en");
       await upgrade.close();
+      originUnavailable = false;
     });
     assert.deepEqual(errors, []);
     report.passed = true;

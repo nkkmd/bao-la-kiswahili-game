@@ -30,6 +30,7 @@ Status: Active
 | 対象 | 役割 |
 | --- | --- |
 | [`bao-la-kiswahili-ja`](https://github.com/nkkmd/bao-la-kiswahili-ja) | 人が読むルールの参照基準 |
+| [`public/rules.html`](../public/rules.html) | 採用基準と実装範囲に沿った、ゲーム利用者向けの日英図解 |
 | [`public/engine.js`](../public/engine.js) | 合法手生成と盤面遷移における実行時の Single Source of Truth |
 | [`test/`](../test/) | 実装されたルール挙動の回帰検証 |
 | 研究文書・成果物 | 特定時点のルールエンジンと実験条件から得た結果の記録 |
@@ -81,6 +82,7 @@ Status: Active
 6. 必要に応じてAIベンチマークと研究を再実行する。
 7. この文書の公開版、採用基準、固定参照コミット、既知の差異を更新する。
 8. ルート `README.md`、ゲーム画面、主要設計・研究文書の参照を同期する。
+9. 図解ルールの日本語・英語本文、図版、既知の差異を同期する。`node tools/build-rules-figures.js --check`で図版と現行エンジンの遷移を照合し、基準の変更に応じて説明用局面を見直す。
 
 ## 7. 主要文書での参照方法
 

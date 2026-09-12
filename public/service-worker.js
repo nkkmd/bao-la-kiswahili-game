@@ -14,7 +14,11 @@ const DOCUMENTS = new Map([
 ].map(([requestPath, cachedPath]) => [new URL(requestPath, self.registration.scope).href,
   new URL(cachedPath, self.registration.scope).href]));
 self.addEventListener("install", (event) => { event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(FILES))); self.skipWaiting(); });
-self.addEventListener("activate", (event) => { event.waitUntil(caches.keys().then((names) => Promise.all(names.filter((name) => name !== CACHE).map((name) => caches.delete(name))))); self.clients.claim(); });
+self.addEventListener("activate", (event) => {
+  event.waitUntil(caches.keys()
+    .then((names) => Promise.all(names.filter((name) => name !== CACHE).map((name) => caches.delete(name))))
+    .then(() => self.clients.claim()));
+});
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   const url = new URL(event.request.url);
