@@ -1,0 +1,42 @@
+name: 図解ルールの日英・画面・オフライン確認
+on:
+  pull_request:
+    paths:
+      - 'public/**'
+      - 'tools/build-rules-figures.js'
+      - 'tools/test-rules-browser.cjs'
+      - '.github/workflows/illustrated-rules.yml'
+permissions:
+  contents: read
+jobs:
+  rules-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 図版と既存表示の回帰確認
+        run: |
+          node tools/build-rules-figures.js --check
+          node --test test/locale.test.js test/seo.test.js test/ai-generation-release.test.js test/engine.test.js
+      - name: ブラウザを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/bao-rules-browser" playwright@1.62.1
+          node "$RUNNER_TEMP/bao-rules-browser/node_modules/playwright/cli.js" install --with-deps ${{ matrix.engine }}
+      - name: 日英・図の拡大・対局導線・オフライン更新を確認
+        run: NODE_PATH="$RUNNER_TEMP/bao-rules-browser/node_modules" node tools/test-rules-browser.cjs ${{ matrix.engine }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: illustrated-rules-${{ matrix.engine }}
+          path: artifacts/local/rules-browser/
+          if-no-files-found: warn

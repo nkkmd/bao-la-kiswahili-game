@@ -8,6 +8,8 @@ const engine = process.argv[2] || 'chromium';
 assert(['chromium', 'firefox', 'webkit'].includes(engine));
 const dir = path.resolve(__dirname, '../../public');
 const out = path.resolve(__dirname, '../../artifacts/local/pbai-c015-expert-production-browser', engine);
+const productionCache = fs.readFileSync(path.join(dir, 'service-worker.js'), 'utf8').match(/const CACHE = "([^"]+)"/)[1];
+const rollbackCache = `${productionCache}-rollback-test`;
 fs.mkdirSync(out, { recursive: true });
 let mode = 'candidate';
 let originUnavailable = false;
@@ -15,18 +17,19 @@ let modelUnavailable = false;
 let candidateUnavailable = false;
 const report = { engine, sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   physicalDeviceVerified: false, strengthInferenceAuthorized: false, networkFailureMode: 'origin-connection-closed', passed: false, checks: [],
-  transformations: ['candidate: production public bytes unchanged', 'rollback: expert flag disabled; v38 cache; hard retained'],
+  transformations: ['candidate: production public bytes unchanged', `rollback: expert flag disabled; ${rollbackCache} cache; hard retained`],
 };
 const server = http.createServer((req, res) => {
   if (originUnavailable) { req.socket.destroy(); return; }
   const name = req.url.split('?')[0] === '/' ? 'index.html' : req.url.split('?')[0].slice(1);
-  if (!/^[\w.-]+$/.test(name)) return res.writeHead(404).end();
+  if (!/^[\w./-]+$/.test(name)) return res.writeHead(404).end();
   if ((modelUnavailable && name === 'logic-evaluator.js') || (candidateUnavailable && name === 'ai-candidate.js')) return res.writeHead(404).end();
-  const file = path.join(dir, name === 'privacy' ? 'privacy.html' : name);
+  const file = path.resolve(dir, name === 'privacy' ? 'privacy.html' : name === 'rules' ? 'rules.html' : name);
+  if (!file.startsWith(dir + path.sep)) return res.writeHead(404).end();
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return res.writeHead(404).end();
   let body = fs.readFileSync(file);
   if (name === 'ai-release.js' && mode === 'rollback') body = Buffer.from(body.toString().replace('const PBAI_C015_EXPERT_ENABLED = true;', 'const PBAI_C015_EXPERT_ENABLED = false;'));
-  if (name === 'service-worker.js' && mode === 'rollback') body = Buffer.from(body.toString().replace('bao-la-kiswahili-v37', 'bao-la-kiswahili-v38'));
+  if (name === 'service-worker.js' && mode === 'rollback') body = Buffer.from(body.toString().replace(productionCache, rollbackCache));
   const mime = name.endsWith('.js') ? 'text/javascript' : name.endsWith('.css') ? 'text/css' : name.endsWith('.svg') ? 'image/svg+xml' : name.endsWith('.webmanifest') ? 'application/manifest+json' : 'text/html';
   res.writeHead(200, { 'Content-Type': mime, 'Cache-Control': 'no-store' }); res.end(body);
 });
@@ -93,7 +96,7 @@ async function start(page, level = 'expert') {
     await check('配信元への通信不能時に候補資産をキャッシュから利用', async () => {
       await page.evaluate(async () => { await navigator.serviceWorker.ready; await caches.open('bao-la-kiswahili-v35'); });
       await page.reload(); await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
-      assert(await page.evaluate(async () => !!(await (await caches.open('bao-la-kiswahili-v37')).match('./logic-evaluator.js'))));
+      assert(await page.evaluate(async name => !!(await (await caches.open(name)).match('./logic-evaluator.js')), productionCache));
       originUnavailable = true; await page.reload();
       const d = await start(page); assert.equal(d.ai.stats.evaluationCandidate, 'PBAI-C015-v1');
       originUnavailable = false;
@@ -101,7 +104,7 @@ async function start(page, level = 'expert') {
     await check('設定無効化とキャッシュ更新で基準AIへ切戻す', async () => {
       mode = 'rollback';
       await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
-      await eventually(() => page.evaluate(async () => { const names = await caches.keys(); return names.includes('bao-la-kiswahili-v38') && !names.includes('bao-la-kiswahili-v37') && !names.includes('bao-la-kiswahili-v35'); }));
+      await eventually(() => page.evaluate(async ({ current, rollback }) => { const names = await caches.keys(); return names.includes(rollback) && !names.includes(current) && !names.includes('bao-la-kiswahili-v35'); }, { current: productionCache, rollback: rollbackCache }));
       assert.equal(await page.evaluate(async () => (await caches.keys()).includes('bao-la-kiswahili-v35')), false);
       await page.reload();
       assert.equal(await page.evaluate(() => BaoReleaseConfig.searchOptions('expert').pbaiC015LogicGate), undefined);

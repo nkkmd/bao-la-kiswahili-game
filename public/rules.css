@@ -1,0 +1,84 @@
+.rules-page { max-width: 960px; color: #edf3df; font-size: 17px; line-height: 1.85; }
+.rules-page [id] { scroll-margin-top: 20px; }
+.rules-topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
+.rules-topbar a, .language-nav a, .figure-zoom, .back-to-top { display: inline-flex; align-items: center; min-height: 44px; }
+.language-nav { display: flex; gap: 4px; padding: 4px; border: 1px solid #456158; border-radius: 8px; }
+.language-nav a { padding: 4px 14px; border-radius: 4px; text-decoration: none; }
+.language-nav [aria-current] { background: #d3e4a5; color: #172c2b; font-weight: 700; }
+.rules-hero { padding: clamp(24px, 5vw, 48px); border: 1px solid #51694c; border-top: 4px solid #e2c36b; border-radius: 8px; background: #172c2b; }
+.rules-hero h1 { font-family: inherit; font-size: clamp(29px, 5vw, 46px); max-width: 18em; line-height: 1.35; letter-spacing: 0; margin: 12px 0 20px; }
+.rules-eyebrow { font-size: 13px; color: #e2c36b; letter-spacing: .08em; font-weight: 700; }
+.rules-lead { font-size: clamp(17px, 2.2vw, 21px); color: #d6e4d7; max-width: 42em; }
+.rules-baseline { font-size: 14px; color: #b2c5b6; }
+.rules-quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 0; padding: 0; list-style: none; }
+.rules-quick li { padding: 16px; border-radius: 4px; background: #0e2021; }
+.rules-quick strong { display: block; color: #e2c36b; }
+.rules-quick span { font-size: 15px; }
+.rules-toc { margin: 32px 0 40px; padding: 24px; border: 1px solid #34544a; border-radius: 8px; background: #101e1f; }
+.rules-toc h2 { margin: 0 0 12px; font-size: 20px; }
+.rules-toc ol { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; padding-left: 28px; margin: 0; }
+.rules-toc a { display: block; padding: 5px 0; }
+.rules-section { padding: 32px 0; border-top: 1px solid #34544a; }
+.rules-section h2 { font-size: clamp(24px, 3vw, 30px); line-height: 1.5; margin: 0 0 20px; }
+.section-number { display: block; font: 700 13px/1.4 monospace; color: #e2c36b; letter-spacing: .1em; margin-bottom: 8px; }
+.rules-section h3 { color: #d3e4a5; font-size: 21px; margin: 28px 0 12px; }
+.rules-section p { max-width: 48em; }
+.rules-section li { margin: 7px 0; }
+.rules-section ul, .rules-section ol { padding-left: 1.6em; }
+.rules-page figure { margin: 24px 0; padding: clamp(10px, 2.5vw, 22px); background: #f5f3e9; color: #172c2b; border-radius: 8px; }
+.rules-page figure img { display: block; width: 100%; height: auto; }
+.rules-page figcaption { margin-top: 12px; font-size: 15px; line-height: 1.8; }
+.figure-zoom { color: #233f36; font-size: 14px; font-weight: 650; gap: 8px; margin-top: 6px; }
+.rule-note { margin: 22px 0; padding: 16px 20px; border-left: 4px solid #e2c36b; background: #20332e; border-radius: 0 6px 6px 0; }
+.rule-note p { margin: 0; }
+.rules-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.rules-card { padding: 20px; background: #172c2b; border: 1px solid #34544a; border-radius: 6px; }
+.rules-card h3 { margin-top: 0; }
+.rules-card p:last-child { margin-bottom: 0; }
+.rule-terms { display: grid; grid-template-columns: minmax(100px, 160px) 1fr; margin: 20px 0; }
+.rule-terms dt, .rule-terms dd { margin: 0; padding: 14px 0; border-bottom: 1px solid #34544a; }
+.rule-terms dt { color: #e2c36b; font-weight: 700; padding-right: 18px; }
+.rules-page details { background: #132524; border: 1px solid #34544a; border-radius: 6px; }
+.rules-page summary { border: 0; background: transparent; font-size: 17px; }
+.rule-detail { padding: 0 20px 16px; }
+.rules-page code { overflow-wrap: anywhere; font-size: .9em; }
+.rules-page a:focus-visible { outline: 3px solid #e2c36b; outline-offset: 3px; }
+.rules-page figure a:focus-visible { outline-color: #172c2b; }
+.back-to-top { font-size: 14px; margin-top: 12px; }
+.rules-footer { text-align: left; border-top: 1px solid #34544a; padding-top: 24px; font-size: 14px; }
+.rules-footer nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+#figure-dialog { width: min(96vw, 1040px); max-width: 1040px; max-height: 94svh; padding: 16px; border: 1px solid #78998a; border-radius: 8px; background: #172c2b; color: #edf3df; }
+#figure-dialog::backdrop { background: #000b; }
+.zoom-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.zoom-scroll { overflow: auto; background: #f5f3e9; max-height: 65svh; border-radius: 4px; }
+.zoom-scroll img { display: block; width: max(100%, 720px); max-width: none; height: auto; }
+.zoom-caption { font-size: 15px; line-height: 1.7; }
+@media (max-width: 620px) {
+  .rules-page { font-size: 16px; padding: 0 8px; }
+  .rules-topbar { margin-bottom: 22px; gap: 8px; }
+  .rules-hero { padding: 24px 18px; }
+  .rules-quick, .rules-columns, .rules-toc ol { grid-template-columns: 1fr; }
+  .rules-quick li { padding: 12px 16px; }
+  .rules-quick strong { display: inline; margin-right: 8px; }
+  .rules-toc { padding: 20px; }
+  .rule-terms { grid-template-columns: 1fr; }
+  .rule-terms dt { border-bottom: 0; padding-bottom: 0; }
+  .rule-terms dd { padding-top: 4px; }
+  .rules-page figure { margin-left: -4px; margin-right: -4px; padding: 10px; }
+}
+@media print {
+  :root { color-scheme: light; }
+  body, .rules-page { background: white; color: #172c2b; padding: 0; }
+  .rules-page { max-width: none; font-size: 11pt; line-height: 1.6; }
+  .rules-page a { color: #172c2b; }
+  .rules-topbar, .figure-zoom, .back-to-top, dialog { display: none; }
+  .rules-hero, .rules-toc, .rules-card, .rules-page details, .rule-note, .rules-quick li { background: white; border-color: #aaa; }
+  .rules-page h2, .rules-page h3, .rules-page strong, .rules-page dt, .rules-page summary, .rules-eyebrow, .rules-baseline, .rules-lead, .section-number { color: #172c2b; }
+  .rules-hero h1 { font-size: 28pt; }
+  .rules-section { padding: 20px 0; }
+  .rules-page figure { break-inside: avoid; max-width: 580px; margin-inline: auto; }
+  .rules-page details::details-content { content-visibility: visible; }
+  .rules-page details > .rule-detail { display: block; }
+  .rules-page h2, .rules-page h3 { break-after: avoid; }
+  .rules-footer { color: #172c2b; }
+}

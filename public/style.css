@@ -107,6 +107,10 @@ summary { display: block; width: 100%; color: #b9cdb4; border-color: #34544a; pa
 summary::before { content: "+"; display: inline-block; width: 24px; color: #e2c36b; }
 details[open] > summary::before { content: "−"; }
 .rules { margin: 12px 0; padding: 0 16px; }
+.rules-guide-link { display: grid; gap: 6px; margin: 16px 0 20px; padding: 16px 18px; border: 1px solid #a6975c; border-left: 4px solid #e2c36b; border-radius: 6px; background: #20332e; text-decoration: none; }
+.rules-guide-link strong { color: #e2c36b; font-size: 18px; }
+.rules-guide-link span { color: #d3e4a5; font-size: 14px; }
+.rules-guide-link:hover, .rules-guide-link:focus-visible { background: #2c453c; outline: 2px solid #e2c36b; outline-offset: 3px; }
 footer { margin-top: 22px; font-size: 12px; line-height: 1.9; color: #9ab3a5; }
 #ai-review-stats, #diagnostic-status { font-size: 14px; }
 .ai-review-note { font-size: 13px; color: #a4b9a7; }

@@ -10,6 +10,10 @@ assert.equal(Locale.detectLanguage({ language: "ja-JP" }), "ja");
 assert.equal(Locale.detectLanguage({ languages: ["en-US", "ja-JP"] }), "en");
 assert.equal(Locale.detectLanguage({ languages: ["fr-FR"] }), "en");
 assert.equal(Locale.detectLanguage({}), "en");
+assert.equal(Locale.detectLanguage({ language: "en-US" }, "?lang=ja"), "ja");
+assert.equal(Locale.detectLanguage({ language: "ja-JP" }, "?lang=en"), "en");
+assert.equal(Locale.detectLanguage({ language: "ja-JP" }, "?lang=fr"), "ja");
+assert.equal(Locale.detectLanguage({}, "?lang=%3Cscript%3E"), "en");
 
 const html = fs.readFileSync("public/index.html", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
@@ -35,6 +39,6 @@ assert.match(main, /window\.BaoLocale/);
 assert.equal(manifest.lang, "en");
 assert.match(serviceWorker, /\.\/locale\.js/);
 assert.match(serviceWorker, /"\.\/privacy"/);
-assert.match(serviceWorker, /bao-la-kiswahili-v39/);
+assert.match(serviceWorker, /bao-la-kiswahili-v40/);
 
 console.log("locale.test.js: ok");

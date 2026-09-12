@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#172c2b">
+  <meta name="description" content="Learn the Bao la Kiswahili rules used in this game with diagrams: board setup, sowing, captures, namua, mtaji and nyumba. Available in English and Japanese." data-ja-content="図解で学ぶバオのルール。このゲームが採用する初期配置、種まき、捕獲、namua、mtaji、nyumbaを日本語・英語で説明します。">
+  <link rel="canonical" href="https://bao-la-kiswahili.cultivationdata.net/rules">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./rules.css">
+  <title data-ja="図解でわかるバオのルール | Bao la Kiswahili">Illustrated Guide to Bao Rules | Bao la Kiswahili</title>
+</head>
+<body>
+<main class="game-shell rules-page" id="top">
+<div class="rules-topbar">
+<a href="./" data-locale-link data-ja="← ゲームを開く">← Open game</a>
+<nav class="language-nav" aria-label="Language / 言語">
+<a href="?lang=ja" data-language="ja" lang="ja" hreflang="ja">日本語</a>
+<a href="?lang=en" data-language="en" lang="en" hreflang="en">English</a>
+</nav>
+</div>
+<header class="rules-hero">
+<span class="rules-eyebrow" data-ja="BAO LA KISWAHILI · 図解ルール">BAO LA KISWAHILI · ILLUSTRATED RULES</span>
+<h1><span data-ja="図解でわかる">Bao rules,</span><br><span data-ja="バオのルール">step by step.</span></h1>
+<p class="rules-lead" data-ja="盤を見て、石の動きを追ってみましょう。1つの手が何度も続く、バオならではの面白さ。このゲームで使うルールを、図と一緒に順番に説明します。">Learn the board, follow the pieces, and discover how a single move can keep going. This guide explains the rules used in this game, one step at a time.</p>
+<ul class="rules-quick">
+<li>
+<strong data-ja="2人">2 players</strong>
+<span data-ja="1つの盤で向かい合う">One board, two sides</span>
+</li>
+<li>
+<strong data-ja="64個">64 pieces</strong>
+<span data-ja="自分の2列で石を蒔く">Sow within your own two rows</span>
+</li>
+<li>
+<strong data-ja="2段階">2 phases</strong>
+<span data-ja="namua → mtaji">Namua → Mtaji</span>
+</li>
+</ul>
+<p class="rules-baseline" data-ja="採用基準：v0.1.0-draft / R-002。このゲームの実装に沿った図解です。">Rules used here: v0.1.0-draft / R-002. An illustrated guide to this implementation.</p>
+</header>
+<nav class="rules-toc" id="contents" aria-labelledby="contents-title">
+<h2 id="contents-title" data-ja="知りたいところから読む">Find what you need</h2>
+<ol>
+<li>
+<a href="#goal" data-ja="何を目指すゲーム？">What are you trying to do?</a>
+</li>
+<li>
+<a href="#board" data-ja="盤の見方を覚える">Read the board</a>
+</li>
+<li>
+<a href="#setup" data-ja="初期配置と対局の流れ">Set up the pieces</a>
+</li>
+<li>
+<a href="#sowing" data-ja="種まき・連続種まき・停止">Sow, continue, stop</a>
+</li>
+<li>
+<a href="#namua" data-ja="namua：手元の1個から始める">Namua: use a piece from hand</a>
+</li>
+<li>
+<a href="#capture" data-ja="捕獲と入口の選び方">Capture and choose an entry side</a>
+</li>
+<li>
+<a href="#mtaji" data-ja="mtaji：盤上の石だけで進める">Mtaji: play from the board</a>
+</li>
+<li>
+<a href="#nyumba" data-ja="nyumba：家の特別な扱い">Nyumba: the house</a>
+</li>
+<li>
+<a href="#controls" data-ja="ゲーム画面の操作と表示">Use the game screen</a>
+</li>
+<li>
+<a href="#rules-used" data-ja="このゲームの採用範囲と出典">Rules used here and sources</a>
+</li>
+</ol>
+</nav>
+<section class="rules-section" id="goal" aria-labelledby="goal-title">
+<span class="section-number">01</span>
+<h2 id="goal-title" data-ja="何を目指すゲーム？">What are you trying to do?</h2>
+<p data-ja="バオ（Bao la Kiswahili）は、64個のkete（石）を使う2人用のマンカラ系ゲームです。自分の2列で石を動かし、相手の前列から石を捕獲します。">Bao la Kiswahili is a two-player mancala game played with 64 kete (seeds or pieces). You move pieces around your own two rows and capture pieces from the opponent’s front row.</p>
+<div class="rules-columns">
+<div class="rules-card">
+<h3 data-ja="相手の前列を空にする">Empty the opponent’s front row</h3>
+<p data-ja="相手の前列8穴がすべて空になれば勝利です。捕獲の途中でも、その時点で対局が終わります。">If all eight pits in the opponent’s front row become empty, you win—even during a move.</p>
+</div>
+<div class="rules-card">
+<h3 data-ja="相手の合法手をなくす">Leave the opponent without a move</h3>
+<p data-ja="相手が手番に合法な着手をできなくなっても勝利です。「捕獲できない」だけなら、捕獲しない手で続けられる場合があります。">You also win if the opponent has no legal move on their turn. Having no capture is different: a non-capturing move may still be available.</p>
+</div>
+</div>
+<figure>
+<img src="./assets/rules/front-empty.svg" width="660" height="260" loading="lazy" decoding="async" alt="Every pit a1–a8 contains zero. South’s A4 contains 3." data-ja-alt="a1〜a8の全穴が0個。SouthのA4には3個あります。">
+    <figcaption>
+<span data-ja="Northの前列が空になり、Southの勝ち。図は両者の前列だけを示しています。">North’s front row is empty: South wins. Only the front rows are shown.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/front-empty.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: North’s front row is empty: South wins. Only the front rows are shown." data-ja-aria-label="図を拡大：Northの前列が空になり、Southの勝ち。図は両者の前列だけを示しています。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<aside class="rule-note">
+<p data-ja="盤外に石を集めて得点を競うゲームではありません。捕獲した石は通常、そのまま自分側へ蒔きます。石の総数の多さだけでは勝敗は決まりません。">The goal is not to collect points off the board. Captured pieces normally go straight back into play on your side. Piece totals alone do not decide the winner.</p>
+</aside>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="board" aria-labelledby="board-title">
+<span class="section-number">02</span>
+<h2 id="board-title" data-ja="盤の見方を覚える">Read the board</h2>
+<p data-ja="盤は4列×8穴です。各プレイヤーは手前の2列を使います。盤の中央で向かい合う列が「前列」、外側の列が「後列」です。">The board has four rows of eight pits. Each player uses the two rows nearest them. The front rows face each other in the middle; the back rows are on the outside.</p>
+<figure>
+<img src="./assets/rules/board-overview.svg" width="660" height="410" loading="lazy" decoding="async" alt="Rows from top to bottom: b8 to b1, a8 to a1, A1 to A8, B1 to B8. A5 and a5 are square houses." data-ja-alt="上からb8〜b1、a8〜a1、A1〜A8、B1〜B8。A5とa5は四角い家の穴です。">
+    <figcaption>
+<span data-ja="SouthはA列（前列）とB列（後列）、Northはa列（前列）とb列（後列）を使います。緑の帯が前列です。">South uses A (front) and B (back). North uses a (front) and b (back). The green bands are the front rows.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/board-overview.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: South uses A (front) and B (back). North uses a (front) and b (back). The green bands are the front rows." data-ja-aria-label="図を拡大：SouthはA列（前列）とB列（後列）、Northはa列（前列）とb列（後列）を使います。緑の帯が前列です。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<dl class="rule-terms">
+<dt data-ja="kete（ケテ）">kete</dt>
+<dd data-ja="盤で使う石です。石そのものに所有者の区別はなく、どちら側の穴にあるかで扱いが決まります。">The playing pieces. All pieces are interchangeable; the pit they occupy determines whose side they are on.</dd>
+<dt data-ja="nyumba（ニュンバ）">nyumba</dt>
+<dd data-ja="「家」。各プレイヤーから見て前列の左から5番目、A5・a5です。所有している間は特別な規則があります。">The house: the fifth front-row pit from each player’s own left, A5 or a5. It has special rules while owned.</dd>
+<dt data-ja="kichwa（キチュワ）">kichwa</dt>
+<dd data-ja="前列の両端にある入口の穴。A1・A8、a1・a8です。捕獲した石はここから蒔きます。">The entry pits at the two ends of the front row: A1/A8 or a1/a8. Captured pieces enter here.</dd>
+<dt data-ja="kimbi（キンビ）">kimbi</dt>
+<dd data-ja="入口の隣の穴。A2・A7、a2・a7です。端の穴と同様に、捕獲した石を入れる側の指定に関わります。">The pits next to the entry pits: A2/A7 or a2/a7. Like the ends, they constrain the entry side for captures.</dd>
+</dl>
+<aside class="rule-note">
+<p data-ja="穴番号とLEFT／RIGHTは、そのプレイヤー本人から見た向きが基準です。画面上のNorthは左右が反転します。向かい合う穴はA1とa8、A2とa7……で、A4の向かいはa5です。">Pit numbers and LEFT/RIGHT refer to the player’s own viewpoint. North is reversed on screen: A1 faces a8, A2 faces a7, and so on. A4 faces a5—not a4.</p>
+</aside>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="setup" aria-labelledby="setup-title">
+<span class="section-number">03</span>
+<h2 id="setup-title" data-ja="初期配置と対局の流れ">Set up the pieces</h2>
+<ol>
+<li data-ja="nyumbaに6個、その本人から見て右隣の2穴に2個ずつ置きます。">Put 6 pieces in your nyumba, and 2 in each of the next two pits to your own right.</li>
+<li data-ja="残り22個を手元に置きます。後列はすべて空です。">Keep the remaining 22 pieces in your hand. The back row starts empty.</li>
+<li data-ja="Southが先手です。その後は交互に手番を進めます。">South moves first. The players then alternate turns.</li>
+</ol>
+<figure>
+<img src="./assets/rules/initial-setup.svg" width="660" height="410" loading="lazy" decoding="async" alt="A5 and a5 hold 6 each; A6, A7, a6, a7 hold 2 each; all other pits are empty." data-ja-alt="A5・a5に6個、A6・A7・a6・a7に2個ずつ。他の穴は空です。">
+    <figcaption>
+<span data-ja="各側は盤上10個＋手元22個＝32個。両者で64個です。ゲームでは自動で配置されます。">Each player starts with 10 pieces on the board and 22 in hand: 32 each, 64 altogether. The game sets this up for you.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/initial-setup.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: Each player starts with 10 pieces on the board and 22 in hand: 32 each, 64 altogether. The game sets this up for you." data-ja-aria-label="図を拡大：各側は盤上10個＋手元22個＝32個。両者で64個です。ゲームでは自動で配置されます。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<div class="rules-columns">
+<div class="rules-card">
+<h3 data-ja="前半：namua（ナムア）">First phase: namua</h3>
+<p data-ja="各手番の最初に、手元の石を1個使います。入れられるのは、規則に従って選ぶ、石のある前列の穴です。">Use one piece from your hand at the start of each turn. It must be placed in a permitted occupied front-row pit.</p>
+</div>
+<div class="rules-card">
+<h3 data-ja="後半：mtaji（ムタジ）">Second phase: mtaji</h3>
+<p data-ja="両者の手元がなくなると、盤上の石だけで続ける段階に移ります。途中で終局しなければ、合計44手番後に移行します。">Once both hands are empty, play continues using only the pieces on the board. If the game has not ended earlier, this happens after 44 turns in total.</p>
+</div>
+</div>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="sowing" aria-labelledby="sowing-title">
+<span class="section-number">04</span>
+<h2 id="sowing-title" data-ja="種まき・連続種まき・停止">Sow, continue, stop</h2>
+<p data-ja="「種まき」は、所定の石を取り上げ、進行方向に沿って1穴に1個ずつ置く操作です。自分の2列だけを巡り、前列の端から後列へ、後列の端から前列へ戻ります。">To sow, lift the required pieces and drop one into each successive pit. Stay within your own two rows: at the end of the front row, turn into the back row, then return at the other end.</p>
+<p data-ja="次の図は、mtajiで捕獲しない手の例です。Southの2列だけを表示しています。RIGHTは前列を右へ、後列を左へ巡る向きで、LEFTはその逆です。">The example below is a non-capturing mtaji move. Only South’s two rows are shown. RIGHT travels rightward along the front row and leftward along the back row; LEFT follows the reverse route.</p>
+<figure>
+<img src="./assets/rules/sowing-before.svg" width="660" height="260" loading="lazy" decoding="async" alt="A3 holds 3 and A6 holds 2. Arrows lead from A3 through A4 and A5 to A6." data-ja-alt="A3に3個、A6に2個。矢印はA3からA4・A5を経てA6へ進みます。">
+    <figcaption>
+<span data-ja="① A3の3個をすべて取り、A4・A5・A6へ1個ずつ。最初の1個は取り上げた穴の次へ置きます。">① Lift all 3 pieces from A3. Put one each in A4, A5 and A6. The first piece goes into the next pit, not back into A3.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/sowing-before.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: ① Lift all 3 pieces from A3. Put one each in A4, A5 and A6. The first piece goes into the next pit, not back into A3." data-ja-aria-label="図を拡大：① A3の3個をすべて取り、A4・A5・A6へ1個ずつ。最初の1個は取り上げた穴の次へ置きます。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img src="./assets/rules/sowing-relay.svg" width="660" height="260" loading="lazy" decoding="async" alt="A4 and A5 now hold 1 each. A6 holds 3. Arrows continue through A7 and A8 into B8." data-ja-alt="A4・A5に1個ずつ、A6に3個。矢印はA7・A8から後列B8へ続きます。">
+    <figcaption>
+<span data-ja="② 最後の1個が石のあったA6へ入り、3個になります。全3個を取り、同じ向きのA7・A8・B8へ続けて蒔きます。これが連続種まきです。">② The last piece lands in occupied A6, making 3. Lift all 3 and continue in the same direction: A7, A8, B8. This is relay sowing.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/sowing-relay.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: ② The last piece lands in occupied A6, making 3. Lift all 3 and continue in the same direction: A7, A8, B8. This is relay sowing." data-ja-aria-label="図を拡大：② 最後の1個が石のあったA6へ入り、3個になります。全3個を取り、同じ向きのA7・A8・B8へ続けて蒔きます。これが連続種まきです。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img src="./assets/rules/sowing-stop.svg" width="660" height="260" loading="lazy" decoding="async" alt="A4, A5, A7, A8 and B8 each hold 1; A3 and A6 are empty. B8 is highlighted." data-ja-alt="A4・A5・A7・A8・B8に1個ずつ。A3・A6は空。最後のB8を強調しています。">
+    <figcaption>
+<span data-ja="③ 最後の石が入る前のB8は空でした。1個だけになったので、この手は終了し、相手の手番です。">③ B8 was empty before the last piece arrived. It now holds 1, so this move ends and the opponent takes a turn.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/sowing-stop.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: ③ B8 was empty before the last piece arrived. It now holds 1, so this move ends and the opponent takes a turn." data-ja-aria-label="図を拡大：③ 最後の石が入る前のB8は空でした。1個だけになったので、この手は終了し、相手の手番です。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<aside class="rule-note">
+<p data-ja="1回の種まきが終わるたびに、最後の穴を判定します。捕獲手で捕獲条件を満たした場合は、連続種まきより捕獲が優先です。namuaでは、所有中のnyumbaの規則によって止まる場合もあります。">Check the last pit of each sowing run. During a capturing move, a valid capture takes priority over relay sowing. An owned nyumba can also stop a namua move under its special rules.</p>
+</aside>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="namua" aria-labelledby="namua-title">
+<span class="section-number">05</span>
+<h2 id="namua-title" data-ja="namua：手元の1個から始める">Namua: use a piece from hand</h2>
+<h3 data-ja="まず捕獲できるかを調べる">First, look for a capture</h3>
+<p data-ja="自分の前列で石のある穴と、その真向かいの相手前列で石のある穴を探します。組が1つでもあれば捕獲が義務です。自分の穴に手元から1個加え、向かいの相手穴の全石を取ります。">Find an occupied pit in your front row facing an occupied pit in the opponent’s front row. If any such pair exists, you must choose a capture. Add one piece from hand to your pit, then take every piece from the facing opponent pit.</p>
+<h3 data-ja="捕獲できないとき：takata（タカタ）">If there is no capture: takata</h3>
+<p data-ja="takataは捕獲しない手です。規則に従って選んだ、石のある前列の穴へ手元から1個を加え、その内容を取り上げて左右どちらかへ蒔きます。必要なら連続種まきを続けます。">Takata is a non-capturing move. Add one piece from hand to a permitted occupied front-row pit, lift its contents, then sow left or right. Continue relay sowing when required.</p>
+<aside class="rule-note">
+<p data-ja="takataは、手番の途中も最後まで捕獲しません。種まきの終点で相手と石が向かい合っても、その手では捕獲できません。">A takata remains non-capturing for the entire turn. Even if its last piece creates the same facing-pit pattern, you do not capture during that move.</p>
+</aside>
+<details>
+<summary data-ja="namuaのtakataを始められる穴は？">Which pits may start a namua takata?</summary>
+<div class="rule-detail">
+<ul>
+<li data-ja="開始できるのは石のある前列の穴です。空穴や後列からは始められません。">Start in the front row, never in an empty pit or the back row.</li>
+<li data-ja="通常は投入前に2個以上ある穴を選びます。ただし、前列の開始候補に2個以上の穴がない場合、またはnyumbaをまだ所有している場合は、1個の穴も使えます。">Normally choose a pit holding at least 2 pieces before the addition. A 1-piece pit is permitted when no eligible front-row starting pit holds 2 or more, or while you still own your nyumba.</li>
+<li data-ja="所有中で6個以上あるnyumbaからは通常始められません。前列で所有中のnyumbaだけに石が残った場合は、後述の「2個蒔き」を使います。">An owned nyumba holding 6 or more cannot normally be the starting pit. If it is the only occupied front-row pit, use the special two-piece start described below.</li>
+<li data-ja="前列に石のある穴が端のkichwaだけの場合、それを空にして後列へ進む向きでは始められません。">If your only occupied front pit is an end pit, you cannot start by emptying it toward the back row.</li>
+</ul>
+</div>
+</details>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="capture" aria-labelledby="capture-title">
+<span class="section-number">06</span>
+<h2 id="capture-title" data-ja="捕獲と入口の選び方">Capture and choose an entry side</h2>
+<p data-ja="捕獲した石は、相手の前列から自分側へ移します。最初の1個は選んだkichwaそのものへ入れ、前列の内側へ向かって蒔きます。捕獲に使った自分の穴にある石は、そのまま残ります。">Captured pieces move from the opponent’s front row to your side. Place the first captured piece in the chosen kichwa itself, then continue inward along your front row. Your capturing pit keeps the pieces already in it.</p>
+<p data-ja="namuaの例を見てみましょう。図は両者の前列だけを示す説明用の局面で、初期配置ではありません。">Here is a namua example. Only the front rows are shown; these are explanatory positions, not the initial setup.</p>
+<figure>
+<img src="./assets/rules/capture-before.svg" width="660" height="260" loading="lazy" decoding="async" alt="Before the move: South A4 has 2; North a5 has 3 and a1 has 1." data-ja-alt="開始前：SouthのA4に2個、Northのa5に3個、a1に1個。">
+    <figcaption>
+<span data-ja="① A4に2個、向かいのa5に3個。手元からA4へ1個加え、3個にします。">① A4 holds 2 and the facing a5 holds 3. Add one piece from your hand to A4, making 3.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/capture-before.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: ① A4 holds 2 and the facing a5 holds 3. Add one piece from your hand to A4, making 3." data-ja-aria-label="図を拡大：① A4に2個、向かいのa5に3個。手元からA4へ1個加え、3個にします。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img src="./assets/rules/capture-taken.svg" width="660" height="260" loading="lazy" decoding="async" alt="a5 is now empty; A4 holds 3. The captured 3 pieces are temporarily in transit to A1." data-ja-alt="a5は空、A4は3個。捕獲した3個はA1から蒔くために取り上げられています。">
+    <figcaption>
+<span data-ja="② a5の3個をすべて取ります。A4の3個は残ります。この例では左の入口A1を選びます。">② Lift all 3 pieces from a5. A4 keeps its 3. This example chooses the left entry, A1.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/capture-taken.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: ② Lift all 3 pieces from a5. A4 keeps its 3. This example chooses the left entry, A1." data-ja-aria-label="図を拡大：② a5の3個をすべて取ります。A4の3個は残ります。この例では左の入口A1を選びます。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img src="./assets/rules/capture-after.svg" width="660" height="260" loading="lazy" decoding="async" alt="A1, A2 and A3 now contain 1 each; A4 still contains 3. North a5 is empty." data-ja-alt="A1・A2・A3に1個ずつ、A4は3個のまま。Northのa5は空です。">
+    <figcaption>
+<span data-ja="③ 捕獲した石をA1・A2・A3へ1個ずつ。A3は空だったので、この手はそこで終わります。">③ Put one captured piece in A1, then one in A2 and A3. A3 was empty, so this move stops there.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/capture-after.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: ③ Put one captured piece in A1, then one in A2 and A3. A3 was empty, so this move stops there." data-ja-aria-label="図を拡大：③ 捕獲した石をA1・A2・A3へ1個ずつ。A3は空だったので、この手はそこで終わります。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<h3 data-ja="入口をいつでも自由に選べるわけではない">The entry side is not always a free choice</h3>
+<ul>
+<li data-ja="自分の1番・2番の穴で捕獲する場合：左のkichwa（1番）から入れます。">Capture at your own pit 1 or 2: enter at your left kichwa, pit 1.</li>
+<li data-ja="自分の7番・8番の穴で捕獲する場合：右のkichwa（8番）から入れます。">Capture at your own pit 7 or 8: enter at your right kichwa, pit 8.</li>
+<li data-ja="3〜6番の穴では、namuaの最初の捕獲なら左右を選べます。手の途中の捕獲やmtajiの捕獲では、それまでの種まき方向を維持します。">At pits 3–6, the first capture of a namua move allows either side. Later captures, and mtaji captures, preserve the current sowing direction at these middle pits.</li>
+</ul>
+<details>
+<summary data-ja="種まき後の捕獲は、いつ起きる？">When does a later capture happen?</summary>
+<div class="rule-detail">
+<p data-ja="捕獲手の途中では、最後の1個が、もともと石のあった自分の前列穴へ入り、向かいの相手穴にも石があると捕獲します。連続種まきより先に捕獲を判定し、種まきが終わるたびに同じ確認を繰り返します。">During a capturing move, the last piece must land in your front-row pit that already contained pieces, and the facing opponent pit must also contain pieces. Capture before considering relay sowing. Repeat this check after each sowing run.</p>
+<p data-ja="kichwa・kimbiでは入口が指定されるため、途中で進行方向が変わることがあります。中央の穴では同じ方向を保ちます。相手の前列最後の石を捕獲したときは、捕獲した石を蒔く前に対局が終わります。">At kichwa or kimbi, the forced entry side can change the direction. At the middle pits it stays the same. If you empty the opponent’s last occupied front pit, the game ends immediately, before sowing the captured pieces.</p>
+</div>
+</details>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="mtaji" aria-labelledby="mtaji-title">
+<span class="section-number">07</span>
+<h2 id="mtaji-title" data-ja="mtaji：盤上の石だけで進める">Mtaji: play from the board</h2>
+<p data-ja="両者の手元は空です。石を追加せず、合法な開始穴から2個以上の石をすべて取り上げ、次の穴から蒔きます。捕獲できる手があれば、引き続き捕獲が義務です。">Both hands are now empty. Do not add a piece. Choose a legal starting pit with at least 2 pieces, lift all of them, and sow from the next pit. Capture remains compulsory whenever a capturing move exists.</p>
+<ol>
+<li data-ja="自分の前列・後列から、2〜15個ある開始穴を調べます。">Look for a starting pit with 2–15 pieces, in either your front or back row.</li>
+<li data-ja="最初の種まきが、石のある自分の前列穴で終わり、向かいの相手穴にも石がある手が捕獲手です。1つでもあれば、その中から選びます。">A capturing start must end its first sowing run in an already occupied front-row pit facing an occupied opponent pit. Choose one of these starts if any exist.</li>
+<li data-ja="捕獲手がなければtakataを行います。前列に2個以上の開始穴があれば前列を使い、なければ後列を使います。">If none exist, play a takata. Use a front-row pit with at least 2 pieces when available; use the back row only when the front row has no such starting pit.</li>
+<li data-ja="種まきの終点を確認し、捕獲・連続種まき・停止を判定します。takataでは、その手の途中も捕獲しません。">Continue sowing and checking the last pit under the same capture / relay / stop principles. A takata never captures during the turn.</li>
+</ol>
+<details>
+<summary data-ja="16個以上の穴・端の穴・合法手なし">Large piles, end pits and no legal move</summary>
+<div class="rule-detail">
+<p data-ja="この採用基準では、16個以上の穴から捕獲手を始めることはできません。ただし、他の条件を満たせばtakataの開始穴には使えます。空穴と1個の穴からは、mtajiの手を始められません。">Under this adopted baseline, a pit with 16 or more pieces cannot start a capturing move, but may start a takata if the other conditions allow it. Empty pits and 1-piece pits cannot start any mtaji move.</p>
+<p data-ja="自分の16穴がすべて0個または1個なら、合法手がなく敗北します。前列に石のある端穴が1つだけ残るとき、それを空にして後列へ向かうtakataを始められない制約も適用されます。">If every one of your 16 pits holds at most 1 piece, you have no legal move and lose. The restriction against emptying your sole occupied end pit toward the back row also applies to takata.</p>
+</div>
+</details>
+<aside class="rule-note">
+<p data-ja="参照ガイドに記載されている特殊な制約takasiaは、このブラウザゲームでは適用しません。詳しくは後述の「このゲームの採用範囲」を参照してください。">Takasia, a special constraint described in the reference guide, is not applied in this browser game. See “Rules used here” below.</p>
+</aside>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="nyumba" aria-labelledby="nyumba-title">
+<span class="section-number">08</span>
+<h2 id="nyumba-title" data-ja="nyumba：家の特別な扱い">Nyumba: the house</h2>
+<p data-ja="A5・a5はnyumbaの位置です。初めは各側が所有し、6個の石が入っています。特別な状態を失っても、穴の位置や画面上の形は変わりません。">A5 and a5 are the house positions. At the start, each is owned and holds 6 pieces. The position remains a house-shaped pit even after its special status is lost.</p>
+<h3 data-ja="namuaの種まきが自分の家で終わったら">Finishing a namua sowing run at your house</h3>
+<p data-ja="次の規則は、所有中の家に最後の1個が入り、その時点で6個以上ある場合に適用します。">The following applies when your owned house holds at least 6 pieces after the last piece arrives.</p>
+<ul>
+<li data-ja="takataの場合：そこで止まります。家の石を取り上げて続けることはしません。">During a takata: stop there. You do not lift the house contents to continue.</li>
+<li data-ja="捕獲手で、向かいの相手穴に石がある場合：捕獲を優先します。代わりに停止することは選べません。">During a capturing move, if the facing opponent pit contains pieces: capture first. You cannot choose to stop instead.</li>
+<li data-ja="捕獲手で、そこで捕獲できない場合：NYUMBA STOPで止まって家を保つか、NYUMBA USEで全内容を取り上げ、特別な状態を失って同じ方向へ続けるかを選びます。">During a capturing move with no capture available there: choose NYUMBA STOP to keep the house, or NYUMBA USE to lift its contents and continue in the same direction, giving up its special status.</li>
+</ul>
+<h3 data-ja="家からの2個蒔き">The two-piece start</h3>
+<p data-ja="namuaで捕獲できず、前列で所有中の家だけに石が残っているときは、手元の1個を家へ加え、そこから2個だけ取り出して左右どちらかへ蒔きます。">In namua, if you cannot capture and your owned house is the only occupied pit in your front row, add one piece from hand to the house, then take just 2 pieces from it and sow them left or right.</p>
+<figure>
+<img src="./assets/rules/nyumba-two.svg" width="660" height="260" loading="lazy" decoding="async" alt="After the special start, A5 holds 5, A6 and A7 hold 1 each. The house was not emptied." data-ja-alt="特別な開始後、A5に5個、A6・A7に1個ずつ。家を空にしていません。">
+    <figcaption>
+<span data-ja="家が6個の例：1個加え、2個だけ蒔き、5個残します。ここではA6・A7へ1個ずつ。図はSouthの2列です。">Starting with 6 in the house: add 1, sow 2, leave 5. Here, one piece goes to A6 and one to A7. Only South’s rows are shown.</span>
+</figcaption>
+    <a class="figure-zoom" href="./assets/rules/nyumba-two.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge: Starting with 6 in the house: add 1, sow 2, leave 5. Here, one piece goes to A6 and one to A7. Only South’s rows are shown." data-ja-aria-label="図を拡大：家が6個の例：1個加え、2個だけ蒔き、5個残します。ここではA6・A7へ1個ずつ。図はSouthの2列です。">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<details>
+<summary data-ja="所有状態・6個未満・mtajiとの関係">Ownership, fewer than 6 pieces, and mtaji</summary>
+<div class="rule-detail">
+<p data-ja="2個蒔きでは家を空にしません。6個未満になると、6個以上を条件とする停止規則は働かなくなります。採用基準では、所有状態が残り、namua中に再び6個以上になれば、その規則が再び適用されます。">The two-piece start does not empty the house. When it drops below 6, the stopping rules that require 6 or more do not apply. Under the adopted baseline, if ownership remains and it later reaches 6 again in namua, those rules can apply again.</p>
+<p data-ja="家の石をすべて捕獲された場合や、NYUMBA USEを選んだ場合は、特別な状態を失います。mtajiでは、namuaの2個蒔きや家で止まる選択は使いません。段階をまたぐ家の状態には資料差があるため、本ページはこのゲームの採用基準に沿って説明しています。">Losing all house pieces to a capture, or choosing NYUMBA USE, removes its special status. In mtaji, the namua two-piece start and optional house stop are not available. Details of house status across phases differ between sources; this page follows the game’s adopted baseline.</p>
+</div>
+</details>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="controls" aria-labelledby="controls-title">
+<span class="section-number">09</span>
+<h2 id="controls-title" data-ja="ゲーム画面の操作と表示">Use the game screen</h2>
+<ol>
+<li data-ja="コンピュータ対戦または同じ端末での2人対戦を選びます。コンピュータ対戦では強さと先手（South）・後手（North）を選び、START GAMEを押します。">Choose computer or local two-player mode. Against the computer, choose a difficulty and whether you play first (South) or second (North), then press START GAME.</li>
+<li data-ja="光っている穴をタップまたはクリックし、盤の下に出る着手候補を選びます。ゲームが合法な選択肢を示し、種まきを自動で進めます。">Tap or click a highlighted pit, then choose one of the moves displayed below the board. The game shows legal choices and carries out the sowing automatically.</li>
+<li data-ja="HANDは手元に残る石の数、NAMUA／MTAJIは対局の段階です。NEW GAMEは、必要に応じた確認の後に現在の対局を終了し、対局設定へ戻ります。">HAND is the number of pieces still in hand. NAMUA / MTAJI shows the phase. NEW GAME ends the current game and returns to setup after confirmation when needed.</li>
+</ol>
+<dl class="rule-terms">
+<dt data-ja="LEFT / RIGHT">LEFT / RIGHT</dt>
+<dd data-ja="本人の前列を左／右へ進む周回方向です。後列での進行方向は逆になり、Northでは画面上の左右も逆になります。">The sowing circuit, from the player’s own viewpoint: LEFT goes left along the front row, RIGHT goes right. The back-row travel direction is reversed. North is also reversed on screen.</dd>
+<dt data-ja="LEFT CAPTURE / RIGHT CAPTURE">LEFT CAPTURE / RIGHT CAPTURE</dt>
+<dd data-ja="namuaでは捕獲した石を入れる左／右の入口を示します。mtajiでは選んだ穴から最初に蒔く方向を示し、その後の捕獲の入口は捕獲規則で決まります。">In namua, these select the left / right entry for captured pieces. In mtaji, the direction describes the initial sowing from your chosen pit; the later capture entry follows the capture rules.</dd>
+<dt data-ja="NYUMBA STOP / NYUMBA USE">NYUMBA STOP / NYUMBA USE</dt>
+<dd data-ja="着手候補に付く場合、STOPは条件を満たす家で停止し、USEは家の全内容を使って続行する選択です。アニメーションが始まる前に着手と一緒に選びます。">When offered with a move, STOP chooses to stop at an eligible house; USE chooses to empty it and continue. You select this with the move before its animation.</dd>
+</dl>
+<aside class="rule-note">
+<p data-ja="この説明ページはゲームから別タブで開きます。対局を続けるときは元のゲームのタブへ戻ってください。下の「ゲームを開く」はゲームページを開くリンクで、保存局面を復元する機能ではありません。">This guide opens in a separate tab from the game. To continue an existing game, return to its original tab. “Open game” below opens the game page; it does not restore a saved position.</p>
+</aside>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="rules-used" aria-labelledby="rules-used-title">
+<span class="section-number">10</span>
+<h2 id="rules-used-title" data-ja="このゲームの採用範囲と出典">Rules used here and sources</h2>
+<p data-ja="このブラウザゲームで採用しているルールの図解です。日本語ガイドの公開ドラフトv0.1.0-draft、基準R-002の、下記の固定参照版に基づきます。すべての地域・大会に共通する公式ルールブックという位置づけではありません。">This is an illustrated explanation of the rules used by this browser game. It follows the Japanese guide’s public draft v0.1.0-draft, baseline R-002, at the fixed reference below. It is not a claim to be an official rulebook for every region or tournament.</p>
+<ul>
+<li data-ja="takasiaは不適用です。この実装の検証に使える、完全な出典のある局面がまだ確認できていません。">Takasia is not applied: a fully sourced validation position has not yet been confirmed for this implementation.</li>
+<li data-ja="連続種まきなどの継続処理には512回の安全上限があります。まだ継続する状態で上限に達した場合、この実装は手番側の敗北として終了します。ブラウザの動作を守る制約であり、一般の対人競技ルールとして加えるものではありません。">The game limits continuing relay processing to 512 iterations. If a move reaches that limit while still continuing, the implementation ends the game as a loss for the moving player. This protects browser operation; it is not a general human-play rule.</li>
+<li data-ja="参照ガイドはドラフトで、競技者・研究者による外部レビューは未実施です。一部の細則には資料差があります。他の場で遊ぶときは、大会や対局者間で明示された規則に従ってください。">The reference remains a draft. It has not yet received external player / researcher review, and some details differ between sources. Follow the rules explicitly chosen by your tournament or playing group when playing elsewhere.</li>
+</ul>
+<p>
+<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/tree/1179267b1f19b27a2138791253f2cb9cbfe98c14" target="_blank" rel="noopener noreferrer" data-ja="固定参照：Bao la Kiswahili 日本語完全ガイド">Fixed reference: Bao la Kiswahili Japanese Complete Guide</a>
+<br>
+<code>1179267b1f19b27a2138791253f2cb9cbfe98c14</code>
+</p>
+<p>
+<a href="https://github.com/nkkmd/bao-la-kiswahili-game/blob/main/doc/RULES_BASELINE.md" target="_blank" rel="noopener noreferrer" data-ja="ゲームの採用ルール基準と既知の差異">Game rule baseline and known differences</a>
+</p>
+<h3 data-ja="クレジットと再利用">Credits and reuse</h3>
+<p data-ja="bao-la-kiswahili-ja contributors（2026）による「Bao la Kiswahili 日本語完全ガイド」第02〜10章の規則説明を基に、要約・英訳し、このゲーム向けに構成を変更しました。図版は新たに描き、図示した着手はゲームのルールエンジンで照合しています。">Based on the rule explanations in chapters 02–10 of Bao la Kiswahili Japanese Complete Guide, by bao-la-kiswahili-ja contributors (2026). The explanations have been condensed, translated into English and adapted for this game. The diagrams have been newly drawn; the illustrated moves have been checked against the game engine.</p>
+<p data-ja="本ページの翻案した説明本文と図版は、bao-la-kiswahili-game contributors（2026）がCC BY-SA 4.0で提供します。改変して共有する際は、出典とライセンスへのリンクを残し、変更を明示して同じライセンスを使用してください。ゲームのプログラムコードは引き続きMITライセンスです。">The adapted explanatory text and diagrams on this page are provided under CC BY-SA 4.0 by bao-la-kiswahili-game contributors (2026). When sharing adaptations, retain attribution, link to the license, identify changes and use the same license. The game’s program code remains under its MIT license.</p>
+<p>
+<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>
+</p>
+<p class="rules-baseline">
+<span data-ja="説明ページ更新日：2026年9月12日。採用ルール基準の変更はありません。">Guide updated: September 12, 2026. Rule baseline unchanged.</span>
+</p>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<footer class="rules-footer">
+<nav>
+<a href="./" data-locale-link data-ja="ゲームを開く">Open game</a>
+<a href="https://github.com/nkkmd/bao-la-kiswahili-game" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a href="./privacy" data-locale-link data-ja="プライバシーポリシー">Privacy Policy</a>
+</nav>
+<p data-ja="本ページの説明本文・図版：CC BY-SA 4.0。">The text and diagrams on this page: CC BY-SA 4.0.</p>
+</footer>
+</main>
+<dialog id="figure-dialog" aria-label="Enlarged diagram" data-ja-aria-label="拡大した図">
+  <div class="zoom-toolbar">
+<span data-ja="横にスクロールして盤面を確認できます。">Scroll sideways to inspect the board.</span>
+<button type="button" autofocus data-ja="閉じる">Close</button>
+</div>
+  <div class="zoom-scroll" tabindex="0" role="region" aria-label="Scrollable diagram" data-ja-aria-label="スクロールできる図">
+<img alt="">
+</div>
+  <p class="zoom-caption">
+</p>
+</dialog>
+<script src="./locale.js">
+</script>
+<script src="./rules.js">
+</script>
+</body>
+</html>

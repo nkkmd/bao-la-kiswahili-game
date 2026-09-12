@@ -2,11 +2,15 @@
 
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
+const vm = require("node:vm");
 
 const html = fs.readFileSync("public/index.html", "utf8");
 const serviceWorker = fs.readFileSync("public/service-worker.js", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
 const main = fs.readFileSync("public/main.js", "utf8");
+const cachedFiles = vm.runInNewContext(serviceWorker + "\nFILES;", {
+  URL, self: { registration: { scope: "https://example.test/" }, addEventListener() {} },
+});
 
 assert.match(html, /id="ai-generation-badge"[^>]*>[\s\S]*?AI-GEN4 \/ Normal<\/span>/,
   "the game header identifies the AI-GEN4 lineage and selected difficulty");
@@ -38,9 +42,9 @@ assert.match(serviceWorker, /\.\/review-suggestion\.js/,
   "review suggestions remain available in the offline cache");
 assert.match(serviceWorker, /\.\/diagnostic-download\.js/,
   "diagnostic downloads remain available in the offline cache");
-assert.match(serviceWorker, /["']\.\/privacy["']/,
+assert.ok(cachedFiles.includes("./privacy"),
   "the Privacy Policy clean URL remains available in the offline cache");
-assert.doesNotMatch(serviceWorker, /["']\.\/privacy\.html["']/,
+assert.ok(!cachedFiles.includes("./privacy.html"),
   "the offline cache does not store the redirected Privacy Policy URL");
 assert.match(privacy, /AI診断記録を外部へ自動送信する機能はありません/,
   "privacy policy states that diagnostic records are not uploaded automatically");
