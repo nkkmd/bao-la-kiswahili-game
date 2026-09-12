@@ -23,6 +23,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - namua、mtaji、連続種まき、nyumba、捕獲、勝敗判定に対応した Bao ルールエンジン
 - 長めの思考中でも UI の応答性を保つ、Web Worker ベースの AI 探索
 - オフライン対応デプロイのための PWA ファイル
+- 日本語・英語で読める、10点の図版付きルール説明ページ
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
 - 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
@@ -35,6 +36,8 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 検証に使える完全な出典局面がまだ確認できていないため、`takasia` は適用していません。終わらない対局を防ぐため、連続種まきには安全上の上限を設けています。
 
 固定参照コミット、実装範囲、既知の差異、ルール更新時の同期手順は [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md) に記録しています。
+
+遊ぶ人向けの説明は [`public/rules.html`](public/rules.html) にまとめています。ゲーム画面の「遊び方・採用ルール」から別タブで開けます。ブラウザーの言語に合わせた自動表示に加え、「日本語 / English」で切り替えられ、`?lang=ja`・`?lang=en`付きのURLで共有できます。図版の拡大と、ファイルのキャッシュ完了後のオフライン閲覧にも対応します。
 
 ## ローカルでの実行
 
@@ -64,6 +67,8 @@ public/
 ```
 
 Privacy Policy へのリンクとPWAのオフラインキャッシュは、Cloudflare Pages の clean URL に合わせて `./privacy` を使用します。リダイレクト済みの `privacy.html` レスポンスはキャッシュしません。
+
+図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
 
 ## テスト
 
@@ -137,6 +142,8 @@ node tools/diagnostic-to-fixture.js \
 | パス | 役割 |
 | --- | --- |
 | `public/` | デプロイ用の静的ゲームファイル |
+| `public/rules.html` | 日英対応の図解ルール説明 |
+| `public/assets/rules/` | ルール図版と出典・ライセンス記録 |
 | `public/engine.js` | 盤面状態、合法手生成、着手適用 |
 | `public/ai.js` | コンピューターの手の選択、評価、探索 |
 | `public/ai-weights.js` | デフォルトの評価重み |
@@ -251,4 +258,6 @@ core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instr
 
 ## ライセンス
 
-このプロジェクトは MIT License のもとでライセンスされています。詳しくは [`LICENSE`](LICENSE) を参照してください。
+プログラムコードは MIT License のもとで提供しています。詳しくは [`LICENSE`](LICENSE) を参照してください。
+
+例外として、[`public/rules.html`](public/rules.html) の説明本文と [`public/assets/rules/`](public/assets/rules/) のSVG図版は、参照ガイドの規則説明を翻案し、CC BY-SA 4.0で提供しています。図版は本リポジトリで新たに作成したものです。出典、変更内容、適用範囲は [`public/assets/rules/README.md`](public/assets/rules/README.md) を参照してください。

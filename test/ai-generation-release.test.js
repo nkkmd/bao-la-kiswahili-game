@@ -52,6 +52,6 @@ assert.match(html, /data-ja="ビングワ">Bingwa<\/option>/);
 assert.match(html, /expert: \["Bingwa", "ビングワ"\]/);
 assert.match(html, /BaoReleaseConfig\.displayIdentity/);
 assert.match(main, /AIConfig\.displayIdentity/);
-assert.match(serviceWorker, /bao-la-kiswahili-v39/);
+assert.match(serviceWorker, /bao-la-kiswahili-v40/);
 
 console.log("AI-GEN3 release tests passed");
