@@ -1,23 +1,25 @@
 # Bao AI ベンチマーク
 
-設計判断、途中試行、測定上の限界は`AI_DEVELOPMENT_LOG.md`を参照する。
+設計判断、途中試行、測定上の限界は[開発記録](AI_DEVELOPMENT_LOG.md)を参照する。現在の公開AIの採用根拠は[AI-GEN4の正式記録](ai-engineering/ai-gen4-release/README.md)と[AI開発の中央索引](AI_ENGINEERING_INDEX.md)で管理する。
+
+`tools/benchmark.js`は`public/ai.js`・`public/ai-config.js`を直接読み込む基準AI用ツールであり、公開アダプターや論理ゲート型評価器を読み込まない。以下のコマンドをAI-GEN4の公開経路の棋力試験とみなさない。初期PhaseとP4・P5の成績・未確認事項は当時の固定条件の記録である。後半の履歴にある`bao-la-kiswahili/`は当時の配置名で、現行リポジトリのルートからパスを参照する場合はこの接頭辞を除く。保存済み成果物を上書きせず、各プログラムの再実行制限に従う。
 
 ## 実行方法
 
 プロジェクトルートから次を実行する。
 
 ```sh
-node bao-la-kiswahili/tools/benchmark.js --games 100 --seed 20260706 \
+node tools/benchmark.js --games 100 --seed 20260706 \
   --first hard --second normal --first-profile legacy --second-profile legacy \
   --time-limit 0 --max-depth 2
 ```
 
 `first`と`second`は対戦者の識別子で、各局ごとにSouthとNorthを交代する。`--time-limit 0`は時間切れを無効化し、指定深度まで必ず探索するため、同じ環境・シードで勝敗を再現する比較試験に適している。
 
-実機と同じ時間制限を測る場合は次を使用する。
+基準AIに450ms・最大深度4という任意の予算を指定する例は次のとおり。現在のブラウザ設定はhard標準500ms・最大深度8、expert標準2000ms・最大深度12であり、下記と同一ではない。
 
 ```sh
-node bao-la-kiswahili/tools/benchmark.js --games 100 --seed 20260706 \
+node tools/benchmark.js --games 100 --seed 20260706 \
   --first hard --second normal --time-limit 450 --max-depth 4
 ```
 
@@ -76,24 +78,26 @@ node bao-la-kiswahili/tools/benchmark.js --games 100 --seed 20260706 \
 
 ## 回帰テスト
 
+次は基準AIと初期の実験ツールの回帰確認である。現在の公開AIアダプター・Workerを含む回帰コマンドは[ルートREADME](../README.md#テスト)を参照する。
+
 ```sh
-node bao-la-kiswahili/test/engine.test.js
-node bao-la-kiswahili/test/ai.test.js
-node bao-la-kiswahili/test/benchmark.test.js
-node bao-la-kiswahili/test/evaluation.test.js
-node bao-la-kiswahili/test/tactical.test.js
-node bao-la-kiswahili/test/search.test.js
-node bao-la-kiswahili/test/ai-config.test.js
-node bao-la-kiswahili/test/ai-worker.test.js
-node bao-la-kiswahili/test/worker-integration.test.js
-node bao-la-kiswahili/test/ai-weights.test.js
-node bao-la-kiswahili/test/tune-weights.test.js
-node bao-la-kiswahili/test/successive-tune.test.js
-node bao-la-kiswahili/test/mcts-grid.test.js
-node bao-la-kiswahili/test/phase7-grid.test.js
-node bao-la-kiswahili/test/phase7-validate.test.js
-node bao-la-kiswahili/test/phase7-decision.test.js
-node bao-la-kiswahili/test/phase7-longrun.test.js
+node test/engine.test.js
+node test/ai.test.js
+node test/benchmark.test.js
+node test/evaluation.test.js
+node test/tactical.test.js
+node test/search.test.js
+node test/ai-config.test.js
+node test/ai-worker.test.js
+node test/worker-integration.test.js
+node test/ai-weights.test.js
+node test/tune-weights.test.js
+node test/successive-tune.test.js
+node test/mcts-grid.test.js
+node test/phase7-grid.test.js
+node test/phase7-validate.test.js
+node test/phase7-decision.test.js
+node test/phase7-longrun.test.js
 ```
 
 戦術テストは、即時勝利、捕獲連鎖、nyumbaの利用、nyumbaの温存、namuaからmtajiへの移行、大きな反撃の回避、mtaji耐久を対象とする。
@@ -101,14 +105,14 @@ node bao-la-kiswahili/test/phase7-longrun.test.js
 戦術局面ごとの診断出力:
 
 ```sh
-BAO_TACTICAL_DIAG=1 node bao-la-kiswahili/test/tactical.test.js
+BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 ```
 
 候補重みを検証する場合:
 
 ```sh
-BAO_AI_WEIGHTS=bao-la-kiswahili/artifacts/candidate.json \
-  BAO_TACTICAL_DIAG=1 node bao-la-kiswahili/test/tactical.test.js
+BAO_AI_WEIGHTS=artifacts/candidate.json \
+  BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 ```
 
 診断出力はJSON Linesで、カテゴリ、選択手、root評価、着手後評価、探索統計を含む。Phase 7以降の採用判定では、自己対戦成績に加えてこの戦術回帰を通過することを条件にする。
@@ -117,7 +121,7 @@ BAO_AI_WEIGHTS=bao-la-kiswahili/artifacts/candidate.json \
 
 ```sh
 BAO_AI_PROFILE=bao-v2 BAO_TACTICAL_DIAG=1 \
-  node bao-la-kiswahili/test/tactical.test.js
+  node test/tactical.test.js
 ```
 
 候補補正表を使う場合は`BAO_AI_ADJUSTMENTS=/path/to/adjustments.json`を併用する。`bao-v2`は実験用評価プロファイルで、既定UIの`bao`評価は変更しない。比較する場合は`--first-profile bao-v2 --second-profile bao`のように明示する。

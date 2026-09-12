@@ -1,5 +1,7 @@
 # PBAI-P5 — 公開リリース台帳
 
+現在の公開AIは[AI-GEN4](../ai-gen4-release/README.md)（`AI-GEN4-RELEASE-001`）です。本書の公開系統・配信状態・未確認事項は、このプログラムと当時の確認範囲の記録です。後続の採用・配信によって、このプログラムの正式結果や凍結証拠は変更しません。
+
 状態: `ADOPTED / PROMOTED / AI-GEN3-RELEASE-001 / VERIFIED-PUBLIC-ACTIVE`。
 
 ## リリース対象
@@ -8,7 +10,7 @@
 | --- | --- |
 | Program | `PBAI-P5` |
 | Candidate | `PBAI-C011-v1` |
-| 科学的判断 | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` |
+| 固定範囲での棋力改善判断 | `STRENGTH-IMPROVED-IN-FROZEN-DOMAIN` |
 | 計算上の判断 | `EQUIVALENT-COMPUTATION-SPEEDUP` |
 | 公開対象 | hard / expertの既定`bao`・`phase2`探索 |
 | 公開対象外 | easy、normal、明示的`legacy`・`mcts`・`bao-v2` |
@@ -17,7 +19,7 @@
 | Release ID | `AI-GEN3-RELEASE-001` |
 | AI世代 | `AI-GEN2`から`AI-GEN3`へ昇格 |
 | 初期公開runtime source | main `650b4312ed9cd318d9981523533dd692bdce6125` |
-| 現行公開source | main `e6a3936ee6285d606be83987b5ae3aa2ee61ec25` |
+| AI-GEN3表示配信時source | main `e6a3936ee6285d606be83987b5ae3aa2ee61ec25` |
 | 公開URL | `https://bao-la-kiswahili.cultivationdata.net/` |
 
 初期段階的公開の`public/ai-config.js`はhardとexpertの既定optionsへ`pbaiC011LightweightTransitions: true`を追加した。`public/ai.js`側の既存gateにより、既定のBao評価・phase2探索以外では軽量経路を使わない。初期公開時の`public/service-worker.js`はcacheを`bao-la-kiswahili-v25`へ更新し、AI-GEN3表示追加配信ではv26へ更新した。

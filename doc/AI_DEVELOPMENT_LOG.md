@@ -1,7 +1,9 @@
 # Bao AI 開発記録
 
+現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。本書のPhase別計画・結果とP4・P5の追記は各時点の開発記録であり、最新の採用・配信状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を参照してください。P6〜P11を通じた学習済み論理ゲート型評価器の検証・正式採用は、初期Phase計画とは別の改善プログラムとして完了しています。
+
 Version: 0.1.2
-更新日: 2026-07-10
+更新日: 2026-09-12
 
 ## 1. この文書の役割
 
@@ -31,7 +33,7 @@ Cloudflare Pagesへ公開するファイルと、Bao AIの検証・強化用フ�
 | `artifacts/` | チューナー出力や一時的な候補重みなど、公開物と分けたい成果物 |
 | `doc/` | ロードマップ、ベンチマーク、開発記録、設計文書 |
 
-Cloudflare Pagesの公開ディレクトリは`bao-la-kiswahili/public`に設定する。
+当時の配置では`bao-la-kiswahili/public`を配信対象としていた。現行リポジトリのルートからの公開ディレクトリは`public/`であり、[ルートREADME](../README.md#デプロイ)に従う。
 
 ## 2. 不変の設計原則
 
@@ -44,7 +46,7 @@ Cloudflare Pagesの公開ディレクトリは`bao-la-kiswahili/public`に設定
 - ルール変更とAI変更を同じ評価系列として扱わない
 - Phase 7以降の評価関数変更は、Phase 6で整理したカテゴリ別戦術回帰を通過する
 
-## 3. 現在のAI構成
+## 3. 継承元AIの構成と現在の公開設定
 
 ### 難易度
 
@@ -54,11 +56,13 @@ Cloudflare Pagesの公開ディレクトリは`bao-la-kiswahili/public`に設定
 | normal | 1手後の評価上位3手からランダム選択 |
 | hard | 反復深化、Minimax、Alpha-Beta枝刈り |
 
-現在のブラウザー設定は`public/ai-config.js`を正本とし、標準端末のhardは最大深度8・500ms、expertは最大深度12・2000msである。低性能／高性能端末では別の上限を使う。`analyzeMove`をoptionsなしで直接呼ぶ場合の既定値は深度4・450msであり、ブラウザー設定とは区別する。時間切れ時は最後に完了した反復深化の着手を返す。
+以下は基準AIの方式・APIと、継承する探索予算の説明である。現在の公開画面・Workerは`public/ai-release.js`を経由し、hard・expertではPBAI-C015-v1を使う。easy・normalは基準AIを使う。詳細は[現行設計書](SYSTEM_DESIGN.md)を参照する。
+
+探索予算は`public/ai-config.js`を正本とし、標準端末のhardは最大深度8・500ms、expertは最大深度12・2000msである。低性能／高性能端末では別の上限を使う。`analyzeMove`をoptionsなしで直接呼ぶ場合の既定値は深度4・450msであり、ブラウザー設定とは区別する。時間切れ時は最後に完了した反復深化の着手を返す。
 
 ### 評価プロファイル
 
-- `bao`: 現在の既定評価
+- `bao`: 基準AIの既定評価。公開アダプターでは同じprofile名のhard・expertに論理ゲート型評価器を適用する
 - `bao-v2`: Phase 7の実験評価。既存特徴量を局面カテゴリ別に重み補正する
 - `legacy`: Phase 0時点の評価。比較対照として保持
 
@@ -1901,3 +1905,11 @@ PBAI-P5は同じPBAI-C011-v1の独立した再検証を完了し、固定範囲�
 PBAI-P5は`COMPLETE / ADOPTED / AI-GEN3`。新規最終holdout512局で328勝184敗、勝点率64.0625％、cluster bootstrap 95％区間61.1328125〜66.9921875％となり、固定した100ms/D8の範囲で改善を確認した。全工程は約40分17秒で完了した。公開asset一致とChrome相当経路の確認後、2026年9月7日にrelease `AI-GEN3-RELEASE-001`を発行した。
 
 [最終報告](ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に速度・正確性・独立検算・資源条件・未検証範囲をまとめた。標準500msでの対局棋力やスマートフォンでの効果は未確認である。
+
+## 2026年9月12日：論理ゲート型評価器の採用・配信状態と文書の同期
+
+P6は開発速度条件未達、P7は正式検算の不成立でHOLDとなり、P8・P9の新規データによる独立検証でPBAI-C015-v1の固定条件内の棋力改善を確認した。その後の実機確認と[hard正式採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)を経てhardへ配信した。
+
+expertのP10は中断により`TECHNICAL-INVALID / HOLD`で終了した。後続のP11は独立した新規seedとGitHub実行基盤を使い、低・標準・高の各256局で事前条件と独立検算を通過した。実機所見を受領して[expert正式採用](ai-engineering/public-ai-improvement-program-11/ADOPTION.md)を行い、本番組込み・main統合・ユーザーによる配信・内容確認を完了した。2026年9月11日に`AI-GEN4-RELEASE-001`を発行し、世代表示の配信内容も確認した。[正式記録](ai-engineering/ai-gen4-release/README.md)を現在状態の正本とする。
+
+2026年9月12日のmain `607613ca63dda10c74853db01247866dbb107aa4`では、難易度名のビングワ／Bingwaへの変更と日英図解ルールページも統合済みである。ルートREADME、中央索引、世代規則、関連する入口・再開文書について、現在状態と当時の結果を分けた。P6・P7・P10の正式判断、凍結モデル・seed・hash、過去の配信manifestは保持した。棋力の再測定や公開コードの変更は行っていない。

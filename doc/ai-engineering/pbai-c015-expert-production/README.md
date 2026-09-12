@@ -2,7 +2,7 @@
 
 ## 現在状態
 
-expertは[正式採用済み](../public-ai-improvement-program-11/ADOPTION.md)である。ユーザーから本番組込み・main統合・配信・AI-GEN4昇格を進める明示指示を受け、本番用publicへの接続を行う。Cloudflareの配信操作はユーザーが担当する。
+expertは[正式採用済み](../public-ai-improvement-program-11/ADOPTION.md)である。ユーザーから本番組込み・main統合・配信・AI-GEN4昇格を進める明示指示を受け、本番用publicへの接続を完了した。Cloudflareの配信操作はユーザーが実施した。
 
 本番用コードはPR #130でmainへ統合し、ユーザーによる配信後、全22ファイルの内容を確認した。状態は`DEPLOYED-ASSETS-VERIFIED`。その後、AI-GEN4へ正式昇格し、世代表示を含む再配信内容の確認も完了した。[最新の正式判断と再開手順](../ai-gen4-release/README.md)を参照する。[機械可読の状態記録](DEPLOYMENT.json)と[評価器配信時の照合一覧](PUBLIC_MANIFEST.json)を保持する。以下のv36配信手順と検証結果は、世代表示更新前の記録である。
 
@@ -18,11 +18,11 @@ expertは[正式採用済み](../public-ai-improvement-program-11/ADOPTION.md)�
 
 これは今回の本番用publicに対する自動確認であり、新しい棋力改善の証拠や本番サイトでの実機対局報告ではない。スマートフォンについてはP11で受領した実機用コピーの約20分の報告を引き継ぐ。本番での再対局、実機のピークメモリ、実機オフライン操作は確認済みとは扱わない。
 
-## ユーザーによる配信と再開手順
+## 評価器配信時の手順（実施済みの履歴）
 
 Cloudflareの本番プロジェクトで、mainの上記統合commit（またはpublicの内容が同一と確認された後続commit）を配信する。配信対象ディレクトリは`public`一式、全22ファイル。既存のビルド設定を使い、実機用ZIPや実機コピー生成器は使わない。配信先は`https://bao-la-kiswahili.cultivationdata.net/`である。
 
-配信完了の連絡を受けたら、PUBLIC_MANIFEST.jsonの全ファイルを取得して照合する。CloudflareがHTML等へ追加する部分は、完全一致と区別して内容を確認する。候補有効化・expert採用判断ID・キャッシュv36が反映されたことを記録してから、承認済みのAI-GEN4正式化へ進む。表示更新を含む次の配信もユーザーへ依頼する。現在のAI-GEN3表示は、配信確認前に昇格を記録しないための意図した状態である。
+配信完了の連絡を受けたら、PUBLIC_MANIFEST.jsonの全ファイルを取得して照合する。CloudflareがHTML等へ追加する部分は、完全一致と区別して内容を確認する。候補有効化・expert採用判断ID・キャッシュv36が反映されたことを記録してから、承認済みのAI-GEN4正式化へ進む。表示更新を含む次の配信もユーザーへ依頼する。この段階でのAI-GEN3表示は、配信確認前に昇格を記録しないための意図した状態だった。現在の表示はAI-GEN4である。
 
 ## 本番用の変更
 
@@ -38,7 +38,7 @@ expertの既定設定は独立した`PBAI_C015_EXPERT_ENABLED`で管理する。
 
 P10・P11の凍結SPEC・SOURCE_LOCK・ソース・モデル・判断・seed・結果は保持する。本番更新により現在のpublicと過去のSOURCE_LOCKは一致しなくなるため、過去の検算・実機コピー作成はそれぞれの記録されたcommitで行う。P11正式実行の再現元は`0dd3bb6daf19bf00803d43c91bc832fb38d0213f`、実機用生成器と試験の確認元は`9167a420a1ea6362bf67e182c0f040607406f71b`である。古いhashを現行publicに合わせて書き換えない。
 
-## 配信とAI-GEN4の順序
+## 実施した配信とAI-GEN4昇格の順序
 
 1. 本番用publicの3ブラウザ確認と回帰を完了し、mainへ統合する。
 2. ユーザーが指定されたmain commitのpublic一式を本番サイトへ配信する。実機確認用ZIPは本番へ配信しない。

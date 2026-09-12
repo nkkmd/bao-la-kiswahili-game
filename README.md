@@ -78,15 +78,20 @@ Privacy Policy へのリンクとPWAのオフラインキャッシュは、Cloud
 node test/engine.test.js
 ```
 
-テストスイート全体を実行します。
+現在の公開AI経路を確認する主要な回帰テストを実行します。
 
 ```sh
-for f in test/*.test.js; do node "$f" || exit 1; done
+node --test test/engine.test.js test/ai.test.js test/ai-config.test.js \
+  test/ai-generation-release.test.js test/ai-worker.test.js \
+  test/worker-integration.test.js test/diagnostics-ui.test.js \
+  test/pbai-c015-integration.test.cjs test/pbai-c015-expert-production.test.cjs
 ```
+
+この選定は[公開AI組込みのCI](.github/workflows/pbai-c015-integration.yml)に対応します。`test/`には過去の凍結ソースとの一致を要求する研究・検証用テストも含まれます。全ファイルの一括実行を現行公開AIの合格条件にはせず、過去の試験は各文書の固定commitと再実行制限に従って扱います。
 
 ## AI ベンチマーク
 
-再現可能な固定深さベンチマークを実行します。
+基準AIを直接使う固定深さベンチマークの例です。`tools/benchmark.js`は`public/ai.js`を読み込み、AI-GEN4の公開アダプター・論理ゲート型評価器を読み込まないため、このコマンドを現在の公開AIの棋力試験として扱いません。AI-GEN4の採用根拠は[公開AIの開発・改善](#公開aiの開発改善)を参照してください。
 
 ```sh
 node tools/benchmark.js --games 100 --seed 20260706 \
@@ -145,9 +150,13 @@ node tools/diagnostic-to-fixture.js \
 | `public/rules.html` | 日英対応の図解ルール説明 |
 | `public/assets/rules/` | ルール図版と出典・ライセンス記録 |
 | `public/engine.js` | 盤面状態、合法手生成、着手適用 |
-| `public/ai.js` | コンピューターの手の選択、評価、探索 |
+| `public/ai.js` | AI-GEN3基準の手の選択、評価、探索（継承元・切戻し先） |
+| `public/logic-evaluator.js` | 学習済みモデルを含む論理ゲート型評価器 |
+| `public/ai-candidate.js` | 論理ゲート型評価器を接続した探索本体 |
+| `public/ai-release.js` | 公開AIの有効化条件、世代表示、基準AIへの復帰 |
+| `public/ai-release-worker.js` | 現在の公開画面が使うAI探索Worker |
 | `public/ai-weights.js` | デフォルトの評価重み |
-| `public/ai-worker.js` | バックグラウンド AI 探索 Worker |
+| `public/ai-worker.js` | 継承元AI-GEN3のWorkerと回帰確認用経路 |
 | `public/ai-config.js` | デバイス性能別の探索設定 |
 | `public/diagnostics.js` | AI診断局面の許可リスト形式、復元、端末内記録 |
 | `public/review-suggestion.js` | Phase 10Aの探索表示、保存推奨判定、診断根拠付与 |
@@ -159,27 +168,44 @@ node tools/diagnostic-to-fixture.js \
 
 ## 公開AIの開発・改善
 
-公開ゲームのコンピューター対戦を改善する開発作業（AI Engineering）は、Baoに関する科学的研究とは別系統で管理しています。`AI-GENx`は公開AIの世代、`PBAI-Px`は改善プログラムのIDであり、いずれも研究世代（Research Generation）の番号とは対応しません。全体像は[AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md)を参照してください。
+公開ゲームのコンピューター対戦を改善する開発作業（AI Engineering）は、Baoに関する科学的研究とは別系統で管理しています。`AI-GENx`は公開AIの世代、`PBAI-Px`は改善プログラムのIDであり、研究世代（Research Generation）の番号とは対応しません。全体像は[AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md)を参照してください。
 
 ### 現在の公開AI
 
-現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの論理ゲート型評価器PBAI-C015-v1の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。easy・normalは従来構成を維持します。AI-GEN4の画面表示を含む本番配信内容も確認済みです。[正式判断・適用範囲・現在状態](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
+現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの`PBAI-C015-v1`の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。AI-GEN4の画面表示を含む配信内容も確認済みです。[正式判断と配信確認記録](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
 
-採用した改善は、探索中に表示用の盤面スナップショット生成を省く「探索専用の軽量な局面遷移」です。捕獲量や連鎖数などAIに必要な情報、通常の着手処理、画面のアニメーションを維持し、ルール・評価関数・探索方式の意味は変えていません。
+AI-GEN4で加えた改善は、**学習済みの論理ゲート型評価器を使って探索中の局面を評価する仕組み**です。ルールに従って合法手を探索する方式は継承しています。AI-GEN3で採用した`PBAI-C011-v1`の軽量な局面遷移も引き続き使い、探索中に不要な表示用スナップショットを省きます。通常の着手処理と画面のアニメーションは維持します。
 
-軽量経路を使うのは「むずかしい」（hard）と「ビングワ」（expert）の既定Bao探索です。「やさしい」（easy）、「ふつう」（normal）、明示的な`legacy`・`mcts`・`bao-v2`はこの改善の対象外です。
+| 難易度・条件 | 現在の構成 |
+| --- | --- |
+| むずかしい（hard）・ビングワ（expert）の既定`bao`／`phase2` | 論理ゲート型評価器`PBAI-C015-v1`と、AI-GEN3から継承した探索・軽量局面遷移 |
+| やさしい（easy）・ふつう（normal） | 従来構成を維持。画面のAI-GEN4表記は公開世代を示す |
+| 明示的な別profile・独自重み・補正 | 論理ゲート型評価器の適用対象外 |
+| hard・expertで候補やモデルの取得に失敗した場合、または切戻し時 | AI-GEN3基準構成へ戻り、画面表示も区別 |
 
-### 継承する`AI-GEN3`の採用根拠
+公開画面とWorkerは`public/ai-release.js`の共通設定を使います。`public/ai-config.js`などに残るAI-GEN3の識別子は、継承元・切戻し先として固定した構成の記録です。
 
-PBAI-P5では、新たな最終評価用データ（holdout）でAI-GEN2の固定基準構成と先後交換して512局を比較し、328勝184敗、勝点率64.0625％でした。先後ペアの相関を考慮したcluster bootstrapの95％区間は61.1328125〜66.9921875％です。Node/Linux上の持ち時間100ms・最大深度8（D8）という固定条件で、棋力改善を示す`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`と判断しました。同等計算結果の速度比較でも`EQUIVALENT-COMPUTATION-SPEEDUP`を確認しています。条件と独立検算は[第5回改善プログラムの最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)にまとめています。
+### 現在の採用根拠と限界
 
-公開AIのP5での結論は固定した試験範囲に限られます。スマートフォン実機での効果、端末横断の速度、標準500msでの対局棋力を証明したものではありません。また、公開配信後の表示・着手確認は運用確認であり、追加の棋力試験ではありません。配信ファイルの照合方法と未確認事項は[公開配信検証](doc/ai-engineering/public-ai-improvement-program-5/PUBLIC_DEPLOYMENT_VERIFICATION.md)を参照してください。
+hardは[P8・P9の検証と実機確認に基づく正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)、expertは[P11の独立再試験と実機確認に基づく正式採用](doc/ai-engineering/public-ai-improvement-program-11/ADOPTION.md)を根拠とします。以下の成績は、それぞれAI-GEN3基準構成との比較です。
+
+| 検証 | 固定した主要条件 | 結果 |
+| --- | --- | --- |
+| PBAI-P8 | Node/Linux、100ms・最大深度8 | 512局295勝217敗。固定範囲での棋力改善と正式検算を確認 |
+| PBAI-P9 | Node、毎手Worker起動、hard標準500ms・最大深度8 | 256局151勝105敗。主要条件と独立検算を通過 |
+| PBAI-P11 | Node、毎手Worker起動、expert低・標準・高設定 | 各256局。順に146勝110敗、146勝110敗、141勝115敗。3設定すべての棋力・運用条件と独立検算を通過 |
+
+本番用コードはChromium・Firefox・WebKitで確認し、実機用コピーではmoto g52j 5G／Android 12／Chromeによる約20分の操作確認報告を受領しています。棋力試験、ブラウザ動作確認、実機報告、配信ファイル照合は、それぞれ別の証拠です。全端末での棋力・速度を証明したものではなく、AI-GEN4配信記録では本番配信後の実機再対局、実機ピークメモリ、実機オフライン操作は未確認です。
+
+### 継承するAI-GEN3の採用根拠
+
+PBAI-P5では、軽量局面遷移をAI-GEN2の固定基準構成と新規holdout512局で比較し、328勝184敗、勝点率64.0625％でした。先後ペアの相関を考慮したcluster bootstrapの95％区間は61.1328125〜66.9921875％です。Node/Linux上の100ms・最大深度8という固定条件で`STRENGTH-IMPROVED-IN-FROZEN-DOMAIN`と判断し、同等計算の速度比較でも`EQUIVALENT-COMPUTATION-SPEEDUP`を確認しました。[P5最終報告](doc/ai-engineering/public-ai-improvement-program-5/PROGRAM_FINAL_REPORT.md)に条件と独立検算をまとめています。これはAI-GEN3の採用根拠であり、上記の論理ゲート型評価器の成績とは合算しません。
 
 ### 改善プログラムの経緯
 
-PBAI-P1〜P10は完了しています。[PBAI-P11](doc/ai-engineering/public-ai-improvement-program-11/README.md)では、新しいseedと独立したGitHub実行基盤によるexpert再試験を完了し、低・標準・高の全設定で棋力・運用条件と独立検算に合格しました。実機用コピーの3ブラウザ確認と約20分の実機確認を経て、expertへの正式採用を決定しました（PBAI-C015-EXPERT-ADOPTION-001）。本番用組込み以降の現在状態は[本番組込み・配信記録](doc/ai-engineering/pbai-c015-expert-production/README.md)で管理します。[PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/README.md)のexpert検証は実行中断により`TECHNICAL-INVALID / HOLD`となり、棋力改善は未判定です。公開expertはAI-GEN3を維持し、AI-GEN4への昇格は未実施です。[PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/README.md)では、固定した論理ゲート評価器の独立再検証で最終512局295勝217敗となり、100ms・最大深度8の範囲で棋力改善を確認しました。正式検算も通過しています。公開採用・配備は別の判断としており、公開AIはAI-GEN3を維持しています。 [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/README.md)では、標準500ms・毎手Worker起動のNode条件でも256局151勝105敗となり、棋力改善と独立検算を確認しました。Chromiumの互換性78件も通過しましたが、スマートフォン実機は未確認です。
+**PBAI-P1〜P11は完了済み**です。下表の公開判断は各プログラム終了時点の履歴です。P8・P9の`KEEP-AI-GEN3`の後にhardの正式採用、P11の後にexpertの正式採用・本番組込み・配信確認を行い、現在のAI-GEN4へ至りました。
 
-| プログラム | 検証内容と結果 | 公開AIへの反映 |
+| プログラム | 検証内容と結果 | 各プログラムでの公開判断 |
 | --- | --- | --- |
 | [PBAI-P1](doc/ai-engineering/public-ai-improvement-program-1/PROGRAM_FINAL_REPORT.md) | 研究第1世代までの証拠を利用。採用条件を満たす候補がなく、`KEEP-AI-GEN2`で完了 | 変更なし |
 | [PBAI-P2](doc/ai-engineering/public-ai-improvement-program-2/PROGRAM_FINAL_REPORT.md) | 研究第2世代までの証拠を利用。採用条件を満たす候補がなく、`KEEP-AI-GEN2`で完了 | 変更なし |
@@ -190,17 +216,19 @@ PBAI-P1〜P10は完了しています。[PBAI-P11](doc/ai-engineering/public-ai-
 | [PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/PROGRAM_FINAL_REPORT.md) | P6の固定モデルを軽量化。高速化と良好な対局成績を観測したが、正式検算が停止し`TECHNICAL-INVALID / HOLD` | 変更なし、`KEEP-AI-GEN3` |
 | [PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/PROGRAM_FINAL_REPORT.md) | 同じ論理ゲート評価器を新規データで独立再検証。295勝217敗、正式検算と固定条件での棋力改善判定を通過 | 未採用・未配備、`KEEP-AI-GEN3` |
 | [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/PROGRAM_FINAL_REPORT.md) | 同じ候補を標準500ms・毎手WorkerのNode条件で追加検証。151勝105敗、正式検算と主要条件を通過。ブラウザ互換性78件も合格 | 未採用・未配備、`KEEP-AI-GEN3` |
+| [PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md) | expertの低・標準・高設定を検証したが、実行中断により`TECHNICAL-INVALID / HOLD`。棋力改善は未判定 | expertの採用根拠にせず、hardの既存採用を維持 |
+| [PBAI-P11](doc/ai-engineering/public-ai-improvement-program-11/PROGRAM_FINAL_REPORT.md) | 新規seedとGitHub実行基盤でexpertを独立再試験。3設定すべての棋力・運用条件と独立検算を通過 | 後続の実機確認・正式採用・配信確認を経て、hardとともに`AI-GEN4`へ昇格 |
 
-PBAI-P3の候補の最終状態は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。PBAI-P4の部分成績は棋力改善の正式証拠にせず、P5の成績にも加算していません。P5での採用によって、P4のHOLD、P1〜P3とPBAI-C001〜C010の正式結果、科学研究の結論を変更することはありません。P8・P9の成功も、P6・P7のHOLDを変更せず、前回の対局を今回の成績に加算していません。
-
-[hard限定の正式採用](doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md)では、3種類のブラウザ確認とmoto g52j 5Gで約20分の実機確認報告を踏まえ、論理ゲート候補を`ADOPT`としました。その配信状態は`DEPLOYED-ASSETS-VERIFIED`です。[配信確認記録](doc/ai-engineering/pbai-c015-adoption-review/DEPLOYMENT.md)は当時の結果と未確認範囲を保持しています。今回のツリーでは、別途正式採用したexpertも有効化しました。本番配信内容の確認後にAI-GEN4へ昇格し、世代表示を含む配信内容も確認済みです。[最新の組込み状態と配信手順](doc/ai-engineering/pbai-c015-expert-production/README.md)を参照してください。上記のProgram概要は各終了時点の経過です。
+PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。後続プログラムの成功によって、P1〜P4の正式結果やP6・P7・P10のHOLD・技術的無効を変更しません。各試験の対局成績は合算せず、科学研究の結論も保持します。
 
 ### 詳細資料
 
-- [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md) — 正式採用・世代昇格の根拠と適用範囲
-- [公開リリース台帳](doc/ai-engineering/public-ai-improvement-program-5/RELEASE_REGISTER.md) — 配信履歴、現在の公開状態、問題発生時の対応
-- [再現手順](doc/ai-engineering/public-ai-improvement-program-5/REPRODUCIBILITY_INDEX.md) — 保存済み証拠の検算方法と再実行の制限
-- [AI世代の命名規則](doc/ai-engineering/AI_GENERATION_NAMING.md) — AI世代、改善プログラム、候補IDの区別
+- [AI-GEN4正式昇格・配信確認・切戻し](doc/ai-engineering/ai-gen4-release/README.md) — 現在の公開世代と運用状態の正本
+- [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — P1〜P11の結果と各プログラムへの入口
+- [expert本番組込み・配信記録](doc/ai-engineering/pbai-c015-expert-production/README.md) — P11の採用からAI-GEN4昇格までの経過
+- [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md)・[P5リリース台帳](doc/ai-engineering/public-ai-improvement-program-5/RELEASE_REGISTER.md) — 継承元の採用・配信履歴
+- [P11の証拠確認・再開位置](doc/ai-engineering/public-ai-improvement-program-11/RESUME.md) — 完了済み試験の証拠と再実行の制限
+- [AI世代の命名規則](doc/ai-engineering/AI_GENERATION_NAMING.md) — AI世代、改善プログラム、候補・採用判断・release IDの区別
 
 ## 研究成果
 
@@ -248,11 +276,11 @@ core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instr
 - [`doc/JOSEKI_RESEARCH_PLAN.md`](doc/JOSEKI_RESEARCH_PLAN.md): 定石研究の研究課題、判定基準、完了条件、実施記録
 - [`doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md`](doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md): 全継続AI条件で固定開局系列を共有するペア追試計画
 - [`doc/NAMUA_SYMMETRY_RESEARCH_PLAN.md`](doc/NAMUA_SYMMETRY_RESEARCH_PLAN.md): namua鏡像変換、合法手、bao評価の不一致原因を調査するローカル研究計画
-- [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 公開向け Bao AI 技術レポート
+- [`doc/BAO_AI_TECHNICAL_REPORT.md`](doc/BAO_AI_TECHNICAL_REPORT.md): 初期AI強化の技術レポート（当時の結果・設計の記録）
 - [`doc/AI_BENCHMARK.md`](doc/AI_BENCHMARK.md): ベンチマークコマンドとベースライン結果
 - [`doc/AI_DEVELOPMENT_LOG.md`](doc/AI_DEVELOPMENT_LOG.md): 設計判断、失敗した試行、制限事項
 - [`doc/AI_ROADMAP.md`](doc/AI_ROADMAP.md): 完了済みの Phase 0-5 AI ロードマップ
-- [`doc/AI_ADVANCED_ROADMAP.md`](doc/AI_ADVANCED_ROADMAP.md): Phase 6 以降のロードマップと今後の改善メモ
+- [`doc/AI_ADVANCED_ROADMAP.md`](doc/AI_ADVANCED_ROADMAP.md): 初期Phase 6以降の計画・実施記録と未完了の診断課題
 - [`doc/AI_HUMAN_REVIEW_GUIDE.md`](doc/AI_HUMAN_REVIEW_GUIDE.md): 初心者でも進められる機械的局面監査と、根拠確認後の棋力レビュー手順
 - [`doc/SYSTEM_DESIGN.md`](doc/SYSTEM_DESIGN.md): システム構成と責務
 

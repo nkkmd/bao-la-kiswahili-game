@@ -1,10 +1,12 @@
 # PBAI-P10：expertへの論理ゲート型評価器の適用検証
 
+後続の[P11独立再試験](../public-ai-improvement-program-11/README.md)とexpertの正式採用・配信確認は完了し、現在の公開AIは[AI-GEN4](../ai-gen4-release/README.md)です。P10の`TECHNICAL-INVALID / HOLD`は維持します。以下の公開状態はP10終了時点の記録です。
+
 ## 目的と現在の状態
 
 PBAI-C015-v1を公開expertの実設定へ適用できるか、新しい対局集団で検証する。正式試験は中断し、`TECHNICAL-INVALID / HOLD`で終了した。expertの正式採用、main統合、公開切替、AI-GEN4昇格は行っていない。hardの正式採用と配信確認は維持する。中断の詳細は[最終報告](PROGRAM_FINAL_REPORT.md)、対策は[実行基盤の対策](EXECUTION_RECOVERY.md)を参照する。
 
-最新mainはGitHubから取得した`c062dd739216a914defac7ace8836b429c44fa02`。作業ブランチは`engineering/pbai-p10-expert-validation`である。サブエージェントは使用しない。
+開始時に参照したmainはGitHubから取得した`c062dd739216a914defac7ace8836b429c44fa02`。作業ブランチは`engineering/pbai-p10-expert-validation`である。サブエージェントは使用しない。
 
 ## 読む順序
 

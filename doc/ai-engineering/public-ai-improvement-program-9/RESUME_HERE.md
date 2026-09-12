@@ -1,5 +1,7 @@
 # PBAI-P9：再開位置と実機確認
 
+現在の公開AIは[AI-GEN4](../ai-gen4-release/README.md)（`AI-GEN4-RELEASE-001`）です。本書の公開系統・配信状態・未確認事項は、このプログラムと当時の確認範囲の記録です。後続の採用・配信によって、このプログラムの正式結果や凍結証拠は変更しません。
+
 P9の正式検証は完了した。最初に[最終報告](PROGRAM_FINAL_REPORT.md)と[現在の状態](CURRENT_STATUS.md)を読む。ブランチはengineering/pbai-p9-standard-time-readiness、PRは125、依存先はP8である。RUN_STARTED.jsonを削除して正式対局を再実行しない。
 
 ## 次に確認すること

@@ -2,7 +2,7 @@
 
 状態: **ACTIVE**  
 制定日: 2026-08-26  
-更新日: 2026-09-11
+更新日: 2026-09-12
 適用範囲: 公開Bao AIのengineering lineage命名
 
 人間向けの説明文は[`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)に従い、日本語を主言語とする。以下で定義するcanonical identifier自体は翻訳・改名しない。
@@ -39,7 +39,7 @@ AIについては必ず`AI-GENn`、研究については必ず`Research Generati
 - 現時点では、この命名規則だけを根拠として厳密な最初・最後のcommit boundaryを主張しません。
 - 将来history auditが必要になった場合は、別のversioned archival recordでexact boundaryを固定します。
 
-### `AI-GEN2` — 直前の公開Bao AI系統
+### `AI-GEN2` — AI-GEN3以前の公開Bao AI系統
 
 2026年9月7日の`AI-GEN3`昇格までpublicに使用されていたBao AI lineageを指します。
 
@@ -83,7 +83,7 @@ PBAI-P5の`PBAI-C011-v1`はこの条件を最初にすべて満たしたため�
 
 2026年9月11日、hard・expertに論理ゲート型評価器PBAI-C015-v1を正式採用した公開AI世代として昇格しました。正式release IDは`AI-GEN4-RELEASE-001`です。AI-GEN3の探索・ルール・軽量局面遷移を継承します。easy・normalは従来構成を維持し、論理ゲート評価器の適用範囲に含めません。
 
-P8・P9に基づくhard採用と、独立seed・3端末設定のP11に基づくexpert採用、実機報告、回帰確認、実際の既定構成の本番配信内容確認を経て、明示的な昇格判断を行いました。事後に合格条件を緩和していません。P6・P7・P10のHOLD等は保持します。画面表示の再配信は別の状態として管理します。詳細は[正式昇格記録](ai-gen4-release/README.md)を参照してください。
+P8・P9に基づくhard採用と、独立seed・3端末設定のP11に基づくexpert採用、実機報告、回帰確認、実際の既定構成の本番配信内容確認を経て、明示的な昇格判断を行いました。事後に合格条件を緩和していません。P6・P7・P10のHOLD等は保持します。画面表示の再配信も内容確認まで完了しています。評価器の配信確認と表示更新の配信確認は、それぞれの証拠を保持します。詳細は[正式昇格記録](ai-gen4-release/README.md)を参照してください。
 
 採用判断ID、AI世代release ID、アプリのバージョンタグを分けて管理します。この昇格は評価器の実質的な更新に基づき、表示修正だけによる世代更新ではありません。
 
@@ -122,7 +122,7 @@ AI-GEN3-RELEASE-002
 
 ## 6. Research Generationとの分離
 
-Research Generationと`AI-GENn`は、番号が一致していても意味上の対応関係を持ちません。
+Research Generationと`AI-GENn`は、番号が一致していても意味上の対応関係を持ちません。以下の例と第7〜11節の対応関係は、AI-GEN2が公開系統だった時期からAI-GEN3昇格までの履歴です。`current`、予約名、昇格待ちという記録を現在の公開状態と混同せず、現在の定義は第3節のAI-GEN4を参照してください。
 
 ```text
 Research Generation 1 = scientific research generation
@@ -221,4 +221,4 @@ public lineage after promotion = AI-GEN3
 deployment evidence = PASS
 ```
 
-この後続判断により、`AI-GEN3`は予約名から現在の公開AI系統へ移りました。P1〜P4の当時の記録にある`AI-GEN2`、`NOT-PROMOTED`、`HOLD`等は履歴として維持し、遡及変更しません。正式な根拠は[PBAI-P5の昇格判断](public-ai-improvement-program-5/PROMOTION_DECISION.md)を参照してください。
+この後続判断により、`AI-GEN3`は予約名から当時の公開AI系統へ移りました。P1〜P4の当時の記録にある`AI-GEN2`、`NOT-PROMOTED`、`HOLD`等は履歴として維持し、遡及変更しません。正式な根拠は[PBAI-P5の昇格判断](public-ai-improvement-program-5/PROMOTION_DECISION.md)を参照してください。
