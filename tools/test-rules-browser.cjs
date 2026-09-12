@@ -142,7 +142,11 @@ let browser;
       serveOld = true;
       await p.goto(origin + "/"); await cacheReady(p, "v39");
       serveOld = false;
-      await p.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
+      await p.evaluate(async () => {
+        const changed = new Promise(resolve => navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
+        await (await navigator.serviceWorker.getRegistration()).update();
+        await changed;
+      });
       await cacheReady(p, "v40");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
