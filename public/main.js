@@ -55,6 +55,7 @@ let aiThinking = false;
 let started = false;
 let humanPlayer = 0;
 let lastAIDiagnostic = null;
+let latestRuleCommentary = null;
 
 function isComputerGame() { return gameModeSelect.value === "computer"; }
 function updateAIGenerationBadge() {
@@ -85,10 +86,15 @@ function ruleGuideHref(anchor) {
   return href.href;
 }
 
-function showHelp(message, ruleAnchor = "") {
+function showHelp(message, ruleAnchor = "", detail = "") {
   const messageNode = document.createElement("span");
   messageNode.textContent = message;
   helpNode.replaceChildren(messageNode);
+  if (detail) {
+    const detailNode = document.createElement("small");
+    detailNode.textContent = detail;
+    helpNode.append(detailNode);
+  }
   if (!ruleAnchor) return;
   const link = document.createElement("a");
   link.href = ruleGuideHref(ruleAnchor);
@@ -96,6 +102,14 @@ function showHelp(message, ruleAnchor = "") {
   link.rel = "noopener noreferrer";
   link.textContent = t("View rule ↗", "ルールを見る ↗");
   helpNode.append(link);
+}
+
+function showTurnHelp(message) {
+  if (!latestRuleCommentary) {
+    showHelp(message);
+    return;
+  }
+  showHelp(message, latestRuleCommentary.anchor, latestRuleCommentary.message);
 }
 
 function moveRuleCommentary(move) {
@@ -131,7 +145,7 @@ function moveRuleCommentary(move) {
   return null;
 }
 
-function eventRuleCommentary(event, move, nextEvent, context) {
+function eventRuleCommentary(event, move, nextEvent, context, endsTurn = false) {
   if (!event) return null;
   if (event.kind === "reserve" && event.position) return {
     message: t(
@@ -169,7 +183,7 @@ function eventRuleCommentary(event, move, nextEvent, context) {
       anchor: "sowing",
     };
   }
-  if (event.kind === "sow" && event.position && nextEvent?.kind === "turn") {
+  if (event.kind === "sow" && event.position && (nextEvent?.kind === "turn" || endsTurn)) {
     const atHouse = event.position.row === E.FRONT && event.position.index === E.HOUSE;
     if (atHouse && move?.phase === "namua") {
       if (move.houseChoice === "stop") return {
@@ -237,6 +251,7 @@ function eventRuleCommentary(event, move, nextEvent, context) {
 
 function applyRuleCommentary(commentary) {
   if (!commentary) return;
+  latestRuleCommentary = commentary;
   showHelp(commentary.message, commentary.anchor);
   if (commentary.announce) announce(commentary.message);
 }
@@ -337,6 +352,7 @@ function choosePit(position) {
   if (!found.length) { tone(110); return; }
   selected = position;
   choices = expandedChoices(found);
+  latestRuleCommentary = null;
   tone(340);
   helpNode.textContent = choices.length === 1
     ? t("Confirm this move", "選択を確定してください")
@@ -444,6 +460,7 @@ function startAI() {
 function playMove(move) {
   const result = E.applyMove(state, move);
   selected = null; choices = []; choiceBoxes = [];
+  latestRuleCommentary = null;
   if (fast) {
     state = result.state; displayState = E.clone(state); afterMove(); return;
   }
@@ -467,12 +484,12 @@ function afterMove() {
   if (!started) return;
   if (state.winner !== null) {
     const name = state.winner === 0 ? "SOUTH" : "NORTH";
-    helpNode.textContent = `${name} WINS!`;
+    showTurnHelp(`${name} WINS!`);
     announce(t(`${name} wins.`, `${name}の勝ちです`)); tone(740, .18);
   } else if (moves.length === 1 && moves[0].type === "pass") {
     playMove(moves[0]);
   } else if (isComputerGame() && state.player !== humanPlayer) {
-    helpNode.textContent = t(`${playerName(state.player)} is thinking…`, `${playerName(state.player)}が考えています…`);
+    showTurnHelp(t(`${playerName(state.player)} is thinking…`, `${playerName(state.player)}が考えています…`));
     announce(t("COM is thinking", "COMが考えています"));
     setAIThinking(true);
     aiTimer = setTimeout(() => {
@@ -481,7 +498,7 @@ function afterMove() {
     }, fast ? 40 : 350);
   } else {
     const name = playerName(state.player);
-    helpNode.textContent = t(`${name}'s turn — choose a highlighted pit`, `${name}の手番 — 光っている穴を選んでください`);
+    showTurnHelp(t(`${name}'s turn — choose a highlighted pit`, `${name}の手番 — 光っている穴を選んでください`));
     announce(t(`${name}'s turn. Choose an available pit.`, `${name}の手番。選べる穴を選んでください`));
   }
 }
@@ -669,10 +686,12 @@ function loop(now) {
     const event = animation.events[animation.index];
     if (event) {
       const nextEvent = animation.events[animation.index + 1];
+      const endsTurn = animation.events[animation.index + 1]?.kind === "turn"
+        || animation.events[animation.index + 2]?.kind === "turn";
       const duration = animationDelay(animation.events.length, event);
       displayState = E.clone(event.state);
       animation.current = buildAnimationCue(event, now, duration);
-      const commentary = eventRuleCommentary(event, animation.move, nextEvent, animation);
+      const commentary = eventRuleCommentary(event, animation.move, nextEvent, animation, endsTurn);
       if (commentary?.key === "house-use") animation.houseUseShown = true;
       applyRuleCommentary(commentary);
       animation.index += 1;
@@ -694,7 +713,7 @@ canvas.addEventListener("pointerdown", (event) => {
 });
 
 canvas.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") { selected = null; choices = []; helpNode.textContent = t("Selection cancelled", "選択を取り消しました"); }
+  if (event.key === "Escape") { selected = null; choices = []; latestRuleCommentary = null; helpNode.textContent = t("Selection cancelled", "選択を取り消しました"); }
   if ((event.key === "Enter" || event.key === " ") && choices.length === 1) { event.preventDefault(); playMove(choices[0]); return; }
   if ((event.key === "Enter" || event.key === " ") && selected && !choices.length) { event.preventDefault(); choosePit(selected); return; }
   if (event.key === "ArrowLeft" && choices.length) { event.preventDefault(); const move = choices.find((m) => choiceDirection(m) === "left"); if (move) playMove(move); }
@@ -707,6 +726,7 @@ canvas.addEventListener("keydown", (event) => {
     const current = selected ? available.findIndex((p) => p.row === selected.row && p.index === selected.index) : -1;
     const step = event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 1;
     selected = available[(current + step + available.length) % available.length];
+    latestRuleCommentary = null;
     helpNode.textContent = t(`${pitName(selected)} — Press Enter to select`, `${pitName(selected)} — Enterで選択`);
     announce(t(`${pitName(selected)} selected. Press Enter to confirm.`, `${pitName(selected)}を選択中。Enterで決定`));
     tone(300);
@@ -716,6 +736,7 @@ canvas.addEventListener("keydown", (event) => {
 function resetGame() {
   cancelAI();
   lastAIDiagnostic = null;
+  latestRuleCommentary = null;
   state = E.initialState(); displayState = E.clone(state); moves = E.legalMoves(state);
   selected = null; choices = []; choiceBoxes = []; animation = null; afterMove();
 }
@@ -725,7 +746,7 @@ document.querySelector("#new-game").addEventListener("click", () => {
     if (!confirm(t("End the current game and start a new one?", "現在の対局を終了して、新しい対局を始めますか？"))) return;
   }
   cancelAI(); animation = null; started = false;
-  selected = null; choices = []; choiceBoxes = [];
+  selected = null; choices = []; choiceBoxes = []; latestRuleCommentary = null;
   startScreen.hidden = false;
   helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んでSTART GAMEを押してください");
 });
