@@ -78,6 +78,169 @@ function playerName(player) {
   return player === humanPlayer ? t(`${side} (YOU)`, `${side}（あなた）`) : t(`${side} (COM)`, `${side}（COM）`);
 }
 
+function ruleGuideHref(anchor) {
+  const href = new URL("./rules", document.baseURI);
+  href.searchParams.set("lang", Locale?.language || "en");
+  href.hash = anchor;
+  return href.href;
+}
+
+function showHelp(message, ruleAnchor = "") {
+  const messageNode = document.createElement("span");
+  messageNode.textContent = message;
+  helpNode.replaceChildren(messageNode);
+  if (!ruleAnchor) return;
+  const link = document.createElement("a");
+  link.href = ruleGuideHref(ruleAnchor);
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = t("View rule ↗", "ルールを見る ↗");
+  helpNode.append(link);
+}
+
+function moveRuleCommentary(move) {
+  if (!move) return null;
+  if (move.type === "pass") return {
+    message: t(
+      "No KETE remain in hand — this NAMUA turn passes.",
+      "手元のKETEがないため、このNAMUA手番はパスします。",
+    ),
+    anchor: "namua",
+  };
+  if (move.houseTwo) return {
+    message: t(
+      "NYUMBA two-piece start — add 1 KETE from hand, then sow only 2 from the house.",
+      "NYUMBAの2個蒔き — 手元から1個加え、家から2個だけを蒔きます。",
+    ),
+    anchor: "nyumba",
+  };
+  if (move.type === "capture") return {
+    message: t(
+      "CAPTURE — a capture is available, so a capturing move is compulsory.",
+      "CAPTURE（捕獲）— 捕獲できる手があるため、捕獲手が優先されます。",
+    ),
+    anchor: "capture",
+  };
+  if (move.type === "takata") return {
+    message: t(
+      "TAKATA — no capture is available; this move continues without capturing.",
+      "TAKATA（タカタ）— 捕獲できる手がないため、この手では捕獲せずに蒔きます。",
+    ),
+    anchor: move.phase === "mtaji" ? "mtaji" : "namua",
+  };
+  return null;
+}
+
+function eventRuleCommentary(event, move, nextEvent, context) {
+  if (!event) return null;
+  if (event.kind === "reserve" && event.position) return {
+    message: t(
+      `Added 1 KETE from hand to ${pitName(event.position)} — NAMUA.`,
+      `手元からKETEを1個 ${pitName(event.position)} に加えました — NAMUA（ナムア）。`,
+    ),
+    anchor: "namua",
+  };
+  if (event.kind === "capture") {
+    const position = { player: event.player, row: E.FRONT, index: event.index };
+    return {
+      message: t(
+        `Captured ${event.count} KETE from ${pitName(position)} — CAPTURE.`,
+        `${pitName(position)}のKETEを${event.count}個捕獲しました — CAPTURE（捕獲）。`,
+      ),
+      anchor: "capture",
+      announce: true,
+    };
+  }
+  if (event.kind === "relay" && event.position) {
+    const atHouse = event.position.row === E.FRONT && event.position.index === E.HOUSE;
+    if (move?.houseChoice === "use" && atHouse && !context.houseUseShown) return {
+      key: "house-use",
+      message: t(
+        `NYUMBA USE — lift ${event.count} KETE from ${pitName(event.position)}, give up house status, and continue RELAY SOWING.`,
+        `NYUMBA USE — ${pitName(event.position)}のKETE ${event.count}個を取り上げ、家の特別な状態を失ってRELAY SOWING（連続種まき）を続けます。`,
+      ),
+      anchor: "nyumba",
+    };
+    return {
+      message: t(
+        `${pitName(event.position)} contains ${event.count} KETE, so RELAY SOWING continues.`,
+        `${pitName(event.position)}にKETEが${event.count}個あるため、RELAY SOWING（連続種まき）を続けます。`,
+      ),
+      anchor: "sowing",
+    };
+  }
+  if (event.kind === "sow" && event.position && nextEvent?.kind === "turn") {
+    const atHouse = event.position.row === E.FRONT && event.position.index === E.HOUSE;
+    if (atHouse && move?.phase === "namua") {
+      if (move.houseChoice === "stop") return {
+        message: t(
+          `NYUMBA STOP — the move stops at ${pitName(event.position)} and the house is kept.`,
+          `NYUMBA STOP — ${pitName(event.position)}で止まり、家の特別な状態を保ちます。`,
+        ),
+        anchor: "nyumba",
+      };
+      if (move.type === "takata") return {
+        message: t(
+          `TAKATA stops at the owned NYUMBA ${pitName(event.position)}.`,
+          `TAKATAは所有中のNYUMBA ${pitName(event.position)}で停止します。`,
+        ),
+        anchor: "nyumba",
+      };
+    }
+    const count = event.state?.pits?.[event.position.player]?.[event.position.row]?.[event.position.index];
+    if (count === 1) return {
+      message: t(
+        `The last KETE landed in empty ${pitName(event.position)}, so the move stops here.`,
+        `最後のKETEが空だった${pitName(event.position)}に入り1個になったため、この手はここで終了します。`,
+      ),
+      anchor: "sowing",
+    };
+  }
+  if (event.kind === "phase") return {
+    message: t(
+      "Both hands are empty — the game now enters MTAJI.",
+      "両者の手元のKETEがなくなりました — MTAJI（ムタジ）へ移行します。",
+    ),
+    anchor: "mtaji",
+    announce: true,
+  };
+  if (event.kind === "limit") return {
+    message: t(
+      "Relay safety limit reached — the game ends under the implementation safety rule.",
+      "連続種まきの安全上限に達しました — 実装上の安全規則により対局を終了します。",
+    ),
+    anchor: "rules-used",
+    announce: true,
+  };
+  if (event.kind === "win") {
+    const winner = event.state?.winner === 0 ? "SOUTH" : "NORTH";
+    const reason = event.state?.reason;
+    if (reason === "front-empty") return {
+      message: t(
+        `Opponent front row is empty — ${winner} wins.`,
+        `相手の前列が空になりました — ${winner}の勝ちです。`,
+      ),
+      anchor: "goal",
+      announce: true,
+    };
+    if (reason === "no-move") return {
+      message: t(
+        `Opponent has no legal move — ${winner} wins.`,
+        `相手に合法手がありません — ${winner}の勝ちです。`,
+      ),
+      anchor: "goal",
+      announce: true,
+    };
+  }
+  return null;
+}
+
+function applyRuleCommentary(commentary) {
+  if (!commentary) return;
+  showHelp(commentary.message, commentary.anchor);
+  if (commentary.announce) announce(commentary.message);
+}
+
 function load(key, fallback) { try { return localStorage.getItem(key) || fallback; } catch { return fallback; } }
 function save(key, value) { try { localStorage.setItem(key, value); } catch { /* optional */ } }
 function announce(message) { statusNode.textContent = ""; setTimeout(() => { statusNode.textContent = message; }, 20); }
@@ -288,11 +451,13 @@ function playMove(move) {
     events: result.events,
     index: 0,
     result: result.state,
+    move,
     nextAt: performance.now(),
     current: null,
     lastPosition: null,
+    houseUseShown: false,
   };
-  helpNode.textContent = t("Sowing KETE…", "KETEを蒔いています…");
+  applyRuleCommentary(moveRuleCommentary(move));
   tone(move.type === "capture" ? 520 : 300, .08);
 }
 
@@ -503,9 +668,13 @@ function loop(now) {
   if (animation && now >= animation.nextAt) {
     const event = animation.events[animation.index];
     if (event) {
+      const nextEvent = animation.events[animation.index + 1];
       const duration = animationDelay(animation.events.length, event);
       displayState = E.clone(event.state);
       animation.current = buildAnimationCue(event, now, duration);
+      const commentary = eventRuleCommentary(event, animation.move, nextEvent, animation);
+      if (commentary?.key === "house-use") animation.houseUseShown = true;
+      applyRuleCommentary(commentary);
       animation.index += 1;
       animation.nextAt = now + duration;
       if (event.kind === "capture") tone(600, .035); else if (event.kind === "sow") tone(210 + (animation.index % 5) * 25, .018);
