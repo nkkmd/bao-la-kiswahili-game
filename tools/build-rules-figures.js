@@ -52,7 +52,7 @@ function board(state, { half = false, labelsOnly = false, focus = [], arrows = [
   const points = {};
   let body = `<rect width="660" height="${height}" rx="12" fill="#f5f3e9"/>`;
   const txt = (x, y, value, size = 16, fill = "#243e37", weight = 600) => `<text x="${x}" y="${y}" text-anchor="middle" font-size="${size}" fill="${fill}" font-weight="${weight}">${esc(value)}</text>`;
-  const rows = half ? [[0, 0, 78], [0, 1, 172]] : frontsOnly ? [[1, 0, 78], [0, 0, 172]] : [[1, 1, 70], [1, 0, 152], [0, 0, 262], [0, 1, 344]];
+  const rows = half ? [[0, 0, 78], [0, 1, 172]] : frontsOnly ? [[1, 0, 78], [0, 0, 188]] : [[1, 1, 70], [1, 0, 152], [0, 0, 262], [0, 1, 344]];
   for (const [player, row, y] of rows) {
     body += `<rect x="16" y="${y - 35}" width="628" height="76" rx="12" fill="${row === 0 ? "#dfebd6" : "#e9e8df"}"/>`;
     for (let screenIndex = 0; screenIndex < 8; screenIndex++) {
@@ -73,7 +73,7 @@ function board(state, { half = false, labelsOnly = false, focus = [], arrows = [
   if (!half) body += txt(330, 23, "NORTH", 17);
   else body += txt(330, 23, "SOUTH", 17);
   if (!half && !frontsOnly) body += txt(330, 218, "SOUTH", 17);
-  if (frontsOnly) body += txt(330, 128, "SOUTH", 15);
+  if (frontsOnly) body += txt(330, 144, "SOUTH", 17);
   for (const [from, to, curve = false] of arrows) {
     const a = points[from], b = points[to];
     if (curve) {
