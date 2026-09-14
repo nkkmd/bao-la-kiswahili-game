@@ -1,6 +1,6 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-12
+更新日: 2026-09-14
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`**
@@ -10,6 +10,8 @@
 この文書は、公開中のBao AIを安全に改善するAI Engineeringの入口です。`PBAI-P1`から`PBAI-P3`までは公開AIを変更せず`KEEP-AI-GEN2`で完了しました。`PBAI-P4`は資源監視の不成立により`HOLD`、`PBAI-P5`は同じ候補の独立再検証を完了し、固定範囲で棋力改善を確認しました。P5候補をhard/expertへ段階的に公開して実サイト確認を完了した後、正式に`ADOPT`し、`AI-GEN3-RELEASE-001`として`AI-GEN3`へ昇格しました。その後、P8・P9と実機確認に基づきhardを、P11と実機確認に基づきexpertを正式採用し、両難易度の本番配信を確認してAI-GEN4へ昇格しました。各Programは候補とgateを結果確認前に固定し、Research GenerationとAI世代を分けて管理します。
 
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
+
+次期候補は[十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)です。2026年9月14日の[事前調査と開始時の引継ぎ](ai-engineering/NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)を記録しました。小規模な計測・検証へ進める価値はありますが、棋力改善は未確認です。候補は`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`、正式Program ID・Candidate IDは未発行、開始認可レビュー・新規計測・実装・対局試験は未開始です。今回のmain反映は文書整備のみであり、実作業の開始を認可しません。
 
 ## 1. 最初に知っておくこと
 
