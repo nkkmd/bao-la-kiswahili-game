@@ -233,6 +233,12 @@ PBAI-P5では、軽量局面遷移をAI-GEN2の固定基準構成と新規holdou
 
 PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。後続プログラムの成功によって、P1〜P4の正式結果やP6・P7・P10のHOLD・技術的無効を変更しません。各試験の対局成績は合算せず、科学研究の結論も保持します。
 
+### 次期改善候補
+
+[十分良い手を基準にしたマージン制限型選択探索](doc/ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)を次期候補として記録しています。2026年9月14日の[事前調査と開始時の引継ぎ](doc/ai-engineering/NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)では、小規模な計測・検証へ進める価値があると評価しました。現行PVSで残る比較・再探索の費用を先に測る方針で、棋力改善は未確認です。
+
+候補は`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`で、正式Program ID・Candidate IDは未発行です。今回の記録は文書整備のみであり、開始認可レビュー、新規計測、実装、対局試験はまだ開始していません。公開AIはAI-GEN4を維持します。
+
 ### 詳細資料
 
 - [AI-GEN4正式昇格・配信確認・切戻し](doc/ai-engineering/ai-gen4-release/README.md) — 現在の公開世代と運用状態の正本
