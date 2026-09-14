@@ -24,6 +24,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - 長めの思考中でも UI の応答性を保つ、Web Worker ベースの AI 探索
 - オフライン対応デプロイのための PWA ファイル
 - 日本語・英語で読める、10点の図版付きルール説明ページ
+- 捕獲、takata、連続種まき、nyumba、namua→mtaji、終局などを対局中に日英で説明し、対応する図解ルールへ移動できるルールガイド
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
 - 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
@@ -38,6 +39,8 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 固定参照コミット、実装範囲、既知の差異、ルール更新時の同期手順は [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md) に記録しています。
 
 遊ぶ人向けの説明は [`public/rules.html`](public/rules.html) にまとめています。ゲーム画面の「遊び方・採用ルール」から別タブで開けます。ブラウザーの言語に合わせた自動表示に加え、「日本語 / English」で切り替えられ、`?lang=ja`・`?lang=en`付きのURLで共有できます。図版の拡大と、ファイルのキャッシュ完了後のオフライン閲覧にも対応します。
+
+ゲーム画面では、通常の着手処理が生成したイベントを使って、捕獲、takata、連続種まき、nyumba、namuaからmtajiへの移行、終局などの意味を対局中に説明します。説明のために合法手やAI評価を再計算せず、必要に応じて現在の表示言語を引き継いだ図解ルールの該当節を直接開けます。
 
 ## ローカルでの実行
 
@@ -88,6 +91,14 @@ node --test test/engine.test.js test/ai.test.js test/ai-config.test.js \
 ```
 
 この選定は[公開AI組込みのCI](.github/workflows/pbai-c015-integration.yml)に対応します。`test/`には過去の凍結ソースとの一致を要求する研究・検証用テストも含まれます。全ファイルの一括実行を現行公開AIの合格条件にはせず、過去の試験は各文書の固定commitと再実行制限に従って扱います。
+
+図解ルールの保存済みSVGと生成条件の一致は、次のコマンドで確認できます。
+
+```sh
+node tools/build-rules-figures.js --check
+```
+
+日英表示、図版、対局への導線、オフライン更新を含むブラウザー回帰は[図解ルールのCI](.github/workflows/illustrated-rules.yml)で管理します。
 
 ## AI ベンチマーク
 
@@ -147,6 +158,7 @@ node tools/diagnostic-to-fixture.js \
 | パス | 役割 |
 | --- | --- |
 | `public/` | デプロイ用の静的ゲームファイル |
+| `public/main.js` | 対局進行、Canvas表示、入力、AI要求、対局中ルールガイド |
 | `public/rules.html` | 日英対応の図解ルール説明 |
 | `public/assets/rules/` | ルール図版と出典・ライセンス記録 |
 | `public/engine.js` | 盤面状態、合法手生成、着手適用 |
