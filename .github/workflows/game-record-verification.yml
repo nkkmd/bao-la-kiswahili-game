@@ -1,0 +1,40 @@
+name: Game record verification
+
+on:
+  pull_request:
+    paths:
+      - 'public/game-record.js'
+      - 'public/index.html'
+      - 'public/privacy.html'
+      - 'public/service-worker.js'
+      - 'test/game-record.test.js'
+      - 'test/game-record-ui.test.js'
+      - 'test/game-record-browser-hook.test.js'
+      - '.github/workflows/game-record-verification.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Verify game record format and browser integration
+        run: |
+          node --test \
+            test/game-record.test.js \
+            test/game-record-ui.test.js \
+            test/game-record-browser-hook.test.js
+      - name: Verify adjacent public UI regressions
+        run: |
+          node --test \
+            test/engine.test.js \
+            test/locale.test.js \
+            test/diagnostics-ui.test.js \
+            test/ai-generation-release.test.js
