@@ -38,6 +38,12 @@
     return selected;
   }
 
+  function assertRecordHeader(record) {
+    if (!record || record.format !== FORMAT || record.version !== VERSION || !Array.isArray(record.moves)) {
+      throw new Error("Unsupported Bao game record format");
+    }
+  }
+
   function createRecord(initialState, metadata = {}) {
     return {
       format: FORMAT,
@@ -56,8 +62,12 @@
   }
 
   function appendMove(record, stateBefore, move) {
-    validateRecord(record, false);
+    assertRecordHeader(record);
     if (record.result !== null) throw new Error("Completed Bao record cannot be changed");
+    if (!stateBefore || !Number.isInteger(stateBefore.turn)
+      || (stateBefore.player !== 0 && stateBefore.player !== 1) || !stateBefore.phase) {
+      throw new Error("Invalid Bao move state");
+    }
     const entry = {
       ply: record.moves.length + 1,
       turn: stateBefore.turn,
@@ -71,7 +81,7 @@
   }
 
   function finalize(record, finalState) {
-    validateRecord(record, false);
+    assertRecordHeader(record);
     const finalPosition = positionFromState(finalState);
     if (finalPosition.winner !== 0 && finalPosition.winner !== 1) {
       throw new Error("Bao game is not complete");
@@ -87,9 +97,7 @@
   }
 
   function validateRecord(record, requireComplete = true) {
-    if (!record || record.format !== FORMAT || record.version !== VERSION || !Array.isArray(record.moves)) {
-      throw new Error("Unsupported Bao game record format");
-    }
+    assertRecordHeader(record);
     positionFromState(record.initialPosition);
     for (let i = 0; i < record.moves.length; i += 1) {
       const entry = record.moves[i];
@@ -167,7 +175,6 @@
     || typeof root.afterMove !== "function" || typeof root.resetGame !== "function") return;
 
   const Locale = root.BaoLocale;
-  const Engine = root.BaoEngine;
   const ReleaseConfig = root.BaoReleaseConfig;
   const t = (english, japanese) => Locale?.t ? Locale.t(english, japanese) : english;
   let currentRecord = null;
