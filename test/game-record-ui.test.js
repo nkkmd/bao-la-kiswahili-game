@@ -20,7 +20,7 @@ test("game record module loads after the main game runtime", () => {
 
 test("game record remains available offline", () => {
   assert.ok(cachedFiles.includes("./game-record.js"));
-  assert.match(serviceWorker, /bao-la-kiswahili-v42/);
+  assert.match(serviceWorker, /bao-la-kiswahili-v43/);
 });
 
 test("save action is created only for a completed game", () => {
