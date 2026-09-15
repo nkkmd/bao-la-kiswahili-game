@@ -34,7 +34,19 @@ const phaseNode = document.querySelector("#phase-name");
 const northHand = document.querySelector("#north-hand");
 const southHand = document.querySelector("#south-hand");
 
-const C = { night: "#071011", ink: "#172c2b", mid: "#34544a", soft: "#78998a", sky: "#a8c98b", pale: "#d3e4a5", gold: "#e2c36b", red: "#b95f5f" };
+const C = {
+  night: "#071011",
+  ink: "#172c2b",
+  mid: "#34544a",
+  soft: "#78998a",
+  sky: "#a8c98b",
+  pale: "#d3e4a5",
+  gold: "#e2c36b",
+  board: "#52684a",
+  boardLabel: "#edf3d9",
+  active: "#8bd7d2",
+  alert: "#ff9b8f",
+};
 const PIT_X = Array.from({ length: 8 }, (_, i) => 76 + i * 70);
 const ROW_Y = [106, 174, 256, 324];
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -533,16 +545,16 @@ function drawHeader() {
 function drawBoard() {
   rect(26, 76, 588, 278, C.mid);
   rect(32, 82, 576, 266, C.gold);
-  rect(38, 88, 564, 254, "#78905e");
+  rect(38, 88, 564, 254, C.board);
   rect(38, 211, 564, 8, C.ink);
 
 
   for (let player = 0; player < 2; player += 1) for (let row = 0; row < 2; row += 1) {
     for (let index = 0; index < 8; index += 1) drawPit(player, row, index);
   }
-  label("KICHWA", PIT_X[0], 373, Math.min(18, 11 * cueScale()), "center", C.ink);
-  label("NYUMBA", PIT_X[4], 373, Math.min(18, 11 * cueScale()), "center", C.ink);
-  label("KICHWA", PIT_X[7], 373, Math.min(18, 11 * cueScale()), "center", C.ink);
+  label("KICHWA", PIT_X[0], 373, Math.min(18, 11 * cueScale()), "center", C.boardLabel);
+  label("NYUMBA", PIT_X[4], 373, Math.min(18, 11 * cueScale()), "center", C.boardLabel);
+  label("KICHWA", PIT_X[7], 373, Math.min(18, 11 * cueScale()), "center", C.boardLabel);
 }
 
 function drawPit(player, row, index) {
@@ -552,10 +564,11 @@ function drawPit(player, row, index) {
     && moves.some((m) => m.row === row && m.index === index && player === state.player);
   const isSelected = selected && selected.player === player && selected.row === row && selected.index === index;
   const isActive = samePosition(animation?.current?.position, { player, row, index });
+  const isCaptureActive = isActive && animation?.current?.kind === "capture";
   ctx.beginPath(); ctx.arc(x, y, index === E.HOUSE && row === E.FRONT ? 29 : 25, 0, Math.PI * 2);
   ctx.fillStyle = isSelected ? C.pale : C.ink; ctx.fill();
   ctx.lineWidth = isActive ? 5 : isSelected ? 5 : isLegal ? 4 : 2;
-  ctx.strokeStyle = isActive ? C.red : isSelected ? C.pale : isLegal ? C.gold : C.soft;
+  ctx.strokeStyle = isCaptureActive ? C.alert : isActive ? C.active : isSelected ? C.pale : isLegal ? C.gold : C.soft;
   ctx.stroke();
   if (isActive) {
     const scale = cueScale();
@@ -568,7 +581,7 @@ function drawPit(player, row, index) {
     ctx.setLineDash([]);
   }
   if (row === E.FRONT && index === E.HOUSE) {
-    ctx.strokeStyle = displayState.houseOwned[player] ? C.pale : C.red; ctx.lineWidth = 2; ctx.strokeRect(x - 31, y - 31, 62, 62);
+    ctx.strokeStyle = displayState.houseOwned[player] ? C.pale : C.alert; ctx.lineWidth = 2; ctx.strokeRect(x - 31, y - 31, 62, 62);
   }
   label(String(count), x, y - 1, count > 99 ? Math.min(24, 19 * cueScale()) : Math.min(31, 23 * cueScale()), "center", isSelected ? C.ink : C.pale);
   const nameOffset = player === 0 ? -1 : 1;
@@ -578,7 +591,7 @@ function drawPit(player, row, index) {
     y + nameOffset * 26,
     Math.min(16, 11 * cueScale()),
     "center",
-    C.ink,
+    C.boardLabel,
   );
 }
 
