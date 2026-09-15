@@ -21,6 +21,11 @@ assert.match(html,
 assert.match(html,
   /href="https:\/\/bao-la-kiswahili\.cultivationdata\.net\/">bao-la-kiswahili\.cultivationdata\.net<\/a>/,
   "the footer links to the official public site");
+assert.match(html,
+  /<span class="app-version" aria-label="Application version" data-ja-aria-label="アプリバージョン">v0\.4\.0-dev<\/span>/,
+  "the footer exposes the current application version unobtrusively");
+assert.equal((html.match(/v0\.4\.0-dev/g) || []).length, 1,
+  "the application version has a single source in the public page");
 
 assert.match(html,
   /<title[^>]*>Bao la Kiswahili Online – East African Mancala Board Game<\/title>/,
