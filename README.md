@@ -25,6 +25,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - オフライン対応デプロイのための PWA ファイル
 - 日本語・英語で読める、10点の図版付きルール説明ページ
 - 捕獲、takata、連続種まき、nyumba、namua→mtaji、終局などを対局中に日英で説明し、対応する図解ルールへ移動できるルールガイド
+- 終局後に、初期局面・確定着手列・対局設定・勝敗・最終局面を`bao-game-record` v1のJSONとして保存できる棋譜機能
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
 - 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
@@ -71,7 +72,7 @@ public/
 
 Privacy Policy へのリンクとPWAのオフラインキャッシュは、Cloudflare Pages の clean URL に合わせて `./privacy` を使用します。リダイレクト済みの `privacy.html` レスポンスはキャッシュしません。
 
-図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
+図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
 
 ## テスト
 
@@ -100,6 +101,31 @@ node tools/build-rules-figures.js --check
 
 日英表示、図版、対局への導線、オフライン更新を含むブラウザー回帰は[図解ルールのCI](.github/workflows/illustrated-rules.yml)で管理します。
 
+棋譜保存の形式、実エンジンでの再生、確定着手だけの記録、終局前後のUI、PWAキャッシュ、Privacy Policyとの整合は次で確認できます。
+
+```sh
+node --test \
+  test/game-record.test.js \
+  test/game-record-browser-hook.test.js \
+  test/game-record-ui.test.js
+```
+
+この選定と隣接回帰は[棋譜保存の専用CI](.github/workflows/game-record-verification.yml)で管理します。
+
+## 棋譜保存
+
+終局した対局では、ゲーム画面に「棋譜を保存 / Save game record」を表示します。押した場合だけ、次の形式でJSONファイルを端末へ保存します。
+
+```text
+bao-game-record-YYYYMMDD-HHMMSS.json
+```
+
+対局中は棋譜をブラウザのメモリ上だけに保持し、localStorageやIndexedDBへ自動保存しません。ゲームサーバーや外部サービスへ棋譜を送信する機能もありません。
+
+保存するのは、初期局面、確定した着手列、対局設定、勝敗、最終局面です。sow/relayの中間イベントやAI探索ノードは保存しないため、棋譜記録はAI探索ループと分離されています。現行version `1`では、途中棋譜の保存、棋譜ファイルの画面読み込み、中断対局の自動復元は行いません。
+
+形式、保存field、AI改善用診断との違い、再生検証、計算資源上の境界は[`doc/GAME_RECORD.md`](doc/GAME_RECORD.md)を参照してください。
+
 ## AI ベンチマーク
 
 基準AIを直接使う固定深さベンチマークの例です。`tools/benchmark.js`は`public/ai.js`を読み込み、AI-GEN4の公開アダプター・論理ゲート型評価器を読み込まないため、このコマンドを現在の公開AIの棋力試験として扱いません。AI-GEN4の採用根拠は[公開AIの開発・改善](#公開aiの開発改善)を参照してください。
@@ -127,6 +153,8 @@ BAO_TACTICAL_DIAG=1 node test/tactical.test.js
 - `記録を保存`: `bao-ai-review-YYYYMMDD-HHMMSS.json`
 
 日時は利用者の端末のローカル日時をファイル名にだけ使用します。診断JSON本文には保存時刻を追加しません。「記録を保存」を実行しても、localStorage内の記録は削除されません。
+
+AI改善用診断は、1局全体を保存する棋譜とは別機能です。棋譜は`bao-game-record`、診断は`bao-ai-diagnostic`として分離し、探索統計を含む局面監査は従来どおり診断側で扱います。
 
 ### Phase 10A 保存推奨
 
@@ -159,6 +187,7 @@ node tools/diagnostic-to-fixture.js \
 | --- | --- |
 | `public/` | デプロイ用の静的ゲームファイル |
 | `public/main.js` | 対局進行、Canvas表示、入力、AI要求、対局中ルールガイド |
+| `public/game-record.js` | 対局中の確定着手記録、棋譜検証・再生、終局後のJSON保存 |
 | `public/rules.html` | 日英対応の図解ルール説明 |
 | `public/assets/rules/` | ルール図版と出典・ライセンス記録 |
 | `public/engine.js` | 盤面状態、合法手生成、着手適用 |
@@ -290,6 +319,7 @@ core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instr
 
 - [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md): 採用ルールの参照元、固定コミット、実装差分、更新方針
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
+- [`doc/GAME_RECORD.md`](doc/GAME_RECORD.md): 棋譜保存の形式、UI、計算資源上の境界、プライバシー、再生検証、現在の制限
 - [`doc/JOSEKI_RESEARCH.md`](doc/JOSEKI_RESEARCH.md): 定石研究の方法、全フェーズの実験結果、最終判断をまとめた統合記録
 - [`doc/JOSEKI_RESEARCH_PLAN.md`](doc/JOSEKI_RESEARCH_PLAN.md): 定石研究の研究課題、判定基準、完了条件、実施記録
 - [`doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md`](doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md): 全継続AI条件で固定開局系列を共有するペア追試計画
