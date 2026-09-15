@@ -109,7 +109,7 @@ Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHT
 
 図解ルールの日英表示・拡大・対局導線・オフライン更新は[図解ルールCI](../.github/workflows/illustrated-rules.yml)で確認する。`tools/build-rules-figures.js --check`はSVG図版と生成条件の再生成一致も検証する。
 
-棋譜保存は[棋譜専用CI](../.github/workflows/game-record-verification.yml)で、形式、実エンジンでのreplay、確定着手の記録、失敗着手時のrollback、終局前後の保存UI、localStorage非使用、Service Workerキャッシュ、Privacy Policy、隣接する主要回帰を確認する。2026年9月15日の専用ブランチでは自動検証を通過し、テスト用`public/`の実機確認でも問題なしとの利用者報告を受けている。`main`への統合と本番配信はこの時点では未実施である。
+棋譜保存は[棋譜専用CI](../.github/workflows/game-record-verification.yml)で、形式、実エンジンでのreplay、確定着手の記録、失敗着手時のrollback、終局前後の保存UI、localStorage非使用、Service Workerキャッシュ、Privacy Policy、隣接する主要回帰を確認する。2026年9月15日に専用ブランチで自動検証とテスト用`public/`の実機確認を完了し、利用者から問題なしとの報告を受けた。PR #142で`main`統合対象として最終確認し、本番配信は`main`統合とは別工程としてCloudflare Pagesで行う。
 
 `tools/benchmark.js`は基準AIを直接読み込むため、その結果をAI-GEN4の公開アダプターを通した試験とみなさない。過去の研究・検証テストには凍結commitを要求するものがあり、現行ツリーでの一括再実行を合格条件にはしない。
 
