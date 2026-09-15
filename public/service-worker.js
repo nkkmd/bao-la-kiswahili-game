@@ -1,4 +1,5 @@
 "use strict";
+// Refresh marker: app version footer v0.4.0-dev (2026-09-15).
 const CACHE = "bao-la-kiswahili-v43";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./rules", "./rules.css", "./rules.js",
