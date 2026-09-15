@@ -1,5 +1,5 @@
 "use strict";
-const CACHE = "bao-la-kiswahili-v43";
+const CACHE = "bao-la-kiswahili-v42";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./rules", "./rules.css", "./rules.js",
   ...["board-overview", "initial-setup", "sowing-before", "sowing-relay", "sowing-stop",
