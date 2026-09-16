@@ -8,7 +8,11 @@
 
 本機能は、コンピュータ対戦終了後に利用者が**その1局について明示的に同意した場合だけ**、完成棋譜をBao AIの評価・改善用途へ提供できるようにするものである。
 
-2026-09-16時点で、private R2、90日lifecycle、Turnstile、Workers Free上の収集Workerを実Cloudflare環境へ構築し、`cdn-ts.pages.dev` からのcontrolled real submission、スマートフォン実機送信、production custom domain経由のcontrolled submissionまで成功した。Workerの本番入口は `bao-data.cultivationdata.net` とし、Wrangler設定でもCustom Domainを正式なdeploy targetとして管理する。`workers.dev` とPreview URLは無効化し、server-side kill switch `COLLECTION_ENABLED=false` を維持した状態で本番前検証を完了した。
+2026-09-16時点で、private R2、90日lifecycle、Turnstile、Workers Free上の収集Workerを実Cloudflare環境へ構築し、`cdn-ts.pages.dev` からのcontrolled real submission、スマートフォン実機送信、production custom domain経由のcontrolled submissionまで成功した。Workerの本番入口は `bao-data.cultivationdata.net` とし、Wrangler設定でもCustom Domainを正式なdeploy targetとして管理する。`workers.dev` とPreview URLは無効化している。
+
+PR #144は`main`へ統合済みで、merge commitは`da54b03dd5d8eee345b4b1d08344cb326303aab8`である。その後、`main`の`public/`を本番サイトへ配信し、Cloudflare本番環境の`COLLECTION_ENABLED`を`true`へ切り替え、本番サイトからのproduction E2E送信とR2保存まで正常であることを確認した。本機能は**本番運用開始済み**である。
+
+リポジトリの`cloudflare/game-record-ingest/wrangler.jsonc`では`COLLECTION_ENABLED=false`をfail-closedな既定値として維持する。本番運用時の有効化状態はCloudflare側で明示的に管理し、再deployだけで意図せず収集開始しない構成とする。
 
 実Cloudflare環境で次を確認済みである。
 
@@ -21,13 +25,16 @@
 - malformed requestは `400 invalid_request` で拒否される
 - Workers Rate Limiting APIはbest-effortのburst緩和として扱い、hard accountingには使用しない
 - スマートフォン実機で通常対局、終局、棋譜保存、任意送信UI、Turnstile、実送信、R2保存が正常に動作する
-- `https://bao-data.cultivationdata.net/v1/game-records` へ本番Origin相当のsame-site POSTを送るとkill switchで503になる
-- 管理下テストOrigin `https://cdn-ts.pages.dev` のcross-site POSTも明示例外を通過してkill switchで503になる
+- `https://bao-data.cultivationdata.net/v1/game-records` へ本番Origin相当のsame-site POSTを送るとkill switchで503になることを本番前preflightで確認した
+- 管理下テストOrigin `https://cdn-ts.pages.dev` のcross-site POSTも明示例外を通過してkill switchで503になることを本番前preflightで確認した
 - 未許可Origin `https://example.com` はexact Origin allow-listで `403 origin_not_allowed` となる
 - Custom Domain経由の新規棋譜送信後も、R2保存数、日次quota、CPU / resource、Turnstileに異常がない
 - Wrangler 4.132.0による最終deployで `bao-data.cultivationdata.net (custom domain)` がdeploy targetとして表示され、Worker Version ID `be3409ed-e0e9-4d9b-938f-10aea360110c` が発行された
+- `main`統合後の本番サイト配信を完了した
+- Cloudflare本番環境で`COLLECTION_ENABLED=true`へ切り替えた
+- 本番サイト上のコンピュータ対戦からproduction E2E送信を行い、Turnstile、Custom Domain、Worker validation、R2保存、日次quota、Workers Metrics / Observabilityが正常であることを確認した
 
-本番前の機能・サーバー・privacy・duplicate・CPU・異常系・スマートフォン・Custom Domainの検証は完了した。`main`への統合および本番収集開始は、明示的な統合指示を受けた場合にのみ行う。
+本番移行後の運用イベントは[`GAME_RECORD_CONTRIBUTION_OPERATIONS.md`](GAME_RECORD_CONTRIBUTION_OPERATIONS.md)へ日付付きで記録する。
 
 ## 2. 目的
 
@@ -155,6 +162,19 @@ Turnstileはserver-side Siteverifyを行い、`success`、`action = game_record_
 - `routes` に `bao-data.cultivationdata.net` を `custom_domain:true` で明示
 - 最終Wrangler deployでCustom Domainがdeploy targetとして表示された
 
-### Stage E — main統合待ち
+### Stage E — main統合・本番配信
 
-本番前検証は完了している。最新CIと差分整合性を確認し、問題がなければ、利用者からの明示的な許可後にのみ`main`へ統合する。
+完了。
+
+- PR #144を`main`へ統合
+- merge commit `da54b03dd5d8eee345b4b1d08344cb326303aab8`
+- `main`の`public/`を本番サイトへ配信
+- Cloudflare本番環境で`COLLECTION_ENABLED=true`へ切り替え
+
+### Stage F — production E2E / 運用開始
+
+完了。
+
+本番公開サイト上でコンピュータ対戦を完了し、1局単位の明示同意による任意送信を実行した。Turnstile、Custom Domain API、Worker validation、R2保存、日次quota、Workers Metrics / Observabilityを確認し、正常であった。
+
+この確認をもって、本機能は2026-09-16に本番運用開始済みとする。以後の停止・再開、endpoint、quota、retention、validation、privacy、障害等の重要な運用変更は[`GAME_RECORD_CONTRIBUTION_OPERATIONS.md`](GAME_RECORD_CONTRIBUTION_OPERATIONS.md)へ追記する。
