@@ -20,6 +20,7 @@ test("Worker configuration uses private R2 binding and conservative application 
     binding: "GAME_RECORDS",
     bucket_name: "bao-game-record-contributions",
   });
+  assert.deepEqual(wrangler.limits, { cpu_ms: 10, subrequests: 10 });
   assert.equal(wrangler.vars.COLLECTION_ENABLED, "false");
   assert.equal(wrangler.vars.MAX_REQUEST_BYTES, "65536");
   assert.equal(wrangler.vars.MAX_RECORD_BYTES, "49152");
