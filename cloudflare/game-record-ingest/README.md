@@ -54,9 +54,11 @@ private R2
 - 同一 Cloudflare location の正常受理安全弁: 6 records / 60 s
 - **全世界共通の日次受理上限: 既定 500 records / UTC day**
 - コード上の日次上限の最大値: 1,000 records / UTC day
-- Worker CPU time: 10 ms
-- Worker subrequests: 10
+- Worker CPU time: Free plan側の既定上限 10 ms/request に従う
+- Worker subrequests: Free plan側の既定上限に従う。`wrangler.jsonc` では `limits` を明示しない
 - R2 raw record retention: 90日を必須運用条件とする
+
+Workers Free では Wrangler の `limits.cpu_ms` を明示設定できないため、`wrangler.jsonc` に `limits` block は置かない。CPU上限はCloudflare Free plan側が10 ms/requestとして強制する。実Worker試験で長い棋譜がCPU上限へ近づく場合は、`MAX_PLIES` を引き下げて処理量を抑える。
 
 Workers Rate Limiting API は Cloudflare location 単位かつ eventually consistent であり、厳密な全世界共通カウンターではない。このため課金防止上限には使用しない。
 
