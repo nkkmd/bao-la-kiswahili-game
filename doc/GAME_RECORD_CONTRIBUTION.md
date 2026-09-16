@@ -8,7 +8,7 @@
 
 本機能は、コンピュータ対戦終了後に利用者が**その1局について明示的に同意した場合だけ**、完成棋譜をBao AIの評価・改善用途へ提供できるようにするものである。
 
-2026-09-16時点ではコードと自動検証を専用ブランチで整備中であり、Cloudflare Worker・R2・Turnstileの実リソースはまだ本番接続しない。`public/game-record-contribution-config.js` は `enabled: false` を既定とし、必要なCloudflare側設定と実送信試験が完了するまでは公開画面に送信操作を表示しない。
+2026-09-16時点ではコードと自動検証を専用ブランチで整備中であり、Cloudflare Worker・R2・Turnstileの実リソースはまだ本番接続しない。`public/game-record-contribution-config.js` の `enabled: false` に加え、Worker側も `COLLECTION_ENABLED=false` を既定とする二重のfail-closed構成とし、必要なCloudflare側設定と実送信試験が完了するまでは受理しない。
 
 `main`への統合および本番での収集開始は、Cloudflare側の安全設定、テスト環境での送受信、実機確認を完了した後に別途判断する。
 
@@ -53,7 +53,7 @@ AI改善のため棋譜を送信
 
 ## 4. 送信内容
 
-R2に保存するbodyは、検証済みの既存`bao-game-record` v1 JSONそのものだけとする。
+R2に保存するrecord bodyは、検証済みの既存`bao-game-record` v1 JSONだけとする。保存前にobject key順を正規化するが、意味上のfieldは変更しない。
 
 含まれる主要情報:
 
@@ -80,7 +80,7 @@ R2に保存するbodyは、検証済みの既存`bao-game-record` v1 JSONその�
 - 送信元IPアドレス
 - Turnstile token
 
-送信元IPアドレスは短時間のabuse防止rate-limit keyとしてWorker実行中に利用するが、R2 object body・object key・custom metadataへ書き込まない。
+送信元IPアドレスは短時間のabuse防止rate-limit keyとTurnstile Siteverifyの`remoteip`としてWorker実行中に利用するが、R2 record object body・object key・custom metadataへ書き込まない。
 
 ## 5. システム構成
 
@@ -98,20 +98,25 @@ POST /v1/game-records
         |
         v
 Cloudflare Worker
+  - server-side collection kill switch
   - origin / method / content-type
   - request size
-  - rate limit
+  - per-client / location abuse limits
   - Turnstile server validation
   - strict schema allowlist
   - rules/version check
   - 64-kete invariant
+  - standard initial-position check
+  - canonical move-variant check
   - engine replay
   - final-position/result match
   - SHA-256 deduplication
+  - R2 conditional-write daily quota
         |
         v
 private R2 Standard bucket
-records/v1/<sha256>.json
+  records/v1/<sha256>.json
+  control/daily/YYYY-MM-DD.json
 ```
 
 Worker実装は`cloudflare/game-record-ingest/`に独立配置し、公開ゲームのAI探索・ルール処理・画面処理へ収集処理を混在させない。
@@ -130,7 +135,7 @@ Workerコード、API path、R2 binding名、bucket名、Turnstile site keyは�
 
 ## 7. 無料枠を意識したapplication-side上限
 
-2026-09-16時点のCloudflare Free / R2 Standard Freeを前提として、サービス側の上限より十分小さい値をWorkerに設定する。
+2026-09-16時点のCloudflare公開仕様では、Workers Freeは100,000 requests/day・10 ms CPU/request、R2 Standard Freeは月あたり10 GB-month、Class A 100万回、Class B 1,000万回が無料枠である。これに十分な余裕を持たせる。
 
 | 項目 | 初期上限 |
 | --- | ---: |
@@ -138,12 +143,20 @@ Workerコード、API path、R2 binding名、bucket名、Turnstile site keyは�
 | 保存棋譜JSON | 48 KiB |
 | 棋譜長 | 384 ply |
 | 同一接続元のWorker内rate limit | 3 requests / 60 s |
-| 全体の正常受理 | 1 record / 60 s |
-| raw R2 object retention | 90日を推奨 |
+| 同一Cloudflare locationの受理安全弁 | 6 records / 60 s |
+| 全世界共通の正常受理 | **500 records / UTC day** |
+| コードが許す日次上限の最大値 | 1,000 records / UTC day |
+| raw R2 object retention | **90日を本番有効化条件とする** |
 
-理論上、正常受理が1分に1件で30日連続した場合は約43,200 writes/月となる。各objectが最大48 KiBの場合、90日分のpayload上限概算は約6.37 GBである。通常の棋譜は最大値より小さいことが期待されるが、この計算だけを課金防止保証には使わない。
+Worker Rate Limiting APIはCloudflare location単位・eventually consistentであり、厳密な全世界共通カウンターではない。したがって課金防止の主たる上限には使用しない。
 
-Worker内Rate Limiting APIはCloudflare拠点単位・eventually consistentな安全弁であり、厳密な請求カウンターではない。またWorkerに到達した不正request自体もWorkers request quotaを消費する。したがって本番custom domainでは、利用可能なCloudflare zone-level WAF rate limiting ruleを`/v1/game-records`へ追加し、Worker実行前にも大量通信を抑える。
+全世界共通の日次受理上限は、private R2 bucket内の`control/daily/YYYY-MM-DD.json`に集計値だけを置き、R2 conditional `PUT`のETag / `If-None-Match`を利用して更新する。競合時は有限回だけ再試行し、quota stateを安全に確定できなければfail closedで新規棋譜を保存しない。
+
+既定500件/日、48 KiB/件、90日保持をすべて上限まで使ってもraw record payloadは概算約2.2 GBである。新規1件につきrecord writeとquota updateで最大2回のClass A operationを使うため、30日で概ね3万Class A operationsとなり、R2 Standard Freeの100万回/月より十分小さい。
+
+Workers Freeの100,000 requests/dayがすべてOrigin・Turnstile・schemaを通過する極端な場合でも、record duplicate `HEAD`とquota `GET`を各1回行う程度なので、30日換算で概ね600万Class B operationsとなり、R2 Standard Freeの1,000万回/月を下回る。通常はそれ以前の拒否でさらに少なくなる。
+
+この計算は本収集Worker/R2 bucketだけを対象とする。同一Cloudflare accountで他のWorkers/R2利用がある場合は合算して監視する。本番custom domainでは利用可能なzone-level WAF rate limitingも`/v1/game-records`へ追加し、Worker実行前にも大量通信を抑える。
 
 無料枠の仕様が将来変更される可能性があるため、本番開始前と定期運用時にCloudflareの最新limits/pricingを再確認する。
 
@@ -167,13 +180,13 @@ consent
 
 `bao-game-record` v1で定義したfield以外を拒否する。特に任意の`comment`、端末情報、識別子等を追加して送信できないようallowlist方式にする。
 
-computer対戦のみを受け付け、ルールbaselineを照合する。局面配列、値範囲、石総数64、着手field、結果等を検証する。
+computer対戦のみを受け付け、ルールbaselineを照合する。局面配列、値範囲、石総数64、着手field、結果等を検証する。さらに、公開ゲームの`engine.initialState()`と完全一致する標準初期局面から始まる棋譜だけを受理し、任意局面から生成した「合法そうに見える棋譜」を除外する。
 
 ### 8.3 replay
 
-公開ゲームと同じ`public/engine.js`をWorker bundleから使用し、初期局面から全確定着手を`applyMoveForSearch`で再生する。
+公開ゲームと同じ`public/engine.js`をWorker bundleから使用する。
 
-各plyでは、棋譜の`turn`・`player`・`phase`が再生局面と一致することを確認し、違法手を拒否する。最後に再生結果と`finalPosition`を完全照合する。
+各plyでは、棋譜の`turn`・`player`・`phase`が再生局面と一致することを確認する。さらに`moveVariantsForSearch`が返すcanonical move variantと、`type / phase / row / index / direction / side / houseChoice / houseTwo`の存在・値を含め完全一致する手だけを許可する。その後`applyMoveForSearch`で着手を進める。最後に再生結果と`finalPosition`を完全照合する。
 
 Workers FreeのCPU上限内で十分に処理できるかは実Workerで計測する。長大な合法棋譜でCPU上限へ近づく場合は、無料枠を守ることを優先して`MAX_PLIES`を引き下げる。replay検証を外して受理件数を増やすことは初期方針としない。
 
@@ -187,19 +200,29 @@ Turnstileはbot・自動大量投稿に対する追加防御として使用す�
 - `action = game_record_contribution`
 - 許可hostname
 
-同一接続元rate limitはabuse緩和用であり、利用者識別には使わない。携帯回線やproxyではIP共有があり得るため、この制限は過度に厳しくしない。一方、正常検証後のglobal accept limiterでR2 write量にも上限を設ける。
+同一接続元rate limitはabuse緩和用であり、利用者識別には使わない。携帯回線やproxyではIP共有があり得るため、この制限は過度に厳しくしない。
 
-## 10. 重複排除とR2
+正常検証後のlocation-scoped limiterもburst緩和用であり、課金上限とはみなさない。課金防止上限はR2 conditional writeによる日次quotaで行う。
 
-保存直前の棋譜JSONからSHA-256を計算し、次をobject keyとする。
+## 10. 重複排除・日次quota・R2
+
+保存前に棋譜objectのkey順を再帰的に正規化し、そのJSONからSHA-256を計算する。次をrecord object keyとする。
 
 ```text
 records/v1/<sha256>.json
 ```
 
-同一keyが存在する場合は新規writeせず、利用者には受信済みとして成功応答を返す。
+同一keyが存在する場合は新規record writeも日次quota消費も行わず、利用者には受信済みとして成功応答を返す。
 
-R2 custom metadataは分析入口として必要な最小限に限定する。
+日次quotaは次のcontrol objectを使う。
+
+```text
+control/daily/YYYY-MM-DD.json
+```
+
+内容は`day`と`accepted`だけであり、IP、棋譜hash、利用者識別情報は持たない。条件付き書込みの競合が解決できない場合は安全側に倒して受理を停止する。
+
+R2 record custom metadataは分析入口として必要な最小限に限定する。
 
 - format / version
 - AI generation
@@ -208,7 +231,7 @@ R2 custom metadataは分析入口として必要な最小限に限定する。
 - plies
 - validation level
 
-raw recordには90日expiration lifecycleを設定する方針とする。本番開始前にR2 DashboardまたはWranglerで実際にruleが設定されたことを確認する。
+bucket全体へ90日expiration lifecycleを設定し、raw recordと古いquota control objectを自動削除する。本番収集を有効化する前にR2 DashboardまたはWranglerでruleが実際に設定されたことを確認する。
 
 ## 11. 導入手順
 
@@ -217,8 +240,10 @@ raw recordには90日expiration lifecycleを設定する方針とする。本番
 - 専用branch
 - browser contribution client
 - fail-closed public config
+- fail-closed Worker kill switch
 - Worker
-- strict validation / replay / dedup / rate limit
+- strict validation / standard initial state / exact move / replay / dedup
+- R2 conditional-write daily quota
 - Privacy Policy
 - 自動テスト
 
@@ -227,21 +252,23 @@ raw recordには90日expiration lifecycleを設定する方針とする。本番
 ### Stage B — Cloudflare resource provisioning
 
 - private R2 Standard bucket作成
-- 90日lifecycle設定
+- bucket全体へ90日lifecycle設定
 - Turnstile widget作成
 - Worker secret登録
-- Worker deploy
+- Worker deploy（`COLLECTION_ENABLED=false`のまま）
 - zone-level WAF rate limit設定
 
 ### Stage C — test site接続
 
+- Worker側`COLLECTION_ENABLED=true`
 - public configへtest endpointとTurnstile site keyを設定
-- test siteだけ収集を有効化
+- test siteだけclient収集を有効化
 - 正常送信
 - duplicate
 - malformed request
-- rate limit
-- R2 object内容
+- per-client / location rate limit
+- 日次quota
+- R2 record/control object内容
 - 90日lifecycle
 - Worker CPU
 - offline / submission failure isolation
@@ -258,6 +285,6 @@ raw recordには90日expiration lifecycleを設定する方針とする。本番
 
 ## 12. rollback
 
-収集機能に問題があった場合、ゲーム本体をrollbackせずとも`public/game-record-contribution-config.js`の`enabled`をfalseにすることでUIから送信操作を停止できる。
+収集機能に問題があった場合、まずWorker側`COLLECTION_ENABLED=false`で受理を停止する。これにより古いclientが残っていてもserver側でfail closedにできる。
 
-Cloudflare側でもWorker route/custom domainまたはR2 bindingを停止できる。収集停止時もローカル棋譜保存、AI対戦、2人対戦、AI改善用診断は独立して維持する。
+加えて`public/game-record-contribution-config.js`の`enabled=false`でUIから送信操作を停止できる。Cloudflare側でもWorker route/custom domainを停止できる。収集停止時もローカル棋譜保存、AI対戦、2人対戦、AI改善用診断は独立して維持する。
