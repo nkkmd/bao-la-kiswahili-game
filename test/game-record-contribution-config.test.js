@@ -8,9 +8,11 @@ const clientConfigSource = fs.readFileSync("public/game-record-contribution-conf
 const workerSource = fs.readFileSync("cloudflare/game-record-ingest/src/index.mjs", "utf8");
 const wrangler = JSON.parse(fs.readFileSync("cloudflare/game-record-ingest/wrangler.jsonc", "utf8"));
 
-test("public contribution config fails closed until Cloudflare is provisioned", () => {
-  assert.match(clientConfigSource, /enabled:\s*false/);
-  assert.match(clientConfigSource, /turnstileSiteKey:\s*""/);
+test("public contribution config is enabled only for the controlled test endpoint", () => {
+  assert.match(clientConfigSource, /enabled:\s*true/);
+  assert.match(clientConfigSource,
+    /endpoint:\s*"https:\/\/bao-game-record-ingest\.oruorane\.workers\.dev\/v1\/game-records"/);
+  assert.match(clientConfigSource, /turnstileSiteKey:\s*"0x4AAAAAAE4W_jsKIMA65M99"/);
   assert.match(clientConfigSource, /maxRecordBytes:\s*49152/);
 });
 
@@ -25,6 +27,9 @@ test("Worker configuration uses private R2 binding and Free-plan-compatible appl
   // so deployment remains Free-plan compatible; application-specific limits
   // below still bound request size, game length, rate, and daily acceptance.
   assert.equal(Object.hasOwn(wrangler, "limits"), false);
+  // Even while the test client is configured, repository-controlled Worker
+  // deployment remains fail-closed. COLLECTION_ENABLED is changed only for a
+  // deliberate test window in Cloudflare and returns to false afterward.
   assert.equal(wrangler.vars.COLLECTION_ENABLED, "false");
   assert.equal(wrangler.vars.MAX_REQUEST_BYTES, "65536");
   assert.equal(wrangler.vars.MAX_RECORD_BYTES, "49152");
