@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { fetchMetadataAllowed, fetchWithMetadata } from "../cloudflare/game-record-ingest/src/entry.mjs";
+
+const wrangler = JSON.parse(fs.readFileSync("cloudflare/game-record-ingest/wrangler.jsonc", "utf8"));
 
 function env() {
   return {
@@ -26,6 +29,11 @@ function post(origin, metadata = {}) {
 }
 
 const normalFetchMetadata = { site: "same-site", mode: "cors", dest: "empty" };
+
+test("Wrangler deploys the Fetch Metadata gate and only names the controlled cross-site test Origin", () => {
+  assert.equal(wrangler.main, "src/entry.mjs");
+  assert.equal(wrangler.vars.FETCH_METADATA_CROSS_SITE_ORIGINS, "https://cdn-ts.pages.dev");
+});
 
 test("production same-site fetch metadata is accepted by the outer gate", () => {
   const request = post("https://bao-la-kiswahili.cultivationdata.net", normalFetchMetadata);
