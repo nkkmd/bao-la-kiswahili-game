@@ -4,6 +4,10 @@
   "main": "src/index.mjs",
   "compatibility_date": "2026-09-16",
   "workers_dev": true,
+  "limits": {
+    "cpu_ms": 10,
+    "subrequests": 10
+  },
   "vars": {
     "COLLECTION_ENABLED": "false",
     "ALLOWED_ORIGINS": "https://bao-la-kiswahili.cultivationdata.net,https://cdn-ts.pages.dev",
