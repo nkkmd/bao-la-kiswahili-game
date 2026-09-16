@@ -20,12 +20,12 @@ test("game record module loads after the main game runtime", () => {
   assert.ok(html.indexOf("./main.js") < html.indexOf("./game-record.js"));
 });
 
-test("contribution client loads only after the game record and controlled test config", () => {
+test("contribution client loads only after the game record and controlled config", () => {
   assert.ok(html.indexOf("./game-record.js") < html.indexOf("./game-record-contribution-config.js"));
   assert.ok(html.indexOf("./game-record-contribution-config.js") < html.indexOf("./game-record-contribution.js"));
   assert.match(contributionConfig, /enabled:\s*true/);
   assert.match(contributionConfig,
-    /endpoint:\s*"https:\/\/bao-game-record-ingest\.oruorane\.workers\.dev\/v1\/game-records"/);
+    /endpoint:\s*"https:\/\/bao-data\.cultivationdata\.net\/v1\/game-records"/);
   assert.match(contributionConfig, /turnstileSiteKey:\s*"0x4AAAAAAE4W_jsKIMA65M99"/);
 });
 
@@ -33,7 +33,7 @@ test("game record and contribution client remain available offline", () => {
   assert.ok(cachedFiles.includes("./game-record.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution-config.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution.js"));
-  assert.match(serviceWorker, /bao-la-kiswahili-v45/);
+  assert.match(serviceWorker, /bao-la-kiswahili-v46/);
 });
 
 test("save action is created only for a completed game", () => {
