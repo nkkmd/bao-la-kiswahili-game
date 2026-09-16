@@ -39,6 +39,6 @@ assert.match(main, /window\.BaoLocale/);
 assert.equal(manifest.lang, "en");
 assert.match(serviceWorker, /\.\/locale\.js/);
 assert.match(serviceWorker, /"\.\/privacy"/);
-assert.match(serviceWorker, /bao-la-kiswahili-v44/);
+assert.match(serviceWorker, /bao-la-kiswahili-v45/);
 
 console.log("locale.test.js: ok");
