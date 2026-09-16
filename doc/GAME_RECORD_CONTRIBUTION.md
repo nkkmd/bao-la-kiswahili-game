@@ -8,9 +8,16 @@
 
 本機能は、コンピュータ対戦終了後に利用者が**その1局について明示的に同意した場合だけ**、完成棋譜をBao AIの評価・改善用途へ提供できるようにするものである。
 
-2026-09-16時点ではコードと自動検証を専用ブランチで整備中であり、Cloudflare Worker・R2・Turnstileの実リソースはまだ本番接続しない。`public/game-record-contribution-config.js` の `enabled: false` に加え、Worker側も `COLLECTION_ENABLED=false` を既定とする二重のfail-closed構成とし、必要なCloudflare側設定と実送信試験が完了するまでは受理しない。
+2026-09-16時点で、private R2、90日lifecycle、Turnstile、Workers Free上の収集Workerを実Cloudflare環境へ構築し、`cdn-ts.pages.dev` から最初の1局のcontrolled real submissionまで成功した。
 
-`main`への統合および本番での収集開始は、Cloudflare側の安全設定、テスト環境での送受信、実機確認を完了した後に別途判断する。
+実送信後に次を確認した。
+
+- `COLLECTION_ENABLED=false` 復帰後、APIが再び `503 collection_disabled` でfail closedになること
+- `control/daily/2026-09-16.json` が `accepted: 1` であること
+- `records/v1/` に新規record objectが1件だけ保存されたこと
+- 保存recordにTurnstile token、consent envelope、送信元IP、User-Agent、fingerprint、氏名、メール等の不要情報が含まれないこと
+
+`main`への統合および本番収集開始はまだ行わない。duplicate、CPU、rate-limit、quota等の実Cloudflare確認とスマートフォン実機確認を完了した後に別途判断する。
 
 ## 2. 目的
 
@@ -148,7 +155,7 @@ Workerコード、API path、R2 binding名、bucket名、Turnstile site keyは�
 | コードが許す日次上限の最大値 | 1,000 records / UTC day |
 | raw R2 object retention | **90日を本番有効化条件とする** |
 
-Worker Rate Limiting APIはCloudflare location単位・eventually consistentであり、厳密な全世界共通カウンターではない。したがって課金防止の主たる上限には使用しない。
+Workers Rate Limiting APIはCloudflare location単位・eventually consistentであり、厳密な全世界共通カウンターではない。したがって課金防止の主たる上限には使用しない。
 
 全世界共通の日次受理上限は、private R2 bucket内の`control/daily/YYYY-MM-DD.json`に集計値だけを置き、R2 conditional `PUT`のETag / `If-None-Match`を利用して更新する。競合時は有限回だけ再試行し、quota stateを安全に確定できなければfail closedで新規棋譜を保存しない。
 
@@ -242,49 +249,40 @@ bucket全体へ90日expiration lifecycleを設定し、raw recordと古いquota 
 - fail-closed public config
 - fail-closed Worker kill switch
 - Worker
-- strict validation / standard initial state / exact move / replay / dedup
-- R2 conditional-write daily quota
-- Privacy Policy
+- private R2 binding
+- Turnstile server-side validation
+- strict schema / replay / dedupe / quota
 - 自動テスト
+- Draft PR
 
-この段階では外部送信を有効化しない。
+### Stage B — Cloudflare実環境のfail-closed確認
 
-### Stage B — Cloudflare resource provisioning
+2026-09-16に次を完了した。
 
 - private R2 Standard bucket作成
-- bucket全体へ90日lifecycle設定
-- Turnstile widget作成
-- Worker secret登録
-- Worker deploy（`COLLECTION_ENABLED=false`のまま）
-- zone-level WAF rate limit設定
+- bucket全体へ90日expiration lifecycle設定
+- Turnstile Managed widget作成
+- Worker secret `TURNSTILE_SECRET_KEY` 登録
+- Workers FreeへWorker deploy
+- Fetch Metadata `cross-site` 拒否を実環境確認
+- `COLLECTION_ENABLED=false` による `503 collection_disabled` を実環境確認
 
-### Stage C — test site接続
+### Stage C — controlled test
 
-- Worker側`COLLECTION_ENABLED=true`
-- public configへtest endpointとTurnstile site keyを設定
-- test siteだけclient収集を有効化
-- 正常送信
-- duplicate
-- malformed request
-- per-client / location rate limit
-- 日次quota
-- R2 record/control object内容
-- 90日lifecycle
-- Worker CPU
-- offline / submission failure isolation
+2026-09-16に最初の1局を `cdn-ts.pages.dev` から送信し、次を確認した。
 
-を確認する。
+- contribution UI / explicit consent / Turnstileが正常動作
+- Workerで正常受理
+- R2 record 1件保存
+- daily quota `accepted: 1`
+- 保存recordへのIP・Turnstile token等の混入なし
+- test終了後にkill switchを再びOFF
 
-### Stage D — 実機確認
+残る主な確認:
 
-スマートフォン実機で、対局→終局→同意dialog→Turnstile→送信→成功表示まで確認する。同時に「棋譜を保存」や新規対局が従来どおり動くことを確認する。
+- duplicate送信でrecord数とquotaが増えないこと
+- 実Worker CPUの余裕
+- rate limit / malformed / quota周辺の実環境spot check
+- スマートフォン実機確認
 
-### Stage E — main / production
-
-実機確認後にのみmain統合候補とする。本番endpoint・hostname・Privacy Policy・Cloudflare resource状態を最終確認して配信し、本番から1件の検証送信を行う。
-
-## 12. rollback
-
-収集機能に問題があった場合、まずWorker側`COLLECTION_ENABLED=false`で受理を停止する。これにより古いclientが残っていてもserver側でfail closedにできる。
-
-加えて`public/game-record-contribution-config.js`の`enabled=false`でUIから送信操作を停止できる。Cloudflare側でもWorker route/custom domainを停止できる。収集停止時もローカル棋譜保存、AI対戦、2人対戦、AI改善用診断は独立して維持する。
+これらを完了するまでは、PR #144をDraftのまま維持し、`main`へ統合しない。
