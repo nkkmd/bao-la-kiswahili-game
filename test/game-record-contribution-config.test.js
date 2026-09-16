@@ -14,13 +14,17 @@ test("public contribution config fails closed until Cloudflare is provisioned", 
   assert.match(clientConfigSource, /maxRecordBytes:\s*49152/);
 });
 
-test("Worker configuration uses private R2 binding and conservative application limits", () => {
+test("Worker configuration uses private R2 binding and Free-plan-compatible application limits", () => {
   assert.equal(wrangler.r2_buckets.length, 1);
   assert.deepEqual(wrangler.r2_buckets[0], {
     binding: "GAME_RECORDS",
     bucket_name: "bao-game-record-contributions",
   });
-  assert.deepEqual(wrangler.limits, { cpu_ms: 10, subrequests: 10 });
+  // Cloudflare Workers Free enforces its own 10 ms CPU ceiling and does not
+  // allow an explicit cpu_ms limit in Wrangler. Keep the limits block absent
+  // so deployment remains Free-plan compatible; application-specific limits
+  // below still bound request size, game length, rate, and daily acceptance.
+  assert.equal(Object.hasOwn(wrangler, "limits"), false);
   assert.equal(wrangler.vars.COLLECTION_ENABLED, "false");
   assert.equal(wrangler.vars.MAX_REQUEST_BYTES, "65536");
   assert.equal(wrangler.vars.MAX_RECORD_BYTES, "49152");
