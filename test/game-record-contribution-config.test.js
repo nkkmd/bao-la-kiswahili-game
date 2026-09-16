@@ -1,0 +1,57 @@
+"use strict";
+
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+
+const clientConfigSource = fs.readFileSync("public/game-record-contribution-config.js", "utf8");
+const workerSource = fs.readFileSync("cloudflare/game-record-ingest/src/index.mjs", "utf8");
+const wrangler = JSON.parse(fs.readFileSync("cloudflare/game-record-ingest/wrangler.jsonc", "utf8"));
+
+test("public contribution config uses the controlled custom-domain endpoint", () => {
+  assert.match(clientConfigSource, /enabled:\s*true/);
+  assert.match(clientConfigSource,
+    /endpoint:\s*"https:\/\/bao-data\.cultivationdata\.net\/v1\/game-records"/);
+  assert.match(clientConfigSource, /turnstileSiteKey:\s*"0x4AAAAAAE4W_jsKIMA65M99"/);
+  assert.match(clientConfigSource, /maxRecordBytes:\s*49152/);
+});
+
+test("Worker configuration uses private R2 binding and production custom-domain routing", () => {
+  assert.equal(wrangler.workers_dev, false);
+  assert.equal(wrangler.preview_urls, false);
+  assert.deepEqual(wrangler.routes, [
+    {
+      pattern: "bao-data.cultivationdata.net",
+      custom_domain: true,
+    },
+  ]);
+  assert.equal(wrangler.r2_buckets.length, 1);
+  assert.deepEqual(wrangler.r2_buckets[0], {
+    binding: "GAME_RECORDS",
+    bucket_name: "bao-game-record-contributions",
+  });
+  assert.equal(Object.hasOwn(wrangler, "limits"), false);
+  assert.equal(wrangler.vars.COLLECTION_ENABLED, "false");
+  assert.equal(wrangler.vars.MAX_REQUEST_BYTES, "65536");
+  assert.equal(wrangler.vars.MAX_RECORD_BYTES, "49152");
+  assert.equal(wrangler.vars.MAX_PLIES, "384");
+  assert.equal(wrangler.vars.MAX_ACCEPTED_PER_UTC_DAY, "500");
+  assert.equal(wrangler.ratelimits.length, 2);
+  assert.deepEqual(wrangler.ratelimits.map((entry) => [entry.name, entry.simple.limit, entry.simple.period]), [
+    ["PER_CLIENT_RATE_LIMITER", 3, 60],
+    ["LOCATION_ACCEPT_RATE_LIMITER", 6, 60],
+  ]);
+});
+
+test("Worker source contains no committed secret and never persists connection identifiers", () => {
+  assert.doesNotMatch(workerSource, /TURNSTILE_SECRET_KEY\s*[:=]\s*["'][^"']+["']/);
+  assert.match(workerSource, /env\.TURNSTILE_SECRET_KEY/);
+  assert.match(workerSource, /CF-Connecting-IP/);
+  assert.doesNotMatch(workerSource, /customMetadata[\s\S]{0,800}(?:ipAddress|clientIp|sourceIp|turnstileToken)/i);
+  assert.match(workerSource, /const RECORD_PREFIX = "records\/v1\/"/);
+  assert.match(workerSource, /const QUOTA_PREFIX = "control\/daily\/"/);
+  assert.match(workerSource, /DEFAULT_MAX_ACCEPTED_PER_UTC_DAY = 500/);
+  assert.match(workerSource, /HARD_MAX_ACCEPTED_PER_UTC_DAY = 1000/);
+  assert.match(workerSource, /Non-standard initial position/);
+  assert.match(workerSource, /Non-canonical or illegal move in record/);
+});

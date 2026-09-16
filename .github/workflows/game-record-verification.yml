@@ -4,12 +4,19 @@ on:
   pull_request:
     paths:
       - 'public/game-record.js'
+      - 'public/game-record-contribution-config.js'
+      - 'public/game-record-contribution.js'
       - 'public/index.html'
       - 'public/privacy.html'
       - 'public/service-worker.js'
+      - 'cloudflare/game-record-ingest/**'
+      - 'doc/GAME_RECORD_CONTRIBUTION.md'
       - 'test/game-record.test.js'
       - 'test/game-record-ui.test.js'
       - 'test/game-record-browser-hook.test.js'
+      - 'test/game-record-contribution-config.test.js'
+      - 'test/game-record-contribution-worker.test.mjs'
+      - 'test/game-record-contribution-fetch-metadata.test.mjs'
       - '.github/workflows/game-record-verification.yml'
   workflow_dispatch:
 
@@ -30,7 +37,10 @@ jobs:
           node --test \
             test/game-record.test.js \
             test/game-record-ui.test.js \
-            test/game-record-browser-hook.test.js
+            test/game-record-browser-hook.test.js \
+            test/game-record-contribution-config.test.js \
+            test/game-record-contribution-worker.test.mjs \
+            test/game-record-contribution-fetch-metadata.test.mjs
       - name: Verify adjacent public UI regressions
         run: |
           node --test \
@@ -41,7 +51,7 @@ jobs:
       - name: Package public directory for device testing
         uses: actions/upload-artifact@v4
         with:
-          name: game-record-public
+          name: game-record-contribution-public
           path: public/
           if-no-files-found: error
           retention-days: 7

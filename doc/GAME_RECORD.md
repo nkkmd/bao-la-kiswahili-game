@@ -1,6 +1,6 @@
 # 棋譜保存機能
 
-更新日: 2026-09-15  
+更新日: 2026-09-16  
 対象形式: `bao-game-record` version `1`
 
 ## 1. 目的と現在状態
@@ -9,7 +9,7 @@ Bao la Kiswahili の公開ゲームでは、終局した対局について、利
 
 この機能は、AI改善用診断とは別の利用者向け機能である。AIの思考内容を調べるための診断ではなく、**1局の初期局面、確定した着手列、対局設定、勝敗、最終局面を保存し、後から機械的に再現できる形で残すこと**を目的とする。
 
-2026年9月15日に専用ブランチ`feat/game-record-save-20260915`で実装・自動検証・テスト用`public/`の実機確認まで完了し、利用者から問題なしとの確認を受けた。PR #142で`main`統合対象として最終確認し、本番配信は`main`統合とは別工程としてCloudflare Pagesで行う。
+ローカル棋譜保存機能は2026年9月15日にPR #142で`main`へ統合済みである。2026年9月16日には、この同じ`bao-game-record` v1を対象として、完成したコンピュータ対戦の棋譜を利用者が1局ごとに明示同意した場合だけAI改善用に送信できる**任意の棋譜提供機能**を別経路として追加した。ローカル保存と任意提供は独立した操作であり、ローカル保存を行ったことが送信同意を意味することはない。任意提供の設計・検証・サーバー側境界は[`GAME_RECORD_CONTRIBUTION.md`](GAME_RECORD_CONTRIBUTION.md)を正本とする。
 
 ## 2. 利用者から見た動作
 
@@ -30,6 +30,8 @@ bao-game-record-YYYYMMDD-HHMMSS.json
 ```
 
 日時は利用者端末のローカル日時を**ファイル名の生成にだけ**使用する。棋譜JSON本文には保存時刻を追加しない。
+
+任意提供が有効な配信版では、完成したコンピュータ対戦に限り「AI改善のため棋譜を送信 / Send game record for AI improvement」も別操作として表示する。送信前に目的と送信内容を確認するdialogとTurnstile検証を通し、利用者がその1局について「同意して送信」を押した場合だけ送信する。自動送信、一括同意、バックグラウンド再送は行わない。
 
 ## 3. 保存する情報
 
@@ -123,6 +125,8 @@ houseTwo
 
 この構成により、棋譜保存のための処理をAIの探索ループから分離している。棋譜機能の追加によってAIの探索時間予算や探索ノード数を意図的に減らす設計にはしていない。
 
+任意提供時の追加処理も終局後にだけ行う。送信前にブラウザ側で棋譜を検証・再生し、Cloudflare Worker側でも標準初期局面、canonical move、全着手replay、最終局面・結果を再検証する。対局中のAI探索経路へネットワーク処理を追加しない。
+
 ## 5. AI改善用診断との区別
 
 棋譜保存とAI改善用診断は目的、保持範囲、保存場所が異なる。
@@ -139,27 +143,37 @@ houseTwo
 
 棋譜にAI探索統計を混在させない。AIの判断理由や探索品質を調べる場合は、従来どおり[`AI_HUMAN_REVIEW_GUIDE.md`](AI_HUMAN_REVIEW_GUIDE.md)に従って診断機能を使う。
 
+任意の棋譜提供は、棋譜形式そのものを別形式へ変える機能ではない。検証済み`bao-game-record` v1を、コンピュータ対戦・1局単位の明示同意という追加条件の下でAI改善用corpusへ提供する別経路である。提供棋譜を人間の正解手や正式なAI採用判断のground truthとは扱わない。
+
 ## 6. プライバシーと保存期間
 
-棋譜は対局中だけブラウザのメモリ上に存在し、終局後に利用者が「棋譜を保存」を押した場合だけ利用者端末へJSONファイルとして保存する。
+棋譜は対局中だけブラウザのメモリ上に存在し、終局後に利用者が「棋譜を保存」を押した場合だけ利用者端末へJSONファイルとして保存する。この**ローカル保存操作自体は外部送信を行わない**。
 
-棋譜をlocalStorageやIndexedDBへ自動保存する機能はない。ゲームサーバーや外部サービスへ棋譜を送信する機能もない。ページを再読み込みする、または新しい対局へ移行してメモリ上の記録を破棄した場合、保存していない棋譜は復元できない。
+棋譜をlocalStorageやIndexedDBへ自動保存する機能はない。任意提供を行わない限り、棋譜は外部へ送信されない。任意提供が有効な場合も、完成したコンピュータ対戦について利用者が1局ごとに明示同意した場合だけ送信し、自動送信、一括同意、バックグラウンド再送、送信用local queueは行わない。
 
-公開サイトとしてのデータ取扱いは[`public/privacy.html`](../public/privacy.html)を正本とする。
+提供先ではCloudflare Workers、Turnstile、private R2を利用する。収集Workerは送信元IPアドレスやTurnstile tokenを保存棋譜またはそのR2 metadataへ書き込まず、raw棋譜には90日後に削除するlifecycle ruleを適用する。詳細は[`GAME_RECORD_CONTRIBUTION.md`](GAME_RECORD_CONTRIBUTION.md)と、公開サイト上のデータ取扱いの正本である[`public/privacy.html`](../public/privacy.html)を参照する。
+
+ページを再読み込みする、または新しい対局へ移行してメモリ上の記録を破棄した場合、ローカル保存も任意提供も行っていない棋譜は復元できない。
 
 ## 7. 再現と検証
 
 `public/game-record.js`は、保存形式の検証と、ルールエンジンを使った着手列の再生処理を持つ。現在の公開UIには棋譜JSONを読み込む操作は提供していないが、自動テストでは`initialPosition`から`moves`を順に適用し、終局局面を再現できることを確認する。
 
-棋譜専用の主要テストは次の3ファイルである。
+ローカル棋譜保存の主要テストは次の3ファイルである。
 
 - `test/game-record.test.js`: 形式、着手保存、終局、再生
 - `test/game-record-browser-hook.test.js`: 実際の画面着手経路との接続、失敗着手時のrollback
-- `test/game-record-ui.test.js`: 終局前後の保存UI、PWAキャッシュ、Privacy Policyとの整合
+- `test/game-record-ui.test.js`: 終局前後の保存・任意提供UI、PWAキャッシュ、Privacy Policyとの整合
 
-専用CIは`.github/workflows/game-record-verification.yml`で管理する。棋譜テストに加え、隣接するengine、locale、診断、AI releaseの回帰も実行する。
+任意提供の追加境界は次のテストで確認する。
 
-2026年9月15日の実装ブランチでは棋譜専用CIを通過し、既存の公開AI・図解ルールの主要ブラウザー回帰でもChromium、Firefox、WebKitの合格を確認した。その後、テスト用`public/`を用いた実機確認で問題なしとの利用者報告を受けている。
+- `test/game-record-contribution-config.test.js`: Custom Domain、kill switch既定値、R2・rate-limit等の設定
+- `test/game-record-contribution-worker.test.mjs`: request/schema/replay/deduplication/R2日次quota等のWorker検証
+- `test/game-record-contribution-fetch-metadata.test.mjs`: Origin・Fetch Metadata境界
+
+専用CIは`.github/workflows/game-record-verification.yml`で管理し、上記の棋譜保存・任意提供テストに加え、隣接するengine、locale、診断、AI releaseの回帰も実行する。
+
+ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供機能は2026年9月16日にテストサイト・スマートフォン実機・Cloudflare Worker/R2/Turnstile・Custom Domainを使ったcontrolled submissionまで確認し、最終構成では`workers.dev`とPreview URLを無効化して`bao-data.cultivationdata.net`だけを本番Worker入口としている。
 
 ## 8. 現在の制限
 
@@ -176,7 +190,8 @@ houseTwo
 
 ## 9. 関連文書
 
-- [`SYSTEM_DESIGN.md`](SYSTEM_DESIGN.md): 現行システム全体での責務とデータ保存境界
+- [`GAME_RECORD_CONTRIBUTION.md`](GAME_RECORD_CONTRIBUTION.md): AI改善用の任意棋譜提供、同意、Worker検証、R2・privacy・運用境界
+- [`SYSTEM_DESIGN.md`](SYSTEM_DESIGN.md): 現行システム全体での責務とデータ保存・送信境界
 - [`RULES_BASELINE.md`](RULES_BASELINE.md): 棋譜再生の前提となるルール実装基準
 - [`AI_HUMAN_REVIEW_GUIDE.md`](AI_HUMAN_REVIEW_GUIDE.md): 棋譜とは別系統のAI診断・対人レビュー手順
 - [`../public/privacy.html`](../public/privacy.html): 公開サイトのデータ取扱い

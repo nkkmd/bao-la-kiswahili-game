@@ -1,16 +1,18 @@
 # Bao la Kiswahili — 現行実装の設計書
 
-更新日: 2026-09-15
+更新日: 2026-09-16
 
-確認基準: 2026-09-15時点のリポジトリ実装（対局中ルールガイドと終局後の棋譜保存を含む）
+確認基準: 2026-09-16時点のリポジトリ実装（対局中ルールガイド、終局後の棋譜保存、AI改善用の任意棋譜提供を含む）
 
-本書は現在の静的ブラウザー実装の構成と責務を説明する。初期草案にあった`src/core/`・`src/ai/`への分割、ES Modules、IndexedDBによる対局の自動保存は現行実装では採用していない。一方、終局した1局を利用者が明示的にJSONファイルへ保存する棋譜機能は実装している。初期の構想・開発フェーズはGit履歴に保持し、ここでは実装済み機能と将来候補を区別する。
+本書は現在のブラウザーゲームと、その周辺の任意提供機能の構成・責務を説明する。初期草案にあった`src/core/`・`src/ai/`への分割、ES Modules、IndexedDBによる対局の自動保存は現行実装では採用していない。一方、終局した1局を利用者が明示的にJSONファイルへ保存する棋譜機能と、完成したコンピュータ対戦を1局ごとの明示同意後にAI改善用へ提供する任意送信機能は実装している。初期の構想・開発フェーズはGit履歴に保持し、ここでは実装済み機能と将来候補を区別する。
 
 ## 1. 全体構成
 
-`public/`全体をCloudflare Pagesなどの静的ホスティングから配信する。ビルドやゲーム用サーバーは不要で、ローカル2人対戦とコンピューター対戦の処理はブラウザー内で完結する。
+`public/`全体をCloudflare Pagesなどの静的ホスティングから配信する。ビルドやゲーム用サーバーは不要で、ローカル2人対戦とコンピューター対戦の進行・AI探索・ルール判定はブラウザー内で完結する。
 
 HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvasで描画する。AIはWeb Workerで探索し、Service Workerは公開資産をキャッシュする。設定と利用者が記録したAI診断にはlocalStorageを使う。対局中の棋譜はメモリ上だけに保持し、終局後に利用者が明示操作した場合だけJSONファイルを生成する。ルールエンジンなどはNode.jsからの読み込みにも対応し、テスト・ベンチマークで共用する。
+
+通常対局は静的サイトだけで成立する。任意棋譜提供を利用する場合だけ、別系統のCloudflare Worker `bao-game-record-ingest`へ`https://bao-data.cultivationdata.net/v1/game-records`から送信する。WorkerはTurnstile、strict validation、engine replay、重複排除、private R2の日次quotaを通した棋譜だけをprivate R2へ保存する。任意提供が停止中でも対局・ローカル棋譜保存・AI診断は影響を受けない。
 
 ## 2. ファイルと責務
 
@@ -19,6 +21,8 @@ HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvas
 | `public/index.html`・`style.css` | 対局設定、ゲーム画面、診断、ルール説明への入口 |
 | `public/main.js` | 対局進行、Canvas描画、入力、アニメーション、AI要求、診断操作、対局中ルールガイド |
 | `public/game-record.js` | 確定着手の軽量記録、`bao-game-record` v1の検証・再生・終局後JSON保存UI |
+| `public/game-record-contribution-config.js` | 任意棋譜提供の有効化、Custom Domain endpoint、公開Turnstile Sitekey、client側サイズ上限 |
+| `public/game-record-contribution.js` | 完成したコンピュータ対戦の明示同意、Turnstile、client側検証・送信UI |
 | `public/locale.js` | 日本語・英語の表示選択と翻訳処理 |
 | `public/engine.js` | 初期局面、合法手、着手適用、勝敗判定、探索用軽量局面遷移 |
 | `public/ai.js`・`ai-weights.js` | AI-GEN3基準の探索・評価と重み。継承元・切戻し先 |
@@ -34,6 +38,7 @@ HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvas
 | `public/assets/rules/` | 10点のSVG図版と出典・ライセンス記録 |
 | `public/service-worker.js`・`manifest.webmanifest`・`icon.svg` | オフライン用キャッシュとPWA情報 |
 | `public/privacy.html`・`robots.txt`・`sitemap.xml` | プライバシー説明と検索エンジン向け情報 |
+| `cloudflare/game-record-ingest/` | 任意棋譜提供のCloudflare Worker、Wrangler設定、Turnstile検証、replay、dedupe、rate limit、R2保存 |
 | `tools/`・`test/` | 開発・研究ツールと回帰テスト |
 | `artifacts/`・`doc/` | 保存済み証拠、研究結果、設計・採用・配信の記録 |
 
@@ -83,13 +88,17 @@ HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvas
 
 棋譜記録はこの通常着手経路の確定手だけを`public/game-record.js`が受け取り、canonicalな小さい着手情報としてメモリへ追加する。表示用`events`全体やAI探索局面を保持せず、Worker要求にも棋譜を追加しないため、探索ループとは分離する。
 
-## 6. 保存、棋譜、診断
+## 6. 保存、棋譜、診断、任意提供
 
 対局中の棋譜はメモリ上だけに保持する。終局後、利用者が「棋譜を保存」を押した場合に限り、`bao-game-record` version `1`のJSONファイルを生成する。保存内容は初期局面、対局設定、確定着手列、勝敗、最終局面である。ファイル名の日時は端末のローカル日時を使うが、JSON本文には保存時刻を入れない。
 
 棋譜の確定着手には、人間、AI、自動passを含む通常対局経路の手を記録する。sow/relayの中間イベント、石1個ごとの演出局面、AI探索ノード、探索統計は棋譜へ常時保存しない。JSON文字列化とBlob生成も、終局後の明示的な保存操作まで行わない。
 
-棋譜はlocalStorageやIndexedDBへ自動保存せず、外部へ自動送信しない。現在の実装には、対局途中の棋譜ファイル保存、画面からの棋譜読み込み、途中対局の自動復元はない。棋譜の形式、計算資源上の境界、再生検証、将来互換性は[棋譜保存機能](GAME_RECORD.md)を参照する。
+棋譜はlocalStorageやIndexedDBへ自動保存せず、外部へ自動送信しない。ローカル保存操作は端末内のファイル生成だけであり、任意提供の同意を兼ねない。現在の実装には、対局途中の棋譜ファイル保存、画面からの棋譜読み込み、途中対局の自動復元はない。棋譜の形式、計算資源上の境界、再生検証、将来互換性は[棋譜保存機能](GAME_RECORD.md)を参照する。
+
+完成したコンピュータ対戦では、任意提供が有効な配信版に限り「AI改善のため棋譜を送信」を別操作として表示する。利用者がその1局について目的・送信内容を確認し、Turnstile完了後に「同意して送信」を押した場合だけ`bao-game-record` v1を送信する。自動送信、一括同意、バックグラウンド再送、送信用local queueは行わない。ローカル2人対戦は受理しない。
+
+収集Workerはexact Origin allow-listとFetch Metadataを確認し、request/schema、標準初期局面、canonical move、全着手replay、最終局面・結果を検証する。正規化JSONのSHA-256で重複排除し、private R2のglobal daily quotaをhard stopとして受理件数を制御する。Workers Rate Limiting APIはbest-effortのburst緩和としてだけ使う。source IPはrate limit keyとTurnstile Siteverifyに一時利用するが、R2の棋譜body・object key・custom metadataへ保存しない。Turnstile tokenとconsent envelopeも保存しない。raw棋譜は90日lifecycleで削除する。詳細は[任意の棋譜提供機能](GAME_RECORD_CONTRIBUTION.md)を参照する。
 
 localStorageには難易度、対戦モード、手番側、音などの設定と、利用者が明示的に記録したAI診断を保存する。診断記録は最大50件で、外部へ自動送信しない。現在局面または記録一覧をJSONファイルとして保存できる。
 
@@ -97,11 +106,11 @@ AI診断と棋譜は別形式・別目的である。診断には局面・選択
 
 ## 7. オフライン・配信・ルール説明
 
-Service Workerのインストール時に、ゲーム画面・依存スクリプト・棋譜モジュール・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通信なしで利用できる。棋譜機能追加後の現行キャッシュ名は`bao-la-kiswahili-v43`であり、AI-GEN4昇格時のv37や直前のv42とは区別する。
+Service Workerのインストール時に、ゲーム画面・依存スクリプト・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。任意提供機能追加後の現行キャッシュ名は`bao-la-kiswahili-v46`である。
 
 Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHTMLページだけURLの別名・言語クエリーを共通キャッシュへ対応させる。図解ルールは日本語・英語の切替、言語指定URLの共有、図版の拡大に対応する。対局中ルールガイドのリンクは現在の表示言語を引き継ぎ、対応する節を直接開く。
 
-配信対象は`public/`全体。古いrelease manifestはその時点の配信証拠として保持し、現在の配信ファイル一覧として流用しない。ローカルHTTPサーバー、clean URLの条件、ライセンスは[ルートREADME](../README.md)を参照する。
+配信対象は`public/`全体。任意提供のbackendは`cloudflare/game-record-ingest/`を別途Wranglerでdeployし、本番入口は`bao-data.cultivationdata.net`のCustom Domainだけとする。`workers_dev:false`と`preview_urls:false`で`*.workers.dev`・Preview URLを本番入口に使わない。古いrelease manifestはその時点の配信証拠として保持し、現在の配信ファイル一覧として流用しない。ローカルHTTPサーバー、clean URLの条件、ライセンスは[ルートREADME](../README.md)を参照する。
 
 ## 8. 検証と将来の変更
 
@@ -109,7 +118,9 @@ Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHT
 
 図解ルールの日英表示・拡大・対局導線・オフライン更新は[図解ルールCI](../.github/workflows/illustrated-rules.yml)で確認する。`tools/build-rules-figures.js --check`はSVG図版と生成条件の再生成一致も検証する。
 
-棋譜保存は[棋譜専用CI](../.github/workflows/game-record-verification.yml)で、形式、実エンジンでのreplay、確定着手の記録、失敗着手時のrollback、終局前後の保存UI、localStorage非使用、Service Workerキャッシュ、Privacy Policy、隣接する主要回帰を確認する。2026年9月15日に専用ブランチで自動検証とテスト用`public/`の実機確認を完了し、利用者から問題なしとの報告を受けた。PR #142で`main`統合対象として最終確認し、本番配信は`main`統合とは別工程としてCloudflare Pagesで行う。
+棋譜保存と任意提供は[棋譜専用CI](../.github/workflows/game-record-verification.yml)で、形式、実エンジンでのreplay、確定着手の記録、失敗着手時のrollback、終局前後の保存・送信UI、localStorage非使用、Service Workerキャッシュ、Privacy Policy、Custom Domain設定、Worker request/schema/replay/deduplication/R2 quota、Origin・Fetch Metadata境界と隣接回帰を確認する。
+
+ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供は2026年9月16日にテストサイト、スマートフォン実機、Cloudflare Worker/R2/Turnstile、Custom Domain経由のcontrolled submissionを確認し、R2保存・日次quota・privacy境界・duplicate・malformed request・CPU/resource状態を検証した。最終Worker構成では`workers.dev`とPreview URLを無効化し、`bao-data.cultivationdata.net`をWrangler管理下のCustom Domain targetとしてdeployしている。server-side kill switchの既定値は`COLLECTION_ENABLED=false`である。
 
 `tools/benchmark.js`は基準AIを直接読み込むため、その結果をAI-GEN4の公開アダプターを通した試験とみなさない。過去の研究・検証テストには凍結commitを要求するものがあり、現行ツリーでの一括再実行を合格条件にはしない。
 
