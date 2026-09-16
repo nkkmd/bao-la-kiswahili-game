@@ -20,13 +20,15 @@ test("Worker configuration uses private R2 binding and conservative application 
     binding: "GAME_RECORDS",
     bucket_name: "bao-game-record-contributions",
   });
+  assert.equal(wrangler.vars.COLLECTION_ENABLED, "false");
   assert.equal(wrangler.vars.MAX_REQUEST_BYTES, "65536");
   assert.equal(wrangler.vars.MAX_RECORD_BYTES, "49152");
   assert.equal(wrangler.vars.MAX_PLIES, "384");
+  assert.equal(wrangler.vars.MAX_ACCEPTED_PER_UTC_DAY, "500");
   assert.equal(wrangler.ratelimits.length, 2);
   assert.deepEqual(wrangler.ratelimits.map((entry) => [entry.name, entry.simple.limit, entry.simple.period]), [
     ["PER_CLIENT_RATE_LIMITER", 3, 60],
-    ["GLOBAL_ACCEPT_RATE_LIMITER", 1, 60],
+    ["LOCATION_ACCEPT_RATE_LIMITER", 6, 60],
   ]);
 });
 
@@ -35,5 +37,10 @@ test("Worker source contains no committed secret and never persists connection i
   assert.match(workerSource, /env\.TURNSTILE_SECRET_KEY/);
   assert.match(workerSource, /CF-Connecting-IP/);
   assert.doesNotMatch(workerSource, /customMetadata[\s\S]{0,800}(?:ipAddress|clientIp|sourceIp|turnstileToken)/i);
-  assert.match(workerSource, /records\/v1\/\$\{hash\}\.json/);
+  assert.match(workerSource, /const RECORD_PREFIX = "records\/v1\/"/);
+  assert.match(workerSource, /const QUOTA_PREFIX = "control\/daily\/"/);
+  assert.match(workerSource, /DEFAULT_MAX_ACCEPTED_PER_UTC_DAY = 500/);
+  assert.match(workerSource, /HARD_MAX_ACCEPTED_PER_UTC_DAY = 1000/);
+  assert.match(workerSource, /Non-standard initial position/);
+  assert.match(workerSource, /Non-canonical or illegal move in record/);
 });
