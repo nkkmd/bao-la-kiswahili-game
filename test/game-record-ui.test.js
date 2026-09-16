@@ -68,5 +68,7 @@ test("privacy policy distinguishes local saving from explicit contribution", () 
   assert.match(privacy, /AI改善のための任意の棋譜提供/);
   assert.match(privacy, /自動送信、一括同意、バックグラウンド再送は行いません/);
   assert.match(privacy, /2人対戦の棋譜は送信対象にしません/);
-  assert.match(privacy, /source IP address or Turnstile token into the game record or its R2 metadata/);
+  assert.match(privacy, /source IP address or Turnstile token/);
+  assert.match(privacy, /R2 record metadata/);
+  assert.match(privacy, /automatically deletes them after 90 days/);
 });
