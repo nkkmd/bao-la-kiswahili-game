@@ -22,15 +22,7 @@ test("Worker configuration uses private R2 binding and Free-plan-compatible appl
     binding: "GAME_RECORDS",
     bucket_name: "bao-game-record-contributions",
   });
-  // Cloudflare Workers Free enforces its own 10 ms CPU ceiling and does not
-  // allow an explicit cpu_ms limit in Wrangler. Keep the limits block absent
-  // so deployment remains Free-plan compatible; application-specific limits
-  // below still bound request size, game length, rate, and daily acceptance.
   assert.equal(Object.hasOwn(wrangler, "limits"), false);
-  // Even while the client is configured for the custom domain,
-  // repository-controlled Worker deployment remains fail-closed.
-  // COLLECTION_ENABLED is changed only for a deliberate controlled window
-  // in Cloudflare and returns to false afterward.
   assert.equal(wrangler.vars.COLLECTION_ENABLED, "false");
   assert.equal(wrangler.vars.MAX_REQUEST_BYTES, "65536");
   assert.equal(wrangler.vars.MAX_RECORD_BYTES, "49152");
