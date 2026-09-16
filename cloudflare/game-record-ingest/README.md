@@ -9,7 +9,7 @@ Bao la Kiswahili の終局棋譜を、利用者の明示同意後に受け付け
 - `COLLECTION_ENABLED=true` を明示するまで server-side でも fail closed とする。
 - 許可 Origin は `ALLOWED_ORIGINS` の完全一致で制限する。
 - Worker の最外周 `src/entry.mjs` で Fetch Metadata を検証し、通常の browser POST は `Sec-Fetch-Site: same-origin|same-site`、`Sec-Fetch-Mode: cors`、`Sec-Fetch-Dest: empty` を要求する。
-- Fetch Metadata が欠落したPOST、`cross-site`、`navigate`、`no-cors`、画像等の用途は原則拒否する。
+- Fetch Metadata gate は許可Originからの状態変更POSTに追加適用する。未許可Originは内側のexact Origin allow-listで `origin_not_allowed` として拒否する。
 - `cdn-ts.pages.dev` はテストサイトが本番Workerと別siteになるため、`FETCH_METADATA_CROSS_SITE_ORIGINS` に完全一致で明示した場合だけ `cross-site` を許可する。任意のcross-site Originは許可しない。
 - Turnstile token を server-side で検証し、action と hostname も照合する。
 - `bao-game-record` version 1、ルール baseline、computer 対戦、許可 field、型、石総数、最大手数を検証する。
@@ -30,7 +30,7 @@ Fetch Metadata は、ブラウザが request context を `Sec-Fetch-Site` / `Sec
 ```text
 exact Origin allow-list
         ↓
-Fetch Metadata isolation
+Fetch Metadata isolation for allowed Origins
         ↓
 Turnstile server-side verification
         ↓
@@ -43,9 +43,15 @@ private R2
 
 本番 `bao-la-kiswahili.cultivationdata.net` から `bao-data.cultivationdata.net` への送信は同一scheme・同一registrable domain配下なので通常 `same-site` になる。テスト用 `cdn-ts.pages.dev` は別siteのため、完全一致した管理下Originだけを `FETCH_METADATA_CROSS_SITE_ORIGINS` へ例外登録する。
 
-## 無料枠を守るための既定上限
+2026-09-16のCustom Domain preflightでは、`COLLECTION_ENABLED=false` のまま以下を確認した。
 
-2026-09-16 時点の Cloudflare 公開仕様では、Workers Free は 100,000 requests/day・10 ms CPU/request、R2 Standard は月あたり 10 GB-month、Class A 100万回、Class B 1,000万回まで無料枠がある。これより十分小さい application-side guard を設定する。
+- 本番Origin相当 + `same-site` → `503 collection_disabled`
+- `cdn-ts.pages.dev` + `cross-site` → `503 collection_disabled`
+- 未許可Origin `https://example.com` → `403 origin_not_allowed`
+
+最後の結果は、未許可OriginをFetch Metadata gateへ通す前にexact Origin allow-listで拒否する現在の設計どおりである。
+
+## 無料枠を守るための既定上限
 
 - request body: 最大 64 KiB
 - 保存する棋譜 JSON: 最大 48 KiB
@@ -54,46 +60,32 @@ private R2
 - 同一 Cloudflare location の正常受理安全弁: 6 records / 60 s（best-effort の burst 緩和）
 - **全世界共通の日次受理上限: 既定 500 records / UTC day**
 - コード上の日次上限の最大値: 1,000 records / UTC day
-- Worker CPU time: Free plan側の既定上限 10 ms/request に従う
+- Worker CPU time: Free plan側の既定上限に従う
 - Worker subrequests: Free plan側の既定上限に従う。`wrangler.jsonc` では `limits` を明示しない
 - R2 raw record retention: 90日を必須運用条件とする
 
-Workers Free では Wrangler の `limits.cpu_ms` を明示設定できないため、`wrangler.jsonc` に `limits` block は置かない。CPU上限はCloudflare Free plan側が10 ms/requestとして強制する。実Worker試験で長い棋譜がCPU上限へ近づく場合は、`MAX_PLIES` を引き下げて処理量を抑える。
+Workers Free では Wrangler の `limits.cpu_ms` を明示設定しない。実Worker試験で長い棋譜がCPU上限へ近づく場合は、`MAX_PLIES` を引き下げて処理量を抑える。
 
-Workers Rate Limiting API は Cloudflare location 単位かつ permissive / eventually consistent であり、厳密な回数制御や正確なaccountingには使用しない。2026-09-16 の実Cloudflare試験では、同一接続元から `limit=3 / period=60` の条件で4回連続した malformed request を送っても4回とも `400 invalid_request` となり、4回目で `429` にはならなかった。これはCloudflareが公開しているRate Limiting APIの非厳密・遅延反映の性質と整合する。したがって、このbindingは短時間burstの緩和用に限定し、課金防止・保存件数制御のhard stopとはみなさない。
+Workers Rate Limiting API は Cloudflare location 単位かつ permissive / eventually consistent であり、厳密な回数制御や正確なaccountingには使用しない。2026-09-16 の実Cloudflare試験では、同一接続元から `limit=3 / period=60` の条件で4回連続した malformed request を送っても4回とも `400 invalid_request` となり、4回目で `429` にはならなかった。このbindingは短時間burstの緩和用に限定し、課金防止・保存件数制御のhard stopとはみなさない。
 
-全世界共通の日次上限は、同じ private R2 bucket の `control/daily/YYYY-MM-DD.json` に accepted count を保持し、R2 conditional `PUT` の ETag / `If-None-Match` を使って競合時に再試行する。quota state を取得・更新できない場合は fail closed で受理しない。
+全世界共通の日次上限は、同じ private R2 bucket の`control/daily/YYYY-MM-DD.json`にaccepted countを保持し、R2 conditional `PUT`のETag / `If-None-Match`を使って競合時に再試行する。quota stateを取得・更新できない場合はfail closedで受理しない。
 
-既定 500件/日、48 KiB/件、90日retentionをすべて最大まで使った場合でも raw record payload は概算約2.2 GBである。1件の新規受理につき record write と quota update の最大2回の Class A operation を使うため、30日で概ね3万 Class A operationsが上限となり、R2 Standard Free の100万回/月を大きく下回る。
+既定500件/日、48 KiB/件、90日retentionをすべて最大まで使った場合でもraw record payloadは概算約2.2 GBである。1件の新規受理につきrecord writeとquota updateの最大2回のClass A operationを使うため、30日で概ね3万Class A operationsが上限となる。
 
-Worker Free の100,000 requests/dayがすべてTurnstile・schemaを通過する極端なケースでも、record duplicate `HEAD` と quota `GET` の2回を行う程度なので、30日換算で約600万 Class B operationsに収まり、R2 Standard Free の1,000万回/月より低い。実際にはOrigin、Fetch Metadata、Turnstile、validationでそれ以前に多くを拒否する。
-
-ただし、上記はこの収集Worker/R2 bucketの設計上の上限であり、同じCloudflare accountで他のWorkers/R2利用がある場合、その利用量は別途合算して監視する。本番ではzone-level WAF rate limitingも併用し、Worker実行前にも大量通信を抑える。
+無料枠の仕様が将来変更される可能性があるため、本番開始前と定期運用時にCloudflareの最新limits/pricingを再確認する。
 
 ## Cloudflare 側で必要な作業
 
-実リソースを作るまでは、`public/game-record-contribution-config.js` の `enabled` と `wrangler.jsonc` の `COLLECTION_ENABLED` を両方 `false` のままにする。
-
 1. R2 Standard bucket `bao-game-record-contributions` を作成し、Public Access は無効のままにする。
-2. bucket全体を90日後に削除する lifecycle rule を設定する。`records/`だけでなく古い `control/daily/` quota objectも削除してよい。
+2. bucket全体を90日後に削除する lifecycle rule を設定する。
 3. Turnstile Managed widget を作成し、公開サイトとテストサイトの hostname を登録する。
 4. Worker directory で `TURNSTILE_SECRET_KEY` を secret として登録する。
 5. `wrangler.jsonc` の Origin / Fetch Metadata cross-site exception / hostname / R2 binding / application limits を確認する。
-6. Worker をまず `workers.dev` へ deploy する。初回deploy時は `COLLECTION_ENABLED=false` のまま動作確認する。
-7. test site接続時だけ、Worker側 `COLLECTION_ENABLED=true` と client側 `enabled=true` を有効化する。
-8. 正常送信、Fetch Metadata拒否、重複、日次quota、malformed request、R2保存内容、90日lifecycle、Worker CPUを確認する。Workers Rate Limiting bindingはstrict thresholdの合否試験対象にせず、best-effort緩和として扱う。
-9. 問題なければ `bao-data.cultivationdata.net` 等の custom domain を Worker に設定する。
-10. zone-level rate limiting rule を `/v1/game-records` に追加する。
-
-例:
-
-```sh
-npx wrangler r2 bucket create bao-game-record-contributions --storage-class Standard
-npx wrangler r2 bucket lifecycle add bao-game-record-contributions expire-contributions --expire-days 90
-cd cloudflare/game-record-ingest
-npx wrangler secret put TURNSTILE_SECRET_KEY
-npx wrangler deploy
-```
+6. Worker をdeployし、初回は `COLLECTION_ENABLED=false` のまま動作確認する。
+7. controlled testで正常送信、重複、日次quota、malformed request、R2保存内容、90日lifecycle、Worker CPUを確認する。
+8. 問題なければ `bao-data.cultivationdata.net` をCustom Domainに設定し、fail-closed preflightを行う。
+9. client endpointをCustom Domainへ切り替え、Service Worker cacheを更新する。
+10. Custom Domain経由でcontrolled submissionを1件だけ行い、再度R2 / quota / CPU / Turnstile / duplicateをspot checkする。
 
 `TURNSTILE_SECRET_KEY`、Cloudflare API token、その他の認証情報は GitHub に commit しない。
 
