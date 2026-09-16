@@ -5,11 +5,13 @@
   "compatibility_date": "2026-09-16",
   "workers_dev": true,
   "vars": {
+    "COLLECTION_ENABLED": "false",
     "ALLOWED_ORIGINS": "https://bao-la-kiswahili.cultivationdata.net,https://cdn-ts.pages.dev",
     "TURNSTILE_HOSTNAMES": "bao-la-kiswahili.cultivationdata.net,cdn-ts.pages.dev",
     "MAX_REQUEST_BYTES": "65536",
     "MAX_RECORD_BYTES": "49152",
-    "MAX_PLIES": "384"
+    "MAX_PLIES": "384",
+    "MAX_ACCEPTED_PER_UTC_DAY": "500"
   },
   "r2_buckets": [
     {
@@ -27,10 +29,10 @@
       }
     },
     {
-      "name": "GLOBAL_ACCEPT_RATE_LIMITER",
+      "name": "LOCATION_ACCEPT_RATE_LIMITER",
       "namespace_id": "26091602",
       "simple": {
-        "limit": 1,
+        "limit": 6,
         "period": 60
       }
     }
