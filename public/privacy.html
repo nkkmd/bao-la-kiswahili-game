@@ -13,7 +13,7 @@
     <main class="game-shell">
       <h1 data-ja="プライバシーポリシー">Privacy Policy</h1>
       <div class="rules">
-        <p data-ja="最終更新日: 2026年9月15日">Last updated: September 15, 2026</p>
+        <p data-ja="最終更新日: 2026年9月16日">Last updated: September 16, 2026</p>
 
         <h2 data-ja="1. アクセス解析">1. Analytics</h2>
         <p data-ja="本サイトでは、利用状況を把握し、ゲームとサイトを改善するためにGoogle Analytics 4（Google LLC、測定ID: G-HTMWEF1XC4）を利用しています。">This site uses Google Analytics 4 (Google LLC; Measurement ID: G-HTMWEF1XC4) to understand usage and improve the game and site.</p>
@@ -26,20 +26,30 @@
         </ul>
 
         <h2 data-ja="2. ゲームとAIの処理">2. Game and AI Processing</h2>
-        <p data-ja="コンピュータ対戦の思考、ルール判定、2人対戦の進行は、すべて利用者のブラウザ内で実行されます。盤面、着手内容、勝敗、AIの判断をゲームサーバーへ送信する機能はありません。ログイン、通信対戦、広告SDKも使用していません。">Computer-opponent thinking, rule evaluation, and local two-player game progression all run within your browser. The game has no feature that sends board positions, moves, results, or AI decisions to a game server. It also does not use login accounts, online multiplayer, or advertising SDKs.</p>
+        <p data-ja="コンピュータ対戦の思考、ルール判定、2人対戦の進行は、すべて利用者のブラウザ内で実行されます。通常の対局内容をゲームサーバーへ自動送信することはありません。ログイン、通信対戦、広告SDKも使用していません。コンピュータ対戦の終局後、利用者がその対局について明示的に同意した場合に限り、下記4節の棋譜提供機能から棋譜を送信できます。">Computer-opponent thinking, rule evaluation, and local two-player game progression all run within your browser. Normal game content is not automatically sent to a game server. The site does not use login accounts, online multiplayer, or advertising SDKs. After a completed computer game, a game record may be submitted through the contribution feature described in section 4 only when you explicitly agree for that game.</p>
 
         <h2 data-ja="3. ブラウザ内に保存する情報">3. Information Stored in Your Browser</h2>
-        <p data-ja="本サイトは、選択した対戦モード、AI難易度、先手・後手、音の設定をブラウザのlocalStorageに保存します。また、「AIの手を記録」ボタンを利用者が押した場合に限り、直前の盤面、AI着手、AI探索統計を最大50件までlocalStorageに保存します。自由記述、氏名、端末識別子、保存時刻は含めず、ゲーム画面の「記録を削除」またはブラウザのサイトデータ削除機能から消去できます。これらのAI診断記録を外部へ自動送信する機能はありません。">This site stores your selected game mode, AI difficulty, first/second-player choice, and sound setting in browser localStorage. Only when you press “Record AI move,” it also stores up to 50 records containing the most recent board position, AI move, and AI search statistics in localStorage. These records do not include free-form text, your name, a device identifier, or a save timestamp. You can delete them using “Delete records” on the game screen or your browser's site-data controls. The site does not automatically transmit these AI diagnostic records externally.</p>
-        <p data-ja="対局中の棋譜は、その対局が開かれている間だけブラウザのメモリ上に保持されます。対局終了後に「棋譜を保存」を押した場合にのみ、初期局面、確定した着手列、対局設定、勝敗を含むJSONファイルを利用者の端末へ保存します。棋譜をlocalStorageへ自動保存したり、外部へ送信したりする機能はありません。">During a game, the game record is kept only in browser memory for that open game. Only when you press “Save game record” after the game has ended does the site save a JSON file to your device containing the initial position, confirmed move sequence, game settings, and result. Game records are not automatically stored in localStorage or transmitted externally.</p>
+        <p data-ja="本サイトは、選択した対戦モード、AI難易度、先手・後手、音の設定をブラウザのlocalStorageに保存します。また、「AIの手を記録」ボタンを利用者が押した場合に限り、直前の盤面、AI着手、AI探索統計を最大50件までlocalStorageに保存します。自由記述、氏名、端末識別子、保存時刻は含めず、ゲーム画面の「記録を削除」またはブラウザのサイトデータ削除機能から消去できます。これらのAI診断記録を外部へ自動送信する機能はありません。">This site stores your selected game mode, AI difficulty, first/second-player choice, and sound setting in browser localStorage. Only when you press “Record AI move,” it also stores up to 50 records containing the most recent board position, AI move, and AI search statistics in localStorage. These records do not include free-form text, your name, a device identifier, or a save timestamp. You can delete them using “Delete records” on the game screen or your browser's site-data controls. These AI diagnostic records are not automatically transmitted externally.</p>
+        <p data-ja="対局中の棋譜は、その対局が開かれている間だけブラウザのメモリ上に保持されます。対局終了後に「棋譜を保存」を押した場合にのみ、初期局面、確定した着手列、対局設定、勝敗を含むJSONファイルを利用者の端末へ保存します。棋譜をlocalStorageへ自動保存する機能はありません。棋譜提供を行わない限り、棋譜は外部へ送信されません。">During a game, the game record is kept only in browser memory for that open game. Only when you press “Save game record” after the game has ended does the site save a JSON file to your device containing the initial position, confirmed move sequence, game settings, and result. Game records are not automatically stored in localStorage and are not transmitted externally unless you choose the contribution feature.</p>
         <p data-ja="PWAとしてオフラインでも起動できるよう、Service Workerがゲームのファイルをキャッシュします。">A Service Worker caches game files so the site can also start offline as a PWA.</p>
 
-        <h2 data-ja="4. 外部リンク">4. External Links</h2>
+        <h2 data-ja="4. AI改善のための任意の棋譜提供">4. Optional Game Record Contributions for AI Improvement</h2>
+        <p data-ja="コンピュータ対戦が終了した後、「AI改善のため棋譜を送信」が表示される配信版では、利用者がその対局について内容と目的を確認し、「同意して送信」を押した場合だけ棋譜を送信します。自動送信、一括同意、バックグラウンド再送は行いません。2人対戦の棋譜は送信対象にしません。">In releases where “Send game record for AI improvement” is available after a completed computer game, the record is submitted only after you review the purpose and contents and press “Agree and send” for that game. There is no automatic submission, blanket consent, or background retry. Local two-player game records are not accepted.</p>
+        <p data-ja="送信する棋譜には、初期局面・最終局面、確定した着手列、勝敗、対局設定、人間側、AI難易度、AI世代・release ID等が含まれます。氏名、メールアドレス、自由記述、恒久的な利用者ID、Google Analyticsのclient ID、AI探索統計、端末フィンガープリントは棋譜に追加しません。">A submitted record contains the initial and final positions, confirmed move sequence, result, game settings, human side, AI difficulty, AI generation and release ID, and related game metadata. The record does not add your name, email address, free-form text, a persistent user ID, Google Analytics client ID, AI search statistics, or a device fingerprint.</p>
+        <p data-ja="送信処理と不正利用防止にはCloudflare Workers、Turnstile、R2を使用します。通信の成立や不正利用防止のためCloudflareがIPアドレス等の接続情報を処理する場合がありますが、本サイトの収集Workerは送信元IPアドレスやTurnstile tokenをR2の保存棋譜またはそのmetadataへ書き込みません。短時間のrate limit判定では接続元IPアドレスを一時的なキーとして利用します。">Cloudflare Workers, Turnstile, and R2 are used for submission and abuse prevention. Cloudflare may process connection information such as IP addresses as necessary to deliver the request and prevent abuse, but this site's collection Worker does not write the source IP address or Turnstile token into the game record or its R2 metadata. The source IP address is used only as a transient key for short-term rate limiting.</p>
+        <p data-ja="受信した棋譜は、形式検証、ルールエンジンによる再生検証、重複排除を行ったうえで、非公開のR2 bucketへ保存します。raw棋譜には90日後に自動削除するlifecycle ruleを設定する方針です。提供棋譜はAIの弱点候補の調査、実戦局面の分析、回帰検証候補などAI改善の目的で利用し、利用者の行動追跡や広告目的には利用しません。提供棋譜は人間による自然な対局であることを完全には証明できないため、AIへの自動学習データとして無条件に投入しません。">Submitted records are format-checked, replay-validated with the rules engine, deduplicated, and stored in a private R2 bucket. Raw records are intended to have a lifecycle rule that automatically deletes them after 90 days. Contributions are used for AI improvement such as investigating possible weaknesses, analyzing real-game positions, and identifying regression-test candidates; they are not used for user tracking or advertising. Because a submitted record cannot fully prove that it came from a natural human-played game, contributions are not automatically or unconditionally used as AI training data.</p>
+        <p data-ja="送信前のbot対策にはCloudflare Turnstileを利用します。Turnstileによるデータ処理についてはCloudflareのプライバシーポリシーが適用されます。">Cloudflare Turnstile is used for bot-abuse protection before submission. Cloudflare's privacy policy applies to data processed by Turnstile.</p>
+        <ul>
+          <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" data-ja="Cloudflare プライバシーポリシー">Cloudflare Privacy Policy</a></li>
+        </ul>
+
+        <h2 data-ja="5. 外部リンク">5. External Links</h2>
         <p data-ja="本サイトには外部サイトへのリンクがあります。リンク先で行われる情報収集には、各サイトのプライバシーポリシーが適用されます。">This site contains links to external websites. Information collected on those sites is governed by each site's own privacy policy.</p>
 
-        <h2 data-ja="5. ポリシーの変更">5. Changes to This Policy</h2>
+        <h2 data-ja="6. ポリシーの変更">6. Changes to This Policy</h2>
         <p data-ja="機能や利用サービスの変更に応じて、本ポリシーを改定する場合があります。重要な変更は、本ページで更新日とともにお知らせします。">This policy may be revised when features or services used by the site change. Material changes will be announced on this page together with an updated date.</p>
 
-        <h2 data-ja="6. 運営者">6. Operator</h2>
+        <h2 data-ja="7. 運営者">7. Operator</h2>
         <p><span data-ja="運営者: ">Operator: </span><a href="https://bsky.app/profile/cultivationdata.net" target="_blank" rel="noopener noreferrer">@cultivationdata.net</a></p>
         <p><a href="./" data-ja="ゲームへ戻る">Back to the game</a></p>
       </div>
