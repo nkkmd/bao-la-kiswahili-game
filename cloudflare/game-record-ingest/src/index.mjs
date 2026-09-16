@@ -10,6 +10,10 @@ const RULES = Object.freeze({
 const DEFAULT_MAX_REQUEST_BYTES = 64 * 1024;
 const DEFAULT_MAX_RECORD_BYTES = 48 * 1024;
 const DEFAULT_MAX_PLIES = 384;
+const DEFAULT_MAX_ACCEPTED_PER_UTC_DAY = 500;
+const HARD_MAX_ACCEPTED_PER_UTC_DAY = 1000;
+const QUOTA_PREFIX = "control/daily/";
+const RECORD_PREFIX = "records/v1/";
 const SAFE_TOKEN = /^[A-Za-z0-9._:+/-]+$/;
 const PHASES = new Set(["namua", "mtaji"]);
 const DIFFICULTIES = new Set(["easy", "normal", "hard", "expert"]);
@@ -105,9 +109,18 @@ function validateMove(move) {
   assert(DIRECTIONS.has(move.direction), "Invalid direction");
   if (Object.hasOwn(move, "side")) assert(SIDES.has(move.side), "Invalid capture side");
   if (Object.hasOwn(move, "houseChoice")) assert(HOUSE_CHOICES.has(move.houseChoice), "Invalid house choice");
-  if (Object.hasOwn(move, "houseTwo")) assert(typeof move.houseTwo === "boolean", "Invalid houseTwo");
-  if (move.type === "capture" && move.phase === "namua") assert(SIDES.has(move.side), "Missing capture side");
-  if (move.type !== "capture") assert(!Object.hasOwn(move, "side"), "Unexpected side");
+  if (Object.hasOwn(move, "houseTwo")) assert(move.houseTwo === true, "Invalid houseTwo");
+
+  const namuaCapture = move.type === "capture" && move.phase === "namua";
+  if (namuaCapture) assert(SIDES.has(move.side), "Missing capture side");
+  else assert(!Object.hasOwn(move, "side"), "Unexpected side");
+
+  if (Object.hasOwn(move, "houseChoice")) {
+    assert(namuaCapture, "Unexpected house choice");
+  }
+  if (Object.hasOwn(move, "houseTwo")) {
+    assert(move.type === "takata" && move.phase === "namua", "Unexpected houseTwo");
+  }
 }
 
 function validateSettings(settings) {
@@ -135,7 +148,7 @@ function validateResult(result, finalPosition, moveCount) {
   assert(result.winner === 0 || result.winner === 1, "Invalid result winner");
   assert(result.winnerSide === (result.winner === 0 ? "south" : "north"), "Invalid winner side");
   assertSmallString(result.reason, 64);
-  assertInteger(result.plies, 0, 10000);
+  assertInteger(result.plies, 1, 10000);
   assert(result.plies === moveCount, "Ply count mismatch");
   assert(finalPosition.winner === result.winner && finalPosition.reason === result.reason, "Result mismatch");
 }
@@ -158,6 +171,7 @@ export function validateRecord(record, maxPlies = DEFAULT_MAX_PLIES) {
     assert(entry.side === (entry.player === 0 ? "south" : "north"), "Invalid move side");
     assert(PHASES.has(entry.phase), "Invalid entry phase");
     validateMove(entry.move);
+    if (entry.move.type !== "pass") assert(entry.move.phase === entry.phase, "Move phase mismatch");
   }
   validatePosition(record.finalPosition, { completed: true });
   validateResult(record.result, record.finalPosition, record.moves.length);
@@ -178,14 +192,41 @@ function canonicalPosition(state) {
   };
 }
 
+function exactMoveKey(move) {
+  return MOVE_KEYS.map((key) => Object.hasOwn(move, key)
+    ? `${key}:${JSON.stringify(move[key])}` : `${key}:<absent>`).join("|");
+}
+
+function stableValue(value) {
+  if (Array.isArray(value)) return value.map(stableValue);
+  if (!isPlainObject(value)) return value;
+  return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableValue(value[key])]));
+}
+
+function stableStringify(value) {
+  return JSON.stringify(stableValue(value));
+}
+
 export function replayAndVerify(record) {
   const engine = globalThis.BaoEngine;
-  assert(engine && typeof engine.applyMoveForSearch === "function", "Bao engine unavailable");
+  assert(engine && typeof engine.applyMoveForSearch === "function"
+    && typeof engine.moveVariantsForSearch === "function" && typeof engine.initialState === "function",
+  "Bao engine unavailable");
+
+  const expectedInitial = canonicalPosition(engine.initialState());
+  assert(JSON.stringify(canonicalPosition(record.initialPosition)) === JSON.stringify(expectedInitial),
+    "Non-standard initial position");
+
   let state = structuredClone(record.initialPosition);
   for (const entry of record.moves) {
     assert(state.winner === null, "Moves continue after game end");
     assert(state.turn === entry.turn && state.player === entry.player && state.phase === entry.phase,
       "Move metadata does not match replay state");
+    const submittedKey = exactMoveKey(entry.move);
+    const legalVariants = engine.moveVariantsForSearch(state);
+    assert(Array.isArray(legalVariants)
+      && legalVariants.some((candidate) => exactMoveKey(candidate) === submittedKey),
+    "Non-canonical or illegal move in record");
     try {
       state = engine.applyMoveForSearch(state, entry.move).state;
     } catch {
@@ -221,12 +262,13 @@ function jsonResponse(status, payload, origin = null) {
   return new Response(JSON.stringify(payload), { status, headers });
 }
 
-async function verifyTurnstile(token, env) {
+async function verifyTurnstile(token, env, remoteIp = "") {
   const secret = env.TURNSTILE_SECRET_KEY;
   if (!secret || typeof token !== "string" || token.length < 10 || token.length > 4096) return false;
   const form = new FormData();
   form.set("secret", secret);
   form.set("response", token);
+  if (remoteIp) form.set("remoteip", remoteIp);
   const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
     method: "POST",
     body: form,
@@ -248,12 +290,17 @@ async function sha256Hex(text) {
 }
 
 async function readJsonBody(request, maxBytes) {
-  const declared = Number.parseInt(request.headers.get("Content-Length") || "0", 10);
-  if (Number.isFinite(declared) && declared > maxBytes) throw new ValidationError("Request too large");
+  const rawLength = request.headers.get("Content-Length");
+  if (rawLength !== null) {
+    const declared = Number.parseInt(rawLength, 10);
+    if (!Number.isFinite(declared) || declared < 0 || declared > maxBytes) {
+      throw new ValidationError("Request too large");
+    }
+  }
   const bytes = await request.arrayBuffer();
   if (bytes.byteLength > maxBytes) throw new ValidationError("Request too large");
   try {
-    return JSON.parse(new TextDecoder().decode(bytes));
+    return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
   } catch {
     throw new ValidationError("Invalid JSON");
   }
@@ -263,6 +310,52 @@ async function checkRateLimit(binding, key) {
   if (!binding || typeof binding.limit !== "function") return true;
   const result = await binding.limit({ key });
   return result?.success === true;
+}
+
+function utcDay(date = new Date()) {
+  return date.toISOString().slice(0, 10);
+}
+
+async function readQuotaObject(object) {
+  if (!object) return null;
+  try {
+    const parsed = JSON.parse(await object.text());
+    return Number.isInteger(parsed.accepted) && parsed.accepted >= 0 ? parsed.accepted : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function reserveDailyAcceptanceSlot(bucket, maxAccepted, date = new Date()) {
+  if (!bucket || typeof bucket.get !== "function" || typeof bucket.put !== "function") {
+    return { accepted: false, reason: "unavailable" };
+  }
+  const day = utcDay(date);
+  const key = `${QUOTA_PREFIX}${day}.json`;
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    const current = await bucket.get(key);
+    if (!current) {
+      const created = await bucket.put(key, JSON.stringify({ day, accepted: 1 }), {
+        onlyIf: new Headers({ "If-None-Match": "*" }),
+        httpMetadata: { contentType: "application/json; charset=utf-8" },
+        customMetadata: { type: "daily-acceptance-quota", day },
+      });
+      if (created) return { accepted: true, count: 1 };
+      continue;
+    }
+
+    const accepted = await readQuotaObject(current);
+    if (accepted === null) return { accepted: false, reason: "invalid_control_state" };
+    if (accepted >= maxAccepted) return { accepted: false, reason: "daily_limit" };
+
+    const updated = await bucket.put(key, JSON.stringify({ day, accepted: accepted + 1 }), {
+      onlyIf: { etagMatches: current.etag },
+      httpMetadata: { contentType: "application/json; charset=utf-8" },
+      customMetadata: { type: "daily-acceptance-quota", day },
+    });
+    if (updated) return { accepted: true, count: accepted + 1 };
+  }
+  return { accepted: false, reason: "contention" };
 }
 
 export async function handleRequest(request, env) {
@@ -278,10 +371,14 @@ export async function handleRequest(request, env) {
   }
   if (request.method !== "POST") return jsonResponse(405, { ok: false, error: "method_not_allowed" }, originAllowed ? origin : null);
   if (!originAllowed) return jsonResponse(403, { ok: false, error: "origin_not_allowed" });
+  if (String(env.COLLECTION_ENABLED || "").toLowerCase() !== "true") {
+    return jsonResponse(503, { ok: false, error: "collection_disabled" }, origin);
+  }
   if (!(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json")) {
     return jsonResponse(415, { ok: false, error: "unsupported_media_type" }, origin);
   }
-  if (!env.GAME_RECORDS || typeof env.GAME_RECORDS.put !== "function") {
+  if (!env.GAME_RECORDS || typeof env.GAME_RECORDS.put !== "function"
+    || typeof env.GAME_RECORDS.head !== "function" || typeof env.GAME_RECORDS.get !== "function") {
     return jsonResponse(503, { ok: false, error: "collection_unavailable" }, origin);
   }
 
@@ -290,9 +387,14 @@ export async function handleRequest(request, env) {
     return jsonResponse(429, { ok: false, error: "rate_limited" }, origin);
   }
 
-  const maxRequestBytes = integerEnv(env.MAX_REQUEST_BYTES, DEFAULT_MAX_REQUEST_BYTES, 4096, 256 * 1024);
-  const maxRecordBytes = integerEnv(env.MAX_RECORD_BYTES, DEFAULT_MAX_RECORD_BYTES, 4096, 128 * 1024);
-  const maxPlies = integerEnv(env.MAX_PLIES, DEFAULT_MAX_PLIES, 1, 1024);
+  const maxRequestBytes = integerEnv(env.MAX_REQUEST_BYTES,
+    DEFAULT_MAX_REQUEST_BYTES, 4096, DEFAULT_MAX_REQUEST_BYTES);
+  const maxRecordBytes = integerEnv(env.MAX_RECORD_BYTES,
+    DEFAULT_MAX_RECORD_BYTES, 4096, DEFAULT_MAX_RECORD_BYTES);
+  const maxPlies = integerEnv(env.MAX_PLIES, DEFAULT_MAX_PLIES, 1, DEFAULT_MAX_PLIES);
+  const maxAcceptedPerUtcDay = integerEnv(env.MAX_ACCEPTED_PER_UTC_DAY,
+    DEFAULT_MAX_ACCEPTED_PER_UTC_DAY, 1, HARD_MAX_ACCEPTED_PER_UTC_DAY);
+
   let envelope;
   try {
     envelope = await readJsonBody(request, maxRequestBytes);
@@ -301,32 +403,39 @@ export async function handleRequest(request, env) {
     assert(envelope.consent.version === 1 && envelope.consent.purpose === "ai-improvement", "Invalid consent marker");
   } catch (error) {
     const tooLarge = error instanceof ValidationError && error.message === "Request too large";
-    return jsonResponse(tooLarge ? 413 : 400, { ok: false, error: tooLarge ? "request_too_large" : "invalid_request" }, origin);
+    return jsonResponse(tooLarge ? 413 : 400,
+      { ok: false, error: tooLarge ? "request_too_large" : "invalid_request" }, origin);
   }
 
-  if (!await verifyTurnstile(envelope.turnstileToken, env)) {
+  if (!await verifyTurnstile(envelope.turnstileToken, env, clientKey === "unknown" ? "" : clientKey)) {
     return jsonResponse(403, { ok: false, error: "turnstile_failed" }, origin);
   }
 
   try {
     validateRecord(envelope.record, maxPlies);
-    const recordText = JSON.stringify(envelope.record);
+    const recordText = stableStringify(envelope.record);
     if (new TextEncoder().encode(recordText).byteLength > maxRecordBytes) {
       return jsonResponse(413, { ok: false, error: "record_too_large" }, origin);
     }
     replayAndVerify(envelope.record);
 
     const hash = await sha256Hex(recordText);
-    const key = `records/v1/${hash}.json`;
-    if (typeof env.GAME_RECORDS.head === "function") {
-      const existing = await env.GAME_RECORDS.head(key);
-      if (existing) return jsonResponse(200, { ok: true, duplicate: true, id: hash.slice(0, 16) }, origin);
-    }
+    const key = `${RECORD_PREFIX}${hash}.json`;
+    const existing = await env.GAME_RECORDS.head(key);
+    if (existing) return jsonResponse(200, { ok: true, duplicate: true, id: hash.slice(0, 16) }, origin);
 
-    if (!await checkRateLimit(env.GLOBAL_ACCEPT_RATE_LIMITER, "accepted")) {
+    if (!await checkRateLimit(env.LOCATION_ACCEPT_RATE_LIMITER, "accepted")) {
       return jsonResponse(429, { ok: false, error: "collection_busy" }, origin);
     }
-    await env.GAME_RECORDS.put(key, recordText, {
+
+    const quota = await reserveDailyAcceptanceSlot(env.GAME_RECORDS, maxAcceptedPerUtcDay);
+    if (!quota.accepted) {
+      const error = quota.reason === "daily_limit" ? "daily_collection_limit" : "collection_busy";
+      return jsonResponse(429, { ok: false, error }, origin);
+    }
+
+    const stored = await env.GAME_RECORDS.put(key, recordText, {
+      onlyIf: new Headers({ "If-None-Match": "*" }),
       httpMetadata: { contentType: "application/json; charset=utf-8" },
       customMetadata: {
         format: FORMAT,
@@ -335,9 +444,10 @@ export async function handleRequest(request, env) {
         difficulty: envelope.record.settings.ai.difficulty,
         winnerSide: envelope.record.result.winnerSide,
         plies: String(envelope.record.result.plies),
-        validation: "schema+replay+turnstile",
+        validation: "standard-initial+exact-moves+replay+turnstile",
       },
     });
+    if (!stored) return jsonResponse(200, { ok: true, duplicate: true, id: hash.slice(0, 16) }, origin);
     return jsonResponse(201, { ok: true, duplicate: false, id: hash.slice(0, 16) }, origin);
   } catch (error) {
     if (error instanceof ValidationError) {
