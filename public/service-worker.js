@@ -1,6 +1,6 @@
 "use strict";
-// Refresh marker: opt-in game-record contribution client (2026-09-16).
-const CACHE = "bao-la-kiswahili-v44";
+// Refresh marker: controlled game-record contribution test config (2026-09-16).
+const CACHE = "bao-la-kiswahili-v45";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./rules", "./rules.css", "./rules.js",
   ...["board-overview", "initial-setup", "sowing-before", "sowing-relay", "sowing-stop",
