@@ -16,7 +16,8 @@ test("public contribution config uses the controlled custom-domain endpoint", ()
   assert.match(clientConfigSource, /maxRecordBytes:\s*49152/);
 });
 
-test("Worker configuration uses private R2 binding and Free-plan-compatible application limits", () => {
+test("Worker configuration uses private R2 binding and production custom-domain routing", () => {
+  assert.equal(wrangler.workers_dev, false);
   assert.equal(wrangler.r2_buckets.length, 1);
   assert.deepEqual(wrangler.r2_buckets[0], {
     binding: "GAME_RECORDS",
