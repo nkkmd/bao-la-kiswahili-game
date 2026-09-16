@@ -16,6 +16,7 @@ on:
       - 'test/game-record-browser-hook.test.js'
       - 'test/game-record-contribution-config.test.js'
       - 'test/game-record-contribution-worker.test.mjs'
+      - 'test/game-record-contribution-fetch-metadata.test.mjs'
       - '.github/workflows/game-record-verification.yml'
   workflow_dispatch:
 
@@ -38,7 +39,8 @@ jobs:
             test/game-record-ui.test.js \
             test/game-record-browser-hook.test.js \
             test/game-record-contribution-config.test.js \
-            test/game-record-contribution-worker.test.mjs
+            test/game-record-contribution-worker.test.mjs \
+            test/game-record-contribution-fetch-metadata.test.mjs
       - name: Verify adjacent public UI regressions
         run: |
           node --test \
