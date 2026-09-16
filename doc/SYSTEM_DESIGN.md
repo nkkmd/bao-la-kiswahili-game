@@ -106,9 +106,9 @@ AI診断と棋譜は別形式・別目的である。診断には局面・選択
 
 ## 7. オフライン・配信・ルール説明
 
-Service Workerのインストール時に、ゲーム画面・依存スクリプト・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。任意提供機能追加後の現行キャッシュ名は`bao-la-kiswahili-v46`である。
+Service Workerのインストール時に、ゲーム画面・依存スクリプト・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。v0.4.0リリース最終化後の現行キャッシュ名は`bao-la-kiswahili-v47`である。
 
-Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHTMLページだけURLの別名・言語クエリーを共通キャッシュへ対応させる。図解ルールは日本語・英語の切替、言語指定URLの共有、図版の拡大に対応する。対局中ルールガイドのリンクは現在の表示言語を引き継ぎ、対応する節を直接開く。
+Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHTMLページだけURLの別名・言語クエリーを共通キャッシュへ対応させる。図解ルールは日本語・英語の切替、言語指定URLの共有、図版の拡大に対応する。対局中ルールガイドのリンクは現在の表示言語を引き継ぎ、対応する節を直接開ける。
 
 配信対象は`public/`全体。任意提供のbackendは`cloudflare/game-record-ingest/`を別途Wranglerでdeployし、本番入口は`bao-data.cultivationdata.net`のCustom Domainだけとする。`workers_dev:false`と`preview_urls:false`で`*.workers.dev`・Preview URLを本番入口に使わない。古いrelease manifestはその時点の配信証拠として保持し、現在の配信ファイル一覧として流用しない。ローカルHTTPサーバー、clean URLの条件、ライセンスは[ルートREADME](../README.md)を参照する。
 
