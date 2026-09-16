@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "bao-game-record-ingest",
-  "main": "src/index.mjs",
+  "main": "src/entry.mjs",
   "compatibility_date": "2026-09-16",
   "workers_dev": true,
   "limits": {
@@ -11,6 +11,7 @@
   "vars": {
     "COLLECTION_ENABLED": "false",
     "ALLOWED_ORIGINS": "https://bao-la-kiswahili.cultivationdata.net,https://cdn-ts.pages.dev",
+    "FETCH_METADATA_CROSS_SITE_ORIGINS": "https://cdn-ts.pages.dev",
     "TURNSTILE_HOSTNAMES": "bao-la-kiswahili.cultivationdata.net,cdn-ts.pages.dev",
     "MAX_REQUEST_BYTES": "65536",
     "MAX_RECORD_BYTES": "49152",
