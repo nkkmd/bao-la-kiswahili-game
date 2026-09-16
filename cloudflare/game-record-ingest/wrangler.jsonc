@@ -3,7 +3,7 @@
   "name": "bao-game-record-ingest",
   "main": "src/entry.mjs",
   "compatibility_date": "2026-09-16",
-  "workers_dev": true,
+  "workers_dev": false,
   "vars": {
     "COLLECTION_ENABLED": "false",
     "ALLOWED_ORIGINS": "https://bao-la-kiswahili.cultivationdata.net,https://cdn-ts.pages.dev",
