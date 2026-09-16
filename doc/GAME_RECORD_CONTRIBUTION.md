@@ -8,7 +8,7 @@
 
 本機能は、コンピュータ対戦終了後に利用者が**その1局について明示的に同意した場合だけ**、完成棋譜をBao AIの評価・改善用途へ提供できるようにするものである。
 
-2026-09-16時点で、private R2、90日lifecycle、Turnstile、Workers Free上の収集Workerを実Cloudflare環境へ構築し、`cdn-ts.pages.dev` からのcontrolled real submissionとスマートフォン実機送信まで成功した。さらにWorkerへ本番用custom domain `bao-data.cultivationdata.net` を追加し、kill switchを維持したまま到達性とOrigin境界を確認した。
+2026-09-16時点で、private R2、90日lifecycle、Turnstile、Workers Free上の収集Workerを実Cloudflare環境へ構築し、`cdn-ts.pages.dev` からのcontrolled real submission、スマートフォン実機送信、production custom domain経由のcontrolled submissionまで成功した。Workerの本番入口は `bao-data.cultivationdata.net` とし、Wrangler設定でもCustom Domainを正式なdeploy targetとして管理する。`workers.dev` とPreview URLは無効化し、server-side kill switch `COLLECTION_ENABLED=false` を維持した状態で本番前検証を完了した。
 
 実Cloudflare環境で次を確認済みである。
 
@@ -16,6 +16,7 @@
 - R2へ新規record objectが保存される
 - 保存recordにTurnstile token、consent envelope、送信元IP、User-Agent、fingerprint、氏名、メール等の不要情報が含まれない
 - 同一棋譜はduplicateとして成功応答され、record objectを増やさない
+- duplicateは日次quotaを消費しない
 - Workers Metrics / Observabilityで明確なCPU上限超過、Exceeded Resources、異常を認めない
 - malformed requestは `400 invalid_request` で拒否される
 - Workers Rate Limiting APIはbest-effortのburst緩和として扱い、hard accountingには使用しない
@@ -23,8 +24,10 @@
 - `https://bao-data.cultivationdata.net/v1/game-records` へ本番Origin相当のsame-site POSTを送るとkill switchで503になる
 - 管理下テストOrigin `https://cdn-ts.pages.dev` のcross-site POSTも明示例外を通過してkill switchで503になる
 - 未許可Origin `https://example.com` はexact Origin allow-listで `403 origin_not_allowed` となる
+- Custom Domain経由の新規棋譜送信後も、R2保存数、日次quota、CPU / resource、Turnstileに異常がない
+- Wrangler 4.132.0による最終deployで `bao-data.cultivationdata.net (custom domain)` がdeploy targetとして表示され、Worker Version ID `be3409ed-e0e9-4d9b-938f-10aea360110c` が発行された
 
-`main`への統合および本番収集開始はまだ行わない。custom domainを使ったcontrolled submissionと最終CI・文書整合性確認を完了した後に別途判断する。
+本番前の機能・サーバー・privacy・duplicate・CPU・異常系・スマートフォン・Custom Domainの検証は完了した。`main`への統合および本番収集開始は、明示的な統合指示を受けた場合にのみ行う。
 
 ## 2. 目的
 
@@ -135,22 +138,23 @@ Turnstileはserver-side Siteverifyを行い、`success`、`action = game_record_
 ### Stage C — controlled test site verification
 完了。正常受理、R2保存、privacy boundary、duplicate、malformed request、CPU / resource error、スマートフォン実機を確認した。
 
-### Stage D — production custom-domain preflight
+### Stage D — production custom-domain verification
+完了。
 
-2026-09-16に `bao-data.cultivationdata.net` をWorker Custom Domainとして追加した。kill switchをOFFのまま次を確認済み。
+2026-09-16に `bao-data.cultivationdata.net` をWorker Custom Domainとして追加し、次を確認した。
 
 - production same-site request → `503 collection_disabled`
 - controlled test cross-site exception → `503 collection_disabled`
 - disallowed third-party Origin → `403 origin_not_allowed`
+- client configが `https://bao-data.cultivationdata.net/v1/game-records` を使用
+- Custom Domain経由の新規棋譜1件を正常受理
+- R2 record数と日次quotaがそれぞれ1だけ増加
+- CPU / resource、Turnstile、保存内容に異常なし
+- `COLLECTION_ENABLED=false`へ復帰
+- `workers_dev:false`、`preview_urls:false` を設定
+- `routes` に `bao-data.cultivationdata.net` を `custom_domain:true` で明示
+- 最終Wrangler deployでCustom Domainがdeploy targetとして表示された
 
-client configはcustom domain endpointへ切替済み。Service Worker cacheを更新し、古いworkers.dev endpointが端末キャッシュに残らないようにした。
+### Stage E — main統合待ち
 
-残る工程:
-
-1. custom-domain endpoint切替後のCIを完了
-2. `cdn-ts.pages.dev` を最新`public/`で再deploy
-3. `COLLECTION_ENABLED=true` の短いwindowでcustom domain経由の新規棋譜1件を送信
-4. R2 / quota / CPU / Turnstile / duplicateをspot check
-5. `COLLECTION_ENABLED=false`へ復帰
-6. 最終文書・CI・差分確認
-7. 明示的な許可後にのみ`main`へ統合
+本番前検証は完了している。最新CIと差分整合性を確認し、問題がなければ、利用者からの明示的な許可後にのみ`main`へ統合する。
