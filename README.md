@@ -1,6 +1,6 @@
 # Bao la Kiswahili
 
-Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に対応した、Bao の静的ブラウザー実装です。通常の静的ファイルだけで動作し、ビルド手順は不要です。ゲームロジックはすべてブラウザー内で実行されます。
+Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に対応した、Bao のブラウザー実装です。対局本体は通常の静的ファイルだけで動作し、ビルド手順は不要です。ゲーム進行、ルール判定、AI探索はブラウザー内で実行されます。AI改善用の任意棋譜提供を利用する場合だけ、別系統のCloudflare Workerへ明示同意後の完成棋譜を送信します。
 
 本リポジトリで提供するゲームの公式公開サイトは [https://bao-la-kiswahili.cultivationdata.net/](https://bao-la-kiswahili.cultivationdata.net/) です。
 
@@ -26,6 +26,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - 日本語・英語で読める、10点の図版付きルール説明ページ
 - 捕獲、takata、連続種まき、nyumba、namua→mtaji、終局などを対局中に日英で説明し、対応する図解ルールへ移動できるルールガイド
 - 終局後に、初期局面・確定着手列・対局設定・勝敗・最終局面を`bao-game-record` v1のJSONとして保存できる棋譜機能
+- 完成したコンピューター対戦について、1局ごとの明示同意後だけ検証済み棋譜をAI改善用に送信できる任意提供機能
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
 - 外部送信なしで局面JSONをファイル保存し、直前のAI着手を端末内に記録する診断機能
@@ -60,7 +61,7 @@ python3 -m http.server 8000
 http://localhost:8000/
 ```
 
-`file://` 経由で `public/index.html` を開いても大半のゲームプレイは動作しますが、Service Worker 機能には HTTP(S) が必要です。
+`file://` 経由で `public/index.html` を開いても大半のゲームプレイは動作しますが、Service Worker 機能には HTTP(S) が必要です。任意棋譜提供はTurnstileと収集APIへのオンライン通信を必要とします。
 
 ## デプロイ
 
@@ -72,7 +73,9 @@ public/
 
 Privacy Policy へのリンクとPWAのオフラインキャッシュは、Cloudflare Pages の clean URL に合わせて `./privacy` を使用します。リダイレクト済みの `privacy.html` レスポンスはキャッシュしません。
 
-図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
+図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js`・`game-record-contribution-config.js`・`game-record-contribution.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
+
+任意棋譜提供のbackendは`cloudflare/game-record-ingest/`から別途Wranglerでdeployします。本番入口は`https://bao-data.cultivationdata.net`のCustom Domainに限定し、リポジトリ既定の`COLLECTION_ENABLED`は`false`です。Turnstile secretなどのcredentialはCloudflare側のsecretとして管理し、公開リポジトリへcommitしません。運用条件は[`doc/GAME_RECORD_CONTRIBUTION.md`](doc/GAME_RECORD_CONTRIBUTION.md)と[`cloudflare/game-record-ingest/README.md`](cloudflare/game-record-ingest/README.md)を参照してください。
 
 ## テスト
 
@@ -101,16 +104,19 @@ node tools/build-rules-figures.js --check
 
 日英表示、図版、対局への導線、オフライン更新を含むブラウザー回帰は[図解ルールのCI](.github/workflows/illustrated-rules.yml)で管理します。
 
-棋譜保存の形式、実エンジンでの再生、確定着手だけの記録、終局前後のUI、PWAキャッシュ、Privacy Policyとの整合は次で確認できます。
+棋譜保存と任意提供の形式、実エンジンでの再生、確定着手だけの記録、終局前後のUI、PWAキャッシュ、Privacy Policy、Worker validation、Origin・Fetch Metadata境界との整合は次で確認できます。
 
 ```sh
 node --test \
   test/game-record.test.js \
   test/game-record-browser-hook.test.js \
-  test/game-record-ui.test.js
+  test/game-record-ui.test.js \
+  test/game-record-contribution-config.test.js \
+  test/game-record-contribution-worker.test.mjs \
+  test/game-record-contribution-fetch-metadata.test.mjs
 ```
 
-この選定と隣接回帰は[棋譜保存の専用CI](.github/workflows/game-record-verification.yml)で管理します。
+この選定と隣接回帰は[棋譜保存・任意提供の専用CI](.github/workflows/game-record-verification.yml)で管理します。
 
 ## 棋譜保存
 
@@ -120,11 +126,19 @@ node --test \
 bao-game-record-YYYYMMDD-HHMMSS.json
 ```
 
-対局中は棋譜をブラウザのメモリ上だけに保持し、localStorageやIndexedDBへ自動保存しません。ゲームサーバーや外部サービスへ棋譜を送信する機能もありません。
+対局中は棋譜をブラウザのメモリ上だけに保持し、localStorageやIndexedDBへ自動保存しません。「棋譜を保存」は端末内へのファイル保存だけを行い、外部送信や送信同意を兼ねません。
 
 保存するのは、初期局面、確定した着手列、対局設定、勝敗、最終局面です。sow/relayの中間イベントやAI探索ノードは保存しないため、棋譜記録はAI探索ループと分離されています。現行version `1`では、途中棋譜の保存、棋譜ファイルの画面読み込み、中断対局の自動復元は行いません。
 
 形式、保存field、AI改善用診断との違い、再生検証、計算資源上の境界は[`doc/GAME_RECORD.md`](doc/GAME_RECORD.md)を参照してください。
+
+### AI改善のための任意棋譜提供
+
+完成したコンピューター対戦では、任意提供が有効な配信版に限り「AI改善のため棋譜を送信 / Send game record for AI improvement」を別操作として表示します。目的と送信内容を確認し、Cloudflare Turnstileの検証後、その1局について「同意して送信」を押した場合だけ送信します。ローカル2人対戦、自動送信、一括同意、バックグラウンド再送、送信用local queueは対象外です。
+
+送信先は`https://bao-data.cultivationdata.net/v1/game-records`です。Cloudflare Worker側でexact Origin、Fetch Metadata、Turnstile、strict schema、標準初期局面、canonical move、全着手replay、最終局面・結果を検証し、SHA-256で重複排除した後にprivate R2へ保存します。raw棋譜には90日のlifecycleを設定し、source IP、Turnstile token、consent envelopeは保存棋譜やそのR2 metadataへ書き込みません。提供棋譜は`anonymous / unverified contribution`として扱い、人間の着手を正解手とみなした自動学習や、AI世代の正式採用判断へ無条件には使用しません。
+
+詳しい安全設計、無料枠の上限、日次quota、検証結果、運用境界は[`doc/GAME_RECORD_CONTRIBUTION.md`](doc/GAME_RECORD_CONTRIBUTION.md)を参照してください。公開サイト上のデータ取扱いは[`public/privacy.html`](public/privacy.html)を正本とします。
 
 ## AI ベンチマーク
 
@@ -188,6 +202,8 @@ node tools/diagnostic-to-fixture.js \
 | `public/` | デプロイ用の静的ゲームファイル |
 | `public/main.js` | 対局進行、Canvas表示、入力、AI要求、対局中ルールガイド |
 | `public/game-record.js` | 対局中の確定着手記録、棋譜検証・再生、終局後のJSON保存 |
+| `public/game-record-contribution-config.js` | 任意棋譜提供のCustom Domain endpoint、Turnstile Sitekey、client側設定 |
+| `public/game-record-contribution.js` | 1局単位の同意、Turnstile、client側検証、棋譜送信UI |
 | `public/rules.html` | 日英対応の図解ルール説明 |
 | `public/assets/rules/` | ルール図版と出典・ライセンス記録 |
 | `public/engine.js` | 盤面状態、合法手生成、着手適用 |
@@ -202,6 +218,7 @@ node tools/diagnostic-to-fixture.js \
 | `public/diagnostics.js` | AI診断局面の許可リスト形式、復元、端末内記録 |
 | `public/review-suggestion.js` | Phase 10Aの探索表示、保存推奨判定、診断根拠付与 |
 | `public/diagnostic-download.js` | 診断JSONの日時付きファイル保存 |
+| `cloudflare/game-record-ingest/` | 任意棋譜提供Worker、Turnstile検証、replay、dedupe、rate limit、private R2保存 |
 | `tools/` | ベンチマーク、チューニングスクリプト、実験ランナー |
 | `test/` | 回帰テスト |
 | `artifacts/` | 保存済みのベンチマーク・チューニング・研究出力 |
@@ -320,6 +337,7 @@ core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instr
 - [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md): 採用ルールの参照元、固定コミット、実装差分、更新方針
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
 - [`doc/GAME_RECORD.md`](doc/GAME_RECORD.md): 棋譜保存の形式、UI、計算資源上の境界、プライバシー、再生検証、現在の制限
+- [`doc/GAME_RECORD_CONTRIBUTION.md`](doc/GAME_RECORD_CONTRIBUTION.md): AI改善用の任意棋譜提供、同意、Worker検証、R2・privacy・運用境界
 - [`doc/JOSEKI_RESEARCH.md`](doc/JOSEKI_RESEARCH.md): 定石研究の方法、全フェーズの実験結果、最終判断をまとめた統合記録
 - [`doc/JOSEKI_RESEARCH_PLAN.md`](doc/JOSEKI_RESEARCH_PLAN.md): 定石研究の研究課題、判定基準、完了条件、実施記録
 - [`doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md`](doc/PAIRED_OPENING_FIRST_PLAYER_RESEARCH_PLAN.md): 全継続AI条件で固定開局系列を共有するペア追試計画
