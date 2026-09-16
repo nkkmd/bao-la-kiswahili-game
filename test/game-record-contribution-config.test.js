@@ -18,6 +18,13 @@ test("public contribution config uses the controlled custom-domain endpoint", ()
 
 test("Worker configuration uses private R2 binding and production custom-domain routing", () => {
   assert.equal(wrangler.workers_dev, false);
+  assert.equal(wrangler.preview_urls, false);
+  assert.deepEqual(wrangler.routes, [
+    {
+      pattern: "bao-data.cultivationdata.net",
+      custom_domain: true,
+    },
+  ]);
   assert.equal(wrangler.r2_buckets.length, 1);
   assert.deepEqual(wrangler.r2_buckets[0], {
     binding: "GAME_RECORDS",
