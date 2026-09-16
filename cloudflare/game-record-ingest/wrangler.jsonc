@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bao-game-record-ingest",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-09-16",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGINS": "https://bao-la-kiswahili.cultivationdata.net,https://cdn-ts.pages.dev",
+    "TURNSTILE_HOSTNAMES": "bao-la-kiswahili.cultivationdata.net,cdn-ts.pages.dev",
+    "MAX_REQUEST_BYTES": "65536",
+    "MAX_RECORD_BYTES": "49152",
+    "MAX_PLIES": "384"
+  },
+  "r2_buckets": [
+    {
+      "binding": "GAME_RECORDS",
+      "bucket_name": "bao-game-record-contributions"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "PER_CLIENT_RATE_LIMITER",
+      "namespace_id": "26091601",
+      "simple": {
+        "limit": 3,
+        "period": 60
+      }
+    },
+    {
+      "name": "GLOBAL_ACCEPT_RATE_LIMITER",
+      "namespace_id": "26091602",
+      "simple": {
+        "limit": 1,
+        "period": 60
+      }
+    }
+  ]
+}
