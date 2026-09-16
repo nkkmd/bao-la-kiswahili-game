@@ -56,6 +56,22 @@ function completeStandardRecord() {
   };
 }
 
+function tamperPositionPreservingKeteTotal(position) {
+  const pits = [];
+  for (let player = 0; player < 2; player += 1) {
+    for (let row = 0; row < 2; row += 1) {
+      for (let index = 0; index < 8; index += 1) {
+        pits.push({ player, row, index, count: position.pits[player][row][index] });
+      }
+    }
+  }
+  const source = pits.find((pit) => pit.count > 0);
+  const target = pits.find((pit) => pit !== source && pit.count < 64);
+  assert.ok(source && target, "expected movable kete for tamper fixture");
+  position.pits[source.player][source.row][source.index] -= 1;
+  position.pits[target.player][target.row][target.index] += 1;
+}
+
 function mockEnv() {
   const objects = new Map();
   let etagSequence = 0;
@@ -180,10 +196,9 @@ test("worker rejects non-canonical move fields", () => {
   assert.throws(() => validateRecord(record), /house choice/);
 });
 
-test("worker replay rejects a tampered final position", () => {
+test("worker replay rejects a tampered final position that still satisfies the schema", () => {
   const record = completeStandardRecord();
-  record.finalPosition.reserve[0] -= 1;
-  record.finalPosition.pending[0] += 1;
+  tamperPositionPreservingKeteTotal(record.finalPosition);
   assert.doesNotThrow(() => validateRecord(record));
   assert.throws(() => replayAndVerify(record), /Final position mismatch/);
 });
