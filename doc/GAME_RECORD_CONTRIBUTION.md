@@ -13,8 +13,7 @@
 実Cloudflare環境で次を確認済みである。
 
 - `COLLECTION_ENABLED=false` 時にAPIが `503 collection_disabled` でfail closedになる
-- `control/daily/2026-09-16.json` のaccepted countが正常に更新される
-- `records/v1/` へ新規record objectが保存される
+- R2へ新規record objectが保存される
 - 保存recordにTurnstile token、consent envelope、送信元IP、User-Agent、fingerprint、氏名、メール等の不要情報が含まれない
 - 同一棋譜はduplicateとして成功応答され、record objectを増やさない
 - Workers Metrics / Observabilityで明確なCPU上限超過、Exceeded Resources、異常を認めない
@@ -40,60 +39,17 @@
 
 ## 3. 利用者から見た流れ
 
-対象は完成した**コンピュータ対戦だけ**とする。ローカル2人対戦は、もう一人の参加者の同意問題を避けるため初期版では対象外とする。
+対象は完成した**コンピュータ対戦だけ**とする。ローカル2人対戦は初期版では対象外とする。
 
-終局後、既存の
+終局後、既存の「棋譜を保存」に加えて、収集機能が有効な配信版だけ「AI改善のため棋譜を送信」を表示する。送信ボタンを押しても直ちには送信せず、確認dialogで目的、送る情報、送らない情報、Cloudflareによる通信処理、Privacy Policyへのリンクを表示する。Turnstile検証が完了し、利用者が「同意して送信」を押した場合だけPOSTする。
 
-```text
-棋譜を保存
-```
-
-に加えて、収集機能が有効な配信版だけ次を表示する。
-
-```text
-AI改善のため棋譜を送信
-```
-
-送信ボタンを押しても直ちには送信しない。確認dialogで目的、送る情報、送らない情報、Cloudflareによる通信処理、Privacy Policyへのリンクを表示する。Turnstile検証が完了し、利用者が「同意して送信」を押した場合だけPOSTする。
-
-同意は1局単位であり、次のことを行わない。
-
-- 自動送信
-- 将来の対局を含む一括同意
-- バックグラウンド送信
-- 失敗時の自動queue・再送
-- localStorageへの送信用棋譜蓄積
-
-収集APIが停止中・上限到達・ネットワークエラーの場合でも、通常対局と「棋譜を保存」は独立して利用できる。
+同意は1局単位であり、自動送信、一括同意、バックグラウンド送信、失敗時の自動queue・再送、localStorageへの送信用棋譜蓄積は行わない。
 
 ## 4. 送信内容
 
-R2に保存するrecord bodyは、検証済みの既存`bao-game-record` v1 JSONだけとする。保存前にobject key順を正規化するが、意味上のfieldは変更しない。
+R2に保存するrecord bodyは、検証済みの既存`bao-game-record` v1 JSONだけとする。含まれる主要情報はルール基準、対局モード、人間側、AI難易度、AI generation / release ID、初期局面、確定着手列、勝敗・終了理由、最終局面である。
 
-含まれる主要情報:
-
-- ルール基準
-- 対局モード
-- 人間側
-- AI難易度
-- AI generation / release ID
-- 利用可能な場合の採用ID・評価器識別
-- 初期局面
-- 確定着手列
-- 勝敗・終了理由
-- 最終局面
-
-収集のために追加しない情報:
-
-- 氏名
-- メールアドレス
-- 自由記述
-- 恒久的なuser ID
-- Google Analytics client ID
-- AI探索統計
-- User-Agentを含む端末fingerprint
-- 送信元IPアドレス
-- Turnstile token
+収集のために氏名、メールアドレス、自由記述、恒久的なuser ID、Google Analytics client ID、AI探索統計、User-Agentを含む端末fingerprint、送信元IPアドレス、Turnstile tokenを追加しない。
 
 送信元IPアドレスは短時間のabuse防止rate-limit keyとTurnstile Siteverifyの`remoteip`としてWorker実行中に利用するが、R2 record object body・object key・custom metadataへ書き込まない。
 
@@ -120,7 +76,6 @@ Cloudflare Worker
   - Turnstile server validation
   - strict schema allowlist
   - rules/version check
-  - 64-kete invariant
   - standard initial-position check
   - canonical move-variant check
   - engine replay
@@ -130,25 +85,13 @@ Cloudflare Worker
         |
         v
 private R2 Standard bucket
-  records/v1/<sha256>.json
-  control/daily/YYYY-MM-DD.json
 ```
 
-Worker実装は`cloudflare/game-record-ingest/`に独立配置し、公開ゲームのAI探索・ルール処理・画面処理へ収集処理を混在させない。
+## 6. 秘密情報管理
 
-## 6. 公開リポジトリでの秘密情報管理
+公開リポジトリへ`TURNSTILE_SECRET_KEY`、Cloudflare API token、その他の認証credentialをcommitしない。Turnstile site key、Worker URL、API path、R2 binding名、bucket名は公開情報として扱い、秘密であることに依存して保護しない。
 
-Workerコード、API path、R2 binding名、bucket名、Turnstile site keyは公開情報として扱う。これらを秘密であることに依存して保護しない。
-
-公開リポジトリへcommitしないもの:
-
-- `TURNSTILE_SECRET_KEY`
-- Cloudflare API token
-- その他の認証credential
-
-`TURNSTILE_SECRET_KEY`はCloudflare側のsecretとして設定する。R2 bucketはPublic Accessを有効化しない。
-
-## 7. 無料枠を意識したapplication-side上限
+## 7. 上限
 
 | 項目 | 初期上限 |
 | --- | ---: |
@@ -161,97 +104,36 @@ Workerコード、API path、R2 binding名、bucket名、Turnstile site keyは�
 | コードが許す日次上限の最大値 | 1,000 records / UTC day |
 | raw R2 object retention | **90日** |
 
-Workers Rate Limiting APIはCloudflare location単位・permissive・eventually consistentであり、厳密な全世界共通カウンターではない。2026-09-16の実試験では`3 requests / 60 s`設定でも4連続malformed requestがすべて400となったため、strict thresholdの合否判定には使用しない。課金・保存件数のhard stopはprivate R2の日次quotaで行う。
+Workers Rate Limiting APIは厳密なaccountingには使用せず、private R2の日次quotaをhard stopとする。
 
-全世界共通の日次上限は、private R2 bucket内の`control/daily/YYYY-MM-DD.json`に集計値だけを置き、R2 conditional `PUT`のETag / `If-None-Match`を利用して更新する。競合時は有限回だけ再試行し、quota stateを安全に確定できなければfail closedで新規棋譜を保存しない。
+## 8. Worker validation
 
-既定500件/日、48 KiB/件、90日保持をすべて上限まで使ってもraw record payloadは概算約2.2 GBである。新規1件につきrecord writeとquota updateで最大2回のClass A operationを使うため、30日で概ね3万Class A operationsとなる。
+Workerはbrowserから送られた内容を信頼しない。computer対戦のみを受け付け、strict allowlist、ルールbaseline、石総数、標準初期局面、canonical move、engine replay、最終局面・結果を検証する。replay検証は外さず、CPU上限へ近づく場合は`MAX_PLIES`を引き下げる。
 
-無料枠の仕様は変更され得るため、本番開始前と定期運用時にCloudflareの最新limits/pricingを再確認する。
-
-## 8. Worker側validation
-
-Workerはbrowserから送られた内容を信頼しない。
-
-### 8.1 envelope
-
-許可するtop-level field:
-
-```text
-record
-turnstileToken
-consent
-```
-
-`consent`はversionとpurposeのみを許可し、現在は`purpose = ai-improvement`とする。
-
-### 8.2 record
-
-`bao-game-record` v1で定義したfield以外を拒否する。computer対戦のみを受け付け、ルールbaselineを照合する。局面配列、値範囲、石総数64、着手field、結果等を検証する。さらに、公開ゲームの`engine.initialState()`と完全一致する標準初期局面から始まる棋譜だけを受理する。
-
-### 8.3 replay
-
-公開ゲームと同じ`public/engine.js`をWorker bundleから使用する。各plyでは、棋譜の`turn`・`player`・`phase`が再生局面と一致することを確認し、`moveVariantsForSearch`が返すcanonical move variantと完全一致する手だけを許可する。その後`applyMoveForSearch`で着手を進め、最後に再生結果と`finalPosition`を完全照合する。
-
-replay検証は外さない。長大な合法棋譜でCPU上限へ近づく場合は`MAX_PLIES`を引き下げる。
-
-## 9. Origin・Fetch Metadata・Turnstile・rate limit
+## 9. Origin・Fetch Metadata・Turnstile
 
 exact Origin allow-listを第一の境界とする。Fetch Metadata gateは、許可Originからの状態変更POSTに追加適用する。したがって未許可Originは`origin_not_allowed`で拒否され、許可OriginでもFetch Metadataが不正なら`fetch_metadata_rejected`で拒否される。
 
-本番 `bao-la-kiswahili.cultivationdata.net` から `bao-data.cultivationdata.net` への送信はsame-siteとして扱う。テストサイト `cdn-ts.pages.dev` は別siteなので、完全一致した管理下Originだけをcross-site例外とする。
+本番 `bao-la-kiswahili.cultivationdata.net` から `bao-data.cultivationdata.net` への送信はsame-siteとして扱う。テストサイト `cdn-ts.pages.dev` は完全一致した管理下Originだけをcross-site例外とする。
 
 Turnstileはserver-side Siteverifyを行い、`success`、`action = game_record_contribution`、許可hostnameを照合する。
 
-同一接続元rate limitとlocation-scoped limiterはbest-effortのabuse緩和であり、課金上限とはみなさない。
+## 10. 重複排除・R2
 
-## 10. 重複排除・日次quota・R2
+棋譜JSONを正規化してSHA-256を計算し、`records/v1/<sha256>.json`へ保存する。同一keyが存在する場合は新規record writeも日次quota消費も行わず、利用者には受信済みとして成功応答を返す。
 
-保存前に棋譜objectのkey順を再帰的に正規化し、そのJSONからSHA-256を計算する。
-
-```text
-records/v1/<sha256>.json
-```
-
-同一keyが存在する場合は新規record writeも日次quota消費も行わず、利用者には受信済みとして成功応答を返す。
-
-日次quota:
-
-```text
-control/daily/YYYY-MM-DD.json
-```
-
-内容は`day`と`accepted`だけであり、IP、棋譜hash、利用者識別情報は持たない。
-
-R2 record custom metadataはformat/version、AI generation、difficulty、winner side、plies、validation levelに限定する。bucket全体へ90日expiration lifecycleを設定する。
+日次quotaは`control/daily/YYYY-MM-DD.json`に`day`と`accepted`だけを保持する。R2 record custom metadataはformat/version、AI generation、difficulty、winner side、plies、validation levelに限定する。bucket全体へ90日expiration lifecycleを設定する。
 
 ## 11. 導入・検証段階
 
 ### Stage A — リポジトリ側の隔離実装
-
 完了。
 
 ### Stage B — Cloudflare実環境のfail-closed確認
-
 完了。
-
-- private R2 Standard bucket
-- 90日expiration lifecycle
-- Turnstile Managed widgetとWorker secret
-- Workers FreeへのWorker deploy
-- Origin / Fetch Metadata / kill switch確認
 
 ### Stage C — controlled test site verification
-
-完了。
-
-- contribution UI / explicit consent / Turnstile
-- 正常受理・R2保存
-- privacy boundary
-- duplicate
-- malformed request
-- CPU / resource error
-- smartphone実機
+完了。正常受理、R2保存、privacy boundary、duplicate、malformed request、CPU / resource error、スマートフォン実機を確認した。
 
 ### Stage D — production custom-domain preflight
 
