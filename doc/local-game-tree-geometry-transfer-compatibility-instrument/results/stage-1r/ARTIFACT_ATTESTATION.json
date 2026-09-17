@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "sourceFreshExecution": {
+    "runId": 35224920019,
+    "headSha": "90aff0561538113c203cbf8efa8977420a19dca1",
+    "workflowConclusion": "failure",
+    "freshWorkflowRerunPerformed": false
+  },
+  "downstreamRecovery": {
+    "runId": 35265290422,
+    "headSha": "2216c19e52bd0a7ce2680426183c058ecb8fce1c",
+    "workflowConclusion": "success",
+    "freshSeedAccessPerformed": false
+  },
+  "recoverySourceBundleArtifact": {
+    "artifactId": 10517090411,
+    "digest": "sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+    "sourceArtifactCount": 1536,
+    "primaryCount": 1536,
+    "reserveCount": 0,
+    "sourceManifestDeterministicCoreSha256": "8111413773dfd9899b4562ee5089223a0aef75b6885041f4eacb1006111d7cdd",
+    "recoverySourceArtifactIndexDeterministicSha256": "7b95662b92a2129bc16f8c8a50acc1fa4ed1d1ec381504d761937a9c1e54134a"
+  },
+  "finalResultArtifact": {
+    "artifactId": 10516843232,
+    "digest": "sha256:06a7232a423fdf32fce863a938b097fc97fe3f8bf29148b8cf6638500d17e630",
+    "resultDeterministicCoreSha256": "0bf8da597bec47eb774b467be1c49bfc6f2aa43850151a44eaf2598ccb220a61",
+    "extractedFileSha256": {
+      "STAGE_1R_COMPATIBILITY_RESULT.json": "0d07f9f1ea8ba724e3f56208b5198e17c0fec6c1adcbb74a0fb67ed16d5641ee",
+      "STAGE_1R_DOWNSTREAM_RECOVERY_PROVENANCE.json": "356b0047f398a92b207a037f6305e2f9d298681899e17ae346ae4843a28a73b2",
+      "STAGE_1R_RECOVERY_EXECUTION_PROVENANCE.json": "4e23ddfeb171fb0bed0c4e3c1ea03faedccc6aca19ed6050884c9808a233653c",
+      "SOURCE_MANIFEST.json": "30d219d22f75ea8682bdab03e92ce7c69951116d57d328ca98b16438237d4ebe",
+      "RECOVERY_SOURCE_ARTIFACT_INDEX.json": "be306efc6c127953a05b21b8d1ffb73b9921f97ddce7918396a88ed2e4925d2d"
+    }
+  },
+  "decision": "COMPATIBILITY-ELIGIBLE-ALL",
+  "scopeBoundary": {
+    "compatibilityReadinessOnly": true,
+    "scientificEffectGenerated": false,
+    "formalGeneralizationDecisionGenerated": false,
+    "formalCounterexampleDecisionGenerated": false,
+    "g4_02_or_laterAutomaticallyAuthorized": false,
+    "publicAiChangeAuthorized": false,
+    "mainIntegrationAuthorized": false
+  }
+}
