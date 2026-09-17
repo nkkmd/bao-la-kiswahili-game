@@ -1,6 +1,6 @@
 # LGTTCI-STUDY1 — 現在の状態
 
-更新日: 2026-09-17
+更新日: 2026-09-18
 
 ## 正式状態
 
@@ -12,12 +12,17 @@ Research branch = research/g4-01-transfer-compatibility-instrument
 Baseline main = 6433c726d038f710b9b5af3620f1a7d30db7bdc9
 Stage 0 = LGTTCI-S0-TECHNICAL-2026-09-17-v1 / STAGE0-PASS
 Stage 1 = LGTTCI-S1-COMPATIBILITY-2026-09-17-v1 / EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION
-Stage 1R = LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1 / STAGE1R-GITHUB-ACTIONS-PRE-EXECUTION-READY / NOT-AUTHORIZED-NOT-EXECUTED
-execution route = GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE
+Stage 1R = LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1 / COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
+G4-01 / LGTTCI-STUDY1 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
+execution route = GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE + DOWNSTREAM-ONLY-RECOVERY
 old 401... compatibility namespace = QUARANTINED / NO REUSE
-fresh 402... primary seed access = 0
-paired 412... reserve seed access = 0
+Stage 1R primary source coverage = 1536 / 1536
+Stage 1R paired reserve use = 0
+fresh workflow rerun = 0
+downstream recovery fresh seed access = 0
 formal scientific effects generated = 0
+formal generalization decision generated = false
+formal counterexample decision generated = false
 G3-12 evidence reused = false
 G3-11 depth 10 rerun = false
 G4-10 depth 11 access = false
@@ -27,87 +32,97 @@ main integration authorized = false
 
 ## Stage 0
 
-`LGTTCI-S0-TECHNICAL-2026-09-17-v1`は正式に`STAGE0-PASS`となった。G3-12で見逃されたroot legal width 1のhelper precondition gapを、scientific populationへ進む前に検出・遮断できることをnegative control込みで確認済みである。
+`LGTTCI-S0-TECHNICAL-2026-09-17-v1`は`STAGE0-PASS`で完了した。G3-12で見逃されたroot legal width 1のhelper precondition gapを、scientific populationへ進む前に検出・遮断できることをnegative control込みで確認した。
 
-## 旧Stage 1の扱い
+## 旧Stage 1
 
-旧Stage 1はfresh seedへのアクセス開始後にローカル長時間processの実行環境が失われ、監査可能な最終result artifactを残せなかった。そのため`EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION`として閉じた。
+旧Stage 1はfresh seedへのアクセス開始後にローカル長時間processの実行環境が失われ、監査可能な最終result artifactを残せなかった。このため`EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION`として閉じた。
 
-旧`401...` seed blockは正確な最終read境界を証明できないため全体をquarantineし、再試験でも後続研究でも再利用しない。途中観測やpartial telemetryも科学的結果へ使用しない。
+旧`401...` seed namespaceは正確な最終read境界を証明できないため全体をquarantineし、再試験・後続研究とも再利用しない。partial telemetryも科学的結果へ使用しない。
 
-## Stage 1R再試験
+## Stage 1R
 
-再試験は新しいStage ID `LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1`として固定した。科学的contractのsource policy、root family、RAW identity、search condition、support gateは旧Stage 1から変更していない。
+再試験は`LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1`として実施した。source policy、root family、RAW identity、search condition、support gateは旧Stage 1から変更していない。
 
-新しいfresh evidenceは次で固定している。
-
-```text
-Primary:
-  SFCDF = 40211001..40211384
-  SILGM = 40212001..40212768
-  GCLD  = 40213001..40213384
-
-Paired reserve:
-  reserveSeed = primarySeed + 1000000
-  SFCDF = 41211001..41211384
-  SILGM = 41212001..41212768
-  GCLD  = 41213001..41213384
-```
-
-reserveは結果やsupport不足による救済には使えない。primaryのfresh read開始がGitHub Actions上のimmutable START artifactで確認でき、source artifactまたはcontrolled failure artifactが残っていない純粋なインフラ中断だけがpaired reserveの対象となる。明示的source process failureではreserve禁止、reserve-of-reserveも禁止する。
-
-## GitHub Actions耐障害execution contract
-
-Stage 1Rの正式execution routeは`GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE`である。
-
-- primary acquisitionはSFCDF 96 job、SILGM 192 job、GCLD 96 jobへ分割する。
-- 1 jobは4 slotを順に処理するが、各slotのfresh read直前にSTART artifact、成功直後にsource artifactをGitHubへ永続化してから次slotへ進む。
-- START artifactがないslotだけはseed未読と判定できるため、primaryの安全な自動retryを1回許可する。
-- STARTあり・source/failureなしの場合だけpaired reserveを使用できる。
-- 全block通算fresh read上限は1584、infrastructure replacement上限は48である。
-- 1536 source artifactの完全coverageを確認できた場合だけcanonical source bundleを生成する。
-- depth-5 preflight、search、continuous geometryはsource bundleだけを読む22個のseed-free measurement taskへ分離する。
-- measurement taskはfresh seedを読まないため、同一source bundle上でインフラretryできる。
-- aggregationもfresh seedを読まない。
-
-final authorization作成commit後はGitHub Actionsが独立して実行を継続するため、ChatGPTの応答や一時的ローカルruntimeを維持する必要はない。
-
-## pre-execution検証
-
-GitHub Actionsのtechnical-only workflow `LGTTCI Stage 1R pre-execution validation`は、最新run `35223729501` / job `105209943719`でsuccessした。
-
-確認済み項目:
-
-- JavaScript syntax
-- YAML parse
-- final execution authorization不存在
-- Stage 1R result不存在
-- GitHub Actions execution design
-- primary matrix counts `96 / 192 / 96`
-- seed-free measurement task count `22`
-- technical fixture source smoke
-
-GitHub Actions execution amendmentはfresh seed access 0の状態で固定した。
-
-pre-execution binding:
+fresh execution run:
 
 ```text
-path = authorizations/STAGE_1R_GITHUB_ACTIONS_PRE_EXECUTION_BINDING.json
-binding ID = LGTTCI-S1R-GHA-PREEXEC-BINDING-2026-09-17-v1
-blob SHA = 50953f47a35cb4172e2ea7838c84a8e44af35fe1
-status = BOUND-READY-AWAITING-FINAL-EXECUTION-AUTHORIZATION
+run = 35224920019
+head = 90aff0561538113c203cbf8efa8977420a19dca1
+primary source coverage = 1536 / 1536
+paired reserve use = 0
+full fresh workflow rerun = 0
 ```
 
-以前の`STAGE_1R_PRE_EXECUTION_BINDING.json`はローカルrouteの歴史的記録として保持するが、fresh executionには使用しない。
+元workflowはfresh acquisition完了後のdownstream工程でtechnical failureとなった。fresh evidenceを再取得せず、元runに保存されたimmutable source artifactだけを入力とするdownstream-only recoveryをprospectiveに固定して実施した。
 
-詳細は[`checkpoints/2026-09-17-stage1r-github-actions-pre-execution-ready.md`](checkpoints/2026-09-17-stage1r-github-actions-pre-execution-ready.md)を参照する。
+recovery run:
 
-## 現在の停止位置
+```text
+run = 35265290422
+authorization commit = 2216c19e52bd0a7ce2680426183c058ecb8fce1c
+conclusion = success
+fresh seed access during recovery = 0
+fresh workflow rerun = 0
+```
 
-Stage 1Rは**GitHub Actionsによる試験開始直前**で停止している。
+## 最終結果
 
-`STAGE_1R_EXECUTION_AUTHORIZATION.json`は存在せず、fresh `402...` / `412...` seed accessは0である。
+canonical source bundleの監査結果:
 
-次に進むのは、ユーザーが再試験開始を明示した場合だけである。その際はGitHub Actions用bindingを再確認し、final execution authorizationを一度だけ新規作成する。そのcommitが唯一のfresh execution triggerとなる。
+```text
+source artifacts = 1536 / 1536
+primary = 1536
+reserve = 0
+source manifest deterministic core SHA256 = 8111413773dfd9899b4562ee5089223a0aef75b6885041f4eacb1006111d7cdd
+source bundle artifact ID = 10517090411
+source bundle artifact digest = sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b
+```
 
-full fresh workflowの再実行、workflow_dispatchによるfresh execution、科学的結果に応じたseed/root/support rule変更は認めない。
+22個のseed-free measurement taskはすべてsuccessし、aggregateもsuccessした。
+
+```text
+SFCDF = compatible
+SILGM = compatible
+GCLD = compatible
+decision = COMPATIBILITY-ELIGIBLE-ALL
+measurement task count = 22
+result deterministic core SHA256 = 0bf8da597bec47eb774b467be1c49bfc6f2aa43850151a44eaf2598ccb220a61
+final result artifact ID = 10516843232
+final artifact digest = sha256:06a7232a423fdf32fce863a938b097fc97fe3f8bf29148b8cf6638500d17e630
+```
+
+canonical repository result:
+
+- [`results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json`](results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json)
+- [`results/stage-1r/STAGE_1R_RECOVERY_EXECUTION_PROVENANCE.json`](results/stage-1r/STAGE_1R_RECOVERY_EXECUTION_PROVENANCE.json)
+- [`results/stage-1r/STAGE_1R_DOWNSTREAM_RECOVERY_PROVENANCE.json`](results/stage-1r/STAGE_1R_DOWNSTREAM_RECOVERY_PROVENANCE.json)
+- [`results/stage-1r/ARTIFACT_ATTESTATION.json`](results/stage-1r/ARTIFACT_ATTESTATION.json)
+
+詳細は[`checkpoints/2026-09-18-stage1r-final-result.md`](checkpoints/2026-09-18-stage1r-final-result.md)を参照する。
+
+## 解釈上の境界
+
+`COMPATIBILITY-ELIGIBLE-ALL`は、SFCDF・SILGM・GCLDの3 familyすべてで後続のfresh-domain transfer研究に必要なcompatibility/readiness条件を満たしたことを示す。
+
+この結果は次を意味しない。
+
+- Research Generation 3由来claimがfresh domainへ一般化した
+- scientific effectの方向・大きさが確認された
+- counterexampleが存在する／存在しない
+- G4-02/G4-03/G4-04が自動的にauthorizationされた
+- public AIを変更すべきことが示された
+
+## Study closure
+
+G4-01 / `LGTTCI-STUDY1`は予定したtechnical validationとfresh compatibility validationを完了したため、研究完了として閉じた。
+
+正式closure state:
+
+`COMPLETE / COMPATIBILITY-ELIGIBLE-ALL`
+
+closure decision:
+
+[`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md)
+
+G4-02/G4-03/G4-04などの後続研究は、それぞれ別のauthorization reviewを経て開始する。`main`への統合もユーザーの明示指示があるまで行わない。
