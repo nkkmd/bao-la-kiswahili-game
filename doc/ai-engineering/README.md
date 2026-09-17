@@ -10,14 +10,14 @@
 
 AI世代、Program ID、Candidate IDの命名と区別は[`AI_GENERATION_NAMING.md`](AI_GENERATION_NAMING.md)を参照する。
 
-## 次期改善候補
+## 直近の改善Program
 
-2026-09-13に、次に検証する価値がある探索改善案として、**「十分良い手を基準にしたマージン制限型選択探索」**（作業名: `Good-Enough / Margin-Bounded Selective Search`）を記録した。
+2026-09-17、**「十分良い手を基準にしたマージン制限型選択探索」**（`Good-Enough / Margin-Bounded Selective Search`）を`PBAI-P12 / PBAI-C016-v1`として検証した。
 
-詳細は[`NEXT_IMPROVEMENT_CANDIDATE.md`](NEXT_IMPROVEMENT_CANDIDATE.md)を参照する。
+事前のbaseline support計測では、現行PVSにfull-window再探索コストが十分残っていることを確認した。一方、prospectiveに固定したroot margin probe方式は、`Δ = 16 / 32 / 64`のいずれもdevelopment gateを通過しなかった。再探索省略は発生したがprobe費用が節約分を上回り、eligible局面のnode数を削減できなかった。
 
-2026年9月14日の[事前調査と開始時の引継ぎ](NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)では、小規模な計測・検証へ進める価値があると評価した。既存PVSに対して省略可能な比較がどれだけ残るかを先に測ること、過去の追加探索の費用超過、計測・評価時の注意点を記録している。棋力改善は未確認であり、今回の文書整備では開始認可レビュー・新規計測・実装・対局試験を開始していない。
+最終判断は**`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`**。`PBAI-C016-v1`は不採用・閉鎖、independent validation / release holdoutは未実行、公開AI・release・AI世代の変更はない。
 
-この候補は現時点で`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`であり、正式Program IDと正式Candidate IDは未発行である。記録しただけでは公開AI、release、AI世代を変更しない。
+詳細は[`public-ai-improvement-program-12/README.md`](public-ai-improvement-program-12/README.md)と[`public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md`](public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照する。
 
-実作業へ進む場合は、候補文書と事前調査記録を読み、最新のrepository状態と公開AIの基準構成を確認し、独立した認可レビューから開始する。
+元の候補概念と開始前調査は[`NEXT_IMPROVEMENT_CANDIDATE.md`](NEXT_IMPROVEMENT_CANDIDATE.md)および[`NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md`](NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)に履歴として保持する。

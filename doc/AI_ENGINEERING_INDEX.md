@@ -1,9 +1,9 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-14
+更新日: 2026-09-17
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`**
 現在状態: **hard・expertの正式採用・本番配信内容確認・AI-GEN4正式昇格・世代表示の配信内容確認が完了**。[正式判断と再開手順](ai-engineering/ai-gen4-release/README.md)を参照する。release IDは`AI-GEN4-RELEASE-001`。easy・normalは従来構成を維持する。以下のProgram別記録は各終了時点の証拠を保持する。
 公開状態: [hardの正式採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)は`ADOPT`、本番配信状態は`DEPLOYED-ASSETS-VERIFIED`。[expertの正式採用](ai-engineering/public-ai-improvement-program-11/ADOPTION.md)は`ADOPT`、本番配信状態は`DEPLOYED-ASSETS-VERIFIED`。
 
@@ -11,14 +11,14 @@
 
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
-次期候補は[十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)です。2026年9月14日の[事前調査と開始時の引継ぎ](ai-engineering/NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)を記録しました。小規模な計測・検証へ進める価値はありますが、棋力改善は未確認です。候補は`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`、正式Program ID・Candidate IDは未発行、開始認可レビュー・新規計測・実装・対局試験は未開始です。今回のmain反映は文書整備のみであり、実作業の開始を認可しません。
+[十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで実施しました。baseline supportはPASSしましたが、prospectiveに固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たさず、最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。[PBAI-P12最終報告](ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。independent validationとrelease holdoutは未実行で、公開AI・release・AI世代に変更はありません。
 
 ## 1. 最初に知っておくこと
 
 - `AI-GEN2`はAI-GEN3より前の公開AI系統です。
 - `AI-GEN3`は探索専用軽量局面遷移を採用した継承元の系統で、最初の正式releaseは`AI-GEN3-RELEASE-001`です。
 - `AI-GEN4`はhard・expertに論理ゲート型評価器を採用した現在の系統で、正式releaseは`AI-GEN4-RELEASE-001`です。
-- `PBAI-P1`から`PBAI-P11`までは、候補を評価するengineering programのIDです。
+- `PBAI-P1`から`PBAI-P12`までは、候補を評価するengineering programのIDです。
 - `PBAI-Cxxx`は個別candidateのIDです。
 - `Research Generation 1..4`は研究世代であり、AI世代とは別です。
 - `legacy`、`bao`、`bao-v2`はprofile identifierであり、AI世代名ではありません。
@@ -27,7 +27,7 @@
 
 ## 2. プログラムの最終状態
 
-P1〜P11は完了済みです。下表は各プログラムで確定した結果であり、公開判断の欄はその時点の履歴です。採用・配信・世代昇格の後続判断は[AI-GEN4の正式記録](ai-engineering/ai-gen4-release/README.md)で確認します。
+P1〜P12は完了済みです。下表は各プログラムで確定した結果であり、公開判断の欄はその時点の履歴です。採用・配信・世代昇格の後続判断は[AI-GEN4の正式記録](ai-engineering/ai-gen4-release/README.md)で確認します。
 
 | Program | 使用する研究証拠 | Candidate | プログラムの最終判断 | その時点での公開AIへの変更 |
 | --- | --- | --- | --- | --- |
@@ -42,10 +42,11 @@ P1〜P11は完了済みです。下表は各プログラムで確定した結果
 | [PBAI-P9](ai-engineering/public-ai-improvement-program-9/README.md) | 標準500ms・毎手Worker条件 | `PBAI-C015-v1` | `STRENGTH-IMPROVED-IN-COLD-WORKER-DOMAIN` | 検証終了時は`NO-RELEASE / KEEP-AI-GEN3`。後続レビューでhardを採用 |
 | [PBAI-P10](ai-engineering/public-ai-improvement-program-10/README.md) | expertの3設定 | `PBAI-C015-v1` | `TECHNICAL-INVALID / HOLD` | hardの採用を維持し、expertは変更せず |
 | [PBAI-P11](ai-engineering/public-ai-improvement-program-11/README.md) | 新規seedとGitHub実行基盤によるexpert再試験 | `PBAI-C015-v1` | 実験終了時は`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`、後続判断で`ADOPT` | 実機確認・本番組込み・配信確認を経てAI-GEN4へ昇格 |
+| [PBAI-P12](ai-engineering/public-ai-improvement-program-12/README.md) | AI-GEN4のPVS再探索コストに対する独立工学検証 | `PBAI-C016-v1` | `DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4` | なし。candidate不採用・公開AI変更なし |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
-以下のP1〜P11の詳細は、各検証・判断時点の履歴です。コードブロックの`current public lineage`や未承認・未配信という記録は当時の状態を表し、現在の公開状態は冒頭を正本とします。
+以下のP1〜P12の詳細は、各検証・判断時点の履歴です。コードブロックの`current public lineage`や未承認・未配信という記録は当時の状態を表し、現在の公開状態は冒頭を正本とします。
 
 ## 3. `PBAI-P3` — 第三世代研究を使う改善Program
 
