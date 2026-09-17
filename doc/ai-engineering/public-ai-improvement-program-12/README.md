@@ -4,74 +4,59 @@
 英語作業名: **Good-Enough / Margin-Bounded Selective Search**  
 Candidate: **`PBAI-C016-v1`**  
 Baseline: **`AI-GEN4-BASELINE-2026-09-17-v1`**  
-開始日: 2026-09-17
+開始日: 2026-09-17  
+終了日: 2026-09-17
 
-## 1. 現在状態
+## 1. 最終状態
 
 ```text
-PBAI-P12-A = COMPLETE / AUTHORIZED-FOR-BASELINE-MEASUREMENT
-PBAI-P12-B = IN-PROGRESS / BASELINE-INSTRUMENTATION
-PBAI-P12-C = NOT-AUTHORIZED / CANDIDATE-MECHANISM-FREEZE
-PBAI-P12-D = NOT-AUTHORIZED / CANDIDATE-DEVELOPMENT
-PBAI-P12-E = NOT-AUTHORIZED / INDEPENDENT-VALIDATION
-PBAI-P12-F = NOT-AUTHORIZED / RELEASE-HOLDOUT
+PBAI-P12-A = COMPLETE / AUTHORIZED
+PBAI-P12-B = COMPLETE / SUPPORT-PASS
+PBAI-P12-C = COMPLETE / CANDIDATE-SPEC-FROZEN
+PBAI-P12-D = COMPLETE / DEVELOPMENT-GATE-FAIL
+PBAI-P12-E = NOT-EXECUTED / NOT-AUTHORIZED
+PBAI-P12-F = NOT-EXECUTED / NOT-AUTHORIZED
+PBAI-P12 = COMPLETE / KEEP-AI-GEN4
+PBAI-C016-v1 = NOT-ADOPTED / CLOSED
 public lineage = AI-GEN4
 public change = NONE
 ```
 
-開始認可の正本は[`AUTHORIZATION_REVIEW.md`](AUTHORIZATION_REVIEW.md)である。
+## 2. 結論
 
-## 2. 目的
+baseline support計測では、現行PVSに再探索コストが十分残っていることを確認した。そのためcandidate mechanismをprospectiveに固定し、予約済みdevelopment seedだけを使って`Δ = 16 / 32 / 64`を比較した。
 
-現行`AI-GEN4`は反復深化、alpha-beta、PVS、TT、killer move、quiescence search、論理ゲート型評価器などを使用する。今回のProgramでは、PVSを使っていても残る候補比較・full-window再探索の費用を測り、**最善候補間の不要な精密比較を抑えて重要枝へ計算資源を再配分する余地が本当に存在するか**を最初に確認する。
+しかし3値すべてで、事前に要求したeligible局面のnode比`candidate / baseline <= 0.97`を満たさなかった。再探索省略は発生したものの、margin幅probeの費用が節約分を上回った。
 
-狙いは「弱い手で妥協する」ことではない。同じ思考時間の中で、着手品質に寄与しない比較精度のための計算を減らし、より深い探索または重要応手へ資源を回せるかを検証する。
+したがって`PBAI-C016-v1`は不採用とし、公開AIは`AI-GEN4`を維持する。結果確認後のthreshold変更・追加margin探索による救済は行わない。
 
-## 3. 今回の段階構成
+## 3. 未実行工程
 
-### `PBAI-P12-A` — 開始認可
+以下は実行していない。
 
-完了。`PBAI-P12`と`PBAI-C016-v1`を発行し、baseline support計測までを認可した。
+- independent validation
+- protected release holdout
+- 正式な棋力試験
+- browser / smartphone実機試験
+- 公開Worker組込み
+- main統合・公開配信
+- release発行・AI世代昇格
 
-### `PBAI-P12-B` — baseline support計測
+未消費seedは`121220001..121220064`と`121230001..121230064`である。
 
-候補実装より先に、現行PVSのscout / full-window再探索費用を計測する。診断instrumentationはfeature flagで隔離し、診断ON/OFFで探索結果が一致することを必須とする。
+## 4. 文書
 
-### `PBAI-P12-C` — candidate mechanismのprospective freeze
+1. [`AUTHORIZATION_REVIEW.md`](AUTHORIZATION_REVIEW.md) — 開始認可とbaseline support gate
+2. [`CANDIDATE_SPEC.md`](CANDIDATE_SPEC.md) — candidate結果を見る前に固定した仕様とdevelopment gate
+3. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 終了後の正式状態
+4. [`DECISION_REGISTER.md`](DECISION_REGISTER.md) — 各段階の判断記録
+5. [`PROGRAM_FINAL_REPORT.md`](PROGRAM_FINAL_REPORT.md) — 最終報告
+6. [`RELEASE_REGISTER.md`](RELEASE_REGISTER.md) — release・世代昇格を行わない判断
+7. [`../../../artifacts/pbai-p12/baseline-support.json`](../../../artifacts/pbai-p12/baseline-support.json) — baseline support結果
+8. [`../../../artifacts/pbai-p12/candidate-development.json`](../../../artifacts/pbai-p12/candidate-development.json) — development結果
 
-`PBAI-P12-B`がPASSした場合だけ進む。baseline-only結果から、固定margin候補、安全条件、TTへの保存規則、再探索規則、development gateを定め、candidate結果を見る前に固定する。
+## 5. 再開境界
 
-### `PBAI-P12-D` — candidate development
+`PBAI-P12`と`PBAI-C016-v1`は閉鎖済みとして再開しない。
 
-未認可。`121210001..121210032`だけを使用する。
-
-### `PBAI-P12-E` — independent validation
-
-未認可。`121220001..121220064`を使用し、development結果を見た後に条件を変更しない。
-
-### `PBAI-P12-F` — protected release holdout
-
-未認可。`121230001..121230064`は最終採用判断まで温存する。
-
-## 4. 重要な境界
-
-- 現在の公開AIは`AI-GEN4`のままである。
-- `PBAI-C016-v1`はcandidate IDであり、`AI-GEN5`ではない。
-- baseline support計測のPASSだけではcandidate採用を意味しない。
-- baseline support用データは最終validationへ再利用しない。
-- fixed marginの数値はbaseline support結果を見る前には決めないが、candidate実装結果を見る前には固定する。
-- 戦術回帰、安全条件、TTのbound semanticsを破壊する変更は認めない。
-- node削減だけを成功条件にしない。
-- `main`統合、公開配信、AI世代昇格は別判断とする。
-
-## 5. 読む順序
-
-1. [`AUTHORIZATION_REVIEW.md`](AUTHORIZATION_REVIEW.md) — 開始認可、baseline、seed block、support gate
-2. [`../NEXT_IMPROVEMENT_CANDIDATE.md`](../NEXT_IMPROVEMENT_CANDIDATE.md) — 候補概念
-3. [`../NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md`](../NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md) — 事前調査と実装前の注意点
-4. [`../../AI_ENGINEERING_INDEX.md`](../../AI_ENGINEERING_INDEX.md) — AI Engineering全体の履歴
-5. [`../ai-gen4-release/README.md`](../ai-gen4-release/README.md) — 現行公開系統の正式記録
-
-## 6. 次の作業
-
-`PBAI-P12-B`として、診断instrumentation、回帰test、development-only baseline runnerを追加し、support gateを判定する。
+将来、今回の知見から別の再探索削減方式を検討する場合は、materially newなmechanismとして新しいProgram / Candidate ID、baseline、seed、prospective gateを設定して開始する。
