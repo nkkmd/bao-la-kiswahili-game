@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY",
+  "statusAtFreeze": "FROZEN-PENDING-AUTHORIZATION",
+  "scientificEffectAuthorized": false,
+  "purpose": "Validate fresh-domain root support, helper preconditions, production/independent measurement agreement, and bounded resource readiness without generating scientific effect directions or formal generalization decisions.",
+  "baseStudySpec": "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STUDY_1_SPEC.json",
+  "preExecutionAmendment": "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/PRE_EXECUTION_SPEC_AMENDMENT_V1.json",
+  "sourceBaseline": {
+    "mainSha": "6433c726d038f710b9b5af3620f1a7d30db7bdc9",
+    "researchBranch": "research/g4-01-transfer-compatibility-instrument",
+    "engineBlobSha": "1527bb3665228b7a5bd9f03153567aedbaaa22d7",
+    "aiBlobSha": "ac2b4fd66a2555c50a362c39a828515323bba18a"
+  },
+  "seedAccessContract": {
+    "exactlyOncePerReservedSeed": true,
+    "seedExtensionAuthorized": false,
+    "maxTotalSeedReads": 1536,
+    "blocks": {
+      "SFCDF": {"seedStart": 40111001, "seedEnd": 40111384, "count": 384},
+      "SILGM": {"seedStart": 40112001, "seedEnd": 40112768, "count": 768},
+      "GCLD": {"seedStart": 40113001, "seedEnd": 40113384, "count": 384}
+    },
+    "policyAssignment": "odd seed -> LGTTCI-P1-UNIFORM-LEGAL; even seed -> LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  },
+  "sfcdfCompatibility": {
+    "trajectoryPolicy": "policyAssignment",
+    "rootFamiliesEvaluatedPerTrajectory": ["LGTTCI-RF1-MID-ANCHOR", "LGTTCI-RF2-OFFSET-ANCHOR"],
+    "eligiblePair": "both frozen Namua/Mtaji roots exist, are nonterminal, retain required phases, and pass depth-5 bounded preflight",
+    "cells": "policy x rootFamily = 4",
+    "minimumCompletePairsPerCell": 8,
+    "selectionOrder": "ascending SHA-256 of 'LGTTCI-S1-SFCDF|policyId|rootFamilyId|seed|namuaRawSha256|mtajiRawSha256'",
+    "selectedCountPerCell": 8,
+    "measurement": "run depth-5 RAW geometry production and independent implementations on both roots of every selected pair; require exact serialized agreement",
+    "effectComputationAuthorized": false,
+    "failureWithoutTechnicalError": "NON-ESTIMABLE"
+  },
+  "silgmCompatibility": {
+    "trajectoryPolicy": "policyAssignment",
+    "rootFamilyAssignment": "first byte of SHA-256('LGTTCI-S1-SILGM-RF|' + seed) modulo 2; 0 -> RF1, 1 -> RF2",
+    "phaseAssignment": "first byte of SHA-256('LGTTCI-S1-SILGM-PHASE|' + seed) modulo 2; 0 -> namua, 1 -> mtaji",
+    "selectedRoot": "the frozen phase root from the deterministically assigned root family; unavailable roots are rejected without replacement",
+    "widthClasses": {
+      "SINGLETON": "rootLegalWidth = 1; tracked, helper never called",
+      "LOW-RANKABLE": "2 <= rootLegalWidth < frozen phase threshold",
+      "EQUAL": "rootLegalWidth = frozen phase threshold; support diagnostic only",
+      "HIGH": "rootLegalWidth > frozen phase threshold"
+    },
+    "thresholds": {"namua": 4, "mtaji": 3},
+    "cells": "policy x rootFamily x phase x {LOW-RANKABLE,HIGH}",
+    "minimumPerCell": 4,
+    "selectionOrder": "ascending SHA-256 of 'LGTTCI-S1-SILGM|policyId|rootFamilyId|phase|widthClass|seed|rawStateSha256'",
+    "selectedCountPerCell": 4,
+    "searchConditions": ["D2_Q1", "D3_Q1", "B256_Q1_MAXD3", "B1024_Q1_MAXD3", "D2_Q0", "D2_Q2"],
+    "measurement": "for each selected rankable root run all frozen conditions through production and independent compatibility wrappers; require exact serialized agreement and no hard assertion",
+    "endpointOrEffectComputationAuthorized": false,
+    "failureWithoutTechnicalError": "NON-ESTIMABLE"
+  },
+  "gcldCompatibility": {
+    "trajectoryPolicy": "policyAssignment",
+    "checkpoints": [20, 28, 40, 52, 60],
+    "checkpointEligibility": "nonterminal checkpoint with depth-5 bounded preflight ELIGIBLE",
+    "trajectoryEligibility": "at least four eligible checkpoints and both namua and mtaji represented among eligible checkpoints",
+    "minimumTrajectoriesPerPolicy": 12,
+    "selectionOrder": "ascending SHA-256 of 'LGTTCI-S1-GCLD|policyId|seed|trajectorySha256'",
+    "selectedCountPerPolicy": 12,
+    "measurement": "run CRCLGR-R1-EXACT-SQUASHED-L1 production and independent measurement on all eligible frozen checkpoints of selected trajectories; require exact serialized agreement",
+    "trajectoryEffectComputationAuthorized": false,
+    "failureWithoutTechnicalError": "NON-ESTIMABLE"
+  },
+  "activePerRootPreflightLimits": {
+    "distinctRawStates": 100000,
+    "uniqueTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveEvaluations": 750000,
+    "treeNodeOccurrences": 1000000
+  },
+  "executionCeilings": {
+    "elapsedMs": 7200000,
+    "peakRssBytes": 2000000000,
+    "resultArtifactBytes": 20000000,
+    "maxSourcePliesPerTrajectory": 80
+  },
+  "executionRoute": {
+    "localReproducibleRun": true,
+    "githubActionsScientificExecutionAuthorized": false,
+    "githubActionsMayRunSyntaxOrNonScientificChecks": true
+  },
+  "studyDecisionMapping": {
+    "allThreeFamiliesCompatible": "COMPATIBILITY-ELIGIBLE-ALL",
+    "oneOrTwoFamiliesCompatible": "COMPATIBILITY-ELIGIBLE-PARTIAL",
+    "zeroFamiliesCompatibleWithoutTechnicalFailure": "NON-ESTIMABLE",
+    "technicalFailure": "TECHNICAL-INVALID"
+  },
+  "forbiddenOutputs": [
+    "effect direction",
+    "effect magnitude",
+    "p-value",
+    "generalization decision",
+    "counterexample decision",
+    "claim confirmation or rejection",
+    "best-move correctness claim",
+    "game-theoretic value",
+    "human difficulty inference"
+  ],
+  "noRescueAfterFirstFreshSeedRead": [
+    "seed extension",
+    "seed replacement",
+    "root replacement",
+    "policy replacement",
+    "root-family replacement",
+    "support-threshold relaxation",
+    "helper-precondition relaxation",
+    "selection-order replacement",
+    "module dropping to improve study disposition",
+    "resource-ceiling increase"
+  ],
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2Access": false,
+    "g3_12PartialMeasurementReuse": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  }
+}
