@@ -1,0 +1,59 @@
+name: PBAI-P12 candidate development
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p12-margin-bounded-search
+    paths:
+      - '.github/workflows/pbai-p12-development.yml'
+      - 'doc/ai-engineering/public-ai-improvement-program-12/CANDIDATE_SPEC.md'
+      - 'tools/engineering/lib/pbai-p12-candidate.cjs'
+      - 'tools/engineering/measure-pbai-p12-candidate.cjs'
+
+permissions:
+  contents: write
+
+jobs:
+  fixed-depth-development:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p12-margin-bounded-search
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 現行AI-GEN4の本番経路回帰
+        run: node --test test/pbai-c015-expert-production.test.cjs
+      - name: candidate toolingの構文確認
+        run: |
+          node --check tools/engineering/lib/pbai-p12-candidate.cjs
+          node --check tools/engineering/measure-pbai-p12-candidate.cjs
+      - name: fixed-depth candidate development
+        id: measure
+        shell: bash
+        run: |
+          set +e
+          node tools/engineering/measure-pbai-p12-candidate.cjs artifacts/pbai-p12/candidate-development.json
+          status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: development結果を隔離branchへ記録
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/pbai-p12/candidate-development.json
+          if git diff --cached --quiet; then
+            echo 'No result change.'
+          else
+            git commit -m 'data: record PBAI-P12 candidate development result'
+            git push origin HEAD:engineering/pbai-p12-margin-bounded-search
+          fi
+      - name: development gateを反映
+        if: steps.measure.outputs.status != '0'
+        run: |
+          echo "PBAI-P12 candidate development gate failed with status ${{ steps.measure.outputs.status }}" >&2
+          exit "${{ steps.measure.outputs.status }}"
