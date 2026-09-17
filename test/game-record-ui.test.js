@@ -105,4 +105,5 @@ test("replay file input cannot widen the mobile setup panel", () => {
   assert.match(style, /\.start-panel \{[^}]*max-width:\s*100%[^}]*box-sizing:\s*border-box/s);
   assert.match(style, /\.setup-field \{[^}]*grid-template-columns:\s*64px minmax\(0, 1fr\)/s);
   assert.match(style, /\.replay-file-field input \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*box-sizing:\s*border-box[^}]*overflow:\s*hidden/s);
+  assert.match(style, /\.replay-load-status \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*overflow-wrap:\s*anywhere[^}]*word-break:\s*break-word/s);
 });
