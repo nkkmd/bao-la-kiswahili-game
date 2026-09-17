@@ -1,0 +1,53 @@
+name: LGTTCI Stage 1 non-scientific source bundle
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/lgttci-stage1-source-bundle.yml'
+      - 'tools/experiments/run-lgttci-stage1-compatibility.js'
+      - 'tools/experiments/lib/lgttci-compatibility-*.js'
+      - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/**'
+      - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/**'
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax-only validation
+        run: |
+          node --check tools/experiments/run-lgttci-stage1-compatibility.js
+          node --check tools/experiments/lib/lgttci-compatibility-production.js
+          node --check tools/experiments/lib/lgttci-compatibility-independent.js
+
+      - name: Assert no Stage 1 scientific result is materialized by this job
+        run: |
+          test ! -e artifacts/local/lgttci-stage1/result.json
+          test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1/STAGE_1_COMPATIBILITY_RESULT.json
+
+      - name: Build source-only bundle
+        run: |
+          tar -czf lgttci-stage1-source.tar.gz \
+            public/*.js \
+            tools/experiments \
+            doc/local-game-tree-geometry-transfer-compatibility-instrument
+
+      - name: Upload source-only bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgttci-stage1-source-bundle
+          path: lgttci-stage1-source.tar.gz
+          if-no-files-found: error
+          retention-days: 7
