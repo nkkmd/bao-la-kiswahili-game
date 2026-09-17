@@ -2,7 +2,7 @@
 
 更新日: 2026-09-18  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / WAVE A NEXT STUDY NOT YET AUTHORIZED`**
+状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED / WAVE A NEXT STUDY NOT YET AUTHORIZED`**
 
 ## Program全体
 
@@ -19,7 +19,7 @@ G4-03 = NOT AUTHORIZED
 G4-04 = NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 Public AI change authorized by RG4 = false
-G4-01 main integration = NOT YET AUTHORIZED
+G4-01 main integration = AUTHORIZED BY USER / PR #151
 ```
 
 ## G4-01の完了
@@ -59,7 +59,7 @@ G4-01 closure state:
 
 G4-01 closure後、main統合前のcurrent-facing文書を再監査した。root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`に残っていたG4-01開始前の記述を修正し、Research Generation 4側およびG4-01正本と同期した。
 
-最終判定:
+監査時点の最終判定:
 
 `PASS / CURRENT-FACING-DOCUMENTS-SYNCHRONIZED / MAIN-NOT-MERGED`
 
@@ -99,11 +99,11 @@ authoritative state identity = RAW
 
 ## 次の一手
 
-G4-01の研究実行とmain統合前の文書整合性監査は完了している。
+G4-01の研究実行とmain統合前の文書整合性監査は完了している。2026-09-18にユーザーからPR #151による`main`統合の明示承認を受領した。
 
 次の研究作業を行う場合は、Wave AのG4-02、G4-03、G4-04のいずれかについてcurrent-state authorization reviewを実施する。G4-01の`COMPATIBILITY-ELIGIBLE-ALL`だけを根拠にscientific seedへ自動アクセスしてはならない。
 
-G4-01を`main`へ統合する場合は、ユーザーの明示指示が必要である。
+G4-01の`main`統合承認は、後続Studyのscientific executionや公開AI変更の承認を含まない。
 
 ## 文書上の正本
 
