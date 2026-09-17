@@ -22,9 +22,9 @@ assert.match(html,
   /href="https:\/\/bao-la-kiswahili\.cultivationdata\.net\/">bao-la-kiswahili\.cultivationdata\.net<\/a>/,
   "the footer links to the official public site");
 assert.match(html,
-  /<span class="app-version" aria-label="Application version" data-ja-aria-label="アプリバージョン">v0\.4\.0<\/span>/,
+  /<span class="app-version" aria-label="Application version" data-ja-aria-label="アプリバージョン">v0\.5\.0<\/span>/,
   "the footer exposes the current application version unobtrusively");
-assert.equal((html.match(/v0\.4\.0/g) || []).length, 1,
+assert.equal((html.match(/v0\.5\.0/g) || []).length, 1,
   "the application version has a single source in the public page");
 
 assert.match(html,

@@ -1,7 +1,7 @@
 "use strict";
-// Refresh marker: v0.4.0 release finalization (2026-09-16).
-const CACHE = "bao-la-kiswahili-v47";
-const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
+// Refresh marker: v0.5.0 replay filename wrapping (2026-09-18).
+const CACHE = "bao-la-kiswahili-v50";
+const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-replay.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./rules", "./rules.css", "./rules.js",
   ...["board-overview", "initial-setup", "sowing-before", "sowing-relay", "sowing-stop",
     "capture-before", "capture-taken", "capture-after", "nyumba-two", "front-empty"]

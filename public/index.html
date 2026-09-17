@@ -63,6 +63,7 @@
               <select id="game-mode" aria-label="Game mode" data-ja-aria-label="対戦モード">
                 <option value="computer" selected data-ja="コンピュータ対戦">Computer</option>
                 <option value="local" data-ja="2人対戦">Local 2-player</option>
+                <option value="replay" data-ja="棋譜再生">Replay game record</option>
               </select>
             </label>
             <label id="difficulty-field" class="setup-field">
@@ -81,6 +82,13 @@
                 <option value="second" data-ja="後手（NORTH）">Second (NORTH)</option>
               </select>
             </label>
+            <label id="replay-file-field" class="setup-field replay-file-field" hidden>
+              <span data-ja="棋譜">RECORD</span>
+              <input id="replay-file" type="file" accept=".json,application/json"
+                aria-label="Saved game record JSON" data-ja-aria-label="保存した棋譜JSON">
+            </label>
+            <p id="replay-load-status" class="replay-load-status" aria-live="polite" hidden
+              data-ja="保存した棋譜JSONを選択してください。">Choose a saved game record JSON file.</p>
             <button id="start-game" class="start-button" type="button">START GAME</button>
           </div>
         </section>
@@ -99,6 +107,13 @@
           aria-label="Bao la Kiswahili board against the computer. Tap a highlighted pit, then choose a sowing direction."
           data-ja-aria-label="Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。"></canvas>
         <div id="move-choices" class="move-choices" aria-label="Sowing direction" data-ja-aria-label="蒔く方向"></div>
+        <div id="replay-controls" class="replay-controls" aria-label="Game record replay controls"
+          data-ja-aria-label="棋譜再生操作" hidden>
+          <button id="replay-back" type="button" data-ja="← 戻る">← Back</button>
+          <strong id="replay-counter" aria-live="polite">0 / 0</strong>
+          <button id="replay-next" type="button" data-ja="進む →">Next →</button>
+          <span id="replay-move-detail" class="replay-move-detail"></span>
+        </div>
       </div>
       <p id="visible-help" class="controls" data-ja="光っている穴を選んでください">Choose a highlighted pit</p>
       <p id="status" class="visually-hidden" aria-live="polite"></p>
@@ -156,7 +171,7 @@
         <span aria-hidden="true"> · </span>
         <a href="./privacy">Privacy Policy</a>
         <span aria-hidden="true"> · </span>
-        <span class="app-version" aria-label="Application version" data-ja-aria-label="アプリバージョン">v0.4.0</span>
+        <span class="app-version" aria-label="Application version" data-ja-aria-label="アプリバージョン">v0.5.0</span>
         <br>
         <span data-ja="公式公開サイト: ">Official site: </span>
         <a href="https://bao-la-kiswahili.cultivationdata.net/">bao-la-kiswahili.cultivationdata.net</a>
@@ -176,6 +191,7 @@
     <script src="./diagnostic-download.js"></script>
     <script src="./main.js"></script>
     <script src="./game-record.js"></script>
+    <script src="./game-record-replay.js"></script>
     <script src="./game-record-contribution-config.js"></script>
     <script src="./game-record-contribution.js"></script>
     <script>
@@ -190,6 +206,12 @@
           expert: ["Bingwa", "ビングワ"],
         };
         const updateBadge = () => {
+          if (mode.value === "replay") {
+            badge.textContent = "REPLAY";
+            badge.title = "";
+            badge.hidden = false;
+            return;
+          }
           const [english, japanese] = labels[difficulty.value] || labels.normal;
           const identity = window.BaoReleaseConfig.displayIdentity(difficulty.value);
           badge.textContent = `${window.BaoLocale.t(identity.label, identity.labelJa)} / ${window.BaoLocale.t(english, japanese)}`;

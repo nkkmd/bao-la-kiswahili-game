@@ -33,6 +33,10 @@ bao-game-record-YYYYMMDD-HHMMSS.json
 
 任意提供が有効な配信版では、完成したコンピュータ対戦に限り「AI改善のため棋譜を送信 / Send game record for AI improvement」も別操作として表示する。送信前に目的と送信内容を確認するdialogとTurnstile検証を通し、利用者がその1局について「同意して送信」を押した場合だけ送信する。自動送信、一括同意、バックグラウンド再送は行わない。
 
+保存済み棋譜を振り返る場合は、対局設定のMODEで「棋譜再生 / Replay game record」を選び、端末上の`bao-game-record` v1 JSONを明示的に選択する。正常な棋譜だけを読み込み、初期局面から「戻る」「進む」で1 plyずつ移動できる。「進む」は通常対局と同じルールエンジンと表示イベントを使うため、捕獲・sow・relay等の既存アニメーションとルール解説を再利用する。「戻る」は着手の逆演算を行わず、読み込み時に検証済みとして生成した局面snapshotへ戻る。
+
+棋譜再生モードは一時的な閲覧モードであり、MODE選択をlocalStorageへ保存しない。読み込んだJSONを再生機能から外部送信する処理もない。
+
 ## 3. 保存する情報
 
 棋譜は`bao-game-record` version `1`として保存する。主要な構造は次のとおりである。
@@ -157,13 +161,29 @@ houseTwo
 
 ## 7. 再現と検証
 
-`public/game-record.js`は、保存形式の検証と、ルールエンジンを使った着手列の再生処理を持つ。現在の公開UIには棋譜JSONを読み込む操作は提供していないが、自動テストでは`initialPosition`から`moves`を順に適用し、終局局面を再現できることを確認する。
+`public/game-record.js`は保存形式の基本検証と、ルールエンジンを使った着手列の再生処理を持つ。公開UIの棋譜再生は`public/game-record-replay.js`が追加の読み込み境界を担当し、通常対局・AI探索・棋譜記録とは独立した閲覧経路として動作する。
 
-ローカル棋譜保存の主要テストは次の3ファイルである。
+再生開始前には次を確認する。
 
-- `test/game-record.test.js`: 形式、着手保存、終局、再生
+- `format = bao-game-record`、`version = 1`
+- ルール識別が`bao-la-kiswahili-ja / v0.1.0-draft / R-002`と一致する
+- `settings.mode`が`computer`または`local`
+- 初期局面が現在の標準初期局面と一致する
+- 各plyの`turn`、`player`、`side`、`phase`が、その時点で再構成した局面と一致する
+- 各canonical moveを現在のルールエンジンで合法に適用できる
+- 全着手後の局面が保存済み`finalPosition`と一致する
+- `result.plies`、winner、winnerSide、reasonが再構成した終局と一致する
+
+検証中に各ply後の局面をメモリ上のsnapshot列として生成する。「戻る」はsnapshotを参照するだけで、Baoの複雑な着手を逆向きに計算しない。「進む」は保存済みcanonical moveを通常の`playMove`経路へ渡し、既存のsow/capture/relay表示イベントとルール解説を再利用する。再生中は盤面からの着手入力、AI思考、自動passを無効化する。
+
+読み込み時の防御的な上限は、ファイル256 KiB・1024 plyである。これはローカルviewerの資源保護境界であり、AI改善用任意提供の48 KiB・384 ply上限とは別である。
+
+ローカル棋譜関連の主要テストは次の4ファイルである。
+
+- `test/game-record.test.js`: 形式、着手保存、終局、基本replay
+- `test/game-record-replay.test.js`: 標準初期局面、各plyメタデータ、合法手、最終局面・結果、破損・未対応棋譜の拒否
 - `test/game-record-browser-hook.test.js`: 実際の画面着手経路との接続、失敗着手時のrollback
-- `test/game-record-ui.test.js`: 終局前後の保存・任意提供UI、PWAキャッシュ、Privacy Policyとの整合
+- `test/game-record-ui.test.js`: 保存・再生・任意提供UI、モード非永続化、PWAキャッシュ、Privacy Policyとの整合
 
 任意提供の追加境界は次のテストで確認する。
 
@@ -171,22 +191,23 @@ houseTwo
 - `test/game-record-contribution-worker.test.mjs`: request/schema/replay/deduplication/R2日次quota等のWorker検証
 - `test/game-record-contribution-fetch-metadata.test.mjs`: Origin・Fetch Metadata境界
 
-専用CIは`.github/workflows/game-record-verification.yml`で管理し、上記の棋譜保存・任意提供テストに加え、隣接するengine、locale、診断、AI releaseの回帰も実行する。
+専用CIは`.github/workflows/game-record-verification.yml`で管理し、上記の棋譜保存・棋譜再生・任意提供テストに加え、隣接するengine、locale、診断、AI releaseの回帰も実行する。
 
-ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供機能は2026年9月16日にテストサイト・スマートフォン実機・Cloudflare Worker/R2/Turnstile・Custom Domainを使ったcontrolled submissionまで確認し、最終構成では`workers.dev`とPreview URLを無効化して`bao-data.cultivationdata.net`だけを本番Worker入口としている。
+ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供機能は2026年9月16日にテストサイト・スマートフォン実機・Cloudflare Worker/R2/Turnstile・Custom Domainを使ったcontrolled submissionまで確認し、最終構成では`workers.dev`とPreview URLを無効化して`bao-data.cultivationdata.net`だけを本番Worker入口としている。棋譜再生機能は2026年9月18日に専用ブランチ上で実装・検証を開始した。
 
 ## 8. 現在の制限
 
-現行version `1`では次を行わない。
+現行version `1`と再生viewerでは次を行わない。
 
 - 対局途中の棋譜ファイル保存
 - 自動保存や中断対局の復元
-- 棋譜ファイルを画面から読み込む機能
-- 保存棋譜を手順表示する専用viewer
+- 複数棋譜のライブラリ管理
+- 自動再生・速度指定・任意plyへの直接ジャンプ
 - 人間向け棋譜記法への変換
 - 棋譜へのAI探索統計の常時埋め込み
+- 現在と異なるルールbaselineの棋譜を互換扱いして再生すること
 
-これらを将来追加する場合も、version `1`の意味を暗黙に変更せず、既存棋譜との互換性、ルール基準、ファイルサイズ上限、読み込み時の厳格なvalidationを明示して設計する。
+将来これらを追加する場合も、version `1`の意味を暗黙に変更せず、既存棋譜との互換性、ルール基準、ファイルサイズ上限、読み込み時の厳格なvalidationを明示して設計する。
 
 ## 9. 関連文書
 

@@ -6,9 +6,12 @@ const fs = require("node:fs");
 const vm = require("node:vm");
 
 const html = fs.readFileSync("public/index.html", "utf8");
+const style = fs.readFileSync("public/style.css", "utf8");
 const serviceWorker = fs.readFileSync("public/service-worker.js", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
 const recordSource = fs.readFileSync("public/game-record.js", "utf8");
+const replaySource = fs.readFileSync("public/game-record-replay.js", "utf8");
+const mainSource = fs.readFileSync("public/main.js", "utf8");
 const contributionSource = fs.readFileSync("public/game-record-contribution.js", "utf8");
 const contributionConfig = fs.readFileSync("public/game-record-contribution-config.js", "utf8");
 const cachedFiles = vm.runInNewContext(serviceWorker + "\nFILES;", {
@@ -20,8 +23,9 @@ test("game record module loads after the main game runtime", () => {
   assert.ok(html.indexOf("./main.js") < html.indexOf("./game-record.js"));
 });
 
-test("contribution client loads only after the game record and controlled config", () => {
-  assert.ok(html.indexOf("./game-record.js") < html.indexOf("./game-record-contribution-config.js"));
+test("replay and contribution clients load in dependency order", () => {
+  assert.ok(html.indexOf("./game-record.js") < html.indexOf("./game-record-replay.js"));
+  assert.ok(html.indexOf("./game-record-replay.js") < html.indexOf("./game-record-contribution-config.js"));
   assert.ok(html.indexOf("./game-record-contribution-config.js") < html.indexOf("./game-record-contribution.js"));
   assert.match(contributionConfig, /enabled:\s*true/);
   assert.match(contributionConfig,
@@ -31,9 +35,10 @@ test("contribution client loads only after the game record and controlled config
 
 test("game record and contribution client remain available offline", () => {
   assert.ok(cachedFiles.includes("./game-record.js"));
+  assert.ok(cachedFiles.includes("./game-record-replay.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution-config.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution.js"));
-  assert.match(serviceWorker, /bao-la-kiswahili-v47/);
+  assert.match(serviceWorker, /bao-la-kiswahili-v50/);
 });
 
 test("save action is created only for a completed game", () => {
@@ -73,4 +78,32 @@ test("privacy policy distinguishes local saving from explicit contribution", () 
   assert.match(privacy, /source IP address or Turnstile token/);
   assert.match(privacy, /R2 record metadata/);
   assert.match(privacy, /automatically deletes them after 90 days/);
+});
+
+
+test("setup exposes a non-persistent saved-record replay mode", () => {
+  assert.match(html, /option value="replay" data-ja="棋譜再生">Replay game record/);
+  assert.match(html, /id="replay-file"/);
+  assert.match(html, /id="replay-back"/);
+  assert.match(html, /id="replay-next"/);
+  assert.match(mainSource, /if \(!isReplayMode\(\)\) save\("bao_game_mode"/);
+  assert.match(mainSource, /savedMode === "local" \? "local" : "computer"/);
+});
+
+test("replay blocks play interaction and reuses the normal forward animation path", () => {
+  assert.match(mainSource, /function isHumanTurn\(\) \{ return !isReplayMode\(\)/);
+  assert.match(mainSource, /replayTargetIndex = replaySession\.index \+ 1/);
+  assert.match(mainSource, /playMove\(transition\.entry\.move\)/);
+  assert.match(mainSource, /window\.BaoGameRecordReplay\.seek\(replaySession, index\)/);
+  assert.match(replaySource, /engine\.applyMove\(clone\(current\), clone\(entry\.move\)\)/);
+  assert.match(replaySource, /initial position mismatch/);
+  assert.match(replaySource, /final position mismatch/);
+});
+
+
+test("replay file input cannot widen the mobile setup panel", () => {
+  assert.match(style, /\.start-panel \{[^}]*max-width:\s*100%[^}]*box-sizing:\s*border-box/s);
+  assert.match(style, /\.setup-field \{[^}]*grid-template-columns:\s*64px minmax\(0, 1fr\)/s);
+  assert.match(style, /\.replay-file-field input \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*box-sizing:\s*border-box[^}]*overflow:\s*hidden/s);
+  assert.match(style, /\.replay-load-status \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*overflow-wrap:\s*anywhere[^}]*word-break:\s*break-word/s);
 });

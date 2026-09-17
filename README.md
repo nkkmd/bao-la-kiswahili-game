@@ -26,6 +26,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - 日本語・英語で読める、10点の図版付きルール説明ページ
 - 捕獲、takata、連続種まき、nyumba、namua→mtaji、終局などを対局中に日英で説明し、対応する図解ルールへ移動できるルールガイド
 - 終局後に、初期局面・確定着手列・対局設定・勝敗・最終局面を`bao-game-record` v1のJSONとして保存できる棋譜機能
+- 保存した`bao-game-record` v1のJSONを「棋譜再生」モードで読み込み、「戻る」「進む」で1手ずつ振り返れる再生機能
 - 完成したコンピューター対戦について、1局ごとの明示同意後だけ検証済み棋譜をAI改善用に送信できる任意提供機能
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
@@ -73,7 +74,7 @@ public/
 
 Privacy Policy へのリンクとPWAのオフラインキャッシュは、Cloudflare Pages の clean URL に合わせて `./privacy` を使用します。リダイレクト済みの `privacy.html` レスポンスはキャッシュしません。
 
-図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js`・`game-record-contribution-config.js`・`game-record-contribution.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
+図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js`・`game-record-replay.js`・`game-record-contribution-config.js`・`game-record-contribution.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
 
 任意棋譜提供のbackendは`cloudflare/game-record-ingest/`から別途Wranglerでdeployします。本番入口は`https://bao-data.cultivationdata.net`のCustom Domainに限定し、リポジトリ既定の`COLLECTION_ENABLED`は`false`です。Turnstile secretなどのcredentialはCloudflare側のsecretとして管理し、公開リポジトリへcommitしません。運用条件は[`doc/GAME_RECORD_CONTRIBUTION.md`](doc/GAME_RECORD_CONTRIBUTION.md)と[`cloudflare/game-record-ingest/README.md`](cloudflare/game-record-ingest/README.md)を参照してください。
 
@@ -128,7 +129,7 @@ bao-game-record-YYYYMMDD-HHMMSS.json
 
 対局中は棋譜をブラウザのメモリ上だけに保持し、localStorageやIndexedDBへ自動保存しません。「棋譜を保存」は端末内へのファイル保存だけを行い、外部送信や送信同意を兼ねません。
 
-保存するのは、初期局面、確定した着手列、対局設定、勝敗、最終局面です。sow/relayの中間イベントやAI探索ノードは保存しないため、棋譜記録はAI探索ループと分離されています。現行version `1`では、途中棋譜の保存、棋譜ファイルの画面読み込み、中断対局の自動復元は行いません。
+保存するのは、初期局面、確定した着手列、対局設定、勝敗、最終局面です。sow/relayの中間イベントやAI探索ノードは保存しないため、棋譜記録はAI探索ループと分離されています。現行version `1`では、保存済み棋譜の画面読み込み・1手ずつの再生に対応しています。一方、対局途中の棋譜保存、中断対局の自動復元、複数棋譜を管理するライブラリ機能は行いません。
 
 形式、保存field、AI改善用診断との違い、再生検証、計算資源上の境界は[`doc/GAME_RECORD.md`](doc/GAME_RECORD.md)を参照してください。
 
