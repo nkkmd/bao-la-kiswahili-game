@@ -20,6 +20,14 @@ const startScreen = document.querySelector("#start-screen");
 const startButton = document.querySelector("#start-game");
 const sideField = document.querySelector("#side-field");
 const playerSideSelect = document.querySelector("#player-side");
+const replayFileField = document.querySelector("#replay-file-field");
+const replayFileInput = document.querySelector("#replay-file");
+const replayLoadStatus = document.querySelector("#replay-load-status");
+const replayControls = document.querySelector("#replay-controls");
+const replayBackButton = document.querySelector("#replay-back");
+const replayNextButton = document.querySelector("#replay-next");
+const replayCounter = document.querySelector("#replay-counter");
+const replayMoveDetail = document.querySelector("#replay-move-detail");
 const copyPositionButton = document.querySelector("#copy-position");
 const markAIMoveButton = document.querySelector("#mark-ai-move");
 const copyMarkedButton = document.querySelector("#copy-marked");
@@ -68,18 +76,51 @@ let started = false;
 let humanPlayer = 0;
 let lastAIDiagnostic = null;
 let latestRuleCommentary = null;
+let replaySession = null;
+let replayTargetIndex = null;
 
 function isComputerGame() { return gameModeSelect.value === "computer"; }
+function isReplayMode() { return gameModeSelect.value === "replay"; }
+function difficultyLabel(value) {
+  const labels = { easy: ["Easy", "やさしい"], normal: ["Normal", "ふつう"], hard: ["Hard", "むずかしい"], expert: ["Bingwa", "ビングワ"] };
+  return labels[value] || [value || "AI", value || "AI"];
+}
 function updateAIGenerationBadge() {
+  if (isReplayMode()) {
+    aiGenerationBadge.hidden = false;
+    if (!replaySession) {
+      aiGenerationBadge.textContent = "REPLAY";
+      aiGenerationBadge.title = "";
+      return;
+    }
+    const descriptor = window.BaoGameRecordReplay?.descriptor(replaySession.record) || { mode: "local" };
+    if (descriptor.mode === "computer") {
+      const label = difficultyLabel(descriptor.difficulty);
+      aiGenerationBadge.textContent = `REPLAY / ${descriptor.generation} / ${t(...label)}`;
+      aiGenerationBadge.title = [descriptor.releaseId, descriptor.adoptionId].filter(Boolean).join(" / ");
+    } else {
+      aiGenerationBadge.textContent = t("REPLAY / 2-player", "REPLAY / 2人対戦");
+      aiGenerationBadge.title = "";
+    }
+    return;
+  }
   const identity = AIConfig.displayIdentity(difficultySelect.value,
     lastAIDiagnostic?.ai.level === difficultySelect.value ? lastAIDiagnostic.ai.stats : null);
-  const labels = { easy: ["Easy", "やさしい"], normal: ["Normal", "ふつう"], hard: ["Hard", "むずかしい"], expert: ["Bingwa", "ビングワ"] };
-  const label = labels[difficultySelect.value] || labels.normal;
+  const label = difficultyLabel(difficultySelect.value);
   aiGenerationBadge.textContent = `${t(identity.label, identity.labelJa)} / ${t(...label)}`;
   aiGenerationBadge.title = [identity.releaseId, identity.adoptionId].filter(Boolean).join(" / ");
   aiGenerationBadge.hidden = !isComputerGame();
 }
-function isHumanTurn() { return !isComputerGame() || state.player === humanPlayer; }
+function updateSetupFields() {
+  const replay = isReplayMode();
+  difficultyField.hidden = !isComputerGame();
+  sideField.hidden = !isComputerGame();
+  replayFileField.hidden = !replay;
+  replayLoadStatus.hidden = !replay;
+  startButton.textContent = replay ? t("START REPLAY", "棋譜を再生") : t("START GAME", "対局開始");
+  updateAIGenerationBadge();
+}
+function isHumanTurn() { return !isReplayMode() && (!isComputerGame() || state.player === humanPlayer); }
 function isAIActive() { return aiThinking || aiTimer !== null; }
 function setAIThinking(value) {
   aiThinking = value;
@@ -89,6 +130,127 @@ function playerName(player) {
   if (!isComputerGame()) return player === 0 ? "SOUTH" : "NORTH";
   const side = player === 0 ? "SOUTH" : "NORTH";
   return player === humanPlayer ? t(`${side} (YOU)`, `${side}（あなた）`) : t(`${side} (COM)`, `${side}（COM）`);
+}
+
+function replayMoveSummary(entry) {
+  if (!entry) return t("Initial position", "初期局面");
+  const move = entry.move || {};
+  const side = entry.player === 0 ? "SOUTH" : "NORTH";
+  if (move.type === "pass") return `#${entry.ply} ${side} PASS`;
+  const pit = Number.isInteger(move.row) && Number.isInteger(move.index)
+    ? pitName({ player: entry.player, row: move.row, index: move.index }) : "";
+  const type = String(move.type || "move").toUpperCase();
+  return [`#${entry.ply}`, side, pit, type].filter(Boolean).join(" ");
+}
+
+function updateReplayControls() {
+  if (!replaySession || !isReplayMode()) {
+    replayControls.hidden = true;
+    return;
+  }
+  const index = replaySession.index;
+  const total = replaySession.record.moves.length;
+  replayControls.hidden = false;
+  replayBackButton.disabled = Boolean(animation) || index <= 0;
+  replayNextButton.disabled = Boolean(animation) || index >= total;
+  replayCounter.textContent = `${index} / ${total}`;
+  replayMoveDetail.textContent = index > 0
+    ? replayMoveSummary(replaySession.record.moves[index - 1])
+    : t("Initial position", "初期局面");
+}
+
+function showReplayHelp() {
+  if (!replaySession) return;
+  const index = replaySession.index;
+  const total = replaySession.record.moves.length;
+  if (index === 0) {
+    latestRuleCommentary = null;
+    showHelp(t(`Replay 0 / ${total} — initial position`, `棋譜 0 / ${total} — 初期局面`));
+    return;
+  }
+  const entry = replaySession.record.moves[index - 1];
+  latestRuleCommentary = moveRuleCommentary(entry.move);
+  if (index === total && state.winner !== null) {
+    const winner = state.winner === 0 ? "SOUTH" : "NORTH";
+    showTurnHelp(t(`Replay ${index} / ${total} — ${winner} wins`, `棋譜 ${index} / ${total} — ${winner}の勝ち`));
+  } else {
+    showTurnHelp(t(`Replay ${index} / ${total} — ${replayMoveSummary(entry)}`,
+      `棋譜 ${index} / ${total} — ${replayMoveSummary(entry)}`));
+  }
+}
+
+function setReplayPosition(index) {
+  if (!replaySession) return;
+  state = E.clone(window.BaoGameRecordReplay.seek(replaySession, index));
+  displayState = E.clone(state);
+  moves = [];
+  selected = null; choices = []; choiceBoxes = [];
+  animation = null; replayTargetIndex = null;
+  updateReplayControls();
+  showReplayHelp();
+  updateAIGenerationBadge();
+}
+
+function replayBack() {
+  if (!replaySession || animation || replaySession.index <= 0) return;
+  setReplayPosition(replaySession.index - 1);
+  announce(t(`Moved back to replay position ${replaySession.index}`, `棋譜の${replaySession.index}手目まで戻りました`));
+}
+
+function replayNext() {
+  if (!replaySession || animation || replaySession.index >= replaySession.record.moves.length) return;
+  const transition = window.BaoGameRecordReplay.transitionAt(replaySession);
+  if (!transition) return;
+  replayTargetIndex = replaySession.index + 1;
+  playMove(transition.entry.move);
+  updateReplayControls();
+}
+
+async function startReplay() {
+  const Replay = window.BaoGameRecordReplay;
+  const file = replayFileInput.files?.[0];
+  replayLoadStatus.hidden = false;
+  if (!Replay || !file) {
+    replayLoadStatus.textContent = t("Choose a saved game record JSON file.", "保存した棋譜JSONを選択してください。");
+    return;
+  }
+  if (file.size > Replay.MAX_FILE_BYTES) {
+    replayLoadStatus.textContent = t("This game record file is too large to replay.", "この棋譜ファイルは大きすぎるため再生できません。");
+    return;
+  }
+  startButton.disabled = true;
+  replayLoadStatus.textContent = t("Checking game record…", "棋譜を検証しています…");
+  try {
+    const session = Replay.parseText(await file.text(), E);
+    cancelAI();
+    lastAIDiagnostic = null;
+    latestRuleCommentary = null;
+    replaySession = session;
+    replayTargetIndex = null;
+    started = true;
+    startScreen.hidden = true;
+    canvas.setAttribute("aria-label", t(
+      "Bao la Kiswahili game record replay board. Use Back and Next to review the game.",
+      "Bao la Kiswahiliの棋譜再生盤。戻る・進むで対局を振り返ります。",
+    ));
+    setReplayPosition(0);
+    replayLoadStatus.textContent = t(
+      `Loaded ${session.record.moves.length} moves.`,
+      `${session.record.moves.length}手の棋譜を読み込みました。`,
+    );
+    canvas.focus();
+  } catch {
+    replaySession = null;
+    replayTargetIndex = null;
+    replayControls.hidden = true;
+    replayLoadStatus.textContent = t(
+      "Could not replay this file. It may be invalid, damaged, or use unsupported rules.",
+      "この棋譜は再生できません。形式の不正・破損・未対応ルールの可能性があります。",
+    );
+    updateAIGenerationBadge();
+  } finally {
+    startButton.disabled = false;
+  }
 }
 
 function ruleGuideHref(anchor) {
@@ -494,6 +656,18 @@ function afterMove() {
   animation = null;
   moves = E.legalMoves(state);
   if (!started) return;
+  if (isReplayMode() && replaySession) {
+    if (replayTargetIndex !== null) {
+      replaySession.index = replayTargetIndex;
+      replayTargetIndex = null;
+      state = E.clone(replaySession.states[replaySession.index]);
+      displayState = E.clone(state);
+    }
+    moves = [];
+    updateReplayControls();
+    showReplayHelp();
+    return;
+  }
   if (state.winner !== null) {
     const name = state.winner === 0 ? "SOUTH" : "NORTH";
     showTurnHelp(`${name} WINS!`);
@@ -726,6 +900,11 @@ canvas.addEventListener("pointerdown", (event) => {
 });
 
 canvas.addEventListener("keydown", (event) => {
+  if (isReplayMode() && replaySession) {
+    if (event.key === "ArrowLeft") { event.preventDefault(); replayBack(); }
+    if (event.key === "ArrowRight") { event.preventDefault(); replayNext(); }
+    return;
+  }
   if (event.key === "Escape") { selected = null; choices = []; latestRuleCommentary = null; helpNode.textContent = t("Selection cancelled", "選択を取り消しました"); }
   if ((event.key === "Enter" || event.key === " ") && choices.length === 1) { event.preventDefault(); playMove(choices[0]); return; }
   if ((event.key === "Enter" || event.key === " ") && selected && !choices.length) { event.preventDefault(); choosePit(selected); return; }
@@ -748,6 +927,9 @@ canvas.addEventListener("keydown", (event) => {
 
 function resetGame() {
   cancelAI();
+  replaySession = null;
+  replayTargetIndex = null;
+  replayControls.hidden = true;
   lastAIDiagnostic = null;
   latestRuleCommentary = null;
   state = E.initialState(); displayState = E.clone(state); moves = E.legalMoves(state);
@@ -755,29 +937,45 @@ function resetGame() {
 }
 
 document.querySelector("#new-game").addEventListener("click", () => {
-  if (animation || state.turn > 1) {
-    if (!confirm(t("End the current game and start a new one?", "現在の対局を終了して、新しい対局を始めますか？"))) return;
+  if (animation || state.turn > 1 || (replaySession && replaySession.index > 0)) {
+    const message = isReplayMode()
+      ? t("Exit this replay and return to game setup?", "この棋譜再生を終了して対局設定へ戻りますか？")
+      : t("End the current game and start a new one?", "現在の対局を終了して、新しい対局を始めますか？");
+    if (!confirm(message)) return;
   }
   cancelAI(); animation = null; started = false;
+  replaySession = null; replayTargetIndex = null; replayControls.hidden = true;
   selected = null; choices = []; choiceBoxes = []; latestRuleCommentary = null;
   startScreen.hidden = false;
-  helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んでSTART GAMEを押してください");
+  canvas.setAttribute("aria-label", t(
+    "Bao la Kiswahili board against the computer. Tap a highlighted pit, then choose a sowing direction.",
+    "Bao la Kiswahiliのコンピュータ対戦盤。選べる穴をタップし、蒔く方向を選びます。",
+  ));
+  helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んで対局開始を押してください");
+  updateSetupFields();
 });
 difficultySelect.value = load("bao_ai_level", "normal");
-difficultySelect.addEventListener("change", () => save("bao_ai_level", difficultySelect.value));
-gameModeSelect.value = load("bao_game_mode", "computer");
-difficultyField.hidden = !isComputerGame();
-sideField.hidden = !isComputerGame();
-updateAIGenerationBadge();
+difficultySelect.addEventListener("change", () => { save("bao_ai_level", difficultySelect.value); updateAIGenerationBadge(); });
+const savedMode = load("bao_game_mode", "computer");
+gameModeSelect.value = savedMode === "local" ? "local" : "computer";
 playerSideSelect.value = load("bao_player_side", "first");
 playerSideSelect.addEventListener("change", () => save("bao_player_side", playerSideSelect.value));
 gameModeSelect.addEventListener("change", () => {
-  save("bao_game_mode", gameModeSelect.value);
-  difficultyField.hidden = !isComputerGame();
-  sideField.hidden = !isComputerGame();
-  updateAIGenerationBadge();
+  if (!isReplayMode()) save("bao_game_mode", gameModeSelect.value);
+  replaySession = null; replayTargetIndex = null; replayControls.hidden = true;
+  replayLoadStatus.textContent = t("Choose a saved game record JSON file.", "保存した棋譜JSONを選択してください。");
+  updateSetupFields();
 });
+replayFileInput.addEventListener("change", () => {
+  const file = replayFileInput.files?.[0];
+  replayLoadStatus.textContent = file
+    ? t(`Selected: ${file.name}`, `選択: ${file.name}`)
+    : t("Choose a saved game record JSON file.", "保存した棋譜JSONを選択してください。");
+});
+replayBackButton.addEventListener("click", replayBack);
+replayNextButton.addEventListener("click", replayNext);
 startButton.addEventListener("click", () => {
+  if (isReplayMode()) { void startReplay(); return; }
   save("bao_game_mode", gameModeSelect.value);
   save("bao_ai_level", difficultySelect.value);
   save("bao_player_side", playerSideSelect.value);
@@ -787,6 +985,7 @@ startButton.addEventListener("click", () => {
   resetGame();
   canvas.focus();
 });
+updateSetupFields();
 soundButton.addEventListener("click", () => { sound = !sound; save("bao_sound", sound ? "on" : "off"); soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`; soundButton.setAttribute("aria-pressed", String(sound)); if (sound) tone(); });
 speedButton.addEventListener("click", () => { fast = !fast; speedButton.textContent = `FAST ${fast ? "ON" : "OFF"}`; speedButton.setAttribute("aria-pressed", String(fast)); });
 copyPositionButton.addEventListener("click", () => {
@@ -825,7 +1024,7 @@ soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`;
 soundButton.setAttribute("aria-pressed", String(sound));
 if ("serviceWorker" in navigator && location.protocol !== "file:") window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
 
-helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んでSTART GAMEを押してください");
+helpNode.textContent = t("Choose game settings, then press START GAME", "対局設定を選んで対局開始を押してください");
 setAIThinking(false);
 updateDiagnosticStatus();
 requestAnimationFrame(loop);
