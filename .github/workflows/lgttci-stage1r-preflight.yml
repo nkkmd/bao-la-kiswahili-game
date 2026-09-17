@@ -37,11 +37,25 @@ jobs:
           node --check tools/experiments/bundle-lgttci-stage1r-actions-source.js
           node --check tools/experiments/validate-lgttci-stage1r-actions-design.js
           ruby -e 'require "yaml"; YAML.load_file(".github/actions/lgttci-stage1r-acquire-slot/action.yml"); YAML.load_file(".github/workflows/lgttci-stage1r-github-actions.yml")'
+      - name: Detect pre-execution applicability
+        id: phase
+        shell: bash
+        run: |
+          AUTH=doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_EXECUTION_AUTHORIZATION.json
+          RESULT=doc/local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json
+          if [[ -e "$AUTH" || -e "$RESULT" ]]; then
+            echo "active=false" >> "$GITHUB_OUTPUT"
+            echo "Stage 1R has already executed; pre-execution absence assertions are no longer applicable."
+          else
+            echo "active=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Assert no final authorization and no fresh result
+        if: steps.phase.outputs.active == 'true'
         run: |
           test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_EXECUTION_AUTHORIZATION.json
           test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json
       - name: Validate GitHub Actions execution design
+        if: steps.phase.outputs.active == 'true'
         run: |
           node tools/experiments/validate-lgttci-stage1r-actions-design.js
           node tools/experiments/generate-lgttci-stage1r-actions-matrices.js > /tmp/stage1r-matrices.json
@@ -53,6 +67,7 @@ jobs:
           if(m.measurement.include.length!==22) throw new Error('measurement matrix mismatch');
           NODE
       - name: Technical fixture source smoke
+        if: steps.phase.outputs.active == 'true'
         run: |
           rm -rf /tmp/lgttci-stage1r-fixture
           mkdir -p /tmp/lgttci-stage1r-fixture/source/SFCDF /tmp/lgttci-stage1r-fixture/source/SILGM /tmp/lgttci-stage1r-fixture/source/GCLD
