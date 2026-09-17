@@ -36,6 +36,14 @@ rootの非principal candidateだけを対象に、1点幅PVS scoutを固定margi
 
 判断: **`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`**
 
-`PBAI-C016-v1`を不採用として閉じる。independent validation、release holdout、実機試験、公開Worker組込み、main統合、公開配信、release発行、AI世代昇格へは進まない。
+`PBAI-C016-v1`を不採用として閉じる。independent validation、release holdout、実機試験、公開Worker組込み、candidateの`public/`への統合、公開配信、release発行、AI世代昇格へは進まない。
 
 今回否定されたのは、prospectiveに固定した`PBAI-C016-v1`の具体的なroot margin probe方式である。「十分良い手を基準にした選択探索」という上位概念全体を一般的に否定する結果とはしない。ただし、同じcandidateをthreshold変更や追加margin探索で救済しない。
+
+## D-006 — 閉鎖記録のmain保存
+
+判断: **`ARCHIVAL-MAIN-INTEGRATION / PR-147 / NO-PUBLIC-AI-CHANGE`**
+
+2026年9月17日、ユーザーの明示指示に基づき、P12の閉鎖記録、再現用engineering tools/workflows、保存済み計測成果物をPR #147で`main`へ統合した。merge commitは`4e8af7dcf8a0cb995a6c231fd397e5c06b7af3c6`である。
+
+この統合はProgramの履歴・再現性を保存するためのものであり、`PBAI-C016-v1`の採用判断を変更しない。`public/`のAIコード、公開release、AI世代、配信状態は変更しない。
