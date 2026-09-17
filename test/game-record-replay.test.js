@@ -37,7 +37,7 @@ test("replay session validates and snapshots every ply", () => {
 
   const first = Replay.transitionAt(session);
   assert.equal(first.entry.ply, 1);
-  assert.ok(Array.isArray(first.events));
+  assert.deepEqual(Object.keys(first), ["entry"]);
   assert.equal(Replay.seek(session, 1).turn, session.states[1].turn);
   assert.equal(session.index, 1);
 });
@@ -58,7 +58,12 @@ test("replay rejects damaged final positions and result metadata", () => {
   assert.throws(() => Replay.buildSession(second, E), /result mismatch/);
 });
 
-test("replay rejects unsupported rule baselines and non-standard starting positions", () => {
+test("replay rejects unknown fields, unsupported rule baselines, and non-standard starting positions", () => {
+  const unknown = completedRecord().record;
+  unknown.trackingId = "not-allowed";
+  assert.throws(() => Replay.buildSession(unknown, E), /Unknown Bao game record top-level field/);
+
+
   const { record } = completedRecord();
   record.rules.baseline = "R-999";
   assert.throws(() => Replay.buildSession(record, E), /Unsupported Bao game record rules/);
