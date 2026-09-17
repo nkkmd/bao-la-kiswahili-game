@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S0-TECHNICAL-2026-09-17-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE-NON-SCIENTIFIC",
+  "checks": {
+    "contractAndAuthorizationBinding": true,
+    "frozenSourceBlobBinding": true,
+    "productionIndependentStaticBoundary": true,
+    "sourcePolicyProductionIndependentExact": true,
+    "sourcePoliciesTechnicallyDistinguishable": true,
+    "rootContractsExecutable": true,
+    "singletonPreconditionCaughtBeforeHelper": true,
+    "historicalGapNegativeControl": true,
+    "rawIdentityAndMoveIdentityExact": true,
+    "rawDepth5GeometryExact": true,
+    "rankableSearchCompatibilityExact": true,
+    "continuousGeometryExact": true,
+    "boundedPreflightExact": true,
+    "failClosedMalformedIdentity": true,
+    "deterministicReplay": true,
+    "freshCompatibilitySeedAccess": false,
+    "g3_12Stage1SeedReplay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g3_11Depth10Rerun": false,
+    "g4_10Depth11Access": false,
+    "formalEffectComputation": false
+  },
+  "sourceBindings": [
+    {"name":"engine","path":"public/engine.js","gitBlobSha":"1527bb3665228b7a5bd9f03153567aedbaaa22d7"},
+    {"name":"aiTechnicalReference","path":"public/ai.js","gitBlobSha":"ac2b4fd66a2555c50a362c39a828515323bba18a"},
+    {"name":"rawGeometryProduction","path":"tools/experiments/lib/lgtgmiv-stage1-production.js","gitBlobSha":"a4664f01535d6abbf6f83821befbb2fafd55cde6"},
+    {"name":"rawGeometryIndependent","path":"tools/experiments/lib/lgtgmiv-stage1-independent.js","gitBlobSha":"0c7239ac7acf146e9aee63dae66194681b8631d6"},
+    {"name":"continuousGeometryProduction","path":"tools/experiments/lib/crclgr-production.js","gitBlobSha":"f9d90792d729a42f738e7cd1c3b045bdd758ffa5"},
+    {"name":"continuousGeometryIndependent","path":"tools/experiments/lib/crclgr-independent.js","gitBlobSha":"77d3a91b2165019e4b50c195a1bb14147c35e6d2"},
+    {"name":"searchProduction","path":"tools/experiments/lib/silgm-production.js","gitBlobSha":"9712e897540b54ff5fe3aa6acd997d286b09331d"},
+    {"name":"searchIndependent","path":"tools/experiments/lib/silgm-independent.js","gitBlobSha":"0bd60c96e5abfce9d1c99b474709177d52509138"},
+    {"name":"controlledSearchPrimitive","path":"tools/experiments/lib/search-reliability-decision-robustness.js","gitBlobSha":"f3a6951fe711db62e164910cfb248a9cbc2cac1a"}
+  ],
+  "staticAudit": {
+    "productionGitBlobSha": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+    "independentGitBlobSha": "d63263375d4b1d61271ead31777b37185056a73b",
+    "productionSha256": "91f77dbf1811ac3aa64e1fa2e1d6b68312291f51cf27fb4366a4a24c25343441",
+    "independentSha256": "45b9164772d5f2e558265dd8f4757684315a04d85a8eac4199c22409b4d24d90"
+  },
+  "technicalFixtureNamespace": {"seedStart":44010001,"seedEnd":44010064,"count":64},
+  "sourcePolicyDistinctTrajectoryCount": 63,
+  "familySupport": {
+    "LGTTCI-RF1-MID-ANCHOR": {"LGTTCI-P1-UNIFORM-LEGAL":41,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":62},
+    "LGTTCI-RF2-OFFSET-ANCHOR": {"LGTTCI-P1-UNIFORM-LEGAL":28,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":58}
+  },
+  "singletonRoot": {
+    "policyId":"LGTTCI-P1-UNIFORM-LEGAL",
+    "seed":44010001,
+    "ply":44,
+    "phase":"mtaji",
+    "rawStateSha256":"5aa1b939961884ef0c994d78d026f4437ce4508e3a368addc9c196fdc9274f1b",
+    "classification":{"estimable":false,"reasonCode":"ROOT-LEGAL-WIDTH-LT2","rootLegalWidth":1,"helperCalled":false},
+    "historicalGapNegativeControl":{"productionError":"complete root ranking required","independentError":"ranking requires >=2 moves"}
+  },
+  "representativeRoots": [
+    {
+      "policyId":"LGTTCI-P1-UNIFORM-LEGAL","seed":44010001,"ply":3,"phase":"namua","rootLegalWidth":2,"rawStateSha256":"6341c3a7984214105b7417d13d7fa56c58ff9cb6d160077299a1fa21066162cd",
+      "preflight":{"eligible":true,"reasonCode":"ELIGIBLE","counters":{"distinctRawStates":"459","uniqueTransitions":"505","parentExpansions":"121","legalMoveEvaluations":"505","treeNodeOccurrences":"526"}},
+      "rawGeometryDigest":"5e57e8ffb24d1183491a1c01788f76aed808a7d6f4b0089c5e2dcd3fa71c6ba1",
+      "continuousGeometryDigest":"d8141a7d6dba1db6199782cffb4b73bb67d5cb8fa41a3c83e45ac52f9ef7052f",
+      "search":[
+        {"conditionId":"D2_Q1","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":2,"digest":"1d09efd49dd0d3a24e8cedc58ff6dbcbf65c4a60cb7a51084b3a2c0cc0261cf9"},
+        {"conditionId":"D3_Q1","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":3,"digest":"d5f89a4880e2640e4664915133702ca9dc5427e0ca203e75af93642109d5cfc1"},
+        {"conditionId":"B256_Q1_MAXD3","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":3,"digest":"d5f89a4880e2640e4664915133702ca9dc5427e0ca203e75af93642109d5cfc1"},
+        {"conditionId":"B1024_Q1_MAXD3","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":3,"digest":"d5f89a4880e2640e4664915133702ca9dc5427e0ca203e75af93642109d5cfc1"},
+        {"conditionId":"D2_Q0","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":2,"digest":"bc0843b5408898b7682a8946fda724a209602f2905ffe6b4c80b661eb6d29e47"},
+        {"conditionId":"D2_Q2","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":2,"digest":"3c9f8a348866388e92d988f98ed734447ed98946c1d58a50013a065d17ad92aa"}
+      ]
+    },
+    {
+      "policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","seed":44010001,"ply":44,"phase":"mtaji","rootLegalWidth":2,"rawStateSha256":"2ee3f6335885b75f4d5014cad5d35026c5471d477ae404e463f79dbce5a0827b",
+      "preflight":{"eligible":true,"reasonCode":"ELIGIBLE","counters":{"distinctRawStates":"271","uniqueTransitions":"270","parentExpansions":"82","legalMoveEvaluations":"270","treeNodeOccurrences":"271"}},
+      "rawGeometryDigest":"3f07f0ccdb4a71e53a2f82c8f9c2162ea0d279f6a77a523cbeb70b57474240d5",
+      "continuousGeometryDigest":"5c270d1b81dca40dacc6e97f869c17c679a17d007ff88ff7124f85cae7cdb2fd",
+      "search":[
+        {"conditionId":"D2_Q1","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":2,"digest":"8891b938b27b3fb25c41b05b72e59d961b6707ddae6f57eff7e48b878c1647d6"},
+        {"conditionId":"D3_Q1","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":3,"digest":"1372e96fd002059785d5a3a8b0db3ad52717eec7f13b527b707f4d9b808b023e"},
+        {"conditionId":"B256_Q1_MAXD3","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":3,"digest":"1372e96fd002059785d5a3a8b0db3ad52717eec7f13b527b707f4d9b808b023e"},
+        {"conditionId":"B1024_Q1_MAXD3","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":3,"digest":"1372e96fd002059785d5a3a8b0db3ad52717eec7f13b527b707f4d9b808b023e"},
+        {"conditionId":"D2_Q0","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":2,"digest":"49147fa46f37580a088a9d3da4374cab2b5c2883fec4a8f4525fa0152368b943"},
+        {"conditionId":"D2_Q2","estimable":true,"reasonCode":"ELIGIBLE","completedDepth":2,"digest":"5a8d92680ef5363189e4881b83f8f020138ba8195ad0e5c487bf16b48995fa78"}
+      ]
+    }
+  ],
+  "activePreflightLimits":{"distinctRawStates":100000,"uniqueTransitions":750000,"parentExpansions":100000,"legalMoveEvaluations":750000,"treeNodeOccurrences":1000000},
+  "studySpecSha256":"0cd776e16f554d4d5e77601d900e25df0a62e98eae8b091a09c8ac88e7ff2c64",
+  "preExecutionAmendmentSha256":"bac5090fc0eeb04aeadab21804dab3721570367eae15e0e9299021e136c5d4b0",
+  "stage0AuthorizationSha256":"851a35911511f6566746f9a31087b1cc4d679bb6871bcb359ef7213ce2eb55fe",
+  "freshCompatibilitySeedAccess":false,
+  "formalEffectComputation":false,
+  "protectedEvidenceAccess":false,
+  "deterministicCoreSha256":"3579d3bc7f4c15495b5ba75b6c69edeba9caf84f24b7d541fa4b6fe14ca207e0",
+  "telemetry":{"elapsedMs":12482,"peakRssBytes":129564672,"resultArtifactBytes":9494},
+  "resourceCeilings":{"elapsedMs":600000,"peakRssBytes":1500000000,"resultArtifactBytes":8000000},
+  "stageDisposition":"STAGE0-PASS",
+  "freshCompatibilityAuthorizedByThisResult":false,
+  "nextRequiredDecision":"POST-STAGE0-STAGE1-AUTHORIZATION-REVIEW"
+}

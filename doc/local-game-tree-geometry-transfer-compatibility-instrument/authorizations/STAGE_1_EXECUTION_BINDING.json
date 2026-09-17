@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+  "bindingId": "LGTTCI-S1-EXECUTION-BINDING-2026-09-17-v1",
+  "status": "BOUND-BEFORE-FIRST-FRESH-SEED-READ",
+  "freshCompatibilitySeedAccessBeforeBinding": 0,
+  "files": {
+    "tools/experiments/run-lgttci-stage1-compatibility.js": "bdd2a991724dc941528cc8a6bdf2a5ccef5bda94",
+    "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+    "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_COMPATIBILITY_SPEC.json": "d680c45943ceb81729e91ed230689b27b0752d17",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_PRE_ACCESS_CLARIFICATION_V1.json": "ad3d9f0e065fd56b3ff811cfd2a514b7b2aa28eb",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1_AUTHORIZATION.json": "c241751f244456c72458775e1edd337f36e67ba5",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STUDY_1_SPEC.json": "f62d362e4f2eaa428645eaabe7bfe4be3cde0cf7",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/PRE_EXECUTION_SPEC_AMENDMENT_V1.json": "6e06ebb43a79f0cf39046b52c1502f783f908ad9"
+  },
+  "executionRoute": "LOCAL-REPRODUCIBLE-RUN",
+  "githubActionsFreshCompatibilityExecutionAuthorized": false,
+  "rerunAfterFreshAccessAuthorized": false,
+  "note": "Any source change after the first fresh seed read requires fail-closed closure; this binding cannot be silently updated to rescue the execution."
+}

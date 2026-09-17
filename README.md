@@ -304,7 +304,7 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 
 ### 研究第1世代 — 基礎的な現象と測定対象
 
-局面相転移、局面類型、手筋、形勢評価、限定終盤、状態空間など、後続研究の土台となる対象を広く調べました。限定された条件では、`capture-branch-expansion`に関する探索深度別の反転、Mtajiの2つの局面類型、手筋候補`TM-S2-C03`などを確認しました。また、限定終盤8状態の完全解析と、標準初期局面から深さ8までの24,848 RAW状態の完全列挙を行いました。
+局面相転移点、局面類型、手筋、形勢評価、限定終盤、状態空間など、後続研究の土台となる対象を広く調べました。限定された条件では、`capture-branch-expansion`に関する探索深度別の反転、Mtajiの2つの局面類型、手筋候補`TM-S2-C03`などを確認しました。また、限定終盤8状態の完全解析と、標準初期局面から深さ8までの24,848 RAW状態の完全列挙を行いました。
 
 一方、一般定石として採用できる候補は得られず、形勢評価や複雑度などにも未確認・結論未確定の結果が残りました。各結果の適用範囲は[研究成果の中央索引](doc/RESEARCH_INDEX.md)に記録しています。
 
@@ -322,15 +322,16 @@ G3-12は技術的不成立で終了したため、局所幾何の一般化可能
 
 ### 研究第4世代 — 局所幾何の意味・移送可能性・exact帰結
 
-第四世代は、第三世代で測定可能になったbounded RAW local game-tree geometryについて、別のphase・root family・source policyへの移送可能性、完全解析可能な限定domainでのgame-theoretic consequence、時間・ルール・探索条件との関係を検証する計画です。
+第四世代は、第三世代で測定可能になったbounded RAW local game-tree geometryについて、別のphase・root family・source policyへの移送可能性、完全解析可能な限定domainでのgame-theoretic consequence、時間・ルール・探索条件との関係を検証するProgramです。
 
-core agendaは`G4-01..G4-10`です。最初にclaim-transfer compatibility instrumentを科学的effectから分離して構築し、claim別の一般化・反例検証、fresh exact microdomain、geometryとexact valueのbridge、多時間尺度memory、rule-semantic transition、search reliability、depth 11 exact topologyへ進む構成です。
+core agendaは`G4-01..G4-10`です。最初のStudyであるG4-01 `LGTTCI-STUDY1`は、G3-04・G3-07・G3-10由来claimを将来のfresh domainへ移す前に、root contract、helper precondition、measurement agreement、resource readinessを科学的effectから分離して検証しました。SFCDF・SILGM・GCLDの3 familyすべてがcompatibleとなり、正式decisionは **`COMPATIBILITY-ELIGIBLE-ALL`** です。
 
-現時点で固定されているのはProgram計画だけです。個別Studyの科学実行、scientific seedへのアクセス、depth 11、公開AI変更は承認されていません。次に行える研究作業は、G4-01についてのcurrent-state authorization reviewです。
+この結果はcompatibility/readinessのみを示し、G3由来claimのfresh-domain一般化、effect direction・effect size、counterexampleの成立／不成立を確認したものではありません。G4-02、G4-03、G4-04はeligibility gateを満たしていますが、いずれもまだscientific executionを承認していません。次に進む場合は、各Studyについてpost-G4-01 current-state authorization reviewを先に行います。G4-10のdepth 11も引き続き未承認・未アクセスです。
 
 - [第四世代研究の入口](doc/research-generation-4/README.md)
 - [第四世代Program計画](doc/research-generation-4/PROGRAM_PLAN.md)
 - [第四世代の現在状態](doc/research-generation-4/CURRENT_STATUS.md)
+- [G4-01 / LGTTCI-STUDY1](doc/local-game-tree-geometry-transfer-compatibility-instrument/README.md)
 
 新しい独立研究を追加するときは、初見向け概要と科学的・技術的な正本を分け、[研究成果の中央索引](doc/RESEARCH_INDEX.md)から参照できるようにします。
 

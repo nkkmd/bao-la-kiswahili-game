@@ -1,0 +1,101 @@
+name: LGTTCI Stage 1R Acquire Slot
+
+description: Acquire one authorized Stage 1R fresh source slot with durable GitHub Actions markers
+
+inputs:
+  block:
+    required: true
+  slot-seed:
+    required: true
+  role:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Verify authorization binding
+      shell: bash
+      run: node tools/experiments/verify-lgttci-stage1r-actions-authorization.js
+
+    - name: Prepare durable start marker
+      id: prep
+      shell: bash
+      env:
+        BLOCK: ${{ inputs.block }}
+        SLOT: ${{ inputs.slot-seed }}
+        ROLE: ${{ inputs.role }}
+      run: |
+        set -euo pipefail
+        mkdir -p artifacts/stage1r/markers
+        if [ "$ROLE" = "PRIMARY" ]; then
+          effective="$SLOT"
+          prefix="primary"
+        elif [ "$ROLE" = "PAIRED-RESERVE" ]; then
+          effective=$((SLOT + 1000000))
+          prefix="reserve"
+        else
+          echo "invalid role" >&2
+          exit 1
+        fi
+        marker="artifacts/stage1r/markers/${prefix}-start-${SLOT}.json"
+        printf '{"stageId":"LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1","event":"%s-START","block":"%s","slotSeed":%s,"effectiveSeed":%s,"runId":"%s","runAttempt":"%s","sha":"%s"}\n' "$ROLE" "$BLOCK" "$SLOT" "$effective" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$GITHUB_SHA" > "$marker"
+        echo "effective=$effective" >> "$GITHUB_OUTPUT"
+        echo "prefix=$prefix" >> "$GITHUB_OUTPUT"
+        echo "marker=$marker" >> "$GITHUB_OUTPUT"
+
+    - name: Persist start marker before fresh read
+      uses: actions/upload-artifact@v4
+      with:
+        name: lgttci-s1r-${{ steps.prep.outputs.prefix }}-start-${{ inputs.slot-seed }}
+        path: ${{ steps.prep.outputs.marker }}
+        if-no-files-found: error
+        retention-days: 90
+        compression-level: 0
+
+    - name: Compute source slot
+      id: compute
+      shell: bash
+      env:
+        BLOCK: ${{ inputs.block }}
+        SLOT: ${{ inputs.slot-seed }}
+        EFFECTIVE: ${{ steps.prep.outputs.effective }}
+      run: |
+        set +e
+        mkdir -p artifacts/stage1r/source
+        node tools/experiments/run-lgttci-stage1r-source-unit.js \
+          --block "$BLOCK" \
+          --slot-seed "$SLOT" \
+          --effective-seed "$EFFECTIVE" \
+          --output "artifacts/stage1r/source/source.json"
+        status=$?
+        echo "status=$status" >> "$GITHUB_OUTPUT"
+        if [ "$status" -ne 0 ]; then
+          mkdir -p artifacts/stage1r/failure
+          printf '{"stageId":"LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1","event":"SOURCE-PROCESS-FAILED","block":"%s","slotSeed":%s,"effectiveSeed":%s,"role":"%s","exitStatus":%s,"runId":"%s","runAttempt":"%s","sha":"%s"}\n' "$BLOCK" "$SLOT" "$EFFECTIVE" "${{ inputs.role }}" "$status" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$GITHUB_SHA" > "artifacts/stage1r/failure/failure.json"
+        fi
+        exit 0
+
+    - name: Persist sealed source artifact
+      if: ${{ steps.compute.outputs.status == '0' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: lgttci-s1r-source-${{ inputs.slot-seed }}
+        path: artifacts/stage1r/source/source.json
+        if-no-files-found: error
+        retention-days: 90
+        compression-level: 0
+
+    - name: Persist deterministic failure artifact
+      if: ${{ steps.compute.outputs.status != '0' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: lgttci-s1r-${{ steps.prep.outputs.prefix }}-failure-${{ inputs.slot-seed }}
+        path: artifacts/stage1r/failure/failure.json
+        if-no-files-found: error
+        retention-days: 90
+        compression-level: 0
+
+    - name: Propagate source failure after persistence
+      if: ${{ steps.compute.outputs.status != '0' }}
+      shell: bash
+      run: exit 1

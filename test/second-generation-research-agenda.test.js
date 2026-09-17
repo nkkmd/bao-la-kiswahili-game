@@ -49,6 +49,6 @@ assert.equal((g2.match(/^#### G2-\d{2} —/gm) || []).length, 12, "expected exac
 assert.equal((g2.match(/^#### G2-H01 —/gm) || []).length, 1, "expected one independent human track study");
 
 assert.ok(index.includes("第二世代の純粋研究プログラム"), "RESEARCH_INDEX missing Generation 2 navigation");
-assert.ok(index.includes("独立engineering track"), "RESEARCH_INDEX missing research/AI separation");
+assert.ok(/独立(?:した)?engineering track/.test(index), "RESEARCH_INDEX missing research/AI separation");
 
 console.log("Second-generation pure research agenda audit: PASS");

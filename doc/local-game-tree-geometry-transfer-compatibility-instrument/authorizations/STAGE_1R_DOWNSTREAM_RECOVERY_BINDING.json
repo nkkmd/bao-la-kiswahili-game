@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "bindingId": "LGTTCI-S1R-DOWNSTREAM-RECOVERY-BINDING-2026-09-18-v1",
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "status": "BOUND-READY-AWAITING-DOWNSTREAM-RECOVERY-AUTHORIZATION",
+  "recoveryType": "DOWNSTREAM-ONLY",
+  "researchBranch": "research/g4-01-transfer-compatibility-instrument",
+  "sourceExecutionRun": {
+    "runId": 35224920019,
+    "headSha": "90aff0561538113c203cbf8efa8977420a19dca1",
+    "workflowName": "LGTTCI Stage 1R GitHub Actions execution",
+    "runConclusion": "failure",
+    "expectedSourceArtifactCount": 1536
+  },
+  "executionCriticalGitBlobShas": {
+    "recoveryWorkflow": "06096dd0243bf019ae083398bc448a561ef85857",
+    "recoveryArtifactIndexVerifier": "c2195ab23d2f9eed6cfeda9def99f204c8a6fe08",
+    "stage1rRetestSpec": "94b14c76fdb392bf80993e2806553e071902a169",
+    "originalStage1rExecutionAuthorization": "652dcbe06019f3e51538f79a03692f1599e5394b",
+    "sourceBundler": "9012394fc43d28bbef6bac0c46ea10588cdec2d7",
+    "measurementRunner": "3db7fcbbbe2652ea7278f05e655b9154d397a5b4",
+    "aggregateRunner": "3f27eb0ace8687c9687d68e5c099dbdcaa04ca13",
+    "matrixGenerator": "dffde13d23cfd1157590fc01616ed09ba986de8d"
+  },
+  "inputContract": {
+    "sourceArtifactNamePattern": "lgttci-s1r-source-<primary-slot-seed>",
+    "requiredExactCoverage": 1536,
+    "requireUniqueArtifactIds": true,
+    "requireUniqueArtifactNames": true,
+    "requireUnexpiredArtifacts": true,
+    "requireArtifactDigest": true,
+    "requireOriginRunIdMatch": true,
+    "requireOriginHeadShaMatch": true,
+    "requireBundlerSlotAndStageIdentityChecks": true
+  },
+  "allowedOperations": [
+    "LIST_ORIGIN_RUN_SOURCE_ARTIFACT_METADATA",
+    "DOWNLOAD_ORIGIN_RUN_SOURCE_ARTIFACTS",
+    "VERIFY_AND_SEAL_CANONICAL_SOURCE_BUNDLE",
+    "RUN_SEED_FREE_MEASUREMENTS",
+    "AGGREGATE_STAGE1R_COMPATIBILITY_RESULT",
+    "UPLOAD_RECOVERY_AUDIT_AND_RESULT_ARTIFACTS"
+  ],
+  "prohibitions": {
+    "freshSeedRead": true,
+    "freshWorkflowRerun": true,
+    "sourceAcquisitionScriptInvocation": true,
+    "reserveSeedRead": true,
+    "old401NamespaceReuse": true,
+    "scientificContractChange": true,
+    "mainIntegration": true
+  },
+  "recoveryInvariant": "Any inability to verify the exact 1536 immutable source artifacts from run 35224920019 must fail closed before measurement."
+}

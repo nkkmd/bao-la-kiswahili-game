@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S0-TECHNICAL-2026-09-17-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-17-post-rg3-pre-g4-01-authorization-review.md",
+  "studySpecPath": "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STUDY_1_SPEC.json",
+  "baselineMainSha": "6433c726d038f710b9b5af3620f1a7d30db7bdc9",
+  "researchBranch": "research/g4-01-transfer-compatibility-instrument",
+  "allowedEvidenceClass": "TECHNICAL-FIXTURE",
+  "allowedTechnicalFixtureSeeds": {"start": 44010001, "end": 44010064, "count": 64},
+  "freshCompatibilitySeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "formalEffectComputationAuthorized": false,
+  "allowedWork": [
+    "source hash binding",
+    "production/independent source-policy replay verification",
+    "RAW identity verification",
+    "canonical move identity verification",
+    "relative-depth-5 geometry agreement verification",
+    "root-contract eligibility verification",
+    "search-helper precondition classification",
+    "singleton root clean NON-ESTIMABLE verification",
+    "rankable-root controlled-search agreement verification",
+    "continuous-geometry boundary verification",
+    "negative controls",
+    "resource telemetry"
+  ],
+  "forbiddenAccess": [
+    "G3-11 depth-10 rerun",
+    "G3-12 Stage 1 consumed seed replay",
+    "G3-12 Stage 2 unread seed access",
+    "LGTTCI Stage 1 fresh compatibility seed access",
+    "G4-10 depth-11 access"
+  ],
+  "forbiddenOutputs": [
+    "formal effect direction",
+    "p-value",
+    "generalization decision",
+    "counterexample decision",
+    "claim confirmation or rejection"
+  ],
+  "automaticNextStageAuthorization": false,
+  "postStage0ReviewRequired": true
+}

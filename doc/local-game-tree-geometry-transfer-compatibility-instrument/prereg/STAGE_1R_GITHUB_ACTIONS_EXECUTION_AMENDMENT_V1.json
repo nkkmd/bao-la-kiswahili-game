@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "amendmentId": "LGTTCI-S1R-GITHUB-ACTIONS-EXECUTION-AMENDMENT-2026-09-17-v1",
+  "statusAtFreeze": "FROZEN-BEFORE-FRESH-SEED-ACCESS",
+  "freshSeedAccessBeforeAmendment": 0,
+  "scope": "execution-route-only",
+  "scientificContractChanged": false,
+  "reason": "Remove dependence on a chat-scoped local process and make the retest continue on GitHub infrastructure after the conversational response ends.",
+  "supersedesExecutionRouteOnly": "LOCAL-DURABLE-LEDGER-AND-SEALED-ARTIFACT",
+  "executionRoute": "GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE",
+  "authorizationTrigger": {
+    "event": "push",
+    "branch": "research/g4-01-transfer-compatibility-instrument",
+    "path": "doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_EXECUTION_AUTHORIZATION.json",
+    "firstCreationCommitOnly": true,
+    "workflowDispatchFreshExecutionAuthorized": false,
+    "secondFreshWorkflowRunAuthorized": false
+  },
+  "primaryAcquisition": {
+    "totalPrimarySlots": 1536,
+    "jobPacking": "four slots per GitHub-hosted runner job, with an immutable START artifact immediately before each individual fresh read and an immutable source artifact immediately after that slot is sealed",
+    "matrixGroups": {
+      "SFCDF": {"jobs": 96, "slotsPerJob": 4},
+      "SILGM": {"jobs": 192, "slotsPerJob": 4},
+      "GCLD": {"jobs": 96, "slotsPerJob": 4}
+    },
+    "maximumPrimaryMatrixJobs": 192,
+    "maximumParallelFreshJobs": 12,
+    "failFast": false
+  },
+  "durableArtifactProtocol": {
+    "beforeEveryFreshRead": "upload immutable lgttci-s1r-{primary|reserve}-start-{slotSeed} artifact",
+    "afterSuccessfulSourceComputation": "upload immutable lgttci-s1r-source-{slotSeed} artifact",
+    "afterControlledSourceFailure": "upload immutable lgttci-s1r-{primary|reserve}-failure-{slotSeed} artifact",
+    "artifactRetentionDays": 90,
+    "overwriteAuthorized": false,
+    "artifactNameReuseAuthorized": false,
+    "completedSourceRereadAuthorized": false
+  },
+  "recoveryRules": {
+    "noStartArtifact": "fresh seed is treated as not read; one automatic primary retry is authorized",
+    "primaryStartWithoutSourceOrFailure": "fresh access is ambiguous; only the frozen paired reserve may be used",
+    "controlledPrimaryFailureArtifact": "TECHNICAL failure; reserve is forbidden",
+    "reserveStartWithoutSource": "TECHNICAL failure; reserve-of-reserve is forbidden",
+    "controlledReserveFailureArtifact": "TECHNICAL failure",
+    "maximumInfrastructureReplacementsTotal": 48,
+    "fullFreshWorkflowRerunAuthorized": false
+  },
+  "sourceBundle": {
+    "requiredSourceArtifacts": 1536,
+    "bundleOnlyAfterCompleteCoverage": true,
+    "manifestIncludesPerSlotSha256": true,
+    "old401NamespaceReuseAuthorized": false
+  },
+  "measurementAndAggregation": {
+    "freshSeedReadAuthorized": false,
+    "source": "sealed GitHub Actions source bundle only",
+    "measurementTaskCount": 22,
+    "measurementTaskRetryAuthorized": true,
+    "measurementAutomaticAttempts": 3,
+    "aggregateFreshSeedReadAuthorized": false
+  },
+  "responseIndependence": {
+    "chatResponseMayEndAfterAuthorizationCommit": true,
+    "executionContinuesOnGitHubActions": true,
+    "localChatRuntimeRequiredAfterTrigger": false
+  },
+  "unchangedScientificElements": [
+    "source policies",
+    "root families",
+    "RAW identity",
+    "geometry contract",
+    "search conditions",
+    "support gates",
+    "primary seed namespace",
+    "paired reserve namespace",
+    "decision mapping",
+    "forbidden scientific outputs"
+  ]
+}

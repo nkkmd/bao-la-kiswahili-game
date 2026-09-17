@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY-RETEST",
+  "statusAtFreeze": "FROZEN-PENDING-FINAL-EXECUTION-AUTHORIZATION",
+  "scientificEffectAuthorized": false,
+  "purpose": "Repeat compatibility-only Stage 1 with new evidence and a crash-resilient acquisition/measurement separation. No effect direction, p-value, generalization, or counterexample decision is authorized.",
+  "supersedesInterruptedStageForExecutionOnly": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+  "interruptedStageDisposition": "EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION",
+  "inheritance": {
+    "sourcePolicies": "unchanged from STUDY_1_SPEC.json",
+    "rootFamilies": "unchanged from STUDY_1_SPEC.json",
+    "rawIdentity": "unchanged from STUDY_1_SPEC.json",
+    "geometryContract": "unchanged from STUDY_1_SPEC.json plus PRE_EXECUTION_SPEC_AMENDMENT_V1.json",
+    "searchConditions": "unchanged from STUDY_1_SPEC.json",
+    "supportGates": "unchanged from STAGE_1_COMPATIBILITY_SPEC.json",
+    "estimableFalseMapping": "unchanged from STAGE_1_PRE_ACCESS_CLARIFICATION_V1.json"
+  },
+  "freshSeedSlots": {
+    "primary": {
+      "SFCDF": {"seedStart": 40211001, "seedEnd": 40211384, "count": 384},
+      "SILGM": {"seedStart": 40212001, "seedEnd": 40212768, "count": 768},
+      "GCLD": {"seedStart": 40213001, "seedEnd": 40213384, "count": 384}
+    },
+    "pairedReserve": {
+      "mapping": "reserveSeed = primarySeed + 1000000",
+      "SFCDF": {"seedStart": 41211001, "seedEnd": 41211384, "count": 384},
+      "SILGM": {"seedStart": 41212001, "seedEnd": 41212768, "count": 768},
+      "GCLD": {"seedStart": 41213001, "seedEnd": 41213384, "count": 384}
+    },
+    "policyAndCellAssignmentUses": "primary slot seed",
+    "trajectoryPrngUses": "effective seed (primary unless infrastructure replacement is required)",
+    "primaryCount": 1536,
+    "maxInfrastructureReplacementsTotal": 48,
+    "maxFreshSeedReads": 1584
+  },
+  "infrastructureReplacementRule": {
+    "allowedOnlyWhen": "durable journal contains SOURCE-START for the primary slot but no SOURCE-COMMIT and the prior source process cannot be proven not to have accessed the seed",
+    "replacement": "use the pre-paired reserve seed for that primary slot exactly once",
+    "forbiddenReasons": [
+      "root unavailable",
+      "support shortage",
+      "preflight ineligible",
+      "search non-estimable",
+      "measurement value",
+      "cell balance",
+      "study disposition"
+    ],
+    "reserveOfReserveAuthorized": false,
+    "replacementLimitExceeded": "TECHNICAL-INVALID"
+  },
+  "sourceAcquisition": {
+    "artifactUnit": "one primary slot",
+    "durableJournalBeforeRead": true,
+    "atomicArtifactCommit": true,
+    "resumeRule": "SOURCE-COMMIT slots are skipped; incomplete primary slots use only the pre-paired reserve according to infrastructureReplacementRule",
+    "blockShardingForOperatorProgress": {
+      "SFCDF": {"shardCount": 12, "primarySlotsPerShard": 32},
+      "SILGM": {"shardCount": 12, "primarySlotsPerShard": 64},
+      "GCLD": {"shardCount": 12, "primarySlotsPerShard": 32}
+    },
+    "heavyDepth5MeasurementDuringSourceAcquisition": false
+  },
+  "measurementSeparation": {
+    "freshSeedReadAuthorized": false,
+    "input": "sealed source artifacts only",
+    "rerunOfMeasurementTaskAuthorized": true,
+    "reason": "measurement reruns do not regenerate or reread fresh trajectories and therefore do not alter the frozen evidence population",
+    "tasks": {"SFCDF": 4, "SILGM": 16, "GCLD": 2, "total": 22},
+    "atomicTaskArtifact": true
+  },
+  "selectionLabels": {
+    "SFCDF": "LGTTCI-S1R-SFCDF|policyId|rootFamilyId|slotSeed|effectiveSeed|namuaRawSha256|mtajiRawSha256",
+    "SILGMRootFamily": "LGTTCI-S1R-SILGM-RF|slotSeed",
+    "SILGMPhase": "LGTTCI-S1R-SILGM-PHASE|slotSeed",
+    "SILGM": "LGTTCI-S1R-SILGM|policyId|rootFamilyId|phase|widthClass|slotSeed|effectiveSeed|rawStateSha256",
+    "GCLD": "LGTTCI-S1R-GCLD|policyId|slotSeed|effectiveSeed|trajectorySha256"
+  },
+  "decisionMapping": {
+    "allThreeFamiliesCompatible": "COMPATIBILITY-ELIGIBLE-ALL",
+    "oneOrTwoFamiliesCompatible": "COMPATIBILITY-ELIGIBLE-PARTIAL",
+    "zeroFamiliesCompatibleWithoutTechnicalFailure": "NON-ESTIMABLE",
+    "technicalFailure": "TECHNICAL-INVALID"
+  },
+  "protectedEvidence": {
+    "oldStage1SeedNamespace401Reuse": false,
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2Access": false,
+    "g3_12PartialMeasurementReuse": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  },
+  "forbiddenOutputs": [
+    "effect direction",
+    "effect magnitude",
+    "p-value",
+    "generalization decision",
+    "counterexample decision",
+    "claim confirmation or rejection",
+    "best-move correctness claim",
+    "game-theoretic value",
+    "human difficulty inference"
+  ],
+  "finalExecutionAuthorizationRequired": true,
+  "freshSeedAccessBeforeFinalAuthorization": 0
+}

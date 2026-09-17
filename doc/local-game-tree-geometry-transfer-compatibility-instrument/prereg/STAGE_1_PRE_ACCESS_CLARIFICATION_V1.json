@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+  "clarificationId": "LGTTCI-S1-PRE-ACCESS-CLARIFICATION-2026-09-17-v1",
+  "status": "ACTIVE-PRE-FRESH-ACCESS-CLARIFICATION",
+  "freshCompatibilitySeedAccessBeforeClarification": 0,
+  "reason": "The frozen Stage 1 spec requires exact production/independent search agreement and no hard assertion, but did not explicitly map a rankable selected root whose node-budget condition returns estimable=false. This mapping is fixed before any fresh compatibility seed access.",
+  "mapping": {
+    "selectedRankableRootAnyFrozenConditionEstimableFalse": "SILGM family compatibility = NON-ESTIMABLE",
+    "productionIndependentExactAgreementOnEstimableFalse": "required",
+    "hardAssertionOrUnexpectedException": "TECHNICAL-INVALID",
+    "singletonRoot": "tracked separately as ROOT-LEGAL-WIDTH-LT2; never passed to ranking helper; does not itself cause TECHNICAL-INVALID"
+  },
+  "scientificTargetChanged": false,
+  "supportThresholdChanged": false,
+  "selectionOrderChanged": false,
+  "seedNamespaceChanged": false,
+  "effectComputationAuthorized": false,
+  "noRescueBoundaryChanged": false
+}

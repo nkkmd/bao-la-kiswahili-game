@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "bindingId": "LGTTCI-S1R-PRE-EXECUTION-BINDING-2026-09-17-v1",
+  "status": "BOUND-READY-AWAITING-FINAL-EXECUTION-AUTHORIZATION",
+  "freshCompatibilitySeedAccessBeforeBinding": 0,
+  "sourceHeadAtBinding": "f3a02e6216ac18cb4d77d2259a6b5374edda0bdb",
+  "baselineMainSha": "6433c726d038f710b9b5af3620f1a7d30db7bdc9",
+  "preflight": {
+    "workflow": "LGTTCI Stage 1R pre-execution validation",
+    "runId": 35220959149,
+    "jobId": 105200705604,
+    "conclusion": "success",
+    "freshSeedAccess": 0
+  },
+  "files": {
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1R_RETEST_SPEC.json": "94b14c76fdb392bf80993e2806553e071902a169",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-17-stage1-execution-interrupted.md": "60246121326190b02e742d6ff21f4d0fb3800d06",
+    "tools/experiments/run-lgttci-stage1r-source-unit.js": "4751c2e975ffac543fbdc681bc39f4134a4c6c30",
+    "tools/experiments/run-lgttci-stage1r-source-orchestrator.js": "b96c7d58396e5ea93acd7ac8f50b9fb4c03334e5",
+    "tools/experiments/run-lgttci-stage1r-measurement-task.js": "3db7fcbbbe2652ea7278f05e655b9154d397a5b4",
+    "tools/experiments/run-lgttci-stage1r-aggregate.js": "82998b2d80dc174eec349a4ae4585d85645ac4b9",
+    ".github/workflows/lgttci-stage1r-preflight.yml": "e719f9d548b9a40df44c9e33a8b788004d143689",
+    "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+    "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STUDY_1_SPEC.json": "f62d362e4f2eaa428645eaabe7bfe4be3cde0cf7",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_COMPATIBILITY_SPEC.json": "d680c45943ceb81729e91ed230689b27b0752d17",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_PRE_ACCESS_CLARIFICATION_V1.json": "ad3d9f0e065fd56b3ff811cfd2a514b7b2aa28eb",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/PRE_EXECUTION_SPEC_AMENDMENT_V1.json": "6e06ebb43a79f0cf39046b52c1502f783f908ad9"
+  },
+  "frozenSourceIdentity": {
+    "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7",
+    "public/ai.js": "ac2b4fd66a2555c50a362c39a828515323bba18a"
+  },
+  "executionRoute": "LOCAL-DURABLE-LEDGER-AND-SEALED-ARTIFACT",
+  "finalExecutionAuthorizationPresent": false,
+  "freshPrimaryNamespace": "402...",
+  "pairedReserveNamespace": "412...",
+  "old401NamespaceReuseAuthorized": false,
+  "measurementMayRerunWithoutFreshAccess": true,
+  "sourceSeedRereadAuthorized": false,
+  "note": "Creating this binding does not authorize execution. Fresh source acquisition must remain blocked until STAGE_1R_EXECUTION_AUTHORIZATION.json is created by a separate explicit step."
+}
