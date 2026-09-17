@@ -1,0 +1,83 @@
+name: Repository consistency follow-up
+
+on:
+  push:
+    branches:
+      - maintenance/repository-consistency-audit-followup-20260917
+    paths:
+      - '.github/workflows/repository-consistency-followup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: maintenance/repository-consistency-audit-followup-20260917
+          fetch-depth: 0
+      - name: 現在向けAI文書をP12終了状態へ同期
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          note = "2026年9月17日には`PBAI-P12 / PBAI-C016-v1`としてマージン制限型選択探索を検証しましたが、development gateを通過せず不採用・閉鎖となり、公開AIは`AI-GEN4`を維持しています。P12を含む最新のAI Engineering状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を正本とします。"
+
+          advanced = Path('doc/AI_ADVANCED_ROADMAP.md')
+          s = advanced.read_text(encoding='utf-8')
+          anchor = "現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。本書のPhase別計画・結果とP4・P5の追記は各時点の開発記録であり、最新の採用・配信状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を参照してください。P6〜P11を通じた学習済み論理ゲート型評価器の検証・正式採用は、初期Phase計画とは別の改善プログラムとして完了しています。"
+          if s.count(anchor) != 1:
+              raise SystemExit('advanced roadmap anchor missing or non-unique')
+          s = s.replace(anchor, anchor + "\n\n" + note, 1)
+          if s.count('更新日: 2026-07-13') != 1:
+              raise SystemExit('advanced roadmap update date anchor missing or non-unique')
+          s = s.replace('更新日: 2026-07-13', '更新日: 2026-09-17', 1)
+          advanced.write_text(s, encoding='utf-8')
+
+          log = Path('doc/AI_DEVELOPMENT_LOG.md')
+          s = log.read_text(encoding='utf-8')
+          if s.count(anchor) != 1:
+              raise SystemExit('development log anchor missing or non-unique')
+          s = s.replace(anchor, anchor + "\n\n" + note, 1)
+          if s.count('更新日: 2026-09-12') != 1:
+              raise SystemExit('development log update date anchor missing or non-unique')
+          s = s.replace('更新日: 2026-09-12', '更新日: 2026-09-17', 1)
+          log.write_text(s, encoding='utf-8')
+          PY
+      - name: 文書リンクと差分品質を確認
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          files = [Path('doc/AI_ADVANCED_ROADMAP.md'), Path('doc/AI_DEVELOPMENT_LOG.md')]
+          pat = re.compile(r'\[[^\]]*\]\(([^)]+)\)')
+          broken = []
+          for f in files:
+              text = f.read_text(encoding='utf-8')
+              for target in pat.findall(text):
+                  if target.startswith(('http://', 'https://', '#', 'mailto:')):
+                      continue
+                  target = target.split('#', 1)[0].split('?', 1)[0]
+                  if not target:
+                      continue
+                  if not (f.parent / target).resolve().exists():
+                      broken.append(f'{f}: {target}')
+          if broken:
+              raise SystemExit('broken local links:\n' + '\n'.join(broken))
+          print('changed-doc local links: PASS')
+          PY
+          git diff --check
+      - name: 追従修正を記録し一時workflowを除去
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/AI_ADVANCED_ROADMAP.md doc/AI_DEVELOPMENT_LOG.md
+          git rm .github/workflows/repository-consistency-followup.yml
+          git commit -m 'docs: sync current AI guidance with PBAI-P12 closure'
+          git push origin HEAD:maintenance/repository-consistency-audit-followup-20260917
