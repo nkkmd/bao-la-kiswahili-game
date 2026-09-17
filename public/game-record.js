@@ -180,7 +180,9 @@
   let currentRecord = null;
 
   function gameMetadata() {
-    const mode = document.querySelector("#game-mode")?.value === "local" ? "local" : "computer";
+    const selectedMode = document.querySelector("#game-mode")?.value || "computer";
+    if (selectedMode === "replay") return null;
+    const mode = selectedMode === "local" ? "local" : "computer";
     const metadata = { mode };
     if (mode === "computer") {
       const difficulty = document.querySelector("#difficulty")?.value || "normal";
@@ -290,7 +292,8 @@
     currentRecord = null;
     hideSaveAction();
     const value = originalResetGame(...args);
-    if (started) currentRecord = createRecord(state, gameMetadata());
+    const metadata = gameMetadata();
+    if (started && metadata) currentRecord = createRecord(state, metadata);
     return value;
   };
 
