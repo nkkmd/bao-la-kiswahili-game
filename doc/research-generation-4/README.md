@@ -2,7 +2,7 @@
 
 更新日: 2026-09-18  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / NEXT WAVE-A STUDY NOT AUTHORIZED`**
+状態: **`G4-01 COMPLETE / MAIN INTEGRATION AUTHORIZED / NEXT WAVE-A STUDY NOT AUTHORIZED`**
 
 ## このProgramが調べること
 
@@ -28,7 +28,7 @@ G4-03 = NOT AUTHORIZED
 G4-04 = NOT AUTHORIZED
 Depth 11 = NOT AUTHORIZED / NOT ACCESSED
 Public AI change authorized = false
-G4-01 main integration = NOT YET AUTHORIZED
+G4-01 main integration = AUTHORIZED BY USER / PR #151
 ```
 
 ## G4-01の到達点
@@ -79,7 +79,7 @@ G4-01の研究そのものは完了している。
 
 次の科学実行を行う場合は、G4-02、G4-03、G4-04のいずれかについて**post-G4-01 current-state authorization review**を実施する。G4-01の`COMPATIBILITY-ELIGIBLE-ALL`は後続Studyの自動authorizationではない。
 
-G4-01を`main`へ統合する場合も、ユーザーの明示指示が必要である。
+G4-01の`main`統合は2026-09-18にユーザーから明示承認され、PR #151を統合経路とする。この承認はG4-02以降の科学実行や公開AI変更を承認しない。
 
 ## 解釈上の境界
 
