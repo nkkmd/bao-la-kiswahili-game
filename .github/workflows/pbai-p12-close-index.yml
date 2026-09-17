@@ -1,0 +1,40 @@
+name: PBAI-P12 canonical index closure
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p12-margin-bounded-search
+    paths:
+      - '.github/workflows/pbai-p12-close-index.yml'
+      - 'tools/engineering/finalize-pbai-p12-index.cjs'
+
+permissions:
+  contents: write
+
+jobs:
+  close-index:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p12-margin-bounded-search
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 正本索引をPBAI-P12終了状態へ同期
+        run: node tools/engineering/finalize-pbai-p12-index.cjs
+      - name: 同期内容を検算
+        run: |
+          grep -F 'PBAI-P12`**' doc/AI_ENGINEERING_INDEX.md
+          grep -F 'DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4' doc/AI_ENGINEERING_INDEX.md
+          grep -F 'public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md' doc/AI_ENGINEERING_INDEX.md
+      - name: 一時同期toolを除去して記録
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/AI_ENGINEERING_INDEX.md
+          git rm .github/workflows/pbai-p12-close-index.yml tools/engineering/finalize-pbai-p12-index.cjs
+          git commit -m 'docs: sync PBAI-P12 closure to AI engineering index'
+          git push origin HEAD:engineering/pbai-p12-margin-bounded-search
