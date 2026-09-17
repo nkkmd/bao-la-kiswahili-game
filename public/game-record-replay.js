@@ -6,8 +6,15 @@
     guideVersion: "v0.1.0-draft",
     baseline: "R-002",
   });
-  const MAX_FILE_BYTES = 1024 * 1024;
-  const MAX_PLIES = 4096;
+  const MAX_FILE_BYTES = 256 * 1024;
+  const MAX_PLIES = 1024;
+  const TOP_LEVEL_KEYS = ["format", "version", "rules", "settings", "initialPosition", "moves", "result", "finalPosition"];
+  const RULE_KEYS = ["guide", "guideVersion", "baseline"];
+  const SETTINGS_KEYS = ["mode", "humanSide", "ai"];
+  const AI_KEYS = ["difficulty", "generation", "releaseId", "adoptionId", "evaluator"];
+  const POSITION_KEYS = ["pits", "reserve", "houseOwned", "player", "phase", "winner", "reason", "turn", "pending"];
+  const MOVE_ENTRY_KEYS = ["ply", "turn", "player", "side", "phase", "move"];
+  const RESULT_KEYS = ["winner", "winnerSide", "reason", "plies"];
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
@@ -38,6 +45,28 @@
     return JSON.stringify(stablePosition(left)) === JSON.stringify(stablePosition(right));
   }
 
+  function assertOnlyKeys(value, allowed, label) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      throw new Error(`Invalid Bao game record ${label}`);
+    }
+    const extra = Object.keys(value).filter((key) => !allowed.includes(key));
+    if (extra.length) throw new Error(`Unknown Bao game record ${label} field: ${extra[0]}`);
+  }
+
+  function assertShape(record, moveFields) {
+    assertOnlyKeys(record, TOP_LEVEL_KEYS, "top-level");
+    assertOnlyKeys(record.rules, RULE_KEYS, "rules");
+    assertOnlyKeys(record.settings, SETTINGS_KEYS, "settings");
+    assertOnlyKeys(record.initialPosition, POSITION_KEYS, "initial position");
+    assertOnlyKeys(record.finalPosition, POSITION_KEYS, "final position");
+    assertOnlyKeys(record.result, RESULT_KEYS, "result");
+    if (record.settings.ai !== undefined) assertOnlyKeys(record.settings.ai, AI_KEYS, "AI settings");
+    for (const entry of record.moves) {
+      assertOnlyKeys(entry, MOVE_ENTRY_KEYS, "move entry");
+      assertOnlyKeys(entry.move, moveFields, "move");
+    }
+  }
+
   function assertRuleCompatibility(record) {
     const rules = record?.rules;
     if (!rules
@@ -51,6 +80,12 @@
   function assertSettings(record) {
     if (!record?.settings || !["computer", "local"].includes(record.settings.mode)) {
       throw new Error("Unsupported Bao game record mode");
+    }
+    if (record.settings.mode === "computer") {
+      if (!["south", "north"].includes(record.settings.humanSide)
+        || !record.settings.ai || typeof record.settings.ai !== "object") {
+        throw new Error("Invalid Bao game record computer settings");
+      }
     }
   }
 
@@ -85,6 +120,7 @@
     if (!engine || typeof engine.applyMove !== "function") throw new Error("Bao engine is required");
 
     GameRecord.validateRecord(record, true);
+    assertShape(record, GameRecord.MOVE_FIELDS);
     assertRuleCompatibility(record);
     assertSettings(record);
     if (record.moves.length > MAX_PLIES) throw new Error("Bao game record is too long to replay");
@@ -103,10 +139,7 @@
       const applied = engine.applyMove(clone(current), clone(entry.move));
       current = stablePosition(applied.state);
       states.push(clone(current));
-      transitions.push({
-        entry: clone(entry),
-        events: clone(applied.events || []),
-      });
+      transitions.push({ entry: clone(entry) });
     }
 
     if (!samePosition(current, record.finalPosition)) {
