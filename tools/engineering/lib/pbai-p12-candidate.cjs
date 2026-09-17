@@ -22,14 +22,14 @@ function candidateAiCandidate(source) {
   result = replaceOnce(
     result,
     `    const stats = emptyStats(level);\n    const choices = movesFor(state);`,
-    `    const stats = emptyStats(level);\n    const choices = movesFor(state);\n    const requestedMargin = Number.isInteger(options.pbaiC016Margin) && options.pbaiC016Margin > 0\n      ? options.pbaiC016Margin : 0;\n    const candidateEnabled = requestedMargin > 0 && (level === "hard" || level === "expert")\n      && (options.aspirationWindow ?? 0) === 0;\n    const candidateSafety = candidateEnabled\n      ? pbaiC016RootSafety(state, choices)\n      : { eligible: false, reason: requestedMargin > 0 ? "incompatible-options" : "disabled" };\n    stats.pbaiC016 = {\n      requestedMargin,\n      enabled: candidateEnabled,\n      eligible: candidateSafety.eligible,\n      safetyReason: candidateSafety.reason,\n      minDepth: options.pbaiC016MinDepth ?? 3,\n      probes: 0,\n      probeNodes: 0,\n      suppressedResearches: 0,\n      materialResearches: 0,\n      researchNodes: 0,\n      approximateRootIterations: 0,\n    };`,
+    `    const stats = emptyStats(level);\n    const choices = movesFor(state);\n    const requestedMargin = Number.isInteger(options.pbaiC016Margin) && options.pbaiC016Margin > 0\n      ? options.pbaiC016Margin : 0;\n    const candidateMinDepth = options.pbaiC016MinDepth ?? 3;\n    const candidateEnabled = requestedMargin > 0 && (level === "hard" || level === "expert")\n      && (options.aspirationWindow ?? 0) === 0;\n    const candidateSafety = candidateEnabled\n      ? pbaiC016RootSafety(state, choices)\n      : { eligible: false, reason: requestedMargin > 0 ? "incompatible-options" : "disabled" };\n    if (requestedMargin > 0) {\n      stats.pbaiC016 = {\n        requestedMargin,\n        enabled: candidateEnabled,\n        eligible: candidateSafety.eligible,\n        safetyReason: candidateSafety.reason,\n        minDepth: candidateMinDepth,\n        probes: 0,\n        probeNodes: 0,\n        suppressedResearches: 0,\n        materialResearches: 0,\n        researchNodes: 0,\n        approximateRootIterations: 0,\n      };\n    }`,
     'analyzeMove candidate setup',
   );
 
   result = replaceOnce(
     result,
     `        normalizeTtMateScores: options.normalizeTtMateScores ?? false,\n      };`,
-    `        normalizeTtMateScores: options.normalizeTtMateScores ?? false,\n        pbaiC016Margin: stats.pbaiC016.enabled ? stats.pbaiC016.requestedMargin : 0,\n        pbaiC016MinDepth: stats.pbaiC016.minDepth,\n        pbaiC016RootSafe: stats.pbaiC016.eligible,\n      };`,
+    `        normalizeTtMateScores: options.normalizeTtMateScores ?? false,\n        pbaiC016Margin: candidateEnabled ? requestedMargin : 0,\n        pbaiC016MinDepth: candidateMinDepth,\n        pbaiC016RootSafe: candidateSafety.eligible,\n      };`,
     'enhanced search context',
   );
 
