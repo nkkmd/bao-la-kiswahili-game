@@ -28,7 +28,7 @@ G3-11 depth 10 rerun = false
 G4-10 depth 11 access = false
 repository-wide consistency audit = PASS
 public AI change authorized = false
-main integration authorized = false
+main integration = AUTHORIZED BY USER / PR #151
 ```
 
 ## Stage 0
@@ -106,7 +106,7 @@ canonical repository result:
 
 G4-01 closure後、root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、Research Generation 4状態文書を最終監査した。G4-01開始前のまま残っていたcurrent-facing記述をG4-01完了状態へ同期し、既存Studyリンクも再確認した。
 
-正式audit結果:
+監査時点の正式audit結果:
 
 `PASS / CURRENT-FACING-DOCUMENTS-SYNCHRONIZED / MAIN-NOT-MERGED`
 
@@ -140,4 +140,4 @@ closure decision:
 
 [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md)
 
-G4-02/G4-03/G4-04などの後続研究は、それぞれ別のauthorization reviewを経て開始する。`main`への統合もユーザーの明示指示があるまで行わない。
+G4-02/G4-03/G4-04などの後続研究は、それぞれ別のauthorization reviewを経て開始する。G4-01の`main`統合は2026-09-18にユーザーから明示承認され、PR #151を統合経路とする。この承認は後続研究や公開AI変更へ拡張しない。
