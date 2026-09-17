@@ -1,0 +1,41 @@
+name: LGTTCI Stage 1R pre-execution validation
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/lgttci-stage1r-preflight.yml'
+      - 'tools/experiments/run-lgttci-stage1r-*.js'
+      - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1R_RETEST_SPEC.json'
+      - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-17-stage1-execution-interrupted.md'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-only:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax
+        run: |
+          node --check tools/experiments/run-lgttci-stage1r-source-unit.js
+          node --check tools/experiments/run-lgttci-stage1r-source-orchestrator.js
+          node --check tools/experiments/run-lgttci-stage1r-measurement-task.js
+          node --check tools/experiments/run-lgttci-stage1r-aggregate.js
+      - name: Assert no final authorization and no fresh result
+        run: |
+          test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_EXECUTION_AUTHORIZATION.json
+          test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json
+      - name: Technical fixture source smoke
+        run: |
+          rm -rf /tmp/lgttci-stage1r-fixture
+          mkdir -p /tmp/lgttci-stage1r-fixture/source/SFCDF /tmp/lgttci-stage1r-fixture/source/SILGM /tmp/lgttci-stage1r-fixture/source/GCLD
+          node tools/experiments/run-lgttci-stage1r-source-unit.js --technical-fixture --block SFCDF --slot-seed 44010001 --effective-seed 44010001 --output /tmp/lgttci-stage1r-fixture/source/SFCDF/44010001.json
+          node tools/experiments/run-lgttci-stage1r-source-unit.js --technical-fixture --block SILGM --slot-seed 44010001 --effective-seed 44010001 --output /tmp/lgttci-stage1r-fixture/source/SILGM/44010001.json
+          node tools/experiments/run-lgttci-stage1r-source-unit.js --technical-fixture --block GCLD --slot-seed 44010001 --effective-seed 44010001 --output /tmp/lgttci-stage1r-fixture/source/GCLD/44010001.json
+          node -e 'for (const p of process.argv.slice(1)) JSON.parse(require("fs").readFileSync(p,"utf8"))' /tmp/lgttci-stage1r-fixture/source/*/*.json
