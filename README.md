@@ -26,6 +26,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦に
 - 日本語・英語で読める、10点の図版付きルール説明ページ
 - 捕獲、takata、連続種まき、nyumba、namua→mtaji、終局などを対局中に日英で説明し、対応する図解ルールへ移動できるルールガイド
 - 終局後に、初期局面・確定着手列・対局設定・勝敗・最終局面を`bao-game-record` v1のJSONとして保存できる棋譜機能
+- 保存した`bao-game-record` v1のJSONを「棋譜再生」モードで読み込み、「戻る」「進む」で1手ずつ振り返れる再生機能
 - 完成したコンピューター対戦について、1局ごとの明示同意後だけ検証済み棋譜をAI改善用に送信できる任意提供機能
 - ルール、AI、探索、Worker、チューニング、ベンチマークツール向けの Node.js テストスイート
 - シード、ペア開局、戦術回帰テスト、保存済み成果物による再現可能な AI ベンチマーク
@@ -73,7 +74,7 @@ public/
 
 Privacy Policy へのリンクとPWAのオフラインキャッシュは、Cloudflare Pages の clean URL に合わせて `./privacy` を使用します。リダイレクト済みの `privacy.html` レスポンスはキャッシュしません。
 
-図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js`・`game-record-contribution-config.js`・`game-record-contribution.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
+図解ルールも同様に `./rules` を使います。公開時は `rules.html`・`rules.css`・`rules.js`・`assets/rules/`・`game-record.js`・`game-record-replay.js`・`game-record-contribution-config.js`・`game-record-contribution.js` を含む `public/` 全体を配信してください。言語指定付きのページURLは、同じHTMLキャッシュから表示します。単純なローカルHTTPサーバーでは `rules.html` で開けますが、オフライン機能の検証には `/rules`・`/privacy` を解決できるサーバーが必要です。
 
 任意棋譜提供のbackendは`cloudflare/game-record-ingest/`から別途Wranglerでdeployします。本番入口は`https://bao-data.cultivationdata.net`のCustom Domainに限定し、リポジトリ既定の`COLLECTION_ENABLED`は`false`です。Turnstile secretなどのcredentialはCloudflare側のsecretとして管理し、公開リポジトリへcommitしません。運用条件は[`doc/GAME_RECORD_CONTRIBUTION.md`](doc/GAME_RECORD_CONTRIBUTION.md)と[`cloudflare/game-record-ingest/README.md`](cloudflare/game-record-ingest/README.md)を参照してください。
 
