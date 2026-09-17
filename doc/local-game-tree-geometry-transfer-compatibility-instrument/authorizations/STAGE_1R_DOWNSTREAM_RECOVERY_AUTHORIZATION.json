@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "authorizationId": "LGTTCI-S1R-DOWNSTREAM-RECOVERY-AUTHORIZATION-2026-09-18-v1",
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "status": "AUTHORIZED",
+  "decision": "LGTTCI-STAGE1R-DOWNSTREAM-ONLY-RECOVERY-AUTHORIZED",
+  "authorizedAt": "2026-09-18T04:24:00+09:00",
+  "recoveryType": "DOWNSTREAM-ONLY",
+  "researchBranch": "research/g4-01-transfer-compatibility-instrument",
+  "recoveryBindingId": "LGTTCI-S1R-DOWNSTREAM-RECOVERY-BINDING-2026-09-18-v1",
+  "recoveryBindingGitBlobSha": "fcee89a23c753dcbcc0bec8e7965f79170750c5a",
+  "sourceExecutionRun": {
+    "runId": 35224920019,
+    "headSha": "90aff0561538113c203cbf8efa8977420a19dca1",
+    "workflowName": "LGTTCI Stage 1R GitHub Actions execution",
+    "expectedSourceArtifactCount": 1536
+  },
+  "authorizedOperations": [
+    "VERIFY_EXACT_ORIGIN_SOURCE_ARTIFACT_SET",
+    "DOWNLOAD_EXACT_ORIGIN_SOURCE_ARTIFACT_SET",
+    "SEAL_CANONICAL_SOURCE_BUNDLE",
+    "RUN_SEED_FREE_MEASUREMENT_TASKS",
+    "AGGREGATE_COMPATIBILITY_RESULT",
+    "PERSIST_RECOVERY_AUDIT_AND_RESULT_ARTIFACTS"
+  ],
+  "prohibitions": {
+    "freshSeedRead": true,
+    "freshWorkflowRerun": true,
+    "sourceAcquisitionScriptInvocation": true,
+    "reserveSeedRead": true,
+    "old401NamespaceReuse": true,
+    "secondRecoveryTrigger": true,
+    "scientificContractChange": true,
+    "formalScientificEffectGeneration": true,
+    "formalGeneralizationDecisionGeneration": true,
+    "formalCounterexampleDecisionGeneration": true,
+    "g4_02_or_later": true,
+    "publicAiChange": true,
+    "mainIntegration": true
+  },
+  "failClosedRule": "If the exact 1536 immutable source artifacts from run 35224920019 cannot be verified and sealed, stop before measurement and do not access any fresh or reserve seed.",
+  "authorizationBasis": "User explicitly instructed to proceed with the downstream-only recovery after confirming that fresh evidence must not be reacquired."
+}
