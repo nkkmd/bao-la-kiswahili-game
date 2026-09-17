@@ -4,8 +4,12 @@ on:
   pull_request:
     paths:
       - '.github/workflows/lgttci-stage1r-preflight.yml'
+      - '.github/workflows/lgttci-stage1r-github-actions.yml'
+      - '.github/actions/lgttci-stage1r-acquire-slot/action.yml'
       - 'tools/experiments/run-lgttci-stage1r-*.js'
+      - 'tools/experiments/*lgttci-stage1r-actions*.js'
       - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1R_RETEST_SPEC.json'
+      - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1R_GITHUB_ACTIONS_EXECUTION_AMENDMENT_V1.json'
       - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-17-stage1-execution-interrupted.md'
 
 permissions:
@@ -27,10 +31,27 @@ jobs:
           node --check tools/experiments/run-lgttci-stage1r-source-orchestrator.js
           node --check tools/experiments/run-lgttci-stage1r-measurement-task.js
           node --check tools/experiments/run-lgttci-stage1r-aggregate.js
+          node --check tools/experiments/verify-lgttci-stage1r-actions-authorization.js
+          node --check tools/experiments/generate-lgttci-stage1r-actions-matrices.js
+          node --check tools/experiments/classify-lgttci-stage1r-actions-artifacts.js
+          node --check tools/experiments/bundle-lgttci-stage1r-actions-source.js
+          node --check tools/experiments/validate-lgttci-stage1r-actions-design.js
+          ruby -e 'require "yaml"; YAML.load_file(".github/actions/lgttci-stage1r-acquire-slot/action.yml"); YAML.load_file(".github/workflows/lgttci-stage1r-github-actions.yml")'
       - name: Assert no final authorization and no fresh result
         run: |
           test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_EXECUTION_AUTHORIZATION.json
           test ! -e doc/local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json
+      - name: Validate GitHub Actions execution design
+        run: |
+          node tools/experiments/validate-lgttci-stage1r-actions-design.js
+          node tools/experiments/generate-lgttci-stage1r-actions-matrices.js > /tmp/stage1r-matrices.json
+          node - <<'NODE'
+          const m=require('/tmp/stage1r-matrices.json');
+          if(m.sfcdf.include.length!==96) throw new Error('SFCDF matrix mismatch');
+          if(m.silgm.include.length!==192) throw new Error('SILGM matrix mismatch');
+          if(m.gcld.include.length!==96) throw new Error('GCLD matrix mismatch');
+          if(m.measurement.include.length!==22) throw new Error('measurement matrix mismatch');
+          NODE
       - name: Technical fixture source smoke
         run: |
           rm -rf /tmp/lgttci-stage1r-fixture
