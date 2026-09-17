@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "bindingId": "LGTTCI-S1R-GHA-PREEXEC-BINDING-2026-09-17-v1",
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "status": "BOUND-READY-AWAITING-FINAL-EXECUTION-AUTHORIZATION",
+  "executionRoute": "GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE",
+  "freshSeedAccessBeforeBinding": 0,
+  "finalExecutionAuthorizationPresentAtBinding": false,
+  "researchBranch": "research/g4-01-transfer-compatibility-instrument",
+  "validatedHeadSha": "b2745214134766f34cad75c45ec2575e8d951bee",
+  "technicalPreflight": {
+    "workflow": "LGTTCI Stage 1R pre-execution validation",
+    "runId": 35223729501,
+    "jobId": 105209943719,
+    "conclusion": "success",
+    "validatedHeadSha": "b2745214134766f34cad75c45ec2575e8d951bee",
+    "checks": [
+      "syntax",
+      "final authorization absent",
+      "fresh result absent",
+      "GitHub Actions execution design",
+      "matrix counts 96/192/96/22",
+      "technical fixture source smoke"
+    ]
+  },
+  "supersedesForExecutionRouteOnly": {
+    "path": "doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_PRE_EXECUTION_BINDING.json",
+    "gitBlobSha": "ac8c1132e08471b46176ebc895bbf70442a1501f",
+    "note": "The earlier local-runtime binding remains an immutable historical record but is not the authorized execution route for Stage 1R."
+  },
+  "files": {
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STUDY_1_SPEC.json": "f62d362e4f2eaa428645eaabe7bfe4be3cde0cf7",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/PRE_EXECUTION_SPEC_AMENDMENT_V1.json": "6e06ebb43a79f0cf39046b52c1502f783f908ad9",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_COMPATIBILITY_SPEC.json": "d680c45943ceb81729e91ed230689b27b0752d17",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_PRE_ACCESS_CLARIFICATION_V1.json": "ad3d9f0e065fd56b3ff811cfd2a514b7b2aa28eb",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1R_RETEST_SPEC.json": "94b14c76fdb392bf80993e2806553e071902a169",
+    "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1R_GITHUB_ACTIONS_EXECUTION_AMENDMENT_V1.json": "c045e53801c993e050e3a3e79bf53e5e73596775",
+    ".github/workflows/lgttci-stage1r-github-actions.yml": "4bf4eb94ed141bb4ae1c445740798d7b3f224419",
+    ".github/actions/lgttci-stage1r-acquire-slot/action.yml": "22288bcd8b1f74f89e448b6863a4f2f2b32bf3e2",
+    "tools/experiments/verify-lgttci-stage1r-actions-authorization.js": "fc021ac1d2b828ab27831ce9ff0376c0fd5dd02d",
+    "tools/experiments/generate-lgttci-stage1r-actions-matrices.js": "dffde13d23cfd1157590fc01616ed09ba986de8d",
+    "tools/experiments/classify-lgttci-stage1r-actions-artifacts.js": "6953c234dbce907d55e95d8ce19b3ef452cc4336",
+    "tools/experiments/bundle-lgttci-stage1r-actions-source.js": "9012394fc43d28bbef6bac0c46ea10588cdec2d7",
+    "tools/experiments/run-lgttci-stage1r-source-unit.js": "4751c2e975ffac543fbdc681bc39f4134a4c6c30",
+    "tools/experiments/run-lgttci-stage1r-measurement-task.js": "3db7fcbbbe2652ea7278f05e655b9154d397a5b4",
+    "tools/experiments/run-lgttci-stage1r-aggregate.js": "3f27eb0ace8687c9687d68e5c099dbdcaa04ca13",
+    "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+    "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+    "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7",
+    "public/ai.js": "ac2b4fd66a2555c50a362c39a828515323bba18a"
+  },
+  "freshExecutionContract": {
+    "trigger": "first creation commit of STAGE_1R_EXECUTION_AUTHORIZATION.json only",
+    "workflowDispatchAuthorized": false,
+    "secondFreshWorkflowRunAuthorized": false,
+    "primarySlotCount": 1536,
+    "pairedReserveMaximum": 48,
+    "maximumFreshReads": 1584,
+    "responseMayEndAfterAuthorizationCommit": true,
+    "localChatRuntimeRequiredAfterTrigger": false
+  },
+  "futureFinalAuthorizationContract": {
+    "requiredDecision": "LGTTCI-STAGE1R-EXECUTION-AUTHORIZED",
+    "requiredExecutionRoute": "GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE",
+    "freshSeedAccessBeforeAuthorization": 0,
+    "mustBindThisFileByGitBlobSha": true,
+    "mustBindExecutionAmendmentByGitBlobSha": true
+  },
+  "protectedEvidence": {
+    "oldStage1SeedNamespace401Reuse": false,
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2Access": false,
+    "g3_12PartialMeasurementReuse": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  }
+}
