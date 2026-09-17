@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+  "decision": "LGTTCI-STAGE1-AUTHORIZED",
+  "authorizationType": "FRESH-COMPATIBILITY / EXACTLY-ONE-EXECUTION",
+  "reviewPath": "doc/research-program-decisions/2026-09-17-post-lgttci-stage0-stage1-authorization-review.md",
+  "stage1SpecPath": "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STAGE_1_COMPATIBILITY_SPEC.json",
+  "stage1SpecGitBlobSha": "d680c45943ceb81729e91ed230689b27b0752d17",
+  "baselineMainSha": "6433c726d038f710b9b5af3620f1a7d30db7bdc9",
+  "requiredStage0": {
+    "stageId": "LGTTCI-S0-TECHNICAL-2026-09-17-v1",
+    "decision": "STAGE0-PASS",
+    "deterministicCoreSha256": "3579d3bc7f4c15495b5ba75b6c69edeba9caf84f24b7d541fa4b6fe14ca207e0"
+  },
+  "freshSeedBlocks": {
+    "SFCDF": {"seedStart": 40111001, "seedEnd": 40111384, "count": 384},
+    "SILGM": {"seedStart": 40112001, "seedEnd": 40112768, "count": 768},
+    "GCLD": {"seedStart": 40113001, "seedEnd": 40113384, "count": 384}
+  },
+  "maxTotalSeedReads": 1536,
+  "scientificEffectAuthorized": false,
+  "formalGeneralizationDecisionAuthorized": false,
+  "formalCounterexampleDecisionAuthorized": false,
+  "executionRoute": "LOCAL-REPRODUCIBLE-RUN",
+  "githubActionsFreshCompatibilityExecutionAuthorized": false,
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2Access": false,
+    "g3_12PartialMeasurementReuse": false,
+    "g4_10Depth11Access": false
+  },
+  "authorizationScope": "Stage 1 only; no automatic authorization for G4-02, G4-03, G4-04, any formal scientific stage, public AI changes, or Research Generation 4 later waves."
+}
