@@ -1,0 +1,91 @@
+name: Repository consistency audit
+
+on:
+  push:
+    branches:
+      - maintenance/repository-consistency-audit-20260917
+    paths:
+      - '.github/workflows/repository-consistency-audit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: maintenance/repository-consistency-audit-20260917
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 旧ロードマップの歴史的境界を明示
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('doc/AI_ROADMAP.md')
+          s = p.read_text(encoding='utf-8')
+          old_intro = "現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。本書のPhase別計画・結果とP4・P5の追記は各時点の開発記録であり、最新の採用・配信状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を参照してください。P6〜P11を通じた学習済み論理ゲート型評価器の検証・正式採用は、初期Phase計画とは別の改善プログラムとして完了しています。"
+          new_intro = old_intro + "\n\nその後、2026年9月17日にPBAI-P12でマージン制限型選択探索を検証しましたが、development gateを通過せず不採用・閉鎖となり、公開AIはAI-GEN4を維持しています。P12を含む最新のAI Engineering状態は中央索引を正本とします。"
+          if s.count(old_intro) != 1:
+              raise SystemExit('AI_ROADMAP intro anchor missing or non-unique')
+          s = s.replace(old_intro, new_intro, 1)
+          old_heading = "## 2. 現状\n\n`ai.js`には以下の3段階のAIが実装されている。"
+          new_heading = "## 2. 初期計画時点の現状\n\n以下はPhase 0開始前の基準状態を保存した歴史的記録であり、現在の難易度構成・探索深度・公開AI世代を表すものではない。\n\n`ai.js`には以下の3段階のAIが実装されている。"
+          if s.count(old_heading) != 1:
+              raise SystemExit('AI_ROADMAP section-2 anchor missing or non-unique')
+          p.write_text(s.replace(old_heading, new_heading, 1), encoding='utf-8')
+          PY
+      - name: 現行AIと契約の回帰確認
+        run: |
+          node --test \
+            test/engine.test.js \
+            test/ai.test.js \
+            test/ai-config.test.js \
+            test/ai-generation-release.test.js \
+            test/ai-worker.test.js \
+            test/worker-integration.test.js \
+            test/diagnostics-ui.test.js \
+            test/pbai-c015-integration.test.cjs \
+            test/pbai-c015-expert-production.test.cjs \
+            test/public-ai-improvement-program1-contract.test.js
+      - name: 文書リンクと差分品質を確認
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          files = [
+              Path('doc/AI_ROADMAP.md'),
+              Path('doc/ai-engineering/public-ai-improvement-program-12/README.md'),
+          ]
+          pat = re.compile(r'\[[^\]]*\]\(([^)]+)\)')
+          broken = []
+          for f in files:
+              text = f.read_text(encoding='utf-8')
+              for target in pat.findall(text):
+                  if target.startswith(('http://', 'https://', '#', 'mailto:')):
+                      continue
+                  target = target.split('#', 1)[0].split('?', 1)[0]
+                  if not target:
+                      continue
+                  if not (f.parent / target).resolve().exists():
+                      broken.append(f'{f}: {target}')
+          if broken:
+              raise SystemExit('broken local links:\n' + '\n'.join(broken))
+          print('changed-doc local links: PASS')
+          PY
+          git diff --check
+      - name: 監査修正を記録し一時workflowを除去
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/AI_ROADMAP.md
+          git rm .github/workflows/repository-consistency-audit.yml
+          git commit -m 'docs: clarify historical AI roadmap state'
+          git push origin HEAD:maintenance/repository-consistency-audit-20260917
