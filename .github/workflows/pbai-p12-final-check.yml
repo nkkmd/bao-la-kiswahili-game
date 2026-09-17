@@ -1,0 +1,19 @@
+name: PBAI-P12 final check
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p12-margin-bounded-search
+    paths:
+      - '.github/workflows/pbai-p12-final-check.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p12-margin-bounded-search
+          fetch-depth: 0
+      - name: Sanity
+        run: echo ok
