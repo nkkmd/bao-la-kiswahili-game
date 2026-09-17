@@ -4,14 +4,20 @@ on:
   pull_request:
     paths:
       - 'public/game-record.js'
+      - 'public/game-record-replay.js'
       - 'public/game-record-contribution-config.js'
       - 'public/game-record-contribution.js'
       - 'public/index.html'
+      - 'public/main.js'
+      - 'public/style.css'
       - 'public/privacy.html'
       - 'public/service-worker.js'
       - 'cloudflare/game-record-ingest/**'
+      - 'doc/GAME_RECORD.md'
       - 'doc/GAME_RECORD_CONTRIBUTION.md'
+      - 'doc/SYSTEM_DESIGN.md'
       - 'test/game-record.test.js'
+      - 'test/game-record-replay.test.js'
       - 'test/game-record-ui.test.js'
       - 'test/game-record-browser-hook.test.js'
       - 'test/game-record-contribution-config.test.js'
@@ -36,6 +42,7 @@ jobs:
         run: |
           node --test \
             test/game-record.test.js \
+            test/game-record-replay.test.js \
             test/game-record-ui.test.js \
             test/game-record-browser-hook.test.js \
             test/game-record-contribution-config.test.js \
