@@ -2,8 +2,10 @@
 
 現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。本書のPhase別計画・結果とP4・P5の追記は各時点の開発記録であり、最新の採用・配信状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を参照してください。P6〜P11を通じた学習済み論理ゲート型評価器の検証・正式採用は、初期Phase計画とは別の改善プログラムとして完了しています。
 
+2026年9月17日には`PBAI-P12 / PBAI-C016-v1`としてマージン制限型選択探索を検証しましたが、development gateを通過せず不採用・閉鎖となり、公開AIは`AI-GEN4`を維持しています。P12を含む最新のAI Engineering状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を正本とします。
+
 Version: 0.1.2
-更新日: 2026-09-12
+更新日: 2026-09-17
 
 ## 1. この文書の役割
 
