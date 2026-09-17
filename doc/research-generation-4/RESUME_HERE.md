@@ -1,7 +1,7 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-18  
-状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / NEXT WAVE-A STUDY NOT AUTHORIZED`**
+状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED / NEXT WAVE-A STUDY NOT AUTHORIZED`**
 
 ## 再開時の読む順序
 
@@ -25,7 +25,7 @@ G4-02 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-03 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
-G4-01 main integration = NOT AUTHORIZED
+G4-01 main integration = AUTHORIZED BY USER / PR #151
 ```
 
 ## G4-01の確定結果
@@ -66,9 +66,9 @@ reviewでは少なくとも次を判定する。
 
 `NOT-AUTHORIZED`または`PREREQUISITE-REQUIRED`の場合はscientific seedへアクセスせず、理由をdecision recordへ残す。
 
-## G4-01をmainへ統合する場合
+## G4-01のmain統合
 
-G4-01 research branchは研究完了状態にあり、repository-wide consistency auditも`PASS`しているが、`main`統合はまだ承認されていない。
+G4-01 research branchは研究完了状態にあり、repository-wide consistency auditも`PASS`している。2026-09-18にユーザーからPR #151による`main`統合の明示承認を受領した。
 
 統合前に確認済みの項目:
 
@@ -76,7 +76,8 @@ G4-01 research branchは研究完了状態にあり、repository-wide consistenc
 - G4-01 closure decisionが存在する
 - `CURRENT_STATUS.md`、Study README、Research Generation 4状態文書が整合している
 - root README、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`をG4-01完了状態へ同期した
-- PR #151を研究完了状態へ同期する
+- repository-wide consistency auditが`PASS`
+- PR #151を統合経路として明示承認した
 
 repository-wide auditの記録は[`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)を参照する。
 
@@ -90,4 +91,4 @@ repository-wide auditの記録は[`checkpoints/2026-09-18-g4-01-repository-consi
 - G4-10 authorization前のdepth 11 access
 - `COMPATIBILITY-ELIGIBLE-ALL`をgeneralization/effect/counterexample resultとして扱うこと
 - authorization review前のG4-02/G4-03/G4-04 scientific outcome生成
-- ユーザーの明示指示なしの`main`統合
+- G4-01のmain統合承認を後続Studyや公開AI変更の承認へ拡張すること
