@@ -1,9 +1,9 @@
 # `PBAI-P12` — 最終報告
 
-Program: **`PBAI-P12`**  
-Candidate: **`PBAI-C016-v1`**  
-題目: **十分良い手を基準にしたマージン制限型選択探索**  
-英語作業名: **Good-Enough / Margin-Bounded Selective Search**  
+Program: **`PBAI-P12`**
+Candidate: **`PBAI-C016-v1`**
+題目: **十分良い手を基準にしたマージン制限型選択探索**
+英語作業名: **Good-Enough / Margin-Bounded Selective Search**
 終了日: 2026-09-17
 
 ## 1. 最終判断
@@ -16,7 +16,9 @@ public release = AI-GEN4-RELEASE-001
 public deployment change = NONE
 ```
 
-候補`PBAI-C016-v1`は不採用とする。独立validation、release holdout、実機確認、公開Worker組込み、main統合、公開配信、release発行、AI世代昇格には進まない。
+候補`PBAI-C016-v1`は不採用とする。independent validation、release holdout、実機確認、公開Worker組込み、candidateの`public/`への統合、公開配信、release発行、AI世代昇格には進まない。
+
+一方、閉鎖記録、再現用engineering tools/workflows、保存済み計測成果物は、後続の明示指示により2026年9月17日にPR #147で`main`へ履歴保存した。merge commitは`4e8af7dcf8a0cb995a6c231fd397e5c06b7af3c6`である。この履歴保存はcandidateの採用・公開統合を意味しない。
 
 ## 2. baseline support計測
 
@@ -85,7 +87,7 @@ baseline support計測により、「現行PVSに再探索コストが残って�
 - browser / smartphone実機試験
 - protected release holdout
 - 公開Workerへの組込み
-- main統合・公開配信
+- candidateの`public/`への統合・公開配信
 
 次のseed blockは未消費である。
 
@@ -101,6 +103,8 @@ protected release holdout = 121230001..121230064
 公開AIは`AI-GEN4`、正式releaseは`AI-GEN4-RELEASE-001`のまま維持する。
 
 今回のProgramで`public/`の既定AIを変更していない。candidate mechanismは隔離branch上のengineering変換器・runnerとしてのみ実装した。したがって、本番サイト、公開AIの世代表示、release IDに変更はない。
+
+PR #147で`main`へ保存したのは、Programの閉鎖記録、再現用engineering tools/workflows、保存済み計測成果物である。これは公開AIへのcandidate統合とは区別する。
 
 ## 8. 再開境界
 
