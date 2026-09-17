@@ -94,7 +94,7 @@ HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvas
 
 棋譜の確定着手には、人間、AI、自動passを含む通常対局経路の手を記録する。sow/relayの中間イベント、石1個ごとの演出局面、AI探索ノード、探索統計は棋譜へ常時保存しない。JSON文字列化とBlob生成も、終局後の明示的な保存操作まで行わない。
 
-棋譜はlocalStorageやIndexedDBへ自動保存せず、外部へ自動送信しない。ローカル保存操作は端末内のファイル生成だけであり、任意提供の同意を兼ねない。現在の実装には、対局途中の棋譜ファイル保存、画面からの棋譜読み込み、途中対局の自動復元はない。棋譜の形式、計算資源上の境界、再生検証、将来互換性は[棋譜保存機能](GAME_RECORD.md)を参照する。
+棋譜はlocalStorageやIndexedDBへ自動保存せず、外部へ自動送信しない。ローカル保存操作は端末内のファイル生成だけであり、任意提供の同意を兼ねない。保存済みJSONは「棋譜再生」モードで利用者が明示選択した場合だけブラウザー内で読み込む。再生開始前にformat/version、ルールbaseline、標準初期局面、各着手の手番メタデータと合法性、最終局面・勝敗を検証し、検証済みの各ply局面をメモリ上に保持する。「戻る」は逆演算せず保存済みsnapshotへ移動し、「進む」は通常着手と同じルールエンジン・表示イベントを利用する。再生ファイル自体を外部送信せず、再生モードもlocalStorageへ保存しない。現在も対局途中の棋譜ファイル保存と途中対局の自動復元は行わない。棋譜の形式、計算資源上の境界、再生検証、将来互換性は[棋譜保存機能](GAME_RECORD.md)を参照する。
 
 完成したコンピュータ対戦では、任意提供が有効な配信版に限り「AI改善のため棋譜を送信」を別操作として表示する。利用者がその1局について目的・送信内容を確認し、Turnstile完了後に「同意して送信」を押した場合だけ`bao-game-record` v1を送信する。自動送信、一括同意、バックグラウンド再送、送信用local queueは行わない。ローカル2人対戦は受理しない。
 
@@ -106,7 +106,7 @@ AI診断と棋譜は別形式・別目的である。診断には局面・選択
 
 ## 7. オフライン・配信・ルール説明
 
-Service Workerのインストール時に、ゲーム画面・依存スクリプト・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。v0.4.0リリース最終化後の現行キャッシュ名は`bao-la-kiswahili-v47`である。
+Service Workerのインストール時に、ゲーム画面・依存スクリプト・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。棋譜再生モジュール追加後の現行キャッシュ名は`bao-la-kiswahili-v48`である。
 
 Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHTMLページだけURLの別名・言語クエリーを共通キャッシュへ対応させる。図解ルールは日本語・英語の切替、言語指定URLの共有、図版の拡大に対応する。対局中ルールガイドのリンクは現在の表示言語を引き継ぎ、対応する節を直接開ける。
 
@@ -118,7 +118,7 @@ Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHT
 
 図解ルールの日英表示・拡大・対局導線・オフライン更新は[図解ルールCI](../.github/workflows/illustrated-rules.yml)で確認する。`tools/build-rules-figures.js --check`はSVG図版と生成条件の再生成一致も検証する。
 
-棋譜保存と任意提供は[棋譜専用CI](../.github/workflows/game-record-verification.yml)で、形式、実エンジンでのreplay、確定着手の記録、失敗着手時のrollback、終局前後の保存・送信UI、localStorage非使用、Service Workerキャッシュ、Privacy Policy、Custom Domain設定、Worker request/schema/replay/deduplication/R2 quota、Origin・Fetch Metadata境界と隣接回帰を確認する。
+棋譜保存・棋譜再生・任意提供は[棋譜専用CI](../.github/workflows/game-record-verification.yml)で、形式、実エンジンでのreplay、確定着手の記録、失敗着手時のrollback、標準初期局面・各plyメタデータ・最終局面の再生検証、戻る/進むUI、終局前後の保存・送信UI、localStorage非使用、Service Workerキャッシュ、Privacy Policy、Custom Domain設定、Worker request/schema/replay/deduplication/R2 quota、Origin・Fetch Metadata境界と隣接回帰を確認する。
 
 ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供は2026年9月16日にテストサイト、スマートフォン実機、Cloudflare Worker/R2/Turnstile、Custom Domain経由のcontrolled submissionを確認し、R2保存・日次quota・privacy境界・duplicate・malformed request・CPU/resource状態を検証した。最終Worker構成では`workers.dev`とPreview URLを無効化し、`bao-data.cultivationdata.net`をWrangler管理下のCustom Domain targetとしてdeployしている。server-side kill switchの既定値は`COLLECTION_ENABLED=false`である。
 
