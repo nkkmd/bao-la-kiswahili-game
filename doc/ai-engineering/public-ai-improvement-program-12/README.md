@@ -30,17 +30,19 @@ baseline support計測では、現行PVSに再探索コストが十分残って�
 
 したがって`PBAI-C016-v1`は不採用とし、公開AIは`AI-GEN4`を維持する。結果確認後のthreshold変更・追加margin探索による救済は行わない。
 
-## 3. 未実行工程
+## 3. 未実行工程とmain保存の区別
 
-以下は実行していない。
+候補AIについて、以下は実行していない。
 
 - independent validation
 - protected release holdout
 - 正式な棋力試験
 - browser / smartphone実機試験
 - 公開Worker組込み
-- main統合・公開配信
+- candidateの`public/`への統合・公開配信
 - release発行・AI世代昇格
+
+一方、閉鎖記録、再現用engineering tools/workflows、保存済み計測成果物は、2026年9月17日にPR #147で`main`へ履歴保存済みである。この履歴保存はcandidateの採用・公開統合を意味しない。現在状態の詳細は[`CURRENT_STATUS.md`](CURRENT_STATUS.md)を参照する。
 
 未消費seedは`121220001..121220064`と`121230001..121230064`である。
 
