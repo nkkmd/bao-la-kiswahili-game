@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTTCI-STUDY1",
+  "amendmentId": "LGTTCI-PRE-EXECUTION-AMENDMENT-2026-09-17-v1",
+  "status": "ACTIVE-PRE-EXECUTION-CONTRACT-COMPLETION",
+  "reason": "The frozen Study spec omitted the treeNodeOccurrences ceiling required by the already-frozen CRCLGR boundedPreflight interface. No Stage 0 execution, fresh compatibility seed access, scientific outcome generation, or protected evidence access occurred before this amendment.",
+  "baseStudySpecPath": "doc/local-game-tree-geometry-transfer-compatibility-instrument/prereg/STUDY_1_SPEC.json",
+  "authorizationPath": "doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_0_AUTHORIZATION.json",
+  "changes": {
+    "resourceCeilings.perDepth5Root.maxTreeNodeOccurrences": 1000000
+  },
+  "interpretation": {
+    "scientificTargetChanged": false,
+    "sourcePolicyChanged": false,
+    "rootFamilyChanged": false,
+    "seedNamespaceChanged": false,
+    "searchConditionChanged": false,
+    "populationGateChanged": false,
+    "protectedEvidenceBoundaryChanged": false,
+    "freshCompatibilitySeedAccessBeforeAmendment": 0,
+    "stage0ExecutionBeforeAmendment": 0
+  },
+  "activePreflightLimits": {
+    "distinctRawStates": 100000,
+    "uniqueTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveEvaluations": 750000,
+    "treeNodeOccurrences": 1000000
+  },
+  "noFurtherImplicitResourceFields": true
+}
