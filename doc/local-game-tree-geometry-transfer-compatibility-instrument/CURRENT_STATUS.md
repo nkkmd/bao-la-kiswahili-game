@@ -26,6 +26,7 @@ formal counterexample decision generated = false
 G3-12 evidence reused = false
 G3-11 depth 10 rerun = false
 G4-10 depth 11 access = false
+repository-wide consistency audit = PASS
 public AI change authorized = false
 main integration authorized = false
 ```
@@ -100,6 +101,20 @@ canonical repository result:
 - [`results/stage-1r/ARTIFACT_ATTESTATION.json`](results/stage-1r/ARTIFACT_ATTESTATION.json)
 
 詳細は[`checkpoints/2026-09-18-stage1r-final-result.md`](checkpoints/2026-09-18-stage1r-final-result.md)を参照する。
+
+## repository-wide consistency audit
+
+G4-01 closure後、root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、Research Generation 4状態文書を最終監査した。G4-01開始前のまま残っていたcurrent-facing記述をG4-01完了状態へ同期し、既存Studyリンクも再確認した。
+
+正式audit結果:
+
+`PASS / CURRENT-FACING-DOCUMENTS-SYNCHRONIZED / MAIN-NOT-MERGED`
+
+記録:
+
+[`../research-generation-4/checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](../research-generation-4/checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)
+
+prospectiveにfreezeしたProgram plan、preregistration、authorization/bindingは事後変更していない。
 
 ## 解釈上の境界
 
