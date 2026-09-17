@@ -12,7 +12,8 @@ Research branch = research/g4-01-transfer-compatibility-instrument
 Baseline main = 6433c726d038f710b9b5af3620f1a7d30db7bdc9
 Stage 0 = LGTTCI-S0-TECHNICAL-2026-09-17-v1 / STAGE0-PASS
 Stage 1 = LGTTCI-S1-COMPATIBILITY-2026-09-17-v1 / EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION
-Stage 1R = LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1 / STAGE1R-PRE-EXECUTION-READY / NOT-AUTHORIZED-NOT-EXECUTED
+Stage 1R = LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1 / STAGE1R-GITHUB-ACTIONS-PRE-EXECUTION-READY / NOT-AUTHORIZED-NOT-EXECUTED
+execution route = GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE
 old 401... compatibility namespace = QUARANTINED / NO REUSE
 fresh 402... primary seed access = 0
 paired 412... reserve seed access = 0
@@ -53,31 +54,60 @@ Paired reserve:
   GCLD  = 41213001..41213384
 ```
 
-reserveは結果やsupport不足による救済には使えない。primaryがdurable `SOURCE-START`後、`SOURCE-COMMIT`前にインフラ中断した場合だけ、対応するreserveを1回使用できる。明示的source process failureではreserve禁止、reserve-of-reserveも禁止する。
+reserveは結果やsupport不足による救済には使えない。primaryのfresh read開始がGitHub Actions上のimmutable START artifactで確認でき、source artifactまたはcontrolled failure artifactが残っていない純粋なインフラ中断だけがpaired reserveの対象となる。明示的source process failureではreserve禁止、reserve-of-reserveも禁止する。
 
-## 耐障害execution contract
+## GitHub Actions耐障害execution contract
 
-Stage 1Rではsource acquisitionと重いmeasurementを分離する。
+Stage 1Rの正式execution routeは`GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE`である。
 
-1. primary slotごとにdurable journalをfsyncする。
-2. production/independent replay一致後、slot単位のsealed source artifactをatomic commitする。
-3. `SOURCE-COMMIT`済みslotはresume時に再読しない。
-4. fresh acquisition完了後、depth-5 preflight、search、continuous geometryをsealed source artifactだけから測定する。
-5. measurement taskはfresh seedを再読しないため、インフラ中断時に同じartifact setで再実行できる。
-6. 最終aggregationもfresh seedを読まない。
+- primary acquisitionはSFCDF 96 job、SILGM 192 job、GCLD 96 jobへ分割する。
+- 1 jobは4 slotを順に処理するが、各slotのfresh read直前にSTART artifact、成功直後にsource artifactをGitHubへ永続化してから次slotへ進む。
+- START artifactがないslotだけはseed未読と判定できるため、primaryの安全な自動retryを1回許可する。
+- STARTあり・source/failureなしの場合だけpaired reserveを使用できる。
+- 全block通算fresh read上限は1584、infrastructure replacement上限は48である。
+- 1536 source artifactの完全coverageを確認できた場合だけcanonical source bundleを生成する。
+- depth-5 preflight、search、continuous geometryはsource bundleだけを読む22個のseed-free measurement taskへ分離する。
+- measurement taskはfresh seedを読まないため、同一source bundle上でインフラretryできる。
+- aggregationもfresh seedを読まない。
 
-全block通算のfresh read上限は1584、infrastructure replacement上限は48で固定済みである。
+final authorization作成commit後はGitHub Actionsが独立して実行を継続するため、ChatGPTの応答や一時的ローカルruntimeを維持する必要はない。
 
 ## pre-execution検証
 
-GitHub Actionsのtechnical-only workflow `LGTTCI Stage 1R pre-execution validation`はrun `35220959149` / job `105200705604`でsuccessした。
+GitHub Actionsのtechnical-only workflow `LGTTCI Stage 1R pre-execution validation`は、最新run `35223729501` / job `105209943719`でsuccessした。
 
-pre-execution bindingも作成済みで、Stage 1R spec、runner、wrapper、source identity、technical CI provenanceをexact blob SHAで固定している。
+確認済み項目:
+
+- JavaScript syntax
+- YAML parse
+- final execution authorization不存在
+- Stage 1R result不存在
+- GitHub Actions execution design
+- primary matrix counts `96 / 192 / 96`
+- seed-free measurement task count `22`
+- technical fixture source smoke
+
+GitHub Actions execution amendmentはfresh seed access 0の状態で固定した。
+
+pre-execution binding:
+
+```text
+path = authorizations/STAGE_1R_GITHUB_ACTIONS_PRE_EXECUTION_BINDING.json
+binding ID = LGTTCI-S1R-GHA-PREEXEC-BINDING-2026-09-17-v1
+blob SHA = 50953f47a35cb4172e2ea7838c84a8e44af35fe1
+status = BOUND-READY-AWAITING-FINAL-EXECUTION-AUTHORIZATION
+```
+
+以前の`STAGE_1R_PRE_EXECUTION_BINDING.json`はローカルrouteの歴史的記録として保持するが、fresh executionには使用しない。
+
+詳細は[`checkpoints/2026-09-17-stage1r-github-actions-pre-execution-ready.md`](checkpoints/2026-09-17-stage1r-github-actions-pre-execution-ready.md)を参照する。
 
 ## 現在の停止位置
 
-Stage 1Rは**試験開始直前**で停止している。
+Stage 1Rは**GitHub Actionsによる試験開始直前**で停止している。
 
-`STAGE_1R_EXECUTION_AUTHORIZATION.json`はまだ存在しない。したがってrunnerは非technical modeでfresh seedを読むことができない。
+`STAGE_1R_EXECUTION_AUTHORIZATION.json`は存在せず、fresh `402...` / `412...` seed accessは0である。
 
-次に進むのは、ユーザーが再試験開始を明示した場合だけである。その際はpre-execution bindingを再確認し、final execution authorizationを作成してからfresh acquisitionを開始する。
+次に進むのは、ユーザーが再試験開始を明示した場合だけである。その際はGitHub Actions用bindingを再確認し、final execution authorizationを一度だけ新規作成する。そのcommitが唯一のfresh execution triggerとなる。
+
+full fresh workflowの再実行、workflow_dispatchによるfresh execution、科学的結果に応じたseed/root/support rule変更は認めない。
