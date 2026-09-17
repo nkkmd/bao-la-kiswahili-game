@@ -76,7 +76,7 @@ test("replay rejects unknown fields, unsupported rule baselines, and non-standar
 test("parseText rejects malformed and oversized input", () => {
   assert.throws(() => Replay.parseText("{", E), /JSON is invalid/);
   assert.throws(() => Replay.parseText("", E), /file is empty/);
-  assert.throws(() => Replay.parseText(" ".repeat(Replay.MAX_FILE_BYTES + 1), E), /file is too large/);
+  assert.throws(() => Replay.parseText("x".repeat(Replay.MAX_FILE_BYTES + 1), E), /file is too large/);
 });
 
 test("descriptor exposes only replay display metadata", () => {
