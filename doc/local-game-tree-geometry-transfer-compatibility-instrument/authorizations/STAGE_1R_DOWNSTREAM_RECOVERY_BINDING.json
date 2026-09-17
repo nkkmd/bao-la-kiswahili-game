@@ -3,7 +3,7 @@
   "bindingId": "LGTTCI-S1R-DOWNSTREAM-RECOVERY-BINDING-2026-09-18-v1",
   "studyId": "LGTTCI-STUDY1",
   "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
-  "status": "BOUND-EXECUTION-TRIGGERED",
+  "status": "BOUND-READY-AWAITING-DOWNSTREAM-RECOVERY-AUTHORIZATION",
   "recoveryType": "DOWNSTREAM-ONLY",
   "researchBranch": "research/g4-01-transfer-compatibility-instrument",
   "sourceExecutionRun": {
@@ -12,20 +12,6 @@
     "workflowName": "LGTTCI Stage 1R GitHub Actions execution",
     "runConclusion": "failure",
     "expectedSourceArtifactCount": 1536
-  },
-  "recoveryExecution": {
-    "authorizationCommitSha": "2216c19e52bd0a7ce2680426183c058ecb8fce1c",
-    "runId": 35265290422,
-    "workflowName": "LGTTCI Stage 1R downstream-only recovery",
-    "statusAtRecord": "IN-PROGRESS",
-    "canonicalSourceBundleStatus": "SEALED-SUCCESS",
-    "sourceArtifactCount": 1536,
-    "primaryCount": 1536,
-    "reserveCount": 0,
-    "sourceManifestDeterministicCoreSha256": "8111413773dfd9899b4562ee5089223a0aef75b6885041f4eacb1006111d7cdd",
-    "recoverySourceArtifactIndexDeterministicCoreSha256": "7b95662b92a2129bc16f8c8a50acc1fa4ed1d1ec381504d761937a9c1e54134a",
-    "freshSeedAccessPerformed": false,
-    "freshWorkflowRerunPerformed": false
   },
   "executionCriticalGitBlobShas": {
     "recoveryWorkflow": "06096dd0243bf019ae083398bc448a561ef85857",
