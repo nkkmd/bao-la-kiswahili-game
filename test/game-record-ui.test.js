@@ -6,6 +6,7 @@ const fs = require("node:fs");
 const vm = require("node:vm");
 
 const html = fs.readFileSync("public/index.html", "utf8");
+const style = fs.readFileSync("public/style.css", "utf8");
 const serviceWorker = fs.readFileSync("public/service-worker.js", "utf8");
 const privacy = fs.readFileSync("public/privacy.html", "utf8");
 const recordSource = fs.readFileSync("public/game-record.js", "utf8");
@@ -37,7 +38,7 @@ test("game record and contribution client remain available offline", () => {
   assert.ok(cachedFiles.includes("./game-record-replay.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution-config.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution.js"));
-  assert.match(serviceWorker, /bao-la-kiswahili-v48/);
+  assert.match(serviceWorker, /bao-la-kiswahili-v49/);
 });
 
 test("save action is created only for a completed game", () => {
@@ -97,4 +98,11 @@ test("replay blocks play interaction and reuses the normal forward animation pat
   assert.match(replaySource, /engine\.applyMove\(clone\(current\), clone\(entry\.move\)\)/);
   assert.match(replaySource, /initial position mismatch/);
   assert.match(replaySource, /final position mismatch/);
+});
+
+
+test("replay file input cannot widen the mobile setup panel", () => {
+  assert.match(style, /\.start-panel \{[^}]*max-width:\s*100%[^}]*box-sizing:\s*border-box/s);
+  assert.match(style, /\.setup-field \{[^}]*grid-template-columns:\s*64px minmax\(0, 1fr\)/s);
+  assert.match(style, /\.replay-file-field input \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*box-sizing:\s*border-box[^}]*overflow:\s*hidden/s);
 });
