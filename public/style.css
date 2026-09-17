@@ -33,9 +33,9 @@ button:hover, button:focus-visible, summary:hover, summary:focus-visible, select
 canvas { display: block; width: 100%; height: auto; aspect-ratio: 640 / 430; background: #a8c98b; image-rendering: pixelated; touch-action: none; cursor: pointer; }
 .start-screen { position: absolute; z-index: 2; inset: 4px; display: grid; place-items: center; padding: 14px; background: #071011e8; }
 .start-screen[hidden] { display: none; }
-.start-panel { width: min(100%, 360px); padding: clamp(16px, 4vw, 28px); border: 3px solid #e2c36b; background: #172c2b; box-shadow: 8px 8px 0 #071011; }
+.start-panel { width: min(100%, 360px); max-width: 100%; min-width: 0; box-sizing: border-box; padding: clamp(16px, 4vw, 28px); border: 3px solid #e2c36b; background: #172c2b; box-shadow: 8px 8px 0 #071011; }
 .start-panel h2 { margin: 4px 0 18px; color: #d3e4a5; font-size: clamp(20px, 5vw, 28px); }
-.setup-field { display: grid; grid-template-columns: 64px 1fr; align-items: center; gap: 10px; margin: 10px 0; color: #e2c36b; font-size: 13px; font-weight: bold; }
+.setup-field { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 10px; min-width: 0; margin: 10px 0; color: #e2c36b; font-size: 13px; font-weight: bold; }
 .setup-field[hidden] { display: none; }
 .setup-field select { width: 100%; min-height: 40px; font-size: 13px; }
 .start-button { width: 100%; margin-top: 14px; padding: 12px; border-color: #e2c36b; color: #071011; background: #e2c36b; font-size: 14px; }
@@ -147,7 +147,10 @@ footer { margin-top: 22px; font-size: 12px; line-height: 1.9; color: #9ab3a5; }
 /* Saved game record replay */
 .replay-file-field input {
   width: 100%;
+  max-width: 100%;
   min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
   padding: 8px;
   border: 1px solid #78998a;
   border-radius: 4px;
