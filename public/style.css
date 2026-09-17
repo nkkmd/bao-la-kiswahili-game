@@ -159,10 +159,16 @@ footer { margin-top: 22px; font-size: 12px; line-height: 1.9; color: #9ab3a5; }
   font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 .replay-load-status {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   margin: 6px 0 0;
   color: #a8c98b;
   font-size: 12px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .replay-load-status[hidden], .replay-controls[hidden] { display: none; }
 .replay-controls {
