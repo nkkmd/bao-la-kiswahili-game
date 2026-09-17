@@ -206,6 +206,12 @@
           expert: ["Bingwa", "ビングワ"],
         };
         const updateBadge = () => {
+          if (mode.value === "replay") {
+            badge.textContent = "REPLAY";
+            badge.title = "";
+            badge.hidden = false;
+            return;
+          }
           const [english, japanese] = labels[difficulty.value] || labels.normal;
           const identity = window.BaoReleaseConfig.displayIdentity(difficulty.value);
           badge.textContent = `${window.BaoLocale.t(identity.label, identity.labelJa)} / ${window.BaoLocale.t(english, japanese)}`;
