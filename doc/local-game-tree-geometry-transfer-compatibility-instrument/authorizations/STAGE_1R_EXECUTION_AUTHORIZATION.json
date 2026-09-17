@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "authorizationId": "LGTTCI-S1R-GHA-EXECUTION-AUTHORIZATION-2026-09-17-v1",
+  "studyId": "LGTTCI-STUDY1",
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "decision": "LGTTCI-STAGE1R-EXECUTION-AUTHORIZED",
+  "authorizedAt": "2026-09-17T22:04:00+09:00",
+  "executionRoute": "GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE",
+  "researchBranch": "research/g4-01-transfer-compatibility-instrument",
+  "freshSeedAccessBeforeAuthorization": 0,
+  "preExecutionBindingId": "LGTTCI-S1R-GHA-PREEXEC-BINDING-2026-09-17-v1",
+  "preExecutionBindingGitBlobSha": "50953f47a35cb4172e2ea7838c84a8e44af35fe1",
+  "executionAmendmentGitBlobSha": "c045e53801c993e050e3a3e79bf53e5e73596775",
+  "validatedTechnicalPreflight": {
+    "workflow": "LGTTCI Stage 1R pre-execution validation",
+    "runId": 35223729501,
+    "jobId": 105209943719,
+    "validatedHeadSha": "b2745214134766f34cad75c45ec2575e8d951bee",
+    "conclusion": "success"
+  },
+  "branchHeadImmediatelyBeforeAuthorization": "37b516378e36d1b3dd3f14a8272a833a9032abe1",
+  "freshExecutionContract": {
+    "trigger": "this file's first-creation commit only",
+    "workflowDispatchAuthorized": false,
+    "secondFreshWorkflowRunAuthorized": false,
+    "primarySlotCount": 1536,
+    "pairedReserveMaximum": 48,
+    "maximumFreshReads": 1584,
+    "fullFreshWorkflowRerunAuthorized": false,
+    "localChatRuntimeRequiredAfterTrigger": false
+  },
+  "scientificScope": {
+    "compatibilityOnly": true,
+    "formalScientificEffectsAuthorized": false,
+    "formalGeneralizationDecisionAuthorized": false,
+    "formalCounterexampleDecisionAuthorized": false,
+    "g4_02_or_laterAuthorized": false,
+    "publicAiChangeAuthorized": false,
+    "mainIntegrationAuthorized": false
+  },
+  "protectedEvidence": {
+    "oldStage1SeedNamespace401ReuseAuthorized": false,
+    "g3_11Depth10RerunAuthorized": false,
+    "g3_12Stage1ReplayAuthorized": false,
+    "g3_12Stage2AccessAuthorized": false,
+    "g3_12PartialMeasurementReuseAuthorized": false,
+    "g4_10Depth11AccessAuthorized": false
+  },
+  "authorizationBasis": "User explicitly instructed to start the test after GitHub Actions pre-execution design, technical validation, and exact binding were completed."
+}
