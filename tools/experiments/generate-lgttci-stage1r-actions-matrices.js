@@ -29,4 +29,5 @@ const matrices={
   measurement:measurementMatrix()
 };
 const out=process.env.GITHUB_OUTPUT;
-if(out){for(const [k,v] of Object.entries(matrices))fs.appendFileSync(out,`${k}=${JSON.stringify(v)}\n`);}else process.stdout.write(JSON.stringify(matrices,null,2)+"\n");
+if(out){for(const [k,v] of Object.entries(matrices))fs.appendFileSync(out,`${k}=${JSON.stringify(v)}\n`);}
+process.stdout.write(JSON.stringify(matrices,null,2)+"\n");
