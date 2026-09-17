@@ -1,6 +1,6 @@
-# 棋譜保存機能
+# 棋譜保存・再生機能
 
-更新日: 2026-09-16  
+更新日: 2026-09-18  
 対象形式: `bao-game-record` version `1`
 
 ## 1. 目的と現在状態
@@ -9,7 +9,7 @@ Bao la Kiswahili の公開ゲームでは、終局した対局について、利
 
 この機能は、AI改善用診断とは別の利用者向け機能である。AIの思考内容を調べるための診断ではなく、**1局の初期局面、確定した着手列、対局設定、勝敗、最終局面を保存し、後から機械的に再現できる形で残すこと**を目的とする。
 
-ローカル棋譜保存機能は2026年9月15日にPR #142で`main`へ統合済みである。2026年9月16日には、この同じ`bao-game-record` v1を対象として、完成したコンピュータ対戦の棋譜を利用者が1局ごとに明示同意した場合だけAI改善用に送信できる**任意の棋譜提供機能**を別経路として追加した。ローカル保存と任意提供は独立した操作であり、ローカル保存を行ったことが送信同意を意味することはない。任意提供の設計・検証・サーバー側境界は[`GAME_RECORD_CONTRIBUTION.md`](GAME_RECORD_CONTRIBUTION.md)を正本とする。
+ローカル棋譜保存機能は2026年9月15日にPR #142で`main`へ統合済みである。2026年9月16日には、この同じ`bao-game-record` v1を対象として、完成したコンピュータ対戦の棋譜を利用者が1局ごとに明示同意した場合だけAI改善用に送信できる**任意の棋譜提供機能**を別経路として追加した。2026年9月18日にはPR #152で**保存済み棋譜の再生機能**を`main`へ統合した。ローカル保存・再生・任意提供はそれぞれ独立した操作であり、ローカル保存や再生を行ったことが送信同意を意味することはない。任意提供の設計・検証・サーバー側境界は[`GAME_RECORD_CONTRIBUTION.md`](GAME_RECORD_CONTRIBUTION.md)を正本とする。
 
 ## 2. 利用者から見た動作
 
@@ -115,7 +115,7 @@ houseTwo
 
 ## 4. 記録経路と計算資源の境界
 
-棋譜機能は`public/game-record.js`が担当する。`public/main.js`の通常対局経路が初期化された後に読み込み、実際に採用された画面上の着手だけを記録する。
+棋譜の記録・基本検証・保存は`public/game-record.js`が担当し、保存済み棋譜の厳格な読み込み境界とviewer用snapshot生成は`public/game-record-replay.js`が担当する。`public/game-record.js`は`public/main.js`の通常対局経路が初期化された後に読み込み、実際に採用された画面上の着手だけを記録する。
 
 重要な境界は次のとおりである。
 
@@ -193,7 +193,7 @@ houseTwo
 
 専用CIは`.github/workflows/game-record-verification.yml`で管理し、上記の棋譜保存・棋譜再生・任意提供テストに加え、隣接するengine、locale、診断、AI releaseの回帰も実行する。
 
-ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供機能は2026年9月16日にテストサイト・スマートフォン実機・Cloudflare Worker/R2/Turnstile・Custom Domainを使ったcontrolled submissionまで確認し、最終構成では`workers.dev`とPreview URLを無効化して`bao-data.cultivationdata.net`だけを本番Worker入口としている。棋譜再生機能は2026年9月18日に専用ブランチ上で実装・検証を開始した。
+ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供機能は2026年9月16日にテストサイト・スマートフォン実機・Cloudflare Worker/R2/Turnstile・Custom Domainを使ったcontrolled submissionまで確認し、最終構成では`workers.dev`とPreview URLを無効化して`bao-data.cultivationdata.net`だけを本番Worker入口としている。棋譜再生機能は2026年9月18日にPR #152で`main`へ統合し、モバイル実機でJSON選択、長いファイル名、戻る/進む操作を確認した。統合前の棋譜・AI release・図解ルール・PBAI-C015の4系統CIはいずれも成功している。
 
 ## 8. 現在の制限
 
