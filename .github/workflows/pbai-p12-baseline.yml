@@ -1,0 +1,59 @@
+name: PBAI-P12 baseline support計測
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p12-margin-bounded-search
+    paths:
+      - '.github/workflows/pbai-p12-baseline.yml'
+      - 'doc/ai-engineering/public-ai-improvement-program-12/**'
+      - 'tools/engineering/measure-pbai-p12-baseline.cjs'
+      - 'tools/engineering/lib/pbai-p12-instrument.cjs'
+
+permissions:
+  contents: write
+
+jobs:
+  baseline-support:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: engineering/pbai-p12-margin-bounded-search
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 現行AI-GEN4の本番経路回帰
+        run: node --test test/pbai-c015-expert-production.test.cjs
+      - name: 計測器の構文確認
+        run: |
+          node --check tools/engineering/lib/pbai-p12-instrument.cjs
+          node --check tools/engineering/measure-pbai-p12-baseline.cjs
+      - name: baseline support計測
+        id: measure
+        shell: bash
+        run: |
+          set +e
+          node tools/engineering/measure-pbai-p12-baseline.cjs artifacts/pbai-p12/baseline-support.json
+          status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: 計測結果を隔離branchへ記録
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/pbai-p12/baseline-support.json
+          if git diff --cached --quiet; then
+            echo 'No result change.'
+          else
+            git commit -m 'data: record PBAI-P12 baseline support result'
+            git push origin HEAD:engineering/pbai-p12-margin-bounded-search
+          fi
+      - name: support gateを反映
+        if: steps.measure.outputs.status != '0'
+        run: |
+          echo "PBAI-P12 baseline support gate failed with status ${{ steps.measure.outputs.status }}" >&2
+          exit "${{ steps.measure.outputs.status }}"
