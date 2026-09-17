@@ -1,8 +1,8 @@
 # Bao研究成果索引
 
-更新日: 2026-09-05
+更新日: 2026-09-18
 対象: Research Generation 1〜4
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4は計画固定済みで、科学実行は未承認**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、次のWave A Studyは未承認**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、そこから初見向け概要、Final Report、Current Status、Reproducibility Indexへ進める構成に統一しています。
 
@@ -13,24 +13,26 @@
 | 目的 | 文書 |
 | --- | --- |
 | 第四世代の研究計画 | [`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md) |
+| 第四世代の現在状態 | [`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md) |
+| G4-01の正式結果 | [`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
 | 公開AIの改善記録 | [`AI_ENGINEERING_INDEX.md`](AI_ENGINEERING_INDEX.md) |
 | 文書の言語・表記方針 | [`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md) |
 
-研究世代と公開AIの世代は別の概念です。Research Generation 2・3と、計画段階のResearch Generation 4は純粋研究であり、公開AIの改修は`PBAI-P1`・`PBAI-P2`という独立engineering trackで扱います。研究結果が、そのままAI変更や公開承認を意味することはありません。
+研究世代と公開AIの世代は別の概念です。Research Generation 2〜4は純粋研究であり、公開AIの改修は`PBAI-P1`〜`PBAI-P12`として独立したengineering trackで管理しています。現在の公開AI系統は`AI-GEN4`です。研究結果が、そのままAI変更や公開承認を意味することはありません。
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
-第四世代は、Program計画だけが固定された開始前状態です。core `G4-01..G4-10`のscientific execution、seed access、depth 11、公開AI変更は承認されていません。
+第四世代はprospective Program計画を固定したうえで、最初のStudyであるG4-01を完了しました。G4-01の正式Study `LGTTCI-STUDY1` は、G3-04・G3-07・G3-10由来claimを将来のfresh domainへ移送する前段として、root contract、helper precondition、measurement agreement、resource readinessを科学的effectから分離して検証したものです。
 
 | Agenda | 計画上の役割 | 現在の状態 |
 | --- | --- | --- |
-| `G4-01` | claim-transfer compatibility instrument | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-02` | corridor / tree-graph transfer | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-03` | width / search-ranking transfer | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-04` | geometry-trajectory transfer | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-01` / [`LGTTCI-STUDY1`](local-game-tree-geometry-transfer-compatibility-instrument/) | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL` |
+| `G4-02` | corridor / tree-graph transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
+| `G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
+| `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-07` | multiscale memory / return | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -40,9 +42,11 @@
 | `G4-P01` | canonicalization re-foundation | `INDEPENDENT / NON-BLOCKING / NOT-AUTHORIZED` |
 | `G4-H01` | human / expert evidence | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
 
-最初の候補はG4-01です。G3-12をrepairせず、claim familyごとのroot contract、source policy、search helper、exact measurementのcompatibilityを科学的effectから分離して検証します。G4-01の実行前には、current `main`を基準とする別のauthorization reviewが必要です。
+G4-01ではSFCDF・SILGM・GCLDの3 familyすべてが`compatible`となり、正式decisionは`COMPATIBILITY-ELIGIBLE-ALL`です。これはcompatibility/readinessの結果であり、G3由来claimのfresh-domain一般化、scientific effect、counterexampleの成立／不成立を確認したものではありません。
 
-詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)を参照してください。
+次にG4-02、G4-03、G4-04のいずれかを進める場合は、post-G4-01 current-state authorization reviewを先に実施し、各Studyのfresh evidence、formal claim、endpoint、resource ceilingをprospectiveに固定する必要があります。G4-01完了によって自動的にscientific executionが承認されることはありません。
+
+詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
@@ -61,7 +65,7 @@
 | `G3-08` / [`LGPML-STUDY1`](local-geometry-persistence-memory-length/) | `TECHNICAL-INVALID` | persistence / memory lengthのformal resultはありません。 |
 | `G3-09` / [`CLGR-STUDY1`](continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | 当初のcontinuous representationはformal eligibilityに到達していません。 |
 | 前提Study / [`RRCLGR-STUDY1`](resource-robust-continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
-| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
+| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-game-tree-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
 | `G3-10` / [`GCLD-STUDY1`](geometry-conditioned-longitudinal-dynamics/) | `FORMAL-COMPLETE` | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED`です。 |
 | `G3-11` / [`FDEGHV-STUDY1`](fresh-depth10-exact-geometry-holdout/) | `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` | H1〜H4が`DEEPER-CONFIRMED`。depth 10は一度だけ消費済みです。 |
 | `G3-12` / [`LGTGGC-STUDY1`](local-game-tree-geometry-generalization-counterexample/) | `TECHNICAL-INVALID` | Stage 2は未実行で、generalization / counterexampleのformal decisionはありません。 |
