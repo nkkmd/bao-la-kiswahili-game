@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "programPosition": "Research Generation 4 / G4-01",
+  "studyId": "LGTTCI-STUDY1",
+  "titles": {
+    "ja": "Bao局所ゲーム木幾何claim移送Compatibility Instrument研究1 — fresh domain移送に必要なroot contract、helper precondition、測定一致、resource readinessのprospective検証",
+    "en": "Local Game-Tree Geometry Transfer Compatibility Instrument Study 1 — Prospective validation of root contracts, helper preconditions, measurement agreement, and resource readiness for fresh-domain claim transfer"
+  },
+  "authorizationDecision": "G4-01-AUTHORIZED",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-17-post-rg3-pre-g4-01-authorization-review.md",
+  "sourceMain": {
+    "repository": "nkkmd/bao-la-kiswahili-game",
+    "headSha": "6433c726d038f710b9b5af3620f1a7d30db7bdc9",
+    "researchBranch": "research/g4-01-transfer-compatibility-instrument"
+  },
+  "stageStructure": [
+    {
+      "stageId": "LGTTCI-S0-TECHNICAL-2026-09-17-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "scientificOutcomeAuthorized": false,
+      "freshCompatibilitySeedAccess": false,
+      "statusAtFreeze": "AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+      "evidenceClass": "FRESH-COMPATIBILITY",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage0Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    }
+  ],
+  "sourceIdentity": {
+    "engine": {"path": "public/engine.js", "gitBlobSha": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"},
+    "aiTechnicalReference": {"path": "public/ai.js", "gitBlobSha": "ac2b4fd66a2555c50a362c39a828515323bba18a", "scope": "canonical move identity and frozen controlled-search evaluation profile only"},
+    "rawGeometryProduction": {"path": "tools/experiments/lib/lgtgmiv-stage1-production.js", "gitBlobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"},
+    "rawGeometryIndependent": {"path": "tools/experiments/lib/lgtgmiv-stage1-independent.js", "gitBlobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"},
+    "continuousGeometryProduction": {"path": "tools/experiments/lib/crclgr-production.js", "gitBlobSha": "f9d90792d729a42f738e7cd1c3b045bdd758ffa5"},
+    "continuousGeometryIndependent": {"path": "tools/experiments/lib/crclgr-independent.js", "gitBlobSha": "77d3a91b2165019e4b50c195a1bb14147c35e6d2"},
+    "searchProduction": {"path": "tools/experiments/lib/silgm-production.js", "gitBlobSha": "9712e897540b54ff5fe3aa6acd997d286b09331d"},
+    "searchIndependent": {"path": "tools/experiments/lib/silgm-independent.js", "gitBlobSha": "0bd60c96e5abfce9d1c99b474709177d52509138"},
+    "controlledSearchPrimitive": {"path": "tools/experiments/lib/search-reliability-decision-robustness.js", "gitBlobSha": "f3a6951fe711db62e164910cfb248a9cbc2cac1a"}
+  },
+  "identityContract": {
+    "rawStateFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedRawFields": ["turn", "reason"],
+    "moveFields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransformSet": [],
+    "symmetryCanonicalizationAuthorized": false,
+    "treeOccurrenceAndUniqueRawGraphStateAreDistinctConstructs": true
+  },
+  "targetClaimFamilies": [
+    {"familyId": "G4-01-F1-SFCDF", "upstream": ["G3-04-C1", "G3-04-C6"], "futureAgenda": "G4-02"},
+    {"familyId": "G4-01-F2-SILGM", "upstream": ["G3-07-SC1-E3-G1", "G3-07-SC2-E3-G1", "G3-07-SC3-E3-G1"], "futureAgenda": "G4-03"},
+    {"familyId": "G4-01-F3-GCLD", "upstream": ["G3-10-C1", "G3-10-C2", "G3-10-C3", "G3-10-C5"], "futureAgenda": "G4-04"}
+  ],
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "prng": "MULBERRY32",
+      "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+      "selection": "floor(u * legalMoveCount) from all legal moves at every ply"
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "prng": "MULBERRY32",
+      "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+      "selection": "evaluate authoritative immediate capture-event seed count for every legal move, retain the minimum-count pool, then choose floor(u * poolCount)",
+      "forbiddenSelectionInputs": ["geometry", "search output", "engine evaluation", "game outcome", "historical scientific result"]
+    }
+  ],
+  "rootFamilies": [
+    {
+      "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+      "namuaRoot": "exact ply 20, nonterminal, phase=namua",
+      "mtajiRoot": "first nonterminal phase=mtaji state at ply >=40",
+      "replacementRootAuthorized": false
+    },
+    {
+      "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR",
+      "namuaRoot": "exact ply 28, nonterminal, phase=namua",
+      "mtajiRoot": "exact ply 52, nonterminal, phase=mtaji",
+      "replacementRootAuthorized": false
+    }
+  ],
+  "geometryContract": {
+    "rawLocalGeometry": {
+      "relativeDepth": 5,
+      "representationMode": "RAW-ONLY",
+      "validatedTransformSet": [],
+      "requiredProductionIndependentExactAgreement": true
+    },
+    "continuousGeometry": {
+      "representationId": "CRCLGR-R1-EXACT-SQUASHED-L1",
+      "relativeDepth": 5,
+      "coordinateArithmetic": "EXACT-REDUCED-RATIONAL",
+      "scope": "G4-01-F3-GCLD compatibility only",
+      "requiredProductionIndependentExactAgreement": true
+    }
+  },
+  "searchCompatibilityContract": {
+    "rankingMinimumLegalMoves": 2,
+    "singletonRootDisposition": "NON-ESTIMABLE / ROOT-LEGAL-WIDTH-LT2",
+    "helperCallOnSingletonRootAuthorized": false,
+    "phaseThresholdsInheritedOnlyForSupportClassification": {
+      "namua": 4,
+      "mtaji": 3
+    },
+    "conditions": [
+      {"id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1},
+      {"id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1},
+      {"id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1},
+      {"id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1},
+      {"id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0},
+      {"id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2}
+    ],
+    "contrasts": [
+      {"contrastId": "SILGM-SC1-DEPTH", "a": "D2_Q1", "b": "D3_Q1"},
+      {"contrastId": "SILGM-SC2-NODE-BUDGET", "a": "B256_Q1_MAXD3", "b": "B1024_Q1_MAXD3"},
+      {"contrastId": "SILGM-SC3-QUIESCENCE", "a": "D2_Q0", "b": "D2_Q2"}
+    ],
+    "effectComputationAuthorized": false
+  },
+  "technicalFixtureNamespace": {
+    "seedStart": 44010001,
+    "seedEnd": 44010064,
+    "count": 64,
+    "evidenceClass": "TECHNICAL-FIXTURE",
+    "scientificUseAuthorized": false
+  },
+  "freshCompatibilitySeedBlocks": {
+    "statusAtFreeze": "RESERVED-NOT-ACCESSED",
+    "SFCDF": {"seedStart": 40111001, "seedEnd": 40111384, "count": 384},
+    "SILGM": {"seedStart": 40112001, "seedEnd": 40112768, "count": 768},
+    "GCLD": {"seedStart": 40113001, "seedEnd": 40113384, "count": 384},
+    "seedExtensionAuthorized": false
+  },
+  "compatibilityPopulationGates": {
+    "SFCDF": {
+      "unit": "source-trajectory paired Namua/Mtaji roots",
+      "minimumCompletePairsPerPolicyRootFamilyCell": 8,
+      "cellCount": 4,
+      "failureWithoutTechnicalError": "NON-ESTIMABLE"
+    },
+    "SILGM": {
+      "unit": "one selected RAW root from one source trajectory",
+      "singletonClass": "rootLegalWidth = 1 / tracked but never passed to ranking helper",
+      "lowRankableClass": "2 <= rootLegalWidth < phase threshold",
+      "equalClass": "rootLegalWidth = phase threshold / support diagnostic only",
+      "highClass": "rootLegalWidth > phase threshold",
+      "minimumLowRankablePerPolicyRootFamilyPhase": 4,
+      "minimumHighPerPolicyRootFamilyPhase": 4,
+      "failureWithoutTechnicalError": "NON-ESTIMABLE"
+    },
+    "GCLD": {
+      "unit": "one source trajectory with frozen longitudinal checkpoints",
+      "checkpoints": [20, 28, 40, 52, 60],
+      "minimumTrajectoriesPerPolicyWithAtLeastFourMeasurableCheckpointsAndBothPhases": 12,
+      "failureWithoutTechnicalError": "NON-ESTIMABLE"
+    }
+  },
+  "resourceCeilings": {
+    "perDepth5Root": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000
+    },
+    "stage0": {
+      "elapsedMs": 600000,
+      "peakRssBytes": 1500000000,
+      "resultArtifactBytes": 8000000
+    },
+    "stage1": {
+      "maxSourcePliesPerTrajectory": 80,
+      "maxTotalSeedReads": 1536,
+      "heavyFormalGenerationOnGitHubActionsAuthorized": false
+    }
+  },
+  "decisionMapping": {
+    "familyCompatible": "all frozen identity/helper/measurement/resource gates pass and minimum support is met",
+    "familyNonEstimable": "no technical error but frozen population support or resource feasibility is insufficient",
+    "studyAll": "COMPATIBILITY-ELIGIBLE-ALL",
+    "studyPartial": "COMPATIBILITY-ELIGIBLE-PARTIAL",
+    "studyNoneWithoutTechnicalError": "NON-ESTIMABLE",
+    "technicalFailure": "TECHNICAL-INVALID"
+  },
+  "forbiddenOutputs": [
+    "formal effect direction",
+    "p-value",
+    "generalization decision",
+    "counterexample decision",
+    "claim confirmation or rejection",
+    "validated Bao win probability",
+    "game-theoretic value",
+    "human difficulty inference"
+  ],
+  "protectedEvidenceFirewall": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1SeedReplay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g3_12PartialMeasurementReuse": false,
+    "g4_10Depth11Access": false,
+    "unvalidatedSymmetryCanonicalization": false,
+    "publicAiChange": false
+  },
+  "noRescue": {
+    "afterFreshCompatibilityAccess": [
+      "seed extension",
+      "root replacement",
+      "source-policy replacement",
+      "root-family replacement",
+      "support-threshold relaxation",
+      "helper-precondition relaxation",
+      "module dropping to obtain all-compatible status"
+    ]
+  }
+}
