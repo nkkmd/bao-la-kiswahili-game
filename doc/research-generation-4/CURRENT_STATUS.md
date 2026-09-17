@@ -2,17 +2,18 @@
 
 更新日: 2026-09-18  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / WAVE A NEXT STUDY NOT YET AUTHORIZED`**
+状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / WAVE A NEXT STUDY NOT YET AUTHORIZED`**
 
 ## Program全体
 
-第四世代のprospective program planは`main`へ統合済みであり、G4-01を最初の実行Studyとして完了した。
+第四世代のprospective program planは`main`へ統合済みであり、G4-01を最初の実行Studyとして完了した。G4-01のformal closure後、root README・中央研究索引・今後の研究アジェンダを含むrepository-wide consistency auditも`PASS`した。
 
 ```text
 Program baseline plan = FROZEN / INTEGRATED TO MAIN
 Core agenda = G4-01..G4-10
 Independent tracks = G4-P01, G4-H01
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
+repository-wide consistency audit = PASS
 G4-02 = NOT AUTHORIZED
 G4-03 = NOT AUTHORIZED
 G4-04 = NOT AUTHORIZED
@@ -52,6 +53,17 @@ G4-01 closure state:
 - [`../local-game-tree-geometry-transfer-compatibility-instrument/README.md`](../local-game-tree-geometry-transfer-compatibility-instrument/README.md)
 - [`../local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-18-stage1r-final-result.md`](../local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-18-stage1r-final-result.md)
 - [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md)
+- [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)
+
+## repository-wide consistency audit
+
+G4-01 closure後、main統合前のcurrent-facing文書を再監査した。root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`に残っていたG4-01開始前の記述を修正し、Research Generation 4側およびG4-01正本と同期した。
+
+最終判定:
+
+`PASS / CURRENT-FACING-DOCUMENTS-SYNCHRONIZED / MAIN-NOT-MERGED`
+
+prospectiveにfreezeした`PROGRAM_PLAN.md`、preregistration、authorization/binding文書は歴史的正本として事後変更していない。
 
 ## Agenda別の現在状態
 
@@ -87,16 +99,17 @@ authoritative state identity = RAW
 
 ## 次の一手
 
-G4-01の研究実行は完了している。
+G4-01の研究実行とmain統合前の文書整合性監査は完了している。
 
 次の研究作業を行う場合は、Wave AのG4-02、G4-03、G4-04のいずれかについてcurrent-state authorization reviewを実施する。G4-01の`COMPATIBILITY-ELIGIBLE-ALL`だけを根拠にscientific seedへ自動アクセスしてはならない。
 
-また、G4-01を`main`へ統合する場合もユーザーの明示指示が必要である。
+G4-01を`main`へ統合する場合は、ユーザーの明示指示が必要である。
 
 ## 文書上の正本
 
 - [`README.md`](README.md) — 第四世代研究の入口
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
 - [`RESUME_HERE.md`](RESUME_HERE.md) — 現在の安全な再開位置
+- [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md) — main統合前の文書整合性監査
 - [`../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md`](../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md) — G4-01の正式状態
 - [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md) — G4-01 closure decision
