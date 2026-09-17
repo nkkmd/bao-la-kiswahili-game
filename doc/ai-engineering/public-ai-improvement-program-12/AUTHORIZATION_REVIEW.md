@@ -67,7 +67,7 @@ baseline support計測に使うデータは**development-only**とし、後続�
 
 診断を無効にした通常経路では探索判断を変えない。
 
-## 6. baseline support gate
+## 6. baseline support判定条件
 
 候補実装へ進むには、固定深度のdevelopment-only計測で次をすべて満たす必要がある。
 

@@ -4,7 +4,8 @@
 - 対象: [十分良い手を基準にしたマージン制限型選択探索](NEXT_IMPROVEMENT_CANDIDATE.md)
 - 調査対象のmain: [`2b368ee93a882231e8b2d696b2e20df9b58784e4`](https://github.com/nkkmd/bao-la-kiswahili-game/commit/2b368ee93a882231e8b2d696b2e20df9b58784e4)
 - 公開AI系統: **`AI-GEN4`**
-- 候補状態: **`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`**
+- 調査時点の候補状態: **`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`**
+- 後続結果: **`PBAI-P12 / PBAI-C016-v1 = DEVELOPMENT-GATE-FAIL / NOT-ADOPTED / CLOSED`**。2026年9月17日にdevelopment検証で終了し、公開AIは`AI-GEN4`を維持。詳細は[`public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md`](public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照する。
 
 ## 1. 結論と今回の作業範囲
 

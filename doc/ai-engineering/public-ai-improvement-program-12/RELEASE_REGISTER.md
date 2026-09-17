@@ -1,4 +1,4 @@
-# `PBAI-P12` — Release Register
+# `PBAI-P12` — リリース台帳
 
 更新日: 2026-09-17
 

@@ -92,7 +92,7 @@ candidate結果を見る前に次の3値を固定する。
 
 baseline support用`121200001..121200024`、independent validation用`121220001..121220064`、protected release holdout用`121230001..121230064`は使わない。
 
-## 8. fixed-depth development gate
+## 8. 固定深度development判定条件
 
 各marginについて、同一局面・固定depth 4・時間無制限でbaselineと比較する。候補を次段階へ残すには次をすべて満たす。
 

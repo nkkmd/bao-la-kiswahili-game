@@ -261,7 +261,7 @@ PBAI-P5では、軽量局面遷移をAI-GEN2の固定基準構成と新規holdou
 
 ### 改善プログラムの経緯
 
-**PBAI-P1〜P11は完了済み**です。下表の公開判断は各プログラム終了時点の履歴です。P8・P9の`KEEP-AI-GEN3`の後にhardの正式採用、P11の後にexpertの正式採用・本番組込み・配信確認を行い、現在のAI-GEN4へ至りました。
+**PBAI-P1〜P12は完了済み**です。下表の公開判断は各プログラム終了時点の履歴です。P8・P9の`KEEP-AI-GEN3`の後にhardの正式採用、P11の後にexpertの正式採用・本番組込み・配信確認を行い、現在のAI-GEN4へ至りました。P12では新しい探索候補を検証しましたがdevelopment gateを通過せず、不採用としてAI-GEN4を維持しました。
 
 | プログラム | 検証内容と結果 | 各プログラムでの公開判断 |
 | --- | --- | --- |
@@ -276,19 +276,21 @@ PBAI-P5では、軽量局面遷移をAI-GEN2の固定基準構成と新規holdou
 | [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/PROGRAM_FINAL_REPORT.md) | 同じ候補を標準500ms・毎手WorkerのNode条件で追加検証。151勝105敗、正式検算と主要条件を通過。ブラウザ互換性78件も合格 | 未採用・未配備、`KEEP-AI-GEN3` |
 | [PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md) | expertの低・標準・高設定を検証したが、実行中断により`TECHNICAL-INVALID / HOLD`。棋力改善は未判定 | expertの採用根拠にせず、hardの既存採用を維持 |
 | [PBAI-P11](doc/ai-engineering/public-ai-improvement-program-11/PROGRAM_FINAL_REPORT.md) | 新規seedとGitHub実行基盤でexpertを独立再試験。3設定すべての棋力・運用条件と独立検算を通過 | 後続の実機確認・正式採用・配信確認を経て、hardとともに`AI-GEN4`へ昇格 |
+| [PBAI-P12](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md) | `PBAI-C016-v1`としてroot margin probe方式を検証。baseline supportはPASSしたが、`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たさず`DEVELOPMENT-GATE-FAIL` | 不採用・公開変更なし、`KEEP-AI-GEN4` |
 
 PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`です。後続プログラムの成功によって、P1〜P4の正式結果やP6・P7・P10のHOLD・技術的無効を変更しません。各試験の対局成績は合算せず、科学研究の結論も保持します。
 
-### 次期改善候補
+### 直近の改善候補と結果
 
-[十分良い手を基準にしたマージン制限型選択探索](doc/ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)を次期候補として記録しています。2026年9月14日の[事前調査と開始時の引継ぎ](doc/ai-engineering/NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)では、小規模な計測・検証へ進める価値があると評価しました。現行PVSで残る比較・再探索の費用を先に測る方針で、棋力改善は未確認です。
+[十分良い手を基準にしたマージン制限型選択探索](doc/ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで行いました。事前のbaseline support計測では現行PVSにfull-window再探索コストが十分残っていることを確認しましたが、結果を見る前に固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たしませんでした。
 
-候補は`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`で、正式Program ID・Candidate IDは未発行です。今回の記録は文書整備のみであり、開始認可レビュー、新規計測、実装、対局試験はまだ開始していません。公開AIはAI-GEN4を維持します。
+正式な最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。`PBAI-C016-v1`は不採用・閉鎖とし、independent validationとrelease holdoutは未実行のまま保持しました。公開AI、正式release、AI世代に変更はありません。詳細は[P12最終報告](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。
 
 ### 詳細資料
 
 - [AI-GEN4正式昇格・配信確認・切戻し](doc/ai-engineering/ai-gen4-release/README.md) — 現在の公開世代と運用状態の正本
-- [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — P1〜P11の結果と各プログラムへの入口
+- [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — P1〜P12の結果と各プログラムへの入口
+- [P12最終報告](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md) — `PBAI-C016-v1`のdevelopment gate不通過とAI-GEN4維持の正式記録
 - [expert本番組込み・配信記録](doc/ai-engineering/pbai-c015-expert-production/README.md) — P11の採用からAI-GEN4昇格までの経過
 - [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md)・[P5リリース台帳](doc/ai-engineering/public-ai-improvement-program-5/RELEASE_REGISTER.md) — 継承元の採用・配信履歴
 - [P11の証拠確認・再開位置](doc/ai-engineering/public-ai-improvement-program-11/RESUME.md) — 完了済み試験の証拠と再実行の制限

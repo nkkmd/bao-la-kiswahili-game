@@ -1,18 +1,20 @@
-# Bao公開AIの次期改善候補
+# Bao公開AI改善候補 `PBAI-C016-v1` の記録
 
-更新日: 2026-09-14\
-現在の公開AI系統: **`AI-GEN4`**  
-状態: **`CONCEPT-RECORDED / NOT-AUTHORIZED / NOT-IMPLEMENTED`**  
-正式Program ID: **未発行**  
-正式Candidate ID: **未発行**
+更新日: 2026-09-17\
+現在の公開AI系統: **`AI-GEN4`**\
+状態: **`DEVELOPMENT-GATE-FAIL / NOT-ADOPTED / CLOSED`**\
+正式Program ID: **`PBAI-P12`**\
+正式Candidate ID: **`PBAI-C016-v1`**
 
-この文書は、現在の`AI-GEN4`を変更せず、次に検証する価値があるBao AI改善案を工学候補として記録するためのメモである。正式なProgram開始、candidate ID発行、実装、benchmark、公開採用、AI世代昇格を認可する文書ではない。
+この文書は、2026年9月13〜14日に次期改善案として記録した「十分良い手を基準にしたマージン制限型選択探索」の候補設計を、後続の正式検証結果とともに保存する履歴文書である。
 
-2026年9月14日に[事前調査と開始時の引継ぎ](NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)を記録した。結論は「小規模な計測・検証へ進める価値があるが、AI-GEN4を上回る見込みが高いとまでは判断できない」である。現行AIはすでにPVSを使うため、既存方式でも残る比較・再探索の費用を先に測る。実作業を始める際は本書と調査記録を読み、その時点のmainと公開AIを確認してから独立した開始認可レビューを行う。
+2026年9月17日に`PBAI-P12`として開始認可、baseline support計測、候補mechanismの事前固定、development検証まで実施した。baseline supportはPASSしたが、`PBAI-C016-v1`の`Δ = 16 / 32 / 64`はいずれも事前に固定したdevelopment gateを通過しなかった。主因は、rootのwide probe費用が省略できたfull-window再探索の節約量を上回り、eligible局面のnode数を削減できなかったことである。
 
-事前調査の記録とmainへの反映は文書整備のみであり、開始認可レビュー、新規計測、実装、対局試験は未開始のままである。
+正式な最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`である。候補は不採用・閉鎖とし、independent validationとrelease holdoutは実行していない。これは「十分良い手」という一般概念全体を否定する結果ではなく、今回結果を見る前に固定した`PBAI-C016-v1`のroot margin probe方式が採用条件を満たさなかったことを意味する。詳細は[`public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md`](public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照する。
 
-## 1. 次期改善候補
+以下の第2〜8節は、候補開始前に記録した仮説・期待・検証方針を履歴として保持する。結果確認後に当初の仮説やgateを救済的に書き換えない。
+
+## 1. 検証した改善候補
 
 日本語作業名:
 
@@ -151,20 +153,18 @@ timeoutは次の反復へ時間上限まで挑戦した結果でも生じるた�
 
 したがって、安全性確認なしに「少し良い手で十分」という規則へ単純化してはならない。
 
-## 9. 現在の境界
+## 9. 終了後の境界
 
-2026-09-14時点では、ここまでを**次期改善候補と事前調査の記録**とする。事前調査の実施は、次の開始認可レビューや実験の未開始状態を変更しない。
+2026年9月17日の正式終了後は、次を正本とする。
 
 ```text
 current public lineage = AI-GEN4
-next improvement concept = Good-Enough / Margin-Bounded Selective Search
-formal Program ID = NOT-ISSUED
-formal Candidate ID = NOT-ISSUED
-authorization review = NOT-STARTED
-implementation = NOT-STARTED
-benchmark = NOT-STARTED
+program = PBAI-P12 / COMPLETE
+candidate = PBAI-C016-v1 / DEVELOPMENT-GATE-FAIL / NOT-ADOPTED / CLOSED
+independent validation = NOT-RUN / NOT-AUTHORIZED
+release holdout = NOT-RUN / NOT-AUTHORIZED
 public AI change = NONE
 AI generation promotion = NONE
 ```
 
-この記録だけを根拠に`AI-GEN5`、新しいrelease ID、正式candidate IDを発行しない。次に実作業へ進む場合は、現在のrepository状態と`AI-GEN4` baselineを確認したうえで、独立した認可レビューから開始する。
+結果確認後にmargin、gate、population、seed、candidate mechanismを変更して`PBAI-C016-v1`を救済しない。独立validation用seed `121220001..121220064`とrelease holdout `121230001..121230064`はP12では未消費のまま保持した。将来、一般概念を別機構で再検討する場合は、`PBAI-C016-v1`の続行ではなく、新しいcandidateとして独立した認可・事前固定・新規証拠の扱いを定める。
