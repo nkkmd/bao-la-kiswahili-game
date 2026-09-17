@@ -58,6 +58,27 @@ jobs:
           PY
       - name: ルートREADMEと候補履歴を同期して監査
         run: python3 .github/scripts/pbai_p12_finalize_docs.py
+      - name: Markdown差分の末尾空白を正規化
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path('doc/ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md')
+          text = p.read_text(encoding='utf-8')
+          lines = [
+              '更新日: 2026-09-17',
+              '現在の公開AI系統: **`AI-GEN4`**',
+              '状態: **`DEVELOPMENT-GATE-FAIL / NOT-ADOPTED / CLOSED`**',
+              '正式Program ID: **`PBAI-P12`**',
+          ]
+          for line in lines:
+              old = line + '  \n'
+              new = line + chr(92) + '\n'
+              if old in text:
+                  text = text.replace(old, new, 1)
+          p.write_text(text, encoding='utf-8')
+          PY
       - name: 関連契約と世代回帰を確認
         run: |
           node --test test/public-ai-improvement-program1-contract.test.js
