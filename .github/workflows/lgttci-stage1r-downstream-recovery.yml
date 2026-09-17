@@ -1,0 +1,214 @@
+name: LGTTCI Stage 1R downstream-only recovery
+
+on:
+  push:
+    branches:
+      - research/g4-01-transfer-compatibility-instrument
+    paths:
+      - 'doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_DOWNSTREAM_RECOVERY_AUTHORIZATION.json'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: lgttci-stage1r-downstream-recovery
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    name: Verify downstream-only recovery authorization
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      measurement: ${{ steps.matrices.outputs.measurement }}
+      source_run_id: ${{ steps.origin.outputs.run_id }}
+      source_head_sha: ${{ steps.origin.outputs.head_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Require first creation of downstream recovery authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth='doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_DOWNSTREAM_RECOVERY_AUTHORIZATION.json'
+          test -f "$auth"
+          if git cat-file -e "${GITHUB_SHA}^:${auth}" 2>/dev/null; then
+            echo 'Downstream recovery authorization already existed in the parent commit; a second recovery trigger is forbidden.' >&2
+            exit 1
+          fi
+      - name: Verify authorization is downstream-only
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('fs');
+          const p='doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_DOWNSTREAM_RECOVERY_AUTHORIZATION.json';
+          const a=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(a.status!=='AUTHORIZED') throw new Error('authorization status mismatch');
+          if(a.recoveryType!=='DOWNSTREAM-ONLY') throw new Error('recovery type mismatch');
+          if(a.stageId!=='LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1') throw new Error('stage mismatch');
+          if(a.prohibitions?.freshSeedRead!==true) throw new Error('fresh-seed-read prohibition missing');
+          if(a.prohibitions?.freshWorkflowRerun!==true) throw new Error('fresh-workflow-rerun prohibition missing');
+          if(a.sourceExecutionRun?.runId!==35224920019) throw new Error('unexpected source run');
+          if(a.sourceExecutionRun?.headSha!=='90aff0561538113c203cbf8efa8977420a19dca1') throw new Error('unexpected source head');
+          NODE
+      - id: origin
+        name: Bind original fresh-execution run
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth='doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_DOWNSTREAM_RECOVERY_AUTHORIZATION.json'
+          echo "run_id=$(node -e "const a=require('./${auth}');process.stdout.write(String(a.sourceExecutionRun.runId))")" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$(node -e "const a=require('./${auth}');process.stdout.write(a.sourceExecutionRun.headSha)")" >> "$GITHUB_OUTPUT"
+      - id: matrices
+        name: Generate frozen measurement matrix only
+        run: node tools/experiments/generate-lgttci-stage1r-actions-matrices.js
+
+  recover-source-bundle:
+    name: Recover and seal canonical source bundle
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      ORIGIN_RUN_ID: ${{ needs.gate.outputs.source_run_id }}
+      ORIGIN_HEAD_SHA: ${{ needs.gate.outputs.source_head_sha }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enumerate immutable source artifacts from original run
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${ORIGIN_RUN_ID}/artifacts?per_page=100" \
+            --jq '.artifacts[] | select(.name | startswith("lgttci-s1r-source-")) | [.id,.name,(.expired|tostring),.digest,.workflow_run.head_sha,(.workflow_run.id|tostring)] | @tsv' \
+            > source-artifacts.tsv
+          test -s source-artifacts.tsv
+      - name: Verify exact immutable recovery input set
+        run: node tools/experiments/verify-lgttci-stage1r-recovery-artifact-index.js --input source-artifacts.tsv --output RECOVERY_SOURCE_ARTIFACT_INDEX.json
+      - name: Download source artifacts in bounded parallel batches
+        shell: bash
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          mkdir -p raw-source-artifacts recovery-zips
+          cut -f1,2 source-artifacts.tsv | xargs -P 12 -n 2 bash -c '
+            set -euo pipefail
+            id="$1"; name="$2"
+            zip="recovery-zips/${id}.zip"
+            out="raw-source-artifacts/${name}"
+            mkdir -p "$out"
+            curl --fail --silent --show-error --location \
+              --retry 5 --retry-delay 1 --retry-all-errors \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${REPO}/actions/artifacts/${id}/zip" \
+              -o "$zip"
+            unzip -q "$zip" -d "$out"
+            test -f "$out/source.json"
+          ' _
+      - name: Verify complete source population and create canonical bundle
+        run: node tools/experiments/bundle-lgttci-stage1r-actions-source.js --input raw-source-artifacts --output artifacts/stage1r
+      - name: Write recovery source provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp RECOVERY_SOURCE_ARTIFACT_INDEX.json artifacts/stage1r/RECOVERY_SOURCE_ARTIFACT_INDEX.json
+          node - <<'NODE'
+          const fs=require('fs');
+          const p='artifacts/stage1r/STAGE_1R_DOWNSTREAM_RECOVERY_PROVENANCE.json';
+          const auth=JSON.parse(fs.readFileSync('doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_DOWNSTREAM_RECOVERY_AUTHORIZATION.json','utf8'));
+          fs.writeFileSync(p,JSON.stringify({schemaVersion:1,stageId:auth.stageId,recoveryType:'DOWNSTREAM-ONLY',sourceRunId:auth.sourceExecutionRun.runId,sourceRunHeadSha:auth.sourceExecutionRun.headSha,recoveryRunId:process.env.GITHUB_RUN_ID,recoveryRunHeadSha:process.env.GITHUB_SHA,freshSeedAccessPerformed:false,freshWorkflowRerunPerformed:false},null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-source-bundle
+          path: artifacts/stage1r
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+  measurement:
+    name: Recovery seed-free measurement ${{ matrix.task }}
+    needs: [gate, recover-source-bundle]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.gate.outputs.measurement) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-source-bundle
+          path: artifacts/stage1r
+      - name: Run seed-free measurement with safe retries
+        shell: bash
+        env:
+          TASK: ${{ matrix.task }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/stage1r/measurement
+          ok=0
+          for attempt in 1 2 3; do
+            if node tools/experiments/run-lgttci-stage1r-measurement-task.js --task "$TASK" --artifact-root artifacts/stage1r --output "artifacts/stage1r/measurement/${TASK}.json"; then
+              ok=1
+              break
+            fi
+            echo "seed-free recovery measurement attempt ${attempt} failed; retry is scientifically safe" >&2
+          done
+          test "$ok" = 1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lgttci-s1r-recovery-measurement-${{ matrix.task }}
+          path: artifacts/stage1r/measurement/${{ matrix.task }}.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+  aggregate:
+    name: Aggregate recovered Stage 1R compatibility result
+    needs: [recover-source-bundle, measurement]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-source-bundle
+          path: artifacts/stage1r
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: lgttci-s1r-recovery-measurement-*
+          path: artifacts/stage1r/measurement
+          merge-multiple: true
+      - name: Aggregate without any fresh seed access
+        run: node tools/experiments/run-lgttci-stage1r-aggregate.js --artifact-root artifacts/stage1r --output artifacts/stage1r/STAGE_1R_COMPATIBILITY_RESULT.json
+      - name: Write final downstream-recovery provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('fs');
+          const auth=JSON.parse(fs.readFileSync('doc/local-game-tree-geometry-transfer-compatibility-instrument/authorizations/STAGE_1R_DOWNSTREAM_RECOVERY_AUTHORIZATION.json','utf8'));
+          const sourceProv=JSON.parse(fs.readFileSync('artifacts/stage1r/STAGE_1R_DOWNSTREAM_RECOVERY_PROVENANCE.json','utf8'));
+          const result=JSON.parse(fs.readFileSync('artifacts/stage1r/STAGE_1R_COMPATIBILITY_RESULT.json','utf8'));
+          const p='artifacts/stage1r/STAGE_1R_RECOVERY_EXECUTION_PROVENANCE.json';
+          fs.writeFileSync(p,JSON.stringify({schemaVersion:1,stageId:auth.stageId,recoveryType:'DOWNSTREAM-ONLY',sourceRunId:auth.sourceExecutionRun.runId,sourceRunHeadSha:auth.sourceExecutionRun.headSha,recoveryRunId:process.env.GITHUB_RUN_ID,recoveryRunAttempt:process.env.GITHUB_RUN_ATTEMPT,recoveryCommitSha:process.env.GITHUB_SHA,freshSeedAccessPerformed:false,freshWorkflowRerunPerformed:false,sourceArtifactIndexSha256:JSON.parse(fs.readFileSync('artifacts/stage1r/RECOVERY_SOURCE_ARTIFACT_INDEX.json','utf8')).deterministicCoreSha256,sourceManifestSha256:result.sourceManifestDeterministicCoreSha256,decision:result.decision,sourceProvenance:sourceProv},null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-final-result
+          path: |
+            artifacts/stage1r/STAGE_1R_COMPATIBILITY_RESULT.json
+            artifacts/stage1r/STAGE_1R_RECOVERY_EXECUTION_PROVENANCE.json
+            artifacts/stage1r/STAGE_1R_DOWNSTREAM_RECOVERY_PROVENANCE.json
+            artifacts/stage1r/SOURCE_MANIFEST.json
+            artifacts/stage1r/RECOVERY_SOURCE_ARTIFACT_INDEX.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
