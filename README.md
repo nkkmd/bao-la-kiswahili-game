@@ -105,11 +105,12 @@ node tools/build-rules-figures.js --check
 
 日英表示、図版、対局への導線、オフライン更新を含むブラウザー回帰は[図解ルールのCI](.github/workflows/illustrated-rules.yml)で管理します。
 
-棋譜保存と任意提供の形式、実エンジンでの再生、確定着手だけの記録、終局前後のUI、PWAキャッシュ、Privacy Policy、Worker validation、Origin・Fetch Metadata境界との整合は次で確認できます。
+棋譜保存・棋譜再生・任意提供の形式、実エンジンでの再生、確定着手だけの記録、終局前後のUI、PWAキャッシュ、Privacy Policy、Worker validation、Origin・Fetch Metadata境界との整合は次で確認できます。
 
 ```sh
 node --test \
   test/game-record.test.js \
+  test/game-record-replay.test.js \
   test/game-record-browser-hook.test.js \
   test/game-record-ui.test.js \
   test/game-record-contribution-config.test.js \
@@ -117,9 +118,9 @@ node --test \
   test/game-record-contribution-fetch-metadata.test.mjs
 ```
 
-この選定と隣接回帰は[棋譜保存・任意提供の専用CI](.github/workflows/game-record-verification.yml)で管理します。
+この選定と隣接回帰は[棋譜保存・再生・任意提供の専用CI](.github/workflows/game-record-verification.yml)で管理します。
 
-## 棋譜保存
+## 棋譜保存・再生
 
 終局した対局では、ゲーム画面に「棋譜を保存 / Save game record」を表示します。押した場合だけ、次の形式でJSONファイルを端末へ保存します。
 
@@ -202,7 +203,8 @@ node tools/diagnostic-to-fixture.js \
 | --- | --- |
 | `public/` | デプロイ用の静的ゲームファイル |
 | `public/main.js` | 対局進行、Canvas表示、入力、AI要求、対局中ルールガイド |
-| `public/game-record.js` | 対局中の確定着手記録、棋譜検証・再生、終局後のJSON保存 |
+| `public/game-record.js` | 対局中の確定着手記録、基本検証・replay処理、終局後のJSON保存 |
+| `public/game-record-replay.js` | 保存済み棋譜の厳格な読み込み検証、snapshot列、戻る/進む再生UI |
 | `public/game-record-contribution-config.js` | 任意棋譜提供のCustom Domain endpoint、Turnstile Sitekey、client側設定 |
 | `public/game-record-contribution.js` | 1局単位の同意、Turnstile、client側検証、棋譜送信UI |
 | `public/rules.html` | 日英対応の図解ルール説明 |
@@ -340,7 +342,7 @@ core agendaは`G4-01..G4-10`です。最初のStudyであるG4-01 `LGTTCI-STUDY1
 
 - [`doc/RULES_BASELINE.md`](doc/RULES_BASELINE.md): 採用ルールの参照元、固定コミット、実装差分、更新方針
 - [`doc/BEGINNER_STRATEGY_GUIDE.md`](doc/BEGINNER_STRATEGY_GUIDE.md): 初心者向けの基本戦略、思考手順、段階別練習方法
-- [`doc/GAME_RECORD.md`](doc/GAME_RECORD.md): 棋譜保存の形式、UI、計算資源上の境界、プライバシー、再生検証、現在の制限
+- [`doc/GAME_RECORD.md`](doc/GAME_RECORD.md): 棋譜保存・再生の形式、UI、計算資源上の境界、プライバシー、再生検証、現在の制限
 - [`doc/GAME_RECORD_CONTRIBUTION.md`](doc/GAME_RECORD_CONTRIBUTION.md): AI改善用の任意棋譜提供、同意、Worker検証、R2・privacy・運用境界
 - [`doc/JOSEKI_RESEARCH.md`](doc/JOSEKI_RESEARCH.md): 定石研究の方法、全フェーズの実験結果、最終判断をまとめた統合記録
 - [`doc/JOSEKI_RESEARCH_PLAN.md`](doc/JOSEKI_RESEARCH_PLAN.md): 定石研究の研究課題、判定基準、完了条件、実施記録
