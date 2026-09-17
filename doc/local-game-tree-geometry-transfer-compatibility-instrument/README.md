@@ -2,7 +2,7 @@
 
 更新日: 2026-09-17  
 Program position: `Research Generation 4 / G4-01`  
-状態: **`AUTHORIZED / STAGE 0 TECHNICAL ONLY / FRESH COMPATIBILITY NOT AUTHORIZED`**
+状態: **`STAGE 1R PRE-EXECUTION READY / FINAL EXECUTION AUTHORIZATION ABSENT`**
 
 正式Study ID:
 
@@ -30,68 +30,62 @@ Research Generation 3でformal-completeとなったG3-04、G3-07、G3-10由来�
 
 このStudyではformal effect direction、p-value、generalization/counterexample decisionを生成しない。
 
-## G3-12との関係
+## Stage 0
 
-G3-12 `LGTGGC-STUDY1`の修理・再実行ではない。G3-12のStage 1/Stage 2 seed、partial measurement、selected root identityを再利用しない。
+Stage 0 `LGTTCI-S0-TECHNICAL-2026-09-17-v1`は`STAGE0-PASS`で完了した。G3-12で問題になったroot legal width 1のhelper precondition gapを、scientific populationへ進む前に検出・遮断できることをnegative control込みで確認した。
 
-G3-12から引き継ぐのは、**Stage 0でpopulation/helper compatibilityを先に検証しなければならないというtechnical failure lesson**と、既に検証済みのmeasurement implementationだけである。
+## 旧Stage 1の中断
 
-## Stage構成
+旧Stage 1 `LGTTCI-S1-COMPATIBILITY-2026-09-17-v1`はfresh compatibility seedへのアクセス開始後、ローカル長時間processの実行環境が失われ、監査可能な最終artifactを残せなかった。
 
-| Stage | ID | 証拠区分 | 現在状態 |
-| --- | --- | --- | --- |
-| Stage 0 | `LGTTCI-S0-TECHNICAL-2026-09-17-v1` | `TECHNICAL-FIXTURE` | `AUTHORIZED / NOT-EXECUTED` |
-| Stage 1 | `LGTTCI-S1-COMPATIBILITY-2026-09-17-v1` | `FRESH-COMPATIBILITY` | `NOT-AUTHORIZED-NOT-EXECUTED` |
+このため正式状態を`EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION`とし、旧`401...` seed namespaceを全体quarantineした。旧Stage 1を同じseedで再実行しない。
 
-Stage 0はscientific effectを生成しない。Stage 1はStage 0 PASS後の別authorizationがない限りseedへアクセスしない。
+詳細は[`checkpoints/2026-09-17-stage1-execution-interrupted.md`](checkpoints/2026-09-17-stage1-execution-interrupted.md)を参照する。
 
-## 新しいdomain contract
+## Stage 1R再試験
 
-G3-12と同一populationのretryにならないよう、source policyとroot familyを新しく固定する。
+再試験は新しいStage IDで固定した。
 
-```text
-P1 = LGTTCI-P1-UNIFORM-LEGAL
-P2 = LGTTCI-P2-MIN-IMMEDIATE-CAPTURE
-RF1 = LGTTCI-RF1-MID-ANCHOR
-RF2 = LGTTCI-RF2-OFFSET-ANCHOR
-```
+`LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1`
 
-P2は各合法手のauthoritative immediate capture-event seed countをexactに評価し、最小countのmove poolからcanonical ordering上でMulberry32により選択する。geometry、search output、engine evaluation、game outcomeをsource-policy selectionへ使用しない。
+科学的contractのsource policy、root family、RAW identity、search condition、support gateは旧Stage 1から変更していない。変更したのはexecution architectureとfresh evidence namespaceである。
 
-root familyは次で固定する。
+primary fresh namespace:
 
 ```text
-RF1 Namua = exact ply 20 / nonterminal / phase=namua
-RF1 Mtaji = first nonterminal phase=mtaji state at ply >= 40
-RF2 Namua = exact ply 28 / nonterminal / phase=namua
-RF2 Mtaji = exact ply 52 / nonterminal / phase=mtaji
+SFCDF = 40211001..40211384
+SILGM = 40212001..40212768
+GCLD  = 40213001..40213384
 ```
 
-rootが存在しないtrajectoryは事前固定の理由コードで不適格とし、置換rootを探索しない。
+各primaryには`primary + 1000000`のpaired reserveを事前対応させている。reserveはprimaryがdurable `SOURCE-START`後`SOURCE-COMMIT`前にインフラ中断した場合だけ使用でき、結果・support不足・root不足・preflight不適格の救済には使えない。
 
-## protected evidence
+## 耐障害設計
 
-次へアクセスしない。
+Stage 1Rでは、前回の単一長時間processを廃止する。
 
-- G3-11 depth 10のsame-evidence rerun
-- G3-12 Stage 1 consumed seeds
-- G3-12 Stage 2 unread seed blocks
-- G4-10 depth 11
-- unvalidated symmetry/canonicalization
+- slot単位のdurable journalをfresh read前にfsyncする。
+- slot単位でsealed source artifactをatomic commitする。
+- committed slotをresume時に再読しない。
+- 明示的source process failureではreserve禁止。
+- reserve-of-reserveは禁止。
+- fresh read上限1584、infrastructure replacement上限48。
+- 重いdepth-5 preflight、search、continuous geometryはsource acquisition後のseed-free measurementへ分離する。
+- measurementはsealed source artifactだけを読むため、インフラ中断時に安全に再実行できる。
+- 最終aggregationもfresh seedを読まない。
 
-## 最初に読む文書
+## pre-execution readiness
 
-1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在のauthorization状態
-2. [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json) — frozen machine-readable Study contract
-3. [`authorizations/STAGE_0_AUTHORIZATION.json`](authorizations/STAGE_0_AUTHORIZATION.json) — Stage 0の実行境界
-4. [`RESUME_HERE.md`](RESUME_HERE.md) — 次に行う作業
-5. [`../research-program-decisions/2026-09-17-post-rg3-pre-g4-01-authorization-review.md`](../research-program-decisions/2026-09-17-post-rg3-pre-g4-01-authorization-review.md) — authorization review
+technical-only GitHub Actions preflightはrun `35220959149` / job `105200705604`でsuccessした。
 
-## 解釈上の境界
+`authorizations/STAGE_1R_PRE_EXECUTION_BINDING.json`でStage 1R spec、runner、wrapper、source identityをblob SHA固定済みである。
 
-- compatibility PASSはupstream claimのgeneralization確認ではない。
-- root support不足による`NON-ESTIMABLE`はclaimの否定ではない。
-- search ranking compatibilityは最善手の正しさを示さない。
-- engine scoreはgame-theoretic valueまたはBao win probabilityではない。
-- machine-only compatibilityからhuman difficultyを主張しない。
-- G4-01の結果だけで公開AIを変更しない。
+現在は`STAGE1R-PRE-EXECUTION-READY`で停止している。
+
+**`STAGE_1R_EXECUTION_AUTHORIZATION.json`はまだ存在せず、fresh `402...` / `412...` seedへのアクセスは0である。**
+
+## 次の工程
+
+ユーザーが再試験開始を明示した場合のみ、pre-execution bindingを再確認し、final execution authorizationを新規作成してfresh acquisitionを開始する。
+
+`main`への統合はまだ認めない。
