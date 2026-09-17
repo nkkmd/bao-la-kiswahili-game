@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+  "recoveryType": "DOWNSTREAM-ONLY",
+  "sourceRunId": 35224920019,
+  "sourceRunHeadSha": "90aff0561538113c203cbf8efa8977420a19dca1",
+  "recoveryRunId": "35265290422",
+  "recoveryRunHeadSha": "2216c19e52bd0a7ce2680426183c058ecb8fce1c",
+  "freshSeedAccessPerformed": false,
+  "freshWorkflowRerunPerformed": false
+}
