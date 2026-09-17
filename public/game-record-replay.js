@@ -66,6 +66,9 @@
 
   function assertResult(record, finalState) {
     if (!record.result || !record.finalPosition) throw new Error("Bao game record is incomplete");
+    if (finalState.winner !== 0 && finalState.winner !== 1) {
+      throw new Error("Bao game record does not end in a winner");
+    }
     if (record.result.plies !== record.moves.length
       || record.result.winner !== finalState.winner
       || record.result.winnerSide !== (finalState.winner === 0 ? "south" : "north")
@@ -85,6 +88,10 @@
     assertRuleCompatibility(record);
     assertSettings(record);
     if (record.moves.length > MAX_PLIES) throw new Error("Bao game record is too long to replay");
+    if (typeof engine.initialState !== "function"
+      || !samePosition(record.initialPosition, engine.initialState())) {
+      throw new Error("Bao game record initial position mismatch");
+    }
 
     let current = stablePosition(record.initialPosition);
     const states = [clone(current)];
