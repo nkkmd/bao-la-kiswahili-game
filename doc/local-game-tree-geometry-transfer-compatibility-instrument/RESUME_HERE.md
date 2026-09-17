@@ -1,7 +1,7 @@
 # LGTTCI-STUDY1 — 再開位置
 
 更新日: 2026-09-18  
-状態: **`G4-01 COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / REPOSITORY CONSISTENCY AUDIT PASS / MAIN NOT MERGED`**
+状態: **`G4-01 COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED`**
 
 ## 現在地
 
@@ -21,7 +21,7 @@ formal effect generation = 0
 formal generalization decision = false
 formal counterexample decision = false
 repository-wide consistency audit = PASS
-main integration = NOT AUTHORIZED
+main integration = AUTHORIZED BY USER / PR #151
 ```
 
 ## 再開時の読む順序
@@ -50,6 +50,7 @@ main integration = NOT AUTHORIZED
 - canonical result/provenance/attestation: research branchへ保存済み
 - G4-01 closure decision: 記録済み
 - root README・中央索引・Future Agendaを含むrepository-wide consistency audit: `PASS`
+- PR #151による`main`統合: 2026-09-18にユーザー明示承認済み
 
 ## 最終識別子
 
@@ -66,12 +67,9 @@ final artifact digest = sha256:06a7232a423fdf32fce863a938b097fc97fe3f8bf29148b8c
 
 ## 次に行うこと
 
-G4-01の研究そのものとmain統合前の文書整合性監査は完了している。
+G4-01の研究そのものとmain統合前の文書整合性監査は完了し、PR #151による`main`統合も明示承認されている。
 
-次の選択肢は次の2つである。
-
-1. ユーザーの明示指示後にPR #151を`main`へ統合する。
-2. G4-02/G4-03/G4-04のいずれかについて、別途authorization reviewから次研究を開始する。
+統合後に次の研究を進める場合は、G4-02/G4-03/G4-04のいずれかについて別途authorization reviewから開始する。
 
 G4-01の`COMPATIBILITY-ELIGIBLE-ALL`は後続研究の自動authorizationではない。後続Studyごとにfresh evidence boundary、claim、seed、execution contractをprospectiveに固定する必要がある。
 
@@ -82,6 +80,6 @@ G4-01の`COMPATIBILITY-ELIGIBLE-ALL`は後続研究の自動authorizationでは�
 - `COMPATIBILITY-ELIGIBLE-ALL`をgeneralization/effect/counterexample結果として解釈しない。
 - G3-11 depth 10、G3-12 protected evidence、G4-10 depth 11へ無断アクセスしない。
 - public AI変更へ自動的に接続しない。
-- ユーザーの明示指示なしに`main`へ統合しない。
+- G4-01のmain統合承認を後続Studyや公開AI変更の承認へ拡張しない。
 
-現在は、**G4-01研究完了・repository-wide consistency audit PASS・research branch保存済み・main統合待ち**のcheckpointである。
+現在は、**G4-01研究完了・repository-wide consistency audit PASS・PR #151によるmain統合承認済み**のcheckpointである。
