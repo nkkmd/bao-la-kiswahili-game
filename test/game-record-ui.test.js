@@ -38,7 +38,7 @@ test("game record and contribution client remain available offline", () => {
   assert.ok(cachedFiles.includes("./game-record-replay.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution-config.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution.js"));
-  assert.match(serviceWorker, /bao-la-kiswahili-v49/);
+  assert.match(serviceWorker, /bao-la-kiswahili-v50/);
 });
 
 test("save action is created only for a completed game", () => {
