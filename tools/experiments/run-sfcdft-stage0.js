@@ -65,7 +65,7 @@ function chooseComplete(all){
   for(const policyId of[P.P1,P.P2])for(const familyId of[P.RF1,P.RF2])for(const row of all){
     if(row.policyId!==policyId)continue;
     const a=P.selectAnchors(row.p,familyId);
-    if(a.complete&&a.openingPrefixLength===16)return{policyId,familyId,seed:row.seed,replayP:row.p,replayI:row.i,anchorsP:a,anchorsI:I.selectAnchors(row.i,familyId)};
+    if(a.complete&&a.namua&&a.mtaji&&a.namua.openingPrefixLength===16&&a.mtaji.openingPrefixLength===16)return{policyId,familyId,seed:row.seed,replayP:row.p,replayI:row.i,anchorsP:a,anchorsI:I.selectAnchors(row.i,familyId)};
   }
   throw new Error("no complete technical pair available");
 }
@@ -117,7 +117,7 @@ function main(outFile){
         all.push({policyId,seed,p:pr,i:ir});
         for(const familyId of[P.RF1,P.RF2]){
           const pa=P.selectAnchors(pr,familyId),ia=I.selectAnchors(ir,familyId);exact(anchorCore(pa),{familyId:ia.familyId,complete:ia.complete,namua:I.sourceOnly(ia.namua),mtaji:I.sourceOnly(ia.mtaji)},`anchors ${policyId}/${familyId}/${seed}`);
-          if(pa.complete&&pa.openingPrefixLength!==0)familySupport[`${policyId}|${familyId}`]++;
+          if(pa.complete&&pa.namua&&pa.mtaji&&pa.namua.openingPrefixLength===16&&pa.mtaji.openingPrefixLength===16)familySupport[`${policyId}|${familyId}`]++;
         }
       }
       if(byPolicy[P.P1].trajectorySha256!==byPolicy[P.P2].trajectorySha256)policyDistinct++;
