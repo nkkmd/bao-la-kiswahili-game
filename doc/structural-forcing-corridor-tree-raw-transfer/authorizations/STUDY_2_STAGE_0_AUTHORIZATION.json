@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "stageId": "SFCDFT2-S0-TECHNICAL-2026-09-18-v1",
+  "decision": "STAGE0-TECHNICAL-EXECUTION-AUTHORIZED",
+  "authorizedParentHead": "a9752fdaab32e65ebddd0b7ff9a281439422068c",
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeGenerationAuthorized": false,
+  "technicalFixtureNamespace": "49021001..49021256",
+  "blobBindings": {
+    "stage0Spec": {
+      "path": "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_2_STAGE_0_TECHNICAL_SPEC.json",
+      "gitBlobSha": "db7ee58cd71d44aa3a1e211f7f26f28d2e030670"
+    },
+    "production": {
+      "path": "tools/experiments/lib/sfcdft2-production.js",
+      "gitBlobSha": "a21bc32258fab6689fb2cb507a46a3d4642a9565"
+    },
+    "independent": {
+      "path": "tools/experiments/lib/sfcdft2-independent.js",
+      "gitBlobSha": "afb14b4286ec9d5be8d226fc50d7fab7d9f047f9"
+    },
+    "runner": {
+      "path": "tools/experiments/run-sfcdft2-stage0-technical.js",
+      "gitBlobSha": "73184248ad058428d6deff5886a52a49b2a384b9"
+    },
+    "workflow": {
+      "path": ".github/workflows/sfcdft2-stage0-technical.yml",
+      "gitBlobSha": "060a4b6ea123825e92a2e9c9913a1f5c94996516"
+    },
+    "study1FirewallManifest": {
+      "path": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1/MANIFEST.json",
+      "gitBlobSha": "e7ba61bd94fbce7aa7fc804e284974ca3a3ba330"
+    }
+  },
+  "requiredPassConditions": [
+    "short trajectory no-candidate fixture",
+    "long trajectory no-candidate fixture",
+    "complete candidate in all four domains",
+    "production-independent source classification equality",
+    "production-independent endpoint measurement equality on candidate fixtures",
+    "Study1 trajectory/prefix/root/seed collisions rejected",
+    "malformed candidate identity rejected",
+    "scientific seed reads remain zero",
+    "scientific output fields remain absent/false"
+  ],
+  "stage1FreshAccessAuthorizedOnPass": false,
+  "requiredNextReview": "SFCDFT2-S1-PREACCESS-AUTHORIZATION-REVIEW",
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
