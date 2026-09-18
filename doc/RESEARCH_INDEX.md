@@ -2,7 +2,7 @@
 
 更新日: 2026-09-18
 対象: Research Generation 1〜4
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、次のWave A Studyは未承認**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02 authorization reviewはPREREQUISITE-REQUIRED**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、そこから初見向け概要、Final Report、Current Status、Reproducibility Indexへ進める構成に統一しています。
 
@@ -30,7 +30,7 @@
 | Agenda | 計画上の役割 | 現在の状態 |
 | --- | --- | --- |
 | `G4-01` / [`LGTTCI-STUDY1`](local-game-tree-geometry-transfer-compatibility-instrument/) | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL` |
-| `G4-02` | corridor / tree-graph transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
+| `G4-02` | corridor / tree-graph transfer | `PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED` |
 | `G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -44,7 +44,7 @@
 
 G4-01ではSFCDF・SILGM・GCLDの3 familyすべてが`compatible`となり、正式decisionは`COMPATIBILITY-ELIGIBLE-ALL`です。これはcompatibility/readinessの結果であり、G3由来claimのfresh-domain一般化、scientific effect、counterexampleの成立／不成立を確認したものではありません。
 
-次にG4-02、G4-03、G4-04のいずれかを進める場合は、post-G4-01 current-state authorization reviewを先に実施し、各Studyのfresh evidence、formal claim、endpoint、resource ceilingをprospectiveに固定する必要があります。G4-01完了によって自動的にscientific executionが承認されることはありません。
+G4-02は2026-09-18にpost-G4-01 current-state authorization reviewを実施し、`PREREQUISITE-REQUIRED`となりました。G4-01保存記録ではformal heldoutに必要なopening-prefix identity分離を完全には監査できないため、旧seedを再読せずにこのprerequisiteを解消した後、authorization reviewを再実施します。G4-03/G4-04は引き続き個別authorization reviewが必要です。G4-01完了によって自動的にscientific executionが承認されることはありません。
 
 詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md)を参照してください。
 
