@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "firewallId": "G4-02-SFCDFT-STUDY2-IDENTITY-FIREWALL",
+  "sourceStudyId": "SFCDFT-STUDY2",
+  "sourceStageId": "SFCDFT2-S1-COMPATIBILITY-2026-09-18-v1",
+  "sourceRunId": 35345143248,
+  "sourceExecutionHead": "8c84f2cda1a62f812f030ef319341683a4d77e54",
+  "evidenceUse": "IDENTITY-ONLY-FIREWALL",
+  "scientificSeedReplay": false,
+  "scientificEndpointLoaded": false,
+  "sourceArtifactCounts": {
+    "primaryStart": 384,
+    "sealedSource": 382,
+    "deterministicFailure": 2,
+    "pairedReserveStart": 0,
+    "retry": 0,
+    "unresolved": 0
+  },
+  "sourceStatusCounts": {
+    "candidatePairComplete": 293,
+    "noCandidateRootShortage": 89
+  },
+  "failedPrimarySlots": [
+    40411112,
+    40411312
+  ],
+  "forbiddenSeedNamespaces": [
+    "40411001..40411384",
+    "41411001..41411384",
+    "40421001..40421768",
+    "41421001..41421768"
+  ],
+  "identityCounts": {
+    "sourceRecords": 382,
+    "uniqueSourceTrajectorySha256": 380,
+    "uniqueOpeningPrefixSha256": 372,
+    "uniqueRawRootSha256": 657
+  },
+  "identityCoreSha256": "7961d01342e35f3e70f82e5688f585be08ef99827b905dcccf032d285994abfc",
+  "sourceFinalClassification": {
+    "artifactId": 10546781677,
+    "artifactDigest": "sha256:f11a502dcd9e9c273a6f41fb3e8f4ebfb7de12f028e60ad50b884e44cb0de0b6",
+    "fatal": true
+  },
+  "materialization": {
+    "workflowRunId": "35388490684",
+    "workflowRunAttempt": "1",
+    "headSha": "39d0a7c165ad693f19f0add51b8f3e585f601156",
+    "artifactInputOnly": true
+  },
+  "limitations": {
+    "study2TrajectorySemantics": "FULL-TRAJECTORY-TO-FROZEN-MAXPLY-OR-TERMINAL",
+    "study3TrajectorySemantics": "ANCHOR-BOUNDED-DECISION-PREFIX",
+    "fullTrajectoryHashDoesNotProvePrefixDisjointness": true,
+    "study2FailedSlotsHaveNoSealedSourceIdentity": true,
+    "failedSlotsProtectedBySeedNamespaceExclusion": true
+  }
+}
