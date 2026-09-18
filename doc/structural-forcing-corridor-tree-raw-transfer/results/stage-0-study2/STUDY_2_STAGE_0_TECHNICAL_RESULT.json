@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "stageId": "SFCDFT2-S0-TECHNICAL-2026-09-18-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "decision": "STAGE0-PASS",
+  "scientificSeedReads": 0,
+  "scientificOutcomeGenerated": false,
+  "technicalSeedRange": {
+    "seedStart": 49021001,
+    "seedEnd": 49021256,
+    "scanned": 15
+  },
+  "fixtureCoverage": {
+    "shortNoCandidate": {
+      "seed": 49021015,
+      "domainId": "SFCDFT2-D1-P1-RF1",
+      "moveCount": 15,
+      "trajectoryDigest": "37bd0264acf8a1e6b79065cd8063084aedf8d6830d94d83fc5b506a76106285e"
+    },
+    "longNoCandidate": {
+      "seed": 49021001,
+      "domainId": "SFCDFT2-D1-P1-RF1",
+      "moveCount": 29,
+      "trajectoryDigest": "fe6339ae81d62029c0bfbad666ac5df4e829c1abf26d5b9132c0eb71e719dc0f",
+      "openingPrefixDigest": "e351a4582000c7a2e64467521925b853ee4f54d6fbac4f867ec5f6d412b085c7"
+    },
+    "candidatesByDomain": {
+      "SFCDFT2-D4-P2-RF2": {"seed":49021002,"moveCount":240,"endpointProductionIndependentAgreement":true},
+      "SFCDFT2-D2-P1-RF2": {"seed":49021007,"moveCount":63,"endpointProductionIndependentAgreement":true},
+      "SFCDFT2-D3-P2-RF1": {"seed":49021008,"moveCount":86,"endpointProductionIndependentAgreement":true},
+      "SFCDFT2-D1-P1-RF1": {"seed":49021011,"moveCount":55,"endpointProductionIndependentAgreement":true}
+    }
+  },
+  "firewallChecks": {
+    "study1IdentityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430",
+    "trajectoryCount": 375,
+    "openingPrefixCount": 375,
+    "rawRootCount": 660,
+    "knownTrajectoryCollisionRejected": true,
+    "knownOpeningPrefixCollisionRejected": true,
+    "knownRawRootCollisionRejected": true,
+    "knownSeedCollisionRejected": true
+  },
+  "malformedCandidateRejected": true,
+  "forbiddenScientificOutputsGenerated": false,
+  "endpointValuesRetained": false,
+  "pairedEffectDirectionRetained": false,
+  "pValueRetained": false,
+  "generalizationDecisionRetained": false,
+  "counterexampleDecisionRetained": false,
+  "peakRssBytes": 242315264,
+  "deterministicCoreSha256": "e2be9cd0acc8d20d75f3b3d655fba4756699b4038b9cac48f23b5490056a77db",
+  "canonicalExecution": {
+    "githubActionsRunId": 35320865202,
+    "artifactId": 10536936928,
+    "artifactDigest": "sha256:658931990a4b131c2d99d90a5e4596028dc680aa194b6a4722eff7e64bed1920",
+    "resultFileSha256": "b10b4fa5470923e5091c002fe468bf06dc0e06d85435e62a65aeadf70fdbdad1"
+  }
+}
