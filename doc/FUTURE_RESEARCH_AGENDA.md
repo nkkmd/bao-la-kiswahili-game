@@ -46,7 +46,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 
 G4-01 `LGTTCI-STUDY1`は、SFCDF・SILGM・GCLDの3 familyについてfresh-domain transfer研究を行うためのcompatibility/readiness条件を検証し、`COMPATIBILITY-ELIGIBLE-ALL`で完了しました。これはG3由来claimのfresh-domain一般化、effect direction、counterexampleの成立／不成立を示す結果ではありません。
 
-次にG4-02、G4-03、G4-04のいずれかを進める場合は、post-G4-01 current-state authorization reviewを実施し、各Studyのfresh evidence、formal claim、population、endpoint、selection rule、resource ceilingを結果を見る前に固定します。G3-12のrepair、G3-12 Stage 2 seedの流用、G3-11 depth 10の再実行、authorization前のdepth 11 accessは行いません。
+G4-02については2026-09-18にpost-G4-01 current-state authorization reviewを実施し、`PREREQUISITE-REQUIRED`となりました。G4-01保存source recordではRG4共通contractがformal heldoutに要求するopening-prefix identity分離を完全には監査できないため、旧seedを再読せずにこのprerequisiteを解消した後、authorization reviewを再実施します。G4-03、G4-04を進める場合も個別のauthorization reviewが必要です。各Studyのfresh evidence、formal claim、population、endpoint、selection rule、resource ceilingは結果を見る前に固定します。G3-12のrepair、G3-12 Stage 2 seedの流用、G3-11 depth 10の再実行、authorization前のdepth 11 accessは行いません。
 
 ## 2. 今後の優先課題
 
