@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "studyId": "CTGTS-STUDY1",
+  "stageId": "CTGTS-S0-TECHNICAL-2026-09-18-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "statusAtFreeze": "AUTHORIZED-NOT-EXECUTED",
+  "scientificSeedAccess": false,
+  "formalScientificOutcomeAuthorized": false,
+  "technicalSeedNamespace": {
+    "seedStart": 42020001,
+    "seedEnd": 42020064,
+    "count": 64,
+    "scientificUseAuthorized": false
+  },
+  "requiredControls": [
+    "STUDY-SPEC-IDENTITY-PASS",
+    "FROZEN-SCIENTIFIC-SEED-CELL-BALANCE-192-EACH-NO-READ",
+    "P1-P2-TECHNICAL-REPLAY-PRODUCTION-INDEPENDENT-EXACT",
+    "CELL-ASSIGNMENT-PRODUCTION-INDEPENDENT-EXACT",
+    "RF1-RF2-ANCHOR-SELECTION-PRODUCTION-INDEPENDENT-EXACT",
+    "G3-04-EXACT-FRESHNESS-FIREWALL-PASS",
+    "G4-01-TRAJECTORY-BLOOM-PASS",
+    "G4-01-ROOT-BLOOM-PASS",
+    "SFCDF-C1-C6-ENDPOINT-PRODUCTION-INDEPENDENT-EXACT",
+    "EXACT-SIGN-TEST-PRODUCTION-INDEPENDENT-EXACT",
+    "HOLM-FOUR-CELL-PRODUCTION-INDEPENDENT-EXACT",
+    "GENERALIZES-MAPPING-PRODUCTION-INDEPENDENT-EXACT",
+    "COUNTEREXAMPLE-MAPPING-PRODUCTION-INDEPENDENT-EXACT",
+    "NOT-CONFIRMED-MAPPING-PRODUCTION-INDEPENDENT-EXACT",
+    "NON-ESTIMABLE-MAPPING-PRODUCTION-INDEPENDENT-EXACT",
+    "TECHNICAL-INVALID-MAPPING-PRODUCTION-INDEPENDENT-EXACT",
+    "G3-11-DEPTH10-ACCESS-FALSE",
+    "G3-12-REPLAY-ACCESS-FALSE",
+    "G4-01-FRESH-REREAD-FALSE",
+    "G4-10-DEPTH11-ACCESS-FALSE"
+  ],
+  "expectedFormalLabels": [
+    "GENERALIZES-WITHIN-FROZEN-DOMAIN",
+    "COUNTEREXAMPLE-BOUNDARY-DETECTED",
+    "NOT-CONFIRMED",
+    "NON-ESTIMABLE",
+    "TECHNICAL-INVALID"
+  ],
+  "stage0Ceilings": {
+    "elapsedMs": 600000,
+    "peakRssBytes": 1610612736,
+    "resultArtifactBytes": 16777216
+  },
+  "passRule": "all required controls true and no protected/fresh scientific evidence access",
+  "failRule": "otherwise STAGE0-TECHNICAL-INVALID",
+  "nextStageAutomaticAuthorization": false
+}
