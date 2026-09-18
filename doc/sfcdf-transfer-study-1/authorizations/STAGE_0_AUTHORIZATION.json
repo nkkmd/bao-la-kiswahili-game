@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDF-TRANSFER-STUDY1",
+  "stageId": "SFCDFT-S0-TECHNICAL-2026-09-18-v1",
+  "decision": "SFCDFT-STAGE0-AUTHORIZED",
+  "authorizationDate": "2026-09-18",
+  "studySpecPath": "doc/sfcdf-transfer-study-1/prereg/STUDY_1_SPEC.json",
+  "studySpecGitBlobSha": "da6273335cf456c81fac05bbd6dfeae24c15a229",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "technicalFixtureSeedStart": 44420001,
+  "technicalFixtureSeedEnd": 44420064,
+  "scientificUseOfFixtureSeedsAuthorized": false,
+  "freshStage1SeedAccessAuthorized": false,
+  "freshStage2SeedAccessAuthorized": false,
+  "forbiddenFreshRanges": [
+    {"start":40421001,"end":40421384},
+    {"start":40422001,"end":40422768}
+  ],
+  "scientificEffectAuthorized": false,
+  "pValueFromScientificPopulationAuthorized": false,
+  "formalDecisionAuthorized": false,
+  "implementationMayBeCreatedOnResearchBranch": true,
+  "technicalGitHubActionsExecutionAuthorized": true,
+  "heavyScientificGitHubActionsExecutionAuthorized": false,
+  "protectedBoundaries": {
+    "g3_11Depth10Rerun": false,
+    "g3_12RepairReplayOrStage2Access": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  }
+}
