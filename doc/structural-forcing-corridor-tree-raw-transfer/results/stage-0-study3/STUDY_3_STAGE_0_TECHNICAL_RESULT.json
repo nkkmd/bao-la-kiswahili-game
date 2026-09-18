@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY3",
+  "stageId": "SFCDFT3-S0-TECHNICAL-2026-09-19-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "decision": "STAGE0-PASS",
+  "scientificSeedReads": 0,
+  "scientificOutcomeGenerated": false,
+  "technicalSeedRange": {
+    "start": 49031001,
+    "end": 49031256
+  },
+  "firewallBindings": {
+    "study1IdentityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430",
+    "study2IdentityCoreSha256": "7961d01342e35f3e70f82e5688f585be08ef99827b905dcccf032d285994abfc",
+    "study2SourceRecords": 382,
+    "study2TrajectoryCount": 380,
+    "study2OpeningPrefixCount": 372,
+    "study2RawRootCount": 657
+  },
+  "scan": {
+    "seedsScanned": 16,
+    "statusCounts": {
+      "NO-CANDIDATE-ROOT-SHORTAGE": 5,
+      "CANDIDATE-PAIR-COMPLETE": 11
+    },
+    "candidateByDomain": {
+      "SFCDFT3-D3-P2-RF1": {
+        "seed": 49031002,
+        "domainId": "SFCDFT3-D3-P2-RF1",
+        "candidateStatus": "CANDIDATE-PAIR-COMPLETE",
+        "stopReason": "PAIR-COMPLETE",
+        "moveCount": 44,
+        "pairComplete": true,
+        "scientificTerminal": false,
+        "engineGuard": null,
+        "openingPrefixAvailable": true,
+        "anchorPlies": {"namua": 20, "mtaji": 44}
+      },
+      "SFCDFT3-D2-P1-RF2": {
+        "seed": 49031003,
+        "domainId": "SFCDFT3-D2-P1-RF2",
+        "candidateStatus": "CANDIDATE-PAIR-COMPLETE",
+        "stopReason": "PAIR-COMPLETE",
+        "moveCount": 52,
+        "pairComplete": true,
+        "scientificTerminal": false,
+        "engineGuard": null,
+        "openingPrefixAvailable": true,
+        "anchorPlies": {"namua": 28, "mtaji": 52}
+      },
+      "SFCDFT3-D1-P1-RF1": {
+        "seed": 49031007,
+        "domainId": "SFCDFT3-D1-P1-RF1",
+        "candidateStatus": "CANDIDATE-PAIR-COMPLETE",
+        "stopReason": "PAIR-COMPLETE",
+        "moveCount": 44,
+        "pairComplete": true,
+        "scientificTerminal": false,
+        "engineGuard": null,
+        "openingPrefixAvailable": true,
+        "anchorPlies": {"namua": 20, "mtaji": 44}
+      },
+      "SFCDFT3-D4-P2-RF2": {
+        "seed": 49031016,
+        "domainId": "SFCDFT3-D4-P2-RF2",
+        "candidateStatus": "CANDIDATE-PAIR-COMPLETE",
+        "stopReason": "PAIR-COMPLETE",
+        "moveCount": 52,
+        "pairComplete": true,
+        "scientificTerminal": false,
+        "engineGuard": null,
+        "openingPrefixAvailable": true,
+        "anchorPlies": {"namua": 28, "mtaji": 52}
+      }
+    },
+    "firstRootShortage": {
+      "seed": 49031001,
+      "domainId": "SFCDFT3-D1-P1-RF1",
+      "candidateStatus": "NO-CANDIDATE-ROOT-SHORTAGE",
+      "stopReason": "NATURAL-TERMINAL",
+      "moveCount": 39,
+      "pairComplete": false,
+      "scientificTerminal": true,
+      "engineGuard": null,
+      "openingPrefixAvailable": true,
+      "anchorPlies": {"namua": 20, "mtaji": null}
+    },
+    "firstEngineGuard": null
+  },
+  "syntheticFixtures": {
+    "engineGuard": {
+      "seed": 49031001,
+      "domainId": "SFCDFT3-D1-P1-RF1",
+      "candidateStatus": "NO-CANDIDATE-ENGINE-GUARD-CENSORING",
+      "stopReason": "ENGINE-GUARD",
+      "moveCount": 1,
+      "pairComplete": false,
+      "scientificTerminal": false,
+      "engineGuard": {"kind": "relay-limit", "ply": 1},
+      "openingPrefixAvailable": false,
+      "anchorPlies": {"namua": null, "mtaji": null}
+    },
+    "naturalTerminal": {
+      "seed": 49031001,
+      "domainId": "SFCDFT3-D1-P1-RF1",
+      "candidateStatus": "NO-CANDIDATE-ROOT-SHORTAGE",
+      "stopReason": "NATURAL-TERMINAL",
+      "moveCount": 1,
+      "pairComplete": false,
+      "scientificTerminal": true,
+      "engineGuard": null,
+      "openingPrefixAvailable": false,
+      "anchorPlies": {"namua": null, "mtaji": null}
+    },
+    "maxPly": {
+      "seed": 49031001,
+      "domainId": "SFCDFT3-D1-P1-RF1",
+      "candidateStatus": "NO-CANDIDATE-ROOT-SHORTAGE",
+      "stopReason": "MAX-SOURCE-PLY",
+      "moveCount": 5,
+      "pairComplete": false,
+      "scientificTerminal": false,
+      "engineGuard": null,
+      "openingPrefixAvailable": false,
+      "anchorPlies": {"namua": null, "mtaji": null}
+    }
+  },
+  "fixtures": {
+    "candidateStopsAtPairComplete": true,
+    "postCandidateContinuationCountZero": true,
+    "naturalTerminalIncompleteIsRootShortage": true,
+    "maxPlyIncompleteIsRootShortage": true,
+    "relayLimitBeforeCompleteIsEngineGuardCensoring": true,
+    "relayLimitWinnerNotScientificTerminal": true,
+    "candidateFirst16PrefixRequired": true,
+    "productionIndependentDecisionPrefixExact": true,
+    "study1IdentityCollisionRejected": true,
+    "study2IdentityCollisionRejected": true,
+    "malformedIdentityFailClosed": true,
+    "scientificEffectOutputAbsent": true
+  },
+  "stage1ScientificSeedAccessAuthorized": false,
+  "stage2ScientificSeedAccessAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "deterministicCoreSha256": "d823461f553da8fc8bab27845c38bfcb7552e5acc771968e6e212a0dcd4294ff",
+  "workflowProvenance": {
+    "runId": "35389371946",
+    "runAttempt": "1",
+    "headSha": "f9cae36f33437abb7937f77ab7bac0bba063102a"
+  }
+}
