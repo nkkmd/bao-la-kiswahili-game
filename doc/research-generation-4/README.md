@@ -23,7 +23,7 @@ Planning merge commit = 692bcb40f52c097ca89bf7fea842b6f77fbdf19e
 Core agenda = G4-01..G4-10
 Independent tracks = G4-P01, G4-H01
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
-G4-02 = NOT AUTHORIZED
+G4-02 = PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED
 G4-03 = NOT AUTHORIZED
 G4-04 = NOT AUTHORIZED
 Depth 11 = NOT AUTHORIZED / NOT ACCESSED
@@ -34,6 +34,8 @@ G4-01 main integration = AUTHORIZED BY USER / PR #151
 ## G4-01の到達点
 
 G4-01は`LGTTCI-STUDY1`として実施し、claim-transfer compatibility instrumentをscientific effectから分離して検証した。
+
+G4-02 authorization reviewは2026-09-18に実施し、formal stateを**`PREREQUISITE-REQUIRED`**とした。SFCDF compatibilityはPASSしているが、RG4共通contractがformal heldoutに要求するopening-prefix identity分離をG4-01保存source recordだけでは完全に監査できない。旧G4-01 seedの再読・fresh workflow rerunは行わず、prerequisite解消後にauthorization reviewを再実施する。
 
 Stage 0は`STAGE0-PASS`。旧Stage 1は実行環境消失のためfail-closedで終了し、旧`401...` namespaceをquarantineした。Stage 1Rは新しい`402...` primary namespaceでfresh acquisitionを一度だけ実行し、1536/1536 source evidenceを取得した。
 
