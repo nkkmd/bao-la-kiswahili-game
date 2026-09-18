@@ -1,0 +1,111 @@
+name: SFCDFT2 Stage 1 pre-execution preflight
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study2-prereg
+    paths:
+      - 'doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_2_STAGE_1_PRE_EXECUTION_BINDING.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sfcdft2-stage1-preflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require final Study2 scientific authorization to remain absent
+        run: test ! -f doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_2_STAGE_1_EXECUTION_AUTHORIZATION.json
+      - name: Syntax check Study2 Stage 1 sources
+        run: |
+          node --check tools/experiments/run-sfcdft2-stage1-source-unit.js
+          node --check tools/experiments/generate-sfcdft2-stage1-actions-matrices.js
+          node --check tools/experiments/classify-sfcdft2-stage1-actions-artifacts.js
+          node --check tools/experiments/bundle-sfcdft2-stage1-source.js
+          node --check tools/experiments/run-sfcdft2-stage1-measurement-task.js
+          node --check tools/experiments/run-sfcdft2-stage1-aggregate.js
+          node --check tools/experiments/verify-sfcdft2-stage1-actions-authorization.js
+      - name: Validate Study2 identity, Stage0 prerequisite, and frozen blob bindings
+        run: |
+          mkdir -p artifacts/sfcdft2-stage1-preflight
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const spec=require('./doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_2_STAGE_1_COMPATIBILITY_SPEC.json');
+          const s0=require('./doc/structural-forcing-corridor-tree-raw-transfer/results/stage-0-study2/STUDY_2_STAGE_0_TECHNICAL_RESULT.json');
+          const binding=require('./doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_2_STAGE_1_PRE_EXECUTION_BINDING.json');
+          const need=(x,m)=>{if(!x)throw new Error(m)};
+          const blob=rel=>{const b=fs.readFileSync(rel),h=Buffer.from(`blob ${b.length}\0`);return crypto.createHash('sha1').update(h).update(b).digest('hex')};
+          need(spec.studyId==='SFCDFT-STUDY2'&&spec.stageId==='SFCDFT2-S1-COMPATIBILITY-2026-09-18-v1','spec identity mismatch');
+          need(spec.statusAtFreeze==='FROZEN-PENDING-PREACCESS-AUTHORIZATION','spec freeze status mismatch');
+          need(spec.measurement.freshSeedReadAuthorized===false,'spec unexpectedly authorizes fresh measurement seed reads');
+          need(s0.studyId==='SFCDFT-STUDY2'&&s0.decision==='STAGE0-PASS'&&s0.scientificSeedReads===0,'Stage0 prerequisite mismatch');
+          need(s0.deterministicCoreSha256===spec.prerequisiteStage0.deterministicCoreSha256,'Stage0 core mismatch');
+          need(binding.studyId===spec.studyId&&binding.stageId===spec.stageId&&binding.status==='FROZEN-PRE-EXECUTION','binding identity/status mismatch');
+          for(const [rel,expected] of Object.entries(binding.boundGitBlobs)){need(fs.existsSync(rel),`bound file missing ${rel}`);need(blob(rel)===expected,`bound blob mismatch ${rel}`)}
+          const report={schemaVersion:1,studyId:spec.studyId,stageId:spec.stageId,decision:'PREFLIGHT-BINDINGS-PASS',freshScientificSeedReads:0,boundFileCount:Object.keys(binding.boundGitBlobs).length,stage0Core:s0.deterministicCoreSha256};
+          fs.writeFileSync('artifacts/sfcdft2-stage1-preflight/binding-report.json',JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify(report));
+          NODE
+      - name: Validate frozen Study2 matrices
+        run: node tools/experiments/generate-sfcdft2-stage1-actions-matrices.js
+      - name: Technical fixture smoke for short no-candidate serializer
+        run: |
+          node tools/experiments/run-sfcdft2-stage1-source-unit.js \
+            --technical-fixture \
+            --slot-seed 49021015 \
+            --effective-seed 49021015 \
+            --output artifacts/sfcdft2-stage1-preflight/short-no-candidate.json
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft2-stage1-preflight/short-no-candidate.json');
+          if(r.evidenceClass!=='TECHNICAL-FIXTURE'||r.candidateStatus!=='NO-CANDIDATE-ROOT-SHORTAGE') throw new Error('short no-candidate classification mismatch');
+          if(r.moveCount>=16||r.openingPrefixAvailable!==false||r.openingPrefixSha256!==null||r.openingPrefixLength!==r.moveCount) throw new Error('short no-candidate serialization mismatch');
+          NODE
+      - name: Technical fixture smoke for complete candidate serializer
+        run: |
+          node tools/experiments/run-sfcdft2-stage1-source-unit.js \
+            --technical-fixture \
+            --slot-seed 49021011 \
+            --effective-seed 49021011 \
+            --output artifacts/sfcdft2-stage1-preflight/complete-candidate.json
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft2-stage1-preflight/complete-candidate.json');
+          if(r.candidateStatus!=='CANDIDATE-PAIR-COMPLETE'||r.pairComplete!==true) throw new Error('candidate fixture mismatch');
+          if(r.openingPrefixAvailable!==true||r.openingPrefixLength!==16||typeof r.openingPrefixSha256!=='string') throw new Error('candidate opening-prefix contract mismatch');
+          NODE
+      - name: Artifact classifier synthetic completeness smoke
+        run: |
+          node - <<'NODE' > artifact-names.txt
+          for(let s=40411001;s<=40411384;s++){
+            console.log(`sfcdft2-s1-primary-start-${s}`);
+            console.log(`sfcdft2-s1-source-${s}`);
+          }
+          NODE
+          node tools/experiments/classify-sfcdft2-stage1-actions-artifacts.js --mode final --names artifact-names.txt --summary artifacts/sfcdft2-stage1-preflight/classifier-report.json
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft2-stage1-preflight/classifier-report.json');
+          if(r.fatal!==false||r.sourceCount!==384||r.primaryStartCount!==384) throw new Error('Study2 classifier smoke failed');
+          NODE
+      - name: Assert one-shot workflow trigger and namespace separation
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q "research/g4-02-sfcdft-study2-prereg" .github/workflows/sfcdft2-stage1-github-actions.yml
+          grep -q "STUDY_2_STAGE_1_EXECUTION_AUTHORIZATION.json" .github/workflows/sfcdft2-stage1-github-actions.yml
+          grep -q "sfcdft2-stage1-acquire-slot" .github/workflows/sfcdft2-stage1-github-actions.yml
+          ! grep -q "40311001" tools/experiments/run-sfcdft2-stage1-source-unit.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sfcdft2-stage1-preflight-${{ github.run_id }}
+          path: artifacts/sfcdft2-stage1-preflight
+          if-no-files-found: error
+          retention-days: 30
