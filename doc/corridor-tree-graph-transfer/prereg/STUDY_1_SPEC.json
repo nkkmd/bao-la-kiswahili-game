@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "programPosition": "Research Generation 4 / G4-02",
+  "agendaId": "G4-02",
+  "studyId": "CTGTS-STUDY1",
+  "titles": {
+    "en": "Corridor / Tree-Graph Transfer Study 1 — Prospective claim-wise transfer and counterexample-boundary validation of G3-04 C1/C6 across fresh phase, root-family, and source-policy domains",
+    "ja": "Baoのcorridor・tree/graph phase structureの一般化可能範囲と反例領域 — G3-04 C1・C6をfresh phase、root family、source policyへ移すclaim別検証"
+  },
+  "authorization": {
+    "decision": "G4-02-AUTHORIZED",
+    "reviewPath": "doc/research-program-decisions/2026-09-18-post-prerequisite-g4-02-authorization-review.md",
+    "freshnessPrerequisitePath": "doc/research-program-decisions/2026-09-18-g4-02-freshness-methodology-prerequisite-review.md",
+    "scope": "STUDY-DEFINITION-PREREGISTRATION-AND-STAGEWISE-AUTHORIZATION",
+    "freshScientificSeedReadAuthorizedByThisArtifact": false
+  },
+  "sourceMain": {
+    "repository": "nkkmd/bao-la-kiswahili-game",
+    "headSha": "c5689d70cd017171e7738140ba9186a117f732f1",
+    "researchBranch": "research/g4-02-corridor-tree-graph-transfer"
+  },
+  "historicalClaims": [
+    {
+      "claimId": "CTGTS-C1-UNIT-WIDTH-OCCUPANCY-TRANSFER",
+      "upstreamStudy": "SFCDF-STUDY1 / G3-04",
+      "upstreamCandidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "historicalDecision": "CONFIRMED",
+      "historicalDirection": "MTAJI-GREATER",
+      "endpointDefinition": "identical to frozen G3-04 C1 at RAW-only relative depth 5"
+    },
+    {
+      "claimId": "CTGTS-C6-CUMULATIVE-TREE-RAW-RATIO-TRANSFER",
+      "upstreamStudy": "SFCDF-STUDY1 / G3-04",
+      "upstreamCandidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "historicalDecision": "CONFIRMED",
+      "historicalDirection": "NAMUA-GREATER",
+      "endpointDefinition": "identical to frozen G3-04 C6 at RAW-only relative depth 5"
+    }
+  ],
+  "claimIndependence": {
+    "c1AndC6Separate": true,
+    "combinedLatentConstructAuthorized": false,
+    "crossClaimPopulationMutationAfterAnyOutcome": false,
+    "crossClaimThresholdMutationAfterAnyOutcome": false,
+    "crossClaimSeedMutationAfterAnyOutcome": false,
+    "crossClaimResourceMutationAfterAnyOutcome": false
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentityFields": [
+      "pits",
+      "reserve",
+      "houseOwned",
+      "player",
+      "phase",
+      "winner",
+      "pending"
+    ],
+    "moveIdentityFields": [
+      "type",
+      "phase",
+      "row",
+      "index",
+      "direction",
+      "side",
+      "houseChoice",
+      "houseTwo"
+    ],
+    "validatedTransformSet": [],
+    "symmetryCanonicalizationAuthorized": false,
+    "relativeDepth": 5,
+    "treeOccurrenceAndRawGraphStateDistinct": true
+  },
+  "transferDomain": {
+    "sourcePolicies": [
+      {
+        "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+        "assignment": "seed mod 4 in {1,3}",
+        "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+        "prng": "MULBERRY32",
+        "selection": "floor(u * legalMoveCount) from all legal moves"
+      },
+      {
+        "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+        "assignment": "seed mod 4 in {0,2}",
+        "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+        "prng": "MULBERRY32",
+        "selection": "retain legal moves with minimum authoritative immediate capture-event seed count, then floor(u * poolCount)"
+      }
+    ],
+    "rootFamilies": [
+      {
+        "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+        "assignment": "seed mod 4 in {0,1}",
+        "namuaRoot": "exact ply 20 / nonterminal / phase=namua",
+        "mtajiRoot": "first nonterminal phase=mtaji state at ply >=40"
+      },
+      {
+        "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR",
+        "assignment": "seed mod 4 in {2,3}",
+        "namuaRoot": "exact ply 28 / nonterminal / phase=namua",
+        "mtajiRoot": "exact ply 52 / nonterminal / phase=mtaji"
+      }
+    ],
+    "cells": [
+      {
+        "cellId": "CTGTS-CELL-P1-RF1",
+        "seedModulo4": 1,
+        "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+        "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"
+      },
+      {
+        "cellId": "CTGTS-CELL-P1-RF2",
+        "seedModulo4": 3,
+        "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+        "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"
+      },
+      {
+        "cellId": "CTGTS-CELL-P2-RF1",
+        "seedModulo4": 0,
+        "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+        "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"
+      },
+      {
+        "cellId": "CTGTS-CELL-P2-RF2",
+        "seedModulo4": 2,
+        "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+        "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"
+      }
+    ],
+    "sourceTrajectoryMayContributeToMultipleCells": false,
+    "targetPairsPerCell": 24,
+    "totalTargetPairs": 96,
+    "totalTargetRoots": 192
+  },
+  "experimentalUnit": {
+    "unit": "one fresh source trajectory assigned prospectively to exactly one transfer cell and contributing one paired Namua/Mtaji root pair",
+    "pairedDifference": "Mtaji endpoint minus Namua endpoint",
+    "rawPlyAsIndependentUnit": false
+  },
+  "freshSeedBlock": {
+    "statusAtFreeze": "RESERVED-NOT-ACCESSED",
+    "seedStart": 42021001,
+    "seedEnd": 42021768,
+    "count": 768,
+    "seedsPerCellBeforeEligibility": 192,
+    "seedExtensionAuthorized": false,
+    "seedReplacementAuthorized": false,
+    "reserveSeedBlock": null,
+    "maxScientificSeedReads": 768
+  },
+  "freshnessFirewall": {
+    "prerequisiteManifest": "doc/research-generation-4/g4-02-prerequisites/FRESHNESS_FIREWALL_MANIFEST.json",
+    "verifier": "tools/experiments/verify-g4-02-freshness-firewall.js",
+    "g304": {
+      "requireExactSeedNamespaceSeparation": true,
+      "requireTrajectorySeparation": true,
+      "requireOpeningPrefixSeparation": true,
+      "requireRawRootSeparation": true
+    },
+    "g401Compatibility": {
+      "requireSeedSeparation": true,
+      "requireTrajectoryBloomNegative": true,
+      "requireRawRootBloomNegative": true,
+      "requireOpeningPrefixSeparation": false,
+      "openingPrefixLimitationMustBeReported": true,
+      "scientificOutcomeReuseAuthorized": false
+    },
+    "withinStudy": {
+      "duplicateTrajectoryAcrossSelectedPopulationAuthorized": false,
+      "duplicateRawRootAcrossSelectedPopulationAuthorized": false,
+      "duplicateOpeningPrefixAcrossSelectedPopulationAuthorized": false
+    }
+  },
+  "sourceIdentity": {
+    "trajectorySha256": "SHA-256 of canonical move identity keys joined by newline for the complete generated source trajectory through stop/terminal/maxSourcePly",
+    "openingPrefixSha256": "SHA-256 of first min(16,pathLength) canonical move identity keys joined by newline",
+    "openingPrefixLength": 16
+  },
+  "stageStructure": [
+    {
+      "stageId": "CTGTS-S0-TECHNICAL-2026-09-18-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificSeedAccess": false,
+      "scientificOutcomeAuthorized": false,
+      "statusAtFreeze": "AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "CTGTS-S1-FORMAL-SOURCE-2026-09-18-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT-SOURCE",
+      "freshScientificSeedAccess": true,
+      "scientificEndpointMeasurementAuthorized": false,
+      "requiresSeparateAuthorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "CTGTS-S2-FORMAL-MEASUREMENT-2026-09-18-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT-DERIVED-MEASUREMENT",
+      "freshScientificSeedAccess": false,
+      "requiresSealedStage1Population": true,
+      "requiresSeparateAuthorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    }
+  ],
+  "sourceAcquisition": {
+    "maxSourcePly": 80,
+    "readAllReservedSeedsExactlyOnce": true,
+    "endpointComputationDuringSourceAcquisition": false,
+    "perSeedDurableStartBeforeRead": true,
+    "perSeedDurableSourceAfterSuccess": true,
+    "automaticRerun": false,
+    "ambiguousReadWithoutSource": "TECHNICAL-INVALID",
+    "missingSourceWithoutStart": "one continuation attempt for provably unread seed only; otherwise TECHNICAL-INVALID",
+    "continuationDoesNotAuthorizeRereadOfAnyStartedSeed": true
+  },
+  "selectionRule": {
+    "chronology": "after complete source acquisition and freshness classification, before C1/C6 endpoint measurement",
+    "pairEligibility": [
+      "assigned root-family pair complete",
+      "G3-04 exact freshness firewall PASS",
+      "G4-01 scoped freshness firewall PASS",
+      "within-study trajectory/root/opening-prefix uniqueness PASS",
+      "bounded preflight resource eligibility PASS for both roots"
+    ],
+    "selectionKey": "SHA-256('CTGTS-S1|cellId|seed|trajectorySha256|openingPrefixSha256|namuaRawSha256|mtajiRawSha256')",
+    "order": "ascending selectionKey",
+    "select": "first 24 eligible pairs per cell",
+    "replacementAfterSelectionAuthorized": false,
+    "favorableSubgroupSelectionAuthorized": false,
+    "supportFailure": "NON-ESTIMABLE"
+  },
+  "endpoints": {
+    "c1": {
+      "candidateId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "numerator": "sum depth 0..5 unitWidthStateCount",
+      "denominator": "sum depth 0..5 unique RAW-state presences with reply width > 0",
+      "terminalWidthZeroExcluded": true,
+      "denominatorZero": "undefined"
+    },
+    "c6": {
+      "candidateId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "numerator": "sum depth 0..5 tree node occurrences",
+      "denominator": "global distinct RAW states across depth 0..5",
+      "rootIncludedInBoth": true
+    },
+    "arithmetic": "EXACT INTEGER OR REDUCED RATIONAL",
+    "tolerance": 0,
+    "magnitudeThreshold": null
+  },
+  "estimability": {
+    "populationGate": "24 selected pairs in every one of four cells",
+    "claimCoveragePerCell": "24/24 defined paired differences",
+    "nonZeroGatePerClaimPerCell": "3 * nonZeroCount >= 2 * comparableCount",
+    "dominantDirectionTie": "NOT-CONFIRMED if otherwise estimable",
+    "resourceShortfallWithoutIntegrityFailure": "NON-ESTIMABLE",
+    "populationShortfallWithoutIntegrityFailure": "NON-ESTIMABLE"
+  },
+  "inference": {
+    "test": "exact two-sided sign test on nonzero paired differences",
+    "zeroDifferencesExcludedFromN": true,
+    "totalFamilyWiseAlpha": "1/20",
+    "claimFamilySplit": {
+      "C1": "1/40",
+      "C6": "1/40"
+    },
+    "multipleTestingWithinEachClaim": "Holm-Bonferroni across four frozen transfer cells",
+    "holmThresholdsByRank": [
+      "1/160",
+      "1/120",
+      "1/80",
+      "1/40"
+    ],
+    "cellDirectionLabels": [
+      "HISTORICAL-DIRECTION",
+      "OPPOSITE-DIRECTION",
+      "TIE"
+    ],
+    "noCrossClaimAdaptiveTesting": true
+  },
+  "formalDecisionMapping": {
+    "perClaim": {
+      "GENERALIZES-WITHIN-FROZEN-DOMAIN": "all four cells estimable and Holm-significant in the frozen historical direction, with no opposite-direction significant cell",
+      "COUNTEREXAMPLE-BOUNDARY-DETECTED": "all required technical/population gates valid and at least one frozen cell is Holm-significant in the opposite direction",
+      "NOT-CONFIRMED": "all four cells estimable, no significant opposite-direction cell, but fewer than four cells Holm-confirm the historical direction",
+      "NON-ESTIMABLE": "one or more required cells fail frozen support/coverage/nonzero/resource estimability without technical integrity failure",
+      "TECHNICAL-INVALID": "mandatory provenance, identity, implementation-agreement, execution-count, protected-evidence, or post-freeze integrity gate fails"
+    },
+    "claimPriority": [
+      "TECHNICAL-INVALID",
+      "NON-ESTIMABLE",
+      "COUNTEREXAMPLE-BOUNDARY-DETECTED",
+      "GENERALIZES-WITHIN-FROZEN-DOMAIN",
+      "NOT-CONFIRMED"
+    ],
+    "studyLevel": "report C1 and C6 decisions separately; no omnibus scientific winner or combined latent label"
+  },
+  "independentVerification": {
+    "productionRawGeometry": "tools/experiments/lib/lgtgmiv-stage1-production.js",
+    "independentRawGeometry": "tools/experiments/lib/lgtgmiv-stage1-independent.js",
+    "requiredRootMeasurementAgreement": "canonical scientific JSON SHA-256 exact equality",
+    "formalAggregation": "production and independent aggregation implementations must independently reproduce paired signs, exact p-values, Holm decisions, and claim mapping",
+    "sharedScientificAggregationLogicAuthorized": false
+  },
+  "resourceCeilings": {
+    "perRoot": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxSummedTreeNodeOccurrences": 1000000000,
+      "elapsedMs": 180000,
+      "peakRssBytes": 4294967296,
+      "rootArtifactBytes": 67108864
+    },
+    "stage0": {
+      "elapsedMs": 600000,
+      "peakRssBytes": 1610612736,
+      "resultArtifactBytes": 16777216
+    },
+    "stage1": {
+      "maxSourcePly": 80,
+      "maxScientificSeedReads": 768,
+      "maxFreshSourceArtifactBytes": 134217728,
+      "githubActionsMaxParallelFreshJobs": 12
+    },
+    "stage2": {
+      "measurementTaskCount": 12,
+      "pairsPerMeasurementTask": 8,
+      "rootsPerMeasurementTask": 16,
+      "perTaskElapsedMs": 7200000,
+      "perTaskPeakRssBytes": 4294967296,
+      "finalResultArtifactBytes": 67108864
+    }
+  },
+  "stoppingRule": {
+    "sourceAcquisition": "attempt the frozen 768-seed block only; no extension",
+    "selection": "after all valid source identities are available, select by frozen selectionKey; no outcome-driven stopping",
+    "measurement": "measure the sealed 96-pair population only",
+    "resourceCutoff": "map to NON-ESTIMABLE unless an integrity/technical condition requires TECHNICAL-INVALID"
+  },
+  "noRescue": {
+    "afterAnyFreshSeedRead": [
+      "seed extension",
+      "seed replacement",
+      "source-policy replacement",
+      "root-family replacement",
+      "cell dropping",
+      "target-pair reduction",
+      "freshness gate relaxation",
+      "preflight gate relaxation",
+      "endpoint redefinition",
+      "nonzero gate relaxation",
+      "alpha or multiple-testing change",
+      "resource ceiling increase based on observed evidence",
+      "favorable subgroup rescue"
+    ],
+    "afterAnyScientificEndpointMeasurement": [
+      "claim direction change",
+      "cell redefinition",
+      "rerun with changed implementation on same source to rescue outcome"
+    ]
+  },
+  "durableEvidence": {
+    "executionRoute": "GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE",
+    "sourceArtifactRetentionDays": 90,
+    "stage1ClosureRequiresRepositoryMirror": [
+      "sealed 96-pair formal source population including root states and identity fields",
+      "full 768-seed identity/selection audit with reason codes and no endpoint values",
+      "artifact/run/digest attestation"
+    ],
+    "stage2CanRunFromRepositoryMirroredSealedPopulationWithoutFreshSeedRead": true,
+    "closureBeforeDurableMirrorAuthorized": false
+  },
+  "technicalInvalidConditions": [
+    "frozen engine/helper/blob binding mismatch",
+    "freshness firewall verifier failure",
+    "G3-04 or G4-01 forbidden identity overlap admitted into selected population",
+    "production/independent scientific measurement mismatch",
+    "unauthorized fresh seed reread",
+    "START artifact without durable source artifact for a read seed",
+    "post-freeze contract mutation after fresh access",
+    "protected G3-11 depth-10 rerun",
+    "G3-12 replay or Stage-2 seed use",
+    "G4-01 fresh source reread/rerun",
+    "G4-10 depth-11 access",
+    "required durable canonical artifact loss after fresh access"
+  ],
+  "protectedBoundaries": {
+    "g304RepairOrRerun": false,
+    "g311Depth10Rerun": false,
+    "g312RepairOrReplay": false,
+    "g312Stage2SeedReuse": false,
+    "g401Old401NamespaceReuse": false,
+    "g401Stage1rSourceReread": false,
+    "g401FullFreshWorkflowRerun": false,
+    "g410Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "interpretationBoundaries": [
+    "no whole-Bao universal law",
+    "no game-theoretic forcing claim",
+    "no best-move clarity or search-ease interpretation",
+    "no human difficulty or expertise interpretation",
+    "no engine-score-as-value interpretation",
+    "no public-AI engineering implication",
+    "G4-01 opening-prefix strict independence from compatibility evidence remains unverified under the scoped amendment"
+  ]
+}
