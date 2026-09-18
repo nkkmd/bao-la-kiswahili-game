@@ -2,7 +2,7 @@
 
 作成日: 2026-09-18  
 Amendment ID: `RG4-MA-001-G4-02-LEGACY-COMPATIBILITY-FRESHNESS`  
-状態: **`ACCEPTED / PROSPECTIVE-BEFORE-G4-02-SCIENTIFIC-SEED-ACCESS`**  
+状態: **`ACCEPTED / PREREQUISITE-MATERIALIZED-BEFORE-G4-02-SCIENTIFIC-SEED-ACCESS`**  
 対象: G4-02 SFCDF transfer moduleのみ  
 基準main: `c5689d70cd017171e7738140ba9186a117f732f1`  
 作業branch: `research/g4-02-authorization-review-20260918`
@@ -26,7 +26,7 @@ G4-01 `LGTTCI-STUDY1`のStage 1R SFCDF source artifactにはseed、full source t
 - G3-04 `SFCDF-STUDY1`のformal decisions、population、seed、endpoint、direction、threshold
 - G4-01 `LGTTCI-STUDY1`のclosure、compatibility decision、no-rerun boundary
 - Program plan §4.3の通常規則
-- G4-02内部のdevelopment / formal heldout separation
+- G4-02内部のcompatibility / formal heldout separation
 - RAW authoritative identity
 - validated transform set `[]`
 - G3-11 depth 10、G3-12、G4-10 depth 11の保護境界
@@ -62,7 +62,8 @@ G4-02は401 SFCDF namespaceを一切使用しない。この旧Stage 1をG4-02�
 artifact ID = 10517090411
 artifact digest = sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b
 SFCDF primary source slots = 384
-SFCDF slot/effective seed range = 40211001..40211384
+SFCDF primary seed range = 40211001..40211384
+SFCDF paired reserve = 41211001..41211384 / reserved / actual use 0
 SFCDF sourceTrajectorySha256 count = 384
 SFCDF complete-anchor rootRawSha256 unique count = 1198
 openingPrefixSha256 = NOT RECORDED
@@ -71,7 +72,7 @@ formal generalization decision generated = false
 formal counterexample decision generated = false
 ```
 
-Stage 1Rについては、保存済みの3 identityをG4-02 source selectionで完全排除する。
+Stage 1Rについては、保存済みの3 identityをG4-02 source selectionで完全排除する。未使用paired reserveもlegacy reserved namespaceとしてG4-02では再利用しない。
 
 ## 4. G4-02に適用する限定freshness rule
 
@@ -96,6 +97,7 @@ RAW root
 
 ```text
 G4-02 seed ∩ {40211001..40211384} = empty
+G4-02 seed ∩ {41211001..41211384} = empty
 G4-02 full source trajectory SHA-256 ∩ Stage1R SFCDF trajectory set = empty
 G4-02 selected RAW root SHA-256 ∩ Stage1R SFCDF complete-anchor root set = empty
 opening-prefix disjointness = NOT AUDITABLE / NOT ASSERTED
@@ -105,7 +107,7 @@ opening-prefix overlapが未知であることを、完全独立と読み替え�
 
 ### C. G4-02内部
 
-G4-02で新規生成するdevelopment / compatibility / formal heldout相互間は、Program plan原則どおり4-way separationを完全に要求する。
+G4-02で新規生成するcompatibility / formal heldout相互間は、Program plan原則どおり4-way separationを完全に要求する。
 
 ```text
 seed
@@ -132,21 +134,30 @@ SFCDF measurement taskはendpointのraw geometry valueをformal resultとして�
 
 この既知の制約を隠すより、監査可能な3 identityを完全排除し、未知の1 identityを明示した上でG4-02内部のfresh holdoutを厳密に保持する方が、旧seed再読やG4-01 rerunより保守的である。
 
-## 6. 必須のdurable firewall
+## 6. durable firewallのmaterialization
 
-G4-02 scientific source access前に、Stage 1R recovery source bundleからSFCDFについて次をidentity-onlyとして固定する。
+G4-02 scientific seed access前に、Stage 1R recovery source bundleのSFCDF identityだけを次へ固定した。
 
-- seed range
-- sourceTrajectorySha256 set
-- complete-anchor rootRawSha256 set
-- artifact ID / digest
-- set count
-- deterministic identity-core SHA-256
-- `openingPrefixSha256 = NOT-RECORDED`
+`doc/research-generation-4/prereg/g4-02-legacy-compatibility-firewall/MANIFEST.json`
 
-このmaterializationではG4-01を再実行しない。既存artifactのidentity fieldだけを読む。geometry outcome、effect direction、p-valueは取り込まない。
+canonical summary:
 
-旧Stage 1についてはidentity recordを再構成しない。401 SFCDF namespace全体のpermanent quarantineだけを固定する。
+```text
+source artifact ID = 10517090411
+source artifact SHA-256 = 3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b
+source manifest deterministic core SHA-256 = 8111413773dfd9899b4562ee5089223a0aef75b6885041f4eacb1006111d7cdd
+SFCDF primary source files checked = 384
+sourceTrajectorySha256 = 384
+complete-anchor rootRawSha256 = 1198
+identity core SHA-256 = 5672098cd04476f6e416de424908c9430562ff64433d16b31a66c233c53c81dd
+openingPrefixSha256 = NOT-RECORDED
+fresh seed access performed = false
+fresh workflow rerun performed = false
+```
+
+trajectory setは2 chunk、RAW-root setは6 chunkとしてfull 64-hex SHA-256を保存した。membership判定はprefix/Bloom等を使用せずexact full-hash equalityとする。
+
+旧Stage 1についてidentity recordを再構成していない。401 SFCDF namespace全体をquarantineした。Stage 1Rのpaired reserve 412 SFCDF namespaceは実使用0だが、prospectively reservedだったためG4-02では再利用しない。
 
 ## 7. G4-02の解釈上の制約
 
@@ -167,6 +178,7 @@ G4-02がpositive formal resultとなっても、次を主張してはならな�
 - G4-01 old seedの再読
 - G4-01 Stage 1/1R workflow rerun
 - opening prefixを後付けするためのreplay
+- G4-01 401/402/412 SFCDF namespaceのG4-02再利用
 - G3-12 Stage 2 seed利用
 - G3-11 depth-10 rerun
 - G4-10 depth-11 access
@@ -175,8 +187,8 @@ G4-02がpositive formal resultとなっても、次を主張してはならな�
 
 ## 9. 方法論判定
 
-**`AMENDMENT-ACCEPTED / G4-02-SFCDF-ONLY`**
+**`AMENDMENT-ACCEPTED / G4-02-SFCDF-ONLY / PREREQUISITE-MATERIALIZED`**
 
-条件は、G4-02 scientific seed access前に§6のidentity-only firewallをdurableに固定し、そのhash/countをG4-02 preregistrationとauthorizationへbindすることである。
+§6のidentity-only firewallはG4-02 scientific seed access前にdurableに固定された。これによりinitial authorization reviewのfreshness prerequisiteは、明示的なlegacy limitationを保持したまま再審査可能になった。
 
-この判定自体はG4-02をscientifically authorizeしない。firewall materialization後にG4-02 authorization reviewを再実施する。
+この判定自体はG4-02 scientific executionをauthorizeしない。次にG4-02 authorization reviewを再実施する。
