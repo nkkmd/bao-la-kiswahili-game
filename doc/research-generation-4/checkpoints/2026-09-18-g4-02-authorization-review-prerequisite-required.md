@@ -1,4 +1,4 @@
-# 2026-09-18 — G4-02 authorization review checkpoint
+# 2026-09-18 — G4-02 認可レビューcheckpoint
 
 Agenda: `G4-02`  
 対象review: `G4-02-AUTHORIZATION-REVIEW-2026-09-18-V1`  
