@@ -1,137 +1,111 @@
 # Research Generation 4 — 再開位置
 
-更新日: 2026-09-18  
-状態: **`G4-01 COMPLETE / G4-02 SFCDFT-STUDY2 STAGE 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED`**
+更新日: 2026-09-19  
+状態: **`G4-02 SFCDFT-STUDY3 PREREGISTRATION FROZEN / STAGE 0 AUTHORIZED / STAGE 1 NOT AUTHORIZED`**
 
 ## 再開時の読む順序
 
-1. remote `main` HEADと`research/g4-02-sfcdft-study2-prereg` HEADを取得し、完全SHAを記録する。
-2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の現在状態を確認する。
-3. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でWave A dependency、evidence class、no-rescue boundaryを確認する。
+1. remote `main` HEADと`research/g4-02-sfcdft-study3-prereg` HEADを取得し、完全SHAを記録する。
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
+3. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でG4-02のscientific boundaryとno-rescue ruleを確認する。
 4. [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)でG4-02 current stateを確認する。
-5. [`../structural-forcing-corridor-tree-raw-transfer/STUDY_2_PROTOCOL.md`](../structural-forcing-corridor-tree-raw-transfer/STUDY_2_PROTOCOL.md)でStudy 2 frozen prospective contractを確認する。
-6. [`../structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_2_STAGE_1_COMPATIBILITY_SPEC.json`](../structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_2_STAGE_1_COMPATIBILITY_SPEC.json)でfrozen Stage 1 execution/decision contractを確認する。
-7. [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-18-study2-stage1-technical-invalid-relay-limit.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-18-study2-stage1-technical-invalid-relay-limit.md)を読む。
-8. [`../structural-forcing-corridor-tree-raw-transfer/results/stage-1-study2/STUDY_2_STAGE_1_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-1-study2/STUDY_2_STAGE_1_RESULT.json)でmachine-readable closureを確認する。
-9. Study 1の過去closureが必要なら[`../structural-forcing-corridor-tree-raw-transfer/results/stage-1/STAGE_1_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-1/STAGE_1_RESULT.json)を確認する。
-10. [`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)と[`../JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](../JAPANESE_DOCUMENTATION_QUALITY_GATE.md)を読む。
+5. [`../structural-forcing-corridor-tree-raw-transfer/STUDY_3_PROTOCOL.md`](../structural-forcing-corridor-tree-raw-transfer/STUDY_3_PROTOCOL.md)でStudy 3 frozen contractを確認する。
+6. [`../structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_3_SPEC.json`](../structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_3_SPEC.json)でmachine-readable freezeを確認する。
+7. [`../research-program-decisions/2026-09-19-g4-02-study3-reentry-authorization-review.md`](../research-program-decisions/2026-09-19-g4-02-study3-reentry-authorization-review.md)でauthorization boundaryを確認する。
+8. Study 2 closure [`../structural-forcing-corridor-tree-raw-transfer/results/stage-1-study2/STUDY_2_STAGE_1_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-1-study2/STUDY_2_STAGE_1_RESULT.json)を確認する。
+9. [`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)と[`../JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](../JAPANESE_DOCUMENTATION_QUALITY_GATE.md)を読む。
 
 ## 現在地
 
 ```text
-Research Generation 3 = CLOSED / INTEGRATED TO MAIN
-Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
-G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
-G4-02 Study 1 = STAGE 1 TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
-G4-02 current Study = SFCDFT-STUDY2
-G4-02 Study 2 Stage 0 = PASS
-G4-02 Study 2 Stage 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
-G4-02 Study 2 Stage 1 primary reads = 384 / 384
-G4-02 Study 2 Stage 1 sealed sources = 382 / AUDIT-EVIDENCE-ONLY
-G4-02 Study 2 Stage 1 deterministic failures = 2
-G4-02 Study 2 Stage 1 paired reserve reads = 0
-G4-02 scientific compatibility/generalization/counterexample decision = NONE
-G4-02 Study 2 Stage 2 = NOT AUTHORIZED / NOT ACCESSED / seed reads 0
-G4-03 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
-G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
-G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
-Current branch main integration = NOT AUTHORIZED / NOT PERFORMED
+main HEAD at Study3 review = c5689d70cd017171e7738140ba9186a117f732f1
+Study2 closure parent = 06515c5f8c3462e1265b40be74283f3a4deb933d
+current branch = research/g4-02-sfcdft-study3-prereg
+G4-02 Study 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
+G4-02 Study 2 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
+G4-02 Study 3 = PREREGISTRATION FROZEN
+Study 3 Stage 0 = AUTHORIZED / NOT YET EXECUTED
+Study 3 Stage 1 = NOT AUTHORIZED / fresh reads 0
+Study 3 Stage 2 = NOT AUTHORIZED / fresh reads 0
+Study 2 identity firewall = REQUIRED BEFORE STAGE 1 / NOT YET MATERIALIZED
+main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-## Study 2 Stage 1の確定closure
+## Study 2からのtechnical lesson
 
-canonical one-shot execution:
+Study 2 Stage 1 canonical run `35345143248`ではprimary 384 slotsのうち382 sealed sourceを保存し、2 slotsがsource replay中のengine `relay-limit` guardで停止した。
 
 ```text
-execution branch = research/g4-02-sfcdft-study2-prereg
-execution head = 8c84f2cda1a62f812f030ef319341683a4d77e54
-GitHub Actions run = 35345143248
-final classification artifact = 10546781677
-artifact digest = sha256:f11a502dcd9e9c273a6f41fb3e8f4ebfb7de12f028e60ad50b884e44cb0de0b6
+40411112 -> relay-limit at ply 225
+40411312 -> relay-limit at ply 223
 ```
 
-result:
+`relay-limit`はBaoの自然な終局ではなく`engine.js`の`MAX_RELAY=512` safety guardである。Study 2をrepair/reopenせず、failed seedsを再読しない。
+
+## Study 3のtechnical remediation
+
+Study 3ではassigned root pairを得るために必要なprefixだけを生成する。
 
 ```text
-primary START = 384
-sealed source success = 382
-deterministic source failure = 2
-paired reserve START = 0
-retry = 0
-unresolved = 0
-fatal = true
+source replay
+-> assigned anchorsを各plyで更新
+-> Namua/Mtaji pair完成
+-> 即停止
 ```
 
-failed slots:
+pair完成後のcontinuationは生成しない。
+
+pair完成前の停止:
 
 ```text
-40411112 -> P2 / RF1 / SFCDFT2-D3-P2-RF1 -> relay-limit at ply 225
-40411312 -> P2 / RF1 / SFCDFT2-D3-P2-RF1 -> relay-limit at ply 223
+natural terminal / max source ply
+  -> NO-CANDIDATE-ROOT-SHORTAGE
+
+engine relay-limit
+  -> NO-CANDIDATE-ENGINE-GUARD-CENSORING
+  -> scientific terminal = false
+
+identity / production-independent mismatch
+  -> TECHNICAL-INVALID
 ```
 
-両方ともproduction source replayのfrozen `relay-limit` guardで停止した。これはinfrastructure interruptionではないためpaired reserveは使用しない。fresh execution後に`relay-limit`をnormal support statusへ再定義せず、frozen integrity mappingに従ってStage 1を `TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED` で閉じた。
+## Study 3 seed namespace
 
-382 sealed sourcesだけからcompatibility decisionを生成しない。failed-slot repair/replay、workflow rerun、reserve substitutionを行わない。
-
-## seed boundary
+scientific seedは全て未読である。
 
 ```text
-Study 1 primary 40311001..40311384
-reads = 384 / 384
-status = QUARANTINED / NO-REUSE
-
-Study 2 primary 40411001..40411384
-reads = 384 / 384
-status = CONSUMED-ONCE / QUARANTINED / NO-REUSE
-
-Study 2 paired reserve 41411001..41411384
-reads = 0
-status = UNREAD / NOT-USED / NOT-ELIGIBLE-FOR-STUDY2-RECOVERY
-
-Study 2 Stage 2 seeds
-reads = 0
-status = UNREAD / NOT-ACCESSED
+Stage 1 primary = 40511001..40511384
+Stage 1 reserve = 41511001..41511384
+Stage 2 primary = 40521001..40521768
+Stage 2 reserve = 41521001..41521768
+Stage 0 technical = 49031001..49031256
 ```
 
-## 次に進む場合
+## 次に実行する作業
 
-### G4-02を再検証する場合
+安全な順序は次である。
 
-`SFCDFT-STUDY2`をrepair/reopenしない。今回のfailureをtechnical development informationとして扱い、fresh scientific seed access前に次を新しくprospective freezeする。
+1. Study 2 run `35345143248`の382 sealed source artifactsからidentity-only firewallをseed-freeでmaterializeする。
+2. firewallのsource count、opening-prefix count、RAW-root count、hash coreを検証する。
+3. Study 3 Stage 0 production / independent implementationを作る。
+4. technical namespaceまたはsynthetic fixtureだけでanchor-bounded replayとrelay-limit censoringを検証する。
+5. Stage 0 resultをfreezeする。
+6. firewall + Stage 0 PASSの両方が揃った場合だけStage 1 pre-access binding / authorization reviewを作る。
+7. Stage 1 authorization前は`405...`/`415...` scientific seedをreadしない。
 
-- 新しいStudy / Stage identity
-- 新しいfresh seed namespace
-- `relay-limit` のsource-replay semantics
-- production / independent replay双方の一致条件
-- candidate eligibilityとsource serializationの処理順序
-- Study 1 / Study 2 populationとidentityを除外するfreshness firewall
-- no-rescue / no-rerun boundary
+## 現時点の禁止事項
 
-そのうえで新しいauthorization reviewを行う。authorization前にはfresh seedを読まない。
-
-### 別Agendaへ進む場合
-
-G4-03/G4-04等はG4-01によりeligibility gateを満たしているだけでexecution authorizationではない。Agenda固有のauthorization reviewを先に行う。
-
-## 禁止事項
-
-- Study 2 Stage 1 primary `40411001..40411384`の再読・再実行・再利用
-- `40411112` / `40411312`のrepair replay
-- paired reserveによるStudy 2 failureの救済
-- canonical Stage 1 workflowのrerun
-- 382 sealed sourcesからのStage 1 compatibility decision生成
-- `relay-limit` semanticsを事後変更して`SFCDFT-STUDY2`をreopenすること
-- Study 2 Stage 2 access
-- Study 1のrepair / reopen / seed再利用
-- G3-12のrepair / reopen / Stage 1 replay
-- G3-12 Stage 2 seedの流用
-- G3-11 depth 10の再実行
-- G4-10 authorization前のdepth 11 access
-- current G4-02 branchの`main`統合（ユーザーの明示承認前）
-- 公開AIへの研究結果の自動反映
+- Study 1/2 scientific seedの再読・再実行・repair
+- Study 2 failed slotをtechnical fixtureとしてreplayすること
+- Study 2 paired reserveによる救済
+- Study 3 Stage 1/2 scientific seed access
+- Stage 1 authorization前のfresh source population生成
+- Study 3 protocol/specの観測後変更によるrescue
+- G3-12 repair / reopen / Stage 1 replay
+- G4-10 authorization前のdepth11 access
+- public AI変更
+- `main`統合
 
 ## main統合境界
 
-G4-01はユーザー承認によりPR #151で統合済みである。
-
-現在の`research/g4-02-sfcdft-study2-prereg`については`main`統合承認を受けていない。**明示指示があるまで統合しない。**
+現在のresearch branchを`main`へ統合する承認はない。**ユーザーの明示指示があるまで統合しない。**
