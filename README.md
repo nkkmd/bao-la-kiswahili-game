@@ -329,7 +329,7 @@ G3-12は技術的不成立で終了したため、局所幾何の一般化可能
 
 core agendaは`G4-01..G4-10`です。最初のStudyであるG4-01 `LGTTCI-STUDY1`は、G3-04・G3-07・G3-10由来claimを将来のfresh domainへ移す前に、root contract、helper precondition、measurement agreement、resource readinessを科学的effectから分離して検証しました。SFCDF・SILGM・GCLDの3 familyすべてがcompatibleとなり、正式decisionは **`COMPATIBILITY-ELIGIBLE-ALL`** です。
 
-この結果はcompatibility/readinessのみを示し、G3由来claimのfresh-domain一般化、effect direction・effect size、counterexampleの成立／不成立を確認したものではありません。G4-02、G4-03、G4-04はeligibility gateを満たしていますが、いずれもまだscientific executionを承認していません。次に進む場合は、各Studyについてpost-G4-01 current-state authorization reviewを先に行います。G4-10のdepth 11も引き続き未承認・未アクセスです。
+この結果はcompatibility/readinessのみを示し、G3由来claimのfresh-domain一般化、effect direction・effect size、counterexampleの成立／不成立を確認したものではありません。G4-02はeligibility gate通過後のauthorization reviewで`PREREQUISITE-REQUIRED`となり、scientific executionは未承認です。G4-03、G4-04もeligibility gateを満たしていますが未承認です。各Studyは個別のauthorization reviewを必要とし、G4-10のdepth 11も引き続き未承認・未アクセスです。
 
 - [第四世代研究の入口](doc/research-generation-4/README.md)
 - [第四世代Program計画](doc/research-generation-4/PROGRAM_PLAN.md)
