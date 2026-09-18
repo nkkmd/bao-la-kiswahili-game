@@ -1,0 +1,62 @@
+name: SFCDFT Stage 0 technical validation
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdf-transfer-study1
+    paths:
+      - '.github/workflows/sfcdft-stage0.yml'
+      - 'tools/experiments/run-sfcdft-stage0.js'
+      - 'tools/experiments/lib/sfcdft-*.js'
+      - 'doc/sfcdf-transfer-study-1/**'
+      - 'doc/research-generation-4/identity-firewalls/g4-02-g4-01-legacy-sfcdf/**'
+      - 'doc/research-generation-4/methodology/2026-09-18-g4-02-legacy-compatibility-freshness-amendment.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  technical-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert Stage 0 authorization boundary
+        run: |
+          node - <<'NODE'
+          const a=require('./doc/sfcdf-transfer-study-1/authorizations/STAGE_0_AUTHORIZATION.json');
+          const s=require('./doc/sfcdf-transfer-study-1/prereg/STUDY_1_SPEC.json');
+          if(a.decision!=='SFCDFT-STAGE0-AUTHORIZED') throw new Error('Stage 0 authorization missing');
+          if(a.freshStage1SeedAccessAuthorized!==false||a.freshStage2SeedAccessAuthorized!==false) throw new Error('fresh access unexpectedly authorized');
+          if(s.freshSeedBlocks.stage1.statusAtFreeze!=='RESERVED-NOT-ACCESSED'||s.freshSeedBlocks.stage2.statusAtFreeze!=='RESERVED-NOT-ACCESSED') throw new Error('fresh namespace boundary failed');
+          if(a.technicalFixtureSeedStart!==44420001||a.technicalFixtureSeedEnd!==44420064) throw new Error('technical fixture namespace mismatch');
+          NODE
+      - name: Syntax
+        run: |
+          node --check tools/experiments/lib/sfcdft-production.js
+          node --check tools/experiments/lib/sfcdft-independent.js
+          node --check tools/experiments/run-sfcdft-stage0.js
+      - name: Run technical-only Stage 0
+        run: |
+          rm -rf artifacts/sfcdft-stage0
+          mkdir -p artifacts/sfcdft-stage0
+          node tools/experiments/run-sfcdft-stage0.js artifacts/sfcdft-stage0/result.json
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft-stage0/result.json');
+          if(r.stageDisposition!=='STAGE0-PASS') throw new Error('Stage 0 did not pass');
+          if(r.freshScientificSeedAccess!==false) throw new Error('fresh scientific access boundary failed');
+          for(const k of ['freshStage1SeedAccess','freshStage2SeedAccess','g3_11Depth10Rerun','g3_12Access','g4_10Depth11Access','publicAiChange']){
+            if(r.checks[k]!==false) throw new Error('protected boundary failed: '+k);
+          }
+          NODE
+      - name: Upload technical result
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft-stage0-technical-result
+          path: artifacts/sfcdft-stage0/result.json
+          if-no-files-found: error
+          retention-days: 90
