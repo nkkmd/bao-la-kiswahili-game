@@ -13,6 +13,7 @@ function assertOk(v, m) { if (!v) throw new Error(m); }
 function hashText(text) { return crypto.createHash("sha256").update(String(text), "utf8").digest("hex"); }
 function canonical(v) { return L.stable(v); }
 function digest(v) { return hashText(typeof v === "string" ? v : canonical(v)); }
+function copy(v) { return JSON.parse(JSON.stringify(v)); }
 
 function policyForSeed(seed) {
   assertOk(Number.isInteger(seed), "independent seed must be integer");
@@ -62,15 +63,26 @@ function replaySource(E, stageId, seed, maxPly = 240) {
     replay
   };
 }
-function endpointPair(E, rootRow, seed) {
+function endpointPair(E, rootRow, sourceIdentity) {
   assertOk(rootRow && rootRow.state && Number.isInteger(rootRow.ply), "independent root row required");
-  const raw = L.measureRaw(E, rootRow.state, seed, rootRow.ply);
-  const derived = S.deriveFromMeasurement(raw);
+  assertOk(sourceIdentity && Number.isInteger(sourceIdentity.seed), "independent source seed required");
+  assertOk(typeof sourceIdentity.trajectorySha256 === "string", "independent source trajectory identity required");
+  assertOk(typeof sourceIdentity.openingPrefixSha256 === "string" && sourceIdentity.openingPrefixLength === 16, "independent opening-prefix identity required");
+  const source = Object.create(null);
+  source.phase = rootRow.phase;
+  source.sourceSeed = sourceIdentity.seed;
+  source.selectedPly = rootRow.ply;
+  source.rootRawSha256 = rootRow.rawStateSha256;
+  source.sourceTrajectorySha256 = sourceIdentity.trajectorySha256;
+  source.openingPrefixSha256 = sourceIdentity.openingPrefixSha256;
+  source.openingPrefixLength = sourceIdentity.openingPrefixLength;
+  source.rootState = copy(rootRow.state);
+  const measured = S.measureRoot(E, source);
   const e = Object.create(null);
-  e[C1] = derived.endpoints[C1];
-  e[C6] = derived.endpoints[C6];
+  e[C1] = measured.sfcdf.endpoints[C1];
+  e[C6] = measured.sfcdf.endpoints[C6];
   assertOk(e[C1] && e[C6], "independent C1/C6 endpoint missing");
-  return { rootRawSha256: rootRow.rawStateSha256, ply: rootRow.ply, phase: rootRow.phase, endpoints: e };
+  return { rootRawSha256: rootRow.rawStateSha256, ply: rootRow.ply, phase: rootRow.phase, endpoints: e, measurementDigest: digest(measured) };
 }
 function abs(n) { return n < 0n ? -n : n; }
 function reduce(n, d) {
