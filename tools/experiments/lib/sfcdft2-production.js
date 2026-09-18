@@ -29,25 +29,25 @@ function familyForSeed(stageId, seed) {
   return byte % 2 === 0 ? RF1 : RF2;
 }
 function domainId(policyId, familyId) {
-  if (policyId === P1 && familyId === RF1) return "SFCDFT-D1-P1-RF1";
-  if (policyId === P1 && familyId === RF2) return "SFCDFT-D2-P1-RF2";
-  if (policyId === P2 && familyId === RF1) return "SFCDFT-D3-P2-RF1";
-  if (policyId === P2 && familyId === RF2) return "SFCDFT-D4-P2-RF2";
+  if (policyId === P1 && familyId === RF1) return "SFCDFT2-D1-P1-RF1";
+  if (policyId === P1 && familyId === RF2) return "SFCDFT2-D2-P1-RF2";
+  if (policyId === P2 && familyId === RF1) return "SFCDFT2-D3-P2-RF1";
+  if (policyId === P2 && familyId === RF2) return "SFCDFT2-D4-P2-RF2";
   throw new Error(`unknown policy/family domain ${policyId}/${familyId}`);
 }
 function openingPrefix(moveKeys, pairComplete) {
   need(Array.isArray(moveKeys), "moveKeys array required");
-  if (!pairComplete) {
+  if (moveKeys.length < 16) {
+    need(!pairComplete, "complete candidate requires at least 16 moves for opening prefix");
     return {
-      openingPrefixStatus: "NOT-APPLICABLE-NONCANDIDATE",
-      openingPrefixLength: null,
+      openingPrefixAvailable: false,
+      openingPrefixLength: moveKeys.length,
       openingPrefixSha256: null
     };
   }
-  need(moveKeys.length >= 16, "complete candidate requires at least 16 moves for opening prefix");
   const keys = moveKeys.slice(0, 16);
   return {
-    openingPrefixStatus: "PRESENT-CANDIDATE",
+    openingPrefixAvailable: true,
     openingPrefixLength: 16,
     openingPrefixSha256: sha256Text(keys.join("\n"))
   };
@@ -58,6 +58,10 @@ function replaySource(E, stageId, seed, maxPly = 240) {
   const replay = L.replay(E, policyId, seed, maxPly);
   const anchors = L.selectAnchors(replay.rows, familyId);
   const prefix = openingPrefix(replay.moveKeys, anchors.complete);
+  const candidateStatus = anchors.complete ? "CANDIDATE-PAIR-COMPLETE" : "NO-CANDIDATE-ROOT-SHORTAGE";
+  if (anchors.complete) {
+    need(prefix.openingPrefixAvailable && prefix.openingPrefixLength === 16 && typeof prefix.openingPrefixSha256 === "string", "complete candidate requires first16 opening prefix");
+  }
   return {
     stageId,
     seed,
@@ -65,6 +69,8 @@ function replaySource(E, stageId, seed, maxPly = 240) {
     familyId,
     domainId: domainId(policyId, familyId),
     trajectorySha256: replay.trajectorySha256,
+    candidateStatus,
+    pairComplete: Boolean(anchors.complete),
     ...prefix,
     moveCount: replay.moveKeys.length,
     terminal: replay.terminal,
@@ -76,7 +82,8 @@ function endpointPair(E, rootRow, sourceIdentity) {
   need(rootRow && rootRow.state && Number.isInteger(rootRow.ply), "root row required");
   need(sourceIdentity && Number.isInteger(sourceIdentity.seed), "source identity seed required");
   need(typeof sourceIdentity.trajectorySha256 === "string", "source trajectory identity required");
-  need(sourceIdentity.openingPrefixStatus === "PRESENT-CANDIDATE", "candidate opening-prefix status required");
+  need(sourceIdentity.candidateStatus === "CANDIDATE-PAIR-COMPLETE", "candidate source required");
+  need(sourceIdentity.openingPrefixAvailable === true, "candidate opening prefix must be available");
   need(typeof sourceIdentity.openingPrefixSha256 === "string" && sourceIdentity.openingPrefixLength === 16, "source opening-prefix identity required");
   const source = {
     phase: rootRow.phase,
