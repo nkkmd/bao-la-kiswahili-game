@@ -8,7 +8,7 @@ G4-02のscientific executionは**未承認**である。G4-01によってSFCDF f
 
 このreviewはscientific seedを生成・readせず、formal scientific outcomeを生成せず、G3-04/G4-01 evidenceをG4-02のscientific evidenceとして再利用せずに実施した。
 
-## Review identity
+## 審査識別情報
 
 ```text
 Review ID = G4-02-AUTHORIZATION-REVIEW-2026-09-18-V1
@@ -24,7 +24,7 @@ G4-02 heavy scientific execution = false
 main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-## 1. current state
+## 1. 現在の状態
 
 Research Generation 4のcurrent-facing正本文書では、G4-01 `LGTTCI-STUDY1`は次で完了している。
 
@@ -51,7 +51,7 @@ G3-04 `SFCDF-STUDY1`のformal recordから、G4-02で移送候補となるclaim�
 
 C1はunit-width occupancy、C6はtree/RAW inflation descriptorであり、別々のconstruct・endpointとして保持する。combined latent classは作らない。G3-04のpopulation、seed、threshold、endpoint、direction、formal decisionは変更しない。
 
-## 3. authorization gate review
+## 3. authorization gateの審査
 
 | Gate | 判定 | 根拠 |
 | --- | --- | --- |
@@ -66,7 +66,7 @@ C1はunit-width occupancy、C6はtree/RAW inflation descriptorであり、別々
 | 9. resource ceiling / stopping rule | **PASS-AS-DESIGNABILITY** | depth-5 RAW geometryについて既存のbounded resource instrumentationがあり、結果前freezeが可能。ただし未承認のため数値は本reviewでformal freezeしない。 |
 | 10. no-rescue / no-rerun | **PASS IF PREREQUISITE RESOLVED WITHOUT RERUN** | G3-04、G3-11、G3-12、G4-01のno-rerun境界は維持可能。ただしG4-01 opening-prefix identityを旧seed再読で再構成する方法は禁止する。 |
 
-## 4. blocking prerequisite
+## 4. 未解決のprerequisite
 
 Research Generation 4 `PROGRAM_PLAN.md`は、`FRESH-FORMAL-HELDOUT`をdevelopment / compatibility evidenceから少なくとも次のidentityで分離するよう要求する。
 
@@ -76,6 +76,8 @@ source trajectory
 opening prefix
 RAW root
 ```
+
+監査時点で、G4-01 recovery source bundle artifact `10517090411`（digest `sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b`）は未失効だった。既存artifactだけを参照し、fresh seedは再読していない。source payload生成コード `tools/experiments/run-lgttci-stage1r-source-unit.js` と保存bundleを照合した。
 
 G4-01 Stage 1Rのdurable source recordは、少なくとも次を保持している。
 
@@ -128,7 +130,7 @@ public AI change = NOT AUTHORIZED
 
 tree occurrenceとRAW graph stateは別constructとして保持する。symmetry、canonicalization、isomorphismは新しいformal validationなしにscientific deduplicationへ使用しない。
 
-## 7. formal decision
+## 7. 正式判定
 
 **`PREREQUISITE-REQUIRED`**
 
