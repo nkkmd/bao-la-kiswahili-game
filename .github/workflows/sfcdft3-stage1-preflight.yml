@@ -1,0 +1,103 @@
+name: SFCDFT Study3 Stage1 pre-access preflight
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study3-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_1_PRE_EXECUTION_BINDING.json
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    name: Study3 Stage1 seed-free preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify frozen pre-execution binding
+        env:
+          EVENT_BEFORE: ${{ github.event.before }}
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process');
+          const path='doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_1_PRE_EXECUTION_BINDING.json';
+          const final='doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_1_EXECUTION_AUTHORIZATION.json';
+          if(fs.existsSync(final)) throw new Error('final Stage1 authorization must be absent during preflight');
+          const b=JSON.parse(fs.readFileSync(path,'utf8'));
+          if(b.studyId!=='SFCDFT-STUDY3'||b.stageId!=='SFCDFT3-S1-COMPATIBILITY-2026-09-19-v1'||b.status!=='FROZEN-PRE-EXECUTION') throw new Error('binding identity mismatch');
+          if(b.bindingBaseHead!==process.env.EVENT_BEFORE) throw new Error(`binding parent mismatch ${process.env.EVENT_BEFORE}`);
+          if(b.freshScientificSeedAccessAuthorized!==false||b.stage2ScientificSeedAccessAuthorized!==false||b.mainIntegrationAuthorized!==false) throw new Error('preflight authorization boundary violated');
+          for(const [p,sha] of Object.entries(b.boundGitBlobs)){if(!fs.existsSync(p))throw new Error(`missing bound file ${p}`);const actual=cp.execFileSync('git',['hash-object',p],{encoding:'utf8'}).trim();if(actual!==sha)throw new Error(`bound blob mismatch ${p}`);}
+          console.log(JSON.stringify({boundFileCount:Object.keys(b.boundGitBlobs).length,bindingBaseHead:b.bindingBaseHead}));
+          NODE
+      - name: Syntax check Stage1 implementation
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/sfcdft3-source-production.js
+          node --check tools/experiments/lib/sfcdft3-source-independent.js
+          node --check tools/experiments/run-sfcdft3-stage1-source-unit.js
+          node --check tools/experiments/generate-sfcdft3-stage1-actions-matrices.js
+          node --check tools/experiments/classify-sfcdft3-stage1-actions-artifacts.js
+          node --check tools/experiments/bundle-sfcdft3-stage1-source.js
+          node --check tools/experiments/run-sfcdft3-stage1-measurement-task.js
+          node --check tools/experiments/run-sfcdft3-stage1-aggregate.js
+          node --check tools/experiments/verify-sfcdft3-stage1-actions-authorization.js
+      - name: Regress frozen Stage0 primary semantics with technical-only fixtures
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-sfcdft3-stage0-technical.js --output /tmp/stage0-regression.json
+          node - <<'NODE'
+          const r=require('/tmp/stage0-regression.json');
+          if(r.decision!=='STAGE0-PASS'||r.scientificSeedReads!==0)throw new Error('Stage0 regression boundary failed');
+          if(r.deterministicCoreSha256!=='d823461f553da8fc8bab27845c38bfcb7552e5acc771968e6e212a0dcd4294ff')throw new Error(`Stage0 deterministic core changed ${r.deterministicCoreSha256}`);
+          NODE
+      - name: Verify primary/reserve assignment semantics on technical seeds
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-sfcdft3-stage1-source-unit.js --technical-fixture --slot-seed 49031002 --effective-seed 49031002 --output /tmp/source-primary.json
+          node tools/experiments/run-sfcdft3-stage1-source-unit.js --technical-fixture --slot-seed 49031002 --effective-seed 50031002 --output /tmp/source-reserve.json
+          node - <<'NODE'
+          const p=require('/tmp/source-primary.json'),r=require('/tmp/source-reserve.json');
+          if(p.policyId!==r.policyId||p.rootFamilyId!==r.rootFamilyId||p.domainId!==r.domainId)throw new Error('reserve changed primary assignment');
+          if(p.slotSeed!==r.slotSeed||r.effectiveSeed!==50031002)throw new Error('reserve provenance mismatch');
+          const ok=new Set(['CANDIDATE-PAIR-COMPLETE','NO-CANDIDATE-ROOT-SHORTAGE','NO-CANDIDATE-ENGINE-GUARD-CENSORING']);
+          if(!ok.has(p.candidateStatus)||!ok.has(r.candidateStatus))throw new Error('unexpected technical source status');
+          NODE
+      - name: Verify frozen source/measurement matrices
+        run: |
+          set -euo pipefail
+          GITHUB_OUTPUT=/tmp/matrix-output node tools/experiments/generate-sfcdft3-stage1-actions-matrices.js
+          grep -q 'source=' /tmp/matrix-output
+          grep -q 'measurement=' /tmp/matrix-output
+      - name: Verify classifier with synthetic complete immutable artifact set
+        run: |
+          set -euo pipefail
+          node - <<'NODE' > /tmp/artifact-names.txt
+          for(let s=40511001;s<=40511384;s++){console.log(`sfcdft3-s1-primary-start-${s}`);console.log(`sfcdft3-s1-source-${s}`);}
+          NODE
+          node tools/experiments/classify-sfcdft3-stage1-actions-artifacts.js --mode final --names /tmp/artifact-names.txt --summary /tmp/classifier.json
+          node - <<'NODE'
+          const r=require('/tmp/classifier.json');if(r.fatal||r.sourceCount!==384||r.primaryStartCount!==384||r.deterministicFailureCount!==0||r.unresolvedCount!==0)throw new Error('classifier synthetic final mismatch');
+          NODE
+      - name: Write seed-free preflight result
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const s0=require('/tmp/stage0-regression.json'),p=require('/tmp/source-primary.json'),r=require('/tmp/source-reserve.json'),c=require('/tmp/classifier.json');
+          const core={schemaVersion:1,studyId:'SFCDFT-STUDY3',stageId:'SFCDFT3-S1-COMPATIBILITY-2026-09-19-v1',decision:'PREFLIGHT-PASS',freshScientificSeedReads:0,stage0DeterministicCoreSha256:s0.deterministicCoreSha256,primaryFixtureStatus:p.candidateStatus,reserveFixtureStatus:r.candidateStatus,assignmentStable:p.domainId===r.domainId,classifierSourceCount:c.sourceCount,classifierFatal:c.fatal,stage1FreshAccessAuthorized:false,stage2AccessAuthorized:false,mainIntegrationAuthorized:false};
+          const stable=x=>x===null||typeof x!=='object'?JSON.stringify(x):Array.isArray(x)?`[${x.map(stable).join(',')}]`:`{${Object.keys(x).sort().map(k=>`${JSON.stringify(k)}:${stable(x[k])}`).join(',')}}`;
+          core.deterministicCoreSha256=crypto.createHash('sha256').update(stable(core)).digest('hex');
+          fs.mkdirSync('artifacts/sfcdft3-stage1-preflight',{recursive:true});fs.writeFileSync('artifacts/sfcdft3-stage1-preflight/PREFLIGHT_RESULT.json',JSON.stringify(core,null,2)+'\n');console.log(JSON.stringify(core));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-stage1-preflight-${{ github.run_id }}
+          path: artifacts/sfcdft3-stage1-preflight/PREFLIGHT_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
