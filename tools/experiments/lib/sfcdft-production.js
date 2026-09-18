@@ -16,6 +16,7 @@ function need(x, m) { if (!x) throw new Error(m); }
 function sha256Text(x) { return crypto.createHash("sha256").update(String(x), "utf8").digest("hex"); }
 function canonical(x) { return L.stable(x); }
 function digest(x) { return sha256Text(typeof x === "string" ? x : canonical(x)); }
+function copy(x) { return JSON.parse(JSON.stringify(x)); }
 
 function policyForSeed(seed) {
   need(Number.isInteger(seed), "seed must be integer");
@@ -59,18 +60,31 @@ function replaySource(E, stageId, seed, maxPly = 240) {
     replay
   };
 }
-function endpointPair(E, rootRow, seed) {
+function endpointPair(E, rootRow, sourceIdentity) {
   need(rootRow && rootRow.state && Number.isInteger(rootRow.ply), "root row required");
-  const raw = L.measureRaw(E, rootRow.state, seed, rootRow.ply);
-  const derived = S.deriveFromMeasurement(raw);
-  const c1 = derived.endpoints[C1];
-  const c6 = derived.endpoints[C6];
+  need(sourceIdentity && Number.isInteger(sourceIdentity.seed), "source identity seed required");
+  need(typeof sourceIdentity.trajectorySha256 === "string", "source trajectory identity required");
+  need(typeof sourceIdentity.openingPrefixSha256 === "string" && sourceIdentity.openingPrefixLength === 16, "source opening-prefix identity required");
+  const source = {
+    phase: rootRow.phase,
+    sourceSeed: sourceIdentity.seed,
+    selectedPly: rootRow.ply,
+    rootRawSha256: rootRow.rawStateSha256,
+    sourceTrajectorySha256: sourceIdentity.trajectorySha256,
+    openingPrefixSha256: sourceIdentity.openingPrefixSha256,
+    openingPrefixLength: sourceIdentity.openingPrefixLength,
+    rootState: copy(rootRow.state)
+  };
+  const measured = S.measureRoot(E, source);
+  const c1 = measured.sfcdf.endpoints[C1];
+  const c6 = measured.sfcdf.endpoints[C6];
   need(c1 && c6, "C1/C6 endpoint missing");
   return {
     rootRawSha256: rootRow.rawStateSha256,
     ply: rootRow.ply,
     phase: rootRow.phase,
-    endpoints: { [C1]: c1, [C6]: c6 }
+    endpoints: { [C1]: c1, [C6]: c6 },
+    measurementDigest: digest(measured)
   };
 }
 function gcd(a, b) { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b !== 0n) [a, b] = [b, a % b]; return a; }
