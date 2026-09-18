@@ -55,7 +55,7 @@ G4-01 closure state:
 - [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md)
 - [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)
 
-## repository-wide consistency audit
+## リポジトリ全体の整合性監査
 
 G4-01 closure後、main統合前のcurrent-facing文書を再監査した。root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`に残っていたG4-01開始前の記述を修正し、Research Generation 4側およびG4-01正本と同期した。
 
@@ -84,7 +84,7 @@ prospectiveにfreezeした`PROGRAM_PLAN.md`、preregistration、authorization/bi
 
 `ELIGIBILITY-GATE-SATISFIED-BY-G4-01`は実行authorizationではない。G4-02/G4-03/G4-04はそれぞれprospective authorization reviewを必要とする。
 
-## G4-02 authorization review
+## G4-02のauthorization review
 
 2026-09-18にpost-G4-01 current-state G4-02 authorization reviewを実施した。formal decisionは**`PREREQUISITE-REQUIRED`**であり、G4-02のscientific Studyはまだ開始していない。
 
