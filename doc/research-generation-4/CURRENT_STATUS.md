@@ -2,7 +2,7 @@
 
 更新日: 2026-09-18  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED / WAVE A NEXT STUDY NOT YET AUTHORIZED`**
+状態: **`G4-01 COMPLETE / G4-02 AUTHORIZATION REVIEW = PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED`**
 
 ## Program全体
 
@@ -14,7 +14,7 @@ Core agenda = G4-01..G4-10
 Independent tracks = G4-P01, G4-H01
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
 repository-wide consistency audit = PASS
-G4-02 = NOT AUTHORIZED
+G4-02 = PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED
 G4-03 = NOT AUTHORIZED
 G4-04 = NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
@@ -70,7 +70,7 @@ prospectiveにfreezeした`PROGRAM_PLAN.md`、preregistration、authorization/bi
 | Agenda | 役割 | 現在の状態 |
 | --- | --- | --- |
 | `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL` |
-| `G4-02` | corridor / tree-graph transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
+| `G4-02` | corridor / tree-graph transfer | `PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED` |
 | `G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -83,6 +83,16 @@ prospectiveにfreezeした`PROGRAM_PLAN.md`、preregistration、authorization/bi
 | `G4-H01` | human / expert evidence | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
 
 `ELIGIBILITY-GATE-SATISFIED-BY-G4-01`は実行authorizationではない。G4-02/G4-03/G4-04はそれぞれprospective authorization reviewを必要とする。
+
+## G4-02 authorization review
+
+2026-09-18にpost-G4-01 current-state G4-02 authorization reviewを実施した。formal decisionは**`PREREQUISITE-REQUIRED`**であり、G4-02のscientific Studyはまだ開始していない。
+
+G4-01によってSFCDFのcompatibility/readinessは満たされた。一方、RG4共通contractはformal heldoutをcompatibility evidenceから`seed / source trajectory / opening prefix / RAW root`で分離するよう要求するが、G4-01 Stage 1Rの保存source recordにはopening-prefix identityが保持されていない。G4-01の旧seed再読とfresh workflow rerunはいずれもfrozen contractで禁止されている。
+
+したがって、既存immutable artifactだけでopening-prefix identityを回収できることを確認するか、G4-02と分離したProgram-level methodology reviewを先に行う必要がある。prerequisite解消前にG4-02 Study ID、formal seed block、scientific execution contractを確定しない。
+
+正本: [`../research-program-decisions/2026-09-18-post-g4-01-g4-02-authorization-review.md`](../research-program-decisions/2026-09-18-post-g4-01-g4-02-authorization-review.md)
 
 ## 保護された境界
 
@@ -101,7 +111,7 @@ authoritative state identity = RAW
 
 G4-01の研究実行とmain統合前の文書整合性監査は完了している。2026-09-18にユーザーからPR #151による`main`統合の明示承認を受領した。
 
-次の研究作業を行う場合は、Wave AのG4-02、G4-03、G4-04のいずれかについてcurrent-state authorization reviewを実施する。G4-01の`COMPATIBILITY-ELIGIBLE-ALL`だけを根拠にscientific seedへ自動アクセスしてはならない。
+G4-02についてはauthorization reviewが`PREREQUISITE-REQUIRED`で完了した。まずG4-01 compatibility evidenceとのopening-prefix identity分離を、旧seed再読なしで監査可能にするprerequisiteを解決する。解決後にG4-02 authorization reviewを再実施し、`AUTHORIZED`となるまでscientific seedへアクセスしない。G4-03/G4-04も引き続き個別authorization reviewを必要とする。
 
 G4-01の`main`統合承認は、後続Studyのscientific executionや公開AI変更の承認を含まない。
 
@@ -113,3 +123,4 @@ G4-01の`main`統合承認は、後続Studyのscientific executionや公開AI変
 - [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md) — main統合前の文書整合性監査
 - [`../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md`](../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md) — G4-01の正式状態
 - [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md) — G4-01 closure decision
+- [`../research-program-decisions/2026-09-18-post-g4-01-g4-02-authorization-review.md`](../research-program-decisions/2026-09-18-post-g4-01-g4-02-authorization-review.md) — G4-02 authorization review (`PREREQUISITE-REQUIRED`)
