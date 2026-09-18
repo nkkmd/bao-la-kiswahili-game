@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "stageId": "SFCDFT2-S1-COMPATIBILITY-2026-09-18-v1",
+  "decision": "SFCDFT2-STAGE1-EXECUTION-AUTHORIZED",
+  "authorizationDate": "2026-09-18",
+  "authorizedParentHead": "a84d61b4008c53076f06b38e537a3647ae46316b",
+  "preExecutionBindingPath": "doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_2_STAGE_1_PRE_EXECUTION_BINDING.json",
+  "preExecutionBindingGitBlobSha": "3530289b3945ed1c84666a183d3e52b47f99a8ad",
+  "requiredPreflight": {
+    "runId": 35345081535,
+    "headSha": "a84d61b4008c53076f06b38e537a3647ae46316b",
+    "conclusion": "success",
+    "artifactId": 10546643594,
+    "artifactDigest": "sha256:b8d519c019bbe9a4acee46f239f6f30766070b0e8b4da1b130e67ee701dfb17c"
+  },
+  "freshScientificSeedAccessAuthorized": true,
+  "stage2ScientificSeedAccessAuthorized": false,
+  "maxFreshSeedReads": 400,
+  "maxInfrastructureReplacements": 16,
+  "scientificEffectMagnitudeAuthorized": false,
+  "effectDirectionAuthorized": false,
+  "pValueAuthorized": false,
+  "generalizationDecisionAuthorized": false,
+  "counterexampleDecisionAuthorized": false,
+  "fullFreshWorkflowRerunAuthorized": false,
+  "sameEvidenceRepairRerunAuthorized": false,
+  "manualWorkflowDispatchAuthorized": false,
+  "runAttemptGreaterThanOneAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_01SeedReplay": false,
+    "study1RepairReplay": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  }
+}
