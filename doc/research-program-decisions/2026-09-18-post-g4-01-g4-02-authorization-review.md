@@ -1,4 +1,4 @@
-# 2026-09-18 — post-G4-01 current-state G4-02 authorization review
+# 2026-09-18 — post-G4-01 current-state G4-02 認可レビュー
 
 ## 判定
 
