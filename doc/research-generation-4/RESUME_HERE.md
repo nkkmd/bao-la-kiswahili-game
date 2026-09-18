@@ -1,7 +1,7 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-18  
-状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED / NEXT WAVE-A STUDY NOT AUTHORIZED`**
+状態: **`G4-01 COMPLETE / G4-02 AUTHORIZATION REVIEW = PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED`**
 
 ## 再開時の読む順序
 
@@ -21,7 +21,7 @@ Research Generation 3 = CLOSED / INTEGRATED TO MAIN
 Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
 repository-wide consistency audit = PASS
-G4-02 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
+G4-02 = PREREQUISITE-REQUIRED / SCIENTIFIC EXECUTION NOT AUTHORIZED
 G4-03 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
@@ -49,9 +49,19 @@ result deterministic core SHA256 = 0bf8da597bec47eb774b467be1c49bfc6f2aa43850151
 
 `COMPATIBILITY-ELIGIBLE-ALL`はcompatibility/readiness判定であり、generalization、effect、counterexampleのformal resultではない。
 
+## G4-02 authorization reviewの確定状態
+
+2026-09-18のpost-G4-01 current-state reviewは**`PREREQUISITE-REQUIRED`**で閉じた。G4-01 SFCDF compatibilityはPASSしているが、RG4共通contractが要求するformal heldoutとcompatibility evidenceの`opening prefix` identity分離を、G4-01の保存source recordだけでは監査できない。
+
+G4-01は`completedSourceRereadAuthorized = false`かつ`fullFreshWorkflowRerunAuthorized = false`である。旧seedを再読して不足identityを後付け生成しない。
+
+正本: [`../research-program-decisions/2026-09-18-post-g4-01-g4-02-authorization-review.md`](../research-program-decisions/2026-09-18-post-g4-01-g4-02-authorization-review.md)
+
+checkpoint: [`checkpoints/2026-09-18-g4-02-authorization-review-prerequisite-required.md`](checkpoints/2026-09-18-g4-02-authorization-review-prerequisite-required.md)
+
 ## 次に実施する判断
 
-次の研究を進める場合、G4-02、G4-03、G4-04のいずれかについて**post-G4-01 current-state authorization review**を先に行う。
+G4-02を進める場合、まず上記prerequisiteを解消し、その後に**post-G4-01 current-state G4-02 authorization reviewを再実施**する。G4-03/G4-04はそれぞれ未実施のauthorization reviewを先に行う。
 
 reviewでは少なくとも次を判定する。
 
@@ -62,7 +72,7 @@ reviewでは少なくとも次を判定する。
 - G4-01のcompatibility evidenceをscientific effectとして誤用していないか
 - no-rescue / no-rerun / protected-evidence boundaryを維持できるか
 
-`AUTHORIZED`の場合だけ正式Study ID、Stage、fresh seed block、execution contractを固定する。
+`AUTHORIZED`の場合だけ正式Study ID、Stage、fresh seed block、execution contractを固定する。現在のG4-02は`PREREQUISITE-REQUIRED`なので、これらは未固定のまま保持する。
 
 `NOT-AUTHORIZED`または`PREREQUISITE-REQUIRED`の場合はscientific seedへアクセスせず、理由をdecision recordへ残す。
 
