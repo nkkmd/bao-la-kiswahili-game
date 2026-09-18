@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "prerequisiteId": "G4-02-FRESHNESS-FIREWALL-PREREQUISITE-2026-09-18-v1",
+  "agenda": "G4-02",
+  "status": "MATERIALIZED-BEFORE-G4-02-SCIENTIFIC-SEED-ACCESS",
+  "reviewedMainSha": "c5689d70cd017171e7738140ba9186a117f732f1",
+  "scientificSeedAccessBeforeMaterialization": 0,
+  "scientificOutcomeGenerated": false,
+  "g304IdentityFirewall": {
+    "path": "doc/branch-expansion-compression-transition/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+    "gitBlobSha": "123430eb0cbe100bf50e068ee4c4ee7dc52c2ca8",
+    "identityCounts": {
+      "rootRawSha256": 124,
+      "sourceTrajectorySha256": 124,
+      "openingPrefixSha256": 67
+    },
+    "identityCoreSha256": "5b8246baf0f0b13fdfbc40b55bf3298895e7f0da660ca6b1275880361c4b7417",
+    "scientificOutcomeFieldsRetained": false
+  },
+  "g401SfcdfCompatibilityFirewall": {
+    "sourceStudy": "LGTTCI-STUDY1",
+    "sourceStage": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+    "evidenceClass": "FRESH-COMPATIBILITY-RETEST",
+    "scientificEffectGenerated": false,
+    "formalGeneralizationDecisionGenerated": false,
+    "formalCounterexampleDecisionGenerated": false,
+    "recoveryArtifactId": 10517090411,
+    "recoveryArtifactDigest": "sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+    "sourceManifestDeterministicCoreSha256": "8111413773dfd9899b4562ee5089223a0aef75b6885041f4eacb1006111d7cdd",
+    "sfcdfSourceEntryCoreSha256": "2c0181b5825e5f9cb07a57788373ad9957f19dc32858871ff9e7eec34214b3fc",
+    "sourceFileCount": 384,
+    "seedExclusion": {
+      "start": 40211001,
+      "end": 40211384,
+      "count": 384
+    },
+    "trajectoryBloom": {
+      "path": "doc/research-generation-4/g4-02-prerequisites/G4_01_SFCDF_TRAJECTORY_BLOOM.b64",
+      "gitBlobSha": "8f6450ed6ebe8a4bdc789f6faa8c175cd2fca107",
+      "decodedBitsetSha256": "e3f2eb64d9e9ba544997a2644d917ab83548434b96d969564f08d2a4b95875f1",
+      "mBits": 65536,
+      "k": 8,
+      "insertedUniqueCount": 384,
+      "domain": "G4-01-SFCDF-BLOOM-v1|trajectory|i|identity"
+    },
+    "rootBloom": {
+      "path": "doc/research-generation-4/g4-02-prerequisites/G4_01_SFCDF_ROOT_BLOOM.b64",
+      "gitBlobSha": "fb551d82b260a6a9730267a7b7491cc7feaf0c17",
+      "decodedBitsetSha256": "ac2304c92e3aa7ce27b087d65c1589f664cf2f2231aac0b034d46fb04c32eddf",
+      "mBits": 65536,
+      "k": 8,
+      "insertedUniqueCount": 1340,
+      "domain": "G4-01-SFCDF-BLOOM-v1|root|i|identity"
+    },
+    "openingPrefixIdentity": {
+      "available": false,
+      "disposition": "UNAVAILABLE-IN-FROZEN-G4-01-SOURCE-ARTIFACT / NOT-RECONSTRUCTED / NO-SEED-REREAD"
+    },
+    "filterSemantics": {
+      "negative": "CERTIFIED-NOT-IN-G4-01-SET, assuming bound bitset/hash implementation",
+      "positive": "CONSERVATIVE-EXCLUDE; may include Bloom false positives",
+      "falseNegativeAllowed": false
+    }
+  },
+  "futureG402CandidateExclusionRule": [
+    "reject seed in any historical G3/G4 excluded namespace",
+    "reject exact G3-04 root/trajectory/opening-prefix identity match",
+    "reject any G4-01 SFCDF trajectory Bloom positive",
+    "reject any G4-01 SFCDF RAW-root Bloom positive",
+    "if exclusion causes frozen support gate failure, map to NON-ESTIMABLE; no seed extension or replacement"
+  ],
+  "protectedEvidence": {
+    "g311Depth10Rerun": false,
+    "g312Stage1Replay": false,
+    "g312Stage2SeedAccess": false,
+    "g401FreshWorkflowRerun": false,
+    "g401CompletedSourceReread": false,
+    "g410Depth11Access": false
+  }
+}
