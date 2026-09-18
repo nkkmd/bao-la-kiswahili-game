@@ -23,9 +23,14 @@
   },
   "stage1rSfcdf": {
     "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
-    "seedStart": 40211001,
-    "seedEnd": 40211384,
-    "count": 384,
+    "primarySeedStart": 40211001,
+    "primarySeedEnd": 40211384,
+    "primaryCount": 384,
+    "pairedReserveSeedStart": 41211001,
+    "pairedReserveSeedEnd": 41211384,
+    "pairedReserveCount": 384,
+    "pairedReserveUsed": 0,
+    "pairedReserveDispositionForG4_02": "RESERVED-LEGACY-NAMESPACE-PERMANENTLY-FORBIDDEN-FOR-G4-02",
     "sourceTrajectorySha256Count": 384,
     "completeAnchorRootRawSha256Count": 1198,
     "openingPrefixSha256Status": "NOT-RECORDED",
@@ -92,6 +97,11 @@
   "membershipRule": {
     "sourceTrajectory": "reject candidate if exact full SHA-256 appears in any trajectory chunk",
     "rawRoot": "reject pair if either selected root exact full SHA-256 appears in any root chunk",
+    "legacySeedNamespacesForbidden": [
+      "40111001..40111384",
+      "40211001..40211384",
+      "41211001..41211384"
+    ],
     "openingPrefixAgainstG4_01Stage1r": "NOT-AUDITABLE-NOT-ASSERTED",
     "chunkFilesAreSorted": true,
     "hashComparison": "lowercase 64-hex exact equality"
@@ -101,6 +111,7 @@
     "slotSeedRangeContiguous": true,
     "effectiveSeedEqualsSlotSeed": true,
     "primaryOnly": true,
+    "pairedReserveUse": 0,
     "policyCounts": {
       "LGTTCI-P1-UNIFORM-LEGAL": 192,
       "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 192
@@ -113,6 +124,7 @@
   "protectedEvidence": {
     "g4_01OldSeedReread": false,
     "g4_01WorkflowRerun": false,
+    "g4_01PairedReserveReuseByG4_02": false,
     "g3_11Depth10Rerun": false,
     "g3_12Stage2SeedAccess": false,
     "g4_10Depth11Access": false,
