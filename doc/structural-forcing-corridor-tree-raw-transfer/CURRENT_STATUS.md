@@ -3,7 +3,7 @@
 更新日: 2026-09-19  
 Agenda: `Research Generation 4 / G4-02`  
 現在のStudy: `SFCDFT-STUDY3`  
-状態: **`STUDY 3 STAGE 0 PASS / STAGE 1 PRE-ACCESS REVIEW NEXT`**
+状態: **`STUDY 3 STAGE 1 FORMAL-PREPARATION-ELIGIBLE / STAGE 2 PRE-ACCESS REVIEW NEXT`**
 
 ## 現在地
 
@@ -15,18 +15,51 @@ SFCDFT-STUDY2 Stage 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
 SFCDFT-STUDY3 preregistration = FROZEN
 SFCDFT-STUDY3 Study2 firewall prerequisite = SATISFIED
 SFCDFT-STUDY3 Stage 0 = STAGE0-PASS
-SFCDFT-STUDY3 Stage 1 = NOT AUTHORIZED / fresh reads 0
+SFCDFT-STUDY3 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
 SFCDFT-STUDY3 Stage 2 = NOT AUTHORIZED / fresh reads 0
-G4-02 scientific compatibility/generalization/counterexample decision = NONE
+G4-02 scientific generalization/counterexample decision = NONE
 Public AI change = false
 main merge = false
 ```
 
-## Study 3の設計
+## Study 3 Stage 1
 
-Study 3はStudy 1/2をrepair/reopenせず、新しいStudy identityとfresh namespaceを持つprospective再検証である。
+Stage ID:
 
-中心となるtechnical remediationはanchor-bounded source replayである。
+`SFCDFT3-S1-COMPATIBILITY-2026-09-19-v1`
+
+canonical one-shot run `35396341311` は `completed / success` で終了した。
+
+```text
+execution head = b2a70b198c343bf05b9c81ac15fa546858955cdf
+primary START = 384 / 384
+sealed primary source = 384 / 384
+retry = 0
+reserve = 0
+deterministic source failure = 0
+root shortage = 99
+candidate pair complete = 285
+engine-guard censoring = 0
+selected pairs = 32 / 32
+measurement tasks = 8 / 8 SUCCESS
+Stage 1 decision = FORMAL-PREPARATION-ELIGIBLE
+final result artifact ID = 10567663854
+final result artifact digest = sha256:a36e4cbad1fb885065badd9b1ad519f065e221cb9af4ea4669e56ea13192b2ba
+deterministic core = 498decdc808558d2e019d1ddf7aeec6c66d2a8074c6478e117a24bc9301e4dab
+```
+
+4 domainすべてで8 pairが測定され、C1/C6は8/8 defined、resource passも8/8だった。
+
+freshness firewallではseed `40511296` のStudy 2 opening-prefix collisionを正常に除外した。scientific effect、effect direction、p-value、generalization/counterexample decisionは生成していない。
+
+正本:
+
+- [`results/stage-1-study3/STUDY_3_STAGE_1_COMPATIBILITY_RESULT.json`](results/stage-1-study3/STUDY_3_STAGE_1_COMPATIBILITY_RESULT.json)
+- [`checkpoints/2026-09-19-study3-stage1-formal-preparation-eligible.md`](checkpoints/2026-09-19-study3-stage1-formal-preparation-eligible.md)
+
+## Study 3のtechnical remediation
+
+Study 3はStudy 1/2をrepair/reopenせず、新しいStudy identityとfresh namespaceを持つprospective再検証である。source replayはassigned anchor pair完成時に即停止する。
 
 ```text
 policy/root-family assignment
@@ -36,15 +69,7 @@ policy/root-family assignment
 -> 即停止
 ```
 
-pair完成後のcontinuationは生成しない。
-
-candidate完成前の停止は次で分離する。
-
-- natural terminal / max source ply → `NO-CANDIDATE-ROOT-SHORTAGE`
-- engine `relay-limit` → `NO-CANDIDATE-ENGINE-GUARD-CENSORING`
-- mandatory identity / implementation / authorization failure → `TECHNICAL-INVALID`
-
-`relay-limit`は`public/engine.js`の`MAX_RELAY=512` safety guardであり、そこから設定されるwinnerをBaoの自然なterminal evidenceへ利用しない。
+candidate完成前の停止は、natural terminal / max source plyをroot shortage、engine `relay-limit`をengine-guard censoringとして分離する。
 
 ## Study 2 identity firewall
 
@@ -60,52 +85,22 @@ unique first-16 opening-prefix hashes = 372
 unique RAW-root hashes = 657
 ```
 
-正本:
-
-`doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study2/`
-
-Study 2のfailed slots `40411112` / `40411312`にはsealed source identityがないためseed namespace exclusionで保護する。
+正本: `doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study2/`
 
 ## Stage 0
 
-Stage ID:
-
-`SFCDFT3-S0-TECHNICAL-2026-09-19-v1`
-
-canonical run `35389371946`は全step SUCCESSだった。
+`SFCDFT3-S0-TECHNICAL-2026-09-19-v1` はcanonical run `35389371946`で `STAGE0-PASS`。
 
 ```text
-decision = STAGE0-PASS
 scientific seed reads = 0
-technical seeds scanned = 16
-candidate fixture domains = 4 / 4
 artifact ID = 10564654680
 artifact digest = sha256:0da2a47c4b4df3cc209217d2eab4c07785d520bca672725ab836b8c3b93b918a
 deterministic core = d823461f553da8fc8bab27845c38bfcb7552e5acc771968e6e212a0dcd4294ff
 ```
 
-確認済みfixture:
-
-- candidate pair完成時に即停止
-- post-candidate continuation 0
-- natural terminal incomplete → root shortage
-- max source ply incomplete → root shortage
-- relay-limit before complete → engine-guard censoring
-- relay-limit winnerをscientific terminalへ流用しない
-- complete candidate first-16 prefix mandatory
-- production / independent exact一致
-- Study 1 / Study 2 identity collision reject
-- malformed identity fail-closed
-- scientific effect outputなし
-
-正本:
-
-- [`results/stage-0-study3/STUDY_3_STAGE_0_TECHNICAL_RESULT.json`](results/stage-0-study3/STUDY_3_STAGE_0_TECHNICAL_RESULT.json)
-- [`checkpoints/2026-09-19-study3-stage0-pass.md`](checkpoints/2026-09-19-study3-stage0-pass.md)
-
 ## 科学的contract
 
-Study 2から変更していない。
+Study 1/2から変更していない。
 
 ```text
 C1 = SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION / MTAJI-GREATER
@@ -121,35 +116,32 @@ family-wise alpha = 1/20
 inference = exact two-sided sign test + fixed-eight Holm-Bonferroni
 ```
 
-## Study 3 scientific seed boundary
-
-全て未読である。
+## Scientific seed boundary
 
 ```text
-Stage 1 primary = 40511001..40511384 / UNREAD
-Stage 1 paired reserve = 41511001..41511384 / UNREAD
+Stage 1 primary = 40511001..40511384 / CONSUMED-ONCE / QUARANTINED / NO-REUSE
+Stage 1 paired reserve = 41511001..41511384 / UNREAD / NOT-USED / CLOSED-FOR-STAGE1
 Stage 2 primary = 40521001..40521768 / UNREAD
 Stage 2 paired reserve = 41521001..41521768 / UNREAD
 ```
 
-Stage 0 technical namespace `49031001..49031256`はscientific evidenceではない。
-
 ## 次の安全な作業
 
-1. Stage 1 compatibility-only specをfreezeする。
-2. GitHub Actions one-shot source acquisition / seed-free measurement pipelineを準備する。
-3. exact blob bindingとpre-access reviewを実施する。
-4. reviewがPASSした場合だけStage 1 scientific namespaceへのfresh accessをauthorizeする。
+1. Stage 2 formal held-out executionのfrozen contractとexact inference familyを再確認する。
+2. Study 1/2/Study 3 Stage 1を含むfreshness firewallをprospectiveに固定する。
+3. one-shot source acquisition / seed-free measurement / exact inference pipelineを準備する。
+4. 実行blobをbindingし、seed-free preflightを行う。
+5. pre-access authorization reviewがPASSした場合だけStage 2 fresh scientific namespaceへのアクセスをfinal authorizeする。
 
-Stage 1はcompatibility/readinessのみを扱い、effect direction、p-value、generalization/counterexample decisionを生成してはならない。
+`FORMAL-PREPARATION-ELIGIBLE`はStage 2の自動認可ではない。
 
 ## 禁止事項
 
 - Study 1/2 scientific seedの再読・repair・rerun
-- Study 3 Stage 1/2 scientific seedへのpre-authorization access
-- Stage 1 fresh populationのfull rerun
+- Study 3 Stage 1 fresh populationのrerun
+- Study 3 Stage 1 primary/reserveの再利用
+- Stage 2 pre-authorization seed access
 - deterministic scientific failureのreserve救済
-- Stage 2自動認可
 - G4-10 depth11 access
 - public AIへの研究結果の自動反映
 - current branchの`main`統合
@@ -158,5 +150,6 @@ Stage 1はcompatibility/readinessのみを扱い、effect direction、p-value、
 
 - [`STUDY_3_PROTOCOL.md`](STUDY_3_PROTOCOL.md)
 - [`prereg/STUDY_3_SPEC.json`](prereg/STUDY_3_SPEC.json)
-- [`../research-program-decisions/2026-09-19-g4-02-study3-reentry-authorization-review.md`](../research-program-decisions/2026-09-19-g4-02-study3-reentry-authorization-review.md)
+- [`prereg/STUDY_3_STAGE_1_COMPATIBILITY_SPEC.json`](prereg/STUDY_3_STAGE_1_COMPATIBILITY_SPEC.json)
 - [`results/stage-0-study3/STUDY_3_STAGE_0_TECHNICAL_RESULT.json`](results/stage-0-study3/STUDY_3_STAGE_0_TECHNICAL_RESULT.json)
+- [`results/stage-1-study3/STUDY_3_STAGE_1_COMPATIBILITY_RESULT.json`](results/stage-1-study3/STUDY_3_STAGE_1_COMPATIBILITY_RESULT.json)
