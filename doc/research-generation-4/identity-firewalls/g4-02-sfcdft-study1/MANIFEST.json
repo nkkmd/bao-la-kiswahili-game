@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "sourceStudyId": "SFCDFT-STUDY1",
+  "sourceStageId": "SFCDFT-S1-COMPATIBILITY-2026-09-18-v1",
+  "sourceActionsRunId": 35311628238,
+  "sourceExecutionHead": "900884f687f6bc227106c7faa13bcce397574cc6",
+  "evidenceUse": "IDENTITY-ONLY-FRESHNESS-FIREWALL",
+  "fullConsumedPrimarySeedRange": {
+    "seedStart": 40311001,
+    "seedEnd": 40311384,
+    "count": 384
+  },
+  "sealedArtifactCount": 375,
+  "failedPrimarySeeds": [
+    40311019,
+    40311131,
+    40311191,
+    40311195,
+    40311223,
+    40311263,
+    40311301,
+    40311365,
+    40311381
+  ],
+  "sealedSlotSeedCount": 375,
+  "sourceTrajectorySha256Count": 375,
+  "openingPrefixSha256Count": 375,
+  "rootRawSha256Count": 660,
+  "pairCompleteCount": 299,
+  "pairIncompleteCount": 76,
+  "pairedReserveRange": {
+    "seedStart": 41311001,
+    "seedEnd": 41311384,
+    "reads": 0,
+    "status": "UNREAD-NOT-USED"
+  },
+  "scientificOutcomeFieldsRetained": false,
+  "endpointValuesRetained": false,
+  "replayOrSeedRereadPerformed": false,
+  "sourceTrajectoryListSha256": "37e64fa09425d0cf5cce6575e18d6887078857a6e97f6f40edb7fabc7f311151",
+  "openingPrefixListSha256": "097bd13b18c12f7b4adf25837e1dce63ca75476b8f452c7330229b384f267439",
+  "rootRawListSha256": "626ff5845a2081242b03254091cd093a69651f264dbdf5d69c7cfc1ed61e29dd",
+  "identityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430",
+  "recoveryWorkflow": {
+    "runId": 35317703820,
+    "artifactId": 10535439464,
+    "artifactDigest": "sha256:548b8ad62ad1b287b0be0e9a1624fd14252eff52af7931f12408a5a215342e3e",
+    "artifactExpiresAt": "2026-12-17T07:04:21Z",
+    "recoveryHead": "5b1f5ac3cfe9c50f6edbd6b6cccbe38fd4ed8a61",
+    "mode": "ARTIFACT-ONLY-NO-REPLAY-NO-SEED-REREAD"
+  },
+  "durableRepositoryUse": {
+    "targetStudy": "SFCDFT-STUDY2",
+    "purpose": "FRESHNESS-EXCLUSION-ONLY",
+    "scientificOutcomeUseAuthorized": false
+  }
+}
