@@ -3,11 +3,13 @@
 更新日: 2026-09-19  
 Agenda: `Research Generation 4 / G4-02`  
 現在のStudy: `SFCDFT-STUDY3`  
-状態: **`STUDY 3 STAGE 2 FORMAL HELD-OUT EXECUTION AUTHORIZED / CANONICAL RUN IN PROGRESS`**
+状態: **`STUDY 3 CLOSED / STAGE 2 TECHNICAL-INVALID / NO SCIENTIFIC DECISION`**
 
 ## 現在地
 
 G4-02はG3-04でformalに確認されたC1/C6 phase-structure claimをfresh source-policy × root-family domainへ移送できる範囲と反例境界を検証するAgendaである。科学的contractはStudy 1から一貫して変更していない。
+
+Study 3はStage 0、Stage 1、Stage 2 preflight / pre-access reviewを通過してcanonical Stage 2へ進んだが、formal measurement開始前のmandatory source-bundle工程でcanonical one-shot executionが停止した。frozen protocolとexecution authorizationに従い、Stage 2を `TECHNICAL-INVALID` としてfail-closedした。
 
 ```text
 SFCDFT-STUDY1 Stage 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
@@ -18,53 +20,58 @@ SFCDFT-STUDY3 Stage 0 = STAGE0-PASS
 SFCDFT-STUDY3 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
 SFCDFT-STUDY3 Stage 2 seed-free preflight = PREFLIGHT-PASS
 SFCDFT-STUDY3 Stage 2 pre-access review = PASS
-SFCDFT-STUDY3 Stage 2 = EXECUTION-AUTHORIZED / canonical run 35427427920 IN PROGRESS
+SFCDFT-STUDY3 Stage 2 = TECHNICAL-INVALID / CLOSED / NO SCIENTIFIC DECISION
+SFCDFT-STUDY3 = CLOSED / NO RERUN
 G4-02 scientific generalization/counterexample decision = NONE YET
+G4-02 overall = IN PROGRESS
 Public AI change = false
 main merge = false
 ```
 
-## Study 3 Stage 2
+## Study 3 Stage 2 — formal closure
 
 Stage ID:
 
 `SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1`
 
-frozen Stage 2 contract、Stage 1 prerequisite、freshness firewall、pre-execution bindingをseed-freeに検証したcanonical preflight run `35426064344` は `completed / success`。
+seed-free canonical preflight run `35426064344` は `completed / success`、pre-access reviewは `SFCDFT3-STAGE2-PREACCESS-REVIEW-PASS` だった。その後、初回かつ唯一のcanonical formal held-out execution `35427427920` を実行した。
 
 ```text
-preflight decision = PREFLIGHT-PASS
-preflight artifact ID = 10578818245
-preflight artifact digest = sha256:f29c74f0d3199628bb2cfdcb103620ab51409cd4e4b19231784dcb77e6c9d17b
-fresh scientific seed reads during preflight = 0
-primary slots = 768
-source matrix quartets = 192
-selected pair target = 72
-selected root target = 144
-measurement tasks = 18
-fixed formal family size = 8
-preflight deterministic core = ec28638a57ae31e54ccd342974f4985a8760eab1e3c4089d346d0cfdf280dd9e
-```
-
-pre-access reviewは `SFCDFT3-STAGE2-PREACCESS-REVIEW-PASS`。final execution authorizationを初回作成し、canonical formal held-out run `35427427920` を開始した。
-
-```text
-execution authorization commit = dec9a91d5860b9f3d927d632a7165bcbf99f5f63
 canonical run = 35427427920
+event = push
+execution SHA = dec9a91d5860b9f3d927d632a7165bcbf99f5f63
 run attempt = 1
-trigger = first creation of STUDY_3_STAGE_2_EXECUTION_AUTHORIZATION.json
-gate = SUCCESS
-current phase = fresh primary source acquisition
-workflow rerun = NOT AUTHORIZED
-manual dispatch = NOT AUTHORIZED
-same-evidence repair rerun = NOT AUTHORIZED
+run conclusion = failure
+classify-final = success
+classify-final ready = true
+bundle-source = failure
+bundle-source job ID = 105857959486
+failed step = Build fresh Stage2 source bundle
+formal measurement = skipped / not started
+formal aggregate = skipped / not started
+8-cell decision vector = NOT GENERATED
+Stage 2 adjudication = TECHNICAL-INVALID
 ```
 
-このrunがStage 2 scientific namespaceへアクセスできる唯一のcanonical executionである。結果確定前にgeneralization / counterexample判定を行わない。
+監査時点でGitHub connectorから低レベルstderr全文を確実には回収できていないため、具体的な例外文字列は推測していない。formal adjudicationはdurableなGitHub Actions job/step conclusionとfrozen protocol / authorization contractだけに基づく。
+
+`STUDY_3_PROTOCOL.md` ではmandatory execution / provenance / artifact contract違反を `TECHNICAL-INVALID` と定義している。今回はformal measurementへ到達していないため、support / definedness / minimum-nonzero / resource gateに基づく `NON-ESTIMABLE` ではない。またformal hypothesis testが実施されていないため、`NOT-CONFIRMED`、`GENERALIZES-WITHIN-FROZEN-DOMAIN`、`COUNTEREXAMPLE-BOUNDARY-DETECTED` のいずれも割り当てない。
+
+execution authorizationは次を明示的に禁止している。
+
+```text
+fullFreshWorkflowRerunAuthorized = false
+sameEvidenceRepairRerunAuthorized = false
+manualWorkflowDispatchAuthorized = false
+runAttemptGreaterThanOneAuthorized = false
+```
+
+したがってStudy 3 Stage 2はrepair / rerunせず閉鎖する。failure後のscientific seed再読、same-evidence repair、scientific rescueは行っていない。
 
 正本:
 
-- [`prereg/STUDY_3_STAGE_2_FORMAL_HELDOUT_SPEC.json`](prereg/STUDY_3_STAGE_2_FORMAL_HELDOUT_SPEC.json)
+- [`results/stage-2-study3/STUDY_3_STAGE_2_RESULT.json`](results/stage-2-study3/STUDY_3_STAGE_2_RESULT.json)
+- [`checkpoints/2026-09-19-study3-stage2-technical-invalid.md`](checkpoints/2026-09-19-study3-stage2-technical-invalid.md)
 - [`authorizations/STUDY_3_STAGE_2_PRE_EXECUTION_BINDING.json`](authorizations/STUDY_3_STAGE_2_PRE_EXECUTION_BINDING.json)
 - [`authorizations/STUDY_3_STAGE_2_EXECUTION_AUTHORIZATION.json`](authorizations/STUDY_3_STAGE_2_EXECUTION_AUTHORIZATION.json)
 - [`../research-program-decisions/2026-09-19-g4-02-study3-stage2-preaccess-authorization-review.md`](../research-program-decisions/2026-09-19-g4-02-study3-stage2-preaccess-authorization-review.md)
@@ -106,7 +113,7 @@ freshness firewallではseed `40511296` のStudy 2 opening-prefix collisionを�
 
 ## Study 3のtechnical remediation
 
-Study 3はStudy 1/2をrepair/reopenせず、新しいStudy identityとfresh namespaceを持つprospective再検証である。source replayはassigned anchor pair完成時に即停止する。
+Study 3はStudy 1/2をrepair/reopenせず、新しいStudy identityとfresh namespaceを持つprospective再検証として設計された。source replayはassigned anchor pair完成時に即停止する。
 
 ```text
 policy/root-family assignment
@@ -116,7 +123,9 @@ policy/root-family assignment
 -> 即停止
 ```
 
-candidate完成前の停止は、natural terminal / max source plyをroot shortage、engine `relay-limit`をengine-guard censoringとして分離する。
+candidate完成前の停止は、natural terminal / max source plyをroot shortage、engine `relay-limit`をengine-guard censoringとして分離した。
+
+このtechnical remediation自体はStage 0 / Stage 1で成立したが、Stage 2 canonical executionではその後段のsource-bundle pipelineがmandatory artifact contractを完了できなかった。この事故を見てStudy 3の科学的contractを修正・救済しない。
 
 ## Study 2 identity firewall
 
@@ -168,27 +177,45 @@ inference = exact two-sided sign test + fixed-eight Holm-Bonferroni
 ```text
 Stage 1 primary = 40511001..40511384 / CONSUMED-ONCE / QUARANTINED / NO-REUSE
 Stage 1 paired reserve = 41511001..41511384 / UNREAD / NOT-USED / CLOSED-FOR-STAGE1
-Stage 2 primary = 40521001..40521768 / CANONICAL ONE-SHOT RUN 35427427920 IN PROGRESS
-Stage 2 paired reserve = 41521001..41521768 / ACCESS ONLY FOR FROZEN INFRASTRUCTURE-INTERRUPTION RULE
+Stage 2 namespace = CLOSED-FOR-STUDY3 / NO-REUSE / NO-RERUN
+Stage 2 primary = 40521001..40521768 / canonical attempt 1 only
+Stage 2 paired reserve = 41521001..41521768 / CLOSED-FOR-STUDY3 / DO-NOT-ACCESS
 ```
+
+Study 3 closure後、Stage 2 namespaceへ追加アクセスしない。
 
 ## 次の安全な作業
 
-1. canonical Stage 2 run `35427427920` のsource acquisitionをfrozen workflowに従って完了させる。
-2. classifierが必要と判定した場合だけ、frozen rule内でprimary safe retry / paired infrastructure reserveを利用する。
-3. 4 domain × 18 pairのfrozen selectionが成立した場合だけseed-free measurementへ進む。
-4. fixed eight hypothesesに対してexact two-sided sign test + Holm-Bonferroniを適用する。
-5. canonical final artifactからStage 2 decision vectorを記録し、その後にのみG4-02全体の科学的closureを検討する。
+G4-02を継続する場合、Study 3をrepair / rerunしない。独立したsuccessor studyを新しいStudy identity・fresh namespace・authorization boundaryでprospectiveにpreregisterする。
+
+その前提として、今回のtechnical failureから得た科学的outcomeではなく、**source-bundle pipelineをfresh formal execution前にend-to-end technical validationする必要がある**という技術的事実だけを利用する。
+
+successor studyではfresh scientific seed accessより前にnon-scientific synthetic fixtureで次を検証する。
+
+```text
+source fixture generation
+-> source classification
+-> final selection representation
+-> source bundle construction
+-> bundle artifact upload / retrieval contract
+-> measurement input parse
+-> production / independent dry-run agreement
+-> aggregate schema validation
+```
+
+このtechnical gateはscientific effect / direction / p-valueを生成しない。
 
 ## 禁止事項
 
 - Study 1/2 scientific seedの再読・repair・rerun
 - Study 3 Stage 1 fresh populationのrerun
 - Study 3 Stage 1 primary/reserveの再利用
-- Stage 2 workflowのrerun / manual dispatch
+- Study 3 Stage 2 workflowのrerun / repair / manual dispatch
+- Study 3 Stage 2 namespaceへの追加アクセス
 - deterministic scientific failureのreserve救済
 - frozen selection後のreplacement
 - resource ceilingの事後増加
+- Study 3 fresh evidenceを使ったendpoint / direction / domain / sample target等の調整
 - G4-10 depth11 access
 - public AIへの研究結果の自動反映
 - current branchの`main`統合
@@ -201,3 +228,5 @@ Stage 2 paired reserve = 41521001..41521768 / ACCESS ONLY FOR FROZEN INFRASTRUCT
 - [`prereg/STUDY_3_STAGE_2_FORMAL_HELDOUT_SPEC.json`](prereg/STUDY_3_STAGE_2_FORMAL_HELDOUT_SPEC.json)
 - [`results/stage-0-study3/STUDY_3_STAGE_0_TECHNICAL_RESULT.json`](results/stage-0-study3/STUDY_3_STAGE_0_TECHNICAL_RESULT.json)
 - [`results/stage-1-study3/STUDY_3_STAGE_1_COMPATIBILITY_RESULT.json`](results/stage-1-study3/STUDY_3_STAGE_1_COMPATIBILITY_RESULT.json)
+- [`results/stage-2-study3/STUDY_3_STAGE_2_RESULT.json`](results/stage-2-study3/STUDY_3_STAGE_2_RESULT.json)
+- [`checkpoints/2026-09-19-study3-stage2-technical-invalid.md`](checkpoints/2026-09-19-study3-stage2-technical-invalid.md)
