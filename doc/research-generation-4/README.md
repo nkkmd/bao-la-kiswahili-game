@@ -195,9 +195,9 @@ successor study within G4-02 = NOT AUTHORIZED
 
 ## 次に許可される作業
 
-G4-02について追加のscientific executionは行わない。まずG4-02 closureに伴う文書整合性監査を完了する。
+G4-02について追加のscientific executionは行わない。G4-02 closureに伴う文書整合性監査は完了済みであり、追加のclosure作業を前提にしない。
 
-その後、Research Generation 4を継続する場合は、G4-03またはG4-04など次のAgendaについて個別authorization reviewが必要である。G4-01のeligibility gateを満たしていることだけではfresh scientific executionは承認されない。
+Research Generation 4を継続する場合は、G4-03またはG4-04など次のAgendaについて個別authorization reviewが必要である。G4-01のeligibility gateを満たしていることだけではfresh scientific executionは承認されない。
 
 G4-10 depth11は引き続きprotectedであり、明示authorizationなしにアクセスしない。
 
