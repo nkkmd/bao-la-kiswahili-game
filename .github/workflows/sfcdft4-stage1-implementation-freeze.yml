@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   freeze:
-    name: Generate and freeze Study4 Stage1 implementation
+    name: Generate and freeze Study4 Stage1 non-workflow implementation
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -54,15 +54,13 @@ jobs:
           NODE
           git diff --check
 
-      - name: Commit frozen Study4 Stage1 implementation
+      - name: Commit frozen Study4 Stage1 non-workflow implementation
         run: |
           set -euo pipefail
           git config user.name 'Sawa'
           git config user.email '72678394+nkkmd@users.noreply.github.com'
           git add \
             .github/actions/sfcdft4-stage1-acquire-slot/action.yml \
-            .github/workflows/sfcdft4-stage1-github-actions.yml \
-            .github/workflows/sfcdft4-stage1-preflight.yml \
             doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_1_COMPATIBILITY_SPEC.json \
             tools/experiments/lib/sfcdft4-source-production.js \
             tools/experiments/lib/sfcdft4-source-independent.js \
