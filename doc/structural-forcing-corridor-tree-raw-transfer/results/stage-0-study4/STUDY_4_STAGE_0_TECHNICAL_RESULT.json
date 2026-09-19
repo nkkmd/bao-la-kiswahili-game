@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY4",
+  "stageId": "SFCDFT4-S0-E2E-TECHNICAL-2026-09-19-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE-E2E",
+  "decision": "STAGE0-PASS",
+  "artifactRoundTrip": {
+    "uploadBoundary": "GITHUB-ACTIONS-UPLOAD-ARTIFACT",
+    "retrievalBoundary": "GITHUB-ACTIONS-DOWNLOAD-ARTIFACT",
+    "retrievedBundleValidated": true,
+    "bundleCoreSha256": "ee402806f362ecb483f04353632d2e829ee13175bcab91b8b4038a091a3df01f"
+  },
+  "gates": {
+    "deterministicSyntheticSourceFixture": true,
+    "deterministicSourceClassification": true,
+    "deterministicFrozenSelectionRepresentation": true,
+    "productionEquivalentSourceBundleConstruction": true,
+    "artifactUploadRetrievalRoundTrip": true,
+    "retrievedBundleDigestManifestExact": true,
+    "measurementConsumerParse": true,
+    "productionIndependentDryRunExact": true,
+    "aggregateFixedEightSchema": true,
+    "negativeFixturesFailClosed": true
+  },
+  "negativeFixturesPassed": [
+    "missing-bundle",
+    "malformed-json",
+    "schema-version-mismatch",
+    "missing-selected-pair",
+    "duplicate-pair-identity",
+    "bundle-digest-mismatch",
+    "manifest-content-mismatch",
+    "wrong-study-stage-identity",
+    "scientific-seed-marker-contamination"
+  ],
+  "selectedPairCount": 8,
+  "sourceFixtureCount": 10,
+  "aggregateStructureSha256": "35990d0c17dfac95c3c943903d83f9a74f1e0ef09d973c78b306d1990825ce3d",
+  "freshScientificSeedReads": 0,
+  "scientificOutputsGenerated": 0,
+  "scientificEffectMagnitudeGenerated": false,
+  "effectDirectionGenerated": false,
+  "pValueGenerated": false,
+  "generalizationDecisionGenerated": false,
+  "counterexampleDecisionGenerated": false,
+  "automaticStage1Authorization": false,
+  "stage1FreshScientificAccessAuthorized": false,
+  "stage2FreshScientificAccessAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "deterministicCoreSha256": "ebcffb9ab33acbafa6f5344740f0cc93d12fbd330911a2f96cac76b6c66d2133"
+}
