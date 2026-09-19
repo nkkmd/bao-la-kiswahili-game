@@ -1,0 +1,62 @@
+name: SFCDFT Study3 Stage1 identity firewall materialization
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study3-prereg
+    paths:
+      - tools/experiments/materialize-sfcdft3-stage1-firewall.js
+      - .github/workflows/sfcdft3-stage1-firewall-materialization.yml
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  materialize:
+    name: Materialize Study3 Stage1 identity firewall
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen Study3 branch
+        uses: actions/checkout@v4
+
+      - name: Verify seed-free materializer syntax
+        run: node --check tools/experiments/materialize-sfcdft3-stage1-firewall.js
+
+      - name: Materialize identity-only firewall from immutable Study3 Stage1 artifacts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf artifacts/sfcdft3-stage1-firewall
+          node tools/experiments/materialize-sfcdft3-stage1-firewall.js artifacts/sfcdft3-stage1-firewall
+
+      - name: Verify firewall output boundary
+        run: |
+          set -euo pipefail
+          test -s artifacts/sfcdft3-stage1-firewall/MANIFEST.json
+          test -s artifacts/sfcdft3-stage1-firewall/SOURCE_TRAJECTORY_SHA256.txt
+          test -s artifacts/sfcdft3-stage1-firewall/RAW_ROOT_SHA256.txt
+          test -s artifacts/sfcdft3-stage1-firewall/SOURCE_RECORD_INDEX.jsonl
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = JSON.parse(fs.readFileSync('artifacts/sfcdft3-stage1-firewall/MANIFEST.json','utf8'));
+          if (p.firewallId !== 'G4-02-SFCDFT-STUDY3-STAGE1-IDENTITY-FIREWALL') throw new Error('firewall identity mismatch');
+          if (p.sourceArtifactCounts.primaryStart !== 384) throw new Error('primary START count mismatch');
+          if (p.sourceArtifactCounts.sealedSource !== 384) throw new Error('sealed source count mismatch');
+          if (p.sourceArtifactCounts.deterministicFailure !== 0) throw new Error('failure count mismatch');
+          if (p.sourceArtifactCounts.pairedReserveStart !== 0 || p.sourceArtifactCounts.retry !== 0) throw new Error('reserve/retry boundary violated');
+          if (p.scientificSeedReplay !== false || p.scientificEndpointLoaded !== false || p.scientificResultLoaded !== false) throw new Error('seed-free identity-only boundary violated');
+          if (!/^[0-9a-f]{64}$/.test(p.identityCoreSha256)) throw new Error('identity core malformed');
+          console.log(JSON.stringify({firewallId:p.firewallId, identityCounts:p.identityCounts, sourceStatusCounts:p.sourceStatusCounts, identityCoreSha256:p.identityCoreSha256}));
+          NODE
+
+      - name: Upload Study3 Stage1 identity firewall artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-stage1-identity-firewall-${{ github.run_id }}
+          path: artifacts/sfcdft3-stage1-firewall/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
