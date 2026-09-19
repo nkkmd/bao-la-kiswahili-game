@@ -95,46 +95,61 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     continue-on-error: true
-    strategy: {fail-fast: false, max-parallel: 2, matrix: '${{ fromJSON(needs.classify-primary.outputs.retry_a) }}'}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_a) }}
     steps:
       - if: ${{ matrix.slot != 0 }}
         uses: actions/checkout@v4
       - if: ${{ matrix.slot != 0 }}
         uses: ./.github/actions/sfcdft3-stage2-acquire-slot
         with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
   retry-primary-b:
     needs: classify-primary
     if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     continue-on-error: true
-    strategy: {fail-fast: false, max-parallel: 2, matrix: '${{ fromJSON(needs.classify-primary.outputs.retry_b) }}'}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_b) }}
     steps:
       - if: ${{ matrix.slot != 0 }}
         uses: actions/checkout@v4
       - if: ${{ matrix.slot != 0 }}
         uses: ./.github/actions/sfcdft3-stage2-acquire-slot
         with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
   retry-primary-c:
     needs: classify-primary
     if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     continue-on-error: true
-    strategy: {fail-fast: false, max-parallel: 2, matrix: '${{ fromJSON(needs.classify-primary.outputs.retry_c) }}'}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_c) }}
     steps:
       - if: ${{ matrix.slot != 0 }}
         uses: actions/checkout@v4
       - if: ${{ matrix.slot != 0 }}
         uses: ./.github/actions/sfcdft3-stage2-acquire-slot
         with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
   retry-primary-d:
     needs: classify-primary
     if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     continue-on-error: true
-    strategy: {fail-fast: false, max-parallel: 2, matrix: '${{ fromJSON(needs.classify-primary.outputs.retry_d) }}'}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_d) }}
     steps:
       - if: ${{ matrix.slot != 0 }}
         uses: actions/checkout@v4
@@ -264,7 +279,7 @@ jobs:
           if(r.studyId!=='SFCDFT-STUDY3'||r.stageId!=='SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1')throw new Error('identity mismatch');
           if(r.formalFamilySize!==8||r.studyWideScientificVerdictGenerated!==false)throw new Error('formal boundary mismatch');
           if(r.mainIntegrationAuthorized!==false||r.publicAiChange!==false)throw new Error('product boundary mismatch');
-          console.log(JSON.stringify({decisionVector:r.decisionVector,deterministicCoreSha256:r.deterministicCoreSha256}));
+          console.log(JSON.stringify({decision:r.decision||null,decisionVector:r.decisionVector,deterministicCoreSha256:r.deterministicCoreSha256}));
           NODE
       - uses: actions/upload-artifact@v4
         with:
