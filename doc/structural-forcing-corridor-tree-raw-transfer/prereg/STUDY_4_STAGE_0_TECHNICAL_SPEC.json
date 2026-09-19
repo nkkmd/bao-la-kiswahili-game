@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY4",
+  "stageId": "SFCDFT4-S0-E2E-TECHNICAL-2026-09-19-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE-E2E",
+  "statusAtFreeze": "FROZEN-BEFORE-EXECUTION",
+  "scientificSeedAccessAuthorized": false,
+  "technicalSeedRange": {
+    "start": 49041001,
+    "end": 49041256,
+    "classification": "NON-SCIENTIFIC"
+  },
+  "purpose": "Validate the complete source-bundle artifact path with synthetic fixtures before any Study4 fresh scientific access.",
+  "requiredPipeline": [
+    "synthetic-source-fixture-generation",
+    "source-classification",
+    "frozen-selection-representation",
+    "source-bundle-construction",
+    "artifact-upload",
+    "artifact-retrieval",
+    "digest-manifest-verification",
+    "measurement-input-parse",
+    "production-independent-dry-run-exact-agreement",
+    "aggregate-schema-validation"
+  ],
+  "mandatoryPositiveFixtures": [
+    "deterministic-synthetic-source-set",
+    "candidate-pair-complete",
+    "root-shortage-record",
+    "engine-guard-censoring-record",
+    "first16-opening-prefix-present-for-candidate",
+    "four-domain-selection-representation",
+    "bundle-build-with-production-equivalent-schema",
+    "artifact-upload-download-roundtrip",
+    "retrieved-bundle-canonical-digest-match",
+    "measurement-consumer-parse",
+    "production-independent-structure-digest-equality",
+    "fixed-eight-aggregate-schema-acceptance"
+  ],
+  "mandatoryNegativeFixtures": [
+    "missing-bundle-fails-closed",
+    "malformed-json-fails-closed",
+    "schema-version-mismatch-fails-closed",
+    "missing-selected-pair-fails-closed",
+    "duplicate-pair-identity-fails-closed",
+    "bundle-digest-mismatch-fails-closed",
+    "manifest-content-mismatch-fails-closed",
+    "wrong-study-stage-identity-fails-closed",
+    "scientific-seed-marker-contamination-fails-closed"
+  ],
+  "exactness": {
+    "canonicalScientificJson": "SORTED-KEY-JSON",
+    "digest": "SHA-256",
+    "productionIndependentTolerance": 0,
+    "bundleManifestTolerance": 0
+  },
+  "forbiddenOutputs": [
+    "human-readable-scientific-endpoint-magnitude",
+    "paired-effect-direction",
+    "p-value",
+    "holm-decision",
+    "generalization-decision",
+    "counterexample-decision"
+  ],
+  "passCriteria": {
+    "allMandatoryPositiveFixturesPass": true,
+    "allMandatoryNegativeFixturesFailClosed": true,
+    "artifactUploadRetrievalRoundtripPass": true,
+    "retrievedBundleDigestExact": true,
+    "measurementConsumerParsePass": true,
+    "productionIndependentExact": true,
+    "aggregateSchemaPass": true,
+    "freshScientificSeedReads": 0,
+    "scientificOutputsGenerated": 0
+  },
+  "failDecision": "TECHNICAL-INVALID",
+  "passDecision": "STAGE0-PASS",
+  "automaticStage1AuthorizationOnPass": false,
+  "stage1PreAccessReviewRequired": true,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
