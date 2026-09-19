@@ -3,12 +3,26 @@
   "studyId": "SFCDFT-STUDY4",
   "stageId": "SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1",
   "status": "FROZEN-PRE-EXECUTION",
-  "bindingBaseHead": "020110c8be723fd8132db94126e1dfa937438282",
-  "implementationFreezeHead": "020110c8be723fd8132db94126e1dfa937438282",
+  "bindingBaseHead": "f7738b621f986b7d0a9fb9397f5c3bd2fdcbf3dd",
+  "implementationFreezeHead": "f7738b621f986b7d0a9fb9397f5c3bd2fdcbf3dd",
   "preAccessReview": {
     "decision": "PASS / STAGE2-PREPARATION-AUTHORIZED / FRESH-EXECUTION-NOT-YET-AUTHORIZED",
     "token": "SFCDFT4-STAGE2-PREACCESS-PASS",
     "gitBlobSha": "a7993fa078740b7f5e39614f9cc31ea46a1b522a"
+  },
+  "seedFreePreflightRepairHistory": {
+    "priorRunId": 35447081974,
+    "priorRunAttempt": 1,
+    "freshScientificSeedReads": 0,
+    "scientificOutputGenerated": false,
+    "buildJobConclusion": "success",
+    "retrievedBundleDigestVerified": true,
+    "measurementConsumerParsed": true,
+    "fixedEightProductionIndependentExact": true,
+    "aggregateSchemaVerified": true,
+    "failureClass": "CROSS-JOB-TEMP-FILE-NOT-RELAYED",
+    "repairScope": "relay seed-free classifier diagnostics through immutable workflow artifact only",
+    "oldRunRerunAuthorized": false
   },
   "prerequisites": {
     "stage0": {
@@ -83,7 +97,7 @@
     "tools/experiments/run-sfcdft4-stage2-formal-aggregate.js": "c4346f377694d55df1ddf13a8691333a4db1950f",
     "tools/experiments/verify-sfcdft4-stage2-actions-authorization.js": "716c777c2948f2583fe005912f18063dc70ff1b2",
     ".github/actions/sfcdft4-stage2-acquire-slot/action.yml": "35715faafbbcd93d47516fc7253440d44144bc94",
-    ".github/workflows/sfcdft4-stage2-preflight.yml": "7ee4d3510bb1480cb76acf05742b9346f0a96b64",
+    ".github/workflows/sfcdft4-stage2-preflight.yml": "1b9ce6ddc0946c947c0a682a86e01cf923c0e2d0",
     ".github/workflows/sfcdft4-stage2-github-actions.yml": "ba1a75b87e83f430a0973b9abe7c162a74ac5dd5"
   },
   "freshScientificSeedAccessAuthorized": false,
