@@ -1,0 +1,289 @@
+name: SFCDFT3 Stage 2 formal held-out execution
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study3-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_2_EXECUTION_AUTHORIZATION.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: sfcdft3-stage2-fresh-execution
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      source: ${{ steps.matrices.outputs.source }}
+      measurement: ${{ steps.matrices.outputs.measurement }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 2}
+      - name: Reject workflow rerun attempts
+        run: test "$GITHUB_RUN_ATTEMPT" = '1'
+      - name: Require first creation of final Stage2 authorization
+        run: |
+          set -euo pipefail
+          auth='doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_2_EXECUTION_AUTHORIZATION.json'
+          test -f "$auth"
+          if git cat-file -e "${GITHUB_SHA}^:${auth}" 2>/dev/null; then echo 'final Stage2 authorization existed in parent' >&2; exit 1; fi
+      - name: Verify frozen Stage2 authorization and binding
+        run: node tools/experiments/verify-sfcdft3-stage2-actions-authorization.js
+      - name: Generate frozen matrices
+        id: matrices
+        run: node tools/experiments/generate-sfcdft3-stage2-actions-matrices.js
+
+  acquire-primary:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.gate.outputs.source) }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: s1
+        continue-on-error: true
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.s1 }}', role: PRIMARY}
+      - id: s2
+        continue-on-error: true
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.s2 }}', role: PRIMARY}
+      - id: s3
+        continue-on-error: true
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.s3 }}', role: PRIMARY}
+      - id: s4
+        continue-on-error: true
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.s4 }}', role: PRIMARY}
+      - if: always()
+        run: test '${{ steps.s1.outcome }}' = success && test '${{ steps.s2.outcome }}' = success && test '${{ steps.s3.outcome }}' = success && test '${{ steps.s4.outcome }}' = success
+
+  classify-primary:
+    if: ${{ always() && needs.gate.result == 'success' }}
+    needs: [gate, acquire-primary]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      fatal: ${{ steps.classify.outputs.fatal }}
+      retry_a: ${{ steps.classify.outputs.retry_a }}
+      retry_b: ${{ steps.classify.outputs.retry_b }}
+      retry_c: ${{ steps.classify.outputs.retry_c }}
+      retry_d: ${{ steps.classify.outputs.retry_d }}
+    steps:
+      - uses: actions/checkout@v4
+      - env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" --jq '.artifacts[].name' > artifact-names.txt
+      - id: classify
+        run: node tools/experiments/classify-sfcdft3-stage2-actions-artifacts.js --mode primary --names artifact-names.txt --summary primary-classification.json
+      - uses: actions/upload-artifact@v4
+        with: {name: sfcdft3-s2-primary-classification, path: primary-classification.json, retention-days: 90}
+
+  retry-primary-a:
+    needs: classify-primary
+    if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_a) }}
+    steps:
+      - if: ${{ matrix.slot != 0 }}
+        uses: actions/checkout@v4
+      - if: ${{ matrix.slot != 0 }}
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
+  retry-primary-b:
+    needs: classify-primary
+    if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_b) }}
+    steps:
+      - if: ${{ matrix.slot != 0 }}
+        uses: actions/checkout@v4
+      - if: ${{ matrix.slot != 0 }}
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
+  retry-primary-c:
+    needs: classify-primary
+    if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_c) }}
+    steps:
+      - if: ${{ matrix.slot != 0 }}
+        uses: actions/checkout@v4
+      - if: ${{ matrix.slot != 0 }}
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
+  retry-primary-d:
+    needs: classify-primary
+    if: ${{ needs.classify-primary.outputs.fatal != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.classify-primary.outputs.retry_d) }}
+    steps:
+      - if: ${{ matrix.slot != 0 }}
+        uses: actions/checkout@v4
+      - if: ${{ matrix.slot != 0 }}
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.slot }}', role: PRIMARY}
+
+  classify-post-retry:
+    if: ${{ always() && needs.gate.result == 'success' }}
+    needs: [gate, classify-primary, retry-primary-a, retry-primary-b, retry-primary-c, retry-primary-d]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      fatal: ${{ steps.classify.outputs.fatal }}
+      reserve_matrix: ${{ steps.classify.outputs.reserve_matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" --jq '.artifacts[].name' > artifact-names.txt
+      - id: classify
+        run: node tools/experiments/classify-sfcdft3-stage2-actions-artifacts.js --mode post-retry --names artifact-names.txt --summary post-retry-classification.json
+      - uses: actions/upload-artifact@v4
+        with: {name: sfcdft3-s2-post-retry-classification, path: post-retry-classification.json, retention-days: 90}
+
+  reserve:
+    needs: classify-post-retry
+    if: ${{ needs.classify-post-retry.outputs.fatal != 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.classify-post-retry.outputs.reserve_matrix) }}
+    steps:
+      - if: ${{ matrix.slot != 0 }}
+        uses: actions/checkout@v4
+      - if: ${{ matrix.slot != 0 }}
+        uses: ./.github/actions/sfcdft3-stage2-acquire-slot
+        with: {slot-seed: '${{ matrix.slot }}', role: PAIRED-RESERVE}
+
+  classify-final:
+    if: ${{ always() && needs.gate.result == 'success' }}
+    needs: [gate, classify-post-retry, reserve]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      ready: ${{ steps.classify.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" --jq '.artifacts[].name' > artifact-names.txt
+      - id: classify
+        run: node tools/experiments/classify-sfcdft3-stage2-actions-artifacts.js --mode final --names artifact-names.txt --summary final-classification.json
+      - uses: actions/upload-artifact@v4
+        with: {name: sfcdft3-s2-final-classification, path: final-classification.json, retention-days: 90}
+      - run: test '${{ steps.classify.outputs.ready }}' = 'true'
+
+  bundle-source:
+    needs: [gate, classify-final]
+    if: ${{ needs.classify-final.outputs.ready == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    outputs:
+      selection_ready: ${{ steps.selection.outputs.selection_ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {pattern: sfcdft3-s2-source-*, path: raw-source-artifacts}
+      - run: node tools/experiments/bundle-sfcdft3-stage2-source.js --input raw-source-artifacts --output artifacts/sfcdft3-stage2/bundle
+      - id: selection
+        run: |
+          node - <<'NODE' >> "$GITHUB_OUTPUT"
+          const r=require('./artifacts/sfcdft3-stage2/bundle/SELECTED_SOURCE_MANIFEST.json');console.log(`selection_ready=${r.selectionReady?'true':'false'}`);
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-s2-source-bundle-${{ github.run_id }}
+          path: artifacts/sfcdft3-stage2/bundle
+          if-no-files-found: error
+          retention-days: 90
+
+  measure:
+    needs: [gate, bundle-source]
+    if: ${{ needs.bundle-source.outputs.selection_ready == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.gate.outputs.measurement) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {name: 'sfcdft3-s2-source-bundle-${{ github.run_id }}', path: source-bundle}
+      - run: |
+          mkdir -p "artifacts/sfcdft3-stage2/measurement/${{ matrix.task }}"
+          node tools/experiments/run-sfcdft3-stage2-measurement-task.js --bundle source-bundle --task '${{ matrix.task }}' --output "artifacts/sfcdft3-stage2/measurement/${{ matrix.task }}/result.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-s2-measurement-${{ matrix.task }}
+          path: artifacts/sfcdft3-stage2/measurement/${{ matrix.task }}/result.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    if: ${{ always() && needs.bundle-source.result == 'success' }}
+    needs: [bundle-source, measure]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {name: 'sfcdft3-s2-source-bundle-${{ github.run_id }}', path: source-bundle}
+      - if: ${{ needs.bundle-source.outputs.selection_ready == 'true' }}
+        uses: actions/download-artifact@v4
+        with: {pattern: sfcdft3-s2-measurement-*, path: measurements}
+      - if: ${{ needs.bundle-source.outputs.selection_ready != 'true' }}
+        run: mkdir -p measurements
+      - run: |
+          mkdir -p artifacts/sfcdft3-stage2/final
+          node tools/experiments/run-sfcdft3-stage2-formal-aggregate.js --bundle source-bundle --measurements measurements --output artifacts/sfcdft3-stage2/final/STUDY_3_STAGE_2_FORMAL_RESULT.json
+      - name: Verify fixed-eight formal output
+        run: |
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft3-stage2/final/STUDY_3_STAGE_2_FORMAL_RESULT.json');
+          if(r.studyId!=='SFCDFT-STUDY3'||r.stageId!=='SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1')throw new Error('identity mismatch');
+          if(r.formalFamilySize!==8||r.studyWideScientificVerdictGenerated!==false)throw new Error('formal boundary mismatch');
+          if(r.mainIntegrationAuthorized!==false||r.publicAiChange!==false)throw new Error('product boundary mismatch');
+          console.log(JSON.stringify({decision:r.decision||null,decisionVector:r.decisionVector,deterministicCoreSha256:r.deterministicCoreSha256}));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-s2-final-result-${{ github.run_id }}
+          path: artifacts/sfcdft3-stage2/final/STUDY_3_STAGE_2_FORMAL_RESULT.json
+          if-no-files-found: error
+          retention-days: 90

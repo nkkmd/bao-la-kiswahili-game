@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY4",
+  "agendaId": "G4-02",
+  "evidenceProgram": "Research Generation 4",
+  "statusAtFreeze": "FROZEN-BEFORE-FRESH-SCIENTIFIC-SEED-ACCESS",
+  "authorizationDecision": "SFCDFT-STUDY4-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-19-g4-02-study4-authorization-review.md",
+  "researchBranch": "research/g4-02-sfcdft-study4-prereg",
+  "baselineMainHead": "c5689d70cd017171e7738140ba9186a117f732f1",
+  "parentStudy3ClosureHead": "91e83b0757c02cd11e2a5f463407a342a91ce3ce",
+  "scientificContract": {
+    "changedFromStudy3": false,
+    "claims": [
+      {
+        "claimId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+        "frozenDirection": "MTAJI-GREATER"
+      },
+      {
+        "claimId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+        "frozenDirection": "NAMUA-GREATER"
+      }
+    ],
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "validatedTransformSet": [],
+    "stage1PairsPerDomain": 8,
+    "stage2PairsPerDomain": 18,
+    "formalHypothesisCount": 8,
+    "familyWiseAlpha": {"numerator": "1", "denominator": "20"},
+    "test": "EXACT-TWO-SIDED-SIGN-TEST",
+    "multiplicity": "FIXED-EIGHT-HOLM-BONFERRONI",
+    "minimumNonzeroPerHypothesis": 12
+  },
+  "technicalChangeFromStudy3": {
+    "scientificContractChange": false,
+    "changeClass": "PRE-FRESH-ACCESS-END-TO-END-ARTIFACT-PIPELINE-VALIDATION",
+    "allowedBasis": "Study3 technical failure fact only",
+    "forbiddenBasis": "Study3 fresh scientific outcome",
+    "pipeline": [
+      "synthetic-source-fixture-generation",
+      "source-classification",
+      "frozen-selection-representation",
+      "source-bundle-construction",
+      "artifact-upload",
+      "artifact-retrieval",
+      "digest-manifest-verification",
+      "measurement-input-parse",
+      "production-independent-dry-run-exact-agreement",
+      "aggregate-schema-validation"
+    ]
+  },
+  "sourcePolicies": [
+    "LGTTCI-P1-UNIFORM-LEGAL",
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  ],
+  "rootFamilies": [
+    {
+      "id": "LGTTCI-RF1-MID-ANCHOR",
+      "namua": "exact ply 20 / nonterminal / phase=namua",
+      "mtaji": "first nonterminal phase=mtaji at ply>=40"
+    },
+    {
+      "id": "LGTTCI-RF2-OFFSET-ANCHOR",
+      "namua": "exact ply 28 / nonterminal / phase=namua",
+      "mtaji": "exact ply 52 / nonterminal / phase=mtaji"
+    }
+  ],
+  "domains": [
+    {"domainId": "SFCDFT4-D1-P1-RF1", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT4-D2-P1-RF2", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"},
+    {"domainId": "SFCDFT4-D3-P2-RF1", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT4-D4-P2-RF2", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"}
+  ],
+  "sourceReplay": {
+    "mode": "ANCHOR-BOUNDED-DECISION-PREFIX",
+    "maxSourcePly": 240,
+    "stopImmediatelyWhenAssignedPairComplete": true,
+    "postCandidateContinuationGenerated": false,
+    "trajectoryIdentitySemantics": "MOVE-KEY-PREFIX-THROUGH-FIRST-SOURCE-DECISION-STOP",
+    "normalStatuses": [
+      "CANDIDATE-PAIR-COMPLETE",
+      "NO-CANDIDATE-ROOT-SHORTAGE",
+      "NO-CANDIDATE-ENGINE-GUARD-CENSORING"
+    ],
+    "candidateOpeningPrefixLength": 16,
+    "candidateRequiresOpeningPrefix": true
+  },
+  "stages": {
+    "stage0": {
+      "stageId": "SFCDFT4-S0-E2E-TECHNICAL-2026-09-19-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE-E2E",
+      "scientificSeedReadAuthorized": false,
+      "technicalSeedStart": 49041001,
+      "technicalSeedEnd": 49041256
+    },
+    "stage1": {
+      "stageId": "SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1",
+      "evidenceClass": "FRESH-COMPATIBILITY",
+      "scientificSeedReadAuthorized": false,
+      "primarySeedStart": 40611001,
+      "primarySeedEnd": 40611384,
+      "primaryCount": 384,
+      "pairedReserveSeedStart": 41611001,
+      "pairedReserveSeedEnd": 41611384,
+      "pairedReserveCount": 384,
+      "maxInfrastructureReplacements": 16,
+      "maxFreshSeedReads": 400
+    },
+    "stage2": {
+      "stageId": "SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "scientificSeedReadAuthorized": false,
+      "primarySeedStart": 40621001,
+      "primarySeedEnd": 40621768,
+      "primaryCount": 768,
+      "pairedReserveSeedStart": 41621001,
+      "pairedReserveSeedEnd": 41621768,
+      "pairedReserveCount": 768,
+      "maxInfrastructureReplacements": 24,
+      "maxFreshSeedReads": 792
+    }
+  },
+  "freshness": {
+    "priorScientificNamespacesForbidden": [
+      "40311001..40311384",
+      "41311001..41311384",
+      "40321001..40321768",
+      "41321001..41321768",
+      "40411001..40411384",
+      "41411001..41411384",
+      "40421001..40421768",
+      "41421001..41421768",
+      "40511001..40511384",
+      "41511001..41511384",
+      "40521001..40521768",
+      "41521001..41521768"
+    ],
+    "study3DurableFirewallRequiredBeforeStage1Authorization": true,
+    "study3DurableFirewallSource": "EXISTING-IMMUTABLE-ARTIFACTS-ONLY",
+    "study3ScientificSeedRereadAuthorized": false,
+    "study3SourceRegenerationAuthorized": false,
+    "requiredIdentityClasses": [
+      "sourceTrajectorySha256",
+      "openingPrefixSha256",
+      "rootRawSha256"
+    ]
+  },
+  "stage0RequiredGates": [
+    "synthetic-source-fixture-deterministic",
+    "source-classifier-deterministic",
+    "frozen-selection-representation-deterministic",
+    "production-equivalent-source-bundle-build-success",
+    "artifact-upload-success",
+    "artifact-retrieval-success",
+    "retrieved-bundle-digest-manifest-exact",
+    "measurement-consumer-parses-retrieved-bundle",
+    "production-independent-dry-run-exact",
+    "aggregate-fixed-eight-schema-valid",
+    "missing-malformed-digest-mismatch-fail-closed",
+    "fresh-scientific-seed-reads-zero",
+    "scientific-output-zero"
+  ],
+  "decisionMapping": {
+    "stage0AllMandatoryGatesPass": "STAGE0-PASS",
+    "stage0MandatoryArtifactPipelineFailure": "TECHNICAL-INVALID",
+    "stage1AllDomainsTargetAndExact": "FORMAL-PREPARATION-ELIGIBLE",
+    "supportResourceOrEngineGuardCensoringWithoutIntegrityFailure": "NON-ESTIMABLE",
+    "integrityAuthorizationExactnessExecutionProvenanceOrArtifactFailure": "TECHNICAL-INVALID"
+  },
+  "resourceCeilings": {
+    "maxDistinctRawStates": 100000,
+    "maxUniqueTransitions": 750000,
+    "maxParentExpansions": 100000,
+    "maxLegalMoveEvaluations": 750000,
+    "maxTreeNodeOccurrences": 1000000000,
+    "maxElapsedMs": 180000,
+    "maxPeakRssBytes": 4294967296,
+    "maxRootArtifactBytes": 67108864,
+    "stage1MaxSelectedPairs": 32,
+    "stage1MaxRoots": 64
+  },
+  "scientificOutputsAuthorizedAtFreeze": {
+    "endpointMagnitude": false,
+    "effectDirection": false,
+    "pValue": false,
+    "generalizationDecision": false,
+    "counterexampleDecision": false
+  },
+  "protectedEvidence": {
+    "study1ScientificReplay": false,
+    "study2ScientificReplay": false,
+    "study3Stage1ScientificReplay": false,
+    "study3Stage2RepairOrRerun": false,
+    "study3Stage2AdditionalNamespaceAccess": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  },
+  "authorizationBoundaryAtFreeze": {
+    "preregistration": true,
+    "stage0NonScientificWork": true,
+    "stage1FreshScientificAccess": false,
+    "stage2FreshScientificAccess": false,
+    "mainIntegration": false,
+    "publicAiChange": false
+  }
+}

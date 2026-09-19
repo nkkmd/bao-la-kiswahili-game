@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY4",
+  "stageId": "SFCDFT4-S0-E2E-TECHNICAL-2026-09-19-v1",
+  "bindingDate": "2026-09-19",
+  "bindingDecision": "SFCDFT4-STAGE0-PRE-EXECUTION-BOUND",
+  "authorizedParentHead": "db97379844cff10b77afd6dbe6208e9a16c01bcb",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-19-g4-02-study4-authorization-review.md",
+  "freshScientificSeedReadsAtBinding": 0,
+  "stage1ScientificSeedAccess": false,
+  "stage2ScientificSeedAccess": false,
+  "technicalFixtureSeedStart": 49041001,
+  "technicalFixtureSeedEnd": 49041256,
+  "gitBlobBindings": {
+    "doc/structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md": "3f913f8a3ef969a6d1393ca8c9904e9aec5927a3",
+    "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_SPEC.json": "effc9379f7c0ebc5b46f27f923d06130ee54c094",
+    "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_0_TECHNICAL_SPEC.json": "a05ca8cd088380c25d0099df71af2d4561fdf1c3",
+    "doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_PREREG_STAGE0_AUTHORIZATION.json": "2ab0e5f467878f216d1acb9176d64e57a00d2fc5",
+    "tools/experiments/lib/sfcdft4-artifact-pipeline.js": "239c6746c09c546de9fc6d57c0e98457d231486e",
+    "tools/experiments/run-sfcdft4-stage0-e2e.js": "8e299e078ee9cc17385b263414153aa855a3490b",
+    ".github/workflows/sfcdft4-stage0-e2e-github-actions.yml": "849b4ea90b289d46332ae50c5baaf11786ee0cfb"
+  },
+  "scientificOutputsAuthorized": false,
+  "automaticStage1Authorization": false,
+  "workflowRerunAuthorized": false,
+  "runAttemptGreaterThanOneAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}

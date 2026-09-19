@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY3",
+  "agendaId": "G4-02",
+  "evidenceProgram": "Research Generation 4",
+  "statusAtFreeze": "FROZEN-BEFORE-FRESH-SCIENTIFIC-SEED-ACCESS",
+  "authorizationDecision": "SFCDFT-STUDY3-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0",
+  "researchBranch": "research/g4-02-sfcdft-study3-prereg",
+  "baselineMainHead": "c5689d70cd017171e7738140ba9186a117f732f1",
+  "parentStudy2ClosureHead": "06515c5f8c3462e1265b40be74283f3a4deb933d",
+  "scientificContract": {
+    "claims": [
+      {
+        "claimId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+        "frozenDirection": "MTAJI-GREATER"
+      },
+      {
+        "claimId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+        "frozenDirection": "NAMUA-GREATER"
+      }
+    ],
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "validatedTransformSet": [],
+    "stage1PairsPerDomain": 8,
+    "stage2PairsPerDomain": 18,
+    "formalHypothesisCount": 8,
+    "familyWiseAlpha": {"numerator": "1", "denominator": "20"},
+    "test": "EXACT-TWO-SIDED-SIGN-TEST",
+    "multiplicity": "FIXED-EIGHT-HOLM-BONFERRONI"
+  },
+  "sourcePolicies": [
+    "LGTTCI-P1-UNIFORM-LEGAL",
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  ],
+  "rootFamilies": [
+    {
+      "id": "LGTTCI-RF1-MID-ANCHOR",
+      "namua": "exact ply 20 / nonterminal / phase=namua",
+      "mtaji": "first nonterminal phase=mtaji at ply>=40"
+    },
+    {
+      "id": "LGTTCI-RF2-OFFSET-ANCHOR",
+      "namua": "exact ply 28 / nonterminal / phase=namua",
+      "mtaji": "exact ply 52 / nonterminal / phase=mtaji"
+    }
+  ],
+  "domains": [
+    {"domainId": "SFCDFT3-D1-P1-RF1", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT3-D2-P1-RF2", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"},
+    {"domainId": "SFCDFT3-D3-P2-RF1", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT3-D4-P2-RF2", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"}
+  ],
+  "sourceReplay": {
+    "mode": "ANCHOR-BOUNDED-DECISION-PREFIX",
+    "maxSourcePly": 240,
+    "stopImmediatelyWhenAssignedPairComplete": true,
+    "postCandidateContinuationGenerated": false,
+    "trajectoryIdentitySemantics": "MOVE-KEY-PREFIX-THROUGH-FIRST-SOURCE-DECISION-STOP",
+    "normalStatuses": [
+      "CANDIDATE-PAIR-COMPLETE",
+      "NO-CANDIDATE-ROOT-SHORTAGE",
+      "NO-CANDIDATE-ENGINE-GUARD-CENSORING"
+    ],
+    "relayLimit": {
+      "classification": "NO-CANDIDATE-ENGINE-GUARD-CENSORING",
+      "scientificTerminal": false,
+      "winnerUsableAsScientificEvidence": false,
+      "measurementEligible": false,
+      "reserveReplacementEligible": false
+    },
+    "candidateOpeningPrefixLength": 16,
+    "candidateRequiresOpeningPrefix": true
+  },
+  "stages": {
+    "stage0": {
+      "stageId": "SFCDFT3-S0-TECHNICAL-2026-09-19-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "scientificSeedReadAuthorized": false,
+      "technicalSeedRange": "49031001..49031256"
+    },
+    "stage1": {
+      "stageId": "SFCDFT3-S1-COMPATIBILITY-2026-09-19-v1",
+      "evidenceClass": "FRESH-COMPATIBILITY",
+      "scientificSeedReadAuthorized": false,
+      "primarySeedStart": 40511001,
+      "primarySeedEnd": 40511384,
+      "primaryCount": 384,
+      "pairedReserveSeedStart": 41511001,
+      "pairedReserveSeedEnd": 41511384,
+      "pairedReserveCount": 384,
+      "maxInfrastructureReplacements": 16,
+      "maxFreshSeedReads": 400
+    },
+    "stage2": {
+      "stageId": "SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "scientificSeedReadAuthorized": false,
+      "primarySeedStart": 40521001,
+      "primarySeedEnd": 40521768,
+      "primaryCount": 768,
+      "pairedReserveSeedStart": 41521001,
+      "pairedReserveSeedEnd": 41521768,
+      "pairedReserveCount": 768,
+      "maxInfrastructureReplacements": 24,
+      "maxFreshSeedReads": 792
+    }
+  },
+  "freshness": {
+    "study1FirewallInherited": true,
+    "study2SeedNamespacesForbidden": [
+      "40411001..40411384",
+      "41411001..41411384",
+      "40421001..40421768",
+      "41421001..41421768"
+    ],
+    "study2DurableFirewall": {
+      "requiredBeforeStage1Authorization": true,
+      "plannedPath": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study2/MANIFEST.json",
+      "expectedSealedSourceCount": 382,
+      "sourceRunId": 35345143248,
+      "requiredIdentityClasses": [
+        "sourceTrajectorySha256",
+        "openingPrefixSha256",
+        "rootRawSha256"
+      ],
+      "materializedAtFreeze": false
+    },
+    "study3Stage1ToStage2": [
+      "seed",
+      "sourceDecisionPrefixTrajectory",
+      "openingPrefix",
+      "selectedRawRoot"
+    ]
+  },
+  "stage0RequiredFixtures": [
+    "candidate-complete-stops-immediately",
+    "no-post-candidate-continuation",
+    "natural-terminal-incomplete-root-shortage",
+    "max-ply-incomplete-root-shortage",
+    "relay-limit-before-complete-engine-guard-censoring",
+    "relay-limit-winner-not-scientific-terminal",
+    "candidate-first16-prefix-required",
+    "production-independent-decision-prefix-exact",
+    "study1-identity-collision-rejected",
+    "study2-identity-collision-rejected-after-firewall-materialization",
+    "malformed-identity-fail-closed",
+    "no-scientific-effect-output"
+  ],
+  "decisionMapping": {
+    "stage1AllDomainsTargetAndExact": "FORMAL-PREPARATION-ELIGIBLE",
+    "supportResourceOrEngineGuardCensoringWithoutIntegrityFailure": "NON-ESTIMABLE",
+    "integrityAuthorizationExactnessOrProvenanceFailure": "TECHNICAL-INVALID"
+  },
+  "resourceCeilings": {
+    "maxDistinctRawStates": 100000,
+    "maxUniqueTransitions": 750000,
+    "maxParentExpansions": 100000,
+    "maxLegalMoveEvaluations": 750000,
+    "maxTreeNodeOccurrences": 1000000000,
+    "maxElapsedMs": 180000,
+    "maxPeakRssBytes": 4294967296,
+    "maxRootArtifactBytes": 67108864
+  },
+  "scientificOutputsAuthorizedAtFreeze": {
+    "endpointMagnitude": false,
+    "effectDirection": false,
+    "pValue": false,
+    "generalizationDecision": false,
+    "counterexampleDecision": false
+  },
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_01SeedReplay": false,
+    "study1SeedReplay": false,
+    "study2SeedReplay": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  },
+  "mainIntegrationAuthorized": false
+}

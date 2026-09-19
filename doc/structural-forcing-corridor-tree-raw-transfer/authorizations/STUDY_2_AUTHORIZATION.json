@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "agenda": "G4-02",
+  "decision": "AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "researchBranch": "research/g4-02-sfcdft-study2-prereg",
+  "reviewBinding": {
+    "path": "doc/research-program-decisions/2026-09-18-g4-02-sfcdft-study2-authorization-review.md",
+    "gitBlobSha": "9984be65b2fa5411cdf331336dc467a2aabf4ebc"
+  },
+  "protocolBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/STUDY_2_PROTOCOL.md",
+    "gitBlobSha": "c525718d8d8dbe5786ce9ff25af18edfad4f6bf8"
+  },
+  "specBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_2_SPEC.json",
+    "gitBlobSha": "31c4f1f1e16f994a05866f22db5ec632a7e7ed95"
+  },
+  "study1FirewallBinding": {
+    "path": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1/MANIFEST.json",
+    "gitBlobSha": "e7ba61bd94fbce7aa7fc804e284974ca3a3ba330",
+    "identityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430"
+  },
+  "authorizedNow": {
+    "studyDefinitionFreeze": true,
+    "sourceSerializerImplementation": true,
+    "firewallVerificationTooling": true,
+    "nonScientificStage0TechnicalFixtures": true,
+    "stage1PreparationWithoutSeedRead": true
+  },
+  "notAuthorizedNow": {
+    "stage1FreshScientificSeedAccess": true,
+    "stage1CompatibilityExecution": true,
+    "stage2FreshFormalSeedAccess": true,
+    "scientificEffectGeneration": true,
+    "pValueGeneration": true,
+    "generalizationOrCounterexampleDecision": true,
+    "study1RepairReplay": true,
+    "mainIntegration": true,
+    "publicAiChange": true
+  },
+  "reservedFreshNamespaces": {
+    "stage1Primary": "40411001..40411384",
+    "stage1PairedReserve": "41411001..41411384",
+    "stage2Primary": "40421001..40421768",
+    "stage2PairedReserve": "41421001..41421768"
+  },
+  "freshScientificSeedAccessAtAuthorization": 0,
+  "freshScientificOutcomeGeneratedAtAuthorization": false,
+  "requiredNextAuthorization": "SFCDFT2-S1-PREACCESS-AUTHORIZATION-AFTER-STAGE0-PASS",
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1RepairReplay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_01SeedReplay": false,
+    "sfcdftStudy1RepairReplay": false,
+    "g4_10Depth11Access": false
+  }
+}

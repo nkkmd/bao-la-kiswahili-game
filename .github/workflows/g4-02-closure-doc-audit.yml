@@ -1,0 +1,123 @@
+name: G4-02 closure documentation audit
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - .github/workflows/g4-02-closure-doc-audit.yml
+      - README.md
+      - doc/RESEARCH_INDEX.md
+      - doc/FUTURE_RESEARCH_AGENDA.md
+      - doc/research-generation-4/README.md
+      - doc/research-generation-4/CURRENT_STATUS.md
+      - doc/research-generation-4/RESUME_HERE.md
+      - doc/research-generation-4/checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md
+      - doc/structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md
+      - doc/structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json
+      - doc/structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_PRE_EXECUTION_BINDING.json
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_EXECUTION_AUTHORIZATION.json
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate machine-readable closure records
+        run: |
+          python -m json.tool doc/structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json >/dev/null
+          python -m json.tool doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_PRE_EXECUTION_BINDING.json >/dev/null
+          python -m json.tool doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_EXECUTION_AUTHORIZATION.json >/dev/null
+
+      - name: Validate live G4-02 status markers
+        run: |
+          files=(
+            README.md
+            doc/RESEARCH_INDEX.md
+            doc/FUTURE_RESEARCH_AGENDA.md
+            doc/research-generation-4/README.md
+            doc/research-generation-4/CURRENT_STATUS.md
+            doc/research-generation-4/RESUME_HERE.md
+            doc/structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md
+            doc/research-generation-4/checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md
+          )
+          for f in "${files[@]}"; do
+            grep -F 'G4-02' "$f" >/dev/null
+          done
+          grep -F 'CLOSED / NO SCIENTIFIC DECISION' README.md >/dev/null
+          grep -F 'CLOSED / NO SCIENTIFIC DECISION' doc/RESEARCH_INDEX.md >/dev/null
+          grep -F 'G4-02 = CLOSED / NO SCIENTIFIC DECISION' doc/FUTURE_RESEARCH_AGENDA.md >/dev/null
+          grep -F 'G4-02 overall = CLOSED / NO SCIENTIFIC DECISION' doc/research-generation-4/CURRENT_STATUS.md >/dev/null
+          grep -F 'G4-02 documentation closure = COMPLETE' doc/research-generation-4/CURRENT_STATUS.md >/dev/null
+          grep -F 'G4-02 scientific transfer decision = NONE' doc/structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md >/dev/null
+          grep -F 'documentation closure = COMPLETE' doc/research-generation-4/RESUME_HERE.md >/dev/null
+          grep -F 'main integration = NOT AUTHORIZED / NOT PERFORMED' doc/research-generation-4/RESUME_HERE.md >/dev/null
+          grep -F 'G4-10 depth11 = NOT AUTHORIZED / NOT ACCESSED' doc/research-generation-4/checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md >/dev/null
+
+      - name: Reject stale live-state markers
+        run: |
+          live_files=(
+            README.md
+            doc/RESEARCH_INDEX.md
+            doc/FUTURE_RESEARCH_AGENDA.md
+            doc/research-generation-4/README.md
+            doc/research-generation-4/CURRENT_STATUS.md
+            doc/research-generation-4/RESUME_HERE.md
+            doc/structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md
+          )
+          patterns=(
+            'G4-02 authorization reviewはPREREQUISITE-REQUIRED'
+            'G4-02はeligibility gate通過後のauthorization reviewで`PREREQUISITE-REQUIRED`'
+            'G4-02 SFCDFT-STUDY3 STAGE 1 FORMAL-PREPARATION-ELIGIBLE / STAGE 2 NOT AUTHORIZED'
+            'G4-02 Study = SFCDFT-STUDY1'
+            'G4-02 Stage 2 = NOT AUTHORIZED / NOT ACCESSED'
+            'DOCUMENTATION CLOSURE IN PROGRESS'
+          )
+          for f in "${live_files[@]}"; do
+            for p in "${patterns[@]}"; do
+              if grep -F "$p" "$f" >/dev/null; then
+                echo "stale live-state marker in $f: $p" >&2
+                exit 1
+              fi
+            done
+          done
+
+      - name: Validate local Markdown links in live entry documents
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          files = [
+              Path('README.md'),
+              Path('doc/RESEARCH_INDEX.md'),
+              Path('doc/FUTURE_RESEARCH_AGENDA.md'),
+              Path('doc/research-generation-4/README.md'),
+              Path('doc/research-generation-4/CURRENT_STATUS.md'),
+              Path('doc/research-generation-4/RESUME_HERE.md'),
+              Path('doc/structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md'),
+              Path('doc/research-generation-4/checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md'),
+              Path('doc/structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md'),
+          ]
+          link_re = re.compile(r'\[[^\]]*\]\(([^)]+)\)')
+          missing = []
+          for src in files:
+              text = src.read_text(encoding='utf-8')
+              for target in link_re.findall(text):
+                  if target.startswith(('http://', 'https://', 'mailto:', '#')):
+                      continue
+                  path_part = target.split('#', 1)[0].split('?', 1)[0]
+                  if not path_part:
+                      continue
+                  dst = (src.parent / path_part).resolve()
+                  if not dst.exists():
+                      missing.append((str(src), target))
+          if missing:
+              for src, target in missing:
+                  print(f'missing local link: {src} -> {target}')
+              raise SystemExit(1)

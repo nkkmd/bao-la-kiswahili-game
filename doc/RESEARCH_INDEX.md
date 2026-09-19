@@ -1,8 +1,8 @@
 # Bao研究成果索引
 
-更新日: 2026-09-18
+更新日: 2026-09-20
 対象: Research Generation 1〜4
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、次のWave A Studyは未承認**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02はCLOSED / NO SCIENTIFIC DECISION**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、そこから初見向け概要、Final Report、Current Status、Reproducibility Indexへ進める構成に統一しています。
 
@@ -15,6 +15,7 @@
 | 第四世代の研究計画 | [`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md) |
 | 第四世代の現在状態 | [`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md) |
 | G4-01の正式結果 | [`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md) |
+| G4-02の正式状態 | [`structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -30,7 +31,7 @@
 | Agenda | 計画上の役割 | 現在の状態 |
 | --- | --- | --- |
 | `G4-01` / [`LGTTCI-STUDY1`](local-game-tree-geometry-transfer-compatibility-instrument/) | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL` |
-| `G4-02` | corridor / tree-graph transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
+| `G4-02` | corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION` |
 | `G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -44,7 +45,7 @@
 
 G4-01ではSFCDF・SILGM・GCLDの3 familyすべてが`compatible`となり、正式decisionは`COMPATIBILITY-ELIGIBLE-ALL`です。これはcompatibility/readinessの結果であり、G3由来claimのfresh-domain一般化、scientific effect、counterexampleの成立／不成立を確認したものではありません。
 
-次にG4-02、G4-03、G4-04のいずれかを進める場合は、post-G4-01 current-state authorization reviewを先に実施し、各Studyのfresh evidence、formal claim、endpoint、resource ceilingをprospectiveに固定する必要があります。G4-01完了によって自動的にscientific executionが承認されることはありません。
+G4-02はprerequisite解消後にStudy 1〜4をprospectiveに実施しました。Study 4ではStage 1が`FORMAL-PREPARATION-ELIGIBLE`となりましたが、Stage 2 canonical one-shot executionがformal measurement前のmandatory `bundle-source`工程で停止したため、最終裁定は`TECHNICAL-INVALID`です。8-cell formal decision vectorは生成されず、G4-02は`CLOSED / NO SCIENTIFIC DECISION`で終了しました。これはC1/C6の一般化失敗やcounterexampleを示すnegative scientific evidenceではありません。G4-03/G4-04は引き続き個別authorization reviewが必要です。
 
 詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md)を参照してください。
 

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY1",
+  "stageId": "SFCDFT-S1-COMPATIBILITY-2026-09-18-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY",
+  "status": "FROZEN-PRE-EXECUTION",
+  "bindingBaseHead": "32e05fba5427f1db30eafd0d8a3b9d187b5fbfa8",
+  "freshScientificSeedAccessBeforeBinding": 0,
+  "freshScientificOutcomeGeneratedBeforeBinding": false,
+  "finalExecutionAuthorizationExistsAtBinding": false,
+  "prerequisiteStage0": {
+    "decision": "STAGE0-PASS",
+    "workflowRunId": 35309046231,
+    "artifactId": 10532777171,
+    "artifactDigest": "sha256:e7909e857273b714c91e378fedd0baf68bf50edb6fcb59eb801951db3ab8828b",
+    "deterministicCoreSha256": "f4944e2d1fd95b90c2764d5bb7ab70b851b647a7e03bb966801aa255626a8322"
+  },
+  "freshSeedAccessCeiling": {
+    "primary": {"seedStart": 40311001, "seedEnd": 40311384, "count": 384},
+    "pairedReserve": {"seedStart": 41311001, "seedEnd": 41311384, "count": 384},
+    "maxInfrastructureReplacements": 16,
+    "maxFreshSeedReads": 400,
+    "seedExtensionAuthorized": false,
+    "reserveOfReserveAuthorized": false
+  },
+  "executionRoute": {
+    "id": "GITHUB-ACTIONS-IMMUTABLE-ARTIFACT-PIPELINE",
+    "sourceArtifactRetentionDays": 90,
+    "freshSourceFullWorkflowRerunAuthorized": false,
+    "sameEvidenceRepairRerunAuthorized": false,
+    "runAttemptGreaterThanOneAuthorized": false,
+    "manualWorkflowDispatchAuthorized": false,
+    "sourceGenerationSeparatedFromSeedFreeMeasurement": true,
+    "durableStartMarkerRequiredBeforeSeedRead": true,
+    "pairedReserveOnlyAfterStartedUncommittedPrimary": true,
+    "artifactBeforeRepositoryMirrorRequired": true
+  },
+  "compatibilityOnlyBoundary": {
+    "scientificEffectAuthorized": false,
+    "effectDirectionAuthorized": false,
+    "pValueAuthorized": false,
+    "generalizationDecisionAuthorized": false,
+    "counterexampleDecisionAuthorized": false,
+    "humanFacingNumericEndpointOutputAuthorized": false
+  },
+  "boundGitBlobs": {
+    "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STAGE_1_COMPATIBILITY_SPEC.json": "5f0417de75aba0328b00572249d713ca5b2226fc",
+    "doc/structural-forcing-corridor-tree-raw-transfer/results/stage-0/STAGE_0_TECHNICAL_RESULT.json": "10f32de70bbc9e657a78a980d9cfba1a52665315",
+    "doc/structural-forcing-corridor-decision-funnel/results/stage-1/scientific-result.json": "049473e3130814382418fd15fe0c7991f7c08c21",
+    "doc/structural-forcing-corridor-decision-funnel/results/stage-2/scientific-result.json": "099c45134e2816aac7bafdd5aab5ade03903c64a",
+    "doc/research-generation-4/prereg/g4-02-legacy-compatibility-firewall/MANIFEST.json": "9c5503a4846a17eb36f6921a5e21a4ce1f958221",
+    "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7",
+    "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+    "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+    "tools/experiments/lib/sfcdf-production.js": "b6fca5d533ff4fdf906e64509185b480c6dc5818",
+    "tools/experiments/lib/sfcdf-independent.js": "3bbc16d41c56f2eb00d7169ace2359f0fa9b9b53",
+    "tools/experiments/lib/sfcdft-production.js": "825e05358129074a63fc3f00d98b13ced04ca074",
+    "tools/experiments/lib/sfcdft-independent.js": "2b325a93e5ca7ebee5d9c10251c71c0b116eb60d",
+    "tools/experiments/run-sfcdft-stage1-source-unit.js": "3ae6854a5d52ba8060c3055d06dd1e426af8b6df",
+    "tools/experiments/generate-sfcdft-stage1-actions-matrices.js": "feedc96d06488e656a171bfd13070c9eaca6d57e",
+    "tools/experiments/classify-sfcdft-stage1-actions-artifacts.js": "4fc304c2551653c6fe5ed4f7de38270e3a7395cf",
+    "tools/experiments/bundle-sfcdft-stage1-source.js": "a7ef587790add0b5c92f12690a367da8220c72c2",
+    "tools/experiments/run-sfcdft-stage1-measurement-task.js": "cfcebf5c866fe7620b4049c2c3e1493753375bbe",
+    "tools/experiments/run-sfcdft-stage1-aggregate.js": "1c499985e10ec71e0fee19de91eb693948f47cd3",
+    "tools/experiments/verify-sfcdft-stage1-actions-authorization.js": "9960cdd5ec6c938a9326f80caf9ec735fef80398",
+    "tools/experiments/validate-sfcdft-stage1-actions-design.js": "0bec85646e45f6247c0e8e120fb651b3623f3aa3",
+    ".github/actions/sfcdft-stage1-acquire-slot/action.yml": "a43718a90211f8dac48d620bf0dd8e4fb51a0dc3",
+    ".github/workflows/sfcdft-stage1-github-actions.yml": "71350c7e507f7ca1cdfe07e9bf0e1e059cd7f6d4",
+    ".github/workflows/sfcdft-stage1-preflight.yml": "198f8488e6fd3ed05a71ea18301326dcb8c61912"
+  },
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_01SeedReplay": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "nextGate": "GITHUB-ACTIONS-TECHNICAL-PREFLIGHT-PASS-BEFORE-FINAL-EXECUTION-AUTHORIZATION"
+}

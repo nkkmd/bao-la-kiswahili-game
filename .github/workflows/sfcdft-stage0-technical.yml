@@ -1,0 +1,72 @@
+name: SFCDFT Stage 0 Technical
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study1
+    paths:
+      - .github/workflows/sfcdft-stage0-technical.yml
+      - tools/experiments/run-sfcdft-stage0-technical.js
+      - tools/experiments/lib/sfcdft-production.js
+      - tools/experiments/lib/sfcdft-independent.js
+      - doc/structural-forcing-corridor-tree-raw-transfer/prereg/STAGE_0_TECHNICAL_SPEC.json
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STAGE_0_AUTHORIZATION.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sfcdft-stage0-technical-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  technical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact branch commit
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Static syntax checks
+        run: |
+          node --check tools/experiments/lib/sfcdft-production.js
+          node --check tools/experiments/lib/sfcdft-independent.js
+          node --check tools/experiments/run-sfcdft-stage0-technical.js
+
+      - name: Run technical-only Stage 0
+        run: |
+          mkdir -p artifacts/sfcdft-stage0
+          node tools/experiments/run-sfcdft-stage0-technical.js artifacts/sfcdft-stage0/result.json
+
+      - name: Verify fail-closed decision and protected boundaries
+        run: |
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft-stage0/result.json');
+          function need(x,m){if(!x)throw new Error(m);}
+          need(r.studyId==='SFCDFT-STUDY1','study mismatch');
+          need(r.stageId==='SFCDFT-S0-TECHNICAL-2026-09-18-v1','stage mismatch');
+          need(r.decision==='STAGE0-PASS','Stage 0 did not pass');
+          need(r.protectedEvidence.stage1ScientificSeedRead===false,'Stage 1 scientific seed boundary failed');
+          need(r.protectedEvidence.stage2ScientificSeedRead===false,'Stage 2 scientific seed boundary failed');
+          need(r.protectedEvidence.g3_11Depth10Rerun===false,'G3-11 boundary failed');
+          need(r.protectedEvidence.g3_12Stage2Access===false,'G3-12 boundary failed');
+          need(r.protectedEvidence.g4_01SeedReplay===false,'G4-01 boundary failed');
+          need(r.protectedEvidence.g4_10Depth11Access===false,'G4-10 boundary failed');
+          need(r.protectedEvidence.publicAiChange===false,'public AI boundary failed');
+          console.log(JSON.stringify({decision:r.decision,deterministicCoreSha256:r.deterministicCoreSha256,domains:r.representativeDomains.map(x=>x.domainId)}));
+          NODE
+
+      - name: Upload immutable technical artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft-stage0-technical-${{ github.run_id }}
+          path: artifacts/sfcdft-stage0/result.json
+          if-no-files-found: error
+          retention-days: 90

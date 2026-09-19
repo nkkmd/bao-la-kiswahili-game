@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "firewallId": "G4-02-SFCDFT-STUDY4-STAGE1-IDENTITY-FIREWALL",
+  "sourceStudyId": "SFCDFT-STUDY4",
+  "sourceStageId": "SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1",
+  "sourceRunId": 35441719931,
+  "sourceExecutionHead": "b84b53a3369490cafad2b428feddee20323f3e82",
+  "sourceRunConclusion": "SUCCESS / FORMAL-PREPARATION-ELIGIBLE",
+  "evidenceUse": "IDENTITY-ONLY-FIREWALL",
+  "scientificSeedReplay": false,
+  "scientificEndpointLoaded": false,
+  "scientificEffectLoaded": false,
+  "effectDirectionLoaded": false,
+  "pValueLoaded": false,
+  "scientificDecisionLoaded": false,
+  "sourceArtifactCounts": {
+    "primaryStart": 384,
+    "sealedSource": 384,
+    "pairedReserveStart": 0,
+    "retry": 0,
+    "unresolved": 0
+  },
+  "sourceStatusCounts": {
+    "CANDIDATE-PAIR-COMPLETE": 297,
+    "NO-CANDIDATE-ROOT-SHORTAGE": 87
+  },
+  "forbiddenSeedNamespaces": [
+    "40611001..40611384",
+    "41611001..41611384"
+  ],
+  "identityCounts": {
+    "sourceRecords": 384,
+    "uniqueSourceTrajectorySha256": 384,
+    "uniqueOpeningPrefixSha256": 375,
+    "uniqueRawRootSha256": 659
+  },
+  "identityCoreDefinition": "SHA-256(canonical JSON with sorted unique sourceTrajectorySha256, openingPrefixSha256, rawRootSha256 arrays)",
+  "identityCoreSha256": "f9ed5a91c1db6985d3daca62e384940b7ef804940a79b20ef651c6fc2514634f",
+  "sourceBundle": {
+    "artifactId": 10584600006,
+    "artifactDigest": "sha256:42b0c858f9711a9b3236eb73a11fbc5f16e13c02563bf4de31b8fa833214b7f7",
+    "sourceManifestDeterministicCoreSha256": "f5c77dfc1bce9bbcbc55b5d499724c4b824ba2ceb348178e2687a8b20eb6aacc"
+  },
+  "canonicalStage1Result": {
+    "artifactId": 10584535311,
+    "artifactDigest": "sha256:b6b9c8987be5da9b9d52405ae98eef897af7b725f11f350a958d1443aae8abcf",
+    "deterministicCoreSha256": "24ef523c374ba2afb8cd79726be7531fffc602f5936534ff82a016ef08fc411f"
+  },
+  "materialization": {
+    "workflowRunId": 35443221923,
+    "workflowRunAttempt": 1,
+    "headSha": "7f2155dc7c05d38cd9dc73a3d2413cbc9281ba61",
+    "artifactInputOnly": true,
+    "freshSeedReplay": false
+  },
+  "limitations": {
+    "endpointValuesNotImported": true,
+    "effectDirectionNotImported": true,
+    "pValueNotImported": true,
+    "generalizationDecisionNotImported": true,
+    "counterexampleDecisionNotImported": true,
+    "rootStatePayloadNotRetained": true
+  }
+}

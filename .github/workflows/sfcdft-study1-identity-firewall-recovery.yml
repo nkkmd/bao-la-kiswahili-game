@@ -1,0 +1,50 @@
+name: SFCDFT Study1 artifact-only identity firewall recovery
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study2-prereg
+    paths:
+      - .github/workflows/sfcdft-study1-identity-firewall-recovery.yml
+      - tools/experiments/materialize-sfcdft-study1-identity-firewall-from-artifacts.js
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  recover-identity-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout recovery branch
+        uses: actions/checkout@v4
+
+      - name: Download immutable Study1 sealed source artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p recovered
+          gh run download 35311628238 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --pattern 'sfcdft-s1-source-*' \
+            --dir recovered
+
+      - name: Materialize identity-only firewall
+        run: |
+          set -euo pipefail
+          node tools/experiments/materialize-sfcdft-study1-identity-firewall-from-artifacts.js recovered firewall-out
+
+      - name: Assert no scientific endpoint output
+        run: |
+          set -euo pipefail
+          ! grep -R -E 'p-value|effectDirection|generalizationDecision|counterexampleDecision|endpointValues[^R]' firewall-out
+
+      - name: Upload recovered identity firewall
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft-study1-identity-firewall-recovery
+          path: firewall-out/
+          if-no-files-found: error
+          retention-days: 90

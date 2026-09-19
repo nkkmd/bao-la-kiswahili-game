@@ -1,0 +1,96 @@
+name: SFCDFT Study1 durable identity firewall materialization
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study2-prereg
+    paths:
+      - .github/workflows/sfcdft-study1-firewall-durable-materialization.yml
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: sfcdft-study1-firewall-durable-materialization
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout Study2 prereg branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Download recovered identity-only artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p recovered
+          gh api \
+            -H 'Accept: application/vnd.github+json' \
+            /repos/${GITHUB_REPOSITORY}/actions/artifacts/10535439464/zip \
+            > recovered.zip
+          printf '%s  %s\n' '548b8ad62ad1b287b0be0e9a1624fd14252eff52af7931f12408a5a215342e3e' recovered.zip | sha256sum -c -
+          unzip -q recovered.zip -d recovered
+
+      - name: Verify identity-only contents
+        run: |
+          set -euo pipefail
+          test "$(wc -l < recovered/sourceTrajectorySha256.txt)" -eq 375
+          test "$(wc -l < recovered/openingPrefixSha256.txt)" -eq 375
+          test "$(wc -l < recovered/rootRawSha256.txt)" -eq 660
+          printf '%s  %s\n' '37e64fa09425d0cf5cce6575e18d6887078857a6e97f6f40edb7fabc7f311151' recovered/sourceTrajectorySha256.txt | sha256sum -c -
+          printf '%s  %s\n' '097bd13b18c12f7b4adf25837e1dce63ca75476b8f452c7330229b384f267439' recovered/openingPrefixSha256.txt | sha256sum -c -
+          printf '%s  %s\n' '626ff5845a2081242b03254091cd093a69651f264dbdf5d69c7cfc1ed61e29dd' recovered/rootRawSha256.txt | sha256sum -c -
+          node - <<'NODE'
+          const fs = require('fs');
+          const m = JSON.parse(fs.readFileSync('recovered/MANIFEST.json','utf8'));
+          if (m.identityCoreSha256 !== '8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430') throw new Error('identity core mismatch');
+          if (m.sealedArtifactCount !== 375 || m.sourceTrajectorySha256Count !== 375 || m.openingPrefixSha256Count !== 375 || m.rootRawSha256Count !== 660) throw new Error('count mismatch');
+          if (m.scientificOutcomeFieldsRetained || m.endpointValuesRetained || m.replayOrSeedRereadPerformed) throw new Error('forbidden scientific/replay field state');
+          const forbidden = /p-value|effectDirection|generalizationDecision|counterexampleDecision/i;
+          for (const f of ['MANIFEST.json','sourceTrajectorySha256.txt','openingPrefixSha256.txt','rootRawSha256.txt']) {
+            if (forbidden.test(fs.readFileSync('recovered/'+f,'utf8'))) throw new Error('forbidden field in '+f);
+          }
+          m.recoveryWorkflow = {
+            runId: 35317703820,
+            artifactId: 10535439464,
+            artifactDigest: 'sha256:548b8ad62ad1b287b0be0e9a1624fd14252eff52af7931f12408a5a215342e3e',
+            artifactExpiresAt: '2026-12-17T07:04:21Z',
+            recoveryHead: '5b1f5ac3cfe9c50f6edbd6b6cccbe38fd4ed8a61',
+            mode: 'ARTIFACT-ONLY-NO-REPLAY-NO-SEED-REREAD'
+          };
+          m.durableRepositoryUse = {
+            targetStudy: 'SFCDFT-STUDY2',
+            purpose: 'FRESHNESS-EXCLUSION-ONLY',
+            scientificOutcomeUseAuthorized: false
+          };
+          fs.writeFileSync('recovered/MANIFEST.json', JSON.stringify(m,null,2)+'\n');
+          NODE
+
+      - name: Materialize durable firewall
+        run: |
+          set -euo pipefail
+          target='doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1'
+          if [ -e "$target" ]; then
+            echo 'target already exists; refusing replacement'
+            exit 1
+          fi
+          mkdir -p "$target"
+          cp recovered/MANIFEST.json "$target/MANIFEST.json"
+          cp recovered/sourceTrajectorySha256.txt "$target/sourceTrajectorySha256.txt"
+          cp recovered/openingPrefixSha256.txt "$target/openingPrefixSha256.txt"
+          cp recovered/rootRawSha256.txt "$target/rootRawSha256.txt"
+
+      - name: Commit durable firewall
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1
+          git commit -m 'research(g4-02): freeze Study1 identity firewall for Study2'
+          git push origin HEAD:research/g4-02-sfcdft-study2-prereg

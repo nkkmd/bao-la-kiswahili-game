@@ -1,0 +1,79 @@
+name: SFCDFT Study2 Stage 0 technical validation
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study2-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_2_STAGE_0_AUTHORIZATION.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sfcdft2-stage0-technical
+  cancel-in-progress: false
+
+jobs:
+  stage0:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout authorized Study2 tree
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify authorization lineage and blob bindings
+        env:
+          EVENT_BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const cp = require('child_process');
+          const authPath = 'doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_2_STAGE_0_AUTHORIZATION.json';
+          const a = JSON.parse(fs.readFileSync(authPath,'utf8'));
+          if (a.studyId !== 'SFCDFT-STUDY2' || a.stageId !== 'SFCDFT2-S0-TECHNICAL-2026-09-18-v1') throw new Error('authorization identity mismatch');
+          if (a.decision !== 'STAGE0-TECHNICAL-EXECUTION-AUTHORIZED') throw new Error('Stage0 not authorized');
+          if (a.freshScientificSeedAccessAuthorized !== false) throw new Error('Stage0 scientific seed access must be false');
+          if (process.env.EVENT_BEFORE !== a.authorizedParentHead) throw new Error(`authorized parent mismatch ${process.env.EVENT_BEFORE} != ${a.authorizedParentHead}`);
+          for (const [label,b] of Object.entries(a.blobBindings)) {
+            const actual = cp.execFileSync('git',['hash-object',b.path],{encoding:'utf8'}).trim();
+            if (actual !== b.gitBlobSha) throw new Error(`${label} blob mismatch ${actual} != ${b.gitBlobSha}`);
+          }
+          NODE
+
+      - name: Syntax check Study2 technical code
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/sfcdft2-production.js
+          node --check tools/experiments/lib/sfcdft2-independent.js
+          node --check tools/experiments/run-sfcdft2-stage0-technical.js
+
+      - name: Run Study2 Stage0 technical fixtures
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          node tools/experiments/run-sfcdft2-stage0-technical.js --output out/STUDY_2_STAGE_0_TECHNICAL_RESULT.json
+
+      - name: Validate Stage0 result boundary
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const r = JSON.parse(fs.readFileSync('out/STUDY_2_STAGE_0_TECHNICAL_RESULT.json','utf8'));
+          if (r.decision !== 'STAGE0-PASS') throw new Error('Stage0 did not pass');
+          if (r.scientificSeedReads !== 0) throw new Error('scientific seed read detected');
+          if (r.scientificOutcomeGenerated !== false) throw new Error('scientific outcome generated');
+          if (r.endpointValuesRetained || r.pairedEffectDirectionRetained || r.pValueRetained || r.generalizationDecisionRetained || r.counterexampleDecisionRetained) throw new Error('forbidden scientific output retained');
+          if (!r.fixtureCoverage.shortNoCandidate || !r.fixtureCoverage.longNoCandidate) throw new Error('no-candidate fixture coverage missing');
+          if (Object.keys(r.fixtureCoverage.candidatesByDomain || {}).length !== 4) throw new Error('four candidate domains not covered');
+          NODE
+
+      - name: Upload canonical Stage0 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft2-stage0-technical-result
+          path: out/STUDY_2_STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
+          retention-days: 90

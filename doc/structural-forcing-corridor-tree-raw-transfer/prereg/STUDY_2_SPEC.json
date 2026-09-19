@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "program": "Research Generation 4",
+  "agendaPosition": "G4-02",
+  "researchBranch": "research/g4-02-sfcdft-study2-prereg",
+  "authorizationDecision": "AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "freshScientificSeedAccessBeforeFreeze": 0,
+  "sourceStudy1Disposition": {
+    "studyId": "SFCDFT-STUDY1",
+    "stage1Decision": "TECHNICAL-INVALID-NO-DECISION-FAIL-CLOSED",
+    "repairOrReopenAuthorized": false,
+    "scientificOutcomeGenerated": false,
+    "primarySeedReads": 384,
+    "pairedReserveReads": 0,
+    "sealedSourceArtifacts": 375,
+    "deterministicSerializerFailures": 9
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentity": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "moveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransforms": [],
+    "symmetryOrCanonicalQuotientAuthorized": false,
+    "relativeLocalHorizon": 5,
+    "scientificArithmetic": "EXACT-INTEGER-OR-REDUCED-RATIONAL"
+  },
+  "historicalClaims": [
+    {
+      "claimId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "frozenDirection": "MTAJI-GREATER",
+      "sourceStudy": "SFCDF-STUDY1",
+      "construct": "CORRIDOR"
+    },
+    {
+      "claimId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "frozenDirection": "NAMUA-GREATER",
+      "sourceStudy": "SFCDF-STUDY1",
+      "construct": "TREE-RAW-INFLATION"
+    }
+  ],
+  "combinedLatentConstructDefined": false,
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "assignment": "odd primary slot seed",
+      "prng": "MULBERRY32",
+      "selection": "uniform from all legal moves in canonical move-identity order"
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "assignment": "even primary slot seed",
+      "prng": "MULBERRY32",
+      "selection": "uniform within minimum-immediate-capture-count legal-move pool"
+    }
+  ],
+  "rootFamilies": [
+    {
+      "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+      "namuaRoot": "exact ply 20, nonterminal, phase=namua",
+      "mtajiRoot": "first nonterminal phase=mtaji at ply >=40"
+    },
+    {
+      "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR",
+      "namuaRoot": "exact ply 28, nonterminal, phase=namua",
+      "mtajiRoot": "exact ply 52, nonterminal, phase=mtaji"
+    }
+  ],
+  "rootFamilyAssignment": "first byte of SHA-256(stageId + '|RF|' + primarySlotSeed) modulo 2; 0 -> RF1, 1 -> RF2",
+  "domains": [
+    {"domainId": "SFCDFT2-D1-P1-RF1", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT2-D2-P1-RF2", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"},
+    {"domainId": "SFCDFT2-D3-P2-RF1", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT2-D4-P2-RF2", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"}
+  ],
+  "sourceTrajectoryMaxPly": 240,
+  "sourceSerialization": {
+    "order": [
+      "assign policy",
+      "assign root family",
+      "production and independent replay",
+      "verify full trajectory identity",
+      "select assigned anchors",
+      "classify candidate status",
+      "require first16 opening prefix only for complete candidate",
+      "firewall and preflight"
+    ],
+    "candidateStatuses": {
+      "CANDIDATE-PAIR-COMPLETE": "assigned paired roots exist and satisfy root contract; first16 prefix mandatory",
+      "NO-CANDIDATE-ROOT-SHORTAGE": "assigned pair incomplete; not selectable; not replaceable by reserve",
+      "TECHNICAL-INVALID": "mandatory implementation/identity/authorization/provenance contract failure"
+    },
+    "shortTrajectoryRule": {
+      "condition": "moveCount < 16 and assigned pair incomplete",
+      "candidateStatus": "NO-CANDIDATE-ROOT-SHORTAGE",
+      "openingPrefixAvailable": false,
+      "openingPrefixLength": "moveCount",
+      "openingPrefixSha256": null,
+      "sourceAcquisitionFailure": false
+    },
+    "completePairRequiresAtLeast16Moves": true
+  },
+  "study1DurableFirewall": {
+    "path": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1/MANIFEST.json",
+    "identityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430",
+    "sourceTrajectorySha256Count": 375,
+    "openingPrefixSha256Count": 375,
+    "rootRawSha256Count": 660,
+    "scientificOutcomeFieldsRetained": false,
+    "replayOrSeedRereadPerformed": false
+  },
+  "forbiddenStudy1SeedNamespaces": [
+    "40311001..40311384",
+    "41311001..41311384",
+    "40321001..40321768",
+    "41321001..41321768"
+  ],
+  "g4_01ForbiddenSeedNamespaces": [
+    "40111001..40111384",
+    "40211001..40211384",
+    "41211001..41211384"
+  ],
+  "seedAccessContract": {
+    "stage1": {
+      "primary": {"seedStart": 40411001, "seedEnd": 40411384, "count": 384},
+      "pairedReserve": {"seedStart": 41411001, "seedEnd": 41411384, "count": 384},
+      "maxInfrastructureReplacements": 16,
+      "maxFreshSeedReads": 400
+    },
+    "stage2": {
+      "primary": {"seedStart": 40421001, "seedEnd": 40421768, "count": 768},
+      "pairedReserve": {"seedStart": 41421001, "seedEnd": 41421768, "count": 768},
+      "maxInfrastructureReplacements": 24,
+      "maxFreshSeedReads": 792
+    },
+    "readsAtFreeze": 0,
+    "reserveMapping": "primary + 1000000",
+    "reserveAllowedOnlyFor": "durably journaled infrastructure interruption",
+    "reserveForbiddenFor": [
+      "short trajectory",
+      "root shortage",
+      "firewall reject",
+      "preflight failure",
+      "endpoint undefined",
+      "effect value",
+      "effect direction",
+      "cell balance",
+      "formal decision"
+    ],
+    "seedExtensionAuthorized": false
+  },
+  "stages": [
+    {
+      "stageId": "SFCDFT2-S0-TECHNICAL-2026-09-18-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificSeedAccessAuthorized": false
+    },
+    {
+      "stageId": "SFCDFT2-S1-COMPATIBILITY-2026-09-18-v1",
+      "evidenceClass": "FRESH-COMPATIBILITY",
+      "targetPairsPerDomain": 8,
+      "freshScientificSeedAccessAuthorizedAtStudyFreeze": false,
+      "scientificEffectDirectionOutputAuthorized": false,
+      "pValueOutputAuthorized": false
+    },
+    {
+      "stageId": "SFCDFT2-S2-FORMAL-HELDOUT-2026-09-18-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "targetPairsPerDomain": 18,
+      "freshScientificSeedAccessAuthorizedAtStudyFreeze": false
+    }
+  ],
+  "stage0RequiredFixtures": [
+    "short trajectory incomplete pair -> NO-CANDIDATE-ROOT-SHORTAGE",
+    ">=16 move incomplete pair -> NO-CANDIDATE-ROOT-SHORTAGE",
+    "complete pair -> mandatory first16 opening prefix",
+    "production-independent classification equality",
+    "Study1 known trajectory collision reject",
+    "Study1 known opening-prefix collision reject",
+    "Study1 known RAW-root collision reject",
+    "malformed RAW or move identity fail closed",
+    "no scientific effect/p-value/generalization output"
+  ],
+  "candidateSelection": {
+    "completeManifestBeforeSelection": true,
+    "required": [
+      "candidateStatus=CANDIDATE-PAIR-COMPLETE",
+      "RAW identity valid",
+      "move identity valid",
+      "all applicable firewalls pass",
+      "frozen resource preflight pass"
+    ],
+    "selectionKey": "SHA-256(stageId|domainId|slotSeed|effectiveSeed|sourceTrajectorySha256|openingPrefixSha256|namuaRawSha256|mtajiRawSha256)",
+    "order": "ascending hexadecimal"
+  },
+  "stage1Compatibility": {
+    "targetPairsPerDomain": 8,
+    "allFourDomainsPass": "FORMAL-PREPARATION-ELIGIBLE",
+    "supportFailureWithoutIntegrityFailure": "NON-ESTIMABLE",
+    "integrityFailure": "TECHNICAL-INVALID",
+    "forbiddenOutputs": [
+      "paired effect direction",
+      "human-readable endpoint magnitude",
+      "p-value",
+      "generalization decision",
+      "counterexample decision"
+    ]
+  },
+  "formalInference": {
+    "hypothesisCount": 8,
+    "familyAlpha": {"numerator": "1", "denominator": "20"},
+    "perDomainSelectedPairs": 18,
+    "definednessRequirementPerEndpointDomain": 18,
+    "minimumNonzeroPerEndpointDomain": 12,
+    "pairedDifference": "Mtaji - Namua exact rational",
+    "test": "exact two-sided binomial sign test under p=1/2",
+    "multiplicity": "Holm-Bonferroni across fixed eight endpoint-by-domain slots",
+    "crossDomainPoolingAuthorized": false,
+    "crossEndpointPoolingAuthorized": false
+  },
+  "formalDecisionLabels": [
+    "GENERALIZES-WITHIN-FROZEN-DOMAIN",
+    "COUNTEREXAMPLE-BOUNDARY-DETECTED",
+    "NOT-CONFIRMED",
+    "NON-ESTIMABLE",
+    "TECHNICAL-INVALID"
+  ],
+  "resourceCeilings": {
+    "perSelectedRoot": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000000,
+      "maxElapsedMs": 180000,
+      "maxPeakRssBytes": 4294967296,
+      "maxRootArtifactBytes": 67108864
+    },
+    "stage1": {"maxSelectedPairs": 32, "maxSelectedRoots": 64},
+    "stage2": {"selectedPairs": 72, "selectedRoots": 144}
+  },
+  "executionRoute": "GITHUB-ACTIONS-SHARDED-IMMUTABLE-SOURCE-ARTIFACT-PIPELINE",
+  "fullFreshSourceRerunAuthorized": false,
+  "sameEvidenceRepairAuthorized": false,
+  "stage1FreshAccessRequiresSeparateAuthorizationAfterStage0Pass": true,
+  "stage2FreshAccessRequiresSeparateAuthorization": true,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}

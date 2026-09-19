@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY1",
+  "stageId": "SFCDFT-S1-COMPATIBILITY-2026-09-18-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY",
+  "status": "TECHNICAL-INVALID",
+  "decision": "NO-DECISION",
+  "failureClass": "MANDATORY-SERIALIZER-INTEGRITY-VIOLATION",
+  "failureReason": "OPENING-PREFIX-REQUIRES-AT-LEAST-16-MOVES",
+  "actionsRunId": 35311628238,
+  "executionBranch": "research/g4-02-sfcdft-study1",
+  "executionHead": "900884f687f6bc227106c7faa13bcce397574cc6",
+  "finalClassificationArtifact": {
+    "artifactId": 10534310212,
+    "digest": "sha256:f4fd8df7034343e0ff24823fe3fa29f24a73806d2a0aa4ded35ca412741ec517"
+  },
+  "counts": {
+    "primaryStart": 384,
+    "sealedSourceSuccess": 375,
+    "deterministicSourceFailure": 9,
+    "pairedReserveStart": 0,
+    "retry": 0,
+    "unresolved": 0
+  },
+  "failedPrimarySlots": [
+    40311019,
+    40311131,
+    40311191,
+    40311195,
+    40311223,
+    40311263,
+    40311301,
+    40311365,
+    40311381
+  ],
+  "freshSeedAccess": {
+    "primaryRange": "40311001..40311384",
+    "primaryReads": 384,
+    "primaryDisposition": "CONSUMED-ONCE-QUARANTINED-NO-REUSE",
+    "pairedReserveRange": "41311001..41311384",
+    "pairedReserveReads": 0,
+    "pairedReserveDisposition": "UNREAD-NOT-USED-REQUIRES-NEW-PROSPECTIVE-DECISION"
+  },
+  "sealedSourceArtifacts": {
+    "count": 375,
+    "disposition": "AUDIT-EVIDENCE-ONLY-NOT-SCIENTIFICALLY-ADMISSIBLE-FOR-STAGE1-DECISION"
+  },
+  "recovery": {
+    "primaryRerun": false,
+    "failedSlotRepair": false,
+    "sourceReplay": false,
+    "seedFreeRecovery": false,
+    "pairedReserveUse": false
+  },
+  "scientificOutputs": {
+    "compatibilityDecisionGenerated": false,
+    "stage2PreparationEligibilityGenerated": false,
+    "effectDirectionGenerated": false,
+    "pValueGenerated": false,
+    "generalizationDecisionGenerated": false,
+    "counterexampleDecisionGenerated": false
+  },
+  "stage2": {
+    "authorized": false,
+    "seedReads": 0,
+    "accessed": false
+  },
+  "publicAiChanged": false,
+  "mainMerged": false
+}

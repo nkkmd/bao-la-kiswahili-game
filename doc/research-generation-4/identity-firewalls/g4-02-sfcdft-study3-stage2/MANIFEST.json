@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "firewallId": "G4-02-SFCDFT-STUDY3-STAGE2-IDENTITY-FIREWALL",
+  "sourceStudyId": "SFCDFT-STUDY3",
+  "sourceStageId": "SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1",
+  "sourceRunId": 35427427920,
+  "sourceExecutionHead": "dec9a91d5860b9f3d927d632a7165bcbf99f5f63",
+  "sourceRunFormalClosure": "TECHNICAL-INVALID / NO-SCIENTIFIC-DECISION / NO-RERUN",
+  "evidenceUse": "IDENTITY-ONLY-FIREWALL",
+  "scientificSeedReplay": false,
+  "scientificEndpointLoaded": false,
+  "scientificMeasurementLoaded": false,
+  "scientificAggregateLoaded": false,
+  "sourceArtifactCounts": {
+    "primaryStart": 768,
+    "sealedSource": 768,
+    "deterministicFailure": 0,
+    "pairedReserveStart": 0,
+    "retry": 0,
+    "unresolved": 0
+  },
+  "sourceStatusCounts": {
+    "candidatePairComplete": 596,
+    "noCandidateRootShortage": 172,
+    "noCandidateEngineGuardCensoring": 0
+  },
+  "forbiddenSeedNamespaces": [
+    "40521001..40521768",
+    "41521001..41521768"
+  ],
+  "identityCounts": {
+    "sourceRecords": 768,
+    "uniqueSourceTrajectorySha256": 767,
+    "uniqueOpeningPrefixSha256": 746,
+    "uniqueRawRootSha256": 1326
+  },
+  "identityCoreSha256": "4e9948fed1f7274f7d25b07f95fbc65ce3341b892dc64a288a6bcaa86f39b382",
+  "sourceFinalClassification": {
+    "artifactId": 10579503509,
+    "artifactDigest": "sha256:1e77f4aeb02905286f78bafd1c86f4aa4c24c20bec2f5a03052c714cea3205e5",
+    "fatal": false,
+    "ready": true
+  },
+  "materialization": {
+    "workflowRunId": "35440279723",
+    "workflowRunAttempt": "1",
+    "headSha": "ef2503e7f6d9cf615db24599df2e6d3ef3106e57",
+    "artifactInputOnly": true
+  },
+  "limitations": {
+    "sourceRunClosedTechnicalInvalid": true,
+    "sourceBundleWasNotCompleted": true,
+    "formalMeasurementWasNotStarted": true,
+    "scientificDecisionWasNotGenerated": true,
+    "selectedPairMembershipNotImported": true,
+    "endpointValuesNotImported": true,
+    "rootStatePayloadNotRetained": true,
+    "unreadStage2ReserveProtectedByNamespaceExclusion": true
+  }
+}

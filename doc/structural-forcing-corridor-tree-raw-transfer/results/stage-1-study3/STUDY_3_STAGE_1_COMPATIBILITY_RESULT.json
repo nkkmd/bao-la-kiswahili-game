@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY3",
+  "stageId": "SFCDFT3-S1-COMPATIBILITY-2026-09-19-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY",
+  "decision": "FORMAL-PREPARATION-ELIGIBLE",
+  "sourceArtifactCount": 384,
+  "primaryCount": 384,
+  "reserveCount": 0,
+  "noCandidateCount": 99,
+  "engineGuardCensoringCount": 0,
+  "sourceStatusCounts": {
+    "NO-CANDIDATE-ROOT-SHORTAGE": 99,
+    "CANDIDATE-PAIR-COMPLETE": 285
+  },
+  "sourceManifestDeterministicCoreSha256": "3246acd9de08de401c2f7a9655f3655d72fbcb34b6ba31c4e5d6bc0e6d44047f",
+  "selectedSourceManifestDeterministicCoreSha256": "1cedbbf91fc126f82b2e4c2bcee0146e5f7b2cb433da42c5dacd90977631a031",
+  "selectedPairCount": 32,
+  "measurementTaskCount": 8,
+  "measurementTaskCoreSha256": [
+    "76840ca9f7e2f6fe679bfb217cbc6c3af80b307cbb2fc7ad691e02e63ce23da7",
+    "22be98c97210743da23ca107e9939793730c30cd124f5f266ae797bce94264a1",
+    "128d37ea66aa5763d5cf6805d4bbbd5067377963c4fa4bbae600a301f1786395",
+    "fb2d435148188926334d18a5f6966d911674592a28b1280094bbd8890572271a",
+    "c058a1c8e025996eaaf366b68a809b2ecf78001e1843ca274610b00c24971fd0",
+    "41ee903515235faff49e387c4a44ca900c2ad7a1c78bedc2d2dd17feb7c92ce5",
+    "fb4412deb02679c9e044269e37fc1913455e6cfdcf3b87202e522dd93c44f6ed",
+    "e8f3ee2dfa3c71033207067705e4ad48144a32213b2030262749f5707f3599e7"
+  ],
+  "domainSummary": {
+    "SFCDFT3-D1-P1-RF1": {
+      "measuredPairs": 8,
+      "c1DefinedPairs": 8,
+      "c6DefinedPairs": 8,
+      "resourcePassPairs": 8
+    },
+    "SFCDFT3-D2-P1-RF2": {
+      "measuredPairs": 8,
+      "c1DefinedPairs": 8,
+      "c6DefinedPairs": 8,
+      "resourcePassPairs": 8
+    },
+    "SFCDFT3-D3-P2-RF1": {
+      "measuredPairs": 8,
+      "c1DefinedPairs": 8,
+      "c6DefinedPairs": 8,
+      "resourcePassPairs": 8
+    },
+    "SFCDFT3-D4-P2-RF2": {
+      "measuredPairs": 8,
+      "c1DefinedPairs": 8,
+      "c6DefinedPairs": 8,
+      "resourcePassPairs": 8
+    }
+  },
+  "humanFacingNumericEndpointOutput": false,
+  "scientificEffectGenerated": false,
+  "effectDirectionGenerated": false,
+  "pValueGenerated": false,
+  "generalizationDecisionGenerated": false,
+  "counterexampleDecisionGenerated": false,
+  "protectedEvidence": {
+    "stage2ScientificSeedRead": false,
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage2Access": false,
+    "g4_01SeedReplay": false,
+    "sfcdftStudy1Replay": false,
+    "sfcdftStudy2Replay": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  },
+  "deterministicCoreSha256": "498decdc808558d2e019d1ddf7aeec6c66d2a8074c6478e117a24bc9301e4dab"
+}

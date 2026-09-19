@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY1",
+  "stageId": "SFCDFT-S0-TECHNICAL-2026-09-18-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "studyAuthorizationBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_AUTHORIZATION.json",
+    "gitBlobSha": "41bac1c525f89afe8f94811f79f97c1c6e46e923"
+  },
+  "stage0SpecBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STAGE_0_TECHNICAL_SPEC.json",
+    "gitBlobSha": "a054f35ad2c3450b76a98eb831c815f0f239c3ad"
+  },
+  "allowedTechnicalFixtureSeeds": {
+    "start": 49020001,
+    "end": 49020256,
+    "count": 256,
+    "scientificUse": false
+  },
+  "technicalExecutionAuthorized": true,
+  "stage1FreshScientificSeedAccessAuthorized": false,
+  "stage2FreshScientificSeedAccessAuthorized": false,
+  "scientificEffectAuthorized": false,
+  "formalDecisionAuthorized": false,
+  "heavyFreshScientificExecutionAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "rerunPolicy": "technical Stage 0 may rerun only while no scientific seed has been read and only against the same frozen Stage 0 spec; any Stage 0 code defect must be fixed before Stage 1 authorization",
+  "requiredSuccessDecision": "STAGE0-PASS",
+  "nextGate": "SFCDFT-S1-PREACCESS-AUTHORIZATION",
+  "freshScientificSeedAccessAtAuthorization": 0
+}

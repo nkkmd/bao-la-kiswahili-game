@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "stageId": "SFCDFT2-S0-TECHNICAL-2026-09-18-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "freshScientificSeedAccessAuthorized": false,
+  "technicalFixtureNamespace": {
+    "seedStart": 49021001,
+    "seedEnd": 49021256,
+    "count": 256,
+    "scientificEvidence": false
+  },
+  "requiredChecks": [
+    "production-independent policy assignment equality",
+    "production-independent root-family assignment equality",
+    "production-independent replay identity equality",
+    "short trajectory incomplete pair is NO-CANDIDATE-ROOT-SHORTAGE and not a serializer failure",
+    ">=16 move incomplete pair is NO-CANDIDATE-ROOT-SHORTAGE",
+    "complete pair requires and records first16 opening prefix",
+    "candidate classification equality",
+    "Study1 trajectory collision fixture is rejected",
+    "Study1 opening-prefix collision fixture is rejected",
+    "Study1 RAW-root collision fixture is rejected",
+    "Study1 forbidden seed namespace is rejected",
+    "malformed candidate identity fails closed",
+    "no scientific effect direction output",
+    "no endpoint magnitude output",
+    "no p-value output",
+    "no generalization/counterexample decision output"
+  ],
+  "minimumFixtureCoverage": {
+    "shortTrajectoryNoCandidate": 1,
+    "longTrajectoryNoCandidate": 1,
+    "completeCandidate": 4,
+    "allFourDomainsRepresentedByCompleteCandidate": true
+  },
+  "firewallBinding": {
+    "path": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1/MANIFEST.json",
+    "identityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430",
+    "sourceTrajectorySha256Count": 375,
+    "openingPrefixSha256Count": 375,
+    "rootRawSha256Count": 660
+  },
+  "forbiddenScientificSeedRanges": [
+    "40411001..40411384",
+    "41411001..41411384",
+    "40421001..40421768",
+    "41421001..41421768"
+  ],
+  "forbiddenHistoricalSeedRanges": [
+    "40311001..40311384",
+    "41311001..41311384",
+    "40321001..40321768",
+    "41321001..41321768"
+  ],
+  "decision": {
+    "allChecksPass": "STAGE0-PASS",
+    "anyMandatoryCheckFails": "STAGE0-TECHNICAL-INVALID"
+  },
+  "stage1AuthorizationOnPass": false,
+  "stage1RequiresSeparatePreAccessReview": true
+}

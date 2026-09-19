@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY1",
+  "program": "Research Generation 4",
+  "agendaPosition": "G4-02",
+  "englishTitle": "Structural Forcing-Corridor and Tree/RAW Phase-Structure Transfer Study 1 — Prospective claim-specific validation of G3-04 C1 and C6 across fresh source-policy × root-family domains",
+  "japaneseTitle": "Baoのstructural forcing corridor・tree/RAW phase structure移送研究1 — G3-04 C1・C6をfresh source policy × root family domainで検証するprospective claim別研究",
+  "baselineRemoteMain": "c5689d70cd017171e7738140ba9186a117f732f1",
+  "researchBranch": "research/g4-02-sfcdft-study1",
+  "authorization": {
+    "decision": "G4-02-AUTHORIZED",
+    "reviewPath": "doc/research-program-decisions/2026-09-18-post-prerequisite-g4-02-authorization-review-v2.md",
+    "reviewGitBlobSha": "df6d86e78d6e368999a91079d4d3e7dda08ae06e",
+    "scientificSeedAccessAuthorizedByStudyAuthorization": false
+  },
+  "protocolBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/STUDY_1_PROTOCOL.md",
+    "gitBlobSha": "029e0022f190504c4088fe5a14f6cb2ef7c08766"
+  },
+  "methodologyAmendment": {
+    "id": "RG4-MA-001-G4-02-LEGACY-COMPATIBILITY-FRESHNESS",
+    "path": "doc/research-generation-4/methodology/2026-09-18-g4-02-legacy-compatibility-freshness-amendment.md",
+    "gitBlobSha": "102bb7f689f38e100a1a55252dbc902620f76e72",
+    "scope": "G4-02-SFCDF-ONLY"
+  },
+  "legacyCompatibilityFirewall": {
+    "path": "doc/research-generation-4/prereg/g4-02-legacy-compatibility-firewall/MANIFEST.json",
+    "gitBlobSha": "9c5503a4846a17eb36f6921a5e21a4ce1f958221",
+    "identityCoreSha256": "5672098cd04476f6e416de424908c9430562ff64433d16b31a66c233c53c81dd",
+    "scientificOutcomeFieldsRetained": false
+  },
+  "freshScientificSeedAccessBeforeFreeze": 0,
+  "freshScientificOutcomeGeneratedBeforeFreeze": false,
+  "representation": {
+    "mode": "RAW-ONLY",
+    "stateIdentity": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "moveIdentity": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "validatedTransforms": [],
+    "symmetryOrCanonicalQuotientAuthorized": false,
+    "relativeLocalHorizon": 5,
+    "scientificArithmetic": "EXACT-INTEGER-OR-REDUCED-RATIONAL",
+    "floatingPointScientificThresholdAuthorized": false
+  },
+  "historicalClaims": [
+    {
+      "claimId": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "sourceStudy": "SFCDF-STUDY1",
+      "historicalDecision": "CONFIRMED",
+      "frozenDirection": "MTAJI-GREATER",
+      "construct": "CORRIDOR",
+      "endpoint": {
+        "numerator": "sum unitWidthStateCount over relative depths 0..5",
+        "denominator": "sum depth-labelled unique RAW-state presences with reply width > 0 over relative depths 0..5",
+        "terminalWidthZeroExcluded": true,
+        "zeroDenominatorRule": "UNDEFINED"
+      }
+    },
+    {
+      "claimId": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+      "sourceStudy": "SFCDF-STUDY1",
+      "historicalDecision": "CONFIRMED",
+      "frozenDirection": "NAMUA-GREATER",
+      "construct": "TREE-RAW-INFLATION",
+      "endpoint": {
+        "numerator": "sum tree node occurrences over relative depths 0..5",
+        "denominator": "global distinct RAW states over relative depths 0..5",
+        "rootIncludedBothSides": true,
+        "zeroDenominatorRule": "UNDEFINED"
+      }
+    }
+  ],
+  "combinedLatentConstructDefined": false,
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "assignment": "odd primary slot seed",
+      "prng": "MULBERRY32",
+      "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+      "selection": "uniform from all legal moves"
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "assignment": "even primary slot seed",
+      "prng": "MULBERRY32",
+      "legalOrdering": "CANONICAL-MOVE-IDENTITY-ASCENDING",
+      "selection": "uniform within minimum-immediate-capture-count legal-move pool",
+      "forbiddenInputs": ["local geometry", "search evaluation", "historical scientific outcome"]
+    }
+  ],
+  "rootFamilies": [
+    {
+      "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+      "namuaRoot": "exact ply 20, nonterminal, phase=namua",
+      "mtajiRoot": "first nonterminal phase=mtaji state at ply >=40"
+    },
+    {
+      "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR",
+      "namuaRoot": "exact ply 28, nonterminal, phase=namua",
+      "mtajiRoot": "exact ply 52, nonterminal, phase=mtaji"
+    }
+  ],
+  "rootFamilyAssignment": "first byte of SHA-256(stageId + '|RF|' + primarySlotSeed) modulo 2; 0 -> RF1, 1 -> RF2",
+  "domains": [
+    {"domainId": "SFCDFT-D1-P1-RF1", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT-D2-P1-RF2", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"},
+    {"domainId": "SFCDFT-D3-P2-RF1", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR"},
+    {"domainId": "SFCDFT-D4-P2-RF2", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR"}
+  ],
+  "experimentalUnit": "one source trajectory yielding one paired Namua/Mtaji RAW-root pair under its assigned policy and root family",
+  "sourceTrajectoryMaxPly": 240,
+  "stages": [
+    {
+      "stageId": "SFCDFT-S0-TECHNICAL-2026-09-18-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificSeedAccessAuthorized": false
+    },
+    {
+      "stageId": "SFCDFT-S1-COMPATIBILITY-2026-09-18-v1",
+      "evidenceClass": "FRESH-COMPATIBILITY",
+      "freshScientificSeedAccessAuthorizedAtStudyFreeze": false,
+      "targetPairsPerDomain": 8,
+      "scientificEffectDirectionOutputAuthorized": false,
+      "pValueOutputAuthorized": false
+    },
+    {
+      "stageId": "SFCDFT-S2-FORMAL-HELDOUT-2026-09-18-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "freshScientificSeedAccessAuthorizedAtStudyFreeze": false,
+      "targetPairsPerDomain": 18
+    }
+  ],
+  "seedAccessContract": {
+    "stage1": {
+      "primary": {"seedStart": 40311001, "seedEnd": 40311384, "count": 384},
+      "pairedReserve": {"seedStart": 41311001, "seedEnd": 41311384, "count": 384},
+      "reserveMapping": "primary + 1000000",
+      "maxInfrastructureReplacements": 16,
+      "maxFreshSeedReads": 400
+    },
+    "stage2": {
+      "primary": {"seedStart": 40321001, "seedEnd": 40321768, "count": 768},
+      "pairedReserve": {"seedStart": 41321001, "seedEnd": 41321768, "count": 768},
+      "reserveMapping": "primary + 1000000",
+      "maxInfrastructureReplacements": 24,
+      "maxFreshSeedReads": 792
+    },
+    "reserveAllowedOnlyFor": "durably journaled infrastructure interruption where prior primary seed access cannot be proven absent and SOURCE-COMMIT is absent",
+    "reserveForbiddenFor": ["root shortage", "identity firewall reject", "preflight failure", "endpoint undefined", "effect value", "effect direction", "cell balance", "formal decision"],
+    "reserveOfReserveAuthorized": false,
+    "seedExtensionAuthorized": false
+  },
+  "freshness": {
+    "g3ScientificEvidenceExclusion": ["seed", "fullTrajectorySha256", "first16OpeningPrefixSha256", "selectedRawRootSha256"],
+    "g4_01OldStage1ForbiddenSeedNamespaces": ["40111001..40111384"],
+    "g4_01Stage1rForbiddenSeedNamespaces": ["40211001..40211384", "41211001..41211384"],
+    "g4_01Stage1rExclusion": ["fullTrajectorySha256", "selectedRawRootSha256"],
+    "g4_01Stage1rOpeningPrefixDisjointness": "NOT-AUDITABLE-NOT-ASSERTED",
+    "g4_02Stage2ExcludesStage1": ["seed", "fullTrajectorySha256", "first16OpeningPrefixSha256", "selectedRawRootSha256"]
+  },
+  "candidateSelection": {
+    "completeManifestBeforeSelection": true,
+    "requiredBeforeFormalEndpointMeasurement": ["assigned pair complete", "RAW identity valid", "move identity valid", "all applicable firewalls pass", "frozen resource preflight pass"],
+    "selectionKey": "SHA-256(stageId|domainId|slotSeed|effectiveSeed|sourceTrajectorySha256|openingPrefixSha256|namuaRawSha256|mtajiRawSha256)",
+    "order": "ascending hexadecimal",
+    "stage2ReplacementAfterFormalEndpointMeasurementBegins": false
+  },
+  "stage1Compatibility": {
+    "targetPairsPerDomain": 8,
+    "required": ["root contract valid", "firewall pass", "preflight pass", "C1 production/independent canonical digest equality", "C6 production/independent canonical digest equality", "definedness recorded"],
+    "forbiddenHumanFacingOutputs": ["root endpoint numeric values", "paired effect magnitude", "paired direction", "p-value", "generalization decision", "counterexample decision"],
+    "allFourDomainsPass": "FORMAL-PREPARATION-ELIGIBLE",
+    "supportOrResourceFailureWithoutIntegrityFailure": "NON-ESTIMABLE",
+    "integrityFailure": "TECHNICAL-INVALID"
+  },
+  "formalInference": {
+    "hypothesisCount": 8,
+    "familyAlpha": {"numerator": "1", "denominator": "20"},
+    "perDomainSelectedPairs": 18,
+    "definednessRequirementPerEndpointDomain": 18,
+    "minimumNonzeroPerEndpointDomain": 12,
+    "pairedDifference": "Mtaji - Namua exact rational",
+    "zeroHandling": "exclude zero differences from sign-test n; report zero count",
+    "test": "exact two-sided binomial sign test under p=1/2",
+    "observedDirection": "positive>negative => MTAJI-GREATER; negative>positive => NAMUA-GREATER; tie => ZERO-DIRECTION",
+    "multiplicity": "Holm-Bonferroni across fixed eight endpoint-by-domain slots",
+    "nonEstimableMultiplicityHandling": "retain fixed family slot as non-rejectable placeholder; do not reduce family size",
+    "crossDomainPoolingAuthorized": false,
+    "crossEndpointEffectPoolingAuthorized": false
+  },
+  "formalHypotheses": [
+    "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION|SFCDFT-D1-P1-RF1",
+    "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION|SFCDFT-D2-P1-RF2",
+    "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION|SFCDFT-D3-P2-RF1",
+    "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION|SFCDFT-D4-P2-RF2",
+    "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO|SFCDFT-D1-P1-RF1",
+    "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO|SFCDFT-D2-P1-RF2",
+    "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO|SFCDFT-D3-P2-RF1",
+    "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO|SFCDFT-D4-P2-RF2"
+  ],
+  "formalDecisionLabels": {
+    "GENERALIZES-WITHIN-FROZEN-DOMAIN": "estimable, Holm-adjusted rejection passes, observed direction equals frozen upstream direction",
+    "COUNTEREXAMPLE-BOUNDARY-DETECTED": "estimable, Holm-adjusted rejection passes, observed direction is opposite frozen upstream direction",
+    "NOT-CONFIRMED": "estimable but adjusted test establishes neither frozen direction nor opposite direction",
+    "NON-ESTIMABLE": "frozen support/definedness/minimum-nonzero/resource gate not met without integrity failure",
+    "TECHNICAL-INVALID": "mandatory identity/serializer/implementation/authorization/execution/provenance/artifact integrity contract fails"
+  },
+  "studyResultShape": "canonical vector of eight endpoint-by-domain decisions; no positive-subset-only omnibus generalization label",
+  "independentVerification": {
+    "separateProductionIndependentImplementationsRequired": true,
+    "independentMayImportProductionAggregation": false,
+    "mustIndependentlyReconstruct": ["source replay", "policy execution", "root-family assignment", "candidate selection", "RAW identity", "move identity", "trajectory hash", "opening-prefix hash", "depth-5 geometry", "C1 arithmetic", "C6 arithmetic", "paired signs", "exact sign-test", "Holm decisions"],
+    "scientificEquality": "SHA-256 equality of sorted-key canonical scientific JSON content",
+    "tolerance": "0"
+  },
+  "resourceCeilings": {
+    "perSelectedRoot": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000000,
+      "maxElapsedMs": 180000,
+      "maxPeakRssBytes": 4294967296,
+      "maxRootArtifactBytes": 67108864
+    },
+    "stage0": {"maxElapsedMs": 900000, "maxPeakRssBytes": 2147483648, "maxArtifactBytes": 134217728},
+    "stage1": {"maxSelectedPairs": 32, "maxSelectedRoots": 64, "maxCanonicalArtifactBytes": 536870912},
+    "stage2": {"selectedPairs": 72, "selectedRoots": 144, "maxCanonicalArtifactBytes": 1610612736},
+    "postFreshIncreaseAuthorized": false
+  },
+  "executionRoute": {
+    "id": "GITHUB-ACTIONS-SHARDED-IMMUTABLE-SOURCE-ARTIFACT-PIPELINE",
+    "chatgptTransientRuntimeCanonicalExecutionAuthorized": false,
+    "stageSpecificOneShotTriggerRequired": true,
+    "authorizationCommitBindingRequired": true,
+    "sourceBlobBindingRequired": true,
+    "singleConcurrencyGroupRequired": true,
+    "durableSourceStartBeforeSeedReadRequired": true,
+    "atomicSourceCommitRequired": true,
+    "sourceGenerationSeparatedFromSeedFreeMeasurement": true,
+    "artifactBeforeRepositoryMirrorRequired": true,
+    "freshPopulationAcquisitionsPerStageVersion": 1,
+    "freshSourceFullWorkflowRerunAuthorized": false,
+    "seedFreeMeasurementRetryAllowedOnExactSameSealedInput": true,
+    "durableSelectedSourceIdentityManifestRequired": true
+  },
+  "technicalInvalidConditions": [
+    "source or blob binding mismatch",
+    "unauthorized seed read",
+    "duplicate primary or reserve seed read",
+    "max fresh seed read exceeded",
+    "RAW or move identity mismatch",
+    "nonterminal zero-legal-move anomaly",
+    "production/independent canonical scientific mismatch",
+    "artifact integrity mismatch",
+    "protected evidence access",
+    "post-freeze scientific-contract mutation"
+  ],
+  "noRescue": [
+    "no endpoint redefinition",
+    "no historical direction change",
+    "no threshold or minimum-nonzero relaxation",
+    "no alpha or multiplicity change",
+    "no seed extension or scientific replacement",
+    "no root-family or source-policy change",
+    "no post-measurement selected-pair replacement",
+    "no favorable subgroup rescue",
+    "no resource ceiling increase",
+    "no representation or horizon change",
+    "no symmetry/canonicalization introduction",
+    "no same-evidence fresh source rerun"
+  ],
+  "protectedEvidence": {
+    "g3_11Depth10RerunAuthorized": false,
+    "g3_12Stage1RepairReplayAuthorized": false,
+    "g3_12Stage2SeedAccessAuthorized": false,
+    "g4_01OldSeedReplayAuthorized": false,
+    "g4_10Depth11AccessAuthorized": false,
+    "publicAiChangeAuthorized": false
+  },
+  "interpretationBoundary": [
+    "bounded RAW relative-depth-5 local geometry only",
+    "not whole-Bao universal law",
+    "not game-theoretic forcing or value",
+    "not forced win or tactical inevitability",
+    "not human difficulty or clarity",
+    "not search correctness",
+    "not public AI strength",
+    "not causal mechanism",
+    "G4-01 Stage1R opening-prefix-level complete independence is not asserted"
+  ],
+  "mainIntegration": "NOT AUTHORIZED WITHOUT EXPLICIT USER INSTRUCTION"
+}

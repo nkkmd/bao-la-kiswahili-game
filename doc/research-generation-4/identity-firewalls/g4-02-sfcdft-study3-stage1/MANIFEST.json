@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "firewallId": "G4-02-SFCDFT-STUDY3-STAGE1-IDENTITY-FIREWALL",
+  "sourceStudyId": "SFCDFT-STUDY3",
+  "sourceStageId": "SFCDFT3-S1-COMPATIBILITY-2026-09-19-v1",
+  "sourceRunId": 35396341311,
+  "sourceExecutionHead": "b2a70b198c343bf05b9c81ac15fa546858955cdf",
+  "evidenceUse": "IDENTITY-ONLY-FIREWALL",
+  "scientificSeedReplay": false,
+  "scientificEndpointLoaded": false,
+  "scientificResultLoaded": false,
+  "sourceArtifactCounts": {
+    "primaryStart": 384,
+    "sealedSource": 384,
+    "deterministicFailure": 0,
+    "pairedReserveStart": 0,
+    "retry": 0,
+    "unresolved": 0
+  },
+  "sourceStatusCounts": {
+    "candidatePairComplete": 285,
+    "noCandidateRootShortage": 99,
+    "noCandidateEngineGuardCensoring": 0
+  },
+  "forbiddenSeedNamespaces": [
+    "40511001..40511384",
+    "41511001..41511384"
+  ],
+  "identityCounts": {
+    "sourceRecords": 384,
+    "uniqueSourceTrajectorySha256": 384,
+    "uniqueOpeningPrefixSha256": 375,
+    "uniqueRawRootSha256": 647
+  },
+  "identityCoreSha256": "3d8e9b9e175c63a864ea72a1cdc3b667feba2f216758a9325ebacba2c3c81cda",
+  "sourceFinalClassification": {
+    "artifactId": 10568167745,
+    "artifactDigest": "sha256:7392939ef57ef6929589555b377d5b9179b71095e5225cd84dcd35d51dbd78b9",
+    "fatal": false
+  },
+  "materialization": {
+    "workflowRunId": "35416648775",
+    "workflowRunAttempt": "1",
+    "headSha": "dfb9f781bde2bf4f721906a7903d3e15a1393fda",
+    "artifactInputOnly": true
+  },
+  "limitations": {
+    "trajectorySemantics": "ANCHOR-BOUNDED-DECISION-PREFIX",
+    "selectedPairMembershipNotImported": true,
+    "endpointValuesNotImported": true,
+    "formalStage1ResultNotImported": true,
+    "unreadStage1ReserveProtectedByNamespaceExclusion": true
+  }
+}

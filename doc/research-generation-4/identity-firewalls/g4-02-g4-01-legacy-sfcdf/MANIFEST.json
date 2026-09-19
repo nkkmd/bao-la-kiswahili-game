@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "purpose": "G4-02-LEGACY-G4-01-STAGE1R-SFCDF-IDENTITY-EXCLUSION-FIREWALL",
+  "materializationDate": "2026-09-18",
+  "program": "Research Generation 4",
+  "targetAgendaPosition": "G4-02",
+  "methodologyAmendmentId": "RG4-MA-001-G4-02-LEGACY-COMPATIBILITY-FRESHNESS",
+  "baselineMain": "c5689d70cd017171e7738140ba9186a117f732f1",
+  "source": {
+    "studyId": "LGTTCI-STUDY1",
+    "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+    "block": "SFCDF",
+    "artifactId": 10517090411,
+    "artifactDigest": "sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+    "sourceManifestDeterministicCoreSha256": "0bf8da597bec47eb774b467be1c49bfc6f2aa43850151a44eaf2598ccb220a61"
+  },
+  "oldStage1Quarantine": {
+    "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+    "sfcdfSeedStart": 40111001,
+    "sfcdfSeedEnd": 40111384,
+    "status": "PERMANENTLY-FORBIDDEN-FOR-G4-02",
+    "trajectoryRootPrefixOverlap": "NOT-AUDITABLE-NOT-ASSERTED"
+  },
+  "stage1RIdentity": {
+    "slotSeedStart": 40211001,
+    "slotSeedEnd": 40211384,
+    "slotSeedCount": 384,
+    "effectiveSeedSameAsSlotSeed": true,
+    "sourceTrajectorySha256Count": 384,
+    "rootRawSha256Count": 1198,
+    "openingPrefixSha256": "NOT-RECORDED",
+    "identityCoreSha256": "38cdd972217a70fa11d5d6632312ef7fe1bec7191a1f7d0d8d6460c72f1a90fd"
+  },
+  "chunks": [
+    {"path":"sourceTrajectorySha256-01.txt","lineCount":160,"gitBlobSha":"82c755aeada14b67232a8712e813eb705fac039a"},
+    {"path":"sourceTrajectorySha256-02.txt","lineCount":160,"gitBlobSha":"d25dbc208385c63a2e9c9dea01e56cea42e069ec"},
+    {"path":"sourceTrajectorySha256-03.txt","lineCount":64,"gitBlobSha":"f2a6cb8d770ee90ef8cf9fddc7b88b789fa3eed4"},
+    {"path":"rootRawSha256-01.txt","lineCount":220,"gitBlobSha":"8cd866ab9e119ebbb958011fa9d136183548fe3e"},
+    {"path":"rootRawSha256-02.txt","lineCount":220,"gitBlobSha":"e2af644126f460e9b7531f16507e3047928c623b"},
+    {"path":"rootRawSha256-03.txt","lineCount":220,"gitBlobSha":"65e450125a3b47c3e23e709514b708c367667c7a"},
+    {"path":"rootRawSha256-04.txt","lineCount":220,"gitBlobSha":"3a2b0ca6bf3e42628f70ccd0388e5e1328c88362"},
+    {"path":"rootRawSha256-05.txt","lineCount":220,"gitBlobSha":"e699c91d6f6b945b83418f3a452114459ccd0bac"},
+    {"path":"rootRawSha256-06.txt","lineCount":98,"gitBlobSha":"77f8fb8515fa1bfcc7b42ef4876ff90c28ed6e24"}
+  ],
+  "assertions": {
+    "trajectoryUniqueCountMatches": true,
+    "rootUniqueCountMatches": true,
+    "trajectoryDuplicates": 0,
+    "rootDuplicates": 0,
+    "trajectorySorted": true,
+    "rootSorted": true,
+    "scientificOutcomeFieldsRetained": false,
+    "scientificEffectFieldsRetained": false,
+    "freshSeedAccessPerformed": false,
+    "g4_01SeedRereadPerformed": false,
+    "g4_01RerunPerformed": false,
+    "g3_12SeedAccessPerformed": false,
+    "g3_11Depth10RerunPerformed": false,
+    "g4_10Depth11AccessPerformed": false
+  },
+  "freshnessUse": {
+    "requiredG4_02ExclusionsAgainstStage1R": ["seed","full-source-trajectory-sha256","selected-raw-root-sha256"],
+    "openingPrefixDisjointnessAgainstStage1R": "NOT-AUDITABLE-NOT-ASSERTED",
+    "g4_02InternalDevelopmentFormalSeparation": ["seed","full-source-trajectory-sha256","first-16-opening-prefix-sha256","selected-raw-root-sha256"]
+  },
+  "manifestCoreSha256": "efab4139f92349b8f1f83460f475acdb5371752ee6d464fc8c6466887bb09a74"
+}

@@ -1,0 +1,123 @@
+name: Install SFCDFT Study3 Stage1 identity firewall
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study3-prereg
+    paths:
+      - .github/workflows/sfcdft3-stage1-firewall-install.yml
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  install:
+    name: Install verified Study3 Stage1 firewall artifact
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      SOURCE_RUN_ID: "35416648775"
+      SOURCE_ARTIFACT_ID: "10575483751"
+      SOURCE_ARTIFACT_NAME: "sfcdft3-stage1-identity-firewall-35416648775"
+      SOURCE_ARTIFACT_DIGEST: "sha256:94727cef01134333011e5b8a43954e5cdd16286be32b38512268055bc5d8e46c"
+      EXPECTED_IDENTITY_CORE: "3d8e9b9e175c63a864ea72a1cdc3b667feba2f216758a9325ebacba2c3c81cda"
+      TARGET_DIR: "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study3-stage1"
+    steps:
+      - name: Checkout Study3 branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify target branch and source artifact metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "research/g4-02-sfcdft-study3-prereg"
+          actual_digest="$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$SOURCE_ARTIFACT_ID" --jq '.digest')"
+          test "$actual_digest" = "$SOURCE_ARTIFACT_DIGEST"
+
+      - name: Download immutable firewall artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/sfcdft3-stage1-firewall
+          mkdir -p /tmp/sfcdft3-stage1-firewall
+          gh run download "$SOURCE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "$SOURCE_ARTIFACT_NAME" --dir /tmp/sfcdft3-stage1-firewall
+
+      - name: Verify firewall content
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const pth = '/tmp/sfcdft3-stage1-firewall';
+          const p = JSON.parse(fs.readFileSync(`${pth}/MANIFEST.json`, 'utf8'));
+          const lines = (name) => fs.readFileSync(`${pth}/${name}`, 'utf8').trim().split(/\r?\n/).filter(Boolean).length;
+          if (p.firewallId !== 'G4-02-SFCDFT-STUDY3-STAGE1-IDENTITY-FIREWALL') throw new Error('firewall id mismatch');
+          if (p.sourceRunId !== 35396341311) throw new Error('source scientific run mismatch');
+          if (p.sourceArtifactCounts.primaryStart !== 384 || p.sourceArtifactCounts.sealedSource !== 384 || p.sourceArtifactCounts.deterministicFailure !== 0) throw new Error('source counts mismatch');
+          if (p.sourceArtifactCounts.pairedReserveStart !== 0 || p.sourceArtifactCounts.retry !== 0 || p.sourceArtifactCounts.unresolved !== 0) throw new Error('reserve/retry/unresolved mismatch');
+          if (p.scientificSeedReplay !== false || p.scientificEndpointLoaded !== false || p.scientificResultLoaded !== false) throw new Error('identity-only boundary mismatch');
+          if (p.identityCoreSha256 !== process.env.EXPECTED_IDENTITY_CORE) throw new Error('identity core mismatch');
+          if (lines('SOURCE_TRAJECTORY_SHA256.txt') !== 384) throw new Error('trajectory count mismatch');
+          if (lines('OPENING_PREFIX_SHA256.txt') !== 375) throw new Error('opening prefix count mismatch');
+          if (lines('RAW_ROOT_SHA256.txt') !== 647) throw new Error('RAW root count mismatch');
+          if (lines('SOURCE_RECORD_INDEX.jsonl') !== 384) throw new Error('source index count mismatch');
+          console.log(JSON.stringify({identityCoreSha256:p.identityCoreSha256, identityCounts:p.identityCounts}));
+          NODE
+
+      - name: Install exact artifact payload and human-readable index
+        run: |
+          set -euo pipefail
+          mkdir -p "$TARGET_DIR"
+          cp /tmp/sfcdft3-stage1-firewall/MANIFEST.json "$TARGET_DIR/MANIFEST.json"
+          cp /tmp/sfcdft3-stage1-firewall/SOURCE_TRAJECTORY_SHA256.txt "$TARGET_DIR/SOURCE_TRAJECTORY_SHA256.txt"
+          cp /tmp/sfcdft3-stage1-firewall/OPENING_PREFIX_SHA256.txt "$TARGET_DIR/OPENING_PREFIX_SHA256.txt"
+          cp /tmp/sfcdft3-stage1-firewall/RAW_ROOT_SHA256.txt "$TARGET_DIR/RAW_ROOT_SHA256.txt"
+          cp /tmp/sfcdft3-stage1-firewall/SOURCE_RECORD_INDEX.jsonl "$TARGET_DIR/SOURCE_RECORD_INDEX.jsonl"
+          cat > "$TARGET_DIR/README.md" <<'EOF'
+          # G4-02 SFCDFT-STUDY3 Stage 1 identity firewall
+
+          更新日: 2026-09-19  
+          状態: **`MATERIALIZED / IDENTITY-ONLY / SEED-FREE`**
+
+          このdirectoryは、Study 3 Stage 2 held-out executionでStudy 3 Stage 1 evidenceとのidentity collisionを除外するためのdurable firewallである。
+
+          materializationはStage 1 scientific seedを再読せず、canonical run `35396341311`で既に保存済みの384 sealed source artifactsだけを入力にした。Stage 1 selection membership、endpoint値、formal Stage 1 resultは入力にしていない。
+
+          provenance:
+
+          ```text
+          source scientific run = 35396341311
+          source execution head = b2a70b198c343bf05b9c81ac15fa546858955cdf
+          seed-free materialization run = 35416648775
+          materialization artifact ID = 10575483751
+          materialization artifact digest = sha256:94727cef01134333011e5b8a43954e5cdd16286be32b38512268055bc5d8e46c
+          identity core SHA-256 = 3d8e9b9e175c63a864ea72a1cdc3b667feba2f216758a9325ebacba2c3c81cda
+          ```
+
+          identity counts:
+
+          ```text
+          sealed source records = 384
+          unique anchor-bounded source trajectory hashes = 384
+          unique first-16 opening-prefix hashes = 375
+          unique RAW-root hashes = 647
+          ```
+
+          Stage 1 primary namespace `40511001..40511384` と未使用reserve namespace `41511001..41511384` はともにStage 2で再利用しない。Stage 1 sourceはanchor-bounded decision-prefix semanticsであり、このfirewallはtrajectory、first-16 opening prefix、RAW root、seed namespaceを併用する。
+
+          このdirectoryはscientific endpoint、effect direction、p-value、generalization/counterexample decisionを保存しない。
+          EOF
+
+      - name: Commit firewall to Study3 branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$TARGET_DIR"
+          git diff --cached --quiet && { echo "No firewall changes to commit"; exit 0; }
+          git commit -m "research(g4-02): materialize Study3 Stage1 identity firewall"
+          git push origin "HEAD:$GITHUB_REF_NAME"

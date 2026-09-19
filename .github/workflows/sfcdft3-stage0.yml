@@ -1,0 +1,69 @@
+name: SFCDFT Study3 Stage0 technical validation
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study3-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_0_EXECUTION_AUTHORIZATION.json
+
+permissions:
+  contents: read
+
+jobs:
+  stage0:
+    name: Study3 Stage0 technical fixture
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+    steps:
+      - name: Checkout frozen Stage0 authorization commit
+        uses: actions/checkout@v4
+
+      - name: Verify Stage0 authorization and blob bindings
+        run: node tools/experiments/verify-sfcdft3-stage0-authorization.js
+
+      - name: Verify Study3 technical code syntax
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/sfcdft3-production.js
+          node --check tools/experiments/lib/sfcdft3-independent.js
+          node --check tools/experiments/run-sfcdft3-stage0-technical.js
+          node --check tools/experiments/verify-sfcdft3-stage0-authorization.js
+
+      - name: Run Stage0 technical validation
+        run: |
+          set -euo pipefail
+          rm -rf artifacts/sfcdft3-stage0
+          node tools/experiments/run-sfcdft3-stage0-technical.js \
+            --output artifacts/sfcdft3-stage0/STUDY_3_STAGE_0_TECHNICAL_RESULT.json
+
+      - name: Verify Stage0 output boundary
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = JSON.parse(fs.readFileSync('artifacts/sfcdft3-stage0/STUDY_3_STAGE_0_TECHNICAL_RESULT.json','utf8'));
+          if (p.studyId !== 'SFCDFT-STUDY3') throw new Error('study mismatch');
+          if (p.stageId !== 'SFCDFT3-S0-TECHNICAL-2026-09-19-v1') throw new Error('stage mismatch');
+          if (p.decision !== 'STAGE0-PASS') throw new Error(`Stage0 decision ${p.decision}`);
+          if (p.scientificSeedReads !== 0 || p.scientificOutcomeGenerated !== false) throw new Error('scientific boundary violated');
+          if (p.stage1ScientificSeedAccessAuthorized !== false || p.stage2ScientificSeedAccessAuthorized !== false) throw new Error('future stage access leaked');
+          if (p.mainIntegrationAuthorized !== false) throw new Error('main integration leaked');
+          if (!/^[0-9a-f]{64}$/.test(p.deterministicCoreSha256)) throw new Error('deterministic core malformed');
+          const text = JSON.stringify(p);
+          for (const key of ['"endpoints"','"pValue"','"generalizationDecision"','"counterexampleDecision"','"pairedDifference"']) {
+            if (text.includes(key)) throw new Error(`forbidden scientific output ${key}`);
+          }
+          console.log(JSON.stringify({decision:p.decision, deterministicCoreSha256:p.deterministicCoreSha256, seedsScanned:p.scan.seedsScanned}));
+          NODE
+
+      - name: Upload canonical Stage0 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-stage0-${{ github.run_id }}
+          path: artifacts/sfcdft3-stage0/STUDY_3_STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0

@@ -1,115 +1,165 @@
 # Research Generation 4 — 現在の状態
 
-更新日: 2026-09-18  
+更新日: 2026-09-20  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED / WAVE A NEXT STUDY NOT YET AUTHORIZED`**
+状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION`**
 
 ## Program全体
 
-第四世代のprospective program planは`main`へ統合済みであり、G4-01を最初の実行Studyとして完了した。G4-01のformal closure後、root README・中央研究索引・今後の研究アジェンダを含むrepository-wide consistency auditも`PASS`した。
-
 ```text
-Program baseline plan = FROZEN / INTEGRATED TO MAIN
-Core agenda = G4-01..G4-10
-Independent tracks = G4-P01, G4-H01
-G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
-repository-wide consistency audit = PASS
-G4-02 = NOT AUTHORIZED
-G4-03 = NOT AUTHORIZED
-G4-04 = NOT AUTHORIZED
-G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
+Research Generation 3 = CLOSED / INTEGRATED TO MAIN
+Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
+G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
+G4-02 Study 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
+G4-02 Study 2 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
+G4-02 Study 3 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
+G4-02 Study 3 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
+G4-02 Study 4 Stage 0 = PASS
+G4-02 Study 4 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
+G4-02 Study 4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
+G4-02 scientific transfer decision = NONE
+G4-02 overall = CLOSED / NO SCIENTIFIC DECISION
+G4-02 documentation closure = COMPLETE
+G4-03 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED
+G4-04 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED
+G4-05 = CANDIDATE / NOT-AUTHORIZED
+G4-06..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
+G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
+G4-P01 = INDEPENDENT / NOT-AUTHORIZED
+G4-H01 = DEFERRED
 Public AI change authorized by RG4 = false
-G4-01 main integration = AUTHORIZED BY USER / PR #151
+Current G4-02 branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
-## G4-01の完了
+## G4-01
 
-G4-01の正式Studyは`LGTTCI-STUDY1`である。
+G4-01 `LGTTCI-STUDY1`は、SFCDF・SILGM・GCLDの3 familyについてfresh-domain transfer研究を行うためのcompatibility/readiness instrumentを検証し、`COMPATIBILITY-ELIGIBLE-ALL`で完了した。これはgeneralizationやeffect directionを確認した結果ではない。
 
-Stage 0は`STAGE0-PASS`。旧Stage 1は実行環境消失により`EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION`として閉じ、旧`401...` namespaceをquarantineした。
+G4-01はユーザーの明示承認を経て`main`へ統合済みである。
 
-再試験Stage 1Rでは新しい`402...` primary namespaceを使い、GitHub Actionsでfresh acquisitionを一度だけ実行した。1536/1536 source evidenceを取得し、paired reserve使用は0だった。
+## G4-02 — 最終状態
 
-元fresh workflowのdownstream technical failure後は、fresh seedを再読せず、保存済みimmutable source artifactだけを入力とするdownstream-only recoveryを実施した。
+G4-02はG3-04由来のC1/C6について、fresh source-policy × root-family domainsへの移送可能範囲と反例境界をformalに検証するために実施した。
 
-最終結果:
+Study 1〜4をそれぞれ独立したprospective boundaryとして扱い、technical failure後のsame-study repair/rerunを行わなかった。
+
+### Study 1
+
+short trajectoryのmandatory first-16 opening-prefix serializer invariant違反によりStage 1を`TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED`で閉じた。repair/reopenしていない。
+
+### Study 2
+
+Stage 1 canonical executionでdeterministic relay-limit failureが発生し、`TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED`で閉じた。reserve救済やrerunは行っていない。
+
+### Study 3
+
+scientific contractを変更せずsource replayをanchor-bounded化した。Stage 0はPASS、Stage 1は`FORMAL-PREPARATION-ELIGIBLE`。
+
+Stage 2 canonical run `35427427920` はclassify-finalまで成功したがmandatory `bundle-source`工程で失敗し、formal measurementが開始されなかったため`TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED / NO RERUN`で閉じた。
+
+### Study 4
+
+Study 3の科学的contractを変更せず、fresh scientific access前のartifact pipeline検証を強化したprospective successorとして実施した。
+
+Stage 0:
 
 ```text
-SFCDF = compatible
-SILGM = compatible
-GCLD = compatible
-Stage 1R decision = COMPATIBILITY-ELIGIBLE-ALL
-measurement tasks = 22 / 22 success
-recovery run = 35265290422 / success
-result deterministic core SHA256 = 0bf8da597bec47eb774b467be1c49bfc6f2aa43850151a44eaf2598ccb220a61
+run = 35435952961
+status = PASS / TECHNICAL PIPELINE VALIDATED
+fresh scientific seed reads = 0
 ```
 
-G4-01 closure state:
-
-`COMPLETE / COMPATIBILITY-ELIGIBLE-ALL`
-
-詳細:
-
-- [`../local-game-tree-geometry-transfer-compatibility-instrument/README.md`](../local-game-tree-geometry-transfer-compatibility-instrument/README.md)
-- [`../local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-18-stage1r-final-result.md`](../local-game-tree-geometry-transfer-compatibility-instrument/checkpoints/2026-09-18-stage1r-final-result.md)
-- [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md)
-- [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)
-
-## repository-wide consistency audit
-
-G4-01 closure後、main統合前のcurrent-facing文書を再監査した。root `README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`に残っていたG4-01開始前の記述を修正し、Research Generation 4側およびG4-01正本と同期した。
-
-監査時点の最終判定:
-
-`PASS / CURRENT-FACING-DOCUMENTS-SYNCHRONIZED / MAIN-NOT-MERGED`
-
-prospectiveにfreezeした`PROGRAM_PLAN.md`、preregistration、authorization/binding文書は歴史的正本として事後変更していない。
-
-## Agenda別の現在状態
-
-| Agenda | 役割 | 現在の状態 |
-| --- | --- | --- |
-| `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL` |
-| `G4-02` | corridor / tree-graph transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
-| `G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
-| `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
-| `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-07` | multiscale memory / return | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
-| `G4-P01` | canonicalization re-foundation | `INDEPENDENT / NON-BLOCKING / NOT-AUTHORIZED` |
-| `G4-H01` | human / expert evidence | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
-
-`ELIGIBILITY-GATE-SATISFIED-BY-G4-01`は実行authorizationではない。G4-02/G4-03/G4-04はそれぞれprospective authorization reviewを必要とする。
-
-## 保護された境界
+Stage 1:
 
 ```text
-G3-11 depth 10 = OPENED / CONSUMED EXACTLY ONCE / NO RERUN
-G3-12 Stage 1 = CLOSED / NO REPAIR OR REPLAY
-G3-12 Stage 2 seeds = UNREAD / NOT REUSED BY RG4
-G4-01 old 401... namespace = QUARANTINED / NO REUSE
-G4-01 Stage 1R fresh workflow = EXECUTED ONCE / NO RERUN
-G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
-validated transform set = []
-authoritative state identity = RAW
+run = 35441719931
+execution SHA = b84b53a3369490cafad2b428feddee20323f3e82
+primary sources = 384 / 384
+retry = 0
+reserve = 0
+selected pairs = 32 / 32
+measurement tasks = 8 / 8 success
+decision = FORMAL-PREPARATION-ELIGIBLE
 ```
 
-## 次の一手
+Stage 2 canonical execution:
 
-G4-01の研究実行とmain統合前の文書整合性監査は完了している。2026-09-18にユーザーからPR #151による`main`統合の明示承認を受領した。
+```text
+run = 35450625402
+execution SHA = 0acd54a23fd8e1f1226c307fe948c251d64f336d
+attempt = 1
+primary source acquisition = 768 / 768 completed
+retry = 0
+paired reserve = 0
+deterministic failure = 0
+classify-final = success / ready=true
+bundle-source = failure
+error = source identity mismatch
+formal measurement = NOT STARTED
+formal aggregate = NOT STARTED
+8-cell decision vector = NOT GENERATED
+```
 
-次の研究作業を行う場合は、Wave AのG4-02、G4-03、G4-04のいずれかについてcurrent-state authorization reviewを実施する。G4-01の`COMPATIBILITY-ELIGIBLE-ALL`だけを根拠にscientific seedへ自動アクセスしてはならない。
+事後のidentity-only audit `35452797563` はcanonical sealed source artifacts 768件をfresh seed再読なしで検査し、top-level `studyId` mismatch 0、`stageId` mismatch 0、duplicate slot 0で成功した。したがってbundle時のmismatchは保存済みartifactのtop-level identity監査では再現しなかったが、これをsame-evidence rescueには使用しない。
 
-G4-01の`main`統合承認は、後続Studyのscientific executionや公開AI変更の承認を含まない。
+frozen protocolに従いStudy 4 Stage 2を`TECHNICAL-INVALID / NO SCIENTIFIC DECISION / FAIL-CLOSED`で閉じた。
 
-## 文書上の正本
+## G4-02の科学的解釈境界
 
-- [`README.md`](README.md) — 第四世代研究の入口
-- [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
-- [`RESUME_HERE.md`](RESUME_HERE.md) — 現在の安全な再開位置
-- [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md) — main統合前の文書整合性監査
-- [`../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md`](../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md) — G4-01の正式状態
-- [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md) — G4-01 closure decision
+G4-02ではformal Stage 2 hypothesis testが完了していないため、次のいずれも割り当てない。
+
+```text
+GENERALIZES-WITHIN-FROZEN-DOMAIN
+COUNTEREXAMPLE-BOUNDARY-DETECTED
+NOT-CONFIRMED
+NON-ESTIMABLE
+```
+
+最終Stageの裁定は`TECHNICAL-INVALID`であり、G4-02全体のscientific transfer decisionは`NONE`である。
+
+これはC1/C6が一般化しないこと、反例が存在すること、effectがないことを意味しない。凍結済みone-shot条件下で有効なformal transfer判定を取得できなかった、という終了状態である。
+
+G4-02内に追加successor Studyを自動生成しない。将来同じ問いを扱う場合は、G4-02 repair/reopenではなく別Agendaまたは新しいprospective Studyとしてauthorizationから開始する。
+
+## Agenda別の状態
+
+| Agenda | 現在の状態 |
+| --- | --- |
+| `G4-01` | `COMPLETE / MAIN INTEGRATED` |
+| `G4-02` | `CLOSED / NO SCIENTIFIC DECISION` |
+| `G4-03` | `ELIGIBILITY-GATE-SATISFIED / NOT-AUTHORIZED` |
+| `G4-04` | `ELIGIBILITY-GATE-SATISFIED / NOT-AUTHORIZED` |
+| `G4-05` | `CANDIDATE / NOT-AUTHORIZED` |
+| `G4-06`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
+| `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
+| `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
+| `G4-H01` | `DEFERRED` |
+
+## G4-02 documentation closure
+
+G4-02の最終状態は、ルート`README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、RG4入口文書、RG4 current/resume文書、G4-02 current status、machine-readable Stage 2 result、Study 4 Stage 2 checkpoint、Agenda closure checkpointへ反映済みである。
+
+live-state文書に古いStudy進行状態が残っていないこと、machine-readable closure recordsがJSONとして妥当であること、主要なローカルMarkdownリンクが解決することを専用GitHub Actions workflowで監査する。これはdocumentation-only validationであり、fresh scientific seedへのアクセスやscientific executionを行わない。
+
+G4-02について追加のscientific executionは行わない。第四世代研究をその後継続する場合、G4-03またはG4-04など次のAgendaについて**個別のauthorization review**から開始する。G4-01のeligibility gateだけでfresh scientific executionが自動承認されることはない。
+
+現在のG4-02 research branchの`main`統合は、ユーザーの明示指示があるまで行わない。
+
+## 保護境界
+
+- G4-02 Study 1〜4をrepair/reopen/rerunしない。
+- closed scientific seedを救済目的で再読しない。
+- G3-12をrepair/replayしない。
+- G4-10 depth11へアクセスしない。
+- G4-02の結果をpublic AIへ自動反映しない。
+- current G4-02 branchをユーザーの明示承認なしに`main`へ統合しない。
+
+## 正本
+
+- [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
+- [`RESUME_HERE.md`](RESUME_HERE.md)
+- [`checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md`](checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md)
+- [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)
+- [`../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md`](../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md)
+- [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)
+- [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md)

@@ -1,0 +1,117 @@
+name: SFCDFT4 Stage1 identity firewall install
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - .github/workflows/sfcdft4-stage1-identity-firewall-install.yml
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: sfcdft4-stage1-identity-firewall-install
+  cancel-in-progress: false
+
+jobs:
+  materialize-and-install:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Download immutable Stage1 source bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: sfcdft4-s1-source-bundle-35441719931
+          path: source-bundle
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 35441719931
+          github-token: ${{ github.token }}
+      - name: Materialize identity-only firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('fs');
+          const path=require('path');
+          const crypto=require('crypto');
+          const root='source-bundle/source';
+          const out='doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study4-stage1';
+          const manifest=JSON.parse(fs.readFileSync('source-bundle/SOURCE_MANIFEST.json','utf8'));
+          if(manifest.studyId!=='SFCDFT-STUDY4') throw new Error('study identity mismatch');
+          if(manifest.stageId!=='SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1') throw new Error('stage identity mismatch');
+          if(manifest.sourceArtifactCount!==384) throw new Error('source count mismatch');
+          if(manifest.deterministicCoreSha256!=='f5c77dfc1bce9bbcbc55b5d499724c4b824ba2ceb348178e2687a8b20eb6aacc') throw new Error('source manifest core mismatch');
+          const dirs=fs.readdirSync(root).sort((a,b)=>Number(a)-Number(b));
+          if(dirs.length!==384) throw new Error(`expected 384 source dirs, got ${dirs.length}`);
+          const trajectories=[];
+          const openings=[];
+          const roots=[];
+          const records=[];
+          const statusCounts={};
+          for(const d of dirs){
+            const x=JSON.parse(fs.readFileSync(path.join(root,d,'source.json'),'utf8'));
+            if(x.studyId!=='SFCDFT-STUDY4'||x.stageId!=='SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1') throw new Error(`identity mismatch ${d}`);
+            if(x.endpointValuesRetained!==false) throw new Error(`endpoint contamination ${d}`);
+            trajectories.push(x.sourceTrajectorySha256);
+            const opening=x.openingPrefixAvailable ? x.openingPrefixSha256 : null;
+            if(opening) openings.push(opening);
+            const rr=[];
+            for(const key of ['namua','mtaji']) if(x[key]&&x[key].rawStateSha256){ rr.push(x[key].rawStateSha256); roots.push(x[key].rawStateSha256); }
+            statusCounts[x.candidateStatus]=(statusCounts[x.candidateStatus]||0)+1;
+            records.push({slotSeed:x.slotSeed,effectiveSeed:x.effectiveSeed,seedRole:x.seedRole,domainId:x.domainId,candidateStatus:x.candidateStatus,sourceTrajectorySha256:x.sourceTrajectorySha256,openingPrefixSha256:opening,rootRawSha256:rr});
+          }
+          const uniq=a=>[...new Set(a)].sort();
+          const t=uniq(trajectories), o=uniq(openings), r=uniq(roots);
+          const coreObject={openingPrefixSha256:o,rawRootSha256:r,sourceTrajectorySha256:t};
+          const core=crypto.createHash('sha256').update(JSON.stringify(coreObject)).digest('hex');
+          if(core!=='f9ed5a91c1db6985d3daca62e384940b7ef804940a79b20ef651c6fc2514634f') throw new Error(`identity core mismatch ${core}`);
+          if(t.length!==384||o.length!==375||r.length!==659) throw new Error('identity count mismatch');
+          fs.mkdirSync(out,{recursive:true});
+          fs.writeFileSync(path.join(out,'SOURCE_TRAJECTORY_SHA256.txt'),t.join('\n')+'\n');
+          fs.writeFileSync(path.join(out,'OPENING_PREFIX_SHA256.txt'),o.join('\n')+'\n');
+          fs.writeFileSync(path.join(out,'RAW_ROOT_SHA256.txt'),r.join('\n')+'\n');
+          fs.writeFileSync(path.join(out,'SOURCE_RECORD_INDEX.jsonl'),records.map(x=>JSON.stringify(x,Object.keys(x).sort())).join('\n')+'\n');
+          const m={
+            schemaVersion:1,
+            firewallId:'G4-02-SFCDFT-STUDY4-STAGE1-IDENTITY-FIREWALL',
+            sourceStudyId:'SFCDFT-STUDY4',
+            sourceStageId:'SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1',
+            sourceRunId:35441719931,
+            sourceExecutionHead:'b84b53a3369490cafad2b428feddee20323f3e82',
+            sourceRunConclusion:'SUCCESS / FORMAL-PREPARATION-ELIGIBLE',
+            evidenceUse:'IDENTITY-ONLY-FIREWALL',
+            scientificSeedReplay:false,
+            scientificEndpointLoaded:false,
+            scientificEffectLoaded:false,
+            effectDirectionLoaded:false,
+            pValueLoaded:false,
+            scientificDecisionLoaded:false,
+            sourceArtifactCounts:{primaryStart:384,sealedSource:384,pairedReserveStart:0,retry:0,unresolved:0},
+            sourceStatusCounts:statusCounts,
+            forbiddenSeedNamespaces:['40611001..40611384','41611001..41611384'],
+            identityCounts:{sourceRecords:384,uniqueSourceTrajectorySha256:t.length,uniqueOpeningPrefixSha256:o.length,uniqueRawRootSha256:r.length},
+            identityCoreDefinition:'SHA-256(canonical JSON with sorted unique sourceTrajectorySha256, openingPrefixSha256, rawRootSha256 arrays)',
+            identityCoreSha256:core,
+            sourceBundle:{artifactId:10584600006,artifactDigest:'sha256:42b0c858f9711a9b3236eb73a11fbc5f16e13c02563bf4de31b8fa833214b7f7',sourceManifestDeterministicCoreSha256:'f5c77dfc1bce9bbcbc55b5d499724c4b824ba2ceb348178e2687a8b20eb6aacc'},
+            canonicalStage1Result:{artifactId:10584535311,artifactDigest:'sha256:b6b9c8987be5da9b9d52405ae98eef897af7b725f11f350a958d1443aae8abcf',deterministicCoreSha256:'24ef523c374ba2afb8cd79726be7531fffc602f5936534ff82a016ef08fc411f'},
+            materialization:{workflowRunId:Number(process.env.GITHUB_RUN_ID),workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),headSha:process.env.GITHUB_SHA,artifactInputOnly:true,freshSeedReplay:false},
+            limitations:{endpointValuesNotImported:true,effectDirectionNotImported:true,pValueNotImported:true,generalizationDecisionNotImported:true,counterexampleDecisionNotImported:true,rootStatePayloadNotRetained:true}
+          };
+          fs.writeFileSync(path.join(out,'MANIFEST.json'),JSON.stringify(m,null,2)+'\n');
+          console.log(JSON.stringify({sourceRecords:records.length,trajectories:t.length,openings:o.length,roots:r.length,identityCoreSha256:core}));
+          NODE
+      - name: Commit durable firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Sawa'
+          git config user.email '72678394+nkkmd@users.noreply.github.com'
+          git add doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study4-stage1/
+          if git diff --cached --quiet; then echo 'already exact'; exit 0; fi
+          git commit -m 'research(g4-02): install Study4 Stage1 durable identity firewall'
+          git push origin HEAD:research/g4-02-sfcdft-study4-prereg

@@ -1,0 +1,78 @@
+name: SFCDFT4 Stage1 implementation freeze
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - tools/experiments/prepare-sfcdft4-stage1-implementation.js
+      - .github/workflows/sfcdft4-stage1-implementation-freeze.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sfcdft4-stage1-implementation-freeze
+  cancel-in-progress: false
+
+jobs:
+  freeze:
+    name: Generate and freeze Study4 Stage1 non-workflow implementation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Generate Study4 Stage1 implementation seed-free
+        run: node tools/experiments/prepare-sfcdft4-stage1-implementation.js
+
+      - name: Validate generated Stage1 implementation
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/sfcdft4-source-production.js
+          node --check tools/experiments/lib/sfcdft4-source-independent.js
+          node --check tools/experiments/lib/sfcdft4-production.js
+          node --check tools/experiments/lib/sfcdft4-independent.js
+          node --check tools/experiments/run-sfcdft4-stage1-source-unit.js
+          node --check tools/experiments/generate-sfcdft4-stage1-actions-matrices.js
+          node --check tools/experiments/classify-sfcdft4-stage1-actions-artifacts.js
+          node --check tools/experiments/bundle-sfcdft4-stage1-source.js
+          node --check tools/experiments/run-sfcdft4-stage1-measurement-task.js
+          node --check tools/experiments/run-sfcdft4-stage1-aggregate.js
+          node --check tools/experiments/verify-sfcdft4-stage1-actions-authorization.js
+          node - <<'NODE'
+          const s=require('./doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_1_COMPATIBILITY_SPEC.json');
+          if(s.studyId!=='SFCDFT-STUDY4'||s.stageId!=='SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1')throw new Error('Stage1 spec identity mismatch');
+          if(s.freshSeedSlots.primary.seedStart!==40611001||s.freshSeedSlots.primary.seedEnd!==40611384)throw new Error('primary namespace mismatch');
+          if(s.freshSeedSlots.pairedReserve.seedStart!==41611001||s.freshSeedSlots.pairedReserve.seedEnd!==41611384)throw new Error('reserve namespace mismatch');
+          if(s.measurement.freshSeedReadAuthorized!==false)throw new Error('fresh measurement access unexpectedly authorized');
+          if(s.identityFirewalls.study3Stage1.identityCoreSha256!=='3d8e9b9e175c63a864ea72a1cdc3b667feba2f216758a9325ebacba2c3c81cda')throw new Error('Study3 Stage1 firewall mismatch');
+          if(s.identityFirewalls.study3Stage2.identityCoreSha256!=='4e9948fed1f7274f7d25b07f95fbc65ce3341b892dc64a288a6bcaa86f39b382')throw new Error('Study3 Stage2 firewall mismatch');
+          console.log(JSON.stringify({studyId:s.studyId,stageId:s.stageId,primary:s.freshSeedSlots.primary,reserve:s.freshSeedSlots.pairedReserve}));
+          NODE
+          git diff --check
+
+      - name: Commit frozen Study4 Stage1 non-workflow implementation
+        run: |
+          set -euo pipefail
+          git config user.name 'Sawa'
+          git config user.email '72678394+nkkmd@users.noreply.github.com'
+          git add \
+            .github/actions/sfcdft4-stage1-acquire-slot/action.yml \
+            doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_1_COMPATIBILITY_SPEC.json \
+            tools/experiments/lib/sfcdft4-source-production.js \
+            tools/experiments/lib/sfcdft4-source-independent.js \
+            tools/experiments/lib/sfcdft4-production.js \
+            tools/experiments/lib/sfcdft4-independent.js \
+            tools/experiments/run-sfcdft4-stage1-source-unit.js \
+            tools/experiments/generate-sfcdft4-stage1-actions-matrices.js \
+            tools/experiments/classify-sfcdft4-stage1-actions-artifacts.js \
+            tools/experiments/bundle-sfcdft4-stage1-source.js \
+            tools/experiments/run-sfcdft4-stage1-measurement-task.js \
+            tools/experiments/run-sfcdft4-stage1-aggregate.js \
+            tools/experiments/verify-sfcdft4-stage1-actions-authorization.js
+          git diff --cached --quiet && { echo 'no implementation changes'; exit 1; }
+          git commit -m 'research(g4-02): freeze Study4 Stage1 implementation'
+          git push origin "HEAD:${GITHUB_REF_NAME}"

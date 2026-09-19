@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "stageId": "SFCDFT2-S1-COMPATIBILITY-2026-09-18-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY",
+  "status": "TECHNICAL-INVALID",
+  "decision": "NO-DECISION",
+  "closure": "FAIL-CLOSED",
+  "failureClass": "DETERMINISTIC-SOURCE-REPLAY-INTEGRITY-FAILURE",
+  "failureReason": "ENGINE-RELAY-LIMIT-DURING-FROZEN-SOURCE-REPLAY",
+  "actionsRunId": 35345143248,
+  "executionBranch": "research/g4-02-sfcdft-study2-prereg",
+  "executionHead": "8c84f2cda1a62f812f030ef319341683a4d77e54",
+  "finalClassificationArtifact": {
+    "artifactId": 10546781677,
+    "digest": "sha256:f11a502dcd9e9c273a6f41fb3e8f4ebfb7de12f028e60ad50b884e44cb0de0b6"
+  },
+  "counts": {
+    "primaryStart": 384,
+    "sealedSourceSuccess": 382,
+    "deterministicSourceFailure": 2,
+    "pairedReserveStart": 0,
+    "retry": 0,
+    "unresolved": 0
+  },
+  "failedPrimarySlots": [
+    {
+      "slotSeed": 40411112,
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+      "domainId": "SFCDFT2-D3-P2-RF1",
+      "failure": "relay-limit",
+      "ply": 225,
+      "failureArtifactId": 10546344753,
+      "failureArtifactDigest": "sha256:7677bfcedc932c23fbdb59f332cd4ae47ae0dc18387d9041b4fc6141763654e6"
+    },
+    {
+      "slotSeed": 40411312,
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+      "domainId": "SFCDFT2-D3-P2-RF1",
+      "failure": "relay-limit",
+      "ply": 223,
+      "failureArtifactId": 10547080576,
+      "failureArtifactDigest": "sha256:db5755d2b0852fae1dad6f831b4386aba1d350a125341c48ec43864af42deb44"
+    }
+  ],
+  "freshSeedAccess": {
+    "primaryRange": "40411001..40411384",
+    "primaryReads": 384,
+    "primaryDisposition": "CONSUMED-ONCE-QUARANTINED-NO-REUSE",
+    "pairedReserveRange": "41411001..41411384",
+    "pairedReserveReads": 0,
+    "pairedReserveDisposition": "UNREAD-NOT-USED-NOT-ELIGIBLE-FOR-STUDY2-RECOVERY"
+  },
+  "sealedSourceArtifacts": {
+    "count": 382,
+    "disposition": "AUDIT-EVIDENCE-ONLY-NOT-SCIENTIFICALLY-ADMISSIBLE-FOR-STAGE1-DECISION"
+  },
+  "recovery": {
+    "primaryRerun": false,
+    "failedSlotRepair": false,
+    "sourceReplay": false,
+    "seedFreeRecovery": false,
+    "pairedReserveUse": false,
+    "workflowRerun": false
+  },
+  "downstream": {
+    "candidateSelectionForScientificDecision": false,
+    "seedFreeMeasurementForScientificDecision": false
+  },
+  "scientificOutputs": {
+    "compatibilityDecisionGenerated": false,
+    "stage2PreparationEligibilityGenerated": false,
+    "effectDirectionGenerated": false,
+    "pValueGenerated": false,
+    "generalizationDecisionGenerated": false,
+    "counterexampleDecisionGenerated": false
+  },
+  "stage2": {
+    "stageId": "SFCDFT2-S2-FORMAL-HELDOUT-2026-09-18-v1",
+    "authorized": false,
+    "seedReads": 0,
+    "accessed": false
+  },
+  "publicAiChanged": false,
+  "mainMerged": false
+}

@@ -1,0 +1,75 @@
+name: SFCDFT Stage 1 pre-execution preflight
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study1
+    paths:
+      - 'doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STAGE_1_PRE_EXECUTION_BINDING.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sfcdft-stage1-preflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require final scientific authorization to remain absent
+        run: test ! -f doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STAGE_1_EXECUTION_AUTHORIZATION.json
+      - name: Syntax check Stage 1 sources
+        run: |
+          node --check tools/experiments/run-sfcdft-stage1-source-unit.js
+          node --check tools/experiments/generate-sfcdft-stage1-actions-matrices.js
+          node --check tools/experiments/classify-sfcdft-stage1-actions-artifacts.js
+          node --check tools/experiments/bundle-sfcdft-stage1-source.js
+          node --check tools/experiments/run-sfcdft-stage1-measurement-task.js
+          node --check tools/experiments/run-sfcdft-stage1-aggregate.js
+          node --check tools/experiments/verify-sfcdft-stage1-actions-authorization.js
+          node --check tools/experiments/validate-sfcdft-stage1-actions-design.js
+      - name: Validate frozen Actions design and blob bindings
+        run: node tools/experiments/validate-sfcdft-stage1-actions-design.js artifacts/sfcdft-stage1-preflight/design-report.json
+      - name: Validate frozen matrices
+        run: node tools/experiments/generate-sfcdft-stage1-actions-matrices.js
+      - name: Technical fixture smoke for source unit
+        run: |
+          mkdir -p artifacts/sfcdft-stage1-preflight
+          node tools/experiments/run-sfcdft-stage1-source-unit.js \
+            --technical-fixture \
+            --slot-seed 49020001 \
+            --effective-seed 49020001 \
+            --output artifacts/sfcdft-stage1-preflight/source-fixture.json
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft-stage1-preflight/source-fixture.json');
+          if(r.evidenceClass!=='TECHNICAL-FIXTURE'||r.endpointValuesRetained!==false) throw new Error('technical fixture boundary mismatch');
+          if(r.slotSeed!==49020001||r.effectiveSeed!==49020001) throw new Error('technical fixture seed mismatch');
+          console.log(JSON.stringify({domainId:r.domainId,pairComplete:r.pairComplete}));
+          NODE
+      - name: Artifact classifier synthetic completeness smoke
+        run: |
+          node - <<'NODE' > artifact-names.txt
+          for(let s=40311001;s<=40311384;s++){
+            console.log(`sfcdft-s1-primary-start-${s}`);
+            console.log(`sfcdft-s1-source-${s}`);
+          }
+          NODE
+          node tools/experiments/classify-sfcdft-stage1-actions-artifacts.js --mode final --names artifact-names.txt --summary artifacts/sfcdft-stage1-preflight/classifier-report.json
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft-stage1-preflight/classifier-report.json');
+          if(r.fatal!==false||r.sourceCount!==384) throw new Error('classifier smoke failed');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sfcdft-stage1-preflight-${{ github.run_id }}
+          path: artifacts/sfcdft-stage1-preflight
+          if-no-files-found: error
+          retention-days: 30

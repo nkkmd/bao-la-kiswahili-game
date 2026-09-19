@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "amendmentId": "RG4-MA-001-G4-02-LEGACY-COMPATIBILITY-FRESHNESS",
+  "agenda": "G4-02",
+  "purpose": "G4-02-LEGACY-COMPATIBILITY-IDENTITY-ONLY-EXCLUSION-FIREWALL",
+  "materialization": "EXISTING-IMMUTABLE-G4-01-ARTIFACT-ONLY",
+  "scientificOutcomeFieldsRetained": false,
+  "geometryOutcomeFieldsRetained": false,
+  "freshSeedAccessPerformed": false,
+  "freshWorkflowRerunPerformed": false,
+  "sourceBinding": {
+    "g4_01Stage1rArtifactId": 10517090411,
+    "artifactSha256": "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+    "sourceManifestDeterministicCoreSha256": "8111413773dfd9899b4562ee5089223a0aef75b6885041f4eacb1006111d7cdd"
+  },
+  "oldStage1Sfcdf": {
+    "stageId": "LGTTCI-S1-COMPATIBILITY-2026-09-17-v1",
+    "seedStart": 40111001,
+    "seedEnd": 40111384,
+    "count": 384,
+    "disposition": "QUARANTINED-PERMANENTLY-FORBIDDEN-FOR-G4-02",
+    "trajectoryRootPrefixNonOverlap": "NOT-AUDITABLE-NOT-ASSERTED"
+  },
+  "stage1rSfcdf": {
+    "stageId": "LGTTCI-S1R-COMPATIBILITY-RETEST-2026-09-17-v1",
+    "primarySeedStart": 40211001,
+    "primarySeedEnd": 40211384,
+    "primaryCount": 384,
+    "pairedReserveSeedStart": 41211001,
+    "pairedReserveSeedEnd": 41211384,
+    "pairedReserveCount": 384,
+    "pairedReserveUsed": 0,
+    "pairedReserveDispositionForG4_02": "RESERVED-LEGACY-NAMESPACE-PERMANENTLY-FORBIDDEN-FOR-G4-02",
+    "sourceTrajectorySha256Count": 384,
+    "completeAnchorRootRawSha256Count": 1198,
+    "openingPrefixSha256Status": "NOT-RECORDED",
+    "identityCoreSha256": "5672098cd04476f6e416de424908c9430562ff64433d16b31a66c233c53c81dd",
+    "files": [
+      {
+        "path": "stage1r-sfcdf-source-trajectory-sha256-01.txt",
+        "count": 192,
+        "sha256": "615f4fb2ad57aad2dbafbd6c97f62f435fccc6e75bafafed98c91b6ffafb2ada",
+        "first": "0108e2abe9111abbec5db01baa0d3c3c007f8f06a74b04a494f863cbfd86adc7",
+        "last": "80f47b48b507fc9f6b66331a05becb6392f837abd6b07ad4ad4f4b28ac6aa37c"
+      },
+      {
+        "path": "stage1r-sfcdf-source-trajectory-sha256-02.txt",
+        "count": 192,
+        "sha256": "b21a3b0b735f440c0fd085a648fce9670b5b26589d42ed27aa7cd075ce04fda5",
+        "first": "8159e20cdc3e29407ce4786666eb46ed3bfe691b8c6166f70e1aaf19a1c22946",
+        "last": "ff9dee408849fdd1a51c1f2980c6d11b3c54eb73175e317a83cef95cffda0059"
+      },
+      {
+        "path": "stage1r-sfcdf-complete-anchor-root-raw-sha256-01.txt",
+        "count": 200,
+        "sha256": "6673d8e79c51e85eb7e6ee5adcdccd01c3f2093b8fd768943f90f5de8249c46a",
+        "first": "001a6d3d92c394fcc98d57226d910abf44e69b1c5d21aa21c1ff2e35a603bc98",
+        "last": "2f86746f78fbf6efee3338ad324b249f72203a929fcd9e6a827b791796fec1b3"
+      },
+      {
+        "path": "stage1r-sfcdf-complete-anchor-root-raw-sha256-02.txt",
+        "count": 200,
+        "sha256": "7717577a1dd88f31a7dc3d4a3f275581a25d360e6533a0491f63f5f92bfb1489",
+        "first": "2fcb3d8459ac9bf73e2749082ff4f8494354865c9a56617dabcd45699d511542",
+        "last": "58f77a8d5639b1f7d32172411f77eaa0941d65f3a75bdcec50f04628ae35ffca"
+      },
+      {
+        "path": "stage1r-sfcdf-complete-anchor-root-raw-sha256-03.txt",
+        "count": 200,
+        "sha256": "5fde356c9bd4ee87a7a6e4e790fcb1ecc5523b6b76a82de95d5075e71be0a9a4",
+        "first": "5942286bd79fd9b818ca86e90d664f2c4cc0975fcd5ff71e0543b4a6298ff0ed",
+        "last": "83081cf8c9df565e9ef8fe6e31f55138521beed1b142955dbe4dddf0349f30d9"
+      },
+      {
+        "path": "stage1r-sfcdf-complete-anchor-root-raw-sha256-04.txt",
+        "count": 200,
+        "sha256": "a29389089ed0f3ed5048f9339f49060b068f0fa0eff75c757d64fde30c4ce706",
+        "first": "831bfe42c29b65ca3e9e6b7f21845df13c38d861adab76838d53b5061cf84954",
+        "last": "ad74a8c9d74a8f14e1ae13f94837eb2e10c456baa1634842d1bdc5c30e12e424"
+      },
+      {
+        "path": "stage1r-sfcdf-complete-anchor-root-raw-sha256-05.txt",
+        "count": 200,
+        "sha256": "816b3b5ea5b7646562db62c769baf832420c1106f1d061afb59490f3dfea984c",
+        "first": "ad9c98abed869e0331a86be33781e3ff7ae6bd49270b2d676e5e29d2e1593eb7",
+        "last": "d7a2f5b30ead12e6ee8f88f6ab7e17bab75fbf56207bbeda890ed970dce0b95a"
+      },
+      {
+        "path": "stage1r-sfcdf-complete-anchor-root-raw-sha256-06.txt",
+        "count": 198,
+        "sha256": "5b6a09caaf973f2b1654d4c6d124dcc822d0cf3884cd0219ac409c1625dfe505",
+        "first": "d81a447acdfd7e965f4dc6122aebd240e59733548fd33b1e4e18dc46d9c2142b",
+        "last": "ffee05998f4912ad23512caa75e53e9481b4c729c5cd48d0e9b396b2ebb2b6cc"
+      }
+    ]
+  },
+  "membershipRule": {
+    "sourceTrajectory": "reject candidate if exact full SHA-256 appears in any trajectory chunk",
+    "rawRoot": "reject pair if either selected root exact full SHA-256 appears in any root chunk",
+    "legacySeedNamespacesForbidden": [
+      "40111001..40111384",
+      "40211001..40211384",
+      "41211001..41211384"
+    ],
+    "openingPrefixAgainstG4_01Stage1r": "NOT-AUDITABLE-NOT-ASSERTED",
+    "chunkFilesAreSorted": true,
+    "hashComparison": "lowercase 64-hex exact equality"
+  },
+  "audit": {
+    "stage1rSfcdfSourceFilesChecked": 384,
+    "slotSeedRangeContiguous": true,
+    "effectiveSeedEqualsSlotSeed": true,
+    "primaryOnly": true,
+    "pairedReserveUse": 0,
+    "policyCounts": {
+      "LGTTCI-P1-UNIFORM-LEGAL": 192,
+      "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 192
+    },
+    "completeAnchorsByRootFamily": {
+      "LGTTCI-RF1-MID-ANCHOR": 327,
+      "LGTTCI-RF2-OFFSET-ANCHOR": 272
+    }
+  },
+  "protectedEvidence": {
+    "g4_01OldSeedReread": false,
+    "g4_01WorkflowRerun": false,
+    "g4_01PairedReserveReuseByG4_02": false,
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  }
+}

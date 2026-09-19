@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY1",
+  "stageId": "SFCDFT-S0-TECHNICAL-2026-09-18-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "statusAtFreeze": "FROZEN-BEFORE-TECHNICAL-EXECUTION",
+  "scientificEffectAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "formalDecisionAuthorized": false,
+  "studySpecBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_1_SPEC.json",
+    "gitBlobSha": "2073effce600b8c80a5ac7cbfb41c342a30bbdb4"
+  },
+  "studyAuthorizationBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_AUTHORIZATION.json",
+    "gitBlobSha": "41bac1c525f89afe8f94811f79f97c1c6e46e923"
+  },
+  "technicalFixtureNamespace": {
+    "seedStart": 49020001,
+    "seedEnd": 49020256,
+    "count": 256,
+    "role": "NON-SCIENTIFIC-TECHNICAL-FIXTURE-ONLY",
+    "scientificPopulationEligible": false
+  },
+  "sourceMaxPly": 240,
+  "requiredDomainCoverage": [
+    "SFCDFT-D1-P1-RF1",
+    "SFCDFT-D2-P1-RF2",
+    "SFCDFT-D3-P2-RF1",
+    "SFCDFT-D4-P2-RF2"
+  ],
+  "representativeRule": "scan technical seeds ascending; use frozen policy/root assignment; retain the first complete, legacy-firewall-clean, preflight-eligible pair per domain; no endpoint-value selection",
+  "openingPrefixDefinition": {
+    "length": 16,
+    "serialization": "first 16 canonical move identity keys joined by LF without trailing LF",
+    "hash": "SHA-256 UTF-8",
+    "candidateRequirement": "source trajectory must contain at least 16 moves"
+  },
+  "legacyFirewallChecks": {
+    "manifestPath": "doc/research-generation-4/prereg/g4-02-legacy-compatibility-firewall/MANIFEST.json",
+    "manifestGitBlobSha": "9c5503a4846a17eb36f6921a5e21a4ce1f958221",
+    "requireTrajectoryExactSetMembership": true,
+    "requireRawRootExactSetMembership": true,
+    "requireKnownMemberPositiveControls": true,
+    "requireKnownNonMemberNegativeControl": true
+  },
+  "requiredTechnicalChecks": [
+    "study/spec/authorization blob bindings",
+    "production/independent static import separation",
+    "policy assignment exact agreement",
+    "root-family assignment exact agreement",
+    "P1/P2 replay exact agreement",
+    "RAW state identity exact agreement",
+    "move identity exact agreement",
+    "full trajectory SHA-256 exact agreement",
+    "first-16 opening-prefix SHA-256 exact agreement",
+    "domain assignment exact agreement",
+    "legacy trajectory/root firewall exact membership",
+    "all four domains have one complete representative pair",
+    "per-root bounded resource preflight pass",
+    "C1 exact endpoint canonical equality",
+    "C6 exact endpoint canonical equality",
+    "synthetic exact sign-test arithmetic agreement",
+    "synthetic fixed-eight Holm decision agreement",
+    "NON-ESTIMABLE placeholder does not reduce fixed multiplicity family",
+    "malformed RAW identity fails closed"
+  ],
+  "syntheticFormalFixtures": {
+    "familySize": 8,
+    "familyAlpha": {"numerator": "1", "denominator": "20"},
+    "slots": [
+      {"id": "F1", "positive": 18, "negative": 0, "estimable": true},
+      {"id": "F2", "positive": 17, "negative": 1, "estimable": true},
+      {"id": "F3", "positive": 16, "negative": 2, "estimable": true},
+      {"id": "F4", "positive": 15, "negative": 3, "estimable": true},
+      {"id": "F5", "positive": 14, "negative": 4, "estimable": true},
+      {"id": "F6", "positive": 13, "negative": 5, "estimable": true},
+      {"id": "F7", "positive": 0, "negative": 0, "estimable": false},
+      {"id": "F8", "positive": 9, "negative": 9, "estimable": true}
+    ],
+    "nonEstimableRawPConvention": {"numerator": "1", "denominator": "1"},
+    "holmRule": "sort all eight slots by raw p then stable id; thresholds alpha/(8-rank+1); non-estimable slot remains p=1 non-rejectable placeholder"
+  },
+  "resourceCeilings": {
+    "perRepresentativeRoot": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000000,
+      "maxElapsedMs": 180000,
+      "maxPeakRssBytes": 4294967296,
+      "maxRootArtifactBytes": 67108864
+    },
+    "stage": {
+      "maxElapsedMs": 900000,
+      "maxPeakRssBytes": 2147483648,
+      "maxArtifactBytes": 134217728
+    }
+  },
+  "decisionMapping": {
+    "allRequiredChecksPass": "STAGE0-PASS",
+    "anyMandatoryTechnicalCheckFails": "TECHNICAL-INVALID"
+  },
+  "protectedEvidence": {
+    "stage1ScientificSeedRead": false,
+    "stage2ScientificSeedRead": false,
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage2Access": false,
+    "g4_01SeedReplay": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  }
+}

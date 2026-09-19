@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY2",
+  "stageId": "SFCDFT2-S1-COMPATIBILITY-2026-09-18-v1",
+  "evidenceClass": "FRESH-COMPATIBILITY",
+  "statusAtFreeze": "FROZEN-PENDING-PREACCESS-AUTHORIZATION",
+  "scientificEffectAuthorized": false,
+  "effectDirectionAuthorized": false,
+  "pValueAuthorized": false,
+  "generalizationDecisionAuthorized": false,
+  "counterexampleDecisionAuthorized": false,
+  "prerequisiteStage0": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/results/stage-0-study2/STUDY_2_STAGE_0_TECHNICAL_RESULT.json",
+    "gitBlobSha": "a41ca9032bcd0295b681be84e8cf92ef3867c310",
+    "decision": "STAGE0-PASS",
+    "workflowRunId": 35320865202,
+    "artifactId": 10536936928,
+    "artifactDigest": "sha256:658931990a4b131c2d99d90a5e4596028dc680aa194b6a4722eff7e64bed1920",
+    "deterministicCoreSha256": "e2be9cd0acc8d20d75f3b3d655fba4756699b4038b9cac48f23b5490056a77db"
+  },
+  "freshSeedSlots": {
+    "primary": {"seedStart": 40411001, "seedEnd": 40411384, "count": 384},
+    "pairedReserve": {"seedStart": 41411001, "seedEnd": 41411384, "count": 384},
+    "reserveMapping": "reserveSeed = primarySeed + 1000000",
+    "maxInfrastructureReplacements": 16,
+    "maxFreshSeedReads": 400,
+    "seedExtensionAuthorized": false,
+    "reserveOfReserveAuthorized": false
+  },
+  "sourceAcquisition": {
+    "executionRoute": "GITHUB-ACTIONS-SHARDED-IMMUTABLE-SOURCE-ARTIFACT-PIPELINE",
+    "sourceArtifactUnit": "one primary slot",
+    "freshReadOnlyAfterDurableStartMarker": true,
+    "everyDeterministicPopulationOutcomeMustProduceSealedSourceArtifact": true,
+    "normalSourceStatuses": ["CANDIDATE-PAIR-COMPLETE", "NO-CANDIDATE-ROOT-SHORTAGE"],
+    "primarySafeRetryAllowedOnlyWhen": "no primary START artifact exists for the slot",
+    "pairedReserveAllowedOnlyWhen": "primary START exists, no sealed source exists, and failure is proven infrastructure interruption rather than deterministic source classification",
+    "pairedReserveForbiddenFor": ["short trajectory", "root unavailable", "identity firewall reject", "preflight failure", "endpoint undefined", "effect value", "effect direction", "domain support", "study disposition"],
+    "automaticWorkflowRerunAuthorized": false,
+    "fullFreshWorkflowRerunAuthorized": false,
+    "sourceGenerationSeparatedFromMeasurement": true,
+    "sourceArtifactRetentionDays": 90
+  },
+  "sourcePayload": {
+    "requiredFields": ["stageId", "slotSeed", "effectiveSeed", "seedRole", "policyId", "rootFamilyId", "domainId", "sourceTrajectorySha256", "candidateStatus", "openingPrefixAvailable", "openingPrefixSha256", "openingPrefixLength", "moveCount", "terminal", "pairComplete", "namua", "mtaji"],
+    "candidateOpeningPrefixLength": 16,
+    "shortNoCandidateOpeningPrefixSha256": null,
+    "rootPayloadFields": ["ply", "phase", "rootLegalWidth", "rawStateSha256", "state"],
+    "scientificEndpointValuesStoredDuringSourceAcquisition": false
+  },
+  "domains": [
+    {"domainId": "SFCDFT2-D1-P1-RF1", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR", "targetPairs": 8},
+    {"domainId": "SFCDFT2-D2-P1-RF2", "policyId": "LGTTCI-P1-UNIFORM-LEGAL", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR", "targetPairs": 8},
+    {"domainId": "SFCDFT2-D3-P2-RF1", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR", "targetPairs": 8},
+    {"domainId": "SFCDFT2-D4-P2-RF2", "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR", "targetPairs": 8}
+  ],
+  "assignment": {
+    "policy": "odd primary slot seed -> P1; even primary slot seed -> P2",
+    "rootFamily": "first byte SHA-256(stageId + '|RF|' + primarySlotSeed) modulo 2; 0 -> RF1, 1 -> RF2"
+  },
+  "identityFirewalls": {
+    "g3_04Stage1": {
+      "path": "doc/structural-forcing-corridor-decision-funnel/results/stage-1/scientific-result.json",
+      "gitBlobSha": "049473e3130814382418fd15fe0c7991f7c08c21",
+      "exclude": ["sourceSeed", "sourceTrajectorySha256", "openingPrefixSha256", "rootRawSha256"],
+      "scientificOutcomeFieldsMayBeLoadedForSelection": false
+    },
+    "g3_04Stage2": {
+      "path": "doc/structural-forcing-corridor-decision-funnel/results/stage-2/scientific-result.json",
+      "gitBlobSha": "099c45134e2816aac7bafdd5aab5ade03903c64a",
+      "exclude": ["sourceSeed", "sourceTrajectorySha256", "openingPrefixSha256", "rootRawSha256"],
+      "scientificOutcomeFieldsMayBeLoadedForSelection": false
+    },
+    "g4_01Legacy": {
+      "path": "doc/research-generation-4/prereg/g4-02-legacy-compatibility-firewall/MANIFEST.json",
+      "gitBlobSha": "9c5503a4846a17eb36f6921a5e21a4ce1f958221",
+      "forbiddenSeedNamespaces": ["40111001..40111384", "40211001..40211384", "41211001..41211384"],
+      "exclude": ["sourceTrajectorySha256", "rootRawSha256"],
+      "openingPrefixDisjointness": "NOT-AUDITABLE-NOT-ASSERTED"
+    },
+    "study1": {
+      "path": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study1/MANIFEST.json",
+      "gitBlobSha": "e7ba61bd94fbce7aa7fc804e284974ca3a3ba330",
+      "identityCoreSha256": "8836ce233aa330538defd7271d4e69389526fafb42f605b542eebf9996522430",
+      "forbiddenSeedNamespaces": ["40311001..40311384", "41311001..41311384", "40321001..40321768", "41321001..41321768"],
+      "exclude": ["sourceTrajectorySha256", "openingPrefixSha256", "rootRawSha256"]
+    }
+  },
+  "candidateSelection": {
+    "completeSourceManifestBeforeSelection": true,
+    "preMeasurementEligibility": ["candidateStatus=CANDIDATE-PAIR-COMPLETE", "all identity firewalls pass", "production/independent source replay exact", "resource preflight pass for both roots"],
+    "selectionKey": "SHA-256(stageId|domainId|slotSeed|effectiveSeed|sourceTrajectorySha256|openingPrefixSha256|namuaRawSha256|mtajiRawSha256)",
+    "selectionOrder": "ascending hexadecimal within each frozen domain",
+    "selectedPairsPerDomain": 8,
+    "selectedPairTotal": 32,
+    "selectedRootTotal": 64,
+    "replacementAfterMeasurementBegins": false
+  },
+  "measurement": {
+    "freshSeedReadAuthorized": false,
+    "input": "sealed selected source artifacts only",
+    "productionImplementation": "tools/experiments/lib/sfcdft2-production.js",
+    "independentImplementation": "tools/experiments/lib/sfcdft2-independent.js",
+    "endpoints": ["SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION", "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO"],
+    "requiredPerSelectedPair": ["C1 definedness", "C6 definedness", "production/independent canonical equality", "resource telemetry"],
+    "humanFacingNumericEndpointOutputAuthorized": false,
+    "pairedDifferenceAuthorized": false,
+    "pairedDirectionAuthorized": false,
+    "measurementRetryAllowed": "only on byte-identical sealed selected-source input; no fresh seed access"
+  },
+  "decisionMapping": {
+    "allFourDomainsHaveEightSelectedPairsAndAllMandatoryMeasurementsExact": "FORMAL-PREPARATION-ELIGIBLE",
+    "supportOrResourceFailureWithoutIntegrityFailure": "NON-ESTIMABLE",
+    "integrityOrAuthorizationOrExactnessFailure": "TECHNICAL-INVALID"
+  },
+  "resourceCeilings": {
+    "perSelectedRoot": {"maxDistinctRawStates": 100000, "maxUniqueTransitions": 750000, "maxParentExpansions": 100000, "maxLegalMoveEvaluations": 750000, "maxTreeNodeOccurrences": 1000000000, "maxElapsedMs": 180000, "maxPeakRssBytes": 4294967296, "maxRootArtifactBytes": 67108864},
+    "maxSelectedPairs": 32,
+    "maxSelectedRoots": 64,
+    "maxCanonicalArtifactBytes": 536870912,
+    "postFreshIncreaseAuthorized": false
+  },
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1Replay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_01SeedReplay": false,
+    "study1RepairReplay": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false
+  },
+  "stage2AuthorizationImplied": false,
+  "mainIntegrationAuthorized": false
+}

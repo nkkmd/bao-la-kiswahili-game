@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY1",
+  "agenda": "G4-02",
+  "authorizationDecision": "G4-02-AUTHORIZED",
+  "authorizationScope": "STUDY-DEFINITION-PREREGISTRATION-AND-NONSCIENTIFIC-STAGE0-ONLY",
+  "baselineRemoteMain": "c5689d70cd017171e7738140ba9186a117f732f1",
+  "researchBranch": "research/g4-02-sfcdft-study1",
+  "reviewBinding": {
+    "path": "doc/research-program-decisions/2026-09-18-post-prerequisite-g4-02-authorization-review-v2.md",
+    "gitBlobSha": "df6d86e78d6e368999a91079d4d3e7dda08ae06e"
+  },
+  "protocolBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/STUDY_1_PROTOCOL.md",
+    "gitBlobSha": "029e0022f190504c4088fe5a14f6cb2ef7c08766"
+  },
+  "studySpecBinding": {
+    "path": "doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_1_SPEC.json",
+    "gitBlobSha": "2073effce600b8c80a5ac7cbfb41c342a30bbdb4"
+  },
+  "methodologyAmendmentBinding": {
+    "path": "doc/research-generation-4/methodology/2026-09-18-g4-02-legacy-compatibility-freshness-amendment.md",
+    "gitBlobSha": "102bb7f689f38e100a1a55252dbc902620f76e72"
+  },
+  "legacyFirewallBinding": {
+    "path": "doc/research-generation-4/prereg/g4-02-legacy-compatibility-firewall/MANIFEST.json",
+    "gitBlobSha": "9c5503a4846a17eb36f6921a5e21a4ce1f958221",
+    "identityCoreSha256": "5672098cd04476f6e416de424908c9430562ff64433d16b31a66c233c53c81dd"
+  },
+  "authorizedNow": {
+    "studyDefinitionFreeze": true,
+    "nonScientificStage0TechnicalFixtures": true,
+    "stage1PreparationWithoutSeedRead": true,
+    "stage2PreparationWithoutSeedRead": false
+  },
+  "notAuthorizedNow": {
+    "stage1FreshScientificSeedAccess": true,
+    "stage2FreshFormalSeedAccess": true,
+    "scientificEffectGeneration": true,
+    "heavyFreshScientificExecution": true,
+    "mainIntegration": true,
+    "publicAiChange": true
+  },
+  "freshScientificSeedAccessAtAuthorization": 0,
+  "freshScientificOutcomeGeneratedAtAuthorization": false,
+  "requiredNextAuthorization": "SFCDFT-S1-PREACCESS-AUTHORIZATION-AFTER-STAGE0-PASS",
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g3_12Stage1RepairReplay": false,
+    "g3_12Stage2SeedAccess": false,
+    "g4_01SeedReplay": false,
+    "g4_10Depth11Access": false
+  }
+}

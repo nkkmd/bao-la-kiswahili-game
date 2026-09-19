@@ -1,94 +1,117 @@
 # Research Generation 4 — 再開位置
 
-更新日: 2026-09-18  
-状態: **`G4-01 COMPLETE / REPOSITORY CONSISTENCY AUDIT PASS / MAIN INTEGRATION AUTHORIZED / NEXT WAVE-A STUDY NOT AUTHORIZED`**
+更新日: 2026-09-20  
+状態: **`G4-02 CLOSED / NO SCIENTIFIC DECISION / DOCUMENTATION CLOSURE COMPLETE`**
 
 ## 再開時の読む順序
 
-1. repositoryのremote `main` HEADを取得し、完全SHAを記録する。
-2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)を読み、G4-01完了状態と後続Agendaのauthorization境界を確認する。
-3. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)を読み、Wave Aのdependency、証拠区分、no-rescue boundaryを確認する。
-4. [`../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md`](../local-game-tree-geometry-transfer-compatibility-instrument/CURRENT_STATUS.md)を読み、G4-01のcanonical resultとclosureを確認する。
-5. [`../local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json`](../local-game-tree-geometry-transfer-compatibility-instrument/results/stage-1r/STAGE_1R_COMPATIBILITY_RESULT.json)を確認する。
-6. [`../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md`](../research-program-decisions/2026-09-18-g4-01-local-game-tree-geometry-transfer-compatibility-study1-closure.md)を読む。
-7. [`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)でmain統合前の文書整合性監査を確認する。
-8. [`../DOCUMENTATION_LANGUAGE_POLICY.md`](../DOCUMENTATION_LANGUAGE_POLICY.md)と[`../JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](../JAPANESE_DOCUMENTATION_QUALITY_GATE.md)を読む。
+1. remote `main` HEADと`research/g4-02-sfcdft-study4-prereg` HEADを確認する。
+2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の現在状態を確認する。
+3. [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)でG4-02最終状態を確認する。
+4. [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)を確認する。
+5. [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md)でformal closureとno-rerun境界を確認する。
+6. [`checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md`](checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md)でAgenda全体のclosureを確認する。
+7. `main`統合はユーザーの明示指示があるまで行わない。
 
 ## 現在地
 
 ```text
-Research Generation 3 = CLOSED / INTEGRATED TO MAIN
-Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
-G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
-repository-wide consistency audit = PASS
-G4-02 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
-G4-03 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
-G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
-G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
-G4-01 main integration = AUTHORIZED BY USER / PR #151
+current branch = research/g4-02-sfcdft-study4-prereg
+Study 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
+Study 2 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
+Study 3 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
+Study 3 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
+Study 4 Stage 0 = PASS
+Study 4 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
+Study 4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
+G4-02 scientific transfer decision = NONE
+G4-02 = CLOSED / NO SCIENTIFIC DECISION
+documentation closure = COMPLETE
+main integration = NOT AUTHORIZED / NOT PERFORMED
+public AI change = false
 ```
 
-## G4-01の確定結果
-
-G4-01の正式Studyは`LGTTCI-STUDY1`。
+## Study 4 Stage 2確定値
 
 ```text
-Stage 0 = STAGE0-PASS
-old Stage 1 = EXECUTION-INTERRUPTED-FAIL-CLOSED-NO-DECISION
-Stage 1R = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL
-SFCDF = compatible
-SILGM = compatible
-GCLD = compatible
-source coverage = 1536 / 1536
-paired reserve use = 0
-fresh workflow rerun = 0
-seed-free measurements = 22 / 22 success
-recovery run = 35265290422 / success
-result deterministic core SHA256 = 0bf8da597bec47eb774b467be1c49bfc6f2aa43850151a44eaf2598ccb220a61
+canonical run = 35450625402
+run attempt = 1
+workflow conclusion = FAILURE
+execution head = 0acd54a23fd8e1f1226c307fe948c251d64f336d
+primary source acquisition = 768 / 768 completed
+retry = 0
+paired reserve = 0
+deterministic failures = 0
+classify-final = success / ready=true
+bundle-source = failure
+bundle-source job = 105919448021
+recovered error = source identity mismatch
+formal measurement = NOT STARTED
+formal aggregate = NOT STARTED
+8-cell decision vector = NOT GENERATED
 ```
 
-`COMPATIBILITY-ELIGIBLE-ALL`はcompatibility/readiness判定であり、generalization、effect、counterexampleのformal resultではない。
+formal measurement前のmandatory artifact stageで停止したため、C1/C6のeffect direction、p-value、Holm判定、generalization/counterexample decisionは存在しない。
 
-## 次に実施する判断
+## Identity-only post-failure audit
 
-次の研究を進める場合、G4-02、G4-03、G4-04のいずれかについて**post-G4-01 current-state authorization review**を先に行う。
+canonical runのsealed source artifactsだけを対象に、fresh seedを再読しないidentity-only auditを実施した。
 
-reviewでは少なくとも次を判定する。
+```text
+audit run = 35452797563
+execution head = 9a2abaa3b45e2eaac532ea9c7c1ba284e22d4688
+conclusion = SUCCESS
+source artifacts inspected = 768
+top-level studyId mismatch = 0
+top-level stageId mismatch = 0
+duplicate slot = 0
+fresh scientific seed reads = 0
+scientific endpoint reads = 0
+effect computation = false
+```
 
-- G4-01 `COMPATIBILITY-ELIGIBLE-ALL`が当該Agendaのprerequisiteを満たすか
-- どのG3 claim familyを移送対象とするか
-- fresh evidence namespaceを既存のG3/G4 evidenceから独立して固定できるか
-- formal claim、population、endpoint、selection rule、resource ceilingをprospectiveに固定できるか
-- G4-01のcompatibility evidenceをscientific effectとして誤用していないか
-- no-rescue / no-rerun / protected-evidence boundaryを維持できるか
+```text
+audit artifact ID = 10587421372
+audit artifact digest = sha256:dae4371a2b06d3c6085a502b310b5af55dc0c439ec2d91268d2f7fbc219e2af8
+```
 
-`AUTHORIZED`の場合だけ正式Study ID、Stage、fresh seed block、execution contractを固定する。
+canonical bundlerの`source identity mismatch`はこのtop-level identity auditでは再現しなかった。root causeは未確定であり、この監査をformal measurement救済やsame-evidence repairへ用いない。
 
-`NOT-AUTHORIZED`または`PREREQUISITE-REQUIRED`の場合はscientific seedへアクセスせず、理由をdecision recordへ残す。
+## G4-02最終解釈
 
-## G4-01のmain統合
+```text
+G4-02 = CLOSED / NO SCIENTIFIC DECISION
+scientific transfer decision = NONE
+final formal Stage2 status = TECHNICAL-INVALID
+successor Study within G4-02 = NOT AUTHORIZED
+```
 
-G4-01 research branchは研究完了状態にあり、repository-wide consistency auditも`PASS`している。2026-09-18にユーザーからPR #151による`main`統合の明示承認を受領した。
+これはC1/C6の一般化失敗やcounterexample検出を意味しない。凍結済みone-shot protocolで有効なformal transfer結果を取得できなかった、という終了状態である。
 
-統合前に確認済みの項目:
+Study 4 Stage 1の`FORMAL-PREPARATION-ELIGIBLE`はcompatibility-only evidenceとして保持するが、Stage 2 formal conclusionへ昇格させない。
 
-- canonical result / provenance / attestationが一致している
-- G4-01 closure decisionが存在する
-- `CURRENT_STATUS.md`、Study README、Research Generation 4状態文書が整合している
-- root README、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`をG4-01完了状態へ同期した
-- repository-wide consistency auditが`PASS`
-- PR #151を統合経路として明示承認した
+## Documentation closure
 
-repository-wide auditの記録は[`checkpoints/2026-09-18-g4-01-repository-consistency-audit.md`](checkpoints/2026-09-18-g4-01-repository-consistency-audit.md)を参照する。
+G4-02の最終状態は、ルート`README.md`、研究索引、将来アジェンダ、RG4入口文書、RG4 current status、G4-02 current status、machine-readable Stage 2 result、Study 4 Stage 2 checkpoint、Agenda closure checkpointへ反映済みである。
+
+`PROGRAM_PLAN.md`などのprospectively frozen文書は事後結果に合わせて改変しない。履歴文書に残る当時の`NOT AUTHORIZED`や進行中表記は、その時点の記録として保持し、live-state文書とは区別する。
+
+repository-wide closure documentation auditは専用GitHub Actions workflowで検証する。監査のtechnical fixはscientific executionではなく、fresh scientific seedへのアクセスを伴わない。
+
+## 次にRG4を進める場合
+
+G4-02について追加のscientific executionは行わない。第四世代研究を継続する場合は、G4-03またはG4-04など次のAgendaについて**個別のauthorization review**から開始する。
+
+G4-01のeligibility gateだけでfresh scientific executionが自動承認されることはない。G4-02をrepair/reopenせず、G4-02で閉じたscientific executionやseedを救済目的で再利用しない。
 
 ## 禁止事項
 
-- 旧G4-01 `401...` seed namespaceの再利用
-- Stage 1R fresh workflowの再実行
-- G3-12のrepair、reopen、Stage 1 replay
-- G3-12 Stage 2 seedの流用
-- G3-11 depth 10の再実行
-- G4-10 authorization前のdepth 11 access
-- `COMPATIBILITY-ELIGIBLE-ALL`をgeneralization/effect/counterexample resultとして扱うこと
-- authorization review前のG4-02/G4-03/G4-04 scientific outcome生成
-- G4-01のmain統合承認を後続Studyや公開AI変更の承認へ拡張すること
+- G4-02 Study 1〜4 scientific executionのrerun / repair / reopen
+- closed scientific seedの救済目的の再読
+- deterministic scientific failureのreserve救済
+- frozen endpoint / direction / alpha / sample target / domain / resource ceilingの事後変更
+- identity auditを根拠にしたStage 2 scientific rescue
+- G3-12 repair/replay
+- G4-10 depth11 access
+- public AIへの自動反映
+- ユーザーの明示指示なしの`main`統合

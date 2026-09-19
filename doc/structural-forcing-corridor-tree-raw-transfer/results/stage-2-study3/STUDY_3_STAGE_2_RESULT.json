@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "program": "Research Generation 4 / G4-02",
+  "studyId": "SFCDFT-STUDY3",
+  "stageId": "SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1",
+  "evidenceClass": "FRESH-FORMAL-HELDOUT",
+  "adjudicationDate": "2026-09-19",
+  "status": "TECHNICAL-INVALID",
+  "canonicalExecution": {
+    "runId": 35427427920,
+    "event": "push",
+    "executionSha": "dec9a91d5860b9f3d927d632a7165bcbf99f5f63",
+    "runAttempt": 1,
+    "runConclusion": "failure"
+  },
+  "executionTrace": {
+    "finalClassification": {
+      "job": "classify-final",
+      "conclusion": "success",
+      "ready": true
+    },
+    "sourceBundle": {
+      "job": "bundle-source",
+      "jobId": 105857959486,
+      "conclusion": "failure",
+      "failedStep": "Build fresh Stage2 source bundle",
+      "exactLowLevelStderrRecoveredForAdjudication": false
+    },
+    "formalMeasurement": {
+      "started": false,
+      "conclusion": "skipped"
+    },
+    "formalAggregate": {
+      "started": false,
+      "conclusion": "skipped"
+    }
+  },
+  "scientificDecision": {
+    "eightCellDecisionVectorGenerated": false,
+    "formalScientificLabelsAssigned": false,
+    "effectDirectionInterpreted": false,
+    "pValuesInterpreted": false,
+    "generalizationOrCounterexampleDecisionAvailable": false,
+    "reason": "The mandatory source-bundle execution/artifact step failed before formal measurement began."
+  },
+  "adjudication": {
+    "classification": "TECHNICAL-INVALID",
+    "basis": [
+      "The canonical one-shot execution failed at the mandatory bundle-source stage after classify-final succeeded.",
+      "Formal measurement and formal aggregation did not start, so no eight-cell scientific decision vector exists.",
+      "STUDY_3_PROTOCOL.md classifies mandatory execution/provenance/artifact-contract violations as TECHNICAL-INVALID.",
+      "The frozen execution authorization does not authorize a full fresh workflow rerun, same-evidence repair rerun, manual workflow dispatch, or run attempt greater than one."
+    ],
+    "notClassifiedAs": {
+      "NON-ESTIMABLE": "No formal support/definedness/minimum-nonzero/resource-gate determination was reached because formal measurement never began.",
+      "NOT-CONFIRMED": "No estimable formal hypothesis test was completed.",
+      "GENERALIZES-WITHIN-FROZEN-DOMAIN": "No formal hypothesis test was completed.",
+      "COUNTEREXAMPLE-BOUNDARY-DETECTED": "No formal hypothesis test was completed."
+    }
+  },
+  "recoveryDisposition": {
+    "fullFreshWorkflowRerunAuthorized": false,
+    "sameEvidenceRepairRerunAuthorized": false,
+    "manualWorkflowDispatchAuthorized": false,
+    "runAttemptGreaterThanOneAuthorized": false,
+    "rerunPerformed": false,
+    "sameEvidenceRepairPerformed": false,
+    "scientificSeedRereadPerformedAfterFailure": false,
+    "scientificRescuePerformed": false
+  },
+  "evidenceDisposition": {
+    "study1ClosureChanged": false,
+    "study2ClosureChanged": false,
+    "study3Stage1ResultChanged": false,
+    "stage2ScientificInferenceAvailable": false,
+    "failureInterpretableAsScientificCounterevidence": false
+  },
+  "auditBoundary": {
+    "exactLowLevelBundleErrorAsserted": false,
+    "note": "The adjudication relies only on durable GitHub Actions job/step conclusions and the frozen protocol/authorization contract. No unrecovered stderr text is inferred or invented."
+  },
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
