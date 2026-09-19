@@ -47,7 +47,10 @@
     "deterministicCoreSha256": "24ef523c374ba2afb8cd79726be7531fffc602f5936534ff82a016ef08fc411f"
   },
   "materialization": {
-    "source": "immutable GitHub Actions source-bundle artifact only",
+    "workflowRunId": 35443221923,
+    "workflowRunAttempt": 1,
+    "headSha": "7f2155dc7c05d38cd9dc73a3d2413cbc9281ba61",
+    "artifactInputOnly": true,
     "freshSeedReplay": false
   },
   "limitations": {
