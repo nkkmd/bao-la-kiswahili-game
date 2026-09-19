@@ -1,0 +1,58 @@
+name: SFCDFT4 Stage 2 canonical identity-only audit
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - .github/workflows/sfcdft4-stage2-canonical-identity-audit.yml
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download only sealed source artifacts from canonical run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CANONICAL_RUN_ID: '35450625402'
+        run: |
+          set -euo pipefail
+          mkdir -p canonical-sources
+          gh run download "$CANONICAL_RUN_ID" --repo "$GITHUB_REPOSITORY" --pattern 'sfcdft4-s2-source-*' --dir canonical-sources
+      - name: Audit only top-level execution identity
+        env:
+          EXPECTED_STUDY_ID: SFCDFT-STUDY4
+          EXPECTED_STAGE_ID: SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'), path=require('node:path');
+          const root='canonical-sources';
+          const files=[];
+          function walk(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);if(e.isDirectory())walk(p);else if(e.isFile()&&e.name==='source.json')files.push(p);}}
+          walk(root); files.sort();
+          const rows=[];
+          for(const file of files){
+            const j=JSON.parse(fs.readFileSync(file,'utf8'));
+            rows.push({artifactDirectory:path.basename(path.dirname(file)),studyId:j.studyId??null,stageId:j.stageId??null,slotSeed:j.slotSeed??null,effectiveSeed:j.effectiveSeed??null,seedRole:j.seedRole??null});
+          }
+          const mismatches=rows.filter(r=>r.studyId!==process.env.EXPECTED_STUDY_ID||r.stageId!==process.env.EXPECTED_STAGE_ID);
+          const duplicateSlots=[...new Set(rows.map(r=>r.slotSeed).filter((x,i,a)=>a.indexOf(x)!==i))].sort((a,b)=>a-b);
+          const out={schemaVersion:1,auditId:'G4-02-SFCDFT-STUDY4-STAGE2-CANONICAL-IDENTITY-ONLY-AUDIT',canonicalRunId:35450625402,expectedStudyId:process.env.EXPECTED_STUDY_ID,expectedStageId:process.env.EXPECTED_STAGE_ID,sourceJsonCount:rows.length,identityMismatchCount:mismatches.length,duplicateSlotCount:duplicateSlots.length,mismatches,duplicateSlots,scientificEndpointRead:false,scientificEffectComputed:false,freshSeedRead:false,canonicalRunRerun:false};
+          fs.mkdirSync('audit-output',{recursive:true});
+          fs.writeFileSync('audit-output/IDENTITY_AUDIT.json',JSON.stringify(out,null,2)+'\n');
+          console.log(JSON.stringify(out));
+          if(rows.length!==768)throw new Error(`expected 768 source.json files, got ${rows.length}`);
+          if(mismatches.length===0)console.log('All top-level source identities match the frozen Stage2 identity.');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft4-s2-canonical-identity-audit-35450625402
+          path: audit-output/IDENTITY_AUDIT.json
+          if-no-files-found: error
+          retention-days: 90
