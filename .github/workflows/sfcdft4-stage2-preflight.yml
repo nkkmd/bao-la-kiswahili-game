@@ -72,7 +72,7 @@ jobs:
           NODE
           node tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js --mode final --names /tmp/clean-names.txt --summary /tmp/clean-classifier.json
           node - <<'NODE'
-          const r=require('/tmp/clean-classifier.json');if(r.fatal||r.sourceCount!==768||r.primaryStartCount!==768||r.reserveStartCount!==0||r.unresolvedCount!==0)throw new Error('clean classifier mismatch');
+          const r=require('/tmp/clean-classifier.json');if(r.fatal||r.sourceCount!==768||r.primaryStartCount!==768||r.reserveStartCount!==0||r.reserveCount!==0||r.unresolvedCount!==0)throw new Error('clean classifier mismatch');
           NODE
       - name: Verify reserve positive-control provenance
         run: |
@@ -80,7 +80,19 @@ jobs:
           echo sfcdft4-s2-reserve-start-40621001 >> /tmp/reserve-names.txt
           node tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js --mode final --names /tmp/reserve-names.txt --summary /tmp/reserve-classifier.json
           node - <<'NODE'
-          const r=require('/tmp/reserve-classifier.json');if(r.fatal||r.sourceCount!==768||r.primaryStartCount!==768||r.reserveStartCount!==1||r.unresolvedCount!==0)throw new Error('reserve provenance positive control mismatch');
+          const r=require('/tmp/reserve-classifier.json');if(r.fatal||r.sourceCount!==768||r.primaryStartCount!==768||r.reserveStartCount!==1||r.reserveCount!==1||r.unresolvedCount!==0)throw new Error('reserve provenance positive control mismatch');
+          NODE
+      - name: Verify provenance negative controls fail closed
+        run: |
+          grep -v '^sfcdft4-s2-primary-start-40621001$' /tmp/clean-names.txt > /tmp/missing-start-names.txt
+          node tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js --mode final --names /tmp/missing-start-names.txt --summary /tmp/missing-start-classifier.json
+          cp /tmp/missing-start-names.txt /tmp/reserve-without-primary-names.txt
+          echo sfcdft4-s2-reserve-start-40621001 >> /tmp/reserve-without-primary-names.txt
+          node tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js --mode final --names /tmp/reserve-without-primary-names.txt --summary /tmp/reserve-without-primary-classifier.json
+          node - <<'NODE'
+          const a=require('/tmp/missing-start-classifier.json'),b=require('/tmp/reserve-without-primary-classifier.json');
+          if(!a.fatal||a.unresolvedCount<1||!a.unresolved.some(x=>x.kind==='SOURCE-WITHOUT-PRIMARY-START'))throw new Error('source without START did not fail closed');
+          if(!b.fatal||b.unresolvedCount<1||!b.unresolved.some(x=>x.kind==='RESERVE-STARTED-WITHOUT-PRIMARY-START'))throw new Error('reserve without primary START did not fail closed');
           NODE
       - name: Build synthetic 768-slot primary-only source fixture
         run: |
@@ -154,8 +166,8 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('node:fs'),crypto=require('node:crypto');
-          const c=require('/tmp/clean-classifier.json'),r=require('/tmp/reserve-classifier.json'),s=require('./retrieved/bundle/SOURCE_MANIFEST.json'),a=require('/tmp/final/result.json');
-          const core={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:'SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1',decision:'PREFLIGHT-PASS',freshScientificSeedReads:0,cleanClassifier:{sourceCount:c.sourceCount,primaryStartCount:c.primaryStartCount,reserveStartCount:c.reserveStartCount,fatal:c.fatal},reservePositiveControl:{reserveStartCount:r.reserveStartCount,fatal:r.fatal},bundle:{sourceArtifactCount:s.sourceArtifactCount,primaryCount:s.primaryCount,reserveCount:s.reserveCount},retrievedBundleDigestVerified:true,measurementConsumerParsed:true,fixedEightProductionIndependentExact:true,aggregateSchemaDecision:a.decision,stage2FreshAccessAuthorized:false,mainIntegrationAuthorized:false,publicAiChangeAuthorized:false};
+          const c=require('/tmp/clean-classifier.json'),r=require('/tmp/reserve-classifier.json'),n=require('/tmp/missing-start-classifier.json'),s=require('./retrieved/bundle/SOURCE_MANIFEST.json'),a=require('/tmp/final/result.json');
+          const core={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:'SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1',decision:'PREFLIGHT-PASS',freshScientificSeedReads:0,cleanClassifier:{sourceCount:c.sourceCount,primaryStartCount:c.primaryStartCount,reserveStartCount:c.reserveStartCount,reserveCount:c.reserveCount,fatal:c.fatal},reservePositiveControl:{reserveStartCount:r.reserveStartCount,reserveCount:r.reserveCount,fatal:r.fatal},missingStartNegativeControl:{fatal:n.fatal,unresolvedCount:n.unresolvedCount},bundle:{sourceArtifactCount:s.sourceArtifactCount,primaryCount:s.primaryCount,reserveCount:s.reserveCount},retrievedBundleDigestVerified:true,measurementConsumerParsed:true,fixedEightProductionIndependentExact:true,aggregateSchemaDecision:a.decision,stage2FreshAccessAuthorized:false,mainIntegrationAuthorized:false,publicAiChangeAuthorized:false};
           const stable=x=>x===null||typeof x!=='object'?JSON.stringify(x):Array.isArray(x)?'['+x.map(stable).join(',')+']':'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}';
           core.deterministicCoreSha256=crypto.createHash('sha256').update(stable(core)).digest('hex');
           fs.mkdirSync('artifacts/sfcdft4-stage2-preflight',{recursive:true});fs.writeFileSync('artifacts/sfcdft4-stage2-preflight/PREFLIGHT_RESULT.json',JSON.stringify(core,null,2)+'\n');console.log(JSON.stringify(core));
