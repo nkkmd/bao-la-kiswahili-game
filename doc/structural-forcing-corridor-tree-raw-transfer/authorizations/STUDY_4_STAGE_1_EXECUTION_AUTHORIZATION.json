@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY4",
+  "stageId": "SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1",
+  "decision": "SFCDFT4-STAGE1-EXECUTION-AUTHORIZED",
+  "authorizedParentHead": "e44eb9ff85849d75154d83b830ef0ac868529c17",
+  "preExecutionBindingGitBlobSha": "5915b54eda736928e87cd5a318ef1c9a8498203a",
+  "requiredPreflight": {
+    "runId": 35441599576,
+    "runAttempt": 1,
+    "conclusion": "success",
+    "artifactId": 10583892499,
+    "artifactDigest": "sha256:850437aa286be2cd7f386d5f580d7a5bd672ff651aa62ec2b524eb076db0f9c8",
+    "decision": "PREFLIGHT-PASS",
+    "freshScientificSeedReads": 0,
+    "deterministicCoreSha256": "45833837a95f4f7b3b871a7e7f5a4260e8e054be9ef07c6a9a2b8e9f27df61c3"
+  },
+  "freshScientificSeedAccessAuthorized": true,
+  "authorizedFreshSeedNamespace": {
+    "primary": "40611001..40611384",
+    "pairedReserve": "41611001..41611384"
+  },
+  "maxFreshSeedReads": 400,
+  "maxInfrastructureReplacements": 16,
+  "stage2ScientificSeedAccessAuthorized": false,
+  "scientificEffectMagnitudeAuthorized": false,
+  "effectDirectionAuthorized": false,
+  "pValueAuthorized": false,
+  "generalizationDecisionAuthorized": false,
+  "counterexampleDecisionAuthorized": false,
+  "fullFreshWorkflowRerunAuthorized": false,
+  "sameEvidenceRepairRerunAuthorized": false,
+  "manualWorkflowDispatchAuthorized": false,
+  "runAttemptGreaterThanOneAuthorized": false,
+  "study1ReplayAuthorized": false,
+  "study2ReplayAuthorized": false,
+  "study3ScientificSeedRereadAuthorized": false,
+  "study3Stage2RepairOrRerunAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "notes": "Authorization is limited to the canonical first-attempt Stage 1 compatibility workflow. It does not authorize Stage 2, effect/direction/p-value output, prior-study replay, main integration, or public AI changes."
+}
