@@ -1,22 +1,21 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-20  
-状態: **`G4-02 CLOSED / NO SCIENTIFIC DECISION / DOCUMENTATION CLOSURE COMPLETE`**
+状態: **`G4-02 CLOSED / NO SCIENTIFIC DECISION / DOCUMENTATION CLOSURE COMPLETE / MAIN INTEGRATED`**
 
 ## 再開時の読む順序
 
-1. remote `main` HEADと`research/g4-02-sfcdft-study4-prereg` HEADを確認する。
+1. remote `main` HEADを確認する。
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の現在状態を確認する。
 3. [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)でG4-02最終状態を確認する。
 4. [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)を確認する。
 5. [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md)でformal closureとno-rerun境界を確認する。
 6. [`checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md`](checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md)でAgenda全体のclosureを確認する。
-7. `main`統合はユーザーの明示指示があるまで行わない。
+7. [`checkpoints/2026-09-20-g4-02-main-integration-complete.md`](checkpoints/2026-09-20-g4-02-main-integration-complete.md)で`main`統合記録を確認する。
 
 ## 現在地
 
 ```text
-current branch = research/g4-02-sfcdft-study4-prereg
 Study 1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
 Study 2 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
 Study 3 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
@@ -27,7 +26,7 @@ Study 4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
 G4-02 scientific transfer decision = NONE
 G4-02 = CLOSED / NO SCIENTIFIC DECISION
 documentation closure = COMPLETE
-main integration = NOT AUTHORIZED / NOT PERFORMED
+main integration = COMPLETE / PR #154 / merge commit 8131fc5ebadf9c855159b5e43b18fbc0bc95e1bd
 public AI change = false
 ```
 
@@ -96,7 +95,9 @@ G4-02の最終状態は、ルート`README.md`、研究索引、将来アジェ�
 
 `PROGRAM_PLAN.md`などのprospectively frozen文書は事後結果に合わせて改変しない。履歴文書に残る当時の`NOT AUTHORIZED`や進行中表記は、その時点の記録として保持し、live-state文書とは区別する。
 
-repository-wide closure documentation auditは専用GitHub Actions workflowで検証する。監査のtechnical fixはscientific executionではなく、fresh scientific seedへのアクセスを伴わない。
+repository-wide closure documentation auditは専用GitHub Actions workflowで検証済みである。監査のtechnical fixはscientific executionではなく、fresh scientific seedへのアクセスを伴わない。
+
+G4-02はPR #154で`main`へ統合済みであり、統合記録は[`checkpoints/2026-09-20-g4-02-main-integration-complete.md`](checkpoints/2026-09-20-g4-02-main-integration-complete.md)を正本とする。
 
 ## 次にRG4を進める場合
 
@@ -114,4 +115,3 @@ G4-01のeligibility gateだけでfresh scientific executionが自動承認され
 - G3-12 repair/replay
 - G4-10 depth11 access
 - public AIへの自動反映
-- ユーザーの明示指示なしの`main`統合
