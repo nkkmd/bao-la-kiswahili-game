@@ -1,0 +1,121 @@
+name: SFCDFT4 Stage 0 end-to-end technical validation
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_0_EXECUTION_AUTHORIZATION.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: sfcdft4-stage0-e2e-one-shot
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Reject workflow rerun attempts
+        run: test "$GITHUB_RUN_ATTEMPT" = '1'
+      - name: Require first creation of Stage0 execution authorization
+        run: |
+          set -euo pipefail
+          auth='doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_0_EXECUTION_AUTHORIZATION.json'
+          test -f "$auth"
+          if git cat-file -e "${GITHUB_SHA}^:${auth}" 2>/dev/null; then
+            echo 'Stage0 execution authorization existed in parent commit' >&2
+            exit 1
+          fi
+      - name: Verify frozen authorization and pre-execution binding
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const cp=require('node:child_process');
+          const root='doc/structural-forcing-corridor-tree-raw-transfer';
+          const auth=JSON.parse(fs.readFileSync(`${root}/authorizations/STUDY_4_STAGE_0_EXECUTION_AUTHORIZATION.json`,'utf8'));
+          const binding=JSON.parse(fs.readFileSync(`${root}/authorizations/STUDY_4_STAGE_0_PRE_EXECUTION_BINDING.json`,'utf8'));
+          if(auth.studyId!=='SFCDFT-STUDY4'||auth.stageId!=='SFCDFT4-S0-E2E-TECHNICAL-2026-09-19-v1')throw new Error('authorization identity mismatch');
+          if(auth.decision!=='SFCDFT4-STAGE0-EXECUTION-AUTHORIZED')throw new Error('authorization decision mismatch');
+          if(auth.freshScientificSeedAccessAuthorized!==false||auth.stage1FreshScientificSeedAccessAuthorized!==false||auth.stage2FreshScientificSeedAccessAuthorized!==false)throw new Error('fresh scientific boundary mismatch');
+          if(auth.workflowRerunAuthorized!==false||auth.runAttemptGreaterThanOneAuthorized!==false)throw new Error('rerun boundary mismatch');
+          if(binding.studyId!=='SFCDFT-STUDY4'||binding.stageId!==auth.stageId)throw new Error('binding identity mismatch');
+          if(binding.freshScientificSeedReadsAtBinding!==0)throw new Error('binding scientific access mismatch');
+          for(const [file,expected] of Object.entries(binding.gitBlobBindings)){
+            const actual=cp.execFileSync('git',['rev-parse',`HEAD:${file}`],{encoding:'utf8'}).trim();
+            if(actual!==expected)throw new Error(`blob binding mismatch ${file}: ${actual} != ${expected}`);
+          }
+          console.log(JSON.stringify({event:'SFCDFT4-STAGE0-GATE-PASS',boundFiles:Object.keys(binding.gitBlobBindings).length,freshScientificSeedReads:0}));
+          NODE
+
+  build-bundle:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build synthetic production-equivalent source bundle
+        run: |
+          node tools/experiments/run-sfcdft4-stage0-e2e.js \
+            --mode build \
+            --output artifacts/sfcdft4-stage0/source-bundle
+      - name: Assert scientific namespace not present in bundle
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const root='artifacts/sfcdft4-stage0/source-bundle';
+          const forbidden=[[/\b40611\d{3}\b/,'Stage1 primary'],[/\b41611\d{3}\b/,'Stage1 reserve'],[/\b40621\d{3}\b/,'Stage2 primary'],[/\b41621\d{3}\b/,'Stage2 reserve']];
+          function walk(d){let out=[];for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name);out=e.isDirectory()?out.concat(walk(p)):out.concat(p);}return out;}
+          const text=walk(root).map(f=>fs.readFileSync(f,'utf8')).join('\n');
+          for(const [re,label] of forbidden)if(re.test(text))throw new Error(`forbidden scientific namespace present: ${label}`);
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft4-s0-source-bundle-${{ github.run_id }}
+          path: artifacts/sfcdft4-stage0/source-bundle
+          if-no-files-found: error
+          retention-days: 90
+
+  verify-roundtrip:
+    needs: build-bundle
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve synthetic bundle through Actions artifact boundary
+        uses: actions/download-artifact@v4
+        with:
+          name: sfcdft4-s0-source-bundle-${{ github.run_id }}
+          path: retrieved-source-bundle
+      - name: Verify retrieved bundle, consumers, exactness, and negative fixtures
+        run: |
+          mkdir -p artifacts/sfcdft4-stage0/final
+          node tools/experiments/run-sfcdft4-stage0-e2e.js \
+            --mode verify \
+            --input retrieved-source-bundle \
+            --output artifacts/sfcdft4-stage0/final/STUDY_4_STAGE_0_TECHNICAL_RESULT.json
+      - name: Verify Stage0 result boundary
+        run: |
+          node - <<'NODE'
+          const r=require('./artifacts/sfcdft4-stage0/final/STUDY_4_STAGE_0_TECHNICAL_RESULT.json');
+          if(r.studyId!=='SFCDFT-STUDY4'||r.stageId!=='SFCDFT4-S0-E2E-TECHNICAL-2026-09-19-v1')throw new Error('result identity mismatch');
+          if(r.decision!=='STAGE0-PASS')throw new Error('Stage0 did not pass');
+          if(r.freshScientificSeedReads!==0||r.scientificOutputsGenerated!==0)throw new Error('scientific boundary violation');
+          if(r.stage1FreshScientificAccessAuthorized!==false||r.stage2FreshScientificAccessAuthorized!==false)throw new Error('fresh access authorization boundary violation');
+          if(r.automaticStage1Authorization!==false||r.mainIntegrationAuthorized!==false||r.publicAiChangeAuthorized!==false)throw new Error('post-Stage0 boundary violation');
+          if(!Object.values(r.gates).every(Boolean))throw new Error('mandatory Stage0 gate not satisfied');
+          console.log(JSON.stringify({decision:r.decision,core:r.deterministicCoreSha256,bundle:r.artifactRoundTrip.bundleCoreSha256,negativeFixtures:r.negativeFixturesPassed.length}));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft4-s0-final-result-${{ github.run_id }}
+          path: artifacts/sfcdft4-stage0/final/STUDY_4_STAGE_0_TECHNICAL_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
