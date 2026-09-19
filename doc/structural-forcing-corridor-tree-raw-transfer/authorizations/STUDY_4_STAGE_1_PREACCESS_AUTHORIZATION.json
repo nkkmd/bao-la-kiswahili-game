@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "studyId": "SFCDFT-STUDY4",
+  "stageId": "SFCDFT4-S1-COMPATIBILITY-2026-09-19-v1",
+  "decision": "SFCDFT4-STAGE1-PREACCESS-PASS",
+  "reviewPath": "doc/research-program-decisions/2026-09-19-g4-02-study4-stage1-preaccess-authorization-review.md",
+  "reviewAnchorHead": "3ff59676f824efbec6ce8930ca008aec29760c98",
+  "stage0Decision": "STAGE0-PASS",
+  "stage0RunId": 35435952961,
+  "study3Stage2DurableFirewall": {
+    "path": "doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study3-stage2",
+    "identityCoreSha256": "4e9948fed1f7274f7d25b07f95fbc65ce3341b892dc64a288a6bcaa86f39b382",
+    "materializationRunId": 35440279723,
+    "materializationArtifactId": 10583750946,
+    "scientificSeedReplay": false,
+    "scientificOutcomeImported": false
+  },
+  "freshStage1Namespace": {
+    "primarySeedStart": 40611001,
+    "primarySeedEnd": 40611384,
+    "pairedReserveSeedStart": 41611001,
+    "pairedReserveSeedEnd": 41611384,
+    "maxInfrastructureReplacements": 16,
+    "maxFreshSeedReads": 400,
+    "statusAtAuthorization": "UNREAD"
+  },
+  "authorized": {
+    "implementation": true,
+    "preExecutionBinding": true,
+    "seedFreePreflight": true,
+    "scientificSeedRead": false,
+    "stage2ScientificSeedRead": false,
+    "mainIntegration": false,
+    "publicAiChange": false
+  },
+  "protectedBoundaries": {
+    "study1ScientificReplay": false,
+    "study2ScientificReplay": false,
+    "study3Stage1Replay": false,
+    "study3Stage2RepairOrRerun": false,
+    "study3ScientificSeedReread": false,
+    "g4_10Depth11Access": false,
+    "validatedTransformSet": []
+  }
+}
