@@ -1,0 +1,169 @@
+name: SFCDFT4 Stage2 seed-free preflight
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_PRE_EXECUTION_BINDING.json
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Study4 Stage2 seed-free build and relay
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify frozen pre-execution binding
+        env:
+          EVENT_BEFORE: ${{ github.event.before }}
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process');
+          const binding='doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_PRE_EXECUTION_BINDING.json';
+          const final='doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_4_STAGE_2_EXECUTION_AUTHORIZATION.json';
+          if(fs.existsSync(final)) throw new Error('final Stage2 authorization must be absent during preflight');
+          const b=JSON.parse(fs.readFileSync(binding,'utf8'));
+          if(b.studyId!=='SFCDFT-STUDY4'||b.stageId!=='SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1'||b.status!=='FROZEN-PRE-EXECUTION') throw new Error('binding identity mismatch');
+          if(b.bindingBaseHead!==process.env.EVENT_BEFORE) throw new Error('binding parent mismatch');
+          if(b.freshScientificSeedAccessAuthorized!==false||b.mainIntegrationAuthorized!==false||b.publicAiChangeAuthorized!==false) throw new Error('preflight authorization boundary violated');
+          for(const [file,sha] of Object.entries(b.boundGitBlobs)){if(!fs.existsSync(file))throw new Error('missing bound file '+file);const actual=cp.execFileSync('git',['hash-object',file],{encoding:'utf8'}).trim();if(actual!==sha)throw new Error('bound blob mismatch '+file+' '+actual+' != '+sha);}
+          console.log(JSON.stringify({boundFileCount:Object.keys(b.boundGitBlobs).length,bindingBaseHead:b.bindingBaseHead}));
+          NODE
+      - name: Syntax check Stage2 implementation
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-sfcdft4-stage2-source-unit.js
+          node --check tools/experiments/generate-sfcdft4-stage2-actions-matrices.js
+          node --check tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js
+          node --check tools/experiments/bundle-sfcdft4-stage2-source.js
+          node --check tools/experiments/run-sfcdft4-stage2-measurement-task.js
+          node --check tools/experiments/run-sfcdft4-stage2-formal-aggregate.js
+          node --check tools/experiments/verify-sfcdft4-stage2-actions-authorization.js
+          node --check tools/experiments/lib/sfcdft4-production.js
+          node --check tools/experiments/lib/sfcdft4-independent.js
+          node --check tools/experiments/lib/sfcdft4-source-production.js
+          node --check tools/experiments/lib/sfcdft4-source-independent.js
+      - name: Verify Stage1 prerequisite and durable identity firewalls
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process');
+          const s=require('./doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_2_FORMAL_HELDOUT_SPEC.json');
+          const r=require('./doc/structural-forcing-corridor-tree-raw-transfer/results/stage-1-study4/STUDY_4_STAGE_1_COMPATIBILITY_RESULT.json');
+          if(r.decision!=='FORMAL-PREPARATION-ELIGIBLE'||r.deterministicCoreSha256!==s.prerequisiteStage1.deterministicCoreSha256)throw new Error('Stage1 prerequisite mismatch');
+          for(const key of ['study3Stage1','study3Stage2','study4Stage1']){const c=s.identityFirewalls[key];const actual=cp.execFileSync('git',['hash-object',c.path],{encoding:'utf8'}).trim();if(actual!==c.gitBlobSha)throw new Error(key+' manifest blob mismatch');const m=JSON.parse(fs.readFileSync(c.path,'utf8'));if(m.identityCoreSha256!==c.identityCoreSha256||m.scientificSeedReplay!==false)throw new Error(key+' identity firewall mismatch');}
+          const fresh=[40621001,40621768,41621001,41621768];for(const c of Object.values(s.identityFirewalls))for(const range of c.forbiddenSeedNamespaces||[]){const [a,b]=range.split('..').map(Number);for(const seed of fresh)if(seed>=a&&seed<=b)throw new Error('fresh namespace collision '+seed+' with '+range);}
+          NODE
+      - name: Verify 768-slot matrices
+        run: |
+          rm -f /tmp/matrix-output
+          GITHUB_OUTPUT=/tmp/matrix-output node tools/experiments/generate-sfcdft4-stage2-actions-matrices.js
+          grep -q '^source=' /tmp/matrix-output
+          grep -q '^measurement=' /tmp/matrix-output
+      - name: Verify clean primary-only classifier semantics
+        run: |
+          node - <<'NODE' > /tmp/clean-names.txt
+          for(let s=40621001;s<=40621768;s++){console.log('sfcdft4-s2-primary-start-'+s);console.log('sfcdft4-s2-source-'+s);}
+          NODE
+          node tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js --mode final --names /tmp/clean-names.txt --summary /tmp/clean-classifier.json
+          node - <<'NODE'
+          const r=require('/tmp/clean-classifier.json');if(r.fatal||r.sourceCount!==768||r.primaryStartCount!==768||r.reserveStartCount!==0||r.unresolvedCount!==0)throw new Error('clean classifier mismatch');
+          NODE
+      - name: Verify reserve positive-control provenance
+        run: |
+          cp /tmp/clean-names.txt /tmp/reserve-names.txt
+          echo sfcdft4-s2-reserve-start-40621001 >> /tmp/reserve-names.txt
+          node tools/experiments/classify-sfcdft4-stage2-actions-artifacts.js --mode final --names /tmp/reserve-names.txt --summary /tmp/reserve-classifier.json
+          node - <<'NODE'
+          const r=require('/tmp/reserve-classifier.json');if(r.fatal||r.sourceCount!==768||r.primaryStartCount!==768||r.reserveStartCount!==1||r.unresolvedCount!==0)throw new Error('reserve provenance positive control mismatch');
+          NODE
+      - name: Build synthetic 768-slot primary-only source fixture
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const spec=require('./doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_2_FORMAL_HELDOUT_SPEC.json');
+          const domains=spec.domains.map(x=>x.domainId);
+          for(let s=40621001;s<=40621768;s++){
+            const dir=`artifacts/sfcdft4-stage2-preflight/raw/${s}`;fs.mkdirSync(dir,{recursive:true});
+            const j={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:spec.stageId,evidenceClass:'TECHNICAL-FIXTURE',slotSeed:s,effectiveSeed:s,seedRole:'PRIMARY',policyId:s%2?'LGTTCI-P1-UNIFORM-LEGAL':'LGTTCI-P2-MIN-IMMEDIATE-CAPTURE',rootFamilyId:'LGTTCI-RF1-MID-ANCHOR',domainId:domains[(s-40621001)%4],sourceTrajectorySha256:crypto.createHash('sha256').update('SFCDFT4-S2-PREFLIGHT|'+s).digest('hex'),candidateStatus:'NO-CANDIDATE-ROOT-SHORTAGE',stopReason:'TECHNICAL-FIXTURE',scientificTerminal:false,engineGuard:null,openingPrefixAvailable:false,openingPrefixSha256:null,openingPrefixLength:0,moveCount:0,pairComplete:false,namua:null,mtaji:null,postCandidateContinuationCount:0,endpointValuesRetained:false};
+            fs.writeFileSync(`${dir}/source.json`,JSON.stringify(j)+'\n');
+          }
+          NODE
+          node tools/experiments/bundle-sfcdft4-stage2-source.js --input artifacts/sfcdft4-stage2-preflight/raw --output artifacts/sfcdft4-stage2-preflight/bundle
+          node - <<'NODE'
+          const s=require('./artifacts/sfcdft4-stage2-preflight/bundle/SOURCE_MANIFEST.json'),q=require('./artifacts/sfcdft4-stage2-preflight/bundle/SELECTED_SOURCE_MANIFEST.json');
+          if(s.sourceArtifactCount!==768||s.primaryCount!==768||s.reserveCount!==0||s.noCandidateCount!==768)throw new Error('clean bundle source semantics mismatch');
+          if(q.selectionReady!==false||q.selectedPairCount!==0)throw new Error('technical fixture selection boundary mismatch');
+          NODE
+      - name: Freeze synthetic bundle digest manifest
+        run: |
+          cd artifacts/sfcdft4-stage2-preflight
+          find bundle -type f -print0 | sort -z | xargs -0 sha256sum > BUNDLE_SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft4-stage2-preflight-bundle-${{ github.run_id }}
+          path: |
+            artifacts/sfcdft4-stage2-preflight/bundle
+            artifacts/sfcdft4-stage2-preflight/BUNDLE_SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+  verify:
+    name: Study4 Stage2 retrieved-bundle verification
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: sfcdft4-stage2-preflight-bundle-${{ github.run_id }}
+          path: retrieved
+      - name: Verify retrieved artifact digest manifest
+        run: |
+          cd retrieved
+          sha256sum -c BUNDLE_SHA256SUMS.txt
+      - name: Verify measurement consumer parse on retrieved bundle
+        run: |
+          mkdir -p /tmp/measurements/task-0
+          node tools/experiments/run-sfcdft4-stage2-measurement-task.js --bundle retrieved/bundle --task 0 --output /tmp/measurements/task-0/result.json
+          node - <<'NODE'
+          const r=require('/tmp/measurements/task-0/result.json');if(r.decision!=='SKIPPED-NON-ESTIMABLE'||r.freshSeedRead!==false)throw new Error('measurement consumer parse mismatch');
+          NODE
+      - name: Verify fixed-eight production-independent exact agreement
+        run: |
+          node - <<'NODE'
+          const P=require('./tools/experiments/lib/sfcdft4-production.js'),I=require('./tools/experiments/lib/sfcdft4-independent.js');
+          const slots=Array.from({length:8},(_,i)=>({id:'T'+i,estimable:true,positive:18-i,negative:i}));
+          const p=P.fixedEightHolm(slots),q=I.fixedEightHolm(slots);if(P.canonical(p)!==I.canonical(q)||p.familySize!==8)throw new Error('fixed-eight implementation mismatch');
+          NODE
+      - name: Verify aggregate non-estimable schema on retrieved bundle
+        run: |
+          mkdir -p /tmp/empty-measurements /tmp/final
+          node tools/experiments/run-sfcdft4-stage2-formal-aggregate.js --bundle retrieved/bundle --measurements /tmp/empty-measurements --output /tmp/final/result.json
+          node - <<'NODE'
+          const r=require('/tmp/final/result.json');if(r.studyId!=='SFCDFT-STUDY4'||r.formalFamilySize!==8||r.decision!=='NON-ESTIMABLE'||r.studyWideScientificVerdictGenerated!==false||r.mainIntegrationAuthorized!==false||r.publicAiChange!==false)throw new Error('aggregate schema mismatch');
+          NODE
+      - name: Write seed-free Stage2 preflight result
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const c=require('/tmp/clean-classifier.json'),r=require('/tmp/reserve-classifier.json'),s=require('./retrieved/bundle/SOURCE_MANIFEST.json'),a=require('/tmp/final/result.json');
+          const core={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:'SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1',decision:'PREFLIGHT-PASS',freshScientificSeedReads:0,cleanClassifier:{sourceCount:c.sourceCount,primaryStartCount:c.primaryStartCount,reserveStartCount:c.reserveStartCount,fatal:c.fatal},reservePositiveControl:{reserveStartCount:r.reserveStartCount,fatal:r.fatal},bundle:{sourceArtifactCount:s.sourceArtifactCount,primaryCount:s.primaryCount,reserveCount:s.reserveCount},retrievedBundleDigestVerified:true,measurementConsumerParsed:true,fixedEightProductionIndependentExact:true,aggregateSchemaDecision:a.decision,stage2FreshAccessAuthorized:false,mainIntegrationAuthorized:false,publicAiChangeAuthorized:false};
+          const stable=x=>x===null||typeof x!=='object'?JSON.stringify(x):Array.isArray(x)?'['+x.map(stable).join(',')+']':'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}';
+          core.deterministicCoreSha256=crypto.createHash('sha256').update(stable(core)).digest('hex');
+          fs.mkdirSync('artifacts/sfcdft4-stage2-preflight',{recursive:true});fs.writeFileSync('artifacts/sfcdft4-stage2-preflight/PREFLIGHT_RESULT.json',JSON.stringify(core,null,2)+'\n');console.log(JSON.stringify(core));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft4-stage2-preflight-result-${{ github.run_id }}
+          path: artifacts/sfcdft4-stage2-preflight/PREFLIGHT_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
