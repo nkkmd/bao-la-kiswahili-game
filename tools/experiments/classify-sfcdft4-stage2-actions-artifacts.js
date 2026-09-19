@@ -4,6 +4,52 @@ const fs=require('node:fs'),path=require('node:path');
 const ROOT=path.resolve(process.cwd());
 const SPEC=JSON.parse(fs.readFileSync(path.join(ROOT,'doc/structural-forcing-corridor-tree-raw-transfer/prereg/STUDY_4_STAGE_2_FORMAL_HELDOUT_SPEC.json'),'utf8'));
 function need(x,m){if(!x)throw new Error(m);}function parse(){const a=process.argv.slice(2),o={};for(let i=0;i<a.length;i++)if(a[i].startsWith('--'))o[a[i].slice(2)]=a[i+1]&&!a[i+1].startsWith('--')?a[++i]:true;return o;}function matrix(items){return{include:items.length?items:[{slot:0}]};}function retryGroups(items){const lo=SPEC.freshSeedSlots.primary.seedStart,groups=[];for(let g=0;g<4;g++){const a=lo+g*192,b=a+191,part=items.filter(x=>x.slot>=a&&x.slot<=b);need(part.length<=192,'retry group too large');groups.push(matrix(part));}return groups;}
-function main(){const a=parse(),mode=String(a.mode||''),namesPath=path.resolve(a.names||'');need(['primary','post-retry','final'].includes(mode),'bad mode');need(fs.existsSync(namesPath),'artifact names missing');const names=fs.readFileSync(namesPath,'utf8').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),set=new Set(names);need(set.size===names.length,'duplicate artifact names');const r=SPEC.freshSeedSlots.primary,retry=[],reserve=[],deterministic=[],reserveFailures=[],unresolved=[];let sourceCount=0,primaryStartCount=0,reserveStartCount=0;for(let slot=r.seedStart;slot<=r.seedEnd;slot++){const source=set.has(`sfcdft4-s2-source-${slot}`),pstart=set.has(`sfcdft4-s2-primary-start-${slot}`),pfail=set.has(`sfcdft4-s2-primary-failure-${slot}`),rstart=set.has(`sfcdft4-s2-reserve-start-${slot}`),rfail=set.has(`sfcdft4-s2-reserve-failure-${slot}`);if(source)sourceCount++;if(pstart)primaryStartCount++;if(rstart)reserveStartCount++;if(pfail)deterministic.push({slot,kind:'PRIMARY-DETERMINISTIC-FAILURE'});if(rfail)reserveFailures.push({slot,kind:'RESERVE-DETERMINISTIC-FAILURE'});if(source)continue;if(mode==='primary'){if(!pstart&&!pfail)retry.push({slot});continue;}if(mode==='post-retry'){if(pfail)continue;if(!pstart){unresolved.push({slot,kind:'PRIMARY-NOT-STARTED-AFTER-RETRY'});continue;}reserve.push({slot});continue;}if(mode==='final'){if(pfail||rfail)continue;if(!pstart){unresolved.push({slot,kind:'PRIMARY-NOT-STARTED'});continue;}if(rstart){unresolved.push({slot,kind:'RESERVE-STARTED-WITHOUT-SOURCE'});continue;}unresolved.push({slot,kind:'PRIMARY-STARTED-WITHOUT-SOURCE-OR-RESERVE'});}}
-if(mode==='post-retry')need(reserve.length<=SPEC.freshSeedSlots.maxInfrastructureReplacements,'reserve candidate count exceeds frozen maximum');let fatal=deterministic.length>0||reserveFailures.length>0||unresolved.length>0;if(mode==='final'&&sourceCount!==r.count)fatal=true;const summary={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:SPEC.stageId,mode,sourceCount,primaryStartCount,reserveStartCount,retryCount:retry.length,reserveCount:reserve.length,deterministicFailureCount:deterministic.length,reserveFailureCount:reserveFailures.length,unresolvedCount:unresolved.length,fatal};if(a.summary)fs.writeFileSync(path.resolve(a.summary),JSON.stringify({...summary,deterministic,reserveFailures,unresolved},null,2)+'\n');const out=process.env.GITHUB_OUTPUT;if(out){fs.appendFileSync(out,`fatal=${fatal?'true':'false'}\n`);fs.appendFileSync(out,`ready=${mode==='final'&&!fatal?'true':'false'}\n`);fs.appendFileSync(out,`source_count=${sourceCount}\n`);fs.appendFileSync(out,`reserve_count=${reserve.length}\n`);if(mode==='primary'){const g=retryGroups(retry);for(let i=0;i<4;i++)fs.appendFileSync(out,`retry_${'abcd'[i]}=${JSON.stringify(g[i])}\n`);}if(mode==='post-retry')fs.appendFileSync(out,`reserve_matrix=${JSON.stringify(matrix(reserve))}\n`);}process.stdout.write(JSON.stringify(summary)+'\n');}
+function main(){
+ const a=parse(),mode=String(a.mode||''),namesPath=path.resolve(a.names||'');
+ need(['primary','post-retry','final'].includes(mode),'bad mode');need(fs.existsSync(namesPath),'artifact names missing');
+ const names=fs.readFileSync(namesPath,'utf8').split(/\r?\n/).map(x=>x.trim()).filter(Boolean),set=new Set(names);need(set.size===names.length,'duplicate artifact names');
+ const r=SPEC.freshSeedSlots.primary,retry=[],reserve=[],deterministic=[],reserveFailures=[],unresolved=[];
+ let sourceCount=0,primaryStartCount=0,reserveStartCount=0,actualReserveSourceCount=0;
+ for(let slot=r.seedStart;slot<=r.seedEnd;slot++){
+  const source=set.has(`sfcdft4-s2-source-${slot}`),pstart=set.has(`sfcdft4-s2-primary-start-${slot}`),pfail=set.has(`sfcdft4-s2-primary-failure-${slot}`),rstart=set.has(`sfcdft4-s2-reserve-start-${slot}`),rfail=set.has(`sfcdft4-s2-reserve-failure-${slot}`);
+  if(source)sourceCount++;if(pstart)primaryStartCount++;if(rstart)reserveStartCount++;
+  if(pfail)deterministic.push({slot,kind:'PRIMARY-DETERMINISTIC-FAILURE'});if(rfail)reserveFailures.push({slot,kind:'RESERVE-DETERMINISTIC-FAILURE'});
+  if(rstart&&!pstart)unresolved.push({slot,kind:'RESERVE-STARTED-WITHOUT-PRIMARY-START'});
+  if(source){
+   if(!pstart)unresolved.push({slot,kind:'SOURCE-WITHOUT-PRIMARY-START'});
+   if(pfail)unresolved.push({slot,kind:'SOURCE-COEXISTS-WITH-PRIMARY-DETERMINISTIC-FAILURE'});
+   if(rfail)unresolved.push({slot,kind:'SOURCE-COEXISTS-WITH-RESERVE-DETERMINISTIC-FAILURE'});
+   if(rstart)actualReserveSourceCount++;
+   if(mode!=='final'&&rstart)unresolved.push({slot,kind:'RESERVE-START-BEFORE-RESERVE-PHASE'});
+   continue;
+  }
+  if(mode==='primary'){
+   if(rstart||rfail)unresolved.push({slot,kind:'RESERVE-PROVENANCE-DURING-PRIMARY-PHASE'});
+   if(!pstart&&!pfail)retry.push({slot});
+   continue;
+  }
+  if(mode==='post-retry'){
+   if(rstart||rfail){unresolved.push({slot,kind:'RESERVE-PROVENANCE-BEFORE-RESERVE-PHASE'});continue;}
+   if(pfail)continue;
+   if(!pstart){unresolved.push({slot,kind:'PRIMARY-NOT-STARTED-AFTER-RETRY'});continue;}
+   reserve.push({slot});
+   continue;
+  }
+  if(mode==='final'){
+   if(pfail||rfail)continue;
+   if(!pstart){unresolved.push({slot,kind:'PRIMARY-NOT-STARTED'});continue;}
+   if(rstart){unresolved.push({slot,kind:'RESERVE-STARTED-WITHOUT-SOURCE'});continue;}
+   unresolved.push({slot,kind:'PRIMARY-STARTED-WITHOUT-SOURCE-OR-RESERVE'});
+  }
+ }
+ if(mode==='post-retry')need(reserve.length<=SPEC.freshSeedSlots.maxInfrastructureReplacements,'reserve candidate count exceeds frozen maximum');
+ if(mode==='final')need(actualReserveSourceCount<=SPEC.freshSeedSlots.maxInfrastructureReplacements,'actual reserve source count exceeds frozen maximum');
+ let fatal=deterministic.length>0||reserveFailures.length>0||unresolved.length>0;
+ if(mode==='final'&&sourceCount!==r.count)fatal=true;
+ const reserveCount=mode==='final'?actualReserveSourceCount:reserve.length;
+ const summary={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:SPEC.stageId,mode,sourceCount,primaryStartCount,reserveStartCount,retryCount:retry.length,reserveCount,deterministicFailureCount:deterministic.length,reserveFailureCount:reserveFailures.length,unresolvedCount:unresolved.length,fatal};
+ if(a.summary)fs.writeFileSync(path.resolve(a.summary),JSON.stringify({...summary,deterministic,reserveFailures,unresolved},null,2)+'\n');
+ const out=process.env.GITHUB_OUTPUT;if(out){fs.appendFileSync(out,`fatal=${fatal?'true':'false'}\n`);fs.appendFileSync(out,`ready=${mode==='final'&&!fatal?'true':'false'}\n`);fs.appendFileSync(out,`source_count=${sourceCount}\n`);fs.appendFileSync(out,`reserve_count=${reserveCount}\n`);if(mode==='primary'){const g=retryGroups(retry);for(let i=0;i<4;i++)fs.appendFileSync(out,`retry_${'abcd'[i]}=${JSON.stringify(g[i])}\n`);}if(mode==='post-retry')fs.appendFileSync(out,`reserve_matrix=${JSON.stringify(matrix(reserve))}\n`);}
+ process.stdout.write(JSON.stringify(summary)+'\n');
+}
 main();
