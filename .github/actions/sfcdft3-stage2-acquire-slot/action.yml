@@ -1,0 +1,67 @@
+name: SFCDFT3 Stage 2 Acquire Slot
+description: Acquire one authorized SFCDFT-STUDY3 Stage 2 fresh source slot with durable pre-read marker
+inputs:
+  slot-seed: {required: true}
+  role: {required: true}
+runs:
+  using: composite
+  steps:
+    - name: Verify frozen Study3 Stage2 authorization
+      shell: bash
+      run: node tools/experiments/verify-sfcdft3-stage2-actions-authorization.js
+    - name: Prepare durable START marker
+      id: prep
+      shell: bash
+      env:
+        SLOT: ${{ inputs.slot-seed }}
+        ROLE: ${{ inputs.role }}
+      run: |
+        set -euo pipefail
+        if [ "$ROLE" = PRIMARY ]; then effective="$SLOT"; prefix=primary; elif [ "$ROLE" = PAIRED-RESERVE ]; then effective=$((SLOT + 1000000)); prefix=reserve; else exit 1; fi
+        mkdir -p "artifacts/sfcdft3-stage2/markers/${SLOT}"
+        marker="artifacts/sfcdft3-stage2/markers/${SLOT}/${prefix}-start.json"
+        printf '{"studyId":"SFCDFT-STUDY3","stageId":"SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1","event":"%s-START","slotSeed":%s,"effectiveSeed":%s,"runId":"%s","runAttempt":"%s","sha":"%s"}\n' "$ROLE" "$SLOT" "$effective" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$GITHUB_SHA" > "$marker"
+        echo "effective=$effective" >> "$GITHUB_OUTPUT"; echo "prefix=$prefix" >> "$GITHUB_OUTPUT"; echo "marker=$marker" >> "$GITHUB_OUTPUT"
+    - name: Persist START marker before seed read
+      uses: actions/upload-artifact@v4
+      with:
+        name: sfcdft3-s2-${{ steps.prep.outputs.prefix }}-start-${{ inputs.slot-seed }}
+        path: ${{ steps.prep.outputs.marker }}
+        if-no-files-found: error
+        retention-days: 90
+        compression-level: 0
+    - name: Compute Study3 Stage2 source slot
+      id: compute
+      shell: bash
+      env:
+        SLOT: ${{ inputs.slot-seed }}
+        EFFECTIVE: ${{ steps.prep.outputs.effective }}
+      run: |
+        set +e
+        out="artifacts/sfcdft3-stage2/source/${SLOT}/source.json"; mkdir -p "$(dirname "$out")"
+        node tools/experiments/run-sfcdft3-stage2-source-unit.js --slot-seed "$SLOT" --effective-seed "$EFFECTIVE" --output "$out"
+        status=$?; echo "status=$status" >> "$GITHUB_OUTPUT"
+        if [ "$status" -ne 0 ]; then mkdir -p "artifacts/sfcdft3-stage2/failure/${SLOT}"; printf '{"studyId":"SFCDFT-STUDY3","stageId":"SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1","event":"SOURCE-PROCESS-FAILED","slotSeed":%s,"effectiveSeed":%s,"role":"%s","exitStatus":%s,"runId":"%s","runAttempt":"%s","sha":"%s"}\n' "$SLOT" "$EFFECTIVE" "${{ inputs.role }}" "$status" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$GITHUB_SHA" > "artifacts/sfcdft3-stage2/failure/${SLOT}/failure.json"; fi
+        exit 0
+    - name: Persist sealed Study3 Stage2 source artifact
+      if: ${{ steps.compute.outputs.status == '0' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: sfcdft3-s2-source-${{ inputs.slot-seed }}
+        path: artifacts/sfcdft3-stage2/source/${{ inputs.slot-seed }}/source.json
+        if-no-files-found: error
+        retention-days: 90
+        compression-level: 0
+    - name: Persist deterministic failure artifact
+      if: ${{ steps.compute.outputs.status != '0' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: sfcdft3-s2-${{ steps.prep.outputs.prefix }}-failure-${{ inputs.slot-seed }}
+        path: artifacts/sfcdft3-stage2/failure/${{ inputs.slot-seed }}/failure.json
+        if-no-files-found: error
+        retention-days: 90
+        compression-level: 0
+    - name: Propagate deterministic source failure
+      if: ${{ steps.compute.outputs.status != '0' }}
+      shell: bash
+      run: exit 1

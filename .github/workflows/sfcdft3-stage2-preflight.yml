@@ -1,0 +1,85 @@
+name: SFCDFT3 Stage 2 seed-free preflight
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study3-prereg
+    paths:
+      - doc/structural-forcing-corridor-tree-raw-transfer/authorizations/STUDY_3_STAGE_2_PRE_EXECUTION_BINDING.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sfcdft3-stage2-seed-free-preflight
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 2}
+      - name: Reject workflow rerun attempts
+        run: test "$GITHUB_RUN_ATTEMPT" = '1'
+      - name: Verify pre-execution binding while Stage2 remains sealed
+        run: node tools/experiments/verify-sfcdft3-stage2-preflight-binding.js
+      - name: Syntax-check frozen Stage2 implementation
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-sfcdft3-stage2-source-unit.js
+          node --check tools/experiments/generate-sfcdft3-stage2-actions-matrices.js
+          node --check tools/experiments/classify-sfcdft3-stage2-actions-artifacts.js
+          node --check tools/experiments/bundle-sfcdft3-stage2-source.js
+          node --check tools/experiments/run-sfcdft3-stage2-measurement-task.js
+          node --check tools/experiments/run-sfcdft3-stage2-formal-aggregate.js
+          node --check tools/experiments/verify-sfcdft3-stage2-actions-authorization.js
+      - name: Verify assignment/effective-seed separation using non-scientific fixtures
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-sfcdft3-stage2-source-unit.js --technical-fixture --slot-seed 49031002 --effective-seed 49031002 --output /tmp/s2-primary.json
+          node tools/experiments/run-sfcdft3-stage2-source-unit.js --technical-fixture --slot-seed 49031002 --effective-seed 50031002 --output /tmp/s2-reserve-like.json
+          node - <<'NODE'
+          const fs=require('node:fs');const a=JSON.parse(fs.readFileSync('/tmp/s2-primary.json')),b=JSON.parse(fs.readFileSync('/tmp/s2-reserve-like.json'));
+          if(a.policyId!==b.policyId||a.rootFamilyId!==b.rootFamilyId||a.domainId!==b.domainId)throw new Error('assignment changed with effective seed');
+          if(a.slotSeed!==49031002||b.slotSeed!==49031002||a.effectiveSeed===b.effectiveSeed)throw new Error('technical assignment fixture invalid');
+          console.log(JSON.stringify({assignmentStable:true,domainId:a.domainId}));
+          NODE
+      - name: Verify 768-slot matrix and classifier without reading scientific seeds
+        run: |
+          set -euo pipefail
+          node tools/experiments/generate-sfcdft3-stage2-actions-matrices.js
+          : > /tmp/names.txt
+          for s in $(seq 40521001 40521768); do echo "sfcdft3-s2-primary-start-$s" >> /tmp/names.txt; echo "sfcdft3-s2-source-$s" >> /tmp/names.txt; done
+          node tools/experiments/classify-sfcdft3-stage2-actions-artifacts.js --mode primary --names /tmp/names.txt --summary /tmp/primary.json
+          node tools/experiments/classify-sfcdft3-stage2-actions-artifacts.js --mode final --names /tmp/names.txt --summary /tmp/final.json
+          node - <<'NODE'
+          const r=require('/tmp/final.json');if(r.sourceCount!==768||r.fatal||r.unresolvedCount!==0)throw new Error('synthetic classifier regression');console.log(JSON.stringify({classifierSourceCount:r.sourceCount,fatal:r.fatal}));
+          NODE
+      - name: Verify exact sign-test and fixed-eight Holm implementation
+        run: |
+          node - <<'NODE'
+          const P=require('./tools/experiments/lib/sfcdft3-production.js'),I=require('./tools/experiments/lib/sfcdft3-independent.js');
+          const rows=Array.from({length:8},(_,i)=>({id:`H${i+1}`,estimable:true,positive:18,negative:0}));
+          const p=P.fixedEightHolm(rows),q=I.fixedEightHolm(rows);if(P.canonical(p)!==I.canonical(q))throw new Error('Holm implementation mismatch');
+          for(const x of p.slots){if(x.rawP.numerator!=='1'||x.rawP.denominator!=='131072'||!x.holmPass)throw new Error('18/0 exact/Holm regression');}
+          const mixed=P.fixedEightHolm(rows.map((x,i)=>i===7?{...x,estimable:false,positive:0,negative:0}:x));const z=mixed.slots.find(x=>x.id==='H8');if(z.rawP.numerator!=='1'||z.rawP.denominator!=='1'||z.holmPass)throw new Error('NON-ESTIMABLE fixed-slot regression');
+          console.log(JSON.stringify({exactSignTest18v0:'1/131072',fixedFamily:8,nonEstimableRawP:'1/1'}));
+          NODE
+      - name: Build canonical seed-free preflight result
+        run: |
+          mkdir -p artifacts/sfcdft3-stage2/preflight
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const core={studyId:'SFCDFT-STUDY3',stageId:'SFCDFT3-S2-FORMAL-HELDOUT-2026-09-19-v1',decision:'PREFLIGHT-PASS',freshScientificSeedReads:0,stage2ScientificSeedAccess:false,assignmentStable:true,sourceMatrixQuartets:192,primarySlots:768,measurementTasks:18,selectedPairTarget:72,selectedRootTarget:144,fixedFormalFamilySize:8,minimumNonzero:12,nonEstimableRawP:'1/1',workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT)};
+          const stable=x=>x===null||typeof x!=='object'?JSON.stringify(x):Array.isArray(x)?`[${x.map(stable).join(',')}]`:`{${Object.keys(x).sort().map(k=>`${JSON.stringify(k)}:${stable(x[k])}`).join(',')}}`;
+          const out={schemaVersion:1,...core,deterministicCoreSha256:crypto.createHash('sha256').update(stable(core)).digest('hex')};fs.writeFileSync('artifacts/sfcdft3-stage2/preflight/STUDY_3_STAGE_2_PREFLIGHT_RESULT.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfcdft3-s2-preflight-${{ github.run_id }}
+          path: artifacts/sfcdft3-stage2/preflight/STUDY_3_STAGE_2_PREFLIGHT_RESULT.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
