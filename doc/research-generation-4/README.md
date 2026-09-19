@@ -2,7 +2,7 @@
 
 更新日: 2026-09-20  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION`**
+状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / MAIN INTEGRATED`**
 
 ## このProgramが調べること
 
@@ -23,7 +23,9 @@ Planning merge commit = 692bcb40f52c097ca89bf7fea842b6f77fbdf19e
 Core agenda = G4-01..G4-10
 Independent tracks = G4-P01, G4-H01
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
-G4-02 = CLOSED / NO SCIENTIFIC DECISION
+G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
+G4-02 integration PR = #154
+G4-02 merge commit = 8131fc5ebadf9c855159b5e43b18fbc0bc95e1bd
 G4-03 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-05 = CANDIDATE / NOT AUTHORIZED
@@ -32,7 +34,6 @@ G4-10 depth 11 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 G4-P01 = INDEPENDENT / NOT AUTHORIZED
 G4-H01 = DEFERRED
 Public AI change authorized = false
-Current G4-02 branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
 ## G4-01の到達点
@@ -169,13 +170,14 @@ successor study within G4-02 = NOT AUTHORIZED
 - [`../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md`](../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)
 - [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md)
+- [`checkpoints/2026-09-20-g4-02-main-integration-complete.md`](checkpoints/2026-09-20-g4-02-main-integration-complete.md)
 
 ## 研究構成
 
 | Wave | Agenda | 目的 | 現在状態 |
 | --- | --- | --- | --- |
 | A | `G4-01` | claim移送用compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
-| A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION` |
+| A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
 | B | `G4-05..G4-06` | fresh exact microdomainと局所幾何からgame-theoretic consequenceへの限定的bridge | `NOT AUTHORIZED` |
@@ -192,16 +194,15 @@ successor study within G4-02 = NOT AUTHORIZED
 4. [`../local-game-tree-geometry-transfer-compatibility-instrument/README.md`](../local-game-tree-geometry-transfer-compatibility-instrument/README.md) — G4-01の正式結果
 5. [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md) — G4-02の正式状態
 6. [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md) — G4-02最終Study closure
+7. [`checkpoints/2026-09-20-g4-02-main-integration-complete.md`](checkpoints/2026-09-20-g4-02-main-integration-complete.md) — G4-02 main統合記録
 
 ## 次に許可される作業
 
-G4-02について追加のscientific executionは行わない。G4-02 closureに伴う文書整合性監査は完了済みであり、追加のclosure作業を前提にしない。
+G4-02について追加のscientific executionは行わない。G4-02 closureに伴う文書整合性監査と`main`統合は完了済みであり、追加のclosure作業を前提にしない。
 
 Research Generation 4を継続する場合は、G4-03またはG4-04など次のAgendaについて個別authorization reviewが必要である。G4-01のeligibility gateを満たしていることだけではfresh scientific executionは承認されない。
 
 G4-10 depth11は引き続きprotectedであり、明示authorizationなしにアクセスしない。
-
-現在のG4-02 research branchの`main`統合承認は受けていないため、ユーザーの明示指示があるまで統合しない。
 
 ## 解釈上の境界
 
