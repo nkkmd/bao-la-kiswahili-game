@@ -112,6 +112,13 @@ jobs:
           if(s.sourceArtifactCount!==768||s.primaryCount!==768||s.reserveCount!==0||s.noCandidateCount!==768)throw new Error('clean bundle source semantics mismatch');
           if(q.selectionReady!==false||q.selectedPairCount!==0)throw new Error('technical fixture selection boundary mismatch');
           NODE
+      - name: Persist build diagnostics for cross-job verification
+        run: |
+          mkdir -p artifacts/sfcdft4-stage2-preflight/diagnostics
+          cp /tmp/clean-classifier.json artifacts/sfcdft4-stage2-preflight/diagnostics/
+          cp /tmp/reserve-classifier.json artifacts/sfcdft4-stage2-preflight/diagnostics/
+          cp /tmp/missing-start-classifier.json artifacts/sfcdft4-stage2-preflight/diagnostics/
+          cp /tmp/reserve-without-primary-classifier.json artifacts/sfcdft4-stage2-preflight/diagnostics/
       - name: Freeze synthetic bundle digest manifest
         run: |
           cd artifacts/sfcdft4-stage2-preflight
@@ -121,6 +128,7 @@ jobs:
           name: sfcdft4-stage2-preflight-bundle-${{ github.run_id }}
           path: |
             artifacts/sfcdft4-stage2-preflight/bundle
+            artifacts/sfcdft4-stage2-preflight/diagnostics
             artifacts/sfcdft4-stage2-preflight/BUNDLE_SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 90
@@ -166,7 +174,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('node:fs'),crypto=require('node:crypto');
-          const c=require('/tmp/clean-classifier.json'),r=require('/tmp/reserve-classifier.json'),n=require('/tmp/missing-start-classifier.json'),s=require('./retrieved/bundle/SOURCE_MANIFEST.json'),a=require('/tmp/final/result.json');
+          const c=require('./retrieved/diagnostics/clean-classifier.json'),r=require('./retrieved/diagnostics/reserve-classifier.json'),n=require('./retrieved/diagnostics/missing-start-classifier.json'),s=require('./retrieved/bundle/SOURCE_MANIFEST.json'),a=require('/tmp/final/result.json');
           const core={schemaVersion:1,studyId:'SFCDFT-STUDY4',stageId:'SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1',decision:'PREFLIGHT-PASS',freshScientificSeedReads:0,cleanClassifier:{sourceCount:c.sourceCount,primaryStartCount:c.primaryStartCount,reserveStartCount:c.reserveStartCount,reserveCount:c.reserveCount,fatal:c.fatal},reservePositiveControl:{reserveStartCount:r.reserveStartCount,reserveCount:r.reserveCount,fatal:r.fatal},missingStartNegativeControl:{fatal:n.fatal,unresolvedCount:n.unresolvedCount},bundle:{sourceArtifactCount:s.sourceArtifactCount,primaryCount:s.primaryCount,reserveCount:s.reserveCount},retrievedBundleDigestVerified:true,measurementConsumerParsed:true,fixedEightProductionIndependentExact:true,aggregateSchemaDecision:a.decision,stage2FreshAccessAuthorized:false,mainIntegrationAuthorized:false,publicAiChangeAuthorized:false};
           const stable=x=>x===null||typeof x!=='object'?JSON.stringify(x):Array.isArray(x)?'['+x.map(stable).join(',')+']':'{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}';
           core.deterministicCoreSha256=crypto.createHash('sha256').update(stable(core)).digest('hex');
