@@ -3,7 +3,7 @@
 更新日: 2026-09-20  
 Agenda: `Research Generation 4 / G4-02`  
 最終Study: `SFCDFT-STUDY4`  
-状態: **`CLOSED / NO SCIENTIFIC DECISION`**
+状態: **`CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED`**
 
 ## 現在地
 
@@ -22,7 +22,7 @@ SFCDFT-STUDY4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED / NO
 G4-02 scientific transfer decision = NONE
 G4-02 overall = CLOSED / NO SCIENTIFIC DECISION
 Public AI change = false
-main merge = false
+main integration = COMPLETE / PR #154 / merge commit 8131fc5ebadf9c855159b5e43b18fbc0bc95e1bd
 ```
 
 ## 凍結済みscientific contract
@@ -203,6 +203,20 @@ successor study within G4-02 = NOT AUTHORIZED
 
 将来同じ科学的問いを再検討する場合は、G4-02をrepair/reopenせず、別Agendaまたは別Study identityとしてprospective authorizationから開始する。
 
+## Main integration
+
+ユーザーの明示承認に基づき、G4-02の完了済み研究成果はPR #154で`main`へ統合済みである。
+
+```text
+source branch = research/g4-02-sfcdft-study4-prereg
+source head = 3316f254c115e57e0ec557e2b33a57be90b3e173
+integration PR = #154
+merge commit = 8131fc5ebadf9c855159b5e43b18fbc0bc95e1bd
+main integration = COMPLETE
+```
+
+統合はG4-02の科学的裁定を変更せず、public AI changeも伴わない。統合記録は[`../research-generation-4/checkpoints/2026-09-20-g4-02-main-integration-complete.md`](../research-generation-4/checkpoints/2026-09-20-g4-02-main-integration-complete.md)を参照する。
+
 ## 保護境界
 
 - Study 1〜4のclosed scientific executionをrerun / repairしない。
@@ -212,4 +226,3 @@ successor study within G4-02 = NOT AUTHORIZED
 - threshold / endpoint / direction / alpha / domain / sample target / resource ceilingを事後変更しない。
 - G4-10 depth11へアクセスしない。
 - G4-02の結果を公開AIへ自動反映しない。
-- ユーザーの明示指示なしに`main`へ統合しない。
