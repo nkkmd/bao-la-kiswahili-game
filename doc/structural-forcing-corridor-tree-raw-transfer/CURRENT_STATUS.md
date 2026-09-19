@@ -1,65 +1,40 @@
 # G4-02 — 現在の状態
 
-更新日: 2026-09-19  
+更新日: 2026-09-20  
 Agenda: `Research Generation 4 / G4-02`  
-現在のStudy: `SFCDFT-STUDY4`  
-状態: **`STUDY 4 STAGE 0 PASS / STAGE 1 PRE-ACCESS NOT YET AUTHORIZED / NO FRESH SCIENTIFIC ACCESS`**
+最終Study: `SFCDFT-STUDY4`  
+状態: **`CLOSED / NO SCIENTIFIC DECISION`**
 
 ## 現在地
 
-G4-02はG3-04でformalに確認されたC1/C6 phase-structure claimをfresh source-policy × root-family domainへ移送できる範囲と反例境界を検証するAgendaである。
+G4-02は、G3-04でformalに確認されたC1/C6 phase-structure claimをfresh source-policy × root-family domainへ移送できる範囲と反例境界を検証するAgendaとして実施した。
 
-Study 3はStage 2 formal measurement前のmandatory `bundle-source`工程で停止し、`TECHNICAL-INVALID / NO SCIENTIFIC DECISION / NO RERUN`として正式閉鎖した。G4-02の科学的問いは未解決のため、Study 3をrepair/reopenせず、独立したsuccessor `SFCDFT-STUDY4` をprospectiveに開始した。
-
-Study 4ではfresh scientific access前のend-to-end artifact-pipeline gateを追加し、2026-09-19のcanonical GitHub Actions runで **Stage 0 PASS** を確認した。Stage 0はtechnical fixtureのみであり、scientific effect/direction/p-value/decisionを生成していない。
+Study 1〜4をprospectiveに分離し、各Studyでfail-closed、freshness、no-rescue / no-rerun境界を維持した。最終Study 4ではStage 1 compatibilityを正常に通過したが、Stage 2 canonical one-shot executionがformal measurement開始前のmandatory `bundle-source`工程で停止した。したがって、G4-02からgeneralization / counterexampleに関するformal scientific decisionは得られていない。
 
 ```text
 SFCDFT-STUDY1 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
 SFCDFT-STUDY2 = TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED
 SFCDFT-STUDY3 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
 SFCDFT-STUDY3 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED / NO RERUN
-SFCDFT-STUDY4 authorization review = PASS FOR PREREGISTRATION AND STAGE0 ONLY
-SFCDFT-STUDY4 preregistration = FROZEN
 SFCDFT-STUDY4 Stage 0 = PASS / TECHNICAL PIPELINE VALIDATED
-SFCDFT-STUDY4 Stage 1 fresh access = NOT AUTHORIZED / UNREAD
-SFCDFT-STUDY4 Stage 2 fresh access = NOT AUTHORIZED / UNREAD
-G4-02 scientific generalization/counterexample decision = NONE YET
-G4-02 overall = IN PROGRESS
+SFCDFT-STUDY4 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
+SFCDFT-STUDY4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED / NO RERUN
+G4-02 scientific transfer decision = NONE
+G4-02 overall = CLOSED / NO SCIENTIFIC DECISION
 Public AI change = false
 main merge = false
 ```
 
-## Study 4 authorization
+## 凍結済みscientific contract
 
-正式判定:
-
-`SFCDFT-STUDY4-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY`
-
-```text
-branch = research/g4-02-sfcdft-study4-prereg
-parent Study 3 closure HEAD = 91e83b0757c02cd11e2a5f463407a342a91ce3ce
-baseline main HEAD = c5689d70cd017171e7738140ba9186a117f732f1
-fresh scientific seed reads authorized by current boundary = 0
-```
-
-本認可で許可されたpreregistration、non-scientific Stage 0 implementation/execution、synthetic fixture、seed-free firewall preparationのうち、Stage 0 executionはPASSで完了した。
-
-Stage 1 / Stage 2 fresh scientific seed access、scientific effect/direction/p-value、formal decision、main integration、public AI changeは引き続き認可していない。
-
-正本:
-
-- [`../research-program-decisions/2026-09-19-g4-02-study4-authorization-review.md`](../research-program-decisions/2026-09-19-g4-02-study4-authorization-review.md)
-- [`authorizations/STUDY_4_PREREG_STAGE0_AUTHORIZATION.json`](authorizations/STUDY_4_PREREG_STAGE0_AUTHORIZATION.json)
-
-## Study 4 scientific contract
-
-Study 3から変更していない。
+Study 4でもStudy 3から科学的contractを変更していない。
 
 ```text
 C1 = SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION / MTAJI-GREATER
 C6 = SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO / NAMUA-GREATER
 representation = RAW-ONLY
 relative depth = 5
+validated transform set = []
 source policies = P1 / P2
 root families = RF1 / RF2
 four domains = P1/P2 × RF1/RF2
@@ -68,63 +43,28 @@ Stage 2 target = 18 selected pairs/domain
 formal family = fixed 8 hypotheses
 family-wise alpha = 1/20
 inference = exact two-sided sign test + fixed-eight Holm-Bonferroni
+minimum nonzero = 12/hypothesis
 resource ceilings = unchanged
 ```
 
-Study 3のtechnical failureを見てendpoint、方向、alpha、sample target、domain、resource ceiling、representationを変更していない。
+Technical failureを見てendpoint、方向、alpha、sample target、domain、root family、source policy、representation、resource ceilingを変更していない。
 
 ## Study 4 Stage 0 — PASS
 
 Canonical GitHub Actions execution:
 
 ```text
-workflow = SFCDFT4 Stage 0 end-to-end technical validation
 run ID = 35435952961
-run attempt = 1
-event = push
 execution SHA = 9eca4c249566a2c068083ba334fd47ca8d7aed4c
 overall conclusion = success
-gate = success
-build-bundle = success
-verify-roundtrip = success
 ```
 
-Artifact provenance:
-
-```text
-source bundle artifact ID = 10582054771
-source bundle artifact digest = sha256:c171dcfc78320be4ce51cd93afdf95cf76f5cdc735a7c099c27ac542feccf8e5
-final result artifact ID = 10582298316
-final result artifact digest = sha256:292ff27460f3c14f02f22c723245c06af408376475d71dfcf89230d74d48ba5a
-bundle core SHA-256 = ee402806f362ecb483f04353632d2e829ee13175bcab91b8b4038a091a3df01f
-result deterministic core SHA-256 = ebcffb9ab33acbafa6f5344740f0cc93d12fbd330911a2f96cac76b6c66d2133
-```
-
-Stage 0 gatesは全PASS:
-
-```text
-synthetic source fixture generation
-source classification
-frozen selection representation
-production-equivalent source bundle construction
-Actions artifact upload / retrieval round-trip
-digest / manifest exactness
-measurement consumer parse
-production / independent dry-run exact agreement
-fixed-eight aggregate schema
-negative fixtures fail-closed
-```
-
-Scientific boundary:
+Stage 0はnon-scientific synthetic fixtureだけを使い、source classificationからbundle、artifact upload/retrieval、measurement consumer parse、production / independent dry-run agreement、aggregate schema、negative fixturesまでをend-to-endで検証した。
 
 ```text
 fresh scientific seed reads = 0
 scientific outputs generated = 0
-effect magnitude = not generated
-effect direction = not generated
-p-value = not generated
-generalization/counterexample decision = not generated
-automatic Stage 1 authorization = false
+result deterministic core SHA-256 = ebcffb9ab33acbafa6f5344740f0cc93d12fbd330911a2f96cac76b6c66d2133
 ```
 
 正本:
@@ -132,78 +72,144 @@ automatic Stage 1 authorization = false
 - [`results/stage-0-study4/STUDY_4_STAGE_0_TECHNICAL_RESULT.json`](results/stage-0-study4/STUDY_4_STAGE_0_TECHNICAL_RESULT.json)
 - [`checkpoints/2026-09-19-study4-stage0-pass.md`](checkpoints/2026-09-19-study4-stage0-pass.md)
 
-## Study 4 technical remediation
+## Study 4 Stage 1 — FORMAL-PREPARATION-ELIGIBLE
 
-Study 4で追加した唯一のsubstantive technical changeは、fresh scientific namespaceへアクセスする前の **end-to-end artifact-pipeline validation** である。
-
-Stage 0はnon-scientific synthetic fixtureのみを使い、次のproduction-equivalent pathを実際に通過した。
+Canonical GitHub Actions execution:
 
 ```text
-synthetic source fixture generation
--> source classification
--> frozen selection representation
--> source bundle construction
--> artifact upload
--> artifact retrieval
--> digest / manifest verification
--> measurement input parse
--> production / independent dry-run exact agreement
--> aggregate schema validation
+run ID = 35441719931
+execution SHA = b84b53a3369490cafad2b428feddee20323f3e82
+run attempt = 1
+primary sources = 384 / 384
+retry = 0
+paired reserve = 0
+candidate pair complete = 297
+root shortage = 87
+engine guard = 0
+selected pairs = 32 / 32
+measurement tasks = 8 / 8 success
+final decision = FORMAL-PREPARATION-ELIGIBLE
 ```
 
-missing / malformed / digest-mismatched bundle等のnegative fixtureもfail-closedでPASSした。
-
-## Study 4 seed boundary
+全4 domainで8/8 pairについてC1/C6 definedかつresource passを確認した。Stage 1は禁止されたeffect direction、human-readable endpoint magnitude、p-value、generalization/counterexample decisionを生成していない。
 
 ```text
-Stage 0 fixture = 49041001..49041256 / NON-SCIENTIFIC / EXECUTED
-Stage 1 primary = 40611001..40611384 / UNREAD / NOT AUTHORIZED
-Stage 1 paired reserve = 41611001..41611384 / UNREAD / NOT AUTHORIZED
-Stage 2 primary = 40621001..40621768 / UNREAD / NOT AUTHORIZED
-Stage 2 paired reserve = 41621001..41621768 / UNREAD / NOT AUTHORIZED
+final result artifact ID = 10584535311
+artifact digest = sha256:b6b9c8987be5da9b9d52405ae98eef897af7b725f11f350a958d1443aae8abcf
+deterministic core SHA-256 = 24ef523c374ba2afb8cd79726be7531fffc602f5936534ff82a016ef08fc411f
 ```
 
-Study 1–3の全scientific namespaceは再利用禁止。
-
-Study 4 Stage 1 authorization前に、Study 3の既存immutable artifactsからseed-freeにmaterialize可能なsource trajectory / opening-prefix / RAW-root identityをdurable firewall化する。Study 3 scientific seedの再読やsource regenerationは行わない。
-
-## Study 3 closure boundary
-
-Study 3 Stage 2 canonical run:
+Durable Stage 1 identity firewallも固定済みである。
 
 ```text
-run ID = 35427427920
-execution SHA = dec9a91d5860b9f3d927d632a7165bcbf99f5f63
+firewall ID = G4-02-SFCDFT-STUDY4-STAGE1-IDENTITY-FIREWALL
+identity core SHA-256 = f9ed5a91c1db6985d3daca62e384940b7ef804940a79b20ef651c6fc2514634f
+```
+
+正本:
+
+- [`results/stage-1-study4/STUDY_4_STAGE_1_COMPATIBILITY_RESULT.json`](results/stage-1-study4/STUDY_4_STAGE_1_COMPATIBILITY_RESULT.json)
+- [`authorizations/STUDY_4_STAGE_1_EXECUTION_AUTHORIZATION.json`](authorizations/STUDY_4_STAGE_1_EXECUTION_AUTHORIZATION.json)
+
+## Study 4 Stage 2 — TECHNICAL-INVALID
+
+Stage 2は別個のpre-access review、pre-execution binding、seed-free preflight、final execution authorizationを経たうえでone-shot executionした。
+
+Canonical execution:
+
+```text
+run ID = 35450625402
+execution SHA = 0acd54a23fd8e1f1226c307fe948c251d64f336d
+run attempt = 1
+event = push
+workflow conclusion = failure
+primary source acquisition = 768 / 768 completed
+retry = 0
+paired reserve = 0
+deterministic failure = 0
 classify-final = success / ready=true
 bundle-source = failure
+bundle-source job ID = 105919448021
+recovered error = source identity mismatch
 formal measurement = skipped / not started
 formal aggregate = skipped / not started
-8-cell decision vector = NOT GENERATED
-formal closure = TECHNICAL-INVALID
 ```
 
-Study 4はこのfresh scientific contentを設計判断に使わない。利用したのは「artifact pipelineをfresh execution前にend-to-end技術検証する必要がある」というtechnical failure factだけである。
+Formal measurementに到達しなかったため、8-cell decision vector、effect direction、p-value、Holm判定、generalization/counterexample labelは生成されていない。
 
-## 次の安全な作業
+`STUDY_4_PROTOCOL.md`の事前規則に従い、正式裁定は次である。
 
-1. Study 3 の既存 immutable artifacts から、科学seedを再読せずにmaterialize可能な identity を列挙する。
-2. source trajectory SHA-256 / first-16 opening-prefix SHA-256 / available Namua-Mtaji RAW-root SHA-256 を durable firewall artifact として固定する。
-3. firewallのcoverage・provenance・欠落を明示し、再生成やsame-evidence repairを行わない。
-4. Stage 0 PASSとdurable firewallを入力として、独立した Study 4 Stage 1 pre-access authorization review を実施する。
-5. authorization PASSの場合のみ、Stage 1 pre-execution binding / implementation freezeを固定する。
-6. Stage 1 scientific execution authorizationは最後のtriggerとして別commitで作成する。そこまではscientific seedを読まない。
+```text
+SFCDFT-STUDY4 Stage 2 = TECHNICAL-INVALID
+scientific decision = NONE
+8-cell decision vector = NOT GENERATED
+rerun = NOT AUTHORIZED / NOT PERFORMED
+```
 
-## 禁止事項
+正本:
 
-- Study 1 / Study 2 scientific replay
-- Study 3 Stage 1 replay
-- Study 3 Stage 2 rerun / repair / manual dispatch
-- Study 3 scientific seedの再読
-- Study 4 Stage 1 / Stage 2 scientific seed access（別個のauthorization前）
-- Study 3 fresh evidenceを使ったscientific contract調整
-- deterministic scientific failureのreserve救済
-- frozen selection後のreplacement
-- resource ceilingの事後増加
-- G4-10 depth11 access
-- public AIへの自動反映
-- `main`統合
+- [`results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)
+- [`checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](checkpoints/2026-09-20-study4-stage2-technical-invalid.md)
+- [`authorizations/STUDY_4_STAGE_2_PRE_EXECUTION_BINDING.json`](authorizations/STUDY_4_STAGE_2_PRE_EXECUTION_BINDING.json)
+- [`authorizations/STUDY_4_STAGE_2_EXECUTION_AUTHORIZATION.json`](authorizations/STUDY_4_STAGE_2_EXECUTION_AUTHORIZATION.json)
+
+## Post-failure identity-only audit
+
+Stage 2 failure後、canonical runのsealed source artifactsだけを対象とするread-only identity auditを実行した。fresh seedの再読、scientific endpoint read、effect計算は行っていない。
+
+```text
+audit run ID = 35452797563
+audit execution SHA = 9a2abaa3b45e2eaac532ea9c7c1ba284e22d4688
+conclusion = success
+canonical source artifacts inspected = 768
+top-level studyId mismatch = 0
+top-level stageId mismatch = 0
+duplicate slot = 0
+fresh scientific seed reads = 0
+```
+
+Audit artifact:
+
+```text
+artifact ID = 10587421372
+name = sfcdft4-s2-canonical-identity-audit-35450625402
+digest = sha256:dae4371a2b06d3c6085a502b310b5af55dc0c439ec2d91268d2f7fbc219e2af8
+```
+
+したがって、canonical bundlerの `source identity mismatch` は保存済み768 source artifactのtop-level identity監査では再現しなかった。root causeは未確定であり、これを根拠にsame-evidence repairやformal measurementの救済実行はしない。
+
+## Study 1〜3の保持境界
+
+Study 1 / 2はそれぞれのtechnical-invalid closureを維持する。Study 3 Stage 2もcanonical bundle-stage technical failureにより`TECHNICAL-INVALID / NO SCIENTIFIC DECISION`で閉鎖済みであり、repair/reopenしていない。
+
+Study 4はこれらの科学的結果を後付けで再解釈しない。各Studyのtechnical failureはC1/C6のpositive/negative scientific evidenceではない。
+
+## G4-02 最終disposition
+
+G4-02の正式状態を次とする。
+
+```text
+G4-02 = CLOSED / NO SCIENTIFIC DECISION
+scientific transfer decision = NONE
+GENERALIZES-WITHIN-FROZEN-DOMAIN = NOT ASSIGNED
+COUNTEREXAMPLE-BOUNDARY-DETECTED = NOT ASSIGNED
+NOT-CONFIRMED = NOT ASSIGNED
+NON-ESTIMABLE = NOT ASSIGNED
+final Stage2 status = TECHNICAL-INVALID
+successor study within G4-02 = NOT AUTHORIZED
+```
+
+これはG3-04 C1/C6がfresh domainへ一般化しないという結論ではない。G4-02で計画したformal transfer判定を、凍結済みone-shot条件下で有効に取得できなかったことを意味する。
+
+将来同じ科学的問いを再検討する場合は、G4-02をrepair/reopenせず、別Agendaまたは別Study identityとしてprospective authorizationから開始する。
+
+## 保護境界
+
+- Study 1〜4のclosed scientific executionをrerun / repairしない。
+- fresh scientific seedをclosure後の救済目的で再読しない。
+- deterministic scientific failureをreserveで救済しない。
+- frozen selection後のreplacementを行わない。
+- threshold / endpoint / direction / alpha / domain / sample target / resource ceilingを事後変更しない。
+- G4-10 depth11へアクセスしない。
+- G4-02の結果を公開AIへ自動反映しない。
+- ユーザーの明示指示なしに`main`へ統合しない。
