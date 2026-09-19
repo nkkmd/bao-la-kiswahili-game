@@ -20,6 +20,7 @@ G4-02 Study 4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
 G4-02 scientific transfer decision = NONE
 G4-02 overall = CLOSED / NO SCIENTIFIC DECISION
 G4-02 documentation closure = COMPLETE
+G4-02 main integration = COMPLETE / PR #154 / merge commit 8131fc5ebadf9c855159b5e43b18fbc0bc95e1bd
 G4-03 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED
 G4-04 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED
 G4-05 = CANDIDATE / NOT-AUTHORIZED
@@ -28,7 +29,6 @@ G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
 G4-H01 = DEFERRED
 Public AI change authorized by RG4 = false
-Current G4-02 branch main integration = NOT AUTHORIZED / NOT PERFORMED
 ```
 
 ## G4-01
@@ -126,7 +126,7 @@ G4-02内に追加successor Studyを自動生成しない。将来同じ問いを
 | Agenda | 現在の状態 |
 | --- | --- |
 | `G4-01` | `COMPLETE / MAIN INTEGRATED` |
-| `G4-02` | `CLOSED / NO SCIENTIFIC DECISION` |
+| `G4-02` | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | `G4-03` | `ELIGIBILITY-GATE-SATISFIED / NOT-AUTHORIZED` |
 | `G4-04` | `ELIGIBILITY-GATE-SATISFIED / NOT-AUTHORIZED` |
 | `G4-05` | `CANDIDATE / NOT-AUTHORIZED` |
@@ -139,11 +139,11 @@ G4-02内に追加successor Studyを自動生成しない。将来同じ問いを
 
 G4-02の最終状態は、ルート`README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、RG4入口文書、RG4 current/resume文書、G4-02 current status、machine-readable Stage 2 result、Study 4 Stage 2 checkpoint、Agenda closure checkpointへ反映済みである。
 
-live-state文書に古いStudy進行状態が残っていないこと、machine-readable closure recordsがJSONとして妥当であること、主要なローカルMarkdownリンクが解決することを専用GitHub Actions workflowで監査する。これはdocumentation-only validationであり、fresh scientific seedへのアクセスやscientific executionを行わない。
+live-state文書に古いStudy進行状態が残っていないこと、machine-readable closure recordsがJSONとして妥当であること、主要なローカルMarkdownリンクが解決することを専用GitHub Actions workflowで監査した。これはdocumentation-only validationであり、fresh scientific seedへのアクセスやscientific executionを行っていない。
 
 G4-02について追加のscientific executionは行わない。第四世代研究をその後継続する場合、G4-03またはG4-04など次のAgendaについて**個別のauthorization review**から開始する。G4-01のeligibility gateだけでfresh scientific executionが自動承認されることはない。
 
-現在のG4-02 research branchの`main`統合は、ユーザーの明示指示があるまで行わない。
+G4-02 research branchはユーザーの明示承認によりPR #154で`main`へ統合済みである。統合記録は[`checkpoints/2026-09-20-g4-02-main-integration-complete.md`](checkpoints/2026-09-20-g4-02-main-integration-complete.md)を参照する。
 
 ## 保護境界
 
@@ -152,13 +152,14 @@ G4-02について追加のscientific executionは行わない。第四世代研�
 - G3-12をrepair/replayしない。
 - G4-10 depth11へアクセスしない。
 - G4-02の結果をpublic AIへ自動反映しない。
-- current G4-02 branchをユーザーの明示承認なしに`main`へ統合しない。
+- G4-02統合後の追加変更は、既存の科学的closureを再解釈せず、新たな作業として扱う。
 
 ## 正本
 
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
 - [`checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md`](checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md)
+- [`checkpoints/2026-09-20-g4-02-main-integration-complete.md`](checkpoints/2026-09-20-g4-02-main-integration-complete.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md`](../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)
