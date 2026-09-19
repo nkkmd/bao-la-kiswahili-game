@@ -19,6 +19,7 @@ G4-02 Study 4 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
 G4-02 Study 4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
 G4-02 scientific transfer decision = NONE
 G4-02 overall = CLOSED / NO SCIENTIFIC DECISION
+G4-02 documentation closure = COMPLETE
 G4-03 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED
 G4-04 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED
 G4-05 = CANDIDATE / NOT-AUTHORIZED
@@ -134,11 +135,13 @@ G4-02内に追加successor Studyを自動生成しない。将来同じ問いを
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
 | `G4-H01` | `DEFERRED` |
 
-## 次の安全な作業
+## G4-02 documentation closure
 
-G4-02について追加のscientific executionは行わない。まずG4-02 closureをREADME・研究索引・将来アジェンダ等へ整合させ、repository-wide documentation auditを完了する。
+G4-02の最終状態は、ルート`README.md`、`doc/RESEARCH_INDEX.md`、`doc/FUTURE_RESEARCH_AGENDA.md`、RG4入口文書、RG4 current/resume文書、G4-02 current status、machine-readable Stage 2 result、Study 4 Stage 2 checkpoint、Agenda closure checkpointへ反映済みである。
 
-その後に第四世代研究を継続する場合、G4-03またはG4-04など次のAgendaについて**個別のauthorization review**から開始する。G4-01のeligibility gateだけでfresh scientific executionが自動承認されることはない。
+live-state文書に古いStudy進行状態が残っていないこと、machine-readable closure recordsがJSONとして妥当であること、主要なローカルMarkdownリンクが解決することを専用GitHub Actions workflowで監査する。これはdocumentation-only validationであり、fresh scientific seedへのアクセスやscientific executionを行わない。
+
+G4-02について追加のscientific executionは行わない。第四世代研究をその後継続する場合、G4-03またはG4-04など次のAgendaについて**個別のauthorization review**から開始する。G4-01のeligibility gateだけでfresh scientific executionが自動承認されることはない。
 
 現在のG4-02 research branchの`main`統合は、ユーザーの明示指示があるまで行わない。
 
@@ -155,6 +158,7 @@ G4-02について追加のscientific executionは行わない。まずG4-02 clos
 
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
+- [`checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md`](checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md`](../structural-forcing-corridor-tree-raw-transfer/STUDY_4_PROTOCOL.md)
 - [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)
