@@ -1,0 +1,146 @@
+name: SFCDFT Study3 Stage2 durable identity firewall install
+
+on:
+  push:
+    branches:
+      - research/g4-02-sfcdft-study4-prereg
+    paths:
+      - .github/workflows/sfcdft3-stage2-firewall-install.yml
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: sfcdft3-stage2-firewall-install
+  cancel-in-progress: false
+
+jobs:
+  install:
+    name: Install durable Study3 Stage2 identity firewall
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      SOURCE_RUN_ID: '35440279723'
+      SOURCE_ARTIFACT_ID: '10583750946'
+      SOURCE_ARTIFACT_NAME: 'sfcdft3-stage2-identity-firewall-35440279723'
+      SOURCE_ARTIFACT_DIGEST: 'sha256:34c4c57f176c10be6c6cfce6083d0a9aa14897288884c524a9443ddd0d628715'
+      SOURCE_IDENTITY_CORE: '4e9948fed1f7274f7d25b07f95fbc65ce3341b892dc64a288a6bcaa86f39b382'
+      TARGET_DIR: 'doc/research-generation-4/identity-firewalls/g4-02-sfcdft-study3-stage2'
+    steps:
+      - name: Checkout Study4 branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Verify source artifact provenance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "/repos/${GITHUB_REPOSITORY}/actions/artifacts/${SOURCE_ARTIFACT_ID}" > /tmp/artifact-meta.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const m = JSON.parse(fs.readFileSync('/tmp/artifact-meta.json','utf8'));
+          const need = (x,msg) => { if(!x) throw new Error(msg); };
+          need(String(m.id) === process.env.SOURCE_ARTIFACT_ID, 'artifact id mismatch');
+          need(m.name === process.env.SOURCE_ARTIFACT_NAME, 'artifact name mismatch');
+          need(m.digest === process.env.SOURCE_ARTIFACT_DIGEST, 'artifact digest mismatch');
+          need(m.expired === false, 'artifact expired');
+          need(String(m.workflow_run?.id) === process.env.SOURCE_RUN_ID, 'source run mismatch');
+          need(m.workflow_run?.head_branch === 'research/g4-02-sfcdft-study4-prereg', 'materialization branch mismatch');
+          console.log(JSON.stringify({id:m.id,name:m.name,digest:m.digest,run:m.workflow_run?.id,head:m.workflow_run?.head_sha}));
+          NODE
+
+      - name: Download materialized firewall artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/sfcdft3-s2-fw
+          curl -fsSL -L \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${SOURCE_ARTIFACT_ID}/zip" \
+            -o /tmp/sfcdft3-s2-fw.zip
+          unzip -q /tmp/sfcdft3-s2-fw.zip -d /tmp/sfcdft3-s2-fw
+
+      - name: Verify materialized firewall content
+        run: |
+          set -euo pipefail
+          for f in MANIFEST.json SOURCE_TRAJECTORY_SHA256.txt OPENING_PREFIX_SHA256.txt RAW_ROOT_SHA256.txt SOURCE_RECORD_INDEX.jsonl; do
+            test -s "/tmp/sfcdft3-s2-fw/${f}"
+          done
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const p = JSON.parse(fs.readFileSync('/tmp/sfcdft3-s2-fw/MANIFEST.json','utf8'));
+          const need = (x,msg) => { if(!x) throw new Error(msg); };
+          need(p.firewallId === 'G4-02-SFCDFT-STUDY3-STAGE2-IDENTITY-FIREWALL', 'firewall identity mismatch');
+          need(p.sourceRunId === 35427427920, 'source scientific run mismatch');
+          need(p.sourceExecutionHead === 'dec9a91d5860b9f3d927d632a7165bcbf99f5f63', 'source execution head mismatch');
+          need(p.identityCoreSha256 === process.env.SOURCE_IDENTITY_CORE, 'identity core mismatch');
+          need(p.sourceArtifactCounts.primaryStart === 768 && p.sourceArtifactCounts.sealedSource === 768, 'source coverage mismatch');
+          need(p.sourceArtifactCounts.deterministicFailure === 0 && p.sourceArtifactCounts.pairedReserveStart === 0, 'source failure/reserve boundary mismatch');
+          need(p.scientificSeedReplay === false && p.scientificEndpointLoaded === false && p.scientificMeasurementLoaded === false && p.scientificAggregateLoaded === false, 'identity-only boundary mismatch');
+          need(p.limitations.formalMeasurementWasNotStarted === true && p.limitations.scientificDecisionWasNotGenerated === true, 'Study3 closure limitation mismatch');
+          console.log(JSON.stringify({identityCounts:p.identityCounts,status:p.sourceStatusCounts,core:p.identityCoreSha256}));
+          NODE
+          test "$(wc -l < /tmp/sfcdft3-s2-fw/SOURCE_RECORD_INDEX.jsonl)" -eq 768
+          test "$(wc -l < /tmp/sfcdft3-s2-fw/SOURCE_TRAJECTORY_SHA256.txt)" -eq 767
+          test "$(wc -l < /tmp/sfcdft3-s2-fw/OPENING_PREFIX_SHA256.txt)" -eq 746
+          test "$(wc -l < /tmp/sfcdft3-s2-fw/RAW_ROOT_SHA256.txt)" -eq 1326
+
+      - name: Install durable firewall files
+        run: |
+          set -euo pipefail
+          rm -rf "${TARGET_DIR}"
+          mkdir -p "${TARGET_DIR}"
+          cp /tmp/sfcdft3-s2-fw/MANIFEST.json "${TARGET_DIR}/MANIFEST.json"
+          cp /tmp/sfcdft3-s2-fw/SOURCE_TRAJECTORY_SHA256.txt "${TARGET_DIR}/SOURCE_TRAJECTORY_SHA256.txt"
+          cp /tmp/sfcdft3-s2-fw/OPENING_PREFIX_SHA256.txt "${TARGET_DIR}/OPENING_PREFIX_SHA256.txt"
+          cp /tmp/sfcdft3-s2-fw/RAW_ROOT_SHA256.txt "${TARGET_DIR}/RAW_ROOT_SHA256.txt"
+          cp /tmp/sfcdft3-s2-fw/SOURCE_RECORD_INDEX.jsonl "${TARGET_DIR}/SOURCE_RECORD_INDEX.jsonl"
+          cat > "${TARGET_DIR}/README.md" <<'EOF'
+          # G4-02 / SFCDFT-STUDY3 Stage 2 durable identity firewall
+
+          Study 4 Stage 1 の fresh scientific access 前に、Study 3 Stage 2 の既存 immutable GitHub Actions artifacts だけから materialize した identity-only firewall である。
+
+          - source scientific run: `35427427920`
+          - source execution HEAD: `dec9a91d5860b9f3d927d632a7165bcbf99f5f63`
+          - source formal closure: `TECHNICAL-INVALID / NO-SCIENTIFIC-DECISION / NO-RERUN`
+          - materialization run: `35440279723`
+          - materialization artifact: `10583750946`
+          - materialization artifact digest: `sha256:34c4c57f176c10be6c6cfce6083d0a9aa14897288884c524a9443ddd0d628715`
+          - identity core SHA-256: `4e9948fed1f7274f7d25b07f95fbc65ce3341b892dc64a288a6bcaa86f39b382`
+
+          このfirewallの用途は freshness exclusion のみである。Study 3 scientific seed の再読、source regeneration、endpoint値・測定値・formal result の再利用は行っていない。
+
+          Stage 2 source bundleは完成せず、formal measurementは開始されていない。そのためselected-pair membershipやscientific decisionは本firewallへ持ち込まない。Study 3 Stage 2 primary/reserve seed namespace自体も別途全面除外する。
+          EOF
+          cat > "${TARGET_DIR}/INSTALL_PROVENANCE.json" <<EOF
+          {
+            "schemaVersion": 1,
+            "firewallId": "G4-02-SFCDFT-STUDY3-STAGE2-IDENTITY-FIREWALL",
+            "materializationRunId": ${SOURCE_RUN_ID},
+            "materializationArtifactId": ${SOURCE_ARTIFACT_ID},
+            "materializationArtifactName": "${SOURCE_ARTIFACT_NAME}",
+            "materializationArtifactDigest": "${SOURCE_ARTIFACT_DIGEST}",
+            "identityCoreSha256": "${SOURCE_IDENTITY_CORE}",
+            "installedByWorkflowRunId": "${GITHUB_RUN_ID}",
+            "installedFromHead": "${GITHUB_SHA}",
+            "scientificSeedReplay": false,
+            "scientificOutcomeImported": false
+          }
+          EOF
+          git diff --check
+
+      - name: Commit durable firewall
+        run: |
+          set -euo pipefail
+          git config user.name 'Sawa'
+          git config user.email '72678394+nkkmd@users.noreply.github.com'
+          git add "${TARGET_DIR}"
+          git diff --cached --quiet && { echo 'no durable firewall changes'; exit 1; }
+          git commit -m 'research(g4-02): install Study3 Stage2 durable identity firewall'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
