@@ -1,7 +1,7 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-20  
-状態: **`G4-02 CLOSED / NO SCIENTIFIC DECISION / DOCUMENTATION CLOSURE IN PROGRESS`**
+状態: **`G4-02 CLOSED / NO SCIENTIFIC DECISION / DOCUMENTATION CLOSURE COMPLETE`**
 
 ## 再開時の読む順序
 
@@ -10,7 +10,7 @@
 3. [`../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](../structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)でG4-02最終状態を確認する。
 4. [`../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json`](../structural-forcing-corridor-tree-raw-transfer/results/stage-2-study4/STUDY_4_STAGE_2_RESULT.json)を確認する。
 5. [`../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md`](../structural-forcing-corridor-tree-raw-transfer/checkpoints/2026-09-20-study4-stage2-technical-invalid.md)でformal closureとno-rerun境界を確認する。
-6. G4-02関連文書の整合性監査を継続する。
+6. [`checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md`](checkpoints/2026-09-20-g4-02-closed-no-scientific-decision.md)でAgenda全体のclosureを確認する。
 7. `main`統合はユーザーの明示指示があるまで行わない。
 
 ## 現在地
@@ -26,6 +26,7 @@ Study 4 Stage 1 = FORMAL-PREPARATION-ELIGIBLE
 Study 4 Stage 2 = TECHNICAL-INVALID / NO SCIENTIFIC DECISION / CLOSED
 G4-02 scientific transfer decision = NONE
 G4-02 = CLOSED / NO SCIENTIFIC DECISION
+documentation closure = COMPLETE
 main integration = NOT AUTHORIZED / NOT PERFORMED
 public AI change = false
 ```
@@ -50,7 +51,7 @@ formal aggregate = NOT STARTED
 8-cell decision vector = NOT GENERATED
 ```
 
-Formal measurement前のmandatory artifact stageで停止したため、C1/C6のeffect direction、p-value、Holm判定、generalization/counterexample decisionは存在しない。
+formal measurement前のmandatory artifact stageで停止したため、C1/C6のeffect direction、p-value、Holm判定、generalization/counterexample decisionは存在しない。
 
 ## Identity-only post-failure audit
 
@@ -74,7 +75,7 @@ audit artifact ID = 10587421372
 audit artifact digest = sha256:dae4371a2b06d3c6085a502b310b5af55dc0c439ec2d91268d2f7fbc219e2af8
 ```
 
-canonical bundlerの `source identity mismatch` はこのtop-level identity auditでは再現しなかった。root causeは未確定であり、この監査をformal measurement救済やsame-evidence repairへ用いない。
+canonical bundlerの`source identity mismatch`はこのtop-level identity auditでは再現しなかった。root causeは未確定であり、この監査をformal measurement救済やsame-evidence repairへ用いない。
 
 ## G4-02最終解釈
 
@@ -82,22 +83,26 @@ canonical bundlerの `source identity mismatch` はこのtop-level identity audi
 G4-02 = CLOSED / NO SCIENTIFIC DECISION
 scientific transfer decision = NONE
 final formal Stage2 status = TECHNICAL-INVALID
-successor study within G4-02 = NOT AUTHORIZED
+successor Study within G4-02 = NOT AUTHORIZED
 ```
 
 これはC1/C6の一般化失敗やcounterexample検出を意味しない。凍結済みone-shot protocolで有効なformal transfer結果を取得できなかった、という終了状態である。
 
 Study 4 Stage 1の`FORMAL-PREPARATION-ELIGIBLE`はcompatibility-only evidenceとして保持するが、Stage 2 formal conclusionへ昇格させない。
 
-## 次に行う作業
+## Documentation closure
 
-1. `research-generation-4/README.md`、`RESEARCH_INDEX.md`、`FUTURE_RESEARCH_AGENDA.md`などのG4-02表記を最終状態へ更新する。
-2. ルート`README.md`を含む人間向け入口文書で、G4-02の古い進行状態が残っていないか確認する。
-3. repository-wide documentation consistency auditを行い、closure checkpointを固定する。
-4. その時点で研究ブランチ上のG4-02作業を完了状態とする。
-5. `main`統合はユーザーの明示指示がある場合のみ行う。
+G4-02の最終状態は、ルート`README.md`、研究索引、将来アジェンダ、RG4入口文書、RG4 current status、G4-02 current status、machine-readable Stage 2 result、Study 4 Stage 2 checkpoint、Agenda closure checkpointへ反映済みである。
 
-第四世代研究をその後継続する場合、G4-03/G4-04など次のAgendaは個別authorization reviewから開始する。G4-02をrepair/reopenしない。
+`PROGRAM_PLAN.md`などのprospectively frozen文書は事後結果に合わせて改変しない。履歴文書に残る当時の`NOT AUTHORIZED`や進行中表記は、その時点の記録として保持し、live-state文書とは区別する。
+
+repository-wide closure documentation auditは専用GitHub Actions workflowで検証する。監査のtechnical fixはscientific executionではなく、fresh scientific seedへのアクセスを伴わない。
+
+## 次にRG4を進める場合
+
+G4-02について追加のscientific executionは行わない。第四世代研究を継続する場合は、G4-03またはG4-04など次のAgendaについて**個別のauthorization review**から開始する。
+
+G4-01のeligibility gateだけでfresh scientific executionが自動承認されることはない。G4-02をrepair/reopenせず、G4-02で閉じたscientific executionやseedを救済目的で再利用しない。
 
 ## 禁止事項
 
