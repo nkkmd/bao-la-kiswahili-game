@@ -329,12 +329,13 @@ G3-12は技術的不成立で終了したため、局所幾何の一般化可能
 
 core agendaは`G4-01..G4-10`です。最初のStudyであるG4-01 `LGTTCI-STUDY1`は、G3-04・G3-07・G3-10由来claimを将来のfresh domainへ移す前に、root contract、helper precondition、measurement agreement、resource readinessを科学的effectから分離して検証しました。SFCDF・SILGM・GCLDの3 familyすべてがcompatibleとなり、正式decisionは **`COMPATIBILITY-ELIGIBLE-ALL`** です。
 
-この結果はcompatibility/readinessのみを示し、G3由来claimのfresh-domain一般化、effect direction・effect size、counterexampleの成立／不成立を確認したものではありません。G4-02はeligibility gate通過後のauthorization reviewで`PREREQUISITE-REQUIRED`となり、scientific executionは未承認です。G4-03、G4-04もeligibility gateを満たしていますが未承認です。各Studyは個別のauthorization reviewを必要とし、G4-10のdepth 11も引き続き未承認・未アクセスです。
+この結果はcompatibility/readinessのみを示し、G3由来claimのfresh-domain一般化、effect direction・effect size、counterexampleの成立／不成立を確認したものではありません。G4-02はその後Study 1〜4をprospectiveに実施しましたが、最終Study 4のStage 2がformal measurement前のmandatory artifact工程で`TECHNICAL-INVALID`となり、**`CLOSED / NO SCIENTIFIC DECISION`**で終了しました。これはC1/C6の一般化失敗や反例を示すnegative scientific evidenceではありません。G4-03、G4-04はeligibility gateを満たしていますが未承認です。各Studyは個別のauthorization reviewを必要とし、G4-10のdepth 11も引き続き未承認・未アクセスです。
 
 - [第四世代研究の入口](doc/research-generation-4/README.md)
 - [第四世代Program計画](doc/research-generation-4/PROGRAM_PLAN.md)
 - [第四世代の現在状態](doc/research-generation-4/CURRENT_STATUS.md)
 - [G4-01 / LGTTCI-STUDY1](doc/local-game-tree-geometry-transfer-compatibility-instrument/README.md)
+- [G4-02 / corridor・tree/graph transfer 最終状態](doc/structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md)
 
 新しい独立研究を追加するときは、初見向け概要と科学的・技術的な正本を分け、[研究成果の中央索引](doc/RESEARCH_INDEX.md)から参照できるようにします。
 

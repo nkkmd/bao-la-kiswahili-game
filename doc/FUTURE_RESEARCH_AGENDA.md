@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.2.0
+Version: 5.3.0
 
-更新日: 2026-09-18
+更新日: 2026-09-20
 Research Generation 2: **Closed (2026-08-31)**（2026-08-31に完了）
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・`main`へ統合済み）
-Research Generation 4: **Program plan frozen / G4-01 complete / G4-02 SFCDFT-STUDY1 Stage 1 technical-invalid (2026-09-18)**（G4-01完了・G4-02 Stage 1は技術的不成立）
+Research Generation 4: **Program plan frozen / G4-01 complete / G4-02 closed without scientific decision (2026-09-20)**（G4-01完了・G4-02は科学的判定なしで終了）
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。ここに候補として記載しただけでは、Studyの開始、seedへのアクセス、計算実行、公開AIの変更は承認されません。
 
@@ -25,8 +25,8 @@ Research Generation 2 core = CLOSED
 Research Generation 3 core = CLOSED
 Research Generation 4 program plan = FROZEN / INTEGRATED TO MAIN
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
-G4-02 = SFCDFT-STUDY1 STAGE 1 TECHNICAL-INVALID / NO-DECISION
-G4-02 Stage 2 = NOT AUTHORIZED / NOT ACCESSED
+G4-02 = CLOSED / NO SCIENTIFIC DECISION
+G4-02 final Stage 2 = TECHNICAL-INVALID / FORMAL MEASUREMENT NOT STARTED
 G4-03 / G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
@@ -40,7 +40,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | Wave | Agenda | 研究方向 | 現在状態 |
 | --- | --- | --- | --- |
 | A | `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
-| A | `G4-02` | G3-04由来corridor / tree-graph transfer | `SFCDFT-STUDY1 STAGE 1 TECHNICAL-INVALID / NO-DECISION` |
+| A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
 | B | `G4-05..G4-06` | fresh exact microdomainとgeometry / game-theoretic consequence bridge | `NOT AUTHORIZED` |
@@ -50,11 +50,11 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 
 G4-01 `LGTTCI-STUDY1`は、SFCDF・SILGM・GCLDの3 familyについてfresh-domain transfer研究を行うためのcompatibility/readiness条件を検証し、`COMPATIBILITY-ELIGIBLE-ALL`で完了しました。これはG3由来claimのfresh-domain一般化、effect direction、counterexampleの成立／不成立を示す結果ではありません。
 
-G4-02では、initial authorization reviewの`PREREQUISITE-REQUIRED`を、旧G4-01 seedを再読・rerunせずにlegacy limitationを明示したmethodology amendmentとidentity-only firewallで解消しました。authorization review V2で正式Study `SFCDFT-STUDY1`のprospective設計が承認され、Stage 0は`PASS`しました。
+G4-02では、prerequisite解消後にStudy 1〜4をそれぞれprospective boundaryとして実施しました。Study 1・2はStage 1 technical failureでfail-closed、Study 3はStage 1を通過したもののStage 2 `bundle-source`でtechnical-invalidとなりました。Study 4ではfresh access前のend-to-end artifact-pipeline validationを追加し、Stage 0をPASS、Stage 1を`FORMAL-PREPARATION-ELIGIBLE`として通過しました。
 
-その後、別のpre-access binding / execution authorizationを通してStage 1 fresh compatibility populationを一度だけ実行しました。primary 384 slotsのうち375件はsealed sourceとなりましたが、9件がmandatory first-16 opening-prefix serializer invariantを満たせずdeterministic failureとなりました。frozen protocolのdecision mappingを適用し、Stage 1を`TECHNICAL-INVALID / NO-DECISION / FAIL-CLOSED`として閉じました。
+Study 4 Stage 2 canonical one-shot run `35450625402` は768/768 primary source acquisitionと`classify-final ready=true`まで到達しましたが、mandatory `bundle-source`工程が`source identity mismatch`で停止し、formal measurementとaggregateは開始されませんでした。sealed canonical artifactsだけを調べるidentity-only auditではtop-level identity mismatchを再現できませんでしたが、no-rerun/no-rescue規則に従ってformal resultの救済生成は行っていません。
 
-375件を用いたseed-free recovery、primary rerun、failed-slot repair、paired reserveによる置換は行っていません。Stage 2も未認可・未アクセスで、seed readsは0です。したがってG4-02からgeneralization / counterexampleについてpositive/negativeいずれの科学的updateも得ていません。
+したがってG4-02の最終状態は`CLOSED / NO SCIENTIFIC DECISION`です。C1/C6のgeneralization、counterexample、NOT-CONFIRMED、NON-ESTIMABLEのいずれもformalには判定していません。このtechnical closureをnegative scientific evidenceへ読み替えません。
 
 G4-03、G4-04を進める場合は引き続き個別authorization reviewが必要です。各Studyのfresh evidence、formal claim、population、endpoint、selection rule、resource ceilingは結果を見る前に固定します。G3-12のrepair、G3-12 Stage 2 seedの流用、G3-11 depth 10の再実行、authorization前のdepth 11 accessは行いません。
 
@@ -68,9 +68,9 @@ Research Generation 3では、G3-04・G3-07・G3-10に限定的なformal results
 
 G4-01では、これら3 familyについて後続のfresh-domain transfer研究を設計・実施するためのcompatibility/readiness条件が満たされることを確認しました。ただし、generalizationそのものは検証していません。
 
-G4-02では`SFCDFT-STUDY1`をprospectiveに開始しましたが、Stage 1 serializer integrity violationによって`TECHNICAL-INVALID / NO-DECISION`で閉じました。このtechnical failureをC1/C6の一般化失敗や反例として扱ってはいけません。
+G4-02はStudy 1〜4をprospectiveに実施した結果、最終Stage 2がformal measurement前のtechnical failureで停止し、`CLOSED / NO SCIENTIFIC DECISION`となりました。このclosureをC1/C6の一般化失敗、反例、effect不在として扱ってはいけません。
 
-G4-02の同じ科学課題を再検証する場合は`SFCDFT-STUDY1`をrepair/reopenせず、今回のfailureをtechnical development informationとして扱います。新しいStudy / Stage identity、新しいfresh seed namespace、short trajectoryを明示的に扱うserializer contract、prior G4-02 populationを除外するfreshness firewallを結果前に固定し、新しいauthorization reviewから開始します。
+同じ科学課題を将来再検討する場合はG4-02をrepair/reopenせず、別Agendaまたは新しいprospective Study identityとしてauthorizationから開始します。G4-02のclosed scientific executionやseedを救済目的で再利用しません。
 
 G4-03またはG4-04へ進む場合も、それぞれ新しいStudyとしてauthorization reviewから開始し、G3-12をrepairまたは再開せず、fresh population、fresh seeds、適合するroot contract、結果を見る前に固定したdecision mappingを用います。
 
