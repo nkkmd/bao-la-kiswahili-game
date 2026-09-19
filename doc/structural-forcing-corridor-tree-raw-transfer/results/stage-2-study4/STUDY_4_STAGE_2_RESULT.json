@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "program": "Research Generation 4 / G4-02",
+  "studyId": "SFCDFT-STUDY4",
+  "stageId": "SFCDFT4-S2-FORMAL-HELDOUT-2026-09-19-v1",
+  "evidenceClass": "FRESH-FORMAL-HELDOUT",
+  "adjudicationDate": "2026-09-20",
+  "status": "TECHNICAL-INVALID",
+  "canonicalExecution": {
+    "runId": 35450625402,
+    "event": "push",
+    "executionSha": "0acd54a23fd8e1f1226c307fe948c251d64f336d",
+    "runAttempt": 1,
+    "runConclusion": "failure"
+  },
+  "executionTrace": {
+    "primarySourceSlots": 768,
+    "primarySourcesCompleted": 768,
+    "retryCount": 0,
+    "pairedReserveCount": 0,
+    "deterministicFailureCount": 0,
+    "finalClassification": {
+      "job": "classify-final",
+      "conclusion": "success",
+      "ready": true
+    },
+    "sourceBundle": {
+      "job": "bundle-source",
+      "jobId": 105919448021,
+      "conclusion": "failure",
+      "exactRecoveredError": "source identity mismatch"
+    },
+    "formalMeasurement": {
+      "started": false,
+      "conclusion": "skipped"
+    },
+    "formalAggregate": {
+      "started": false,
+      "conclusion": "skipped"
+    }
+  },
+  "identityOnlyPostFailureAudit": {
+    "runId": 35452797563,
+    "executionSha": "9a2abaa3b45e2eaac532ea9c7c1ba284e22d4688",
+    "runAttempt": 1,
+    "runConclusion": "success",
+    "canonicalSourceArtifactCount": 768,
+    "topLevelStudyIdMismatchCount": 0,
+    "topLevelStageIdMismatchCount": 0,
+    "duplicateSlotCount": 0,
+    "freshScientificSeedReads": 0,
+    "scientificEndpointReads": 0,
+    "effectComputationPerformed": false,
+    "artifact": {
+      "id": 10587421372,
+      "name": "sfcdft4-s2-canonical-identity-audit-35450625402",
+      "digest": "sha256:dae4371a2b06d3c6085a502b310b5af55dc0c439ec2d91268d2f7fbc219e2af8"
+    },
+    "interpretation": "The canonical bundle-stage identity mismatch was not reproduced by the post-failure identity-only audit of the sealed canonical source artifacts.",
+    "rootCauseEstablished": false
+  },
+  "scientificDecision": {
+    "eightCellDecisionVectorGenerated": false,
+    "formalScientificLabelsAssigned": false,
+    "effectDirectionInterpreted": false,
+    "pValuesInterpreted": false,
+    "generalizationOrCounterexampleDecisionAvailable": false,
+    "reason": "The mandatory source-bundle stage failed before formal measurement began."
+  },
+  "adjudication": {
+    "classification": "TECHNICAL-INVALID",
+    "basis": [
+      "The canonical one-shot execution completed all 768 primary source acquisitions and classify-final reported ready=true.",
+      "The mandatory bundle-source stage then failed with the recovered error 'source identity mismatch'.",
+      "Formal measurement and formal aggregation did not start, so no eight-cell scientific decision vector exists.",
+      "A later identity-only audit of the 768 sealed canonical source artifacts completed successfully and found zero top-level studyId mismatches, zero top-level stageId mismatches, and zero duplicate slots; therefore the bundle-stage mismatch was not reproduced and no scientific rescue inference is permitted.",
+      "STUDY_4_PROTOCOL.md classifies mandatory identity / implementation / execution / provenance / artifact-contract violations as TECHNICAL-INVALID and prohibits a full fresh rerun after scientific access."
+    ],
+    "notClassifiedAs": {
+      "NON-ESTIMABLE": "No formal support/definedness/minimum-nonzero/resource-gate determination was reached because formal measurement never began.",
+      "NOT-CONFIRMED": "No estimable formal hypothesis test was completed.",
+      "GENERALIZES-WITHIN-FROZEN-DOMAIN": "No formal hypothesis test was completed.",
+      "COUNTEREXAMPLE-BOUNDARY-DETECTED": "No formal hypothesis test was completed."
+    }
+  },
+  "recoveryDisposition": {
+    "fullFreshWorkflowRerunAuthorized": false,
+    "sameEvidenceRepairRerunAuthorized": false,
+    "manualWorkflowDispatchAuthorized": false,
+    "runAttemptGreaterThanOneAuthorized": false,
+    "rerunPerformed": false,
+    "sameEvidenceRepairPerformed": false,
+    "scientificSeedRereadPerformedAfterFailure": false,
+    "scientificRescuePerformed": false,
+    "identityOnlyAuditPerformed": true
+  },
+  "g402Disposition": {
+    "scientificTransferDecision": "NONE",
+    "agendaStatus": "CLOSED-WITHOUT-SCIENTIFIC-DECISION",
+    "successorStudyWithinG402Authorized": false
+  },
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
