@@ -11,6 +11,25 @@ const sitemap = fs.readFileSync("public/sitemap.xml", "utf8");
 
 const canonicalHome = "https://bao-la-kiswahili.cultivationdata.net/";
 const canonicalPrivacy = "https://bao-la-kiswahili.cultivationdata.net/privacy";
+const publicHtmlPaths = fs.readdirSync("public", { withFileTypes: true })
+  .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
+  .map((entry) => `public/${entry.name}`)
+  .sort();
+
+for (const htmlPath of publicHtmlPaths) {
+  const page = fs.readFileSync(htmlPath, "utf8");
+  const head = page.match(/<head>([\s\S]*?)<\/head>/)?.[1] || "";
+  const bodyStart = page.match(/<body>\s*([\s\S]*?)<main[\s>]/)?.[1] || "";
+  assert.equal((page.match(/GTM-PDFFMB59/g) || []).length, 2,
+    `${htmlPath} includes the GTM container ID exactly twice`);
+  assert.match(head, /https:\/\/www\.googletagmanager\.com\/gtm\.js\?id=/,
+    `${htmlPath} loads GTM from the head`);
+  assert.match(bodyStart,
+    /https:\/\/www\.googletagmanager\.com\/ns\.html\?id=GTM-PDFFMB59/,
+    `${htmlPath} places the GTM noscript iframe immediately after the body starts`);
+  assert.doesNotMatch(page, /googletagmanager\.com\/gtag\/js/,
+    `${htmlPath} does not retain a direct gtag.js loader`);
+}
 
 assert.match(readme,
   /公式公開サイトは \[https:\/\/bao-la-kiswahili\.cultivationdata\.net\/\]/,
