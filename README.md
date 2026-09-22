@@ -237,6 +237,8 @@ node tools/diagnostic-to-fixture.js \
 
 2026年9月22日、Jevの候補手順序付けを追加した試験版とAI-GEN4単独の比較試験`JEV-BAO-STRENGTH-20260921-v1`を完了しました。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`（優劣を確認できず、同等性の証明ではない）です。本試験は比較のみで終了し、結果にかかわらずJev組込版を公開AIに採用しません。`public/`、公開AI世代、release、配信状態に変更はありません。[終了記録と再現性索引](doc/ai-engineering/jev-ai-gen4-comparison/README.md)を参照してください。
 
+同日、Jevへ最終合法手の直接選択を任せる独立比較試験`JEV-BAO-DIRECT-POLICY-20260922-v1`も完了しました。Baoエンジンが合法候補とexact after-stateを固定し、Jevがその集合から最終着手を選ぶDirect Policy方式です。正式64局はJev 7勝、AI-GEN4 57勝。opening pairではAI-GEN4の2-0が25、Jevの2-0が0、1-1が7で、two-sided exact paired sign testは`p = 5.960464477539063e-8`、固定条件での正式判定は`AI-GEN4-SUPERIOR`です。最終再生監査とopening archiveを含むclosure auditはPASSし、Studyは`COMPLETED / CLOSED`です。ただしこの結論は固定した`jev-1.13.0` Direct Policy方式に限定し、Jev一般や別統合方式へ一般化しません。事前固定した`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`に従い、公開AI・世代・release・`public/`・配信状態は変更していません。[Direct Policy比較試験の最終記録](doc/ai-engineering/jev-direct-policy-comparison/README.md)を参照してください。
+
 AI-GEN4で加えた改善は、**学習済みの論理ゲート型評価器を使って探索中の局面を評価する仕組み**です。ルールに従って合法手を探索する方式は継承しています。AI-GEN3で採用した`PBAI-C011-v1`の軽量な局面遷移も引き続き使い、探索中に不要な表示用スナップショットを省きます。通常の着手処理と画面のアニメーションは維持します。
 
 | 難易度・条件 | 現在の構成 |
@@ -294,8 +296,9 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 ### 詳細資料
 
 - [AI-GEN4正式昇格・配信確認・切戻し](doc/ai-engineering/ai-gen4-release/README.md) — 現在の公開世代と運用状態の正本
-- [Jev × AI-GEN4比較試験の終了記録](doc/ai-engineering/jev-ai-gen4-comparison/README.md) — 64局の`INCONCLUSIVE`判定、非採用、追加課金禁止、原データ保存先
-- [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — P1〜P12の結果と各プログラムへの入口
+- [Jev × AI-GEN4比較試験の終了記録](doc/ai-engineering/jev-ai-gen4-comparison/README.md) — root move ordering方式の64局`INCONCLUSIVE`判定、非採用、原データ保存先
+- [Jev Direct Policy × AI-GEN4比較試験](doc/ai-engineering/jev-direct-policy-comparison/README.md) — 64局の`AI-GEN4-SUPERIOR`判定、最終監査、opening archive、非採用境界
+- [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — P1〜P12の結果と各プログラム・比較試験への入口
 - [P12最終報告](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md) — `PBAI-C016-v1`のdevelopment gate不通過とAI-GEN4維持の正式記録
 - [expert本番組込み・配信記録](doc/ai-engineering/pbai-c015-expert-production/README.md) — P11の採用からAI-GEN4昇格までの経過
 - [AI-GEN3正式昇格判断](doc/ai-engineering/public-ai-improvement-program-5/PROMOTION_DECISION.md)・[P5リリース台帳](doc/ai-engineering/public-ai-improvement-program-5/RELEASE_REGISTER.md) — 継承元の採用・配信履歴
