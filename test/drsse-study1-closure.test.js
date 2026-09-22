@@ -128,14 +128,15 @@ for (const text of [status, report, overview, decisions, reproducibility]) {
   assert.ok(text.includes(FINAL_DECISION));
   assert.ok(text.includes("DRSSE-STUDY1"));
 }
-// The root README intentionally keeps only a generation-level summary. Exact
-// study markers belong in the human-facing research index it links to.
+// The root README and future agenda intentionally keep generation-level current
+// state summaries. Exact study markers belong in the human-facing research index
+// and the Research Generation 2 synthesis that those entry points link to.
 assert.ok(rootReadme.includes("doc/RESEARCH_INDEX.md"));
 assert.ok(index.includes("`G2-05` / `DRSSE-STUDY1`"));
 assert.ok(index.includes("### 21. Deep RAW State-Space Enumeration — Study 1"));
 assert.ok(index.includes("cumulative RAW states = 102857"));
-assert.ok(agenda.includes("**状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**"));
-assert.ok(agenda.includes("G2-12 — State-Space / Game-Tree Growth Estimation Study 1"));
+assert.ok(agenda.includes("Research Generation 2: **Closed (2026-08-31)**"));
+assert.ok(agenda.includes("[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)"));
 assert.ok(program.includes("G2-05 Deep RAW State-Space Enumeration Study 1 closure"));
 assert.ok(program.includes("G2-04 / REEOE-STUDY1 = INCONCLUSIVE"));
 assert.ok(program.includes("SSGTC-STUDY1 = SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN"));
