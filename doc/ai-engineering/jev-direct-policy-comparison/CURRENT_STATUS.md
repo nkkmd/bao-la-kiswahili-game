@@ -4,13 +4,15 @@
 
 ## 状態
 
-**`COMPLETED / CLOSED / AUDIT-PASS`**
+**`COMPLETED / CLOSED / AUDIT-PASS / PRE-MAIN-DOC-AUDIT-PASS`**
 
 Jev Direct PolicyとAI-GEN4 expert standardの比較Studyは完了した。
 
 正式64局はすべてengine terminalまで完走し、最終 `run.cjs verify` も `VERIFIED`。実試験に使用した生成opening定義も専用branchへ固定し、その後の再verifyでbinding不変を確認した。closure auditも完了している。
 
 正式判定は **`AI-GEN4-SUPERIOR`**。
+
+main統合前の文書整合監査も実施し、ルート`README.md`、`doc/AI_ENGINEERING_INDEX.md`、`doc/ai-engineering/README.md`、本Studyの入口・最終結果・技術監査・tool READMEに残っていた更新漏れを専用branch上で修正した。
 
 `public/`、main、AI-GEN4、release、本番配信状態は変更していない。**`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`** を維持する。
 
@@ -91,6 +93,35 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 費用gate違反はない。
 
+## Pre-main documentation audit
+
+main統合前に、現在状態を案内する文書を相互照合した。
+
+修正済み:
+
+- ルート`README.md` — Direct Policy Studyの結果・限定解釈・非採用境界を追加
+- `doc/AI_ENGINEERING_INDEX.md` — 2つのJev Studyを分離して索引化
+- `doc/ai-engineering/README.md` — 直近の独立比較試験を追加
+- Study `README.md` — `ARCHIVE-CLOSURE-PENDING`を閉鎖済み状態へ更新
+- `FINAL_REPORT.md` — opening archiveとclosure完了を反映
+- `FORMAL_RESULT.md` / `FORMAL_TECHNICAL_AUDIT.md` — opening固定後の最終closure verifyを反映
+- `tools/jev-direct-policy/README.md` — pilot未認可表記を閉鎖済みtool状態へ更新
+
+authorization / pause / resume文書は実行時点の履歴なので、現在状態へ書き換えず保存する。
+
+## Branch / main境界
+
+mainとの差分監査ではmerge baseは `4d072cb862864f25d6ae74363040c8f4a772d8ee`、branchはbehind `0`。
+
+現在の差分は次に限定される。
+
+- 今回Studyの文書
+- 今回Studyの試験tool
+- 固定opening定義
+- main統合前の整合更新として、ルート`README.md`、`doc/AI_ENGINEERING_INDEX.md`、`doc/ai-engineering/README.md`
+
+`public/`変更、production AI変更、release変更、本番配信変更は0件。mainへの統合はまだ行っていない。
+
 ## Closure
 
 closure記録:
@@ -100,9 +131,7 @@ closure記録:
 - `FORMAL_TECHNICAL_AUDIT.md`
 - `CLOSURE_AUDIT.md`
 
-mainとの差分監査では、本Study文書・試験tool・固定opening定義のみが追加され、`public/`変更は0件だった。ローカル最終 `git status --short` も空だった。
-
-本Studyは **`COMPLETED / CLOSED`** とする。
+本Studyは **`COMPLETED / CLOSED`**。pre-main documentation auditもPASSとする。
 
 ## 非採用境界
 
