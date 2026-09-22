@@ -12,6 +12,36 @@ function parseRetryAfter(value,now){
  if(Number.isFinite(seconds)&&seconds>=0)return seconds*1000;
  const date=Date.parse(value);return Number.isFinite(date)?Math.max(0,date-now):0;
 }
+function assertNoDuplicateKeys(text){
+ let i=0;const n=text.length;
+ const ws=()=>{while(i<n&&/\s/.test(text[i]))i++;};
+ function stringToken(){
+  C.assert(text[i]==='"','RAW_JSON_SCAN_ERROR');const start=i++;
+  while(i<n){const ch=text[i++];if(ch==='\\'){C.assert(i<n,'RAW_JSON_SCAN_ERROR');i++;continue;}if(ch==='"')return text.slice(start,i);}
+  throw new Error('RAW_JSON_SCAN_ERROR');
+ }
+ function value(){
+  ws();const ch=text[i];
+  if(ch==='{'){object();return;}if(ch==='['){array();return;}if(ch==='"'){stringToken();return;}
+  const start=i;while(i<n&&!/[\s,\]}]/.test(text[i]))i++;C.assert(i>start,'RAW_JSON_SCAN_ERROR');
+ }
+ function object(){
+  C.assert(text[i++]==='{','RAW_JSON_SCAN_ERROR');ws();const seen=new Set();if(text[i]==='}'){i++;return;}
+  while(true){
+   ws();const token=stringToken(),key=JSON.parse(token);C.assert(!seen.has(key),'DUPLICATE_JSON_KEY');seen.add(key);ws();C.assert(text[i++]===':','RAW_JSON_SCAN_ERROR');value();ws();
+   if(text[i]===','){i++;continue;}C.assert(text[i]==='}','RAW_JSON_SCAN_ERROR');i++;return;
+  }
+ }
+ function array(){
+  C.assert(text[i++]==='[','RAW_JSON_SCAN_ERROR');ws();if(text[i]===']'){i++;return;}
+  while(true){value();ws();if(text[i]===','){i++;continue;}C.assert(text[i]===']','RAW_JSON_SCAN_ERROR');i++;return;}
+ }
+ value();ws();C.assert(i===n,'RAW_JSON_SCAN_ERROR');return true;
+}
+function strictParseResponse(text){
+ let data;try{data=JSON.parse(text);}catch{const e=new Error('INVALID_JSON');throw e;}
+ assertNoDuplicateKeys(text);return data;
+}
 function verifySaved(ledger,root,id,packet,{repair=true}={}){
  const f=files(root,id),record=ledger.records.get(id),bodyText=JSON.stringify(packet.body),requestHash=C.sha256(bodyText);
  C.assert(record&&record.requestHash===requestHash,'SAVED_RESERVATION_MISMATCH');
@@ -51,7 +81,7 @@ function createClient(ledger,root,apiKey,{transport=globalThis.fetch,now=Date.no
    statusCode=response.status;retryAfterMs=parseRetryAfter(response.headers?.get?.('retry-after'),now());
    if(!response.ok){if(response.body)try{await response.body.cancel();}catch{}result={status:'http-'+statusCode};}
    else{
-    try{data=await response.json();}catch(e){result={status:e?.name==='SyntaxError'?'invalid-json':'network-error'};}
+    let raw='';try{raw=await response.text();data=strictParseResponse(raw);}catch(e){result={status:e?.message==='DUPLICATE_JSON_KEY'||e?.message==='RAW_JSON_SCAN_ERROR'?'invalid-response':'invalid-json'};}
     if(!result){
      try{const checked=C.validateResponse(data,packet);result={status:'ok',candidateId:checked.candidateId,move:checked.move,moveKey:checked.moveKey,confidence:checked.confidence,response:checked.response};}
      catch(e){result={status:e.message==='MODEL_MISMATCH'?'model-mismatch':'invalid-response'};}
@@ -84,4 +114,4 @@ function createClient(ledger,root,apiKey,{transport=globalThis.fetch,now=Date.no
   throw stop('ATTEMPTS-EXHAUSTED',{apiStatus:second.status});
  }};
 }
-module.exports={createClient,verifySaved,files,retryable,stop};
+module.exports={createClient,verifySaved,files,retryable,stop,assertNoDuplicateKeys,strictParseResponse};
