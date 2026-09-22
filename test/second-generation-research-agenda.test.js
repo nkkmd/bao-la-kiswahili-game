@@ -5,48 +5,42 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "..");
-const agenda = fs.readFileSync(path.join(ROOT, "doc/FUTURE_RESEARCH_AGENDA.md"), "utf8");
-const index = fs.readFileSync(path.join(ROOT, "doc/RESEARCH_INDEX.md"), "utf8");
+const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8");
+const agenda = read("doc/FUTURE_RESEARCH_AGENDA.md");
+const index = read("doc/RESEARCH_INDEX.md");
+const synthesis = read("doc/research-generation-2/FINAL_SYNTHESIS.md");
+const programDecision = read("doc/research-program-decisions/2026-08-26-second-generation-pure-research-agenda.md");
 
 // This is a Generation-2 content-preservation audit, not a pin on the
-// repository-wide agenda version. Later research generations may legitimately
-// advance FUTURE_RESEARCH_AGENDA.md beyond v2 while the frozen G2 section and
-// its research/engineering separation must remain intact.
+// repository-wide agenda layout. FUTURE_RESEARCH_AGENDA.md is now a current
+// cross-generation agenda, while the closed Generation-2 study inventory and
+// decisions are preserved in FINAL_SYNTHESIS.md and the historical program
+// decision.
 const versionMatch = agenda.match(/^Version:\s*(\d+)\.(\d+)\.(\d+)$/m);
 assert.ok(versionMatch, "FUTURE_RESEARCH_AGENDA.md missing semantic Version line");
 assert.ok(Number(versionMatch[1]) >= 2, "FUTURE_RESEARCH_AGENDA.md regressed below Generation-2 agenda version");
 
-const required = [
-  "Research Generation 2: **Closed (2026-08-31)**",
-  "## 9. 第二世代研究アジェンダ",
-  "第二世代は純粋な研究プログラムとして完結させる。",
-  "G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1",
-  "G2-02 — Search Reliability / Decision Robustness Study 1",
-  "G2-03 — State Transformation Semantics / Canonicalization Validation Study 1",
-  "G2-04 — Restricted Endgame Exact Oracle Expansion Study 1",
-  "G2-05 — Deep RAW State-Space Enumeration Study 1",
-  "G2-06 — Rich Critical-Position Representation Study 1",
-  "G2-07 — Practical Comeback / Reply-Pressure Representation Study 1",
-  "G2-08 — Machine Decision-Failure Taxonomy Study 1",
-  "G2-09 — Tactical Motif Generalization / Counterexample Study 1",
-  "G2-10 — Unified Multiaxial Strategic State Representation Study 1",
-  "G2-11 — Long-Horizon Strategic Transition Structure Study 1",
-  "G2-12 — State-Space / Game-Tree Growth Estimation Study 1",
-  "G2-H01 — Human / Expert Strategic Judgment Study 1",
-  "G2-04はG2-03の成功を前提としない。",
-  "本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。",
-  "public AIの棋力、対局勝率、応答速度、ユーザー体験、deployment成否を研究endpointにしない。",
-  "Agenda上の順序ラベルであり、正式Study IDではない"
-];
-for (const needle of required) {
-  assert.ok(agenda.includes(needle), `FUTURE_RESEARCH_AGENDA.md missing: ${needle}`);
-}
+assert.ok(agenda.includes("Research Generation 2: **Closed (2026-08-31)**"),
+  "FUTURE_RESEARCH_AGENDA.md missing closed Generation-2 status");
+assert.ok(agenda.includes("[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)"),
+  "FUTURE_RESEARCH_AGENDA.md missing Generation-2 synthesis navigation");
 
-const g2 = agenda.slice(agenda.indexOf("## 9. 第二世代研究アジェンダ"));
-assert.ok(!g2.includes("Research-to-AI Translation"), "Generation 2 research agenda must not contain AI-translation study");
-assert.ok(!g2.includes("translationReadiness"), "Generation 2 research agenda must not use AI translation readiness as a scientific construct");
-assert.equal((g2.match(/^#### G2-\d{2} —/gm) || []).length, 12, "expected exactly 12 core G2 studies");
-assert.equal((g2.match(/^#### G2-H01 —/gm) || []).length, 1, "expected one independent human track study");
+assert.ok(synthesis.includes("Core agenda: `G2-01..G2-12`"));
+assert.ok(synthesis.includes("状態: **`PROGRAM CLOSED / INTEGRATED TO MAIN`**"));
+for (let i = 1; i <= 12; i += 1) {
+  const label = `G2-${String(i).padStart(2, "0")}`;
+  assert.ok(synthesis.includes(`| \`${label}\``) || synthesis.includes(`\`${label}\``),
+    `Generation-2 synthesis missing ${label}`);
+}
+assert.ok(synthesis.includes("G2-H01 = DEFERRED / INDEPENDENT / NON-BLOCKING"));
+assert.ok(synthesis.includes("`G2-05` | `DRSSE-STUDY1` | `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`"));
+assert.ok(synthesis.includes("公開AIの棋力・速度・UX・deploymentを研究endpointにしない。"));
+assert.ok(synthesis.includes("RAW state identity = authoritative"));
+
+assert.ok(programDecision.includes("Generation 2 core = G2-01 .. G2-12"));
+assert.ok(programDecision.includes("Human track = G2-H01 (independent / non-blocking)"));
+assert.ok(programDecision.includes("AI improvement = separate engineering program, outside Generation 2 scientific endpoints"));
+assert.ok(programDecision.includes("G2-05 Deep RAW State-Space Enumeration Study 1 closure"));
 
 assert.ok(index.includes("第二世代の純粋研究プログラム"), "RESEARCH_INDEX missing Generation 2 navigation");
 assert.ok(/独立(?:した)?engineering track/.test(index), "RESEARCH_INDEX missing research/AI separation");
