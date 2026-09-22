@@ -21,7 +21,7 @@ class Ledger{
   fs.mkdirSync(dir,{recursive:true,mode:0o700});
   const rows=readLines(this.file);
   if(!rows.length)this.append({type:'init',studyId:C.protocol.id,costManagementId:C.protocol.budget.costManagementId,specHash,
-   rateNano:RAT E_NANO,maxInputTokens:MAX_INPUT_TOKENS,reserveNano:RESERVE_NANO,overallNano:OVERALL_NANO,stageNano:STAGE_NANO});
+   rateNano:RATE_NANO,maxInputTokens:MAX_INPUT_TOKENS,reserveNano:RESERVE_NANO,overallNano:OVERALL_NANO,stageNano:STAGE_NANO});
   else for(const row of rows)this.accept(row);
  }
  accept(row){
