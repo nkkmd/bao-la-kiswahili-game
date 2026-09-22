@@ -4,13 +4,15 @@
 
 ## 状態
 
-**`PILOT-COMPLETE / TECHNICAL-AUDIT-PASS / FORMAL-NOT-AUTHORIZED`**
+**`PILOT-COMPLETE / TECHNICAL-AUDIT-PASS / FORMAL-AUTHORIZED / AWAITING-LOCAL-EXECUTION`**
 
 専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するためのprotocol、fresh openings、無課金QA、費用台帳、resumable client、対局runner、paired statistics、runtime manifestを固定した。
 
-ユーザーは2026年9月22日に有料4局pilotの開始を明示認可し、同じローカルPCでpilotを実行した。4局すべてterminalまで完走し、technical pauseは0件だった。その後 `run.cjs verify` によるローカル再生監査も `VERIFIED` で正常終了した。
+ユーザーは2026年9月22日に有料4局pilotを明示認可して実行し、4局すべてterminalまで完走、technical pause 0。その後 `run.cjs verify` によるローカル再生監査も `VERIFIED` で正常終了した。
 
-formal 64局はまだ認可していない。`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
+続いてユーザーはformal試験開始を明示指示した。formal 32 fresh openings / 64 gamesは認可済みだが、現時点ではまだローカル実行前である。
+
+`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
 
 ## 固定対象
 
@@ -78,6 +80,26 @@ pilot完走後に `node tools/jev-direct-policy/run.cjs verify` を実行し、�
 
 したがってpilot技術監査は `PASS` とする。
 
+## Formal認可
+
+formal開始の明示指示を受け、次を記録した。
+
+```text
+doc/ai-engineering/jev-direct-policy-comparison/FORMAL_AUTHORIZATION.md
+```
+
+認可範囲は32 fresh openings / 64 gamesのみ。追加sample、adaptive extension、opening replacement、public AI採用、本番配信は含まない。
+
+## Formal直前TypeSafe公式再確認
+
+formal開始指示後にTypeSafe公式文書を再確認し、固定条件との不一致はなかった。
+
+- versioned model: `jev-1.13.0`
+- input price: USD 0.042 / 1M input tokens
+- request context: 64k tokens per request; 32k for state plus the longest question
+- Choice limit: 255 options
+- endpoint: `POST https://api.typesafe.ai/v1/systemone`
+
 ## 固定済み試験条件
 
 AI-GEN4:
@@ -107,11 +129,13 @@ formal:
 - 32 fresh openings / 64 games
 - 全openingでside swap
 - Namua 16 / Mtaji 16
+- first-game Jev player: player0 16 / player1 16
 - 途中打切り・adaptive extensionなし
 - 技術停止は敗北として扱わない
 - 全64局が有効terminalでない場合はformal判定を完了しない
 - primary statisticはpaired two-game openingの2-0対0-2に対するtwo-sided exact binomial sign test
-- 現在は未認可
+- alpha 0.05
+- pilot 4局はformal primary inferenceへ含めない
 
 ## 費用境界
 
@@ -123,14 +147,19 @@ formal:
 - contingency: USD 0.15
 - append-only ledger
 - 不確実なrequestは保守的reservationを保持
+- pilot台帳をresetしない
 
 pilot完了時の累積使用額はUSD `0.002129904`。
 
 ## 現在の次gate
 
-pilot技術監査はPASSしたため、formal 32 openings / 64 gamesを実行するための技術条件は満たした。
+前回と同じローカルPCで、まず `git pull --ff-only` と `node tools/jev-direct-policy/run.cjs verify` を実行してfreeze/pilot audit整合性を再確認する。
 
-ただしformalは自動認可しない。ユーザーからformal開始の明示指示を受けた場合のみ、TypeSafe公式のversioned model・料金・API上限を直前再確認し、runtime/opening/spec freeze整合性を確認したうえで、Git管理外の `.live-authorization.json` をformal専用に切り替える。
+その後、Git管理外の `tools/jev-direct-policy/.live-authorization.json` をformal専用へ上書きし、`stage: formal`、固定Study ID / spec hash / openings hashへbindingする。
+
+`TYPESAFE_API_KEY` を環境変数へ設定し、`node tools/jev-direct-policy/run.cjs run formal --live` を実行する。
+
+technical pause、timeout、429、5xx、invalid response、budget stop等が発生した場合は、その時点で停止する。`resume formal --live` は自動実行しない。出力を監査してからresume可否を扱う。
 
 ## 非採用境界
 
