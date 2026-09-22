@@ -4,9 +4,9 @@
 
 ## 状態
 
-`PILOT-COMPLETE / LOCAL-REPLAY-AUDIT-PENDING / FORMAL-NOT-AUTHORIZED`
+`PILOT-COMPLETE / TECHNICAL-AUDIT-PASS / FORMAL-NOT-AUTHORIZED`
 
-この文書は、前回Jev比較と同じローカルPCで実行された有料pilot 4局のrunner出力を記録する。raw request / response / game / ledgerはGit管理外のローカル結果領域に保持されており、formal認可前に`run.cjs verify`による再生監査を行う。
+この文書は、前回Jev比較と同じローカルPCで実行された有料pilot 4局のrunner出力と、その後のローカル再生監査結果を記録する。raw request / response / game / ledgerはGit管理外のローカル結果領域に保持されている。
 
 ## 固定binding
 
@@ -58,17 +58,33 @@ PILOT-COMPLETE
 
 pilot使用額はpilot上限の約2.13%であり、費用gate違反はない。
 
-## 次gate
+## 再生監査
 
-formal認可前にローカルで次を実行する。
+pilot完走後、同じローカルPCで次を実行した。
 
 ```bash
 node tools/jev-direct-policy/run.cjs verify
 ```
 
-このverifyで保存済み全gameをopeningから再生し、各Jev着手についてrequest / saved response / response digest / candidate ID / candidate-set hash / selected move / after-stateを再照合し、費用台帳chainとruntime manifest bindingを確認する。
+verify最終status:
 
-verifyが正常終了してもformal 64局は自動認可しない。formal開始はpilot技術監査後の別gateとする。
+```text
+VERIFIED
+```
+
+保存済み全gameをopeningから再生し、各Jev着手のrequest / saved response / response digest / candidate ID / candidate-set hash / selected move / after-state、および費用台帳chain・runtime manifest・protocol/openings/spec bindingを再照合した。保存済みpilot結果との不整合は検出されなかった。
+
+詳細監査記録:
+
+```text
+doc/ai-engineering/jev-direct-policy-comparison/PILOT_TECHNICAL_AUDIT.md
+```
+
+## 次gate
+
+pilot技術監査はPASSしたため、formal 32 openings / 64 gamesを実行するための技術条件は満たした。
+
+ただしformal 64局は自動認可しない。ユーザーからformal開始の明示指示を受けた場合にのみ、直前のTypeSafe公式仕様再確認、freeze整合性確認、formal専用ローカルauthorizationへの切替を行う。
 
 ## 非採用境界
 
