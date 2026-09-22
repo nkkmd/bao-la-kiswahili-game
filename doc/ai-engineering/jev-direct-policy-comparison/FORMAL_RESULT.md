@@ -4,11 +4,13 @@
 
 ## 状態
 
-**`FORMAL-COMPLETE / FINAL-REPLAY-AUDIT-PENDING`**
+**`FORMAL-COMPLETE / FINAL-REPLAY-AUDIT-PASS / RESULT-CONFIRMED`**
 
 事前固定した32 fresh openings / 64 gamesのformal scheduleは全64局がengine terminalまで完走した。technical pauseは途中3回発生したが、いずれも事前固定したretry設計に従って保存attempt-1を監査し、同一logical moveのattempt-2を最大1回だけ明示認可して回復した。opening replacement、sample extension、adaptive extension、optional stoppingは行っていない。
 
-この文書はrunnerが出力したformal完走時の生集計を記録する。正式判定は、API keyを外した状態で `run.cjs verify` による全保存game / request / response / ledger / bindingの最終再生監査が `VERIFIED` となった後に確定する。
+formal完走後、API keyを外した状態で `run.cjs verify` を実行し、`VERIFIED` を確認した。したがって以下の集計を正式結果として確定する。
+
+正式判定は **`AI-GEN4-SUPERIOR`**。
 
 ## 固定binding
 
@@ -18,7 +20,7 @@
 - runtime manifest hash: `e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154`
 - spec hash: `8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85`
 
-## Formal生集計
+## Formal確定集計
 
 runner最終status:
 
@@ -36,16 +38,18 @@ FORMAL-COMPLETE
 - split 1-1 pairs: 7
 - directional pairs: 25
 - two-sided exact paired sign-test p-value: `5.960464477539063e-8`
+- formal plies: 1,029
 
 Primary statisticは事前固定どおり、各openingのside-swap 2局を1 pairとして、2-0 pairのみ方向付き観測とするtwo-sided exact binomial sign testである。32 pair中、25 pairがAI-GEN4 2-0、0 pairがJev 2-0、7 pairが1-1 splitだった。
 
-このp-valueはrunner生出力と固定統計実装による値であり、最終再生監査PASS後に正式結果として確定する。
+25 directional pairsすべてがAI-GEN4方向であり、two-sided exact p-valueは `2 × (1/2)^25 = 5.960464477539063e-8`。有意水準0.05を下回るため、固定条件における正式判定を `AI-GEN4-SUPERIOR` とする。
 
 ## 費用
 
-formal完走時:
+最終時点:
 
 - cumulative paid requests: 413
+- formal paid requests: 390
 - cumulative reported usage: USD `0.036509592`
 - cumulative estimated/reserved: USD `0.036509592`
 - uncertain reserved: USD `0`
@@ -67,17 +71,28 @@ formal中に3回のretryable technical pauseが発生した。
 
 各attempt-1はHTTP 200で保存され、`invalid-response / retryable: true` としてrequest / response / usage / ledgerへbindingされた。各pause後、API keyを外した状態で `run.cjs verify` を実行して `VERIFIED` を確認し、retry wait経過後に同一logical moveのattempt-2を1回だけ認可した。3件ともattempt-2で回復し、attempt-3は発生していない。
 
-## 最終audit gate
+## 最終audit
 
-formal結果確定前に、API keyを外した状態で次を実行する。
+formal完走後の最終verify:
 
-```bash
-node tools/jev-direct-policy/run.cjs verify
-```
+- status: `VERIFIED`
+- timestamp: `2026-09-22T14:51:53.367Z`
+- pilot: 4 / 4 terminal
+- formal: 64 / 64 terminal
+- total games: 68
+- pilot plies: 74
+- formal plies: 1,029
+- total plies: 1,103
 
-このverifyで64 formal gamesおよび4 pilot gamesをopeningから再生し、保存request / response / response digest / candidate binding / selected move / after-state / ledger chain / runtime manifest / protocol / openings / spec bindingを再照合する。
+保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
 
-`VERIFIED` を確認した後にのみformal technical auditをPASSとし、事前固定したprimary resultを確定する。
+technical auditは `PASS`。詳細は `FORMAL_TECHNICAL_AUDIT.md` を参照する。
+
+## 解釈
+
+この正式結果は、今回固定した `jev-1.13.0` Direct Policy入力形式・prompt・候補表現・Baoエンジンbindingの条件において、AI-GEN4 expert standardの対局成績が有意に良かったことを示す。
+
+Jev一般、別model version、別prompt、別統合方式へは一般化しない。また本比較はcompute-equalではない。
 
 ## 非採用境界
 
