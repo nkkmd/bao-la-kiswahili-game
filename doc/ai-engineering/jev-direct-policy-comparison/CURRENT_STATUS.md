@@ -4,13 +4,15 @@
 
 ## 状態
 
-**`FORMAL-COMPLETE / RESULT-CONFIRMED / AUDIT-PASS / ARCHIVE-CLOSURE-PENDING`**
+**`COMPLETED / CLOSED / AUDIT-PASS`**
 
-Jev Direct PolicyとAI-GEN4 expert standardのformal比較は完了し、最終 `run.cjs verify` も `VERIFIED`。正式判定は **`AI-GEN4-SUPERIOR`** と確定した。
+Jev Direct PolicyとAI-GEN4 expert standardの比較Studyは完了した。
 
-ただし最終GitHub差分監査で、実対局に使用したローカル生成ファイル `tools/jev-direct-policy/design/openings.json` と `tools/jev-direct-policy/design/opening-verification.json` がまだbranchへ保存されていないことを確認した。`openingsHash` は最終verifyで一致しているため結果の妥当性は変わらないが、exact opening setの将来再現性を確保するため、この2ファイルを内容変更せずcommitするまでStudyのarchive closureは保留する。
+正式64局はすべてengine terminalまで完走し、最終 `run.cjs verify` も `VERIFIED`。実試験に使用した生成opening定義も専用branchへ固定し、その後の再verifyでbinding不変を確認した。closure auditも完了している。
 
-`public/`、main、AI-GEN4、release、本番配信状態は変更していない。`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持する。
+正式判定は **`AI-GEN4-SUPERIOR`**。
+
+`public/`、main、AI-GEN4、release、本番配信状態は変更していない。**`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`** を維持する。
 
 ## 固定binding
 
@@ -23,35 +25,48 @@ Jev Direct PolicyとAI-GEN4 expert standardのformal比較は完了し、最終 
 
 ## Formal確定結果
 
-- planned / terminal games: 64 / 64
-- Jev Direct Policy wins: 7
-- AI-GEN4 wins: 57
-- Jev 2-0 pairs: 0
-- AI-GEN4 2-0 pairs: 25
-- split 1-1 pairs: 7
-- incomplete pairs: 0
-- directional pairs: 25
-- formal plies: 1,029
+- planned / terminal games: `64 / 64`
+- Jev Direct Policy wins: `7`
+- AI-GEN4 wins: `57`
+- Jev 2-0 pairs: `0`
+- AI-GEN4 2-0 pairs: `25`
+- split 1-1 pairs: `7`
+- incomplete pairs: `0`
+- directional pairs: `25`
+- formal plies: `1029`
 - two-sided exact paired sign-test p-value: `5.960464477539063e-8`
-- alpha: 0.05
-- 正式判定: `AI-GEN4-SUPERIOR`
+- alpha: `0.05`
+- 正式判定: **`AI-GEN4-SUPERIOR`**
 
 この判定は今回固定した `jev-1.13.0` Direct Policy方式に限定する。Jev一般、別model version、別prompt、別統合方式へは一般化しない。本比較はcompute-equalでもない。
 
 ## 最終再生監査
 
-formal完走後、API keyを外して `node tools/jev-direct-policy/run.cjs verify` を実行した。
+formal完走後およびopening定義固定後に、API keyを外して `node tools/jev-direct-policy/run.cjs verify` を実行した。
+
+最終確認:
 
 - status: `VERIFIED`
-- timestamp: `2026-09-22T14:51:53.367Z`
-- pilot: 4 / 4 terminal
-- formal: 64 / 64 terminal
-- total games: 68
-- pilot plies: 74
-- formal plies: 1,029
-- total plies: 1,103
+- timestamp: `2026-09-22T15:01:20.844Z`
+- pilot: `4 / 4` terminal
+- formal: `64 / 64` terminal
+- total games: `68`
+- pilot plies: `74`
+- formal plies: `1029`
+- total plies: `1103`
 
-保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。technical auditは `AUDIT-PASS`。
+保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
+
+## Opening archive
+
+実対局に使用した生成opening定義を次のcommitで固定済み。
+
+- commit: `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`
+- message: `test(jev-direct): freeze generated openings`
+- `tools/jev-direct-policy/design/openings.json`
+- `tools/jev-direct-policy/design/opening-verification.json`
+
+`opening-verification.json` は Namua 16 / Mtaji 16、formal 32 pairs / 64 games、first-game Jev player 16 / 16、前Study opening 34件除外、固定openings hash一致を記録する。
 
 ## Technical pauses
 
@@ -65,25 +80,29 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 ## 費用
 
-- cumulative paid requests: 413
-- cumulative reported usage: USD `0.036509592`
-- pilot stage: USD `0.002129904`
-- formal stage: USD `0.034379688`
-- uncertain reserved: USD `0`
-- ledger halted: false
-- overall hard limit: USD `1.00`
-- formal hard limit: USD `0.75`
+- cumulative paid requests: `413`
+- cumulative reported usage USD: `0.036509592`
+- pilot stage USD: `0.002129904`
+- formal stage USD: `0.034379688`
+- uncertain reserved USD: `0`
+- ledger halted: `false`
+- overall hard limit USD: `1.00`
+- formal hard limit USD: `0.75`
 
 費用gate違反はない。
 
-## Archive closure前の残作業
+## Closure
 
-ローカルで実際に使用した次の2ファイルを内容変更せず専用branchへcommitする。
+closure記録:
 
-- `tools/jev-direct-policy/design/openings.json`
-- `tools/jev-direct-policy/design/opening-verification.json`
+- `FINAL_REPORT.md`
+- `FORMAL_RESULT.md`
+- `FORMAL_TECHNICAL_AUDIT.md`
+- `CLOSURE_AUDIT.md`
 
-commit後に `run.cjs verify` を再実行し、`openingsHash`とspec bindingが変わらないことを確認する。その後、branch差分と文書整合を最終監査して `COMPLETED / CLOSED` とする。
+mainとの差分監査では、本Study文書・試験tool・固定opening定義のみが追加され、`public/`変更は0件だった。ローカル最終 `git status --short` も空だった。
+
+本Studyは **`COMPLETED / CLOSED`** とする。
 
 ## 非採用境界
 
