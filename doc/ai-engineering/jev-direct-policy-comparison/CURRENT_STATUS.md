@@ -4,17 +4,13 @@
 
 ## 状態
 
-**`FORMAL-PAUSED / ATTEMPT-1-AUDITED / RESUME-003-AUTHORIZED`**
+**`FORMAL-COMPLETE / FINAL-REPLAY-AUDIT-PENDING`**
 
-専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するformal 32 fresh openings / 64 gamesを実行中である。
+専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するformal 32 fresh openings / 64 gamesは全64局がengine terminalまで完走した。
 
-pilot 4局は完走しtechnical audit PASS済み。formalは明示認可後に開始し、Pause 001 / Resume 001およびPause 002 / Resume 002を事前固定のretry設計に従って処理した。いずれのresumeも同一logical moveのattempt-2を1回だけ認可し、正常に回復した。
+pilot 4局は完走しtechnical audit PASS済み。formalは明示認可後に開始し、途中3回のretryable technical pauseを事前固定のretry設計に従って処理した。各pauseではAPI keyを外した状態で保存attempt-1とledger bindingを監査し、retry wait経過後に同一logical moveのattempt-2を最大1回だけ明示認可した。3件ともattempt-2で正常回復し、attempt-3、opening replacement、sample extension、adaptive extension、optional stoppingは行っていない。
 
-Resume 002後、formalは52局terminalまで進行した。その後、53局目 `direct-v1-formal-pair-17-game-0` のply 3で新しいretryable attempt-1が発生し、minimum retry wait未経過のためrunnerが `RETRY-WAIT` で安全停止した。
-
-その後API keyを外した状態で `run.cjs verify` を再実行し `VERIFIED` を確認した。保存済みattempt-1は HTTP 200、`invalid-response / retryable: true` としてrequest、response、usage、費用台帳へ正しくbindingされていた。retryNotBefore経過も確認したため、`FORMAL_RESUME_AUTHORIZATION_003.md` によりPause 003対象のattempt-2を最大1回だけ認可した。
-
-この停止は技術停止であり敗北として扱わない。formalは未完了であり、途中統計から正式な棋力結論を出さない。
+formal runner最終statusは `FORMAL-COMPLETE`。生集計は `FORMAL_RESULT.md` に記録済み。現在は全64 formal gamesを含む最終再生監査待ちであり、監査PASS前には最終判定を確定しない。
 
 `public/`、main、AI-GEN4、release、本番配信状態は変更していない。
 
@@ -38,7 +34,7 @@ Resume 002後、formalは52局terminalまで進行した。その後、53局目 
 
 pilotはformal primary inferenceへ含めない。
 
-## Formal認可
+## Formal認可・設計
 
 `FORMAL_AUTHORIZATION.md` により32 fresh openings / 64 gamesのみ認可済み。
 
@@ -49,71 +45,66 @@ pilotはformal primary inferenceへ含めない。
 - adaptive/sample extensionなし
 - optional stoppingなし
 - pilot結果はformal primary inferenceへ不算入
-- 全64局が有効terminalでない限りformal判定を完了しない
+- primary statistic: paired two-game openingの2-0対0-2に対するtwo-sided exact binomial sign test
+- alpha: 0.05
 
-## Pause 001 / Resume 001
+## Formal technical pauses / resumes
+
+### Pause 001 / Resume 001
 
 36局terminal完了後、`direct-v1-formal-pair-11-game-0` ply 2で `API-PAUSED / invalid-response`。
 
-API keyを外した状態で `run.cjs verify` が `VERIFIED`、保存attempt-1がHTTP 200 / `invalid-response / retryable: true` として正しくbindingされていることとretry wait経過を確認した後、`FORMAL_RESUME_AUTHORIZATION_001.md` によりattempt-2を最大1回認可した。
+API keyを外した状態で `run.cjs verify` が `VERIFIED`、保存attempt-1がHTTP 200 / `invalid-response / retryable: true` として正しくbindingされていることとretry wait経過を確認した後、attempt-2を最大1回認可。正常回復。
 
-Resume 001のattempt-2は正常に回復し、当該gameは24 pliesでterminal。その後も固定scheduleを継続した。
+### Pause 002 / Resume 002
 
-## Pause 002 / Resume 002
+49局terminal完了後、`direct-v1-formal-pair-26-game-1` ply 5で `RETRY-WAIT`。
 
-49局terminal完了後、50局目 `direct-v1-formal-pair-26-game-1` ply 5で `RETRY-WAIT`。
+保存attempt-1を監査し、HTTP 200 / `invalid-response / retryable: true`、request hash、usage、費用台帳、runtime/opening/spec bindingに不整合がないことを確認。retry wait経過後にattempt-2を最大1回認可。正常回復。
 
-保存attempt-1を監査し、HTTP 200 / `invalid-response / retryable: true`、request hash、usage、費用台帳、runtime/opening/spec bindingに不整合がないことを確認した。retryNotBefore経過後、`FORMAL_RESUME_AUTHORIZATION_002.md` によりattempt-2を最大1回認可した。
+### Pause 003 / Resume 003
 
-Resume 002のattempt-2は正常に回復し、当該gameは23 pliesでterminal。その後 `formal-opening-06` の2局もterminalまで完走した。
+52局terminal完了後、`direct-v1-formal-pair-17-game-0` ply 3で `RETRY-WAIT`。
 
-## Pause 003 / Resume 003
+保存attempt-1を監査し、HTTP 200 / `invalid-response / retryable: true`、request hash `ba2dc5a4186939029fb86565f12b1b49d0a12186335fe268c660a09f4b7a9012`、usage、費用台帳、runtime/opening/spec bindingに不整合がないことを確認。retry wait経過後にattempt-2を最大1回認可。正常回復。
+
+3件ともattempt-3は発生していない。
+
+## Formal完走時の生集計
 
 記録:
 
-- `doc/ai-engineering/jev-direct-policy-comparison/FORMAL_PAUSE_003.md`
-- `doc/ai-engineering/jev-direct-policy-comparison/FORMAL_RESUME_AUTHORIZATION_003.md`
+```text
+doc/ai-engineering/jev-direct-policy-comparison/FORMAL_RESULT.md
+```
 
-52局terminal完了後、53局目 `direct-v1-formal-pair-17-game-0` のply 3で停止した。
+runner最終status:
 
-- pause code: `RETRY-WAIT`
-- logical attempt-1 ID: `direct-v1-formal-pair-17-game-0-ply-3-attempt-1`
-- request hash: `ba2dc5a4186939029fb86565f12b1b49d0a12186335fe268c660a09f4b7a9012`
-- HTTP status: `200`
-- saved status: `invalid-response`
-- retryable: `true`
-- input tokens: `2366`
-- output tokens: `143`
-- retryNotBefore: `2026-09-22 23:41:58.855 +09:00`
+```text
+FORMAL-COMPLETE
+```
 
-API keyを外した状態で `run.cjs verify` は `VERIFIED`。attempt-1の保存response、request hash、usage、費用台帳、runtime/opening/spec bindingに不整合はなかった。retryNotBefore経過も確認済み。
-
-そのため `FORMAL_RESUME_AUTHORIZATION_003.md` により、同一logical moveのattempt-2を最大1回だけ `resume formal --live` で実行することを認可した。
-
-attempt-2成功後は、事前固定済みformal scheduleの残りをそのまま継続してよい。attempt-2も失敗した場合は停止し、attempt-3以降は認可しない。
-
-Pause 003時点の途中集計:
-
-- formal terminal games: 52
-- Jev Direct Policy wins: 6
-- AI-GEN4 wins: 46
+- planned games: 64
+- terminal games: 64
+- Jev Direct Policy wins: 7
+- AI-GEN4 wins: 57
 - Jev 2-0 pairs: 0
-- AI-GEN4 2-0 pairs: 20
-- split pairs: 6
-- incomplete pairs: 1
-- directional pairs: 20
-- interim p-value: `0.0000019073486328125`
+- AI-GEN4 2-0 pairs: 25
+- split 1-1 pairs: 7
+- incomplete pairs: 0
+- directional pairs: 25
+- two-sided exact paired sign-test p-value: `5.960464477539063e-8`
 
-このinterim p-valueは正式結論に使用しない。
+この値は最終runner生出力であり、全保存結果の最終再生監査PASS後に正式結果として確定する。
 
 ## 費用
 
-Pause 003時点:
+formal完走時:
 
-- cumulative paid requests: 344
-- cumulative reported usage: USD `0.030748368`
+- cumulative paid requests: 413
+- cumulative reported usage: USD `0.036509592`
 - pilot stage usage: USD `0.002129904`
-- formal stage usage: USD `0.028618464`
+- formal stage usage: USD `0.034379688`
 - uncertain reserved: USD `0`
 - overall hard limit: USD `1.00`
 - formal hard limit: USD `0.75`
@@ -121,25 +112,18 @@ Pause 003時点:
 
 費用gate違反はない。
 
-## 現在の次操作
+## 現在の次gate
 
-同じローカルPCでbranchを最新化し、API keyを環境変数へ設定したうえで次を実行する。
+API keyを外した状態で、同じローカルPCから次を実行する。
 
 ```bash
-node tools/jev-direct-policy/run.cjs resume formal --live
+node tools/jev-direct-policy/run.cjs verify
 ```
 
-終了後はAPI keyをunsetする。再度technical pauseが発生した場合は、その場で停止して出力を監査する。
+このverifyで64 formal gamesおよび4 pilot gamesをopeningから再生し、保存request / response / response digest / candidate ID / candidate-set hash / selected move / after-state、費用台帳chain、runtime manifest、protocol/openings/spec bindingを再照合する。
 
-禁止事項:
-
-- attempt-3以降
-- opening replacement
-- sample extension
-- adaptive extension
-- optional stopping / early conclusion
-- runtime / protocol / openings変更
+`VERIFIED` を確認した後にformal technical auditをPASSとし、事前固定したprimary resultを正式確定する。
 
 ## 非採用境界
 
-`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持する。本Studyの結果にかかわらず、公開AI採用、AI-GEN4置換、AI世代変更、本番配信へ直接進まない。
+`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持する。本Studyの結果にかかわらず、このStudy単独から公開AI採用、AI-GEN4置換、AI世代変更、本番配信へ直接進まない。
