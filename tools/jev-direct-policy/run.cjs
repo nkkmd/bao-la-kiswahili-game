@@ -11,7 +11,7 @@ const T=require('./stats.cjs');
 const repo=path.resolve(__dirname,'../..');
 const designFile=path.join(__dirname,'design','openings.json');
 const manifestFile=path.join(__dirname,'runtime-manifest.json');
-const authorizationFile=path.join(__dirname,'authorization.json');
+const authorizationFile=path.join(__dirname,'.live-authorization.json');
 const resultsRoot=path.join(__dirname,'results','direct-policy-v1');
 const ledgerDir=path.join(repo,'.git','jev-direct-policy',C.protocol.budget.costManagementId);
 const read=file=>JSON.parse(fs.readFileSync(file,'utf8'));
@@ -137,7 +137,7 @@ async function runStage(O,spec,ledger,engine,client,stage,{allowRetry=false,log=
 }
 async function main(){
  const args=process.argv.slice(2),cmd=args[0]||'help';
- if(cmd==='help'){console.log('Offline: status / verify / unlock-stale\nPaid (requires committed authorization.json): run pilot --live | resume pilot --live | run formal --live | resume formal --live');return;}
+ if(cmd==='help'){console.log('Offline: status / verify / unlock-stale\nPaid (requires local ignored .live-authorization.json): run pilot --live | resume pilot --live | run formal --live | resume formal --live');return;}
  const O=verifyOpenings(),M=verifyManifest(),spec=specification(O,M),engine=C.makeEngine(repo);checkEnvironment();
  if(cmd==='unlock-stale'){console.log(JSON.stringify({unlocked:B.unlockStale(ledgerDir)}));return;}
  if(cmd==='status'||cmd==='verify'){const ledger=new B.Ledger(ledgerDir,spec.specHash),r=report(O,spec,ledger,engine,cmd==='verify'?'VERIFIED':'STATUS');console.log(JSON.stringify(r,null,2));return;}
