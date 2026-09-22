@@ -4,7 +4,7 @@
 - 費用管理ID: `JEV-BAO-DIRECT-20260922`
 - 基準commit: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - 実施branch: `experiment/jev-direct-policy-20260922`
-- 状態: **IMPLEMENTATION / LIVE-GATE-CLOSED**
+- 状態: **RUNTIME-FROZEN / PAID-PILOT-NOT-AUTHORIZED**
 
 ## 目的
 
@@ -37,7 +37,7 @@ Jevへ任せる処理:
 
 ## 比較対象
 
-AI-GEN4側は以下へ固定する。
+AI-GEN4側:
 
 - `AI-GEN4-RELEASE-001`
 - expert / ビングワ
@@ -46,34 +46,73 @@ AI-GEN4側は以下へ固定する。
 - `maxDepth = 12`
 - `timeLimitMs = 2000`
 
-Jev側には棋力評価上の2秒制限を置かない。通信異常検出用watchdogは別物として扱う。
+Jev側には棋力評価上の2秒制限を置かない。5分watchdogは通信異常検出用であり棋力上の持ち時間ではない。
 
-## 現在許可される操作
+## 固定hash
 
-現段階では無課金操作だけを許可する。
+```text
+openingsHash = 65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882
+protocolHash = 90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81
+runtimeManifestHash = e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154
+```
+
+`runtime-manifest.json`がlive pathの実装hashを固定する。対象ファイルが変更された場合、runnerは停止する。
+
+## 無課金確認
+
+以下は実Jev APIを呼ばない。
 
 ```bash
 node tools/jev-direct-policy/mock-qa.cjs
-node tools/jev-direct-policy/build-openings.cjs
 node tools/jev-direct-policy/preflight.cjs
+node tools/jev-direct-policy/runner-qa.cjs
+node tools/jev-direct-policy/freeze-runtime.cjs
 ```
 
-`build-openings.cjs`はJev APIを呼ばず、Baoエンジンだけでfresh openingを生成する。生成した`design/openings.json`は有料pilot前にレビューし、hashを最終プロトコルへ固定する。
+`build-openings.cjs`は設計生成用であり、`design/openings.json`が既にfreeze済みのため通常は再実行しない。
 
 ## 有料APIの安全境界
 
-現時点では **有料live runnerを有効化しない**。有料pilotへ進む前に、少なくとも次を別gateで満たす。
+有料live実行には、固定runtimeと一致するローカル専用認可ファイルが必要。
 
-1. 同一ローカル環境の照合
-2. fresh opening 34局面の固定・再生検証
-3. Jevモデル・API仕様・料金の公式情報再確認
-4. protocol / implementation / openings hash固定
-5. 予算上限の固定
-6. mock QAとpreflightのPASS
-7. ユーザーによる明示的なpilot開始指示
+```text
+tools/jev-direct-policy/.live-authorization.json
+```
 
-APIキーはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
+このファイルは`.gitignore`対象でありGit管理しない。現在は作成していないため、pilotは未認可。
+
+さらに以下を要求する。
+
+1. 前回と同一ローカル環境
+2. fixed openings / protocol / runtime manifestの一致
+3. Jev model / API仕様 / 料金の直前公式再確認
+4. stage別費用上限
+5. `TYPESAFE_API_KEY`は環境変数のみ
+6. userによる明示的なpilot開始指示
+
+API keyはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
+
+## retry / resume
+
+- automatic retryなし
+- 同一logical move最大2 paid attempts
+- retryable failure後は一度停止
+- attempt 2は明示的`resume`と待機時間を要求
+- request bytes / candidate set / response / selected moveを再照合
+- 技術失敗を対局敗北へ変換しない
+
+## formal design
+
+- pilot: 2 openings × side swap = 4 games
+- formal: 32 fresh openings × side swap = 64 games
+- Namua 16 / Mtaji 16
+- adaptive extension / optional stoppingなし
+- primary statistic: paired openingの2-0対0-2に対するtwo-sided exact binomial sign test
 
 ## 前回Studyとの境界
 
 `tools/jev-comparison/` と `doc/ai-engineering/jev-ai-gen4-comparison/` は完了済み `JEV-BAO-STRENGTH-20260921-v1` のarchiveであり、このStudyから変更しない。前回64局や費用台帳を今回へ合算しない。
+
+## 非採用境界
+
+`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`。本Studyの結果だけを根拠に公開AI採用、AI-GEN4置換、AI世代更新、本番配信を行わない。
