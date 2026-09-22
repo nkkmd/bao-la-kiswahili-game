@@ -230,7 +230,7 @@ engine score -> validated Bao win probability = NOT AUTHORIZED
 
 ## 7. 完了済みプログラムと新規作業の境界
 
-`PBAI-P1`〜`PBAI-P11`に進行中の正式試験はありません。`PBAI-P3-C`では、結果を見る前に次を固定しました。
+`PBAI-P1`〜`PBAI-P12`に進行中の正式試験はありません。`PBAI-P3-C`では、結果を見る前に次を固定しました。
 
 1. candidate inventoryとmechanism
 2. development / validation / release holdoutのfresh split
