@@ -4,11 +4,13 @@
 
 ## 状態
 
-**`FORMAL-PAUSED / RETRYABLE-INVALID-RESPONSE / RESUME-PENDING-AUDIT`**
+**`FORMAL-PAUSED / ATTEMPT-1-AUDITED / RESUME-001-AUTHORIZED`**
 
 専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するformal 32 fresh openings / 64 gamesを実行中である。
 
 pilot 4局は完走しtechnical audit PASS済み。formalも明示認可後に開始したが、36局terminal完了後、`direct-v1-formal-pair-11-game-0` のply 2でJev API応答がstrict validatorを満たさず、runnerが`API-PAUSED`で安全停止した。
+
+その後、API keyを外した状態で `run.cjs verify` を再実行し `VERIFIED` を確認し、保存済みattempt-1が `invalid-response / retryable: true` としてrequest、response、費用台帳へbindingされていることを確認した。retry waitも経過したため、`FORMAL_RESUME_AUTHORIZATION_001.md` によりattempt-2を1回だけ認可した。
 
 この停止は技術停止であり敗北として扱わない。formalは未完了であり、途中結果から正式な棋力結論を出さない。
 
@@ -38,17 +40,20 @@ pilotはformal primary inferenceへ含めない。
 
 記録:
 
-```text
-doc/ai-engineering/jev-direct-policy-comparison/FORMAL_PAUSE_001.md
-```
+- `doc/ai-engineering/jev-direct-policy-comparison/FORMAL_PAUSE_001.md`
+- `doc/ai-engineering/jev-direct-policy-comparison/FORMAL_RESUME_AUTHORIZATION_001.md`
+
+停止時点:
 
 - terminal games: 36
 - paused game: `direct-v1-formal-pair-11-game-0`
 - paused ply: 2
 - pause code: `API-PAUSED`
 - api status: `invalid-response`
-- retryNotBefore epoch ms: `1790086596778`
-- retryNotBefore (Asia/Tokyo): `2026-09-22 23:16:36.778 +09:00`
+- attempt-1 HTTP status: `200`
+- attempt-1 request hash: `e03f26796fd481e50adb1ce5ec86faaefb1db16f6eb85cd536da40a23de6ae77`
+- attempt-1 retryable: `true`
+- retryNotBefore: `2026-09-22 23:16:36.778 +09:00`
 - formal Jev wins among completed games: 5
 - formal AI-GEN4 wins among completed games: 31
 - Jev 2-0 pairs: 0
@@ -72,18 +77,32 @@ interim p-valueは正式結論に使用しない。事前固定どおりoptional
 
 費用gate違反はない。
 
-## Retry設計
+## Resume 001
 
-固定runnerでは`invalid-response`はretryable technical statusである。同一logical moveは最大2 paid attemptsで、automatic retryは禁止されている。
+`FORMAL_RESUME_AUTHORIZATION_001.md`により、停止した同一logical moveについてattempt-2を最大1回だけ `resume formal --live` で実行することを認可した。
 
-attempt 2は以下をすべて満たした場合だけ`resume formal --live`で実行する。
+attempt-2成功後は、事前固定済みのformal scheduleをそのまま継続してよい。
 
-1. retry wait経過
-2. API keyを外した状態で`run.cjs verify`が正常終了
-3. 保存済みattempt-1が`invalid-response`として台帳・response記録にbindingされていることを確認
-4. runtime/opening/spec freezeに不整合がないことを確認
+禁止事項:
 
-resumeは同じlogical move / 同じrequest bodyを再利用し、opening replacementやsample extensionは行わない。
+- attempt-3以降
+- opening replacement
+- sample extension
+- adaptive extension
+- early conclusion / optional stopping
+- runtime / protocol / openings変更
+
+attempt-2も失敗した場合は停止し、追加再試行は認可しない。
+
+## 次の操作
+
+同じローカルPCでbranchを最新化し、API keyを環境変数へ設定したうえで次を実行する。
+
+```bash
+node tools/jev-direct-policy/run.cjs resume formal --live
+```
+
+終了後はAPI keyをunsetする。再度technical pauseが発生した場合は、その場で停止して出力を監査する。
 
 ## 非採用境界
 
