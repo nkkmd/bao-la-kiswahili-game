@@ -74,7 +74,7 @@ function requestFor(engine,state){
  const body={
   model:protocol.jev.model,
   state:{rules,rootPlayer:state.player,current:clone(state),candidates},
-  questions:{move:{type:'choice',instructions:'Choose the one supplied legal candidate you would actually play for rootPlayer against a strong resisting opponent. Select exactly one supplied candidate. The supplied legal moves and exact after-states are authoritative outputs of the Bao engine. Do not invent, reconstruct, or substitute another move. Your selected candidate will be executed directly and no downstream search AI will override it. Compare the candidates using tactical judgment, strategic judgment, and future resistance. If an authoritative after-state is an immediate terminal win for rootPlayer, treat that as a completed win when choosing. Do not assume the player to move in an after-state is rootPlayer.',criteria}}
+  questions:{move:{type:'choice',instructions:protocol.jev.instructions,criteria}}
  };
  assert(Buffer.byteLength(JSON.stringify(body),'utf8')<=protocol.jev.requestByteSafetyLimit,'REQUEST_SIZE_LIMIT');
  return{body,moveById,candidateIds:rows.map(r=>r.id),stateHash,candidateSetHash:sha256(rows.map(r=>({id:r.id,key:r.key,move:sha256(r.move),after:sha256(r.after)})))};
