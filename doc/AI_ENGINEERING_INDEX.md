@@ -15,9 +15,23 @@
 
 ## 完了済みのJev比較試験
 
-2026年9月22日、`JEV-BAO-STRENGTH-20260921-v1`でJevの候補手順序付けを追加したAI-GEN4とAI-GEN4単独を比較した。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`である。優劣を確認できなかったことを示すが、同等性の証明ではない。
+2026年9月22日、JevとAI-GEN4の比較を2つの独立Studyとして完了した。いずれも`PBAI-P13`や公開候補の採用評価ではなく、比較・記録のみを目的とする。公開AIは`AI-GEN4 / AI-GEN4-RELEASE-001`、P1〜P12の正式判断も維持する。
 
-この試験は`PBAI-P13`や公開候補の採用評価ではない。当初の範囲どおり結果にかかわらずJev組込版を公開AIに採用せず、追加の有料API呼出しを禁止して終了した。公開AIは`AI-GEN4 / AI-GEN4-RELEASE-001`、P1〜P12の判断はそのまま保持する。[最終報告・費用・保存状態](ai-engineering/jev-ai-gen4-comparison/README.md)を参照する。
+### `JEV-BAO-STRENGTH-20260921-v1` — root move ordering
+
+Jevの候補手順序付けを追加したAI-GEN4とAI-GEN4単独を比較した。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`である。優劣を確認できなかったことを示すが、同等性の証明ではない。
+
+当初の範囲どおり結果にかかわらずJev組込版を公開AIに採用せず、追加の有料API呼出しを禁止して終了した。[最終報告・費用・保存状態](ai-engineering/jev-ai-gen4-comparison/README.md)を参照する。
+
+### `JEV-BAO-DIRECT-POLICY-20260922-v1` — Direct Policy
+
+前Studyとは独立に、Baoエンジンが合法variantとexact after-stateを固定し、その合法集合からJevが最終着手を直接選択する方式を比較した。Jev選択後にAI-GEN4探索で上書きしない。
+
+formal 32 fresh openings × side swap = 64局は全局terminalまで完走した。Jev Direct Policy 7勝、AI-GEN4 57勝。pair単位ではAI-GEN4の2-0が25、Jevの2-0が0、1-1 splitが7で、two-sided exact paired sign testは`p = 5.960464477539063e-8`。固定条件における正式判定は`AI-GEN4-SUPERIOR`である。
+
+最終再生監査と実使用opening定義のarchiveを完了し、Studyは`COMPLETED / CLOSED / AUDIT-PASS`。この判定は固定した`jev-1.13.0`、prompt、candidate表現、Direct Policy方式に限定し、Jev一般、別model version、別prompt、別統合方式へ一般化しない。またcompute-equal comparisonではない。
+
+事前固定した`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持し、この結果からJevの公開AI採用、AI-GEN4置換、AI世代変更、`public/`組込み、本番配信へ直接進まない。[Direct Policy比較試験の最終記録](ai-engineering/jev-direct-policy-comparison/README.md)を参照する。
 
 ## 1. 最初に知っておくこと
 
