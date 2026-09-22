@@ -4,85 +4,60 @@
 
 ## 状態
 
-**`FORMAL-COMPLETE / FINAL-REPLAY-AUDIT-PENDING`**
+**`COMPLETED / CLOSED / AUDIT-PASS / AI-GEN4-SUPERIOR`**
 
-専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するformal 32 fresh openings / 64 gamesは全64局がengine terminalまで完走した。
+Jev Direct PolicyとAI-GEN4 expert standardを比較する独立Studyは完了した。
 
-pilot 4局は完走しtechnical audit PASS済み。formalは明示認可後に開始し、途中3回のretryable technical pauseを事前固定のretry設計に従って処理した。各pauseではAPI keyを外した状態で保存attempt-1とledger bindingを監査し、retry wait経過後に同一logical moveのattempt-2を最大1回だけ明示認可した。3件ともattempt-2で正常回復し、attempt-3、opening replacement、sample extension、adaptive extension、optional stoppingは行っていない。
+formal 32 fresh openings / 64 gamesは全局engine terminalまで完走し、完走後の最終 `run.cjs verify` も `VERIFIED`。技術監査は `PASS`、正式判定は事前固定したprimary statisticに基づき **`AI-GEN4-SUPERIOR`** と確定した。
 
-formal runner最終statusは `FORMAL-COMPLETE`。生集計は `FORMAL_RESULT.md` に記録済み。現在は全64 formal gamesを含む最終再生監査待ちであり、監査PASS前には最終判定を確定しない。
-
-`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
+`public/`、main、AI-GEN4、release、本番配信状態は変更していない。事前固定した `NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY` を維持する。
 
 ## 固定binding
 
 - Study ID: `JEV-BAO-DIRECT-POLICY-20260922-v1`
 - baseline commit: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
+- protocol hash: `90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81`
 - openings hash: `65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882`
 - runtime manifest hash: `e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154`
-- protocol hash: `90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81`
 - spec hash: `8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85`
+
+## 比較条件
+
+AI-GEN4:
+
+- `AI-GEN4-RELEASE-001`
+- expert standard tier
+- `PBAI-C015-v1`
+- maxDepth 12
+- timeLimit 2,000 ms / move
+
+Jev Direct Policy:
+
+- `jev-1.13.0`
+- Bao engineがrules / legal variants / exact after-state / terminal等を権威的に処理
+- Jevが合法候補から最終着手を直接選択
+- downstream AI-GEN4 search overrideなし
+- forced single legal moveはAPI bypass
+- Jevは棋力上の2秒制限なし
+- 5分watchdogは通信安全用で持ち時間ではない
+
+本比較はcompute-equalではない。
 
 ## Pilot
 
 - 4 / 4 terminal
-- Jev Direct Policy 0 wins / AI-GEN4 4 wins
-- paid requests 23
-- reported usage USD `0.002129904`
-- local replay audit `VERIFIED`
-- technical audit `PASS`
+- Jev Direct Policy wins: 0
+- AI-GEN4 wins: 4
+- AI-GEN4 2-0 pairs: 2
+- p-value: 0.5
+- pilot plies: 74
+- pilot paid requests: 23
+- pilot usage: USD `0.002129904`
+- technical audit: `PASS`
 
-pilotはformal primary inferenceへ含めない。
+pilotはtechnical validation用で、formal primary inferenceには含めない。
 
-## Formal認可・設計
-
-`FORMAL_AUTHORIZATION.md` により32 fresh openings / 64 gamesのみ認可済み。
-
-- Namua 16 / Mtaji 16
-- 全opening side swap
-- first-game Jev player balance: player0 16 / player1 16
-- opening replacementなし
-- adaptive/sample extensionなし
-- optional stoppingなし
-- pilot結果はformal primary inferenceへ不算入
-- primary statistic: paired two-game openingの2-0対0-2に対するtwo-sided exact binomial sign test
-- alpha: 0.05
-
-## Formal technical pauses / resumes
-
-### Pause 001 / Resume 001
-
-36局terminal完了後、`direct-v1-formal-pair-11-game-0` ply 2で `API-PAUSED / invalid-response`。
-
-API keyを外した状態で `run.cjs verify` が `VERIFIED`、保存attempt-1がHTTP 200 / `invalid-response / retryable: true` として正しくbindingされていることとretry wait経過を確認した後、attempt-2を最大1回認可。正常回復。
-
-### Pause 002 / Resume 002
-
-49局terminal完了後、`direct-v1-formal-pair-26-game-1` ply 5で `RETRY-WAIT`。
-
-保存attempt-1を監査し、HTTP 200 / `invalid-response / retryable: true`、request hash、usage、費用台帳、runtime/opening/spec bindingに不整合がないことを確認。retry wait経過後にattempt-2を最大1回認可。正常回復。
-
-### Pause 003 / Resume 003
-
-52局terminal完了後、`direct-v1-formal-pair-17-game-0` ply 3で `RETRY-WAIT`。
-
-保存attempt-1を監査し、HTTP 200 / `invalid-response / retryable: true`、request hash `ba2dc5a4186939029fb86565f12b1b49d0a12186335fe268c660a09f4b7a9012`、usage、費用台帳、runtime/opening/spec bindingに不整合がないことを確認。retry wait経過後にattempt-2を最大1回認可。正常回復。
-
-3件ともattempt-3は発生していない。
-
-## Formal完走時の生集計
-
-記録:
-
-```text
-doc/ai-engineering/jev-direct-policy-comparison/FORMAL_RESULT.md
-```
-
-runner最終status:
-
-```text
-FORMAL-COMPLETE
-```
+## Formal確定結果
 
 - planned games: 64
 - terminal games: 64
@@ -93,37 +68,67 @@ FORMAL-COMPLETE
 - split 1-1 pairs: 7
 - incomplete pairs: 0
 - directional pairs: 25
+- formal plies: 1,029
 - two-sided exact paired sign-test p-value: `5.960464477539063e-8`
+- alpha: 0.05
 
-この値は最終runner生出力であり、全保存結果の最終再生監査PASS後に正式結果として確定する。
+25 directional pairsすべてがAI-GEN4方向だったため、正式判定を `AI-GEN4-SUPERIOR` とする。
+
+この判定は今回固定したDirect Policy方式に限定する。Jev一般、別model version、別prompt、別統合方式には一般化しない。
+
+## Technical pauses
+
+formal中に3回のretryable `invalid-response` が発生した。
+
+- Pause 001: `direct-v1-formal-pair-11-game-0` ply 2
+- Pause 002: `direct-v1-formal-pair-26-game-1` ply 5
+- Pause 003: `direct-v1-formal-pair-17-game-0` ply 3
+
+各attempt-1をオフライン監査し、minimum retry wait経過後に同一logical moveのattempt-2を最大1回だけ認可した。3件ともattempt-2で回復した。attempt-3、opening replacement、sample extension、adaptive extension、optional stoppingはない。
+
+## 最終再生監査
+
+formal完走後、API keyを外して `node tools/jev-direct-policy/run.cjs verify` を実行した。
+
+- status: `VERIFIED`
+- timestamp: `2026-09-22T14:51:53.367Z`
+- total games: 68
+- total plies: 1,103
+- formal: 64 / 64 terminal
+- pilot: 4 / 4 terminal
+
+保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
+
+技術監査は `AUDIT-PASS`。
 
 ## 費用
 
-formal完走時:
-
 - cumulative paid requests: 413
 - cumulative reported usage: USD `0.036509592`
-- pilot stage usage: USD `0.002129904`
-- formal stage usage: USD `0.034379688`
+- pilot stage: USD `0.002129904`
+- formal stage: USD `0.034379688`
 - uncertain reserved: USD `0`
+- ledger halted: false
 - overall hard limit: USD `1.00`
 - formal hard limit: USD `0.75`
-- ledger halted: false
 
 費用gate違反はない。
 
-## 現在の次gate
+## 最終文書
 
-API keyを外した状態で、同じローカルPCから次を実行する。
-
-```bash
-node tools/jev-direct-policy/run.cjs verify
-```
-
-このverifyで64 formal gamesおよび4 pilot gamesをopeningから再生し、保存request / response / response digest / candidate ID / candidate-set hash / selected move / after-state、費用台帳chain、runtime manifest、protocol/openings/spec bindingを再照合する。
-
-`VERIFIED` を確認した後にformal technical auditをPASSとし、事前固定したprimary resultを正式確定する。
+- `FINAL_REPORT.md` — Studyの正式結論と解釈範囲
+- `FORMAL_RESULT.md` — audited formal結果
+- `FORMAL_TECHNICAL_AUDIT.md` — 最終技術監査
+- `FORMAL_AUTHORIZATION.md` — formal認可
+- `FORMAL_PAUSE_001.md` / `FORMAL_RESUME_AUTHORIZATION_001.md`
+- `FORMAL_PAUSE_002.md` / `FORMAL_RESUME_AUTHORIZATION_002.md`
+- `FORMAL_PAUSE_003.md` / `FORMAL_RESUME_AUTHORIZATION_003.md`
+- `PILOT_RESULT.md` / `PILOT_TECHNICAL_AUDIT.md`
 
 ## 非採用境界
 
-`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持する。本Studyの結果にかかわらず、このStudy単独から公開AI採用、AI-GEN4置換、AI世代変更、本番配信へ直接進まない。
+**`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`**
+
+本Studyから公開AI採用、AI-GEN4置換、AI世代変更、`public/`へのJev組込み、本番配信へ直接進まない。
+
+将来別のJev統合方式を試験する場合は、別Studyとして新しいprotocol・予算・認可を設定する。
