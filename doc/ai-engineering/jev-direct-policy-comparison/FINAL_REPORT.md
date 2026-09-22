@@ -2,7 +2,7 @@
 
 - 記録日: 2026年9月22日
 - 費用管理ID: `JEV-BAO-DIRECT-20260922`
-- 実施状態: **`FORMAL-COMPLETE / RESULT-CONFIRMED / AUDIT-PASS / ARCHIVE-CLOSURE-PENDING`**
+- 実施状態: **`COMPLETED / CLOSED / AUDIT-PASS`**
 - 正式判定: **`AI-GEN4-SUPERIOR`**
 
 ## 1. 結論
@@ -98,17 +98,22 @@ opening replacement、sample extension、adaptive extension、optional stopping�
 
 ## 7. 最終技術監査
 
-formal完走後、API keyを外した状態で最終 `run.cjs verify` を実行し `VERIFIED` を確認した。
+formal完走後に `run.cjs verify` を実行して正式結果を確定し、さらに実使用opening定義をbranchへ固定した後にもAPI keyを外した状態で再verifyした。
 
-- timestamp: `2026-09-22T14:51:53.367Z`
+最終closure verify:
+
+- status: `VERIFIED`
+- timestamp: `2026-09-22T15:01:20.844Z`
 - total games: 68
 - total plies: 1,103
 - formal: 64 / 64 terminal
 - pilot: 4 / 4 terminal
+- openings hash: `65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882`
+- spec hash: `8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85`
 
 保存game、request / response、response digest、candidate ID / candidate-set hash、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
 
-technical auditは **`AUDIT-PASS`**。詳細は `FORMAL_TECHNICAL_AUDIT.md` に記録する。
+technical auditは **`AUDIT-PASS`**。詳細は `FORMAL_TECHNICAL_AUDIT.md` と `CLOSURE_AUDIT.md` に記録する。
 
 ## 8. 費用
 
@@ -143,14 +148,16 @@ technical auditは **`AUDIT-PASS`**。詳細は `FORMAL_TECHNICAL_AUDIT.md` に�
 - AI-GEN4とJevの計算資源が同等であること
 - 57対7を他のopening分布へそのまま一般化できること
 
-## 11. Archive closure保留点
+## 11. Opening archive / closure
 
-formal結果とtechnical auditは確定済みだが、最終GitHub差分監査で次の実使用ローカル生成ファイルがbranch未保存であることを確認した。
+closure前監査で、実試験に使用した生成opening定義がローカルのみに存在することを検出した。次の2ファイルを内容変更せずcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で専用branchへ固定した。
 
 - `tools/jev-direct-policy/design/openings.json`
 - `tools/jev-direct-policy/design/opening-verification.json`
 
-`openingsHash`は最終verifyで一致しており、結果の妥当性には影響しない。ただしexact opening setの将来再現性を確保するため、この2ファイルを内容変更せずcommitし、再verifyした後にarchive `CLOSED`とする。
+`opening-verification.json`はNamua 16 / Mtaji 16、formal 32 pairs / 64 games、first-game Jev player 16 / 16、前Study opening 34件除外、固定openings hash一致を記録する。
+
+固定後の再verifyも`VERIFIED`で、`openingsHash`と`specHash`は不変だった。`CLOSURE_AUDIT.md`は `PASS / COMPLETED / CLOSED`。これによりarchive closureは完了した。
 
 ## 12. 非採用判断
 
