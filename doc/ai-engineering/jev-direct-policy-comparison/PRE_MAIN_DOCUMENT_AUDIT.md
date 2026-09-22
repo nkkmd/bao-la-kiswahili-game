@@ -64,12 +64,14 @@
 問題:
 
 - 完了済みJev比較試験の節がroot move ordering Studyだけで止まっていた。
+- 「進行中の正式試験なし」の範囲表記がP1〜P11で止まっていた一方、冒頭とProgram表ではP12完了済みだった。
 
 修正:
 
 - 2つのJev Studyを独立して索引化した。
 - Direct Policy Studyについて、57対7、25対0 directional pair、p-value、限定解釈、`COMPLETED / CLOSED / AUDIT-PASS`、非採用境界を追加した。
 - `PBAI-P13`や新しい公開候補の採用評価ではないことを明記した。
+- 完了済みProgram範囲をP1〜P12へ統一した。
 - P1〜P12の正式判断とAI-GEN4 releaseを変更しなかった。
 
 ### 3. `doc/ai-engineering/README.md`
