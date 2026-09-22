@@ -8,7 +8,7 @@
 
 事前固定した32 fresh openings / 64 gamesのformal scheduleは全64局がengine terminalまで完走した。technical pauseは途中3回発生したが、いずれも事前固定したretry設計に従って保存attempt-1を監査し、同一logical moveのattempt-2を最大1回だけ明示認可して回復した。opening replacement、sample extension、adaptive extension、optional stoppingは行っていない。
 
-formal完走後、API keyを外した状態で `run.cjs verify` を実行し、`VERIFIED` を確認した。したがって以下の集計を正式結果として確定する。
+formal完走後、API keyを外した状態で `run.cjs verify` を実行し、`VERIFIED` を確認した。実使用opening定義をbranchへ固定した後にも再verifyし、binding不変を確認している。したがって以下の集計を正式結果として確定する。
 
 正式判定は **`AI-GEN4-SUPERIOR`**。
 
@@ -73,20 +73,24 @@ formal中に3回のretryable technical pauseが発生した。
 
 ## 最終audit
 
-formal完走後の最終verify:
+formal完走後の結果確定verifyは `2026-09-22T14:51:53.367Z` に `VERIFIED`。その後、実使用opening定義をcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で固定し、closure用の最終verifyを再実行した。
+
+最終closure verify:
 
 - status: `VERIFIED`
-- timestamp: `2026-09-22T14:51:53.367Z`
+- timestamp: `2026-09-22T15:01:20.844Z`
 - pilot: 4 / 4 terminal
 - formal: 64 / 64 terminal
 - total games: 68
 - pilot plies: 74
 - formal plies: 1,029
 - total plies: 1,103
+- openings hash: `65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882`
+- spec hash: `8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85`
 
 保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
 
-technical auditは `PASS`。詳細は `FORMAL_TECHNICAL_AUDIT.md` を参照する。
+technical auditは `PASS`、closure auditは `PASS / COMPLETED / CLOSED`。詳細は `FORMAL_TECHNICAL_AUDIT.md` と `CLOSURE_AUDIT.md` を参照する。
 
 ## 解釈
 
