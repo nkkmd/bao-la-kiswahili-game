@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "paidApiRequests": 0,
+  "networkRequests": 0,
+  "pilotPairs": 2,
+  "formalPairs": 32,
+  "formalGames": 64,
+  "phaseCounts": {
+    "namua": 16,
+    "mtaji": 16
+  },
+  "excludedPreviousStudyOpenings": 34,
+  "newOpenings": 34,
+  "firstGameJevPlayers": {
+    "player0": 16,
+    "player1": 16
+  },
+  "openingsHash": "65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882"
+}
