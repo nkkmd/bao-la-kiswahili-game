@@ -4,7 +4,7 @@
 
 ## 状態
 
-**`OFFLINE-PREFLIGHT-PASS / RUNTIME-FREEZE-PENDING / PAID-LIVE-NOT-AUTHORIZED`**
+**`OFFLINE-PREFLIGHT-PASS / RUNNER-QA-RETEST-REQUIRED / PAID-LIVE-NOT-AUTHORIZED`**
 
 専用branch `experiment/jev-direct-policy-20260922` 上でDirect Policyの中核、strict response validator、fresh opening generator、mock QA、local preflight、費用台帳、resumable client、対局runner、paired statistics、runtime freeze generatorを実装した。
 
@@ -26,6 +26,16 @@
 65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882
 ```
 
+## runner QA再試験が必要な理由
+
+最初の`runner-qa.cjs`実行は`SAVED_REQUEST_MISSING`で停止した。有料API呼出しは0件だった。
+
+原因はlive runner本体の保存先ではなく、QAが一時ディレクトリへ保存したmock request/responseを`validateDecision()`が本番用`resultsRoot`で検証していたdependency injection不足だった。`validateDecision()`へresponse rootを明示注入できるよう修正し、live pathは従来どおり本番用`resultsRoot`をdefaultとして保持した。
+
+同時監査で、実APIの`response.json()`では生JSONの重複object keyを検出できないことを確認したため、成功responseはraw textを取得してJSON syntax検証後にobjectごとのduplicate key scanを行うよう強化した。duplicate keyは`invalid-response`として拒否し、自動retryは行わない。
+
+この修正により、最初に出力されたruntime manifest hash `30e9af138b0786dae5d6f938c9d1f2d18ebc1271026df14de340d2063344ebbc`は旧runtime hashとして失効し、正式freezeには使用しない。
+
 ## 実装済み
 
 - AI-GEN4 expert standardを`maxDepth=12`、`timeLimitMs=2000`へ固定して検証するproduction adapter
@@ -33,6 +43,7 @@
 - stateとmove全体から導出するopaque candidate IDとcandidate ID順への決定論的並べ替え
 - Jev Direct Policy用の固定Choice instruction
 - model / type / choice / probability key set / finite値 / probability sum / confidenceのstrict validator
+- raw JSON duplicate-key rejection
 - 選択後のexact legal variant再検証
 - forced move時のAPI bypass
 - request保存→予算予約→API→正規化済みresponse保存→費用確定の順序を固定したclient
@@ -50,9 +61,7 @@
 
 ## 現在の次gate
 
-openingは固定済みだが、paid pilot前にrunner実装そのものをruntime manifestへ固定する。
-
-ローカルbranchを最新化した後、次を実行する。
+ローカルbranchを最新化した後、次を再実行する。
 
 ```bash
 git pull --ff-only
@@ -60,9 +69,9 @@ node tools/jev-direct-policy/runner-qa.cjs
 node tools/jev-direct-policy/freeze-runtime.cjs
 ```
 
-`runner-qa.cjs`はmock transportと一時費用台帳だけを使い、実Jev APIを呼ばない。success path、manual retry、保存responseとのbinding、digest改変検出、統計補助処理を検証する。
+`runner-qa.cjs`はmock transportと一時費用台帳だけを使い、実Jev APIを呼ばない。success path、保存response binding、digest改変検出、raw JSON duplicate-key rejection、manual retry、attempt-2、統計補助処理を検証する。
 
-`freeze-runtime.cjs`もネットワークを使わず、live pathの実装hashとprotocol/opening hashを表示する。出力を監査した後に`runtime-manifest.json`をbranchへ固定する。
+`freeze-runtime.cjs`もネットワークを使わず、修正後live pathの実装hashとprotocol/opening hashを表示する。runner QAが`PASS`した出力と新しいmanifest hashを監査した後に限り、`runtime-manifest.json`をbranchへ固定する。
 
 ## 有料実行gate
 
