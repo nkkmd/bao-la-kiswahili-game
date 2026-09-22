@@ -1,0 +1,160 @@
+{
+  "schema": "bao-jev-direct-policy-protocol-v1",
+  "id": "JEV-BAO-DIRECT-POLICY-20260922-v1",
+  "version": 1,
+  "date": "2026-09-22",
+  "status": "IMPLEMENTATION-PREFLIGHT-NOT-LIVE",
+  "purpose": "comparison-only-no-production-adoption",
+  "baselineCommit": "4d072cb862864f25d6ae74363040c8f4a772d8ee",
+  "branch": "experiment/jev-direct-policy-20260922",
+  "baseline": "AI-GEN4-RELEASE-001",
+  "baselineLevel": "expert",
+  "baselineTier": "standard",
+  "baselineEvaluator": "PBAI-C015-v1",
+  "baselineSearch": {
+    "maxDepth": 12,
+    "timeLimitMs": 2000
+  },
+  "jev": {
+    "policy": "direct-final-move-choice",
+    "model": "jev-1.13.0",
+    "modelMustBeRecheckedBeforePaidPilot": true,
+    "apiEndpoint": "https://api.typesafe.ai/v1/systemone",
+    "choiceLimit": 255,
+    "requestByteSafetyLimit": 28000,
+    "decisionClockLimitMs": null,
+    "communicationWatchdogMs": 300000,
+    "watchdogIsChessClock": false,
+    "forcedMoveApiCall": false,
+    "downstreamSearchMayOverride": false,
+    "aiGen4EvaluationInputAllowed": false
+  },
+  "authority": {
+    "engine": [
+      "legal-move-generation",
+      "capture-compulsory",
+      "sowing",
+      "relay-sowing",
+      "nyumba",
+      "phase",
+      "exact-after-state",
+      "mechanical-capture-counts",
+      "terminal-detection",
+      "winner-detection",
+      "selected-move-legality-validation"
+    ],
+    "jev": [
+      "candidate-comparison",
+      "tactical-judgment",
+      "strategic-judgment",
+      "future-outlook",
+      "final-legal-move-selection"
+    ]
+  },
+  "responses": {
+    "exactlyOneChoice": true,
+    "modelMatchRequired": true,
+    "choiceMustBeSuppliedCandidate": true,
+    "probabilityKeySetMustMatchCandidates": true,
+    "probabilitiesMustBeFinite": true,
+    "probabilitiesMustSumToOneTolerance": 0.002,
+    "confidenceRange": [0, 1],
+    "noBaselineFallback": true,
+    "automaticRetry": false,
+    "maximumPaidAttemptsPerLogicalMove": 2,
+    "minimumRetryWaitSeconds": 60,
+    "sameRequestBytesOnRetry": true,
+    "retryRequiresExplicitResume": true,
+    "retryable": [
+      "timeout",
+      "network-error",
+      "http-429",
+      "http-5xx",
+      "invalid-json",
+      "invalid-response"
+    ],
+    "fatal": [
+      "model-mismatch",
+      "http-400",
+      "http-401",
+      "http-403",
+      "other-http-4xx",
+      "integrity-error",
+      "budget-stop"
+    ]
+  },
+  "openings": {
+    "freshRelativeToPreviousJevStudy": true,
+    "pilotPairs": 2,
+    "formalPairs": 32,
+    "formalGames": 64,
+    "formalPhaseCounts": {
+      "namua": 16,
+      "mtaji": 16
+    },
+    "pairSideSwapRequired": true,
+    "replaceAfterSeeingResults": false,
+    "sampleExtension": false,
+    "optionalStopping": false,
+    "openingsHash": null,
+    "freezeRequiredBeforePaidPilot": true
+  },
+  "outcomes": {
+    "engineTerminalOnlyCountsAsWinLoss": true,
+    "technicalFailureIsLoss": false,
+    "relayLimitIsLoss": false,
+    "maxPlies": 512,
+    "maxPliesWithoutTerminal": "UNRESOLVED",
+    "technicalFailure": "TECHNICAL-PAUSE",
+    "persistentTechnicalFailure": "INCOMPLETE"
+  },
+  "statistics": {
+    "unit": "paired two-game opening with Jev side swapped",
+    "primary": "two-sided exact binomial sign test on 2-0 versus 0-2 pairs",
+    "alpha": 0.05,
+    "tiedPairs": "1-1 retained descriptively and contributes no sign direction",
+    "formalAnalysisOnlyAfterAll64ValidTerminal": true,
+    "eloPrimary": false,
+    "decisions": [
+      "JEV-DIRECT-SUPERIOR",
+      "AI-GEN4-SUPERIOR",
+      "INCONCLUSIVE",
+      "INCOMPLETE"
+    ],
+    "resourceEqualityClaimAllowed": false
+  },
+  "environment": {
+    "mustUsePreviousLocalMachine": true,
+    "previous": {
+      "node": "v24.6.0",
+      "platform": "linux",
+      "kernel": "6.18.33.2-microsoft-standard-WSL2",
+      "cpu": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
+      "logicalCPUs": 8,
+      "userRecordedOS": "Ubuntu 24.04.1 LTS",
+      "userRecordedMemoryApproxGB": 4
+    },
+    "meaningfulDifferenceRequiresPause": true
+  },
+  "budget": {
+    "costManagementId": "JEV-BAO-DIRECT-20260922",
+    "overallLimitUSD": 1.0,
+    "pilotLimitUSD": 0.1,
+    "formalLimitUSD": 0.75,
+    "contingencyUSD": 0.15,
+    "currentRateNanoUSDPerInputToken": 42,
+    "rateSourceDate": "2026-09-22",
+    "rateMustBeRecheckedBeforePaidPilot": true,
+    "ledgerMayBeReset": false
+  },
+  "productionBoundary": {
+    "publicDirectoryMayChange": false,
+    "mainMayChangeDuringExperiment": false,
+    "productionDeploymentAllowed": false,
+    "aiGenerationChangeAllowed": false,
+    "replaceAI_GEN4Allowed": false,
+    "adoptJevFromThisStudy": false,
+    "policy": "NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY"
+  },
+  "paidExecutionGate": "CLOSED"
+}
