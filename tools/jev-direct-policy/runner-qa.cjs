@@ -17,6 +17,7 @@ function responseFor(packet,tokens=1000){const ids=packet.candidateIds,choice=id
  return{model:C.protocol.jev.model,answers:{move:{type:'choice',choice,confidence:1,probabilities}},usage:{input_tokens:tokens,output_tokens:10}};}
 function okResponse(data){return{ok:true,status:200,headers:{get:()=>null},json:async()=>data};}
 function failResponse(status,retryAfter=null){return{ok:false,status,headers:{get:name=>name.toLowerCase()==='retry-after'?retryAfter:null},body:{cancel:async()=>{}}};}
+function expectFail(fn,code){let got='';try{fn();}catch(e){got=e.message;}C.assert(got===code,'EXPECTED_'+code+'_GOT_'+got);}
 async function main(){
  C.assert(C.protocol.paidExecutionGate==='EXPLICIT-AUTHORIZATION-FILE-REQUIRED','PAID_GATE_CONFIGURATION_ERROR');const O=Run.verifyOpenings();Run.checkEnvironment();
  const engine=C.makeEngine(repo),state=findState(engine),packet=C.requestFor(engine,state),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'jev-direct-runner-qa-'));
@@ -26,23 +27,27 @@ async function main(){
   const result=await client.evaluate(packet,{logicalId:'qa-success',stage:'pilot',allowRetry:false});C.assert(result.status==='ok'&&calls===1,'QA_SUCCESS_CLIENT_FAILED');
   const d=C.directDecision(engine,state,result);C.assert(d.moveKey===result.moveKey,'QA_DIRECT_DECISION_FAILED');
   const summary=ledger.summary();C.assert(summary.requests===1&&summary.reportedUsageUSD===Number((1234*B.RATE_NANO/1e9).toFixed(9)),'QA_LEDGER_SETTLEMENT_FAILED');
+  const item={jevPlayer:state.player},row={stateHash:C.sha256(state),competitor:'jev-direct',move:d.move,moveKey:d.moveKey,afterHash:d.afterHash,
+   candidateId:result.candidateId,candidateSetHash:packet.candidateSetHash,requestHash:C.sha256(JSON.stringify(packet.body)),search:null,
+   remote:{status:'ok',attemptId:result.attemptId,responseDigest:result.responseDigest,elapsedMs:result.elapsedMs,recovered:result.recovered,confidence:result.confidence,usage:result.usage}};
+  const boundAfter=Run.validateDecision(engine,state,row,item,ledger);C.assert(C.sha256(boundAfter)===d.afterHash,'QA_RUNNER_RESPONSE_BINDING_FAILED');
+  const tampered=C.clone(row);tampered.remote.responseDigest='0'.repeat(64);expectFail(()=>Run.validateDecision(engine,state,tampered,item,ledger),'JEV_RESPONSE_DIGEST_MISMATCH');
 
   let now=2000000,retryCalls=0;const retryRoot=path.join(tmp,'retry'),retryLedger=new B.Ledger(path.join(tmp,'ledger-retry'),'qa-spec-retry');
   const retryClient=R.createClient(retryLedger,retryRoot,'qa-not-real',{now:()=>now,transport:async()=>{retryCalls++;return retryCalls===1?failResponse(500):okResponse(responseFor(packet,800));}});
   let pause=null;try{await retryClient.evaluate(packet,{logicalId:'qa-retry',stage:'pilot',allowRetry:false});}catch(e){pause=e;}
   C.assert(pause?.message==='API-PAUSED'&&retryCalls===1,'QA_MANUAL_RETRY_GATE_FAILED');now=pause.details.retryNotBefore+1;
   const recovered=await retryClient.evaluate(packet,{logicalId:'qa-retry',stage:'pilot',allowRetry:true});
-  C.assert(recovered.status==='ok'&&recovered.attemptId.endsWith('-attempt-2')&&retryCalls===2,'QA_SECOND_ATTEMPT_FAILED');
-  C.assert(retryLedger.records.size===2,'QA_RETRY_LEDGER_FAILED');
+  C.assert(recovered.status==='ok'&&recovered.attemptId.endsWith('-attempt-2')&&retryCalls===2,'QA_SECOND_ATTEMPT_FAILED');C.assert(retryLedger.records.size===2,'QA_RETRY_LEDGER_FAILED');
 
   C.assert(T.exactTwoSided(0,0)===1&&Math.abs(T.exactTwoSided(4,4)-0.125)<1e-12,'QA_STATS_FAILED');
   const pairSummary=T.summarize([
    {stage:'formal',status:'TERMINAL',openingId:'a',winner:0,jevPlayer:0},{stage:'formal',status:'TERMINAL',openingId:'a',winner:1,jevPlayer:1},
    {stage:'formal',status:'TERMINAL',openingId:'b',winner:0,jevPlayer:0},{stage:'formal',status:'TERMINAL',openingId:'b',winner:0,jevPlayer:1}
-  ],'formal');
-  C.assert(pairSummary.jev2_0Pairs===1&&pairSummary.split1_1Pairs===1,'QA_PAIR_SUMMARY_FAILED');
+  ],'formal');C.assert(pairSummary.jev2_0Pairs===1&&pairSummary.split1_1Pairs===1,'QA_PAIR_SUMMARY_FAILED');
   console.log(JSON.stringify({status:'PASS',studyId:C.protocol.id,paidApiRequests:0,networkRequests:0,openingsHash:O.openingsHash,
-   successClient:{calls,budget:summary},manualRetry:{calls:retryCalls,attempt:recovered.attemptId,budget:retryLedger.summary()},statistics:{exact4of4:T.exactTwoSided(4,4),pairSummary}},null,2));
+   successClient:{calls,budget:summary,responseBinding:'PASS',tamperDetection:'PASS'},manualRetry:{calls:retryCalls,attempt:recovered.attemptId,budget:retryLedger.summary()},
+   statistics:{exact4of4:T.exactTwoSided(4,4),pairSummary}},null,2));
  }finally{fs.rmSync(tmp,{recursive:true,force:true});}
 }
 main().catch(e=>{console.error(JSON.stringify({status:'FAIL',code:e.message,details:e.details||null},null,2));process.exitCode=1;});
