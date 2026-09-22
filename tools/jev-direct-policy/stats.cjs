@@ -4,7 +4,7 @@ function exactTwoSided(k,n){if(n===0)return 1;const m=Math.min(k,n-k);let tail=0
 function summarize(games,stage){
  const rows=games.filter(g=>g.stage===stage),terminal=rows.filter(g=>g.status==='TERMINAL'),jevWins=terminal.filter(g=>g.winner===g.jevPlayer).length;
  const aiWins=terminal.filter(g=>g.winner!==null&&g.winner!==g.jevPlayer).length,pairs=new Map();
- for(const g ofterminal){if(!pairs.has(g.openingId))pairs.set(g.openingId,[]);pairs.get(g.openingId).push(g);}
+ for(const g of terminal){if(!pairs.has(g.openingId))pairs.set(g.openingId,[]);pairs.get(g.openingId).push(g);}
  let jev20=0,ai20=0,split=0,incomplete=0;
  const openingIds=new Set(rows.map(g=>g.openingId));
  for(const id of openingIds){const pair=pairs.get(id)||[];if(pair.length!==2){incomplete++;continue;}const wins=pair.filter(g=>g.winner===g.jevPlayer).length;if(wins===2)jev20++;else if(wins===0)ai20++;else split++;}
