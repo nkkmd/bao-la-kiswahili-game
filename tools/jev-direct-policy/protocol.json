@@ -79,7 +79,7 @@
     "replaceAfterSeeingResults": false,
     "sampleExtension": false,
     "optionalStopping": false,
-    "openingsHash": null,
+    "openingsHash": "65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882",
     "freezeRequiredBeforePaidPilot": true
   },
   "outcomes": {
