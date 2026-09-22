@@ -18,7 +18,7 @@ function responseFor(packet,tokens=1000){const ids=packet.candidateIds,choice=id
 function okResponse(data){return{ok:true,status:200,headers:{get:()=>null},json:async()=>data};}
 function failResponse(status,retryAfter=null){return{ok:false,status,headers:{get:name=>name.toLowerCase()==='retry-after'?retryAfter:null},body:{cancel:async()=>{}}};}
 async function main(){
- C.assert(C.protocol.paidExecutionGate==='CLOSED','PAID_GATE_NOT_CLOSED');const O=Run.verifyOpenings();Run.checkEnvironment();
+ C.assert(C.protocol.paidExecutionGate==='EXPLICIT-AUTHORIZATION-FILE-REQUIRED','PAID_GATE_CONFIGURATION_ERROR');const O=Run.verifyOpenings();Run.checkEnvironment();
  const engine=C.makeEngine(repo),state=findState(engine),packet=C.requestFor(engine,state),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'jev-direct-runner-qa-'));
  try{
   const root=path.join(tmp,'success'),ledger=new B.Ledger(path.join(tmp,'ledger-success'),'qa-spec-success');let calls=0;
