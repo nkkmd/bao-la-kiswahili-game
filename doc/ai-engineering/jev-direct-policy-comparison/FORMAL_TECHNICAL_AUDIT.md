@@ -6,19 +6,31 @@
 
 **`PASS`**
 
-formal 32 fresh openings / 64 games完走後、API keyを外した状態で `node tools/jev-direct-policy/run.cjs verify` を実行し、最終status `VERIFIED` を確認した。
+formal 32 fresh openings / 64 games完走後、API keyを外した状態で `node tools/jev-direct-policy/run.cjs verify` を実行し、`VERIFIED` を確認した。さらに実使用opening定義をbranchへ固定した後にも再verifyし、固定bindingが不変であることを確認した。
 
-この監査により、formal 64局とpilot 4局の保存結果は固定runtime / protocol / openings / specに対して再検証され、正式結果を確定できる状態にある。
+この監査により、formal 64局とpilot 4局の保存結果は固定runtime / protocol / openings / specに対して再検証され、正式結果とarchive closureの技術条件を満たした。
 
 ## 最終verify
 
+formal完走直後の結果確定verify:
+
 - verify status: `VERIFIED`
 - verify timestamp: `2026-09-22T14:51:53.367Z`
+
+opening定義固定後の最終closure verify:
+
+- verify status: `VERIFIED`
+- verify timestamp: `2026-09-22T15:01:20.844Z`
 - Study ID: `JEV-BAO-DIRECT-POLICY-20260922-v1`
 - protocol hash: `90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81`
 - openings hash: `65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882`
 - runtime manifest hash: `e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154`
 - spec hash: `8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85`
+
+実使用opening定義はcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で次へ固定済み。
+
+- `tools/jev-direct-policy/design/openings.json`
+- `tools/jev-direct-policy/design/opening-verification.json`
 
 ## 対局再生
 
@@ -72,9 +84,9 @@ formal中に3件のretryable technical pauseが発生した。
 
 ## 監査結論
 
-formal全64局は事前固定したscheduleを満たして完了し、保存データ・局面遷移・Jev選択binding・費用台帳・runtime/spec bindingについて最終verifyが `VERIFIED` となった。
+formal全64局は事前固定したscheduleを満たして完了し、保存データ・局面遷移・Jev選択binding・費用台帳・runtime/spec bindingについて結果確定verifyとopening固定後のclosure verifyがともに `VERIFIED` となった。
 
-したがってtechnical auditを `PASS` とし、`FORMAL_RESULT.md` の64局集計と事前固定primary statisticを正式結果として確定してよい。
+したがってtechnical auditを `PASS` とし、`FORMAL_RESULT.md` の64局集計と事前固定primary statisticを正式結果として確定する。archive closureの最終確認は `CLOSURE_AUDIT.md` に記録する。
 
 ## 非採用境界
 
