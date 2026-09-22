@@ -6,7 +6,7 @@
 
 **`PASS / COMPLETED / CLOSED`**
 
-本Studyのformal比較、最終再生監査、費用監査、固定opening保存、branch差分監査を完了した。
+本Studyのformal比較、最終再生監査、費用監査、固定opening保存、branch差分監査を完了した。main統合前には関連文書の追加整合監査も実施し、現在状態を表す入口文書の更新漏れを専用branch上で修正した。
 
 正式判定は **`AI-GEN4-SUPERIOR`**。この判定は今回固定したJev Direct Policy条件に限定し、Jev一般、別model version、別prompt、別統合方式へ一般化しない。
 
@@ -29,7 +29,7 @@
 
 ## 2. 最終再生監査
 
-formal完走後、API keyを外した状態で `node tools/jev-direct-policy/run.cjs verify` を実行した。
+formal完走後、API keyを外した状態で `node tools/jev-direct-policy/run.cjs verify` を実行した。実使用opening定義をbranchへ固定した後にも再verifyした。
 
 最終確認:
 
@@ -117,14 +117,36 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 - merge base: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - branchはmainに対してahead、behind `0`
-- 差分は本Study文書、試験tool、固定opening定義のみ
 - `public/`変更: `0`
 - production AI変更: `0`
 - AI-GEN4 release変更: `0`
 
-ローカル最終 `git status --short` も空で、作業ツリーはcleanだった。
+Study closure時点の差分は本Study文書、試験tool、固定opening定義だけだった。その後、main統合前の文書整合監査により、現在状態を正しく案内するため次の既存文書だけを追加更新した。
 
-## 8. 非採用境界
+- ルート `README.md`
+- `doc/AI_ENGINEERING_INDEX.md`
+- `doc/ai-engineering/README.md`
+- 本Studyの現在状態を表す入口・最終・監査文書
+
+これらは文書整合更新であり、公開コード・AI実装・release・配信資産を変更しない。
+
+実試験のraw `results/` とローカル認可ファイルは `.gitignore` 対象であり、Git差分には含めない。Gitに保存する再現性資産は固定protocol、runtime/source manifest、実行tool、opening定義、formal結果・監査文書である。
+
+## 8. Pre-main documentation audit
+
+現在状態を表す関連文書を相互照合した結果、次の更新漏れを修正した。
+
+- ルートREADMEと中央AI索引が前回のJev root-ordering Studyまでしか掲載していなかった
+- `doc/ai-engineering/README.md`がP12を直近作業として止まっていた
+- Study `README.md`と`FINAL_REPORT.md`に`ARCHIVE-CLOSURE-PENDING`が残っていた
+- tool READMEが`PAID-PILOT-NOT-AUTHORIZED`のままだった
+- `FORMAL_RESULT.md`と`FORMAL_TECHNICAL_AUDIT.md`がopening固定前のverifyだけを「最終」としていた
+
+修正後は、`COMPLETED / CLOSED / AUDIT-PASS`、`AI-GEN4-SUPERIOR`、限定解釈、opening archive、最終closure verify、非採用境界が入口・索引・最終文書間で一致する。
+
+authorization / pause / resume文書は実行時点の履歴記録であるため、結果後の現在状態へ書き換えていない。
+
+## 9. 非採用境界
 
 **`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`** を維持する。
 
@@ -138,8 +160,8 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 将来これらを検討する場合は、本Studyとは別の明示的な採用評価・運用評価を必要とする。
 
-## 9. Closure
+## 10. Closure
 
-必要なformal実行、再生監査、費用監査、opening archive、branch差分監査は完了した。
+必要なformal実行、再生監査、費用監査、opening archive、branch差分監査、main統合前文書整合監査は完了した。
 
 本Studyを **`COMPLETED / CLOSED`** とする。
