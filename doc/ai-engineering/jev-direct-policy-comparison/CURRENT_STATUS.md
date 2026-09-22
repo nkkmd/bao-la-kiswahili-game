@@ -4,7 +4,7 @@
 
 ## 状態
 
-**`COMPLETED / CLOSED / AUDIT-PASS / PRE-MAIN-DOC-AUDIT-PASS`**
+**`COMPLETED / CLOSED / AUDIT-PASS / PRE-MAIN-DOC-AUDIT-PASS / MAIN-INTEGRATED`**
 
 Jev Direct PolicyとAI-GEN4 expert standardの比較Studyは完了した。
 
@@ -14,7 +14,9 @@ Jev Direct PolicyとAI-GEN4 expert standardの比較Studyは完了した。
 
 main統合前の文書整合監査も実施し、ルート`README.md`、`doc/AI_ENGINEERING_INDEX.md`、`doc/ai-engineering/README.md`、本Studyの入口・最終結果・技術監査・tool READMEに残っていた更新漏れを専用branch上で修正した。
 
-`public/`、main、AI-GEN4、release、本番配信状態は変更していない。**`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`** を維持する。
+2026年9月22日、監査済みsource branch HEAD `9f0ba0cb5b25f5d6d09a3535b531afd881d5f0fa` をforceなしのfast-forwardで`main`へ統合した。統合直後の比較で`main`と`experiment/jev-direct-policy-20260922`はidentical、ahead `0` / behind `0` / changed files `0`を確認した。
+
+本統合はStudy文書・試験tool・固定opening定義・関連索引の記録をmainへ保存するものであり、`public/`、production AI、AI-GEN4 release、本番配信資産は変更していない。**`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`** を維持する。
 
 ## 固定binding
 
@@ -109,18 +111,20 @@ main統合前に、現在状態を案内する文書を相互照合した。
 
 authorization / pause / resume文書は実行時点の履歴なので、現在状態へ書き換えず保存する。
 
-## Branch / main境界
+## Main integration
 
-mainとの差分監査ではmerge baseは `4d072cb862864f25d6ae74363040c8f4a772d8ee`、branchはbehind `0`。
+- pre-integration main HEAD: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
+- integrated source branch HEAD: `9f0ba0cb5b25f5d6d09a3535b531afd881d5f0fa`
+- integration method: forceなしfast-forward
+- immediate post-integration compare: `identical`
+- ahead / behind: `0 / 0`
+- changed files after compare: `0`
+- `public/`変更: `0`
+- production AI変更: `0`
+- `AI-GEN4-RELEASE-001`変更: `0`
+- 本番配信資産変更: `0`
 
-現在の差分は次に限定される。
-
-- 今回Studyの文書
-- 今回Studyの試験tool
-- 固定opening定義
-- main統合前の整合更新として、ルート`README.md`、`doc/AI_ENGINEERING_INDEX.md`、`doc/ai-engineering/README.md`
-
-`public/`変更、production AI変更、release変更、本番配信変更は0件。mainへの統合はまだ行っていない。
+main統合は完了した。本Studyの記録統合は公開AI採用・世代変更・本番配信を意味しない。
 
 ## Closure
 
@@ -130,8 +134,9 @@ closure記録:
 - `FORMAL_RESULT.md`
 - `FORMAL_TECHNICAL_AUDIT.md`
 - `CLOSURE_AUDIT.md`
+- `PRE_MAIN_DOCUMENT_AUDIT.md`
 
-本Studyは **`COMPLETED / CLOSED`**。pre-main documentation auditもPASSとする。
+本Studyは **`COMPLETED / CLOSED / MAIN-INTEGRATED`**。pre-main documentation auditもPASSである。
 
 ## 非採用境界
 
