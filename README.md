@@ -235,10 +235,6 @@ node tools/diagnostic-to-fixture.js \
 
 現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの`PBAI-C015-v1`の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。AI-GEN4の画面表示を含む配信内容も確認済みです。[正式判断と配信確認記録](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
 
-2026年9月22日、Jevの候補手順序付けを追加した試験版とAI-GEN4単独の比較試験`JEV-BAO-STRENGTH-20260921-v1`を完了しました。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`（優劣を確認できず、同等性の証明ではない）です。本試験は比較のみで終了し、結果にかかわらずJev組込版を公開AIに採用しません。`public/`、公開AI世代、release、配信状態に変更はありません。[終了記録と再現性索引](doc/ai-engineering/jev-ai-gen4-comparison/README.md)を参照してください。
-
-同日、Jevへ最終合法手の直接選択を任せる独立比較試験`JEV-BAO-DIRECT-POLICY-20260922-v1`も完了しました。Baoエンジンが合法候補とexact after-stateを固定し、Jevがその集合から最終着手を選ぶDirect Policy方式です。正式64局はJev 7勝、AI-GEN4 57勝。opening pairではAI-GEN4の2-0が25、Jevの2-0が0、1-1が7で、two-sided exact paired sign testは`p = 5.960464477539063e-8`、固定条件での正式判定は`AI-GEN4-SUPERIOR`です。最終再生監査とopening archiveを含むclosure auditはPASSし、Studyは`COMPLETED / CLOSED`です。ただしこの結論は固定した`jev-1.13.0` Direct Policy方式に限定し、Jev一般や別統合方式へ一般化しません。事前固定した`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`に従い、公開AI・世代・release・`public/`・配信状態は変更していません。[Direct Policy比較試験の最終記録](doc/ai-engineering/jev-direct-policy-comparison/README.md)を参照してください。
-
 AI-GEN4で加えた改善は、**学習済みの論理ゲート型評価器を使って探索中の局面を評価する仕組み**です。ルールに従って合法手を探索する方式は継承しています。AI-GEN3で採用した`PBAI-C011-v1`の軽量な局面遷移も引き続き使い、探索中に不要な表示用スナップショットを省きます。通常の着手処理と画面のアニメーションは維持します。
 
 | 難易度・条件 | 現在の構成 |
@@ -278,7 +274,7 @@ PBAI-P5では、軽量局面遷移をAI-GEN2の固定基準構成と新規holdou
 | [PBAI-P4](doc/ai-engineering/public-ai-improvement-program-4/PROGRAM_FINAL_REPORT.md) | 軽量な局面遷移の正確性と速度改善を観測。全体時間上限の監視不成立で最終対局を354/512局で停止し、`STRENGTH-NON-ESTIMABLE / HOLD` | 採用せず |
 | [PBAI-P5](doc/ai-engineering/public-ai-improvement-program-5/README.md) | 同じ`PBAI-C011-v1`を新規seedと連続4時間監視の下で独立再検証。事前の採用条件と独立検算を通過 | `ADOPT`、`AI-GEN3`へ昇格 |
 | [PBAI-P6](doc/ai-engineering/public-ai-improvement-program-6/PROGRAM_FINAL_REPORT.md) | 論理ゲート型・線形・小型ニューラルネットを比較。主候補は誤差と既知戦術の条件を通過したが、速度条件未達で`HOLD` | 変更なし、`KEEP-AI-GEN3` |
-| [PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/PROGRAM_FINAL_REPORT.md) | P6の固定モデルを軽量化。高速化と良好な対局成績を観測したが、正式検算が停止し`TECHNICAL-INVALID / HOLD` | 変更なし、`KEEP-AI-GEN3` |
+| [PBAI-P7](doc/ai-engineering/public-ai-improvement-program-7/PROGRAM_FINAL_REPORT.md) | P6の固定モデルの推論軽量化。高速化と良好な対局成績を観測したが、正式検算が停止し`TECHNICAL-INVALID / HOLD` | 変更なし、`KEEP-AI-GEN3` |
 | [PBAI-P8](doc/ai-engineering/public-ai-improvement-program-8/PROGRAM_FINAL_REPORT.md) | 同じ論理ゲート評価器を新規データで独立再検証。295勝217敗、正式検算と固定条件での棋力改善判定を通過 | 未採用・未配備、`KEEP-AI-GEN3` |
 | [PBAI-P9](doc/ai-engineering/public-ai-improvement-program-9/PROGRAM_FINAL_REPORT.md) | 同じ候補を標準500ms・毎手WorkerのNode条件で追加検証。151勝105敗、正式検算と主要条件を通過。ブラウザ互換性78件も合格 | 未採用・未配備、`KEEP-AI-GEN3` |
 | [PBAI-P10](doc/ai-engineering/public-ai-improvement-program-10/PROGRAM_FINAL_REPORT.md) | expertの低・標準・高設定を検証したが、実行中断により`TECHNICAL-INVALID / HOLD`。棋力改善は未判定 | expertの採用根拠にせず、hardの既存採用を維持 |
@@ -292,6 +288,19 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 [十分良い手を基準にしたマージン制限型選択探索](doc/ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで行いました。事前のbaseline support計測では現行PVSにfull-window再探索コストが十分残っていることを確認しましたが、結果を見る前に固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たしませんでした。
 
 正式な最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。`PBAI-C016-v1`は不採用・閉鎖とし、independent validationとrelease holdoutは未実行のまま保持しました。公開AI、正式release、AI世代に変更はありません。詳細は[P12最終報告](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。
+
+### Jevを用いた独立比較試験
+
+2026年9月22日、Jevを用いた2つの比較Studyを完了しました。これらはAI-GEN4の採用・世代昇格とは独立した性能比較であり、`PBAI-P13`や公開候補の採用評価ではありません。
+
+| Study | Jevの役割 | Formal結果 | 正式判定 |
+| --- | --- | --- | --- |
+| [候補手順序付け比較 `JEV-BAO-STRENGTH-20260921-v1`](doc/ai-engineering/jev-ai-gen4-comparison/README.md) | root move orderingのみ。最終着手はAI-GEN4探索が決定 | 64局32勝32敗。全32 pairが1勝1敗 | `INCONCLUSIVE` |
+| [Direct Policy比較 `JEV-BAO-DIRECT-POLICY-20260922-v1`](doc/ai-engineering/jev-direct-policy-comparison/README.md) | Baoエンジンが合法候補とexact after-stateを固定し、Jevが最終合法手を直接選択。AI-GEN4による上書きなし | 64局でJev 7勝、AI-GEN4 57勝。AI-GEN4 2-0 pairが25、Jev 2-0 pairが0、splitが7 | `AI-GEN4-SUPERIOR`（two-sided exact paired sign test `p = 5.960464477539063e-8`） |
+
+候補手順序付け比較の`INCONCLUSIVE`は、優劣を確認できなかったことを示すもので、同等性の証明ではありません。Direct Policy比較の`AI-GEN4-SUPERIOR`は、固定した`jev-1.13.0`、prompt、candidate表現、Direct Policy方式に限定した判定であり、Jev一般や別model version・別prompt・別統合方式へ一般化しません。
+
+2つのStudyはJevの役割、opening集合、protocolが異なる独立試験です。結果を合算したり、Study間差を単一要因の因果効果として扱ったりしません。両Studyとも比較のみとして閉鎖し、その結果から公開AIへの採用判断は行っていません。`public/`、公開AI世代、release、本番配信状態に変更はありません。
 
 ### 詳細資料
 
