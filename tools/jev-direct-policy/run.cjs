@@ -50,7 +50,7 @@ function games(O,stage){
 function gameFile(id){return path.join(resultsRoot,'games',id+'.json');}
 function decisionFile(id,ply){return path.join(resultsRoot,'decisions',C.sha256(id+'-ply-'+ply)+'.json');}
 function finalStatus(game){if(game.state.reason==='relay-limit')return'ENGINE-LIMIT';if(game.state.winner!==null)return'TERMINAL';if(game.moves.length>=C.protocol.outcomes.maxPlies)return'UNRESOLVED';return'PAUSED';}
-function validateDecision(engine,state,row,item,ledger){
+function validateDecision(engine,state,row,item,ledger,responseRoot=resultsRoot){
  C.assert(row.stateHash===C.sha256(state),'MOVE_STATE_HASH_MISMATCH');const isJev=state.player===item.jevPlayer;
  C.assert(row.competitor===(isJev?'jev-direct':'ai-gen4'),'COMPETITOR_MISMATCH');
  const legal=engine.E.moveVariantsForSearch(state),serialized=JSON.stringify(row.move),key=engine.AI.moveKey(row.move);
@@ -63,11 +63,11 @@ function validateDecision(engine,state,row,item,ledger){
    const packet=C.requestFor(engine,state);C.assert(row.candidateSetHash===packet.candidateSetHash&&row.requestHash===C.sha256(JSON.stringify(packet.body)),'JEV_REQUEST_BINDING_ERROR');
    const mapped=packet.moveById[row.candidateId];C.assert(mapped&&JSON.stringify(mapped.move)===serialized&&mapped.moveKey===row.moveKey,'JEV_CANDIDATE_BINDING_ERROR');
    const attemptId=row.remote?.attemptId;C.assert(typeof attemptId==='string'&&(attemptId.endsWith('-attempt-1')||attemptId.endsWith('-attempt-2')),'JEV_ATTEMPT_ID_ERROR');
-   const saved=R.verifySaved(ledger,resultsRoot,attemptId,packet,{repair:true});
+   const saved=R.verifySaved(ledger,responseRoot,attemptId,packet,{repair:true});
    C.assert(saved.status==='ok'&&saved.candidateId===row.candidateId&&saved.moveKey===row.moveKey&&C.sha256(saved.move)===C.sha256(row.move),'JEV_SAVED_RESPONSE_MOVE_MISMATCH');
    C.assert(saved.responseDigest===row.remote.responseDigest,'JEV_RESPONSE_DIGEST_MISMATCH');
    if(attemptId.endsWith('-attempt-2')){
-    const firstId=attemptId.replace(/-attempt-2$/,'-attempt-1'),first=R.verifySaved(ledger,resultsRoot,firstId,packet,{repair:true});
+    const firstId=attemptId.replace(/-attempt-2$/,'-attempt-1'),first=R.verifySaved(ledger,responseRoot,firstId,packet,{repair:true});
     C.assert(first.status!=='ok'&&first.retryable,'JEV_FIRST_VALID_RESPONSE_IGNORED');
    }
   }
