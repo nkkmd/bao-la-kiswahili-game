@@ -15,7 +15,8 @@ function findState(engine){const random=rng(2026092211);for(let game=0;game<40;g
  throw new Error('QA_FIXTURE_NOT_FOUND');}
 function responseFor(packet,tokens=1000){const ids=packet.candidateIds,choice=ids[0],probabilities=Object.fromEntries(ids.map(id=>[id,id===choice?1:0]));
  return{model:C.protocol.jev.model,answers:{move:{type:'choice',choice,confidence:1,probabilities}},usage:{input_tokens:tokens,output_tokens:10}};}
-function okResponse(data){return{ok:true,status:200,headers:{get:()=>null},json:async()=>data};}
+function okResponse(data){const text=JSON.stringify(data);return{ok:true,status:200,headers:{get:()=>null},text:async()=>text};}
+function rawOkResponse(text){return{ok:true,status:200,headers:{get:()=>null},text:async()=>text};}
 function failResponse(status,retryAfter=null){return{ok:false,status,headers:{get:name=>name.toLowerCase()==='retry-after'?retryAfter:null},body:{cancel:async()=>{}}};}
 function expectFail(fn,code){let got='';try{fn();}catch(e){got=e.message;}C.assert(got===code,'EXPECTED_'+code+'_GOT_'+got);}
 async function main(){
@@ -33,6 +34,12 @@ async function main(){
   const boundAfter=Run.validateDecision(engine,state,row,item,ledger,root);C.assert(C.sha256(boundAfter)===d.afterHash,'QA_RUNNER_RESPONSE_BINDING_FAILED');
   const tampered=C.clone(row);tampered.remote.responseDigest='0'.repeat(64);expectFail(()=>Run.validateDecision(engine,state,tampered,item,ledger,root),'JEV_RESPONSE_DIGEST_MISMATCH');
 
+  const dupRoot=path.join(tmp,'duplicate'),dupLedger=new B.Ledger(path.join(tmp,'ledger-duplicate'),'qa-spec-duplicate');
+  const good=responseFor(packet,500),goodText=JSON.stringify(good),needle='"model":'+JSON.stringify(C.protocol.jev.model),dupText=goodText.replace(needle,needle+',"model":'+JSON.stringify(C.protocol.jev.model));
+  const dupClient=R.createClient(dupLedger,dupRoot,'qa-not-real',{transport:async()=>rawOkResponse(dupText),now:()=>1500000});let duplicatePause=null;
+  try{await dupClient.evaluate(packet,{logicalId:'qa-duplicate',stage:'pilot',allowRetry:false});}catch(e){duplicatePause=e;}
+  C.assert(duplicatePause?.message==='API-PAUSED'&&duplicatePause.details?.apiStatus==='invalid-response','QA_DUPLICATE_KEY_REJECTION_FAILED');
+
   let now=2000000,retryCalls=0;const retryRoot=path.join(tmp,'retry'),retryLedger=new B.Ledger(path.join(tmp,'ledger-retry'),'qa-spec-retry');
   const retryClient=R.createClient(retryLedger,retryRoot,'qa-not-real',{now:()=>now,transport:async()=>{retryCalls++;return retryCalls===1?failResponse(500):okResponse(responseFor(packet,800));}});
   let pause=null;try{await retryClient.evaluate(packet,{logicalId:'qa-retry',stage:'pilot',allowRetry:false});}catch(e){pause=e;}
@@ -46,8 +53,8 @@ async function main(){
    {stage:'formal',status:'TERMINAL',openingId:'b',winner:0,jevPlayer:0},{stage:'formal',status:'TERMINAL',openingId:'b',winner:0,jevPlayer:1}
   ],'formal');C.assert(pairSummary.jev2_0Pairs===1&&pairSummary.split1_1Pairs===1,'QA_PAIR_SUMMARY_FAILED');
   console.log(JSON.stringify({status:'PASS',studyId:C.protocol.id,paidApiRequests:0,networkRequests:0,openingsHash:O.openingsHash,
-   successClient:{calls,budget:summary,responseBinding:'PASS',tamperDetection:'PASS'},manualRetry:{calls:retryCalls,attempt:recovered.attemptId,budget:retryLedger.summary()},
-   statistics:{exact4of4:T.exactTwoSided(4,4),pairSummary}},null,2));
+   successClient:{calls,budget:summary,responseBinding:'PASS',tamperDetection:'PASS'},duplicateKeyResponse:'REJECTED-AS-INVALID-RESPONSE',
+   manualRetry:{calls:retryCalls,attempt:recovered.attemptId,budget:retryLedger.summary()},statistics:{exact4of4:T.exactTwoSided(4,4),pairSummary}},null,2));
  }finally{fs.rmSync(tmp,{recursive:true,force:true});}
 }
 main().catch(e=>{console.error(JSON.stringify({status:'FAIL',code:e.message,details:e.details||null},null,2));process.exitCode=1;});
