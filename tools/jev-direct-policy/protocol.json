@@ -27,7 +27,8 @@
     "watchdogIsChessClock": false,
     "forcedMoveApiCall": false,
     "downstreamSearchMayOverride": false,
-    "aiGen4EvaluationInputAllowed": false
+    "aiGen4EvaluationInputAllowed": false,
+    "instructions": "Choose the one supplied legal candidate you would actually play for rootPlayer against a strong resisting opponent. Select exactly one supplied candidate. The supplied legal moves and exact after-states are authoritative outputs of the Bao engine. Do not invent, reconstruct, or substitute another move. Your selected candidate will be executed directly and no downstream search AI will override it. Compare the candidates using tactical judgment, strategic judgment, and future resistance. If an authoritative after-state is an immediate terminal win for rootPlayer, treat that as a completed win when choosing. Do not assume the player to move in an after-state is rootPlayer."
   },
   "authority": {
     "engine": [
@@ -65,33 +66,15 @@
     "minimumRetryWaitSeconds": 60,
     "sameRequestBytesOnRetry": true,
     "retryRequiresExplicitResume": true,
-    "retryable": [
-      "timeout",
-      "network-error",
-      "http-429",
-      "http-5xx",
-      "invalid-json",
-      "invalid-response"
-    ],
-    "fatal": [
-      "model-mismatch",
-      "http-400",
-      "http-401",
-      "http-403",
-      "other-http-4xx",
-      "integrity-error",
-      "budget-stop"
-    ]
+    "retryable": ["timeout", "network-error", "http-429", "http-5xx", "invalid-json", "invalid-response"],
+    "fatal": ["model-mismatch", "http-400", "http-401", "http-403", "other-http-4xx", "integrity-error", "budget-stop"]
   },
   "openings": {
     "freshRelativeToPreviousJevStudy": true,
     "pilotPairs": 2,
     "formalPairs": 32,
     "formalGames": 64,
-    "formalPhaseCounts": {
-      "namua": 16,
-      "mtaji": 16
-    },
+    "formalPhaseCounts": {"namua": 16, "mtaji": 16},
     "pairSideSwapRequired": true,
     "replaceAfterSeeingResults": false,
     "sampleExtension": false,
@@ -115,12 +98,7 @@
     "tiedPairs": "1-1 retained descriptively and contributes no sign direction",
     "formalAnalysisOnlyAfterAll64ValidTerminal": true,
     "eloPrimary": false,
-    "decisions": [
-      "JEV-DIRECT-SUPERIOR",
-      "AI-GEN4-SUPERIOR",
-      "INCONCLUSIVE",
-      "INCOMPLETE"
-    ],
+    "decisions": ["JEV-DIRECT-SUPERIOR", "AI-GEN4-SUPERIOR", "INCONCLUSIVE", "INCOMPLETE"],
     "resourceEqualityClaimAllowed": false
   },
   "environment": {
