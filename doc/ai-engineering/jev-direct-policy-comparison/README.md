@@ -1,7 +1,7 @@
 # Jev Direct Policy × AI-GEN4 比較試験
 
 - Study ID: **`JEV-BAO-DIRECT-POLICY-20260922-v1`**
-- 状態: **`COMPLETED / CLOSED / AUDIT-PASS`**
+- 状態: **`FORMAL-COMPLETE / RESULT-CONFIRMED / AUDIT-PASS / ARCHIVE-CLOSURE-PENDING`**
 - 正式判定: **`AI-GEN4-SUPERIOR`**
 - 基準commit: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - 実施branch: `experiment/jev-direct-policy-20260922`
@@ -72,9 +72,7 @@ Primary analysisはopening pair単位の2-0対0-2に対するtwo-sided exact bin
 
 ## Technical pauses
 
-formal中に3件のretryable `invalid-response` が発生した。
-
-各件で保存attempt-1をオフライン監査し、minimum retry wait経過後に同一logical moveのattempt-2を1回だけ明示認可した。3件ともattempt-2で回復し、attempt-3は行っていない。
+formal中に3件のretryable `invalid-response` が発生した。各件で保存attempt-1をオフライン監査し、minimum retry wait経過後に同一logical moveのattempt-2を1回だけ明示認可した。3件ともattempt-2で回復し、attempt-3は行っていない。
 
 ## 費用
 
@@ -87,6 +85,15 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 費用gate違反はなかった。
 
+## Archive closure保留点
+
+最終GitHub差分監査で、実対局に使用した次のローカル生成ファイルがまだbranchへ保存されていないことを確認した。
+
+- `tools/jev-direct-policy/design/openings.json`
+- `tools/jev-direct-policy/design/opening-verification.json`
+
+`openingsHash`は最終verifyで一致しており、formal結果自体は確定済みである。ただしexact opening setの将来再現性を確保するため、この2ファイルを内容変更せずcommitし、再verifyしてからStudyをarchive `CLOSED`とする。
+
 ## 前回Studyとの分離
 
 `JEV-BAO-STRENGTH-20260921-v1`ではJevをroot move orderingにのみ利用し、formal 64局は32勝32敗、全32 pairが1-1で`INCONCLUSIVE`だった。
@@ -95,12 +102,11 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 ## 最終文書
 
-- [`FINAL_REPORT.md`](FINAL_REPORT.md) — 最終結論
-- [`FORMAL_RESULT.md`](FORMAL_RESULT.md) — formal確定結果
+- [`FINAL_REPORT.md`](FINAL_REPORT.md) — formal結論と解釈範囲
+- [`FORMAL_RESULT.md`](FORMAL_RESULT.md) — audited formal結果
 - [`FORMAL_TECHNICAL_AUDIT.md`](FORMAL_TECHNICAL_AUDIT.md) — 最終技術監査
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在状態
-- [`FORMAL_AUTHORIZATION.md`](FORMAL_AUTHORIZATION.md) — formal認可
-- pause / resume authorization記録 — technical retry履歴
+- authorization / pause / resume記録 — 実行gateとtechnical retry履歴
 - pilot result / audit — pilot記録
 
 ## 非採用方針
