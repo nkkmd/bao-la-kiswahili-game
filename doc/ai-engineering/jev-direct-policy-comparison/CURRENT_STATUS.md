@@ -4,51 +4,22 @@
 
 ## 状態
 
-**`PILOT-COMPLETE / LOCAL-REPLAY-AUDIT-PENDING / FORMAL-NOT-AUTHORIZED`**
+**`PILOT-COMPLETE / TECHNICAL-AUDIT-PASS / FORMAL-NOT-AUTHORIZED`**
 
 専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するためのprotocol、fresh openings、無課金QA、費用台帳、resumable client、対局runner、paired statistics、runtime manifestを固定した。
 
-ユーザーは2026年9月22日に有料4局pilotの開始を明示認可し、同じローカルPCでpilotを実行した。4局すべてterminalまで完走し、technical pauseは0件だった。formal 64局はまだ認可していない。
+ユーザーは2026年9月22日に有料4局pilotの開始を明示認可し、同じローカルPCでpilotを実行した。4局すべてterminalまで完走し、technical pauseは0件だった。その後 `run.cjs verify` によるローカル再生監査も `VERIFIED` で正常終了した。
 
-`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
+formal 64局はまだ認可していない。`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
 
 ## 固定対象
 
-Study ID:
-
-```text
-JEV-BAO-DIRECT-POLICY-20260922-v1
-```
-
-基準commit:
-
-```text
-4d072cb862864f25d6ae74363040c8f4a772d8ee
-```
-
-fresh openings hash:
-
-```text
-65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882
-```
-
-final runtime manifest hash:
-
-```text
-e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154
-```
-
-protocol hash:
-
-```text
-90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81
-```
-
-pilot spec hash:
-
-```text
-8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85
-```
+- Study ID: `JEV-BAO-DIRECT-POLICY-20260922-v1`
+- 基準commit: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
+- fresh openings hash: `65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882`
+- final runtime manifest hash: `e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154`
+- protocol hash: `90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81`
+- spec hash: `8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85`
 
 `tools/jev-direct-policy/runtime-manifest.json`にlive pathのSHA-256を固定済み。runnerはmanifest対象ファイルのhash不一致時に停止する。
 
@@ -78,9 +49,8 @@ pilot spec hash:
 
 記録:
 
-```text
-doc/ai-engineering/jev-direct-policy-comparison/PILOT_RESULT.md
-```
+- `doc/ai-engineering/jev-direct-policy-comparison/PILOT_RESULT.md`
+- `doc/ai-engineering/jev-direct-policy-comparison/PILOT_TECHNICAL_AUDIT.md`
 
 runner最終statusは`PILOT-COMPLETE`。
 
@@ -100,15 +70,13 @@ runner最終statusは`PILOT-COMPLETE`。
 
 pilotはtechnical validation用4局であり、formal 64局のprimary inferenceへ含めない。pilotの4-0のみから正式な棋力差を判定しない。
 
-## QAで発見・修正した事項
+## Pilot再生監査
 
-最初のrunner QAは`SAVED_REQUEST_MISSING`で停止した。原因はQA用一時response rootを`validateDecision()`へ注入していなかったことで、live保存先そのものの不具合ではなかった。response rootを明示注入できるよう修正し再試験PASS。
+pilot完走後に `node tools/jev-direct-policy/run.cjs verify` を実行し、最終status `VERIFIED` を確認した。
 
-同じ監査でraw API responseのduplicate JSON keyを`response.json()`後には検出できない点を修正し、raw text段階のduplicate-key scanを追加した。
+このverifyで保存済み全gameをopeningから再生し、各Jev着手のrequest / saved response / response digest / candidate ID / candidate-set hash / selected move / after-state、および費用台帳chain・runtime manifest・protocol/openings/spec bindingを再照合した。保存済みpilot結果との不整合は検出されなかった。
 
-さらに、`.gitignore`が`.live-authorization.json`を除外していた一方runnerが`authorization.json`を参照していた不整合を修正し、ローカル専用認可ファイル名を`.live-authorization.json`へ統一した。
-
-旧runtime hash `30e9af138b0786dae5d6f938c9d1f2d18ebc1271026df14de340d2063344ebbc` および `9e90783320eb244fe62d944b740a1beaa25eeb67541a17f99e95462d3e09b706` は失効済みであり、使用しない。
+したがってpilot技術監査は `PASS` とする。
 
 ## 固定済み試験条件
 
@@ -140,24 +108,14 @@ formal:
 - 全openingでside swap
 - Namua 16 / Mtaji 16
 - 途中打切り・adaptive extensionなし
-- formalは未認可
-
-## 直前のTypeSafe公式再確認
-
-有料pilot開始指示を受けた直後、TypeSafe公式文書を再確認した。固定前提との不一致はなかった。
-
-- versioned model: `jev-1.13.0`
-- input price: USD 0.042 / 1M input tokens
-- request context: 64k tokens; 32k for state plus the longest question
-- Choice limit: 255 options
+- 技術停止は敗北として扱わない
+- 全64局が有効terminalでない場合はformal判定を完了しない
+- primary statisticはpaired two-game openingの2-0対0-2に対するtwo-sided exact binomial sign test
+- 現在は未認可
 
 ## 費用境界
 
-費用管理ID:
-
-```text
-JEV-BAO-DIRECT-20260922
-```
+費用管理ID: `JEV-BAO-DIRECT-20260922`
 
 - overall hard limit: USD 1.00
 - pilot stage limit: USD 0.10
@@ -166,17 +124,13 @@ JEV-BAO-DIRECT-20260922
 - append-only ledger
 - 不確実なrequestは保守的reservationを保持
 
+pilot完了時の累積使用額はUSD `0.002129904`。
+
 ## 現在の次gate
 
-formal認可前に、同じローカルPCで次を実行する。
+pilot技術監査はPASSしたため、formal 32 openings / 64 gamesを実行するための技術条件は満たした。
 
-```bash
-node tools/jev-direct-policy/run.cjs verify
-```
-
-このverifyで、保存済み全gameをopeningから再生し、各Jev着手のrequest / saved response / response digest / candidate ID / candidate-set hash / selected move / after-state、および費用台帳chain・runtime bindingを再照合する。
-
-verifyが正常終了してもformal 64局は自動認可しない。結果を監査した後にformal開始を別gateで扱う。
+ただしformalは自動認可しない。ユーザーからformal開始の明示指示を受けた場合のみ、TypeSafe公式のversioned model・料金・API上限を直前再確認し、runtime/opening/spec freeze整合性を確認したうえで、Git管理外の `.live-authorization.json` をformal専用に切り替える。
 
 ## 非採用境界
 
