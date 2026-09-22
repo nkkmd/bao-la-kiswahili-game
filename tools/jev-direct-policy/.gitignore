@@ -1,0 +1,5 @@
+results/
+.live-authorization.json
+*.key
+.env
+.env.*
