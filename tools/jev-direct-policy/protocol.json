@@ -11,10 +11,7 @@
   "baselineLevel": "expert",
   "baselineTier": "standard",
   "baselineEvaluator": "PBAI-C015-v1",
-  "baselineSearch": {
-    "maxDepth": 12,
-    "timeLimitMs": 2000
-  },
+  "baselineSearch": {"maxDepth": 12,"timeLimitMs": 2000},
   "jev": {
     "policy": "direct-final-move-choice",
     "model": "jev-1.13.0",
@@ -31,26 +28,8 @@
     "instructions": "Choose the one supplied legal candidate you would actually play for rootPlayer against a strong resisting opponent. Select exactly one supplied candidate. The supplied legal moves and exact after-states are authoritative outputs of the Bao engine. Do not invent, reconstruct, or substitute another move. Your selected candidate will be executed directly and no downstream search AI will override it. Compare the candidates using tactical judgment, strategic judgment, and future resistance. If an authoritative after-state is an immediate terminal win for rootPlayer, treat that as a completed win when choosing. Do not assume the player to move in an after-state is rootPlayer."
   },
   "authority": {
-    "engine": [
-      "legal-move-generation",
-      "capture-compulsory",
-      "sowing",
-      "relay-sowing",
-      "nyumba",
-      "phase",
-      "exact-after-state",
-      "mechanical-capture-counts",
-      "terminal-detection",
-      "winner-detection",
-      "selected-move-legality-validation"
-    ],
-    "jev": [
-      "candidate-comparison",
-      "tactical-judgment",
-      "strategic-judgment",
-      "future-outlook",
-      "final-legal-move-selection"
-    ]
+    "engine": ["legal-move-generation","capture-compulsory","sowing","relay-sowing","nyumba","phase","exact-after-state","mechanical-capture-counts","terminal-detection","winner-detection","selected-move-legality-validation"],
+    "jev": ["candidate-comparison","tactical-judgment","strategic-judgment","future-outlook","final-legal-move-selection"]
   },
   "responses": {
     "exactlyOneChoice": true,
@@ -59,22 +38,22 @@
     "probabilityKeySetMustMatchCandidates": true,
     "probabilitiesMustBeFinite": true,
     "probabilitiesMustSumToOneTolerance": 0.002,
-    "confidenceRange": [0, 1],
+    "confidenceRange": [0,1],
     "noBaselineFallback": true,
     "automaticRetry": false,
     "maximumPaidAttemptsPerLogicalMove": 2,
     "minimumRetryWaitSeconds": 60,
     "sameRequestBytesOnRetry": true,
     "retryRequiresExplicitResume": true,
-    "retryable": ["timeout", "network-error", "http-429", "http-5xx", "invalid-json", "invalid-response"],
-    "fatal": ["model-mismatch", "http-400", "http-401", "http-403", "other-http-4xx", "integrity-error", "budget-stop"]
+    "retryable": ["timeout","network-error","http-429","http-5xx","invalid-json","invalid-response"],
+    "fatal": ["model-mismatch","http-400","http-401","http-403","other-http-4xx","integrity-error","budget-stop"]
   },
   "openings": {
     "freshRelativeToPreviousJevStudy": true,
     "pilotPairs": 2,
     "formalPairs": 32,
     "formalGames": 64,
-    "formalPhaseCounts": {"namua": 16, "mtaji": 16},
+    "formalPhaseCounts": {"namua":16,"mtaji":16},
     "pairSideSwapRequired": true,
     "replaceAfterSeeingResults": false,
     "sampleExtension": false,
@@ -82,15 +61,7 @@
     "openingsHash": "65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882",
     "freezeRequiredBeforePaidPilot": true
   },
-  "outcomes": {
-    "engineTerminalOnlyCountsAsWinLoss": true,
-    "technicalFailureIsLoss": false,
-    "relayLimitIsLoss": false,
-    "maxPlies": 512,
-    "maxPliesWithoutTerminal": "UNRESOLVED",
-    "technicalFailure": "TECHNICAL-PAUSE",
-    "persistentTechnicalFailure": "INCOMPLETE"
-  },
+  "outcomes": {"engineTerminalOnlyCountsAsWinLoss":true,"technicalFailureIsLoss":false,"relayLimitIsLoss":false,"maxPlies":512,"maxPliesWithoutTerminal":"UNRESOLVED","technicalFailure":"TECHNICAL-PAUSE","persistentTechnicalFailure":"INCOMPLETE"},
   "statistics": {
     "unit": "paired two-game opening with Jev side swapped",
     "primary": "two-sided exact binomial sign test on 2-0 versus 0-2 pairs",
@@ -98,41 +69,11 @@
     "tiedPairs": "1-1 retained descriptively and contributes no sign direction",
     "formalAnalysisOnlyAfterAll64ValidTerminal": true,
     "eloPrimary": false,
-    "decisions": ["JEV-DIRECT-SUPERIOR", "AI-GEN4-SUPERIOR", "INCONCLUSIVE", "INCOMPLETE"],
+    "decisions": ["JEV-DIRECT-SUPERIOR","AI-GEN4-SUPERIOR","INCONCLUSIVE","INCOMPLETE"],
     "resourceEqualityClaimAllowed": false
   },
-  "environment": {
-    "mustUsePreviousLocalMachine": true,
-    "previous": {
-      "node": "v24.6.0",
-      "platform": "linux",
-      "kernel": "6.18.33.2-microsoft-standard-WSL2",
-      "cpu": "Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz",
-      "logicalCPUs": 8,
-      "userRecordedOS": "Ubuntu 24.04.1 LTS",
-      "userRecordedMemoryApproxGB": 4
-    },
-    "meaningfulDifferenceRequiresPause": true
-  },
-  "budget": {
-    "costManagementId": "JEV-BAO-DIRECT-20260922",
-    "overallLimitUSD": 1.0,
-    "pilotLimitUSD": 0.1,
-    "formalLimitUSD": 0.75,
-    "contingencyUSD": 0.15,
-    "currentRateNanoUSDPerInputToken": 42,
-    "rateSourceDate": "2026-09-22",
-    "rateMustBeRecheckedBeforePaidPilot": true,
-    "ledgerMayBeReset": false
-  },
-  "productionBoundary": {
-    "publicDirectoryMayChange": false,
-    "mainMayChangeDuringExperiment": false,
-    "productionDeploymentAllowed": false,
-    "aiGenerationChangeAllowed": false,
-    "replaceAI_GEN4Allowed": false,
-    "adoptJevFromThisStudy": false,
-    "policy": "NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY"
-  },
-  "paidExecutionGate": "CLOSED"
+  "environment": {"mustUsePreviousLocalMachine":true,"previous":{"node":"v24.6.0","platform":"linux","kernel":"6.18.33.2-microsoft-standard-WSL2","cpu":"Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz","logicalCPUs":8,"userRecordedOS":"Ubuntu 24.04.1 LTS","userRecordedMemoryApproxGB":4},"meaningfulDifferenceRequiresPause":true},
+  "budget": {"costManagementId":"JEV-BAO-DIRECT-20260922","overallLimitUSD":1.0,"pilotLimitUSD":0.1,"formalLimitUSD":0.75,"contingencyUSD":0.15,"currentRateNanoUSDPerInputToken":42,"rateSourceDate":"2026-09-22","rateMustBeRecheckedBeforePaidPilot":true,"ledgerMayBeReset":false},
+  "productionBoundary": {"publicDirectoryMayChange":false,"mainMayChangeDuringExperiment":false,"productionDeploymentAllowed":false,"aiGenerationChangeAllowed":false,"replaceAI_GEN4Allowed":false,"adoptJevFromThisStudy":false,"policy":"NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY"},
+  "paidExecutionGate": "EXPLICIT-AUTHORIZATION-FILE-REQUIRED"
 }
