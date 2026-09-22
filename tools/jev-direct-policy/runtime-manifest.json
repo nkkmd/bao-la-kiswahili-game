@@ -1,0 +1,16 @@
+{
+  "schema": "bao-jev-direct-policy-runtime-manifest-v1",
+  "studyId": "JEV-BAO-DIRECT-POLICY-20260922-v1",
+  "protocolHash": "90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81",
+  "openingsHash": "65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882",
+  "files": {
+    "core.cjs": "32d69b927467f2f7ea29a4a034fe645ff5b6573f19191f9398d726445cc79d5f",
+    "live-ledger.cjs": "336bb3f4aa19a1a249a8c2de466d2a2a3d5f9eef9d0a4ee1baa3e87fd35bf3db",
+    "live-client.cjs": "6decd80b4eff14b6dbd2375e67082edc4ce57086090713dd5f6ae46373ea0a6a",
+    "stats.cjs": "4ffc55b9370c66c95a4f53f2039d7d6e1e187c2aba596419c5a6ac3d8653207e",
+    "run.cjs": "dc197bfd2b8e971390e871d54150ed937f1cee7fbe14cd9f71431312ac46de13",
+    "protocol.json": "aec10c03b9f11afb1062aba14533de057064c6d87802ce518d6c695d1b28fbfe",
+    "source-manifest.json": "f666c16790319835c2c9b0e1b5a96d19f7b9f13210c5687f8dde88144a2d82ca"
+  },
+  "manifestHash": "9e90783320eb244fe62d944b740a1beaa25eeb67541a17f99e95462d3e09b706"
+}
