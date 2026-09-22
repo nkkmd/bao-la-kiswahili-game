@@ -4,9 +4,11 @@
 
 ## 状態
 
-**`RUNTIME-FROZEN / PAID-PILOT-READY-BUT-NOT-AUTHORIZED`**
+**`RUNTIME-FROZEN / PAID-PILOT-AUTHORIZED / AWAITING-LOCAL-EXECUTION`**
 
 専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するためのprotocol、fresh openings、無課金QA、費用台帳、resumable client、対局runner、paired statisticsを固定した。
+
+ユーザーは2026年9月22日に有料4局pilotの開始を明示認可した。認可範囲はpilot 4局のみであり、formal 64局は含まない。
 
 現時点までの有料Jev API呼出しは0件。`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
 
@@ -40,6 +42,12 @@ protocol hash:
 
 ```text
 90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81
+```
+
+pilot spec hash:
+
+```text
+8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85
 ```
 
 `tools/jev-direct-policy/runtime-manifest.json` にlive pathのSHA-256を固定済み。runnerはmanifest対象ファイルのhash不一致時に停止する。
@@ -100,15 +108,30 @@ Jev Direct Policy:
 - attempt 2は明示resumeと待機時間を要求
 - API key / Authorization headerを保存しない
 
+pilot:
+
+- 2 fresh openings / 4 games
+- 各openingでside swap
+- 技術的停止は敗北として扱わない
+- pilotはformal統計へ含めない
+- pilot budget ceiling USD 0.10
+
 formal:
 
 - 32 fresh openings / 64 games
 - 全openingでside swap
 - Namua 16 / Mtaji 16
 - 途中打切り・adaptive extensionなし
-- 技術停止は敗北として扱わない
-- 全64局が有効terminalでない場合はformal判定を完了しない
-- primary statisticはpaired two-game openingの2-0対0-2に対するtwo-sided exact binomial sign test
+- formalは未認可
+
+## 直前のTypeSafe公式再確認
+
+有料pilot開始指示を受けた直後、TypeSafe公式文書を再確認した。固定前提との不一致はなかった。
+
+- versioned model: `jev-1.13.0`
+- input price: USD 0.042 / 1M input tokens
+- request context: 64k tokens; 32k for state plus the longest question
+- Choice limit: 255 options
 
 ## 費用境界
 
@@ -125,21 +148,25 @@ JEV-BAO-DIRECT-20260922
 - append-only ledger
 - 不確実なrequestは保守的reservationを保持
 
-paid pilot開始直前にTypeSafe公式のversioned model、料金、API上限を再確認し、固定値との不一致があれば停止する。
+## 有料pilot認可
 
-## 有料実行gate
+認可記録:
 
-有料実行は`EXPLICIT-AUTHORIZATION-FILE-REQUIRED`。
+```text
+doc/ai-engineering/jev-direct-policy-comparison/PILOT_AUTHORIZATION.md
+```
 
-認可ファイルはGit管理しないローカル専用:
+ローカル実行gateはGit管理しない:
 
 ```text
 tools/jev-direct-policy/.live-authorization.json
 ```
 
-現在このファイルは存在せず、pilotは未認可である。`--live`だけでは有料APIへ進めない。
+このローカルファイルはpilot stage、Study ID、opening hash、spec hashへbindingする。formalには使用できない。
 
-次はユーザーから**有料4局pilot開始の明示指示**があった場合のみ、公式モデル/料金再確認、freeze整合性最終確認、pilot専用authorization生成手順へ進む。formal authorizationはpilotの技術監査後に別gateとする。
+次の操作は前回と同じローカルPCで、freeze検証後にpilot専用`.live-authorization.json`を作成し、`TYPESAFE_API_KEY`を環境変数へ設定して `run pilot --live` を実行すること。APIキーはGit、JSON、ログ、チャットへ貼らない。
+
+technical pauseが発生した場合は勝敗扱いにせず停止し、その出力を監査する。`resume pilot --live`は自動実行しない。
 
 ## 非採用境界
 
