@@ -1,0 +1,18 @@
+{
+  "experimentId": "JEV-BAO-COMP-20260921",
+  "version": "0.1.0",
+  "purpose": "comparison-only-no-adoption",
+  "baselineCommit": "252ad27973dbc2b4b674fba3104e38299ac98e9e",
+  "branch": "experiment/jev-ai-gen4-20260921",
+  "model": "jev-1.13.0",
+  "level": "expert",
+  "timeLimitMs": 2000,
+  "maxDepth": 12,
+  "apiTimeoutMs": 500,
+  "smokeTimeoutMs": 5000,
+  "pilotPositions": 16,
+  "pilotPairs": 4,
+  "maxGamePlies": 256,
+  "fixtureSeed": 2026092101,
+  "formalEnabled": false
+}

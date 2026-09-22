@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "sourceArchiveSHA256": "4845e4d39f6673a559bdc531fadadcc46ce8bbab61831b8a83df15e68fa925c2",
+  "planHash": "da98ddc1290cbfc99b96fc6389ac7aa86b2a4abe3e82f8350e7c6fbcd7d0c5be",
+  "addonHash": "9fd3abb0ef3f057e56c705b79cb742373ca81afa1e70ded6f4d261586e9cdf51",
+  "preservedPriorJSONFiles": 113,
+  "legalPliesReplayed": 142,
+  "allNormalResponsesValidated": 99,
+  "planGames": 8,
+  "startedGames": 5,
+  "completedGames": 4,
+  "completePairs": 2,
+  "candidateWins": 3,
+  "candidateLosses": 1,
+  "pausedGames": 1,
+  "unstartedGames": 3,
+  "realNewApiRequests": 64,
+  "apiStatuses": {
+    "ok": 61,
+    "timeout": 3
+  },
+  "forcedMoves": 8,
+  "choiceAgreementWithFinalSearch": {
+    "count": 24,
+    "of": 61,
+    "interpretation": "agreement only; not a measure of correctness"
+  },
+  "timing": {
+    "baseline": {
+      "n": 70,
+      "min": 3.5894179999886546,
+      "median": 2000.1553939999994,
+      "p95": 2000.6678044999971,
+      "max": 2001.7819949999976,
+      "sum": 114507.09575899992
+    },
+    "jev": {
+      "n": 72,
+      "min": 1.1784549999865703,
+      "median": 2000.1673489999957,
+      "p95": 2000.4400695999925,
+      "max": 2001.804597999988,
+      "sum": 127018.54896099982
+    },
+    "validApi": {
+      "n": 61,
+      "min": 288.6379190000007,
+      "median": 400.03922600000806,
+      "p95": 764.5462899999984,
+      "max": 1076.226289,
+      "sum": 26258.704726000047
+    },
+    "timeoutApi": {
+      "n": 3,
+      "min": 1502.6989969999995,
+      "median": 1503.1781090000004,
+      "p95": 1504.0259269999892,
+      "max": 1504.120128999988,
+      "sum": 4509.997234999988
+    }
+  },
+  "depth": {
+    "baseline": {
+      "n": 70,
+      "min": 6,
+      "median": 10,
+      "p95": 12,
+      "max": 12,
+      "sum": 667
+    },
+    "jev": {
+      "n": 72,
+      "min": 5,
+      "median": 9,
+      "p95": 12,
+      "max": 12,
+      "sum": 648
+    }
+  },
+  "searchAllocatedMs": {
+    "baseline": {
+      "n": 70,
+      "min": 1998.9461190000002,
+      "median": 1999.737888500007,
+      "p95": 1999.941307850003,
+      "max": 1999.9481230000092,
+      "sum": 139979.26041100002
+    },
+    "jev": {
+      "n": 72,
+      "min": 436.34017999999924,
+      "median": 1567.1348360000047,
+      "p95": 1999.8969245499916,
+      "max": 1999.9515690000262,
+      "sum": 110189.47491100017
+    }
+  },
+  "overrunMs": {
+    "baseline": {
+      "n": 70,
+      "min": 0,
+      "median": 0.1553939999994327,
+      "p95": 0.6678044999971455,
+      "max": 1.7819949999975506,
+      "sum": 15.314978999933373,
+      "countOver1ms": 3,
+      "countOver10ms": 0
+    },
+    "jev": {
+      "n": 72,
+      "min": 0,
+      "median": 0.16734899999573827,
+      "p95": 0.440069599992421,
+      "max": 1.804597999987891,
+      "sum": 14.384901999921112,
+      "countOver1ms": 2,
+      "countOver10ms": 0
+    }
+  },
+  "cost": {
+    "cumulative": 0.02445576,
+    "reported": 0.007940688,
+    "uncertain": 0.016515072,
+    "newReported": 0.005031054,
+    "newUncertain": 0.008257536,
+    "newTotal": 0.01328859
+  },
+  "ledgerLimit": "Uploaded ZIP contains results and ledger summaries, not the hash-chained ledger itself; full ledger continuity is checked by the local runner.",
+  "games": [
+    {
+      "id": "pilot-v3-pair-0-game-0",
+      "pair": 0,
+      "seat": 0,
+      "candidatePlayer": 0,
+      "status": "TERMINAL",
+      "plies": 49,
+      "winner": 0,
+      "reason": "front-empty",
+      "pauseReason": null,
+      "apiStatus": {
+        "ok": 24,
+        "forced-move": 1
+      },
+      "initialPlayer": 0,
+      "initialPhase": "namua",
+      "apiRequests": 24,
+      "candidateWon": true
+    },
+    {
+      "id": "pilot-v3-pair-0-game-1",
+      "pair": 0,
+      "seat": 1,
+      "candidatePlayer": 1,
+      "status": "TERMINAL",
+      "plies": 60,
+      "winner": 1,
+      "reason": "front-empty",
+      "pauseReason": null,
+      "apiStatus": {
+        "forced-move": 3,
+        "ok": 27
+      },
+      "initialPlayer": 0,
+      "initialPhase": "namua",
+      "apiRequests": 27,
+      "candidateWon": true
+    },
+    {
+      "id": "pilot-v3-pair-1-game-0",
+      "pair": 1,
+      "seat": 0,
+      "candidatePlayer": 1,
+      "status": "TERMINAL",
+      "plies": 9,
+      "winner": 1,
+      "reason": "front-empty",
+      "pauseReason": null,
+      "apiStatus": {
+        "ok": 5
+      },
+      "initialPlayer": 1,
+      "initialPhase": "mtaji",
+      "apiRequests": 5,
+      "candidateWon": true
+    },
+    {
+      "id": "pilot-v3-pair-1-game-1",
+      "pair": 1,
+      "seat": 1,
+      "candidatePlayer": 0,
+      "status": "TERMINAL",
+      "plies": 9,
+      "winner": 1,
+      "reason": "front-empty",
+      "pauseReason": null,
+      "apiStatus": {
+        "forced-move": 4
+      },
+      "initialPlayer": 1,
+      "initialPhase": "mtaji",
+      "apiRequests": 0,
+      "candidateWon": false
+    },
+    {
+      "id": "pilot-v3-pair-2-game-0",
+      "pair": 2,
+      "seat": 0,
+      "candidatePlayer": 0,
+      "status": "PAUSED",
+      "plies": 15,
+      "winner": null,
+      "reason": "",
+      "pauseReason": "API-FALLBACK-STREAK",
+      "apiStatus": {
+        "ok": 5,
+        "timeout": 3
+      },
+      "initialPlayer": 0,
+      "initialPhase": "namua",
+      "apiRequests": 8,
+      "candidateWon": null
+    }
+  ]
+}

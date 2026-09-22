@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": [
+    "34 openings and 68 scheduled games reproduced exactly from historical files and pinned engine",
+    "Opening hashes, legal trajectory replays, 501 historical exclusions and candidate-seat reversal verified",
+    "All 317 prior JSON files unchanged; generator uses no ledger or API",
+    "Exact paired-sign p-value formula agrees with SciPy for every k at n=1..32",
+    "Six decision examples and exact q confidence intervals verified; q is not per-game win rate",
+    "Clock, stage sizes, opening identity and nanodollar budget arithmetic are consistent"
+  ],
+  "paidApiRequests": 0,
+  "matchGamesPlayed": 0,
+  "runnerImplemented": false,
+  "newApiCostUSD": 0,
+  "verificationScope": "Design, fixture generation and statistical arithmetic only; does not validate an unimplemented live runner"
+}

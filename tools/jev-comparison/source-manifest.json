@@ -1,0 +1,9 @@
+{
+  "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3",
+  "public/ai-weights.js": "7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8",
+  "public/ai.js": "aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498",
+  "public/ai-config.js": "ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc",
+  "public/logic-evaluator.js": "41e51afb2819fd7e5fdf35442065d71160785696aa0749e5c137b35ef5951348",
+  "public/ai-candidate.js": "caca38ed069777cfac34accd883470f2b2040ae8c6ea2d0694fae2596f36245f",
+  "public/ai-release.js": "e0d91af2cf087e0549aaaf1cc6773dbc29ee26f19db920cfc04cf8524e6b8e5a"
+}

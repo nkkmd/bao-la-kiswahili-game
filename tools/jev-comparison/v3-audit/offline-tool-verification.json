@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": 16,
+  "cases": 64,
+  "normal": 61,
+  "timeouts": 3,
+  "newApiRequests": 0,
+  "ledgerUnchanged": true,
+  "priorResultsUnchanged": true,
+  "fullRunSearchDepth": "depth 1 in QA only; one additional search used production depth/time",
+  "cliGit": "mocked; user preflight checks real Git",
+  "candidateAllocationMsRange": [
+    436.34017999999924,
+    1649.4883239999763
+  ]
+}

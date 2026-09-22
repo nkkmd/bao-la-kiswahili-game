@@ -1,6 +1,6 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-17
+更新日: 2026-09-22
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`**
@@ -12,6 +12,12 @@
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
 [十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで実施しました。baseline supportはPASSしましたが、prospectiveに固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たさず、最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。[PBAI-P12最終報告](ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。independent validationとrelease holdoutは未実行で、公開AI・release・AI世代に変更はありません。
+
+## 完了済みのJev比較試験
+
+2026年9月22日、`JEV-BAO-STRENGTH-20260921-v1`でJevの候補手順序付けを追加したAI-GEN4とAI-GEN4単独を比較した。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`である。優劣を確認できなかったことを示すが、同等性の証明ではない。
+
+この試験は`PBAI-P13`や公開候補の採用評価ではない。当初の範囲どおり結果にかかわらずJev組込版を公開AIに採用せず、追加の有料API呼出しを禁止して終了した。公開AIは`AI-GEN4 / AI-GEN4-RELEASE-001`、P1〜P12の判断はそのまま保持する。[最終報告・費用・保存状態](ai-engineering/jev-ai-gen4-comparison/README.md)を参照する。
 
 ## 1. 最初に知っておくこと
 

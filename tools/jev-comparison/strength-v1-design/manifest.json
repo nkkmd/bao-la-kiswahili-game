@@ -1,0 +1,15 @@
+{
+  "id": "JEV-BAO-STRENGTH-20260921-v1",
+  "hashAlgorithm": "SHA-256 of raw bytes",
+  "files": {
+    "README.md": "d9de4026c9db26d8d3b9038a3eb9f1a0218d47fd446f51cb1987923eb3f56959",
+    "build-openings.cjs": "920b79616d651062324141a611d7713a6a7cc36d3a99ac116149fc10ad1f5324",
+    "design-verification.json": "341cfd7237b00a87489b6924c7caecd9b90707a3ba535f530a23081612937252",
+    "historical-exclusion-hashes.json": "4af4a4ab084a8e9523da4561dd14cc7d3413259d53815b808e8cca6bf0e9e89d",
+    "opening-verification.json": "d934a57557332cc75258d64099ad94b4779f4727ae961353c8bf177d8ff8df86",
+    "openings.json": "b0475502f598bd32ef963b8cd1468b800ae24d61a2b752ddc83dd23067e5ca04",
+    "protocol.json": "6bfbe9d88659ac0f0d73db8cdb756a70bb8d7ee6a68a1d6c0350da2523adfc81",
+    "source-history-manifest.json": "6c4d013ee95040e0c7604bed11fa6e1f89cfece22fec63e29cac1bb5962ec5ff",
+    "statistical-examples.json": "eb00110649b5f7035e66ad5a5eec367e0b47dd9e61144f36204e3003641d3603"
+  }
+}

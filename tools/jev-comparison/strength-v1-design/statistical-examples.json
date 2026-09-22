@@ -1,0 +1,80 @@
+{
+  "method": "two-sided exact binomial sign test on 2-0 versus 0-2 pairs",
+  "examples": [
+    {
+      "pair_2_0": 10,
+      "pair_0_2": 2,
+      "pair_1_1": 20,
+      "game_wins": 40,
+      "game_losses": 24,
+      "two_sided_p": 0.03857421875,
+      "decision": "JEV-SUPERIOR",
+      "q_95pct_exact_interval": [
+        0.5158622513139235,
+        0.9791374745403382
+      ]
+    },
+    {
+      "pair_2_0": 9,
+      "pair_0_2": 3,
+      "pair_1_1": 20,
+      "game_wins": 38,
+      "game_losses": 26,
+      "two_sided_p": 0.14599609375,
+      "decision": "INCONCLUSIVE",
+      "q_95pct_exact_interval": [
+        0.42814153812190026,
+        0.9451393554720076
+      ]
+    },
+    {
+      "pair_2_0": 23,
+      "pair_0_2": 9,
+      "pair_1_1": 0,
+      "game_wins": 46,
+      "game_losses": 18,
+      "two_sided_p": 0.020061607006937265,
+      "decision": "JEV-SUPERIOR",
+      "q_95pct_exact_interval": [
+        0.5325289003570655,
+        0.862543096704499
+      ]
+    },
+    {
+      "pair_2_0": 22,
+      "pair_0_2": 10,
+      "pair_1_1": 0,
+      "game_wins": 44,
+      "game_losses": 20,
+      "two_sided_p": 0.050102459732443094,
+      "decision": "INCONCLUSIVE",
+      "q_95pct_exact_interval": [
+        0.49992241836803114,
+        0.8388152759117703
+      ]
+    },
+    {
+      "pair_2_0": 0,
+      "pair_0_2": 0,
+      "pair_1_1": 32,
+      "game_wins": 32,
+      "game_losses": 32,
+      "two_sided_p": 1,
+      "decision": "INCONCLUSIVE",
+      "q_95pct_exact_interval": null
+    },
+    {
+      "pair_2_0": 2,
+      "pair_0_2": 10,
+      "pair_1_1": 20,
+      "game_wins": 24,
+      "game_losses": 40,
+      "two_sided_p": 0.03857421875,
+      "decision": "BASELINE-SUPERIOR",
+      "q_95pct_exact_interval": [
+        0.020862525459661812,
+        0.4841377486860764
+      ]
+    }
+  ]
+}

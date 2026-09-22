@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "paidApiRequests": 0,
+  "matchGamesPlayed": 0,
+  "priorStatesExcluded": 501,
+  "pilotPairs": 2,
+  "formalPairs": 32,
+  "formalPhaseCounts": {
+    "namua": 11,
+    "mtaji": 21
+  },
+  "newOpeningsReplayed": 34,
+  "firstGameCandidatePlayers": {
+    "player0": 16,
+    "player1": 16
+  },
+  "openingsHash": "805496e52d309d9c87df1a286d59d352b9abe71e33c2da4aa09ff7140e793d1f"
+}

@@ -1,0 +1,123 @@
+{
+  "status": "COMPLETE",
+  "settings": {
+    "id": "pilot-v3-cached-depth6-v1",
+    "scope": "post-hoc exploratory mechanism comparison",
+    "sourcePlanHash": "da98ddc1290cbfc99b96fc6389ac7aa86b2a4abe3e82f8350e7c6fbcd7d0c5be",
+    "sourceSelection": "all 61 valid Jev responses from pilot-v3, including paused game; timeout and forced moves have no usable Jev response",
+    "inputHash": "53cc49f05a7666306617a21893e4f44b2feb92e7130c67f73ea4456e9392f827",
+    "positions": 61,
+    "maxDepth": 6,
+    "timeLimitMsPerSearch": 10000,
+    "order": "baseline first on even index, candidate first on odd index",
+    "warmup": "initial state depth 2 once per engine",
+    "metric": "stats.nodes; quiescenceNodes separately; same-depth completed searches only",
+    "apiWaiting": "excluded; cached responses, no new API calls",
+    "formalStatus": "NOT-STARTED"
+  },
+  "planHash": "c0f7d71ab079007e25c08839c0752800e17a25c1215e16502487d140d88d2f08",
+  "executionEnvironment": {
+    "where": "assistant-offline; not user PC",
+    "node": "v24.19.0",
+    "platform": "linux",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C"
+  },
+  "realApiRequests": 0,
+  "newApiCostUSD": 0,
+  "primary": {
+    "positions": 61,
+    "baselineNodes": 224633,
+    "candidateNodes": 228680,
+    "nodeChangePercent": 1.8016052850649666,
+    "medianNodeRatio": 1,
+    "fewerNodes": 17,
+    "equalNodes": 21,
+    "moreNodes": 23,
+    "baselineQuiescenceNodes": 142987,
+    "candidateQuiescenceNodes": 145533,
+    "sameScore": 61,
+    "sameMove": 61
+  },
+  "byPhase": {
+    "namua": {
+      "positions": 43,
+      "baselineNodes": 206791,
+      "candidateNodes": 209915,
+      "nodeChangePercent": 1.510704044179878,
+      "medianNodeRatio": 1,
+      "fewerNodes": 13,
+      "equalNodes": 11,
+      "moreNodes": 19,
+      "baselineQuiescenceNodes": 133621,
+      "candidateQuiescenceNodes": 135617,
+      "sameScore": 43,
+      "sameMove": 43
+    },
+    "mtaji": {
+      "positions": 18,
+      "baselineNodes": 17842,
+      "candidateNodes": 18765,
+      "nodeChangePercent": 5.173186862459356,
+      "medianNodeRatio": 1,
+      "fewerNodes": 4,
+      "equalNodes": 10,
+      "moreNodes": 4,
+      "baselineQuiescenceNodes": 9366,
+      "candidateQuiescenceNodes": 9916,
+      "sameScore": 18,
+      "sameMove": 18
+    }
+  },
+  "bySourcePair": {
+    "0": {
+      "positions": 51,
+      "baselineNodes": 215040,
+      "candidateNodes": 217395,
+      "nodeChangePercent": 1.0951450892857206,
+      "medianNodeRatio": 1,
+      "fewerNodes": 14,
+      "equalNodes": 19,
+      "moreNodes": 18,
+      "baselineQuiescenceNodes": 137557,
+      "candidateQuiescenceNodes": 139023,
+      "sameScore": 51,
+      "sameMove": 51
+    },
+    "1": {
+      "positions": 5,
+      "baselineNodes": 4563,
+      "candidateNodes": 5125,
+      "nodeChangePercent": 12.316458470304624,
+      "medianNodeRatio": 1,
+      "fewerNodes": 1,
+      "equalNodes": 2,
+      "moreNodes": 2,
+      "baselineQuiescenceNodes": 2451,
+      "candidateQuiescenceNodes": 2789,
+      "sameScore": 5,
+      "sameMove": 5
+    },
+    "2": {
+      "positions": 5,
+      "baselineNodes": 5030,
+      "candidateNodes": 6160,
+      "nodeChangePercent": 22.46520874751492,
+      "medianNodeRatio": 1.071278825995807,
+      "fewerNodes": 2,
+      "equalNodes": 0,
+      "moreNodes": 3,
+      "baselineQuiescenceNodes": 2979,
+      "candidateQuiescenceNodes": 3721,
+      "sameScore": 5,
+      "sameMove": 5
+    }
+  },
+  "incomplete": [],
+  "limitations": [
+    "Post-hoc selected pilot trajectories; correlated positions, not independent samples",
+    "Cached valid responses only; response failures excluded from this mechanism calculation and reported separately",
+    "Fixed depth 6; does not measure real-time playing strength or API-inclusive user-PC latency",
+    "Changing a tied best move does not by itself indicate correctness failure"
+  ],
+  "rowsHash": "a743ec9ce5b5649a7f4d3e7a6c8fbb906ad61ade960f66600ad12034036307cc"
+}

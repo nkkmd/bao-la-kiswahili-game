@@ -1,0 +1,16 @@
+{
+  "id": "pilot-v3-cached-depth6-v1",
+  "scope": "post-hoc exploratory mechanism comparison",
+  "sourcePlanHash": "da98ddc1290cbfc99b96fc6389ac7aa86b2a4abe3e82f8350e7c6fbcd7d0c5be",
+  "sourceSelection": "all 61 valid Jev responses from pilot-v3, including paused game; timeout and forced moves have no usable Jev response",
+  "inputHash": "53cc49f05a7666306617a21893e4f44b2feb92e7130c67f73ea4456e9392f827",
+  "positions": 61,
+  "maxDepth": 6,
+  "timeLimitMsPerSearch": 10000,
+  "order": "baseline first on even index, candidate first on odd index",
+  "warmup": "initial state depth 2 once per engine",
+  "metric": "stats.nodes; quiescenceNodes separately; same-depth completed searches only",
+  "apiWaiting": "excluded; cached responses, no new API calls",
+  "formalStatus": "NOT-STARTED",
+  "planHash": "c0f7d71ab079007e25c08839c0752800e17a25c1215e16502487d140d88d2f08"
+}

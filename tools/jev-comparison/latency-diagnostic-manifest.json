@@ -1,0 +1,7 @@
+{
+  "id": "latency-diagnostic-v1",
+  "files": {
+    "latency-diagnostic.cjs": "ab5c8fd650b48fe2d23ad312f075ec7806e23ce2d3ce85b4c676254ab0b92220",
+    "LATENCY_DIAGNOSTIC.md": "2926ce74c79f5cfda3980f44bd1dbbed59d3ec3298c18cbdf85fbbc9fe68c245"
+  }
+}

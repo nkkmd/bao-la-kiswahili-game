@@ -1,0 +1,14 @@
+{
+  "schema": "bao-jev-kit-manifest-v1",
+  "files": {
+    ".gitignore": "7532310a90b13758e862af0c9552caaac3bf127aa66ba95d2f20793a6bf1c4c4",
+    "README.md": "42cd81770aaa9bfddad7edcc51db75878040836da0cddeb2f0593cf3bfe2d20d",
+    "VERIFICATION.md": "0f043effe13c17615f89908707d27adb27cc640596c00d7c0ae994fc4651a010",
+    "budget.cjs": "b86711e17a9f10fbb2cf619dc0e639a7cad04c3a83d3ccef35cd9f0f11d38cbf",
+    "config.json": "a31ae03a17b263e240a76e08c96c0c5758bbb0e1e8e0daf306ce0d23f107fa9e",
+    "core.cjs": "8a087703374393a7cd0425d5e3d77c733abf538a526bb61261ea452c08b1b3dc",
+    "run.cjs": "5ec21a852d4a0c45adce94ef422c5149bd7ca49929a6be56ed04b6cf029d9728",
+    "selftest.cjs": "ca0bf53132cbf81399ad2fdd31ce121478202c2336c53f64f35b5f394a2d0e4f",
+    "source-manifest.json": "f666c16790319835c2c9b0e1b5a96d19f7b9f13210c5687f8dde88144a2d82ca"
+  }
+}

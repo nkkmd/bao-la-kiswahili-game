@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "tests": [
+    "history totals preserved; scoped IDs, stages and max attempts enforced",
+    "full 2000 ms remains after slow or recovered API; no error fallback; forced move skips API",
+    "one explicit retry, minimum wait, same payload, no third attempt",
+    "Retry-After 120 seconds and valid second answer retained across restart",
+    "invalid JSON/network/5xx retry; model/4xx/excess usage stop; missing usage retains reserve",
+    "crash after reservation never resends same attempt; durable answer before settlement is recovered",
+    "saved answer tampering or deletion blocks resending",
+    "budget stop before send; prior unconfirmed reservations remain",
+    "game runner checkpoints moves and resumes; API failure makes no fallback move; formal gate blocks",
+    "four complete synthetic pilot games pass gate; completed run makes no extra requests",
+    "decision checkpoint after crash is reused without a second search or API call",
+    "clock overrun preserved as a move and blocks continuation and conclusions",
+    "statistics match frozen examples, incomplete data has no p-value, rule caps are not draws",
+    "CLI preflight has zero network and no ledger writes; missing ledger and main branch rejected"
+  ],
+  "checks": 14,
+  "realApiRequests": 0,
+  "syntheticLedgersOnly": true,
+  "syntheticLedgerNote": "Only isolated test copies substitute the old halt hash; shipped code and user data are unchanged.",
+  "createdAt": "2026-09-21T18:16:53.796Z",
+  "statisticalReference": {
+    "library": "SciPy scipy.stats.binomtest",
+    "testedCases": 560,
+    "nRange": [
+      1,
+      32
+    ],
+    "pValueAbsoluteTolerance": 1e-12,
+    "exact95IntervalAbsoluteTolerance": 1e-10,
+    "status": "PASS"
+  },
+  "scope": "Implementation validation only; real paid API requests 0; user-PC strength pilot and formal matches not started."
+}

@@ -235,6 +235,8 @@ node tools/diagnostic-to-fixture.js \
 
 現在の公開AI系統は **`AI-GEN4`**、正式release IDは **`AI-GEN4-RELEASE-001`** です。hard・expertへの`PBAI-C015-v1`の正式採用と本番配信内容を確認し、2026年9月11日に昇格しました。AI-GEN4の画面表示を含む配信内容も確認済みです。[正式判断と配信確認記録](doc/ai-engineering/ai-gen4-release/README.md)を参照してください。
 
+2026年9月22日、Jevの候補手順序付けを追加した試験版とAI-GEN4単独の比較試験`JEV-BAO-STRENGTH-20260921-v1`を完了しました。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`（優劣を確認できず、同等性の証明ではない）です。本試験は比較のみで終了し、結果にかかわらずJev組込版を公開AIに採用しません。`public/`、公開AI世代、release、配信状態に変更はありません。[終了記録と再現性索引](doc/ai-engineering/jev-ai-gen4-comparison/README.md)を参照してください。
+
 AI-GEN4で加えた改善は、**学習済みの論理ゲート型評価器を使って探索中の局面を評価する仕組み**です。ルールに従って合法手を探索する方式は継承しています。AI-GEN3で採用した`PBAI-C011-v1`の軽量な局面遷移も引き続き使い、探索中に不要な表示用スナップショットを省きます。通常の着手処理と画面のアニメーションは維持します。
 
 | 難易度・条件 | 現在の構成 |
@@ -292,6 +294,7 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 ### 詳細資料
 
 - [AI-GEN4正式昇格・配信確認・切戻し](doc/ai-engineering/ai-gen4-release/README.md) — 現在の公開世代と運用状態の正本
+- [Jev × AI-GEN4比較試験の終了記録](doc/ai-engineering/jev-ai-gen4-comparison/README.md) — 64局の`INCONCLUSIVE`判定、非採用、追加課金禁止、原データ保存先
 - [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) — P1〜P12の結果と各プログラムへの入口
 - [P12最終報告](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md) — `PBAI-C016-v1`のdevelopment gate不通過とAI-GEN4維持の正式記録
 - [expert本番組込み・配信記録](doc/ai-engineering/pbai-c015-expert-production/README.md) — P11の採用からAI-GEN4昇格までの経過

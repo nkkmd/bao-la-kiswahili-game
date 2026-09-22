@@ -1,0 +1,169 @@
+{
+  "schema": "bao-jev-strength-protocol-v1",
+  "id": "JEV-BAO-STRENGTH-20260921-v1",
+  "version": 1,
+  "date": "2026-09-21",
+  "status": "DESIGNED-NOT-IMPLEMENTED-NOT-STARTED",
+  "purpose": "comparison-only-no-adoption",
+  "parentLedgerExperimentId": "JEV-BAO-COMP-20260921",
+  "baselineCommit": "252ad27973dbc2b4b674fba3104e38299ac98e9e",
+  "branch": "experiment/jev-ai-gen4-20260921",
+  "baseline": "AI-GEN4-RELEASE-001",
+  "level": "expert",
+  "evaluator": "PBAI-C015-v1",
+  "model": "jev-1.13.0",
+  "treatment": "existing validated Jev root move ordering; no pruning or evaluator changes",
+  "clock": {
+    "searchMs": 2000,
+    "maximumDepth": 12,
+    "apiTimeoutMs": 60000,
+    "searchClockStarts": "immediately before the common analyze call, after request preparation, response validation, and persistence",
+    "apiPreparationValidationAndPersistenceChargedToSearch": false,
+    "timeoutDebitMs": 0,
+    "noRemoteFallbackMoves": true,
+    "deadlineOverrunPauseThresholdMs": 50,
+    "overrunBeyondThresholdBlocksFormalDecision": true,
+    "totalWallTimeEqual": false
+  },
+  "stages": {
+    "offlineVerification": {
+      "apiRequests": 0
+    },
+    "pilot": {
+      "pairs": 2,
+      "games": 4,
+      "budgetStage": "pilot",
+      "includedInFormal": false,
+      "requiresAllGamesTerminal": true,
+      "winLossNotAGate": true
+    },
+    "formal": {
+      "pairs": 32,
+      "games": 64,
+      "budgetStage": "matches",
+      "includedInFormal": true,
+      "analysisOnlyAfterAll64Terminal": true,
+      "automaticSampleExtension": false
+    }
+  },
+  "openings": {
+    "file": "openings.json",
+    "openingsHash": "805496e52d309d9c87df1a286d59d352b9abe71e33c2da4aa09ff7140e793d1f",
+    "pilotPhases": {
+      "namua": 1,
+      "mtaji": 1
+    },
+    "formalPhases": {
+      "namua": 11,
+      "mtaji": 21
+    },
+    "generation": "independent new trajectories, phase drawn with probability 0.5 for each of 32 openings; uniform or capture-prioritized generation, no AI score filtering",
+    "selection": "nonterminal; target phase; 2..255 legal variants; existing request size limit; exclude known historical states, duplicates and a legal immediate win not caused by relay-limit",
+    "historicalCanonicalStatesExcluded": 501,
+    "selectionMayNotBeChangedAfterPilotForPerformanceReasons": true,
+    "replacementOfDifficultGames": false
+  },
+  "execution": {
+    "concurrency": 1,
+    "gamePlyLimit": 512,
+    "gameOrder": "frozen schedule in openings.json",
+    "firstGameCandidatePlayers": {
+      "player0": 16,
+      "player1": 16
+    },
+    "warmup": "fresh baseline/candidate engines per game; same initial state depth 2, outside clocks; identical warmup after process restart",
+    "forcedMove": "no API call; retain in game and outcome",
+    "checkpoint": "every request attempt, valid response and committed move",
+    "normalPause": "finish and checkpoint current move, then pause; resume same position and schedule"
+  },
+  "responses": {
+    "strictValidator": "unchanged core.cjs validateResponse",
+    "firstValidResponseOnly": true,
+    "crossGameApiCache": false,
+    "retryable": [
+      "timeout",
+      "network-error",
+      "http-429",
+      "http-5xx",
+      "invalid-response",
+      "invalid-json"
+    ],
+    "maxPaidAttemptsPerLogicalMove": 2,
+    "automaticRetries": false,
+    "retryRequiresExplicitResumeCommand": true,
+    "samePayloadOnRetry": true,
+    "minimumWaitBeforeRetrySeconds": 60,
+    "honorLongerRetryAfter": true,
+    "fatalNonRetryable": [
+      "model-mismatch",
+      "http-400",
+      "http-401",
+      "http-403",
+      "other-http-4xx",
+      "usage-exceeded-reservation",
+      "integrity-error",
+      "ledger-error"
+    ],
+    "missingUsage": "retain maximum reservation; a valid answer may be used; report unresolved cost",
+    "secondFailure": "stop study as technically incomplete; preserve game; no third attempt under this protocol"
+  },
+  "outcomes": {
+    "winLoss": "only valid terminal outcome in frozen rule engine",
+    "relay-limit": "ENGINE-LIMIT, not win/loss",
+    "512PliesWithoutTerminal": "UNRESOLVED, not draw",
+    "technicalFailure": "TECHNICAL-STOP, not loss",
+    "drawAdjudication": false,
+    "anyMissingOutcome": "INCOMPLETE; no confirmatory decision; retain every planned game"
+  },
+  "statistics": {
+    "unit": "two games from one opening with candidatePlayer reversed",
+    "primary": "two-sided exact binomial sign test on 2-0 versus 0-2 pairs",
+    "null": "conditional probability of a Jev 2-0 pair among non-tied pairs is 0.5",
+    "alpha": 0.05,
+    "tiedPairs": "1-1 pairs retained in score, contribute no direction to sign test",
+    "nZeroPValue": 1,
+    "reportedGameScore": "(2*pair_2_0 + pair_1_1)/64",
+    "confidenceInterval": "95% exact binomial interval for q=pair_2_0/(pair_2_0+pair_0_2); NOT a per-game win-rate interval",
+    "decisions": [
+      "JEV-SUPERIOR",
+      "BASELINE-SUPERIOR",
+      "INCONCLUSIVE",
+      "INCOMPLETE"
+    ],
+    "superiorityRequires": "all64 valid terminal outcomes, no unresolved integrity/clock deviations, p<=0.05 and corresponding sign",
+    "noOptionalStopping": true,
+    "phaseSpecificResults": "descriptive only",
+    "eloPrimary": false,
+    "missingOutcomeScoreBounds": "[W/64, (W+U)/64] descriptive possible-score bounds, NOT confidence interval"
+  },
+  "budget": {
+    "overallLimitUSD": 5,
+    "workLimitUSD": 4.5,
+    "priorRecordedUSD": 0.02445576,
+    "priorReportedUSD": 0.007940688,
+    "priorUnknownReservedUSD": 0.016515072,
+    "priorRequests": 106,
+    "pilotStageCumulativeLimitUSD": 0.4,
+    "pilotStageRecordedUSD": 0.02440305,
+    "formalMatchesStageLimitUSD": 3.5,
+    "rateNanoUSDPerInputToken": 42,
+    "maximumReservedTokens": 65536,
+    "reserveNanoUSDPerAttempt": 2752512,
+    "everyRetryReserved": true,
+    "allowLedgerReset": false,
+    "rateRecheckBeforeFirstLiveRun": true,
+    "newStudyScopeMustBeAddedWithoutErasingPriorEvents": true
+  },
+  "implementationGate": {
+    "runnerNotYetProvided": true,
+    "freezeCodeAndPlanHashesBeforePaidPilot": true,
+    "ledgerMigrationMustPassOfflineTests": true,
+    "mainAndPublicFilesMustRemainUnchanged": true,
+    "formalStartOnlyAfterPilotTechnicalPass": true
+  },
+  "sources": [
+    "https://docs.typesafe.ai/models",
+    "https://github.com/vdbergh/pentanomial",
+    "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binomtest.html"
+  ]
+}

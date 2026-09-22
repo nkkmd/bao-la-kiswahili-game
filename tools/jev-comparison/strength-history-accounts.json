@@ -1,0 +1,850 @@
+[
+  {
+    "id": "latency-diagnostic-v1-burst-0",
+    "requestHash": "15bb0329ce9089dfbae390516904d89854c3860cb5dc3e03ae21da7ff70060ce",
+    "stage": "pilot",
+    "inputTokens": 1531,
+    "chargedNano": 64302,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-burst-1",
+    "requestHash": "61910285ff87a22c279f244fbc36525dd87f49ec78b3c3d60211f3563e874319",
+    "stage": "pilot",
+    "inputTokens": 1291,
+    "chargedNano": 54222,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-burst-2",
+    "requestHash": "9389b4572f118f917c9eadb245db5973e8bc02a5e05554d09e01e0a710619c12",
+    "stage": "pilot",
+    "inputTokens": 2586,
+    "chargedNano": 108612,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-burst-3",
+    "requestHash": "3079f52d7d74c0b5be80ff506f5f485f6d592e1c65e4d91d8f7edc6e4db0c51b",
+    "stage": "pilot",
+    "inputTokens": 1255,
+    "chargedNano": 52710,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-spaced-0",
+    "requestHash": "15bb0329ce9089dfbae390516904d89854c3860cb5dc3e03ae21da7ff70060ce",
+    "stage": "pilot",
+    "inputTokens": 1531,
+    "chargedNano": 64302,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-spaced-1",
+    "requestHash": "61910285ff87a22c279f244fbc36525dd87f49ec78b3c3d60211f3563e874319",
+    "stage": "pilot",
+    "inputTokens": 1291,
+    "chargedNano": 54222,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-spaced-2",
+    "requestHash": "9389b4572f118f917c9eadb245db5973e8bc02a5e05554d09e01e0a710619c12",
+    "stage": "pilot",
+    "inputTokens": 2586,
+    "chargedNano": 108612,
+    "status": "ok"
+  },
+  {
+    "id": "latency-diagnostic-v1-spaced-3",
+    "requestHash": "3079f52d7d74c0b5be80ff506f5f485f6d592e1c65e4d91d8f7edc6e4db0c51b",
+    "stage": "pilot",
+    "inputTokens": 1255,
+    "chargedNano": 52710,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-pair-0-game-0-ply-0",
+    "requestHash": "15bb0329ce9089dfbae390516904d89854c3860cb5dc3e03ae21da7ff70060ce",
+    "stage": "pilot",
+    "inputTokens": null,
+    "chargedNano": 2752512,
+    "status": "timeout"
+  },
+  {
+    "id": "pilot-pair-0-game-0-ply-2",
+    "requestHash": "61910285ff87a22c279f244fbc36525dd87f49ec78b3c3d60211f3563e874319",
+    "stage": "pilot",
+    "inputTokens": null,
+    "chargedNano": 2752512,
+    "status": "timeout"
+  },
+  {
+    "id": "pilot-pair-0-game-0-ply-4",
+    "requestHash": "9389b4572f118f917c9eadb245db5973e8bc02a5e05554d09e01e0a710619c12",
+    "stage": "pilot",
+    "inputTokens": null,
+    "chargedNano": 2752512,
+    "status": "timeout"
+  },
+  {
+    "id": "pilot-position-0",
+    "requestHash": "3079f52d7d74c0b5be80ff506f5f485f6d592e1c65e4d91d8f7edc6e4db0c51b",
+    "stage": "pilot",
+    "inputTokens": 1255,
+    "chargedNano": 52710,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-1",
+    "requestHash": "dc92bdac00c343d85670ecc019fa384f1e0f376f4e783305eb399087dcc8734d",
+    "stage": "pilot",
+    "inputTokens": 1764,
+    "chargedNano": 74088,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-10",
+    "requestHash": "708cfa62acd6bad6a6c1d6bfba62cd56da1e16d667587339b73d1e8a2828546a",
+    "stage": "pilot",
+    "inputTokens": 2326,
+    "chargedNano": 97692,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-11",
+    "requestHash": "3eef611cf33c4bde4158855536543e50c82069b1b6923506aee9fba8f3d962fd",
+    "stage": "pilot",
+    "inputTokens": 1255,
+    "chargedNano": 52710,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-12",
+    "requestHash": "5a6f6f3b2d90143155958cfc0a8f5c5be2d3daa546d5de5a0bacb9d05b7827b5",
+    "stage": "pilot",
+    "inputTokens": 1269,
+    "chargedNano": 53298,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-13",
+    "requestHash": "ad8ee5a9bf15339389280d7df9c7330675137a0463e761115e87a6803c0ca541",
+    "stage": "pilot",
+    "inputTokens": 1765,
+    "chargedNano": 74130,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-14",
+    "requestHash": "6dc6eb66567f2bac39761d915db7ffb32a8ae1473a633e08898a0f35584e9be3",
+    "stage": "pilot",
+    "inputTokens": 1798,
+    "chargedNano": 75516,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-15",
+    "requestHash": "cbfa7909cf8fad80e066c01dca5920fe13c1176b84ac2dd3bde3b5b4bf11b118",
+    "stage": "pilot",
+    "inputTokens": 1756,
+    "chargedNano": 73752,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-2",
+    "requestHash": "4bd1cecb2b5342c3157524a356a4c39f7c6d573544ab3e5a5559e1aff1ce1867",
+    "stage": "pilot",
+    "inputTokens": 1272,
+    "chargedNano": 53424,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-3",
+    "requestHash": "03e9fd04ee72945194b2c16d4de1c6ebb423efc58ccc586a6dec86942d08aff8",
+    "stage": "pilot",
+    "inputTokens": 1256,
+    "chargedNano": 52752,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-4",
+    "requestHash": "9c9af0b4888fd402747ad26e08c31d2eda4602dd1cef50a4d5df3819895d4cf5",
+    "stage": "pilot",
+    "inputTokens": 1793,
+    "chargedNano": 75306,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-5",
+    "requestHash": "65ac00772da33f5d6732332132e6044a9d710e57010f94f262e0b7a5ae2968bb",
+    "stage": "pilot",
+    "inputTokens": 2275,
+    "chargedNano": 95550,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-6",
+    "requestHash": "6c237190fa2e85d657de495cb4118664b349b8dd1a77169e8a4c3b42db8890df",
+    "stage": "pilot",
+    "inputTokens": 1535,
+    "chargedNano": 64470,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-7",
+    "requestHash": "fd35ec2e8e79b30ac07cc979ed356b141ad1f86e06c20486702212aa54022f7d",
+    "stage": "pilot",
+    "inputTokens": 1252,
+    "chargedNano": 52584,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-8",
+    "requestHash": "55bebd2b9793812d41b5428f4c59ea624f6ec65c4b28fb45f22715239e08a5b8",
+    "stage": "pilot",
+    "inputTokens": 1269,
+    "chargedNano": 53298,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-position-9",
+    "requestHash": "dc5e6ca90c4c985a211fa0f1710c630bb25497ce0bd263f530290c59733c8ea9",
+    "stage": "pilot",
+    "inputTokens": 1508,
+    "chargedNano": 63336,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-0",
+    "requestHash": "15bb0329ce9089dfbae390516904d89854c3860cb5dc3e03ae21da7ff70060ce",
+    "stage": "pilot",
+    "inputTokens": 1531,
+    "chargedNano": 64302,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-10",
+    "requestHash": "351c7b5e43a6cc5376dce5169a1a7a26db970ad5efcbb3aadd7aaa22d0c5a8a2",
+    "stage": "pilot",
+    "inputTokens": 2061,
+    "chargedNano": 86562,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-12",
+    "requestHash": "f1590d82dc2ba2e5610125712c256bfa10d2b0d18920b443916adbbb5ef91c05",
+    "stage": "pilot",
+    "inputTokens": 1798,
+    "chargedNano": 75516,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-14",
+    "requestHash": "eb4951832094f7fe1c40fa8cbd2efd9d543479af1244f364d1fc91f9270d9048",
+    "stage": "pilot",
+    "inputTokens": 2850,
+    "chargedNano": 119700,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-16",
+    "requestHash": "5881c6cbda35bb8de9f645b82fe2c9d4e129310a22e49180fe5eb826e805aee5",
+    "stage": "pilot",
+    "inputTokens": 1798,
+    "chargedNano": 75516,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-18",
+    "requestHash": "07b79825fd463421a598a738222b97039e87f6ea3b39a969718fdb4308c515f5",
+    "stage": "pilot",
+    "inputTokens": 2061,
+    "chargedNano": 86562,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-2",
+    "requestHash": "61910285ff87a22c279f244fbc36525dd87f49ec78b3c3d60211f3563e874319",
+    "stage": "pilot",
+    "inputTokens": 1291,
+    "chargedNano": 54222,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-20",
+    "requestHash": "6292050b2d05312999ea9969bbdf3223f274dd3604a11916cc0668cd535f5d9d",
+    "stage": "pilot",
+    "inputTokens": 1795,
+    "chargedNano": 75390,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-22",
+    "requestHash": "c9001871c42b948971362bc8977234029cae8a7ec074ec496c9e83574cfef26a",
+    "stage": "pilot",
+    "inputTokens": 2572,
+    "chargedNano": 108024,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-24",
+    "requestHash": "88b05cf030c2652fc7e827334843f287d9f94a5b334d2550b9c71a97e3fe8aed",
+    "stage": "pilot",
+    "inputTokens": 2310,
+    "chargedNano": 97020,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-26",
+    "requestHash": "6eb3ab603b9d7851a1a4977921f3f9c731e5a45f708cb5cac1a6262105b42864",
+    "stage": "pilot",
+    "inputTokens": 2317,
+    "chargedNano": 97314,
+    "status": "invalid-response"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-4",
+    "requestHash": "9389b4572f118f917c9eadb245db5973e8bc02a5e05554d09e01e0a710619c12",
+    "stage": "pilot",
+    "inputTokens": 2586,
+    "chargedNano": 108612,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v2-pair-0-game-0-ply-6",
+    "requestHash": "2b202bf1c3e701a9f3f67c7dc7a6d18efe779b2ea9af051d4215d1795ddafb40",
+    "stage": "pilot",
+    "inputTokens": 2061,
+    "chargedNano": 86562,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-0",
+    "requestHash": "15bb0329ce9089dfbae390516904d89854c3860cb5dc3e03ae21da7ff70060ce",
+    "stage": "pilot",
+    "inputTokens": 1531,
+    "chargedNano": 64302,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-10",
+    "requestHash": "511d19bebfa1061d0886703aa29bae1c8d27707986eacc2bb2d6cdd807606215",
+    "stage": "pilot",
+    "inputTokens": 1798,
+    "chargedNano": 75516,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-12",
+    "requestHash": "0f6c3016c97eecd65c24c99b92eae6eedc69d5b106ca05241e1973dc20a6bf32",
+    "stage": "pilot",
+    "inputTokens": 1798,
+    "chargedNano": 75516,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-14",
+    "requestHash": "6e413c2d2b856648b6dd8ab190991f8d3e267676e17f6afb90c1bc121f628394",
+    "stage": "pilot",
+    "inputTokens": 1798,
+    "chargedNano": 75516,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-16",
+    "requestHash": "7caefbbb1e4e01d4e116f6f390219e729cd68e33407cb828bf89d759dfcd758e",
+    "stage": "pilot",
+    "inputTokens": 1535,
+    "chargedNano": 64470,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-18",
+    "requestHash": "0b11da9590df3b2aff16ab0bd26f4bba699d1de5ca63795060ec1dbb50dd0a43",
+    "stage": "pilot",
+    "inputTokens": 1535,
+    "chargedNano": 64470,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-2",
+    "requestHash": "61910285ff87a22c279f244fbc36525dd87f49ec78b3c3d60211f3563e874319",
+    "stage": "pilot",
+    "inputTokens": 1291,
+    "chargedNano": 54222,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-20",
+    "requestHash": "ed1a0a21ae3ee299680ff3ed7bc4ad80f7b28856f0433930578eab4764e055cc",
+    "stage": "pilot",
+    "inputTokens": 1533,
+    "chargedNano": 64386,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-22",
+    "requestHash": "193f82403c00dd216df5f751663081ce9c662cc99d47fcae3eeaf833ad154e92",
+    "stage": "pilot",
+    "inputTokens": 2832,
+    "chargedNano": 118944,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-24",
+    "requestHash": "3e6e6d671c596dfd23afa204126388d1cd013627160ac37703efffbd4ff58972",
+    "stage": "pilot",
+    "inputTokens": 2310,
+    "chargedNano": 97020,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-26",
+    "requestHash": "a8417de426356bb41744f7a143a2124f708220ca803887a9bba8d99af02fa225",
+    "stage": "pilot",
+    "inputTokens": 2310,
+    "chargedNano": 97020,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-28",
+    "requestHash": "7340444173999bc51835ea50d33a082ebe0888c5edd321eb62e51866375db94f",
+    "stage": "pilot",
+    "inputTokens": 2571,
+    "chargedNano": 107982,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-30",
+    "requestHash": "cf176fbacc0039c6b9565f00ae3adce079f931950d25ed27c4da380e0284988f",
+    "stage": "pilot",
+    "inputTokens": 2310,
+    "chargedNano": 97020,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-32",
+    "requestHash": "ab9320ccf622c8e9e7b95455665f24cd8a4ae5bdcf86afd0cdbf1897f16a07e6",
+    "stage": "pilot",
+    "inputTokens": 2049,
+    "chargedNano": 86058,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-36",
+    "requestHash": "107f79c16e88da68175b8db3b3269495ac8c2f04d4ecdd25d686c225ab535655",
+    "stage": "pilot",
+    "inputTokens": 2049,
+    "chargedNano": 86058,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-38",
+    "requestHash": "0f44e400f43c097a51c45be4b04b0e61661b86eb5b8f390198aca11f5e4325d6",
+    "stage": "pilot",
+    "inputTokens": 1788,
+    "chargedNano": 75096,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-4",
+    "requestHash": "9389b4572f118f917c9eadb245db5973e8bc02a5e05554d09e01e0a710619c12",
+    "stage": "pilot",
+    "inputTokens": 2586,
+    "chargedNano": 108612,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-40",
+    "requestHash": "7464c6d51c4a40ab0f0abcec44bcc573084f8053b08f932b5cf4bbf45204cb5b",
+    "stage": "pilot",
+    "inputTokens": 1761,
+    "chargedNano": 73962,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-42",
+    "requestHash": "d5daa106aafc13b165d50170432e88617747b0c8c9cec486e16f35b2e65d1f09",
+    "stage": "pilot",
+    "inputTokens": 2770,
+    "chargedNano": 116340,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-44",
+    "requestHash": "0c908533be5d26cb008c8e4a1470375e6ceb693317995d8fa3076f5d7819695d",
+    "stage": "pilot",
+    "inputTokens": 1252,
+    "chargedNano": 52584,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-46",
+    "requestHash": "da677407bd5dbd820e46f68c92d0fbf1eceea40d699216094ce3fa5301da4e26",
+    "stage": "pilot",
+    "inputTokens": 1253,
+    "chargedNano": 52626,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-48",
+    "requestHash": "f4724e31c8c2f1c70b29bbdc2c727c7e15708578f30ee71565d3cd8737139b3c",
+    "stage": "pilot",
+    "inputTokens": 1768,
+    "chargedNano": 74256,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-6",
+    "requestHash": "1fdcdccfe3230577e1652438eff1f2ec1feaa114c6ef04b8604310f517273b6d",
+    "stage": "pilot",
+    "inputTokens": 2587,
+    "chargedNano": 108654,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-0-ply-8",
+    "requestHash": "b6d0cbdf50dcbfe5f6424f3b8cc5766d91633f8d9da258804bf615eaef576ebc",
+    "stage": "pilot",
+    "inputTokens": 3114,
+    "chargedNano": 130788,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-11",
+    "requestHash": "66988d4c8a40e0d198aa41428605c6ba7f501466269babae0ead9260cb032074",
+    "stage": "pilot",
+    "inputTokens": 1272,
+    "chargedNano": 53424,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-13",
+    "requestHash": "cf2d7d3677d079b08ff1a9d028583e6fbd6ff033757a5b0a8d815989de68cbc6",
+    "stage": "pilot",
+    "inputTokens": 2061,
+    "chargedNano": 86562,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-15",
+    "requestHash": "11f041d3fe698fbf07b7c4cc26e6b58af28b1d83949a6894fa97864dd2a26a0a",
+    "stage": "pilot",
+    "inputTokens": 1535,
+    "chargedNano": 64470,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-17",
+    "requestHash": "ec2a9f69fee7b8f07252b88564ccc2e80213b0459e37743710579ff4be317a60",
+    "stage": "pilot",
+    "inputTokens": 2061,
+    "chargedNano": 86562,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-19",
+    "requestHash": "668f7cddfbddf4410981fc65907de297738ed895e76d0970368a801cd042171e",
+    "stage": "pilot",
+    "inputTokens": 2850,
+    "chargedNano": 119700,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-21",
+    "requestHash": "89429d09e876b044052b7022499bb504ae0d836c64b60b69ed46f67da1504647",
+    "stage": "pilot",
+    "inputTokens": 2050,
+    "chargedNano": 86100,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-23",
+    "requestHash": "a7044862466516ea3dbf6ddf0d8295caa77837090f0dd8ab9bbc4abcc139afc2",
+    "stage": "pilot",
+    "inputTokens": 1788,
+    "chargedNano": 75096,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-25",
+    "requestHash": "b5d8577590cf7a855345fd07ac356221dc697af8936ef758017614007ed7b35a",
+    "stage": "pilot",
+    "inputTokens": 1527,
+    "chargedNano": 64134,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-27",
+    "requestHash": "945710b00882d7ca76e3ee30ca94643423f5da9f5dce4350ace08ddf313cda03",
+    "stage": "pilot",
+    "inputTokens": 1788,
+    "chargedNano": 75096,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-29",
+    "requestHash": "92816babd8d933a69ebfbb8c96cf47a2537289176ed7f3d0f4d4610ab35b2203",
+    "stage": "pilot",
+    "inputTokens": 3618,
+    "chargedNano": 151956,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-3",
+    "requestHash": "5ee08fbc53339e6786c0ec3ab283b8bf7252dd328bf6401885792494154a66d5",
+    "stage": "pilot",
+    "inputTokens": 2841,
+    "chargedNano": 119322,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-31",
+    "requestHash": "c30f99eeabe6ab2042ceff7916a23c41b125bfe2cd21e97315d7261c43f3a39f",
+    "stage": "pilot",
+    "inputTokens": 1269,
+    "chargedNano": 53298,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-33",
+    "requestHash": "ab51afe14af3ccf6ad2393d7b57ed4f7c82461c66e0f7c69c8eb24c3bd54529e",
+    "stage": "pilot",
+    "inputTokens": 1793,
+    "chargedNano": 75306,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-35",
+    "requestHash": "6b683779e927e985ce1d8647bb61a136383d0e0f399eb4f12856c243849f9884",
+    "stage": "pilot",
+    "inputTokens": 1791,
+    "chargedNano": 75222,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-37",
+    "requestHash": "0c846d88270031f293e9488c0a44efc879e9d4595617345fcb2c632c48c36078",
+    "stage": "pilot",
+    "inputTokens": 2049,
+    "chargedNano": 86058,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-39",
+    "requestHash": "0ca8e3e613d4f95acb67ab6d2a5335263b6a0e1dc04e37621d8238f8601ac3ee",
+    "stage": "pilot",
+    "inputTokens": 2050,
+    "chargedNano": 86100,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-41",
+    "requestHash": "04ab235b5624caf65fd8ff99bd72a7c686f1c6604ccfeffd99e2a161b819b09f",
+    "stage": "pilot",
+    "inputTokens": 1503,
+    "chargedNano": 63126,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-43",
+    "requestHash": "b6b195ae8a8c5ad2e44450425c71719c4864b102b435aa70e309f3c996c1d985",
+    "stage": "pilot",
+    "inputTokens": 1251,
+    "chargedNano": 52542,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-45",
+    "requestHash": "49b911b52cb43b18efc743c2d6c91fab0bf0325630f459f234f0b6e30b07f0e9",
+    "stage": "pilot",
+    "inputTokens": 1758,
+    "chargedNano": 73836,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-49",
+    "requestHash": "65f5b7e6635d393b5a0c91cea308db297c746e168280142162d9e31edb7d5cc9",
+    "stage": "pilot",
+    "inputTokens": 1505,
+    "chargedNano": 63210,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-5",
+    "requestHash": "f965a00bceb6770eb55f87465a4d57a9c915816321529963ef1974549895ba22",
+    "stage": "pilot",
+    "inputTokens": 3136,
+    "chargedNano": 131712,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-51",
+    "requestHash": "7c30ceed2d391ad127b74a13a03339bf3db9cd537e6a676aaa93ec41827e5e83",
+    "stage": "pilot",
+    "inputTokens": 1253,
+    "chargedNano": 52626,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-53",
+    "requestHash": "48a09ba7cc77eb5177524a1c6ee7a61af18e9af0593676d80bfb01e19989d05a",
+    "stage": "pilot",
+    "inputTokens": 2768,
+    "chargedNano": 116256,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-55",
+    "requestHash": "67b798eeaa0b04f17c9f0ac9a0ae176a8264fdcdbad01b216d85cb05bd2b1c8f",
+    "stage": "pilot",
+    "inputTokens": 2768,
+    "chargedNano": 116256,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-57",
+    "requestHash": "ed89c628b12f03f31d73b38b9d0ac4a38fc984128233afbca92b1e4b916faa7d",
+    "stage": "pilot",
+    "inputTokens": 2017,
+    "chargedNano": 84714,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-7",
+    "requestHash": "021e2e70e46413dd084b290930221e797ed1323a01273d96908842015132d4be",
+    "stage": "pilot",
+    "inputTokens": 2855,
+    "chargedNano": 119910,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-0-game-1-ply-9",
+    "requestHash": "d1c93f7bf7c99cf761726e2103d813be450218188a6f7b0c3f5aa2d63c228a9e",
+    "stage": "pilot",
+    "inputTokens": 2061,
+    "chargedNano": 86562,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-1-game-0-ply-0",
+    "requestHash": "93a491310f84122ee8884aa4e57962989e649caf9ed935fe573a481993aa7e9c",
+    "stage": "pilot",
+    "inputTokens": 2262,
+    "chargedNano": 95004,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-1-game-0-ply-2",
+    "requestHash": "41fd6b30f0bb6435fed8183463932443abe3e246c7840d2587273565bbd21cbe",
+    "stage": "pilot",
+    "inputTokens": 1503,
+    "chargedNano": 63126,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-1-game-0-ply-4",
+    "requestHash": "b97b3077ee4cc22843d6b3eb5c937b042e7b904505c77c17c854761d7e809470",
+    "stage": "pilot",
+    "inputTokens": 1506,
+    "chargedNano": 63252,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-1-game-0-ply-6",
+    "requestHash": "832db5d63e3f7f05439ec9ec5725178ecf2cbeed85243170c4a18b93fa2c3e98",
+    "stage": "pilot",
+    "inputTokens": 2781,
+    "chargedNano": 116802,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-1-game-0-ply-8",
+    "requestHash": "7bd050f2a0bdf1f4c75fd8076002e48bb9345eb069d66c0390405a9e4eaa03a0",
+    "stage": "pilot",
+    "inputTokens": 1506,
+    "chargedNano": 63252,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-0",
+    "requestHash": "1237905127af2619ebd80801b621155684f7ef9559a8dcccf22df7c27945fb90",
+    "stage": "pilot",
+    "inputTokens": 1280,
+    "chargedNano": 53760,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-10",
+    "requestHash": "aca111d90d4204cc5b75f197061c040b526441732dc4a1e760dca034dfee5d68",
+    "stage": "pilot",
+    "inputTokens": null,
+    "chargedNano": 2752512,
+    "status": "timeout"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-12",
+    "requestHash": "9c2fa9cbc9d070ffa3eed0163a47f667b5d8acf34046a45a91fe0519a9992cd1",
+    "stage": "pilot",
+    "inputTokens": null,
+    "chargedNano": 2752512,
+    "status": "timeout"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-14",
+    "requestHash": "ee3aa10ca921e2f950ff3988aaa7c4953f8d42ef83677f7c84d9118b17ea4874",
+    "stage": "pilot",
+    "inputTokens": null,
+    "chargedNano": 2752512,
+    "status": "timeout"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-2",
+    "requestHash": "5c93d0e36a6e963f2191a1e4296bc8085e2d6dcef7db39c652704b08c5a27593",
+    "stage": "pilot",
+    "inputTokens": 1278,
+    "chargedNano": 53676,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-4",
+    "requestHash": "b4cd2a6ac7efa4074fc69e015046b3fbc255a416be7b5d9aeb0f104a6597311c",
+    "stage": "pilot",
+    "inputTokens": 1278,
+    "chargedNano": 53676,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-6",
+    "requestHash": "ec5bcc23b13b761b4e7f6515cab16bf7c15c36fc4594608c31609eebc0ca98e8",
+    "stage": "pilot",
+    "inputTokens": 1276,
+    "chargedNano": 53592,
+    "status": "ok"
+  },
+  {
+    "id": "pilot-v3-pair-2-game-0-ply-8",
+    "requestHash": "71d15acffb889ad93bf914a7a9863da0a96103535bb4cb78d675412461ed469e",
+    "stage": "pilot",
+    "inputTokens": 1770,
+    "chargedNano": 74340,
+    "status": "ok"
+  },
+  {
+    "id": "response-diagnostic-v1",
+    "requestHash": "6eb3ab603b9d7851a1a4977921f3f9c731e5a45f708cb5cac1a6262105b42864",
+    "stage": "pilot",
+    "inputTokens": 2317,
+    "chargedNano": 97314,
+    "status": "ok"
+  },
+  {
+    "id": "smoke-v1",
+    "requestHash": "3079f52d7d74c0b5be80ff506f5f485f6d592e1c65e4d91d8f7edc6e4db0c51b",
+    "stage": "smoke",
+    "inputTokens": 1255,
+    "chargedNano": 52710,
+    "status": "ok"
+  }
+]
