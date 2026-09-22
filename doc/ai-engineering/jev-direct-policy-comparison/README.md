@@ -1,7 +1,7 @@
 # Jev Direct Policy × AI-GEN4 比較試験
 
 - Study ID: **`JEV-BAO-DIRECT-POLICY-20260922-v1`**
-- 状態: **`FORMAL-COMPLETE / RESULT-CONFIRMED / AUDIT-PASS / ARCHIVE-CLOSURE-PENDING`**
+- 状態: **`COMPLETED / CLOSED / AUDIT-PASS`**
 - 正式判定: **`AI-GEN4-SUPERIOR`**
 - 基準commit: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - 実施branch: `experiment/jev-direct-policy-20260922`
@@ -29,7 +29,7 @@ formalはfresh 32 openings × side swap = 64 gamesを事前固定し、全64局�
 
 25 directional pairsすべてがAI-GEN4方向だったため、固定protocolにおける正式判定は **`AI-GEN4-SUPERIOR`**。
 
-formal完走後の最終 `run.cjs verify` は `VERIFIED` で、technical auditは `PASS`。
+formal完走後とopening定義固定後に `run.cjs verify` を実行し、最終status `VERIFIED` を確認した。technical auditとclosure auditはいずれも`PASS`。
 
 ## 解釈の限定
 
@@ -85,14 +85,14 @@ formal中に3件のretryable `invalid-response` が発生した。各件で保�
 
 費用gate違反はなかった。
 
-## Archive closure保留点
+## Opening archive / closure
 
-最終GitHub差分監査で、実対局に使用した次のローカル生成ファイルがまだbranchへ保存されていないことを確認した。
+実対局で使用した生成opening定義はcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で専用branchへ固定済み。
 
 - `tools/jev-direct-policy/design/openings.json`
 - `tools/jev-direct-policy/design/opening-verification.json`
 
-`openingsHash`は最終verifyで一致しており、formal結果自体は確定済みである。ただしexact opening setの将来再現性を確保するため、この2ファイルを内容変更せずcommitし、再verifyしてからStudyをarchive `CLOSED`とする。
+固定後に再度 `run.cjs verify` を実行し、`openingsHash = 65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882` とspec bindingが不変であることを確認した。`CLOSURE_AUDIT.md`も`PASS / COMPLETED / CLOSED`。
 
 ## 前回Studyとの分離
 
@@ -105,6 +105,7 @@ formal中に3件のretryable `invalid-response` が発生した。各件で保�
 - [`FINAL_REPORT.md`](FINAL_REPORT.md) — formal結論と解釈範囲
 - [`FORMAL_RESULT.md`](FORMAL_RESULT.md) — audited formal結果
 - [`FORMAL_TECHNICAL_AUDIT.md`](FORMAL_TECHNICAL_AUDIT.md) — 最終技術監査
+- [`CLOSURE_AUDIT.md`](CLOSURE_AUDIT.md) — opening archiveを含むclosure監査
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — 現在状態
 - authorization / pause / resume記録 — 実行gateとtechnical retry履歴
 - pilot result / audit — pilot記録
