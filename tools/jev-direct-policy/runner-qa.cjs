@@ -30,8 +30,8 @@ async function main(){
   const item={jevPlayer:state.player},row={stateHash:C.sha256(state),competitor:'jev-direct',move:d.move,moveKey:d.moveKey,afterHash:d.afterHash,
    candidateId:result.candidateId,candidateSetHash:packet.candidateSetHash,requestHash:C.sha256(JSON.stringify(packet.body)),search:null,
    remote:{status:'ok',attemptId:result.attemptId,responseDigest:result.responseDigest,elapsedMs:result.elapsedMs,recovered:result.recovered,confidence:result.confidence,usage:result.usage}};
-  const boundAfter=Run.validateDecision(engine,state,row,item,ledger);C.assert(C.sha256(boundAfter)===d.afterHash,'QA_RUNNER_RESPONSE_BINDING_FAILED');
-  const tampered=C.clone(row);tampered.remote.responseDigest='0'.repeat(64);expectFail(()=>Run.validateDecision(engine,state,tampered,item,ledger),'JEV_RESPONSE_DIGEST_MISMATCH');
+  const boundAfter=Run.validateDecision(engine,state,row,item,ledger,root);C.assert(C.sha256(boundAfter)===d.afterHash,'QA_RUNNER_RESPONSE_BINDING_FAILED');
+  const tampered=C.clone(row);tampered.remote.responseDigest='0'.repeat(64);expectFail(()=>Run.validateDecision(engine,state,tampered,item,ledger,root),'JEV_RESPONSE_DIGEST_MISMATCH');
 
   let now=2000000,retryCalls=0;const retryRoot=path.join(tmp,'retry'),retryLedger=new B.Ledger(path.join(tmp,'ledger-retry'),'qa-spec-retry');
   const retryClient=R.createClient(retryLedger,retryRoot,'qa-not-real',{now:()=>now,transport:async()=>{retryCalls++;return retryCalls===1?failResponse(500):okResponse(responseFor(packet,800));}});
