@@ -4,13 +4,13 @@
 
 ## 状態
 
-**`RUNTIME-FROZEN / PAID-PILOT-AUTHORIZED / AWAITING-LOCAL-EXECUTION`**
+**`PILOT-COMPLETE / LOCAL-REPLAY-AUDIT-PENDING / FORMAL-NOT-AUTHORIZED`**
 
-専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するためのprotocol、fresh openings、無課金QA、費用台帳、resumable client、対局runner、paired statisticsを固定した。
+専用branch `experiment/jev-direct-policy-20260922` 上で、Jev Direct PolicyとAI-GEN4 expert standardを比較するためのprotocol、fresh openings、無課金QA、費用台帳、resumable client、対局runner、paired statistics、runtime manifestを固定した。
 
-ユーザーは2026年9月22日に有料4局pilotの開始を明示認可した。認可範囲はpilot 4局のみであり、formal 64局は含まない。
+ユーザーは2026年9月22日に有料4局pilotの開始を明示認可し、同じローカルPCでpilotを実行した。4局すべてterminalまで完走し、technical pauseは0件だった。formal 64局はまだ認可していない。
 
-現時点までの有料Jev API呼出しは0件。`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
+`public/`、main、AI-GEN4、release、本番配信状態は変更していない。
 
 ## 固定対象
 
@@ -50,7 +50,7 @@ pilot spec hash:
 8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85
 ```
 
-`tools/jev-direct-policy/runtime-manifest.json` にlive pathのSHA-256を固定済み。runnerはmanifest対象ファイルのhash不一致時に停止する。
+`tools/jev-direct-policy/runtime-manifest.json`にlive pathのSHA-256を固定済み。runnerはmanifest対象ファイルのhash不一致時に停止する。
 
 ## 無課金gate結果
 
@@ -73,6 +73,32 @@ pilot spec hash:
 - paired exact sign-test helper: PASS
 
 実行環境はNode.js `v24.6.0`、Linux kernel `6.18.33.2-microsoft-standard-WSL2`、Intel Core i5-8250U、8 logical CPUs、Ubuntu 24.04.1 LTSで前回記録と一致した。
+
+## 有料pilot結果
+
+記録:
+
+```text
+doc/ai-engineering/jev-direct-policy-comparison/PILOT_RESULT.md
+```
+
+runner最終statusは`PILOT-COMPLETE`。
+
+- terminal games: 4 / 4
+- technical pause: 0
+- Jev Direct Policy wins: 0
+- AI-GEN4 wins: 4
+- Jev 2-0 pairs: 0
+- AI-GEN4 2-0 pairs: 2
+- split 1-1 pairs: 0
+- directional pairs: 2
+- two-sided exact sign-test p-value: 0.5
+- paid requests: 23
+- reported pilot usage: USD `0.002129904`
+- uncertain reserved: USD `0`
+- ledger halted: false
+
+pilotはtechnical validation用4局であり、formal 64局のprimary inferenceへ含めない。pilotの4-0のみから正式な棋力差を判定しない。
 
 ## QAで発見・修正した事項
 
@@ -108,14 +134,6 @@ Jev Direct Policy:
 - attempt 2は明示resumeと待機時間を要求
 - API key / Authorization headerを保存しない
 
-pilot:
-
-- 2 fresh openings / 4 games
-- 各openingでside swap
-- 技術的停止は敗北として扱わない
-- pilotはformal統計へ含めない
-- pilot budget ceiling USD 0.10
-
 formal:
 
 - 32 fresh openings / 64 games
@@ -148,25 +166,17 @@ JEV-BAO-DIRECT-20260922
 - append-only ledger
 - 不確実なrequestは保守的reservationを保持
 
-## 有料pilot認可
+## 現在の次gate
 
-認可記録:
+formal認可前に、同じローカルPCで次を実行する。
 
-```text
-doc/ai-engineering/jev-direct-policy-comparison/PILOT_AUTHORIZATION.md
+```bash
+node tools/jev-direct-policy/run.cjs verify
 ```
 
-ローカル実行gateはGit管理しない:
+このverifyで、保存済み全gameをopeningから再生し、各Jev着手のrequest / saved response / response digest / candidate ID / candidate-set hash / selected move / after-state、および費用台帳chain・runtime bindingを再照合する。
 
-```text
-tools/jev-direct-policy/.live-authorization.json
-```
-
-このローカルファイルはpilot stage、Study ID、opening hash、spec hashへbindingする。formalには使用できない。
-
-次の操作は前回と同じローカルPCで、freeze検証後にpilot専用`.live-authorization.json`を作成し、`TYPESAFE_API_KEY`を環境変数へ設定して `run pilot --live` を実行すること。APIキーはGit、JSON、ログ、チャットへ貼らない。
-
-technical pauseが発生した場合は勝敗扱いにせず停止し、その出力を監査する。`resume pilot --live`は自動実行しない。
+verifyが正常終了してもformal 64局は自動認可しない。結果を監査した後にformal開始を別gateで扱う。
 
 ## 非採用境界
 
