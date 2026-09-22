@@ -4,13 +4,31 @@
 - 費用管理ID: `JEV-BAO-DIRECT-20260922`
 - 基準commit: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - 実施branch: `experiment/jev-direct-policy-20260922`
-- 状態: **RUNTIME-FROZEN / PAID-PILOT-NOT-AUTHORIZED**
+- 状態: **COMPLETED / CLOSED / AUDIT-PASS**
+- 正式判定: **`AI-GEN4-SUPERIOR`**
 
 ## 目的
 
-Jevを探索順序付けに使うのではなく、Baoエンジンが列挙した合法候補の中からJev自身が最終着手を1つ直接選ぶ `Jev Direct Policy` と、現行 `AI-GEN4-RELEASE-001` expert standard条件を比較する。
+Jevを探索順序付けに使うのではなく、Baoエンジンが列挙した合法候補の中からJev自身が最終着手を1つ直接選ぶ `Jev Direct Policy` と、現行 `AI-GEN4-RELEASE-001` expert standard条件を比較した。
 
-本Studyは性能比較と記録のみを目的とする。結果にかかわらず、このStudyだけを根拠にJevを公開AIへ採用しない。`public/`、AI世代、release、本番配信状態は変更しない。
+本Studyは性能比較と記録のみを目的とする。結果にかかわらず、このStudyだけを根拠にJevを公開AIへ採用しない。`public/`、AI世代、release、本番配信状態は変更していない。
+
+## 最終結果
+
+- pilot: 4 / 4 terminal
+- formal: 64 / 64 terminal
+- Jev Direct Policy wins: 7
+- AI-GEN4 wins: 57
+- Jev 2-0 pairs: 0
+- AI-GEN4 2-0 pairs: 25
+- split 1-1 pairs: 7
+- directional pairs: 25
+- two-sided exact paired sign-test: `p = 5.960464477539063e-8`
+- final verify: `VERIFIED`
+- cumulative paid requests: 413
+- cumulative reported usage: USD `0.036509592`
+
+正式判定は固定条件における `AI-GEN4-SUPERIOR`。詳細は[`../../doc/ai-engineering/jev-direct-policy-comparison/FINAL_REPORT.md`](../../doc/ai-engineering/jev-direct-policy-comparison/FINAL_REPORT.md)と[`CLOSURE_AUDIT.md`](../../doc/ai-engineering/jev-direct-policy-comparison/CLOSURE_AUDIT.md)を参照する。
 
 ## 権限分離
 
@@ -26,7 +44,7 @@ Baoエンジンを正本とする処理:
 - 終局・勝者
 - Jev選択候補の合法性再検証
 
-Jevへ任せる処理:
+Jevへ任せた処理:
 
 - 合法候補同士の比較
 - 戦術・戦略判断
@@ -46,7 +64,7 @@ AI-GEN4側:
 - `maxDepth = 12`
 - `timeLimitMs = 2000`
 
-Jev側には棋力評価上の2秒制限を置かない。5分watchdogは通信異常検出用であり棋力上の持ち時間ではない。
+Jev側には棋力評価上の2秒制限を置かなかった。5分watchdogは通信異常検出用であり棋力上の持ち時間ではない。
 
 ## 固定hash
 
@@ -54,9 +72,10 @@ Jev側には棋力評価上の2秒制限を置かない。5分watchdogは通信�
 openingsHash = 65677afceb7eb9d7c6936fe029033088509ec15302f2d15b564dc1bf6eb50882
 protocolHash = 90216b075d0ea9b92b3119cfced3759fc8bd4d3ab203da6005b2e1dcf28e3b81
 runtimeManifestHash = e5eb64abe660a9c7eb233d134d6de667fc540d235c23ae8b05687b041b755154
+specHash = 8bb133012b358859e4c25f78dbf82931936220aad5720eb253cb90ca57969a85
 ```
 
-`runtime-manifest.json`がlive pathの実装hashを固定する。対象ファイルが変更された場合、runnerは停止する。
+`runtime-manifest.json`がlive pathの実装hashを固定する。実対局で使用したopening定義は`design/openings.json`と`design/opening-verification.json`としてcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で固定済み。
 
 ## 無課金確認
 
@@ -67,32 +86,22 @@ node tools/jev-direct-policy/mock-qa.cjs
 node tools/jev-direct-policy/preflight.cjs
 node tools/jev-direct-policy/runner-qa.cjs
 node tools/jev-direct-policy/freeze-runtime.cjs
+node tools/jev-direct-policy/run.cjs verify
 ```
 
-`build-openings.cjs`は設計生成用であり、`design/openings.json`が既にfreeze済みのため通常は再実行しない。
+`build-openings.cjs`は設計生成用であり、`design/openings.json`がfreeze済みのため閉鎖Studyで再生成しない。
 
 ## 有料APIの安全境界
 
-有料live実行には、固定runtimeと一致するローカル専用認可ファイルが必要。
+live試験は完了しており、Studyは閉鎖済みである。`.live-authorization.json`はローカル専用・`.gitignore`対象でGit管理しない。
 
-```text
-tools/jev-direct-policy/.live-authorization.json
-```
-
-このファイルは`.gitignore`対象でありGit管理しない。現在は作成していないため、pilotは未認可。
-
-さらに以下を要求する。
-
-1. 前回と同一ローカル環境
-2. fixed openings / protocol / runtime manifestの一致
-3. Jev model / API仕様 / 料金の直前公式再確認
-4. stage別費用上限
-5. `TYPESAFE_API_KEY`は環境変数のみ
-6. userによる明示的なpilot開始指示
+本Studyの閉鎖後は、既存のpilot/formal認可を新しい有料API呼出しの根拠として再利用しない。追加の有料実行、sample extension、opening replacement、別model/promptでの再試験を行う場合は、別Studyとして新しいprotocol・予算・認可を必要とする。
 
 API keyはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
 
 ## retry / resume
+
+実施時の固定規則:
 
 - automatic retryなし
 - 同一logical move最大2 paid attempts
@@ -100,6 +109,8 @@ API keyはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
 - attempt 2は明示的`resume`と待機時間を要求
 - request bytes / candidate set / response / selected moveを再照合
 - 技術失敗を対局敗北へ変換しない
+
+formal中に3件のretryable `invalid-response` が発生したが、各attempt-1を監査し、規定のattempt-2で回復した。attempt-3は発生していない。
 
 ## formal design
 
@@ -111,7 +122,7 @@ API keyはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
 
 ## 前回Studyとの境界
 
-`tools/jev-comparison/` と `doc/ai-engineering/jev-ai-gen4-comparison/` は完了済み `JEV-BAO-STRENGTH-20260921-v1` のarchiveであり、このStudyから変更しない。前回64局や費用台帳を今回へ合算しない。
+`tools/jev-comparison/` と `doc/ai-engineering/jev-ai-gen4-comparison/` は完了済み `JEV-BAO-STRENGTH-20260921-v1` のarchiveであり、このStudyから変更していない。前回64局や費用台帳を今回へ合算していない。
 
 ## 非採用境界
 
