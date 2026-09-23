@@ -72,7 +72,7 @@ Primary analysisは2-0対0-2のopening-pair方向に対するtwo-sided exact bin
 
 raw game scoreは57対7だが、正式判定は事前指定どおりpair-based statisticを主とする。
 
-## 5. Pilot
+## 5. 予備試験
 
 pilotは2 fresh openings × side swap = 4 games。
 
@@ -84,7 +84,7 @@ pilotは2 fresh openings × side swap = 4 games。
 
 pilotはtechnical validation用でformal primary inferenceへ合算していない。
 
-## 6. Technical pauses
+## 6. 技術的な一時停止
 
 formal中に3回のretryable `invalid-response` が発生した。
 
@@ -148,7 +148,7 @@ technical auditは **`AUDIT-PASS`**。詳細は `FORMAL_TECHNICAL_AUDIT.md` と 
 - AI-GEN4とJevの計算資源が同等であること
 - 57対7を他のopening分布へそのまま一般化できること
 
-## 11. Opening archive / closure
+## 11. 開幕定義の保存と試験の終了
 
 closure前監査で、実試験に使用した生成opening定義がローカルのみに存在することを検出した。次の2ファイルを内容変更せずcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で専用branchへ固定した。
 
