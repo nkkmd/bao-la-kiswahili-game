@@ -1,6 +1,6 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-22
+更新日: 2026-09-23
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`**
@@ -12,6 +12,10 @@
 科学研究の結果は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)と[`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md)で管理します。engineering上の結果によって、研究Studyの正式判断を書き換えることはありません。
 
 [十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで実施しました。baseline supportはPASSしましたが、prospectiveに固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たさず、最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。[PBAI-P12最終報告](ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。independent validationとrelease holdoutは未実行で、公開AI・release・AI世代に変更はありません。
+
+## 今後の改善案（検討中）
+
+[AI-GEN4以降の公開AI改善案](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、現行構成、既存の不採用結果、Jev試験の事後解析を踏まえた候補と検証順序を記録する。最初に実対局の反例と探索費用を診断し、改善対象が確認できた案を一件ずつ検証する方針案である。候補の優先順位は効果の証明ではなく、正式Program ID・Candidate IDも未発行である。P1〜P12の終了判断とAI-GEN4の公開状態は維持する。
 
 ## 完了済みのJev比較試験
 
