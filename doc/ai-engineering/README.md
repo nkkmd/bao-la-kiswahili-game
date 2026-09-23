@@ -12,7 +12,7 @@ AI世代、Program ID、Candidate IDの命名と区別は[`AI_GENERATION_NAMING.
 
 ## 今後の改善候補
 
-[AI-GEN4以降の候補一覧](AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、反例診断と探索効率・強制勝敗探索・評価器・学習系の案を記録する。検討中の案であり、正式なProgram・Candidateや公開版の変更はない。
+[AI-GEN4以降の候補一覧](AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、重複計算の削減、Worker再利用、教師・教材を改善する軽量モデルの再学習を中心に、探索・評価・学習系の案を記録する。最終精査で各案の仕組み、適用条件、最小比較、見送り条件を追記した。新規試験・実装は未実施であり、正式なProgram・Candidateや公開版の変更はない。
 
 ## 直近の改善Program
 
